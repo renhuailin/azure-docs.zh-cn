@@ -3,19 +3,19 @@ title: 教程：将自定义域添加到终结点
 titleSuffix: Azure Content Delivery Network
 description: 使用本教程将自定义域添加到 Azure 内容分发网络终结点，以便在 URL 中可以看到域名。
 services: cdn
-author: asudbring
+author: jessie-jyy
 manager: KumudD
 ms.service: azure-cdn
 ms.topic: tutorial
-ms.date: 02/04/2020
-ms.author: allensu
+ms.date: 04/12/2021
+ms.author: yuajia
 ms.custom: mvc
-ms.openlocfilehash: 9bca81e7d0eb68d43c21065f5104fc423115be25
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 63ca8cc981f7a192c35f7d1889187ae84773ba08
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065183"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307990"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-endpoint"></a>教程：将自定义域添加到终结点
 
@@ -245,9 +245,14 @@ Azure 会验证所输入的自定义域名是否存在 CNAME 记录。 如果该
 
 如果不再需要将终结点与自定义域相关联，可通过以下步骤删除自定义域：
  
-1. 在 CDN 配置文件中，选择其自定义域需要删除的终结点。
+1. 请转到 DNS 提供程序，删除自定义域的 CNAME 记录，或将自定义域的 CNAME 记录更新为非 Azure CDN 终结点。
 
-2. 在“终结点”页的“自定义域”下，  右键单击要删除的自定义域，然后从上下文菜单中选择“删除”。  选择 **“是”** 。
+    > [!Important]
+    > 为防止无关联的 DNS 条目及其产生的安全性风险，自 2021 年 4 月 9 日起，Azure CDN 要求先删除 Azure CDN 终结点的 CNAME 记录，然后才能删除这些资源。 资源包括 Azure CDN 自定义域、Azure CDN 配置文件/终结点或启用了 Azure CDN 自定义域的 Azure 资源组。
+
+2. 在 CDN 配置文件中，选择其自定义域需要删除的终结点。
+
+3. 在“终结点”页的“自定义域”下，  右键单击要删除的自定义域，然后从上下文菜单中选择“删除”。  选择 **“是”** 。
 
    自定义域于是与 CDN 终结点解除关联。
 
@@ -255,25 +260,29 @@ Azure 会验证所输入的自定义域名是否存在 CNAME 记录。 如果该
 
 如果不再需要将终结点与自定义域相关联，可通过以下步骤删除自定义域：
 
-1. 使用 [AzCdnCustomDomain](/powershell/module/az.cdn/remove-azcdncustomdomain) 从终结点中删除自定义域：
+1. 请转到 DNS 提供程序，删除自定义域的 CNAME 记录，或将自定义域的 CNAME 记录更新为非 Azure CDN 终结点。
+
+    > [!Important]
+    > 为防止无关联的 DNS 条目及其产生的安全性风险，自 2021 年 4 月 9 日起，Azure CDN 要求先删除 Azure CDN 终结点的 CNAME 记录，然后才能删除这些资源。 资源包括 Azure CDN 自定义域、Azure CDN 配置文件/终结点或启用了 Azure CDN 自定义域的 Azure 资源组。
+
+2. 使用 [AzCdnCustomDomain](/powershell/module/az.cdn/remove-azcdncustomdomain) 从终结点中删除自定义域：
 
     * 将 myendpoint8675 替换为 CDN 终结点名称。
     * 将 www.contoso.com 替换为你的自定义域名。
     * 将 myCDN 替换为你的 CDN 配置文件名称。
     * 将 myResourceGroupCDN 替换为你的资源组名称。
 
-
-```azurepowershell-interactive
-    $parameters = @{
-        CustomDomainName = 'www.contoso.com'
-        EndPointName = 'myendpoint8675'
-        ProfileName = 'myCDN'
-        ResourceGroupName = 'myResourceGroupCDN'
-    }
-    Remove-AzCdnCustomDomain @parameters
-```
-
+    ```azurepowershell-interactive
+        $parameters = @{
+            CustomDomainName = 'www.contoso.com'
+            EndPointName = 'myendpoint8675'
+            ProfileName = 'myCDN'
+            ResourceGroupName = 'myResourceGroupCDN'
+        }
+        Remove-AzCdnCustomDomain @parameters
+    ```
 ---
+
 ## <a name="next-steps"></a>后续步骤
 
 在本教程中，你了解了如何执行以下操作：

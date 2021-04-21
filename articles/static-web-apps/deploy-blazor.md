@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: tutorial
-ms.date: 09/10/2020
+ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 0086f7f68fd05d6925d19c7ab457fbc125e36be4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b8a94409f082177192847f2c65d44a513ecdbe4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96350222"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305032"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>教程：在 Azure Static Web Apps 中使用 Blazor 生成静态 Web 应用
 
@@ -43,7 +43,7 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
 
 ## <a name="fallback-route"></a>回退路由
 
-应用程序公开诸如 /counter 和 /fetchdata 这样的 URL，它们映射到应用程序的特定路由 。 由于此应用是作为单页应用程序实现的，因此为所有路由提供了 index.html 文件。 为了确保对于任何路径的请求均返回 index.html，可在客户端项目的 wwwroot 文件夹中找到 routes.json 文件，在该文件中实现[回退路由](./routes.md#fallback-routes)  。
+应用程序公开诸如 /counter 和 /fetchdata 这样的 URL，它们映射到应用程序的特定路由 。 由于此应用是作为单页应用程序实现的，因此为所有路由提供了 index.html 文件。 为了确保对于任何路径的请求均返回 index.html，可在客户端项目的“wwwroot”文件夹中找到 staticwebapp.config.json 文件，在该文件中实现[回退路由](./routes.md#fallback-routes)  。
 
 ```json
 {
@@ -64,7 +64,7 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
 本文使用 GitHub 模板存储库，使你能够轻松入门。 该模板具有一个部署到 Azure Static Web Apps 的入门应用。
 
 1. 请确保已登录到 GitHub，然后导航到以下位置以创建新存储库：
-    - [https://github.com/staticwebdev/blazor-starter/generate](https://github.com/login?return_to=/staticwebdev/blazor-starter/generate)
+   - [https://github.com/staticwebdev/blazor-starter/generate](https://github.com/login?return_to=/staticwebdev/blazor-starter/generate)
 1. 将存储库命名为 my-first-static-blazor-app
 
 ## <a name="create-a-static-web-app"></a>创建静态 Web 应用
@@ -84,7 +84,7 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
 1. 选择 Azure 订阅
 1. 选择或创建新资源组
 1. 将应用命名为 my-first-static-blazor-app
-    - 有效字符为 `a-z`（不区分大小写）、`0-9` 和 `-`。
+   - 有效字符为 `a-z`（不区分大小写）、`0-9` 和 `-`。
 1. 选择离你最近的区域
 1. 选择免费 SKU
 1. 选择“使用 GitHub 登录”按钮，然后向 GitHub 进行身份验证
@@ -97,23 +97,23 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
 1. 选择“存储库”下拉列表中的“my-first-static-blazor-app”
 1. 从“分支”下拉列表中选择“主分支”
 
-    如果看不到任何存储库，则可能需要在 GitHub 中授权 Azure Static Web Apps。 浏览到 GitHub 存储库，转到“设置”>“应用程序”>“授权 OAuth 应用”，选择“Azure Static Web Apps”，然后选择“授予”。 对于组织存储库，你必须是组织的所有者才能授予权限。
+   如果看不到任何存储库，则可能需要在 GitHub 中授权 Azure Static Web Apps。 浏览到 GitHub 存储库，转到“设置”>“应用程序”>“授权 OAuth 应用”，选择“Azure Static Web Apps”，然后选择“授予”。 对于组织存储库，你必须是组织的所有者才能授予权限。
 
 1. 在“生成详细信息”部分中，添加特定于 Blazor 的配置详细信息。
 
-    - 从“生成预设”下拉列表中选择“Blazor”，并保留所有默认值。
+   - 从“生成预设”下拉列表中选择“Blazor”，并保留所有默认值。
 
 1. 选择“查看 + 创建”。
 
-    :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="“查看创建”按钮":::
+   :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="“查看创建”按钮":::
 
 1. 选择“创建”。
 
-    :::image type="content" source="media/deploy-blazor/create-button.png" alt-text="“创建”按钮":::
+   :::image type="content" source="media/deploy-blazor/create-button.png" alt-text="“创建”按钮":::
 
 1. 选择“转到资源”。
 
-    :::image type="content" source="media/deploy-blazor/resource-button.png" alt-text="“转到资源”按钮":::
+   :::image type="content" source="media/deploy-blazor/resource-button.png" alt-text="“转到资源”按钮":::
 
 ## <a name="view-the-website"></a>查看网站
 

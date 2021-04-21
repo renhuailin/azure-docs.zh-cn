@@ -6,15 +6,15 @@ author: vladvino
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
 ms.service: api-management
 ms.topic: include
-ms.date: 01/11/2021
+ms.date: 02/19/2021
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 78890c0596642b629482a6d24d17d83fb8ebc9a0
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 0614e6fb1df13332cb05dcb7bb9b0f07a1764d23
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98147332"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107251583"
 ---
 | 资源 | 限制 |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -23,17 +23,19 @@ ms.locfileid: "98147332"
 | 每个 HTTP 颁发机构的并行后端连接<sup>3</sup> | 每个单位 2,048 个<sup>4</sup> |
 | 最大缓存响应大小 | 2 MiB |
 | 最大策略文档大小 | 256 KiB<sup>5</sup> |
-| 每个服务实例的最大自定义网关域<sup>6</sup> | 20 个 |
-| 每个服务实例的最大 CA 证书数<sup>7</sup> | 10 个 |
-| 每个订阅的最大服务实例数<sup>8</sup> | 20 个 |
+| 每个服务实例的最大自定义网关域<sup>6</sup> | 20 |
+| 每个服务实例的最大 CA 证书数<sup>7</sup> | 10 |
+| 每个订阅的最大服务实例数<sup>8</sup> | 20 |
 | 每个服务实例的最大订阅数<sup>8</sup> | 500 |
 | 每个服务实例的最大客户端证书数<sup>8</sup> | 50 |
 | 每个服务实例的最大 API 数<sup>8</sup> | 50 |
-| 每个服务实例的最大 API 操作数<sup>8</sup> | 1,000 |
+| 每个服务实例的最大 API 管理操作数<sup>8</sup> | 1,000 |
 | 最大总请求持续时间<sup>8</sup> | 30 秒 |
 | 最大缓冲有效负载大小<sup>8</sup> | 2 MiB |
 | 最大请求 URL 大小<sup>9</sup> | 4096 字节 |
 | URL 路径段的最大长度<sup>10</sup> | 260 个字符 |
+| [验证策略](../articles/api-management/validation-policies.md)使用的 API 架构的最大大小<sup>10</sup> | 4 MB |
+| [验证内容策略](../articles/api-management/validation-policies.md#validate-content)中请求或响应正文的最大大小 | 100 KB |
 | 最大自托管网关数目<sup>11</sup> | 25 |
 
 <sup>1</sup>缩放限制取决于定价层。 若要查看定价层及其缩放限制的详细信息，请参阅 [API 管理定价](https://azure.microsoft.com/pricing/details/api-management/)。<br/>
@@ -45,5 +47,5 @@ ms.locfileid: "98147332"
 <sup>7</sup>消耗层中不支持 CA 证书。<br/>
 <sup>8</sup>此限制仅适用于消耗层。 对于其他层，这些类别没有限制。<br/>
 <sup>9</sup>仅适用于消耗层。 包含最长 2048 字节的查询字符串。<br/>
-<sup>10</sup> 若要增大此限额，请联系[支持人员](https://azure.microsoft.com/support/options/)。<br/>
+<sup>10</sup> 若要提高此限制，请联系[客户支持](https://azure.microsoft.com/support/options/)。<br/>
 <sup>11</sup>仅开发人员层和高级层中支持自托管网关。 [自托管网关资源](/rest/api/apimanagement/2019-12-01/gateway)数量受此限制约束。 若要增大此限额，请联系[支持人员](https://azure.microsoft.com/support/options/)。 请注意，与自托管网关资源相关联的节点（或副本）的数量在高级层中是不受限的，而在开发人员层中则限为单个节点。

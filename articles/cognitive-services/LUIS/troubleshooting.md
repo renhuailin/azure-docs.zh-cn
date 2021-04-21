@@ -4,13 +4,13 @@ description: 本文包含有关语言理解 (LUIS) 的常见问题的解答。
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
-ms.date: 05/06/2020
-ms.openlocfilehash: b5e25e9ed25ced96d38994928bcb6275ce79420f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.date: 04/13/2021
+ms.openlocfilehash: 97b7c02a418a87a0700414e19bc939bda899d073
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102612790"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503806"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
@@ -158,10 +158,6 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ### <a name="i-want-to-build-a-luis-app-with-more-than-the-maximum-number-of-intents-what-should-i-do"></a>我希望生成一个 LUIS 应用，其意向数超出最大意向数。 我该怎么办？
 
 请参阅[意向最佳做法](luis-concept-intent.md#if-you-need-more-than-the-maximum-number-of-intents)。
-
-### <a name="i-want-to-build-an-app-in-luis-with-more-than-the-maximum-number-of-entities-what-should-i-do"></a>我希望在 LUIS 中生成一个应用，其实体数超出最大实体数。 我该怎么办？
-
-请参阅[实体最佳做法](luis-concept-entity-types.md#if-you-need-more-than-the-maximum-number-of-entities)。
 
 ### <a name="what-are-the-limits-on-the-number-and-size-of-phrase-lists"></a>短语列表的数目和大小限制是多少？
 若要了解[短语列表](./luis-concept-feature.md)的最大长度，请查看[边界](luis-limits.md)参考文档。

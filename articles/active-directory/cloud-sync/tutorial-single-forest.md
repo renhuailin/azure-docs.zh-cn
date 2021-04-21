@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a93ce1c4274f63a863880e932b247726639e5cd9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a3bc9378539e6a7f98e34d0a149848d0e892c224
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98611899"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306086"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>教程：将单个林与单个 Azure AD 租户集成
 
@@ -51,7 +51,7 @@ ms.locfileid: "98611899"
    - 为了进行验证证书，请取消阻止以下 URL：**mscrl.microsoft.com:80**、**crl.microsoft.com:80**、**ocsp.msocsp.com:80** 和 **www\.microsoft.com:80**。 由于这些 URL 与其他 Microsoft 产品一起用于证书验证，因此可能已取消阻止这些 URL。
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>安装 Azure AD Connect 预配代理
-1. 登录到已加入域的服务器。  如果使用的是[基本 AD 和 Azure 环境](tutorial-basic-ad-azure.md)教程，则该服务器是 DC1。
+1. 登录到已加入域的服务器。  如果使用的是[基本 AD 和 Azure 环境](tutorial-basic-ad-azure.md)教程，则为 DC1。
 2. 使用仅限云的全局管理员凭据登录到 Azure 门户。
 3. 在左侧选择“Azure Active Directory”，单击“Azure AD Connect”，然后在中心位置选择“管理云同步”  。
 
@@ -64,7 +64,7 @@ ms.locfileid: "98611899"
    ![显示“Microsoft Azure AD Connect 预配代理包”初始屏幕的屏幕截图。](media/how-to-install/install-1.png)
 
 7. 此操作完成后，将启动配置向导。  使用 Azure AD 全局管理员帐户登录。  请注意，如果启用了 IE 增强的安全性，将会阻止登录。  如果存在这种情况，请关闭安装，服务器管理器中禁用 IE 增强的安全性，然后单击“AAD Connect 预配代理向导”重新开始安装。
-8. 在“连接 Active Directory”屏幕上单击“添加目录”，然后使用 Active Directory 域管理员帐户登录。   注意：域管理员帐户不应附带密码更改要求。 如果密码过期或发生更改，则需要使用新凭据重新配置代理。 此操作将添加本地目录。  单击“下一步”。
+8. 在“连接 Active Directory”屏幕上单击“添加目录”，然后使用 Active Directory 域管理员帐户登录。   注意：域管理员帐户不应附带密码更改要求。 如果密码过期或发生更改，则需要用新凭据重新配置代理。 此操作将添加本地目录。  单击“下一步”。
 
    ![“连接 Active Directory”屏幕的屏幕截图。](media/how-to-install/install-3a.png)
 
@@ -117,7 +117,7 @@ ms.locfileid: "98611899"
 ![显示“正常运行”状态的 Azure AD Connect 云同步屏幕的屏幕截图。](media/how-to-configure/manage-4.png)
 
 ## <a name="verify-users-are-created-and-synchronization-is-occurring"></a>验证是否已创建用户并正在进行同步
-现在验证本地目录中的用户是否已同步并在 Azure AD 租户中存在。  请注意，这可能需要几个小时才能完成。  要验证用户是否已同步，请执行以下操作。
+现在验证本地目录中的用户是否已同步并存在于 Azure AD 租户中。  请注意，这可能需要几个小时才能完成。  要验证用户是否已同步，请执行以下操作。
 
 
 1. 浏览到 [Azure 门户](https://portal.azure.com)，使用具有 Azure 订阅的帐户登录。
@@ -125,13 +125,13 @@ ms.locfileid: "98611899"
 3. 在“管理”下，选择“用户” 。
 4. 验证租户中是否显示了新用户</br>
 
-## <a name="test-signing-in-with-one-of-our-users"></a>使用我们的某位用户测试登录
+## <a name="test-signing-in-with-one-of-your-users"></a>使用其中某个用户测试登录
 
 1. 浏览到 [https://myapps.microsoft.com](https://myapps.microsoft.com)
-2. 使用在我们的新租户中创建的用户帐户登录。  需要使用以下格式登录：(user@domain.onmicrosoft.com)。 使用用户用于在本地登录的相同密码。</br>
+2. 使用在租户中创建的用户帐户登录。  需要使用以下格式登录：(user@domain.onmicrosoft.com)。 使用用户用于在本地登录的相同密码。</br>
    ![验证](media/tutorial-single-forest/verify-1.png)</br>
 
-现在已经成功设置了一个混合标识环境，可以使用它来测试和熟悉 Azure 提供的功能。
+你现在已使用 Azure AD Connect 云同步成功配置了混合标识环境。
 
 
 ## <a name="next-steps"></a>后续步骤 

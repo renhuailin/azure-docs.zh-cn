@@ -3,12 +3,12 @@ title: 如何面向 Azure Functions 运行时版本
 description: Azure Functions 支持多个版本的运行时。 了解如何在 Azure 中指定函数应用的运行时版本。
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: e9aa5546b5f07b724fe22bc1e20a2e97feb2aec2
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 9a9f8fca1c39fd0251df3e3a8da3d789aae4d3d6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102435556"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779266"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>如何面向 Azure Functions 运行时版本
 
@@ -106,7 +106,7 @@ az functionapp config appsettings set --name <FUNCTION_APP> \
 
 将 `<FUNCTION_APP>` 替换为你的函数应用的名称。 此外，还使用函数应用的资源组名称替代 `<RESOURCE_GROUP>`。 此外，将 `<VERSION>` 替换为特定版本，或者替换为 `~3`、`~2` 或 `~1`。
 
-在上一个代码示例中选择“试用”，以在 [Azure Cloud Shell](../cloud-shell/overview.md) 中运行命令。 也可以在[本地运行 Azure CLI](/cli/azure/install-azure-cli) 来执行此命令。 在本地运行时，必须首先运行 [az login](/cli/azure/reference-index#az-login) 进行登录。
+在上一个代码示例中选择“试用”，以在 [Azure Cloud Shell](../cloud-shell/overview.md) 中运行命令。 也可以在[本地运行 Azure CLI](/cli/azure/install-azure-cli) 来执行此命令。 在本地运行时，必须首先运行 [az login](/cli/azure/reference-index#az_login) 进行登录。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -165,7 +165,7 @@ az functionapp config set --name <FUNCTION_APP> \
 
 将 `<FUNCTION_APP>` 替换为你的函数应用的名称。 此外，还使用函数应用的资源组名称替代 `<RESOURCE_GROUP>`。 另外，如上所述，将 `<LINUX_FX_VERSION>` 替换为特定映像的值。
 
-可以通过在前面代码示例中选择“试一试”运行这个来自 [Azure Cloud Shell](../cloud-shell/overview.md) 的命令。 还可以在执行 [az login](/cli/azure/reference-index#az-login) 登录后使用 [Azure CLI 在本地](/cli/azure/install-azure-cli)执行此命令。
+可以通过在前面代码示例中选择“试一试”运行这个来自 [Azure Cloud Shell](../cloud-shell/overview.md) 的命令。 还可以在执行 [az login](/cli/azure/reference-index#az_login) 登录后使用 [Azure CLI 在本地](/cli/azure/install-azure-cli)执行此命令。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

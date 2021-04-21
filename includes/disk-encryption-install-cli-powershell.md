@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: 3d8cd9891329e86ce47dac6d8d44af529c104b61
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: a550087f552238820ecff079ff1dc2523c4172d3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107386770"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776772"
 ---
 可以通过 [Azure CLI](/cli/azure) 和 [Azure PowerShell](/powershell/azure/new-azureps-module-az) 启用和管理 Azure 磁盘加密。 为此，必须在本地安装工具并连接到 Azure 订阅。
 
@@ -21,7 +21,7 @@ ms.locfileid: "107386770"
 
 [Azure CLI 2.0](/cli/azure) 是用于管理 Azure 资源的命令行工具。 CLI 旨在提高数据查询灵活性、支持非阻塞进程形式的长时间操作，以及简化脚本编写。 可以按照[安装 Azure CLI](/cli/azure/install-azure-cli) 中的步骤在本地安装它。
 
-若要[使用 Azure CLI 登录 Azure 帐户](/cli/azure/authenticate-azure-cli)，请使用 [az login](/cli/azure/reference-index#az-login) 命令。
+若要[使用 Azure CLI 登录 Azure 帐户](/cli/azure/authenticate-azure-cli)，请使用 [az login](/cli/azure/reference-index#az_login) 命令。
 
 ```azurecli
 az login
@@ -33,7 +33,7 @@ az login
 az login --tenant <tenant>
 ```
 
-如果有多个订阅并想要指定其中的一个，请使用 [az account list](/cli/azure/account#az-account-list) 获取订阅列表，然后使用 [az account set](/cli/azure/account#az-account-set) 指定订阅。
+如果有多个订阅并想要指定其中的一个，请使用 [az account list](/cli/azure/account#az_account_list) 获取订阅列表，然后使用 [az account set](/cli/azure/account#az_account_set) 指定订阅。
      
 ```azurecli
 az account list

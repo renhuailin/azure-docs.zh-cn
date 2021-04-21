@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 42098786bb92e98b89b1dbfba01a2e071398f460
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f19f43b89cd2527a67827d7434f2e054ee40001e
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99258535"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227375"
 ---
 # <a name="tutorial-use-custom-allocation-policies-with-device-provisioning-service-dps"></a>教程：通过设备预配服务 (DPS) 使用自定义分配策略
 
@@ -465,7 +465,7 @@ contoso-heatpump-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
 
 如果你打算继续使用本文中创建的资源，可以保留它们。 如果你不打算继续使用这些资源，请使用以下步骤删除本文创建的所有资源，以避免不必要的费用。
 
-此处的步骤假定你按照名为 contoso-us-resource-group  的同一资源组的指示创建了本文中的所有资源。
+此处的步骤假定你按照名为 contoso-us-resource-group 的同一资源组的指示创建了本文中的所有资源。
 
 > [!IMPORTANT]
 > 删除资源组的操作不可逆。 资源组以及包含在其中的所有资源将被永久删除。 请确保不要意外删除错误的资源组或资源。 如果在现有的包含要保留资源的资源组中创建了 IoT 中心，则只删除 IoT 中心资源本身，而不要删除资源组。
@@ -475,7 +475,7 @@ contoso-heatpump-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，然后选择“资源组”。 
 
-2. 在“按名称筛选...”  文本框中，键入包含资源的资源组名称“contoso-us-resource-group”  。 
+2. 在“按名称筛选...”文本框中，键入包含资源的资源组名称“contoso-us-resource-group”。 
 
 3. 在结果列表中的资源组右侧，选择“...”，然后选择“删除资源组”   。
 
@@ -483,6 +483,17 @@ contoso-heatpump-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
 
 ## <a name="next-steps"></a>后续步骤
 
-* 如需更深入的自定义分配策略示例，请参阅[如何使用自定义分配策略](how-to-use-custom-allocation-policies.md)。
-* 若要详细了解重新预配，请参阅 [IoT 中心设备重新预配概念](concepts-device-reprovision.md)。
-* 若要详细了解解除预配，请参阅[如何解除预配以前自动预配的设备](how-to-unprovision-devices.md)。
+如需更深入的自定义分配策略示例，请参阅 
+
+> [!div class="nextstepaction"]
+> [如何使用自定义分配策略](how-to-use-custom-allocation-policies.md)
+
+* 要详细了解重新预配，请参阅
+
+> [!div class="nextstepaction"]
+> [IoT 中心设备重新预配概念](concepts-device-reprovision.md)
+
+* 要详细了解取消预配，请参阅
+
+> [!div class="nextstepaction"]
+> [如何取消预配以前自动预配的设备](how-to-unprovision-devices.md)

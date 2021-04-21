@@ -4,19 +4,23 @@ description: 本文会经常更新有关 Azure 认知服务语言理解 API 的�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 02/16/2021
-ms.openlocfilehash: bd70bb1a031b61e77fa84ff5567d95dc6d1e8788
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 04/07/2021
+ms.openlocfilehash: f6c6f2ba20a67cd39d4142ffadddc803927c936c
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101706735"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227052"
 ---
 # <a name="whats-new-in-language-understanding"></a>语言理解中的新增功能
 
 了解服务中的新增功能。 这些项包括发布说明、视频、博客文章和其他类型的信息。 请将本页加入书签，以随时了解该服务的最新信息。
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="april-2021"></a>2021 年 4 月
+
+* 瑞士北部[创作区域](luis-reference-regions.md#publishing-to-europe)。
 
 ### <a name="january-2021"></a>2021 年 1 月
 

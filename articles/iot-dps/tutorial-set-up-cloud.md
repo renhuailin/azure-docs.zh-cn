@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: f45c3def84c548ba12221efa59e9ebbd4699df71
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5707d873bbf67add78f9a8e29fcb9135898486d6
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91316063"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226831"
 ---
 # <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>教程：通过 IoT 中心设备预配服务配置云资源以进行设备预配
 
@@ -46,7 +46,7 @@ ms.locfileid: "91316063"
    | 设置       | 建议的值 | 说明 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **名称** | 任何唯一名称 | -- | 
-   | **订阅** | 你的订阅  | 有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。 |
+   | **订阅** | 订阅  | 有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。 |
    | **资源组** | myResourceGroup | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
    | **位置** | 任何有效的位置 | 有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。 |   
 
@@ -120,7 +120,7 @@ ms.locfileid: "91316063"
 > * 将 IoT 中心链接到设备预配服务
 > * 设置设备预配服务上的分配策略
 
-前往下一教程，了解如何设置设备以进行预配。
+前往下一教程，了解如何设置设备以进行预配
 
 > [!div class="nextstepaction"]
 > [设置设备以进行预配](tutorial-set-up-device.md)

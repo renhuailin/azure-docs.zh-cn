@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 878828a40f7a14fe8bb5728ac06585e6aca2eec8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2f301556bd24adb5e4a18f15717374ef26c400b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555476"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777880"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>使用 Azure AD 创建和配置用于 Azure 磁盘加密的密钥保管库（以前版本）
 
 **新版本的 Azure 磁盘加密无需提供 Azure AD 应用程序参数即可启用 VM 磁盘加密。使用新版本，在执行启用加密步骤时，不再需要提供 Azure AD 凭据。所有新 VM 都必须使用新版本在没有 Azure AD 应用程序参数的情况下进行加密。若要查看使用新版本启用 VM 磁盘加密的说明，请参阅 [Azure 磁盘加密](disk-encryption-overview.md)。已使用 Azure AD 应用程序参数加密的 VM 仍受支持，应继续使用 AAD 语法进行维护。**
 
-Azure 磁盘加密使用 Azure 密钥保管库来控制和管理磁盘加密密钥和机密。  有关 Key Vault 的详细信息，请参阅 [Azure Key Vault 入门](../../key-vault/general/overview.md)和[保护 Key Vault](../../key-vault/general/secure-your-key-vault.md)。 
+Azure 磁盘加密使用 Azure 密钥保管库来控制和管理磁盘加密密钥和机密。  有关 Key Vault 的详细信息，请参阅 [Azure Key Vault 入门](../../key-vault/general/overview.md)和[保护 Key Vault](../../key-vault/general/security-overview.md)。 
 
 使用 Azure AD 创建和配置用于 Azure 磁盘加密的密钥保管库（以前版本）需要三个步骤：
 
@@ -37,7 +37,7 @@ Azure 磁盘加密使用 Azure 密钥保管库来控制和管理磁盘加密密�
 
 
 ## <a name="create-a-key-vault"></a>创建密钥保管库 
-Azure 磁盘加密与 [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) 集成，帮助你控制和管理 Key Vault 订阅中的磁盘加密密钥与机密。 可为 Azure 磁盘加密创建 Key Vault，或使用现有的 Key Vault。 有关 Key Vault 的详细信息，请参阅 [Azure Key Vault 入门](../../key-vault/general/overview.md)和[保护 Key Vault](../../key-vault/general/secure-your-key-vault.md)。 可以使用资源管理器模板、Azure PowerShell 或 Azure CLI 创建 Key Vault。 
+Azure 磁盘加密与 [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) 集成，帮助你控制和管理 Key Vault 订阅中的磁盘加密密钥与机密。 可为 Azure 磁盘加密创建 Key Vault，或使用现有的 Key Vault。 有关 Key Vault 的详细信息，请参阅 [Azure Key Vault 入门](../../key-vault/general/overview.md)和[保护 Key Vault](../../key-vault/general/security-overview.md)。 可以使用资源管理器模板、Azure PowerShell 或 Azure CLI 创建 Key Vault。 
 
 
 >[!WARNING]
@@ -65,16 +65,16 @@ Azure 磁盘加密与 [Azure Key Vault](https://azure.microsoft.com/documentatio
 
 
 ### <a name="create-a-key-vault-with-azure-cli"></a>使用 Azure CLI 创建密钥保管库
-可以在 Azure CLI 中使用 [az keyvault](/cli/azure/keyvault#commands) 命令管理 Key Vault。 若要创建 Key Vault，请使用 [az keyvault create](/cli/azure/keyvault#az-keyvault-create)。
+可以在 Azure CLI 中使用 [az keyvault](/cli/azure/keyvault#commands) 命令管理 Key Vault。 若要创建 Key Vault，请使用 [az keyvault create](/cli/azure/keyvault#az_keyvault_create)。
 
-1. 根据需要，使用 [az group create](/cli/azure/group#az-group-create) 创建新资源组。 若要列出位置，请使用 [az account list-locations](/cli/azure/account#az-account-list) 
+1. 根据需要，使用 [az group create](/cli/azure/group#az_group_create) 创建新资源组。 若要列出位置，请使用 [az account list-locations](/cli/azure/account#az_account_list) 
      
      ```azurecli-interactive
      # To list locations: az account list-locations --output table
      az group create -n "MyKeyVaultResourceGroup" -l "East US"
      ```
 
-3. 使用 [az keyvault create](/cli/azure/keyvault#az-keyvault-create) 创建新 Key Vault。
+3. 使用 [az keyvault create](/cli/azure/keyvault#az_keyvault_create) 创建新 Key Vault。
     
      ```azurecli-interactive
      az keyvault create --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --location "East US"
@@ -150,7 +150,7 @@ Azure AD 应用程序需有访问保管库中密钥或机密的权限。 使用 
      ```
 
 ### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-azure-cli"></a>使用 Azure CLI 为 Azure AD 应用设置密钥保管库访问策略
-使用 [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) 设置访问策略。 有关详细信息，请参阅[使用 CLI 2.0 管理 Key Vault](../../key-vault/general/manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret)。
+使用 [az keyvault set-policy](/cli/azure/keyvault#az_keyvault_set_policy) 设置访问策略。 有关详细信息，请参阅[使用 CLI 2.0 管理 Key Vault](../../key-vault/general/manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret)。
 
 使用以下命令，为通过 Azure CLI 创建的服务主体授予获取机密和包装密钥的访问权限：
 
@@ -196,7 +196,7 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
      ```
 
 ### <a name="set-key-vault-advanced-access-policies-using-the-azure-cli"></a>使用 Azure CLI 设置密钥保管库高级访问策略
-使用 [az keyvault update](/cli/azure/keyvault#az-keyvault-update) 为 Key Vault 启用磁盘加密。 
+使用 [az keyvault update](/cli/azure/keyvault#az_keyvault_update) 为 Key Vault 启用磁盘加密。 
 
  - **为磁盘加密启用 Key Vault：** 需要使用 Enabled-for-disk-encryption。 
 

@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, MashaMSFT
 ms.date: 07/10/2020
-ms.openlocfilehash: 2da7311e61aa39be69a6a0a29eff686baaad7ebf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd66c10bb1d6316bbe90e7ba4092d79c6a43a75d
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91323186"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285269"
 ---
 # <a name="overview-of-azure-sql-managed-instance-management-operations"></a>Azure SQL 托管实例管理操作概述
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -70,12 +70,14 @@ Azure SQL 托管实例提供管理操作，你可以使用这些操作来自动�
 |操作  |长时间运行的分段  |预计持续时间  |
 |---------|---------|---------|
 |实例属性更改（管理员密码、Azure AD 登录名、Azure 混合权益标志）|空值|最长 1 分钟。|
-|增加/缩减实例存储空间（“常规用途”服务层级）|附加数据库文件|90% 的操作可在 5 分钟内完成。|
+|增加/缩减实例存储空间（“常规用途”服务层级）|无长期操作细分<sup>1</sup>|99% 的操作可在 5 分钟内完成。|
 |实例存储纵向缩放（“业务关键”服务层级）|- 虚拟群集大小调整<br>- Always On 可用性组种子设定|90% 的操作可在“2.5 小时 + 所有数据库种子设定时间”内完成（220 GB/小时）。|
 |实例计算 (vCore) 纵向缩放（“常规用途”）|- 虚拟群集大小调整<br>- 附加数据库文件|90% 的操作可在 2.5 小时内完成。|
 |实例计算 (vCore) 纵向缩放（“业务关键”）|- 虚拟群集大小调整<br>- Always On 可用性组种子设定|90% 的操作可在“2.5 小时 + 所有数据库种子设定时间”内完成（220 GB/小时）。|
 |实例服务层级更改（从“常规用途”更改为“业务关键”，或反之）|- 虚拟群集大小调整<br>- Always On 可用性组种子设定|90% 的操作可在“2.5 小时 + 所有数据库种子设定时间”内完成（220 GB/小时）。|
 | | | 
+
+<sup>1</sup> 缩放常规用途托管实例存储不会在操作结束时导致故障转移。 在这种情况下，操作包括更新元数据并传播所提交请求的响应。
 
 **类别：删除**
 
@@ -90,6 +92,9 @@ Azure SQL 托管实例提供管理操作，你可以使用这些操作来自动�
 ## <a name="instance-availability"></a>实例可用性
 
 SQL 托管实例在更新操作期间可用，但更新结束时发生的故障转移会导致短暂的停机期间。 即使长期事务已中断，但由于[加速数据库恢复](../accelerated-database-recovery.md)，它通常还会持续 10 秒钟。
+
+> [!NOTE]
+> 缩放常规用途托管实例存储不会在更新结束时导致故障转移。
 
 在执行部署和删除操作期间，客户端应用程序无法使用 SQL 托管实例。
 

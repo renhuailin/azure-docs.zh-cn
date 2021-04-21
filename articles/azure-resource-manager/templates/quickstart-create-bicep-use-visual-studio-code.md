@@ -2,15 +2,15 @@
 title: 创建 Bicep 文件 - Visual Studio Code
 description: 使用 Visual Studio Code 和适用于 Bicep 文件的 Bicep 扩展来部署 Azure 资源
 author: mumian
-ms.date: 03/26/2021
+ms.date: 04/12/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 4d1064351ddfacdebfa67fd9b2f517f592de3a7c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e82f047f553290c9121d91060c347c5b242c7ec2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612871"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306460"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 Bicep 文件
 
@@ -51,6 +51,10 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
 - **符号名称** (stg)：符号名称是用于在整个 bicep 文件中引用资源的标识符。 它不是在部署资源时的资源名称。 资源名称由 **name** 属性定义。  请参阅此列表中的第四个组件。
 - **资源类型** (Microsoft.Storage/storageAccounts@2019-06-01)：它包括资源提供程序 (Microsoft.Storage)、资源类型 (storageAccounts) 和 apiVersion (2019-06-01)。 每个资源提供程序都发布了其自身的 API 版本，因此此值与特定的类型相关。 可以从 [ARM 模板参考](/azure/templates/)中查找各种 Azure 资源的更多类型和 apiVersion。
 - **属性**（= {...} 中的任何内容）：指定资源类型的属性。 每个资源都有一个 `name` 属性。 大多数资源还有一个 `location` 属性，该属性用于设置资源部署到的区域。 其他属性因资源类型和 API 版本而异。
+
+有关详细信息，请参阅 [Bicep 结构](./bicep-file.md)。
+
+名称属性有一个注释。  将 `//` 用于单行注释或将 `/* ... */` 用于多行注释
 
 ## <a name="completion-and-validation"></a>完成和验证
 

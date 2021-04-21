@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 11/23/2020
 ms.author: trbye
-ms.openlocfilehash: d3d9f41876cf1310fe25a275624f609031c05b00
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: ddb61a79e6af402b06fe8c18df8c62f9287437a3
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601887"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209708"
 ---
 # <a name="what-is-the-speech-service"></a>什么是语音服务？
 
@@ -33,7 +33,7 @@ ms.locfileid: "98601887"
 | | [多设备对话](multi-device-conversation.md) | 在对话中连接多个设备或客户端以发送基于语音或文本的消息，并轻松支持听录和翻译| 是 | 否 |
 | | [对话听录](./conversation-transcription.md) | 启用实时语音识别、说话人识别和分割聚类。 它非常适合用于听录能够区分说话人的面对面会谈场景。 | 是 | 否 |
 | | [创建自定义语音识别模型](#customize-your-speech-experience) | 如果使用语音转文本在独特的环境中进行识别和听录，则可以创建并训练自定义的声学、语言和发音模型，以解决环境干扰或行业特定的词汇。 | 否 | [是](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
-| [文本转语音](text-to-speech.md) | 文本转语音 | 文本转语音可使用[语音合成标记语言 (SSML)](speech-synthesis-markup.md) 将输入文本转换为类似人类的合成语音。 可以选择标准语音或神经语音（请参阅[语言支持](language-support.md)）。 | [是](./speech-sdk.md) | [是](#reference-docs) |
+| [文本转语音](text-to-speech.md) | 文本转语音 | 文本转语音可使用[语音合成标记语言 (SSML)](speech-synthesis-markup.md) 将输入文本转换为类似人类的合成语音。 使用神经语音，这是由深度神经网络提供支持的类人语音。 请参阅[语言支持](language-support.md)。 | [是](./speech-sdk.md) | [是](#reference-docs) |
 | | [创建自定义语音](#customize-your-speech-experience) | 创建专属于品牌或产品的自定义语音字体。 | 否 | [是](#reference-docs) |
 | [语音翻译](speech-translation.md) | 语音翻译 | 使用语音翻译可在应用程序、工具和设备中实现实时的多语言语音翻译。 进行语音转语音和语音转文本翻译时可以使用此服务。 | [是](./speech-sdk.md) | 否 |
 | [语音助手](voice-assistants.md) | 语音助手 | 语音助手使用语音服务为开发人员助力，使他们可为其应用程序和体验创建自然的、类似于人类的对话界面。 语音助理服务在设备与助理实现之间提供快速可靠的交互。该实现使用 Bot Framework 的 Direct Line Speech 通道或集成的自定义命令服务来完成任务。 | [是](voice-assistants.md) | 否 |
@@ -105,7 +105,7 @@ ms.locfileid: "98601887"
 * [语音转文本快速入门](get-started-speech-to-text.md)
 * [文本转语音快速入门](get-started-text-to-speech.md)
 * [语音翻译快速入门](./get-started-speech-translation.md)
-* [意向识别快速入门](quickstarts/intent-recognition.md)
+* [意向识别快速入门](./get-started-intent-recognition.md)
 * [说话人辨识快速入门](./get-started-speaker-recognition.md)
 
 在你有机会开始使用语音服务后，请尝试一下我们的教程，了解如何处理各种情况。

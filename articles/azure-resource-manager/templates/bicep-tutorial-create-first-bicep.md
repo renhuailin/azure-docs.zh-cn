@@ -2,16 +2,16 @@
 title: 教程 - 创建和部署 Azure 资源管理器 Bicep 文件
 description: 创建用于部署 Azure 资源的第一个 Bicep 文件。 本教程介绍 Bicep 文件语法，以及如何部署存储帐户。
 author: mumian
-ms.date: 03/17/2021
+ms.date: 04/12/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 8979585d7ec0fa6eac1866375fe1e80214f2d2e2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0ffd8a97d797144d458e7ec5836042cc6d8d8193
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594268"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306666"
 ---
 # <a name="tutorial-create-and-deploy-first-azure-resource-manager-bicep-file"></a>教程：创建和部署第一个 Azure 资源管理器 Bicep 文件
 
@@ -57,7 +57,7 @@ ms.locfileid: "104594268"
 
     ```bicep
     resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
-      name: '{provide-unique-name}'
+      name: '{provide-unique-name}'  // must be globally unique
       location: 'eastus'
       sku: {
         name: 'Standard_LRS'
@@ -85,6 +85,10 @@ ms.locfileid: "104594268"
         如果查看较旧的 API 版本（例如 [storageAccounts 2016-05-01](/azure/templates/microsoft.storage/2016-05-01/storageaccounts)），你会发现提供了一个较小的属性集。
 
         如果你决定更改资源的 API 版本，请确保评估该版本的属性，并相应地调整 Bicep 文件。
+
+    有关详细信息，请参阅 [Bicep 结构](./bicep-file.md)。
+
+    名称属性有一个注释。  将 `//` 用于单行注释或将 `/* ... */` 用于多行注释
 
 1. 将 `{provide-unique-name}`（包括大括号 `{}`）替换为唯一的存储帐户名称。
 

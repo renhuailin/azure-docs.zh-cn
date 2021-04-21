@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 7b618a19f6e6a3510b3d587970124e5a7c12b309
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: d6a2d97e7ea91710075d2e00cd5f57e6f174a031
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090040"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107504818"
 ---
 |名称 |说明 |策略 |版本 |
 |---|---|---|---|
@@ -18,7 +18,7 @@ ms.locfileid: "106090040"
 |[加拿大联邦 PBMM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |此计划包括用于处理一部分加拿大联邦 PBMM 控制措施的审核和虚拟机扩展部署策略。 将来的版本中会添加更多策略。 有关详细信息，请访问 [https://aka.ms/canadafederalpbmm-blueprint](https://aka.ms/canadafederalpbmm-blueprint)。 |59 |5.0.0 |
 |[CIS Microsoft Azure 基础基准检验 v1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0.json) |此计划包括用于处理部分 CIS Microsoft Azure 基础基准建议的策略。 将来的版本中会添加更多策略。 有关详细信息，请访问 [https://aka.ms/cisazure110-initiative](https://aka.ms/cisazure110-initiative)。 |99 |10.0.0 |
 |[\[预览版\]：CIS Microsoft Azure Foundations Benchmark 1.3.0 版](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_3_0.json) |此计划包括用于处理部分 CIS Microsoft Azure 基础基准建议的策略。 将来的版本中会添加更多策略。 有关详细信息，请访问 [https://aka.ms/cisazure130-initiative](https://aka.ms/cisazure130-initiative)。 |104 |1.0.1-preview |
-|[\[预览版\]：CMMC 级别 3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CMMC_L3.json) |此计划包括用于处理部分网络安全成熟度模型认证 (CMMC) 级别 3 要求的策略。 将来的版本中会添加更多策略。 有关详细信息，请访问 [https://aka.ms/cmmc-initiative](https://aka.ms/cmmc-initiative)。 |183 |3.0.0-preview |
+|[\[预览版\]：CMMC 级别 3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CMMC_L3.json) |此计划包括用于处理部分网络安全成熟度模型认证 (CMMC) 级别 3 要求的策略。 将来的版本中会添加更多策略。 有关详细信息，请访问 [https://aka.ms/cmmc-initiative](https://aka.ms/cmmc-initiative)。 |183 |3.1.0-preview |
 |[FedRAMP High](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |此计划包括用于处理一部分 FedRAMP H 控制措施的审核和虚拟机扩展部署策略。 将来的版本中会添加更多策略。 有关详细信息，请访问 [https://aka.ms/fedramph-blueprint](https://aka.ms/fedramph-blueprint)。 |71 |4.0.1 |
 |[FedRAMP Moderate](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_M_audit.json) |此计划包括用于处理一部分 FedRAMP M 控制措施的审核和虚拟机扩展部署策略。 将来的版本中会添加更多策略。 有关详细信息，请访问 [https://aka.ms/fedrampm-blueprint](https://aka.ms/fedrampm-blueprint)。 |62 |4.0.1 |
 |[HITRUST/HIPAA](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |此计划包括用于处理一部分 HITRUST/HIPAA 控制措施的审核和虚拟机扩展部署策略。 将来的版本中会添加更多策略。 有关详细信息，请访问 [https://aka.ms/hipaa-blueprint](https://aka.ms/hipaa-blueprint)。 |122 |5.1.0 |

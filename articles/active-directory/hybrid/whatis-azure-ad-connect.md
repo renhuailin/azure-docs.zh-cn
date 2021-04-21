@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8e1af1848405441088796d2e3b42e7b52eedba8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: afc3d1d84d7b50cdaa7031230d7085e9f611c6c6
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98065110"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304964"
 ---
 # <a name="what-is-azure-ad-connect"></a>什么是 Azure AD Connect？
 
@@ -49,7 +49,7 @@ Azure Active Directory (Azure AD) Connect Health 为本地标识基础结构提�
 * 为方案提供最新功能。 Azure AD Connect 取代了 DirSync 和 Azure AD Sync 等早期版本的标识集成工具。有关详细信息，请参阅 [混合标识目录集成工具比较](plan-hybrid-identity-design-considerations-tools-comparison.md)。
 
 ## <a name="why-use-azure-ad-connect-health"></a>为何使用 Azure AD Connect Health？
-使用 Azure AD 时，用户的工作效率更高，因为可以通过一个通用标识来访问云和本地资源。 确保环境可靠以便用户可以访问这些资源已成为一个难题。  Azure AD Connect Health 可帮助你监视和深入了解本地标识基础结构，从而确保此环境的可靠性。 这种方法就像在每个本地标识服务器上安装代理那样简单。
+使用 Azure AD 进行身份验证时，用户的工作效率更高，因为可以通过一个通用标识来访问云和本地资源。 确保环境可靠以便用户可以访问这些资源已成为一个难题。  Azure AD Connect Health 可帮助你监视和深入了解本地标识基础结构，从而确保此环境的可靠性。 这种方法就像在每个本地标识服务器上安装代理那样简单。
 
 适用于 AD FS 的 Azure AD Connect Health 支持 Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 和 Windows Server 2016 中的 AD FS 2.0。 它还支持监视为 Extranet 访问提供身份验证支持的 AD FS 代理或 Web 应用程序代理服务器。 轻松快速地安装 Health 代理后，适用于 AD FS 的 Azure AD Connect Health 可提供以下一组重要功能：
 

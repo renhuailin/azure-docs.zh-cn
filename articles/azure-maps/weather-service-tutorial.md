@@ -9,20 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 276dd5b7eba33081c5131eba722df91d8685adff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ab3458003366416e10588d3f2edb29b51619ecf
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98678157"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257630"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>教程：使用 Azure Notebooks (Python) 将传感器数据与天气预报数据相联接
 
-> [!IMPORTANT]
-> Azure Maps 天气服务目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-风力发电是可以替代化石燃料的，有助于应对气候变化的一种能源。 因为风天生就不稳定，所以风力发电运营商需要建立机器学习 (ML) 模型来预测风力发电能力。 为满足电力需求，保证电网稳定运行，需要进行此预测。 本教程逐步讲解如何将 Azure Maps 天气预报数据与用于天气读数的演示数据结合使用。 可以通过调用 Azure Maps 天气服务（预览版）来请求天气预报数据。
+风力发电是可以替代化石燃料的，有助于应对气候变化的一种能源。 因为风天生就不稳定，所以风力发电运营商需要建立机器学习 (ML) 模型来预测风力发电能力。 为满足电力需求，保证电网稳定运行，需要进行此预测。 本教程逐步讲解如何将 Azure Maps 天气预报数据与用于天气读数的演示数据结合使用。 可以通过调用 Azure Maps 天气服务来请求天气预报数据。
 
 在本教程中，将：
 
@@ -31,7 +27,7 @@ ms.locfileid: "98678157"
 > * 从该文件加载演示数据。
 > * 在 Python 中调用 Azure Maps REST API。
 > * 在地图上呈现位置数据。
-> * 使用 Azure Maps 的[每日预报](/rest/api/maps/weather/getdailyforecastpreview)天气数据来扩充演示数据。
+> * 使用 Azure Maps 的[每日预报](/rest/api/maps/weather/getdailyforecast)天气数据来扩充演示数据。
 > * 在图中绘制预报数据。
 
 
@@ -72,8 +68,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>请求每日预报数据
 
-在我们的方案中，我们希望请求每个传感器位置的每日预报数据。 以下脚本调用 Azure Maps 天气服务（预览版）的[每日预报 API](/rest/api/maps/weather/getdailyforecastpreview)。 此 API 返回每个风力涡轮机在未来 15 天（自当前日期算起）的每日天气预报。
-
+在我们的方案中，我们希望请求每个传感器位置的每日预报数据。 以下脚本调用 Azure Maps 天气服务的[每日预报 API](/rest/api/maps/weather/getdailyforecast)。 此 API 返回每个风力涡轮机在未来 15 天（自当前日期算起）的每日天气预报。
 
 ```python
 subscription_key = "Your Azure Maps key"
@@ -86,7 +81,7 @@ years,months,days = [],[],[]
 dates_check=set()
 wind_speeds, wind_direction = [], []
 
-# Call azure maps Weather services (Preview) to get daily forecast data for 15 days from current date
+# Call azure maps Weather services to get daily forecast data for 15 days from current date
 session = aiohttp.ClientSession()
 j=-1
 for i in range(0, len(coords), 2):
@@ -192,7 +187,7 @@ windsPlot.set_ylabel("Wind direction")
 
 若要了解本教程中使用的 Azure Maps API，请参阅：
 
-* [每日预报](/rest/api/maps/weather/getdailyforecastpreview)
+* [每日预报](/rest/api/maps/weather/getdailyforecast)
 * [呈现器 - 获取地图图像](/rest/api/maps/render/getmapimage)
 
 有关 Azure Maps REST API 的完整列表，请参阅 [Azure Maps REST API](./consumption-model.md)。

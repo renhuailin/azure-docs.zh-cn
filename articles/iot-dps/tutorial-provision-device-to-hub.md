@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 876fd8260b64fba4d3d34a766b4259323c660b76
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94568eb5d64f07133ebb9992cdae59400830dd5e
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94968071"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226882"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>教程：使用 Azure IoT 中心设备预配服务将设备预配到 IoT 中心
 
@@ -98,7 +98,7 @@ IoT 设备可以是真实设备，也可以是模拟设备。 因为 IoT 设备�
 > * 启动设备
 > * 验证设备已注册
 
-前往下一教程，了解如何跨负载均衡的中心预配多台设备。 
+前往下一教程，了解如何在负载均衡中心预配多个设备
 
 > [!div class="nextstepaction"]
 > [跨负载均衡的 IoT 中心预配设备](./tutorial-provision-multiple-hubs.md)

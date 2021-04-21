@@ -8,12 +8,12 @@ ms.date: 03/08/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: c676b92fd07c6e444aa22f25c48fdb1b1957ca7a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7c1e265f473c1c6fb70fd97416722e7b863c429b
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103493758"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503552"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -38,9 +38,9 @@ ms.locfileid: "103493758"
 ## <a name="related-conceptual-articles"></a>相关概念性文章
 
 - [AzCopy 入门](storage-use-azcopy-v10.md)
+- [教程：使用 AzCopy 将本地数据迁移到云存储空间](storage-use-azcopy-migrate-on-premises-data.md)
 - [使用 AzCopy 和 Blob 存储传输数据](./storage-use-azcopy-v10.md#transfer-data)
 - [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
-- [对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)
 
 ## <a name="advanced"></a>高级
 

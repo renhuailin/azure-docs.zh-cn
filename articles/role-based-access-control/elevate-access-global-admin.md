@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: efc3bfef7c182ea005ac17a59793ac8f6484a424
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 37d50c030a2b426cb3e9af57afb899b7fab68388
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042005"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778462"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>提升访问权限以管理所有 Azure 订阅和管理组
 
@@ -80,7 +80,7 @@ Azure AD 和 Azure 资源彼此独立保护。 也就是说，Azure AD 角色分
 
 1. 以提升的访问权限做出所需的更改。
 
-    有关分配角色的信息，请参阅 [使用 Azure 门户分配 Azure 角色](role-assignments-portal.md)。 如果使用 Privileged Identity Management，请参阅[发现要管理的 Azure 资源](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md)或[分配 Azure 资源角色](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)。
+    有关分配角色的信息，请参阅[使用 Azure 门户分配 Azure 角色](role-assignments-portal.md)。 如果使用 Privileged Identity Management，请参阅[发现要管理的 Azure 资源](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md)或[分配 Azure 资源角色](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)。
 
 1. 执行以下部分中的步骤以删除提升的访问权限。
 
@@ -157,13 +157,13 @@ CanDelegate        : False
 
 1. 以提升的访问权限做出所需的更改。
 
-    有关分配角色的信息，请参阅 [使用 Azure CLI 分配 Azure 角色](role-assignments-cli.md)。
+    有关分配角色的信息，请参阅[使用 Azure CLI 分配 Azure 角色](role-assignments-cli.md)。
 
 1. 执行后续部分中的步骤以删除提升的访问权限。
 
 ### <a name="list-role-assignment-at-root-scope-"></a>列出根范围 (/) 的角色分配
 
-若要列出用户在根范围 (`/`) 内的“用户访问管理员”角色分配，请使用 [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) 命令。
+若要列出用户在根范围 (`/`) 内的“用户访问管理员”角色分配，请使用 [az role assignment list](/cli/azure/role/assignment#az_role_assignment_list) 命令。
 
 ```azurecli
 az role assignment list --role "User Access Administrator" --scope "/"
@@ -193,7 +193,7 @@ az role assignment list --role "User Access Administrator" --scope "/"
 
 1. 以能够删除提升访问权限的用户身份登录。 此用户可以是提升访问权限时所用的同一用户，也可以是在根范围拥有提升访问权限的另一个“全局管理员”。
 
-1. 使用 [az role assignment delete](/cli/azure/role/assignment#az-role-assignment-delete) 命令删除“用户访问管理员”角色分配。
+1. 使用 [az role assignment delete](/cli/azure/role/assignment#az_role_assignment_delete) 命令删除“用户访问管理员”角色分配。
 
     ```azurecli
     az role assignment delete --assignee username@example.com --role "User Access Administrator" --scope "/"
@@ -213,7 +213,7 @@ az role assignment list --role "User Access Administrator" --scope "/"
 
 1. 以提升的访问权限做出所需的更改。
 
-    有关分配角色的信息，请参阅 [使用 REST API 分配 Azure 角色](role-assignments-rest.md)。
+    有关分配角色的信息，请参阅[使用 REST API 分配 Azure 角色](role-assignments-rest.md)。
 
 1. 执行后续部分中的步骤以删除提升的访问权限。
 

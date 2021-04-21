@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 人脸识别, 人脸识别软件, 人脸分析, 人脸匹配, 人脸识别应用, 按图像搜索人脸, 人脸识别搜索
-ms.openlocfilehash: e159ead12179f86406fd7df22475229298f95ee8
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 26076289d8c6659abdd55fa805c27b13690feccd
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285461"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258735"
 ---
 # <a name="what-is-the-azure-face-service"></a>什么是 Azure 人脸服务？
 
@@ -37,10 +37,10 @@ Azure 人脸服务提供用于检测、识别和分析图像中人脸的 AI 算�
 
 ## <a name="face-detection"></a>人脸检测
 
-人脸服务可以检测图像中的人脸，并返回其位置的矩形坐标。 人脸检测还可提取一系列人脸相关属性，例如身头部姿势、性别、年龄、情感、面部毛发和眼镜。
+检测 API 可以检测图像中的人脸，并返回其位置的矩形坐标。 人脸检测还可提取一系列人脸相关属性，例如身头部姿势、性别、年龄、情感、面部毛发和眼镜。 这些属性是一般预测，而不是实际分类。 
 
 > [!NOTE]
-> 也可以通过[计算机视觉服务](../computer-vision/overview.md)使用人脸检测功能。 但是，如果要对人脸数据执行进一步操作，则应改用此服务。
+> 也可以通过[计算机视觉服务](../computer-vision/overview.md)使用人脸检测功能。 但是，如果你想要执行其他人脸操作，如识别、验证、查找相似或分组，应改用此人脸服务。
 
 ![一位女士和一位男士的图像，在其面部绘制了矩形并显示了年龄和性别](./Images/Face.detection.jpg)
 
@@ -48,7 +48,19 @@ Azure 人脸服务提供用于检测、识别和分析图像中人脸的 AI 算�
 
 ## <a name="face-verification"></a>人脸验证
 
-验证 API 针对检测到的两个人脸执行身份验证，或从一个检测到的人脸对一个人员对象执行身份验证。 实际上，它会评估两张脸是否属于同一个人。 此功能可能适用于安全方案。 有关详细信息，请参阅[人脸识别](concepts/face-recognition.md)概念指南或[验证 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) 参考文档。
+验证 API 以检测为基础，解决“这两个图像是否为同一人？”这一问题。 验证也称为“一对一”匹配，因为探测图像只与一个注册模板进行比较。 验证可用于身份验证或访问控制应用场景，以验证图片是否与先前捕获的图像（例如政府颁发的 ID 卡中的照片）匹配。 有关详细信息，请参阅[人脸识别](concepts/face-recognition.md)概念指南或[验证 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) 参考文档。
+
+## <a name="face-identification"></a>人脸识别
+
+识别 API 也以检测为基础，解决“检测到的人脸是否与数据库中任一注册人脸匹配？”这一问题。 由于它类似于人脸识别搜索，因此也称为“一对多”匹配。 根据具有检测人脸的探测模板与每个注册模板的匹配程度返回候选匹配项。
+
+下图显示名为 `"myfriends"` 的数据库的示例。 每个组最多可以包含 100 万个不同的 person 对象。 每个人员对象可以注册最多 248 张人脸。
+
+![包含三个列（代表不同的人）的网格，每个列包含三行人脸图像](./Images/person.group.clare.jpg)
+
+创建并训练数据库后，可以对组使用新检测到的人脸执行识别。 如果人脸被标识为组中的某一人员，则返回该人员对象。
+
+有关人员识别的详细信息，请参阅[人脸识别](concepts/face-recognition.md)概念指南或[识别 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) 参考文档。
 
 ## <a name="find-similar-faces"></a>查找相似人脸
 
@@ -70,21 +82,6 @@ Azure 人脸服务提供用于检测、识别和分析图像中人脸的 AI 算�
 
 组 API 会基于相似性将未知人脸的集合分为几组。 每个组是原始人脸集合的互不相交真子集。 一个组中的所有人脸可能属于同一人。 一个人可能有多个不同的组。 组按其他因素（例如表情）区分。 有关详细信息，请参阅[人脸识别](concepts/face-recognition.md)概念指南或[分组 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) 参考文档。
 
-## <a name="person-identification"></a>人员识别
-
-识别 API 用于根据人员数据库识别检测到的人脸（人脸识别搜索）。 此功能可用于照片管理软件中的自动图像标记。 需提前创建数据库，以后可以不断地对其进行编辑。
-
-下图显示名为 `"myfriends"` 的数据库的示例。 每个组最多可以包含 100 万个不同的 person 对象。 每个人员对象可以注册最多 248 张人脸。
-
-![包含三个列（代表不同的人）的网格，每个列包含三行人脸图像](./Images/person.group.clare.jpg)
-
-创建并训练数据库后，可以对组使用新检测到的人脸执行识别。 如果人脸被标识为组中的某一人员，则返回该人员对象。
-
-有关人员识别的详细信息，请参阅[人脸识别](concepts/face-recognition.md)概念指南或[识别 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) 参考文档。
-
-## <a name="deploy-on-premises-using-docker-containers"></a>使用 Docker 容器进行本地部署
-
-[使用人脸容器（预览版）](face-how-to-install-containers.md)在本地部署 API 功能。 借助此 Docker 容器，你能够将服务进一步引入数据，以满足合规性、安全性或其他操作目的。
 
 ## <a name="sample-apps"></a>示例应用
 

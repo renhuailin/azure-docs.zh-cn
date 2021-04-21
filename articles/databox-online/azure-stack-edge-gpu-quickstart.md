@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: quickstart
-ms.date: 01/27/2021
+ms.date: 04/07/2021
 ms.author: alkohli
-ms.openlocfilehash: b6389152116a47bedbc9c2dc44231f3e1732fdc6
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 43477f11effaafb0bcd6158be6843c79d19092ac
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055104"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210804"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>快速入门：开始使用 Azure Stack Edge Pro with GPU 
 
@@ -36,7 +36,7 @@ ms.locfileid: "106055104"
 
 ## <a name="deployment-steps"></a>部署步骤
 
-1. **安装**：通过交叉电缆或 USB 以太网适配器将端口 1 连接到客户端计算机。 通过至少 1 GbE 交换机和 SFP+ 铜缆，将至少一个用于传输数据的其他设备端口（端口 3 到端口 6，最好是 25 GbE）连接到 Internet。 将提供的电源线连接到电源设备和单独的配电插座。 按下前面板上的电源按钮打开设备。  
+1. **安装**：通过交叉电缆或 USB 以太网适配器将端口 1 连接到客户端计算机。 通过 SFP+ 铜缆或将端口 2 与 RJ45 插塞式电缆结合使用，将至少一个用于传输数据的其他设备端口（端口 3 到端口 6，最好是 25 GbE）连接到 Internet。 将提供的电源线连接到电源设备和单独的配电插座。 按下前面板上的电源按钮打开设备。  
 
     请参阅 [Cavium FastlinQ 41000 Series Interoperability Matrix](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)（Cavium FastlinQ 41000 系列互操作性矩阵）和 [Mellanox 双端口 25G ConnectX-4 通道网络适配器兼容产品](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)，以获取兼容的网络电缆和交换机。
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c25504e3313234ac6b6f80a6e00c77fce28b1400
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 41bdf5251881fa9307a3cd4d214081845e967900
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102174523"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209513"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 
@@ -52,19 +52,19 @@ Azure AD 提供了一个规则生成器，用于更快地创建和更新重要�
 
 ![为动态组添加成员身份规则](./media/groups-dynamic-membership/update-dynamic-group-rule.png)
 
-### <a name="rule-syntax-for-a-single-expression"></a>用于单个表达式的规则语法
+### <a name="rule-syntax-for-a-single-expression&quot;></a>用于单个表达式的规则语法
 
 单个表达式是成员资格规则的最简单形式，只包括上述的三个部分。 具有单个表达式的规则与此类似：`Property Operator Value`，其中属性的语法是 object.property 的名称。
 
 以下是使用单个表达式正确构造的成员资格规则的示例：
 
 ```
-user.department -eq "Sales"
+user.department -eq &quot;Sales&quot;
 ```
 
-对于单个表达式，括号是可选的。 成员资格规则正文的总长度不能超过 2048 个字符。
+对于单个表达式，括号是可选的。 成员身份规则正文的总长度不能超过 3072 个字符。
 
-## <a name="constructing-the-body-of-a-membership-rule"></a>构造成员资格规则的主体
+## <a name=&quot;constructing-the-body-of-a-membership-rule&quot;></a>构造成员资格规则的主体
 
 使用用户或设备自动填充组的成员资格规则是一个二进制表达式，会生成 true 或 false 结果。 一个简单的规则包含三个部分：
 
@@ -74,7 +74,7 @@ user.department -eq "Sales"
 
 表达式中各部分的顺序对于避免语法错误至关重要。
 
-## <a name="supported-properties"></a>支持的属性
+## <a name=&quot;supported-properties&quot;></a>支持的属性
 
 有三种类型的属性可用于构建成员资格规则。
 
@@ -84,18 +84,18 @@ user.department -eq "Sales"
 
 以下是可用于创建单个表达式的用户属性。
 
-### <a name="properties-of-type-boolean"></a>布尔值类型的属性
+### <a name=&quot;properties-of-type-boolean&quot;></a>布尔值类型的属性
 
 | 属性 | 允许的值 | 使用情况 |
 | --- | --- | --- |
 | accountEnabled |true false |user.accountEnabled -eq true |
 | dirSyncEnabled |true false |user.dirSyncEnabled -eq true |
 
-### <a name="properties-of-type-string"></a>字符串类型的属性
+### <a name=&quot;properties-of-type-string&quot;></a>字符串类型的属性
 
 | 属性 | 允许的值 | 使用情况 |
 | --- | --- | --- |
-| city |任意字符串值或 null |(user.city -eq "value") |
+| city |任意字符串值或 null |(user.city -eq &quot;value") |
 | country |任意字符串值或 null |(user.country -eq "value") |
 | companyName | 任意字符串值或 null | (user.companyName -eq "value") |
 | department |任意字符串值或 null |(user.department -eq "value") |

@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 02/17/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: ee066ff46f319749469a41e6decf12b35c0ee27e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e160b21581bc7b5fa38b12309bd9deb90bfbbe51
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100651931"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107251386"
 ---
 下表列出了特定于 Azure 服务总线消息的配额信息。 若要了解服务总线的定价和其他配额，请参阅[服务总线定价](https://azure.microsoft.com/pricing/details/service-bus/)。
 
 | 配额名称 | 作用域 | 注释 | 值 |
 | --- | --- | --- | --- |
-| 每个 Azure 订阅的基本或标准命名空间的最大数量 |命名空间 |Azure 门户会拒绝对更多基本或标准命名空间的后续请求。 |100|
-| 每个 Azure 订阅的高级命名空间的最大数量 |命名空间 |门户会拒绝对更多高级命名空间的后续请求。 |100 |
+| 每个 Azure 订阅的基本或标准命名空间的最大数量 |命名空间 |Azure 门户会拒绝对更多基本或标准命名空间的后续请求。 | 默认值为 100。 <br/> 最大值为 1,000。 <br/><br/> 要提高限制，请联系 Azure 支持。 |
+| 每个 Azure 订阅的高级命名空间的最大数量 |命名空间 |门户会拒绝对更多高级命名空间的后续请求。 | 默认值为 100。 <br/> 最大值为 1,000。 <br/><br/> 要提高限制，请联系 Azure 支持。 |
 | 队列或主题大小 |实体 |创建队列或主题时定义。 <br/><br/> 后续的传入消息会被拒绝，且调用代码会收到异常。 |1、2、3、4 GB 或 5 GB。<br /><br />在高级 SKU 以及启用了[分区](../articles/service-bus-messaging/service-bus-partitioning.md)的标准 SKU 中，队列或主题的最大大小是 80 GB。 |
 | 命名空间上的并发连接数 |命名空间 |系统会拒绝后续的附加连接请求，且调用代码会收到异常。 REST 操作不计入并发 TCP 连接数。 |Net Messaging：1,000。<br /><br />AMQP：5,000。 |
 | 队列、主题或订阅实体上的并发接收请求数 |实体 |后续的接收请求会被拒绝，且调用代码会收到异常。 此配额适用于一个主题上所有订阅的并发接收操作总数。 |5,000 |
@@ -38,6 +38,6 @@ ms.locfileid: "100651931"
 | SQL 筛选器或操作的大小 |命名空间 |创建更多筛选器的后续请求将被拒绝，且调用代码会收到异常。 |筛选器条件字符串的最大长度：1,024 (1 K)。<br /><br />规则操作字符串的最大长度：1,024 (1 K)。<br /><br />每个规则操作的最大表达式数：32。 |
 | 每个命名空间、队列或主题的共享访问授权规则数 |实体、命名空间 |创建更多规则的后续请求将被拒绝，且调用代码会收到异常。 |每个实体类型的最大规则数：12. <br /><br /> 在服务总线命名空间上配置的规则适用于所有类型：队列、主题。 |
 | 每个事务的消息数 | 事务 | 更多传入消息会被拒绝，并且调用代码会收到异常，其中指明“不能在单个事务中发送 100 条以上的消息”。 | 100 <br /><br /> 适用于 Send() 和 SendAsync() 操作。 |
-| 虚拟网络和 IP 筛选器规则的数量 | 命名空间 | &nbsp; | 128 | 
+| 虚拟网络和 IP 筛选器规则的数量 | 命名空间 | &nbsp; | 128 |
 
 [Azure portal]: https://portal.azure.com
