@@ -4,12 +4,12 @@ description: Azure CLI 中用于管理 Azure Batch 服务资源的 Batch 命令�
 ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: bee25d9b8985f1627a5cfc05bfb336b83be60f74
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: befe2f6fe67ce7c2c4bb61153344103ee2aa70cb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92144748"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768426"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>使用 Azure CLI 管理 Batch 资源
 
@@ -54,7 +54,7 @@ Azure CLI 是 Azure 的命令行体验，用于管理 Azure 资源。 它可以�
 1. [以交互方式登录](/cli/azure/authenticate-azure-cli)。 从命令行自行运行 Azure CLI 命令时，请以交互方式登录。
 2. [使用服务主体登录](/cli/azure/authenticate-azure-cli)。 从脚本或应用程序运行 Azure CLI 命令时，请使用服务主体登录。
 
-本文的目的是介绍如何以交互方式登录到 Azure。 在命令行中键入 [az login](/cli/azure/reference-index#az-login)：
+本文的目的是介绍如何以交互方式登录到 Azure。 在命令行中键入 [az login](/cli/azure/reference-index#az_login)：
 
 ```azurecli
 # Log in to Azure and authenticate interactively.
@@ -69,7 +69,7 @@ az login
 
 ### <a name="log-in-to-your-batch-account"></a>登录到 Batch 帐户
 
-若要使用 Azure CLI 来管理 Batch 资源（例如池、作业和任务），需登录到 Batch 帐户并进行身份验证。 若要登录到 Batch 服务，请使用 [az batch account login](/cli/azure/batch/account#az-batch-account-login) 命令。 
+若要使用 Azure CLI 来管理 Batch 资源（例如池、作业和任务），需登录到 Batch 帐户并进行身份验证。 若要登录到 Batch 服务，请使用 [az batch account login](/cli/azure/batch/account#az_batch_account_login) 命令。 
 
 可以使用两个选项对 Batch 帐户进行身份验证：
 
@@ -81,7 +81,7 @@ az login
 
     Azure AD 的优势是提供 Azure 基于角色的访问控制 (Azure RBAC)。 使用 Azure RBAC 时，用户的访问权限取决于分配给他们的角色，而不是他们是否拥有帐户密钥。 你可以管理 Azure 角色而不是帐户密钥，让 Azure AD 处理访问权限和身份验证。  
 
-     若要使用 Azure AD 登录到 Batch 帐户，请调用 [az batch account login](/cli/azure/batch/account#az-batch-account-login) 命令： 
+     若要使用 Azure AD 登录到 Batch 帐户，请调用 [az batch account login](/cli/azure/batch/account#az_batch_account_login) 命令： 
 
     ```azurecli
     az batch account login -g myresource group -n mybatchaccount
