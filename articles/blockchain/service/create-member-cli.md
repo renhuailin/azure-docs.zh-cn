@@ -5,12 +5,12 @@ ms.date: 07/23/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 3442c3b6023edcde97aabcb13e91120ba6811027
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d94640e1c6a037893fb1ad9198b82195c46dd24
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91323067"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768118"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>快速入门：通过 Azure CLI 创建 Azure 区块链服务区块链成员
 
@@ -34,7 +34,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 1. 登录。
 
-    如果使用的是 CLI 的本地安装，请使用 [az login](/cli/azure/reference-index#az-login) 命令登录。
+    如果使用的是 CLI 的本地安装，请使用 [az login](/cli/azure/reference-index#az_login) 命令登录。
 
     ```azurecli
     az login
@@ -56,7 +56,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
     与所有 Azure 资源一样，Azure 区块链服务也必须部署到资源组中。 使用资源组可以组织和管理相关的 Azure 资源。
 
-    在本快速入门中，使用以下 [az group create](/cli/azure/group#az-group-create) 命令在 eastus 位置中创建一个名为“myResourceGroup”的资源组 ：
+    在本快速入门中，使用以下 [az group create](/cli/azure/group#az_group_create) 命令在 eastus 位置中创建一个名为“myResourceGroup”的资源组 ：
 
     ```azurecli-interactive
     az group create \

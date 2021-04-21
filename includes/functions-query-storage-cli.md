@@ -4,16 +4,16 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/26/2019
 ms.author: glenga
-ms.openlocfilehash: 4fe159660421113e0f0ac0586ae7e4a22d5bcda7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 642989df8dca9d4ae121d80e30a9fb6d8dd06286
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "77474112"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107799774"
 ---
 ### <a name="query-the-storage-queue"></a>查询存储队列
 
-可以使用 [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) 命令查看帐户中的存储队列，如以下示例所示：
+可以使用 [`az storage queue list`](/cli/azure/storage/queue#az_storage_queue_list) 命令查看帐户中的存储队列，如以下示例所示：
 
 ```azurecli-interactive
 az storage queue list --output tsv
@@ -21,7 +21,7 @@ az storage queue list --output tsv
 
 此命令的输出包含名为 `outqueue` 的队列，即运行函数时创建的队列。
 
-接下来，使用 [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) 命令查看此队列中的消息，如以下示例所示：
+接下来，使用 [`az storage message peek`](/cli/azure/storage/message#az_storage_message_peek) 命令查看此队列中的消息，如以下示例所示：
 
 ```azurecli-interactive
 echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`

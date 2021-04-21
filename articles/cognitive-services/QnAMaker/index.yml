@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: QnA Maker 文档
   description: QnA Maker 是一种基于云的 API 服务，它创建基于数据的聊天式问答层。 使用 QnA Maker，可以根据常见问题解答文档、URL 和产品手册等半结构化内容打造一项问题与解答服务。 QnA Maker 服务通过将问题与知识库的 QnA 中的最可能答案进行匹配，来回答用户的自然语言问题。
-  ms.openlocfilehash: d993dfcc4d486190e2501940465598b53808b965
-  ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+  ms.openlocfilehash: 05ea6890e9b02c82bfca563108c92ed00e0f759b
+  ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/10/2021
-  ms.locfileid: "102613878"
+  ms.lasthandoff: 04/20/2021
+  ms.locfileid: "107766872"
 landingContent:
 - title: 关于 QnA Maker
   linkLists:
@@ -109,7 +109,7 @@ landingContent:
     - text: Azure PowerShell
       url: /powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure 命令行界面 (CLI)
-      url: /cli/azure/cognitiveservices#az-cognitiveservices-list
+      url: /cli/azure/cognitiveservices#az_cognitiveservices_list
 - title: 帮助和反馈
   linkLists:
   - linkListType: reference

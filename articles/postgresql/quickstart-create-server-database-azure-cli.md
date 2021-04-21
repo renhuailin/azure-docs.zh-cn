@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 1d7b6cd6d61be6df66d215613222c12a0f2c9c5e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a595d677cf0964083526cb7e2c73471148be0fd4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606702"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778406"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure Database for PostgreSQL 服务器
 
@@ -34,11 +34,11 @@ ms.locfileid: "105606702"
         az account set --subscription <subscription id>
         ```
 
-    - 如果有多个订阅，请选择应计费的资源所在的相应订阅。 若要获取所有订阅，请使用 [az account list](/cli/azure/account#az-account-list)。
+    - 如果有多个订阅，请选择应计费的资源所在的相应订阅。 若要获取所有订阅，请使用 [az account list](/cli/azure/account#az_account_list)。
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>创建 Azure Database for PostgreSQL 服务器
 
-使用 [az group create](/cli/azure/group#az-group-create) 命令创建 [Azure 资源组](../azure-resource-manager/management/overview.md)，然后在此资源组中创建 PostgreSQL 服务器。 应提供唯一名称。 以下示例在 `westus` 位置创建名为 `myresourcegroup` 的资源组。
+使用 [az group create](/cli/azure/group#az_group_create) 命令创建 [Azure 资源组](../azure-resource-manager/management/overview.md)，然后在此资源组中创建 PostgreSQL 服务器。 应提供唯一名称。 以下示例在 `westus` 位置创建名为 `myresourcegroup` 的资源组。
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
@@ -62,7 +62,7 @@ sku-name|GP_Gen5_2| 定价层和计算配置的名称。 请遵循简写约定 {
 
 >[!IMPORTANT] 
 >- 服务器上的默认 PostgreSQL 版本为 9.6。 若要查看支持的所有版本，请参阅[支持的 PostgreSQL 主要版本](./concepts-supported-versions.md)。
->- 若要查看 az postgres server create 命令的所有参数，请参阅此[参考文档](/cli/azure/postgres/server#az-postgres-server-create)。
+>- 若要查看 az postgres server create 命令的所有参数，请参阅此[参考文档](/cli/azure/postgres/server#az_postgres_server_create)。
 >- 默认情况下，服务器上启用 SSL。 有关 SSL 的详细信息，请参阅[配置 SSL 连接](./concepts-ssl-connection-security.md)。
 
 ## <a name="configure-a-server-level-firewall-rule"></a>配置服务器级防火墙规则 

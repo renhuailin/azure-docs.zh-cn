@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3279150d0cb7b287f0a78581094a51356033596c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 042c70fdd08a6de2b97c4560eb2b6a24eec0bb34
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98662154"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789962"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure Database for MariaDB 服务器
 
@@ -25,7 +25,7 @@ Azure CLI 可用于从命令行或脚本创建和管理 Azure 资源。 本快�
 
 - 本文需要 Azure CLI 版本 2.0 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
-如果有多个订阅，请选择要计费的资源所在的订阅，或者本身要计费的订阅。 若要选择帐户中的特定订阅 ID，请使用 [az account set](/cli/azure/account#az-account-set) 命令：
+如果有多个订阅，请选择要计费的资源所在的订阅，或者本身要计费的订阅。 若要选择帐户中的特定订阅 ID，请使用 [az account set](/cli/azure/account#az_account_set) 命令：
 
 ```azurecli-interactive
 az account set --subscription 00000000-0000-0000-0000-000000000000
@@ -33,7 +33,7 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group#az-group-create) 命令创建 [Azure 资源组](../azure-resource-manager/management/overview.md)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。
+使用 [az group create](/cli/azure/group#az_group_create) 命令创建 [Azure 资源组](../azure-resource-manager/management/overview.md)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。
 
 以下示例在 `westus` 位置创建名为 `myresourcegroup` 的资源组：
 
@@ -43,7 +43,7 @@ az group create --name myresourcegroup --location westus
 
 ## <a name="create-an-azure-database-for-mariadb-server"></a>创建 Azure Database for MariaDB 服务器
 
-使用 [az mariadb server create](/cli/azure/mariadb/server#az-mariadb-server-create) 命令创建 Azure Database for MariaDB 服务器。 一个服务器可以管理多个数据库。 通常，每个项目或每个用户使用一个单独的数据库。
+使用 [az mariadb server create](/cli/azure/mariadb/server#az_mariadb_server_create) 命令创建 Azure Database for MariaDB 服务器。 一个服务器可以管理多个数据库。 通常，每个项目或每个用户使用一个单独的数据库。
 
 设置 | 示例值 | 说明
 ---|---|---
@@ -53,7 +53,7 @@ sku-name | **GP_Gen5_2** | SKU 的名称。 请遵循简写约定：*定价层*\
 backup-retention | **7** | 备份保留时间。 单位为天。 范围：7 到 35。 
 geo-redundant-backup | **已禁用** | 是否应该为此服务启用异地冗余备份。 允许的值：**Enabled**、**Disabled**。
 location | **westus** | 服务器的 Azure 位置。
-ssl-enforcement | **已启用** | 是否应该为此服务器启用 SSL。 允许的值：**Enabled**、**Disabled**。
+ssl-enforcement | **Enabled** | 是否应该为此服务器启用 SSL。 允许的值：**Enabled**、**Disabled**。
 storage-size | **51200** | 服务器的存储容量（单位是兆字节）。 有效的存储大小最小为 5120 MB，以 1024 MB 为增量。 有关存储大小限制的详细信息，请参阅[定价层](./concepts-pricing-tiers.md)。 
 版本 | **10.2** | MariaDB 主要引擎版本。
 admin-user | **myadmin** | 用于管理员登录的用户名。 admin-user 参数不能是“azure_superuser”、“admin”、“administrator”、“root”、“guest”或“public”。       
@@ -77,7 +77,7 @@ az mariadb server create --resource-group myresourcegroup --name mydemoserver  -
 
 ## <a name="configure-a-firewall-rule"></a>配置防火墙规则
 
-使用 [az mariadb server firewall-rule create](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) 命令创建 Azure Database for MariaDB 服务器级防火墙规则。 服务器级防火墙规则允许外部应用程序（如 mysql 命令行工具或 MySQL Workbench）通过 Azure Database for MariaDB 服务防火墙连接到服务器。
+使用 [az mariadb server firewall-rule create](/cli/azure/mariadb/server/firewall-rule#az_mariadb_server_firewall_rule_create) 命令创建 Azure Database for MariaDB 服务器级防火墙规则。 服务器级防火墙规则允许外部应用程序（如 mysql 命令行工具或 MySQL Workbench）通过 Azure Database for MariaDB 服务防火墙连接到服务器。
 
 以下示例创建名为 `AllowMyIP` 的防火墙规则，该规则允许从特定的 IP 地址 (192.168.0.1) 进行连接。 替换 IP 地址或 IP 地址范围，这些地址或地址范围对应于要从其进行连接的位置。
 
@@ -231,7 +231,7 @@ az mariadb server show --resource-group myresourcegroup --name mydemoserver
 az group delete --name myresourcegroup
 ```
 
-如果只需删除在本快速入门中创建的服务器，请运行 [az mariadb server delete](/cli/azure/mariadb/server#az-mariadb-server-delete) 命令：
+如果只需删除在本快速入门中创建的服务器，请运行 [az mariadb server delete](/cli/azure/mariadb/server#az_mariadb_server_delete) 命令：
 
 ```azurecli-interactive
 az mariadb server delete --resource-group myresourcegroup --name mydemoserver

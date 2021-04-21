@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.author: sumuth
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 2e546801f95d9d884bdfb3f09a18b3fa6e2d78a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7fc59c0d9036a2e83c742f51fc17750d40e057fe
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97364974"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791420"
 ---
 # <a name="quickstart-use-github-actions-to-connect-to-azure-postgresql"></a>快速入门：使用 GitHub Actions 连接到 Azure PostgreSQL
 
@@ -41,7 +41,7 @@ GitHub Actions 工作流是由存储库中 `/.github/workflows/` 路径中的 YA
 
 ## <a name="generate-deployment-credentials"></a>生成部署凭据
 
-可以使用 [Azure CLI](/cli/azure/) 中的 [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac&preserve-view=true) 命令创建[服务主体](../active-directory/develop/app-objects-and-service-principals.md)。 请使用 Azure 门户中的 [Azure Cloud Shell](https://shell.azure.com/) 或选择“试用”按钮运行此命令。
+可以使用 [Azure CLI](/cli/azure/) 中的 [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac&preserve-view=true) 命令创建[服务主体](../active-directory/develop/app-objects-and-service-principals.md)。 请使用 Azure 门户中的 [Azure Cloud Shell](https://shell.azure.com/) 或选择“试用”按钮运行此命令。
 
 将占位符 `server-name` 替换为在 Azure 上托管的 PostgreSQL 服务器的名称。 将 `subscription-id` 和 `resource-group` 替换为连接到你的 PostgreSQL 服务器的订阅 ID 和资源组。
 

@@ -5,12 +5,12 @@ ms.date: 12/2/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions-full
-ms.openlocfilehash: 1c7a9fd83131ea6282d2ef4860b744fa348153ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7950bfb4a57db812da87f4e5f76f3075d50a8293
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98070909"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782259"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自定义容器创建函数
 
@@ -360,13 +360,13 @@ Docker Hub 是托管映像并提供映像和容器服务的容器注册表。 �
 
 使用 Azure CLI 命令创建这些项。 完成后，每个命令将提供 JSON 输出。
 
-1. 使用 [az login](/cli/azure/reference-index#az-login) 命令登录到 Azure：
+1. 使用 [az login](/cli/azure/reference-index#az_login) 命令登录到 Azure：
 
     ```azurecli
     az login
     ```
     
-1. 使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。 以下示例在 `westeurope` 区域中创建名为 `AzureFunctionsContainers-rg` 的资源组。 （通常，你会在 `az account list-locations` 命令输出的、与你靠近的某个可用区域中创建资源组和资源。）
+1. 使用“[az group create](/cli/azure/group#az_group_create)”命令创建资源组。 以下示例在 `westeurope` 区域中创建名为 `AzureFunctionsContainers-rg` 的资源组。 （通常，你会在 `az account list-locations` 命令输出的、与你靠近的某个可用区域中创建资源组和资源。）
 
     ```azurecli
     az group create --name AzureFunctionsContainers-rg --location westeurope
@@ -375,7 +375,7 @@ Docker Hub 是托管映像并提供映像和容器服务的容器注册表。 �
     > [!NOTE]
     > 不能在同一资源组中托管 Linux 和 Windows 应用。 如果名为 `AzureFunctionsContainers-rg` 的现有资源组有 Windows 函数应用或 Web 应用，必须使用其他资源组。
     
-1. 使用 [az storage account create](/cli/azure/storage/account#az-storage-account-create) 命令在资源组和区域中创建常规用途存储帐户。 在以下示例中，请将 `<storage_name>` 替换为适合自己的全局唯一名称。 名称只能包含 3 到 24 个数字和小写字母字符。 `Standard_LRS` 指定典型的常规用途帐户。
+1. 使用 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令在资源组和区域中创建常规用途存储帐户。 在以下示例中，请将 `<storage_name>` 替换为适合自己的全局唯一名称。 名称只能包含 3 到 24 个数字和小写字母字符。 `Standard_LRS` 指定典型的常规用途帐户。
 
     ```azurecli
     az storage account create --name <storage_name> --location westeurope --resource-group AzureFunctionsContainers-rg --sku Standard_LRS
@@ -397,7 +397,7 @@ Docker Hub 是托管映像并提供映像和容器服务的容器注册表。 �
 
 Azure 上的函数应用管理托管计划中函数的执行。 在本部分，你将使用在上一部分创建的 Azure 资源，基于 Docker Hub 中的某个映像创建一个函数应用，然后使用 Azure 存储的连接字符串对其进行配置。
 
-1. 使用 [az functionapp create](/cli/azure/functionapp#az-functionapp-create) 命令创建 Functions 应用。 在以下示例中，请将 `<storage_name>` 替换为在上一部分中用于存储帐户的名称。 另外，请将 `<app_name>` 替换为适合自己的全局唯一名称，并将 `<docker_id>` 替换为你的 Docker ID。
+1. 使用 [az functionapp create](/cli/azure/functionapp#az_functionapp_create) 命令创建 Functions 应用。 在以下示例中，请将 `<storage_name>` 替换为在上一部分中用于存储帐户的名称。 另外，请将 `<app_name>` 替换为适合自己的全局唯一名称，并将 `<docker_id>` 替换为你的 Docker ID。
 
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
     ```azurecli
@@ -410,7 +410,7 @@ Azure 上的函数应用管理托管计划中函数的执行。 在本部分，�
     ```
     ::: zone-end
     
-    *deployment-container-image-name* 参数指定用于函数应用的映像。 可以使用 [az functionapp config container show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show) 命令查看用于部署的映像的相关信息。 还可以使用 [az functionapp config container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set) 命令从另一映像进行部署。
+    *deployment-container-image-name* 参数指定用于函数应用的映像。 可以使用 [az functionapp config container show](/cli/azure/functionapp/config/container#az_functionapp_config_container_show) 命令查看用于部署的映像的相关信息。 还可以使用 [az functionapp config container set](/cli/azure/functionapp/config/container#az_functionapp_config_container_set) 命令从另一映像进行部署。
 
 1. 使用 [az storage account show-connection-string](/cli/azure/storage/account) 命令显示创建的存储帐户的连接字符串。 将 `<storage-name>` 替换为前面创建的存储帐户的名称：
 
@@ -418,7 +418,7 @@ Azure 上的函数应用管理托管计划中函数的执行。 在本部分，�
     az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv
     ```
     
-1. 使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) 命令将此设置添加到函数应用。 在下面的命令中，将 `<app_name>` 替换为函数应用的名称，并将 `<connection_string>` 替换为上一步中的连接字符串（以“DefaultEndpointProtocol=”开头的长编码字符串）：
+1. 使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_ppsettings_set) 命令将此设置添加到函数应用。 在下面的命令中，将 `<app_name>` 替换为函数应用的名称，并将 `<connection_string>` 替换为上一步中的连接字符串（以“DefaultEndpointProtocol=”开头的长编码字符串）：
  
     ```azurecli
     az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=<connection_string>
@@ -513,13 +513,13 @@ Azure 上的函数应用管理托管计划中函数的执行。 在本部分，�
 
 可以启用 Azure Functions，以便每次更新注册表中的映像时，都自动更新该映像的部署。
 
-1. 使用 [az functionapp deployment container config](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-config) 命令启用持续部署（请将 `<app_name>` 替换为你的函数应用的名称）：
+1. 使用 [az functionapp deployment container config](/cli/azure/functionapp/deployment/container#az_functionapp_deployment_container_config) 命令启用持续部署（请将 `<app_name>` 替换为你的函数应用的名称）：
 
     ```azurecli
     az functionapp deployment container config --enable-cd --query CI_CD_URL --output tsv --name <app_name> --resource-group AzureFunctionsContainers-rg
     ```
     
-    此命令启用持续部署并返回部署 Webhook URL。 （以后随时可以使用 [az functionapp deployment container show-cd-url](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url) 命令检索此 URL。）
+    此命令启用持续部署并返回部署 Webhook URL。 （以后随时可以使用 [az functionapp deployment container show-cd-url](/cli/azure/functionapp/deployment/container#az_functionapp_deployment_container_show_cd_url) 命令检索此 URL。）
 
 1. 将部署 Webhook URL 复制到剪贴板。
 

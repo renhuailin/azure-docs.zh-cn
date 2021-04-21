@@ -3,7 +3,6 @@ title: 资源的轮替教程，其中一组身份验证凭据存储在 Azure Key
 description: 通过本教程了解如何自动轮换使用一组身份验证凭据的资源的机密。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: rotation
 ms.service: key-vault
 ms.subservice: secrets
@@ -11,12 +10,12 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 526c3d2d85a3f2877f82b3b764f395c51f7c05c0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e66be3b0e3ecae5caa1a76294cc8b8dc11a5f207
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99805224"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107748657"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>自动轮换使用一组身份验证凭据的资源的机密
 

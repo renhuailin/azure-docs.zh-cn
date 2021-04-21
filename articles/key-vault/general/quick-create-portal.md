@@ -3,7 +3,6 @@ title: 快速入门 - 使用 Azure 门户创建 Azure Key Vault
 description: 介绍如何使用 Azure 门户创建 Azure Key Vault 的快速入门
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
@@ -11,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 12/08/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 729b6ccf1092679a71aa35f49be7d3199d4f4918
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d8bfdf3a4ad8b713fb6c937d61fa437fc7977f2
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97936265"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749665"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建密钥保管库
 
@@ -38,7 +37,7 @@ Azure Key Vault 是一项云服务，它为[密钥](../keys/index.yml)、[机密
 2. 在“搜索”框中输入“Key Vault”。
 3. 从结果列表中选择“Key Vault”。
 4. 在“Key Vault”部分，选择“创建”。
-5. 在“创建密钥保管库”部分，提供以下信息： 
+5. 在“创建密钥保管库”部分，提供以下信息：
     - **Name**：必须提供唯一的名称。 对于本快速入门，我们使用 **Contoso-vault2**。 
     - **订阅**：选择订阅。
     - 在“资源组”下选择“新建”，然后输入资源组名称。
