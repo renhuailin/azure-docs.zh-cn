@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 的 Azure Policy 法规遵从性控制
 description: 列出可用于 Azure Cosmos DB 的 Azure Policy 法规遵从性控制。 这些内置的策略定义提供了管理 Azure 资源合规性的常用方法。
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.topic: sample
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 9a104f783bc2bc845d2b2067247ba9be2ce6441d
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 330ec202a5996a4359ec702c9ed40e33df2e3dbd
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106096423"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107504081"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cosmos-db"></a>Azure Cosmos DB 的 Azure Policy 法规遵从性控制
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

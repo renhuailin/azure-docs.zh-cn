@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
-ms.date: 02/27/2020
-ms.openlocfilehash: bd1715dc0a3767bc5826154616bbdc97c7b61dd3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/24/2021
+ms.openlocfilehash: 7809ba52b270f07da9e04bc18c7c12e2268f1b73
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99576357"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792230"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>教程：使用 Azure 逻辑应用、Azure Functions 和 Azure 存储来自动执行处理电子邮件的任务
 
@@ -47,7 +47,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 * 下载并安装[免费 Microsoft Azure 存储资源管理器](https://storageexplorer.com/)。 此工具可以用于检查存储容器是否已正确设置。
 
-* 如果逻辑应用需要通过将流量限制为特定 IP 地址的防火墙进行通信，则该防火墙需要允许访问逻辑应用所在的 Azure 区域中的逻辑应用服务或运行时所使用的[入站](logic-apps-limits-and-config.md#inbound)和[出站](logic-apps-limits-and-config.md#outbound) IP 地址。 如果逻辑应用还使用[托管连接器](../connectors/apis-list.md#managed-api-connectors)（如 Office 365 Outlook 连接器或 SQL 连接器），或使用[自定义连接器](/connectors/custom-connectors/)，则防火墙还需要允许访问逻辑应用的 Azure 区域中的所有[托管连接器出站 IP 地址](logic-apps-limits-and-config.md#outbound)。
+* 如果逻辑应用需要通过将流量限制为特定 IP 地址的防火墙进行通信，则该防火墙需要允许访问逻辑应用所在的 Azure 区域中的逻辑应用服务或运行时所使用的[入站](logic-apps-limits-and-config.md#inbound)和[出站](logic-apps-limits-and-config.md#outbound) IP 地址。 如果逻辑应用还使用[托管连接器](../connectors/managed.md)（如 Office 365 Outlook 连接器或 SQL 连接器），或使用[自定义连接器](/connectors/custom-connectors/)，则防火墙还需要允许访问逻辑应用的 Azure 区域中的所有[托管连接器出站 IP 地址](logic-apps-limits-and-config.md#outbound)。
 
 ## <a name="set-up-storage-to-save-attachments"></a>设置用于保存附件的存储。
 
@@ -104,7 +104,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
       ![完成的存储容器](./media/tutorial-process-email-attachments-workflow/created-storage-container.png)
 
-   若要创建存储容器，也可以使用 [Azure PowerShell](/powershell/module/az.storage/new-azstoragecontainer) 或 [Azure CLI](/cli/azure/storage/container#az-storage-container-create)。
+   若要创建存储容器，也可以使用 [Azure PowerShell](/powershell/module/az.storage/new-azstoragecontainer) 或 [Azure CLI](/cli/azure/storage/container#az_storage_container_create)。
 
 接下来，将存储资源管理器连接到存储帐户。
 

@@ -1,15 +1,15 @@
 ---
 title: CMMC 级别 3 法规合规性详细信息
 description: CMMC 级别 3 法规合规性内置计划的详细信息。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: f6b30de446269d764d5dfa8be97245d0df577862
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: f6a62284879d0b4b7e846f2abac056fba49cea3e
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106094007"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107506255"
 ---
 # <a name="details-of-the-cmmc-level-3-regulatory-compliance-built-in-initiative"></a>CMMC 级别 3 法规合规性内置计划的详细信息
 

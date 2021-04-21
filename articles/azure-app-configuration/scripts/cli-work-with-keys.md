@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 54ad9f389070e1d5d280517a2f6c41e9a0f8f33e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc329feffbf22d63774ab0f3779d62d3ccf53adb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96929984"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774083"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>处理 Azure 应用配置存储区中的密钥值
 
@@ -83,9 +83,9 @@ az appconfig kv list --name $appConfigName
 
 | 命令 | 说明 |
 |---|---|
-| [az appconfig kv set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | 创建或更新键值对。 |
-| [az appconfig kv list](/cli/azure/appconfig/kv#az-appconfig-kv-list) | 列出应用配置存储中的键值对。 |
-| [az appconfig kv delete](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | 删除键值对。 |
+| [az appconfig kv set](/cli/azure/appconfig/kv#az_appconfig_kv_set) | 创建或更新键值对。 |
+| [az appconfig kv list](/cli/azure/appconfig/kv#az_appconfig_kv_list) | 列出应用配置存储中的键值对。 |
+| [az appconfig kv delete](/cli/azure/appconfig/kv#az_appconfig_kv_delete) | 删除键值对。 |
 
 ## <a name="next-steps"></a>后续步骤
 

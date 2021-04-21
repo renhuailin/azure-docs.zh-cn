@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 2e766bcdee2afa3ff4ed75476c619326c4c0e0c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 17cac91ae62f5faa80fa130364bf67f81ad20a81
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99591643"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789404"
 ---
 # <a name="manage-web-traffic-using-the-azure-cli"></a>使用 Azure CLI 管理 Web 流量
 
@@ -47,7 +47,7 @@ az group delete --name myResourceGroupAG --yes
 |---|---|
 | [az group create](/cli/azure/group) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](/cli/azure/network/vnet) | 创建虚拟网络。 |
-| [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) | 在虚拟网络中创建子网。 |
+| [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) | 在虚拟网络中创建子网。 |
 | [az network public-ip create](/cli/azure/network/public-ip) | 创建应用程序网关的公共 IP 地址。 |
 | [az network application-gateway create](/cli/azure/network/application-gateway) | 创建应用程序网关。 |
 | [az vmss create](/cli/azure/vmss) | 创建虚拟机规模集。 |

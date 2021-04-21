@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/14/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c5b07c1059e146aaf3c3c2a26038514eb614a3cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37e67ad869af23b51497e1497865f620bae612aa
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102505913"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749179"
 ---
 # <a name="client-libraries-for-azure-key-vault"></a>Azure Key Vault 的客户端库
 
@@ -35,4 +35,4 @@ Azure 密钥保管库的客户端库允许以编程方式通过各种语言（�
 
 - 参阅 [Azure Key Vault 开发人员指南](developers-guide.md)
 - 了解有关[向密钥保管库进行身份验证](authentication.md)的详细信息
-- 了解有关[保护对密钥保管库的访问](secure-your-key-vault.md)的详细信息
+- 了解有关[保护对密钥保管库的访问](security-overview.md)的详细信息

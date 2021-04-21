@@ -5,12 +5,12 @@ author: MSEvanhi
 ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: evanhi
-ms.openlocfilehash: 23ae69f49d37a210dd9fa1bfeedeca6c1b461e20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 721fe31f514cb948c93dc2a779a92ef3b2775ef9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94888855"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779230"
 ---
 # <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>快速入门：创建自定义提供程序并部署自定义资源
 
@@ -27,7 +27,7 @@ ms.locfileid: "94888855"
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-Azure CLI 示例将 `az rest` 用于 `REST` 请求。 有关详细信息，请参阅 [az rest](/cli/azure/reference-index#az-rest)。
+Azure CLI 示例将 `az rest` 用于 `REST` 请求。 有关详细信息，请参阅 [az rest](/cli/azure/reference-index#az_rest)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -52,7 +52,7 @@ Azure CLI 示例将 `az rest` 用于 `REST` 请求。 有关详细信息，请�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-本示例提示你输入资源组、位置和提供程序的函数应用名称。 名称会存储在其他命令中所使用的变量中。 [az group create](/cli/azure/group#az-group-create) 和 [az deployment group create](/cli/azure/deployment/group#az-deployment-group-create) 命令将部署资源。
+本示例提示你输入资源组、位置和提供程序的函数应用名称。 名称会存储在其他命令中所使用的变量中。 [az group create](/cli/azure/group#az_group_create) 和 [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create) 命令将部署资源。
 
 ```azurecli-interactive
 read -p "Enter a resource group name:" rgName &&

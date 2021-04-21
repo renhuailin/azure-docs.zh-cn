@@ -4,12 +4,12 @@ description: 此脚本演示了 Azure Batch 中一些可用于在 Azure CLI 中�
 ms.topic: sample
 ms.date: 12/12/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fb18f9d8777c17d31a3ab246603df0d9fa162467
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 773699dde9342a4b230a08471a289a56fca7e308
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93100933"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768190"
 ---
 # <a name="cli-example-create-and-manage-a-windows-pool-in-azure-batch"></a>CLI 示例：在 Azure Batch 中创建和管理 Windows 池
 
@@ -37,15 +37,15 @@ az group delete --name myResourceGroup
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az batch account create](/cli/azure/batch/account#az-batch-account-create) | 创建批处理帐户。 |
-| [az batch account login](/cli/azure/batch/account#az-batch-account-login) | 针对指定的批处理帐户进行身份验证，以便进一步进行 CLI 交互。 |
-| [az batch pool create](/cli/azure/batch/pool#az-batch-pool-create) | 创建计算节点池。  |
-| [az batch pool set](/cli/azure/batch/pool#az-batch-pool-set) | 更新池的属性。  |
-| [az batch pool autoscale enable](/cli/azure/batch/pool/autoscale#az-batch-pool-autoscale-enable) | 对池启用自动缩放并应用公式。  |
-| [az batch pool show](/cli/azure/batch/pool#az-batch-pool-show) | 显示池的属性。  |
-| [az batch pool autoscale disable](/cli/azure/batch/pool/autoscale#az-batch-pool-autoscale-disable) | 对池禁用自动缩放。 |
-| [az group delete](/cli/azure/group#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az batch account create](/cli/azure/batch/account#az_batch_account_create) | 创建批处理帐户。 |
+| [az batch account login](/cli/azure/batch/account#az_batch_account_login) | 针对指定的批处理帐户进行身份验证，以便进一步进行 CLI 交互。 |
+| [az batch pool create](/cli/azure/batch/pool#az_batch_pool_create) | 创建计算节点池。  |
+| [az batch pool set](/cli/azure/batch/pool#az_batch_pool_set) | 更新池的属性。  |
+| [az batch pool autoscale enable](/cli/azure/batch/pool/autoscale#az_batch_pool_autoscale_enable) | 对池启用自动缩放并应用公式。  |
+| [az batch pool show](/cli/azure/batch/pool#az_batch_pool_show) | 显示池的属性。  |
+| [az batch pool autoscale disable](/cli/azure/batch/pool/autoscale#az_batch_pool_autoscale_disable) | 对池禁用自动缩放。 |
+| [az group delete](/cli/azure/group#az_group_delete) | 删除资源组，包括所有嵌套的资源。 |
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 49d6a85faa55de5dbf50377998dbe2fc829d9f6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 07c4ac3234dc67978f16f6c0c7e0702924bf2bb5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96929780"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768878"
 ---
 # <a name="delete-an-azure-app-configuration-store"></a>删除 Azure 应用配置存储区
 
@@ -44,7 +44,7 @@ az appconfig delete --name myTestAppConfigStore --resource-group myResourceGroup
 
 | 命令 | 说明 |
 |---|---|
-| [az appconfig delete](/cli/azure/appconfig#az-appconfig-delete) | 删除应用程序配置存储区资源。 |
+| [az appconfig delete](/cli/azure/appconfig#az_appconfig_delete) | 删除应用程序配置存储区资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 11/13/2018
 ms.author: zhshang
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 673a3583b1ec80fb3ad61ec35a1786a59939f6e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e6e2484dc7fffdcecb64ef3b3afa3a7a4343d29c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94563318"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787298"
 ---
 # <a name="create-a-signalr-service-with-an-app-service"></a>使用应用服务创建 SignalR 服务
 
@@ -80,12 +80,12 @@ az webapp config appsettings set --name $myWebAppName --resource-group $myResour
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az signalr create](/cli/azure/signalr#az-signalr-create) | 创建 Azure SignalR 服务资源。 |
-| [az signalr key list](/cli/azure/signalr/key#az-signalr-key-list) | 列出密钥，使用 SignalR 推送实时内容更新时，应用程序将使用这些密钥。 |
-| [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) | 创建用于托管 Web 应用的 Azure 应用服务计划。 |
-| [az webapp create](/cli/azure/webapp#az-webapp-create) | 使用应用服务托管计划创建 Azure Web 应用。 |
-| [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | 为 Web 应用添加新应用设置。 此应用设置用于存储 SignalR 连接字符串。 |
+| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az signalr create](/cli/azure/signalr#az_signalr_create) | 创建 Azure SignalR 服务资源。 |
+| [az signalr key list](/cli/azure/signalr/key#az_signalr_key_list) | 列出密钥，使用 SignalR 推送实时内容更新时，应用程序将使用这些密钥。 |
+| [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) | 创建用于托管 Web 应用的 Azure 应用服务计划。 |
+| [az webapp create](/cli/azure/webapp#az_webapp_create) | 使用应用服务托管计划创建 Azure Web 应用。 |
+| [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) | 为 Web 应用添加新应用设置。 此应用设置用于存储 SignalR 连接字符串。 |
 
 ## <a name="next-steps"></a>后续步骤
 

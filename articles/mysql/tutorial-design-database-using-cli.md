@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 8546ba5c80a4c8909876ff755bc094f1aec96482
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 19779ffa8bab045e03161475646c802f464a7e41
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96437076"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791600"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>教程：使用 Azure CLI 设计 Azure Database for MySQL
 
@@ -34,13 +34,13 @@ Azure Database for MySQL 是 Microsoft 云中基于 MySQL Community Edition 数�
 
 - 本文需要 Azure CLI 版本 2.0 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
-如果有多个订阅，请选择资源所在的相应订阅或对资源进行计费的订阅。 使用 [az account set](/cli/azure/account#az-account-set) 命令选择帐户下的特定订阅 ID。
+如果有多个订阅，请选择资源所在的相应订阅或对资源进行计费的订阅。 使用 [az account set](/cli/azure/account#az_account_set) 命令选择帐户下的特定订阅 ID。
 ```azurecli-interactive
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
 ## <a name="create-a-resource-group"></a>创建资源组
-使用 [az group create](/cli/azure/group#az-group-create) 命令创建 [Azure 资源组](../azure-resource-manager/management/overview.md)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。
+使用 [az group create](/cli/azure/group#az_group_create) 命令创建 [Azure 资源组](../azure-resource-manager/management/overview.md)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。
 
 以下示例在 `westus` 位置创建名为 `myresourcegroup` 的资源组。
 
@@ -201,7 +201,7 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 az group delete --name myresourcegroup
 ```
 
-若要删除新创建的服务器，可运行 [az mysql server delete](/cli/azure/mysql/server#az-mysql-server-delete) 命令。
+若要删除新创建的服务器，可运行 [az mysql server delete](/cli/azure/mysql/server#az_mysql_server_delete) 命令。
 
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoserver

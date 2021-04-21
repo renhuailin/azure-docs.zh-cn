@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-js, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: b3d88c99ab0e9e204eb4d7dd78dc319f889a5e7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b1dcd413f301f25460cb29f1bb20e67a37ac6ebb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97347653"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767307"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>教程：在 Azure 中生成 Node.js 和 MongoDB 应用
 
@@ -163,7 +163,7 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 
 ### <a name="retrieve-the-database-key"></a>检索数据库键
 
-要连接至到 Cosmos DB 数据库，需要数据库键。 在 Cloud Shell 中，使用 [`az cosmosdb list-keys`](/cli/azure/cosmosdb#az-cosmosdb-list-keys) 命令检索主键。
+要连接至到 Cosmos DB 数据库，需要数据库键。 在 Cloud Shell 中，使用 [`az cosmosdb list-keys`](/cli/azure/cosmosdb#az_cosmosdb_list_keys) 命令检索主键。
 
 ```azurecli-interactive
 az cosmosdb list-keys --name <cosmosdb-name> --resource-group myResourceGroup
@@ -276,7 +276,7 @@ MEAN.JS
 
 默认情况下，MEAN.js 项目会在 Git 存储库外部保留 _config/env/local-production.js_。 因此对于 Azure 应用，请使用应用设置来定义 MongoDB 连接字符串。
 
-若要设置应用设置，请在 Cloud Shell 中使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) 命令。 
+若要设置应用设置，请在 Cloud Shell 中使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) 命令。 
 
 以下示例在 Azure 应用中配置 `MONGODB_URI` 应用设置。 替换占位符 \<app-name>、\<cosmosdb-name> 和 \<primary-master-key>。
 
@@ -342,7 +342,7 @@ http://<app-name>.azurewebsites.net
 
 选择“管理员”>“管理文章”，添加一些文章。 
 
-**祝贺你！** 正在 Azure 应用服务中运行数据驱动的 Node.js 应用。
+祝贺你！ 正在 Azure 应用服务中运行数据驱动的 Node.js 应用。
 
 ## <a name="update-data-model-and-redeploy"></a>更新数据模型和重新部署
 
@@ -482,7 +482,7 @@ git push azure main
 
 当 Node.js 应用程序在 Azure 应用服务中运行时，可以将控制台日志通过管道传输到终端。 如此，可以获得相同的诊断消息，以便调试应用程序错误。
 
-若要启动日志流式处理，请在 Cloud Shell 中使用 [`az webapp log tail`](/cli/azure/webapp/log#az-webapp-log-tail) 命令。
+若要启动日志流式处理，请在 Cloud Shell 中使用 [`az webapp log tail`](/cli/azure/webapp/log#az_webapp_log_tail) 命令。
 
 ```azurecli-interactive
 az webapp log tail --name <app-name> --resource-group myResourceGroup

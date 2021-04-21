@@ -9,12 +9,12 @@ ms.date: 12/11/2017
 ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: 500ac99cd35cfdf601be75a19a1d43f84795cbe8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: db1d0558f93b203af1605663533847d32afbcffb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97006412"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782542"
 ---
 # <a name="create-a-scheduled-backup-for-an-app-service-app-using-cli"></a>使用 CLI 为应用服务应用创建计划备份
 
@@ -24,7 +24,7 @@ ms.locfileid: "97006412"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，需要 Azure CLI 2.0 版或更高版本。 若要查找版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，需要 Azure CLI 2.0 版或更高版本。 要查找版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -38,15 +38,15 @@ ms.locfileid: "97006412"
 
 | 命令 | 说明 |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [`az storage account create`](/cli/azure/storage/account#az-storage-account-create) | 创建存储帐户。 |
-| [`az storage container create`](/cli/azure/storage/container#az-storage-container-create) | 创建 Azure 存储容器。 |
-| [`az storage container generate-sas`](/cli/azure/storage/container#az-storage-container-generate-sas) | 生成 Azure 存储容器的 SAS 令牌。  |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | 创建应用服务计划。 |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | 创建应用服务应用。 |
-| [`az webapp config backup update`](/cli/azure/webapp/config/backup#az-webapp-config-backup-update) | 为应用服务应用配置新的备份计划。 |
-| [`az webapp config backup show`](/cli/azure/webapp/config/backup#az-webapp-config-backup-show) | 显示应用服务应用的备份计划。 |
-| [`az webapp config backup list`](/cli/azure/webapp/config/backup#az-webapp-config-backup-list) | 获取应用服务应用的备份列表。 |
+| [`az group create`](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [`az storage account create`](/cli/azure/storage/account#az_storage_account_create) | 创建存储帐户。 |
+| [`az storage container create`](/cli/azure/storage/container#az_storage_container_create) | 创建 Azure 存储容器。 |
+| [`az storage container generate-sas`](/cli/azure/storage/container#az_storage_container_generate_sas) | 生成 Azure 存储容器的 SAS 令牌。  |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | 创建应用服务计划。 |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | 创建应用服务应用。 |
+| [`az webapp config backup update`](/cli/azure/webapp/config/backup#az_webapp_config_backup_update) | 为应用服务应用配置新的备份计划。 |
+| [`az webapp config backup show`](/cli/azure/webapp/config/backup#az_webapp_config_backup_show) | 显示应用服务应用的备份计划。 |
+| [`az webapp config backup list`](/cli/azure/webapp/config/backup#az_webapp_config_backup_list) | 获取应用服务应用的备份列表。 |
 
 ## <a name="next-steps"></a>后续步骤
 

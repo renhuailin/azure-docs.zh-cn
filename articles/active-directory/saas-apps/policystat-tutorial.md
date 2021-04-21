@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 4d6274f3e1356a8ff8a997e830f0ebee43f50cff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5c2520c8e209ab8319cbc5a369b70d247a52232c
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92893008"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600992"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>教程：Azure Active Directory 与 PolicyStat 的集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "92893008"
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.policystat.com/saml2/metadata/`
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [PolicyStat 客户端支持团队](http://www.policystat.com/support/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [PolicyStat 客户端支持团队](https://rldatix.com/services-support/support)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -154,13 +154,13 @@ ms.locfileid: "92893008"
 
     c. 注销 URL
 
-### <a name="configure-policystat-single-sign-on"></a>配置 PolicyStat 单一登录
+### <a name="configure-policystat-single-sign-on&quot;></a>配置 PolicyStat 单一登录
 
 1. 在另一 Web 浏览器窗口中，以管理员身份登录到 PolicyStat 公司站点。
 
 2. 单击“管理员”选项卡，并单击左侧导航窗格中的“单一登录配置”。
    
-    ![“管理员”菜单](./media/policystat-tutorial/ic808633.png "“管理员”菜单")
+    ![“管理员”菜单](./media/policystat-tutorial/ic808633.png &quot;“管理员”菜单")
 
 3. 单击“IDP 元数据”，并在“IDP 元数据”部分执行以下步骤：
    

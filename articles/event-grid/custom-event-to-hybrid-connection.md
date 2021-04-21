@@ -4,12 +4,12 @@ description: 教程：使用 Azure 事件网格和 Azure CLI 发布一个主题�
 ms.date: 07/07/2020
 ms.topic: tutorial
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c709d77827551860cc917c3c84c5a849d9fdc512
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7fcbc76f3ab58aac6beca3e142eba3a9b62c28a3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566820"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770393"
 ---
 # <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>教程：使用 Azure CLI 和事件网格将自定义事件路由到 Azure 中继混合连接
 
@@ -27,7 +27,7 @@ Azure 事件网格是针对云的事件处理服务。 Azure 中继混合连接�
 
 事件网格主题是 Azure 资源，必须放置在 Azure 资源组中。 该资源组是在其中部署和管理 Azure 资源的逻辑集合。
 
-使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。 
+使用“[az group create](/cli/azure/group#az_group_create)”命令创建资源组。 
 
 以下示例在“westus2”位置创建名为“gridResourceGroup”的资源组。
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 354568fa3ab3816b643a8f08305ab55868a9b0b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56d931f2346e5a0b615d3f11dce3b06396e586b4
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90973712"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588711"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>为应用服务环境配置 Web 应用程序防火墙 (WAF)
 ## <a name="overview"></a>概述
@@ -66,7 +66,7 @@ Barracuda WAF 使用 TCP 端口 8000 通过其管理门户进行配置。 如果
 
 ![管理仪表板][ManagementDashboard]
 
-单击“服务”选项卡可以根据 WAF 保护的服务配置 WAF。 有关配置 Barracuda WAF 的详细信息，请参阅[相关文档](https://techlib.barracuda.com/waf/getstarted1)。 在以下示例中，已配置处理 HTTP 和 HTTPS 流量的应用服务应用。
+单击“服务”选项卡可以根据 WAF 保护的服务配置 WAF。 有关配置 Barracuda WAF 的详细信息，请参阅[相关文档](https://campus.barracuda.com/product/webapplicationfirewall/doc/4259884/configure-the-barracuda-web-application-firewall-from-the-web-interface/)。 在以下示例中，已配置处理 HTTP 和 HTTPS 流量的应用服务应用。
 
 ![管理添加服务][ManagementAddServices]
 

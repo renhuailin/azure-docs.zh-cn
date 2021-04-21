@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/29/2020
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 8c3fca6cf7782c3aaac91388a8f8395e288f5ea5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e35a4abbcaf0cd2298d55c06de0ecfbef0dff354
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96558736"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765753"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>教程：在 Azure 应用服务中对用户进行端到端身份验证和授权
 
@@ -367,7 +367,7 @@ git push frontend master
 
 ### <a name="configure-cors"></a>配置 CORS
 
-在 Cloud Shell 中，使用 [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) 命令对客户端的 URL 启用 CORS。 替换占位符 \<back-end-app-name> 和 \<front-end-app-name>。
+在 Cloud Shell 中，使用 [`az webapp cors add`](/cli/azure/webapp/cors#az_webapp_cors_add) 命令对客户端的 URL 启用 CORS。 替换占位符 \<back-end-app-name> 和 \<front-end-app-name>。
 
 ```azurecli-interactive
 az webapp cors add --resource-group myAuthResourceGroup --name <back-end-app-name> --allowed-origins 'https://<front-end-app-name>.azurewebsites.net'

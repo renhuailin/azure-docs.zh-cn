@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 10/07/2020
-ms.openlocfilehash: 6e76da71cb14122817090e64354babf5a618db8b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12ee46316a3eadceedf6f1772ae41938d1cc903e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94562655"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107761916"
 ---
 # <a name="throughput-rus-operations-with-azure-cli-for-a-table-for-azure-cosmos-db-table-api"></a>用于 Azure Cosmos DB 表 API 的表的使用 Azure CLI 的吞吐量 (RU/s) 操作
 [!INCLUDE[appliesto-table-api](../../../includes/appliesto-table-api.md)]
@@ -41,12 +41,12 @@ az group delete --name $resourceGroupName
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | 创建 Azure Cosmos DB 帐户。 |
-| [az cosmosdb table create](/cli/azure/cosmosdb/table#az-cosmosdb-table-create) | 创建 Azure Cosmos 表 API 表。 |
-| [az cosmosdb table throughput update](/cli/azure/cosmosdb/table/throughput#az-cosmosdb-table-throughput-update) | 更新 Azure Cosmos 表 API 表的吞吐量。 |
-| [az cosmosdb table throughput migrate](/cli/azure/cosmosdb/table/throughput#az-cosmosdb-table-throughput-migrate) | 迁移 Azure Cosmos 表 API 表的吞吐量。 |
-| [az group delete](/cli/azure/resource#az-resource-delete) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az cosmosdb create](/cli/azure/cosmosdb#az_cosmosdb_create) | 创建 Azure Cosmos DB 帐户。 |
+| [az cosmosdb table create](/cli/azure/cosmosdb/table#az_cosmosdb_table_create) | 创建 Azure Cosmos 表 API 表。 |
+| [az cosmosdb table throughput update](/cli/azure/cosmosdb/table/throughput#az_cosmosdb_table_throughput_update) | 更新 Azure Cosmos 表 API 表的吞吐量。 |
+| [az cosmosdb table throughput migrate](/cli/azure/cosmosdb/table/throughput#az_cosmosdb_table_throughput_migrate) | 迁移 Azure Cosmos 表 API 表的吞吐量。 |
+| [az group delete](/cli/azure/resource#az_resource_delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 

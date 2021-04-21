@@ -2,19 +2,18 @@
 title: 对所有密钥保管库对象启用软删除 - Azure Key Vault | Microsoft Docs
 description: 使用本文档对所有密钥保管库采用软删除，并进行应用程序和管理更改以避免冲突错误。
 services: key-vault
-author: ShaneBala-keyvault
-manager: ravijan
+author: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 12/15/2020
-ms.author: sudbalas
-ms.openlocfilehash: b96f2ca4f925846bd252e5cfd35088d832f5c216
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/31/2021
+ms.author: mbaldwin
+ms.openlocfilehash: 7e1b2ee95864affa6e5e72e1f8354767dc95bdb1
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98572861"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753319"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>对所有 Key Vault 启用软删除
 

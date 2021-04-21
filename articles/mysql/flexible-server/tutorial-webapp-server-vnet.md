@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 03/18/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3e334eda46e5e67a0fc0755f5e02a0724d34a4b4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 13baf8f033338e242610d7b8c4eec14806cd5ec5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104657631"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770014"
 ---
 # <a name="tutorial-create-an-azure-database-for-mysql---flexible-server-preview-with-app-services-web-app-in-virtual-network"></a>教程：在虚拟网络中创建 Azure Database for MySQL 灵活服务器（预览版）和应用服务 Web 应用
 
@@ -36,7 +36,7 @@ ms.locfileid: "104657631"
 
 本文要求在本地运行 Azure CLI 2.0 或更高版本。 若要查看安装的版本，请运行 `az --version` 命令。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-你将需要使用 [az login](/cli/azure/reference-index#az-login) 命令登录到你的帐户。 记下与订阅名称相对应的命令输出中的 **id** 属性。
+你将需要使用 [az login](/cli/azure/reference-index#az_login) 命令登录到你的帐户。 记下与订阅名称相对应的命令输出中的 **id** 属性。
 
 ```azurecli
 az login
@@ -71,7 +71,7 @@ az mysql flexible-server create --resource-group myresourcegroup --location west
 ```azurecli
 az network vnet subnet create -g myresourcegroup --vnet-name VNETName --name webappsubnetName  --address-prefixes 10.0.1.0/24  --delegations Microsoft.Web/serverFarms --service-endpoints Microsoft.Web
 ```
-请在此命令后面记下虚拟网络名称和子网名称，以便在创建 web 应用后为其添加 VNET 集成规则。 
+请在此命令后面记下虚拟网络名称和子网名称，以便在创建 Web 应用后为其添加 VNET 集成规则。 
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
 

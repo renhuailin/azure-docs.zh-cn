@@ -4,19 +4,19 @@ description: 使用 Azure 门户、PowerShell 或 Azure CLI 将 Azure SQL 数据
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/27/2019
-ms.openlocfilehash: cdbc44158de2f24d7d33d68311979c3b8bdda85d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd0532469cd4390d9a72900dcebc22994239325b
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94593971"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479145"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>教程：将 Azure SQL 数据库弹性池添加到故障转移组
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -209,11 +209,11 @@ ms.locfileid: "94593971"
    # Create a failover group between the servers
    Write-host "Creating failover group..."
    New-AzSqlDatabaseFailoverGroup `
-     –ResourceGroupName $resourceGroupName `
+     â€“ResourceGroupName $resourceGroupName `
       -ServerName $serverName `
       -PartnerServerName $drServerName  `
-      –FailoverGroupName $failoverGroupName `
-      –FailoverPolicy Automatic `
+      â€“FailoverGroupName $failoverGroupName `
+      â€“FailoverPolicy Automatic `
       -GracePeriodWithDataLossHours 2
    Write-host "Failover group created successfully."
 

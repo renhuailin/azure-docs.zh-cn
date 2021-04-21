@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: 36d6d8b4d4435b1db99f2721c817c9c06ca60945
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 77d54ef0c9bef40af47c2fc48b9d4b5d6315b119
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103017909"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780388"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>教程：通过 Azure IoT 中心接收设备数据
 
@@ -44,7 +44,7 @@ Azure IoT 中心支持[消息路由](../../iot-hub/iot-hub-devguide-messages-d2c
 消息路由的设置包括两个步骤。
 
 ### <a name="add-an-endpoint"></a>添加终结点
-此步骤定义一个终结点，IoT 中心会将数据路由到该终结点。 可根据偏好使用 [Add-AzIotHubRoutingEndpoint](/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint) PowerShell 命令或 [az iot hub routing-endpoint create](/cli/azure/iot/hub/routing-endpoint#az-iot-hub-routing-endpoint-create) CLI 命令创建此终结点。
+此步骤定义一个终结点，IoT 中心会将数据路由到该终结点。 可根据偏好使用 [Add-AzIotHubRoutingEndpoint](/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint) PowerShell 命令或 [az iot hub routing-endpoint create](/cli/azure/iot/hub/routing-endpoint#az_iot_hub_routing_endpoint_create) CLI 命令创建此终结点。
 
 下面是用于创建终结点的命令的参数列表：
 
@@ -59,7 +59,7 @@ Azure IoT 中心支持[消息路由](../../iot-hub/iot-hub-devguide-messages-d2c
 |ConnectionString|connection-string|适用于 FHIR 的 Azure IoT 连接器的连接字符串。 使用在上一步中获得的值。|
 
 ### <a name="add-a-message-route"></a>添加消息路由
-此步骤使用上面创建的终结点定义消息路由。 可根据偏好使用 [Add-AzIotHubRoute](/powershell/module/az.iothub/Add-AzIoTHubRoute) PowerShell 命令或 [az iot hub route create](/cli/azure/iot/hub/route#az-iot-hub-route-create) CLI 命令创建路由。
+此步骤使用上面创建的终结点定义消息路由。 可根据偏好使用 [Add-AzIotHubRoute](/powershell/module/az.iothub/Add-AzIoTHubRoute) PowerShell 命令或 [az iot hub route create](/cli/azure/iot/hub/route#az_iot_hub_route_create) CLI 命令创建路由。
 
 下面是可以与添加消息路由的命令配合使用的参数列表：
 
