@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.author: allensu
 ms.date: 09/14/2020
-ms.openlocfilehash: 749b233b827c27d2c998cfd6be66cf79cf48089d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00126dde55ffe584be611ddf268bb759e127d7a1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94831644"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788738"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建内部负载均衡器，以对 VM 进行负载均衡
 
@@ -78,7 +78,7 @@ az deployment group create \
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要上述资源组及其包含的所有资源，可以使用 [az group delete](/cli/azure/group#az-group-delete) 命令将其删除。
+如果不再需要上述资源组及其包含的所有资源，可以使用 [az group delete](/cli/azure/group#az_group_delete) 命令将其删除。
 
 ```azurecli-interactive
   az group delete \

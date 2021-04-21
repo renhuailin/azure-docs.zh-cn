@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 07/29/2020
-ms.openlocfilehash: f66d219eff1919e62088e5c4f7aa72aab97ea4f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eae343b0ac85f3fdf6d0f6d52c7afbb91f401df4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566225"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770726"
 ---
 # <a name="connect-an-existing-azure-cosmos-account-with-virtual-network-service-endpoints-using-azure-cli"></a>通过 Azure CLI 使用虚拟网络服务终结点连接现有 Azure Cosmos 帐户
 [!INCLUDE[appliesto-all-apis](../../../includes/appliesto-all-apis.md)]
@@ -43,13 +43,13 @@ az group delete --name $resourceGroupName
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) | 创建 Azure 虚拟网络。 |
-| [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) | 为 Azure 虚拟网络创建子网。 |
-| [az network vnet subnet show](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-show) | 返回 Azure 虚拟网络的子网。 |
-| [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | 创建 Azure Cosmos DB 帐户。 |
-| [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) | 更新 Azure 虚拟网络的子网。 |
-| [az group delete](/cli/azure/resource#az-resource-delete) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) | 创建 Azure 虚拟网络。 |
+| [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) | 为 Azure 虚拟网络创建子网。 |
+| [az network vnet subnet show](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_show) | 返回 Azure 虚拟网络的子网。 |
+| [az cosmosdb create](/cli/azure/cosmosdb#az_cosmosdb_create) | 创建 Azure Cosmos DB 帐户。 |
+| [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) | 更新 Azure 虚拟网络的子网。 |
+| [az group delete](/cli/azure/resource#az_resource_delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 

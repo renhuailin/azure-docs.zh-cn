@@ -9,12 +9,12 @@ ms.collection: windows
 ms.topic: quickstart
 ms.date: 05/17/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bffa155a51c4897cd1e2cc07a6d4aea9a8e080ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e81d29922bee53ba9021c9c26816258f7922a59c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562735"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107759698"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-vm-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建和加密 Windows VM
 
@@ -28,7 +28,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速�
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
+使用“[az group create](/cli/azure/group#az_group_create)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -36,7 +36,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 
-使用 [az vm create](/cli/azure/vm#az-vm-create) 创建 VM。 以下示例创建一个名为 myVM 的 VM。 此示例使用 azureuser 作为管理用户名，使用 myPassword12 作为密码。
+使用 [az vm create](/cli/azure/vm#az_vm_create) 创建 VM。 以下示例创建一个名为 myVM 的 VM。 此示例使用 azureuser 作为管理用户名，使用 myPassword12 作为密码。
 
 ```azurecli-interactive
 az vm create \
@@ -64,7 +64,7 @@ az vm create \
 
 ## <a name="create-a-key-vault-configured-for-encryption-keys"></a>创建为加密密钥配置的密钥保管库
 
-Azure 磁盘加密将其加密密钥存储在 Azure 密钥保管库中。 使用 [az keyvault create](/cli/azure/keyvault#az-keyvault-create) 创建密钥保管库。 要使密钥保管库能够存储加密密钥，请使用 --enabled-for-disk-encryption 参数。
+Azure 磁盘加密将其加密密钥存储在 Azure 密钥保管库中。 使用 [az keyvault create](/cli/azure/keyvault#az_keyvault_create) 创建密钥保管库。 要使密钥保管库能够存储加密密钥，请使用 --enabled-for-disk-encryption 参数。
 > [!Important]
 > 每个密钥保管库必须具有唯一的名称。 以下示例创建名为“myKV”的密钥保管库，但你必须将其命名为不同的名称。
 
@@ -80,7 +80,7 @@ az keyvault create --name "myKV" --resource-group "myResourceGroup" --location e
 az vm encryption enable -g MyResourceGroup --name MyVM --disk-encryption-keyvault myKV
 ```
 
-可以使用 [az vm show](/cli/azure/vm/encryption#az-vm-encryption-show) 验证 VM 是否已启用加密
+可以使用 [az vm show](/cli/azure/vm/encryption#az_vm_encryption_show) 验证 VM 是否已启用加密
 
 ```azurecli-interactive
 az vm encryption show --name MyVM -g MyResourceGroup

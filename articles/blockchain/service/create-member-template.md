@@ -2,16 +2,19 @@
 title: 使用 Azure 资源管理器模板创建 Azure 区块链服务成员
 description: 了解如何使用 Azure 资源管理器模板创建 Azure 区块链服务成员。
 services: azure-resource-manager
-ms.service: azure-resource-manager
-ms.topic: quickstart
-ms.custom: subject-armqs, references_regions
 ms.date: 09/16/2020
-ms.openlocfilehash: e9893336f2e6633519853aceecc945ee6bf0bf4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.service: azure-resource-manager
+ms.custom:
+- subject-armqs
+- references_regions
+- mode-arm
+ms.openlocfilehash: c49e45ae84d58d62460d493887e2a4e78e40ba32
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91292755"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536294"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure 区块链服务成员
 

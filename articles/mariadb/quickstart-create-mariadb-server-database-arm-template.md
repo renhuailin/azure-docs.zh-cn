@@ -3,16 +3,18 @@ title: 快速入门：创建 Azure DB for MariaDB - ARM 模板
 description: 本快速入门文章介绍如何使用 Azure 资源管理器模板创建 Azure DB for MariaDB 服务器。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
-ms.topic: quickstart
-ms.custom: subject-armqs
 ms.date: 05/14/2020
-ms.openlocfilehash: de6df8349025c3e87e5b005196008053039fa49f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.service: mariadb
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: 6bf7f4d30f2ad4f9e0181aed332e3f6cb9265ca0
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98662067"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531341"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>快速入门：使用 ARM 模板创建 Azure Database for MariaDB 服务器
 
@@ -26,7 +28,7 @@ Azure Database for MariaDB 是一种托管服务，可用于在云中运行、�
 
 ## <a name="prerequisites"></a>先决条件
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/)。
 
@@ -62,7 +64,7 @@ Azure Database for MariaDB 是一种托管服务，可用于在云中运行、�
 
 ## <a name="deploy-the-template"></a>部署模板
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 选择以下链接以在 Azure 门户中部署 Azure DB for MariaDB 服务器模板：
 
@@ -144,7 +146,7 @@ read -p "Press [ENTER] to continue: "
 
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 按照以下步骤查看新 Azure Database for MariaDB 服务器的概览：
 
@@ -179,7 +181,7 @@ read -p "Press [ENTER] to continue: "
 
 如果不再需要该资源组，可以将其删除，这将删除资源组中的资源。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“资源组”。
 

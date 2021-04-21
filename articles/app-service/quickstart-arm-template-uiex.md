@@ -9,12 +9,12 @@ ms.date: 10/16/2020
 ms.custom: subject-armqs, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 7437a5208f94b435576b8a38dc65a6e798303a72
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bce6bfb61eb59d1fa66c550a133ac8b6f8d7f2c5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179079"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768994"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>快速入门：使用 ARM 模板创建应用服务应用
 
@@ -133,7 +133,7 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 <ul>
 <li>创建默认 <abbr title="可作为一个单元进行管理的相关 Azure 资源的逻辑容器。">资源组</abbr>.</li>
 <li>创建默认 <abbr title="指定托管应用的 Web 服务器场的位置、大小和功能的计划。">应用服务计划</abbr>.</li>
-<li><a href="/cli/azure/webapp#az-webapp-create">创建具有指定名称的 <abbr title="Web 应用的表示形式，其中包含应用代码、DNS 主机名、证书和相关资源。">应用服务应用</abbr></a>。</li>
+<li><a href="/cli/azure/webapp#az_webapp_create">创建具有指定名称的 <abbr title="Web 应用的表示形式，其中包含应用代码、DNS 主机名、证书和相关资源。">应用服务应用</abbr></a>。</li>
 </ul>
 </details>
 
@@ -191,4 +191,3 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 - [带 MySQL 的 PHP](tutorial-php-mysql-app.md)
 - [使用 Java 连接到 Azure SQL 数据库](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
 - [映射自定义域](app-service-web-tutorial-custom-domain-uiex.md)
-

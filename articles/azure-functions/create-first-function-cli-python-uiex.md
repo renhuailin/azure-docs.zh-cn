@@ -7,12 +7,12 @@ ms.custom:
 - devx-track-python
 - devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: da7f6fdaedd8105363cc62bf55bae2cb5f72f234
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 626cff867a336880689373c289087e2332a816ee
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031644"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787442"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>快速入门：在 Azure 中通过命令行创建 Python 函数
 
@@ -34,7 +34,7 @@ ms.locfileid: "102031644"
 
 在开始之前，必须满足以下条件：
 
-+ 具有有效订阅的 Azure <abbr title="用于维护 Azure 使用情况计费信息的配置文件。">account</abbr> 帐户 <abbr title="在 Azure 中管理资源的基本组织结构，通常与组织中的个人或部门相关联。">订阅</abbr>. [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
++ 具有有效订阅的 Azure <abbr title="用于维护 Azure 使用情况计费信息的配置文件。">account</abbr> 帐户 <abbr title="在 Azure 中管理资源的基本组织结构，通常与组织中的个人或部门关联。">订阅</abbr>. [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 + [Azure Functions Core Tools](functions-run-local.md#v2) 版本 3.x。 
   
@@ -239,7 +239,7 @@ py -m venv .venv
     az login
     ```
 
-    使用 [az login](/cli/azure/reference-index#az-login) 命令登录到 Azure 帐户。
+    使用 [az login](/cli/azure/reference-index#az_login) 命令登录到 Azure 帐户。
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
     ```azurepowershell
@@ -258,7 +258,7 @@ py -m venv .venv
     az group create --name AzureFunctionsQuickstart-rg --location westeurope
     ```
  
-    [az group create](/cli/azure/group#az-group-create) 命令可创建资源组。 通常在附近的 <abbr title="对在其中分配资源的特定 Azure 数据中心的地理引用。">region</abbr> 中创建资源组和资源（使用从 `az account list-locations` 命令返回的可用区域）。
+    [az group create](/cli/azure/group#az_group_create) 命令可创建资源组。 通常在附近的 <abbr title="对在其中分配资源的特定 Azure 数据中心的地理引用。">region</abbr> 中创建资源组和资源（使用从 `az account list-locations` 命令返回的可用区域）。
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -280,7 +280,7 @@ py -m venv .venv
     az storage account create --name <STORAGE_NAME> --location westeurope --resource-group AzureFunctionsQuickstart-rg --sku Standard_LRS
     ```
 
-    [az storage account create](/cli/azure/storage/account#az-storage-account-create) 命令可创建存储帐户。 
+    [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令可创建存储帐户。 
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 

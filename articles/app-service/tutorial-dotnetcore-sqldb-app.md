@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: bafebcc54e4cbde87e8deb776eff227fc99035cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52a5b127312ef979791d17b27ca67b21a779e310
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98623849"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765715"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 ASP.NET Core 和 Azure SQL 数据库应用
 
@@ -29,7 +29,7 @@ ms.locfileid: "98623849"
 
 ![在应用服务中运行的应用](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建 SQL 数据库。
@@ -95,7 +95,7 @@ dotnet run
 
 ### <a name="create-a-sql-database-logical-server"></a>创建 SQL 数据库逻辑服务器
 
-在 Cloud Shell 中，使用 [`az sql server create`](/cli/azure/sql/server#az-sql-server-create) 命令创建 SQL 数据库逻辑服务器。
+在 Cloud Shell 中，使用 [`az sql server create`](/cli/azure/sql/server#az_sql_server_create) 命令创建 SQL 数据库逻辑服务器。
 
 将 \<server-name> 占位符替换为唯一的 SQL 数据库名称 。 此名称将用作全局唯一的 SQL 数据库终结点 (`<server-name>.database.windows.net`) 的一部分。 有效字符为 `a`-`z`、`0`-`9` 和 `-`。 此外，将 \<db-username> 和 \<db-password> 替换为所选的用户名和密码 。 
 
@@ -126,7 +126,7 @@ az sql server create --name <server-name> --resource-group myResourceGroup --loc
 
 ### <a name="configure-a-server-firewall-rule"></a>配置服务器防火墙规则
 
-使用 [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) 命令创建 [Azure SQL 数据库服务器级防火墙规则](../azure-sql/database/firewall-configure.md)。 若同时将起始 IP 和结束 IP 设置为 0.0.0.0，防火墙将仅对其他 Azure 资源开启。 
+使用 [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create) 命令创建 [Azure SQL 数据库服务器级防火墙规则](../azure-sql/database/firewall-configure.md)。 若同时将起始 IP 和结束 IP 设置为 0.0.0.0，防火墙将仅对其他 Azure 资源开启。 
 
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server <server-name> --name AllowAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -144,7 +144,7 @@ az sql server firewall-rule create --name AllowLocalClient --server <server-name
 
 ### <a name="create-a-database"></a>创建数据库
 
-使用 [`az sql db create`](/cli/azure/sql/db#az-sql-db-create) 命令在服务器中创建 [S0 性能级别](../azure-sql/database/service-tiers-dtu.md)的数据库。
+使用 [`az sql db create`](/cli/azure/sql/db#az_sql_db_create) 命令在服务器中创建 [S0 性能级别](../azure-sql/database/service-tiers-dtu.md)的数据库。
 
 ```azurecli-interactive
 az sql db create --resource-group myResourceGroup --server <server-name> --name coreDB --service-objective S0
@@ -152,7 +152,7 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 
 ### <a name="create-connection-string"></a>创建连接字符串
 
-使用 [`az sql db show-connection-string`](/cli/azure/sql/db#az-sql-db-show-connection-string) 命令获取连接字符串。
+使用 [`az sql db show-connection-string`](/cli/azure/sql/db#az_sql_db_show_connection_string) 命令获取连接字符串。
 
 ```azurecli-interactive
 az sql db show-connection-string --client ado.net --server <server-name> --name coreDB
@@ -263,7 +263,7 @@ git commit -m "connect to SQLDB in Azure"
 
 ### <a name="configure-connection-string"></a>配置连接字符串
 
-若要为 Azure 应用设置连接字符串，请使用 Cloud Shell 中的 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) 命令。 在下列命令中，将 \<app-name> 和 \<connection-string> 参数替换为先前创建的连接字符串 。
+若要为 Azure 应用设置连接字符串，请使用 Cloud Shell 中的 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) 命令。 在下列命令中，将 \<app-name> 和 \<connection-string> 参数替换为先前创建的连接字符串 。
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app-name> --settings MyDbConnection="<connection-string>" --connection-string-type SQLAzure
@@ -354,7 +354,7 @@ http://<app-name>.azurewebsites.net
 
 ![在应用服务中运行的应用](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-**祝贺你！** 数据驱动的 .NET Core 应用已经在你的应用服务中运行了。
+祝贺你！ 数据驱动的 .NET Core 应用已经在你的应用服务中运行了。
 
 ## <a name="update-locally-and-redeploy"></a>在本地更新并重新部署
 
@@ -464,7 +464,7 @@ git push azure main
 - 在 *DotNetCoreSqlDb.csproj* 中包含了对 `Microsoft.Extensions.Logging.AzureAppServices` 的引用。
 - 在 *Program.cs* 中调用 `loggerFactory.AddAzureWebAppDiagnostics()`。
 
-若要将应用服务中的 ASP.NET Core [日志级别](/aspnet/core/fundamentals/logging#log-level)从默认级别 `Error` 设置为 `Information`，请在 Cloud Shell 中使用 [`az webapp log config`](/cli/azure/webapp/log#az-webapp-log-config) 命令。
+若要将应用服务中的 ASP.NET Core [日志级别](/aspnet/core/fundamentals/logging#log-level)从默认级别 `Error` 设置为 `Information`，请在 Cloud Shell 中使用 [`az webapp log config`](/cli/azure/webapp/log#az_webapp_log_config) 命令。
 
 ```azurecli-interactive
 az webapp log config --name <app-name> --resource-group myResourceGroup --application-logging filesystem --level information
@@ -473,7 +473,7 @@ az webapp log config --name <app-name> --resource-group myResourceGroup --applic
 > [!NOTE]
 > 项目的日志级别在 *appsettings.json* 中已设置为 `Information`。
 
-若要启动日志流式处理，请在 Cloud Shell 中使用 [`az webapp log tail`](/cli/azure/webapp/log#az-webapp-log-tail) 命令。
+若要启动日志流式处理，请在 Cloud Shell 中使用 [`az webapp log tail`](/cli/azure/webapp/log#az_webapp_log_tail) 命令。
 
 ```azurecli-interactive
 az webapp log tail --name <app-name> --resource-group myResourceGroup

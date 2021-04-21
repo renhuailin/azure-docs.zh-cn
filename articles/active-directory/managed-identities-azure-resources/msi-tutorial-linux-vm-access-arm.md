@@ -16,12 +16,12 @@ ms.date: 12/01/2020
 ms.author: barclayn
 ROBOTS: NOINDEX,NOFOLLOW
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 247b3c1b4341eff11069a6af324fff5cf1fba62c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e9c7555235283e892741234b74ddb80ce3a13051
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96546584"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784706"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>教程：使用 Linux VM 上的用户分配托管标识访问 Azure 资源管理器
 
@@ -42,11 +42,11 @@ ms.locfileid: "96546584"
 - 还需要 Linux 虚拟机。 如需为本教程创建虚拟机，则可以按照标题为[使用 Azure 门户创建 Linux 虚拟机](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)的文章进行操作
 - 若要运行示例脚本，有两个选项：
     - 使用 [Azure Cloud Shell](../../cloud-shell/overview.md)，你可使用代码块右上角的“试用”按钮打开它。
-    - 通过安装最新版的 [Azure CLI](/cli/azure/install-azure-cli) 在本地运行脚本，然后使用 [az login](/cli/azure/reference-index#az-login) 登录到 Azure。
+    - 通过安装最新版的 [Azure CLI](/cli/azure/install-azure-cli) 在本地运行脚本，然后使用 [az login](/cli/azure/reference-index#az_login) 登录到 Azure。
 
 ## <a name="create-a-user-assigned-managed-identity"></a>创建用户分配的托管标识
 
-使用 [az identity create](/cli/azure/identity#az-identity-create) 创建用户分配托管标识。 `-g` 参数指定要创建用户分配托管标识的资源组，`-n` 参数指定其名称。 请务必将 `<RESOURCE GROUP>` 和 `<UAMI NAME>` 参数值替换为自己的值：
+使用 [az identity create](/cli/azure/identity#az_identity_create) 创建用户分配托管标识。 `-g` 参数指定要创建用户分配托管标识的资源组，`-n` 参数指定其名称。 请务必将 `<RESOURCE GROUP>` 和 `<UAMI NAME>` 参数值替换为自己的值：
     
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 

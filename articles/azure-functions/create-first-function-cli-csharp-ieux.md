@@ -7,12 +7,12 @@ ms.custom:
 - devx-track-csharp
 - devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a78abea5bcc5925cb2e137d918c7217ae92b118e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2d03f8c820e0a8b6a19394649db66f8028b62781
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102044317"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768788"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>快速入门：在 Azure 中从命令行创建 C# 函数
 
@@ -183,7 +183,7 @@ ms.locfileid: "102044317"
     az group create --name AzureFunctionsQuickstart-rg --location westeurope
     ```
 
-    [az group create](/cli/azure/group#az-group-create) 命令可创建资源组。 通常在附近的 <abbr title="对在其中分配资源的特定 Azure 数据中心的地理引用。">region</abbr> 中创建资源组和资源（使用从 `az account list-locations` 命令返回的可用区域）。
+    [az group create](/cli/azure/group#az_group_create) 命令可创建资源组。 通常在附近的 <abbr title="对在其中分配资源的特定 Azure 数据中心的地理引用。">region</abbr> 中创建资源组和资源（使用从 `az account list-locations` 命令返回的可用区域）。
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 

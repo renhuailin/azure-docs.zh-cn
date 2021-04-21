@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 03/11/2021
+ms.date: 04/19/2021
 ms.author: aahi
 keywords: 文本挖掘, 情绪分析, 文本分析
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: d0fae3c12d4315d829ad4d505e7157e3bf919d99
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 527936e1da385a3622358fe12efa0f87af4b3fd9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599020"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765034"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-and-rest-api"></a>快速入门：使用文本分析客户端库和 REST API
 
@@ -92,7 +92,7 @@ ms.locfileid: "104599020"
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [门户](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>后续步骤

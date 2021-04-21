@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: a4fc645f43858e80eeffc6c1672f6bd4369e7290
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3c56c7d933f840e4418bd481cce0db1bc2216e3f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664577"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785589"
 ---
 # <a name="restore-an-azure-database-for-mariadb-server-using-azure-cli"></a>使用 Azure CLI 还原 Azure Database for MariaDB 服务器
 此示例 CLI 脚本可将单个 Azure Database for MariaDB 服务器还原到前一个时间点。
@@ -37,10 +37,10 @@ ms.locfileid: "98664577"
 
 | **命令** | **说明** |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az mariadb server create](/cli/azure/mariadb/server#az-mariadb-server-create) | 创建用于托管数据库的 MariaDB 服务器。 |
-| [az mariadb server restore](/cli/azure/mariadb/server#az-mariadb-server-restore) | 从备份还原服务器。 |
-| [az group delete](/cli/azure/group#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az mariadb server create](/cli/azure/mariadb/server#az_mariadb_server_create) | 创建用于托管数据库的 MariaDB 服务器。 |
+| [az mariadb server restore](/cli/azure/mariadb/server#az_mariadb_server_restore) | 从备份还原服务器。 |
+| [az group delete](/cli/azure/group#az_group_delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 - 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。

@@ -4,12 +4,12 @@ description: 此脚本在用户订阅模式下创建 Azure Batch 帐户。 此�
 ms.topic: sample
 ms.date: 01/29/2018
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c9b8ba2ef782dcdc99cb18698175b8b53a53f0dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9bd7b7ac3dbb52ebafa00499e64ec3cff0969a13
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93076769"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768322"
 ---
 # <a name="cli-example-create-a-batch-account-in-user-subscription-mode"></a>CLI 示例：在用户订阅模式下创建 Batch 帐户
 
@@ -38,12 +38,12 @@ az group delete --name myResourceGroup
 | 命令 | 说明 |
 |---|---|
 | [az role assignment create](/cli/azure/role) | 为用户、组或服务主体创建新的角色分配。 |
-| [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az keyvault create](/cli/azure/keyvault#az-keyvault-create) | 创建密钥保管库。 |
-| [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) | 更新指定 Key Vault 的安全策略。 |
-| [az batch account create](/cli/azure/batch/account#az-batch-account-create) | 创建批处理帐户。  |
-| [az batch account login](/cli/azure/batch/account#az-batch-account-login) | 针对指定的批处理帐户进行身份验证，以便进一步进行 CLI 交互。  |
-| [az group delete](/cli/azure/group#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az keyvault create](/cli/azure/keyvault#az_keyvault_create) | 创建密钥保管库。 |
+| [az keyvault set-policy](/cli/azure/keyvault#az_keyvault_set_policy) | 更新指定 Key Vault 的安全策略。 |
+| [az batch account create](/cli/azure/batch/account#az_batch_account_create) | 创建批处理帐户。  |
+| [az batch account login](/cli/azure/batch/account#az_batch_account_login) | 针对指定的批处理帐户进行身份验证，以便进一步进行 CLI 交互。  |
+| [az group delete](/cli/azure/group#az_group_delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 

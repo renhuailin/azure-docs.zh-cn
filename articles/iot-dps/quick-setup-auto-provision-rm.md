@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 505859075ce58c5db6873544123710a11135651a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bcb37c624f53d961020de022569a621ca1dfaba1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102198602"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788951"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-dps-with-an-arm-template"></a>快速入门：使用 ARM 模板设置 IoT 中心设备预配服务 (DPS)
 
@@ -61,7 +61,7 @@ ms.locfileid: "102198602"
 
     除非下面已指定，否则请使用默认值创建 IoT 中心和 DPS 资源。
 
-    | 字段 | 描述 |
+    | 字段 | 说明 |
     | :---- | :---------- |
     | **订阅** | 选择 Azure 订阅。 |
     | **资源组** | 单击“新建”，输入资源组的唯一名称，然后单击“确定” 。 |
@@ -136,7 +136,7 @@ ms.locfileid: "102198602"
 
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 
-1. 若要验证部署，请运行下述[用于列出资源的命令](/cli/azure/resource#az-resource-list)，然后在输出中查找新预配服务和 IoT 中心：
+1. 若要验证部署，请运行下述[用于列出资源的命令](/cli/azure/resource#az_resource_list)，然后在输出中查找新预配服务和 IoT 中心：
 
     ```azurecli
      az resource list -g "${projectName}rg"
@@ -171,4 +171,3 @@ az group delete --name "${projectName}rg"
 
 > [!div class="nextstepaction"]
 > [预配设备的快速入门](./quick-create-simulated-device-symm-key.md)
-

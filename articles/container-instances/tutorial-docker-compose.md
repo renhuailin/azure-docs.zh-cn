@@ -4,12 +4,12 @@ description: 使用 Docker Compose 构建并运行多容器应用程序，然后
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.custom: ''
-ms.openlocfilehash: a71ff438feaef555a85c33d818c287c64621d40d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef08b9f9e0f596f1d94c0e6edfd46f735fe78053
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92913834"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786903"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-docker-compose"></a>教程：使用 Docker Compose 部署多容器组 
 
@@ -166,7 +166,7 @@ docker-compose push
 
 推送到注册表可能需要几分钟时间。
 
-若要验证映像是否存储在注册表中，请运行 [az acr repository show](/cli/azure/acr/repository#az-acr-repository-show) 命令：
+若要验证映像是否存储在注册表中，请运行 [az acr repository show](/cli/azure/acr/repository#az_acr_repository_show) 命令：
 
 ```azurecli
 az acr repository show --name <acrName> --repository azure-vote-front

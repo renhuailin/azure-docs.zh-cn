@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: 1e2983fb50ce3ad1482db85025677cba5fee0c2e
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 099b7f4e812e92503c7ed8e3eb733f2e49ccd8b9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889581"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768064"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>教程：通过 IoT 中心设置和使用指标和日志
 
@@ -409,7 +409,7 @@ IoT 中心为几种操作类别发出资源日志；但是，若要查看这些�
 
 若要删除在本教程中创建的所有资源，请删除资源组。 此操作会一并删除组中包含的所有资源。 在此示例下，它会删除 IoT 中心、Log Analytics 工作区和资源组本身。 如果已将指标图表固定到仪表板，则需手动删除这些图表，方法是：单击每个图表右上角的三个点，然后选择“删除”。 删除图表后，请务必保存更改。
 
-若要删除资源组，请使用 [az group delete](/cli/azure/group#az-group-delete) 命令。
+若要删除资源组，请使用 [az group delete](/cli/azure/group#az_group_delete) 命令。
 
 ```azurecli-interactive
 az group delete --name ContosoResources

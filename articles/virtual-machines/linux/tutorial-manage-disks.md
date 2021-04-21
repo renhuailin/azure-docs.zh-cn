@@ -9,12 +9,12 @@ ms.date: 08/20/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.subservice: disks
-ms.openlocfilehash: bbecaa32f85c42954cea6c8e533f0f658eb2dfee
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 56e804bc0d479f09ef2900c42361fbd24eed1d98
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802278"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765946"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>教程 - 使用 Azure CLI 管理 Azure 磁盘
 
@@ -70,13 +70,13 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 ### <a name="attach-disk-at-vm-creation"></a>在 VM 创建时附加磁盘
 
-使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。
+使用“[az group create](/cli/azure/group#az_group_create)”命令创建资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroupDisk --location eastus
 ```
 
-使用 [az vm create](/cli/azure/vm#az-vm-create) 命令创建 VM。 下面的示例创建名为 *myVM* 的 VM，添加名为 *azureuser* 的用户帐户，并生成 SSH 密钥（如果这些密钥不存在）。 `--datadisk-sizes-gb` 参数用于指定应创建并附加到虚拟机的附加磁盘。 若要创建并附加多个磁盘，请使用空格分隔的磁盘大小值列表。 在以下示例中，创建的 VM 具有两个均为 128 GB 的数据磁盘。 因为磁盘大小为 128 GB，所以这两个磁盘都配置为 P10，每个磁盘最多提供 500 IOPS。
+使用 [az vm create](/cli/azure/vm#az_vm_create) 命令创建 VM。 下面的示例创建名为 *myVM* 的 VM，添加名为 *azureuser* 的用户帐户，并生成 SSH 密钥（如果这些密钥不存在）。 `--datadisk-sizes-gb` 参数用于指定应创建并附加到虚拟机的附加磁盘。 若要创建并附加多个磁盘，请使用空格分隔的磁盘大小值列表。 在以下示例中，创建的 VM 具有两个均为 128 GB 的数据磁盘。 因为磁盘大小为 128 GB，所以这两个磁盘都配置为 P10，每个磁盘最多提供 500 IOPS。
 
 ```azurecli-interactive
 az vm create \
@@ -91,7 +91,7 @@ az vm create \
 
 ### <a name="attach-disk-to-existing-vm"></a>将磁盘附加到现有 VM
 
-若要创建新磁盘并将其附加到现有虚拟机，请使用 [az vm disk attach](/cli/azure/vm/disk#az-vm-disk-attach) 命令。 以下示例创建大小为 128 GB 的高级磁盘，并将其附加到上一步创建的 VM 中。
+若要创建新磁盘并将其附加到现有虚拟机，请使用 [az vm disk attach](/cli/azure/vm/disk#az_vm_disk_attach) 命令。 以下示例创建大小为 128 GB 的高级磁盘，并将其附加到上一步创建的 VM 中。
 
 ```azurecli-interactive
 az vm disk attach \
@@ -190,7 +190,7 @@ exit
 
 ### <a name="create-snapshot"></a>创建快照
 
-创建快照之前，需要磁盘的 ID 或名称。 使用 [az vm show](/cli/azure/vm#az-vm-show) 显示磁盘 ID。 在此示例中，磁盘 ID 存储在变量中，以便能够在稍后的步骤中使用。
+创建快照之前，需要磁盘的 ID 或名称。 使用 [az vm show](/cli/azure/vm#az_vm_show) 显示磁盘 ID。 在此示例中，磁盘 ID 存储在变量中，以便能够在稍后的步骤中使用。
 
 ```azurecli-interactive
 osdiskid=$(az vm show \
@@ -200,7 +200,7 @@ osdiskid=$(az vm show \
    -o tsv)
 ```
 
-有了 ID 后，请使用 [az snapshot create](/cli/azure/snapshot#az-snapshot-create) 创建该磁盘的快照。
+有了 ID 后，请使用 [az snapshot create](/cli/azure/snapshot#az_snapshot_create) 创建该磁盘的快照。
 
 ```azurecli-interactive
 az snapshot create \
@@ -211,7 +211,7 @@ az snapshot create \
 
 ### <a name="create-disk-from-snapshot"></a>从快照创建磁盘
 
-然后可以使用 [az disk create](/cli/azure/disk#az-disk-create) 将此快照转换为可用于重新创建虚拟机的磁盘。
+然后可以使用 [az disk create](/cli/azure/disk#az_disk_create) 将此快照转换为可用于重新创建虚拟机的磁盘。
 
 ```azurecli-interactive
 az disk create \
@@ -222,7 +222,7 @@ az disk create \
 
 ### <a name="restore-virtual-machine-from-snapshot"></a>从快照还原虚拟机
 
-若要演示如何还原虚拟机，请使用 [az vm delete](/cli/azure/vm#az-vm-delete) 删除现有虚拟机。
+若要演示如何还原虚拟机，请使用 [az vm delete](/cli/azure/vm#az_vm_delete) 删除现有虚拟机。
 
 ```azurecli-interactive
 az vm delete \
@@ -244,7 +244,7 @@ az vm create \
 
 需要将所有数据磁盘重新附加到虚拟机。
 
-使用 [az disk list](/cli/azure/disk#az-disk-list) 命令找到数据磁盘名称。 此示例将磁盘名称放在名为 `datadisk` 的变量中，会在下一步中使用该变量。
+使用 [az disk list](/cli/azure/disk#az_disk_list) 命令找到数据磁盘名称。 此示例将磁盘名称放在名为 `datadisk` 的变量中，会在下一步中使用该变量。
 
 ```azurecli-interactive
 datadisk=$(az disk list \
@@ -253,7 +253,7 @@ datadisk=$(az disk list \
    -o tsv)
 ```
 
-使用 [ az vm disk attach ](/cli/azure/vm/disk#az-vm-disk-attach) 命令附加磁盘。
+使用 [ az vm disk attach ](/cli/azure/vm/disk#az_vm_disk_attach) 命令附加磁盘。
 
 ```azurecli-interactive
 az vm disk attach \

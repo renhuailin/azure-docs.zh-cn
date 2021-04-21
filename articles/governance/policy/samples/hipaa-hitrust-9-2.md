@@ -1,15 +1,15 @@
 ---
 title: HIPAA HITRUST 9.2 法规合规性详细信息
 description: HIPAA HITRUST 9.2 法规合规性内置计划的详细信息。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: db8f3c887a6ed7beb2febb6910bec32e7b0ea218
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: ad5700090eda9fad4c607c1f24503f1483cd36fe
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106096387"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107506238"
 ---
 # <a name="details-of-the-hipaa-hitrust-92-regulatory-compliance-built-in-initiative"></a>HIPAA HITRUST 9.2 法规合规性内置计划的详细信息
 

@@ -5,12 +5,12 @@ ms.author: askaur
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 773bca81694534346019e30e9d55190af6f51e74
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 49f9bac40ae803f980a22c19fd5d44d85fa99e9e
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106781"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564519"
 ---
 ## <a name="joining-the-meeting-chat"></a>加入会议聊天 
 
@@ -286,7 +286,7 @@ sendMessageButton.addEventListener("click", async () =>
 
 ## <a name="get-a-teams-meeting-chat-thread-for-a-communication-services-user"></a>获取通信服务用户的 Teams 会议聊天线程
 
-可以使用图形 API 来检索 Teams 会议链接和聊天，详情请参见[图形文档](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta)。 通信服务呼叫 SDK 接受完整的 Teams 会议链接。 此链接作为 `onlineMeeting` 资源的一部分返回，可在具有[图像 API](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta) 的 [`joinWebUrl` 属性](/graph/api/resources/onlinemeeting?view=graph-rest-beta)下访问，也可获取 `threadId`。 响应将获得包含 `threadID` 的 `chatInfo` 对象。 
+可以使用图形 API 来检索 Teams 会议链接和聊天，详情请参见[图形文档](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)。 通信服务呼叫 SDK 接受完整的 Teams 会议链接。 此链接作为 `onlineMeeting` 资源的一部分返回，可在具有[图像 API](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true) 的 [`joinWebUrl` 属性](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true)下访问，也可获取 `threadId`。 响应将获得包含 `threadID` 的 `chatInfo` 对象。 
 
 还可以从 Teams 会议邀请本身的“加入会议”URL 中获取所需的会议信息和线程 ID。
 Teams 会议链接如下所示：`https://teams.microsoft.com/l/meetup-join/meeting_chat_thread_id/1606337455313?context=some_context_here`。 `threadId` 将为 `meeting_chat_thread_id` 在链接中的位置。 确保在使用 `meeting_chat_thread_id` 之前未对其进行转义。 该值应采用以下格式：`19:meeting_ZWRhZDY4ZGUtYmRlNS00OWZaLTlkZTgtZWRiYjIxOWI2NTQ4@thread.v2`

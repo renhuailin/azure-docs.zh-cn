@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: ffbbeb9eac94cdc76c8086623bf16488d8a2d9e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 655c98e5249b66b114dfbe1d88cf951001d07af2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97006236"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787846"
 ---
 # <a name="create-an-app-service-app-with-deployment-from-github-using-azure-cli"></a>使用 Azure CLI 从 GitHub 通过部署创建应用服务应用
 
@@ -38,10 +38,10 @@ ms.locfileid: "97006236"
 
 | 命令 | 说明 |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | 创建应用服务计划。 |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | 创建应用服务应用。 |
-| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config) | 将应用服务应用与 Git 或 Mercurial 存储库相关联。 |
+| [`az group create`](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | 创建应用服务计划。 |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | 创建应用服务应用。 |
+| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config) | 将应用服务应用与 Git 或 Mercurial 存储库相关联。 |
 
 ## <a name="next-steps"></a>后续步骤
 

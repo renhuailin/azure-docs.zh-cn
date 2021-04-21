@@ -3,16 +3,18 @@ title: 快速入门：使用 Azure PowerShell 创建并配置路由服务器
 description: 这篇快速入门文章介绍如何使用 Azure PowerShell 来创建并配置路由服务器。
 services: route-server
 author: duongau
-ms.service: route-server
-ms.topic: quickstart
-ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: a3ab3a801872cc20b4e41bbff02ad6474c3bab8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/02/2021
+ms.topic: quickstart
+ms.service: route-server
+ms.custom:
+- mode-api
+ms.openlocfilehash: 608ec3755fcd231d5cc89bbc28a01ce172978144
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104655200"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538717"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建并配置路由服务器
 

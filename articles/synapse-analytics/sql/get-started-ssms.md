@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: da698a1a8d91273321d4633abd683a06cb4cf403
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 222505b03aac5bfc4e8d00b8c8977bece34dee85
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96451624"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567502"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 连接到 Synapse SQL
 > [!div class="op_single_selector"]
@@ -89,7 +89,7 @@ ms.locfileid: "96451624"
 现在已经建立了数据库连接，可以查询数据了。
 
 1. 在 SQL Server 对象资源管理器中右键单击数据库。
-2. 选择“新建查询”  。 “新建查询”窗口随即打开。
+2. 选择“新建查询”。 “新建查询”窗口随即打开。
    
     ![新建查询 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/new-query.png)
 3. 将以下 T-SQL 查询复制到查询窗口中：
@@ -109,7 +109,7 @@ ms.locfileid: "96451624"
 现在已经建立了数据库连接，可以查询数据了。
 
 1. 在 SQL Server 对象资源管理器中右键单击数据库。
-2. 选择“新建查询”  。 “新建查询”窗口随即打开。
+2. 选择“新建查询”。 “新建查询”窗口随即打开。
    
     ![新建查询 2](./media/get-started-ssms/new-query.png)
 3. 将以下 T-SQL 查询复制到查询窗口中：

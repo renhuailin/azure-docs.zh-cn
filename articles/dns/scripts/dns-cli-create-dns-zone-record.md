@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 09/20/2019
 ms.author: rohink
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 348b7911930711a25c88595b6360341ef6e00468
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5692c7a81d34ec9005c1c4675c71d63e697c5f47
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94954420"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783694"
 ---
 # <a name="azure-cli-script-example-create-a-dns-zone-and-record"></a>Azure CLI 脚本示例：创建 DNS 区域和记录
 
@@ -41,11 +41,11 @@ az group delete -n myResourceGroup
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az network dns zone create](/cli/azure/network/dns/zone#az-network-dns-zone-create) | 创建 Azure DNS 区域。 |
+| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az network dns zone create](/cli/azure/network/dns/zone#az_network_dns_zone_create) | 创建 Azure DNS 区域。 |
 | [az network dns record-set a add-record](/cli/azure/network/dns/record-set) | 将 *A* 记录添加到 DNS 区域。 |
 | [az network dns record-set list](/cli/azure/network/dns/record-set) | 列出 DNS 区域中的所有 *A* 记录集。 |
-| [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | 删除资源组，包括所有嵌套的资源。 |
+| [az group delete](/cli/azure/vm/extension#az_vm_extension_set) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 

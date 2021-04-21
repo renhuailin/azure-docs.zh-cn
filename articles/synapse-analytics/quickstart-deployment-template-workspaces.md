@@ -3,17 +3,18 @@ title: 快速入门：创建 Azure Synapse 工作区 - Azure 资源管理器模�
 description: 了解如何使用 Azure 资源管理器模板（ARM 模板）创建 Synapse 工作区。
 services: azure-resource-manager
 author: julieMSFT
-ms.service: azure-resource-manager
+ms.service: synapse-analytics
+ms.subservice: workspace
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 08/07/2020
-ms.openlocfilehash: 2b05220081dde4db6f07f21fb9978d9e466235ca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7317b7f51c6d0f9d72e3aad81794a569276d2145
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92740375"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566114"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure Synapse 工作区
 

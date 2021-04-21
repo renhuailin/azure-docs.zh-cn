@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: overview
 ms.date: 03/23/2021
-ms.openlocfilehash: 1825f5be8a4f8a8ddfba931dfbc7e77186b4331f
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: aa65989953f761ff915383fcb59da7f36ea98dab
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889444"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600476"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure 安全中心免费版与已启用 Azure Defender
 Azure Defender 前 30 天免费。 30 天后，如果选择继续使用服务，我们会自动开始收取使用费用。
@@ -70,7 +70,7 @@ Azure 订阅可能具有多个管理员，这些管理员有权更改定价设�
 ### <a name="how-do-i-enable-azure-defender-for-my-subscription"></a>如何为订阅启用 Azure Defender？ 
 可以使用以下任一方法启用订阅的 Azure Defender： 
 
-| 方法                                          | 说明                                                                                                                                       |
+| 方法                                          | Instructions                                                                                                                                       |
 |-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure 门户的 Azure 安全中心页面 | [启用 Azure Defender](enable-azure-defender.md)                                                                                                  |
 | REST API                                        | [定价 API](/rest/api/securitycenter/pricings)                                                                                                  |
@@ -119,7 +119,7 @@ Azure 订阅可能具有多个管理员，这些管理员有权更改定价设�
 
 ### <a name="what-data-types-are-included-in-the-500-mb-data-daily-allowance"></a>每日 500 MB 数据限额中包含哪些数据类型？
 
-安全中心的账单与 Log Analytics 账单密切相关。 安全中心根据以下[安全数据类型](/azure/azure-monitor/reference/tables/tables-category.md#security)子集提供 500 MB/节点/天分配额：
+安全中心的账单与 Log Analytics 账单密切相关。 安全中心根据以下[安全数据类型](/azure/azure-monitor/reference/tables/tables-category#security)子集提供 500 MB/节点/天分配额：
 - WindowsEvent
 - SecurityAlert
 - SecurityBaseline
