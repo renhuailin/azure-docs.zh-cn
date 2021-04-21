@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/22/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 49c98905d99e5895dd0d2aa7e6a06e7a3605897e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 320457365a36825564154c36ad843ef665fc2d2c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606124"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791546"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-flexible-server-using-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure Database for PostgreSQL 灵活服务器
 
@@ -32,13 +32,13 @@ ms.locfileid: "105606124"
 
 ## <a name="prerequisites"></a>先决条件
 
-你将需要使用 [az login](/cli/azure/reference-index#az-login) 命令登录到你的帐户。 请注意 id 属性，该属性指的是 Azure 帐户的订阅 ID。
+你将需要使用 [az login](/cli/azure/reference-index#az_login) 命令登录到你的帐户。 请注意 id 属性，该属性指的是 Azure 帐户的订阅 ID。
 
 ```azurecli-interactive
 az login
 ```
 
-使用 [az account set](/cli/azure/account#az-account-set) 命令选择帐户下的特定订阅。 记下 az login 输出中的 id 值，以用作命令中订阅参数的值。 如果有多个订阅，请选择应计费的资源所在的相应订阅。 若要获取所有订阅，请使用 [az account list](/cli/azure/account#az-account-list)。
+使用 [az account set](/cli/azure/account#az_account_set) 命令选择帐户下的特定订阅。 记下 az login 输出中的 id 值，以用作命令中订阅参数的值。 如果有多个订阅，请选择应计费的资源所在的相应订阅。 若要获取所有订阅，请使用 [az account list](/cli/azure/account#az_account_list)。
 
 ```azurecli
 az account set --subscription <subscription id>

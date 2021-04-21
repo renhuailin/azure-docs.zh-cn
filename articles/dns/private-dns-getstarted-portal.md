@@ -3,16 +3,18 @@ title: 快速入门 - 使用 Azure 门户创建 Azure 专用 DNS 区域
 description: 在本快速入门中，将在 Azure DNS 中创建并测试专用 DNS 区域和记录。 这是有关使用 Azure 门户创建和管理第一个专用 DNS 区域和记录的分步指南。
 services: dns
 author: rohinkoul
-ms.service: dns
-ms.topic: quickstart
-ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: d298dfd5f3ad0beb56a511c124bab056ca25fd27
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/20/2020
+ms.topic: quickstart
+ms.service: dns
+ms.custom:
+- mode-portal
+ms.openlocfilehash: 2115062db8615ca782cb987903e5ebfc83400cd2
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92310055"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535441"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure 专用 DNS 区域
 
@@ -181,4 +183,3 @@ DNS 区域包含域的 DNS 条目。 若要开始在 Azure DNS 中托管域，�
 
 > [!div class="nextstepaction"]
 > [Azure DNS 专用区域方案](private-dns-scenarios.md)
-

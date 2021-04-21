@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: overview
 ms.custom: mvc
-ms.date: 03/11/2020
-ms.openlocfilehash: 4c4e8c8f809452286fee493e20dbef2cc538c8bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/24/2021
+ms.openlocfilehash: 285cff6df757fd765f177692f67b8d0824103a18
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96921537"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764740"
 ---
 # <a name="what-is-azure-logic-apps"></a>什么是 Azure 逻辑应用？
 
@@ -92,7 +92,7 @@ ms.locfileid: "96921537"
   * [XML 转换映射](../logic-apps/logic-apps-enterprise-integration-maps.md)
   * [XML 验证架构](../logic-apps/logic-apps-enterprise-integration-schemas.md)
 
-例如，如果使用 Microsoft BizTalk Server，则逻辑应用可以使用 [BizTalk Server 连接器](../connectors/apis-list.md#on-premises-connectors)与 BizTalk Server 通信。 然后，可以通过包含[集成帐户连接器](../connectors/apis-list.md#integration-account-connectors)（已在 Enterprise Integration Pack 中提供），在逻辑应用中进行扩展或执行类似于 BizTalk 的操作。
+例如，如果使用 Microsoft BizTalk Server，则逻辑应用可以使用 [BizTalk Server 连接器](../connectors/managed.md#on-premises-connectors)与 BizTalk Server 通信。 然后，可以通过包含[集成帐户连接器](../connectors/managed.md#integration-account-connectors)（已在 Enterprise Integration Pack 中提供），在逻辑应用中进行扩展或执行类似于 BizTalk 的操作。
 
 从另一个方向看，BizTalk Server 可以使用[适用于逻辑应用的 Microsoft BizTalk Server 适配器](https://www.microsoft.com/download/details.aspx?id=54287)连接到逻辑应用并与其通信。 了解如何在 BizTalk Server 中[设置和使用 BizTalk 服务器适配器](/biztalk/core/logic-app-adapter)。
 

@@ -6,12 +6,12 @@ ms.author: margard
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/10/2020
-ms.openlocfilehash: 99e3611711e9a25119a4428d7736a36073163894
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: b737ea751d3b3d2132691e04a1a2cd853748db65
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877092"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792500"
 ---
 # <a name="tutorial-use-a-managed-identity-to-invoke-azure-functions-from-an-azure-spring-cloud-app"></a>教程：使用托管标识从 Azure Spring Cloud 应用调用 Azure Functions
 
@@ -29,7 +29,7 @@ Azure Functions 和应用服务都内置了对 Azure Active Directory (Azure AD)
 
 
 ## <a name="create-a-resource-group"></a>创建资源组
-资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/azure/group#az-group-create) 命令创建一个资源组，以同时包含函数应用和 Spring Cloud：
+资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/azure/group#az_group_create) 命令创建一个资源组，以同时包含函数应用和 Spring Cloud：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -37,7 +37,7 @@ az group create --name myResourceGroup --location eastus
 
 
 ## <a name="create-a-function-app"></a>创建函数应用
-若要创建函数应用，必须先使用 [az storage account create](/cli/azure/storage/account#az-storage-account-create) 命令创建一个后备存储帐户：
+若要创建函数应用，必须先使用 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令创建一个后备存储帐户：
 
 > [!Important]
 > 每个函数应用和存储帐户都必须具有唯一名称。 在下面的示例中，将 <your-functionapp-name> 替换为函数应用的名称，将 <your-storageaccount-name> 替换为存储帐户的名称。

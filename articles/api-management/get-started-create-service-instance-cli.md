@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: ''
 ms.date: 09/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 72d1faac02a21f23d46eb992af1d501bca89e71f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 19fc2e1629e7f67063e3cc3eec8cb3707b6dd2e4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688070"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775819"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建新的 Azure API 管理服务实例
 
@@ -30,7 +30,7 @@ Azure API 管理 (APIM) 可帮助组织将 API 发布给外部、合作伙伴和
 
 Azure API 管理实例像所有 Azure 资源一样必须部署到资源组中。 使用资源组可以组织和管理相关的 Azure 资源。
 
-首先，使用以下 [az group create](/cli/azure/group#az-group-create) 命令在“美国中部”位置中创建一个名为“myResourceGroup”的资源组：
+首先，使用以下 [az group create](/cli/azure/group#az_group_create) 命令在“美国中部”位置中创建一个名为“myResourceGroup”的资源组：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location centralus
@@ -38,7 +38,7 @@ az group create --name myResourceGroup --location centralus
 
 ## <a name="create-a-new-service"></a>创建新服务
 
-现在，你已有了一个资源组，可以创建 API 管理服务实例了。 使用 [az apim create](/cli/azure/apim#az-apim-create) 命令创建一个，并提供服务名称和发布者详细信息。 服务名称在 Azure 中必须独一无二。 
+现在，你已有了一个资源组，可以创建 API 管理服务实例了。 使用 [az apim create](/cli/azure/apim#az_apim_create) 命令创建一个，并提供服务名称和发布者详细信息。 服务名称在 Azure 中必须独一无二。 
 
 在下面的示例中，使用“myapim”作为服务名称。 将该名称更新为唯一值。 同时更新 API 发布者的组织的名称以及用于接收通知的电子邮件地址。 
 
@@ -53,7 +53,7 @@ az apim create --name myapim --resource-group myResourceGroup \
 > [!TIP]
 > 在此层中创建和激活 API 管理服务可能需要 30 到 40 分钟。 上一命令使用了 `--no-wait` 选项，因此在创建服务后该命令会立即返回。
 
-通过运行 [az apim show](/cli/azure/apim#az-apim-show) 命令检查部署的状态：
+通过运行 [az apim show](/cli/azure/apim#az_apim_show) 命令检查部署的状态：
 
 ```azurecli-interactive
 az apim show --name myapim --resource-group myResourceGroup --output table
@@ -79,7 +79,7 @@ myapim       myResourceGroup   Central US  https://myapim.azure-api.net       20
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组和 API 管理服务实例，可以使用 [az group delete](/cli/azure/group#az-group-delete) 命令将其删除。
+如果不再需要资源组和 API 管理服务实例，可以使用 [az group delete](/cli/azure/group#az_group_delete) 命令将其删除。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

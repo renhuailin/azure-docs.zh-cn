@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: 668988ae34c2f97f3baca3f360c13e3ec3e30731
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 771c79f56a31c83f2152886ad6cf68367776f83f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100586355"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767221"
 ---
 # <a name="app-service-overview"></a>应用服务概述
 
@@ -44,7 +44,7 @@ Azure 应用服务是一项基于 HTTP 的服务，用于托管 Web 应用程序
 
 ### <a name="built-in-languages-and-frameworks"></a>内置语言和框架
 
-Linux 上的应用服务支持许多特定于语言的内置映像。 只需部署代码。 支持的语言包括：Node.js、Java（JRE 8 和 JRE 11）、PHP、Python、.NET Core 和 Ruby。 运行 [`az webapp list-runtimes --linux`](/cli/azure/webapp#az-webapp-list-runtimes) 查看最新语言和支持的版本。 如果内置映像中不支持应用程序所需的运行时，则可以使用自定义容器部署运行时。
+Linux 上的应用服务支持许多特定于语言的内置映像。 只需部署代码。 支持的语言包括：Node.js、Java（JRE 8 和 JRE 11）、PHP、Python、.NET Core 和 Ruby。 运行 [`az webapp list-runtimes --linux`](/cli/azure/webapp#az_webapp_list_runtimes) 查看最新语言和支持的版本。 如果内置映像中不支持应用程序所需的运行时，则可以使用自定义容器部署运行时。
 
 过期运行时会定期从门户的“Web 应用创建和配置”边栏选项卡中删除。 当维护组织弃用这些运行时，或发现存在重大漏洞时，这些运行时将在门户中隐藏。 隐藏这些选项可指引客户使用最新的运行时，这样他们才最能成功。 
 

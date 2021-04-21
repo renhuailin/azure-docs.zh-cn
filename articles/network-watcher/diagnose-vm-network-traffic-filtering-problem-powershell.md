@@ -5,23 +5,27 @@ description: 了解如何通过 Azure PowerShell 使用 Azure 网络观察程序
 services: network-watcher
 documentationcenter: network-watcher
 author: damendo
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: network-watcher
-ms.devlang: na
-ms.topic: quickstart
-ms.tgt_pltfrm: network-watcher
-ms.workload: infrastructure
-ms.date: 01/07/2021
 ms.author: damendo
-ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 9cccd6d17cb741a616d428db5b318fab2334f73b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+editor: ''
+ms.date: 01/07/2021
+ms.assetid: ''
+ms.topic: quickstart
+ms.service: network-watcher
+ms.workload: infrastructure
+ms.tgt_pltfrm: network-watcher
+ms.devlang: na
+tags:
+- azure-resource-manager
+ms.custom:
+- mvc
+- devx-track-azurepowershell
+- mode-api
+ms.openlocfilehash: fafe090d72d53b33ddb3e9863b7e62deba1055c5
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065559"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535772"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>快速入门：诊断虚拟机网络流量筛选器问题 - Azure PowerShell
 
@@ -33,7 +37,7 @@ ms.locfileid: "106065559"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 PowerShell，则本快速入门需要 Azure PowerShell `Az` 模块。 要查找已安装的版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本快速入门需要 Azure PowerShell `Az` 模块。 要查找已安装的版本，请运行 `Get-Module -ListAvailable Az`。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 
 

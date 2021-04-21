@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 315519472baa672e802855b5ab21b8bae8f51935
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: d03a4865c8db52f74f4130c458fec3028f5b95a4
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109843"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481661"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure 数字孪生是什么？
 
@@ -102,6 +102,6 @@ Azure 数字孪生通常与其他 Azure 服务结合使用，作为较大 IoT �
 
 ## <a name="next-steps"></a>后续步骤
 
-* 在快速入门中深入研究如何使用 Azure 数字孪生：[*快速入门：浏览示例方案*](quickstart-adt-explorer.md)。
+* 在快速入门中深入研究如何使用 Azure 数字孪生：[*快速入门：浏览示例方案*](quickstart-azure-digital-twins-explorer.md)。
 
 * 或者，通过[概念：自定义模型](concepts-models.md)，开始了解有关 Azure 数字孪生概念的信息。

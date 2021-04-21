@@ -1,15 +1,15 @@
 ---
 title: NIST SP 800-53 R4 法规符合性详细信息
 description: NIST SP 800-53 R4 法规符合性内置计划的详细信息。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 24cbc7ef8118ffc19c9052d955ccca9fd87b0642
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 0fe88525bc574219729a7f90fba1bf82803e5854
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106092868"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505337"
 ---
 # <a name="details-of-the-nist-sp-800-53-r4-regulatory-compliance-built-in-initiative"></a>NIST SP 800-53 R4 法规符合性内置计划的详细信息
 

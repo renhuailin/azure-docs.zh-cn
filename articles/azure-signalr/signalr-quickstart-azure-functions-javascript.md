@@ -2,18 +2,20 @@
 title: 通过 JavaScript 使用 Azure Functions 和 SignalR 服务创建聊天室
 description: 有关如何使用 Azure SignalR 服务和 Azure Functions 通过 JavaScript 创建聊天室的快速入门。
 author: sffamily
+ms.author: zhshang
+ms.date: 12/14/2019
+ms.topic: quickstart
 ms.service: signalr
 ms.devlang: javascript
-ms.topic: quickstart
-ms.date: 12/14/2019
-ms.author: zhshang
-ms.custom: devx-track-js
-ms.openlocfilehash: 061dce01d2437d04d371ac65c115a1d95136fb5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- devx-track-js
+- mode-api
+ms.openlocfilehash: 5e2c9dcd1efc85e1ea3fe6381cbfbff0c5e62fc5
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94874689"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533220"
 ---
 # <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>快速入门：通过 JavaScript 使用 Azure Functions 和 SignalR 服务创建聊天室
 
@@ -95,4 +97,3 @@ Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Az
 
 > [!div class="nextstepaction"]
 > [使用 VS Code 部署 Azure Functions](/azure/developer/javascript/tutorial-vscode-serverless-node-01)
-

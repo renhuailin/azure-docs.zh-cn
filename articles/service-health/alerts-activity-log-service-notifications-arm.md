@@ -1,15 +1,17 @@
 ---
 title: 使用资源管理器模板接收有关 Azure 服务通知的活动日志警报
 description: 在 Azure 服务发生时，通过短信、电子邮件或 webhook 接收通知。
-ms.topic: quickstart
-ms.custom: subject-armqs
 ms.date: 06/29/2020
-ms.openlocfilehash: 532fbae505e0bcaa6ab31a2e935362114537d134
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: 730c023de61275d95fe594642149770af42b34b9
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100594949"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535759"
 ---
 # <a name="quickstart-create-activity-log-alerts-on-service-notifications-using-an-arm-template"></a>快速入门：使用 ARM 模板创建有关服务通知的活动日志警报
 

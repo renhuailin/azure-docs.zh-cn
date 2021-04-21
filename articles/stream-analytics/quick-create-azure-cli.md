@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: a3cc4c3d6936a51ca2010209ce23e4d82c9333eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58dccf56cd493782a422b0ddf0386e31d4d87daf
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98016332"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765982"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure 流分析作业
 
@@ -29,7 +29,7 @@ ms.locfileid: "98016332"
 
 - 创建资源组。 必须将所有 Azure 资源部署到资源组。 使用资源组可以组织和管理相关的 Azure 资源。
 
-   对于本快速入门，请使用以下 [az group create](/cli/azure/group#az-group-create) 命令在 eastus 位置创建名为 streamanalyticsrg 的资源组 ：
+   对于本快速入门，请使用以下 [az group create](/cli/azure/group#az_group_create) 命令在 eastus 位置创建名为 streamanalyticsrg 的资源组 ：
 
    ```azurecli
    az group create --name streamanalyticsrg --location eastus

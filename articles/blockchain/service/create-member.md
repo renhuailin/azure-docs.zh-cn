@@ -1,16 +1,18 @@
 ---
 title: 创建 Azure 区块链服务成员 - Azure 门户
 description: 使用 Azure 门户创建区块链联盟的 Azure 区块链服务成员。
+ms.reviewer: ravastra
 ms.date: 07/16/2020
 ms.topic: quickstart
-ms.reviewer: ravastra
-ms.custom: references_regions
-ms.openlocfilehash: 8a7f5aaea56f34e8107664ab786a14b59cd1cb7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- references_regions
+- mode-portal
+ms.openlocfilehash: 9fe8b7856a99930c16b4173e432fa0b30642582c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91292721"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536197"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure 区块链服务区块链成员
 

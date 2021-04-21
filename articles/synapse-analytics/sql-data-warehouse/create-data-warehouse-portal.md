@@ -3,20 +3,23 @@ title: 快速入门：创建和查询专用 SQL 池（之前称为 SQL DW）（A
 description: 使用 Azure 门户创建和查询专用 SQL 池（之前称为 SQL DW）
 services: synapse-analytics
 author: pimorano
-manager: craigg
-ms.service: synapse-analytics
-ms.topic: quickstart
-ms.subservice: sql-dw
-ms.date: 05/28/2019
 ms.author: pimorano
+manager: craigg
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: dd9d66683d5f2349807915651c50bf9eedd285c1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 05/28/2019
+ms.topic: quickstart
+ms.service: synapse-analytics
+ms.subservice: sql-dw
+ms.custom:
+- seo-lt-2019
+- azure-synapse
+- mode-portal
+ms.openlocfilehash: 99530b1949f03867a5b755208191341556ba8083
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104602224"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535846"
 ---
 # <a name="quickstart-create-and-query-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Synapse Analytics 中创建和查询专用 SQL 池（之前称为 SQL DW）
 
@@ -33,7 +36,7 @@ ms.locfileid: "104602224"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-a-sql-pool"></a>创建 SQL 池
 
@@ -118,7 +121,7 @@ Azure Synapse 服务将在服务器级别创建防火墙。 此防火墙会阻�
 
 请在 Azure 门户中获取服务器的完全限定的服务器名称。 稍后，在连接到服务器时，将使用该完全限定的名称。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 2. 在左侧菜单中选择“Azure Synapse Analytics”，然后在“Azure Synapse Analytics”页上选择你的 SQL 池。 
 

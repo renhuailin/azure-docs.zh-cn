@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 1956d51cbcf962f7a73e970ca2cec858d9ec6579
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 9b332b18930d58ebb1d155c35a74eed69a90ce73
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056498"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788756"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>快速入门：使用 Azure CLI 创建公共负载均衡器以对 VM 进行负载均衡
 
@@ -36,7 +36,7 @@ ms.locfileid: "106056498"
 
 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-使用 [az group create](/cli/azure/group#az-group-create) 创建资源组：
+使用 [az group create](/cli/azure/group#az_group_create) 创建资源组：
 
 * 命名为“CreatePubLBQS-rg”。 
 * 在位置“eastus”中。
@@ -61,7 +61,7 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 
-使用 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-createt) 创建虚拟网络：
+使用 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_createt) 创建虚拟网络：
 
 * 命名为“myVNet”。
 * 地址前缀为 10.1.0.0/16。
@@ -81,7 +81,7 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 ```
 ### <a name="create-a-public-ip-address"></a>创建公共 IP 地址
 
-使用 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) 为堡垒主机创建公共 IP：
+使用 [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) 为堡垒主机创建公共 IP：
 
 * 创建名为“myBastionIP”的标准区域冗余公共 IP 地址。
 * 在“CreatePubLBQS-rg”中。
@@ -94,7 +94,7 @@ az network public-ip create \
 ```
 ### <a name="create-a-bastion-subnet"></a>创建堡垒子网
 
-使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) 创建堡垒子网：
+使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) 创建堡垒子网：
 
 * 命名为 AzureBastionSubnet。
 * 地址前缀为 10.1.1.0/24。
@@ -111,7 +111,7 @@ az network vnet subnet create \
 
 ### <a name="create-bastion-host"></a>创建堡垒主机
 
-使用 [az network bastion create](/cli/azure/network/bastion#az-network-bastion-create) 创建堡垒主机：
+使用 [az network bastion create](/cli/azure/network/bastion#az_network_bastion_create) 创建堡垒主机：
 
 * 命名为 myBastionHost。
 * 在“CreatePubLBQS-rg”中。
@@ -134,7 +134,7 @@ az network bastion create \
 
 对于标准负载均衡器，后端地址中的 VM 需要具有属于网络安全组的网络接口。 
 
-使用 [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) 创建网络安全组：
+使用 [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) 创建网络安全组：
 
 * 命名为“myNSG”。
 * 在“CreatePubLBQS-rg”资源组中。
@@ -147,7 +147,7 @@ az network bastion create \
 
 ### <a name="create-a-network-security-group-rule"></a>创建网络安全组规则
 
-使用 [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) 创建网络安全组规则：
+使用 [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) 创建网络安全组规则：
 
 * 命名为“myNSGRuleHTTP”。
 * 在上一步创建的网络安全组“myNSG”中。
@@ -184,7 +184,7 @@ az network bastion create \
 
 ### <a name="create-network-interfaces-for-the-virtual-machines"></a>为虚拟机创建网络接口
 
-使用 [az network nic create](/cli/azure/network/nic#az-network-nic-create) 创建三个网络接口：
+使用 [az network nic create](/cli/azure/network/nic#az_network_nic_create) 创建三个网络接口：
 
 * 名为 myNicVM1、myNicVM2 和 myNicVM3  。
 * 在“CreatePubLBQS-rg”资源组中。
@@ -207,7 +207,7 @@ az network bastion create \
 
 ### <a name="create-virtual-machines"></a>创建虚拟机
 
-使用 [az vm create](/cli/azure/vm#az-vm-create) 创建虚拟机：
+使用 [az vm create](/cli/azure/vm#az_vm_create) 创建虚拟机：
 
 ### <a name="vm1"></a>VM1
 * 命名为“myVM1”。
@@ -263,11 +263,13 @@ az network bastion create \
 ```
 可能需要花费几分钟时间才能部署 VM。
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 ## <a name="create-a-public-ip-address---standard"></a>创建公共 IP 地址 - 标准
 
 若要通过 Internet 访问 Web 应用，需要负载均衡器有一个公共 IP 地址。 
 
-使用 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) 执行以下操作：
+使用 [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) 执行以下操作：
 
 * 创建名为“myPublicIP”的标准区域冗余公共 IP 地址。
 * 在“CreatePubLBQS-rg”中。
@@ -300,7 +302,7 @@ az network bastion create \
 
 ### <a name="create-the-load-balancer-resource"></a>创建负载均衡器资源
 
-使用 [az network lb create](/cli/azure/network/lb#az-network-lb-create) 创建公共负载均衡器：
+使用 [az network lb create](/cli/azure/network/lb#az_network_lb_create) 创建公共负载均衡器：
 
 * 命名为 myLoadBalancer。
 * 前端池命名为 myFrontEnd。
@@ -323,7 +325,7 @@ az network bastion create \
 
 从负载均衡器中删除未通过探测检查的虚拟机。 解决故障后，虚拟机将重新添加到负载均衡器中。
 
-使用 [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create) 创建运行状况探测：
+使用 [az network lb probe create](/cli/azure/network/lb/probe#az_network_lb_probe_create) 创建运行状况探测：
 
 * 监视虚拟机的运行状况。
 * 命名为“myHealthProbe”。
@@ -347,7 +349,7 @@ az network bastion create \
 * 用于接收流量的后端 IP 池。
 * 所需的源和目标端口。 
 
-使用 [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) 创建负载均衡器规则：
+使用 [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) 创建负载均衡器规则：
 
 * 命名为“myHTTPRule”
 * 对前端池“myFrontEnd”中的“端口 80”进行侦听 。
@@ -376,7 +378,7 @@ az network bastion create \
 ```
 ### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>将虚拟机添加到负载均衡器后端池
 
-使用 [az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool#az-network-nic-ip-config-address-pool-add) 将虚拟机添加到后端池：
+使用 [az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool#az_network_nic_ip_config_address_pool_add) 将虚拟机添加到后端池：
 
 * 在后端地址池“myBackEndPool”中。
 * 在“CreatePubLBQS-rg”资源组中。
@@ -404,7 +406,7 @@ az network bastion create \
 
 ### <a name="public-ip"></a>公共 IP
 
-使用 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) 为出站连接创建单个 IP。  
+使用 [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) 为出站连接创建单个 IP。  
 
 * 命名为 myPublicIPOutbound。
 * 在“CreatePubLBQS-rg”中。
@@ -428,7 +430,7 @@ az network bastion create \
 
 ### <a name="public-ip-prefix"></a>公共 IP 前缀
 
-使用 [az network public-ip create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create) 为出站连接创建公共 IP 前缀。
+使用 [az network public-ip create](/cli/azure/network/public-ip/prefix#az_network_public_ip_prefix_create) 为出站连接创建公共 IP 前缀。
 
 * 命名为 myPublicIPPrefixOutbound。
 * 在“CreatePubLBQS-rg”中。
@@ -454,7 +456,7 @@ az network bastion create \
 
 ### <a name="create-outbound-frontend-ip-configuration"></a>创建出站前端 IP 配置
 
-使用 [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip#az-network-lb-frontend-ip-create) 创建新的前端 IP 配置：
+使用 [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_create) 创建新的前端 IP 配置：
 
 根据上一步中的决定选择公共 IP 或公共 IP 前缀命令。
 
@@ -490,7 +492,7 @@ az network bastion create \
 
 ### <a name="create-outbound-pool"></a>创建出站池
 
-使用 [az network lb address create](/cli/azure/network/lb/address-pool#az-network-lb-address-pool-create) 创建新的出站池：
+使用 [az network lb address create](/cli/azure/network/lb/address-pool#az_network_lb_address_pool_create) 创建新的出站池：
 
 * 命名为“myBackEndPoolOutbound”。
 * 在“CreatePubLBQS-rg”资源组中。
@@ -504,7 +506,7 @@ az network bastion create \
 ```
 ### <a name="create-outbound-rule"></a>创建出站规则
 
-使用 [az network lb outbound-rule create](/cli/azure/network/lb/outbound-rule#az-network-lb-outbound-rule-create) 为出站后端池创建新的出站规则：
+使用 [az network lb outbound-rule create](/cli/azure/network/lb/outbound-rule#az_network_lb_outbound_rule_create) 为出站后端池创建新的出站规则：
 
 * 命名为“myOutboundRule”。
 * 在“CreatePubLBQS-rg”资源组中。
@@ -528,7 +530,7 @@ az network bastion create \
 ```
 ### <a name="add-virtual-machines-to-outbound-pool"></a>向出站池添加虚拟机
 
-使用 [az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool#az-network-nic-ip-config-address-pool-add) 将虚拟机添加到出站池：
+使用 [az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool#az_network_nic_ip_config_address_pool_add) 将虚拟机添加到出站池：
 
 
 * 在后端地址池“myBackEndPoolOutbound”中。
@@ -561,7 +563,7 @@ az network bastion create \
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 
-使用 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) 创建虚拟网络：
+使用 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) 创建虚拟网络：
 
 * 命名为“myVNet”。
 * 地址前缀为 10.1.0.0/16。
@@ -582,7 +584,7 @@ az network bastion create \
 
 ### <a name="create-a-public-ip-address"></a>创建公共 IP 地址
 
-使用 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) 为堡垒主机创建公共 IP：
+使用 [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) 为堡垒主机创建公共 IP：
 
 * 创建名为“myBastionIP”的标准区域冗余公共 IP 地址。
 * 在“CreatePubLBQS-rg”中。
@@ -595,7 +597,7 @@ az network public-ip create \
 ```
 ### <a name="create-a-bastion-subnet"></a>创建堡垒子网
 
-使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) 创建堡垒子网：
+使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) 创建堡垒子网：
 
 * 命名为 AzureBastionSubnet。
 * 地址前缀为 10.1.1.0/24。
@@ -612,7 +614,7 @@ az network vnet subnet create \
 
 ### <a name="create-bastion-host"></a>创建堡垒主机
 
-使用 [az network bastion create](/cli/azure/network/bastion#az-network-bastion-create) 创建堡垒主机：
+使用 [az network bastion create](/cli/azure/network/bastion#az_network_bastion_create) 创建堡垒主机：
 
 * 命名为 myBastionHost。
 * 在“CreatePubLBQS-rg”中。
@@ -635,7 +637,7 @@ az network bastion create \
 
 对于标准负载均衡器，后端地址中的 VM 需要具有属于网络安全组的网络接口。 
 
-使用 [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) 创建网络安全组：
+使用 [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) 创建网络安全组：
 
 * 命名为“myNSG”。
 * 在“CreatePubLBQS-rg”资源组中。
@@ -648,7 +650,7 @@ az network bastion create \
 
 ### <a name="create-a-network-security-group-rule"></a>创建网络安全组规则
 
-使用 [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) 创建网络安全组规则：
+使用 [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) 创建网络安全组规则：
 
 * 命名为“myNSGRuleHTTP”。
 * 在上一步创建的网络安全组“myNSG”中。
@@ -687,7 +689,7 @@ az network bastion create \
 
 ### <a name="create-network-interfaces-for-the-virtual-machines"></a>为虚拟机创建网络接口
 
-使用 [az network nic create](/cli/azure/network/nic#az-network-nic-create) 创建三个网络接口：
+使用 [az network nic create](/cli/azure/network/nic#az_network_nic_create) 创建三个网络接口：
 
 
 * 名为 myNicVM1、myNicVM2 和 myNicVM3  。
@@ -710,7 +712,7 @@ az network bastion create \
 ```
 ### <a name="create-availability-set-for-virtual-machines"></a>创建虚拟机的可用性集
 
-使用 [az vm availability-set create](/cli/azure/vm/availability-set#az-vm-availability-set-create) 创建可用性集：
+使用 [az vm availability-set create](/cli/azure/vm/availability-set#az_vm_availability_set_create) 创建可用性集：
 
 * 命名为“myAvSet”。
 * 在“CreatePubLBQS-rg”资源组中。
@@ -726,7 +728,7 @@ az network bastion create \
 
 ### <a name="create-virtual-machines"></a>创建虚拟机
 
-使用 [az vm create](/cli/azure/vm#az-vm-create) 创建虚拟机：
+使用 [az vm create](/cli/azure/vm#az_vm_create) 创建虚拟机：
 
 ### <a name="vm1"></a>VM1
 * 命名为“myVM1”。
@@ -782,11 +784,13 @@ az network bastion create \
 ```
 可能需要花费几分钟时间才能部署 VM。
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 ## <a name="create-a-public-ip-address---basic"></a>创建公共 IP 地址 - 基本
 
 若要通过 Internet 访问 Web 应用，需要负载均衡器有一个公共 IP 地址。 
 
-使用 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) 执行以下操作：
+使用 [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) 执行以下操作：
 
 * 创建名为“myPublicIP”的标准区域冗余公共 IP 地址。
 * 在“CreatePubLBQS-rg”中。
@@ -809,7 +813,7 @@ az network bastion create \
 
 ### <a name="create-the-load-balancer-resource"></a>创建负载均衡器资源
 
-使用 [az network lb create](/cli/azure/network/lb#az-network-lb-create) 创建公共负载均衡器：
+使用 [az network lb create](/cli/azure/network/lb#az_network_lb_create) 创建公共负载均衡器：
 
 * 命名为 myLoadBalancer。
 * 前端池命名为 myFrontEnd。
@@ -832,7 +836,7 @@ az network bastion create \
 
 从负载均衡器中删除未通过探测检查的虚拟机。 解决故障后，虚拟机将重新添加到负载均衡器中。
 
-使用 [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create) 创建运行状况探测：
+使用 [az network lb probe create](/cli/azure/network/lb/probe#az_network_lb_probe_create) 创建运行状况探测：
 
 * 监视虚拟机的运行状况。
 * 命名为“myHealthProbe”。
@@ -856,7 +860,7 @@ az network bastion create \
 * 用于接收流量的后端 IP 池。
 * 所需的源和目标端口。 
 
-使用 [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) 创建负载均衡器规则：
+使用 [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) 创建负载均衡器规则：
 
 * 命名为“myHTTPRule”
 * 对前端池“myFrontEnd”中的“端口 80”进行侦听 。
@@ -881,7 +885,7 @@ az network bastion create \
 
 ### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>将虚拟机添加到负载均衡器后端池
 
-使用 [az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool#az-network-nic-ip-config-address-pool-add) 将虚拟机添加到后端池：
+使用 [az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool#az_network_nic_ip_config_address_pool_add) 将虚拟机添加到后端池：
 
 * 在后端地址池“myBackEndPool”中。
 * 在“CreatePubLBQS-rg”资源组中。
@@ -923,7 +927,7 @@ az network bastion create \
 
 ## <a name="test-the-load-balancer"></a>测试负载均衡器
 
-若要获取负载均衡器的公共 IP 地址，请使用 [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show)。 
+若要获取负载均衡器的公共 IP 地址，请使用 [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show)。 
 
 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。
 
@@ -938,7 +942,7 @@ az network bastion create \
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组、负载均衡器和所有相关的资源，使用 [az group delete](/cli/azure/group#az-group-delete) 命令将它们删除。
+如果不再需要资源组、负载均衡器和所有相关的资源，使用 [az group delete](/cli/azure/group#az_group_delete) 命令将它们删除。
 
 ```azurecli-interactive
   az group delete \

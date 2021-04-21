@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/24/2021
-ms.openlocfilehash: 65d85f51afef36aa618868e2fda1d2bbf583ea21
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 16320021ede4a4e285c4e1973c166d2cdf643c4a
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106221120"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529535"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>教程：使用 Azure 门户创建跨区域 Azure 负载均衡器
 
@@ -133,7 +133,6 @@ ms.locfileid: "106221120"
     | 端口 | 输入 **80**。|
     | 后端端口 | 输入 **80**。 |
     | 后端池 | 选择“myBackendPool”。|
-    | 运行状况探测 | 选择“myHealthProbe”。 |
     | 空闲超时（分钟） | 将滑块移动到 15。 |
     | TCP 重置 | 选择“启用”。  |
 

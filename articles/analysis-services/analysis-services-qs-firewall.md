@@ -2,17 +2,19 @@
 title: 快速入门 - 配置 Azure Analysis Services 服务器防火墙 | Microsoft Docs
 description: 此快速入门可帮助你使用Azure 门户为 Azure Analysis Services 服务器配置防火墙。
 author: minewiskan
-ms.service: azure-analysis-services
-ms.topic: quickstart
-ms.date: 08/12/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e4953137cf939c35c6ac73fe51ca43eca6e99edc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/12/2020
+ms.topic: quickstart
+ms.service: azure-analysis-services
+ms.custom:
+- mode-portal
+ms.openlocfilehash: dd8324607667c6d1f5e397a3266026cf7f2dcc93
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88192433"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536718"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>快速入门：配置服务器防火墙 - 门户
 

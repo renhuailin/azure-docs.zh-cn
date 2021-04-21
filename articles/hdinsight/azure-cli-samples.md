@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9367c1b4d82e984b2b4200768a3f83f9245c7f0f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4502cb26b4aeedff4223aaf5a592581aee36a0e6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946889"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775094"
 ---
 # <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight：Azure CLI 示例
 
@@ -29,7 +29,7 @@ ms.locfileid: "98946889"
 
 ## <a name="az-login"></a>az login
 
-[登录到 Azure](/cli/azure/reference-index#az-login)。
+[登录到 Azure](/cli/azure/reference-index#az_login)。
 
 ```azurecli
 az login
@@ -40,7 +40,7 @@ az login
 
 ## <a name="az-hdinsight-create"></a>az hdinsight create
 
-[创建新的群集](/cli/azure/hdinsight#az-hdinsight-create)。
+[创建新的群集](/cli/azure/hdinsight#az_hdinsight_create)。
 
 ### <a name="create-a-cluster-with-an-existing-storage-account"></a>使用现有存储帐户创建群集
 
@@ -173,7 +173,7 @@ az hdinsight create \
 
 ## <a name="az-hdinsight-application-create"></a>az hdinsight application create
 
-[为 HDInsight 群集创建应用程序](/cli/azure/hdinsight/application#az-hdinsight-application-create)。
+[为 HDInsight 群集创建应用程序](/cli/azure/hdinsight/application#az_hdinsight_application_create)。
 
 ### <a name="create-an-application-with-a-script-uri"></a>使用脚本 URI 创建应用程序
 
@@ -240,7 +240,7 @@ az hdinsight application create \
 
 ## <a name="az-hdinsight-script-action-execute"></a>az hdinsight script-action execute
 
-[在指定的 HDInsight 群集上执行脚本操作](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-execute)。
+[在指定的 HDInsight 群集上执行脚本操作](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_execute)。
 
 ### <a name="execute-a-script-action-and-persist-on-success"></a>执行脚本操作并在成功时继续
 

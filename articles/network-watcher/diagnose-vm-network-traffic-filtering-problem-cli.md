@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 01/07/2021
 ms.author: kumud
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 18e380345ef0caab52e9b1c537bada73e36d8b48
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 701df4353e8d2e36baf0496bd6944c4a95395414
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063298"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763246"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>快速入门：诊断虚拟机网络流量筛选器问题 - Azure CLI
 
@@ -62,7 +62,7 @@ az vm create \
 
 ### <a name="enable-network-watcher"></a>启用网络观察程序
 
-如果已在“美国东部”区域中启用网络观察程序，请跳到[使用 IP 流验证](#use-ip-flow-verify)。 使用 [az network watcher configure](/cli/azure/network/watcher#az-network-watcher-configure) 命令在“美国东部”区域中创建网络观察程序：
+如果已在“美国东部”区域中启用网络观察程序，请跳到[使用 IP 流验证](#use-ip-flow-verify)。 使用 [az network watcher configure](/cli/azure/network/watcher#az_network_watcher_configure) 命令在“美国东部”区域中创建网络观察程序：
 
 ```azurecli-interactive
 az network watcher configure \
@@ -73,7 +73,7 @@ az network watcher configure \
 
 ### <a name="use-ip-flow-verify"></a>使用 IP 流验证
 
-创建 VM 时，Azure 在默认情况下会允许或拒绝出入 VM 的网络流量。 可以在以后覆盖 Azure 的默认设置，允许或拒绝其他类型的流量。 若要测试来自一个源 IP 地址但发往不同目标的流量是获得允许还是被拒绝，请使用 [az network watcher test-ip-flow](/cli/azure/network/watcher#az-network-watcher-test-ip-flow) 命令。
+创建 VM 时，Azure 在默认情况下会允许或拒绝出入 VM 的网络流量。 可以在以后覆盖 Azure 的默认设置，允许或拒绝其他类型的流量。 若要测试来自一个源 IP 地址但发往不同目标的流量是获得允许还是被拒绝，请使用 [az network watcher test-ip-flow](/cli/azure/network/watcher#az_network_watcher_test_ip_flow) 命令。
 
 测试从 VM 发往 www.bing.com 的某个 IP 地址的出站通信：
 
@@ -125,7 +125,7 @@ az network watcher test-ip-flow \
 
 ## <a name="view-details-of-a-security-rule"></a>查看安全规则的详细信息
 
-若要确定[使用 IP 流验证](#use-ip-flow-verify)中的规则允许或阻止通信的原因，请使用 [az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg) 命令查看网络接口的有效安全规则：
+若要确定[使用 IP 流验证](#use-ip-flow-verify)中的规则允许或阻止通信的原因，请使用 [az network nic list-effective-nsg](/cli/azure/network/nic#az_network_nic_list_effective_nsg) 命令查看网络接口的有效安全规则：
 
 ```azurecli-interactive
 az network nic list-effective-nsg \

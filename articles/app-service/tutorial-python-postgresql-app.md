@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 8e9656aa1f850dc9e59ab71b5df605df8dd49269
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 882a9fb0f8d528ca21cdc8149c60b9d5bdaf1723
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732799"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767088"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>教程：在 Azure 应用服务中部署使用 PostgreSQL 的 Django Web 应用
 
@@ -160,7 +160,7 @@ az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --
 
 <!-- not all locations support az postgres up -->
 > [!TIP]
-> `-l <location-name>` 可以设置为任一个 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)。 可以使用 [`az account list-locations`](/cli/azure/account#az-account-list-locations) 命令获取可供你的订阅使用的区域。 对于生产应用，请将数据库和应用放置在同一位置。
+> `-l <location-name>` 可以设置为任一个 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)。 可以使用 [`az account list-locations`](/cli/azure/account#az_account_list_locations) 命令获取可供你的订阅使用的区域。 对于生产应用，请将数据库和应用放置在同一位置。
 
 遇到问题？ [请告诉我们](https://aka.ms/DjangoCLITutorialHelp)。
 
@@ -172,7 +172,7 @@ az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --
 
 在终端中，请确保位于包含应用代码的“djangoapp”存储库文件夹中。
 
-使用 [`az webapp up`](/cli/azure/webapp#az-webapp-up) 命令创建应用服务应用（主机进程）：
+使用 [`az webapp up`](/cli/azure/webapp#az_webapp_up) 命令创建应用服务应用（主机进程）：
 
 ```azurecli
 az webapp up --resource-group DjangoPostgres-tutorial-rg --location westus2 --plan DjangoPostgres-tutorial-plan --sku B1 --name <app-name>
@@ -205,7 +205,7 @@ az webapp up --resource-group DjangoPostgres-tutorial-rg --location westus2 --pl
 
 应用代码预期在以下四个环境变量中查找数据库信息：`DBHOST`、`DBNAME`、`DBUSER` 和 `DBPASS`。
 
-若要在应用服务中设置环境变量，请通过以下 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) 命令创建“应用设置”。
+若要在应用服务中设置环境变量，请通过以下 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) 命令创建“应用设置”。
 
 ```azurecli
 az webapp config appsettings set --settings DBHOST="<postgres-server-name>" DBNAME="pollsdb" DBUSER="<username>" DBPASS="<password>"

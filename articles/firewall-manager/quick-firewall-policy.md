@@ -3,17 +3,19 @@ title: 快速入门：创建 Azure 防火墙和防火墙策略 - 资源管理器
 description: 在本快速入门中将部署 Azure 防火墙和防火墙策略。
 services: firewall-manager
 author: vhorne
-ms.service: firewall-manager
-ms.topic: quickstart
-ms.custom: subject-armqs
-ms.date: 02/17/2021
 ms.author: victorh
-ms.openlocfilehash: 9cc263d311bd550a92a0c8f14ab5ce86d72e9ee3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 02/17/2021
+ms.topic: quickstart
+ms.service: firewall-manager
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: 43853d9e0b955167905af4777d533114a1d1f2ba
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100633625"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529870"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-a-firewall-policy---arm-template"></a>快速入门：创建 Azure 防火墙和防火墙策略 - ARM 模板
 

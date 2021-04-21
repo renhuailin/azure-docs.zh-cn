@@ -7,15 +7,14 @@ ms.service: key-vault
 ms.subservice: secrets
 author: msmbaldwin
 ms.author: mbaldwin
-manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e89716d0560cbf7960cb7bde67156c8df0045a31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 573e4c9d8db3f07f223826ab648f2ef57e1d9c58
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499214"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766310"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>使用 Key Vault 和 Azure CLI 管理存储帐户密钥
 > [!IMPORTANT]
@@ -68,14 +67,14 @@ az login
 
 - `--role`：传递“存储帐户密钥操作员服务角色”Azure 角色。 此角色将访问范围限制为你的存储帐户。 对于经典存储帐户，请改为传递“经典存储帐户密钥操作员服务角色”。
 - `--assignee`：传递值“https://vault.azure.net”，它是 Azure 公有云中 Key Vault 的 url。 （对于 Azure 政府云，改用“--asingee-object-id”，具体请参阅[服务主体应用程序 ID](#service-principal-application-id)。）
-- `--scope`：传递格式为 `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` 的存储帐户资源 ID。 若要查找订阅 ID，请使用 Azure CLI [az account list](/cli/azure/account?#az-account-list) 命令；若要查找存储帐户名称和存储帐户资源组，请使用 Azure CLI [az storage account list](/cli/azure/storage/account?#az-storage-account-list) 命令。
+- `--scope`：传递格式为 `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` 的存储帐户资源 ID。 若要查找订阅 ID，请使用 Azure CLI [az account list](/cli/azure/account?#az_account_list) 命令；若要查找存储帐户名称和存储帐户资源组，请使用 Azure CLI [az storage account list](/cli/azure/storage/account?#az_storage_account_list) 命令。
 
 ```azurecli-interactive
 az role assignment create --role "Storage Account Key Operator Service Role" --assignee 'https://vault.azure.net' --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
  ```
 ### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>向托管存储帐户授予用户帐户权限
 
-使用 Azure CLI [az keyvault-set-policy](/cli/azure/keyvault?#az-keyvault-set-policy) cmdlet 更新 Key Vault 访问策略，并向用户帐户授予存储帐户权限。
+使用 Azure CLI [az keyvault-set-policy](/cli/azure/keyvault?#az_keyvault_set_policy) cmdlet 更新 Key Vault 访问策略，并向用户帐户授予存储帐户权限。
 
 ```azurecli-interactive
 # Give your user principal access to all storage account permissions, on your Key Vault instance
@@ -86,11 +85,11 @@ az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --storage
 请注意，Azure 门户中存储帐户的“访问策略”页不会显示存储帐户的权限。
 ### <a name="create-a-key-vault-managed-storage-account"></a>创建 Key Vault 托管存储帐户
 
- 使用 Azure CLI [az keyvault storage](/cli/azure/keyvault/storage?#az-keyvault-storage-add) 命令创建 Key Vault 托管的存储帐户。 将重新生成周期设置为 90 天。 当需要轮换时，KeyVault 将重新生成非活动状态的密钥，然后将新创建的密钥设置为活动密钥。 在任何时间都只有一个密钥，即活动密钥，用于颁发 SAS 令牌。 为该命令提供以下参数值：
+ 使用 Azure CLI [az keyvault storage](/cli/azure/keyvault/storage?#az_keyvault_storage_add) 命令创建 Key Vault 托管的存储帐户。 将重新生成周期设置为 90 天。 当需要轮换时，KeyVault 将重新生成非活动状态的密钥，然后将新创建的密钥设置为活动密钥。 在任何时间都只有一个密钥，即活动密钥，用于颁发 SAS 令牌。 为该命令提供以下参数值：
 
-- `--vault-name`：传递 Key Vault 的名称。 若要查找 Key Vault 的名称，请使用 Azure CLI [az keyvault list](/cli/azure/keyvault?#az-keyvault-list) 命令。
-- `-n`：传递你的存储帐户的名称。 若要查找存储帐户的名称，请使用 Azure CLI [az storage account list](/cli/azure/storage/account?#az-storage-account-list) 命令。
-- `--resource-id`：传递格式为 `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` 的存储帐户资源 ID。 若要查找订阅 ID，请使用 Azure CLI [az account list](/cli/azure/account?#az-account-list) 命令；若要查找存储帐户名称和存储帐户资源组，请使用 Azure CLI [az storage account list](/cli/azure/storage/account?#az-storage-account-list) 命令。
+- `--vault-name`：传递 Key Vault 的名称。 若要查找 Key Vault 的名称，请使用 Azure CLI [az keyvault list](/cli/azure/keyvault?#az_keyvault_list) 命令。
+- `-n`：传递你的存储帐户的名称。 若要查找存储帐户的名称，请使用 Azure CLI [az storage account list](/cli/azure/storage/account?#az_storage_account_list) 命令。
+- `--resource-id`：传递格式为 `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` 的存储帐户资源 ID。 若要查找订阅 ID，请使用 Azure CLI [az account list](/cli/azure/account?#az_account_list) 命令；若要查找存储帐户名称和存储帐户资源组，请使用 Azure CLI [az storage account list](/cli/azure/storage/account?#az_storage_account_list) 命令。
    
  ```azurecli-interactive
 az keyvault storage add --vault-name <YourKeyVaultName> -n <YourStorageAccountName> --active-key-name key1 --auto-regenerate-key --regeneration-period P90D --resource-id "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
@@ -109,7 +108,7 @@ az keyvault storage add --vault-name <YourKeyVaultName> -n <YourStorageAccountNa
 
 ### <a name="create-a-shared-access-signature-token"></a>创建共享访问签名令牌
 
-使用 Azure CLI [az storage account generate-sas](/cli/azure/storage/account?#az-storage-account-generate-sas) 命令创建共享访问签名定义。 此操作需要 `storage` 和 `setsas` 权限。
+使用 Azure CLI [az storage account generate-sas](/cli/azure/storage/account?#az_storage_account_generate_sas) 命令创建共享访问签名定义。 此操作需要 `storage` 和 `setsas` 权限。
 
 
 ```azurecli-interactive
@@ -125,7 +124,7 @@ az storage account generate-sas --expiry 2020-01-01 --permissions rw --resource-
 
 ### <a name="generate-a-shared-access-signature-definition"></a>生成共享访问签名定义
 
-使用 Azure CLI [az keyvault storage sas-definition create](/cli/azure/keyvault/storage/sas-definition?#az-keyvault-storage-sas-definition-create) 命令并将上一步骤的输出传递给 `--template-uri` 参数，以创建共享访问签名定义。  可将所选的名称提供给 `-n` 参数。
+使用 Azure CLI [az keyvault storage sas-definition create](/cli/azure/keyvault/storage/sas-definition?#az_keyvault_storage_sas_definition_create) 命令并将上一步骤的输出传递给 `--template-uri` 参数，以创建共享访问签名定义。  可将所选的名称提供给 `-n` 参数。
 
 ```azurecli-interactive
 az keyvault storage sas-definition create --vault-name <YourKeyVaultName> --account-name <YourStorageAccountName> -n <YourSASDefinitionName> --validity-period P2D --sas-type account --template-uri <OutputOfSasTokenCreationStep>

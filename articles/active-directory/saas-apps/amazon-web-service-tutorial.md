@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 842ab27fe02501efbbc6c06c3d36d2218c3c17b9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: eb469c757e2898a9925dd7d3358cfe95734cb2e9
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104799235"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537729"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-account-access"></a>教程：Azure Active Directory 单一登录 (SSO) 与 AWS Single-Account Access 的集成
 
@@ -401,11 +401,11 @@ ms.locfileid: "104799235"
  
 * 在“预配”部分，“映射”子部分会显示“正在加载...”消息，但从不显示属性映射。  目前支持的唯一预配工作流是将角色从 AWS 导入到 Azure AD 中，以便在用户或组分配过程中对其进行选择。 上述属性映射是预先确定的，不可配置。
 
-* “预配”部分只支持一次为一个 AWS 租户输入一组凭据。 所有导入的角色都写入到 AWS 租户的 Azure AD [`servicePrincipal` 对象](/graph/api/resources/serviceprincipal?view=graph-rest-beta)的 `appRoles` 属性。
+* “预配”部分只支持一次为一个 AWS 租户输入一组凭据。 所有导入的角色都写入到 AWS 租户的 Azure AD [`servicePrincipal` 对象](/graph/api/resources/serviceprincipal)的 `appRoles` 属性。
 
   可将多个 AWS 租户（由 `servicePrincipals` 表示）从库添加到 Azure AD 进行预配。 但存在一个已知的问题：无法自动将所有导入的角色从用于预配的多个 AWS `servicePrincipals` 写入到用于 SSO 的单个 `servicePrincipal` 中。
 
-  若要解决此问题，可以使用 [Microsoft Graph API](/graph/api/resources/serviceprincipal?view=graph-rest-beta) 来提取所有已导入每个 AWS `servicePrincipal`（已在其中配置预配）中的 `appRoles`。 然后，可将这些角色字符串添加到 AWS `servicePrincipal`（已在其中配置 SSO）。
+  若要解决此问题，可以使用 [Microsoft Graph API](/graph/api/resources/serviceprincipal) 来提取所有已导入每个 AWS `servicePrincipal`（已在其中配置预配）中的 `appRoles`。 然后，可将这些角色字符串添加到 AWS `servicePrincipal`（已在其中配置 SSO）。
 
 * 角色必须满足以下要求才有资格从 AWS 导入 Azure AD：
 
