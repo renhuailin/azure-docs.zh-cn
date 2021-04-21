@@ -14,12 +14,12 @@ ms.author: dbradish
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c565be3aea43fc4dc86fd793e0dc2dea0b08d4c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d8400eb051c09fac4cb88863ad2fac12d2ca0a1b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94563743"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789854"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>使用 Azure CLI 创建 Azure 通知中心
 
@@ -38,7 +38,7 @@ Azure 通知中心提供易于使用且横向扩展的推送引擎，可用于�
 
 与所有 Azure 资源一样，Azure 通知中心必须部署到资源组中。  使用资源组可以组织和管理相关的 Azure 资源。  请参阅[什么是 Azure 资源管理器](../azure-resource-manager/management/overview.md)以详细了解资源组。
 
-对于本快速入门，请使用以下 [az group create](/cli/azure/group#az-group-create) 命令在“eastus”位置创建名为“spnhubrg”的资源组。
+对于本快速入门，请使用以下 [az group create](/cli/azure/group#az_group_create) 命令在“eastus”位置创建名为“spnhubrg”的资源组。
 
 ```azurecli
 az group create --name spnhubrg --location eastus

@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/30/2021
 ms.author: pafarley
 keywords: computer vision, computer vision applications, computer vision service
-ms.openlocfilehash: f262fdb49cac4ab9abe7f3f6873160d3059968c6
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 0258eb7c57bc0734b5c0a67644cbaa4f62a34537
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106287387"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766908"
 ---
 # <a name="what-is-image-analysis"></a>什么是图像分析？
 
@@ -24,7 +24,7 @@ ms.locfileid: "106287387"
 
 计算机视觉图像分析服务可以从映像中提取各种视觉特征。 例如，该服务可以确定图像是否包含成人内容、查找特定的品牌或对象，或查找人脸。
 
-你可以通过客户端库 SDK，或者直接调用 [REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) 使用图像分析。 按[快速入门](quickstarts-sdk/image-analysis-client-library.md)的说明开始操作。
+你可以通过客户端库 SDK，或者直接调用 [REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v2-ga/operations/5d986960601faab4bf452005) 使用图像分析。 按[快速入门](quickstarts-sdk/image-analysis-client-library.md)的说明开始操作。
 
 本文档包含以下类型的文章：
 * [快速入门](./quickstarts-sdk/image-analysis-client-library.md)是分步说明，可按照其调用服务，并在短时间内获得结果。 
@@ -34,7 +34,7 @@ ms.locfileid: "106287387"
 
 ## <a name="image-analysis-features"></a>图像分析功能
 
-可以分析图像，以便提供有关视觉特性和特征的见解。 下表的所有特性由[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API 提供。 按[快速入门](./quickstarts-sdk/image-analysis-client-library.md)的说明开始操作。
+可以分析图像，以便提供有关视觉特性和特征的见解。 下表的所有特性由[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) API 提供。 按[快速入门](./quickstarts-sdk/image-analysis-client-library.md)的说明开始操作。
 
 
 ### <a name="tag-visual-features"></a>标记视觉特性

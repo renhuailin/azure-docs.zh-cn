@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: e9201f41c9552b6a60f9ccd8eacda60ac46f89eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e20a4324f46925b8f83d7519c481a1d5bfc06a9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99591612"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789296"
 ---
 # <a name="restrict-web-traffic-using-the-azure-cli"></a>使用 Azure CLI 限制 Web 流量
 
@@ -45,15 +45,15 @@ az group delete --name myResourceGroupAG --yes
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) | 创建虚拟网络。 |
-| [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) | 在虚拟网络中创建子网。 |
+| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) | 创建虚拟网络。 |
+| [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) | 在虚拟网络中创建子网。 |
 | [az network public-ip create](/cli/azure/network/public-ip) | 创建应用程序网关的公共 IP 地址。 |
 | [az network application-gateway create](/cli/azure/network/application-gateway) | 创建应用程序网关。 |
-| [az vmss create](/cli/azure/vmss#az-vmss-create) | 创建虚拟机规模集。 |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | 创建存储帐户。 |
-| [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) | 创建存储帐户。 |
-| [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) | 获取应用程序网关的公共 IP 地址。 |
+| [az vmss create](/cli/azure/vmss#az_vmss_create) | 创建虚拟机规模集。 |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | 创建存储帐户。 |
+| [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) | 创建存储帐户。 |
+| [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) | 获取应用程序网关的公共 IP 地址。 |
 
 ## <a name="next-steps"></a>后续步骤
 

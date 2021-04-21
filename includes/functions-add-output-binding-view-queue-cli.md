@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 894a89126d1ee3ed909134f3e0dd914166568654
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 921127ffdd35007cc3fa2eaaa95cdb3fac8bbe15
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90606198"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782260"
 ---
 可以在 [Azure 门户](../articles/storage/queues/storage-quickstart-queues-portal.md)或 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)中查看队列。 也可以按以下步骤中所述，在 Azure CLI 中查看队列：
 
@@ -35,13 +35,13 @@ ms.locfileid: "90606198"
     
     ---
     
-1. （可选）使用 [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) 命令查看帐户中的存储队列。 此命令的输出应包含名为 `outqueue` 的队列，该队列是函数将其第一条消息写入该队列时创建的。
+1. （可选）使用 [`az storage queue list`](/cli/azure/storage/queue#az_storage_queue_list) 命令查看帐户中的存储队列。 此命令的输出应包含名为 `outqueue` 的队列，该队列是函数将其第一条消息写入该队列时创建的。
     
     ```azurecli
     az storage queue list --output tsv
     ```
 
-1. 使用 [`az storage message get`](/cli/azure/storage/message#az-storage-message-get) 命令读取此队列中的消息，队列名称应是前面在测试函数时使用的名称。 该命令读取再删除该队列中的第一条消息。 
+1. 使用 [`az storage message get`](/cli/azure/storage/message#az_storage_message_get) 命令读取此队列中的消息，队列名称应是前面在测试函数时使用的名称。 该命令读取再删除该队列中的第一条消息。 
 
     # <a name="bash"></a>[bash](#tab/bash)
     

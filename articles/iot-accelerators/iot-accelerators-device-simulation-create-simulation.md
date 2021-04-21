@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
-ms.openlocfilehash: 3376b3714dc41c7d5ce33756671050d19471a757
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: df658a95069f39026daab7afb14c5f1d0f47c5a5
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057705"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713887"
 ---
 # <a name="tutorial-create-and-run-an-iot-device-simulation"></a>教程：创建并运行 IoT 设备模拟
 
@@ -34,7 +34,7 @@ ms.locfileid: "106057705"
 
 若要按本教程操作，需在 Azure 订阅中部署设备模拟的实例。
 
-如果尚未部署设备模拟，请参阅 GitHub 上的[设备模拟部署](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)。
+如果尚未部署设备模拟，请参阅 GitHub 上的[设备模拟部署](https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md)。
 
 ## <a name="view-simulations"></a>查看模拟
 

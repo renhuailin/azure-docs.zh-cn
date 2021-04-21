@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 09/22/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: bcc9ca0175e0e03c62c2ce2b91d8ec337756a3cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84fd0c368bcf39af1bae90dc83336ffdb8489768
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92490095"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791510"
 ---
 # <a name="tutorial-deploy-django-app-with-app-service-and-azure-database-for-postgresql---flexible-server-preview"></a>教程：使用应用服务和 Azure Database for PostgreSQL 灵活服务器（预览版）部署 Django 应用
 
@@ -105,7 +105,7 @@ az postgres flexible-server create --resource-group myresourcegroup --location w
 
 在终端中，请确保位于包含应用代码的存储库根（`djangoapp`）。
 
-使用 [`az webapp up`](/cli/azure/webapp#az-webapp-up) 命令创建应用服务应用（主机进程）：
+使用 [`az webapp up`](/cli/azure/webapp#az_webapp_up) 命令创建应用服务应用（主机进程）：
 
 ```azurecli
 
@@ -129,7 +129,7 @@ az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<pos
 - 为应用启用默认日志记录（如果尚未启用）。
 - 在启用了生成自动化的情况下，使用 ZIP 部署上传存储库。
 - az webapp vnet-integration 命令将 Web 应用添加到与 Postgres 服务器相同的虚拟网络中。
-- 应用代码需要在多个环境变量中查找数据库信息。 若要在应用服务中设置环境变量，你需要使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) 命令创建“应用设置”。
+- 应用代码需要在多个环境变量中查找数据库信息。 若要在应用服务中设置环境变量，你需要使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) 命令创建“应用设置”。
 
 > [!TIP]
 > 许多 Azure CLI 命令将常见参数（例如资源组和应用服务计划的名称）缓存到文件“.azure/config”中。因此，不需要使用后面的命令指定所有相同的参数。 例如，若要在进行更改后重新部署应用，则无需任何参数即可再次运行 `az webapp up`。

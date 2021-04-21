@@ -7,20 +7,15 @@ ms.topic: overview
 ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f0dcd763240205bd396fc8cd0301c2046098473b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7279c5578d969db9178ce85734e3a43f9eccdf8d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98070127"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780040"
 ---
 # <a name="what-is-azure-files"></a>什么是 Azure 文件？
 Azure 文件存储会在云中提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)或[网络文件系统 (NFS) 协议](https://en.wikipedia.org/wiki/Network_File_System)进行访问。 Azure 文件共享可通过云部署或者本地部署并行装载。 可从 Windows、Linux 和 macOS 客户端访问Azure 文件存储 SMB 文件共享。 可从 Linux 或 macOS 客户端访问 Azure 文件存储 NFS 文件共享。 此外，可以使用 Azure 文件同步将 Azure 文件存储 SMB 文件共享缓存在 Windows Server 上，以供在使用数据的位置附近快速访问。
-
-## <a name="videos"></a>视频
-| Azure 文件同步简介 | Azure 文件存储与同步 (Ignite 2019)  |
-|-|-|
-| [![Azure 文件同步简介视频截屏 - 单击播放！](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Azure 文件与同步演示截屏 - 单击播放！](./media/storage-files-introduction/ignite-2018-video.png)](https://www.youtube.com/embed/6E2p28XwovU) |
 
 下面是有关 Azure 文件存储的常见用例的一些视频：
 * [Replace your file server with a serverless Azure File Share](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)（将你的文件服务器替换为无服务器的 Azure 文件共享）

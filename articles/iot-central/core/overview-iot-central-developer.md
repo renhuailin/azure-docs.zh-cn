@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 4423eea6c35ad44d55ad17f5703a95c6273422b8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ebd2759d4dfb8ee79130f9b4876eba8d45226d04
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104585853"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718784"
 ---
 # <a name="iot-central-device-development-guide"></a>IoT Central 设备开发指南
 
@@ -125,7 +125,7 @@ DTDL 模型可以是非组件或多组件模型 ：
 
 ### <a name="device-sdks"></a>设备 SDK
 
-使用 [Azure IoT 设备 SDK](#languages-and-sdks) 中的一个来实现设备行为。 代码应做到以下几点：
+使用 [Azure IoT 设备 SDK](../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) 中的一个来实现设备行为。 代码应做到以下几点：
 
 - 将设备注册到 DPS，并使用 DPS 中的信息连接到 IoT Central 应用程序中的内部 IoT 中心。
 - 公布设备实现的模型的 DTMI。

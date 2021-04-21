@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 01/22/2021
 ms.author: allensu
-ms.openlocfilehash: 76fd959c28203132be4695031d96315f258cf53f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c8e32a56148326104c3514b8a2fdb5d6bbd3f00a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563024"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778456"
 ---
 # <a name="quickstart-create-a-private-link-service-using-azure-cli"></a>快速入门：使用 Azure CLI 创建专用链接服务
 
@@ -48,7 +48,7 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 在本部分，创建虚拟网络和子网来托管访问专用链接服务的负载均衡器。
 
-使用 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) 创建虚拟网络：
+使用 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) 创建虚拟网络：
 
 * 命名为“myVNet”。
 * 地址前缀为 10.1.0.0/16。
@@ -69,7 +69,7 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 ```
 
-若要更新子网以禁用专用链接服务网络策略，请使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update)：
+若要更新子网以禁用专用链接服务网络策略，请使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update)：
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -90,7 +90,7 @@ az network vnet subnet update \
 
 ### <a name="create-the-load-balancer-resource"></a>创建负载均衡器资源
 
-使用 [az network lb create](/cli/azure/network/lb#az-network-lb-create) 创建公共负载均衡器：
+使用 [az network lb create](/cli/azure/network/lb#az_network_lb_create) 创建公共负载均衡器：
 
 * 命名为 myLoadBalancer。
 * 前端池命名为 myFrontEnd。
@@ -115,7 +115,7 @@ az network vnet subnet update \
 
 从负载均衡器中删除未通过探测检查的虚拟机。 解决故障后，虚拟机将重新添加到负载均衡器中。
 
-使用 [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create) 创建运行状况探测：
+使用 [az network lb probe create](/cli/azure/network/lb/probe#az_network_lb_probe_create) 创建运行状况探测：
 
 * 监视虚拟机的运行状况。
 * 命名为“myHealthProbe”。
@@ -139,7 +139,7 @@ az network vnet subnet update \
 * 用于接收流量的后端 IP 池。
 * 所需的源和目标端口。 
 
-使用 [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) 创建负载均衡器规则：
+使用 [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) 创建负载均衡器规则：
 
 * 命名为“myHTTPRule”
 * 对前端池“myFrontEnd”中的“端口 80”进行侦听 。
@@ -168,7 +168,7 @@ az network vnet subnet update \
 
 在本部分中，创建使用上一步中创建的 Azure 负载均衡器的专用链接服务。
 
-使用 [az network private-link-service create](/cli/azure/network/private-link-service#az-network-private-link-service-create) 通过标准负载均衡器前端 IP 配置创建专用链接服务：
+使用 [az network private-link-service create](/cli/azure/network/private-link-service#az_network_private_link_service_create) 通过标准负载均衡器前端 IP 配置创建专用链接服务：
 
 * 名为 myPrivateLinkService。
 * 在虚拟网络“myVNet”中。
@@ -195,7 +195,7 @@ az network private-link-service create \
 
 ### <a name="create-private-endpoint-virtual-network"></a>创建专用终结点虚拟网络
 
-使用 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) 创建虚拟网络：
+使用 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) 创建虚拟网络：
 
 * 名为“myVNetPE”。
 * 地址前缀为 11.1.0.0/16。
@@ -214,7 +214,7 @@ az network private-link-service create \
     --subnet-prefixes 11.1.0.0/24
 ```
 
-若要更新子网以禁用专用终结点网络策略，请使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update)：
+若要更新子网以禁用专用终结点网络策略，请使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update)：
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -256,7 +256,7 @@ az network vnet subnet update \
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组、专用链接服务、负载均衡器和所有相关的资源，使用 [az group delete](/cli/azure/group#az-group-delete) 命令将它们删除。
+如果不再需要资源组、专用链接服务、负载均衡器和所有相关的资源，使用 [az group delete](/cli/azure/group#az_group_delete) 命令将它们删除。
 
 ```azurecli-interactive
   az group delete \

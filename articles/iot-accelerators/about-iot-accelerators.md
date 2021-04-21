@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: c972211a48816409ff626396fb5ddc7c939c021b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: c966051ed5699d408fe83f1e9c862ca78b3282c4
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057875"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714535"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Azure IoT 解决方案加速器是什么？
 
@@ -68,7 +68,7 @@ IoT 解决方案加速器是完整且易于部署的 IoT 解决方案，可以�
 | 解决方案加速器   | 体系结构  | Languages     |
 | ---------------------- | ------------- | ------------- |
 | 互连工厂      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
-| 设备模拟      | 微服务 | [.NET](https://github.com/Azure/device-simulation-dotnet)          |
+| 设备模拟      | 微服务 | [.NET](https://github.com/Azure/azure-iot-pcs-device-simulation)          |
 
 若要了解有关微服务体系结构的详细信息，请参阅 [Azure IoT 参考体系结构简介](/azure/architecture/reference-architectures/iot/)。
 

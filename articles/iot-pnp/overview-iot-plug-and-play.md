@@ -3,18 +3,18 @@ title: IoT 即插即用简介 | Microsoft Docs
 description: 了解 IoT 即插即用。 IoT 即插即用基于开放式建模语言，使智能 IoT 设备能够声明其功能。 IoT 设备连接到云解决方案时会提供称为设备模型的声明。 然后，云解决方案可以自动了解该设备，并开始与其交互，无需编写任何代码。
 author: rido-min
 ms.author: rmpablos
-ms.date: 07/06/2020
+ms.date: 03/21/2021
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: eb39939f4a48a549479605dcccc346094359875f
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 91a09db16524ebc7e4c04069b69b1c42c67538c6
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106079006"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739703"
 ---
 # <a name="what-is-iot-plug-and-play"></a>什么是 IoT 即插即用？
 
