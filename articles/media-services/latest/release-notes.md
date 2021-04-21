@@ -9,20 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 10/21/2020
+ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: f14328567fdc9840b0a3d07aa23fe2496fd537ca
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 796abf8506a832c4053b505e903bb24ef9d09004
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102213090"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279028"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
-
->通过将此 URL (`https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us`) 复制并粘贴到 RSS 源阅读器中获取有关何时重新访问此页以获得更新的通知。
 
 为了让大家随时了解最新的开发成果，本文将提供以下方面的信息：
 
@@ -31,34 +29,134 @@ ms.locfileid: "102213090"
 * Bug 修复
 * 已弃用的功能
 
-## <a name="known-issues"></a>已知问题
+## <a name="march-2021"></a>2021 年 3 月
 
-> [!NOTE]
-> 可以使用 [Azure 门户](https://portal.azure.com/)执行以下操作：管理 v3 [实时事件](live-events-outputs-concept.md)、查看 v3 [资产](assets-concept.md)和作业、获取有关访问 API 的信息以及加密内容。 对于所有其他的管理任务（例如，管理转换和作业），请使用 [REST API](/rest/api/media/accountfilters)、[CLI](/cli/azure/ams) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
->
-> 有关详细信息，请参阅：[媒体服务 v3的 Azure 门户限制](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)。
+### <a name="new-language-support-added-to-the-audioanalyzer-preset"></a>为 AudioAnalyzer 预设添加了新语言支持
+
+现在，AudioAnalyzer 预设（基本和标准模式）中为视频听录和字幕提供了更多语言。
+
+* 英语（澳大利亚），'en-AU'
+* 法语（加拿大），'fr-CA'
+* 现代标准阿拉伯语（巴林），'ar-BH'
+* 阿拉伯语（埃及），'ar-EG'
+* 阿拉伯语（伊拉克），'ar-IQ'
+* 阿拉伯语（以色列），'ar-IL'
+* 阿拉伯语（约旦），'ar-JO'
+* 阿拉伯语（科威特），'ar-KW'
+* 阿拉伯语（巴嫩），ar-LB'
+* 阿拉伯语（阿曼），'ar-OM'
+* 阿拉伯语（卡塔尔），'ar-QA'
+* 阿拉伯语（沙特阿拉伯），'ar-SA'
+* 丹麦语，‘da-DK’
+* 挪威语，'nb-NO'
+* 瑞典语，‘sv-SE’
+* 芬兰语，‘fi-FI’
+* 泰语，‘th-TH’
+* 土耳其语，‘tr-TR’
+
+请参阅[分析视频和音频文件概念文章](analyze-video-audio-files-concept.md)中的最新可用语言。
+
+## <a name="february-2021"></a>2021 年 2 月
+
+### <a name="hevc-encoding-support-in-standard-encoder"></a>标准编码器中的 HEVC 编码支持
+
+标准编码器现在支持 8 位 HEVC (H.265) 编码。 可以通过动态打包器使用“hev1”格式传送和打包 HEVC 内容。  
+
+[media-services-v3-dotnet GitHub 存储库](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset_HEVC)中提供了有关使用 HEVC 实现 .NET 自定义编码的新示例。
+除了自定义编码以外，现在还可以使用以下新的内置 HEVC 编码预设：
+
+- H265ContentAwareEncoding
+- H265AdaptiveStreaming
+- H265SingleBitrate720P
+- H265SingleBitrate1080p
+- H265SingleBitrate4K
+
+过去通过 v2 API 在高级编码器中使用 HEVC 的客户应该迁移，以便在标准编码器中使用新的 HEVC 编码支持。
+
+### <a name="azure-media-services-v2-api-and-sdks-deprecation-announcement"></a>Azure 媒体服务 v2 API 和 SDK 弃用公告
+
+#### <a name="update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024"></a>请在 2024 年 2 月 29 日之前将 Azure 媒体服务 REST API 和 SDK 更新到 v3
+
+由于版本 3 的 Azure 媒体服务 REST API 和适用于 .NET 和 Java 的客户端 SDK 提供了比版本 2 更多的功能，因此我们正在停用版本 2 的 Azure 媒体服务 REST API 和适用于 .NET 和 Java 的客户端 SDK。
+
+我们鼓励你尽快切换，以获得版本 3 的 Azure 媒体服务 REST API 和适用于 .NET 和 Java 的客户端 SDK 的更多优势。
+版本 3 提供：
+ 
+- 全天候实时事件支持
+- ARM REST API、适用于 .NET core、Node.js、Python、Java、Go 和 Ruby 的客户端 SDK。
+- 客户管理的密钥、受信任的存储集成和专用链接支持[等等](https://docs.microsoft.com/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+
+#### <a name="action-required"></a>所需的操作
+
+若要最大程度地减少工作负载的中断，请参阅[迁移指南](./migrate-v-2-v-3-migration-introduction.md)，在 2024 年 2 月 29 日之前将代码从版本 2 API 和 SDK 转换为版本 3 API 和 SDK。
+**2024 年 2 月 29 日之后**，Azure 媒体服务将不再接受版本 2 REST API、ARM 帐户管理 API 版本 2015-10-01 或版本 2 .NET 客户端 SDK 中的流量。 其中包括可以调用版本 2 API 的任何第三方开源客户端 SDK。  
+
+请参阅官方的 [Azure 更新公告](https://azure.microsoft.com/updates/update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024/)。
+
+### <a name="standard-encoder-support-for-v2-api-features"></a>对 v2 API 功能的标准编码器支持
+
+除新增了对 HEVC (H.265) 编码的支持以外，现在 2020-05-01 版本的编码 API 中还提供了以下功能。
+
+- 现在支持使用新的 **JobInputClip** 支持来拼结多个输入文件。
+    - 我们已提供一个适用于 .NET 的示例来演示如何[将两个资产拼结到一起](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomStitchTwoAssets)。
+- 音频轨道选择可让客户选择并映射传入的音频轨道，并将其路由到输出以进行编码
+    - 有关 **AudioTrackDescriptor** 和轨道选择的详细信息，请参阅 [REST API OpenAPI](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L385)
+- 选择轨道进行编码 – 可让客户从包含多比特率轨道的 ABR 源文件或实时存档中选择轨道。 此功能对于从实时事件存档文件生成 MP4 极其有用。
+    - 请参阅 [VideoTrackDescriptor](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L1562)
+- 在 FaceDetector 中添加了编修（模糊处理）功能
+    - 请参阅 FaceDetector 预设的[编修](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L634)和[组合](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L649)模式
+
+### <a name="new-client-sdk-releases-for-2020-05-01-version-of-the-azure-media-services-api"></a>为 API 2020-05-01 版本的 Azure 媒体服务 API 发布了新的客户端 SDK
+
+适用于所有可用语言的新客户端 SDK 版本已随上述功能一起提供。
+请使用包管理器在代码库中更新到最新的客户端 SDK。
+
+- [.NET SDK 包 3.0.4](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/)
+- [Node.js Typescript 版本 8.1.0](https://www.npmjs.com/package/@azure/arm-mediaservices)
+- [Python azure-mgmt-media 3.1.0](https://pypi.org/project/azure-mgmt-media/)
+- [Java SDK 1.0.0-beta.2](https://search.maven.org/artifact/com.azure.resourcemanager/azure-resourcemanager-mediaservices/1.0.0-beta.2/jar)
+
+### <a name="new-security-features-available-in-the-2020-05-01-version-of-the-azure-media-services-api"></a>在 2020-05-01 版本的 Azure 媒体服务 API 中提供了新的安全功能
+
+- **[客户管理的密钥](concept-use-customer-managed-keys-byok.md)** ：使用“2020-05-01”版 API 创建的帐户中存储的内容密钥和其他数据将通过帐户密钥进行加密。 客户可以提供一个密钥来加密帐户密钥。
+
+- **[受信任的存储](concept-trusted-storage.md)** ：可以使用与媒体服务帐户关联的托管标识将媒体服务配置为访问 Azure 存储。 使用托管标识访问存储帐户时，客户可以在不防碍媒体服务方案的情况下，针对存储帐户配置限制性更高的网络 ACL。
+
+- **[托管标识](concept-managed-identities.md)** ：客户可为媒体服务帐户启用系统分配的托管标识，以提供对密钥保管库（适用于客户管理的密钥）和存储帐户（适用于受信任的存储）的访问。
+
+### <a name="updated-typescript-nodejs-samples-using-isomorphic-sdk-for-javascript"></a>使用同构 SDK for JavaScript 更新了 Typescript Node.js 示例
+
+已将 Node.js 示例更新为使用最新的同构 SDK。 这些示例现在会演示 Typescript 的用法。 此外，添加了适用于 Node.js/Typescript 的新实时传送流示例。
+
+请参阅 **[media-services-v3-node-tutorials](https://github.com/Azure-Samples/media-services-v3-node-tutorials)** GitHub 存储库中的最新示例。
+
+### <a name="new-live-stand-by-mode-to-support-faster-startup-from-warm-state"></a>添加了新的实时待机模式以支持从暖状态更快启动
+
+实时事件现在支持对“待机”采用成本更低的计费模式。 这样，客户便能够以更低的成本预分配实时事件，从而创建“热池”。 然后，客户可以使用待机实时事件转换到“正在运行”状态，而且转换速度比创建后从冷状态启动更快。  这可以大大缩短启动通道的时间，并使用以价格更低的模式运行的计算机快速分配热池。
+请参阅[此处](https://azure.microsoft.com/pricing/details/media-services)的最新定价详细信息。
+有关待机状态和其他实时事件状态的详细信息，请参阅文章 - [实时事件状态和计费](./live-event-states-billing-concept.md)。
 
 ## <a name="december-2020"></a>2020 年 12 月
 
 ### <a name="regional-availability"></a>区域可用性
 
-Azure 媒体服务现已在 Azure 门户的挪威东部区域提供。  此区域中不存在 restV2。
+Azure 媒体服务现已在 Azure 门户中的“挪威东部”区域提供。  restV2 未在此区域推出。
 
 ## <a name="october-2020"></a>2020 年 10 月
 
 ### <a name="basic-audio-analysis"></a>基本音频分析
 
-音频分析预设现在包含基本模式定价层。 新的基本音频分析器模式提供了一个低成本的选项，用于提取语音口述文本并设置输出隐藏式字幕和字幕的格式。 此模式执行语音转文本听录并生成 VTT 字幕文件。 此模式的输出包括一个见解 JSON 文件，该文件仅包含关键字、听录和计时信息。 此模式不包括自动语言检测和说话人分割聚类。 请参阅[支持的语言](analyzing-video-audio-files-concept.md#built-in-presets)的列表。
+音频分析预设现在包含基本模式定价层。 新的基本音频分析器模式提供了一个低成本的选项，用于提取语音口述文本并设置输出隐藏式字幕和字幕的格式。 此模式执行语音转文本听录并生成 VTT 字幕文件。 此模式的输出包括一个见解 JSON 文件，该文件仅包含关键字、听录和计时信息。 此模式不包括自动语言检测和说话人分割聚类。 请参阅[支持的语言](analyze-video-audio-files-concept.md#built-in-presets)的列表。
 
-使用索引器 v1 和索引器 v2 的客户应该迁移到基本的音频分析预设。
+使用索引器 v1 和索引器 v2 的客户应迁移到“基本音频分析”预设。
 
-有关基本音频分析器模式的详细信息，请参阅[分析视频和音频文件](analyzing-video-audio-files-concept.md)。  若要了解如何在 REST API 中使用基本音频分析器模式，请参阅[如何创建基本音频转换](how-to-create-basic-audio-transform.md)。
+有关基本音频分析器模式的详细信息，请参阅[分析视频和音频文件](analyze-video-audio-files-concept.md)。  若要了解如何在 REST API 中使用基本音频分析器模式，请参阅[如何创建基本音频转换](transform-create-basic-audio-how-to.md)。
 
 ### <a name="live-events"></a>直播活动
 
 现在允许实时事件停止时对大多数属性进行更新。 此外，允许用户为实时事件的输入和预览 URL 指定静态主机名的前缀。 VanityUrl 现在称为 `useStaticHostName`，以更好地反映属性的意向。
 
-实时事件现在具有等待状态。  请参阅[媒体服务中的实时事件和实时输出](./live-events-outputs-concept.md)。
+实时事件现在具有等待状态。  请参阅[媒体服务中的实时事件和实时输出](./live-event-outputs-concept.md)。
 
 实时事件支持接收各种输入纵横比。 通过拉伸模式，客户可以指定输出的拉伸行为。
 
@@ -67,14 +165,15 @@ Azure 媒体服务现已在 Azure 门户的挪威东部区域提供。  此区�
 ### <a name="accounts"></a>帐户
 
 > [!WARNING]
-> 如果使用 2020-05-01 API 版本创建媒体服务帐户，则该帐户将不能用于 RESTv2 
+> 如果使用 2020-05-01 API 版本创建媒体服务帐户，该帐户将不适用于 RESTv2 
 
 ## <a name="august-2020"></a>2020 年 8 月
 
 ### <a name="dynamic-encryption"></a>动态加密
-动态打包程序中现在提供了对旧版 PlayReady 受保护互操作文件格式 (PIFF 1.1) 加密的支持。 这为 Samsung 和 LG 的传统智能电视机提供了支持，这些支持实现了 Microsoft 发布的通用加密标准 (CENC) 的早期草稿。  PIFF 1.1 格式也是 Silverlight 客户端库以前支持的加密格式。 如今，这种加密格式的唯一用例场景是针对传统的智能电视市场，对于该市场，在某些仅支持使用 PIFF 1.1 加密的平滑流式处理的区域，仍然存在数量不少的智能电视。 
 
-若要使用新的 PIFF 1.1 加密支持，请将加密值更改为流式处理定位符的 URL 路径中的“piff”。 有关详细信息，请参阅[内容保护概述](content-protection-overview.md)。
+动态打包程序中现在提供了对旧版 PlayReady 受保护互操作文件格式 (PIFF 1.1) 加密的支持。 这为 Samsung 和 LG 的传统智能电视机提供了支持，这些支持实现了 Microsoft 发布的通用加密标准 (CENC) 的早期草稿。  PIFF 1.1 格式也是 Silverlight 客户端库以前支持的加密格式。 如今，这种加密格式的唯一用例场景是针对传统的智能电视市场，对于该市场，在某些仅支持使用 PIFF 1.1 加密的平滑流式处理的区域，仍然存在数量不少的智能电视。
+
+若要使用新的 PIFF 1.1 加密支持，请将加密值更改为流式处理定位符的 URL 路径中的“piff”。 有关详细信息，请参阅[内容保护概述](drm-content-protection-concept.md)。
 例如 `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
 
 > [!NOTE]
@@ -82,17 +181,17 @@ Azure 媒体服务现已在 Azure 门户的挪威东部区域提供。  此区�
 
 ## <a name="july-2020"></a>2020 年 7 月
 
-### <a name="live-transcriptions"></a>实时转录
+### <a name="live-transcriptions"></a>实时听录
 
-Live 转录现在支持19个语言和8个区域。
+实时听录现在支持 19 种语言和 8 个区域。
 
-### <a name="protecting-your-content-with-media-services-and-azure-ad"></a>通过 Media Services 和 Azure AD 保护内容
+### <a name="protecting-your-content-with-media-services-and-azure-ad"></a>使用媒体服务和 Azure AD 保护内容
 
-我们发布了一篇名 [为端到端内容保护的教程，其中使用 Azure AD](./azure-ad-content-protection.md)。
+我们发布了名为[使用 Azure AD 进行端到端内容保护](./architecture-azure-ad-content-protection.md)的教程。
 
 ### <a name="high-availability"></a>高可用性
 
-我们发布了一个高可用性的媒体服务和视频点播 (VOD) [概述](./media-services-high-availability-encoding.md)和[示例](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)。
+我们发布了一个高可用性的媒体服务和视频点播 (VOD) [概述](./architecture-high-availability-encoding-concept.md)和[示例](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)。
 
 ## <a name="june-2020"></a>2020 年 6 月
 
@@ -144,7 +243,7 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 
 实时听录现提供公共预览版，可在美国西部 2 区域使用。
 
-实时听录旨在作为附加功能与实时事件结合使用。  直通和标准或高级编码实时事件均支持此功能。  启用此功能后，服务将使用认知服务的[语音转文本](../../cognitive-services/speech-service/speech-to-text.md)功能将传入音频中的口语转录为文本。 然后，可以在 MPEG-DASH 和 HLS 协议中将此文本连同视频和音频一起传输。 计费基于新的附加计量器，当实时事件处于“正在运行”状态时，它会产生额外的成本。  有关实时听录和计费的详细信息，请参阅[实时听录](live-transcription.md)
+实时听录旨在作为附加功能与实时事件结合使用。  直通和标准或高级编码实时事件均支持此功能。  启用此功能后，服务将使用认知服务的[语音转文本](../../cognitive-services/speech-service/speech-to-text.md)功能将传入音频中的口语转录为文本。 然后，可以在 MPEG-DASH 和 HLS 协议中将此文本连同视频和音频一起传输。 计费基于新的附加计量器，当实时事件处于“正在运行”状态时，它会产生额外的成本。  有关实时听录和计费的详细信息，请参阅[实时听录](live-event-live-transcription-how-to.md)
 
 > [!NOTE]
 > 目前，实时听录仅在美国西部 2 区域提供预览功能。 它目前只支持英语 (en-us) 口语的听录。
@@ -152,7 +251,7 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 ### <a name="content-protection"></a>内容保护
 
 9 月份在有限区域发布的“令牌重放防护”功能现在已在所有区域提供。
-媒体服务客户现在可以对同一令牌用于请求密钥或许可证的次数设置限制。 有关详细信息，请参阅[令牌重放防护](content-protection-overview.md#token-replay-prevention)。
+媒体服务客户现在可以对同一令牌用于请求密钥或许可证的次数设置限制。 有关详细信息，请参阅[令牌重放防护](drm-content-protection-concept.md#token-replay-prevention)。
 
 ### <a name="new-recommended-live-encoder-partners"></a>新推荐的实时编码器合作伙伴
 
@@ -185,7 +284,7 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 
 #### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
 
-我们宣布弃用 Azure Media Indexer 和 Azure Media Indexer 2 预览版 。 有关停用日期，请参阅  [旧组件](../previous/legacy-components.md) 一文。 [Azure 媒体服务视频索引器](../video-indexer/index.yml)取代了这些旧版媒体处理器。
+我们宣布弃用 Azure Media Indexer 和 Azure Media Indexer 2 预览版 。 有关停用日期，请参阅[旧组件](../previous/legacy-components.md)文章。 [Azure 媒体服务视频索引器](../video-indexer/index.yml)取代了这些旧版媒体处理器。
 
 有关详细信息，请参阅[从 Azure Media Indexer 和 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](../previous/migrate-indexer-v1-v2.md)。
 
@@ -211,7 +310,7 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 
 ### <a name="content-protection"></a>内容保护
 
-在流式处理受令牌限制保护的内容时，最终用户需要获取作为密钥传输请求的一部分发送的令牌。 令牌重放预防功能允许媒体服务客户设置一个限制，以限制可使用同一令牌请求密钥或许可证的次数。 有关详细信息，请参阅[令牌重放防护](content-protection-overview.md#token-replay-prevention)。
+在流式处理受令牌限制保护的内容时，最终用户需要获取作为密钥传输请求的一部分发送的令牌。 令牌重放预防功能允许媒体服务客户设置一个限制，以限制可使用同一令牌请求密钥或许可证的次数。 有关详细信息，请参阅[令牌重放防护](drm-content-protection-concept.md#token-replay-prevention)。
 
 截止到 7 月，该预览功能仅在美国中部和美国中西部提供。
 
@@ -225,8 +324,8 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 
 请参阅示例：
 
-* [使用 .NET 创建视频的子剪辑](subclip-video-dotnet-howto.md)
-* [使用 REST 对视频进行子剪辑](subclip-video-rest-howto.md)
+* [使用 .NET 创建视频的子剪辑](transform-subclip-video-dotnet-how-to.md)
+* [使用 REST 对视频进行子剪辑](transform-subclip-video-rest-how-to.md)
 
 ## <a name="may-2019"></a>2019 年 5 月
 
@@ -235,13 +334,13 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 现在可以使用 Azure Monitor 查看媒体服务发出的遥测数据。
 
 * 使用 Azure Monitor 诊断日志来监视媒体服务密钥传送终结点发送的请求。 
-* 监视媒体服务[流式处理终结点](streaming-endpoint-concept.md)发出的指标。   
+* 监视媒体服务[流式处理终结点](stream-streaming-endpoint-concept.md)发出的指标。   
 
-有关详细信息，请参阅[监视媒体服务指标和诊断日志](media-services-metrics-diagnostic-logs.md)。
+有关详细信息，请参阅[监视媒体服务指标和诊断日志](monitoring/monitor-media-services-data-reference.md)。
 
 ### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>动态打包中的多音频曲目支持 
 
-现在，对包含使用多个编解码器和语言的多音频曲目的资产进行流式处理时，[动态打包](dynamic-packaging-overview.md)支持 HLS 输出（版本 4 或更高版本）的多音频曲目。
+现在，对包含使用多个编解码器和语言的多音频曲目的资产进行流式处理时，[动态打包](encode-dynamic-packaging-concept.md)支持 HLS 输出（版本 4 或更高版本）的多音频曲目。
 
 ### <a name="korea-regional-pair-is-open-for-media-services"></a>韩国区域对开放媒体服务 
 
@@ -253,7 +352,7 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 
 添加了包括媒体服务性能改进的更新。
 
-* 更新了支持处理的最大文件大小。 请参阅[配额和限制](limits-quotas-constraints.md)。
+* 更新了支持处理的最大文件大小。 请参阅[配额和限制](limits-quotas-constraints-reference.md)。
 * [编码速度改进](concept-media-reserved-units.md)。
 
 ## <a name="april-2019"></a>2019 年 4 月
@@ -261,11 +360,11 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 ### <a name="new-presets"></a>新增预设
 
 * [FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset) 已添加到内置分析器预设中。
-* 向内置编码器预设添加了 [ContentAwareEncodingExperimental](/rest/api/media/transforms/createorupdate#encodernamedpreset)。 有关详细信息，请参阅[内容感知型编码](content-aware-encoding.md)。 
+* 向内置编码器预设添加了 [ContentAwareEncodingExperimental](/rest/api/media/transforms/createorupdate#encodernamedpreset)。 有关详细信息，请参阅[内容感知型编码](encode-content-aware-concept.md)。 
 
 ## <a name="march-2019"></a>2019 年 3 月
 
-动态打包现在支持 Dolby Atmos。 有关详细信息，请参阅[动态打包支持的音频编解码器](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging)。
+动态打包现在支持 Dolby Atmos。 有关详细信息，请参阅[动态打包支持的音频编解码器](encode-dynamic-packaging-concept.md#audio-codecs-supported-by-dynamic-packaging)。
 
 现在，可以指定资产或帐户筛选器的列表，这些筛选器将应用于流定位器。 有关详细信息，请参阅[将筛选器与流定位器相关联](filters-concept.md#associating-filters-with-streaming-locator)。
 
@@ -273,13 +372,13 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 
 媒体服务 v3 目前在 Azure 国家云中受支持。 目前，并非所有功能在所有云中都可用。 有关详细信息，请参阅[存在 Azure 媒体服务 v3 的云和区域](azure-clouds-regions.md)。
 
-[Microsoft.Media.JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) 事件已添加到媒体服务的 Azure 事件网格架构中。
+[Microsoft.Media.JobOutputProgress](monitoring/media-services-event-schemas.md#monitoring-job-output-progress) 事件已添加到媒体服务的 Azure 事件网格架构中。
 
 ## <a name="january-2019"></a>2019 年 1 月
 
 ### <a name="media-encoder-standard-and-mpi-files"></a>Media Encoder Standard 和 MPI 文件 
 
-使用 Media Encoder Standard 编码生成 MP4 文件时，新的 .mpi 文件会生成并添加到输出资产中。 此 MPI 文件旨在提高[动态打包](dynamic-packaging-overview.md)和流式处理方案的性能。
+使用 Media Encoder Standard 编码生成 MP4 文件时，新的 .mpi 文件会生成并添加到输出资产中。 此 MPI 文件旨在提高[动态打包](encode-dynamic-packaging-concept.md)和流式处理方案的性能。
 
 不应修改或删除该 MPI 文件，也不应在存在（或不存在）此类文件的情况下采用服务中的任何依赖项。
 
@@ -419,7 +518,7 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 
 .NET SDK 中提供了以下功能：
 
-* 转换和作业，用于对媒体内容来进行编码或分析 。 有关示例，请参阅[流式传输文件](stream-files-tutorial-with-api.md)和[分析](analyze-videos-tutorial-with-api.md)。
+* 转换和作业，用于对媒体内容来进行编码或分析 。 有关示例，请参阅[流式传输文件](stream-files-tutorial-with-api.md)和[分析](analyze-videos-tutorial.md)。
 * **流式处理定位符**，用于发布内容并将其流式传输到最终用户设备
 * **流式处理策略** 和 **内容密钥策略**，用于在传送内容时配置密钥传递和内容保护 (DRM)。
 * **直播活动** 和 **实时输出**，用于配置实时传送视频流内容的引入和归档。

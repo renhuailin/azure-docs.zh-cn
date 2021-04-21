@@ -6,14 +6,14 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/21/2021
+ms.date: 04/05/2021
 ms.custom: references_regions
-ms.openlocfilehash: f77bd69f8266d9461481cd0a12a7b70107622de5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 751d475fcb2e8c96d05daa5b5e2144909d21a409
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773447"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382294"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>用于 Amazon S3 的 Azure Purview 连接器
 
@@ -38,6 +38,7 @@ ms.locfileid: "104773447"
 
 - [管理和增加 Azure Purview 资源的配额](how-to-manage-quotas.md)
 - [Azure Purview 中支持的数据源和文件类型](sources-and-scans.md)
+- [为 Purview 帐户使用专用终结点](catalog-private-link.md)
 ### <a name="storage-and-scanning-regions"></a>存储和扫描区域
 
 下表将存储数据的区域映射到 Azure Purview 将扫描的区域。
@@ -77,9 +78,13 @@ ms.locfileid: "104773447"
 
 请首先确保已满足以下先决条件，然后再添加 Amazon S3 存储桶作为 Purview 数据源并扫描 S3 数据。
 
-- 你需要是 Azure Purview 数据源管理员。
-
-- 添加存储桶作为 Purview 资源时，需要 [AWS ARN](#retrieve-your-new-role-arn)、[存储桶名称](#retrieve-your-amazon-s3-bucket-name)的值，有时还会需要 [AWS 帐户 ID](#locate-your-aws-account-id) 的值。
+> [!div class="checklist"]
+> * 你需要是 Azure Purview 数据源管理员。
+> * [创建 Purview 帐户](#create-a-purview-account)（如果没有）
+> * [创建 Purview 凭据以用于扫描 AWS 存储桶](#create-a-purview-credential-for-your-aws-bucket-scan)
+> * [创建在 Purview 中使用的新 AWS 角色](#create-a-new-aws-role-for-purview)
+> * [为已加密的 Amazon S3 桶配置扫描](#configure-scanning-for-encrypted-amazon-s3-buckets)（如果相关）
+> * 添加存储桶作为 Purview 资源时，需要 [AWS ARN](#retrieve-your-new-role-arn)、[存储桶名称](#retrieve-your-amazon-s3-bucket-name)的值，有时还会需要 [AWS 帐户 ID](#locate-your-aws-account-id) 的值。
 
 ### <a name="create-a-purview-account"></a>创建 Purview 帐户
 
@@ -138,6 +143,13 @@ ms.locfileid: "104773447"
 1. 在“创建角色”>“附加权限策略”区域中，筛选所显示的针对“S3”的权限。 选择“AmazonS3ReadOnlyAccess”，然后选择“下一步: 标签”。
 
     ![为新的 Amazon S3 扫描角色选择 ReadOnlyAccess 策略。](./media/register-scan-amazon-s3/aws-permission-role-amazon-s3.png)
+
+    > [!IMPORTANT]
+    > AmazonS3ReadOnlyAccess 策略提供扫描 S3 桶所需的最低权限，也可能包括其他权限。
+    >
+    >若要仅应用扫描桶所需的最低权限，请根据你是要扫描帐户中的单个桶还是所有桶，使用 [AWS 策略的最低权限](#minimum-permissions-for-your-aws-policy)中列出的权限创建新策略。 
+    >
+    >将新策略应用于角色而不是 AmazonS3ReadOnlyAccess。
 
 1. 在“添加标签(可选)”区域中，可以选择为此新角色创建一个有意义的标签。 通过这些有用的标签，可以整理、跟踪和控制所创建的每个角色的访问权限。
 
@@ -396,6 +408,90 @@ AWS 帐户 ID 是用于登录到 AWS 控制台的那个 ID。 在你登录后，
     所有 Purview 见解报告都包括 Amazon S3 扫描结果，以及来自 Azure 数据源的其余结果。 报告筛选选项中也可能会额外添加一个“Amazon S3”资产类型（如果具有相关性）。
 
     有关详细信息，请参阅[了解 Azure Purview 中的见解](concept-insights.md)。
+
+## <a name="minimum-permissions-for-your-aws-policy"></a>AWS 策略的最低权限
+
+扫描 S3 桶时要使用的、用于[为 Purview 创建 AWS 角色](#create-a-new-aws-role-for-purview)的默认过程使用 AmazonS3ReadOnlyAccess 策略。
+
+AmazonS3ReadOnlyAccess 策略提供扫描 S3 桶所需的最低权限，也可能包括其他权限。
+
+若要仅应用扫描桶所需的最低权限，请根据你是要扫描帐户中的单个桶还是所有桶，使用以下部分中列出的权限创建新策略。
+
+将新策略应用于角色而不是 AmazonS3ReadOnlyAccess。
+
+### <a name="individual-buckets"></a>单个桶
+
+扫描单个 S3 桶时，最低 AWS 权限包括：
+
+- `GetBucketLocation`
+- `GetBucketPublicAccessBlock`
+- `GetObject`
+- `ListBucket`
+
+请确保使用特定的桶名称定义资源。 例如：
+
+```json
+{
+"Version": "2012-10-17",
+"Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetBucketLocation",
+                "s3:GetBucketPublicAccessBlock",
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            "Resource": "arn:aws:s3:::<bucketname>"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": "arn:aws:s3::: <bucketname>/*"
+        }
+    ]
+}
+```
+
+### <a name="all-buckets-in-your-account"></a>帐户中的所有桶
+
+扫描 AWS 帐户中的所有桶时，最低 AWS 权限包括：
+
+- `GetBucketLocation`
+- `GetBucketPublicAccessBlock`
+- `GetObject`
+- `ListAllMyBuckets`
+- `ListBucket`.
+
+请确保使用通配符定义资源。 例如：
+
+```json
+{
+"Version": "2012-10-17",
+"Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetBucketLocation",
+                "s3:GetBucketPublicAccessBlock",
+                "s3:GetObject",
+                "s3:ListAllMyBuckets",
+                "s3:ListBucket"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 9721ffa807c9adbeb50839113bc64fd23d8eb13f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 97a6a08730ae0c87df3b65185d48297e2338e69b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96533717"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768100"
 ---
 # <a name="categorize-images-by-subject-matter"></a>按主题对图像进行分类
 
@@ -62,7 +62,7 @@ ms.locfileid: "96533717"
 
 ## <a name="use-the-api"></a>使用 API
 
-分类功能属于[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API。 可以通过本机 SDK 或 REST 调用来调用此 API。 将 `Categories` 包括在 **visualFeatures** 查询参数中。 然后，在获取完整 JSON 响应时，就只需分析 `"categories"` 部分内容的字符串。
+分类功能属于[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) API。 可以通过本机 SDK 或 REST 调用来调用此 API。 将 `Categories` 包括在 **visualFeatures** 查询参数中。 然后，在获取完整 JSON 响应时，就只需分析 `"categories"` 部分内容的字符串。
 
 * [快速入门：计算机视觉 REST API 或客户端库](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
 

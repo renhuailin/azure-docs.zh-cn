@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 10/05/2020
 ms.author: duau
-ms.openlocfilehash: 82562eae748753cd785851c5d91f5f152b4c9960
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1cef56d15838d80079decc6e1da7ad830bd1cd9
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92206945"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029754"
 ---
 # <a name="what-is-azure-expressroute"></a>什么是 Azure ExpressRoute？
 使用 ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Microsoft Azure 和 Microsoft 365 等 Microsoft 云服务建立连接。
@@ -20,6 +20,10 @@ ms.locfileid: "92206945"
 可以从任意位置之间的 (IP VPN) 网络、点到点以太网或在场地租用设施上通过连接服务提供商的虚拟交叉连接来建立这种连接。 ExpressRoute 连接不经过公共 Internet。 与通过 Internet 的典型连接相比，ExpressRoute 连接提供更高的可靠性、更快的速度、一致的延迟和更高的安全性。 要了解如何使用 ExpressRoute 将网络连接到 Microsoft，请参阅 [ExpressRoute 连接模型](expressroute-connectivity-models.md)。
 
 ![ExpressRoute 连接概述](./media/expressroute-introduction/expressroute-connection-overview.png)
+
+> [!NOTE]
+> 在 ExpressRoute 的背景下，Microsoft Edge 描述了 ExpressRoute 线路 Microsoft 端的 Edge 路由器。 这是 ExpressRoute 线路进入 Microsoft 网络的入口点。
+> 
 
 ## <a name="key-benefits"></a>主要优点
 

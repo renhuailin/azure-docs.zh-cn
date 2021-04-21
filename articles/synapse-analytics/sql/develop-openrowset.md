@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: a6af8f4600544007a9ecb4fcff5ac9016fd7dfbf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c37f6d89d5ebd3e18177db8add048739a62c883f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640349"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307939"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>如何在 Azure Synapse Analytics 中通过无服务器 SQL 池使用 OPENROWSET
 
@@ -138,9 +138,9 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
 可以通过在路径末尾指定 /* 来指示无服务器 SQL 池遍历文件夹，如示例中所示：`https://sqlondemandstorage.blob.core.windows.net/csv/population/**`
 
 > [!NOTE]
-> 与 Hadoop 和 PolyBase 不同，无服务器 SQL 池不返回子文件夹，除非在路径末尾指定 /**。 此外，与 Hadoop 和 PolyBase 不同，无服务器 SQL 池会返回文件名以下划线 (_) 或句点 (.) 开头的文件。
+> 与 Hadoop 和 PolyBase 不同，无服务器 SQL 池不返回子文件夹，除非在路径末尾指定 /**。
 
-在以下示例中，如果 unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/`，则无服务器 SQL 池查询将返回 mydata.txt 和 _hidden.txt 中的行。 它不返回 mydata2.txt 和 mydata3.txt，因为这些文件位于子文件夹中。
+在以下示例中，如果 unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/`，则无服务器 SQL 池查询将返回 mydata.txt 中的行。 它不返回 mydata2.txt 和 mydata3.txt，因为这些文件位于子文件夹中。
 
 ![外部表的递归数据](./media/develop-openrowset/folder-traversal.png)
 

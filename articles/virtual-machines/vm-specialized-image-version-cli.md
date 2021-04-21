@@ -10,12 +10,12 @@ ms.date: 04/23/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fe081b0e74acf771e10406c15a3dea4e09956c37
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b3498037f3d2088459784ab066b8e94ba344a275
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560951"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792176"
 ---
 # <a name="create-a-vm-using-a-specialized-image-version-with-the-azure-cli"></a>使用 Azure CLI 通过专用化映像版本创建 VM
 
@@ -23,7 +23,7 @@ ms.locfileid: "102560951"
 
 在此示例中，请根据需要替换资源名称。 
 
-使用 [az sig image-definition list](/cli/azure/sig/image-definition#az-sig-image-definition-list) 列出库中的映像定义，以查看定义的名称和 ID。
+使用 [az sig image-definition list](/cli/azure/sig/image-definition#az_sig_image_definition_list) 列出库中的映像定义，以查看定义的名称和 ID。
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG
@@ -35,7 +35,7 @@ az sig image-definition list \
    --output tsv
 ```
 
-结合 --specialized 参数使用 [az vm create](/cli/azure/vm#az-vm-create) 创建 VM 可以指明该映像是专用化映像。 
+结合 --specialized 参数使用 [az vm create](/cli/azure/vm#az_vm_create) 创建 VM 可以指明该映像是专用化映像。 
 
 使用 `--image` 的映像定义 ID 从可用的最新映像版本创建 VM。 还可以通过为 `--image` 提供映像版本 ID 从特定版本创建 VM。 
 

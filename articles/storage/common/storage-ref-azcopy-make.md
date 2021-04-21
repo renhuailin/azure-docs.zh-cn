@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: f6d9645e614730d2eb5fad8bca30486e9afef618
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.openlocfilehash: 1e5b142d36266d5b6a333a0fa5cd233bac71849e
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878335"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503025"
 ---
 # <a name="azcopy-make"></a>azcopy make
 
@@ -32,7 +32,6 @@ azcopy make [resourceURL] [flags]
 - [AzCopy 入门](storage-use-azcopy-v10.md)
 - [使用 AzCopy 和 Blob 存储传输数据](./storage-use-azcopy-v10.md#transfer-data)
 - [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
-- [对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>示例
 
@@ -51,9 +50,9 @@ azcopy make "https://[account-name].[blob,file,dfs].core.windows.net/[top-level-
 
 |选项|说明|
 |---|---|
-|--cap-mbps 浮点数|以兆位/秒为单位限制传输速率。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。|
+|--cap-mbps float|以兆位/秒为单位限制传输速率。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。|
 |--output-type string|命令输出的格式。 选项包括：text、json。 默认值为“text”。|
-|--trusted-microsoft-suffixes 字符串   |指定可在其中发送 Azure Active Directory 登录令牌的其他域后缀。  默认值为“.core.windows.net;.core.chinacloudapi.cn;.core.cloudapi.de;.core.usgovcloudapi.net” 。 此处列出的任何内容都会添加到默认值。 为安全，你只应在此处放置 Microsoft Azure 域。 用分号分隔多个条目。|
+|--trusted-microsoft-suffixes 字符串   |指定可在其中发送 Azure Active Directory 登录令牌的其他域后缀。  默认值为“.core.windows.net;.core.chinacloudapi.cn;.core.cloudapi.de;.core.usgovcloudapi.net” 。 此处列出的任何内容都会添加到默认值。 为安全起见，应只在此处放置 Microsoft Azure 域。 用分号分隔多个条目。|
 
 ## <a name="see-also"></a>另请参阅
 

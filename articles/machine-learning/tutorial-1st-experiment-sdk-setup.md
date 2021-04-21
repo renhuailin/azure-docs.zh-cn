@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python, contperf-fy21q3
 adobe-target: true
-ms.openlocfilehash: f00a5efb01ea59b04495747ffd93d9f15ad5f76e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ed7a95ea83cacc0eaccfa23cd87403fb9be615ee
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935526"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210663"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>教程：在 Jupyter Notebook 中开始使用 Azure 机器学习
 
@@ -27,7 +27,13 @@ ms.locfileid: "105935526"
 > [!div class="checklist"]
 > * 创建要在其他 Jupyter Notebook 教程中使用的 [Azure 机器学习工作区](concept-workspace.md)。
 > * 将教程笔记本克隆到工作区中的文件夹。
-> * 创建一个基于云的计算实例，其中已安装并预配置了 Azure 机器学习 Python SDK。
+> * 创建基于云的计算实例，它可为你提供已安装并配置了 Azure 机器学习 Python SDK 的环境。
+
+本教程介绍如何在工作区中的计算资源上运行 Jupyter 笔记本。  
+
+开始使用 Azure 机器学习的另一种好方法是提交批处理作业。  请参阅[教程：开始在开发环境中使用 Azure 机器学习](tutorial-1st-experiment-sdk-setup-local.md)。
+
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 

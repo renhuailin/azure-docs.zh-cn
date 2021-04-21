@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 3/15/2021
 ms.custom: template-concept,references_regions
-ms.openlocfilehash: 26485c84749b7d4c91159476b3f683c2b0f3831b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 866eb9feb152c0094cd5281fe4820ccc4589386f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103554998"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778312"
 ---
 # <a name="azure-private-link-availability"></a>Azure 专用链接可用性
 
@@ -96,7 +96,7 @@ ms.locfileid: "103554998"
 |:-------------------|:-----------------|:----------------|:--------|
 | Azure Blob 存储（包括 Data Lake Storage Gen2）       |  所有公共区域<br/> 所有政府区域       |  在帐户类型常规用途 V2 上受支持 | GA <br/> [了解如何为 Blob 存储创建专用终结点。](tutorial-private-endpoint-storage-portal.md)  |
 | Azure 文件 | 所有公共区域<br/> 所有政府区域      | |   GA <br/> [了解如何创建 Azure 文件存储网络终结点。](../storage/files/storage-files-networking-endpoints.md)   |
-| Azure 文件同步 | 所有公共区域      | |   GA <br/> [了解如何创建 Azure 文件存储网络终结点。](../storage/files/storage-sync-files-networking-endpoints.md)   |
+| Azure 文件同步 | 所有公共区域      | |   GA <br/> [了解如何创建 Azure 文件存储网络终结点。](../storage/file-sync/file-sync-networking-endpoints.md)   |
 | Azure 队列存储       |  所有公共区域<br/> 所有政府区域       |  在帐户类型常规用途 V2 上受支持 | GA <br/> [了解如何为队列存储创建专用终结点。](tutorial-private-endpoint-storage-portal.md) |
 | Azure 表存储       |  所有公共区域<br/> 所有政府区域       |  在帐户类型常规用途 V2 上受支持 | GA <br/> [了解如何为表存储创建专用终结点。](tutorial-private-endpoint-storage-portal.md)  |
 | Azure Batch | 除以下区域外的所有公共区域：德国中部、德国东北部 <br/> 所有政府区域  | | GA <br/> [了解如何为 Azure Batch 创建专用终结点。](../batch/private-connectivity.md) |

@@ -2,14 +2,14 @@
 title: 删除资源组和资源
 description: 介绍如何删除资源组和资源。 它介绍删除资源组时 Azure 资源管理器如何为资源的删除排序。 它描述响应代码以及资源管理器如何处理它们以确定是否成功删除。
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 03/18/2021
 ms.custom: seodec18
-ms.openlocfilehash: d6c38169916cc6c47d6f05c88645fa435bbdb146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 3c062c2f775e145347129f24b201748ee517daf4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614404"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768662"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure 资源管理器资源组和资源删除
 
@@ -77,7 +77,7 @@ az group delete --name ExampleResourceGroup
 
 1. 在[门户](https://portal.azure.com)中，选择要删除的资源组。
 
-1. 选择“删除资源组”****。
+1. 选择“删除资源组”。
 
    ![删除资源组](./media/delete-resource-group/delete-group.png)
 
@@ -111,7 +111,7 @@ az resource delete \
 
 1. 在[门户](https://portal.azure.com)中，选择要删除的资源。
 
-1. 选择“删除” ****。 以下屏幕截图显示了虚拟机的管理选项。
+1. 选择“删除” 。 以下屏幕截图显示了虚拟机的管理选项。
 
    ![删除资源](./media/delete-resource-group/delete-resource.png)
 
@@ -119,8 +119,15 @@ az resource delete \
 
 ---
 
+## <a name="required-access"></a>所需访问权限
+
+若要删除资源组，你需要访问“Microsoft.Resources/subscriptions/resourceGroups”资源的删除操作。 还需要资源组中所有资源的删除权限。
+
+有关操作的列表，请参阅 [Azure 资源提供程序操作](../../role-based-access-control/resource-provider-operations.md)。 有关内置角色的列表，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
+
+如果拥有所需的访问权限，但删除请求失败，则可能是因为资源组上存在[锁](lock-resources.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解资源管理器概念，请参阅 [Azure 资源管理器概述](overview.md)。
-* 有关删除命令，请参阅 [PowerShell](/powershell/module/az.resources/Remove-AzResourceGroup)、[Azure CLI](/cli/azure/group#az-group-delete) 和 [REST API](/rest/api/resources/resourcegroups/delete)。
+* 有关删除命令，请参阅 [PowerShell](/powershell/module/az.resources/Remove-AzResourceGroup)、[Azure CLI](/cli/azure/group#az_group_delete) 和 [REST API](/rest/api/resources/resourcegroups/delete)。

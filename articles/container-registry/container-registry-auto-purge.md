@@ -3,12 +3,12 @@ title: 清除标记和清单
 description: 使用清除命令根据年龄和标记筛选器从 Azure 容器注册表中删除多个标记和清单，并选择性地安排清除操作计划。
 ms.topic: article
 ms.date: 02/19/2021
-ms.openlocfilehash: 2dedfdd6eba73b7573743eba60294ac2231ffc56
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 562d1940459cb1594b7cd9aca2af280b05a4e419
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722222"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784184"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>自动清除 Azure 容器注册表中的映像
 
@@ -45,7 +45,7 @@ ms.locfileid: "101722222"
 * `--untagged` - 指定删除没有相关标记的清单（未标记的清单）。
 * `--dry-run` - 指定不删除任何数据，但其输出与在没有此标志的情况下运行此命令时的输出相同。 此参数有助于测试清除命令，确保它不会无意中删除要保留的数据。
 * `--keep` - 指定保留最新的 x 个待删除标记。
-* `--concurrency` -指定多个要并发处理的清除任务。 如果未提供此参数，则使用默认值。
+* `--concurrency` - 指定要同时处理的清除任务数量。 如果未提供此参数，则使用默认值。
 
 对于其他参数，请运行 `acr purge --help`。 
 
@@ -179,7 +179,6 @@ az acr task create --name weeklyPurgeTask \
 
 <!-- LINKS - Internal -->
 [azure-cli-install]: /cli/azure/install-azure-cli
-[az-acr-run]: /cli/azure/acr#az-acr-run
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-task-show]: /cli/azure/acr/task#az-acr-task-show
-
+[az-acr-run]: /cli/azure/acr#az_acr_run
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-acr-task-show]: /cli/azure/acr/task#az_acr_task_show

@@ -1,33 +1,27 @@
 ---
-title: 缓解机器学习模型（预览版）中的不公平性
+title: 机器学习公平性（预览版）
 titleSuffix: Azure Machine Learning
-description: 了解机器学习模型中的公平性以及 Fairlearn Python 包如何帮助你构建更公平的模型。
+description: 了解机器学习公平性以及 Fairlearn Python 包如何帮助你评估和缓解不公平性。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 01/26/2021
+ms.date: 04/02/2021
 ms.custom: responsible-ml
-ms.openlocfilehash: 276c91ad7fb5b09dbe18d989741f0f54b8b0eb09
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 45c63780eac021301e5b01c0ff8abea7d704a4cf
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101659675"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220515"
 ---
-# <a name="mitigate-unfairness-in-machine-learning-models-preview"></a>缓解机器学习模型（预览版）中的不公平性
+# <a name="machine-learning-fairness-preview"></a>机器学习公平性（预览版）
 
-了解机器学习中的公平性以及 [Fairlearn](https://fairlearn.github.io/) 开源 Python 包如何帮助你缓解机器学习模型中的不公平性问题。 如果不努力了解公平性问题以及如何在构建机器学习模型时评估公平性，那么你构建的模型可能会产生不公平的结果。
+了解机器学习公平性以及 [Fairlearn](https://fairlearn.github.io/) 开源 Python 包如何帮助你评估和缓解机器学习模型中的不公平性问题。 
 
-Fairlearn 开源包[用户指南](https://fairlearn.github.io/main/user_guide/index.html)的以下摘要介绍了如何使用它来评估正在构建的 AI 系统的公平性。  Fairlearn 开源包还可以提供一些选项，以帮助缓解或减少你观察到的任何公平性问题。  请参阅[操作方法](how-to-machine-learning-fairness-aml.md)和[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)，以便在有关 Azure 机器学习的训练期间启用 AI 系统的公平性评估。
-
-
-## <a name="what-is-fairness-in-machine-learning-models"></a>什么是机器学习模型中的公平性？
-
->[!NOTE]
-> 公平性是一个社会性的技术难题。 公平性的许多方面（例如公正和正当程序）没有通过量化的公平性指标进行捕获。 另外，许多量化的公平性指标无法同时得到满足。 Fairlearn 开源包的目标是使人类能够评估不同的影响和缓解策略。 最终，由构建人工智能和机器学习模型的人类用户负责根据其应用场景进行权衡。
+## <a name="what-is-machine-learning-fairness"></a>什么是机器学习公平性？
 
 人工智能和机器学习系统可能会表现出不公平的行为。 定义不公平行为的一种方法是按其损害或对人的影响来定义。 人工智能系统可以造成许多类型的损害。 有关详细信息，请参阅 [Kate Crawford 的 NeurIPS 2017 主题](https://www.youtube.com/watch?v=fMym_BKWQzk)。
 
@@ -42,6 +36,9 @@ Fairlearn 开源包[用户指南](https://fairlearn.github.io/main/user_guide/in
 ## <a name="fairness-assessment-and-mitigation-with-fairlearn"></a>通过 Fairlearn 进行公平性评估和缓解
 
 Fairlearn 是一个开源 Python 包，它使机器学习系统开发者能够评估其系统的公平性并缓解不公平性。
+
+>[!NOTE]
+> 公平性是一个社会性的技术难题。 公平性的许多方面（例如公正和正当程序）没有通过量化的公平性指标进行捕获。 另外，许多量化的公平性指标无法同时得到满足。 Fairlearn 开源包的目标是使人类能够评估不同的影响和缓解策略。 最终，由构建人工智能和机器学习模型的人类用户负责根据其应用场景进行权衡。
 
 Fairlearn 开源包有两个组件：
 
@@ -90,8 +87,6 @@ Fairlearn 开源包支持下列类型的奇偶校验约束：
 |均等几率  | 诊断分配和服务质量损害 | 二元分类        |
 |均等机会 | 诊断分配和服务质量损害 | 二元分类        |
 |有界群体损失     |  缓解服务质量损害 | 回归 |
-
-
 
 ### <a name="mitigation-algorithms"></a>缓解算法
 
