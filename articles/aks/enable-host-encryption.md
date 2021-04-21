@@ -4,12 +4,13 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中配置基于
 services: container-service
 ms.topic: article
 ms.date: 03/03/2021
-ms.openlocfilehash: 6942a3d445892faf0ea0570561eb06019e841e23
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7eb3215aeb1f7c6508092d18fbebd90f852efe63
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443182"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772912"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes 服务 (AKS) 中基于主机的加密（预览版）
 
@@ -28,9 +29,9 @@ ms.locfileid: "106443182"
 - 确保已安装 `aks-preview` CLI 扩展 v0.4.73 或更高版本。
 - 确保已在 `Microsoft.ContainerService` 下启用 `EnableEncryptionAtHostPreview` 功能标志。
 
-在对 Azure Kubernetes 服务群集使用 EncryptionAtHost 属性之前，必须先为订阅启用该功能。 请按照以下步骤为订阅启用该功能：
+在对 Azure Kubernetes 服务群集使用 EncryptionAtHost 属性之前，必须先为订阅启用该功能。 请按照以下步骤为订阅启用此功能：
 
-1. 执行以下命令，为订阅注册该功能
+1. 执行以下命令，为订阅注册此功能
 
 ```azurecli-interactive
 Register-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute"
@@ -87,12 +88,12 @@ az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-gr
 <!-- LINKS - external -->
 
 <!-- LINKS - internal -->
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
 [best-practices-security]: ./operator-best-practices-cluster-security.md
 [supported-regions]: ../virtual-machines/disk-encryption.md#supported-regions
 [supported-sizes]: ../virtual-machines/disk-encryption.md#supported-vm-sizes
 [azure-cli-install]: /cli/azure/install-azure-cli
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register

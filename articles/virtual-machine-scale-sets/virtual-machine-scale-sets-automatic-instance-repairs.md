@@ -9,12 +9,12 @@ ms.subservice: instance-protection
 ms.date: 02/28/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: b43502e771415c0ca62d821c697516fae16e35ce
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 733f4602e43511924783f6bc8cb1bad29edb5ea0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934523"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762904"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>适用于 Azure 虚拟机规模集的自动实例修复
 
@@ -141,7 +141,7 @@ New-AzVmssConfig `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-以下示例在使用 [az vmss create](/cli/azure/vmss#az-vmss-create) 创建新规模集时启用自动修复策略。 首先创建一个资源组，然后创建一个将自动修复策略宽限期设置为 30 分钟的新规模集。
+以下示例在使用 [az vmss create](/cli/azure/vmss#az_vmss_create) 创建新规模集时启用自动修复策略。 首先创建一个资源组，然后创建一个将自动修复策略宽限期设置为 30 分钟的新规模集。
 
 ```azurecli-interactive
 az group create --name <myResourceGroup> --location <VMSSLocation>
@@ -209,7 +209,7 @@ Update-AzVmss `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-以下示例使用 [az vmss update](/cli/azure/vmss#az-vmss-update) 更新现有规模集的自动实例修复策略。
+以下示例使用 [az vmss update](/cli/azure/vmss#az_vmss_update) 更新现有规模集的自动实例修复策略。
 
 ```azurecli-interactive
 az vmss update \  
@@ -259,7 +259,7 @@ GET '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provider
 
 ### <a name="azure-cli"></a>Azure CLI 
 
-使用 [get-instance-view](/cli/azure/vmss#az-vmss-get-instance-view) cmdlet 查看自动实例修复的 serviceState。 
+使用 [get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view) cmdlet 查看自动实例修复的 serviceState。 
 
 ```azurecli-interactive
 az vmss get-instance-view \
@@ -267,7 +267,7 @@ az vmss get-instance-view \
     --resource-group MyResourceGroup
 ```
 
-使用 [set-orchestration-service-state](/cli/azure/vmss#az-vmss-set-orchestration-service-state) cmdlet 更新自动实例修复的 serviceState。 选择将规模集加入到自动修复功能后，可以使用此 cmdlet 来暂停或恢复规模集的自动修复。 
+使用 [set-orchestration-service-state](/cli/azure/vmss#az_vmss_set_orchestration_service_state) cmdlet 更新自动实例修复的 serviceState。 选择将规模集加入到自动修复功能后，可以使用此 cmdlet 来暂停或恢复规模集的自动修复。 
 
 ```azurecli-interactive
 az vmss set-orchestration-service-state \

@@ -4,12 +4,12 @@ description: 了解如何使用用于 Visual Studio 2019 的 Azure Functions 工
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 877c82e375b0ea469071402b83fadbd634177f3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2cba0a9ad63e319af0a5eaa1c1c018c3b285c28a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97655809"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765568"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>使用 Visual Studio 开发 Azure Functions  
 
@@ -237,7 +237,7 @@ For an example of how to test a queue triggered function, see the [queue trigger
 
 * [使用 Azure 门户](functions-how-to-use-azure-function-app-settings.md#settings)。
 * [使用 Azure Functions Core Tools 中的 `--publish-local-settings` 发布选项](functions-run-local.md#publish)。
-* [使用 Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)。
+* [使用 Azure CLI](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set)。
 
 ## <a name="monitoring-functions"></a>监视函数
 

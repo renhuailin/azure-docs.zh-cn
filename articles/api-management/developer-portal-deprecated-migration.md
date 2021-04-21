@@ -5,20 +5,16 @@ description: 了解如何从旧开发人员门户迁移到 API 管理中的新�
 services: api-management
 documentationcenter: API Management
 author: mikebudzynski
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/15/2020
+ms.date: 04/15/2021
 ms.author: apimpm
-ms.openlocfilehash: f5105c685de4b3ccdffe69eec8ee8eeb32976c1f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4f9f3822b58886f7d453d52402b078d8401133f
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92325967"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738875"
 ---
 # <a name="migrate-to-the-new-developer-portal"></a>迁移到新开发人员门户
 
@@ -33,19 +29,19 @@ ms.locfileid: "92325967"
 
 ## <a name="improvements-in-new-developer-portal"></a>新开发人员门户中的改进
 
-新的开发人员门户解决了已弃用门户的许多限制。 它具有[用于编辑内容的可视化拖放编辑器](api-management-howto-developer-portal-customize.md)和设计人员用于设置网站样式的专用面板。 页面、自定义和配置将保存为 API 管理服务中的 Azure 资源管理器资源，这样你便能够[自动执行门户部署](api-management-howto-developer-portal.md#automate)。 最后，门户的代码库是开源的，因此[你可以使用自定义功能对其进行扩展](api-management-howto-developer-portal.md#managed-vs-self-hosted)。
+新的开发人员门户解决了已弃用门户的许多限制。 它具有[用于编辑内容的可视化拖放编辑器](api-management-howto-developer-portal-customize.md)和设计人员用于设置网站样式的专用面板。 页面、自定义和配置将保存为 API 管理服务中的 Azure 资源管理器资源，这样你便能够[自动执行门户部署](automate-portal-deployments.md)。 最后，门户的代码库是开源的，因此[你可以使用自定义功能对其进行扩展](api-management-howto-developer-portal.md#managed-vs-self-hosted)。
 
 ## <a name="how-to-migrate-to-new-developer-portal"></a>如何迁移到新的开发人员门户
 
 新的开发人员门户与已弃用门户不兼容，因此无法自动迁移。 需要手动重新创建内容（页面、文本、媒体文件）并自定义新门户的外观。 具体步骤将因门户的自定义内容和复杂性而异。 有关指南，请参阅[开发人员门户教程](api-management-howto-developer-portal-customize.md)。 其余的配置（如 API、产品、用户、标识提供程序）将在两个门户之间自动共享。
 
 > [!IMPORTANT]
-> 如果之前已启动新的开发人员门户，但尚未进行任何更改，请[重置默认内容](api-management-howto-developer-portal.md#preview-to-ga)，将其更新到最新版本。
+> 如果之前已启动新的开发人员门户，但尚未进行任何更改，请重置默认内容，将其更新到最新版本。
 
 从已弃用的门户迁移时，请记住以下更改：
 
 - 如果通过自定义域公开开发人员门户，请向新的开发人员门户[分配域](configure-custom-domain.md)。 使用 Azure 门户中下拉列表中的“开发人员门户”选项。
-- 在 API 上[应用 CORS 策略](api-management-howto-developer-portal.md#cors)，以启用交互式测试控制台。
+- 在 API 上[应用 CORS 策略](developer-portal-faq.md#cors)，以启用交互式测试控制台。
 - 如果注入自定义 CSS 来设置门户样式，需要[使用内置设计面板复制样式](api-management-howto-developer-portal-customize.md)。 新门户中不允许使用 CSS 注入。
 - 只能在[新门户的自托管版本](api-management-howto-developer-portal.md#managed-vs-self-hosted)中注入自定义 JavaScript。
 - 如果你的 API 管理位于虚拟网络中，并且通过应用程序网关向 Internet 公开，请[参阅本文档文章](api-management-howto-integrate-internal-vnet-appgateway.md)，了解具体的配置步骤。 你需要：

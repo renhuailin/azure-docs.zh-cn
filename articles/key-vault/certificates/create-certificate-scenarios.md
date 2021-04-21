@@ -3,19 +3,18 @@ title: 监视和管理证书创建
 description: 通过方案演示如何使用一系列选项在 Key Vault 中创建证书、监视证书创建过程并与之交互。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 02e13ce81ed2f11c0bb69015a4864c4a1ad55593
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e4acb5195497dd31f466829b1cde301ba9696b3
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81430963"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751087"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>监视和管理证书创建
 适用于：Azure

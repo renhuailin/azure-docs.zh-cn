@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 4/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 945a67f81010a61adf814f6f6f422eba5001b48d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d5fc2b14a655251e59a9209e078b0534f08baf9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95998543"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763228"
 ---
 # <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>使用 Azure CLI 配置和访问慢查询日志
 可以使用 Azure CLI（Azure 命令行实用工具）下载 Azure Database for MySQL 慢查询日志。
@@ -41,14 +41,14 @@ az mysql server configuration list --resource-group myresourcegroup --server myd
 ```
 
 ## <a name="list-logs-for-azure-database-for-mysql-server"></a>列出 Azure Database for MySQL 服务器的日志
-如果“log_output”  配置为“File”，则可以直接从服务器的本地存储访问日志。 若要列出服务器的可用慢查询日志文件，请运行 [az mysql server-logs list](/cli/azure/mysql/server-logs#az-mysql-server-logs-list) 命令。
+如果“log_output”  配置为“File”，则可以直接从服务器的本地存储访问日志。 若要列出服务器的可用慢查询日志文件，请运行 [az mysql server-logs list](/cli/azure/mysql/server-logs#az_mysql_server_logs_list) 命令。
 
 可以列出资源组“myresourcegroup”下的服务器“mydemoserver.mysql.database.azure.com”的日志文件。 然后在日志文件列表中找到名为“log\_files\_list.txt”的文本文件  。
 ```azurecli-interactive
 az mysql server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
 ## <a name="download-logs-from-the-server"></a>从服务器下载日志
-如果“log_output”  配置为“File”，则可以使用 [az mysql server-logs download](/cli/azure/mysql/server-logs#az-mysql-server-logs-download) 命令从服务器下载单个日志文件。
+如果“log_output”  配置为“File”，则可以使用 [az mysql server-logs download](/cli/azure/mysql/server-logs#az_mysql_server_logs_download) 命令从服务器下载单个日志文件。
 
 使用下列示例，可以将资源组“myresourcegroup”下服务器 mydemoserver.mysql.database.azure.com 的特定日志文件下载到本地环境。
 ```azurecli-interactive

@@ -2,21 +2,21 @@
 title: 通过 VSTS 连接到专用 SQL 池（以前称为 SQL DW）
 description: 使用 Visual Studio 在 Azure Synapse Analytics 中查询专用 SQL 池（以前称为 SQL DW）。
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 08/15/2019
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0baf2396b7c5af103f0b3aa223d0bccf725babbe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 926e95887f8d6aa164908a4107656074142a969e
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104584136"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566454"
 ---
 # <a name="connect-to-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>使用 Visual Studio 和 SSDT 连接到 Azure Synapse Analytics 中的专用 SQL 池（以前称为 SQL DW）
 
@@ -62,7 +62,7 @@ ms.locfileid: "104584136"
 现在，已建立了与数据库的连接，接下来让我们编写查询。
 
 1. 在 SQL Server 对象资源管理器中右键单击数据库。
-2. 选择“新建查询”  。 此时将打开一个新的查询窗口。
+2. 选择“新建查询”。 此时将打开一个新的查询窗口。
    
     ![新建查询](./media/sql-data-warehouse-query-visual-studio/new-query2.png)
 3. 将以下 T-SQL 查询复制到查询窗口中：

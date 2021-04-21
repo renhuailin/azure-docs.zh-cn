@@ -9,12 +9,12 @@ ms.devlang: javascript
 ms.topic: how-to
 ms.date: 12/26/2018
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6ef3092c611e1eede2be1e0994ce69959a46f1d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f044e03fa3f8aece677e3918b2add8190041c7ac
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93340917"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589510"
 ---
 # <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 过期数据
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -72,12 +72,6 @@ globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: NumberLong(20)})
 globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: 20.5}) //TTL value contains non-zero decimal part. 
 globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: NumberLong(2147483649)}) //TTL value is greater than Int32.MaxValue (2,147,483,648). 
 ``` 
-
-## <a name="how-to-activate-the-per-document-ttl-feature"></a>如何激活按文档 TTL 功能
-
-可以使用 Azure Cosmos DB 的用于 MongoDB 的 API 激活每个文档的 TTL 功能。
-
-:::image type="content" source="./media/mongodb-ttl/mongodb_portal_ttl.png" alt-text="在门户中激活按文档 TTL 功能的屏幕截图":::
 
 ## <a name="next-steps"></a>后续步骤
 * [利用生存时间使 Azure Cosmos DB 中的数据自动过期](../cosmos-db/time-to-live.md)

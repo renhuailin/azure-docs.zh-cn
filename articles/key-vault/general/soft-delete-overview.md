@@ -4,15 +4,15 @@ description: 使用 Azure Key Vault 软删除可恢复已删除的密钥保管�
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-author: ShaneBala-keyvault
-ms.author: sudbalas
-ms.date: 12/15/2020
-ms.openlocfilehash: 6d691c4c510f5ff00c34d03b7b8d7a7bcaa53c3f
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+author: msmbaldwin
+ms.author: mbaldwin
+ms.date: 03/31/2021
+ms.openlocfilehash: 52cd7742f3c6961350f907cde8ffe19235cff9b8
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554087"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753247"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault 软删除概述
 

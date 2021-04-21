@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: cec391ba998165af4dd9339b719a3b73cb330c16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94440b71eee1ff9dcc4a86733582e3e5f57f6a00
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104601784"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764614"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>在 Linux VM 上使用 Azure AD 启用 Azure 磁盘加密（以前版本）
 
@@ -32,7 +32,7 @@ ms.locfileid: "104601784"
  > - 如果之前是使用 [Azure 磁盘加密与 Azure AD 应用](disk-encryption-overview-aad.md)来加密此 VM，则必须继续使用此选项来加密 VM。 无法在此加密的 VM 上使用 [Azure 磁盘加密](disk-encryption-overview.md)，因为不支持此方案，这意味着尚不支持为此加密的 VM 实施 Azure AD 应用程序切换操作。
  > - 为确保加密机密不会跨过区域边界，Azure 磁盘加密需要将密钥保管库和 VM 共置于同一区域。 在要加密的 VM 所在的同一区域中创建并使用密钥保管库。
  > - 加密 Linux OS 卷的过程可能需要几个小时。 加密 Linux OS 卷所需的时间比加密数据卷要长，这是正常的。
-> - 加密 Linux OS 卷时，VM 应当会被视为不可用的。 我们强烈建议在加密过程中避免 SSH 登录，以避免阻止在加密过程中需要访问的任何已打开文件。 若要查看进度，请使用 [Get-AzVMDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) 或 [vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) 命令。 对于 30-GB OS 卷，此过程可能需要几小时才能完成，还需要额外的时间来加密数据卷。 除非使用 encrypt format all 选项，否则数据卷加密时间将与数据卷的大小和数量成比例。 
+> - 加密 Linux OS 卷时，VM 应当会被视为不可用的。 我们强烈建议在加密过程中避免 SSH 登录，以避免阻止在加密过程中需要访问的任何已打开文件。 若要查看进度，请使用 [Get-AzVMDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) 或 [vm encryption show](/cli/azure/vm/encryption#az_vm_encryption_show) 命令。 对于 30-GB OS 卷，此过程可能需要几小时才能完成，还需要额外的时间来加密数据卷。 除非使用 encrypt format all 选项，否则数据卷加密时间将与数据卷的大小和数量成比例。 
  > - 在 Linux VM 上，仅支持对数据卷禁用加密。 如果 OS 卷已加密，则不支持对数据卷或 OS 卷禁用加密。 
 
  
@@ -50,7 +50,7 @@ ms.locfileid: "104601784"
 ### <a name="enable-encryption-on-an-existing-or-running-linux-vm-by-using-the-azure-cli"></a><a name="bkmk_RunningLinuxCLI"> </a>使用 Azure CLI 在现有或正在运行的 Linux VM 上启用加密 
 可通过安装并使用 [Azure CLI 2.0](/cli/azure) 命令行工具在加密的 VHD 上启用磁盘加密。 可以在浏览器中结合 [Azure Cloud Shell](../../cloud-shell/overview.md) 使用这些 cmdlet，或者将它们安装在本地计算机上并在任何 PowerShell 会话中使用。 若要在 Azure 中现有或正在运行的 IaaS Linux VM 上启用加密，请使用以下 CLI 命令：
 
-使用 [az vm encryption enable](/cli/azure/vm/encryption#az-vm-encryption-enable) 命令在 Azure 中运行的 IaaS 虚拟机上启用加密。
+使用 [az vm encryption enable](/cli/azure/vm/encryption#az_vm_encryption_enable) 命令在 Azure 中运行的 IaaS 虚拟机上启用加密。
 
 -  **使用客户端机密加密正在运行的 VM：**
     
@@ -67,13 +67,13 @@ ms.locfileid: "104601784"
    >[!NOTE]
    > disk-encryption-keyvault 参数值的语法是完整的标识符字符串：/subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]。</br> </br> key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为： https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id]。
 
-- **验证磁盘是否已加密：** 若要检查 IaaS VM 的加密状态，请使用 [az vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) 命令。 
+- **验证磁盘是否已加密：** 若要检查 IaaS VM 的加密状态，请使用 [az vm encryption show](/cli/azure/vm/encryption#az_vm_encryption_show) 命令。 
 
      ```azurecli-interactive
          az vm encryption show --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup"
      ```
 
-- **禁用加密：** 若要禁用加密，请使用 [az vm encryption disable](/cli/azure/vm/encryption#az-vm-encryption-disable) 命令。 只允许对 Linux VM 的数据卷禁用加密。
+- **禁用加密：** 若要禁用加密，请使用 [az vm encryption disable](/cli/azure/vm/encryption#az_vm_encryption_disable) 命令。 只允许对 Linux VM 的数据卷禁用加密。
     
      ```azurecli-interactive
          az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type DATA
@@ -337,7 +337,7 @@ key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为： htt
          Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM' [--volume-type {ALL, DATA, OS}]
      ```
 
-- **使用 Azure CLI 禁用加密：** 若要禁用加密，请使用 [az vm encryption disable](/cli/azure/vm/encryption#az-vm-encryption-disable) 命令。 
+- **使用 Azure CLI 禁用加密：** 若要禁用加密，请使用 [az vm encryption disable](/cli/azure/vm/encryption#az_vm_encryption_disable) 命令。 
      ```azurecli-interactive
          az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
      ```

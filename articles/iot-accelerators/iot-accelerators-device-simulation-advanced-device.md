@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 9b8c1bb5669f058aba00f44ce62e48c7fab233f9
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: dc2eac4e784d4224581078348f12b231befe1f35
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057739"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714103"
 ---
 # <a name="create-an-advanced-device-model"></a>创建高级设备模型
 
@@ -30,11 +30,11 @@ ms.locfileid: "106057739"
 
 若要遵循本操作指南中的步骤，需在 Azure 订阅中部署设备模拟的实例。
 
-如果尚未部署设备模拟，请参阅 GitHub 上的[设备模拟部署](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)。
+如果尚未部署设备模拟，请参阅 GitHub 上的[设备模拟部署](https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md)。
 
 ### <a name="open-device-simulation"></a>打开设备模拟
 
-如果尚未部署设备模拟，请参阅 GitHub 上的[设备模拟部署](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)。
+如果尚未部署设备模拟，请参阅 GitHub 上的[设备模拟部署](https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md)。
 
 ## <a name="device-models"></a>设备模型
 

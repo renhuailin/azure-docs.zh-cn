@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/3/2020
 ms.author: cynthn
-ms.openlocfilehash: 258d8ab6ab23a95d73b8ed0c2549f373cf097674
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 601b8236ca413dd510585bdfffddc3e892caa73b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554082"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107759662"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>预览版：使用客户管理的密钥加密映像
 
@@ -162,7 +162,7 @@ az provider register -n Microsoft.Compute
 ```
 
 
-若要指定映像版本的磁盘加密集，请将 [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) 与 `--target-region-encryption` 参数配合使用。 `--target-region-encryption` 的格式是用于加密 OS 和数据磁盘的密钥列表（密钥以逗号分隔）。 它应如下所示： `<encryption set for the OS disk>,<Lun number of the data disk>,<encryption set for the data disk>,<Lun number for the second data disk>,<encryption set for the second data disk>`。 
+若要指定映像版本的磁盘加密集，请将 [az image gallery create-image-version](/cli/azure/sig/image-version#az_sig_image_version_create) 与 `--target-region-encryption` 参数配合使用。 `--target-region-encryption` 的格式是用于加密 OS 和数据磁盘的密钥列表（密钥以逗号分隔）。 它应如下所示： `<encryption set for the OS disk>,<Lun number of the data disk>,<encryption set for the data disk>,<Lun number for the second data disk>,<encryption set for the second data disk>`。 
 
 如果 OS 磁盘的源是托管磁盘或 VM，请使用 `--managed-image` 指定映像版本的源。 在此示例中，源是一个托管映像，其中包含 OS 磁盘，以及位于 LUN 0 上的数据磁盘。 OS 磁盘将通过 DiskEncryptionSet1 加密，数据磁盘将通过 DiskEncryptionSet2 加密。
 

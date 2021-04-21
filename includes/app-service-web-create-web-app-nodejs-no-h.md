@@ -7,17 +7,17 @@ ms.service: app-service
 ms.topic: include
 ms.date: 02/02/2018
 ms.author: cephalin
-ms.custom: include file
-ms.openlocfilehash: c00aa8d83c3ef69e4804822b5527c6faa64d4c8d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 337b6a23691e9fd533009ea5553e4b8765eb91bc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102234242"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767308"
 ---
 在 `myAppServicePlan` 应用服务计划中创建一个 [Web 应用](../articles/app-service/overview.md#app-service-on-linux)。 
 
-在 Cloud Shell 中可以使用 [`az webapp create`](/cli/azure/webapp) 命令。 在以下示例中，将 `<app-name>` 替换为全局唯一的应用名称（有效字符是 `a-z`、`0-9` 和 `-`）。 运行时设置为 `NODE|6.9`。 若要查看所有受支持的运行时，请运行 [`az webapp list-runtimes`](/cli/azure/webapp#az-webapp-list-runtimes)。 
+在 Cloud Shell 中可以使用 [`az webapp create`](/cli/azure/webapp) 命令。 在以下示例中，将 `<app-name>` 替换为全局唯一的应用名称（有效字符是 `a-z`、`0-9` 和 `-`）。 运行时设置为 `NODE|6.9`。 若要查看所有受支持的运行时，请运行 [`az webapp list-runtimes`](/cli/azure/webapp#az_webapp_list_runtimes)。 
 
 ```azurecli-interactive
 # Bash

@@ -7,7 +7,7 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 04/15/2021
 ms.custom:
 - amqp
 - mqtt
@@ -16,12 +16,12 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-js
 - devx-track-csharp
-ms.openlocfilehash: 3ddc8c78bac47ed85266037341328585e3c7cb1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e72af412f61f2084fb78907c15a92a22b9e3bc99
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97825129"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567173"
 ---
 # <a name="control-access-to-iot-hub"></a>控制 IoT 中心的访问权限
 
@@ -145,7 +145,7 @@ IoT 中心还允许设备使用 [X.509 证书](iot-hub-devguide-security.md#supp
 | 值 | 说明 |
 | --- | --- |
 | {signature} |HMAC-SHA256 签名字符串的格式为： `{URL-encoded-resourceURI} + "\n" + expiry`。 **重要说明**：密钥是从 base64 解码得出的，用作执行 HMAC-SHA256 计算的密钥。 |
-| {resourceURI} |使用此令牌可以访问的终结点的 URI 前缀（根据分段）以 IoT 中心的主机名开头（无协议）。 例如： `myHub.azure-devices.net/devices/device1` |
+| {resourceURI} |使用此令牌可以访问的终结点的 URI 前缀（根据分段）以 IoT 中心的主机名开头（无协议）。 例如 `myHub.azure-devices.net/devices/device1` |
 | {expiry} |从纪元 1970 年 1 月 1日 00:00:00 UTC 时间至今秒数的 UTF8 字符串。 |
 | {URL-encoded-resourceURI} |小写资源 URI 的小写 URL 编码 |
 | {policyName} |此令牌所引用的共享访问策略名称。 如果此令牌引用设备注册表凭据，则空缺。 |
@@ -273,7 +273,7 @@ public static string generateSasToken(string resourceUri, string key, string pol
 
 面向设备的终结点包括（无论任何协议）：
 
-| 端点 | 功能 |
+| 终结点 | 功能 |
 | --- | --- |
 | `{iot hub host name}/devices/{deviceId}/messages/events` |发送设备到云的消息。 |
 | `{iot hub host name}/devices/{deviceId}/messages/devicebound` |接收云到设备的消息。 |
@@ -345,7 +345,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 以下是终结点上显示的服务功能：
 
-| 端点 | 功能 |
+| 终结点 | 功能 |
 | --- | --- |
 | `{iot hub host name}/devices` |创建、更新、检索和删除设备标识。 |
 | `{iot hub host name}/messages/events` |接收设备到云的消息 |
@@ -385,7 +385,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 设备可以使用 X.509 证书或安全令牌进行身份验证，但不能同时使用这两者。 使用 X.509 证书身份验证时，请确保已准备好能够在现有证书过期后处理证书滚动更新的策略。
 
-使用 X.509 CA 身份验证的设备不支持以下功能：
+使用 X.509 证书颁发机构 (CA) 身份验证的设备的以下功能尚未正式发布，[必须启用预览模式](iot-hub-preview-mode.md)：
 
 * HTTPS、基于 WebSocket 的 MQTT 和基于 WebSocket 的 AMQP 协议。
 * 文件上传（所有协议）。

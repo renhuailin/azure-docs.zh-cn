@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 1f03f99e6394c3939855c73548e8fb917f8696bc
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 901e857a346b0955726c5755e23595efefbc2ca1
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286022"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589493"
 ---
 # <a name="telemetry-and-troubleshooting"></a>遥测和故障排除
 
@@ -161,7 +161,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 使用日志级别配置可以控制生成的日志的详细程度。 支持的日志级别为：`none`、`verbose`、`info`、`warning` 和 `error`。 节点和平台的默认日志详细级别为 `info`。 
 
 可以通过将 `ARCHON_LOG_LEVEL` 环境变量设置为允许的值之一，来全局修改日志级别。
-还可以通过 IoT Edge 模块孪生文档为所有已部署的技能全局设置日志级别，或者按如下所示通过设置 `platformLogLevel` 和 `nodeLogLevel` 的值来为每个特定技能设置日志级别。
+还可以通过 IoT Edge 模块孪生文档为所有已部署的技能全局设置日志级别，或者按如下所示通过设置 `platformLogLevel` 和 `nodesLogLevel` 的值来为每个特定技能设置日志级别。
 
 ```json
 {
@@ -173,7 +173,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
             },
             "graphs": {
                 "samplegraph": {
-                    "nodeLogLevel": "verbose",
+                    "nodesLogLevel": "verbose",
                     "platformLogLevel": "verbose"
                 }
             }
@@ -325,7 +325,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 从 Windows 客户端远程连接。 创建 Kubernetes 群集后，可以通过此群集管理应用程序。 你将需要连接到设备的 PowerShell 界面。 远程连接到设备的过程根据客户端操作系统的不同而异。 以下步骤适用于运行 PowerShell 的 Windows 客户端。
 
 > [!TIP]
-> * 在开始之前，请确保你的 Windows 客户端正在运行 Windows PowerShell 5.0 或更高版本。
+> * 在开始之前，请确保 Windows 客户端运行的是 Windows PowerShell 5.0 或更高版本。
 > * 也可以[在 Linux 上使用](/powershell/scripting/install/installing-powershell-core-on-linux) PowerShell。
 
 1. 以管理员身份运行 Windows PowerShell 会话。 

@@ -2,20 +2,19 @@
 title: Azure Key Vault 将保管库移到不同的资源组 | Microsoft Docs
 description: 有关将密钥保管库移到不同资源组的指南。
 services: key-vault
-author: ShaneBala-keyvault
-manager: ravijan
+author: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 04/29/2020
-ms.author: sudbalas
-ms.openlocfilehash: b26ebbbf256d7bde8f7f790cc0779c2eda729d1c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 03/31/2021
+ms.author: mbaldwin
+ms.openlocfilehash: 14ecbcaa35153438601a3dabb70f5b38006ded1b
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066626"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749557"
 ---
 # <a name="moving-an-azure-key-vault-across-resource-groups"></a>在资源组之间移动 Azure Key Vault
 
