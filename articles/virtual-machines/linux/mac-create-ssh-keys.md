@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: c77375782ba23114be1953d9f8ad7de31ab06f1f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c5e683e1f5af42a69fac45c20f52169834967649
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104582181"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788126"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>快速步骤：创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥-私钥对
 
@@ -38,7 +38,7 @@ ms.locfileid: "104582181"
 ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-如果通过 [Azure CLI](/cli/azure) 使用 [az vm create](/cli/azure/vm#az-vm-create) 命令创建 VM，可以使用 `--generate-ssh-keys` 选项生成 SSH 公钥和私钥文件。 除非使用 `--ssh-dest-key-path` 选项另行指定，否则将在 ~/.ssh 目录中存储密钥文件。 如果已存在 ssh 密钥对且使用的是 `--generate-ssh-keys` 选项，则不会生成新的密钥对，而是会使用现有的密钥对。 在以下命令中，请将 *VMname* 和 *RGname* 替换为自己的值：
+如果通过 [Azure CLI](/cli/azure) 使用 [az vm create](/cli/azure/vm#az_vm_create) 命令创建 VM，可以使用 `--generate-ssh-keys` 选项生成 SSH 公钥和私钥文件。 除非使用 `--ssh-dest-key-path` 选项另行指定，否则将在 ~/.ssh 目录中存储密钥文件。 如果已存在 ssh 密钥对且使用的是 `--generate-ssh-keys` 选项，则不会生成新的密钥对，而是会使用现有的密钥对。 在以下命令中，请将 *VMname* 和 *RGname* 替换为自己的值：
 
 ```azurecli
 az vm create --name VMname --resource-group RGname --image UbuntuLTS --generate-ssh-keys 
@@ -66,7 +66,7 @@ ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z
 
 如果复制并粘贴要在 Azure 门户或资源管理器模板中使用的公钥文件的内容，请务必不要复制任何尾部空格。 若要在 macOS 中复制公钥，可以通过管道将公钥文件传递给 `pbcopy`。 类似地，在 Linux 中，可以通过管道将公钥文件传递给 `xclip` 等程序。
 
-放置在 Azure 中 Linux VM 上的公钥默认存储在 ~/.ssh/id_rsa.pub 中，除非在创建密钥对时指定了不同的位置。 若要借助现有公钥使用 [Azure CLI 2.0](/cli/azure) 创建 VM，请结合 `--ssh-key-values` 选项使用 [az vm create](/cli/azure/vm#az-vm-create) 命令，来指定此公钥的值和（可选的）位置。 在下面的命令中，将 myVM、myResourceGroup、UbuntuLTS、azureuser 和 mysshkey.pub 替换为自己的值    ：
+放置在 Azure 中 Linux VM 上的公钥默认存储在 ~/.ssh/id_rsa.pub 中，除非在创建密钥对时指定了不同的位置。 若要借助现有公钥使用 [Azure CLI 2.0](/cli/azure) 创建 VM，请结合 `--ssh-key-values` 选项使用 [az vm create](/cli/azure/vm#az_vm_create) 命令，来指定此公钥的值和（可选的）位置。 在下面的命令中，将 myVM、myResourceGroup、UbuntuLTS、azureuser 和 mysshkey.pub 替换为自己的值    ：
 
 
 ```azurecli

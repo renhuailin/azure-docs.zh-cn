@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 03/30/2018
-ms.openlocfilehash: 8ff7b2940ca9ce3e5dc5913c0e676a32857771e7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bdbbc4c421b83fd041c7d900fb0edd01c4d636e0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046872"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785084"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>适用于 Linux 的虚拟机扩展和功能
 
@@ -65,7 +65,7 @@ Linux 代理在多个 OS 上运行，但是，扩展框架对扩展的 OS 施加
 
 ## <a name="discover-vm-extensions"></a>发现 VM 扩展
 
-有许多不同的 VM 扩展可与 Azure VM 配合使用。 若要查看完整列表，请使用 [az vm extension image list](/cli/azure/vm/extension/image#az-vm-extension-image-list)。 以下示例列出 westus 位置的所有可用扩展：
+有许多不同的 VM 扩展可与 Azure VM 配合使用。 若要查看完整列表，请使用 [az vm extension image list](/cli/azure/vm/extension/image#az_vm_extension_image_list)。 以下示例列出 westus 位置的所有可用扩展：
 
 ```azurecli
 az vm extension image list --location westus --output table
@@ -79,7 +79,7 @@ Azure VM 扩展在现有 VM 上运行，需要在已部署的 VM 上进行配置
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure VM 扩展可以通过 [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) 命令针对现有 VM 运行。 下面的示例针对名为 myResourceGroup 的资源组中名为 myVM 的 VM 运行自定义脚本扩展   。 将示例资源组名称、VM 名称和要运行的脚本 (https:\//raw.githubusercontent.com/me/project/hello.sh) 替换为你自己的信息。 
+Azure VM 扩展可以通过 [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set) 命令针对现有 VM 运行。 下面的示例针对名为 myResourceGroup 的资源组中名为 myVM 的 VM 运行自定义脚本扩展   。 将示例资源组名称、VM 名称和要运行的脚本 (https:\//raw.githubusercontent.com/me/project/hello.sh) 替换为你自己的信息。 
 
 ```azurecli
 az vm extension set `
@@ -277,7 +277,7 @@ Goal state agent: 2.2.18
 
 #### <a name="identifying-if-the-extension-is-set-with-autoupgrademinorversion-on-a-vm"></a>在 VM 上使用 autoUpgradeMinorVersion 识别是否设置了扩展
 
-如果使用“autoUpgradeMinorVersion”预配了扩展，则可以从 VM 模型查看信息。 若要检查，请使用 [az vm show](/cli/azure/vm#az-vm-show) 并提供资源组和 VM 名称，如下所示：
+如果使用“autoUpgradeMinorVersion”预配了扩展，则可以从 VM 模型查看信息。 若要检查，请使用 [az vm show](/cli/azure/vm#az_vm_show) 并提供资源组和 VM 名称，如下所示：
 
 ```azurecli
 az vm show --resource-group myResourceGroup --name myVM
@@ -346,7 +346,7 @@ INFO [Microsoft.OSTCExtensions.LinuxDiagnostic-2.3.9027] Launch command:diagnost
 
 ### <a name="view-extension-status"></a>查看扩展状态
 
-针对 VM 运行 VM 扩展后，请使用 [az vm get-instance-view](/cli/azure/vm#az-vm-get-instance-view) 返回扩展状态，如下所示：
+针对 VM 运行 VM 扩展后，请使用 [az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view) 返回扩展状态，如下所示：
 
 ```azurecli
 az vm get-instance-view \
@@ -379,7 +379,7 @@ az vm get-instance-view \
 
 ### <a name="rerun-a-vm-extension"></a>重新运行 VM 扩展
 
-在某些情况下，可能需要重新运行 VM 扩展。 如果要重新运行扩展，可以先删除扩展，然后使用所选执行方法重新运行扩展。 若要删除扩展，请使用 [az vm extension delete](/cli/azure/vm/extension#az-vm-extension-delete)，如下所示：
+在某些情况下，可能需要重新运行 VM 扩展。 如果要重新运行扩展，可以先删除扩展，然后使用所选执行方法重新运行扩展。 若要删除扩展，请使用 [az vm extension delete](/cli/azure/vm/extension#az_vm_extension_delete)，如下所示：
 
 ```azurecli
 az vm extension delete \

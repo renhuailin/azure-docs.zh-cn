@@ -1,14 +1,14 @@
 ---
 title: DoD 影响级别 4 蓝图示例
 description: DoD 影响级别 4 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
-ms.date: 04/02/2021
+ms.date: 04/13/2021
 ms.topic: sample
-ms.openlocfilehash: fcea8dab551be18b4dfca81bd179f89d17b01bdf
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: ce0d2d162bf77c147e0e4bc26e68964cd50f4372
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386935"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378442"
 ---
 # <a name="deploy-the-dod-impact-level-4-blueprint-sample"></a>部署 DoD 影响级别 4 蓝图示例
 
@@ -19,7 +19,7 @@ ms.locfileid: "106386935"
 > - 将示例副本标记为“已发布” 
 > - 将蓝图副本分配到现有的订阅
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
+如果没有 Azure 政府订阅，请在开始前请求一个[试用订阅](https://azure.microsoft.com/global-infrastructure/government/request/)。
 
 ## <a name="create-blueprint-from-sample"></a>基于示例创建蓝图
 

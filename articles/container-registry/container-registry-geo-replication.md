@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: 4e82be0e81e5e8c0182e061a0fba0f880bd45cc6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3e5b064ec37b855186f633677e2b1a3f615a6736
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102632384"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783856"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器注册表中的异地复制
 
@@ -105,7 +105,7 @@ ACR 将开始在配置的副本间同步映像。 完成后，门户将显示“
 
 ## <a name="delete-a-replica"></a>删除副本
 
-为注册表配置副本后，如果不再需要该副本，则可以随时将其删除。 使用 Azure 门户或其他工具（例如 Azure CLI 中的 [az acr replication delete](/cli/azure/acr/replication#az-acr-replication-delete) 命令）删除副本。
+为注册表配置副本后，如果不再需要该副本，则可以随时将其删除。 使用 Azure 门户或其他工具（例如 Azure CLI 中的 [az acr replication delete](/cli/azure/acr/replication#az_acr_replication_delete) 命令）删除副本。
 
 若要在 Azure 门户中删除副本：
 
@@ -163,5 +163,5 @@ az acr replication update --name westus \
 > [!div class="nextstepaction"]
 > [Azure 容器注册表中的异地复制](container-registry-tutorial-prepare-registry.md)
 
-[az-acr-replication-list]: /cli/azure/acr/replication#az-acr-replication-list
-[az-acr-replication-update]: /cli/azure/acr/replication#az-acr-replication-update
+[az-acr-replication-list]: /cli/azure/acr/replication#az_acr_replication_list
+[az-acr-replication-update]: /cli/azure/acr/replication#az_acr_replication_update

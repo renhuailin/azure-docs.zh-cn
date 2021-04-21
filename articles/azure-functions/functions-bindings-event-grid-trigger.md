@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: 886db905008af94b66a902cc551e4d55b36572a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 17968f2c137eef51eecdb6c7098c7056944dc970
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98250122"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782182"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions 的 Azure 事件网格触发器
 
@@ -446,7 +446,7 @@ Python 不支持特性。
 
 ### <a name="azure-cli"></a>Azure CLI
 
-若要使用 [Azure CLI](/cli/azure/get-started-with-azure-cli) 创建订阅，请运行 [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) 命令。
+若要使用 [Azure CLI](/cli/azure/get-started-with-azure-cli) 创建订阅，请运行 [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create) 命令。
 
 该命令需要可调用函数的终结点 URL。 以下示例显示特定于版本的 URL 模式：
 
@@ -571,7 +571,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 1. [生成请求](#generate-a-request)，并从查看器应用复制请求正文。
 1. [将请求手动发布](#manually-post-the-request)到事件网格触发器函数的 localhost URL。
 
-完成测试后，可以更新终结点，将同一订阅用于生产。 使用 [az eventgrid event-subscription update](/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-update) Azure CLI 命令。
+完成测试后，可以更新终结点，将同一订阅用于生产。 使用 [az eventgrid event-subscription update](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_update) Azure CLI 命令。
 
 ### <a name="create-a-viewer-web-app"></a>创建查看器 Web 应用
 

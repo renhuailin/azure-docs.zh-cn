@@ -3,12 +3,12 @@ title: 使用 Azure Policy 实现合规性
 description: 分配 Azure Policy 中的内置策略来审核 Azure 容器注册表的合规性
 ms.topic: article
 ms.date: 03/01/2021
-ms.openlocfilehash: 0fed0c4132043e1eaed7e634e1f45b27f7c6e933
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 62a1fd8d3c996fd3a0bac3cadf77fc7e7ace0ce3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103014292"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784166"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>使用 Azure Policy 审核 Azure 容器注册表的合规性
 
@@ -51,7 +51,7 @@ ms.locfileid: "103014292"
 
 ### <a name="policy-compliance-in-the-azure-cli"></a>Azure CLI 中的策略合规性
 
-也可使用 Azure CLI 来获取合规性数据。 例如，在 CLI 中使用 [az policy assignment list](/cli/azure/policy/assignment#az-policy-assignment-list) 命令获取已应用的 Azure 容器注册表策略的策略 ID：
+也可使用 Azure CLI 来获取合规性数据。 例如，在 CLI 中使用 [az policy assignment list](/cli/azure/policy/assignment#az_policy_assignment_list) 命令获取已应用的 Azure 容器注册表策略的策略 ID：
 
 ```azurecli
 az policy assignment list --query "[?contains(displayName,'Container Registries')].{name:displayName, ID:id}" --output table
@@ -66,14 +66,14 @@ Container Registries should not allow unrestricted network access           /sub
 Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
 ```
 
-然后运行 [az policy state list](/cli/azure/policy/state#az-policy-state-list)，以便返回特定策略 ID 下所有资源的 JSON 格式合规性状态：
+然后运行 [az policy state list](/cli/azure/policy/state#az_policy_state_list)，以便返回特定策略 ID 下所有资源的 JSON 格式合规性状态：
 
 ```azurecli
 az policy state list \
   --resource <policyID>
 ```
 
-也可运行 [az policy state list](/cli/azure/policy/state#az-policy-state-list)，以便返回特定注册表资源（例如 myregistry）的 JSON 格式合规性状态：
+也可运行 [az policy state list](/cli/azure/policy/state#az_policy_state_list)，以便返回特定注册表资源（例如 myregistry）的 JSON 格式合规性状态：
 
 ```azurecli
 az policy state list \

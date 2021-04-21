@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 6f8cfc314c75221a88b58095cc71ea685280ac49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98922829e83f84078c3d8cadae15844dba194c93
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501001"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107799858"
 ---
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -21,7 +21,7 @@ ms.locfileid: "102501001"
 
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
-使用 [az group create](/cli/azure/group#az-group-create) Azure CLI 命令、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) Azure PowerShell 命令或从 [Azure 门户](https://portal.azure.com)创建资源组。
+使用 [az group create](/cli/azure/group#az_group_create) Azure CLI 命令、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) Azure PowerShell 命令或从 [Azure 门户](https://portal.azure.com)创建资源组。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -37,7 +37,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 如果已有 Key Vault，可以跳至[设置 Key Vault 高级访问策略](#set-key-vault-advanced-access-policies)。 
 
-使用 [az keyvault create](/cli/azure/keyvault#az-keyvault-create) Azure CLI 命令、[New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure Powershell 命令、[Azure 门户](https://portal.azure.com)或[资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)创建 Key Vault。
+使用 [az keyvault create](/cli/azure/keyvault#az_keyvault_create) Azure CLI 命令、[New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure Powershell 命令、[Azure 门户](https://portal.azure.com)或[资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)创建 Key Vault。
 
 >[!WARNING]
 > 密钥保管库和 VM 必须位于同一订阅中。 另外，为确保加密机密不会跨越区域边界，Azure 磁盘加密需要将 Key Vault 和 VM 共置于同一区域中。 在要加密的 VM 所在的同一订阅和区域中创建并使用 Key Vault。 
@@ -75,7 +75,7 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
 
 ### <a name="azure-cli"></a>Azure CLI
 
-使用 [az keyvault update](/cli/azure/keyvault#az-keyvault-update) 为 Key Vault 启用磁盘加密。 
+使用 [az keyvault update](/cli/azure/keyvault#az_keyvault_update) 为 Key Vault 启用磁盘加密。 
 
  - **为磁盘加密启用 Key Vault：** 需要使用 Enabled-for-disk-encryption。 
 
@@ -129,7 +129,7 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
 
 若要使用密钥加密密钥 (KEK) 来为加密密钥提供附加的安全层，请将 KEK 添加到 Key Vault。 指定密钥加密密钥后，Azure 磁盘加密会使用该密钥包装加密机密，然后将机密写入 Key Vault。
 
-可以使用 Azure CLI [az keyvault key create](/cli/azure/keyvault/key#az-keyvault-key-create) 命令、Azure PowerShell [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet 或 [Azure 门户](https://portal.azure.com/)生成新 KEK。 必须生成 RSA 密钥类型；Azure 磁盘加密尚不支持使用椭圆曲线密钥。
+可以使用 Azure CLI [az keyvault key create](/cli/azure/keyvault/key#az_keyvault_key_create) 命令、Azure PowerShell [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet 或 [Azure 门户](https://portal.azure.com/)生成新 KEK。 必须生成 RSA 密钥类型；Azure 磁盘加密尚不支持使用椭圆曲线密钥。
 
 可以改为从本地密钥管理 HSM 导入 KEK。 有关详细信息，请参阅 [Key Vault 文档](../articles/key-vault/keys/hsm-protected-keys.md)。
 
@@ -145,15 +145,15 @@ Azure 磁盘加密不支持将端口号指定为 Key Vault 机密和 KEK URL 的
 
 ### <a name="azure-cli"></a>Azure CLI
 
-使用 Azure CLI [az keyvault key create](/cli/azure/keyvault/key#az-keyvault-key-create) 命令生成新 KEK 并将其存储在密钥保管库中。
+使用 Azure CLI [az keyvault key create](/cli/azure/keyvault/key#az_keyvault_key_create) 命令生成新 KEK 并将其存储在密钥保管库中。
 
 ```azurecli-interactive
 az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA
 ```
 
-可以改用 Azure CLI [az keyvault key import](/cli/azure/keyvault/key#az-keyvault-key-import) 命令导入私钥：
+可以改用 Azure CLI [az keyvault key import](/cli/azure/keyvault/key#az_keyvault_key_import) 命令导入私钥：
 
-在这两种情况下，都会向 Azure CLI [az vm encryption enable](/cli/azure/vm/encryption#az-vm-encryption-enable) --key-encryption-key 参数提供 KEK 的名称。 
+在这两种情况下，都会向 Azure CLI [az vm encryption enable](/cli/azure/vm/encryption#az_vm_encryption_enable) --key-encryption-key 参数提供 KEK 的名称。 
 
 ```azurecli-interactive
 az vm encryption enable -g "MyResourceGroup" --name "myVM" --disk-encryption-keyvault "<your-unique-keyvault-name>" --key-encryption-key "myKEK"
@@ -167,7 +167,7 @@ az vm encryption enable -g "MyResourceGroup" --name "myVM" --disk-encryption-key
 Add-AzKeyVaultKey -Name "myKEK" -VaultName "<your-unique-keyvault-name>" -Destination "HSM"
 ```
 
-可以改用 Azure PowerShell [az keyvault key import](/cli/azure/keyvault/key#az-keyvault-key-import) 命令导入私钥。
+可以改用 Azure PowerShell [az keyvault key import](/cli/azure/keyvault/key#az_keyvault_key_import) 命令导入私钥。
 
 在这两种情况下，都会向 Azure PowerShell [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) -KeyEncryptionKeyVaultId 和 -KeyEncryptionKeyUrl 参数提供 KEK Key Vault 的 ID 和 KEK 的 URL。 请注意，此示例假定使用同一密钥保管库保存磁盘加密密钥和 KEK。
 

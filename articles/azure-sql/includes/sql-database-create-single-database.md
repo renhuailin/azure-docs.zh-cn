@@ -6,18 +6,18 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: sstein
 ms.reviewer: vanto
-ms.openlocfilehash: c7bd942b427bdbd2d8184f712f97dd2a0a57fa90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0568860c387aa1239ec56005e404606272ae8275
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102178060"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107800273"
 ---
 在此步骤中，你将创建[逻辑 SQL 服务器](../database/logical-servers.md)和使用 AdventureWorksLT 示例数据的[单一数据库](../database/single-database-overview.md)。 可以通过使用 Azure 门户菜单和屏幕，或通过在 Azure Cloud Shell 中使用 Azure CLI 或 PowerShell 脚本来创建数据库。
 
 所有方法都包括设置服务器级防火墙规则，以允许用于访问服务器的计算机的公共 IP 地址。 有关创建服务器级防火墙规则的详细信息，请参阅[创建服务器级防火墙](../database/firewall-create-server-level-portal-quickstart.md)。 还可以设置数据库级防火墙规则。 请参阅[创建数据库级防火墙规则](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 若要在 Azure 门户中创建资源组、服务器和单一数据库，请执行以下操作：
 
@@ -151,11 +151,11 @@ az sql db create \
 
 | 命令 | 说明 |
 |---|---|
-| [az account set](/cli/azure/account#az-account-set) | 将订阅设置为当前的活动订阅。 |
-| [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | 创建托管数据库和弹性池的服务器。 |
-| [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-create) | 创建服务器级防火墙规则。 |
-| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | 创建数据库。 |
+| [az account set](/cli/azure/account#az_account_set) | 将订阅设置为当前的活动订阅。 |
+| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az sql server create](/cli/azure/sql/server#az_sql_server_create) | 创建托管数据库和弹性池的服务器。 |
+| [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_create) | 创建服务器级防火墙规则。 |
+| [az sql db create](/cli/azure/sql/db#az_sql_db_create) | 创建数据库。 |
 
 若要查看更多 Azure SQL Database Azure CLI 示例，请参阅 [Azure CLI 示例](../database/az-cli-script-samples-content-guide.md)。
 

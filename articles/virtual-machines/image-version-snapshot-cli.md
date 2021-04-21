@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: c809edd3699d0b9827fe15da53d5d18b12cbe6e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2dc6d99b8b1c913479fc584b52f6ff919dfac675
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102556955"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792284"
 ---
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>使用 Azure CLI 从共享映像库中的托管磁盘或快照创建映像
 
@@ -35,13 +35,13 @@ ms.locfileid: "102556955"
 
 ## <a name="find-the-snapshot-or-managed-disk"></a>查找快照或托管磁盘 
 
-可以使用 [az snapshot list](/cli/azure/snapshot#az-snapshot-list) 查看资源组中可用的快照列表。 
+可以使用 [az snapshot list](/cli/azure/snapshot#az_snapshot_list) 查看资源组中可用的快照列表。 
 
 ```azurecli-interactive
 az snapshot list --query "[].[name, id]" -o tsv
 ```
 
-还可使用托管磁盘代替快照。 若要获取托管磁盘，请使用 [az disk list](/cli/azure/disk#az-disk-list)。 
+还可使用托管磁盘代替快照。 若要获取托管磁盘，请使用 [az disk list](/cli/azure/disk#az_disk_list)。 
 
 ```azurecli-interactive
 az disk list --query "[].[name, id]" -o tsv
@@ -56,7 +56,7 @@ az disk list --query "[].[name, id]" -o tsv
 
 若要创建映像定义，需要有关映像库的信息。
 
-使用 [az sig list](/cli/azure/sig#az-sig-list) 列出有关可用映像库的信息。 请记下库的名称及库所在的资源组，以供以后使用。
+使用 [az sig list](/cli/azure/sig#az_sig_list) 列出有关可用映像库的信息。 请记下库的名称及库所在的资源组，以供以后使用。
 
 ```azurecli-interactive 
 az sig list -o table
@@ -71,7 +71,7 @@ az sig list -o table
 
 若要详细了解可为映像定义指定的值，请参阅[映像定义](./shared-image-galleries.md#image-definitions)。
 
-使用 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create) 在库中创建一个映像定义。
+使用 [az sig image-definition create](/cli/azure/sig/image-definition#az_sig_image_definition_create) 在库中创建一个映像定义。
 
 在此示例中，映像定义名为 myImageDefinition，适用于[专用化](./shared-image-galleries.md#generalized-and-specialized-images) Linux OS 映像。 若要使用 Windows OS 创建映像的定义，请使用 `--os-type Windows`。 
 
@@ -95,7 +95,7 @@ az sig image-definition create \
 
 ## <a name="create-the-image-version"></a>创建映像版本
 
-使用 [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) 创建映像版本。 
+使用 [az image gallery create-image-version](/cli/azure/sig/image-version#az_sig_image_version_create) 创建映像版本。 
 
 允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：MajorVersion.MinorVersion.Patch  。
 

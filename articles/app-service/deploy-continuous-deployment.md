@@ -3,15 +3,15 @@ title: 配置持续部署
 description: 了解如何启用从 GitHub、BitBucket、Azure Repos 或其他存储库到 Azure 应用服务的 CI/CD。 选择符合需要的生成管道。
 ms.assetid: 6adb5c84-6cf3-424e-a336-c554f23b4000
 ms.topic: article
-ms.date: 03/03/2021
+ms.date: 03/12/2021
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 5af8294518759181326e7736ef755f0a83581014
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 633d62fc69c516b482d5749a07052337dc71f567
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102564947"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789476"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>持续部署到 Azure 应用服务
 
@@ -117,7 +117,9 @@ GitHub Actions 生成提供程序是适用于[从 GitHub 进行 CI/CD](#configur
 
 #### <a name="authenticate-with-a-service-principal"></a>使用服务主体进行身份验证
 
-1. 在 [Azure CLI](/cli/azure/) 中使用 [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) 命令生成服务主体。 在以下示例中，请将 \<subscription-id>、\<group-name> 和 \<app-name> 替换为你自己的值：
+此可选配置会将默认身份验证替换为生成的工作流文件中的发布配置文件。
+
+1. 在 [Azure CLI](/cli/azure/) 中使用 [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) 命令生成服务主体。 在以下示例中，请将 \<subscription-id>、\<group-name> 和 \<app-name> 替换为你自己的值：
 
     ```azurecli-interactive
     az ad sp create-for-rbac --name "myAppDeployAuth" --role contributor \

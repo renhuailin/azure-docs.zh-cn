@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: a04243093b89b6a2498efc48f80cbd7a47d57337
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8316dd0abfa437d4bf88e8268dfe034344c6614c
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102437717"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389326"
 ---
 # <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>使用 Azure Stack Hub 准备情况检查器工具为 Azure Stack Edge Pro 创建证书 
 
@@ -140,7 +140,7 @@ ms.locfileid: "102437717"
 
 2. 若要生成适当的文件夹结构，请在提示符下键入：
 
-    `New-AzsCertificateFolder -CertificateType AzureStackEdge -OutputPath "$ENV:USERPROFILE\Documents\AzureStackCSR"`
+    `New-AzsCertificateFolder -CertificateType AzureStackEdgeDevice -OutputPath "$ENV:USERPROFILE\Documents\AzureStackCSR"`
 
 3. 将 PFX 密码转换为安全字符串。 类型：       
 
@@ -148,7 +148,7 @@ ms.locfileid: "102437717"
 
 4. 接下来，验证证书。 类型：
 
-    `Invoke-AzsCertificateValidation -CertificateType AzureStackEdge -DeviceName mytea1 -NodeSerialNumber VM1500-00025 -externalFQDN azurestackedge.contoso.com -CertificatePath $ENV:USERPROFILE\Documents\AzureStackCSR\AzureStackEdge -pfxPassword $pfxPassword`
+    `Invoke-AzsCertificateValidation -CertificateType AzureStackEdgeDevice -DeviceName mytea1 -NodeSerialNumber VM1500-00025 -externalFQDN azurestackedge.contoso.com -CertificatePath $ENV:USERPROFILE\Documents\AzureStackCSR\AzureStackEdge -pfxPassword $pfxPassword`
 
 ## <a name="next-steps"></a>后续步骤
 

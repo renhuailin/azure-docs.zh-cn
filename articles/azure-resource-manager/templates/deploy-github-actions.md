@@ -4,12 +4,12 @@ description: 介绍如何使用 GitHub Actions 部署资源管理器模板（ARM
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 564a21d565fb80eba605eece95562a809a93246f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec29ae019555c54ccdcef9dd743706f8d6401bbd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103471922"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781966"
 ---
 # <a name="deploy-arm-templates-by-using-github-actions"></a>使用 GitHub Actions 部署 ARM 模板
 
@@ -38,7 +38,7 @@ ms.locfileid: "103471922"
 ## <a name="generate-deployment-credentials"></a>生成部署凭据
 
 
-可以使用 [Azure CLI](/cli/azure/) 中的 [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) 命令创建[服务主体](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 请使用 Azure 门户中的 [Azure Cloud Shell](https://shell.azure.com/) 或选择“试用”按钮运行此命令。
+可以使用 [Azure CLI](/cli/azure/) 中的 [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) 命令创建[服务主体](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 请使用 Azure 门户中的 [Azure Cloud Shell](https://shell.azure.com/) 或选择“试用”按钮运行此命令。
 
 如果没有资源组，请创建一个。
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 03/31/2021
 ms.author: kenwith
-ms.openlocfilehash: 102c0f7363b8d4f635762a33b82825e9ae71dfc6
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: f7a2429161cebe867d844b4ca7aa08ec3613edcd
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120786"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388204"
 ---
 # <a name="syncing-extension-attributes-for-app-provisioning"></a>为应用预配同步扩展属性
 
@@ -28,10 +28,10 @@ ms.locfileid: "106120786"
 ## <a name="create-an-extension-attribute-on-a-cloud-only-user"></a>为纯云用户创建扩展属性
 你可以使用 Microsoft Graph 和 PowerShell 为 Azure AD 中的用户扩展用户架构。 大多数情况下会自动发现这些扩展属性。
 
-当你的服务主体超过 1000 个时，你可能会发现源属性列表中缺少扩展。 如果你创建的属性未自动显示，请验证是否已创建该属性，然后手动将其添加到你的架构。 若要验证是否已创建该属性，请使用 Microsoft Graph 和 [Graph 浏览器](/graph/graph-explorer/graph-explorer-overview.md)。 若要手动将其添加到架构，请参阅[编辑受支持属性的列表](customize-application-attributes.md#editing-the-list-of-supported-attributes)。
+当你的服务主体超过 1000 个时，你可能会发现源属性列表中缺少扩展。 如果你创建的属性未自动显示，请验证是否已创建该属性，然后手动将其添加到你的架构。 若要验证是否已创建该属性，请使用 Microsoft Graph 和 [Graph 浏览器](/graph/graph-explorer/graph-explorer-overview)。 若要手动将其添加到架构，请参阅[编辑受支持属性的列表](customize-application-attributes.md#editing-the-list-of-supported-attributes)。
 
 ### <a name="create-an-extension-attribute-on-a-cloud-only-user-using-microsoft-graph"></a>使用 Microsoft Graph 为纯云用户创建扩展属性
-你可以使用 [Microsoft Graph](/graph/overview.md) 扩展 Azure AD 用户的架构。 
+你可以使用 [Microsoft Graph](/graph/overview) 扩展 Azure AD 用户的架构。 
 
 首先，列出你的租户中的应用，获取你正在处理的应用的 ID。 若要了解详细信息，请参阅[列出 extensionProperties](/graph/api/application-list-extensionproperty?view=graph-rest-1.0&tabs=http&preserve-view=true)。
 
@@ -54,7 +54,7 @@ Content-type: application/json
 }
 ```
 
-上一请求创建了一个 `extension_appID_extensionName` 格式的扩展属性。 现在，你可以使用此扩展属性更新用户。 若要了解详细信息，请参阅[更新用户](/graph/api/user-update.md?view=graph-rest-1.0&tabs=http&preserve-view=true)。
+上一请求创建了一个 `extension_appID_extensionName` 格式的扩展属性。 现在，你可以使用此扩展属性更新用户。 若要了解详细信息，请参阅[更新用户](/graph/api/user-update?view=graph-rest-1.0&tabs=http&preserve-view=true)。
 ```json
 PATCH https://graph.microsoft.com/v1.0/users/{id}
 Content-type: application/json
@@ -63,7 +63,7 @@ Content-type: application/json
   "extension_inputAppId_extensionName": "extensionValue"
 }
 ```
-最后，验证用户的属性。 若要了解详细信息，请参阅[获取用户](/graph/api/user-get.md?view=graph-rest-1.0&tabs=http#example-3-users-request-using-select&preserve-view=true)。
+最后，验证用户的属性。 若要了解详细信息，请参阅[获取用户](/graph/api/user-get?view=graph-rest-1.0&tabs=http#example-3-users-request-using-select&preserve-view=true)。
 
 ```json
 GET https://graph.microsoft.com/v1.0/users/{id}?$select=displayName,extension_inputAppId_extensionName

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 1b7c8487eb42204f2741679c9ef6eb2717c272cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c059746262cdaf2901c765d3ce3848887b2e629c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86057342"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781105"
 ---
 在命令输出中，`identity` 部分显示在任务中设置了 `SystemAssigned` 类型的标识。 `principalId` 是任务标识的主体 ID：
 
@@ -37,4 +37,4 @@ principalID=$(az acr task show \
 ```
 
 <!-- LINKS - Internal -->
-[az-acr-task-show]: /cli/azure/acr/task#az-acr-task-show
+[az-acr-task-show]: /cli/azure/acr/task#az_acr_task_show

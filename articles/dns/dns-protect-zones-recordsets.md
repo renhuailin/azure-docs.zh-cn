@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 2/20/2020
 ms.author: allensu
-ms.openlocfilehash: 85aaf40237b6b6687c54d4b036f280805c98e7b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d65e024e9efa3ad2bcb1c70d44360c8bd0de384
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102618961"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785822"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>如何保护 DNS 区域和记录
 
@@ -216,7 +216,7 @@ $rsg = "<resource group name>"
 New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceType $rty -ResourceGroupName $rsg
 ```
 
-也可[通过 Azure CLI](/cli/azure/lock#az-lock-create) 提供等效命令：
+也可[通过 Azure CLI](/cli/azure/lock#az_lock_create) 提供等效命令：
 
 ```azurecli
 # Lock a DNS zone

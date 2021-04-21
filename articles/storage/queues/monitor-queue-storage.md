@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: queues
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 8f49485d00379f5845569976e793f06d56a8967d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b65aff45cc304f59e45fc3bed925b93ee6c622fd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506814"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788396"
 ---
 # <a name="monitoring-azure-queue-storage"></a>监视 Azure 队列存储
 
@@ -77,7 +77,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 1. 登录到 Azure 门户。
 
-2. 导航到自己的存储帐户。
+2. 导航到存储帐户。
 
 3. 在“监视”部分，单击“诊断设置(预览)”。
 
@@ -216,7 +216,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <
 
 如果你选择将日志存档到存储帐户，则需要为发送到存储帐户的日志量付费。 有关具体定价，请参阅 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)页的“平台日志”部分。
 
-使用 [`az monitor diagnostic-settings create`](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 命令启用日志。
+使用 [`az monitor diagnostic-settings create`](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) 命令启用日志。
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true}]'
@@ -238,7 +238,7 @@ az monitor diagnostic-settings create --name <setting-name> --storage-account <s
 
 如果你选择将日志流式传输到事件中心，则需要为发送到事件中心的日志量付费。 有关具体定价，请参阅 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)页的“平台日志”部分。
 
-使用 [`az monitor diagnostic-settings create`](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 命令启用日志。
+使用 [`az monitor diagnostic-settings create`](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) 命令启用日志。
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --event-hub <event-hub-name> --event-hub-rule <event-hub-namespace-and-key-name> --resource <storage-account-resource-id> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
@@ -252,7 +252,7 @@ az monitor diagnostic-settings create --name <setting-name> --event-hub <event-h
 
 #### <a name="send-logs-to-log-analytics"></a>将日志发送到 Log Analytics
 
-使用 [`az monitor diagnostic-settings create`](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 命令启用日志。
+使用 [`az monitor diagnostic-settings create`](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) 命令启用日志。
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --workspace <log-analytics-workspace-resource-id> --resource <storage-account-resource-id> --logs '[{"category": <category name>, "enabled": true "retentionPolicy": {"days": <days>, "enabled": <retention-bool}}]'
@@ -322,7 +322,7 @@ Azure 队列存储的指标位于以下命名空间：
 
 #### <a name="list-the-account-level-metric-definition"></a>列出帐户级指标定义
 
-你可以列出存储帐户或队列存储服务的指标定义。 使用 [`az monitor metrics list-definitions`](/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) 命令。
+你可以列出存储帐户或队列存储服务的指标定义。 使用 [`az monitor metrics list-definitions`](/cli/azure/monitor/metrics#az_monitor_metrics_list_definitions) 命令。
 
 在本例中，将 `<resource-ID>` 占位符替换为整个存储帐户的资源 ID 或队列的资源 ID。 你可以在 Azure 门户中存储帐户的“属性”页上找到这些资源 ID。
 
@@ -332,7 +332,7 @@ Azure 队列存储的指标位于以下命名空间：
 
 #### <a name="read-account-level-metric-values"></a>读取帐户级指标值
 
-你可以读取存储帐户或队列存储服务的指标值。 使用 [`az monitor metrics list`](/cli/azure/monitor/metrics#az-monitor-metrics-list) 命令。
+你可以读取存储帐户或队列存储服务的指标值。 使用 [`az monitor metrics list`](/cli/azure/monitor/metrics#az_monitor_metrics_list) 命令。
 
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H

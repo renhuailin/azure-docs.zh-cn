@@ -7,12 +7,12 @@ ms.subservice: workloads
 ms.topic: article
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: d3b13dffcf251f79a04182d32f23fd40e6ed6044
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2f80f07cad0e82ee35fe71223e1282ea24f791bb
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562888"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530918"
 ---
 # <a name="cloud-foundry-on-azure"></a>Azure 上的 Cloud Foundry
 
@@ -39,7 +39,7 @@ Microsoft 通过以下社区渠道为 OSS CF 提供最大支持：
 
 Pivotal Cloud Foundry 包括与 OSS 分发相同的核心平台，以及一套专有管理工具和企业支持。 若要在 Azure 上运行 PCF，必须从 Pivotal 获取许可证。 Azure 市场的 PCF 产品/服务包括 90 天的试用版许可证。
 
-这些工具包括一个简化部署和管理 Cloud Foundry 基础的 Web 应用程序 [Pivotal Operations Manager](https://docs.pivotal.io/pivotalcf/customizing/) 和一个用于管理用户和应用程序的 Web 应用程序 [Pivotal Apps Manager](https://docs.pivotal.io/pivotalcf/console/)。
+这些工具包括一个简化部署和管理 Cloud Foundry 基础的 Web 应用程序 [Pivotal Operations Manager](https://docs.pivotal.io/ops-manager/2-10/install/) 和一个用于管理用户和应用程序的 Web 应用程序 [Pivotal Apps Manager](https://docs.pivotal.io/pivotalcf/console/)。
 
 除了上面列出的 OSS CF 支持通道外，PCF 许可证允许联系 Pivotal 以获取支持。 Microsoft 和 Pivotal 还启用了支持工作流，允许用户联系任意一方以获取帮助，并根据问题的具体所在正确地路由查询。
 

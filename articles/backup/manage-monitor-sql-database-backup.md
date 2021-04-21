@@ -3,12 +3,12 @@ title: 管理和监视 Azure VM 上的 SQL Server 数据库
 description: 本文介绍如何管理和监视 Azure VM 上运行的 SQL Server 数据库。
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: e37e6fc211b34b7e427b66db374a705faafd25f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3938e26e134f7d823d8a6f6fac631ebf4442e6ab
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97858718"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519130"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>管理和监视已备份的 SQL Server 数据库
 
@@ -79,8 +79,8 @@ Azure 备份在门户的“备份作业”下显示了所有计划的和按需�
 >
 >有关删除数据选项的详细信息，请参阅下面的常见问题解答：
 >
->- [如果从自动保护的实例中删除数据库，备份会发生什么情况？](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
->- [如果停止受保护数据库的备份操作，将出现怎样的备份行为？](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
+>- [如果从自动保护的实例中删除数据库，备份会发生什么情况？](faq-backup-sql-server.yml#if-i-delete-a-database-from-an-autoprotected-instance--what-will-happen-to-the-backups-)
+>- [如果停止受保护数据库的备份操作，将出现怎样的备份行为？](faq-backup-sql-server.yml#if-i-change-the-name-of-the-database-after-it-has-been-protected--what-will-be-the-behavior-)
 >
 >
 

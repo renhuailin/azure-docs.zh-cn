@@ -4,12 +4,12 @@ description: 介绍如何通过门户、PowerShell、Azure CLI 和 REST API 查�
 tags: top-support-issue
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 898af2365dfbb0f61b6b87e7532c9256269d799a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e7ed2096a696efdc9a2654a8fd0c294c82cbd4f7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732765"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781858"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>使用 Azure 资源管理器查看部署历史记录
 
@@ -61,13 +61,13 @@ Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName Ex
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要列出资源组部署，请使用 [az 部署组列表](/cli/azure/group/deployment#az-deployment-group-list)。
+若要列出资源组部署，请使用 [az 部署组列表](/cli/azure/group/deployment#az_deployment_group_list)。
 
 ```azurecli-interactive
 az deployment group list --resource-group ExampleGroup
 ```
 
-若要获取特定部署，请使用 [az 部署组显示](/cli/azure/group/deployment#az-deployment-group-show)。
+若要获取特定部署，请使用 [az 部署组显示](/cli/azure/group/deployment#az_deployment_group_show)。
 
 ```azurecli-interactive
 az deployment group show --resource-group ExampleGroup --name ExampleDeployment
@@ -81,13 +81,13 @@ az deployment group show --resource-group ExampleGroup --name ExampleDeployment 
 
 # <a name="http"></a>[HTTP](#tab/http)
 
-若要列出某个资源组的部署，请使用以下操作。 如需在请求中使用的最新 API 版本号，请参阅[部署 - 按资源组列出](/rest/api/resources/resources/deployments/listbyresourcegroup)。
+若要列出某个资源组的部署，请使用以下操作。 如需在请求中使用的最新 API 版本号，请参阅[部署 - 按资源组列出](/rest/api/resources/deployments/listbyresourcegroup)。
 
 ```
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/?api-version={api-version}
 ```
 
-若要获取特定部署， 请使用以下操作。 如需在请求中使用的最新 API 版本号，请参阅[部署 - 获取](/rest/api/resources/resources/deployments/get)。
+若要获取特定部署， 请使用以下操作。 如需在请求中使用的最新 API 版本号，请参阅[部署 - 获取](/rest/api/resources/deployments/get)。
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}?api-version={api-version}
@@ -115,7 +115,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/
 
 每个部署可能包括多个操作。 若要查看某个部署的更多详细信息，请参阅部署操作。 当部署失败时，部署操作会包含一条错误消息。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 在部署的摘要上，选择“操作详细信息”。
 
@@ -147,7 +147,7 @@ Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -Deployme
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要查看部署到资源组的部署操作，请使用 [az deployment operation group list](/cli/azure/deployment/operation/group#az-deployment-operation-group-list) 命令。 必须具有 Azure CLI 2.6.0 或更高版本。
+若要查看部署到资源组的部署操作，请使用 [az deployment operation group list](/cli/azure/deployment/operation/group#az_deployment-operation-group-list) 命令。 必须具有 Azure CLI 2.6.0 或更高版本。
 
 ```azurecli-interactive
 az deployment operation group list --resource-group ExampleGroup --name ExampleDeployment
@@ -167,7 +167,7 @@ az deployment operation group list --resource-group ExampleGroup --name ExampleD
 
 # <a name="http"></a>[HTTP](#tab/http)
 
-若要获取部署操作，请使用以下操作。 如需在请求中使用的最新 API 版本号，请参阅[部署操作 - 列出](/rest/api/resources/resources/deploymentoperations/list)。
+若要获取部署操作，请使用以下操作。 如需在请求中使用的最新 API 版本号，请参阅[部署操作 - 列出](/rest/api/resources/deploymentoperations/list)。
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}/operations?$skiptoken={skiptoken}&api-version={api-version}
@@ -214,4 +214,3 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/
 * 如需帮助解决特定部署错误，请参阅[解决使用 Azure Resource Manager 将资源部署到 Azure 时的常见错误](common-deployment-errors.md)。
 * 要了解历史记录中的部署是如何进行管理的，请参阅[从部署历史记录中自动删除](deployment-history-deletions.md)。
 * 若要在执行部署之前验证部署，请参阅[使用 Azure Resource Manager 模板部署资源组](deploy-powershell.md)。
-

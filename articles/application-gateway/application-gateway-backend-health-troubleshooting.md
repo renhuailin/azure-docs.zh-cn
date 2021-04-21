@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 1373e0eeead805dcd3a439878c9737c46d75bf3b
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 8664f9327af37345c7104c65b2521212669ae806
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078496"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786318"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>排查应用程序网关中的后端运行状况问题
 ==================================================
@@ -24,7 +24,7 @@ ms.locfileid: "106078496"
 
 ### <a name="how-to-check-backend-health"></a>如何检查后端运行状况
 
-若要检查后端池的运行状况，可以使用 Azure 门户中的“后端运行状况”页。 或者，可以使用 [Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth)、[CLI](/cli/azure/network/application-gateway#az-network-application-gateway-show-backend-health) 或 [REST API](/rest/api/application-gateway/applicationgateways/backendhealth)。
+若要检查后端池的运行状况，可以使用 Azure 门户中的“后端运行状况”页。 或者，可以使用 [Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth)、[CLI](/cli/azure/network/application-gateway#az_network_application_gateway_show_backend_health) 或 [REST API](/rest/api/application-gateway/applicationgateways/backendhealth)。
 
 所述任意方法检索到的状态可能为下列其中一项：
 
@@ -83,7 +83,7 @@ BackendAddressPoolsText : [
 > [!NOTE]
 > 默认探测请求将以“\<protocol\>://127.0.0.1:\<port\>/”格式发送。 例如，对于端口 80 上的 HTTP 探测，格式为 http://127.0.0.1:80 。 只将 HTTP 状态代码 200 至 399 视为正常。 协议和目标端口继承自 HTTP 设置。 如果你希望应用程序网关探测不同的协议、主机名或路径，并识别其他状态代码为正常，请配置一个自定义探测，并将其关联到 HTTP 设置。
 
-<a name="error-messages"></a>Error messages
+<a name="error-messages"></a>错误消息
 ------------------------
 #### <a name="backend-server-timeout"></a>后端服务器超时
 

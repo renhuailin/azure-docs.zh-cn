@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: damendo
-ms.openlocfilehash: 6e330d2595487366ff7b8979490cb8a897f89520
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 54f1ef8f135c16b841df55094327c6bc5be521be
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102503141"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778599"
 ---
 # <a name="introduction-to-effective-security-rules-view-in-azure-network-watcher"></a>Azure 网络观察程序中的有效安全规则视图简介
 
@@ -37,7 +37,7 @@ ms.locfileid: "102503141"
 还可以通过下面列出的其他方法，使用有效安全组功能：
 * [REST API](/rest/api/virtualnetwork/NetworkInterfaces/ListEffectiveNetworkSecurityGroups)
 * [PowerShell](/powershell/module/az.network/get-azeffectivenetworksecuritygroup)
-* [Azure CLI](/cli/azure/network/nic#az-network-nic-list-effective-nsg)
+* [Azure CLI](/cli/azure/network/nic#az_network_nic_list_effective_nsg)
 
 通过访问[使用 PowerShell 审核网络安全组设置](network-watcher-nsg-auditing-powershell.md)，了解如何审核网络安全组设置
 

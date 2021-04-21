@@ -1,17 +1,17 @@
 ---
-title: 快速入门-将事件发送到事件网格
+title: 快速入门 - 将事件发送到事件网格
 description: 在本快速入门中，我们将为容器注册表启用事件网格事件，然后将容器映像推送和删除事件发送到示例应用程序。
 ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: b4038bb232c14278e838f2c34706dcc103def7e4
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
-ms.translationtype: MT
+ms.openlocfilehash: 43dea2640c9c9445ea464205f6c586bc1e486206
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919640"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784018"
 ---
-# <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>快速入门：将事件从私有容器注册表发送到事件网格
+# <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>快速入门：将事件从专用容器注册表发送到事件网格
 
 Azure 事件网格是一个完全托管的事件路由服务，可以通过发布-订阅模型提供一致的事件使用数据。 在本快速入门中，我们将使用 Azure CLI 创建容器注册表、订阅注册表事件，然后部署一个示例 Web 应用程序来接收事件。 最后，触发容器映像 `push` 和 `delete` 事件，并在示例应用程序中查看事件负载。
 
@@ -236,6 +236,6 @@ az group delete --name $RESOURCE_GROUP_NAME
 
 <!-- LINKS - Internal -->
 [az-acr-create]: /cli/azure/acr/repository
-[az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete
-[az-eventgrid-event-subscription-create]: /cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create
-[az-group-create]: /cli/azure/group#az-group-create
+[az-acr-repository-delete]: /cli/azure/acr/repository#az_acr_repository_delete
+[az-eventgrid-event-subscription-create]: /cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create
+[az-group-create]: /cli/azure/group#az_group_create

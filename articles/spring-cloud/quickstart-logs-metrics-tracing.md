@@ -6,14 +6,14 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/04/2020
-ms.custom: devx-track-java, devx-track-azurecli
+ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 75c50e6342a00ef37215d9e961503dd7ffb0d205
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 907bf06323d13b2d26dec5003e4739f2ae9faf74
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877247"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378510"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>快速入门：通过日志、指标和跟踪来监视 Azure Spring Cloud 应用
 
@@ -72,6 +72,8 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 1. 然后选择 `Run`，随即会显示日志。 有关编写查询的更多指导，请参阅 [Azure Logs Analytics 文档](../azure-monitor/logs/get-started-queries.md)。
 
    [ ![Logs Analytics 查询 - Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png#lightbox)
+
+1. 若要详细了解 Log Analytics 中使用的查询语言，请参阅 [Azure Monitor 日志查询](/azure/data-explorer/kusto/query/)。 要从一个集中的客户端查询所有 Log Analytics 日志，请查看 [Azure 数据资源管理器](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)。
 
 ## <a name="metrics"></a>指标
 
@@ -168,6 +170,8 @@ az spring-cloud app logs -s <service instance name> -g <resource group name> -n 
 1. 然后，将显示已筛选的日志。 有关编写查询的更多指导，请参阅 [Azure Logs Analytics 文档](../azure-monitor/logs/get-started-queries.md)。
 
    [ ![Logs Analytics 查询](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png#lightbox)
+
+1. 若要详细了解 Log Analytics 中使用的查询语言，请参阅 [Azure Monitor 日志查询](/azure/data-explorer/kusto/query/)。 要从一个集中的客户端查询所有 Log Analytics 日志，请查看 [Azure 数据资源管理器](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)。
 
 ## <a name="metrics"></a>指标
 

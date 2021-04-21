@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 10/09/2020
+ms.date: 03/07/2021
 ms.author: anfeldma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f02a0673a3fae33f935ae9a9cbf94f101b25c39f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 2a940f4bb519332e147577e4a9172406c401d152
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449777"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365733"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>快速入门：通过 Azure Cosmos DB SQL API 帐户使用 Xamarin 生成 ToDo 应用
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,6 +24,7 @@ ms.locfileid: "106449777"
 > * [.NET V4](create-sql-api-dotnet-V4.md)
 > * [Java SDK v4](create-sql-api-java.md)
 > * [Spring Data v3](create-sql-api-spring-data.md)
+> * [Spark v3 连接器](create-sql-api-spark.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -96,18 +97,18 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 2. 在 Visual Studio 中，打开 ToDoItems.Core/Helpers/APIKeys.cs。
 
-3. 在 Azure 门户中，使用复制按钮复制 URI 值，并在 APIKeys.cs 中将其设为 `CosmosEndpointUrl` 变量的值。
+3. 在 Azure 门户中，使用复制按钮复制 URI 值，并将其设置为 APIKeys.cs 中 `CosmosEndpointUrl` 变量的值。
 
     ```csharp
     //#error Enter the URL of your Azure Cosmos DB endpoint here
-    public static readonly string CosmosEndpointUrl = "[URI Copied from Azure Portal]";
+    public static readonly string CosmosEndpointUrl = "[URI Copied from Azure portal]";
     ```
 
-4. 在 Azure 门户中，使用复制按钮复制 PRIMARY KEY 值，并在 APIKeys.cs 中将其设为 `Cosmos Auth Key` 变量的值。
+4. 在 Azure 门户中，使用复制按钮复制 PRIMARY KEY 值，并将其设置为 APIKeys.cs 中 `Cosmos Auth Key` 变量的值。
 
     ```csharp
     //#error Enter the read/write authentication key of your Azure Cosmos DB endpoint here
-    public static readonly string CosmosAuthKey = "[PRIMARY KEY copied from Azure Portal";
+    public static readonly string CosmosAuthKey = "[PRIMARY KEY copied from Azure portal";
     ```
 
 [!INCLUDE [cosmos-db-auth-key-info](../../includes/cosmos-db-auth-key-info.md)]
@@ -144,9 +145,9 @@ ToDoItems 解决方案中的代码包含：
 
     `CreateDocumentQuery<T>` 采用的 URI 指向在上一部分创建的容器。 还可以指定 LINQ 运算符，例如 `Where` 子句。 在这种情况下，仅返回尚未完成的待办事项。
 
-    `CreateDocumentQuery<T>` 函数是同步执行的，返回 `IQueryable<T>`。 不过，`AsDocumentQuery` 方法可以将 `IQueryable<T>` 转换为 `IDocumentQuery<T>` 对象，后者可以异步执行。 因此，不会阻止移动应用程序的 UI 线程。
+    `CreateDocumentQuery<T>` 函数是同步执行的，返回 `IQueryable<T>`。 而 `AsDocumentQuery` 方法会将 `IQueryable<T>` 转换异步执行的 `IDocumentQuery<T>` 对象。 因此，不会阻止移动应用程序的 UI 线程。
 
-    `IDocumentQuery<T>.ExecuteNextAsync<T>` 函数从 Azure Cosmos DB 检索结果页，该 DB 会进行 `HasMoreResults` 检查，看是否还有其他需要返回的结果。
+    `IDocumentQuery<T>.ExecuteNextAsync<T>` 函数从 Azure Cosmos DB 检索结果页，`HasMoreResults` 将对其进行检查，以查看是否还有其他需要返回的结果。
 
 > [!TIP]
 > 多个在 Azure Cosmos 容器和文档上运行的函数采用 URI 作为参数，以便指定容器或文档的地址。 此 URI 使用 `URIFactory` 类进行构造。 数据库、容器和文档的 URI 均可通过此类来创建。
@@ -188,7 +189,7 @@ ToDoItems 解决方案中的代码包含：
 
     :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-start-debug.png" alt-text="开始在 Visual Studio for Mac 中调试":::
 
-3. 当 iOS 模拟器或 Android Emulator 启动完毕，此应用会在屏幕底部 (iOS) 或顶部 (Android) 显示 2 个选项卡。 第一个选项卡显示未完成的待办事项，第二个选项卡显示已完成的代办事项。
+3. 当 iOS 模拟器或 Android Emulator 启动完毕，此应用会在屏幕底部 (iOS) 或顶部 (Android) 显示两个选项卡。 第一个选项卡显示未完成的待办事项，第二个选项卡显示已完成的代办事项。
 
     :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-droid-started.png" alt-text="ToDo 应用的启动屏幕":::
 
@@ -214,7 +215,7 @@ ToDoItems 解决方案中的代码包含：
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门教程已介绍如何创建 Azure Cosmos 帐户、使用数据资源管理器创建容器，以及生成和部署控制台应用。 现在可将其他数据导入 Azure Cosmos 帐户。
+本快速入门教程已介绍如何创建 Azure Cosmos 帐户、使用数据资源管理器创建容器，以及生成和部署控制台应用。 现在，可将更多数据导入 Azure Cosmos 帐户。
 
 > [!div class="nextstepaction"]
 > [将数据导入 Azure Cosmos DB](import-data.md)

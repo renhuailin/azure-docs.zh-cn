@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 6e77f983f3600ae7c54d7d88f2ad1a006d7325fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a68b40852750e124749ac838c50acae2212c4732
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102614184"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785825"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>如何保护专用 DNS 区域和记录
 
@@ -218,7 +218,7 @@ $rsg = "<resource group name>"
 New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceType $rty -ResourceGroupName $rsg
 ```
 
-也可[通过 Azure CLI](/cli/azure/lock#az-lock-create) 提供等效命令：
+也可[通过 Azure CLI](/cli/azure/lock#az_lock_create) 提供等效命令：
 
 ```azurecli-interactive
 # Lock a DNS zone

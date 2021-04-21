@@ -5,12 +5,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/27/2019
 ms.author: lajanuar
-ms.openlocfilehash: 324fde5198fe3469e3979cf5cd102715118a49aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dfd2b32094aae06675ea8ee9157370f9d2833e91
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467268"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518213"
 ---
 表单识别器可以处理符合以下要求的输入文档：
 
@@ -22,6 +22,5 @@ ms.locfileid: "103467268"
 * 训练数据集的总大小不得超过 500 页。
 * 如果 PDF 是密码锁定的文件，则必须先删除锁，然后才能提交它们。
 * 如果从纸质文档扫描表单，应使用优质扫描仪。
-* 文本必须使用拉丁字母（英文字符）。
 * 对于非监督式学习（没有已标记的数据），数据必须包含键和值。
 * 对于非监督式学习（没有已标记的数据），键必须出现在值的上方或左侧；它们不能出现在下方或右侧。

@@ -3,12 +3,12 @@ title: 配置 Azure 备份报表
 description: 使用 Log Analytics 和 Azure 工作簿配置和查看 Azure 备份的报表
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 0720af0848aa8263587dfd9573d205abf73303d4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0f3638e7649fc02f050c575ee621ce9dc237c24f
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562318"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517260"
 ---
 # <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
 
@@ -212,4 +212,4 @@ Azure 备份还提供内置 Azure Policy 定义，该定义会自动配置给定
 
 ## <a name="next-steps"></a>后续步骤
 
-[详了解与 Azure 备份相关的监视和报表](./backup-azure-monitor-alert-faq.md)
+[详了解与 Azure 备份相关的监视和报表](./backup-azure-monitor-alert-faq.yml)

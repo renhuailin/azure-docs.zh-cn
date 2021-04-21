@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 0a56cfc147d4fb5cbdccf13363ad28bc602d8216
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4c116b378c72d87641157fc453d65e46be9f43ec
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182751"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787156"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>将 Azure SQL 托管实例中的数据库还原到之前的某个时间点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -56,7 +56,7 @@ SQL 托管实例的时间点还原具有以下限制：
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 2. 转到你的 SQL 托管实例，选择要还原的数据库。
 3. 在数据库页上选择“还原”：
 
@@ -128,7 +128,7 @@ az sql midb restore -g mygroupname --mi myinstancename -n mymanageddbname |
        --dest-mi mytargetinstancename
 ```
 
-要详细了解可用参数，请参阅[介绍如何在 SQL 托管实例中还原数据库的 CLI 文档](/cli/azure/sql/midb#az-sql-midb-restore)。
+要详细了解可用参数，请参阅[介绍如何在 SQL 托管实例中还原数据库的 CLI 文档](/cli/azure/sql/midb#az_sql_midb_restore)。
 
 ---
 

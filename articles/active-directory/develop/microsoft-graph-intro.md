@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: a799d7c32ad632303931adf838ca8e2e715b2adc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e689e620a5aeb7c5028f1a1b30dd6def8e447ab
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96860178"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529984"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
 
@@ -32,9 +32,9 @@ Microsoft Graph 公开 REST API 和客户端库以访问以下 Microsoft 365 服
 
 Microsoft Graph 当前支持两个版本：v1.0 和 beta 版本。 v1.0 版本包含了正式版 API。 对所有生产应用使用 v1.0 版本。 beta 版本包含当前为预览版的 API。 由于我们可能对 beta API 进行重大更改，因此建议你仅使用 beta 版本测试正在开发的应用；请勿在生产应用中使用 beta API。 有关详细信息，请参阅 [Microsoft Graph 的版本控制、支持和重大更改策略](/graph/versioning-and-support)。
 
-若要开始使用 beta API，请参阅 [Microsoft Graph beta 终结点参考](/graph/api/overview?view=graph-rest-beta)
+若要开始使用 beta API，请参阅 [Microsoft Graph beta 终结点参考](/graph/api/overview?view=graph-rest-beta&preserve-view=true)
 
-若要开始使用 v1.0 API，请参阅 [Microsoft Graph REST API v1.0 参考](/graph/api/overview)
+若要开始使用 v1.0 API，请参阅 [Microsoft Graph REST API v1.0 参考](/graph/api/overview?view=graph-rest-1.0&preserve-view=true)
 
 ## <a name="get-started"></a>入门
 
@@ -57,4 +57,4 @@ Microsoft Graph 当前支持两个版本：v1.0 和 beta 版本。 v1.0 版本�
 
 Microsoft Graph 浏览器是一种基于 Web 的工具，可用于通过 Microsoft Graph API 生成和测试请求。 可在以下位置访问 Microsoft Graph 浏览器：`https://developer.microsoft.com/graph/graph-explorer`。
 
-Postman 是一种可用于通过 Microsoft Graph API 生成和测试请求的工具。 可在以下位置下载 Postman：`https://www.getpostman.com/`。 要与 Postman 中的 Microsoft Graph 进行交互，请使用 Postman 中的 Microsoft Graph 集合。 有关详细信息，请参阅[将 Postman 与 Microsoft Graph API 配合使用](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta)。
+Postman 是一种可用于通过 Microsoft Graph API 生成和测试请求的工具。 可在以下位置下载 Postman：`https://www.getpostman.com/`。 要与 Postman 中的 Microsoft Graph 进行交互，请使用 Postman 中的 Microsoft Graph 集合。 有关详细信息，请参阅[将 Postman 与 Microsoft Graph API 配合使用](/graph/use-postman)。

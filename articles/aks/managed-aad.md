@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: 0e912de4cf3a9759abe4cb3df78255c0a9ba1557
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 3db9f8d895b4c13b5f969859f422e7b566722ffc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105858"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783064"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS 托管的 Azure Active Directory 集成
 
@@ -256,11 +256,11 @@ kubectl get nodes
 1. 返回 Azure 门户，在左侧的“活动”菜单中，依次选择“特权访问(预览版)”、“启用特权访问”。  
     :::image type="content" source="./media/managed-aad/jit-enabling-priv-access.png" alt-text="显示 Azure 门户中的“特权访问（预览版）”页，其中突出显示了“启用特权访问”":::
 1. 选择“添加分配”开始授予访问权限。
-    :::image type="content" source="./media/managed-aad/jit-add-active-assignment.png" alt-text="显示启用特权访问后 Azure 门户中的“特权访问(预览版)”屏幕。其中突出显示了“添加分配”选项。":::
-1. 选择成员的角色，然后选择要向其授予群集访问权限的用户和组。 组管理员随时可以修改这些分配。准备好继续操作时，选择“下一步”。
-    :::image type="content" source="./media/managed-aad/jit-adding-assignment.png" alt-text="显示 Azure 门户中的“添加分配成员身份”屏幕，并选择了一个要添加为成员的示例用户。突出显示了“下一步”选项。":::
+    :::image type="content" source="./media/managed-aad/jit-add-active-assignment.png" alt-text="显示启用后 Azure 门户的特权访问（预览）屏幕。突出显示了“添加分配”选项。":::
+1. 选择成员的角色，然后选择要向其授予群集访问权限的用户和组。 组管理员可随时修改这些分配。准备好继续时，选择“下一步”。
+    :::image type="content" source="./media/managed-aad/jit-adding-assignment.png" alt-text="显示 Azure 门户的“添加分配成员身份”屏幕，其中选择了一个要添加为成员的示例用户。突出显示了“下一步”选项。":::
 1. 选择“活动”分配类型和所需的持续时间，并提供理由。 准备好继续操作时，选择“分配”。 有关分配类型的详细信息，请参阅[在 Privileged Identity Management 中为特权访问组分配资格（预览版）][aad-assignments]。
-    :::image type="content" source="./media/managed-aad/jit-set-active-assignment-details.png" alt-text="显示 Azure 门户中的“添加分配”>“设置”屏幕。已选择“活动”分配类型，并给出了示例理由。突出显示了“分配”选项。":::
+    :::image type="content" source="./media/managed-aad/jit-set-active-assignment-details.png" alt-text="显示 Azure 门户的“添加分配设置”屏幕。其中选择了“活动”分配类型，并提供了示例理由。突出显示了“分配”选项。":::
 
 完成分配后，通过访问群集来验证是否可以正常进行即时访问。 例如：
 
@@ -315,11 +315,11 @@ Error from server (Forbidden): nodes is forbidden: User "aaaa11111-11aa-aa11-a1a
 [azure-rbac-integration]: manage-azure-rbac.md
 [aks-concepts-identity]: concepts-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-group-create]: /cli/azure/group#az-group-create
+[az-aks-create]: /cli/azure/aks#az_aks_create
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
+[az-group-create]: /cli/azure/group#az_group_create
 [open-id-connect]:../active-directory/develop/v2-protocols-oidc.md
-[az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
+[az-ad-user-show]: /cli/azure/ad/user#az_ad_user_show
 [rbac-authorization]: concepts-identity.md#role-based-access-controls-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md

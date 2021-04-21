@@ -3,12 +3,12 @@ title: 排查备份文件和文件夹时速度缓慢的问题
 description: 提供了故障排除指导，帮助你诊断 Azure 备份性能问题的原因
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: b3f2ac343ef4a703f347ec8a57f242a636bb32d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 791f0edf5f50d27147e402f09e7a3e4c2ea7ca43
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88824009"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518518"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>排查在 Azure 备份中备份文件和文件夹时速度缓慢的问题
 
@@ -21,7 +21,7 @@ ms.locfileid: "88824009"
 
 在开始排查问题之前，建议下载并安装[最新的 Azure 备份代理](https://aka.ms/azurebackup_agent)。 我们经常更新备份代理，以修复各种问题、添加功能和改善性能。
 
-此外，我们强烈建议查看 [Azure Backup service FAQ](backup-azure-backup-faq.md)（Azure 备份服务常见问题），确保所遇到的问题并非任何常见配置问题。
+此外，我们强烈建议查看 [Azure Backup service FAQ](backup-azure-backup-faq.yml)（Azure 备份服务常见问题），确保所遇到的问题并非任何常见配置问题。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -99,4 +99,4 @@ Windows 提供了内置工具[性能监视器](https://techcommunity.microsoft.c
 
 ## <a name="next-steps"></a>后续步骤
 
-* [有关备份文件和文件夹的常见问题](backup-azure-file-folder-backup-faq.md)
+* [有关备份文件和文件夹的常见问题](backup-azure-file-folder-backup-faq.yml)

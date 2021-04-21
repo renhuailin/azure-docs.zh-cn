@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 0d56a1c46f251307755416ef44991ac6f809f330
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e66eca305433a89496f72aac667512efd418a369
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566735"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784760"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>使用 Azure CLI 创建支持 HTTP 到 HTTPS 重定向的应用程序网关
 
@@ -83,7 +83,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>创建应用程序网关
 
-可以使用 [az network application-gateway create](/cli/azure/network/application-gateway#az-network-application-gateway-create) 创建名为 *myAppGateway* 的应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 
+可以使用 [az network application-gateway create](/cli/azure/network/application-gateway#az_network_application_gateway_create) 创建名为 *myAppGateway* 的应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 
 
 将应用程序网关分配给之前创建的 *myAGSubnet* 和 *myAGPublicIPAddress*。 在此示例中，在创建应用程序网关时将关联所创建的证书及其密码。 
 
@@ -118,7 +118,7 @@ az network application-gateway create \
 
 ### <a name="add-the-http-port"></a>添加 HTTP 端口
 
-可以使用 [az network application-gateway frontend-port create](/cli/azure/network/application-gateway/frontend-port#az-network-application-gateway-frontend-port-create) 向应用程序网关添加 HTTP 端口。
+可以使用 [az network application-gateway frontend-port create](/cli/azure/network/application-gateway/frontend-port#az_network-application_gateway_frontend_port_create) 向应用程序网关添加 HTTP 端口。
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -130,7 +130,7 @@ az network application-gateway frontend-port create \
 
 ### <a name="add-the-http-listener"></a>添加 HTTP 侦听器
 
-可以使用 [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) 向应用程序网关添加名为 *myListener* 的侦听器。
+可以使用 [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az_network_application_gateway_http_listener_create) 向应用程序网关添加名为 *myListener* 的侦听器。
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -143,7 +143,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>添加重定向配置
 
-使用 [az network application-gateway redirect-config create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create) 将 HTTP 到 HTTPS 重定向配置添加到应用程序网关。
+使用 [az network application-gateway redirect-config create](/cli/azure/network/application-gateway/redirect-config#az_network_application_gateway_redirect_config_create) 将 HTTP 到 HTTPS 重定向配置添加到应用程序网关。
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -158,7 +158,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-the-routing-rule"></a>添加路由规则
 
-使用 [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) 将具有重定向配置的名为 *rule2* 的路由规则添加到应用程序网关。
+使用 [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az_network_application_gateway_rule_create) 将具有重定向配置的名为 *rule2* 的路由规则添加到应用程序网关。
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -172,7 +172,7 @@ az network application-gateway rule create \
 
 ## <a name="create-a-virtual-machine-scale-set"></a>创建虚拟机规模集
 
-在此示例中，将创建一个名为 *myvmss* 的虚拟机规模集，以便为应用程序网关的后端池提供服务器。 规模集中的虚拟机与 *myBackendSubnet* 和 *appGatewayBackendPool* 相关联。 若要创建规模集，可以使用 [az vmss create](/cli/azure/vmss#az-vmss-create)。
+在此示例中，将创建一个名为 *myvmss* 的虚拟机规模集，以便为应用程序网关的后端池提供服务器。 规模集中的虚拟机与 *myBackendSubnet* 和 *appGatewayBackendPool* 相关联。 若要创建规模集，可以使用 [az vmss create](/cli/azure/vmss#az_vmss_create)。
 
 ```azurecli-interactive
 az vmss create \

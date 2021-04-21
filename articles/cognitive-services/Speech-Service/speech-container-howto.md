@@ -12,12 +12,12 @@ ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: 本地, Docker, 容器
-ms.openlocfilehash: 1eb8e6d990b0b3e6212736036466be9f11d05b01
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cb99dc3c5e16ee117df46d7fda0caab9c57f0853
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102201118"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388085"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>为语音服务 API 安装并运行 Docker 容器 
 
@@ -41,12 +41,12 @@ ms.locfileid: "102201118"
 
 | 容器 | 功能 | 最新 |
 |--|--|--|
-| 语音转文本 | 使用中间结果分析情绪并听录连续实时语音或批量音频录制内容。  | 2.10.0 |
-| 自定义语音转文本 | 通过[自定义语音识别门户](https://speech.microsoft.com/customspeech)中的自定义模型，使用中间结果将连续实时语音或批量音频录制内容听录成文本。 | 2.10.0 |
-| 文本转语音 | 使用纯文本输入或语音合成标记语言 (SSML) 将文本转换为自然声音。 | 1.12.0 |
-| 自定义文本转语音 | 通过[自定义语音门户](https://aka.ms/custom-voice-portal)中的自定义模型，使用纯文本输入或语音合成标记语言 (SSML) 将文本转换为自然语音。 | 1.12.0 |
+| 语音转文本 | 使用中间结果分析情绪并听录连续实时语音或批量音频录制内容。  | 2.11.0 |
+| 自定义语音转文本 | 通过[自定义语音识别门户](https://speech.microsoft.com/customspeech)中的自定义模型，使用中间结果将连续实时语音或批量音频录制内容听录成文本。 | 2.11.0 |
+| 文本转语音 | 使用纯文本输入或语音合成标记语言 (SSML) 将文本转换为自然声音。 | 1.13.0 |
+| 自定义文本转语音 | 通过[自定义语音门户](https://aka.ms/custom-voice-portal)中的自定义模型，使用纯文本输入或语音合成标记语言 (SSML) 将文本转换为自然语音。 | 1.13.0 |
 | 语音语言检测 | 检测音频文件中讲述的语言。 | 1.0 |
-| 神经文本转语音 | 使用深度神经网络技术将文本转换为自然语音，使合成语音变得更自然。 | 1.4.0 |
+| 神经文本转语音 | 使用深度神经网络技术将文本转换为自然语音，使合成语音变得更自然。 | 1.5.0 |
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
@@ -179,7 +179,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-
 2.6.0-amd64-en-us
 ```
 
-有关 **语音转文本** 容器支持的所有区域设置，请参阅[语音转文本映像标记](../containers/container-image-tags.md#speech-to-text)。
+有关 **语音转文本** 容器支持的所有区域设置，请参阅 [语音转文本映像标记](../containers/container-image-tags.md#speech-to-text)。
 
 # <a name="custom-speech-to-text"></a>[自定义语音转文本](#tab/cstt)
 
@@ -221,7 +221,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/text-to-sp
 1.8.0-amd64-en-us-ariarus
 ```
 
-有关 **文本转语音** 容器支持的所有区域设置和对应语音，请参阅[文本转语音映像标记](../containers/container-image-tags.md#text-to-speech)。
+有关 **文本转语音** 容器支持的所有区域设置和对应语音，请参阅 [文本转语音映像标记](../containers/container-image-tags.md#text-to-speech)。
 
 > [!IMPORTANT]
 > 构造文本转语音 HTTP POST 时，[语音合成标记语言 (SSML)](speech-synthesis-markup.md) 消息需要一个具有 `name` 特性的 `voice` 元素。 值是对应的容器区域设置和语音，也称为[“短名称”](language-support.md#standard-voices)。 例如，`latest` 标记具有语音名称 `en-US-AriaRUS`。
@@ -253,7 +253,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/neural-tex
 1.3.0-amd64-en-us-arianeural
 ```
 
-有关 **神经文本转语音** 容器支持的所有区域设置和对应语音，请参阅[神经文本转语音映像标记](../containers/container-image-tags.md#neural-text-to-speech)。
+有关 **神经文本转语音** 容器支持的所有区域设置和对应语音，请参阅 [神经文本转语音映像标记](../containers/container-image-tags.md#neural-text-to-speech)。
 
 > [!IMPORTANT]
 > 构造神经文本转语音 HTTP POST 时，[语音合成标记语言 (SSML)](speech-synthesis-markup.md) 消息需要一个具有 `name` 特性的 `voice` 元素。 值是对应的容器区域设置和语音，也称为[“短名称”](language-support.md#neural-voices)。 例如，`latest` 标记具有语音名称 `en-US-AriaNeural`。

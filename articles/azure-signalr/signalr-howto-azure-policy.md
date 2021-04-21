@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: jixin
-ms.openlocfilehash: 018033d3a6123948191a7261f5a1ee2ae526e25a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c8776102602f5bdcf29139d808a6f603cc5c7473
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89295007"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784566"
 ---
 # <a name="audit-compliance-of-azure-signalr-service-resources-using-azure-policy"></a>使用 Azure Policy 审核 Azure SignalR 服务资源的合规性
 
@@ -53,7 +53,7 @@ ms.locfileid: "89295007"
 
 ### <a name="policy-compliance-in-the-azure-cli"></a>Azure CLI 中的策略合规性
 
-也可使用 Azure CLI 来获取合规性数据。 例如，在 CLI 中使用 [az policy assignment list](/cli/azure/policy/assignment#az-policy-assignment-list) 命令获取已应用的 Azure SignalR 服务策略的策略 ID：
+也可使用 Azure CLI 来获取合规性数据。 例如，在 CLI 中使用 [az policy assignment list](/cli/azure/policy/assignment#az_policy_assignment_list) 命令获取已应用的 Azure SignalR 服务策略的策略 ID：
 
 ```azurecli
 az policy assignment list --query "[?contains(displayName,'SignalR')].{name:displayName, ID:id}" --output table
@@ -67,13 +67,13 @@ Name                                                                            
 [Preview]: Azure SignalR Service should use private links  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Authorization/policyAssignments/<assignmentId>
 ```
 
-然后运行 [az policy state list](/cli/azure/policy/state#az-policy-state-list)，以便返回特定资源组下所有资源的 JSON 格式合规性状态：
+然后运行 [az policy state list](/cli/azure/policy/state#az_policy_state_list)，以便返回特定资源组下所有资源的 JSON 格式合规性状态：
 
 ```azurecli
 az policy state list --g <resourceGroup>
 ```
 
-也可运行 [az policy state list](/cli/azure/policy/state#az-policy-state-list)，以便返回特定 SignalR 资源的 JSON 格式合规性状态：
+也可运行 [az policy state list](/cli/azure/policy/state#az_policy_state_list)，以便返回特定 SignalR 资源的 JSON 格式合规性状态：
 
 ```azurecli
 az policy state list \

@@ -4,12 +4,12 @@ description: 在本教程中，访问使用 Azure 开发测试实验室创建的
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.author: spelluru
-ms.openlocfilehash: b4477e0b98ef534b8170ee297edf88ac6fa62dd7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 96d41b74b3c143feb64fc9c602de68182787c08b
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85476438"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379462"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>教程：访问 Azure 开发测试实验室中的实验室
 本教程使用[教程：在 Azure 开发测试实验室中创建实验室](tutorial-create-custom-lab.md)中创建的实验室。
@@ -25,7 +25,7 @@ ms.locfileid: "85476438"
 
 ## <a name="access-the-lab"></a>访问实验室
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在左侧菜单中选择“所有资源”。 
 3. 为资源类型选择“开发测试实验室”。 
 4. 选择实验室。 

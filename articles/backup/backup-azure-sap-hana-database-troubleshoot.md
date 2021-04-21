@@ -3,12 +3,12 @@ title: 排查 SAP HANA 数据库备份错误
 description: 介绍如何排查在使用 Azure 备份对 SAP HANA 数据库进行备份时可能发生的常见错误。
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 22800adc323bda8a60278160f24bc559103fb57e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cdf4c26aa32d65ec63ec84d85e454adaaf2ece8d
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101713331"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517226"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>排查 Azure 上的 SAP HANA 数据库备份问题
 
@@ -197,4 +197,4 @@ ms.locfileid: "101713331"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请查看有关如何在 Azure VM 上备份 SAP HANA 数据库的[常见问题解答](./sap-hana-faq-backup-azure-vm.md)。
+- 请查看有关如何在 Azure VM 上备份 SAP HANA 数据库的[常见问题解答](./sap-hana-faq-backup-azure-vm.yml)。

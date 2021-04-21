@@ -6,13 +6,13 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
-ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: e42f85bb79dcb1bfe14cacbbfda3576888b841c9
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.custom: references_regions
+ms.openlocfilehash: c2ba631199d8c45d2e25416c099e02c6a6ae0d0d
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481322"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379372"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal-preview"></a>快速入门：从 Azure 门户中创建适用于 Apache Cassandra 群集的 Azure 托管实例（预览版）
  

@@ -11,16 +11,16 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: pafarley
 ROBOTS: NOINDEX
-ms.openlocfilehash: cfc9745fc4684a7b0d8f7da7e63149a6fe50f6d2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 7a05b04872b4f957e879d93972edc45e2932d059
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331832"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364084"
 ---
 # <a name="upgrade-from-read-v2x-to-read-v3x"></a>从 Read v2.x 升级到 Read v3.x
 
-本指南说明如何将现有容器或云 API 代码从 Read v2.x 升级到 Read v3.0 和 v3.1 预览版。
+本指南说明如何将现有容器或云 API 代码从 Read v2.x 升级到 Read v3.x。
 
 ## <a name="determine-your-api-path"></a>确定 API 路径
 参照下表根据要迁移到的 Read 3.x 版本，确定 API 路径中的版本字符串。
@@ -40,7 +40,7 @@ ms.locfileid: "92331832"
 
 |Read 2.x |Read 3.x  |
 |----------|-----------|
-|https://{endpoint}/vision/v2.0/read/core/asyncBatchAnalyze     |https://{endpoint}/vision/< **版本字符串** >/read/analyze[?language]|
+|https://{endpoint}/vision/v2.0/read/core/asyncBatchAnalyze     |https://{endpoint}/vision/<**版本字符串**>/read/analyze[?language]|
     
 新的可选 language 参数可用。 如果你不知道文档的语言，或者文档可能采用多语言，请不要包括该参数。 
 
@@ -48,7 +48,7 @@ ms.locfileid: "92331832"
 
 |Read 2.x |Read 3.x  |
 |----------|-----------|
-|https://{endpoint}/vision/ **v2.0/read/operations** /{operationId}     |https://{endpoint}/vision/< **版本字符串** >/read/analyzeResults/{operationId}|
+|https://{endpoint}/vision/**v2.0/read/operations**/{operationId}     |https://{endpoint}/vision/<**版本字符串**>/read/analyzeResults/{operationId}|
 
 ### <a name="get-read-operation-result-status-flag"></a>`Get Read Operation Result` 状态标志
 
@@ -178,7 +178,7 @@ v3.0 API 还引入了以下改进，你可以选择性地利用这些改进：
 
 |Recognize Text 2.x |Read 3.x  |
 |----------|-----------|
-|https://{endpoint}/vision/v2.0/recognizeText[?mode]|https://{endpoint}/vision/< **版本字符串** >/read/analyze[?language]|
+|https://{endpoint}/vision/v2.0/recognizeText[?mode]|https://{endpoint}/vision/<**版本字符串**>/read/analyze[?language]|
     
 `Read` 中不支持 mode 参数。 手写文本和打印文本都将自动受支持。
     
@@ -188,7 +188,7 @@ v3.0 API 还引入了以下改进，你可以选择性地利用这些改进：
 
 |Recognize Text 2.x |Read 3.x  |
 |----------|-----------|
-|https://{endpoint}/vision/v2.0/textOperations/{operationId}|https://{endpoint}/vision/< **版本字符串** >/read/analyzeResults/{operationId}|
+|https://{endpoint}/vision/v2.0/textOperations/{operationId}|https://{endpoint}/vision/<**版本字符串**>/read/analyzeResults/{operationId}|
 
 ### <a name="get-recognize-text-operation-result-status-flags"></a>`Get Recognize Text Operation Result` 状态标志
 对 `Get Recognize Text Operation Result` 的调用成功时，它将在 JSON 正文中返回状态字符串字段。 
@@ -312,4 +312,4 @@ v3.0 API 还引入了以下改进，你可以选择性地利用这些改进。 �
 
 |Read 2.0 |Read 3.x  |
 |----------|-----------|
-|https://{endpoint}/vision/ **v2.0/read/core/Analyze**     |https://{endpoint}/vision/< **版本字符串** >/read/syncAnalyze[?language]|
+|https://{endpoint}/vision/**v2.0/read/core/Analyze**     |https://{endpoint}/vision/<**版本字符串**>/read/syncAnalyze[?language]|

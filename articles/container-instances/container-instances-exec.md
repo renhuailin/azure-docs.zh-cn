@@ -3,12 +3,12 @@ title: 在运行的容器实例中执行命令
 description: 了解如何在 Azure 容器实例上当前正在运行的容器中执行命令
 ms.topic: article
 ms.date: 03/30/2018
-ms.openlocfilehash: de48e6ac246e2b0751561b4c60bb63d88b599bdf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42832910efff67f111c669793798d9ff0e413536
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "79247197"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790772"
 ---
 # <a name="execute-a-command-in-a-running-azure-container-instance"></a>在运行的 Azure 容器实例中执行命令
 
@@ -89,6 +89,6 @@ Azure 容器实例目前支持使用 [az container exec][az-container-exec] 启�
 在[排查 Azure 容器实例中的容器和部署问题](container-instances-troubleshooting.md)中了解其他故障排除工具和常见部署问题。
 
 <!-- LINKS - internal -->
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-exec]: /cli/azure/container#az-container-exec
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-exec]: /cli/azure/container#az_container_exec
 [azure-cli]: /cli/azure

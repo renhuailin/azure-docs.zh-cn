@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: b94e1f82409da3329eb6d978fa2ae0222928cd97
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b16a2d9f779232e59eb883f6a254be22990f5c78
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102505930"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107520014"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Azure 上的 SAP BusinessObjects BI 平台部署指南
 
@@ -560,7 +560,7 @@ Tomcat 支持将两个或更多应用程序服务器组成群集，用于会话�
 
 对于 Azure NetApp 文件，可以创建按需快照，并使用快照策略计划自动拍摄快照。 快照副本提供 ANF 卷的时间点副本。 有关详细信息，请参阅[使用 Azure NetApp 文件管理快照](../../../azure-netapp-files/azure-netapp-files-manage-snapshots.md)。
 
-Azure 文件备份与本机 [Azure 备份](../../../backup/backup-overview.md)服务集成，该服务将备份和还原功能与 VM 备份集中在一起，从而简化操作。 有关详细信息，请参阅 [Azure 文件共享备份](../../../backup/azure-file-share-backup-overview.md)和[常见问题解答 - 备份 Azure 文件](../../../backup/backup-azure-files-faq.md)。
+Azure 文件备份与本机 [Azure 备份](../../../backup/backup-overview.md)服务集成，该服务将备份和还原功能与 VM 备份集中在一起，从而简化操作。 有关详细信息，请参阅 [Azure 文件共享备份](../../../backup/azure-file-share-backup-overview.md)和[常见问题解答 - 备份 Azure 文件](../../../backup/backup-azure-files-faq.yml)。
 
 #### <a name="backup--restore-for-cms-database"></a>CMS 数据库的备份和还原
 

@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cae82072785838d410453b2eb83685905b0ba04e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d0644b9ec9009fe5d1db7701834cb9788f86ab0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553776"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790160"
 ---
 # <a name="clone-a-managed-image-to-an-image-version-using-the-azure-cli"></a>使用 Azure CLI 将托管映像克隆到映像版本
 如果打算将现有托管映像克隆到共享映像库，可以直接从托管映像创建共享映像库映像。 测试新映像后，可以删除源托管映像。 还可以使用 [PowerShell](image-version-managed-image-powershell.md) 从托管映像迁移到共享映像库。
@@ -43,7 +43,7 @@ ms.locfileid: "102553776"
 
 若要详细了解可为映像定义指定的值，请参阅[映像定义](./shared-image-galleries.md#image-definitions)。
 
-使用 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create) 在库中创建一个映像定义。
+使用 [az sig image-definition create](/cli/azure/sig/image-definition#az_sig_image_definition_create) 在库中创建一个映像定义。
 
 在此示例中，映像定义名为 myImageDefinition，适用于[通用化](./shared-image-galleries.md#generalized-and-specialized-images) Linux OS 映像。 若要使用 Windows OS 创建映像的定义，请使用 `--os-type Windows`。 
 
@@ -65,7 +65,7 @@ az sig image-definition create \
 
 ## <a name="create-the-image-version"></a>创建映像版本
 
-使用 [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) 创建版本。 你需要传入托管映像的 ID 以作为创建映像版本时要使用的基线。 可以使用 [az image list](/cli/azure/image?view#az-image-list) 获取映像的 ID。 
+使用 [az image gallery create-image-version](/cli/azure/sig/image-version#az_sig_image_version_create) 创建版本。 你需要传入托管映像的 ID 以作为创建映像版本时要使用的基线。 可以使用 [az image list](/cli/azure/image?view#az_image_list) 获取映像的 ID。 
 
 ```azurecli-interactive
 az image list --query "[].[name, id]" -o tsv

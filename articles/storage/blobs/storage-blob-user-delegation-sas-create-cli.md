@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 536cd01fbcf2c5d18a8c12030b709427d9bb91b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ec434b9b6da3b3b80a3afddbb432ddeece2b389
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98703600"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788540"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>使用 Azure CLI 为容器或 blob 创建用户委托 SAS
 
@@ -65,7 +65,7 @@ az role assignment create \
 
 ### <a name="create-a-user-delegation-sas-for-a-container"></a>为容器创建用户委托 SAS
 
-若要通过 Azure CLI 为容器创建用户委托 SAS，请调用 [az storage container generate-sas](/cli/azure/storage/container#az-storage-container-generate-sas) 命令。
+若要通过 Azure CLI 为容器创建用户委托 SAS，请调用 [az storage container generate-sas](/cli/azure/storage/container#az_storage_container_generate_sas) 命令。
 
 容器上的用户委托 SAS 支持的权限包括添加、创建、删除、列出、读取和写入。 权限可以单独指定，也可以通过组合方式指定。 有关这些权限的详细信息，请参阅[创建用户委托 SAS](/rest/api/storageservices/create-user-delegation-sas)。
 
@@ -89,7 +89,7 @@ se=2019-07-27&sp=r&sv=2018-11-09&sr=c&skoid=<skoid>&sktid=<sktid>&skt=2019-07-26
 
 ### <a name="create-a-user-delegation-sas-for-a-blob"></a>为 blob 创建用户委托 SAS
 
-若要通过 Azure CLI 为 blob 创建用户委托 SAS，请调用 [az storage blob generate-sas](/cli/azure/storage/blob#az-storage-blob-generate-sas) 命令。
+若要通过 Azure CLI 为 blob 创建用户委托 SAS，请调用 [az storage blob generate-sas](/cli/azure/storage/blob#az_storage_blob_generate_sas) 命令。
 
 Blob 上的用户委托 SAS 支持的权限包括添加、创建、删除、读取和写入。 权限可以单独指定，也可以通过组合方式指定。 有关这些权限的详细信息，请参阅[创建用户委托 SAS](/rest/api/storageservices/create-user-delegation-sas)。
 
@@ -119,7 +119,7 @@ https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?se=2019-
 
 ## <a name="revoke-a-user-delegation-sas"></a>撤销用户委托 SAS
 
-若要通过 Azure CLI 撤销用户委托 SAS，请调用 [az storage account revoke-delegation-keys](/cli/azure/storage/account#az-storage-account-revoke-delegation-keys) 命令。 此命令撤销与指定的存储帐户关联的所有用户委托密钥。 与这些密钥关联的所有共享访问签名都会失效。
+若要通过 Azure CLI 撤销用户委托 SAS，请调用 [az storage account revoke-delegation-keys](/cli/azure/storage/account#az_storage_account_revoke_delegation_keys) 命令。 此命令撤销与指定的存储帐户关联的所有用户委托密钥。 与这些密钥关联的所有共享访问签名都会失效。
 
 请务必将尖括号中的占位符值替换为你自己的值：
 

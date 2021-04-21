@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: d9bbe40e35bdad6fac5c5ccb0b15b909e77b938c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35346836767bc1da8c498e23fd3b42afe7a9c350
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564010"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531201"
 ---
 # <a name="copy-an-image-from-another-gallery-using-powershell"></a>使用 PowerShell 复制另一个库中的映像
 
@@ -123,7 +123,7 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
 
 ## <a name="create-the-image-version"></a>创建映像版本
 
-使用 [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) 创建映像版本。 需要在 `--managed-image` 参数中传递源映像的 ID，用于在目标库中创建映像版本。 
+使用 [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) 创建映像版本。 需要在 `-Source` 参数中传递源映像的 ID，用于在目标库中创建映像版本。 
 
 允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：MajorVersion.MinorVersion.Patch  。
 

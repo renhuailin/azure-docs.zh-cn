@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/22/2020
+ms.date: 04/07/2021
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 224a1b67ff0282c216763229593fcfed81d7567b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 559ace3e9cb9f6daeb6dc3da581bb99d3ff9145e
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93090097"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365155"
 ---
-# <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>快速入门：使用 .NET V4 SDK 生成控制台应用以管理 Azure Cosmos DB SQL API 帐户资源。
+# <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-preview-to-manage-azure-cosmos-db-sql-api-account-resources"></a>快速入门：使用 .NET V4 SDK（预览版）生成控制台应用以管理 Azure Cosmos DB SQL API 帐户资源。
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
@@ -24,11 +24,17 @@ ms.locfileid: "93090097"
 > * [.NET V4](create-sql-api-dotnet-V4.md)
 > * [Java SDK v4](create-sql-api-java.md)
 > * [Spring Data v3](create-sql-api-spring-data.md)
+> * [Spark v3 连接器](create-sql-api-spark.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-开始使用适用于 .NET 的 Azure Cosmos DB SQL API 客户端库。 按照本文档中的步骤安装 .NET V4 (Azure.Cosmos) 包，生成应用，并尝试对存储在 Azure Cosmos DB 中的数据执行基本 CRUD 操作的示例代码。 
+开始使用适用于 .NET 的 Azure Cosmos DB SQL API 客户端库。 按照本文档中的步骤安装 .NET V4 (Azure.Cosmos) 包，生成应用，并尝试对存储在 Azure Cosmos DB 中的数据执行基本 CRUD 操作的示例代码。
+
+> [!IMPORTANT]
+> 用于 Azure Cosmos DB 的 .NET V4 SDK 当前提供公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Azure Cosmos DB 是 Microsoft 的快速 NoSQL 数据库，具有适合于任何规模的开放式 API。 使用 Azure Cosmos DB，可以快速创建和查询键/值、文档和图形数据库。 使用适用于 .NET 的 Azure Cosmos DB SQL API 客户端库完成以下操作：
 
@@ -125,7 +131,7 @@ Time Elapsed 00:00:34.17
 
 此示例应用程序需对 Azure Cosmos 帐户进行身份验证。 为了进行身份验证，应将 Azure Cosmos 帐户凭据传递给应用程序。 按照以下步骤获取 Azure Cosmos 帐户凭据：
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 1. 导航到 Azure Cosmos 帐户。
 

@@ -3,12 +3,12 @@ title: 查看任务运行日志 - 任务
 description: 如何查看和管理 ACR 任务生成的运行日志。
 ms.topic: article
 ms.date: 03/09/2020
-ms.openlocfilehash: b2a10d4a3a2746acf38445673af994c6317c77de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce5f33853be2aa48bcfd1916c7f8b94b9702f38c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93027170"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781048"
 ---
 # <a name="view-and-manage-task-run-logs"></a>查看和管理任务运行日志
 
@@ -18,9 +18,9 @@ ms.locfileid: "93027170"
 
 ## <a name="view-streamed-logs"></a>查看流式传输的日志
 
-手动触发任务时，日志输出会直接流式传输到控制台。 例如，使用 [az acr build](/cli/azure/acr#az-acr-build)、[az acr run](/cli/azure/acr#az-acr-run) 或 [az acr task run](/cli/azure/acr/task#az-acr-task-run) 命令手动触发任务时，你会看到流式传输到控制台的日志输出。 
+手动触发任务时，日志输出会直接流式传输到控制台。 例如，使用 [az acr build](/cli/azure/acr#az_acr_build)、[az acr run](/cli/azure/acr#az_acr_run) 或 [az acr task run](/cli/azure/acr/task#az_acr_task_run) 命令手动触发任务时，你会看到流式传输到控制台的日志输出。 
 
-以下示例 [az acr run](/cli/azure/acr#az-acr-run) 命令手动触发一个任务，该任务运行从同一注册表中拉取的容器：
+以下示例 [az acr run](/cli/azure/acr#az_acr_run) 命令手动触发一个任务，该任务运行从同一注册表中拉取的容器：
 
 ```azurecli
 az acr run --registry mycontainerregistry1220 \
@@ -58,7 +58,7 @@ Run ID: cf4 was successful after 5s
 
 ## <a name="view-stored-logs"></a>查看存储的日志 
 
-Azure 容器注册表存储所有任务的运行日志。 可以在 Azure 门户中查看已存储的运行日志。 也可使用 [az acr task logs](/cli/azure/acr/task#az-acr-task-logs) 命令查看选定的日志。 默认情况下，日志保留 30 天。
+Azure 容器注册表存储所有任务的运行日志。 可以在 Azure 门户中查看已存储的运行日志。 也可使用 [az acr task logs](/cli/azure/acr/task#az_acr_task_logs) 命令查看选定的日志。 默认情况下，日志保留 30 天。
 
 如果任务是自动触发的（例如，由源代码更新触发），则访问已存储的日志是查看运行日志的唯一方法。  任务自动触发器包括源代码提交或拉取请求、基础映像更新和计时器触发器。
 
@@ -70,7 +70,7 @@ Azure 容器注册表存储所有任务的运行日志。 可以在 Azure 门户
 
 ![查看任务运行登录门户](./media/container-registry-tasks-logs/portal-task-run-logs.png)
 
-若要使用 Azure CLI 查看日志，请运行 [az acr task logs](/cli/azure/acr/task#az-acr-task-logs) 并指定运行 ID、任务名称，或指定由生成任务创建的特定映像。 如果指定了任务名称，则该命令会显示上次创建的运行的日志。
+若要使用 Azure CLI 查看日志，请运行 [az acr task logs](/cli/azure/acr/task#az_acr_task_logs) 并指定运行 ID、任务名称，或指定由生成任务创建的特定映像。 如果指定了任务名称，则该命令会显示上次创建的运行的日志。
 
 以下示例输出 ID 为 cf4  的运行的日志：
 
@@ -83,7 +83,7 @@ az acr task logs --registry mycontainerregistry1220 \
 
 你可能希望将任务运行日志存储在本地文件系统上，或使用替代存档解决方案，例如 Azure 存储。
 
-例如，创建一个本地 tasklogs  目录，并将 [az acr task logs](/cli/azure/acr/task#az-acr-task-logs) 的输出重定向到一个本地文件：
+例如，创建一个本地 tasklogs  目录，并将 [az acr task logs](/cli/azure/acr/task#az_acr_task_logs) 的输出重定向到一个本地文件：
 
 ```azurecli
 mkdir ~/tasklogs
@@ -101,13 +101,13 @@ az acr task logs --registry mycontainerregistry1220 \
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-build]: /cli/azure/acr#az-acr-build
-[az-acr-pack-build]: /cli/azure/acr/pack#az-acr-pack-build
+[az-acr-build]: /cli/azure/acr#az_acr_build
+[az-acr-pack-build]: /cli/azure/acr/pack#az_acr_pack_build
 [az-acr-task]: /cli/azure/acr/task
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
-[az-acr-task-update]: /cli/azure/acr/task#az-acr-task-update
-[az-login]: /cli/azure/reference-index#az-login
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-acr-task-run]: /cli/azure/acr/task#az_acr_task_run
+[az-acr-task-update]: /cli/azure/acr/task#az_acr_task_update
+[az-login]: /cli/azure/reference-index#az_login
 [az-login-service-principal]: /cli/azure/authenticate-azure-cli
 
 <!-- IMAGES -->

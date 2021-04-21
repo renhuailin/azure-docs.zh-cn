@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 16158b4ecfb46ea9092fe9eeb31cc4dee259b1ab
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: 28a044f42d0774d940521964b68b38a0f35bcdbb
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573738"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107387949"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>语音服务容器常见问题解答 (FAQ)
 
@@ -387,13 +387,13 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 
 | 容器      | 最小值             | 建议         |
 |----------------|---------------------|---------------------|
-| 语音转文本 | 2 核心，2 GB 内存 | 4 核心，4 GB 内存 |
+| 语音转文本 | 2 核心，2-GB 内存 | 4 核心，4 GB 内存 |
 
 # <a name="custom-speech-to-text"></a>[自定义语音转文本](#tab/cstt)
 
 | 容器             | 最小值             | 建议         |
 |-----------------------|---------------------|---------------------|
-| 自定义语音转文本 | 2 核心，2 GB 内存 | 4 核心，4 GB 内存 |
+| 自定义语音转文本 | 2 核心，2-GB 内存 | 4 核心，4 GB 内存 |
 
 # <a name="text-to-speech"></a>[文本转语音](#tab/tts)
 
@@ -536,76 +536,6 @@ auto result = synthesizer->SpeakTextAsync("{{{text2}}}").get();
 ```
 
  调用 `SetSpeechSynthesisVoiceName` 函数是因为具有更新的文本转语音引擎的容器需要语音名称。
-
-<br>
-</details>
-
-<details>
-<summary>
-<b>如何在语音容器中使用语音 SDK v1.7？</b>
-</summary>
-
-答案：语音容器提供三个终结点，具有不同的用途，它们被定义为语音模式 - 请参阅以下内容：
-
-## <a name="speech-modes"></a>语音模式
-
-[!INCLUDE [speech-modes](includes/speech-modes.md)]
-
-它们具有不同的用途，且使用方式不同。
-
-Python [示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py)：
-- 对于使用自定义终结点（即使用终结点参数的 `SpeechConfig`）的单个识别（交互模式），请参阅 `speech_recognize_once_from_file_with_custom_endpoint_parameters()`。
-- 对于连续识别（对话模式），只需修改以使用上述自定义终结点，请参阅 `speech_recognize_continuous_from_file()`。
-- 若要在上面的示例中启用听写（除非需要），请在创建 `speech_config` 之后添加代码 `speech_config.enable_dictation()`。
-
-在 C# 中，若要启用听写，请调用 `SpeechConfig.EnableDictation()` 函数。
-
-### <a name="fromendpoint-apis"></a>`FromEndpoint` API
-| 语言 | API 详细信息 |
-|----------|:------------|
-| C++ | <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#fromendpoint" target="_blank">`SpeechConfig::FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromendpoint" target="_blank">`SpeechConfig.FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromendpoint" target="_blank">`SpeechConfig.fromendpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Objective-C | <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithendpoint" target="_blank">`SPXSpeechConfiguration:initWithEndpoint;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| JavaScript | 目前不受支持，也无支持计划。 |
-
-<br>
-</details>
-
-<details>
-<summary>
-<b>如何在语音容器中使用语音 SDK v1.8？</b>
-</summary>
-
-答案：可以使用一个新的 `FromHost` API。 它不会替换或修改任何现有 API。 它只是提供了使用自定义主机创建语音配置的替代方法。
-
-### <a name="fromhost-apis"></a>`FromHost` API
-
-| 语言 | API 详细信息 |
-|--|:-|
-| C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost" target="_blank">`SpeechConfig.FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| C++ | <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#fromhost" target="_blank">`SpeechConfig::FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromhost" target="_blank">`SpeechConfig.fromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Objective-C | <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithhost" target="_blank">`SPXSpeechConfiguration:initWithHost;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| JavaScript | 目前不支持 |
-
-> 参数：主机（必需）、订阅密钥（可选，如果在不使用该参数时也能使用该服务）。
-
-主机的格式为 `protocol://hostname:port`，其中 `:port` 为可选项（参见以下内容）：
-- 如果容器在本地运行，则主机名为 `localhost`。
-- 如果容器在远程服务器上运行，则使用该服务器的主机名或 IPv4 地址。
-
-语音转文本的主机参数示例：
-- `ws://localhost:5000` - 使用端口 5000 与本地容器的非安全连接
-- `ws://some.host.com:5000` - 与在远程服务器上运行的容器的非安全连接
-
-上面的 Python 示例，但使用 `host` 参数而不是 `endpoint`：
-
-```python
-speech_config = speechsdk.SpeechConfig(host="ws://localhost:5000")
-```
 
 <br>
 </details>

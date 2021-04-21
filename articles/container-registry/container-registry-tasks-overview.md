@@ -3,12 +3,12 @@ title: ACR 任务概述
 description: 介绍 ACR 任务。ACR 任务是 Azure 容器注册表中的功能套件，它在云中提供安全、自动化的容器映像的生成、管理和修补。
 ms.topic: article
 ms.date: 08/12/2020
-ms.openlocfilehash: b6df415bd55979ef00f6921321dbc254ef7a7e59
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
-ms.translationtype: MT
+ms.openlocfilehash: a42a2bfcdc1621689421940c4db2fcf4f5e64b89
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562848"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780994"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>使用 ACR 任务自动执行容器映像的生成和维护
 
@@ -39,7 +39,7 @@ ACR 任务支持使用多种方案来生成和维护容器映像与其他项目�
 
 在你提交第一行代码之前，ACR 任务的[快速任务](container-registry-tutorial-quick-task.md)功能可以通过将容器映像生成卸载到 Azure，来提供集成式开发体验。 使用快速生成可以在提交代码之前验证自动化生成定义和捕获潜在的问题。
 
-Azure CLI 中的 [az acr build][az-acr-build] 命令使用我们熟悉的 `docker build` 格式提取[上下文](#context-locations)（要生成的文件集），将其发送到 ACR 任务，并在完成后，默认将生成的映像推送到其注册表。
+Azure CLI 中的 [az acr build][az-acr-build] 命令使用我们熟悉的 `docker build` 格式提取[上下文](#context-locations)（要生成的文件集），将其发送到 ACR 任务，并在完成后将生成的映像默认推送到其注册表。
 
 如需简介，请参阅在 Azure 容器注册表中[生成和运行容器映像](container-registry-quickstart-task-cli.md)的快速入门。  
 
@@ -105,7 +105,7 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 | 上下文位置 | 说明 | 示例 |
 | ---------------- | ----------- | ------- |
 | 本地文件系统 | 本地文件系统上某个目录中的文件。 | `/home/user/projects/myapp` |
-| GitHub main 分支 | 公共或专用 GitHub 存储库的主 (或其他默认) 分支中的文件。  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub 主分支 | 公共或专用 GitHub 存储库的主分支（或其他默认分支）中的文件。  | `https://github.com/gituser/myapp-repo.git` |
 | GitHub 分支 | 公共或专用 GitHub 存储库的特定分支。| `https://github.com/gituser/myapp-repo.git#mybranch` |
 | GitHub 子文件夹 | 公共或专用 GitHub 存储库中某个子文件夹内的文件。 示例显示了分支和子文件夹规范的组合。 | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
 | GitHub 提交 | 公共或专用 GitHub 存储库中的特定提交。 示例显示了提交哈希 (SHA) 和子文件夹规范的组合。 | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
@@ -127,7 +127,7 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 
 ## <a name="view-task-output"></a>查看任务输出
 
-每个任务运行都会生成日志输出，检查该输出即可确定任务步骤是否已成功运行。 手动触发某个任务时，会将任务运行的日志输出流式传输到控制台，并将其存储起来供以后检索。 自动触发某个任务后（例如，提交源代码或更新基础映像后触发），只会存储任务日志。 在 Azure 门户中查看运行日志，或者使用 [az acr task logs](/cli/azure/acr/task#az-acr-task-logs) 命令。
+每个任务运行都会生成日志输出，检查该输出即可确定任务步骤是否已成功运行。 手动触发某个任务时，会将任务运行的日志输出流式传输到控制台，并将其存储起来供以后检索。 自动触发某个任务后（例如，提交源代码或更新基础映像后触发），只会存储任务日志。 在 Azure 门户中查看运行日志，或者使用 [az acr task logs](/cli/azure/acr/task#az_acr_task_logs) 命令。
 
 请参阅有关[查看和管理任务日志](container-registry-tasks-logs.md)的详细信息。
 
@@ -143,11 +143,11 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-build]: /cli/azure/acr#az-acr-build
-[az-acr-pack-build]: /cli/azure/acr/pack#az-acr-pack-build
+[az-acr-build]: /cli/azure/acr#az_acr_build
+[az-acr-pack-build]: /cli/azure/acr/pack#az_acr_pack_build
 [az-acr-task]: /cli/azure/acr/task
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-login]: /cli/azure/reference-index#az-login
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-login]: /cli/azure/reference-index#az_login
 [az-login-service-principal]: /cli/azure/authenticate-azure-cli
 
 <!-- IMAGES -->

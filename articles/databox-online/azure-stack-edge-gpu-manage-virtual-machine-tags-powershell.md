@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.author: alkohli
-ms.openlocfilehash: 566ca1598857f67e25faea9f19d134c4a91bfb18
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: be4348359e6b53c3e7454e9ab7c1af8ce8a7020a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106555868"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305543"
 ---
 # <a name="manage-vm-tags-on-azure-stack-edge-via-azure-powershell"></a>通过 Azure PowerShell 管理 Azure Stack Edge 上的 VM 标记
 
@@ -36,17 +36,7 @@ ms.locfileid: "106555868"
 
 ## <a name="verify-connection-to-local-azure-resource-manager"></a>验证与本地 Azure 资源管理器的连接
 
-确保可使用以下步骤从客户端访问设备。
-
-验证客户端是否可以连接到本地 Azure 资源管理器。 
-
-1. 调用本地设备 API 进行身份验证：
-
-    ```powershell
-    login-AzureRMAccount -EnvironmentName <Environment Name> -TenantId c0257de7-538f-415c-993a-1b87a031879d  
-    ```
-
-1. 提供用户名 `EdgeArmUser` 和密码以通过 Azure 资源管理器进行连接。 如果你忘记了密码，请[重置 Azure 资源管理器的密码](azure-stack-edge-gpu-set-azure-resource-manager-password.md)，然后使用此密码登录。
+[!INCLUDE [azure-stack-edge-gateway-verify-azure-resource-manager-connection](../../includes/azure-stack-edge-gateway-verify-azure-resource-manager-connection.md)]
 
 
 ## <a name="add-a-tag-to-a-vm"></a>向 VM 添加标记

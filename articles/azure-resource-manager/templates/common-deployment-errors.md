@@ -4,12 +4,12 @@ description: 说明如何解决使用 Azure Resource Manager 将资源部署到 
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 01/20/2021
-ms.openlocfilehash: 40e6317a1d879704ef00e928a971ae08fc9e0f72
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 07c197f1b54522b96a3bfa2d6a5ce7b368be3b35
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564341"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789170"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>排查使用 Azure Resource Manager 时的常见 Azure 部署错误
 
@@ -68,7 +68,7 @@ ms.locfileid: "105564341"
 | RequestDisallowedByPolicy | 订阅中的某个资源策略阻止你在部署期间尝试执行的操作。 请找出阻止该操作的策略。 如果可能，请更改部署，使之符合策略的限制。 | [解决策略问题](error-policy-requestdisallowedbypolicy.md) |
 | ReservedResourceName | 提供不包含保留名称的资源名称。 | [保留的资源名称](error-reserved-resource-name.md) |
 | ResourceGroupBeingDeleted | 等待删除操作完成。 | |
-| ResourceGroupNotFound | 检查部署的目标资源组的名称。 目标资源组必须已存在于订阅中。 请检查订阅上下文。 | [Azure CLI](/cli/azure/account?#az-account-set) [PowerShell](/powershell/module/Az.Accounts/Set-AzContext) |
+| ResourceGroupNotFound | 检查部署的目标资源组的名称。 目标资源组必须已存在于订阅中。 请检查订阅上下文。 | [Azure CLI](/cli/azure/account?#az_account_set) [PowerShell](/powershell/module/Az.Accounts/Set-AzContext) |
 | ResourceNotFound | 部署引用了一个无法解析的资源。 请验证所使用的  reference 函数是否包括方案所需的参数。 | [解决引用问题](error-not-found.md) |
 | ResourceQuotaExceeded | 部署尝试创建的资源超过了订阅、资源组或区域的配额。 请尽可能修改基础结构，使之保持在配额范围内。 否则，请考虑请求更改配额。 | [解决配额问题](error-resource-quota.md) |
 | SkuNotAvailable | 选择可在所选位置中使用的 SKU（例如 VM 大小）。 | [解决 SKU 问题](error-sku-not-available.md) |

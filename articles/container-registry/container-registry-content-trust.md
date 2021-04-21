@@ -3,12 +3,12 @@ title: 管理已签名的映像
 description: 了解如何为 Azure 容器注册表启用内容信任，以及如何推送和拉取已签名的映像。 内容信任会实现 Docker 内容信任，是高级服务层的一项功能。
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: f44cea09521dc235ad0d555264b165c9a3842a14
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 238908c0075ffa5d2193eda642175a0cfe75b839
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92148581"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784112"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure 容器注册表中的内容信任
 
@@ -220,4 +220,4 @@ umask 077; tar -zcvf docker_private_keys_backup.tar.gz ~/.docker/trust/private; 
 
 <!-- LINKS - internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-config-content-trust-update]: /cli/azure/acr/config/content-trust#az-acr-config-content-trust-update
+[az-acr-config-content-trust-update]: /cli/azure/acr/config/content-trust#az_acr_config_content_trust_update

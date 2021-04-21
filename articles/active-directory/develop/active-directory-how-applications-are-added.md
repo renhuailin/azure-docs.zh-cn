@@ -13,12 +13,12 @@ ms.date: 12/01/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 1f6fd0160988802e198ff9388cfeb3232b34b100
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac02638dfdef4867e93e277175df82be18be66a7
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96861113"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530095"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>如何以及为何将应用程序添加到 Azure AD
 
@@ -105,7 +105,7 @@ Azure AD 中的应用程序有两种表示形式：
   * 属性映射（用户设置）
 * 有关服务主体和应用程序对象的详细信息，请参阅 Microsoft Graph API 参考文档：
   * [应用程序](/graph/api/resources/application)
-  * [Service Principal](/graph/api/resources/serviceprincipal?view=graph-rest-beta)
+  * [Service Principal](/graph/api/resources/serviceprincipal)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>应用程序为何要与 Azure AD 集成？
 

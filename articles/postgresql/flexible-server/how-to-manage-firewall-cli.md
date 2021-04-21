@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3aafad8bcc42a9099dbd37b4e8349e4c093a0425
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: beed3dac1a2ca5bc6d2a87ba2a9044333e798fa9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226271"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778510"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql---flexible-server-firewall-rules-using-the-azure-cli"></a>使用 Azure CLI 创建和管理 Azure Database for PostgreSQL 灵活服务器防火墙规则
 
@@ -37,13 +37,13 @@ Azure Database for PostgreSQL 灵活服务器支持两种类型的互斥网络�
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [az login](/cli/azure/reference-index#az-login) 命令登录账户。 请注意 ID 属性，该属性指的是 Azure 帐户的订阅 ID 。
+需要使用 [az login](/cli/azure/reference-index#az_login) 命令登录账户。 请注意 ID 属性，该属性指的是 Azure 帐户的订阅 ID 。
 
 ```azurecli-interactive
 az login
 ```
 
-使用 [az account set](/cli/azure/account#az-account-set) 命令选择帐户下的特定订阅。 记下 az login 输出中的 ID 值，将其用作命令中 subscription 参数的值。 如果有多个订阅，请选择应计费的资源所在的相应订阅。 若要获取所有订阅，请使用 [az account list](/cli/azure/account#az-account-list)。
+使用 [az account set](/cli/azure/account#az_account_set) 命令选择帐户下的特定订阅。 记下 az login 输出中的 ID 值，将其用作命令中 subscription 参数的值。 如果有多个订阅，请选择应计费的资源所在的相应订阅。 若要获取所有订阅，请使用 [az account list](/cli/azure/account#az_account_list)。
 
 ```azurecli
 az account set --subscription <subscription id>

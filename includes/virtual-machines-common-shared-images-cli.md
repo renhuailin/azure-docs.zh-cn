@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cynthn
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 9556b20ba0ceac2d4c1ad92897e6f9d46293387f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc35f277bfafa80f6239ef807f1a83591646a503
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96025905"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107800351"
 ---
 ## <a name="create-an-image-gallery"></a>创建映像库 
 
@@ -21,7 +21,7 @@ ms.locfileid: "96025905"
 
 允许用于库名称的字符为大写或小写字母、数字、点和句点。 库名称不能包含短划线。   库名称在你的订阅中必须唯一。 
 
-使用 [az sig create](/cli/azure/sig#az-sig-create) 创建一个映像库。 以下示例在“美国东部”创建名为 myGalleryRG 的资源组，以及名为 myGallery 的库    。
+使用 [az sig create](/cli/azure/sig#az_sig_create) 创建一个映像库。 以下示例在“美国东部”创建名为 myGalleryRG 的资源组，以及名为 myGallery 的库    。
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location eastus
@@ -32,7 +32,7 @@ az sig create --resource-group myGalleryRG --gallery-name myGallery
 
 可以使用基于角色的访问控制 (RBAC) 在订阅之间共享映像。 可以在库、映像定义或映像版本级别共享映像。 任何对映像版本具有读取权限的用户，即使跨订阅，也能够使用映像版本部署 VM。
 
-建议在库级别与其他用户进行共享。 若要获取库的对象 ID，请使用 [az sig show](/cli/azure/sig#az-sig-show)。
+建议在库级别与其他用户进行共享。 若要获取库的对象 ID，请使用 [az sig show](/cli/azure/sig#az_sig_show)。
 
 ```azurecli-interactive
 az sig show \
@@ -41,7 +41,7 @@ az sig show \
    --query id
 ```
 
-使用对象 ID 作为范围，并使用电子邮件地址和 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 为用户授予对共享映像库的访问权限。 请将 `<email-address>` 和 `<gallery iD>` 替换为自己的信息。
+使用对象 ID 作为范围，并使用电子邮件地址和 [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) 为用户授予对共享映像库的访问权限。 请将 `<email-address>` 和 `<gallery iD>` 替换为自己的信息。
 
 ```azurecli-interactive
 az role assignment create \

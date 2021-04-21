@@ -3,12 +3,12 @@ title: 用于生成、测试和修补映像的多步骤任务
 description: 介绍多步骤任务，这是 Azure 容器注册表中 ACR 任务的一项功能，可以提供用于在云中生成、测试和修补容器映像的基于任务的工作流。
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: fc671006beb1934b32fcd6ccf967a5bf9ff817fb
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: d57044fa8a0db7d661eb50284b34a6bbec9a1879
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169192"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781012"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>在 ACR 任务中运行多步骤生成、测试和修补任务
 
@@ -164,6 +164,6 @@ Run ID: yd14 was successful after 19s
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 
 <!-- LINKS - Internal -->
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-run]: /cli/azure/acr#az-acr-run
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-acr-run]: /cli/azure/acr#az_acr_run
 [az-acr-task]: /cli/azure/acr/task
