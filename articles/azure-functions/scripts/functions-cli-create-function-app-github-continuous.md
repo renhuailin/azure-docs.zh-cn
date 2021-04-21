@@ -4,12 +4,12 @@ description: 使用 Azure Functions 创建函数应用并从 GitHub 存储库部
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 219e993ad7132c90de6db680facc9b8f815947cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8abbe30067a488055e59de86372482d99cadaae3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934377"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786254"
 ---
 # <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>在 Azure 中创建从 GitHub 部署的函数应用
 
@@ -40,9 +40,9 @@ ms.locfileid: "97934377"
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | 创建函数应用所需的存储帐户。 |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | 在无服务器[消耗计划](../consumption-plan.md)中创建一个函数应用并将其与一个 Git 或 Mercurial 存储库相关联。 |
+| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | 创建函数应用所需的存储帐户。 |
+| [az functionapp create](/cli/azure/functionapp#az_functionapp_create) | 在无服务器[消耗计划](../consumption-plan.md)中创建一个函数应用并将其与一个 Git 或 Mercurial 存储库相关联。 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/16/2020
-ms.openlocfilehash: fc33b24aac8964d0a8390b4b38c5e1862ed639a8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: be1b0da23841b5a63ec044e04a5465e29345f9d1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102198908"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772192"
 ---
 # <a name="tutorial-access-azure-blob-storage-using-azure-databricks-and-azure-key-vault"></a>教程：使用 Azure Databricks 和 Azure Key Vault 访问 Azure Blob 存储
 
@@ -33,7 +33,7 @@ ms.locfileid: "102198908"
 
 ## <a name="create-a-storage-account-and-blob-container-with-azure-cli"></a>使用 Azure CLI 创建存储帐户和 Blob 容器
 
-需要先创建常规用途存储帐户才能使用 Blob。 如果没有[资源组](/cli/azure/group#az-group-create)，请在运行该命令之前创建一个资源组。 以下命令会创建存储容器并显示其元数据。 复制 ID。
+需要先创建常规用途存储帐户才能使用 Blob。 如果没有[资源组](/cli/azure/group#az_group_create)，请在运行该命令之前创建一个资源组。 以下命令会创建存储容器并显示其元数据。 复制 ID。
 
 ```azurecli
 az storage account create --name contosoblobstorage5 --resource-group contosoResourceGroup --location eastus --sku Standard_ZRS --encryption-services blob

@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 03/24/2021
-ms.openlocfilehash: f28ad8f93769bc95c87095a545f608827c319dd3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ea0b161a9038666e1e7ddd5a6c6af2078afff8aa
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106813"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766510"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-azure-iot-hub-python"></a>快速入门：将遥测数据从设备发送到 Azure IoT 中心 (Python)
 
@@ -122,12 +122,12 @@ event:
 > 删除资源组的操作不可逆。 资源组以及包含在其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。
 
 若要按名称删除资源组，请执行以下操作：
-1. 运行 [az group delete](/cli/azure/group#az-group-delete) 命令。 此命令将删除创建的资源组、IoT 中心和设备注册。
+1. 运行 [az group delete](/cli/azure/group#az_group_delete) 命令。 此命令将删除创建的资源组、IoT 中心和设备注册。
 
     ```azurecli
     az group delete --name MyResourceGroup
     ```
-1. 运行 [az group list](/cli/azure/group#az-group-list) 命令，确认资源组是否已删除。  
+1. 运行 [az group list](/cli/azure/group#az_group_list) 命令，确认资源组是否已删除。  
 
     ```azurecli
     az group list

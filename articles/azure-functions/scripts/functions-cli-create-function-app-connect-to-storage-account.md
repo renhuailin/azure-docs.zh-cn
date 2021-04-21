@@ -4,12 +4,12 @@ description: Azure CLI 脚本示例 - 创建用于连接到 Azure 存储的 Azur
 ms.topic: sample
 ms.date: 04/20/2017
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 13120ad4478febf9281ff423a3a7a8f8f3b25845
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 539c3a7dd95045b2e569dbb339be0e5a0c845902
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934401"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786272"
 ---
 # <a name="create-a-function-app-with-a-named-storage-account-connection"></a>创建具有命名存储帐户连接的函数应用 
 
@@ -35,11 +35,11 @@ ms.locfileid: "97934401"
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | 使用相关位置创建资源组。 |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | 创建存储帐户。 |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | 在无服务器[消耗计划](../consumption-plan.md)中创建函数应用。 |
-| [az storage account show-connection-string](/cli/azure/storage/account#az-storage-account-show-connection-string) | 获取帐户的连接字符串。 |
-| [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | 将连接字符串设置为函数应用中的应用设置。 |
+| [az group create](/cli/azure/group#az_group_create) | 使用相关位置创建资源组。 |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | 创建存储帐户。 |
+| [az functionapp create](/cli/azure/functionapp#az_functionapp_create) | 在无服务器[消耗计划](../consumption-plan.md)中创建函数应用。 |
+| [az storage account show-connection-string](/cli/azure/storage/account#az_storage_account_show_connection_string) | 获取帐户的连接字符串。 |
+| [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) | 将连接字符串设置为函数应用中的应用设置。 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ff11b8461b483f5a66df19bb1b108a1fe1168fb9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cfb9ff9e6b107c9da84b164a055453994fc29229
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98944032"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786632"
 ---
 # <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>教程：使用 Azure CLI 在 HDInsight 中创建启用 Apache Kafka REST 代理的群集
 
@@ -82,7 +82,7 @@ ms.locfileid: "98944032"
     export componentVersion=kafka=2.1
     ```
 
-1. 输入以下命令来[创建资源组](/cli/azure/group#az-group-create)：
+1. 输入以下命令来[创建资源组](/cli/azure/group#az_group_create)：
 
     ```azurecli
      az group create \
@@ -90,7 +90,7 @@ ms.locfileid: "98944032"
         --name $resourceGroupName
     ```
 
-1. 输入以下命令[创建 Azure 存储帐户](/cli/azure/storage/account#az-storage-account-create)：
+1. 输入以下命令[创建 Azure 存储帐户](/cli/azure/storage/account#az_storage_account_create)：
 
     ```azurecli
     # Note: kind BlobStorage is not available as the default storage account.
@@ -103,7 +103,7 @@ ms.locfileid: "98944032"
         --sku Standard_LRS
     ```
 
-1. 输入以下命令从 Azure 存储帐户中[提取主密钥](/cli/azure/storage/account/keys#az-storage-account-keys-list)，然后将其存储在某个变量中：
+1. 输入以下命令从 Azure 存储帐户中[提取主密钥](/cli/azure/storage/account/keys#az_storage_account_keys_list)，然后将其存储在某个变量中：
 
     ```azurecli
     export storageAccountKey=$(az storage account keys list \
@@ -112,7 +112,7 @@ ms.locfileid: "98944032"
         --query [0].value -o tsv)
     ```
 
-1. 输入以下命令[创建 Azure 存储容器](/cli/azure/storage/container#az-storage-container-create)：
+1. 输入以下命令[创建 Azure 存储容器](/cli/azure/storage/container#az_storage_container_create)：
 
     ```azurecli
     az storage container create \
@@ -121,7 +121,7 @@ ms.locfileid: "98944032"
         --account-name $storageAccount
     ```
 
-1. [创建 HDInsight 群集](/cli/azure/hdinsight#az-hdinsight-create)。 输入该命令之前，请注意以下参数：
+1. [创建 HDInsight 群集](/cli/azure/hdinsight#az_hdinsight_create)。 输入该命令之前，请注意以下参数：
 
     1. Kafka 群集所需的参数：
 

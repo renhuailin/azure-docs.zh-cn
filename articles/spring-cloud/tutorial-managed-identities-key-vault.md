@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: bbfafeaf9ce24911bb4893748d456d22e02fc411
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 870a04af244d18826e1041316895f746e27870eb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877090"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786578"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>教程：使用托管标识将密钥保管库连接到 Azure Spring Cloud 应用
 
@@ -29,14 +29,14 @@ Azure Key Vault 可以用来安全地存储令牌、密码、证书、API 密钥
 * [安装 Maven 3.0 或更高版本](https://maven.apache.org/download.cgi)
 
 ## <a name="create-a-resource-group"></a>创建资源组
-资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用命令 [az group create](/cli/azure/group#az-group-create) 创建一个资源组，以同时包含 Key Vault 和 Spring Cloud：
+资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用命令 [az group create](/cli/azure/group#az_group_create) 创建一个资源组，以同时包含 Key Vault 和 Spring Cloud：
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" -l "EastUS"
 ```
 
 ## <a name="set-up-your-key-vault"></a>设置密钥保管库
-要创建密钥保管库，请使用命令 [az keyvault create](/cli/azure/keyvault#az-keyvault-create)：
+要创建密钥保管库，请使用命令 [az keyvault create](/cli/azure/keyvault#az_keyvault_create)：
 
 > [!Important]
 > 每个密钥保管库必须具有唯一的名称。 将以下示例中的 <your-keyvault-name> 替换为你的密钥保管库名称。
@@ -47,7 +47,7 @@ az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
 
 记下返回的 `vaultUri`（其格式将为“https://<your-keyvault-name>.vault.azure.net”）。 在后续步骤中将使用它。
 
-现在可以使用命令 [az keyvault secret set](/cli/azure/keyvault/secret#az-keyvault-secret-set) 将机密放入密钥保管库中：
+现在可以使用命令 [az keyvault secret set](/cli/azure/keyvault/secret#az_keyvault_secret_set) 将机密放入密钥保管库中：
 
 ```azurecli-interactive
 az keyvault secret set --vault-name "<your-keyvault-name>" \

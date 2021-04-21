@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 03/02/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: 9eebc77c5b3d9402c766320fddfdaf05d50b574f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 74e08cce381d173e0c5e1458ae99167a0c8c697f
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102485395"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107504504"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-40-server-version-supported-features-and-syntax"></a>MongoDB 的 Azure Cosmos DB API（4.0 版服务器）：支持的功能和语法
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -143,7 +143,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 | $limit | 是 |
 | $listLocalSessions | 否 |
 | $listSessions | 否 |
-| $lookup | 是 |
+| $lookup | 部分 |
 | $match | 是 |
 | $out | 是 |
 | $project | 是 |
@@ -155,6 +155,9 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 | $sort | 是 |
 | $sortByCount | 是 |
 | $unwind | 是 |
+
+> [!NOTE]
+> `$lookup` 尚不支持服务器版本 3.6 中引入的[不相关子查询](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/#join-conditions-and-uncorrelated-sub-queries)功能。 如果尝试将 `$lookup` 运算符与 `let` 和 `pipeline` 字段一起使用，则会收到一条错误消息，其中包含 `let is not supported`。
 
 ### <a name="boolean-expressions"></a>布尔表达式
 

@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 10/26/2020
-ms.openlocfilehash: 55c1b6f6c6690f0c8f00a8a2469834781f35fb3c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: dda4fc6a80bbe07977f8d2a5ffcbea895a4e1fe6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102449792"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771832"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>教程：创建 Azure Red Hat OpenShift 4 群集
 
@@ -112,7 +112,7 @@ Red Hat 拉取机密使群集能够访问 Red Hat 容器注册表以及其他内
 
 2. **创建资源组。**
 
-   Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。
+   Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。
     
    > [!NOTE] 
    > Azure Red Hat OpenShift 并非在可以创建 Azure 资源组的所有区域中可用。 有关支持 Azure Red Hat OpenShift 的位置的信息，请参阅[可用区域](https://azure.microsoft.com/en-gb/global-infrastructure/services/?products=openshift)。
