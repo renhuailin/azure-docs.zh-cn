@@ -5,12 +5,12 @@ ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 08/01/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: f6876d0aef0d3d87e038b623c395f8368a14e90c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c04e1b33233abebde746fd7fb1ef8d761dba7e4e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97561845"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788198"
 ---
 # <a name="create-a-php-web-app-in-azure-app-service"></a>在 Azure 应用服务中创建 PHP Web 应用
 
@@ -32,7 +32,7 @@ ms.locfileid: "97561845"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本快速入门教程，需先执行以下操作：
+完成本快速入门教程需要：
 
 * <a href="https://git-scm.com/" target="_blank">安装 Git</a>
 * <a href="https://php.net/manual/install.php" target="_blank">安装 PHP</a>
@@ -78,9 +78,9 @@ php -S localhost:8080
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
 
-在 Cloud Shell 中，使用 [`az webapp create`](/cli/azure/webapp#az-webapp-create) 命令在应用服务计划 `myAppServicePlan` 中创建一个 Web 应用。 
+在 Cloud Shell 中，使用 [`az webapp create`](/cli/azure/webapp#az_webapp_create) 命令在应用服务计划 `myAppServicePlan` 中创建一个 Web 应用。 
 
-在以下示例中，将 `<app-name>` 替换为全局唯一的应用名称（有效字符是 `a-z`、`0-9` 和 `-`）。 运行时设置为 `PHP|7.4`。 若要查看所有受支持的运行时，请运行 [`az webapp list-runtimes`](/cli/azure/webapp#az-webapp-list-runtimes)。 
+在以下示例中，将 `<app-name>` 替换为全局唯一的应用名称（有效字符是 `a-z`、`0-9` 和 `-`）。 运行时设置为 `PHP|7.4`。 若要查看所有受支持的运行时，请运行 [`az webapp list-runtimes`](/cli/azure/webapp#az_webapp_list_runtimes)。 
 
 ```azurecli-interactive
 # Bash
@@ -165,7 +165,7 @@ PHP 示例代码正在 Azure 应用服务 Web 应用中运行。
 
 ![在 Azure 中运行应用的示例](media/quickstart-php/hello-world-in-browser.png)
 
-**祝贺你！** 现已将第一个 PHP 应用部署到应用服务。
+祝贺你！ 现已将第一个 PHP 应用部署到应用服务。
 
 ## <a name="update-locally-and-redeploy-the-code"></a>在本地更新并重新部署代码
 

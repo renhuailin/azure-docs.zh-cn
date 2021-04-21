@@ -4,12 +4,12 @@ description: 创建 Function App 并从 Azure DevOps 部署函数代码
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: f89da9fc146d753442f2a8c8aa38861e66c9a3d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f31c6a76412939d179cdd282e5e643ab7e8531b5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934367"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786209"
 ---
 # <a name="create-a-function-in-azure-that-is-deployed-from-azure-devops"></a>在 Azure 中创建从 Azure DevOps 部署的函数
 
@@ -40,10 +40,10 @@ ms.locfileid: "97934367"
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | 创建函数应用所需的存储帐户。 |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | 在无服务器[消耗计划](../consumption-plan.md)中创建函数应用。 |
-| [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config) | 将 Function App 与 Git 或 Mercurial 存储库相关联。 |
+| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | 创建函数应用所需的存储帐户。 |
+| [az functionapp create](/cli/azure/functionapp#az_functionapp_create) | 在无服务器[消耗计划](../consumption-plan.md)中创建函数应用。 |
+| [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#az_functionapp_deployment_source_config) | 将 Function App 与 Git 或 Mercurial 存储库相关联。 |
 
 ## <a name="next-steps"></a>后续步骤
 

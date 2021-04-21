@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
-ms.openlocfilehash: 22920e6535a19b1ab0ce970c1195cee676d9363f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: ed83fdde4e005b0db76b9edf30faef5e8c732998
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057722"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714031"
 ---
 # <a name="tutorial-create-a-custom-simulated-device"></a>教程：创建自定义模拟设备
 
@@ -34,7 +34,7 @@ ms.locfileid: "106057722"
 
 若要按本教程操作，需在 Azure 订阅中部署设备模拟的实例。
 
-如果尚未部署设备模拟，请参阅 GitHub 上的[设备模拟部署](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)。
+如果尚未部署设备模拟，请参阅 GitHub 上的[设备模拟部署](https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md)。
 
 ## <a name="view-your-device-models"></a>查看设备模型
 

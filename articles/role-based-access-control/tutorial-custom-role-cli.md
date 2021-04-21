@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 319bca74c8e781e5dc5022e9fb901b2edca24a80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3743697d58d0f5b167b123df59bc5638aa60489
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87485637"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771670"
 ---
 # <a name="tutorial-create-an-azure-custom-role-using-azure-cli"></a>教程：使用 Azure CLI 创建 Azure 自定义角色
 
@@ -86,7 +86,7 @@ ms.locfileid: "87485637"
     "Microsoft.Support/*"
     ```
 
-1. 使用 [az account list](/cli/azure/account#az-account-list) 命令获取你的订阅 ID。
+1. 使用 [az account list](/cli/azure/account#az_account_list) 命令获取你的订阅 ID。
 
     ```azurecli
     az account list --output table
@@ -118,7 +118,7 @@ ms.locfileid: "87485637"
     }
     ```
     
-1. 若要新建自定义角色，请使用 [az role definition create](/cli/azure/role/definition#az-role-definition-create) 命令，并指定 JSON 角色定义文件。
+1. 若要新建自定义角色，请使用 [az role definition create](/cli/azure/role/definition#az_role_definition_create) 命令，并指定 JSON 角色定义文件。
 
     ```azurecli
     az role definition create --role-definition "~/CustomRoles/ReaderSupportRole.json"
@@ -155,7 +155,7 @@ ms.locfileid: "87485637"
 
 ## <a name="list-custom-roles"></a>列出自定义角色
 
-- 若要列出所有自定义角色，请使用 [az role definition list](/cli/azure/role/definition#az-role-definition-list) 命令及 `--custom-role-only` 参数。
+- 若要列出所有自定义角色，请使用 [az role definition list](/cli/azure/role/definition#az_role_definition_list) 命令及 `--custom-role-only` 参数。
 
     ```azurecli
     az role definition list --custom-role-only true
@@ -225,7 +225,7 @@ ms.locfileid: "87485637"
     }
     ```
         
-1. 若要更新自定义角色，请使用 [az role definition update](/cli/azure/role/definition#az-role-definition-update) 命令并指定更新后的 JSON 文件。
+1. 若要更新自定义角色，请使用 [az role definition update](/cli/azure/role/definition#az_role_definition_update) 命令并指定更新后的 JSON 文件。
 
     ```azurecli
     az role definition update --role-definition "~/CustomRoles/ReaderSupportRole.json"
@@ -261,7 +261,7 @@ ms.locfileid: "87485637"
     
 ## <a name="delete-a-custom-role"></a>删除自定义角色
 
-- 使用 [az role definition delete](/cli/azure/role/definition#az-role-definition-delete) 命令并指定角色名称或角色 ID 来删除自定义角色。
+- 使用 [az role definition delete](/cli/azure/role/definition#az_role_definition_delete) 命令并指定角色名称或角色 ID 来删除自定义角色。
 
     ```azurecli
     az role definition delete --name "Reader Support Tickets"

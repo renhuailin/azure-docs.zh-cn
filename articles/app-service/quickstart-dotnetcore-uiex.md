@@ -7,12 +7,12 @@ ms.date: 11/23/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperf-fy21q1
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 2a789b4ca1261c79e8e6eb93a4ed44e7e8e9272e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ff86bedf47395b50dc25e552b8b3ed4176e23b65
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102214229"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769096"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>快速入门：在 Azure 中创建 ASP.NET Core Web 应用
 
@@ -256,7 +256,7 @@ az login
     <li>如果无法识别 <code>az</code> 命令，请确保已按照<a href="#1-prepare-your-environment">准备环境</a>中所述安装了 Azure CLI。</li>
     <li>将 <code>&lt;app-name&gt;</code> 替换为在整个 Azure 中均唯一的名称（有效字符为 <code>a-z</code>、<code>0-9</code> 和 <code>-</code>）<em></em>。 良好的模式是结合使用公司名称和应用标识符。</li>
     <li><code>--sku F1</code> 参数在“免费”定价层上创建 Web 应用。 省略此参数可使用更快的高级层，这会按小时计费。</li>
-    <li>可以选择包含参数 <code>--location &lt;location-name&gt;</code>，其中 <code>&lt;location-name&gt;</code> 是可用的 Azure 区域。 可以运行 <a href="/cli/azure/appservice#az-appservice-list-locations"><code>az account list-locations</code></a> 命令来检索 Azure 帐户的允许区域列表。</li>
+    <li>可以选择包含参数 <code>--location &lt;location-name&gt;</code>，其中 <code>&lt;location-name&gt;</code> 是可用的 Azure 区域。 可以运行 <a href="/cli/azure/appservice#az_appservice_list_locations"><code>az account list-locations</code></a> 命令来检索 Azure 帐户的允许区域列表。</li>
     </ul>
     </details>
     
@@ -268,7 +268,7 @@ az login
     <ul>
     <li>创建一个默认的资源组。</li>
     <li>创建一个默认的应用服务计划。</li>
-    <li>使用指定名称<a href="/cli/azure/webapp#az-webapp-create">创建应用服务应用</a>。</li>
+    <li>使用指定名称<a href="/cli/azure/webapp#az_webapp_create">创建应用服务应用</a>。</li>
     <li><a href="/azure/app-service/deploy-zip">使用 Zip</a> 将文件从当前工作目录部署到应用。</li>
     <li>运行时，它会提供有关资源创建、日志记录和 ZIP 部署的消息。</li>
     </ul>
@@ -302,14 +302,14 @@ http://<app_name>.azurewebsites.net
 
 <hr/> 
 
-## <a name="7-update-and-redeploy-the-code"></a>7.更新并重新部署代码
+## <a name="7-update-and-redeploy-the-code&quot;></a>7.更新并重新部署代码
 
 1. 打开本地目录中的 Startup.cs 文件。 
 
 1. 对方法调用 `context.Response.WriteAsync` 中的文本稍作更改。
 
     ```csharp
-    await context.Response.WriteAsync("Hello Azure!");
+    await context.Response.WriteAsync(&quot;Hello Azure!");
     ```
     
 1. 保存所做更改。
