@@ -2,21 +2,19 @@
 title: Azure Key Vault 监视和警报 | Microsoft Docs
 description: 创建仪表板以监视密钥保管库的运行状况并配置警报。
 services: key-vault
-author: ShaneBala-keyvault
-manager: ravijan
+author: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 04/06/2020
-ms.author: sudbalas
-Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 1b447e907bca3f8d21f522d888632aa687fd0f91
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
-ms.translationtype: MT
+ms.date: 03/31/2021
+ms.author: mbaldwin
+ms.openlocfilehash: f8f9dd6d51b974ebd31804daf0402ca5535ffc92
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99070655"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751573"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Azure Key Vault 的监视和警报
 
@@ -27,6 +25,8 @@ ms.locfileid: "99070655"
 + 要监视的基本 Key Vault 指标
 + 如何配置指标并创建仪表板
 + 如何根据指定阈值创建警报
+
+用于密钥保管库的 Azure Monitor 结合了日志和指标来提供全局监视解决方案。 [在此处详细了解用于 Key Vault 的 Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview#introduction-to-azure-monitor-for-key-vault)
 
 ## <a name="basic-key-vault-metrics-to-monitor"></a>要监视的基本 Key Vault 指标
 
@@ -40,7 +40,7 @@ ms.locfileid: "99070655"
 
 **保管库饱和** 密钥保管库每秒可服务的请求数取决于正在执行的操作类型。 某些保管库操作具有较低的每秒请求数阈值。 此指标聚合了跨所有操作类型密钥保管库的总使用量，得出一个百分比值，用来指示当前密钥保管库的使用情况。 有关密钥保管库服务限制的完整列表，请参阅以下文档。 [Azure Key Vault 服务限制](service-limits.md)
 
-**服务 API 滞后时间** -此指标显示对 key vault 的调用的平均延迟，以服务为衡量。 它不包括客户端或客户端和服务之间的网络使用的时间。
+**服务 API 延迟** - 此指标显示调用密钥保管库的平均延迟（在服务中测量）。 它不包括客户端或客户端与服务之间的网络所使用的时间。
 
 **API 命中总计** 此指标显示对密钥保管库进行的所有调用。 这将帮助你识别哪些应用程序正在调用密钥保管库。 
 

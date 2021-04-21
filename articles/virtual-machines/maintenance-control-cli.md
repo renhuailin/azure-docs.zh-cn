@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 9425759de1e08bc83cac80cd1b56c602edb59fb1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c57f66eca5d15024c6b10e8fad12ddb575b9f894
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562956"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765892"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>使用维护控制和 Azure CLI 来控制更新
 
@@ -93,7 +93,7 @@ az maintenance assignment create \
 
 若要将配置应用到专用主机，需要包含 `--resource-type hosts`、带主机组名称的 `--resource-parent-name`，以及 `--resource-parent-type hostGroups`。 
 
-参数 `--resource-id` 是主机的 ID。 可以使用 [az vm host get-instance-view](/cli/azure/vm/host#az-vm-host-get-instance-view) 获取专用主机的 ID。
+参数 `--resource-id` 是主机的 ID。 可以使用 [az vm host get-instance-view](/cli/azure/vm/host#az_vm_host_get_instance_view) 获取专用主机的 ID。
 
 ```azurecli-interactive
 az maintenance assignment create \

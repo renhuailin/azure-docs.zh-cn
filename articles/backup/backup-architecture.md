@@ -3,12 +3,12 @@ title: 体系结构概述
 description: 概述 Azure 备份服务使用的体系结构、组件和流程。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 1e5a61bd4e3287c1100ff1f54fda797c1add438b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8fca05f8718fc5e44da33b19447895f5daafc905
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466404"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107716734"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 备份体系结构和组件
 
@@ -137,28 +137,12 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 - Azure 文件共享：如何[创建](./backup-afs.md)和[修改](./manage-afs-backup.md#modify-policy)策略。
 - SAP HANA：如何[创建](./backup-azure-sap-hana-database.md#create-a-backup-policy)和[修改](./sap-hana-db-manage.md#change-policy)策略。
 - MARS：如何[创建](./backup-windows-with-mars-agent.md#create-a-backup-policy)和[修改](./backup-azure-manage-mars.md#modify-a-backup-policy)策略。
-- [根据工作负载类型计划备份是否有任何限制？](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
-- [如果更改保留策略，现有恢复点会发生什么情况？](./backup-azure-backup-faq.md#what-happens-when-i-change-my-backup-policy)
+- [根据工作负载类型计划备份是否有任何限制？](./backup-azure-backup-faq.yml#are-there-limits-on-backup-scheduling-)
+- [如果更改保留策略，现有恢复点会发生什么情况？](./backup-azure-backup-faq.yml#what-happens-when-i-change-my-backup-policy-)
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>体系结构：内置 Azure VM 备份
 
-1. 为 Azure VM 启用备份时，将会根据指定的计划运行备份。
-1. 首次备份期间，如果 VM 已运行，则会在 VM 上安装备份扩展。
-    - 对于 Windows VM，将安装 VMSnapshot 扩展。
-    - 对于 Linux VM，将安装 VMSnapshot Linux 扩展。
-1. 该扩展创建存储级快照。
-    - 对于正在运行的 Windows VM，备份服务将与卷影复制服务 (VSS) 互相配合，来创建 VM 的应用一致性快照。 备份服务默认创建完整的 VSS 备份。 如果 Azure 备份无法创建应用一致性快照，则会创建文件一致性快照。
-    - 对于 Linux VM，Azure 备份将创建文件一致性快照。 对于应用一致性快照，需要手动自定义前脚本/后脚本。
-    - 可以通过并行备份每个 VM 磁盘来优化备份。 对于每个要备份的磁盘，Azure 备份将读取磁盘上的块，并只存储已更改的数据。
-1. 创建快照后，数据将传输到保管库。
-    - 只会复制自上次备份以来发生更改的数据块。
-    - 不会加密数据。 Azure 备份可以备份使用 Azure 磁盘加密进行加密的 Azure VM。
-    - 快照数据可能不会立即复制到保管库。 在高峰期，可能需要好几个小时才能完成备份。 每日备份策略规定，VM 总备份时间不超过 24 小时。
-1. 将数据发送到保管库后，将创建恢复点。 默认情况下，快照会保留两天，然后再删除。 此功能允许从这些快照执行还原操作，从而缩短还原时间。 它减少了从保管库转换数据和复制回数据所需的时间。 请参阅 [Azure 备份即时还原功能](./backup-instant-restore-capability.md)。
-
-无需明确允许 Internet 连接来备份 Azure VM。
-
-![备份 Azure VM](./media/backup-architecture/architecture-azure-vm.png)
+[!INCLUDE [azure-vm-backup-process.md](../../includes/azure-vm-backup-process.md)]
 
 ## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>体系结构：直接备份本地 Windows Server 计算机或者 Azure VM 文件或文件夹
 

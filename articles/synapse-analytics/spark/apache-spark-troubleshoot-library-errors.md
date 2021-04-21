@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: conceptual
 ms.date: 01/04/2021
-ms.openlocfilehash: 57e9d0c584600a8fac90499d72cfac1620052603
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 006abf62c605c2ca34fd1adeadee8e29ae0fb8fb
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101694914"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588303"
 ---
 # <a name="troubleshoot-library-installation-errors"></a>排查库安装错误 
 要使第三方或本地生成的代码可用于你的应用程序，可将库安装到某个无服务器 Apache Spark 池上。 当池启动时，将从 PyPi 下载 requirements.txt 文件中列出的包。 每当通过该 Spark 池创建 Spark 实例时，都会使用此要求文件。 为 Spark 池安装某个库后，该库可用于使用同一池的所有会话。 
@@ -92,7 +92,7 @@ Synapse 无服务器 Apache Spark 池基于 Linux 分发。 直接从 PyPI 下�
 若要重新创建环境并验证更新，请进行以下操作：
  1. [下载](https://github.com/Azure-Samples/Synapse/blob/main/Spark/Python/base_environment.yml)模板以在本地重新创建 Synapse 运行时。 模板与实际的 Synapse 环境之间可能存在细微的差异。
    
- 2. 按照[以下说明](https://docs.conda.io/projects/conda/latest/user-guide/tasks/manage-environments.html)创建虚拟环境。 此环境让你能够使用指定的库列表创建独立的 Python 安装。 
+ 2. 按照[以下说明](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#activating-an-environment)创建虚拟环境。 此环境让你能够使用指定的库列表创建独立的 Python 安装。 
     
     ```
     conda myenv create -f environment.yml
@@ -102,7 +102,7 @@ Synapse 无服务器 Apache Spark 池基于 Linux 分发。 直接从 PyPI 下�
  3. 通过 ``pip install -r <provide your req.txt file>`` 使用指定的包更新虚拟环境。 如果安装导致错误，则 Synapse 基本运行时中预安装的内容与提供的要求文件中指定的内容之间可能存在冲突。 必须解决这些依赖关系冲突，才能在无服务器 Apache Spark 池上获取更新后的库。
 
 >[!IMPORTANT]
->将 pip 和 conda 一起使用可能会出现问题。 结合使用 pip 和 conda 时，最好是遵循这些[建议的最佳做法](https://docs.conda.io/projects/conda/latest/user-guide/tasks/manage-environments.html#using-pip-in-an-environment)。
+>将 pip 和 conda 一起使用可能会出现问题。 结合使用 pip 和 conda 时，最好是遵循这些[建议的最佳做法](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#activating-an-environment)。
 
 ## <a name="next-steps"></a>后续步骤
 - 查看默认库：[Apache Spark 版本支持](apache-spark-version-support.md)

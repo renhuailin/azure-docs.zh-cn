@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 72778c431c561f5345dde3d6803e814d6fdebfba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c27b042b78931fd58e43e4bbb06699abe510f385
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549118"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762544"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>使用 Azure CLI 扩展 Linux VM 上的虚拟硬盘
 
@@ -23,13 +23,13 @@ ms.locfileid: "102549118"
 > 始终确保文件系统处于正常状态，磁盘分区表类型将支持新大小，并确保在执行磁盘大小调整操作之前备份数据。 有关详细信息，请参阅 [Azure 备份快速入门](../../backup/quick-backup-vm-portal.md)。 
 
 ## <a name="expand-an-azure-managed-disk"></a>扩展 Azure 托管磁盘
-确保已安装了最新的 [Azure CLI](/cli/azure/install-az-cli2) 并已使用 [az login](/cli/azure/reference-index#az-login) 登录到 Azure 帐户。
+确保已安装了最新的 [Azure CLI](/cli/azure/install-az-cli2) 并已使用 [az login](/cli/azure/reference-index#az_login) 登录到 Azure 帐户。
 
 本文需要 Azure 中的现有 VM 已附加至少一个数据磁盘并且该磁盘已准备就绪。 如果尚无可用的 VM，请参阅[使用数据磁盘创建和准备 VM](tutorial-manage-disks.md#create-and-attach-disks)。
 
 在以下示例中，请将示例参数名称（例如 *myResourceGroup* 和 *myVM*）替换成自己的值。
 
-1. 当 VM 正在运行时，无法在虚拟硬盘上执行操作。 使用 [az vm deallocate](/cli/azure/vm#az-vm-deallocate) 解除分配 VM。 以下示例在名为 myResourceGroup 的资源组中解除分配名为 myVM 的 VM： 
+1. 当 VM 正在运行时，无法在虚拟硬盘上执行操作。 使用 [az vm deallocate](/cli/azure/vm#az_vm_deallocate) 解除分配 VM。 以下示例在名为 myResourceGroup 的资源组中解除分配名为 myVM 的 VM： 
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
@@ -38,7 +38,7 @@ ms.locfileid: "102549118"
     > [!NOTE]
     > 只有释放 VM 才能扩展虚拟硬盘。 使用 `az vm stop` 停止 VM 不会释放计算资源。 若要释放计算资源，请使用 `az vm deallocate`。
 
-1. 使用 [az disk list](/cli/azure/disk#az-disk-list) 查看资源组中的托管磁盘列表。 以下示例显示名为 myResourceGroup 的资源组中的托管磁盘列表：
+1. 使用 [az disk list](/cli/azure/disk#az_disk_list) 查看资源组中的托管磁盘列表。 以下示例显示名为 myResourceGroup 的资源组中的托管磁盘列表：
 
     ```azurecli
     az disk list \
@@ -47,7 +47,7 @@ ms.locfileid: "102549118"
         --output table
     ```
 
-    使用 [az disk update](/cli/azure/disk#az-disk-update) 扩展所需磁盘。 以下示例将名为 *myDataDisk* 的托管磁盘扩展为 *200* GB：
+    使用 [az disk update](/cli/azure/disk#az_disk_update) 扩展所需磁盘。 以下示例将名为 *myDataDisk* 的托管磁盘扩展为 *200* GB：
 
     ```azurecli
     az disk update \
@@ -59,7 +59,7 @@ ms.locfileid: "102549118"
     > [!NOTE]
     > 扩展托管磁盘时，更新的大小将向上舍入到最接近的托管磁盘大小。 有关可用托管磁盘大小和层的表，请参阅 [Azure 托管磁盘概述 - 定价和计费](../managed-disks-overview.md)。
 
-1. 使用 [az vm start](/cli/azure/vm#az-vm-start) 启动 VM。 以下示例在名为 myResourceGroup 的资源组中启动名为 myVM 的 VM： 
+1. 使用 [az vm start](/cli/azure/vm#az_vm_start) 启动 VM。 以下示例在名为 myResourceGroup 的资源组中启动名为 myVM 的 VM： 
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
@@ -69,7 +69,7 @@ ms.locfileid: "102549118"
 ## <a name="expand-a-disk-partition-and-filesystem"></a>扩展磁盘分区和文件系统
 若要使用扩展的磁盘，请扩展基础分区和文件系统。
 
-1. 使用相应的凭据通过 SSH 连接到 VM。 可以使用 [az vm show](/cli/azure/vm#az-vm-show) 查看 VM 的 公共 IP 地址：
+1. 使用相应的凭据通过 SSH 连接到 VM。 可以使用 [az vm show](/cli/azure/vm#az_vm_show) 查看 VM 的 公共 IP 地址：
 
     ```azurecli
     az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --output tsv

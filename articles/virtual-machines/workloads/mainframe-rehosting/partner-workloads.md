@@ -11,12 +11,12 @@ editor: edprice
 ms.author: larryme
 ms.date: 05/09/2020
 ms.topic: article
-ms.openlocfilehash: 467cae97f9b4efe4782ac802cccd84271d475ea7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b3dd754e226436cb26cbb808bf37e4262efa344
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955425"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599547"
 ---
 # <a name="mainframe-workloads-supported-on-azure"></a>Azure 上支持的大型机工作负载
 
@@ -52,7 +52,7 @@ ms.locfileid: "104955425"
 
 ## <a name="code-conversion"></a>代码转换
 
-- [Asysco](https://www.asysco.com/azure-cloud/) 系统转换技术，包括源代码、数据、批处理、计划、TP 监视器、接口、安全、管理等。
+- [Asysco](https://asysco.com/) 系统转换技术，包括源代码、数据、批处理、计划、TP 监视器、接口、安全、管理等。
 - 适用于迁移项目的 [Asysco AMT 服务](https://www.asysco.com/migration-services/) 端到端服务，包括清单和分析、设计定型、彩排、上线和迁移后支持。
 - 用于数字化旧版商业应用程序和数据库的 [Blu Age](https://www.bluage.com/) 工具。
 - [Heirloom Computing](https://www.heirloomcomputing.com/tag/convert-cobol-to-java/) 服务，用于将大型机 COBOL、CICS 和 VSAM 转换为 Java。

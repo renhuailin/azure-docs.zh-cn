@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 291b9a210bf5f8cc18ccf8a523e282d3fc85aa28
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 840045da33938d4c1cd725fd5a99bf1b8014f6b1
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101673345"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107748459"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>在 Azure 中保护和使用虚拟机上的策略
 
@@ -53,7 +53,7 @@ ms.locfileid: "101673345"
 
 机密和证书可以建模为资源并由 [Key Vault](../key-vault/general/basic-concepts.md) 提供。 可以使用 Azure PowerShell 为 [Windows VM](windows/key-vault-setup.md) 创建密钥保管库，为 [Linux VM](linux/key-vault-setup.md) 创建 Azure CLI。 还可以创建用于加密的密钥。
 
-密钥保管库访问策略单独授予对密钥、机密和证书的权限。 例如，可以向用户授予仅限密钥的访问权限，而不授予对机密的权限。 但是，对访问密钥、机密或证书的权限是在保管库级别分配的。 换而言之，[密钥保管库访问策略](../key-vault/general/secure-your-key-vault.md)不支持对象级别的权限。
+密钥保管库访问策略单独授予对密钥、机密和证书的权限。 例如，可以向用户授予仅限密钥的访问权限，而不授予对机密的权限。 但是，对访问密钥、机密或证书的权限是在保管库级别分配的。 换而言之，[密钥保管库访问策略](../key-vault/general/security-overview.md)不支持对象级别的权限。
 
 连接到 VM 时，应使用公钥加密，提供更安全的方式登录到 VM。 此过程涉及使用安全外壳 (SSH) 命令进行公钥和私钥交换，对自己（而不是用户名和密码）进行身份验证。 密码容易受到暴力破解攻击，尤其是在面向 Internet 的 VM 上（如 Web 服务器）。 使用安全外壳 (SSH) 密钥对，可以创建使用 SSH 密钥进行身份验证的 [Linux VM](linux/mac-create-ssh-keys.md)，从而无需密码即可登录。 还可以使用 SSH 密钥从 [Windows VM](linux/ssh-from-windows.md) 连接到 Linux VM。
 

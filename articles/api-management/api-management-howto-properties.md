@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 2bc9b1c5724fa7bab1fdf5ac9332d87ba03a6d11
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
-ms.translationtype: MT
+ms.openlocfilehash: b0e076f3b248942870ba58a51c85c3df1f1277a4
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545796"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750601"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>在 Azure API 管理策略中使用命名值
 
@@ -42,7 +42,7 @@ ms.locfileid: "100545796"
 建议使用密钥保管库机密，因为它有助于提高 API 管理安全性：
 
 * 密钥保管库中存储的机密可以在服务之间重复使用
-* 可以为机密应用精细[访问策略](../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies)
+* 可以为机密应用精细[访问策略](../key-vault/general/security-overview.md#privileged-access)
 * 在密钥保管库中更新的机密会自动在 API 管理中轮换。 在密钥保管库中更新后，API 管理中的命名值会在 4 小时内更新。 你还可以使用 Azure 门户或通过管理 REST API 手动刷新机密。
 
 ### <a name="prerequisites-for-key-vault-integration"></a>密钥保管库集成的先决条件
@@ -112,7 +112,7 @@ az apim nv create --resource-group apim-hello-word-resource-group \
     --secret true --service-name apim-hello-world --value test
 ```
 
-创建命名值后，可以使用 [az apim nv update](/cli/azure/apim/nv#az_apim_nv_update) 命令对其进行更新。 若要查看所有命名值，请运行 [az apim nv list](/cli/azure/apim/nv#az_apim_nv_list) 命令：
+创建命名值后，可使用 [az apim nv update](/cli/azure/apim/nv#az_apim_nv_update) 命令对其进行更新。 若要查看所有命名值，请运行 [az apim nv list](/cli/azure/apim/nv#az_apim_nv_list) 命令：
 
 ```azurecli
 az apim nv list --resource-group apim-hello-word-resource-group \
@@ -126,7 +126,7 @@ az apim nv show --resource-group apim-hello-word-resource-group \
     --service-name apim-hello-world --named-value-id named_value_01
 ```
 
-此示例是一个机密值。 上一个命令不返回值。 若要查看该值，请运行 [az apim nv show secret](/cli/azure/apim/nv#az_apim_nv_show_secret) 命令：
+此示例是一个机密值。 上一个命令不返回值。 若要查看该值，请运行 [az apim nv show-secret](/cli/azure/apim/nv#az_apim_nv_show_secret) 命令：
 
 ```azurecli
 az apim nv show-secret --resource-group apim-hello-word-resource-group \

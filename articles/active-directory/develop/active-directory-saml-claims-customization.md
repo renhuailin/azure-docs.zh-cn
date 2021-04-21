@@ -13,12 +13,12 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 0cccf45037320b476b1a44cafa8074bacadacbc8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 25e737afb524cb8c6f45ac8e99f46a8064ae7855
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103600941"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107598833"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中颁发的声明
 
@@ -77,7 +77,7 @@ ms.locfileid: "103600941"
 | 目录扩展 | 目录扩展[使用 Azure AD Connect 同步从本地 Active Directory 同步](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
 | 扩展属性 1-15 | 用于扩展 Azure AD 架构的本地扩展属性 |
 
-有关详细信息，请参阅[表 3：每个源的有效 ID 值](active-directory-claims-mapping.md#table-3-valid-id-values-per-source)。
+有关详细信息，请参阅[表 3：每个源的有效 ID 值](reference-claims-mapping-policy-type.md#table-3-valid-id-values-per-source)。
 
 还可以将任何常量（静态）值分配给在 Azure AD 中定义的任何声明。 请按照以下步骤分配常量值：
 

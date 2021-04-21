@@ -3,19 +3,18 @@ title: 使用 ARM 模板创建 Azure 密钥保管库和保管库访问策略
 description: 本文介绍如何使用 Azure 资源管理器模板创建 Azure 密钥保管库和保管库访问策略。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 3/14/2021
 ms.author: mbaldwin
-ms.openlocfilehash: e489efd335d2a46a0e55d4ceb9bdee809ae6c39d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e70906cbf26c899744bfbe137da4ce9cfa651b20
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104595237"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753139"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>如何使用资源管理器模板创建 Azure 密钥保管库和保管库访问策略
 
@@ -23,7 +22,7 @@ ms.locfileid: "104595237"
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本文中的步骤：
 
@@ -169,7 +168,7 @@ ms.locfileid: "104595237"
 
 | 机密 | 键 | 证书 |
 |--|--|--|
-|<ul><li>[快速入门](../secrets/quick-create-template.md)<li>[引用](/azure/templates/microsoft.keyvault/vaults/secrets)|不可用|不可用|
+|<ul><li>[快速入门](../secrets/quick-create-template.md)<li>[引用](/azure/templates/microsoft.keyvault/vaults/secrets)|空值|空值|
 
 可在以下文章中找到更多 Key Vault 模板：[Key Vault 资源管理器参考](/azure/templates/microsoft.keyvault/allversions)。
 
@@ -218,6 +217,6 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>后续步骤
 
-- [保护对密钥保管库的访问](secure-your-key-vault.md)
+- [保护对密钥保管库的访问](security-overview.md)
 - [向密钥保管库进行身份验证](authentication.md)
 - [Azure 密钥保管库开发人员指南](developers-guide.md)

@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 55ec04df2a107dabfc72298bc8849c13f3a926e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a18ee6961cb601b0fa9db7213eb6115afa20096
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86147306"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765190"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>用于渲染资产和输出文件的存储与数据移动选项
 
@@ -126,7 +126,7 @@ Blobfuse 是适用于 Azure Blob 存储的虚拟文件系统驱动程序，用�
 
 支持 Azure 存储的所有主要 API 和工具（例如 azcopy、Azure CLI、存储资源管理器、Azure PowerShell、Batch Explorer 等）都支持 Azure 文件。
 
-可以使用 [Azure 文件同步](../storage/files/storage-sync-files-planning.md)在本地文件系统与 Azure 文件共享之间自动同步文件。
+可以使用 [Azure 文件同步](../storage/file-sync/file-sync-planning.md)在本地文件系统与 Azure 文件共享之间自动同步文件。
 
 ## <a name="next-steps"></a>后续步骤
 

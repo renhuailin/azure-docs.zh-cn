@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/01/2021
 ms.author: apimpm
-ms.openlocfilehash: 85abf30d792b24b92685e191f5b460a42dc29142
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 6f074ff389971fa56da7838a9a46ec5c4d42dc5a
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688410"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739091"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies（API 管理跨域策略）
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](./api-management-policies.md)。
@@ -65,11 +65,11 @@ ms.locfileid: "101688410"
 `cors` 策略向操作或 API 添加跨源资源共享 (CORS) 支持，以便从基于浏览器的客户端执行跨域调用。 
 
 > [!NOTE]
-> 如果请求与 API 中定义的 OPTIONS 方法匹配操作，则不会执行与 CORS 策略关联的预航班请求处理逻辑。 因此，此类操作可用于实现自定义的预飞行处理逻辑。
+> 如果请求与 API 中定义的 OPTIONS 方法的操作匹配，则将不执行与 CORS 策略关联的预检请求处理逻辑。 因此，此类操作可用于实现自定义预检处理逻辑。
 
 CORS 允许浏览器与服务器交互，并确定是否允许特定的跨源请求（例如，通过某个网页上的 JavaScript 对其他域执行 XMLHttpRequests 调用）。 与只允许同源请求相比，它的灵活性更高，而且比允许所有跨源请求更安全。
 
-你需要应用 CORS 策略，以便在开发人员门户中启用交互式控制台。 有关详细信息，请参阅[开发人员门户文档](./api-management-howto-developer-portal.md#cors)。
+你需要应用 CORS 策略，以便在开发人员门户中启用交互式控制台。 有关详细信息，请参阅[开发人员门户文档](./developer-portal-faq.md#cors)。
 
 ### <a name="policy-statement"></a>策略语句
 
@@ -141,7 +141,7 @@ CORS 允许浏览器与服务器交互，并确定是否允许特定的跨源请
 |名称|说明|必须|默认|
 |----------|-----------------|--------------|-------------|
 |allow-credentials|预检响应中的 `Access-Control-Allow-Credentials` 标头将设置为此属性的值，会影响客户端在跨域请求中提交凭据的功能。|否|false|
-|不匹配-请求|此属性控制与 CORS 策略设置不匹配的跨源请求的处理。 当 OPTIONS 请求作为预航班请求处理并且不与 CORS 策略设置匹配时：如果属性设置为 `true` ，则立即终止请求并返回空的 200 OK 响应;如果将属性设置为 `false` ，请为传入元素的直接子级的其他范围内 CORS 策略检查入站，并应用这些策略。  如果未找到 CORS 策略，则使用空的 200 OK 响应终止请求。 当 GET 或 HEAD 请求包含源标头时 (，并因此被视为跨域请求) 并且不匹配 CORS 策略设置：如果属性设置为 `true` ，则立即终止请求，并显示空的 200 OK 响应;如果特性设置为，则 `false` 允许请求正常继续，而不将 CORS 标头添加到响应。|否|是|
+|terminate-unmatched-request|此属性控制与 CORS 策略设置不匹配的跨域请求的处理。 当 OPTIONS 请求作为预检请求进行处理且与 CORS 策略设置不匹配时：如果属性设置为 `true`，请立即终止请求并返回空的 200 OK 响应；如果属性设置为 `false`，请检查入站以查找其他作用域内 CORS 策略（这些策略是 inbound 元素的直接子级），并应用这些策略。  如果找不到 CORS 策略，请终止请求并返回空的 200 OK 响应。 当 GET 或 HEAD 请求包含源标头（并因此作为跨域请求进行处理）且与 CORS 策略设置不匹配时：如果属性设置为 `true`，请立即终止请求并返回空的 200 OK 响应；如果属性设置为 `false`，则允许请求正常进行，并且不在响应中添加 CORS 标头。|否|是|
 |preflight-result-max-age|预检响应中的 `Access-Control-Max-Age` 标头将设置为此属性的值，会影响用户代理缓存预检响应的功能。|否|0|
 
 ### <a name="usage"></a>使用情况

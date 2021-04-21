@@ -3,26 +3,21 @@ title: 在启用磁盘加密的情况下创建池
 description: 了解如何使用磁盘加密配置通过平台管理的密钥来加密节点。
 author: pkshultz
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 04/16/2021
 ms.author: peshultz
-ms.custom: references_regions
-ms.openlocfilehash: 41fc827459b454e2bcb120a925cdab8fcd46e310
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
-ms.translationtype: MT
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 01d2ea03768a09c1ad4e019b9e8ed43a26443637
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055308"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728511"
 ---
 # <a name="create-a-pool-with-disk-encryption-enabled"></a>在启用磁盘加密的情况下创建池
 
-使用 [虚拟机配置](nodes-and-pools.md#virtual-machine-configuration)创建 Azure Batch 池时，可以通过指定磁盘加密配置，使用平台托管密钥来加密池中的计算节点。
+在使用[虚拟机配置](nodes-and-pools.md#virtual-machine-configuration)创建 Azure Batch 池时，可以通过指定磁盘加密配置，使用平台管理的密钥来加密池中的计算节点。
 
 本文介绍了如何创建启用了磁盘加密的 Batch 池。
-
-> [!IMPORTANT]
-> 在 Azure Batch 中使用平台托管密钥的主机上的加密支持目前以公共预览版提供，美国东部、美国西部2、美国中南部、US Gov 弗吉尼亚州和 US Gov 亚利桑那州区域。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="why-use-a-pool-with-disk-encryption-configuration"></a>为什么使用带有磁盘加密配置的池？
 
@@ -31,13 +26,13 @@ ms.locfileid: "99055308"
 Batch 将会根据池配置和区域的可支持性在计算节点上应用这些磁盘加密技术之一。
 
 - [使用平台管理的密钥进行托管磁盘静态加密](../virtual-machines/disk-encryption.md#platform-managed-keys)
-- [使用平台托管密钥在主机上加密](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
+- [使用平台管理的密钥在主机上进行加密](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
 - [Azure 磁盘加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)
 
 你无法指定将哪种加密方法应用于池中的节点。 而是需要提供要在其节点上加密的目标磁盘，然后 Batch 可以选择适当的加密方法，从而确保在计算节点上对指定的磁盘进行加密。
 
 > [!IMPORTANT]
-> 如果要使用 [自定义映像](batch-sig-images.md)创建池，则只能在使用 Windows vm 时启用磁盘加密。
+> 如果要使用[自定义映像](batch-sig-images.md)创建池，则只有在使用 Windows VM 时才能启用磁盘加密。
 
 ## <a name="azure-portal"></a>Azure 门户
 

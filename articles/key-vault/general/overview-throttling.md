@@ -3,18 +3,17 @@ title: Azure Key Vault 限制指南
 description: Key Vault 限制可限制并发调用数，以防止过度使用资源。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7bdc3ac517df6b73fba7231cfe0fdc9855803782
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 7a215b53f673a7414f1b3662f519de5c26faaa9d
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175747"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749525"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault 限制指南
 
@@ -24,7 +23,7 @@ ms.locfileid: "102175747"
 
 ## <a name="how-does-key-vault-handle-its-limits"></a>Key Vault 如何处理其限制？
 
-Key Vault 中的服务限制可防止资源滥用，确保所有 Key Vault 客户端的服务质量。 当超过服务阈值时，Key Vault 会在一段时间内限制客户端发出其他任何请求，返回 HTTP 状态代码 429（请求过多），而请求会失败。 返回429的失败请求不计入 Key Vault 跟踪的限制限制。 
+Key Vault 中的服务限制可防止资源滥用，确保所有 Key Vault 客户端的服务质量。 当超过服务阈值时，Key Vault 会在一段时间内限制客户端发出其他任何请求，返回 HTTP 状态代码 429（请求过多），而请求会失败。 返回 429 的失败请求不会计入 Key Vault 跟踪的限制值。 
 
 Key Vault 最初设计用于在部署时存储和检索机密。  世界已经演变，Key Vault 现在是在运行时用于存储和检索机密，而应用和服务往往希望将 Key Vault 当作数据库使用。  当前的限制不支持高吞吐率。
 

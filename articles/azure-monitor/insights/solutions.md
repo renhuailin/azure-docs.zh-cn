@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: a63db154d055675b834e2949a330375633a5761d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 8a18a47331eb5d4a9ed5578cca320beef5e0ba45
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728580"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766980"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的监视解决方案
 
@@ -110,7 +110,7 @@ Get-AzMonitorLogAnalyticsSolution -ResourceGroupName MyResourceGroup
 
 1. 安装 Azure CLI
 
-   需要[安装 Azure CLI](/cli/azure/install-azure-cli)，然后才能运行 CLI 引用命令。  如果愿意，还可以使用 Azure Cloud Shell 来完成本文中的步骤。  Azure Cloud Shell 是一种可以通过浏览器使用的交互式 shell 环境。  使用下列方法之一开始使用 Cloud Shell：
+   需要[安装 Azure CLI](/cli/azure/install-azure-cli)，然后才能运行 CLI 引用命令。  如果愿意，你还可以使用 Azure Cloud Shell 来完成本文中的步骤。  Azure Cloud Shell 是一种可以通过浏览器使用的交互式 shell 环境。  使用下列方法之一开始使用 Cloud Shell：
 
    - 通过转到 [https://shell.azure.com](https://shell.azure.com) 打开 Cloud Shell
 
@@ -118,7 +118,7 @@ Get-AzMonitorLogAnalyticsSolution -ResourceGroupName MyResourceGroup
 
 1. 登录。
 
-   如果使用的是 CLI 的本地安装，请使用 [az login](/cli/azure/reference-index#az-login) 命令登录。  遵循终端中显示的步骤完成身份验证过程。
+   如果使用的是 CLI 的本地安装，请使用 [az login](/cli/azure/reference-index#az_login) 命令登录。  遵循终端中显示的步骤完成身份验证过程。
 
     ```azurecli
     az login
@@ -172,7 +172,7 @@ az monitor log-analytics solution create --resource-group MyResourceGroup \
 
 1. 安装 Azure PowerShell
 
-   在运行 Azure PowerShell 引用命令之前，需要[安装 Azure PowerShell](/powershell/azure/install-az-ps)。 如果愿意，还可以使用 Azure Cloud Shell 来完成本文中的步骤。 Azure Cloud Shell 是一种可以通过浏览器使用的交互式 shell 环境。 使用下列方法之一开始使用 Cloud Shell：
+   在运行 Azure PowerShell 引用命令之前，需要[安装 Azure PowerShell](/powershell/azure/install-az-ps)。 如果愿意，你还可以使用 Azure Cloud Shell 来完成本文中的步骤。 Azure Cloud Shell 是一种可以通过浏览器使用的交互式 shell 环境。 使用下列方法之一开始使用 Cloud Shell：
 
    - 通过转到 [https://shell.azure.com](https://shell.azure.com) 打开 Cloud Shell
 

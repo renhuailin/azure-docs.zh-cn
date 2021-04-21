@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2021
 ms.author: mnayak
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ad8f2d150c3cf17c4b24c6dc92188be9017dcfa9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9155c3114d5a5a1b8729351dc189bc1e5c22369
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101666011"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764470"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-cli"></a>使用 Azure CLI 为 VM 配置路由首选项
 
@@ -28,7 +28,7 @@ ms.locfileid: "101666011"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 1. 如果使用 Cloud Shell，请跳到步骤 2。 打开命令会话并使用 `az login` 登录到 Azure。
-2. 使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。 以下示例在美国东部 Azure 区域创建一个资源组：
+2. 使用“[az group create](/cli/azure/group#az_group_create)”命令创建资源组。 以下示例在美国东部 Azure 区域创建一个资源组：
 
     ```azurecli
     az group create --name myResourceGroup --location eastus
@@ -54,7 +54,7 @@ az network public-ip create \
 
 ### <a name="create-a-network-security-group"></a>创建网络安全组
 
-使用 [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) 为将要控制 VNet 中的入站和出站通信的规则创建网络安全组
+使用 [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) 为将要控制 VNet 中的入站和出站通信的规则创建网络安全组
 
 ```azurecli
 az network nsg create \
@@ -65,7 +65,7 @@ az network nsg create \
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 
-使用 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) 创建虚拟网络。 以下示例创建一个子网为“mySubNet”且名称为“myVNET”的虚拟网络：
+使用 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) 创建虚拟网络。 以下示例创建一个子网为“mySubNet”且名称为“myVNET”的虚拟网络：
 
 ```azurecli
 # Create a virtual network
@@ -85,7 +85,7 @@ az network vnet subnet create \
 
 ### <a name="create-a-nic"></a>创建 NIC
 
-使用 [az network nic create](/cli/azure/network/nic#az-network-nic-create) 为 VM 创建虚拟 NIC。 以下示例创建一个虚拟 NIC（将附加到 VM）。
+使用 [az network nic create](/cli/azure/network/nic#az_network_nic_create) 为 VM 创建虚拟 NIC。 以下示例创建一个虚拟 NIC（将附加到 VM）。
 
 ```azurecli-interactive
 # Create a NIC
@@ -101,7 +101,7 @@ az network nic create \
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 
-使用 [az vm create](/cli/azure/vm#az-vm-create) 创建 VM。 以下示例创建 Windows Server 2019 VM 和所需的虚拟网络组件（如果它们尚不存在）。
+使用 [az vm create](/cli/azure/vm#az_vm_create) 创建 VM。 以下示例创建 Windows Server 2019 VM 和所需的虚拟网络组件（如果它们尚不存在）。
 
 ```azurecli
 az vm create \
@@ -115,7 +115,7 @@ az vm create \
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组及其包含的所有资源，可以使用 [az group delete](/cli/azure/group#az-group-delete) 将其删除：
+如果不再需要资源组及其包含的所有资源，可以使用 [az group delete](/cli/azure/group#az_group_delete) 将其删除：
 
 ```azurecli
 az group delete --name myResourceGroup --yes

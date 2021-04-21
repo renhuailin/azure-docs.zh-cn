@@ -3,19 +3,18 @@ title: 关于 Azure Key Vault 证书续订
 description: 本文介绍如何续订 Azure Key Vault 证书。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: ffa130c0598d2405469d272a3ac6852f281ed965
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 082b0fd4d3324502516dcd2b45b9ad16a919c773
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726356"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749215"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>续订 Azure Key Vault 证书
 
@@ -82,7 +81,7 @@ Azure Key Vault 还处理自签名证书的自动续订。 若要详细了解如
 
 如何测试证书的自动轮换功能？
 
-创建一个有效期为 1 个月的证书，然后将其轮换的生存期操作设置为 1% 。 此设置将每 7.2 小时轮换一次证书。
+创建一个有效期为 1 个月的自签名证书，然后将其轮换的生存期操作设置为 1% 。 你应该能够查看在接下来几天内创建的证书版本历史记录。
   
 在自动续订证书后是否复制标记？
 
