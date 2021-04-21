@@ -4,12 +4,12 @@ description: 使用 Azure CLI 创建无服务器 Python 函数应用并装载现
 ms.topic: sample
 ms.date: 03/01/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 00bf0ecc9db3cf369fd75b427dcfba686aed0ed5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0037cea24b1989c4f7a4d2ddd6bf3f8f7e812b3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98035115"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762274"
 ---
 # <a name="mount-a-file-share-to-a-python-function-app-using-azure-cli"></a>使用 Azure CLI 将文件共享装载到 Python 函数应用
 
@@ -38,13 +38,13 @@ ms.locfileid: "98035115"
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | 创建 Azure 存储帐户。 |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | 创建 Function App。 |
-| [az storage share create](/cli/azure/storage/share#az-storage-share-create) | 在存储帐户中创建 Azure 文件存储共享。 | 
-| [az storage directory create](/cli/azure/storage/directory#az-storage-directory-create) | 在共享中创建目录。 |
-| [az webapp config storage-account add](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) | 将共享装载到函数应用。 |
-| [az webapp config storage-account list](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-list) | 显示装载到函数应用的文件共享。 | 
+| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | 创建 Azure 存储帐户。 |
+| [az functionapp create](/cli/azure/functionapp#az_functionapp_create) | 创建 Function App。 |
+| [az storage share create](/cli/azure/storage/share#az_storage_share_create) | 在存储帐户中创建 Azure 文件存储共享。 | 
+| [az storage directory create](/cli/azure/storage/directory#az_storage_directory_create) | 在共享中创建目录。 |
+| [az webapp config storage-account add](/cli/azure/webapp/config/storage-account#az_webapp_config_storage_account_add) | 将共享装载到函数应用。 |
+| [az webapp config storage-account list](/cli/azure/webapp/config/storage-account#az_webapp_config_storage_account_list) | 显示装载到函数应用的文件共享。 | 
 
 ## <a name="next-steps"></a>后续步骤
 

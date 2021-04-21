@@ -3,17 +3,19 @@ title: 通过 Python azure-servicebus 包版本 7.0.0 使用 Azure 服务总线�
 description: 本文介绍如何使用 Python 向主题发送消息并从订阅接收消息。
 documentationcenter: python
 author: spelluru
-ms.devlang: python
-ms.topic: quickstart
-ms.date: 11/18/2020
 ms.author: spelluru
-ms.custom: devx-track-python
-ms.openlocfilehash: 4eba3ea055e78888d482927fa6eed5c7d41fa0ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/18/2020
+ms.topic: quickstart
+ms.devlang: python
+ms.custom:
+- devx-track-python
+- mode-api
+ms.openlocfilehash: 49e80e277c6df5372341293861d5bda0580f3e8c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98630041"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537165"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-python"></a>向 Azure 服务总线主题发送消息，并从该主题的订阅接收消息 (Python)
 本文介绍如何使用 Python 向服务总线主题发送消息，并从该主题的订阅接收消息。 

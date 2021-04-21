@@ -4,12 +4,12 @@ description: 本文演练如何创建一个可使用最新 Azure.Messaging.Event
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 36551a52bc095a37aa5176ab945dd5d27c640954
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58da331336481614cf0f85bdf6c1136c8bdc8db7
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97504604"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536499"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>向 Azure 事件中心发送事件及从 Azure 事件中心接收事件 - .NET (Azure.Messaging.EventHubs) 
 本快速入门介绍如何使用 Azure.Messaging.EventHubs .NET 库向事件中心发送事件以及从事件中心接收事件。 
@@ -39,7 +39,7 @@ ms.locfileid: "97504604"
     1. 选择“C#”作为编程语言。
     1. 选择“控制台”作为应用程序类型。 
     1. 从结果列表中选择“控制台应用(.NET Core)”。 
-    1. 然后，选择“下一步”  。 
+    1. 然后，选择“下一步”。 
 
         ![“新建项目”对话框](./media/getstarted-dotnet-standard-send-v2/new-send-project.png)    
 1. 输入 EventHubsSender 作为项目名称，输入 EventHubsQuickStart 作为解决方案名称，然后选择“确定”以创建项目。 
@@ -188,8 +188,8 @@ ms.locfileid: "97504604"
             // Start the processing
             await processor.StartProcessingAsync();
 
-            // Wait for 10 seconds for the events to be processed
-            await Task.Delay(TimeSpan.FromSeconds(10));
+            // Wait for 30 seconds for the events to be processed
+            await Task.Delay(TimeSpan.FromSeconds(30));
 
             // Stop the processing
             await processor.StopProcessingAsync();

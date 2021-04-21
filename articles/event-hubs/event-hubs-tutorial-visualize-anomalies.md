@@ -3,12 +3,12 @@ title: Azure 事件中心 - 将实时事件中的数据异常可视化
 description: 教程：将发送到 Microsoft Azure 事件中心的实时事件中的数据异常可视化
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: bd08d611761e125fdd03173ce6027c60e82baed6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb7d8da2498005b8b2e1183a836d9385f3d31e5c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98623453"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783730"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>教程：将发送到 Azure 事件中心的实时事件中的数据异常可视化
 
@@ -349,7 +349,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 ### <a name="clean-up-resources-using-azure-cli"></a>使用 Azure CLI 清理资源
 
-若要删除资源组，请使用 [az group delete](/cli/azure/group#az-group-delete) 命令。
+若要删除资源组，请使用 [az group delete](/cli/azure/group#az_group_delete) 命令。
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

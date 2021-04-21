@@ -4,17 +4,20 @@ titleSuffix: Azure Application Gateway
 description: 本快速入门介绍如何使用资源管理器模板创建 Azure 应用程序网关，以便将 Web 流量定向到后端池中的虚拟机。
 services: application-gateway
 author: vhorne
-ms.service: application-gateway
-ms.topic: quickstart
-ms.date: 01/20/2021
 ms.author: victorh
-ms.custom: mvc, subject-armqs
-ms.openlocfilehash: 05e7cd8d7018759a3c8670a610b4c98ac0a86a7a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 01/20/2021
+ms.topic: quickstart
+ms.service: application-gateway
+ms.custom:
+- mvc
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: dd100361ba5d4ff175e340ced782999e52c720c4
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98660049"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538436"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - ARM 模板
 

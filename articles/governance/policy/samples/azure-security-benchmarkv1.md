@@ -1,15 +1,15 @@
 ---
 title: Azure 安全基准 v1 的法规合规性详细信息
 description: Azure 安全基准 v1 法规合规性内置计划的详细信息。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: cd63c657821fe15a8dade3535db5612a219a8a1c
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 72c2b78997ed388ff000346ee4ac5b5cd9a2881f
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090012"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107504793"
 ---
 # <a name="details-of-the-azure-security-benchmark-v1-regulatory-compliance-built-in-initiative"></a>Azure 安全基准 v1 法规合规性内置计划的详细信息
 

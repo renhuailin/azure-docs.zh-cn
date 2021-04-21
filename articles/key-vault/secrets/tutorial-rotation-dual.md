@@ -10,13 +10,13 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d75ba091ff634bf613722e3a194407beeeda68fb
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 1f656a41b0f447b90f58ec14173e418a2defb72e
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967228"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484823"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>自动轮换使用两组身份验证凭据的资源的机密
 
@@ -102,7 +102,7 @@ vaultrotationstorage2    vaultrotation      westus      Microsoft.Storage/storag
 1. 在“机密名称”框中，输入要在其中存储访问密钥的机密的名称。
 1. 在“存储库 URL”框中，输入函数代码的 GitHub 位置。 在本教程中，你可以使用 https://github.com/Azure-Samples/KeyVault-Rotation-StorageAccountKey-PowerShell.git。
 1. 选择“查看 + 创建”。
-1. 选择“创建”。
+1. 选择“创建”  。
 
    ![演示如何创建和部署函数的屏幕截图。](../media/secrets/rotation-dual/dual-rotation-2.png)
 

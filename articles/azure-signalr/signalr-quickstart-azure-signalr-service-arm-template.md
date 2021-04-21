@@ -2,17 +2,20 @@
 title: 快速入门：创建 Azure SignalR 服务 - ARM 模板
 description: 在本快速入门中，学习如何使用 Azure 资源管理器模板（ARM 模板）创建 Azure SignalR 服务。
 author: sffamily
-ms.service: signalr
-ms.topic: quickstart
-ms.custom: subject-armqs, devx-track-azurecli
 ms.author: zhshang
 ms.date: 10/02/2020
-ms.openlocfilehash: 4ab029048b37a4dcb44ef405249dcb9e20de70cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.service: signalr
+ms.custom:
+- subject-armqs
+- devx-track-azurecli
+- mode-arm
+ms.openlocfilehash: 075915f2a06e29eb5b80425913c6e7a2c476ff99
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94841609"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536518"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-signalr-service"></a>快速入门：使用 ARM 模板部署 Azure SignalR 服务
 
@@ -26,7 +29,7 @@ ms.locfileid: "94841609"
 
 ## <a name="prerequisites"></a>先决条件
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/)。
 
@@ -207,7 +210,7 @@ read -p "Press [ENTER] to continue: "
 
 如果不再需要该资源组，可以将其删除，这将删除资源组中的资源。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“资源组”。
 

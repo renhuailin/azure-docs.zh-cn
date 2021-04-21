@@ -7,13 +7,13 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.author: allensu
-ms.custom: fasttrack-edit
-ms.openlocfilehash: a5562c5f40a321f5737fea73f6d7964b402953cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: fasttrack-edit, devx-track-azurecli
+ms.openlocfilehash: a8fafeaaf974893c9a1a71115912f2a7b019ddd9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889206"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771814"
 ---
 # <a name="tutorial-connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-cli"></a>教程：使用 Azure 专用终结点连接到 Azure SQL 服务器 - Azure CLI
 
@@ -74,7 +74,7 @@ az network vnet create \
     --subnet-prefixes 10.0.0.0/24
 ```
 
-更新子网，以使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) 禁用专用终结点的专用终结点网络策略：
+更新子网，以使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) 禁用专用终结点的专用终结点网络策略：
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -84,7 +84,7 @@ az network vnet subnet update \
     --disable-private-endpoint-network-policies true
 ```
 
-使用 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) 为堡垒主机创建公共 IP：
+使用 [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) 为堡垒主机创建公共 IP：
 
 * 创建名为“myBastionIP”的标准区域冗余公共 IP 地址。
 * 在 CreateSQLEndpointTutorial-rg 中。
@@ -96,7 +96,7 @@ az network public-ip create \
     --sku Standard
 ```
 
-使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) 创建堡垒子网：
+使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) 创建堡垒子网：
 
 * 命名为 AzureBastionSubnet。
 * 地址前缀为 10.0.1.0/24。
@@ -111,7 +111,7 @@ az network vnet subnet create \
     --address-prefixes 10.0.1.0/24
 ```
 
-使用 [az network bastion create](/cli/azure/network/bastion#az-network-bastion-create) 创建堡垒主机：
+使用 [az network bastion create](/cli/azure/network/bastion#az_network_bastion_create) 创建堡垒主机：
 
 * 命名为 myBastionHost。
 * 在 CreateSQLEndpointTutorial-rg 中。
@@ -152,6 +152,8 @@ az vm create \
     --subnet myBackendSubnet \
     --admin-username azureuser
 ```
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="create-an-azure-sql-server"></a>创建 Azure SQL 服务器
 

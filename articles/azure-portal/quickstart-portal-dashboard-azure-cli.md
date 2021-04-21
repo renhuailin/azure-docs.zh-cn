@@ -2,14 +2,14 @@
 title: 使用 Azure CLI 创建 Azure 门户仪表板
 description: 快速入门：了解如何使用 Azure CLI 在 Azure 门户中创建仪表板。 仪表板可以集中且有组织地呈现你的云资源。
 ms.topic: quickstart
-ms.custom: devx-track-azurepowershell
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ms.date: 12/4/2020
-ms.openlocfilehash: ddfee1932c6887c6ca7593ca7a28c03e68e09899
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d951c692c7d3c282ae68c5f9b53e9cda5407df10
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104613173"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481015"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure 门户仪表板
 

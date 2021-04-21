@@ -3,16 +3,16 @@ title: 教程 - 使用 Azure API 管理发布 API 版本
 description: 遵循本教程的步骤了解如何在 API 管理中发布多个 API 版本。
 author: vladvino
 ms.service: api-management
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.author: apimpm
-ms.openlocfilehash: dc3d3b4658bd9a26363b6d41377d448059e30c0f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5930979258372e4269c4d453ffbc5e0d46258088
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889665"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483600"
 ---
 # <a name="tutorial-publish-multiple-versions-of-your-api"></a>教程：发布 API 的多个版本 
 

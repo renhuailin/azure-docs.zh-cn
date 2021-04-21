@@ -16,18 +16,18 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 979cac8fd3d2c09443d52c9142a5e7c44127713a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 16e8cfd9c6b20e3a8d17ba335079b1b6fe8b499f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552521"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785012"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>教程：监视更改并更新 Azure 中的 Linux 虚拟机
 
 Azure [更改跟踪](../../automation/change-tracking/overview.md)允许你轻松识别更改，[更新管理](../../automation/update-management/overview.md)允许你管理 Azure Linux VM 的操作系统更新。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 管理 Linux 更新
@@ -39,13 +39,13 @@ Azure [更改跟踪](../../automation/change-tracking/overview.md)允许你轻�
 
 ## <a name="create-vm"></a>创建 VM
 
-若要查看诊断和指标的状态，需要创建一个 VM。 首先，使用 [az group create](/cli/azure/group#az-group-create) 创建资源组。 以下示例在 *eastus* 位置创建名为 *myResourceGroupMonitor* 的资源组。
+若要查看诊断和指标的状态，需要创建一个 VM。 首先，使用 [az group create](/cli/azure/group#az_group_create) 创建资源组。 以下示例在 *eastus* 位置创建名为 *myResourceGroupMonitor* 的资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroupMonitor --location eastus
 ```
 
-现使用 [az vm create](/cli/azure/vm#az-vm-create) 创建 VM。 以下示例将创建名为 myVM 的 VM，并生成 SSH 密钥（如果它们尚不存在于 *~/.ssh/* 中）：
+现使用 [az vm create](/cli/azure/vm#az_vm_create) 创建 VM。 以下示例将创建名为 myVM 的 VM，并生成 SSH 密钥（如果它们尚不存在于 *~/.ssh/* 中）：
 
 ```azurecli-interactive
 az vm create \
@@ -192,7 +192,7 @@ az vm create \
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你配置并查看了 VM 的更改跟踪和更新管理。 你已了解如何执行以下操作：
+在本教程中，你配置并查看了 VM 的更改跟踪和更新管理。 你已了解如何：
 
 > [!div class="checklist"]
 > * 创建资源组和 VM

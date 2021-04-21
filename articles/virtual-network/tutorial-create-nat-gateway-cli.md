@@ -8,13 +8,13 @@ ms.service: virtual-network
 ms.subservice: nat
 ms.topic: tutorial
 ms.date: 03/10/2021
-ms.custom: template-tutorial
-ms.openlocfilehash: 5dd431a5a7377c409be0794511c5f402d1c5a3a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: template-tutorial, devx-track-azurecli
+ms.openlocfilehash: 60436b8d4a0f338f4ece59ad4cd11c14c9e4c352
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102636711"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762634"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-cli"></a>教程：使用 Azure CLI 创建 NAT 网关
 
@@ -92,7 +92,7 @@ ms.locfileid: "102636711"
 
 创建名为“myBastionHost”的 Azure Bastion 主机以访问虚拟机。 
 
-使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) 创建 Azure Bastion 子网。
+使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) 创建 Azure Bastion 子网。
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -111,7 +111,7 @@ az network public-ip create \
     --sku Standard
 ```
 
-使用 [az network bastion create](/cli/azure/network/bastion#az-network-bastion-create) 创建堡垒主机。 
+使用 [az network bastion create](/cli/azure/network/bastion#az_network_bastion_create) 创建堡垒主机。 
 
 ```azurecli-interactive
 az network bastion create \
@@ -141,7 +141,7 @@ az network bastion create \
 
 在本部分中，你将创建虚拟机来测试 NAT 网关，以验证出站连接的公共 IP 地址。
 
-使用 [az vm create](/cli/azure/vm#az-vm-create) 创建虚拟机。
+使用 [az vm create](/cli/azure/vm#az_vm_create) 创建虚拟机。
 
 ```azurecli-interactive
 az vm create \

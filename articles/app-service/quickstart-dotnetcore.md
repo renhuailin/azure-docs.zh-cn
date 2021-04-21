@@ -10,12 +10,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-dotnetcore-uiex
-ms.openlocfilehash: 7f538f5accb533b01c5ea685e424c70bfeb44f00
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 482bf6d29fbc1e982ee4d17099d82915ff3a0241
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058197"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762454"
 ---
 <!-- NOTES:
 
@@ -426,7 +426,7 @@ az webapp up --sku F1 --name <app-name> --os-type <os>
 - 将 `<app-name>` 替换为在整个 Azure 中均唯一的名称（有效字符为 `a-z`、`0-9` 和 `-`）。 良好的模式是结合使用公司名称和应用标识符。
 - `--sku F1` 参数在“免费”[定价层][app-service-pricing-tier]上创建 Web 应用。 省略此参数可使用更快的高级层，这会按小时计费。
 - 用 `linux` 或 `windows` 替换 `<os>`。 面向 ASP.NET Framework 4.8 时，必须使用 `windows`。
-- 可以选择包含参数 `--location <location-name>`，其中 `<location-name>` 是可用的 Azure 区域。 可以运行 [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) 命令来检索 Azure 帐户的允许区域列表。
+- 可以选择包含参数 `--location <location-name>`，其中 `<location-name>` 是可用的 Azure 区域。 可以运行 [`az account list-locations`](/cli/azure/appservice#az_appservice_list_locations) 命令来检索 Azure 帐户的允许区域列表。
 
 此命令可能需要花费几分钟时间完成。 运行时，它提供以下相关信息：创建资源组、应用服务计划和托管应用，配置日志记录，然后执行 ZIP 部署。 然后，此命令使用应用的 URL 输出一条消息：
 

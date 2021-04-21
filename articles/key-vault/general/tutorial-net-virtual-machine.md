@@ -6,15 +6,15 @@ author: msmbaldwin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 07/20/2020
+ms.date: 03/17/2021
 ms.author: mbaldwin
-ms.custom: mvc, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: a56c08e5bf6054d24af3ade571ec625969286a77
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.custom: mvc, devx-track-csharp, devx-track-azurepowershell
+ms.openlocfilehash: c08d0c210e992cba5bca2695fda0bcf08c4689dc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455638"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772084"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>教程：将 Azure Key Vault 与通过 .NET 编写的虚拟机配合使用
 
@@ -42,7 +42,7 @@ Azure Key Vault 可以帮助保护机密，例如访问应用程序、服务和 
 对于 Windows、Mac 和 Linux：
   * [Git](https://git-scm.com/downloads)
   * [.NET Core 3.1 SDK 或更高版本](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
-  * [Azure CLI](/cli/azure/install-azure-cli)。
+  * [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="create-resources-and-assign-permissions"></a>创建资源并分配权限
 
@@ -50,11 +50,18 @@ Azure Key Vault 可以帮助保护机密，例如访问应用程序、服务和 
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
-若要使用 Azure CLI 登录到 Azure，请输入：
+使用以下命令登录到 Azure：
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az login
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Connect-AzAccount
+```
+---
 
 ## <a name="create-a-resource-group-and-key-vault"></a>创建资源组和 Key Vault
 
@@ -74,13 +81,14 @@ az login
 | [Azure 门户](../../virtual-machines/windows/quick-create-portal.md) | [Azure 门户](../../virtual-machines/linux/quick-create-portal.md) |
 
 ## <a name="assign-an-identity-to-the-vm"></a>为 VM 分配标识
-使用 [az vm identity assign](/cli/azure/vm/identity#az-vm-identity-assign) 命令为虚拟机创建系统分配的标识：
+按照以下示例为虚拟机创建系统分配的标识：
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
 ```
 
-记下以下代码中显示的系统分配的标识。 以上命令的输出为： 
+记下以下代码中显示的系统分配的标识。 以上命令的输出为：
 
 ```output
 {
@@ -89,12 +97,36 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 }
 ```
 
-## <a name="assign-permissions-to-the-vm-identity"></a>为 VM 标识分配权限
-使用 [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) 命令将以前创建的标识权限分配给密钥保管库：
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
 
-```azurecli
-az keyvault set-policy --name '<your-unique-key-vault-name>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
+```azurepowershell
+$vm = Get-AzVM -Name <NameOfYourVirtualMachine>
+Update-AzVM -ResourceGroupName <YourResourceGroupName> -VM $vm -IdentityType SystemAssigned
 ```
+
+记下以下代码中显示的 PrincipalId。 以上命令的输出为： 
+
+
+```output
+PrincipalId          TenantId             Type             UserAssignedIdentities
+-----------          --------             ----             ----------------------
+xxxxxxxx-xx-xxxxxx   xxxxxxxx-xxxx-xxxx   SystemAssigned
+```
+---
+
+## <a name="assign-permissions-to-the-vm-identity"></a>为 VM 标识分配权限
+使用 [az keyvault set-policy](/cli/azure/keyvault#az_keyvault_set_policy) 命令将以前创建的标识权限分配给密钥保管库：
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+```azurecli
+az keyvault set-policy --name '<your-unique-key-vault-name>' --object-id <VMSystemAssignedIdentity> --secret-permissions  get list set delete
+```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Set-AzKeyVaultAccessPolicy -ResourceGroupName <YourResourceGroupName> -VaultName '<your-unique-key-vault-name>' -ObjectId '<VMSystemAssignedIdentity>' -PermissionsToSecrets  get,list,set,delete
+```
+---
 
 ## <a name="sign-in-to-the-virtual-machine"></a>登录到虚拟机
 
@@ -153,7 +185,7 @@ using Azure.Security.KeyVault.Secrets;
         static void Main(string[] args)
         {
             string secretName = "mySecret";
-
+            string keyVaultName = "<your-key-vault-name>";
             var kvUri = "https://<your-key-vault-name>.vault.azure.net";
             SecretClientOptions options = new SecretClientOptions()
             {

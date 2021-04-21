@@ -4,16 +4,18 @@ titleSuffix: Azure DNS
 description: 使用此分步快速入门指南了解如何使用 Azure 门户创建 Azure DNS 区域和记录。
 services: dns
 author: rohinkoul
-ms.service: dns
-ms.topic: quickstart
-ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: be76a7902c2747c7a8dc1bfc21d58ae88f3ff343
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/20/2020
+ms.topic: quickstart
+ms.service: dns
+ms.custom:
+- mode-portal
+ms.openlocfilehash: d08c5768c2c400ff3d842f58081a58708bfc28db
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92282143"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537776"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure DNS 区域和记录
 
@@ -32,7 +34,7 @@ You can also perform these steps using [Azure PowerShell](dns-getstarted-powersh
 
 对于所有门户步骤，请登录到 [Azure 门户](https://portal.azure.com)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

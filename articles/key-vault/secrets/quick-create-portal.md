@@ -3,7 +3,6 @@ title: Azure 快速入门 - 使用 Azure 门户在 Key Vault 中设置和检索�
 description: 快速入门介绍如何使用 Azure 门户在 Azure Key Vault 中设置和检索机密
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: secrets
@@ -11,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 904c00c26171854a32234d7b6ba5cac81ac43e5c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba5b375f75d2655045e62583679839c8dd2a5720
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97936662"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752437"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Key Vault 中设置和检索机密
 
@@ -82,7 +81,7 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 在本快速入门中，创建了 Key Vault 并在其中存储了一个机密。 若要详细了解 Key Vault 以及如何将其与应用程序集成，请继续阅读以下文章。
 
 - 阅读 [Azure Key Vault 概述](../general/overview.md)
-- 阅读[保护对 Key Vault 的访问](../general/secure-your-key-vault.md)
+- 阅读[保护对 Key Vault 的访问](../general/security-overview.md)
 - 参阅[将 Key Vault 与应用服务 Web 应用结合使用](../general/tutorial-net-create-vault-azure-web-app.md)
 - 参阅[将 Key Vault 与部署到 VM 的应用程序结合使用](../general/tutorial-net-virtual-machine.md)
 - 参阅 [Azure Key Vault 开发人员指南](../general/developers-guide.md)
