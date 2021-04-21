@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 0bea4fbac062b498dabe04e6e58d530d09b16d6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2cd885d886a0f13783e61a04c7243efdf12967e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553096"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784976"
 ---
 # <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>使用 Azure CLI 复制另一个库中的映像
 
@@ -36,13 +36,13 @@ ms.locfileid: "102553096"
 
 需要源映像定义中的信息，以便可以在新库中创建该映像的副本。
 
-使用 [az sig list](/cli/azure/sig#az-sig-list) 列出有关可用映像库的信息，以查找有关源库的信息。
+使用 [az sig list](/cli/azure/sig#az_sig_list) 列出有关可用映像库的信息，以查找有关源库的信息。
 
 ```azurecli-interactive 
 az sig list -o table
 ```
 
-使用 [az sig image-definition list](/cli/azure/sig/image-definition#az-sig-image-definition-list) 列出库中的映像定义。 在此示例中，我们将搜索 *myGalleryRG* 资源组中名为 *myGallery* 的库内的映像定义。
+使用 [az sig image-definition list](/cli/azure/sig/image-definition#az_sig_image_definition_list) 列出库中的映像定义。 在此示例中，我们将搜索 *myGalleryRG* 资源组中名为 *myGallery* 的库内的映像定义。
 
 ```azurecli-interactive 
 az sig image-definition list \
@@ -51,7 +51,7 @@ az sig image-definition list \
    -o table
 ```
 
-使用 [az sig image-version list](/cli/azure/sig/image-version#az-sig-image-version-list) 列出库中映像的版本，以查找要复制到新库中的映像版本。 在此示例中，我们将查找包含在 *myImageDefinition* 映像定义中的所有映像版本。
+使用 [az sig image-version list](/cli/azure/sig/image-version#az_sig_image_version_list) 列出库中映像的版本，以查找要复制到新库中的映像版本。 在此示例中，我们将查找包含在 *myImageDefinition* 映像定义中的所有映像版本。
 
 ```azurecli-interactive
 az sig image-version list \
@@ -61,7 +61,7 @@ az sig image-version list \
    -o table
 ```
 
-获取全部所需信息后，可以使用 [az sig image-version show](/cli/azure/sig/image-version#az-sig-image-version-show) 获取源映像版本的 ID。
+获取全部所需信息后，可以使用 [az sig image-version show](/cli/azure/sig/image-version#az_sig_image_version_show) 获取源映像版本的 ID。
 
 ```azurecli-interactive
 az sig image-version show \
@@ -75,7 +75,7 @@ az sig image-version show \
 
 ## <a name="create-the-image-definition"></a>创建映像定义 
 
-需要创建一个与源映像版本的映像定义相匹配的映像定义。 可以使用 [az sig image-definition show](/cli/azure/sig/image-definition#az-sig-image-definition-show) 查看在新库中重新创建映像定义所需的全部信息。
+需要创建一个与源映像版本的映像定义相匹配的映像定义。 可以使用 [az sig image-definition show](/cli/azure/sig/image-definition#az_sig_image_definition_show) 查看在新库中重新创建映像定义所需的全部信息。
 
 ```azurecli-interactive
 az sig image-definition show \
@@ -133,7 +133,7 @@ az sig image-definition create \
 
 ## <a name="create-the-image-version"></a>创建映像版本
 
-使用 [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) 创建版本。 你需要传入托管映像的 ID 以作为创建映像版本时要使用的基线。 可以使用 [az image list](/cli/azure/image?view#az-image-list) 获取资源组中的映像的相关信息。 
+使用 [az image gallery create-image-version](/cli/azure/sig/image-version#az_sig_image_version_create) 创建版本。 你需要传入托管映像的 ID 以作为创建映像版本时要使用的基线。 可以使用 [az image list](/cli/azure/image?view#az_image_list) 获取资源组中的映像的相关信息。 
 
 允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：MajorVersion.MinorVersion.Patch  。
 

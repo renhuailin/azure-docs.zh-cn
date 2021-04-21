@@ -7,15 +7,15 @@ ms.subservice: core
 ms.topic: overview
 ms.author: larryfr
 author: BlackMist
-ms.date: 11/04/2020
+ms.date: 04/08/2021
 ms.custom: devx-track-python
 adobe-target: true
-ms.openlocfilehash: 00a3ab2954d09a7e70e81d8de3644b678b79d005
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 4f97883c157d04358322b01cab7049dcbbabdc4f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521384"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031080"
 ---
 # <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
 
@@ -40,7 +40,7 @@ Azure 机器学习可用于任何类型的机器学习，从传统 ml 到深度�
 ## <a name="machine-learning-tools-to-fit-each-task"></a>适用于每个任务的机器学习工具 
 
 Azure 机器学习为其机器学习工作流提供了开发人员和数据科学家所需的所有工具，包括：
-+ [Azure 机器学习设计器](tutorial-designer-automobile-price-train-score.md)：拖放模块以生成试验，然后部署管道。
++ [Azure 机器学习设计器](tutorial-designer-automobile-price-train-score.md)：拖放模块以生成试验，然后在低代码环境中部署管道。
 
 + Jupyter 笔记本：使用我们的[示例笔记本](https://github.com/Azure/MachineLearningNotebooks)或创建自己的笔记本，以利用<a href="/python/api/overview/azure/ml/intro" target="_blank">适用于 Python 的 SDK</a> 示例进行机器学习。 
 
@@ -48,11 +48,11 @@ Azure 机器学习为其机器学习工作流提供了开发人员和数据科�
 
 + [多模型解决方案加速器](https://aka.ms/many-models)（预览版）在 Azure 机器学习的基础上构建，使你能够训练、操作和管理数百甚至数千个机器学习模型。
 
-+ [面向 Visual Studio Code 用户的机器学习扩展](tutorial-setup-vscode-extension.md)
++ [用于 Visual Studio Code 的机器学习扩展（预览版）](how-to-set-up-vs-code-remote.md)提供了一个功能完备的开发环境，用于构建和管理机器学习项目。
 
-+ [机器学习 CLI](reference-azure-machine-learning-cli.md)
++ [机器学习 CLI](reference-azure-machine-learning-cli.md) 是一个 Azure CLI 扩展，它提供从命令行管理 Azure 机器学习资源的命令。
 
-+ 使用开放源代码框架，如 PyTorch、TensorFlow 和 scikit-learn 等
++ [与开源框架集成](concept-open-source.md)，这些框架包括 PyTorch、TensorFlow 和 Scikit-learn，以及其他许多用于训练、部署和管理端到端机器学习过程的框架。
 
 + 与 Ray RLlib 互操作的[强化学习](how-to-use-reinforcement-learning.md)
 
@@ -130,6 +130,8 @@ Azure 存储帐户、计算目标和其他资源可在虚拟网络内安全地�
 - + [在自己的开发环境开始使用](tutorial-1st-experiment-sdk-setup-local.md)
   + [在计算实例上使用 Jupyter 笔记本来训练和部署 ML 模型](tutorial-1st-experiment-sdk-setup.md)
   + [使用自动化机器学习训练和部署 ML 模型](tutorial-first-experiment-automated-ml.md) 
+  + [管理 Visual Studio Code 中的资源](how-to-manage-resources-vscode.md)
+  + [使用 Visual Studio Code 训练和部署图像分类模型](tutorial-train-deploy-image-classification-model-vscode.md)
   + [使用设计器的拖放功能进行训练和部署](tutorial-designer-automobile-price-train-score.md) 
   + [使用机器学习 CLI 训练和部署模型](tutorial-train-deploy-model-cli.md)
 

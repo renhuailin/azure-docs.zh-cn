@@ -1,21 +1,21 @@
 ---
 title: 在门户中创建搜索服务
 titleSuffix: Azure Cognitive Search
-description: 本门户快速入门介绍如何在 Azure 门户中设置 Azure 认知搜索资源。 选择资源组、区域以及 SKU 或定价层。
+description: 了解如何在 Azure 门户中设置 Azure 认知搜索资源。 选择资源组、区域以及 SKU 或定价层。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 02/15/2021
-ms.openlocfilehash: e183d81355d4db81e677f34b02330ddb9b631957
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83e206a5fd7b34da0b0ac8590d5271a554855d3e
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100651980"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580752"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>快速入门：在门户中创建 Azure 认知搜索服务
+# <a name="create-an-azure-cognitive-search-service-in-the-portal"></a>在门户中创建 Azure 认知搜索服务
 
 [Azure 认知搜索](search-what-is-azure-search.md)是用于将全文搜索体验添加到自定义应用的 Azure 资源。 可轻松地将其与其他提供数据或额外处理的 Azure 服务集成，与网络服务器上的应用集成，或与其他云平台上运行的软件集成。
 

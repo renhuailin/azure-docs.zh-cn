@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: aaaabe758b036335062907c8e5549ae876c63997
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77460d1675b806e04c72e5f46da0ec4274d99d41
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104594727"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762526"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>预览版：创建 Azure 映像生成器模板 
 
@@ -222,7 +222,7 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
    } 
 ```
 
-`imageVersionId` 应是映像版本的 ResourceId。 使用 [az sig image-version list](/cli/azure/sig/image-version#az-sig-image-version-list) 可以列出映像版本。
+`imageVersionId` 应是映像版本的 ResourceId。 使用 [az sig image-version list](/cli/azure/sig/image-version#az_sig_image_version_list) 可以列出映像版本。
 
 
 ## <a name="properties-buildtimeoutinminutes"></a>属性：buildTimeoutInMinutes

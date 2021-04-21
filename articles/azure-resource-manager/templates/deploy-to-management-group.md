@@ -3,12 +3,12 @@ title: 将资源部署到管理组
 description: 介绍如何通过 Azure 资源管理器模板在管理组范围部署资源。
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: dc7418d9e93fb50590c5e2502b3a3ffb3847273f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 74e00921a1170a7750f4a2d239bb778150ac2cae
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043302"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781930"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>使用 ARM 模板进行管理组部署
 
@@ -75,7 +75,7 @@ ms.locfileid: "105043302"
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-对于 Azure CLI，请使用 [az deployment mg create](/cli/azure/deployment/mg#az-deployment-mg-create)：
+对于 Azure CLI，请使用 [az deployment mg create](/cli/azure/deployment/mg#az_deployment_mg_create)：
 
 ```azurecli-interactive
 az deployment mg create \

@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7c35be8821b6763531b43ec85b10325e91f8bc5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7bfe8b1255c88878c2dc4661e9daa3e16397e9f4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102556854"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792266"
 ---
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>使用 Azure CLI 从 Azure 中的 VM 创建映像版本
 
@@ -36,13 +36,13 @@ ms.locfileid: "102556854"
 
 ## <a name="get-information-about-the-vm"></a>获取有关 VM 的信息
 
-可以使用 [az vm list](/cli/azure/vm#az-vm-list) 查看可用 VM 的列表。 
+可以使用 [az vm list](/cli/azure/vm#az_vm_list) 查看可用 VM 的列表。 
 
 ```azurecli-interactive
 az vm list --output table
 ```
 
-知道 VM 的名称及其所在的资源组后，使用 [az vm get-instance-view](/cli/azure/vm#az-vm-get-instance-view) 获取 VM 的 ID。 
+知道 VM 的名称及其所在的资源组后，使用 [az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view) 获取 VM 的 ID。 
 
 ```azurecli-interactive
 az vm get-instance-view -g MyResourceGroup -n MyVm --query id
@@ -59,7 +59,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm --query id
 
 若要详细了解可为映像定义指定的值，请参阅[映像定义](./shared-image-galleries.md#image-definitions)。
 
-使用 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create) 在库中创建一个映像定义。
+使用 [az sig image-definition create](/cli/azure/sig/image-definition#az_sig_image_definition_create) 在库中创建一个映像定义。
 
 在此示例中，映像定义名为 myImageDefinition，适用于[专用化](./shared-image-galleries.md#generalized-and-specialized-images) Linux OS 映像。 若要使用 Windows OS 创建映像的定义，请使用 `--os-type Windows`。 
 
@@ -78,7 +78,7 @@ az sig image-definition create \
 
 ## <a name="create-the-image-version"></a>创建映像版本
 
-使用 [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) 从 VM 创建映像版本。  
+使用 [az image gallery create-image-version](/cli/azure/sig/image-version#az_sig_image_version_create) 从 VM 创建映像版本。  
 
 允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：MajorVersion.MinorVersion.Patch  。
 

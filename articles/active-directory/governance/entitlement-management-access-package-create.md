@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3df08272b352ee789c9879b1118105c435cffbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cb0312d905284f8c5a9817e9550d340bf6135032
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103011079"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532203"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中创建新访问包
 
@@ -138,11 +138,11 @@ ms.locfileid: "103011079"
 
 你也可以使用 Microsoft Graph 创建访问包。  通过具有委托的 `EntitlementManagement.ReadWrite.All` 权限的应用程序，相应角色中的用户可以调用 API 来
 
-1. [列出目录中的 accessPackageResources](/graph/api/accesspackagecatalog-list?tabs=http&view=graph-rest-beta) 并为任何尚不在该目录中的资源[创建 accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?tabs=http&view=graph-rest-beta)。
-1. [列出 accessPackageCatalog 中每个 accessPackageResource 的 accessPackageResourceRoles](/graph/api/accesspackage-list-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta)。 然后，在接下来创建 accessPackageResourceRoleScope 时将会使用此角色列表来选择角色。
-1. [创建访问包](/graph/tutorial-access-package-api?view=graph-rest-beta)。
-1. [创建 accessPackageAssignmentPolicy](/graph/api/accesspackageassignmentpolicy-post?tabs=http&view=graph-rest-beta)。
-1. 为该访问包中所需的每个资源角色[创建 accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta)。
+1. [列出目录中的 accessPackageResources](/graph/api/accesspackagecatalog-list?tabs=http&view=graph-rest-beta&preserve-view=true) 并为任何尚不在该目录中的资源[创建 accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?tabs=http&view=graph-rest-beta&preserve-view=true)。
+1. [列出 accessPackageCatalog 中每个 accessPackageResource 的 accessPackageResourceRoles](/graph/api/accesspackage-list-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta&preserve-view=true)。 然后，在接下来创建 accessPackageResourceRoleScope 时将会使用此角色列表来选择角色。
+1. [创建访问包](/graph/tutorial-access-package-api&view=graph-rest-beta&preserve-view=true)。
+1. [创建 accessPackageAssignmentPolicy](/graph/api/accesspackageassignmentpolicy-post?tabs=http&view=graph-rest-beta&preserve-view=true)。
+1. 为该访问包中所需的每个资源角色[创建 accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta&preserve-view=true)。
 
 ## <a name="next-steps"></a>后续步骤
 

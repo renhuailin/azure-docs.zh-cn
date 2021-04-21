@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 89bd77c30ec52a72087598b86f22e85659fa1b0e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8bdb843ab6304f2f38228f37d8709e4084ee52e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102203889"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775324"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>将 Azure 数字孪生与 Azure SignalR 服务集成
 
@@ -20,7 +20,7 @@ ms.locfileid: "102203889"
 
 通过本文中所述的解决方案，可以将数字孪生遥测数据推送到连接的客户端，例如单个网页或移动应用程序。 因此，客户端将使用 IoT 设备的实时指标和状态进行更新，而无需轮询服务器或提交新的 HTTP 请求来获得更新内容。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 下面是在继续操作之前应完成的必备条件：
 
@@ -44,7 +44,7 @@ ms.locfileid: "102203889"
 ## <a name="download-the-sample-applications"></a>下载示例应用程序
 
 首先，下载所需的示例应用。 下面两个均需要下载：
-* [**Azure 数字孪生端到端示例**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)：此示例包含一个 *AdtSampleApp*，它包含两个用于移动 Azure 数字孪生实例相关数据的 Azure 函数（请参阅[教程：连接端到端解决方案](tutorial-end-to-end.md)详细了解此方案）。 此外还包含一个 *devicesimulator.exe* 示例应用程序，可模拟 IoT 设备，每秒生成一个新的温度值。
+* [**Azure 数字孪生端到端示例**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)：此示例包含一个 *AdtSampleApp*，它包含两个用于移动 Azure 数字孪生实例相关数据的 Azure 函数（请参阅 [教程：连接端到端解决方案](tutorial-end-to-end.md)详细了解此方案）。 此外还包含一个 *devicesimulator.exe* 示例应用程序，可模拟 IoT 设备，每秒生成一个新的温度值。
     - 如果尚未下载此示例作为本教程[必备条件](#prerequisites)的一部分，请导航到示例[链接](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)，然后选择标题下面的“浏览代码”按钮。 这会将你转到这些示例的 GitHub 存储库，可以通过选择“代码”按钮和“下载 ZIP”将其下载为 .ZIP  。
 
         :::image type="content" source="media/includes/download-repo-zip.png" alt-text="GitHub 上 digital-twins-samples 存储库的视图。选中了“代码”按钮，生成了一个小对话框，其中突出显示了“下载 ZIP”按钮。" lightbox="media/includes/download-repo-zip.png":::
@@ -189,7 +189,7 @@ npm start
 
 如果不再需要本文中创建的资源，请按照以下步骤将其删除。 
 
-利用 Azure Cloud Shell 或本地 Azure CLI，可以使用 [az group delete](/cli/azure/group#az-group-delete) 命令删除资源组中的所有 Azure 资源。 删除资源组也会删除...
+利用 Azure Cloud Shell 或本地 Azure CLI，可以使用 [az group delete](/cli/azure/group#az_group_delete) 命令删除资源组中的所有 Azure 资源。 删除资源组也会删除...
 * Azure 数字孪生实例（从端到端教程）
 * IoT 中心和中心设备注册（从端到端教程）
 * 事件网格主题和关联的订阅

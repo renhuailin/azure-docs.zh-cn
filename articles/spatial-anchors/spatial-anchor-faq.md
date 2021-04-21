@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b67dcf038dbe13b8c040f317bb117f3b7a7afdde
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: fc92543f5954cda9db42e53cab18db1d8f3366c3
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384232"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284198"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>有关 Azure 空间定位点的常见问题解答
 
@@ -52,6 +52,10 @@ Azure 空间定位点是一个托管云服务和开发人员平台，可跨 Holo
 **问：Azure 空间定位点如何存储数据？**
 
 **答:** 所有数据均使用 Microsoft 托管数据加密密钥进行加密，且对于每个资源，所有数据均按区域存储。
+
+**问：Azure 空间定位点在何处存储数据？**
+
+**答：** Azure 空间定位点帐户允许指定存储数据的区域。 Microsoft 可能会将数据复制到其他区域来提高复原能力，但 Microsoft 不会将数据复制或移动到相应地理位置之外。 此数据存储在配置 Azure 空间定位点帐户的区域中。 例如，如果在美国东部区域注册了帐户，此数据将存储在美国东部区域，但可能会复制到北美地理位置的另一个区域，以确保复原能力。
 
 **问：使用 Azure 空间定位点时，会在服务中传输和存储有关环境的哪些信息？是否会传输和存储环境的图片？**
 

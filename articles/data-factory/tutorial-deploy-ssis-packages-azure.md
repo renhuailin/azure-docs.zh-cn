@@ -4,15 +4,15 @@ description: 了解如何在 Azure 数据工厂中预配 Azure-SSIS 集成运行
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 02/22/2021
+ms.date: 04/02/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 7c439d71806d2deba508ce35131f21ebfbd7a3ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6007ce4b4c54d795ff2cc3188504db11c29219cc
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740403"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256331"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中预配 Azure-SSIS 集成运行时
 
@@ -70,7 +70,7 @@ ms.locfileid: "101740403"
 
 ### <a name="from-the-data-factory-overview"></a>使用数据工厂概览
 
-1. 在“入门”页中，选择“配置 SSIS 集成运行时”磁贴。 
+1. 在“入门”页中，选择“配置 SSIS 集成”磁贴 。 
 
    ![“配置 Azure SSIS 集成运行时”磁贴](./media/tutorial-create-azure-ssis-runtime-portal/configure-ssis-integration-runtime-tile.png)
 
@@ -78,7 +78,7 @@ ms.locfileid: "101740403"
 
 ### <a name="from-the-authoring-ui"></a>使用创作 UI
 
-1. 在 Azure 数据工厂 UI 中切换到“编辑”选项卡，选择“连接”。  然后切换到“集成运行时”选项卡以查看数据工厂中的现有集成运行时。 
+1. 在 Azure 数据工厂 UI 中切换到“管理”选项卡，然后切换到“集成运行时”选项卡以查看数据工厂中的现有集成运行时 。 
 
    ![用于查看现有 IR 的选择](./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "101740403"
 
    ![通过菜单创建集成运行时](./media/tutorial-create-azure-ssis-runtime-portal/edit-connections-new-integration-runtime-button.png)
 
-1. 在“集成运行时设置”窗格中选择“直接迁移现有的 SSIS 包以在 Azure 中执行”磁贴，然后选择“下一步”  。
+1. 在“集成运行时设置”窗格中选择“直接迁移现有的 SSIS 包以在 Azure 中执行”磁贴，然后选择“继续”  。
 
    ![指定集成运行时的类型](./media/tutorial-create-azure-ssis-runtime-portal/integration-runtime-setup-options.png)
 
@@ -116,7 +116,7 @@ ms.locfileid: "101740403"
 
    1. 对于“节省资金”，请选择适用于集成运行时的“Azure 混合权益”选项：“是”或“否”。 如果需要自带具有软件保障的 SQL Server 许可证，以便充分利用使用混合权益带来的成本节省，请选择“是”。 
 
-   1. 选择“**下一页**”。 
+   1. 选择“继续”。 
 
 ### <a name="deployment-settings-page"></a>“部署设置”页
 
@@ -158,7 +158,7 @@ ms.locfileid: "101740403"
 
    1. 对于“目录数据库服务层级”，请选择用于承载 SSISDB 的数据库服务器的服务层级。 选择“基本”、“标准”或“高级”层级，或选择弹性池名称。
 
-如果适用，请选择“测试连接”，如果成功，请选择”下一步” 。
+如果适用，请选择“测试连接”，如果成功，请选择“继续” 。
 
 #### <a name="creating-azure-ssis-ir-package-stores"></a>创建 Azure-SSIS IR 包存储
 
@@ -177,7 +177,7 @@ ms.locfileid: "101740403"
    1. 对于“包存储链接服务”，请选择现有的链接服务，该服务存储在其中部署包的文件系统/Azure 文件存储/Azure SQL 托管实例的访问信息，或通过选择“新建”创建新链接服务 。 在“新建链接服务”窗格中，完成以下步骤。 
 
       > [!NOTE]
-      > 可以使用 Azure文件存储或文件系统链接服务来访问 Azure 文件 。 如果你使用 Azure 文件存储链接服务，则 Azure-SSIS IR 包存储仅支持基本（不支持帐户密钥或 SAS URI）身份验证方法   。 若要对 Azure 文件存储链接服务使用基本身份验证，可以在浏览器中将 `?feature.upgradeAzureFileStorage=false` 追加到 ADF 门户 URL 。 或者，你可以使用文件系统链接服务来访问 Azure 文件。 
+      > 可以使用 Azure文件存储或文件系统链接服务来访问 Azure 文件 。 如果你使用 Azure 文件存储链接服务，则 Azure-SSIS IR 包存储仅支持基本（不支持帐户密钥或 SAS URI）身份验证方法   。 
 
       ![链接服务的部署设置](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
 
@@ -188,8 +188,8 @@ ms.locfileid: "101740403"
       1. 对于“类型”，请选择“Azure 文件存储”、“Azure SQL 托管实例”或“文件系统”   。
 
       1. 可以忽略“通过集成运行时连接”，因为我们始终使用 Azure-SSIS IR 来提取包存储的访问信息。
-
-      1. 如果选择“Azure 文件存储”，请完成以下步骤。 
+      
+      1. 如果选择“Azure 文件存储”，请对“身份验证方法”选择“基本”，然后完成以下步骤  。 
 
          1. 对于“帐户选择方法”，请选择“从 Azure 订阅”或“手动输入”  。
          
@@ -199,21 +199,21 @@ ms.locfileid: "101740403"
 
       1. 如果选择“Azure SQL 托管实例”，请完成以下步骤。 
 
-         1. 选择“连接字符串”，以进行手动输入，或选择在其中作为机密存储的“Azure 密钥保管库” 。
+         1. 选择“连接字符串”，或选择将这些信息作为机密存储的 Azure 密钥保管库 。
          
          1. 如果选择“连接字符串”，请完成以下步骤。 
+             1. 对于“帐户选择方法”，如果选择“从 Azure 订阅”，请选择相关的 Azure 订阅、服务器名称、终结点类型和数据库名称     。 如果选择“手动输入”，请完成以下步骤。 
+                1.  对于“完全限定的域名”，请输入 `<server name>.<dns prefix>.database.windows.net` 或 `<server name>.public.<dns prefix>.database.windows.net,3342` 分别作为 Azure SQL 托管实例的专用或公共终结点。 如果输入专用终结点，则“测试连接”不适用，因为 ADF UI 无法访问它。
 
-            1. 对于“完全限定的域名”，请输入 `<server name>.<dns prefix>.database.windows.net` 或 `<server name>.public.<dns prefix>.database.windows.net,3342` 分别作为 Azure SQL 托管实例的专用或公共终结点。 如果输入专用终结点，则“测试连接”不适用，因为 ADF UI 无法访问它。
-
-            1. 对于“数据库名称”，请输入 `msdb`。
+                1. 对于“数据库名称”，请输入 `msdb`。
                
             1. 对于“身份验证类型”，请选择“SQL 身份验证”、“托管标识”或“服务主体”   。
 
-            1. 如果选择“SQL 身份验证”，请输入相关的“用户名”和“密码”，或选择在其中作为机密存储的“Azure 密钥保管库”   。
+                - 如果选择“SQL 身份验证”，请输入相关的“用户名”和“密码”，或选择在其中作为机密存储的“Azure 密钥保管库”   。
 
-            1. 如果选择“托管标识”，请向 ADF 托管标识授予对 Azure SQL 托管实例的访问权限。
+                -  如果选择“托管标识”，请向 ADF 托管标识授予对 Azure SQL 托管实例的访问权限。
 
-            1. 如果选择“服务主体”，请输入相关的“服务主体 ID”和“服务主体密钥”，或选择在其中作为机密存储的“Azure 密钥保管库”   。
+                - 如果选择“服务主体”，请输入相关的“服务主体 ID”和“服务主体密钥”，或选择在其中作为机密存储的“Azure 密钥保管库”   。
 
       1. 如果选择“文件系统”，请输入在其中为“主机”部署了包的文件夹的 UNC 路径，以及相关的“用户名”和“密码”，或选择在其中作为机密存储的“Azure 密钥保管库”    。
 
@@ -221,7 +221,7 @@ ms.locfileid: "101740403"
 
    1. 添加的包存储将显示在“部署设置”页上。 若要删除它们，请选中其复选框，然后选择“删除”。
 
-如果适用，请选择“测试连接”，如果成功，请选择”下一步” 。
+如果适用，请选择“测试连接”，如果成功，请选择“继续” 。
 
 ### <a name="advanced-settings-page"></a>“高级设置”页
 
@@ -241,7 +241,7 @@ ms.locfileid: "101740403"
 
    1. 选择“继续”。 
 
-在“集成运行时设置”窗格的“摘要”页上，查看所有预配设置，将建议的文档链接添加为书签，然后选择“完成”开始创建集成运行时  。 
+在“集成运行时设置”窗格的“摘要”页上，查看所有预配设置，将建议的文档链接添加为书签，然后选择“创建”开始创建集成运行时  。 
 
    > [!NOTE]
    > 此过程应在 5 分钟内完成（不包括任何自定义安装时间）。

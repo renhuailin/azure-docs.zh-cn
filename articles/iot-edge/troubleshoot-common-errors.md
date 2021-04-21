@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: cc6d7491d9c38f1ddf4aba2adecad4aaee3c344b
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 0d36a51865f3ed4a093998b16aaa174432c5308a
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103489556"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275645"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常见问题和解决方法
 
@@ -87,6 +87,8 @@ IoT Edge 代理无权访问某个模块的映像。
 
 上面的示例将 DNS 服务器设置为可公开访问的 DNS 服务。 如果边缘设备无法从其所在环境访问此 IP，请将其替换为可访问的 DNS 服务器地址。
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 将 `daemon.json` 放入平台上的适当位置：
 
 | 平台 | 位置 |
@@ -102,6 +104,24 @@ IoT Edge 代理无权访问某个模块的映像。
 | --------- | -------- |
 | Linux | `sudo systemctl restart docker` |
 | Windows (Admin PowerShell) | `Restart-Service iotedge-moby -Force` |
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+将 `daemon.json` 放入设备的 `/etc/docker` 目录。
+
+如果该位置已包含 `daemon.json` 文件，请在其中添加 dns 密钥，然后保存该文件。
+
+重启容器引擎以使更新生效。
+
+```bash
+sudo systemctl restart docker
+```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 **选项 2：在每个模块的 IoT Edge 部署中设置 DNS 服务器**
 
@@ -264,7 +284,7 @@ IoT Edge 运行时只支持短于 64 个字符的主机名。 物理计算机通
    sudo nano /etc/aziot/config.toml
    ```
 
-6. 将 `hostname` 的值替换为你的 DNS 名称。
+6. 将 `hostname` 的值替换为 DNS 名称。
 
 7. 保存并关闭该文件，然后将更改应用到 IoT Edge。
 
@@ -274,6 +294,9 @@ IoT Edge 运行时只支持短于 64 个字符的主机名。 物理计算机通
 
 :::moniker-end
 <!-- end 1.2 -->
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
 ## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>无法在 Windows 上获取 IoT Edge 守护程序日志
 
@@ -297,6 +320,9 @@ Windows Registry Editor Version 5.00
 "EventMessageFile"="C:\\ProgramData\\iotedge\\iotedged.exe"
 "TypesSupported"=dword:00000007
 ```
+
+:::moniker-end
+<!-- end 1.1 -->
 
 ## <a name="stability-issues-on-smaller-devices"></a>小型设备上的稳定性问题
 
@@ -388,6 +414,7 @@ Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/ada
 请确保父 IoT Edge 设备可以接收来自子 IoT Edge 设备的传入请求。 在端口 443 和 6617 上打开网络流量，以获取来自子设备的请求。
 
 :::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="next-steps"></a>后续步骤
 

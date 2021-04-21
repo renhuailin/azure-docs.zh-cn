@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 814824fb6708abaf549bb3de19b4aced4774a244
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 24b1be2ca55b057c887c8782ce7eea1150f143da
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102485752"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762616"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>用于 Azure VM 的临时 OS 磁盘
 
@@ -71,7 +71,7 @@ Set-AzVmssStorageProfile -DiffDiskSetting Local -OsDiskCaching ReadOnly
 
 ## <a name="cli"></a>CLI
 
-若要将临时磁盘用于 CLI VM 部署，请将 [az vm create](/cli/azure/vm#az-vm-create) 中的 `--ephemeral-os-disk` 参数设置为 `true`，将 `--os-disk-caching` 参数设置为 `ReadOnly`。
+若要将临时磁盘用于 CLI VM 部署，请将 [az vm create](/cli/azure/vm#az_vm_create) 中的 `--ephemeral-os-disk` 参数设置为 `true`，将 `--os-disk-caching` 参数设置为 `ReadOnly`。
 
 ```azurecli-interactive
 az vm create \
@@ -84,7 +84,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-对于规模集，请对 [az-vmss-create](/cli/azure/vmss#az-vmss-create) 使用相同的 `--ephemeral-os-disk true` 参数，并将 `--os-disk-caching` 参数设置为 `ReadOnly`。
+对于规模集，请对 [az-vmss-create](/cli/azure/vmss#az_vmss_create) 使用相同的 `--ephemeral-os-disk true` 参数，并将 `--os-disk-caching` 参数设置为 `ReadOnly`。
 
 ## <a name="portal"></a>门户
 
@@ -251,4 +251,4 @@ foreach($vmSize in $vmSizes)
 > 
  
 ## <a name="next-steps"></a>后续步骤
-可以使用 [Azure CLI](/cli/azure/vm#az-vm-create) 创建具有临时 OS 磁盘的 VM。
+可以使用 [Azure CLI](/cli/azure/vm#az_vm_create) 创建具有临时 OS 磁盘的 VM。

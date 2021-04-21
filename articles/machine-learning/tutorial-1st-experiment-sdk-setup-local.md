@@ -1,7 +1,7 @@
 ---
 title: 教程：机器学习入门 - Python
 titleSuffix: Azure Machine Learning
-description: 在本教程中，你将开始使用在个人开发环境中运行的适用于 Python 的 Azure 机器学习 SDK。
+description: 开始使用在个人开发环境中运行的适用于 Python 的 Azure 机器学习 SDK。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,12 +12,12 @@ ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: devx-track-python, contperf-fy21q3
 adobe-target: true
-ms.openlocfilehash: 81b9b5d53e1b61322d25d5dead85429474c1272c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 69340245cdebda570b526afd4f11ac8314384b43
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935543"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210612"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>教程：在你的开发环境中开始使用 Azure 机器学习（第 1 部分，共 4 部分）
 
@@ -30,16 +30,18 @@ ms.locfileid: "105935543"
 > * 设置代码的目录结构。
 > * 创建 Azure 机器学习工作区。
 > * 配置本地开发环境。
-> * 设置计算群集。
+> * 设置计算群集，这是一种基于云的资源，用于训练模型。
 
-> [!NOTE]
-> 本教程系列重点介绍提交批处理作业所需的 Azure 机器学习概念（在批处理作业中，代码提交到云以在后台运行，而无需任何用户交互）。 这适用于要重复运行的已完成脚本或代码或者计算密集型机器学习任务。 如果对探索性工作流更感兴趣，可以改用 [Azure 机器学习计算实例上的 Jupyter 或 RStudio](tutorial-1st-experiment-sdk-setup.md)。
+本教程系列重点介绍提交批处理作业所需的 Azure 机器学习概念（在批处理作业中，代码提交到云以在后台运行，而无需任何用户交互）。 这适用于要重复运行的已完成脚本或代码或者计算密集型机器学习任务。
+
+刚开始使用 Azure 机器学习时，另一种很好的方法是使用 Jupyter Notebook。  请参阅[教程：在 Jupyter Notebook 中开始使用 Azure 机器学习](tutorial-1st-experiment-sdk-setup.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 尝试 [Azure 机器学习](https://aka.ms/AMLFree)。
 - [Anaconda](https://www.anaconda.com/download/) 或 [Miniconda](https://www.anaconda.com/download/)，用于管理 Python 虚拟环境并安装包。  
 - 如果你不熟悉如何使用 conda，请参阅 [conda 入门](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html)。
+- 用于创建 Python 脚本的任何 IDE 或文本编辑器。
 
 ## <a name="install-the-azure-machine-learning-sdk"></a>安装 Azure 机器学习 SDK
 

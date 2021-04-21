@@ -3,12 +3,12 @@ title: 关于注册表、存储库、映像和项目
 description: Azure 容器注册表、存储库和容器映像和其他项目的重要概念简介。
 ms.topic: article
 ms.date: 01/29/2021
-ms.openlocfilehash: 27c4604820dda50686b6cb3f36e69b38283750c3
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 64ab3812b3f23a7b3a480d3530c82bd39f2d29a5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106381916"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784076"
 ---
 # <a name="about-registries-repositories-and-artifacts"></a>关于注册表、存储库和项目
 
@@ -184,6 +184,4 @@ az acr repository show-manifests --name myregistry --repository acr-helloworld
 了解如何从 Azure 容器注册表[推送和拉取](container-registry-get-started-docker-cli.md)映像。
 
 <!-- LINKS - Internal -->
-[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az-acr-repository-show-manifests
-
-
+[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az_acr_repository_show_manifests

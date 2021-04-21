@@ -4,12 +4,12 @@ description: 了解如何使用用于访问 Azure Kubernetes 服务 (AKS) 中 AP
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: ca6e1c06b3ad90ef12c9bf375bae50d46c5f7c37
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.openlocfilehash: 8fca3fe61e26a031e6ea09692c9ba0781bfca21f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98890624"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769636"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 中的已授权 IP 地址范围保护对 API 服务器的访问
 
@@ -27,7 +27,7 @@ ms.locfileid: "98890624"
 
 API 服务器授权的 IP 范围功能具有以下限制：
 - 在将 API 服务器授权的 IP 地址范围移出 2019 年 10 月的预览后所创建的群集上，仅标准 SKU 负载均衡器支持 API 服务器授权的 IP 地址范围。 配置了基本 SKU 负载均衡器和 API 服务器已授权 IP 地址范围的现有群集将继续按原有方式工作，但不能迁移到标准 SKU 负载均衡器 。 即使 Kubernetes 版本或控制平面升级后，这些现有群集也会继续工作。 专用群集不支持 API 服务器授权 IP 地址范围。
-- 此功能与使用 [每个节点的公共 IP 节点池预览功能](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools-preview)的群集不兼容。
+- 此功能与[对每个节点使用公共 IP](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools) 的群集不兼容。
 
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>API 服务器已授权 IP 范围的概述
 
@@ -130,9 +130,9 @@ az aks update \
     --api-server-authorized-ip-ranges ""
 ```
 
-## <a name="find-existing-authorized-ip-ranges"></a>查找现有的授权 IP 范围
+## <a name="find-existing-authorized-ip-ranges"></a>查找现有的已授权 IP 范围
 
-若要查找已授权的 IP 范围，请使用 [az aks show][az-aks-show] ，并指定群集的名称和资源组。 例如：
+若要查找已经过授权的 IP 范围，请使用 [az aks show][az-aks-show]，并指定群集的名称和资源组。 例如：
 
 ```azurecli-interactive
 az aks show \
@@ -141,17 +141,17 @@ az aks show \
     --query apiServerAccessProfile.authorizedIpRanges'
 ```
 
-## <a name="update-disable-and-find-authorized-ip-ranges-using-azure-portal"></a>使用 Azure 门户更新、禁用和查找授权的 IP 范围
+## <a name="update-disable-and-find-authorized-ip-ranges-using-azure-portal"></a>使用 Azure 门户来更新、禁用和查找已授权 IP 范围
 
-还可以在 Azure 门户中执行上述操作来添加、更新、查找和禁用授权 IP 范围。 若要访问，请在群集资源的菜单边栏选项卡中导航到 "**设置**" 下的 "**网络**"。
+还可以在 Azure 门户中执行上述添加、更新、查找和禁用已授权 IP 范围的操作。 若要访问，请在群集资源的菜单边栏选项卡中导航到“设置”下的“网络” 。
 
-:::image type="content" source="media/api-server-authorized-ip-ranges/ip-ranges-specified.PNG" alt-text="在浏览器中，显示群集资源的 &quot;网络设置&quot; Azure 门户 &quot;页。将突出显示 &quot;设置指定的 IP 范围&quot; 和 &quot;指定的 IP 范围&quot; 选项。":::
+:::image type="content" source="media/api-server-authorized-ip-ranges/ip-ranges-specified.PNG" alt-text="在浏览器中，显示群集资源的网络设置 Azure 门户页面。选项“设置指定的 IP 范围”和“指定的 IP 范围”已突出显示。":::
 
 ## <a name="how-to-find-my-ip-to-include-in---api-server-authorized-ip-ranges"></a>如何找到要包含在 `--api-server-authorized-ip-ranges` 中的 IP？
 
 必须将开发计算机、工具或自动化 IP 地址添加到 AKS 群集的已批准 IP 范围列表，以便从该处访问 API 服务器。 
 
-另一种做法是在防火墙虚拟网络中的单独子网内，使用所需的工具配置 Jumpbox。 这假设环境有具有相应网络的防火墙，并且你已将防火墙 IP 添加到授权的范围。 同样，如果将 AKS 子网中的强制隧道设置为防火墙子网，则与群集子网中的 jumpbox 也不一样。
+另一种做法是在防火墙虚拟网络中的单独子网内，使用所需的工具配置 Jumpbox。 这假设环境有具有相应网络的防火墙，并且你已将防火墙 IP 添加到授权的范围。 同样，如果已强制建立从 AKS 子网到防火墙子网的隧道，那么也可以在群集子网中设置 jumpbox。
 
 使用以下命令将另一个 IP 地址添加到已批准范围。
 
@@ -186,9 +186,9 @@ Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
 
 <!-- LINKS - internal -->
 [az-aks-update]: /cli/azure/ext/aks-preview/aks#ext-aks-preview-az-aks-update
-[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-create]: /cli/azure/aks#az_aks_create
 [az-aks-show]: /cli/azure/aks#az_aks_show
-[az-network-public-ip-list]: /cli/azure/network/public-ip#az-network-public-ip-list
+[az-network-public-ip-list]: /cli/azure/network/public-ip#az_network_public_ip_list
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
 [concepts-security]: concepts-security.md
 [install-azure-cli]: /cli/azure/install-azure-cli

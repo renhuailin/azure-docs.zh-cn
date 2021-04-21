@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: ec8104a5fd8d1c524f75c7a5173015115d85a253
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 4d7123aa22d95e3e4c3850be775ddad96f28d280
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064301"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785300"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
 [Azure 文件存储](storage-files-introduction.md)会在云中提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)或[网络文件系统 (NFS) 协议](https://en.wikipedia.org/wiki/Network_File_System)（预览）进行访问。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -90,7 +90,7 @@ ms.locfileid: "106064301"
 
 * <a id="afs-region-availability"></a>
   **Azure 文件同步支持哪些区域？**  
-    可以在 Azure 文件同步规划指南的[区域可用性](storage-sync-files-planning.md#azure-file-sync-region-availability)部分中找到可用区域列表。 我们将继续添加对其他区域的支持，包括非公共区域。
+    可以在 Azure 文件同步规划指南的[区域可用性](../file-sync/file-sync-planning.md#azure-file-sync-region-availability)部分中找到可用区域列表。 我们将继续添加对其他区域的支持，包括非公共区域。
 
 * <a id="cross-domain-sync"></a>
   **是否可以在同一个同步组中同时包含已加入域的服务器和未加入域的服务器？**  
@@ -119,28 +119,28 @@ ms.locfileid: "106064301"
 
 * <a id="sizeondisk-versus-size"></a>
   **使用 Azure 文件共享后，为什么文件的占用空间属性与大小属性不一致？**  
-  请参阅[了解 Azure 文件同步云分层](storage-sync-cloud-tiering-overview.md#tiered-vs-locally-cached-file-behavior)。
+  请参阅[了解 Azure 文件同步云分层](../file-sync/file-sync-cloud-tiering-overview.md#tiered-vs-locally-cached-file-behavior)。
 
 * <a id="is-my-file-tiered"></a>
   **如何分辨文件是否已被分层？**  
-  请参阅[如何管理 Azure 文件同步分层文件](storage-sync-how-to-manage-tiered-files.md#how-to-check-if-your-files-are-being-tiered)。
+  请参阅[了解云分层](../file-sync/file-sync-how-to-manage-tiered-files.md#how-to-check-if-your-files-are-being-tiered)。
 
 * <a id="afs-recall-file"></a>**我想要使用的一个文件已被分层。如何将文件召回到磁盘以在本地使用？**  
-  请参阅[如何管理 Azure 文件同步分层文件](storage-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk)。
+  请参阅[了解云分层](../file-sync/file-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk)。
 
 * <a id="afs-force-tiering"></a>
   **如何强制将文件或目录分层？**  
-  请参阅[如何管理 Azure 文件同步分层文件](storage-sync-how-to-manage-tiered-files.md#how-to-force-a-file-or-directory-to-be-tiered)。
+  请参阅[了解云分层](../file-sync/file-sync-how-to-manage-tiered-files.md#how-to-force-a-file-or-directory-to-be-tiered)。
 
 * <a id="afs-effective-vfs"></a>
   **当卷上有多个服务器终结点时，如何解释卷可用空间？**  
-  请参阅[选择 Azure 文件同步云分层策略](storage-sync-cloud-tiering-policy.md#multiple-server-endpoints-on-a-local-volume)。
+  请参阅[了解云分层](../file-sync/file-sync-cloud-tiering-policy.md#multiple-server-endpoints-on-a-local-volume)。
   
 * <a id="afs-tiered-files-tiering-disabled"></a>
   **我禁用了云分层，为什么服务器终结点位置中存在分层文件？**  
     有两个原因会导致分层文件存在于服务器终结点位置：
 
-    - 向现有同步组添加新的服务器终结点时，如果为初始下载模式选择“首先召回命名空间”选项或“仅召回命名空间”选项，则文件在本地下载下来之前将显示为分层文件。 为避免出现这种情况，请为初始下载模式选择“避免分层文件”选项。 若要手动召回文件，请使用 [Invoke-StorageSyncFileRecall](storage-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk) cmdlet。
+    - 向现有同步组添加新的服务器终结点时，如果为初始下载模式选择“首先召回命名空间”选项或“仅召回命名空间”选项，则文件在本地下载下来之前将显示为分层文件。 为避免出现这种情况，请为初始下载模式选择“避免分层文件”选项。 若要手动召回文件，请使用 [Invoke-StorageSyncFileRecall](../file-sync/file-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk) cmdlet。
 
     - 如果已在服务器终结点上启用云分层，然后将其禁用，则文件在被访问之前将保持分层。
 
@@ -150,11 +150,11 @@ ms.locfileid: "106064301"
 
     此行为不特定于 Azure 文件同步，Windows 资源管理器会为设置了脱机属性的任何文件显示“灰色 X”。 通过 SMB 访问文件时，将看到 X 图标。 有关此行为的详细说明，请参阅 [https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
 
-    有关如何管理分层文件的问题，请参阅[如何管理分层文件](storage-sync-how-to-manage-tiered-files.md)。
+    有关如何管理分层文件的问题，请参阅[如何管理分层文件](../file-sync/file-sync-how-to-manage-tiered-files.md)。
 
 * <a id="afs-files-excluded"></a>
   **会被 Azure 文件同步自动排出的文件或文件夹有哪些？**  
-  请参阅[跳过的文件](storage-sync-files-planning.md#files-skipped)。
+  请参阅[跳过的文件](../file-sync/file-sync-planning.md#files-skipped)。
 
 * <a id="afs-os-support"></a>
   **我是否可以将 Azure 文件同步与 Windows Server 2008 R2、Linux 或我的网络连接存储 (NAS) 设备一起使用？**  
@@ -162,7 +162,7 @@ ms.locfileid: "106064301"
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
   **为什么分层文件存在于服务器终结点命名空间之外？**  
-    在 Azure 文件同步代理版本 3 之前，Azure 文件同步阻止将分层文件移到服务器终结点之外但位于服务器终结点所在卷上的其他位置。 复制操作、非分层文件的移动操作以及将分层文件移到其他卷的操作不受影响。 这种行为的原因在于以下隐含假设：文件资源管理器和其他 Windows API 在同一卷上的移动操作是（近乎）即时重命名操作。 这意味着，移动会使文件资源管理器或其他移动方法（如命令行或 PowerShell）看起来没有响应，而 Azure 文件同步会从云中召回数据。 从 [Azure 文件同步代理版本 3.0.12.0](storage-files-release-notes.md#supported-versions) 开始，Azure 文件同步将允许将分层文件移到服务器终结点之外。 我们通过允许分层文件作为服务器终结点之外的分层文件存在，然后在后台召回该文件以避免前面提到的负面影响。 这意味着在同一卷上的移动是即时的，在移动完成后，我们要完成将文件召回到磁盘的所有工作。 
+    在 Azure 文件同步代理版本 3 之前，Azure 文件同步阻止将分层文件移到服务器终结点之外但位于服务器终结点所在卷上的其他位置。 复制操作、非分层文件的移动操作以及将分层文件移到其他卷的操作不受影响。 这种行为的原因在于以下隐含假设：文件资源管理器和其他 Windows API 在同一卷上的移动操作是（近乎）即时重命名操作。 这意味着，移动会使文件资源管理器或其他移动方法（如命令行或 PowerShell）看起来没有响应，而 Azure 文件同步会从云中召回数据。 从 [Azure 文件同步代理版本 3.0.12.0](../file-sync/file-sync-release-notes.md#supported-versions) 开始，Azure 文件同步将允许将分层文件移到服务器终结点之外。 我们通过允许分层文件作为服务器终结点之外的分层文件存在，然后在后台召回该文件以避免前面提到的负面影响。 这意味着在同一卷上的移动是即时的，在移动完成后，我们要完成将文件召回到磁盘的所有工作。 
 
 * <a id="afs-do-not-delete-server-endpoint"></a>
   **我在服务器上遇到 Azure 文件同步问题（同步、云分层等）。是否应删除并重新创建服务器终结点？**  
@@ -170,7 +170,7 @@ ms.locfileid: "106064301"
     
 * <a id="afs-resource-move"></a>
   **是否可将存储同步服务和/或存储帐户移动到不同的资源组、订阅或 Azure AD 租户？**  
-   是的，存储同步服务和/或存储帐户可以移动到不同的资源组、订阅或 Azure AD 租户。 存储同步服务或存储帐户移动后，你需要向 Microsoft.StorageSync 应用程序授予对存储帐户的访问权限（请参阅[确保 Azure 文件同步有权访问存储帐户](./storage-sync-files-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)）。
+   是的，存储同步服务和/或存储帐户可以移动到不同的资源组、订阅或 Azure AD 租户。 存储同步服务或存储帐户移动后，你需要向 Microsoft.StorageSync 应用程序授予对存储帐户的访问权限（请参阅[确保 Azure 文件同步有权访问存储帐户](../file-sync/file-sync-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)）。
 
     > [!Note]  
     > 创建云终结点时，存储同步服务和存储帐户必须位于相同的 Azure AD 租户中。 创建云终结点后，可以将存储同步服务和存储帐户移到不同的 Azure AD 租户。
@@ -352,7 +352,7 @@ ms.locfileid: "106064301"
 * <a id="expressroute-not-required"></a>
 **必须使用 Azure ExpressRoute 才能在本地连接到 Azure 文件或使用 Azure 文件同步吗？**  
 
-    否。 ExpressRoute 不是访问 Azure 文件共享的必要条件。 如果要直接在本地装载 Azure 文件共享，则只需打开端口 445（TCP 出站）即可进行 Internet 访问（这是 SMB 用于进行通信的端口）。 如果正在使用 Azure 文件同步，则只需端口 443（TCP 出站）即可进行 HTTPS 访问（无需 SMB）。 但是，你可以将 ExpressRoute 与这些访问选项中任意一项一起使用。
+    不是。 ExpressRoute 不是访问 Azure 文件共享的必要条件。 如果要直接在本地装载 Azure 文件共享，则只需打开端口 445（TCP 出站）即可进行 Internet 访问（这是 SMB 用于进行通信的端口）。 如果正在使用 Azure 文件同步，则只需端口 443（TCP 出站）即可进行 HTTPS 访问（无需 SMB）。 但是，你可以将 ExpressRoute 与这些访问选项中任意一项一起使用。
 
 * <a id="mount-locally"></a>
 **如何才能在本地计算机上装载 Azure 文件共享？**  
@@ -485,7 +485,7 @@ ms.locfileid: "106064301"
 
 * <a id="nested-shares"></a>
 **是否可以设置嵌套共享？也就是说，能否在共享下使用共享？**  
-    否。 文件共享是可以装载的虚拟驱动程序，因此不支持嵌套共享。
+    不是。 文件共享是可以装载的虚拟驱动程序，因此不支持嵌套共享。
 
 * <a id="ibm-mq"></a>
 **如何将 Azure 文件与 IBM MQ 配合使用？**  
@@ -494,4 +494,4 @@ ms.locfileid: "106064301"
 ## <a name="see-also"></a>另请参阅
 * [在 Windows 中排查 Azure 文件问题](storage-troubleshoot-windows-file-connection-problems.md)
 * [在 Linux 中排查 Azure 文件问题](storage-troubleshoot-linux-file-connection-problems.md)
-* [对 Azure 文件同步进行故障排除](storage-sync-files-troubleshoot.md)
+* [对 Azure 文件同步进行故障排除](../file-sync/file-sync-troubleshoot.md)

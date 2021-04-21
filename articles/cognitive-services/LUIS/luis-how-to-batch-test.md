@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 12/29/2020
-ms.openlocfilehash: b297330f3562babf9e83d36934827f7b92d5ea35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/13/2021
+ms.openlocfilehash: 9fe4f21a5c9e9e26a2f94b8a60cba47916842fe3
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98787006"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501784"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>使用一组示例话语进行批处理测试
 
@@ -208,7 +208,7 @@ LUIS 允许你使用 LUIS 门户和 REST API 进行批量测试。 下面列出�
 
 提交话语批处理文件（称为数据集  ），以用于批处理测试。 该数据集是一个 JSON 格式的文件，包含最多 1,000 条带标签的言语。 可以在一个应用中测试最多 10 个数据集。 如果需要测试更多数据集，请删除数据集，然后添加新数据集。 即使批处理文件数据中没有对应的实体，模型中的所有自定义实体也会出现在批处理测试实体筛选器中。
 
-批处理文件包含表达。 每个言语都必须有预期的意向预测，此外还必须有你预期可以检测到的[机器学习实体](luis-concept-entity-types.md#types-of-entities)。
+批处理文件包含表达。 每个言语都必须有预期的意向预测，此外还必须有你预期可以检测到的[机器学习实体](luis-concept-entity-types.md#machine-learned-ml-entity)。
 
 ### <a name="batch-syntax-template-for-intents-with-entities"></a>使用实体的意向的批处理语法模板
 

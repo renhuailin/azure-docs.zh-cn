@@ -2,21 +2,21 @@
 title: 不要使用 ETL，应使用设计 ETL
 description: 对 Azure Synapse Analytics 中的专用 SQL 池实施灵活的数据加载策略。
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 11/20/2020
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 04bd4767445f9378aedb303e63bf463f44e40034
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8a8f857dcfdc271a3aaad71f4b9c26d474033383
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104602190"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566097"
 ---
 # <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>适用于 Azure Synapse Analytics 中的专用 SQL 池的数据加载策略
 
@@ -96,10 +96,10 @@ ms.locfileid: "104602190"
 |                            BINARY                            |                STRING                 |     nvarchar     |
 |                            BINARY                            |                 ENUM                  |     nvarchar     |
 |                            BINARY                            |                 UUID                  | uniqueidentifier |
-|                            BINARY                            |                DECIMAL                |     Decimal      |
+|                            BINARY                            |                DECIMAL                |     decimal      |
 |                            BINARY                            |                 JSON                  |  nvarchar(MAX)   |
 |                            BINARY                            |                 BSON                  |  varbinary(max)  |
-|                     FIXED_LEN_BYTE_ARRAY                     |                DECIMAL                |     Decimal      |
+|                     FIXED_LEN_BYTE_ARRAY                     |                DECIMAL                |     decimal      |
 |                          BYTE_ARRAY                          |               INTERVAL                |  varchar(max),   |
 |                            INT32                             |             INT(8, true)              |     smallint     |
 |                            INT32                             |            INT(16,   true)            |     smallint     |
@@ -108,11 +108,11 @@ ms.locfileid: "104602190"
 |                            INT32                             |            INT(16, false)             |       int        |
 |                            INT32                             |           INT(32,   false)            |      bigint      |
 |                            INT32                             |                 DATE                  |       date       |
-|                            INT32                             |                DECIMAL                |     Decimal      |
+|                            INT32                             |                DECIMAL                |     decimal      |
 |                            INT32                             |            TIME (MILLIS)             |       time       |
 |                            INT64                             |            INT(64,   true)            |      bigint      |
 |                            INT64                             |           INT(64, false  )            |  decimal(20,0)   |
-|                            INT64                             |                DECIMAL                |     Decimal      |
+|                            INT64                             |                DECIMAL                |     decimal      |
 |                            INT64                             |         TIME (MILLIS)                 |       time       |
 |                            INT64                             | TIMESTAMP (MILLIS)                  |    datetime2     |
 | [复杂类型](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23lists&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=6Luk047sK26ijTzfvKMYc%2FNu%2Fz0AlLCX8lKKTI%2F8B5o%3D&reserved=0) |                 列表                  |   varchar(max)   |

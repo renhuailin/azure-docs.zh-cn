@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c42061520b73966f2cd516716039d78c2b9cbeb8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 93d9a81ab75efe4ea38189a7280e041e545a2b7d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100375980"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785318"
 ---
 # <a name="use-azure-cli-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>使用 Azure CLI 分配一个可以访问 blob 和队列数据的 Azure 角色
 
@@ -36,7 +36,7 @@ Azure Active Directory (Azure AD) 通过 [Azure 基于角色的访问控制 (Azu
 
 ## <a name="list-available-azure-roles"></a>列出可用的 Azure 角色
 
-若要通过 Azure CLI 列出可用的内置 Azure 角色，请使用 [az role definition list](/cli/azure/role/definition#az-role-definition-list) 命令：
+若要通过 Azure CLI 列出可用的内置 Azure 角色，请使用 [az role definition list](/cli/azure/role/definition#az_role_definition_list) 命令：
 
 ```azurecli-interactive
 az role definition list --out table
@@ -56,7 +56,7 @@ Storage Queue Data Reader                 Allows for read access to Azure Storag
 
 ## <a name="assign-an-azure-role-to-a-security-principal"></a>向安全主体分配 Azure 角色
 
-若要向安全主体分配 Azure 角色，请使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 命令。 命令的格式因分配范围而异。 以下示例显示如何在各种范围内为用户分配角色，但可以使用相同的命令将角色分配给任何安全主体。
+若要向安全主体分配 Azure 角色，请使用 [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) 命令。 命令的格式因分配范围而异。 以下示例显示如何在各种范围内为用户分配角色，但可以使用相同的命令将角色分配给任何安全主体。
 
 > [!IMPORTANT]
 > 创建 Azure 存储帐户时，系统不会自动向你分配通过 Azure AD 访问数据的权限。 必须为自己显式分配一个 Azure RBAC 角色以进行数据访问。 可以在订阅、资源组、存储帐户、容器或队列级别分配它。

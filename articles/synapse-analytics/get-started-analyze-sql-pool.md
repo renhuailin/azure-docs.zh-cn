@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: a1f15330a912c8a8a93fe1f74e88ef8d117441c2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0def1f957842417c3936e3f1c7bb5bc023109818
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047892"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536326"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>使用专用 SQL 池分析数据
 
@@ -43,49 +43,55 @@ ms.locfileid: "105047892"
 1. 在脚本上方的“连接到”下拉列表中选择池“SQLPOOL1”（在本教程的[步骤 1](./get-started-create-workspace.md) 中创建的池）。
 1. 输入以下代码：
     ```
-    CREATE TABLE [dbo].[Trip]
-    (
-        [DateID] int NOT NULL,
-        [MedallionID] int NOT NULL,
-        [HackneyLicenseID] int NOT NULL,
-        [PickupTimeID] int NOT NULL,
-        [DropoffTimeID] int NOT NULL,
-        [PickupGeographyID] int NULL,
-        [DropoffGeographyID] int NULL,
-        [PickupLatitude] float NULL,
-        [PickupLongitude] float NULL,
-        [PickupLatLong] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-        [DropoffLatitude] float NULL,
-        [DropoffLongitude] float NULL,
-        [DropoffLatLong] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-        [PassengerCount] int NULL,
-        [TripDurationSeconds] int NULL,
-        [TripDistanceMiles] float NULL,
-        [PaymentType] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-        [FareAmount] money NULL,
-        [SurchargeAmount] money NULL,
-        [TaxAmount] money NULL,
-        [TipAmount] money NULL,
-        [TollsAmount] money NULL,
-        [TotalAmount] money NULL
-    )
+    IF NOT EXISTS (SELECT * FROM sys.objects O JOIN sys.schemas S ON O.schema_id = S.schema_id WHERE O.NAME = 'NYCTaxiTripSmall' AND O.TYPE = 'U' AND S.NAME = 'dbo')
+    CREATE TABLE dbo.NYCTaxiTripSmall
+        (
+         [DateID] int,
+         [MedallionID] int,
+         [HackneyLicenseID] int,
+         [PickupTimeID] int,
+         [DropoffTimeID] int,
+         [PickupGeographyID] int,
+         [DropoffGeographyID] int,
+         [PickupLatitude] float,
+         [PickupLongitude] float,
+         [PickupLatLong] nvarchar(4000),
+         [DropoffLatitude] float,
+         [DropoffLongitude] float,
+         [DropoffLatLong] nvarchar(4000),
+         [PassengerCount] int,
+         [TripDurationSeconds] int,
+         [TripDistanceMiles] float,
+         [PaymentType] nvarchar(4000),
+         [FareAmount] numeric(19,4),
+         [SurchargeAmount] numeric(19,4),
+         [TaxAmount] numeric(19,4),
+         [TipAmount] numeric(19,4),
+         [TollsAmount] numeric(19,4),
+         [TotalAmount] numeric(19,4)
+        )
     WITH
-    (
+        (
         DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
-    );
+         CLUSTERED COLUMNSTORE INDEX
+         -- HEAP
+        )
+    GO
 
-    COPY INTO [dbo].[Trip]
-    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Trip2013/QID6392_20171107_05910_0.txt.gz'
+    COPY INTO dbo.NYCTaxiTripSmall
+    (DateID 1, MedallionID 2, HackneyLicenseID 3, PickupTimeID 4, DropoffTimeID 5,
+    PickupGeographyID 6, DropoffGeographyID 7, PickupLatitude 8, PickupLongitude 9, 
+    PickupLatLong 10, DropoffLatitude 11, DropoffLongitude 12, DropoffLatLong 13, 
+    PassengerCount 14, TripDurationSeconds 15, TripDistanceMiles 16, PaymentType 17, 
+    FareAmount 18, SurchargeAmount 19, TaxAmount 20, TipAmount 21, TollsAmount 22, 
+    TotalAmount 23)
+    FROM 'https://contosolake.dfs.core.windows.net/users/NYCTripSmall.parquet'
     WITH
     (
-        FILE_TYPE = 'CSV',
-        FIELDTERMINATOR = '|',
-        FIELDQUOTE = '',
-        ROWTERMINATOR='0X0A',
-        COMPRESSION = 'GZIP'
+        FILE_TYPE = 'PARQUET'
+        ,MAXERRORS = 0
+        ,IDENTITY_INSERT = 'OFF'
     )
-    OPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');
     ```
 1. 单击“运行”按钮以执行脚本。
 1. 此脚本将在 60 秒内完成。 它将 2 百万行纽约市出租车数据加载到一个名为 dbo.Trip 的表中。
@@ -94,7 +100,7 @@ ms.locfileid: "105047892"
 
 1. 在 Synapse Studio 中，转到“数据”中心。
 1. 转到“SQLPOOL1” > “表” 。 
-3. 右键单击 dbo.Trip 表，然后选择“新建 SQL 脚本” > “选择前 100 行”  。
+3. 右键单击 dbo.NYCTaxiTripSmall 表，然后选择“新建 SQL 脚本” > “选择前 100 行”  。
 4. 等待新的 SQL 脚本创建并运行。
 5. 请注意，在 SQL 脚本的顶部，“连接到”自动设置为名为“SQLPOOL1”的 SQL 池 。
 6. 将 SQL 脚本的文本替换为此代码并运行。
@@ -103,7 +109,7 @@ ms.locfileid: "105047892"
     SELECT PassengerCount,
           SUM(TripDistanceMiles) as SumTripDistance,
           AVG(TripDistanceMiles) as AvgTripDistance
-    FROM  dbo.Trip
+    FROM  dbo.NYCTaxiTripSmall
     WHERE TripDistanceMiles > 0 AND PassengerCount > 0
     GROUP BY PassengerCount
     ORDER BY PassengerCount;

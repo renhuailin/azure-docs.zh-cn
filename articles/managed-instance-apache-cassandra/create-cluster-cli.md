@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/15/2021
-ms.openlocfilehash: b719310a331044df363efcc6b79be323faf49247
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 53fe53e1406bfcde1f2d8c7b2a1ce8369303426f
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562097"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379360"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-using-azure-cli-preview"></a>快速入门：使用 Azure CLI 创建 Azure Managed Instance for Apache Cassandra 群集（预览版）
 
@@ -48,11 +48,19 @@ Azure Managed Instance for Apache Cassandra 为托管的开源 Apache Cassandra 
    ```azurecli-interactive
    az network vnet create -n <VNet_Name> -l eastus2 -g <Resource_Group_Name> --subnet-name <Subnet Name>
    ```
+    > [!NOTE]
+    > 部署 Azure Managed Instance for Apache Cassandra 需要 Internet 访问权限。 在限制 Internet 访问权限的环境中，部署将失败。 请确保未在 VNet 中阻止对以下关键 Azure 服务（托管 Cassandra 需要这些服务才能正常工作）的访问权限：
+    > - Azure 存储
+    > - Azure KeyVault
+    > - Azure 虚拟机规模集
+    > - Azure 监视
+    > - Azure Active Directory
+    > - Azure 安全性
 
-1. 向虚拟网络和子网应用一些特殊权限 - 托管实例要求具备这些权限。 使用 `az role assignment create` 命令，将 `<subscription ID>`、`<resource group name>`、`<VNet name>` 和 `<subnet name>` 替换为适当的值：
+1. 向虚拟网络应用托管实例需要的一些特殊权限。 使用 `az role assignment create` 命令，将 `<subscription ID>`、`<resource group name>` 和 `<VNet name>` 替换为适当的值：
 
    ```azurecli-interactive
-   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>/subnets/<subnet name>
+   az role assignment create --assignee a232010e-820c-4083-83bb-3ace5fc29d0b --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>
    ```
 
    > [!NOTE]

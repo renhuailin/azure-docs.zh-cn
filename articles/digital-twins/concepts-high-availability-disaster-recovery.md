@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 3336a086fbe8f4291f752836a610cd80b773ec2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 41edef58910fe2b772831ef083e5aca8bb52a321
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98790810"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482262"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Azure 数字孪生高可用性和灾难恢复
 
@@ -73,4 +73,4 @@ Azure 数字孪生通过在服务内实现冗余来提供区域内部 HA。 这�
 详细了解 Azure 数字孪生解决方案入门：
  
 * [*Azure 数字孪生是什么？*](overview.md)
-* [快速入门：探索示例方案](quickstart-adt-explorer.md)
+* [快速入门：探索示例方案](quickstart-azure-digital-twins-explorer.md)

@@ -8,12 +8,12 @@ ms.date: 01/19/2021
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 174ec8c42ea17ccae04769d7c0baaa91b8e7025b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65022d98c7ee7e90d8f1fe5b6854605c841ad05b
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102517865"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530319"
 ---
 # <a name="cloud-sync-troubleshooting"></a>云同步故障排除
 
@@ -197,7 +197,7 @@ ms.locfileid: "102517865"
 
   ![重新启动预配](media/how-to-troubleshoot/quarantine-3.png)
 
-- 使用 Microsoft Graph [重新启动预配作业](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)。 你可以完全控制需要重新启动的内容。 你可以选择清除：
+- 使用 Microsoft Graph [重新启动预配作业](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta&preserve-view=true)。 你可以完全控制需要重新启动的内容。 你可以选择清除：
   - 托管，用于重新启动增加为隔离状态的托管计数器。
   - 隔离，用于从隔离区中删除应用程序。
   - 水印。 

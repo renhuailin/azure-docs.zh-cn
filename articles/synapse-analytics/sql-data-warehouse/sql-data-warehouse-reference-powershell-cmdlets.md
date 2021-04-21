@@ -2,21 +2,21 @@
 title: 适用于专用 SQL 池（之前称为 SQL DW）的 PowerShell 和 REST API
 description: 了解 Azure Synapse Analytics 中专用 SQL 池（之前称为 SQL DW）的最常用 PowerShell cmdlet，包括如何暂停和恢复数据库。
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: 83e6082025f068e91a3d531f052b746870ffd57a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1f00f470fb0aa8ac98b431c6fc9428f501b553ed
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104584102"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566437"
 ---
 # <a name="powershell--rest-apis-for-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中适用于专用 SQL 池（以前称为 SQL DW）的 PowerShell 和 REST API 
 

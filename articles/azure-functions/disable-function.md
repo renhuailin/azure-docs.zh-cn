@@ -4,12 +4,12 @@ description: 了解如何在 Azure Functions 中禁用与启用函数。
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ef3886c4b9b73f87238bf386d1320ecbac8ad181
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 03803abfda010c81fa8286a478d626ef39db59fb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374890"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777574"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>如何在 Azure Functions 中禁用函数
 
@@ -35,7 +35,7 @@ ms.locfileid: "107374890"
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
-在 Azure CLI 中，可以使用 [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) 命令来创建和修改应用设置。 以下命令通过创建名为 `AzureWebJobs.QueueTrigger.Disabled` 的应用设置并将其设置为 `true` 来禁用名为 `QueueTrigger` 的函数。 
+在 Azure CLI 中，可以使用 [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) 命令来创建和修改应用设置。 以下命令通过创建名为 `AzureWebJobs.QueueTrigger.Disabled` 的应用设置并将其设置为 `true` 来禁用名为 `QueueTrigger` 的函数。 
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <FUNCTION_APP_NAME> \

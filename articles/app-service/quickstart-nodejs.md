@@ -10,12 +10,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-nodejs-uiex
-ms.openlocfilehash: 6c6f0543dcfbecd16ba4176272f928ffd0eb54de
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3b1ff02d6a9b3e8c7b7abaf1b185a9becd2be12b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735108"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105827"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中创建 Node.js Web 应用
 
@@ -313,11 +313,11 @@ code .
 
 本部分介绍如何从运行的应用服务应用查看（或“跟踪”）日志。 对应用中的 `console.log` 发出的任何调用将显示在 Visual Studio Code 的输出窗口中。
 
-在“AZURE 应用服务”资源管理器中找到该应用，右键单击该应用，然后选择“查看流日志”。  
+在“Azure 应用服务”资源管理器中找到应用并右键单击，然后选择“开始流式传输日志” 。
 
 此时会打开 VS Code 输出窗口，其中包含与日志流建立的连接。
 
-![查看流日志](./media/quickstart-nodejs/view-logs.png)
+![开始流式传输日志](./media/quickstart-nodejs/view-logs.png)
 
 :::image type="content" source="./media/quickstart-nodejs/enable-restart.png" alt-text="屏幕截图，VS Code 提示启用文件日志记录并重启 Web 应用，已选中“是”按钮。":::
 

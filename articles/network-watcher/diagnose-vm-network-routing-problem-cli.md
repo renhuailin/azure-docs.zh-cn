@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 415fcc72116cc36644b58b619404d96ff63b024d
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 2ca7a3b25b1355e21782c1d9f736d20a14cbd4ac
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065899"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785444"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>诊断虚拟机网络路由问题 - Azure CLI
 
@@ -37,13 +37,13 @@ ms.locfileid: "106065899"
 
 ## <a name="create-a-vm"></a>创建 VM
 
-在创建 VM 之前，必须创建该 VM 所属的资源组。 使用 [az group create](/cli/azure/group#az-group-create) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
+在创建 VM 之前，必须创建该 VM 所属的资源组。 使用 [az group create](/cli/azure/group#az_group_create) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az vm create](/cli/azure/vm#az-vm-create) 创建 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 以下示例创建名为 myVm 的 VM  ：
+使用 [az vm create](/cli/azure/vm#az_vm_create) 创建 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 以下示例创建名为 myVm 的 VM  ：
 
 ```azurecli-interactive
 az vm create \
@@ -61,7 +61,7 @@ az vm create \
 
 ### <a name="enable-network-watcher"></a>启用网络观察程序
 
-如果已在“美国东部”区域中启用网络观察程序，请跳到[使用下一跃点](#use-next-hop)。 使用 [az network watcher configure](/cli/azure/network/watcher#az-network-watcher-configure) 命令在“美国东部”区域中创建网络观察程序：
+如果已在“美国东部”区域中启用网络观察程序，请跳到[使用下一跃点](#use-next-hop)。 使用 [az network watcher configure](/cli/azure/network/watcher#az_network_watcher_configure) 命令在“美国东部”区域中创建网络观察程序：
 
 ```azurecli-interactive
 az network watcher configure \
@@ -72,7 +72,7 @@ az network watcher configure \
 
 ### <a name="use-next-hop"></a>使用下一个跃点
 
-Azure 自动创建到默认目标的路由。 可以创建自定义路由来覆盖默认路由。 有时，自定义路由可能会导致通信故障。 要测试来自 VM 的路由，请使用 [az network watcher show-next-hop](/cli/azure/network/watcher#az-network-watcher-show-next-hop) 确定流量发送到特定地址时的下一个路由跃点。
+Azure 自动创建到默认目标的路由。 可以创建自定义路由来覆盖默认路由。 有时，自定义路由可能会导致通信故障。 要测试来自 VM 的路由，请使用 [az network watcher show-next-hop](/cli/azure/network/watcher#az_network_watcher_show_next_hop) 确定流量发送到特定地址时的下一个路由跃点。
 
 测试从 VM 发往 www.bing.com 的某个 IP 地址的出站通信：
 
@@ -104,7 +104,7 @@ az network watcher show-next-hop \
 
 ## <a name="view-details-of-a-route"></a>查看路由详细信息
 
-若要进一步分析路由情况，请使用 [az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table) 命令查看网络接口的有效路由：
+若要进一步分析路由情况，请使用 [az network nic show-effective-route-table](/cli/azure/network/nic#az_network_nic_show_effective_route_table) 命令查看网络接口的有效路由：
 
 ```azurecli-interactive
 az network nic show-effective-route-table \
@@ -154,7 +154,7 @@ az network nic show-effective-route-table \
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组及其包含的所有资源，可以使用 [az group delete](/cli/azure/group#az-group-delete) 将其删除：
+如果不再需要资源组及其包含的所有资源，可以使用 [az group delete](/cli/azure/group#az_group_delete) 将其删除：
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes

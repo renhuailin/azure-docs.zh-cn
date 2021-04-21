@@ -1,7 +1,7 @@
 ---
 title: 教程：需求预测和自动化机器学习
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习工作室中的自动化机器学习训练和部署需求预测模型。
+description: 使用 Azure 机器学习的自动化机器学习（自动化 ML）界面，无需编写代码即可训练和部署需求预测模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,21 +11,18 @@ ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 2653161b5828d89858234a9ca98fe432e0eacb5c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: a5f7c0cf95d62df2d06c91abd99a1827524d5d6b
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879354"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210544"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>教程：使用自动化机器学习预测需求
 
+了解如何在 Azure 机器学习工作室中使用自动化机器学习在不编写任何代码行的情况下创建[时序预测模型](concept-automated-ml.md#time-series-forecasting)。 此模型将预测自行车共享服务的租赁需求。  
 
-本教程将使用 Azure 机器学习工作室中的自动化机器学习（又称为自动化 ML）创建一个时序预测模型，用于预测单车共享服务的租赁需求。
-
-有关分类模型示例，请参阅[教程：使用 Azure 机器学习中的自动化 ML 创建分类模型](tutorial-first-experiment-automated-ml.md)。
-
-本教程介绍如何执行以下任务：
+在本教程中，不会编写任何代码，你将使用工作室界面来执行训练。  你将了解如何执行以下任务：
 
 > [!div class="checklist"]
 > * 创建并加载数据集。
@@ -34,13 +31,18 @@ ms.locfileid: "98879354"
 > * 浏览试验结果。
 > * 部署最佳模型。
 
+此外，请为其他这些模型类型尝试自动化机器学习：
+
+* 如需分类模型的无代码示例，请参阅[教程：使用 Azure 机器学习中的自动化 ML 创建分类模型](tutorial-first-experiment-automated-ml.md)。
+* 如需回归模型的代码优先示例，请参阅[教程：使用自动化机器学习预测出租车费用](tutorial-auto-train-models.md)。
+
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 机器学习工作区。 请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。 
 
 * 下载 [bike-no.csv](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv) 数据文件
 
-## <a name="get-started-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中开始操作
+## <a name="sign-in-to-the-studio"></a>登录到工作室
 
 本教程将在 Azure 机器学习工作室中创建自动化 ML 试验运行。机器学习工作室是一个整合的 Web 界面，其中包含的机器学习工具可让各种技能水平的数据科学实践者执行数据科学方案。 Internet Explorer 浏览器不支持此工作室。
 
@@ -90,7 +92,7 @@ ms.locfileid: "98879354"
 
         1. 此外，对于本示例，请保留“属性”和“类型”的默认值。 
         
-        1. 选择“**下一页**”。
+        1. 选择“**下一步**”。
 
     1. 在“确认详细信息”窗体上，确认信息与先前在“基本信息”和“设置和预览”窗体上填充的内容匹配。
 
@@ -119,7 +121,7 @@ ms.locfileid: "98879354"
             虚拟机类型&nbsp;&nbsp;| 选择计算的虚拟机大小。|CPU（中央处理单元）
             虚拟机大小&nbsp;&nbsp;| 指定计算资源的虚拟机大小。 根据数据和试验类型提供了建议的大小列表。 |Standard_DS12_V2
         
-        1. 选择“下一步”以填充“配置设置窗体” 。
+        1. 选择“下一步”以填充“配置设置窗体”。
         
              字段 | 说明 | 教程的值
             ----|---|---
@@ -134,7 +136,7 @@ ms.locfileid: "98879354"
 
         1. 创建后，从下拉列表中选择新的计算目标。
 
-    1. 选择“**下一页**”。
+    1. 选择“**下一步**”。
 
 ## <a name="select-forecast-settings"></a>选择预测设置
 
@@ -158,7 +160,7 @@ ms.locfileid: "98879354"
     验证 | 选择交叉验证类型和测试数。|验证类型：<br>k-折交叉验证&nbsp;&nbsp; <br> <br> 验证次数：5
     并发| 每次迭代执行的并行迭代的最大数目| 最大并发迭代次数：&nbsp;&nbsp;6
     
-    选择“保存” 。
+    选择“保存”。
 
 ## <a name="run-experiment"></a>运行试验
 
@@ -197,7 +199,7 @@ Azure 机器学习工作室中的自动化机器学习可以通过几个步骤�
 
 1. 按如下所示填充“部署模型”窗格：
 
-    字段| Value
+    字段| 值
     ----|----
     部署名称| bikeshare-deploy
     部署说明| 单车共享需求部署

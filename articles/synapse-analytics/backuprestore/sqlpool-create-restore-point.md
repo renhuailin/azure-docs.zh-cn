@@ -1,7 +1,6 @@
 ---
 title: 为专用 SQL 池创建用户定义的还原点
 description: 了解如何使用 Azure 门户在 Azure Synapse Analytics 中为专用 SQL 池创建用户定义的还原点。
-services: synapse-analytics
 author: joannapea
 manager: igorstan
 ms.service: synapse-analytics
@@ -11,12 +10,12 @@ ms.date: 10/29/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 21fd20100095040fda9f72b00e17147ff560fbca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b695f6c7aabc21541fcc48efed54bbecd022f65a
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94579532"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567921"
 ---
 # <a name="user-defined-restore-points"></a>用户定义的还原点
 

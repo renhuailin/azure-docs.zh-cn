@@ -1,20 +1,21 @@
 ---
 title: Azure Kubernetes Service (AKS) 的 Azure Policy 法规遵从性控制措施
 description: 列出可用于 Azure Kubernetes Service (AKS) 的 Azure Policy 法规遵从性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.topic: sample
 ms.service: container-service
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 0fdc3822b62053195ac1daa3f6eed16ac226f7f1
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: d86dcdea210c51f2668c3dffcc1319f4de391bcd
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106095011"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505831"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 的 Azure Policy 法规遵从性控制措施
 
-[Azure Policy 中的法规遵从性](../governance/policy/concepts/regulatory-compliance.md)为与不同合规性标准相关的“合规性域”和“安全控制”提供由 Microsoft 创建和管理的计划定义，称为“内置项” 。 此页列出 Azure Kubernetes Service (AKS) 的“符合域”和“安全控制措施” 。
+[Azure Policy 中的法规合规性](../governance/policy/concepts/regulatory-compliance.md)为与不同合规性标准相关的符合域和安全控件提供 Microsoft 创建和管理的计划定义（内置）。 此页列出 Azure Kubernetes Service (AKS) 符合域和安全控件。
+
 可以分别为“安全控件”分配内置项，以帮助 Azure 资源符合特定的标准。
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../includes/policy/standards/intro-warning.md)]

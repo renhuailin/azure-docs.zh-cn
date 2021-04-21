@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/29/2021
 ms.author: mbaldwin
-ms.openlocfilehash: e81cbd7e6584f4a280ab9507a989b52d3b188f2d
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
-ms.translationtype: MT
+ms.openlocfilehash: 5e4ec2749cec8444382e2b6e7c856e74c57ebb59
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072558"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777160"
 ---
 # <a name="best-practices-to-use-key-vault"></a>使用密钥保管库的最佳做法
 
@@ -24,7 +24,7 @@ ms.locfileid: "99072558"
 
 ## <a name="control-access-to-your-vault"></a>控制对保管库的访问权限
 
-Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（例如证书、连接字符串和密码）。 因为此数据是敏感数据和业务关键数据，所以需要保护对密钥保管库的访问，只允许得到授权的应用程序和用户进行访问。 [本文](secure-your-key-vault.md)提供密钥保管库访问模型的概述。 其中介绍了身份验证和授权，以及如何保护对密钥保管库的访问。
+Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（例如证书、连接字符串和密码）。 因为此数据是敏感数据和业务关键数据，所以需要保护对密钥保管库的访问，只允许得到授权的应用程序和用户进行访问。 [本文](security-overview.md)提供密钥保管库访问模型的概述。 其中介绍了身份验证和授权，以及如何保护对密钥保管库的访问。
 
 控制对保管库的访问权限的建议如下：
 1. 锁定对订阅、资源组和密钥保管库 (Azure RBAC) 的访问权限
@@ -44,9 +44,9 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 ### <a name="azure-cli-backup-commands"></a>Azure CLI 备份命令
 
-* [备份证书](/cli/azure/keyvault/certificate#az-keyvault-certificate-backup)
-* [备份密钥](/cli/azure/keyvault/key#az-keyvault-key-backup)
-* [备份机密](/cli/azure/keyvault/secret#az-keyvault-secret-backup)
+* [备份证书](/cli/azure/keyvault/certificate#az_keyvault_certificate_backup)
+* [备份密钥](/cli/azure/keyvault/key#az_keyvault_key_backup)
+* [备份机密](/cli/azure/keyvault/secret#az_keyvault_secret_backup)
 
 
 ## <a name="turn-on-logging"></a>启用日志记录

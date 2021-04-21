@@ -3,12 +3,12 @@ title: 手动停止或启动容器组
 description: 了解如何手动停止或启动 Azure 容器实例中的容器组。
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 1801dad463d478c754e621dad0ae9406899ae7e3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 43498a7d31f0cb78751d2f318aede8523b7b9345
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102198109"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786992"
 ---
 # <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>手动停止或启动 Azure 容器实例中的容器
 
@@ -55,6 +55,6 @@ ms.locfileid: "102198109"
 <!-- LINKS - External -->
 
 <!-- LINKS - Internal -->
-[az-container-restart]: /cli/azure/container#az-container-restart
-[az-container-start]: /cli/azure/container#az-container-start
-[az-container-stop]: /cli/azure/container#az-container-stop
+[az-container-restart]: /cli/azure/container#az_container_restart
+[az-container-start]: /cli/azure/container#az_container_start
+[az-container-stop]: /cli/azure/container#az_container_stop

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 78e4b35feb4e830a9f4335614a55d49ca90cd791
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1977663f4661fca316e4839671abd76e07b5acda
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101667633"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304794"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>通过 Synapse SQL 使用外部表
 
@@ -339,9 +339,9 @@ LOCATION = '*folder_or_filepath*'
 如果指定文件夹 LOCATION，则无服务器 SQL 池查询将从外部表中进行选择，并从该文件夹中检索文件。
 
 > [!NOTE]
-> 与 Hadoop 和 PolyBase 不同，无服务器 SQL 池不返回子文件夹。 它返回文件名以下划线 (_) 或句点 (.) 开头的文件。
+> 与 Hadoop 和 PolyBase 不同，无服务器 SQL 池不返回子文件夹，除非在路径末尾指定 /**。
 
-在此示例中，如果 LOCATION='/webdata/'，则无服务器 SQL 池查询将返回 mydata.txt 和 _hidden.txt 中的行。 它不返回 mydata2.txt 和 mydata3.txt，因为这些文件位于子文件夹中。
+在此示例中，如果 LOCATION='/webdata/'，则无服务器 SQL 池查询将返回 mydata.txt 中的行。 它不返回 mydata2.txt 和 mydata3.txt，因为这些文件位于子文件夹中。
 
 ![外部表的递归数据](./media/develop-tables-external-tables/folder-traversal.png)
 

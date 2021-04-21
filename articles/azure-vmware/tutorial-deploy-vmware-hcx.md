@@ -3,12 +3,12 @@ title: 教程 - 部署和配置 VMware HCX
 description: 了解如何为 Azure VMware 解决方案私有云部署和配置 VMware HCX 解决方案。
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: ab59b4a29f8ba372c1892613d5e0461bf3fdc512
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9ee451ce4be59c51299d66e4042ed344026100cf
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869083"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010994"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>部署和配置 VMware HCX
 
@@ -20,7 +20,7 @@ Azure VMware 解决方案中已预先部署 VMware HCX 高级连接器。 它最
 >尽管 VMware 配置最大值工具将本地连接器和云管理器之间的站点对最大值限制为 25，但对于 HCX Advanced Edition 和 HCX Enterprise Edition，许可将该值分别限制为 3 和 10。
 
 >[!NOTE]
->VMware HCX Enterprise 随 Azure VMware 解决方案以预览版服务的形式提供。 它是免费的，并受预览版服务的条款和条件的约束。 在 VMware HCX Enterprise 服务正式发布后，你将提前 30 天收到一则通知，指出计费将进行切换。 你也可选择关闭或退出服务。 无法简单地从 VMware HCX Enterprise 降级地 VMware HCX Advanced。 如果决定降级，必须重新部署，这会导致停机。
+>VMware HCX Enterprise 随 Azure VMware 解决方案以预览版服务的形式提供。 它是免费的，并受预览版服务的条款和条件的约束。 在 VMware HCX Enterprise 服务正式发布后，你将提前 30 天收到一则通知，指出计费将进行切换。 你也可选择关闭或退出服务。 无需重新部署即可从 HCx Enterprise 降级到 HCX Advanced，但必须记录支持票证才能执行该操作。 如果计划降级，请确保未计划任何迁移，或者未使用 RAV、MON 等功能。
 
 首先，请仔细查看[开始之前](#before-you-begin)、[软件版本要求](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html)和[先决条件](#prerequisites)。 
 

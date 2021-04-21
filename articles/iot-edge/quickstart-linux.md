@@ -4,17 +4,17 @@ description: 本快速入门介绍如何在 Linux 上创建 IoT Edge 设备，�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/12/2021
+ms.date: 04/07/2021
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 37f4a63d0a901fd70e0a60bb435efdaf08868616
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cdc5dd2df0dc6ac682d37aea3328545fcb7e5ad2
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463439"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728601"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>快速入门：将第一个 IoT Edge 模块部署到虚拟 Linux 设备
 
@@ -142,14 +142,14 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 �
 <!-- 1.2 -->
 :::moniker range=">=iotedge-2020-11"
 
-使用以下 CLI 命令基于预生成的 [iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy/tree/1.2.0-rc4) 模板创建 IoT Edge 设备。
+使用以下 CLI 命令基于预生成的 [iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy/tree/1.2.0) 模板创建 IoT Edge 设备。
 
 * 对于 bash 或 Cloud Shell 用户，请将以下命令复制到文本编辑器中，将占位符文本替换为自己的信息，然后将其复制到 bash 或 Cloud Shell 窗口中：
 
    ```azurecli-interactive
    az deployment group create \
    --resource-group IoTEdgeResources \
-   --template-uri "https://raw.githubusercontent.com/Azure/iotedge-vm-deploy/1.2.0-rc4/edgeDeploy.json" \
+   --template-uri "https://raw.githubusercontent.com/Azure/iotedge-vm-deploy/1.2.0/edgeDeploy.json" \
    --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' \
    --parameters adminUsername='azureUser' \
    --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) \
@@ -162,7 +162,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 �
    ```azurecli
    az deployment group create `
    --resource-group IoTEdgeResources `
-   --template-uri "https://raw.githubusercontent.com/Azure/iotedge-vm-deploy/1.2.0-rc4/edgeDeploy.json" `
+   --template-uri "https://raw.githubusercontent.com/Azure/iotedge-vm-deploy/1.2.0/edgeDeploy.json" `
    --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' `
    --parameters adminUsername='azureUser' `
    --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) `
@@ -263,32 +263,76 @@ IoT Edge 设备现在已配置好。 它可以运行云部署型模块了。
 
 ![关系图 - 将模块从云部署到设备](./media/quickstart-linux/deploy-module.png)
 
-[!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
+<!-- [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
+
+Include content included below to support versioned steps in Linux quickstart. Can update include file once Windows quickstart supports v1.2 -->
+
+Azure IoT Edge 的主要功能之一是从云中将代码部署到 IoT Edge 设备。 *IoT Edge 模块* 是以容器形式实现的可执行程序包。 在本部分中，你将直接从 Azure IoT 中心的 [Azure 市场的 IoT Edge 模块部分](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)部署一个预建的模块。
+
+在本部分中部署的模块模拟一个传感器并发送生成的数据。 开始使用 IoT Edge 时，此模块是非常有用的代码段，因为你可以使用模拟的数据进行开发和测试。 如果要确切了解此模块的功能，则可以查看[模拟的温度传感器源代码](https://github.com/Azure/iotedge/blob/027a509549a248647ed41ca7fe1dc508771c8123/edge-modules/SimulatedTemperatureSensor/src/Program.cs)。
+
+按照以下步骤启动设置模块向导，从 Azure 市场部署第一个模块。
+
+1. 登录 [Azure 门户](https://portal.azure.com)并转到 IoT 中心。
+
+1. 从左侧菜单中的“自动设备管理”下，选择“IoT Edge” 。
+
+1. 选择设备列表中目标设备的设备 ID。
+
+1. 在上方栏中，选择“设置模块”。
+
+   ![显示正在选择“设置模块”的屏幕截图。](./media/quickstart/select-set-modules.png)
+
+### <a name="modules"></a>模块
+
+向导的第一步是选择要在设备上运行的模块。
+
+在“IoT Edge 模块”下，打开“添加”下拉菜单，然后选择“市场模块”  。
+
+   ![显示“添加”下拉菜单的屏幕截图。](./media/quickstart/add-marketplace-module.png)
+
+在 IoT Edge 模块市场中，搜索并选择 `Simulated Temperature Sensor` 模块。 该模块会添加到“IoT Edge 模块”部分，并处于所需的运行状态。
 
 <!-- 1.2 -->
 :::moniker range=">=iotedge-2020-11"
 
-由于 IoT Edge 版本 1.2 为公共预览版，因此还需要执行额外的步骤，以将运行时模块也更新为它们的公共预览版。
+选择“运行时设置”，打开 edgeHub 和 edgeAgent 模块的设置。 在此设置部分，你可以通过添加环境变量或更改创建选项来管理运行时模块。
 
-1. 从设备详细信息页上，再次选择“设置模块”。
+更新 edgeHub 和 edgeAgent 模块的“映像”字段，以使用版本标记 1.2。 例如：
 
-1. 选择“运行时设置”。
+* `mcr.microsoft.com/azureiotedge-hub:1.2`
+* `mcr.microsoft.com/azureiotedge-agent:1.2`
 
-1. 对 IoT Edge 中心和 IoT Edge 代理这两个模块的“映像”字段都进行更新，以使用版本标记 1.2.0-rc4。 例如：
-
-   * `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4`
-   * `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4`
-
-1. 模拟温度传感器模块应该仍列在模块部分中。 对于公共预览版，无需对该模块进行任何更改。
-
-1. 选择“查看 + 创建”。
-
-1. 选择“创建”  。
-
-1. 在设备详细信息页上，可以选择“$edgeAgent”或“$edgeHub”，此时会看到模块详细信息反映了映像的公共预览版 。
+选择“保存”，将更改应用到运行时模块。
 
 :::moniker-end
-<!-- end 1.2 -->
+<!--end 1.2-->
+
+在完成时选择“下一步:”路由以继续执行向导的下一步。
+
+   ![显示在添加模块后继续下一步的屏幕截图。](./media/quickstart/view-temperature-sensor-next-routes.png)
+
+### <a name="routes"></a>路由
+
+在“路由”选项卡上，删除默认路由（路由），然后选择“下一步:   查看 + 创建”继续执行向导的下一步。
+
+   >[!Note]
+   >路由使用名称和值对构造而成。 应在此页上看到两条路由。 默认路由（路由）会将所有消息发送到 IoT 中心（称为 `$upstream`）。 从 Azure 市场添加模块时，将自动创建第二条路由 (SimulatedTemperatureSensorToIoTHub)。 此路由用于将所有来自模拟温度模块中的消息发送到 IoT 中心。 可以删除默认路由，因为在这种情况下它是多余的。
+
+   ![显示删除默认路由并转到下一步的屏幕截图。](./media/quickstart/delete-route-next-review-create.png)
+
+### <a name="review-and-create"></a>查看 + 创建
+
+查看 JSON 文件，然后选择“创建”。 JSON 文件定义你部署到 IoT Edge 设备的所有模块。 你将看到“SimulatedTemperatureSensor”模块以及“edgeAgent”和“edgeHub”这两个运行时模块  。
+
+   >[!Note]
+   >在将新部署提交到 IoT Edge 设备时，不会向设备推送任何内容。 相反，设备会定期对 IoT 中心进行查询以获取任何新指令。 如果设备找到了更新的部署清单，则它会使用关于新部署的信息来从云中拉取模块映像，然后开始在本地运行模块。 此过程可能需要几分钟。
+
+创建模块部署详细信息后，向导会将你返回到设备详细信息页。 在“模块”选项卡上查看部署状态。
+
+应会看到三个模块：$edgeAgent、$edgeHub 和 SimulatedTemperatureSensor  。 如果其中一个或多个模块在“在部署中指定”下为“是”，但在“由设备报告”下不是，则意味着 IoT Edge 设备仍在启动它们  。 等待几分钟，然后刷新页面。
+
+   ![显示已部署模块列表中模拟温度传感器的屏幕截图。](./media/quickstart/view-deployed-modules.png)
 
 ## <a name="view-generated-data"></a>查看生成的数据
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9ba0e7173c41e26a698596fa18bf1fc1453f3fb3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b58040917ed3d3345a35b7acbe31b6b500f05562
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99628902"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073753"
 ---
 ### <a name="do-i-need-a-public-ip-on-my-virtual-machine-to-connect-via-azure-bastion"></a><a name="publicip"></a>我的虚拟机上是否需要公共 IP 才能通过 Azure Bastion 进行连接？
 
@@ -22,6 +22,10 @@ ms.locfileid: "99628902"
 ### <a name="is-ipv6-supported"></a>是否支持 IPv6？
 
 目前不支持 IPv6。 Azure Bastion 仅支持 IPv4。
+
+### <a name="can-i-use-azure-bastion-with-azure-private-dns-zones"></a>是否可以将 Azure Bastion 与 Azure 专用 DNS 区域一起使用？
+
+目前不支持一起使用 Azure Bastion 和 Azure 专用 DNS 区域。 在部署 Azure Bastion 资源之前，请确保主机虚拟网络未链接到专用 DNS 区域。
 
 ### <a name="do-i-need-an-rdp-or-ssh-client"></a><a name="rdpssh"></a>是否需要 RDP 或 SSH 客户端？
 

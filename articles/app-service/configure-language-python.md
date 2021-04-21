@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/16/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 094755ed6c018b3ac82d6f62a43f17e2536bbd9a
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: e698061122fcc8ff8019907b5fdeba5b2df58407
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953504"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779338"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux Python 应用
 
@@ -27,7 +27,7 @@ ms.locfileid: "104953504"
 - **Azure CLI**：有两个选项。
 
     - 在 [Azure Cloud Shell](../cloud-shell/overview.md) 中运行命令。
-    - 通过安装最新版的 [Azure CLI](/cli/azure/install-azure-cli) 在本地运行命令，然后使用 [az login](/cli/azure/reference-index#az-login) 登录到 Azure。
+    - 通过安装最新版的 [Azure CLI](/cli/azure/install-azure-cli) 在本地运行命令，然后使用 [az login](/cli/azure/reference-index#az_login) 登录到 Azure。
     
 > [!NOTE]
 > Linux 是目前在应用服务中用于运行 Python 应用的推荐选项。 有关 Windows 选项的信息，请参阅 [Windows 风格的应用服务上的 Python](/visualstudio/python/managing-python-on-azure-app-service)。
@@ -129,7 +129,7 @@ ms.locfileid: "104953504"
 
 | Django 设置 | Azure 说明 |
 | --- | --- |
-| `SECRET_KEY` | 如[访问作为环境变量的应用设置](#access-app-settings-as-environment-variables)所述，请将值存储在应用服务设置中。 也可以[在 Azure Key Vault 中将该值存储为“机密”](../key-vault/secrets/quick-create-python.md)。 |
+| `SECRET_KEY` | 如[访问作为环境变量的应用设置](#access-app-settings-as-environment-variables)所述，请将值存储在应用服务设置中。 你也可以[在 Azure 密钥保管库中将该值存储为“机密”](../key-vault/secrets/quick-create-python.md)。 |
 | `DEBUG` | 在应用服务上创建一个值为 0 (false) 的 `DEBUG` 设置，然后将该值加载为环境变量。 在开发环境中，创建一个值为 1 (true) 的 `DEBUG` 环境变量。 |
 | `ALLOWED_HOSTS` | 在生产环境中，Django 要求在 settings.py 的 `ALLOWED_HOSTS` 数组中包含应用的 URL。 可使用 `os.environ['WEBSITE_HOSTNAME']` 代码在运行时检索此 URL。 应用服务会自动将 `WEBSITE_HOSTNAME` 环境变量设置为应用的 URL。 |
 | `DATABASES` | 在应用服务中为数据库连接定义设置，并将这些设置加载为环境变量以填充 [`DATABASES`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-DATABASES) 字典。 也可以将值（尤其是用户名和密码）存储为 [Azure Key Vault 机密](../key-vault/secrets/quick-create-python.md)。 |

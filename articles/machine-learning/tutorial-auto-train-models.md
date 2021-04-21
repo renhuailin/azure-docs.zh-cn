@@ -1,7 +1,7 @@
 ---
-title: 回归教程：自动化机器学习
+title: 教程：使用自动化机器学习创建回归
 titleSuffix: Azure Machine Learning
-description: 创建自动的机器学习试验，该试验会根据提供的训练数据和配置设置生成回归模型。
+description: 使用 Python SDK 编写代码，创建自动化机器学习试验以生成回归模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,30 +11,34 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: 7f3052905d7594d64be9455c16239ebabd219849
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 85129cf282e39b4f4932cc5e9f7cfd72d1e445b0
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105565072"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210628"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>教程：使用自动化机器学习预测出租车费
 
-
-在本教程中，你将使用 Azure 机器学习中的自动机器学习来创建一个用于预测纽约市出租车收费价格的回归模型。 此过程接受定型数据和配置设置，并自动循环访问不同特征规范化/标准化方法、模型和超参数设置的组合，以实现最佳模型。
+在本教程中，你将使用 Azure 机器学习 SDK 中的自动化机器学习来创建一个预测纽约市出租车收费价格的[回归模型](concept-automated-ml.md#regression)。 此过程接受定型数据和配置设置，并自动循环访问不同特征规范化/标准化方法、模型和超参数设置的组合，以实现最佳模型。
 
 ![流程图](./media/tutorial-auto-train-models/flow2.png)
 
-在本教程中，你将学习如何执行以下任务：
+你将在本教程中使用 Python SDK 编写代码。  你将了解如何执行以下任务：
 
 > [!div class="checklist"]
 > * 使用 Azure 开放数据集下载、转换和清理数据
 > * 定型自动化机器学习回归模型
 > * 计算模型准确度
 
-如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版](https://aka.ms/AMLFree)的 Azure 机器学习。
+此外，请为其他这些模型类型尝试自动化机器学习： 
+
+* [教程：使用 Azure 机器学习中的自动化 ML 创建分类模型](tutorial-first-experiment-automated-ml.md) - 无代码示例。
+* [教程：使用自动化机器学习预测需求](tutorial-automated-ml-forecast.md) - 无代码示例。
 
 ## <a name="prerequisites"></a>先决条件
+
+如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版](https://aka.ms/AMLFree)的 Azure 机器学习。
 
 * 如果还没有 Azure 机器学习工作区或 Notebook 虚拟机，请完成[设置教程](tutorial-1st-experiment-sdk-setup.md)。
 * 完成设置教程后，使用同一笔记本服务器打开 tutorials/regression-automl-nyc-taxi-data/regression-automated-ml.ipynb 笔记本。

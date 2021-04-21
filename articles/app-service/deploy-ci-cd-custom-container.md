@@ -7,14 +7,14 @@ ms.assetid: a47fb43a-bbbd-4751-bdc1-cd382eae49f8
 ms.topic: article
 ms.date: 03/12/2021
 ms.author: msangapu
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 654b0f842a3165926242d1ef03f2dfe4e5bacfdc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6519f3fe7335ed41f4d5ef67771aaa738a33e4a8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643349"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782596"
 ---
 # <a name="continuous-deployment-with-custom-containers-in-azure-app-service"></a>在 Azure 应用服务中使用自定义容器进行持续部署
 
@@ -176,7 +176,7 @@ ms.locfileid: "105643349"
 
 此可选配置会将默认身份验证替换为生成的工作流文件中的发布配置文件。
 
-在 [Azure CLI](/cli/azure/) 中使用 [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) 命令生成服务主体。 在以下示例中，将 \<subscription-id>、\<group-name> 和 \<app-name> 替换为自己的值  。 保存整个 JSON 输出（包括最上层的 `{}`）供下一步使用。
+在 [Azure CLI](/cli/azure/) 中使用 [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) 命令生成服务主体。 在以下示例中，将 \<subscription-id>、\<group-name> 和 \<app-name> 替换为自己的值  。 保存整个 JSON 输出（包括最上层的 `{}`）供下一步使用。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myAppDeployAuth" --role contributor \
@@ -213,7 +213,7 @@ az ad sp create-for-rbac --name "myAppDeployAuth" --role contributor \
 
 ## <a name="automate-with-cli"></a>使用 CLI 进行自动化
 
-要配置容器注册表和 Docker 映像，请运行 [az webapp config container set](/cli/azure/webapp/config/container#az-webapp-config-container-set)。
+要配置容器注册表和 Docker 映像，请运行 [az webapp config container set](/cli/azure/webapp/config/container#az_webapp_config_container_set)。
 
 # <a name="azure-container-registry"></a>[Azure 容器注册表](#tab/acr)
 
@@ -240,14 +240,14 @@ az webapp config container set --name <app-name> --resource-group <group-name> -
 -----
 
 ::: zone pivot="container-linux"
-要配置多容器 (Docker Compose) 应用，请在本地准备 Docker Compose 文件，然后使用 `--multicontainer-config-file` 参数运行 [az webapp config container set](/cli/azure/webapp/config/container#az-webapp-config-container-set) 。 如果 Docker Compose 文件包含专用映像，请添加 `--docker-registry-server-*` 参数，如前面的示例中所示。
+要配置多容器 (Docker Compose) 应用，请在本地准备 Docker Compose 文件，然后使用 `--multicontainer-config-file` 参数运行 [az webapp config container set](/cli/azure/webapp/config/container#az_webapp_config_container_set) 。 如果 Docker Compose 文件包含专用映像，请添加 `--docker-registry-server-*` 参数，如前面的示例中所示。
 
 ```azurecli-interactive
 az webapp config container set --resource-group <group-name> --name <app-name> --multicontainer-config-file <docker-compose-file>
 ```
 ::: zone-end
 
-要将 CI/CD 从容器注册表配置到你的应用，请使用 `--enable-cd` 参数运行 [az webapp deployment container config](/cli/azure/webapp/deployment/container#az-webapp-deployment-container-config)。 该命令将输出 Webhook URL，但必须在单独的步骤中在注册表中手动创建 Webhook。 以下示例在应用上启用 CI/CD，然后使用输出中的 Webhook URL 在 Azure 容器注册表中创建 Webhook。
+要将 CI/CD 从容器注册表配置到你的应用，请使用 `--enable-cd` 参数运行 [az webapp deployment container config](/cli/azure/webapp/deployment/container#az_webapp_deployment-container-config)。 该命令将输出 Webhook URL，但必须在单独的步骤中在注册表中手动创建 Webhook。 以下示例在应用上启用 CI/CD，然后使用输出中的 Webhook URL 在 Azure 容器注册表中创建 Webhook。
 
 ```azurecli-interactive
 ci_cd_url=$(az webapp deployment container config --name <app-name> --resource-group <group-name> --enable-cd true --query CI_CD_URL --output tsv)
