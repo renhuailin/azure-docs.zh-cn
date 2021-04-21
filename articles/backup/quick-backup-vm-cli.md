@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 1a1b11d517fdfea0aa3a0f553b63276bc20f90be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 521f9332590eca5cdf94fadc4b59ab4d482eb658
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98805464"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768552"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-azure-cli"></a>使用 Azure CLI 在 Azure 中备份虚拟机
 
@@ -26,7 +26,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 可以通�
 
 恢复服务保管库是一个逻辑容器，用于存储每个受保护资源（例如 Azure VM）的备份数据。 运行受保护资源的备份作业时，该作业会在恢复服务保管库中创建一个恢复点。 然后，可以使用其中一个恢复点将数据还原到给定的时间点。
 
-使用 [az backup vault create](/cli/azure/backup/vault#az-backup-vault-create) 创建恢复服务保管库。 指定与想要保护的 VM 相同的资源组和位置。 如果使用过 [VM 快速入门](../virtual-machines/linux/quick-create-cli.md)，则已创建：
+使用 [az backup vault create](/cli/azure/backup/vault#az_backup_vault_create) 创建恢复服务保管库。 指定与想要保护的 VM 相同的资源组和位置。 如果使用过 [VM 快速入门](../virtual-machines/linux/quick-create-cli.md)，则已创建：
 
 - 名为 myResourceGroup 的资源组；
 - 名为 myVM 的 VM  ；
@@ -38,7 +38,7 @@ az backup vault create --resource-group myResourceGroup \
     --location eastus
 ```
 
-默认情况下，恢复服务保管库是针对异地冗余存储设置的。 异地冗余存储可确保将备份数据复制到距主要区域数百英里以外的 Azure 次要区域。 如果存储冗余设置需要修改，请使用 [az backup vault backup-properties set](/cli/azure/backup/vault/backup-properties#az-backup-vault-backup-properties-set) cmdlet。
+默认情况下，恢复服务保管库是针对异地冗余存储设置的。 异地冗余存储可确保将备份数据复制到距主要区域数百英里以外的 Azure 次要区域。 如果存储冗余设置需要修改，请使用 [az backup vault backup-properties set](/cli/azure/backup/vault/backup-properties#az_backup_vault_backup_properties_set) cmdlet。
 
 ```azurecli
 az backup vault backup-properties set \
@@ -49,7 +49,7 @@ az backup vault backup-properties set \
 
 ## <a name="enable-backup-for-an-azure-vm"></a>为 Azure VM 启用备份
 
-创建一个保护策略，用于定义：备份作业的运行时间以及恢复点的存储期限。 默认保护策略每天运行一个备份作业，并将恢复点保留 30 天。 可以使用这些默认策略值来快速保护 VM。 若要为 VM 启用备份保护，请使用 [az backup protection enable-for-vm](/cli/azure/backup/protection#az-backup-protection-enable-for-vm)。 指定要保护的资源组和 VM，再指定要使用的策略：
+创建一个保护策略，用于定义：备份作业的运行时间以及恢复点的存储期限。 默认保护策略每天运行一个备份作业，并将恢复点保留 30 天。 可以使用这些默认策略值来快速保护 VM。 若要为 VM 启用备份保护，请使用 [az backup protection enable-for-vm](/cli/azure/backup/protection#az_backup_protection_enable_for_vm)。 指定要保护的资源组和 VM，再指定要使用的策略：
 
 ```azurecli-interactive
 az backup protection enable-for-vm \
@@ -75,7 +75,7 @@ az backup protection enable-for-vm \
 
 ## <a name="start-a-backup-job"></a>启动备份作业
 
-若要立即开始备份而不是等待默认策略根据计划的时间运行作业，请使用 [az backup protection backup-now](/cli/azure/backup/protection#az-backup-protection-backup-now)。 第一个备份作业会创建一个完整恢复点。 初始备份后的每个备份作业都会创建增量恢复点。 增量恢复点有利于存储并具有时效性，因为它们仅传输自上次备份以来所做的更改。
+若要立即开始备份而不是等待默认策略根据计划的时间运行作业，请使用 [az backup protection backup-now](/cli/azure/backup/protection#az_backup_protection_backup_now)。 第一个备份作业会创建一个完整恢复点。 初始备份后的每个备份作业都会创建增量恢复点。 增量恢复点有利于存储并具有时效性，因为它们仅传输自上次备份以来所做的更改。
 
 以下参数用于备份 VM：
 
@@ -96,7 +96,7 @@ az backup protection backup-now \
 
 ## <a name="monitor-the-backup-job"></a>监视备份作业
 
-若要监视备份作业的状态，请使用 [az backup job list](/cli/azure/backup/job#az-backup-job-list)：
+若要监视备份作业的状态，请使用 [az backup job list](/cli/azure/backup/job#az_backup_job_list)：
 
 ```azurecli-interactive
 az backup job list \
@@ -118,7 +118,7 @@ fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31
 
 ## <a name="clean-up-deployment"></a>清理部署
 
-如果不再需要，可以在 VM 上禁用保护，删除还原点和恢复服务保管库，然后删除资源组和关联的 VM 资源。 如果使用了现有的 VM，可以跳过最后一个 [az group delete](/cli/azure/group#az-group-delete) 命令，以保留资源组和 VM。
+如果不再需要，可以在 VM 上禁用保护，删除还原点和恢复服务保管库，然后删除资源组和关联的 VM 资源。 如果使用了现有的 VM，可以跳过最后一个 [az group delete](/cli/azure/group#az_group_delete) 命令，以保留资源组和 VM。
 
 若要尝试备份教程，了解如何还原 VM 的数据，请转到[后续步骤](#next-steps)。
 

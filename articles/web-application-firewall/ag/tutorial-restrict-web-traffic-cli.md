@@ -8,12 +8,12 @@ ms.date: 03/29/2021
 ms.author: victorh
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d53f4b640154e4d7b02115d5043b37f6bb6e89ba
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 390fdd4d9e9d0bc62589484ab0c4ba7468bcaf4b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731133"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773092"
 ---
 # <a name="enable-web-application-firewall-using-the-azure-cli"></a>使用 Azure CLI 启用 Web 应用程序防火墙
 
@@ -38,7 +38,7 @@ ms.locfileid: "105731133"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/azure/group#az-group-create) 创建名为 *myResourceGroupAG* 的 Azure 资源组。
+资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/azure/group#az_group_create) 创建名为 *myResourceGroupAG* 的 Azure 资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroupAG --location eastus
@@ -107,7 +107,7 @@ az network application-gateway waf-config set \
 
 ## <a name="create-a-virtual-machine-scale-set"></a>创建虚拟机规模集
 
-在此示例中，将创建虚拟机规模集，以便为应用程序网关的后端池提供两个服务器。 规模集中的虚拟机与 *myBackendSubnet* 子网相关联。 若要创建规模集，可以使用 [az vmss create](/cli/azure/vmss#az-vmss-create)。
+在此示例中，将创建虚拟机规模集，以便为应用程序网关的后端池提供两个服务器。 规模集中的虚拟机与 *myBackendSubnet* 子网相关联。 若要创建规模集，可以使用 [az vmss create](/cli/azure/vmss#az_vmss_create)。
 
 在运行此命令之前，请将 \<username> 和 \<password> 替换为你的值。
 
@@ -145,7 +145,7 @@ az vmss extension set \
 
 ### <a name="create-a-storage-account"></a>创建存储帐户
 
-使用 [az storage account create](/cli/azure/storage/account#az-storage-account-create) 创建名为 *myagstore1* 的存储帐户。
+使用 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 创建名为 *myagstore1* 的存储帐户。
 
 ```azurecli-interactive
 az storage account create \
@@ -158,7 +158,7 @@ az storage account create \
 
 ### <a name="configure-diagnostics"></a>配置诊断
 
-配置诊断以将数据记录到 ApplicationGatewayAccessLog、ApplicationGatewayPerformanceLog 和 ApplicationGatewayFirewallLog 日志中。 将 `<subscriptionId>` 替换为你的订阅标识符，然后使用 [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 配置诊断。
+配置诊断以将数据记录到 ApplicationGatewayAccessLog、ApplicationGatewayPerformanceLog 和 ApplicationGatewayFirewallLog 日志中。 将 `<subscriptionId>` 替换为你的订阅标识符，然后使用 [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) 配置诊断。
 
 ```azurecli-interactive
 appgwid=$(az network application-gateway show --name myAppGateway --resource-group myResourceGroupAG --query id -o tsv)
@@ -172,7 +172,7 @@ az monitor diagnostic-settings create --name appgwdiag --resource $appgwid \
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-若要获取应用程序网关的公共 IP 地址，请使用 [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show)。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。
+若要获取应用程序网关的公共 IP 地址，请使用 [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show)。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。
 
 ```azurecli-interactive
 az network public-ip show \

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 07/29/2020
-ms.openlocfilehash: 80cbb31bb60c97965c701665de9e3fe174e1cc2b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a75177f7ac42c01fcce3bc406a0ad2886ee61b17
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566191"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778746"
 ---
 # <a name="create-an-azure-cosmos-core-sql-api-account-database-and-container-with-autoscale-using-azure-cli"></a>使用 Azure CLI 创建 Azure Cosmos Core (SQL) API 帐户、数据库和容器（具有自动缩放功能）
 [!INCLUDE[appliesto-sql-api](../../../includes/appliesto-sql-api.md)]
@@ -39,11 +39,11 @@ az group delete --name $resourceGroupName
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | 创建 Azure Cosmos DB 帐户。 |
-| [az cosmosdb sql database create](/cli/azure/cosmosdb/sql/database#az-cosmosdb-sql-database-create) | 创建 Azure Cosmos SQL (Core) 数据库。 |
-| [az cosmosdb sql container create](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-create) | 创建 Azure Cosmos SQL (Core) 容器。 |
-| [az group delete](/cli/azure/resource#az-resource-delete) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az cosmosdb create](/cli/azure/cosmosdb#az_cosmosdb_create) | 创建 Azure Cosmos DB 帐户。 |
+| [az cosmosdb sql database create](/cli/azure/cosmosdb/sql/database#az_cosmosdb_sql_database_create) | 创建 Azure Cosmos SQL (Core) 数据库。 |
+| [az cosmosdb sql container create](/cli/azure/cosmosdb/sql/container#az_cosmosdb_sql_container_create) | 创建 Azure Cosmos SQL (Core) 容器。 |
+| [az group delete](/cli/azure/resource#az_resource_delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 

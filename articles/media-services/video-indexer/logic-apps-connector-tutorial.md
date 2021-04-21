@@ -8,16 +8,16 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: f3504ca4a706e92081209f4eaaa86af9f71c52b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: caff6a2496e907da1bdc140860c47476d1842df4
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880905"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600669"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>教程：使用包含逻辑应用和 Power Automate 的视频索引器
 
-Azure 媒体服务[视频索引器 v2 REST API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Delete-Video?) 支持服务器到服务器的通信以及客户端到服务器的通信，使视频索引器用户能够轻松将视频和音频见解集成到其应用程序逻辑，从而解锁新的体验并创造盈利机会。
+Azure 媒体服务[视频索引器 v2 REST API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Delete-Video) 支持服务器到服务器的通信以及客户端到服务器的通信，使视频索引器用户能够轻松将视频和音频见解集成到其应用程序逻辑，从而解锁新的体验并创造盈利机会。
 
 为了进一步简化集成，我们支持与我们的 API 兼容的 [逻辑应用](https://azure.microsoft.com/services/logic-apps/) 和  [Power Automate](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/) 。 你可以使用连接器来设置自定义工作流，以便有效地为大量视频和音频文件编制索引并从中提取见解，无需编写任何代码。 此外，为你的集成使用连接器可以更好地洞察工作流的运行状况，并轻松对其进行调试。  
 

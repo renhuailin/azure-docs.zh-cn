@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 2744c2a082b5321fb671de08301981fd17396640
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.openlocfilehash: c6a4745c4059c81384448deba37495030c4bf3a3
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879082"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503365"
 ---
 # <a name="azcopy-jobs-remove"></a>azcopy jobs remove
 
@@ -31,7 +31,6 @@ azcopy jobs remove [jobID] [flags]
 - [AzCopy 入门](storage-use-azcopy-v10.md)
 - [使用 AzCopy 和 Blob 存储传输数据](./storage-use-azcopy-v10.md#transfer-data)
 - [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
-- [对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>示例
 
@@ -49,7 +48,7 @@ azcopy jobs remove [jobID] [flags]
 
 **--output-type** 字符串   命令输出的格式。 选项包括：text、json。 默认值为 `text`。 （默认值 `text`）
 
---trusted-microsoft-suffixes 字符串指定可向其中发送 Azure Active Directory 登录令牌的其他域后缀。  默认值为“.core.windows.net;.core.chinacloudapi.cn;.core.cloudapi.de;.core.usgovcloudapi.net” 。 此处列出的任何内容都会添加到默认值。 为安全，你只应在此处放置 Microsoft Azure 域。 用分号分隔多个条目。
+--trusted-microsoft-suffixes 字符串指定可向其中发送 Azure Active Directory 登录令牌的其他域后缀。  默认值为“.core.windows.net;.core.chinacloudapi.cn;.core.cloudapi.de;.core.usgovcloudapi.net” 。 此处列出的任何内容都会添加到默认值。 为安全起见，应只在此处放置 Microsoft Azure 域。 用分号分隔多个条目。
 
 ## <a name="see-also"></a>另请参阅
 

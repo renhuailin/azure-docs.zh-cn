@@ -8,13 +8,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: mvc, seodec18
-ms.openlocfilehash: e4d9fc6e597fb51f607a3e2833ae6ddd7d9281fc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: mvc, seodec18, devx-track-azurecli
+ms.openlocfilehash: 24658525ca1248aa82732a31eb9a40df1403203c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97006325"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782380"
 ---
 # <a name="connect-an-app-service-app-to-an-azure-cache-for-redis-using-cli"></a>使用 CLI 将应用服务应用连接到 Azure Redis 缓存
 
@@ -24,7 +24,7 @@ ms.locfileid: "97006325"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-如果选择在本地安装并使用 CLI，需要 Azure CLI 2.0 版或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，需要 Azure CLI 2.0 版或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -38,12 +38,12 @@ ms.locfileid: "97006325"
 
 | 命令 | 说明 |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | 创建应用服务计划。 |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | 创建应用服务应用。 |
-| [`az redis create`](/cli/azure/redis#az-redis-create) | 创建新的用于 Redis 的 Azure 缓存实例。 |
-| [`az redis list-keys`](/cli/azure/redis#az-redis-list-keys) | 列出用于 Redis 的 Azure 缓存实例的访问密钥。 |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | 创建或更新应用服务应用的应用设置。 应用设置将作为应用的环境变量公开。 |
+| [`az group create`](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | 创建应用服务计划。 |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | 创建应用服务应用。 |
+| [`az redis create`](/cli/azure/redis#az_redis-create) | 创建新的用于 Redis 的 Azure 缓存实例。 |
+| [`az redis list-keys`](/cli/azure/redis#az_redis_list_keys) | 列出用于 Redis 的 Azure 缓存实例的访问密钥。 |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) | 创建或更新应用服务应用的应用设置。 应用设置将作为应用的环境变量公开。 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/28/2020
-ms.openlocfilehash: f46c093bffcc26b5f7975d25ccaca648bdc527da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/24/2021
+ms.openlocfilehash: 03cfb49dabd5039453f84ef0e636d3948af70d8d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99054680"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764830"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建和管理逻辑应用工作流定义
 
@@ -52,7 +52,7 @@ ms.locfileid: "99054680"
 
     有关详细信息，请参阅[扩展市场](https://code.visualstudio.com/docs/editor/extension-gallery)。 若要为此扩展的开源版本贡献内容，请访问 [GitHub 上适用于 Visual Studio Code 的 Azure 逻辑应用扩展](https://github.com/Microsoft/vscode-azurelogicapps)。
 
-* 如果逻辑应用需要通过仅限流量流经特定 IP 地址的防火墙进行通信，则该防火墙需要允许访问该逻辑应用所在的 Azure 区域中的逻辑应用服务或运行时使用的[入站](logic-apps-limits-and-config.md#inbound)和[出站](logic-apps-limits-and-config.md#outbound) IP 地址。 如果逻辑应用还使用[托管连接器](../connectors/apis-list.md#managed-api-connectors)（例如 Office 365 Outlook 连接器或 SQL 连接器），或者还使用[自定义连接器](/connectors/custom-connectors/)，则防火墙还需要允许访问该逻辑应用所在的 Azure 区域中的所有[托管连接器出站 IP 地址](logic-apps-limits-and-config.md#outbound)。
+* 如果逻辑应用需要通过仅限流量流经特定 IP 地址的防火墙进行通信，则该防火墙需要允许访问该逻辑应用所在的 Azure 区域中的逻辑应用服务或运行时使用的[入站](logic-apps-limits-and-config.md#inbound)和[出站](logic-apps-limits-and-config.md#outbound) IP 地址。 如果逻辑应用还使用[托管连接器](../connectors/managed.md)（例如 Office 365 Outlook 连接器或 SQL 连接器），或者还使用[自定义连接器](/connectors/custom-connectors/)，则防火墙还需要允许访问该逻辑应用所在的 Azure 区域中的所有[托管连接器出站 IP 地址](logic-apps-limits-and-config.md#outbound)。
 
 <a name="access-azure"></a>
 

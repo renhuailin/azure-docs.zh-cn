@@ -8,12 +8,12 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: f1a502722156bc010dab917afdbd1d49ae93681a
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: b45bb353ae32f1037fde7dc5d518472089edf12f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375978"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766328"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>快速入门：适用于 Java 的 Azure Key Vault 机密客户端库
 适用于 Java 的 Azure Key Vault 机密客户端库入门。 请遵循以下步骤安装包并试用基本任务的示例代码。
@@ -175,7 +175,7 @@ SecretClient secretClient = new SecretClientBuilder()
 secretClient.setSecret(new KeyVaultSecret(secretName, secretValue));
 ```
 
-可以使用 [az keyvault secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) 命令来验证是否设置了机密：
+可以使用 [az keyvault secret show](/cli/azure/keyvault/secret?#az_keyvault_secret_show) 命令来验证是否设置了机密：
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-key-vault-name> --name mySecret
@@ -200,7 +200,7 @@ SyncPoller<DeletedSecret, Void> deletionPoller = secretClient.beginDeleteSecret(
 deletionPoller.waitForCompletion();
 ```
 
-可使用 [az keyvault secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) 命令来验证是否已删除机密：
+可使用 [az keyvault secret show](/cli/azure/keyvault/secret?#az_keyvault_secret_show) 命令来验证是否已删除机密：
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-key-vault-name> --name mySecret
@@ -281,4 +281,4 @@ public class App {
 
 - 阅读 [Azure Key Vault 概述](../general/overview.md)
 - 参阅 [Azure Key Vault 开发人员指南](../general/developers-guide.md)
-- 如何[保护对密钥保管库的访问](../general/secure-your-key-vault.md)
+- 如何[保护对密钥保管库的访问](../general/security-overview.md)

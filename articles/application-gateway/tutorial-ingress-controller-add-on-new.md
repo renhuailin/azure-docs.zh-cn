@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.author: caya
-ms.openlocfilehash: c37168c5165f5402dd4f57c8557bc2b7b3603533
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aad57c75481230db16a63aec7fb04fc5987ae8f0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101720182"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772758"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>教程：使用新的应用程序网关实例为新的 AKS 群集启用入口控制器加载项
 
@@ -36,7 +36,7 @@ ms.locfileid: "101720182"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-在 Azure 中，可将相关的资源分配到资源组。 使用 [az group create](/cli/azure/group#az-group-create) 创建资源组。 下面的示例在 canadacentral 位置（区域）创建名为 myResourceGroup 的资源组 ： 
+在 Azure 中，可将相关的资源分配到资源组。 使用 [az group create](/cli/azure/group#az_group_create) 创建资源组。 下面的示例在 canadacentral 位置（区域）创建名为 myResourceGroup 的资源组 ： 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location canadacentral
@@ -60,7 +60,7 @@ az group create --name myResourceGroup --location canadacentral
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-cidr "10.2.0.0/16" --generate-ssh-keys
 ```
 
-若要为 `az aks create` 命令配置其他参数，请参阅[这些参考](/cli/azure/aks#az-aks-create)。 
+若要为 `az aks create` 命令配置其他参数，请参阅[这些参考](/cli/azure/aks#az_aks_create)。 
 
 > [!NOTE]
 > 创建的 AKS 群集将显示在创建的 myResourceGroup 资源组中。 但是，自动创建的应用程序网关实例将位于代理池所在的节点资源组中。 默认情况下，节点资源组将命名为 MC_resource-group-name_cluster-name_location，但可以修改。 

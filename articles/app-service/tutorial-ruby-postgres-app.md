@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
-ms.openlocfilehash: de8f0e64189014b303463dd8bd6c827990b88f9a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 63194ab87e0f2228b8585e962394aa1ebfff48d6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178450"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767218"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>在基于 Linux 上的 Azure 应用服务中生成 Ruby 和 Postgres 应用
 
@@ -147,7 +147,7 @@ az postgres up --resource-group myResourceGroup --location westeurope --server-n
 
 <!-- not all locations support az postgres up -->
 > [!TIP]
-> `--location <location-name>` 可以设置为任一个 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)。 可以使用 [`az account list-locations`](/cli/azure/account#az-account-list-locations) 命令获取可供你的订阅使用的区域。 对于生产应用，请将数据库和应用放置在同一位置。
+> `--location <location-name>` 可以设置为任一个 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)。 可以使用 [`az account list-locations`](/cli/azure/account#az_account_list_locations) 命令获取可供你的订阅使用的区域。 对于生产应用，请将数据库和应用放置在同一位置。
 
 ## <a name="connect-app-to-azure-postgres"></a>将应用连接到 Azure Postgres
 
@@ -255,7 +255,7 @@ git commit -m "database.yml updates"
 
 ### <a name="configure-database-settings"></a>配置数据库设置
 
-在应用服务的 Cloud Shell 中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) 命令将环境变量设置为应用设置。
+在应用服务的 Cloud Shell 中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) 命令将环境变量设置为应用设置。
 
 以下 Cloud Shell 命令配置应用设置 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME` 和 `DB_PASSWORD`。 替换占位符 _&lt;appname>_ 和 _&lt;postgres-server-name>_ 。
 

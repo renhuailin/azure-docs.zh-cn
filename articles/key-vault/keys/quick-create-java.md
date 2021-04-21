@@ -8,12 +8,12 @@ ms.date: 01/05/2021
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.openlocfilehash: 124e56fad35be0f3ac5b08ee9dd66454b9d077c5
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 75cb7b6c9225e8579561f980df10da8994257133
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374686"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777178"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-java"></a>快速入门：适用于 Java 的 Azure Key Vault 密钥客户端库
 适用于 Java 的 Azure Key Vault 密钥客户端库入门。 请遵循以下步骤安装包并试用基本任务的示例代码。
@@ -176,7 +176,7 @@ KeyClient keyClient = new KeyClientBuilder()
 keyClient.createKey(keyName, KeyType.RSA);
 ```
 
-可以使用 [az keyvault key show](/cli/azure/keyvault/key?#az-keyvault-key-show) 命令来验证是否设置了密钥：
+可以使用 [az keyvault key show](/cli/azure/keyvault/key?#az_keyvault_key_show) 命令来验证是否设置了密钥：
 
 ```azurecli
 az keyvault key show --vault-name <your-unique-key-vault-name> --name myKey
@@ -201,7 +201,7 @@ SyncPoller<DeletedKey, Void> deletionPoller = keyClient.beginDeleteKey(keyName);
 deletionPoller.waitForCompletion();
 ```
 
-可以使用 [az keyvault key show](/cli/azure/keyvault/key?#az-keyvault-key-show) 命令来验证是否删除了密钥：
+可以使用 [az keyvault key show](/cli/azure/keyvault/key?#az_keyvault_key_show) 命令来验证是否删除了密钥：
 
 ```azurecli
 az keyvault key show --vault-name <your-unique-key-vault-name> --name myKey
@@ -271,4 +271,4 @@ public class App {
 - 阅读 [Azure Key Vault 概述](../general/overview.md)
 - 请参阅 [Key Vault 安全性概述](../general/security-overview.md)
 - 参阅 [Azure Key Vault 开发人员指南](../general/developers-guide.md)
-- 如何[保护对密钥保管库的访问](../general/secure-your-key-vault.md)
+- 如何[保护对密钥保管库的访问](../general/security-overview.md)

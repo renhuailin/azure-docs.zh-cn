@@ -6,13 +6,13 @@ author: mksuni
 ms.author: sumuth
 ms.topic: tutorial
 ms.date: 11/25/2020
-ms.custom: mvc
-ms.openlocfilehash: 6f2b3d9f38fc04428678a71c9942fc7aa2182dc8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: vc, devx-track-azurecli
+ms.openlocfilehash: 0c6211f4cd647addd6f1d18a153695d16a9d9952
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102217187"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770140"
 ---
 # <a name="tutorial-deploy-wordpress-app-on-aks-with-azure-database-for-mysql---flexible-server"></a>教程：使用 Azure Database for MySQL 灵活服务器在 AKS 上部署 WordPress 应用
 
@@ -60,7 +60,7 @@ az group create --name wordpress-project --location eastus
 
 ## <a name="create-aks-cluster"></a>创建 AKS 群集
 
-使用 [az aks create](/cli/azure/aks#az-aks-create) 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为 myAKSCluster 的群集。 此操作将需要几分钟才能完成。
+使用 [az aks create](/cli/azure/aks#az_aks_create) 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为 myAKSCluster 的群集。 此操作将需要几分钟才能完成。
 
 ```azurecli-interactive
 az aks create --resource-group wordpress-project --name myAKSCluster --node-count 1 --generate-ssh-keys
@@ -73,13 +73,13 @@ az aks create --resource-group wordpress-project --name myAKSCluster --node-coun
 
 ## <a name="connect-to-the-cluster"></a>连接到群集
 
-若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)。 如果使用的是 Azure Cloud Shell，则 `kubectl` 已安装。 若要在本地安装 `kubectl`，请使用 [az aks install-cli](/cli/azure/aks#az-aks-install-cli) 命令：
+若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)。 如果使用的是 Azure Cloud Shell，则 `kubectl` 已安装。 若要在本地安装 `kubectl`，请使用 [az aks install-cli](/cli/azure/aks#az_aks_install_cli) 命令：
 
 ```azurecli-interactive
 az aks install-cli
 ```
 
-若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials](/cli/azure/aks#az-aks-get-credentials) 命令。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。
+若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials](/cli/azure/aks#az_aks_get_credentials) 命令。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。
 
 ```azurecli-interactive
 az aks get-credentials --resource-group wordpress-project --name myAKSCluster
@@ -327,4 +327,3 @@ az group delete --name wordpress-project --yes --no-wait
 - 了解如何[缩放群集](../../aks/tutorial-kubernetes-scale.md)
 - 了解如何管理 [MySQL 灵活服务器](./quickstart-create-server-cli.md)
 - 了解如何为数据库服务器[配置服务器参数](./how-to-configure-server-parameters-cli.md)。
-

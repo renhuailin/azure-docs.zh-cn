@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: aaef3f28ea9b7e41bce35661e9515f6efcc9ade5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0810f023f4e2e192f2cb0d83f2a028cdded9e275
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102184434"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779414"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 PHP 和 MySQL 应用
 
@@ -160,7 +160,7 @@ php artisan serve
 
 ### <a name="create-a-mysql-server"></a>创建 MySQL 服务器
 
-在 Cloud Shell 中，使用 [`az mysql server create`](/cli/azure/mysql/server#az-mysql-server-create) 命令在 Azure Database for MySQL 中创建一个服务器。
+在 Cloud Shell 中，使用 [`az mysql server create`](/cli/azure/mysql/server#az_mysql_server_create) 命令在 Azure Database for MySQL 中创建一个服务器。
 
 在下列命令中，用唯一的服务器名称替换 \<mysql-server-name> 占位符，用用户名替换\<admin-user> 占位符，并用密码替换 \<admin-password> 占位符  。 此服务器名称用作 MySQL 终结点 (`https://<mysql-server-name>.mysql.database.azure.com`) 的一部分，因此需在 Azure 的所有服务器中保持唯一。 有关选择 MySQL DB SKU 的详细信息，请参阅[为 MySQL 服务器创建 Azure 数据库](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md#create-an-azure-database-for-mysql-server)。
 
@@ -186,7 +186,7 @@ az mysql server create --resource-group myResourceGroup --name <mysql-server-nam
 
 ### <a name="configure-server-firewall"></a>配置服务器防火墙
 
-在 Cloud Shell 中，使用 [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-create) 命令创建 MySQL 服务器的防火墙规则，以便建立客户端连接。 若同时将起始 IP 和结束 IP 设置为 0.0.0.0，防火墙将仅对其他 Azure 资源开启。 
+在 Cloud Shell 中，使用 [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create) 命令创建 MySQL 服务器的防火墙规则，以便建立客户端连接。 若同时将起始 IP 和结束 IP 设置为 0.0.0.0，防火墙将仅对其他 Azure 资源开启。 
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -376,7 +376,7 @@ git commit -m "database.php updates"
 
 ### <a name="configure-database-settings"></a>配置数据库设置
 
-在应用服务中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) 命令将环境变量设置为应用设置。
+在应用服务中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) 命令将环境变量设置为应用设置。
 
 使用以下命令可以配置应用设置 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME` 和 `DB_PASSWORD`。 替换占位符 &lt;app-name> 和 &lt;mysql-server-name> 。
 
@@ -407,7 +407,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 php artisan key:generate --show
 ```
 
-在 Cloud Shell 中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) 命令在应用服务应用中设置应用程序密钥。 替换占位符 &lt;app-name> 和 &lt;outputofphpartisankey:generate> 。
+在 Cloud Shell 中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) 命令在应用服务应用中设置应用程序密钥。 替换占位符 &lt;app-name> 和 &lt;outputofphpartisankey:generate> 。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
@@ -421,7 +421,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 设置应用的虚拟应用程序路径。 需要执行此步骤的原因是 [Laravel 应用程序生命周期](https://laravel.com/docs/5.4/lifecycle)在 public 目录中开始，而不是在应用程序的根目录中开始。 无需手动配置虚拟应用程序路径，生命周期在根目录中开始的其他 PHP 框架也能正常工作。
 
-在 Cloud Shell 中，使用 [`az resource update`](/cli/azure/resource#az-resource-update) 命令设置虚拟应用程序路径。 替换 &lt;app-name> 占位符。
+在 Cloud Shell 中，使用 [`az resource update`](/cli/azure/resource#az_resource_update) 命令设置虚拟应用程序路径。 替换 &lt;app-name> 占位符。
 
 ```azurecli-interactive
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01
@@ -649,7 +649,7 @@ git push azure main
 
 当 PHP 应用程序在 Azure 应用服务中运行时，可以将控制台日志通过管道传输到终端。 如此，可以获得相同的诊断消息，以便调试应用程序错误。
 
-若要启动日志流式处理，请在 Cloud Shell 中使用 [`az webapp log tail`](/cli/azure/webapp/log#az-webapp-log-tail) 命令。
+若要启动日志流式处理，请在 Cloud Shell 中使用 [`az webapp log tail`](/cli/azure/webapp/log#az_webapp_log_tail) 命令。
 
 ```azurecli-interactive
 az webapp log tail --name <app_name> --resource-group myResourceGroup

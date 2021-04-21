@@ -8,12 +8,12 @@ ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, cli-validate, seodec18
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: be555039375e2d71d00bcf8ee58898f54cc3645a
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 603d8e642cd2e88beec6ae34094a2c6c43d179ee
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379564"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768890"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>在 Azure 中创建静态 HTML Web 应用
 
@@ -55,7 +55,7 @@ az webapp up --location westeurope --name <app_name> --html
 <li>将 <code>&lt;app-name&gt;</code> 替换为在整个 Azure 中均唯一的名称（有效字符为 <code>a-z</code>、<code>0-9</code> 和 <code>-</code>）<em></em>。 良好的模式是结合使用公司名称和应用标识符。</li>
 <li><code>--sku F1</code> 参数在“免费”定价层上创建 Web 应用。 省略此参数可使用更快的高级层，这会按小时计费。</li>
 <li><code>--html</code> 参数表示将所有文件夹内容视为静态内容并禁用生成自动化。</li>
-<li>可以选择包含参数 <code>--location &lt;location-name&gt;</code>，其中 <code>&lt;location-name&gt;</code> 是可用的 Azure 区域。 可以运行 <a href="/cli/azure/appservice#az-appservice-list-locations"><code>az account list-locations</code></a> 命令来检索 Azure 帐户的允许区域列表。</li>
+<li>可以选择包含参数 <code>--location &lt;location-name&gt;</code>，其中 <code>&lt;location-name&gt;</code> 是可用的 Azure 区域。 可以运行 <a href="/cli/azure/appservice#az_appservice_list_locations"><code>az account list-locations</code></a> 命令来检索 Azure 帐户的允许区域列表。</li>
 </ul>
 </details>
 
@@ -67,7 +67,7 @@ az webapp up --location westeurope --name <app_name> --html
 <ul>
 <li>创建一个默认的资源组。</li>
 <li>创建一个默认的应用服务计划。</li>
-<li>使用指定名称<a href="/cli/azure/webapp#az-webapp-create">创建应用服务应用</a>。</li>
+<li>使用指定名称<a href="/cli/azure/webapp#az_webapp_create">创建应用服务应用</a>。</li>
 <li><a href="/azure/app-service/deploy-zip">使用 Zip</a> 将文件从当前工作目录部署到应用。</li>
 <li>运行时，它会提供有关资源创建、日志记录和 ZIP 部署的消息。</li>
 </ul>

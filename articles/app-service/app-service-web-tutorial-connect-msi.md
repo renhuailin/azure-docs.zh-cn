@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: 2c19ee2b8e7ec3c695b2c76c46402c118c559b40
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0012c3d208998786ef5aa34320f3bccc4e51ebe6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736232"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782776"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教程：使用托管标识确保从应用服务进行的 Azure SQL 数据库连接安全
 
@@ -57,7 +57,7 @@ ms.locfileid: "98736232"
 
 如果 Azure AD 租户还没有用户，请按照[使用 Azure Active Directory 添加或删除用户](../active-directory/fundamentals/add-users-azure-active-directory.md)中的步骤创建一个用户。
 
-使用 [`az ad user list`](/cli/azure/ad/user#az-ad-user-list) 查找 Azure AD 用户的对象 ID，并替换 \<user-principal-name>。 结果会保存到变量中。
+使用 [`az ad user list`](/cli/azure/ad/user#az_ad_user_list) 查找 Azure AD 用户的对象 ID，并替换 \<user-principal-name>。 结果会保存到变量中。
 
 ```azurecli-interactive
 azureaduser=$(az ad user list --filter "userPrincipalName eq '<user-principal-name>'" --query [].objectId --output tsv)
@@ -66,7 +66,7 @@ azureaduser=$(az ad user list --filter "userPrincipalName eq '<user-principal-na
 > 若要查看 Azure AD 中所有用户主体名称的列表，请运行 `az ad user list --query [].userPrincipalName`。
 >
 
-使用 Cloud Shell 中的 [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) 命令，将此 Azure AD 用户添加为 Active Directory 管理员。 在以下命令中，将 \<server-name> 替换为服务器名称（不带 `.database.windows.net` 后缀）。
+使用 Cloud Shell 中的 [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_create) 命令，将此 Azure AD 用户添加为 Active Directory 管理员。 在以下命令中，将 \<server-name> 替换为服务器名称（不带 `.database.windows.net` 后缀）。
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server-name> --display-name ADMIN --object-id $azureaduser
@@ -176,7 +176,7 @@ connection.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureSe
 
 ### <a name="enable-managed-identity-on-app"></a>在应用上启用托管标识
 
-若要为 Azure 应用启用托管标识，请在 Cloud Shell 中使用 [az webapp identity assign](/cli/azure/webapp/identity#az-webapp-identity-assign) 命令。 在以下命令中，替换 \<app-name>。
+若要为 Azure 应用启用托管标识，请在 Cloud Shell 中使用 [az webapp identity assign](/cli/azure/webapp/identity#az_webapp_identity_assign) 命令。 在以下命令中，替换 \<app-name>。
 
 ```azurecli-interactive
 az webapp identity assign --resource-group myResourceGroup --name <app-name>

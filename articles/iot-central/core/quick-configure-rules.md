@@ -8,16 +8,14 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 90fc1385afb2ef921828465ba030674281e96ebf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f65614de97e8ff6eed732e624ae30c3f2b70bd60
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99833841"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589000"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>快速入门：在 Azure IoT Central 中配置用于设备的规则和操作
-
-*本文适用于操作员、构建者和管理员。*
 
 在本快速入门中，你将创建一条规则，指示在设备传感器报告的湿度超过 55% 时发送电子邮件。
 
@@ -70,10 +68,6 @@ ms.locfileid: "99833841"
 
 > [!NOTE]
 > 测试完成后，关闭该规则以停止在收件箱中接收警报。
-
-## <a name="clean-up-resources"></a>清理资源
-
-[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

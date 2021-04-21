@@ -3,19 +3,18 @@ title: 机密更改 Key Vault 状态时发送电子邮件
 description: 使用逻辑应用响应 Key Vault 机密更改的指南
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9c522d870a25b3df34ab6a0cf1c1e944a6462685
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e6ec06e3df87e0ad0e50efca24439435d655f6a1
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96013983"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752095"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>使用逻辑应用接收有关 Key Vault 机密状态更改的电子邮件
 

@@ -5,12 +5,12 @@ ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
 ms.topic: sample
 ms.date: 07/03/2018
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 020bd064628554703bb375c06c72e68d4536a2a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ea368714ded56d77a10e24b853144bdf1dd42dfe
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934435"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786308"
 ---
 # <a name="create-a-function-app-in-an-app-service-plan"></a>在应用服务计划中创建 Function App
 
@@ -36,10 +36,10 @@ ms.locfileid: "97934435"
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | 创建 Azure 存储帐户。 |
-| [az functionapp plan create](/cli/azure/functionapp/plan#az-functionapp-plan-create) | 创建高级计划。 |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | 在应用服务计划中创建函数应用。 |
+| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | 创建 Azure 存储帐户。 |
+| [az functionapp plan create](/cli/azure/functionapp/plan#az_functionapp_plan_create) | 创建高级计划。 |
+| [az functionapp create](/cli/azure/functionapp#az_functionapp_create) | 在应用服务计划中创建函数应用。 |
 
 ## <a name="next-steps"></a>后续步骤
 
