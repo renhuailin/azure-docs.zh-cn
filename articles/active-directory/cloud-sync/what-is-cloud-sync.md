@@ -11,17 +11,17 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3b880d70baf7c160f8235bd01a5000f83825c36
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af4eaa5912cdf7463c81f501d71b69e934f8febb
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98614460"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306001"
 ---
 # <a name="what-is-azure-ad-connect-cloud-sync"></a>什么是 Azure AD Connect 云同步？
 Azure AD Connect 云同步是 Microsoft 提供的一个新产品/服务，旨在满足和实现在 Azure AD 中同步用户、组与联系人的混合标识目标。  它使用 Azure AD 云预配代理来实现此目标，而不是使用 Azure AD Connect 应用程序。  但是，它可以与 Azure AD Connect 同步一起使用，并具有以下优势：
     
-- 支持从多林离线 Active Directory 林环境同步到 Azure AD 租户：常见的场景包括企业并购和收购，其中，被收购公司的 AD 林独立于父公司的 AD 林，并且这些公司在过去拥有多个 AD 林。
+- 支持从多林离线 Active Directory 林环境同步到 Azure AD 租户：常见的应用场景包括企业并购和收购（其中，被收购公司的 AD 林独立于父公司的 AD 林），并且这些公司在过去拥有多个 AD 林。
 - 使用轻型预配代理简化安装：代理充当 AD 与 Azure AD 之间的桥梁，所有同步配置托管在云中。 
 - 可以使用多个预配代理来简化高可用性部署，这对于依赖于在 AD 与 Azure AD 之间实现密码哈希同步的组织而言尤其重要。
 - 支持具有多达 5 万成员的大型组。 建议在同步大型组时仅使用 OU 范围筛选器。
@@ -30,7 +30,7 @@ Azure AD Connect 云同步是 Microsoft 提供的一个新产品/服务，旨在
 ![什么是 Azure AD Connect](media/what-is-cloud-sync/architecture-1.png)
 
 ## <a name="how-is-azure-ad-connect-cloud-sync-different-from-azure-ad-connect-sync"></a>Azure AD Connect 云同步与 Azure AD Connect 同步有何不同？
-使用 Azure AD Connect 云同步时，从 AD 到 Azure AD 的预配将在 Microsoft Online Services 中经过协调。 组织只需在其本地环境和 IaaS 托管环境中，部署一个轻型代理充当 Azure AD 与 AD 之间的桥梁。 预配配置存储在 Azure AD 中，并作为服务的一部分进行管理。
+使用 Azure AD Connect 云同步时，从 AD 到 Azure AD 的预配将在 Microsoft Online Services 中经过协调。 组织只需在其本地或 IaaS 托管环境中部署一个轻量级代理充当 Azure AD 与 AD 之间的桥梁。 预配配置存储在 Azure AD 中，并作为服务的一部分进行管理。
 
 ## <a name="azure-ad-connect-cloud-sync-video"></a>Azure AD Connect 云同步视频
 下面的短视频简单扼要地介绍了 Azure AD Connect 云同步：
@@ -63,7 +63,7 @@ Azure AD Connect 云同步是 Microsoft 提供的一个新产品/服务，旨在
 | 支持联合身份验证 |●|●|
 | 无缝单一登录|● |●|
 | 支持在域控制器上安装 |● |● |
-| 对 Windows Server 2012 和 Windows Server 2012 R2 的支持 |● |● |
+| Windows Server 2016 的支持|● |● |
 | 按域/OU/组进行筛选 |● |● |
 | 按对象的属性值进行筛选 |● | |
 | 允许同步极少量的属性 (MinSync) |● |● |

@@ -2,21 +2,21 @@
 title: 数据加载最佳做法
 description: 有关将数据加载到 Azure Synapse Analytics 中的专用 SQL 池的建议和性能优化。
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 33212d44fcb6be3f01cf968d00751d55e3bd7b8f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9fe7ef8e6ccbadd5e78de5bfd5f137132dbe6319
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104585445"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567938"
 ---
 # <a name="best-practices-for-loading-data-into-a-dedicated-sql-pool-azure-synapse-analytics"></a>将数据加载到 Azure Synapse Analytics 中的专用 SQL 池的最佳做法
 

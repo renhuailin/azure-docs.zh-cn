@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
-ms.date: 11/04/2020
+ms.date: 04/14/2021
 ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fc0c4bf9f71a8fe7e8cf49b83d32ac594dbe062
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e24bf5df84015ada6b62c35fdd29571c66e06ebd
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103011371"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505252"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>向管理单元分配限定范围的角色
 
@@ -73,11 +73,11 @@ ms.locfileid: "103011371"
 
 ```powershell
 $adminUser = Get-AzureADUser -ObjectId "Use the user's UPN, who would be an admin on this unit"
-$role = Get-AzureADDirectoryRole | Where-Object -Property DisplayName -EQ -Value "User Account Administrator"
+$role = Get-AzureADDirectoryRole | Where-Object -Property DisplayName -EQ -Value "User Administrator"
 $adminUnitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
-$roleMember = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo
-$roleMember.ObjectId = $adminUser.ObjectId
-Add-AzureADMSScopedRoleMembership -ObjectId $adminUnitObj.ObjectId -RoleObjectId $role.ObjectId -RoleMemberInfo $roleMember
+$roleMember = New-Object -TypeName Microsoft.Open.MSGraph.Model.MsRoleMemberInfo
+$roleMember.Id = $adminUser.ObjectId
+Add-AzureADMSScopedRoleMembership -Id $adminUnitObj.Id -RoleId $role.ObjectId -RoleMemberInfo $roleMember
 ```
 
 可以根据特定环境的需要更改突出显示的部分。
@@ -119,7 +119,7 @@ POST /directory/administrativeUnits/{admin-unit-id}/scopedRoleMembers
 
 ```powershell
 $adminUnitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
-Get-AzureADMSScopedRoleMembership -ObjectId $adminUnitObj.ObjectId | fl *
+Get-AzureADMSScopedRoleMembership -Id $adminUnitObj.Id | fl *
 ```
 
 可以根据特定环境的需要更改突出显示的部分。

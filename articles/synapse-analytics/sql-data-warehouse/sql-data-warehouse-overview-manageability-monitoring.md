@@ -2,21 +2,21 @@
 title: 可管理性和监视 - 概述
 description: 有关资源利用率、日志和查询活动、建议以及使用 Azure Synapse Analytics 中的专用 SQL 池进行数据保护（备份和还原）的监视和可管理性方面的概述性介绍。
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 08/27/2018
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 56ec38140d53788de7cc94f3cb6046177ad2bed4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd9dc5b08de1a81b8da13aee875060fbe242baf5
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104585462"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568210"
 ---
 # <a name="manageability-and-monitoring-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池的可管理性和监视
 

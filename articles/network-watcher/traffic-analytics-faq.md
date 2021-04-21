@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: f4d97b81bf8f11b8380f04dcbfdb72bd658805ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98c0a6f88da717256e78a748902317a90a369a9c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579236"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533634"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -59,62 +59,6 @@ ms.locfileid: "100579236"
 3. 若要列出分配给特定用户的所有角色，请使用 **Get-AzRoleAssignment -SignInName [user email] -IncludeClassicAdministrators**。 
 
 如果未看到任何输出，请与相应的订阅管理员联系以获取运行命令的权限。 有关详细信息，请参阅[使用 Azure PowerShell 添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-powershell.md)。
-
-
-## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>流量分析在哪些 Azure 区域中可用？
-
-可以在以下任何受支持的区域中对 NSG 使用流量分析：
-- 加拿大中部
-- 美国中西部
-- 美国东部
-- 美国东部 2
-- 美国中北部
-- 美国中南部
-- 美国中部
-- 美国西部
-- 美国西部 2
-- 法国中部
-- 西欧
-- 北欧
-- 巴西南部
-- 英国西部
-- 英国南部
-- 澳大利亚东部
-- 澳大利亚东南部 
-- 东亚
-- 东南亚
-- 韩国中部
-- 印度中部
-- 印度南部
-- 日本东部
-- 日本西部
-- US Gov 弗吉尼亚州
-- 中国东部 2
-
-Log Analytics 工作区必须存在于以下区域中：
-- 加拿大中部
-- 美国中西部
-- 美国东部
-- 美国东部 2
-- 美国中北部
-- 美国中南部
-- 美国中部
-- 美国西部
-- 美国西部 2
-- 法国中部
-- 西欧
-- 北欧
-- 英国西部
-- 英国南部
-- 澳大利亚东部
-- 澳大利亚东南部
-- 东亚
-- 东南亚 
-- 韩国中部
-- 印度中部
-- 日本东部
-- US Gov 弗吉尼亚州
-- 中国东部 2
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>启用流日志的 NSG 是否可与工作区位于不同的区域？
 
