@@ -13,12 +13,12 @@ metadata:
   author: BlackMist
   ms.date: 09/21/2020
   ms.custom: contperf-fy21q1
-  ms.openlocfilehash: f2cf2622ab4fedbe501eca3053d749694f831390
-  ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+  ms.openlocfilehash: 11815192c0076ed826ede60bfbb741caf87545c1
+  ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/09/2021
-  ms.locfileid: "102520398"
+  ms.lasthandoff: 04/22/2021
+  ms.locfileid: "107872022"
 landingContent:
 - title: 入门：代码优先
   linkLists:
@@ -75,7 +75,7 @@ landingContent:
     - text: REST API
       url: /rest/api/azureml/
     - text: 机器学习 CLI
-      url: /cli/azure/ext/azure-cli-ml/ml
+      url: /cli/azure/ml
 - title: 查找工作室（经典版）
   linkLists:
   - linkListType: overview
