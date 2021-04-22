@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 5e923fdf560692c645c8a69e7e26d13f69d6920c
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93375893"
 ---
 ### <a name="to-take-a-backup"></a>执行备份
@@ -19,27 +19,27 @@ ms.locfileid: "93375893"
 
 2. 在“备份策略”边栏选项卡中，单击“+ 添加策略”。
 
-    ![添加-备份-策略2](./media/storsimple-8000-take-backup/step8takebu2.png)
+    ![Add-backup-policy 2](./media/storsimple-8000-take-backup/step8takebu2.png)
 
 3. 在“创建备份策略”边栏选项卡中，为备份策略提供一个包含 3 到 150 个字符的名称。
 
 4. 选择要备份的卷。 如果选择了多个卷，这些卷将组合在一起，创建在崩溃时保持一致的备份。
 
-    ![添加-备份-策略3](./media/storsimple-8000-take-backup/step8takebu4.png)
+    ![Add-backup-policy 3](./media/storsimple-8000-take-backup/step8takebu4.png)
 
 5. 在“添加第一个计划”边栏选项卡上：
 
-    1. 选择备份类型。 为了更快地进行还原，请选择 " **本地** 快照"。 对于数据复原，请选择 " **云** 快照"。
+    1. 选择备份类型。 要用于快速还原，请选择“本地”快照。 要用于数据复原，请选择“云”快照。
     2. 指定备份频率，以分钟、小时、天或周为单位。
     3. 计划保留时间。 保留选择取决于备份频率。 例如，对于每日策略，以周为单位指定保留；对于每月策略，则以月为单位指定。
     4. 选择备份策略的开始时间和日期。
     5. 单击“确定”以创建备份策略。
 
-        ![添加-备份-策略4](./media/storsimple-8000-take-backup/step8takebu5.png) 
+        ![Add-backup-policy 4](./media/storsimple-8000-take-backup/step8takebu5.png) 
 
 6. 单击“创建”以开始创建备份策略。 成功创建备份策略后，将收到通知。 备份策略的列表也将更新。
       
-      ![添加-备份-策略5](./media/storsimple-8000-take-backup/step8takebu9.png)
+      ![Add-backup-policy 5](./media/storsimple-8000-take-backup/step8takebu9.png)
       
       现在，已有了一个创建卷数据的计划备份的备份策略。
 

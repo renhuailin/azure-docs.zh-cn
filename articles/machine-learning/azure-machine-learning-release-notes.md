@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 04ed2e76797474a65d5c7c669066926225c1c1f9
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: ea7eda7e50e7d8733fd24a63d533272e5bca6bab
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103471746"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166677"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -22,6 +22,21 @@ ms.locfileid: "103471746"
 
 __RSS 源__：通过将以下 URL 复制并粘贴到源阅读器中，可以在页面更新时收到通知：`https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
 
+## <a name="2021-03-31"></a>2021-03-31
+### <a name="azure-machine-learning-studio-notebooks-experience-march-update"></a>Azure 机器学习工作室笔记本体验（3 月更新）
++ **新功能**
+  + 呈现 CSV/TSV。 用户能够以网格格式呈现和 TSV/CSV 文件，以便更轻松地进行数据分析。 
+  + 计算实例的 SSO 身份验证。 用户现在可以直接在 Notebook UI 中轻松地对任何新的计算实例进行身份验证，从而可以更轻松地在 AzureML 中直接对 Azure SDK 进行身份验证并使用。 
+  + 计算实例指标。 用户将可以通过终端查看计算指标，如 CPU 使用率和内存。
+  + 文件详细信息。 用户现在可以通过单击文件旁边的 3 个点来查看文件详细信息，包括上次修改时间和文件大小。
+
++ **Bug 修复与改进**
+  + 改进了页面加载时间。
+  + 改进的性能。
+  + 提高了速度和内核可靠性。
+  + 通过永久将“笔记本文件”窗格向上移动来获取垂直空间
+  + 现在可以在终端中单击链接
+  + 改进了 IntelliSense 性能
 
 ## <a name="2021-03-08"></a>2021-03-08
 
@@ -56,9 +71,9 @@ __RSS 源__：通过将以下 URL 复制并粘贴到源阅读器中，可以在�
 ## <a name="2021-02-28"></a>2021-02-28
 ### <a name="azure-machine-learning-studio-notebooks-experience-february-update"></a>Azure 机器学习工作室笔记本体验（2 月更新）
 + **新功能**
-  + [本机终端 (GA)](https://docs.microsoft.com/azure/machine-learning/how-to-access-terminal)。 用户现在可以访问集成终端，并可以通过集成终端访问 Git 操作。
+  + [本机终端 (GA)](./how-to-access-terminal.md)。 用户现在可以访问集成终端，并可以通过集成终端访问 Git 操作。
   + [笔记本片段（预览版）](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets)。 常见的 Azure ML 代码摘录现在随时可用。 导航到可通过工具栏访问的代码片段面板，或按 Ctrl + 空格键激活代码内代码片段菜单。  
-  + [键盘快捷方式](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#shortcut-keys)。 使用 Jupyter 中提供的键盘快捷方式进行完整的奇偶校验。 
+  + [键盘快捷方式](./how-to-run-jupyter-notebooks.md#useful-keyboard-shortcuts)。 使用 Jupyter 中提供的键盘快捷方式进行完整的奇偶校验。 
   + 指示单元参数。 指示用户笔记本中的哪些单元是参数单元，可以通过计算实例上的 [Papermill](https://github.com/nteract/papermill) 运行参数化笔记本。
   + 终端和内核会话管理器：用户将能够管理其计算机上运行的所有内核和终端会话。
   + “共享”按钮。 用户现在可以通过右键单击文件和使用“共享”按钮在笔记本文件资源管理器中共享任何文件。
@@ -68,7 +83,7 @@ __RSS 源__：通过将以下 URL 复制并粘贴到源阅读器中，可以在�
   + 改进了页面加载时间
   + 提高了性能 
   + 提高了速度和内核可靠性
-  + 添加了旋转轮以显示所有正在进行的[计算实例操作](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#status-indicators)的进度。
+  + 添加了旋转轮以显示所有正在进行的[计算实例操作](./how-to-run-jupyter-notebooks.md#status-indicators)的进度。
   + 右键单击文件资源管理器。 右键单击任何文件将立即打开文件操作。 
 
 
@@ -79,7 +94,7 @@ __RSS 源__：通过将以下 URL 复制并粘贴到源阅读器中，可以在�
   + **azureml-core**
     + [试验功能] 添加对将 Synapse 工作区作为链接服务链接到 AML 的支持
     + [试验功能] 添加对将 Synapse Spark 池作为计算附加到 AML 中的支持
-    + [试验功能] 添加对基于标识的数据访问的支持。 用户无需提供凭据即可注册数据存储或数据集。 在这种情况下，用户的 AAD 令牌或计算目标的托管标识将用于身份验证。 在[此处](https://aka.ms/data-access)了解更多信息。
+    + [试验功能] 添加对基于标识的数据访问的支持。 用户无需提供凭据即可注册数据存储或数据集。 在这种情况下，用户的 AAD 令牌或计算目标的托管标识将用于身份验证。 在[此处](./how-to-identity-based-data-access.md)了解更多信息。
   + **azureml-pipeline-steps**
     + [试验功能] 添加对 [SynapseSparkStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.synapsesparkstep) 的支持
   + azureml-synapse
@@ -104,41 +119,41 @@ __RSS 源__：通过将以下 URL 复制并粘贴到源阅读器中，可以在�
 
 ## <a name="2021-02-09"></a>2021-02-09
 
-### <a name="azure-machine-learning-sdk-for-python-v1220"></a>适用于 Python v1.22.0 的 Azure 机器学习 SDK
+### <a name="azure-machine-learning-sdk-for-python-v1220"></a>用于 Python 的 Azure 机器学习 SDK v1.22.0
 + **Bug 修复与改进**
   + **azureml-automl-core**
-    + 修复了将额外的 pip 依赖项添加到视觉对象模型的 conda yml 文件中的 bug。
+    + 修复了会向视觉模型的 conda yml 文件添加额外的 pip 依赖项的 bug。
   + **azureml-automl-runtime**
-    + 修复了经典预测模型（例如 AutoArima）可以接收训练数据（其中不存在具有输入的目标值的行）的 bug。 这违反了这些模型的数据协定。 * 修复了在时序滞后运算符中出现滞后行为的各种 bug。 以前，滞后操作不能正确标记所有输入的行，因此不会总是生成正确的事件滞后值。 还修复了滞后时间运算符和滚动窗口运算符之间出现滞后行为的一些兼容性问题。 这种情况以前会导致滚动窗口运算符从训练数据中删除一些本应使用的行。
+    + 修复了一个 bug，其中，经典预测模型（例如 AutoArima）收到的训练数据中的行可能没有插补的目标值。 这违反了这些模型的数据协定。 * 修复了时序滞后运算符中“按发生次数滞后”行为的各种 bug。 以前，“按发生次数滞后”运算不能正确标记所有插补行，因此不能始终生成正确的发生滞后值。 还修复了滞后运算符与“按发生次数滞后”行为的滚动窗口运算符之间的一些兼容性问题。 这些问题以前会导致滚动窗口运算符丢弃训练数据中它本应使用的某些行。
   + **azureml-core**
-    + 添加对受众的令牌身份验证的支持。
-    + 将 `process_count` 添加到 [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration) 中以支持多进程多节点 PyTorch 作业。
+    + 按受众添加了对令牌身份验证的支持。
+    + 向 [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration) 添加了 `process_count` 来支持多进程多节点 PyTorch 作业。
   + **azureml-pipeline-steps**
-    + [CommandStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.commandstep) 现在已正式发布，不再进行试验。
-    + [ParallelRunConfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig)：添加参数 allowed_failed_count 和 allowed_failed_percent 以检查小批量级别上的错误阈值。 错误阈值现在有 3 种格式：
-       + error_threshold - 允许的失败的小批量项数； 
-       + allowed_failed_count - 允许的失败的小批量数； 
-       + allowed_failed_percent - 允许的失败的小批量数百分比。 
+    + [CommandStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.commandstep) 现已正式发布，不再是试验性的。
+    + [ParallelRunConfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig)：添加了参数 allowed_failed_count 和 allowed_failed_percent 来检查微型批处理级别上的错误阈值。 错误阈值现在有 3 种风格：
+       + error_threshold - 允许的失败微型批处理项的数量； 
+       + allowed_failed_count - 允许的失败微型批处理的数量； 
+       + allowed_failed_percent - 允许的失败微型批处理所占百分比。 
        
-       如果超过任何一项，作业将停止。 需要 error_threshold 才能保持其后向兼容性。 将值设置为 -1 即可忽略此要求。
-    + 修复了 AutoMLStep 名称中的空格处理问题。
-    + HyperDriveStep 现在支持 ScriptRunConfig
+       如果超出了其中任意一个阈值，则作业将停止。 error_threshold 是保持向后兼容性所必需的。 将值设置为 -1 将忽略此阈值。
+    + 修复了 AutoMLStep 名称中的空格处理。
+    + ScriptRunConfig 现在受 HyperDriveStep 支持
   + **azureml-train-core**
     + 从 ScriptRun 调用的 HyperDrive 运行现在将被视为子运行。
-    + 将 `process_count` 添加到 [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration) 中以支持多进程多节点 PyTorch 作业。
+    + 向 [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration) 添加了 `process_count` 来支持多进程多节点 PyTorch 作业。
   + **azureml-widgets**
-    + 添加小组件 ParallelRunStepDetails 以可视化 ParallelRunStep 的状态。
-    + 使 hyperdrive 用户可以在平行坐标图表上看到一个额外的轴，该轴显示与每个子运行的每个超参数集相对应的指标值。
+    + 添加了小组件 ParallelRunStepDetails 来将 ParallelRunStep 的状态可视化。
+    + 允许 hyperdrive 用户在平行坐标图上查看一个附加轴，该图表显示每个子运行的每组超参数对应的指标值。
 
 
  ## <a name="2021-01-31"></a>2021-01-31
 ### <a name="azure-machine-learning-studio-notebooks-experience-january-update"></a>Azure 机器学习工作室笔记本体验（1 月更新）
 + **新功能**
-  + AzureML 中的本机 Markdown 编辑器。 用户现在可以在 AzureML 工作室中在本地呈现和编辑 markdown 文件。
-  + [脚本运行按钮（.py、.R 和 .sh）](./how-to-run-jupyter-notebooks.md#run-a-notebook-or-python-script)。 用户现在可以轻松地在 AzureML 中运行 Python、R 和 Bash 脚本
-  + [变量资源管理器](./how-to-run-jupyter-notebooks.md#explore-variables-in-the-notebook)。 在弹出式面板中浏览变量和数据帧的内容。 用户可以轻松查看数据类型、大小和内容。
-  + [目录](./how-to-run-jupyter-notebooks.md#navigate-with-a-toc)。 导航到 Markdown 标头指示的笔记本部分。
-  + 将笔记本导出为 Latex/HTML/Py。 通过导出到 LaTex、HTML 或 .py 创建易于共享的笔记本文件
+  + AzureML 中的原生 Markdown Editor。 用户现在可以在 AzureML Studio 中以原生方式呈现和编辑 Markdown 文件。
+  + [脚本（.py、.R 和 .sh）的“运行”按钮](./how-to-run-jupyter-notebooks.md#run-a-notebook-or-python-script)。 用户现在可以轻松地在 AzureML 中运行 Python、R 和 Bash 脚本。
+  + [变量资源管理器](./how-to-run-jupyter-notebooks.md#explore-variables-in-the-notebook)。 在弹出式面板中探究变量和数据帧的内容。 用户可以轻松检查数据类型、大小和内容。
+  + [目录](./how-to-run-jupyter-notebooks.md#navigate-with-a-toc)。 导航到笔记本中由 Markdown 标题指示的部分。
+  + 将笔记本导出为 Latex/HTML/Py。 通过导出为 LaTeX、HTML 或 .py，创建易于共享的笔记本文件。
   + Intellicode。 ML 驱动的结果提供了增强的[智能自动完成体验](/visualstudio/intellicode/overview)。
 
 + **Bug 修复与改进**
@@ -149,32 +164,32 @@ __RSS 源__：通过将以下 URL 复制并粘贴到源阅读器中，可以在�
 
  ## <a name="2021-01-25"></a>2021-01-25
 
-### <a name="azure-machine-learning-sdk-for-python-v1210"></a>适用于 Python v1.21.0 的 Azure 机器学习 SDK
+### <a name="azure-machine-learning-sdk-for-python-v1210"></a>用于 Python 的 Azure 机器学习 SDK v1.21.0
 + **Bug 修复与改进**
   + **azure-cli-ml**
-    + 修复了将 AmlCompute 与 UserAssigned 标识一起使用时出现的 CLI 帮助文本问题
+    + 修复了使用 AmlCompute 和 UserAssigned 标识时的 CLI 帮助文本
   + **azureml-contrib-automl-dnn-vision**
-    + “部署”和“下载”按钮将对 AutoML 视觉运行可见，并且可以像其他 AutoML 运行一样部署或下载模型。 有两个新文件（scoring_file_v_1_0_0.py 和 conda_env_v_1_0_0.yml），其中包含用于运行推理的脚本和用于重新创建 conda 环境的 yml 文件。 “model.pth”文件已重命名以便使用“.pt”扩展名。
+    + 对于 AutoML 视觉运行，“部署”和“下载”按钮将变得可见，并且可以像其他 AutoML 运行一样部署或下载模型。 有两个新文件（scoring_file_v_1_0_0.py 和 conda_env_v_1_0_0.yml），其中包含一个用来运行推理的脚本和一个用来重新创建 conda 环境的 yml 文件。 “model.pth”文件已重命名，它现在使用“.pt”扩展名。
   + **azureml-core**
-    + 适用于 azure-cli-ml 的 MSI 支持
+    + 提供了对 azure-cli-ml 的 MSI 支持
     + 用户分配的托管标识支持。
-    + 通过此更改，客户应该能够提供用户分配的标识，该标识可用于从客户密钥保管库中提取密钥以进行静态加密。
-    +  修复大型文件的配置文件的 row_count=0 问题 - 修复带有空格填充的带分隔符值双精度转换中的错误
-    + 删除输出数据集 GA 的试验性标志
-    + 更新有关如何提取模型特定版本的文档
-    + 允许在使用专用链接的情况下更新混合模式访问的工作区
-    + 修复用于删除数据存储上的其他注册以恢复运行的功能
-    + 添加了用于更新主要用户分配的工作区标识的 CLI/SDK 支持
+    + 进行此项更改后，客户应该能够提供一个用户分配的标识，该标识可用于从客户密钥保管库中提取密钥以用于静态加密。
+    +  针对非常大的文件的配置文件修复了 row_count=0 -针对包含空格填充的带分隔符值，修复了双精度转换中的错误
+    + 为输出数据集正式发布删除了试验性标志
+    + 更新了有关如何获取模型的特定版本的文档
+    + 允许在专用链接的情况下更新混合模式访问的工作区
+    + 进行了修复来为恢复运行功能删除数据存储上的额外注册
+    + 添加了相应的 CLI/SDK 支持来用于更新主要用户分配的工作区标识
   + **azureml-interpret**
-    + 将 azureml-interpret 更新为了 interpret-community 0.16.0
-    + azureml-interpret 中用于说明客户端的内存优化
+    + 已将 azureml-interpret 更新为 interpret-community 0.16.0
+    + 针对 azureml-interpret 中的解释客户端进行了内存优化
   + **azureml-train-automl-runtime**
     + 为 ADB 运行启用了流式处理
   + **azureml-train-core**
-    + 修复用于删除数据存储上的其他注册以恢复运行的功能
+    + 进行了修复来为恢复运行功能删除数据存储上的额外注册
   + **azureml-widgets**
-    + 客户不应使用小组件查看对现有运行数据可视化的更改，现在可以根据需要使用条件超参数来获得支持。
-    + 用户运行小组件现在包括有关运行为何处于排队状态的详细说明。
+    + 客户看不到使用小组件对现有运行数据可视化效果所做的更改，现在，如果客户选择使用条件超参数，则可以看到这些更改。
+    + 用户运行小组件现在会详细解释为何某个运行处于排队状态。
 
 
  ## <a name="2021-01-11"></a>2021-01-11

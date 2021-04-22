@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 318afced85f3cca0a450d77f8be7b2a1d6c388ed
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: a3a70ac5d5603cad98c199cbd8e3b98bb095d131
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102504927"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167662"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>设置模型训练和部署的计算目标
 
@@ -53,7 +53,7 @@ ms.locfileid: "102504927"
 
 ## <a name="whats-a-compute-target"></a>什么是计算目标？
 
-使用 Azure 机器学习可以在不同的资源或环境（统称为 [__计算目标__](concept-azure-machine-learning-architecture.md#compute-targets)）中训练模型。 计算目标可以是本地计算机，也可以是云资源，例如 Azure 机器学习计算、Azure HDInsight 或远程虚拟机。  还可以使用计算目标进行模型部署，如[部署模型的位置和方式](how-to-deploy-and-where.md)中所述。
+使用 Azure 机器学习，可在不同的资源或环境（统称为[计算目标](concept-azure-machine-learning-architecture.md#compute-targets)）中训练模型。 计算目标可以是本地计算机，也可以是云资源，例如 Azure 机器学习计算、Azure HDInsight 或远程虚拟机。  还可以使用计算目标进行模型部署，如[部署模型的位置和方式](how-to-deploy-and-where.md)中所述。
 
 
 ## <a name="local-computer"></a><a id="local"></a>本地计算机
@@ -64,13 +64,12 @@ ms.locfileid: "102504927"
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>远程虚拟机
 
-Azure 机器学习还支持将自己的计算资源附加到工作区。 任意远程 VM（只要可从 Azure 机器学习访问）都是这种资源类型。 该资源可以是 Azure VM，也可以是组织内部或本地的远程服务器。 具体而言，在指定 IP 地址和凭据（用户名和密码，或 SSH 密钥）的情况下，可以使用任何可访问的 VM 进行远程运行。
+Azure 机器学习还支持连接 Azure 虚拟机。 VM 必须是 Azure Data Science Virtual Machine (DSVM)。 此 VM 提供精选的工具和框架用于满足整个机器学习开发生命周期的需求。 有关如何将 DSVM 与 Azure 机器学习配合使用的详细信息，请参阅[配置开发环境](./how-to-configure-environment.md#dsvm)。
 
-可以使用[系统生成的 conda 环境](how-to-use-environments.md)、现有的 [Python 环境](how-to-configure-environment.md#local)或 [Docker 容器](https://docs.docker.com/engine/install/ubuntu/)。 若要在 Docker 容器中执行，必须在 VM 上运行 Docker 引擎。 需要一个比本地计算机更灵活的基于云的开发/试验环境时，此功能特别有用。
+> [!TIP]
+> 建议使用 [Azure 机器学习计算实例](concept-compute-instance.md)，而不是远程 VM。 它是一个完全托管的基于云的计算解决方案，专用于 Azure 机器学习。 有关详细信息，请参阅[创建和管理 Azure 机器学习计算实例](how-to-create-manage-compute-instance.md)。
 
-请对此方案使用 Data Science Virtual Machine (DSVM) 作为 Azure VM。 此 VM 在 Azure 中预配置了数据科学和 AI 开发环境。 此 VM 提供精选的工具和框架用于满足整个机器学习开发生命周期的需求。 有关如何将 DSVM 与 Azure 机器学习配合使用的详细信息，请参阅[配置开发环境](./how-to-configure-environment.md#dsvm)。
-
-1. **创建**：创建 DSVM，然后使用它来训练模型。 若要创建此资源，请参阅[预配适用于 Linux (Ubuntu) 的 Data Science Virtual Machine](./data-science-virtual-machine/dsvm-ubuntu-intro.md)。
+1. **创建**：Azure 机器学习无法为你创建远程 VM。 你需要自行创建 VM，然后将其附加到 Azure 机器学习工作区。 要详细了解如何创建 DSVM，请参阅[预配适用于 Linux (Ubuntu) 的 Data Science Virtual Machine](./data-science-virtual-machine/dsvm-ubuntu-intro.md)。
 
     > [!WARNING]
     > Azure 机器学习仅支持运行 Ubuntu 的虚拟机。 创建 VM 或选择现有 VM 时，必须选择使用 Ubuntu 的 VM。
@@ -124,11 +123,16 @@ Azure 机器学习还支持将自己的计算资源附加到工作区。 任意�
    src = ScriptRunConfig(source_directory=".", script="train.py", compute_target=compute, environment=myenv) 
    ```
 
+> [!TIP]
+> 如果要从工作区中删除（拆离）VM，请使用 [RemoteCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.remotecompute#detach--) 方法。
+>
+> Azure 机器学习不会为你删除 VM。 必须使用 Azure 门户、CLI 或适用于 Azure VM 的 SDK 手动删除 VM。
+
 ## <a name="azure-hdinsight"></a><a id="hdinsight"></a>Azure HDInsight 
 
 Azure HDInsight 是用于大数据分析的热门平台。 该平台提供的 Apache Spark 可用于训练模型。
 
-1. **创建**：先创建 HDInsight 群集，然后使用它来训练模型。 若要在 HDInsight 群集中创建 Spark，请参阅[在 HDInsight 中创建 Spark 群集](../hdinsight/spark/apache-spark-jupyter-spark-sql.md)。 
+1. **创建**：Azure 机器学习无法为你创建 HDInsight 群集。 你需要自行创建群集，然后将其附加到 Azure 机器学习工作区。 有关详细信息，请参阅[在 HDInsight 中创建 Spark 群集](../hdinsight/spark/apache-spark-jupyter-spark-sql.md)。 
 
     > [!WARNING]
     > Azure 机器学习要求 HDInsight 群集具有公共 IP 地址。
@@ -169,8 +173,10 @@ Azure HDInsight 是用于大数据分析的热门平台。 该平台提供的 Ap
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
-
-附加计算并配置运行后，下一步是[提交训练运行](how-to-set-up-training-targets.md)。
+> [!TIP]
+> 如果要从工作区中删除（拆离）HDInsight 群集，请使用 [HDInsightCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.hdinsight.hdinsightcompute#detach--) 方法。
+>
+> Azure 机器学习不会为你删除 HDInsight 群集。 必须使用 Azure 门户、CLI 或适用于 Azure HDInsight 的 SDK 将其手动删除。
 
 ## <a name="azure-batch"></a><a id="azbatch"></a>Azure Batch 
 
@@ -219,7 +225,7 @@ print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 
 Azure Databricks 是 Azure 云中基于 Apache Spark 的环境。 它可以用作 Azure 机器学习管道的计算目标。
 
-请先创建 Azure Databricks 工作区，然后再使用该工作区。 若要创建工作区资源，请参阅[在 Azure Databricks 中运行 Spark 作业](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)文档。
+> [!重要} Azure 机器学习无法创建 Azure Databricks 计算目标。 你需要自行创建一个 Azure Databricks 工作区，然后将其附加到 Azure 机器学习工作区。 若要创建工作区资源，请参阅[在 Azure Databricks 中运行 Spark 作业](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)文档。
 
 要将 Azure Databricks 附加为计算目标，请提供以下信息：
 
@@ -334,7 +340,6 @@ Azure 容器实例 (ACI) 是在部署模型时动态创建的。 不能以任何
 ## <a name="azure-kubernetes-service"></a>Azure Kubernetes 服务
 
 与 Azure 机器学习一起使用时，Azure Kubernetes 服务 (AKS) 支持多种配置选项。 有关详细信息，请参阅[如何创建和附加 Azure Kubernetes 服务](how-to-create-attach-kubernetes.md)。
-
 
 ## <a name="notebook-examples"></a>Notebook 示例
 

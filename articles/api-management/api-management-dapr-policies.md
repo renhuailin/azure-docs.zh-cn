@@ -7,10 +7,10 @@ ms.date: 02/18/2021
 ms.topic: article
 ms.service: api-management
 ms.openlocfilehash: 051bf4398555f318f613c66d58ec65be1d30e215
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101646803"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API 管理 Dapr 集成策略
@@ -18,7 +18,7 @@ ms.locfileid: "101646803"
 本主题提供 Dapr 集成 API 管理策略的参考。 Dapr 是一种可移植运行时，用于通过任何语言或框架来构建无状态和有状态的基于微服务的应用程序。 它能对常见的微服务模式进行编码，例如使用内置重试逻辑进行服务发现和调用，使用至少一次的传递语义进行发布和订阅，或者使用可插拔的绑定资源来简化使用外部服务的组合。 请转到 [dapr.io](https://dapr.io) 以获取有关如何开始使用 Dapr 的详细信息和说明。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。
 
 > [!CAUTION]
-> 本主题中所述的策略是公共预览版，并受 [Microsoft Azure 预览版补充使用条款的约束](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 本主题中引用的策略处于公共预览阶段，并且遵循 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 > [!IMPORTANT]
 > 本主题中引用的策略仅在启用了 Dapr 支持的 [API 管理网关的自承载版本](self-hosted-gateway-overview.md)中有效。
@@ -59,7 +59,7 @@ template:
 
 #### <a name="example"></a>示例
 
-下面的示例演示如何在名为“echo”的微服务上调用名为“back”的方法。 `set-backend-service`策略将目标 URL 设置为 `http://localhost:3500/v1.0/invoke/echo.echo-app/method/back` 。 `forward-request` 策略将请求分派到 Dapr 运行时，Dapr 运行时将请求传递给微服务。
+下面的示例演示如何在名为“echo”的微服务上调用名为“back”的方法。 `set-backend-service` 策略将目标 URL 设置为 `http://localhost:3500/v1.0/invoke/echo.echo-app/method/back`。 `forward-request` 策略将请求分派到 Dapr 运行时，Dapr 运行时将请求传递给微服务。
 
 为清楚起见，`forward-request` 策略在这里显示。 策略通常通过 `base` 关键字从全局范围“继承”。
 
@@ -94,7 +94,7 @@ template:
 | backend-id       | 必须设置为“dapr”           | 是      | 不适用     |
 | dapr-app-id      | 目标微服务的名称。 用于在 Dapr 中形成 [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) 参数。| 是 | 不适用 |
 | dapr-method      | 要在目标微服务上调用的方法或 URL 的名称。 映射到 Dapr 中的 [method-name](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) 参数。| 是 | 不适用 |
-| dapr-命名空间   | 目标微服务所驻留的命名空间的名称。 用于在 Dapr 中形成 [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) 参数。| 否 | 空值 |
+| dapr-namespace   | 目标微服务所驻留的命名空间的名称。 用于在 Dapr 中形成 [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) 参数。| 否 | 空值 |
 
 ### <a name="usage"></a>使用情况
 

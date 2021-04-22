@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f76b2811531b49c9312a02a581e876f9ef569a2a
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 9194f38ddea5570d94ba6c87ea6a537cb41fb98c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750961"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102051372"
 ---
 # <a name="data-encryption-models"></a>数据加密模型
 
@@ -102,7 +102,7 @@ Azure 中支持的加密模型分为两大类：“客户端加密”和“服�
 若要获取用于加密或解密静态数据的密钥，服务标识（将由资源管理器服务实例在运行时充当）必须使用 UnwrapKey 来获取解密用的密钥，并在创建新密钥时使用 WrapKey 将密钥插入密钥保管库中。
 
 >[!NOTE]
->有关 Key Vault 授权的更多详细信息，请参阅 [Azure Key Vault 文档](../../key-vault/general/security-overview.md)中的“保护密钥保管库”页。
+>有关 Key Vault 授权的更多详细信息，请参阅 [Azure Key Vault 文档](../../key-vault/general/secure-your-key-vault.md)中的“保护密钥保管库”页。
 
 **优点**
 

@@ -2,14 +2,14 @@
 title: 指标、警报和诊断日志
 description: 记录并分析 Azure Batch 帐户资源（诸如池和任务）的诊断日志事件。
 ms.topic: how-to
-ms.date: 03/25/2021
+ms.date: 04/13/2021
 ms.custom: seodec18
-ms.openlocfilehash: 22fdf00b6e144e022f955aed6fd24b7a6bcb7300
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 61aaca84b609aaf7513c6de6f0f7e73aef5a5efe
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606022"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389309"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>用于诊断评估和监视的 Batch 指标、警报和日志
 
@@ -140,21 +140,32 @@ Azure Batch 服务日志包含 Batch 服务在单个 Batch 资源（例如池或
 
 ```json
 {
-    "poolId": "myPool1",
+    "id": "myPool1",
     "displayName": "Production Pool",
-    "vmSize": "Small",
+    "vmSize": "Standard_F1s",
+    "imageType": "VirtualMachineConfiguration",
     "cloudServiceConfiguration": {
-        "osFamily": "5",
+        "osFamily": "3",
         "targetOsVersion": "*"
     },
     "networkConfiguration": {
         "subnetId": " "
     },
+    "virtualMachineConfiguration": {
+          "imageReference": {
+            "publisher": " ",
+            "offer": " ",
+            "sku": " ",
+            "version": " "
+          },
+          "nodeAgentId": " "
+        },
     "resizeTimeout": "300000",
-    "targetDedicatedComputeNodes": 2,
+    "targetDedicatedNodes": 2,
+    "targetLowPriorityNodes": 2,
     "taskSlotsPerNode": 1,
     "vmFillType": "Spread",
-    "enableAutoscale": false,
+    "enableAutoScale": false,
     "enableInterNodeCommunication": false,
     "isAutoPool": false
 }

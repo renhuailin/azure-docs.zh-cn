@@ -1,5 +1,5 @@
 ---
-title: 迁移 StorSimple 设备管理器存储帐户，订阅
+title: 迁移 StorSimple 设备管理器存储帐户和订阅
 description: 了解如何为 StorSimple 设备管理器服务迁移订阅和存储帐户。
 services: storsimple
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: 523788dc727fc5fa32b2f57250fb738352ff6d31
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96491514"
 ---
 # <a name="migrate-subscriptions-and-storage-accounts-associated-with-storsimple-device-manager-service"></a>迁移与 StorSimple 设备管理器服务相关联的订阅和存储帐户

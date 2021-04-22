@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: article
-ms.date: 03/08/2021
+ms.date: 03/29/2021
 ms.author: duau
-ms.openlocfilehash: 6eed0ed3e936b0e9a534c82a3105c2ed37cab3d5
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: c4c36013f100d2fc5265024432cc01a6622a4024
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102485413"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932363"
 ---
 # <a name="azure-route-server-preview-faq"></a>Azure 路由服务器（预览版）常见问题解答
 
@@ -36,6 +36,9 @@ Azure 路由服务器仅支持边界网关协议 (BGP)。 NVA 需要支持多跃
 ### <a name="does-azure-route-server-route-data-traffic-between-my-nva-and-my-vms"></a>Azure 路由服务器是否会在我的 NVA 和 VM 之间路由数据流量？
 
 不是。 Azure 路由服务器仅与 NVA 交换 BGP 路由。 数据流量直接从 NVA 流入所选的 VM，并直接从 VM 流入 NVA。
+
+### <a name="does-azure-route-server-store-customer-data"></a>Azure 路由服务器是否存储客户数据？
+不知道。 Azure 路由服务器仅与 NVA 交换 BGP 路由，然后将其传播到虚拟网络。
 
 ### <a name="if-azure-route-server-receives-the-same-route-from-more-than-one-nva-will-it-program-all-copies-of-the-route-but-each-with-a-different-next-hop-to-the-vms-in-the-virtual-network"></a>如果 Azure 路由服务器接收到来自多个 NVA 的相同路由，它是否会将路由的所有副本（但每个副本都有不同的下一个跃点）编入虚拟网络中的 VM？
 

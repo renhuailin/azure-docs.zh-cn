@@ -9,19 +9,19 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 11/16/2020
-ms.openlocfilehash: 59364a0a2c1d1e411f41dc35dee812c8e920b72d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/04/2021
+ms.openlocfilehash: 92d1534b5dd0233ce88b81d605c6502b67a121df
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98209196"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307888"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>探索 Synapse 知识中心
 
 在本教程中，你将了解如何使用 Synapse Studio 知识中心。
 
-## <a name="getting-to-the-knowledge-center"></a>访问知识中心
+## <a name="introduction-to-the-knowledge-center"></a>知识中心简介
 
 在 Synapse Studio 中，有两种方法可以找到知识中心：
 
@@ -30,16 +30,19 @@ ms.locfileid: "98209196"
 
 选择任一方法并打开“知识中心”。
 
-## <a name="overview"></a>概述
-
-使用“知识中心”可以执行三项操作：
+显示后，能看到知识中心允许执行以下三项操作：
 * **立即使用示例**。 如果你需要一个快速示例来了解 Synapse 如何工作，请选择此选项。
 * **浏览库**。 此选项允许你链接示例数据集，并以 SQL 脚本、笔记本和管道的形式添加示例代码。
 * **浏览 Synapse Studio**。 此选项将带你简单了解 Synapse Studio 的基本部分。 如果你以前从未使用过 Synapse Studio，则这很有用。
 
-## <a name="exploring-blob-storage-with-serverless-sql-pool"></a>使用无服务器 SQL 池浏览 blob 存储
+## <a name="exploring-use-samples-immediately"></a>浏览：立即使用示例
 
-1. 转到“知识中心”，单击“立即使用示例” 。
+本部分包含三个项：
+* 使用 Spark 浏览示例数据
+* 使用 SQL 查询数据
+* 使用 SQL 创建外部表
+
+1. 在“知识中心”中，单击“立即使用示例” 。
 1. 选择“使用 SQL 来查询数据”。
 1. 单击“使用示例”。
 1. 随即将打开一个新的示例 SQL 脚本。
@@ -47,6 +50,7 @@ ms.locfileid: "98209196"
 1. 单击“运行”。 它只会运行所选代码。
 
 ## <a name="loading-more-nyc-taxi-data"></a>加载更多 NYC 出租车数据
+
 1. 转到“知识中心”，单击“浏览库” 。
 1. 选择顶部的“SQL 脚本”选项卡。
 1. 选择“加载纽约出租车数据集”数据引入示例，单击“继续” 。
@@ -61,6 +65,6 @@ ms.locfileid: "98209196"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure Synapse Analytics 入门](get-started.md)
-* [创建工作区](quickstart-create-workspace.md)
-* [使用无服务器 SQL 池](quickstart-sql-on-demand.md)
+> [!div class="nextstepaction"]
+> [添加管理员](get-started-add-admin.md)
+

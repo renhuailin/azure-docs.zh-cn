@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: 81ec7e6f822f24f2b9e6ca4298e9668358c78149
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d01febec3972dcc26c6e9b5aa8d0c4cca5f32d0a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94540750"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606073"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>如何使用 EXPLAIN 分析 Azure Database for MySQL 中的查询性能
+[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
+
 **EXPLAIN** 是一个可用来优化查询的易用工具。 可以使用 EXPLAIN 语句来获取有关 SQL 语句执行情况的信息。 下面的输出显示了 EXPLAIN 语句的一个执行示例。
 
 ```sql
@@ -167,4 +169,4 @@ EXPLAIN 现在表明，MySQL 能够使用组合索引避免额外的排序，因
 
 
 ## <a name="next-steps"></a>后续步骤
-- 若要查找同行对你最关心问题的解答，或者要发布新的问题/答案，请访问 [Microsoft Q&A 问题页面](/answers/topics/azure-database-mysql.html)或 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)。
+- 若要查找同行对你最关心问题的解答，或者要发布新的问题/答案，请访问 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)。

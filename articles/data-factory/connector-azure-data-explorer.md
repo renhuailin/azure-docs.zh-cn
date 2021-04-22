@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/18/2020
-ms.openlocfilehash: 16126e8b9e5c34529016018273edcf65a31e2280
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2020
+ms.openlocfilehash: f343cf820632c8b53f74a938a039820ea4f56eac
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100379975"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105027391"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据
 
@@ -52,7 +52,14 @@ ms.locfileid: "100379975"
 
 ## <a name="linked-service-properties"></a>链接服务属性
 
-Azure 数据资源管理器连接器使用服务主体身份验证。 遵循以下步骤获取服务主体并授予权限：
+Azure 数据资源管理器连接器支持以下身份验证类型。 请参阅相应部分的了解详细信息：
+
+- [服务主体身份验证](#service-principal-authentication)
+- [Azure 资源的托管标识身份验证](#managed-identity)
+
+### <a name="service-principal-authentication"></a>服务主体身份验证
+
+若要使用服务主体身份验证，请按照以下步骤获取服务主体并授予权限：
 
 1. 遵循[将应用程序注册到 Azure AD 租户](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant)中的步骤在 Azure Active Directory 中注册一个应用程序实体。 记下下面的值，这些值用于定义链接服务：
 
@@ -66,7 +73,7 @@ Azure 数据资源管理器连接器使用服务主体身份验证。 遵循以�
     - **作为接收器**：至少向数据库授予“数据库引入者”角色 
 
 >[!NOTE]
->使用数据工厂 UI 创作时，登录用户帐户用于列出 Azure 数据资源管理器群集、数据库和表。 如果你没有权限执行这些操作，请手动输入名称。
+>使用数据工厂 UI 创作时，登录用户帐户默认用于列出 Azure 数据资源管理器群集、数据库和表。 可以选择使用服务主体列出对象，方法是单击“刷新”按钮旁边的下拉列表，或者手动输入名称（如果没有这些操作的权限）。
 
 Azure 数据资源管理器链接服务支持以下属性：
 
@@ -78,8 +85,9 @@ Azure 数据资源管理器链接服务支持以下属性：
 | tenant | 指定应用程序的租户信息（域名或租户 ID）。 此 ID 在 [Kusto 连接字符串](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)中称为“颁发机构 ID”。 将鼠标指针悬停在 Azure 门户右上角进行检索。 | 是 |
 | servicePrincipalId | 指定应用程序的客户端 ID。 此 ID 在[Kusto 连接字符串](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)中称为“AAD 应用程序客户端 ID”。 | 是 |
 | servicePrincipalKey | 指定应用程序的密钥。 此密钥在[Kusto 连接字符串](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)中称为“AAD 应用程序密钥”。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中，或 [引用存储在 Azure Key Vault 中的安全数据](store-credentials-in-key-vault.md)。 | 是 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
-**链接服务属性示例：**
+**示例：使用服务主体密钥身份验证**
 
 ```json
 {
@@ -95,6 +103,44 @@ Azure 数据资源管理器链接服务支持以下属性：
                 "type": "SecureString",
                 "value": "<service principal key>"
             }
+        }
+    }
+}
+```
+
+### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> Azure 资源的托管标识身份验证
+
+若要使用 Azure 资源托管标识身份验证，请按照以下步骤授予权限：
+
+1. 通过复制与工厂一起生成的 **托管标识对象 ID** 的值，[检索数据工厂托管标识信息](data-factory-service-identity.md#retrieve-managed-identity)。
+
+2. 在 Azure 数据资源管理器中向托管标识授予正确的权限。 有关角色和权限以及管理权限的详细信息，请参阅[管理 Azure 数据资源管理器数据库权限](/azure/data-explorer/manage-database-permissions)。 一般情况下，必须授予以下权限：
+
+    - **作为源**：至少向数据库授予“数据库查看者”角色 
+    - **作为接收器**：至少向数据库授予“数据库引入者”角色 
+
+>[!NOTE]
+>使用数据工厂 UI 创作时，登录用户帐户用于列出 Azure 数据资源管理器群集、数据库和表。 如果你没有权限执行这些操作，请手动输入名称。
+
+Azure 数据资源管理器链接服务支持以下属性：
+
+| 属性 | 说明 | 必需 |
+|:--- |:--- |:--- |
+| type | **type** 属性必须设置为 **AzureDataExplorer**。 | 是 |
+| endpoint | Azure 数据资源管理器群集的终结点 URL，格式为 `https://<clusterName>.<regionName>.kusto.windows.net`。 | 是 |
+| database | 数据库的名称。 | 是 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+
+**示例：使用托管标识身份验证**
+
+```json
+{
+    "name": "AzureDataExplorerLinkedService",
+    "properties": {
+        "type": "AzureDataExplorer",
+        "typeProperties": {
+            "endpoint": "https://<clusterName>.<regionName>.kusto.windows.net ",
+            "database": "<database name>",
         }
     }
 }

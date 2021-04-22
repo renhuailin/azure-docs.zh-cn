@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: e247e372237572586e5a4647d24d9ed6067ea823
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104949781"
 ---
 # <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>在已启用 Azure Arc 的超大规模 PostgreSQL 服务器组中使用 PostgreSQL 扩展
@@ -44,7 +44,7 @@ ms.locfileid: "104949781"
 
 ## <a name="which-extensions-need-to-be-added-to-the-shared_preload_libraries-and-created"></a>哪些扩展需要添加到 shared_preload_libraries，哪些扩展需要创建？
 
-|扩展   |需要添加到 shared_preload_libraries  |需要创建 |
+|Extensions   |需要添加到 shared_preload_libraries  |需要创建 |
 |-------------|--------------------------------------------------|---------------------- |
 |`pg_cron`      |否       |是        |
 |`pg_audit`     |是       |是        |

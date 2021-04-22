@@ -1,20 +1,19 @@
 ---
 title: 了解 Azure Policy 中的范围
 description: 说明 Azure 资源管理器中范围的概念，以及如何将其应用于 Azure Policy，从而控制哪些资源由 Azure Policy 评估。
-ms.date: 09/22/2020
+ms.date: 03/31/2021
 ms.topic: conceptual
-ms.openlocfilehash: 83eda330a35b007abfa37046a202b14728726849
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c198d2d2961b6d9e10a3b78481183cba7f7197ca
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90984440"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167730"
 ---
 # <a name="understand-scope-in-azure-policy"></a>了解 Azure Policy 中的范围
 
-有许多设置用于确定哪些资源可以接受评估以及哪些资源由 Azure Policy 评估。 这些控制措施的首要概念是范围。
-有关综合概述，请参阅 [Azure 资源管理器中的范围](../../../azure-resource-manager/management/overview.md#understand-scope)。
-本文介绍了 Azure Policy 中范围的影响，以及它的相关对象和属性。
+有许多设置可确定哪些资源可以接受评估以及哪些资源由 Azure Policy 评估。 这些控制措施的首要概念是范围。 Azure Policy 中的范围基于 Azure 资源管理器中范围的作用方式。 有关综合概述，请参阅 [Azure 资源管理器中的范围](../../../azure-resource-manager/management/overview.md#understand-scope)。
+本文介绍了 Azure Policy 中范围的重要性，以及它的相关对象和属性。
 
 ## <a name="definition-location"></a>定义位置
 

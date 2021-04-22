@@ -1,18 +1,15 @@
 ---
 title: 监视 Azure Site Recovery | Microsoft Docs
 description: 使用门户监视和排查 Azure Site Recovery 复制问题与操作
-author: raynew
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.author: raynew
-ms.openlocfilehash: d441284b265ab11dd5ece42ec3737e455d662435
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: a80f68c230bfed5caad4fd5ce474d8d06fd3d093
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023561"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579316"
 ---
 # <a name="monitor-site-recovery"></a>监视 Site Recovery
 
@@ -36,7 +33,7 @@ ms.locfileid: "96023561"
 
 2. 在该仪表板中，向下钻取到不同的区域。 
 
-    ![屏幕截图，显示仪表板上可以向下钻取的区域。](./media/site-recovery-monitor-and-troubleshoot/site-recovery-overview-page.png).
+    ![屏幕截图显示了仪表板上可以向下钻取到的区域。](./media/site-recovery-monitor-and-troubleshoot/site-recovery-overview-page.png).
 
 3. 在“复制的项”中，单击“全部查看”可查看保管库中的所有服务器。
 4. 单击每个部分的状态详细信息，以便向下钻取。

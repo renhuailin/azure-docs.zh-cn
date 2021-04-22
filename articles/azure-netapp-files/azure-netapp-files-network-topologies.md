@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: ramakk
 ms.openlocfilehash: 96d8ba058a33d408ec2ee2a1adfba9011f393da9
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96184478"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp 文件网络规划指南
@@ -42,7 +42,7 @@ Azure NetApp 文件目前不支持以下功能：
 * Azure 虚拟 WAN 
 * 区域冗余虚拟网络网关（使用 Az 的网关 SKU） 
 * 主动/主动虚拟网络 GW 
-* 用于 IPv4 和 IPv6 的双堆栈 () VNet
+* 双堆栈（IPv4 和 IPv6）VNet
 
 以下网络限制适用于 Azure NetApp 文件：
 

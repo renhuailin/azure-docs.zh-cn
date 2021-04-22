@@ -5,18 +5,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: bae48dc78eb6973e5bce4d535091bc330c4c897f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 0c26a7f53609193bf373c3f7f9b1037405d4e518
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102509024"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122129"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>在 Azure Monitor 中使用 Log Analytics 网关连接无法访问 Internet 的计算机
-
->[!NOTE]
->由于 Microsoft Operations Management Suite (OMS) 正在过渡到 Microsoft Azure Monitor，因此术语即将发生变化。 本文将 OMS 网关称作 Azure Log Analytics 网关。 
->
 
 本文介绍当直接连接的计算机或者受 Operations Manager 监视的计算机无法访问 Internet 时，如何使用 Log Analytics 网关来配置与 Azure 自动化和 Azure Monitor 的通信。 
 
@@ -89,6 +85,9 @@ Log Analytics 网关支持以下语言：
 Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它不支持安全套接字层 (SSL)。  为了确保传输到 Log Analytics 的数据的安全性，请将网关配置为至少使用 TLS 1.2。 旧版 TLS 或 SSL 容易受到攻击。 尽管这些协议目前允许后向兼容，但请勿使用。  
 
 有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](../logs/data-security.md#sending-data-securely-using-tls-12)。 
+
+>[!NOTE]
+>网关是不存储任何数据的转发代理。 当代理与 Azure Monitor 建立连接后，它将遵循带或不带网关的相同加密流。 数据在客户端和终结点之间进行加密。 由于网关只是一个隧道，因此它无法检查正在发送的内容。
 
 ### <a name="supported-number-of-agent-connections"></a>支持的代理连接数
 

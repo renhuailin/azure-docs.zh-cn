@@ -1,7 +1,7 @@
 ---
 title: 诊断日志
 titleSuffix: Azure Content Delivery Network
-description: 了解如何使用 Azure 诊断日志保存核心分析，使你能够从 Azure 内容交付网络终结点导出使用情况指标。
+description: 了解如何使用 Azure 诊断日志保存核心分析，从而能够从 Azure 内容分发网络终结点导出使用指标。
 services: cdn
 author: asudbring
 manager: KumudD
@@ -14,13 +14,13 @@ ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
 ms.openlocfilehash: 96e80de5b8b5ab0a046913ce40ca2d7254dd0133
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100573220"
 ---
-# <a name="diagnostic-logs---azure-content-delivery-network"></a>诊断日志-Azure 内容分发网络
+# <a name="diagnostic-logs---azure-content-delivery-network"></a>诊断日志 - Azure 内容分发网络
 
 使用 Azure 诊断日志，可以查看核心分析并将其保存到一个或多个目标，包括：
 
@@ -30,13 +30,13 @@ ms.locfileid: "100573220"
 
 此功能在所有定价层的 CDN 终结点上提供。 
 
-使用诊断日志可以将基本使用情况指标从 CDN 终结点导出到不同种类的源，以便以自定义方式使用它们。 您可以执行以下类型的数据导出：
+通过诊断日志，可将基本使用指标从 CDN 终结点导出到不同的源，以便以自定义方式使用它们。 可执行以下类型的数据导出：
 
 * 将数据导出到 Blob 存储、导出为CSV，并在 Excel 中生成图形。
 * 将数据导出到事件中心，并关联到其他 Azure 服务的数据。
 * 将数据导出到 Azure Monitor 日志，并在自己的 Log Analytics 工作区中查看数据
 
-需要 Azure CDN 配置文件才能执行以下步骤。 继续之前，请参阅 [创建 Azure CDN 配置文件和终结点](cdn-create-new-endpoint.md) 。
+以下步骤需要使用 Azure CDN 配置文件。 继续操作之前，请参阅[创建 Azure CDN 配置文件和终结点](cdn-create-new-endpoint.md)。
 
 ## <a name="enable-logging-with-the-azure-portal"></a>使用 Azure 门户启用日志记录
 
@@ -44,24 +44,24 @@ ms.locfileid: "100573220"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 
 
-2. 在 Azure 门户中，导航到  ->  **你的 cdn 配置文件** 中的所有资源
+2. 在 Azure 门户中导航到“所有资源” ->  <your-cdn-profile> 。
 
 2. 选择要为其启用诊断日志的 CDN 终结点：
 
-    :::image type="content" source="./media/cdn-diagnostics-log/02_browse-to-diagnostics-logs.png" alt-text="选择 &quot;CDN 终结点&quot;。" border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/02_browse-to-diagnostics-logs.png" alt-text="选择“CDN 终结点”。" border="true":::
 
-3. 在 "**监视**" 部分选择 "**诊断日志**"：
+3. 在“监视”部分中选择“诊断日志” ：
 
-    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="选择 &quot;诊断日志&quot;。" border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="选择“诊断日志”。" border="true":::
 
 ### <a name="enable-logging-with-azure-storage"></a>使用 Azure 存储启用日志记录
 
 若要使用存储帐户来存储日志，请执行以下步骤：
 
  >[!NOTE] 
- >若要完成这些步骤，需要一个存储帐户。 有关详细信息，请参阅： **[创建 Azure 存储帐户](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)** 。
+ >需要使用存储帐户来完成这些步骤。 有关详细信息，请参阅[创建 Azure 存储帐户](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
     
-1. 对于 " **诊断设置名称**"，请输入诊断日志设置的名称。
+1. 对于“诊断设置名称”，请输入诊断日志设置的名称。
  
 2. 选择“存档到存储帐户”，然后选择“CoreAnalytics”。 
 
@@ -69,41 +69,41 @@ ms.locfileid: "100573220"
 
 4. 选择日志的订阅和存储帐户。
 
-    :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="诊断日志-存储。" border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="诊断日志 - 存储。" border="true":::
 
 3. 选择“保存”。
 
 ### <a name="send-to-log-analytics"></a>发送到 Log Analytics
 
-若要对日志使用 Log Analytics，请执行以下步骤：
+要使用 Log Analytics 来存储日志，请执行以下步骤：
 
 >[!NOTE] 
->需要使用 log analytics 工作区才能完成这些步骤。 有关详细信息，请参阅： **[在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)** 。
+>需要使用 Log Analytics 工作区才能完成这些步骤。 有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)。
     
-1. 对于 " **诊断设置名称**"，请输入诊断日志设置的名称。
+1. 对于“诊断设置名称”，请输入诊断日志设置的名称。
 
-2. 选择 " **发送到 Log Analytics**"，然后选择 " **CoreAnalytics**"。 
+2. 选择“发送到 Log Analytics”，然后选择“CoreAnalytics” 。 
 
-3. 为日志选择 "订阅" 和 "Log Analytics" 工作区。
+3. 为日志选择订阅和 Log Analytics 工作区。
 
-   :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="诊断日志-Log Analytics。" border="true":::
+   :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="诊断日志 - Log Analytics。" border="true":::
 
 4. 选择“保存”。
 
 ### <a name="stream-to-an-event-hub"></a>流式传输到事件中心
 
-若要将事件中心用于日志，请执行以下步骤：
+要使用事件中心来存储日志，请执行以下步骤：
 
 >[!NOTE] 
->需要使用事件中心才能完成这些步骤。 有关详细信息，请参阅： **[快速入门：使用 Azure 门户创建事件中心](../event-hubs/event-hubs-create.md)** 。
+>需要使用事件中心来完成这些步骤。 有关详细信息，请参阅[快速入门：使用 Azure 门户创建事件中心](../event-hubs/event-hubs-create.md)。
     
-1. 对于 " **诊断设置名称**"，请输入诊断日志设置的名称。
+1. 对于“诊断设置名称”，请输入诊断日志设置的名称。
 
-2. 选择 " **流式传输到事件中心**"，然后选择 " **CoreAnalytics**"。 
+2. 选择“流式传输到事件中心”，然后选择“CoreAnalytics” 。 
 
-3. 选择日志的订阅和事件中心命名空间。
+3. 为日志选择订阅和事件中心命名空间。
 
-   :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="诊断日志-事件中心。" border="true":::
+   :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="诊断日志 - 事件中心。" border="true":::
 
 4. 选择“保存”。
 
@@ -122,7 +122,7 @@ ms.locfileid: "100573220"
     Connect-AzAccount 
     ```
 
-2. 若要在存储帐户中启用诊断日志，请输入以下命令。 将变量替换为值：
+2. 若要在存储帐户中启用诊断日志，请输入以下命令。 将变量替换成你自己的值：
 
     ```azurepowershell-interactive
     $rsg = <your-resource-group-name>
@@ -145,7 +145,7 @@ ms.locfileid: "100573220"
     ```azurepowershell-interactive
     Connect-AzAccount 
     ```
-2. 若要为 Log Analytics 工作区启用诊断日志，请输入以下命令。 将变量替换为值：
+2. 若要为 Log Analytics 工作区启用诊断日志，请输入以下命令。 将变量替换成你自己的值：
 
     ```azurepowershell-interactive
     $rsg = <your-resource-group-name>
@@ -167,7 +167,7 @@ ms.locfileid: "100573220"
     ```azurepowershell-interactive
     Connect-AzAccount 
     ```
-2. 若要为 Log Analytics 工作区启用诊断日志，请输入以下命令。 将变量替换为值：
+2. 若要为 Log Analytics 工作区启用诊断日志，请输入以下命令。 将变量替换成你自己的值：
 
     ```azurepowershell-interactive
     $rsg = <your-resource-group-name>
@@ -182,12 +182,12 @@ ms.locfileid: "100573220"
     ```
 
 ## <a name="consuming-diagnostics-logs-from-azure-storage"></a>从 Azure 存储中使用诊断日志
-本部分介绍 Azure 存储帐户中的 CDN 核心分析和组织的架构，并提供用于将日志下载到 CSV 文件的示例代码。
+本部分介绍 CDN 核心分析的架构、Azure 存储帐户中的组织，并提供用于将日志下载到 CSV 文件的示例代码。
 
 ### <a name="using-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 存储资源管理器
 若要下载该工具，请参阅 [Azure 存储资源管理器](https://storageexplorer.com/)。 下载并安装软件后，请将其配置为使用已配置为 CDN 诊断日志目标的同一 Azure 存储帐户。
 
-1.  打开 **Microsoft Azure 存储资源管理器**
+1.  打开 Microsoft Azure 存储资源管理器
 2.  找到存储帐户
 3.  展开该存储帐户下的“Blob 容器”节点。
 4.  选择名为 *insights-logs-coreanalytics* 的容器。
@@ -198,7 +198,7 @@ ms.locfileid: "100573220"
 
 #### <a name="blob-path-format"></a>Blob 路径格式
 
-核心分析日志每隔一小时生成一次，数据以 JSON 有效负载的形式收集并存储在单个 Azure Blob 中。 存储资源管理器工具将 "/" 解释为目录分隔符，并显示层次结构。 将显示 Azure blob 的路径，如同存在分层结构并表示 blob 名称。 Blob 的名称遵循以下命名约定：    
+核心分析日志每隔一小时生成一次，数据以 JSON 有效负载的形式收集并存储在单个 Azure Blob 中。 存储资源管理器工具将“/”解释为目录分隔符，并显示层次结构。 Azure Blob 的路径看起来像是采用了分层结构并表示 Blob 名称。 Blob 的名称遵循以下命名约定：    
 
 ```resourceId=/SUBSCRIPTIONS/{Subscription Id}/RESOURCEGROUPS/{Resource Group Name}/PROVIDERS/MICROSOFT.CDN/PROFILES/{Profile Name}/ENDPOINTS/{Endpoint Name}/ y={Year}/m={Month}/d={Day}/h={Hour}/m={Minutes}/PT1H.json```
 
@@ -211,7 +211,7 @@ ms.locfileid: "100573220"
 |配置文件名称 |CDN 配置文件的名称|
 |终结点名称 |CDN 终结点的名称|
 |Year|  年份的四位数表示形式，例如 2017|
-|月份| 月份的两位数表示形式。 01 = 一月 .。。12 = 12 月|
+|Month| 月份的两位数表示形式。 01=1 月 … 12=12 月|
 |天|   月份中日的两位数表示形式|
 |PT1H.json| 实际存储分析数据的 JSON 文件|
 
@@ -221,7 +221,7 @@ ms.locfileid: "100573220"
 
 该工具的使用方式如下：
 
-1.  访问 GitHub 链接： [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
+1.  访问 GitHub 链接：[https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
 2.  下载代码。
 3.  遵照说明进行编译和配置。
 4.  运行该工具。
@@ -240,11 +240,11 @@ Microsoft 日志数据延迟 | Verizon 日志数据延迟 | Akamai 日志数据�
 Microsoft 当前仅提供核心分析日志，其中包含一些显示 HTTP 响应统计信息和出口统计信息的指标（如 CDN POP/边缘中所见）。
 
 ### <a name="core-analytics-metrics-details"></a>核心分析指标详细信息
-下表显示了的核心分析日志中可用指标的列表：
+下表显示了核心分析日志中可用于以下版本的指标列表：
 
 * **来自 Microsoft 的 Azure CDN 标准版**
 * **来自 Akamai 的 Azure CDN 标准版**
-* **Verizon 中的标准/高级 Azure CDN**
+* **来自 Verizon 的 Azure CDN 标准版/高级版**
 
 并非所有提供商提供的所有指标都可用，尽管这种差异很小。 此表还显示了某提供商的给定指标是否可用。 这些指标仅适用于在其上拥有流量的 CDN 终结点。
 
@@ -263,9 +263,9 @@ Microsoft 当前仅提供核心分析日志，其中包含一些显示 HTTP 响�
 | RequestCountHttpStatus304 | 导致 304 HTTP 代码响应的所有请求的计数。 | 是 | 否  |是 |
 | RequestCountHttpStatus404 | 导致 404 HTTP 代码响应的所有请求的计数。 | 是 | 否  |是 |
 | RequestCountCacheHit | 导致缓存命中的所有请求的计数。 资产已直接从 POP 提供给客户端。 | 是 | 是 | 否  |
-| RequestCountCacheMiss | 导致缓存未命中的所有请求的计数。 缓存未命中意味着在最靠近客户端的 POP 上找不到该资产，并已从源中检索到该资产。 | 是 | 是 | 否 |
+| RequestCountCacheMiss | 导致缓存未命中的所有请求的计数。 缓存失误的意思是在最靠近客户端的 POP 上找不到资产，将从源进行检索。 | 是 | 是 | 否 |
 | RequestCountCacheNoCache | 因边缘上的用户配置而无法缓存的资产的所有请求计数。 | 是 | 是 | 否 |
-| RequestCountCacheUncacheable | 对资产的 Cache-Control 和 Expires 标头禁止缓存的对资产的所有请求计数。 此计数表明它不应在 POP 上缓存或由 HTTP 客户端缓存。 | 是 | 是 | 否 |
+| RequestCountCacheUncacheable | 因资产的 Cache-Control 和 Expires 标头而无法缓存的资产的所有请求计数。 此计数指示该资产不应在 POP 上缓存或不应由 HTTP 客户端缓存。 | 是 | 是 | 否 |
 | RequestCountCacheOthers | 上述未涵盖的具有缓存状态的所有请求的计数。 | 否 | 是 | 否  |
 | EgressTotal | 出站数据传输量（按 GB 计） | 是 |是 |是 |
 | EgressHttpStatus2xx | 针对状态代码为 2xx HTTP 的响应的出站数据传输量*（按 GB 计）。 | 是 | 是 | 否  |
@@ -274,9 +274,9 @@ Microsoft 当前仅提供核心分析日志，其中包含一些显示 HTTP 响�
 | EgressHttpStatus5xx | 针对状态代码为 5xx HTTP 的响应的出站数据传输量（按 GB 计）。 | 是 | 是 | 否 |
 | EgressHttpStatusOthers | 针对带其他 HTTP 状态代码的响应的出站数据传输量（按 GB 计）。 | 是 | 是 | 否  |
 | EgressCacheHit | 针对直接从 CDN POP/边缘上 CDN 缓存传递的响应的出站数据传输量。 | 是 | 是 | 否 |
-| EgressCacheMiss。 | 对于在最近的 POP 服务器上找不到的响应的出站数据传输，以及从源服务器检索到的响应。 | 是 | 是 | 否 |
-| EgressCacheNoCache | 因边缘上的用户配置而无法缓存的资产的出站数据传输。 | 是 | 是 | 否 |
-| EgressCacheUncacheable | 无法通过资产的 Cache-Control 和或 Expires 标头来缓存的资产的出站数据传输。 指示它不应在 POP 上缓存或由 HTTP 客户端缓存。 | 是 | 是 | 否 |
+| EgressCacheMiss。 | 针对未在最近的 POP 服务器上找到并从源服务器检索的响应的出站数据传输量。 | 是 | 是 | 否 |
+| EgressCacheNoCache | 因边缘上的用户配置而无法缓存的资源的出站数据传输量。 | 是 | 是 | 否 |
+| EgressCacheUncacheable | 因资产的 Cache-Control 和/或 Expires 标头而无法缓存的资产的出站数据传输量。 指示该资产不应在 POP 上缓存或不应由 HTTP 客户端缓存。 | 是 | 是 | 否 |
 | EgressCacheOthers | 其他缓存方案的出站数据传输量。 | 否 | 是 | 否 |
 
 * 出站数据传输量是指从 CDN POP 服务器传递到客户端的流量。
@@ -329,7 +329,7 @@ Microsoft 当前仅提供核心分析日志，其中包含一些显示 HTTP 响�
 }
 ```
 
-其中，*time* 表示报告统计信息的小时边界的开始时间。 CDN 提供程序不支持的指标（而不是 double 或 integer 值）会导致 null 值。 该 null 值表示不存在指标且与 0 值不同。 在终结点上配置每个域的一组指标。
+其中，*time* 表示报告统计信息的小时边界的开始时间。 不受 CDN 提供程序支持的指标将返回 null 值，而不是双精度或整数值。 该 null 值表示不存在指标且与 0 值不同。 在终结点上配置的每个域都有其中一组指标。
 
 示例属性：
 

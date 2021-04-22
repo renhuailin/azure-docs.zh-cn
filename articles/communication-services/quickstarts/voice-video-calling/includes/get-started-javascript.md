@@ -6,12 +6,12 @@ ms.author: nimag
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 7d7b62d6587a568b74d142a2ee6a93587941559d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bd9a607b46c87ca590bcefef310f822d6f23483c
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645450"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107386952"
 ---
 本快速入门将介绍如何使用适用于 JavaScript 的 Azure 通信服务通话 SDK 开始通话。
 
@@ -19,7 +19,7 @@ ms.locfileid: "105645450"
 > 本文档使用版本 1.0.0-beta.10 的通话 SDK。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Node.js](https://nodejs.org/)，活动 LTS 和维护 LTS 版本（建议使用 8.11.1 和 10.14.1）。
@@ -162,6 +162,10 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 
 打开浏览器并导航到 http://localhost:8080/。 应该看到以下内容：
 
-:::image type="content" source="../media/javascript/calling-javascript-app.png" alt-text="已完成的 JavaScript 应用程序的屏幕截图。":::
+:::image type="content" source="../media/javascript/calling-javascript-app-2.png" alt-text="已完成的 JavaScript 应用程序的屏幕截图。":::
 
-可以通过在“文本”字段中提供用户 ID 并单击“开始呼叫”按钮，启动出站 VOIP 呼叫。 呼叫 `8:echo123` 会将你连接到回显机器人，这对于入门和验证音频设备是否正常运行非常有用。
+可以通过在相应文本字段中提供有效用户访问令牌和用户 ID 并单击“开始呼叫”按钮，启动出站 VOIP 呼叫。 呼叫 `8:echo123` 会将你连接到回显机器人，这对于入门和验证音频设备是否正常运行非常有用。
+
+## <a name="sample-code"></a>代码示例
+
+可以从 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-voice-calling) 下载示例应用。

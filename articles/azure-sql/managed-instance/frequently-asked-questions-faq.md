@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 9faaf79958443c252a8d913fbd7448389c610e09
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 16f937286b967aaea8ec6a16e97835b2de5a0331
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628571"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765490"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL 托管实例常见问题解答 (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -94,7 +94,7 @@ SQL 托管实例部署是否有配额限制？
 
 如何缩放托管实例？
 
-可以通过 [Azure 门户](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation)、[PowerShell](/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell)、[Azure CLI](/cli/azure/sql/mi#az-sql-mi-update) 或 [ARM 模板](/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)来缩放托管实例。
+可以通过 [Azure 门户](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation)、[PowerShell](/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell)、[Azure CLI](/cli/azure/sql/mi#az_sql_mi_update) 或 [ARM 模板](/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)来缩放托管实例。
 
 是否可以将托管实例从一个区域移动到另一个区域？
 
@@ -102,7 +102,7 @@ SQL 托管实例部署是否有配额限制？
 
 如何删除托管实例？
 
-可以通过 Azure 门户、[PowerShell](/powershell/module/az.sql/remove-azsqlinstance)、[Azure CLI](/cli/azure/sql/mi#az-sql-mi-delete) 或[资源管理器 REST API](/rest/api/sql/managedinstances/delete) 来删除托管实例。
+可以通过 Azure 门户、[PowerShell](/powershell/module/az.sql/remove-azsqlinstance)、[Azure CLI](/cli/azure/sql/mi#az_sql_mi_delete) 或[资源管理器 REST API](/rest/api/sql/managedinstances/delete) 来删除托管实例。
 
 创建或更新实例或还原数据库需要多长时间？
 

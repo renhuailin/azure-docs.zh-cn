@@ -2,13 +2,13 @@
 title: Azure Monitor 资源日志支持的服务和类别
 description: Azure Monitor 参考：了解 Azure 资源日志支持的服务和事件架构。
 ms.topic: reference
-ms.date: 01/29/2021
-ms.openlocfilehash: 9a04d0f470522dd4689d604756ffd25e70c5d456
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.date: 03/30/2021
+ms.openlocfilehash: a4ab4a2e425b752198223da5efd1b07466ab83d1
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102033140"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166932"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Azure 资源日志支持的类别
 
@@ -24,7 +24,7 @@ ms.locfileid: "102033140"
 
 将任何数据发送和存储到 Log Analytics、Azure 存储和/或事件中心都会产生相关成本。 你可能需要为将数据获取到这些位置以及将数据保存在那里支付费用。  资源日志是可以发送到这些位置的数据类型之一。 
 
-将某些类别的资源日志导出到这些位置需要额外的费用。 下表列出了具有导出成本的日志。 有关此定价的详细信息，请参阅 " [Azure Monitor 定价" 页](https://azure.microsoft.com/pricing/details/monitor/)中的 "平台日志" 部分。
+将某些类别的资源日志导出到这些位置需要额外费用。 下表列出了那些会产生导出费用的日志。 有关此定价的详细信息，请参阅 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)中的“平台日志”部分。
 
 ## <a name="supported-log-categories-per-resource-type"></a>每种资源类型支持的日志类别
 
@@ -32,8 +32,9 @@ ms.locfileid: "102033140"
 
 某些类别可能只适用于特定类型的资源。 如果你觉得缺少资源，请参阅特定于资源的文档。 例如，Microsoft.Sql/servers/databases 类别并非适用于所有类型的数据库。 有关详细信息，请参阅[有关 SQL 数据库诊断日志记录的信息](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md)。 
 
-如果你认为缺少某些内容，你可以在本文底部打开 GitHub 注释。
-## <a name="microsoftaaddomainservices"></a>Microsoft.AAD/domainServices
+如果仍觉得缺少某些内容，可以在本文底部打开 GitHub 评论。
+
+## <a name="microsoftaaddomainservices"></a>Microsoft.AAD/DomainServices
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
@@ -46,6 +47,13 @@ ms.locfileid: "102033140"
 |PolicyChange|PolicyChange|否|
 |PrivilegeUse|PrivilegeUse|否|
 |SystemSecurity|SystemSecurity|否|
+
+
+## <a name="microsoftaadiamtenants"></a>microsoft.aadiam/tenants
+
+|Category|类别显示名称|导出成本|
+|---|---|---|
+|登录|登录|是|
 
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
@@ -85,7 +93,7 @@ ms.locfileid: "102033140"
 |AuditEvent|AuditEvent 消息日志类别。|否|
 |ERR|错误消息日志类别。|否|
 |INF|信息性消息日志类别。|否|
-|警告|警告消息日志类别。|否|
+|WRN|警告性消息日志类别。|否|
 
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
@@ -95,6 +103,14 @@ ms.locfileid: "102033140"
 |DscNodeStatus|Dsc 节点状态|否|
 |JobLogs|作业日志|否|
 |JobStreams|作业流|否|
+
+
+## <a name="microsoftautonomousdevelopmentplatformaccounts"></a>Microsoft.AutonomousDevelopmentPlatform/accounts
+
+|Category|类别显示名称|导出成本|
+|---|---|---|
+|审核|审核|是|
+|可运行|可运行|是|
 
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
@@ -134,8 +150,7 @@ ms.locfileid: "102033140"
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
-|BotRequest|从通道到机器人的请求|否|
-|DependencyRequest|对依赖项的请求|否|
+|BotRequest|来自渠道的对机器人的请求|否|
 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft.Cdn/cdnwebapplicationfirewallpolicies
@@ -178,10 +193,11 @@ ms.locfileid: "102033140"
 |跟踪|跟踪日志|否|
 
 
-## <a name="microsoftcommunicationcommunicationservices"></a>Microsoft Communication/CommunicationServices
+## <a name="microsoftcommunicationcommunicationservices"></a>Microsoft.Communication/CommunicationServices
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
+|AuthOperational|操作身份验证日志|是|
 |ChatOperational|操作聊天日志|否|
 |SMSOperational|操作短信日志|否|
 |使用情况|使用情况记录|否|
@@ -203,7 +219,7 @@ ms.locfileid: "102033140"
 |防护|防护|否|
 |kube-apiserver|Kubernetes API 服务器|否|
 |kube-audit|Kubernetes 审核|否|
-|kube-审核-管理员|Kubernetes 审核管理日志|否|
+|kube-audit-admin|Kubernetes 审核管理日志|否|
 |kube-controller-manager|Kubernetes 控制器管理器|否|
 |kube-scheduler|Kubernetes 计划程序|否|
 
@@ -215,7 +231,7 @@ ms.locfileid: "102033140"
 |AuditLogs|MiniRP 调用的审核日志|否|
 
 
-## <a name="microsoftd365customerinsightsinstances"></a>D365CustomerInsights/实例
+## <a name="microsoftd365customerinsightsinstances"></a>Microsoft.D365CustomerInsights/instances
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
@@ -239,14 +255,14 @@ ms.locfileid: "102033140"
 |工作区|Databricks 工作区|否|
 
 
-## <a name="microsoftdatacollaborationworkspaces"></a>DataCollaboration/工作区
+## <a name="microsoftdatacollaborationworkspaces"></a>Microsoft.DataCollaboration/workspaces
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
 |CollaborationAudit|协作审核|是|
 |DataAssets|数据资产|否|
 |管道|管道|否|
-|建议|建议|否|
+|Proposals|建议|否|
 |脚本|脚本|否|
 
 
@@ -256,11 +272,13 @@ ms.locfileid: "102033140"
 |---|---|---|
 |ActivityRuns|管道活动运行日志|否|
 |PipelineRuns|管道运行日志|否|
+|SandboxActivityRuns|沙盒活动运行日志|是|
+|SandboxPipelineRuns|沙盒管道运行日志|是|
 |SSISIntegrationRuntimeLogs|SSIS 集成运行时日志|否|
 |SSISPackageEventMessageContext|SSIS 包事件消息上下文|否|
 |SSISPackageEventMessages|SSIS 包事件消息|否|
-|SSISPackageExecutableStatistics|SSIS 包可执行文件统计|否|
-|SSISPackageExecutionComponentPhases|SSIS 包执行组件阶段|否|
+|SSISPackageExecutableStatistics|SSIS 包可执行文件统计信息|否|
+|SSISPackageExecutionComponentPhases|SSIS 执行组件阶段|否|
 |SSISPackageExecutionDataStatistics|SSIS 包执行数据统计信息|否|
 |TriggerRuns|触发器运行日志|否|
 
@@ -320,6 +338,13 @@ ms.locfileid: "102033140"
 |Category|类别显示名称|导出成本|
 |---|---|---|
 |PostgreSQLLogs|PostgreSQL 服务器日志|否|
+
+
+## <a name="microsoftdbforpostgresqlservergroupsv2"></a>Microsoft.DBForPostgreSQL/serverGroupsv2
+
+|Category|类别显示名称|导出成本|
+|---|---|---|
+|PostgreSQLLogs|PostgreSQL 服务器日志|是|
 
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
@@ -449,7 +474,7 @@ ms.locfileid: "102033140"
 |PublishFailures|发布失败日志|否|
 
 
-## <a name="microsofteventgridpartnernamespaces"></a>EventGrid/partnerNamespaces
+## <a name="microsofteventgridpartnernamespaces"></a>Microsoft.EventGrid/partnerNamespaces
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
@@ -457,7 +482,7 @@ ms.locfileid: "102033140"
 |PublishFailures|发布失败日志|否|
 
 
-## <a name="microsofteventgridpartnertopics"></a>EventGrid/partnerTopics
+## <a name="microsofteventgridpartnertopics"></a>Microsoft.EventGrid/partnerTopics
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
@@ -492,7 +517,7 @@ ms.locfileid: "102033140"
 |OperationalLogs|操作日志|否|
 
 
-## <a name="microsoftexperimentationexperimentworkspaces"></a>microsoft 试验/experimentWorkspaces
+## <a name="microsoftexperimentationexperimentworkspaces"></a>microsoft.experimentation/experimentWorkspaces
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
@@ -529,18 +554,6 @@ ms.locfileid: "102033140"
 |AppRequests|请求|否|
 |AppSystemEvents|系统事件|否|
 |AppTraces|跟踪|否|
-
-
-## <a name="microsoftiotspacesgraph"></a>Microsoft.IoTSpaces/Graph
-
-|Category|类别显示名称|导出成本|
-|---|---|---|
-|审核|审核|否|
-|流出量|流出量|否|
-|流入量|流入量|否|
-|可运行|可运行|否|
-|跟踪|跟踪|否|
-|UserDefinedFunction|UserDefinedFunction|否|
 
 
 ## <a name="microsoftkeyvaultmanagedhsms"></a>microsoft.keyvault/managedhsms
@@ -726,14 +739,14 @@ ms.locfileid: "102033140"
 |审核|审核日志|否|
 
 
-## <a name="microsoftpowerbitenants"></a>Microsoft PowerBI/租户
+## <a name="microsoftpowerbitenants"></a>Microsoft.PowerBI/tenants
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
 |引擎|引擎|否|
 
 
-## <a name="microsoftpowerbitenantsworkspaces"></a>Microsoft PowerBI/租户/工作区
+## <a name="microsoftpowerbitenantsworkspaces"></a>Microsoft.PowerBI/tenants/workspaces
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
@@ -745,13 +758,6 @@ ms.locfileid: "102033140"
 |Category|类别显示名称|导出成本|
 |---|---|---|
 |引擎|引擎|否|
-
-
-## <a name="microsoftprojectbabylonaccounts"></a>Microsoft.ProjectBabylon/accounts
-
-|Category|类别显示名称|导出成本|
-|---|---|---|
-|ScanStatusLogEvent|ScanStatus|否|
 
 
 ## <a name="microsoftpurviewaccounts"></a>microsoft.purview/accounts
@@ -808,6 +814,13 @@ ms.locfileid: "102033140"
 |Category|类别显示名称|导出成本|
 |---|---|---|
 |AllLogs|Azure SignalR 服务日志。|否|
+
+
+## <a name="microsoftsignalrservicewebpubsub"></a>Microsoft.SignalRService/WebPubSub
+
+|Category|类别显示名称|导出成本|
+|---|---|---|
+|AllLogs|Azure Web PubSub 服务日志。|是|
 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
@@ -901,6 +914,9 @@ ms.locfileid: "102033140"
 |---|---|---|
 |BuiltinSqlReqsEnded|已结束的内置 Sql 池请求|否|
 |GatewayApiRequests|Synapse 网关 API 请求|否|
+|IntegrationActivityRuns|集成活动运行|是|
+|IntegrationPipelineRuns|集成管道运行|是|
+|IntegrationTriggerRuns|集成触发器运行|是|
 |SQLSecurityAuditEvents|SQL 安全审核事件|否|
 |SynapseRbacOperations|Synapse RBAC 操作|否|
 
@@ -975,7 +991,6 @@ ms.locfileid: "102033140"
 |AppServiceIPSecAuditLogs|IPSecurity 审核日志|否|
 |AppServicePlatformLogs|应用服务平台日志|否|
 |FunctionAppLogs|函数应用程序日志|否|
-
 
 
 ## <a name="next-steps"></a>后续步骤

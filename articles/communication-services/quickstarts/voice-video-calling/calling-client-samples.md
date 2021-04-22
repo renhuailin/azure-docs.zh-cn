@@ -1,28 +1,25 @@
 ---
-title: 快速入门 - 使用 Azure 通信服务呼叫客户端库
+title: 快速入门 - 使用 Azure 通信服务呼叫 SDK
 titleSuffix: An Azure Communication Services quickstart
-description: 了解通信服务呼叫客户端库功能。
-author: mikben
-manager: jken
+description: 了解通信服务呼叫 SDK 功能。
+author: rinarish
+manager: rinarish
 services: azure-communication-services
-ms.author: mikben
+ms.author: arturk
 ms.date: 03/10/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: b4689f9777cee99b5bd85f733812ba986162360c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 87808cfd97be5fb38ee64ef57540aada255f6ca5
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103488072"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110336"
 ---
-# <a name="quickstart-use-the-communication-services-calling-client-library"></a>快速入门：使用通信服务呼叫客户端库
+# <a name="quickstart-use-the-communication-services-calling-sdk"></a>快速入门：使用通信服务呼叫 SDK
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
-
-通过使用通信服务呼叫客户端库向应用添加语音和视频呼叫，开启 Azure 通信服务使用旅程。
+使用通信服务呼叫 SDK 向应用添加语音和视频呼叫，开启 Azure 通信服务使用旅程。
 
 ::: zone pivot="platform-web"
 [!INCLUDE [Calling with JavaScript](./includes/calling-sdk-js.md)]

@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4e709719d56aacacf61e247a5dbe215f766a891a
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 257ba16cf015705b8f6da264d9c25f28cef2ebb1
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102607945"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443434"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中添加用户属性和自定义用户输入
 
@@ -60,7 +60,7 @@ ms.locfileid: "102607945"
 1. 选择“页面布局”。
 1. 选择“本地帐户注册页”。
 1. 在“用户属性”下，选择“City”。
-    1. 在“用户输入类型”下拉列表中，选择“DropdownSingleSelect”。
+    1. 在“用户输入类型”下拉列表中，选择“DropdownSingleSelect”。 可选：使用“上移”/“下移”按钮可排列注册页中的文本顺序。
     1. 在“可选”下拉列表中，选择“否”。
 1. 选择“保存”。 
 
@@ -122,7 +122,7 @@ ms.locfileid: "102607945"
 
 1. 选择策略（例如，“B2C_1_SignupSignin”）将其打开。
 1. 若要测试策略，请选择“运行用户流”。
-1. 对于“应用程序”，请选择前面已注册的名为“testapp1”的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择前面已注册的名为 *testapp1* 的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 单击“运行用户流”
 
 ::: zone-end

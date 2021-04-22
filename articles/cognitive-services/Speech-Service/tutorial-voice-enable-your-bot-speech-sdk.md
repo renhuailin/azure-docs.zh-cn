@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d91bfee228b946ff564f6d080976f9ce5c12caa4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa449ad3d9a0e26bd0754a67581c8d63fa025e55
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102426257"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552302"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>教程：使用语音 SDK 为机器人赋予语音能力
 
@@ -83,7 +83,7 @@ ms.locfileid: "102426257"
 如果要在本教程中使用其他区域，以下因素可能会限制你的选择：
 
 * 确保使用[支持的 Azure 区域](regions.md#voice-assistants)。
-* Direct Line Speech 通道使用文本转语音服务，该服务提供标准语音和神经语音。 神经语音[仅限在特定的 Azure 区域中使用](regions.md#standard-and-neural-voices)。
+* Direct Line Speech 通道使用文本转语音服务，该服务提供标准语音和神经语音。 这些 [Azure 区域](regions.md#neural-and-standard-voices)皆提供神经和标准语音。
 
 有关区域的详细信息，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。
 
@@ -328,7 +328,7 @@ Windows 语音助理客户端提供一个简单 UI，可让你配置与机器人
 |错误(AuthenticationFailure): WebSocket 升级失败并出现身份验证错误(401)。 请检查订阅密钥(或授权令牌)和区域名称是否正确| 在应用的“设置”页中，确保正确输入了语音订阅密钥及其区域。<br>确保正确输入了语音密钥和密钥区域。 |
 |错误(ConnectionFailure): 远程主机关闭了连接。 错误代码: 1011。 错误详细信息: 在发送消息之前无法连接到机器人 | 确保[已选中“启用流式处理终结点”](#register-the-direct-line-speech-channel)框并且/或者[已将“Web 套接字”切换为“打开”](#enable-web-sockets)。<br>确保 Azure 应用服务正在运行。 如果已运行，请尝试重启应用服务。|
 |错误(ConnectionFailure): 远程主机关闭了连接。 错误代码: 1002。 错误详细信息: 当状态代码应为 '101' 时，服务器返回了状态代码 '503' | 确保[已选中“启用流式处理终结点”](#register-the-direct-line-speech-channel)框并且/或者[已将“Web 套接字”切换为“打开”](#enable-web-sockets)。<br>确保 Azure 应用服务正在运行。 如果已运行，请尝试重启应用服务。|
-|错误(ConnectionFailure): 远程主机关闭了连接。 错误代码: 1011。 错误详细信息: 响应状态代码不是指示成功: 500 (InternalServerError)| 机器人在其输出活动的[讲话](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak)字段中指定了神经语音，但与你的语音订阅密钥关联的 Azure 区域不支持神经语音。 请参阅[标准和神经语音](./regions.md#standard-and-neural-voices)。|
+|错误(ConnectionFailure): 远程主机关闭了连接。 错误代码: 1011。 错误详细信息: 响应状态代码不是指示成功: 500 (InternalServerError)| 机器人在其输出活动的[讲话](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak)字段中指定了神经语音，但与你的语音订阅密钥关联的 Azure 区域不支持神经语音。 请参阅[神经和标准语音](./regions.md#neural-and-standard-voices)。|
 
 如果表格中的方法未能解决你的问题，请参阅[语音助理：常见问题解答](faq-voice-assistants.md)。 如果在遵循本教程中的所有步骤后仍无法解决问题，请在[语音助理 GitHub 页](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues)中输入新问题。
 
@@ -475,7 +475,7 @@ Windows 语音助理客户端使用 NuGet 包 [Microsoft.CognitiveServices.Speec
 ## <a name="see-also"></a>另请参阅
 
 * 部署到[你附近的 Azure 区域](https://azure.microsoft.com/global-infrastructure/locations/)以改进机器人的响应时间
-* 部署到[支持优质神经 TTS 语音的 Azure 区域](./regions.md#standard-and-neural-voices)
+* 部署到[支持优质神经 TTS 语音的 Azure 区域](./regions.md#neural-and-standard-voices)
 * 与 Direct Line Speech 通道相关的定价：
   * [机器人服务定价](https://azure.microsoft.com/pricing/details/bot-service/)
   * [语音服务](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)

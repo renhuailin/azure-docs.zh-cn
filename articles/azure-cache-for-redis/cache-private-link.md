@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure 专用链接的 Azure Cache for Redis（预览版）
+title: 使用 Azure 专用链接的 Azure Cache for Redis
 description: Azure 专用终结点是一个网络接口，可以通过私密且安全的方式将你连接到 Azure 专用链接支持的 Azure Cache for Redis。 在本文中，你将了解如何使用 Azure 门户创建 Azure Cache、Azure 虚拟网络和专用终结点。
 author: curib
 ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 22bdf93e7236ae5220a6bb7c6ead898628bb51a1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 3/31/2021
+ms.openlocfilehash: 952f708d8f368b63f772e3af35f6fd441d65622d
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97007579"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121653"
 ---
-# <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>使用 Azure 专用链接的 Azure Cache for Redis（公共预览版）
+# <a name="azure-cache-for-redis-with-azure-private-link"></a>使用 Azure 专用链接的 Azure Cache for Redis
 在本文中，你将了解如何通过 Azure 门户创建虚拟网络、Azure Cache for Redis 实例和专用终结点。 你还将学习如何向现有的 Azure Cache for Redis 实例添加专用终结点。
 
 Azure 专用终结点是一个网络接口，可以通过私密且安全的方式将你连接到 Azure 专用链接支持的 Azure Cache for Redis。 
@@ -22,8 +22,7 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 * Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 
 > [!IMPORTANT]
-> 若要使用专用终结点，需要在 2020 年 7 月 28 日之后创建 Azure Cache for Redis 实例。
-> 目前，不支持异地复制、防火墙规则、门户控制台支持、每个群集缓存多个终结点、防火墙的持久性连接和 VNet 注入的缓存。 
+> 目前不支持：区域冗余、门户控制台支持和持久连接防火墙的存储帐户。 
 >
 >
 
@@ -112,19 +111,8 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 > [!IMPORTANT]
 > 
 > 有一个 `publicNetworkAccess` 标志，默认情况下为 `Disabled`。 
-> 如果缓存设置为 `Enabled`，此标志旨在允许你选择性地同时允许公共和专用终结点访问缓存。 如果设置为 `Disabled`，它将只允许专用终结点访问。 你可以使用以下 PATCH 请求将值设置为 `Disabled` 或 `Enabled`。 编辑该值以反映你希望为缓存设置的标志。
-> ```http
-> PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
-> {    "properties": {
->        "publicNetworkAccess":"Disabled"
->    }
-> }
-> ```
+> 如果缓存设置为 `Enabled`，此标志旨在允许你选择性地同时允许公共和专用终结点访问缓存。 如果设置为 `Disabled`，它将只允许专用终结点访问。 也可将该值设置为 `Disabled` 或 `Enabled`。 要详细了解如何更改此值，请参阅[常见问题解答](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access)
 >
-
-> [!IMPORTANT]
-> 
-> 若要连接到群集缓存，需要将 `publicNetworkAccess` 设置为 `Disabled` 并且只能有一个专用终结点连接。 
 >
 
 ## <a name="create-a-private-endpoint-with-an-existing-azure-cache-for-redis-instance"></a>在现有 Azure Cache for Redis 实例中创建专用终结点 
@@ -173,7 +161,7 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 
 2. 选择要向其中添加专用终结点的缓存实例。
 
-3. 在屏幕左侧选择“(预览版)专用终结点”。
+3. 在屏幕左侧，选择“专用终结点”。
 
 4. 单击“专用终结点”按钮，创建专用终结点。
 
@@ -204,16 +192,36 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 
 13. 显示绿色的“已通过验证”消息后，选择“创建” 。
 
+> [!IMPORTANT]
+> 
+> 有一个 `publicNetworkAccess` 标志，默认情况下为 `Disabled`。 
+> 如果缓存设置为 `Enabled`，此标志旨在允许你选择性地同时允许公共和专用终结点访问缓存。 如果设置为 `Disabled`，它将只允许专用终结点访问。 也可将该值设置为 `Disabled` 或 `Enabled`。 要详细了解如何更改此值，请参阅[常见问题解答](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access)
+>
+>
+
+
 ## <a name="faq"></a>常见问题解答
 
 ### <a name="why-cant-i-connect-to-a-private-endpoint"></a>为什么无法连接到专用终结点？
-如果缓存已是 VNet 注入缓存，则专用终结点不能与缓存实例一起使用。 如果缓存实例使用的是不受支持的功能（如下所列），则无法连接到专用终结点实例。 此外，需要在 7 月 27 日之后创建缓存实例才能使用专用终结点。
+如果缓存已是 VNet 注入缓存，则专用终结点不能与缓存实例一起使用。 如果缓存实例使用的是不受支持的功能（如下所列），则无法连接到专用终结点实例。
 
 ### <a name="what-features-are-not-supported-with-private-endpoints"></a>专用终结点不支持哪些功能？
-异地复制、防火墙规则、门户控制台支持、每个群集缓存多个终结点、防火墙规则的持久性和区域冗余。 
+目前不支持：区域冗余、门户控制台支持和持久连接防火墙的存储帐户。 
 
 ### <a name="how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access"></a>如何将专用终结点更改为禁用或启用公用网络访问？
-有一个 `publicNetworkAccess` 标志，默认情况下为 `Disabled`。 如果缓存设置为 `Enabled`，此标志旨在允许你选择性地同时允许公共和专用终结点访问缓存。 如果设置为 `Disabled`，它将只允许专用终结点访问。 你可以使用以下 PATCH 请求将值设置为 `Disabled` 或 `Enabled`。 编辑该值以反映你希望为缓存设置的标志。
+有一个 `publicNetworkAccess` 标志，默认情况下为 `Disabled`。 如果缓存设置为 `Enabled`，此标志旨在允许你选择性地同时允许公共和专用终结点访问缓存。 如果设置为 `Disabled`，它将只允许专用终结点访问。 可在 Azure 门户中或使用 RESTFUL API PATCH 请求将值设置为 `Disabled` 或 `Enabled`。 
+
+若要在 Azure 门户中更改值，请执行以下步骤。
+
+1. 在 Azure 门户中，搜索“Azure Cache for Redis”并按 Enter 或从搜索建议中选择它。
+
+2. 选择要更改其公用网络访问值的缓存实例。
+
+3. 在屏幕左侧，选择“专用终结点”。
+
+4. 单击“启用公用网络访问”按钮。
+
+若要通过 Restful API PATCH 请求更改此值，请参阅下文并编辑值，以反映要缓存的标志。
 
 ```http
 PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
@@ -223,24 +231,23 @@ PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/
 }
 ```
 
+### <a name="how-can-i-have-multiple-endpoints-in-different-virtual-networks"></a>如何在不同的虚拟网络中拥有多个终结点？
+若要在不同的虚拟网络中拥有多个专用终结点，需在创建专用终结点之前，将专用 DNS 区域手动配置到多个虚拟网络。 有关详细信息，请参阅 [Azure 专用终结点 DNS 配置](../private-link/private-endpoint-dns.md)。 
+
+### <a name="what-happens-if-i-delete-all-the-private-endpoints-on-my-cache"></a>如果删除缓存上的所有专用终结点会发生什么情况？
+删除缓存上的专用终结点后，可能无法访问缓存实例，直到显式启用公用网络访问或添加另一个专用终结点后才可访问。 可在 Azure 门户上更改 `publicNetworkAccess` 标志或通过 Restful API PATCH 请求来更改此标志。 要详细了解如何更改此值，请参阅[常见问题解答](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access)
+
 ### <a name="are-network-security-groups-nsg-enabled-for-private-endpoints"></a>是否对专用终结点启用了网络安全组 (NSG)？
 否，已对专用终结点禁用了 NSG。 尽管包含专用终结点的子网可以有关联的 NSG，但这些规则不会针对专用终结点处理的流量生效。 必须[禁用网络策略的强制实施](../private-link/disable-private-endpoint-network-policy.md)，才能在子网中部署专用终结点。 NSG 仍会在同一子网中托管的其他工作负荷上强制实施。 任何客户端子网上的路由将使用 /32 前缀，更改默认路由行为需要类似的 UDR。 
 
 对源客户端上的出站流量使用 NSG 规则来控制流量。 部署具有 /32 前缀的单个路由，以替代专用终结点路由。 仍支持出站连接的 NSG 流日志和监视信息，并且可以使用这些信息
 
-### <a name="can-i-use-firewall-rules-with-private-endpoints"></a>能否对专用终结点使用防火墙规则？
-不能，这是专用终结点当前的一项限制。 如果在缓存上配置了防火墙规则，则专用终结点将无法正常工作。
-
-### <a name="how-can-i-connect-to-a-clustered-cache"></a>如何连接到群集缓存？
-需要将 `publicNetworkAccess` 设置为 `Disabled`，并且只能有一个专用终结点连接。
-
 ### <a name="since-my-private-endpoint-instance-is-not-in-my-vnet-how-is-it-associated-with-my-vnet"></a>由于我的专用终结点实例不在我的 VNet 中，它如何与我的 VNet 关联？
 它将仅链接到 VNet。 由于它不在 VNet 中，因此不需要为依赖终结点修改 NSG 规则。
 
 ### <a name="how-can-i-migrate-my-vnet-injected-cache-to-a-private-endpoint-cache"></a>如何将 VNet 注入缓存迁移到专用终结点缓存？
-需要删除 VNet 注入缓存，并使用专用终结点创建新的缓存实例。
+需要删除 VNet 注入缓存，并使用专用终结点创建新的缓存实例。 有关详细信息，请参阅[迁移到 Azure Cache for Redis](cache-migration-guide.md)
 
 ## <a name="next-steps"></a>后续步骤
-
 * 若要详细了解 Azure 专用链接，请参阅 [Azure 专用链接文档](../private-link/private-link-overview.md)。
 * 若要比较缓存实例的各种网络隔离选项，请参阅 [Azure Cache for Redis 网络隔离选项文档](cache-network-isolation.md)。

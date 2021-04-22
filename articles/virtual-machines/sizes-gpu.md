@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: a63a468301a5b0d54abd474fd9bb62212b890f76
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 09d62ea5f2db77c14e8faff44de7fb3ce759c6fe
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102554409"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105709729"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU 优化虚拟机大小
 
@@ -31,11 +31,13 @@ GPU 优化 VM 大小是具有单个、多个或部分 GPU 的专用虚拟机。 
 
 若要利用 Azure N 系列 VM 的 GPU 功能，必须安装 NVIDIA 或 AMD GPU 驱动程序。
 
-- 对于 NVIDIA GPU 支持的 VM，[NVIDIA GPU 驱动程序扩展](./extensions/hpccompute-gpu-windows.md)会安装相应的 NVIDIA CUDA 或 GRID 驱动程序。 请使用 Azure 门户或工具（例如 Azure PowerShell 或 Azure 资源管理器模板）安装或管理该扩展。 有关受支持的操作系统和部署步骤，请参阅 [NVIDIA GPU 驱动程序扩展文档](./extensions/hpccompute-gpu-windows.md)。 有关 VM 扩展的常规信息，请参阅 [Azure 虚拟机扩展和功能](./extensions/overview.md)。   
+- 对于 NVIDIA GPU 支持的 VM，[NVIDIA GPU 驱动程序扩展](./extensions/hpccompute-gpu-windows.md)会安装相应的 NVIDIA CUDA 或 GRID 驱动程序。 请使用 Azure 门户或工具（例如 Azure PowerShell 或 Azure 资源管理器模板）安装或管理该扩展。 有关受支持的操作系统和部署步骤，请参阅 [NVIDIA GPU 驱动程序扩展文档](./extensions/hpccompute-gpu-windows.md)。 有关 VM 扩展的常规信息，请参阅 [Azure 虚拟机扩展和功能](./extensions/overview.md)。
 
    或者，你也可以手动安装 NVIDIA GPU 驱动程序。 请参阅[在运行 Windows 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序](./windows/n-series-driver-setup.md)或[在运行 Linux 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序](./linux/n-series-driver-setup.md)，以了解受支持的操作系统、驱动程序以及安装和验证步骤。
 
-- 对于 AMD GPU 支持的 VM，请参阅[在运行 Windows 的 N 系列 VM 上安装 AMD GPU 驱动程序](./windows/n-series-amd-driver-setup.md)，以了解受支持的操作系统、驱动程序、安装和验证步骤。
+- 对于 AMD GPU 支持的 VM，[AMD GPU 驱动程序扩展](./extensions/hpccompute-amd-gpu-windows.md) 会安装相应的 AMD 驱动程序。 请使用 Azure 门户或工具（例如 Azure PowerShell 或 Azure 资源管理器模板）安装或管理该扩展。 有关 VM 扩展的常规信息，请参阅 [Azure 虚拟机扩展和功能](./extensions/overview.md)。
+
+   或者，你也可以手动安装 AMD GPU 驱动程序。 请参阅[在运行 Windows 的 N 系列 VM 上安装 AMD GPU 驱动程序](./windows/n-series-amd-driver-setup.md)，以了解受支持的操作系统、驱动程序、安装和验证步骤。
 
 ## <a name="deployment-considerations"></a>部署注意事项
 

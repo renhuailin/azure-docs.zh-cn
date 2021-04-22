@@ -1,0 +1,359 @@
+---
+title: 部署启动/停止 VM v2（预览版）
+description: 本文介绍如何为 Azure 订阅中的 Azure VM 部署启动/停止 VM v2（预览版）功能。
+services: azure-functions
+ms.subservice: ''
+ms.date: 03/29/2021
+ms.topic: conceptual
+ms.openlocfilehash: 9ca808fffbd26c8837ad9a43447f60e99f89d922
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106111046"
+---
+# <a name="deploy-startstop-vms-v2-preview"></a>部署启动/停止 VM v2（预览版）
+
+按顺序执行本主题中的步骤，以安装启动/停止 VM v2（预览版）功能。 完成设置过程后，请配置计划，以根据自己的要求对其进行自定义。
+
+## <a name="deploy-feature"></a>部署功能
+
+可于[此处](https://github.com/microsoft/startstopv2-deployments/blob/main/README.md)的启动/停止 VM v2 GitHub 组织发起部署。 尽管此功能旨在从订阅中的单个部署跨所有资源组管理订阅中的所有 VM，但可以根据所在组织的操作模型或要求来安装其他实例。 还可以配置此功能，以跨多个订阅集中管理 VM。
+
+为了简化管理和删除操作，建议将启动/停止 VM v2 （预览版）部署到专用资源组。
+
+> [!NOTE]
+> 此预览版目前不支持指定现有存储帐户或 Application Insights 资源。
+
+1. 打开浏览器并导航到启动/停止 VM v2 [GitHub 组织](https://github.com/microsoft/startstopv2-deployments/blob/main/README.md)。
+1. 根据在其中创建 Azure VM 的 Azure 云环境选择部署选项。 Azure 门户中将打开“自定义 Azure 资源管理器部署”页面。
+1. 根据提示登录到 [Azure 门户](https://portal.azure.com)。
+1. 输入以下值：
+
+    |名称 |值 |
+    |-----|------|
+    |区域 |选择附近的区域以获取新资源。|
+    |资源组名称 |指定资源组（将包含启动/停止 VM 的单个资源）名称。 |
+    |资源组区域 |指定资源组所在的区域。 例如“美国中部”。 |
+    |Azure 函数应用名称 |键入在 URL 路径中有效的名称。 将对你键入的名称进行验证，以确保其在 Azure Functions 中是唯一的。 |
+    |Application Insights 名称 |指定 Application Insights 实例（将包含启动/停止 VM 分析）的名称。 |
+    |Application Insights 区域 |指定 Application Insights 实例的区域。|
+    |存储帐户名称 |指定 Azure 存储帐户的名称，以存储启动/停止 VM 执行遥测数据。 |
+    |电子邮件地址 |指定一个或多个电子邮件地址以接收状态通知，用逗号 (,) 分隔。|
+
+    :::image type="content" source="media/deploy/deployment-template-details.png" alt-text="Start/Stop VMs template deployment configuration":::
+
+1. 在页面底部选择“查看 + 创建”。
+1. 选择“创建”以开始部署。
+1. 选择屏幕顶部的铃铛图标（通知）可查看部署状态。 此时会看到“部署正在进行”。 等待部署完成。
+1. 从通知窗格选择“转到资源组”。 将看到类似于以下的屏幕：
+
+    :::image type="content" source="media/deploy/deployment-results-resource-list.png" alt-text="Start/Stop VMs template deployment resource list":::
+
+## <a name="enable-multiple-subscriptions"></a>启用多个订阅
+
+启动/停止部署完成后，请执行以下步骤，以使启动/停止 VM v2（预览版）在多个订阅之间执行操作。
+
+1. 复制在部署过程中指定的 Azure 函数应用名称的值。
+
+1. 在门户中，导航到二级订阅。 选择订阅，然后选择“访问控制 (IAM)”
+
+1. 依次选择“添加”、“添加角色分配”。
+
+1. 从“角色”下拉列表中选择“参与者”角色。
+
+1. 在“选择”字段中输入 Azure 函数应用程序的名称。 在结果中选择函数名称。
+
+1. 选择“保存”，以提交更改。
+
+## <a name="configure-schedules-overview"></a>配置计划概述
+
+若要管理自动化方法以控制 VM 的启动和停止，请根据需要配置一个或多个包含的逻辑应用。
+
+- 已计划 - 启动和停止操作基于你针对 Azure 资源管理器和经典 VM 指定的计划。ststv2_vms_Scheduled_start 和 ststv2_vms_Scheduled_stop 用于配置已计划的启动和停止。
+
+- 已排序 - 启动和停止操作基于针对具有预定义排序标记的 VM 的计划。 仅支持两个命名标记，即 sequencestart 和 sequencestop。 ststv2_vms_Sequenced_start 和 ststv2_vms_Sequenced_stop 用于配置序列化的启动和停止。
+
+    > [!NOTE]
+    > 此方案仅支持 Azure 资源管理器 VM。
+
+- AutoStop - 此功能仅用于基于 Azure 资源管理器和经典 VM 的 CPU 使用率对它们执行停止操作。 该功能也可以是基于计划的执行操作，可在 VM 上创建警报，并根据条件触发警报，以执行停止操作。ststv2_vms_AutoStop 用于配置自动停止功能。
+
+如果需要其他计划，可以使用 Azure 门户中的“克隆”选项来复制所提供的其中一个逻辑应用。
+
+:::image type="content" source="media/deploy/logic-apps-clone-option.png" alt-text="Select the Clone option to duplicate a logic app":::
+
+## <a name="scheduled-start-and-stop-scenario"></a>已计划的启动和停止方案
+
+执行以下步骤，为 Azure 资源管理器和经典 VM 配置已计划的启动和停止操作。 例如，可以配置 ststv2_vms_Scheduled_start 计划，以在上午上班时启动 VM，并根据 ststv2_vms_Scheduled_stop 计划，在晚上下班时停止订阅中的所有 VM。
+
+支持将逻辑应用配置为仅启动 VM。
+
+对于每个方案，可以针对一个或多个订阅、单个或多个资源组执行操作，并在包含或排除列表中指定一个或多个 VM。 不能在同一逻辑应用中同时指定。
+
+1. 登录 [Azure 门户](https://portal.azure.com)并导航到“逻辑应用”。
+
+1. 在逻辑应用列表中，若要配置已计划的开始，请选择 ststv2_vms_Scheduled_start。 若要配置已计划的停止，请选择 ststv2_vms_Scheduled_stop。
+
+1. 从左侧窗格中选择“逻辑应用设计器”。
+
+1. “逻辑应用设计器”出现后，在“设计器”窗格中，选择“重复周期”以配置逻辑应用计划。 若要了解具体的重复周期选项，请参阅[安排重复执行的任务](../../connectors/connectors-native-recurrence.md#add-the-recurrence-trigger)。
+
+    :::image type="content" source="media/deploy/schedule-recurrence-property.png" alt-text="Configure the recurrence frequency for logic app":::
+
+1. 在“设计器”窗格中，选择“函数-尝试”以配置目标设置。 在请求正文中，若要跨订阅中的所有资源组管理 VM，请修改请求正文，如以下示例中所示。
+
+    ```json
+    {
+      "Action": "start",
+      "EnableClassic": false,
+      "RequestScopes": {
+        "ExcludedVMLists": [],
+        "Subscriptions": [
+          "/subscriptions/12345678-1234-5678-1234-123456781234/"
+        ]
+     }
+    }
+    ```
+
+    在 `subscriptions` 数组中指定多个订阅，每个值用逗号分隔，如以下示例中所示。
+
+    ```json
+    "Subscriptions": [
+          "/subscriptions/12345678-1234-5678-1234-123456781234/",
+          "/subscriptions/11111111-0000-1111-2222-444444444444/"
+        ]
+    ```
+
+    在请求正文中，若要管理特定资源组的 VM，请修改请求正文，如以下示例中所示。 必须用逗号分隔指定的每个资源路径。 如果需要，可以指定一个或多个资源组。
+
+    此示例还演示了如何排除虚拟机。 可以通过指定 VM 资源路径或按通配符来排除 VM。
+
+    ```json
+    {
+      "Action": "start",
+      "EnableClassic": false,
+      "RequestScopes": {
+        "ResourceGroups": [
+          "/subscriptions/12345678-1234-5678-1234-123456781234/resourceGroups/rg1/",
+          "/subscriptions/11111111-0000-1111-2222-444444444444/resourceGroups/rg2/"
+        ],
+        "ExcludedVMLists": [
+         "/subscriptions/12345678-1111-2222-3333-1234567891234/resourceGroups/vmrg1/providers/Microsoft.Compute/virtualMachines/vm1"
+        ]
+      }
+    }
+    ```
+
+    此处将对所有 VM 执行操作，但两个订阅中名称以 Az 和 Bz 开头的 VM 除外。
+
+    ```json
+    {
+      "Action": "start",
+      "EnableClassic": false,
+      "RequestScopes": {
+        "ExcludedVMLists": [“Az*”,“Bz*”],
+       "Subscriptions": [
+          "/subscriptions/12345678-1234-5678-1234-123456781234/",
+          "/subscriptions/11111111-0000-1111-2222-444444444444/"
+    
+        ]
+      }
+    }
+    ```
+
+    在请求正文中，若要管理订阅中的特定 VM 集，请修改请求正文，如以下示例中所示。 必须用逗号分隔指定的每个资源路径。 如果需要，可以指定一个 VM。
+
+    ```json
+    {
+      "Action": "start",
+      "EnableClassic": true,
+      "RequestScopes": {
+        "ExcludedVMLists": [],
+        "VMLists": [
+          "/subscriptions/12345678-1234-5678-1234-123456781234/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1",
+          "/subscriptions/12345678-1234-5678-1234-123456781234/resourceGroups/rg3/providers/Microsoft.Compute/virtualMachines/vm2",
+          "/subscriptions/11111111-0000-1111-2222-444444444444/resourceGroups/rg2/providers/Microsoft.ClassicCompute/virtualMachines/vm30"
+          
+        ]
+    }
+    ```
+
+## <a name="sequenced-start-and-stop-scenario"></a>序列化的启动和停止方案
+
+在分布式应用程序体系结构中，如果某环境在多个 Azure 资源管理器 VM 上包含两个或更多组件，则支持按顺序启动和停止组件的序列非常重要。
+
+1. 在逻辑应用列表中，若要配置序列化启动，请选择 ststv2_vms_Sequenced_start。 若要配置序列化停止，请选择 ststv2_vms_Sequenced_stop。
+
+1. 从左侧窗格中选择“逻辑应用设计器”。
+
+1. “逻辑应用设计器”出现后，在“设计器”窗格中，选择“重复周期”以配置逻辑应用计划。 若要了解具体的重复周期选项，请参阅[安排重复执行的任务](../../connectors/connectors-native-recurrence.md#add-the-recurrence-trigger)。
+
+    :::image type="content" source="media/deploy/schedule-recurrence-property.png" alt-text="Configure the recurrence frequency for logic app":::
+
+1. 在“设计器”窗格中，选择“函数-尝试”以配置目标设置。 在请求正文中，若要跨订阅中的所有资源组管理 VM，请修改请求正文，如以下示例中所示。
+
+    ```json
+    {
+      "Action": "start",
+      "EnableClassic": false,
+      "RequestScopes": {
+        "ExcludedVMLists": [],
+        "Subscriptions": [
+          "/subscriptions/12345678-1234-5678-1234-123456781234/"
+        ]
+     },
+       "Sequenced": true
+    }
+    ```
+
+    在 `subscriptions` 数组中指定多个订阅，每个值用逗号分隔，如以下示例中所示。
+
+    ```json
+    "Subscriptions": [
+          "/subscriptions/12345678-1234-5678-1234-123456781234/",
+          "/subscriptions/11111111-0000-1111-2222-444444444444/"
+        ]
+    ```
+
+    在请求正文中，若要管理特定资源组的 VM，请修改请求正文，如以下示例中所示。 必须用逗号分隔指定的每个资源路径。 如果需要，可以指定一个资源组。
+
+    此示例还演示了如何根据使用通配符的已计划的启动/停止示例按资源路径排除虚拟机。
+
+    ```json
+    {
+      "Action": "start",
+      "EnableClassic": false,
+      "RequestScopes": {
+        "ResourceGroups": [
+          "/subscriptions/12345678-1234-5678-1234-123456781234/resourceGroups/rg1/",
+          "/subscriptions/11111111-0000-1111-2222-444444444444/resourceGroups/rg2/"
+        ],
+        "ExcludedVMLists": [
+         "/subscriptions/12345678-1111-2222-3333-1234567891234/resourceGroups/vmrg1/providers/Microsoft.Compute/virtualMachines/vm1"
+        ]
+      },
+       "Sequenced": true
+    }
+    ```
+
+    在请求正文中，若要管理订阅中的特定 VM 集，请修改请求正文，如以下示例中所示。 必须用逗号分隔指定的每个资源路径。 如果需要，可以指定一个 VM。
+
+    ```json
+    {
+      "Action": "start",
+      "EnableClassic": true,
+      "RequestScopes": {
+        "ExcludedVMLists": [],
+        "VMLists": [
+          "/subscriptions/12345678-1234-5678-1234-123456781234/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1",
+          "/subscriptions/12345678-1234-5678-1234-123456781234/resourceGroups/rg2/providers/Microsoft.ClassicCompute/virtualMachines/vm2",
+          "/subscriptions/11111111-0000-1111-2222-444444444444/resourceGroups/rg2/providers/Microsoft.ClassicCompute/virtualMachines/vm30"
+        ]
+      },
+       "Sequenced": true
+    }
+    ```
+
+## <a name="auto-stop-scenario"></a>自动停止方案
+
+启动/停止 VM v2（预览版）可评估在非高峰时段（如下班之后）未使用的计算机并在处理器利用率小于指定百分比时自动关闭它们，从而管理订阅中运行 Azure 资源管理器和经典 VM 的成本。
+
+请求正文中的以下指标警报属性支持自定义：
+
+- AutoStop_MetricName
+- AutoStop_Condition
+- AutoStop_Threshold
+- AutoStop_Description
+- AutoStop_Frequency
+- AutoStop_Severity
+- AutoStop_Threshold
+- AutoStop_TimeAggregationOperator
+- AutoStop_TimeWindow
+
+若要详细了解 Azure Monitor 指标警报的工作方式以及配置方式，请参阅 [Azure Monitor 中的指标警报](../../azure-monitor/alerts/alerts-metric-overview.md)。
+
+1. 在逻辑应用列表中，若要配置自动停止，请选择 ststv2_vms_AutoStop。
+
+1. 从左侧窗格中选择“逻辑应用设计器”。
+
+1. “逻辑应用设计器”出现后，在“设计器”窗格中，选择“重复周期”以配置逻辑应用计划。 若要了解具体的重复周期选项，请参阅[安排重复执行的任务](../../connectors/connectors-native-recurrence.md#add-the-recurrence-trigger)。
+
+    :::image type="content" source="media/deploy/schedule-recurrence-property.png" alt-text="Configure the recurrence frequency for logic app":::
+
+1. 在“设计器”窗格中，选择“函数-尝试”以配置目标设置。 在请求正文中，若要跨订阅中的所有资源组管理 VM，请修改请求正文，如以下示例中所示。
+
+    ```json
+    {
+      "Action": "stop",
+      "EnableClassic": false,    
+      "AutoStop_MetricName": "Percentage CPU",
+      "AutoStop_Condition": "LessThan",
+      "AutoStop_Description": "Alert to stop the VM if the CPU % exceed the threshold",
+      "AutoStop_Frequency": "00:05:00",
+      "AutoStop_Severity": "2",
+      "AutoStop_Threshold": "5",
+      "AutoStop_TimeAggregationOperator": "Average",
+      "AutoStop_TimeWindow": "06:00:00",
+      "RequestScopes":{        
+        "Subscriptions":[
+            "/subscriptions/12345678-1111-2222-3333-1234567891234/",
+            "/subscriptions/12345678-2222-4444-5555-1234567891234/"
+        ],
+        "ExcludedVMLists":[]
+      }        
+    }
+    ```
+
+    在请求正文中，若要管理特定资源组的 VM，请修改请求正文，如以下示例中所示。 必须用逗号分隔指定的每个资源路径。 如果需要，可以指定一个资源组。
+
+    ```json
+    {
+      "Action": "stop",
+      "AutoStop_Condition": "LessThan",
+      "AutoStop_Description": "Alert to stop the VM if the CPU % exceed the threshold",
+      "AutoStop_Frequency": "00:05:00",
+      "AutoStop_MetricName": "Percentage CPU",
+      "AutoStop_Severity": "2",
+      "AutoStop_Threshold": "5",
+      "AutoStop_TimeAggregationOperator": "Average",
+      "AutoStop_TimeWindow": "06:00:00",
+      "EnableClassic": true,
+      "RequestScopes": {
+        "ExcludedVMLists": [],
+        "ResourceGroups": [
+          "/subscriptions/12345678-1111-2222-3333-1234567891234/resourceGroups/vmrg1/",
+          "/subscriptions/12345678-1111-2222-3333-1234567891234/resourceGroupsvmrg2/",
+          "/subscriptions/12345678-2222-4444-5555-1234567891234/resourceGroups/VMHostingRG/"
+          ]
+      }
+    }
+    ```
+
+    在请求正文中，若要管理订阅中的特定 VM 集，请修改请求正文，如以下示例中所示。 必须用逗号分隔指定的每个资源路径。 如果需要，可以指定一个 VM。
+
+    ```json
+    {
+      "Action": "stop",
+      "AutoStop_Condition": "LessThan",
+      "AutoStop_Description": "Alert to stop the VM if the CPU % exceed the threshold",
+      "AutoStop_Frequency": "00:05:00",
+      "AutoStop_MetricName": "Percentage CPU",
+      "AutoStop_Severity": "2",
+      "AutoStop_Threshold": "5",
+      "AutoStop_TimeAggregationOperator": "Average",
+      "AutoStop_TimeWindow": "06:00:00",
+      "EnableClassic": true,
+      "RequestScopes": {
+        "ExcludedVMLists": [],
+        "VMLists": [
+          "/subscriptions/12345678-1111-2222-3333-1234567891234/resourceGroups/rg3/providers/Microsoft.ClassicCompute/virtualMachines/Clasyvm11",
+          "/subscriptions/12345678-1111-2222-3333-1234567891234/resourceGroups/vmrg1/providers/Microsoft.Compute/virtualMachines/vm1"
+        ]
+      }
+    }
+    ```
+
+## <a name="next-steps"></a>后续步骤
+
+若要了解如何监视由启动/停止 VM v2（预览版）功能托管的 Azure VM 的状态并执行其他管理任务，请参阅《[管理启动/停止 VM](manage.md)》一文。

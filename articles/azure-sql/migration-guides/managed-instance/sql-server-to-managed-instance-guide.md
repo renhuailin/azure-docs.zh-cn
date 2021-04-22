@@ -1,5 +1,5 @@
 ---
-title: 将 SQL Server 迁移到 SQL 托管实例：迁移指南
+title: 将 SQL Server 迁移到 Azure SQL 托管实例：迁移指南
 description: 本指南介绍如何将 SQL Server 数据库迁移至 Azure SQL 托管实例。
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 6dcbf4a570fb5cdb58c914ea5e4b1164ed6a76ca
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: a1dcb72c30268dd82052e29232e79a485d86f72d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103564484"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025299"
 ---
-# <a name="migration-guide-sql-server-to-sql-managed-instance"></a>迁移指南：将 SQL Server 到 SQL 托管实例
+# <a name="migration-guide-sql-server-to-azure-sql-managed-instance"></a>迁移指南：将 SQL Server 到 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
 
 本指南帮助你将 SQL Server 实例迁移至 Azure SQL 托管实例。 
@@ -30,7 +30,7 @@ ms.locfileid: "103564484"
 - 计算引擎 (Google Cloud Platform - GCP)  
 - Cloud SQL for SQL Server (Google Cloud Platform - GCP) 
 
-如需更多迁移信息，请参阅[迁移概述](sql-server-to-managed-instance-overview.md)。 有关其他方案，请参阅[数据库迁移指南](https://datamigration.microsoft.com/)。
+如需更多迁移信息，请参阅[迁移概述](sql-server-to-managed-instance-overview.md)。 有关其他迁移指南，请参阅[数据库迁移](https://docs.microsoft.com/data-migration)。 
 
 :::image type="content" source="media/sql-server-to-managed-instance-overview/migration-process-flow-small.png" alt-text="迁移流程":::
 
@@ -40,6 +40,8 @@ ms.locfileid: "103564484"
 
 - 选择[迁移方法](sql-server-to-managed-instance-overview.md#compare-migration-options)以及所选方法所需的相应工具
 - 在可以连接到源 SQL Server 的计算机上安装[数据迁移助手 (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)
+- 连接以及访问源和目标的适当权限。 
+
 
 
 ## <a name="pre-migration"></a>迁移前

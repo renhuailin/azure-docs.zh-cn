@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: 本文包含与已启用 Azure Arc 的 Kubernetes 相关的常见问题解答列表
 keywords: Kubernetes, Arc, Azure, 容器, 配置, GitOps, faq
-ms.openlocfilehash: d7facb842509bdf852957d46d91dfcb3912e99ba
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 84368cc63bd9aaf1df4fb281395b47a6e886cb7f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121705"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025843"
 ---
 # <a name="frequently-asked-questions---azure-arc-enabled-kubernetes"></a>常见问题解答 - 已启用 Azure Arc 的 Kubernetes
 
@@ -27,7 +27,7 @@ AKS 是 Azure 提供的托管 Kubernetes 服务。 AKS 通过将大量的复杂�
 
 ## <a name="do-i-need-to-connect-my-aks-clusters-running-on-azure-to-azure-arc"></a>是否需要将在 Azure 上运行的 AKS 群集连接到 Azure Arc？
 
-不知道。 包括 Azure Monitor 和 Azure Policy (Gatekeeper) 在内的所有已启用 Azure Arc 的 Kubernetes 功能都可在 AKS（Azure 资源管理器中的本机资源）上获得。
+不是。 包括 Azure Monitor 和 Azure Policy (Gatekeeper) 在内的所有已启用 Azure Arc 的 Kubernetes 功能都可在 AKS（Azure 资源管理器中的本机资源）上获得。
     
 ## <a name="should-i-connect-my-aks-hci-cluster-and-kubernetes-clusters-on-azure-stack-hub-and-azure-stack-edge-to-azure-arc"></a>是否应将我在 Azure Stack Hub 和 Azure Stack Edge 上的 AKS-HCI 群集和 Kubernetes 群集连接到 Azure Arc？
 
@@ -72,6 +72,6 @@ CI/CD 管道对于事件驱动的 Kubernetes 群集部署（例如，推送到 G
 
 ## <a name="next-steps"></a>后续步骤
 
-* 参考我们的快速入门[将 Kubernetes 群集连接到 Azure Arc](./connect-cluster.md)。
-* 已有一个连接了 Azure Arc 的 Kubernetes 群集？ [在已启用 Arc 的 Kubernetes 群集上创建配置](./use-gitops-connected-cluster.md)。
+* 参考我们的快速入门[将 Kubernetes 群集连接到 Azure Arc](./quickstart-connect-cluster.md)。
+* 已有一个连接了 Azure Arc 的 Kubernetes 群集？ [在已启用 Arc 的 Kubernetes 群集上创建配置](./tutorial-use-gitops-connected-cluster.md)。
 * 了解如何[使用 Azure Policy 大规模应用配置](./use-azure-policy.md)。

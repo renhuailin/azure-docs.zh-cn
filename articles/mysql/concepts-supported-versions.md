@@ -6,16 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: 1be15c16a1897797326ea869c34c3590ffb07691
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: d84f56e5ae0f3c364a0fd3a08ccb173d7c65a5e2
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363863"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121755"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>支持的 Azure Database for MySQL 服务器版本
 
-使用 InnoDB 存储引擎通过 [MySQL Community Edition](https://www.mysql.com/products/community/) 开发 Azure Database for MySQL。 服务支持社区支持的所有当前主版本，即 MySQL 5.6、5.7 和 8.0。 MySQL 使用 X.Y.Z 命名方案，其中 X 为主版本，Y 为次要版本，Z 为 bug 修补版本。 有关方案的详细信息，请参阅 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/which-version.html)。
+使用 InnoDB 存储引擎通过 [MySQL 社区版](https://www.mysql.com/products/community/)开发了 Azure Database for MySQL。 该服务支持社区目前支持的所有主版本，即 MySQL 5.6、5.7 和 8.0。 MySQL 使用 X.Y.Z 命名方案，其中 X 为主版本，Y 为次要版本，Z 为 bug 修复版本。 有关方案的详细信息，请参阅 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/which-version.html)。
 
 
 
@@ -33,13 +33,13 @@ ms.locfileid: "107363863"
 ## <a name="azure-database-for-mysql-currently-supports-the-following-major-and-minor-versions-of-mysql"></a>Azure Database for MySQL 当前支持以下主版本和次要版本的 MySQL：
 
 
-| 版本 | [单一服务器](overview.md) <br/> 当前次要版本 |[灵活服务器（预览版）](/azure/mysql/flexible-server/overview) <br/> 当前次要版本  |
+| 版本 | [单一服务器](overview.md) <br/> 当前次要版本 |[灵活服务器（预览版）](/../flexible-server/overview.md) <br/> 当前次要版本  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
 |MySQL 版本 5.6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html)（已停用） | 不支持|
 |MySQL 版本 5.7 | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|
 |MySQL 版本 8.0 | [8.0.15](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html) | [8.0.21](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html)|
 
-阅读[版本支持策略文档](concepts-version-policy.md#retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql)中的已停用版本的版本支持策略。
+请阅读[版本支持策略文档](concepts-version-policy.md#retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql)中已停用版本的版本支持策略。
 
 ## <a name="managing-updates-and-upgrades"></a>管理更新和升级
 该服务会自动管理针对 Bug 修复版本更新的修补。 例如，5.7.20 到 5.7.21。  

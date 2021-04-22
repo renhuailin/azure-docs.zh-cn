@@ -3,16 +3,16 @@ title: 部署到 IoT Edge for Linux on Windows - Azure
 description: 本文提供了有关如何部署到 IoT Edge for Linux on Windows 设备的指导。
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.openlocfilehash: 9ec28c62ca804137ede3cd60d1980e55fbaa2807
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: d5c3d89ae7447b062714ad90be117a6426a39581
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102618128"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561077"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>部署到 IoT Edge for Linux on Windows (EFLOW) 设备
 
-本文介绍如何在具有 [IoT Edge for Linux on Windows (EFLOW)](https://docs.microsoft.com/azure/iot-edge/iot-edge-for-linux-on-windows) 的边缘设备上部署实时视频分析。 完成本文档中的步骤后，你将能够运行[媒体图](media-graph-concept.md)，该媒体图可检测视频中的移动并将此类事件发送到云中的 IoT 中心。 然后，你可以切换出高级方案的媒体图，并将实时视频分析功能引入基于 Windows 的 IoT Edge 设备。
+本文介绍如何在具有 [IoT Edge for Linux on Windows (EFLOW)](../../iot-edge/iot-edge-for-linux-on-windows.md) 的边缘设备上部署实时视频分析。 完成本文档中的步骤后，你将能够运行[媒体图](media-graph-concept.md)，该媒体图可检测视频中的移动并将此类事件发送到云中的 IoT 中心。 然后，你可以切换出高级方案的媒体图，并将实时视频分析功能引入基于 Windows 的 IoT Edge 设备。
 
 ## <a name="prerequisites"></a>先决条件 
 
@@ -21,7 +21,7 @@ ms.locfileid: "102618128"
     > [!NOTE]
     > 你将需要一个具有服务主体创建权限（所有者角色提供此权限）的 Azure 订阅。 如果你没有正确的权限，请联系帐户管理员，让其授予你适当的权限。
 * 开发计算机上的 [Visual Studio Code](https://code.visualstudio.com/)。 请确保具有 [Azure IoT Tools 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)。
-* 请阅读[什么是 EFLOW](https://aka.ms/AzEFLOW-docs)。
+* 请阅读[什么是 EFLOW](../../iot-edge/iot-edge-for-linux-on-windows.md)。
 
 ## <a name="deployment-steps"></a>部署步骤
 
@@ -29,14 +29,14 @@ ms.locfileid: "102618128"
 
 :::image type="content" source="./media/deploy-iot-edge-linux-on-windows/eflow.png" alt-text="IoT Edge for Linux on Windows (EFLOW) 示意图":::
 
-1. 在 Windows 设备上[安装 EFLOW](https://aka.ms/AzEFLOW-install)。 
+1. 在 Windows 设备上[安装 EFLOW](../../iot-edge/how-to-install-iot-edge-on-windows.md)。 
 
-    1. 如果使用的是 Windows 电脑，则在 [Windows Admin Center](https://docs.microsoft.com/windows-server/manage/windows-admin-center/overview) 起始页的连接列表下，你会看到一个本地主机连接，该连接表示运行 Windows Admin Center 的电脑。 
+    1. 如果使用的是 Windows 电脑，则在 [Windows Admin Center](/windows-server/manage/windows-admin-center/overview) 起始页的连接列表下，你会看到一个本地主机连接，该连接表示运行 Windows Admin Center 的电脑。 
     1. 你管理的任何其他服务器、电脑或群集也会显示在此处。
     1. 你可以使用 Windows Admin Center 在本地设备或远程托管设备上安装和管理 Azure EFLOW。 在本指南中，本地主机连接充当用于部署 Azure IoT Edge for Linux on Windows 的目标设备。 因此，你会看到 localhost 也被列为 IoT Edge 设备。
 
     :::image type="content" source="./media/deploy-iot-edge-linux-on-windows/windows-admin-center.png" alt-text="部署步骤 - Windows Admin Center":::
-1. 单击 IoT Edge 设备以进行连接，应会看到“概述”和“命令外壳”选项卡。通过“命令外壳”选项卡，可以向边缘设备发出命令。
+1. 单击 IoT Edge 设备与之连接，应会显示“概述”和“命令 Shell”选项卡。在“命令 shell”选项卡中，可以向边缘设备发出命令。
  
     :::image type="content" source="./media/deploy-iot-edge-linux-on-windows/azure-iot-edge-manager.png" alt-text="部署步骤 - Azure IoT Edge 管理器":::
 1. 转到命令外壳，然后键入以下命令：
@@ -77,7 +77,7 @@ ms.locfileid: "102618128"
         bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
         ```
         
-        当系统提示你选择自己的边缘设备作为 IoT Edge 设备时，请确保选择“Y”，因为你之前创建了设备和 IoT 中心。 系统还会提示你输入 IoT 中心名称和 IoT Edge 设备 ID。可以通过登录到 Azure 门户并单击 IoT 中心，然后转到 IoT 中心门户边栏选项卡上的 IoT Edge 选项来获取这两项。
+        当系统提示你选择自己的边缘设备作为 IoT Edge 设备时，请确保选择“Y”，因为你之前创建了设备和 IoT 中心。 系统还会提示输入 IoT 中心名称和 IoT Edge 设备 ID。要获取这两项信息，可登录 Azure 门户并单击 IoT 中心，然后转到 IoT 中心门户边栏选项卡上的 IoT Edge 选项。
 
         :::image type="content" source="./media/deploy-iot-edge-linux-on-windows/iot-edge-devices.png" alt-text="查看 IoT Edge 设备":::
 
@@ -110,4 +110,3 @@ ms.locfileid: "102618128"
 * 运行[实时视频上的 AI](use-your-model-quickstart.md#overview)（可以跳过先决条件设置，因为它已在上面完成）
 * 使用 [VS Code 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge)来查看其他媒体图。
 * 使用支持 RTSP 的 [IP 相机](https://en.wikipedia.org/wiki/IP_camera)，而不是使用 RTSP 模拟器。 可以在 [ONVIF 一致性](https://www.onvif.org/conformant-products/)产品页上找到支持 RTSP 的 IP 相机。 查找符合配置文件 G、S 或 T 的设备。
-

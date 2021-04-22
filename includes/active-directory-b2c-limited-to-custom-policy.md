@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/08/2020
 ms.author: mimart
 ms.openlocfilehash: b3f08f817be157ef5a1c729458bcfb4b5551d738
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
-ms.translationtype: MT
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97425731"
 ---
-此功能仅适用于自定义策略。 对于安装步骤，请选择上面的 " **自定义策略** "。
+此功能仅适用于自定义策略。 对于设置步骤，请选择上面的“自定义策略”。

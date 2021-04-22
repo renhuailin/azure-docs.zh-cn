@@ -10,20 +10,20 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 01a73e7940f88a3eb6e040f26d255448294cab18
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: ed8516f9a898131338fb5b4d75e25cd774c5ab43
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467934"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285346"
 ---
 # <a name="form-recognizer-prebuilt-identification-card-id-model"></a>表单识别器预生成标识卡 (ID) 模型
 
-Azure 表单识别器可以使用其预生成 ID 模型分析和提取政府标识卡 (ID) 中的信息。 它结合了强大的[光学字符识别 (OCR)](../computer-vision/concept-recognizing-text.md) 功能与 ID 识别功能，可从全球护照和美国驾照（所有 50 个州和华盛顿特区）中提取重要信息。 ID API 从这些标识文档中提取关键信息，如名字、姓氏、出生日期、文档编号等。 此 API 在表单识别器 v2.1 预览版中作为云服务和本地容器提供。
+Azure 表单识别器可以使用其预生成 ID 模型分析和提取政府标识卡 (ID) 中的信息。 它结合了强大的[光学字符识别 (OCR)](../computer-vision/overview-ocr.md) 功能与 ID 识别功能，可从全球护照和美国驾照（50 个州和华盛顿特区）中提取关键信息。 ID API 从这些标识文档中提取关键信息，如名字、姓氏、出生日期、文档编号等。 此 API 在表单识别器 v2.1 预览版中作为云服务和本地容器提供。
 
 ## <a name="what-does-the-id-service-do"></a>ID 服务有什么作用？ 
 
-预生成 ID 服务从全球护照和美国驾照中提取关键值，并以结构化的 JSON 响应返回这些值。 
+预生成的 ID 服务将从全球护照和美国驾照中提取关键信息，并以组织有序的结构化 JSON 响应返回这些值。 
 
 ![驾照示例](./media/id-example-drivers-license.JPG)
 
@@ -31,7 +31,7 @@ Azure 表单识别器可以使用其预生成 ID 模型分析和提取政府标�
 
 ### <a name="fields-extracted"></a>提取的字段
 
-|名称| 类型 | 说明 | 值 | 
+|名称| 类型 | 描述 | 值 | 
 |:-----|:----|:----|:----|
 |  国家/地区 | country | 符合 ISO 3166 标准的国家/地区代码 | “USA” | 
 |  DateOfBirth | date | YYYY-MM-DD 格式的 DOB | “1980-01-01” | 
@@ -44,7 +44,7 @@ Azure 表单识别器可以使用其预生成 ID 模型分析和提取政府标�
 |  MachineReadableZone | 对象 (object) | 提取的护照 MRZ 包括两行，每行 44 个字符 | “P<USABROOKS<<JENNIFER<<<<<<<<<<<<<<<<<<<<<<< 3400200135USA8001014F1905054710000307<715816” |
 |  DocumentType | 字符串 | 文档类型，例如护照、驾照 | “passport” |  
 |  地址 | 字符串 | 提取的地址（仅限驾照） | “123 STREET ADDRESS YOUR CITY WA 99999-1234”|
-|  区域 | 字符串 | 提取的区域、州、省/直辖市/自治区等。（仅限驾照） | “Washington” | 
+|  区域 | 字符串 | 提取的区域、州、省/直辖市/自治区等（仅限驾照） | “Washington” | 
 
 ### <a name="additional-features"></a>其他功能
 
@@ -73,12 +73,12 @@ ID API 还会返回以下信息：
 
 ## <a name="supported-id-types"></a>支持的 ID 类型  
 
-* 预生成 ID v2.1-preview.3 从全球护照和美国驾照中提取关键值。 
+* 预生成 ID v2.1-preview.3 可从全球护照和美国驾照中提取关键信息。 
 
   > [!NOTE]
   > ID 类型支持 
   >
-  > 目前支持的 ID 类型包括全球护照和美国关键值。 我们正努力将我们的 ID 支持扩展到世界各地的其他标识文档中。
+  > 目前支持的 ID 类型包括全球护照和美国驾照。 我们正努力将我们的 ID 支持扩展到世界各地的其他标识文档中。
 
 ## <a name="post-analyze-id-document"></a>POST 分析 ID 文档
 
@@ -249,7 +249,7 @@ Need to update this with updated APIM links when available
 - 在[表单识别器示例 UI](https://fott-preview.azurewebsites.net/) 中尝试你自己的 ID 和示例。
 - 完成[表单识别器快速入门](quickstarts/client-library.md)，开始使用表单识别器以你选择的开发语言编写 ID 处理应用。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [**什么是表单识别器？**](./overview.md)
 * [REST API 参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)

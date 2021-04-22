@@ -3,13 +3,13 @@ title: 使用 Azure Application Insights 监视 Batch
 description: 了解如何使用 Azure Application Insights 库检测 Azure Batch .NET 应用程序。
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.date: 03/25/2021
-ms.openlocfilehash: 251f02f145e8f450b1528bf8676cffdc61a6f051
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/13/2021
+ms.openlocfilehash: 8bc8ff0a04996d988a642062f118e9e6792abbf0
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105607875"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389343"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>使用 Application Insights 监视和调试 Azure Batch .NET 应用程序
 
@@ -310,7 +310,13 @@ CloudPool pool = client.PoolOperations.CreatePool(
     topNWordsConfiguration.PoolId,
     targetDedicated: topNWordsConfiguration.PoolNodeCount,
     virtualMachineSize: &quot;standard_d1_v2&quot;,
-    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: &quot;5"));
+    VirtualMachineConfiguration: new VirtualMachineConfiguration(
+    imageReference: new ImageReference(
+                        publisher: &quot;MicrosoftWindowsServer&quot;,
+                        offer: &quot;WindowsServer&quot;,
+                        sku: &quot;2019-datacenter-core&quot;,
+                        version: &quot;latest"),
+    nodeAgentSkuId: "batch.node.windows amd64");
 ...
 
 // Create a start task which will run a dummy exe in background that simply emits performance

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e20cd09ce3d9eb1937819da79cea17bdd14a07dc
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 666e77a06bd2934622400cc2f11830d6ebc34ddb
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433261"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104954643"
 ---
 # <a name="manage-digital-twins"></a>管理数字孪生
 
@@ -127,13 +127,13 @@ ms.locfileid: "102433261"
 }
 ```
 
-数字孪生体的已定义属性作为数字孪生体的顶级属性返回。 不属于 DTDL 定义的元数据或系统信息返回时将具有 `$` 前缀。 元数据属性包括：
-* 此 Azure 数字孪生实例中数字孪生体的 ID，如 `$dtId`。
-* `$etag`，由 Web 服务器分配的标准 HTTP 字段。
-* `$metadata` 部分中的其他属性。 其中包括:
-    - 数字孪生体的模型的 DTMI。
-    - 每个可写属性的同步状态。 这对设备最为有用，因为服务和设备的状态可能不同（例如当设备离线时）。 目前，此属性仅适用于连接到 IoT 中心的物理设备。 若使用元数据部分中的数据，可了解属性的完整状态以及上次修改的时间戳。 有关同步状态的详细信息，请参阅[此 IoT 中心教程](../iot-hub/tutorial-device-twins.md)，了解如何同步设备状态。
-    - 服务特定的元数据，如来自 IoT 中心或 Azure 数字孪生的元数据。 
+数字孪生体的已定义属性作为数字孪生体的顶级属性返回。 不属于 DTDL 定义的元数据或系统信息返回时将具有 `$` 前缀。 元数据属性包括以下值：
+* `$dtId`：此 Azure 数字孪生实例中数字孪生体的 ID
+* `$etag`：由 Web 服务器分配的标准 HTTP 字段。 每次更新孪生体时，此值将更新为新值，这对于确定自上次检查后是否已在服务器上更新了孪生体数据非常有用。 可以使用 `If-Match` 执行更新和删除，仅当实体的 etag 与提供的 etag 相匹配时，这两项操作才会完成。 有关这些操作的详细信息，请参阅 [DigitalTwins 更新](/rest/api/digital-twins/dataplane/twins/digitaltwins_update)和 [DigitalTwins 删除](/rest/api/digital-twins/dataplane/twins/digitaltwins_delete)的文档。
+* `$metadata`：一组其他属性，包括：
+  - 数字孪生体的模型的 DTMI。
+  - 每个可写属性的同步状态。 这对设备最为有用，因为服务和设备的状态可能不同（例如当设备离线时）。 目前，此属性仅适用于连接到 IoT 中心的物理设备。 若使用元数据部分中的数据，可了解属性的完整状态以及上次修改的时间戳。 有关同步状态的详细信息，请参阅[此 IoT 中心教程](../iot-hub/tutorial-device-twins.md)，了解如何同步设备状态。
+  - 服务特定的元数据，如来自 IoT 中心或 Azure 数字孪生的元数据。 
 
 若要详细了解 `BasicDigitalTwin` 等序列化帮助程序类，可阅读[操作指南：使用 Azure 数字孪生 API 和 SDK](how-to-use-apis-sdks.md)。
 

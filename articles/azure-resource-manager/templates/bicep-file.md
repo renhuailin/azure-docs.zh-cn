@@ -3,12 +3,12 @@ title: Bicep 文件结构和语法
 description: 使用声明性语法介绍 Bicep 文件的结构和属性。
 ms.topic: conceptual
 ms.date: 03/31/2021
-ms.openlocfilehash: 1b8eddd388878be8f653f963ef967cf2c0af685f
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 09993ae9c08f53144de8e94e6555ad93bec681f6
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537867"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168682"
 ---
 # <a name="understand-the-structure-and-syntax-of-bicep-files"></a>了解 Bicep 文件的结构和语法
 
@@ -260,7 +260,7 @@ resource storageAccountResources 'Microsoft.Storage/storageAccounts@2019-06-01' 
 
 有关详细信息，请参阅[串行或并行](copy-resources.md#serial-or-parallel)。
 
-## <a name="outputs"></a>Outputs
+## <a name="outputs"></a>输出
 
 使用输出，以从部署中返回值。 通常，当需要将某值重新用于其他操作时，可以从已部署的资源中返回该值。
 
@@ -297,7 +297,7 @@ param existingKeyVaultName string
 
 ## <a name="multi-line-strings"></a>多行字符串
 
-可将一个字符串分成多个行。 使用三个单引号字符 `'''` 来开始和结束多行字符串。
+可将一个字符串分成多个行。 使用三个单引号字符 `'''` 来开始和结束多行字符串。 
 
 多行字符串中的字符按原样处理。 不需要转义字符。 多行字符串中不能包含 `'''`。 当前不支持字符串内插。
 

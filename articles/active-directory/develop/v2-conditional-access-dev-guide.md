@@ -14,12 +14,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: e4021f0ca2c1c9ca9434744a4aebb4b7938315f0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ed8007c81479c73e4503d74af4c4043e503baf2b
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99584224"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120140"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问开发人员指南
 
@@ -72,10 +72,10 @@ ms.locfileid: "99584224"
 例如，如果某个应用程序请求下列 Microsoft Graph 范围，
 
 ```
-scopes="Bookings.Read.All Mail.Read"
+scopes="ChannelMessages.Read.All Mail.Read"
 ```
 
-应用可能期望其用户完成所有关于预订和交换的策略。 如果授予访问权限，某些范围可能映射到多个数据集。
+应用可能期望其用户满足针对 Teams 和 Exchange 设置的所有策略要求。 如果授予访问权限，某些范围可能映射到多个数据集。
 
 ### <a name="complying-with-a-conditional-access-policy"></a>符合条件访问策略
 

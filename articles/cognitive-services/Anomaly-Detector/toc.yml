@@ -17,10 +17,12 @@
       href: ./quickstarts/client-libraries.md
 - name: 示例
   items:
-    - name: 互动演示
+    - name: 互动演示（单变量）
       href: 'https://aka.ms/adDemo'
-    - name: Jupyter 笔记本
+    - name: Jupyter Notebook（单变量）
       href: 'https://github.com/Azure-Samples/AnomalyDetector/tree/master/ipython-notebook'
+    - name: Jupyter Notebook（多变量）
+      href: 'https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb'
     - name: Azure 示例
       href: 'https://docs.microsoft.com/samples/browse/?products=azure&terms=anomaly-detector'
 - name: 操作指南

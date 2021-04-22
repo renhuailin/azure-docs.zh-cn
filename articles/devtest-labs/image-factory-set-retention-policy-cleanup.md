@@ -3,12 +3,12 @@ title: 在 Azure 开发测试实验室中设置保留策略 | Microsoft Docs
 description: 了解如何在开发测试实验室中配置保留策略、清理工厂和停用旧映像。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 85384e88f8d456c7bf67302a57618d7a9703a5ee
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4e642d7dc0733e55caa4ed62e3382ef4422030f9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102550019"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727529"
 ---
 # <a name="set-up-retention-policy-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中设置保留策略
 本文介绍如何在组织的所有其他开发测试实验室中设置保留策略、清理工厂和停用旧映像。 
@@ -58,13 +58,13 @@ ms.locfileid: "102550019"
 
 
 ## <a name="summary"></a>总结
-现在，你有了一个正在运行的映像工厂，该工厂可以根据需要生成自定义映像并将其分发到实验室。 此时，只需正确设置映像并标识目标实验室即可。 如前一篇文章所述，位于 **Configuration** 文件夹中的 **Labs.json** 文件指定应在每个目标实验室中提供哪些映像。 将其他开发测试实验室添加到组织中时，只需在 Labs.json 中为新实验室添加一个条目。
+现在，你有了一个正在运行的映像工厂，该工厂可以根据需要生成自定义映像并将其分发到实验室。 此时，只需正确设置图像并标识目标实验室即可。 如前一篇文章所述，位于 **Configuration** 文件夹中的 **Labs.json** 文件指定应在每个目标实验室中提供哪些映像。 将其他开发测试实验室添加到组织中时，只需在 Labs.json 中为新实验室添加一个条目。
 
-将新映像添加到工厂也很简单。 如果要在工厂中包含新映像，请打开 [Azure 门户](https://portal.azure.com)，导航到工厂开发测试实验室，选择用于添加 VM 的按钮，然后选择所需的市场映像和项目。 选择“查看 Azure 资源管理器模板”（而不是选择“创建”按钮来创建新的 VM），将模板另存为存储库中 **GoldenImages** 文件夹内的一个 .json 文件。 下次你运行映像工厂时，它会创建你的自定义映像。
+将新映像添加到工厂也很简单。 如果要在工厂中包含新映像，请打开 [Azure 门户](https://portal.azure.com)，导航到工厂开发测试实验室，选择用于添加 VM 的按钮，然后选择所需的市场映像和项目。 选择“查看 Azure 资源管理器模板”（而不是选择“创建”按钮来创建新的 VM），将模板另存为存储库中 GoldenImages 文件夹内的一个 .json 文件。 下次你运行映像工厂时，它会创建你的自定义映像。
 
 
 ## <a name="next-steps"></a>后续步骤
 1. [计划生成/发布](/azure/devops/pipelines/build/triggers?tabs=designer)以便定期运行映像工厂。 它会定期刷新工厂生成的映像。
 2. 为工厂创建更多黄金映像。 你还可以考虑[创建项目](devtest-lab-artifact-author.md)以编写 VM 设置任务的其他部分的脚本，并将项目包括在工厂映像中。
-4. 创建 [单独的生成/发布](/azure/devops/pipelines/overview?view=azure-devops-2019)来单独运行 **DistributeImages** 脚本。 你可以在对 Labs.json 进行更改时运行此脚本，将映像复制到目标实验室，无需重新创建所有映像。
+4. 创建 [单独的生成/发布](/azure/devops/pipelines/overview)来单独运行 **DistributeImages** 脚本。 你可以在对 Labs.json 进行更改时运行此脚本，将映像复制到目标实验室，无需重新创建所有映像。
 

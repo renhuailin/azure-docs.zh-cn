@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/26/2021
 ms.author: apimpm
 ms.openlocfilehash: 882d96271b6976db1ffc0dde181d5699c5cc27de
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101688240"
 ---
 # <a name="api-management-access-restriction-policies"></a>API 管理访问限制策略
@@ -22,7 +22,7 @@ ms.locfileid: "101688240"
 
 ## <a name="access-restriction-policies"></a><a name="AccessRestrictionPolicies"></a>访问限制策略
 
--   [检查 http 标头](#CheckHTTPHeader) -强制实施 http 标头的存在性和/或值。
+-   [检查 HTTP 标头](#CheckHTTPHeader) - 强制必须存在和/或强制采用 HTTP 标头的值。
 -   [按订阅限制调用速率](#LimitCallRate) - 根据订阅限制调用速率，避免 API 使用量暴增。
 -   [按密钥限制调用速率](#LimitCallRateByKey) - 根据密钥限制调用速率，避免 API 使用量暴增。
 -   [限制调用方 IP](#RestrictCallerIPs) - 筛选（允许/拒绝）来自特定 IP 地址和/或地址范围的调用。
@@ -110,7 +110,7 @@ ms.locfileid: "101688240"
 
 ### <a name="example"></a>示例
 
-在下面的示例中，每个订阅的速率限制为每90秒20个调用。 每次执行策略后，在该时间段内允许的剩余调用存储在变量中 `remainingCallsPerSubscription` 。
+在下面的示例中，每个订阅的速率限制为每 90 秒 20 个调用。 每次执行策略后，在该时间段内允许的剩余调用存储在变量 `remainingCallsPerSubscription` 中。
 
 ```xml
 <policies>
@@ -136,14 +136,14 @@ ms.locfileid: "101688240"
 
 | 名称           | 说明                                                                                           | 必须 | 默认 |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| name           | 要对其应用速率限制的 API 的名称。                                                | 是      | 不适用     |
-| calls          | 在中指定的时间间隔内允许的最大总调用数 `renewal-period` 。 | 是      | 不适用     |
-| renewal-period | 滑动窗口的长度（以秒为单位），在此期间，允许的请求数不应超过中指定的值 `calls` 。                                              | 是      | 不适用     |
-| 后重试-标头名称    | 此响应标头的名称，其值为超过指定调用率后的建议重试间隔（秒）。 |  否 | 不适用  |
-| 重试-变量名称    | 策略表达式变量的名称，该变量在超过指定的调用率后，以秒为单位存储建议的重试间隔。 |  否 | 不适用  |
-| 剩余-标头名称    | 每个策略执行后其值为的响应标头的名称是在中指定的时间间隔内允许的剩余调用数 `renewal-period` 。 |  否 | 不适用  |
-| 保留的调用-变量名称    | 策略表达式变量的名称，该变量在每个策略执行后存储中指定的时间间隔内允许的剩余调用数 `renewal-period` 。 |  否 | 不适用  |
-| 总调用-标头-名称    | 其值为中指定的值的响应标头的名称 `calls` 。 |  否 | 空值  |
+| name           | 要对其应用速率限制的 API 的名称。                                                | 是      | 空值     |
+| calls          | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。 | 是      | 空值     |
+| renewal-period | 滑动窗口的长度（以秒为单位），在此期间，允许的请求数不应超过 `calls` 中指定的值。                                              | 是      | 空值     |
+| retry-after-header-name    | 响应头的名称，其值为在超过指定的调用速率后建议的重试间隔（以秒为单位）。 |  否 | 空值  |
+| retry-after-variable-name    | 策略表达式变量的名称，该变量用于存储在超过指定的调用速率后建议的重试间隔（以秒为单位）。 |  否 | 空值  |
+| remaining-calls-header-name    | 响应头的名称，每次执行策略后，其值为在 `renewal-period` 中指定的时间间隔内允许的剩余调用数。 |  否 | 空值  |
+| remaining-calls-variable-name    | 策略表达式变量的名称，该变量用于存储在每次执行策略后，`renewal-period` 中指定的时间间隔内允许的剩余调用数。 |  否 | 空值  |
+| total-calls-header-name    | 响应头的名称，其值为 `calls` 中指定的值。 |  否 | 空值  |
 
 ### <a name="usage"></a>使用情况
 
@@ -183,7 +183,7 @@ ms.locfileid: "101688240"
 
 ### <a name="example"></a>示例
 
-在下面的示例中，每60秒10次调用的速率限制为调用方 IP 地址。 每次执行策略后，在该时间段内允许的剩余调用存储在变量中 `remainingCallsPerIP` 。
+在下面的示例中，可通过调用方 IP 地址对速率限制进行键控，将其控制为 每 60 秒 10 个调用。 每次执行策略后，在该时间段内允许的剩余调用存储在变量 `remainingCallsPerIP` 中。
 
 ```xml
 <policies>
@@ -211,15 +211,15 @@ ms.locfileid: "101688240"
 
 | 名称                | 说明                                                                                           | 必须 | 默认 |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| calls               | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。 | 是      | 不适用     |
+| calls               | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。 | 是      | 空值     |
 | counter-key         | 用于速率限制策略的密钥。                                                             | 是      | 空值     |
-| increment-condition | 指定是否应将请求计入 () 速率的布尔表达式 `true` 。        | 否       | 不适用     |
-| renewal-period      | 滑动窗口的长度（以秒为单位），在此期间，允许的请求数不应超过中指定的值 `calls` 。                                           | 是      | 不适用     |
-| 后重试-标头名称    | 此响应标头的名称，其值为超过指定调用率后的建议重试间隔（秒）。 |  否 | 不适用  |
-| 重试-变量名称    | 策略表达式变量的名称，该变量在超过指定的调用率后，以秒为单位存储建议的重试间隔。 |  否 | 不适用  |
-| 剩余-标头名称    | 每个策略执行后其值为的响应标头的名称是在中指定的时间间隔内允许的剩余调用数 `renewal-period` 。 |  否 | 不适用  |
-| 保留的调用-变量名称    | 策略表达式变量的名称，该变量在每个策略执行后存储中指定的时间间隔内允许的剩余调用数 `renewal-period` 。 |  否 | 不适用  |
-| 总调用-标头-名称    | 其值为中指定的值的响应标头的名称 `calls` 。 |  否 | 空值  |
+| increment-condition | 一个布尔表达式，指定是否应将请求计入速率 (`true`)。        | 否       | 空值     |
+| renewal-period      | 滑动窗口的长度（以秒为单位），在此期间，允许的请求数不应超过 `calls` 中指定的值。                                           | 是      | 空值     |
+| retry-after-header-name    | 响应头的名称，其值为在超过指定的调用速率后建议的重试间隔（以秒为单位）。 |  否 | 空值  |
+| retry-after-variable-name    | 策略表达式变量的名称，该变量用于存储在超过指定的调用速率后建议的重试间隔（以秒为单位）。 |  否 | 空值  |
+| remaining-calls-header-name    | 响应头的名称，每次执行策略后，其值为在 `renewal-period` 中指定的时间间隔内允许的剩余调用数。 |  否 | 空值  |
+| remaining-calls-variable-name    | 策略表达式变量的名称，该变量用于存储在每次执行策略后，`renewal-period` 中指定的时间间隔内允许的剩余调用数。 |  否 | 空值  |
+| total-calls-header-name    | 响应头的名称，其值为 `calls` 中指定的值。 |  否 | 空值  |
 
 ### <a name="usage"></a>使用情况
 
@@ -324,9 +324,9 @@ ms.locfileid: "101688240"
 | 名称           | 说明                                                                                               | 必须                                                         | 默认 |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | name           | 要向其应用配额的 API 或操作的名称。                                             | 是                                                              | 空值     |
-| bandwidth      | 在 `renewal-period` 所指定的时间间隔内允许的最大总字节数（千字节）。 | 必须指定 `calls` 和/或 `bandwidth`。 | 不适用     |
-| calls          | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。     | 必须指定 `calls` 和/或 `bandwidth`。 | 不适用     |
-| renewal-period | 在重置配额之前等待的时间长度，以秒为单位。 如果设置为 "无限"，则设置为 `0` "无限"。 | 是                                                              | 空值     |
+| bandwidth      | 在 `renewal-period` 所指定的时间间隔内允许的最大总字节数（千字节）。 | 必须指定 `calls` 和/或 `bandwidth`。 | 空值     |
+| calls          | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。     | 必须指定 `calls` 和/或 `bandwidth`。 | 空值     |
+| renewal-period | 在重置配额之前等待的时间长度，以秒为单位。 设置为 `0` 时，时间段设置为无限。 | 是                                                              | 空值     |
 
 ### <a name="usage"></a>使用情况
 
@@ -386,11 +386,11 @@ ms.locfileid: "101688240"
 
 | 名称                | 说明                                                                                               | 必须                                                         | 默认 |
 | ------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| bandwidth           | 在 `renewal-period` 所指定的时间间隔内允许的最大总字节数（千字节）。 | 必须指定 `calls` 和/或 `bandwidth`。 | 不适用     |
-| calls               | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。     | 必须指定 `calls` 和/或 `bandwidth`。 | 不适用     |
+| bandwidth           | 在 `renewal-period` 所指定的时间间隔内允许的最大总字节数（千字节）。 | 必须指定 `calls` 和/或 `bandwidth`。 | 空值     |
+| calls               | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。     | 必须指定 `calls` 和/或 `bandwidth`。 | 空值     |
 | counter-key         | 用于配额策略的密钥。                                                                      | 是                                                              | 空值     |
-| increment-condition | 一个布尔表达式，指定是否应将请求计入配额 (`true`)             | 否                                                               | 不适用     |
-| renewal-period      | 在重置配额之前等待的时间长度，以秒为单位。 如果设置为 "无限"，则设置为 `0` "无限"。                                                   | 是                                                              | 空值     |
+| increment-condition | 一个布尔表达式，指定是否应将请求计入配额 (`true`)             | 否                                                               | 空值     |
+| renewal-period      | 在重置配额之前等待的时间长度，以秒为单位。 设置为 `0` 时，时间段设置为无限。                                                   | 是                                                              | 空值     |
 
 ### <a name="usage"></a>使用情况
 
@@ -571,7 +571,7 @@ ms.locfileid: "101688240"
 | id                              | 使用 `key` 元素的 `id` 属性可以指定一个字符串，该字符串将与令牌中的 `kid` 声明（如果存在）进行比较，以便找出进行签名验证时需要使用的适当密钥。                                                                                                                                                                                                                                           | 否                                                                               | 空值                                                                               |
 | match                           | `claim` 元素的 `match` 属性用于指定：是否策略中的每个声明值都必须存在于令牌中验证才会成功。 可能的值为：<br /><br /> - `all` - 策略中的每个声明值都必须存在于令牌中验证才会成功。<br /><br /> - `any` - 至少一个声明值必须存在于令牌中验证才会成功。                                                       | 否                                                                               | all                                                                               |
 | require-expiration-time         | 布尔值。 指定令牌中是否需要到期声明。                                                                                                                                                                                                                                                                                                                                                                               | 否                                                                               | 是                                                                              |
-| require-scheme                  | 令牌方案的名称，例如“Bearer”。 设置了此属性时，策略将确保 Authorization 标头值中存在指定的方案。                                                                                                                                                                                                                                                                                    | 否                                                                               | 不适用                                                                               |
+| require-scheme                  | 令牌方案的名称，例如“Bearer”。 设置了此属性时，策略将确保 Authorization 标头值中存在指定的方案。                                                                                                                                                                                                                                                                                    | 否                                                                               | 空值                                                                               |
 | require-signed-tokens           | 布尔值。 指定令牌是否需要签名。                                                                                                                                                                                                                                                                                                                                                                                           | 否                                                                               | 是                                                                              |
 | separator                       | 字符串。 指定要用于从多值声明中提取一组值的分隔符（例如 ","）。                                                                                                                                                                                                                                                                                                                                          | 否                                                                               | 空值                                                                               |
 | url                             | Open ID 配置终结点 URL，可以从其获取 Open ID 配置元数据。 响应应符合以下 URL 中定义的规范：`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`。 对于 Azure Active Directory，请使用以下 URL：`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration`，代之以目录租户名称，例如 `contoso.onmicrosoft.com`。 | 是                                                                              | 空值                                                                               |

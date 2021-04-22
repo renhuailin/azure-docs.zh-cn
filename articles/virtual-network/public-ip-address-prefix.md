@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/29/2020
 ms.author: allensu
-ms.openlocfilehash: 874cb283f0076905393aa529e4ff9e1bad3ae047
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 8bfc76afc1ef799be0fb29654bd341f53d1b0a8c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103419671"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048453"
 ---
 # <a name="public-ip-address-prefix"></a>公共 IP 地址前缀
 
@@ -63,7 +63,7 @@ ms.locfileid: "103419671"
 |虚拟机| 将来自某个前缀的公共 IP 关联到 Azure 中的虚拟机可在将 IP 地址添加到防火墙中的允许列表时降低管理开销。 可以使用单个防火墙规则添加整个前缀。 缩放 Azure 中的虚拟机时，可关联来自同一前缀的 IP，从而节省成本、时间和管理开销。| 将来自某个前缀的 IP 关联到虚拟机： </br> 1.[创建前缀。](manage-public-ip-address-prefix.md) </br> 2.[从前缀创建 IP。](manage-public-ip-address-prefix.md) </br> 3.[将 IP 关联到虚拟机网络接口。](virtual-network-network-interface-addresses.md#add-ip-addresses) </br> 也可以[将 IP 关联到虚拟机规模集](https://azure.microsoft.com/resources/templates/101-vmms-with-public-ip-prefix/)。
 | 标准负载均衡器 | 将来自某个前缀的公共 IP 关联到负载均衡器的前端 IP 配置或出站规则可确保简化 Azure 公共 IP 地址空间。 可以通过清理源自某个连续 IP 地址范围的出站连接来简化你的方案。 | 若要将来自某个前缀的 IP 关联到负载均衡器，请执行以下操作： </br> 1.[创建前缀。](manage-public-ip-address-prefix.md) </br> 2.[从前缀创建 IP。](manage-public-ip-address-prefix.md) </br> 3.创建负载均衡器时，请选择或更新在前面第 2 步中创建的 IP 作为负载均衡器的前端 IP。 |
 | Azure 防火墙 | 可使用来自前缀的公共 IP 地址作为出站 SNAT。 所有出站虚拟网络流量都会转换为 [Azure 防火墙](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)公共 IP。 | 若要将来自某个前缀的 IP 关联到防火墙，请执行以下操作： </br> 1.[创建前缀。](manage-public-ip-address-prefix.md) </br> 2.[从前缀创建 IP。](manage-public-ip-address-prefix.md) </br> 3.[部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-the-firewall)时，请务必选择你以前从该前缀提供的 IP。|
-| VPN 网关 (AZ SKU) 或应用程序网关 v2 | 可以使用区域冗余 VPN 或应用程序网关 v2 前缀中的公共 IP。 | 若要将来自某个前缀的 IP 关联到网关，请执行以下操作： </br> 1.[创建前缀。](manage-public-ip-address-prefix.md) </br> 2.[从前缀创建 IP。](manage-public-ip-address-prefix.md) </br> 3.部署 [VPN 网关](https://docs.microsoft.com/azure/vpn-gateway/tutorial-create-gateway-portal)或[应用程序网关](../application-gateway/quick-create-portal.md#create-an-application-gateway)时，请务必选择你以前从该前缀提供的 IP。|
+| VPN 网关 (AZ SKU) 或应用程序网关 v2 | 可以使用区域冗余 VPN 或应用程序网关 v2 前缀中的公共 IP。 | 若要将来自某个前缀的 IP 关联到网关，请执行以下操作： </br> 1.[创建前缀。](manage-public-ip-address-prefix.md) </br> 2.[从前缀创建 IP。](manage-public-ip-address-prefix.md) </br> 3. 部署 [VPN 网关](../vpn-gateway/tutorial-create-gateway-portal.md)或[应用程序网关](../application-gateway/quick-create-portal.md#create-an-application-gateway)时，请务必选择你以前从该前缀提供的 IP。|
 
 ## <a name="constraints"></a>约束
 

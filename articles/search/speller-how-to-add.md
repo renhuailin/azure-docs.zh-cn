@@ -7,29 +7,29 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/26/2021
 ms.custom: references_regions
-ms.openlocfilehash: be72cae8d109bfeccd60e8c821625f75357568e3
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 52ac3ee4ea2f71e285d21c7b6d082e84fa090da1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232352"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105625902"
 ---
 # <a name="add-spell-check-to-queries-in-cognitive-search"></a>在认知搜索中向查询添加拼写检查
 
 > [!IMPORTANT]
-> 拼写更正以公共预览版提供，只能通过预览版 REST API 使用。 根据[使用条款补充](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，预览功能按原样提供。 在初始预览版推出期间，拼写检查器不收取任何费用。 有关详细信息，请参阅[可用性和定价](semantic-search-overview.md#availability-and-pricing)。
+> 拼写更正以公共预览版提供，只能通过预览版 REST API 使用。 根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，预览功能按原样提供。 在初始预览版推出期间，拼写检查器不收取任何费用。 有关详细信息，请参阅[可用性和定价](semantic-search-overview.md#availability-and-pricing)。
 
 在单个搜索查询字词进入搜索引擎之前，可以通过对其进行拼写更正来改善召回率。 所有查询类型都支持 **拼写检查器** 参数：[简单](query-simple-syntax.md)、[完整](query-lucene-syntax.md)和新的[语义](semantic-how-to-query-request.md)选项当前为公共预览版。
 
 ## <a name="prerequisites"></a>先决条件
 
-+ 包含英文内容的现有搜索索引
++ 包含英文内容的现有搜索索引。 目前，拼写更正不适用于[同义词](search-synonyms.md)。 请避免在任何字段定义中指定同义词映射的索引上使用它。
 
 + 用于发送查询的搜索客户端
 
-  搜索客户端必须支持查询请求的预览版 REST API。 你可以使用 [Postman](search-get-started-rest.md)、[Visual Studio Code](search-get-started-vs-code.md) 或已修改的代码对预览版 API 发出 REST 调用。
+  搜索客户端必须支持查询请求的预览 REST API。 你可以使用已修改的 [Postman](search-get-started-rest.md)、[Visual Studio Code](search-get-started-vs-code.md) 或代码，以便对预览 API 进行 REST 调用。
 
 + 使用拼写更正的[查询请求](/rest/api/searchservice/preview-api/search-documents)具有 "api-version=2020-06-30-Preview"、"speller=lexicon" 和 "queryLanguage=en-us"。
 

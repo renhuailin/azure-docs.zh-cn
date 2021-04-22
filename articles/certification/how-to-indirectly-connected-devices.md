@@ -7,16 +7,16 @@ ms.author: cbroad
 ms.date: 02/23/2021
 ms.topic: how-to
 ms.service: certification
-ms.openlocfilehash: da3110b562bc5ddbd37657f31cbdd3790a13b897
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 3a4fd2838c0ddf6d7d03d68f105fc59471b77dea
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105975701"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304471"
 ---
 # <a name="device-bundles-and-indirectly-connected-devices"></a>设备捆绑和间接连接的设备
 
-为支持通过设备、SaaS 或 PaaS 产品/服务与 Azure 进行交互的设备，我们的提交门户 (https://www.certify.azure.com) ) 和设备目录 (https://devicecatalog.azure.com) ) 启用了捆绑和依赖项的概念，以促进并允许这些设备组合访问 Azure 认证设备程序。
+为支持通过设备、SaaS 或 PaaS 产品/服务与 Azure 进行交互的设备，我们的提交门户 (https://certify.azure.com/) ) 和设备目录 (https://devicecatalog.azure.com) ) 启用了捆绑和依赖项的概念，以促进并允许这些设备组合访问 Azure 认证设备程序。
 
 根据所提供的产品系列和服务，在此情况下，可能需要组合使用以下步骤：
 
@@ -39,7 +39,7 @@ ms.locfileid: "105975701"
 
 3.  如果希望将更多设备添加为此设备的可选设备，可以选择“+ 添加其他依赖项”。 然后，请遵循相同的指导，并注意在测试过程中切勿执行此操作。 在面向客户的注释中，请确保你的客户知道有其他与此传感器关联的设备可用（作为测试过程中使用的设备的替代项）。
 
-![替换文字](./media/indirect-connected-device/picture-3.png "硬件依赖项类型")
+![Alt text](./media/indirect-connected-device/picture-3.png "硬件依赖项类型")
 
 ## <a name="paas-and-saas-offerings"></a>PaaS 和 SaaS 产品/服务
 作为产品组合的一部分，你可能拥有经过自己认证的设备，但你的设备还需要所在公司或其他第三方公司提供的其他服务。 若要添加此依赖项，请执行以下步骤：

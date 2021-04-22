@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: 49d37a5537ada260eae453bbb5f81716d42657a5
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: ccc6acfd27a1430a4f6a31886c06322c5c09e224
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102565812"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628367"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>将 SQL Server 实例迁移到 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -78,7 +78,7 @@ SELECT * FROM sys.table_types WHERE is_memory_optimized=1
 SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 ```
 
-若要详细了解内存中技术，请参阅[通过使用 Azure SQL 数据库和 Azure SQL 托管实例的内存中技术来优化性能](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-overview)
+若要详细了解内存中技术，请参阅[通过使用 Azure SQL 数据库和 Azure SQL 托管实例的内存中技术来优化性能](../in-memory-oltp-overview.md)
 
 ### <a name="create-a-performance-baseline"></a>创建性能基线
 
@@ -89,7 +89,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 需要在 SQL Server 实例上测量的一些参数如下：
 
 - [监视 SQL Server 实例上的 CPU 使用率](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131)，并记录平均和峰值 CPU 使用率。
-- [监视 SQL Server 实例上的内存使用量](/sql/relational-databases/performance-monitor/monitor-memory-usage)，并确定不同组件（如缓冲池、计划缓存、列存储池、[内存中 OLTP](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017) 等）使用的内存量。此外，还应查找页生存期内存性能计数器的平均值和峰值。
+- [监视 SQL Server 实例上的内存使用量](/sql/relational-databases/performance-monitor/monitor-memory-usage)，并确定不同组件（如缓冲池、计划缓存、列存储池、[内存中 OLTP](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage) 等）使用的内存量。此外，还应查找页生存期内存性能计数器的平均值和峰值。
 - 使用 [sys.dm_io_virtual_file_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) 视图或[性能计数器](/sql/relational-databases/performance-monitor/monitor-disk-usage)监视源 SQL Server 实例上的磁盘 IO 使用率。
 - 要从 SQL Server 2016+ 版本迁移，请检查动态管理视图或查询存储，以监视工作负载和查询性能或 SQL Server 实例。 确定工作负载中最重要查询的平均持续时间和 CPU 使用率，以将其与托管实例上运行的查询进行比较。
 
@@ -216,7 +216,7 @@ SQL 托管实例提供许多高级工具用于监视和故障排除，你应使�
 
 即使迁移过程中未在托管实例中进行一些更改，也仍很有很可能需要在操作实例时启用一些新功能，以利用数据库引擎的最新改进功能。 一些更改只会在[数据库兼容性级别已更改](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database)后才启用。
 
-例如，你无需在托管实例上创建备份，因为服务会自动执行备份。 不再需要考虑计划、创建和管理备份。 在 SQL 托管实例中，可使用[时点恢复 (PITR)](../database/recovery-using-backups.md#point-in-time-restore) 还原到此保留期内的任意时间点。 此外，无需考虑设置高可用性，因为系统中内置了[高可用性](../database/high-availability-sla.md)。
+例如，无需在托管实例上创建备份，因为服务会自动执行备份。 不再需要考虑计划、创建和管理备份。 在 SQL 托管实例中，可使用[时点恢复 (PITR)](../database/recovery-using-backups.md#point-in-time-restore) 还原到此保留期内的任意时间点。 此外，无需考虑设置高可用性，因为系统中内置了[高可用性](../database/high-availability-sla.md)。
 
 要增强安全性，请考虑使用 [Azure Active Directory 身份验证](../database/security-overview.md)、[审核](auditing-configure.md)、[威胁检测](../database/azure-defender-for-sql.md)、[行级别安全性](/sql/relational-databases/security/row-level-security)和[动态数据掩码](/sql/relational-databases/security/dynamic-data-masking)。
 

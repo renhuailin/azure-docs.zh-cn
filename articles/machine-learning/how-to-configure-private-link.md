@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 6fd497e0bc0fd282d57779c483f1e39e8f5ab60a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 92b5283e5779cc79ce0a745190b57884a6ca0f7e
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102505471"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056005"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>为 Azure 机器学习工作区配置 Azure 专用链接
 
@@ -175,7 +175,7 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 在某些情况下，你可能希望允许某人通过公共终结点（而不是通过 VNet）连接到受保护的工作区。 使用专用终结点配置工作区后，可以选择启用对工作区的公共访问。 执行此操作不会删除专用终结点。 VNet 后面的组件之间的所有通信仍受到保护。 除了通过 VNet 进行专用访问以外，还可实现仅对工作区的公共访问。
 
 > [!WARNING]
-> 通过公共终结点进行连接时，工作室的某些功能将无法访问你的数据。 如果数据存储在 VNet 保护的服务中，则会出现此问题。 例如 Azure 存储帐户。
+> 通过公共终结点进行连接时，工作室的某些功能将无法访问你的数据。 如果数据存储在 VNet 保护的服务中，则会出现此问题。 例如 Azure 存储帐户。 另请注意，计算实例 Jupyter/JupyterLab/RStudio 功能和正在运行的笔记本将不起作用。
 
 若要对启用了专用链接的工作区启用公共访问，请使用以下步骤：
 

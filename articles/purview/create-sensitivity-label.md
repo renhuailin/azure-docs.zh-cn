@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 03/09/2021
-ms.openlocfilehash: 37ac292acc76c681ea38b2ae881ff8cd2ae5ec3c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 5f6e2474a533f5619d5544b674a87b6412323cc3
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102502440"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166728"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>在 Azure Purview 中自动标记数据
 
@@ -96,7 +96,7 @@ MIP 敏感度标签在 Microsoft 365 安全与合规中心中创建和管理。 
 通过将 MIP 敏感度标签扩展到 Azure Purview，组织现在可以发现、分类并深入了解更广泛数据源中的敏感度，从而最大程度地降低合规性风险。
 
 > [!NOTE]
-> 由于 Microsoft 365 和 Azure Purview 是独立的服务，因此它们可能会部署在不同的区域中。 标签名称和自定义敏感信息类型名称均视为客户数据，默认情况下会保存在同一地理位置，以保护数据的敏感度并避免违反 GDPR 法律。
+> 由于 Microsoft 365 和 Azure Purview 是独立的服务，因此它们可能会部署在不同的区域中。 标签名称和自定义敏感信息类型名称均视为客户数据，默认情况下会保存在同一地理位置，以保护数据的敏感度并避免违反隐私法律。
 >
 > 因此，默认情况下，不会将标签和自定义敏感信息类型共享给 Azure Purview，并且需要获得你的同意才能在 Azure Purview 中使用它们。
 

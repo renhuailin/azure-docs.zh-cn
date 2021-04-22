@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2021
 ms.author: duau
-ms.openlocfilehash: 3862197acd3b3181180d264c4d2a2c8dbf6a1401
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 4291a7d46c723f799cf9d09ca0e7a3f6d614971f
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378850"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389734"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教程：在 Front Door 自定义域中配置 HTTPS
 
@@ -70,10 +70,8 @@ ms.locfileid: "107378850"
 5. 继续[验证域](#validate-the-domain)。
 
 > [!NOTE]
-> 对于 AFD 托管证书，强制实施 DigiCert 的 64 字符限制。 如果超出该限制，验证将失败。
-
-> [!NOTE]
-> 对于顶点/根域（例如 contoso.com），不支持通过 Front Door 托管证书启用 HTTPS。 对于这种情况，你可以使用自己的证书。  有关更多详细信息，请继续参阅“选项 2”。
+> * 对于 AFD 托管证书，强制实施 DigiCert 的 64 字符限制。 如果超出该限制，验证将失败。
+> * 对于顶点/根域（例如 contoso.com），不支持通过 Front Door 托管证书启用 HTTPS。 对于这种情况，你可以使用自己的证书。  有关更多详细信息，请继续参阅“选项 2”。
 
 ### <a name="option-2-use-your-own-certificate"></a>选项 2：使用自己的证书
 
@@ -138,7 +136,7 @@ ms.locfileid: "107378850"
     - 可用的机密版本。
 
     > [!NOTE]
-    >  要在密钥保管库中有更新版本的证书可用时自动将证书轮换为最新版本，请将机密版本设置为“最新”。 如果选择了特定版本，则必须手动重新选择新版本才能轮换证书。 部署新版证书/机密最多需要 24 小时。 
+    >  要在密钥保管库中有更新版本的证书可用时自动将证书轮换为最新版本，请将机密版本设置为“最新”。 如果选择了特定版本，则必须为证书轮换手动重新选择新版本。 部署新版本的证书/机密最多需要 24 小时。 
  
 5. 使用你自己的证书时，无需进行域验证。 转到[等待传播](#wait-for-propagation)。
 

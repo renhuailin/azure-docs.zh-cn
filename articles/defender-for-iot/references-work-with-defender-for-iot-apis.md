@@ -1,96 +1,92 @@
 ---
 title: 使用 Defender for IoT API
-description: 使用外部 REST API 访问传感器和管理控制台发现的数据，并对该数据执行操作。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
+description: 使用外部 REST API 访问传感器和管理控制台发现的数据，并对这些数据执行操作。
 ms.date: 12/14/2020
 ms.topic: reference
-ms.service: azure
-ms.openlocfilehash: ae7965dd319f2ff885f4329262ae4772452afd62
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
-ms.translationtype: MT
+ms.openlocfilehash: d509f2674a61af1d0ab03892186526b1cb109eee
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523237"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104778825"
 ---
-# <a name="defender-for-iot-sensor-and-management-console-apis"></a>用于 IoT 传感器和管理控制台 Api 的 Defender
+# <a name="defender-for-iot-sensor-and-management-console-apis"></a>Defender for IoT 传感器和管理控制台 API
 
-使用外部 REST API 访问传感器和管理控制台发现的数据，并对该数据执行操作。
+使用外部 REST API 访问传感器和管理控制台发现的数据，并对这些数据执行操作。
 
-通过 SSL 保护连接。
+连接通过 SSL 受到保护。
 
 ## <a name="getting-started"></a>入门
 
-通常，在用于 IoT 传感器或本地管理控制台的 Azure Defender 上使用外部 API 时，需要生成访问令牌。 对于在传感器和本地管理控制台上使用的身份验证 Api，不需要使用令牌。
+通常，在 Azure Defender for IoT 传感器或本地管理控制台上使用外部 API 时，需要生成访问令牌。 对于在传感器和本地管理控制台上使用的身份验证 API，不需要使用令牌。
 
 生成令牌：
 
-1. 在 " **系统设置** " 窗口中，选择 " **访问令牌**"。
+1. 在“系统设置”窗口中，选择“访问令牌” 。
   
-   :::image type="content" source="media/references-work-with-defender-for-iot-apis/access-tokens.png" alt-text="系统设置窗口的屏幕截图突出显示 &quot;访问令牌&quot; 按钮。":::
+   :::image type="content" source="media/references-work-with-defender-for-iot-apis/access-tokens.png" alt-text="“系统设置”窗口的屏幕截图，其中突出显示了“访问令牌”按钮。":::
 
 2. 选择“生成新令牌”。
    
    :::image type="content" source="media/references-work-with-defender-for-iot-apis/new-token.png" alt-text="选择该按钮可生成新令牌。":::
 
-3. 描述新令牌的用途，然后选择 " **下一步**"。
+3. 描述新令牌的用途，然后选择“下一步”。
    
    :::image type="content" source="media/references-work-with-defender-for-iot-apis/token-name.png" alt-text="生成新令牌并输入与其关联的集成的名称。":::
 
-4. 访问令牌随即出现。 复制它，因为它不会再次显示。
+4. 随即将显示访问令牌。 请复制该令牌，因为它不会再次显示。
    
-   :::image type="content" source="media/references-work-with-defender-for-iot-apis/token-code.png" alt-text="复制你的集成的访问令牌。":::
+   :::image type="content" source="media/references-work-with-defender-for-iot-apis/token-code.png" alt-text="复制集成的访问令牌。":::
 
-5. 选择“完成”。 你创建的令牌将出现在 " **访问令牌** " 对话框中。
+5. 选择“完成”  。 你创建的令牌将显示在“访问令牌”对话框中。
    
-   :::image type="content" source="media/references-work-with-defender-for-iot-apis/access-token-window.png" alt-text="带填写令牌的 &quot;设备令牌&quot; 对话框的屏幕截图":::
+   :::image type="content" source="media/references-work-with-defender-for-iot-apis/access-token-window.png" alt-text="已填充令牌的“设备令牌”对话框的屏幕截图":::
 
-   **用于** 指示上次接收此令牌的外部调用的时间。
+   “已使用”指示上次接收此令牌的外部调用的时间。
 
-   如果此令牌的 "已 **使用**" 字段中显示了 " **N/A** "，则传感器与连接的服务器之间的连接将不起作用。
+   如果此令牌的“已使用”字段中显示“N/A”，则表示传感器与连接的服务器之间的连接不起作用 。
 
-6. 将标题为 " **授权** " 的 HTTP 标头添加到你的请求，并将其值设置为生成的标记。
+6. 将标题为“授权”的 HTTP 标头添加到请求中，并将其值设置为生成的令牌。
 
 ## <a name="sensor-api-specifications"></a>传感器 API 规范
 
-本部分介绍以下传感器 Api：
+本部分介绍以下传感器 API：
 
-- [检索设备信息-/api/v1/devices](#retrieve-device-information---apiv1devices)
+- [检索设备信息 - /api/v1/devices](#retrieve-device-information---apiv1devices)
 
-- [检索设备连接信息-/api/v1/devices/connections](#retrieve-device-connection-information---apiv1devicesconnections)
+- [检索设备连接信息 - /api/v1/devices/connections](#retrieve-device-connection-information---apiv1devicesconnections)
 
-- [检索有关标识符的信息-/api/v1/devices/cves](#retrieve-information-on-cves---apiv1devicescves)
+- [检索有关 CVE 的信息 - /api/v1/devices/cves](#retrieve-information-on-cves---apiv1devicescves)
 
-- [检索警报信息-/api/v1/alerts](#retrieve-alert-information---apiv1alerts)
+- [检索警报信息 - /api/v1/alerts](#retrieve-alert-information---apiv1alerts)
 
-- [检索时间线事件-/api/v1/events](#retrieve-timeline-events---apiv1events)
+- [检索时间线事件 - /api/v1/events](#retrieve-timeline-events---apiv1events)
 
-- [检索漏洞信息-/api/v1/reports/vulnerabilities/devices](#retrieve-vulnerability-information---apiv1reportsvulnerabilitiesdevices)
+- [检索漏洞信息 - /api/v1/reports/vulnerabilities/devices](#retrieve-vulnerability-information---apiv1reportsvulnerabilitiesdevices)
 
-- [检索安全漏洞-/api/v1/reports/vulnerabilities/security](#retrieve-security-vulnerabilities---apiv1reportsvulnerabilitiessecurity)
+- [检索安全漏洞 - /api/v1/reports/vulnerabilities/security](#retrieve-security-vulnerabilities---apiv1reportsvulnerabilitiessecurity)
 
-- [检索操作漏洞-/api/v1/reports/vulnerabilities/operational](#retrieve-operational-vulnerabilities---apiv1reportsvulnerabilitiesoperational)
+- [检索操作漏洞 - /api/v1/reports/vulnerabilities/operational](#retrieve-operational-vulnerabilities---apiv1reportsvulnerabilitiesoperational)
 
-- [验证用户凭据-/api/external/authentication/validation](#validate-user-credentials---apiexternalauthenticationvalidation)
+- [验证用户凭据 - /api/external/authentication/validation](#validate-user-credentials---apiexternalauthenticationvalidation)
 
-- [更改密码-/external/authentication/set_password](#change-password---externalauthenticationset_password)
+- [更改密码 - /external/authentication/set_password](#change-password---externalauthenticationset_password)
 
-- [由系统管理员进行的用户密码更新-/external/authentication/set_password_by_admin](#user-password-update-by-system-admin---externalauthenticationset_password_by_admin)
+- [由系统管理员执行的用户密码更新 - /external/authentication/set_password_by_admin](#user-password-update-by-system-admin---externalauthenticationset_password_by_admin)
 
-### <a name="retrieve-device-information---apiv1devices"></a>检索设备信息-/api/v1/devices
+### <a name="retrieve-device-information---apiv1devices"></a>检索设备信息 - /api/v1/devices
 
-使用此 API 请求已检测到 IoT 传感器的所有设备的列表。
+使用此 API 可请求已检测到 Defender for IoT 传感器的所有设备的列表。
 
 #### <a name="method"></a>方法
 
 **GET**
 
-请求已检测到 IoT 传感器的所有设备的列表。
+请求已检测到 Defender for IoT 传感器的所有设备的列表。
 
 #### <a name="query-parameters"></a>查询参数
 
-- 已 **授权**：仅筛选已授权和未授权的设备。
+- **authorized**：仅筛选已授权和未授权的设备。
 
   示例：
 
@@ -104,44 +100,44 @@ ms.locfileid: "100523237"
 
 #### <a name="response-content"></a>响应内容
 
-表示设备的 JSON 对象的数组。
+表示设备的 JSON 对象数组。
 
 #### <a name="device-fields"></a>设备字段
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| **id** | 数字 | 否 | - |
-| **ipAddresses** | JSON 数组 | 是 | IP 地址 (可以为 internet 地址或具有双 Nic 的设备使用多个地址)  |
-| name  | String | 否 | - |
-| type  | String | 否 | 未知、工程工作站、PLC、HMI、Historian、域控制器、数据库服务器、无线访问点、路由器、交换机、服务器、工作站、IP 照相机、打印机、防火墙、终端工作站、VPN 网关、Internet 或多播和广播 |
-| **macAddresses** | JSON 数组 | 是 | 对于具有双 Nic 的设备，MAC 地址 (可以是多个地址)  |
-| **operatingSystem** | String | 是 | - |
+| **id** | Numeric | 否 | - |
+| **ipAddresses** | JSON 数组 | 是 | IP 地址（使用 Internet 地址或设备具有双 NIC 时，可以有多个地址） |
+| **name** | 字符串 | 否 | - |
+| type | 字符串 | 否 | 未知、工程站、PLC、HMI、Historian、域控制器、数据库服务器、无线接入点、路由器、交换机、服务器、工作站、IP 摄像头、打印机、防火墙、终端站、VPN 网关、Internet 或多播和广播 |
+| **macAddresses** | JSON 数组 | 是 | MAC 地址（设备具有双 NIC 时可以有多个地址） |
+| **OperatingSystem** | 字符串 | 是 | - |
 | **engineeringStation** | 布尔 | 否 | True 或 False |
-| **瞄** | 布尔 | 否 | True 或 False |
+| **scanner** | 布尔 | 否 | True 或 False |
 | **已授权** | 布尔 | 否 | True 或 False |
-| **采购** | String | 是 | - |
-| **通讯** | JSON 数组 | 是 | Protocol 对象 |
-| **固件** | JSON 数组 | 是 | 固件对象 |
+| **vendor** | 字符串 | 是 | - |
+| **protocols** | JSON 数组 | 是 | 协议对象 |
+| **firmware** | JSON 数组 | 是 | 固件对象 |
 
 #### <a name="protocol-fields"></a>协议字段
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| **名称** | String | 否 |  |
-| **地址** | JSON 数组 | 是 | Master 或数值 |
+| **名称** | 字符串 | 否 |  |
+| **地址** | JSON 数组 | 是 | 主地址或数值 |
 
 #### <a name="firmware-fields"></a>固件字段
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| **串行** | String | 否 | 不适用，或实际值 |
-| **model** | String | 否 | 不适用，或实际值 |
-| **firmwareVersion** | Double | 否 | 不适用，或实际值 |
-| **additionalData** | String | 否 | 不适用，或实际值 |
-| **moduleAddress** | String | 否 | 不适用，或实际值 |
-| **支架** | String | 否 | 不适用，或实际值 |
-| **插槽** | String | 否 | 不适用，或实际值 |
-| **address** | String | 否 | 不适用，或实际值 |
+| **serial** | 字符串 | 否 | N/A 或实际值 |
+| **model** | 字符串 | 否 | N/A 或实际值 |
+| **firmwareVersion** | Double | 否 | N/A 或实际值 |
+| **additionalData** | 字符串 | 否 | N/A 或实际值 |
+| **moduleAddress** | 字符串 | 否 | N/A 或实际值 |
+| **rack** | 字符串 | 否 | N/A 或实际值 |
+| **slot** | 字符串 | 否 | N/A 或实际值 |
+| **address** | 字符串 | 否 | N/A 或实际值 |
 
 #### <a name="response-example"></a>响应示例
 
@@ -281,11 +277,11 @@ ms.locfileid: "100523237"
 
 | 类型 | API | 示例 |
 |--|--|--|
-| GET | 卷 k-H "Authorization： <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/devices | 卷 k-H "Authorization： 1234b734a9244d54ab8d40aedddcabcd" https： <span> /127/ <span> 0.0.1/api/v1/设备？ Authorization = true |
+| GET | curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/devices | curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:<span>//127<span>.0.0.1/api/v1/devices?authorized=true |
 
-### <a name="retrieve-device-connection-information---apiv1devicesconnections"></a>检索设备连接信息-/api/v1/devices/connections
+### <a name="retrieve-device-connection-information---apiv1devicesconnections"></a>检索设备连接信息 - /api/v1/devices/connections
 
-使用此 API 请求每个设备的所有连接的列表。
+使用此 API 可请求每个设备的所有连接的列表。
 
 #### <a name="method"></a>方法
 
@@ -305,19 +301,19 @@ ms.locfileid: "100523237"
 
   `/api/v1/devices/<deviceId>/connections`
 
-- **lastActiveInMinutes**：时间范围从现在向后（分钟），在此期间，连接处于活动状态。
+- **lastActiveInMinutes**：现在之前连接处于活动状态的时长（以分钟为单位）。
 
   **示例**：
 
   `/api/v1/devices/2/connections?lastActiveInMinutes=20`
 
-- **discoveredBefore**：仅筛选在特定时间 (（以毫秒为单位）之前检测到) 的连接。
+- **discoveredBefore**：只筛选在特定时间（以毫秒为单位，UTC）之前检测到的连接。
 
   **示例**：
 
   `/api/v1/devices/2/connections?discoveredBefore=<epoch>`
 
-- **discoveredAfter**：仅筛选在特定时间 (（以毫秒为单位）后检测到的连接（以毫秒为单位）) 。
+- **discoveredAfter**：只筛选在特定时间（以毫秒为单位，UTC）之后检测到的连接。
 
   **示例**：
 
@@ -329,25 +325,25 @@ ms.locfileid: "100523237"
 
 #### <a name="response-content"></a>响应内容
 
-表示设备连接的 JSON 对象的数组。
+表示设备连接的 JSON 对象数组。
 
 #### <a name="fields"></a>字段
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| **firstDeviceId** | 数字 | 否 | - |
-| **secondDeviceId** | 数字 | 否 | - |
-| **lastSeen** | 数字 | 否 | Epoch (UTC)  |
-| **到** | 数字 | 否 | Epoch (UTC)  |
-| **端口** | 数字数组 | 否 | - |
-| **通讯** | JSON 数组 | 否 | 协议字段 |
+| **firstDeviceId** | Numeric | 否 | - |
+| **secondDeviceId** | Numeric | 否 | - |
+| **lastSeen** | Numeric | 否 | Epoch (UTC) |
+| **discovered** | Numeric | 否 | Epoch (UTC) |
+| **ports** | 数字数组 | 否 | - |
+| **protocols** | JSON 数组 | 否 | 协议字段 |
 
 #### <a name="protocol-field"></a>协议字段
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| name  | String | 否 | - |
-| **命令** | 字符串数组 | 否 | - |
+| **name** | 字符串 | 否 | - |
+| **commands** | 字符串数组 | 否 | - |
 
 #### <a name="response-example"></a>响应示例
 
@@ -454,12 +450,12 @@ ms.locfileid: "100523237"
 > [!div class="mx-tdBreakAll"]
 > | 类型 | API | 示例 |
 > |--|--|--|
-> | GET | 卷 k-H "Authorization： <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/devices/connections | 卷 k-k H "Authorization： 1234b734a9244d54ab8d40aedddcabcd" https：/ <span> /127.0.0.1/api/v1/devices/connections |
-> | GET | 卷 k-H "Authorization： <AUTH_TOKEN>" "https://<IP_ADDRESS>/api/v1/devices/ <deviceId> /connections？ lastActiveInMinutes =&discoveredBefore =&discoveredAfter =" | 卷 k-H "Authorization： 1234b734a9244d54ab8d40aedddcabcd" "https：/ <span> /127.0.0.1/api/v1/devices/2/connections？ lastActiveInMinutes = 20&discoveredBefore = 1594550986000&discoveredAfter = 1594550986000" |
+> | GET | curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/devices/connections | curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/api/v1/devices/connections |
+> | GET | curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/api/v1/devices/<deviceId>/connections?lastActiveInMinutes=&discoveredBefore=&discoveredAfter=' | curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https:/<span>/127.0.0.1/api/v1/devices/2/connections?lastActiveInMinutes=20&discoveredBefore=1594550986000&discoveredAfter=1594550986000' |
 
-### <a name="retrieve-information-on-cves---apiv1devicescves"></a>检索有关标识符的信息-/api/v1/devices/cves
+### <a name="retrieve-information-on-cves---apiv1devicescves"></a>检索有关 CVE 的信息 - /api/v1/devices/cves
 
-使用此 API 请求在网络中的设备上发现的所有已知标识符的列表。
+使用此 API 可请求在网络中的设备上发现的所有已知 CVE 的列表。
 
 #### <a name="method"></a>方法
 
@@ -467,19 +463,19 @@ ms.locfileid: "100523237"
 
 #### <a name="query-parameters"></a>查询参数
 
-默认情况下，此 API 提供标识符的所有设备 Ip 列表，每个 IP 地址最多可包含100个顶部评分的标识符。
+默认情况下，此 API 提供具有 CVE 的所有设备 IP 的列表，每个 IP 地址最多前 100 个高分 CVE。
 
 **示例**：
 
 `/api/v1/devices/cves`
 
-- **deviceId**：按特定设备 IP 地址筛选，最多可在该特定设备上识别100个排名最高的标识符。
+- **deviceId**：按特定设备 IP 地址筛选，最多可在该特定设备上识别前 100 个高分 CVE。
 
   **示例**：
 
   `/api/v1/devices/<ipAddress>/cves`
 
-- **top**：要为每个设备 IP 地址检索多少个排名标识符的内容。
+- **top**：要为每个设备 IP 地址检索多少个得分最高的 CVE。
 
   **示例**：
 
@@ -493,17 +489,17 @@ ms.locfileid: "100523237"
 
 #### <a name="response-content"></a>响应内容
 
-JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
+JSON 对象数组，用于表示在 IP 地址上识别到的 CVE。
 
 #### <a name="fields"></a>字段
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| **cveId** | String | 否 | - |
-| **地址** | String | 否 | IP 地址 |
-| **分值** | String | 否 | 0.0-10。0 |
-| **attackVector** | String | 否 | 网络、相邻网络、本地或物理 |
-| description | String | 否 | - |
+| **cveId** | 字符串 | 否 | - |
+| **ipAddress** | 字符串 | 否 | IP 地址 |
+| **score** | 字符串 | 否 | 0.0 - 10.0 |
+| **attackVector** | 字符串 | 否 | 网络、相邻网络、本地或物理 |
+| description | 字符串 | 否 | - |
 
 #### <a name="response-example"></a>响应示例
 
@@ -569,12 +565,12 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 | 类型 | API | 示例 |
 |--|--|--|
-| GET | 卷 k-H "Authorization： <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/devices/cves | 卷 k-k H "Authorization： 1234b734a9244d54ab8d40aedddcabcd" https：/ <span> /127.0.0.1/api/v1/devices/cves |
-| GET | 卷 k-H "Authorization： <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/devices/ <deviceIpAddress> /cves？ top = | 卷 k-H "Authorization： 1234b734a9244d54ab8d40aedddcabcd" https：/ <span> /127.0.0.1/api/v1/devices/10.10.10.15/cves？ top = 50 |
+| GET | curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/devices/cves | curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/api/v1/devices/cves |
+| GET | curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/devices/<deviceIpAddress>/cves?top= | curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/api/v1/devices/10.10.10.15/cves?top=50 |
 
-### <a name="retrieve-alert-information---apiv1alerts"></a>检索警报信息-/api/v1/alerts
+### <a name="retrieve-alert-information---apiv1alerts"></a>检索警报信息 - /api/v1/alerts
 
-使用此 API 请求已检测到 IoT 传感器的所有警报的列表。
+使用此 API 可请求已检测到 IoT 传感器的所有警报的列表。
 
 #### <a name="method"></a>方法
 
@@ -588,19 +584,19 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
   `/api/v1/alerts?state=handled`
 
-- **fromTime**：筛选根据特定时间创建的警报 (以毫秒为单位) 。
+- **fromTime**：筛选从特定时间开始创建的警报（以毫秒为单位，UTC）。
 
   **示例**：
 
   `/api/v1/alerts?fromTime=<epoch>`
 
-- **toTime**：筛选仅在特定时间 (（以毫秒为单位）后创建的警报) 。
+- **toTime**：仅筛选在特定时间（以毫秒为单位，UTC）之前创建的警报。
 
   **示例**：
 
   `/api/v1/alerts?toTime=<epoch>`
 
-- **类型**：按特定类型筛选警报。 要筛选的现有类型：意外的新设备，断开。
+- **type**：按特定类型筛选警报。 可作为筛选依据的现有类型：意外的新设备、断开连接。
 
   **示例**：
 
@@ -612,28 +608,28 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 #### <a name="response-content"></a>响应内容
 
-表示警报的 JSON 对象的数组。
+表示警报的 JSON 对象数组。
 
 #### <a name="alert-fields"></a>警报字段
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| **ID** | 数字 | 否 | - |
-| **time** | 数字 | 否 | Epoch (UTC)  |
-| **title** | String | 否 | - |
+| **ID** | Numeric | 否 | - |
+| **time** | Numeric | 否 | Epoch (UTC) |
+| **title** | 字符串 | 否 | - |
 | **message** | String | 否 | - |
-| severity  | String | 否 | 警告、次要、主要或严重 |
-| **搜索引擎优化** | String | 否 | 协议冲突、策略冲突、恶意软件、异常或操作 |
-| **sourceDevice** | 数字 | 是 | 设备 ID |
-| **destinationDevice** | 数字 | 是 | 设备 ID |
-| **additionalInformation** | 附加信息对象 | 是 | - |
+| severity  | 字符串 | 否 | 警告、次要、主要或严重 |
+| **engine** | 字符串 | 否 | 协议冲突、策略冲突、恶意软件、异常或操作 |
+| **sourceDevice** | Numeric | 是 | 设备 ID |
+| **destinationDevice** | Numeric | 是 | 设备 ID |
+| **additionalInformation** | 其他信息对象 | 是 | - |
 
 #### <a name="additional-information-fields"></a>其他信息字段
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| description | String | 否 | - |
-| **信息** | JSON 数组 | 否 | String |
+| description | 字符串 | 否 | - |
+| **information** | JSON 数组 | 否 | 字符串 |
 
 #### <a name="response-example"></a>响应示例
 
@@ -703,11 +699,11 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 > [!div class="mx-tdBreakAll"]
 > | 类型 | API | 示例 |
 > |--|--|--|
-> | GET | 卷 k-H "Authorization： <AUTH_TOKEN>" "https://<IP_ADDRESS>/api/v1/alerts？ state =&fromTime =&toTime =&类型 =" | 卷 k-H "Authorization： 1234b734a9244d54ab8d40aedddcabcd" "https：/ <span> /127.0.0.1/api/v1/alerts？ state = 未处理&fromTime = 1594550986000&toTime = 1594550986001&类型 = 断开 \" |
+> | GET | curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/api/v1/alerts?state=&fromTime=&toTime=&type=' | curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https:/<span>/127.0.0.1/api/v1/alerts?state=unhandled&fromTime=1594550986000&toTime=1594550986001&type=disconnections' |
 
-### <a name="retrieve-timeline-events---apiv1events"></a>检索时间线事件-/api/v1/events
+### <a name="retrieve-timeline-events---apiv1events"></a>检索时间线事件 - /api/v1/events
 
-使用此 API 来请求向事件时间线报告的事件列表。
+使用此 API 可请求向事件时间线报告的事件列表。
 
 #### <a name="method"></a>方法
 
@@ -715,13 +711,13 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 #### <a name="query-parameters"></a>查询参数
 
-- **minutesTimeFrame**：报告事件的时间范围从现在开始向后移动。
+- **minutesTimeFrame**：从开始报告事件到现在的时长（以分钟为单位）。
 
   **示例**：
 
   `/api/v1/events?minutesTimeFrame=20`
 
-- **键入**：按特定类型筛选事件列表。
+- **type**：按特定类型筛选事件列表。
 
   示例：
 
@@ -735,17 +731,17 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 #### <a name="response-content"></a>响应内容
 
-表示警报的 JSON 对象的数组。
+表示警报的 JSON 对象数组。
 
 #### <a name="event-fields"></a>事件字段
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|--|
-| **timestamp** | 数字 | 否 | Epoch (UTC)  |
-| **title** | String | 否 | - |
-| severity  | String | 否 | 信息、通知或警报 |
-| **owner** | String | 是 | 如果手动创建了事件，则此字段将包含创建该事件的用户名。 |
-| **content** | String | 否 | - |
+| **timestamp** | Numeric | 否 | Epoch (UTC) |
+| **title** | 字符串 | 否 | - |
+| severity  | 字符串 | 否 | INFO、NOTICE 或 ALERT |
+| **所有者** | 字符串 | 是 | 如果事件是手动创建的，则此字段将包含创建该事件的用户名 |
+| **content** | 字符串 | 否 | - |
 
 #### <a name="response-example"></a>响应示例
 
@@ -824,11 +820,11 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 | 类型 | API | 示例 |
 |--|--|--|
-| GET | 卷 k-H "Authorization： <AUTH_TOKEN>" "https://<IP_ADDRESS>/api/v1/events？ minutesTimeFrame =&类型 =" | 卷 k-H "Authorization： 1234b734a9244d54ab8d40aedddcabcd" ' https：/ <span> /127.0.0.1/api/v1/events？ minutesTimeFrame = 20&类型 = DEVICE_CONNECTION_CREATED ' |
+| GET | curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/api/v1/events?minutesTimeFrame=&type=' | curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https:/<span>/127.0.0.1/api/v1/events?minutesTimeFrame=20&type=DEVICE_CONNECTION_CREATED' |
 
-### <a name="retrieve-vulnerability-information---apiv1reportsvulnerabilitiesdevices"></a>检索漏洞信息-/api/v1/reports/vulnerabilities/devices
+### <a name="retrieve-vulnerability-information---apiv1reportsvulnerabilitiesdevices"></a>检索漏洞信息 - /api/v1/reports/vulnerabilities/devices
 
-使用此 API 来请求每个设备的漏洞评估结果。
+使用此 API 可请求每个设备的漏洞评估结果。
 
 #### <a name="method"></a>方法
 
@@ -840,7 +836,7 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 #### <a name="response-content"></a>响应内容
 
-表示评估的设备的 JSON 对象的数组。
+表示已评估的设备的 JSON 对象数组。
 
 设备对象包含：
 
@@ -854,37 +850,37 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| name  | String | 否 | - |
+| **name** | 字符串 | 否 | - |
 | **ipAddresses** | JSON 数组 | 否 | - |
-| **securityScore** | 数字 | 否 | - |
-| **采购** | String | 是 |  |
-| **firmwareVersion** | String | 是 | - |
-| **model** | String | 是 | - |
+| **securityScore** | Numeric | 否 | - |
+| **vendor** | 字符串 | 是 |  |
+| **firmwareVersion** | 字符串 | 是 | - |
+| **model** | 字符串 | 是 | - |
 | **isWirelessAccessPoint** | 布尔 | 否 | True 或 False |
 | **operatingSystem** | 操作系统对象 | 是 | - |
-| **一些** | 漏洞对象 | 是 | - |
+| **vulnerabilities** | 漏洞对象 | 是 | - |
 
 #### <a name="operating-system-fields"></a>操作系统字段
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| **名称** | String | 是 | - |
-| **类型** | String | 是 | - |
-| **版本** | String | 是 | - |
-| **latestVersion** | String | 是 | - |
+| **名称** | 字符串 | 是 | - |
+| **类型** | 字符串 | 是 | - |
+| **Version** | 字符串 | 是 | - |
+| **latestVersion** | 字符串 | 是 | - |
 
 #### <a name="vulnerabilities-fields"></a>漏洞字段
  
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| **antiViruses** | JSON 数组 | 是 | 防病毒名称 |
-| **plainTextPasswords** | JSON 数组 | 是 | Password 对象 |
+| **antiViruses** | JSON 数组 | 是 | 防病毒软件名称 |
+| **plainTextPasswords** | JSON 数组 | 是 | 密码对象 |
 | **remoteAccess** | JSON 数组 | 是 | 远程访问对象 |
 | **isBackupServer** | 布尔 | 否 | True 或 False |
 | **openedPorts** | JSON 数组 | 是 | 打开的端口对象 |
 | **isEngineeringStation** | 布尔 | 否 | True 或 False |
 | **isKnownScanner** | 布尔 | 否 | True 或 False |
-| **标识符** | JSON 数组 | 是 | CVE 对象 |
+| **cves** | JSON 数组 | 是 | CVE 对象 |
 | **isUnauthorized** | 布尔 | 否 | True 或 False |
 | **malwareIndicationsDetected** | 布尔 | 否 | True 或 False |
 | **weakAuthentication** | JSON 数组 | 是 | 检测到使用弱身份验证的应用程序 |
@@ -893,35 +889,35 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| **password** | String | 否 | - |
-| **protocol** | String | 否 | - |
-| **程度** | String | 否 | 非常弱、弱、中等或强 |
+| **password** | 字符串 | 否 | - |
+| **protocol** | 字符串 | 否 | - |
+| **strength** | 字符串 | 否 | 非常弱、弱、中等或强 |
 
 #### <a name="remote-access-fields"></a>远程访问字段
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| **port** | 数字 | 否 | - |
-| **transport** | String | 否 | TCP 或 UDP |
-| **机** | String | 否 | IP 地址 |
-| **clientSoftware** | String | 否 | SSH、VNC、远程桌面或团队查看器 |
+| **port** | Numeric | 否 | - |
+| **transport** | 字符串 | 否 | TCP 或 UDP |
+| **客户端** | 字符串 | 否 | IP 地址 |
+| **clientSoftware** | 字符串 | 否 | SSH、VNC、Remote desktop 或 Team viewer |
 
 #### <a name="open-port-fields"></a>打开端口字段
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| **port** | 数字 | 否 | - |
-| **transport** | String | 否 | TCP 或 UDP |
-| **protocol** | String | 是 | - |
+| **port** | Numeric | 否 | - |
+| **transport** | 字符串 | 否 | TCP 或 UDP |
+| **protocol** | 字符串 | 是 | - |
 | **isConflictingWithFirewall** | 布尔 | 否 | True 或 False |
 
 #### <a name="cve-fields"></a>CVE 字段
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| **ID** | String | 否 | - |
-| **分值** | 数字 | 否 | Double |
-| description | String | 否 | - |
+| **ID** | 字符串 | 否 | - |
+| **score** | Numeric | 否 | Double |
+| description | 字符串 | 否 | - |
 
 #### <a name="response-example"></a>响应示例
 
@@ -1078,11 +1074,11 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 | 类型 | API | 示例 |
 |--|--|--|
-| GET | 卷 k-H "Authorization： <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/reports/vulnerabilities/devices | 卷 k-k H "Authorization： 1234b734a9244d54ab8d40aedddcabcd" https：/ <span> /127.0.0.1/api/v1/reports/vulnerabilities/devices |
+| GET | curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/reports/vulnerabilities/devices | curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/api/v1/reports/vulnerabilities/devices |
 
-### <a name="retrieve-security-vulnerabilities---apiv1reportsvulnerabilitiessecurity"></a>检索安全漏洞-/api/v1/reports/vulnerabilities/security
+### <a name="retrieve-security-vulnerabilities---apiv1reportsvulnerabilitiessecurity"></a>检索安全漏洞 - /api/v1/reports/vulnerabilities/security
 
-使用此 API 来请求一般漏洞评估的结果。 此评估提供对系统安全级别的深入了解。
+使用此 API 可请求一般漏洞评估结果。 此评估可提供有关系统安全级别的深入见解。
 
 此评估基于常规网络和系统信息，而不是基于特定的设备评估。
 
@@ -1096,7 +1092,7 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 #### <a name="response-content"></a>响应内容
 
-表示评估结果的 JSON 对象。 每个键可以为 null。 否则，它将包含一个具有不可为 null 的键的 JSON 对象。
+表示评估结果的 JSON 对象。 每个键都可为空。 否则，它将包含一个键不可为 null 的 JSON 对象。
 
 ### <a name="result-fields"></a>结果字段
 
@@ -1106,60 +1102,60 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 | 字段名称 | 类型 | 值列表 |
 | ---------- | ---- | -------------- |
-| **address** | String | IP 地址 |
-| name  | String | - |
-| **firstDetectionTime** | 数字 | Epoch (UTC)  |
-| lastSeen | 数字 | Epoch (UTC)  |
+| **address** | 字符串 | IP 地址 |
+| **name** | 字符串 | - |
+| **firstDetectionTime** | Numeric | Epoch (UTC) |
+| lastSeen | Numeric | Epoch (UTC) |
 
 **illegalTrafficByFirewallRules**
 
 | 字段名称 | 类型 | 值列表 |
 | ---------- | ---- | -------------- |
-| 服务器  | String | IP 地址 |
-| **机** | String | IP 地址 |
-| **port** | 数字 | - |
-| **transport** | String | TCP、UDP 或 ICMP |
+| 服务器  | 字符串 | IP 地址 |
+| **客户端** | 字符串 | IP 地址 |
+| **port** | Numeric | - |
+| **transport** | 字符串 | TCP、UDP 或 ICMP |
 
 **weakFirewallRules**
 
 | 字段名称 | 类型 | 值列表 |
 | ---------- | ---- | -------------- |
-| **sources** | 源的 JSON 数组。 每个源可采用四种格式之一。 | "任何"、"ip 地址 (主机) "、"从 ip 到 ip (范围) "、"ip 地址、子网掩码 (网络) " |
-| **目标** | 目标的 JSON 数组。 每个目标可以采用四种格式之一。 | "任何"、"ip 地址 (主机) "、"从 ip 到 ip (范围) "、"ip 地址、子网掩码 (网络) " |
-| **端口** | 采用以下任意一种格式的端口的 JSON 数组 | 如果) 检测到端口到端口 (协议，则为 "任何"、"端口 (协议，如检测到) "） |
+| **sources** | 源的 JSON 数组。 每个源都可采用四种格式中的任意一种。 | “Any”、“ip address (Host)”、“from ip-to ip (RANGE)”、“ip address, subnet mask (NETWORK)” |
+| **destinations** | 目标的 JSON 数组。 每个目标都可以采用四种格式中的任意一种。 | “Any”、“ip address (Host)”、“from ip-to ip (RANGE)”、“ip address, subnet mask (NETWORK)” |
+| **ports** | 采用以下三种格式之一的端口的 JSON 数组 | “Any”、“port (protocol, if detected)”、“from port-to port (protocol, if detected)” |
 
 **accessPoints**
 
 | 字段名称 | 类型 | 值列表 |
 | ---------- | ---- | -------------- |
-| **macAddress** | String | MAC 地址 |
-| **采购** | String | 供应商名称 |
-| **地址** | String | IP 地址或 N/A |
-| name  | String | 设备名称或 N/A |
-| **无线** | String | 不，怀疑或是 |
+| **macAddress** | 字符串 | MAC 地址 |
+| **vendor** | 字符串 | 供应商名称 |
+| **ipAddress** | 字符串 | IP 地址或 N/A |
+| **name** | 字符串 | 设备名称或 N/A |
+| **wireless** | 字符串 | 否、怀疑或是 |
 
 **connectionsBetweenSubnets**
 
 | 字段名称 | 类型 | 值列表 |
 | ---------- | ---- | -------------- |
-| 服务器  | String | IP 地址 |
-| **机** | String | IP 地址 |
+| 服务器  | 字符串 | IP 地址 |
+| **客户端** | 字符串 | IP 地址 |
 
 **industrialMalwareIndicators**
 
 | 字段名称 | 类型 | 值列表 |
 | ---------- | ---- | -------------- |
-| **detectionTime** | 数字 | Epoch (UTC)  |
-| **alertMessage** | String | - |
-| description | String | - |
-| **装置** | JSON 数组 | 设备名称 | 
+| **detectionTime** | Numeric | Epoch (UTC) |
+| **alertMessage** | 字符串 | - |
+| description | 字符串 | - |
+| **devices** | JSON 数组 | 设备名称 | 
 
 **internetConnections**
 
 | 字段名称 | 类型 | 值列表 |
 | ---------- | ---- | -------------- |
-| **internalAddress** | String | IP 地址 |
-| **已授权** | Boolean | 是或否 | 
+| **internalAddress** | 字符串 | IP 地址 |
+| **已授权** | 布尔 | 是或否 | 
 | **externalAddresses** | JSON 数组 | IP 地址 |
 
 #### <a name="response-example"></a>响应示例
@@ -1325,11 +1321,11 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 | 类型 | API | 示例 |
 |--|--|--|
-| GET | 卷 k-H "Authorization： <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/reports/vulnerabilities/security | 卷 k-k H "Authorization： 1234b734a9244d54ab8d40aedddcabcd" https：/ <span> /127.0.0.1/api/v1/reports/vulnerabilities/security |
+| GET | curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/reports/vulnerabilities/security | curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/api/v1/reports/vulnerabilities/security |
 
-### <a name="retrieve-operational-vulnerabilities---apiv1reportsvulnerabilitiesoperational"></a>检索操作漏洞-/api/v1/reports/vulnerabilities/operational
+### <a name="retrieve-operational-vulnerabilities---apiv1reportsvulnerabilitiesoperational"></a>检索操作漏洞 - /api/v1/reports/vulnerabilities/operational
 
-使用此 API 来请求一般漏洞评估的结果。 此评估提供网络操作状态的见解。 它基于常规网络和系统信息，而不是基于特定的设备评估。
+使用此 API 可请求一般漏洞评估结果。 此评估可提供有关网络操作状态的见解。 它基于常规网络和系统信息，而不是基于特定的设备评估。
 
 #### <a name="method"></a>方法
 
@@ -1341,7 +1337,7 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 #### <a name="response-content"></a>响应内容
 
-表示评估结果的 JSON 对象。 每个密钥都包含结果的 JSON 数组。
+表示评估结果的 JSON 对象。 每个键都包含结果的 JSON 数组。
 
 #### <a name="result-fields"></a>结果字段
 
@@ -1351,45 +1347,45 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 | 字段名称 | 类型 | 值列表 |
 |--|--|--|
-| **source** | String | IP 地址 |
-| **destination** | String | IP 地址 |
-| **port** | 数字 | - |
-| **transport** | String | TCP 或 UDP |
-| **backupMaximalInterval** | String | - |
-| **lastSeenBackup** | 数字 | Epoch (UTC)  |
+| **source** | 字符串 | IP 地址 |
+| **destination** | 字符串 | IP 地址 |
+| **port** | Numeric | - |
+| **transport** | 字符串 | TCP 或 UDP |
+| **backupMaximalInterval** | 字符串 | - |
+| **lastSeenBackup** | Numeric | Epoch (UTC) |
 
 **ipNetworks**
 
 | 字段名称 | 类型 | 值列表 |
 |--|--|--|
-| **addresse** s | 数字 | - |
-| **网桥** | String | IP 地址 |
-| **掩盖** | String | 子网掩码 |
+| **addresse** s | Numeric | - |
+| **network** | 字符串 | IP 地址 |
+| **mask** | 字符串 | 子网掩码 |
 
 **protocolProblems**
 
 | 字段名称 | 类型 | 值列表 |
 |--|--|--|
-| **protocol** | String | - |
-| **地址** | JSON 数组 | IP 地址 |
-| **发出** | String | - |
-| **reportTime** | 数字 | Epoch (UTC)  |
+| **protocol** | 字符串 | - |
+| **addresses** | JSON 数组 | IP 地址 |
+| **alert** | 字符串 | - |
+| **reportTime** | Numeric | Epoch (UTC) |
 
 **protocolDataVolumes**
 
 | 字段名称 | 类型 | 值列表 |
 |--|--|--|
-| protocol | String | - |
-| 卷 | String | "卷号 MB" |
+| protocol | 字符串 | - |
+| 卷 | 字符串 | “数据量值 MB” |
 
-**断开**
+**disconnections**
 
 | 字段名称 | 类型 | 值列表 |
 |--|--|--|
-| **assetAddress** | String | IP 地址 |
-| **assetName** | String | - |
-| **lastDetectionTime** | 数字 | Epoch (UTC)  |
-| **backToNormalTime** | 数字 | Epoch (UTC)  |     
+| **assetAddress** | 字符串 | IP 地址 |
+| **assetName** | 字符串 | - |
+| **lastDetectionTime** | Numeric | Epoch (UTC) |
+| **backToNormalTime** | Numeric | Epoch (UTC) |     
 
 #### <a name="response-example"></a>响应示例
 
@@ -1522,13 +1518,13 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 | 类型 | API | 示例 |
 |--|--|--|
-| GET | 卷 k-H "Authorization： <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/reports/vulnerabilities/operational | 卷 k-k H "Authorization： 1234b734a9244d54ab8d40aedddcabcd" https：/ <span> /127.0.0.1/api/v1/reports/vulnerabilities/operational |
+| GET | curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/reports/vulnerabilities/operational | curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/api/v1/reports/vulnerabilities/operational |
 
-### <a name="validate-user-credentials---apiexternalauthenticationvalidation"></a>验证用户凭据-/api/external/authentication/validation
+### <a name="validate-user-credentials---apiexternalauthenticationvalidation"></a>验证用户凭据 - /api/external/authentication/validation
 
-使用此 API 验证用于 IoT 用户名和密码的 Defender。 所有 Defender for IoT 用户角色都可以使用 API。
+使用此 API 可验证 Defender for IoT 用户名和密码。 所有 Defender for IoT 用户角色都可以使用此 API。
 
-不需要使用此 API 的 IoT 访问令牌 Defender。
+使用此 API 无需 Defender for IoT 访问令牌。
 
 #### <a name="method"></a>方法
 
@@ -1542,8 +1538,8 @@ JSON 对象的数组，这些对象表示在 IP 地址上标识的标识符。
 
 | **名称** | 类型 | **可以为 Null** |
 |--|--|--|
-| **username** | String | 否 |
-| **password** | String | 否 |
+| **username** | 字符串 | 否 |
+| **password** | 字符串 | 否 |
 
 #### <a name="request-example"></a>请求示例
 
@@ -1568,9 +1564,9 @@ request:
 
 包含操作状态详细信息的消息字符串：
 
-- **成功-消息**：身份验证成功
+- **成功 - msg**：身份验证成功
 
-- **失败-错误**：凭据验证失败
+- **失败 - error**：凭据验证失败
 
 #### <a name="response-example"></a>响应示例
 
@@ -1589,11 +1585,11 @@ response:
 
 | 类型 | API | 示例 |
 |--|--|--|
-| GET | 卷 k-H "Authorization： <AUTH_TOKEN>" https://<IP_ADDRESS>/api/external/authentication/validation | 卷 k-k H "Authorization： 1234b734a9244d54ab8d40aedddcabcd" https：/ <span> /127.0.0.1/api/external/authentication/validation |
+| GET | curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/external/authentication/validation | curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/api/external/authentication/validation |
 
-### <a name="change-password---externalauthenticationset_password"></a>更改密码-/external/authentication/set_password
+### <a name="change-password---externalauthenticationset_password"></a>更改密码 - /external/authentication/set_password
 
-使用此 API 允许用户更改其自己的密码。 所有 Defender for IoT 用户角色都可以使用 API。 不需要使用此 API 的 IoT 访问令牌 Defender。
+使用此 API 可让用户更改其自己的密码。 所有 Defender for IoT 用户角色都可以使用此 API。 使用此 API 无需 Defender for IoT 访问令牌。
 
 #### <a name="method"></a>方法
 
@@ -1628,11 +1624,11 @@ request:
 
 包含操作状态详细信息的消息字符串：
 
-- **成功–消息**：已替换密码
+- **成功 - msg**：已替换密码
 
-- **失败–错误**：用户身份验证失败
+- **失败 - error**：用户身份验证失败
 
-- **失败–错误**：密码与安全策略不匹配
+- **失败 - error**：密码与安全策略不匹配
 
 #### <a name="response-example"></a>响应示例
 
@@ -1655,19 +1651,19 @@ response:
 
 | **名称** | 类型 | **可以为 Null** |
 |--|--|--|
-| **username** | String | 否 |
-| **password** | String | 否 |
-| **new_password** | String | 否 |
+| **username** | 字符串 | 否 |
+| **password** | 字符串 | 否 |
+| **new_password** | 字符串 | 否 |
 
 #### <a name="curl-command"></a>Curl 命令
 
 | 类型 | API | 示例 |
 |--|--|--|
-| POST | /api/external/authentication/"{" username "：" <USER_NAME> "、" password "：" <CURRENT_PASSWORD> "、" new_password "：" <NEW_PASSWORD> "}"-H "Content-type： application/json" https://<IP_ADDRESS>set_password | 卷曲-k-d "{" username "：" myUser "，" 密码 "：" 1234@abcd "，" new_password "：" abcd@1234 "}"-H "content-type： application/json" https：/ <span> /127.0.0.1/api/external/authentication/set_password |
+| POST | curl -k -d '{"username": "<USER_NAME>","password": "<CURRENT_PASSWORD>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/api/external/authentication/set_password | curl -k -d '{"username": "myUser","password": "1234@abcd","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https:/<span>/127.0.0.1/api/external/authentication/set_password |
 
-### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>由系统管理员进行的用户密码更新-/external/authentication/set_password_by_admin
+### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>由系统管理员执行的用户密码更新 - /external/authentication/set_password_by_admin
 
-使用此 API 允许系统管理员更改指定用户的密码。 用于 IoT 管理员用户角色的 Defender 可用于 API。 不需要使用此 API 的 IoT 访问令牌 Defender。
+使用此 API 可让系统管理员更改指定用户的密码。 Defender for IoT 管理员用户角色可使用 API。 使用此 API 无需 Defender for IoT 访问令牌。
 
 #### <a name="method"></a>方法
 
@@ -1701,15 +1697,15 @@ request:
 
 包含操作状态详细信息的消息字符串：
 
-- **成功–消息**：已替换密码
+- **成功 - msg**：已替换密码
 
-- **失败–错误**：用户身份验证失败
+- **失败 - error**：用户身份验证失败
 
-- **失败–错误**：用户不存在
+- **失败 - error**：用户不存在
 
-- **失败–错误**：密码与安全策略不匹配
+- **失败 - error**：密码与安全策略不匹配
 
-- **失败–错误**：用户没有更改密码的权限
+- **失败 - error**：用户没有更改密码的权限
 
 #### <a name="response-example"></a>响应示例
 
@@ -1734,31 +1730,31 @@ response:
 
 | **名称** | 类型 | **可以为 Null** |
 |--|--|--|
-| **admin_username** | String | 否 |
-| **admin_password** | String | 否 |
-| **username** | String | 否 |
-| **new_password** | String | 否 |
+| **admin_username** | 字符串 | 否 |
+| **admin_password** | 字符串 | 否 |
+| **username** | 字符串 | 否 |
+| **new_password** | 字符串 | 否 |
 
 #### <a name="curl-command"></a>Curl 命令
 
 > [!div class="mx-tdBreakAll"]
 > | 类型 | API | 示例 |
 > |--|--|--|
-> | POST | 卷 https://"{" admin_username "：" <ADMIN_USERNAME> "、" admin_password "：" <ADMIN_PASSWORD> "、" username "：" <USER_NAME> "、" new_password "：" <NEW_PASSWORD> "}"-H "Content-type： application/json" <IP_ADDRESS>/api/external/authentication/set_password_by_admin | 卷曲-k-d "{" admin_user "：" adminUser "、" admin_password "：" 1234@abcd "、" username "：" myUser "、" new_password "：" abcd@1234 "}"-H "content-type： application/json" https：// <span> /127.0.0.1/api/external/authentication/set_password_by_admin |
+> | POST | curl -k -d '{"admin_username":"<ADMIN_USERNAME>","admin_password":"<ADMIN_PASSWORD>","username": "<USER_NAME>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/api/external/authentication/set_password_by_admin | curl -k -d '{"admin_user":"adminUser","admin_password": "1234@abcd","username": "myUser","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https:/<span>/127.0.0.1/api/external/authentication/set_password_by_admin |
 
 ## <a name="on-premises-management-console-api-specifications"></a>本地管理控制台 API 规范
 
-本部分介绍以下本地管理控制台 Api：
+本部分介绍以下本地管理控制台 API：
 
 - **/external/v1/alerts/<UUID>**
 
-- **警报排除 (维护时段)**
+- **警报排除（维护时段）**
 
-:::image type="content" source="media/references-work-with-defender-for-iot-apis/alert-exclusion-window.png" alt-text="&quot;警报排除&quot; 窗口，显示活动规则。":::
+:::image type="content" source="media/references-work-with-defender-for-iot-apis/alert-exclusion-window.png" alt-text="警报排除”窗口，其中显示了活动的规则。":::
 
-定义警报不会发送到的条件。 例如，定义和更新停止和开始时间、触发警报时应排除的设备或子网，或者应排除的 IoT 引擎的 Defender。 例如，在维护时段，你可能想要停止传递除关键设备上的恶意软件警报之外的所有警报。
+定义不会根据其发送警报的条件。 例如，定义和更新停止和开始时间、触发警报时应排除的设备或子网，或者应排除的 Defender for IoT 引擎。 例如，在维护时段最好停止发送所有警报，但关键设备上的恶意软件警报除外。
 
-此处定义的 Api 在本地管理控制台的 " **警报排除** " 窗口中显示为只读排除规则。
+此处定义的 API 在本地管理控制台的“警报排除”窗口中显示为只读排除规则。
 
 #### <a name="externalv1maintenancewindow"></a>/external/v1/maintenanceWindow
 
@@ -1766,7 +1762,7 @@ response:
 
 - **响应示例**
 
-- **回复**
+- **响应：**
 
 ```rest
 {
@@ -1775,17 +1771,17 @@ response:
 
 ```
 
-#### <a name="change-password---externalauthenticationset_password"></a>更改密码-/external/authentication/set_password
+#### <a name="change-password---externalauthenticationset_password"></a>更改密码 - /external/authentication/set_password
 
-使用此 API 允许用户更改其自己的密码。 所有 Defender for IoT 用户角色都可以使用 API。 不需要使用此 API 的 IoT 访问令牌 Defender。
+使用此 API 可让用户更改其自己的密码。 所有 Defender for IoT 用户角色都可以使用此 API。 使用此 API 无需 Defender for IoT 访问令牌。
 
-#### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>由系统管理员进行的用户密码更新-/external/authentication/set_password_by_admin
+#### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>由系统管理员执行的用户密码更新 - /external/authentication/set_password_by_admin
 
-使用此 API 允许系统管理员更改特定用户的密码。 用于 IoT 管理员用户角色的 Defender 可用于 API。 不需要使用此 API 的 IoT 访问令牌 Defender。
+使用此 API 可让系统管理员更改指定用户的密码。 Defender for IoT 管理员用户角色可以使用此 API。 使用此 API 无需 Defender for IoT 访问令牌。
 
-### <a name="retrieve-device-information---externalv1devices"></a>检索设备信息-/external/v1/devices
+### <a name="retrieve-device-information---externalv1devices"></a>检索设备信息 - /external/v1/devices
 
-此 API 请求 Defender 为连接到本地管理控制台的 IoT 传感器检测到的所有设备的列表。
+此 API 可请求由 Defender for IoT 传感器检测到的连接到本地管理控制台的所有设备的列表。
 
 #### <a name="method"></a>方法
 
@@ -1797,11 +1793,11 @@ response:
 
 #### <a name="response-content"></a>响应内容
 
-表示设备的 JSON 对象的数组。
+表示设备的 JSON 对象数组。
 
 #### <a name="query-parameters"></a>查询参数
 
-- 已 **授权**：仅筛选已授权和未授权的设备。
+- **authorized**：仅筛选已授权和未授权的设备。
 
 - **siteId**：仅筛选与特定站点相关的设备。
 
@@ -1809,7 +1805,7 @@ response:
 
 - **sensorId**：仅筛选特定传感器检测到的设备。 [1](#1)
 
-###### <a name="you-might-not-have-the-site-and-zone-id-if-this-is-the-case-query-all-devices-to-retrieve-the-site-and-zone-id"></a><a id="1">1</a> *您可能没有站点和区域 ID。如果是这种情况，请查询所有设备以检索站点和区域 ID。*
+###### <a name="you-might-not-have-the-site-and-zone-id-if-this-is-the-case-query-all-devices-to-retrieve-the-site-and-zone-id"></a><a id="1">1</a> 你可能没有站点和区域 ID。如果是这种情况，请查询所有设备以检索站点和区域 ID。
 
 #### <a name="query-parameters-example"></a>查询参数示例
 
@@ -1827,40 +1823,40 @@ response:
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| **sensorId** | 数字 | 否 | - |
-| **zoneId** | 数字 | 是 | - |
-| **siteId** | 数字 | 是 | - |
-| **ipAddresses** | JSON 数组 | 是 | IP 地址 (可以为 internet 地址或具有双 Nic 的设备使用多个地址)  |
-| name  | String | 否 | - |
-| type  | String | 否 | 未知、工程工作站、PLC、HMI、Historian、域控制器、数据库服务器、无线访问点、路由器、交换机、服务器、工作站、IP 照相机、打印机、防火墙、终端工作站、VPN 网关、Internet 或多播和广播 |
-| **macAddresses** | JSON 数组 | 是 | 对于具有双 Nic 的设备，MAC 地址 (可以是多个地址)  |
-| **operatingSystem** | String | 是 | - |
+| **sensorId** | Numeric | 否 | - |
+| **zoneId** | Numeric | 是 | - |
+| **siteId** | Numeric | 是 | - |
+| **ipAddresses** | JSON 数组 | 是 | IP 地址（使用 Internet 地址或设备具有双 NIC 时，可以有多个地址） |
+| **name** | 字符串 | 否 | - |
+| type | 字符串 | 否 | 未知、工程站、PLC、HMI、Historian、域控制器、数据库服务器、无线接入点、路由器、交换机、服务器、工作站、IP 摄像头、打印机、防火墙、终端站、VPN 网关、Internet 或多播和广播 |
+| **macAddresses** | JSON 数组 | 是 | MAC 地址（设备具有双 NIC 时可以有多个地址） |
+| **OperatingSystem** | 字符串 | 是 | - |
 | **engineeringStation** | 布尔 | 否 | True 或 False |
-| **瞄** | 布尔 | 否 | True 或 False |
+| **scanner** | 布尔 | 否 | True 或 False |
 | **已授权** | 布尔 | 否 | True 或 False |
-| **采购** | String | 是 | - |
-| **协议** | JSON 数组 | 是 | Protocol 对象 |
-| **固件** | JSON 数组 | 是 | 固件对象 |
+| **vendor** | 字符串 | 是 | - |
+| **协议** | JSON 数组 | 是 | 协议对象 |
+| **firmware** | JSON 数组 | 是 | 固件对象 |
 
 #### <a name="protocol-fields"></a>协议字段
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
 | 名称 | String | 否 | - |
-| 地址 | JSON 数组 | 是 | Master 或数值 |
+| 地址 | JSON 数组 | 是 | 主地址或数值 |
 
 #### <a name="firmware-fields"></a>固件字段
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| **串行** | String | 否 | 不适用，或实际值 |
-| **model** | String | 否 | 不适用，或实际值 |
-| **firmwareVersion** | Double | 否 | 不适用，或实际值 |
-| **additionalData** | String | 否 | 不适用，或实际值 |
-| **moduleAddress** | String | 否 | 不适用，或实际值 |
-| **支架** | String | 否 | 不适用，或实际值 |
-| **插槽** | String | 否 | 不适用，或实际值 |
-| **address** | String | 否 | 不适用，或实际值 |
+| **serial** | 字符串 | 否 | N/A 或实际值 |
+| **model** | 字符串 | 否 | N/A 或实际值 |
+| **firmwareVersion** | Double | 否 | N/A 或实际值 |
+| **additionalData** | 字符串 | 否 | N/A 或实际值 |
+| **moduleAddress** | 字符串 | 否 | N/A 或实际值 |
+| **rack** | 字符串 | 否 | N/A 或实际值 |
+| **slot** | 字符串 | 否 | N/A 或实际值 |
+| **address** | 字符串 | 否 | N/A 或实际值 |
 
 #### <a name="response-example"></a>响应示例
 
@@ -2006,11 +2002,11 @@ response:
 
 | 类型 | API | 示例 |
 |--|--|--|
-| GET | 卷 k-H "Authorization： <AUTH_TOKEN>" "https://<>IP_ADDRESS>/external/v1/devices？ siteId =&zoneId =&sensorId =&authorization =" | 卷 k-H "Authorization： 1234b734a9244d54ab8d40aedddcabcd" "https：/ <span> /127.0.0.1/external/v1/devices？ siteId = 1&zoneId = 2&sensorId = 5&authorization = true" |
+| GET | curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<>IP_ADDRESS>/external/v1/devices?siteId=&zoneId=&sensorId=&authorized=' | curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https:/<span>/127.0.0.1/external/v1/devices?siteId=1&zoneId=2&sensorId=5&authorized=true' |
 
-### <a name="retrieve-alert-information---externalv1alerts"></a>检索警报信息-/external/v1/alerts
+### <a name="retrieve-alert-information---externalv1alerts"></a>检索警报信息 - /external/v1/alerts
 
-使用此 API 从本地管理控制台检索所有或筛选的警报。
+使用此 API 可从本地管理控制台检索所有/经过筛选的警报。
 
 #### <a name="method"></a>方法
 
@@ -2024,46 +2020,46 @@ response:
 
   `/api/v1/alerts?state=handled`
 
-- **fromTime**：筛选根据特定时间创建的警报 (以毫秒为单位) 。
+- **fromTime**：筛选从特定时间开始创建的警报（以毫秒为单位，UTC）。
 
   **示例**：
 
   `/api/v1/alerts?fromTime=<epoch>`
 
-- **toTime**：筛选仅在特定时间 (（以毫秒为单位）后创建的警报) 。
+- **toTime**：仅筛选在特定时间（以毫秒为单位，UTC）之前创建的警报。
 
   **示例**：
 
   `/api/v1/alerts?toTime=<epoch>`
 
-- **siteId**：在其上发现警报的站点。 [2](#2)
+- **siteId**：在其中发现警报的站点。 [2](#2)
 
-- **zoneId**：在其上发现警报的区域。 [2](#2)
+- **zoneId**：在其中发现警报的区域。 [2](#2)
 
-- **传感器**：发现警报的传感器。
+- **传感器**：在其中发现警报的传感器。
 
-##### <a name="you-might-not-have-the-site-and-zone-id-if-this-is-the-case-query-all-devices-to-retrieve-the-site-and-zone-id"></a><a id="2">2</a> *您可能没有站点和区域 ID。如果是这种情况，请查询所有设备以检索站点和区域 ID。*
+##### <a name="you-might-not-have-the-site-and-zone-id-if-this-is-the-case-query-all-devices-to-retrieve-the-site-and-zone-id"></a><a id="2">2</a> 你可能没有站点和区域 ID。如果是这种情况，请查询所有设备以检索站点和区域 ID。
 
 #### <a name="alert-fields"></a>警报字段
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| **ID** | 数字 | 否 | - |
-| **time** | 数字 | 否 | Epoch (UTC)  |
-| **title** | String | 否 | - |
+| **ID** | Numeric | 否 | - |
+| **time** | Numeric | 否 | Epoch (UTC) |
+| **title** | 字符串 | 否 | - |
 | **message** | String | 否 | - |
-| severity  | String | 否 | 警告、次要、主要或严重 |
-| **搜索引擎优化** | String | 否 | 协议冲突、策略冲突、恶意软件、异常或操作 |
-| **sourceDevice** | 数字 | 是 | 设备 ID |
-| **destinationDevice** | 数字 | 是 | 设备 ID |
-| **additionalInformation** | 附加信息对象 | 是 | - |
+| severity  | 字符串 | 否 | 警告、次要、主要或严重 |
+| **engine** | 字符串 | 否 | 协议冲突、策略冲突、恶意软件、异常或操作 |
+| **sourceDevice** | Numeric | 是 | 设备 ID |
+| **destinationDevice** | Numeric | 是 | 设备 ID |
+| **additionalInformation** | 其他信息对象 | 是 | - |
 
 #### <a name="additional-information-fields"></a>其他信息字段
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| description | String | 否 | - |
-| **信息** | JSON 数组 | 否 | String |
+| description | 字符串 | 否 | - |
+| **information** | JSON 数组 | 否 | 字符串 |
 
 #### <a name="response-example"></a>响应示例
 
@@ -2168,31 +2164,31 @@ response:
 > [!div class="mx-tdBreakAll"]
 > | 类型 | API | 示例 |
 > |--|--|--|
-> | GET | 卷 k-H "Authorization： <AUTH_TOKEN>" "https://<>IP_ADDRESS>/external/v1/alerts？ state =&zoneId =&fromTime =&toTime =&siteId =&=" | 卷 k-H "Authorization： 1234b734a9244d54ab8d40aedddcabcd" "https：/ <span> /127.0.0.1/external/v1/alerts？ state = 未处理&zoneId = 1&fromTime = 0&toTime = 1594551777000&siteId = 1&传感器 = 1" |
+> | GET | curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<>IP_ADDRESS>/external/v1/alerts?state=&zoneId=&fromTime=&toTime=&siteId=&sensor=' | curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https:/<span>/127.0.0.1/external/v1/alerts?state=unhandled&zoneId=1&fromTime=0&toTime=1594551777000&siteId=1&sensor=1' |
 
 ### <a name="qradar-alerts"></a>QRadar 警报
 
-用于 IoT 的 QRadar 集成可帮助你识别 Defender 为 IoT 生成的警报，并使用这些警报执行操作。 QRadar 从用于 IoT 的 Defender 接收数据，然后联系公共 API 本地管理控制台组件。
+QRadar 与 Defender for IoT 的集成可帮助识别 Defender for IoT 生成的警报，并根据这些警报执行操作。 QRadar 会接收来自 Defender for IoT 的数据，然后通知公共 API 本地管理控制台组件。
 
-若要将 Defender 为 IoT 发现的数据发送到 QRadar，请在 "IoT 系统" 中定义一个转发规则，并选择 " **远程支持警报处理** " 选项。
+若要将 Defender for IoT 发现的数据发送到 QRadar，请在 Defender for IoT 中定义一个转发规则，然后选择“远程支持警报处理”选项。
 
-:::image type="content" source="media/references-work-with-defender-for-iot-apis/edit-forwarding-rules.png" alt-text="编辑转发规则以满足你的需求。":::
+:::image type="content" source="media/references-work-with-defender-for-iot-apis/edit-forwarding-rules.png" alt-text="根据自己的需求编辑转发规则。":::
 
-在配置转发规则的过程中选择此选项时，以下附加字段将显示在 QRadar 中：
+在配置转发规则的过程中选择此选项时，QRadar 中将显示以下附加字段：
 
-- **UUID**：唯一警报标识符，如1-1555245116250。
+- **UUID**：唯一警报标识符，如 1-1555245116250。
 
 - **站点**：发现警报的站点。
 
 - **区域**：发现警报的区域。
 
-发送到 QRadar 的负载示例：
+发送到 QRadar 的有效负载示例：
 
 ```
 <9>May 5 12:29:23 sensor_Agent LEEF:1.0|CyberX|CyberX platform|2.5.0|CyberX platform Alert|devTime=May 05 2019 15:28:54 devTimeFormat=MMM dd yyyy HH:mm:ss sev=2 cat=XSense Alerts title=Device is Suspected to be Disconnected (Unresponsive) score=81 reporter=192.168.219.50 rta=0 alertId=6 engine=Operational senderName=sensor Agent UUID=5-1557059334000 site=Site zone=Zone actions=handle dst=192.168.2.2 dstName=192.168.2.2 msg=Device 192.168.2.2 is suspected to be disconnected (unresponsive).
 ```
 
-#### <a name="externalv1alertsltuuidgt"></a>/external/v1/alerts/ &lt; UUID&gt;
+#### <a name="externalv1alertsltuuidgt"></a>/external/v1/alerts/&lt;UUID&gt;
 
 #### <a name="method"></a>方法
 
@@ -2204,13 +2200,13 @@ response:
 
 #### <a name="request-content"></a>请求内容
 
-JSON 对象，该对象表示要对包含 UUID 的警报执行的操作。
+JSON 对象，表示要对包含 UUID 的警报执行的操作。
 
 #### <a name="action-fields"></a>操作字段
 
 | 名称 | 类型 | Nullable | 值列表 |
 |--|--|--|--|
-| **action** | String | 否 | handle 或 handleAndLearn |
+| **action** | 字符串 | 否 | handle 或 handleAndLearn |
 
 #### <a name="request-example"></a>请求示例
 
@@ -2227,25 +2223,25 @@ JSON 对象，该对象表示要对包含 UUID 的警报执行的操作。
 
 #### <a name="response-content"></a>响应内容
 
-表示设备的 JSON 对象的数组。
+表示设备的 JSON 对象数组。
 
 #### <a name="response-fields"></a>响应字段
 
 
 | 名称 | 类型 | Nullable | 说明 |
 |--|--|--|--|
-| **内容/错误** | String | 否 | 如果请求成功，则显示内容属性。 否则，将显示错误属性。 |
+| **content / error** | 字符串 | 否 | 如果请求成功，则显示内容属性。 否则，显示错误属性。 |
 
 #### <a name="possible-content-values"></a>可能的内容值
 
 | 状态代码 | 内容值 | 说明 |
 |--|--|--|
 | 200 | 警报更新请求已成功完成。 | 更新请求已成功完成。 无注释。 |
-| 200 | 已 (**处理**) 处理警报。 | 接收到警报的句柄请求时，已处理警报。<br />警报将保持 **处理**。 |
-| 200 | 已处理并 (**handleAndLearn**) 了解警报。 | 接收到对 **handleAndLearn** 的请求时，已处理并了解了警报。<br />警报将保持 **handledAndLearn** 状态。 |
-| 200 | 已 (**处理**) 处理了警报。<br />处理并了解 (对警报执行的 **handleAndLearn**) 。 | 接收到对 **handleAndLearn** 的请求时，已处理了警报。<br />警报变为 **handleAndLearn**。 |
-| 200 | 已处理并 (**handleAndLearn**) 了解警报。 已忽略处理请求。 | 收到处理警报的请求时，已 **handleAndLearn** 此警报。 警报保持 **handleAndLearn**。 |
-| 500 | 无效操作。 | 发送的操作不是对警报执行的有效操作。 |
+| 200 | 已处理警报 (handle)。 | 在收到警报处理请求时已处理了警报。<br />警报将保持 handled 状态。 |
+| 200 | 已处理并了解了警报 (handleAndLearn)。 | 在收到 handleAndLearn 请求时已处理并了解了警报。<br />警报将保持 handledAndLearn 状态。 |
+| 200 | 已处理警报 (handled)。<br />已处理并了解了警报 (handleAndLearn)。 | 在收到 handleAndLearn 请求时已处理了警报。<br />警报变为 handleAndLearn 状态。 |
+| 200 | 已处理并了解了警报 (handleAndLearn)。 已忽略处理请求。 | 在收到警报处理请求时，此警报已处于 handleAndLearn 状态。 警报保持 handleAndLearn 状态。 |
+| 500 | 无效操作。 | 发送的操作不是要对警报执行的有效操作。 |
 | 500 | 出现了意外错误。 | 发生了意外错误。 若要解决此问题，请与技术支持联系。 |
 | 500 | 无法执行请求，因为找不到此 UUID 的警报。 | 在系统中找不到指定的警报 UUID。 |
 
@@ -2271,95 +2267,95 @@ JSON 对象，该对象表示要对包含 UUID 的警报执行的操作。
 
 | 类型 | API | 示例 |
 |--|--|--|
-| PUT | 卷 k-X 中置 d "{" action "：" <ACTION> "}"-H "Authorization： <AUTH_TOKEN>" https://<IP_ADDRESS>/external/v1/alerts/<UUID> | 卷 k-X 中置 d "{" action "：" 句柄 "}"-H "Authorization： 1234b734a9244d54ab8d40aedddcabcd" https：/ <span> /127.0.0.1/external/v1/alerts/1-1594550943000 |
+| PUT | curl -k -X PUT -d '{"action": "<ACTION>"}' -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/external/v1/alerts/<UUID> | curl -k -X PUT -d '{"action": "handle"}' -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/external/v1/alerts/1-1594550943000 |
 
-### <a name="alert-exclusions-maintenance-window---externalv1maintenancewindow"></a>警报排除 (维护时段) -/external/v1/maintenanceWindow
+### <a name="alert-exclusions-maintenance-window---externalv1maintenancewindow"></a>警报排除（维护时段）- /external/v1/maintenanceWindow
 
-定义警报不会发送到的条件。 例如，定义和更新停止和开始时间、触发警报时应排除的设备或子网，或者应排除的 IoT 引擎的 Defender。 例如，在维护时段，你可能想要停止发送所有警报的警报，但关键设备上的恶意软件警报除外。
+定义不会根据其发送警报的条件。 例如，定义和更新停止和开始时间、触发警报时应排除的设备或子网，或者应排除的 Defender for IoT 引擎。 例如，在维护时段最好停止发送所有警报，但关键设备上的恶意软件警报除外。
 
-此处定义的 Api 在本地管理控制台的 " **警报排除** " 窗口中显示为只读排除规则。
+此处定义的 API 在本地管理控制台的“警报排除”窗口中显示为只读排除规则。
 
-:::image type="content" source="media/references-work-with-defender-for-iot-apis/alert-exclusion-window.png" alt-text="&quot;警报排除&quot; 窗口，显示所有排除规则的列表。 ":::
+:::image type="content" source="media/references-work-with-defender-for-iot-apis/alert-exclusion-window.png" alt-text="警报排除”窗口，其中显示了所有排除规则的列表。":::
 
-#### <a name="method---post"></a>方法-POST
+#### <a name="method---post"></a>方法 - POST
 
 #### <a name="query-parameters"></a>查询参数
 
 - **ticketId**：定义用户系统中的维护票证 ID。
 
-- **ttl**：定义 (生存) 的 ttl，这是维护时段的持续时间（以分钟为单位）。 此参数定义的时间段过后，系统会自动开始发送警报。
+- **ttl**：定义 TTL（生存时间），这是维护时段的持续时间（以分钟为单位）。 此参数定义的时间段结束之后，系统会自动开始发送警报。
 
-- **引擎**：定义在维护过程中禁止显示警报的安全引擎：
+- **engines**：定义在维护过程中不得显示警报的安全引擎：
 
-   - 异常
+   - ANOMALY
 
    - MALWARE
 
-   - 营业
+   - OPERATIONAL
 
    - POLICY_VIOLATION
 
    - PROTOCOL_VIOLATION
 
-- **sensorIds**：定义要在维护过程中禁止 IoT 传感器的警报的 Defender。 它与从/api/v1/appliances 检索的 ID 相同， (获取) 。
+- **sensorIds**：定义要在维护过程中不得显示警报的 Defender for IoT 传感器。 它与从 /api/v1/appliances (GET) 检索到的 ID 相同。
 
-- **子网**：定义在维护过程中禁止显示警报的子网。 子网的发送格式如下： 192.168.0.0/16。
+- **subnets**：定义在维护过程中不得显示警报的子网。 子网的发送格式如下：192.168.0.0/16。
 
 #### <a name="error-codes"></a>错误代码
 
-- **201 (创建)**：操作已成功完成。
+- **201（已创建）** ：操作已成功完成。
 
-- **400 (错误请求)**：在以下情况下会出现：
+- **400（错误的请求）** ：在以下情况下会出现此错误代码：
 
-   - **Ttl** 参数不是数字或不是正数。
+   - ttl 参数不是数字或不是正数。
 
-   - **子网** 参数是使用错误格式定义的。
+   - subnets 参数是使用错误格式定义的。
 
-   - 缺少 **ticketId** 参数。
+   - ticketId 参数缺失。
 
-   - **Engine** 参数与现有安全引擎不匹配。
+   - engine 参数与现有安全引擎不匹配。
 
-- **404 (找不到)**：其中一个传感器不存在。
+- **404（未找到）** ：其中一个传感器不存在。
 
-- **409 (冲突)**：票证 ID 已链接到另一个打开的维护时段。
+- **409（冲突）** ：票证 ID 已链接到另一个打开的维护时段。
 
-- **500 (内部服务器错误)**：任何其他意外错误。
+- **500（内部服务器错误）** ：任何其他意外错误。
 
 > [!NOTE]
-> 请确保票证 ID 未链接到现有打开的窗口。 生成以下排除规则：维护-{令牌名称}-{票证 ID}。
+> 确保票证 ID 未链接到打开的现有时段。 将生成以下排除规则：Maintenance-{令牌名称}-{令牌 ID}。
 
-#### <a name="method---put"></a>方法-PUT
+#### <a name="method---put"></a>方法 - PUT
 
-允许通过更改 **ttl** 参数来启动维护过程后，更新维护时段持续时间。 新的 duration 定义将重写上一个 duration 定义。
+允许通过更改 ttl 参数，在启动维护过程后更新维护时段持续时间。 新的持续时间定义将替代之前的定义。
 
-当你要设置比当前配置的持续时间更长的持续时间时，此方法非常有用。
+如果要设置比当前配置的持续时间更长的持续时间，此方法就非常有用。
 
 #### <a name="query-parameters"></a>查询参数
 
 - **ticketId**：定义用户系统中的维护票证 ID。
 
-- **ttl**：定义窗口的持续时间（分钟）。
+- **ttl**：定义时段的持续时间（以分钟为单位）。
 
 #### <a name="error-code"></a>错误代码
 
-- **200 (确定)**：操作已成功完成。
+- **200（正常）** ：操作已成功完成。
 
-- **400 (错误请求)**：在以下情况下会出现：
+- **400（错误的请求）** ：在以下情况下会出现此错误代码：
 
-   - **Ttl** 参数不是数字或不是正数。
+   - ttl 参数不是数字或不是正数。
 
-   - 缺少 **ticketId** 参数。
+   - ticketId 参数缺失。
 
-   - 缺少 **ttl** 参数。
+   - ttl 参数缺失。
 
-- **404 (找不到)**：票证 ID 未链接到打开的维护时段。
+- **404（未找到）** ：票证 ID 未链接到打开的维护时段。
 
-- **500 (内部服务器错误)**：任何其他意外错误。
+- **500（内部服务器错误）** ：任何其他意外错误。
 
 > [!NOTE]
-> 请确保票证 ID 链接到现有打开的窗口。
+> 请确保票证 ID 链接到打开的现有时段。
 
-#### <a name="method---delete"></a>方法-删除
+#### <a name="method---delete"></a>方法 - DELETE
 
 关闭现有的维护时段。
 
@@ -2369,26 +2365,26 @@ JSON 对象，该对象表示要对包含 UUID 的警报执行的操作。
 
 #### <a name="error-code"></a>错误代码
 
-- **200 (确定)**：操作已成功完成。
+- **200（正常）** ：操作已成功完成。
 
-- **400 (错误的请求)**：缺少 **ticketId** 参数。
+- **400（错误的请求）** ：ticketId 参数缺失。
 
-- **404 (找不到)**：票证 ID 未链接到打开的维护时段。
+- **404（未找到）** ：票证 ID 未链接到打开的维护时段。
 
-- **500 (内部服务器错误)**：任何其他意外错误。
+- **500（内部服务器错误）** ：任何其他意外错误。
 
 > [!NOTE]
-> 请确保票证 ID 链接到现有打开的窗口。
+> 请确保票证 ID 链接到打开的现有时段。
 
-#### <a name="method---get"></a>方法-GET
+#### <a name="method---get"></a>方法 - GET
 
-检索在维护期间在系统中执行的所有打开、关闭和更新操作的日志。 您只能检索过去处于活动状态且已关闭的维护时段的日志。
+检索维护期间系统中执行的所有打开、关闭和更新操作的日志。 只能检索过去处于活动状态且已关闭的维护时段的日志。
 
 #### <a name="query-parameters"></a>查询参数
 
-- **fromDate**：根据预定义日期和更高版本筛选日志。 格式为2019-12-30。
+- **fromDate**：筛选预定义日期及以后的日志。 格式为 2019-12-30。
 
-- **toDate**：过滤到预定义日期之前的日志。 格式为2019-12-30。
+- **toDate**：筛选截至预定义日期的日志。 格式为 2019-12-30。
 
 - **ticketId**：筛选与特定票证 ID 相关的日志。
 
@@ -2396,13 +2392,13 @@ JSON 对象，该对象表示要对包含 UUID 的警报执行的操作。
 
 #### <a name="error-code"></a>错误代码
 
-- **200 (确定)**：操作已成功完成。
+- **200（正常）** ：操作已成功完成。
 
-- **400 (错误请求)**：日期格式错误。
+- **400（错误的请求）** ：日期格式错误。
 
-- **204 (没有内容)**：没有要显示的数据。
+- **204（无内容）** ：没有要显示的数据。
 
-- **500 (内部服务器错误)**：任何其他意外错误。
+- **500（内部服务器错误）** ：任何其他意外错误。
 
 #### <a name="response-type"></a>响应类型
 
@@ -2410,33 +2406,33 @@ JSON 对象，该对象表示要对包含 UUID 的警报执行的操作。
 
 #### <a name="response-content"></a>响应内容
 
-表示维护窗口操作的 JSON 对象的数组。
+表示维护时段操作的 JSON 对象数组。
 
 #### <a name="response-structure"></a>响应结构
 
-| 名称 | 类型 | 注释 | Nullable |
+| 名称 | 类型 | 评论 | Nullable |
 |--|--|--|--|
-| **dateTime** | String | 示例： "2012-04-23T18：25： 43.511 Z" | 否 |
-| **ticketId** | String | 例如： "9a5fe99c-d914-4bda-9332-307384fe40bf" | 否 |
+| **dateTime** | 字符串 | 示例：“2012-04-23T18:25:43.511Z” | 否 |
+| **ticketId** | 字符串 | 例如：“9a5fe99c-d914-4bda-9332-307384fe40bf” | 否 |
 | **tokenName** | String | - | 否 |
-| **增多** | 字符串数组 | - | 是 |
+| **engines** | 字符串数组 | - | 是 |
 | **sensorIds** | 字符串数组 | - | 是 |
-| **网上** | 字符串数组 | - | 是 |
-| **ttl** | 数字 | - | 是 |
-| **operationType** | String | 值为 "OPEN"、"UPDATE" 和 "CLOSE" | 否 |
+| **subnets** | 字符串数组 | - | 是 |
+| **ttl** | Numeric | - | 是 |
+| **operationType** | 字符串 | 值为“OPEN”、“UPDATE”和“CLOSE” | 否 |
 
 #### <a name="curl-command"></a>Curl 命令
 
 | 类型 | API | 示例 |
 |--|--|--|
-| POST | 卷曲-k X 后 d "{" ticketId "：" <TICKET_ID> "、ttl"： <TIME_TO_LIVE> "引擎"： [<ENGINE1，ENGINE2 .。。ENGINEn>]，"sensorIds"： [<SENSOR_ID1，SENSOR_ID2 .。。SENSOR_IDn>]，"子网"： [<SUBNET1，SUBNET2 .。。SUBNETn>]} "-H" Authorization： <AUTH_TOKEN> "https：/ <span> /127.0.0.1/external/v1/maintenanceWindow | 卷曲-k X 后 d "{" ticketId "：" a5fe99c-d914-4bda-9332-307384fe40bf "，" ttl "：" 20 "，" 引擎 "： [" 异常 "]，" sensorIds "： [" 5 "，" 3 "]，" 子网 "： [" 10.0.0.3 "]}"-H "Authorization： 1234b734a9244d54ab8d40aedddcabcd" https：/ <span> /127.0.0.1/external/v1/maintenanceWindow |
-| PUT | 卷 k-X ticketId "{" "：" <TICKET_ID> "、ttl"： "<TIME_TO_LIVE>"} "-H" Authorization： <AUTH_TOKEN> "https：/ <span> /127.0.0.1/external/v1/maintenanceWindow | 卷曲-k-X 中置 d "{" ticketId "：" a5fe99c-d914-4bda-9332-307384fe40bf "，" ttl "：" 20 "}"-H "Authorization： 1234b734a9244d54ab8d40aedddcabcd" https：/ <span> /127.0.0.1/external/v1/maintenanceWindow |
-| DELETE | 卷 k-X DELETE-d "{" ticketId "：" <TICKET_ID> "}"-H "Authorization： <AUTH_TOKEN>" https：/ <span> /127.0.0.1/external/v1/maintenanceWindow | 卷 k-X DELETE-d "{" ticketId "：" a5fe99c-d914-4bda-9332-307384fe40bf "}"-H "Authorization： 1234b734a9244d54ab8d40aedddcabcd" https：/ <span> /127.0.0.1/external/v1/maintenanceWindow |
-| GET | 卷 k-H "Authorization： <AUTH_TOKEN>" "https://<IP_ADDRESS>/external/v1/maintenanceWindow？ fromDate =&toDate =&ticketId =&tokenName =" | 卷 k-H "Authorization： 1234b734a9244d54ab8d40aedddcabcd" ' https：/ <span> /127.0.0.1/external/v1/maintenanceWindow？ fromDate = 2020-01-01&toDate = 2020-07-14&ticketId = a5fe99c-d914-4bda-9332&307384fe40bf = a ' |
+| POST | curl -k -X POST -d '{"ticketId": "<TICKET_ID>",ttl": <TIME_TO_LIVE>,"engines": [<ENGINE1, ENGINE2...ENGINEn>],"sensorIds": [<SENSOR_ID1, SENSOR_ID2...SENSOR_IDn>],"subnets": [<SUBNET1, SUBNET2....SUBNETn>]}' -H "Authorization: <AUTH_TOKEN>" https:/<span>/127.0.0.1/external/v1/maintenanceWindow | curl -k -X POST -d '{"ticketId": "a5fe99c-d914-4bda-9332-307384fe40bf","ttl": "20","engines": ["ANOMALY"],"sensorIds": ["5","3"],"subnets": ["10.0.0.3"]}' -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/external/v1/maintenanceWindow |
+| PUT | curl -k -X PUT -d '{"ticketId": "<TICKET_ID>",ttl": "<TIME_TO_LIVE>"}' -H "Authorization: <AUTH_TOKEN>" https:/<span>/127.0.0.1/external/v1/maintenanceWindow | curl -k -X PUT -d '{"ticketId": "a5fe99c-d914-4bda-9332-307384fe40bf","ttl": "20"}' -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/external/v1/maintenanceWindow |
+| DELETE | curl -k -X DELETE -d '{"ticketId": "<TICKET_ID>"}' -H "Authorization: <AUTH_TOKEN>" https:/<span>/127.0.0.1/external/v1/maintenanceWindow | curl -k -X DELETE -d '{"ticketId": "a5fe99c-d914-4bda-9332-307384fe40bf"}' -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/external/v1/maintenanceWindow |
+| GET | curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/external/v1/maintenanceWindow?fromDate=&toDate=&ticketId=&tokenName=' | curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https:/<span>/127.0.0.1/external/v1/maintenanceWindow?fromDate=2020-01-01&toDate=2020-07-14&ticketId=a5fe99c-d914-4bda-9332-307384fe40bf&tokenName=a' |
 
-### <a name="authenticate-user-credentials---externalauthenticationvalidation"></a>验证用户凭据-/external/authentication/validation
+### <a name="authenticate-user-credentials---externalauthenticationvalidation"></a>验证用户凭据 - /external/authentication/validation
 
-使用此 API 验证用户凭据。 所有 Defender for IoT 用户角色都可以使用 API。 不需要使用此 API 的 IoT 访问令牌 Defender。
+使用此 API 可验证用户凭据。 所有 Defender for IoT 用户角色都可以使用此 API。 使用此 API 无需 Defender for IoT 访问令牌。
 
 #### <a name="method"></a>方法
 
@@ -2468,16 +2464,16 @@ request:
 
 包含操作状态详细信息的消息字符串：
 
-- **成功–消息**：身份验证成功
+- **成功 - msg**：身份验证成功
 
-- **失败–错误**：凭据验证失败
+- **失败 - error**：凭据验证失败
 
 #### <a name="device-fields"></a>设备字段
 
 | **名称** | 类型 | **可以为 Null** |
 |--|--|--|
-| **username** | String | 否 |
-| **password** | String | 否 |
+| **username** | 字符串 | 否 |
+| **password** | 字符串 | 否 |
 
 #### <a name="response-example"></a>响应示例
 
@@ -2495,11 +2491,11 @@ response:
 
 | 类型 | API | 示例 |
 |--|--|--|
-| POST | 卷曲-k-d "{" username "：" <USER_NAME> "、" password "：" PASSWORD "}" https://<IP_ADDRESS>/external/authentication/validation " | 卷-k-d "{" 用户名 "：" myUser "，" 密码 "：" 1234@abcd "}" https：/ <span> /127.0.0.1/external/authentication/validation " |
+| POST | curl -k -d '{"username":"<USER_NAME>","password":"PASSWORD"}' 'https://<IP_ADDRESS>/external/authentication/validation' | curl -k -d '{"username":"myUser","password":"1234@abcd"}' 'https:/<span>/127.0.0.1/external/authentication/validation' |
 
-### <a name="change-password---externalauthenticationset_password"></a>更改密码-/external/authentication/set_password
+### <a name="change-password---externalauthenticationset_password"></a>更改密码 - /external/authentication/set_password
 
-使用此 API 允许用户更改其自己的密码。 所有 Defender for IoT 用户角色都可以使用 API。 不需要使用此 API 的 IoT 访问令牌 Defender。
+使用此 API 可让用户更改其自己的密码。 所有 Defender for IoT 用户角色都可以使用此 API。 使用此 API 无需 Defender for IoT 访问令牌。
 
 #### <a name="method"></a>方法
 
@@ -2534,11 +2530,11 @@ request:
 
 包含操作状态详细信息的消息字符串：
 
-- **成功–消息**：已替换密码
+- **成功 - msg**：已替换密码
 
-- **失败–错误**：用户身份验证失败
+- **失败 - error**：用户身份验证失败
 
-- **失败–错误**：密码与安全策略不匹配
+- **失败 - error**：密码与安全策略不匹配
 
 #### <a name="response-example"></a>响应示例
 
@@ -2561,19 +2557,19 @@ response:
 
 | **名称** | 类型 | **可以为 Null** |
 |--|--|--|
-| **username** | String | 否 |
-| **password** | String | 否 |
-| **new_password** | String | 否 |
+| **username** | 字符串 | 否 |
+| **password** | 字符串 | 否 |
+| **new_password** | 字符串 | 否 |
 
 #### <a name="curl-command"></a>Curl 命令
 
 | 类型 | API | 示例 |
 |--|--|--|
-| POST | /external/authentication/"{" username "：" <USER_NAME> "、" password "：" <CURRENT_PASSWORD> "、" new_password "：" <NEW_PASSWORD> "}"-H "Content-type： application/json" https://<IP_ADDRESS>set_password | 卷曲-k-d "{" username "：" myUser "，" 密码 "：" 1234@abcd "，" new_password "：" abcd@1234 "}"-H "content-type： application/json" https：/ <span> /127.0.0.1/external/authentication/set_password |
+| POST | curl -k -d '{"username": "<USER_NAME>","password": "<CURRENT_PASSWORD>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/external/authentication/set_password | curl -k -d '{"username": "myUser","password": "1234@abcd","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https:/<span>/127.0.0.1/external/authentication/set_password |
 
-### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>由系统管理员进行的用户密码更新-/external/authentication/set_password_by_admin
+### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>由系统管理员执行的用户密码更新 - /external/authentication/set_password_by_admin
 
-使用此 API 允许系统管理员更改指定用户的密码。 用于 IoT 管理员用户角色的 Defender 可用于 API。 不需要使用此 API 的 IoT 访问令牌 Defender。
+使用此 API 可让系统管理员更改指定用户的密码。 Defender for IoT 管理员用户角色可以使用此 API。 使用此 API 无需 Defender for IoT 访问令牌。
 
 #### <a name="method"></a>方法
 
@@ -2607,15 +2603,15 @@ request:
 
 包含操作状态详细信息的消息字符串：
 
-- **成功–消息**：已替换密码
+- **成功 - msg**：已替换密码
 
-- **失败–错误**：用户身份验证失败
+- **失败 - error**：用户身份验证失败
 
-- **失败–错误**：用户不存在
+- **失败 - error**：用户不存在
 
-- **失败–错误**：密码与安全策略不匹配
+- **失败 - error**：密码与安全策略不匹配
 
-- **失败–错误**：用户没有更改密码的权限
+- **失败 - error**：用户没有更改密码的权限
 
 #### <a name="response-example"></a>响应示例
 
@@ -2640,20 +2636,20 @@ response:
 
 | **名称** | 类型 | **可以为 Null** |
 |--|--|--|
-| **admin_username** | String | 否 |
-| **admin_password** | String | 否 |
-| **username** | String | 否 |
-| **new_password** | String | 否 |
+| **admin_username** | 字符串 | 否 |
+| **admin_password** | 字符串 | 否 |
+| **username** | 字符串 | 否 |
+| **new_password** | 字符串 | 否 |
 
 #### <a name="curl-command"></a>Curl 命令
 
 > [!div class="mx-tdBreakAll"]
 > | 类型 | API | 示例 |
 > |--|--|--|
-> | POST | 卷 https://"{" admin_username "：" <ADMIN_USERNAME> "、" admin_password "：" <ADMIN_PASSWORD> "、" username "：" <USER_NAME> "、" new_password "：" <NEW_PASSWORD> "}"-H "Content-type： application/json" <IP_ADDRESS>/external/authentication/set_password_by_admin | 卷曲-k-d "{" admin_user "：" adminUser "、" admin_password "：" 1234@abcd "、" username "：" myUser "、" new_password "：" abcd@1234 "}"-H "content-type： application/json" https：// <span> /127.0.0.1/external/authentication/set_password_by_admin |
+> | POST | curl -k -d '{"admin_username":"<ADMIN_USERNAME>","admin_password":"<ADMIN_PASSWORD>","username": "<USER_NAME>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/external/authentication/set_password_by_admin | curl -k -d '{"admin_user":"adminUser","admin_password": "1234@abcd","username": "myUser","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https:/<span>/127.0.0.1/external/authentication/set_password_by_admin |
 
 ## <a name="next-steps"></a>后续步骤
 
-[调查设备清单中的传感器检测](how-to-investigate-sensor-detections-in-a-device-inventory.md)
+- [调查设备清单中的传感器检测](how-to-investigate-sensor-detections-in-a-device-inventory.md)
 
-[调查设备清单中的所有企业传感器检测](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
+- [调查设备清单中的所有企业传感器检测](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)

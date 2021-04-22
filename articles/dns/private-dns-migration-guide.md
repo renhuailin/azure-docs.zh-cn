@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: 72d046cde70d1224eb1fd47f527c9e49c6b002f6
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 6bb828aaff0c1d026e977863a6e224aaea81b629
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102500455"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729229"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>将旧的 Azure DNS 专用区域迁移到新的资源模型
 
@@ -46,7 +46,7 @@ Install-Module -Name Az.PrivateDns
 install-script PrivateDnsMigrationScript
 ```
 
-当系统询问是否安装脚本时，输入 A
+当系统询问是否安装脚本时，输入“A”
 
 ![安装脚本](./media/private-dns-migration-guide/install-migration-script.png)
 
@@ -67,13 +67,13 @@ PrivateDnsMigrationScript.ps1
 
 ### <a name="enter-the-subscription-id-and-sign-in-to-azure"></a>输入订阅 ID 并登录 Azure
 
-系统将提示你输入包含希望迁移的 DNS 专用区域的订阅 ID。 可能会要求你登录 Azure 帐户。 完成登录，让脚本可以访问订阅中的 DNS 专用区域资源。
+系统将提示输入包含希望迁移的 DNS 专用区域的订阅 ID。 可能会要求你登录 Azure 帐户。 完成登录，让脚本可以访问订阅中的 DNS 专用区域资源。
 
 ![登录到 Azure](./media/private-dns-migration-guide/login-migration-script.png)
 
 ### <a name="select-the-dns-zones-you-want-to-migrate"></a>选择要迁移的 DNS 区域
 
-使用脚本获取订阅中所有 DNS 专用区域的列表，并提示你确认希望迁移哪些区域。 输入 A 将迁移所有 DNS 专用区域。 一旦执行此步骤，脚本将使用新的资源模型创建新的 DNS 专用区域，并将数据复制到新的 DSN 区域。 无论如何，此步骤都不会更改现有 DNS 专用区域。
+使用脚本获取订阅中所有 DNS 专用区域的列表，并提示你确认希望迁移哪些区域。 输入“A”可迁移所有专用 DNS 区域。 一旦执行此步骤，脚本将使用新的资源模型创建新的 DNS 专用区域，并将数据复制到新的 DSN 区域。 无论如何，此步骤都不会更改现有 DNS 专用区域。
 
 ![选择 DNS 区域](./media/private-dns-migration-guide/migratezone-migration-script.png)
 
@@ -81,7 +81,7 @@ PrivateDnsMigrationScript.ps1
 
 区域和记录复制到新的资源模型后，脚本会询问你是否将 DNS 解析切换到新的 DNS 区域。 此步骤将删除旧的 DNS 专用区域和你的虚拟网络之间的关联。 从虚拟网络取消链接旧区域时，上一步中创建的新 DNS 区域会自动接管这些虚拟网络的 DNS 解析。
 
-选择 A 将切换所有虚拟网络的 DNS 解析。
+选择“A”将切换所有虚拟网络的 DNS 解析。
 
 ![切换名称解析](./media/private-dns-migration-guide/switchresolution-migration-script.png)
 
@@ -91,16 +91,16 @@ PrivateDnsMigrationScript.ps1
 
 ![验证名称解析](./media/private-dns-migration-guide/verifyresolution-migration-script.png)
 
-如果你发现 DNS 查询未解析，请等待几分钟，然后重试查询。 如果 DNS 查询按预期工作，请在脚本询问你是否从 DNS 专用区域中删除虚拟网络时输入 Y。
+如果你发现 DNS 查询未解析，请等待几分钟，然后重试查询。 如果 DNS 查询按预期工作，请在脚本询问你是否从专用 DNS 区域中删除虚拟网络时输入“Y”。
 
 ![确认名称解析](./media/private-dns-migration-guide/confirmresolution-migration-script.png)
 
 >[!IMPORTANT]
->如果由于任何原因导致针对已迁移区域的 DNS 解析无法按预期工作，请在上一步中输入 N，脚本会将 DNS 解析切换回旧区域。 创建支持票证，我们可以帮助你迁移 DNS 区域。
+>如果由于任何原因导致针对已迁移区域的 DNS 解析无法按预期工作，请在上一步中输入“N”，脚本会将 DNS 解析切换回旧区域。 创建支持票证，我们可以帮助你迁移 DNS 区域。
 
 ## <a name="cleanup"></a>清理
 
-此步骤将删除旧的 DNS 区域，并且只有在你验证了 DNS 解析按预期工作后，才应执行此步骤。 系统将询问你是否删除每个 DNS 专用区域。 在验证这些区域的 DNS 解析正常工作后，在每个提示符处输入 Y。
+此步骤将删除旧的 DNS 区域，并且只有在你验证了 DNS 解析按预期工作后，才应执行此步骤。 系统将询问是否删除每个 DNS 专用区域。 在验证这些区域的 DNS 解析正常工作后，在每个提示符处输入“Y”。
 
 ![清理](./media/private-dns-migration-guide/cleanup-migration-script.png)
 
@@ -108,9 +108,9 @@ PrivateDnsMigrationScript.ps1
 
 如果使用的自动化包括模板、PowerShell 脚本或使用 SDK 开发自定义代码，则必须更新自动化，以对 DNS 专用区域使用新的资源模型。 以下是新的 DNS 专用区域 CLI/PS/SDK 文档的链接。
 * [Azure DNS 专用区域 REST API](/rest/api/dns/privatedns/privatezones)
-* [Azure DNS 专用区域 CLI](/cli/azure/ext/privatedns/network/private-dns)
+* [Azure DNS 专用区域 CLI](/cli/azure/network/private-dns/link/vnet)
 * [Azure DNS 专用区域 PowerShell](/powershell/module/az.privatedns/)
-* [Azure DNS 专用区域 SDK](/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
+* [Azure DNS 专用区域 SDK](/dotnet/api/overview/azure/privatedns/management)
 
 ## <a name="need-further-help"></a>需要更多帮助
 

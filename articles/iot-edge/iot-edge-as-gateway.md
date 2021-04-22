@@ -4,19 +4,19 @@ description: 使用 Azure IoT Edge 创建一个透明、不透明或代理网关
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/10/2020
+ms.date: 03/23/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ca8f02b375420590bcf1cc732c067a165e22b3fa
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: aa8b7372af91fc7cb194dfc3a6212cb4ce1fa0a2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103492704"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105027340"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>如何将 IoT Edge 设备用作网关
 
@@ -24,12 +24,7 @@ ms.locfileid: "103492704"
 
 IoT Edge 设备可以作为网关运行，提供网络上其他设备和 IoT 中心之间的连接。
 
-IoT Edge 中心模块的作用类似于 IoT 中心，因此可以处理来自任何具有 IoT 中心标识的设备的连接，包括其他 IoT Edge 设备。 这种类型的网关模式称为“透明”，因为消息可以从下游设备传递到 IoT 中心，就像它们之间没有网关一样。
-
-<!-- 1.2.0 -->
-::: moniker range=">=iotedge-2020-11"
-从 IoT Edge 版本 1.2 开始，透明网关可处理来自其他 IoT Edge 设备的下游连接。
-::: moniker-end
+IoT Edge 中心模块的作用类似于 IoT 中心，因此可以处理来自具有相同 IoT 中心标识的其他设备的连接。 这种类型的网关模式称为“透明”，因为消息可以从下游设备传递到 IoT 中心，就像它们之间没有网关一样。
 
 对于不能或无法自行连接到 IoT 中心的设备，IoT Edge 网关可以提供该连接。 这种类型的网关模式称为“转换”，因为 IoT Edge 设备必须对传入的下游设备消息执行处理，然后才能将这些消息转发到 IoT 中心。 这些场景需要 IoT Edge 网关上的其他模块来处理处理步骤。
 
@@ -51,17 +46,19 @@ IoT Edge 中心模块的作用类似于 IoT 中心，因此可以处理来自任
 
 <!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
-
-IoT Edge 设备不能位于 IoT Edge 网关的下游。
-
 ![关系图 - 透明网关模式](./media/iot-edge-as-gateway/edge-as-gateway-transparent.png)
+
+>[!NOTE]
+>在 IoT Edge 版本 1.1 和更低版本中，IoT Edge 设备不能是 IoT Edge 网关的下游。
+>
+>从 IoT Edge 版本 1.2 开始，透明网关可处理来自下游 IoT Edge 设备的连接。 有关详细信息，请切换到本文的 [IoT Edge 1.2](?view=iotedge-2020-11&preserve-view=true) 版本。
 
 ::: moniker-end
 
-<!-- 1.2.0 -->
+<!-- 1.2 -->
 ::: moniker range=">=iotedge-2020-11"
 
-从版本 1.2.0 开始，IoT Edge 设备可通过透明网关进行连接。
+从 IoT Edge 版本 1.2 开始，透明网关可处理来自下游 IoT Edge 设备的连接。
 
 <!-- TODO add a downstream IoT Edge device to graphic -->
 

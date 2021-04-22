@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/24/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6bc45bb6eec9dbf46e039dd1e2c32197820bb09d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b260793cc3c0b5ac3ffce8fac909e2db8991c713
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626701"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307803"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>使用 Azure 认知搜索将自动完成和建议添加到客户端应用
 
@@ -67,7 +67,7 @@ API 不会对部分查询施加最小长度要求；查询长度可以短至一�
 
 + 对于自动完成，请设置 [autocompleteMode](/rest/api/searchservice/autocomplete#query-parameters) 来确定是要对一个还是两个字词执行文本完成。 
 
-+ 对于建议，请设置 [$select](/rest/api/searchservice/suggestionse#query-parameters) 以返回包含唯一值或区别性值（如名称和说明）的字段。 避免使用包含重复值（例如类别或城市）的字段。
++ 对于建议，请设置 [$select](/rest/api/searchservice/suggestions#query-parameters) 以返回包含唯一值或区别性值（如名称和说明）的字段。 避免使用包含重复值（例如类别或城市）的字段。
 
 以下附加参数适用于自动完成和建议，但对于建议（尤其是建议器包含多个字段的情况）可能更有必要。
 

@@ -12,10 +12,10 @@ ms.date: 02/22/2021
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: 2873bd9668bfba887ad9add061e68f36a747d5b8
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103492313"
 ---
 # <a name="optimize-traffic-flow-with-azure-active-directory-application-proxy"></a>使用 Azure Active Directory 应用程序代理优化流量流
@@ -56,7 +56,7 @@ ms.locfileid: "103492313"
     :::image type="content" source="./media/application-proxy-network-topology/geo-routing.png" alt-text="配置新的连接器组。" lightbox="./media/application-proxy-network-topology/geo-routing.png":::
 
 1. 创建新的连接器组后，可以选择要分配到此连接器组的连接器。 
-   - 仅当你的连接器组使用默认区域时，才能将连接器移到该连接器组。 最佳方法是始终先将连接器放入“默认组”，然后再将其移到相应的连接器组。
+   - 仅当连接器位于使用默认区域的连接器组中时，才能将连接器移到该连接器组。 最佳方法是始终先将连接器放入“默认组”，然后再将其移到相应的连接器组。
    - 仅当 **未** 将任何连接器或应用分配到连接器组时，才能更改该连接器组的区域。
 1. 接下来，将连接器组分配到应用程序。 访问应用时，流量现在应转到已针对其优化了连接器组的区域中的应用程序代理云服务。
 

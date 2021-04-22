@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: bb031e4f0233b9f26571c3ae9fc2a26fe5fe957f
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 15d94e17bea6a49bb5bf6fdb6c48252365676042
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553951"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228157"
 ---
 # <a name="migration-guide-ibm-db2-to-azure-sql-managed-instance"></a>迁移指南：从 Db2 迁移到 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -113,7 +113,7 @@ ms.locfileid: "106553951"
 
    :::image type="content" source="media/db2-to-managed-instance-guide/synchronize-with-database.png" alt-text="显示“与数据库同步”选项的屏幕截图。":::
 
-1. 迁移数据。 在 Db2 元数据资源管理器中，右键单击要迁移的数据库或对象，然后选择“迁移数据” 。 或者，可从导航栏中选择“迁移数据”。 若要迁移整个数据库的数据，请选中数据库名称旁边的复选框。 若要从单个表中迁移数据，请展开数据库、展开“表”，然后选中表旁边的复选框。 若要忽略单个表中的数据，请清除对应的复选框。
+1. 迁移数据。 在 Db2 元数据资源管理器中，右键单击要迁移的数据库或对象，然后选择“迁移数据” 。 或者，可从导航栏中选择“迁移数据”。 若要迁移整个数据库的数据，请选中数据库名称旁边的复选框。 若要从单个表中迁移数据，请展开数据库，展开“表”，然后选中表旁边的复选框。 若要忽略单个表中的数据，请清除对应的复选框。
 
    :::image type="content" source="media/db2-to-managed-instance-guide/migrate-data.png" alt-text="显示选择架构和选择迁移数据的屏幕截图。":::
 
@@ -140,7 +140,7 @@ ms.locfileid: "106553951"
 测试包括以下活动：
 
 1. 开发验证测试：要测试数据库迁移，需要使用 SQL 查询。 必须创建针对源数据库和目标数据库运行的验证查询。 验证查询应涵盖已定义的范围。
-1. 设置测试环境：测试环境应包含源数据库和目标数据库的副本。 请确保隔离测试环境。
+1. **设置测试环境**：测试环境应包含源数据库和目标数据库的副本。 请确保隔离测试环境。
 1. 运行验证测试：针对源和目标运行验证测试，然后分析结果。
 1. 运行性能测试：针对源和目标运行性能测试，然后分析和比较结果。
 
@@ -158,8 +158,8 @@ ms.locfileid: "106553951"
 |---------|---------|
 |[数据工作负荷评估模型和工具](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| 此工具为给定的工作负荷提供了建议的“最佳匹配”目标平台、云就绪和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。|
 |[Db2 zOS 数据资产发现和评估包](https://github.com/microsoft/DataMigrationTeam/tree/master/DB2%20zOS%20Data%20Assets%20Discovery%20and%20Assessment%20Package)|在数据库上运行 SQL 脚本后，可以将结果导出到文件系统上的文件。 支持多种文件格式（包括 *.csv），方便你在外部工具（如电子表格）中捕获结果。 如果你想要与未安装工作台的团队轻松共享结果，此方法会很有用。|
-|[IBM Db2 LUW 清单脚本和项目](https://github.com/Microsoft/DataMigrationTeam/tree/master/IBM%20Db2%20LUW%20Inventory%20Scripts%20and%20Artifacts)|此资产包含一个 SQL 查询，该查询可访问 IBM Db2 LUW 版本 11.1 系统表，并按架构和对象类型提供对象计数、每个架构中“原始数据”的粗略估计、每个架构中表的大小，以及 CSV 格式的存储结果。|
-|[Azure 上的 Db2 LUW 纯扩展 - 设置指南](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Db2%20PureScale%20on%20Azure.pdf)|本指南用作 Db2 实现计划的起点。 尽管业务要求有所不同，但均适用相同的基本模式。 此体系结构模式还可用于 Azure 上的 OLAP 应用程序。|
+|[IBM Db2 LUW 清单脚本和项目](https://github.com/microsoft/DataMigrationTeam/blob/master/IBM%20DB2%20LUW%20Inventory%20Scripts%20and%20Artifacts)|此资产包含一个 SQL 查询，该查询可访问 IBM Db2 LUW 版本 11.1 系统表，并按架构和对象类型提供对象计数、每个架构中“原始数据”的粗略估计、每个架构中表的大小，以及 CSV 格式的存储结果。|
+|[Azure 上的 Db2 LUW 纯扩展 - 设置指南](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/DB2%20PureScale%20on%20Azure.pdf)|本指南用作 Db2 实现计划的起点。 尽管业务要求有所不同，但均适用相同的基本模式。 此体系结构模式还可用于 Azure 上的 OLAP 应用程序。|
 
 数据 SQL 工程团队开发了这些资源。 此团队的核心章程是解锁和加速到 Microsoft 的 Azure 数据平台的数据平台迁移项目的复杂现代化进程。
 

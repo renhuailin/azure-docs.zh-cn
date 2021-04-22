@@ -2,14 +2,14 @@
 title: 在 Azure 微服务中模拟故障
 description: 本文介绍了 Microsoft Azure Service Fabric 中的可测试性操作。
 ms.topic: conceptual
-ms.date: 06/07/2017
+ms.date: 03/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c57f54096a9593f5ab25a5722d3f2d2b9878b511
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9f8221d92ded33350b182cce5d28dd889beae4a5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100595029"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732867"
 ---
 # <a name="testability-actions"></a>可测试性操作
 为了模拟不可靠的基础结构，Azure Service Fabric 向开发者提供了众多选项，用于模拟各种现实世界故障和状态转换。 这些方式被称为可测试操作。 这些操作属于低级别 API，导致具体的故障注入、状态转换或验证。 结合使用这些操作，可以为服务编写全面的测试方案。
@@ -34,6 +34,7 @@ System.Fabric.dll 程序集包含了这些操作的 C# 实现。 Microsoft.Servi
 | InvokeQuorumLoss |在一个给定有状态服务分区放入仲裁丢失。 |InvokeQuorumLossAsync |Invoke-ServiceFabricQuorumLoss |常规 |
 | MovePrimary |将有状态服务的指定主副本移动到指定群集节点。 |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |常规 |
 | MoveSecondary |将一个有状态服务的当前辅助副本移动到另一个群集节点。 |MoveSecondaryAsync |Move-ServiceFabricSecondaryReplica |常规 |
+| MoveInstance | 将无状态服务的当前实例移动到另一个群集节点。 | MoveInstanceAsync | Move-ServiceFabricInstance | 常规 |
 | RemoveReplica |通过从群集删除一个副本来模拟副本故障。 这会关闭该副本，将其转换为角色“None”，且从群集删除其所有状态。 |RemoveReplicaAsync |Remove-ServiceFabricReplica |常规 |
 | RestartDeployedCodePackage |通过重新启动部署在群集中某个节点上的一个代码包来模拟代码包进程故障。 这会中止代码包进程，并会重新启动驻留在该进程中的所有用户服务副本。 |RestartDeployedCodePackageAsync |Restart-ServiceFabricDeployedCodePackage |非常规 |
 | RestartNode |通过重新启动一个节点来模拟 Service Fabric 群集节点故障。 |RestartNodeAsync |Restart-ServiceFabricNode |非常规 |

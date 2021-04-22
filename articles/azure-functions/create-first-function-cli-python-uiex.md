@@ -1,5 +1,5 @@
 ---
-title: 通过 Azure Functions 的命令行创建 Python 函数
+title: 针对 Azure Functions 通过命令行创建 Python 函数
 description: 了解如何通过命令行创建 Python 函数，并将本地项目发布到 Azure Functions 中的无服务器托管。
 ms.date: 11/03/2020
 ms.topic: quickstart
@@ -7,12 +7,12 @@ ms.custom:
 - devx-track-python
 - devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 626cff867a336880689373c289087e2332a816ee
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: da7f6fdaedd8105363cc62bf55bae2cb5f72f234
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107787442"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031644"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>快速入门：在 Azure 中通过命令行创建 Python 函数
 
@@ -126,7 +126,7 @@ py -m venv .venv
 
 ## <a name="3-create-a-local-function-project"></a>3.创建本地函数项目
 
-在本部分，你将使用 C# 创建一个本地 <abbr title="一个逻辑容器，它用于一个或多个可同时部署和管理的单独函数。">Azure Functions 项目</abbr> 。 项目中的每个函数都响应特定的 <abbr title="调用函数代码的事件类型，例如 HTTP 请求、队列消息或特定时间。">触发器</abbr>.
+在本部分，你将使用 Python 创建一个本地 <abbr title="一个逻辑容器，它用于一个或多个可同时部署和管理的单独函数。">Azure Functions 项目</abbr> 。 项目中的每个函数都响应特定的 <abbr title="调用函数代码的事件类型，例如 HTTP 请求、队列消息或特定时间。">触发器</abbr>.
 
 1. 运行 `func init` 命令，在名为 LocalFunctionProj 的文件夹中创建使用指定运行时的函数项目：  
 
@@ -239,7 +239,7 @@ py -m venv .venv
     az login
     ```
 
-    使用 [az login](/cli/azure/reference-index#az_login) 命令登录到 Azure 帐户。
+    使用 [az login](/cli/azure/reference-index#az-login) 命令登录到 Azure 帐户。
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
     ```azurepowershell
@@ -258,7 +258,7 @@ py -m venv .venv
     az group create --name AzureFunctionsQuickstart-rg --location westeurope
     ```
  
-    [az group create](/cli/azure/group#az_group_create) 命令可创建资源组。 通常在附近的 <abbr title="对在其中分配资源的特定 Azure 数据中心的地理引用。">region</abbr> 中创建资源组和资源（使用从 `az account list-locations` 命令返回的可用区域）。
+    [az group create](/cli/azure/group#az-group-create) 命令可创建资源组。 通常在附近的 <abbr title="对在其中分配资源的特定 Azure 数据中心的地理引用。">region</abbr> 中创建资源组和资源（使用从 `az account list-locations` 命令返回的可用区域）。
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -280,7 +280,7 @@ py -m venv .venv
     az storage account create --name <STORAGE_NAME> --location westeurope --resource-group AzureFunctionsQuickstart-rg --sku Standard_LRS
     ```
 
-    [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令可创建存储帐户。 
+    [az storage account create](/cli/azure/storage/account#az-storage-account-create) 命令可创建存储帐户。 
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 

@@ -390,15 +390,12 @@
           href: how-to-migrate-from-estimators-to-scriptrunconfig.md
         - name: 跟踪和监视培训
           items:
-            - name: 启动、监视或取消运行
+            - name: 跟踪、监视和分析运行
               displayName: 'cancel, fail, status, child run'
-              href: how-to-manage-runs.md
-            - name: 启用日志
-              displayName: 'troubleshoot, log, files, tracing'
-              href: how-to-track-experiments.md
-            - name: 查看运行的日志和指标
+              href: how-to-track-monitor-analyze-runs.md
+            - name: 记录并查看指标和日志数据
               displayName: 'troubleshoot, log, files, tracing, metrics'
-              href: how-to-monitor-view-training-logs.md
+              href: how-to-log-view-metrics.md
             - name: 使用 TensorBoard 将运行可视化
               displayName: 'log, monitor, metrics'
               href: how-to-monitor-tensorboard.md
@@ -440,9 +437,6 @@
         - name: 将自动化 ML 和 Databricks 结合使用
           displayName: automl
           href: how-to-configure-databricks-automl-environment.md
-        - name: 使用远程计算目标
-          displayName: automl automated auto ml
-          href: how-to-auto-train-remote.md
         - name: 自动训练预测模型
           displayName: time series
           href: how-to-auto-train-forecast.md
@@ -625,7 +619,7 @@
       displayName: 'environments, curated environments'
       href: resource-curated-environments.md
     - name: Azure CLI
-      href: /cli/azure/ext/azure-cli-ml/ml
+      href: /cli/azure/ml
 - name: 资源
   items:
     - name: 发行说明

@@ -1,18 +1,18 @@
 ---
 title: 如何在 Azure 认证设备门户中使用组件特征
 description: 本指南介绍如何充分利用“设备详细信息”部分中的组件特征来准确描述设备
-author: nikuntjo
+author: nkuntjoro
 ms.author: nikuntjo
 ms.service: certification
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 091a666026853d677f1e9ed7e5e1736307cecbe8
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 220a6c2107063734201064115898611c20cab650
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105975696"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304454"
 ---
 # <a name="add-components-on-the-portal"></a>在门户中添加组件
 
@@ -60,7 +60,7 @@ ms.locfileid: "105975696"
 
 你可能对要包含多少组件或要使用什么组件类型有疑问。 下面几个示例场景显示了你可能要认证的设备，以及你可如何使用组件特征。
 
-| 产品类型                                       | 不是。 组件 | 组件 1/附件类型      | 组件 2+/附件类型                    |
+| 产品类型                                       | 否。 组件 | 组件 1/附件类型      | 组件 2+/附件类型                    |
 |----------------------------------------------------|------------|----------------------------------|--------------------------------------------------|
 | 成品                                   | 1          | 客户可用产品，独立 | 空值                                              |
 | 具有可拆卸外设的成品 | 2 或更大  | 客户可用产品，独立 | 外设/独立或集成              |
@@ -72,14 +72,14 @@ ms.locfileid: "105975696"
 下面的示例演示了一个名为 Contoso 的 OEM 如何使用组件特征来认证其产品（称为 Falcon）。
 
 1. Falcon 是一个完全独立的设备，不会集成到更大的产品中。
-    1. 不是。 组件编号：1
+    1. 否。 组件编号：1
     1. 组件设备类型：客户可用产品
     1. 附件类型：独立
 
      ![客户可用产品的图像](./media/images/customer-ready-product.png)
 
 1. Falcon 是一种设备，配有 INC Electronics 制造的集成外设照相机模块，该模块通过 USB 连接到 Falcon。
-    1. 不是。 组件编号：2
+    1. 否。 组件编号：2
     1. 组件设备类型：客户可用产品、外设
     1. 附件类型：独立、集成
     
@@ -89,7 +89,7 @@ ms.locfileid: "105975696"
      ![外设示例组件的图像](./media/images/peripheral.png)
 
 1. Falcon 是一种设备，配有 INC Electronics 制造的集成系统模块，该模块使用 Espressif 公司提供的内置处理器 Apollo52，并具有 ARM64 体系结构。
-    1. 不是。 组件编号：2
+    1. 否。 组件编号：2
     1. 组件设备类型：客户可用产品、系统模块
     1. 附件类型：独立、集成
 

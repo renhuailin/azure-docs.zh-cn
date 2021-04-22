@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: fbc3502952e11830ef9abb06cb709fcc60288343
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 0283a84650abaadd454b4f5bca83d1473e443fb8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739523"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561808"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>IoT 中心的设备更新和 IoT 即插即用
 
@@ -29,10 +29,10 @@ IoT 中心的设备更新使用 [IoT 即插即用](../iot-pnp/index.yml)以发�
 
 |名称|架构|方向|描述|示例|
 |----|------|---------|-----------|-----------|
-|resultCode|integer|设备到云|此代码包含上次更新操作结果的信息。 可能填充成功，也可能填充失败，应遵循 [HTTP 状态代码规范](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)。|500|
-|extendedResultCode|integer|设备到云|此代码包含结果的其他信息。 可能填充成功，也可能填充失败。|0x80004005|
-|state|integer|设备到云|此整数用于指示设备更新代理的当前状态。 详细信息参见以下内容 |闲置|
-|installedUpdateId|string|设备到云|当前（通过设备更新）安装的更新 ID。 对于从未通过设备更新进行更新的设备，此值将为 null。|Null|
+|resultCode|整型|设备到云|此代码包含上次更新操作结果的信息。 可能填充成功，也可能填充失败，应遵循 [HTTP 状态代码规范](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)。|500|
+|extendedResultCode|整型|设备到云|此代码包含结果的其他信息。 可能填充成功，也可能填充失败。|0x80004005|
+|state|整型|设备到云|此整数用于指示设备更新代理的当前状态。 详细信息参见以下内容 |闲置|
+|installedUpdateId|字符串|设备到云|当前（通过设备更新）安装的更新 ID。 对于从未通过设备更新进行更新的设备，此值将为 null。|Null|
 |`deviceProperties`|映射|设备到云|包含制造商和型号的属性集。|详细信息参见以下内容
 
 #### <a name="state"></a>状态
@@ -44,7 +44,7 @@ IoT 中心的设备更新使用 [IoT 即插即用](../iot-pnp/index.yml)以发�
 |闲置|0|设备已准备就绪，可以接收来自设备更新服务的操作。 更新成功后，状态返回到 `Idle`。|
 |DownloadSucceeded|2|下载成功。|
 |InstallSucceeded|4|安装成功。|
-|已失败|255|更新时出错。|
+|失败|255|更新时出错。|
 
 #### <a name="device-properties"></a>设备属性
 
@@ -52,19 +52,19 @@ IoT 中心的设备更新使用 [IoT 即插即用](../iot-pnp/index.yml)以发�
 
 |名称|架构|方向|描述|
 |----|------|---------|-----------|
-|制造商|string|设备到云|设备的制造商，通过 `deviceProperties` 报告。 可以从两个位置的任一位置读取此属性：“AzureDeviceUpdateCore”接口将首先尝试从[配置文件](device-update-configuration-file.md)中读取“aduc_manufacturer”值。  如果未在配置文件中填充该值，则默认情况下会报告 ADUC_DEVICEPROPERTIES_MANUFACTURER 的编译时定义。 仅在启动时报告此属性。|
-|模型|string|设备到云|设备的型号，通过 `deviceProperties` 报告。 可以从两个位置的任一位置读取此属性：AzureDeviceUpdateCore 接口将首先尝试从[配置文件](device-update-configuration-file.md)中读取“aduc_model”值。  如果未在配置文件中填充该值，则默认情况下会报告 ADUC_DEVICEPROPERTIES_MODEL 的编译时定义。 仅在启动时报告此属性。|
-|aduVer|string|设备到云|设备上运行的设备更新代理的版本。 仅在编译时 ENABLE_ADU_TELEMETRY_REPORTING 设置为 1 (true) 的情况下，才从生成中读取该值。 客户可以通过将该值设置为 0 (false) 选择退出版本报告。 [如何自定义设备更新代理属性](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-build-agent-code.md)。|
-|doVer|string|设备到云|设备上运行的传递优化代理的版本。 仅在编译时 ENABLE_ADU_TELEMETRY_REPORTING 设置为 1 (true) 的情况下，才从生成中读取该值。 客户可以通过将该值设置为 0 (false) 选择退出版本报告。[如何自定义传递优化代理属性](https://github.com/microsoft/do-client/blob/main/README.md#building-do-client-components)。|
+|制造商|字符串|设备到云|设备的制造商，通过 `deviceProperties` 报告。 可以从两个位置的任一位置读取此属性：“AzureDeviceUpdateCore”接口将首先尝试从[配置文件](device-update-configuration-file.md)中读取“aduc_manufacturer”值。  如果未在配置文件中填充该值，则默认情况下会报告 ADUC_DEVICEPROPERTIES_MANUFACTURER 的编译时定义。 仅在启动时报告此属性。|
+|模型|字符串|设备到云|设备的型号，通过 `deviceProperties` 报告。 可以从两个位置的任一位置读取此属性：AzureDeviceUpdateCore 接口将首先尝试从[配置文件](device-update-configuration-file.md)中读取“aduc_model”值。  如果未在配置文件中填充该值，则默认情况下会报告 ADUC_DEVICEPROPERTIES_MODEL 的编译时定义。 仅在启动时报告此属性。|
+|aduVer|字符串|设备到云|设备上运行的设备更新代理的版本。 仅在编译时 ENABLE_ADU_TELEMETRY_REPORTING 设置为 1 (true) 的情况下，才从生成中读取该值。 客户可以通过将该值设置为 0 (false) 选择退出版本报告。 [如何自定义设备更新代理属性](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-build-agent-code.md)。|
+|doVer|字符串|设备到云|设备上运行的传递优化代理的版本。 仅在编译时 ENABLE_ADU_TELEMETRY_REPORTING 设置为 1 (true) 的情况下，才从生成中读取该值。 客户可以通过将该值设置为 0 (false) 选择退出版本报告。[如何自定义传递优化代理属性](https://github.com/microsoft/do-client/blob/main/README.md#building-do-client-components)。|
 
 ### <a name="service-metadata"></a>服务元数据
 
 设备更新服务会使用服务元数据中包含的字段向设备更新代理传达操作和数据。
 
-|名称|架构|方向|说明|
+|名称|架构|方向|描述|
 |----|------|---------|-----------|
-|action|integer|云到设备|此整数与代理应执行的操作相对应。 其值如下所列。|
-|updateManifest|string|云到设备|用于描述更新的内容。 根据[导入清单](import-update.md#create-a-device-update-import-manifest)生成|
+|action|整型|云到设备|此整数与代理应执行的操作相对应。 其值如下所列。|
+|updateManifest|字符串|云到设备|用于描述更新的内容。 根据[导入清单](import-update.md#create-device-update-import-manifest)生成|
 |updateManifestSignature|JSON 对象|云到设备|JSON Web 签名 (JWS)，具有用于源验证的 JSON Web 密钥。|
 |fileUrls|映射|云到设备|`FileHash` 到 `DownloadUri` 的映射。 告知代理要下载的文件和用于验证文件是否已正确下载的哈希。|
 
@@ -87,14 +87,14 @@ IoT 中心的设备更新使用 [IoT 即插即用](../iot-pnp/index.yml)以发�
 
 |名称|类型|架构|方向|描述|示例|
 |----|----|------|---------|-----------|-----------|
-|制造商|属性|string|设备到云|设备制造商的公司名称。 此名称可以与原始设备制造商 (OEM) 的名称相同。|Contoso|
-|模型|属性|string|设备到云|设备型号名称或 ID。|IoT Edge 设备|
-|swVersion|属性|string|设备到云|设备上的软件版本。 swVersion 可能是固件版本。|4.15.0-122|
-|osName|属性|string|设备到云|设备上的操作系统名称。|Ubuntu Server 18.04|
-|processorArchitecture|属性|string|设备到云|设备上处理器的体系结构。|ARM64|
-|processorManufacturer|属性|string|设备到云|设备上处理器制造商的名称。|Microsoft|
-|totalStorage|属性|string|设备到云|设备上的可用存储总量（以千字节为单位）。|2048|
-|totalMemory|属性|string|设备到云|设备上的可用内存总量（以千字节为单位）。|256|
+|制造商|属性|字符串|设备到云|设备制造商的公司名称。 此名称可以与原始设备制造商 (OEM) 的名称相同。|Contoso|
+|模型|属性|字符串|设备到云|设备型号名称或 ID。|IoT Edge 设备|
+|swVersion|属性|字符串|设备到云|设备上的软件版本。 swVersion 可能是固件版本。|4.15.0-122|
+|osName|属性|字符串|设备到云|设备上的操作系统名称。|Ubuntu Server 18.04|
+|processorArchitecture|属性|字符串|设备到云|设备上处理器的体系结构。|ARM64|
+|processorManufacturer|属性|字符串|设备到云|设备上处理器制造商的名称。|Microsoft|
+|totalStorage|属性|字符串|设备到云|设备上的可用存储总量（以千字节为单位）。|2048|
+|totalMemory|属性|字符串|设备到云|设备上的可用内存总量（以千字节为单位）。|256|
 
 ## <a name="model-id"></a>模型 ID 
 

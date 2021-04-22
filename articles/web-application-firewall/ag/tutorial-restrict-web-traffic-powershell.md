@@ -5,15 +5,15 @@ description: 了解如何使用 Azure PowerShell 在应用程序网关上使用 
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/31/2020
+ms.date: 03/26/2021
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 3956c06a0120ad28599c47279b60e6f5dd30204e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cc111f6fe1c50af5be9686100b19209fe7f3d119
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102174506"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626157"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>使用 Azure PowerShell 启用 Web 应用程序防火墙
 
@@ -43,7 +43,8 @@ ms.locfileid: "102174506"
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建 Azure 资源组。  
 
 ```azurepowershell-interactive
-New-AzResourceGroup -Name myResourceGroupAG -Location eastus
+$location = "eastus"
+$rgname = New-AzResourceGroup -Name myResourceGroupAG -Location $location
 ```
 
 ## <a name="create-network-resources"></a>创建网络资源 
@@ -153,9 +154,12 @@ $sku = New-AzApplicationGatewaySku `
   -Tier WAF_v2 `
   -Capacity 2
 
-$policySetting = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxRequestBodySizeInKb 100 -MaxFileUploadInMb 256
+$policySetting = New-AzApplicationGatewayFirewallPolicySetting `
+   -Mode Prevention -State Enabled `
+   -MaxRequestBodySizeInKb 100 -MaxFileUploadInMb 256
 
-$wafPolicy = New-AzApplicationGatewayFirewallPolicy -Name wafpolicyNew -ResourceGroup $rgname -Location $location -PolicySetting $PolicySetting
+$wafPolicy = New-AzApplicationGatewayFirewallPolicy -Name wafpolicyNew -ResourceGroup myResourceGroupAG `
+   -Location $location -PolicySetting $PolicySetting
 
 $appgw = New-AzApplicationGateway `
   -Name myAppGateway `
@@ -174,7 +178,9 @@ $appgw = New-AzApplicationGateway `
 
 ## <a name="create-a-virtual-machine-scale-set"></a>创建虚拟机规模集
 
-在此示例中，将创建虚拟机规模集，以便为应用程序网关的后端池提供服务器。 配置 IP 设置时将规模集分配给后端池。
+在此示例中，将创建虚拟机规模集，以便为应用程序网关的后端池提供服务器。 配置 IP 设置时将规模集分配给后端池。 
+
+在运行此脚本之前，请将 \<username> 和 \<password> 替换为你的值。 
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -191,7 +197,7 @@ $backendPool = Get-AzApplicationGatewayBackendAddressPool `
 
 $ipConfig = New-AzVmssIpConfig `
   -Name myVmssIPConfig `
-  -SubnetId $vnet.Subnets[1].Id `
+  -SubnetId $vnet.Subnets[0].Id `
   -ApplicationGatewayBackendAddressPoolsId $backendPool.Id
 
 $vmssConfig = New-AzVmssConfig `
@@ -208,8 +214,8 @@ Set-AzVmssStorageProfile $vmssConfig `
   -OsDiskCreateOption FromImage
 
 Set-AzVmssOsProfile $vmssConfig `
-  -AdminUsername azureuser `
-  -AdminPassword "Azure123456!" `
+  -AdminUsername <username> `
+  -AdminPassword "<password>" `
   -ComputerNamePrefix myvmss
 
 Add-AzVmssNetworkInterfaceConfiguration `
@@ -303,4 +309,4 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 
 ## <a name="next-steps"></a>后续步骤
 
-[自定义 Web 应用程序防火墙规则](application-gateway-customize-waf-rules-portal.md)
+- [自定义 Web 应用程序防火墙规则](application-gateway-customize-waf-rules-portal.md)

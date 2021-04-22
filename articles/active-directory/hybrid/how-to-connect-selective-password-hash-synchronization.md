@@ -12,12 +12,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 774c78cbb09d2e5e60dfc0cafc0082b25e9b1b45
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 5a73f4eba9581965470b95111e6dda1d8014e4cb
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103602826"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167492"
 ---
 # <a name="selective-password-hash-synchronization-configuration-for-azure-ad-connect"></a>为 Azure AD Connect 配置选择性密码哈希同步
 
@@ -26,7 +26,7 @@ ms.locfileid: "103602826"
 如果要排除一部分用户，使其无需将密码哈希同步到 Azure AD，可以使用本文中提供的指导步骤来配置选择性密码哈希同步。
 
 >[!Important]
-> Microsoft 不支持在正式记录的配置或操作之外修改或操作 Azure AD Connect 同步。 其中的任何配置或操作都可能会导致 Azure AD Connect 同步出现不一致或不受支持状态。因此，Microsoft 无法保证我们可以对此部署提供足够的技术支持。 
+> Microsoft 不支持在正式记录的配置或操作之外修改或操作 Azure AD Connect 同步。 任何配置或操作都可能导致 Azure AD Connect 同步出现不一致或不受支持的状态。结果使 Microsoft 无法确保提供针对这种部署的有效技术支持。 
 
 
 ## <a name="consider-your-implementation"></a>考虑实现  
@@ -36,6 +36,9 @@ ms.locfileid: "103602826"
 
 > [!Important]
 > 选择任何一个配置选项后，应用更改所需的初始同步（完全同步）将在下一个同步周期自动执行。
+
+> [!Important]
+> 配置选择性密码哈希同步会直接影响密码写回。 仅当用户在密码哈希同步范围内时，在 Azure Active Directory 中发起的密码更改或密码重置才会写回本地 Active Directory。 
 
 ### <a name="the-admindescription-attribute"></a>AdminDescription 属性
 这两种方案都依赖于将用户的 adminDescription 属性设置为特定值。  这样将应用规则，也将导致选择性 PHS 生效。
@@ -80,7 +83,7 @@ ms.locfileid: "103602826"
 - 在 Active Directory 中设置属性值，该属性值定义为要在密码哈希同步中允许的用户的范围属性。 
 
 >[!Important]
->为配置选择性密码哈希同步而提供的步骤仅会影响 Active Directory 中使用值 PHSFiltered 填充属性 adminDescription 的用户对象。
+>为配置选择性密码哈希同步而提供的步骤仅影响在 Active Directory 中使用值 PHSFiltered 填充属性 adminDescription 的用户对象 。
 如果未填充此属性，或者值不是 PHSFiltered，则这些规则将不会应用于用户对象。
 
 
@@ -90,9 +93,9 @@ ms.locfileid: "103602826"
      ![启动同步规则编辑器](media/how-to-connect-selective-password-hash-synchronization/exclude-1.png)
  2. 为要将选择性密码哈希同步设置为开的 Active Directory 林 Connector 选择规则 In from AD – User AccountEnabled，并单击“编辑”。 在下一个对话框中选择“是”，以创建原始规则的可编辑副本。
      ![选择规则](media/how-to-connect-selective-password-hash-synchronization/exclude-2.png)
- 3. 第一个规则将禁用密码哈希同步。为新的自定义规则提供以下名称：In from AD - User AccountEnabled - Filter Users from PHS。
+ 3. 第一个规则将禁用密码哈希同步。请为新的自定义规则提供以下名称：In from AD - User AccountEnabled - Filter Users from PHS。
  将优先级值更改为小于 100 的数字（例如 90 或环境中可用的最小值）。
- 请确保未选中复选框“启用密码同步”和“已禁用”。
+ 请确保未选中“启用密码同步”和“已禁用”复选框。
  单击“下一步”。
   ![编辑入站规则](media/how-to-connect-selective-password-hash-synchronization/exclude-3.png)
  4. 在“范围筛选器”中，单击“添加子句”。
@@ -134,6 +137,9 @@ ms.locfileid: "103602826"
    
   ![编辑属性](media/how-to-connect-selective-password-hash-synchronization/exclude-11.png)
 
+还可使用以下 PowerShell 命令来编辑用户的 adminDescription 属性：
+
+```Set-ADUser myuser -Replace @{adminDescription="PHSFiltered"}```
 
 ## <a name="excluded-users-is-larger-than-included-users"></a>排除的用户多于包含的用户
 以下部分介绍当要排除的用户数多于要包含 的用户数时，如何启用选择性密码哈希同步。
@@ -149,7 +155,7 @@ ms.locfileid: "103602826"
 - 在 Active Directory 中设置属性值，该属性值定义为要在密码哈希同步中允许的用户的范围属性。 
 
 >[!Important]
->为配置选择性密码哈希同步而提供的步骤仅会影响 Active Directory 中使用值 PHSIncluded 填充属性 adminDescription 的用户对象。
+>为配置选择性密码哈希同步而提供的步骤仅会影响 Active Directory 中使用值 PHSIncluded 填充属性 adminDescription 的用户对象 。
 如果未填充此属性，或者值不是 PHSIncluded ，则这些规则将不会应用于用户对象。
 
 
@@ -159,7 +165,7 @@ ms.locfileid: "103602826"
      ![规则类型](media/how-to-connect-selective-password-hash-synchronization/include-1.png)
  2. 为要将选择性密码哈希同步设置为开的 Active Directory 林选择规则 In from AD – User AccountEnabled，并单击“编辑”。 在下一个对话框中选择“是”，以创建原始规则的可编辑副本。
      ![In from AD](media/how-to-connect-selective-password-hash-synchronization/include-2.png)
- 3. 第一个规则将禁用密码哈希同步。为新的自定义规则提供以下名称：In from AD - User AccountEnabled - Filter Users from PHS。
+ 3. 第一个规则将禁用密码哈希同步。请为新的自定义规则提供以下名称：In from AD - User AccountEnabled - Filter Users from PHS。
  将优先级值更改为小于 100 的数字（例如 90 或环境中可用的最小值）。
  请确保未选中“启用密码同步”和“已禁用”复选框。
  单击“下一步”。
@@ -202,7 +208,9 @@ ms.locfileid: "103602826"
 
   ![编辑属性](media/how-to-connect-selective-password-hash-synchronization/include-11.png)
  
- 
+ 还可使用以下 PowerShell 命令来编辑用户的 adminDescription 属性：
+
+ ```Set-ADUser myuser -Replace @{adminDescription="PHSIncluded"}``` 
 
 ## <a name="next-steps"></a>后续步骤
 - [什么是密码哈希同步？](whatis-phs.md)

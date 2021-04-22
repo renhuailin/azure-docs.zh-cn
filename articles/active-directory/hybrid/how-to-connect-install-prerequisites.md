@@ -16,12 +16,12 @@ ms.date: 02/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e758933b80efbf36dc263b7bd7d2d3c45a59a9f8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 108f81be678eb666b6f79ebbecc93f7bc88dc1d6
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102426784"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107905"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect 的先决条件
 本文介绍 Azure Active Directory (Azure AD) Connect 的先决条件和硬件要求。
@@ -37,7 +37,7 @@ ms.locfileid: "102426784"
 * 默认情况下，一个 Azure AD 租户允许 5 万个对象。 在验证域后，该限制增加到 30 万个对象。 如果 Azure AD 中需要更多的对象，则请创建支持案例来请求增大此限制。 如果需要 50 万个以上的对象，则需要具备许可证，例如 Microsoft 365、Azure AD Premium 或企业移动性 + 安全性。
 
 ### <a name="prepare-your-on-premises-data"></a>准备本地数据
-* 使用 [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) 识别目录中的错误，如重复项和格式设置问题，然后同步到 Azure AD 和 Microsoft 365。
+* 先使用 [IdFix](https://github.com/Microsoft/idfix) 识别目录中的错误（如重复项和格式设置问题），然后再[同步到 Azure AD 和 Microsoft 365](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac)。
 * 查看[可以在 Azure AD 中启用的可选同步功能](how-to-connect-syncservice-features.md)并评估应启用哪些功能。
 
 ### <a name="on-premises-active-directory"></a>本地 Active Directory
@@ -243,4 +243,4 @@ Azure AD Connect 在安装了 Azure AD Connect 的服务器上安装以下组件
 * Azure VM：A2 配置或更高
 
 ## <a name="next-steps"></a>后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

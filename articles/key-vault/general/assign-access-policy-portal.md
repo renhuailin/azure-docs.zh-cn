@@ -3,19 +3,18 @@ title: 分配 Azure Key Vault 访问策略（门户）
 description: 如何使用 Azure 门户将 Key Vault 访问策略分配到安全主体或应用程序标识。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a64a91e6f41f3fba7584630380ffb878979b4389
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 443b269e7155fc206ee50e7907a7acded2c22f53
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968758"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751483"
 ---
 # <a name="assign-a-key-vault-access-policy-using-the-azure-portal"></a>使用 Azure 门户分配 Key Vault 访问策略
 
@@ -55,5 +54,5 @@ Key Vault 访问策略确定给定的安全主体（即用户、应用程序或�
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure Key Vault 安全性：标识和访问管理](security-overview.md#identity-management)
-- [保护 Key Vault](secure-your-key-vault.md)
+- [保护 Key Vault](security-overview.md)
 - [Azure Key Vault 开发人员指南](developers-guide.md)

@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: c11176f0c7760e76b755406bda96b72b302f8857
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1e3549a6f5f4f9d7f6a6da574378c90c20e42dcf
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102506933"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169566"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>创建 Azure 机器学习计算群集
 
@@ -44,11 +44,9 @@ Azure 机器学习计算群集是一个托管的计算基础结构，可让你�
 
 ## <a name="limitations"></a>限制
 
-* 请勿在工作区中为同一计算创建多个同步附件。 例如，使用两个不同的名称将一个计算群集附加到工作区。 每个新附件都会破坏先前存在的附件。
-
-    如果要重新附加计算目标来实现某个目的（例如，更改群集配置设置），则必须先删除现有附件。
-
 * 本文档中列出的某些场景标记为“预览”。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+* 目前仅支持通过 ARM 模板 [https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/workspaces/computes?tabs=json ] 创建（不更新）群集。 对于更新计算，建议现在使用 SDK、CLI 或 UX。
 
 * Azure 机器学习计算对可以分配的核心数等属性实施默认限制。 有关详细信息，请参阅[管理和请求 Azure 资源的配额](how-to-manage-quotas.md)。
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 9766379807e6d2708fd6935dd2ffbd7660f9988f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 633d0b9e454fe2906d98624ac2cdbcc9a8b6c7fa
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98216642"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105022256"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Azure 存储的虚拟网络服务终结点策略
 
@@ -109,6 +109,8 @@ ms.locfileid: "98216642"
   - 确保这些帐户不是子网上具有服务终结点策略的经典存储帐户。
 - 在子网上应用服务终结点策略后，Azure 托管服务会停止工作
   - 目前，服务终结点策略不支持托管服务。 *关注此空间，获取信息更新*。
+- 通过子网应用服务终结点策略后，对托管存储帐户的访问停止工作
+  - 服务终结点策略不支持托管存储帐户。 配置后，策略会默认拒绝对所有托管存储帐户的访问。 如果应用程序需要访问托管存储帐户，则不应将终结点策略用于此流量。
 
 ## <a name="provisioning"></a>设置
 

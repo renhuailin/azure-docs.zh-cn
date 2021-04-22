@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: 7a2384a451d851d1bede24fc2dd73a386c019430
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 61c24a7c14eb2fafff8a052f24a50a85f03de404
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443706"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107225948"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C：新增功能
 
@@ -87,7 +87,7 @@ ms.locfileid: "106443706"
 - [使用 Azure Active Directory B2C 设置通过 Twitter 帐户注册与登录](identity-provider-twitter.md)
 - [使用 Azure Active Directory B2C 设置通过微信帐户注册与登录](identity-provider-wechat.md)
 - [使用 Azure Active Directory B2C 设置通过微博帐户注册与登录](identity-provider-weibo.md)
-- [Azure AD B2C 自定义策略概述](custom-policy-trust-frameworks.md)
+- [Azure AD B2C 自定义策略概述](custom-policy-overview.md)
 
 
 ## <a name="december-2020"></a>2020 年 12 月

@@ -3,12 +3,12 @@ title: 使用托管映像创建自定义映像池
 description: 从托管映像创建 Batch 自定义映像池，以使用软件和数据为应用程序预配计算节点。
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 0a357a1d8a22341297f3bee73fb0867fb03f374f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9baa65c0f1c1844ea10e3d5b4f0b48924912d233
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94916570"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105023871"
 ---
 # <a name="use-a-managed-image-to-create-a-custom-image-pool"></a>使用托管映像创建自定义映像池
 
@@ -43,7 +43,7 @@ ms.locfileid: "94916570"
 若要为映像创建新 VM，请使用 Batch 支持的第一方 Azure 市场映像作为托管映像的基础映像。 仅第一方映像可以用作基础映像。 若要获取 Azure Batch 支持的 Azure 市场映像参考的完整列表，请参阅[列出节点代理 SKU](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) 操作。
 
 > [!NOTE]
-> 不能使用具有附加许可和购买条款的第三方映像作为基础映像。 有关这些市场映像的信息，请参阅 [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) 或 [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) VM 指南。
+> 不能使用具有附加许可和购买条款的第三方映像作为基础映像。 有关这些市场图像的信息，请参阅 [Linux](../virtual-machines/linux/cli-ps-findimage.md#check-the-purchase-plan-information) 或 [Windows](../virtual-machines/windows/cli-ps-findimage.md#view-purchase-plan-properties) VM 指南。
 
 - 确保使用托管磁盘创建 VM。 这是创建 VM 时的默认存储设置。
 - 不要在 VM 上安装自定义脚本扩展等 Azure 扩展。 如果映像包含预装的扩展，在部署 Batch 池时 Azure 可能会遇到问题。

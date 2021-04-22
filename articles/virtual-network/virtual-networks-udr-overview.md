@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/26/2017
+ms.date: 03/26/2021
 ms.author: aldomel
-ms.openlocfilehash: 512694d75bace40f33e346d28289f62e2adb04b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0dd053fa268e88c281c1fe6c00339fe6a6edf27a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98221008"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732595"
 ---
 # <a name="virtual-network-traffic-routing"></a>虚拟网络流量路由
 
@@ -96,6 +96,38 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 
 不能在用户定义路由中指定“VNet 对等互连”或“VirtualNetworkServiceEndpoint”作为下一跃点类型。  下一跃点类型为“VNet 对等互连”或“VirtualNetworkServiceEndpoint”的路由只能在配置虚拟网络对等互连或服务终结点时，通过 Azure 创建。 
 
+### <a name="service-tags-for-user-defined-routes-preview"></a>用户定义的路由的服务标记（预览版）
+
+现可将[服务标记](service-tags-overview.md)指定为用户定义的路由的地址前缀，而不是显式 IP 范围。 服务标记表示给定 Azure 服务的一组 IP 地址前缀。 Microsoft 会管理服务标记包含的地址前缀，并在地址发生更改时自动更新服务标记，从而尽量简化用户定义的路由的更新，并减少需要创建的路由数。 当前可在每个路由表中创建 25 个或更少的带服务标记的路由。 </br>
+
+> [!IMPORTANT]
+> 用户定义的路由的服务标记当前为预览版。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+#### <a name="exact-match"></a>完全匹配
+如果在具有显式 IP 前缀的路由和具有服务标记的路由之间存在精确的前缀匹配，将优先考虑具有显式前缀的路由。 如果带服务标记的多个路由具有匹配的 IP 前缀，将按以下顺序评估路由： 
+
+   1. 区域标记（例如 Storage.EastUS、AppService.AustraliaCentral）
+   2. 顶层标记（例如 Storage、AppService）
+   3. AzureCloud 区域标记（例如 AzureCloud.canadacentral、AzureCloud.eastasia）
+   4. AzureCloud 标记 </br></br>
+
+若要使用此功能，请在路由表命令中指定地址前缀参数的服务标记名称。 例如，可在 Powershell 中使用以下命令创建新的路由，将发送到 Azure 存储 IP 前缀的流量定向到虚拟设备： </br>
+
+```azurepowershell-interactive
+New-AzRouteConfig -Name "StorageRoute" -AddressPrefix "Storage" -NextHopType "VirtualAppliance" -NextHopIpAddress "10.0.100.4"
+```
+
+同样的命令在 CLI 中将为： </br>
+
+```azurecli-interactive
+az network route-table route create -g MyResourceGroup --route-table-name MyRouteTable -n StorageRoute --address-prefix Storage --next-hop-type VirtualAppliance --next-hop-ip-address 10.0.100.4
+```
+</br>
+
+
+> [!NOTE] 
+> 在公共预览版中，存在几个限制。 此功能目前在 Azure 门户中不受支持，只能通过 Powershell 和 CLI 使用。 不支持与容器一起使用。 
+
 ## <a name="next-hop-types-across-azure-tools"></a>各个 Azure 工具中的下一跃点类型
 
 下一跃点类型的显示和引用名称在 Azure 门户和命令行工具以及 Azure 资源管理器部署模型和经典部署模型中并不相同。 下表列出了在不同的工具和[部署模型](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)中引用每个下一跃点类型时所使用的名称：
@@ -109,6 +141,8 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 |无                            |无                                            |Null（不适用于 asm 模式下的经典 CLI）|
 |虚拟网络对等互连         |VNet 对等互连                                    |不适用|
 |虚拟网络服务终结点|虚拟网络服务终结点                   |不适用|
+
+
 
 ### <a name="border-gateway-protocol"></a>边界网关协议
 
@@ -140,7 +174,7 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 |源   |地址前缀  |下一跃点类型           |
 |---------|---------         |-------                 |
 |默认  | 0.0.0.0/0        |Internet                |
-|User     | 0.0.0.0/0        |虚拟网络网关 |
+|用户     | 0.0.0.0/0        |虚拟网络网关 |
 
 当流量的目标 IP 地址位于路由表中任何其他路由的地址前缀之外时，Azure 选择源为“用户”的路由，因为用户定义路由的优先级高于系统默认路由。
 
@@ -210,17 +244,17 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 |ID  |源 |状态  |地址前缀    |下一跃点类型          |下一跃点 IP 地址|用户定义路由的名称| 
 |----|-------|-------|------              |-------                |--------           |--------      |
 |1   |默认|无效|10.0.0.0/16         |虚拟网络        |                   |              |
-|2   |User   |活动 |10.0.0.0/16         |虚拟设备      |10.0.100.4         |Within-VNet1  |
-|3   |User   |活动 |10.0.0.0/24         |虚拟网络        |                   |Within-Subnet1|
+|2   |用户   |活动 |10.0.0.0/16         |虚拟设备      |10.0.100.4         |Within-VNet1  |
+|3   |用户   |活动 |10.0.0.0/24         |虚拟网络        |                   |Within-Subnet1|
 |4   |默认|无效|10.1.0.0/16         |VNet 对等互连           |                   |              |
 |5   |默认|无效|10.2.0.0/16         |VNet 对等互连           |                   |              |
-|6   |User   |活动 |10.1.0.0/16         |无                   |                   |ToVNet2-1-Drop|
-|7   |User   |活动 |10.2.0.0/16         |无                   |                   |ToVNet2-2-Drop|
+|6   |用户   |活动 |10.1.0.0/16         |无                   |                   |ToVNet2-1-Drop|
+|7   |用户   |活动 |10.2.0.0/16         |无                   |                   |ToVNet2-2-Drop|
 |8   |默认|无效|10.10.0.0/16        |虚拟网络网关|[X.X.X.X]          |              |
-|9   |User   |活动 |10.10.0.0/16        |虚拟设备      |10.0.100.4         |To-On-Prem    |
+|9   |用户   |活动 |10.10.0.0/16        |虚拟设备      |10.0.100.4         |To-On-Prem    |
 |10  |默认|活动 |[X.X.X.X]           |虚拟网络服务终结点    |         |              |
 |11  |默认|无效|0.0.0.0/0           |Internet               |                   |              |
-|12  |User   |活动 |0.0.0.0/0           |虚拟设备      |10.0.100.4         |Default-NVA   |
+|12  |用户   |活动 |0.0.0.0/0           |虚拟设备      |10.0.100.4         |Default-NVA   |
 
 每个路由 ID 的说明如下所示：
 
@@ -248,9 +282,9 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 |默认 |活动 |10.2.0.0/16         |VNet 对等互连              |                   |
 |默认 |活动 |10.10.0.0/16        |虚拟网络网关   |[X.X.X.X]          |
 |默认 |活动 |0.0.0.0/0           |Internet                  |                   |
-|默认 |可用 |10.0.0.0/8          |无                      |                   |
+|默认 |活动 |10.0.0.0/8          |无                      |                   |
 |默认 |活动 |100.64.0.0/10       |无                      |                   |
-|默认 |可用 |192.168.0.0/16      |无                      |                   |
+|默认 |活动 |192.168.0.0/16      |无                      |                   |
 
 Subnet2 的路由表包含所有 Azure 创建的默认路由，以及可选的 VNet 对等互连和虚拟网关可选路由。 向虚拟网络添加网关和对等互连时，Azure 向虚拟网络中的所有子网添加了可选路由。 向 Subnet1 添加地址前缀为 0.0.0.0/0 的用户定义路由时，Azure 会从 Subnet1 路由表中删除了地址前缀为 10.0.0.0/8、192.168.0.0/16 和 100.64.0.0/10 的路由 。  
 
