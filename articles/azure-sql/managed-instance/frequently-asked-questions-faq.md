@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 17e97503996b53868f12e74ed5a38dba63285426
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 9faaf79958443c252a8d913fbd7448389c610e09
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503192"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628571"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL 托管实例常见问题解答 (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -135,7 +135,7 @@ SQL 托管实例部署是否有配额限制？
 
 一种做法是[将数据库导出到 BACPAC](../database/database-export.md)，然后[导入 BACPAC 文件](../database/database-import.md)。 如果数据库小于 100 GB，则建议使用此方法。
 
-如果数据库中的所有表具有主键，并且数据库中没有内存中 OLTP 对象，则可以使用[事务复制](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017&preserve-view=true)。
+如果数据库中的所有表具有主键，并且数据库中没有内存中 OLTP 对象，则可以使用[事务复制](replication-two-instances-and-sql-server-configure-tutorial.md)。
 
 由于托管实例的数据库版本高于 SQL Server，因此无法将从托管实例创建的本机 COPY_ONLY 备份还原到 SQL Server。 有关更多详细信息，请参阅[仅复制备份](/sql/relational-databases/backup-restore/copy-only-backups-sql-server?preserve-view=true&view=sql-server-ver15)。
 
@@ -171,7 +171,7 @@ SQL 托管实例部署是否有配额限制？
 
 可以通过以下方式优化托管实例的性能：
 - [自动优化](../database/automatic-tuning-overview.md)，通过基于 AI 和机器学习的持续性能优化，提供最佳性能和稳定的工作负载。
--   [内存中 OLTP](../in-memory-oltp-overview.md)，可改进事务处理工作负载的吞吐量和延迟，并提供更快的业务见解。 
+-    [内存中 OLTP](../in-memory-oltp-overview.md)，可改进事务处理工作负载的吞吐量和延迟，并提供更快的业务见解。 
 
 若要进一步优化性能，请考虑应用一些有关[应用程序和数据库优化](../database/performance-guidance.md#tune-your-database)的最佳做法。
 如果工作负载包含大量小型事务，请考虑[将连接类型从代理切换为重定向模式](connection-types-overview.md#changing-connection-type)，以实现更低延迟和更高吞吐量。
@@ -214,7 +214,7 @@ SQL 托管实例的存储大小取决于所选的服务层级（“常规用途�
 
 如何在常规用途服务层级中优化存储性能？
 
-若要优化存储性能，请参阅[常规用途中的存储最佳做法](https://techcommunity.microsoft.com)。
+若要优化存储性能，请参阅[常规用途中的存储最佳做法](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525)。
 
 ## <a name="backup-and-restore"></a>备份和还原
 
@@ -263,9 +263,9 @@ SQL 托管实例负责对管理端口设置规则。 这通过名为[服务辅�
 是否可以设置 NVA 或本地防火墙以基于 FQDN 筛选出站管理流量？
 
 否。 由于以下几个原因，不支持此功能：
--   表示对入站管理请求的响应的路由流量是非对称的，无法正常工作。
--   转到存储的路由流量会受到吞吐量约束和延迟的影响，因此，我们无法提供预期的服务质量和可用性。
--   根据经验，这些配置容易出错，不受支持。
+-    表示对入站管理请求的响应的路由流量是非对称的，无法正常工作。
+-    转到存储的路由流量受到吞吐量约束和延迟的影响，因此，我们无法提供预期的服务质量和可用性。
+-    根据经验，这些配置容易出错，不受支持。
 
 是否可以为出站非管理流量设置 NVA 或防火墙？
 
@@ -416,9 +416,9 @@ SQL 托管实例提供[基于 vCore 的购买模型](sql-managed-instance-paas-o
 SQL 托管实例有哪些成本权益？
 
 可以通过以下方式使用 Azure SQL 权益节省成本：
--   利用 [Azure 混合权益](../azure-hybrid-benefit.md?tabs=azure-powershell)，最大化本地许可证的现有投资并节省高达 55%。 
--   通过[预留实例权益](../database/reserved-capacity-overview.md)，承诺保留计算资源，并节省费用多达 33%。 与 Azure 混合权益搭配使用时最多可节省 82%。 
--   利用 [Azure 开发/测试定价权益](https://azure.microsoft.com/pricing/dev-test/)（为正在进行的开发和测试工作负载提供折扣费率），可节省费用高达 55%（相对于标价）。
+-    利用 [Azure 混合权益](../azure-hybrid-benefit.md?tabs=azure-powershell)，最大化本地许可证的现有投资并节省高达 55%。 
+-    通过[预留实例权益](../database/reserved-capacity-overview.md)，承诺保留计算资源，并节省费用多达 33%。 与 Azure 混合权益搭配使用时最多可节省 82%。 
+-    利用 [Azure 开发/测试定价权益](https://azure.microsoft.com/pricing/dev-test/)（为正在进行的开发和测试工作负载提供折扣费率），可节省费用高达 55%（相对于标价）。
 
 **要获得预留实例权益需要符合什么条件？**
 

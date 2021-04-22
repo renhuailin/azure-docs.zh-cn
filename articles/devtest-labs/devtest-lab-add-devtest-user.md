@@ -4,10 +4,10 @@ description: 使用 Azure 门户或 PowerShell 在 Azure 开发测试实验室�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 2ca6a1ffa66ab294e34a1b4866953a393aba4d6d
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97511971"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中添加所有者和用户
@@ -15,12 +15,12 @@ ms.locfileid: "97511971"
 > 
 > 
 
-Azure 开发测试实验室中的访问权限由 [AZURE RBAC)  (azure 基于角色的访问控制 ](../role-based-access-control/overview.md)来控制。 使用 Azure RBAC，你可以将你的团队中的职责划分为 *角色* ，以便仅向用户授予执行作业所需的访问权限量。 其中三个 Azure 角色是 *所有者*、 *开发测试实验室用户* 和 *参与者*。 本文介绍三种主要 Azure 角色中的每个角色可以执行的操作。 在这里，将了解如何通过门户和 PowerShell 脚本将用户添加到实验室，以及如何在订阅级别添加用户。
+[Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 控制 Azure 开发测试实验室中的访问。 使用 Azure RBAC，你可以在团队中实现职责分离，也就是仅向用户授予他们执行作业所需的访问权限。 Azure 的三个角色分别是所有者、开发测试实验室用户和参与者。 在本文中，你将了解这三个主要 Azure 角色分别可以执行的操作。 在这里，将了解如何通过门户和 PowerShell 脚本将用户添加到实验室，以及如何在订阅级别添加用户。
 
 ## <a name="actions-that-can-be-performed-in-each-role"></a>每个角色可以执行的操作
 可以为用户分配一下三种主要角色：
 
-* 所有者
+* “所有者”
 * DevTest 实验室用户
 * 参与者
 
@@ -34,7 +34,7 @@ Azure 开发测试实验室中的访问权限由 [AZURE RBAC)  (azure 基于角�
 | **VM 基本任务** | | | |
 | 添加和删除自定义映像 |否 |是 |是 |
 | 添加、更新和删除公式 |是 |是 |是 |
-| 启用 Marketplace 映像 |否 |是 |是 |
+| 启用市场图像 |否 |是 |是 |
 | **VM 任务** | | | |
 | 创建 VM |是 |是 |是 |
 | 启动、停止和删除 VM |用户仅创建 VM |是 |是 |
@@ -54,9 +54,9 @@ Azure 开发测试实验室中的访问权限由 [AZURE RBAC)  (azure 基于角�
 以下步骤介绍在 Azure 开发测试实验室中将所有者或用户添加到实验室的过程：
 
 1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
-2. 选择 " **所有服务**"，然后从列表中选择 " **开发测试实验室** "。
+2. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 3. 从实验室列表，选择所需的实验室。
-4. 在实验室的边栏选项卡中，选择 " **配置和策略**"。 
+4. 在实验室的边栏选项卡中，选择“配置和策略”。 
 5. 在“配置和策略”页面，选择左侧菜单中的“访问控制 (IAM)”。 
 6. 选择工具栏上的“添加角色分配”以将用户添加到角色。
 1. 在“添加权限”窗口中，执行以下操作： 
@@ -116,7 +116,7 @@ Azure 权限在 Azure 中从父范围传播到子范围。 因此，包含实验
 4. 选择“访问”图标。 
    
     ![访问用户](./media/devtest-lab-add-devtest-user/access-users.png)
-5. 在 " **用户** " 边栏选项卡中，选择 " **添加**"。
+5. 在“用户”边栏选项卡上选择“添加”。
    
     ![添加用户](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
 6. 在“选择角色”边栏选项卡上，选择“所有者”。

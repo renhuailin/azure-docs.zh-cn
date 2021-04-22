@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 2278b9d70e888fa546dc64da4743b2bf5b6c45e8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7c5c2f1d055ec6270892873548872b20b17b4158
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100587523"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566891"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure Monitor Application Insights 代理 API 参考
 
@@ -100,6 +100,8 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 ```
 
+> [!NOTE]
+> 在这种情况下，AppFilter 的命名可能会造成混淆，`AppFilter` 设置应用程序名称 regex 筛选器（如果 IIS 上是 .Net，则为 HostingEnvironment.SiteName）。 `VirtualPathFilter` 设置虚拟路径 regex 筛选器（如果 IIS 上是 .Net，则为 HostingEnvironment.ApplicationVirtualPath）。 如要检测单个应用程序，你可以使用如下 VirtualPathFilter：`Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap @(@{VirtualPathFilter="^/MyAppName$"; InstrumentationSettings=@{InstrumentationKey='<your ikey>'}})`
 
 ### <a name="parameters"></a>parameters
 

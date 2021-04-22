@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7d089d8f57bf8ef1278d262129cc8ddfc81d581
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
-ms.translationtype: MT
+ms.openlocfilehash: 52cb4480e8b7820d656b8ab66f12486c2062dca5
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257737"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443485"
 ---
 # <a name="compare-remote-access-solutions"></a>比较远程访问解决方案
 
@@ -50,18 +50,18 @@ Azure Active Directory 应用程序代理是 Microsoft 提供的两个远程访�
 | 外围安全区域 (DMZ) 中无组件 | - | - | - | 是 |
 | 无入站连接 | - | - | - | 是 |
 
-在大多数情况下，我们建议 Azure AD 应用程序代理作为新式解决方案。 仅在需要为 AD FS 提供代理服务器以及无法使用 Azure Active Directory 中的自定义域时，才优先考虑 Web 应用程序代理。 
+大多数情况下，我们建议使用 Azure AD 应用程序代理作为一个现代解决方案。 仅在需要为 AD FS 提供代理服务器以及无法使用 Azure Active Directory 中的自定义域时，才优先考虑 Web 应用程序代理。 
 
 与同类产品相比，Azure AD 应用程序代理提供许多独一无二的优势，其中包括：
 
 - 将 Azure AD 扩展到本地资源
    - 云级安全性和保护
-   - 条件访问和多重身份验证等功能易于启用
+   - 可轻松启用条件访问和多重身份验证等功能
 - 外围安全区域中无组件
 - 不需要任何入站连接
-- 用户可以在 "我的应用" 页上找到其所有应用程序，包括 Microsoft 365、Azure AD 集成的 SaaS 应用和本地 web 应用。 
+- 一个“我的应用”页面，用户可通过此页面访问自己的所有应用程序，包括 Microsoft 365、集成了 Azure AD 的 SaaS 应用程序以及本地 Web 应用。 
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure AD 应用程序提供对本地应用程序的安全远程访问](application-proxy.md)
+- [使用 Azure AD 应用程序代理提供对本地应用程序的安全远程访问](application-proxy.md)

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperf-fy21q1, contperf-fy21q2
 ms.date: 12/14/2020
-ms.openlocfilehash: 130a5a58fc7dab6f94c011cf9764743f9114e48a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 5dabae76308f32da7968d8cfa89b95f1eb19c142
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942638"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104863762"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>自动缩放 Azure HDInsight 群集
 
@@ -91,7 +91,7 @@ Azure HDInsight 的免费“自动缩放”功能可根据先前设置的条件�
     * 工作器节点 **最小** 数目。
     * 工作器节点 **最大** 数目。
 
-    ![启用工作器节点的基于负载的自动缩放](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-autoscale.png)
+    :::image type="content" source="./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-autoscale.png" alt-text="启用工作器节点的基于负载的自动缩放":::
 
 工作节点的初始数量必须介于最小值和最大值之间（含最大值和最小值）。 此值定义创建群集时的群集初始大小。 工作器节点最小数目至少应设置为 3。 将群集缩放成少于三个节点可能导致系统停滞在安全模式下，因为没有进行充分的文件复制。  有关详细信息，请参阅[停滞在安全模式下](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode)。
 
@@ -108,7 +108,7 @@ Azure HDInsight 的免费“自动缩放”功能可根据先前设置的条件�
 1. 编辑该条件生效的时间，以及群集要缩放到的节点数。
 1. 根据需要添加更多条件。
 
-    ![启用工作器节点的基于计划的创建](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png)
+    :::image type="content" source="./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png" alt-text="启用工作器节点的基于计划的创建":::
 
 节点数最小为 3，最大为添加条件之前输入的最大工作器节点数。
 
@@ -116,7 +116,7 @@ Azure HDInsight 的免费“自动缩放”功能可根据先前设置的条件�
 
 请在“节点大小”下的下拉列表中选择一个 VM，通过这种方式选择工作器节点的 VM 类型。 为每个节点类型选择 VM 类型后，可以看到整个群集的估算成本范围。 请根据预算调整 VM 类型。
 
-![启用工作器节点的基于计划的自动缩放节点大小](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-vmsize.png)
+:::image type="content" source="./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-vmsize.png" alt-text="启用工作器节点的基于计划的自动缩放节点大小":::
 
 你的订阅具有针对每个区域的容量配额。 头节点核心总数加最大工作器节点数不能超过容量配额。 但是，此配额是软性限制；始终可创建支持票证来轻松地增加此配额。
 
@@ -129,7 +129,7 @@ Azure HDInsight 的免费“自动缩放”功能可根据先前设置的条件�
 
 #### <a name="load-based-autoscaling"></a>基于负载的自动缩放
 
-可以使用 Azure 资源管理器模板创建支持基于负载的自动缩放的 HDInsight 群集，方法是将 `autoscale` 节点添加到包含属性 `minInstanceCount` 和 `maxInstanceCount` 的 `computeProfile` > `workernode` 节，如以下 JSON 代码片段所示。 有关完整的资源管理器模板，请参阅 [快速入门模板：部署启用了基于负载的自动缩放的 Spark 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased)。
+可以使用 Azure 资源管理器模板创建支持基于负载的自动缩放的 HDInsight 群集，方法是将 `autoscale` 节点添加到包含属性 `minInstanceCount` 和 `maxInstanceCount` 的 `computeProfile` > `workernode` 节，如以下 JSON 代码片段所示。 有关完整的资源管理器模板，请参阅[快速启动模板：在启用基于负载的自动缩放的情况下部署 Spark 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased)。
 
 ```json
 {
@@ -157,7 +157,7 @@ Azure HDInsight 的免费“自动缩放”功能可根据先前设置的条件�
 
 #### <a name="schedule-based-autoscaling"></a>基于计划的自动缩放
 
-可以使用 Azure 资源管理器模板创建支持基于计划的自动缩放的 HDInsight 群集，方法是将 `autoscale` 节点添加到 `computeProfile` > `workernode` 节。 `autoscale` 节点包含 `recurrence`，其中的 `timezone` 和 `schedule` 描述了更改生效的时间。 有关完整的资源管理器模板，请参阅 [在启用基于计划的自动缩放的情况下部署 Spark 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-schedulebased)。
+可以使用 Azure 资源管理器模板创建支持基于计划的自动缩放的 HDInsight 群集，方法是将 `autoscale` 节点添加到 `computeProfile` > `workernode` 节。 `autoscale` 节点包含 `recurrence`，其中的 `timezone` 和 `schedule` 描述了更改生效的时间。 有关完整的资源管理器模板，请参阅[在启用基于计划的自动缩放的情况下部署 Spark 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-schedulebased)。
 
 ```json
 {
@@ -193,7 +193,7 @@ Azure HDInsight 的免费“自动缩放”功能可根据先前设置的条件�
 
 若要在运行中的群集上启用自动缩放，请选择“设置”下的“群集大小”。 然后选择“启用自动缩放”。 选择所需的自动缩放类型，然后输入基于负载或基于计划的缩放选项。 最后，选择“保存”。
 
-![启用工作器节点的基于计划的自动缩放运行群集](./media/hdinsight-autoscale-clusters/azure-portal-settings-autoscale.png)
+:::image type="content" source="./media/hdinsight-autoscale-clusters/azure-portal-settings-autoscale.png" alt-text="启用工作器节点的基于计划的自动缩放运行群集":::
 
 #### <a name="using-the-rest-api"></a>使用 REST API
 
@@ -217,7 +217,7 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 
 Azure 门户中列出的群集状态可帮助你监视自动缩放活动。
 
-![启用工作器节点的基于负载的自动缩放群集状态](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
+:::image type="content" source="./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png" alt-text="启用工作器节点的基于负载的自动缩放群集状态":::
 
 以下列表解释了你可能会看到的所有群集状态消息。
 
@@ -237,7 +237,7 @@ Azure 门户中列出的群集状态可帮助你监视自动缩放活动。
 
 在“监视”下选择“指标”。  然后选择“添加指标”，并从“指标”下拉框中选择“活动辅助角色数”。   选择右上角的按钮来更改时间范围。
 
-![启用工作器节点的基于计划的自动缩放指标](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
+:::image type="content" source="./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png" alt-text="启用工作器节点的基于计划的自动缩放指标":::
 
 ## <a name="best-practices"></a>最佳做法
 

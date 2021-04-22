@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 56ac58e47bffc73c7079af043ad567a77e8f3323
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101735499"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>为基于 IIS 的多层 Web 应用程序设置灾难恢复
@@ -128,7 +128,7 @@ Azure|不可用|是
 如果使用 ARR 虚拟机，请在“组 4”后面添加 [IIS ARR 故障转移脚本](/samples/browse/?redirectedfrom=TechNet-Gallery)来更新 IP 地址。
 
 #### <a name="tlsssl-certificate-binding-for-an-https-connection"></a>用于 HTTPS 连接的 TLS/SSL 证书绑定
-网站可能具有关联的 TLS/SSL 证书，有助于确保 web 服务器与用户浏览器之间的安全通信。 如果网站有一个 HTTPS 连接，并且将一个 HTTPS 站点绑定关联到了具有 TLS/SSL 证书绑定的 IIS 服务器的 IP 地址，则故障转移后，必须使用 IIS 虚拟机的 IP 地址来为证书添加新的站点绑定。
+网站可与 TLS/SSL 证书关联，帮助确保在 Web 服务器与用户浏览器之间实现安全通信。 如果网站有一个 HTTPS 连接，并且将一个 HTTPS 站点绑定关联到了具有 TLS/SSL 证书绑定的 IIS 服务器的 IP 地址，则故障转移后，必须使用 IIS 虚拟机的 IP 地址来为证书添加新的站点绑定。
 
 可针对以下组件颁发 TLS/SSL 证书：
 

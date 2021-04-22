@@ -7,10 +7,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.openlocfilehash: 51043f0a1009994528783a1b56ec5ccec68e99b3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98931775"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>为 Azure HDInsight 群集选择适当的 VM 大小
@@ -58,7 +58,7 @@ Azure 中的虚拟机系列经过优化，可以适应不同的用例。 在下�
 | HBase | 全部 | F4 和更大 | 否 | 否 |
 | LLAP | disabled | 否 | 否 | 否 |
 | Storm | disabled | 否 | 否 | 否 |
-| ML 服务 | 仅限 HDI 3。6 | F4 和更大 | 否 | 否 |
+| ML 服务 | 仅 HDI 3.6 | F4 和更大 | 否 | 否 |
 
 若要查看每个 F 系列 SKU 的规格，请参阅 [F 系列 VM 大小](https://azure.microsoft.com/blog/f-series-vm-size/)。
 

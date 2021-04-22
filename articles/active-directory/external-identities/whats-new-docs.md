@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 外部标识的新增功能
 description: 面向 Azure Active Directory 外部标识的新文档和更新的文档。
-ms.date: 03/08/2021
+ms.date: 04/05/2021
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,39 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: dda3f7c8f4a9a21e16ebab7d243a004c01a40eed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0654992831dcda65c3d5f53cc22aef0afd4d277
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102453659"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449743"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory 外部标识：新增功能
 
 欢迎了解 Azure Active Directory 外部标识文档中的新增内容。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解外部标识服务的新增功能，请参阅 [Azure Active Directory 中的新增功能](../fundamentals/whats-new.md)。
+
+## <a name="march-2021"></a>2021 年 3 月
+
+### <a name="new-articles"></a>新文章
+
+- [Microsoft 帐户 (MSA) 标识提供者（用于外部标识）](microsoft-account.md)
+
+### <a name="updated-articles"></a>更新的文章
+
+- [向用户流添加 API 连接器](self-service-sign-up-add-api-connector.md)
+- [什么是 Azure Active Directory B2B 中的来宾用户访问权限？](what-is-b2b.md)
+- [Azure Active Directory B2B 协作用户的属性](user-properties.md)
+- [教程：批量邀请 Azure AD B2B 协作用户](tutorial-bulk-invite.md)
+- [将自定义审批工作流添加到自助注册](self-service-sign-up-add-approvals.md)
+- [重置来宾用户的邀请兑换状态](reset-redemption-status.md)
+- [使用 API 连接器自定义并扩展自助注册](api-connectors-overview.md)
+- [Azure Active Directory B2B 协作常见问题解答](faq.md)
+- [Azure Active Directory B2B 协作邀请兑换](redemption-experience.md)
+- [外部标识的标识提供者](identity-providers.md)
+- [向应用添加自助注册用户流（预览）](self-service-sign-up-user-flow.md)
+- [电子邮件一次性密码身份验证](one-time-passcode.md)
+- [在 Azure 门户中添加 Azure Active Directory B2B 协作用户](add-users-administrator.md)
+
 
 ## <a name="february-2021"></a>2021 年 2 月
 

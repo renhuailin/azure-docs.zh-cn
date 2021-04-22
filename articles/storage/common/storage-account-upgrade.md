@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/09/2021
+ms.date: 03/30/2021
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 85520032e9bc63b6296e40dd1c1055e36762dcc8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 30c73849d07c1495251c17510ea71f29c674c618
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102555000"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967483"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>升级到常规用途 v2 存储帐户
 
@@ -28,7 +28,7 @@ ms.locfileid: "102555000"
 > [!NOTE]
 > 虽然 Microsoft 建议在大多数情况下都采用常规用途 v2 帐户，但 Microsoft 仍为新客户和现有客户提供对常规用途 v1 帐户的支持。 只要新区域中可使用 Azure 存储，用户就可以在新区域中创建常规用途 v1 存储帐户。 Microsoft 目前尚无计划停止对常规用途 v1 帐户的支持，并将在停用任何 Azure 存储功能之前至少提前一年发送相关通知。 Microsoft 将继续为常规用途 v1 帐户提供安全更新，但不会再为此类型的帐户开发任何新功能。
 >
-> 从 2020 年 10 月 1 日起，新 Azure 存储区域中的常规用途 v1 帐户的定价与这些区域中的常规用途 v2 帐户的定价一样。 现有 Azure 存储区域中的定价尚未更改。 有关特定区域中的常规用途 v1 帐户的定价详细信息，请参阅 Azure 存储定价页。 选择所在的区域，然后选择“产品/服务定价”旁边的“其他”。
+> 从 2020 年 10 月 1 日起，新 Azure 区域中的常规用途 v1 帐户的定价与这些区域中的常规用途 v2 帐户的定价一样。 对于 2020 年 10 月 1 日之前存在的 Azure 区域，常规用途 v1 帐户的定价未发生变化。 有关特定区域中的常规用途 v1 帐户的定价详细信息，请参阅 Azure 存储定价页。 选择所在的区域，然后选择“产品/服务定价”旁边的“其他”。
 
 ## <a name="upgrade-an-account"></a>升级帐户
 

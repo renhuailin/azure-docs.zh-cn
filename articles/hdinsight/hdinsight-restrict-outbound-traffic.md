@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 297c1d4afca5a1d605a046d69b086a05a9322bc7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06990a5bd1d6619f07952e84870a01f5cd5068df
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104872075"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384419"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>使用防火墙配置 Azure HDInsight 群集的出站网络流量
 
@@ -32,7 +32,7 @@ HDInsight 出站流量依赖项几乎完全都是使用 FQDN 进行定义的。 
 
 1. 创建子网。
 1. 创建防火墙。
-1. 将应用程序规则添加到防火墙
+1. 向防火墙添加应用程序规则。
 1. 将网络规则添加到防火墙。
 1. 创建一个路由表。
 
@@ -66,17 +66,17 @@ HDInsight 出站流量依赖项几乎完全都是使用 FQDN 进行定义的。 
 
     **FQDN 标记部分**
 
-    | 名称 | 源地址 | FQDN 标记 | 说明 |
+    | 名称 | 源地址 | FQDN 标记 | 注释 |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate 和 HDInsight | HDI 服务所需 |
 
     **目标 FQDN 部分**
 
-    | 名称 | 源地址 | 协议:端口 | 目标 FQDN | 说明 |
+    | 名称 | 源地址 | 协议:端口 | 目标 FQDN | 注释 |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | 允许 Windows 登录活动 |
     | Rule_3 | * | https:443 | login.microsoftonline.com | 允许 Windows 登录活动 |
-    | Rule_4 | * | https:443、http:80 | storage_account_name.blob.core.windows.net | 请将 `storage_account_name` 替换为实际的存储帐户名称。 要仅使用 https 连接，请确保在存储帐户上启用了[“需要安全传输”](../storage/common/storage-require-secure-transfer.md)。 如果使用专用终结点来访问存储帐户，则不需要此步骤，并且存储流量不会转发到防火墙。|
+    | Rule_4 | * | https:443 | storage_account_name.blob.core.windows.net | 请将 `storage_account_name` 替换为实际存储帐户名称。 确保在存储帐户上启用[“需要安全传输”](../storage/common/storage-require-secure-transfer.md)。 如果使用专用终结点来访问存储帐户，则不需要此步骤，并且存储流量不会转发到防火墙。|
 
    :::image type="content" source="./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png" alt-text="标题：输入应用程序规则集合详细信息":::
 
@@ -84,7 +84,7 @@ HDInsight 出站流量依赖项几乎完全都是使用 FQDN 进行定义的。 
 
 ### <a name="configure-the-firewall-with-network-rules"></a>使用网络规则配置防火墙
 
-创建网络规则以正确配置 HDInsight 群集。
+创建网络规则以正确配置 HDInsight 群集。 
 
 1. 完成上一步骤后，导航到“网络规则集合” > “+ 添加网络规则集合”。 
 
@@ -102,14 +102,14 @@ HDInsight 出站流量依赖项几乎完全都是使用 FQDN 进行定义的。 
 
     | 名称 | 协议 | 源地址 | 服务标记 | 目标端口 | 注释 |
     | --- | --- | --- | --- | --- | --- |
-    | Rule_5 | TCP | * | SQL | 1433 | 如果使用的是 HDInsight 提供的默认 SQL 服务，请在“服务标记”部分为 SQL 配置网络规则，以便记录和审核 SQL 通信。 除非在 HDInsight 子网中为 SQL Server 配置了服务终结点，否则它将绕过防火墙。 如果对 Ambari、Oozie、Ranger 和 Hive 元存储使用自定义 SQL Server，则只需允许流量发送到自己的自定义 SQL Server 即可。|
+    | Rule_5 | TCP | * | SQL | 1433、11000-11999 | 如果使用的是 HDInsight 提供的默认 SQL 服务，请在“服务标记”部分为 SQL 配置网络规则，以便记录和审核 SQL 通信。 除非在 HDInsight 子网中为 SQL Server 配置了服务终结点，否则它将绕过防火墙。 如果对 Ambari、Oozie、Ranger 和 Hive 元存储使用自定义 SQL Server，则只需允许流量发送到自己的自定义 SQL Server 即可。 请参阅 [Azure SQL 数据库和 Azure Synapse Analytics 连接体系结构](../azure-sql/database/connectivity-architecture.md)，了解 11000-11999 为何还需要 1433 之外的端口范围。 |
     | Rule_6 | TCP | * | Azure Monitor | * | （可选）计划使用自动缩放功能的客户应添加此规则。 |
     
    :::image type="content" source="./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png" alt-text="标题：输入应用程序规则集合":::
 
 1. 选择 **添加** 。
 
-### <a name="create-and-configure-a-route-table"></a>创建并配置路由表
+### <a name="create-and-configure-a-route-table"></a>创建并配置路由表 
 
 创建包含以下条目的路由表：
 

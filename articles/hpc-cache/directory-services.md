@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: v-erkel
 ms.openlocfilehash: fd5dce0760953bf19c72e1a1062a9c03ffe861e7
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103563362"
 ---
 # <a name="configure-directory-services"></a>配置目录服务
@@ -30,7 +30,7 @@ ms.locfileid: "103563362"
 
 “下载的用户名”字段显示最新组信息的下载状态。
 
-![门户中目录服务设置页的屏幕截图，其中选择了“扩展组”对应的“是”选项，并已打开标有“下载源”的下拉菜单](media/directory-services-select-group-source.png)
+![门户中目录服务设置页的屏幕截图，其中“扩展组”选择了“是”选项，并标有“下载源”的下拉菜单已打开](media/directory-services-select-group-source.png)
 
 ## <a name="configure-active-directory"></a>配置 Active Directory
 

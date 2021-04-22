@@ -8,12 +8,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: f924cb7462f7f8c9939ec261b7ef200ceb8ea70b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 51c9f924c6fe3ac6db86d60e26749d35bc4ab733
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92109147"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105108938"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的数据加密
 
@@ -135,4 +135,4 @@ Data Lake Storage Gen1 提供两种管理主加密密钥 (MEK) 的模式。 现�
 此操作应该在不到两分钟内完成，且密钥轮换不会造成停机。 完成此操作后，可以看到新版密钥处于使用状态。
 
 > [!IMPORTANT]
-> 密钥轮换操作完成后，旧版本的密钥不再活跃地用于加密数据。  但是，在数据的冗余副本甚至都受影响的意外失败的极少数情况下，可能会从仍使用旧密钥的备份还原数据。 若要确保在这些少数情况下数据可访问，请保留以前版本的加密密钥的副本。 有关灾难恢复规划的最佳做法，请参阅 [Data Lake Storage Gen1 数据灾难恢复指南](data-lake-store-disaster-recovery-guidance.md)。
+> 密钥旋转操作完成后，旧版本的密钥不再用于加密新数据。 但是在某些情况下，访问旧数据可能仍需要旧密钥。 若要允许读取此类较旧的数据，请不要删除旧密钥

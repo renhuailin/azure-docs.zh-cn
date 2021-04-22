@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 01/19/2021
 ms.author: curtand
 ms.openlocfilehash: d82b59e887eb35a972812dd82dbca5ca6bc5179b
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100096202"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>从“设备”页管理连接的设备
@@ -27,10 +27,10 @@ ms.locfileid: "100096202"
 - 禁用不再拥有、丢失或被盗的任何设备。
 
 >[!Important]
->本文适用于尝试更新连接到工作或学校帐户的设备信息的用户。 如果你在使用个人 Microsoft 帐户登录时遇到错误，你仍可以使用组织的域名 (例如，你可以通过以下 Url 之一中的管理员使用你的组织的域名例如 contoso.com) 或你的组织的 **租户 ID** ：
+>本文适用于尝试更新连接到工作或学校帐户的设备信息的用户。 如果你在使用个人 Microsoft 帐户登录时遇到错误，你仍可以使用组织的域名（例如 contoso.com）登录，也可以以管理员身份使用组织的“租户 ID”通过以下 URL 之一登录：
 >
->   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
->   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+>   - https://myaccount.microsoft.com?tenantId= your_domain_name
+>   - https://myaccount.microsoft.com?tenant= your_tenant_ID
 >
 >如果你作为管理员正在为你的员工和其他用途查找设备管理相关信息，请参阅[设备标识文档](../devices/index.yml)。
 
@@ -67,7 +67,7 @@ ms.locfileid: "100096202"
 
     ![包含 BitLocker 密钥选项的设备页](media/my-account-portal/my-account-portal-devices-bitlocker.png)
 
-2. 选择 "查看锁定设备的 **Bitlocker 密钥** "，并记下锁定设备的 bitlocker 密钥。
+2. 针对锁定设备选择“查看 BitLocker 密钥”，并记下锁定设备的 BitLocker 密钥。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e29e20d071e992b941b2f6bd803c8dade044fbfd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 3c8dd5cd9da2fd1e741635a6471c0662066d147e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592472"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105709933"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>收集和分析 Azure 认知搜索的日志数据
 
-诊断或操作日志提供 Azure 认知搜索的详细操作的见解，可用于监视服务和工作负荷流程。 在内部，某些系统信息会短时存在于后端，但足以进行调查和分析（如果你提交了支持票证）。 但是，如果想要自我掌控操作数据，则应配置诊断设置以指定要从何处收集日志记录信息。
+诊断或操作日志提供 Azure 认知搜索的详细操作的见解，可用于监视服务和工作负荷流程。 在内部，Microsoft 会在后端短暂地保留系统信息（大约 30 天），如果你提交了支持票证，这个时间足以进行调查和分析。 但是，如果想要自行掌握操作数据，则应配置诊断设置以指定要从何处收集日志记录信息。
 
 诊断日志记录功能是通过与 [Azure Monitor](../azure-monitor/index.yml) 集成实现的。 
 
@@ -76,14 +76,14 @@ ms.locfileid: "100592472"
 
 1. 输入以下查询以返回表格式结果集。
 
-   ```
+   ```kusto
    AzureMetrics
-    | project MetricName, Total, Count, Maximum, Minimum, Average
+   | project MetricName, Total, Count, Maximum, Minimum, Average
    ```
 
 1. 从 **AzureDiagnostics** 开始重复前面的步骤，以返回所有列供参考，然后运行一个更有选择性的查询来提取更有意义的信息。
 
-   ```
+   ```kusto
    AzureDiagnostics
    | project OperationName, resultSignature_d, DurationMs, Query_s, Documents_d, IndexName_s
    | where OperationName == "Query.Search" 
@@ -99,7 +99,7 @@ ms.locfileid: "100592472"
 
 返回操作的列表以及每个操作的计数。
 
-```
+```kusto
 AzureDiagnostics
 | summarize count() by OperationName
 ```
@@ -108,7 +108,7 @@ AzureDiagnostics
 
 将查询请求关联到索引编制操作，并在时间图表中呈现数据点，以确定操作是否一致。
 
-```
+```kusto
 AzureDiagnostics
 | summarize OperationName, Count=count()
 | where OperationName in ('Query.Search', 'Indexing.Index')
@@ -141,7 +141,7 @@ Azure Monitor 捕获的记录事件包括与索引编制和查询相关的事件
 | 名称 | 类型 | 示例 | 注释 |
 | --- | --- | --- | --- |
 | timeGenerated |datetime |"2018-12-07T00:00:43.6872559Z" |操作的时间戳 |
-| ResourceId |字符串 |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |ResourceId |
+| ResourceId |string |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |ResourceId |
 | operationName |string |“Query.Search” |操作的名称 |
 | operationVersion |string |"2020-06-30" |使用的 api-version |
 | category |string |“OperationLogs” |constant |
@@ -167,7 +167,7 @@ Azure Monitor 捕获的记录事件包括与索引编制和查询相关的事件
 
 | 名称 | 类型 | 示例 | 注释 |
 | --- | --- | --- | --- |
-| ResourceId |字符串 |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |资源 ID |
+| ResourceId |string |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |资源 ID |
 | metricName |string |“Latency” |度量值名称 |
 | time |datetime |"2018-12-07T00:00:43.6872559Z" |操作的时间戳 |
 | average |int |64 |指标时间间隔内原始样本的平均值，单位为秒或百分比，具体取决于指标。 |

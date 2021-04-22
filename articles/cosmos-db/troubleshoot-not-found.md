@@ -45,7 +45,7 @@ HTTP 状态代码 404 表示资源不再存在。
 修复导致错误组合的应用程序逻辑。 
 
 ### <a name="invalid-character-in-an-item-id"></a>项 ID 中的字符无效
-项被插入 Azure Cosmos DB，并且项 ID 中带有[无效字符](/dotnet/api/microsoft.azure.documents.resource.id#remarks)。
+项已插入 Azure Cosmos DB，并且项 ID 中带有[无效字符](/dotnet/api/microsoft.azure.documents.resource.id#remarks)。
 
 #### <a name="solution"></a>解决方案：
 将 ID 更改为不包含特殊字符的其他值。 如果不能更改 ID，则可以对 ID 进行 Base64 编码以将特殊字符转义。 Base64 仍然会生成一个包含无效字符“/”的名称，该字符需要替换。

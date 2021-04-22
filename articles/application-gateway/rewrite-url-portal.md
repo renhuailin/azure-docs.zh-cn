@@ -2,24 +2,24 @@
 title: 使用 Azure 应用程序网关重写 URL 和查询字符串 - Azure 门户
 description: 了解如何使用 Azure 门户来配置 Azure 应用程序网关以重写 URL 和查询字符串
 services: application-gateway
-author: surajmb
+author: azhar2005
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 7/16/2020
-ms.author: surmb
-ms.openlocfilehash: ec58c6f97efdbcb91071bcea98bbbc614833246d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 4/05/2021
+ms.author: azhussai
+ms.openlocfilehash: b8ddc5e57b9ce56d6bce7e220bc840ba0fa43ae2
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92215767"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384751"
 ---
-# <a name="rewrite-url-with-azure-application-gateway---azure-portal-preview"></a>使用 Azure 应用程序网关重写 URL - Azure 门户（预览版）
+# <a name="rewrite-url-with-azure-application-gateway---azure-portal"></a>使用 Azure 应用程序网关重写 URL - Azure 门户
 
 本文介绍如何使用 Azure 门户来配置[应用程序网关 v2 SKU](application-gateway-autoscaling-zone-redundant.md) 实例以重写 URL。
 
 >[!NOTE]
-> URL 重写功能为预览版，仅适用于 Standard_v2 和 WAF_v2 SKU 版应用程序网关。 不建议在生产环境中使用。 若要了解关于预览的详细信息，请参阅[此处的使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> URL 重写功能仅适用于 Standard_v2 和 WAF_v2 SKU 版应用程序网关。 在启用 WAF 的网关上配置 URL 重写时，将在重写的请求标头和 URL 上进行 WAF 评估。 [了解详细信息](rewrite-http-headers-url.md#using-url-rewrite-or-host-header-rewrite-with-web-application-firewall-waf_v2-sku)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

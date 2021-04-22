@@ -14,12 +14,12 @@ ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a632c0e31de1c2d7e5417656d537e5f9f82ecfbe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 26b519ce11747ab3374d9bd286800a6c93129019
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96180483"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105565225"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中为 Azure AD 角色配置安全警报
 
@@ -50,9 +50,10 @@ ms.locfileid: "96180483"
 
 ### <a name="administrators-arent-using-their-privileged-roles"></a>管理员不使用其特权角色
 
-| | |
+严重级别：低
+
+| | 说明 |
 | --- | --- |
-| **严重性** | 低 |
 | **为何收到此警报？** | 为用户分配他们不需要的特权角色会增大受攻击的可能性。 攻击者更容易忽略不经常使用的帐户。 |
 | **如何修复？** | 查看列表中的用户，将其从不需要的特权角色中删除。 |
 | **防护** | 特权角色只分配给有业务需要的用户。 </br>安排定期的[访问评审](pim-how-to-start-security-review.md)，以确认用户是否仍需要访问权限。 |
@@ -62,9 +63,10 @@ ms.locfileid: "96180483"
 
 ### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>角色无需多重身份验证进行激活
 
-| | |
+严重级别：低
+
+| | 说明 |
 | --- | --- |
-| **严重性** | 低 |
 | **为何收到此警报？** | 如果不执行多重身份验证，则遭到入侵的用户可以激活特权角色。 |
 | **如何修复？** | 查看角色列表，[要求执行多重身份验证](pim-how-to-change-default-settings.md)（针对每个角色）。 |
 | **防护** | 针对每个角色[要求执行 MFA](pim-how-to-change-default-settings.md)。  |
@@ -72,17 +74,19 @@ ms.locfileid: "96180483"
 
 ### <a name="the-organization-doesnt-have-azure-ad-premium-p2"></a>组织没有 Azure AD Premium P2
 
-| | |
+严重级别：低
+
+| | 说明 |
 | --- | --- |
-| **严重性** | 低 |
 | **为何收到此警报？** | 当前 Azure AD 组织没有 Azure AD Premium P2。 |
 | **如何修复？** | 查看有关 [Azure AD 版本](../fundamentals/active-directory-whatis.md)的信息。 升级到 Azure AD Premium P2。 |
 
 ### <a name="potential-stale-accounts-in-a-privileged-role"></a>可能有过时的帐户充当特权角色
 
-| | |
+严重级别：中
+
+| | 说明 |
 | --- | --- |
-| **严重性** | 中 |
 | **为何收到此警报？** | 具有特权角色的帐户在过去 90 天内未更改密码。 这些帐户可能是未维护且易受攻击者攻击的服务帐户或共享帐户。 |
 | **如何修复？** | 请检查列表中的帐户。 如果它们不再需要访问权限，请将其从特权角色中删除。 |
 | **防护** | 确保当知道密码的用户有变化时，共享的帐户会轮换使用强密码。 </br>使用[访问评审](pim-how-to-start-security-review.md)定期审查具有特权角色的帐户，并删除不再需要的角色分配。 |
@@ -91,9 +95,10 @@ ms.locfileid: "96180483"
 
 ### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>在 Privileged Identity Management 之外分配角色
 
-| | |
+严重级别：高
+
+| | 说明 |
 | --- | --- |
-| **严重性** | 高 |
 | **为何收到此警报？** | 在 Privileged Identity Management 外部进行的特权角色分配未受到正确的监视，可能表示正遭到攻击。 |
 | **如何修复？** | 查看列表中的用户，将其从 Privileged Identity Management 外部分配的特权角色中删除。 |
 | **防护** | 调查在 Privileged Identity Management 外部的哪个位置为用户分配了特权角色，禁止将来在该位置进行分配。 |
@@ -101,9 +106,10 @@ ms.locfileid: "96180483"
 
 ### <a name="there-are-too-many-global-administrators"></a>全局管理员过多
 
-| | |
+严重级别：低
+
+| | 说明 |
 | --- | --- |
-| **严重性** | 低 |
 | **为何收到此警报？** | 全局管理员是特权最高的角色。 如果全局管理员遭到入侵，则攻击者可以获取其所有访问权限，使整个系统面临风险。 |
 | **如何修复？** | 查看列表中的用户，删除不是绝对需要“全局管理员”角色的所有用户。 </br>改为这些用户分配特权更低的角色。 |
 | **防护** | 为用户分配他们所需的最低特权角色。 |
@@ -114,9 +120,10 @@ ms.locfileid: "96180483"
 
 ### <a name="roles-are-being-activated-too-frequently"></a>角色激活过于频繁
 
-| | |
+严重级别：低
+
+| | 说明 |
 | --- | --- |
-| **严重性** | 低 |
 | **为何收到此警报？** | 同一用户多次激活同一特权角色是受到攻击的迹象。 |
 | **如何修复？** | 检查列表中的用户，并确保用户特权角色的[激活持续时间](pim-how-to-change-default-settings.md)设置得足够长，使他们能够执行任务。 |
 | **防护** | 确保特权角色的[激活持续时间](pim-how-to-change-default-settings.md)设置得足够长，使用户能够执行其任务。</br>针对其帐户由多个管理员共享的特权角色[要求执行多重身份验证](pim-how-to-change-default-settings.md)。 |
@@ -149,9 +156,10 @@ ms.locfileid: "96180483"
 
 ### <a name="administrators-arent-using-their-privileged-roles"></a>管理员不使用其特权角色
 
-| | |
+严重级别：低
+
+| | 说明 |
 | --- | --- |
-| **严重性** | 低 |
 | **为何收到此警报？** | 为用户分配他们不需要的特权角色会增大受攻击的可能性。 攻击者更容易忽略不经常使用的帐户。 |
 | **如何修复？** | 查看列表中的用户，将其从不需要的特权角色中删除。 |
 | **防护** | 特权角色只分配给有业务需要的用户。 </br>安排定期的[访问评审](pim-how-to-start-security-review.md)，以确认用户是否仍需要访问权限。 |
@@ -161,9 +169,10 @@ ms.locfileid: "96180483"
 
 ### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>角色无需多重身份验证进行激活
 
-| | |
+严重级别：低
+
+| | 说明 |
 | --- | --- |
-| **严重性** | 低 |
 | **为何收到此警报？** | 如果不执行多重身份验证，则遭到入侵的用户可以激活特权角色。 |
 | **如何修复？** | 查看角色列表，[要求执行多重身份验证](pim-how-to-change-default-settings.md)（针对每个角色）。 |
 | **防护** | 针对每个角色[要求执行 MFA](pim-how-to-change-default-settings.md)。  |
@@ -171,17 +180,19 @@ ms.locfileid: "96180483"
 
 ### <a name="the-organization-doesnt-have-azure-ad-premium-p2"></a>组织没有 Azure AD Premium P2
 
-| | |
+严重级别：低
+
+| | 说明 |
 | --- | --- |
-| **严重性** | 低 |
 | **为何收到此警报？** | 当前 Azure AD 组织没有 Azure AD Premium P2。 |
 | **如何修复？** | 查看有关 [Azure AD 版本](../fundamentals/active-directory-whatis.md)的信息。 升级到 Azure AD Premium P2。 |
 
 ### <a name="potential-stale-accounts-in-a-privileged-role"></a>可能有过时的帐户充当特权角色
 
-| | |
+严重级别：中
+
+| | 说明 |
 | --- | --- |
-| **严重性** | 中 |
 | **为何收到此警报？** | 具有特权角色的帐户在过去 90 天内未更改密码。 这些帐户可能是未维护且易受攻击者攻击的服务帐户或共享帐户。 |
 | **如何修复？** | 请检查列表中的帐户。 如果它们不再需要访问权限，请将其从特权角色中删除。 |
 | **防护** | 确保当知道密码的用户有变化时，共享的帐户会轮换使用强密码。 </br>使用[访问评审](pim-how-to-start-security-review.md)定期审查具有特权角色的帐户，并删除不再需要的角色分配。 |
@@ -190,9 +201,10 @@ ms.locfileid: "96180483"
 
 ### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>在 Privileged Identity Management 之外分配角色
 
-| | |
+严重级别：高
+
+| | 说明 |
 | --- | --- |
-| **严重性** | 高 |
 | **为何收到此警报？** | 在 Privileged Identity Management 外部进行的特权角色分配未受到正确的监视，可能表示正遭到攻击。 |
 | **如何修复？** | 查看列表中的用户，将其从 Privileged Identity Management 外部分配的特权角色中删除。 |
 | **防护** | 调查在 Privileged Identity Management 外部的哪个位置为用户分配了特权角色，禁止将来在该位置进行分配。 |
@@ -200,9 +212,10 @@ ms.locfileid: "96180483"
 
 ### <a name="there-are-too-many-global-administrators"></a>全局管理员过多
 
-| | |
+严重级别：低
+
+| | 说明 |
 | --- | --- |
-| **严重性** | 低 |
 | **为何收到此警报？** | 全局管理员是特权最高的角色。 如果全局管理员遭到入侵，则攻击者可以获取其所有访问权限，使整个系统面临风险。 |
 | **如何修复？** | 查看列表中的用户，删除不是绝对需要“全局管理员”角色的所有用户。 </br>改为这些用户分配特权更低的角色。 |
 | **防护** | 为用户分配他们所需的最低特权角色。 |
@@ -213,9 +226,10 @@ ms.locfileid: "96180483"
 
 ### <a name="roles-are-being-activated-too-frequently"></a>角色激活过于频繁
 
-| | |
+严重级别：低
+
+| | 说明 |
 | --- | --- |
-| **严重性** | 低 |
 | **为何收到此警报？** | 同一用户多次激活同一特权角色是受到攻击的迹象。 |
 | **如何修复？** | 检查列表中的用户，并确保用户特权角色的[激活持续时间](pim-how-to-change-default-settings.md)设置得足够长，使他们能够执行任务。 |
 | **防护** | 确保特权角色的[激活持续时间](pim-how-to-change-default-settings.md)设置得足够长，使用户能够执行其任务。</br>针对其帐户由多个管理员共享的特权角色[要求执行多重身份验证](pim-how-to-change-default-settings.md)。 |

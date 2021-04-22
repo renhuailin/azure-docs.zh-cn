@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 03/22/2021
 ms.author: apimpm
-ms.openlocfilehash: 2d3f382635e9a8b8a562f7a7f60f256d68b90b8f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 743a7e7d34457405aa4be42b196dc994506c6587
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91363199"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105035790"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>在 Azure API 管理中使用 Azure Active Directory 授权开发人员帐户
 
@@ -47,7 +47,15 @@ ms.locfileid: "91363199"
     此时将在窗格中显示用于输入其他必要信息的控件。 控件包括“客户端 ID”和“客户端机密” 。 （本文稍后将介绍有关这些控件的信息。）
 9. 记下“重定向 URL”的内容。
     
-   ![在 Azure 门户中添加标识提供者的步骤](./media/api-management-howto-aad/api-management-with-aad001.png)  
+
+    :::image type="content" source="media/api-management-howto-aad/api-management-with-aad001.png" alt-text="在 Azure 门户中添加标识提供者":::
+    > [!NOTE]
+    > 有两个重定向 URL：<br/>
+    > 重定向 URL - 指向 API 管理的最新开发人员门户。<br/>
+    > 重定向 URL（弃用的门户） - 指向弃用的 API 管理开发人员门户。
+    >
+    > 建议使用最新的开发人员门户重定向 URL。
+   
 10. 在浏览器中，打开另一个标签页。 
 11. 导航到 [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)，在 Active Directory 中注册应用。
 12. 在“管理”下，选择“应用注册”。

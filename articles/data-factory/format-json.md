@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: jingwang
 ms.openlocfilehash: ebac108388071ed3dc0eb2b7bfc0494f2f7bb481
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102181357"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure 数据工厂中的 JSON 格式
@@ -19,13 +19,13 @@ ms.locfileid: "102181357"
 
 如果要 **分析 JSON 文件或以 JSON 格式写入数据**，请遵循本文中的说明。 
 
-以下连接器支持 JSON 格式： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure 文件存储](connector-azure-file-storage.md)、 [文件系统](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud Storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和 [SFTP](connector-sftp.md)。
+以下连接器支持 JASON 格式：[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、[FTP](connector-ftp.md)、[Google 云存储空间](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md) 和 [SFTP](connector-sftp.md)。
 
 ## <a name="dataset-properties"></a>数据集属性
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 JSON 数据集支持的属性列表。
 
-| 属性         | 说明                                                  | 必须 |
+| 属性         | 说明                                                  | 必需 |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 数据集的 type 属性必须设置为 **Json**。 | 是      |
 | location         | 文件的位置设置。 每个基于文件的连接器在 `location` 下都有其自己的位置类型和支持的属性。 **请在连接器文章 -> 数据集属性部分中查看详细信息**。 | 是      |
@@ -70,7 +70,7 @@ ms.locfileid: "102181357"
 
 复制活动的 ***\*source\**** 节支持以下属性。
 
-| 属性      | 说明                                                  | 必须 |
+| 属性      | 说明                                                  | 必需 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为 **JSONSource**。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的“JSON 读取设置”表。 | 否       |
@@ -78,7 +78,7 @@ ms.locfileid: "102181357"
 
 `formatSettings` 下支持的“JSON 读取设置”：
 
-| 属性      | 说明                                                  | 必须 |
+| 属性      | 说明                                                  | 必需 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | formatSettings 的 type 必须设置为“JsonReadSettings”。 | 是      |
 | compressionProperties | 一组属性，指示如何为给定的压缩编解码器解压缩数据。 | 否       |
@@ -89,7 +89,7 @@ ms.locfileid: "102181357"
 
 复制活动的 ***\*sink\**** 节支持以下属性。
 
-| 属性      | 说明                                                  | 必须 |
+| 属性      | 说明                                                  | 必需 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为 **JSONSink**。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的“JSON 写入设置”表。 | 否       |
@@ -97,7 +97,7 @@ ms.locfileid: "102181357"
 
 `formatSettings` 下支持的 **JSON 写入设置**：
 
-| 属性      | 说明                                                  | 必须                                              |
+| 属性      | 说明                                                  | 必需                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | formatSettings 的类型必须设置为 **JsonWriteSettings**。 | 是                                                   |
 | filePattern |指示每个 JSON 文件中存储的数据模式。 允许的值为：setOfObjects (JSON Lines) 和 arrayOfObjects。 **默认** 值为 **setOfObjects**。 请参阅 [JSON 文件模式](#json-file-patterns)部分，详细了解这些模式。 |否 |
@@ -195,7 +195,7 @@ ms.locfileid: "102181357"
 
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
-在映射数据流时，可以在以下数据存储中读取和写入 JSON 格式： [Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。
+在映射数据流中，你可以在以下数据存储中读取和写入 JSON 格式：[Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) 和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。
 
 ### <a name="source-properties"></a>源属性
 
@@ -203,11 +203,11 @@ ms.locfileid: "102181357"
 
 | 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| 通配符路径 | 将处理与通配符路径匹配的所有文件。 替代在数据集中设置的文件夹和文件路径。 | 否 | String[] | wildcardPaths |
-| 分区根路径 | 对于已分区的文件数据，你可以输入分区根路径，以便将已分区的文件夹作为列读取 | 否 | 字符串 | partitionRootPath |
-| 文件列表 | 源是否指向列出了要处理的文件的文本文件 | 否 | `true` 或 `false` | fileList |
-| 用于存储文件名的列 | 使用源文件名称和路径创建一个新列 | 否 | 字符串 | rowUrlColumn |
-| 完成后 | 在处理后删除或移动文件。 文件路径从容器根目录开始 | 否 | Delete：`true` 或 `false` <br> Move：`['<from>', '<to>']` | purgeFiles <br> moveFiles |
+| 通配符路径 | 将处理与通配符路径匹配的所有文件。 重写数据集中设置的文件夹和文件路径。 | 否 | String[] | wildcardPaths |
+| 分区根路径 | 对于已分区的文件数据，可以输入分区根路径，以便将已分区的文件夹读取为列 | 否 | 字符串 | partitionRootPath |
+| 文件列表 | 源是否指向某个列出待处理文件的文本文件 | 否 | `true` 或 `false` | fileList |
+| 用于存储文件名的列 | 使用源文件名称和路径创建新列 | 否 | 字符串 | rowUrlColumn |
+| 完成后 | 在处理后删除或移动文件。 文件路径从容器根开始 | 否 | 删除：`true` 或 `false` <br> Move：`['<from>', '<to>']` | purgeFiles <br> moveFiles |
 | 按上次修改时间筛选 | 选择根据上次更改时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br> modifiedBefore |
 | 单个文档 | 映射数据流从每个文件中读取一个 JSON 文档 | 否 | `true` 或 `false` | singleDocument |
 | 不带引号的列名称 | 如果选择了“不带引号的列名称”，则映射数据流会读取不在引号中的 JSON 列。 | 否 | `true` 或 `false` |  unquotedColumnNames |
@@ -218,7 +218,7 @@ ms.locfileid: "102181357"
 
 ### <a name="source-format-options"></a>源格式选项
 
-在数据流中使用 JSON 数据集作为源时，你可以设置五个额外的设置。 这些设置可在 "**源选项**" 选项卡中的 **JSON 设置** 可折叠项下找到。对于 **文档窗体** 设置，您可以选择一个 **文档**、**每行文档** 和文档类型的 **数组**。
+在数据流中使用 JSON 数据集作为源时，你可以设置五个额外的设置。 可以在“源选项”选项卡的“JSON 设置”可折叠列表下找到这些设置。 。对于“文档窗体”设置，你可以选择“单个文档”、“每行一个文档”和“文档数组”类型之一。
 
 ![JSON 设置](media/data-flow/json-settings.png "JSON 设置")
 
@@ -250,7 +250,7 @@ File3.json
     "json": "record 3"
 }
 ```
-如果选择了 " **文档每行** "，则映射数据流将从文件中的每一行读取一个 JSON 文档。 
+如果选择了“每行一个文档”，则映射数据流会从文件中的每行读取一个 JSON 文档。 
 
 ``` json
 File1.json
@@ -265,7 +265,7 @@ File3.json
  {"time":"2015-04-29T07:13:21.0220000Z","callingimsi":"466922202613463","callingnum1":"123436380","callingnum2":"789037573","switch1":"US","switch2":"UK"}
  {"time":"2015-04-29T07:13:21.4370000Z","callingimsi":"466923101048691","callingnum1":"678901578","callingnum2":"345626404","switch1":"Germany","switch2":"UK"}
 ```
-如果选择了 **文档的数组** ，则映射数据流会从文件中读取一个文档数组。 
+如果选择了“文档数组”，则映射数据流会从文件中读取一个文档数组。 
 
 ``` json
 File.json

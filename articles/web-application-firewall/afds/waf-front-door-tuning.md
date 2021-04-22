@@ -267,7 +267,7 @@ AzureDiagnostics
 
 ![显示标头的 Fiddler 请求](../media/waf-front-door-tuning/fiddler-request-header-name.png)
 
-查看请求和响应标头的另一种方式是使用浏览器（如 Edge 或 Chrome）的开发人员工具。 可以按 F12，或右键单击并选择“检查” -> “开发人员工具”->“网络”选项卡。  加载一个网页，然后单击要检查的请求。
+查看请求和响应标头的另一种方式是使用浏览器（如 Microsoft Edge 或 Chrome）的开发人员工具。 可以按 F12，或右键单击并选择“检查” -> “开发人员工具”->“网络”选项卡。  加载一个网页，然后单击要检查的请求。
 
 ![网络检查器请求](../media/waf-front-door-tuning/network-inspector-request.png)
 

@@ -6,12 +6,12 @@ ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: bb5f7b5e8214bd3b04bd7b9544ab4bc589f6c4bf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 955e6b22c22d9cbe5891bcd0109806cb9270a456
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98896319"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168648"
 ---
 # <a name="set-up-continuous-deployment-with-chocolatey"></a>使用 Chocolatey 设置持续部署
 
@@ -47,7 +47,7 @@ Resource Manager 模板以声明方式生成基础结构，例如网络、子网
 
 ## <a name="quick-trip-around-the-diagram"></a>示意图速览
 
-首先，需要编写、生成和测试代码，然后创建安装包。 Chocolatey 可以处理各种类型的安装包，例如 MSI、MSU、ZIP。 如果 Chocolatey 的本机功能不足以满足需要，还有 PowerShell 的完整功能可执行实际安装。 将包放入可访问的位置 - 包存储库。 本用例使用 Azure Blob 存储帐户中的公共文件夹，但它可以位于任何位置。 Chocolatey 原生可配合 NuGet 服务器和其他某些工具一起管理包元数据。 [本文](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed)介绍了相应的选项。 本用例使用 NuGet。 Nuspec 是包的元数据。 Nuspec 信息编译到 NuPkg 中，并存储在 NuGet 服务器上。 当配置按名称请求某个包并引用 NuGet 服务器时，VM 中的 Chocolatey DSC 资源将获取并安装该包。 也可以请求特定版本的包。
+首先，需要编写、生成和测试代码，然后创建安装包。 Chocolatey 可以处理各种类型的安装包，例如 MSI、MSU、ZIP。 如果 Chocolatey 的本机功能不足以满足需要，还有 PowerShell 的完整功能可执行实际安装。 将包放入可访问的位置，即包存储库。 本用例使用 Azure Blob 存储帐户中的公共文件夹，但它可以位于任何位置。 Chocolatey 原生可配合 NuGet 服务器和其他某些工具一起管理包元数据。 [本文](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed)介绍了相应的选项。 本用例使用 NuGet。 Nuspec 是包的元数据。 Nuspec 信息编译到 NuPkg 中，并存储在 NuGet 服务器上。 当配置按名称请求某个包并引用 NuGet 服务器时，VM 中的 Chocolatey DSC 资源将获取并安装该包。 也可以请求特定版本的包。
 
 示意图左下方有一个 Azure 资源管理器模板。 在本用例中，VM 扩展将 VM 注册到 Azure Automation State Configuration 拉取服务器成为一个节点。 此配置存储在拉取服务器中两次：一次以纯文本存储，一次编译为 MOF 文件。 在 Azure 门户中，MOF 代表节点配置，而不只是简单配置。 它是与节点关联的项目，因而节点知道它的配置。 以下详细信息演示如何将节点配置分配给节点。
 
@@ -73,8 +73,8 @@ GitHub 上的[此 Visual Studio 项目](https://github.com/sebastus/ARM/tree/mas
 在经过身份验证的 (`Connect-AzAccount`) PowerShell 命令行中：（如果设置请求服务器，则可能需要几分钟时间）
 
 ```azurepowershell-interactive
-New-AzResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
-New-AzAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT
+New-AzResourceGroup -Name MY-AUTOMATION-RG -Location MY-RG-LOCATION-IN-QUOTES
+New-AzAutomationAccount -ResourceGroupName MY-AUTOMATION-RG -Location MY-RG-LOCATION-IN-QUOTES -Name MY-AUTOMATION-ACCOUNT
 ```
 
 可以将自动化帐户放入以下任何区域（也称为位置）：美国东部 2、美国中南部、US Gov 弗吉尼亚州、西欧、东南亚、日本东部、印度中部和澳大利亚东南部、加拿大中部、北欧。
@@ -103,7 +103,7 @@ Azure 门户最近添加的另一种技术允许提取新模块或更新现有�
 2. 安装集成模块。
 
     ```azurepowershell-interactive
-    Install-Module –Name MODULE-NAME`    <—grabs the module from the PowerShell Gallery
+    Install-Module -Name MODULE-NAME`    <—grabs the module from the PowerShell Gallery
     ```
 
 3. 将模块文件夹从 c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME 复制到临时文件夹中。
@@ -119,7 +119,7 @@ Azure 门户最近添加的另一种技术允许提取新模块或更新现有�
     ```azurepowershell-interactive
     New-AzAutomationModule `
       -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
-      -Name MODULE-NAME –ContentLinkUri 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
+      -Name MODULE-NAME -ContentLinkUri 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
     ```
 
 随附的示例针对 cChoco 和 xNetworking 实施了这些步骤。 
@@ -175,18 +175,18 @@ Configuration ISVBoxConfig
 
 ```powershell
 Import-AzAutomationDscConfiguration `
-    -ResourceGroupName MY-AUTOMATION-RG –AutomationAccountName MY-AUTOMATION-ACCOUNT `
+    -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
     -SourcePath C:\temp\AzureAutomationDsc\ISVBoxConfig.ps1 `
-    -Published –Force
+    -Published -Force
 
 $jobData = Start-AzAutomationDscCompilationJob `
-    -ResourceGroupName MY-AUTOMATION-RG –AutomationAccountName MY-AUTOMATION-ACCOUNT `
+    -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
     -ConfigurationName ISVBoxConfig
 
 $compilationJobId = $jobData.Id
 
 Get-AzAutomationDscCompilationJob `
-    -ResourceGroupName MY-AUTOMATION-RG –AutomationAccountName MY-AUTOMATION-ACCOUNT `
+    -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
     -Id $compilationJobId
 ```
 

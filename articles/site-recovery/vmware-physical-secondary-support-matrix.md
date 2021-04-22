@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: ac67e3cf8f057738b76b0de7cbcb821ef290e0cb
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98757570"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>将 VMware VM 和物理服务器灾难恢复到辅助站点时的支持矩阵
@@ -28,12 +28,12 @@ ms.locfileid: "98757570"
 ## <a name="end-of-support-announcement"></a>结束支持公告
 Site Recovery 方案（在本地 VMware 或物理数据中心之间进行复制）即将结束支持。
 
-- 从8月2018开始，无法在恢复服务保管库中配置该方案，并且无法从保管库下载 InMage Scout 软件。 现有部署仍受支持。
+- 从 2018 年 8 月起，无法在恢复服务保管库中配置方案，且无法从保管库下载 InMage Scout 软件。 现有部署仍受支持。
 - - 从 2020 年 12 月 31 日起，该方案将不受支持。
 现有合作伙伴可以将新客户加入到该方案中，直到支持结束。
 - 在 2018 年和 2019 年期间，将发布两个更新：
 
-    - 更新 7：修复了网络配置和符合性问题，并提供 TLS 1.2 支持。
+    - 更新 7：修复了网络配置与合规性问题，并提供 TLS 1.2 支持。
     - 更新 8：添加了对 Linux 操作系统 RHEL/CentOS 7.3/7.4/7.5 和 SUSE 12 的支持
     - 更新 8 之后，不会再发布进一步更新。 针对更新 8 中添加的操作系统，修补程序支持有限，会尽最大努力修复错误。
 

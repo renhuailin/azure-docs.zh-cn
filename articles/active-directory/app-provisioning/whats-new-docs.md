@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 应用程序预配中的新增内容
 description: 有关 Azure Active Directory 应用程序预配的新文档和更新文档。
-ms.date: 03/08/2021
+ms.date: 04/05/2021
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -9,16 +9,27 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: abee58607a5492548e4d64f44c15fd365876f3f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8bb8dfbaf7ee1758811016dd3ddf08367a44bfae
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102453674"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443502"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory 应用程序预配：新增内容
 
 欢迎查看 Azure Active Directory 应用程序预配文档中的新增内容。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解预配服务的新增内容，请查看 [Azure Active Directory 中的新增功能](../fundamentals/whats-new.md)。
+
+## <a name="march-2021"></a>2021 年 3 月
+
+### <a name="updated-articles"></a>更新的文章
+
+- [正在同步应用程序预配的扩展属性](user-provisioning-sync-attributes-for-mapping.md)
+- [隔离状态中的应用程序预配](application-provisioning-quarantine-status.md)
+- [在 Azure 门户中管理企业应用的用户帐户预配](configure-automatic-user-provisioning-portal.md)
+- [有关为 Azure AD 中的属性映射编写表达式的参考](functions-for-customizing-application-data.md)
+- [教程：开发示例 SCIM 终结点](use-scim-to-build-users-and-groups-endpoints.md)
+
 
 ## <a name="february-2021"></a>2021 年 2 月
 

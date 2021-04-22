@@ -158,7 +158,7 @@ StorSimple 设备包含了用于主控制器和 EBOD 控制器模块的 LED
 可以使用下表来确定 EBOD 控制器模块是否正常运行。  
 
 ### <a name="ebod-controller-module-indicator-leds"></a>EBOD 控制器模块指示器 LED
-| 状态 | I/O 模块正常（绿色） | I/O 模块故障（琥珀色） | 主机端口活动（绿色） |
+| 状态 | I/O 模块正常（绿色） | I/O 模块故障（琥珀色） | 主机端口的活动（绿色） |
 | --- | --- | --- | --- |
 | 控制器模块正常 |ON |OFF |- |
 | 控制器模块故障 |OFF |ON |- |

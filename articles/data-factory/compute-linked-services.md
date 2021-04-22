@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 ms.date: 05/08/2019
-ms.openlocfilehash: 2b5c053847852cc6090ee94858a5be52275d62fc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: b9f7cce39e4f51aea7fc4db5ca37ee054f42c5cb
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725333"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078632"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
 
@@ -25,7 +25,7 @@ ms.locfileid: "101725333"
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [按需 HDInsight 群集](#azure-hdinsight-on-demand-linked-service)或[自己的 HDInsight 群集](#azure-hdinsight-linked-service) | [Hive](transform-data-using-hadoop-hive.md)、[Pig](transform-data-using-hadoop-pig.md)、[Spark](transform-data-using-spark.md)、[MapReduce](transform-data-using-hadoop-map-reduce.md)、[Hadoop Streaming](transform-data-using-hadoop-streaming.md) |
 | [Azure Batch](#azure-batch-linked-service)                   | [自定义](transform-data-using-dotnet-custom-activity.md)     |
-| [Azure 机器学习工作室（经典）](#azure-machine-learning-studio-classic-linked-service) | [机器学习 Studio (经典) 活动：批处理执行和更新资源](transform-data-using-machine-learning.md) |
+| [Azure 机器学习工作室（经典）](#azure-machine-learning-studio-classic-linked-service) | [机器学习工作室（经典版）活动：批处理执行和更新资源](transform-data-using-machine-learning.md) |
 | [Azure 机器学习](#azure-machine-learning-linked-service) | [Azure 机器学习执行管道](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
 | [Azure SQL](#azure-sql-database-linked-service)、[Azure Synapse Analytics](#azure-synapse-analytics-linked-service)、[SQL Server](#sql-server-linked-service) | [存储过程](transform-data-using-stored-procedure.md) |
@@ -108,7 +108,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 #### <a name="properties"></a>属性
 
-| 属性                     | 说明                              | 必选 |
+| 属性                     | 说明                              | 必需 |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | 类型属性应设置为 **HDInsightOnDemand**。 | 是      |
 | clusterSize                  | 群集中辅助进程/数据节点的数量。 HDInsight 群集创建时具有 2 个头节点以及一定数量的辅助进程节点（此节点的数量是为此属性所指定的数量）。 这些节点的大小为拥有 4 个核心的 Standard_D3，因此一个具有 4 个辅助节点的群集拥有 24 个核心（辅助节点有 4\*4 = 16 个核心，头节点有 2\*4 = 8 个核心）。 请参阅[使用 Hadoop、Spark、Kafka 等在 HDInsight 中设置群集](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)，了解详细信息。 | 是      |
@@ -293,7 +293,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 ```
 
 ### <a name="properties"></a>属性
-| 属性          | 说明                                                  | 必选 |
+| 属性          | 说明                                                  | 必需 |
 | ----------------- | ------------------------------------------------------------ | -------- |
 | type              | 类型属性应设置为 **HDInsight**。            | 是      |
 | clusterUri        | HDInsight 群集的 URI。                            | 是      |
@@ -324,7 +324,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 * [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) cmdlet 以创建 Azure Batch 池。
 
 > [!IMPORTANT]
-> 创建新的 Azure Batch 池时，必须使用 "VirtualMachineConfiguration" 而不是 "CloudServiceConfiguration"。 有关更多详细信息，请参阅 [Azure Batch 池迁移指南](../batch/batch-pool-cloud-service-to-virtual-machine-configuration.md)。 
+> 创建新的 Azure Batch 池时，必须使用“VirtualMachineConfiguration”，而不是“CloudServiceConfiguration”。 有关更多详细信息，请参阅 [Azure Batch 池迁移指南](../batch/batch-pool-cloud-service-to-virtual-machine-configuration.md)。 
 
 ### <a name="example"></a>示例
 
@@ -356,7 +356,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 
 ### <a name="properties"></a>属性
-| 属性          | 说明                              | 必选 |
+| 属性          | 说明                              | 必需 |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | 类型属性应设置为 **AzureBatch**。 | 是      |
 | accountName       | Azure Batch 帐户的名称。         | 是      |
@@ -366,8 +366,8 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | linkedServiceName | 与此 Azure Batch 链接服务相关联的 Azure 存储链接服务的名称。 此链接服务用于暂存运行活动所需的文件。 | 是      |
 | connectVia        | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否       |
 
-## <a name="azure-machine-learning-studio-classic-linked-service"></a>Azure 机器学习 Studio (经典) 链接服务
-创建 Azure 机器学习 Studio (经典) 链接服务，以向数据工厂注册机器学习 Studio (经典) 批处理评分终结点。
+## <a name="azure-machine-learning-studio-classic-linked-service"></a>Azure 机器学习工作室（经典版）链接服务
+你可以创建 Azure 机器学习工作室（经典版）链接服务，以向数据工厂注册机器学习（经典版）批处理评分终结点。
 
 ### <a name="example"></a>示例
 
@@ -392,12 +392,12 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 ```
 
 ### <a name="properties"></a>属性
-| 属性               | 说明                              | 必选                                 |
+| 属性               | 说明                              | 必需                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | 类型                   | 类型属性应设置为：AzureML。 | 是                                      |
 | mlEndpoint             | 批处理计分 URL。                   | 是                                      |
-| apiKey                 | 已发布的工作区模型的 API。     | 是                                      |
-| updateResourceEndpoint | 用于使用定型模型文件更新预测 Web 服务的 Azure 机器学习 Studio (经典) Web 服务终结点的更新资源 URL | 否                                       |
+| apiKey                 | 已发布的工作区模型 API。     | 是                                      |
+| updateResourceEndpoint | Azure 机器学习工作室（经典版）Web 服务终结点的更新资源 URL 可用于使用经过训练的模型文件更新预测性 Web 服务 | 否                                       |
 | servicePrincipalId     | 指定应用程序的客户端 ID。     | 如果已指定 updateResourceEndpoint，则为必需 |
 | servicePrincipalKey    | 指定应用程序的密钥。           | 如果已指定 updateResourceEndpoint，则为必需 |
 | tenant                 | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 如果已指定 updateResourceEndpoint，则为必需 |
@@ -436,15 +436,16 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 ```
 
 ### <a name="properties"></a>属性
-| 属性               | 说明                              | 必选                                 |
+
+| 属性               | 说明                              | 必需                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | 类型                   | 类型属性应设置为：AzureMLService。 | 是                                      |
 | subscriptionId         | Azure 订阅 ID              | 是                                      |
 | resourceGroupName      | name | 是                                      |
 | mlWorkspaceName        | Azure 机器学习工作区名称 | 是  |
-| servicePrincipalId     | 指定应用程序的客户端 ID。     | 否 |
-| servicePrincipalKey    | 指定应用程序的密钥。           | 否 |
-| tenant                 | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 如果已指定 updateResourceEndpoint，则为必需 | 否 |
+| servicePrincipalId     | 指定应用程序的客户端 ID。     | 是 |
+| servicePrincipalKey    | 指定应用程序的密钥。           | 是 |
+| tenant                 | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 如果已指定 updateResourceEndpoint，则为必需 |
 | connectVia             | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否 |
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics 链接服务
@@ -479,7 +480,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 ### <a name="properties"></a>属性
 
-| 属性             | 说明                              | 必选                                 |
+| 属性             | 说明                              | 必需                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | type                 | 类型属性应设置为：AzureDataLakeAnalytics。 | 是                                      |
 | accountName          | Azure Data Lake Analytics 帐户名。  | 是                                      |
@@ -541,7 +542,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 ### <a name="properties"></a>属性
 
-| 属性             | 说明                              | 必选                                 |
+| 属性             | 说明                              | 必需                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | name                 | 链接服务的名称               | 是   |
 | type                 | 类型属性应设置为：**Azure Databricks**。 | 是                                      |
@@ -551,7 +552,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | existingClusterId    | 现有群集的群集 ID，用于在其上运行所有作业。 该群集应该是已创建的交互式群集。 如果群集停止响应，则可能需要手动重启该群集。 Databricks 建议在新群集上运行作业，以提高可靠性。 可以通过 Databricks 工作区 ->“群集”->“交互式群集名称”->“配置”->“标记”找到交互式群集的群集 ID。 [更多详细信息](https://docs.databricks.com/user-guide/clusters/tags.html) | 否 
 | instancePoolId    | Databricks 工作区中现有池的实例池 ID。  | 否  |
 | newClusterVersion    | 群集的 Spark 版本。 它会在 Databricks 中创建作业群集。 | 否  |
-| newClusterNumOfWorker| 此群集应该拥有的工作节点的数目。 群集有一个 Spark 驱动程序和 num_workers 个执行器，总共有 num_workers + 1 个 Spark 节点。 格式为 Int32 的字符串（如 "1"）表示 numOfWorker 为1或 "1:10" 表示自动缩放，最小为1，最大值为10。  | 否                |
+| newClusterNumOfWorker| 此群集应该拥有的工作节点的数目。 群集有一个 Spark 驱动程序和 num_workers 个执行器，总共有 num_workers + 1 个 Spark 节点。 字符串格式的 Int32，例如“1”是指 numOfWorker 为 1，“1:10”是指自动缩放的范围为 1 到 10。  | 否                |
 | newClusterNodeType   | 此字段通过单个值对提供给此群集中的每个 Spark 节点的资源进行编码。 例如，可以针对内存或计算密集型工作负载对 Spark 节点进行预配和优化。 此字段是新群集必需的                | 否               |
 | newClusterSparkConf  | 一组可选的、用户指定的 Spark 配置键值对。 用户还可以分别通过 spark.driver.extraJavaOptions 和 spark.executor.extraJavaOptions 将包含额外 JVM 选项的字符串传递给驱动程序和执行器。 | 否  |
 | newClusterInitScripts| 新群集的一组可选的、用户定义的初始化脚本。 指定到 init 脚本的 DBFS 路径。 | 否  |

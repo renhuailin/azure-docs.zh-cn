@@ -3,12 +3,12 @@ title: 配置 Azure Red Hat OpenShift v4.x 的容器见解 | Microsoft Docs
 description: 本文介绍如何使用 Azure Red Hat OpenShift 版本 4 或更高版本上托管的 Azure Monitor 来配置对 Kubernetes 群集的监视。
 ms.topic: conceptual
 ms.date: 03/05/2021
-ms.openlocfilehash: 02cb794463b965ebafef0b6861477dbf69227511
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c44a7c6eea6182316d626e3e8501f9aa63eef78
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506406"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221511"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-container-insights"></a>配置 Azure Red Hat OpenShift v4.x 的容器见解
 
@@ -34,6 +34,8 @@ ms.locfileid: "102506406"
 - Azure CLI 版本 2.0.72 或更高版本  
 
 - [Helm 3](https://helm.sh/docs/intro/install/) CLI 工具
+
+- 最新版本 [OpenShift CLI](https://docs.openshift.com/container-platform/4.7/cli_reference/openshift_cli/getting-started-cli.html)
 
 - [Bash 版本 4](https://www.gnu.org/software/bash/)
 

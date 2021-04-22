@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f5739604537ccc67e2cf57310269369909038d67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c64a4e06ed452c895c1bc2cf20adc2d9c0060c3
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508736"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219257"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>教程：在 Azure 虚拟机中的 SQL Server 上创建可用性组的先决条件
 
@@ -69,11 +69,11 @@ ms.locfileid: "102508736"
 
 Azure 会创建资源组，并在门户中固定资源组的快捷方式。
 
-## <a name="create-the-network-and-subnets"></a>创建网络和子网
+## <a name="create-the-network-and-subnet"></a>创建网络和子网
 
 下一步是在 Azure 资源组中创建网络和子网。
 
-此解决方案使用一个包含两个子网的虚拟网络。 有关 Azure 中网络的详细信息，请参阅[虚拟网络概述](../../../virtual-network/virtual-networks-overview.md)。
+此解决方案使用一个虚拟网络和一个子网。 有关 Azure 中网络的详细信息，请参阅[虚拟网络概述](../../../virtual-network/virtual-networks-overview.md)。
 
 若要在 Azure 门户中创建虚拟网络，请执行以下操作：
 
@@ -100,48 +100,13 @@ Azure 会创建资源组，并在门户中固定资源组的快捷方式。
 
    地址空间和子网地址范围可能与此表中有所不同。 门户根据具体的订阅建议可用的地址空间和相应的子网地址范围。 如果地址空间不足，请使用其他订阅。
 
-   本示例使用子网名称 **Admin**。此子网用于域控制器。
+   本示例使用子网名称 Admin。此子网用于域控制器和 SQL Server VM。
 
 5. 选择“创建” 。
 
    ![配置虚拟网络](./media/availability-group-manually-configure-prerequisites-tutorial-/06-configurevirtualnetwork.png)
 
 Azure 返回到门户仪表板，并在创建好新网络时发出通知。
-
-### <a name="create-a-second-subnet"></a>创建第二个子网。
-
-新虚拟网络包含一个名为 **Admin** 的子网。域控制器使用此子网。 SQL Server VM 使用名为 **SQL** 的另一个子网。 若要配置此子网，请执行以下操作：
-
-1. 在仪表板上，选择你创建的资源组 **SQL-HA-RG**。 在“资源”下的资源组中找到网络。
-
-    如果看不到 **SQL-HA-RG**，请选择“资源组”并根据资源组名称进行筛选，这样就可以找到它。
-
-2. 选择资源列表中的 **autoHAVNET**。 
-3. 在“autoHAVNET”虚拟网络中的“设置”下，选择“子网”。
-
-    请记下已创建的子网。
-
-   ![请记下已创建的子网](./media/availability-group-manually-configure-prerequisites-tutorial-/07-addsubnet.png)
-
-5. 若要创建第二个子网，请选择“+ 子网”。
-6. 在“添加子网”中，通过在“名称”下键入 **sqlsubnet** 配置子网。 Azure 自动指定一个有效的 **地址范围**。 请确认此地址范围中至少有 10 个地址。 生产环境中可能需要更多地址。
-7. 选择“确定” 。
-
-    ![配置子网](./media/availability-group-manually-configure-prerequisites-tutorial-/08-configuresubnet.png)
-
-下表汇总了网络配置设置：
-
-| **字段** | 值 |
-| --- | --- |
-| **名称** |**autoHAVNET** |
-| **地址空间** |此值取决于订阅中可用的地址空间。 典型值为 10.0.0.0/16。 |
-| **子网名称** |**admin** |
-| **子网地址范围** |此值取决于订阅中可用的地址范围。 典型值为 10.0.0.0/24。 |
-| **子网名称** |**sqlsubnet** |
-| **子网地址范围** |此值取决于订阅中可用的地址范围。 典型值为 10.0.1.0/24。 |
-| **订阅** |指定要使用的订阅。 |
-| **资源组** |**SQL-HA-RG** |
-| **位置** |指定为资源组选择的同一位置。 |
 
 ## <a name="create-availability-sets"></a>创建可用性集
 
@@ -197,7 +162,7 @@ Azure 返回到门户仪表板，并在创建好新网络时发出通知。
 | **大小** |DS1_V2 |
 | **存储** | **使用托管磁盘** - **是** |
 | **虚拟网络** |autoHAVNET |
-| **子网** |管理员 |
+| **子网** |admin |
 | **公共 IP 地址** |*与 VM 同名* |
 | **网络安全组** |*与 VM 同名* |
 | **可用性集** |adavailabilityset </br>**容错域**:2 </br>**更新域**:2|
