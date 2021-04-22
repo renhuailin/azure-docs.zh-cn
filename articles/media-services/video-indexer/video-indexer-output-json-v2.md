@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/16/2020
 ms.author: juliako
-ms.openlocfilehash: 84bb4766b3a896823dd0bef023f8042965a85846
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 2ac7c3c2149ce43c860c7726381733ef377de8d3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532857"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "100530733"
 ---
 # <a name="examine-the-video-indexer-output"></a>检查视频索引器输出
 
@@ -46,8 +46,8 @@ ms.locfileid: "107532857"
 
 ## <a name="insightsoutput-produced-by-api"></a>API 生成的见解/输出
 
-1. 若要检索 JSON 文件，请调用[获取视频索引 API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Index)
-1. 如果你还对特定项目感兴趣，请调用[获取视频项目下载 URL API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Artifact-Download-Url)
+1. 若要检索 JSON 文件，请调用[获取视频索引 API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?)
+1. 如果你还对特定项目感兴趣，请调用[获取视频项目下载 URL API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Artifact-Download-Url?)
 
     在 API 调用中，指定请求的项目类型（OCR、人脸、关键帧等）
 
@@ -100,7 +100,7 @@ ms.locfileid: "107532857"
 |privacyMode|可以细分为以下模式之一：“私用”、“公共”。 **公共** - 向你帐户中的任何人，以及具有视频链接的每个人显示该视频。 **私用** - 向你帐户中的每个人显示该视频。|
 |duration|包含一个持续时间，用于描述见解发生的时间。 持续时间以秒为单位。|
 |thumbnailVideoId|从其创建缩略图的视频的 ID。
-|thumbnailId|视频的缩略图 ID。 若要获取实际缩略图，请调用 [Get-Thumbnail](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Thumbnail) 并为其传递 thumbnailVideoId 和 thumbnailId。|
+|thumbnailId|视频的缩略图 ID。 若要获取实际缩略图，请调用 [Get-Thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) 并为其传递 thumbnailVideoId 和 thumbnailId。|
 |faces/animatedCharacters|可以包含零个或多个人脸。 有关更多详细信息，请参阅 [faces/animatedCharacters](#facesanimatedcharacters)。|
 |关键字|可以包含零个或多个关键字。 有关更详细的信息，请参阅 [keywords](#keywords)。|
 |情绪|可以包含零个或多个情绪。 有关更详细的信息，请参阅 [sentiments](#sentiments)。|
@@ -127,7 +127,7 @@ ms.locfileid: "107532857"
 |metadata|视频的外部元数据（如果用户已指定）。|
 |isAdult|指示视频是否已经过人工审查，并已标识为成人视频。|
 |insights|见解对象。 有关详细信息，请参阅 [insights](#insights)。|
-|thumbnailId|视频的缩略图 ID。 若要获取实际缩略图，请调用 [Get-Thumbnail](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Thumbnail) 并为其传递视频 ID 和 thumbnailId。|
+|thumbnailId|视频的缩略图 ID。 若要获取实际缩略图，请调用 [Get-Thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) 并为其传递视频 ID 和 thumbnailId。|
 |publishedUrl|用于流式传输视频的 URL。|
 |publishedUrlProxy|要从中流式传输视频的 URL（适用于 Apple 设备）。|
 |viewToken|用于流式传输视频的短期查看令牌。|
@@ -595,7 +595,7 @@ instances|此块的时间范围列表。|
 |名称|说明
 |---|---|
 |id|音频效果 ID|
-|类型|音频效果类型|
+|type|音频效果类型|
 |instances|出现此音频效果的时间范围列表。 每个实例都有置信度字段。|
 
 ```json
@@ -711,7 +711,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 |名称|说明|
 |---|---|
 |id|情感 ID。|
-|类型|基于语音和音频提示识别的瞬间情感。情感可能是：快乐、悲伤、愤怒或恐惧。|
+|type|基于语音和音频提示识别的瞬间情感。情感可能是：快乐、悲伤、愤怒或恐惧。|
 |instances|出现该情感的时间范围列表。|
 
 ```json

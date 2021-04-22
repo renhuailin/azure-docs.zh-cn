@@ -3,16 +3,16 @@ title: 在 Azure VMware 解决方案中配置警报并使用指标
 description: 了解如何使用警报来接收通知。 同时了解如何使用指标来更深入地了解 Azure VMware 解决方案私有云。
 ms.topic: how-to
 ms.date: 04/02/2021
-ms.openlocfilehash: f021662658399111187e9963fc5caec434fabf4a
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 486f25eba017b2d4e37c0796909a0d26adee6ba8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106096644"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309622"
 ---
 # <a name="configure-azure-alerts-in-azure-vmware-solution"></a>在 Azure VMware 解决方案中配置 Azure 警报 
 
-在本文中，你将了解如何在 [Microsoft Azure 警报](/azure/azure-monitor/alerts/alerts-overvie)中配置 [Azure 操作组](/azure/azure-monitor/alerts/action-groups)，以便接收你定义的已触发事件的通知。 你还将了解如何使用 [Azure Monitor 指标](/azure/azure-monitor/essentials/data-platform-metrics)更深入地了解 Azure VMware 解决方案私有云。
+在本文中，你将了解如何在 [Microsoft Azure 警报](/azure/azure-monitor/alerts/alerts-overview)中配置 [Azure 操作组](/azure/azure-monitor/alerts/action-groups)，以便接收你定义的已触发事件的通知。 你还将了解如何使用 [Azure Monitor 指标](/azure/azure-monitor/essentials/data-platform-metrics)更深入地了解 Azure VMware 解决方案私有云。
 
 
 ## <a name="supported-metrics-and-activities"></a>支持的指标和活动
@@ -77,7 +77,7 @@ ms.locfileid: "106096644"
  
 1. 在打开的窗口中，在“基本信息”选项卡上，为操作组指定名称和显示名称。
 
-1. 选择“通知”选项卡，然后选择“通知类型”和“名称”  。 然后选择“确定”。 
+1. 选择“通知”选项卡，然后选择“通知类型”和“名称”  。 然后选择“确定”。
 
    本例基于电子邮件通知。
 

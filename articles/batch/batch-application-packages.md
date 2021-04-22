@@ -2,17 +2,17 @@
 title: 将应用程序包部署到计算节点
 description: 使用 Azure Batch 的应用程序包功能轻松管理要安装在 Batch 计算节点上的多个应用程序和版本。
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 03/24/2021
 ms.custom:
 - H1Hack27Feb2017
 - devx-track-csharp
 - contperf-fy21q1
-ms.openlocfilehash: b4c6ab99b0fa93e5fdea4256d6f232cc0fe4218e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d0ed5cc47694d6576e6aea46b62dfab8ecb73459
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97033725"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105045784"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>使用 Batch 应用程序包将应用程序部署到计算节点
 
@@ -59,6 +59,9 @@ ms.locfileid: "97033725"
 ## <a name="upload-and-manage-applications"></a>上传和管理应用程序
 
 可以使用 [Azure 门户](https://portal.azure.com)或 Batch 管理 API 来管理 Batch 帐户中的应用程序包。 以下部分介绍如何在 Azure 门户中关联存储帐户，以及如何添加和管理应用程序和应用程序包。
+
+> [!NOTE]
+> 虽然可以在 [ARM 模板](quick-create-template.md)的 [Microsoft.Batch/batchAccounts](/templates/microsoft.batch/batchaccounts) 资源中定义应用程序值，但目前无法使用 ARM 模板上传要在 Batch 帐户中使用的应用程序包。 必须按照[下面](#add-a-new-application)所述将其上传到链接存储帐户。
 
 ### <a name="link-a-storage-account"></a>关联存储帐户
 
