@@ -59,7 +59,7 @@ Microsoft Teams 还在条件访问策略中作为云应用单独受到支持。 
 
 在 Microsoft Teams 中的租户上启用某些条件访问策略后，特定选项卡可能不再按预期在桌面客户端中正常运行。 但是，使用 Microsoft Teams Web 客户端时，受影响的选项卡可正常运行。 受影响的选项卡可能包括 Power BI、Forms、VSTS、PowerApps 和 SharePoint 列表。
 
-若要查看受影响的选项卡，必须在 Edge、Internet Explorer 或 Chrome 中使用 Teams Web 客户端并安装 Windows 10 帐户扩展。 某些选项卡依赖于 Web 身份验证，启用条件访问后，该选项在 Microsoft Teams 桌面客户端中无法正常运行。 Microsoft 正在与合作伙伴合作，以实现这些方案。 到目前为止，我们已实现涉及 Planner、OneNote 和 Stream 的方案。
+若要查看受影响的选项卡，必须在 Microsoft Edge、Internet Explorer 或 Chrome 中使用 Teams Web 客户端并安装 Windows 10 帐户扩展。 某些选项卡依赖于 Web 身份验证，启用条件访问后，该选项在 Microsoft Teams 桌面客户端中无法正常运行。 Microsoft 正在与合作伙伴合作，以实现这些方案。 到目前为止，我们已实现涉及 Planner、OneNote 和 Stream 的方案。
 
 ## <a name="next-steps"></a>后续步骤
 

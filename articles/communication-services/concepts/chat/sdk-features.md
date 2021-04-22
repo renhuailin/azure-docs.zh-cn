@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 520dc611e49675f35b8ba0330448438192770773
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 561855704d157f9ad826b5db83600a79d9437fc6
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168869"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500679"
 ---
 # <a name="chat-sdk-overview"></a>聊天 SDK 概述 
 
@@ -43,7 +43,7 @@ Azure 通信服务聊天 SDK 可用于向应用程序添加丰富的实时聊天
 |                   | 当参与者在聊天会话中积极键入消息时获得通知                                         | ✔️   | ✔️   | ✔️    | ✔️    |  ✔️    | ✔️   | 
 |                   | 获取聊天会话中的所有消息                                                                        | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   | 
 |                   | 将 Unicode 表情符号随附消息内容一起发送                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
-|实时通知（由专用信号包**启用）|  聊天客户端可以通过订阅获取聊天会话中的传入消息和其他操作的实时更新。 若要查看实时通知支持的更新的列表，请参阅[聊天概念](concepts.md#real-time-notifications)                                     | ✔️   | ❌    | ❌  | ❌  | ❌  | ❌  | 
+|实时通知（由专用信号包**启用）|  聊天客户端可以通过订阅获取聊天会话中的传入消息和其他操作的实时更新。 若要查看实时通知支持的更新的列表，请参阅[聊天概念](concepts.md#real-time-notifications)                                     | ✔️   | ❌    | ❌  | ❌  | ✔️  | ✔️  |   
 | 与 Azure 事件网格的集成             | 使用 Azure 事件网格中可用的聊天事件来插入自定义通知服务，或将该事件发布到 Webhook 以执行业务逻辑（例如，在聊天结束后更新 CRM 记录）   | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
 | 报告 </br>（此信息可在 Azure 门户上“通信服务”资源的“监视”选项卡下找到）      | 通过监视 Azure 指标资源管理器中已发布的指标并设置警报以检测异常，了解聊天应用中的 API 流量     | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
 |                   | 通过启用资源的诊断日志记录来监视和调试通信服务解决方案    | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |   
