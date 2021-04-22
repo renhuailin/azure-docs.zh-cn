@@ -8,16 +8,16 @@ ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
 ms.reviewer: larryfr
-ms.date: 01/13/2021
+ms.date: 03/25/2021
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
+ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli, contperf-fy21q2
 adobe-target: true
-ms.openlocfilehash: ed397e9f8db721a6baa641fc958af0dda570ce57
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 598da277214a2ee8e52cc5baaf2c792dfdc0429d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103561934"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220226"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>将机器学习模型部署到 Azure
 
@@ -195,11 +195,50 @@ az ml model register -n onnx_mnist -p mnist/model.onnx
 ```json
 {
     "entryScript": "score.py",
-    "sourceDirectory": "./working_dir"
+    "sourceDirectory": "./working_dir",
+    "environment": {
+    "docker": {
+        "arguments": [],
+        "baseDockerfile": null,
+        "baseImage": "mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04",
+        "enabled": false,
+        "sharedVolumes": true,
+        "shmSize": null
+    },
+    "environmentVariables": {
+        "EXAMPLE_ENV_VAR": "EXAMPLE_VALUE"
+    },
+    "name": "my-deploy-env",
+    "python": {
+        "baseCondaEnvironment": null,
+        "condaDependencies": {
+            "channels": [
+                "conda-forge",
+                "pytorch"
+            ],
+            "dependencies": [
+                "python=3.6.2",
+                "torchvision"
+                {
+                    "pip": [
+                        "azureml-defaults",
+                        "azureml-telemetry",
+                        "scikit-learn==0.22.1",
+                        "inference-schema[numpy-support]"
+                    ]
+                }
+            ],
+            "name": "project_environment"
+        },
+        "condaDependenciesFile": null,
+        "interpreterPath": "python",
+        "userManagedDependencies": false
+    },
+    "version": "1"
 }
 ```
 
-这样就指定了机器学习部署将会使用 `./working_dir` 目录中的 `score.py` 文件来处理传入请求。
+这会指定机器学习部署使用 `./working_dir` 目录中的文件 `score.py` 来处理传入请求，并指定它结合使用 Docker 映像和 `project_environment` 环境中指定的 Python 包。
 
 有关推理配置的更详细讨论，[请参阅此文](./reference-azure-machine-learning-cli.md#inference-configuration-schema)。 
 
@@ -282,7 +321,7 @@ from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservic
 如果在 Azure 机器学习工作区中注册了模型，请将“mymodel:1”替换为模型的名称及其版本号。
 
 ```azurecli-interactive
-az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
+az ml model deploy -n tutorial -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
 ```
 
 ### <a name="using-a-local-model"></a>使用本地模型
@@ -290,7 +329,7 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 如果不想注册模型，则可在 inferenceconfig.json 中传递 "sourceDirectory" 参数，以指定用于提供模型的本地目录。
 
 ```azurecli-interactive
-az ml model deploy --ic inferenceconfig.json --dc deploymentconfig.json
+az ml model deploy --ic inferenceconfig.json --dc deploymentconfig.json --name my_deploy
 ```
 
 # <a name="python"></a>[Python](#tab/python)

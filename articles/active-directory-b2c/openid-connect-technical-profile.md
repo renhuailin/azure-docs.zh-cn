@@ -12,10 +12,10 @@ ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 670fbeeb006d21e29675f88895018d1a453a1c54
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102120294"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OpenID Connect 技术配置文件
@@ -53,7 +53,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 [OpenID Connect](https://openid.ne
 
 以下示例演示 Microsoft Account 标识提供者返回的声明：
 
-- 映射到 **issuerUserId** 声明的 **子** 声明。
+- 映射到 issuerUserId 声明的 sub 声明 。
 - 映射到 **displayName** 声明的 **name** 声明。
 - 没有名称映射的 **email**。
 
@@ -74,7 +74,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 [OpenID Connect](https://openid.ne
 
 ## <a name="metadata"></a>元数据
 
-| Attribute | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 标识提供者的应用程序标识符。 |
 | IdTokenAudience | 否 | id_token 的受众。 如果指定了此项，Azure AD B2C 将检查标识提供者返回的令牌中的 `aud` 声明是否与 IdTokenAudience 元数据中指定的声明相同。  |
@@ -95,7 +95,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 [OpenID Connect](https://openid.ne
 | token_endpoint_auth_method | 否 | 指定 Azure AD B2C 如何向令牌终结点发送身份验证标头。 可能的值：`client_secret_post`（默认值）和 `client_secret_basic`（公共预览版）。 有关详细信息，请参阅 [OpenID Connect 客户端身份验证部分](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)。 |
 | token_signing_algorithm | 否 | 当 token_endpoint_auth_method 元数据设置为 `private_key_jwt` 时，用于客户端断言的签名算法。 可能的值：`RS256`（默认值）。 |
 | SingleLogoutEnabled | 否 | 指示在登录过程中技术配置文件是否尝试从联合标识提供者注销。 有关详细信息，请参阅 [Azure AD B2C 会话注销](./session-behavior.md#sign-out)。可能的值为 `true`（默认）或 `false`。 |
-|ReadBodyClaimsOnIdpRedirect| 否| 设置为 `true` 可从标识提供程序重定向的响应正文中读取声明。 此元数据与 [APPLE ID](identity-provider-apple-id.md)一起使用，声明返回到响应有效负载中。|
+|ReadBodyClaimsOnIdpRedirect| 否| 设置为 `true` 可从标识提供者重定向的响应正文中读取声明。 此元数据与 [Apple ID](identity-provider-apple-id.md) 一起使用，其中声明返回到响应有效负载中。|
 
 ```xml
 <Metadata>
@@ -114,7 +114,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 [OpenID Connect](https://openid.ne
  
 以下设置可用于配置失败时显示的错误消息。 元数据应在 OpenID Connect 技术配置文件中进行配置。 可以将错误消息[本地化](localization-string-ids.md#sign-up-or-sign-in-error-messages)。
 
-| Attribute | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | UserMessageIfClaimsPrincipalDoesNotExist | 否 | 在目录中找不到具有所提供用户名的帐户时要向用户显示的消息。 |
 | UserMessageIfInvalidPassword | 否 | 密码不正确时要向用户显示的消息。 |
@@ -124,7 +124,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 [OpenID Connect](https://openid.ne
 
 **CryptographicKeys** 元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 标识提供者应用程序的客户端机密。 仅当 response_types 元数据设置为 `code` 且 token_endpoint_auth_method 设置为 `client_secret_post` 或 `client_secret_basic` 时，才需要此加密密钥。 在这种情况下，Azure AD B2C 会再次进行调用，以便用授权代码来交换访问令牌。 如果元数据已设置为 `id_token`，则可省略加密密钥。  |
 | assertion_signing_key | 是 | 将用于为客户端断言签名的 RSA 私钥。 只有在将 token_endpoint_auth_method 元数据设置为 `private_key_jwt` 的情况下，才需要此加密密钥。 |

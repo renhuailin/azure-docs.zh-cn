@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/25/2021
 ms.openlocfilehash: ec4ea645e325ef48d4cb5951cd39fd4e9cbe1617
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101738049"
 ---
 # <a name="copy-and-transform-data-in-azure-database-for-postgresql-by-using-azure-data-factory"></a>使用 Azure 数据工厂复制和转换 Azure Database for PostgreSQL 中的数据
@@ -30,7 +30,7 @@ ms.locfileid: "101738049"
 - [映射数据流](concepts-data-flow-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
-目前，数据流支持 PostgreSQL 单一服务器的 Azure 数据库，但不支持灵活的服务器或超大规模 (Citus) 。
+目前，数据流支持 Azure database for PostgreSQL 单一服务器，但不支持灵活服务器或超大规模 (Citus)。
 
 ## <a name="getting-started"></a>入门
 
@@ -42,7 +42,7 @@ ms.locfileid: "101738049"
 
 Azure Database for PostgreSQL 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**AzurePostgreSql**。 | 是 |
 | connectionString | 用于连接到 Azure Database for PostgreSQL 的 ODBC 连接字符串。<br/>还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)。 | 是 |
@@ -71,7 +71,7 @@ Azure Database for PostgreSQL 链接服务支持以下属性：
 
 **示例**：
 
-***在 Azure Key Vault 中存储密码***
+***在 Azure 密钥保管库中存储密码***
 
 ```json
 {
@@ -97,9 +97,9 @@ Azure Database for PostgreSQL 链接服务支持以下属性：
 
 有关可用于定义数据集的各个部分和属性的完整列表，请参阅 [Azure 数据工厂中的数据集](concepts-datasets-linked-services.md)。 本部分提供数据集中 Azure Database for PostgreSQL 支持的属性列表。
 
-若要从 Azure Database for PostgreSQL 复制数据，请将数据集的 type 属性设置为 " **AzurePostgreSqlTable**"。 支持以下属性：
+要从 Azure Database for PostgreSQL 复制数据，请将数据集的 type 属性设置为 **AzurePostgreSqlTable**。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 AzurePostgreSqlTable  | 是 |
 | tableName | 表名称 | 否（如果指定了活动源中的“query”） |
@@ -128,10 +128,10 @@ Azure Database for PostgreSQL 链接服务支持以下属性：
 
 要从 Azure Database for PostgreSQL 复制数据，请将复制活动中的源类型设置为 **AzurePostgreSqlSource**。 复制活动 **source** 部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **AzurePostgreSqlSource** | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如 `SELECT * FROM mytable` 或 `SELECT * FROM "MyTable"`。 请注意，在 PostgreSQL 中，如果未加引号，则实体名称不区分大小写。 | 否（如果指定了数据集中的 tableName 属性） |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如 `SELECT * FROM mytable` 或 `SELECT * FROM "MyTable"`。 请注意，在 PostgreSQL 中，如果未加引号，则实体名称不区分大小写。 | 否（如果指定了数据集中的 tableName 属性） |
 
 **示例**：
 
@@ -169,13 +169,13 @@ Azure Database for PostgreSQL 链接服务支持以下属性：
 
 将数据复制到 Azure Database for PostgreSQL 时，复制活动的 **sink** 节支持以下属性：
 
-| Property | 说明 | 必选 |
+| Property | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 **AzurePostgreSQLSink**。 | 是 |
 | preCopyScript | 每次运行时将数据写入 Azure Database for PostgreSQL 之前，为要执行的复制活动指定 SQL 查询。 可以使用此属性清除预加载的数据。 | 否 |
-| writeMethod | 用于将数据写入 Azure Database for PostgreSQL 的方法。<br>允许的值为： **CopyCommand** (预览，更高性能) ， **BulkInsert** (默认) 。 | 否 |
-| writeBatchSize | 每批加载到 Azure Database for PostgreSQL 中的行数。<br>允许的值是表示行数的整数。 | 无 (默认值为 1000000)  |
-| writeBatchTimeout | 超时之前等待批插入操作完成时的等待时间。<br>允许的值为 Timespan 字符串。 示例为 00:30:00（30 分钟）。 | 无 (默认值为 00:30:00)  |
+| writeMethod | 用于将数据写入 Azure Database for PostgreSQL 的方法。<br>允许的值为：CopyCommand（预览，更高性能）和 BulkInsert（默认） 。 | 否 |
+| writeBatchSize | 每批加载到 Azure Database for PostgreSQL 中的行数。<br>允许的值是表示行数的整数。 | 否（默认值为 1000000） |
+| writeBatchTimeout | 超时之前等待批插入操作完成时的等待时间。<br>允许的值为 Timespan 字符串。 示例为 00:30:00（30 分钟）。 | 否（默认值为 00:30:00） |
 
 **示例**：
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 03/27/2021
 ms.author: alexeyo
-ms.openlocfilehash: 78e40250710c133cbed53c05137971247663b0df
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 7ef6ed5293ec9ecf49c16f8dfb0b6604942408f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103564416"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937050"
 ---
 # <a name="speech-services-quotas-and-limits"></a>语音服务配额和限制
 
@@ -39,7 +39,7 @@ ms.locfileid: "103564416"
 #### <a name="batch-transcription"></a>批量听录
 | Quota | 免费 (F0)<sup>1</sup> | 标准 (S0) |
 |--|--|--|
-| REST API 限制 | 批量听录不适用于 F0 | 每分钟 300 个请求 |
+| [语音转文本 REST API V2.0 和 v3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) 限制 | 批量听录不适用于 F0 | 每分钟 300 个请求 |
 | 最大音频输入文件大小 | 空值 | 1 GB |
 | 最大输入 Blob 大小（可能包含多个文件，例如在 zip 存档中；请确保注意上面的文件大小限制） | 空值 | 2.5 GB |
 | 最大 Blob 容器大小 | 空值 | 5 GB |
@@ -63,19 +63,19 @@ ms.locfileid: "103564416"
 ### <a name="text-to-speech-quotas-and-limits-per-speech-resource"></a>每个语音资源的文本转语音配额和限制
 在下表中，没有“可调”行的参数对于所有价格层都不能进行调整。
 
-| Quota | 免费 (F0)<sup>3</sup> | 标准 (S0) |
-|--|--|--|
-| **标准语音和神经网络语音的每秒事务数 (TPS) 的最大数目** | 200<sup>4</sup> | 200<sup>4</sup> |  |
-| **自定义语音的并发请求限制** |  |  |
-| 默认值 | 10 | 10 |
-| 可调 | 否<sup>5</sup> | 是<sup>5</sup> |
-| **HTTP 特定配额** |  |
-| 每个请求已生成的最大音频长度 | 10 分钟 | 10 分钟 |
-| SSML 中不同 `<voice>` 标记的最大数目 | 50 | 50 |
-| **Websocket 特定配额** |  |  |
-|每轮已生成的最大音频长度 | 10 分钟 | 10 分钟 |
-|每轮的最大 SSML 消息大小 |64 KB |64 KB |
-| REST API 限制 | 每分钟 20 个请求 | 每分钟 300 个请求 |
+| Quota                                                                          | 免费 (F0)<sup>3</sup>  | 标准 (S0)   |
+|--------------------------------------------------------------------------------|------------------------|-----------------|
+| **标准语音和神经网络语音的每秒事务数 (TPS) 的最大数目** | 200<sup>4</sup>        | 200<sup>4</sup> |
+| **自定义语音的并发请求限制**                                  |                        |                 |
+| 默认值                                                                  | 10                     | 10              |
+| 可调                                                                     | 否<sup>5</sup>         | 是<sup>5</sup> |
+| **HTTP 特定配额**                                                       |                        |                 |
+| 每个请求已生成的最大音频长度                                          | 10 分钟                 | 10 分钟          |
+| SSML 中不同 `<voice>` 标记的最大数目                                  | 50                     | 50              |
+| **Websocket 特定配额**                                                  |                        |                 |
+| 每轮已生成的最大音频长度                                             | 10 分钟                 | 10 分钟          |
+| 每轮的最大 SSML 消息大小                                                 | 64 KB                  | 64 KB           |
+| REST API 限制                                                             | 每分钟 20 个请求 | 每分钟 300 个请求 |
 
 
 <sup>3</sup> 有关免费 (F0) 定价层，请参阅[定价页](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)上的每月限额。<br/>

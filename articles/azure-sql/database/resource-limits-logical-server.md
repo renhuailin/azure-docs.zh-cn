@@ -10,42 +10,42 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 02/02/2021
-ms.openlocfilehash: 34613633b6b27fc3387e6a9fa63caf4a194ba963
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: 5e95bc50a74413389bd2583beb90128b3fd0810a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101691223"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105543510"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL 数据库和 Azure Synapse Analytics 服务器的资源限制
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-本文概述了 Azure SQL 数据库和 Azure Synapse Analytics 所使用的逻辑服务器的资源限制。 还提供了有关当达到或超过这些资源限制时会发生的情况的信息，并描述了用于执行这些限制的资源治理机制。
+本文概述了 Azure SQL 数据库和 Azure Synapse Analytics 所使用的[逻辑服务器](logical-servers.md)的资源限制。 还提供了有关当达到或超过这些资源限制时会发生的情况的信息，并描述了用于执行这些限制的资源治理机制。
 
 > [!NOTE]
-> 有关 Azure SQL 托管实例限制，请参阅[托管实例的 SQL 数据库资源限制](../managed-instance/resource-limits.md)。
+> 有关 Azure SQL 托管实例限制，请参阅[托管实例的资源限制](../managed-instance/resource-limits.md)。
 
 ## <a name="maximum-resource-limits"></a>最大资源限制
 
 | 资源 | 限制 |
 | :--- | :--- |
-| 每个服务器的数据库数 | 5000 |
-| 任意区域中每个订阅的服务器默认数量 | 20 |
-| 任意区域中每个订阅的服务器数上限 | 200 |  
-| 每个服务器的 DTU/eDTU 配额 | 54,000 |  
-| 每个服务器/实例的 vCore 配额 | 540 |
-| 每个服务器的最大池数 | 受限于 DTU 或 vCore 数。 例如，如果每个池是 1000 个 DTU，则一个服务器可以支持 54 个池。|
+| 逻辑服务器的数据库 | 5000 |
+| 某一区域中每个订阅的逻辑服务器默认数量 | 20 |
+| 某一区域中每个订阅的逻辑服务器最大数量 | 200 |  
+| 每个逻辑服务器的 DTU/eDTU 配额 | 54,000 |  
+| 每个逻辑服务器的 vCore 配额 | 540 |
+| 每个逻辑服务器的最大池数 | 受限于 DTU 或 vCore 数。 例如，如果每个池是 1000 个 DTU，则一个服务器可以支持 54 个池。|
 |||
 
 > [!IMPORTANT]
-> 随着数据库的数量接近每个服务器的限制，可能出现以下情况：
+> 当数据库的数量接近每个逻辑服务器的限制时，可能会出现以下情况：
 >
-> - 对主数据库运行查询的延迟增加。  这包括资源利用率统计信息的视图，如 sys.resource_stats。
+> - 对主数据库运行查询的延迟增加。  这包括资源利用率统计信息的视图，如 `sys.resource_stats`。
 > - 管理操作和呈现门户视点（涉及枚举服务器中的数据库）的延迟增加。
 
 > [!NOTE]
-> 若要获取更高的 DTU/eDTU 配额、vCore 配额或超过默认数量的服务器，请在 Azure 门户中提交新的支持请求。 有关详细信息，请参阅[请求增加 Azure SQL 数据库的配额](quota-increase-request.md)。
+> 若要获取更高的 DTU/eDTU 配额、vCore 配额或超过默认数量的逻辑服务器，请在 Azure 门户中提交新的支持请求。 有关详细信息，请参阅[请求增加 Azure SQL 数据库的配额](quota-increase-request.md)。
 
 ### <a name="storage-size"></a>存储大小
 

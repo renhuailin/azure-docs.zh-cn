@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36ad7cf7fe2ca1ddcb592e895014b1d956e55e1b
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 10ea524620f810e0bf1dddc230716031bbc10e69
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102557363"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642376"
 ---
 # <a name="governing-on-premises-service-accounts"></a>监管本地服务帐户
 
@@ -60,7 +60,7 @@ Windows Active Directory 中有四种类型的本地服务帐户：
 
 对用作服务帐户的用户帐户使用以下设置：
 
-* [**帐户过期**](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)：将服务帐户设置为在其评审期过后经过设置的一段时间后自动过期，除非确定它应该继续有效
+* [**帐户过期**](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps&preserve-view=true)：将服务帐户设置为在其评审期过后经过设置的一段时间后自动过期，除非确定它应该继续有效
 
 *  **LogonWorkstations**：在服务帐户可登录的位置方面限制其权限。 如果服务帐户在计算机本地运行并只能访问该计算机上的资源，则限制它在其他任何位置登录。
 
@@ -149,9 +149,9 @@ Windows Active Directory 中有四种类型的本地服务帐户：
 
 仅在已将相关信息记录到 CMDB 并已执行风险评估之后，才创建服务帐户。 帐户限制应与风险评估相一致。 考虑与评估相关的以下限制：
 
-* [帐户过期](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)
+* [帐户过期](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps&preserve-view=true)
 
-   * 对于用作服务帐户的所有用户帐户，定义实际且明确的使用终止日期。 使用“帐户过期”标志指定此设置。 有关更多详细信息，请参阅 [Set-ADAccountExpiration](/powershell/module/addsadministration/set-adaccountexpiration)。 
+   * 对于用作服务帐户的所有用户帐户，定义实际且明确的使用终止日期。 使用“帐户过期”标志进行此设置。 有关更多详细信息，请参阅 [Set-ADAccountExpiration](/powershell/module/addsadministration/set-adaccountexpiration)。 
 
 * 登录到 ([LogonWorkstation](/powershell/module/addsadministration/set-aduser))
 
@@ -193,7 +193,7 @@ Windows Active Directory 中有四种类型的本地服务帐户：
 
 3. 履行“保持禁用”策略后删除服务帐户。 
 
-   * 对于 MSA，可以使用 PowerShell [卸载服务帐户](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps)，或者从托管服务帐户容器中手动将其删除。
+   * 对于 MSA，可以使用 PowerShell [卸载服务帐户](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps&preserve-view=true)，或者从托管服务帐户容器中手动将其删除。
 
    * 对于计算机或用户帐户，可以从 Active Directory 中手动删除帐户。
 

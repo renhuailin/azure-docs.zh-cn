@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d21783f0ef32289aad4b7d136dc8200d61fc0852
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b8cea26bcb0926cd3af360a6489377767d681079
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104592925"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532557"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中创建和管理资源目录
 
@@ -53,7 +53,7 @@ ms.locfileid: "104592925"
 
 ### <a name="creating-a-catalog-programmatically"></a>以编程方式创建目录
 
-还可以使用 Microsoft Graph 创建目录。  通过具有委托的 `EntitlementManagement.ReadWrite.All` 权限的应用程序，相应角色中的用户可以调用 API 来[创建 accessPackageCatalog](/graph/api/accesspackagecatalog-post?view=graph-rest-beta)。
+还可以使用 Microsoft Graph 创建目录。  通过具有委托的 `EntitlementManagement.ReadWrite.All` 权限的应用程序，相应角色中的用户可以调用 API 来[创建 accessPackageCatalog](/graph/api/accesspackagecatalog-post?view=graph-rest-beta&preserve-view=true)。
 
 ## <a name="add-resources-to-a-catalog"></a>将资源添加到目录
 
@@ -81,7 +81,7 @@ ms.locfileid: "104592925"
 
     现在，可将这些资源包含在目录中的访问包内。
 
-### <a name="add-a-multi-geo-sharepoint-site"></a>添加多地域 SharePoint 站点
+### <a name="add-a-multi-geo-sharepoint-site-preview"></a>添加多地理位置 SharePoint 站点（预览版）
 
 1. 若已为 SharePoint 启用[多地域](/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365)，请选择想从中选择站点的环境。
     
@@ -91,7 +91,7 @@ ms.locfileid: "104592925"
 
 ### <a name="adding-a-resource-to-a-catalog-programmatically"></a>以编程方式将资源添加到目录
 
-还可以使用 Microsoft Graph 将资源添加到目录。  通过具有委托的 `EntitlementManagement.ReadWrite.All` 权限的应用程序，相应角色中的用户或目录和资源所有者可以调用 API 来[创建 accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta)。
+还可以使用 Microsoft Graph 将资源添加到目录。  通过具有委托的 `EntitlementManagement.ReadWrite.All` 权限的应用程序，相应角色中的用户或目录和资源所有者可以调用 API 来[创建 accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta&preserve-view=true)。
 
 ## <a name="remove-resources-from-a-catalog"></a>从目录中删除资源
 
@@ -164,7 +164,7 @@ ms.locfileid: "104592925"
 
 ### <a name="deleting-a-catalog-programmatically"></a>以编程方式删除目录
 
-还可以使用 Microsoft Graph 删除目录。  通过具有委托的 `EntitlementManagement.ReadWrite.All` 权限的应用程序，相应角色中的用户可以调用 API 来[删除 accessPackageCatalog](/graph/api/accesspackagecatalog-delete?view=graph-rest-beta)。
+还可以使用 Microsoft Graph 删除目录。  通过具有委托的 `EntitlementManagement.ReadWrite.All` 权限的应用程序，相应角色中的用户可以调用 API 来[删除 accessPackageCatalog](/graph/api/accesspackagecatalog-delete?view=graph-rest-beta&preserve-view=true)。
 
 ## <a name="next-steps"></a>后续步骤
 

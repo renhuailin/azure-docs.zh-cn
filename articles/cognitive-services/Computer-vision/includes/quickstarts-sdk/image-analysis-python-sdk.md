@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 8ff7cdcf9ed86bee1cc92ebfbb425780408efee7
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: aae780ad42c39789c0c4448a90a12737074e4176
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106287379"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073337"
 ---
 <a name="HOLTop"></a>
 
@@ -198,10 +198,10 @@ python quickstart-file.py
 
 ## <a name="next-steps"></a>后续步骤
 
-通过本快速入门，你已了解如何使用适用于 Python 的图像分析库来执行基本任务。 接下来，请在参考文档中详细了解该库。
+在本快速入门中了解了安装图像分析客户端库和进行基本的图像分析调用的方法。 接下来，详细了解分析 API 功能。
 
 > [!div class="nextstepaction"]
->[图像分析 API 参考 (Python)](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision)
+>[调用分析 API](../../Vision-API-How-to-Topics/HowToCallVisionAPI.md)
 
 * [图像分析概述](../../overview-image-analysis.md)
 * 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py) 上找到此示例的源代码。

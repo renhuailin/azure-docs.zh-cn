@@ -8,10 +8,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: cc8e0272dc690ed541883ae943c118cbbe2f1854
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100392113"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入和移出 Azure 表
@@ -33,13 +33,13 @@ ms.locfileid: "100392113"
 
 创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+也可以使用以下工具创建管道：Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API    。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储： 
 
-1. 创建 **链接服务** 以将输入和输出数据存储链接到数据工厂。
-2. 创建用于表示复制操作的输入和输出数据的 **数据集** 。 
-3. 创建包含复制活动的 **管道** ，该活动将数据集作为输入，并将数据集作为输出。 
+1. 创建链接服务可将输入和输出数据存储链接到数据工厂。
+2. 创建数据集以表示复制操作的输入和输出数据。 
+3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。 
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。 有关用于向/从 Azure 表存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples)部分。
 
@@ -55,9 +55,9 @@ ms.locfileid: "100392113"
 
 每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **AzureTable** 数据集类型的 **typeProperties** 部分具有以下属性。
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
-| tableName |链接服务指代的 Azure 表数据库实例中表的名称。 |是。 指定了 tableName 但未指定 azureTableSourceQuery 时，表中的所有记录都将复制到目标中。 如果还指定了 azureTableSourceQuery，则会将满足查询的表中的记录复制到目标中。 |
+| tableName |链接服务指代的 Azure 表数据库实例中表的名称。 |是的。 指定了 tableName 但未指定 azureTableSourceQuery 时，表中的所有记录都将复制到目标中。 如果还指定了 azureTableSourceQuery，则会将满足查询的表中的记录复制到目标中。 |
 
 ### <a name="schema-by-data-factory"></a>数据工厂的构架
 对于无架构的数据存储（如 Azure 表），数据工厂服务将使用下列方式之一推断架构：
@@ -74,10 +74,10 @@ ms.locfileid: "100392113"
 
 **AzureTableSource** 支持 typeProperties 部分的以下属性：
 
-| properties | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| azureTableSourceQuery |使用自定义查询读取数据。 |Azure 表查询字符串。 请参阅下一节中的示例。 |不是。 指定了 tableName 但未指定 azureTableSourceQuery 时，表中的所有记录都将复制到目标中。 如果还指定了 azureTableSourceQuery，则会将满足查询的表中的记录复制到目标中。 |
-| azureTableSourceIgnoreTableNotFound |指示是否存在忽略表异常。 |TRUE<br/>FALSE |否 |
+| azureTableSourceQuery |使用自定义查询读取数据。 |Azure 表查询字符串。 请参阅下一节中的示例。 |不知道。 指定了 tableName 但未指定 azureTableSourceQuery 时，表中的所有记录都将复制到目标中。 如果还指定了 azureTableSourceQuery，则会将满足查询的表中的记录复制到目标中。 |
+| azureTableSourceIgnoreTableNotFound |指示是否存在忽略表异常。 |TRUE<br/>false |否 |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery 示例
 如果 Azure 表列为 string 类型：
@@ -94,7 +94,7 @@ azureTableSourceQuery": "$$Text.Format('PartitionKey ge \\'{0:yyyyMMddHH00_0000}
 
 **AzureTableSink** 支持 typeProperties 部分的以下属性：
 
-| properties | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | azureTableDefaultPartitionKeyValue |接收器可以使用的默认分区键值。 |字符串值。 |否 |
 | azureTablePartitionKeyName |指定列名称，使用列值作为分区键。 如果未指定，则使用 AzureTableDefaultPartitionKeyValue 作为分区键。 |列名称。 |否 |
@@ -125,14 +125,14 @@ DivisionID 被指定为分区键。
 }
 ```
 ## <a name="json-examples"></a>JSON 示例
-下面的示例提供示例 JSON 定义，可用于通过使用 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 它们演示如何将数据复制到 Azure 表存储和 Azure Blob 数据库，以及如何从 Azure 表存储和 Azure Blob 数据库复制数据。 但是，可以从任何源将数据 **直接** 复制到任何受支持的接收器。 有关详细信息，请参阅 [Move data by using Copy Activity](data-factory-data-movement-activities.md)（使用复制活动移动数据）中的“支持的数据存储和格式”部分。
+以下示例提供示例 JSON 定义，可使用该定义通过 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它们演示如何将数据复制到 Azure 表存储和 Azure Blob 数据库，以及如何从 Azure 表存储和 Azure Blob 数据库复制数据。 但是，可以从任何源将数据 **直接** 复制到任何受支持的接收器。 有关详细信息，请参阅 [Move data by using Copy Activity](data-factory-data-movement-activities.md)（使用复制活动移动数据）中的“支持的数据存储和格式”部分。
 
 ## <a name="example-copy-data-from-azure-table-to-azure-blob"></a>示例：将数据从 Azure 表复制到 Azure Blob
 以下示例显示：
 
-1. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)类型的链接服务 (& blob) 使用。
+1. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务（用于表和 blob）。
 2. 类型 [AzureTable](#dataset-properties) 的输入[数据集](data-factory-create-datasets.md)。
-3. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)类型的输出[数据集](data-factory-create-datasets.md)。
+3. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
 4. [管道](data-factory-create-pipelines.md)，具有使用 AzureTableSource 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 的复制活动。
 
 此示例按小时将属于 Azure 表中默认分区的数据复制到 blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
@@ -154,7 +154,7 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 
 **Azure 表输入数据集：**
 
-该示例假设已在 Azure 表中创建了表 "MyTable"。
+该示例假定你在 Azure 表中创建了表“MyTable”。
 
 设置 "external": "true" 将告知数据工厂服务：数据集位于数据工厂外且不由数据工厂中的活动生成。
 
@@ -322,7 +322,7 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 
 **Azure Blob 输入数据集：**
 
-每小时从新的 blob 获取数据一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态评估 blob 的文件夹路径和文件名。 文件夹路径使用开始时间的年、月和日部分，文件名使用开始时间的小时部分。 "external"： "true" 设置将告知数据工厂服务：数据集在数据工厂外部且不由数据工厂中的活动生成。
+每小时从新的 blob 获取数据一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态评估 blob 的文件夹路径和文件名。 文件夹路径使用开始时间的年、月和日部分，文件名使用开始时间的小时部分。 "external": "true" 设置将告知数据工厂服务数据集在数据工厂外部且不由数据工厂中的活动生成。
 
 ```JSON
 {
@@ -391,7 +391,7 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 
 **Azure 表输出数据集：**
 
-此示例将数据复制到 Azure 表中名为 "MyTable" 的表中。 创建 Azure 表，其列数与 Blob CSV 文件要包含的列数相同。 每隔一小时会向表添加新行。
+此示例将数据复制到 Azure 表中名为“MyTable”的表。 创建 Azure 表，其列数与 Blob CSV 文件要包含的列数相同。 每隔一小时会向表添加新行。
 
 ```JSON
 {
@@ -535,7 +535,7 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 | name |Edm.String |
 | lastlogindate |Edm.DateTime |
 
-接下来，按如下所示定义 Azure 表数据集。 不需要指定包含类型信息的 "结构" 部分，因为类型信息已在基础数据存储中指定。
+接下来，按如下所示定义 Azure 表数据集。 不需要指定包含类型信息的“结构”部分，因为类型信息已在基础数据存储中指定。
 
 ```JSON
 {

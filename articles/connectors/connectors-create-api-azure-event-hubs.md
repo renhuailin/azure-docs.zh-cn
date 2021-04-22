@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
 ms.openlocfilehash: 65da8e07c01561577fe7eff449bfc10348c7f277
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101716595"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>使用 Azure 事件中心和 Azure 逻辑应用监视、接收和发送事件
@@ -63,7 +63,7 @@ ms.locfileid: "101716595"
 此示例演示在将新事件发送到事件中心时，如何启动逻辑应用工作流。 
 
 > [!NOTE]
-> 所有事件中心触发器都是 *长轮询* 触发器，这意味着触发器将处理所有事件，然后在每个分区中等待30秒，以使事件中心出现更多事件。 因此，如果使用四个分区设置触发器，则此延迟可能需要长达两分钟，触发器才能完成对所有分区的轮询。 如果在此延迟内未收到任何事件，则会跳过触发器运行。 否则，该触发器将继续读取事件，直到事件中心为空。 下一次触发器轮询的发生将基于触发器的属性中指定的重复周期间隔。
+> 所有事件中心触发器都是长轮询触发器，这意味着触发器可处理所有事件，然后在每个分区等待 30 秒，让更多事件出现在事件中心。 因此，如果对触发器设置了四个分区，则此延迟可能需要最长两分钟时间，触发器才能完成对所有分区的轮询。 如果在此延迟内未收到任何事件，则会跳过触发器运行。 否则，该触发器将继续读取事件，直到事件中心为空。 下一次触发器轮询的发生将基于触发器的属性中指定的重复周期间隔。
 
 1. 在 Azure 门户或 Visual Studio 中创建一个空白的逻辑应用，以便打开逻辑应用设计器。 此示例使用 Azure 门户。
 
@@ -150,7 +150,7 @@ ms.locfileid: "101716595"
 
 1. 系统提示输入连接信息时，请提供以下详细信息：
 
-   | 属性 | 必选 | Value | 说明 |
+   | 属性 | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **连接名称** | 是 | <*connection-name*> | 将要为连接创建的名称 |
    | **事件中心命名空间** | 是 | <*event-hubs-namespace*> | 选择要使用的事件中心命名空间。 |
@@ -174,7 +174,7 @@ ms.locfileid: "101716595"
 如需技术详细信息（例如触发器、操作和限制，如连接器的 Swagger 文件所述），请查看[连接器的参考页](/connectors/eventhubs/)。
 
 > [!NOTE]
-> 对于 [integration service 环境 ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用 (ISE) ，此连接器的基于 ise 标记的版本改为使用 [ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) 。
+> 对于[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中的逻辑应用，此连接器的 ISE 标记版本使用 [ISE 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 588c6548afb07fb8ee3de5152c240ddd9ea2293b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 62e2306abc2d3132651fb40aab8c2f5b4d5043f4
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102430184"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960871"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>将 Azure SQL 数据库流量迁移到更新的网关
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,6 +31,9 @@ Azure 基础结构改进后，Microsoft 会定期刷新硬件，以确保我们�
 # <a name="in-progress"></a>[正在学习](#tab/in-progress-ip)
 
 ## <a name="april-2021"></a>2021 年 4 月
+将会向以下区域添加新的 SQL 网关：
+- 美国东部 2：40.70.144.193 此 SQL 网关应在 2021 年 4 月 30 日开始接受客户流量。
+
 将会向以下区域添加新的 SQL 网关：
 - 挪威东部：51.120.96.33
 - 东南亚：13.67.16.193

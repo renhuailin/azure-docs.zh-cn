@@ -1,6 +1,6 @@
 ---
-title: 向/从 Azure Synapse Analytics 复制数据
-description: 了解如何使用 Azure 数据工厂将数据复制到 Azure Synapse 分析，以及如何从 Azure 数据工厂复制数据
+title: 在 Azure Synapse Analytics 中复制/粘贴数据
+description: 了解如何使用 Azure 数据工厂在 Azure Synapse Analytics 中复制/粘贴数据
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
@@ -8,77 +8,77 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: aa364ec434db980bf226008537ca928628fcac1b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100392079"
 ---
-# <a name="copy-data-to-and-from-azure-synapse-analytics-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure Synapse 分析
+# <a name="copy-data-to-and-from-azure-synapse-analytics-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Synapse Analytics 中复制/粘贴数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-azure-sql-data-warehouse-connector.md)
 > * [版本 2（当前版本）](../connector-azure-sql-data-warehouse.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1。 如果使用的是最新版本的数据工厂服务，请参阅 [V2 中的 Azure Synapse Analytics 连接器](../connector-azure-sql-data-warehouse.md)。
+> 本文适用于数据工厂版本 1。 如果使用当前版本的数据工厂服务，请参阅 [V2 中的 Azure Synapse Analytics 连接器](../connector-azure-sql-data-warehouse.md)。
 
-本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入/移出 Azure Synapse 分析。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
+本文介绍如何使用 Azure 数据工厂中的复制活动在 Azure Synapse Analytics 中复制/粘贴数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
 
 > [!TIP]
 > 要实现最佳性能，请使用 PolyBase 将数据载入 Azure Synapse Analytics。 有关详细信息，请参阅[使用 PolyBase 将数据载入 Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) 部分。 有关带有用例的演练，请参阅[在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据载入 Azure Synapse Analytics](data-factory-load-sql-data-warehouse.md)。
 
 ## <a name="supported-scenarios"></a>支持的方案
-可以将数据 **从 Azure Synapse Analytics** 复制到以下数据存储：
+可以将数据从 Azure Synapse Analytics 复制到以下数据存储：
 
 [!INCLUDE [data-factory-supported-sinks](../../../includes/data-factory-supported-sinks.md)]
 
-可以将数据从以下数据存储复制 **到 Azure Synapse 分析**：
+可以将数据从以下数据存储复制到 Azure Synapse Analytics：
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 > [!TIP]
-> 将数据从 SQL Server 或 Azure SQL 数据库复制到 Azure Synapse Analytics 时，如果目标存储中不存在该表，数据工厂可以通过使用源数据存储中表的架构在 Azure Synapse Analytics 中自动创建表。 有关详细信息，请参阅[自动表创建](#auto-table-creation)。
+> 将数据从 SQL Server 或 Azure SQL 数据库复制到 Azure Synapse Analytics 时，如果目标存储中不存在该表，数据工厂可以使用源数据存储中的表架构自动在 Azure Synapse Analytics 中创建该表。 有关详细信息，请参阅[自动表创建](#auto-table-creation)。
 
 ## <a name="supported-authentication-type"></a>支持的身份验证类型
 Azure Synapse Analytics 连接器支持基本身份验证。
 
 ## <a name="getting-started"></a>入门
-可以使用不同的工具/Api 创建包含复制活动的管道，以将数据移到 Azure Synapse 分析或从 Azure 分析移动数据。
+可创建包含复制活动的管道，以使用不同的工具/API 在 Azure Synapse Analytics 中复制/粘贴数据。
 
-若要创建将数据复制到 Azure Synapse Analytics/从 Azure Analytics 复制数据的管道，最简单的方法是使用复制数据向导。 有关使用复制数据向导创建管道的快速演练，请参阅 [教程：使用数据工厂将数据加载到 Azure Synapse Analytics](../load-azure-sql-data-warehouse.md) 。
+若要创建在 Azure Synapse Analytics 中复制/粘贴数据的管道，最简单的方法是使用“复制数据”向导。 有关使用“复制数据”向导创建管道的快速演练，请参阅[教程：使用数据工厂将数据加载到 Azure Synapse Analytics](../load-azure-sql-data-warehouse.md)。
 
-你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+也可以使用以下工具创建管道：Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API    。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
 1. 创建 **数据工厂**。 数据工厂可以包含一个或多个管道。 
-2. 创建 **链接服务** 以将输入和输出数据存储链接到数据工厂。 例如，如果要将数据从 Azure blob 存储复制到 Azure Synapse Analytics，请创建两个链接服务，将 Azure 存储帐户和 Azure Synapse Analytics 链接到数据工厂。 有关特定于 Azure Synapse Analytics 的链接服务属性，请参阅 [链接服务属性](#linked-service-properties) 部分。 
-3. 创建用于表示复制操作的输入和输出数据的 **数据集** 。 在上一个步骤所述的示例中，创建了一个数据集来指定 Blob 容器和包含输入数据的文件夹。 另外，还可以创建另一个数据集来指定 Azure Synapse 分析中的表，以保存从 blob 存储复制的数据。 有关特定于 Azure Synapse Analytics 的数据集属性，请参阅 [数据集属性](#dataset-properties) 部分。
-4. 创建包含复制活动的 **管道** ，该活动将数据集作为输入，并将数据集作为输出。 在前面所述的示例中，对复制活动使用 BlobSource 作为源，SqlDWSink 作为接收器。 同样，如果要从 Azure Synapse Analytics 复制到 Azure Blob 存储，请在复制活动中使用 SqlDWSource 和 BlobSink。 有关特定于 Azure Synapse Analytics 的复制活动属性，请参阅 [复制活动属性](#copy-activity-properties) 部分。 有关如何将数据存储用作源或接收器的详细信息，请单击前面章节中的相应数据存储链接。
+2. 创建链接服务可将输入和输出数据存储链接到数据工厂。 例如，如果要将数据从 Azure Blob 存储复制到 Azure Synapse Analytics，可创建两个链接服务，将 Azure 存储帐户和 Azure Synapse Analytics 链接到数据工厂。 有关特定于 Azure Synapse Analytics 的链接服务属性，请参阅[链接服务属性](#linked-service-properties)部分。 
+3. 创建数据集以表示复制操作的输入和输出数据。 在上一个步骤所述的示例中，创建了一个数据集来指定 Blob 容器和包含输入数据的文件夹。 并且创建了另一个数据集来指定 Azure Synapse Analytics 中用于保存从 Blob 存储复制的数据的表。 有关特定于 Azure Synapse Analytics 的数据集属性，请参阅[数据集属性](#dataset-properties)部分。
+4. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。 在前面所述的示例中，对复制活动使用 BlobSource 作为源，SqlDWSink 作为接收器。 同样，如果要从 Azure Synapse Analytics 复制到 Azure Blob 存储，则在复制活动中使用 SqlDWSource 和 BlobSink。 有关特定于 Azure Synapse Analytics 的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)部分。 有关如何将数据存储用作源或接收器的详细信息，请单击前面章节中的相应数据存储链接。
 
-使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。 有关用于向/从 Azure Synapse 分析复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [json 示例](#json-examples-for-copying-data-to-and-from-azure-synapse-analytics) 部分。
+使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。 有关用于在 Azure Synapse Analytics 中复制/粘贴数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples-for-copying-data-to-and-from-azure-synapse-analytics)部分。
 
-以下部分提供有关用于定义特定于 Azure Synapse Analytics 的数据工厂实体的 JSON 属性的详细信息：
+对于特定于 Azure Synapse Analytics 的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息：
 
 ## <a name="linked-service-properties"></a>链接服务属性
-下表提供了特定于 Azure Synapse Analytics 链接服务的 JSON 元素的说明。
+下表提供了 Azure Synapse Analytics 链接服务特定的 JSON 元素的描述。
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
-| type |Type 属性必须设置为： **AzureSqlDW** |是 |
+| type |type 属性必须设置为：**AzureSqlDW** |是 |
 | connectionString |为 connectionString 属性指定连接到 Azure Synapse Analytics 实例所需的信息。 仅支持基本身份验证。 |是 |
 
 > [!IMPORTANT]
-> 配置 [Azure SQL 数据库防火墙](/previous-versions/azure/ee621782(v=azure.100)#ConnectingFromAzure)和数据库服务器以[允许 Azure 服务访问该服务器](/previous-versions/azure/ee621782(v=azure.100)#ConnectingFromAzure)。 此外，如果将数据从 Azure 外部（包括数据工厂网关的本地数据源）复制到 Azure Synapse Analytics，请为将数据发送到 Azure Synapse Analytics 的计算机配置适当的 IP 地址范围。
+> 配置 [Azure SQL 数据库防火墙](/previous-versions/azure/ee621782(v=azure.100)#ConnectingFromAzure)和数据库服务器以[允许 Azure 服务访问该服务器](/previous-versions/azure/ee621782(v=azure.100)#ConnectingFromAzure)。 此外，如果将数据从 Azure 外部（包括配有数据工厂网关的本地数据源）复制到 Azure Synapse Analytics，请针对将数据发送到 Azure Synapse Analytics 的计算机配置适当的 IP 地址范围。
 
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
 
 每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **AzureSqlDWTable** 类型数据集的 **typeProperties** 节具有以下属性：
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
-| tableName |链接服务引用的 Azure Synapse 分析数据库中的表或视图的名称。 |是 |
+| tableName |链接服务引用的 Azure Synapse Analytics 数据库中的表或视图名称。 |是 |
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 有关可用于定义活动的节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
@@ -91,17 +91,17 @@ Azure Synapse Analytics 连接器支持基本身份验证。
 ### <a name="sqldwsource"></a>SqlDWSource
 源为 **SqlDWSource** 类型时，可在 **typeProperties** 节中使用以下属性：
 
-| properties | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | sqlReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：select * from MyTable。 |否 |
 | sqlReaderStoredProcedureName |从源表读取数据的存储过程的名称。 |存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 |否 |
 | storedProcedureParameters |存储过程的参数。 |名称/值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |否 |
 
-如果为 SqlDWSource 指定 **sqlReaderQuery** ，则复制活动针对 Azure Synapse 分析源运行此查询以获取数据。
+如果为 SqlDWSource 指定 sqlReaderQuery，则“复制活动”针对 Azure Synapse Analytics 源运行此查询以获取数据。
 
 此外，也可以通过指定 sqlReaderStoredProcedureName 和 storedProcedureParameters 来指定存储过程（如果存储过程使用参数）。
 
-如果未指定 sqlReaderQuery 或 sqlReaderStoredProcedureName，则使用在数据集 JSON 的 "结构" 部分中定义的列来生成针对 Azure Synapse 分析运行的查询。 示例：`select column1, column2 from mytable`。 如果数据集定义不具备该结构，则从表中选择所有列。
+如果不指定 sqlReaderQuery 或 sqlReaderStoredProcedureName，则使用在数据集 JSON 的结构部分定义的列来生成针对 Azure Synapse Analytics 运行的查询。 示例：`select column1, column2 from mytable`。 如果数据集定义不具备该结构，则从表中选择所有列。
 
 #### <a name="sqldwsource-example"></a>SqlDWSource 示例
 
@@ -137,12 +137,12 @@ GO
 ### <a name="sqldwsink"></a>SqlDWSink
 **SqlDWSink** 支持以下属性：
 
-| properties | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |指定复制活动要执行的查询，以便清除特定切片的数据。 有关详细信息，请参阅[可重复性部分](#repeatability-during-copy)。 |查询语句。 |否 |
-| allowPolyBase |指示是否使用 PolyBase（如果适用）而不是 BULKINSERT 机制。 <br/><br/> **使用 PolyBase 是将数据加载到 Azure Synapse Analytics 的建议方法。** 有关约束和详细信息，请参阅[使用 PolyBase 将数据加载到 Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) 部分。 |True <br/>False（默认值） |否 |
+| allowPolyBase |指示是否使用 PolyBase（如果适用）而不是 BULKINSERT 机制。 <br/><br/> 使用 PolyBase 是将数据加载到 Azure Synapse Analytics 的建议方式。 有关约束和详细信息，请参阅[使用 PolyBase 将数据加载到 Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) 部分。 |True <br/>False（默认值） |否 |
 | polyBaseSettings |**allowPolybase** 属性设置为 **true** 时可以指定的一组属性。 |&nbsp; |否 |
-| rejectValue |指定在查询失败之前可以拒绝的行数或百分比。 <br/><br/>有关 PolyBase 的拒绝选项的详细信息，请参阅 [CREATE EXTERNAL TABLE (transact-sql)](/sql/t-sql/statements/create-external-table-transact-sql)主题的 **Arguments** 部分。 |0（默认值）、1、2 … |否 |
+| rejectValue |指定在查询失败之前可以拒绝的行数或百分比。 <br/><br/>有关 PolyBase 的拒绝选项的详细信息，请参阅[创建外部表 (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql) 主题的“参数”部分。 |0（默认值）、1、2 … |否 |
 | rejectType |指定将 rejectValue 选项指定为文字值还是百分比。 |值（默认），百分比 |否 |
 | rejectSampleValue |确定在 PolyBase 重新计算被拒绝行的百分比之前要检索的行数。 |1、2 … |如果 **rejectType** 是 **百分比**，则为“是” |
 | useTypeDefault |指定在 PolyBase 从文本文件中检索数据时如何处理带分隔符的文本文件中的缺失值。<br/><br/>有关此属性的详细信息，请参阅[创建外部文件格式 (Transact SQL)](/sql/t-sql/statements/create-external-file-format-transact-sql) 中的参数部分。 |True、False（默认值） |否 |
@@ -159,12 +159,12 @@ GO
 ```
 
 ## <a name="use-polybase-to-load-data-into-azure-synapse-analytics"></a>使用 PolyBase 将数据加载到 Azure Synapse Analytics
-使用 **[PolyBase](/sql/relational-databases/polybase/polybase-guide)** 是将大量数据加载到高吞吐量的 Azure Synapse 分析的有效方法。 可通过使用 PolyBase 而非默认 BULKINSERT 机制实现吞吐量的巨大增加。 请参阅[复制性能参考数量](data-factory-copy-activity-performance.md#performance-reference)了解详细比较。 有关带有用例的演练，请参阅[在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据载入 Azure Synapse Analytics](data-factory-load-sql-data-warehouse.md)。
+使用 [PolyBase](/sql/relational-databases/polybase/polybase-guide) 是将大量数据加载到高吞吐量 Azure Synapse Analytics 的有效方法。 可通过使用 PolyBase 而非默认 BULKINSERT 机制实现吞吐量的巨大增加。 请参阅[复制性能参考数量](data-factory-copy-activity-performance.md#performance-reference)了解详细比较。 有关带有用例的演练，请参阅[在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据载入 Azure Synapse Analytics](data-factory-load-sql-data-warehouse.md)。
 
-* 如果源数据位于 **Azure Blob 或 Azure Data Lake Store** 中，并且格式与 polybase 兼容，则可以使用 polybase 直接复制到 Azure Synapse 分析。 有关详细信息，请参阅 **[使用 PolyBase 直接复制](#direct-copy-using-polybase)**。
-* 如果 PolyBase 最初不支持源数据存储和格式，可改用 **[使用 PolyBase 的暂存复制](#staged-copy-using-polybase)** 功能。 通过自动将数据转换为 PolyBase 兼容的格式并将数据存储在 Azure Blob 存储中，它还可提供更高的吞吐量。 然后，它会将数据加载到 Azure Synapse Analytics 中。
+* 如果源数据位于 Azure Blob 或 Azure Data Lake Store 中，并且格式与 PolyBase 兼容，则可使用 PolyBase 直接复制到 Azure Synapse Analytics。 有关详细信息，请参阅 **[使用 PolyBase 直接复制](#direct-copy-using-polybase)**。
+* 如果 PolyBase 最初不支持源数据存储和格式，可改用 **[使用 PolyBase 的暂存复制](#staged-copy-using-polybase)** 功能。 通过自动将数据转换为 PolyBase 兼容的格式并将数据存储在 Azure Blob 存储中，它还可提供更高的吞吐量。 然后它会将数据加载到 Azure Synapse Analytics 中。
 
-`allowPolyBase`如以下示例中所示，将属性设置为 **true** ，以便 Azure 数据工厂使用 PolyBase 将数据复制到 Azure Synapse Analytics 中。 将 allowPolyBase 设置为“true”时，可使用 `polyBaseSettings` 属性组指定特定于 PolyBase 的属性。 有关可与 polyBaseSettings 配合使用的属性的详细信息，请参阅 [SqlDWSink](#sqldwsink) 部分。
+如以下示例所示，将 `allowPolyBase` 属性设置为 true，以便 Azure 数据工厂使用 PolyBase 将数据复制到 Azure Synapse Analytics。 将 allowPolyBase 设置为“true”时，可使用 `polyBaseSettings` 属性组指定特定于 PolyBase 的属性。 有关可与 polyBaseSettings 配合使用的属性的详细信息，请参阅 [SqlDWSink](#sqldwsink) 部分。
 
 ```JSON
 "sink": {
@@ -181,10 +181,10 @@ GO
 ```
 
 ### <a name="direct-copy-using-polybase"></a>使用 PolyBase 直接复制
-Azure Synapse Analytics PolyBase 使用服务主体) 作为源，并使用特定的文件格式要求直接支持 Azure Blob 和 Azure Data Lake Store (。 如果源数据满足此部分中所述的条件，则可以使用 PolyBase 直接从源数据存储复制到 Azure Synapse Analytics。 否则，可改用[使用 PolyBase 的暂存复制](#staged-copy-using-polybase)。
+Azure Synapse Analytics PolyBase 直接支持作为源并具有特定文件格式要求的 Azure Blob 和 Azure Data Lake Store（使用服务主体）。 如果源数据满足本节所述的标准，则可使用 PolyBase 从源数据存储直接复制到 Azure Synapse Analytics。 否则，可改用[使用 PolyBase 的暂存复制](#staged-copy-using-polybase)。
 
 > [!TIP]
-> 若要有效地将数据从 Data Lake Store 复制到 Azure Synapse Analytics，请从 Azure 数据工厂了解更多， [在将 Data Lake Store 与 Azure Synapse Analytics 结合使用时，可以更轻松、更方便地从数据中发现见解](/archive/blogs/azuredatalake/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse)。
+> 要将数据从 Data Lake Store 有效地复制到 Azure Synapse Analytics，请从[将 Data Lake Store 与 Azure Synapse Analytics 配合使用时，Azure 数据工厂能够更轻松且方便地观察数据](/archive/blogs/azuredatalake/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse)中了解详细信息。
 
 如果不满足要求，Azure 数据工厂会检查设置，并自动回退到 BULKINSERT 机制以进行数据移动。
 
@@ -219,10 +219,10 @@ Azure Synapse Analytics PolyBase 使用服务主体) 作为源，并使用特定
 5. 复制活动的关联内容中没有使用 `columnMapping`。
 
 ### <a name="staged-copy-using-polybase"></a>使用 PolyBase 的暂存复制
-如果源数据不满足上一部分中引入的条件，则可以通过临时暂存 Azure Blob 存储启用复制数据 (不能是高级存储) 。 在这种情况下，Azure 数据工厂会自动对数据执行转换以满足 PolyBase 的数据格式要求，然后使用 PolyBase 将数据加载到 Azure Synapse Analytics 中，并在最后清理 Blob 存储中的临时数据。 有关通常如何通过暂存 Azure Blob 复制数据的详细信息，请参阅[暂存复制](data-factory-copy-activity-performance.md#staged-copy)。
+源数据不满足上一部分中介绍的标准时，可通过暂存 Azure Blob 存储（不能是高级存储）启用复制数据。 在这种情况下，Azure 数据工厂会自动转换数据以满足 PolyBase 的数据格式要求，然后使用 PolyBase 将数据加载到 Azure Synapse Analytics 中，并在最后清理 Blob 存储的临时数据。 有关通常如何通过暂存 Azure Blob 复制数据的详细信息，请参阅[暂存复制](data-factory-copy-activity-performance.md#staged-copy)。
 
 > [!NOTE]
-> 使用 PolyBase 和暂存将数据从本地数据存储复制到 Azure Synapse Analytics 时，如果你的数据管理网关版本低于2.4，则你的网关计算机上需要 JRE (Java Runtime Environment) ，用于将源数据转换为正确的格式。 建议将网关升级到最新版本，以避免此类依赖项。
+> 使用 PolyBase 和暂存将数据从本地数据存储复制到 Azure Synapse Analytics 时，如果数据管理网关版本低于 2.4，则网关计算机上需要 JRE (Java Runtime Environment)，以用于将源数据转换为正确格式。 建议将网关升级到最新版本，以避免此类依赖项。
 >
 
 要使用此功能，请创建 [Azure 存储链接服务](data-factory-azure-blob-connector.md#azure-storage-linked-service)（引用具有临时 blob 存储的 Azure 存储帐户），并指定复制活动的 `enableStaging` 和 `stagingSettings` 属性，如下方代码所示：
@@ -252,20 +252,20 @@ Azure Synapse Analytics PolyBase 使用服务主体) 作为源，并使用特定
 ```
 
 ## <a name="best-practices-when-using-polybase"></a>使用 PolyBase 的最佳实践
-以下各节提供了 [Azure Synapse Analytics 最佳做法](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md)中提到的最佳实践。
+除了 [Azure Synapse Analytics 的最佳做法](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md)中提到的最佳做法外，以下部分提供其他最佳做法。
 
 ### <a name="required-database-permission"></a>所需数据库权限
-若要使用 PolyBase，要求用于将数据加载到 Azure Synapse Analytics 的用户具有对目标数据库的 ["控制" 权限](/sql/relational-databases/security/permissions-database-engine) 。 一种实现方法是将该用户添加为“db_owner”角色的成员。 参阅[本节](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)了解如何进行此操作。
+若要使用 PolyBase，要求将数据加载到 Azure Synapse Analytics 的用户在目标数据库上具有[“CONTROL”权限](/sql/relational-databases/security/permissions-database-engine)。 一种实现方法是将该用户添加为“db_owner”角色的成员。 参阅[本节](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)了解如何进行此操作。
 
 ### <a name="row-size-and-data-type-limitation"></a>行大小和数据类型限制
 Polybase 加载限制为加载小于 **1 MB** 的行，并且无法加载到 VARCHR(MAX)、NVARCHAR(MAX) 或 VARBINARY(MAX)。 请参阅[此处](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads)。
 
-如果源数据的行大小大于 1 MB，则需要将源表垂直拆分为几个小的源表，其中每个源表的最大行大小不超过限制。 然后，可以使用 PolyBase 加载较小的表，并将它们合并到 Azure Synapse Analytics 中。
+如果源数据的行大小大于 1 MB，则需要将源表垂直拆分为几个小的源表，其中每个源表的最大行大小不超过限制。 然后，可以使用 PolyBase 加载这些小型表，并在 Azure Synapse Analytics 中将它们合并在一起。
 
 ### <a name="azure-synapse-analytics-resource-class"></a>Azure Synapse Analytics 资源类
-若要获得最佳吞吐量，请考虑将更大的资源类分配给用户，以便通过 PolyBase 将数据加载到 Azure Synapse Analytics 中。 请参阅[更改用户资源类示例](../../synapse-analytics/sql-data-warehouse/resource-classes-for-workload-management.md)，了解如何执行该操作。
+要实现最佳吞吐量，请考虑向通过 PolyBase 将数据加载到 Azure Synapse Analytics 的用户分配更大的资源类。 请参阅[更改用户资源类示例](../../synapse-analytics/sql-data-warehouse/resource-classes-for-workload-management.md)，了解如何执行该操作。
 
-### <a name="tablename-in-azure-synapse-analytics"></a>Azure Synapse 分析中的 tableName
+### <a name="tablename-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 tableName
 下表提供了示例，说明如何在数据集 JSON 中为架构和表名的各种组合指定 **tableName** 属性。
 
 | DB 架构 | 表名称 | tableName JSON 属性 |
@@ -287,14 +287,14 @@ Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account
 ```
 All columns of the table must be specified in the INSERT BULK statement.
 ```
-NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入数据（以 blob 为单位）可以为空（输入数据集中不能缺失数据）。 PolyBase 在 Azure Synapse 分析中插入 NULL。
+NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入数据（以 blob 为单位）可以为空（输入数据集中不能缺失数据）。 PolyBase 在 Azure Synapse Analytics 中为它们插入 NULL。
 
 ## <a name="auto-table-creation"></a>自动表创建
-如果使用复制向导将数据从 SQL Server 或 Azure SQL 数据库复制到 Azure Synapse Analytics，并且目标存储中不存在对应于源表的表，则数据工厂可以使用源表架构在数据仓库中自动创建表。
+如果使用“复制向导”将数据从 SQL Server 或 Azure SQL 数据库复制到 Azure Synapse Analytics，并且目标存储中不存在对应于源表的表，则数据工厂可以通过使用源表架构自动在数据仓库中创建该表。
 
 数据工厂在目标存储中创建与源数据存储中具有相同表名称的表。 根据以下类型映射选择列的数据类型。 如果需要，它会执行类型转换，从而修复源存储和目标存储之间的任何不兼容问题。 它还使用轮循机制表分布。
 
-| 源 SQL 数据库列类型 | 目标 Azure Synapse Analytics 列类型 (大小限制)  |
+| 源 SQL 数据库列类型 | 目标 Azure Synapse Analytics 列类型（大小限制） |
 | --- | --- |
 | int | int |
 | BigInt | BigInt |
@@ -317,7 +317,7 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 | SmallDateTime | SmallDateTime |
 | 文本 | Varchar（最多 8000） |
 | NText | NVarChar（最多 4000） |
-| 图像 | VarBinary（最多 8000） |
+| 映像 | VarBinary（最多 8000） |
 | UniqueIdentifier | UniqueIdentifier |
 | Char | Char |
 | NChar | NChar |
@@ -333,15 +333,15 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 1. 从本机源类型转换为 .NET 类型
 2. 从 .NET 类型转换为本机接收器类型
 
-将数据从 Azure Synapse Analytics 移到 & 时，将从 SQL 类型到 .NET 类型使用以下映射，反之亦然。
+在 Azure Synapse Analytics 中复制/粘贴数据时，会使用 SQL 类型与 .NET 类型的以下映射。
 
-映射与 [ADO.NET 的 SQL Server 数据类型映射](/dotnet/framework/data/adonet/sql-server-data-type-mappings)相同。
+此映射与[用于 ADO.NET 的 SQL Server 数据类型映射](/dotnet/framework/data/adonet/sql-server-data-type-mappings)相同。
 
 | SQL Server 数据库引擎类型 | .NET Framework 类型 |
 | --- | --- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |Boolean |
+| bit |布尔 |
 | char |String, Char[] |
 | date |DateTime |
 | datetime |DateTime |
@@ -374,19 +374,19 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 
 还可以在复制活动定义中将源数据集中的列映射到接收器数据集中的列。 有关详细信息，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
 
-## <a name="json-examples-for-copying-data-to-and-from-azure-synapse-analytics"></a>将数据复制到 Azure Synapse 分析和从 Azure Analytics 复制数据的 JSON 示例
-下面的示例提供示例 JSON 定义，可用于通过使用 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 它们说明了如何将数据复制到 Azure Synapse 分析和 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据 **直接** 从任何源复制到 [此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
+## <a name="json-examples-for-copying-data-to-and-from-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中复制/粘贴数据的 JSON 示例
+以下示例提供示例 JSON 定义，可使用该定义通过 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 这些示例演示了如何在 Azure Synapse Analytics 和 Azure Blob 存储中复制/粘贴数据。 但是，可使用 Azure 数据工厂中的复制活动将数据 **直接** 从任何源复制到 [此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
 
 ### <a name="example-copy-data-from-azure-synapse-analytics-to-azure-blob"></a>示例：将数据从 Azure Synapse Analytics 复制到 Azure Blob
 此示例定义以下数据工厂实体：
 
 1. [AzureSqlDW](#linked-service-properties) 类型的链接服务。
-2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)类型的链接服务。
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
 3. [AzureSqlDWTable](#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)类型的输出[数据集](data-factory-create-datasets.md)。
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
 5. 包含复制活动的[管道](data-factory-create-pipelines.md)，它使用 [SqlDWSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
-此示例每小时将时间序列 (每小时、每天等 ) 数据从 Azure Synapse 分析数据库中的表复制到 blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
+示例每小时将时序（每小时、每天等）数据从 Azure Synapse Analytics 数据集中的表复制到 Blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
 **Azure Synapse Analytics 链接服务：**
 
@@ -416,7 +416,7 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 ```
 **Azure Synapse Analytics 输入数据集：**
 
-该示例假设已在 Azure Synapse Analytics 中创建了表 "MyTable"，并且它包含了用于时序数据的名为 "timestampcolumn" 的列。
+该示例假定已在 Azure Synapse Analytics 中创建表“MyTable”，并且它包含用于时序数据的名为“timestampcolumn”的列。
 
 设置 "external": "true" 将告知数据工厂服务：数据集位于数据工厂外且不由数据工厂中的活动生成。
 
@@ -555,11 +555,11 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 }
 ```
 > [!NOTE]
-> 在本例中，为 SqlDWSource 指定了 **sqlReaderQuery**。 复制活动对 Azure Synapse Analytics 源运行此查询以获取数据。
+> 在本例中，为 SqlDWSource 指定了 **sqlReaderQuery**。 “复制活动”针对 Azure Synapse Analytics 源运行此查询以获取数据。
 >
 > 此外，也可以通过指定 sqlReaderStoredProcedureName 和 storedProcedureParameters 来指定存储过程（如果存储过程使用参数）。
 >
-> 如果未指定 sqlReaderQuery 或 sqlReaderStoredProcedureName，则使用在数据集 JSON 的结构部分中定义的列来生成查询 (选择 column1，从 mytable) 运行，以针对 Azure Synapse 分析运行。 如果数据集定义不具备该结构，则从表中选择所有列。
+> 如果不指定 sqlReaderQuery 或 sqlReaderStoredProcedureName，则使用在数据集 JSON 的结构部分定义的列来生成针对 Azure Synapse Analytics 运行的查询（从 mytable 选择 column1、column2）。 如果数据集定义不具备该结构，则从表中选择所有列。
 >
 >
 
@@ -567,12 +567,12 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 此示例定义以下数据工厂实体：
 
 1. [AzureSqlDW](#linked-service-properties) 类型的链接服务。
-2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)类型的链接服务。
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
 3. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)类型的输入[数据集](data-factory-create-datasets.md)。
 4. [AzureSqlDWTable](#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
 5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) 和 [SqlDWSink](#copy-activity-properties)。
 
-此示例每小时将时间序列 (数据从 Azure blob 复制到 Azure Synapse 分析数据库中的表 ) 。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
+示例每小时将时序数据（每小时、每天等）从 Azure Blob 复制到 Azure Synapse Analytics 中的表。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
 **Azure Synapse Analytics 链接服务：**
 
@@ -602,7 +602,7 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 ```
 **Azure Blob 输入数据集：**
 
-每小时从新的 blob 获取数据一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态评估 blob 的文件夹路径和文件名。 文件夹路径使用开始时间的年、月和日部分，文件名使用开始时间的小时部分。 "external"： "true" 设置将告知数据工厂服务：此表位于数据工厂外部，且不由数据工厂中的活动生成。
+每小时从新的 blob 获取数据一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态评估 blob 的文件夹路径和文件名。 文件夹路径使用开始时间的年、月和日部分，文件名使用开始时间的小时部分。 "external": "true" 设置将告知数据工厂服务此表在数据工厂外部且不由数据工厂中的活动生成。
 
 ```JSON
 {
@@ -670,7 +670,7 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 ```
 **Azure Synapse Analytics 输出数据集：**
 
-此示例将数据复制到 Azure Synapse Analytics 中名为 "MyTable" 的表。 在 Azure Synapse Analytics 中创建表，其列数与 Blob CSV 文件要包含的列数相同。 每隔一小时会向表添加新行。
+此示例将数据复制到 Azure Synapse Analytics 中名为“MyTable”的表。 在 Azure Synapse Analytics 中创建列数与 Blob CSV 文件应包含的列数相同的表。 每隔一小时会向表添加新行。
 
 ```JSON
 {
@@ -739,7 +739,7 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
   }
 }
 ```
-有关演练，请参阅 Azure Synapse 分析文档中的使用 Azure 数据工厂和 azure[数据工厂加载数据](../load-azure-sql-data-warehouse.md)一文中的 "查看[使用 Azure 数据工厂加载 1 TB 到 azure Synapse 分析](data-factory-load-sql-data-warehouse.md)"。
+有关演练，请参阅 Azure Synapse Analytics 文档中的[使用 Azure 数据工厂在 15 分钟内将 1 TB 数据加载到 Azure Synapse Analytics](data-factory-load-sql-data-warehouse.md) 和[使用 Azure 数据工厂加载数据](../load-azure-sql-data-warehouse.md)两篇文章。
 
 ## <a name="performance-and-tuning"></a>性能和优化
 若要了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。

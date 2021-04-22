@@ -2,13 +2,13 @@
 title: 模板结构和语法
 description: 介绍使用声明性 JSON 语法的 Azure 资源管理器模板的结构和属性。
 ms.topic: conceptual
-ms.date: 03/03/2021
-ms.openlocfilehash: da64eb8abeaf45f58933dfbddaf954cad8e66f4a
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
-ms.translationtype: MT
+ms.date: 03/26/2021
+ms.openlocfilehash: 42b893e25155bb3ebe66e0deac180698446a2c9b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120409"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612171"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>了解 ARM 模板的结构和语法
 
@@ -193,6 +193,7 @@ ms.locfileid: "102120409"
           "capacity": <sku-capacity>
       },
       "kind": "<type-of-resource>",
+      "scope": "<target-scope-for-extension-resources>",
       "copy": {
           "name": "<name-of-copy-loop>",
           "count": <number-of-iterations>,
@@ -235,6 +236,7 @@ ms.locfileid: "102120409"
 | 标记 |否 |与资源关联的标记。 应用可以在订阅中对资源进行逻辑组织的标记。 |
 | sku | 否 | 某些资源接受定义了要部署的 SKU 的值。 例如，可以为存储帐户指定冗余类型。 |
 | kind | 否 | 某些资源接受定义了你部署的资源类型的值。 例如，可以指定要创建的 Cosmos DB 的类型。 |
+| scope | 否 | scope 属性仅适用于[扩展资源类型](../management/extension-resource-types.md)。 指定与部署范围不同的范围时，请使用该属性。 请参阅[在 ARM 模板中设置扩展资源的范围](scope-extension-resources.md)。 |
 | copy |否 |如果需要多个实例，则为要创建的资源数。 默认模式为并行。 若不想同时部署所有资源，请指定为串行模式。 有关详细信息，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。 |
 | plan | 否 | 某些资源接受定义了要部署的计划的值。 例如，可以为虚拟机指定市场映像。 |
 | properties |否 |特定于资源的配置设置。 properties 的值与创建资源时，在 REST API 操作（PUT 方法）的请求正文中提供的值相同。 还可以指定副本数组，为一个属性创建多个实例。 若要确定可用值，请参阅[模板参考](/azure/templates/)。 |

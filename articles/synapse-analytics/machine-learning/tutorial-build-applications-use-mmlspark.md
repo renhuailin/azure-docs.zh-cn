@@ -7,23 +7,23 @@ ms.subservice: machine-learning
 ms.topic: tutorial
 ms.reviewer: ''
 ms.date: 03/08/2021
-author: ruxu
+author: ruixinxu
 ms.author: ruxu
-ms.openlocfilehash: a3899b83133b3f951547fae0b11c044bfa85a5fc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5258d8f16e288e7df7e1286eb1902cc6ba6d10f7
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589593"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227715"
 ---
 # <a name="tutorial-build-machine-learning-applications-using-microsoft-machine-learning-for-apache-spark-preview"></a>教程：使用适用于 Apache Spark 的 Microsoft 机器学习生成机器学习应用程序（预览）
 
 本文介绍如何使用适用于 Apache Spark 的 Microsoft 机器学习 ([MMLSpark](https://github.com/Azure/mmlspark)) 创建机器学习应用程序。 MMLSpark 可通过添加许多深度学习和数据科学工具（例如 [Azure 认知服务](../../cognitive-services/big-data/cognitive-services-for-big-data.md)、[OpenCV](https://opencv.org/)、[LightGBM](https://github.com/Microsoft/LightGBM) 等）来扩展 Apache Spark 的分布式机器学习解决方案。  使用 MMLSpark 可以基于各种 Spark 数据源生成功能强大且高度可缩放的预测模型和分析模型。
 Synapse Spark 提供内置的 MMLSpark 库，包括：
 
-- [Vowpal Wabbit](https://github.com/VowpalWabbit/vowpal_wabbit) – 用于机器学习的库服务，可以实现文本分析，例如在推文中进行情绪分析。
-- [Spark 上的认知服务](../../cognitive-services/big-data/cognitive-services-for-big-data.md) - 在 SparkML 管道中整合 Azure 认知服务的功能，以便为异常情况检测等认知数据建模服务派生解决方案设计。
-- [LightBGM](https://github.com/Azure/mmlspark/blob/master/docs/lightgbm.md) - 用于训练人脸 ID 检测等预测分析的模型的机器学习模型。
+- [Vowpal Wabbit](https://github.com/Azure/mmlspark/blob/master/docs/vw.md) – 用于机器学习的库服务，可以实现文本分析，例如在推文中进行情绪分析。
+- [Spark 上的认知服务](https://github.com/Azure/mmlspark/blob/master/docs/cogsvc.md) - 在 SparkML 管道中整合 Azure 认知服务的功能，以便为异常情况检测等认知数据建模服务派生解决方案设计。
+- [LightGBM](https://github.com/Azure/mmlspark/blob/master/docs/lightgbm.md) – LightGBM 是一种使用基于树的学习算法的梯度提升框架。 根据设计，它是分布式的，可以提升效率。
 - 条件 KNN - 支持条件查询的可缩放 KNN 模型。
 - [Spark 上的 HTTP](https://github.com/Azure/mmlspark/blob/master/docs/http.md) – 在集成 Spark 时用于协调分布式微服务，并提供基于 HTTP 协议的易访问性。
 
@@ -44,7 +44,7 @@ Synapse Spark 提供内置的 MMLSpark 库，包括：
 
 
 ## <a name="get-started"></a>入门
-若要开始，请导入 mmlspark 并配置服务密钥。
+若要开始，请导入 mmlspark 并配置服务密钥。 
 
 ```python
 import mmlspark
@@ -59,13 +59,16 @@ service_key =  "ADD_YOUR_SUBSCRIPION_KEY"
 bing_search_key = "ADD_YOUR_SUBSCRIPION_KEY" 
 # An Anomaly Dectector subscription key
 anomaly_key =  "ADD_YOUR_SUBSCRIPION_KEY" 
+# Your linked key vault for Synapse workspace
+key_vault = "YOUR_KEY_VAULT_NAME"
 
 
-cognitive_service_key = mssparkutils.credentials.getSecret("keyvaultForSynapse", service_key)
-bingsearch_service_key = mssparkutils.credentials.getSecret("keyvaultForSynapse", bing_search_key)
-anomalydetector_key = mssparkutils.credentials.getSecret("keyvaultForSynapse", anomaly_key)
+cognitive_service_key = mssparkutils.credentials.getSecret(key_vault, service_key)
+bingsearch_service_key = mssparkutils.credentials.getSecret(key_vault, bing_search_key)
+anomalydetector_key = mssparkutils.credentials.getSecret(key_vault, anomaly_key)
 
 ```
+
 
 ## <a name="text-analytics-sample"></a>文本分析示例
 

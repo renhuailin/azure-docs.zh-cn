@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: d80caf767d923ce2539ca254a8312371155a3104
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 015fa201fe1c31dde2e30c2fe689ac13452b1b01
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102553725"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105607586"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>排查 Azure 中共享映像库的问题
 
@@ -52,7 +52,7 @@ ms.locfileid: "102553725"
 **原因**：你试图删除至少包含一个现有映像定义的库。 库必须为空才能删除。  
 **解决方法**：删除库中的所有映像定义，然后继续删除库。 如果映像定义包含映像版本，则必须先删除映像版本，然后才能删除映像定义。
 
-**消息**：库名称“<galleryName\>”在订阅“<subscriptionId>”中不唯一。请选择其他库名称。  
+**消息**：库名称“<galleryName\>”在订阅“<subscriptionID>”中不唯一。请选择其他库名称。  
 **原因**：你有一个具有同一名称的现有库，并且试图使用同一名称创建另一个库。  
 **解决方法**：为库选择一个不同的名称。
 
@@ -127,7 +127,7 @@ ms.locfileid: "102553725"
 **原因**：你试图删除包含映像版本的映像定义。 映像定义必须为空才能删除。  
 **解决方法**：删除映像定义中的所有映像版本，然后继续删除映像定义。
 
-**消息**：无法绑定参数 <property\>。无法将值 <value\> 转换为 <propertyType\> 类型。无法将标识符名称 <value\> 匹配到有效的枚举器名称。请指定下列枚举器名称之一并重试: <choice1\>、<choice2\>、…  
+**消息**：无法绑定参数 <property\>。无法将值 <value\> 转换为类型 <propertyType\>。无法将标识符名称 <value\> 与有效的枚举器名称匹配。请指定以下枚举器名称之一并重试：<choice\_1\>、<choice\_2\> …  
 **原因**：该属性有一组有限的可能值，并且 <value\> 不是其中的值之一。  
 **解决方法**：选择可能的 <choice\> 值之一。
 
@@ -185,7 +185,7 @@ ms.locfileid: "102553725"
 **原因**：使用磁盘和/或磁盘快照列表创建映像版本时，有两个或更多磁盘或磁盘快照具有相同的资源 ID。  
 **解决方法**：删除或更改任何重复的磁盘源 ID。
 
-**消息**：路径“properties.storageProfile.<diskImages\>.source.id”上的属性 id <resourceID\> 无效。该 id 应当是以“/subscriptions/{subscriptionId}”或“/providers/{resourceProviderNamespace}/”开头的完全限定资源 ID。  
+**消息**：“properties.storageProfile.<diskImages\>.source.id”路径上的资源 ID <resourceID\> 无效。需要以“/subscriptions/<subscriptionID>”或“/providers/<resourceProviderNamespace>/”开头的完全限定的资源 ID。  
 **原因**：<resourceID\> 值的格式不正确。  
 **解决方法**：检查资源 ID 是否正确。
 
@@ -261,12 +261,12 @@ ms.locfileid: "102553725"
 **原因**：源的资源 ID 可能不正确。  
 **解决方法**：确保源的资源 ID 正确。
 
-**消息**：目标区域“<Region\_1\>”中的磁盘“galleryArtifactVersion.properties.publishingProfile.targetRegions.encryption.osDiskImage.diskEncryptionSetId”需要一个磁盘加密集，因为区域“<Region\_2\>”中的相应磁盘使用了磁盘加密集“<diskEncryptionSetID\>”。  
-**原因**：<Region\_2\> 中的 OS 磁盘使用了加密，但 <Region\_1\> 中未使用。  
+**消息**：目标区域“<region\_1\>”中的磁盘“galleryArtifactVersion.properties.publishingProfile.targetRegions.encryption.osDiskImage.diskEncryptionSetId”需要一个磁盘加密集，因为区域“<region\_2\>”中的相应磁盘使用了磁盘加密集“<diskEncryptionSetID\>”  
+**原因**：<region\_2\> 中的 OS 磁盘使用了加密，但 <region\_1\> 中未使用。  
 **解决方法**：如果在 OS 磁盘上使用加密，请在所有区域中使用加密。
 
-**消息**：目标区域“<Region\_1\>”中的磁盘“LUN <number\>”需要一个磁盘加密集，因为区域“<Region\_2\>”中的相应磁盘使用了磁盘加密集“<diskEncryptionSetID\>”。  
-**原因**：<Region\_2\> 中的 LUN <number\> 处的数据磁盘使用了加密，但 <Region\_1\> 中未使用。  
+**消息**：目标区域“<region\_1\>”中的磁盘“LUN <number\>”需要一个磁盘加密集，因为区域“<region\_2\>”中的相应磁盘使用了磁盘加密集“<diskEncryptionSetID\>”  
+**原因**：<region\_2\> 中的 LUN <number\> 处的数据磁盘使用了加密，但 <region\_1\> 中未使用。  
 **解决方法**：如果在数据磁盘上使用加密，请在所有区域中使用加密。
 
 **消息**：在 encryption.dataDiskImages 中指定了无效的 lun [<number\>]。Lun 必须为下列值之一: [0,9]。  
@@ -303,7 +303,7 @@ ms.locfileid: "102553725"
 **原因**：用来部署虚拟机的映像定义未包含最新版本中包括的任何映像版本。  
 **解决方法**：请确保至少有一个映像版本将“从最新版本中排除”设置为 False。 
 
-**消息**：客户端有权在作用域 <resourceID\> 中执行操作“Microsoft.Compute/galleries/images/versions/read”，但当前租户 <tenantId1\> 无权访问链接的订阅 <subscriptionId2\>。  
+**消息**：客户端有权在范围 <resourceID\> 中执行操作“Microsoft.Compute/galleries/images/versions/read”，但当前租户 <tenantID\> 无权访问链接的订阅 <subscriptionID\>。  
 **原因**：虚拟机或规模集是通过另一租户中的 SIG 映像创建的。 你尝试对虚拟机或规模集进行更改，但无权访问拥有该映像的订阅。  
 **解决方法**：联系该映像版本的订阅的所有者，请求其授予对该映像版本的读取访问权限。
 
@@ -327,12 +327,17 @@ ms.locfileid: "102553725"
 **原因**：规模集的当前源映像是一个通用源映像，但使用专用的源映像进行更新。 规模集的当前源映像和新的源映像必须处于相同状态。  
 **解决方法**：若要更新规模集，请使用一个通用的映像版本。
 
-**消息**：共享映像库 <versionId\> 中的磁盘加密集 <diskEncryptionSetId\> 属于订阅 <subscriptionId1\>，不能用于订阅 <subscriptionId2\> 中的资源。  
+**消息**：共享映像库 <versionID\> 中的磁盘加密集 <diskEncryptionSetID\> 属于订阅 <subscriptionID\_1\>，不能用于订阅 <subscriptionID\_2\> 中的资源  
 **原因**：用于对映像版本进行加密的磁盘加密集所在的订阅不是用于承载映像版本的订阅。  
 **解决方法**：为映像版本和磁盘加密集使用同一订阅。
 
 **消息**：创建 VM 或虚拟机规模集需要很长时间。  
 **解决方法**：验证你要尝试从中创建 VM 或虚拟机规模集的映像版本的 **OSType** 与用于创建映像版本的源的 **OSType** 是否相同。 
+
+**消息**：ID 为 <vmID\> 的资源的计划 ['{\"name\":\"<name>\",\"publisher\":\"<publisher>\",\"product\":\"<product>\",\"promotionCode\":\"<promotionCode>\"}'] 与库映像计划 ['null'] 不同。  
+**原因**：正在部署的映像版本的父映像定义没有购买计划信息。  
+**解决方法**：根据错误消息创建具有相同购买计划详细信息的映像定义，并在该映像定义内创建映像版本。
+
 
 ## <a name="creating-a-disk-from-an-image-version"></a>基于某个映像版本创建磁盘 ##
 

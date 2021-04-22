@@ -5,25 +5,28 @@ description: 可以使用自己的加密密钥来保护存储帐户中的数据�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/09/2021
+ms.date: 03/30/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 358be21a1f7f13c0c0ce1bf0e57dda53174216b2
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 07f8faf503bdea6be8263afa6240594956b61391
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102517525"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059439"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>客户管理的密钥（用于 Azure 存储加密）
 
 可以使用自己的加密密钥来保护存储帐户中的数据。 指定客户托管密钥时，该密钥用于保护和控制对数据加密密钥的访问。 使用客户托管密钥可以更灵活地管理访问控制。
 
-必须使用 Azure 密钥保管库或 Azure 密钥保管库托管硬件安全模块 (HSM)（预览版）来存储客户管理的密钥。 可以创建自己的密钥并将其存储在密钥保管库或托管 HSM 中，也可以使用 Azure 密钥保管库 API 来生成密钥。 存储帐户和密钥保管库或托管 HSM 必须在同一个区域和同一个 Azure Active Directory (Azure AD) 租户中，但可以在不同的订阅中。
+必须使用下列其中一个 Azure 密钥存储来存储客户管理的密钥：
 
-有关 Azure Key Vault 的详细信息，请参阅[什么是 Azure Key Vault？](../../key-vault/general/overview.md)。
+- [Azure Key Vault](../../key-vault/general/overview.md)
+- [Azure Key Vault 托管硬件安全模块 (HSM)（预览版）](../../key-vault/managed-hsm/overview.md)
+
+可以创建自己的密钥并将其存储在密钥保管库或托管 HSM 中，也可以使用 Azure 密钥保管库 API 来生成密钥。 存储帐户和密钥保管库或托管 HSM 必须在同一个区域和同一个 Azure Active Directory (Azure AD) 租户中，但可以在不同的订阅中。
 
 > [!IMPORTANT]
 >

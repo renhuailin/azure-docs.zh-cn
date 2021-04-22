@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 8b827a80059cecadd7b76263f13dd4a0d141fc7a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95563302"
 ---
 #### <a name="to-create-a-cloud-appliance"></a>创建云设备
@@ -18,7 +18,7 @@ ms.locfileid: "95563302"
     ![StorSimple 创建云设备](./media/storsimple-8000-create-cloud-appliance-u2/sca-create1.png)
 3. 在“创建云设备”边栏选项卡中，指定以下详细信息。
    
-    ![StorSimple 创建云设备2](./media/storsimple-8000-create-cloud-appliance-u2/sca-create2m.png)
+    ![StorSimple 创建云设备 2](./media/storsimple-8000-create-cloud-appliance-u2/sca-create2m.png)
    
    1. **名称** – 云设备的唯一名称。
    2. **型号** – 选择云设备的型号。 8010 设备提供 30 TB 的标准存储，而 8020 提供 64 TB 的高级存储。 指定 8010 来从备份部署项目级别检索方案。 选择 8020 来部署高性能、低延迟工作负荷，或用作灾难恢复的辅助设备。

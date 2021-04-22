@@ -5,14 +5,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 10/14/2020
+ms.date: 03/24/2021
 ms.author: mjbrown
-ms.openlocfilehash: 52fa5957cdbc3ae73ebc4b36e04582741199414a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7163658024d150a7c5d75c3b3ac0b6b6b29cd3cb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93340594"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105037302"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>用于 Azure Cosmos DB 的 Azure 资源管理器模板
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,6 +27,7 @@ ms.locfileid: "93340594"
 |[创建具有分析存储的 Azure Cosmos 帐户、数据库和容器](manage-with-templates.md#create-analytical-store) | 此模板在一个区域中创建一个 Core (SQL) API 帐户，其中包含配置了启用分析 TTL 的容器和手动或自动缩放吞吐量选项。 |
 |[创建具有标准（手动）吞吐量的 Azure Cosmos 帐户、数据库和容器](manage-with-templates.md#create-manual) | 此模板在两个区域（具有标准吞吐量的数据库和容器）中创建一个 Core (SQL) API 帐户。 |
 |[创建包含存储过程、触发器和 UDF 的 Azure Cosmos 帐户、数据库和容器](manage-with-templates.md#create-sproc) | 此模板在两个区域（具有存储过程、触发器和容器的 UDF）中创建了一个 Core (SQL) API 帐户。 |
+|[创建具有 Azure AD 标识、角色定义和角色分配的 Azure Cosmos 帐户](manage-with-templates.md#create-rbac) | 此模板创建一个核心 (SQL) API 帐户，该帐户具有服务主体上的 Azure AD 标识、角色定义和角色分配。 |
 |[为现有的 Azure Cosmos 帐户创建专用终结点](how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-a-resource-manager-template) |  此模板为现有虚拟网络中的现有 Azure Cosmos Core (SQL) API 帐户创建专用终结点。 |
 |[创建免费层 Azure Cosmos 帐户](manage-with-templates.md#free-tier) |  此模板在免费层上创建 Azure Cosmos DB Core (SQL) API 帐户。 |
 

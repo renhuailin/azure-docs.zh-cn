@@ -15,10 +15,10 @@ ms.date: 03/16/2021
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 74769feba1d717a2f1a72d311f85bdfbeac7b7db
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103574773"
 ---
 # <a name="ad-fs-sign-ins-in-azure-ad-with-connect-health---preview"></a>使用 Connect Health 在 Azure AD 中进行 AD FS 登录 - 预览
@@ -32,7 +32,7 @@ Connect Health for AD FS 代理会关联 AD FS 中的多个事件 ID（具体取
 * 用于查看 Azure AD 登录的全局管理员或报告读取者角色
 
 ## <a name="what-data-is-displayed-in-the-report"></a>报告中显示哪些数据？
-提供的数据会镜像针对 Azure AD 登录提供的相同数据。将根据登录类型（Azure AD 或 AD FS）提供五个包含信息的选项卡。 Connect Health 关联 AD FS 中的事件（具体取决于服务器版本），并将其与 AD FS 架构相匹配。 
+可用的数据反映了为 Azure AD 登录过程提供的数据。将根据登录类型（Azure AD 或 AD FS）提供五个包含信息的选项卡。 Connect Health 关联 AD FS 中的事件（具体取决于服务器版本），并将其与 AD FS 架构相匹配。 
 
 
 
@@ -52,7 +52,7 @@ Connect Health for AD FS 代理会关联 AD FS 中的多个事件 ID（具体取
 |-----|-----|
 |窗体|用户名/密码身份验证|
 |Windows|Windows 集成身份验证|
-|Certificate|使用智能卡/VirtualSmart 证书进行身份验证|
+|证书|使用智能卡/VirtualSmart 证书进行身份验证|
 |WindowsHelloForBusiness|此字段适用于通过 Windows Hello 企业版进行的身份验证。 （Microsoft Passport 身份验证）|
 |设备 | 如果选择“设备身份验证”作为 Intranet/Extranet 中的“主要”身份验证并执行设备身份验证，则会显示此方法。  在这种情况下没有单独的用户身份验证。| 
 |联合|AD FS 未执行身份验证，而是将其发送到了第三方标识提供者|
@@ -94,14 +94,14 @@ Connect Health for AD FS 代理会关联 AD FS 中的多个事件 ID（具体取
 ***在报告中可以看到哪些错误？***
 有关在登录报告和说明中填充的 AD FS 相关错误完整列表，请访问 [AD FS 帮助 - 错误代码参考](https://adfshelp.microsoft.com/References/ConnectHealthErrorCodeReference)
 
-***我在登录报告的“用户”部分看到了“00000000-0000-0000-0000-000000000000”。这是什么意思？***
+***我在登录信息的“用户”部分看到了“00000000-0000-0000-0000-000000000000”。这是什么意思？***
 如果登录失败并且尝试的 UPN 与现有 UPN 不匹配，则“用户”、“用户名”和“用户 ID”字段将显示“00000000-0000-0000-0000-000000000000”，并会在“登录标识符”中填充用户输入的尝试值。 在这种情况下，尝试登录的用户并不存在。
 
 ***如何将本地事件关联到 Azure AD 登录报告？***
 Azure AD Connect Health for AD FS 代理会关联 AD FS 中的事件 ID（具体取决于服务器版本）。 这些事件将在 AD FS 服务器的安全日志中提供。 
 
-***某些 AD FS 登录报告的“应用程序 ID”/“名称”中为何出现 NotSet 或 NotApplicable？***
-AD FS 登录报告将在 OAuth 登录的“应用程序 ID”字段中显示 OAuth ID。在 WS-Fed、WS-Trust 登录方案中，“应用程序 ID”将是 NotSet 或 NotApplicable，而“资源 ID”和“信赖方”标识符将显示在“资源 ID”字段中。
+***某些 AD FS 登录操作的应用程序 ID/名称中为何显示 NotSet 或 NotApplicable？***
+对于 OAuth 登录操作，AD FS 登录报表中的“应用程序 ID”字段会显示 OAuth ID。在 WS-Fed、WS-Trust 登录方案中，“应用程序 ID”将是 NotSet 或 NotApplicable，“资源 ID”字段中将显示“资源 ID”和“信赖方”标识符。
 
 ***报告功能预览版是否存在任何其他已知问题？***
 报告功能存在这样一个已知问题：不管登录方法是什么，“基本信息”选项卡中的“身份验证要求”字段中都会填充用于 AD FS 登录的单重身份验证值。 此外，“身份验证详细信息”选项卡将在“要求”字段下显示“主要或次要”，我们正在开发修复程序来区分“主要”或“次要”身份验证类型。

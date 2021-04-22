@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: troubleshooting
 ms.date: 11/09/2020
 ms.openlocfilehash: 7b7ac20672ee653cbf6d2b82b7a9454c1d742b2c
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102612688"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker 疑难解答
@@ -110,7 +110,7 @@ ms.locfileid: "102612688"
 </details>
 
 <details>
-<summary><b>如果某个应用服务计划具有 5 个 QnAMaker 知识库。是否可以向 5 个不同的用户分配读/写权限，使得其中每个用户只能访问 1 个 QnAMaker 知识库？</b></summary>
+<summary><b>如果应用服务计划有 5 个 QnAMaker 知识库，能否向 5 位不同的用户分配读/写权限，使每位用户只能访问 1 个 QnAMaker 知识库？</b></summary>
 
 答：可以共享整个 QnAMaker 服务，但不能共享个体知识库。
 
@@ -142,7 +142,7 @@ ms.locfileid: "102612688"
 </details>
 
 <details>
-<summary><b>我对知识库所做的更新没有反映在发布上，为什么看不到呢？</b></summary>
+<summary><b>我对知识库所做的更新未反映在发布中，为什么？</b></summary>
 
 答：每个编辑操作（无论在表更新、测试还是在设置中）需要先保存才能发布。 每次编辑操作后，请确保单击“保存并定型”按钮。
 
@@ -225,7 +225,7 @@ ms.locfileid: "102612688"
 </details>
 
 <details>
-<summary><b>我对知识库所做的更新没有反映在发布上，为什么看不到呢？</b></summary>
+<summary><b>我对知识库所做的更新未反映在发布中，为什么？</b></summary>
 
 答：每个编辑操作（无论在表更新、测试还是在设置中）需要先保存才能发布。 每次编辑操作后，请确保单击“保存并定型”按钮。
 
@@ -270,14 +270,14 @@ ms.locfileid: "102612688"
 </details>
 
 <details>
-<summary><b>我删除了我的现有搜索服务。如何解决此问题？</b></summary>
+<summary><b>我删除了现有搜索服务，该如何解决此问题？</b></summary>
 
 答：如果删除 Azure 认知搜索索引，则该操作是最终操作，无法恢复索引。
 
 </details>
 
 <details>
-<summary><b>我删除了我的搜索服务中的 `testkb` 索引。如何解决此问题？</b></summary>
+<summary><b>我删除了搜索服务中的 `testkb` 索引，该如何解决此问题？</b></summary>
 
 答：无法恢复你的旧数据。 请创建新的 QnA Maker 资源并再次创建知识库。
 
@@ -353,14 +353,14 @@ ms.locfileid: "102612688"
 
 
 <details>
-<summary><b>我删除了我的现有搜索服务。如何解决此问题？</b></summary>
+<summary><b>我删除了现有搜索服务，该如何解决此问题？</b></summary>
 
 答：如果删除 Azure 认知搜索索引，则该操作是最终操作，无法恢复索引。
 
 </details>
 
 <details>
-<summary><b>我删除了我的搜索服务中的 `testkb` 索引。如何解决此问题？</b></summary>
+<summary><b>我删除了搜索服务中的 `testkb` 索引，该如何解决此问题？</b></summary>
 
 答：无法恢复你的旧数据。 请创建新的 QnA Maker 资源并再次创建知识库。
 

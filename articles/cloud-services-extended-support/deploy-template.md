@@ -8,36 +8,33 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 6d54216d8992b5bb233c79919284f96b24385651
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 8804febe81afc79a4a7eadb56e8350e758ea38ba
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104865581"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105504"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>使用 ARM 模板部署云服务（外延支持）
 
 本教程介绍如何使用 [ARM 模板](../azure-resource-manager/templates/overview.md)创建云服务（外延支持）部署。 
 
-> [!IMPORTANT]
-> 云服务（外延支持）目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-
 ## <a name="before-you-begin"></a>在开始之前
 
 1. 查看云服务（外延支持）的[部署前提条件](deploy-prerequisite.md)，并创建关联的资源。
 
-2. 使用 [Azure 门户](/azure/azure-resource-manager/management/manage-resource-groups-portal)或 [PowerShell](/azure/azure-resource-manager/management/manage-resource-groups-powershell) 创建新的资源组。 若要使用现有资源组，则可选择性地执行此步骤。
+2. 使用 [Azure 门户](../azure-resource-manager/management/manage-resource-groups-portal.md)或 [PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md) 创建新的资源组。 若要使用现有资源组，则可选择性地执行此步骤。
+
+3. 创建公共 IP 地址，并设置公共 IP 地址的 DNS 标签属性。 云服务（外延支持）仅支持[基本](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) SKU 公共 IP 地址。 标准 SKU 公共 IP 不适用于云服务。
+如果使用的是静态 IP，则需要将其看作服务配置 (.cscfg) 文件中的保留 IP。 如果使用现有 IP 地址，请跳过此步骤，并将 IP 地址信息直接添加到 ARM 模板的负载均衡器配置设置中。
  
-3. 使用 [Azure 门户](/azure/storage/common/storage-account-create?tabs=azure-portal)或 [PowerShell](/azure/storage/common/storage-account-create?tabs=azure-powershell) 创建新的存储帐户。 若要使用现有存储帐户，则可选择性地执行此步骤。
+4. 使用 [Azure 门户](../storage/common/storage-account-create.md?tabs=azure-portal)或 [PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell) 创建新的存储帐户。 若要使用现有存储帐户，则可选择性地执行此步骤。
 
-4. 使用 [Azure 门户](/azure/storage/blobs/storage-quickstart-blobs-portal#upload-a-block-blob)、[AzCopy](/azure/storage/common/storage-use-azcopy-blobs-upload?toc=/azure/storage/blobs/toc.json) 或 [PowerShell](/azure/storage/blobs/storage-quickstart-blobs-powershell#upload-blobs-to-the-container) 将服务定义文件 (.csdef) 和服务配置文件 (.cscfg) 上传到存储帐户。 获取这两个文件的 SAS URI，以便在本教程稍后部分将它们添加到 ARM 模板中。
+5. 使用 [Azure 门户](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob)、[AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 或 [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container) 将服务定义文件 (.csdef) 和服务配置文件 (.cscfg) 上传到存储帐户。 获取这两个文件的 SAS URI，以便在本教程稍后部分将它们添加到 ARM 模板中。
 
-5. （可选）创建密钥保管库并上传证书。
+6. （可选）创建密钥保管库并上传证书。
 
-    -  证书可附加到云服务，来实现与服务之间的安全通信。 若要使用证书，必须在服务配置文件 (.cscfg) 中指定证书指纹，并将其上传到密钥保管库。 可通过 [Azure 门户](/azure/key-vault/general/quick-create-portal)或 [PowerShell](/azure/key-vault/general/quick-create-powershell) 创建密钥保管库。
+    -  证书可附加到云服务，来实现与服务之间的安全通信。 若要使用证书，必须在服务配置文件 (.cscfg) 中指定证书指纹，并将其上传到密钥保管库。 可通过 [Azure 门户](../key-vault/general/quick-create-portal.md)或 [PowerShell](../key-vault/general/quick-create-powershell.md) 创建密钥保管库。
     - 关联的密钥保管库必须位于云服务所在的区域和订阅中。
     - 关联的密钥保管库必须启用适当的权限，这样云服务（外延支持）资源才能从 Key Vault 中检索证书。 有关详细信息，请查看[证书和 Key Vault](certificates-and-key-vault.md)
     - 需要在 ARM 模板的 OsProfile 部分引用密钥保管库，如以下步骤所示。
@@ -351,7 +348,7 @@ ms.locfileid: "104865581"
           }
         },
         {
-          "apiVersion": "2020-10-01-preview",
+          "apiVersion": "2021-03-01",
           "type": "Microsoft.Compute/cloudServices",
           "name": "[variables('cloudServiceName')]",
           "location": "[parameters('location')]",

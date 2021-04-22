@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 63a2e40236e03b9877f4fabac6d0489a87a41ede
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 37d248fd61cd8fb99259e3776447a719ae365ab9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102550580"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105042877"
 ---
 # <a name="azure-powershell---enable-customer-managed-keys-with-server-side-encryption---managed-disks"></a>Azure PowerShell - 使用客户管理的密钥进行服务器端加密 - 托管磁盘
 
@@ -155,6 +155,30 @@ $diskEncryptionSetName = "yourDiskEncryptionSetName"
 $diskEncryptionSet = Get-AzDiskEncryptionSet -ResourceGroupName $rgName -Name $diskEncryptionSetName
  
 New-AzDiskUpdateConfig -EncryptionType "EncryptionAtRestWithCustomerKey" -DiskEncryptionSetId $diskEncryptionSet.Id | Update-AzDisk -ResourceGroupName $rgName -DiskName $diskName
+```
+
+### <a name="encrypt-an-existing-virtual-machine-scale-set-with-sse-and-customer-managed-keys"></a>使用 SSE 和客户管理的密钥加密现有虚拟机规模集 
+
+复制该脚本，将所有示例值替换为自己的参数，然后运行该脚本：
+
+```powershell
+#set variables 
+$vmssname = "name of the vmss that is already created"
+$diskencryptionsetname = "name of the diskencryptionset already created"
+$vmssrgname = "vmss resourcegroup name"
+$diskencryptionsetrgname = "diskencryptionset resourcegroup name"
+
+#get vmss object and create diskencryptionset object attach to vmss os disk
+$ssevmss = get-azvmss -ResourceGroupName $vmssrgname -VMScaleSetName $vmssname
+$ssevmss.VirtualMachineProfile.StorageProfile.OsDisk.ManagedDisk.DiskEncryptionSet = New-Object -TypeName Microsoft.Azure.Management.Compute.Models.DiskEncryptionSetParameters
+
+#get diskencryption object and retrieve the resource id
+$des = Get-AzDiskEncryptionSet -ResourceGroupName $diskencryptionsetrgname -Name $diskencryptionsetname
+write-host "the diskencryptionset resource id is:" $des.Id
+
+#associate DES resource id to os disk and update vmss 
+$ssevmss.VirtualMachineProfile.StorageProfile.OsDisk.ManagedDisk.DiskEncryptionSet.id = $des.Id
+$ssevmss | update-azvmss
 ```
 
 ### <a name="create-a-virtual-machine-scale-set-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>使用市场映像创建虚拟机规模集，并使用客户托管密钥加密 OS 和数据磁盘

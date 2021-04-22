@@ -3,17 +3,17 @@ title: Windows 虚拟桌面中有哪些新增功能？ - Azure
 description: Windows 虚拟桌面的新增功能和产品更新。
 author: Heidilohr
 ms.topic: overview
-ms.date: 03/20/2021
+ms.date: 04/08/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: 1c5d846963d7fc0c2207893f5c4094e3f94351b5
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 710f33ada7a64248f0371a3e8c39e085d3f0834c
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505410"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107051"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows 虚拟桌面中有哪些新增功能？
 
@@ -51,6 +51,53 @@ Windows 虚拟桌面代理每月至少更新一次。
 ## <a name="fslogix-updates"></a>FSLogix 更新
 
 想知道 FSLogix 的最新更新吗？ 请查看 [FSLogix 的新增功能](/fslogix/whats-new)。
+
+## <a name="march-2021"></a>2021 年 3 月
+
+以下是 2021 年 3 月的更改。
+
+### <a name="updates-to-the-azure-portal-ui-for-windows-virtual-desktop"></a>Windows 虚拟桌面的 Azure 门户 UI 更新
+
+我们对 Windows 虚拟桌面 Azure 门户进行了一些更新：
+
+- 为工作流启用了新的可用性选项（可用性集和区域）来创建主机池和添加 VM。
+- 修复了处于“需要帮助”状态的主机显示为不可用的问题。 现在，主机旁边会出现一个警告图标。
+- 已对活动会话启用排序。
+- 你现在可以在“主机详细信息”选项卡上向特定用户发送消息或将其注销。
+- 已更改最大会话限制字段。
+- 已将 OU 验证路径添加到工作流以创建主机池。
+- 你现在可以在创建个人主机池时使用最新版本的 Windows 10 映像。
+
+### <a name="generation-2-images-and-trusted-launch"></a>第 2 代映像和受信任启动
+
+Azure 市场现在提供适用于 Windows 10 企业版和 Windows 10 企业版多会话的第 2 代映像。 这些映像将允许使用受信任启动 VM。 若要详细了解第 2 代 VM，请参阅[我应该创建第 1 代还是第 2 代虚拟机](../virtual-machines/generation-2.md)。 若要了解如何预配 Windows 虚拟桌面受信任启动 VM，请参阅[我们的 TechCommunity 文章](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/windows-virtual-desktop-support-for-trusted-launch/m-p/2206170)。
+
+### <a name="fslogix-is-now-preinstalled-on-windows-10-enterprise-multi-session-images"></a>FSLogix 现在预安装在 Windows 10 企业版多会话映像上
+
+根据客户反馈，我们设置了新版本的 Windows 10 企业版多会话映像，该映像已安装了未配置的 FSLogix 的版本。 我们希望这能够帮助你更轻松地部署 Windows 虚拟桌面。
+
+### <a name="azure-monitor-for-windows-virtual-desktop-is-now-in-general-availability"></a>Azure Monitor for Windows Virtual Desktop 现已正式发布
+
+Azure Monitor for Windows Virtual Desktop 现在已面向公众正式发布。 此功能是一项自动化服务，可监视你的部署，使你能够在单个位置查看事件、运行状况和故障排除建议。 有关详细信息，请参阅[我们的文档](azure-monitor.md)或查看[我们的 TechCommunity 文章](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/azure-monitor-for-windows-virtual-desktop-is-generally-available/m-p/2242861)。
+
+### <a name="march-2021-updates-for-teams-on-windows-virtual-desktop"></a>2021 年 3 月 Windows 虚拟桌面上的 Teams 更新
+
+我们对 Windows 虚拟桌面上的 Teams 进行了以下更新：
+
+- 提高了通话和 2x2 模式的视频质量性能。
+- 使用视频处理 (XVP) 的硬件卸载，将 CPU 利用率降低了 5-10%（具体取决于 CPU 代系）。
+- 旧版本的计算机现在可以使用 XVP 和硬件解码，以 2x2 模式流畅地显示更多传入的视频流。
+- 已将 WebRTC 堆栈从 M74 更新为 M88，以提高 AV 同步性能并减少暂时性问题。
+- 已将软件 H264 编码器替换为 OpenH264（Web 上 Teams 中使用的 OSS），这会提高传出相机的视频质量。
+- 我们在 3 月 30 日为 Teams 服务器启用了 2x2 模式，供公众使用。 2x2 模式同时可显示最多四个传入视频流。
+
+### <a name="start-vm-on-connect-public-preview"></a>连接时启动 VM 公共预览版
+
+公共预览版中现在提供了“连接时启动 VM”这一主机池设置。 使用此设置能够根据需要随时启用 VM。 如果要节省成本，需要通过配置 Azure 计算设置来解除分配 VM。 有关详细信息，请查看[我们的博客文章](https://aka.ms/wvdstartvmonconnect)和[我们的文档](start-virtual-machine-connect.md)。
+
+### <a name="windows-virtual-desktop-specialty-certification"></a>Windows 虚拟桌面专用认证
+
+我们发布了 AZ-140 考试的 beta 版本，使你能够证明在 Azure 中的 Windows 虚拟桌面的专业知识。 要了解更多信息，请查看[我们的 文章](https://techcommunity.microsoft.com/t5/microsoft-learn-blog/beta-exam-prove-your-expertise-in-windows-virtual-desktop-on/ba-p/2147107)。
 
 ## <a name="february-2021"></a>2021 年 2 月
 

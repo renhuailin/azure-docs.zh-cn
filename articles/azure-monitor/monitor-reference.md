@@ -6,10 +6,10 @@ author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
 ms.openlocfilehash: 4bf792dd02e7cddcc40ef868e4a602fdb03ab3c6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102052273"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor 监视哪些内容？
@@ -30,7 +30,7 @@ ms.locfileid: "102052273"
 | [用于网络的 Azure Monitor（预览版）](insights/network-insights-overview.md) | 提供所有网络资源的运行状况和指标的综合视图。 高级搜索功能通过便捷搜索网站名称，帮助你识别资源依赖关系，从而能够支持多种方案，比如识别用于托管网站的资源等。 |
 [用于资源组的 Azure Monitor（预览版）](insights/resource-group-insights.md) |  分类和诊断各资源出现的任何问题，同时提供有关资源组的运行状况和性能的整体上下文。 |
 | [用于存储的 Azure Monitor](insights/storage-insights-overview.md) | 通过提供 Azure 存储服务性能、容量和可用性的统一视图，提供对 Azure 存储帐户的全面监视。 |
-| [VM insights](vm/vminsights-overview.md) | 可以大规模监视 Azure 虚拟机 (VM) 和虚拟机规模集。 它分析 Windows 和 Linux VM 的性能和运行状况，并监视它们的进程及其对其他资源和外部进程的依赖关系。 |
+| [VM 见解](vm/vminsights-overview.md) | 可以大规模监视 Azure 虚拟机 (VM) 和虚拟机规模集。 它分析 Windows 和 Linux VM 的性能和运行状况，并监视它们的进程及其对其他资源和外部进程的依赖关系。 |
 | [Key Vault 的 Azure Monitor（预览版）](./insights/key-vault-insights-overview.md) | 提供 Key Vault 请求、性能、失败和延迟的统一视图，在其中可以全面监视密钥保管库。 |
 | [适用于 Azure Cache for Redis 的 Azure Monitor（预览版）](insights/redis-cache-insights-overview.md) |  提供有关整体性能、故障、容量和运行状况的统一交互式视图。 |
 
@@ -170,9 +170,9 @@ ms.locfileid: "102052273"
 |Windows 虚拟桌面 | 否 | 否 | 否 |  |
 
 ## <a name="virtual-machine-agents"></a>虚拟机代理
-下表列出了可以从虚拟机的来宾操作系统收集数据并将数据发送到监视器的代理。 每个代理都可以收集不同的数据，并将其发送到 Azure Monitor 中的指标或日志。 
+下表列出了可从虚拟机来宾操作系统收集数据并将数据发送至监视器的代理。 每个代理都可以收集不同的数据，并将其发送到 Azure Monitor 中的指标或日志。 
 
-有关每个代理可以收集的数据的详细信息，请参阅 [Azure Monitor 代理概述](agents/agents-overview.md) 。
+若要详细了解每个代理可收集的数据，请参阅 [Azure Monitor 代理概述](agents/agents-overview.md)。
 
 | Agent |  指标 | 日志 |
 |:---|:---|:---|:---|
@@ -180,7 +180,7 @@ ms.locfileid: "102052273"
 | [Log Analytics 代理](agents/log-analytics-agent.md) | 否 | 是|
 | [诊断扩展](agents/diagnostics-extension-overview.md) | 是 | 否 |
 | [Telegraf 代理](essentials/collect-custom-metrics-linux-telegraf.md) | 是 | 否 |
-| [依赖关系代理](vm/vminsights-enable-overview.md) | 否 | 是 |
+| [依赖项代理](vm/vminsights-enable-overview.md) | 否 | 是 |
 
 
 ## <a name="product-integrations"></a>产品集成
@@ -195,7 +195,7 @@ ms.locfileid: "102052273"
 | [Microsoft Intune](/intune/) | 创建诊断设置以将日志发送到 Azure Monitor。 请参阅[将日志数据发送到 Intune 中的存储、事件中心或日志分析（预览版）](/intune/fundamentals/review-logs-using-azure-monitor)。  |
 | 网络  | [网络性能监视器](insights/network-performance-monitor.md) - 监视与服务和应用程序终结点的网络连接和其性能。<br>[Azure 应用程序网关](insights/azure-networking-analytics.md#azure-application-gateway-analytics) - 分析来自 Azure 应用程序网关的日志和指标。<br>[流量分析](../network-watcher/traffic-analytics.md) - 可以分析网络观察程序网络安全组 (NSG) 流日志，帮助洞察 Azure 云中的流量流。 |
 | [Office 365](insights/solution-office-365.md) | 监视 Office 365 环境。 使用通过 Azure Sentinel 提供改进的载入来更新版本。 |
-| [SQL Analytics](insights/azure-sql.md) | 大规模或跨多个订阅监视 Azure SQL 数据库和 SQL 托管实例的性能。 |
+| [SQL Analytics](insights/azure-sql.md) | 可跨多个订阅大规模地监视 Azure SQL 数据库和 SQL 托管实例的性能。 |
 | [Surface Hub](insights/surface-hubs.md) | 跟踪 Surface Hub 设备的运行状况和使用情况。 |
 | [System Center Operations Manager](/system-center/scom) | 通过将 Operations Manager 代理的管理组连接到 Azure Monitor，从代理收集数据。 请参阅[将 Operations Manager 连接到 Azure Monitor](agents/om-agents.md)<br> 使用 [Operations Manager 评估](insights/scom-assessment.md)解决方案评估 System Center Operations Manager 管理组的风险和运行状况。 |
 | [Microsoft 团队聊天室](/microsoftteams/room-systems/azure-monitor-deploy) | Microsoft 团队聊天室设备的集成、端到端管理。 |

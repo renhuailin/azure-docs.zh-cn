@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 0c2de0c1b024d093bd0276a852d9b97ba3320f4b
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: a6335d90625f860984ccbfd224955a97a32b731f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286328"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785210"
 ---
 # <a name="migrate-to-azure-file-shares"></a>迁移到 Azure 文件共享
 
@@ -24,7 +24,7 @@ ms.locfileid: "106286328"
 
 Azure 有多种可用的云存储类型。 文件迁移到 Azure 的一个重要方面是确定哪个 Azure 存储选项适合你的数据。
 
-[Azure 文件共享](storage-files-introduction.md)适用于常规用途的文件数据。 这种数据包括你针对其使用本地 SMB 或 NFS 共享的任何内容。 通过 [Azure 文件同步](storage-sync-files-planning.md)，可以在本地运行 Windows Server 的服务器上缓存多个 Azure 文件共享的内容。
+[Azure 文件共享](storage-files-introduction.md)适用于常规用途的文件数据。 这种数据包括你针对其使用本地 SMB 或 NFS 共享的任何内容。 通过 [Azure 文件同步](../file-sync/file-sync-planning.md)，可以在本地运行 Windows Server 的服务器上缓存多个 Azure 文件共享的内容。
 
 对于当前在本地服务器上运行的应用，将文件存储在 Azure 文件共享中可能是一个不错的选择。 你可以将应用移到 Azure，并使用 Azure 文件共享作为共享存储。 还可以考虑将 [Azure 磁盘](../../virtual-machines/managed-disks-overview.md) 用于此场景。
 
@@ -81,7 +81,7 @@ Active Directory 用户（作为其本地域控制器）可以以本机方式访
 | 源 | 目标： </br>混合部署 | 目标： </br>仅限云的部署 |
 |:---|:--|:--|
 | | 工具组合：| 工具组合： |
-| Windows Server 2012 R2 和更高版本 | <ul><li>[Azure 文件同步](storage-sync-files-deployment-guide.md)</li><li>[Azure 文件同步和 Azure DataBox](storage-sync-offline-data-transfer.md)</li></ul> | <ul><li>通过 RoboCopy 迁移到已装载的 Azure 文件共享</li><li>通过 Azure 文件同步</li></ul> |
+| Windows Server 2012 R2 和更高版本 | <ul><li>[Azure 文件同步](../file-sync/file-sync-deployment-guide.md)</li><li>[Azure 文件同步和 Azure DataBox](../file-sync/file-sync-offline-data-transfer.md)</li></ul> | <ul><li>通过 RoboCopy 迁移到已装载的 Azure 文件共享</li><li>通过 Azure 文件同步</li></ul> |
 | Windows Server 2012 和更低版本 | <ul><li>通过 DataBox 和 Azure 文件同步迁移到最近的服务器 OS</li><li>使用 Azure 文件同步通过存储迁移服务迁移到最新的服务器，然后上传</li></ul> | <ul><li>使用 Azure 文件同步通过存储迁移服务迁移到最新的服务器</li><li>通过 RoboCopy 迁移到已装载的 Azure 文件共享</li></ul> |
 | 网络连接存储 (NAS) | <ul><li>[通过 Azure 文件同步 + 上传](storage-files-migration-nas-hybrid.md)</li><li>[通过 DataBox + Azure 文件同步](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>[通过 DataBox](storage-files-migration-nas-cloud-databox.md)</li><li>通过 RoboCopy 迁移到已装载的 Azure 文件共享</li></ul> |
 | Linux/Samba | <ul><li>[Azure 文件同步和 RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>通过 RoboCopy 迁移到已装载的 Azure 文件共享</li></ul> |
@@ -139,7 +139,7 @@ RoboCopy 是最适用于文件迁移的工具之一。 它作为 Windows 的一�
 
 Azure 文件同步主要随项（文件和文件夹）的数量而非总存储量而缩放。 通过 TreeSize 工具，可确定 Windows Server 卷上的项数。
 
-可以使用该工具在 [Azure 文件同步部署](storage-sync-files-deployment-guide.md)之前创建透视。 部署后启用云分层时，也可以使用它。 在这种场景下，可以看到项数以及哪些目录使用服务器缓存最多。
+可以使用该工具在 [Azure 文件同步部署](../file-sync/file-sync-deployment-guide.md)之前创建透视。 部署后启用云分层时，也可以使用它。 在这种场景下，可以看到项数以及哪些目录使用服务器缓存最多。
 
 该工具的测试版本为 4.4.1。 它与云分层文件兼容。 该工具在正常运行期间不会导致分层文件的重调。
 
@@ -151,5 +151,5 @@ Azure 文件同步主要随项（文件和文件夹）的数量而非总存储�
 关于本文中提到的 Azure 文件存储技术的详细信息：
 
 * [Azure 文件共享概述](storage-files-introduction.md)
-* [规划 Azure 文件同步部署](storage-sync-files-planning.md)
-* [Azure 文件同步：云分层](storage-sync-cloud-tiering-overview.md)
+* [规划 Azure 文件同步部署](../file-sync/file-sync-planning.md)
+* [Azure 文件同步：云分层](../file-sync/file-sync-cloud-tiering-overview.md)

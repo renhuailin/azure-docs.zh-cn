@@ -3,12 +3,12 @@ title: WebHook 事件传送
 description: 本文介绍如何在使用 Webhook 时进行 WebHook 事件传送和终结点验证。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: e9a52d0cb3e4e880d91e1b748d97ef3041298930
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 42ba36a21d307ca85d9cdae850c0c9a991e4f30e
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87461232"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967993"
 ---
 # <a name="webhook-event-delivery"></a>Webhook 事件传送
 Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事件准备就绪时，事件网格服务会向已配置的终结点 POST HTTP 请求，并在请求正文中包含该事件。
@@ -74,7 +74,7 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 }
 ```
 
-你必须返回 HTTP 200 OK 响应状态代码。 HTTP 202 Accepted 未被识别为有效的事件网格订阅验证响应。 http 请求必须在 30 秒内完成。 如果操作未在 30 秒内完成，则该操作将被取消，并可能在 5 秒后重新尝试。 如果所有尝试均失败，系统会将它视为验证握手错误。
+你必须返回 HTTP 200 OK 响应状态代码。 HTTP 202 Accepted 未被识别为有效的事件网格订阅验证响应。 必须在 30 秒内完成 HTTP 请求。 如果操作未在 30 秒内完成，则该操作将被取消，并可能在 5 秒后重新尝试。 如果所有尝试均失败，系统会将它视为验证握手错误。
 
 另外，还可以通过将 GET 请求发送到验证 URL 来手动验证订阅。 事件订阅将一直处于挂起状态，直到得到验证。 验证 URL 使用端口 553。 如果防火墙规则阻止端口 553，则可能需更新规则才能成功进行手动握手。
 

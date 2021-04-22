@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/27/2021
 ms.author: apimpm
 ms.openlocfilehash: 22d2960801cac2222f868c384a55b4bf436bc75b
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99492597"
 ---
 # <a name="api-management-authentication-policies"></a>API 管理身份验证策略
@@ -67,10 +67,10 @@ ms.locfileid: "99492597"
 -   **策略范围：** 所有范围
 
 ##  <a name="authenticate-with-client-certificate"></a><a name="ClientCertificate"></a> 使用客户端证书进行身份验证
- 使用 `authentication-certificate` 策略通过客户端证书向后端服务进行身份验证。 需要首先将证书 [安装到 API 管理中](./api-management-howto-mutual-certificates.md) ，并由其指纹或证书 ID 进行标识 (资源名称) 。 
+ 通过 `authentication-certificate` 策略使用客户端证书对后端服务进行身份验证。 需要首先将证书[安装到 API 管理](./api-management-howto-mutual-certificates.md)，并由其指纹或证书 ID（资源名称）进行标识。 
 
 > [!CAUTION]
-> 如果证书引用存储在 Azure Key Vault 中的证书，请使用证书 ID 来识别它。 轮换密钥保管库证书时，其在 API 管理中的指纹将会更改，并且策略将无法解析新证书（如果该证书由指纹标识）。
+> 如果证书引用存储在 Azure Key Vault 中的证书，请使用证书 ID 来标识它。 轮换密钥保管库证书时，证书在 API 管理中的指纹将会更改，并且如果新证书由指纹标识，则该策略将无法解析新证书。
 
 ### <a name="policy-statement"></a>策略语句
 
@@ -80,7 +80,7 @@ ms.locfileid: "99492597"
 
 ### <a name="examples"></a>示例
 
-在此示例中，客户端证书由证书 ID 标识：
+在此示例中，客户端证书是由证书 ID 标识的：
 
 ```xml  
 <authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  

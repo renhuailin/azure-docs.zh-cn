@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
 ms.custom: contperf-fy21q2; references_regions
-ms.openlocfilehash: 13bf0f2430e0d58dd9ef28061aad897acf94ac3f
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 5ffae530bcd8a7274b4b75c447591cf619012661
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103493044"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106387054"
 ---
 # <a name="what-is-custom-speech"></a>什么是自定义语音识别？
 
@@ -26,11 +26,11 @@ ms.locfileid: "103493044"
 
 在开始使用自定义语音识别执行任何操作之前，需要一个 Azure 帐户和一个语音服务订阅。 有了帐户后，即可准备数据、训练和测试模型、查看识别质量、评估准确度，并最终部署和使用自定义语音转文本模型。
 
-此关系图突出显示了组成 [Speech Studio 自定义语音识别区域](https://aka.ms/customspeech)的部分。 使用以下链接详细了解每个步骤。
+此图突出显示了构成 [Speech Studio 的自定义语音识别区域](https://aka.ms/customspeech)的组件。 使用以下链接详细了解每个步骤。
 
-![此关系图突出显示了组成 Speech Studio 自定义语音识别区域的部分。](./media/custom-speech/custom-speech-overview.png)
+![突出显示了构成 Speech Studio 的自定义语音识别区域的组件的关系图。](./media/custom-speech/custom-speech-overview.png)
 
-1. [订阅和创建项目](#set-up-your-azure-account)。 创建 Azure 帐户并订阅语音服务。 此统一订阅使你可以访问语音转文本、文本转语音、语音翻译和 [Speech Studio](https://speech.microsoft.com/customspeech)。 然后，使用语音服务订阅创建第一个“自定义语音识别”项目。
+1. [订阅和创建项目](#set-up-your-azure-account)。 创建 Azure 帐户并订阅语音服务。 此统一订阅使你可以访问语音到文本、文本到语音、语音翻译和 [Speech Studio](https://speech.microsoft.com/customspeech)。 然后，使用语音服务订阅创建第一个“自定义语音识别”项目。
 
 1. [上传测试数据](./how-to-custom-speech-test-and-train.md)。 上传测试数据（音频文件），以便针对你的应用程序、工具和产品评估 Microsoft 语音转文本产品/服务。
 
@@ -66,7 +66,7 @@ ms.locfileid: "103493044"
 
 创建 Azure 帐户和语音服务订阅后，需要登录到 [Speech Studio](https://speech.microsoft.com/customspeech) 并连接订阅。
 
-1. 登录 [Speech Studio](https://aka.ms/custom-speech)。
+1. 登录到 [Speech Studio](https://aka.ms/custom-speech)。
 1. 选择需要使用的订阅并创建语音项目。
 1. 如果要修改订阅，请选择顶部菜单中的齿轮按钮。
 
@@ -77,7 +77,7 @@ ms.locfileid: "103493044"
 若要创建第一个项目，请选择“语音转文本/自定义语音识别”，然后选择“新建项目” 。 遵照向导中的说明创建项目。 创建项目后，应该看到四个选项卡：“数据”、“测试”、“训练”和“部署”。    使用[后续步骤](#next-steps)中提供的链接了解如何使用每个选项卡。
 
 > [!IMPORTANT]
-> 刚刚更新了 [Speech Studio](https://aka.ms/custom-speech)（以前称为“自定义语音识别门户”）！ 如果以前已在 CRIS.ai 门户或使用 API 创建了数据、模型、测试并已发布了终结点，则需要在新门户中创建一个新项目以连接到这些旧实体。
+> 最近更新了以前称为“自定义语音门户”的 [Speech Studio](https://aka.ms/custom-speech)！ 如果以前已在 CRIS.ai 门户或使用 API 创建了数据、模型、测试并已发布了终结点，则需要在新门户中创建一个新项目以连接到这些旧实体。
 
 ## <a name="model-and-endpoint-lifecycle"></a>模型和终结点生命周期
 

@@ -2,17 +2,18 @@
 title: 对连接进行故障排除 - Azure Databases for PostgreSQL - 单一服务器
 description: 了解如何排查 Azure Databases for PostgreSQL - 单一服务器的连接问题。
 keywords: postgresql 连接, 连接字符串, 连接问题, 暂时性错误, 连接错误
-author: niklarin
-ms.author: nlarin
+author: sunilagarwal
+ms.author: sunila
+ms.reviewer: ''
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: bff930153dc8941fbfe561edf963d5b1c1e7811f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7fe8c4b751be174a91a0e2e94991bc63b4b1e5c7
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96014612"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504237"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>排查 Azure Databases for PostgreSQL - 单一服务器的连接问题
 
@@ -47,10 +48,10 @@ ms.locfileid: "96014612"
 如果应用程序一直无法连接到 Azure Database for PostgreSQL，通常表示下列其中一项出现了问题：
 
 * 服务器防火墙配置：请确保用于 PostgreSQL 服务器防火墙的 Azure 数据库配置为允许来自客户机（包括代理服务器和网关）的连接。
-* 客户端防火墙配置：客户端的防火墙必须允许连接到数据库服务器。 对于无法访问的服务器 IP 地址和端口，必需授予其访问权限，并且必须允许使用某些防火墙的应用程序名称（如 PostgreSQL）。
+* 客户端防火墙配置：客户端的防火墙必须允许连接到数据库服务器。 对于无法连接的服务器 IP 地址和端口，必须允许它们连接，并且必须允许使用某些防火墙的应用程序名称（如 PostgreSQL）。
 * 用户失误：例如，你可能错误键入了连接参数（例如，在连接字符串中键入了服务器名称，或者在用户名中遗漏了 *\@servername* 后缀）。
-* 如果看到“服务器未配置为允许 IPv6 连接”错误，则请注意，基本层不支持 VNet 服务终结点。 必须从子网中删除尝试连接到“基本”服务器的 Microsoft.Sql 终结点。
-* 如果看到连接错误“未在其中编译 SSL 支持时，sslmode 值 ‘***’ 无效”，则表示 PostgreSQL 客户端不支持 SSL。 最有可能的是，客户端 libpq 尚未使用“--with-openssl”标志进行编译。 请尝试使用带有 SSL 支持的 PostgreSQL 客户端进行连接。 
+* 如果看到“服务器未配置为允许 IPv6 连接”错误，请注意，基本层不支持 VNet 服务终结点。 必须从子网中删除尝试连接到“基本”服务器的 Microsoft.Sql 终结点。
+* 如果看到连接错误“未在其中编译 SSL 支持时，sslmode 值 ‘***’ 无效”，则表示 PostgreSQL 客户端不支持 SSL。 最有可能的是，客户端 libpq 尚未使用“--with-openssl”标志进行编译。 尝试使用带有 SSL 支持的 PostgreSQL 客户端进行连接。 
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>解决永久性连接问题的步骤
 

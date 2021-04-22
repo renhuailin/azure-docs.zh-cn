@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 06/12/2020
 ms.openlocfilehash: 61033e3eb8264c1e462faac3e4553a855a1d06c7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100592084"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>智能见解：使用 AI 监视数据库性能并对其进行故障排除（预览）
@@ -60,7 +60,7 @@ ms.locfileid: "100592084"
 | 根本原因分析 | 对已识别问题的根本原因分析采用人类可读的格式。 一些见解可能包含可行的性能改进建议。 |
 |||
 
-有关将智能见解用于 Azure SQL Analytics 和典型使用方案的动手概述，请观看此视频：
+有关将智能见解与 Azure SQL Analytics 配合使用的实践概述和典型使用方案，请观看视频：
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
 >
@@ -74,18 +74,18 @@ ms.locfileid: "100592084"
 | 智能见解选项 | Azure SQL 数据库支持 | Azure SQL 托管实例支持 |
 | :----------------------------- | ----- | ----- |
 | **配置智能见解** - 配置针对数据库的智能见解分析。 | 是 | 是 |
-| 将 **见解流式处理到 Azure SQL Analytics** --将见解传递到 Azure SQL Analytics。 | 是 | 是 |
+| **将见解流式传输到 Azure SQL Analytics** -- 将见解流式传递到 Azure SQL Analytics。 | 是 | 是 |
 | **将见解流式传输到 Azure 事件中心** - 将见解流式传输到事件中心，以便进一步进行自定义集成。 | 是 | 是 |
 | **将见解流式传输到 Azure 存储** - 将见解流式传输到 Azure 存储，以便进一步进行分析和长期存档。 | 是 | 是 |
 
 > [!NOTE]
-> 智能见解是一项预览功能，在以下区域中不可用：西欧、北欧、美国西部1和美国东部1。
+> 智能见解是一项预览功能，在以下区域中不可用：西欧、北欧、美国西部 1 和美国东部 1。
 
 ## <a name="configure-the-export-of-the-intelligent-insights-log"></a>配置智能见解日志的导出
 
 可以将智能见解的输出流式传输到多个目标之一进行分析：
 
-- 流式传输到 Log Analytics 工作区的输出可以与 [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md) 结合使用，以便通过 Azure 门户的用户界面查看见解。 这是集成式 Azure 解决方案，是用于查看见解的最典型方式。
+- 流式传输到 Log Analytics 工作区的输出可以与 [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md) 结合使用，以通过 Azure 门户的用户界面查看见解。 这是集成式 Azure 解决方案，是用于查看见解的最典型方式。
 - 使用流式传输到 Azure 事件中心的输出，可以开发自定义监视和警报方案
 - 使用流式传输到 Azure 存储的输出，可以进行自定义应用程序开发，例如自定义报告、长期数据存档，等等。
 
@@ -95,11 +95,11 @@ ms.locfileid: "100592084"
 
 ### <a name="set-up-with-azure-sql-analytics"></a>通过 Azure SQL Analytics 进行设置
 
-Azure SQL Analytics 解决方案使用智能见解资源日志数据，为数据库性能提供图形用户界面、报告和警告功能。
+Azure SQL Analytics 解决方案使用智能见解诊断日志数据提供图形用户界面、有关数据库性能的报告和警报功能。
 
-从 marketplace 向 Azure 门户仪表板添加 Azure SQL Analytics，若要创建工作区，请参阅 [配置 Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md#configuration)
+将 Azure SQL Analytics 从市场添加到 Azure 门户仪表板，并创建一个工作区，详见[配置 Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md#configuration)
 
-若要将智能见解与 Azure SQL Analytics 一起使用，请将智能见解日志数据流式传输到你在上一步中创建 Azure SQL Analytics 工作区，请参阅 [指标和诊断日志记录](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)。
+若要将智能见解与 Azure SQL Analytics 配合使用，请配置要流式传输到 Azure SQL Analytics 工作区（已在上一步创建）的智能见解日志数据，详见[指标和诊断日志记录](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)。
 
 以下示例显示了通过 Azure SQL Analytics 查看的智能见解：
 
@@ -187,5 +187,5 @@ Azure SQL Analytics 解决方案使用智能见解资源日志数据，为数据
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何 [使用 SQL Analytics 监视数据库](../../azure-monitor/insights/azure-sql.md)。
+- 了解如何[使用 SQL Analytics 监视数据库](../../azure-monitor/insights/azure-sql.md)。
 - 了解如何[使用智能见解排查性能问题](intelligent-insights-troubleshoot-performance.md)。

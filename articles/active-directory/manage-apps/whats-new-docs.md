@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 应用程序管理中的新增内容
 description: 有关 Azure Active Directory 应用程序管理的新文档和更新文档。
-ms.date: 03/08/2021
+ms.date: 04/04/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -9,16 +9,45 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: 5b645efe2bbaadeca31b4a0a3b957ff53f5ed3aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81898875af85becf1766f02a5b7e077cb388a173
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775504"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450032"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory 应用程序管理：新增内容
 
 欢迎查看 Azure Active Directory 应用程序管理文档中的新增内容。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解应用程序管理服务的新增内容，请查看 [Azure Active Directory 中的新增功能](../fundamentals/whats-new.md)。
+
+## <a name="march-2021"></a>2021 年 3 月
+
+### <a name="new-articles"></a>新文章
+
+- [Azure Active Directory (Azure AD) 应用程序管理证书常见问题](application-management-certs-faq.md)
+- [应用程序管理的 Azure Active Directory PowerShell 示例](app-management-powershell-samples.md)
+- [在用户使用主领域发现策略登录过程中禁用到联合 IDP 的自动加速](prevent-domain-hints-with-home-realm-discovery.md)
+
+### <a name="updated-articles"></a>更新的文章
+
+- [计划 Azure Active Directory 我的应用配置](my-apps-deployment-plan.md)
+- [将 Azure Active Directory 与应用程序集成入门指南](plan-an-application-integration.md)
+- [与 SharePoint 集成 (SAML)](application-proxy-integrate-with-sharepoint-server-saml.md)
+- [将应用程序身份验证迁移到 Azure Active Directory](migrate-application-authentication-to-azure-active-directory.md)
+- [使用 AD FS 应用程序活动报表将应用程序迁移到 Azure AD](migrate-adfs-application-activity.md)
+- [计划单一登录部署](plan-sso-deployment.md)
+- [应用程序管理的 Azure Active Directory PowerShell 示例](app-management-powershell-samples.md)
+- [排查应用程序代理的 Kerberos 约束委派配置问题](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+- [快速入门：在 Azure Active Directory (Azure AD) 租户中为应用程序设置基于 SAML 的单一登录 (SSO)](add-application-portal-setup-sso.md)
+- [Azure Active Directory 应用程序管理：新增内容](whats-new-docs.md)
+- [Active Directory (Azure AD) 应用程序代理常见问题解答](application-proxy-faq.md)
+- [排查从 Azure AD 我的应用登录到应用程序时的问题](application-sign-in-other-problem-access-panel.md)
+- [教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问](application-proxy-add-on-premises-application.md)
+- [使用 Azure Active Directory 应用程序代理优化流量流](application-proxy-network-topology.md)
+- [Azure AD 应用程序代理：版本发布历史记录](application-proxy-release-version-history.md)
+- [使用主领域发现策略为应用程序配置 Azure Active Directory 登录行为](configure-authentication-for-federated-users-portal.md)
+- [将应用程序身份验证从 Active Directory 联合身份验证服务移动到 Azure Active Directory](migrate-adfs-apps-to-azure.md)
+
 
 ## <a name="february-2021"></a>2021 年 2 月
 

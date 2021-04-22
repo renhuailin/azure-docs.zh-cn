@@ -9,15 +9,15 @@ ms.date: 10/29/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 24d146da7946176c92902698d0f52ae01baf79ee
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93061585"
 ---
-如果在本地运行 PowerShell，请用提升的权限打开 PowerShell 控制台，并连接到 Azure 帐户。 Connect-AzureRmAccount cmdlet 会提示输入凭据。 进行身份验证后，它会下载帐户设置，以便 Azure PowerShell 可以使用这些设置。
+如果在本地运行 PowerShell，请使用提升的权限打开 PowerShell 控制台，然后连接到 Azure 帐户。 Connect-AzureRmAccount cmdlet 会提示输入凭据。 进行身份验证后，它会下载帐户设置，以便 Azure PowerShell 可以使用这些设置。
 
-如果使用 Azure Cloud Shell 而不是在本地运行 PowerShell，则会注意到不需要运行 *AzAccount*。 选择 " **试用**" 后，Azure Cloud Shell 自动连接到 Azure 帐户。
+如果使用 Azure Cloud Shell 而不是在本地运行 PowerShell，你会发现不需要运行 Connect-AzAccount。 选择“试用”后，Azure Cloud Shell 会自动连接到 Azure 帐户。
 
 1. 如果在本地运行 PowerShell，请登录。
 

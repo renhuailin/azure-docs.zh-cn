@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/22/2021
+ms.date: 04/11/2021
 ms.author: memildin
-ms.openlocfilehash: f6ec14c577d1203b92085b791f89e4873a97c41a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3e4dddf61656ea38bac406366bf993788fd34943
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786071"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303145"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -24,6 +24,123 @@ ms.locfileid: "104786071"
 
 > [!TIP]
 > 如果要查找 6 个月之前的项目，可查看 [Azure 安全中心的新增功能存档](release-notes-archive.md)。
+
+## <a name="april-2021"></a>2021 年 4 月
+
+4 月的更新包括：
+- [最近拉取的容器注册表映像现在将每周重新扫描（正式发布）](#recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability)
+- [使用 Azure Defender for Kubernetes 保护混合和多云 Kubernetes 部署（预览版）](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview)
+- [与来宾配置相关的四个新建议（预览版）](#four-new-recommendations-related-to-guest-configuration-preview)
+- [CMK 建议移动到最佳做法安全控制](#cmk-recommendations-moved-to-best-practices-security-control)
+- [11 Azure Defender 警报已弃用](#11-azure-defender-alerts-deprecated)
+- [“应用系统更新”安全控制中的两个建议已弃用](#two-recommendations-from-apply-system-updates-security-control-were-deprecated)
+
+### <a name="recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability"></a>最近拉取的容器注册表映像现在将每周重新扫描（正式发布）
+
+适用于容器注册表的 Azure Defender 包含内置漏洞扫描程序。 此扫描程序会立即扫描推送到注册表中的任何映像以及在过去 30 天内拉取的任何映像。
+
+每天都会发现新漏洞。 通过此更新，将每周重新扫描一次过去 30 天内从注册表拉取的容器映像。 这可确保在映像中识别新发现的漏洞。
+
+扫描按映像收费，因此重新扫描不产生额外费用。
+
+可在[使用适用于容器注册表的 Azure Defender 来扫描映像是否存在漏洞](defender-for-container-registries-usage.md)中详细了解此扫描程序。
+
+
+### <a name="use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview"></a>使用 Azure Defender for Kubernetes 保护混合和多云 Kubernetes 部署（预览版）
+
+Azure Defender for Kubernetes 正在扩展其威胁防护功能，以便在部署时保护其群集。 这已通过集成[已启用 Azure Arc 的 Kubernetes](../azure-arc/kubernetes/overview.md) 及其新的[扩展功能](../azure-arc/kubernetes/extensions.md)来实现。 
+
+在非 Azure Kubernetes 群集上启用 Azure Arc 后，根据 Azure 安全中心提供的新建议，仅需单击几下，即可将 Azure Defender 扩展部署到其中。
+
+使用建议（启用 Azure Arc 的 Kubernetes 群集应已安装 Azure Defender 的扩展）和扩展保护在其他云提供程序中部署的 Kubernetes 群集，但不支持其托管的 Kubernetes 服务。
+
+Azure 安全中心、Azure Defender 和启用了 Azure Arc 的 Kubernetes 之间的集成将带来以下影响：
+
+- 轻松地将 Azure Defender 扩展预配到未受保护的 Azure Arc 启用 Kubernetes 群集（手动和大规模）
+- 从 Azure Arc 门户监视 Azure Defender 扩展及其预配状态
+- 请转到 Azure Arc 门户的新“安全性”页中，查看所报告的安全中心安全建议
+- 请转到 Azure Arc 门户的新“安全性”页中，查看所报告的 Azure Defender 标识安全威胁
+- 启用 Azure Arc 的 Kubernetes 群集可以集成到 Azure 安全中心平台和体验
+
+有关详细信息，[请参阅通过本地和多云 Kubernetes 群集使用 Azure Defender for Kubernetes](defender-for-kubernetes-azure-arc.md)。
+
+:::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="有关为已启用 Azure Arc 的 Kubernetes 群集部署 Azure Defender 扩展的 Azure 安全中心建议。" lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
+
+### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>与来宾配置相关的四个新建议（预览版）
+
+Azure 的[来宾配置扩展](../governance/policy/concepts/guest-configuration.md) 向安全中心报告，以帮助确保强化虚拟机的来宾内设置。 已启用 Arc 的服务器不需要该扩展，因为已连接 Arc 的计算机代理中包含该扩展。 扩展需要计算机上系统托管标识。
+
+我们已将四个新建议添加到安全中心，以便充分利用此扩展。
+
+- 这两个建议会提示安装该扩展及其所需的系统托管标识：
+    - **应在计算机上安装来宾配置扩展**
+    - **应使用系统分配的托管标识来部署虚拟机的来宾配置扩展**
+
+- 当扩展已安装并正在运行时，它将开始审核你的计算机，此时系统将提示你强化设置，例如配置操作系统和环境设置。 这两个建议将提示你按如下所述强化 Windows 和 Linux 计算机：
+    - **应在计算机上启用 Windows Defender 攻击防护**
+    - **对 Linux 虚拟机进行身份验证需要 SSH 密钥**
+
+详细[了解 Azure Policy 的来宾配置](../governance/policy/concepts/guest-configuration.md)。
+
+### <a name="cmk-recommendations-moved-to-best-practices-security-control"></a>CMK 建议移动到最佳做法安全控制
+
+每个组织的安全计划都包含数据加密要求。 默认情况下，通过服务托管密钥对 Azure 客户的数据进行静态加密。 但是，客户管理的密钥 (CMK) 通常需要满足法规符合性标准。 通过 CMK 能够使用自己创建并拥有的 [Azure Key Vault](../key-vault/general/overview.md) 密钥对数据进行加密。 你可以完全控制并负责关键生命周期，包括轮换和管理。
+
+Azure 安全中心的安全控制是相关安全建议的逻辑组，反映了你易受攻击的攻击面。 对于每个控制，可以看到为所有资源修正该控制中列出的所有建议后，安全评分可以增加的最高分数。 “实现安全最佳做法”这一安全控制得分为零。 因此，此控制中的建议不会影响安全评分。
+
+下面列出的建议将移到“实现安全最佳做法”这一安全控制，以更好地反应它们的可选性质。 这一移动确保了这些建议都处于最适当的控制之下，以满足其目标。
+
+- Azure Cosmos DB 帐户应使用客户管理的密钥来加密静态数据
+- Azure 机器学习工作区应使用客户管理的密钥 (CMK) 进行加密
+- 认知服务帐户应启用使用客户管理的密钥 (CMK) 进行数据加密
+- 容器注册表应使用客户管理的密钥 (CMK) 进行加密
+- SQL 托管实例应使用客户管理的密钥进行静态数据加密
+- SQL Server 应使用客户管理的密钥进行静态数据加密
+- 存储帐户应使用客户管理的密钥 (CMK) 进行加密
+
+请在[安全控件及其建议](secure-score-security-controls.md#security-controls-and-their-recommendations)中了解每个安全控件中的建议。
+
+
+### <a name="11-azure-defender-alerts-deprecated"></a>11 Azure Defender 警报已弃用
+
+下面列出的 11 个 Azure Defender 警报已弃用。
+
+- 新警报将取代下面两种警报并扩大覆盖范围：
+
+    | AlertType                | AlertDisplayName                                                         |
+    |--------------------------|--------------------------------------------------------------------------|
+    | ARM_MicroBurstDomainInfo | 预览版 - 检测到 MicroBurst 工具包“Get-AzureDomainInfo”函数运行 |
+    | ARM_MicroBurstRunbook    | 预览版 - 检测到 MicroBurst 工具包“Get-AzurePasswords”函数运行  |
+    |                          |                                                                          |
+
+- 下面 9 种警报与已弃用的 Azure Active Directory 标识保护连接器 (IPC) 相关：
+
+    | AlertType           | AlertDisplayName              |
+    |---------------------|-------------------------------|
+    | UnfamiliarLocation  | 不熟悉的登录属性 |
+    | AnonymousLogin      | 匿名 IP 地址          |
+    | InfectedDeviceLogin | 受恶意软件感染的 IP 地址     |
+    | ImpossibleTravel    | 异常位置登录               |
+    | MaliciousIP         | 恶意 IP 地址          |
+    | LeakedCredentials   | 凭据泄露            |
+    | PasswordSpray       | 密码喷射                |
+    | LeakedCredentials   | Azure AD 威胁智能  |
+    | AADAI               | Azure AD AI                   |
+    |                     |                               |
+ 
+    > [!TIP]
+    > 这 9 种 IPC 警报绝不是安全中心警报。 它们是 Azure Active Directory (AAD) 标识保护连接器 (IPC) 的一部分，此连接器将这些警警报发送给安全中心。 在过去 2 年中，只看到这些警报的客户就是在 2019 或更早版本中配置了导出（从连接器到 ASC）。 AAD IPC 继续将其显示其专属的警报系统中，并在 Azure Sentinel 中继续提供。 唯一的变化是它们不再出现在安全中心。
+
+### <a name="two-recommendations-from-apply-system-updates-security-control-were-deprecated"></a>“应用系统更新”安全控制中的两项建议已弃用 
+
+下面这两个建议已弃用，这些更改可能会对安全分数产生轻微影响：
+
+- 应重启计算机来应用系统更新
+- **应在计算机上安装监视代理**。 此建议仅与本地计算机相关，其中某些逻辑将转移到另一条建议，即“应在计算机上解决 Log Analytics 代理运行状况问题”
+
+建议检查连续导出和工作流自动化配置，以查看这些建议是否包括在其中。 此外，任何仪表板或其他可能使用它们的监视工具都应该相应地进行更新。
+
+有关这些建议的详细信息，请参阅[安全建议参考页面](recommendations-reference.md)。
 
 
 ## <a name="march-2021"></a>2021 年 3 月
@@ -489,7 +606,7 @@ Azure 安全基准是 Azure 安全中心的默认策略计划。
 Azure 安全中心为 SQL 服务器提供两个 Azure Defender 计划：
 
 - 适用于 Azure SQL 数据库服务器的 Azure Defender - 保护 Azure 原生 SQL 服务器 
-- 适用于计算机上的 SQL 服务器的 Azure Defender - 将相同的保护扩展到混合、多云和本地环境中的 SQL 服务器
+- 计算机上的 Azure Defender for SQL 服务器：将相同的保护扩展到混合、多云和本地环境中的 SQL 服务器
 
 根据此公告，适用于 SQL 的 Azure Defender 现在可以保护位于任何位置的数据库及其数据。
 
@@ -753,154 +870,3 @@ NIST SP 800-171 R2 标准现可以内置计划的形式提供，用于安全中�
 现在，你可以在 Azure 门户安全中心的“安全策略”页面中，查看订阅是否已分配到默认安全中心策略。
 
 :::image type="content" source="media/release-notes/policy-assignment-info-per-subscription.png" alt-text="Azure 安全中心的“策略管理”页显示默认策略分配":::
-
-## <a name="october-2020"></a>2020 年 10 月
-
-10月更新包括：
-- [本地和多云计算机的漏洞评估（预览版）](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview)
-- [添加了 Azure 防火墙建议（预览版）](#azure-firewall-recommendation-added-preview)
-- [“应在 Kubernetes 服务上定义已授权的 IP 范围”建议更新了快速修复](#authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix)
-- [法规合规性仪表板现在包含用于删除标准的选项](#regulatory-compliance-dashboard-now-includes-option-to-remove-standards)
-- [从 Azure Resource Graph (ARG) 中删除了 Microsoft.Security/securityStatuses 表](#microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg)
-
-### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview"></a>本地和多云计算机的漏洞评估（预览版）
-
-[适用于服务器的 Azure Defender](defender-for-servers-introduction.md) 的集成式漏洞评估扫描器（由 Qualys 提供支持）现可扫描启用了 Azure Arc 的服务器。
-
-当你在非 Azure 计算机上启用了 Azure Arc 后，安全中心将提供两种向计算机部署集成式漏洞扫描器的选项（手动和大规模）。
-
-此次更新后，你便可以发掘 Azure Defender 的强大功能，合并所有 Azure 和非 Azure 资产的漏洞管理计划。
-
-主要功能：
-
-- 监视 Azure Arc 计算机上的 VA（漏洞评估）扫描器预配状态
-- 将集成式 VA 代理预配到未受保护的 Windows 和 Linux Azure Arc 计算机（手动或大规模）
-- 从部署的代理接收和分析检测到的漏洞（手动和大规模）
-- 统一的 Azure VM 和 Azure Arc 计算机体验
-
-[详细了解如何将集成式漏洞扫描器部署到混合计算机](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines)。
-
-[详细了解启用了 Azure Arc 的服务器](../azure-arc/servers/index.yml)。
-
-
-### <a name="azure-firewall-recommendation-added-preview"></a>添加了 Azure 防火墙建议（预览版）
-
-添加了新的建议，即使用 Azure 防火墙保护所有虚拟网络。
-
-“虚拟网络应受 Azure 防火墙保护”建议使用 Azure 防火墙限制虚拟网络的访问权限和防止潜在威胁。
-
-了解有关 [Azure 防火墙](https://azure.microsoft.com/services/azure-firewall/)的详细信息。
-
-
-### <a name="authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix"></a>“应在 Kubernetes 服务上定义已授权的 IP 范围”建议更新了快速修复
-
-“应在 Kubernetes 服务上定义已授权的 IP 范围”建议现提供一个快速修复选项。
-
-要详细了解此建议以及其他各项安全中心建议，请参阅[安全建议 - 参考指南](recommendations-reference.md)。
-
-:::image type="content" source="./media/release-notes/authorized-ip-ranges-recommendation.png" alt-text="具有快速修复选项的“应在 Kubernetes 服务上定义已授权的 IP 范围”建议":::
-
-
-### <a name="regulatory-compliance-dashboard-now-includes-option-to-remove-standards"></a>法规合规性仪表板现在包含用于删除标准的选项
-
-安全中心的法规合规性仪表板基于你满足特定合规控制和要求的情况来提供合规态势的见解。
-
-该仪表板包含一组默认的法规标准。 如果提供的任何标准都与你的组织不相关，那么现在简单操作一下就可在订阅的 UI 中将它们删除。 只能在“订阅”级别删除标准，而不能从管理组范围删除。
-
-有关详细信息，请参阅[从仪表板中删除标准](update-regulatory-compliance-packages.md#remove-a-standard-from-your-dashboard)。
-
-
-### <a name="microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg"></a>从 Azure Resource Graph (ARG) 中删除了 Microsoft.Security/securityStatuses 表
-
-Azure Resource Graph 是 Azure 中的一项服务，旨在提供高效的资源浏览功能，它能够在一组给定的订阅中进行大规模查询，使你能够有效地管理环境。 
-
-对于 Azure 安全中心，你可以使用 ARG 和 [Kusto 查询语言 (KQL)](/azure/data-explorer/kusto/query/) 来查询各种安全状态数据。 例如：
-
-- 资产清单利用 (ARG)
-- 我们提供了一个示例 ARG 查询，说明如何[在未启用多重身份验证 (MFA) 的情况下标识帐户](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled)
-
-ARG 中提供了可以在查询中使用的数据表。
-
-:::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="Azure Resource Graph 资源管理器和可用的表":::
-
-> [!TIP]
-> ARG 文档列出了 [Azure Resource Graph 表和资源类型参考](../governance/resource-graph/reference/supported-tables-resources.md)中所有可用的表。
-
-在此次更新中，删除了 Microsoft.Security/securityStatuses。 securityStatuses API 仍可用。
-
-Microsoft.Security/Assessments 表可以使用数据替换。
-
-Microsoft.Security/securityStatuses 和 Microsoft.Security/Assessments 的主要区别在于，前者显示评估聚合，而后者会为每项评估保留一条记录。
-
-例如，Microsoft.Security/securityStatuses 将返回包含两个 policyAssessments 数组的结果：
-
-```
-{
-id: "/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet",
-name: "mico-rg-vnet",
-type: "Microsoft.Security/securityStatuses",
-properties:  {
-    policyAssessments: [
-        {assessmentKey: "e3deicce-f4dd-3b34-e496-8b5381bazd7e", category: "Networking", policyName: "Azure DDOS Protection Standard should be enabled",...},
-        {assessmentKey: "sefac66a-1ec5-b063-a824-eb28671dc527", category: "Compute", policyName: "",...}
-    ],
-    securitystateByCategory: [{category: "Networking", securityState: "None" }, {category: "Compute",...],
-    name: "GenericResourceHealthProperties",
-    type: "VirtualNetwork",
-    securitystate: "High"
-}
-```
-而 Microsoft.Security/Assessments 将为这样的策略评估各保留一条记录，如下所示：
-
-```
-{
-type: "Microsoft.Security/assessments",
-id:  "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourceGroups/mico-rg/providers/Microsoft. Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/assessments/e3delcce-f4dd-3b34-e496-8b5381ba2d70",
-name: "e3deicce-f4dd-3b34-e496-8b5381ba2d70",
-properties:  {
-    resourceDetails: {Source: "Azure", Id: "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet"...},
-    displayName: "Azure DDOS Protection Standard should be enabled",
-    status: (code: "NotApplicable", cause: "VnetHasNOAppGateways", description: "There are no Application Gateway resources attached to this Virtual Network"...}
-}
-
-{
-type: "Microsoft.Security/assessments",
-id:  "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourcegroups/mico-rg/providers/microsoft.network/virtualnetworks/mico-rg-vnet/providers/Microsoft.Security/assessments/80fac66a-1ec5-be63-a824-eb28671dc527",
-name: "8efac66a-1ec5-be63-a824-eb28671dc527",
-properties: {
-    resourceDetails: (Source: "Azure", Id: "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourcegroups/mico-rg/providers/microsoft.network/virtualnetworks/mico-rg-vnet"...),
-    displayName: "Audit diagnostic setting",
-    status:  {code: "Unhealthy"}
-}
-```
-
-**将使用 securityStatuses 的现有 ARG 查询转换为现在使用 Assessments 表的示例：**
-
-引用 SecurityStatuses 的查询：
-
-```kusto
-SecurityResources 
-| where type == 'microsoft.security/securitystatuses' and properties.type == 'virtualMachine'
-| where name in ({vmnames}) 
-| project name, resourceGroup, policyAssesments = properties.policyAssessments, resourceRegion = location, id, resourceDetails = properties.resourceDetails
-```
-
-Assessments 表的替换查询：
-
-```kusto
-securityresources
-| where type == "microsoft.security/assessments" and id contains "virtualMachine"
-| extend resourceName = extract(@"(?i)/([^/]*)/providers/Microsoft.Security/assessments", 1, id)
-| extend source = tostring(properties.resourceDetails.Source)
-| extend resourceId = trim(" ", tolower(tostring(case(source =~ "azure", properties.resourceDetails.Id,
-source =~ "aws", properties.additionalData.AzureResourceId,
-source =~ "gcp", properties.additionalData.AzureResourceId,
-extract("^(.+)/providers/Microsoft.Security/assessments/.+$",1,id)))))
-| extend resourceGroup = tolower(tostring(split(resourceId, "/")[4]))
-| where resourceName in ({vmnames}) 
-| project resourceName, resourceGroup, resourceRegion = location, id, resourceDetails = properties.additionalData
-```
-
-若要了解详细信息，请参阅下列链接：
-- [如何使用 Azure Resource Graph 浏览器创建查询](../governance/resource-graph/first-query-portal.md)
-- [Kusto 查询语言 (KQL)](/azure/data-explorer/kusto/query/)

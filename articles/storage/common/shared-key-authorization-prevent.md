@@ -10,10 +10,10 @@ ms.date: 03/11/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.openlocfilehash: b7290abe102d22bb87c87c3c9d13ee99c127b942
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103199917"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>阻止对 Azure 存储帐户进行共享密钥授权（预览）
@@ -231,7 +231,7 @@ resources
 | Azure IoT 中心 | 支持。 有关详细信息，请参阅 [IoT 中心对虚拟网络的支持](../../iot-hub/virtual-network-support.md)。 |
 | Azure Cloud Shell | Azure Cloud Shell 是 Azure 门户中的集成式 shell。 Azure Cloud Shell 在存储帐户中的 Azure 文件共享内持久存放文件。 如果禁止对该存储帐户使用共享密钥授权，则这些文件将不可访问。 有关详细信息，请参阅[连接 Microsoft Azure 文件存储](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage)。 <br /><br /> 若要在 Azure Cloud Shell 中运行命令以管理禁止进行共享密钥访问的存储帐户，请先确保已通过 Azure RBAC 为你授予了对这些帐户的必要权限。 有关详细信息，请参阅[什么是 Azure 基于角色的访问控制 (Azure RBAC)？](../../role-based-access-control/overview.md)。 |
 
-## <a name="transition-azure-files-and-table-storage-workloads"></a>转移 Azure 文件存储和表存储工作负载
+## <a name="transition-azure-files-and-table-storage-workloads"></a>转移 Azure 文件和表存储工作负载
 
 Azure 存储仅支持针对 Blob 和队列存储请求的 Azure AD 授权。 如果你不允许对存储帐户使用共享密钥授权，则使用共享密钥授权的 Azure 文件存储或表存储的请求将失败。 由于 Azure 门户始终使用共享密钥授权来访问文件和表数据，因此，如果你不允许对存储帐户使用共享密钥进行授权，将无法访问 Azure 门户中的文件或表数据。
 

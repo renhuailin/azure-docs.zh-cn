@@ -11,12 +11,12 @@ ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 2966b685e1904102467bf16994ea781556544047
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 0bb17ded6822c477fe2107c66711af5e2dc384d3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102519191"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105107833"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>利用 Triton 推理服务器实现的高性能服务（预览） 
 
@@ -31,6 +31,9 @@ Triton 是针对推理进行了优化的框架。 它提供更好的 GPU 利用�
 
 > [!TIP]
 > 本文档中的代码片段用于说明目的，可能不会显示完整的解决方案。 有关工作示例代码，请参阅 [Azure 机器学习中 Triton 的端到端示例](https://aka.ms/triton-aml-sample)。
+
+> [!NOTE]
+> [NVIDIA Triton 推理服务器](https://aka.ms/nvidia-triton-docs)是 Azure 机器学习中集成的开源第三方软件。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -97,7 +100,7 @@ models
         - model_1
             - model_version
                 - model_file
-                - config_file
+            - config_file
         - model_2
             ...
 ```
@@ -114,6 +117,11 @@ az ml model register -n my_triton_model -p models --model-framework=Multi
 ```
 
 有关 `az ml model register` 的详细信息，请参阅[参考文档](/cli/azure/ext/azure-cli-ml/ml/model)。
+
+在 Azure 机器学习中注册模型时，`--model-path  -p` 参数的值必须为 Triton 的父文件夹的名称。  
+在以上示例中，`--model-path` 是“模型”。
+
+在此示例中，`--name  -n` 参数的值“my_triton_model”将作为 Azure 机器学习工作区已知的模型名称。 
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -364,13 +372,17 @@ local_service.delete()
 
 
 ---
+## <a name="troubleshoot"></a>疑难解答
+
+* [对失败的部署进行故障排除](how-to-troubleshoot-deployment.md)，了解如何排查和解决在部署模型时可能遇到的常见错误。
+
+* 如果部署日志显示“TritonServer 启动失败”，请参阅 [Nvidia 的开源文档](https://github.com/triton-inference-server/server)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [请参阅 Azure 机器学习中 Triton 的端到端示例](https://aka.ms/aml-triton-sample)
 * 查看 [Triton 客户端示例](https://aka.ms/nvidia-client-examples)
 * 阅读 [Triton 推理服务器文档](https://aka.ms/nvidia-triton-docs)
-* [排查部署失败问题](how-to-troubleshoot-deployment.md)
 * [部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)
 * [更新 Web 服务](how-to-deploy-update-web-service.md)
 * [为生产环境中的模型收集数据](how-to-enable-data-collection.md)

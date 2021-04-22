@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: b935b8a467097eb60c095c5d317f13693ef68b62
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 0ae059054c68da662e05342525987f6925184906
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284740"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073357"
 ---
 <a name="HOLTop"></a>
 
@@ -182,9 +182,10 @@ go run sample-app.go
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [OCR API 参考 (Go)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision)
+本快速入门了解了安装 OCR 客户端库和使用读取 API 的方法。 接下来，详细了解读取 API 功能。
 
+> [!div class="nextstepaction"]
+>[调用读取 API](../../Vision-API-How-to-Topics/call-read-api.md)
 
 * [OCR 概述](../../overview-ocr.md)
 * 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go) 上找到此示例的源代码。

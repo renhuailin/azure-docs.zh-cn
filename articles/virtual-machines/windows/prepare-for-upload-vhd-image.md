@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 12ef839cbbbc69230b314bf7c56a63f57a0d6b20
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 573f97c7f592186173b13ea592d151ee291b8249
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102556258"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967959"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 
@@ -113,6 +113,10 @@ Windows Resource Protection did not find any integrity violations.
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name TEMP -Value "%SystemRoot%\TEMP" -Type ExpandString -Force
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name TMP -Value "%SystemRoot%\TEMP" -Type ExpandString -Force
    ```
+1. 对于具有旧版操作系统（Windows Server 2012 R2 或 Windows 8.1 及更低版本）的 VM，请确保安装最新的 Hyper-V 集成组件服务。 有关详细信息，请参阅 [Windows VM 的 Hyper-V 集成组件更新](https://support.microsoft.com/topic/hyper-v-integration-components-update-for-windows-virtual-machines-8a74ffad-576e-d5a0-5a2f-d6fb2594f990)。
+
+> [!NOTE]
+> 在要为 VM 设置本地 VMware 服务器与 Azure 之间灾难恢复的解决方案的情况下，将无法使用 Hyper-V 集成组件服务。 在这种情况下，请联系 VMware 支持部门，将 VM 迁移到 Azure 并使其也驻留在 VMware 服务器中。
 
 ## <a name="check-the-windows-services"></a>查看 Windows 服务
 
@@ -266,6 +270,8 @@ Get-Service -Name Netlogon, Netman, TermService |
 1. 设置引导配置数据 (BCD) 设置。
 
    ```powershell
+   cmd
+
    bcdedit.exe /set "{bootmgr}" integrityservices enable
    bcdedit.exe /set "{default}" device partition=C:
    bcdedit.exe /set "{default}" integrityservices enable
@@ -279,6 +285,8 @@ Get-Service -Name Netlogon, Netman, TermService |
    bcdedit.exe /set "{bootmgr}" bootems yes
    bcdedit.exe /ems "{current}" ON
    bcdedit.exe /emssettings EMSPORT:1 EMSBAUDRATE:115200
+
+   exit
    ```
 
 1. 转储日志可帮助排查 Windows 崩溃问题。 启用转储日志收集：
@@ -351,6 +359,10 @@ Get-Service -Name Netlogon, Netman, TermService |
 1. 卸载与物理组件相关的任何其他第三方软件或驱动程序，或卸载任何其他虚拟化技术。
 
 ### <a name="install-windows-updates"></a>安装 Windows 更新
+
+> [!NOTE]
+> 为避免在 VM 预配期间发生意外重启，建议完成所有 Windows 更新安装并确保没有待处理的重启。 实现此操作的一种方法是在执行迁移到 Azure 之前，安装所有 Windows 更新并重启 VM。 </br><br>
+>如果还需要对 OS (sysprep) 执行通用化操作，则需要先更新 Windows 并重启 VM，然后再运行 Sysprep 命令。
 
 理想情况下，应将计算机更新为补丁级别；如果无法实现，请确保已安装下列更新。 若要获取最新的更新，请查看 Windows 更新历史记录页：[Windows 10 和 Windows Server 2019](https://support.microsoft.com/help/4000825)、[Windows 8.1 和 Windows Server 2012 R2](https://support.microsoft.com/help/4009470)，以及 [Windows 7 SP1 和 Windows Server 2008 R2 SP1](https://support.microsoft.com/help/4009469)。
 
@@ -522,4 +534,4 @@ Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
 ## <a name="next-steps"></a>后续步骤
 
 - [将 Windows VM 映像上传到 Azure 以进行 Resource Manager 部署](upload-generalized-managed.md)
-- [排查 Azure Windows VM 激活问题](../troubleshooting/troubleshoot-activation-problems.md)
+- [排查 Azure Windows VM 激活问题](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)

@@ -16,10 +16,10 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: 12ab5a9598cc0222f5a3e64985be2e2ea9e7e2fd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96014850"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>更换 StorSimple 8000 系列设备上的硬件组件
@@ -37,16 +37,16 @@ ms.locfileid: "96014850"
 | 图标 | 文本 | 其他信息 |
 |:--- |:--- |:--- |
 | ![警告图标](./media/storsimple-hardware-component-replacement/Warning.png) |**危险!** |指示如果未能避免危险情况，将导致死亡或重伤。 此警示语仅限于最为极端的情况。 |
-| ![警告图标](./media/storsimple-hardware-component-replacement/Warning.png) |**出现!** |指示如果未能避免危险情况，可能导致死亡或重伤。 |
-| ![提醒图标](./media/storsimple-hardware-component-replacement/Caution.png) |**警告!** |指示如果未能避免危险情况，可能导致轻伤或重伤。 |
-| ![注意图标](./media/storsimple-hardware-component-replacement/NoticeIcon.png) |**通知** |指示应该给予重视但不涉及危险情况的信息。 |
+| ![警告图标](./media/storsimple-hardware-component-replacement/Warning.png) |**警告!** |指示如果未能避免危险情况，可能导致死亡或重伤。 |
+| ![提醒图标](./media/storsimple-hardware-component-replacement/Caution.png) |**小心!** |指示如果未能避免危险情况，可能导致轻伤或重伤。 |
+| ![注意图标](./media/storsimple-hardware-component-replacement/NoticeIcon.png) |**注意:** |指示应该给予重视但不涉及危险情况的信息。 |
 | ![电击图标](./media/storsimple-hardware-component-replacement/Electric.png) |**点击危险** |指示高压电。 |
 | ![重物图标](./media/storsimple-hardware-component-replacement/Weight.png) |**重物** | |
 | ![无用户可维修部件图标](./media/storsimple-hardware-component-replacement/NoUserServiceableParts.png) |**无用户可维修部件** |除非经过适当的培训，否则请勿访问。 |
 | ![阅读说明图标](./media/storsimple-hardware-component-replacement/ReadInstructions.png) |**先阅读所有说明** | |
 | ![倾覆风险图标](./media/storsimple-hardware-component-replacement/TipHazard.png) |**倾覆风险** | |
 
-### <a name="before-you-begin"></a>准备阶段
+### <a name="before-you-begin"></a>开始之前
 
 自行熟悉本教程中使用的设备和安全图标的安全信息。 如需完整的信息，请转到[安全地安装和运行 StorSimple 设备](storsimple-8000-safety.md)。 在接触 StorSimple 设备之前，请务必查看[安全注意事项](storsimple-8000-safety.md#handling-precautions)。
 
@@ -90,7 +90,7 @@ StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模
 
 以下正面图和背面图突出显示了设备上的插件模块。 在需要更换插件模块时，这些图可用于确定各种插件模块的位置。 EBOD 机箱和主机箱的正面图显示磁盘驱动器，背面图显示插件模块。
 
-![带有磁盘驱动器的设备的前面板](./media/storsimple-hardware-component-replacement/IC741028.png)
+![带有磁盘驱动器的设备前面板](./media/storsimple-hardware-component-replacement/IC741028.png)
 
 **图 1** 设备的前面
 

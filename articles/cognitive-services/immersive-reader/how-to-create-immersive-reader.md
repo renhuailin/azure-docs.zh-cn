@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: how-to
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: d7a8a598ab2d0c873cf07510cf40a08c22c0f1d4
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 369905ed5ee0ce9a93ec2be879b5e40114b0a380
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102608591"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048657"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>创建沉浸式阅读器资源并配置 Azure Active Directory 身份验证
 
@@ -176,9 +176,9 @@ ms.locfileid: "102608591"
     | ResourceGroupName |资源是在订阅中的资源组中创建的。 提供现有资源组的名称。 如果资源组尚不存在，则将创建一个具有该名称的新资源组。 |
     | ResourceGroupLocation |如果资源组尚不存在，则需要提供一个用于创建组的位置。 要查找位置列表，请运行 `az account list-locations`。 使用返回结果的 name 属性（无空格）。 如果资源组已存在，则可以选择此参数。 |
     | AADAppDisplayName |Azure Active Directory 应用程序显示名称。 如果未找到现有的 Azure AD 应用程序，则将创建一个具有此名称的新应用程序。 如果 Azure AD 应用程序已存在，则可以选择此参数。 |
-    | AADAppIdentifierUri |Azure AD 应用的 URI。 如果未找到现有的 Azure AD 应用，则将创建一个具有此 URI 的新应用。 例如 `https://immersivereaderaad-mycompany`。 |
+    | AADAppIdentifierUri |Azure AD 应用的 URI。 如果未找到现有的 Azure AD 应用，则将创建一个具有此 URI 的新应用。 例如，`https://immersivereaderaad-mycompany`。 |
     | AADAppClientSecret |创建的密码，稍后将在获取启动沉浸式阅读器的令牌时用于进行身份验证。 该密码的长度必须至少为 16 个字符，至少包含 1 个特殊字符和 1 个数字字符。 若要在创建此资源之后管理 Azure AD 应用程序客户密码，请访问 https://portal.azure.com 并转到“主页”->“Azure Active Directory”->“应用注册”->“`[AADAppDisplayName]`”->“证书和密码边栏选项卡”->“客户端密码部分（如下面的‘管理 Azure AD 应用程序密码’屏幕截图中所示）”。 |
-    | AADAppClientSecretExpiration |`[AADAppClientSecret]` 将过期的日期或日期时间（例如：“2020-12-31T11:59:59+00:00”或“2020-12-31”）。 |
+    | AADAppClientSecretExpiration |`[AADAppClientSecret]` 的有效期截止日期或日期/时间（例如“2020-12-31T11:59:59+00:00”或“2020-12-31”）。 |
 
     管理 Azure AD 应用程序密码
 
@@ -198,7 +198,7 @@ ms.locfileid: "102608591"
 ## <a name="next-steps"></a>后续步骤
 
 * 查看 [Node.js 快速入门](./quickstarts/client-libraries.md?pivots=programming-language-nodejs)，了解通过 Node.js 使用沉浸式阅读器 SDK 还可以做什么
-* 查看 [Android 教程](./tutorial-android.md)，了解通过 Java 或 Kotlin for Android 使用沉浸式阅读器 SDK 可执行的其他操作
-* 查看 [iOS 教程](./tutorial-ios.md)，了解通过 Swift for iOS 使用沉浸式阅读器 SDK 可执行的其他操作
-* 查看 [Python 教程](./tutorial-python.md)，了解通过 Python 使用沉浸式阅读器 SDK 还可以做什么
+* 查看 [Android 教程](./how-to-launch-immersive-reader.md)，了解通过 Java 或 Kotlin for Android 使用沉浸式阅读器 SDK 可执行的其他操作
+* 查看 [iOS 教程](./how-to-launch-immersive-reader.md)，了解通过 Swift for iOS 使用沉浸式阅读器 SDK 可执行的其他操作
+* 查看 [Python 教程](./how-to-launch-immersive-reader.md)，了解通过 Python 使用沉浸式阅读器 SDK 还可以做什么
 * 浏览[沉浸式阅读器 SDK ](https://github.com/microsoft/immersive-reader-sdk)和[沉浸式阅读器 SDK 参考](./reference.md)

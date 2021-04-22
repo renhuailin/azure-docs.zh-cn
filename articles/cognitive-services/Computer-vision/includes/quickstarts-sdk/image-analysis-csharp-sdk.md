@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 03/29/2021
 ms.author: pafarley
-ms.openlocfilehash: fbdd72480fd3db8cfafd0803a623c5cfe4279288
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 407ef167ca05f08d349a017c60164e2fe67977a6
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106287382"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107327013"
 ---
 <a name="HOLTop"></a>
 
@@ -40,7 +40,7 @@ ms.locfileid: "106287382"
 
 ### <a name="install-the-client-library"></a>安装客户端库 
 
-创建新项目后，右键单击“解决方案资源管理器”中的项目解决方案，然后选择“管理 NuGet 包”，以安装客户端库 。 在打开的包管理器中，选择“浏览”，选中“包括预发行版”并搜索 `Microsoft.Azure.CognitiveServices.Vision.ComputerVision`。 选择版本 `6.0.0-preview.1`，然后选择“安装”。 
+创建新项目后，右键单击“解决方案资源管理器”中的项目解决方案，然后选择“管理 NuGet 包”，以安装客户端库 。 在打开的包管理器中，选择“浏览”，选中“包括预发行版”并搜索 `Microsoft.Azure.CognitiveServices.Vision.ComputerVision`。 选择版本 `7.0.0`，然后选择“安装”。 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
@@ -71,7 +71,7 @@ Build succeeded.
 在应用程序目录中，使用以下命令安装适用于 .NET 的计算机视觉客户端库：
 
 ```console
-dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 6.0.0
+dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 7.0.0
 ```
 
 ---
@@ -260,8 +260,11 @@ dotnet run
 
 ## <a name="next-steps"></a>后续步骤
 
+在本快速入门中了解了安装图像分析客户端库和进行基本的图像分析调用的方法。 接下来，详细了解分析 API 功能。
+
+
 > [!div class="nextstepaction"]
->[图像分析 API 参考 (.NET)](/dotnet/api/overview/azure/cognitiveservices/client/computervision)
+>[调用分析 API](../../Vision-API-How-to-Topics/HowToCallVisionAPI.md)
 
 * [图像分析概述](../../overview-image-analysis.md)
 * 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) 上找到此示例的源代码。

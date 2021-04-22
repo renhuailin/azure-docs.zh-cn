@@ -4,10 +4,10 @@ description: 了解 Azure Service Fabric 中的群集版本，包括指向 Servi
 ms.topic: troubleshooting
 ms.date: 06/15/2020
 ms.openlocfilehash: 3e859a04ffb0b885aab0f31e83afad8380cbcc95
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103010195"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>升级 Azure Service Fabric 群集版本
@@ -65,7 +65,7 @@ ms.locfileid: "103010195"
 
  - 对于运行的 Service Fabric 版本高于6.3 的群集，如果使用了[容器的开放网络功能](./service-fabric-networking-modes.md#set-up-open-networking-mode)，则该群集可能会变得不可用并停止运行，这可能会导致工作负荷的服务中断。
  
- -   对于运行的 [Windows 版本介于 7.0.457 到 7.0.466（包括这两个版本）之间](#supported-version-names)且 Windows OS 已启用 Windows 容器功能的群集。**注意：Linux 版本 7.0.457、7.0.464 和 7.0.465 不受影响**。
+ -   对于运行的 [Windows 版本介于 7.0.457 到 7.0.466（包括这两个版本）之间](#supported-version-names)且 Windows OS 已启用 Windows 容器功能的群集（注意：Linux 版本 7.0.457、7.0.464 和 7.0.465 不受影响）。
     - 影响是：群集会停止运行，这可能会导致工作负荷的服务中断。
     
 #### <a name="required-action"></a>必需的操作
@@ -76,7 +76,7 @@ ms.locfileid: "103010195"
 
 > [!Note]
 > Azure Service Fabric 群集在版本 6.5 上运行，必须在基础结构更改之前同时执行多个升级，才能避免群集功能丢失。 
->   -   1. 升级到 7.0.466。 **运行的 Windows OS 启用了 Windows 容器功能的群集不能在这个中间版本上。他们需要执行下面的后续步骤 (ii) 例如升级到更安全且兼容的版本，以避免服务中断**
+>   -   1. 升级到 7.0.466。 运行的 Windows OS 启用了 Windows 容器功能的群集不能在此中间版本上运行。它们需要执行下面的后续步骤 (ii)，即升级到更安全且合规的版本，以避免服务中断
 >   -   2. 升级到 7.0* 版本中的最新兼容版本 (7.0.478) 或下面列出的任何更高版本。
 
 

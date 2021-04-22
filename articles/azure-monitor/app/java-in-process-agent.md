@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: b695df29b7a4704ee9e4e25e402fa0de8f2b7685
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: dc6eaaec334e7373f1a673bd1513ef05b761fee6
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103008206"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450015"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java 无代码应用程序监视 Azure Monitor Application Insights
 
@@ -34,11 +34,11 @@ Java 无代码应用程序监视只是为了简化操作 - 无需更改代码，
 >
 > 请仔细检查所有的[配置选项](./java-standalone-config.md)，因为除了文件名本身全部变为小写外，json 结构也已完全改变。
 
-下载 [applicationinsights-agent-3.0.2.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.2/applicationinsights-agent-3.0.2.jar)
+下载 [applicationinsights-agent-3.0.3.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.3/applicationinsights-agent-3.0.3.jar)
 
 **2.将 JVM 指向该代理**
 
-将 `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` 添加到应用程序的 JVM 参数
+将 `-javaagent:path/to/applicationinsights-agent-3.0.3.jar` 添加到应用程序的 JVM 参数
 
 典型的 JVM 参数包括 `-Xmx512m` 和 `-XX:+UseG1GC`。 如果你知道在何处添加这些参数，则你已知道要将此项添加到何处。
 
@@ -54,7 +54,7 @@ Java 无代码应用程序监视只是为了简化操作 - 无需更改代码，
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 ```
 
-另一种方法是创建一个名为 `applicationinsights.json` 的配置文件，并将其置于 `applicationinsights-agent-3.0.2.jar` 所在的目录中，该文件包含以下内容：
+另一种方法是创建一个名为 `applicationinsights.json` 的配置文件，并将其置于 `applicationinsights-agent-3.0.3.jar` 所在的目录中，该文件包含以下内容：
 
 ```json
 {
@@ -129,6 +129,10 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 
 * Micrometer（包括 Spring Boot Actuator 指标）
 * JMX 指标
+
+### <a name="azure-sdks"></a>Azure SDK
+
+* 此功能处于预览阶段，请参阅有关如何启用该功能的[配置选项](./java-standalone-config.md#auto-collected-azure-sdk-telemetry)。
 
 ## <a name="send-custom-telemetry-from-your-application"></a>从应用程序发送自定义遥测
 
@@ -328,7 +332,7 @@ requestTelemetry.setName("myname");
 ### <a name="get-the-request-telemetry-id-and-the-operation-id-using-the-2x-sdk"></a>使用 2.x SDK 获取请求遥测 ID 和操作 ID
 
 > [!NOTE]
-> 此功能仅在 3.0.3-BETA 及更高版本中提供
+> 此功能仅在 3.0.3 及更高版本中提供
 
 将 `applicationinsights-web-2.6.2.jar` 添加到应用程序（Application Insights Java 3.0 支持所有 2.x 版本，但如果你可以选择，最好使用最新版本）：
 

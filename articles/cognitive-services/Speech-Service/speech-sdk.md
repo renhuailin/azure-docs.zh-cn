@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 4c8ee3a65c26d1eb3acb7b9f4c18f11e870e4b82
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 65e55d8e9d81f4045dde29c943f034ed0a24bf4c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102434430"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608079"
 ---
 # <a name="about-the-speech-sdk"></a>关于语音 SDK
 
@@ -67,17 +67,17 @@ ms.locfileid: "102434430"
   - Java/Windows 和 Linux 和 macOS 和 Android（语音设备 SDK）
   - Go
 
-#### <a name="keyword-spotting"></a>关键字辨识
+#### <a name="keyword-recognition"></a>关键字识别
 
-语音 SDK 支持[关键字辨识](./custom-keyword-basics.md)的概念。 “关键字辨识”是在语音中识别关键字的操作，后跟一个在听到该关键字时执行的操作。 例如，“你好，Cortana”会激活 Cortana 助理。
+语音 SDK 支持[关键字识别](./custom-keyword-basics.md)的概念。 “关键字识别”是在语音中识别关键字的操作，后跟一个在听到该关键字时执行的操作。 例如，“你好，Cortana”会激活 Cortana 助理。
 
-**关键字辨识 (KWS)** 在以下平台上可用：
+“关键字识别”在以下平台上可用：
 
   - C++/Windows 和 Linux
   - C#/Windows 和 Linux
   - Python/Windows 和 Linux
   - Java/Windows 和 Linux 和 Android（语音设备 SDK）
-  - 关键字辨识 (KWS) 功能可能适用于任何麦克风类型，不过，官方的 KWS 支持目前仅限于 Azure Kinect DK 硬件或语音设备 SDK 中的麦克风阵列
+  - 关键字识别功能可能适用于任何麦克风类型，不过，官方关键字识别支持目前仅限于 Azure Kinect DK 硬件或语音设备 SDK 中的麦克风阵列
 
 ### <a name="meeting-scenarios"></a>会议场景
 
@@ -114,7 +114,7 @@ ms.locfileid: "102434430"
 
 ### <a name="codec-compressed-audio-input"></a>编解码器压缩的音频输入
 
-一些语音 SDK 编程语言支持编解码器压缩的音频输入流。 有关详细信息，请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">使用压缩的音频输入格式 </a>。
+一些语音 SDK 编程语言支持编解码器压缩的音频输入流。 有关详细信息，请参阅<a href="/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">使用压缩的音频输入格式 </a>。
 
 可在以下平台上使用编解码器压缩的音频输入：
 

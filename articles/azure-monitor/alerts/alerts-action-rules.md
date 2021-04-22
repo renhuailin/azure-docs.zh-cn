@@ -3,16 +3,16 @@ title: Azure Monitor 警报的操作规则
 description: 了解 Azure Monitor 中的操作规则是什么，以及如何配置和管理操作规则。
 ms.topic: conceptual
 ms.date: 03/15/2021
-ms.openlocfilehash: f70d798270ad82193f7ae5935d34f8f418d35e05
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 12e7cf8e72c5423b4a2edd6ea2a0f4537e328b08
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103471674"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105036775"
 ---
 # <a name="action-rules-preview"></a>操作规则（预览版）
 
-操作规则可帮助你在任何 Azure 资源管理器范围（Azure 订阅、资源组或目标资源）定义或消除操作。 它们包含各种筛选器，可帮助你将应用范围缩减到要处理的特定警报实例子集。
+借助操作规则，可在触发的警报上添加或禁止显示操作组。 单个规则可覆盖目标资源的不同范围，例如特定资源（如特定虚拟机）上的任何警报或订阅中任何资源上触发的任何警报。 你可选择添加各种筛选器来控制规则涵盖的具体警报，并为其定义计划，例如仅在营业时间之外或计划内维护时段内有效。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4rBZ2]
 
@@ -31,7 +31,7 @@ ms.locfileid: "103471674"
 操作规则可以帮助简化此过程。 通过大规模定义操作，针对配置范围内生成的任何警报触发操作组。 在前面的示例中，该团队可以针对 **ContosoRG** 定义一个操作规则，用于针对其中生成的所有警报触发同一个操作组。
 
 > [!NOTE]
-> 操作规则目前不适用于 Azure 服务运行状况警报。
+> 操作规则不适用于 Azure 服务运行状况警报。
 
 ## <a name="configuring-an-action-rule"></a>配置操作规则
 
@@ -308,7 +308,7 @@ az monitor action-rule delete --resource-group MyResourceGroupName --name MyActi
 
 在同一范围内，消除操作始终优先。
 
-### <a name="what-happens-if-i-have-a-resource-thats-monitored-in-two-separate-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>如果在两个不同的操作规则中监视资源，会发生什么情况？ 我会收到一条还是两条通知？ 以此方案中的 **VM2** 为例：
+### <a name="what-happens-if-i-have-a-resource-that-is-covered-by-two-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>如果有一个资源被两个操作规则覆盖，会发生什么情况？ 我会收到一条还是两条通知？ 以此方案中的 **VM2** 为例：
 
    `action rule AR1 defined for VM1 and VM2 with action group AG1`
 

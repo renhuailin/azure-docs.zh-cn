@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 88f17ace7142fe1c5ff6d56226a935b229530147
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: cb4679152740b73d6bb9cf7288fcaa811b6d6141
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284742"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073559"
 ---
 <a name="HOLTop"></a>
 
@@ -172,9 +172,10 @@ node index.js
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
->[OCR API 参考 (Node.js)](/javascript/api/@azure/cognitiveservices-computervision/)
+本快速入门了解了安装 OCR 客户端库和使用读取 API 的方法。 接下来，详细了解读取 API 功能。
 
+> [!div class="nextstepaction"]
+>[调用读取 API](../../Vision-API-How-to-Topics/call-read-api.md)
 
 * [OCR 概述](../../overview-ocr.md)
 * 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上找到此示例的源代码。

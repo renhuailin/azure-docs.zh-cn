@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/27/2020
 ms.author: jingwang
 ms.openlocfilehash: a10403b5f26b551458a9e20330bc817512f707de
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100386385"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Azure 数据工厂中的 Parquet 格式
@@ -18,17 +18,17 @@ ms.locfileid: "100386385"
 
 如果要 **分析 Parquet 文件或以 Parquet 格式写入数据**，请遵循此文章中的说明。 
 
-以下连接器支持 Parquet 格式： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure 文件存储](connector-azure-file-storage.md)、 [文件系统](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud Storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和 [SFTP](connector-sftp.md)。
+以下连接器支持 Parquet 格式：[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、[FTP](connector-ftp.md)、[Google 云存储](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md) 和 [SFTP](connector-sftp.md)。
 
 ## <a name="dataset-properties"></a>数据集属性
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供了 Parquet 数据集支持的属性列表。
 
-| 属性         | 说明                                                  | 必须 |
+| 属性         | 说明                                                  | 必需 |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 数据集的 type 属性必须设置为 **Parquet**。 | 是      |
 | location         | 文件的位置设置。 每个基于文件的连接器在 `location` 下都有其自己的位置类型和支持的属性。 **请在连接器文章 -> 数据集属性部分中查看详细信息**。 | 是      |
-| compressionCodec | 写入到 Parquet 文件时要使用的压缩编解码器。 从 Parquet 文件中读取时，数据工厂会基于文件元数据自动确定压缩编解码器。<br>支持的类型为 "**none**"、"**gzip**"、"**snappy**" (默认) 和 "**lzo**"。 请注意，当前复制活动在读取/写入 Parquet 文件时不支持 LZO。 | 否       |
+| compressionCodec | 写入到 Parquet 文件时要使用的压缩编解码器。 从 Parquet 文件中读取时，数据工厂会基于文件元数据自动确定压缩编解码器。<br>支持的类型为“none”、“gzip”、“snappy”（默认值）和“lzo”   。 请注意，当前复制活动在读取/写入 Parquet 文件时不支持 LZO。 | 否       |
 
 > [!NOTE]
 > Parquet 文件不支持列名称中包含空格。
@@ -65,7 +65,7 @@ ms.locfileid: "100386385"
 
 复制活动的 ***\*source\**** 部分支持以下属性。
 
-| 属性      | 说明                                                  | 必须 |
+| 属性      | 说明                                                  | 必需 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为 **ParquetSource**。 | 是      |
 | storeSettings | 有关如何从数据存储读取数据的一组属性。 每个基于文件的连接器在 `storeSettings` 下都有其自己支持的读取设置。 **请在连接器文章 -> 复制活动属性部分中查看详细信息**。 | 否       |
@@ -74,7 +74,7 @@ ms.locfileid: "100386385"
 
 复制活动的 ***\*sink\**** 部分支持以下属性。
 
-| 属性      | 说明                                                  | 必须 |
+| 属性      | 说明                                                  | 必需 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动接收器的 type 属性必须设置为“ParquetSink”。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的“Parquet 写入设置”表。 |    否      |
@@ -90,7 +90,7 @@ ms.locfileid: "100386385"
 
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
-在映射数据流时，可以在以下数据存储中读取和写入 parquet 格式： [Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。
+在映射数据流中，可以在以下数据存储中读取和写入 parquet 格式：[Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) 和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。
 
 ### <a name="source-properties"></a>源属性
 
@@ -99,13 +99,13 @@ ms.locfileid: "100386385"
 | 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `parquet` | 是 | `parquet` | format |
-| 通配符路径 | 所有匹配通配符路径的文件都会得到处理。 重写数据集中设置的文件夹和文件路径。 | 否 | String[] | wildcardPaths |
+| 通配符路径 | 将处理与通配符路径匹配的所有文件。 重写数据集中设置的文件夹和文件路径。 | 否 | String[] | wildcardPaths |
 | 分区根路径 | 对于已分区的文件数据，可以输入分区根路径，以便将已分区的文件夹读取为列 | 否 | 字符串 | partitionRootPath |
 | 文件列表 | 源是否指向某个列出待处理文件的文本文件 | 否 | `true` 或 `false` | fileList |
 | 用于存储文件名的列 | 使用源文件名称和路径创建新列 | 否 | 字符串 | rowUrlColumn |
-| 完成后 | 在处理后删除或移动文件。 文件路径从容器根开始 | 否 | 删除：`true` 或 `false` <br> 移动：`[<from>, <to>]` | purgeFiles <br> moveFiles |
-| 按上次修改时间筛选 | 选择根据上次更改文件的时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br> modifiedBefore |
-| 允许找不到文件 | 如果为 true，在找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
+| 完成后 | 在处理后删除或移动文件。 文件路径从容器根开始 | 否 | 删除：`true` 或 `false` <br> Move：`[<from>, <to>]` | purgeFiles <br> moveFiles |
+| 按上次修改时间筛选 | 选择根据上次更改时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br> modifiedBefore |
+| 允许找不到文件 | 如果为 true，则找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
 
 ### <a name="source-example"></a>源示例
 

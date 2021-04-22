@@ -1,28 +1,28 @@
 ---
 title: 升级 Azure 备份代理
-description: 此信息说明了为何应升级 Azure 备份代理，以及下载升级的位置。
+description: 此信息说明为什么应升级 Azure 备份代理，以及应在何处下载升级。
 services: backup
 cloud: ''
 suite: ''
-author: dcurwin
+author: v-amallick
 manager: carmonm
 ms.service: backup
 ms.tgt_pltfrm: <optional>
 ms.devlang: <optional>
 ms.topic: article
 ms.date: 03/03/2020
-ms.author: dacurwin
-ms.openlocfilehash: bd298f758d6109b908db01dd2ae3b97e5e2f714a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.author: v-amallick
+ms.openlocfilehash: bf77103db93652e1df837f6b1032b5e53bd41e1f
+ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78673199"
+ms.lasthandoff: 04/04/2021
+ms.locfileid: "106294098"
 ---
 ## <a name="upgrade-the-mars-agent"></a>升级 MARS 代理
 
-2.0.9083.0 下面的 Microsoft Azure 恢复服务 (MARS) 代理的版本在 Azure 访问控制服务上具有依赖关系。 MARS 代理也称为 Azure 备份代理。
+低于 2.0.9083.0 的 Microsoft Azure 恢复服务 (MARS) 代理版本依赖于 Azure 访问控制服务。 MARS 代理也称为 Azure 备份代理。
 
-在2018中，Microsoft 不 [推荐使用 Azure 访问控制服务](../articles/active-directory/azuread-dev/active-directory-acs-migration.md)。 从2018年3月19日开始，2.0.9083.0 以下 MARS 代理的所有版本都将遇到备份失败。 若要避免或解决备份失败，请将 [MARS 代理升级到最新版本](https://support.microsoft.com/help/4538314/update-for-azure-backup-for-microsoft-azure-recovery-services-agent)。 若要确定需要 MARS 代理升级的服务器，请按照将 [Microsoft Azure 恢复服务 (MARS) 代理](../articles/backup/upgrade-mars-agent.md)中的步骤进行操作。
+在 2018 年，Microsoft [弃用了 Azure 访问控制服务](../articles/active-directory/azuread-dev/active-directory-acs-migration.md)。 从 2018 年 3 月 19 日开始，低于 2.0.9083.0 的所有 MARS 代理版本会遇到备份失败。 若要避免或解决备份失败，请[将 MARS 代理升级到最新版本](https://support.microsoft.com/help/4538314/update-for-azure-backup-for-microsoft-azure-recovery-services-agent)。 若要确定需要 MARS 代理升级的服务器，请按照[升级 Microsoft Azure 恢复服务 (MARS) 代理](../articles/backup/upgrade-mars-agent.md)中的步骤操作。
 
-MARS 代理用于将文件和文件夹以及系统状态数据备份到 Azure。 System Center DPM 和 Azure 备份服务器使用 MARS 代理将数据备份到 Azure。
+MARS 代理用于将文件、文件夹和系统状态数据备份到 Azure。 System Center DPM 和 Azure 备份服务器使用 MARS 代理将数据备份到 Azure。

@@ -8,20 +8,20 @@ manager: dongli
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/10/2021
+ms.date: 04/2/2021
 ms.author: heikora
-ms.openlocfilehash: b8e02071eca139cde02a8bad1b0e0e443db6ab86
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: b82a732533c3d069b519b07c3209d4b96c472900
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103547948"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385019"
 ---
 # <a name="model-and-endpoint-lifecycle"></a>模型和终结点生命周期
 
-自定义语音识别同时使用“基础模型”和“自定义模型” 。 每个语言都有一个或多个基础模型。 通常，在将新语音模型发布到常规语音服务时，同时会将其作为新基础模型导入到自定义语音识别服务。 每 6 到 12 个月更新一次。 较旧的模型通常逐渐变得没什么用，因为最新的模型通常具有更高的准确度。
-
-而“自定义模型”是通过使用特定客户场景中的数据调整所选基础模型来创建的。 在拥有满足需求的模型之后，可以长久使用特定的自定义模型。 但建议定期更新到最新的基础模型，并在将来使用其他数据对其进行重新训练。 
+我们的标准（非自定义）语音是建立在 AI 模型之上的，我们称之为基础模型。 在大多数情况下，我们为支持的每种口语训练不同的基础模型。  我们每隔几个月使用新的基础模型更新语音服务，以提高准确性和质量。  
+使用自定义语音识别，可以通过使用特定客户场景中的数据调整所选基础模型来创建自定义模型。 创建自定义模型后，即使在标准语音服务中更新了自定义模型改编自的相应基础模型，自定义模型也不会更新或更改。  
+使用此策略，可以在拥有满足需求的自定义模型后，长时间保持使用特定自定义模型。  但建议你定期重新创建自定义模型，这样你便可根据最新基础模型进行调整，以利用提高的准确性和质量。
 
 与模型生命周期相关的其他关键术语包括：
 
@@ -59,7 +59,7 @@ ms.locfileid: "103547948"
 
 还可以通过 [`GetModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetModel) 和 [`GetBaseModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModel) 自定义语音 API 在 JSON 响应中的 `deprecationDates` 属性下检查到期日期。
 
-下面是 GetModel API 调用中的过期数据的示例。 “DEPRECATIONDATES”显示： 
+下面是 GetModel API 调用中的过期数据的示例。 模型过期时将显示 DEPRECATIONDATES： 
 ```json
 {
     "SELF": "HTTPS://WESTUS2.API.COGNITIVE.MICROSOFT.COM/SPEECHTOTEXT/V3.0/MODELS/{id}",
@@ -80,7 +80,7 @@ ms.locfileid: "103547948"
     },
     "PROPERTIES": {
     "DEPRECATIONDATES": {
-        "ADAPTATIONDATETIME": "2022-01-15T00:00:00Z",     // last date this model can be used for adaptation
+        "ADAPTATIONDATETIME": "2022-01-15T00:00:00Z",     // last date the base model can be used for adaptation
         "TRANSCRIPTIONDATETIME": "2023-03-01T21:27:29Z"   // last date this model can be used for decoding
     }
     },
@@ -96,6 +96,13 @@ ms.locfileid: "103547948"
 }
 ```
 请注意，可以通过 Speech Studio 的“部署”部分或通过自定义语音识别 API 更改终结点使用的模型，在不停机的情况下升级自定义语音识别终结点上的模型。
+
+## <a name="what-happens-when-models-expire-and-how-to-update-them"></a>当模型过期会发生什么情况以及如何更新模型
+模型过期时会发生什么情况，如何更新模型取决于其使用方式。
+### <a name="batch-transcription"></a>批量听录
+如果与[批量听录](batch-transcription.md)一起使用的模型过期，则听录请求将失败，出现 4xx 错误。 为了防止出现这种情况，请更新“创建听录”请求正文中发送的 JSON 中的 `model` 参数，使其指向较新的基础模型或较新的自定义模型。 还可以从 JSON 中删除 `model` 条目，以始终使用最新的基础模型。
+### <a name="custom-speech-endpoint"></a>自定义语音终结点
+如果[自定义语音终结点](how-to-custom-speech-train-model.md)使用的模型过期，则服务将自动回退为使用你正在使用的语言的最新基础模型。 你可以在页面顶部的“自定义语音识别”菜单中选择“部署”，然后单击终结点名称以查看其详细信息 。 在详细信息页的顶部，你将看到一个“更新模型”按钮，使用此按钮可以在不停机的情况下无缝更新该终结点使用的模型。 还可以使用[更新模型](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/UpdateModel) Rest API 以编程方式进行此更改。
 
 ## <a name="next-steps"></a>后续步骤
 

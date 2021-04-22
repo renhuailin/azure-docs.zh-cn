@@ -4,22 +4,22 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: 00523d557afaf23ba2de0d33165efe6beb11cba2
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
-ms.translationtype: MT
+ms.openlocfilehash: 740fb67e1b35c156f2416bc5aaef15ce2942fd8a
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242499"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106283250"
 ---
 <!--Feature availability in region-->
 ## <a name="europe"></a>欧洲
 
 | 功能 | 北欧 | 西欧 |
 | --- | :---: | :---: |
-| [Azure EventGrid](../reacting-to-media-services-events.md) |![Azure EventGrid 北欧公开上市](../media/azure-clouds-regions/ga.svg)  |![Azure EventGrid 西欧公开上市](../media/azure-clouds-regions/ga.svg) |
-| [VideoAnalyzerPreset](../analyzing-video-audio-files-concept.md) |![VideoAnalyzerPreset 北欧公开上市](../media/azure-clouds-regions/ga.svg)  | ![VideoAnalyzerPreset 西欧公开上市](../media/azure-clouds-regions/ga.svg) |
-| [AudioAnalyzerPreset](../analyzing-video-audio-files-concept.md) |![AudioAnalyzerPreset 北欧公开上市](../media/azure-clouds-regions/ga.svg)  | ![AudioAnalyzerPreset 西欧公开上市](../media/azure-clouds-regions/ga.svg) |
-| [StandardEncoderPreset](../encoding-concept.md) |![StandardEncoderPreset 北欧公开上市](../media/azure-clouds-regions/ga.svg)  | ![StandardEncoderPreset 西欧公开上市](../media/azure-clouds-regions/ga.svg) |
-| [LiveEvents](../live-streaming-overview.md) |![LiveEvents 北欧公开上市](../media/azure-clouds-regions/ga.svg)  | ![LiveEvents 西欧公开上市](../media/azure-clouds-regions/ga.svg) |
-| [StreamingEndpoints](../streaming-endpoint-concept.md) |![Streamingendpoint 北欧公开上市](../media/azure-clouds-regions/ga.svg) | ![Streamingendpoint 西欧公开上市](../media/azure-clouds-regions/ga.svg) |
-| [LiveTranscription](../live-transcription.md) |![LiveTranscription 北欧公开上市](../media/azure-clouds-regions/ga.svg) |![LiveTranscription 西欧公开上市](../media/azure-clouds-regions/ga.svg) |
+| [Azure EventGrid](../monitoring/reacting-to-media-services-events.md) |![Azure EventGrid 欧洲北部版本正式发布](../media/azure-clouds-regions/ga.svg)  |![Azure EventGrid 欧洲西部版本正式发布](../media/azure-clouds-regions/ga.svg) |
+| [VideoAnalyzerPreset](../analyze-video-audio-files-concept.md) |![VideoAnalyzerPreset 欧洲北部版本正式发布](../media/azure-clouds-regions/ga.svg)  | ![VideoAnalyzerPreset 欧洲西部版本正式发布](../media/azure-clouds-regions/ga.svg) |
+| [AudioAnalyzerPreset](../analyze-video-audio-files-concept.md) |![AudioAnalyzerPreset 欧洲北部版本正式发布](../media/azure-clouds-regions/ga.svg)  | ![AudioAnalyzerPreset 欧洲西部版本正式发布](../media/azure-clouds-regions/ga.svg) |
+| [StandardEncoderPreset](../encode-concept.md) |![StandardEncoderPreset 欧洲北部版本正式发布](../media/azure-clouds-regions/ga.svg)  | ![StandardEncoderPreset 欧洲西部版本正式发布](../media/azure-clouds-regions/ga.svg) |
+| [LiveEvents](../stream-live-streaming-concept.md) |![LiveEvents 欧洲北部版本正式发布](../media/azure-clouds-regions/ga.svg)  | ![LiveEvents 欧洲西部版本正式发布](../media/azure-clouds-regions/ga.svg) |
+| [StreamingEndpoints](../stream-streaming-endpoint-concept.md) |![StreamingEndpoints 欧洲北部版本正式发布](../media/azure-clouds-regions/ga.svg) | ![StreamingEndpoints 欧洲西部版本正式发布](../media/azure-clouds-regions/ga.svg) |
+| [LiveTranscription](../live-event-live-transcription-how-to.md) |![LiveTranscription 欧洲北部版本正式发布](../media/azure-clouds-regions/ga.svg) |![LiveTranscription 欧洲西部版本正式发布](../media/azure-clouds-regions/ga.svg) |

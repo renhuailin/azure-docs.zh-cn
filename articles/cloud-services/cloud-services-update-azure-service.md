@@ -1,5 +1,5 @@
 ---
-title: 如何 (经典) 中更新云服务 |Microsoft Docs
+title: 如何更新云服务（经典）| Microsoft Docs
 description: 了解如何在 Azure 中更新云服务。 了解如何云服务上进行更新以确保可用性。
 ms.topic: article
 ms.service: cloud-services
@@ -9,16 +9,16 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 5d85003ca7b4307c308914484502ae03269f66ac
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98741105"
 ---
-# <a name="how-to-update-an-azure-cloud-service-classic"></a>如何更新 (经典) 的 Azure 云服务
+# <a name="how-to-update-an-azure-cloud-service-classic"></a>如何更新 Azure 云服务（经典）
 
 > [!IMPORTANT]
-> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
 三步操作进行云服务更新（包括其角色和来宾 OS）。 首先，必须上传新云服务或 OS 版本的二进制文件和配置文件。 其次，Azure 会根据新云服务版本的要求，保留云服务的计算资源和网络资源。 最后，Azure 执行滚动升级，以增量方式将租户更新到新版本或来宾 OS，同时保留可用性。 本文介绍最后一个步骤 - 滚动升级的详细信息。
 

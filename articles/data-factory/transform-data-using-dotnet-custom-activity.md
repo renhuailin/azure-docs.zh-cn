@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
 ms.openlocfilehash: 64588d5968df635c3bb017bd1ff1d10951968f32
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101724942"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
@@ -37,7 +37,7 @@ ms.locfileid: "101724942"
 * [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) cmdlet 以创建 Azure Batch 池。
 
 > [!IMPORTANT]
-> 创建新的 Azure Batch 池时，必须使用 "VirtualMachineConfiguration" 而不是 "CloudServiceConfiguration"。 有关更多详细信息，请参阅 [Azure Batch 池迁移指南](../batch/batch-pool-cloud-service-to-virtual-machine-configuration.md)。 
+> 创建新的 Azure Batch 池时，必须使用“VirtualMachineConfiguration”，而不是“CloudServiceConfiguration”。 有关更多详细信息，请参阅 [Azure Batch 池迁移指南](../batch/batch-pool-cloud-service-to-virtual-machine-configuration.md)。 
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch 链接服务
 
@@ -100,7 +100,7 @@ ms.locfileid: "101724942"
 
 下表描述了此活动特有的属性的名称和描述。
 
-| 属性              | 说明                              | 必选 |
+| 属性              | 说明                              | 必需 |
 | :-------------------- | :--------------------------------------- | :------- |
 | name                  | 管道中活动的名称     | 是      |
 | description           | 描述活动用途的文本。  | 否       |
@@ -327,7 +327,7 @@ Activity Error section:
 
 ## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a><a name="compare-v2-v1"></a>比较 v2 自定义活动和版本 1（自定义）DotNet 活动
 
-在 Azure 数据工厂版本1中，通过使用实现 `Execute` 接口的方法的类创建 .Net 类库项目，实现 (自定义) DotNet 活动 `IDotNetActivity` 。 （自定义）DotNet 活动的 JSON 负载中的链接服务、数据集和扩展属性作为强类型对象传递到执行方法。 有关版本 1 行为的详细信息，请参阅[版本 1 中的（自定义）DotNet](v1/data-factory-use-custom-activities.md)。 由于此实现，版本 1 DotNet 活动代码必须以 .NET Framework 4.5.2 为目标。 版本 1 DotNet 活动还必须在基于 Windows 的 Azure Batch 池节点上执行。
+在 Azure 数据工厂版本 1 中，通过使用实现 `IDotNetActivity` 接口的 `Execute` 方法的类创建 .NET 类库项目来实现（自定义）DotNet 活动。 （自定义）DotNet 活动的 JSON 负载中的链接服务、数据集和扩展属性作为强类型对象传递到执行方法。 有关版本 1 行为的详细信息，请参阅[版本 1 中的（自定义）DotNet](v1/data-factory-use-custom-activities.md)。 由于此实现，版本 1 DotNet 活动节点必须面向 .NET Framework 4.5.2。 版本 1 DotNet 活动还必须在基于 Windows 的 Azure Batch 池节点上执行。
 
 在 Azure 数据工厂 V2 自定义活动中，不需要实现 .NET 接口。 现在可以直接运行命令、脚本和自己的已编译为可执行文件的自定义代码。 要配置该实现，请指定 `Command` 属性和 `folderPath` 属性。 自定义活动会将可执行文件及其依赖项上传到 `folderpath`，并执行命令。
 
@@ -340,16 +340,16 @@ Activity Error section:
 |差异      | 自定义活动      | 版本 1（自定义）DotNet 活动      |
 | ---- | ---- | ---- |
 |如何定义自定义逻辑      |通过提供可执行文件      |通过实现 .NET DLL      |
-|自定义逻辑的执行环境      |Windows 或 Linux      |Windows ( .NET Framework 4.5.2)       |
-|执行脚本      |直接支持执行脚本（如 Windows VM 上的“cmd /c echo hello world”）      |需要 .NET DLL 中的实现      |
+|自定义逻辑的执行环境      |Windows 或 Linux      |Windows (.NET Framework 4.5.2)      |
+|执行脚本      |直接支持执行脚本（如 Windows VM 上的“cmd /c echo hello world”）      |需要在 .NET DLL 中实现      |
 |所需数据集      |可选      |需要链接活动并传递信息      |
 |将信息从活动传递到自定义逻辑      |通过 ReferenceObjects（LinkedServices 和数据集）与 ExtendedProperties（自定义属性）      |通过 ExtendedProperties（自定义属性）、输入和输出数据集      |
-|在自定义逻辑中检索信息      |分析可执行文件所在文件夹中存储的 activity.json、linkedServices.json 和 datasets.json      |通过 .NET SDK ( .NET framework 4.5.2)       |
+|在自定义逻辑中检索信息      |分析可执行文件所在文件夹中存储的 activity.json、linkedServices.json 和 datasets.json      |通过 .NET SDK (.NET Frame 4.5.2)      |
 |日志记录      |直接写入到 STDOUT      |在 .NET DLL 中实现记录器      |
 
-如果已为版本1编写的现有 .NET 代码 (自定义) DotNet 活动，则需要修改代码，使其能够使用自定义活动的当前版本。 按照以下高级准则更新代码：
+如果有针对版本 1（自定义）DotNet 活动编写的现有 .NET 代码，则需要修改代码，使其可用于当前版本的自定义活动。 按照以下高级准则更新代码：
 
-  - 将项目从 .NET 类库更改为控制台应用程序。
+  - 将项目从 .NET 类库更改为控制台应用。
   - 使用 `Main` 方法启动应用程序。 不再需要 `IDotNetActivity` 接口的 `Execute` 方法。
   - 使用 JSON 序列化程序并且不作为强类型对象读取和分析链接服务、数据集和活动。 将所需属性的值传递到主要自定义代码逻辑。 可将前面的 SampleApp.exe 代码作为示例进行参考。
   - 不再支持 Logger 对象。 可将可执行文件的输出打印到控制台并保存到 stdout.txt。
@@ -387,5 +387,5 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 * [MapReduce 活动](transform-data-using-hadoop-map-reduce.md)
 * [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
 * [Spark 活动](transform-data-using-spark.md)
-* [Azure 机器学习 Studio (经典) 批处理执行活动](transform-data-using-machine-learning.md)
+* [Azure 机器学习工作室（经典）批处理执行活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)

@@ -1,5 +1,5 @@
 ---
-title: 使用数据工厂向/从 Oracle 复制数据
+title: 使用数据工厂在 Oracle 中复制或粘贴数据
 description: 了解如何使用 Azure 数据工厂在本地 Oracle 数据库中复制或粘贴数据。
 author: linda33wj
 ms.service: data-factory
@@ -8,10 +8,10 @@ ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 02fc142a08176aa577250417c0e394218e832f34
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100387336"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Oracle 本地复制或粘贴数据
@@ -77,13 +77,13 @@ Oracle 连接器支持两个版本的驱动程序：
 
 创建管道最简单的方法是使用复制向导。 有关使用复制数据向导创建管道的快速演练，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
 
-你还可以使用以下工具之一创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API** 或 **REST API**。 有关如何创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+也可以使用以下工具之一创建管道：Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 或 REST API    。 有关如何创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，完成以下步骤都可创建将数据从源数据存储移至接收器数据存储的管道：
 
 1. 创建 **数据工厂**。 数据工厂可以包含一个或多个管道。
-2. 创建 **链接服务** 以将输入和输出数据存储链接到数据工厂。 例如，如果要将数据从 Oracle 数据库复制到 Azure Blob 存储，可创建两个链接服务，将 Oracle 数据库和 Azure 存储帐户链接到数据工厂。 有关特定于 Oracle 的链接服务属性，请参阅[链接服务属性](#linked-service-properties)。
-3. 创建用于表示复制操作的输入和输出数据的 **数据集** 。 在上一步的示例中，创建了一个数据集来指定 Oracle 数据库中包含输入数据的表。 创建了另一个数据集来指定 blob 容器和用于保存从 Oracle 数据库复制的数据的文件夹。 有关特定于 Oracle 的数据集属性，请参阅[数据集属性](#dataset-properties)。
+2. 创建链接服务可将输入和输出数据存储链接到数据工厂。 例如，如果要将数据从 Oracle 数据库复制到 Azure Blob 存储，可创建两个链接服务，将 Oracle 数据库和 Azure 存储帐户链接到数据工厂。 有关特定于 Oracle 的链接服务属性，请参阅[链接服务属性](#linked-service-properties)。
+3. 创建数据集以表示复制操作的输入和输出数据。 在上一步的示例中，创建了一个数据集来指定 Oracle 数据库中包含输入数据的表。 创建了另一个数据集来指定 blob 容器和用于保存从 Oracle 数据库复制的数据的文件夹。 有关特定于 Oracle 的数据集属性，请参阅[数据集属性](#dataset-properties)。
 4. 创建包含复制活动的 **管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 在上一个示例中，对复制活动使用 **OracleSource** 作为源，**BlobSink** 作为接收器。 同样，如果要从 Azure Blob 存储复制到 Oracle 数据库，则在复制活动中使用 **BlobSource** 和 **OracleSink**。 有关特定于 Oracle 数据库的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)。 有关如何将数据存储用作源或接收器的详细信息，请选择上一部分中的相应数据存储链接。
 
 使用向导时，会自动创建这些数据工厂实体的 JSON 定义：链接服务、数据集和管道。 使用工具或 API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。 有关提供用于在本地 Oracle 数据库中复制或粘贴数据的数据工厂实体 JSON 定义的示例，请参阅 JSON 示例。
@@ -94,9 +94,9 @@ Oracle 连接器支持两个版本的驱动程序：
 
 下表描述了特定于 Oracle 链接服务的 JSON 元素：
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
-| type |**Type** 属性必须设置为 **OnPremisesOracle**。 |是 |
+| type |**type** 属性必须设置为 **OnPremisesOracle**。 |是 |
 | driverType | 指定在 Oracle 数据库中复制或粘贴数据所使用的驱动程序。 允许的值为 **Microsoft** 和 **ODP**（默认值）。 请参阅[支持的版本和安装](#supported-versions-and-installation)以了解驱动程序详细信息。 | 否 |
 | connectionString | 为 **connectionString** 属性指定连接到 Oracle 数据库实例所需的信息。 | 是 |
 | gatewayName | 用于连接到本地 Oracle 服务器的网关的名称。 |是 |
@@ -143,9 +143,9 @@ Oracle 连接器支持两个版本的驱动程序：
 
 在数据集 JSON 文件中，所有数据集类型（例如 Oracle、Azure Blob 存储和 Azure 表存储）的 structure、availability 和 policy 等节均类似。
 
-每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **OracleTable** 类型的数据集的 **typeProperties** 部分具有以下属性：
+每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **OracleTable** 类型的数据集的 **typeProperties** 节具有以下属性：
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | tableName |链接服务引用的 Oracle 数据库中表的名称。 |否（如果指定了 **oracleReaderQuery** 或 **OracleSource**） |
 
@@ -164,7 +164,7 @@ Oracle 连接器支持两个版本的驱动程序：
 
 在复制活动中，如果源的类型为 **OracleSource**，则可以在 **typeProperties** 节中使用以下属性：
 
-| properties | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | oracleReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：“select \* from **MyTable**”。 <br/><br/>如果未指定，则执行此 SQL 语句：“select \* from **MyTable**” |否<br />（如果指定了 **数据集** 的 **tableName**） |
 
@@ -172,7 +172,7 @@ Oracle 连接器支持两个版本的驱动程序：
 
 **OracleSink** 支持以下属性：
 
-| properties | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | writeBatchTimeout |超时前等待批插入操作完成的时间。 |**timespan**<br/><br/> 示例：00:30:00（30 分钟） |否 |
 | writeBatchSize |当缓冲区大小达到 **writeBatchSize** 值时，向 SQL 表插入数据。 |整数（行数） |否（默认值：100） |
@@ -181,16 +181,16 @@ Oracle 连接器支持两个版本的驱动程序：
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>在 Oracle 数据库中复制和粘贴数据的 JSON 示例
 
-下面的示例提供示例 JSON 定义，可用于通过使用 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 这些示例展示如何在 Oracle 数据库和 Azure Blob 存储之间复制数据。 但是，使用 Azure 数据工厂中的复制活动，可以将数据复制到[支持的数据存储和格式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)中列出的任何接收器。
+以下示例提供示例 JSON 定义，可使用该定义通过 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 这些示例展示如何在 Oracle 数据库和 Azure Blob 存储之间复制数据。 但是，使用 Azure 数据工厂中的复制活动，可以将数据复制到[支持的数据存储和格式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)中列出的任何接收器。
 
 **示例：将数据从 Oracle 复制到 Azure Blob 存储**
 
 此示例具有以下数据工厂实体：
 
 * [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties) 类型的链接服务。
-* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)类型的链接服务。
+* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
 * [OracleTable](data-factory-onprem-oracle-connector.md#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
-* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)类型的输出[数据集](data-factory-create-datasets.md)。
+* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
 * 包含复制活动的[管道](data-factory-create-pipelines.md)，该活动将 [OracleSource](data-factory-onprem-oracle-connector.md#copy-activity-properties) 用作源，将 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 用作接收器。
 
 该实例每隔一小时会将数据从本地 Oracle 数据库中的表复制到 blob。 有关该示例中使用的各种属性的详细信息，请参阅示例后续部分。
@@ -260,7 +260,7 @@ Oracle 连接器支持两个版本的驱动程序：
 
 **Azure Blob 输出数据集**
 
-数据每小时写入新 blob (**frequency**： **hour**， **interval**： **1**) 。 根据正在处理的切片的开始时间，动态计算 blob 的文件夹路径和文件名。 文件夹路径使用开始时间的年、月、日和小时部分。
+数据写入到新的 blob，每小时进行一次（**frequency**：**hour**，**interval**：**1**）。 根据正在处理的切片的开始时间，动态计算 blob 的文件夹路径和文件名。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```json
 {
@@ -376,7 +376,7 @@ Oracle 连接器支持两个版本的驱动程序：
 此示例具有以下数据工厂实体：
 
 * [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties) 类型的链接服务。
-* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)类型的链接服务。
+* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
 * [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)类型的输入[数据集](data-factory-create-datasets.md)。
 * [OracleTable](data-factory-onprem-oracle-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
 * 包含复制活动的[管道](data-factory-create-pipelines.md)，该活动将 [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) 用作源，将 [OracleSink](data-factory-onprem-oracle-connector.md#copy-activity-properties) 用作接收器。
@@ -415,7 +415,7 @@ Oracle 连接器支持两个版本的驱动程序：
 
 **Azure Blob 输入数据集**
 
-每小时从新的 blob 选取数据 (**frequency**： **hour**， **interval**： **1**) 。 根据正在处理的切片的开始时间，动态计算 blob 的文件夹路径和文件名。 文件夹路径使用开始时间的年、月和日部分。 文件名使用开始时间的小时部分。 将 **external** 设置为 **true** 将告知数据工厂服务：此表在数据工厂外部且不由数据工厂中的活动生成。
+每小时从新的 blob 获取数据一次（**frequency**：**hour**，**interval**：**1**）。 根据正在处理的切片的开始时间，动态计算 blob 的文件夹路径和文件名。 文件夹路径使用开始时间的年、月和日部分。 文件名使用开始时间的小时部分。 将 **external** 设置为 **true** 将告知数据工厂服务：此表在数据工厂外部且不由数据工厂中的活动生成。
 
 ```json
 {
@@ -565,8 +565,8 @@ Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: 
 * 如果未安装适用于 Oracle 的 .NET 提供程序，请先[安装](https://www.oracle.com/technetwork/topics/dotnet/downloads/)，再重试此方案。
 * 如果安装此提供程序后仍出现此错误消息，请完成以下步骤：
     1. 从文件夹 <system disk\>:\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config 中打开 .NET 2.0 的计算机配置文件。
-    2. 搜索 **用于 .NET 的 Oracle 数据提供程序**。 你应能找到一个条目，如以下示例中的  >  **DbProviderFactories** 所示：`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
-* 将此项复制到以下 .NET 4.0 文件夹中的 machine.config 文件： <系统磁盘 \>:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config。然后，将版本更改为采用2.x.x。。
+    2. 搜索 **用于 .NET 的 Oracle 数据提供程序**。 应该能够在 **system.data** > **DbProviderFactories** 下找到以下示例中所示的条目：`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
+* 将此项复制到以下 .NET 4.0 文件夹中的 machine.config 文件：<system disk\>:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config。然后将版本更改为 4.xxx.x.x。
 * 通过运行 **gacutil /i [provider path]**，在全局程序集缓存 (GAC) 中安装 <ODP.NET Installed Path\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll。
 
 ### <a name="problem-2-datetime-formatting"></a>问题 2：日期/时间格式设置

@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 企业对客户 (B2C) 的新增功能
 description: Azure Active Directory 企业对客户 (B2C) 的新的和更新的文档。
-ms.date: 03/08/2021
+ms.date: 04/05/2021
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,37 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: 3fcc4f01d926f5c624adabd51e6215e0106af1fa
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7a2384a451d851d1bede24fc2dd73a386c019430
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557864"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443706"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C：新增功能
 
 欢迎了解 Azure Active Directory B2C 文档中的新增功能。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解 B2C 服务的新增功能，请参阅 [Azure Active Directory 中的新增功能](../active-directory/fundamentals/whats-new.md)。
+
+## <a name="march-2021"></a>2021 年 3 月
+
+### <a name="new-articles"></a>新文章
+
+- [为 Azure Active Directory B2C 启用自定义域](custom-domain.md)
+- [使用 Azure AD B2C 中的标识保护来调查风险](identity-protection-investigate-risk.md)
+- [使用 Azure Active Directory B2C 设置通过 Apple ID 注册与登录（预览）](identity-provider-apple-id.md)
+- [在 Azure Active Directory B2C 中设置强力密码重置流](force-password-reset.md)
+- [嵌入的登录体验](embedded-login.md)
+
+### <a name="updated-articles"></a>更新的文章
+
+- [使用 Azure Active Directory B2C 设置通过 Amazon 帐户注册与登录](identity-provider-amazon.md)
+- [通过在 Azure Active Directory B2C 中使用 SAML 协议来设置使用 Salesforce SAML 提供程序的登录](identity-provider-salesforce-saml.md)
+- [将基于 OWIN 的 Web API 迁移到 b2clogin.com 或自定义域](multiple-token-endpoints.md)
+- [技术配置文件](technicalprofiles.md)
+- [向 Azure Active Directory B2C 中的用户流添加条件访问](conditional-access-user-flow.md)
+- [在 Azure Active Directory B2C 中设置密码重置流](add-password-reset-policy.md)
+- [RelyingParty](relyingparty.md)
+
 
 ## <a name="february-2021"></a>2021 年 2 月
 

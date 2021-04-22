@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
-ms.openlocfilehash: bc1978f6ed0aa3e38f25fa03fc54ddc7d4efb9c3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6acab9618566766b12b4b236c75aa58386100513
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033327"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961058"
 ---
 # <a name="troubleshooting-metrics-charts"></a>排查指标图表问题
 
@@ -43,7 +43,7 @@ ms.locfileid: "102033327"
 
 [Azure 中的大多数指标将存储 93 天](../essentials/data-platform-metrics.md#retention-of-metrics)。 但是，在任何单个图表中，只能查询不超过 30 天的数据。 此限制不适用于[基于日志的指标](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)。
 
-**解决方案：** 如果你看到空白图表或者图表仅显示一部分指标数据，请确认时间选取器中的开始日期与结束日期之差是否不超过 30 天间隔。
+**解决方案：** 如果你看到空白图表或者图表仅显示一部分指标数据，请确认时间选取器中的开始日期与结束日期之差是否不超过 30 天间隔。 选择 30 天间隔后，你可以[平移](metrics-charts.md#pan)图表以查看完整的保持期窗口。
 
 ### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>所有指标值超过了已锁定的 y 轴范围
 

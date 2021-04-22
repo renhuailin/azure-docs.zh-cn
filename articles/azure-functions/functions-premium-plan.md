@@ -10,10 +10,10 @@ ms.custom:
 - fasttrack-edit
 - devx-track-azurecli
 ms.openlocfilehash: 3061329ad9dcb368dab586acc2146e6fb4e23028
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101708707"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions 高级计划
@@ -99,7 +99,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 在高级计划中向函数应用分配子网时，你需要有一个具有足够 IP 地址的子网，用于每个潜在的实例。 我们需要一个至少包含 100 个可用地址的 IP 块。
 
-有关详细信息，请参阅 [将 function app 与 VNet 集成](functions-create-vnet.md)。
+有关详细信息，请参阅[将函数应用与 VNet 集成](functions-create-vnet.md)。
 
 ## <a name="rapid-elastic-scale"></a>快速弹性缩放
 

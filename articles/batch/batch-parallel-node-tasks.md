@@ -2,35 +2,35 @@
 title: 以并发方式运行任务以最大程度地利用 Batch 计算节点
 description: 通过减少所用的计算节点数并在 Azure Batch 池的每个节点上并行运行任务，来提高效率并降低成本
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 03/25/2021
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: 8bc9f03f05d52df6e400be5c57033ab2a38fa8eb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2a8f2d6a040bee0e32359f4860d7b346ac08c48e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92102959"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105607977"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>以并发方式运行任务以最大程度地利用 Batch 计算节点
 
 可在池中数量较少的计算节点上最大程度地利用资源，方法是在每个节点上同时运行多个任务。
 
-尽管某些方案在某个节点的所有资源专用于单个任务时效果最好，但当多个任务共享这些资源时，某些工作负荷可能会发现作业时间缩短且成本降低：
+尽管某些方案在某个节点的所有资源专用于单个任务时效果最好，但当多个任务共享这些资源时，某些工作负载可能会发现作业时间缩短且成本降低。 请考虑下列情形：
 
 - 对于能够共享数据的任务，请 **尽量减少数据传输**。 将共享数据复制到较小数目的节点并在每个节点上并行执行任务可以大大减少数据传输费用， 尤其是在复制到每个节点的数据必须跨地理区域传输的情况下。
-- 如果任务需要大量的内存，但这种需要仅在执行过程中短时出现且时间不固定，则请 **尽量增加内存使用**。 可以减少计算节点的数量但增加其大小，同时提供更多的内存，以便有效地应对此类高峰负载。 这些节点会在每个节点上并行运行多个任务，而每个任务都会充分利用节点在不同时间的大量内存。
+- 如果任务需要大量的内存，但这种需要仅在执行过程中短时出现且时间不固定，则请 **尽量增加内存使用**。 可以减少计算节点的数量但增加其大小，同时提供更多的内存，以便有效地应对此类高峰负载。 这些节点将在每个节点上并行运行多个任务，而每个任务都可以充分利用节点在不同时间的大量内存。
 - 对于需要在池中进行节点间通信的情况，请 **减少节点数目限制**。 目前，经过配置可以进行节点间通信的池仅限 50 个计算节点。 如果此类池中的每个节点都可以并行执行任务，则可同时执行较大数量的任务。
 - **复制本地计算群集**：适用于首次将计算环境移至 Azure 等情况。 如果当前本地解决方案在单个计算节点上执行多个任务，则可以通过增大节点任务的最大数量来更彻底地对配置进行镜像操作。
 
 ## <a name="example-scenario"></a>示例方案
 
-例如，假设有一个具有 CPU 和内存要求的任务应用程序，而[标准\_D1](../cloud-services/cloud-services-sizes-specs.md) 节点足以满足该要求。 但是，若要在所需时间内完成作业，需要使用 1,000 个这样的节点。
+例如，假设有一个具有 CPU 和内存要求的任务应用程序，而[标准\_D1](../cloud-services/cloud-services-sizes-specs.md#d-series) 节点足以满足该要求。 但是，若要在所需时间内完成作业，需要使用 1,000 个这样的节点。
 
-如果不使用具有 1 个 CPU 内核的 Standard\_D1 节点，则可使用每个具有 16 个内核的 [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md) 节点，同时允许并行执行任务。 这意味着可以使用 1/16 的节点，即只需使用 63 个节点，而无需使用 1,000 个节点。 如果需要对每个节点使用大型应用程序文件或引用数据，则可进一步缩短作业持续时间并提高效率，因为只需将数据复制到 63 个节点。
+如果不使用具有 1 个 CPU 内核的 Standard\_D1 节点，则可使用每个具有 16 个内核的 [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md#d-series) 节点，同时允许并行执行任务。 这意味着可以使用 1/16 的节点，即只需使用 63 个节点，而无需使用 1,000 个节点。 如果需要对每个节点使用大型应用程序文件或引用数据，则可缩短作业持续时间并提高效率，因为只需将数据复制到 63 个节点。
 
 ## <a name="enable-parallel-task-execution"></a>允许并行执行任务
 
-可在池级别配置计算节点，以便并行执行任务。 在创建池时，使用 Batch .NET 库设置 [CloudPool.TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) 属性。 如果使用的是 Batch REST API，则可在创建池时在请求正文中设置 [taskSlotsPerNode](/rest/api/batchservice/pool/add) 元素。
+可在池级别配置计算节点，以便并行执行任务。 在创建池时，使用 Batch .NET 库设置 [CloudPool.TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode) 属性。 如果使用的是 Batch REST API，则可在创建池时在请求正文中设置 [taskSlotsPerNode](/rest/api/batchservice/pool/add) 元素。
 
 > [!NOTE]
 > 只能在创建池时设置 `taskSlotsPerNode` 元素和 [TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) 属性。 创建完池以后，不能对上述元素和属性进行修改。
@@ -44,9 +44,9 @@ Azure Batch 允许你将每节点的任务槽数最多设置为节点核心数�
 
 当启用并发任务时，请务必指定任务在池中各节点之间的分布方式。
 
-可以通过 [CloudPool.TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool) 属性指定任务，即让任务在池中所有节点之间平均分配（“散布式”）。 或者，先给池中的每个节点分配尽量多的任务，再将任务分配给池中的其他节点（“装箱式”）。
+可以通过 [CloudPool.TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool.taskschedulingpolicy) 属性指定任务，即让任务在池中所有节点之间平均分配（“散布式”）。 或者，先给池中的每个节点分配尽量多的任务，再将任务分配给池中的其他节点（“装箱式”）。
 
-例如，可参阅上面示例中 [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md) 节点的池，该池配置后的 [CloudPool.TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) 值为 16。 如果在对 [CloudPool.TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool) 进行配置时，将 [ComputeNodeFillType](/dotnet/api/microsoft.azure.batch.common.computenodefilltype) 设置为 Pack，则会充分使用每个节点的所有 16 个核心，并可通过[自动缩放池](batch-automatic-scaling.md)将不使用的节点（没有分配任何任务的节点）从池中删除。 这可以最大程度地减少资源使用量并节省资金。
+例如，可参阅上面示例中 [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md#d-series) 节点的池，该池配置后的 [CloudPool.TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode) 值为 16。 如果在对 [CloudPool.TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool.taskschedulingpolicy) 进行配置时，将 [ComputeNodeFillType](/dotnet/api/microsoft.azure.batch.common.computenodefilltype) 设置为 Pack，则会充分使用每个节点的所有 16 个核心，并可通过[自动缩放池](batch-automatic-scaling.md)将不使用的节点（没有分配任何任务的节点）从池中删除。 这可以最大程度地减少资源使用量并节省资金。
 
 ## <a name="define-variable-slots-per-task"></a>定义每任务可变槽数
 
@@ -54,13 +54,12 @@ Azure Batch 允许你将每节点的任务槽数最多设置为节点核心数�
 
 例如，对于具有属性 `taskSlotsPerNode = 8` 的池，你可以使用 `requiredSlots = 8` 提交需要多核的 CPU 密集型任务，而其他任务可以设置为 `requiredSlots = 1`。 计划此混合工作负荷时，CPU 密集型任务将以独占方式在其计算节点上运行，而其他任务可以在其他节点上并发运行（一次最多八个任务）。 这有助于平衡多个计算节点上的工作负荷，提高资源使用效率。
 
+确保没有将任务的 `requiredSlots` 指定为大于池的 `taskSlotsPerNode`。 这将导致任务永远无法运行。 当你提交任务时，Batch 服务当前不会验证此冲突，因为作业在提交时可能未绑定池，也可能已通过禁用/重新启用将其更改到不同的池。
+
 > [!TIP]
 > 使用可变任务槽数时，可能会暂时无法计划具有更多必需槽的大型任务，原因如下：任何计算节点上都没有足够的可用槽，即使某些节点上仍有空闲的槽。 你可以提高这些任务的作业优先级，增加对节点上可用槽的竞争机会。
 >
 > Batch 服务在无法计划要运行的任务时会发出 [TaskScheduleFailEvent](batch-task-schedule-fail-event.md)，并且始终会在必需的槽变得可用之前重试计划。 你可以侦听该事件以检测潜在的任务计划问题，并相应地进行缓解。
-
-> [!NOTE]
-> 不要将任务的 `requiredSlots` 指定为大于池的 `taskSlotsPerNode`。 这将导致任务永远无法运行。 当你提交任务时，Batch 服务当前不会验证此冲突，因为作业在提交时可能未绑定池，也可能已通过禁用/重新启用将其更改到不同的池。
 
 ## <a name="batch-net-example"></a>Batch .NET 示例
 
@@ -70,7 +69,7 @@ Azure Batch 允许你将每节点的任务槽数最多设置为节点核心数�
 
 此代码片段演示了一个请求，该请求要求创建一个包含四个节点的池，每个节点允许有四个任务槽。 它指定了一个任务计划策略，要求先用任务填充一个节点，然后再将任务分配给池中的其他节点。
 
-有关如何使用 Batch .NET API 添加池的详细信息，请参阅 [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations)。
+有关如何使用 Batch .NET API 添加池的详细信息，请参阅 [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool)。
 
 ```csharp
 CloudPool pool =
@@ -169,7 +168,7 @@ Console.WriteLine($"TaskSlotCounts:\t{result.TaskSlotCounts.Active}\t{result.Tas
 
 ## <a name="code-sample-on-github"></a>GitHub 上的代码示例
 
-GitHub 上的 [ParallelTasks](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ParallelTasks) 项目说明了如何使用 [CloudPool.TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) 属性。
+GitHub 上的 [ParallelTasks](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ParallelTasks) 项目说明了如何使用 [CloudPool.TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode) 属性。
 
 此 C# 控制台应用程序使用 [Batch .NET](/dotnet/api/microsoft.azure.batch) 库创建包含一个或多个计算节点的池。 它在这些节点上执行其数量可以配置的任务，以便模拟可变负荷。 应用程序的输出显示了哪些节点执行了每个任务。 该应用程序还提供了作业参数和持续时间的摘要。
 

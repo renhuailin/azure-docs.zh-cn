@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 85ea12071447535af964418db4b3e4f759ba3851
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 9349ac5c0b207d0dffb71295117f35849ab5caba
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106287383"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073281"
 ---
 <a name="HOLTop"></a>
 
@@ -277,11 +277,10 @@ gradle run
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门已介绍如何使用图像分析 Java 库执行基本任务。 接下来，请在参考文档中详细了解该库。
+在本快速入门中了解了安装图像分析客户端库和进行基本的图像分析调用的方法。 接下来，详细了解分析 API 功能。
 
 > [!div class="nextstepaction"]
->[图像分析参考 (Java)](/java/api/overview/azure/cognitiveservices/client/computervision)
-
+>[调用分析 API](../../Vision-API-How-to-Topics/HowToCallVisionAPI.md)
 
 * [图像分析概述](../../overview-image-analysis.md)
 * 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) 上找到此示例的源代码。

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/06/2020
 ms.author: glenga
 ms.openlocfilehash: 3c9679f3d66d58c7a6c847b54c84438c979ecd39
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97936850"
 ---
 Azure 专用终结点是一种网络接口，你可通过该接口私密安全地连接到由 Azure 专用链接提供支持的服务。  专用终结点使用虚拟网络中的专用 IP 地址，从而将该服务有效地引入虚拟网络。
@@ -17,4 +17,4 @@ Azure 专用终结点是一种网络接口，你可通过该接口私密安全�
 
 为函数创建入站专用终结点连接时，还需要一个 DNS 记录来解析专用地址。  默认情况下，使用 Azure 门户将在创建专用终结点时创建专用 DNS 记录。
 
-若要了解详细信息，请参阅 [使用 Web 应用的专用终结点](../articles/app-service/networking/private-endpoint.md)。
+若要了解详细信息，请参阅[为 Web 应用使用专用终结点](../articles/app-service/networking/private-endpoint.md)。

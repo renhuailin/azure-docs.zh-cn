@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 10/06/2020
+ms.date: 03/17/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 6d23b0204cc597898eb2202a329d93ff349f8c13
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: a923f65e5c6183d045f4b7455e0a01edda75d499
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518528"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104584325"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习工作区
 
@@ -56,16 +56,12 @@ ms.locfileid: "102518528"
 
 有关设置专用链接工作区的详细信息，请参阅[配置专用链接](how-to-configure-private-link.md)。
 
+> [!Warning]
+> 使用专用终结点保护工作区本身不能确保端到端安全。 必须按照本文其余部分的步骤和 VNet 系列中的步骤进行操作，以确保解决方案中各个组件的安全。
+
 ## <a name="secure-azure-storage-accounts-with-service-endpoints"></a>使用服务终结点保护 Azure 存储帐户
 
 Azure 机器学习支持将存储帐户配置为使用服务终结点或专用终结点。 本部分介绍如何使用服务终结点保护 Azure 存储帐户。 对于专用终结点，请参阅下一部分。
-
-> [!IMPORTANT]
-> 可将 Azure 机器学习的默认存储帐户或者将非默认存储帐户放在虚拟网络中。 
->
-> 创建工作区时，会自动预配默认存储帐户。
->
-> 对于非默认存储帐户，可以使用 [`Workspace.create()` 函数](/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)中的 `storage_account` 参数按 Azure 资源 ID 指定自定义的存储帐户。
 
 若要在虚拟网络中使用工作区的 Azure 存储帐户，请按照以下步骤操作：
 
@@ -73,18 +69,18 @@ Azure 机器学习支持将存储帐户配置为使用服务终结点或专用�
 
    [![已附加到 Azure 机器学习工作区的存储](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
 
-1. 在存储服务帐户页上，选择“防火墙和虚拟网络”。
+1. 在存储服务帐户页上，选择“网络”。
 
-   ![Azure 门户中“Azure 存储”页上的“防火墙和虚拟网络”区域](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
+   ![Azure 门户中“Azure 存储”页上的网络区域](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
 
-1. 在“防火墙和虚拟网络”页上执行以下操作：
+1. 在“防火墙和虚拟网络”选项卡上执行以下操作：
     1. 选择“所选网络”。
     1. 在“虚拟网络”下，选择“添加现有的虚拟网络”链接。  此操作将添加计算资源所在的虚拟网络（参阅步骤 1）。
 
         > [!IMPORTANT]
         > 存储帐户必须与用于训练或推理的计算实例或群集位于同一虚拟网络和子网中。
 
-    1. 选中“允许受信任的 Microsoft 服务访问此存储帐户”复选框。 这不会使所有 Azure 服务获得对你的存储帐户的访问权限。
+    1. 选中“允许受信任的 Microsoft 服务访问此存储帐户”复选框。 此更改不会使所有 Azure 服务获得对你的存储帐户的访问权限。
     
         * 某些服务的资源在注册到订阅后，可在同一订阅中访问存储帐户以便执行选择操作 。 例如，写入日志或创建备份。
         * 可通过向其系统分配的托管标识分配 Azure 角色，向某些服务的资源授予对存储帐户的显式访问权限。
@@ -106,7 +102,7 @@ Azure 机器学习支持将存储帐户配置为使用服务终结点或专用�
 
 ![屏幕截图，显示具有 blob 和文件选项的专用终结点配置页](./media/how-to-enable-studio-virtual-network/configure-storage-private-endpoint.png)
 
-若要为不是默认存储的存储帐户配置专用终结点，请选择与要添加的存储帐户对应的“目标子资源”类型。
+若要为非默认存储的存储帐户配置专用终结点，请选择与要添加的存储帐户对应的“目标子资源”类型 。
 
 有关详细信息，请参阅[对 Azure 存储使用专用终结点](../storage/common/storage-private-endpoints.md)
 
@@ -118,7 +114,7 @@ Azure 机器学习支持将存储帐户配置为使用服务终结点或专用�
 
 ### <a name="disable-data-validation"></a>禁用数据验证
 
-默认情况下，当你尝试使用 SDK 访问数据时，Azure 机器学习会执行数据有效性和凭据检查。 如果数据位于虚拟网络后面，则 Azure 机器学习无法完成这些检查。 若要避免这种情况，你必须创建跳过验证的数据存储和数据集。
+默认情况下，当你尝试使用 SDK 访问数据时，Azure 机器学习会执行数据有效性和凭据检查。 如果数据位于虚拟网络后面，则 Azure 机器学习无法完成这些检查。 若要跳过此检查，需要创建可跳过验证的数据存储和数据集。
 
 ### <a name="use-datastores"></a>使用数据存储
 
@@ -179,7 +175,7 @@ Azure 机器学习使用关联的 Key Vault 实例存储以下凭据：
 1. 在“防火墙和虚拟网络”选项卡上执行以下操作：
     1. 在“允许访问来源”下，选择“专用终结点和所选网络” 。
     1. 在“虚拟网络”下，选择“添加现有的虚拟网络”，以添加试验计算资源所在的虚拟网络。 
-    1. 在“允许受信任的 Microsoft 服务跳过此防火墙？”下选择“是” 。
+    1. 在“允许受信任的 Microsoft 服务跳过此防火墙”下选择“是”。 
 
    [![“Key Vault”窗格中的“防火墙和虚拟网络”部分](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png#lightbox)
 
@@ -195,7 +191,13 @@ Azure 机器学习使用关联的 Key Vault 实例存储以下凭据：
 
     如果 ACR 位于虚拟网络后面，Azure 机器学习无法使用它来直接生成 Docker 映像。 而是使用计算群集来生成映像。
 
+    > [!IMPORTANT]
+    > 用于构建 Docker 映像的计算群集需要能够访问用于定型和部署模型的包存储库。 你可能需要添加允许访问公用存储库、[使用专用 Python 包](how-to-use-private-python-packages.md)，或使用已包含该包的[自定义 Docker 映像](how-to-train-with-custom-image.md)的网络安全规则。
+
 满足这些要求后，请使用以下步骤启用 Azure 容器注册表。
+
+> [!TIP]
+> 如果在创建工作区时未使用现有的 Azure 容器注册表，说明可能不存在。 默认情况下，工作区不会创建 ACR 实例，除非需要。 若要强制创建，请在使用此部分中的步骤之前使用工作区定型或部署一个模型。
 
 1. 请使用以下方法之一查找工作区的 Azure 容器注册表的名称：
 
@@ -217,6 +219,8 @@ Azure 机器学习使用关联的 Key Vault 实例存储以下凭据：
 
 1. 使用[配置注册表的网络访问权限](../container-registry/container-registry-vnet.md#configure-network-access-for-registry)中的步骤来限制对虚拟网络的访问。 添加虚拟网络时，为 Azure 机器学习资源选择虚拟网络和子网。
 
+1. 将工作区的 ACR 配置为[允许受信任的服务进行访问](../container-registry/allow-access-trusted-services.md)。
+
 1. 使用 Azure 机器学习 Python SDK 将计算群集配置为生成 Docker 映像。 下面的代码片段展示了如何执行此操作：
 
     ```python
@@ -225,6 +229,8 @@ Azure 机器学习使用关联的 Key Vault 实例存储以下凭据：
     ws = Workspace.from_config()
     # Update the workspace to use an existing compute cluster
     ws.update(image_build_compute = 'mycomputecluster')
+    # To switch back to using ACR to build (if ACR is not in the VNet):
+    # ws.update(image_build_compute = None)
     ```
 
     > [!IMPORTANT]
@@ -240,3 +246,5 @@ Azure 机器学习使用关联的 Key Vault 实例存储以下凭据：
 * [第 3 部分：保护训练环境](how-to-secure-training-vnet.md)
 * [第 4 部分：保护推理环境](how-to-secure-inferencing-vnet.md)
 * [第 5 部分：启用工作室功能](how-to-enable-studio-virtual-network.md)
+
+另请参阅有关使用[自定义 DNS](how-to-custom-dns.md) 进行名称解析的文章。

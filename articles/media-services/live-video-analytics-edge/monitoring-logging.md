@@ -3,12 +3,12 @@ title: 监视和日志记录 - Azure
 description: 本文概述了 IoT Edge 上的实时视频分析中的监视和日志记录。
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: e81b1e98fb30bb8876c78c8c911585f5448db8f2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 08b2f5cce80581d71ce73e97ab30900aa8957c77
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101730230"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564476"
 ---
 # <a name="monitoring-and-logging"></a>监视和日志记录
 
@@ -261,7 +261,7 @@ Fragments(video=143039375031270,format=m3u8-aapl)
     > [!IMPORTANT]
     > 请务必替换 .toml 文件中的变量。 变量由大括号 (`{}`) 表示。
 
-1. 在相同的文件夹中，创建包含以下命令的 Dockerfile：
+1. 在同一文件夹中创建包含以下命令的 Dockerfile：
     ```
         FROM telegraf:1.15.3-alpine
         COPY telegraf.toml /etc/telegraf/telegraf.conf
@@ -305,26 +305,26 @@ Fragments(video=143039375031270,format=m3u8-aapl)
      `AZURE_CLIENT_SECRET`：指定要使用的应用机密。  
      
      >[!TIP]
-     > 可为服务主体提供“监视指标发布者”角色。 按照 **[创建服务主体](../../azure-arc/data/upload-metrics-and-logs-to-azure-monitor.md?pivots=client-operating-system-macos-and-linux#create-service-principal)** 中的步骤来创建服务主体并分配角色。
+     > 可为服务主体提供“监视指标发布者”角色。 按照[创建服务主体](../../azure-arc/data/upload-metrics-and-logs-to-azure-monitor.md?pivots=client-operating-system-macos-and-linux#create-service-principal)中的步骤创建服务主体并分配角色。
 
 1. 部署模块后，指标会显示在 Azure Monitor 中的单个命名空间下。 指标名称将与 Prometheus 发出的名称匹配。 
 
    这种情况下，请在 Azure 门户中转到 IoT 中心，并在左窗格中选择“指标”。 你应会在那里看到指标。
 
-### <a name="log-analytics-metrics-collection"></a>Log Analytics 度量值集合
-将 [Prometheus 终结点](https://prometheus.io/docs/practices/naming/) 与 [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-analytics-tutorial)一起使用，可以生成和 [监视指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported) ，例如使用的 CPUPercent、MemoryUsedPercent 等。   
+### <a name="log-analytics-metrics-collection"></a>Log Analytics 指标集合
+使用 [Prometheus 终结点](https://prometheus.io/docs/practices/naming/)和 [Log Analytics](../../azure-monitor/logs/log-analytics-tutorial.md)，可以生成和[监视指标](../../azure-monitor/essentials/metrics-supported.md)，例如使用的 CPUPercent、MemoryUsedPercent 等。   
 
 > [!NOTE]
-> 下面的配置不会收集日志， **只收集指标**。 可以扩展收集器模块来同时收集和上载日志。
+> 下面的配置不会收集日志，只收集指标。 可以扩展收集器模块来同时收集和上传日志。
 
-[![使用 Log Analytics 显示指标集合的关系图。](./media/telemetry-schema/log-analytics.png)](./media/telemetry-schema/log-analytics.png#lightbox)
+[ ![使用 Log Analytics 显示指标集合的关系图。](./media/telemetry-schema/log-analytics.png)](./media/telemetry-schema/log-analytics.png#lightbox)
 
-1. 了解如何 [收集指标](https://github.com/Azure/iotedge/tree/master/edge-modules/MetricsCollector)
-1. 使用 Docker CLI 命令生成 [docker 文件](https://github.com/Azure/iotedge/tree/master/edge-modules/MetricsCollector/docker/linux) ，并将该映像发布到 Azure 容器注册表。
+1. 了解如何[收集指标](https://github.com/Azure/iotedge/tree/master/edge-modules/MetricsCollector)
+1. 使用 Docker CLI 命令生成 [Docker 文件](https://github.com/Azure/iotedge/tree/master/edge-modules/MetricsCollector/docker/linux)，并将该映像发布到 Azure 容器注册表。
     
    若要详细了解如何使用 Docker CLI 将映像推送到容器注册表，请参阅[推送和拉取 Docker 映像](../../container-registry/container-registry-get-started-docker-cli.md)。 有关 Azure 容器注册表的其他信息，请参阅[文档](../../container-registry/index.yml)。
 
-1. 推送到 Azure 容器注册表完成后，会在部署清单中插入以下内容：
+1. 推送到 Azure 容器注册表以后，以下内容将插入到部署清单文件中：
     ```json
     "azmAgent": {
       "settings": {
@@ -345,16 +345,16 @@ Fragments(video=143039375031270,format=m3u8-aapl)
     }
     ```
     > [!NOTE]
-    > 模块 `edgeHub` `edgeAgent` `lvaEdge` 是部署清单文件中定义的模块的名称。 请确保模块名称匹配。   
+    > 模块 `edgeHub`、`edgeAgent` 和 `lvaEdge` 是部署清单文件中定义的模块的名称。 请确保模块的名称匹配。   
 
-    可以 `LogAnalyticsWorkspaceId` `LogAnalyticsSharedKey` 通过以下步骤获取和值：
+    可以通过以下步骤获取 `LogAnalyticsWorkspaceId` 和 `LogAnalyticsSharedKey` 值：
     1. 转到 Azure 门户
     1. 查找 Log Analytics 工作区
-    1. 找到 Log Analytics 工作区后，导航到 `Agents management` 左侧导航窗格中的选项。
-    1. 你将找到可使用的工作区 ID 和机密密钥。
+    1. 找到 Log Analytics 工作区后，导航到左侧导航窗格中的 `Agents management` 选项。
+    1. 你将找到可使用的工作区 ID 和密钥。
 
-1. 接下来，通过单击 `Workbooks` 左侧导航窗格中的选项卡来创建工作簿。
-1. 使用 Kusto 查询语言，你可以编写如下所示的查询并获取 IoT Edge 模块使用的 CPU 百分比。
+1. 接下来，通过单击左侧导航窗格中的 `Workbooks` 选项卡来创建工作簿。
+1. 使用 Kusto 查询语言可以编写如下查询，并获得 IoT Edge 模块使用的 CPU 百分比。
     ```kusto
     let cpu_metrics = IoTEdgeMetrics_CL
     | where Name_s == "edgeAgent_used_cpu_percent"
@@ -368,7 +368,7 @@ Fragments(video=143039375031270,format=m3u8-aapl)
     | union cpu_metrics
     ```
 
-    [![使用 Kusto 查询显示指标的关系图。](./media/telemetry-schema/metrics.png)](./media/telemetry-schema/metrics.png#lightbox)
+    [ ![示意图显示使用 Kusto 查询的指标。](./media/telemetry-schema/metrics.png)](./media/telemetry-schema/metrics.png#lightbox)
 ## <a name="logging"></a>日志记录
 
 与其他 IoT Edge 模块一样，你也可以[检查边缘设备上的容器日志](../../iot-edge/troubleshoot.md#check-container-logs-for-issues)。 可以通过使用[以下模块孪生](module-twin-configuration-schema.md)属性来配置写入到日志中的信息：

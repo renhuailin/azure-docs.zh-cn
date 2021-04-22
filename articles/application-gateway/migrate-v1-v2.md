@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
 ms.openlocfilehash: 4757a8237aa6226b78e7c1e79ba50710e31d28e3
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99594259"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>将 Azure 应用程序网关和 Web 应用程序防火墙从 v1 迁移到 v2
@@ -158,17 +158,17 @@ ms.locfileid: "99594259"
 * **自定义 DNS 区域（例如 contoso.com）指向与 Standard v1 或 WAF v1 网关关联的前端 IP 地址（使用 A 记录）** 。
 
     可以更新 DNS 记录，使其指向与 Standard_v2 应用程序网关关联的前端 IP 或 DNS 标签。 根据 DNS 记录中配置的 TTL，可能需要一段时间才能将所有客户端流量迁移到新的 v2 网关。
-* **自定义 dns 区域 (例如，指向 DNS 标签 (的 contoso.com) 例如： *myappgw.eastus.cloudapp.azure.com* 使用与 v1 网关关联的 CNAME 记录)**。
+* 指向与 v1 网关关联的 DNS 标签（例如：使用 CNAME 记录指向 myappgw.eastus.cloudapp.azure.com）的自定义 DNS 区域（例如 contoso.com）。
 
    有两种选择：
 
   * 如果在应用程序网关上使用公共 IP 地址，则可以使用流量管理器配置文件执行受控的粒度迁移，以增量方式将流量路由到新的 v2 网关（加权流量路由方法）。
 
-    为此，可以将 v1 和 v2 应用程序网关的 DNS 标签添加到 [流量管理器配置文件](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)，并 CNAMEing 自定义 DNS 记录 (例如， `www.contoso.com`) 到流量管理器域 (例如，contoso.trafficmanager.net) 。
+    为此，可将 v1 和 v2 应用程序网关的 DNS 标签添加到[流量管理器配置文件](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)，并通过 CNAME 将自定义 DNS 记录（例如 `www.contoso.com`）指向流量管理器域（例如 contoso.trafficmanager.net）。
   * 或者，可以更新自定义域的 DNS 记录，使其指向新 v2 应用程序网关的 DNS 标签。 根据 DNS 记录中配置的 TTL，可能需要一段时间才能将所有客户端流量迁移到新的 v2 网关。
 * **客户端连接到应用程序网关的前端 IP 地址**。
 
-   更新客户端，以使用与新建的 v2 应用程序网关关联的 IP 地址。 我们建议不要直接使用 IP 地址。 请考虑使用 DNS 名称标签 (例如，与你的应用程序网关关联的 yourgateway.eastus.cloudapp.azure.com) ，你可以将其 CNAME 到你自己的自定义 DNS 区域 (例如，contoso.com) 。
+   更新客户端，以使用与新建的 v2 应用程序网关关联的 IP 地址。 我们建议不要直接使用 IP 地址。 请考虑使用与应用程序网关（可通过 CNAME 指向自己的自定义 DNS 区域（例如 contoso.com））关联的 DNS 名称标签（例如 yourgateway.eastus.cloudapp.azure.com）。
 
 ## <a name="common-questions"></a>常见问题
 

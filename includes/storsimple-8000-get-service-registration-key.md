@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 984efe73b072a356b738acc9f162ecaded995ef1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93360662"
 ---
 #### <a name="to-get-the-storsimple-service-registration-key"></a>获取 StorSimple 服务注册密钥
@@ -19,7 +19,7 @@ ms.locfileid: "93360662"
 
 2.  转到“管理”>“密钥”。
    
-     ![管理密钥 "边栏选项卡](./media/storsimple-8000-get-service-registration-key/getregkey2.png)
+     ![“管理密钥”边栏选项卡](./media/storsimple-8000-get-service-registration-key/getregkey2.png)
 
 3.  在打开的边栏选项卡中，单击复制图标以复制服务注册密钥并将其保存供日后使用。
 

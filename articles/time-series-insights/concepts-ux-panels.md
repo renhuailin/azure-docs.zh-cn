@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/22/2021
 ms.custom: seodec18
 ms.openlocfilehash: 77c6e8790451ef830b37cc5914ce9de8e92174f5
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103464082"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure 时序见解资源管理器
@@ -45,7 +45,7 @@ Azure 时序见解资源管理器包含以下七个元素：
 1. [时间线](#6-time-editor-panel)：使你可以修改工作时间跨度。
 1. [应用栏](#7-app-bar)：包含用户管理选项（如当前租户），并使你可以更改主题和语言设置。
 
-## <a name="1-environment-panel"></a>1.环境面板
+## <a name="1-environment-panel"></a>1. 环境面板
 
 环境面板中显示你有权访问的所有 Azure 时序见解 Gen2 环境。 此列表包括 Gen2 环境以及 Gen1 环境。 只需选择要用于立即转到的环境。
 
@@ -55,7 +55,7 @@ Azure 时序见解资源管理器包含以下七个元素：
 
 1. 然后选择所需的环境。
 
-## <a name="2-navigation-bar"></a>2.导航栏
+## <a name="2-navigation-bar"></a>2. 导航栏
 
   [![导航栏](media/v2-update-explorer/tsi-preview-navigation-bar.png)](media/v2-update-explorer/tsi-preview-navigation-bar.png#lightbox)
 
@@ -76,7 +76,7 @@ Azure 时序见解 Gen2 支持对时序模型执行完整的创建、读取、�
 
 若要详细了解时序模型，请参阅[时序模型](./concepts-model-overview.md)。
 
-## <a name="3-hierarchy-tree-and-search-panel"></a>3.层次结构树和搜索面板
+## <a name="3-hierarchy-tree-and-search-panel"></a>3. 层次结构树和搜索面板
 
 使用层次结构树和搜索面板可以轻松搜索和导航[时序模型](./concepts-model-overview.md)层次结构，以找到要在图表上显示的特定时序实例。 选择实例时，不仅会将它们添加到当前图表，还会将其添加到数据。
 
@@ -84,7 +84,7 @@ Azure 时序见解 Gen2 支持对时序模型执行完整的创建、读取、�
 
 使用搜索结果窗格，还可以在层次结构视图或列表视图中查看结果，从而方便地查找要显示的实例。
 
-## <a name="4-time-series-well"></a>4.时序井
+## <a name="4-time-series-well"></a>4. 时序井
 
 井显示与所选时序模型实例关联的实例字段和其他元数据。 选中右侧的复选框可以在当前图表中隐藏或显示特定的实例。
 
@@ -101,7 +101,7 @@ Azure 时序见解 Gen2 支持对时序模型执行完整的创建、读取、�
 >
 > ![无数据通知](media/v2-update-explorer/tsi-preview-no-data-warning.png)
 
-## <a name="5-chart-panel"></a>5.图表面板
+## <a name="5-chart-panel"></a>5. 图表面板
 
 可以通过图表将时序实例显示为线条。 可以通过单击 Web 控件来折叠环境面板、数据模型和时间跨度控件面板，以使图表更大。
 
@@ -139,7 +139,7 @@ Azure 时序见解 Gen2 支持对时序模型执行完整的创建、读取、�
 
 在 [Power BI 连接器](concepts-power-bi.md)中详细了解“连接到 Power BI”选项。
 
-## <a name="6-time-editor-panel"></a>6.时间编辑器面板
+## <a name="6-time-editor-panel"></a>6. 时间编辑器面板
 
 使用 Azure 时序见解 Gen2 时，首先要选择一个时间跨度。 所选时间跨度将控制可使用 Azure 时序见解 Gen2 更新小组件操作的数据集。
 
@@ -164,7 +164,7 @@ Azure 时序见解 Gen2 支持对时序模型执行完整的创建、读取、�
 
    [![目标与来源选择面板](media/v2-update-explorer/to-and-from-element.png)](media/v2-update-explorer/to-and-from-element.png#lightbox)
 
-## <a name="7-app-bar"></a>7.应用栏
+## <a name="7-app-bar"></a>7. 应用栏
 
 Azure 时序见解 Gen2 导航面板显示在应用的顶部。 它提供以下功能：
 

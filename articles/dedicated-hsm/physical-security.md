@@ -10,14 +10,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: mbaldwin
-ms.openlocfilehash: ede1af4625d06af4e280eda86d09ae1db3dfdfd1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 8437d12075a148a3e8062f62e195bc019d89a85b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "70881022"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606957"
 ---
 # <a name="azure-dedicated-hsm-physical-security"></a>Azure 专用 HSM 物理安全性
 
@@ -25,7 +25,7 @@ Azure 专用 HSM 帮助满足密钥存储的高级安全要求。 它在整个�
 
 ## <a name="security-through-procurement"></a>采购安全性
 
-Microsoft 遵循安全的采购流程。 我们对保管链进行管理，确保订购和发运的特定设备与到达数据中心的设备完全一致。 这些设备采用防篡改塑料后盖。 在数据中心的数据库内执行委托之前，它们将存储在安全的存储区域中。  机架包含 HSM 设备，被视为具有严重业务影响 (HBI)。 设备已锁定，且前后始终处于视频监控之下。
+Microsoft 遵循安全的采购流程。 我们对保管链进行管理，确保订购和发运的特定设备与到达数据中心的设备完全一致。 设备位于序列化的防篡改事件塑料包和容器中。 在数据中心的数据库内执行委托之前，它们将存储在安全的存储区域中。  机架包含 HSM 设备，被视为具有严重业务影响 (HBI)。 设备已锁定，且前后始终处于视频监控之下。
 
 ## <a name="security-through-deployment"></a>部署安全性
 
@@ -49,7 +49,7 @@ HSM 属于硬件设备（HSM 实际是设备内的 PCI 卡），因此可能出�
 
 ## <a name="logical-level-security-considerations"></a>逻辑级别的安全注意事项
 
-将 HSM 预配到客户创建的虚拟网络中。 这是客户的专用 IUP 地址空间。  此配置可提供有价值的逻辑网络级别隔离，并确仅客户可进行访问。 这意味着所有逻辑级别的安全控制都由客户负责。
+HSM 预配到客户在客户专用 IP 地址空间内创建的虚拟网络。  此配置可提供有价值的逻辑网络级别隔离，并确仅客户可进行访问。 这意味着所有逻辑级别的安全控制都由客户负责。
 
 ## <a name="next-steps"></a>后续步骤
 

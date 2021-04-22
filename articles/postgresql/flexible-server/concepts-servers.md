@@ -1,17 +1,17 @@
 ---
 title: Azure Database for PostgreSQL 中的服务器 - 灵活服务器（预览版）
 description: 本文提供配置和管理 Azure Database for PostgreSQL（灵活服务器）的注意事项和指南。
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 5cd4454d5b77d18940f6693a25a691a01f4fedec
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 60edbcf97b43747246e84517cc65bb0dca4ff546
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90934756"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626837"
 ---
 # <a name="servers---azure-database-for-postgresql---flexible-server"></a>服务器 - Azure Database for PostgreSQL（灵活服务器）
 
@@ -42,8 +42,8 @@ Azure Database for PostgreSQL 服务器：
 
 以下元素有助于确保安全地访问数据库：
 
-|||
-|:--|:--|
+| 安全概念 | 说明 |
+| :-- | :-- |
 | **身份验证和授权** | Azure Database for PostgreSQL 服务器支持本机 PostgreSQL 身份验证。 可使用服务器的管理员登录名连接到服务器并进行身份验证。 |
 | 协议 | 该服务支持 PostgreSQL 使用的基于消息的协议。 |
 | **TCP/IP** | 通过 TCP/IP 和 Unix 域套接字支持该协议。 |

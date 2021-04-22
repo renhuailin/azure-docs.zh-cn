@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: tomfitz
-ms.openlocfilehash: 3f35f00e5fcd26c7aa4bb685dc80f48eabb88b6d
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 7e300f896bb11ed7c77738836f894cff41cc8bf3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102547928"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781822"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM 模板部署 What-if 操作
 
@@ -32,7 +32,7 @@ Install-Module -Name Az -Force
 
 ## <a name="install-azure-cli-module"></a>安装 Azure CLI 模块
 
-若要在 Azure CLI 中使用 what-if，则必须安装 Azure CLI 2.5.0 或更高版本。 如果需要，请[安装 Azure CLI 的最新版本](/cli/azure/install-azure-cli)。
+若要在 Azure CLI 中使用 what-if，则必须安装 Azure CLI 2.14.0 或更高版本。 如果需要，请[安装 Azure CLI 的最新版本](/cli/azure/install-azure-cli)。
 
 ## <a name="see-results"></a>查看结果
 
@@ -95,17 +95,17 @@ Resource changes: 1 to modify.
 
 若要在部署模板前预览更改，请使用：
 
-* [az deployment group what-if](/cli/azure/deployment/group#az-deployment-group-what-if)（适用于资源组部署）
-* [az deployment sub what-if](/cli/azure/deployment/sub#az-deployment-sub-what-if)（适用于订阅级别部署）
-* [az deployment mg what-if](/cli/azure/deployment/mg#az-deployment-mg-what-if)（适用于管理组部署）
-* [az deployment tenant what-if](/cli/azure/deployment/tenant#az-deployment-tenant-what-if)（适用于租户部署）
+* [az deployment group what-if](/cli/azure/deployment/group#az_deployment_group_what_if)（适用于资源组部署）
+* [az deployment sub what-if](/cli/azure/deployment/sub#az_deployment_sub_what_if)（适用于订阅级别部署）
+* [az deployment mg what-if](/cli/azure/deployment/mg#az_deployment_mg_what_if)（适用于管理组部署）
+* [az deployment tenant what-if](/cli/azure/deployment/tenant#az_deployment_tenant_what_if)（适用于租户部署）
 
 可以使用 `--confirm-with-what-if` 开关（或其缩写形式 `-c`）预览更改，并让系统显示是否继续部署的提示。 将此开关添加到：
 
-* [az 部署组创建](/cli/azure/deployment/group#az-deployment-group-create)
-* [az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create)。
-* [az deployment mg create](/cli/azure/deployment/mg#az-deployment-mg-create)
-* [az deployment tenant create](/cli/azure/deployment/tenant#az-deployment-tenant-create)
+* [az 部署组创建](/cli/azure/deployment/group#az_deployment_group_create)
+* [az deployment sub create](/cli/azure/deployment/sub#az_deployment_sub_create)。
+* [az deployment mg create](/cli/azure/deployment/mg#az_deployment_mg_create)
+* [az deployment tenant create](/cli/azure/deployment/tenant#az_deployment_tenant_create)
 
 例如，对于资源组部署，请使用 `az deployment group create --confirm-with-what-if` 或 `-c`。
 
@@ -364,17 +364,17 @@ Scope: /subscriptions/./resourceGroups/ExampleGroup
 
       id:
 "/subscriptions/./resourceGroups/ExampleGroup/providers/Microsoft.Network/virtualNet
-works/vnet-001"
-      location:        "centralus"
-      name:            "vnet-001"
-      tags.CostCenter: "12345"
-      tags.Owner:      "Team A"
-      type:            "Microsoft.Network/virtualNetworks"
+works/vnet-001&quot;
+      location:        &quot;centralus&quot;
+      name:            &quot;vnet-001&quot;
+      tags.CostCenter: &quot;12345&quot;
+      tags.Owner:      &quot;Team A&quot;
+      type:            &quot;Microsoft.Network/virtualNetworks&quot;
 
 Resource changes: 1 to delete.
 
 Are you sure you want to execute the deployment?
-[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"):
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is &quot;Y"):
 ```
 
 你会看到预期的更改，并且可以确认你想要运行此部署。

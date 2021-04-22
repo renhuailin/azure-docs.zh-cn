@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 02/03/2021
 ms.openlocfilehash: cbf070dce056795ad8e4a5f3e4d609e7d36d631e
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103200810"
 ---
 # <a name="understanding-resource-sets"></a>了解资源集
@@ -66,7 +66,7 @@ Azure Purview 支持以下资源集模式。 这些模式可能显示为目录�
 
 | 模式名称 | 显示名称 | 说明 |
 |--------------|--------------|-------------|
-| Guid         | {GUID}       | [RFC 4122](https://tools.ietf.org/html/rfc4122) 中定义的全局唯一标识符 |
+| GUID         | {GUID}       | [RFC 4122](https://tools.ietf.org/html/rfc4122) 中定义的全局唯一标识符 |
 | Number       | {N}          | 一个或多个数字 |
 | 日期/时间格式 | {Year}{Month}{Day}{N}     | 我们支持各种日期/时间格式，但所有格式采用 {Year}[delimiter]{Month}[delimiter]{Day} 或 {N} 系列表示形式。 |
 | 4ByteHex     | {HEX}        | 一个 4 位数的十六进制数。 |
@@ -104,7 +104,7 @@ Azure Purview 支持以下资源集模式。 这些模式可能显示为目录�
 
 ## <a name="known-issues-with-resource-sets"></a>资源集的已知问题
 
-尽管资源集在大多数情况下可正常工作，但你可能会在 Azure Purview 中遇到以下问题：
+尽管资源集在大多数情况下都能正常工作，但也可能出现以下问题，其中 Azure Purview：
 
 - 错误地将资产标记为资源集
 - 将资产放入错误的资源集

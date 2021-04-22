@@ -11,22 +11,22 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 2b264da06cf5088da07ec91cfa40c4babfde4c38
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 64015f1f2d6fc3438e55cbdc146ba83492b332e2
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102219057"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106066086"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习训练环境
 
 本文介绍如何在 Azure 机器学习中使用虚拟网络保护训练环境。
 
-本文是由五部分组成的系列文章的第三部分，指导你如何保护 Azure 机器学习工作流。 强烈建议您通读第 [一部分： VNet 概述](how-to-network-security-overview.md) 以首先了解总体体系结构。 
+本文是由五部分组成的系列文章的第三部分，指导你如何保护 Azure 机器学习工作流。 强烈建议先通读[第 1 部分：VNet 概述](how-to-network-security-overview.md)，了解总体体系结构。 
 
 请参阅本系列中的其他文章：
 
-[1. VNet 概述](how-to-network-security-overview.md)  >  [2。保护工作区](how-to-secure-workspace-vnet.md)  >  **3。保护定型环境**  >  [4。保护推断环境](how-to-secure-inferencing-vnet.md)   >  [5。启用 studio 功能](how-to-enable-studio-virtual-network.md)
+[1.VNet 概述](how-to-network-security-overview.md) > [2.保护工作区](how-to-secure-workspace-vnet.md) > **3.保护训练环境** > [4.保护推理环境](how-to-secure-inferencing-vnet.md)  > [5.启用工作室功能](how-to-enable-studio-virtual-network.md)
 
 本文介绍如何在虚拟网络中保护以下训练计算资源：
 > [!div class="checklist"]
@@ -38,7 +38,7 @@ ms.locfileid: "102219057"
 
 ## <a name="prerequisites"></a>先决条件
 
-+ 阅读 [网络安全概述](how-to-network-security-overview.md) 一文，了解常见的虚拟网络方案和总体虚拟网络体系结构。
++ 阅读[网络安全概述](how-to-network-security-overview.md)一文，了解常见的虚拟网络方案和总体虚拟网络体系结构。
 
 + 用于计算资源的现有虚拟网络和子网。
 
@@ -59,7 +59,7 @@ ms.locfileid: "102219057"
 > * 为计算实例或群集指定的子网必须具有足够的未分配 IP 地址，以容纳目标 VM 数目。 如果该子网没有足够的未分配 IP 地址，则只会为计算群集分配一部分资源。
 > * 检查对虚拟网络的订阅或资源组实施的安全策略或锁定是否限制了管理虚拟网络所需的权限。 如果你打算通过限制流量来保护虚拟网络，请为计算服务保持打开某些端口。 有关详细信息，请参阅[所需的端口](#mlcports)部分。
 > * 若要将多个计算实例或群集放入一个虚拟网络，可能需要请求提高一个或多个资源的配额。
-> * 如果工作区的一个或多个 Azure 存储帐户也在虚拟网络中受保护，它们必须与 Azure 机器学习计算实例或群集位于同一虚拟网络中。 
+> * 如果工作区的一个或多个 Azure 存储帐户也在虚拟网络中受保护，它们必须与 Azure 机器学习计算实例或群集位于同一虚拟网络和子网中。 
 > * 为了让计算实例 Jupyter 功能可以正常运行，请确保没有禁用 Web 套接字通信。 请确保网络允许到 *.instances.azureml.net 和 *.instances.azureml.ms 的 websocket 连接。 
 > * 在专用链接工作区中部署计算实例时，只能从虚拟网络内部访问。 如果使用自定义 DNS 或主机文件，请为 `<instance-name>.<region>.instances.azureml.ms` 添加一个条目，该条目具有工作区专用终结点的专用 IP 地址。 有关详细信息，请参阅[自定义 DNS](./how-to-custom-dns.md) 一文。
 > * 用于部署计算群集/实例的子网不应委托给 ACI 等任何其他服务
@@ -74,7 +74,7 @@ ms.locfileid: "102219057"
 > * 一个负载均衡器
 > 
 > 对于群集，每当群集纵向缩减为 0 个节点时，这些资源都会被删除（并重新创建）；但对于实例，这些资源会一直保留到实例完全删除（停止并不会删除资源）。 
-> 这些资源受订阅的[资源配额](../azure-resource-manager/management/azure-subscription-service-limits.md)限制。 如果虚拟网络资源组被锁定，则删除计算群集/实例将会失败。 在删除计算群集/实例之前，无法删除负载均衡器。 另外，请确保不存在禁止创建网络安全组的 Azure 策略。
+> 这些资源受订阅的[资源配额](../azure-resource-manager/management/azure-subscription-service-limits.md)限制。 如果虚拟网络资源组被锁定，则删除计算群集/实例将失败。 在删除计算群集/实例之前，无法删除负载均衡器。 另外，请确保不存在禁止创建网络安全组的 Azure 策略。
 
 
 ### <a name="required-ports"></a><a id="mlcports"></a> 所需端口
@@ -93,7 +93,7 @@ Batch 服务在附加到 VM 的网络接口 (NIC) 级别添加网络安全组 (N
 
 - 任何端口上通往 Internet 的出站流量。
 
-- 对于端口 44224 上的来自 __AzureMachineLearning__ 服务标记的计算实例入站 TCP 流量。 通过此端口的流量经过加密，并 Azure 机器学习用于与计算实例上运行的应用程序进行通信。
+- 对于端口 44224 上的来自 __AzureMachineLearning__ 服务标记的计算实例入站 TCP 流量。 通过此端口的流量经过加密，由 Azure 机器学习用于与计算实例上运行的应用程序通信。
 
 > [!IMPORTANT]
 > 在 Batch 配置的 NSG 中修改或添加入站或出站规则时，请务必小心。 如果 NSG 阻止与计算节点通信，则计算服务会将计算节点的状态设置为不可用。
@@ -163,15 +163,15 @@ Batch 服务在附加到 VM 的网络接口 (NIC) 级别添加网络安全组 (N
 
 * 使用[虚拟网络 NAT](../virtual-network/nat-overview.md)。 NAT 网关为虚拟网络中的一个或多个子网提供出站 Internet 连接。 有关信息，请参阅[设计使用 NAT 网关资源的虚拟网络](../virtual-network/nat-gateway-resource.md)。
 
-* 将[用户定义的路由 (UDR)](../virtual-network/virtual-networks-udr-overview.md) 添加到包含计算资源的子网。 为资源所在区域中的 Azure Batch 服务使用的每个 IP 地址建立一个 UDR。 借助这些 UDR，Batch 服务可以与计算节点进行通信，以便进行任务计划编制。 另外，请添加 Azure 机器学习服务的 IP 地址，因为访问计算实例需要此地址。 为 Azure 机器学习服务添加 IP 时，必须为 __主要和辅助__ Azure 区域添加 ip。 主要区域是工作区所在的区域。
+* 将[用户定义的路由 (UDR)](../virtual-network/virtual-networks-udr-overview.md) 添加到包含计算资源的子网。 为资源所在区域中的 Azure Batch 服务使用的每个 IP 地址建立一个 UDR。 借助这些 UDR，Batch 服务可以与计算节点进行通信，以便进行任务计划编制。 还要添加 Azure 机器学习服务的 IP 地址，因为这是访问计算实例所必需的。 添加 Azure 机器学习服务的 IP 时，必须同时添加主要和次要 Azure 区域的 IP。 主要区域是工作区所在的区域。
 
-    若要查找次要区域，请参阅 [使用 Azure 配对区域确保业务连续性 & 灾难恢复](../best-practices-availability-paired-regions.md#azure-regional-pairs)。 例如，如果 Azure 机器学习服务位于美国东部2，则次要区域是美国中部。 
+    若要查找次要区域，请参阅[使用 Azure 配对区域确保业务连续性和灾难恢复](../best-practices-availability-paired-regions.md#azure-regional-pairs)。 例如，如果 Azure 机器学习服务位于美国东部 2，则次要区域是美国中部。 
 
     若要获取 Batch 服务和 Azure 机器学习服务的 IP 地址列表，请使用以下方法之一：
 
     * 下载 [Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)，并在文件中搜索 `BatchNodeManagement.<region>` 和 `AzureMachineLearning.<region>`（其中 `<region>` 是你的 Azure 区域）。
 
-    * 使用 [Azure CLI](/cli/azure/install-azure-cli) 下载信息。 下面的示例将下载 IP 地址信息，并筛选出美国东部2区域的信息 (主要) 和美国中部区域 (辅助) ：
+    * 使用 [Azure CLI](/cli/azure/install-azure-cli) 下载信息。 下面的示例下载 IP 地址信息，并筛选掉美国东部 2 区域（主要）和美国中部区域（次要）的信息：
 
         ```azurecli-interactive
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
@@ -321,9 +321,11 @@ except ComputeTargetException:
 
 ## <a name="next-steps"></a>后续步骤
 
-本文是由五部分组成的虚拟网络系列中的第三部分。 若要了解如何保护虚拟网络，请参阅其余文章：
+虚拟网络系列文章由五部分构成，本文是第三部分。 若要了解如何保护虚拟网络，请参阅其余文章：
 
-* [第1部分：虚拟网络概述](how-to-network-security-overview.md)
+* [第 1 部分：虚拟网络概述](how-to-network-security-overview.md)
 * [第 2 部分：保护工作区资源](how-to-secure-workspace-vnet.md)
 * [第 4 部分：保护推理环境](how-to-secure-inferencing-vnet.md)
-* [第5部分：启用 studio 功能](how-to-enable-studio-virtual-network.md)
+* [第 5 部分：启用工作室功能](how-to-enable-studio-virtual-network.md)
+
+另请参阅有关使用[自定义 DNS](how-to-custom-dns.md) 进行名称解析的文章。

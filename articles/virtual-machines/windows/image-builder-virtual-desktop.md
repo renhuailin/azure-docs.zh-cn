@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-windows
 ms.collection: windows
 ms.subservice: imaging
-ms.openlocfilehash: 01b253747791fc29abf4434bebfd85865099f9ee
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 69718b219d239ac13e5d932b05a7dd29619adaa3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103602012"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105045580"
 ---
 # <a name="create-a-windows-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>使用 Azure VM 映像生成器和 PowerShell 创建 Windows 虚拟桌面映像
 
@@ -22,11 +22,11 @@ ms.locfileid: "103602012"
 
 * 安装 [FsLogix](https://github.com/DeanCefola/Azure-WVD/blob/master/PowerShell/FSLogixSetup.ps1)。
 * 从社区存储库运行 [Windows 虚拟桌面优化脚本](https://github.com/The-Virtual-Desktop-Team/Virtual-Desktop-Optimization-Tool)。
-* 安装 [Microsoft Teams](https://docs.microsoft.com/azure/virtual-desktop/teams-on-wvd)。
-* [重启](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#windows-restart-customizer)
-* 运行 [Windows 更新](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#windows-update-customizer)
+* 安装 [Microsoft Teams](../../virtual-desktop/teams-on-wvd.md)。
+* [重启](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-restart-customizer)
+* 运行 [Windows 更新](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-update-customizer)
 
-我们将向你展示如何使用 Azure VM 映像生成器自动完成此操作，并将映像分发到[共享映像库](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)，你可以在此库中将映像复制到其他区域、控制规模以及在组织内部和外部分享映像。
+我们将向你展示如何使用 Azure VM 映像生成器自动完成此操作，并将映像分发到[共享映像库](../shared-image-galleries.md)，你可以在此库中将映像复制到其他区域、控制规模以及在组织内部和外部分享映像。
 
 
 为了简化映像生成器配置的部署，本示例使用嵌套了图像生成器模板的 Azure 资源管理器模板。 这可以提供一些其他优点，例如变量和参数输入。 还可以从命令行传递参数。
@@ -69,11 +69,11 @@ ms.locfileid: "103602012"
     ```
 - 测试：请提前在独立 VM 上测试你的代码，确保没有用户提示，你使用的权限正确，等等。
 
-- 网络 - `Set-NetAdapterAdvancedProperty`。 已在优化脚本中设定此设置，但 AIB 生成失败，因为其断开了网络连接，此条目已被注释掉。正在调查此问题。
+- 网络 - `Set-NetAdapterAdvancedProperty`。 已在优化脚本中设定此设置，但 AIB 生成失败，因为其断开了网络连接，此条目被注释掉。正在调查此问题。
 
 ## <a name="prerequisites"></a>先决条件
 
-必须安装最新的 Azure PowerShell Cmdlet，请参阅[此处](https://docs.microsoft.com/powershell/azure/overview)了解安装详细信息。
+必须安装最新的 Azure PowerShell Cmdlet，请参阅[此处](/powershell/azure/overview)了解安装详细信息。
 
 ```PowerShell
 # Register for Azure Image Builder Feature
@@ -279,7 +279,7 @@ $getStatus.LastRunStatusMessage
 $getStatus.LastRunStatusRunSubState
 ```
 ## <a name="create-a-vm"></a>创建 VM
-生成完成后，可以从映像生成 VM，使用[此处](https://docs.microsoft.com/powershell/module/az.compute/new-azvm#examples)的示例。
+生成完成后，可以从映像生成 VM，使用[此处](/powershell/module/az.compute/new-azvm#examples)的示例。
 
 ## <a name="clean-up"></a>清理
 

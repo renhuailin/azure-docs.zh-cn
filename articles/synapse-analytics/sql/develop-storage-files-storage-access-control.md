@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 726395e9f004130699dab061cfa752a2e516c834
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 266a6c27261107b883fdc0c1cdd274e6345de6db
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552948"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483446"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中控制无服务器 SQL 池对存储帐户的访问
 
@@ -23,6 +23,13 @@ ms.locfileid: "106552948"
 - **SQL 服务级别** - 用户应已被授予使用 [外部表](develop-tables-external-tables.md)读取数据或执行 `OPENROWSET` 函数的权限。 在此部分中详细了解[所需权限](develop-storage-files-overview.md#permissions)。
 
 本文介绍可用的凭据类型，以及为 SQL 和 Azure AD 用户进行的凭据查找是如何执行的。
+
+## <a name="storage-permissions"></a>存储权限
+
+Synapse Analytics 工作区中的无服务器 SQL 池可以读取 Azure Data Lake Storage 中存储的文件的内容。 需要配置存储的权限让执行 SQL 查询的用户能够读取文件。 有三种方法可用于启用文件的访问权限：
+- **[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md)** ：通过它能够将角色分配给存储所在的租户中的某些 Azure AD 用户。 RBAC 角色可分配给 Azure AD 用户。 读取者必须具有`Storage Blob Data Reader`、`Storage Blob Data Contributor`或`Storage Blob Data Owner`角色。 写入 Azure 存储中数据的用户必须具有`Storage Blob Data Writer`或`Storage Blob Data Owner`角色。 请注意`Storage Owner`角色并不意味着用户也是`Storage Data Owner`。
+- **访问控制列表 (ACL)** ：通过它能够为 Azure 存储中的文件和目录定义精细的权限模型。 ACL 可分配给 Azure AD 用户。 如果读取者要读取 Azure 存储中某个路径上的文件，则其必须具有文件路径中的每个文件夹的执行 (X) ACL 权限，以及文件夹的读取 (R) ACL 权限。 [详细了解如何设置存储层中的 ACL 权限](../../storage/blobs/data-lake-storage-access-control.md#how-to-set-acls)
+- **共享访问签名 (SAS)** ：使读取者能够使用限时令牌访问 Azure Data Lake Storage 上的文件。 读取者甚至无需进行 Azure AD 用户身份验证。 SAS 令牌包含授予读取者的权限以及令牌的有效期限。 SAS 令牌是任何不需要位于同一 Azure AD 租户中的用户进行时间限制的访问的好选择。 可以在存储帐户或特定目录上定义 SAS 令牌。 若要详细了解 SAS 令牌，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的受限访问权限](../../storage/common/storage-sas-overview.md)。
 
 ## <a name="supported-storage-authorization-types"></a>支持的存储授权类型
 
@@ -79,7 +86,7 @@ ms.locfileid: "106552948"
 | ------------------------------------- | ------------- | -----------    |
 | [用户标识](?tabs=user-identity#supported-storage-authorization-types)       | 不支持 | 支持      |
 | [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)       | 支持     | 支持      |
-| [托管标识](?tabs=managed-identity#supported-storage-authorization-types) | 不支持 | 支持      |
+| [托管标识](?tabs=managed-identity#supported-storage-authorization-types) | 支持 | 支持      |
 
 ### <a name="supported-storages-and-authorization-types"></a>支持的存储和授权类型
 
@@ -103,7 +110,7 @@ ms.locfileid: "106552948"
 
 #### <a name="user-identity"></a>用户标识
 
-若要通过用户标识访问受防火墙保护的存储，可以使用 PowerShell 模块 Az.Storage。
+若要通过用户标识访问受防火墙保护的存储，可以使用 Azure 门户 UI 或 PowerShell 模块 Az.Storage。
 #### <a name="configuration-via-azure-portal"></a>通过 Azure 门户配置
 
 1. 在 Azure 门户中搜索你的存储帐户。

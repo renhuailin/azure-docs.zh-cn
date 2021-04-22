@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 1b2418b248e995b0f64eec82ccb477b15583c81e
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: f9215469b1436ce9dc95c140e6969366d80d1ced
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103562325"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105607127"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>发行说明：语音设备 SDK
 
@@ -25,7 +25,7 @@ ms.locfileid: "103562325"
 
 - 已升级到新的 Microsoft 音频堆栈 (MAS)，并改进了语音波束赋形和降噪。
 - 根据目标，将二进制文件大小减小到 70%。
-- 支持[二进制版本](https://aka.ms/sdsdk-download-APAudio)的 [Azure Percept Audio](https://docs.microsoft.com/azure/azure-percept/overview-azure-percept-audio)。
+- 支持[二进制版本](https://aka.ms/sdsdk-download-APAudio)的 [Azure Percept Audio](../../azure-percept/overview-azure-percept-audio.md)。
 - 将[语音 SDK](./speech-sdk.md) 组件更新到了 1.15.0 版。 有关详细信息，请参阅其[发行说明](./releasenotes.md)。
 
 ## <a name="speech-devices-sdk-1110"></a>语音设备 SDK 1.11.0：
@@ -107,7 +107,7 @@ ms.locfileid: "103562325"
 **重大更改**
 
 - 该版本中推出了大量重大更改。 有关 API 的详细信息，请查看[此页](https://aka.ms/csspeech/breakingchanges_1_0_0)。
-- KWS 模型文件与语音设备 SDK 1.0.1 不兼容。 将新的关键字文件写入设备后，将删除现有关键字文件。
+- 关键字识别模型文件与语音设备 SDK 1.0.1 不兼容。 将新的关键字文件写入设备后，将删除现有关键字文件。
 
 ## <a name="speech-devices-sdk-050-2018-aug-release"></a>语音设备 SDK 0.5.0：2018 年 8 月版本
 

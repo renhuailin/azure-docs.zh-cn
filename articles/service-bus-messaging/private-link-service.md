@@ -3,32 +3,30 @@ title: 将 Azure 服务总线与 Azure 专用链接服务集成
 description: 了解如何将 Azure 服务总线与 Azure 专用链接服务集成
 author: spelluru
 ms.author: spelluru
-ms.date: 10/07/2020
+ms.date: 03/29/2021
 ms.topic: article
-ms.openlocfilehash: 66de9a4ff65c73264257cb6f7f215fc15820c95f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 833d7e9fb4d517b71aab5039ae9081407eed84cd
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94427141"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960531"
 ---
 # <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>允许通过专用终结点访问 Azure 服务总线命名空间
 使用 Azure 专用链接服务，可以通过虚拟网络中的专用终结点访问 Azure 服务（例如 Azure 服务总线、Azure 存储和 Azure Cosmos DB）以及 Azure 托管的客户服务/合作伙伴服务。
-
-> [!IMPORTANT]
-> 通过 Azure 服务总线高级层支持此功能。 有关高级层的详细信息，请参阅[服务总线高级和标准消息传送层](service-bus-premium-messaging.md)。
 
 专用终结点是一个网络接口，可以通过专用且安全的方式将你连接到 Azure 专用链接支持的服务。 专用终结点使用 VNet 中的专用 IP 地址将服务有效接入 VNet 中。 发往服务的所有流量都可以通过专用终结点路由，因此不需要网关、NAT 设备、ExpressRoute 或 VPN 连接或公共 IP 地址。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 可以连接到 Azure 资源的实例，从而获得最高级别的访问控制粒度。
 
 有关详细信息，请参阅[什么是 Azure 专用链接？](../private-link/private-link-overview.md)
 
->[!WARNING]
-> 实施专用终结点可以阻止其他 Azure 服务与服务总线进行交互。 例外情况是，可以允许从某些受信任的服务访问服务总线资源，即使启用了专用终结点也是如此。 有关受信任服务的列表，请参阅[受信任服务](#trusted-microsoft-services)。
->
-> 以下 Microsoft 服务必须在虚拟网络中
-> - Azure 应用服务
-> - Azure Functions
+## <a name="important-points"></a>要点
+- 通过 Azure 服务总线高级层支持此功能。 有关高级层的详细信息，请参阅[服务总线高级和标准消息传送层](service-bus-premium-messaging.md)。
+- 实施专用终结点可以阻止其他 Azure 服务与服务总线进行交互。 例外情况是，可以允许从某些受信任的服务访问服务总线资源，即使启用了专用终结点也是如此。 有关受信任服务的列表，请参阅[受信任服务](#trusted-microsoft-services)。
 
+    以下 Microsoft 服务必须在虚拟网络中
+    - Azure 应用服务
+    - Azure Functions
+- 为命名空间指定至少一个 IP 规则或虚拟网络规则，以便仅允许来自虚拟网络的指定 IP 地址或子网的流量。 如果没有 IP 和虚拟网络规则，则可以通过公共 Internet（使用访问密钥）访问命名空间。 
 
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>使用 Azure 门户添加专用终结点
@@ -51,15 +49,16 @@ ms.locfileid: "94427141"
 1. 登录 [Azure 门户](https://portal.azure.com)。 
 2. 在搜索栏中键入“服务总线”。
 3. 从列表中选择要将专用终结点添加到的“命名空间”。
-2. 在左侧菜单上，选择“设置”下的“网络”选项 。 
-
+2. 在左侧菜单上，选择“设置”下的“网络”选项 。     默认情况下，“选定网络”选项处于选中状态。
+ 
     > [!NOTE]
     > 只会为“高级”命名空间显示“网络”选项卡 。  
-    
-    默认情况下，“选定网络”选项处于选中状态。 如果未在此页上添加至少一个 IP 防火墙规则或虚拟网络，则可以通过公共 Internet（使用访问密钥）访问该命名空间。
-
+   
     :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="网络页面 - 默认" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
-    
+
+    > [!WARNING]
+    > 如果未在此页上添加至少一个 IP 防火墙规则或虚拟网络，则可以通过公共 Internet（使用访问密钥）访问该命名空间。
+   
     如果选择“所有网络”选项，则服务总线命名空间接受来自任何 IP 地址的连接（使用访问密钥）。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。 
 
     ![防火墙 - 选中了“所有网络”选项](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)

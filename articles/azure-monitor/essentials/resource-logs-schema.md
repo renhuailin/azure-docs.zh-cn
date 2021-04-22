@@ -4,10 +4,10 @@ description: 了解 Azure 资源日志支持的服务和事件架构。
 ms.topic: reference
 ms.date: 09/01/2020
 ms.openlocfilehash: 661cba2d78dbb176bb04e6831cf8e045a285535e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102033089"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Azure 资源日志的通用架构和特定于服务的架构
@@ -38,7 +38,7 @@ ms.locfileid: "102033089"
 | correlationId | 可选 | 用于将一组相关事件组合在一起的 GUID。 通常，如果两个事件的 operationName 相同但状态不同（例如，状态分别为“Started”和“Succeeded”），则它们共享相同的相关 ID。 这也可以代表事件之间的其他关系。 |
 | identity | 可选 | 描述执行操作的用户或应用程序的标识的 JSON Blob。 通常，此字段包括 Active Directory 中的授权和声明/JWT 令牌。 |
 | Level | 可选 | 事件的严重级别。 必须是信息性、警告、错误或严重。 |
-| location | 可选 | 发出事件的资源的区域，例如 "美国东部" 或 "法国南部" |
+| location | 可选 | 发出事件的资源区域，例如“美国东部”或“法国南部” |
 | properties | 可选 | 与此特定类别的事件相关的任何扩展属性。 所有自定义/唯一属性都必须放入此架构的“B 部分”。 |
 
 ## <a name="service-specific-schemas"></a>特定于服务的架构
@@ -56,11 +56,11 @@ ms.locfileid: "102033089"
 | Azure Batch |[Azure Batch 日志记录](../../batch/batch-diagnostics.md) |
 | 认知服务 | [Azure 认知服务的日志记录](../../cognitive-services/diagnostic-logging.md) |
 | 容器注册表 | [Azure 容器注册表的日志记录](../../container-registry/container-registry-diagnostics-audit-logs.md) |
-| 内容分发网络 | [用于 CDN 的 Azure 日志](../../cdn/cdn-azure-diagnostic-logs.md) |
+| 内容分发网络 | [CDN 的 Azure 日志](../../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Azure Cosmos DB 日志记录](../../cosmos-db/monitor-cosmos-db.md) |
 | Data Factory | [使用 Azure Monitor 监视数据工厂](../../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[访问 Azure Data Lake Analytics 的日志](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
-| Data Lake Store |[访问 Azure Data Lake Store 的日志](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
+| Data Lake Store |[访问 Azure Data Lake Storage 的日志](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
 | Azure 数据资源管理器 | [Azure 数据资源管理器日志](/azure/data-explorer/using-diagnostic-logs) |
 | Azure Database for MySQL | [Azure Database for MySQL 诊断日志](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Azure Database for PostgreSQL 日志](../../postgresql/concepts-server-logs.md#resource-logs) |
@@ -69,14 +69,14 @@ ms.locfileid: "102033089"
 | 事件中心 |[Azure 事件中心日志](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | Express Route | 架构不可用。 |
 | Azure 防火墙 | 架构不可用。 |
-| Front Door | [前门日志记录](../../frontdoor/front-door-diagnostics.md) |
+| Front Door | [Front Door 的日志记录](../../frontdoor/front-door-diagnostics.md) |
 | IoT 中心 | [IoT 中心操作](../../iot-hub/monitor-iot-hub-reference.md#resource-logs) |
 | 密钥保管库 |[Azure 密钥保管库日志记录](../../key-vault/general/logging.md) |
 | Kubernetes 服务 |[Azure Kubernetes 日志记录](../../aks/view-control-plane-logs.md#log-event-schema) |
 | 负载均衡器 |[Azure 负载均衡器的 Log Analytics](../../load-balancer/load-balancer-monitor-log.md) |
 | 逻辑应用 |[逻辑应用 B2B 自定义跟踪架构](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | 网络安全组 |[网络安全组 (NSG) 的 Log Analytics](../../virtual-network/virtual-network-nsg-manage-log.md) |
-| DDoS 保护 | [Azure DDoS 保护标准日志记录](../../ddos-protection/diagnostic-logging.md#log-schemas) |
+| DDoS 保护 | [Azure DDoS 防护标准版的日志记录](../../ddos-protection/diagnostic-logging.md#log-schemas) |
 | Power BI 专用 | [Azure 中 Power BI Embedded 的日志记录](/power-bi/developer/azure-pbie-diag-logs) |
 | 恢复服务 | [Azure 备份的数据模型](../../backup/backup-azure-reports-data-model.md)|
 | 搜索 |[允许并使用搜索流量分析](../../search/search-traffic-analytics.md) |

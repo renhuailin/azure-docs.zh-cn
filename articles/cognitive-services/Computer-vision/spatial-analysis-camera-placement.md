@@ -10,16 +10,16 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 4c2d1cd1c73b377d85501fd31d0f5a1893df5183
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d58e4303078733eb1014171271d27907ff7a95b0
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102487403"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286260"
 ---
 # <a name="camera-placement-guide"></a>相机放置指南
 
-本文提供有关用于空间分析（公共预览版）的相机的放置建议。 其中包括一般指导原则，以及高度、角度和相机至焦点距离方面的，与全部所含操作相关的具体建议。 
+本文提供有关用于空间分析（公共预览版）的相机放置建议。 其中包括一般指导原则，以及高度、角度和相机至焦点距离方面的，与全部所含操作相关的具体建议。 
 
 > [!NOTE]
 > 本指南适用于 Axis M3045-V 相机。 此相机使用 1920x1080 分辨率、106 度水平视场、59 度垂直视场和固定的 2.8 毫米焦距。 以下原则适用于所有相机，不过，在对其他相机运用时，需要在相机高度和相机至焦点距离方面调整具体的指导原则。 
@@ -37,7 +37,7 @@ ms.locfileid: "102487403"
 
 ## <a name="height-focal-point-distance-and-angle"></a>高度、焦点距离和角度
 
-在确定如何安装用于空间分析的相机时，需要考虑三个事项：
+在确定如何安装用于空间分析的相机时，你需要考虑三个点：
 - 相机高度
 - 相机至焦点的距离
 - 相机相对于地平面的角度

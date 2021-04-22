@@ -5,12 +5,12 @@ description: 了解如何为 Azure Kubernetes 服务 (AKS) 群集更新或重置
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 84cadc54a11c2e57d73fd1f06e98deb3d599d648
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 91d40a5a738737098b0941bf3e41e4edd515e6df
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102501169"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105640473"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>更新或轮换 Azure Kubernetes 服务 (AKS) 的凭据
 

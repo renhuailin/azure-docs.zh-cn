@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: c5c50787ef3e287d164e051ece26da4e83199d47
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 3a26f7c63b639f9aeb6a8f526e77dacb37fb4d87
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102555629"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106068058"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“客户”仪表板
 
@@ -163,6 +163,7 @@ ms.locfileid: "102555629"
 | CommerceRootCustomer | 商业根客户 | 一个计费帐户 ID 可以与多个客户 ID 相关联。<br>一个由计费帐户 ID 和客户 ID 形成的组合可以与多个商业市场订阅相关联。<br>“商业根客户”表示订阅的客户的名称。 | CommerceRootCustomer |
 | 客户 ID | 客户 ID | 分配给客户的唯一标识符。 一个客户可以有零个或零个以上的 Azure 市场订阅。 | CustomerId |
 | 计费帐户 ID | 计费帐户 ID | 针对其生成账单的帐户的标识符。 将“计费帐户 ID”映射到 customerID，以将“付款交易报表”与“客户”、“订单”和“使用情况报表”关联起来。 | BillingAccountId |
+| 客户类型 | 客户类型 | 此字段的值表示客户的类型。 可能的值包括：<ul><li>个人</li> <li>organization</li></ul> | CustomerType |
 |||||
 
 ### <a name="customers-page-filters"></a>“客户”页筛选器

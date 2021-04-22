@@ -1,6 +1,6 @@
 ---
 title: 连接到必应搜索
-description: 使用 Azure 逻辑应用自动执行查找结果的任务和工作流必应搜索
+description: 使用 Azure 逻辑应用自动执行在必应搜索中查找结果的任务和工作流
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
 ms.openlocfilehash: 306298e4338665ef52add7f46d6da8675c97c3e2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101716544"
 ---
-# <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用查找必应搜索中的结果
+# <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用在必应搜索中查找结果
 
 本文演示如何使用必应搜索连接器从逻辑应用中通过必应搜索查找新闻、视频和其他项。 通过这样的方式可以创建逻辑应用，自动执行处理搜索结果的任务和工作流，并使这些项可用于其他操作。 
 
@@ -50,13 +50,13 @@ ms.locfileid: "101716544"
 
    对于此示例，请提供从必应搜索返回匹配的新闻文章的条件。
 
-   | 属性 | 必选 | Value | 说明 |
+   | 属性 | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
-   | 搜索查询 | 是 | <*搜索词*> | 输入要使用的搜索关键字。 |
+   | 搜索查询 | 是 | <search-words> | 输入要使用的搜索关键字。 |
    | 市场 | 是 | <*locale*> | 搜索区域设置。 默认为“zh-CN”，但可以选择另一个值。 |
-   | 安全搜索 | 是 | <*搜索级别*> | 用于排除成人内容的筛选级别。 默认为“中等”，但可以选择另一个级别。 |
-   | 计数 | 否 | <*结果-计数*> | 返回指定数量的结果。 默认为 20，但可以指定另一个值。 实际返回的结果数可能会少于指定的数量。 |
-   | Offset | 否 | <*skip-值*> | 返回结果前要跳过的结果数 |
+   | 安全搜索 | 是 | <search-level> | 用于排除成人内容的筛选级别。 默认为“中等”，但可以选择另一个级别。 |
+   | Count | 否 | <results-count> | 返回指定数量的结果。 默认为 20，但可以指定另一个值。 实际返回的结果数可能会少于指定的数量。 |
+   | Offset | 否 | <skip-value> | 返回结果前要跳过的结果数 |
    |||||
 
    例如：
@@ -77,11 +77,11 @@ ms.locfileid: "101716544"
 
 1. 在 Azure 门户或 Visual Studio 的逻辑应用设计器中打开逻辑应用。 此示例使用 Azure 门户。
 
-2. 在触发器或操作下，选择 "**新建步骤**" "  >  **添加操作**"。
+2. 在该触发器或操作下，选择“新建步骤” > “添加操作” 。
 
    此示例使用以下触发器：
 
-   **必应搜索-新新闻文章**
+   必应搜索 - 关于新增新闻文章
 
    ![添加操作](./media/connectors-create-api-bing-search/add-action.png)
 
@@ -93,7 +93,7 @@ ms.locfileid: "101716544"
 
    此示例使用以下操作：
 
-   **必应搜索-按查询列出新闻**
+   必应搜索 - 按查询列出新闻
 
    ![查找必应搜索操作](./media/connectors-create-api-bing-search/bing-search-select-action.png)
 
@@ -101,19 +101,19 @@ ms.locfileid: "101716544"
 
    对于此示例，提供返回触发器结果子集的条件。
 
-   | 属性 | 必选 | Value | 说明 |
+   | 属性 | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
-   | 搜索查询 | 是 | <*搜索表达式*> | 输入用于查询触发器结果的表达式。 可以从动态内容列表的字段中进行选择，或使用表达式生成器创建表达式。 |
+   | 搜索查询 | 是 | <search-expression> | 输入用于查询触发器结果的表达式。 可以从动态内容列表的字段中进行选择，或使用表达式生成器创建表达式。 |
    | 市场 | 是 | <*locale*> | 搜索区域设置。 默认为“zh-CN”，但可以选择另一个值。 |
-   | 安全搜索 | 是 | <*搜索级别*> | 用于排除成人内容的筛选级别。 默认为“中等”，但可以选择另一个级别。 |
-   | 计数 | 否 | <*结果-计数*> | 返回指定数量的结果。 默认为 20，但可以指定另一个值。 实际返回的结果数可能会少于指定的数量。 |
-   | Offset | 否 | <*skip-值*> | 返回结果前要跳过的结果数 |
+   | 安全搜索 | 是 | <search-level> | 用于排除成人内容的筛选级别。 默认为“中等”，但可以选择另一个级别。 |
+   | Count | 否 | <results-count> | 返回指定数量的结果。 默认为 20，但可以指定另一个值。 实际返回的结果数可能会少于指定的数量。 |
+   | Offset | 否 | <skip-value> | 返回结果前要跳过的结果数 |
    |||||
 
    例如，假设需要类别名称包含单词“tech”的结果。
 
    1. 在“搜索查询”框中单击，以显示动态内容列表。 
-   从该列表中选择 " **表达式** "，以便显示 "表达式生成器"。 
+   从该列表中选择“表达式”，以显示表达式生成器。 
 
       ![必应搜索触发器](./media/connectors-create-api-bing-search/bing-search-action.png)
 
@@ -148,11 +148,11 @@ ms.locfileid: "101716544"
 
 1. 系统提示输入连接信息时，请提供以下详细信息：
 
-   | 属性 | 必选 | Value | 说明 |
+   | 属性 | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | 连接名称 | 是 | <*connection-name*> | 将要为连接创建的名称 |
-   | API 版本 | 是 | <*API 版本*> | 默认情况下，必应搜索 API 版本设置为当前版本。 可以根据需要选择早期版本。 |
-   | API 密钥 | 是 | <*API 密钥*> | 之前获取的必应搜索 API 密钥。 如果没有密钥，请立刻获取 [API 密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)。 |  
+   | API 版本 | 是 | <API-version> | 默认情况下，必应搜索 API 版本设置为当前版本。 可以根据需要选择早期版本。 |
+   | API 密钥 | 是 | <API-key> | 之前获取的必应搜索 API 密钥。 如果没有密钥，请立刻获取 [API 密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)。 |  
    |||||  
 
    例如：

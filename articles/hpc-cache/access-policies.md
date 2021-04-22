@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 03/11/2021
 ms.author: v-erkel
 ms.openlocfilehash: eb9e71cc8ec463077e3b12b8738203a4945a2eab
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103471774"
 ---
 # <a name="control-client-access"></a>控制客户端访问
@@ -29,7 +29,7 @@ ms.locfileid: "103471774"
 
 使用 Azure 门户中的“客户端访问策略”页来创建和管理策略。 <!-- is there AZ CLI for this? -->
 
-[![“客户端访问策略”页的屏幕截图。定义了多个策略，其中某些策略已展开以显示其规则](media/policies-overview.png)](media/policies-overview.png#lightbox)
+[![“客户端访问策略”页的屏幕截图。定义了多个策略，其中某些策略已展开并显示了其规则](media/policies-overview.png)](media/policies-overview.png#lightbox)
 
 每个策略由规则构成。 规则按照从最小范围（主机）到最大范围（默认）的顺序应用于主机。 将应用匹配的第一个规则，并忽略后面的规则。
 

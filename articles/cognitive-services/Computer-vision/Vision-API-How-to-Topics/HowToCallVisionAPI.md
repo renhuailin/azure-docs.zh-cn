@@ -1,9 +1,9 @@
 ---
-title: 调用计算机视觉 API
+title: 调用图像分析 API
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用 Azure 认知服务中的 REST API 调用计算机视觉 API。
+description: 了解如何调用图像分析 API 并配置其行为。
 services: cognitive-services
-author: KellyDF
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
@@ -11,144 +11,71 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: abb367b64da0811a1ff46efe60b60485375f809f
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 3f9a6afe3202df40e26332c3a8c91b8c3eca8a32
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102486057"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012262"
 ---
-# <a name="call-the-computer-vision-api"></a>调用计算机视觉 API
+# <a name="call-the-image-analysis-api"></a>调用图像分析 API
 
-本文演示如何使用 REST API 调用计算机视觉 API。 示例是使用计算机视觉 API 客户端库以 C# 语言作为 HTTP POST/GET 调用编写的。 本文重点介绍：
+本文演示如何调用图像分析 API 以返回有关图像的视觉特征的信息。
 
-- 获取标记、说明和类别
-- 获取特定于域的信息（或“名人”）
-
-本文中的示例演示以下功能：
-
-* 分析图像以返回标记数组和说明
-* 使用特定于域的模型（具体而言，是“名人”模型）分析图像并以 JSON 格式返回相应结果
-
-这些功能提供以下选项：
-
-- **选项 1**：范围分析 - 仅分析指定的模型
-- **选项 2**：增强分析 - 使用 [86 类别分类法](../Category-Taxonomy.md)进行分析，以提供更多详细信息
-
-## <a name="prerequisites"></a>先决条件
-
-* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
-* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="创建计算机视觉资源"  target="_blank">创建计算机视觉资源 </a>，获取密钥和终结点。 部署后，单击“转到资源”。
-    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到计算机视觉服务。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
-    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
-* 本地存储的图像的图像 URL 或路径
-* 支持的输入方法：原始图像二进制，采用应用程序/八位字节流或图像 URL 的形式
-* 支持的图像文件格式：JPEG、PNG、GIF 和 BMP
-* 图像文件大小：4 MB 或更小
-* 图像尺寸：50 &times; 50 像素或以上
+本指南假设你已经<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="创建计算机视觉资源"  target="_blank">创建计算机视觉资源 </a> 并获取订阅密钥和终结点 URL。 如果没有，请按照[快速入门](../quickstarts-sdk/image-analysis-client-library.md)中的说明开始操作。
   
-## <a name="authorize-the-api-call"></a>授权 API 调用
+## <a name="submit-data-to-the-service"></a>将数据提交到服务
 
-每次调用计算机视觉 API 都需要订阅密钥。 此密钥必须通过查询字符串参数传递，或在请求标头中指定。
+可向分析 API 提交本地映像或远程映像。 就本地映像而言，请将二进制图像数据放在 HTTP 请求正文中。 就远程映像而言，请通过设置请求正文的格式来指定图像的 URL，如下所示：`{"url":"http://example.com/images/test.jpg"}`。
 
-可通过以下任一操作传递订阅密钥：
+## <a name="determine-how-to-process-the-data"></a>确定如何处理数据
 
-* 通过查询字符串传递，如以下计算机视觉 API 示例所示：
+###  <a name="select-visual-features"></a>选择视觉特征
 
-  ```
-  https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
-  ```
+使用[分析 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b) 可以访问所有服务的图像分析特征。 需要设置 URL 查询参数来指定要使用的特征。 参数可以具有多个值（用逗号分隔）。 指定的每项特征都需要额外的计算时间，因此只需指定所需的特征。
 
-* 在 HTTP 请求标头中指定：
+|URL 参数 | 值 | 说明|
+|---|---|--|
+|`visualFeatures`|`Adult` | 检测图片是否具有色情性质（描绘裸体或性行为），以及是否具有血腥内容（描绘极端暴力或血腥）。 还会检测性暗示内容（也称为不雅内容）。|
+||`Brands` | 检测图像中的各种品牌，包括大致位置。 品牌参数仅以英语提供。|
+||`Categories` | 根据文档中定义的分类对图像内容进行分类。 这是 `visualFeatures` 的默认值。|
+||`Color` | 确定主题色、主色以及图像是否为黑白。|
+||`Description` | 用受支持的语言以完整的句子描述图像内容。|
+||`Faces` | 检测人脸是否存在。 如果存在，则生成位置、性别和年龄。|
+||`ImageType` | 检测图像是剪贴画还是素描。|
+||`Objects` | 检测图像中的各种对象，包括大致位置。 Objects 参数仅以英语提供。|
+||`Tags` | 使用与图像内容相关字词的详细列表来标记图像。|
+|`details`| `Celebrities` | 识别在图像中检测到的名人。|
+||`Landmarks` |识别在图像中检测到的地标。|
 
-  ```
-  ocp-apim-subscription-key: <Your subscription key>
-  ```
+填充的 URL 可能如下所示：
 
-* 使用客户端库时，请通过 ComputerVisionClient 的构造函数传递密钥，并在客户端的某个属性中指定区域：
+`https://{endpoint}/vision/v2.1/analyze?visualFeatures=Description,Tags&details=Celebrities`
 
-    ```
-    var visionClient = new ComputerVisionClient(new ApiKeyServiceClientCredentials("Your subscriptionKey"))
-    {
-        Endpoint = "https://westus.api.cognitive.microsoft.com"
-    }
-    ```
+### <a name="specify-languages"></a>指定语言
 
-## <a name="upload-an-image-to-the-computer-vision-api-service"></a>将图像上传到计算机视觉 API 服务
+还可以指定返回的数据的语言。 以下 URL 查询参数指定语言。 默认值为 `en`。
 
-执行计算机视觉 API 调用的基本方法是直接上传图像以返回标记、说明和名人。 为此，可以发送一个“POST”请求并在其 HTTP 正文中包含二进制图像，另外包含从图像读取的数据。 所有计算机视觉 API 调用的上传方法相同。 唯一的差别在于指定的查询参数。 
+|URL 参数 | 值 | 说明|
+|---|---|--|
+|`language`|`en` | 英语|
+||`es` | 西班牙语|
+||`ja` | 日语|
+||`pt` | 葡萄牙语|
+||`zh` | 简体中文|
 
-对于指定的图像，使用以下选项之一获取标记和说明：
+填充的 URL 可能如下所示：
 
-### <a name="option-1-get-a-list-of-tags-and-a-description"></a>选项 1：获取标记列表和说明
+`https://{endpoint}/vision/v2.1/analyze?visualFeatures=Description,Tags&details=Celebrities&language=en`
 
-```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
-```
+> [!NOTE]
+> **范围内 API 调用**
+>
+> 可以直接调用图像分析中的某些特征，也可以通过分析 API 调用来调用。 例如，你可以向 `https://{endpoint}/vision/v3.2-preview.3/tag` 发出请求来执行仅限图像标记的作用域分析。 有关可单独调用的其他特征，请参阅[参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b)。
 
-```csharp
-using System.IO;
-using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
-using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
+## <a name="get-results-from-the-service"></a>获取服务结果
 
-ImageAnalysis imageAnalysis;
-var features = new VisualFeatureTypes[] { VisualFeatureTypes.Tags, VisualFeatureTypes.Description };
-
-using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
-{
-  imageAnalysis = await visionClient.AnalyzeImageInStreamAsync(fs, features);
-}
-```
-
-### <a name="option-2-get-a-list-of-tags-only-or-a-description-only"></a>选项 2：仅获取标记列表，或仅获取说明
-
-（仅对于标记）运行：
-
-```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.1/tag?subscription-key=<Your subscription key>
-var tagResults = await visionClient.TagImageAsync("http://contoso.com/example.jpg");
-```
-
-（仅对于说明）运行：
-
-```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.1/describe?subscription-key=<Your subscription key>
-using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
-{
-  imageDescription = await visionClient.DescribeImageInStreamAsync(fs);
-}
-```
-
-## <a name="get-domain-specific-analysis-celebrities"></a>获取特定领域的分析（名人）
-
-### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>选项 1：范围分析 - 仅分析指定的模型
-```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.1/models/celebrities/analyze
-var celebritiesResult = await visionClient.AnalyzeImageInDomainAsync(url, "celebrities");
-```
-
-对于此选项，所有其他查询参数 {visualFeatures, details} 无效。 如果要查看所有支持的模型，请使用：
-
-```
-GET https://westus.api.cognitive.microsoft.com/vision/v2.1/models 
-var models = await visionClient.ListModelsAsync();
-```
-
-### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-86-categories-taxonomy"></a>选项 2：增强分析 - 使用 86 类别分类法进行分析，以提供更多详细信息
-
-对于你要从一个或多个特定于域的模型获取常规图像分析结果以及详细信息的应用程序，请使用模型查询参数扩展 v1 API。
-
-```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?details=celebrities
-```
-
-调用此方法时，请先调用 [86 类别](../Category-Taxonomy.md)分类器。 如果任一类别与某个已知或匹配模型的类别匹配，将执行第二轮分类器调用。 例如，如果“details=all”，或者“details”包括“celebrities”，则会在调用 86 类别分类器后调用 celebrities 模型。 结果包含人员类别。 相比“选项 1”，此方法会增大对名人感兴趣的用户所遇到的延迟
-
-在这种情况下，所有 v1 查询参数的行为相同。 如果未指定 visualFeatures=categories，会隐式启用它。
-
-## <a name="retrieve-and-understand-the-json-output-for-analysis"></a>检索并了解 JSON 输出以进行分析
-
-下面是一个示例：
+服务返回 `200` HTTP 响应，正文包含 JSON 字符串形式的返回数据。 以下是一个 JSON 响应示例。
 
 ```json
 {  
@@ -177,81 +104,39 @@ POST https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?details=cele
 }
 ```
 
+有关此示例中的字段的说明，请参阅下表：
+
 字段 | 类型 | 内容
 ------|------|------|
 Tags  | `object` | 标记数组的顶级对象。
 tags[].Name | `string`    | 标记分类器中的关键字。
 tags[].Score    | `number`    | 置信度评分，介于 0 和 1 之间。
-description     | `object`    | 说明的顶级对象。
-description.tags[] |    `string`    | 标记列表。  如果置信度不足，因此无法生成标题，则标记可能是可供调用方使用的唯一信息。
+description     | `object`    | 图像说明的顶级对象。
+description.tags[] |    `string`    | 标记列表。 如果置信度不足，因此无法生成标题，则标记可能是可供调用方使用的唯一信息。
 description.captions[].text    | `string`    | 描述图像的短语。
 description.captions[].confidence    | `number`    | 短语的置信度评分。
 
-## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>检索并了解特定于域的模型的 JSON 输出
+### <a name="error-codes"></a>错误代码
 
-### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>选项 1：范围分析 - 仅分析指定的模型
+请参阅以下可能出现的错误及其原因的列表：
 
-输出是一个标记数组，如以下示例中所示：
-
-```json
-{  
-  "result":[  
-    {  
-      "name":"golden retriever",
-      "score":0.98
-    },
-    {  
-      "name":"Labrador retriever",
-      "score":0.78
-    }
-  ]
-}
-```
-
-### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-the-86-categories-taxonomy"></a>选项 2：增强分析 - 使用“86 类别”分类法进行分析，以提供更多详细信息
-
-对于使用“选项 2”（增强分析）的特定于域的模型，类别返回类型将会扩展，如以下示例中所示：
-
-```json
-{  
-  "requestId":"87e44580-925a-49c8-b661-d1c54d1b83b5",
-  "metadata":{  
-    "width":640,
-    "height":430,
-    "format":"Jpeg"
-  },
-  "result":{  
-    "celebrities":[  
-      {  
-        "name":"Richard Nixon",
-        "faceRectangle":{  
-          "left":107,
-          "top":98,
-          "width":165,
-          "height":165
-        },
-        "confidence":0.9999827
-      }
-    ]
-  }
-}
-```
-
-类别字段是原始分类法中一个或多个 [86 类别](../Category-Taxonomy.md)的列表。 以下划线结尾的类别将匹配该类别及其子级（例如，在 celebrities 模型中匹配“people_”或“people_group”）。
-
-字段    | 类型    | 内容
-------|------|------|
-categories | `object`    | 顶级对象
-categories[].name     | `string`    | 86 类别分类法列表中的名称。
-categories[].score    | `number`    | 置信度评分，介于 0 和 1 之间。
-categories[].detail     | `object?`      | （可选）详细信息对象。
-
-如果多个类别匹配（例如，86 类别分类器在 model=celebrities 时同时返回“people_”和“people_young”的评分），则详细信息将附加到最宽泛级别的匹配项（在该示例中为“people_”）。
-
-## <a name="error-responses"></a>错误响应
-
-这些错误与 vision.analyze 中的错误相同，另外还会出现 NotSupportedModel 错误 (HTTP 400)，该错误在使用“选项 1”和“选项 2”时都可能会返回。 对于“选项 2”（增强分析），如果无法识别详细信息中指定的任何模型，则即使一个或多个模型有效，API 也会返回 NotSupportedModel。 若要确定哪些模型受支持，可以调用 listModels。
+* 400
+    * InvalidImageUrl - 图片 URL 格式不正确或无法访问。
+    * InvalidImageFormat - 输入数据不是有效的图像。
+    * InvalidImageSize - 输入的图像太大。
+    * NotSupportedVisualFeature - 指定的特征类型无效。
+    * NotSupportedImage - 不支持的图像，例如儿童色情。
+    * InvalidDetails - 不支持的 `detail` 参数值。
+    * NotSupportedLanguage - 指定的语言不支持请求的操作。
+    * BadArgument - 错误消息中提供了更多详细信息。
+* 415 - 不支持的媒体类型。 Content-Type 类型不在允许的类型中：
+    * 对于图像 URL：Content-Type 应为 application/json
+    * 对于二进制图像数据：Content-Type 应为 application/octet-stream 或 multipart/form-data
+* 500
+    * FailedToProcess
+    * Timeout - 图像处理超时。
+    * InternalServerError
 
 ## <a name="next-steps"></a>后续步骤
 
-要使用 REST API，请转到[计算机视觉 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b)。
+试用 REST API，请转到[图像分析 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b)。
