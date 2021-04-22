@@ -7,17 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 03/10/2021
-ms.openlocfilehash: ea647591194dfd6ba0bf818f4ce4d3a2005f0bc4
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.date: 03/25/2021
+ms.openlocfilehash: aeab671c9283d64f9c1ca37cf184b80b1eca8f35
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102630770"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105045240"
 ---
 # <a name="how-to-test-and-publish-a-saas-offer-to-the-commercial-marketplace"></a>如何测试 SaaS 产品/服务并将其发布到商业市场
 
 本文介绍如何使用合作伙伴中心提交 SaaS 产品/服务以供发布，预览产品/服务，测试，然后将其发布到商业市场。 你必须已创建想要发布的产品/服务。
+
+> [!NOTE]
+> 建议在发布生产 (PROD) 产品/服务之前，先创建一个单独的测试和开发 (DEV) 方案，将其作为一种低风险的测试方法。 在发布 (PROD) 产品/服务之前，请先按照以下步骤创建和测试 DEV 产品/服务。
 
 ## <a name="submit-your-offer-for-publishing"></a>提交产品/服务进行发布
 
@@ -48,7 +51,7 @@ ms.locfileid: "102630770"
 
 1. 在“产品/服务概述”页上，选择“上线”按钮下的预览版链接。
 
-1. 若要验证端到端购买和设置流程，请在产品/服务处于预览版阶段时购买产品/服务。 首先，使用[支持票证](https://aka.ms/marketplacesupport)向 Microsoft 发出通知，保证我们并不是处理费用。
+1. 若要验证端到端购买和设置流程，请在产品/服务处于预览状态时购买其中的计划。 首先，使用[支持票证](https://aka.ms/marketplacesupport)向 Microsoft 发出通知，保证我们并不是处理费用。
 
 1. 如果你的 SaaS 产品/服务支持[使用商业市场计量服务按流量计费](./partner-center-portal/saas-metered-billing.md)，请查看并遵循[市场按流量计费 API](./partner-center-portal/marketplace-metering-service-apis.md#development-and-testing-best-practices) 中详述的测试最佳实践。
 
@@ -60,10 +63,10 @@ ms.locfileid: "102630770"
 
 ## <a name="publish-your-offer-live"></a>发布产品/服务
 
-完成对预览版的所有测试之后，选择“上线”以向商业市场发布产品/服务。
+完成对预览版的所有测试之后，选择“上线”以向商业市场发布产品/服务。 如果你的产品/服务已在商业市场上线，则在你选择“上线”之前，你所做的任何更新都不会上线。
 
-   > [!TIP]
-   > 如果你的产品/服务已在商业市场上线，则在你选择“上线”之前，你所做的任何更新都不会上线。
+> [!IMPORTANT]
+> 对于[开发/测试产品/服务](create-saas-dev-test-offer.md)，请不要选择“上线”。
 
 现在，你已选择在商业市场中提供产品/服务，接下来我们将执行一系列最终验证检查，以确保上线产品/服务的配置与产品/服务的预览版一样。 有关这些验证检查的详细信息，请参阅[发布阶段](review-publish-offer.md#publish-phase)。
 

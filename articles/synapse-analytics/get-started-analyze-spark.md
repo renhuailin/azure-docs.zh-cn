@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
-ms.date: 12/31/2020
-ms.openlocfilehash: 8559bd0a354a64872e58d014d1027ed971773b60
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: de48f906f4dc86bf6297cfb3b76f406df49feec3
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104655336"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363846"
 ---
 # <a name="analyze-with-apache-spark"></a>使用 Apache Spark 进行分析
 
@@ -34,17 +34,14 @@ ms.locfileid: "104655336"
 
 无服务器 Spark 池是一种用于指示用户要如何使用 Spark 的方式。 开始使用池时，会根据需要创建 Spark 会话。 池控制该会话将使用多少个 Spark 资源，以及会话在自动暂停之前的持续时间。 您需要为在该会话期间使用的 spark 资源付费，而不是池本身。 通过这种方式，Spark 池允许使用 Spark，无需担心管理群集。 这类似于无服务器 SQL 池的工作方式。
 
-## <a name="analyze-nyc-taxi-data-in-blob-storage-using-spark"></a>使用 Spark 分析 Blob 存储中的纽约市出租车数据
+## <a name="analyze-nyc-taxi-data-with-a-spark-pool"></a>使用 Spark 池分析纽约市出租车数据
 
-1. 在 Synapse Studio 中，转到 **开发** 中心
-2. 使用设置为 **PySpark (Python)** 的默认语言创建 newnNotebook。
+1. 在 Synapse Studio 中，转到“开发”中心
+2. 创建新的 Notebook
 3. 创建新代码单元并将以下代码粘贴到该单元中。
-    ```
-    from azureml.opendatasets import NycTlcYellow
-
-    data = NycTlcYellow()
-    df = data.to_spark_dataframe()
-    # Display 10 rows
+    ```py
+    %%pyspark
+    df = spark.read.load('abfss://users@contosolake.dfs.core.windows.net/NYCTripSmall.parquet', format='parquet')
     display(df.limit(10))
     ```
 1. 在笔记本的“附加到”菜单中，选择之前创建的 Spark1 无服务器 Spark 池 。
@@ -52,21 +49,23 @@ ms.locfileid: "104655336"
 1. 如果只想查看数据帧的架构，请通过以下代码运行单元：
 
     ```py
+    %%pyspark
     df.printSchema()
     ```
 
 ## <a name="load-the-nyc-taxi-data-into-the-spark-nyctaxi-database"></a>将纽约市出租车数据加载到 Spark nyctaxi 数据库
 
-数据可通过名为 **data** 的数据帧进行访问。 将其加载到名为 nyctaxi 的 Spark 数据库。
+数据可通过名为 df 的数据帧进行访问。 将其加载到名为 nyctaxi 的 Spark 数据库。
 
-1. 在笔记本中新增一个，然后输入以下代码：
+1. 在笔记本中新增一个代码单元，然后输入以下代码：
 
     ```py
+    %%pyspark
+    spark.sql("CREATE DATABASE IF NOT EXISTS nyctaxi")
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")
     ```
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>使用 Spark 和笔记本分析纽约市出租车数据
 
-1. 返回到笔记本。
 1. 创建新代码单元并输入以下代码。 
 
    ```py
@@ -76,7 +75,7 @@ ms.locfileid: "104655336"
    ```
 
 1. 运行该单元以显示我们加载到 nyctaxi Spark 数据库中的纽约市出租车数据。
-1. 创建新代码单元并输入以下代码。 然后运行该单元，执行之前在专用 SQL 池 SQLPOOL1 中所做的相同分析。 此代码显示分析结果并将分析结果保存到名为 nyctaxi.passengercountstats 的表中。
+1. 创建新代码单元并输入以下代码。 我们将分析此数据，并将结果保存到名为“nyctaxi.passengercountstats”的表中。
 
    ```py
    %%pyspark

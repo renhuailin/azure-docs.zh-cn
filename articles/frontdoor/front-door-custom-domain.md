@@ -3,21 +3,21 @@ title: 教程 - 将自定义域添加到 Azure Front Door 配置
 description: 本教程介绍如何将自定义域载入 Azure Front Door。
 services: frontdoor
 documentationcenter: ''
-author: duongau
+author: jessie-jyy
 editor: ''
 ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2020
-ms.author: duau
-ms.openlocfilehash: 6abed66a5fbd9987e5a8a677dde7b4a77589e907
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 04/12/2021
+ms.author: yuajia
+ms.openlocfilehash: 7e2f05a7d911ce2b311a423994d2b459de0fa269
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065035"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308857"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>教程：将自定义域添加到 Front Door
 
@@ -42,7 +42,7 @@ ms.locfileid: "106065035"
 
 * 如果没有自定义域，则必须先在域提供商那里购买一个。 有关示例，请参阅[购买自定义域名](../app-service/manage-custom-dns-buy-domain.md)。
 
-* 如果使用 Azure 来托管 [DNS 域](../dns/dns-overview.md)，必须将域提供商的域名系统 (DNS) 委托给 Azure DNS。 有关详细信息，请参阅 [向 Azure DNS 委派域](../dns/dns-delegate-domain-azure-dns.md)。 否则，如果通过域提供商处理 DNS 域，请转到[创建 CNAME DNS 记录](#create-a-cname-dns-record)。
+* 如果使用 Azure 来托管 [DNS 域](../dns/dns-overview.md)，必须将域提供商的域名系统 (DNS) 委托给 Azure DNS。 有关详细信息，请参阅 [向 Azure DNS 委派域](../dns/dns-delegate-domain-azure-dns.md)。 否则，如果使用域提供商来处理 DNS 域，请转到[创建 CNAME DNS 记录](#create-a-cname-dns-record)。
 
 
 ## <a name="create-a-cname-dns-record"></a>创建 CNAME DNS 记录
@@ -56,7 +56,7 @@ ms.locfileid: "106065035"
 
 映射现有的生产环境中的域时，有一些特殊注意事项。 在 Azure 门户中注册自定义域时，该域可能会出现短暂的停机现象。 为避免 Web 流量中断，请先将自定义域映射到包含 Azure afdverify 子域的 Front Door 默认前端主机名，以便创建临时的 CNAME 映射。 使用此方法，用户可以在进行 DNS 映射时访问域，不会出现中断现象。
 
-此外，如果你是第一次使用自定义域，其上未运行任何生产流量，则可直接将自定义域映射到 CDN 终结点。 前进到[映射永久自定义域](#map-the-permanent-custom-domain)。
+此外，如果你是第一次使用自定义域，其上未运行任何生产流量，则可直接将自定义域映射到 Front Door。 请转到[映射永久自定义域](#map-the-permanent-custom-domain)。
 
 若要使用 afdverify 子域创建 CNAME 记录，请执行以下操作：
 
@@ -70,7 +70,7 @@ ms.locfileid: "106065035"
     |---------------------------|-------|---------------------------------|
     | afdverify. www.contoso.com | CNAME | afdverify.contoso-frontend.azurefd.net |
 
-    - 源：采用 afdverify.&lt;自定义域名&gt; 格式输入自定义域名，包括 afdverify 子域  。 例如 afdverify. www.contoso.com。
+    - 源：采用 afdverify.&lt;自定义域名&gt; 格式输入自定义域名，包括 afdverify 子域  。 例如 afdverify. www.contoso.com。 如果要映射通配符域（如 \*.contoso.com），则源值与不带通配符的 afdverify.contoso.com 相同。
 
     - 键入：输入 *CNAME*。
 
@@ -109,7 +109,7 @@ ms.locfileid: "106065035"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)，浏览到 Front Door，其中包含需要映射到自定义域的前端主机。
     
-2. 在“Front Door 设计器”页上，单击“+”添加自定义域  。
+2. 在“Front Door 设计器”页上，选择“+”添加自定义域。
     
 3. 指定“自定义域”  。 
 
@@ -187,17 +187,18 @@ ms.locfileid: "106065035"
 
 8. 选择“删除”  ，以便删除 CNAME 记录。
 
-
 ## <a name="clean-up-resources"></a>清理资源
 
 在前述步骤中，已将自定义域添加到 Front Door。 如果不再需要将 Front Door 与自定义域相关联，可通过以下步骤删除自定义域：
  
-1. 在 Front Door 设计器中，选择要删除的自定义域。
+1. 请转到 DNS 提供程序，删除自定义域的 CNAME 记录，或将自定义域的 CNAME 记录更新为非 Front Door 终结点。
 
-2. 在自定义域的上下文菜单中单击“删除”。  
+    > [!Important]
+    > 为防止无关联的 DNS 条目及其产生的安全性风险，自 2021 年 4 月 9 日起，Azure Front Door 要求先删除 Front Door 终结点的 CNAME 记录，然后才能删除这些资源。 资源包括 Front Door 自定义域、Front Door 终结点或启用了 Front Door 自定义域的 Azure 资源组。
 
-   自定义域于是与 CDN 终结点解除关联。
+2. 在 Front Door 设计器中，选择要删除的自定义域。
 
+3. 在自定义域的上下文菜单中选择“删除”。 自定义域现在将与终结点解除关联。
 
 ## <a name="next-steps"></a>后续步骤
 

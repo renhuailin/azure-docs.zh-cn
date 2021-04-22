@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/28/2020
-ms.openlocfilehash: 1a17876385e3a48543c8185a0f48a3e4016afa1a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.date: 03/17/2021
+ms.openlocfilehash: f0864eb65fb1f7dcf803ea48f762ab41b8468aac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374382"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104588760"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Microsoft Access 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -48,7 +48,7 @@ ms.locfileid: "100374382"
 
 Microsoft Access 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**MicrosoftAccess** | 是 |
 | connectionString | 不包括凭据部分的 ODBC 连接字符串。 可以指定连接字符串，也可以利用在 Integration Runtime 计算机上设置的系统 DSN（数据源名称）（仍需要相应地指定链接服务中的凭据部分）。<br> 还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。| 是 |
@@ -88,7 +88,7 @@ Microsoft Access 链接服务支持以下属性：
 
 从 Microsoft Access 复制数据时，支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**MicrosoftAccessTable** | 是 |
 | tableName | Microsoft Access 中的表名。 | 源为否（如果指定了活动源中的“query”）；<br/>接收器为是 |
@@ -119,7 +119,7 @@ Microsoft Access 链接服务支持以下属性：
 
 若要从 Microsoft Access 复制数据，复制活动的 source 节需要支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**MicrosoftAccessSource** | 是 |
 | 查询 | 使用自定义查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
@@ -166,6 +166,7 @@ Microsoft Access 链接服务支持以下属性：
 | writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。<br/>允许的值为：timespan。 示例：“00:30:00”（30 分钟）。 |否 |
 | writeBatchSize |缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表。<br/>允许的值为：整数（行数）。 |否（默认值为 0 - 自动检测） |
 | preCopyScript |每次运行时，将数据写入到数据存储之前，指定复制活动要执行的 SQL 查询。 此属性可用于清理预先加载的数据。 |否 |
+| maxConcurrentConnections |在活动运行期间建立到数据存储的并发连接上限。只有在需要限制并发连接时才指定值。| 否 |
 
 **示例：**
 

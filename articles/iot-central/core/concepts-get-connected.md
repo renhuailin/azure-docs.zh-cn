@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: dc0655aba424d29a4055f0d50a20057f22d084ed
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: c365f367a090f1697b71c51f24679b9ea09561d0
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103015449"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490006"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>连接到 Azure IoT Central
 
@@ -241,7 +241,7 @@ Azure 设备 SDK 为实现设备代码提供最简便的方法。 以下设备 S
 | 脱机命令 | 云到设备的消息传送 |
 | 属性 | 设备孪生报告属性 |
 | 属性（可写） | 设备孪生所需的和报告的属性 |
-| Command | 直接方法 |
+| 命令 | 直接方法 |
 
 ### <a name="protocols"></a>协议
 

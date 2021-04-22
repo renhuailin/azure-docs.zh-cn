@@ -17,12 +17,12 @@ ms.date: 01/21/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fb517f8c50ad2c32f23542e60069a0e0a496a2d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2ea62a8d602cc472269b52c230529aa3f9b86ed4
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98660658"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535105"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>如何：管理 Azure AD 中的非活动用户帐户
 
@@ -47,10 +47,9 @@ ms.locfileid: "98660658"
 
 - 用户（按日期）：在此场景中，使用指定日期之前的 lastSignInDateTime 请求用户列表：`https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
 
-
-
-
-
+> [!NOTE]
+> 可能需要生成所有用户上次登录日期的报告，如果是这样，则可以使用以下方案。
+> **所有用户上次登录的日期和时间**：在此方案中，你请求所有用户的列表，以及每个用户最后的 lastSignInDateTime：`https://graph.microsoft.com/beta/users?$select=displayName,signInActivity` 
 
 ## <a name="what-you-need-to-know"></a>需要了解的事项
 
@@ -58,7 +57,7 @@ ms.locfileid: "98660658"
 
 ### <a name="how-can-i-access-this-property"></a>如何访问此属性？
 
-lastSignInDateTime 属性由 [Microsoft Graph REST API](/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph) 的 [signInActivity 资源类型](/graph/api/resources/signinactivity?view=graph-rest-beta)公开。   
+lastSignInDateTime 属性由 [Microsoft Graph REST API](/graph/overview#whats-in-microsoft-graph) 的 [signInActivity 资源类型](/graph/api/resources/signinactivity?view=graph-rest-beta&preserve-view=true)公开。   
 
 ### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>lastSignInDateTime 属性是否可通过 Get-AzureAdUser cmdlet 获取？
 
@@ -91,5 +90,5 @@ lastSignInDateTime 属性由 [Microsoft Graph REST API](/graph/overview?view=gra
 ## <a name="next-steps"></a>后续步骤
 
 * [使用具有证书的 Azure Active Directory 报告 API 获取数据](tutorial-access-api-with-certificates.md)
-* [审核 API 参考](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
-* [登录活动报告 API 参考](/graph/api/resources/signin?view=graph-rest-beta)
+* [审核 API 参考](/graph/api/resources/directoryaudit) 
+* [登录活动报告 API 参考](/graph/api/resources/signin)

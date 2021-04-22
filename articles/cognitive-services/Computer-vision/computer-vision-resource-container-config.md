@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/23/2020
+ms.date: 04/09/2021
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: ee2e4fca697c086b95e83feb9d40ce8e07dc344c
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 3e6c4b73e8aeb26c6ac4025ef3c07fb4f8d48eaf
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102611889"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308636"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>配置读取 OCR Docker 容器
 
@@ -34,8 +34,8 @@ ms.locfileid: "102611889"
 |必须|设置|目的|
 |--|--|--|
 |否|ReadEngineConfig:ResultExpirationPeriod| 仅限 v2.0 容器。 结果过期时间（以小时为单位）。 默认值为 48 小时。 该设置指定系统应清除识别结果的时间。 例如，如果为 `resultExpirationPeriod=1`，则系统将在进程后的 1 小时内清除识别结果。 如果为 `resultExpirationPeriod=0`，则系统会在检索到识别结果后清除结果。|
-|否|Cache:Redis| 仅限 v2.0 容器。 启用 Redis 存储以存储结果。 如果将多个读取容器放置在负载均衡器后面，则需要缓存。|
-|否|Queue:RabbitMQ|仅限 v2.0 容器。 启用 RabbitMQ 以调度任务。 在负载均衡器后面放置多个读取容器时，此设置很有用。|
+|否|Cache:Redis| 仅限 v2.0 容器。 启用 Redis 存储以存储结果。 如果将多个读取 OCR 容器放置在负载均衡器后面，则需要缓存。|
+|否|Queue:RabbitMQ|仅限 v2.0 容器。 启用 RabbitMQ 以调度任务。 在负载均衡器后面放置多个读取 OCR 容器时，此设置很有用。|
 |否|Queue:Azure:QueueVisibilityTimeoutInMilliseconds | 仅限 v3.x 容器。 在另一个工作线程处理消息时，该消息不可见的时长。 |
 |否|Storage::DocumentStore::MongoDB|仅限 v2.0 容器。 启用 MongoDB 以实现永久结果存储。 |
 |否|Storage:ObjectStore:AzureBlob:ConnectionString| 仅限 v3.x 容器。 Azure Blob 存储连接字符串。 |
@@ -62,11 +62,11 @@ ms.locfileid: "102611889"
 
 * Azure 门户：**认知服务** 概述，标记为 `Endpoint`
 
-请记得将 `vision/v1.0` 路由添加到终结点 URI，如下表所示。 
+请记得将 `vision/<version>` 路由添加到终结点 URI，如下表所示。 
 
 |必须| 名称 | 数据类型 | 说明 |
 |--|------|-----------|-------------|
-|是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
+|是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v3.2` |
 
 ## <a name="eula-setting"></a>Eula 设置
 
@@ -119,16 +119,16 @@ ms.locfileid: "102611889"
 
 ## <a name="container-docker-examples"></a>容器 Docker 示例
 
-下面是读取容器 Docker 示例。
+以下 Docker 示例适用于读取 OCR 容器。
 
 
-# <a name="version-32-preview"></a>[版本 3.2-preview](#tab/version-3-2)
+# <a name="version-32"></a>[版本 3.2](#tab/version-3-2)
 
 ### <a name="basic-example"></a>基本示例
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -139,7 +139,7 @@ ApiKey={API_KEY}
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

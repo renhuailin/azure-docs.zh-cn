@@ -4,17 +4,17 @@ ms.service: storage
 ms.topic: include
 ms.date: 09/28/2020
 ms.author: normesta
-ms.openlocfilehash: 61576de4a57d55ea9d1ea209c52df556f0069617
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: ca8963ed8928745a6d5918c86021199432339c83
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101751095"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104612353"
 ---
 | properties | 说明 |
 |:--- |:---|
-|**identity / type** | 用来发出请求的身份验证的类型。 例如： `OAuth` 、、 `Kerberos` `SAS Key` 、 `Account Key` 或 `Anonymous` |
-|**identity / tokenHash**|此字段为保留字段，仅供内部使用。 |
+|**identity / type** | 用来发出请求的身份验证的类型。 例如 `OAuth`、`Kerberos`、`SAS Key`、`Account Key` 或 `Anonymous` |
+|**identity / tokenHash**|用于请求的身份验证令牌的 SHA-256 哈希。 <br>如果身份验证类型为 `Account Key`，则格式为“key1 \| key2 (密钥的 SHA256 哈希)”。 例如：`key1(5RTE343A6FEB12342672AFD40072B70D4A91BGH5CDF797EC56BF82B2C3635CE)`。 <br>如果身份验证类型为 `SAS Key`，则格式为“key1 \| key2 (密钥的 SHA 256 哈希),SasSignature(SAS 令牌的 SHA 256 哈希)”。 例如：`key1(0A0XE8AADA354H19722ED12342443F0DC8FAF3E6GF8C8AD805DE6D563E0E5F8A),SasSignature(04D64C2B3A704145C9F1664F201123467A74D72DA72751A9137DDAA732FA03CF)`。 如果身份验证类型为 `OAuth`，则格式为“OAuth 令牌的 SHA 256 哈希”。 例如：`B3CC9D5C64B3351573D806751312317FE4E910877E7CBAFA9D95E0BE923DW25C`<br> 对于其他身份验证类型，没有 tokenHash 字段。 |
 |**authorization / action** | 分配给请求的操作。 |
 |**authorization / roleAssignmentId** | 角色分配 ID。 例如：`4e2521b7-13be-4363-aeda-111111111111`。|
 |**authorization / roleDefinitionId** | 角色定义 ID。 例如：`ba92f5b4-2d11-453d-a403-111111111111"`。|

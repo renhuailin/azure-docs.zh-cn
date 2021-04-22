@@ -17,19 +17,19 @@ ms.date: 03/16/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 185638d683699403c304603d968cfe84e32a55b5
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: b17e7f34da1428eec219a393417b0a2a7b461078
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103574554"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552727"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Azure Active Directory 登录活动报告 - 预览版
 
 Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成：
 
 - **活动** 
-    - **登录** - 有关用户、应用程序和受管理资源何时登录到 Azure AD 并访问资源的信息。
+    - 登录 - 有关用户、应用程序和受管理资源何时登录 Azure AD 并访问资源的信息。
     - **审核日志** - [审核日志](concept-audit-logs.md) - 有关用户和组管理、托管应用程序和目录活动的系统活动信息。
 - **安全性** 
     - **风险登录** - [风险登录](../identity-protection/overview-identity-protection.md)指示由非用户帐户合法所有者的人进行的登录尝试。

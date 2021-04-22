@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/16/2019
 ms.author: alkohli
 ms.openlocfilehash: 417fbdea3f46dfb3e90ab4890cec5e88c5aa4e07
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94523691"
 ---
 | 端口号。| 入或出 | 端口范围| 必须 | 注释 |
@@ -20,7 +20,7 @@ ms.locfileid: "94523691"
 | TCP 5985 (WinRM)|出/入|LAN|某些情况下<br>请参阅说明|通过基于 HTTP 的远程 PowerShell 连接到设备时，需要此端口。  |
 | UDP 67 (DHCP)|出|LAN|某些情况下<br>请参阅说明|仅当使用本地 DHCP 服务器时，才需要此端口。  |
 | TCP 80 (HTTP)|出/入|LAN|是|此端口是设备上用于本地管理的本地 UI 的入站端口。 <br>通过 HTTP 访问本地 UI 会自动重定向到 HTTPS。  |
-| TCP 443 (HTTPS)|出/入|LAN|是|此端口是设备上用于本地管理的本地 UI 的入站端口。 此端口还用于将 Azure 资源管理器连接到设备本地 Api、通过 REST Api 将 Blob 存储连接到安全令牌服务 (STS) 通过访问和刷新令牌进行身份验证。|
+| TCP 443 (HTTPS)|出/入|LAN|是|此端口是设备上用于本地管理的本地 UI 的入站端口。 此端口还用于将 Azure 资源管理器连接到设备本地 API、通过 REST API 连接 Blob 存储以及用于安全令牌服务 (STS)，以通过访问和刷新令牌进行身份验证。|
 | TCP 445 (SMB)|在|LAN|某些情况下<br>请参阅说明|仅当通过 SMB 连接时，才需要此端口。 |
 | TCP 2049 (NFS)|在|LAN|某些情况下<br>请参阅说明|仅当通过 NFS 连接时，才需要此端口。 |
 

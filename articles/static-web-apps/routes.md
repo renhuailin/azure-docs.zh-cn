@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
 ms.openlocfilehash: 5cbcbcf8914a663a6d039abecd6a4488eaf677b2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101739638"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Azure 静态 Web 应用预览中的路由
 
 > [!IMPORTANT]
-> 文件 *routes.js上* 定义的功能现已弃用，并且更好地在 Azure 静态 Web Apps [配置文件](./configuration.md#routes)中实现。
+> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#routes)中更好地实现。
 
-Azure 静态 Web 应用中的路由为静态内容和 Api<sup>1</sup>定义后端路由规则和授权行为。 规则在 routes.json 文件中定义为一组规则。
+Azure Static Web Apps 中的路由定义静态内容和 API 的后端路由规则和授权行为<sup>1</sup>。 规则在 routes.json 文件中定义为一组规则。
 
 - routes.json 文件必须存在于应用生成工件文件夹的根目录中。
 - 规则按照其在 `routes` 数组中显示的顺序执行。
@@ -29,16 +29,16 @@ Azure 静态 Web 应用中的路由为静态内容和 Api<sup>1</sup>定义后�
 
 路由主题明显与身份验证和授权概念重叠。 务必要阅读[身份验证和授权](authentication-authorization.md)指南以及本文。
 
-有关详细信息，请参阅 [示例路由文件](#example-route-file) 。
+有关详细信息，请参阅[示例路由文件](#example-route-file)。
 
 ## <a name="location"></a>位置
 
 > [!IMPORTANT]
-> 文件 *routes.js上* 定义的功能现已弃用，并且更好地在 Azure 静态 Web Apps [配置文件](./configuration.md#routes)中实现。
+> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#routes)中更好地实现。
 
 routes.json 文件必须存在于应用生成工件文件夹的根目录中。 如果 Web 应用包含将生成的文件从特定文件夹复制到生成工件文件夹的生成步骤，则 routes.json 文件需要存在于该特定文件夹中。
 
-下表列出了在文件中放置多个前端框架和库的 _routes.js_ 的相应位置。
+下表列出了在其中放置若干前端框架和库的 routes.json 文件的相应位置。
 
 |框架/库 | 位置  |
 |---------|----------|
@@ -48,26 +48,26 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 | Vue     | _public_ |
 | Blazor  | _wwwroot_ |
 
-上述表格仅代表一些与 Azure 静态 Web 应用兼容的框架和库。 有关详细信息，请参阅 [配置前端框架和库](./front-end-frameworks.md) 。
+上表仅代表一些与 Azure Static Web Apps 兼容的框架和库。 有关详细信息，请参阅[配置前端框架和库](./front-end-frameworks.md)。
 
 ## <a name="defining-routes"></a>定义路由
 
 > [!IMPORTANT]
-> 文件 *routes.js上* 定义的功能现已弃用，并且更好地在 Azure 静态 Web Apps [配置文件](./configuration.md#routes)中实现。
+> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#routes)中更好地实现。
 
 路由在 routes.json 文件中定义为 `routes` 属性上的路由规则数组。 每个规则都包含一个路由模式，以及一个或多个可选的规则属性。 有关用法示例，请参阅[路由文件示例](#example-route-file)。
 
 | 规则属性  | 必选 | 默认值 | 注释                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
 | `route`        | 是      | 不适用          | 调用方请求的路由模式。<ul><li>路由路径的末尾支持[通配符](#wildcards)。 例如，路由 admin/\* 与 admin 路径下的任何路由匹配。<li>路由的默认文件为 index.html。</ul>|
-| `serve`        | 否       | 不适用          | 定义从请求返回的文件或路径。 文件路径和名称可以不同于所请求的路径。 如果 `serve` 未定义值，则使用请求的路径。 不支持 Querystring 参数; `serve` 值必须指向实际文件。  |
+| `serve`        | 否       | 不适用          | 定义从请求返回的文件或路径。 文件路径和名称可以不同于所请求的路径。 如果未定义 `serve` 值，则使用请求的路径。 不支持 Querystring 参数；`serve` 值必须指向实际文件。  |
 | `allowedRoles` | 否       | 匿名     | 角色名称数组。 <ul><li>有效字符包括 `a-z`、`A-Z`、`0-9` 和 `_`。<li>内置角色 `anonymous` 适用于所有未经身份验证的用户。<li>内置角色 `authenticated` 适用于任何已登录的用户。<li>用户必须至少属于一个角色。<li>角色在 OR 基础上进行匹配。 如果用户处于列出的任何角色中，则授予访问权限。<li>单个用户通过[邀请](authentication-authorization.md)关联到角色。</ul> |
 | `statusCode`   | 否       | 200           | 响应请求的 [HTTP 状态代码](https://wikipedia.org/wiki/List_of_HTTP_status_codes)。 |
 
 ## <a name="securing-routes-with-roles"></a>使用角色保护路由
 
 > [!IMPORTANT]
-> 文件 *routes.js上* 定义的功能现已弃用，并且更好地在 Azure 静态 Web Apps [配置文件](./configuration.md#routes)中实现。
+> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#routes)中更好地实现。
 
 通过将一个或多个角色名称添加到规则的 `allowedRoles` 数组中来保护路由。 有关用法示例，请参阅[路由文件示例](#example-route-file)。
 
@@ -89,13 +89,13 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 }
 ```
 
-- 你可以完全控制角色名称;没有您的角色必须遵循的列表。
+- 你可以全面控制角色名称；不存在角色必须遵循的列表。
 - 单个用户通过[邀请](authentication-authorization.md)关联到角色。
 
 ## <a name="wildcards"></a>通配符
 
 > [!IMPORTANT]
-> 文件 *routes.js上* 定义的功能现已弃用，并且更好地在 Azure 静态 Web Apps [配置文件](./configuration.md#routes)中实现。
+> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#routes)中更好地实现。
 
 通配符规则与给定路由模式下的所有请求相匹配。 如果在规则中定义 `serve` 值，则命名的文件或路径将作为响应提供。
 
@@ -125,9 +125,9 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 ## <a name="fallback-routes"></a>回退路由
 
 > [!IMPORTANT]
-> 文件 *routes.js上* 定义的功能现已弃用，并且更好地在 Azure 静态 Web Apps [配置文件](./configuration.md#routes)中实现。
+> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#routes)中更好地实现。
 
-单页面应用程序，无论使用的是前端 JavaScript 框架还是库或 WebAssembly 平台（如 Blazor），通常都依赖于客户端路由来实现 web 应用导航。 这些客户端路由规则无需向服务器发回请求即可更新浏览器的窗口位置。 如果刷新页面，或直接导航到客户端路由规则生成的位置，则需要服务器端回退路由来提供相应的 HTML 页面。
+无论是使用前端 JavaScript 框架、库还是 WebAssembly 平台（如 Blazor），单页应用程序通常都依赖于客户端路由来实现 Web 应用导航。 这些客户端路由规则无需向服务器发回请求即可更新浏览器的窗口位置。 如果刷新页面，或直接导航到客户端路由规则生成的位置，则需要服务器端回退路由来提供相应的 HTML 页面。
 
 下面的示例演示了一个常见的回退路由：
 
@@ -148,7 +148,7 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 ## <a name="redirects"></a>重定向
 
 > [!IMPORTANT]
-> 文件 *routes.js上* 定义的功能现已弃用，并且更好地在 Azure 静态 Web Apps [配置文件](./configuration.md#routes)中实现。
+> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#routes)中更好地实现。
 
 可以使用 [301](https://en.wikipedia.org/wiki/HTTP_301) 和 [302](https://en.wikipedia.org/wiki/HTTP_302) HTTP 状态代码，以将请求重定向到另一个路由。
 
@@ -175,12 +175,12 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 ## <a name="custom-error-pages"></a>自定义错误页
 
 > [!IMPORTANT]
-> 文件 *routes.js上* 定义的功能现已弃用，并且更好地在 Azure 静态 Web Apps [配置文件](./configuration.md#routes)中实现。
+> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#routes)中更好地实现。
 
 用户可能会遇到多个可能导致错误的不同情况。 使用 `platformErrorOverrides` 数组，可以提供自定义体验来响应这些错误。 请参阅[示例路由文件](#example-route-file)，以便将数组放置在 routes.json 文件中。
 
 > [!NOTE]
-> 一旦请求使其进入平台替代级别，就不会再次运行路由规则。
+> 一旦请求发送到平台重写级别，就不会再次运行路由规则。
 
 下表列出了可用的平台错误替代：
 
@@ -194,12 +194,12 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 | `Unauthorized_TooManyUsers` | 401 | 站点已达到用户的最大数量，服务器正在限制进一步增加。 此错误会向客户端公开，因为你可以生成的[邀请](authentication-authorization.md)数没有限制，某些用户可能永远不会接受邀请。|
 | `Unauthorized_Unknown` | 401 | 尝试对用户进行身份验证时出现未知问题。 此错误的一个原因可能是用户未被识别，因为他们未向应用程序授予许可。|
 
-## <a name="custom-mime-types"></a>自定义 mime 类型
+## <a name="custom-mime-types"></a>自定义 MIME 类型
 
 > [!IMPORTANT]
-> 文件 *routes.js上* 定义的功能现已弃用，并且更好地在 Azure 静态 Web Apps [配置文件](./configuration.md#routes)中实现。
+> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#routes)中更好地实现。
 
-与该 `mimeTypes` 数组在同一级别上列出的对象 `routes` 允许您将 [MIME 类型](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types) 与文件扩展名关联。
+通过与 `routes` 数组在同一级别列出的 `mimeTypes` 对象，可将 [MIME 类型](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types)与文件扩展名关联。
 
 ```json
 {
@@ -210,24 +210,24 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 }
 ```
 
-在上面的示例中，具有扩展名的所有文件 `.custom` 都用 `text/html` MIME 类型提供。
+在上面的示例中，扩展名为 `.custom` 的所有文件都采用 `text/html` MIME 类型。
 
-以下注意事项在处理 MIME 类型时非常重要：
+在处理 MIME 类型时，以下注意事项非常重要：
 
-- 键不能为 null 或空，也不能超过50个字符
-- 值不能为 null 或空，也不能超过1000个字符
+- 键不能为 null 或为空，也不能超过 50 个字符
+- 值不能为 null 或为空，也不能超过 1000 个字符
 
 > [!NOTE]
-> 静态 Web 应用了解 Blazor 应用程序以及 WASM 和 DLL 文件的预期 MIME 类型，无需为这些文件添加映射。
+> Static Web Apps 了解 Blazor 应用程序以及 WASM 和 DLL 文件的预期 MIME 类型，你无需为它们添加映射。
 
 ## <a name="default-headers"></a>默认标头
 
 > [!IMPORTANT]
-> 文件 *routes.js上* 定义的功能现已弃用，并且更好地在 Azure 静态 Web Apps [配置文件](./configuration.md#routes)中实现。
+> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#routes)中更好地实现。
 
-与该 `defaultHeaders` 数组在同一级别上列出的对象可 `routes` 用于添加、修改或删除 [响应标头](https://developer.mozilla.org/docs/Web/HTTP/Headers)。
+通过与 `routes` 数组在同一级别列出的 `defaultHeaders` 对象，可添加、修改或删除[响应头](https://developer.mozilla.org/docs/Web/HTTP/Headers)。
 
-为标头提供值可以添加或修改标头。 提供空值后，会删除为客户端提供的标头。
+通过为标头提供值可以添加或修改标头。 如果提供空值，则会删除为客户端提供的标头。
 
 ```json
 {
@@ -240,20 +240,20 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 }
 ```
 
-在上面的示例中，添加了一个新的 `content-security-policy` 标头， `cache-control` 修改了服务器默认值，并且删除了该 `x-dns-prefetch-control` 标头。
+在上面的示例中，添加了一个新的 `content-security-policy` 标头，`cache-control` 修改了服务器默认值，并删除了 `x-dns-prefetch-control` 标头。
 
-在处理标头时，请注意以下事项：
+在处理标头时，以下注意事项非常重要：
 
 - 键不能为 null 或为空。
-- 如果为 Null 或空值，则从处理中删除标头。
-- 键或值不能超过8000个字符。
-- 定义的标头将为所有请求提供服务。
-- 在routes.js中定义 _的_ 标头仅适用于静态内容。 可以在函数的代码中自定义 API 终结点的响应标头。
+- 如果为 Null 或空值，则会在处理标头时删除标头。
+- 键或值不能超过 8,000 个字符。
+- 定义的标头将与所有请求一起提供。
+- 在 routes.json 中定义的标头仅适用于静态内容。 可以在函数的代码中自定义 API 终结点的响应头。
 
 ## <a name="example-route-file"></a>路由文件示例
 
 > [!IMPORTANT]
-> 文件 *routes.js上* 定义的功能现已弃用，并且更好地在 Azure 静态 Web Apps [配置文件](./configuration.md#routes)中实现。
+> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#routes)中更好地实现。
 
 下面的示例演示如何在 routes.json 文件中生成静态内容和 API 的路由规则。 某些路由使用 [/.auth 系统文件夹](authentication-authorization.md)来访问与身份验证相关的终结点。
 
@@ -323,29 +323,29 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 | 请求... | 结果为... |
 |--|--|--|
 | /profile | 向经过身份验证的用户提供 /profile/index.html 文件。 未经身份验证的用户重定向到 /login。 |
-| /admin/reports | 向经过身份验证的管理员角色用户提供 /admin/reports/index.html 文件。 不在 _管理员_ 角色中的经过身份验证的用户将被提供401错误 <sup>2</sup>。 未经身份验证的用户重定向到 /login。 |
+| /admin/reports | 向经过身份验证的管理员角色用户提供 /admin/reports/index.html 文件。 经过身份验证的非管理员角色的用户将收到 401 错误<sup>2</sup>。 未经身份验证的用户重定向到 /login。 |
 | /api/admin | 将经过身份验证的管理员角色用户发出的请求发送到 API。 经过身份验证的非管理员角色的用户，和未经身份验证的用户将收到 401 错误。 |
-| /customers/contoso | 属于 " _管理员_ " 或 " _客户" \_ contoso_ 角色的经过身份验证的用户提供 _/customers/contoso/index.html_ 文件 <sup>2</sup>。 经过身份验证的非管理员或非 customers\_contoso 角色的用户将收到 401 错误。 未经身份验证的用户重定向到 /login。 |
+| /customers/contoso | 向经过身份验证的管理员或 customers\_contoso 角色用户提供 /customers/contoso/index.html 文件<sup>2</sup>。 经过身份验证的非管理员或非 customers\_contoso 角色的用户将收到 401 错误。 未经身份验证的用户重定向到 /login。 |
 | /login | 未经身份验证的用户将面临在 GitHub 中进行身份验证的挑战。 |
 | /.auth/login/twitter | 已禁用通过 Twitter 的授权。 服务器响应时出现 404 错误。 |
 | /logout | 用户已注销任何身份验证提供程序。 |
 | /calendar/2020/01 | 将向浏览器提供 /calendar.html 文件。 |
 | /specials | 浏览器将重定向到 /deals。 |
 | /unknown-folder | 提供 /custom-404.html 文件。 |
-| 扩展名为的文件 `.custom` | 与 `text/html` MIME 类型一起提供 |
+| 扩展名为 `.custom` 的文件 | 都采用 `text/html` MIME 类型 |
 
-所有响应都包含 `content-security-policy` 值为的标头 `default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'` 。
+包含值为 `default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'` 的 `content-security-policy` 标头的所有响应。
 
-<sup>1</sup> API 函数的路由规则仅支持 [重定向](#redirects) 和 [保护具有角色的路由](#securing-routes-with-roles)。
+<sup>1</sup> API 函数的路由规则只支持[重定向](#redirects)以及[使用角色保护路由](#securing-routes-with-roles)。
 
-<sup>2</sup> 你可以通过 `Unauthorized_MissingRoles` 在数组中定义规则来提供自定义错误页 `platformErrorOverrides` 。
+<sup>2</sup> 可以通过在 `platformErrorOverrides` 数组中定义 `Unauthorized_MissingRoles` 规则来提供自定义错误页。
 
 ## <a name="restrictions"></a>限制
 
 - routes.json 文件不能超过 100 KB
 - routes.json 文件最多支持 50 个不同的角色
 
-有关一般限制和限制，请参阅 [配额一文](quotas.md) 。
+有关一般限制和局限性，请参阅[有关配额的文章](quotas.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

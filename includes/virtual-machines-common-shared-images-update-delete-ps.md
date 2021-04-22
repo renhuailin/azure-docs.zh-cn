@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 32978257c3e209dc78a29c6e8ae0d1c4ae016a5b
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95559883"
 ---
 ## <a name="update-resources"></a>更新资源
@@ -54,7 +54,7 @@ Update-AzGalleryImageDefinition `
    -EndOfLifeDate 01/01/2030
 ```
 
-此示例演示如何使用 [Update-AzGalleryImageVersion](/powershell/module/az.compute/update-azgalleryimageversion) 来排除此映像版本，使之不能用作最新映像。 
+此示例演示如何使用 [Update-AzGalleryImageVersion](/powershell/module/az.compute/update-azgalleryimageversion) 来排除此映像版本，使之不能用作最新映像。
 
 ```azurepowershell-interactive
 Update-AzGalleryImageVersion `
@@ -65,7 +65,7 @@ Update-AzGalleryImageVersion `
    -PublishingProfileExcludeFromLatest
 ```
 
-此示例显示了如何使用 [AzGalleryImageVersion](/powershell/module/az.compute/update-azgalleryimageversion) 将此映像版本纳入考虑到 *最新* 映像。
+本示例说明如何使用 [Update-AzGalleryImageVersion](/powershell/module/az.compute/update-azgalleryimageversion) 将此映像版本包含在其中，以考虑作为最新映像。
 
 ```azurepowershell-interactive
 Update-AzGalleryImageVersion `

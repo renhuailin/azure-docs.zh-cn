@@ -3,7 +3,7 @@ title: 使用 PlayReady 和/或 Widevine 动态通用加密 | Microsoft Docs
 description: 可以使用 Azure 媒体服务传送受 Microsoft PlayReady DRM 保护的 MPEG-DASH 流、平滑流式处理流和 HTTP 实时流式处理 (HLS) 流。 还可以使用它传送通过 Widevine DRM 加密的 DASH。 本主题说明如何使用 PlayReady 和 Widevine DRM 动态加密。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 548d1a12-e2cb-45fe-9307-4ec0320567a2
@@ -12,22 +12,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 58ca7df5a99752f05a4715511685b31a467356f1
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.openlocfilehash: bd544b9eec0c1839ad94ede65e9d4ccde6df81dc
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695046"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063332"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>使用 PlayReady 和/或 Widevine DRM 动态通用加密
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。   > 未向 Media Services v2 添加新功能或功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
+> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。   > 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 >   
 
 ## <a name="overview"></a>概述
@@ -46,9 +46,9 @@ ms.locfileid: "98695046"
 
 媒体服务支持通过多种方式对发出密钥请求的用户进行授权。 内容密钥授权策略可能有一种或多种授权限制：开放或令牌限制。 令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持采用[简单 Web 令牌](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2) (SWT) 格式和 [JSON Web 令牌](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3) (JWT) 格式的令牌。 
 
-有关详细信息，请参阅[配置内容密钥授权策略](media-services-protect-with-aes128.md#configure_key_auth_policy)。
+有关详细信息，请参阅[配置内容密钥授权策略](media-services-portal-configure-content-key-auth-policy.md)。
 
-为了充分利用动态加密，资产需包含一组多码率 MP4 文件或多码率平滑流源文件。 还需要为资产配置传送策略（在本主题后面部分介绍）。 然后，根据在流式处理 URL 中指定的格式，按需流式处理服务器会确保使用选定的协议来传送流。 因此，可存储只使用单一存储格式的文件并为其付费。 媒体服务会根据客户端的每个请求生成并提供适当的 HTTP 响应。
+若要充分利用动态加密，请创建包含一组多比特率 MP4 文件或多比特率平滑流式处理源文件的资产。 还需要为资产配置传送策略（在本主题后面部分介绍）。 然后，根据在流式处理 URL 中指定的格式，按需流式处理服务器会确保使用选定的协议来传送流。 因此，可存储只使用单一存储格式的文件并为其付费。 媒体服务会根据客户端的每个请求生成并提供适当的 HTTP 响应。
 
 如果开发人员要让自己开发的应用程序能够传送受多个 DRM（例如 PlayReady 和 Widevine）保护的媒体，本文可以提供帮助。 本文介绍如何使用授权策略来配置 PlayReady 许可证传送服务，确保只有经过授权的客户端才能接收 PlayReady 或 Widevine 许可证。 此外，还介绍如何通过 DASH 使用 PlayReady 或 Widevine DRM 进行动态加密。
 

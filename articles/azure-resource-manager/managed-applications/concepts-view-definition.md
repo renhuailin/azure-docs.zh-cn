@@ -6,10 +6,10 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
 ms.openlocfilehash: 55263d3c742d18cf03303f96f08fb9aa370c7af8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100592056"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>查看 Azure 托管应用程序中的定义项目
@@ -125,7 +125,7 @@ ms.locfileid: "100592056"
 }
 ```
 
-|属性|必须|说明|
+|属性|必选|说明|
 |---------|---------|---------|
 |标头的值开始缓存响应|否|概述页的标题。|
 |description|否|托管应用程序的说明。|
@@ -164,7 +164,7 @@ ms.locfileid: "100592056"
 }
 ```
 
-|属性|必须|说明|
+|属性|必选|说明|
 |---------|---------|---------|
 |displayName|否|视图的显示标题。|
 |版本|否|用于呈现视图的平台版本。|
@@ -172,7 +172,7 @@ ms.locfileid: "100592056"
 
 ### <a name="chart"></a>图表
 
-|属性|必须|说明|
+|属性|必选|说明|
 |---------|---------|---------|
 |displayName|是|图表的显示标题。|
 |chartType|否|用于此图表的可视化效果。 默认使用折线图。 支持的图表类型：`Bar, Line, Area, Scatter`。|
@@ -180,7 +180,7 @@ ms.locfileid: "100592056"
 
 ### <a name="metric"></a>指标
 
-|属性|必须|说明|
+|属性|必选|说明|
 |---------|---------|---------|
 |name|是|指标的名称。|
 |aggregationType|是|用于此指标的聚合类型。 支持的聚合类型：`none, sum, min, max, avg, unique, percentile, count`|
@@ -224,7 +224,7 @@ ms.locfileid: "100592056"
 }
 ```
 
-|属性|必须|说明|
+|属性|必选|说明|
 |---------|---------|---------|
 |displayName|是|视图的显示标题。 标题对于 **viewDefinition.json** 中的每个 CustomResources 视图应该 **唯一**。|
 |版本|否|用于呈现视图的平台版本。|
@@ -253,7 +253,7 @@ ms.locfileid: "100592056"
 }
 ```
 
-|属性|必须|说明|
+|属性|必选|说明|
 |---------|---------|---------|
 |displayName|是|命令按钮的显示名称。|
 |path|是|自定义提供程序操作名称。 该操作必须在 **mainTemplate.json** 中定义。|
@@ -280,7 +280,7 @@ ms.locfileid: "100592056"
 }
 ```
 
-|属性|必须|说明|
+|属性|必选|说明|
 |---------|---------|---------|
 |displayName|是|视图的显示标题。 标题对于 **viewDefinition.json** 中的每个 Associations 视图应该 **唯一**。|
 |版本|否|用于呈现视图的平台版本。|
@@ -295,4 +295,4 @@ ms.locfileid: "100592056"
 
 - 有关托管应用程序的简介，请参阅 [Azure 托管应用程序概述](overview.md)。
 - 有关自定义提供程序的简介，请参阅 [Azure 自定义提供程序概述](../custom-providers/overview.md)。
-- 有关使用 Azure 自定义提供程序创建 Azure 托管应用程序的详细说明，请参阅 [教程：使用自定义提供程序操作和资源类型创建托管应用程序](tutorial-create-managed-app-with-custom-provider.md)
+- 有关使用 Azure 自定义提供程序创建 Azure 托管应用程序的详细信息，请参阅[教程：使用自定义提供程序操作和资源类型创建托管应用程序](tutorial-create-managed-app-with-custom-provider.md)

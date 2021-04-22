@@ -3,17 +3,17 @@ title: ML 工作室（经典）：迁移到 Azure 机器学习 - 使用管道终
 description: 在 Azure 机器学习中将管道终结点与客户端应用程序集成。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio-classic
+ms.subservice: studio
 ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
-ms.openlocfilehash: fc7e222d400c2ded602e3d26d504896302fff014
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: bf0624e0667c9fc6998fb28898a3376ca409180d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311781"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103565573"
 ---
 # <a name="consume-pipeline-endpoints-from-client-applications"></a>使用客户端应用程序中的管道终结点
 
@@ -21,7 +21,7 @@ ms.locfileid: "107311781"
 
 本文是 Azure 机器学习迁移系列的工作室（经典）的一部分。 有关迁移到 Azure 机器学习的详细信息，请参阅[迁移概述一文](migrate-overview.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - Azure 机器学习工作区。 [创建 Azure 机器学习工作区](../how-to-manage-workspace.md#create-a-workspace)。
@@ -38,7 +38,7 @@ ms.locfileid: "107311781"
 1. 选择“使用”。
 
 > [!NOTE]
-> 你还可以在“详细信息”选项卡中找到终结点的 Swagger 规范。使用 Swagger 定义了解你的终结点架构。 有关 Swagger 定义的详细信息，请参阅 [Swagger 官方文档](https://swagger.io/docs/specification/2-0/what-is-swagger/)。
+> 你还可在“详细信息”选项卡中找到终结点的 Swagger 规范。请使用 Swagger 定义来了解终结点架构。 有关 Swagger 定义的详细信息，请参阅 [Swagger 官方文档](https://swagger.io/docs/specification/2-0/what-is-swagger/)。
 
 
 ## <a name="consume-a-pipeline-endpoint"></a>使用管道终结点

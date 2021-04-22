@@ -1,16 +1,16 @@
 ---
 title: 使用 Databricks Notebook 转换数据
-description: 了解如何通过在 Azure 数据工厂中运行 Databricks 笔记本来处理或转换数据。
+description: 了解如何通过在 Azure 数据工厂中运行 Databricks Notebook 处理或转换数据。
 ms.service: data-factory
 author: nabhishek
 ms.author: abnarain
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: fea572c2e75f62b5e7e7b4634e37da348bdcdaf1
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102183482"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>通过运行 Databricks Notebook 转换数据
@@ -52,7 +52,7 @@ ms.locfileid: "102183482"
 
 下表描述了 JSON 定义中使用的 JSON 属性：
 
-|properties|说明|必须|
+|属性|说明|必需|
 |---|---|---|
 |name|管道中活动的名称。|是|
 |description|描述活动用途的文本。|否|
@@ -112,7 +112,7 @@ ms.locfileid: "102183482"
 
 在某些情况下，你可能需要将某些值从笔记本传回数据工厂，这些值可用于数据工厂中的控制流（条件检查）或由下游活动使用（大小限制为 2MB）。
 
-1. 在笔记本中，可以调用 [dbutils ( "returnValue" ) ](/azure/databricks/notebooks/notebook-workflows#notebook-workflows-exit) 并将相应的 "returnValue" 返回到数据工厂。
+1. 在笔记本中，可以调用 [dbutils.notebook.exit("returnValue")](/azure/databricks/notebooks/notebook-workflows#notebook-workflows-exit)，相应的“returnValue”将会返回到数据工厂。
 
 2. 可以通过表达式（如 `@{activity('databricks notebook activity name').output.runOutput}`）在数据工厂中使用输出。 
 
@@ -121,18 +121,18 @@ ms.locfileid: "102183482"
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>如何上传 Databricks 中的库
 
-### <a name="you-can-use-the-workspace-ui"></a>您可以使用工作区 UI：
+### <a name="you-can-use-the-workspace-ui"></a>可以使用工作区 UI：
 
 1. [使用 Databricks 工作区 UI](/azure/databricks/libraries/#create-a-library)
 
-2. 若要获取使用 UI 添加的库的 dbfs 路径，可以使用 [DATABRICKS CLI](/azure/databricks/dev-tools/cli/#install-the-cli)。
+2. 若要获取使用 UI 添加的库的 dbfs 路径，可以使用 [Databricks CLI](/azure/databricks/dev-tools/cli/#install-the-cli)。
 
    使用 UI 时，Jar 库通常存储在 dbfs:/FileStore/jars 下。 可以通过 CLI 列出所有库：databricks fs ls dbfs:/FileStore/job-jars
 
 ### <a name="or-you-can-use-the-databricks-cli"></a>或者，可以使用 Databricks CLI：
 
-1. 跟踪 [使用 DATABRICKS CLI 复制库](/azure/databricks/dev-tools/cli/#copy-a-file-to-dbfs)
+1. 按照[使用 Databricks CLI 复制库](/azure/databricks/dev-tools/cli/#copy-a-file-to-dbfs)操作
 
-2. 使用 Databricks CLI [ (安装步骤) ](/azure/databricks/dev-tools/cli/#install-the-cli)
+2. 使用 Databricks CLI[（安装步骤）](/azure/databricks/dev-tools/cli/#install-the-cli)
 
-   例如，要将 JAR 复制到 dbfs： `dbfs cp SparkPi-assembly-0.1.jar dbfs:/docs/sparkpi.jar`
+   例如，将 JAR 复制到 dbfs：`dbfs cp SparkPi-assembly-0.1.jar dbfs:/docs/sparkpi.jar`

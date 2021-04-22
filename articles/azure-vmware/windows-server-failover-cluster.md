@@ -3,12 +3,12 @@ title: Azure VMware 解决方案 vSAN 上使用本机共享磁盘的 Windows Ser
 description: 在 Azure VMware 解决方案上设置 Windows Server 故障转移群集 (WSFC)，并利用需要 WSFC 功能的解决方案。
 ms.topic: how-to
 ms.date: 03/09/2021
-ms.openlocfilehash: d667eef00fcad0e3f5243c6ab580e2e8371c6793
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 8162e15675d8bbde9267126c785f152d1cb860bd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518987"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562233"
 ---
 # <a name="windows-server-failover-cluster-on-azure-vmware-solution-vsan-with-native-shared-disks"></a>Azure VMware 解决方案 vSAN 上使用本机共享磁盘的 Windows Server 故障转移群集
 
@@ -30,7 +30,7 @@ Windows Server 故障转移群集 (WSFC)（以前称为 Microsoft 服务群集�
 
 本文重点介绍了 Windows Server 2016 和 Windows Server 2019 上的 WSFC。 较早的 Windows Server 版本不在[主要支持](https://support.microsoft.com/lifecycle/search?alpha=windows%20server)范围内，因此本文中不探讨这些版本。
 
-首先需要[创建一个 WSFC](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster)。 有关 WSFC 的详细信息，请参阅 [Windows Server 中的故障转移群集](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)。 若要详细了解如何在 Azure VMware 解决方案上部署 WSFC，请参阅本文中的信息。
+首先需要[创建一个 WSFC](/windows-server/failover-clustering/create-failover-cluster)。 有关 WSFC 的详细信息，请参阅 [Windows Server 中的故障转移群集](/windows-server/failover-clustering/failover-clustering-overview)。 若要详细了解如何在 Azure VMware 解决方案上部署 WSFC，请参阅本文中的信息。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,10 +49,10 @@ Azure VMware 解决方案为虚拟化 WSFC 提供本机支持。 它在虚拟磁
 
 目前支持以下配置：
 
-- Microsoft Windows Server 2012 或更高版本。
-- 每个群集最多五个故障转移群集节点。
-- 每个 VM 最多四个 PVSCSI 适配器。
-- 每个 PVSCSI 适配器最多 64 个磁盘。
+- Microsoft Windows Server 2012 或更高版本
+- 每个群集最多五个故障转移群集节点
+- 每个 VM 最多四个 PVSCSI 适配器
+- 每个 PVSCSI 适配器最多 64 个磁盘
 
 ## <a name="virtual-machine-configuration-requirements"></a>虚拟机配置要求
 
@@ -150,7 +150,7 @@ Azure VMware 解决方案上的 WSFC 不支持以下功能：
 
 ## <a name="related-information"></a>相关信息
 
-- [Windows Server 中的故障转移群集](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
+- [Windows Server 中的故障转移群集](/windows-server/failover-clustering/failover-clustering-overview)
 - [vSphere 上的 Microsoft 群集准则 (1037959) (vmware.com)](https://kb.vmware.com/s/article/1037959)
 - [设置故障转移群集和 Microsoft 群集服务的相关知识 (vmware.com)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.mscs.doc/GUID-1A2476C0-CA66-4B80-B6F9-8421B6983808.html)
 - [vSAN 6.7 U3 - 使用共享磁盘的 WSFC &amp; SCSI-3 永久保留 (vmware.com)](https://blogs.vmware.com/virtualblocks/2019/08/23/vsan67-u3-wsfc-shared-disksupport/)
@@ -162,5 +162,5 @@ Azure VMware 解决方案上的 WSFC 不支持以下功能：
 
 - 通过添加需要 WSFC 功能的更多应用程序来设置新的 WSFC。 例如，SQL Server 和 SAP ASCS。
 - 设置备份解决方案。
-  - [为 Azure VMware 解决方案设置 Azure 备份服务器](https://docs.microsoft.com/azure/azure-vmware/set-up-backup-server-for-azure-vmware-solution)
-  - [适用于 Azure VMware 解决方案虚拟机的备份解决方案](https://docs.microsoft.com/azure/azure-vmware/ecosystem-back-up-vms)
+  - [为 Azure VMware 解决方案设置 Azure 备份服务器](./set-up-backup-server-for-azure-vmware-solution.md)
+  - [适用于 Azure VMware 解决方案虚拟机的备份解决方案](./ecosystem-back-up-vms.md)

@@ -4,10 +4,10 @@ description: 了解 Azure 监视器的合作伙伴，以及如何访问相关文
 ms.topic: conceptual
 ms.date: 02/19/2021
 ms.openlocfilehash: ca58023510eb9329bc8ddf1339df4d8c27aae5e6
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102101012"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
@@ -52,7 +52,7 @@ AppDynamics Application Performance Management (APM) 可让应用程序所有者
 
 BMC Helix 是一种自主的企业服务和运营 SaaS 平台。 它集成了 360 度智能，使企业能够主动和预先地发现、监视、服务、修正、优化并为 IT 和业务线提供全渠道体验。
 此外，通过与 ITSM 和 IT 运营管理 (ITOM) 顺利集成，BMC Helix 允许 IT 和业务用户消除 IT 孤岛，做出数据驱动的业务决策，并提供行业领先的客户体验。
-客户可以部署 BMC Helix 平台及其选择的云部署–公共、专用或混合。 此外，客户还可以选择利用行业领先提供商的 AI/ML 解决方案。
+客户可以选择公有云、私有云或混合云的云部署方式来部署 BMC Helix 平台。 此外，客户还可以选择利用行业领先提供商的 AI/ML 解决方案。
 
 [了解更多关于 BMC Helix 的信息](https://www.bmc.com/it-solutions/bmc-helix.html?vu=helix)
 
@@ -64,7 +64,7 @@ BMC Helix 是一种自主的企业服务和运营 SaaS 平台。 它集成了 36
 
 ![Circonus 徽标](./media/partners/circonus.png)
 
-Circonus 是机器数据智能专家，提供唯一一个能够实时处理数十亿指标流的机器数据智能平台，以促进前所未有的业务洞察力和价值。 使用 Circonus 收集、跟踪和可视化与 Microsoft Azure 安装程序相关的关键指标。 可在系统范围内了解 Azure 的资源利用率、应用程序性能和运行状况。
+Circonus 是机器数据智能专家，提供唯一一个能够实时处理数十亿指标流的机器数据智能平台，以促进前所未有的业务洞察力和价值。 使用 Circonus 收集、跟踪和直观显示与 Microsoft Azure 设置相关的关键指标。 可在系统范围内了解 Azure 的资源利用率、应用程序性能和运行状况。
 
 [Circonus 文档](https://docs.circonus.com/circonus/agents/cloud-agent/azure/)
 
@@ -101,7 +101,7 @@ Azure 使客户能够迁移其应用程序并将其现代化，以便与许多�
 
 注册使用 Azure 与 Datadog 的新集成的[公共预览版](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4z3T2aGXUZPslUNJ3YpcapURFBHSUJIMVJTWDM5VUFPMVkyTVhMVlYzMS4u)。  从 2020 年 10 月开始，Azure 市场提供公共预览版。
 
-订阅[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/datadog1591740804488.dd_liftr_v2?tab=Overview)中提供的 "与 Azure 的 Datadog 集成" 的预览
+订阅 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/datadog1591740804488.dd_liftr_v2?tab=Overview)中提供的“Datadog 与 Azure 的集成”预览版
 
 如果你仍在使用之前手动配置的集成，请参阅 [DataDog 网站上的文档](https://docs.datadoghq.com/integrations/azure/)。
 
@@ -134,9 +134,9 @@ Grafana 是一个开源应用程序，用于可视化时序指标数据。
 
 ![InfluxData 徽标](./media/partners/Influxdata.png)
 
-InfluxData 是 InfluxDB 的创建者，即开源时序数据库。 我们的技术专门用于处理 IoT 设备、应用程序、网络、容器和计算机生成的大量时间戳数据。 我们的使命是帮助开发者和组织（如 IBM、Visa、Siemens、Tesla 和 NASA）存储和分析实时数据，使他们能够更快地构建变革性的监视、分析和 IoT 应用程序并进行缩放。 可以使用 InfluxData 的 Telegraf 代理展开 Microsoft Azure 监视器的指标和事件收集功能，使 Microsoft 用户能够受益于领先的时序数据库解决方案，并可利用不断增长的开源贡献到 Telegraf。
+InfluxData 是开放源代码时序数据库 InfluxDB 的创建者。 我们的技术专为处理 IoT 设备、应用程序、网络、容器和计算机产生的大量带时间戳的数据而设计。 我们的使命是帮助开发者和组织（如 IBM、Visa、Siemens、Tesla 和 NASA）存储和分析实时数据，使他们能够更快地构建变革性的监视、分析和 IoT 应用程序并进行缩放。 可以使用 InfluxData 的 Telegraf 代理扩展 Microsoft Azure Monitor 的指标和事件收集功能，使 Microsoft 用户可以从领先的时序数据库解决方案中获益，并利用 Telegraf 不断增长的开放源代码贡献。
 
-[Azure Monitor 流入 data Telegraf integration](essentials/collect-custom-metrics-linux-telegraf.md) 
+[Azure Monitor Influxdata Telegraf 集成](essentials/collect-custom-metrics-linux-telegraf.md) 
 
 ## <a name="logic-monitor"></a>LogicMonitor
 
@@ -160,7 +160,7 @@ Microfocus ArcSight 为 Azure Monitor 事件中心提供了一个智能连接器
 
 [请参阅 ArcSight 文档](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)
 
-Microfocus **操作桥** 会自动监视所有混合 IT 资源（任何设备、操作系统、数据库、应用程序或服务），而不考虑其运行位置，并将 AIOps 应用于所有数据类型-事件、指标、日志和依赖项。 它提供了服务质量监视的独特组合，并与深层应用程序运行状况分析相结合，并包括对 Microsoft Azure 服务的全面性能和可用性监视。 Operations Bridge 使客户能够以业务和 IT 利益干系人都能理解的方式提供一个单一虚拟管理平台，可在任何具有浏览器的设备上使用。
+Microfocus Operations Bridge 会自动监视所有混合 IT 资源（任何设备、操作系统、数据库、应用程序或服务）而不管其在何处运行，并将 AIOps 应用于所有数据类型（事件、指标、日志和依赖项）。 它提供了服务质量监视与深度应用程序运行状况分析的独特组合，包括对 Microsoft Azure 服务的全面性能和可用性监视。 Operations Bridge 使客户能够以业务和 IT 利益干系人都能理解的方式提供一个单一虚拟管理平台，可在任何具有浏览器的设备上使用。
 
 了解详细信息
 - [OB 套件概述](https://www.microfocus.com/products/operations-bridge-suite/overview)
@@ -280,16 +280,16 @@ SignalFx 是领先的面向数据驱动型 DevOps 的实时操作智能服务。
 
 ![Site24x7 徽标](./media/partners/site24-7.png)
 
-Site24x7 提供高级和完整堆栈 Azure 监视解决方案，提供应用程序的可见性和见解，使应用程序所有者能够快速检测性能瓶颈，实现故障排除，并优化性能。
+Site24x7 提供高级完整堆栈 Azure 监视解决方案，为应用程序提供可见性和见解，使应用程序所有者能够快速检测性能瓶颈，自动解决故障，并优化性能。
 借助 Site24x7 Azure Monitoring，你将能够：
 
-* 监视超过100个 Azure IaaS 和 PaaS 服务。
-* 直接从 Azure Marketplace 获取具有独有 Azure 扩展的 Windows 和 Linux Vm 的深入监视。
-* 通过深入了解 Azure 中的日志来对应用程序进行故障排除。 将日志发送到 Site24x7，保存搜索查询，设置基于查询的警报，以及通过单个仪表板管理 Azure 日志。
+* 监视超过 100 个 Azure IaaS 和 PaaS 服务。
+* 通过从 Azure 市场获取的独家 Azure 扩展深入监视 Windows 和 Linux VM。
+* 通过有关 Azure 日志的见解排查应用程序问题。 将日志发送到 Site24x7，保存搜索查询，设置基于查询的警报，并通过单个仪表板管理 Azure 日志。
 * 检测任何服务运行状况问题，并通过 Azure Deployment Manager (ADM) 运行状况检查确保可靠的部署。
 * 使用一组 IT 自动化工具自动解决故障。
-* 监视完整的 Microsoft ecosphere，包括 SQL、Exchange、Active Directory、Office 365、IIS 和 Hyper-v 应用程序。
-* 与 Microsoft 团队、PagerDuty、Zapier 等第三方服务无缝集成。
+* 监视完整的 Microsoft 生态圈，包括 SQL、Exchange、Active Directory、Office 365、IIS 和 Hyper-V 应用程序。
+* 与 Microsoft Teams、PagerDuty、Zapier 等第三方服务无缝集成。
 
 [Site24X7 文档](https://www.site24x7.com/azure/?utm_source=microsoft-partner-page&utm_medium=webpage&utm_campaign=ms-partner)
 
@@ -309,7 +309,7 @@ Site24x7 提供高级和完整堆栈 Azure 监视解决方案，提供应用程�
 
 ![SquaredUp 徽标](./media/partners/squaredup.png)
 
-SquaredUp for Azure 使 Azure 应用程序的可视化变得非常简单。 它提供了实时交互式仪表板。 你可以向下钻取到订阅、资源组、标记和单个资源，以查看指标，如 CPU、大多数入站连接、Application Insights 响应时间、总成本和汇总运行状况状态，以及钻取以查看相关数据（如警报、Log Analytics 事件、更详细的指标），或查看你使用的其他工具中的相关数据（如 ServiceNow）例如，Dynatrace、PagerDuty 或 Pingdom。  你可以自定义自己的仪表板，将其发布，并与个人共享或在 Intranet 页上共享。 
+SquaredUp for Azure 使 Azure 应用程序的可视化变得非常简单。 它提供了实时交互式仪表板。 你可向下钻取到订阅、资源组、标记和单个资源，以查看 CPU、大多数入站连接、Application Insights 响应时间、总成本和运行状况摘要之类的指标，并可通过交叉探查来查看相关数据（如警报、Log Analytics 事件、更详细的指标），或者从所使用的其他工具（例如 ServiceNow、Dynatrace、PagerDuty 或 Pingdom）查看相关数据。  你可以自定义自己的仪表板，将其发布，并与个人共享或在 Intranet 页上共享。 
 
 [SquaredUp 网站](https://squaredup.com/)
 
@@ -336,7 +336,7 @@ Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优
 | 工具 | 在 Azure 中托管 | 说明 |
 |:---|:---| :---|
 |  IBM QRadar | 否 | Microsoft Azure DSM 和 Microsoft Azure 事件中心协议可从 [IBM 支持网站](https://www.ibm.com/support)下载。 可以在 [QRadar DSM 配置](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)中详细了解与 Azure 的集成。 |
-| Splunk | 否 | [Splunk 的 Microsoft Azure Add-On](https://splunkbase.splunk.com/app/3757/) 是在 Splunkbase 中可用的开源项目。 <br><br> 如果无法在 Splunk 实例中安装加载项（例如，如果使用代理或在 Splunk Cloud 上运行），则可以使用[适用于 Splunk 的 Azure 函数](https://github.com/Microsoft/AzureFunctionforSplunkVS)（由事件中心内的新消息触发）将这些事件转发到 Splunk HTTP 事件收集器。 |
+| Splunk | 否 | [适用于 Splunk 的 Microsoft Azure 附加产品](https://splunkbase.splunk.com/app/3757/)是在 Splunkbase 中提供的一个开放源代码项目。 <br><br> 如果无法在 Splunk 实例中安装加载项（例如，如果使用代理或在 Splunk Cloud 上运行），则可以使用[适用于 Splunk 的 Azure 函数](https://github.com/Microsoft/AzureFunctionforSplunkVS)（由事件中心内的新消息触发）将这些事件转发到 Splunk HTTP 事件收集器。 |
 | SumoLogic | 否 | [从事件中心收集 Azure 审核应用的日志](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)中提供了有关设置 SumoLogic，以使用事件中心数据的说明。 |
 | ArcSight | 否 | ArcSight Azure 事件中心智能连接器作为 [ArcSight 智能连接器集合](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)的一部分提供。 |
 | Syslog 服务器 | 否 | 若要将 Azure Monitor 数据直接流式传输到 syslog 服务器，可以使用[基于 Azure 函数的解决方案](https://github.com/miguelangelopereira/azuremonitor2syslog/)。

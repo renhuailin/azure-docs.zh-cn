@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 46cf34bd40832488985008a645f1da25eb87b9d9
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: a47c4c5bdc90e148916900b1e72bc2a392d2e473
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467371"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285325"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>表单识别器预生成的发票模型
 
-Azure 表单识别器可以使用其预生成的发票模型分析和提取销售发票中的信息。 发票 API 使客户能够获取各种格式的发票，并返回结构化数据来自动完成发票处理。 它结合了强大的[光学字符识别 (OCR)](../computer-vision/concept-recognizing-text.md) 功能与发票理解深度学习模型，可从英语发票中提取重要信息。 可提取文本、表和信息，如客户、供应商、发票 ID、发票到期日期、总计、发票应付金额、税金、送货地址、帐单地址、行项目等等。 预生成发票 API 在表单识别器 2.1 预览版中公开提供。
+Azure 表单识别器可以使用其预生成的发票模型分析和提取销售发票中的信息。 发票 API 使客户能够获取各种格式的发票，并返回结构化数据来自动完成发票处理。 它结合了强大的[光学字符识别 (OCR)](../computer-vision/overview-ocr.md) 功能与发票理解深度学习模型，可从英语发票中提取重要信息。 可提取文本、表和信息，如客户、供应商、发票 ID、发票到期日期、总计、发票应付金额、税金、送货地址、帐单地址、行项目等等。 预生成发票 API 在表单识别器 2.1 预览版中公开提供。
 
 ## <a name="what-does-the-invoice-service-do"></a>发票服务有哪些功能？
 
@@ -90,31 +90,31 @@ JSON 输出包含 3 个部分：
 | BillingAddressRecipient | 字符串 | 与 BillingAddress 关联的名称 | Microsoft 服务 | |
 | ShippingAddress | 字符串 | 客户的具体送货地址 | 123 Ship St, Redmond WA, 98052 | |
 | ShippingAddressRecipient | 字符串 | 与 ShippingAddress 关联的名称 | Microsoft 交付 | |
-| SubTotal | number | 此发票上标识的小计字段 | 100.00 美元 | 100 | 
-| TotalTax | number | 此发票上标识的总税款字段 | $10.00 | 10 |
-| InvoiceTotal | number | 与此发票关联的新费用总计 | 110.00 美元 | 110 |
-| AmountDue |  number | 应支付给供应商的总金额 | 610.00 美元 | 610 |
+| SubTotal | 数字 | 此发票上标识的小计字段 | 100.00 美元 | 100 | 
+| TotalTax | 数字 | 此发票上标识的总税款字段 | $10.00 | 10 |
+| InvoiceTotal | 数字 | 与此发票关联的新费用总计 | 110.00 美元 | 110 |
+| AmountDue |  数字 | 应支付给供应商的总金额 | 610.00 美元 | 610 |
 | ServiceAddress | 字符串 | 客户的具体服务地址或房产地址 | 123 Service St, Redmond WA, 98052 | |
 | ServiceAddressRecipient | 字符串 | 与 ServiceAddress 关联的名称 | Microsoft 服务 | |
 | RemittanceAddress | 字符串 | 客户的明确汇款或付款地址 | 123 Remit St New York, NY, 10001 |  |
 | RemittanceAddressRecipient | 字符串 | 与 RemittanceAddress 关联的名称 | Contoso 计费 |  |
 | ServiceStartDate | date | 服务时段的开始日期（例如，公用事业帐单服务期间） | 2019/10/14 | 2019-10-14 |
 | ServiceEndDate | date | 服务时段的结束日期（例如，公用事业帐单服务期间） | 2019/11/14 | 2019-11-14 |
-| PreviousUnpaidBalance | number | 先前未付的具体余额 | $500.00 | 500 |
+| PreviousUnpaidBalance | 数字 | 先前未付的具体余额 | 500.00 美元 | 500 |
 
 下面是在 JSON 输出响应中从发票中提取的行项目（下面的输出使用此[示例发票](./media/sample-invoice.jpg)）  
 
-|名称| 类型 | 说明 | 文本（行项目 #1） | 值（标准化输出） |
+|名称| 类型 | 描述 | 文本（行项目 #1） | 值（标准化输出） |
 |:-----|:----|:----|:----| :----|
 | 项 | 字符串 | 行项目的完整字符串文本行 | 2021/3/4 A123 咨询服务 2 小时 30.00 美元 10% 60.00 美元 | |
-| 金额 | number | 行项目的数量 | 60.00 美元 | 100 |
+| 金额 | 数字 | 行项目的数量 | 60.00 美元 | 100 |
 | 说明 | 字符串 | 发票行项目的文本说明 | 咨询服务 | 咨询服务 |
-| 数量 | number | 此发票行项目的数量 | 2 | 2 |
-| UnitPrice | number | 此项目一个单位的净价或毛价（具体取决于发票的发票总额设置） | 30.00 美元 | 30 |
+| 数量 | 数字 | 此发票行项目的数量 | 2 | 2 |
+| 单价 | 数字 | 此项目一个单位的净价或毛价（具体取决于发票的发票总额设置） | 30.00 美元 | 30 |
 | ProductCode | 字符串| 与特定行项目关联的产品代码、产品编号或 SKU | A123 | |
 | 计价单位 | 字符串| 行项目单位，如公斤、磅等。 | 小时 | |
 | 日期 | date| 对应于每个行项目的日期。 这通常是行项目的发货日期 | 2021/3/4| 2021-03-04 |
-| 税款 | number | 与每个行项目关联的税款。 可能的值包括税金、税款 % 和税款 Y/N | 10% | |
+| 税款 | 数字 | 与每个行项目关联的税款。 可能的值包括税金、税款 % 和税款 Y/N | 10% | |
 
 
 ## <a name="next-steps"></a>后续步骤

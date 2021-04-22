@@ -3,7 +3,7 @@ title: 使用 AES-128 动态加密和密钥传送服务 | Microsoft Docs
 description: 本主题说明如何使用 AES-128 动态加密以及如何使用密钥传送服务。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 4d2c10af-9ee0-408f-899b-33fa4c1d89b9
@@ -12,22 +12,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 91ed9482903d66ffcf1283c4024f89fc461bab1b
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.openlocfilehash: b4375e7b68f0b279a971e92775ca454f06dcbd45
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695063"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067327"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>使用 AES-128 动态加密和密钥传递服务
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector"]
-> * [.NET](media-services-protect-with-aes128.md)
+> * [.NET](media-services-playready-license-template-overview.md)
 > * [Java](https://github.com/rnrneverdies/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 >  
@@ -35,13 +35,13 @@ ms.locfileid: "98695063"
 > [!NOTE]
 > 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 
-借助媒体服务，可以传送使用 AES 加密的 HTTP Live Streaming (HLS) 和平滑流（使用 128 位加密密钥）。 媒体服务还提供密钥传送服务，将加密密钥传送给已授权的用户。 如果需要媒体服务来加密资产，则需要将加密密钥与资产相关联，并配置密钥的授权策略。 当播放器请求流时，媒体服务将使用指定的密钥通过 AES 加密来动态加密内容。 为了解密流，播放器将从密钥传送服务请求密钥。 为了确定用户是否被授权获取密钥，服务将评估你为密钥指定的授权策略。
+借助媒体服务，可以传送使用 AES 加密的 HTTP Live Streaming (HLS) 和平滑流（使用 128 位加密密钥）。 媒体服务还提供密钥传送服务，将加密密钥传送给已授权的用户。 如果需要媒体服务来加密资产，则需要将加密密钥与资产相关联，并配置密钥的授权策略。 当播放器请求流时，媒体服务将使用指定的密钥通过 AES 加密来动态加密内容。 为解密流，播放器从密钥传送服务请求密钥。 为了确定用户是否被授权获取密钥，服务将评估你为密钥指定的授权策略。
 
 媒体服务支持通过多种方式对发出密钥请求的用户进行身份验证。 内容密钥授权策略可能有一种或多种授权限制：开放或令牌限制。 令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持采用[简单 Web 令牌](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2) (SWT) 格式和 [JSON Web 令牌](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3) (JWT) 格式的令牌。 有关详细信息，请参阅[配置内容密钥授权策略](media-services-protect-with-aes128.md#configure_key_auth_policy)。
 
 为了充分利用动态加密，资产必须包含一组多码率 MP4 文件或多码率平滑流源文件。 还需要为资产配置传送策略（在本文后面部分介绍）。 然后，根据在流式处理 URL 中指定的格式，按需流式处理服务器会确保使用选定的协议来传送流。 因此，需要存储只使用单一存储格式的文件并为其付费。 媒体服务会根据客户端的请求生成并提供适当的响应。
 
-本文适合开发受保护媒体传送应用程序的开发人员。 本文介绍如何使用授权策略来配置密钥传送服务，确保只有经过授权的客户端才能接收加密密钥。 此外还会介绍如何使用动态加密。
+本文适合开发受保护媒体传送应用程序的开发人员。 本文介绍如何使用授权策略来配置密钥传送服务，确保只有经过授权的客户端才能接收加密密钥。 此外还介绍如何使用动态加密。
 
 有关如何使用高级加密标准 (AES) 加密内容并传送到 macOS 上的 Safari 的信息，请参阅[此博客文章](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)。
 有关如何使用 AES 加密保护媒体内容的概述，请参阅[此视频](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-Protecting-your-Media-Content-with-AES-Encryption)。
@@ -51,23 +51,23 @@ ms.locfileid: "98695063"
 
 使用媒体服务密钥传送服务和动态加密通过 AES 来加密资产时，请执行下述常规步骤：
 
-1. [创建资产，并将文件上传到资产](media-services-protect-with-aes128.md#create_asset)中。
+1. [创建资产并将文件上传到资产](media-services-protect-with-aes128.md#create_asset)。
 
-2. 将[包含文件的资产编码为自适应比特率文件集](media-services-protect-with-aes128.md#encode_asset)。
+2. [将包含文件的资产编码为自适应比特率 MP4 集](media-services-protect-with-aes128.md#encode_asset)。
 
-3. [创建内容密钥，并将其与编码资产相关联](media-services-protect-with-aes128.md#create_contentkey)。 在媒体服务中，内容密钥包含资产的加密密钥。
+3. [创建对称密钥并将其与已编码的资产关联]media-services-protect-with-aes128.md#create_contentkey)。 在媒体服务中，内容密钥包含资产的加密密钥。
 
-4. [配置内容密钥的授权策略](media-services-protect-with-aes128.md#configure_key_auth_policy)。 必须配置内容密钥授权策略。 客户端必须符合该策略才能将内容密钥传送到客户端。
+4. [配置内容密钥授权策略](media-services-protect-with-aes128.md#configure_key_auth_policy)。 必须配置内容密钥授权策略。 客户端必须符合该策略才能将内容密钥传送到客户端。
 
-5. [为资产配置传送策略](media-services-protect-with-aes128.md#configure_asset_delivery_policy)。 传送策略配置包括密钥获取 URL 和初始化矢量 (IV)。  (AES-128 需要相同的 IV 进行加密和解密。 ) 配置还包括传递协议 (例如，MPEG-短线、HLS、平滑流式处理或所有) 和动态加密的类型 (例如，信封或无动态加密) 。
+5. [为资产配置传送策略](media-services-protect-with-aes128.md#configure_asset_delivery_policy)。 传送策略配置包括密钥获取 URL 和初始化矢量 (IV)。 （AES-128 要求加密和解密时使用相同的 IV。）配置中还包括传递协议（例如 MPEG-DASH、HLS、平滑流式处理或全部）和动态加密的类型（例如信封或无动态加密）。
 
-    可以对同一资产上的不同协议应用不同的策略。 例如，可以将 PlayReady 加密应用到平滑流/DASH，将 AES 信封应用到 HLS。 将阻止流式处理传送策略中未定义的任何协议。 例如，如果添加了一个仅将 HLS 指定为协议的策略，则 (。如果根本没有定义任何资产传送策略，则 ) 例外。 此时，允许所有明文形式的协议。
+    可以对同一资产上的不同协议应用不同的策略。 例如，可以将 PlayReady 加密应用到平滑流/DASH，将 AES 信封应用到 HLS。 将阻止流式处理传送策略中未定义的任何协议。 （例如，添加仅将 HLS 指定为协议的单个策略）例外情况是没有定义任何资产传送策略。 此时，允许所有明文形式的协议。
 
-6. [创建 OnDemand 定位符](media-services-protect-with-aes128.md#create_locator) 以获取流 URL。
+6. [创建 OnDemand 定位符](media-services-protect-with-aes128.md#create_locator)以获取流式处理 URL。
 
 本文还说明了[客户端应用程序如何从密钥传送服务请求密钥](media-services-protect-with-aes128.md#client_request)。
 
-可以在文章末尾找到完整的 [.net 示例](media-services-protect-with-aes128.md#example) 。
+可以在文章末尾找到完整的 [.NET 示例](media-services-protect-with-aes128.md#example)。
 
 下图演示了上述工作流。 在图中，使用令牌进行了身份验证。
 
@@ -163,7 +163,7 @@ ms.locfileid: "98695063"
 
 对于 HLS，根清单将划分成段文件。 
 
-例如，根清单是： http： \/ /test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest (format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3) 。 它包含段文件名的列表。
+例如，根清单为 http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest(format=m3u8-aapl)。 它包含段文件名的列表。
 
 ```text
 . . . 
@@ -174,7 +174,7 @@ QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
 …
 ```
 
-如果在文本编辑器中打开某个段文件 (例如，http： \/ /test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels (514369) /Manifest (视频，格式 = m3u8-aapl-v3-流式处理 m3u8-aapl-v3) ，则它包含 #EXT X 键，这表示该文件已加密。
+如果在文本编辑器中打开其中一个段文件（例如，http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels(514369)/Manifest(video,format=m3u8-aapl)），则应包含 #EXT-X-KEY，表示文件已加密。
 
 ```text
 #EXTM3U

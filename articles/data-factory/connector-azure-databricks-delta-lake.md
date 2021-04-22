@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/24/2020
-ms.openlocfilehash: bdf71276d59dec9a19e29ae7f49cb92a0512c05a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/29/2021
+ms.openlocfilehash: fcf533ad95e2567e62d44d6997752df6f3145ecb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100364233"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726781"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从Azure Databricks Delta Lake 复制数据
 
@@ -42,7 +42,7 @@ ms.locfileid: "100364233"
 
 Databricks 群集需要有权访问 Azure Blob 或 Azure Data Lake Storage Gen2 帐户、用于源/接收器/暂存的存储容器/文件系统，以及要在其中写入 Delta Lake 表的容器/文件系统。
 
-- 若要使用 **Azure Data Lake Storage Gen2**，你可以在 Databricks 群集上的 Apache Spark 配置中配置 **服务主体** 或 **存储帐户访问密钥**。 按照[使用服务主体直接访问](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-with-service-principal-and-oauth-20)或[使用存储帐户访问密钥直接访问](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-using-the-storage-account-access-key)中的步骤进行操作。
+- 若要使用 Azure Data Lake Storage Gen2，你可以在 Databricks 群集上的 Apache Spark 配置中配置服务主体。  根据[直接使用服务主体访问](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-with-service-principal-and-oauth-20)中的步骤操作。
 
 - 若要使用 **Azure Blob 存储**，你可以在 Databricks 群集上的 Apache Spark 配置中配置 **存储帐户访问密钥** 或 **SAS 令牌**。 按照[使用 RDD API 访问 Azure Blob 存储](/azure/databricks/data/data-sources/azure/azure-storage#access-azure-blob-storage-using-the-rdd-api)中的步骤进行操作。
 

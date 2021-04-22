@@ -2,13 +2,13 @@
 title: 资源命名限制
 description: 说明 Azure 资源的命名规则和限制。
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 20f7b6dc6c49b972b873ae3b275451829dec5c14
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/06/2021
+ms.openlocfilehash: e1a6f1628f5dcd8570551f9cc13ef508b44732f8
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934166"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505138"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure 资源的命名规则和限制
 
@@ -16,7 +16,7 @@ ms.locfileid: "105934166"
 
 本文按资源提供程序命名空间列出了资源。 有关资源提供程序如何匹配 Azure 服务的列表，请参阅[适用于 Azure 服务的资源提供程序](azure-services-resource-providers.md)。
 
-除非“有效字符”列中另有专门的说明，否则资源名称不区分大小写。
+资源名称不区分大小写，除非在“有效字符”列中注明。
 
 在下表中，术语“字母数字”是指：
 
@@ -599,7 +599,7 @@ ms.locfileid: "105934166"
 > | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | deployments | 资源组 | 1-64 | 字母数字、下划线、括号、连字符和句点。 |
-> | resourcegroups | 订阅 | 1-90 | 字母数字、下划线、括号、连字符、句点，以及与[正则表达式文档](/rest/api/resources/resources/resourcegroups/createorupdate)匹配的 Unicode 字符。<br><br>不能以句点结尾。 |
+> | resourcegroups | 订阅 | 1-90 | 字母数字、下划线、括号、连字符、句点，以及与[正则表达式文档](/rest/api/resources/resourcegroups/createorupdate)匹配的 Unicode 字符。<br><br>不能以句点结尾。 |
 > | tagNames | resource | 1-512 | 不得使用：<br>`<>%&\?/` |
 > | tagNames / tagValues | 标记名称 | 1-256 | 所有字符。 |
 > | templateSpecs | 资源组 | 1-90 | 字母数字、下划线、括号、连字符和句点。 |
@@ -614,7 +614,7 @@ ms.locfileid: "105934166"
 > | namespaces / disasterRecoveryConfigs | 全局 | 6-50 | 字母数字和连字符。<br><br>以字母开头。 以字母数字结尾。 |
 > | namespaces / migrationConfigurations | 命名空间 |  | 应始终为 **$default**。 |
 > | namespaces / queues | 命名空间 | 1-260 | 字母数字、句点、连字符、下划线和斜杠。<br><br>以字母数字开头和结尾。 |
-> | namespaces / queues / authorizationRules | 队列 | 1-50 | 字母数字、句点、连字符和下划线。<br><br>以字母数字开头和结尾。 |
+> | namespaces / queues / authorizationRules | queue | 1-50 | 字母数字、句点、连字符和下划线。<br><br>以字母数字开头和结尾。 |
 > | namespaces / topics | 命名空间 | 1-260 | 字母数字、句点、连字符、下划线和斜杠。<br><br>以字母数字开头和结尾。 |
 > | namespaces / topics / authorizationRules | 主题 | 1-50 | 字母数字、句点、连字符和下划线。<br><br>以字母数字开头和结尾。 |
 > | namespaces / topics / subscriptions | 主题 | 1-50 | 字母数字、句点、连字符和下划线。<br><br>以字母数字开头和结尾。 |
@@ -660,7 +660,7 @@ ms.locfileid: "105934166"
 > | storageAccounts / fileServices / shares | 存储帐户 | 3-63 | 小写字母、数字和连字符。<br><br>不能以连字符开头或结尾。 不能使用连续的连字符。 |
 > | storageAccounts / managementPolicies | 存储帐户 |  | 必须是 `default`。 |
 > | blob | container | 1-1024 | 任何 URL 字符，区分大小写 |
-> | 队列 | 存储帐户 | 3-63 | 小写字母、数字和连字符。<br><br>不能以连字符开头或结尾。 不能使用连续的连字符。 |
+> | queue | 存储帐户 | 3-63 | 小写字母、数字和连字符。<br><br>不能以连字符开头或结尾。 不能使用连续的连字符。 |
 > | 表 | 存储帐户 | 3-63 | 字母数字。<br><br>以字母开头。 |
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
@@ -706,10 +706,12 @@ ms.locfileid: "105934166"
 > | --- | --- | --- | --- |
 > | certificates | 资源组 | 1-260 | 不得使用：<br>`/` <br><br>不得以空格或句点结尾。  | 
 > | serverfarms | 资源组 | 1-40 | 字母数字和连字符。 |
-> | sites | 全局 | 2-60 | 包含字母数字和连字符。<br><br>不能以连字符开头或结尾。 |
+> | sites | 全局或每个域。 参阅下面的说明。 | 2-60 | 包含字母数字和连字符。<br><br>不能以连字符开头或结尾。 |
 > | sites/slots | site | 2-59 | 字母数字和连字符。 |
 
 > [!NOTE]
+> 网站必须具有全局唯一的 URL。 创建使用托管计划的网站时，URL 为 `http://<app-name>.azurewebsites.net`。 应用名称必须全局唯一。 创建使用应用服务环境的网站时，应用名称在[应用服务环境的域](../../app-service/environment/using-an-ase.md#app-access)中必须是唯一的。 对于这两种情况，站点的 URL 都是全局唯一的。
+>
 > Azure Functions 具有与 Microsoft.Web/sites 相同的命名规则和限制。
 
 ## <a name="next-steps"></a>后续步骤

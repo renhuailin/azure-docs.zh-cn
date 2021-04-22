@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 45b2ac73ffcb4b777572f9ad62d8aae0e8277e1c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95559384"
 ---
 > [!NOTE]
@@ -45,7 +45,7 @@ ms.locfileid: "95559384"
       ![适配器配置消息](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS3-include.png)
       
       > [!NOTE]
-      > 如果要为具有大量数据库 (超过 200) 的 SharePoint 场配置 RBS，SharePoint 管理中心网页可能会超时。如果出现这种情况，请刷新页面。 这不会影响配置过程。
+      > 如果要配置 RBS 的 SharePoint 场包含大量的数据库（超过 200 个），SharePoint 管理中心网页可能会超时。如果发生这种情况，请刷新页面。 这不会影响配置过程。
 
 4. 验证配置：
    

@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 12/16/2020
 ms.openlocfilehash: 3ace7f1c93ab3918f460d245a863db43d98f1db5
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102176087"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes 服务中使用托管标识
@@ -39,15 +39,15 @@ AKS 对内置服务和加载项使用多个托管标识。
 | Kubelet | AKS Cluster Name-agentpool | 向 Azure 容器注册表 (ACR) 进行身份验证 | NA（对于 kubernetes v1.15+） | 目前不支持
 | 加载项 | AzureNPM | 无需标识 | 不可用 | 否
 | 加载项 | AzureCNI 网络监视 | 无需标识 | 不可用 | 否
-| 加载项 | azure-策略 (看门程序)  | 无需标识 | 不可用 | 否
-| 加载项 | azure-策略 | 无需标识 | 不可用 | 否
+| 加载项 | azure-policy (gatekeeper) | 无需标识 | 不可用 | 否
+| 加载项 | azure-policy | 无需标识 | 不可用 | 否
 | 加载项 | Calico | 无需标识 | 不可用 | 否
 | 加载项 | 仪表板 | 无需标识 | 不可用 | 否
 | 加载项 | HTTPApplicationRouting | 管理所需的网络资源 | 节点资源组的读取者角色，DNS 区域的参与者角色 | 否
 | 加载项 | 入口应用程序网关 | 管理所需的网络资源| 节点资源组的参与者角色 | 否
 | 加载项 | omsagent | 用于将 AKS 指标发送到 Azure Monitor | “监视指标发布者”角色 | 否
 | 加载项 | Virtual-Node (ACIConnector) | 管理 Azure 容器实例 (ACI) 所需的网络资源 | 节点资源组的参与者角色 | 否
-| OSS 项目 | aad-pod-identity | 通过 Azure Active Directory (AAD) 使应用程序可安全访问云资源 | NA | 要授予权限的步骤 https://github.com/Azure/aad-pod-identity#role-assignment 。
+| OSS 项目 | aad-pod-identity | 通过 Azure Active Directory (AAD) 使应用程序可安全访问云资源 | NA | https://github.com/Azure/aad-pod-identity#role-assignment 处提供了授予权限的步骤。
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>创建具有托管标识的 AKS 群集
 
@@ -102,9 +102,9 @@ az aks show -g myResourceGroup -n myManagedCluster --query "identity"
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
-## <a name="update-an-aks-cluster-to-managed-identities-preview"></a> (预览将 AKS 群集更新为托管标识) 
+## <a name="update-an-aks-cluster-to-managed-identities-preview"></a>将 ASK 群集更新至托管标识（预览版）
 
-你现在可以通过使用以下 CLI 命令，更新当前使用服务主体的 AKS 群集以使用托管标识。
+现在可以使用以下 CLI 命令更新当前使用服务主体的 AKS 集群以使用托管标识。
 
 首先，为系统分配的标识注册功能标志：
 
@@ -130,18 +130,18 @@ az feature register --namespace Microsoft.ContainerService -n UserAssignedIdenti
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identity <UserAssignedIdentityResourceID> 
 ```
 > [!NOTE]
-> 系统分配的标识或用户分配的标识更新为托管标识后，请 `az aks nodepool upgrade --node-image-only` 在节点上执行，以完成对托管标识的更新。
+> 将系统分配的标识或用户分配的标识更新为托管标识后，请在节点上执行 `az aks nodepool upgrade --node-image-only` 以完成对托管标识的更新。
 
 ## <a name="bring-your-own-control-plane-mi"></a>自带控制平面 MI
-使用自定义控制平面标识，可以在创建群集之前将访问权限授予现有标识。 此功能启用了方案，例如，将自定义 VNET 或 outboundType UDR 与预先创建的托管标识结合使用。
+凭借自定义控制平面标识，即可在创建群集之前将访问权限授予现有标识。 此功能适用于多种场景，例如将自定义 VNET 或 outboundType UDR 与预先创建的托管标识结合使用。
 
-必须安装 Azure CLI 版本2.15.1 或更高版本。
+必须安装 Azure CLI 2.15.1 或更高版本。
 
 ### <a name="limitations"></a>限制
-* 当前不支持 Azure 政府版。
+* 当前不支持 Azure 政府。
 * 当前不支持 Azure 中国世纪互联。
 
-如果还没有托管标识，应继续使用 [az IDENTITY CLI][az-identity-create]创建一个示例。
+如果还没有托管标识，应创建一个，例如使用 [az IDENTITY CLI][az-identity-create] 来创建。
 
 ```azurecli-interactive
 az identity create --name myIdentity --resource-group myResourceGroup
@@ -163,7 +163,7 @@ az identity create --name myIdentity --resource-group myResourceGroup
 }
 ```
 
-如果你的托管标识是你的订阅的一部分，你可以使用 [az IDENTITY CLI 命令][az-identity-list] 对其进行查询。  
+如果托管标识属于订阅，可以使用 [az IDENTITY CLI 命令][az-identity-list]对其进行查询。  
 
 ```azurecli-interactive
 az identity list --query "[].{Name:name, Id:id, Location:location}" -o table
@@ -184,7 +184,7 @@ az aks create \
     --assign-identity <identity-id> \
 ```
 
-使用自己的托管标识成功创建群集包含此 userAssignedIdentities 配置文件信息：
+若成功使用自己的托管标识创建了群集，则其中包含 userAssignedIdentities 配置文件信息：
 
 ```output
  "identity": {
@@ -201,7 +201,7 @@ az aks create \
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [Azure 资源管理器 (ARM) 模板 ][aks-arm-template] 来创建启用了托管身份的群集。
+* 使用 [Azure 资源管理器 (ARM) 模板][aks-arm-template]创建已启用托管标识的群集。
 
 <!-- LINKS - external -->
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters

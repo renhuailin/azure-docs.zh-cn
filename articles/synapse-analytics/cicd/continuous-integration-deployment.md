@@ -9,10 +9,10 @@ ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
 ms.openlocfilehash: de3738573bb9bb6f045a45d290c74ba9e6902a5e
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103561951"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure Synapse 工作区的持续集成和交付
@@ -137,12 +137,12 @@ ms.locfileid: "103561951"
 下面是创建自定义参数文件的一些准则：
 
 * 输入相关实体类型下的属性路径。
-* 将属性名称设置为 `*`，则表示要将该路径下所有属性都参数化（只参数化到第一个级别，而不是递归性参数化）。 还可为此配置提供例外情况。
+* 将属性名称设置为 `*` 表示要将其下的所有属性参数化（仅参数化到第一个级别，而不是递归性的参数化）。 还可为此配置提供例外情况。
 * 将属性值设置为字符串表示你希望参数化该属性。 使用格式 `<action>:<name>:<stype>`。
    *  `<action>` 可以是以下字符之一：
       * `=` 表示将当前值保留为参数的默认值。
       * `-` 表示不保留参数的默认值。
-      * `|` 是 Azure Key Vault 中机密的特例，用于连接字符串或密钥。
+      * `|` 是 Azure Key Vault 中的机密的特例，用于连接字符串或密钥。
    * `<name>` 是参数的名称。 如果为空，将采用属性的名称。 如果值以 `-` 字符开头，则会简写名称。 例如，`AzureStorage1_properties_typeProperties_connectionString` 将简写为 `AzureStorage1_connectionString`。
    * `<stype>` 是参数的类型。 如果 `<stype>` 为空，则默认类型为 `string`。 支持的值：`string`、`securestring`、`int`、`bool`、`object`、`secureobject` 和 `array`。
 * 在该文件中指定数组，则表示模板中的匹配属性是数组。 Synapse 会通过使用指定的定义来循环访问该数组中的所有对象。 第二个对象（一个字符串）成为属性的名称，这用作每次遍历的参数的名称。

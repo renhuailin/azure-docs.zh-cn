@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet, contperf-fy21q2
-ms.openlocfilehash: 06fb087744ff4ecd96bee7a26e4a796e87866322
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1a6439cfa64257e80d113f01f4ed31d56d850ea3
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102433652"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226050"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>适用于 Azure Cosmos DB 和 .NET 的性能提示
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -69,7 +69,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
 **连接策略：使用直接连接模式**
 
-.NET V3 SDK 的默认连接模式是“直接”。 在 `CosmosClientOptions` 中创建 `CosmosClient` 实例时，可以配置连接模式。  若要详细了解不同的连接性选项，请参阅[连接性模式](sql-sdk-connection-modes.md)一文。
+.NET V3 SDK 默认连接模式是使用 TCP 协议直接连接。 在 `CosmosClientOptions` 中创建 `CosmosClient` 实例时，可以配置连接模式。  若要详细了解不同的连接性选项，请参阅[连接性模式](sql-sdk-connection-modes.md)一文。
 
 ```csharp
 string connectionString = "<your-account-connection-string>";
@@ -215,7 +215,7 @@ Azure Cosmos DB 提供一组丰富的数据库操作。 这些操作包括通用
 
 查询的复杂性会影响操作消耗的请求单位数量。 谓词数、谓词性质、UDF 文件数目和源数据集的大小都会影响查询操作的成本。
 
-若要度量任一操作（创建、更新或删除）的开销，请检查 [x-ms-request-charge](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) 标头（或者 .NET SDK 的 `ResourceResponse\<T>` 或 `FeedResponse\<T>` 中的等效 `RequestCharge` 属性），以度量这些操作消耗的请求单位数：
+若要度量任一操作（创建、更新或删除）的开销，请检查 [x-ms-request-charge](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) 标头（或者 .NET SDK 的 `ResourceResponse<T>` 或 `FeedResponse<T>` 中的等效 `RequestCharge` 属性），以度量这些操作消耗的请求单位数：
 
 ```csharp
 // Measure the performance (Request Units) of writes

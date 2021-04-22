@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 80c08eb20a734c16543f2767d18d86b260f17eee
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: d38b1f20547056c30f19dbbc77589643be1663a4
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106287378"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073584"
 ---
 <a name="HOLTop"></a>
 
@@ -255,9 +255,11 @@ node index.js
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
->[图像分析 API 参考 (Node.js)](/javascript/api/@azure/cognitiveservices-computervision/)
+在本快速入门中了解了安装图像分析客户端库和进行基本的图像分析调用的方法。 接下来，详细了解分析 API 功能。
 
+> [!div class="nextstepaction"]
+>[调用分析 API](../../Vision-API-How-to-Topics/HowToCallVisionAPI.md)
 
 * [图像分析概述](../../overview-image-analysis.md)
 * 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上找到此示例的源代码。
+

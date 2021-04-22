@@ -2,14 +2,14 @@
 title: 在虚拟网络中预配池
 description: 如何在 Azure 虚拟网络中创建 Batch 池，以便计算节点可以安全地与网络（例如文件服务器）中的其他 VM 通信。
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/26/2021
 ms.custom: seodec18
-ms.openlocfilehash: d6e5de75164e098fc95f6c086d9f98a652dcee4a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7213637e89cfccd1352861002c47a696d942d30f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103561901"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105629302"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>在虚拟网络中创建 Azure Batch 池
 
@@ -56,6 +56,8 @@ ms.locfileid: "103561901"
 - Batch 服务需要与节点进行通信来计划任务。 若要启用此通信，请在你的 Batch 帐户所在的区域中为 Batch 服务使用的每个 IP 地址添加一个 UDR。 若要获取 Batch 服务的 IP 地址列表，请参阅[本地的服务标记](../virtual-network/service-tags-overview.md)。
 
 - 确保发送到 Azure 存储（具体而言是采用 `<account>.table.core.windows.net`、`<account>.queue.core.windows.net` 和 `<account>.blob.core.windows.net` 格式的 URL）的出站流量没有被本地网络阻止。
+
+- 如果使用虚拟文件装载，请查看[网络要求](virtual-file-mount.md#networking-requirements)，并确保未阻止所需的流量。
 
 添加 UDR 时，请为每个相关 Batch IP 地址前缀定义路由，并将“下一个跃点类型”设置为“Internet” 。
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 92046b3a944a747ce76d2426855eec7b6bc2cd70
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1e644d81c2a47ec07833010ae93f4dbb0c57474b
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "84790240"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077833"
 ---
 # <a name="list-azure-deny-assignments-using-the-azure-portal"></a>使用 Azure 门户列出 Azure 拒绝分配
 
@@ -54,7 +54,7 @@ ms.locfileid: "84790240"
 
     ![拒绝分配 - 列](./media/deny-assignments-portal/deny-assignments-columns.png)
 
-    |  |  |
+    | 列 | 说明  |
     | --- | --- |
     | **名称** | 拒绝分配的名称。 |
     | **主体类型** | 用户、组、系统定义的组或服务主体。 |
@@ -79,7 +79,7 @@ ms.locfileid: "84790240"
 
     “用户”边栏选项卡包括下述两个部分。
 
-    |  |  |
+    | 拒绝设置  | 说明 |
     | --- | --- |
     | **拒绝分配适用于**  | 拒绝分配应用到的安全主体。 |
     | **拒绝分配排除** | 排除在拒绝分配之外的安全主体。 |

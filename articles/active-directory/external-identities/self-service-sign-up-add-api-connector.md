@@ -11,14 +11,14 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 703e3b4c951bc4c3a22f82b9faa31789d1abf868
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 0c9bbdb831df9c51c6d80e6c441ac7bdd2778428
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103008716"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044543"
 ---
-# <a name="add-an-api-connector-to-a-user-flow"></a>将 API 连接器添加到用户流
+# <a name="add-an-api-connector-to-a-user-flow"></a>向用户流添加 API 连接器
 
 若要使用某个 [API 连接器](api-connectors-overview.md)，首先需要创建该 API 连接器，然后在用户流中启用它。
 
@@ -27,7 +27,7 @@ ms.locfileid: "103008716"
 
 ## <a name="create-an-api-connector"></a>创建 API 连接器
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 在“Azure 服务”下，选择“Azure Active Directory”。
 3. 在左侧菜单中，选择“外部标识”。
 4. 依次选择“所有 API 连接器”、“新建 API 连接器”。 
@@ -53,13 +53,24 @@ HTTP 基本身份验证在 [RFC 2617](https://tools.ietf.org/html/rfc2617) 中�
 > [!IMPORTANT]
 > 此功能目前为预览版，不附带服务级别协议。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-客户端证书身份验证是一种基于证书的相互身份验证，其中，客户端向服务器提供客户端证书来证明自己的身份。 在这种情况下，Azure Active Directory 将使用你上传的证书作为 API 连接器配置的一部分。 此操作在 SSL 握手期间发生。 只有拥有适当证书的服务才能访问你的 API 服务。 客户端证书是一种 X.509 数字证书。 在生产环境中，必须由证书颁发机构为此证书签名。 
+客户端证书身份验证是一种基于证书的相互身份验证，其中，客户端向服务器提供客户端证书来证明自己的身份。 在这种情况下，Azure Active Directory 将使用你上传的证书作为 API 连接器配置的一部分。 此操作在 SSL 握手期间发生。 然后 API 服务可限制只有拥有适当证书的服务才能访问。 客户端证书是一种 PKCS12 (PFX) X.509 数字证书。 在生产环境中，必须由证书颁发机构为此证书签名。 
 
-若要创建证书，可以使用 [Azure 密钥保管库](../../key-vault/certificates/create-certificate.md)，其中提供了适用于自签名证书的选项，以及与证书颁发者提供程序相集成以便为证书签名的选项。 然后可以[导出该证书](../../key-vault/certificates/how-to-export-certificate.md)，并将其上传以便在 API 连接器配置中使用。 请注意，只需为受密码保护的证书文件指定密码。 还可以使用 PowerShell 的 [New-SelfSignedCertificate cmdlet](../../active-directory-b2c/secure-rest-api.md#prepare-a-self-signed-certificate-optional) 来生成自签名证书。
+若要创建证书，可以使用 [Azure 密钥保管库](../../key-vault/certificates/create-certificate.md)，其中提供了适用于自签名证书的选项，以及与证书颁发者提供程序相集成以便为证书签名的选项。 建议的设置包括：
+- **使用者**：`CN=<yourapiname>.<tenantname>.onmicrosoft.com`
+- **内容类型**：`PKCS #12`
+- **生存期操作类型**：`Email all contacts at a given percentage lifetime` 或 `Email all contacts a given number of days before expiry`
+- **密钥类型**：`RSA`
+- **密钥大小**：`2048`
+- **可导出的私钥**：`Yes`（以便能够导出 pfx 文件）
 
-对于 Azure 应用服务和 Azure Functions，请参阅[配置 TLS 相互身份验证](../../app-service/app-service-web-configure-tls-mutual-auth.md)来了解如何从 API 终结点启用和验证证书。
+然后，你可以[导出该证书](../../key-vault/certificates/how-to-export-certificate.md)。 还可以使用 PowerShell 的 [New-SelfSignedCertificate cmdlet](../../active-directory-b2c/secure-rest-api.md#prepare-a-self-signed-certificate-optional) 来生成自签名证书。
 
-建议针对证书过期时间设置提醒警报。 若要将新证书上传到现有的 API 连接器，请在“所有 API 连接器”下选择该 API 连接器，然后单击“上传新证书”。  Azure Active Directory 会自动使用最近上传的未过期且已超过开始日期的证书。
+获得证书后，可以将其上传为 API 连接器配置的一部分。 请注意，只需为受密码保护的证书文件指定密码。
+
+API 必须根据发送的客户端证书实现授权，以便保护 API 终结点。 有关 Azure 应用服务和 Azure Functions 的信息，请参阅[配置 TLS 相互身份验证](../../app-service/app-service-web-configure-tls-mutual-auth.md)，了解如何通过 API 代码启用和验证证书。  还可以使用 Azure API 管理来保护 API，并使用策略表达式根据所需的值[检查客户端证书属性](
+../../api-management/api-management-howto-mutual-certificates-for-clients.md)。
+ 
+建议针对证书过期时间设置提醒警报。 你将需要生成新证书，并重复上述步骤。 部署新证书时，API 服务可以临时继续接受旧证书和新证书。 若要将新证书上传到现有的 API 连接器，请在“所有 API 连接器”下选择该 API 连接器，然后单击“上传新证书”。  Azure Active Directory 会自动使用最新上传的未过期且已超过开始日期的证书。
 
 ### <a name="api-key"></a>API 密钥
 某些服务使用“API 密钥”机制来模糊化开发期间对 HTTP 终结点的访问。 对于 [Azure Functions](../../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)，可以通过包含 `code` 作为“终结点 URL”中的查询参数来实现此目的。 例如 `https://contoso.azurewebsites.net/api/endpoint`<b>`?code=0123456789`</b>。 
@@ -129,7 +140,7 @@ Content-type: application/json
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>使用标识提供者登录之后
 
-在用户使用标识提供者（例如 Google、Facebook 和 Azure AD）进行身份验证之后，会立即调用为注册过程中的此步骤选择的 API 连接器。 此步骤优先于特性收集页，后者是向用户显示的用于收集用户特性的表单。 如果用户正在使用本地帐户注册，则不会调用此步骤。
+在注册过程的此步骤中，在用户使用标识提供者（例如 Google、Facebook 和 Azure AD）进行身份验证之后，会立即调用 API 连接器。 此步骤优先于特性收集页，后者是向用户显示的用于收集用户特性的表单。 如果用户正在使用本地帐户注册，则不会调用此步骤。
 
 ### <a name="example-request-sent-to-the-api-at-this-step"></a>执行此步骤时发送到 API 的示例请求
 ```http
@@ -179,7 +190,7 @@ Content-type: application/json
 
 ## <a name="before-creating-the-user"></a>创建用户之前
 
-在显示特性收集页之后，将调用为注册过程中的此步骤选择的 API 连接器（如果已包含一个连接器）。 在 Azure AD 中创建用户帐户之前始终会调用此步骤。 
+在注册过程的此步骤中，在显示属性集合页之后，将调用 API 连接器（如果包含了连接器）。 在 Azure AD 中创建用户帐户之前始终会调用此步骤。 
 
 ### <a name="example-request-sent-to-the-api-at-this-step"></a>执行此步骤时发送到 API 的示例请求
 
@@ -304,7 +315,7 @@ Content-type: application/json
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | 版本     | 字符串  | 是      | API 的版本。                                                    |
 | action      | 字符串  | 是      | 值必须是 `ValidationError`。                                           |
-| status      | Integer | 是      | 必须为值 `400`（表示验证错误响应）。                        |
+| 状态      | Integer | 是      | 必须为值 `400`（表示验证错误响应）。                        |
 | userMessage | 字符串  | 是      | 要向用户显示的消息。                                            |
 
 > [!NOTE]

@@ -8,18 +8,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 07/01/2020
-ms.openlocfilehash: 2e8e5a127741625fde7910aaabd421836148fc35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/06/2021
+ms.openlocfilehash: 7524644b34a6fd479c08b9ce6418c547c836add5
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95018661"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554019"
 ---
 # <a name="sentiment-analysis"></a>情绪分析
 如果配置了情绪分析，LUIS json 响应会包含情绪分析内容。 请在[文本分析](../text-analytics/index.yml)文档中详细了解情绪分析。
 
 LUIS 使用文本分析 V2。 
+
+在发布应用程序时，将配置情绪分析。 有关详细信息，请参阅[如何发布应用程序](./luis-how-to-publish-app.md)。
 
 ## <a name="resolution-for-sentiment"></a>情绪解决方法
 

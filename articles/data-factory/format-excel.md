@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: jingwang
 ms.openlocfilehash: bef29bc958253be0498442f842dda67105ce799b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100386520"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure 数据工厂中的 Excel 格式
@@ -18,7 +18,7 @@ ms.locfileid: "100386520"
 
 如果要 **分析 Excel 文件**，请按此文的要求操作。 Azure 数据工厂同时支持“.xls”和“.xlsx”。
 
-以下连接器支持 Excel 格式： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure 文件存储](connector-azure-file-storage.md)、 [文件系统](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud Storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和 [SFTP](connector-sftp.md)。 它可以作为源，但不可作为接收器。 
+以下连接器支持 Excel 格式：[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、[FTP](connector-ftp.md)、[Google 云存储](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md) 和 [SFTP](connector-sftp.md)。 它可以作为源，但不可作为接收器。 
 
 **注意**：使用 [HTTP](connector-http.md) 时不支持“.xls”格式。 
 
@@ -100,7 +100,7 @@ ms.locfileid: "100386520"
 
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
-在映射数据流时，可以在以下数据存储中读取 Excel 格式： [Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。 可以使用 Excel 数据集或[内联数据集](data-flow-source.md#inline-datasets)来指向 Excel 文件。
+在映射数据流中，可以在以下数据存储中读取 Excel 格式：[Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) 和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。 可以使用 Excel 数据集或[内联数据集](data-flow-source.md#inline-datasets)来指向 Excel 文件。
 
 ### <a name="source-properties"></a>源属性
 
@@ -108,11 +108,11 @@ ms.locfileid: "100386520"
 
 | 名称                      | 说明                                                  | 必需 | 允许的值                                            | 数据流脚本属性         |
 | ------------------------- | ------------------------------------------------------------ | -------- | --------------------------------------------------------- | --------------------------------- |
-| 通配符路径           | 将处理与通配符路径匹配的所有文件。 替代在数据集中设置的文件夹和文件路径。 | 否       | String[]                                                  | wildcardPaths                     |
-| 分区根路径       | 对于已分区的文件数据，你可以输入分区根路径，以便将已分区的文件夹作为列读取 | 否       | 字符串                                                    | partitionRootPath                 |
-| 文件列表             | 源是否指向列出了要处理的文件的文本文件 | 否       | `true` 或 `false`                                         | fileList                          |
-| 用于存储文件名的列 | 使用源文件名称和路径创建一个新列       | 否       | 字符串                                                    | rowUrlColumn                      |
-| 完成后          | 在处理后删除或移动文件。 文件路径从容器根目录开始 | 否       | Delete：`true` 或 `false` <br> Move：`['<from>', '<to>']` | purgeFiles <br> moveFiles         |
+| 通配符路径           | 将处理与通配符路径匹配的所有文件。 重写数据集中设置的文件夹和文件路径。 | 否       | String[]                                                  | wildcardPaths                     |
+| 分区根路径       | 对于已分区的文件数据，可以输入分区根路径，以便将已分区的文件夹读取为列 | 否       | 字符串                                                    | partitionRootPath                 |
+| 文件列表             | 源是否指向某个列出待处理文件的文本文件 | 否       | `true` 或 `false`                                         | fileList                          |
+| 用于存储文件名的列 | 使用源文件名称和路径创建新列       | 否       | 字符串                                                    | rowUrlColumn                      |
+| 完成后          | 在处理后删除或移动文件。 文件路径从容器根开始 | 否       | 删除：`true` 或 `false` <br> Move：`['<from>', '<to>']` | purgeFiles <br> moveFiles         |
 | 按上次修改时间筛选   | 选择根据上次更改时间筛选文件 | 否       | 时间戳                                                 | ModifiedAfter <br> modifiedBefore |
 | 允许找不到文件 | 如果为 true，则找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
 

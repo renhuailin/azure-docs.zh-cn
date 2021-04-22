@@ -12,10 +12,10 @@ manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d41d7d45fd11f2dc26fc50182a7649b23cd21196
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103008750"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>将自定义审批工作流添加到自助注册
@@ -53,7 +53,7 @@ ms.locfileid: "103008750"
 
 9. 在“API 权限”页上，依次选择“为 (你的租户名称) 授予管理员同意”、“是”。  
 10. 在左侧菜单中的“管理”下，依次选择“证书和机密”、“新建客户端机密”。  
-11. 输入机密的 **说明**（例如“审批客户端机密”），然后选择客户端机密的 **过期时间**。 然后选择“添加”。
+11. 输入机密的 **说明**（例如“审批客户端机密”），然后选择客户端机密的 **过期时间**。 然后选择“添加”  。
 12. 复制客户端机密的值。
 
     ![复制客户端机密以便在审批系统中使用](media/self-service-sign-up-add-approvals/client-secret-value-copy.png)
@@ -262,7 +262,7 @@ Content-type: application/json
 
 ## <a name="user-account-creation-after-manual-approval"></a>手动审批后创建用户帐户
 
-获取手动审批请求后，自定义审批系统将使用 [Microsoft Graph](/graph/use-the-api) 创建一个[用户](/graph/azuread-users-concept-overview)帐户。 审批系统预配用户帐户的方式取决于用户使用的标识提供者。
+收到手动审批后，自定义审批系统将使用 [Microsoft Graph](/graph/use-the-api) 创建一个[用户](/graph/azuread-users-concept-overview)帐户。 审批系统预配用户帐户的方式取决于用户使用的标识提供者。
 
 ### <a name="for-a-federated-google-or-facebook-user-and-email-one-time-passcode"></a>对于 Google 或 Facebook 联合用户和电子邮件一次性密码
 
@@ -372,7 +372,7 @@ Content-type: application/json
 }
 ```
 
-3. 审批系统使用受邀用户的 ID 根据收集的用户特性来更新用户的帐户（可选）。
+3. 审批系统根据收集的用户特性，使用受邀用户的 ID 更新用户帐户（可选）。
 
 ```http
 PATCH https://graph.microsoft.com/v1.0/users/<generated-user-guid>

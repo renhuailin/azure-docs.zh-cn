@@ -4,23 +4,23 @@ description: 了解如何在 Azure 数据工厂中创建运行管道的触发器
 ms.service: data-factory
 author: chez-charlie
 ms.author: chez
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.topic: conceptual
-ms.date: 10/18/2018
-ms.openlocfilehash: ff8c549f74b59706de5203f2d2e46867d6cb1d0a
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.date: 03/11/2021
+ms.openlocfilehash: 3021d049a38f1d883518fc7c45aa8ca0a906c2f7
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177773"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221579"
 ---
-# <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>创建一个触发器，以便在响应存储事件时运行管道
+# <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>创建运行管道的触发器来响应存储事件
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文介绍可以在数据工厂管道中创建的存储事件触发器。
+本文介绍了可以在数据工厂管道中创建的存储事件触发器。
 
-事件驱动的体系结构 (EDA) 是一种常见数据集成模式，其中涉及到事件的生成、检测、消耗和响应。 数据集成方案通常要求数据工厂客户根据存储帐户中发生的事件（例如，在 Azure Blob 存储帐户中到达或删除文件）触发管道。 数据工厂本身与 [Azure 事件网格](https://azure.microsoft.com/services/event-grid/)集成，可让你在此类事件上触发管道。
+事件驱动的体系结构 (EDA) 是一种常见数据集成模式，其中涉及到事件的生成、检测、消耗和响应。 数据集成方案通常要求数据工厂客户根据存储帐户中发生的事件（例如，文件抵达了 Azure Blob 存储帐户，或者在存储帐户中删除了文件）触发管道。 数据工厂以本机方式与 [Azure 事件网格](https://azure.microsoft.com/services/event-grid/)集成，这样便可以根据此类事件触发管道。
 
 有关此功能的 10 分钟介绍和演示，请观看以下视频：
 
@@ -33,68 +33,73 @@ ms.locfileid: "102177773"
 
 本部分介绍如何在 Azure 数据工厂用户界面中创建存储事件触发器。
 
-1. 切换到“编辑”选项卡（显示为铅笔符号）。 
+1. 切换到“编辑”选项卡（显示为铅笔符号）。
 
-1. 在菜单上选择“触发器”，然后选择“新建/编辑” 。 
+1. 在菜单上选择“触发器”，然后选择“新建/编辑” 。
 
-1. 在“添加触发器”页上，选择“选择触发器...”，然后选择“+新建”  。 
+1. 在“添加触发器”页上，选择“选择触发器...”，然后选择“+新建”  。
 
-1. 选择触发器类型 **存储事件**
+1. 选择触发器类型“存储事件”
 
-    ![创建新的存储事件触发器](media/how-to-create-event-trigger/event-based-trigger-image1.png)
+    :::image type="content" source="media/how-to-create-event-trigger/event-based-trigger-image1.png" alt-text="“创作”页（用于在数据工厂 UI 中创建新的存储事件触发器）的屏幕截图。":::
 
-1. 从 Azure 订阅下拉列表中选择你的存储帐户，或使用其存储帐户资源 ID 手动选择。 选择希望事件在哪个容器中发生。 容器是可选的，但是请注意，选择所有容器可能会导致生成大量的事件。
-
-   > [!NOTE]
-   > 存储事件触发器目前仅支持 Azure Data Lake Storage Gen2 和通用版本2存储帐户。 由于 Azure 事件网格限制，Azure 数据工厂每个存储帐户最多仅支持500个存储事件触发器。
+1. 从 Azure 订阅下拉列表中选择你的存储帐户，或使用其存储帐户资源 ID 手动选择。 选择希望事件在哪个容器中发生。 需选择容器，但请注意，选择所有容器可能会导致发生大量事件。
 
    > [!NOTE]
-   > 若要创建和修改新的存储事件触发器，用于登录到数据工厂的 Azure 帐户必须至少拥有存储帐户的 " *所有者* " 权限。 无需其他权限： Azure 数据工厂的服务主体 _不_ 需要存储帐户或事件网格的特殊权限。
+   > 存储事件触发器目前仅支持 Azure Data Lake Storage Gen2 和“常规用途”版本 2 存储帐户。 由于 Azure 事件网格的限制，对于每个存储帐户，Azure 数据工厂最多仅支持 500 个存储事件触发器。 如果达到此限制，请与支持人员联系以获取建议，并根据事件网格团队的评估提高限制。 
 
-1. 使用“Blob 路径开头为”和“Blob路径结尾为”属性，可以指定要为其接收事件的容器、文件夹和 Blob 的名称。  存储事件触发器需要至少定义这些属性中的一个。 可以为“Blob 路径开头为”和“Blob路径结尾为”属性使用各种模式，如本文中后面的示例所示。
+   > [!NOTE]
+   > 若要新建存储事件触发器或修改现有的存储事件触发器，用于登录到数据工厂并发布存储事件触发器的 Azure 帐户必须对存储帐户具有相应的基于角色的访问控制 (Azure RBAC) 权限。 不需要其他权限：Azure 数据工厂的服务主体不需要拥有对存储帐户或事件网格的特殊权限。 有关访问控制的详细信息，请参阅[基于角色的访问控制](#role-based-access-control)部分。
+
+1. 使用“Blob 路径开头为”和“Blob路径结尾为”属性，可以指定要为其接收事件的容器、文件夹和 Blob 的名称。  存储事件触发器要求至少定义其中的一个属性。 可以为“Blob 路径开头为”和“Blob路径结尾为”属性使用各种模式，如本文中后面的示例所示。
 
     * **Blob 路径开头为：** Blob 路径必须以文件夹路径开头。 有效值包括 `2018/` 和 `2018/april/shoes.csv`。 如果未选择容器，则无法选择此字段。
-    * **Blob 路径结尾为：** Blob 路径必须以文件名或扩展名结尾。 有效值包括 `shoes.csv` 和 `.csv`。 容器和文件夹名称是可选的，但如果指定，它们必须由 `/blobs/` 段分隔。 例如，名为“orders”的容器可以使用 `/orders/blobs/2018/april/shoes.csv` 值。 若要指定任何容器中的某个文件夹，请省略前导“/”字符。 例如，`april/shoes.csv` 将会针对任何容器中名为“april”的文件夹内名为 `shoes.csv` 的任何文件触发事件。
-    * 注意： Blob 路径以 **开头** ， **结尾** 是存储事件触发器中允许的唯一模式匹配。 触发器类型不支持其他类型的通配符匹配。
+    * **Blob 路径结尾为：** Blob 路径必须以文件名或扩展名结尾。 有效值包括 `shoes.csv` 和 `.csv`。 指定容器和文件夹名称时，它们必须由 `/blobs/` 段分隔。 例如，名为“orders”的容器可以使用 `/orders/blobs/2018/april/shoes.csv` 值。 若要指定任何容器中的某个文件夹，请省略前导“/”字符。 例如，`april/shoes.csv` 将会针对任何容器中名为“april”的文件夹内名为 `shoes.csv` 的任何文件触发事件。
+    * 请注意，只有“Blob 路径开头为”和“Blob 路径结尾为”是存储事件触发器中允许的模式匹配。 触发器类型不支持其他类型的通配符匹配。
 
 1. 选择触发器是要响应“已创建 Blob”事件、“已删除 Blob”事件，还是同时响应这两者。  在指定的存储位置中，每个事件将触发与触发器关联的数据工厂管道。
 
-    ![配置存储事件触发器](media/how-to-create-event-trigger/event-based-trigger-image2.png)
+    :::image type="content" source="media/how-to-create-event-trigger/event-based-trigger-image2.png" alt-text="“存储事件触发器创建”页的屏幕截图。":::
 
 1. 选择触发器是否忽略零字节的 Blob。
 
-1. 配置触发器后，单击“下一步:数据预览”。 此屏幕显示与存储事件触发器配置匹配的现有 blob。 请确保使用具体化的筛选器。 如果配置的筛选器过于宽泛，可能会匹配已创建/删除的大量文件，并可能会严重影响成本。 验证筛选条件后，单击“完成”。
+1. 配置触发器后，单击“下一步: 数据预览”。 此屏幕显示事件触发器配置匹配的现有 Blob。 请确保使用具体化的筛选器。 如果配置的筛选器过于宽泛，可能会匹配已创建/删除的大量文件，并可能会严重影响成本。 验证筛选条件后，单击“完成”。
 
-    ![存储事件触发器数据预览](media/how-to-create-event-trigger/event-based-trigger-image3.png)
+    :::image type="content" source="media/how-to-create-event-trigger/event-based-trigger-image3.png" alt-text="“存储事件触发器预览”页的屏幕截图。":::
 
-1. 若要将管道附加到此触发器，请转到管道画布，然后单击“添加触发器”并选择“新建/编辑”。  出现边侧导航栏时，单击“选择触发器...”下拉列表，然后选择创建的触发器。 单击“下一步:数据预览”确认配置是否正确，然后单击“下一步”验证数据预览是否正确。
+1. 若要将管道附加到此触发器，请转到管道画布，然后单击“触发器”并选择“新建/编辑”。  出现边侧导航栏时，单击“选择触发器...”下拉列表，然后选择创建的触发器。 单击“下一步:数据预览”确认配置是否正确，然后单击“下一步”验证数据预览是否正确。
 
-1. 如果管道具有参数，则你可以在触发器运行参数边侧导航栏中指定这些参数。 存储事件触发器将 blob 的文件夹路径和文件名捕获到属性 `@triggerBody().folderPath` 和中 `@triggerBody().fileName` 。 若要在管道中使用这些属性的值，必须将这些属性映射至管道参数。 将这些属性映射至参数后，可以通过管道中的 `@pipeline().parameters.parameterName` 表达式访问由触发器捕获的值。 完成后，单击“完成”。
+1. 如果管道具有参数，则你可以在触发器运行参数边侧导航栏中指定这些参数。 存储事件触发器将 Blob 的文件夹路径和文件名捕获到属性 `@triggerBody().folderPath` 和 `@triggerBody().fileName` 中。 若要在管道中使用这些属性的值，必须将这些属性映射至管道参数。 将这些属性映射至参数后，可以通过管道中的 `@pipeline().parameters.parameterName` 表达式访问由触发器捕获的值。 有关详细说明，请参阅[在管道中引用触发器元数据](how-to-use-trigger-parameterization.md)
 
-    ![将属性映射至管道参数](media/how-to-create-event-trigger/event-based-trigger-image4.png)
+   :::image type="content" source="media/how-to-create-event-trigger/event-based-trigger-image4.png" alt-text="将属性映射到管道参数的存储事件触发器的屏幕截图。":::
 
-在前面的示例中，触发器配置为在容器 sample-data 中的文件夹 event-testing 内创建以 .csv 结尾的 Blob 路径时激发。 **folderPath** 和 **fileName** 属性捕获新 Blob 的位置。 例如，将 MoviesDB.csv 添加到路径 sample-data/event-testing 时，`@triggerBody().folderPath` 的值为 `sample-data/event-testing`，`@triggerBody().fileName` 的值为 `moviesDB.csv`。 示例中的这些值将映射到管道参数 `sourceFolder` 和 `sourceFile`，这两个参数在整个管道中分别可以用作 `@pipeline().parameters.sourceFolder` 和 `@pipeline().parameters.sourceFile`。
+   在前面的示例中，触发器配置为在容器 sample-data 中的文件夹 event-testing 内创建了以 .csv 结尾的 Blob 路径时触发。  **folderPath** 和 **fileName** 属性捕获新 Blob 的位置。 例如，将 MoviesDB.csv 添加到路径 sample-data/event-testing 时，`@triggerBody().folderPath` 的值为 `sample-data/event-testing`，`@triggerBody().fileName` 的值为 `moviesDB.csv`。 示例中的这些值将映射到管道参数 `sourceFolder` 和 `sourceFile`，这两个参数在整个管道中分别可以用作 `@pipeline().parameters.sourceFolder` 和 `@pipeline().parameters.sourceFile`。
+
+   > [!NOTE]
+   > 如果要在 [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) 中创建管道和触发器，则必须使用 `@trigger().outputs.body.fileName` 和 `@trigger().outputs.body.folderPath` 作为参数。 这两个属性捕获 blob 信息。 使用这些属性，而不是使用 `@triggerBody().fileName` 和 `@triggerBody().folderPath`。
+
+1. 完成后，单击“完成”。
 
 ## <a name="json-schema"></a>JSON 架构
 
 下表概述了与存储事件触发器相关的架构元素：
 
-| **JSON 元素** | **说明** | 类型 | **允许的值** | **必需** |
+| **JSON 元素** | **说明** | **类型** | **允许的值** | **必需** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
-| **作用域** | 存储帐户的 Azure 资源管理器资源 ID。 | 字符串 | Azure 资源管理器 ID | 是 |
+| **作用域** | 存储帐户的 Azure 资源管理器资源 ID。 | String | Azure 资源管理器 ID | 是 |
 | **events** | 导致此触发器触发的事件的类型。 | Array    | Microsoft.Storage.BlobCreated、Microsoft.Storage.BlobDeleted | 是的，这些值的任意组合。 |
-| **blobPathBeginsWith** | blob 路径必须使用为要触发的触发器提供的模式开头。 例如，`/records/blobs/december/` 只会触发 `records` 容器下 `december` 文件夹中的 blob 触发器。 | 字符串   | | 必须为其中至少一个属性提供值：`blobPathBeginsWith` 或 `blobPathEndsWith`。 |
-| **blobPathEndsWith** | blob 路径必须使用为要触发的触发器提供的模式结尾。 例如，`december/boxes.csv` 只会触发 `december` 文件夹中名为 `boxes` 的 blob 的触发器。 | 字符串   | | 必须为其中至少一个属性提供值：`blobPathBeginsWith` 或 `blobPathEndsWith`。 |
-| **ignoreEmptyBlobs** | 零字节 Blob 是否触发管道运行。 默认情况下，此元素设置为 true。 | Boolean | true 或 false | 否 |
+| **blobPathBeginsWith** | blob 路径必须使用为要触发的触发器提供的模式开头。 例如，`/records/blobs/december/` 只会触发 `records` 容器下 `december` 文件夹中的 blob 触发器。 | 字符串   | | 必须为以下至少一个属性提供值：`blobPathBeginsWith` 或 `blobPathEndsWith`。 |
+| **blobPathEndsWith** | blob 路径必须使用为要触发的触发器提供的模式结尾。 例如，`december/boxes.csv` 只会触发 `december` 文件夹中名为 `boxes` 的 blob 的触发器。 | String   | | 必须为其中至少一个属性提供值：`blobPathBeginsWith` 或 `blobPathEndsWith`。 |
+| **ignoreEmptyBlobs** | 零字节 Blob 是否触发管道运行。 默认情况下，此元素设置为 true。 | 布尔 | true 或 false | 否 |
 
 ## <a name="examples-of-storage-event-triggers"></a>存储事件触发器的示例
 
-本部分提供存储事件触发器设置的示例。
+本部分提供了存储事件触发器设置的示例。
 
 > [!IMPORTANT]
 > 每当指定容器和文件夹、容器和文件或容器、文件夹和文件时，都必须包含路径的 `/blobs/` 段，如以下示例所示。 对于 **blobPathBeginsWith**，数据工厂 UI 将自动在触发器 JSON 中的文件夹与容器名称之间添加 `/blobs/`。
 
-| properties | 示例 | 说明 |
+| 属性 | 示例 | 说明 |
 |---|---|---|
 | **Blob 路径开头** | `/containername/` | 接收容器中任何 blob 事件。 |
 | **Blob 路径开头** | `/containername/blobs/foldername/` | 接收 `containername` 容器和 `foldername` 文件夹中的任何 blob 事件。 |
@@ -104,7 +109,49 @@ ms.locfileid: "102177773"
 | **Blob 路径结尾** | `/containername/blobs/file.txt` | 接收容器 `containername` 下名为 `file.txt` 的 blob 事件。 |
 | **Blob 路径结尾** | `foldername/file.txt` | 接收任何容器下 `foldername` 文件夹中名为 `file.txt` 的 blob 事件。 |
 
+## <a name="role-based-access-control"></a>基于角色的访问控制
+
+Azure 数据工厂使用了 Azure 基于角色的访问控制 (Azure RBAC)，确保严格禁止通过未经授权的访问来侦听 Blob 事件、订阅 Blob 事件更新以及触发链接到 Blob 事件的管道。
+
+* 若要成功新建存储事件触发器或更新现有的存储事件触发器，登录到数据工厂的 Azure 帐户需要具有对相关存储帐户的相应访问权限。 否则，操作将失败，并且 _访问被拒绝_。
+* 数据工厂不需要对事件网格具有特殊权限，并且你无需为操作的数据工厂服务主体分配特殊 RBAC 权限。
+
+以下任何 RBAC 设置均适用于存储事件触发器：
+
+* 存储帐户的所有者角色
+* 存储帐户的参与者角色
+* 对 _/subscriptions/####/resourceGroups/####/providers/Microsoft.Storage/storageAccounts/storageAccountName_ 存储帐户的 _Microsoft.EventGrid/EventSubscriptions/Write_ 权限
+
+为了解 Azure 数据工厂如何实现这两项承诺，让我们放宽视野，看看幕后的流程。 下面是有关数据工厂、存储和事件网格之间的集成的概要工作流。
+
+### <a name="create-a-new-storage-event-trigger"></a>新建存储事件触发器
+
+此概要工作流介绍 Azure 数据工厂如何与事件网格交互，以创建存储事件触发器
+
+:::image type="content" source="media/how-to-create-event-trigger/storage-event-trigger-5-create-subscription.png" alt-text="创建存储事件触发器的工作流。":::
+
+工作流有两个值得注意之处：
+
+* Azure 数据工厂不会直接与存储帐户联系。 创建订阅的请求将通过事件网格进行中继和处理。 因此，对于此步骤，数据工厂不需要存储帐户的权限。
+
+* 访问控制和权限检查发生在 Azure 数据工厂端。 在 ADF 发送订阅存储事件的请求之前，它会检查用户的权限。 更具体地讲，它会检查已登录并在尝试创建存储事件触发器的 Azure 帐户是否具有访问相关存储帐户的相应权限。 如果权限检查失败，触发器创建也会失败。
+
+### <a name="storage-event-trigger-data-factory-pipeline-run"></a>存储事件触发数据工厂管道运行
+
+此概要工作流介绍了存储事件如何通过事件网格触发管道运行
+
+:::image type="content" source="media/how-to-create-event-trigger/storage-event-trigger-6-trigger-pipeline.png" alt-text="触发管道运行的存储事件的工作流。":::
+
+提到数据工厂中的事件触发管道时，工作流中有三个值得注意之处：
+
+* 事件网格使用一个推送模型，当存储将消息放入系统中时，该模型会尽快中继消息。 这与消息传送系统（例如使用了拉取系统的 Kafka）不同。
+* Azure 数据工厂上的事件触发器充当传入消息的活动侦听器，并且会正确触发关联的管道。
+* 存储事件触发器本身不与存储帐户建立直接联系
+
+  * 也就是说，如果管道中有一个用于处理存储帐户中数据的“复制”活动或其他活动，数据工厂将使用存储在链接服务中的凭据与存储建立直接联系。 确保正确设置了链接服务
+  * 不过，如果管道中未涉及到存储帐户，则无需授予数据工厂访问存储帐户的权限
+
 ## <a name="next-steps"></a>后续步骤
 
 * 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md#trigger-execution)。
-* 了解如何在管道中引用触发器元数据，请参阅 [在管道运行中引用触发器元数据](how-to-use-trigger-parameterization.md)
+* 了解如何在管道中引用触发器元数据，请参阅[在管道运行中引用触发器元数据](how-to-use-trigger-parameterization.md)

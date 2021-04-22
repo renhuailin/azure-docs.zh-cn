@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 166fb94f5a3aea505c0d20df861b8bc4de9ad8aa
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 4ba046b5461c3b734d54ad3694f0ceea2e5127c6
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103491106"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106387037"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>训练和部署自定义语音识别模型
 
@@ -61,7 +61,7 @@ ms.locfileid: "103491106"
 请参阅[操作说明](how-to-custom-speech-evaluate-data.md)，了解如何评估和提高自定义语音识别模型准确度。 如果选择测试准确度，则选择的声学数据集必须不同于你对自己的模型使用的数据集，这样才能获得真正有意义的模型性能。
 
 > [!NOTE]
-> 基础模型和自定义模型最多都只能使用到某个特定日期（请参阅[模型和终结点生命周期](./how-to-custom-speech-model-and-endpoint-lifecycle.md)）。 Speech Studio 在每个模型和终结点的“过期时间”列中显示此日期。 在该日期之后，对终结点或对批量听录的请求可能会失败或回退到基础模型。
+> 基础模型和自定义模型最多都只能用到某个特定日期（请参阅[模型和终结点生命周期](./how-to-custom-speech-model-and-endpoint-lifecycle.md)）。 Speech Studio 在每个模型和终结点的“过期时间”列中显示此日期。 在该日期之后，对终结点或对批量听录的请求可能会失败或回退到基础模型。
 >
 > 请使用当时最新的基础模型来重新训练你的模型，以受益于准确度的提高，并避免模型过期。
 

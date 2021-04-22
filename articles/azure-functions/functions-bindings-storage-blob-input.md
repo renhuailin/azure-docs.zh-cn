@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: cd69e89954fab2256ffc7c23e22d3b8d44ab2a11
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 191722d02b493cfe0197c3e45771543fd8c5926a
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455867"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961041"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储输入绑定
 
@@ -264,9 +264,10 @@ Write-Host "PowerShell Blob trigger: Name: $($TriggerMetadata.Name) Size: $($Inp
 
 | 绑定值 | 默认 | 说明 | 示例 |
 | --- | --- | --- | --- |
-| `undefined` | Y | 使用丰富绑定 | `def main(input: func.InputStream)` |
 | `string` | N | 使用泛型绑定，并将输入类型强制转换为 `string` | `def main(input: str)` |
 | `binary` | N | 使用泛型绑定，并将输入 blob 强制转换为 `bytes` Python 对象 | `def main(input: bytes)` |
+
+如果未在 function.json 上定义 `dataType` 属性，则默认值为 `string`。
 
 下面是 Python 代码：
 
@@ -275,8 +276,11 @@ import logging
 import azure.functions as func
 
 
-def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.InputStream:
-    logging.info('Python Queue trigger function processed %s', inputblob.name)
+# The type func.InputStream is not supported for blob input binding.
+# The input binding field inputblob can either be 'bytes' or 'str' depends
+# on dataType in function.json, 'binary' or 'string'.
+def main(queuemsg: func.QueueMessage, inputblob: bytes) -> bytes:
+    logging.info(f'Python Queue trigger function processed {len(inputblob)} bytes')
     return inputblob
 ```
 

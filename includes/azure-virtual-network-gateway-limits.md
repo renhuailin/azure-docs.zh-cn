@@ -9,19 +9,19 @@ ms.date: 08/25/2020
 ms.author: alzam
 ms.custom: include file
 ms.openlocfilehash: 9fe9ef5549ced3b73d18d553fa0b62ec019684fe
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95553969"
 ---
 | 资源                                | 限制        |
 |-----------------------------------------|------------------------------|
-| VNet 地址前缀                   | 每个 VPN 网关600          |
-| 聚合 BGP 路由                    | 每个 VPN 网关4000        |
-| 本地网络网关地址前缀  | 每个本地网络网关1000               |
+| VNet 地址前缀                   | 600/VPN 网关          |
+| 聚合 BGP 路由                    | 4,000/VPN 网关        |
+| 本地网关地址前缀  | 1000/本地网关               |
 | S2S 连接                         | [取决于网关 SKU](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku)|
 | P2S 连接                         | [取决于网关 SKU](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |
-| P2S 路由限制-IKEv2                 | 对于非 Windows **/** 25 For windows，为256           |
-| P2S route 限制-OpenVPN               | 1000                         |
-| 最大 flows                              | 10万 VpnGw1/AZ  **/**  512k For VpnGw2-4/az|
+| P2S 路由限制 - IKEv2                 | 256（非 Windows） **/** 25 (Windows)           |
+| P2S 路由限制 - OpenVPN               | 1000                         |
+| 最大 flows                              | 100K (VpnGw1/AZ) / 512K (VpnGw2-4/AZ)|

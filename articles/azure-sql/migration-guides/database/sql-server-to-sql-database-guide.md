@@ -1,5 +1,5 @@
 ---
-title: SQL Server 到 SQL 数据库：迁移指南
+title: SQL Server 到 Azure SQL 数据库：迁移指南
 description: 根据本指南将 SQL Server 数据库迁移至 Azure SQL 数据库。
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 03/19/2021
-ms.openlocfilehash: 9205301cb77941e4ea7ca026710d44ba82f6a937
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e2de694a153276dcace1070d35af44dec1056e03
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563838"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564919"
 ---
-# <a name="migration-guide-sql-server-to-sql-database"></a>迁移指南：将 SQL Server 到 SQL 数据库
+# <a name="migration-guide-sql-server-to-azure-sql-database"></a>迁移指南：SQL Server 到 Azure SQL 数据库
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
 
 本指南帮助你将 SQL Server 实例迁移至 Azure SQL 数据库。 
@@ -30,7 +30,7 @@ ms.locfileid: "103563838"
 - 计算引擎 (Google Cloud Platform - GCP)  
 - Cloud SQL for SQL Server (Google Cloud Platform - GCP) 
 
-如需更多迁移信息，请参阅[迁移概述](sql-server-to-sql-database-overview.md)。 有关其他方案，请参阅[数据库迁移指南](https://datamigration.microsoft.com/)。
+如需更多迁移信息，请参阅[迁移概述](sql-server-to-sql-database-overview.md)。 有关其他迁移指南，请参阅[数据库迁移](https://docs.microsoft.com/data-migration)。 
 
 :::image type="content" source="media/sql-server-to-database-overview/migration-process-flow-small.png" alt-text="迁移流程":::
 
@@ -38,9 +38,11 @@ ms.locfileid: "103563838"
 
 若要将 SQL Server 迁移到 Azure SQL 数据库，请确保满足以下先决条件： 
 
-- 一个已选定的[迁移方法](sql-server-to-sql-database-overview.md#compare-migration-options)及相应的工具 
-- 在可以连接到源 SQL Server 的计算机上安装的[数据迁移助手 (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)
-- 一个目标 [Azure SQL 数据库](../../database/single-database-create-quickstart.md)
+- 一个已选定的[迁移方法](sql-server-to-sql-database-overview.md#compare-migration-options)及相应的工具。
+- 在可以连接到源 SQL Server 的计算机上安装的[数据迁移助手 (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)。
+- 一个目标 [Azure SQL 数据库](../../database/single-database-create-quickstart.md)。 
+- 连接以及访问源和目标的适当权限。 
+
 
 
 ## <a name="pre-migration"></a>迁移前
@@ -150,7 +152,7 @@ ms.locfileid: "103563838"
 验证源和目标上的数据是否相同后，可以从源环境直接转换到目标环境。 请务必与业务/应用程序团队一起计划直接转换过程，以确保在直接转换时的最小中断不会影响业务连续性。 
 
 > [!IMPORTANT]
-> 有关与使用 DMS 进行迁移时执行直接转换相关的特定步骤的详细信息，请参阅[执行直接转换迁移](../../../dms/tutorial-sql-server-azure-sql-online.md#perform-migration-cutover)。
+> 有关与使用 DMS 进行迁移时执行直接转换相关的特定步骤的详细信息，请参阅[执行直接转换迁移](../../../dms/tutorial-sql-server-to-azure-sql.md)。
 
 ## <a name="migration-recommendations"></a>迁移建议
 

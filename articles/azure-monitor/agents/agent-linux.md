@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: dae9ab56ca1349d288aee02f7e2dfa4eccf1508c
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 5171cefdb82b958ae8148ff63f1daef5f67916c6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199162"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044951"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>在 Linux 计算机上安装 Log Analytics 代理
 本文详细介绍如何使用以下方法在 Linux 计算机上安装 Log Analytics 代理：
@@ -91,7 +91,7 @@ OMS 代理不支持且未计划使用其他强化和自定义方法。
 |Glibc |    GNU C 库 | 2.5-12 
 |Openssl    | OpenSSL 库 | 1.0.x 或 1.1.x |
 |Curl | cURL Web 客户端 | 7.15.5 |
-|Python | | 2.6+ 或 3.3+
+|Python | | 2.7 或 3.6+
 |Python-ctype | | 
 |PAM | 可插入验证模块 | | 
 

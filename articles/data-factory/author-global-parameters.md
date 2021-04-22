@@ -7,10 +7,10 @@ author: dcstwh
 ms.author: weetok
 ms.date: 03/15/2021
 ms.openlocfilehash: 3110ce8cb97379fd4690903ec769cc1dfc7f1326
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103492755"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Azure 数据工厂中的全局参数
@@ -35,7 +35,7 @@ ms.locfileid: "103492755"
 
 ## <a name="using-global-parameters-in-a-pipeline"></a>在管道中使用全局参数
 
-全局参数可用于任何[管道表达式](control-flow-expression-language-functions.md)。 如果某个管道正在引用其他资源（如数据集或数据流），则可以通过该资源的参数向下传递全局参数值。 全局参数以 `pipeline().globalParameters.<parameterName>` 形式进行引用。
+全局参数可用于任何[管道表达式](control-flow-expression-language-functions.md)。 如果管道引用其他资源（如数据集或数据流），则可以通过该资源的参数向下传递全局参数值。 全局参数以 `pipeline().globalParameters.<parameterName>` 形式进行引用。
 
 ![使用全局参数](media/author-global-parameters/expression-global-parameters.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "103492755"
 * 在 ARM 模板中包含全局参数
 * 通过 PowerShell 脚本部署全局参数
 
-对于大多数用例，建议在 ARM 模板中包含全局参数。 这会原生与 [CI/CD 文档](continuous-integration-deployment.md)中所述的解决方案集成。默认情况下，全局参数将作为 ARM 模板参数添加，因为它们经常根据不同的环境而变化。 可以从“管理”中心启用将全局参数包含在 ARM 模板中的设置。
+对于大多数用例，建议在 ARM 模板中包含全局参数。 这会与 [CI/CD 文档](continuous-integration-deployment.md)中所述的解决方案原生集成。默认情况下，将添加全局参数作为 ARM 模板参数，因为这些参数经常因环境而异。 可以从“管理”中心启用将全局参数包含在 ARM 模板中的设置。
 
 > [!NOTE]
 > 只能在“Git 模式”下使用“包含在 ARM 模板中”配置。 目前，在“实时模式”或“数据工厂”模式下会禁用此配置。 

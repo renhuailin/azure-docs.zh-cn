@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 03/08/2021
 ms.openlocfilehash: e583d39e2eed1b08dfeb17cafc1e12c583176d7b
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103493027"
 ---
 # <a name="geographic-availability-and-currency-support-for-the-commercial-marketplace"></a>商业市场的地理可用性和货币支持

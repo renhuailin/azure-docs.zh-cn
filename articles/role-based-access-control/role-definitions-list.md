@@ -2,24 +2,19 @@
 title: 列出 Azure 角色定义 - Azure RBAC
 description: 了解如何使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 列出 Azure 内置角色和自定义角色。
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/17/2020
+ms.date: 03/26/2021
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: 3c9018322c9e5075ff59024f9d791e7431035e3d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f354e3bb7fc0f7ced17d43acacf29c726ce1329c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100555948"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105629135"
 ---
 # <a name="list-azure-role-definitions"></a>列出 Azure 角色定义
 
@@ -33,6 +28,10 @@ ms.locfileid: "100555948"
 
 按照以下步骤在 Azure 门户中列出所有角色。
 
+如果有兴趣查看更新后的角色体验，请查看“角色(预览版)”选项卡，该体验当前以公共预览版提供。 “角色(预览版)”选项卡显示的角色列表与“角色”选项卡相同，其中包含一些附加功能 。 可以使用任一角色选项卡来使用角色，但如果创建或删除自定义角色，则可能需要手动刷新页面才能查看最新更改。
+
+#### <a name="roles"></a>[角色](#tab/roles/)
+
 1. 在 Azure 门户中单击“所有服务”，然后选择任意范围。 例如，可以选择“管理组”、“订阅”、“资源组”或某个资源  。
 
 1. 单击特定的资源。
@@ -43,7 +42,29 @@ ms.locfileid: "100555948"
 
    可以看到在当前范围分配到每个角色的用户和组的数目。
 
-   ![角色列表](./media/role-definitions-list/roles-list.png)
+   ![角色列表](./media/role-definitions-list/roles-list-current.png)
+
+#### <a name="roles-preview"></a>[角色（预览版）](#tab/roles-preview/)
+
+1. 在 Azure 门户中单击“所有服务”，然后选择任意范围。 例如，可以选择“管理组”、“订阅”、“资源组”或某个资源  。
+
+1. 单击特定的资源。
+
+1. 单击“访问控制(IAM)”。
+
+1. 单击“角色(预览版)”选项卡以查看包含所有内置角色和自定义角色的列表。
+
+   ![使用预览体验的角色列表](./media/role-definitions-list/roles-list.png)
+
+1. 若要查看特定角色的权限，请在“详细信息”列中，单击“查看”链接 。
+
+    “权限”窗格随即显示。
+
+1. 单击“权限”选项卡以查看和搜索所选角色的权限。
+
+   ![使用预览体验的角色权限](./media/role-definitions-list/role-permissions.png)
+
+---
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

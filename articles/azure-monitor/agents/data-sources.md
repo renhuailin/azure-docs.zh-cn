@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/06/2020
 ms.openlocfilehash: 537163b4a78954443eeb7799dc624837ba03e2bd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102036616"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Monitor 的监视数据源
@@ -39,7 +39,7 @@ Azure 应用程序中的监视数据源可以组织为层，最高的层是应�
 
 | 层 | 说明 | 收集方法 |
 |:---|:---|:---|
-| [操作系统（来宾）](#operating-system-guest) | 有关计算资源上的操作系统的数据。 | 安装 Log Analytics 代理，将客户端数据源收集到 Azure Monitor 和依赖关系代理，以收集支持 VM insights 的依赖项。<br>对于 Azure 虚拟机，请安装 Azure 诊断扩展以将日志和指标收集到 Azure Monitor。 |
+| [操作系统（来宾）](#operating-system-guest) | 有关计算资源上的操作系统的数据。 | 安装 Log Analytics 代理，将客户端数据源收集到 Azure Monitor 和 Dependency Agent，以收集支持 VM 见解的依赖项。<br>对于 Azure 虚拟机，请安装 Azure 诊断扩展以将日志和指标收集到 Azure Monitor。 |
 | [应用程序代码](#application-code) | 有关实际应用程序和代码的性能与功能，包括性能跟踪、应用程序日志和用户遥测数据。 | 检测代码以将数据收集到 Application Insights 中。 |
 | [自定义源](#custom-sources) | 来自外部服务或者其他组件或设备的数据。 | 从任何 REST 客户端将日志或指标数据收集到 Azure Monitor 中。 |
 
@@ -130,15 +130,15 @@ Azure 中的、其他云中的以及本地的计算资源都有要监视的来�
 | 目标 | 说明 | 参考 |
 |:---|:---|:---|
 | Azure Monitor 日志 | Log Analytics 代理可以直接连接到 Azure Monitor，也可以通过 System Center Operations Manager 进行连接，可用于从配置的数据源收集数据，或者从监视解决方案收集数据，以便提供在虚拟机上运行的应用程序的更多见解。 | [Azure Monitor 中的代理数据源](../agents/agent-data-sources.md)<br>[将 Operations Manager 连接到 Azure Monitor](./om-agents.md) |
-| VM 存储 | VM insights 使用 Log Analytics 代理在自定义位置中存储 heath 状态信息。 有关详细信息，请参阅下一部分。  |
+| VM 存储 | VM 见解使用 Log Analytics 代理在自定义位置中存储运行状况信息。 有关详细信息，请参阅下一部分。  |
 
 
-### <a name="vm-insights"></a>VM insights 
-[VM insights](../vm/vminsights-overview.md) 为虚拟机提供了自定义的监视体验，提供了除核心 Azure Monitor 功能以外的功能。 它要求在 Windows 和 Linux 虚拟机上安装 Dependency Agent，并与 Log Analytics 代理集成，以收集有关虚拟机上运行的进程和外部进程依赖项的发现数据。
+### <a name="vm-insights"></a>VM 见解 
+[VM 见解](../vm/vminsights-overview.md)为虚拟机提供自定义监视体验，除了核心 Azure Monitor 功能之外，还提供了其他功能。 它要求在 Windows 和 Linux 虚拟机上安装 Dependency Agent，并与 Log Analytics 代理集成，以收集有关虚拟机上运行的进程和外部进程依赖项的发现数据。
 
 | 目标 | 说明 | 参考 |
 |:---|:---|:---|
-| Azure Monitor 日志 | 存储有关代理中的进程和依赖项的数据。 | [使用 VM insights (预览版) Map 了解应用程序组件](../vm/vminsights-maps.md) |
+| Azure Monitor 日志 | 存储有关代理中的进程和依赖项的数据。 | [使用 VM 见解（预览版）映射了解应用程序组件](../vm/vminsights-maps.md) |
 
 
 
@@ -173,16 +173,16 @@ Azure Monitor 中的详细应用程序监视是通过 [Application Insights](/az
 
 
 ### <a name="container-insights"></a>容器见解
-[容器见解](../containers/container-insights-overview.md) 为 [Azure KUBERNETES Service (AKS) ](../../aks/index.yml)提供自定义监视体验。 它会收集有关这些资源的其他数据，如下表中所述。
+[容器见解](../containers/container-insights-overview.md)提供了对 [Azure Kubernetes 服务 (AKS)](../../aks/index.yml) 的自定义监视体验。 它会收集有关这些资源的其他数据，如下表中所述。
 
 | 目标 | 说明 | 参考 |
 |:---|:---|:---|
-| Azure Monitor 日志 | 存储 AKS 的监视数据，包括库存、日志和事件。 指标数据还会存储在“日志”中，这样就可以在门户中利用其分析功能。 | [了解 AKS 群集性能和容器见解](../containers/container-insights-analyze.md) |
+| Azure Monitor 日志 | 存储 AKS 的监视数据，包括库存、日志和事件。 指标数据还会存储在“日志”中，这样就可以在门户中利用其分析功能。 | [使用容器见解了解 AKS 群集性能](../containers/container-insights-analyze.md) |
 | Azure Monitor 指标 | 指标数据将存储在指标数据库中，以驱动可视化和警报。 | [在指标资源管理器中查看容器指标](../containers/container-insights-analyze.md#view-container-metrics-in-metrics-explorer) |
 | Azure Kubernetes 服务 | 在门户中提供对 Azure Kubernetes 服务 (AKS) 容器日志 (stdout/stderror)、事件和 Pod 指标的直接访问。 | [如何实时查看 Kubernetes 日志、事件和 Pod 指标](../containers/container-insights-livedata-overview.md) |
 
-### <a name="vm-insights"></a>VM insights
-[VM insights](../vm/vminsights-overview.md) 提供了用于监视虚拟机的自定义体验。 VM insights 收集的数据的说明包括在上文的 [操作系统 (来宾) ](#operating-system-guest) 部分中。
+### <a name="vm-insights"></a>VM 见解
+[VM 见解](../vm/vminsights-overview.md)提供了用于监视虚拟机的自定义体验。 前面的[操作系统（来宾）](#operating-system-guest)部分介绍了 VM 见解收集的数据。
 
 ## <a name="custom-sources"></a>自定义来源
 除了应用程序的标准层之外，还可能需要监视具有不能与其他数据源一起收集的遥测数据的其他资源。 对于这些资源，可使用 Azure Monitor API 将此数据写入到指标或日志。

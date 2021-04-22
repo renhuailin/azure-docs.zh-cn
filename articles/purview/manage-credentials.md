@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/11/2021
 ms.openlocfilehash: 3802d25ebd8f21ab5b8991a66ceb6650f2f276a9
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103461702"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Azure Purview 中用于源身份验证的凭据
@@ -28,7 +28,7 @@ ms.locfileid: "103461702"
 
 ## <a name="use-purview-managed-identity-to-set-up-scans"></a>使用 Purview 托管标识来设置扫描
 
-如果使用 Purview 托管标识来设置扫描，则无需显式创建凭据，并将密钥保管库链接到 Purview 来存储该凭据。 有关添加有权扫描数据源的 Purview 托管标识的详细说明，请参阅以下特定于数据源的身份验证部分：
+如果使用 Purview 托管标识来设置扫描，则无需显式创建凭据，并将密钥保管库链接到 Purview 来存储这些凭据。 有关添加有权扫描数据源的 Purview 托管标识的详细说明，请参阅以下特定于数据源的身份验证部分：
 
 - [Azure Blob 存储](register-scan-azure-blob-storage-source.md#setting-up-authentication-for-a-scan)
 - [Azure Data Lake Storage Gen1](register-scan-adls-gen1.md#setting-up-authentication-for-a-scan)

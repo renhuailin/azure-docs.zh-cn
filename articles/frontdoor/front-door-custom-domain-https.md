@@ -10,28 +10,28 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/21/2020
+ms.date: 03/26/2021
 ms.author: duau
-ms.openlocfilehash: 6c6d33a36c4a0b71932e8c19c8f6dd105c33817c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3862197acd3b3181180d264c4d2a2c8dbf6a1401
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740777"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378850"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教程：在 Front Door 自定义域中配置 HTTPS
 
 本教程介绍如何在前端主机部分为 Front Door 关联的自定义域启用 HTTPS 协议。 通过在自定义域（例如 https:\//www.contoso.com）上使用 HTTPS 协议，可以确保敏感数据在通过 Internet 发送时可以通过 TLS/SSL 加密安全地进行分发。 Web 浏览器通过 HTTPS 连接到网站时，它会验证网站的安全证书并验证该证书是否是由合法的证书颁发机构颁发的。 此过程提供安全性并保护 Web 应用程序免受攻击。
 
-默认情况下，Azure Front Door 支持 Front Door 默认主机名中的 HTTPS。 例如，如果创建一个 Front Door（例如 `https://contoso.azurefd.net`），则会自动为向 `https://contoso.azurefd.net` 发出的请求启用 HTTPS。 但是，载入自定义域“www.contoso.com”之后，需要另外为此前端主机启用 HTTPS。   
+默认情况下，Azure Front Door 支持 Front Door 默认主机名中的 HTTPS。 例如，如果创建一个 Front Door（例如 `https://contoso.azurefd.net`），则会自动为向 `https://contoso.azurefd.net` 发出的请求启用 HTTPS。 但是，加入自定义域“www.contoso.com”之后，需要另外为此前端主机启用 HTTPS。   
 
 自定义 HTTPS 功能的一些关键属性包括：
 
-- 无需额外付费：证书获取或续订不收取费用，对于 HTTPS 流量不另外收费。 
+- 无额外费用：可免费获取或续订证书，对 HTTPS 流量也不额外收费。 
 
 - 简单启用：可从 [Azure 门户](https://portal.azure.com)进行一键式预配。 还可以使用 REST API 或其他开发人员工具启用该功能。
 
-- 提供完整的证书管理：为你处理所有证书获取和管理。 证书在过期之前将自动进行设置并续订，这可消除由于证书过期而导致服务中断的风险。
+- 提供完整的证书管理：为你处理所有证书获取和管理。 证书在过期之前将自动进行预配并续订，这可消除由于证书过期而导致服务中断的风险。
 
 在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
@@ -63,19 +63,21 @@ ms.locfileid: "101740777"
 
 2. 在前端主机列表中，选择要启用 HTTPS 的自定义域，以包含自己的自定义域。
 
-3. 在“自定义域 HTTPS”部分单击“已启用”，然后选择“托管的 Front Door”作为证书源。   
+3. 在“自定义域 HTTPS”部分选择“已启用”，然后选择“Front Door 托管”作为证书源  。
 
-4. 单击“保存”。
+4. 选择“保存”。
 
 5. 继续[验证域](#validate-the-domain)。
 
 > [!NOTE]
 > 对于 AFD 托管证书，强制实施 DigiCert 的 64 字符限制。 如果超出该限制，验证将失败。
 
+> [!NOTE]
+> 对于顶点/根域（例如 contoso.com），不支持通过 Front Door 托管证书启用 HTTPS。 对于这种情况，你可以使用自己的证书。  有关更多详细信息，请继续参阅“选项 2”。
 
 ### <a name="option-2-use-your-own-certificate"></a>选项 2：使用自己的证书
 
-可以使用自己的证书启用 HTTPS 功能。 此过程通过与 Azure Key Vault 的集成完成，后者允许你安全地存储证书。 Azure Front Door 使用此安全机制来获得你的证书，并且需要一些额外的步骤。 创建 TLS/SSL 证书时，必须使用允许的证书颁发机构 (CA) 创建。 否则，如果使用不允许的 CA，你的请求将被拒绝。 有关允许的 CA 的列表，请参阅[允许在 Azure Front Door 上启用自定义 HTTPS 的证书颁发机构](front-door-troubleshoot-allowed-ca.md)。
+可以使用自己的证书启用 HTTPS 功能。 此过程通过与 Azure Key Vault 的集成完成，后者允许你安全地存储证书。 Azure Front Door 使用此安全机制来获取你的证书，并且需要一些额外的步骤。 创建 TLS/SSL 证书时，必须使用允许的证书颁发机构 (CA) 创建。 否则，如果使用不允许的 CA，你的请求将被拒绝。 有关允许的 CA 的列表，请参阅[允许在 Azure Front Door 上启用自定义 HTTPS 的证书颁发机构](front-door-troubleshoot-allowed-ca.md)。
 
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>准备 Azure Key Vault 帐户和证书
  
@@ -128,30 +130,27 @@ ms.locfileid: "101740777"
 
 3. 在证书管理类型下，选择“使用我自己的证书”  。 
 
-4. Azure Front Door 要求 Key Vault 帐户的订阅与 Front Door 的订阅相同。 选择 Key Vault，证书（机密）和证书版本。
+4. Azure Front Door 要求 Key Vault 帐户的订阅与 Front Door 的订阅相同。 选择密钥保管库、机密和机密版本。
 
     Azure Front Door 列出以下信息： 
     - 订阅 ID 的 Key Vault 帐户。 
-    - 所选 Key Vault 下的证书（机密）。 
-    - 可用证书版本。 
+    - 所选密钥保管库下的机密。 
+    - 可用的机密版本。
 
-> [!NOTE]
-> 将证书版本留空将导致：
-> - 选择最新版本的证书。
-> - 在 Key Vault 中提供较新版本的证书时，会自动轮换到最新版本的证书。
+    > [!NOTE]
+    >  要在密钥保管库中有更新版本的证书可用时自动将证书轮换为最新版本，请将机密版本设置为“最新”。 如果选择了特定版本，则必须手动重新选择新版本才能轮换证书。 部署新版证书/机密最多需要 24 小时。 
  
-5. 使用自己的证书时，不需要对域进行验证。 转至[等待传播](#wait-for-propagation)。
+5. 使用你自己的证书时，无需进行域验证。 转到[等待传播](#wait-for-propagation)。
 
 ## <a name="validate-the-domain"></a>验证域
 
-如果已使用一个自定义域且该自定义域通过 CNAME 记录映射到自定义终结点，或使用的是自己的证书，请转至  
-[自定义域已映射到 Front Door](#custom-domain-is-mapped-to-your-front-door-by-a-cname-record)。 否则，如果域的 CNAME 记录条目不再存在或者包含 cdnverify 子域，请转到[自定义域未映射到 Front Door](#custom-domain-is-not-mapped-to-your-front-door)。
+如果你已有一个自定义域正在使用中，且它已映射到具有 CNAME 记录的自定义终结点，或者你使用的是自己的证书，请转到[自定义域已映射到 Front Door](#custom-domain-is-mapped-to-your-front-door-by-a-cname-record)。 否则，如果域的 CNAME 记录条目不再存在或者包含 afdverify 子域，请转到[自定义域未映射到 Front Door](#custom-domain-is-not-mapped-to-your-front-door)。
 
 ### <a name="custom-domain-is-mapped-to-your-front-door-by-a-cname-record"></a>自定义域已通过 CNAME 记录映射到 Front Door
 
 在 Front Door 的前端主机中添加自定义域时，已在域注册机构的 DNS 表中创建了一条 CNAME 记录，以便将该域映射到 Front Door 的默认 .azurefd.net 主机名。 如果该 CNAME 记录仍然存在，并且不包含 afdverify 子域，则 DigiCert 证书颁发机构将使用它来自动验证自定义域的所有权。 
 
-如果使用的是自己的证书，则不需要对域进行验证。
+如果使用的是自己的证书，则无需验证域。
 
 CNAME 记录应采用以下格式，其中 *Name* 是自定义域名，*Value* 是 Front Door 的默认 .azurefd.net 主机名：
 
@@ -161,7 +160,7 @@ CNAME 记录应采用以下格式，其中 *Name* 是自定义域名，*Value* �
 
 有关 CNAME 记录的详细信息，请参阅[创建 CNAME DNS 记录](../cdn/cdn-map-content-to-custom-domain.md)。
 
-如果 CNAME 记录采用正确的格式，DigiCert 会自动验证自定义域名，并为域名创建专用的证书。 DigitCert 不会向你发送验证电子邮件，并且你无需批准请求。 该证书会在一年内有效，并会在过期前自动续订。 转至[等待传播](#wait-for-propagation)。 
+如果 CNAME 记录采用正确的格式，DigiCert 会自动验证自定义域名，并为域名创建专用的证书。 DigitCert 不会向你发送验证电子邮件，并且你无需批准请求。 该证书会在一年内有效，并会在过期前自动续订。 转到[等待传播](#wait-for-propagation)。 
 
 自动验证通常要花费几分钟时间。 如果在一小时内未看到域完成验证，请创建一个支持票证。
 
@@ -186,11 +185,11 @@ postmaster@&lt;your-domain-name.com&gt;
 
 应会在几分钟内收到如以下所示的电子邮件，要求你批准请求。 如果使用垃圾邮件筛选器，请将 admin@digicert.com 添加到其允许列表。 如果未在 24 小时内收到电子邮件，请与 Microsoft 支持部门联系。
 
-单击批准链接时，会定向到在线审批表单。 按表中的说明操作；有两种验证选项：
+选择批准链接时，将定向到在线批准表单。 按表中的说明操作；有两种验证选项：
 
 - 可批准通过同一根域（例如 consoto.com）的同一帐户下的所有将来订单。 如果你打算为同一根域添加其他自定义域，建议使用此方法。
 
-- 可以只批准该请求中使用的特定主机名。 后续请求将需要其他批准。
+- 可以只批准该请求中使用的特定主机名。 后续请求需要额外的批准。
 
 批准后，DigiCert 会针对自定义域名完成证书创建。 该证书会在一年内有效，并会在过期前自动续订。
 
@@ -200,7 +199,7 @@ postmaster@&lt;your-domain-name.com&gt;
 
 ### <a name="operation-progress"></a>操作进度
 
-下表显示启用 HTTPS 时出现的操作进度。 启用 HTTPS 后，自定义域对话框中将出现四个操作步骤。 每个步骤变为活动状态时，其下将随之显示更多子步骤详细信息。 并非所有这些子步骤都会执行。 步骤成功完成后，它旁边会显示一个绿色的复选标记。 
+下表显示启用 HTTPS 时出现的操作进度。 启用 HTTPS 后，自定义域对话框中将出现四个操作步骤。 当每个步骤变为活动状态时，随着该步骤的不断进行，其下将显示更多子步骤详细信息。 并非所有这些子步骤都会执行。 步骤成功完成后，它旁边会显示一个绿色的复选标记。 
 
 | 操作步骤 | 操作子步骤详细信息 | 
 | --- | --- |
@@ -236,7 +235,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 3. 如果我未收到 DigiCert 发来的域验证电子邮件，怎么办？ 
 
-    如果自定义域的 CNAME 条目直接指向终结点主机名（并且你未使用 afdverify 子域名称），则你不会收到域验证电子邮件。 验证会自动进行。 否则，如果你没有 CNAME 条目，并且在 24 小时内未收到电子邮件，请联系 Microsoft 支持部门。
+    如果自定义域的 CNAME 条目直接指向你的终结点主机名（并且你未使用 afdverify 子域名），则你不会收到域验证电子邮件。 验证会自动进行。 否则，如果你没有 CNAME 条目，并且在 24 小时内未收到电子邮件，请联系 Microsoft 支持部门。
 
 4. 使用 SAN 证书是否没有使用专用证书安全？ 
     
@@ -244,27 +243,27 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 5. 我是否需要通过我的 DNS 提供商获得证书颁发机构授权记录？ 
 
-    否，当前不需要证书颁发机构授权记录。 但是，如果你确实有一个，则必须包含 DigiCert 作为一个有效的 CA。
+    否，当前无需具备证书颁发机构授权记录。 但是，如果你确实有一个，则必须包含 DigiCert 作为一个有效的 CA。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-在前面的步骤中，你在自定义域上启用了 HTTPS 协议。 如果不再希望为自定义域使用 HTTPS，可以通过执行下列步骤来禁用 HTTPS：
+在前面的步骤中，你在自定义域上启用了 HTTPS 协议。 如果你不再想要为自定义域使用 HTTPS，可以执行下列步骤来禁用 HTTPS：
 
 ### <a name="disable-the-https-feature"></a>禁用 HTTPS 功能 
 
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到你的 **Azure Front Door** 配置。
 
-2. 在前端主机列表中，单击要禁用 HTTPS 的自定义域。
+2. 在前端主机列表中，选择要禁用 HTTPS 的自定义域。
 
 3. 单击“已禁用”以禁用 HTTPS，然后单击“保存”。  
 
 ### <a name="wait-for-propagation"></a>等待传播
 
-禁用自定义域 HTTPS 功能后，最多可能需要 6-8 小时才会生效。 此过程完成后，Azure 门户中的自定义 HTTPS 状态会设置为“已禁用”  ，且自定义域对话框中的三个操作步骤会标记为完成。 自定义域不再能够使用 HTTPS。
+禁用自定义域 HTTPS 功能后，最多可能需要 6-8 小时才会生效。 此过程完成后，Azure 门户中的自定义 HTTPS 状态会设置为“已禁用”，且自定义域对话框中的三个操作步骤会标记为完成。 自定义域不再能够使用 HTTPS。
 
 #### <a name="operation-progress"></a>操作进度
 
-下表显示在禁用 HTTPS 时发生的操作进程。 禁用 HTTPS 后，自定义域对话框中将出现三个操作步骤。 每个步骤变为活动状态时，其他详细信息将显示在相应步骤下。 步骤成功完成后，它旁边会显示一个绿色的复选标记。 
+下表显示在禁用 HTTPS 时发生的操作进程。 禁用 HTTPS 后，自定义域对话框中将出现三个操作步骤。 每个步骤变为活动状态时，该步骤下会显示更多详细信息。 步骤成功完成后，它旁边会显示一个绿色的复选标记。 
 
 | 操作进度 | 操作详细信息 | 
 | --- | --- |
@@ -280,7 +279,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 * 验证域。
 * 为自定义域启用 HTTPS。
 
-若要了解如何设置 Front Door 的地理筛选策略，请继续学习下一教程。
+若要了解如何为 Front Door 设置地区筛选策略，请继续学习下一教程。
 
 > [!div class="nextstepaction"]
 > [设置地区筛选策略](front-door-geo-filtering.md)

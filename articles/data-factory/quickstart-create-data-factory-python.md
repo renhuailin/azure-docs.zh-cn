@@ -7,14 +7,14 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/15/2021
+ms.date: 04/12/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 6b15585f029f9289736d8d498b61a3e0ba40f009
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 534b5b3aca86cc2f6d7ee2d703939420f80abb8e
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889410"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365087"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>快速入门：使用 Python 创建数据工厂和管道
 
@@ -40,7 +40,7 @@ Azure 数据工厂是基于云的数据集成服务，用于创建数据驱动�
 
 * [Azure 存储资源管理器](https://storageexplorer.com/)（可选）。
 
-* [Azure Active Directory 中的应用程序](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 记下要在后续步骤中使用的以下值：**应用程序 ID**、**身份验证密钥** 和 **租户 ID**。 按照同一文章中的以下说明将应用程序分配到“参与者”角色。
+* [Azure Active Directory 中的应用程序](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 按照此链接中的步骤创建应用程序，并按照同一文章中的说明将应用程序分配到“参与者”角色。 记下本文显示的以下值，以便在后续步骤中使用：应用程序 ID（下方的服务主体 ID）、身份验证密钥（下方的客户端密码）和租户 ID。
 
 ## <a name="create-and-upload-an-input-file"></a>创建并上传输入文件
 
@@ -75,9 +75,12 @@ Azure 数据工厂是基于云的数据集成服务，用于创建数据驱动�
     ```
     > [!NOTE] 
     > 在某些常见依赖关系上，“azure-identity”包可能与“azure-cli”冲突。 如果遇到任何身份验证问题，请删除“azure-cli”及其依赖关系，或使用未安装“azure-cli”包的初始状态计算机，以确保“azure-identity”包正常工作。
+    > 对于主权云，必须使用适当的云特定常量。  请参阅[使用用于 Python 的 Azure 库连接到所有区域 - 多云 | 有关在主权云中连接 Python 的 Microsoft Docs 说明。](https://docs.microsoft.com/azure/developer/python/azure-sdk-sovereign-domain)
+    
     
 ## <a name="create-a-data-factory-client"></a>创建数据工厂客户端
 
+  
 1. 创建一个名为 **datafactory.py** 的文件。 添加以下语句来添加对命名空间的引用。
 
     ```python
@@ -122,6 +125,7 @@ Azure 数据工厂是基于云的数据集成服务，用于创建数据驱动�
     ```
 3. 向 **Main** 方法中添加用于创建 DataFactoryManagementClient 类的实例的以下代码。 将使用此对象来创建数据工厂、链接服务、数据集和管道。 还将使用此对象来监视管道运行详细信息。 将 **subscription_id** 变量设置为 Azure 订阅的 ID。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
+        
     ```python
     def main():
 
@@ -136,6 +140,11 @@ Azure 数据工厂是基于云的数据集成服务，用于创建数据驱动�
 
         # Specify your Active Directory client ID, client secret, and tenant ID
         credentials = ClientSecretCredential(client_id='<service principal ID>', client_secret='<service principal key>', tenant_id='<tenant ID>') 
+        
+        # Specify following for Soverign Clouds, import right cloud constant and then use it to connect.
+        # from msrestazure.azure_cloud import AZURE_PUBLIC_CLOUD as CLOUD
+        # credentials = DefaultAzureCredential(authority=CLOUD.endpoints.active_directory, tenant_id=tenant_id)
+        
         resource_client = ResourceManagementClient(credentials, subscription_id)
         adf_client = DataFactoryManagementClient(credentials, subscription_id)
 
@@ -217,6 +226,7 @@ Azure 数据工厂是基于云的数据集成服务，用于创建数据驱动�
     print_item(dsOut)
 ```
 
+
 ## <a name="create-a-pipeline"></a>创建管道
 
 向 **Main** 方法中添加用于创建 **包含复制活动的管道** 的以下代码。
@@ -231,6 +241,13 @@ Azure 数据工厂是基于云的数据集成服务，用于创建数据驱动�
     copy_activity = CopyActivity(name=act_name,inputs=[dsin_ref], outputs=[dsOut_ref], source=blob_source, sink=blob_sink)
 
     #Create a pipeline with the copy activity
+    
+    #Note1: To pass parameters to the pipeline, add them to the json string params_for_pipeline shown below in the format { “ParameterName1” : “ParameterValue1” } for each of the parameters needed in the pipeline.
+    #Note2: To pass parameters to a dataflow, create a pipeline parameter to hold the parameter name/value, and then consume the pipeline parameter in the dataflow parameter in the format @pipeline().parameters.parametername.
+    
+    p_name = 'copyPipeline'
+    params_for_pipeline = {}
+
     p_name = 'copyPipeline'
     params_for_pipeline = {}
     p_obj = PipelineResource(activities=[copy_activity], parameters=params_for_pipeline)

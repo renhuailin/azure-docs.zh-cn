@@ -15,12 +15,12 @@ ms.date: 03/25/2021
 ms.author: mathoma
 ms.custom: contperf-fy21q3
 ms.reviewer: jroth
-ms.openlocfilehash: 0b88884576a47db871c78b874104d4973ee9ba9a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 84f2f4f679de80cd9b5fc986d40e084bae8a4cad
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105572199"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313753"
 ---
 # <a name="checklist-performance-best-practices-for-sql-server-on-azure-vms"></a>清单：有关 Azure VM 上 SQL Server 性能的最佳做法
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,13 +34,13 @@ ms.locfileid: "105572199"
 
 在 Azure 虚拟机上运行 SQL Server 时，继续使用适用于本地服务器环境中的 SQL Server 的相同数据库性能优化选项。 但是，关系数据库在公有云中的性能取决于许多因素，如虚拟机的大小和数据磁盘的配置。
 
-通常需要在针对成本优化和针对性能优化之间进行权衡。 此性能最佳做法系列侧重于如何实现 Azure 虚拟机上 SQL Server 的最佳性能。 如果工作负荷要求较低，可能不需要每项建议的优化。 评估这些建议时应考虑性能需求、成本和工作负荷模式。
+通常需要在针对成本优化和针对性能优化之间进行权衡。 此性能最佳做法系列的重点是确保 Azure 虚拟机上的 SQL Server 实现最佳性能。 如果工作负荷要求较低，可能不需要每项建议的优化。 评估这些建议时应考虑性能需求、成本和工作负荷模式。
 
 ## <a name="vm-size"></a>VM 大小
 
 下面是有关在 Azure VM 上运行 SQL Server 时应选择的 VM 大小的最佳做法的快速清单： 
 
-- 使用具有 4 个或更多 vCPU 的 VM 大小，如 [Standard_M8-4ms](/../../virtual-machines/m-series)、[E4ds_v4](../../../virtual-machines/edv4-edsv4-series.md#edv4-series) 或 [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15)，或使用更大的大小。 
+- 使用具有 4 个或更多 vCPU 的 VM 大小，如 [Standard_M8-4ms](../../../virtual-machines/m-series.md)、[E4ds_v4](../../../virtual-machines/edv4-edsv4-series.md#edv4-series) 或 [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15)，或使用更大的大小。 
 - 使用[内存优化](../../../virtual-machines/sizes-memory.md)的虚拟机大小，以实现 SQL Server 工作负载的最佳性能。 
 - [DSv2 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md)、[Edsv4](../../../virtual-machines/edv4-edsv4-series.md) 系列、[M-](../../../virtual-machines/m-series.md) 和 [Mv2-](../../../virtual-machines/mv2-series.md) 系列提供 OLTP 工作负载所需的最佳内存与 vCore 比率。 这两个 M 系列的 VM 都提供最高的内存与 vCore 比率，可满足任务关键型工作负载的需求，也非常适合用于数据仓库工作负载。 
 - 对于任务关键型工作负载和数据仓库工作负载，考虑应用更高的内存与 vCore 比率。 
@@ -61,17 +61,17 @@ ms.locfileid: "105572199"
       - 如果需要亚毫秒存储延迟，请对事务日志使用 [Azure 超级磁盘](../../../virtual-machines/disks-types.md#ultra-disk)。 
       - 对于 M 系列虚拟机部署，请考虑[写入加速器](../../../virtual-machines/how-to-enable-write-accelerator.md)，而不是使用 Azure 超级磁盘。
     - 在选择最佳 VM 大小后，请将 [tempdb](/sql/relational-databases/databases/tempdb-database) 放置在大多数 SQL Server 工作负载的本地临时 SSD `D:\` 驱动器上。 
-      - 如果本地驱动器的容量不足以容纳 tempdb，请考虑增加 VM 的大小。 有关详细信息，请参阅[数据文件缓存策略](performance-guidelines-best-practices-storage.md#data-file-caching-policies)。
-- 使用[存储空间](/windows-server/storage/storage-spaces/overview)对多个 Azure 数据磁盘进行条带化，以将 I/O 带宽增加到目标虚拟机的 IOPS 和吞吐量限制。
+      - 如果本地驱动器的容量对 tempdb 来说不足够，请考虑增加 VM 的大小。 有关详细信息，请参阅[数据文件缓存策略](performance-guidelines-best-practices-storage.md#data-file-caching-policies)。
+- 使用[存储空间](/windows-server/storage/storage-spaces/overview)对多个 Azure 数据磁盘进行条纹化，以将 I/O 带宽增加到目标虚拟机的 IOPS 和吞吐量上限。
 - 将数据文件磁盘的[主机缓存](../../../virtual-machines/disks-performance.md#virtual-machine-uncached-vs-cached-limits)设置为只读。
 - 将日志文件磁盘的[主机缓存](../../../virtual-machines/disks-performance.md#virtual-machine-uncached-vs-cached-limits)设置为无。
-    - 请勿在包含 SQL Server 文件的磁盘上启用读取/写入缓存。 
+    - 请不要在包含 SQL Server 文件的磁盘上启用读取/写入缓存。 
     - 更改磁盘的缓存设置之前，请始终停止 SQL Server 服务。
 - 对于开发和测试工作负荷，请考虑使用标准存储。 不建议将标准 HDD/SDD 用于生产工作负载。
-- 仅应考虑将[基于额度的磁盘突发](../../../virtual-machines/disk-bursting.md#credit-based-bursting) (P1-P20) 用于比较小型的开发/测试工作负载和部门系统。
-- 预配与 SQL Server VM 位于同一区域中的存储帐户。 
+- [基于额度的磁盘突发](../../../virtual-machines/disk-bursting.md#credit-based-bursting) (P1-P20) 仅应考虑用于较小的开发/测试工作负载和部门系统。
+- 预配与 SQL Server VM 位于同一区域的存储帐户。 
 - 在存储帐户上禁用 Azure 异地冗余存储（异地复制）并使用 LRS（本地冗余存储）。
-- 将数据磁盘格式化，对放置在临时 `D:\` 驱动器（默认值为 4 KB）以外的驱动器上的所有数据文件使用 64 KB 分配单位大小。 通过 Azure 市场部署的 SQL Server VM 附带经过格式化的数据磁盘，其中分配单元大小和存储池的交错设置为 64 KB。 
+- 将数据磁盘格式化，为临时 `D:\` 驱动器（默认为 4 KB）以外的驱动器上放置的所有数据文件使用 64 KB 的分配单元大小。 通过 Azure 市场部署的 SQL Server VM 附带经过格式化的数据磁盘，其中分配单元大小和存储池的交错设置为 64 KB。 
 
 若要了解详细信息，请参阅内容全面的[存储最佳做法](performance-guidelines-best-practices-storage.md)。 
 

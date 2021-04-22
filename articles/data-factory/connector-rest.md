@@ -4,14 +4,14 @@ description: 了解如何通过在 Azure 数据工厂管道中使用复制活动
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 12/08/2020
+ms.date: 03/16/2021
 ms.author: jingwang
-ms.openlocfilehash: 972a7b32e6308c3aa8a3b42705038838dae9b2be
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 779a8745688e6a1fb8a15bc9119c6fbc1803ca2c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369877"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078921"
 ---
 # <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 REST 终结点复制数据以及向其中复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -21,7 +21,7 @@ ms.locfileid: "100369877"
 此 REST 连接器、[HTTP 连接器](connector-http.md)和 [Web 表连接器](connector-web-table.md)之间的区别如下：
 
 - **REST 连接器** 专门支持从 RESTful API 复制数据； 
-- “HTTP 连接器”是通用的，可从任何 HTTP 终结点检索数据，以执行文件下载等操作。 在此 REST 连接器之前，你可能会使用 HTTP 连接器从 RESTful API 复制数据，这是受支持的，但与 REST 连接器相比功能比较少。
+- “HTTP 连接器”是通用的，可从任何 HTTP 终结点检索数据，以执行文件下载等操作。 在使用此 REST 连接器之前，你可能会偶尔使用 HTTP 连接器从 RESTful API 复制数据，虽然 HTTP 连接器受支持，但与 REST 连接器相比功能较少。
 - **Web 表连接器** 用于从 HTML 网页中提取表内容。
 
 ## <a name="supported-capabilities"></a>支持的功能
@@ -57,14 +57,15 @@ REST 链接服务支持以下属性：
 | type | type 属性必须设置为 **RestService**  。 | 是 |
 | url | REST 服务的基 URL。 | 是 |
 | enableServerCertificateValidation | 连接到终结点时是否要验证服务器端 TLS/SSL 证书。 | 否<br /> （默认值为 true）  |
-| authenticationType | 用于连接到 REST 服务的身份验证类型。 允许的值包括“Anonymous”、“Basic”、“AadServicePrincipal”和“ManagedServiceIdentity”   。 有关其他属性和示例，请参阅下面的相应部分。 | 是 |
+| authenticationType | 用于连接到 REST 服务的身份验证类型。 允许的值包括“Anonymous”、“Basic”、“AadServicePrincipal”和“ManagedServiceIdentity”   。 不支持基于用户的 OAuth。 此外，还可以在 `authHeader` 属性中配置身份验证标头。 有关其他属性和示例，请参阅下面的相应部分。| 是 |
+| authHeaders | 附加的用于身份验证的 HTTP 请求标头。<br/> 例如，若要使用 API 密钥身份验证，可以将身份验证类型选为“匿名”，然后在标头中指定 API 密钥。 | 否 |
 | connectVia | 用于连接到数据存储的 [ Integration Runtime](concepts-integration-runtime.md)。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则此属性使用默认 Azure Integration Runtime。 |否 |
 
 ### <a name="use-basic-authentication"></a>使用基本身份验证
 
 将 **authenticationType** 属性设置为 **Basic**。 除了前面部分所述的通用属性，还指定以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | userName | 用于访问 REST 终结点的用户名。 | 是 |
 | password | 用户（userName 值）的密码  。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中  。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -97,13 +98,13 @@ REST 链接服务支持以下属性：
 
 将 **authenticationType** 属性设置为 **AadServicePrincipal**。 除了前面部分所述的通用属性，还指定以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | servicePrincipalId | 指定 Azure Active Directory 应用程序的客户端 ID。 | 是 |
 | servicePrincipalKey | 指定 Azure Active Directory 应用程序的密钥。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或 [引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | tenant | 指定应用程序的租户信息（域名或租户 ID）。 将鼠标悬停在 Azure 门户右上角进行检索。 | 是 |
 | aadResourceId | 指定请求授权的 AAD 资源，例如 `https://management.core.windows.net`。| 是 |
-| azureCloudType | 对于服务主体身份验证，请指定 AAD 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为 AzurePublic、AzureChina、AzureUsGovernment 和 AzureGermany   。 默认情况下，使用数据工厂的云环境。 | 否 |
+| azureCloudType | 对于服务主体身份验证，请指定 AAD 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为 AzurePublic、AzureChina、AzureUsGovernment 和 AzureGermany   。 默认情况下使用数据工厂的云环境。 | 否 |
 
 **示例**
 
@@ -150,6 +151,35 @@ REST 链接服务支持以下属性：
             "url": "<REST endpoint e.g. https://www.example.com/>",
             "authenticationType": "ManagedServiceIdentity",
             "aadResourceId": "<AAD resource URL e.g. https://management.core.windows.net>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="using-authentication-headers"></a>使用身份验证标头
+
+此外，还可以配置身份验证请求标头，以及内置的身份验证类型。
+
+示例：使用 API 密钥身份验证
+
+```json
+{
+    "name": "RESTLinkedService",
+    "properties": {
+        "type": "RestService",
+        "typeProperties": {
+            "url": "<REST endpoint>",
+            "authenticationType": "Anonymous",
+            "authHeader": {
+                "x-api-key": {
+                    "type": "SecureString",
+                    "value": "<API key>"
+                }
+            }
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -464,8 +494,8 @@ Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一
 5. 选择“Web”活动  。 在“设置”中，指定相应的“URL”、“方法”、“标头”和“正文”，以便从要从其中复制数据的服务的登录 API 检索 OAuth 持有者令牌      。 模板中的占位符展示了 Azure Active Directory (AAD) OAuth 的示例。 请注意，REST 连接器原生支持 AAD 身份验证，这里只是 OAuth 流的一个示例。 
 
     | 属性 | 说明 |
-    |:--- |:--- |:--- |
-    | URL |指定要从其中检索 OAuth 持有者令牌的 URL。 例如，在本示例中，它是 https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
+    |:--- |:--- |
+    | URL |指定要从其中检索 OAuth 持有者令牌的 URL。 例如，在本示例中，它是 https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |
     | 方法 | HTTP 方法。 允许的值为“Post”和“Get”   。 | 
     | 头文件 | 标头由用户定义，引用 HTTP 请求中的一个标头名称。 | 
     | 正文 | HTTP 请求的正文。 | 
@@ -475,7 +505,7 @@ Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一
 6. 在“复制数据”活动中选择“源”选项卡。可以看到，从上一步骤检索的持有者令牌 (access_token) 将作为“其他标头”下的 Authorization 标头传递到“复制数据”活动    。 在启动管道运行之前，请确认以下属性的设置。
 
     | 属性 | 说明 |
-    |:--- |:--- |:--- | 
+    |:--- |:--- |
     | 请求方法 | HTTP 方法。 允许的值为 Get（默认值）和 Post   。 | 
     | 其他标头 | 附加的 HTTP 请求标头。| 
 

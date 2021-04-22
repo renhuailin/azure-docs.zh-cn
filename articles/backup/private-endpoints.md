@@ -3,12 +3,12 @@ title: 专用终结点
 description: 了解创建 Azure 备份的专用终结点的过程以及使用专用终结点帮助维护资源安全的方案。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 7423157abbc0833394af055f5e31f724caa10b46
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: 1775ec2c337dba0a618f9e7d186af9ed11a0e303
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103224701"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105559377"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure 备份的专用终结点
 
@@ -24,7 +24,7 @@ ms.locfileid: "103224701"
 - 用于备份的专用终结点连接在子网中总共使用 11 个专用 IP，其中包括 Azure 备份用于存储的 IP。 对于某些 Azure 区域，此数字可能更高（最多 25 个）。 因此，我们建议你在尝试创建用于备份的专用终结点时，拥有足够的可用专用 IP。
 - 尽管恢复服务保管库可用于 Azure 备份和 Azure Site Recovery 这两种服务，但本文仅介绍将专用终结点用于 Azure 备份的情况。
 - Azure Active Directory 当前不支持专用终结点。 因此在 Azure VM 中执行数据库备份和使用 MARS 代理进行备份时，需要允许 Azure Active Directory 在区域中操作所需的 IP 和 FQDN 从受保护的网络进行出站访问。 如果适用，还可以使用 NSG 标记和 Azure 防火墙标记来允许访问 Azure AD。
-- 具有网络策略的虚拟网络不支持专用终结点。 在继续之前，需要[禁用网络策略](https://docs.microsoft.com/azure/private-link/disable-private-endpoint-network-policy)。
+- 具有网络策略的虚拟网络不支持专用终结点。 在继续之前，需要[禁用网络策略](../private-link/disable-private-endpoint-network-policy.md)。
 - 如果在 2020 年 5 月 1 日之前注册了恢复服务资源提供程序，则需在订阅中重新注册它。 若要重新注册提供程序，请转到 Azure 门户中的订阅，导航到左侧导航栏上的“资源提供程序”，然后选择“Microsoft.RecoveryServices”，并选择“重新注册”  。
 - 如果为保管库启用了专用终结点，则不支持对 SQL 和 SAP HANA 数据库备份进行[跨区域还原](backup-create-rs-vault.md#set-cross-region-restore)。
 - 将已使用专用终结点的恢复服务保管库移到新租户时，需要更新恢复服务保管库，以重新创建并重新配置保管库的托管标识，并根据需要创建新的专用终结点（应在新租户）中。 如果不执行此操作，备份和还原操作将会失败。 此外，需要重新配置在订阅中设置的任何基于角色的访问控制 (RBAC) 权限。
@@ -150,7 +150,7 @@ ms.locfileid: "103224701"
 
     ![专用终结点的虚拟网络](./media/private-endpoints/virtual-network-links.png)
 
-1. 如果未看到条目，请将一个虚拟网络链接添加到没有该链接的所有 DNS 区域。
+1. 如果未看到条目，请将虚拟网络链接添加到没有该链接的所有 DNS 区域。
 
     ![添加虚拟网络链接](./media/private-endpoints/add-virtual-network-link.png)
 
@@ -264,14 +264,14 @@ ms.locfileid: "103224701"
 
 #### <a name="dns-records-for-blobs-only-for-custom-dns-servershost-files-after-the-first-backup"></a>首次备份后的 Blob 的 DNS 记录（仅适用于自定义 DNS 服务器/主机文件）
 
-运行首次备份之后，如果你使用的是自定义 DNS 服务器（未启用条件转发），后续备份有可能会失败。 如果发生这种情况：
+运行首次备份后，如果你使用的是自定义 DNS 服务器（未启用条件转发），备份有可能会失败。 如果发生这种情况：
 
 1. 导航到你的资源组，然后搜索创建的专用终结点。
 1. 除了前面所述的三个专用终结点以外，现在还会看到第四个专用终结点，其名称以 `<the name of the private endpoint>_prot` 开头，后缀为 `_blob`。
 
     ![带有后缀“prot”的专用终结点](./media/private-endpoints/private-endpoint-prot.png)
 
-1. 导航到这个新的专用终结点。 在 DNS 配置选项中，会看到一条包含 FQDN 和 IP 地址的记录。 除了添加前面所述的记录以外，再将此记录添加到专用 DNS 服务器。
+1. 导航到这个新的专用终结点。 在 DNS 配置选项中，会看到一条包含 FQDN 和 IP 地址的记录。 除了添加上述记录外，还将这些记录添加到专用 DNS 服务器。
 
     如果使用主机文件，请根据以下格式在主机文件中为每个 IP 和 FQDN 创建相应的条目：
 
@@ -299,7 +299,7 @@ ms.locfileid: "103224701"
 
 ## <a name="deleting-private-endpoints"></a>删除专用终结点
 
-请参阅[此部分](https://docs.microsoft.com/rest/api/virtualnetwork/privateendpoints/delete)了解如何删除专用终结点。
+请参阅[此部分](/rest/api/virtualnetwork/privateendpoints/delete)了解如何删除专用终结点。
 
 ## <a name="additional-topics"></a>其他主题
 

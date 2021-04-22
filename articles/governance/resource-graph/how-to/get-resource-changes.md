@@ -1,14 +1,14 @@
 ---
 title: 获取资源更改
 description: 了解如何查找资源的更改时间，获取已更改属性的列表以及评估差异。
-ms.date: 01/27/2021
+ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 5ad86ec2598cd7f24b8e0cd2208889bb7a088568
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 500a2d58c5fc9e1b63a544978c4b583eba60a63e
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100594653"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219070"
 ---
 # <a name="get-resource-changes"></a>获取资源更改
 
@@ -145,6 +145,10 @@ resourceId 的每个检测到的更改事件都具有以下属性：
 - beforeSnapshot - 包含检测到更改之前创建的资源快照的 snapshotId 和 timestamp。
 - afterSnapshot - 包含检测到更改之后创建的资源快照的 snapshotId 和 timestamp。
 - changeType - 描述已针对 beforeSnapshot 和 afterSnapshot 之间的完整更改记录检测到的更改的类型。 值为：Create、Update 和 Delete。   仅当 changeType 为 Update 时，才包括 propertyChanges 属性数组。
+
+  > [!IMPORTANT]
+  > Create 只能在过去 14 天内已存在并已删除的资源上可用。
+
 - propertyChanges - 此属性数组提供了 beforeSnapshot 和 afterSnapshot 之间已更新的所有资源属性的详细信息：
   - propertyName - 已更改的资源属性的名称。
   - changeCategory - 描述更改者类别。 值为：System 和 User。

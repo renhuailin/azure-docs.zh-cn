@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 58da3353f94a9caafdbd70ad56789ab138cfd6f4
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 538b3ce5a268464b9f014dd00b924875824cab3b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284741"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107327551"
 ---
 <a name="HOLTop"></a>
 
@@ -41,7 +41,7 @@ ms.locfileid: "106284741"
 
 ### <a name="install-the-client-library"></a>安装客户端库 
 
-创建新项目后，右键单击“解决方案资源管理器”中的项目解决方案，然后选择“管理 NuGet 包”，以安装客户端库 。 在打开的包管理器中，选择“浏览”，选中“包括预发行版”并搜索 `Microsoft.Azure.CognitiveServices.Vision.ComputerVision`。 选择版本 `6.0.0-preview.1`，然后选择“安装”。 
+创建新项目后，右键单击“解决方案资源管理器”中的项目解决方案，然后选择“管理 NuGet 包”，以安装客户端库 。 在打开的包管理器中，选择“浏览”，选中“包括预发行版”并搜索 `Microsoft.Azure.CognitiveServices.Vision.ComputerVision`。 选择版本 `7.0.0`，然后选择“安装”。 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
@@ -72,7 +72,7 @@ Build succeeded.
 在应用程序目录中，使用以下命令安装适用于 .NET 的计算机视觉客户端库：
 
 ```console
-dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 6.0.0
+dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 7.0.0
 ```
 
 ---
@@ -129,7 +129,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 
 ## <a name="read-printed-and-handwritten-text"></a>读取印刷体文本和手写文本
 
-OCR 服务可以读取图像中的可见文本，并将其转换为字符流。 有关文本识别的更多详细信息，请参阅[光学字符识别 (OCR)](../../overview-ocr.md) 概述。 本部分中的代码使用[适用于 Read 3.0 的最新计算机视觉 SDK 版本](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/6.0.0-preview.1)，并定义了 `BatchReadFileUrl` 方法，该方法使用客户端对象来检测和提取图像中的文本。
+OCR 服务可以读取图像中的可见文本，并将其转换为字符流。 有关文本识别的更多详细信息，请参阅[光学字符识别 (OCR)](../../overview-ocr.md) 概述。 本部分中的代码使用[适用于 Read 3.0 的最新计算机视觉 SDK 版本](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/)，并定义了 `BatchReadFileUrl` 方法，该方法使用客户端对象来检测和提取图像中的文本。
 
 > [!TIP]
 > 还可以从本地图像提取文本。 请参阅 [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) 方法，例如 ReadInStreamAsync。 或者，请参阅 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) 上的示例代码，了解涉及本地图像的方案。
@@ -183,8 +183,10 @@ dotnet run
 
 ## <a name="next-steps"></a>后续步骤
 
+本快速入门了解了安装 OCR 客户端库和使用读取 API 的方法。 接下来，详细了解读取 API 功能。
+
 > [!div class="nextstepaction"]
->[计算机视觉 API 参考 (.NET)](/dotnet/api/overview/azure/cognitiveservices/client/computervision)
+>[调用读取 API](../../Vision-API-How-to-Topics/call-read-api.md)
 
 * [OCR 概述](../../overview-ocr.md)
 * 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) 上找到此示例的源代码。

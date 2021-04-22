@@ -5,18 +5,18 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 04/05/2021
 ms.author: duau
-ms.openlocfilehash: 45b059784cc0b442b615a2a1cb50386da6ee990f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 796e35be12939920f9392e6f3ce4cae660415f80
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740913"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504667"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>关于 ExpressRoute 虚拟网络网关
 
-若要通过 ExpressRoute 连接 Azure 虚拟网络和本地网络，必须首先创建虚拟网络网关。 虚拟网络网关有两个用途：在网络之间交换 IP 路由和路由网络流量。 本文介绍网关类型、网关 SKU 和按 SKU 估算的性能。 本文还介绍了 ExpressRoute [FastPath](#fastpath)，这是一项功能，可让你的本地网络中的网络流量绕过虚拟网络网关，从而提高性能。
+若要通过 ExpressRoute 连接 Azure 虚拟网络和本地网络，必须首先创建虚拟网络网关。 虚拟网络网关有两个用途：在网络之间交换 IP 路由和路由网络流量。 本文介绍网关类型、网关 SKU 和按 SKU 估算的性能。 本文还介绍了 ExpressRoute [FastPath](#fastpath)，这是一项功能，可让你本地网络中的网络流量绕过虚拟网络网关，从而提高性能。
 
 ## <a name="gateway-types"></a>网关类型
 
@@ -39,8 +39,8 @@ ms.locfileid: "101740913"
 [!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
 
 > [!IMPORTANT]
-> 应用程序性能取决于多种因素，例如端到端延迟和应用程序打开的流量数。 表中的数字表示应用程序在理想环境下理论上可达到的上限。
->
+> * 虚拟网络中的 VM 数还包括使用远程 ExpressRoute 网关的对等虚拟网络中的 VM。
+> * 应用程序性能取决于多种因素，例如端到端延迟和应用程序打开的流量数。 表中的数字表示应用程序在理想环境下理论上可达到的上限。
 >
 
 ## <a name="gateway-subnet"></a><a name="gwsub"></a>网关子网
@@ -53,7 +53,7 @@ ms.locfileid: "101740913"
 
 创建网关子网时，请指定子网包含的 IP 地址数。 将网关子网中的 IP 地址分配到网关 VM 和网关服务。 有些配置需要具有比其他配置更多的 IP 地址。 
 
-规划网关子网大小时，请参阅你计划创建的配置的相关文档。 例如，ExpressRoute/VPN 网关共存配置所需的网关子网大于大多数其他配置。 此外，可能需要确保网关子网包含足够多的 IP 地址，以便应对将来可能会添加的配置。 尽管网关子网最小可创建为 /29，但建议创建 /27 或更大（/27、/26 等）的网关子网（如果你有可用的地址空间来执行此操作）。 如果创建的是双堆栈网关子网，我们建议还使用/64 或更大的 IPv6 范围。 这将适合大多数配置。
+规划网关子网大小时，请参阅你计划创建的配置的相关文档。 例如，ExpressRoute/VPN 网关共存配置所需的网关子网大于大多数其他配置。 此外，可能需要确保网关子网包含足够多的 IP 地址，以便应对将来可能会添加的配置。 尽管网关子网最小可创建为 /29，但建议创建 /27 或更大（/27、/26 等）的网关子网（如果你有可用的地址空间来执行此操作）。 如果计划将 16 个 ExpressRoute 线路连接到网关，则必须创建 /26 或更大的网关子网。 如果创建的是双堆栈网关子网，建议还是使用 /64 或更大的 IPv6 范围。 这将适合大多数配置。
 
 以下 Resource Manager PowerShell 示例显示名为 GatewaySubnet 的网关子网。 可以看到，CIDR 表示法指定了 /27，这可提供足够的 IP 地址供大多数现有配置使用。
 
@@ -84,16 +84,16 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
 ## <a name="fastpath"></a><a name="fastpath"></a>FastPath
 
-ExpressRoute 虚拟网络网关旨在交换网络路由和路由网络流量。 FastPath 旨在提高本地网络与虚拟网络之间的数据路径性能。 启用后，FastPath 会将网络流量直接发送到虚拟网络中的虚拟机，绕过网关。
+ExpressRoute 虚拟网络网关旨在交换网络路由和路由网络流量。 FastPath 旨在改善本地网络和虚拟网络之间的数据路径性能。 启用后，FastPath 会绕过网关直接将网络流量发送到虚拟网络中的虚拟机。
 
-有关 FastPath 的详细信息，包括限制和要求，请参阅 [关于 FastPath](about-fastpath.md)。
+有关 FastPath 的详细信息，包括限制和要求，请参阅[关于 FastPath](about-fastpath.md)。
 
 ## <a name="rest-apis-and-powershell-cmdlets"></a><a name="resources"></a>REST API 和 PowerShell cmdlet
 有关将 REST API 和 PowerShell cmdlet 用于虚拟网络网关配置的其他技术资源和特定语法要求，请参阅以下页面：
 
 | **经典** | **资源管理器** |
 | --- | --- |
-| [PowerShell](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0#azure) |[PowerShell](/powershell/module/az.network#networking) |
+| [PowerShell](/powershell/module/servicemanagement/azure.service/#azure) |[PowerShell](/powershell/module/az.network#networking) |
 | [REST API](/previous-versions/azure/reference/jj154113(v=azure.100)) |[REST API](/rest/api/virtual-network/) |
 
 ## <a name="next-steps"></a>后续步骤
@@ -102,6 +102,6 @@ ExpressRoute 虚拟网络网关旨在交换网络路由和路由网络流量。 
 
 有关创建 ExpressRoute 网关的详细信息，请参阅[创建 ExpressRoute 的虚拟网络网关](expressroute-howto-add-gateway-resource-manager.md)。
 
-有关配置区域冗余网关的详细信息，请参阅 [创建区域冗余虚拟网络网关](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md)。
+有关配置区域冗余型网关的详细信息，请参阅[创建区域冗余型虚拟网络网关](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md)。
 
-有关 FastPath 的详细信息，请参阅 [关于 FastPath](about-fastpath.md)。
+有关 FastPath 的详细信息，请参阅[关于 FastPath](about-fastpath.md)。

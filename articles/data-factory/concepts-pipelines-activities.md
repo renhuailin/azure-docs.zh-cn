@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: 870c812a68f765f987cfd3d1b953e0afeb3e9055
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100364488"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动
@@ -73,7 +73,7 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 [Filter](control-flow-filter-activity.md) | 将筛选器表达式应用于输入数组
 [对每一个](control-flow-for-each-activity.md) | ForEach 活动在管道中定义重复的控制流。 此活动用于循环访问集合，并在循环中执行指定的活动。 此活动的循环实现类似于采用编程语言的 Foreach 循环结构。
 [获取元数据](control-flow-get-metadata-activity.md) | GetMetadata 活动可用于检索 Azure 数据工厂中的任何数据的元数据。
-[If Condition 活动](control-flow-if-condition-activity.md) | If Condition 可用于基于计算结果为 true 或 false 的条件进行分支。 If Condition 活动可提供 if 语句在编程语言中提供相同的功能。 当条件计算结果为时，它会计算一组活动 `true` ，当条件计算结果为时，还会计算一组活动 `false.`
+[If Condition 活动](control-flow-if-condition-activity.md) | If Condition 可用于基于计算结果为 true 或 false 的条件进行分支。 If Condition 活动可提供 if 语句在编程语言中提供相同的功能。 当条件计算结果为 `true` 时，它会计算一组活动，当条件计算结果为 `false.` 时，它会计算另一组活动
 [Lookup 活动](control-flow-lookup-activity.md) | 查找活动可用于从任何外部源读取或查找记录/表名称/值。 此输出可进一步由后续活动引用。
 [设置变量](control-flow-set-variable-activity.md) | 设置现有变量的值。
 [Until 活动](control-flow-until-activity.md) | 实现类似于采用编程语言的 Do-Until 循环结构的 Do-Until 循环。 它在循环中将执行一组活动，直到与活动相关联的条件的计算结果为 true。 你可以在数据工厂中为 Until 活动指定超时值。
@@ -103,14 +103,14 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 }
 ```
 
-标记 | 说明 | 类型 | 必须
+标记 | 说明 | 类型 | 必需
 --- | ----------- | ---- | --------
-name | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：140</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符： "."、"+"、"？"、"/"、"<"、">"、"*"、"%"、"&"、"："、" \" </li></ul> | String | 是
-description | 指定描述管道用途的文本。 | String | 否
-活动 | **activities** 节中可定义有一个或多个活动。 请参阅[活动 JSON](#activity-json) 一节，以了解有关活动 JSON 元素的详细信息。 | 数组 | 是
-parameters | **参数** 部分可在在管道内定义一个或多个参数，使你的管道能够灵活地重复使用。 | 列表 | 否
+name | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：140</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\"” </li></ul> | 字符串 | 是
+description | 指定描述管道用途的文本。 | 字符串 | 否
+活动 | **activities** 节中可定义有一个或多个活动。 请参阅[活动 JSON](#activity-json) 一节，以了解有关活动 JSON 元素的详细信息。 | Array | 是
+parameters | **参数** 部分可在在管道内定义一个或多个参数，使你的管道能够灵活地重复使用。 | 列出 | 否
 concurrency | 管道可以具有的最大并发运行数。 默认情况下，没有最大值。 如果达到并发限制，则附加管道运行将排队，直到较早的管道完成为止 | Number | 否 
-annotations | 与管道关联的标记的列表 | 数组 | 否
+annotations | 与管道关联的标记的列表 | Array | 否
 
 ## <a name="activity-json"></a>活动 JSON
 **activities** 节中可定义有一个或多个活动。 有两种主要类型的活动：执行和控制活动。
@@ -138,12 +138,12 @@ annotations | 与管道关联的标记的列表 | 数组 | 否
 
 下表描述了活动 JSON 定义中的属性：
 
-标记 | 说明 | 必须
+标记 | 说明 | 必需
 --- | ----------- | ---------
-name | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符： "."、"+"、"？"、"/"、"<"、">"、"*"、"%"、"&"、"："、" \" | 是</li></ul>
+name | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\"” | 是</li></ul>
 description | 描述活动用途的文本 | 是
 type | 活动的类型。 有关不同的活动类型，请参阅[数据移动活动](#data-movement-activities)、[数据转换活动](#data-transformation-activities)和[控制活动](#control-flow-activities)部分。 | 是
-linkedServiceName | 活动使用的链接服务的名称。<br/><br/>活动可能需要你指定链接到所需计算环境的链接服务。 | 适用于 HDInsight 活动，Azure 机器学习 Studio (经典) 批处理评分活动和存储过程活动。 <br/><br/>对其他活动均非必需
+linkedServiceName | 活动使用的链接服务的名称。<br/><br/>活动可能需要你指定链接到所需计算环境的链接服务。 | 对 HDInsight 活动、Azure 机器学习工作室（经典）批处理评分活动和存储过程活动是必需的。 <br/><br/>对其他活动均非必需
 typeProperties | typeProperties 部分的属性取决于每个活动类型。 要查看活动的类型属性，请单击链接转到上一节中的活动。 | 否
 policy | 影响活动运行时行为的策略。 该属性包括超时和重试行为。 如果未指定，将使用默认值。 有关详细信息，请参阅[活动策略](#activity-policy)部分。 | 否
 dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前活动的依赖方式。 有关详细信息，请参阅[活动依赖项](#activity-dependency) | 否
@@ -179,7 +179,7 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 }
 ```
 
-JSON 名称 | 说明 | 允许的值 | 必须
+JSON 名称 | 说明 | 允许的值 | 必需
 --------- | ----------- | -------------- | --------
 timeout | 指定活动运行的超时。 | Timespan | 否。 默认超时为 7 天。
 retry | 最大重试次数 | Integer | 否。 默认值为 0
@@ -203,9 +203,9 @@ secureOutput | 当设置为 true 时，来自活动的输出会被视为安全�
 }
 ```
 
-标记 | 说明 | 必须
+标记 | 说明 | 必需
 --- | ----------- | --------
-name | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符： "."、"+"、"？"、"/"、"<"、">"、"*"、"%"、"&"、"："、" \" | 是</li><ul>
+name | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\"” | 是</li><ul>
 description | 描述活动用途的文本 | 是
 type | 活动的类型。 有关不同的活动类型，请参阅[数据移动活动](#data-movement-activities)、[数据转换活动](#data-transformation-activities)和[控制活动](#control-flow-activities)部分。 | 是
 typeProperties | typeProperties 部分的属性取决于每个活动类型。 要查看活动的类型属性，请单击链接转到上一节中的活动。 | 否
@@ -372,7 +372,7 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 
 若要使你的触发器启动管道运行，必须包含对触发器定义中的特定管道的管道引用。 管道和触发器具有 n-m 关系。 多个触发器可以启动单个管道，同一个触发器可以启动多个管道。 定义管道后，必须启动触发器，以使其开始触发管道。 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)一文。
 
-例如，假设你有一个计划程序触发器 "触发器 A"，我想要启动我的管道 "MyCopyPipeline"。 定义该触发器，如以下示例中所示：
+例如，假设你有一个计划触发器“触发器 A”，我希望使用该触发器启动我的管道“MyCopyPipeline”。 定义该触发器，如以下示例中所示：
 
 ### <a name="trigger-a-definition"></a>触发器 A 定义
 

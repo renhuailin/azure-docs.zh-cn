@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 89f7be31514f0b78c3bfb3efd6e6aca14658d5cd
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93375805"
 ---
 #### <a name="to-create-a-manual-backup"></a>创建手动备份
@@ -21,13 +21,13 @@ ms.locfileid: "93375805"
 
 3. 在“立即备份”边栏选项卡中，执行以下步骤：
 
-    1. 从下拉列表中选择合适的 **快照类型** ：“本地”快照或“云”快照。 要用于快速备份或还原，请选择本地快照，要用于数据复原，请选择云快照。
+    1. 从下拉列表中选择合适的 **快照类型**：“本地”快照或“云”快照。 要用于快速备份或还原，请选择本地快照，要用于数据复原，请选择云快照。
 
         ![创建手动备份 2](./media/storsimple-8000-create-manual-backup/createmanualbu2.png)
 
     2. 单击“确定”以启动作业来创建快照。 成功创建作业后，会在页面底部看到一条通知。
 
-        ![创建手动备份3](./media/storsimple-8000-create-manual-backup/createmanualbu4.png)
+        ![创建手动备份 3](./media/storsimple-8000-create-manual-backup/createmanualbu4.png)
 
     3. 若要监视作业，请单击该通知。 这会转至“作业”边栏选项卡，可以在其中查看作业进度。
 

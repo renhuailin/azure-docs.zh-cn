@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 6c29bf87c5f0ecaaeb6d608069791431a949c89b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2778f52b312e5d2fda7879b834fcd204285b7144
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103009957"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628945"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>创建和管理 Azure 机器学习计算实例
 
@@ -127,6 +127,9 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 
 启动、停止、重启和删除计算实例。 计算实例不会自动纵向缩减，因此请确保停止该资源以免产生费用。
 
+> [!TIP]
+> 计算实例具有 120GB 的 OS 磁盘。 如果磁盘空间不足，则在停止或重启计算实例之前，[使用终端](how-to-access-terminal.md)可至少清空 1-2 GB 空间。
+
 # <a name="python"></a>[Python](#tab/python)
 
 在下例中，计算实例的名称均为“实例”
@@ -225,6 +228,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 * 获取有关特定计算实例的详细信息，例如 IP 地址和区域。
 
 ---
+
 
 使用 [Azure RBAC](../role-based-access-control/overview.md) 可以对工作区中的哪些用户能够创建、删除、启动、停止、重启计算实例进行控制。 充当工作区参与者和所有者角色的所有用户可以在整个工作区中创建、删除、启动、停止和重启计算实例。 但是，只有特定计算实例的创建者或分配的用户（如果该计算实例是以其名义创建的）可在该计算实例上访问 Jupyter、JupyterLab 和 RStudio。 计算实例专用于具有 root 用户访问权限的单个用户，并且可通过 Jupyter/JupyterLab/RStudio 进行终端访问。 计算实例将具有单用户登录，所有操作都将使用该用户的身份进行 Azure RBAC 和试验运行的归属。 SSH 访问是通过公钥/私钥机制控制的。
 

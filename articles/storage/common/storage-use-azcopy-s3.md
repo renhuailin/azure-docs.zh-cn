@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 34f54bb30e959ecc2fa27fba5ab7392b9eddc68e
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 01c3296569d03a7fcc13c004d42d64a86a48a0bc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103494506"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728787"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>使用 AzCopy 将数据从 Amazon S3 复制到 Azure 存储
 
@@ -59,7 +59,7 @@ AzCopy 使用[从 URL 放置块](/rest/api/storageservices/put-block-from-url) A
 
 对具有分层命名空间的帐户使用相同的 URL 语法 (`blob.core.windows.net`)。
 
-|    |     |
+| 语法/示例  |  代码 |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<object-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<blob-name>'` |
 | **示例** | `azcopy copy 'https://s3.amazonaws.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
@@ -76,7 +76,7 @@ AzCopy 使用[从 URL 放置块](/rest/api/storageservices/put-block-from-url) A
 
 对具有分层命名空间的帐户使用相同的 URL 语法 (`blob.core.windows.net`)。
 
-|    |     |
+| 语法/示例  |  代码 |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **示例** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
@@ -89,7 +89,7 @@ AzCopy 使用[从 URL 放置块](/rest/api/storageservices/put-block-from-url) A
 
 可以使用通配符 (*) 复制目录的内容，而无需复制包含内容的目录本身。
 
-|    |     |
+| 语法/示例  |  代码 |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>/*' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **示例** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory/*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
@@ -99,7 +99,7 @@ AzCopy 使用[从 URL 放置块](/rest/api/storageservices/put-block-from-url) A
 
 对具有分层命名空间的帐户使用相同的 URL 语法 (`blob.core.windows.net`)。
 
-|    |     |
+| 语法/示例  |  代码 |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive=true` |
 | **示例** | `azcopy copy 'https://s3.amazonaws.com/mybucket' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive=true` |
@@ -109,7 +109,7 @@ AzCopy 使用[从 URL 放置块](/rest/api/storageservices/put-block-from-url) A
 
 对具有分层命名空间的帐户使用相同的 URL 语法 (`blob.core.windows.net`)。
 
-|    |     |
+| 语法/示例  |  代码 |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://s3.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **示例** | `azcopy copy 'https://s3.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
@@ -119,7 +119,7 @@ AzCopy 使用[从 URL 放置块](/rest/api/storageservices/put-block-from-url) A
 
 对具有分层命名空间的帐户使用相同的 URL 语法 (`blob.core.windows.net`)。
 
-|    |     |
+| 语法/示例  |  代码 |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://s3-<region-name>.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **示例** | `azcopy copy 'https://s3-rds.eu-north-1.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/01/2021
+ms.date: 04/12/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1445e7959906966c58730521123ae03590bef1b3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4130ed4bb690edb3c0c5d72d7d158262ed6ff39d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101652090"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305593"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Tutorial:开发 SCIM 终结点并计划其预配
 
@@ -62,7 +62,7 @@ SCIM 标准定义用于管理用户和组的架构。
 用户架构仅需要三种特性（所有其他特性为可选项）：
 
 - `id`，服务提供商定义的标识符
-- `externalId`，客户端定义的标识符
+- `userName`，用户的唯一标识符（通常对应于 Azure AD 用户主体名称）
 - `meta`，由服务提供商维护的只读元数据
 
 除了核心用户架构外，SCIM 标准还定义了企业用户扩展以及用于扩展用户架构的模型，以满足应用程序的需求 。 
@@ -168,10 +168,10 @@ SCIM RFC 中定义了多个终结点。 可以从 `/User` 终结点开始，然�
 |--|--|
 |/User|对用户对象执行 CRUD 操作。|
 |/Group|对组对象执行 CRUD 操作。|
-|/ServiceProviderConfig|详细说明受支持的 SCIM 标准的特点（例如受支持的资源和身份验证方法）。|
-|/ResourceTypes|指定有关每个资源的元数据|
 |/Schemas|每个客户端和服务提供商支持的属性集可能有所不同。 一个服务提供商可能包括 `name`、`title` 和 `emails` 属性，而另一个服务提供商使用 `name`、`title` 和 `phoneNumbers` 属性。 利用架构终结点可以发现受支持的属性。|
 |/Bulk|使用批量操作，你可以通过单个操作（例如更新大型组的成员身份）对大量资源对象执行操作。|
+|/ServiceProviderConfig|详细说明受支持的 SCIM 标准的特点（例如受支持的资源和身份验证方法）。|
+|/ResourceTypes|指定每个资源的元数据。|
 
 **终结点示例列表**
 
@@ -198,6 +198,7 @@ SCIM RFC 中定义了多个终结点。 可以从 `/User` 终结点开始，然�
 |查询组资源时的筛选器 [excludedAttributes=members](#get-group)|第 3.4.2.5 节|
 |接受使用一个持有者令牌对应用程序进行 AAD 身份验证和授权。||
 |软删除用户 `active=false` 并还原该用户 `active=true`|无论用户是否处于活动状态，都应在请求中返回用户对象。 不应返回用户的唯一例外是，从应用程序中硬删除用户的情况。|
+|支持架构终结点|[第 7 部分](https://tools.ietf.org/html/rfc7643#page-30) 架构发现终结点将用于发现其他属性。|
 
 实现 SCIM 终结点时，请遵从以下一般准则，以确保与 AAD 兼容：
 
@@ -210,7 +211,12 @@ SCIM RFC 中定义了多个终结点。 可以从 `/User` 终结点开始，然�
 * Microsoft AAD 发出用于提取随机用户和组的请求，以确保终结点和凭据有效。 在 [Azure 门户](https://portal.azure.com)的“测试连接”流中也会完成此操作。 
 * 应在 [Azure 门户](https://portal.azure.com)中将可以查询其资源的特性设置为应用程序的匹配特性，请参阅[自定义用户设置特性映射](customize-application-attributes.md)。
 * 在 SCIM 终结点上支持 HTTPS
-
+* [架构发现](#schema-discovery)
+  * 自定义应用程序当前不支持架构发现，但某些库应用程序正在运行它。 日后，架构发现将用作向连接器添加其他属性的主要方法。 
+  * 如果值不存在，则不发送 NULL 值。
+  * 属性值应采用大小写形式，例如，readWrite。
+  * 必须返回列表响应。
+  
 ### <a name="user-provisioning-and-deprovisioning"></a>用户预配和取消预配
 
 下图显示了 AAD 发送到 SCIM 服务以管理应用程序的标识存储区中用户的生命周期的消息。  
@@ -252,6 +258,9 @@ SCIM RFC 中定义了多个终结点。 可以从 `/User` 终结点开始，然�
   - [更新组[添加成员]](#update-group-add-members)（[请求](#request-11) / [响应](#response-11)）
   - [更新组[删除成员]](#update-group-remove-members)（[请求](#request-12) / [响应](#response-12)）
   - [删除组](#delete-group)（[请求](#request-13) / [响应](#response-13)）
+
+[架构发现](#schema-discovery)
+  - [发现架构](#discover-schema)（[请求](#request-15) / [响应](#response-15)）
 
 ### <a name="user-operations"></a>用户操作
 
@@ -750,6 +759,105 @@ DELETE /Groups/cdb1ce18f65944079d37 HTTP/1.1
 
 HTTP/1.1 204 无内容
 
+### <a name="schema-discovery"></a>架构发现
+#### <a name="discover-schema"></a>发现架构
+
+##### <a name="request"></a><a name="request-15"></a>请求
+*获取架构* 
+##### <a name="response"></a><a name="response-15"></a>响应
+HTTP/1.1 200 OK
+```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:ListResponse"
+    ],
+    "itemsPerPage": 50,
+    "startIndex": 1,
+    "totalResults": 3,
+    "Resources": [
+  {
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Schema"],
+    "id" : "urn:ietf:params:scim:schemas:core:2.0:User",
+    "name" : "User",
+    "description" : "User Account",
+    "attributes" : [
+      {
+        "name" : "userName",
+        "type" : "string",
+        "multiValued" : false,
+        "description" : "Unique identifier for the User, typically
+used by the user to directly authenticate to the service provider.
+Each User MUST include a non-empty userName value.  This identifier
+MUST be unique across the service provider's entire set of Users.
+REQUIRED.",
+        "required" : true,
+        "caseExact" : false,
+        "mutability" : "readWrite",
+        "returned" : "default",
+        "uniqueness" : "server"
+      },                
+    ],
+    "meta" : {
+      "resourceType" : "Schema",
+      "location" :
+        "/v2/Schemas/urn:ietf:params:scim:schemas:core:2.0:User"
+    }
+  },
+  {
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Schema"],
+    "id" : "urn:ietf:params:scim:schemas:core:2.0:Group",
+    "name" : "Group",
+    "description" : "Group",
+    "attributes" : [
+      {
+        "name" : "displayName",
+        "type" : "string",
+        "multiValued" : false,
+        "description" : "A human-readable name for the Group.
+REQUIRED.",
+        "required" : false,
+        "caseExact" : false,
+        "mutability" : "readWrite",
+        "returned" : "default",
+        "uniqueness" : "none"
+      },
+    ],
+    "meta" : {
+      "resourceType" : "Schema",
+      "location" :
+        "/v2/Schemas/urn:ietf:params:scim:schemas:core:2.0:Group"
+    }
+  },
+  {
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Schema"],
+    "id" : "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+    "name" : "EnterpriseUser",
+    "description" : "Enterprise User",
+    "attributes" : [
+      {
+        "name" : "employeeNumber",
+        "type" : "string",
+        "multiValued" : false,
+        "description" : "Numeric or alphanumeric identifier assigned
+to a person, typically based on order of hire or association with an
+organization.",
+        "required" : false,
+        "caseExact" : false,
+        "mutability" : "readWrite",
+        "returned" : "default",
+        "uniqueness" : "none"
+      },
+    ],
+    "meta" : {
+      "resourceType" : "Schema",
+      "location" :
+"/v2/Schemas/urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+    }
+  }
+]
+}
+```
+
 ### <a name="security-requirements"></a>安全要求
 TLS 协议版本
 
@@ -1221,9 +1329,9 @@ Task DeleteAsync(IRequest<IResourceIdentifier> request);
 > * 3 个应用程序的未过期测试凭据（必需）
 > * 如下所述，支持 OAuth 授权代码许可或长期有效的令牌（必需）
 > * 建立工程和支持联系点，以便在上架到库后为客户提供支持（必需）
+> * [支持架构发现（必需）](https://tools.ietf.org/html/rfc7643#section-6)
 > * 支持使用单个 PATCH 更新多个组成员身份
 > * 公开记录 SCIM 终结点
-> * [支持架构发现](https://tools.ietf.org/html/rfc7643#section-6)
 
 ### <a name="authorization-to-provisioning-connectors-in-the-application-gallery"></a>用于在应用程序库中预配连接器的授权
 SCIM 规范未定义用于身份验证和授权的特定于 SCIM 的方案，并依赖于现有行业标准。

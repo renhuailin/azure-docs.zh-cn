@@ -8,21 +8,21 @@ ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
 ms.openlocfilehash: 12a62bbd06cf9adf3b5978bb061e1d014599b44c
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99550736"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>响应 Azure 应用配置事件
 
 通过 Azure 应用配置事件，应用程序能够响应键值更改。 实现这一点不需要复杂的代码或成本高昂但效率低下的轮询服务， 而是可以通过 [Azure 事件网格](https://azure.microsoft.com/services/event-grid/)向订阅方（如 [Azure Functions](https://azure.microsoft.com/services/functions/)、[Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)，或者甚至是你自己的自定义 HTTP 侦听器）推送事件。 至关重要的是，你只为你使用的资源付费。
 
-Azure 应用配置事件将发送到 Azure 事件网格，该网格通过丰富的重试策略和死信传递为应用程序提供可靠的传送服务。 若要了解详细信息，请参阅[事件网格消息传递和重试](../event-grid/delivery-and-retry.md)。
+Azure 应用配置事件会发送到 Azure 事件网格，该服务通过丰富的重试策略和死信传递向应用程序提供可靠的传递服务。 若要了解详细信息，请参阅[事件网格消息传递和重试](../event-grid/delivery-and-retry.md)。
 
 常见的应用配置事件方案包括刷新应用程序配置、触发部署或任何面向配置的工作流。 基于事件的体系结构对于鲜少更改，但要求立即响应的情况尤为有效。
 
-有关快速示例，请参阅 [使用事件网格进行数据更改通知](./howto-app-configuration-event.md) 。 
+相关简单实例，请参阅[将事件网格用于数据更改通知](./howto-app-configuration-event.md)。 
 
 ![事件网格模型](./media/event-grid-functional-model.png)
 
@@ -70,7 +70,7 @@ Azure 应用配置事件包含响应数据更改所需的全部信息。 你可�
 
 ```
 
-有关详细信息，请参阅 [Azure 应用配置事件架构](../event-grid/event-schema-app-configuration.md)。
+有关详细信息，请参阅[Azure 应用配置事件架构](../event-grid/event-schema-app-configuration.md)。
 
 ## <a name="practices-for-consuming-events"></a>使用事件的做法
 处理应用配置事件的应用程序应当遵循以下建议的做法：

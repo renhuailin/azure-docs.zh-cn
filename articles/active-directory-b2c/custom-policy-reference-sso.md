@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f690f4a416e86b02de0d35fc673849c1293df577
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.openlocfilehash: 1f3fb07eaf7f63d15232f4c94eeee45f43c81616
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102095759"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075128"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的单一登录会话管理
 
@@ -30,7 +30,7 @@ Azure AD B2C 定义了大量可用的 SSO 会话提供程序：
 |---------|---------|
 |[NoopSSOSessionProvider](#noopssosessionprovider)     |  无       |       
 |[DefaultSSOSessionProvider](#defaultssosessionprovider)    | Azure AD B2C 内部会话管理器。      |       
-|[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | 在 Azure AD B2C 和 OAuth1、OAuth2 或 OpenId 连接标识提供者之间。        |         |
+|[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | 在 Azure AD B2C 和 OAuth1、OAuth2 或 OpenId 连接标识提供者之间。        | 
 |[OAuthSSOSessionProvider](#oauthssosessionprovider)     | 在 OAuth2 或 OpenId 连接依赖方应用程序和 Azure AD B2C 之间。        |        
 |[SamlSSOSessionProvider](#samlssosessionprovider)     | 在 Azure AD B2C 和 SAML 标识提供者之间。 以及在 SAML 服务提供商（信赖方应用）和 Azure AD B2C 之间。  |        
 
@@ -104,7 +104,7 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 ### <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
 
-此提供程序用于禁止“选择标识提供者”屏幕并从联合标识提供者注销。 通常在为联合标识提供者（如 Facebook 或 Azure Active Directory）配置的技术配置文件中引用它。 [自定义策略入门包](custom-policy-get-started.md#custom-policy-starter-pack)包含以下 `SM-SocialLogin` 技术配置文件。
+此提供程序用于禁止“选择标识提供者”屏幕并从联合标识提供者注销。 它通常在为联合标识提供者（如 Facebook 或 Azure Active Directory）配置的技术配置文件中引用。 [自定义策略入门包](custom-policy-get-started.md#custom-policy-starter-pack)包含以下 `SM-SocialLogin` 技术配置文件。
 
 ```xml
 <TechnicalProfile Id="SM-SocialLogin">
@@ -118,7 +118,7 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 #### <a name="metadata"></a>元数据
 
-| 属性 | 必选 | 说明|
+| 属性 | 必需 | 说明|
 | --- | --- | --- |
 | AlwaysFetchClaimsFromProvider | 否 | 当前未使用，可以忽略。 |
 
@@ -135,7 +135,7 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-此提供程序用于管理信赖方应用程序或联合 SAML 标识提供者之间的 Azure AD B2C SAML 会话。 使用 SSO 提供程序存储 SAML 标识提供者会话时，`RegisterServiceProviders` 必须设为 `false`。 `SM-Saml-idp` [SAML 标识提供者](identity-provider-generic-saml.md)使用以下技术配置文件。
+此提供程序用于管理信赖方应用程序或联合 SAML 标识提供者之间的 Azure AD B2C SAML 会话。 使用 SSO 提供程序存储 SAML 标识提供者会话时，`RegisterServiceProviders` 必须设为 `false`。 以下 `SM-Saml-idp` 技术配置文件由 [SAML 标识提供者](identity-provider-generic-saml.md)使用。
 
 ```xml
 <TechnicalProfile Id="SM-Saml-idp">
@@ -160,7 +160,7 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 #### <a name="metadata"></a>Metadata
 
-| 属性 | 必选 | 说明|
+| 属性 | 必需 | 说明|
 | --- | --- | --- |
 | IncludeSessionIndex | 否 | 当前未使用，可以忽略。|
 | RegisterServiceProviders | 否 | 指示提供程序应注册已颁发断言的所有 SAML 服务提供程序。 可能的值为 `true`（默认）或 `false`。|

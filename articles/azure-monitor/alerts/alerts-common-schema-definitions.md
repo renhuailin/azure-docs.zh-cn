@@ -4,19 +4,19 @@ description: 了解 Azure Monitor 的常见警报架构定义
 author: ofirmanor
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 02092f5a241824d2a9aef242b544f8900af7ebec
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 709ec2dee1be6930ca7c09de334aede8a76e95f4
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102045388"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491706"
 ---
 # <a name="common-alert-schema-definitions"></a>常见警报架构定义
 
 本文介绍了 Azure Monitor 的[常见警报架构定义](./alerts-common-schema.md)，包括 Webhook、Azure 逻辑应用、Azure Functions 和 Azure 自动化 Runbook 的警报架构定义。 
 
 任何警报实例都描述了受影响的资源和警报原因。 在下面各部分介绍的常见架构中对这些实例进行了描述：
-* 基本要素：所有警报类型中都有的一组标准化字段，描述了警报所针对的资源，以及其他常见警报元数据（例如，严重性或说明）。 
+* 基本要素：所有警报类型中都有的一组标准化字段，描述了警报所针对的资源，以及其他常见警报元数据（例如，严重性或说明）。 在[警报概述](alerts-overview.md#overview)中可以找到严重级别的定义。 
 * 警报上下文：一组描述了警报原因的字段，以及因警报类型而异的字段。 例如，指标警报包含警报上下文中的指标名称和指标值等字段，而活动日志警报则包含关于生成了警报的事件的信息。 
 
 **示例警报有效负载**

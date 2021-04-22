@@ -4,10 +4,10 @@ description: 本文介绍使用 Azure 事件网格订阅事件的属性。 事�
 ms.topic: reference
 ms.date: 07/07/2020
 ms.openlocfilehash: f6e33171cbba65cfeaca49ab6a8954be8bb89acb
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102199945"
 ---
 # <a name="event-grid-subscription-schema"></a>事件网格订阅架构
@@ -28,27 +28,27 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
  
 ## <a name="event-subscription-properties"></a>事件订阅属性
 
-| properties | 类型 | 描述 |
+| 属性 | 类型 | 描述 |
 | -------- | ---- | ----------- |
-| destination | 对象 | 定义终结点的对象。 |
-| filter | 对象 | 用于筛选事件类型的可选字段。 |
+| destination | object | 定义终结点的对象。 |
+| filter | object | 用于筛选事件类型的可选字段。 |
 
 ### <a name="destination-object"></a>目标对象
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | endpointType | 字符串 | 订阅（webhook/HTTP、事件中心或队列）的终结点类型。 | 
 | endpointUrl | 字符串 | 此事件订阅中的事件的目标 URL。 | 
 
 ### <a name="filter-object"></a>筛选器对象
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | includedEventTypes | array | 当事件消息中的事件类型与这些事件类型名称之一完全匹配时匹配。 当事件名称与事件源的已注册事件类型名称不匹配时，将引发错误。 默认匹配所有事件类型。 |
 | subjectBeginsWith | 字符串 | 事件消息中使用者字段的前缀匹配筛选器。 默认或空字符串匹配所有类型。 | 
 | subjectEndsWith | 字符串 | 事件消息中使用者字段的后缀匹配筛选器。 默认或空字符串匹配所有类型。 |
 | isSubjectCaseSensitive | 字符串 | 用于筛选器的区分大小写匹配的控件。 |
-| enableAdvancedFilteringOnArrays | boolean | 支持在高级筛选中对键使用数组。 有关详细信息，请参阅 [高级筛选](event-filtering.md#advanced-filtering)。 |
+| enableAdvancedFilteringOnArrays | boolean | 支持在高级筛选中对键使用数组。 有关详细信息，请参阅[“高级模式”](event-filtering.md#advanced-filtering)。 |
 
 
 ## <a name="example-subscription-schema"></a>订阅架构示例

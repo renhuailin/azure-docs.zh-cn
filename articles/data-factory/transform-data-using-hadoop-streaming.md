@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
 ms.openlocfilehash: e2a9bc9d664ba15da3cdefa5cf28519ab703d6ce
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100361428"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Hadoop 流式处理活动转换数据
@@ -66,7 +66,7 @@ ms.locfileid: "100361428"
 
 ## <a name="syntax-details"></a>语法详细信息
 
-| properties          | 说明                              | 必须 |
+| 属性          | 说明                              | 必需 |
 | ----------------- | ---------------------------------------- | -------- |
 | name              | 活动名称                     | 是      |
 | description       | 描述活动用途的文本 | 否       |
@@ -92,5 +92,5 @@ ms.locfileid: "100361428"
 * [MapReduce 活动](transform-data-using-hadoop-map-reduce.md)
 * [Spark 活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
-* [Azure 机器学习 Studio (经典) 批处理执行活动](transform-data-using-machine-learning.md)
+* [Azure 机器学习工作室（经典）批处理执行活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)

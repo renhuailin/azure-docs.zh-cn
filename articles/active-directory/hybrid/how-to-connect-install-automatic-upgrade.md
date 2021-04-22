@@ -16,15 +16,16 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c8dcc8766b21551f3cd62289805fe735ef0f333
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3ec237af8cd0c79d5a7b62aad0bc6521e5cf3d7e
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91317610"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059235"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect：自动升级
-此功能是随内部版本 [1.1.105.0（于 2016 年 2 月发布）](reference-connect-version-history.md)一起推出的。  此功能已在[内部版本 1.1.561](reference-connect-version-history.md) 中更新，现在支持以前不支持的其他方案。
+Azure AD Connect 自动升级是一项定期检查 Azure AD Connect 的更新版本的功能。 如果服务器可进行自动升级，并且发现了服务器有资格使用的更新版本，服务器会自动升级到更新版本。
+请注意，出于安全原因，执行自动升级的代理会根据所下载的版本的数字签名来验证 Azure AD Connect 的新版本。
 
 ## <a name="overview"></a>概述
 使用 **自动升级** 功能是确保 Azure AD Connect 安装始终保持最新状态的最简单方法。 系统默认启用此功能，以便进行快速安装和 DirSync 升级。 发布新版本时，安装会自动升级。
@@ -39,7 +40,7 @@ ms.locfileid: "91317610"
 
 | 状态 | 注释 |
 | --- | --- |
-| Enabled |自动升级已启用。 |
+| 已启用 |自动升级已启用。 |
 | 已挂起 |只能由系统设置。 系统 **目前没有** 资格接收自动升级。 |
 | 已禁用 |自动升级已禁用。 |
 
@@ -100,4 +101,4 @@ ms.locfileid: "91317610"
 |UpgradeNotSupportedAADHealthUploadDisabled|已从门户中禁用运行状况数据上传|
 
 ## <a name="next-steps"></a>后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

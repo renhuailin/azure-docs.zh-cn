@@ -11,10 +11,10 @@ ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 05307fe2ad9e0a59fa11c30f2dc7154ba5076603
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102174656"
 ---
 # <a name="userjourneys"></a>UserJourneys
@@ -35,7 +35,7 @@ UserJourneys 元素包含以下元素：
 
 UserJourney 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用户旅程的标识符，可用于从策略中的其他元素中引用它。 [信赖方策略](relyingparty.md)的 DefaultUserJourney 元素指向此属性。 |
 
@@ -58,7 +58,7 @@ AuthorizationTechnicalProfiles 元素包含以下元素：
 
 AuthorizationTechnicalProfile 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | TechnicalProfileReferenceId | 是 | 要执行的技术配置文件的标识符。 |
 
@@ -80,7 +80,7 @@ AuthorizationTechnicalProfile 元素包含以下属性：
 
 用户旅程表示为成功事务必须遵循的业务流程序列。 如果任何步骤失败，则事务将失败。 这些业务流程步骤引用策略文件中允许的构建基块和声明提供程序。 负责显示或呈现用户体验的任何业务流程步骤也具有对相应内容定义标识符的引用。
 
-业务流程步骤可以基于业务流程步骤元素中定义的前提条件有条件地执行。 例如，您可以仅在特定声明存在时或声明等于或不是指定值时，才检查以执行业务流程步骤。
+业务流程步骤可以基于业务流程步骤元素中定义的前提条件有条件地执行。 例如，仅当存在特定声明或声明等于或未达到指定值时，才能检查执行业务流程步骤。
 
 若要指定业务流程步骤的有序列表，请将 OrchestrationSteps 元素作为策略的一部分添加。 此元素是必需的。
 
@@ -92,7 +92,7 @@ OrchestrationSteps 元素包含以下元素：
 
 OrchestrationStep 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | `Order` | 是 | 业务流程步骤的顺序。 |
 | `Type` | 是 | 业务流程步骤的类型。 可能的值： <ul><li>ClaimsProviderSelection - 指示业务流程步骤向用户提供各种声明提供程序以选择一个。</li><li>CombinedSignInAndSignUp - 指示业务流程步骤提供组合的社交提供程序登录和本地帐户注册页面。</li><li>ClaimsExchange - 指示业务流程步骤与声明提供程序交换声明。</li><li>**GetClaims** - 指定业务流程步骤应处理通过其 `InputClaims` 配置从信赖方发送到 Azure AD B2C 的声明数据。</li><li>**InvokeSubJourney** - 指示业务流程步骤与 [子历程](subjourneys.md)（为公共预览版）交换声明。</li><li>SendClaims - 指示业务流程步骤将声明发送给具有声明颁发者颁发的令牌的信赖方。</li></ul> |
@@ -119,23 +119,23 @@ Preconditions 元素包含以下元素：
 
 #### <a name="precondition"></a>Precondition
 
-业务流程步骤可基于业务流程步骤中定义的前提条件有条件地执行。 有两种类型的前提条件：
+业务流程步骤可基于业务流程步骤中定义的前提条件有条件地执行。 有两种类型的前置条件：
  
-- **声明存在** -如果指定的声明存在于用户的当前声明包中，则指定应执行的操作。
-- **声明等于** -指定在指定的声明存在并且其值等于指定的值时应执行的操作。 该检查执行区分大小写的序号比较。 检查布尔声明类型时，请使用 `True` 或 `False` 。
+- 声明存在 - 如果指定的声明存在于用户的当前声明包中，则指定应执行的操作。
+- 声明等于 - 如果指定的声明存在并且其值等于指定的值，则指定应执行的操作。 该检查执行区分大小写的序号比较。 检查布尔声明类型时，请使用 `True` 或 `False`。
 
 Precondition 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | `Type` | 是 | 要对此前置条件执行的检查或查询的类型。 值可以是 ClaimsExist（指定在用户当前声明集中存在指定声明时应执行操作）或 ClaimEquals（指定当指定声明存在且其值等于指定值时应执行操作）。 |
-| `ExecuteActionsIf` | 是 | 使用 `true` 或 `false` 测试来确定是否应执行预处理中的操作。 |
+| `ExecuteActionsIf` | 是 | 使用 `true` 或 `false` 测试确定是否应执行前置条件中的操作。 |
 
 Precondition 元素包含以下元素：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
-| “值” | 1:2 | 声明类型的标识符。 声明已在策略文件或父策略文件的声明架构部分中定义。 当前提条件为类型时 `ClaimEquals` ，第二个 `Value` 元素包含要检查的值。 |
+| 值 | 1:2 | 声明类型的标识符。 已在策略文件或父策略文件的声明架构节中定义声明。 当前置条件为 `ClaimEquals` 类型时，第二个 `Value` 元素包含要检查的值。 |
 | 操作 | 1:1 | 在业务流程步骤中的前置条件检查为 true 时应执行的操作。 如果 `Action` 的值设置为 `SkipThisOrchestrationStep`，则不应执行相关联的 `OrchestrationStep`。 |
 
 #### <a name="preconditions-examples"></a>Preconditions 示例
@@ -196,10 +196,10 @@ Preconditions 可以检查多个前置条件。 以下示例检查是否存在�
 
 ## <a name="claims-provider-selection"></a>声明提供程序选择
 
-标识提供者选择允许用户从选项列表中选择操作。 标识提供者选择包含两个业务流程步骤对： 
+通过声明提供程序选择，用户可以从选项列表中选择操作。 标识提供者选择包含一对两个业务流程步骤： 
 
-1. **按钮** -从的类型开始 `ClaimsProviderSelection` ，或 `CombinedSignInAndSignUp` 包含用户可以从中选择的选项列表。 元素内选项的顺序 `ClaimsProviderSelections` 控制向用户显示的按钮的顺序。
-2. **操作** -后跟类型 `ClaimsExchange` 。 ClaimsExchange 包含操作列表。 操作是对技术配置文件的引用，如 [OAuth2](oauth2-technical-profile.md)、 [OpenID connect](openid-connect-technical-profile.md)、 [声明转换](claims-transformation-technical-profile.md)或 [自断言](self-asserted-technical-profile.md)。 当用户单击其中一个按钮时，会执行相应的操作。
+1. 按钮 - 它从 `ClaimsProviderSelection` 或 `CombinedSignInAndSignUp` 类型开始，其中包含用户可从中选择的选项列表。 `ClaimsProviderSelections` 元素内的选项顺序控制向用户呈现的按钮顺序。
+2. 操作 - 后跟 `ClaimsExchange` 类型。 ClaimsExchange 包含操作列表。 操作是对技术配置文件的引用，如 [OAuth2](oauth2-technical-profile.md)、[OpenID Connect](openid-connect-technical-profile.md)、[声明转换](claims-transformation-technical-profile.md)或[自断言](self-asserted-technical-profile.md)。 当用户单击其中一个按钮时，会执行相应的操作。
 
 **ClaimsProviderSelections** 元素包含以下元素：
 
@@ -209,20 +209,20 @@ Preconditions 可以检查多个前置条件。 以下示例检查是否存在�
 
 **ClaimsProviderSelections** 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | DisplayOption| 否 | 控制单个声明提供程序选择可用时的行为。 可能的值：`DoNotShowSingleProvider`（默认值），用户将立即被重定向到联合标识提供者。 或 `ShowSingleProvider`，Azure AD B2C 会显示选择了单个标识提供者的登录页。 若要使用此属性，[内容定义版本](page-layout.md)必须为 `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` 及更高版本。|
 
 ClaimsProviderSelection 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | TargetClaimsExchangeId | 否 | 声明交换的标识符，在声明提供程序选择的下一个业务流程步骤中执行。 必须指定此属性或 ValidationClaimsExchangeId 属性，但不能同时指定这两个属性。 |
 | ValidationClaimsExchangeId | 否 | 声明交换的标识符，在当前业务流程步骤中执行以验证声明提供程序选择。 必须指定此属性或 TargetClaimsExchangeId 属性，但不能同时指定这两个属性。 |
 
 ### <a name="claims-provider-selection-example"></a>声明提供程序选择示例
 
-在下面的业务流程步骤中，用户可以选择使用 Facebook、LinkedIn、Twitter、Google 或本地帐户进行登录。 如果用户选择其中一个社交标识提供者，则第二个业务流程步骤将使用 `TargetClaimsExchangeId` 属性中指定的所选声明交换执行。 第二个业务流程步骤将用户重定向到社交标识提供者以完成登录过程。 如果用户选择使用本地帐户登录，Azure AD B2C 将保持相同的业务流程步骤（相同的注册页面或登录页面），并跳过第二个业务流程步骤。
+在以下业务流程步骤中，用户可以选择使用 Facebook、LinkedIn、Twitter、Google 或本地帐户登录。 如果用户选择其中一个社交标识提供者，则第二个业务流程步骤将使用 `TargetClaimsExchangeId` 属性中指定的所选声明交换执行。 第二个业务流程步骤将用户重定向到社交标识提供者以完成登录过程。 如果用户选择使用本地帐户登录，Azure AD B2C 将保持相同的业务流程步骤（相同的注册页面或登录页面），并跳过第二个业务流程步骤。
 
 ```xml
 <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
@@ -267,7 +267,7 @@ ClaimsExchanges 元素包含以下元素：
 
 ClaimsExchange 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 声明交换步骤的标识符。 该标识符用于从策略中的声明提供程序选择步骤引用声明交换。 |
 | TechnicalProfileReferenceId | 是 | 要执行的技术配置文件的标识符。 |
@@ -284,6 +284,6 @@ JourneyList 元素包含以下元素：
 
 Candidate 元素包含以下属性：
 
-| Attribute | 必须 | 描述 |
+| Attribute | 必需 | 描述 |
 | --------- | -------- | ----------- |
 | SubJourneyReferenceId | 是 | 要执行的[子历程](subjourneys.md)的标识符。 |

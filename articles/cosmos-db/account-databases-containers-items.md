@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 4ed881b74f240946d98d9868344c898d3e9a9dad
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99627291"
 ---
 # <a name="azure-cosmos-db-resource-model"></a>Azure Cosmos DB 资源模型
@@ -19,13 +19,13 @@ ms.locfileid: "99627291"
 
 Azure Cosmos DB 是完全托管的平台即服务 (PaaS)。 若要开始使用 Azure Cosmos DB，首先应在 Azure 订阅中创建一个 Azure Cosmos 帐户，然后在帐户下创建数据库、容器和项。 本文介绍 Azure Cosmos DB 资源模型以及资源模型层次结构中的不同实体。
 
-Azure Cosmos 帐户是全局分配和高可用性的基本单元。 你的 Azure Cosmos 帐户包含唯一的 DNS 名称，你可以通过使用 Azure 门户或 Azure CLI 或使用特定于语言的 Sdk 来管理帐户。 有关详细信息，请参阅[如何管理 Azure Cosmos 帐户](how-to-manage-database-account.md)。 若要跨多个 Azure 区域全局分发数据和吞吐量，你可以随时在帐户中添加和删除 Azure 区域。 可将帐户配置为使用单区域或多个写入区域。 有关详细信息，请参阅[如何在帐户中添加和删除 Azure 区域](how-to-manage-database-account.md)。 可在帐户中配置[默认一致性](consistency-levels.md)级别。
+Azure Cosmos 帐户是全局分配和高可用性的基本单元。 Azure Cosmos 帐户包含唯一的 DNS 名称，可以使用 Azure 门户、Azure CLI 或不同的特定于语言的 SDK 来管理帐户。 有关详细信息，请参阅[如何管理 Azure Cosmos 帐户](how-to-manage-database-account.md)。 要在多个 Azure 区域之间全局分配数据和吞吐量，可随时在帐户中添加和删除 Azure 区域。 可将帐户配置为使用单区域或多个写入区域。 有关详细信息，请参阅[如何在帐户中添加和删除 Azure 区域](how-to-manage-database-account.md)。 可在帐户中配置[默认一致性](consistency-levels.md)级别。
 
 ## <a name="elements-in-an-azure-cosmos-account"></a>Azure Cosmos 帐户中的元素
 
-Azure Cosmos 容器是可伸缩性的基本单位。 容器可以提供几乎无限的预配吞吐量 (RU/s) 和存储。 Azure Cosmos DB 使用指定的逻辑分区键以透明方式将容器分区，以弹性缩放预配吞吐量和存储。
+Azure Cosmos 容器是基本的缩放单元。 容器可以提供几乎无限的预配吞吐量 (RU/s) 和存储。 Azure Cosmos DB 使用指定的逻辑分区键以透明方式将容器分区，以弹性缩放预配吞吐量和存储。
 
-目前，最多可在一个 Azure 订阅下创建 50 个 Azure Cosmos 帐户（这是一项软限制，可通过支持请求上调）。 单个 Azure Cosmos 帐户几乎可以管理不限数量的数据和预配的吞吐量。 若要管理数据和预配吞吐量，可以在帐户下创建一个或多个 Azure Cosmos 数据库，而在该数据库中，可以创建一个或多个容器。 下图显示了 Azure Cosmos 帐户中的元素层次结构：
+目前，最多可在一个 Azure 订阅下创建 50 个 Azure Cosmos 帐户（这是一项软限制，可通过支持请求上调）。 单个 Azure Cosmos 帐户几乎可以管理无限量的数据和预配吞吐量。 若要管理数据和预配吞吐量，可以在帐户下创建一个或多个 Azure Cosmos 数据库，而在该数据库中，可以创建一个或多个容器。 下图显示了 Azure Cosmos 帐户中的元素层次结构：
 
 :::image type="content" source="./media/account-databases-containers-items/hierarchy.png" alt-text="Azure Cosmos 帐户的层次结构" border="false":::
 
@@ -65,7 +65,7 @@ Azure Cosmos 容器是预配的吞吐量和存储的缩放单元。 容器会进
 
 * **专用预配吞吐量模式**：针对容器预配的吞吐量是专门为该容器保留的，由 SLA 提供支持。 有关详细信息，请参阅[如何对容器预配吞吐量](how-to-provision-container-throughput.md)。
 
-* **共享预配吞吐量模式**：这些容器与同一数据库中的其他容器共享预配吞吐量（不包含已配置专用预配吞吐量的容器）。 换句话说，在所有 "共享吞吐量" 容器之间共享数据库的预配吞吐量。 有关详细信息，请参阅[如何对数据库预配吞吐量](how-to-provision-database-throughput.md)。
+* **共享预配吞吐量模式**：这些容器与同一数据库中的其他容器共享预配吞吐量（不包含已配置专用预配吞吐量的容器）。 换而言之，针对该数据库预配的吞吐量是在所有“共享吞吐量”容器之间共享的。 有关详细信息，请参阅[如何对数据库预配吞吐量](how-to-provision-database-throughput.md)。
 
 > [!NOTE]
 > 只有在创建数据库和容器时，才能配置共享吞吐量和专用吞吐量。 若要在创建容器后从专用吞吐量模式切换为共享吞吐量模式（或反之），必须创建一个新容器，并将数据迁移到该容器。 可以使用 Azure Cosmos DB 更改源功能迁移数据。

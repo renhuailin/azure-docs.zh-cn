@@ -14,21 +14,21 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/02/2021
 ms.author: timlt
-ms.openlocfilehash: 93278a2c8e83541f49ca76542de1c352fbc02239
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
-ms.translationtype: MT
+ms.openlocfilehash: e8fb6985da5046d0a1bad171cbc9742a15baf1af
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524238"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643432"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 系列：混合云存储解决方案
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>概述
-欢迎使用 Microsoft Azure StorSimple，它是集成的存储解决方案，用于管理本地设备与 Microsoft Azure 云存储之间的存储任务。 StorSimple 是一种高效、经济高效且易于管理的存储区域网络 (SAN) 解决方案，可以消除与企业存储和数据保护关联的许多问题和费用。 它使用专有的 StorSimple 8000 系列设备，与云服务集成，并提供一套管理工具用于无缝查看包括云存储在内的所有企业存储。 （Microsoft Azure 网站上发布的 StorSimple 部署信息仅适用于 StorSimple 8000 系列设备。 如果使用的是 StorSimple 5000/7000 系列设备，请转到 [StorSimple 帮助](http://onlinehelp.storsimple.com/)。）
+欢迎使用 Microsoft Azure StorSimple，它是集成的存储解决方案，用于管理本地设备与 Microsoft Azure 云存储之间的存储任务。 StorSimple 是一种经济高效、易于管理的存储区域网络 (SAN) 解决方案，可以消除与企业存储和数据保护相关的很多问题和开支。 它使用专有的 StorSimple 8000 系列设备，与云服务集成，并提供一套管理工具用于无缝查看包括云存储在内的所有企业存储。 （Microsoft Azure 网站上发布的 StorSimple 部署信息仅适用于 StorSimple 8000 系列设备。 如果使用的是 StorSimple 5000/7000 系列设备，请转到 [StorSimple 帮助](http://onlinehelp.storsimple.com/)。）
 
-StorSimple 使用[存储分层](#automatic-storage-tiering)管理各种存储介质中存储的数据。 当前工作集存储在固态驱动器上的本地 (Ssd) 。 使用不太频繁的数据存储在硬盘驱动器 (Hdd) 上，并将存档数据推送到云中。 此外，StorSimple 使用删除重复和压缩来减少数据占用的存储量。 有关详细信息，请转到[删除重复和压缩](#deduplication-and-compression)。 有关 StorSimple 8000 系列文档中使用的其他关键术语和概念的定义，请参阅本文末尾的 [StorSimple 术语](#storsimple-terminology) 。
+StorSimple 使用[存储分层](#automatic-storage-tiering)管理各种存储介质中存储的数据。 当前工作集本地存储在固态硬盘 (SSD) 上。 不经常使用的数据存储在硬盘驱动器 (HDD) 上，存档数据将推送到云。 此外，StorSimple 使用删除重复和压缩来减少数据占用的存储量。 有关详细信息，请转到[删除重复和压缩](#deduplication-and-compression)。 有关其他关键术语和 StorSimple 8000 系列文档中所使用概念的定义，请转到本文末尾的 [StorSimple 术语](#storsimple-terminology)。
 
 除存储管理外，通过 StorSimple 数据保护功能，也可以创建按需备份和计划备份，并将它们存储在本地或云中。 以增量快照形式进行备份意味着可快速创建和还原这些备份。 在灾难恢复方案中，云快照可能非常重要，因为它们替换辅助存储系统（如磁带备份），并且允许将数据还原到数据中心或其他站点上（如有必要）。
 
@@ -41,15 +41,15 @@ StorSimple 使用[存储分层](#automatic-storage-tiering)管理各种存储介
 
 | 功能 | 好处 |
 | --- | --- |
-| 透明集成 |使用 iSCSI 协议以不可见的方式链接数据存储设施。 存储在云中、数据中心或远程服务器上的数据将存储在单个位置。 |
+| 透明集成 |使用 iSCSI 协议以不可见的方式链接数据存储设施。 存储在云中、数据中心或远程服务器上的数据看起来好像存储在一个位置。 |
 | 降低存储成本 |分配足够的本地存储或云存储以满足当前需求，仅在必要时才扩展云存储。 它可以通过消除相同数据的冗余版本（删除重复）和使用压缩，进一步降低存储需求和开支。 |
 | 简化存储管理 |提供了系统管理工具，用于配置和管理存储在本地、远程服务器或云中的数据。 此外，还可以从 Microsoft 管理控制台 (MMC) 管理单元管理备份和还原功能。|
-| 改进灾难恢复和合规性 |不需要过长的恢复时间。 相反，它会在需要时还原数据，以使正常操作能够以最小的中断持续进行。 此外，可以配置策略以指定备份计划和数据保留期。 |
+| 改进灾难恢复和合规性 |不需要过长的恢复时间。 相反，它会在需要时还原数据，以使正常操作可以继续进行，并最大程度地减少中断时间。 此外，可以配置策略以指定备份计划和数据保留期。 |
 | 数据移动性 |上传到 Microsoft Azure 云服务的数据可从其他站点访问，以便进行恢复和迁移。 此外，可以使用 StorSimple 来配置在 Microsoft Azure 中运行的虚拟机 (VM) 上的 StorSimple 云设备。 然后，VM 可使用虚拟设备来访问存储的数据，以便进行测试或恢复。 |
 | 业务连续性 |允许 StorSimple 5000-7000 系列用户将他们的数据迁移到 StorSimple 8000 系列设备。 |
 | 在 Azure 政府门户中的可用性 |可在 Azure 政府门户中使用 StorSimple。 有关详细信息，请参阅[在政府门户中部署本地 StorSimple 设备](storsimple-8000-deployment-walkthrough-gov-u2.md)。 |
-| 数据保护和可用性 |除了本地冗余存储 (LRS) 和异地冗余存储 (GRS)，StorSimple 8000 系列还支持区域冗余存储 (ZRS)。 有关 ZRS 的详细信息，请参阅有关 [Azure 存储冗余选项的文章](../storage/common/storage-redundancy.md) 。 |
-| 对关键应用程序的支持 |StorSimple 允许你将适当的卷标识为本地固定的卷，以确保关键应用程序所需的数据不会分层到云中。 本地固定卷不受云延迟或连接问题影响。 有关本地固定卷的详细信息，请参阅[使用 StorSimple 设备管理器服务管理卷](storsimple-8000-manage-volumes-u2.md)。 |
+| 数据保护和可用性 |除了本地冗余存储 (LRS) 和异地冗余存储 (GRS)，StorSimple 8000 系列还支持区域冗余存储 (ZRS)。 请参阅[这篇有关 Azure 存储冗余选项的文章](../storage/common/storage-redundancy.md)，了解 ZRS 的详细信息。 |
+| 对关键应用程序的支持 |使用 StorSimple 可将相应的卷标识为本地固定卷，从而确保不会将关键应用程序所需的数据分层到云中。 本地固定卷不受云延迟或连接问题影响。 有关本地固定卷的详细信息，请参阅[使用 StorSimple 设备管理器服务管理卷](storsimple-8000-manage-volumes-u2.md)。 |
 | 低延迟和高性能 |可以创建充分利用 Azure 高级存储的高性能和低延迟的云设备。 有关 StorSimple 高级云设备的详细信息，请参阅[在 Azure 中部署和管理 StorSimple 云设备](storsimple-8000-cloud-appliance-u2.md)。 |
 
 
@@ -57,10 +57,10 @@ StorSimple 使用[存储分层](#automatic-storage-tiering)管理各种存储介
 Microsoft Azure StorSimple 解决方案包括以下组件：
 
 * **Microsoft Azure StorSimple 设备** – 是一个本地混合存储阵列，包含 SSD 和 HDD，还具有冗余控制器和自动故障转移功能。 控制器管理存储分层，将当前使用的数据（也就是热数据）放置在本地存储中（在设备或本地服务器上），同时将使用频率较低的数据移动到云。
-* **Storsimple 云设备** （也称为 Storsimple 虚拟设备）。 StorSimple 设备的软件版本，它复制物理混合存储设备的体系结构和大部分功能。 StorSimple 云设备在 Azure 虚拟机中的单个节点上运行。 Update 2 及更高版本中提供了高级虚拟设备，可充分利用 Azure 高级存储性能。
+* StorSimple 云设备 - 也称为 StorSimple 虚拟设备。 StorSimple 设备的软件版本，可复制物理混合存储设备的体系结构和大部分功能。 StorSimple 云设备在 Azure 虚拟机中的单个节点上运行。 Update 2 及更高版本中提供了高级虚拟设备，可充分利用 Azure 高级存储性能。
 * **StorSimple 设备管理器服务** – Azure 门户的扩展，可用于从单个 Web 界面管理 StorSimple 设备或 StorSimple 云设备。 可以使用 StorSimple 设备管理器服务来创建和管理服务、查看和管理设备、查看警报、管理卷以及查看和管理备份策略和备份目录。
-* **Windows PowerShell for StorSimple** – 一个命令行接口，可用于管理 StorSimple 设备。 Windows PowerShell for StorSimple 具有多种功能，让你能够注册 StorSimple 设备、配置设备上的网络接口、安装特定类型的更新、通过访问支持会话为设备排除故障，以及更改设备状态。 可以通过连接到串行控制台或使用 Windows PowerShell 远程处理来访问用于 StorSimple 的 Windows PowerShell。
-* **Azure PowerShell StorSimple cmdlet** - Windows PowerShell cmdlet 的一个集合，使你能够自动从命令行执行服务级别和迁移任务。 有关适用于 StorSimple 的 Azure Powershell cmdlet 的详细信息，请转到 [cmdlet 参考](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0&preserve-view=true#azure)。
+* **Windows PowerShell for StorSimple** – 一个命令行接口，可用于管理 StorSimple 设备。 Windows PowerShell for StorSimple 具有多种功能，让你能够注册 StorSimple 设备、配置设备上的网络接口、安装特定类型的更新、通过访问支持会话为设备排除故障，以及更改设备状态。 可以通过连接到串行控制台或通过使用 Windows PowerShell 远程处理来访问用于 StorSimple 的 Windows PowerShell。
+* **Azure PowerShell StorSimple cmdlet** - Windows PowerShell cmdlet 的一个集合，使你能够自动从命令行执行服务级别和迁移任务。 有关适用于 StorSimple 的 Azure Powershell cmdlet 的详细信息，请转到 [cmdlet 参考](/powershell/module/servicemanagement/azure.service/#azure)。
 * **StorSimple Snapshot Manager** – 一个 MMC 管理单元，它使用卷组和 Windows 卷影复制服务来生成应用程序一致性备份。 此外，还可以使用 StorSimple 快照管理器来创建备份计划，并克隆或还原卷。
 * **StorSimple Adapter for SharePoint** – 一种工具，可将 Microsoft Azure StorSimple 存储和数据保护透明地扩展到 SharePoint 服务器场，同时让用户能够从 SharePoint 中心管理门户查看和管理 StorSimple 存储。
 
@@ -68,12 +68,12 @@ Microsoft Azure StorSimple 解决方案包括以下组件：
 
 ![StorSimple 体系结构](./media/storsimple-overview/overview-big-picture.png)
 
-以下各节更详细地介绍了其中的每个组件，并解释该解决方案如何排列数据、分配存储并促进存储管理和数据保护。 最后一部分提供了一些与 StorSimple 组件和管理相关的重要术语和概念的定义。
+以下各节更详细地介绍了其中的每个组件，并解释该解决方案如何排列数据、分配存储并促进存储管理和数据保护。 最后一节提供了一些重要术语的定义和与 StorSimple 组件及其管理相关的概念。
 
 ## <a name="storsimple-device"></a>StorSimple 设备
 Microsoft Azure StorSimple 设备是提供主存储和其上所存储数据的 iSCSI 访问权限的本地混合存储阵列。 它管理与云存储的通信，并有助于确保 Microsoft Azure StorSimple 解决方案中存储的所有数据的安全性和机密性。
 
-StorSimple 设备包括 Ssd 和硬盘驱动器 (Hdd) ，以及支持群集和自动故障转移。 它包含一个共享处理器、一个共享存储和两个镜像控制器。 每个控制器都提供以下内容：
+StorSimple 设备包括 SSD 和硬盘驱动器 (HDD)，并且支持群集和自动故障转移。 它包含一个共享处理器、一个共享存储和两个镜像控制器。 每个控制器都提供以下内容：
 
 * 与主机计算机的连接
 * 最多六个用于连接到局域网 (LAN) 的网络端口
@@ -95,7 +95,7 @@ StorSimple 设备包括 Ssd 和硬盘驱动器 (Hdd) ，以及支持群集和自
 * 可在云中创建无数云设备，并根据需要将其打开和关闭。
 * 它可以帮助模拟灾难恢复、开发和测试情形下的本地环境，并可帮助从备份中进行项目级检索。
 
-StorSimple 云设备提供两种型号：8010 设备（以前称为 1100 型）和 8020 设备。 8010 设备的最大容量为 30 TB。 充分利用 Azure 高级存储的 8020 设备的最大容量为 64 TB。  (在本地层中，Azure 高级存储将数据存储在 Ssd 上，而标准存储将数据存储在 Hdd 上。 ) 必须具有 Azure 高级存储帐户才能使用高级存储。
+StorSimple 云设备提供两种型号：8010 设备（以前称为 1100 型）和 8020 设备。 8010 设备的最大容量为 30 TB。 充分利用 Azure 高级存储的 8020 设备的最大容量为 64 TB。 （在本地层中，Azure 高级存储将数据存储在 SSD 上，而标准存储将数据存储在 HDD 上。）必须具有 Azure 高级存储帐户才能使用高级存储。
 
 有关 StorSimple 云设备的详细信息，请转到[在 Azure 中部署和管理 StorSimple 云设备](storsimple-8000-cloud-appliance-u2.md)。
 
@@ -111,7 +111,7 @@ Microsoft Azure StorSimple 提供一个基于 Web 的用户界面（StorSimple �
 * 监视性能。
 * 查看系统设置并确定可能的问题。
 
-你可以使用 StorSimple Device Manager 服务执行除需要系统停机的任务之外的所有管理任务，如初始安装和安装更新。
+可以使用 StorSimple 设备管理器服务执行需要系统停机（例如，更新的初始设置和安装）之外的所有管理任务。
 
 有关详细信息，请转到[使用 StorSimple Device Manager 服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
 
@@ -124,12 +124,12 @@ Windows PowerShell for StorSimple 提供一个命令行界面，可以使用该�
 * 通过访问支持会话，对设备进行故障排除。
 * 更改设备状态。
 
-可以从串行控制台（位于与设备直接相连的主机计算机上）访问 Windows PowerShell for StorSimple，也可以通过使用 Windows PowerShell 远程处理来远程访问它。 某些用于 StorSimple 的 Windows PowerShell 任务（例如，初始设备注册）只能在串行控制台上完成。
+可以从串行控制台（位于与设备直接相连的主机计算机上）访问 Windows PowerShell for StorSimple，也可以通过使用 Windows PowerShell 远程处理来远程访问它。 某些用于 StorSimple 的 Windows PowerShell 任务（如初始设备注册）只能在串行控制台上完成。
 
 有关详细信息，请转到[使用 Windows PowerShell for StorSimple 管理设备](storsimple-8000-windows-powershell-administration.md)。
 
 ## <a name="azure-powershell-storsimple-cmdlets"></a>Azure PowerShell StorSimple cmdlet
-Azure PowerShell StorSimple cmdlet 是 Windows PowerShell cmdlet 的一个集合，使你能够自动从命令行执行服务级别和迁移任务。 有关适用于 StorSimple 的 Azure Powershell cmdlet 的详细信息，请转到 [cmdlet 参考](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0&preserve-view=true)。
+Azure PowerShell StorSimple cmdlet 是 Windows PowerShell cmdlet 的一个集合，使你能够自动从命令行执行服务级别和迁移任务。 有关适用于 StorSimple 的 Azure Powershell cmdlet 的详细信息，请转到 [cmdlet 参考](/powershell/module/servicemanagement/azure.service/)。
 
 ## <a name="storsimple-snapshot-manager"></a>StorSimple 快照管理器
 StorSimple 快照管理器是 Microsoft 管理控制台 (MMC) 管理单元，可用于创建本地数据和云数据的一致时间点备份副本。 该管理单元在基于 Windows Server 的主机上运行。 可以使用 StorSimple 快照管理器执行以下操作：
@@ -139,7 +139,7 @@ StorSimple 快照管理器是 Microsoft 管理控制台 (MMC) 管理单元，可
 * 管理备份策略，以便按预先确定的计划备份数据并将其存储在指定位置（本地或云中）。
 * 还原卷和单个文件。
 
-将备份捕获为快照，快照仅记录自上一快照创建以来的更改，而且需要的存储空间远远少于完全备份。 可以根据需要创建备份计划或进行即时备份。 此外，还可以使用 StorSimple 快照管理器建立控制将保存多个少快照的保留策略。 如果你以后需要从备份还原数据，StorSimple Snapshot Manager 允许你从本地或云快照目录中进行选择。 
+将备份捕获为快照，快照仅记录自上一快照创建以来的更改，而且需要的存储空间远远少于完全备份。 可以根据需要创建备份计划或进行即时备份。 此外，还可以使用 StorSimple 快照管理器建立控制将保存多个少快照的保留策略。 如果以后需要从备份还原数据，StorSimple Snapshot Manager 会让你从本地或云快照目录中进行选择。 
 
 如果发生灾难或因其他原因需要还原数据，StorSimple 快照管理器可在需要时以增量方式还原数据。 数据还原不要求在还原文件、更换设备或将操作移动到另一站点时关闭整个系统。
 
@@ -148,7 +148,7 @@ StorSimple 快照管理器是 Microsoft 管理控制台 (MMC) 管理单元，可
 ## <a name="storsimple-adapter-for-sharepoint"></a>StorSimple Adapter for SharePoint
 Microsoft Azure StorSimple 包括 StorSimple Adapter for SharePoint，后者是一个可选组件，用于将 StorSimple 存储和数据保护功能透明扩展到 SharePoint 服务器场。 该适配器与远程 Blob 存储 (RBS) 提供程序和 SQL Server RBS 功能兼容，允许将 BLOB 转移到 Microsoft Azure StorSimple 系统所支持的服务器。 然后，Microsoft Azure StorSimple 会根据使用情况将 BLOB 数据存储在本地或云中。
 
-StorSimple Adapter for SharePoint 在 SharePoint 管理中心门户内进行管理。 因此，SharePoint 管理保持集中，并且所有存储都显示在 SharePoint 场中。
+StorSimple Adapter for SharePoint 在 SharePoint 管理中心门户内进行管理。 因此，SharePoint 管理保持集中方式，而且所有存储看起来都位于 SharePoint 场中。
 
 有关详细信息，请转到 [StorSimple Adapter for SharePoint](storsimple-adapter-for-sharepoint.md)。 
 
@@ -156,7 +156,7 @@ StorSimple Adapter for SharePoint 在 SharePoint 管理中心门户内进行管�
 除了专用 StorSimple 设备、虚拟设备和其他组件外，Microsoft Azure StorSimple 还使用以下软件技术提供快速数据访问和减少存储消耗：
 
 * [自动存储分层](#automatic-storage-tiering) 
-* [精简预配](#thin-provisioning) 
+* [精简设置](#thin-provisioning) 
 * [删除重复和压缩](#deduplication-and-compression) 
 
 ### <a name="automatic-storage-tiering"></a>自动存储分层
@@ -183,13 +183,13 @@ StorSimple 会随着使用模式的变化调整和重新排列数据及存储分
 7. 文件服务器请求存储在云中的数据时，StorSimple 将其无缝地返回，并将副本存储在 StorSimple 设备的 SSD 层。
 
 > [!IMPORTANT]
-> 使用 StorSimple 时，请不要将 blob 转换为存档，即使你的设备正在被淘汰。若要从设备中检索数据，需将 blob 从存档解除冻结为热或冷类型，这会产生巨大的成本。
+> 使用 StorSimple 时，请不要将 blob 转换为存档，即使你的设备趋于淘汰。若要从设备中检索数据，需将 blob 从存档型中解冻并转换为热或冷类型，这会产生巨大的成本。
 
 #### <a name="how-storsimple-manages-cloud-data"></a>StorSimple 如何管理云数据
 
 StorSimple 对所有快照中的客户数据和主数据（主机写入的数据）进行删除重复操作。 虽然删除重复数据非常有利于存储效率，但它使得“什么在云中”的问题复杂化。 分层主数据和快照数据相互重叠。 云中的单个数据块可用作分层主数据，并且也可以由多个快照引用。 每个云快照可确保在删除该快照之前，所有时间点数据的副本已锁定到云中。
 
-仅当对该数据没有任何引用时，才将该数据从云中删除。 例如，如果我们使用 StorSimple 设备中的所有数据的云快照，并删除了一些主要数据，我们会立即看到 _主数据_ 。 _云数据_（包括分层数据和备份）保持不变，因为快照仍在引用云数据。 删除云快照（及引用相同数据的任何其他快照）后，云消耗将下降。 在删除云数据之前，应检查是否没有快照仍引用该数据。 此进程称为 _垃圾回收_，是设备上运行的后台服务。 删除云数据并非立即执行，因为垃圾回收服务在删除数据前会检查是否存在对该数据的其他引用。 垃圾回收的速度取决于快照总数和总数据量。 通常情况下，云数据在不到一周的时间内已清除。
+仅当对该数据没有任何引用时，才将该数据从云中删除。 例如，如果为 StorSimple 设备中的所有数据创建了云快照，并删除一些主数据，将会看到主数据已立即删除。 云数据（包括分层数据和备份）保持不变，因为快照仍在引用云数据。 删除云快照（及引用相同数据的任何其他快照）后，云消耗将下降。 在删除云数据之前，应检查是否没有快照仍引用该数据。 此进程称为 _垃圾回收_，是设备上运行的后台服务。 删除云数据并非立即执行，因为垃圾回收服务在删除数据前会检查是否存在对该数据的其他引用。 垃圾回收的速度取决于快照总数和总数据量。 通常情况下，云数据在不到一周的时间内已清除。
 
 
 ### <a name="thin-provisioning"></a>精简设置
@@ -211,7 +211,7 @@ Microsoft Azure StorSimple 使用删除重复和数据压缩功能进一步减�
 ## <a name="storsimple-workload-summary"></a>StorSimple 工作负荷摘要
 下表列出了受支持的 StorSimple 工作负荷摘要。
 
-| 方案 | 工作负载 | 支持 | 限制 | 版本 |
+| 场景 | 工作负荷 | 支持 | 限制 | 版本 |
 | --- | --- | --- | --- | --- |
 | 协作 |文件共享 |是 | |所有版本 |
 | 协作 |分布式文件共享 |是 | |所有版本 |
@@ -238,7 +238,7 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 
 下面是 StorSimple 支持的基础结构组件列表。
 
-| 方案 | 工作负载 | 支持 | 限制 | 版本 |
+| 场景 | 工作负荷 | 支持 | 限制 | 版本 |
 | --- | --- | --- | --- | --- |
 | 常规 |Express Route |是 | |所有版本 |
 | 常规 |DataCore FC |是* |受 DataCore SANsymphony 支持 |所有版本 |
@@ -248,14 +248,14 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 
 是&#42; - 应该应用解决方案的指导原则和限制。
 
-下面列出了与 StorSimple 一起用于生成解决方案的其他软件。
+下面是可以配合 StorSimple 用来构建解决方案的其他软件的列表。
 
 | 工作负荷类型 | 与 StorSimple 配合使用的软件 | 支持的版本|链接到解决方案指南| 
 | --- | --- | --- | --- |
 | 备份目标 |Veeam |Veeam v9 和更高版本 |[用作备份目标的 StorSimple 与 Veaam 的集成](storsimple-configure-backup-target-veeam.md)|
 | 备份目标 |Veritas Backup Exec |Backup Exec 16 和更高版本 |[用作备份目标的 StorSimple 与 Backup Exec 的集成](storsimple-configure-backup-target-using-backup-exec.md)|
 | 备份目标 |Veritas NetBackup |NetBackup 7.7.x 和更高版本  |[用作备份目标的 StorSimple 与 NetBackup 的集成](storsimple-configure-backuptarget-netbackup.md)|
-| 全局文件共享 <br></br> 协作 |Talon  |[StorSimple 与 Talon 的集成](https://www.talonstorage.com/products/archive/fast-deployment-azure-storsimple) | |
+| 全局文件共享 <br></br> 协作 |Talon  |[StorSimple 与 Talon 的集成](https://www.theinfostride.com/talon-and-microsoft-to-host-azure-storsimple-web-conference-with-capita/) | |
 
 ## <a name="storsimple-terminology"></a>StorSimple 术语
 部署 Microsoft Azure StorSimple 解决方案之前，我们建议查看以下术语和定义。
@@ -271,7 +271,7 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 | 备份目录文件 |一个包含可用快照列表的文件，此快照当前存储在 StorSimple Snapshot Manager 的备份数据库中。 |
 | 备份策略 |卷、备份类型和时间表的选择方案，通过此选择，可以按预定义计划创建备份。 |
 | 二进制大型对象 (BLOB) |二进制数据的集合，这些数据作为单个实体存储在数据库管理系统中。 BLOB 通常是图像、音频或其他多媒体对象，但有时会二进制可执行代码存储为 BLOB。 |
-| 质询握手身份验证协议 (CHAP) |一种协议，用于根据共享密码或密钥的对等，对连接的对等进行身份验证。 CHAP 可为单向或相互。 在单向 CHAP 中，目标对发起程序进行身份验证。 相互 CHAP 要求目标对发起方进行身份验证，并且发起方对目标进行身份验证。 |
+| 质询握手身份验证协议 (CHAP) |一种协议，用于根据共享密码或密钥的对等，对连接的对等进行身份验证。 CHAP 可为单向或相互。 在单向 CHAP 中，目标对发起程序进行身份验证。 相互 CHAP 则要求目标对发起程序进行身份验证，发起程序也对目标进行身份验证。 |
 | clone |卷的重复副本。 |
 | 云即层 (CaaT) |作为存储体系结构中的一个层集成的云存储，以便所有存储看起来都是一个企业存储网络的一部分。 |
 | 云服务提供商 (CSP) |云计算服务的提供商。 |
@@ -295,7 +295,7 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 | 本地固定卷 |驻留在设备上且永远不会分层到云中的卷。 |
 | 本地快照 |一个卷数据的时间点副本，存储在 Microsoft Azure StorSimple 设备。 |
 | Microsoft Azure StorSimple |一个功能强大的解决方案，由数据中心存储设备和软件组成，使 IT 组织能够像数据中心存储一样利用云存储。 在降低成本的同时，StorSimple 可简化数据保护和数据管理。 通过与云无缝集成，该解决方案合并了主存储、存档、备份和灾难恢复 (DR)。 通过在企业级平台上组合 SAN 存储和云数据管理，StorSimple 设备为所有与存储相关的需求带来了高效率、简易性和可靠性。 |
-| 电源和散热模块 (PCM) |StorSimple 设备的硬件组件，包括电源和冷却风扇;因此，命名为电源和冷却模块。 设备的主机箱有两个 764W PCM，而 EBOD 机箱有两个 580W PCM。 |
+| 电源和散热模块 (PCM) |StorSimple 设备的硬件组件包含电源和散热风扇，因此将其命名为电源和散热模块。 设备的主机箱有两个 764W PCM，而 EBOD 机箱有两个 580W PCM。 |
 | 主机箱 |StorSimple 设备的主机箱，其中包含应用程序平台控制器。 |
 | 恢复时间目标 (RTO) |在灾难发生后，完全还原业务流程或系统之前，应使用的最大时间量。 |
 | 串行附加 SCSI (SAS) |硬盘驱动器 (HDD) 类型。 |
@@ -310,7 +310,7 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 | 执行备份 |一种允许用户对卷执行交互备份的功能。 它是另一种手动备份卷的方法，而不是通过已定义的策略自动备份。 |
 | 精简预配 |一种优化存储系统使用可用存储空间效率的方法。 在精简预配中，根据每个用户在任何给定时间所需的最小空间，为多个用户分配存储。 另请参阅 FAT 预配。 |
 | 分层 |在逻辑分组中，根据当前使用情况、期限以及与其他数据的关系对数据进行排列。 StorSimple 自动排列层中的数据。 |
-| 卷 |逻辑存储区，以驱动器的形式表示。 StorSimple 卷对应于主机装载的卷，包括通过使用 iSCSI 和 StorSimple 设备发现的卷。 |
+| 卷 |逻辑存储区，以驱动器的形式表示。 StorSimple 卷对应于主机装载​​的卷，包括通过使用 iSCSI 和 StorSimple 设备发现的卷。 |
 | 卷容器 |卷和应用到卷的设置的一个分组。 StorSimple 设备中的所有卷都分组到卷容器。 卷容器设置包括存储帐户、使用关联加密密钥将数据发送到云所采用的加密设置，以及涉及云的操作所消耗的带宽。 |
 | 卷组 |在 StorSimple Snapshot Manager 中，卷组是为方便备份处理配置的卷的集合。 |
 | 卷影复制服务 (VSS) |一种 Windows Server 操作系统服务，通过与识别 VSS 的应用程序通信来协调增量快照的创建，进而促进应用程序一致性。 VSS 确保拍摄快照时应用程序暂时处于非活动状态。 |

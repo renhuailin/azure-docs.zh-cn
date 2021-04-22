@@ -6,15 +6,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
 ms.workload: identity
-ms.author: kenwith
-author: kenwith
-manager: daveba
-ms.openlocfilehash: 81898875af85becf1766f02a5b7e077cb388a173
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.author: iangithinji
+author: iantheninja
+manager: CelesteDG
+ms.openlocfilehash: 17dca502d3c65563cb9e4d2c382afb79f4d612e9
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450032"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376046"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory 应用程序管理：新增内容
 
@@ -40,7 +40,7 @@ ms.locfileid: "106450032"
 - [排查应用程序代理的 Kerberos 约束委派配置问题](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 - [快速入门：在 Azure Active Directory (Azure AD) 租户中为应用程序设置基于 SAML 的单一登录 (SSO)](add-application-portal-setup-sso.md)
 - [Azure Active Directory 应用程序管理：新增内容](whats-new-docs.md)
-- [Active Directory (Azure AD) 应用程序代理常见问题解答](application-proxy-faq.md)
+- [Active Directory (Azure AD) 应用程序代理常见问题解答](application-proxy-faq.yml)
 - [排查从 Azure AD 我的应用登录到应用程序时的问题](application-sign-in-other-problem-access-panel.md)
 - [教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问](application-proxy-add-on-premises-application.md)
 - [使用 Azure Active Directory 应用程序代理优化流量流](application-proxy-network-topology.md)
@@ -75,7 +75,7 @@ ms.locfileid: "106450032"
 - [应用程序管理最佳做法](application-management-fundamentals.md)
 - [将 Azure Active Directory 与应用程序集成入门指南](plan-an-application-integration.md)
 - [什么是应用程序管理？](what-is-application-management.md)
-- [Active Directory (Azure AD) 应用程序代理常见问题解答](application-proxy-faq.md)
+- [Active Directory (Azure AD) 应用程序代理常见问题解答](application-proxy-faq.yml)
 - [教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问](application-proxy-add-on-premises-application.md)
 - [使用现有的本地代理服务器](application-proxy-configure-connectors-with-proxy-servers.md)
 - [为 Azure Active Directory 开发业务线应用](../develop/v2-overview.md)

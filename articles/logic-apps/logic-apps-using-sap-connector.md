@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 03/08/2021
+ms.date: 03/30/2021
 tags: connectors
-ms.openlocfilehash: b9238d099c7b33e904c2fc8de3c4fc08369f1f36
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ec5046e40b6fade0e4d56023c404cc736a46f105
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102489831"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105969098"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 SAP 系统
 
@@ -33,6 +33,8 @@ ms.locfileid: "102489831"
     * 如果你正在高级[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中运行逻辑应用，请参阅 [ISE 先决条件](#ise-prerequisites)。
 
 * 要从逻辑应用访问的 [SAP 应用程序服务器](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server)或 [SAP 消息服务器](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm)。 有关可与连接器一起使用的 SAP 服务器和 SAP 操作的信息，请参阅 [SAP 兼容性](#sap-compatibility)。
+
+    * 必须将 SAP 服务器配置为允许使用 RFC。 有关详细信息，请参阅以下 SAP 说明：[460089 - 适用于外部 RFC 计划的最低授权配置文件](https://launchpad.support.sap.com/#/notes/460089)。 
 
 * 要发送到 SAP 服务器的消息内容，例如示例 IDoc 文件。 此内容必须采用 XML 格式，并且包含要使用的 SAP 操作的命名空间。 你可以[通过将 IDoc 包装在 XML 信封中来发送带有平面文件架构的 IDoc](#send-flat-file-idocs)。
 
@@ -125,9 +127,6 @@ SAP 连接器使用 [SAP .NET 连接器 (NCo) 库](https://support.sap.com/en/pr
 ### <a name="ise-prerequisites"></a>ISE 先决条件
 
 如果在高级 ISE 中运行逻辑应用，则这些先决条件适用。 但是，它们不适用于开发人员级 ISE 中运行的逻辑应用。 ISE 提供对受 Azure 虚拟网络保护的资源的访问权限，并提供其他 ISE 本机连接器，这些连接器使逻辑应用无需使用本地数据网关即可直接访问本地资源。
-
-> [!NOTE]
-> 虽然在开发人员级 ISE 内可以看到 SAP ISE 连接器，但是尝试安装连接器不会成功。
 
 1. 如果还没有带有 blob 容器的 Azure 存储帐户，请使用 [Azure 门户](../storage/blobs/storage-quickstart-blobs-portal.md)或 [Azure 存储资源管理器](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)创建一个容器。
 
@@ -314,32 +313,122 @@ SAP 连接器使用 [SAP .NET 连接器 (NCo) 库](https://support.sap.com/en/pr
 
 1. 对于“将消息发送到 SAP”操作，请使用 SAP 操作 URI `http://microsoft.lobservices.sap/2007/03/Idoc/SendIdoc`。
 
-1. 使用 XML 信封设置输入消息的格式。 有关示例，请参阅以下示例消息：
+1. 使用 XML 信封设置输入消息的格式。 有关示例，请参阅以下示例 XML 有效负载：
 
 ```xml
-<?xml version="1.0" encoding="utf-8"?>
-<SendIdoc xmlns="http://Microsoft.LobServices.Sap/2007/03/Idoc/">
-  <idocData>EDI_DC    300                      ORDERS052SAPMSS    LIMSFTABCSWI                                                                                           ED  93AORDERSOLP     VLTRFC    KUMSFTABCSWI                                                                                           13561                       231054476                                                                           20190523085430ORDERSORDERS05          US
-E2EDK01005300                1     E2EDK010050     1       USD                                                                        Z4O14506907554
-E2EDK03   300                2     E2EDK03   0     2   02220190523
-E2EDKA1   300                3     E2EDKA1   0     2   RE                  MSFTASWI
-E2EDKA1   300                4     E2EDKA1   0     2   US                  MSFTASWI
-E2EDKA1   300                5     E2EDKA1   0     2   WE                  MSFTASWILIC
-E2EDKA1   300                6     E2EDKA1   0     2   Z1 KKKKKKK                           ABC YYYYYYYYYYY ZZ                                                                                                                          BBBBBBBBBBBBBBBB 11                                                                                      ttttttttttt                                 6666              US                                                                                                999 999 99 99                                                                                                                SSSSSSS SSS SSSSSS                                                                                                                                SSSSSSS SSS SSSSSS
-E2EDKA1   300                7     E2EDKA1   0     2   Z2 KKKKKKK                           BBBBBBBBBBBBBBBB DDDDDDDD ZZ                                                                                                                EEEEEEEEEEE 86                                                                                           rrrrrrrr                                    8888              US                                                                                                999 999 99 99                                                                                                                NNNNNN NNNNNN                                                                                                                                     NNNNNN NNNNNN
-E2EDK02   300                8     E2EDK02   0     2   901Z
-E2EDK02   300                9     E2EDK02   0     2   90399680096ZZS2002
-E2EDK02   300                10    E2EDK02   0     2   902S
-E2EDKT1   300                11    E2EDKT1   0     2   Z1EME
-E2EDKT2   300                12    E2EDKT2   0     3   xxx@xxx-xx.xx
-E2EDKT1   300                13    E2EDKT1   0     2   Z2EME
-E2EDKT2   300                14    E2EDKT2   0     3   x.xxxxxx@xxxxxxxx-xxxxxxxxxx.xx
-E2EDP01001300                15    E2EDP010010     2   10         1              EA                          999.9
-E2EDP19   300                16    E2EDP19   0     3   00AAAA-11111</idocData>
-</SendIdoc>
+<ReceiveIdoc xmlns="http://Microsoft.LobServices.Sap/2007/03/Idoc/"><idocData>EDI_DC 3000000001017945375750 30INVOIC011BTSVLINV30KUABCABCFPPC LDCA X004010810 4 SAPMSX LSEDI ABCABCFPPC 000d3ae4-723e-1edb-9ca4-cc017365c9fd 20210217054521INVOICINVOIC01ZINVOIC2RE 20210217054520
+E2EDK010013000000001017945375000001E2EDK01001000000010 ABCABC1.00000 0060 INVO9988298128 298.000 298.000 LB Z4LR EN 0005065828 L
+E2EDKA1 3000000001017945375000002E2EDKA1 000000020 RS ABCABCFPPC 0005065828 ABCABCABC ABCABC Inc. Limited Risk Distributor ABCABC 1950 ABCABCABCA Blvd ABCABAABCAB L5N8L9 CA ABCABC E ON V-ABCABC LDCA
+E2EDKA1 3000000001017945375000003E2EDKA1 000000020 AG 0005065828 ABCABCFPPC ABCABC ABCABC ABCABC - FPP ONLY 88 ABCABC Crescent ABCABAABCAB L5R 4A2 CA ABCABC 111 111 1111 E ON ABCABCFPPC EN
+E2EDKA1 3000000001017945375000004E2EDKA1 000000020 RE 0005065828 ABCABCFPPC ABCABC ABCABC ABCABC - FPP ONLY 88 ABCABC Crescent ABCABAABCAB L5R 4A2 CA ABCABC 111 111 1111 E ON ABCABCFPPC EN
+E2EDKA1 3000000001017945375000005E2EDKA1 000000020 RG 0005065828 ABCABCFPPC ABCABC ABCABC ABCABC - FPP ONLY 88 ABCABC Crescent ABCABAABCAB L5R 4A2 CA ABCABC 111 111 1111 E ON ABCABCFPPC EN
+E2EDKA1 3000000001017945375000006E2EDKA1 000000020 WE 0005001847 41 ABCABC ABCABC INC (ABCABC) DC A. ABCABCAB 88 ABCABC CRESCENT ABCABAABCAB L5R 4A2 CA ABCABC 111-111-1111 E ON ABCABCFPPC EN
+E2EDKA1 3000000001017945375000007E2EDKA1 000000020 Z3 0005533050 ABCABCABC ABCABC Inc. ABCA Bank Swift Code -ABCABCABCAB Sort Code - 1950 ABCABCABCA Blvd. Acc No -1111111111 ABCABAABCAB L5N8L9 CA ABCABC E ON ABCABCFPPC EN
+E2EDKA1 3000000001017945375000008E2EDKA1 000000020 BK 1075 ABCABCABC ABCABC Inc 1950 ABCABCABCA Blvd ABCABAABCAB ON L5N 8L9 CA ABCABC (111) 111-1111 (111) 111-1111 ON
+E2EDKA1 3000000001017945375000009E2EDKA1 000000020 CR 1075 CONTACT ABCABCABC 1950 ABCABCABCA Blvd ABCABAABCAB ON L5N 8L9 CA ABCABC (111) 111-1111 (111) 111-1111 ON
+E2EDK02 3000000001017945375000010E2EDK02 000000020 0099988298128 20210217
+E2EDK02 3000000001017945375000011E2EDK02 000000020 00140-N6260-S 20210205
+E2EDK02 3000000001017945375000012E2EDK02 000000020 0026336270425 20210217
+E2EDK02 3000000001017945375000013E2EDK02 000000020 0128026580537 20210224
+E2EDK02 3000000001017945375000014E2EDK02 000000020 01740-N6260-S
+E2EDK02 3000000001017945375000015E2EDK02 000000020 900IAC
+E2EDK02 3000000001017945375000016E2EDK02 000000020 901ZSH
+E2EDK02 3000000001017945375000017E2EDK02 000000020 9078026580537 20210217
+E2EDK03 3000000001017945375000018E2EDK03 000000020 02620210217
+E2EDK03 3000000001017945375000019E2EDK03 000000020 00120210224
+E2EDK03 3000000001017945375000020E2EDK03 000000020 02220210205
+E2EDK03 3000000001017945375000021E2EDK03 000000020 01220210217
+E2EDK03 3000000001017945375000022E2EDK03 000000020 01120210217
+E2EDK03 3000000001017945375000023E2EDK03 000000020 02420210217
+E2EDK03 3000000001017945375000024E2EDK03 000000020 02820210418
+E2EDK03 3000000001017945375000025E2EDK03 000000020 04820210217
+E2EDK17 3000000001017945375000026E2EDK17 000000020 001DDPDelivered Duty Paid
+E2EDK17 3000000001017945375000027E2EDK17 000000020 002DDPdestination
+E2EDK18 3000000001017945375000028E2EDK18 000000020 00160 0 Up to 04/18/2021 without deduction
+E2EDK28 3000000001017945375000029E2EDK28 000000020 CA BOFACATT Bank of ABCABAB ABCABC ABCABAB 50127217 ABCABCABC ABCABC Inc.
+E2EDK28 3000000001017945375000030E2EDK28 000000020 CA 026000082 ABCAbank ABCABC ABCABAB 201456700OLD ABCABCABC ABCABC Inc.
+E2EDK28 3000000001017945375000031E2EDK28 000000020 GB ABCAGB2L ABCAbank N.A ABCABA E14, 5LB GB63ABCA18500803115593 ABCABCABC ABCABC Inc. GB63ABCA18500803115593
+E2EDK28 3000000001017945375000032E2EDK28 000000020 CA 020012328 ABCABANK ABCABC ABCABAB ON M5J 2M3 2014567007 ABCABCABC ABCABC Inc.
+E2EDK28 3000000001017945375000033E2EDK28 000000020 CA 03722010 ABCABABC ABCABABC Bank of Commerce ABCABAABCAB 64-04812 ABCABCABC ABCABC Inc.
+E2EDK28 3000000001017945375000034E2EDK28 000000020 IE IHCC In-House Cash Center IHCC1075 ABCABCABC ABCABC Inc.
+E2EDK28 3000000001017945375000035E2EDK28 000000020 CA 000300002 ABCAB Bank of ABCABC ABCABAB 0021520584OLD ABCABCABC ABCABC Inc.
+E2EDK28 3000000001017945375000036E2EDK28 000000020 US USCC US Cash Center (IHC) city USCC1075 ABCABCABC ABCABC Inc.
+E2EDK29 3000000001017945375000037E2EDK29 000000020 0064848944US A CAD CA ABCABC CA United States US CA A Air Air
+E2EDKT1 3000000001017945375000038E2EDKT1 000000020 ZJ32E EN
+E2EDKT2 3000000001017945375000039E2EDKT2 000038030 GST/HST877845941RT0001 *
+E2EDKT2 3000000001017945375000040E2EDKT2 000038030 QST1021036966TQ0001 *
+E2EDKT1 3000000001017945375000041E2EDKT1 000000020 Z4VL
+E2EDKT2 3000000001017945375000042E2EDKT2 000041030 0.000 *
+E2EDKT1 3000000001017945375000043E2EDKT1 000000020 Z4VH
+E2EDKT2 3000000001017945375000044E2EDKT2 000043030 *
+E2EDK14 3000000001017945375000045E2EDK14 000000020 008LDCA
+E2EDK14 3000000001017945375000046E2EDK14 000000020 00710
+E2EDK14 3000000001017945375000047E2EDK14 000000020 00610
+E2EDK14 3000000001017945375000048E2EDK14 000000020 015Z4F2
+E2EDK14 3000000001017945375000049E2EDK14 000000020 0031075
+E2EDK14 3000000001017945375000050E2EDK14 000000020 021M
+E2EDK14 3000000001017945375000051E2EDK14 000000020 0161075
+E2EDK14 3000000001017945375000052E2EDK14 000000020 962M
+E2EDP010013000000001017945375000053E2EDP01001000000020 000011 2980.000 EA 298.000 LB MOUSE 298.000 Z4TN 4260
+E2EDP02 3000000001017945375000054E2EDP02 000053030 00140-N6260-S 00000120210205 DFUE
+E2EDP02 3000000001017945375000055E2EDP02 000053030 0026336270425 00001120210217
+E2EDP02 3000000001017945375000056E2EDP02 000053030 0168026580537 00001020210224
+E2EDP02 3000000001017945375000057E2EDP02 000053030 9100000 00000120210205 DFUE
+E2EDP02 3000000001017945375000058E2EDP02 000053030 911A 00000120210205 DFUE
+E2EDP02 3000000001017945375000059E2EDP02 000053030 912PP 00000120210205 DFUE
+E2EDP02 3000000001017945375000060E2EDP02 000053030 91300 00000120210205 DFUE
+E2EDP02 3000000001017945375000061E2EDP02 000053030 914CONTACT ABCABCABC 00000120210205 DFUE
+E2EDP02 3000000001017945375000062E2EDP02 000053030 963 00000120210205 DFUE
+E2EDP02 3000000001017945375000063E2EDP02 000053030 965 00000120210205 DFUE
+E2EDP02 3000000001017945375000064E2EDP02 000053030 9666336270425 00000120210205 DFUE
+E2EDP02 3000000001017945375000065E2EDP02 000053030 9078026580537 00001020210205 DFUE
+E2EDP03 3000000001017945375000066E2EDP03 000053030 02920210217
+E2EDP03 3000000001017945375000067E2EDP03 000053030 00120210224
+E2EDP03 3000000001017945375000068E2EDP03 000053030 01120210217
+E2EDP03 3000000001017945375000069E2EDP03 000053030 02520210217
+E2EDP03 3000000001017945375000070E2EDP03 000053030 02720210217
+E2EDP03 3000000001017945375000071E2EDP03 000053030 02320210217
+E2EDP03 3000000001017945375000072E2EDP03 000053030 02220210205
+E2EDP19 3000000001017945375000073E2EDP19 000053030 001418VVZ
+E2EDP19 3000000001017945375000074E2EDP19 000053030 002RJR-00001 AB ABCABCABC Mouse FORBUS BLUETOOTH
+E2EDP19 3000000001017945375000075E2EDP19 000053030 0078471609000
+E2EDP19 3000000001017945375000076E2EDP19 000053030 003889842532685
+E2EDP19 3000000001017945375000077E2EDP19 000053030 011CN
+E2EDP26 3000000001017945375000078E2EDP26 000053030 00459064.20
+E2EDP26 3000000001017945375000079E2EDP26 000053030 00352269.20
+E2EDP26 3000000001017945375000080E2EDP26 000053030 01052269.20
+E2EDP26 3000000001017945375000081E2EDP26 000053030 01152269.20
+E2EDP26 3000000001017945375000082E2EDP26 000053030 0126795.00
+E2EDP26 3000000001017945375000083E2EDP26 000053030 01552269.20
+E2EDP26 3000000001017945375000084E2EDP26 000053030 00117.54
+E2EDP26 3000000001017945375000085E2EDP26 000053030 00252269.20
+E2EDP26 3000000001017945375000086E2EDP26 000053030 940 2980.000
+E2EDP26 3000000001017945375000087E2EDP26 000053030 939 2980.000
+E2EDP05 3000000001017945375000088E2EDP05 000053030 + Z400MS List Price 52269.20 17.54 1 EA CAD 2980
+E2EDP05 3000000001017945375000089E2EDP05 000053030 + XR1 Tax Jur Code Level 6795.00 13.000 52269.20
+E2EDP05 3000000001017945375000090E2EDP05 000053030 + Tax Subtotal1 6795.00 2.28 1 EA CAD 2980
+E2EDP05 3000000001017945375000091E2EDP05 000053030 + Taxable Amount + TaxSubtotal1 59064.20 19.82 1 EA CAD 2980
+E2EDP04 3000000001017945375000092E2EDP04 000053030 CX 13.000 6795.00 7000000000
+E2EDP04 3000000001017945375000093E2EDP04 000053030 CX 0 0 7001500000
+E2EDP04 3000000001017945375000094E2EDP04 000053030 CX 0 0 7001505690
+E2EDP28 3000000001017945375000095E2EDP28 000053030 00648489440000108471609000 CN CN ABCAB ZZ 298.000 298.000 LB US 400 United Stat KY
+E2EDPT1 3000000001017945375000096E2EDPT1 000053030 0001E EN
+E2EDPT2 3000000001017945375000097E2EDPT2 000096040 AB ABCABCABC Mouse forBus Bluetooth EN/XC/XD/XX Hdwr Black For Bsnss *
+E2EDS01 3000000001017945375000098E2EDS01 000000020 0011
+E2EDS01 3000000001017945375000099E2EDS01 000000020 01259064.20 CAD
+E2EDS01 3000000001017945375000100E2EDS01 000000020 0056795.00 CAD
+E2EDS01 3000000001017945375000101E2EDS01 000000020 01159064.20 CAD
+E2EDS01 3000000001017945375000102E2EDS01 000000020 01052269.20 CAD
+E2EDS01 3000000001017945375000103E2EDS01 000000020 94200000 CAD
+E2EDS01 3000000001017945375000104E2EDS01 000000020 9440.00 CAD
+E2EDS01 3000000001017945375000105E2EDS01 000000020 9450.00 CAD
+E2EDS01 3000000001017945375000106E2EDS01 000000020 94659064.20 CAD
+E2EDS01 3000000001017945375000107E2EDS01 000000020 94752269.20 CAD
+E2EDS01 3000000001017945375000108E2EDS01 000000020 EXT
+Z2XSK010003000000001017945375000109Z2XSK01000000108030 Z400 52269.20
+Z2XSK010003000000001017945375000110Z2XSK01000000108030 XR1 13.000 6795.00 CX
+</idocData></ReceiveIdoc>
 ```
-
-
 
 ### <a name="create-http-response-action"></a>创建 HTTP 响应操作
 
@@ -476,18 +565,22 @@ E2EDP19   300                16    E2EDP19   0     3   00AAAA-11111</idocData>
 如果收到“500 错误网关”错误，消息类似于“服务 'sapgw00' 未知”，请在 API 连接中替换网关服务名称，并用端口号触发配置 。 在下面的错误示例中，`sapgw00` 需要替换为实际端口号，例如 `3300`。 
 
 ```json
-"body": {
-   "error": {
-      "code": 500,
-      "source": "EXAMPLE-FLOW-NAME.eastus.environments.microsoftazurelogicapps.net",
-      "clientRequestId": "00000000-0000-0000-0000-000000000000",
-      "message": "BadGateway",
-      "innerError": {
-         "error": {
-            "code": "UnhandledException",
-            "message": "\nERROR service 'sapgw00' unknown\nTIME Wed Nov 11 19:37:50 2020\nRELEASE 721\nCOMPONENT NI (network interface)\nVERSION 40\nRC -3\nMODULE ninti.c\nLINE 933\nDETAIL NiPGetServByName: 'sapgw00' not found\nSYSTEM CALL getaddrinfo\nCOUNTER 1\n\nRETURN CODE: 20"
-         }
-      }
+{
+    "body": {
+        "error": {
+            "code": 500,
+            "source": "EXAMPLE-FLOW-NAME.eastus.environments.microsoftazurelogicapps.net",
+            "clientRequestId": "00000000-0000-0000-0000-000000000000",
+            "message": "BadGateway",
+            "innerError": {
+                "error": {
+                    "code": "UnhandledException",
+                    "message": "\nERROR service 'sapgw00' unknown\nTIME Wed Nov 11 19:37:50 2020\nRELEASE 721\nCOMPONENT NI (network interface)\nVERSION 40\nRC -3\nMODULE ninti.c\nLINE 933\nDETAIL NiPGetServByName: 'sapgw00' not found\nSYSTEM CALL getaddrinfo\nCOUNTER 1\n\nRETURN CODE: 20"
+                }
+            }
+        }
+    }
+}
 ```
 
 #### <a name="parameters"></a>参数
@@ -510,15 +603,27 @@ E2EDP19   300                16    E2EDP19   0     3   00AAAA-11111</idocData>
 
 如果无法将 IDoc 包从 SAP 发送到逻辑应用的触发器，请参阅 SAP tRFC 对话框 (T-code SM58) 中的事务性 RFC (tRFC) 调用拒绝消息。 在 SAP 接口中，你可能会得到以下错误消息，由于“状态文本”字段上的 substring 限制，这些消息会被剪裁。
 
-* `The RequestContext on the IReplyChannel was closed without a reply being`：当通道的全方位处理程序由于错误终止通道并重建通道以处理其他消息时，会发生意外故障。
+##### <a name="the-requestcontext-on-the-ireplychannel-was-closed-without-a-reply-being-sent"></a>IReplyChannel 上的 RequestContext 已关闭，未发送回复
 
-  * 若要确认逻辑应用已收到 IDoc，请[添加一个响应操作](../connectors/connectors-native-reqres.md#add-a-response-action)，该操作返回 `200 OK` 状态码。 IDoc 是通过 tRFC 传输的，tRFC 不允许响应有效负载。
+此错误消息表示当通道的全方位处理程序由于错误终止通道并重建通道以处理其他消息时，会发生意外故障。
 
-  * 如果需要拒绝 IDoc，则使用 `200 OK` 以外的任何 HTTP 状态代码进行响应，以便 SAP 适配器代表你将异常返回给 SAP。 
+若要确认逻辑应用已收到 IDoc，请[添加一个响应操作](../connectors/connectors-native-reqres.md#add-a-response-action)，该操作返回 `200 OK` 状态码。 将正文留空，不更改标头或向其添加内容。 IDoc 是通过 tRFC 传输的，tRFC 不允许响应有效负载。
 
-* `The segment or group definition E2EDK36001 was not found in the IDoc meta`：其他错误可能引发预期故障，例如无法生成 IDoc XML 有效负载，因为它的段没有被 SAP 释放，因此缺少转换所需的段类型元数据。 
+若要改为拒绝 IDoc，请使用除 `200 OK` 以外的任何 HTTP 状态代码。 然后，SAP 适配器会代表你将异常返回到 SAP。 你应仅拒绝 IDoc 将传输错误的信号发回到 SAP，如应用程序无法处理的被错误路由的 IDoc。 不应因应用程序级别的错误而拒绝 IDoc，例如 IDoc 中包含有问题的数据。 如果因应用程序级别的验证延迟传输接受，可能会由于阻碍连接传输其他 IDoc，而对性能造成不良影响。
 
-  * 若要将这些段发布到 SAP，请联系 SAP 系统的 ABAP 工程师。
+如果收到此错误消息，并在调用逻辑应用时出现系统故障，请检查是否为特定环境中的本地数据网关服务配置了网络设置。 例如，如果网络环境需要使用代理来调用 Azure 终结点，则需要将本地数据网关服务配置为使用代理。 有关详细信息，请参阅[代理配置](/dotnet/framework/network-programming/proxy-configuration)。
+
+如果收到此错误消息，并在调用逻辑应用时出现间歇性故障，则可能需要增加重试次数和/或重试间隔时间。 
+
+1. 检查本地数据网关服务配置文件 `Microsoft.PowerBI.EnterpriseGateway.exe.config` 中的 SAP 设置。 重试次数设置类似于 `WebhookRetryMaximumCount="2"`。 重试间隔设置类似于 `WebhookRetryDefaultDelay="00:00:00.10"`，时间跨度格式为 `HH:mm:ss.ff`。 
+    
+1. 保存更改并重启本地数据网关。
+
+##### <a name="the-segment-or-group-definition-e2edk36001-was-not-found-in-the-idoc-meta"></a>在 IDoc 元数据中找不到段或组定义 E2EDK36001
+
+此错误消息表示出现预期故障和其他错误。 例如，由于 IDoc XML 有效负载的片段不是由 SAP 发布的，因此无法生成该有效负载。 因此，缺少转换所需的段类型元数据。
+
+若要将这些段发布到 SAP，请联系 SAP 系统的 ABAP 工程师。
 ### <a name="asynchronous-request-reply-for-triggers"></a>触发器的异步请求-响应
 
 SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/patterns/async-request-reply)，用于逻辑应用触发器。 可以使用此模式创建成功的请求，如果使用默认的同步请求-响应模式，这些请求将会失败。 
@@ -571,7 +676,7 @@ SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/pat
 
 #### <a name="capture-etw-events"></a>捕获 ETW 事件
 
-（可选）高级用户可以直接捕获 ETW 事件。 然后你可以[在事件中心的 Azure 诊断中使用数据](../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md)或[将数据收集到 Azure Monitor 日志中](/azure/azure-monitor/agents/diagnostics-extension-logs)。 有关详细信息，请参阅[收集和存储数据的最佳做法](/azure/architecture/best-practices/monitoring#collecting-and-storing-data)。 可以使用 [PerfView](https://github.com/Microsoft/perfview/blob/master/README.md) 处理生成的 ETL 文件，也可以编写自己的程序。 本演练使用 PerfView：
+（可选）高级用户可以直接捕获 ETW 事件。 然后你可以[在事件中心的 Azure 诊断中使用数据](../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md)或[将数据收集到 Azure Monitor 日志中](../azure-monitor/agents/diagnostics-extension-logs.md)。 有关详细信息，请参阅[收集和存储数据的最佳做法](/azure/architecture/best-practices/monitoring#collecting-and-storing-data)。 可以使用 [PerfView](https://github.com/Microsoft/perfview/blob/master/README.md) 处理生成的 ETL 文件，也可以编写自己的程序。 本演练使用 PerfView：
 
 1. 在 PerfView 菜单中，选择“收集”&gt;“收集”以捕获事件 。
 
@@ -644,7 +749,7 @@ SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/pat
     
     * 在“Unicode”选项卡上，对于“与目标系统的通信类型”，选择“Unicode”  。
 
-1. 保存更改。
+1. 保存所做更改。
 
 1. 向 Azure 逻辑应用注册新的“程序 ID”。
 
@@ -658,7 +763,7 @@ SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/pat
 
 1. 对于“RFC 目标”，输入[测试 SAP 系统](#create-rfc-destination)的标识符。
 
-1. 保存更改。
+1. 保存所做更改。
 
 1. 若要测试你的连接，请选择“连接测试”。
 
@@ -668,11 +773,11 @@ SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/pat
 
 1. 选择“端口” > 事务 RFC” > “创建”  。
 
-1. 在打开的设置框中，选择“自己的端口名”。 为测试端口输入一个名称。 保存更改。
+1. 在打开的设置框中，选择“自己的端口名”。 为测试端口输入一个名称。 保存所做更改。
 
 1. 在新接收方端口的设置中，对于“RFC 目标”，输入[测试 RFC 目标](#create-rfc-destination)的标识符。
 
-1. 保存更改。
+1. 保存所做更改。
 
 #### <a name="create-sender-port"></a>创建发送方端口
 
@@ -680,11 +785,11 @@ SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/pat
 
 1. 选择“端口” > 事务 RFC” > “创建”  。
 
-1. 在打开的设置框中，选择“自己的端口名”。 对于测试端口，输入以 SAP 开头的名称 。 所有发送方端口名称必须以字母 SAP 开头，例如 SAPTEST 。 保存更改。
+1. 在打开的设置框中，选择“自己的端口名”。 对于测试端口，输入以 SAP 开头的名称 。 所有发送方端口名称必须以字母 SAP 开头，例如 SAPTEST 。 保存所做更改。
 
 1. 在新的发送方端口的设置中，对于 RFC 目标，输入 [ABAP 连接](#create-abap-connection)的标识符。
 
-1. 保存更改。
+1. 保存所做更改。
 
 #### <a name="create-logical-system-partner"></a>创建逻辑系统合作伙伴
 
@@ -694,7 +799,7 @@ SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/pat
 
 1. 在显示现有逻辑系统的列表上方，选择“新条目”。
 
-1. 对于新的逻辑系统，请输入 Log.System 标识符和简短的名称描述 。 保存更改。
+1. 对于新的逻辑系统，请输入 Log.System 标识符和简短的名称描述 。 保存所做更改。
 
 1. 出现“工作台提示”时，通过提供描述来创建新请求，或者如果已经创建了请求，则跳过此步骤。
 
@@ -716,7 +821,7 @@ SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/pat
 
     * 对于“代理”，请输入在注册 Azure 逻辑应用或其他非 SAP 系统的程序标识符时要使用的 SAP 用户帐户的标识符。
 
-1. 保存更改。 如果尚未[创建逻辑系统合作伙伴](#create-logical-system-partner)，则会收到错误消息，“请输入有效的合作伙伴编号”。
+1. 保存所做更改。 如果尚未[创建逻辑系统合作伙伴](#create-logical-system-partner)，则会收到错误消息，“请输入有效的合作伙伴编号”。
 
 1. 在合作伙伴配置文件设置中的“出站参数”下，选择“创建出站参数” 。
 
@@ -728,13 +833,13 @@ SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/pat
 
     * 输入包的 IDoc 大小 **。** 大小”。 或者，要[从 SAP 一次发送一个 IDoc](#receive-idoc-packets-from-sap)，请选择“立即传递 IDoc”。
 
-1. 保存更改。
+1. 保存所做更改。
 
 #### <a name="test-sending-messages"></a>测试发送消息
 
 1. 若要打开“IDOC 处理中的测试工具”设置，请在 SAP 接口中使用 we19 事务代码 (T-code)，前缀为 /n  。
 
-1. 在“测试模板”下，选择“通过消息类型”，然后输入消息类型，例如 CREMAS  。 选择“创建”  。
+1. 在“测试模板”下，选择“通过消息类型”，然后输入消息类型，例如 CREMAS  。 选择“创建”。
 
 1. 对于消息“哪个 IDoc 类型？”，通过选择“继续”进行确认 。
 
@@ -766,7 +871,7 @@ SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/pat
 
    ![向逻辑应用添加 SAP 触发器](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 
-1. [向逻辑应用添加响应操作](/azure/connectors/connectors-native-reqres#add-a-response-action)，以便立即以 SAP 请求的状态进行响应。 最佳做法是在触发之后立即添加此操作，以释放与 SAP 服务器的通信通道。 选择以下状态代码 (`statusCode`) 之一以用于响应操作：
+1. [向逻辑应用添加响应操作](../connectors/connectors-native-reqres.md#add-a-response-action)，以便立即以 SAP 请求的状态进行响应。 最佳做法是在触发之后立即添加此操作，以释放与 SAP 服务器的通信通道。 选择以下状态代码 (`statusCode`) 之一以用于响应操作：
 
     * 202 Accepted，表示请求已被接受进行处理，但处理尚未完成。
 
@@ -1040,7 +1145,7 @@ SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/pat
 <ns2:E2EDKT1002GRP>
   <ns2:E2EDKT1002>
     <ns2:DATAHEADERCOLUMN_SEGNAM>E2EDKT1002</ns2:DATAHEADERCOLUMN_SEGNAM>
-      <NS2:TDID>ZONE</ns2:TDID>
+      <ns2:TDID>ZONE</ns2:TDID>
   </ns2:E2EDKT1002>
   <ns2:E2EDKT2001>
     <ns2:DATAHEADERCOLUMN_SEGNAM>E2EDKT2001</ns2:DATAHEADERCOLUMN_SEGNAM>
@@ -1049,6 +1154,7 @@ SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/pat
 </ns2:E2EDKT1002GRP>
 
 ```
+
 
 推荐的方法是创建 IDoc 标识符以用于 tRFC。 你可以使用 SAP 连接器 API 中的[发送 IDoc 操作](/connectors/sap/#send-idoc)设置此事务标识符 `tid`。
 
@@ -1305,7 +1411,7 @@ SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/pat
 
 1. 在操作“初始化变量”的编辑器中，配置以下设置。 然后保存更改。
 
-    1. 对于“名称”，请输入变量的名称。 例如 `IDOCtransferID`。
+    1. 对于“名称”，请输入变量的名称。 例如，`IDOCtransferID`。
 
     1. 对于“类型”，请选择“字符串”作为变量类型 。
 
@@ -1323,7 +1429,7 @@ SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/pat
 
     1. 对于“确认 TID”，选择“否” 。
 
-    1. 选择“添加新参数列表” > “事务ID GUID” 。 选择该文本框以打开动态内容菜单。 在“变量”选项卡下，选择创建的变量的名称。 例如 `IDOCtransferID`。
+    1. 选择“添加新参数列表” > “事务ID GUID” 。 选择该文本框以打开动态内容菜单。 在“变量”选项卡下，选择创建的变量的名称。 例如，`IDOCtransferID`。
 
 1. 在操作“发送 IDOC”的标题栏上，选择“...” > “设置”  。 对于“重试策略”，建议选择“默认”&gt;“完成”  。 但是，你可以根据自己的特定需求配置自定义策略。 对于自定义策略，建议至少配置一次重试，以解决网络临时中断的问题。
 
@@ -1331,7 +1437,7 @@ SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/pat
 
 1. 在操作“确认事务 ID”的编辑器中，配置以下设置。 然后保存更改。
 
-    1. 对于“事务 ID”，请再次输入变量的名称。 例如 `IDOCtransferID`。
+    1. 对于“事务 ID”，请再次输入变量的名称。 例如，`IDOCtransferID`。
 
 1. （可选）在测试环境中验证重复数据删除。 使用与上一步相同的事务 ID GUID 重复执行“发送 IDOC”操作 。 当两次发送相同的 IDoc 时，可以验证 SAP 是否能够识别 tRFC 调用的重复项并将两个调用解析为一条入站 IDoc 消息。
 
@@ -1348,7 +1454,6 @@ SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/pat
   * 对于监控状态 SAP 操作，请在非群集模式或仅为故障转移设置的群集中使用数据网关。
 
 * SAP 连接器目前不支持 SAP 路由器字符串。 本地数据网关必须位于要连接的 SAP 系统所在的同一 LAN 中。
-
 
 ## <a name="connector-reference"></a>连接器参考
 

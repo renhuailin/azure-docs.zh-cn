@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 46cc8ef1158c02190f905cbe8eb1d12ea7be50a2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101644929"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>什么是主刷新令牌？
@@ -103,7 +103,7 @@ PRT 通过两种不同的方法续订：
 * **首次登录期间**：首次登录时，会使用在设备注册过程以加密方式生成的设备密钥对请求进行签名，从而颁发 PRT。 在具有有效且正常的 TPM 的设备上，TPM 会保护设备密钥以阻止所有恶意访问。 如果无法验证相应的设备密钥签名，则不会颁发 PRT。
 * **在令牌请求和续订过程中**：颁发 PRT 时，Azure AD 还会向设备颁发一个加密会话密钥。 它通过生成的公共传输密钥 (tkpub) 进行加密，并在设备注册过程中发送到 Azure AD。 此会话密钥只能由受 TPM 保护的专用传输密钥 (tkpriv) 解密。 会话密钥是发送到 Azure AD 的任何请求的所有权证明 (POP) 密钥。  会话密钥也受 TPM 保护，并且其他 OS 组件都不能访问它。 令牌请求或 PRT 续订请求通过 TPM 由该会话密钥安全地签名，以此确保不会被篡改。 若设备发出的请求未由相应的会话密钥签名，则 Azure AD 将使之无效。
 
-通过使用 TPM 保护这些密钥，我们将增强 PRT 的安全，防止恶意执行组件尝试盗取密钥或重播 PRT。  因此，使用 TPM 极大地增强了 Azure AD 联接、混合 Azure AD 联接和 Azure AD 注册的设备免受凭据被盗的安全性。 至于性能和可靠性，Windows 10 上的所有 Azure AD 设备注册方案都推荐使用 TPM 2.0 版。 由于可靠性问题，开始 Windows 10，1903更新，Azure AD 不会对任何上述密钥使用 TPM 1.2。 
+通过使用 TPM 保护这些密钥，我们可以增强 PRT 的安全性，防止恶意参与者试图盗取密钥或重播 PRT。  因此，使用 TPM 极大地增强了已建立 Azure AD 联接、已建立混合 Azure AD 联接以及已注册 Azure AD 的设备的安全性，可防止凭据被盗。 至于性能和可靠性，Windows 10 上的所有 Azure AD 设备注册方案都推荐使用 TPM 2.0 版。 由于可靠性问题，从 Windows 10 的 1903 更新开始，Azure AD 不会对任何上述密钥使用 TPM 1.2。 
 
 ### <a name="how-are-app-tokens-and-browser-cookies-protected"></a>应用令牌和浏览器 cookie 是如何受到保护的？
 
@@ -111,7 +111,7 @@ PRT 通过两种不同的方法续订：
 
 **浏览器 cookie**：在 Windows 10 中，Azure AD 以原生方式支持 Internet Explorer 和 Microsoft Edge 中的浏览器 SSO，或通过 Windows 10 帐户扩展支持 Google Chrome 中的浏览器 SSO。 建立安全性不仅是为了保护 cookie，还可以保护要将 cookie 发送到的终结点。 浏览器 cookie 的保护方式与 PRT 相同，也是使用会话密钥对 cookie 进行签名和保护。
 
-当用户启动浏览器交互时，浏览器（或扩展）会调用 COM 原生客户端主机。 原生客户端主机确保该页面来自允许的域。 浏览器可以将其他参数发送到原生客户端主机（包括 nonce），但原生客户端主机保证对主机名进行验证。 原生客户端主机从 CloudAP 插件请求 PRT-cookie，此插件使用受 TPM 保护的会话密钥创建 PRT-cookie 并对其进行签名。 由于 PRT-cookie 由会话密钥签名，因此很难篡改。 此 PRT-cookie 包括在 Azure AD 的请求标头中，用于验证发出请求的设备。 如果使用的是 Chrome 浏览器，则只有在原生客户端主机的清单中显式定义的扩展才能调用它，从而防止任意扩展发出这些请求。 Azure AD 验证 PRT cookie 后，会向浏览器颁发会话 cookie。 此会话 cookie 还包含使用 PRT 颁发的相同会话密钥。 在后续请求中，会验证会话密钥，以将 cookie 绑定到设备，并阻止在其他位置重播。
+当用户启动浏览器交互时，浏览器（或扩展）会调用 COM 原生客户端主机。 原生客户端主机确保该页面来自允许的域。 浏览器可以将其他参数发送到原生客户端主机（包括 nonce），但原生客户端主机保证对主机名进行验证。 原生客户端主机从 CloudAP 插件请求 PRT-cookie，此插件使用受 TPM 保护的会话密钥创建 PRT-cookie 并对其进行签名。 由于 PRT-cookie 由会话密钥签名，因此很难被篡改。 此 PRT-cookie 包括在 Azure AD 的请求标头中，用于验证发出请求的设备。 如果使用的是 Chrome 浏览器，则只有在原生客户端主机的清单中显式定义的扩展才能调用它，从而防止任意扩展发出这些请求。 Azure AD 验证 PRT cookie 后，会向浏览器颁发会话 cookie。 此会话 cookie 还包含使用 PRT 颁发的相同会话密钥。 在后续请求中，会验证会话密钥，以将 cookie 绑定到设备，并阻止在其他位置重播。
 
 ## <a name="when-does-a-prt-get-an-mfa-claim"></a>PRT 何时获得 MFA 声明？
 

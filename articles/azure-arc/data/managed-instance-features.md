@@ -1,6 +1,6 @@
 ---
-title: 支持 Azure Arc 的特性和功能 SQL 托管实例
-description: 支持 Azure Arc 的特性和功能 SQL 托管实例
+title: 已启用 Azure Arc 的 SQL 托管实例的特性和功能
+description: 已启用 Azure Arc 的 SQL 托管实例的特性和功能
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,27 +9,27 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 9c42acb69e13cc1eb0fbba3fcafaec1451bc4d77
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
-ms.translationtype: MT
+ms.openlocfilehash: 9c3f973da688a20fa60f2fb649b2c8d689bc2a98
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589213"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076643"
 ---
-# <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>支持 Azure Arc 的特性和功能 SQL 托管实例
+# <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>已启用 Azure Arc 的 SQL 托管实例的特性和功能
 
-启用 Azure Arc 的 SQL 托管实例与 SQL Server 的最新稳定版本共享通用基本代码。 大多数标准 SQL 语言、查询处理和数据库管理功能都是相同的。 SQL Server 与 SQL 数据库或 SQL 托管实例都有以下功能：
+已启用 Azure Arc 的 SQL 托管实例与最新稳定版本的 SQL Server 共用一个通用代码库。 大多数标准 SQL 语言、查询处理和数据库管理功能都是相同的。 SQL Server 与 SQL 数据库或 SQL 托管实例都有以下功能：
 
 - 语言功能 - [流语言和关键字](/sql/t-sql/language-elements/control-of-flow)、[光标](/sql/t-sql/language-elements/cursors-transact-sql)、[数据类型](/sql/t-sql/data-types/data-types-transact-sql)、[DML 语句](/sql/t-sql/queries/queries)、[谓词](/sql/t-sql/queries/predicates)、[序号](/sql/relational-databases/sequence-numbers/sequence-numbers)、[存储过程](/sql/relational-databases/stored-procedures/stored-procedures-database-engine)和[变量](/sql/t-sql/language-elements/variables-transact-sql)的控制。
 - 数据库功能 - [自动优化（计划强制）](/sql/relational-databases/automatic-tuning/automatic-tuning)、[更改跟踪](/sql/relational-databases/track-changes/about-change-tracking-sql-server)、[数据库排序规则](/sql/relational-databases/collations/set-or-change-the-database-collation)、[包含的数据库](/sql/relational-databases/databases/contained-databases)、[包含的用户](/sql/relational-databases/security/contained-database-users-making-your-database-portable)、[数据压缩](/sql/relational-databases/data-compression/data-compression)、[数据库配置设置](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql)、[联机索引操作](/sql/relational-databases/indexes/perform-index-operations-online)、[分区](/sql/relational-databases/partitions/partitioned-tables-and-indexes)和[时态表](/sql/relational-databases/tables/temporal-tables)（[参阅入门指南](/sql/relational-databases/tables/getting-started-with-system-versioned-temporal-tables)）。
-- 安全功能-[应用程序角色](/sql/relational-databases/security/authentication-access/application-roles)、[动态数据屏蔽](/sql/relational-databases/security/dynamic-data-masking) ([通过 Azure 门户) 的 SQL 数据库动态数据掩码入门](../../azure-sql/database/dynamic-data-masking-configure-portal.md)[行级别安全性](/sql/relational-databases/security/row-level-security)
-- 多模型功能- [图形处理](/sql/relational-databases/graphs/sql-graph-overview)、 [JSON 数据](/sql/relational-databases/json/json-data-sql-server)、 [OPENXML](/sql/t-sql/functions/openxml-transact-sql)、 [空间](/sql/relational-databases/spatial/spatial-data-sql-server)、 [OPENJSON](/sql/t-sql/functions/openjson-transact-sql)和 [XML 索引](/sql/t-sql/statements/create-xml-index-transact-sql)。
+- 安全功能 - [应用程序角色](/sql/relational-databases/security/authentication-access/application-roles)、[动态数据掩码](/sql/relational-databases/security/dynamic-data-masking)（[通过 Azure 门户开始使用 SQL 数据库动态数据掩码](../../azure-sql/database/dynamic-data-masking-configure-portal.md)）、[行级别安全性](/sql/relational-databases/security/row-level-security)
+- 多模型功能 - [图形处理](/sql/relational-databases/graphs/sql-graph-overview)、[JSON 数据](/sql/relational-databases/json/json-data-sql-server)、[OPENXML](/sql/t-sql/functions/openxml-transact-sql)、[空间](/sql/relational-databases/spatial/spatial-data-sql-server)、[OPENJSON](/sql/t-sql/functions/openjson-transact-sql) 和 [XML 索引](/sql/t-sql/statements/create-xml-index-transact-sql)。
 
 
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="features-of-azure-arc-enabled-sql-managed-instance"></a>启用了 Azure Arc 的 SQL 托管实例功能
+## <a name="features-of-azure-arc-enabled-sql-managed-instance"></a>已启用 Azure Arc 的 SQL 托管实例的特性
 
 ###  <a name="rdbms-high-availability"></a><a name="RDBMSHA"></a> RDBMS High Availability  
   
@@ -53,7 +53,7 @@ ms.locfileid: "97589213"
 |加密备份|是|
 |Azure 的混合备份（URL 的备份）|是|
 
-<sup>1</sup> 在出现 pod 故障的情况下，新的 SQL 托管实例将启动并重新附加到包含数据的永久性卷。 [在此处了解有关 Kubernetes 永久性卷的详细信息](https://kubernetes.io/docs/concepts/storage/persistent-volumes)。
+<sup>1</sup> 在 pod 失败的情况下，新的 SQL 托管实例将启动并附加到包含相应数据的永久性卷。 [在此处了解有关 Kubernetes 永久性卷的详细信息](https://kubernetes.io/docs/concepts/storage/persistent-volumes)。
 
 <sup>2</sup> 未来版本将提供 AG 功能 
 
@@ -117,25 +117,25 @@ ms.locfileid: "97589213"
 | Feature | 已启用 Azure Arc 的 SQL 托管实例 |
 |--|--|
 | JSON | 是 |
-| 查询存储 | 是 |  |
-| 临时 | 是 |  |
-| 本机 XML 支持 | 是 |  |
-| XML 索引 | 是 |  |
-| MERGE 和 UPSERT 功能 | 是 |  |
-| 日期和时间数据类型 | 是 |  |
-| 国际化支持 | 是 |  |
+| 查询存储 | 是 | 
+| 临时 | 是 | 
+| 本机 XML 支持 | 是 | 
+| XML 索引 | 是 | 
+| MERGE 和 UPSERT 功能 | 是 | 
+| 日期和时间数据类型 | 是 | 
+| 国际化支持 | 是 | 
 | 全文和语义搜索 | 否 |
-| 查询中的语言规范 | 是 |  |
-| Service Broker（消息传递） | 是 |  |
-| Transact-SQL 端点 | 是 |  |
-| 图形 | 是 |  |
-| 机器学习服务 | 否 |  |
+| 查询中的语言规范 | 是 | 
+| Service Broker（消息传递） | 是 | 
+| Transact-SQL 端点 | 是 | 
+| 图形 | 是 | 
+| 机器学习服务 | 否 |
 | PolyBase | 否 |
 
 
 ### <a name="tools"></a>工具
 
-启用 Azure Arc 的 SQL 托管实例支持可帮助你管理数据的各种数据工具。
+已启用 Azure Arc 的 SQL 托管实例支持各种可帮助管理数据的数据工具。
 
 | **工具** | 已启用 Azure Arc 的 SQL 托管实例|
 | --- | --- | --- |
@@ -150,21 +150,21 @@ ms.locfileid: "97589213"
 | [SQL Server PowerShell](/sql/relational-databases/scripting/sql-server-powershell) | 是 |
 | [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) | 是 |
 
-<sup>1</sup> Azure 门户仅用于在预览期间查看只读模式下启用了 Azure ARC 的 SQL 托管实例。
+<sup>1</sup> Azure 门户仅用于在预览期间查看只读模式下的已启用 Azure Arc 的 SQL 托管实例。
 
 
-### <a name="unsupported-features--services"></a><a name="Unsupported"></a> 服务 & 不支持的功能
+### <a name="unsupported-features--services"></a><a name="Unsupported"></a> 不受支持的功能和服务
 
-以下功能和服务不适用于启用了 Azure Arc 的 SQL 托管实例。 随着时间的推移，对这些功能的支持将越来越多。
+以下功能和服务不适用于已启用 Azure Arc 的 SQL 托管实例。 随着时间的推移，对这些功能的支持将越来越多。
 
 | 区域 | 不支持的功能或服务 |
 |-----|-----|
 | **数据库引擎** | 合并复制 |
 | &nbsp; | Stretch DB |
 | &nbsp; | 具有第三方连接的分布式查询 |
-| &nbsp; | 除 SQL Server 和 Azure SQL 产品之外的其他数据源的链接服务器 |
+| &nbsp; | 与 SQL Server 和 Azure SQL 产品之外的其他数据源链接的链接服务器 |
 | &nbsp; | 系统扩展存储过程（XP_CMDSHELL 等） |
-| &nbsp; | FileTable，FILESTREAM |
+| &nbsp; | FileTable, FILESTREAM |
 | &nbsp; | 带有 EXTERNAL_ACCESS 或 UNSAFE 权限集的 CLR 程序集 |
 | &nbsp; | 缓冲池扩展 |
 | **SQL Server 代理** |  子系统：CmdExec、PowerShell、队列读取器、SSIS、SSAS、SSRS |

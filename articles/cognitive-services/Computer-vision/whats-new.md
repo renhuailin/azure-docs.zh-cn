@@ -10,16 +10,29 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 78746e7623f58af5ae9df829b48245295dc39f01
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: e42096fc32a504ae329d3b179004b6a123de4469
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487094"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365631"
 ---
 # <a name="whats-new-in-computer-vision"></a>计算机视觉中的新增功能
 
 了解服务中的新增功能。 这些内容可能包括发布说明、视频、博客文章和其他类型的信息。 请将本页加入书签，以随时了解该服务的最新信息。
+
+## <a name="april-2021"></a>2021 年 4 月
+
+### <a name="computer-vision-v32-ga"></a>计算机视觉 v3.2 GA
+
+计算机视觉 API v3.2 现已正式发布，进行了以下更新：
+* 改善了图像标记模型：根据图像中显示的对象、操作和内容分析视觉对象内容并生成相关标记。 此功能通过[标记图像 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f200) 提供。 有关详细信息，请参阅图像分析[操作指南](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi)和[概述](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis)。
+* 更新的内容审查模型：检测是否存在成人内容并提供标志来筛选包含成人、猥亵和血腥视觉内容的图像。 这可通过[分析 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) 获得。 有关详细信息，请参阅图像分析[操作指南](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi)和[概述](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis)。
+* [用于 73 种语言的 OCR（读取）](./language-support.md#optical-character-recognition-ocr)，这些语言包括简体中文和繁体中文、日语、韩语和拉丁语言。
+* [OCR (读取) ](./overview-ocr.md) 还可作为本地部署的 [Distroless 容器](./computer-vision-how-to-install-containers.md?tabs=version-3-2)。
+
+> [!div class="nextstepaction"]
+> [请参阅计算机视觉 v3.2 GA](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)
 
 ## <a name="march-2021"></a>2021 年 3 月
 
@@ -40,7 +53,7 @@ ms.locfileid: "102487094"
 * 对于多页文档，仅提取所选页面的文本。
 * 可为本地部署用作 [Distroless 容器](./computer-vision-how-to-install-containers.md?tabs=version-3-2)。
 
-[详细了解](concept-recognizing-text.md)读取 API。
+若要了解详细信息，请参阅[读取 API 操作指南](Vision-API-How-to-Topics/call-read-api.md)。
 
 > [!div class="nextstepaction"]
 > [使用读取 API v3.2 公共预览版](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)
@@ -50,7 +63,7 @@ ms.locfileid: "102487094"
 
 ### <a name="spatial-analysis-container-update"></a>空间分析容器更新
 
-已发布新版本的[空间分析容器](spatial-analysis-container.md)，它带有新的功能集。 借助此 Docker 容器，可分析实时流视频，了解人们与他们在物理环境中的移动之间的空间关系。 
+已发布提供新功能集的[空间分析容器](spatial-analysis-container.md)新版本。 借助此 Docker 容器，可分析实时流视频，了解人们与他们在物理环境中的移动之间的空间关系。 
 
 * 现可配置[空间分析操作](spatial-analysis-operations.md)来检测某人是否正戴着口罩等保护性面罩。 
     * 可通过配置 `ENABLE_FACE_MASK_CLASSIFIER` 参数，为 `personcount`、`personcrossingline` 和 `personcrossingpolygon` 操作启用口罩分类器。
@@ -59,7 +72,7 @@ ms.locfileid: "102487094"
 * 中断性变更：已将 personZoneEvent 事件重命名为 personZoneEnterExitEvent 。 此事件在某人进入或离开该区域时由 personcrossingpolygon 操作引发，并提供与所穿过区域的编号侧相关的方向信息。
 * 可在所有操作中将视频 URL 作为“专用参数/已模糊处理”提供。 模糊处理现在是可选操作，仅当 `KEY` 和 `IV` 作为环境变量提供时才有效。
 * 默认情况下，对所有操作启用了校准。 设置 `do_calibration: false` 可禁用它。
-* 通过 `enable_recalibration` 参数增加了对自动重新校准的支持（默认禁用）；有关详细信息，请参阅[空间分析操作](./spatial-analysis-operations.md)
+* 已通过 `enable_recalibration` 参数增加对自动重新校准的支持（默认禁用），请参阅[空间分析操作](./spatial-analysis-operations.md)了解有关详细信息
 * 照相机校准参数设置为 `DETECTOR_NODE_CONFIG`。 有关详细信息，请参阅[空间分析操作](./spatial-analysis-operations.md)。
 
 
@@ -73,7 +86,7 @@ ms.locfileid: "102487094"
 
 ### <a name="spatial-analysis-container-preview"></a>空间分析容器预览版
 
-[空间分析容器](spatial-analysis-container.md)现处于预览版状态。 利用计算机视觉的空间分析功能，可以分析实时流视频，了解人们与他们在物理环境中的移动之间的空间关系。 空间分析是可以在本地使用的一种 Docker 容器。 
+[空间分析容器](spatial-analysis-container.md)现提供预览版。 利用计算机视觉的空间分析功能，你可以分析实时流视频，了解人们与他们在物理环境中的移动之间的空间关系。 空间分析是一种可以在本地使用的 Docker 容器。 
 
 ### <a name="read-api-v31-public-preview-adds-ocr-for-japanese"></a>读取 API v3.1 公共预览版添加了日语的 OCR
 计算机视觉的读取 API v3.1 公共预览版添加了以下功能：
@@ -83,7 +96,7 @@ ms.locfileid: "102487094"
 
 * 此预览版本的读取 API 支持英语、荷兰语、法语、德语、意大利语、日语、葡萄牙语、简体中文和西班牙语。
 
-若要了解详细信息，请参阅[读取 API 概述](concept-recognizing-text.md)。
+若要了解详细信息，请参阅[读取 API 操作指南](Vision-API-How-to-Topics/call-read-api.md)。
 
 > [!div class="nextstepaction"]
 > [详细了解读取 API v3.1 公共预览版 2](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)
@@ -95,18 +108,20 @@ ms.locfileid: "102487094"
 
 * 此预览版本的读取 API 支持英语、荷兰语、法语、德语、意大利语、葡萄牙语、简体中文和西班牙语。
 
-若要了解详细信息，请参阅[读取 API 概述](concept-recognizing-text.md)。
+若要了解详细信息，请参阅[读取 API 操作指南](Vision-API-How-to-Topics/call-read-api.md)。
 
 > [!div class="nextstepaction"]
 > [详细了解读取 API v3.1 公共预览版 1](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
 
 ## <a name="may-2020"></a>2020 年 5 月
-计算机视觉 API v3.0 正式发布，并对[读取 API](concept-recognizing-text.md) 进行了更新：
+计算机视觉 API 3.0 版本正式发布，并对读取 API 进行了更新：
 
 * 支持英语、荷兰语、法语、德语、意大利语、葡萄牙语和西班牙语
 * 准确度改进
 * 每个已提取单词的置信度分数
 * 新输出格式
+
+若要了解详细信息，请参阅 [OCR 概述](overview-ocr.md)。
 
 ## <a name="march-2020"></a>2020 年 3 月
 

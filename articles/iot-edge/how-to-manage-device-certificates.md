@@ -8,12 +8,12 @@ ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e5c85d2c3049ea8718d0a9e0e574c13d0d99394c
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: f3b6bd19d47658e5ad079f0b731cbafc866bb333
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200277"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105045767"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>管理 IoT Edge 设备上的证书
 
@@ -67,9 +67,18 @@ ms.locfileid: "103200277"
 
 在 IoT Edge 设备上安装证书链，并将 IoT Edge 运行时配置为引用新证书。
 
-将三个证书和密钥文件复制到 IoT Edge 设备。 可以使用 [Azure Key Vault](../key-vault/index.yml) 之类的服务或[安全复制协议](https://www.ssh.com/ssh/scp/)之类的功能来移动证书文件。  如果在 IoT Edge 设备本身上生成了证书，则可以跳过此步骤，并使用工作目录的路径。
+将三个证书和密钥文件复制到 IoT Edge 设备。 可以使用 [Azure Key Vault](../key-vault/index.yml) 之类的服务或[安全复制协议](https://www.ssh.com/ssh/scp/)之类的功能来移动证书文件。 如果在 IoT Edge 设备本身上生成了证书，则可以跳过此步骤，并使用工作目录的路径。
 
-例如，如果使用示例脚本[创建了演示证书](how-to-create-test-certificates.md)，请将以下文件复制到 IoT-Edge 设备：
+如果使用的是 IoT Edge for Linux on Windows，则需要使用 Azure IoT Edge `id_rsa` 文件中的 SSH 密钥来验证主机 OS 和 Linux 虚拟机之间的文件传输。 可以使用以下命令执行已验证的 SCP：
+
+   ```powershell-interactive
+   C:\WINDOWS\System32\OpenSSH\scp.exe -i 'C:\Program Files\Azure IoT Edge\id_rsa' <PATH_TO_SOURCE_FILE> iotedge-user@<VM_IP>:<PATH_TO_FILE_DESTINATION>
+   ```
+
+   >[!NOTE]
+   >可以通过 `Get-EflowVmAddr` 命令查询 Linux 虚拟机的 IP 地址。
+
+如果使用示例脚本[创建了演示证书](how-to-create-test-certificates.md)，请将以下文件复制到 IoT-Edge 设备：
 
 * 设备 CA 证书：`<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
 * 设备 CA 私钥：`<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
@@ -80,21 +89,13 @@ ms.locfileid: "103200277"
 
 1. 打开 IoT Edge 安全守护程序配置文件。
 
-   * Windows： `C:\ProgramData\iotedge\config.yaml`
-   * Linux：`/etc/iotedge/config.yaml`
+   * Linux 和 IoT Edge for Linux on Windows：`/etc/iotedge/config.yaml`
+
+   * 使用 Windows 容器的 Windows：`C:\ProgramData\iotedge\config.yaml`
 
 1. 将 config.yaml 文件中的 certificate 属性设置为 IoT Edge 设备上的证书和密钥文件的文件 URI 路径。 删除 certificate 属性前面的 `#` 字符，以取消注释四个代码行。 请确保 **certificates:** 行前面没有空格，并且嵌套项缩进了两个空格。 例如：
 
-   * Windows:
-
-      ```yaml
-      certificates:
-        device_ca_cert: "file:///C:/<path>/<device CA cert>"
-        device_ca_pk: "file:///C:/<path>/<device CA key>"
-        trusted_ca_certs: "file:///C:/<path>/<root CA cert>"
-      ```
-
-   * Linux：
+   * Linux 和 IoT Edge for Linux on Windows：
 
       ```yaml
       certificates:
@@ -103,13 +104,23 @@ ms.locfileid: "103200277"
         trusted_ca_certs: "file:///<path>/<root CA cert>"
       ```
 
+   * 使用 Windows 容器的 Windows：
+
+      ```yaml
+      certificates:
+        device_ca_cert: "file:///C:/<path>/<device CA cert>"
+        device_ca_pk: "file:///C:/<path>/<device CA key>"
+        trusted_ca_certs: "file:///C:/<path>/<root CA cert>"
+      ```
+
 1. 在 Linux 设备上，确保用户 **iotedge** 对保存证书的目录拥有读取权限。
 
 1. 如果以前在设备上使用过 IoT Edge 的任何其他证书，请在启动或重启 IoT Edge 之前删除以下两个目录中的文件：
 
-   * Windows：`C:\ProgramData\iotedge\hsm\certs` 和 `C:\ProgramData\iotedge\hsm\cert_keys`
+   * Linux 和 IoT Edge for Linux on Windows：`/var/lib/iotedge/hsm/certs` 和 `/var/lib/iotedge/hsm/cert_keys`
 
-   * Linux：`/var/lib/iotedge/hsm/certs` 和 `/var/lib/iotedge/hsm/cert_keys`
+   * 使用 Windows 容器的 Windows：`C:\ProgramData\iotedge\hsm\certs` 和 `C:\ProgramData\iotedge\hsm\cert_keys`
+
 :::moniker-end
 <!-- end 1.1 -->
 
@@ -177,34 +188,36 @@ ms.locfileid: "103200277"
 
 1. 删除 `hsm` 文件夹的内容以删除所有以前生成的证书。
 
-   Windows：`C:\ProgramData\iotedge\hsm\certs` 和 `C:\ProgramData\iotedge\hsm\cert_keys`；Linux：`/var/lib/iotedge/hsm/certs` 和 `/var/lib/iotedge/hsm/cert_keys`
+   * Linux 和 IoT Edge for Linux on Windows：`/var/lib/iotedge/hsm/certs` 和 `/var/lib/iotedge/hsm/cert_keys`
+
+   * 使用 Windows 容器的 Windows：`C:\ProgramData\iotedge\hsm\certs` 和 `C:\ProgramData\iotedge\hsm\cert_keys`
 
 1. 重启 IoT Edge 服务。
 
-   Windows:
-
-   ```powershell
-   Restart-Service iotedge
-   ```
-
-   Linux：
+   * Linux 和 IoT Edge for Linux on Windows：
 
    ```bash
    sudo systemctl restart iotedge
    ```
 
-1. 确认生存期设置。
-
-   Windows:
+   * 使用 Windows 容器的 Windows：
 
    ```powershell
-   iotedge check --verbose
+   Restart-Service iotedge
    ```
 
-   Linux：
+1. 确认生存期设置。
+
+   * Linux 和 IoT Edge for Linux on Windows：
 
    ```bash
    sudo iotedge check --verbose
+   ```
+
+   * 使用 Windows 容器的 Windows：
+
+   ```powershell
+   iotedge check --verbose
    ```
 
    查看“生产就绪状态: 证书”检查的输出，其中列出了自动生成的设备 CA 证书在过期前的天数。

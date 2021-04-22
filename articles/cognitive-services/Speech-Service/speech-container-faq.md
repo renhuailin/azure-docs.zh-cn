@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 28a044f42d0774d940521964b68b38a0f35bcdbb
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 16158b4ecfb46ea9092fe9eeb31cc4dee259b1ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107387949"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103573738"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>语音服务容器常见问题解答 (FAQ)
 
@@ -33,7 +33,7 @@ ms.locfileid: "107387949"
 
 请考虑一下 `ja-JP` 容器和最新模型。 声学模型对 CPU 的要求最高，而语言模型对内存的要求最高。 对使用情况进行基准测试时，当音频实时传入时（比如通过麦克风传入），处理一种语音转文本请求需要使用约 0.6 个 CPU 核心。 如果音频传入速度比实时速度更快（比如通过文件传入），CPU 使用量可提升一倍（1.2x 核心）。 同时，下面列出的内存是用于解码语音的操作内存。 它没有考虑将驻留在文件缓存中的语言模型的实际完整大小。 `ja-JP` 会多出 2 GB；`en-US` 可能会多出更多（6-7 GB）。
 
-如果计算机内存不足，并且你尝试在该计算机上部署多种语言，则文件缓存可能已满，并且操作系统被强制进出模型页面。对于正在运行的脚本，这可能会造成灾难性后果，并可能导致性能下降和其他性能影响。
+如果计算机内存不足，而且你尝试在该计算机上部署多种语言，则文件缓存可能已满，并且操作系统被强制进出页面模型。对于正在运行的听录，这可能会造成灾难性后果，并可能导致性能下降和其他性能影响。
 
 此外，我们为具有[高级矢量扩展 (AVX2) ](speech-container-howto.md#advanced-vector-extension-support) 指令集的计算机预先打包了可执行文件。 具有 AVX512 指令集的计算机将需要为该目标生成代码，而为 10 种语言启动 10 个容器可能会暂时耗尽 CPU 资源。 Docker 日志中会显示如下消息：
 
@@ -355,7 +355,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 
 文档指出要公开其他端口，但我这样做以后，LUIS 容器仍在侦听端口 5000？
 
-答案：尝试 `-p <outside_unique_port>:5000`。 例如 `-p 5001:5000`。
+答案：尝试 `-p <outside_unique_port>:5000`。 例如，`-p 5001:5000`。
 
 
 <br>
@@ -387,13 +387,13 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 
 | 容器      | 最小值             | 建议         |
 |----------------|---------------------|---------------------|
-| 语音转文本 | 2 核心，2-GB 内存 | 4 核心，4 GB 内存 |
+| 语音转文本 | 2 核心，2 GB 内存 | 4 核心，4 GB 内存 |
 
 # <a name="custom-speech-to-text"></a>[自定义语音转文本](#tab/cstt)
 
 | 容器             | 最小值             | 建议         |
 |-----------------------|---------------------|---------------------|
-| 自定义语音转文本 | 2 核心，2-GB 内存 | 4 核心，4 GB 内存 |
+| 自定义语音转文本 | 2 核心，2 GB 内存 | 4 核心，4 GB 内存 |
 
 # <a name="text-to-speech"></a>[文本转语音](#tab/tts)
 
@@ -474,7 +474,7 @@ Content-Length: 0
 
 <details>
 <summary>
-<b>为什么容器以非根用户的身份运行？这样可能会导致哪些问题？</b>
+<b>容器为何以非根用户的身份运行？这可能会导致哪些问题？</b>
 </summary>
 
 答案：请注意，容器中的默认用户为非根用户。 这可以防止进程对容器转义和获取对主机节点的提升权限。 默认情况下，某些平台（如 OpenShift 容器平台）已经通过使用任意分配的用户 ID 运行容器来避免此问题。 对于这些平台，非根用户需要具有向任何需要写入的外部映射卷进行写入的权限。 例如，日志记录文件夹或自定义模型下载文件夹。
@@ -536,6 +536,76 @@ auto result = synthesizer->SpeakTextAsync("{{{text2}}}").get();
 ```
 
  调用 `SetSpeechSynthesisVoiceName` 函数是因为具有更新的文本转语音引擎的容器需要语音名称。
+
+<br>
+</details>
+
+<details>
+<summary>
+<b>如何在语音容器中使用语音 SDK v1.7？</b>
+</summary>
+
+答案：语音容器提供三个终结点，具有不同的用途，它们被定义为语音模式 - 请参阅以下内容：
+
+## <a name="speech-modes"></a>语音模式
+
+[!INCLUDE [speech-modes](includes/speech-modes.md)]
+
+它们具有不同的用途，且使用方式不同。
+
+Python [示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py)：
+- 对于使用自定义终结点（即使用终结点参数的 `SpeechConfig`）的单个识别（交互模式），请参阅 `speech_recognize_once_from_file_with_custom_endpoint_parameters()`。
+- 对于连续识别（对话模式），只需修改以使用上述自定义终结点，请参阅 `speech_recognize_continuous_from_file()`。
+- 若要在上面的示例中启用听写（除非需要），请在创建 `speech_config` 之后添加代码 `speech_config.enable_dictation()`。
+
+在 C# 中，若要启用听写，请调用 `SpeechConfig.EnableDictation()` 函数。
+
+### <a name="fromendpoint-apis"></a>`FromEndpoint` API
+| 语言 | API 详细信息 |
+|----------|:------------|
+| C++ | <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#fromendpoint" target="_blank">`SpeechConfig::FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
+| C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromendpoint" target="_blank">`SpeechConfig.FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
+| Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromendpoint" target="_blank">`SpeechConfig.fromendpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
+| Objective-C | <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithendpoint" target="_blank">`SPXSpeechConfiguration:initWithEndpoint;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
+| Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
+| JavaScript | 目前不受支持，也无支持计划。 |
+
+<br>
+</details>
+
+<details>
+<summary>
+<b>如何在语音容器中使用语音 SDK v1.8？</b>
+</summary>
+
+答案：可以使用一个新的 `FromHost` API。 它不会替换或修改任何现有 API。 它只是提供了使用自定义主机创建语音配置的替代方法。
+
+### <a name="fromhost-apis"></a>`FromHost` API
+
+| 语言 | API 详细信息 |
+|--|:-|
+| C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost" target="_blank">`SpeechConfig.FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
+| C++ | <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#fromhost" target="_blank">`SpeechConfig::FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
+| Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromhost" target="_blank">`SpeechConfig.fromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
+| Objective-C | <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithhost" target="_blank">`SPXSpeechConfiguration:initWithHost;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
+| Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
+| JavaScript | 目前不支持 |
+
+> 参数：主机（必需）、订阅密钥（可选，如果在不使用该参数时也能使用该服务）。
+
+主机的格式为 `protocol://hostname:port`，其中 `:port` 为可选项（参见以下内容）：
+- 如果容器在本地运行，则主机名为 `localhost`。
+- 如果容器在远程服务器上运行，则使用该服务器的主机名或 IPv4 地址。
+
+语音转文本的主机参数示例：
+- `ws://localhost:5000` - 使用端口 5000 与本地容器的非安全连接
+- `ws://some.host.com:5000` - 与在远程服务器上运行的容器的非安全连接
+
+上面的 Python 示例，但使用 `host` 参数而不是 `endpoint`：
+
+```python
+speech_config = speechsdk.SpeechConfig(host="ws://localhost:5000")
+```
 
 <br>
 </details>

@@ -1,14 +1,14 @@
 ---
 title: 捕获浏览器跟踪以进行故障排除
 description: 捕获浏览器跟踪中的网络信息，以帮助排查 Azure 门户的问题。
-ms.date: 05/11/2020
+ms.date: 03/25/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 504a32fb63022f97e8049c7c1ccc7721bbac31ab
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 63bc3e93187274db607b5f60216de461729801dc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96745989"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563475"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>捕获浏览器跟踪以进行故障排除
 
@@ -18,7 +18,7 @@ ms.locfileid: "96745989"
 
 Google Chrome 和 (Chromium)都基于 [Chromium 开放源代码项目](https://www.chromium.org/Home)。 以下步骤说明如何使用开发人员工具，这些工具在这两个浏览器中非常类似。 有关详细信息，请参阅 [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) 和 [Microsoft Edge (Chromium) 开发工具](/microsoft-edge/devtools-guide-chromium)。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 必须在开始跟踪之前登录，以免跟踪包含登录相关的敏感信息。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 必须在开始跟踪之前登录，以免跟踪包含登录相关的敏感信息。 
 
 1. 使用[步骤录制器](https://support.microsoft.com/help/22878/windows-10-record-steps)开始录制在门户中执行的步骤。
 
@@ -64,7 +64,7 @@ Google Chrome 和 (Chromium)都基于 [Chromium 开放源代码项目](https://w
 
 以下步骤说明如何在 Microsoft Edge (EdgeHTML) 中使用开发人员工具。 有关详细信息，请参阅 [Microsoft Edge (EdgeHTML) 开发人员工具](/microsoft-edge/devtools-guide)。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 必须在开始跟踪之前登录，以免跟踪包含登录相关的敏感信息。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 必须在开始跟踪之前登录，以免跟踪包含登录相关的敏感信息。 
 
 1. 使用[步骤录制器](https://support.microsoft.com/help/22878/windows-10-record-steps)开始录制在门户中执行的步骤。
 
@@ -120,7 +120,7 @@ Google Chrome 和 (Chromium)都基于 [Chromium 开放源代码项目](https://w
 
         ![Safari 高级首选项的屏幕截图](media/capture-browser-trace/safari-show-develop-menu.png)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 必须在开始跟踪之前登录，以免跟踪包含登录相关的敏感信息。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 必须在开始跟踪之前登录，以免跟踪包含登录相关的敏感信息。 
 
 1. 开始记录在门户中执行的步骤。 有关详细信息，请参阅[如何在 Mac 上录制屏幕](https://support.apple.com/HT208721)。
 
@@ -190,13 +190,13 @@ Google Chrome 和 (Chromium)都基于 [Chromium 开放源代码项目](https://w
 
     ![浏览器跟踪结果的屏幕截图](media/capture-browser-trace/firefox-browser-trace-results.png)
 
-1. 重现意外的门户行为后，请选择“HAR 导出/导入”，然后选择“将所有内容另存为 HAR” 。
+1. 重现意外的门户行为后，选择“全部另存为 HAR”。
 
     ![“导出 HAR”的屏幕截图](media/capture-browser-trace/firefox-network-export-har.png)
 
 1. 停止 Windows 上的步骤录制或 Mac 上的屏幕录制，并保存录制。
 
-1. 在“浏览器开发人员工具”窗格中，选择“控制台”选项卡。右键单击其中一条消息，然后选择“将可见消息导出到”，并将控制台输出保存为文本文件。
+1. 在“浏览器开发人员工具”窗格中，选择“控制台”选项卡。右键单击其中一条消息，然后选择“将可见消息导出到”，并将控制台输出保存为文本文件 。
 
     ![控制台输出屏幕截图](media/capture-browser-trace/firefox-console-select.png)
 

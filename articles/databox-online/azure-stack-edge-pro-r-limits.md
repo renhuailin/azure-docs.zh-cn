@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge Pro R 限制 |Microsoft Docs
-description: 描述 Azure Stack Edge Pro R 的系统限制和建议大小。
+title: Azure Stack Edge Pro R 限制 | Microsoft Docs
+description: 介绍了 Azure Stack Edge Pro R 的系统限制与建议的大小。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: alkohli
 ms.openlocfilehash: dfff3bdd716c54a6c83dbc9fec63c794c1fba85b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96466324"
 ---
 # <a name="azure-stack-edge-pro-r-limits"></a>Azure Stack Edge Pro R 限制
 
-部署和操作 Azure Stack Edge Pro R 解决方案时，请考虑这些限制。
+在部署和操作 Azure Stack Edge Pro R 解决方案时请考虑这些限制。
 
 ## <a name="azure-stack-edge-pro-r-service-limits"></a>Azure Stack Edge Pro R 服务限制
 
@@ -25,14 +25,14 @@ ms.locfileid: "96466324"
 
 ## <a name="azure-stack-edge-pro-r-device-limits"></a>Azure Stack Edge Pro R 设备限制
 
-下表描述了 Azure Stack Edge Pro R 设备的限制。
+下表介绍了 Azure Stack Edge Pro R 设备的限制。
 
 | 说明 | 值 |
 |---|---|
-|不是。 设备的文件数 |1 亿 |
-|不是。 每个容器的共享数 |1 |
-|最大值 每个设备的共享终结点和 REST 终结点| 24 |
-|最大值 每台设备的分层存储帐户| 24|
+|不知道。 设备的文件数 |1 亿 |
+|不知道。 每个容器的共享数 |1 |
+|每个设备的最大 共享终结点和 REST 终结点数| 24 |
+|每个设备的最大 分层存储帐户数| 24|
 |写入到共享的最大文件大小| 5 TB |
 |每个设备的最大资源组数| 800 |
 

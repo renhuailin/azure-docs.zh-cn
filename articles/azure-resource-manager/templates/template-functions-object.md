@@ -1,18 +1,18 @@
 ---
 title: 模板函数 - 对象
-description: 描述在 Azure 资源管理器模板中使用的用于处理对象 (ARM 模板) 的函数。
+description: 介绍可在 Azure 资源管理器模板（ARM 模板）中用来处理对象的函数。
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: 5e13177db1a7cf2f19a822363cb3884474566add
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96920450"
 ---
 # <a name="object-functions-for-arm-templates"></a>ARM 模板的对象函数
 
-资源管理器提供了几个函数，用于在 Azure 资源管理器模板中处理对象 (ARM 模板) ：
+资源管理器提供了多个函数，用于处理 Azure 资源管理器模板（ARM 模板）中的对象：
 
 * [contains](#contains)
 * [createObject](#createobject)
@@ -33,7 +33,7 @@ ms.locfileid: "96920450"
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | container |是 |数组、对象或字符串 |包含要查找的值的值。 |
 | itemToFind |是 |字符串或整数 |要查找的值。 |
@@ -141,11 +141,11 @@ output arrayFalse bool = contains(arrayToTest, 'four')
 
 `createObject(key1, value1, key2, value2, ...)`
 
-从键和值创建对象。 `createObject`Bicep 不支持该函数。  使用构造对象 `{}` 。
+从键和值创建对象。 Bicep 不支持 `createObject` 函数。  使用 `{}` 构造对象。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | key1 |否 |string |键的名称。 |
 | value1 |否 |int、布尔值、字符串、对象或数组 |键的值。 |
@@ -219,7 +219,7 @@ output newObject object = {
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | itemToTest |是 |数组、对象或字符串 |要检查是否为空的值。 |
 
@@ -300,7 +300,7 @@ output stringEmpty bool = empty(testString)
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或对象 |用于查找通用元素的第一个值。 |
 | arg2 |是 |数组或对象 |用于查找通用元素的第二个值。 |
@@ -407,7 +407,7 @@ output arrayOutput array = intersection(firstArray, secondArray)
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |string |要转换为 JSON 的值。 字符串必须是格式正确的 JSON 字符串。 |
 
@@ -538,7 +538,7 @@ output concatObjectOutput object = json(concat('{"a": "', concatValue, '"}'))
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组、字符串或对象 |用于获取元素数的数组、用于获取字符数的字符串，或用于获取根级属性数的对象。 |
 
@@ -638,7 +638,7 @@ output objectLength int = length(objectToTest)
 
 `null()`
 
-返回 Null。 `null`函数在 Bicep 中不可用。 请改用 `null` 关键字。
+返回 Null。 `null` 函数在 Bicep 中不可用。 请改用 `null` 关键字。
 
 ### <a name="parameters"></a>参数
 
@@ -690,7 +690,7 @@ output emptyOutput bool = empty(null)
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或对象 |用于联接元素的第一个值。 |
 | arg2 |是 |数组或对象 |用于联接元素的第二个值。 |
@@ -792,4 +792,4 @@ output arrayOutput array = union(firstArray, secondArray)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 ARM 模板中各部分的说明，请参阅 [了解 arm 模板的结构和语法](template-syntax.md)。
+* 有关 ARM 模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。

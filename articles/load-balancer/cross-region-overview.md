@@ -14,10 +14,10 @@ ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
 ms.openlocfilehash: 8e14b22895c4734f1efd8688a5b20c946422a080
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103225619"
 ---
 # <a name="cross-region-load-balancer-preview"></a>跨区域负载均衡器（预览版）
@@ -101,7 +101,7 @@ Azure 跨区域负载均衡器使用地理邻近性负载均衡算法来做出�
 * 美国西部
 * 西欧
 * 东南亚
-* 美国中部
+* Central US
 * 北欧
 * 东亚
 
@@ -126,10 +126,10 @@ Azure 跨区域负载均衡器使用地理邻近性负载均衡算法来做出�
 * 英国南部 
 * 东南亚 
 * 美国中北部 
-* Japan East 
+* 日本东部 
 * 东亚 
 * 美国中西部 
-* Australia Southeast 
+* 澳大利亚东南部 
 * 澳大利亚东部 
 * 印度中部 
 

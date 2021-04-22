@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 24c0d57490ecd039039992310f93ca3e21c47b3b
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 755386bfa36b18796eccec0020efe9136e0215cd
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103563481"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106068143"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>使用 Python 配置自动化 ML 试验
 
@@ -47,6 +47,9 @@ ms.locfileid: "103563481"
     * 创建一个计算实例，该实例将自动安装 SDK 并针对 ML 工作流进行预先配置。 有关详细信息，请参阅[创建和管理 Azure 机器学习计算实例](how-to-create-manage-compute-instance.md)。 
 
     * [自行安装 `automl` 包](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)，其中包括 SDK [默认安装](/python/api/overview/azure/ml/install#default-install)。
+    
+    > [!WARNING]
+    > Python 3.8 与 `automl` 不兼容。 
 
 ## <a name="select-your-experiment-type"></a>选择试验类型
 
@@ -217,7 +220,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ### <a name="primary-metrics-for-classification-scenarios"></a>分类方案的主要指标 
 
-对于类别偏斜严重（类别不均衡）的小型数据集或预期的指标值非常接近 0.0 或 1.0 时，发布的阈值指标（如 `accuracy`、`average_precision_score_weighted`、`norm_macro_recall` 和 `precision_score_weighted`）可能也不会进行优化。 在这些情况下，对于主要指标，`AUC_weighted` 可能是更好的选择。 自动机器学习完成后，可以根据最能满足你业务需求的指标选择所需模型。
+对于类别偏斜严重（类别不均衡）的小型数据集或预期的指标值非常接近 0.0 或 1.0 时，发布的阈值指标（如 `accuracy`、`average_precision_score_weighted`、`norm_macro_recall` 和 `precision_score_weighted`）可能也不是最优的。 在这些情况下，对于主要指标，`AUC_weighted` 可能是更好的选择。 自动机器学习完成后，可以根据最能满足你业务需求的指标选择所需模型。
 
 | 指标 | 示例用例 |
 | ------ | ------- |
@@ -386,16 +389,113 @@ run = experiment.submit(automl_config, show_output=True)
 
 ## <a name="explore-models-and-metrics"></a>探索模型和指标
 
-如果在笔记本中操作，可以在小组件或内联单元中查看训练结果。 有关更多详细信息，请参阅[跟踪和评估模型](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs)。
+自动化 ML 提供用于监视和评估训练结果的选项。 
 
-请参阅[评估自动化机器学习试验结果](how-to-understand-automated-ml.md)，查看为每次运行提供的性能图表和指标的定义和示例。 
+* 如果在笔记本中操作，可以在小组件或内联单元中查看训练结果。 有关更多详细信息，请参阅[如何监视自动化 ML 运行](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs)。
 
-若要获取特征化摘要并了解哪些功能已添加到特定模型，请参阅[特征化透明度](how-to-configure-auto-features.md#featurization-transparency)。 
+* 有关为每次运行提供的性能图表和指标的定义和示例，请参阅[评估自动化机器学习试验结果](how-to-understand-automated-ml.md)。 
 
+* 若要获取特征化摘要并了解哪些功能已添加到特定模型，请参阅[特征化透明度](how-to-configure-auto-features.md#featurization-transparency)。 
+
+你可以使用以下自定义代码解决方案查看应用于特定自动化 ML 运行的超参数、缩放和规范化技术以及算法。 
+
+下面定义了自定义方法 `print_model()`，该方法打印自动化 ML 训练管道的每个步骤的超参数。
+ 
+```python
+from pprint import pprint
+
+def print_model(model, prefix=""):
+    for step in model.steps:
+        print(prefix + step[0])
+        if hasattr(step[1], 'estimators') and hasattr(step[1], 'weights'):
+            pprint({'estimators': list(e[0] for e in step[1].estimators), 'weights': step[1].weights})
+            print()
+            for estimator in step[1].estimators:
+                print_model(estimator[1], estimator[0]+ ' - ')
+        elif hasattr(step[1], '_base_learners') and hasattr(step[1], '_meta_learner'):
+            print("\nMeta Learner")
+            pprint(step[1]._meta_learner)
+            print()
+            for estimator in step[1]._base_learners:
+                print_model(estimator[1], estimator[0]+ ' - ')
+        else:
+            pprint(step[1].get_params())
+            print()   
+```
+
+对于刚刚在同一个试验笔记本中提交和训练的本地或远程运行，可以使用 `get_output()` 方法传入最佳模型。 
+
+```python
+best_run, fitted_model = run.get_output()
+print(best_run)
+         
+print_model(fitted_model)
+```
+
+以下输出表明：
+ 
+* StandardScalerWrapper 技术用于在训练之前缩放和规范化数据。
+
+* XGBoostClassifier 算法被识别为最佳运行，并显示了超参数值。 
+
+```python
+StandardScalerWrapper
+{'class_name': 'StandardScaler',
+ 'copy': True,
+ 'module_name': 'sklearn.preprocessing.data',
+ 'with_mean': False,
+ 'with_std': False}
+
+XGBoostClassifier
+{'base_score': 0.5,
+ 'booster': 'gbtree',
+ 'colsample_bylevel': 1,
+ 'colsample_bynode': 1,
+ 'colsample_bytree': 0.6,
+ 'eta': 0.4,
+ 'gamma': 0,
+ 'learning_rate': 0.1,
+ 'max_delta_step': 0,
+ 'max_depth': 8,
+ 'max_leaves': 0,
+ 'min_child_weight': 1,
+ 'missing': nan,
+ 'n_estimators': 400,
+ 'n_jobs': 1,
+ 'nthread': None,
+ 'objective': 'multi:softprob',
+ 'random_state': 0,
+ 'reg_alpha': 0,
+ 'reg_lambda': 1.6666666666666667,
+ 'scale_pos_weight': 1,
+ 'seed': None,
+ 'silent': None,
+ 'subsample': 0.8,
+ 'tree_method': 'auto',
+ 'verbose': -10,
+ 'verbosity': 1}
+```
+
+如果想了解工作区中其他试验的现有运行，请获取要浏览的特定运行 ID，并将其传递到 `print_model()` 方法中。 
+
+```python
+from azureml.train.automl.run import AutoMLRun
+
+ws = Workspace.from_config()
+experiment = ws.experiments['automl-classification']
+automl_run = AutoMLRun(experiment, run_id = 'AutoML_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx')
+
+automl_run
+best_run, model_from_aml = automl_run.get_output()
+
+print_model(model_from_aml)
+
+```
 > [!NOTE]
 > 自动化 ML 使用的算法本身具有随机性，这可能会导致建议的模型最终指标分数（如准确度）出现细微差异。 自动化 ML 还可在必要时对数据执行操作，例如训练-测试拆分、训练-验证拆分或交叉验证。 因此，如果多次使用相同的配置设置和主要指标运行一个试验，你可能会发现由于这些因素导致每个试验最终指标分数存在差异。 
 
 ## <a name="register-and-deploy-models"></a>注册和部署模型
+
 可以注册模型，以便以后使用。 
 
 若要从自动化 ML 运行注册模型，请使用 [`register_model()`](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) 方法。 

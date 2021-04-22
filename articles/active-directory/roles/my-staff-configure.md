@@ -14,10 +14,10 @@ ms.author: rolyon
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
 ms.openlocfilehash: 1a380c8a3d766c3c11d8cba1148383d924f65a1b
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103224990"
 ---
 # <a name="manage-your-users-with-my-staff"></a>使用“我的员工”管理用户

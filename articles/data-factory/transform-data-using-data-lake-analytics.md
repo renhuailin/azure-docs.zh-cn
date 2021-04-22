@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
 ms.openlocfilehash: 94b584f0bea01754a4e955d1418a7a9a2e9aeace
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100373906"
 ---
-# <a name="process-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>通过在 Azure Data Lake Analytics 上运行 U SQL 脚本来处理数据 
+# <a name="process-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>通过在 Azure Data Lake Analytics 上运行 U-SQL 脚本来处理数据 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-usql-activity.md)
 > * [当前版本](transform-data-using-data-lake-analytics.md)
@@ -50,7 +50,7 @@ Azure Data Lake Analytics 链接服务需要进行服务主体身份验证，才
 
 通过指定以下属性使用服务主体身份验证：
 
-| properties                | 说明                              | 必选 |
+| 属性                | 说明                              | 必选 |
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | 指定应用程序的客户端 ID。     | 是      |
 | **servicePrincipalKey** | 指定应用程序的密钥。           | 是      |
@@ -114,7 +114,7 @@ Azure Data Lake Analytics 链接服务需要进行服务主体身份验证，才
 
 下表描述了此活动特有的属性的名称和描述。 
 
-| properties            | 说明                              | 必选 |
+| 属性            | 说明                              | 必需 |
 | :------------------ | :--------------------------------------- | :------- |
 | name                | 管道中活动的名称     | 是      |
 | description         | 描述活动用途的文本。  | 否       |
@@ -193,5 +193,5 @@ OUTPUT @rs1
 * [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
 * [Spark 活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
-* [Azure 机器学习 Studio (经典) 批处理执行活动](transform-data-using-machine-learning.md)
+* [Azure 机器学习工作室（经典）批处理执行活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)

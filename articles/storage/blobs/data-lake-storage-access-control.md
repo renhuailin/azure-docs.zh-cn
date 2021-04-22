@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: d8ef616ef059424846d5c42a91262881b8f6d30b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 50c6b4f309eb78acee0cfa59d1b540adba65cab2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701801"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104774807"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制列表 (ACL)
 
@@ -36,12 +36,13 @@ Azure Data Lake Storage Gen2 实现了一个访问控制模型，该模型支持
 
 | 环境 | 项目 |
 |--------|-----------|
-|Azure 存储资源管理器 |[使用 Azure 存储资源管理器设置 Azure Data Lake Storage Gen2 中的 Acl](data-lake-storage-explorer-acl.md)|
-|.NET |[使用 .NET 设置 Azure Data Lake Storage Gen2 中的 Acl](data-lake-storage-acl-dotnet.md)|
-|Java|[使用 Java 在 Azure Data Lake Storage Gen2 中设置 Acl](data-lake-storage-acl-java.md)|
-|Python|[使用 Python 在 Azure Data Lake Storage Gen2 中设置 Acl](data-lake-storage-acl-python.md)|
-|PowerShell|[使用 PowerShell 设置 Azure Data Lake Storage Gen2 中的 Acl](data-lake-storage-acl-powershell.md)|
-|Azure CLI|[使用 Azure CLI 设置 Azure Data Lake Storage Gen2 中的 Acl](data-lake-storage-acl-cli.md)|
+|Azure 存储资源管理器 |[使用 Azure 存储资源管理器设置 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-explorer-acl.md)|
+|.NET |[使用 .NET 设置 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-dotnet.md)|
+|Java|[使用 Java 设置 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-java.md)|
+|Python|[使用 Python 设置 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-python.md)|
+|JavaScript (Node.js)|[使用 Node.js 中的 JavaScript SDK 在 Azure Data Lake Storage Gen2 中设置 ACL](data-lake-storage-directory-file-acl-javascript.md)|
+|PowerShell|[使用 PowerShell 设置 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-powershell.md)|
+|Azure CLI|[使用 Azure CLI 设置 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-cli.md)|
 |REST API |[路径 - 更新](/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
@@ -285,7 +286,7 @@ Azure 角色分配确实可以继承。 分配从订阅、资源组和存储帐�
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Data Lake Storage Gen2 是否支持 ACL 继承？
 
-可以使用默认 ACL 来设置父目录下创建的新子目录和文件的 ACL。 若要更新现有子项的 ACL，你需要以递归方式为所需的目录层次结构添加、更新或删除 ACL。 有关详细信息，请参阅[以递归方式为 Azure Data Lake Storage Gen2 设置访问控制列表 (ACL)](#set-access-control-lists)。 
+可以使用默认 ACL 来设置父目录下创建的新子目录和文件的 ACL。 若要更新现有子项的 ACL，你需要以递归方式为所需的目录层次结构添加、更新或删除 ACL。 有关指南，请参阅本文的[如何设置 ACL](#set-access-control-lists) 部分。 
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-directory-and-its-contents"></a>以递归方式删除目录及其内容需要哪些权限？
 
@@ -331,7 +332,7 @@ az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
 
 ### <a name="can-i-set-the-acl-of-a-container"></a>是否可以设置容器的 ACL？
 
-错误。 容器没有 ACL。 但是，你可以设置容器的根目录的 ACL。 每个容器都有一个根目录，该目录与容器同名。 例如，如果将容器命名为 `my-container`，则根目录名为 `myContainer/`。 
+错误。 容器没有 ACL。 但是，你可以设置容器根目录的 ACL。 每个容器都有一个根目录，该目录与容器同名。 例如，如果将容器命名为 `my-container`，则根目录名为 `myContainer/`。 
 
 Azure 存储 REST API 包含一个名为[设置容器 ACL](/rest/api/storageservices/set-container-acl) 的操作，但该操作不能用来设置容器或容器根目录的 ACL， 而只能用来指示容器中的 blob [是否可以公开访问](anonymous-read-access-configure.md)。 
 

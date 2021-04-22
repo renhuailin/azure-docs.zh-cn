@@ -13,22 +13,22 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf2d0d3335468147575eb53a99940866baa18375
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df4cb32720d80dd23289be7e760c9934e9a8db8a
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98222515"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501495"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>在 Azure Active Directory 中限制来宾访问权限（预览版）
 
 Azure Active Directory (Azure AD) 允许你在 Azure AD 中限制外部来宾用户可以在其组织中看到的内容。 默认情况下，来宾用户在 Azure AD 中设置为有限的权限级别，而成员用户的默认设置是完整的默认用户权限集。 这是 Azure AD 组织的外部协作设置中新来宾用户权限级别的预览，该级别提供限制性更强的访问权限，因此，来宾访问选项现在为：
 
-权限级别         | 访问级别
-----------------         | ------------
-与成员用户相同     | 来宾与成员用户对 Azure AD 资源的访问权限相同
-有限的访问权限（默认设置） | 来宾可以查看所有非隐藏组的成员身份
-**受限的访问权限（新增）**  | **来宾不能查看任何组的成员身份**
+权限级别         | 访问级别 | 值
+----------------         | ------------ | -----
+与成员用户相同     | 来宾与成员用户对 Azure AD 资源的访问权限相同 | a0b1b346-4d3e-4e8b-98f8-753987be4970
+有限的访问权限（默认设置） | 来宾可以查看所有非隐藏组的成员身份 | 10dae51f-b6af-4016-8d66-8c2a99b929b3
+**受限的访问权限（新增）**  | **来宾不能查看任何组的成员身份** | **2af84b1e-32c8-42b7-82bc-daa82404023b**
 
 当来宾访问权限受限时，来宾只能查看其自己的用户配置文件。 即使来宾按用户主体名称或 objectId 搜索，也不允许其查看其他用户。 受限访问权限还限制来宾用户查看其所在组的成员身份。 有关总体的默认用户权限（包括来宾用户权限）的详细信息，请参阅 [Azure Active Directory 中的默认用户权限是什么？](../fundamentals/users-default-permissions.md)。
 

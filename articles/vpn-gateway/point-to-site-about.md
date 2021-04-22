@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 795b6f13913590041b463115c0be65a6201fedab
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6caf72884ce2566ad25b7dd6d80b15d737bbe664
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97654058"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105543578"
 ---
 # <a name="about-point-to-site-vpn"></a>关于点到站点 VPN
 
@@ -47,7 +47,7 @@ ms.locfileid: "97654058"
 
 Azure AD 身份验证允许用户使用其 Azure Active Directory 凭据连接到 Azure。 本机 Azure VPN 身份验证只有 OpenVPN 协议和 Windows 10 支持，并且需要使用 [Azure VPN Client](https://go.microsoft.com/fwlink/?linkid=2117554)。
 
-有了本机 Azure AD 身份验证，就可以利用 Azure AD 的条件访问和针对 VPN 的多重身份验证 (MFA) 功能。
+凭借原生 Azure AD 身份验证，你可以利用 Azure AD 的条件访问以及适用于 VPN 的多重身份验证 (MFA) 功能。
 
 大致说来，需要执行以下步骤来配置 Azure AD 身份验证：
 
@@ -61,9 +61,9 @@ Azure AD 身份验证允许用户使用其 Azure Active Directory 凭据连接�
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>使用 Active Directory (AD) 域服务器进行身份验证
 
 AD 域身份验证可让用户使用其组织域凭据连接到 Azure。 它需要一台与 AD 服务器集成的 RADIUS 服务器。 组织也可以利用其现有的 RADIUS 部署。
-  
-可将 RADIUS 服务器部署到本地或 Azure VNet 中。 在身份验证期间，Azure VPN 网关充当传递设备，在 RADIUS 服务器与连接方设备之间来回转发身份验证消息。 因此，RADIUS 服务器必须能够访问网关。 如果 RADIUS 服务器位于本地，需要建立从 Azure 到本地站点的 VPN S2S 连接，才能实现这种访问。  
-  
+
+可将 RADIUS 服务器部署到本地或 Azure VNet 中。 在身份验证期间，Azure VPN 网关充当传递设备，在 RADIUS 服务器与连接方设备之间来回转发身份验证消息。 因此，RADIUS 服务器必须能够访问网关。 如果 RADIUS 服务器位于本地，需要建立从 Azure 到本地站点的 VPN S2S 连接，才能实现这种访问。
+
 RADIUS 服务器还能与 AD 证书服务集成。 这样，便可以使用 RADIUS 服务器以及用于 P2S 证书身份验证的企业证书部署，作为 Azure 证书身份验证的替代方法。 此方法的优点是不需要将根证书和吊销的证书上传到 Azure。
 
 RADIUS 服务器还能与其他外部标识系统集成。 这样就为 P2S VPN 提供了大量的身份验证选项，包括多重身份验证选项。

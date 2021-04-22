@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 03/25/2021
 ms.author: lajanuar
-ms.openlocfilehash: 235e868952bb742b082492e2e388170a921c1929
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: 9d339d02310fddc3e5fd463f7d37e253614dba17
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467946"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067582"
 ---
 # <a name="form-recognizer-custom-models"></a>表单识别器自定义模型
 
@@ -34,34 +34,34 @@ ms.locfileid: "103467946"
 从概略性层面看，生成、训练和使用自定义模型的步骤如下：
 
 > [!div class="nextstepaction"]
-> [1.收集训练数据集](build-training-data-set.md#custom-model-input-requirements)
+>[&#120783;. 收集训练数据集](build-training-data-set.md#custom-model-input-requirements)
 
 生成自定义模型从建立训练数据集开始。 对于示例数据集，至少需要五个相同类型的已完成表单。 它们可以是不同的文件类型，并且包含文本和手写内容。 表单必须属于相同类型的文档，并遵循表单识别器的[输入要求](build-training-data-set.md#custom-model-input-requirements)。  
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#129155;
 
 > [!div class="nextstepaction"]
-> [2.上传训练数据集](build-training-data-set.md#upload-your-training-data)
+> [&#120784;. 上传训练数据集](build-training-data-set.md#upload-your-training-data)
 
 需要将训练数据上传到 Azure blob 存储容器。 如果不知道如何使用容器创建 Azure 存储帐户，请参阅 [Azure 门户的 Azure 存储快速入门](../../storage/blobs/storage-quickstart-blobs-portal.md)。 使用免费定价层 (F0) 试用该服务，稍后升级到用于生产的付费层。  
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#129155;
+
 > [!div class="nextstepaction"]
-> [3.训练自定义模型](quickstarts/client-library.md#train-a-custom-model)
+>[&#120785;. 训练自定义模型](quickstarts/client-library.md#train-a-custom-model)
 
 可以在[使用](quickstarts/client-library.md#train-a-model-with-labels)或[不使用](quickstarts/client-library.md#train-a-model-without-labels)标记数据集的情况下训练模型。 未标记的数据集仅依赖于布局 API 来检测和识别关键信息，而无需添加人工输入。 标记的数据集也依赖于布局 API，但包含了附加的人工输入，例如特定的标签和字段位置。 若要同时使用标记和未标记的数据，请从标记训练数据的至少五个相同类型的已完成表单开始，然后将未标记的数据添加到所需数据集。  
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#129155;  
 
 >[!div class="nextstepaction"]
-> [4.用自定义模型分析文档](quickstarts/client-library.md#analyze-forms-with-a-custom-model)
+>[&#120786;. 用自定义模型分析文档](quickstarts/client-library.md#analyze-forms-with-a-custom-model)
 
 使用不属于训练数据集的表单测试新训练的模型。 可以继续执行进一步的训练，以提高自定义模型的性能。  
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&#129155;
 
 > [!div class="nextstepaction"]
-> [5.管理自定义模型](quickstarts/client-library.md#manage-custom-models)
+>[&#120787;.管理自定义模型](quickstarts/client-library.md#manage-custom-models)
 
 随时可以查看订阅下的所有自定义模型列表，检索有关特定自定义模型的信息，或从帐户中删除自定义模型。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅[表单识别器 API 参考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5ed8c9843c2794cbb1a96291)文档。
+浏览我们的 API 参考文档，详细了解表单识别器客户端库。
+
+> [!div class="nextstepaction"]
+> [表单识别器 API 参考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)
 >

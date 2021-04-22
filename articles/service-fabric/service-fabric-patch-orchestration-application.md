@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: e51b247f8c1a5a9ed8f6ec8e24363015afb2f7de
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: e94b809513bda8edc7a51baf79ec05a2c9c77489
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102614405"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448548"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Windows 操作系统
 
@@ -222,7 +222,7 @@ POA 要求在群集上启用修复管理器服务。
 | WUOperationTimeOutInMinutes | int <br>（默认值：*90*）                   | 指示任何 Windows 更新操作（搜索、下载或安装）的超时。 在指定的超时内未完成的操作将被中止。       |
 | WURescheduleCount     | int <br> （默认值：*5*）                  | 在操作持续失败的情况下，服务重新计划 Windows 更新的最大次数。          |
 | WURescheduleTimeInMinutes | int <br>（默认值：*30*） | 在持续失败的情况下，服务重新计划 Windows 更新的间隔。 |
-| WUFrequency           | 逗号分隔的字符串（默认值：*Weekly, Wednesday, 7:00:00*）     | 安装 Windows 更新的频率。 其格式和可能的值包括： <br>- Monthly, DD, HH:MM:SS（示例：“Monthly, 5, 12:22:32”）。 字段 DD（日）允许的值为 1 到 28 中的数字和“last”。 <br>- Weekly, Day, HH:MM:SS（示例：“Weekly, Tuesday, 12:22:32”）  <br>- Daily, HH:MM:SS（示例：“Daily, 12:22:32”）  <br>- Week, Day, HH:MM:SS（示例：“2, Friday, 21:00:00”表示每月第二周周五晚上 9:00 UTC） <br>- “None”表示不应执行 Windows 更新。  <br><br> 时间为 UTC 时间。|
+| WUFrequency           | 逗号分隔的字符串（默认值：*Weekly, Wednesday, 7:00:00*）     | 安装 Windows 更新的频率。 其格式和可能的值包括： <br>- Monthly, DD, HH:MM:SS（示例：“Monthly, 5, 12:22:32”）。 字段 DD（日）允许的值为 1 到 28 中的数字和“last”。 <br>- Weekly, Day, HH:MM:SS（示例：“Weekly, Tuesday, 12:22:32”）  <br>- Daily, HH:MM:SS（示例：“Daily, 12:22:32”）  <br>- MonthlyByWeekAndDay, Week, Day, HH:MM:SS（示例：“MonthlyByWeekAndDay, 2, Friday, 21:00:00”表示每月第二周星期五晚上 9:00 UTC） <br>- “None”表示不应执行 Windows 更新。  <br><br> 时间为 UTC 时间。|
 | AcceptWindowsUpdateEula | 布尔 <br>（默认值：*true*） | 设置此标志即表示该应用程序将代表计算机所有者接受 Windows 更新的最终用户许可协议。              |
 
 > [!TIP]

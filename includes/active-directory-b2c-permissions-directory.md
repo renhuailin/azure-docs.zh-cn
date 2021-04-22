@@ -3,14 +3,14 @@ author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 02/12/2020
+ms.date: 04/05/2021
 ms.author: mimart
-ms.openlocfilehash: f8c972bdb9195008c2983d3993e8d9369749b284
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 5a2382146cd8b85b8eef54b924a206dda7107b0f
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85200193"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382448"
 ---
 #### <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/) 
 
@@ -19,8 +19,9 @@ ms.locfileid: "85200193"
 1. 选择“Microsoft API”选项卡，然后选择“Microsoft Graph”。 
 1. 选择“应用程序权限”。
 1. 展开相应的权限组，选中要将其授予管理应用程序的权限的复选框。 例如：
+    * “用户” > “User.ReadWrite.All”：适用于用户迁移或用户管理方案 。
+    * “组” > “Group.ReadWrite.All”：适用于创建组、读取和更新组成员身份以及删除组 。
     * **AuditLog** > **AuditLog.Read.All**：用于读取目录的审核日志。
-    * **Directory** > **Directory.ReadWrite.All**：适用于用户迁移或用户管理方案。
     * **Policy** > **Policy.ReadWrite.TrustFramework**：适用于持续集成/持续交付 (CI/CD) 方案。 例如，使用 Azure Pipelines 进行的自定义策略部署。
 1. 选择“添加权限”。 按照指示等待几分钟，然后继续下一步。
 1. 选择“向(租户名称)授予管理员许可”。

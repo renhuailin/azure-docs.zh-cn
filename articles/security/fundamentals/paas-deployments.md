@@ -4,7 +4,7 @@ description: 了解在 Azure 上设计、构建和管理安全云应用程序的
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: techlake
 ms.assetid: ''
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2019
+ms.date: 03/29/2021
 ms.author: terrylan
-ms.openlocfilehash: 77a2a32b9a6358c39a14cfe37eeb44f7cb90af0a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d28d55c8dff16df987f6535b0f1452b840b35c43
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94841982"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960497"
 ---
 # <a name="securing-paas-deployments"></a>保护 PaaS 部署
 
@@ -127,10 +127,8 @@ Microsoft [安全开发生命周期](https://www.microsoft.com/en-us/sdl)指定�
 **最佳做法**：监视应用服务环境的安全状态。   
 **详细信息**：使用 Azure 安全中心监视应用服务环境。 在安全中心识别潜在的安全漏洞时，它会创建一些[建议](../../security-center/asset-inventory.md)，这些建议会指导完成配置所需控件的过程。
 
-> [!NOTE]
-> 监视应用服务的功能以预览版提供，仅适用于安全中心的[标准层](../../security-center/security-center-pricing.md)。
->
->
+## <a name="azure-cloud-services"></a>Azure 云服务
+[Azure 云服务](../../cloud-services/cloud-services-choose-me.md)是一个 PaaS 示例。 与 Azure 应用服务一样，此技术设计用于支持可缩放、可靠且运营成本低廉的应用程序。 同样，应用服务托管在虚拟机 (VM) 上，Azure 云服务也是如此。 但是，你对 VM 有更多的控制。 可以在使用 Azure 云服务的 VM 上安装自己的软件，并且可以远程访问它们。
 
 ## <a name="install-a-web-application-firewall"></a>安装 Web 应用程序防火墙
 Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标。 这些攻击中最常见的攻击包括 SQL 注入攻击、跨站点脚本攻击等。 防止应用程序代码中的此类攻击颇具挑战性，可能需要在应用程序拓扑的多个层进行严格的维护、修补和监视。 集中式 Web 应用程序防火墙有助于大幅简化安全管理，为抵卸威胁或入侵的应用程序管理员提供更好的保障。 相较保护每个单独的 Web 应用程序，WAF 解决方案还可通过在中央位置修补已知漏洞，更快地响应安全威胁。 可将现有应用程序网关轻松转换为支持 Web 应用程序防火墙的应用程序网关。
@@ -149,13 +147,13 @@ Application Insights 提供各种可以与所收集的数据交互的工具。 A
 
 模糊测试是一种通过将格式错误的输入数据提供给分析并使用此数据的程序接口（入口点）来查找程序故障（代码错误）的方法。 [Microsoft 安全风险检测](https://www.microsoft.com/en-us/security-risk-detection/)是一种基于云的工具，可以在将软件部署到 Azure 之前，使用该工具查找软件中的 bug 和其他安全漏洞。 该工具设计为在部署软件前捕获漏洞，因此你无需在软件发布后修补 bug、处理崩溃或响应攻击。
 
-
 ## <a name="next-steps"></a>后续步骤
-本文重点介绍了 Azure PaaS 部署的安全优势以及云应用程序的最佳安全做法。 接下来，请阅读有关使用特定 Azure 服务保护 PaaS Web 和移动解决方案的建议做法。 首先，我们介绍如何保护 Azure 应用服务、Azure SQL 数据库和 Azure Synapse Analytics，以及 Azure 存储。 随着适用于其他 Azure 服务的建议做法文章的发布，我们会在以下列表中提供相应的链接：
+本文重点介绍了 Azure PaaS 部署的安全优势以及云应用程序的最佳安全做法。 接下来，请阅读有关使用特定 Azure 服务保护 PaaS Web 和移动解决方案的建议做法。 首先来了解 Azure 应用服务、Azure SQL 数据库和 Azure Synapse Analytics、Azure 存储以及 Azure 云服务。 随着适用于其他 Azure 服务的建议做法文章的发布，我们会在以下列表中提供相应的链接：
 
 - [Azure 应用服务](paas-applications-using-app-services.md)
 - [Azure SQL 数据库和 Azure Synapse Analytics](paas-applications-using-sql.md)
 - [Azure 存储](paas-applications-using-storage.md)
+- [Azure 云服务](../../cloud-services/security-baseline.md)
 - 用于 Redis 的 Azure 缓存
 - Azure 服务总线
 - Web 应用程序防火墙
@@ -165,5 +163,6 @@ Application Insights 提供各种可以与所收集的数据交互的工具。 A
 有关通过 Azure 设计、部署和管理云解决方案时可以使用的更多安全最佳做法，请参阅 [Azure 安全最佳做法和模式](best-practices-and-patterns.md)。
 
 以下资源提供了有关 Azure 安全性及相关 Microsoft 服务的更多常规信息：
-* [Azure 安全团队博客](/archive/blogs/azuresecurity/) - 随时掌握 Azure 安全性的最新信息
-* [Microsoft 安全响应中心](https://technet.microsoft.com/library/dn440717.aspx) - 可在其中报告 Microsoft 安全漏洞（包括 Azure 问题）或将其通过电子邮件发送到 secure@microsoft.com
+
+- [Azure 安全团队博客](/archive/blogs/azuresecurity/) - 随时掌握 Azure 安全性的最新信息
+- [Microsoft 安全响应中心](https://technet.microsoft.com/library/dn440717.aspx) - 可在其中报告 Microsoft 安全漏洞（包括 Azure 问题）或将其通过电子邮件发送到 secure@microsoft.com

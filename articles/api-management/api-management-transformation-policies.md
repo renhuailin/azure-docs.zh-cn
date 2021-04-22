@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
 ms.openlocfilehash: c0c7a6b25c15be2e521e0985c315baf819650aa5
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99491750"
 ---
 # <a name="api-management-transformation-policies"></a>API 管理转换策略
@@ -214,7 +214,7 @@ ms.locfileid: "99491750"
 ```
 
 > [!NOTE]
-> 后端实体可通过 [Azure 门户](how-to-configure-service-fabric-backend.md)、管理 [API](/rest/api/apimanagement)和 [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)进行管理。
+> 后端实体可以通过 [Azure 门户](how-to-configure-service-fabric-backend.md)、管理 [API](/rest/api/apimanagement) 和 [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) 进行管理。
 
 ### <a name="example"></a>示例
 
@@ -269,7 +269,7 @@ ms.locfileid: "99491750"
 |名称|说明|必须|默认|
 |----------|-----------------|--------------|-------------|
 |base-url|新的后端服务基 URL。|必须存在 `base-url` 或 `backend-id` 中的一个。|空值|
-|backend-id|要路由到的后端标识符。  (后端实体通过 [Azure 门户](how-to-configure-service-fabric-backend.md)、 [API](/rest/api/apimanagement)和 [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)进行管理。 ) |必须存在 `base-url` 或 `backend-id` 中的一个。|空值|
+|backend-id|要路由到的后端标识符。 （后端实体通过 [Azure 门户](how-to-configure-service-fabric-backend.md)、[API](/rest/api/apimanagement) 和 [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) 进行管理。）|必须存在 `base-url` 或 `backend-id` 中的一个。|空值|
 |sf-partition-key|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 用于从名称解析服务中解析特定分区。|否|空值|
 |sf-replica-type|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 控制请求是否应转到分区的主要副本或次要副本。 |否|空值|
 |sf-resolve-condition|只有在后端为 Service Fabric 服务时才适用。 确定对 Service Fabric 后端的调用是否针对新解析重复进行的条件。|否|空值|
@@ -342,7 +342,7 @@ ms.locfileid: "99491750"
 ```
 
 #### <a name="filter-response-based-on-product"></a>根据产品筛选响应
- 以下示例演示了如何进行内容筛选，方法是：在使用 `Starter` 产品时删除从后端服务接收的响应中的数据元素。 有关配置和使用此策略的演示，请参阅 [Cloud Cover 第 177 集：更多的 API 管理功能与 VLAD Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) 并快进到 34:30。 从31:50 开始，查看用于此演示的 [深色天空预测 API](https://developer.forecast.io/) 的概述。
+ 以下示例演示了如何进行内容筛选，方法是：在使用 `Starter` 产品时删除从后端服务接收的响应中的数据元素。 有关配置和使用此策略的演示，请参阅 [Cloud Cover 第 177 集：更多的 API 管理功能与 VLAD Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) 并快进到 34:30。 若要大致了解用于此演示的 [Dark Sky Forecast API](https://developer.forecast.io/)，请从 31:50 开始观看。
 
 ```xml
 <!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->

@@ -8,10 +8,10 @@ author: krsh
 ms.author: krsh
 ms.date: 03/10/2021
 ms.openlocfilehash: 4711ea76af83594ec529cfda13a308fbe6646398
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103200462"
 ---
 # <a name="how-to-create-a-virtual-machine-using-your-own-image"></a>如何使用自己的映像创建虚拟机
@@ -57,7 +57,7 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 若要�
 
 以下三个部分将介绍这些选项。
 
-### <a name="option-1-upload-the-vhd-as-shared-image-gallery"></a>选项 1：将 VHD 上传到共享映像库
+### <a name="option-1-upload-the-vhd-as-shared-image-gallery"></a>选项 1：将 VHD 上传为共享映像库
 
 1. 将 VHD 上传到存储帐户。
 2. 在 Azure 门户上搜索“部署自定义模板”。
@@ -197,13 +197,13 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 若要�
 
 遵循以下步骤在 [Azure 门户](https://ms.portal.azure.com/)中创建基础 VM 映像。
 
-1. 登录到 [Azure 门户](https://ms.portal.azure.com/)。
+1. 登录 [Azure 门户](https://ms.portal.azure.com/)。
 2. 选择“虚拟机”。
-3. 选择“+ 添加”打开“创建虚拟机”屏幕。 
-4. 从下拉列表中选择映像，或者选择“浏览所有公共和专用映像”，以搜索或浏览所有可用的虚拟机映像。
-5. 若要创建“第 2 代”VM，请转到“高级”选项卡并选择“第 2 代”选项。  
+3. 选择“+ 添加”以打开“创建虚拟机”屏幕 。
+4. 从下拉列表中选择映像，或选择“浏览所有公共和专用映像”，以搜索或浏览所有可用的虚拟机映像。
+5. 若要创建 Gen 2 VM，请转到“高级”选项卡并选择“Gen 2”选项  。
 
-    :::image type="content" source="media/create-vm/vm-gen-option.png" alt-text="选择“第 1 代”或“第 2 代”。":::
+    :::image type="content" source="media/create-vm/vm-gen-option.png" alt-text="选择 Gen 1 或 Gen 2。":::
 
 6. 选择要部署的 VM 的大小。
 
@@ -222,7 +222,7 @@ Azure 随即开始预配所指定的虚拟机。 通过选择左侧菜单中的�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [测试 VM 映像](azure-vm-image-test.md)，以确保它满足 Azure 市场发布要求。 该地址为可选。
+- [测试 VM 映像](azure-vm-image-test.md)，以确保它满足 Azure 市场发布要求。 此为可选项。
 - 如果你不想测试 VM 映像，请登录到[合作伙伴中心](https://partner.microsoft.com/)并发布 SIG 映像（选项 #1）。
 - 如果你已按照选项 #2 或 #3 进行操作，请[生成 SAS URI](azure-vm-get-sas-uri.md)。
 - 如果在创建基于 Azure 的新 VHD 时遇到问题，请参阅 [Azure 市场 VM 常见问题解答](azure-vm-create-faq.md)。

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: af2803a945821a23ff59f196967d792a6593009f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 203af340a8bd48bdb6dee70f92c2ecc39708b8e1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033378"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732323"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure 资源
 当你的关键应用程序和业务流程依赖于 Azure 资源时，你需要监视这些资源的可用性、性能和操作。 本文描述了 Azure 资源生成的监视数据，介绍如何使用 Azure Monitor 的功能对此数据分析和发出警报。
@@ -63,7 +63,7 @@ Azure 中的资源会生成[日志](../logs/data-platform-logs.md)和[指标](..
 
 - [平台指标](../essentials/data-platform-metrics.md) - 平台指标会自动收集到 [Azure Monitor 指标](../essentials/data-platform-metrics.md)中，无需进行任何配置。 可创建诊断设置，将条目发送到 Azure Monitor 日志，或将其转发到 Azure 之外。
 - [资源日志](./platform-logs-overview.md) - 资源日志由 Azure 资源自动生成，但如果没有诊断设置，则不会收集。  可创建诊断设置，将条目发送到 Azure Monitor 日志，或将其转发到 Azure 之外。
-- [活动日志](./platform-logs-overview.md) - 自动收集活动日志，无需任何配置，可在 Azure 门户中查看。 可创建诊断设置，将它们复制到 Azure Monitor 日志，或将其转发到 Azure 之外。
+- [活动日志](./platform-logs-overview.md) - 自动收集活动日志，无需任何配置，并且可在 Azure 门户中查看。 可创建诊断设置，将它们复制到 Azure Monitor 日志，或将其转发到 Azure 之外。
 
 ### <a name="log-analytics-workspace"></a>Log Analytics 工作区
 要将数据收集到 Azure Monitor 日志中，需要使用 Log Analytics 工作区。 可通过创建新的工作区来快速开始监视服务，但使用从其他服务收集数据的工作区可能会对你有所帮助。 请参阅[在 Azure 门户中创建 Log Analytics 工作区](../logs/quick-create-workspace.md)，详细了解如何创建工作区和[设计 Azure Monitor 日志部署](../logs/design-logs-deployment.md)，来帮助确定满足你要求的最佳工作区设计。 如果你使用组织中现有的工作区，则需要具备[在 Azure Monitor 中管理对日志数据和工作区的访问](../logs/manage-access.md)中所述的相应权限。 
@@ -73,7 +73,7 @@ Azure 中的资源会生成[日志](../logs/data-platform-logs.md)和[指标](..
 
 
 ## <a name="diagnostic-settings"></a>诊断设置
-诊断设置会定义特定资源的资源日志和指标应发送到的位置。 可能的目标包括：
+诊断设置会定义特定资源的资源日志和指标应发送到的位置。 可能的目标为：
 
 - [Log Analytics 工作区](./resource-logs.md#send-to-log-analytics-workspace)，通过它可使用功能强大的日志查询借助 Azure Monitor 收集的其他监视数据来分析数据，还可利用日志警报和可视化效果等其他 Azure Monitor 功能。 
 - [事件中心](./resource-logs.md#send-to-azure-event-hubs)，用于将数据流式传输到外部系统，例如第三方 SIEM 和其他日志分析解决方案。 

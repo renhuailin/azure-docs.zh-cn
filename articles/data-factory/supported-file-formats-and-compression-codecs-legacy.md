@@ -7,17 +7,17 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.openlocfilehash: d95927a9ea7d3084387a9aedb0dcdd86f84b8e7f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100384820"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Azure 数据工厂（旧版）中支持的文件格式和压缩编解码器
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-*本文适用于以下连接器： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure 文件存储](connector-azure-file-storage.md)、 [文件系统](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud Storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和 [SFTP](connector-sftp.md)。*
+本文适用于以下连接器：[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、[FTP](connector-ftp.md)、[Google 云存储](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md) 和 [SFTP](connector-sftp.md)。
 
 >[!IMPORTANT]
 >数据工厂引入基于新格式的数据集模型，有关详细信息，请参阅对应格式的文章： <br>- [Avro 格式](format-avro.md)<br>- [二进制格式](format-binary.md)<br>- [带分隔符的文本格式](format-delimited-text.md)<br>- [JSON 格式](format-json.md)<br>- [ORC 格式](format-orc.md)<br>- [Parquet 格式](format-parquet.md)<br>依旧支持本文中提到的其余配置，以实现后向兼容性。 建议你今后使用新模型。 
@@ -507,7 +507,7 @@ ms.locfileid: "100384820"
 | Single | Float |
 | Double | Double |
 | 小数 | 小数 |
-| String | String |
+| String | 字符串 |
 | DateTime | Timestamp |
 | DateTimeOffset | Timestamp |
 | TimeSpan | Timestamp |

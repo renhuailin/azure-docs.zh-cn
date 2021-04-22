@@ -1,47 +1,68 @@
 ---
-title: 排查 HPC 和 GPU Vm 的已知问题-Azure 虚拟机 |Microsoft Docs
-description: 了解排查 Azure 中的 HPC 和 GPU VM 大小的已知问题。
+title: 排查 HPC 和 GPU VM 的已知问题 - Azure 虚拟机 | Microsoft Docs
+description: 了解如何排查 Azure 中的 HPC 和 GPU VM 大小的已知问题。
 author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 1/19/2021
+ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 83f9778da91cebb651d98e2e85748cda7435230a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: d8c3a2d961cc5b6fd719b77dae07b6e46c3d8b65
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674672"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105604832"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>H 系列和 N 系列 VM 的已知问题
 
-本文提供了使用 [H 系列](../../sizes-hpc.md) 和 [N 系列](../../sizes-gpu.md) HPC 和 GPU vm 时最常见的问题和解决方案。
+本文尝试列出使用 [H 系列](../../sizes-hpc.md)和 [N 系列](../../sizes-gpu.md) HPC 和 GPU VM 时最常见的问题及其解决方案。
 
-## <a name="accelerated-networking-on-hb-hc-hbv2-and-ndv2"></a>HB-ACCT-WC、HC、HBv2 和 NDv2 上的加速网络
+## <a name="mofed-installation-on-ubuntu"></a>Ubuntu 上的 MOFED 安装
+在 Ubuntu-18.04 上，Mellanox OFED 与内核版本 `5.4.0-1039-azure #42` 和更高版本不兼容，这导致 VM 启动时间增加至约 30 分钟。 Mellanox OFED 版本 5.2-1.0.4.0 和 5.2-2.2.0.0 均存在此问题。
+临时解决方案是使用 Canonical:UbuntuServer:18_04-lts-gen2:18.04.202101290 市场映像或更低版本，而不是更新内核。
+这个问题有望在新的 MOFED (TBD) 中得到解决。
 
-[Azure 加速网络](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) 现已在 RDMA 和支持能力和启用 SR-IOV 的 VM 大小 [hb-acct-wc](../../hb-series.md)、 [HC](../../hc-series.md)、 [HBv2](../../hbv2-series.md) 和 [NDv2](../../ndv2-series.md)上提供。 此功能现在允许在 Azure 以太网网络上跨 (最多 30 Gbps) 和延迟进行增强。 尽管这不同于对不受影响网络的 RDMA 功能，但此功能的某些平台更改可能会影响某些 MPI 实现的行为，而不会影响受影响的作业。 特别是，某些 Vm 上的 "未使用" 接口的名称可能略有不同 (mlx5_1，而不是以前的 mlx5_0) ，并且这可能需要调整 MPI 命令行，尤其是使用 UCX 接口 (通常使用 OpenMPI 和 HPC-X) 时。
-有关此博客文章的详细信息，请访问此 [博客文章](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-and-hbv2/ba-p/2067965) ，其中提供了有关如何解决任何观察到的问题的说明。
+## <a name="mpi-qp-creation-errors"></a>MPI QP 创建错误
+如果在运行任何 MPI 工作负载的过程中，引发了如下所示的 InfiniBand QP 创建错误，建议重启 VM 并重试工作负载。 将来会解决此问题。
 
-## <a name="infiniband-driver-installation-on-n-series-vms"></a>N 系列虚拟机上的未感知驱动程序安装
+```bash
+ib_mlx5_dv.c:150  UCX  ERROR mlx5dv_devx_obj_create(QP) failed, syndrome 0: Invalid argument
+```
 
-NC24r_v3 和 ND40r_v2 在 NC24r 和 NC24r_v2 未启用 SR-IOV 时启用 SR-IOV。 有关分叉的详细信息，请参阅 [此处](../../sizes-hpc.md#rdma-capable-instances)。
-可在启用了 SR-IOV 的 VM 大小和 OFED 驱动程序的情况下配置可 (IB) ，而非 SR-IOV VM 大小需要 ND 驱动程序。 此 IB 支持在 [CentOS-HPC VMIs](configure.md)上适当提供。 对于 Ubuntu，请参阅 [此处的说明](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351) ，安装 OFED 和 ND 驱动程序，如 [文档](enable-infiniband.md#vm-images-with-infiniband-drivers)中所述。
+当观察到问题时，可以验证最大队列对数的值，如下所示。
+```bash
+[user@azurehpc-vm ~]$ ibv_devinfo -vv | grep qp
+max_qp: 4096
+```
 
-## <a name="duplicate-mac-with-cloud-init-with-ubuntu-on-h-series-and-n-series-vms"></a>在 H 系列和 N 系列 Vm 上，通过带有云初始化的虚拟机与 Ubuntu 重复
+## <a name="accelerated-networking-on-hb-hc-hbv2-and-ndv2"></a>HB、HC、HBv2 和 NDv2 上的加速网络
 
-Ubuntu VM 映像上的云初始化存在已知问题，因为它会尝试打开 IB 接口。 这可能发生在 VM 重新启动或通用化后尝试创建 VM 映像。 VM 启动日志可能会显示错误，如下所示： "正在启动网络服务 .。。RuntimeError：找到了重复的 mac！ "eth1" 和 "ib0" 都具有 mac "。
+[Azure 加速网络](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)目前在支持 RDMA 和 InfiniBand 和启用了 SR-IOV 的 VM 大小 [HB](../../hb-series.md)、[HC](../../hc-series.md)、[HBv2](../../hbv2-series.md) 和 [NDv2](../../ndv2-series.md) 上提供。 此功能现在允许在 Azure 以太网上增强吞吐量（最多 30 Gbps）和延迟。 尽管这不同于 InfiniBand 网络上的 RDMA 功能，但在 InfiniBand 上运行作业时，此功能的一些平台更改可能会影响某些 MPI 实现的行为。 特别是某些 VM 上的 InfiniBand 接口的名称可能略有不同（mlx5_1，而不是以前的 mlx5_0），这可能需要调整 MPI 命令行，尤其是在使用 UCX 接口时（通常与 OpenMPI 和 HPC-X 一起使用）。 目前最简单的解决方案是在 CentOS HPC VM 映像上使用最新的 HPC-X，或在不需要加速网络时将其禁用。
+有关详细信息，请阅读此 [TechCommunity 文章](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-and-hbv2/ba-p/2067965)，其中提供了有关如何解决任何观察到的问题的说明。
 
-这是一个已知问题，即在 Ubuntu 上使用云初始化的 "重复 MAC"。 解决方法是：
-1) 部署 (Ubuntu 18.04) marketplace VM 映像
-2) 安装必要的软件包，以便 [在此处](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351) 启用 IB (指令) 
-3) 编辑 waagent 以更改 EnableRDMA = y
-4) 禁用云初始化中的网络
+## <a name="infiniband-driver-installation-on-non-sr-iov-vms"></a>非 SR-IOV VM 上的 InfiniBand 驱动程序安装
+
+目前 H16r、H16mr 和 NC24r 未启用 SR-IOV。 [此处](../../sizes-hpc.md#rdma-capable-instances)提供了有关 InfiniBand 堆栈分流的一些详细信息。
+可在启用了 SR-IOV 的 VM 上通过 OFED 驱动程序配置 InfiniBand，而非 SR-IOV VM 需要 ND 驱动程序。 此 IB 支持在 [CentOS、RHEL 和 Ubuntu](configure.md) 上根据情况提供。
+
+## <a name="duplicate-mac-with-cloud-init-with-ubuntu-on-h-series-and-n-series-vms"></a>在 H 系列和 N 系列 VM 上，Ubuntu 中的 cloud-init 存在重复 MAC
+
+Ubuntu VM 映像上的 cloud-init 在尝试打开 IB 接口时出现已知问题。 在 VM 重新启动或泛化后尝试创建 VM 映像时可能出现此情况。 VM 启动日志可能会显示错误，如下所示：
+```console
+“Starting Network Service...RuntimeError: duplicate mac found! both 'eth1' and 'ib0' have mac”.
+```
+
+这是一个已知问题，即“Ubuntu 上的 cloud-init 存在重复 MAC”。 这将在更新的内核中得到解决。 如果遇到此问题，则解决方法是：
+1) 部署 (Ubuntu 18.04) 市场 VM 映像
+2) 安装必要的软件包以启用 IB（[说明见此处](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)）
+3) 编辑 waagent.conf 以更改 EnableRDMA=y
+4) 禁用云 cloud-init 中的网络
     ```console
     echo network: {config: disabled} | sudo tee /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
     ```
-5) 编辑 netplan 的网络配置文件，该文件由云初始化生成以删除 MAC
+5) 编辑 netplan 的网络配置文件（由 cloud-init 生成）以删除 MAC
     ```console
     sudo bash -c "cat > /etc/netplan/50-cloud-init.yaml" <<'EOF'
     network:
@@ -52,33 +73,29 @@ Ubuntu VM 映像上的云初始化存在已知问题，因为它会尝试打开 
     EOF
     ```
 
-## <a name="dram-on-hb-series"></a>HB-ACCT-WC 系列上的 DRAM
-
-HB-ACCT-WC 系列 Vm 此时只能向来宾 Vm 公开 228 GB 的 RAM。 这是因为 Azure 虚拟机监控程序的已知限制阻止将页面分配给来宾 VM) 为 CCX 的本地 DRAM (NUMA 域。
-
-## <a name="accelerated-networking"></a>加速网络
-
-目前未启用支持 IB 的 HPC 和 GPU Vm 上的 Azure 加速网络。 当支持此功能时，我们将通知客户。
-
 ## <a name="qp0-access-restriction"></a>qp0 访问限制
 
-若要防止可能导致安全漏洞的低级别硬件访问，来宾 Vm 将无法访问队列对0。 这只会影响通常与 ConnectX-5 NIC 的管理相关的操作，并运行一些不受影响的诊断（如 ibdiagnet），而不是最终用户应用程序本身。
+若要防止可能导致安全漏洞的低级别硬件访问，来宾 VM 将无法访问队列对 0。 这只会影响通常与 ConnectX-5 NIC 的管理相关的操作，以及运行一些 InfiniBand 诊断（如 ibdiagnet），而不会影响最终用户应用程序本身。
+
+## <a name="dram-on-hb-series-vms"></a>HB 系列 VM 上的 DRAM
+
+HB 系列 VM 此时只能向来宾 VM 公开 228 GB 的 RAM。 同样，在 HBv2 上是 458 GB，在 HBv3 虚拟机上是 448 GB。 这是因为 Azure 虚拟机监控程序的已知限制阻止将页面分配给为来宾 VM 保留的 AMD CCX 的本地 DRAM（NUMA 域）。
 
 ## <a name="gss-proxy"></a>GSS 代理
 
-GSS Proxy 在 CentOS/RHEL 7.5 中有一个已知 bug，在与 NFS 一起使用时，它们可以表现为显著的性能和响应能力。 可以通过以下方式缓解这一点：
+GSS 代理在 CentOS/RHEL 7.5 中有一个已知 bug，在与 NFS 一起使用时，会表现为显著的性能和响应性损失。 这可以通过以下方式来缓解：
 
 ```console
 sed -i 's/GSS_USE_PROXY="yes"/GSS_USE_PROXY="no"/g' /etc/sysconfig/nfs
 ```
 
-## <a name="cache-cleaning"></a>缓存清理
+## <a name="cache-cleaning"></a>清理缓存
 
-在 HPC 系统上，在为下一个用户分配同一个节点之前，在作业完成之后清理内存通常非常有用。 在 Linux 中运行应用程序后，您可能会发现，当您的缓冲区内存增加时，您的可用内存会减少，而不运行任何应用程序。
+在 HPC 系统上，在任务完成后，在下一个用户被分配到相同节点之前，清理内存通常很有用。 在 Linux 中运行应用程序后，你可能会发现，尽管没有运行任何应用程序，但可用内存减少了，而缓冲区内存增加了。
 
 ![清理前的命令提示符屏幕截图](./media/known-issues/cache-cleaning-1.png)
 
-使用 `numactl -H` 将显示哪些 NUMAnode (s) 内存通过 (可能全部) 进行缓冲。 在 Linux 中，用户可以通过三种方式清理缓存，以将缓冲或缓存的内存返回到 "免费"。 你需要是根或具有 sudo 权限。
+使用 `numactl -H` 将显示哪些 NUMAnode 的内存进行了缓冲（可能全部）。 在 Linux 中，用户可以通过三种方式清理缓存，以将缓冲或缓存的内存恢复到“可用”。 需要有 root 权限或 sudo 权限。
 
 ```console
 echo 1 > /proc/sys/vm/drop_caches [frees page-cache]
@@ -90,7 +107,7 @@ echo 3 > /proc/sys/vm/drop_caches [cleans page-cache and slab objects]
 
 ## <a name="kernel-warnings"></a>内核警告
 
-在 Linux 下启动 HB-ACCT-WC 系列 VM 时，可能会忽略以下内核警告消息。 这是因为将在一段时间内解决的 Azure 虚拟机监控程序的已知限制。
+在 Linux 下启动 HB 系列 VM 时，可能会忽略以下内核警告消息。 这是因为 Azure 虚拟机监控程序的一个已知限制，将在一段时间内解决此问题。
 
 ```console
 [  0.004000] WARNING: CPU: 4 PID: 0 at arch/x86/kernel/smpboot.c:376 topology_sane.isra.3+0x80/0x90
@@ -114,5 +131,5 @@ echo 3 > /proc/sys/vm/drop_caches [cleans page-cache and slab objects]
 ## <a name="next-steps"></a>后续步骤
 
 - 查看 [HB 系列概述](hb-series-overview.md)和 [HC 系列概述](hc-series-overview.md)，以了解如何对工作负载进行优化配置以提高性能和可伸缩性。
-- 在 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)上阅读最新公告以及一些 HPC 示例和结果。
-- 有关运行 HPC 工作负荷的更高级结构视图，请参阅 [Azure 上的高性能计算 (HPC) ](/azure/architecture/topics/high-performance-computing/)。
+- 在 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)上阅读最新公告、HPC 工作负载示例和性能结果。
+- 若要从体系结构角度更概略性地看待如何运行 HPC 工作负载，请参阅 [Azure 上的高性能计算 (HPC)](/azure/architecture/topics/high-performance-computing/)。

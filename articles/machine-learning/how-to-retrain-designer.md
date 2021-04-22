@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: keli19
 author: likebupt
-ms.date: 04/06/2020
+ms.date: 03/06/2021
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 6efb0f095f8a157f723a3b7c0c2b229546ebb36b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ed5f59fc1d751f92a7c016aa3586497659f778fd
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97708460"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962945"
 ---
 # <a name="use-pipeline-parameters-to-retrain-models-in-the-designer"></a>在设计器中使用管道参数重新训练模型
 
@@ -120,3 +120,5 @@ ms.locfileid: "97708460"
 本文介绍了如何使用设计器创建参数化训练管道终结点。
 
 有关如何部署模型以执行预测的完整演示，请参阅[设计器教程](tutorial-designer-automobile-price-train-score.md)以训练和部署回归模型。
+
+有关如何使用 SDK 发布运行并将其提交到管道终结点的详细信息，请参阅[本文](how-to-deploy-pipelines.md)。

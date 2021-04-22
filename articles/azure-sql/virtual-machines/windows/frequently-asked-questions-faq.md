@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.openlocfilehash: 014bbe4421bf00f35b2d80505cea288e75f8ca94
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103224667"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Azure VM 上的 SQL Server 常见问题解答
@@ -94,7 +94,7 @@ ms.locfileid: "103224667"
 
 1. **客户是否需有 SQL Server 客户端访问许可证 (CAL) 才能连接到 Azure 虚拟机上运行的 SQL Server 即用即付映像？**
 
-   不是。 如果客户使用自带许可证，并要将其 SQL Server SA 服务器/CAL VM 转移到 Azure VM，则需要 CAL。 
+   不知道。 如果客户使用自带许可证，并要将其 SQL Server SA 服务器/CAL VM 转移到 Azure VM，则需要 CAL。 
 
 1. **如果已通过即用即付库映像之一创建了 VM，是否可以将该 VM 更改为使用自己的 SQL Server 许可证？**
 
@@ -145,7 +145,7 @@ ms.locfileid: "103224667"
 
 1. **将 VM 注册到新的 SQL IaaS 代理扩展是否需额外付费？**
 
-   不是。 SQL IaaS 代理扩展只是进一步提高了 Azure VM 上的 SQL Server 的可管理性，不会额外收费。 
+   不知道。 SQL IaaS 代理扩展只是进一步提高了 Azure VM 上的 SQL Server 的可管理性，不会额外收费。 
 
 1. **SQL IaaS 代理扩展是否适用于所有客户？**
  
@@ -247,7 +247,7 @@ ms.locfileid: "103224667"
     
 1. **Azure SQL 虚拟机是否将客户数据移出区域，或者在区域外部存储客户数据？**
 
-   不是。 事实上，Azure SQL 虚拟机和 SQL IaaS 代理扩展不存储任何客户数据。
+   不知道。 事实上，Azure SQL 虚拟机和 SQL IaaS 代理扩展不存储任何客户数据。
 
 ## <a name="sql-server-iaas-agent-extension"></a>SQL Server IaaS 代理扩展
 
@@ -286,11 +286,11 @@ ms.locfileid: "103224667"
 
 1. **是否可以在不指定 SQL Server 许可证类型的情况下注册到 SQL IaaS 代理扩展？**
 
-   不是。 注册到 SQL IaaS 代理扩展时，SQL Server 许可证类型不是可选属性。 在所有可管理性模式（“无代理”、“轻型”和“完全”）下注册到 SQL IaaS 代理扩展时，都必须将 SQL Server 许可证类型设置为即用即付或 Azure 混合权益。 如果安装了任何免费版本的 SQL Server（例如开发人员版或评估版），则必须注册即用即付许可。 Azure 混合权益仅适用于付费版本的 SQL Server，例如企业版和标准版。
+   不知道。 注册到 SQL IaaS 代理扩展时，SQL Server 许可证类型不是可选属性。 在所有可管理性模式（“无代理”、“轻型”和“完全”）下注册到 SQL IaaS 代理扩展时，都必须将 SQL Server 许可证类型设置为即用即付或 Azure 混合权益。 如果安装了任何免费版本的 SQL Server（例如开发人员版或评估版），则必须注册即用即付许可。 Azure 混合权益仅适用于付费版本的 SQL Server，例如企业版和标准版。
 
 1. **是否可将 SQL Server IaaS 扩展从无代理模式升级为完全模式？**
 
-   不是。 对于无代理模式，无法将可管理性模式升级为“完全”或“轻型”。 这是 Windows Server 2008 的技术限制。 需要首先将 OS 升级到 Windows Server 2008 R2 或更高版本，然后才能升级到完整管理模式。 
+   不知道。 对于无代理模式，无法将可管理性模式升级为“完全”或“轻型”。 这是 Windows Server 2008 的技术限制。 需要首先将 OS 升级到 Windows Server 2008 R2 或更高版本，然后才能升级到完整管理模式。 
 
 1. 是否可以将 SQL Server IaaS 扩展从轻型模式升级到完整模式？
 
@@ -304,11 +304,11 @@ ms.locfileid: "103224667"
 
 1. **是否可以通过 Azure 门户注册到 SQL IaaS 代理扩展？**
 
-   不是。 无法在 Azure 门户中注册到 SQL IaaS 代理扩展。 仅支持使用 Azure CLI 或 Azure PowerShell 注册到 SQL IaaS 代理扩展。 
+   不知道。 无法在 Azure 门户中注册到 SQL IaaS 代理扩展。 仅支持使用 Azure CLI 或 Azure PowerShell 注册到 SQL IaaS 代理扩展。 
 
 1. **是否可以在安装 SQL Server 之前将 VM 注册到 SQL IaaS 代理扩展？**
 
-   不是。 VM 必须至少有一个 SQL Server（数据库引擎）实例才能成功注册到 SQL IaaS 代理扩展。 如果 VM 上没有 SQL Server 实例，则新的 Microsoft.SqlVirtualMachine 资源会处于失败状态。
+   不知道。 VM 必须至少有一个 SQL Server（数据库引擎）实例才能成功注册到 SQL IaaS 代理扩展。 如果 VM 上没有 SQL Server 实例，则新的 Microsoft.SqlVirtualMachine 资源会处于失败状态。
 
 1. **如果有多个 SQL Server 实例，是否可将 VM 注册到 SQL IaaS 代理扩展？**
 

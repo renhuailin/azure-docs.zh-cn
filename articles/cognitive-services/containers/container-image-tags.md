@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: reference
-ms.date: 11/17/2020
+ms.date: 03/25/2020
 ms.author: aahi
-ms.openlocfilehash: 2ac8633e48c98b9e1d778ac1d07835683e00e1c0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3fecb84196ba736120273955b2c88af8cb4dadea
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102424472"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106095809"
 ---
 # <a name="azure-cognitive-services-container-image-tags-and-release-notes"></a>Azure 认知服务容器映像标记和发行说明
 
@@ -1355,6 +1355,24 @@ Azure 认知服务提供了许多容器映像。 容器注册表和相应的存�
 | `3.0-nl`   | 情绪分析 v3（荷兰语）                 |
 | `2.1`    | 情绪分析 v2      |
 
+
+## <a name="text-analytics-for-health"></a>运行状况文本分析
+
+在 `mcr.microsoft.com` 容器注册表联合项中可以找到[运行状况文本分析][ta-he]容器映像。 该映像驻留在 `azure-cognitive-services/textanalytics/` 存储库中，名为 `healthcare`。 完全限定的容器映像名称为 `mcr.microsoft.com/azure-cognitive-services/textanalytics/healthcare`
+
+此容器映像提供了以下标记。 还可以[在 MCR 上找到标记的完整列表](https://mcr.microsoft.com/v2/azure-cognitive-services/textanalytics/healthcare/tags/list)。
+
+
+`3.0.015490002-onprem-amd64` 发行说明：
+
+* 新模型版本 `2021-03-01`
+* 已将容器发布到 MCR。
+
+| 映像标记 | 说明                                         |
+|------------|:----------------------------------------------|
+| `latest`   |                                               |
+| `3.0.015490002-onprem-amd64`   |               |
+
 [ad-containers]: ../anomaly-Detector/anomaly-detector-container-howto.md
 [cv-containers]: ../computer-vision/computer-vision-how-to-install-containers.md
 [fa-containers]: ../face/face-how-to-install-containers.md
@@ -1369,3 +1387,4 @@ Azure 认知服务提供了许多容器映像。 容器注册表和相应的存�
 [ta-kp]: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=keyphrase
 [ta-la]: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=language
 [ta-se]: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment
+[ta-he]: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=healthcare

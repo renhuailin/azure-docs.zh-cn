@@ -4,16 +4,16 @@ description: 了解如何在 Azure 文件共享上启用软删除，以进行数
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/01/2020
+ms.date: 03/23/2021
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 77381700f4257006b50e56ab7ffc037ef99d297c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 428ef41340cd565bef0fa3c1e6519fb8862b091a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218547"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727563"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>在 Azure 文件共享上启用软删除
 
@@ -26,12 +26,12 @@ Azure 存储为文件共享提供软删除，以便在应用程序或其他存�
 ## <a name="getting-started"></a>入门
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-1. 导航到存储帐户，然后在“文件服务”下选择“软删除”。
-1. 为“文件共享软删除”选择“已启用”。
+1. 导航到存储帐户，然后在“文件服务”下选择“文件共享” 。
+1. 为“软删除所有文件共享”选择“已启用” 。
 1. 选择“以天为单位的文件共享保持期”，然后输入选择的数字。
 1. 选择“保存”以确认数据保留设置。
 
-:::image type="content" source="media/storage-how-to-recover-deleted-account/enable-soft-delete-files.png" alt-text="存储帐户软删除设置窗格的屏幕截图。突出显示文件共享部分，启用切换，设置保持期并保存。这将为你的存储帐户中的所有文件共享启用软删除。":::
+:::image type="content" source="media/storage-how-to-recover-deleted-account/enable-soft-delete-files.png" alt-text="存储帐户软删除设置窗格的屏幕截图。突出显示文件共享软删除部分，启用切换，设置保持期并保存。这将为你的存储帐户中的所有文件共享启用软删除。":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -125,12 +125,12 @@ Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $account
 
 ## <a name="disable-soft-delete"></a>禁用软删除
 
-如果希望停止使用软删除，或永久删除文件共享，请按照以下说明操作：
+如果希望停止使用软删除，请按照以下说明操作。 若要永久删除已软删除的文件共享，必须将其撤销删除并禁用软删除，然后再次将其删除。 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. 导航到存储帐户，然后在“设置”下选择“软删除”。
-1. 在“文件共享”下，为“软删除文件共享”选择“已禁用”。
+1. 导航到存储帐户，然后在“文件服务”下选择“文件共享” 。
+1. 为“软删除所有文件共享”选择“已禁用” 。
 1. 选择“保存”以确认数据保留设置。
 
     :::image type="content" source="media/storage-how-to-recover-deleted-account/disable-soft-delete-files.png" alt-text="禁用软删除将允许在空闲时立即永久删除存储帐户中的所有文件共享。":::

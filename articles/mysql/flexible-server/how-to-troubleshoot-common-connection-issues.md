@@ -7,12 +7,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 9/21/2020
-ms.openlocfilehash: bdd52ba77fd9a65ce27985ff3c86a93fc887ddf9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6fc8e08757ee067e0616cc701a3037a9dbf4c6fd
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109975"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491740"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql---flexible-server"></a>排查 Azure Database for MySQL 灵活服务器的连接问题
 
@@ -32,7 +32,7 @@ ms.locfileid: "105109975"
 
 如果应用程序一直无法连接到 Azure Database for MySQL 灵活服务器，通常表示下列其中一项出现了问题：
 
-* 使用 TLS/SSL 加密的连接：灵活服务器仅支持使用传输层安全性 (TLS 1.2) 的加密连接，并且所有使用 TLS 1.0 和 TLS 1.1 的传入连接都将被拒绝。 不能禁用或更改 TLS 版本。 详细了解 [Azure Database for MySQL 灵活服务器中使用传输层安全性 (TLS 1.2) 的加密连接](./how-to-connect-tls-ssl.md)。
+* 使用 TLS/SSL 加密的连接：灵活服务器仅支持使用传输层安全性 (TLS 1.2) 的加密连接，并且所有使用 TLS 1.0 和 TLS 1.1 的传入连接默认都将遭拒。 你可以禁用加密连接的强制执行，或更改 TLS 版本。 详细了解 [Azure Database for MySQL 灵活服务器中使用传输层安全性 (TLS 1.2) 的加密连接](./how-to-connect-tls-ssl.md)。
 - 专用访问（VNet 集成）中的灵活服务器：请确保从灵活服务器所在的虚拟网络内部进行连接。 请参阅 [Azure Database for MySQL 灵活服务器中的虚拟网络]<!--(./concepts-networking-virtual-network.md)-->
 - 具有公共访问权限（允许的 IP 地址）的灵活服务器；请确保将防火墙配置为允许来自客户端的连接。 请参阅[使用 Azure 门户创建和管理灵活服务器防火墙规则](./how-to-manage-firewall-portal.md)。
 * 客户端防火墙配置：客户端的防火墙必须允许连接到数据库服务器。 不能访问的服务器的 IP 地址和端口以及一些防火墙中的应用程序名称（如 MySQL）必须被允许。

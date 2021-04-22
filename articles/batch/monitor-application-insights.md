@@ -3,40 +3,34 @@ title: 使用 Azure Application Insights 监视 Batch
 description: 了解如何使用 Azure Application Insights 库检测 Azure Batch .NET 应用程序。
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.date: 04/05/2018
-ms.openlocfilehash: 9decb99c3de798df43dedc2441208066d18e3a13
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/25/2021
+ms.openlocfilehash: 251f02f145e8f450b1528bf8676cffdc61a6f051
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104605777"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105607875"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>使用 Application Insights 监视和调试 Azure Batch .NET 应用程序
 
 [Application Insights](../azure-monitor/app/app-insights-overview.md) 提供简洁且强大的方式让开发人员监视和调试 Azure 服务中部署的应用程序。 使用 Application Insights 可以监视性能计数器和异常，以及通过自定义指标和跟踪来检测代码。 将 Application Insights 与 Azure Batch 应用程序相集成可以近乎实时地洞察行为以及调查问题。
 
-本文介绍如何在 Azure Batch .NET 解决方案中添加和配置 Application Insights 库，以及检测应用程序代码。 此外，介绍通过 Azure 门户监视应用程序和生成自定义仪表板的方法。 有关 Application Insights 对其他语言的支持，请查看[语言、平台和集成文档](../azure-monitor/app/platforms.md)。
+本文介绍如何在 Azure Batch .NET 解决方案中添加和配置 Application Insights 库，以及检测应用程序代码。 此外，介绍通过 Azure 门户监视应用程序和生成自定义仪表板的方法。 有关 Application Insights 对其他语言的支持，请参阅[语言、平台和集成文档](../azure-monitor/app/platforms.md)。
 
-[GitHub](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights) 上提供了一个示例 C# 解决方案，其中随附了本文中演示的代码。 此示例将 Application Insights 检测代码添加到 [TopNWords](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/TopNWords) 示例。 如果你不熟悉该示例，请先尝试生成并运行 TopNWords。 这有助于理解在多个计算节点上并行处理一组输入 Blob 的基本 Batch 工作流。 
+[GitHub](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights) 上提供了一个示例 C# 解决方案，其中随附了本文中演示的代码。 此示例将 Application Insights 检测代码添加到 [TopNWords](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/TopNWords) 示例。 如果你不熟悉该示例，请先尝试生成并运行 TopNWords。 这有助于理解在多个计算节点上并行处理一组输入 Blob 的基本 Batch 工作流。
 
 > [!TIP]
-> 或者，配置 Batch 解决方案以在 Batch Explorer 中显示 Application Insights 数据，例如 VM 性能计数器。 [Batch Explorer](https://github.com/Azure/BatchExplorer) 是一个功能丰富的免费独立客户端工具，可帮助创建、调试和监视 Azure Batch 应用程序。 下载适用于 Mac、Linux 或 Windows 的[安装包](https://azure.github.io/BatchExplorer/)。 有关在 Batch Explorer 中启用 Application Insights 数据的快速步骤，请参阅 [batch-insights 存储库](https://github.com/Azure/batch-insights)。 
->
+> 或者，配置 Batch 解决方案以在 Batch Explorer 中显示 Application Insights 数据，例如 VM 性能计数器。 [Batch Explorer](https://github.com/Azure/BatchExplorer) 是一个功能丰富的免费独立客户端工具，可帮助创建、调试和监视 Azure Batch 应用程序。 下载适用于 Mac、Linux 或 Windows 的[安装包](https://azure.github.io/BatchExplorer/)。 有关在 Batch Explorer 中启用 Application Insights 数据的快速步骤，请参阅 [batch-insights 存储库](https://github.com/Azure/batch-insights)。
 
 ## <a name="prerequisites"></a>先决条件
-* [Visual Studio 2017 或更高版本](https://www.visualstudio.com/vs)
 
-* [Batch 帐户和链接的存储帐户](batch-account-create-portal.md)
-
-* [Application Insights 资源](../azure-monitor/app/create-new-resource.md )
-  
-   * 使用 Azure 门户创建一个 Application Insights 资源。 选择“常规”作为应用程序类型。
-
-   * 从门户中复制[检测密钥](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key)。 本文稍后会用到此密钥。
+- [Visual Studio 2017 或更高版本](https://www.visualstudio.com/vs)
+- [Batch 帐户和链接的存储帐户](batch-account-create-portal.md)
+- [Application Insights 资源](../azure-monitor/app/create-new-resource.md)。 使用 Azure 门户创建一个 Application Insights 资源。 选择“常规”作为应用程序类型。
+- 从 Azure 门户中复制[检测密钥](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key)。 稍后将需要此值。
   
   > [!NOTE]
   > Application Insights 中存储的数据可能会产生[费用](https://azure.microsoft.com/pricing/details/application-insights/)。 这包括本文中所述的诊断和监视数据。
-  > 
 
 ## <a name="add-application-insights-to-your-project"></a>将 Application Insights 添加到项目
 
@@ -45,6 +39,7 @@ ms.locfileid: "104605777"
 ```powershell
 Install-Package Microsoft.ApplicationInsights.WindowsServer
 ```
+
 使用 **Microsoft.ApplicationInsights** 命名空间从 .NET 应用程序引用 Application Insights。
 
 ## <a name="instrument-your-code"></a>检测代码
@@ -54,14 +49,16 @@ Install-Package Microsoft.ApplicationInsights.WindowsServer
 ```xml
 <InstrumentationKey>YOUR-IKEY-GOES-HERE</InstrumentationKey>
 ```
+
 此外，请在 TopNWords.cs 文件中添加该检测密钥。
 
 TopNWords.cs 中的示例通过 Application Insights API 使用以下[检测调用](../azure-monitor/app/api-custom-events-metrics.md)：
-* `TrackMetric()` - 跟踪某个计算节点下载所需文本文件平均花费的时间。
-* `TrackTrace()` - 将调试调用添加到代码。
-* `TrackEvent()` - 跟踪要捕获的相关事件。
 
-本示例有意遗漏了异常处理。 相反，Application Insights 会自动报告未经处理的异常，从而显著改善了调试体验。 
+- `TrackMetric()` - 跟踪某个计算节点下载所需文本文件平均花费的时间。
+- `TrackTrace()` - 将调试调用添加到代码。
+- `TrackEvent()` - 跟踪要捕获的相关事件。
+
+本示例有意遗漏了异常处理。 相反，Application Insights 会自动报告未经处理的异常，从而显著改善了调试体验。
 
 以下代码片段演示如何使用这些方法。
 
@@ -118,7 +115,8 @@ public void CountWords(string blobName, int numTopN, string storageAccountName, 
 ```
 
 ### <a name="azure-batch-telemetry-initializer-helper"></a>Azure Batch 遥测初始化表达式帮助器
-报告给定服务器和实例的遥测数据时，Application Insights 使用 Azure VM 角色和 VM 名称作为默认值。 本示例演示如何在 Azure Batch 的上下文中改用池名称和计算节点名称。 使用[遥测初始化表达式](../azure-monitor/app/api-filtering-sampling.md#add-properties)重写默认值。 
+
+报告给定服务器和实例的遥测数据时，Application Insights 使用 Azure VM 角色和 VM 名称作为默认值。 本示例演示如何在 Azure Batch 的上下文中改用池名称和计算节点名称。 使用[遥测初始化表达式](../azure-monitor/app/api-filtering-sampling.md#add-properties)重写默认值。
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -173,7 +171,7 @@ namespace Microsoft.Azure.Batch.Samples.TelemetryInitializer
 <TelemetryInitializers>
     <Add Type="Microsoft.Azure.Batch.Samples.TelemetryInitializer.AzureBatchNodeTelemetryInitializer, Microsoft.Azure.Batch.Samples.TelemetryInitializer"/>
 </TelemetryInitializers>
-``` 
+```
 
 ## <a name="update-the-job-and-tasks-to-include-application-insights-binaries"></a>更新作业和任务，以包含 Application Insights 二进制文件
 
@@ -200,6 +198,7 @@ private static readonly List<string> AIFilesToUpload = new List<string>()
 ```
 
 接下来，创建任务使用的临时文件。
+
 ```csharp
 ...
 // create file staging objects that represent the executable and its dependent assembly to run as the task.
@@ -219,6 +218,7 @@ foreach (string aiFile in AIFilesToUpload)
 `FileToStage` 方法是代码示例中的帮助器函数，用于将文件从本地磁盘轻松上传到 Azure 存储 Blob。 稍后每个文件将下载到计算节点，并由任务引用。
 
 最后，将任务添加到作业，并包含所需的 Application Insights 二进制文件。
+
 ```csharp
 ...
 // initialize a collection to hold the tasks that will be submitted in their entirety
@@ -260,7 +260,7 @@ for (int i = 1; i <= topNWordsConfiguration.NumberOfTasks; i++)
 
 若要查看 Application Insights 资源中的跟踪日志，请单击“实时流”。 以下屏幕截图显示如何查看来自池中计算节点的实时数据，例如每个计算节点的 CPU 使用率。
 
-![实时流计算节点数据](./media/monitor-application-insights/applicationinsightslivestream.png)
+![实时流计算节点数据的屏幕截图。](./media/monitor-application-insights/applicationinsightslivestream.png)
 
 ### <a name="view-trace-logs"></a>查看跟踪日志
 
@@ -268,32 +268,32 @@ for (int i = 1; i <= topNWordsConfiguration.NumberOfTasks; i++)
 
 以下屏幕截图显示如何记录某个任务的单个跟踪，并随后对其进行查询以实现调试目的。
 
-![跟踪日志图像](./media/monitor-application-insights/tracelogsfortask.png)
+![显示单个跟踪的日志的屏幕截图。](./media/monitor-application-insights/tracelogsfortask.png)
 
 ### <a name="view-unhandled-exceptions"></a>查看未经处理的异常
 
-以下屏幕截图显示 Application Insights 如何记录应用程序中引发的异常。 在本例中，在应用程序引发异常后的几秒钟内，即可深入到特定的异常并诊断问题。
+Application Insights 记录应用程序中引发的异常。 在本例中，在应用程序引发异常后的几秒钟内，即可深入到特定的异常并诊断问题。
 
-![未经处理的异常](./media/monitor-application-insights/exception.png)
+![显示未处理的异常的屏幕截图。](./media/monitor-application-insights/exception.png)
 
 ### <a name="measure-blob-download-time"></a>测量 Blob 下载时间
 
 自定义指标也是门户中的一个有用工具。 例如，可以显示每个计算节点下载其处理的所需文本文件平均花费的时间。
 
 创建示例图表：
+
 1. 在 Application Insights 资源中，单击“指标资源管理器” > “添加图表”。 
-2. 在添加的图表上单击“编辑”。
-2. 按如下所示更新图表详细信息：
-   * 将“图表类型”设置为“网格”。 
-   * 将“聚合”设置为“平均”。 
-   * 将“分组依据”设置为“NodeId”。 
-   * 在“指标”中，选择“自定义” > “Blob 下载时间(秒)”。  
-   * 根据偏好调整“调色板”的显示。 
+1. 在添加的图表上单击“编辑”。
+1. 按如下所示更新图表详细信息：
+   - 将“图表类型”设置为“网格”。 
+   - 将“聚合”设置为“平均”。 
+   - 将“分组依据”设置为“NodeId”。 
+   - 在“指标”中，选择“自定义” > “Blob 下载时间(秒)”。  
+   - 根据偏好调整“调色板”的显示。
 
-![每个节点的 Blob 下载时间](./media/monitor-application-insights/blobdownloadtime.png)
+![该屏幕截图显示了一个图表，其中显示的是每个节点的 blob 下载时间。](./media/monitor-application-insights/blobdownloadtime.png)
 
-
-## <a name="monitor-compute-nodes-continuously"></a>连续监视计算节点
+## <a name="monitor-compute-nodes-continuously&quot;></a>连续监视计算节点
 
 你可能已注意到，仅当任务运行时，才会记录所有指标，包括性能计数器。 此行为很有用，因为它会限制 Application Insights 记录的数据量。 但是，在某些情况下，我们希望一直监视计算节点。 例如，计算节点可能在运行未由 Batch 服务计划的后台工作。 在这种情况下，可设置为在计算节点的整个生命周期内都要运行某个监视进程。 
 
@@ -302,15 +302,15 @@ for (int i = 1; i <= topNWordsConfiguration.NumberOfTasks; i++)
 ```csharp
 ...
  // Batch start task telemetry runner
-private const string BatchStartTaskFolderName = "StartTask";
-private const string BatchStartTaskTelemetryRunnerName = "Microsoft.Azure.Batch.Samples.TelemetryStartTask.exe";
-private const string BatchStartTaskTelemetryRunnerAIConfig = "ApplicationInsights.config";
+private const string BatchStartTaskFolderName = &quot;StartTask&quot;;
+private const string BatchStartTaskTelemetryRunnerName = &quot;Microsoft.Azure.Batch.Samples.TelemetryStartTask.exe&quot;;
+private const string BatchStartTaskTelemetryRunnerAIConfig = &quot;ApplicationInsights.config&quot;;
 ...
 CloudPool pool = client.PoolOperations.CreatePool(
     topNWordsConfiguration.PoolId,
     targetDedicated: topNWordsConfiguration.PoolNodeCount,
-    virtualMachineSize: "standard_d1_v2",
-    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));
+    virtualMachineSize: &quot;standard_d1_v2&quot;,
+    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: &quot;5"));
 ...
 
 // Create a start task which will run a dummy exe in background that simply emits performance
@@ -327,16 +327,12 @@ pool.StartTask = new StartTask()
 
 > [!TIP]
 > 若要提高解决方案的可管理性，可以在[应用程序包](./batch-application-packages.md)中捆绑程序集。 然后，若要自动将应用程序包部署到池中，请添加对池配置的应用程序包引用。
->
 
-## <a name="throttle-and-sample-data"></a>限制和示例数据 
+## <a name="throttle-and-sample-data"></a>限制和示例数据
 
 由于生产环境中运行的 Azure Batch 应用程序的大规模性，你可能想要限制 Application Insights 收集的数据量，以控制成本。 请参阅[在 Application Insights 中采样](../azure-monitor/app/sampling.md)，了解一些可以实现此目的的机制。
 
-
 ## <a name="next-steps"></a>后续步骤
-* 详细了解 [Application Insights](../azure-monitor/app/app-insights-overview.md)。
 
-* 有关 Application Insights 对其他语言的支持，请查看[语言、平台和集成文档](../azure-monitor/app/platforms.md)。
-
-
+- 详细了解 [Application Insights](../azure-monitor/app/app-insights-overview.md)。
+- 有关 Application Insights 对其他语言的支持，请参阅[语言、平台和集成文档](../azure-monitor/app/platforms.md)。

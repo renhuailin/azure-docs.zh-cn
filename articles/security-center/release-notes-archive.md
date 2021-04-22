@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 04/04/2021
 ms.author: memildin
-ms.openlocfilehash: a00c11924d2c0f6860c297ab7e58da21da5e1975
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 9d376a374d1934f55b6a6fb15f1642c81b30b2fc
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102634696"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718658"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能存档
 
@@ -24,6 +24,157 @@ ms.locfileid: "102634696"
 - Bug 修复
 - 已弃用的功能
 
+
+## <a name="october-2020"></a>2020 年 10 月
+
+10月更新包括：
+- [本地和多云计算机的漏洞评估（预览版）](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview)
+- [添加了 Azure 防火墙建议（预览版）](#azure-firewall-recommendation-added-preview)
+- [“应在 Kubernetes 服务上定义已授权的 IP 范围”建议更新了快速修复](#authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix)
+- [法规合规性仪表板现在包含用于删除标准的选项](#regulatory-compliance-dashboard-now-includes-option-to-remove-standards)
+- [从 Azure Resource Graph (ARG) 中删除了 Microsoft.Security/securityStatuses 表](#microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg)
+
+### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview"></a>本地和多云计算机的漏洞评估（预览版）
+
+[适用于服务器的 Azure Defender](defender-for-servers-introduction.md) 的集成式漏洞评估扫描器（由 Qualys 提供支持）现可扫描启用了 Azure Arc 的服务器。
+
+当你在非 Azure 计算机上启用了 Azure Arc 后，安全中心将提供两种向计算机部署集成式漏洞扫描器的选项（手动和大规模）。
+
+此次更新后，你便可以发掘 Azure Defender 的强大功能，合并所有 Azure 和非 Azure 资产的漏洞管理计划。
+
+主要功能：
+
+- 监视 Azure Arc 计算机上的 VA（漏洞评估）扫描器预配状态
+- 将集成式 VA 代理预配到未受保护的 Windows 和 Linux Azure Arc 计算机（手动或大规模）
+- 从部署的代理接收和分析检测到的漏洞（手动和大规模）
+- 统一的 Azure VM 和 Azure Arc 计算机体验
+
+[详细了解如何将集成式漏洞扫描器部署到混合计算机](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines)。
+
+[详细了解启用了 Azure Arc 的服务器](../azure-arc/servers/index.yml)。
+
+
+### <a name="azure-firewall-recommendation-added-preview"></a>添加了 Azure 防火墙建议（预览版）
+
+添加了新的建议，即使用 Azure 防火墙保护所有虚拟网络。
+
+“虚拟网络应受 Azure 防火墙保护”建议使用 Azure 防火墙限制虚拟网络的访问权限和防止潜在威胁。
+
+了解有关 [Azure 防火墙](https://azure.microsoft.com/services/azure-firewall/)的详细信息。
+
+
+### <a name="authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix"></a>“应在 Kubernetes 服务上定义已授权的 IP 范围”建议更新了快速修复
+
+“应在 Kubernetes 服务上定义已授权的 IP 范围”建议现提供一个快速修复选项。
+
+要详细了解此建议以及其他各项安全中心建议，请参阅[安全建议 - 参考指南](recommendations-reference.md)。
+
+:::image type="content" source="./media/release-notes/authorized-ip-ranges-recommendation.png" alt-text="具有快速修复选项的“应在 Kubernetes 服务上定义已授权的 IP 范围”建议":::
+
+
+### <a name="regulatory-compliance-dashboard-now-includes-option-to-remove-standards"></a>法规合规性仪表板现在包含用于删除标准的选项
+
+安全中心的法规合规性仪表板基于你满足特定合规控制和要求的情况来提供合规态势的见解。
+
+该仪表板包含一组默认的法规标准。 如果提供的任何标准都与你的组织不相关，那么现在简单操作一下就可在订阅的 UI 中将它们删除。 只能在“订阅”级别删除标准，而不能从管理组范围删除。
+
+有关详细信息，请参阅[从仪表板中删除标准](update-regulatory-compliance-packages.md#remove-a-standard-from-your-dashboard)。
+
+
+### <a name="microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg"></a>从 Azure Resource Graph (ARG) 中删除了 Microsoft.Security/securityStatuses 表
+
+Azure Resource Graph 是 Azure 中的一项服务，旨在提供高效的资源浏览功能，它能够在一组给定的订阅中进行大规模查询，使你能够有效地管理环境。 
+
+对于 Azure 安全中心，你可以使用 ARG 和 [Kusto 查询语言 (KQL)](/azure/data-explorer/kusto/query/) 来查询各种安全状态数据。 例如：
+
+- 资产清单利用 (ARG)
+- 我们提供了一个示例 ARG 查询，说明如何[在未启用多重身份验证 (MFA) 的情况下标识帐户](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled)
+
+ARG 中提供了可以在查询中使用的数据表。
+
+:::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="Azure Resource Graph 资源管理器和可用的表":::
+
+> [!TIP]
+> ARG 文档列出了 [Azure Resource Graph 表和资源类型参考](../governance/resource-graph/reference/supported-tables-resources.md)中所有可用的表。
+
+在此次更新中，删除了 Microsoft.Security/securityStatuses。 securityStatuses API 仍可用。
+
+Microsoft.Security/Assessments 表可以使用数据替换。
+
+Microsoft.Security/securityStatuses 和 Microsoft.Security/Assessments 的主要区别在于，前者显示评估聚合，而后者会为每项评估保留一条记录。
+
+例如，Microsoft.Security/securityStatuses 将返回包含两个 policyAssessments 数组的结果：
+
+```
+{
+id: "/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet",
+name: "mico-rg-vnet",
+type: "Microsoft.Security/securityStatuses",
+properties:  {
+    policyAssessments: [
+        {assessmentKey: "e3deicce-f4dd-3b34-e496-8b5381bazd7e", category: "Networking", policyName: "Azure DDOS Protection Standard should be enabled",...},
+        {assessmentKey: "sefac66a-1ec5-b063-a824-eb28671dc527", category: "Compute", policyName: "",...}
+    ],
+    securitystateByCategory: [{category: "Networking", securityState: "None" }, {category: "Compute",...],
+    name: "GenericResourceHealthProperties",
+    type: "VirtualNetwork",
+    securitystate: "High"
+}
+```
+而 Microsoft.Security/Assessments 将为这样的策略评估各保留一条记录，如下所示：
+
+```
+{
+type: "Microsoft.Security/assessments",
+id:  "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourceGroups/mico-rg/providers/Microsoft. Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/assessments/e3delcce-f4dd-3b34-e496-8b5381ba2d70",
+name: "e3deicce-f4dd-3b34-e496-8b5381ba2d70",
+properties:  {
+    resourceDetails: {Source: "Azure", Id: "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet"...},
+    displayName: "Azure DDOS Protection Standard should be enabled",
+    status: (code: "NotApplicable", cause: "VnetHasNOAppGateways", description: "There are no Application Gateway resources attached to this Virtual Network"...}
+}
+
+{
+type: "Microsoft.Security/assessments",
+id:  "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourcegroups/mico-rg/providers/microsoft.network/virtualnetworks/mico-rg-vnet/providers/Microsoft.Security/assessments/80fac66a-1ec5-be63-a824-eb28671dc527",
+name: "8efac66a-1ec5-be63-a824-eb28671dc527",
+properties: {
+    resourceDetails: (Source: "Azure", Id: "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourcegroups/mico-rg/providers/microsoft.network/virtualnetworks/mico-rg-vnet"...),
+    displayName: "Audit diagnostic setting",
+    status:  {code: "Unhealthy"}
+}
+```
+
+**将使用 securityStatuses 的现有 ARG 查询转换为现在使用 Assessments 表的示例：**
+
+引用 SecurityStatuses 的查询：
+
+```kusto
+SecurityResources 
+| where type == 'microsoft.security/securitystatuses' and properties.type == 'virtualMachine'
+| where name in ({vmnames}) 
+| project name, resourceGroup, policyAssesments = properties.policyAssessments, resourceRegion = location, id, resourceDetails = properties.resourceDetails
+```
+
+Assessments 表的替换查询：
+
+```kusto
+securityresources
+| where type == "microsoft.security/assessments" and id contains "virtualMachine"
+| extend resourceName = extract(@"(?i)/([^/]*)/providers/Microsoft.Security/assessments", 1, id)
+| extend source = tostring(properties.resourceDetails.Source)
+| extend resourceId = trim(" ", tolower(tostring(case(source =~ "azure", properties.resourceDetails.Id,
+source =~ "aws", properties.additionalData.AzureResourceId,
+source =~ "gcp", properties.additionalData.AzureResourceId,
+extract("^(.+)/providers/Microsoft.Security/assessments/.+$",1,id)))))
+| extend resourceGroup = tolower(tostring(split(resourceId, "/")[4]))
+| where resourceName in ({vmnames}) 
+| project resourceName, resourceGroup, resourceRegion = location, id, resourceDetails = properties.additionalData
+```
+
+若要了解详细信息，请参阅下列链接：
+- [如何使用 Azure Resource Graph 浏览器创建查询](../governance/resource-graph/first-query-portal.md)
+- [Kusto 查询语言 (KQL)](/azure/data-explorer/kusto/query/)
 
 
 ## <a name="september-2020"></a>2020 年 9 月
@@ -268,7 +419,7 @@ Pod 安全策略（预览版）功能已设置为弃用，并且在 2020 年 10 
 
 ### <a name="added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication"></a>添加了对 Azure Active Directory 安全默认值的支持（用于多重身份验证）
 
-安全中心已添加对[安全默认值](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)（Microsoft 的免费标识安全保护）的全部支持。
+安全中心已添加对[安全默认值](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)的完全支持，即 Microsoft 的免费标识安全保护。
 
 安全默认值提供了预配置的标识安全设置，以保护组织免受与标识相关的常见攻击。 安全默认值总计已保护了逾 500 万名租户；50,000 名租户也受安全中心的保护。
 
@@ -298,8 +449,8 @@ Pod 安全策略（预览版）功能已设置为弃用，并且在 2020 年 10 
 
 |统一的建议|更改描述|
 |----|:----|
-|**应在虚拟机上启用漏洞评估解决方案**|替换以下两条建议：<br> • 在虚拟机上启用内置漏洞评估解决方案（由 Qualys 提供技术支持）（现已弃用）（仅标准层显示此建议）<br> • 漏洞评估解决方案应安装在虚拟机上（现已弃用）（标准和免费层显示此建议）|
-|**应修正虚拟机中的漏洞**|替换以下两条建议：<br>• 修正虚拟机上发现的漏洞（由 Qualys 提供支持）（现已弃用）<br>• 应通过漏洞评估解决方案修正漏洞（现已弃用）|
+|**应在虚拟机上启用漏洞评估解决方案**|替换以下两条建议：<br> ***** 在虚拟机上启用内置漏洞评估解决方案（由 Qualys 提供支持）（现已弃用）（仅标准层显示此建议）<br> ***** 漏洞评估解决方案应安装在虚拟机上（现已弃用）（标准和免费层显示此建议）|
+|**应修正虚拟机中的漏洞**|替换以下两条建议：<br>***** 修正虚拟机上发现的漏洞（由 Qualys 提供支持）（现已弃用）<br>***** 应通过漏洞评估解决方案修正漏洞（现已弃用）|
 |||
 
 现在可根据同一建议从 Qualys 或 Rapid7 等合作伙伴部署安全中心的漏洞评估扩展或专用许可解决方案（“BYOL”）。
@@ -312,20 +463,20 @@ Pod 安全策略（预览版）功能已设置为弃用，并且在 2020 年 10 
 
 ##### <a name="before-august-2020"></a>2020 年 8 月之前
 
-|建议|范围|
+| 建议|范围|
 |----|:----|
 |**在虚拟机上启用内置漏洞评估解决方案（由 Qualys 提供支持）**<br>注册表项：550e890b-e652-4d22-8274-60b3bdb24c63|内置|
 |修正虚拟机上发现的漏洞（由 Qualys 提供支持）<br>注册表项：1195afff-c881-495e-9bc5-1486211ae03f|内置|
 |应在虚拟机上安装漏洞评估解决方案<br>注册表项：01b1ed4c-b733-4fee-b145-f23236e70cf3|BYOL|
 |**应通过漏洞评估解决方案修复漏洞**<br>注册表项：71992a2a-d168-42e0-b10e-6b45fa2ecddb|BYOL|
-||||
+|||
 
 
 |策略|范围|
 |----|:----|
 |**应对虚拟机启用漏洞评估**<br>策略 ID：501541f7-f7e7-4cd6-868c-4190fdad3ac9|内置|
 |**应通过漏洞评估解决方案修正漏洞**<br>策略 ID：760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
-||||
+|||
 
 
 ##### <a name="from-august-2020"></a>2020 年 8 月之后
@@ -334,12 +485,12 @@ Pod 安全策略（预览版）功能已设置为弃用，并且在 2020 年 10 
 |----|:----|
 |**应在虚拟机上启用漏洞评估解决方案**<br>密钥：ffff0522-1e88-47fc-8382-2a80ba848f5d|内置 + BYOL|
 |**应修正虚拟机中的漏洞**<br>注册表项：1195afff-c881-495e-9bc5-1486211ae03f|内置 + BYOL|
-||||
+|||
 
 |策略|范围|
 |----|:----|
 |[应对虚拟机启用漏洞评估](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>策略 ID：501541f7-f7e7-4cd6-868c-4190fdad3ac9 |内置 + BYOL|
-||||
+|||
 
 
 ### <a name="new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only"></a>新的 AKS 安全策略已添加到 ASC_default 计划 - 仅供个人预览版客户使用
@@ -899,7 +1050,7 @@ Azure 安全中心对 Azure Key Vault 的威胁防护的支持提供额外的安
 
 在集中管理安全性和 IT/运营的组织的环境中发现差异时，这些组织可以实施内部工作流程来驱动所需的操作。 在许多情况下，这些工作流是可重复的流程，而自动化可以在组织内部大幅简化流程。
 
-目前我们正在安全中心内引入一项新功能，它可以让客户创建利用 Azure 逻辑应用的自动化配置，并创建可根据具体 ASC 发现结果自动触发这些配置的策略（例如“建议”或“警报”）。 可将 Azure 逻辑应用配置为执行逻辑应用连接器大型社区所支持的任何自定义操作，或使用安全中心提供的某个模板，例如，发送电子邮件或开具 ServiceNow™ 票证。
+目前我们正在安全中心内引入一项新功能，它可以让客户创建利用 Azure 逻辑应用的自动化配置，并创建可根据具体 ASC 发现结果自动触发这些配置的策略（例如“建议”或“警报”）。 可将 Azure 逻辑应用配置为执行逻辑应用连接器大型社区所支持的任何自定义操作，或使用安全中心提供的某个模板，例如，发送电子邮件或开具 ServiceNow&trade; 票证。
 
 若要详细了解用于运行工作流的自动和手动安全中心功能，请参阅[工作流自动化](workflow-automation.md)。
 
@@ -975,7 +1126,7 @@ Azure 安全中心现在支持自定义策略（预览版）。
 
 ### <a name="extending-azure-security-center-coverage-with-platform-for-community-and-partners"></a>在面向社区和合作伙伴的平台中扩大 Azure 安全中心的涵盖范围
 
-使用安全中心不仅可以从 Microsoft 接收建议，而且还能从 Check Point、Tenable 和 CyberArk 等合作伙伴提供的现有解决方案以及不断推出的其他许多集成中接收建议。  安全中心的简单加入流程可将你的现有解决方案连接到安全中心，使你可以在一个位置查看安全态势建议、运行统一报告，以及针对内置建议和合作伙伴建议利用安全中心的所有功能。 还可以将安全中心建议导出到合作伙伴产品。
+使用安全中心不仅可以接收来自 Microsoft 的建议，还可以接收来自合作伙伴（例如 Check Point、Tenable 和 CyberArk）的现有解决方案中的建议，它们以后会提供更多的集成。  安全中心的简单加入流可以将你现有的解决方案连接到安全中心，使你能够在一个地方查看安全状况建议、运行统一的报告，以及根据内置的建议和合作伙伴的建议利用安全中心的所有功能。 你还可以将安全中心建议导出到合作伙伴产品。
 
 [详细了解 Microsoft 智能安全关联](https://www.microsoft.com/security/partnerships/intelligent-security-association)。
 
@@ -985,11 +1136,11 @@ Azure 安全中心现在支持自定义策略（预览版）。
 
 若要在安全中心的顶层实现企业级方案，现在可以在除 Azure 门户或 API 以外的其他位置使用安全中心警报和建议。 可直接将这些警报和建议导出到事件中心与 Log Analytics 工作区。 下面是可以围绕这些新功能创建的一些工作流：
 
-- 借助导出到 Log Analytics 工作区的功能，可以使用 Power BI 创建自定义仪表板。
-- 借助导出到事件中心的功能，可将安全中心警报和建议导出到第三方 SIEM、实时导出到第三方解决方案，或导出到 Azure 数据资源管理器。
+- 由于可以导出到 Log Analytics 工作区，因此你可以使用 Power BI 创建自定义仪表板。
+- 由于可以导出到事件中心，因此你可以将安全中心警报和建议导出到第三方 SIEM、实时导出到第三方解决方案，或导出到 Azure 数据资源管理器。
 
 
-### <a name="onboard-on-prem-servers-to-security-center-from-windows-admin-center-preview"></a>从 Windows 管理中心将本地服务器加入安全中心（预览版）
+### <a name="onboard-on-prem-servers-to-security-center-from-windows-admin-center-preview"></a>从 Windows 管理中心将本地服务器加入到安全中心（预览版）
 
 Windows 管理中心是一个管理门户，适用于未在 Azure 中部署的 Windows Server，为它们提供多项 Azure 管理功能（例如备份和系统更新）。 我们最近添加了一项功能，允许直接从 Windows 管理中心体验加入这些非 Azure 服务器，使其受 ASC 保护。
 
@@ -1012,9 +1163,9 @@ Windows 管理中心是一个管理门户，适用于未在 Azure 中部署的 W
 
 ### <a name="control-container-security-recommendation-using-azure-policy"></a>使用 Azure Policy 控制容器安全建议
 
-现在，可以通过 Azure Policy 启用或禁用 Azure 安全中心提供的有关修正容器安全性中的漏洞的建议。
+现在可以通过 Azure Policy 启用或禁用 Azure 安全中心提供的用于修复容器安全相关漏洞的建议。
 
-若要查看已启用的安全策略，请在安全中心内打开“安全策略”页。
+若要查看已启用的安全策略，请从安全中心打开“安全策略”页。
 
 
 ## <a name="august-2019"></a>2019 年 8 月
@@ -1042,9 +1193,9 @@ JIT VM 访问使用 NSG 和 Azure 防火墙规则，仅在需要时才提供对 
 
 安全评分是一个可帮助你评估工作负荷安全状况的工具。 它会评审你的安全建议并确定其优先级，以便你知道要首先执行哪些建议。 这可帮助你找到最严重的安全漏洞，以确定调查优先级。
 
-为了简化安全配置错误的修正并帮助你快速提高安全评分，我们添加了一项新功能，让你一键式修正针对批量资源的建议。
+为了简化对安全错误配置的修正并帮助你快速提高安全评分，我们添加了一项新功能，允许你通过一次单击执行对大量资源的修正建议。
 
-此操作可让你选择要对其应用修正措施的资源，并启动一个修正措施来让系统代你配置设置。
+此操作允许你选择要对其应用修正的资源，并启动一个将代表你对设置进行配置的修正操作。
 
 在[安全建议参考指南](recommendations-reference.md)中了解哪些建议启用了快速修复。
 

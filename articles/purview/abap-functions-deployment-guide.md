@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/13/2020
 ms.openlocfilehash: 9bd3c315fcc15317a9fa483289fdc326ca6aa47f
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102614354"
 ---
 # <a name="deploy-the-metadata-extraction-abap-function-module-for-the-sap-r3-family-of-bridges"></a>部署适用于 SAP R3 系列桥接的元数据提取 ABAP 函数模块
@@ -77,7 +77,7 @@ SAP Business Suite 4 HANA (S/4HANA), ECC, 和 R/3 ERP 桥接可用于从 SAP 服
 
    :::image type="content" source="media/abap-functions-deployment-guide/processing-type.png" alt-text="“注册源”选项 - 已启用远程函数模块" border="true":::
 
-3. 导航到“源代码”选项卡。部署函数代码有两种方式：
+3. 导航到“源代码”选项卡。可以通过两种方式来部署函数的代码：
 
    a. 在主菜单中，上传文本文件 [Z\_MITI\_DOWNLOAD](https://github.com/Azure/Purview-Samples/tree/master/connectors/sap) 文件。 为此，请依次选择“实用工具”"、“更多实用工具”、“上传/下载”和“上传”。
 

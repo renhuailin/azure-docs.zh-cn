@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 29c0ae8ec210356f6027a46ed01f2a7126ea4a49
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101644725"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常见问题解答
@@ -265,7 +265,7 @@ Azure AD Connect 服务偶尔会在升级以后无法启动。 在这种情况�
 
 **遵循 Azure AD Connect 服务器安全指导原则** Azure AD Connect 服务器包含关键标识数据，应将其视为第 0 层组件，如 [Active Directory 管理层模型](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)中所述。 另请参阅我们的 [AADConnect 服务器安全指南](./how-to-connect-install-prerequisites.md#azure-ad-connect-server)。
 
-**为泄漏的凭据检测启用 PHS** 密码哈希同步还为混合帐户启用 [泄漏的凭据检测](../identity-protection/concept-identity-protection-risks.md) 。 Microsoft 与暗网研究人员和执法机构合作，查找公开提供的用户名/密码对。 如果这些对中的任何一对与用户的关联，则关联的帐户将被移到 "高风险"。 
+**为凭据泄漏检测启用 PHS** 密码哈希同步还为混合帐户启用了[凭据泄漏检测](../identity-protection/concept-identity-protection-risks.md)。 Microsoft 与暗网研究人员和执法机构合作，查找公开提供的用户名/密码对。 如果这些对中的任何一对与你的用户匹配，则关联的帐户将被移动到高风险区域。 
 
 
 ## <a name="troubleshooting"></a>疑难解答

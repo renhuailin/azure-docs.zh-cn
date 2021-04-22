@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/08/2018
+ms.date: 04/06/2021
 ms.author: kumud
-ms.openlocfilehash: 8cb1a490ac8edf2630253b45d99c3394bbe721b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 077e92b67f0cf6dac673cc870b7ff8c86fbe60dd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98234148"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551282"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>使用 Azure DNS 和流量管理器进行灾难恢复
 
-灾难恢复侧重于从严重的应用程序功能丧失中恢复。 若要选择灾难恢复解决方案，业务和技术所有者必须先确定必需的灾难期间功能级别，如不可用、精简功能后部分可用、延迟可用或完全可用。
+灾难恢复侧重于从严重的应用程序功能丧失中恢复。 若要选择灾难恢复解决方案，业务和技术所有者必须先确定灾难期间所需的功能级别，如不可用、精简功能后部分可用、延迟可用或完全可用。
 大多数企业客户选择多区域体系结构，以通过应用程序级或基础结构级故障转移复原。 客户可以选择多种方法，以通过冗余体系结构实现故障转移和高可用性。 下面是一些常用方法：
 
 - **使用冷备用的主动/被动**：在此故障转移解决方案中，在需要故障转移前，VM 和备用区域中运行的其他设备未处于活动状态。 不过，生产环境是以备份、VM 映像或资源管理器模板的形式复制到其他区域。 这种故障转移机制经济高效，但需要较长时间才能完成整个故障转移。
@@ -33,13 +33,13 @@ ms.locfileid: "98234148"
     
     图：使用冷备用的主动/被动灾难恢复配置 
 
-- **使用指示灯的主动/被动**：在此故障转移解决方案中，备用环境采用最简配置。 只配置运行必要的服务，就能支持关键的最简应用程序集。 在本机形式下，此方案只能执行最简功能，但如果发生故障转移，可以纵向扩展并生成附加服务来处理大量生产负载。
+- **使用指示灯的主动/被动**：在此故障转移解决方案中，备用环境采用最简配置。 只配置运行必要的服务，就能支持关键的最简应用程序集。 在本机形式下，此方案只能执行最简功能，但如果发生故障转移，可以纵向扩展并生成更多服务来处理大量生产负载。
     
     ![使用指示灯的主动/被动](./media/disaster-recovery-dns-traffic-manager/active-passive-with-pilot-light.png)
     
     图：使用指示灯的主动/被动灾难恢复配置 
 
-- **使用热备用的主动/被动**：在此故障转移解决方案中，备用区域会进行预热并能处理基础负载，自动缩放已启用，并且所有实例都正常运行。 此解决方案不会通过缩放来处理全部生产负载，但是有用的，且所有服务都正常运行。 此解决方案是指示灯方法的增强型版本。
+- **使用热备用的主动/被动**：在此故障转移解决方案中，备用区域会进行预热并能处理基础负载，自动缩放已启用，并且所有实例都正常运行。 此解决方案不会通过缩放来处理全部生产负载，但是是有用的，且所有服务都正常运行。 此解决方案是指示灯方法的增强型版本。
     
     ![使用热备用的主动/被动](./media/disaster-recovery-dns-traffic-manager/active-passive-with-warm-standby.png)
     
@@ -94,7 +94,7 @@ DNS 是转移网络流量的最高效机制之一，因为 DNS 通常是全局�
 
 图：在 Azure 中创建 DNS 区域记录 
 
-在此方案中，站点 www\.contoso.com 的 TTL 为 30 分钟，这远低于规定的 RTO，并且指向生产站点 prod.contoso.com。 此配置适用于常规业务操作。 prod.contoso.com 和 dr.contoso.com 的 TTL 已设置为 300 秒或 5 分钟。 可以使用 Azure 监视服务，如 Azure Monitor、Azure App Insights 或任何合作伙伴监视解决方案（如 Dynatrace）。甚至可以使用自行开发的解决方案来监视或检测应用程序级或虚拟基础结构级故障。
+在此方案中，站点 www\.contoso.com 的 TTL 为 30 分钟，这远低于规定的 RTO，并且指向生产站点 prod.contoso.com。 此配置适用于常规业务操作。 prod.contoso.com 和 dr.contoso.com 的 TTL 已设置为 300 秒或 5 分钟。 可以使用 Azure 监视服务（如 Azure Monitor 或 Azure App Insights）或任何合作伙伴监视解决方案（例如 Dynatrace）。 甚至可以使用自行开发的解决方案来监视或检测应用程序级或虚拟基础结构级故障。
 
 ### <a name="step-3-update-the-cname-record"></a>第 3 步：更新 CNAME 记录
 
@@ -146,7 +146,7 @@ Azure 流量管理器自动故障转移的配置步骤如下：
 
 ### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>第 2 步：在流量管理器配置文件中创建终结点
 
-在这一步，创建指向生产站点和灾难恢复站点的终结点。 此时，选择“类型”  作为外部终结点，但如果资源托管在 Azure 中，也可以选择“Azure 终结点”  。 如果选择“Azure 终结点”，请选择 Azure 分配的“应用服务”或“公共 IP”作为“目标资源”。 优先级设置为“1”  ，因为它是区域 1 的主服务。
+在这一步，创建指向生产站点和灾难恢复站点的终结点。 此时，选择“类型”  作为外部终结点，但如果资源托管在 Azure 中，也可以选择“Azure 终结点”  。 如果选择“Azure 终结点”，请选择 Azure 分配的“应用服务”或“公共 IP”作为“目标资源”。 优先级设置为“1”，因为它是区域 1 的主服务。
 同样，也在流量管理器中创建灾难恢复终结点。
 
 ![创建灾难恢复终结点](./media/disaster-recovery-dns-traffic-manager/create-disaster-recovery-endpoint.png)
@@ -165,7 +165,7 @@ Azure 流量管理器自动故障转移的配置步骤如下：
 
 ### <a name="how-automatic-failover-works-using-traffic-manager"></a>流量管理器自动故障转移的工作原理
 
-灾难期间，将对主终结点进行探测，并将状态更改为“已降级”  ，而灾难恢复站点的状态一直为“联机”  。 默认情况下，流量管理器将所有流量发送到主终结点（优先级最高）。 如果主终结点的状态显示为“已降级”，流量管理器会将流量路由到第二个终结点（只要它保持正常运行）。 可以视需要在流量管理器中配置更多终结点，以用作附加故障转移终结点，或用作负载均衡器在终结点之间共同均衡负载。
+灾难期间，将对主终结点进行探测，并将状态更改为“已降级”  ，而灾难恢复站点的状态一直为“联机”  。 默认情况下，流量管理器将所有流量发送到主终结点（优先级最高）。 如果主终结点的状态显示为“已降级”，流量管理器会将流量路由到第二个终结点（只要它保持正常运行）。 可以在流量管理器中配置更多终结点，以用作额外的故障转移终结点，或用作负载均衡器在终结点之间共同均衡负载。
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)。

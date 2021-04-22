@@ -1,6 +1,6 @@
 ---
 title: 用于管理 Azure Cosmos DB 的 MongoDB API 中的数据的 MongoDB 扩展命令
-description: 本文介绍如何使用 MongoDB 扩展命令管理 Azure Cosmos DB 的 API for MongoDB 中存储的数据。
+description: 本文介绍如何使用 MongoDB 扩展命令来管理 Azure Cosmos DB 的 MongoDB API 中存储的数据。
 author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -9,22 +9,22 @@ ms.date: 03/02/2021
 ms.author: chrande
 ms.custom: devx-track-js
 ms.openlocfilehash: deba6696eb71287902fa3970ed2d83d0b09ac08d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101658480"
 ---
-# <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>使用 MongoDB 扩展命令管理存储在 MongoDB Azure Cosmos DB 的 API 中的数据 
+# <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>使用 MongoDB 扩展命令管理 Azure Cosmos DB 的 MongoDB API 中存储的数据 
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 以下文档包含特定于 Azure Cosmos DB API for MongoDB 的自定义操作命令。 这些命令可用来创建和获取特定于 [Azure Cosmos DB 容量模型](account-databases-containers-items.md)的数据库资源。
 
-通过使用 Azure Cosmos DB 的适用于 MongoDB 的 API，你可以享受多种优势 Cosmos DB 例如：全局分发、自动分片、高可用性、延迟保证、自动、静态加密和备份等，同时保留你在 MongoDB 应用中的投资。 可以通过使用任何开源 [MongoDB 客户端驱动程序](https://docs.mongodb.org/ecosystem/drivers)与 AZURE COSMOS DB 的 API 进行通信。 使用 Azure Cosmos DB 的 MongoDB API，可以通过遵守 [mongodb 线路协议](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)使用现有的客户端驱动程序。
+使用 Azure Cosmos DB 的 MongoDB API，可以受益于 Cosmos DB 的多种优势，例如全球分发、自动分片、高可用性、延迟保证、自动化、静态加密、备份等，同时可以节省 MongoDB 应用方面的投资。 可通过任何开源 [MongoDB 客户端驱动程序](https://docs.mongodb.org/ecosystem/drivers)与 Azure Cosmos DB 的 MongoDB API 进行通信。 可以按照 [MongoDB 有线协议](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)规定，通过 Azure Cosmos DB 的 MongoDB API 来使用现有客户端驱动程序。
 
 ## <a name="mongodb-protocol-support"></a>MongoDB 协议支持
 
-Azure Cosmos DB 的 MongoDB API 与 MongoDB 服务器版本4.0、3.6 和3.2 兼容。 有关更多详细信息，请参阅 [4.0](mongodb-feature-support-40.md)、 [3.6](mongodb-feature-support-36.md)和 [3.2](mongodb-feature-support.md) 文章中支持的功能和语法。 
+Azure Cosmos DB 的 MongoDB API 与 MongoDB Server 版本 4.0、3.6 和 3.2 兼容。 有关更多详细信息，请参阅 [4.0](mongodb-feature-support-40.md)、[3.6](mongodb-feature-support-36.md) 和 [3.2](mongodb-feature-support.md) 文章中的受支持功能和语法。 
 
 以下扩展命令提供了通过数据库请求创建和修改 Azure Cosmos DB 特定资源的功能：
 
@@ -90,7 +90,7 @@ db.runCommand({customAction: "CreateDatabase", autoScaleSettings: { maxThroughpu
 
 ## <a name="update-database"></a><a id="update-database"></a> 更新数据库
 
-“更新数据库”扩展命令可更新与指定的数据库相关联的属性。 仅支持在 Azure 门户中将数据库从预配的吞吐量更改为自动缩放，反之亦然。 下表描述了该命令中的参数：
+“更新数据库”扩展命令可更新与指定的数据库相关联的属性。 仅支持在 Azure 门户中将数据库从预配吞吐量更改为自动缩放，反之亦然。 下表描述了该命令中的参数：
 
 |**字段**|**类型** |**说明** |
 |---------|---------|---------|
@@ -292,7 +292,7 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", s
 
 ## <a name="update-collection"></a><a id="update-collection"></a> 更新集合
 
-“更新集合”扩展命令可更新与指定的集合相关联的属性。 仅支持在 Azure 门户中将集合从预配的吞吐量更改为自动缩放，反之亦然。
+“更新集合”扩展命令可更新与指定的集合相关联的属性。 仅支持在 Azure 门户中将集合从预配吞吐量更改为自动缩放，反之亦然。
 
 ```javascript
 {

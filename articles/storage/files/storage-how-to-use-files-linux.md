@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5161d8e169a7eb9e757dfbfa71fa697880e1806e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.openlocfilehash: 4ace5620bf98b06956c294a12b6b08881422e718
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98673681"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104952331"
 ---
 # <a name="use-azure-files-with-linux"></a>通过 Linux 使用 Azure 文件
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以使用 [SMB 内核客户端](https://wiki.samba.org/index.php/LinuxCIFS)在 Linux 分发版中装载 Azure 文件共享。 本文介绍装载 Azure 文件共享的两种方法：使用 `mount` 命令按需装载，以及通过在 `/etc/fstab` 中创建一个条目在启动时装载。
@@ -94,7 +94,7 @@ uname -r
     如果无法在企业网络中打开端口 445，或者 ISP 阻止此类操作，可以使用 VPN 连接或 ExpressRoute 来解决端口 445 的相关问题。 有关详细信息，请参阅[直接访问 Azure 文件共享时的网络注意事项](storage-files-networking-overview.md)。
 
 ## <a name="mounting-azure-file-share"></a>装载 Azure 文件共享
-若要在 Linux 分发版中使用 Azure 文件共享，必须创建一个充当 Azure 文件共享装入点的目录。 可以在 Linux 系统上的任何位置创建装入点，但是通用约定是在 /mnt 下创建此装入点。 创建装入点之后，使用 `mount` 命令访问 Azure 文件共享。
+若要在 Linux 分发版中使用 Azure 文件共享，必须创建一个充当 Azure 文件共享装入点的目录。 你可以在 Linux 系统上的任何位置创建装入点，但是通常情况是在 /mount 下创建此装入点。 创建装入点之后，使用 `mount` 命令访问 Azure 文件共享。
 
 如果需要，可将同一个 Azure 文件共享装载到多个装入点。
 
@@ -106,7 +106,7 @@ uname -r
     storageAccountName="<your-storage-account>"
     fileShareName="<your-file-share>"
 
-    mntPath="/mnt/$storageAccountName/$fileShareName"
+    mntPath="/mount/$storageAccountName/$fileShareName"
 
     sudo mkdir -p $mntPath
     ```
@@ -135,14 +135,14 @@ uname -r
 使用完 Azure 文件共享后，可以使用 `sudo umount $mntPath` 卸载共享。
 
 ### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>使用 `/etc/fstab` 为 Azure 文件共享创建持久装入点
-1. **为装入点创建一个文件夹**：可以在文件系统上的任何位置创建装入点的文件夹，但是通用约定是在 /mnt 文件夹下创建此文件夹。 例如，以下命令（请将 `<your-resource-group>`、`<your-storage-account>` 和 `<your-file-share>` 替换为适用于你的环境的信息）会创建一个新目录：
+1. **为装入点创建一个文件夹**：你可以在文件系统上的任何位置创建装入点的文件夹，但是通常情况是在 /mount 文件夹下创建此文件夹。 例如，以下命令（请将 `<your-resource-group>`、`<your-storage-account>` 和 `<your-file-share>` 替换为适用于你的环境的信息）会创建一个新目录：
 
     ```bash
     resourceGroupName="<your-resource-group>"
     storageAccountName="<your-storage-account>"
     fileShareName="<your-file-share>"
 
-    mntPath="/mnt/$storageAccountName/$fileShareName"
+    mntPath="/mount/$storageAccountName/$fileShareName"
 
     sudo mkdir -p $mntPath
     ```

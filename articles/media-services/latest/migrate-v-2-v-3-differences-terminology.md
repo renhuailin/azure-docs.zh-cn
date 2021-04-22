@@ -9,14 +9,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 6f677c8753f09e146d300186e19217568952b417
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 42c4c91b6715ffec4c734632c69623206bc6dbae
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705392"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075996"
 ---
 # <a name="terminology-and-entity-changes-between-media-services-v2-and-v3"></a>媒体服务 V2 与 V3 之间的术语和实体更改
 
@@ -73,7 +73,7 @@ ms.locfileid: "101705392"
 | **编码** <!--new row --> |||
 | 编码比特率 <!--new row --> | 比特率（以 kbps 为单位），例如：128 (kbps)| 每秒位数，例如：128000（位/秒）|
 | 编码 DRM FairPlay <!--new row --> | 在媒体服务 V2 中，可以指定初始化向量 (IV)。 | 在媒体服务 V3 中，无法指定 FairPlay IV。|
-| 高级编码器 <!--new row --> | 高级编码器和旧索引器| [高级编码器](../previous/media-services-encode-asset.md)和旧[媒体分析处理器](../previous/legacy-components.md) (Azure 媒体服务索引器2预览版、面部编修器等 ) 无法通过 V3 进行访问。 添加了对音频通道映射到标准编码器的支持。  请参阅[媒体服务编码 Swagger 文档中的音频](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json)。  | 请参阅[基于场景的编码](migrate-v-2-v-3-migration-scenario-based-encoding.md)中的编码主题 |
+| 高级编码器 <!--new row --> | 高级编码器和旧索引器| [Premium Encoder](../previous/media-services-encode-asset.md) 和旧版[媒体分析处理器](../previous/legacy-components.md)（Azure 媒体服务索引器 2 预览版、Face Redactor 等）不可通过 V3 访问。 添加了对音频通道映射到标准编码器的支持。  请参阅[媒体服务编码 Swagger 文档中的音频](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json)。  <br/> 请参阅[基于场景的编码](migrate-v-2-v-3-migration-scenario-based-encoding.md)中的编码主题 |
 | **转换和作业** <!--new row -->|||
 | 基于作业的处理 HTTPS <!--new row --> |<!-- empty -->| 对于基于文件的作业处理，可以使用 HTTPS URL 作为输入。 无需事先在 Azure 中存储内容，无需创建资产。 |
 | 作业的 ARM 模板 <!--new row --> | V2 中不存在 ARM 模板。 | 使用转换可以生成可重用的配置、创建 Azure 资源管理器模板，并隔离多个客户或租户之间的处理设置。 |
@@ -86,11 +86,7 @@ ms.locfileid: "101705392"
 | 直播活动预览 <!--new row --> |<!-- empty -->| 直播活动预览版支持动态打包和动态加密。 这样，用户便可以使用预览版中的内容保护以及 DASH 和 HLS 打包。 |
 | 直播活动 RTMPS <!--new row --> |<!-- empty-->| 改进的 RTMPS 支持（提高了稳定性并提供了更多的源编码器支持）。 |
 | 直播活动 RTMPS 安全引入 <!--new row --> | | 创建直播活动时，将获得 4 个引入 URL。 这 4 个引入 URL 几乎是相同的，具有相同的流式处理令牌 `AppId`，仅端口号部分不同。 其中两个 URL 是 RTMPS 的主要和备份 URL。| 
-| 实时事件脚本 <!--new row --> |<!-- empty--> | Azure 媒体服务提供了不同协议中的视频、音频和文本。 使用 MPEG 破折号或 HLS/CMAF 发布实时流时，如果使用视频和音频，我们的服务将在 IMSC 1.1 兼容的 TTML 中提供转录文本。|
+| 实时事件听录 <!--new row --> |<!-- empty--> | Azure 媒体服务提供了不同协议的视频、音频和文本。 如果使用 MPEG-DASH 或 HLS/CMAF 发布实时传送流，并包含视频和音频，我们的服务将以兼容 IMSC 1.1 的 TTML 格式提供听录文本。|
 | 直播活动待机模式 <!--new row --> | V2 没有待机模式。 | 待机模式是一项新的 v3 功能，可帮助管理直播活动的热池。 客户现在可以较低的成本在待机模式下启动直播活动，然后再将其转换为运行状态。 这会缩短频道启动时间，并降低操作热池以加快启动速度的成本。 |
 | 直播活动计费 <!--new row --> | <!-- empty-->| 直播活动计费基于实时频道计量器。 |
 | 实时输出 <!--new row --> | 节目必须在创建后启动。 | 实时输出在创建时启动，在删除后停止。 |
-
-## <a name="next-steps"></a>后续步骤
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

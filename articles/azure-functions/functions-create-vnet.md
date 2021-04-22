@@ -3,12 +3,12 @@ title: 使用专用终结点将 Azure Functions 与虚拟网络集成
 description: 本教程介绍如何使用专用终结点将函数连接到 Azure 虚拟网络并将其锁定。
 ms.topic: article
 ms.date: 2/22/2021
-ms.openlocfilehash: 3dd5e700b3081f1c1ef8e4601385c707a5738321
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: e1ed944250f05f52860c47f6cb61130f50b08e7c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102630463"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078768"
 ---
 # <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-by-using-private-endpoints"></a>教程：使用专用终结点将 Azure Functions 与 Azure 虚拟网络集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "102630463"
 > * 测试函数应用在虚拟网络中是否安全。
 > * 清理资源。
 
-## <a name="create-a-function-app-in-a-premium-plan"></a>在高级计划中创建函数应用
+## <a name="create-a-function-app-in-a-premium-plan"></a>在高级计划中创建函数应用。
 
 你将在高级计划中创建 .NET 函数应用，因为本教程使用的是 C#。 Windows 还支持其他语言。 高级计划提供无服务器规模，同时支持虚拟网络集成。
 
@@ -67,7 +67,7 @@ ms.locfileid: "102630463"
 
 1. 选择“转到资源”，查看新的函数应用。 还可选择“固定到仪表板”。 固定可以更轻松地从仪表板返回此函数应用资源。
 
-恭喜！ 你已成功创建高级函数应用。
+祝贺你！ 你已成功创建高级函数应用。
 
 ## <a name="create-azure-resources"></a>创建 Azure 资源
 
@@ -160,7 +160,7 @@ Azure 专用终结点用于通过专用 IP 地址连接到特定 Azure 资源。
     | 设置      | 建议的值  | 说明      |
     | ------------ | ---------------- | ---------------- |
     | **订阅** | 订阅 | 要在其下创建资源的订阅。 | 
-    | **[资源组](../azure-resource-manager/management/overview.md)**  | myResourceGroup | 选择用函数应用创建的资源组。 | |
+    | **[资源组](../azure-resource-manager/management/overview.md)**  | myResourceGroup | 选择用函数应用创建的资源组。 |
     | **名称** | file-endpoint | 存储帐户中文件专用终结点的名称。 |
     | **[区域](https://azure.microsoft.com/regions/)** | myFunctionRegion | 选择创建存储帐户的区域。 |
 
@@ -212,7 +212,7 @@ Azure 专用终结点用于通过专用 IP 地址连接到特定 Azure 资源。
     | **订阅** | 订阅 | 要在其下创建资源的订阅。 | 
     | **资源类型**  | Microsoft.ServiceBus/namespaces | 服务总线的资源类型。 |
     | **资源** | myServiceBus | 在本教程前面创建的服务总线。 |
-    | **目标子资源** | 命名空间 | 将用于服务总线命名空间的专用终结点。 |
+    | **目标子资源** | namespace | 将用于服务总线命名空间的专用终结点。 |
 
 1. 在“配置”选项卡上，在“子网”设置中，选择“默认”。
 
@@ -292,7 +292,7 @@ Azure 专用终结点用于通过专用 IP 地址连接到特定 Azure 资源。
     | SERVICEBUS_CONNECTION | myServiceBusConnectionString | 为服务总线的连接字符串创建此应用设置。 此存储连接字符串来自[获取服务总线连接字符串](#get-a-service-bus-connection-string)部分。|
     | **WEBSITE_CONTENTOVERVNET** | 1 | 创建此应用设置。 将存储帐户限制在虚拟网络中时，值 1 允许函数应用进行缩放。 |
     | WEBSITE_DNS_SERVER | 168.63.129.16 | 创建此应用设置。 应用与虚拟网络集成时，它将使用与虚拟网络相同的 DNS 服务器。 函数应用需要此设置才能与 Azure DNS 专用区域配合使用。 使用专用终结点时需要此设置。 此设置和 WEBSITE_VNET_ROUTE_ALL 会将应用中的所有出站呼叫发送到虚拟网络。 |
-    | WEBSITE_VNET_ROUTE_ALL | 1 | 创建此应用设置。 应用与虚拟网络集成时，它将使用与虚拟网络相同的 DNS 服务器。 函数应用需要此设置才能与 Azure DNS 专用区域配合使用。 使用专用终结点时需要此设置。 此设置和 WEBSITE_DNS_SERVER 会将应用中的所有出站呼叫发送到虚拟网络。 |
+    | **WEBSITE_VNET_ROUTE_ALL** | 1 | 创建此应用设置。 应用与虚拟网络集成时，它将使用与虚拟网络相同的 DNS 服务器。 函数应用需要此设置才能与 Azure DNS 专用区域配合使用。 使用专用终结点时需要此设置。 此设置和 WEBSITE_DNS_SERVER 会将应用中的所有出站呼叫发送到虚拟网络。 |
 
 1. 在“配置”视图中，选择“函数运行时设置”选项卡。
 
@@ -326,13 +326,13 @@ Azure 专用终结点用于通过专用 IP 地址连接到特定 Azure 资源。
 
 1. 初始部署可能需要几分钟。 成功部署应用后，在“日志”选项卡上，可以看到“成功(活动)”状态消息。 如果需要，请刷新页面。
 
-恭喜！ 你已成功部署了示例函数应用。
+祝贺你！ 你已成功部署了示例函数应用。
 
 ## <a name="lock-down-your-function-app"></a>锁定函数应用
 
 现在，创建专用终结点以锁定函数应用。 此专用终结点将使用专用 IP 地址将函数应用以私密方式安全地连接到虚拟网络。 
 
-有关详细信息，请参阅[专用终结点文档](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)。
+有关详细信息，请参阅[专用终结点文档](../private-link/private-endpoint-overview.md)。
 
 1. 在函数应用中，在左侧菜单中选择“网络”。
 
@@ -344,11 +344,11 @@ Azure 专用终结点用于通过专用 IP 地址连接到特定 Azure 资源。
 
 1. 在打开的窗格中，使用以下专用终结点设置：
 
-    :::image type="content" source="./media/functions-create-vnet/15-create-app-private-endpoint.png" alt-text="介绍如何创建函数应用专用终结点的屏幕截图。名称为 functionapp-endpoint。订阅为“Private Test Sub CACHHAI”。虚拟网络为 MyVirtualNet-tutorial。子网为默认值。":::
+    :::image type="content" source="./media/functions-create-vnet/15-create-app-private-endpoint.png" alt-text="屏幕截图显示如何创建函数应用专用终结点。终结点名称为 functionapp-endpoint，订阅为“Private Test Sub CACHHAI”，虚拟网络为 MyVirtualNet-tutorial，子网为默认值。":::
 
 1. 选择“确定”以添加专用终结点。 
  
-恭喜！ 通过添加专用终结点，你已成功保护了函数应用、服务总线和存储帐户的安全！
+祝贺你！ 通过添加专用终结点，你已成功保护了函数应用、服务总线和存储帐户的安全！
 
 ### <a name="test-your-locked-down-function-app"></a>测试锁定的函数应用
 
@@ -368,7 +368,7 @@ Azure 专用终结点用于通过专用 IP 地址连接到特定 Azure 资源。
 
 1. 在左侧菜单中选择“实时指标”。
 
-1. 打开一个新选项卡。在服务总线中，在左侧菜单中选择“队列”。
+1. 打开新选项卡，在服务总线的左侧菜单中选择“队列”。
 
 1. 选择队列。
 
@@ -382,7 +382,7 @@ Azure 专用终结点用于通过专用 IP 地址连接到特定 Azure 资源。
 
     :::image type="content" source="./media/functions-create-vnet/18-hello-world.png" alt-text="介绍如何使用函数应用的实时指标来查看消息的屏幕截图。":::
 
-恭喜！ 你已成功使用专用终结点测试了函数应用设置。
+祝贺你！ 你已成功使用专用终结点测试了函数应用设置。
 
 ## <a name="understand-private-dns-zones"></a>了解专用 DNS 区域
 你已使用专用终结点连接到 Azure 资源。 你正在连接到专用 IP 地址而不是公共终结点。 现有 Azure 服务配置为使用现有 DNS 连接到公共终结点。 必须覆盖 DNS 配置才能连接到专用终结点。

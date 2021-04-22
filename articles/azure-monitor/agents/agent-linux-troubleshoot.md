@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 6c262e75bfc3fe9c7fb5ce3e00b42b0ff6cbe3bb
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: e0e5a817bad87391b84c43ceae0751fc6ebffd1f
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104952943"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076149"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>如何排查 Log Analytics Linux 代理的问题 
 
@@ -88,12 +88,12 @@ Log Analytics 代理 Linux 故障排除工具是一个脚本，旨在帮助查�
 
 | 错误代码 | 含义 |
 | --- | --- |
-| NOT_DEFINED | 由于未安装必需的依赖项，将不会安装 auoms auditd 插件 | Auoms 安装失败，请安装程序包 auditd。 |
+| NOT_DEFINED | 由于未安装必需的依赖项，因此不会安装 auoms auditd 插件。 Auoms 安装失败，请安装程序包 auditd。 |
 | 2 | 提供给 shell 捆绑包的选项无效。 运行 `sudo sh ./omsagent-*.universal*.sh --help` 获取使用情况 |
 | 3 | 未向 shell 捆绑包提供任何选项。 运行 `sudo sh ./omsagent-*.universal*.sh --help` 获取使用情况。 |
 | 4 | 无效的程序包类型或者无效的代理服务器设置；omsagent-*rpm*.sh 程序包只能安装在基于 RPM 的系统上，而 msagent-*deb*.sh 程序包只能安装在基于 Debian 的系统上。 建议使用[最新版本](../vm/quick-collect-linux-computer.md#install-the-agent-for-linux)中的通用安装程序。 另外还应该进行查看以验证你的代理服务器设置。 |
 | 5 | 必须以 root 身份执行 shell 捆绑包或在载入期间返回 403 错误。 使用 `sudo` 运行你的命令。 |
-| 6 | 无效的程序包体系结构或者载入期间返回 200 错误；omsagent-*x64.sh 程序包只能安装在 64 位系统上，而 omsagent-* x86.sh 程序包只能安装在 32 位系统上。 从[最新版本](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)为你的体系结构下载正确的程序包。 |
+| 6 | 无效的程序包体系结构或者载入期间返回 200 错误；omsagent-\*x64.sh 程序包只能安装在 64 位系统上，而 omsagent-\*x86.sh 程序包只能安装在 32 位系统上。 从[最新版本](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)为你的体系结构下载正确的程序包。 |
 | 17 | OMS 程序包安装失败。 仔细查看命令输出查找根源故障。 |
 | 18 | OMSConfig 包安装失败。 仔细查看命令输出查找根源故障。 |
 | 19 | OMI 程序包安装失败。 仔细查看命令输出查找根源故障。 |

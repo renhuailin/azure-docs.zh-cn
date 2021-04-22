@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: 88adef7ea50744f913780d99594ce3baadade84b
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 9427ae1b9bd68f63df40d24122cc13b5460fbc27
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600890"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105572208"
 ---
 # <a name="vm-size-performance-best-practices-for-sql-server-on-azure-vms"></a>VM 大小：Azure VM 上 SQL Server 的性能最佳做法
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,9 +33,9 @@ ms.locfileid: "107600890"
 
 请查看以下清单，以大致了解本文其余部分详细介绍的 VM 大小最佳做法： 
 
-- 使用具有 4 个或更多 vCPU 的 VM 大小，如 [Standard_M8-4ms](/azure/virtual-machines/m-series)、[E4ds_v4](../../../virtual-machines/edv4-edsv4-series.md#edv4-series) 或 [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15)，或使用更大的大小。 
+- 使用具有 4 个或更多 vCPU 的 VM 大小，如 [Standard_M8-4ms](/../../virtual-machines/m-series)、[E4ds_v4](../../../virtual-machines/edv4-edsv4-series.md#edv4-series) 或 [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15)，或使用更大的大小。 
 - 使用[内存优化](../../../virtual-machines/sizes-memory.md)的虚拟机大小，以实现 SQL Server 工作负载的最佳性能。 
-- [DSv2 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md)、[Edsv4](../../../virtual-machines/edv4-edsv4-series.md) 系列、[M-](/azure/virtual-machines/m-series) 和 [Mv2-](../../../virtual-machines/mv2-series.md) 系列提供 OLTP 工作负载所需的最佳内存与 vCore 比率。 这两个 M 系列的 VM 都提供最高的内存与 vCore 比率，可满足任务关键型工作负载的需求，也非常适合用于数据仓库工作负载。 
+- [DSv2 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md)、[Edsv4](../../../virtual-machines/edv4-edsv4-series.md) 系列、[M-](../../../virtual-machines/m-series.md) 和 [Mv2-](../../../virtual-machines/mv2-series.md) 系列提供 OLTP 工作负载所需的最佳内存与 vCore 比率。 这两个 M 系列的 VM 都提供最高的内存与 vCore 比率，可满足任务关键型工作负载的需求，也非常适合用于数据仓库工作负载。 
 - 对于任务关键型工作负载和数据仓库工作负载，考虑更高的内存与 vCore 比率。 
 - 利用 Azure 虚拟机市场映像作为 SQL Server 设置，并配置存储选项以获得最佳 SQL Server 性能。 
 - 收集目标工作负载的性能特征，并使用它们来确定适用于你的业务的 VM 大小。
@@ -65,11 +65,11 @@ SQL Server 数据仓库环境通常受益于大型计算机的并行处理。 �
 
 ### <a name="m-mv2-and-mdsv2-series"></a>M、Mv2 和 Mdsv2 系列
 
-[M 系列](/azure/virtual-machines/m-series) 为某些最大的 SQL Server 工作负载提供较高的 vCore 数量和内存。  
+[M 系列](../../../virtual-machines/m-series.md) 为某些最大的 SQL Server 工作负载提供较高的 vCore 数量和内存。  
 
 [Mv2 系列](../../../virtual-machines/mv2-series.md)具有最高的 vCore 计数和内存，建议用于任务关键型工作负载和数据仓库工作负载。 Mv2 系列实例具有内存优化的 VM 大小，提供卓越的计算性能以支持大型内存中数据库和工作负载，其内存与 CPU 比率高，非常适用于关系数据库服务器、大型缓存和内存中分析。
 
-例如，[Standard_M64ms](/azure/virtual-machines/m-series) 的内存与 vCore 比率为 28。
+例如，[Standard_M64ms](../../../virtual-machines/m-series.md) 的内存与 vCore 比率为 28。
 
 [Mdsv2 Medium Memory 系列](../../..//virtual-machines/msv2-mdsv2-series.md)是新 M 系列，目前只有[预览版](https://aka.ms/Mv2MedMemoryPreview)，该系列提供了众多 M 系列级别的 Azure 虚拟机（带有中间层内存产品）。 这些计算机非常适合 SQL Server 工作负载，所支持的内存与 vCore 比率最低为 10，最高为 30。
 
@@ -177,7 +177,7 @@ Lsv2 和 Ls 系列支持[高级存储](../../../virtual-machines/premium-storage
 
 这些新的 VM 大小有一个用于指定活动 vCPU 数的后缀，使其更易于识别。 
 
-例如，[M64-32ms](../../../virtual-machines/constrained-vcpu.md) 只需要许可 32 个 SQL Server vCore（具有 [M64ms](/azure/virtual-machines/m-series) 的内存、I/O 和吞吐量），而[M64-16ms](../../../virtual-machines/constrained-vcpu.md) 只需要许可 16 个 vCore。  虽然 [M64-16ms](../../../virtual-machines/constrained-vcpu.md) 的 SQL Server 许可成本是 M64ms 的四分之一，但虚拟机的计算成本是相同的。
+例如，[M64-32ms](../../../virtual-machines/constrained-vcpu.md) 只需要许可 32 个 SQL Server vCore（具有 [M64ms](../../../virtual-machines/m-series.md) 的内存、I/O 和吞吐量），而[M64-16ms](../../../virtual-machines/constrained-vcpu.md) 只需要许可 16 个 vCore。  虽然 [M64-16ms](../../../virtual-machines/constrained-vcpu.md) 的 SQL Server 许可成本是 M64ms 的四分之一，但虚拟机的计算成本是相同的。
 
 > [!NOTE] 
 > - 大中型数据仓库工作负载仍可能受益于[受约束的 vCore VM](../../../virtual-machines/constrained-vcpu.md)，但数据仓库工作负载通常具有以下特点：用户较少，通过并行运行的查询计划处理大量数据的进程也较少。 
@@ -194,4 +194,4 @@ Lsv2 和 Ls 系列支持[高级存储](../../../virtual-machines/premium-storage
 
 有关安全最佳做法，请参阅 [Azure 虚拟机上 SQL Server 的安全注意事项](security-considerations-best-practices.md)。
 
-查看 [Azure 虚拟机上的 SQL Server 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)中的其他 SQL Server 虚拟机文章。 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](frequently-asked-questions-faq.md)。 
+查看 [Azure 虚拟机上的 SQL Server 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)中的其他 SQL Server 虚拟机文章。 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](frequently-asked-questions-faq.md)。

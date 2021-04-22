@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 2d65889a841655fe27994d3855f30f7a7e20e1ed
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4c7474b001284286ed589f6b7995db6bc7fd50af
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94647590"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075060"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
 
@@ -156,7 +156,7 @@ ms.locfileid: "94647590"
 | refreshtoken |
 | request_nonce |
 | resource |
-| 角色 (role) |
+| role |
 | 角色 |
 | scope |
 | scp |
@@ -289,45 +289,45 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 | 源 | ID | 说明 |
 |-----|-----|-----|
-| User | surname | 家族名称 |
-| User | givenname | 名 |
-| User | displayname | 显示名称 |
-| User | objectid | ObjectID |
-| User | mail | 电子邮件地址 |
-| User | userprincipalname | 用户主体名称 |
-| User | department|部门|
-| User | onpremisessamaccountname | 本地 SAM 帐户名称 |
-| User | netbiosname| NetBios 名称 |
-| User | dnsdomainname | DNS 域名 |
-| User | onpremisesecurityidentifier | 本地安全标识符 |
-| User | companyname| 组织名称 |
-| User | streetaddress | 街道地址 |
-| User | postalcode | 邮政编码 |
+| 用户 | surname | 家族名称 |
+| 用户 | givenname | 名 |
+| 用户 | displayname | 显示名称 |
+| 用户 | objectid | ObjectID |
+| 用户 | mail | 电子邮件地址 |
+| 用户 | userprincipalname | 用户主体名称 |
+| 用户 | department|部门|
+| 用户 | onpremisessamaccountname | 本地 SAM 帐户名称 |
+| 用户 | netbiosname| NetBios 名称 |
+| 用户 | dnsdomainname | DNS 域名 |
+| 用户 | onpremisesecurityidentifier | 本地安全标识符 |
+| 用户 | companyname| 组织名称 |
+| 用户 | streetaddress | 街道地址 |
+| 用户 | postalcode | 邮政编码 |
 | 用户 | preferredlanguage | 首选语言 |
-| User | onpremisesuserprincipalname | 本地 UPN |*
-| User | mailNickname | 邮件别名 |
-| User | extensionattribute1 | 扩展属性 1 |
-| User | extensionattribute2 | 扩展属性 2 |
-| User | extensionattribute3 | 扩展属性 3 |
-| User | extensionattribute4 | 扩展属性 4 |
-| User | extensionattribute5 | 扩展属性 5 |
-| User | extensionattribute6 | 扩展属性 6 |
-| User | extensionattribute7 | 扩展属性 7 |
-| User | extensionattribute8 | 扩展属性 8 |
-| User | extensionattribute9 | 扩展属性 9 |
-| User | extensionattribute10 | 扩展属性 10 |
-| User | extensionattribute11 | 扩展属性 11 |
-| User | extensionattribute12 | 扩展属性 12 |
-| User | extensionattribute13 | 扩展属性 13 |
-| User | extensionattribute14 | 扩展属性 14 |
-| User | extensionattribute15 | 扩展属性 15 |
-| User | othermail | 其他邮件 |
-| User | country | 国家/地区 |
-| User | city | 城市 |
-| User | state | 状态 |
-| User | jobtitle | 职务 |
-| User | employeeid | 员工 ID |
-| User | facsimiletelephonenumber | 传真电话号码 |
+| 用户 | onpremisesuserprincipalname | 本地 UPN |
+| 用户 | mailNickname | 邮件别名 |
+| 用户 | extensionattribute1 | 扩展属性 1 |
+| 用户 | extensionattribute2 | 扩展属性 2 |
+| 用户 | extensionattribute3 | 扩展属性 3 |
+| 用户 | extensionattribute4 | 扩展属性 4 |
+| 用户 | extensionattribute5 | 扩展属性 5 |
+| 用户 | extensionattribute6 | 扩展属性 6 |
+| 用户 | extensionattribute7 | 扩展属性 7 |
+| 用户 | extensionattribute8 | 扩展属性 8 |
+| 用户 | extensionattribute9 | 扩展属性 9 |
+| 用户 | extensionattribute10 | 扩展属性 10 |
+| 用户 | extensionattribute11 | 扩展属性 11 |
+| 用户 | extensionattribute12 | 扩展属性 12 |
+| 用户 | extensionattribute13 | 扩展属性 13 |
+| 用户 | extensionattribute14 | 扩展属性 14 |
+| 用户 | extensionattribute15 | 扩展属性 15 |
+| 用户 | othermail | 其他邮件 |
+| 用户 | country | 国家/地区 |
+| 用户 | city | 城市 |
+| 用户 | state | 状态 |
+| 用户 | jobtitle | 职务 |
+| 用户 | employeeid | 员工 ID |
+| 用户 | facsimiletelephonenumber | 传真电话号码 |
 | User | assignedroles | 分配给用户的应用角色列表|
 | application、resource、audience | displayname | 显示名称 |
 | application、resource、audience | objectid | ObjectID |
@@ -392,25 +392,25 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 |源|ID|说明|
 |-----|-----|-----|
-| User | mail|电子邮件地址|
-| User | userprincipalname|用户主体名称|
-| User | onpremisessamaccountname|本地 Sam 帐户名称|
-| User | employeeid|员工 ID|
-| User | extensionattribute1 | 扩展属性 1 |
-| User | extensionattribute2 | 扩展属性 2 |
-| User | extensionattribute3 | 扩展属性 3 |
-| User | extensionattribute4 | 扩展属性 4 |
-| User | extensionattribute5 | 扩展属性 5 |
-| User | extensionattribute6 | 扩展属性 6 |
-| User | extensionattribute7 | 扩展属性 7 |
-| User | extensionattribute8 | 扩展属性 8 |
-| User | extensionattribute9 | 扩展属性 9 |
-| User | extensionattribute10 | 扩展属性 10 |
-| User | extensionattribute11 | 扩展属性 11 |
-| User | extensionattribute12 | 扩展属性 12 |
-| User | extensionattribute13 | 扩展属性 13 |
-| User | extensionattribute14 | 扩展属性 14 |
-| User | extensionattribute15 | 扩展属性 15 |
+| 用户 | mail|电子邮件地址|
+| 用户 | userprincipalname|用户主体名称|
+| 用户 | onpremisessamaccountname|本地 Sam 帐户名称|
+| 用户 | employeeid|员工 ID|
+| 用户 | extensionattribute1 | 扩展属性 1 |
+| 用户 | extensionattribute2 | 扩展属性 2 |
+| 用户 | extensionattribute3 | 扩展属性 3 |
+| 用户 | extensionattribute4 | 扩展属性 4 |
+| 用户 | extensionattribute5 | 扩展属性 5 |
+| 用户 | extensionattribute6 | 扩展属性 6 |
+| 用户 | extensionattribute7 | 扩展属性 7 |
+| 用户 | extensionattribute8 | 扩展属性 8 |
+| 用户 | extensionattribute9 | 扩展属性 9 |
+| 用户 | extensionattribute10 | 扩展属性 10 |
+| 用户 | extensionattribute11 | 扩展属性 11 |
+| 用户 | extensionattribute12 | 扩展属性 12 |
+| 用户 | extensionattribute13 | 扩展属性 13 |
+| 用户 | extensionattribute14 | 扩展属性 14 |
+| 用户 | extensionattribute15 | 扩展属性 15 |
 
 #### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>表 6：允许用于 SAML NameID 的转换方法
 
@@ -418,16 +418,6 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 | ----- | ----- |
 | ExtractMailPrefix | 无 |
 | 联接 | 要联接的后缀必须是资源租户的已验证域。 |
-
-### <a name="custom-signing-key"></a>自定义签名密钥
-
-必须为服务主体对象分配自定义签名密钥，否则声明映射策略无法生效。 这可以确保确认令牌是由声明映射策略的创建者修改的，并防止应用程序被恶意参与者创建的声明映射策略破坏。 若要添加自定义签名密钥，可以使用 Azure PowerShell cmdlet [`New-AzureADApplicationKeyCredential`](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential) 为应用程序对象创建证书密钥凭据。
-
-启用了声明映射的应用必须通过将 `appid={client_id}` 追加到其 [OpenID Connect 元数据请求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)来验证令牌签名密钥。 下面是你应该使用的 OpenID 连接元数据文档的格式：
-
-```
-https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
-```
 
 ### <a name="cross-tenant-scenarios"></a>跨租户方案
 
@@ -531,6 +521,33 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
+
+## <a name="security-considerations"></a>安全注意事项
+
+接收令牌的应用程序依赖于这样一个事实：即声明值是由 Azure AD 权威颁发的，不能篡改。 但当你通过声明映射策略修改令牌内容时，上述事实可能不再适用。 应用程序必须明确承认令牌已被声明映射策略的创建者修改，才能防止被恶意参与者创建的声明映射策略破坏。 通过以下方式可实现此目的：
+
+- 配置自定义签名密钥
+- 更新应用程序清单，以接受映射的声明。
+ 
+否则，Azure AD 将返回 [`AADSTS50146` 错误代码](reference-aadsts-error-codes.md#aadsts-error-codes)。
+
+### <a name="custom-signing-key"></a>自定义签名密钥
+
+若要将自定义签名密钥添加到服务主体对象，可使用 Azure PowerShell cmdlet [`New-AzureADApplicationKeyCredential`](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential) 为应用程序对象创建证书密钥凭据。
+
+启用了声明映射的应用必须通过将 `appid={client_id}` 追加到其 [OpenID Connect 元数据请求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)来验证令牌签名密钥。 下面是你应该使用的 OpenID 连接元数据文档的格式：
+
+```
+https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
+```
+
+### <a name="update-the-application-manifest"></a>更新应用程序清单
+
+或者，可以在[应用程序清单](reference-app-manifest.md)中将 `acceptMappedClaims` 属性设置为 `true`。 如 [apiApplication 资源类型](/graph/api/resources/apiapplication#properties)中所述，这样可以让应用程序使用声明映射，而无需指定自定义签名密钥。
+
+这确实会要求请求令牌的受众使用经过验证的 Azure AD 租户域名，这意味着应确保设置 `Application ID URI`（在应用程序清单中由 `identifierUris` 表示），例如将其设置为 `https://contoso.com/my-api` 或（仅使用默认租户名）`https://contoso.onmicrosoft.com/my-api`。
+
+如果不使用经过验证的域，Azure AD 将返回 `AADSTS501461` 错误代码以及消息“AcceptMappedClaims 仅支持与应用程序 GUID 匹配的令牌受众或经过验证的租户域中的受众。请更改资源标识符，或使用特定于应用程序的签名密钥。”
 
 ## <a name="see-also"></a>另请参阅
 

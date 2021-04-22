@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: c31ffaf094801bdd49e5800bd338a15d8b8315f6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4c3484c1e65eb70be484a4a2eebda21a41dbf1ea
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946498"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936863"
 ---
 # <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Apache Mahout 生成推荐
 
@@ -18,7 +18,7 @@ ms.locfileid: "98946498"
 
 Mahout 是适用于 Apache Hadoop 的[计算机学习](https://en.wikipedia.org/wiki/Machine_learning)库。 Mahout 包含用于处理数据的算法，例如筛选、分类和群集。 在本文中，用户使用推荐引擎根据好友看过的电影生成电影推荐。
 
-若要深入了解 HDInsight 中的 Mahout 版本，请参阅 [HDInsight 版本和 Apache Hadoop 组件](../hdinsight-component-versioning.md)。
+Mahout 在 HDInsight 3.6 中是可用，在 HDInsight 4.0 中不可用。 若要深入了解 HDInsight 中的 Mahout 版本，请参阅 [HDInsight 3.6 组件版本](../hdinsight-36-component-versioning.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

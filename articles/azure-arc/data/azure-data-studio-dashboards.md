@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: a96be6d4da3d292b2e9881652aad28f318ccee8a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92107566"
 ---
 # <a name="azure-data-studio-dashboards"></a>Azure Data Studio 仪表板
@@ -24,7 +24,7 @@ ms.locfileid: "92107566"
 
 ## <a name="connecting-to-a-data-controller"></a>连接到数据控制器
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 - 下载 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)
 - 已安装 Azure Arc 扩展

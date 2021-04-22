@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd4c1adddbf4b13f8e299bd656443c9aaab1d55b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f6f91adf499c62fef56a30c5f2945ba7a90a0b29
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101644821"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105640066"
 ---
 # <a name="securing-group-managed-service-accounts"></a>保护组托管服务帐户
 
@@ -41,7 +41,7 @@ gMSA 提供一个单一标识解决方案，该解决方案通过以下方式提
 将 gMSA 用作本地服务的首选帐户类型，除非服务（比如故障转移群集）不支持它。
 
 > [!IMPORTANT]
-> 在部署到生产环境之前，必须使用 gMSA 测试服务。 为此，请设置测试环境，确保应用程序可以使用 gMSA 并且可以访问需要访问的资源。 有关详细信息，请参阅[对组托管服务帐户的支持](/system-center/scom/support-group-managed-service-accounts?view=sc-om-2019)。
+> 在部署到生产环境之前，必须使用 gMSA 测试服务。 为此，请设置测试环境，确保应用程序可以使用 gMSA 并且可以访问需要访问的资源。 有关详细信息，请参阅[对组托管服务帐户的支持](/system-center/scom/support-group-managed-service-accounts)。
 
 
 如果某项服务不支持使用 gMSA，那么你的下一个最佳选择是使用独立的托管服务帐户 (sMSA)。 sMSA 提供与 gMSA 相同的功能，但仅用于单个服务器上的部署。
@@ -86,7 +86,7 @@ Get-ADServiceAccount -Filter *
 
 # To filter results to only gMSAs:
 
-Get-ADServiceAccount –Filter * | where $_.ObjectClass -eq "msDS-GroupManagedServiceAccount”}
+Get-ADServiceAccount –Filter * | where $_.ObjectClass -eq "msDS-GroupManagedServiceAccount"}
 ```
 
 ## <a name="manage-gmsas"></a>管理 gMSA
@@ -137,7 +137,7 @@ gMSA 是可以满足本地需求的最安全的服务帐户类型。 如果可�
 
 * [保护组托管服务帐户](service-accounts-group-managed.md)
 
-* [保护独立的托管服务帐户](service-accounts-standalone-managed.md)
+* [保护独立托管服务帐户](service-accounts-standalone-managed.md)
 
 * [保护计算机帐户](service-accounts-computer.md)
 

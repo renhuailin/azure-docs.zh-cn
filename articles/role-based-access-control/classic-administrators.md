@@ -15,10 +15,10 @@ ms.date: 11/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: b61636d6048f63ae962d4f755a29c02e6785d5e1
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100557528"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure 经典订阅管理员
@@ -71,7 +71,7 @@ Microsoft 建议使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理�
 
 你希望用户 B 可以管理所有内容。 此区别的原因在于，Microsoft 帐户作为来宾用户（而不是成员用户）添加到订阅。 与成员用户相比，来宾用户在 Azure AD 中具有不同的默认权限。 例如，成员用户可以在 Azure AD 中读取其他用户，而来宾用户不能。 成员用户可以在 Azure AD 中注册新的服务主体，而来宾用户不能。
 
-如果来宾用户需要能够执行这些任务，则可能的解决方案是分配来宾用户所需的特定 Azure AD 角色。 例如，在上一方案中，你可以分配[目录读取者](../active-directory/roles/permissions-reference.md#directory-readers)角色以便读取其他用户，并分配[应用程序开发人员](../active-directory/roles/permissions-reference.md#application-developer)角色以便能够创建服务主体。 有关成员和来宾用户及其权限的详细信息，请参阅 [Azure Active Directory 中的默认用户权限是什么？](../active-directory/fundamentals/users-default-permissions.md)。 有关为来宾用户授予访问权限的详细信息，请参阅 [使用 Azure 门户将 Azure 角色分配给外部来宾用户](role-assignments-external-users.md)。
+如果来宾用户需要能够执行这些任务，则可能的解决方案是分配来宾用户所需的特定 Azure AD 角色。 例如，在上一方案中，你可以分配[目录读取者](../active-directory/roles/permissions-reference.md#directory-readers)角色以便读取其他用户，并分配[应用程序开发人员](../active-directory/roles/permissions-reference.md#application-developer)角色以便能够创建服务主体。 有关成员和来宾用户及其权限的详细信息，请参阅 [Azure Active Directory 中的默认用户权限是什么？](../active-directory/fundamentals/users-default-permissions.md)。 有关为来宾用户授予访问权限的详细信息，请参阅[使用 Azure 门户向外部来宾用户分配 Azure 角色](role-assignments-external-users.md)。
 
 请注意，[Azure 内置角色](../role-based-access-control/built-in-roles.md)与 [Azure AD 角色](../active-directory/roles/permissions-reference.md)不同。 内置角色不授予对 Azure AD 的任何访问权限。 有关详细信息，请参阅[了解不同角色](../role-based-access-control/rbac-and-directory-admin-roles.md)。
 
@@ -105,7 +105,7 @@ Microsoft 建议使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理�
 
 1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 打开 **成本管理 + 计费** ，并选择订阅。
+1. 打开“成本管理 + 计费”，并选择一个订阅。
 
 1. 在左侧导航栏中，单击“属性”。
 
@@ -140,7 +140,7 @@ Microsoft 建议使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理�
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 打开 **成本管理 + 计费** ，并选择订阅。
+1. 打开“成本管理 + 计费”，并选择一个订阅。
 
 1. 在左侧导航栏中，单击“属性”。
 

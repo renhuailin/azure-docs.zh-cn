@@ -4,12 +4,12 @@ description: 获取页面视图和会话计数、Web 客户端数据、单页应
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 9b8824a0f73f3a79ab70810c529cb0ed9331a797
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 04cda044b002e226c49f8647d4705d7c0f2a514e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102485480"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105565259"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -107,7 +107,7 @@ IE 8（或更低版本）尤其不支持报告 SDK 加载失败。 假设大多�
 每个配置选项都会显示在一个新行上，如果不希望覆盖作为 [可选] 列出的项的默认值，则可以删除该行以最大程度地减小所返回页面的大小。
 
 可用配置有：
-
+ 
 | 名称 | 类型 | 说明
 |------|------|----------------
 | src | 字符串 [必需] | 要从中加载 SDK 的完整 URL。 此值用于动态添加的 &lt;script /&gt; 标记的“src”属性。 你可以使用公共 CDN 位置，也可以使用自己的私有托管位置。
@@ -171,52 +171,87 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>配置
 大多数配置字段的命名都可默认为 false。 除 `instrumentationKey` 以外的所有字段都是可选的。
 
-| 名称 | 默认 | 说明 |
-|------|---------|-------------|
-| instrumentationKey | Null | **必需**<br>从 Azure 门户获取的检测密钥。 |
-| accountId | Null | 可选的帐户 ID（如果应用将用户分组到帐户中）。 不允许使用空格、逗号、分号、等于或竖线 |
-| sessionRenewalMs | 1800000 | 如果用户处于非活动状态有这么长的时间（以毫秒为单位），则会记录会话。 默认值为 30 分钟 |
-| sessionExpirationMs | 86400000 | 如果会话持续了这么长的时间（以毫秒为单位），则会记录会话。 默认值为 24 小时 |
-| maxBatchSizeInBytes | 10000 | 遥测批的最大大小。 如果某个批超过此限制，则立即发送此批，并启动新批 |
-| maxBatchInterval | 15000 | 发送前要批处理遥测数据的时间长短（毫秒） |
-| disableExceptionTracking | false | 如果为 true，则不自动收集异常。 默认值为 false。 |
-| disableTelemetry | false | 如果为 true，则不收集或发送遥测数据。 默认值为 false。 |
-| enableDebug | false | 如果为 true，则不管 SDK 日志记录设置如何，**内部** 调试数据都将引发为异常，**而不是** 记录这些数据。 默认值为 false。 <br>注意：如果启用此设置，每当发生内部错误时，都会导致遥测数据丢失。 这可能有利于快速识别 SDK 的配置或用法问题。 如果你不希望在调试时丢失遥测数据，请考虑使用 `consoleLoggingLevel` 或 `telemetryLoggingLevel`，而不是 `enableDebug`。 |
-| loggingLevelConsole | 0 | 将 **内部** Application Insights 错误记录到控制台。 <br>0：关闭， <br>1:仅限严重错误， <br>2:所有内容（错误和警告） |
-| loggingLevelTelemetry | 1 | 将 **内部** Application Insights 错误作为遥测数据发送。 <br>0：关闭， <br>1:仅限严重错误， <br>2:所有内容（错误和警告） |
-| diagnosticLogInterval | 10000 | 内部日志记录队列的（内部）轮询间隔（以毫秒为单位） |
-| samplingPercentage | 100 | 要发送的事件百分比。 默认值为 100，表示发送所有事件。 如果你希望避免大型应用程序达到数据上限，请设置此项。 |
-| autoTrackPageVisitTime | false | 如果为 true，则对于页面视图，将跟踪前一个检测的页面的查看时间并将其作为遥测数据发送，同时，为当前的页面视图启动新的计时器。 默认值为 false。 |
-| disableAjaxTracking | false | 如果为 true，则不自动收集 Ajax 调用。 默认值为 false。 |
-| disableFetchTracking | 是 | 如果为 true，则不自动收集 Fetch 请求。 默认值为 true |
-| overridePageViewDuration | false | 如果为 true，则在调用 trackPageView 时，trackPageView 的默认行为将更改为记录页面视图持续时间间隔的结束时间。 如果为 false 且未为 trackPageView 提供自定义持续时间，则会使用导航计时 API 计算页面视图性能。 默认值为 false。 |
-| maxAjaxCallsPerView | 500 | 默认值为 500 - 控制每个页面视图将监视多少个 Ajax 调用。 设置为 -1 可监视页面上的所有（无限制）Ajax 调用。 |
-| disableDataLossAnalysis | 是 | 如果为 false，则对于尚未发送的项，启动时将检查内部遥测发送方缓冲区。 |
-| disableCorrelationHeaders | false | 如果为 false，则 SDK 会将两个标头（“Request-Id”和“Request-Context”）添加到所有依赖项请求，以将其关联到服务器端上的对应请求。 默认值为 false。 |
-| correlationHeaderExcludedDomains |  | 禁用特定域的关联标头 |
-| correlationHeaderDomains |  | 启用特定域的关联标头 |
-| disableFlushOnBeforeUnload | false | 默认值为 false。 如果为 true，则触发 onBeforeUnload 事件时不会调用 flush 方法 |
-| enableSessionStorageBuffer | 是 | 默认值为 true。 如果为 true，则会将包含所有未发送的遥测数据的缓冲区存储在会话存储中。 加载页面时会还原该缓冲区 |
-| isCookieUseDisabled | false | 默认值为 false。 如果为 true，则 SDK 不会存储或读取 Cookie 中的任何数据。 请注意，这会禁用用户和会话 Cookie，令使用情况边栏选项卡和体验无效。 |
-| cookieDomain | Null | 自定义 Cookie 域。 若要跨子域共享 Application Insights Cookie，此字段会有帮助。 |
-| isRetryDisabled | false | 默认值为 false。 如果为 false，则出现代码 206（部分成功）、408（超时）、429（请求过多）、500（内部服务器错误）、503（服务不可用）和 0（脱机，仅当已检测到此状态时）时会重试 |
-| isStorageUseDisabled | false | 如果为 true，则 SDK 不会存储或读取本地和会话存储中的任何数据。 默认值为 false。 |
-| isBeaconApiDisabled | 是 | 如果为 false，则 SDK 将使用[信标 API](https://www.w3.org/TR/beacon) 发送所有遥测数据 |
-| onunloadDisableBeacon | false | 默认值为 false。 选项卡关闭时，SDK 将使用[信标 API](https://www.w3.org/TR/beacon) 发送所有剩余的遥测 |
-| sdkExtension | Null | 设置 SDK 扩展名。 仅允许使用字母字符。 扩展名将添加为“ai.internal.sdkVersion”标记的前缀（例如“ext_javascript:2.0.0”）。 默认值为 null。 |
-| isBrowserLinkTrackingEnabled | false | 默认值为 false。 如果为 true，则 SDK 将跟踪所有[浏览器链接](/aspnet/core/client-side/using-browserlink)请求。 |
-| appId | Null | appId 用于在客户端上发生的 AJAX 依赖项与服务器端请求之间进行关联。 启用信标 API 后，无法自动使用 appId，但可以在配置中手动设置它。 默认值为 null |
-| enableCorsCorrelation | false | 如果为 true，则 SDK 会将两个标头（“Request-Id”和“Request-Context”）添加到所有 CORS 请求，以将传出的 AJAX 依赖项关联到服务器端上的对应请求。 默认值为 false |
-| namePrefix | undefined | 一个可选值，用作 localStorage 和 Cookie 名称的名称后缀。
-| enableAutoRouteTracking | false | 自动跟踪单页应用程序 (SPA) 中的路由更改。 如果为 true，则每次更改路由都会将一个新的页面视图发送到 Application Insights。 哈希路由更改 (`example.com/foo#bar`) 也会记录为新的页面视图。
-| enableRequestHeaderTracking | false | 如果为 true，则跟踪 AJAX 和 Fetch 请求标头，默认值为 false。
-| enableResponseHeaderTracking | false | 如果为 true，则跟踪 AJAX 和 Fetch 请求的响应标头，默认值为 false。
-| distributedTracingMode | `DistributedTracingModes.AI` | 设置分布式跟踪模式。 如果设置了 AI_AND_W3C 模式或 W3C 模式，则将生成 W3C 跟踪上下文标头 (traceparent/tracestate)，并将其包含在所有传出请求中。 提供 AI_AND_W3C 是为了与任何旧版 Application Insights 检测服务向后兼容。 请参阅[此处](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)的示例。
-| enableAjaxErrorStatusText | false | 默认值为 false。 如果为 true，则在 AJAX 请求失败时包含依赖关系事件中的响应错误数据文本。
-| enableAjaxPerfTracking | false | 默认值为 false。 用于启用查找并包含报告的 `ajax`（XHR 和 fetch）报告的指标中其他浏览器 window.performance 计时的标记。
-| maxAjaxPerfLookupAttempts | 3 | 默认值为 3。 查找 window.performance 计时的最大次数，此值为必需，因为并非所有浏览器在报告 XHR 请求完成之前都会填充 window.performance，而对于 fetch 请求，将在请求完成之后添加该值。
-| ajaxPerfLookupDelay | 25 | 默认值为 25 毫秒。 重新尝试为 `ajax` 请求查找 windows.performance 计时时要等待的时间，时间以毫秒计并直接传递给 setTimeout()。
-| enableUnhandledPromiseRejectionTracking | false | 如果为 true，则将自动收集未处理的拒绝承诺并报告为 JavaScript 错误。 如果 disableExceptionTracking 为 true（不跟踪异常），则将忽略配置值且不会报告未处理的拒绝承诺。
+| 名称 | 说明 | 默认 |
+|------|-------------|---------|
+| instrumentationKey | **必需**<br>从 Azure 门户获取的检测密钥。 | string<br/>NULL |
+| accountId | 可选的帐户 ID（如果应用将用户分组到帐户中）。 不允许使用空格、逗号、分号、等于或竖线 | string<br/>NULL |
+| sessionRenewalMs | 如果用户处于非活动状态有这么长的时间（以毫秒为单位），则会记录会话。 | numeric<br/>1800000<br/>（30 分钟） |
+| sessionExpirationMs | 如果会话持续了这么长的时间（以毫秒为单位），则会记录会话。 | numeric<br/>86400000<br/>（24 小时） |
+| maxBatchSizeInBytes | 遥测批的最大大小。 如果某个批超过此限制，则立即发送此批，并启动新批 | numeric<br/>10000 |
+| maxBatchInterval | 发送前要批处理遥测数据的时间长短（毫秒） | numeric<br/>15000 |
+| disable&#8203;ExceptionTracking | 如果为 true，则不自动收集异常。 | boolean<br/> false |
+| disableTelemetry | 如果为 true，则不收集或发送遥测数据。 | boolean<br/>false |
+| enableDebug | 如果为 true，则不管 SDK 日志记录设置如何，**内部** 调试数据都将引发为异常，**而不是** 记录这些数据。 默认值为 false。 <br>注意：如果启用此设置，每当发生内部错误时，都会导致遥测数据丢失。 这可能有利于快速识别 SDK 的配置或用法问题。 如果你不希望在调试时丢失遥测数据，请考虑使用 `consoleLoggingLevel` 或 `telemetryLoggingLevel`，而不是 `enableDebug`。 | boolean<br/>false |
+| loggingLevelConsole | 将 **内部** Application Insights 错误记录到控制台。 <br>0：关闭， <br>1:仅限严重错误， <br>2:所有内容（错误和警告） | numeric<br/> 0 |
+| loggingLevelTelemetry | 将 **内部** Application Insights 错误作为遥测数据发送。 <br>0：关闭， <br>1:仅限严重错误， <br>2:所有内容（错误和警告） | numeric<br/> 1 |
+| diagnosticLogInterval | 内部日志记录队列的（内部）轮询间隔（以毫秒为单位） | numeric<br/> 10000 |
+| samplingPercentage | 要发送的事件百分比。 默认值为 100，表示发送所有事件。 如果你希望避免大型应用程序达到数据上限，请设置此项。 | numeric<br/>100 |
+| autoTrackPageVisitTime | 如果为 true，则对于页面视图，将跟踪前一个检测的页面的查看时间并将其作为遥测数据发送，同时，为当前的页面视图启动新的计时器。 | boolean<br/>false |
+| disableAjaxTracking | 如果为 true，则不自动收集 Ajax 调用。 | boolean<br/> false |
+| disableFetchTracking | 如果为 true，则不自动收集 Fetch 请求。|boolean<br/>是 |
+| overridePageViewDuration | 如果为 true，则在调用 trackPageView 时，trackPageView 的默认行为将更改为记录页面视图持续时间间隔的结束时间。 如果为 false 且未为 trackPageView 提供自定义持续时间，则会使用导航计时 API 计算页面视图性能。 |boolean<br/>
+| maxAjaxCallsPerView | 默认值为 500 - 控制每个页面视图将监视多少个 Ajax 调用。 设置为 -1 可监视页面上的所有（无限制）Ajax 调用。 | numeric<br/> 500 |
+| disableDataLossAnalysis | 如果为 false，则对于尚未发送的项，启动时将检查内部遥测发送方缓冲区。 | boolean<br/> 是 |
+| disable&#8203;CorrelationHeaders | 如果为 false，则 SDK 会将两个标头（“Request-Id”和“Request-Context”）添加到所有依赖项请求，以将其关联到服务器端上的对应请求。 | boolean<br/> false |
+| correlationHeader&#8203;ExcludedDomains | 禁用特定域的关联标头 | string[]<br/>undefined |
+| correlationHeader&#8203;ExcludePatterns | 使用正则表达式禁用关联标头 | regex[]<br/>undefined |
+| correlationHeader&#8203;Domains | 启用特定域的关联标头 | string[]<br/>undefined |
+| disableFlush&#8203;OnBeforeUnload | 如果为 true，则触发 onBeforeUnload 事件时不会调用 flush 方法 | boolean<br/> false |
+| enableSessionStorageBuffer | 如果为 true，则会将包含所有未发送的遥测数据的缓冲区存储在会话存储中。 加载页面时会还原该缓冲区 | boolean<br />是 |
+| cookieCfg | 启用 Cookie 使用的默认设置，请参阅 [ICookieCfgConfig](#icookiemgrconfig) 设置，了解完整的默认值。 | [ICookieCfgConfig](#icookiemgrconfig)<br>（自 2.6.0 起）<br/>undefined |
+| ~~isCookieUseDisabled~~<br>disableCookiesUsage | 如果为 true，则 SDK 不会存储或读取 Cookie 中的任何数据。 请注意，这会禁用用户和会话 Cookie，令使用情况边栏选项卡和体验无效。 isCookieUseDisable 已弃用，取而代之的是 disableCookiesUsage，当两者都提供时，则优先考虑 disableCookiesUsage。<br>（自 v2.6.0 起）此外，如果还定义了 `cookieCfg.enabled`，则其优先级高于这些值，Cookie 的使用可以在初始化后通过 core.getCookieMgr().setEnabled(true) 重新启用。 | [`cookieCfg.enabled`](#icookiemgrconfig) 的别名<br>false |
+| cookieDomain | 自定义 Cookie 域。 若要跨子域共享 Application Insights Cookie，此字段会有帮助。<br>（自 v2.6.0 起）如果定义了 `cookieCfg.domain`，则其优先级高于此值。 | [`cookieCfg.domain`](#icookiemgrconfig) 的别名<br>null |
+| cookiePath | 自定义 cookie 路径。 如果要在应用程序网关后共享 Application Insights cookie，这会很有帮助。<br>如果定义了 `cookieCfg.path`，则其优先级高于此值。 | [`cookieCfg.path`](#icookiemgrconfig) 的别名<br>（自 2.6.0 起）<br/>null |
+| isRetryDisabled | 如果为 false，则出现代码 206（部分成功）、408（超时）、429（请求过多）、500（内部服务器错误）、503（服务不可用）和 0（脱机，仅当已检测到此状态时）时会重试 | boolean<br/>false |
+| isStorageUseDisabled | 如果为 true，则 SDK 不会存储或读取本地和会话存储中的任何数据。 | boolean<br/> false |
+| isBeaconApiDisabled | 如果为 false，则 SDK 将使用[信标 API](https://www.w3.org/TR/beacon) 发送所有遥测数据 | boolean<br/>是 |
+| onunloadDisableBeacon | 选项卡关闭时，SDK 将使用[信标 API](https://www.w3.org/TR/beacon) 发送所有剩余的遥测 | boolean<br/> false |
+| sdkExtension | 设置 SDK 扩展名。 仅允许使用字母字符。 扩展名将添加为“ai.internal.sdkVersion”标记的前缀（例如“ext_javascript:2.0.0”）。 | string<br/> NULL |
+| isBrowserLink&#8203;TrackingEnabled | 如果为 true，则 SDK 将跟踪所有[浏览器链接](/aspnet/core/client-side/using-browserlink)请求。 | boolean<br/>false |
+| appId | appId 用于在客户端上发生的 AJAX 依赖项与服务器端请求之间进行关联。 启用信标 API 后，无法自动使用 appId，但可以在配置中手动设置它。 |string<br/> NULL |
+| enable&#8203;CorsCorrelation | 如果为 true，则 SDK 会将两个标头（“Request-Id”和“Request-Context”）添加到所有 CORS 请求，以将传出的 AJAX 依赖项关联到服务器端上的对应请求。 | boolean<br/>false |
+| namePrefix | 一个可选值，用作 localStorage 和 Cookie 名称的名称后缀。 | 字符串<br/>undefined |
+| enable&#8203;AutoRoute&#8203;Tracking | 自动跟踪单页应用程序 (SPA) 中的路由更改。 如果为 true，则每次更改路由都会将一个新的页面视图发送到 Application Insights。 哈希路由更改 (`example.com/foo#bar`) 也会记录为新的页面视图。| boolean<br/>false |
+| enableRequest&#8203;HeaderTracking | 如果为 true，则跟踪 AJAX & Fetch 请求标头。 | boolean<br/> false |
+| enableResponse&#8203;HeaderTracking | 如果为 true，则跟踪 AJAX & Fetch 请求的响应头。 | boolean<br/> false |
+| distributedTracingMode | 设置分布式跟踪模式。 如果设置了 AI_AND_W3C 模式或 W3C 模式，则将生成 W3C 跟踪上下文标头 (traceparent/tracestate)，并将其包含在所有传出请求中。 提供 AI_AND_W3C 是为了与任何旧版 Application Insights 检测服务向后兼容。 请参阅[此处](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)的示例。| `DistributedTracingModes`或<br/>numeric<br/>（自 v2.6.0 起）`DistributedTracingModes.AI_AND_W3C`<br />（v 2.5.11 或更早版本）`DistributedTracingModes.AI` |
+| enable&#8203;AjaxErrorStatusText | 如果为 true，则在 AJAX 请求失败时包含依赖关系事件中的响应错误数据文本。 | boolean<br/> false |
+| enable&#8203;AjaxPerfTracking |用于启用查找并包含报告的 `ajax`（XHR 和 fetch）报告的指标中其他浏览器 window.performance 计时的标记。 | boolean<br/> false |
+| maxAjaxPerf&#8203;LookupAttempts | 查找 window.performance 计时的最大次数，此值为必需，因为并非所有浏览器在报告 XHR 请求完成之前都会填充 window.performance，而对于 fetch 请求，将在请求完成之后添加该值。| numeric<br/> 3 |
+| ajaxPerfLookupDelay | 重新尝试为 `ajax` 请求查找 windows.performance 计时时要等待的时间，时间以毫秒计并直接传递给 setTimeout()。 | numeric<br/> 25 毫秒 |
+| enableUnhandled&#8203;PromiseRejection&#8203;Tracking | 如果为 true，则将自动收集未处理的拒绝承诺并报告为 JavaScript 错误。 如果 disableExceptionTracking 为 true（不跟踪异常），则将忽略配置值且不会报告未处理的拒绝承诺。 | boolean<br/> false |
+| disable&#8203;InstrumentationKey&#8203;Validation | 如果为 true，则跳过检测密钥验证检查。 | boolean<br/>false |
+| enablePerfMgr | 启用时（为 true 时）将为已检测的代码创建本地 perfEvents 以发出 perfEvents（通过 doPerf() 帮助程序）。 这可用于根据使用情况识别 SDK 中的性能问题，或者选择性地在自己的已检测代码中识别性能问题。 [基本文档中提供了更多详细信息](https://github.com/microsoft/ApplicationInsights-JS/blob/master/docs/PerformanceMonitoring.md)。 自 v2.5.7 起 | boolean<br/>false |
+| perfEvtsSendAll | 如果已启用 _enablePerfMgr_ 且 [IPerfManager](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/IPerfManager.ts) 触发了 [INotificationManager](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/INotificationManager.ts).perfEvent()，此标志会确定是为所有事件触发事件并发送到所有侦听器（为 true 时），还是仅针对父级事件触发事件（为 false 时，&lt;默认值&gt;）。<br />父级 [IPerfEvent](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/IPerfEvent.ts) 事件在创建时没有其他 IPerfEvent 仍在运行，且其“父级”属性不为 NULL 或未定义状态。 自 v2.5.7 起 |  boolean<br />false |
+| idLength | 标识用于生成新的随机会话和用户 ID 值的默认长度。 默认值为 22，以前的默认值为 5（v 2.5.8 或更低版本），如果需要保留以前的最大长度，则应将此值设置为 5。 |  numeric<br />22 |
+
+## <a name="cookie-handling"></a>Cookie 处理
+
+从版本 2.6.0 开始，Cookie 管理功能现在可直接在实例中使用，并且可以在初始化后禁用和重新启用。
+
+如果在初始化期间通过 `disableCookiesUsage` 或 `cookieCfg.enabled` 配置禁用了该功能，现在可以使用 [ICookieMgr](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts) `setEnabled` 函数重新启用。
+
+基于实例的 Cookie 管理还替代了 `disableCookies()`、`setCookie(...)`、`getCookie(...)` 和 `deleteCookie(...)` 之前的 CoreUtils 全局函数。 另外，要从版本 2.6.0 中引入的摇树增强功能中受益，应不再使用全局函数。
+
+### <a name="icookiemgrconfig"></a>ICookieMgrConfig
+
+基于实例的 Cookie 管理的 Cookie 配置，添加在版本 2.6.0 中。
+
+| 名称 | 说明 | 类型和默认值 |
+|------|-------------|------------------|
+| enabled | 一个布尔，指示当前实例是否让 SDK 使用 Cookie。 如果为 false，则此配置所初始化的 SDK 实例将不会存储或读取 Cookie 中的任何数据 | boolean<br/> 是 |
+| 域 | 自定义 Cookie 域。 若要跨子域共享 Application Insights Cookie，此字段会有帮助。 如果未提供，则使用根 `cookieDomain` 值中的值。 | string<br/>NULL |
+| path | 指定用于 Cookie 的路径，如果未提供，将使用根 `cookiePath` 值中的任意值。 | 字符串 <br/> / |
+| getCookie | 用于提取命名 Cookie 值的函数，如果未提供，将使用内部 Cookie 解析/缓存。 | `(name: string) => string` <br/> null |
+| setCookie | 用于设置具有指定值的命名 Cookie 的函数，仅在添加或更新 Cookie 时调用。 | `(name: string, value: string) => void` <br/> null |
+| delCookie | 用于删除具有指定值的命名 Cookie 的函数，与 setCookie 分离，从而无需分析值以确定是否添加或删除 Cookie。 如果未提供，则使用内部 cookie 解析/缓存。 | `(name: string, value: string) => void` <br/> null |
+
+### <a name="simplified-usage-of-new-instance-cookie-manager"></a>简化了新实例 Cookie 管理器的使用
+
+- appInsights.[getCookieMgr()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts).setEnabled(true/false);
+- appInsights.[getCookieMgr()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts).set("MyCookie", "the%20encoded%20value");
+- appInsights.[getCookieMgr()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts).get("MyCookie");
+- appInsights.[getCookieMgr()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts).del("MyCookie");
 
 ## <a name="enable-time-on-page-tracking"></a>启用“页面访问时间”跟踪
 

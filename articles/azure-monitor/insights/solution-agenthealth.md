@@ -1,15 +1,15 @@
 ---
-title: Azure Monitor 中的代理运行状况解决方案 |Microsoft Docs
+title: Azure Monitor 中的代理运行状况解决方案 | Microsoft Docs
 description: 本文旨在帮助你了解如何使用此解决方案来监视代理的运行状况，这些代理直接向 Log Analytics 或 System Center Operations Manager 报告。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
 ms.openlocfilehash: 171230dc2ce6189e36c601c6c7d3b3612fce160c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101711053"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure Monitor 中的代理运行状况解决方案
@@ -76,8 +76,8 @@ Azure 中的代理运行状况解决方案有助于你了解，在所有直接�
 | `OSMinorVersion` | 操作系统次要版本。|
 | `Version` | Log Analytics 代理或 Operations Manager 代理版本。|
 | `SCAgentChannel` | 值为“Direct”和/或“SCManagementServer”。|
-| `IsGatewayInstalled` | 如果安装 Log Analytics 网关，则值为 *true*，否则值为 *false*。|
-| `ComputerIP` | 计算机的公共 IP 地址。 在 Azure Vm 上，此项将显示公共 IP （如果有）。 对于使用专用 IP 的 Vm，这将显示 Azure SNAT 地址， (专用 IP 地址不) 。 |
+| `IsGatewayInstalled` | 如果 Log Analytics 网关已安装，则值为 true，否则值为 false 。|
+| `ComputerIP` | 计算机的公共 IP 地址。 在 Azure VM 上，这将显示公共 IP（如果有）。 对于使用专用 IP 的 VM，这将显示 Azure SNAT 地址（而非专用 IP 地址）。 |
 | `RemoteIPCountry` | 已部署计算机所在的地理位置。|
 | `ManagementGroupName` | Operations Manager 管理组的名称。|
 | `SourceComputerId` | 计算机的唯一 ID。|

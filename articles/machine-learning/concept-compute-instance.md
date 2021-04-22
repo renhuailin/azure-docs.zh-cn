@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: ac90827fec65187088787971623483a96da77d7c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 309cf3882ade99de3f2e29a037d20ca50e35f490
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103016230"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106066664"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什么是 Azure 机器学习计算实例？
 
@@ -178,6 +178,9 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 * 支持单节点多 GPU 分布式训练作业
 
 可以使用计算实例作为测试/调试方案的本地推理部署目标。
+
+> [!TIP]
+> 计算实例具有 120GB 的 OS 磁盘。 如果磁盘空间不足，则在[停止或重启](how-to-create-manage-compute-instance.md#manage)计算实例之前，[使用终端](how-to-access-terminal.md)清除至少 1-2 GB。
 
 
 ## <a name="what-happened-to-notebook-vm"></a><a name="notebookvm"></a>Notebook VM 发生了什么情况？

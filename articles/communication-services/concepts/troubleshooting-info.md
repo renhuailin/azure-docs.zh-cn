@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 80db53a5ed8d2edc90bc847578d5df4d603cc437
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: db6aafc8c9db7a67c9ee70d524d17a642d03dfd8
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107221"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259058"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure 通信服务中的故障排除
 
@@ -79,11 +79,11 @@ chat_client = ChatClient(
 
 ## <a name="access-your-call-id"></a>获取呼叫 ID
 
-当通过 Azure 门户删选与呼叫问题有关的支持请求时，系统可能会要求你提供所引用的呼叫 ID。 此 ID 可以使用调用 SDK 来获取：
+排除语音或视频通话故障时，可能会要求提供 `call ID`。 可以通过 `call` 对象的 `id` 属性访问：
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 ```javascript
-// `call` is an instance of a call created by `callAgent.call` or `callAgent.join` methods
+// `call` is an instance of a call created by `callAgent.startCall` or `callAgent.join` methods
 console.log(call.id)
 ```
 
@@ -97,7 +97,7 @@ print(call.callId)
 # <a name="android"></a>[Android](#tab/android)
 ```java
 // The `call id` property can be retrieved by calling the `call.getCallId()` method on a call object after a call ends
-// `call` is an instance of a call created by `callAgent.call(…)` or `callAgent.join(…)` methods
+// `call` is an instance of a call created by `callAgent.startCall(…)` or `callAgent.join(…)` methods
 Log.d(call.getCallId())
 ```
 ---
@@ -127,17 +127,23 @@ console.log(result); // your message ID will be in the result
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-以下代码可用于将 `AzureLogger` 配置为使用 JavaScript SDK 将日志输出到控制台：
+Azure 通信服务呼叫 SDK 在内部依赖于 [@azure/logger](https://www.npmjs.com/package/@azure/logger) 库来控制日志记录。
+使用 `@azure/logger` 包中的 `setLogLevel` 方法配置日志输出：
+
+```javascript
+import { setLogLevel } from '@azure/logger';
+setLogLevel('verbose');
+const callClient = new CallClient();
+```
+
+可以通过重写 `AzureLogger.log` 方法，使用 AzureLogger 从 Azure SDK 重定向日志记录输出：如果要将日志重定向到控制台以外的位置，这可能很有用。
 
 ```javascript
 import { AzureLogger } from '@azure/logger';
-
-AzureLogger.verbose = (...args) => { console.info(...args); }
-AzureLogger.info = (...args) => { console.info(...args); }
-AzureLogger.warning = (...args) => { console.info(...args); }
-AzureLogger.error = (...args) => { console.info(...args); }
-
-callClient = new CallClient({logger: AzureLogger});
+// redirect log output
+AzureLogger.log = (...args) => {
+  console.log(...args); // to console, file, buffer, REST API..
+};
 ```
 
 # <a name="ios"></a>[iOS](#tab/ios)

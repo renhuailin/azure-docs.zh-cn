@@ -9,17 +9,17 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 12/31/2020
-ms.openlocfilehash: 5f0a7477df2e281748c053ea8c7e7d3e79626296
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 04/15/2021
+ms.openlocfilehash: c6f2dfe0d4846227400ac9b3c7ac3e6ead8f0b57
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104588012"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567547"
 ---
 # <a name="analyze-data-with-a-serverless-sql-pool"></a>使用无服务器 SQL 池分析数据
 
-在本教程中，你将了解如何通过无服务器 SQL 池使用 Spark 数据库中的数据对数据进行分析。 
+在本教程中，你将了解如何通过无服务器 SQL 池分析对数据。 
 
 ## <a name="the-built-in-serverless-sql-pool"></a>内置无服务器 SQL 池
 
@@ -27,9 +27,7 @@ ms.locfileid: "104588012"
 
 每个工作区都具有名为“内置”的预配置无服务器 SQL 池。 
 
-## <a name="analyze-nyc-taxi-data-in-blob-storage-using-serverless-sql-pool"></a>使用无服务器 SQL 池分析 Blob 存储中的纽约市出租车数据
-
-在本部分中，将使用无服务器 SQL 池来分析 Azure Blob 存储帐户中的纽约出租车数据。
+## <a name="analyze-nyc-taxi-data-with-a-serverless-sql-pool"></a>使用无服务器 SQL 池分析纽约市出租车数据
 
 1. 在 Synapse Studio 中，转到“开发”中心
 1. 创建一个新的 SQL 脚本。
@@ -37,14 +35,14 @@ ms.locfileid: "104588012"
 
     ```
     SELECT
-        TOP 100 *
+        TOP 100 *
     FROM
         OPENROWSET(
-            BULK     'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
-            FORMAT = 'parquet'
-        ) AS [result];
+            BULK 'https://contosolake.dfs.core.windows.net/users/NYCTripSmall.parquet',
+            FORMAT='PARQUET'
+        ) AS [result]
     ```
-1. 单击“**运行**”
+1. 单击 **“运行”** 。 
 
 ## <a name="next-steps"></a>后续步骤
 

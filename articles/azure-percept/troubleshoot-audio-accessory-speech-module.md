@@ -5,14 +5,14 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 03/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: f34013bdb14481bfe872a9b3c4234d603bc2d7ec
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: c4fc7d7564ecd30326fbec832639b2a81d55e6d5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102635563"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105605648"
 ---
 # <a name="azure-percept-audio-and-speech-module-troubleshooting"></a>Azure Percept Audio 和语音模块故障排除
 
@@ -20,16 +20,24 @@ ms.locfileid: "102635563"
 
 ## <a name="collecting-speech-module-logs"></a>收集语音模块日志
 
-若要运行这些命令，请[连接 Azure Percept DK Wi-Fi 接入点，通过 SSH 连接开发工具包](./how-to-ssh-into-percept-dk.md)，并在 SSH 终端中输入命令。
+若要运行这些命令，请[通过 SSH 连接到开发工具包](./how-to-ssh-into-percept-dk.md)，并将命令输入到 SSH 客户端提示符下。
+
+收集语音模块日志：
 
 ```console
 sudo iotedge logs azureearspeechclientmodule
 ```
 
-若要将任何输出重定向到 .txt 文件以做进一步分析，请使用以下语法：
+若要将输出重定向到 .txt 文件以做进一步分析，请使用以下语法：
 
 ```console
 sudo [command] > [file name].txt
+```
+
+更改 .txt 文件的权限，以便可以复制它：
+
+```console
+sudo chmod 666 [file name].txt
 ```
 
 将输出重定向到 .txt 文件后，通过 SCP 将该文件复制到主机电脑：
@@ -38,11 +46,11 @@ sudo [command] > [file name].txt
 scp [remote username]@[IP address]:[remote file path]/[file name].txt [local host file path]
 ```
 
-[本地主机文件路径]是指主机电脑上要将 .txt 文件复制到的位置。 [远程用户名]是在[载入体验](./quickstart-percept-dk-set-up.md)期间选择的 SSH 用户名。 如果在 Azure Percept DK 载入体验期间未设置 SSH 登录，则远程用户名为 root。
+[本地主机文件路径]是指主机电脑上要将 .txt 文件复制到的位置。 [remote username] 是[安装体验](./quickstart-percept-dk-set-up.md)过程中选择的 SSH 用户名。
 
 ## <a name="checking-runtime-status-of-the-speech-module"></a>检查语音模块的运行时状态
 
-检查 azureearspeechclientmodule 的运行时状态是否显示为“运行”。 若要找到设备模块的运行时状态，请打开 [Azure 门户](https://portal.azure.com/)，然后导航到“所有资源” -> “\<your IoT hub>” -> “IoT Edge” -> “\<your device ID>”。 单击“模块”选项卡，查看所有已安装模块的运行时状态。
+检查 azureearspeechclientmodule 的运行时状态是否显示为“运行”。 若要查找设备模块的运行时状态，请打开 [Azure 门户](https://portal.azure.com/)，然后导航到“所有资源” ->  [你的 IoT 中心]  -> “IoT Edge” ->  [你的设备 ID]   。 单击“模块”选项卡，查看所有已安装模块的运行时状态。
 
 :::image type="content" source="./media/troubleshoot-audio-accessory-speech-module/over-the-air-iot-edge-device-page.png" alt-text="Azure 门户中的边缘设备页。":::
 
@@ -50,10 +58,10 @@ scp [remote username]@[IP address]:[remote file path]/[file name].txt [local hos
 
 ## <a name="understanding-ear-som-led-indicators"></a>了解 Ear SoM LED 指示器
 
-可以使用 LED 指示器来了解设备所处的状态。 通常，在开机后，模块需要大约 2 分钟的时间才能完全初始化。 完成初始化步骤后，你将看到：
+可以使用 LED 指示器来了解设备所处的状态。 通常，在设备通电后，模块大约需要 2 分钟才能完全初始化。 完成初始化步骤后，你将看到：
 
-1. 1 中心白色 LED - 设备已通电。
-2. 1 中心白色 LED 闪烁 - 正在进行身份验证。
+1. 中央的白色 LED 亮起（静态）：设备已通电。
+2. 中央的白色 LED 亮起（闪烁）：正在进行身份验证。
 3. 在对设备进行身份验证并准备好使用后，所有三个 LED 都将变为蓝色。
 
 |LED|LED 状态|Ear SoM 状态|

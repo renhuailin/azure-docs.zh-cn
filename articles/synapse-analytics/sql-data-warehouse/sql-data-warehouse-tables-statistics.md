@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3ade41c51cbb8065734e8957cfc8b9f0c22b2df3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 42dd34f0fe4006411f413002eb7c351646e72390
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98673360"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078955"
 ---
 # <a name="table-statistics-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池的表统计信息
 
@@ -90,7 +90,7 @@ table_name 是包含要显示的统计信息的表的名称。 此表不能为�
 
 下面是关于更新统计信息的建议：
 
-|||
+| 统计信息特性 | 建议|
 |-|-|
 | **统计信息更新频率**  | 保守：每日 </br> 加载或转换数据之后 |
 | **采样** |  如果行数少于 10 亿，则使用默认采样率 (20%)。 </br> 如果行数超过 10 亿，则使用 2% 的采样率。 |

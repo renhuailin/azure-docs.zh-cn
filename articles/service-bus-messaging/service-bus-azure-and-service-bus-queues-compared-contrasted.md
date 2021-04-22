@@ -4,14 +4,14 @@ description: 分析 Azure 提供的两种队列类型之间的差异和相似性
 ms.topic: article
 ms.date: 11/04/2020
 ms.openlocfilehash: 31992aa2012009c51cbeae78010ae8ced65fc872
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96928301"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>存储队列和服务总线队列 - 比较与对照
-本文分析 Microsoft Azure 提供的两种队列类型之间的差异和相似性：存储队列和服务总线队列。 通过使用此信息，可以更明智地选出最适合你需求的解决方案。
+本文分析 Microsoft Azure 目前提供的以下两种队列类型之间的差异和相似处：存储队列和服务总线队列。 通过使用此信息，可以更明智地选出最适合你需求的解决方案。
 
 ## <a name="introduction"></a>简介
 Azure 支持两种队列机制：“存储队列”和“服务总线队列” 。
@@ -67,7 +67,7 @@ Azure 支持两种队列机制：“存储队列”和“服务总线队列” �
 | 接收模式 |**扫视与租赁** |**扫视与锁定**<br/><br/>**接收并删除** |
 | 独占访问模式 |**基于租赁** |**基于锁定** |
 | 租赁/锁定持续时间 |**30 秒（默认值）**<br/><br/>**7 天（最大值）** （可使用 [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API 续订或释放消息租赁。） |**60 秒（默认值）**<br/><br/>可使用 [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API 续订消息锁。 |
-| 租赁/锁定精度 |**消息级别**<br/><br/>每条消息可以具有不同的超时值，你可以在处理消息时根据需要使用 [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API 来更新超时值。 |**队列级别**<br/><br/>（每个队列都具有一个适用于其中所有消息的锁定精度，但是可使用 [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API 续订该锁。） |
+| 租赁/锁定精度 |**消息级别**<br/><br/>每条消息可具有不同的超时值，你可在处理消息时，根据需要使用 [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API 来更新超时值。 |**队列级别**<br/><br/>（每个队列都具有一个适用于其中所有消息的锁定精度，但是可使用 [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API 续订该锁。） |
 | 成批接收 |**是**<br/><br/>（在检索消息时显式指定消息计数，最多可达 32 条消息） |**是**<br/><br/>（隐式启用预提取属性或通过使用事务显式启用） |
 | 成批发送 |**否** |**是**<br/><br/>（通过使用事务或客户端批处理） |
 
@@ -183,7 +183,7 @@ Azure 支持两种队列机制：“存储队列”和“服务总线队列” �
 
 出于以下原因，可能更愿意选择存储队列：
 
-- 如果你的应用程序已使用 Microsoft Azure 的核心功能 
+- 如果应用程序已使用 Microsoft Azure 的核心功能 
 - 如果需要在服务之间进行基本通信和消息传递 
 - 需要大小超过 80 GB 的队列
 

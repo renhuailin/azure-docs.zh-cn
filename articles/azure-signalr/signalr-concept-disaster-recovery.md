@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: b1cb48d1ae858dbcd0df80780b4c3cee3deac75b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 996fa53aa105c0bcc27db7134c25d6d00e542a78
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90976489"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105110281"
 ---
 # <a name="resiliency-and-disaster-recovery-in-azure-signalr-service"></a>Azure SignalR 服务中的复原能力和灾难恢复
 
@@ -44,13 +44,16 @@ ms.locfileid: "90976489"
 
 ![该图显示了两个区域，每个区域都有一个应用服务器和一个 SignalR 服务，其中每个服务器在其区域中都与 SignalR 服务关联为主要，在另一区域中与该服务关联为次要。](media/signalr-concept-disaster-recovery/topology.png)
 
-## <a name="configure-app-servers-with-multiple-signalr-service-instances"></a>使用多个 SignalR 服务实例配置应用服务器
+## <a name="configure-multiple-signalr-service-instances"></a>配置多个 SignalR 服务实例
 
-在每个区域中创建 SignalR 服务和应用服务器后，可将应用服务器配置为连接到所有 SignalR 服务实例。
+应用服务器和 Azure Functions 均支持多个 SignalR 服务实例。
 
+在每个区域中创建 SignalR 服务和应用服务器/Azure Functions 后，可将应用服务器/Azure Functions 配置为连接到所有 SignalR 服务实例。
+
+### <a name="configure-on-app-servers"></a>在应用服务器上进行配置
 可通过两种方式实现此目的：
 
-### <a name="through-config"></a>通过配置
+#### <a name="through-config"></a>通过配置
 
 你应该已经知道如何通过环境变量/应用设置/web.cofig 在名为 `Azure:SignalR:ConnectionString` 的配置项中设置 SignalR 服务连接字符串。
 如果有多个终结点，可在多个配置项中设置这些终结点，每个项采用以下格式：
@@ -62,7 +65,7 @@ Azure:SignalR:ConnectionString:<name>:<role>
 此处的 `<name>` 是终结点的名称，`<role>` 是其角色（主要或辅助）。
 名称是可选的，但如果你想要进一步自定义多个终结点之间的路由行为，则名称非常有用。
 
-### <a name="through-code"></a>通过代码
+#### <a name="through-code"></a>通过代码
 
 如果你偏向于将连接字符串存储到其他位置，则也可以在代码中读取连接字符串，并在调用 `AddAzureSignalR()`（在 ASP.NET Core 中）或 `MapAzureSignalR()`（在 ASP.NET 中）时将其用作参数。
 
@@ -93,6 +96,9 @@ app.MapAzureSignalR(GetType().FullName, hub,  options => options.Endpoints = new
 
 1. 如果有至少一个主要实例处于联机状态，则会返回一个随机的联机主要实例。
 2. 如果所有主要实例都停机，则会返回一个随机的联机次要实例。
+
+### <a name="configure-on-azure-functions"></a>在 Azure Functions 上进行配置
+请参阅[本文](https://github.com/Azure/azure-functions-signalrservice-extension/blob/dev/docs/sharding.md#configuration-method)。
 
 ## <a name="failover-sequence-and-best-practice"></a>故障转移序列和最佳做法
 
@@ -137,3 +143,5 @@ SignalR 服务支持这两种模式，主要差别在于实现应用服务器的
 本文已介绍如何配置应用程序以实现 SignalR 服务的复原能力。 若要更详细地了解 SignalR 服务中的服务器/客户端连接和连接路由，请阅读[此文](signalr-concept-internals.md)，其中介绍了 SignalR 服务的内部情况。
 
 对于使用多个实例一起处理大量连接的缩放方案（例如分片），请阅读[如何缩放多个实例](signalr-howto-scale-multi-instances.md)。
+
+有关如何使用多个 SignalR 服务实例配置 Azure Functions 的详细信息，请参阅 [Azure Functions 中的多个 Azure SignalR 服务实例支持](https://github.com/Azure/azure-functions-signalrservice-extension/blob/dev/docs/sharding.md)。

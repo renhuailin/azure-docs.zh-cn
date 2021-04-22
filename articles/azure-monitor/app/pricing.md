@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
-ms.date: 2/7/2021
-ms.reviewer: mbullwin
-ms.openlocfilehash: 1f19366ac8fd7aedadcca0287540262516ad060c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 3/30/2021
+ms.reviewer: lagayhar
+ms.openlocfilehash: e048e788e674e90a62b15784c590c07e5d36b816
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101726168"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078394"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -25,7 +25,7 @@ ms.locfileid: "101726168"
 
 ## <a name="pricing-model"></a>定价模型
 
-[Azure Application Insights][start] 采用基于引入的数据量（还可以选择用于更长的数据保留期）的即用即付模型。 每个 Application Insights 资源作为独立服务计费，并在 Azure 订阅的帐单中产生相应费用。 数据量的衡量标准是 Application Insights 从用户应用程序收到的未压缩 JSON 数据包的大小。 使用[实时指标流](./live-stream.md)时，不会根据数据量收费。
+[Azure Application Insights][start] 采用基于引入的数据量（还可以选择用于更长的数据保留期）的即用即付模型。 每个 Application Insights 资源作为独立服务计费，并在 Azure 订阅的帐单中产生相应费用。 数据量的衡量标准是 Application Insights 从用户应用程序收到的未压缩 JSON 数据包的大小。 数据卷以 GB 进行测量（10^9 字节）。 使用[实时指标流](./live-stream.md)时，不会根据数据量收费。
 
 [多步骤 Web 测试](./availability-multistep.md)会额外收费。 多步骤 Web 测试是指执行一系列操作的 Web 测试。 单页“ping 测试”不单独计费。 进行 ping 测试和多步测试时发送的遥测数据与应用发送的其他遥测数据计费方式相同。
 
@@ -43,7 +43,10 @@ ms.locfileid: "101726168"
 
 ### <a name="data-collection-when-using-sampling"></a>在使用采样时收集数据
 
-使用 ASP.NET SDK 的[自适应采样](sampling.md#adaptive-sampling)，系统会自动调整数据量，将数据量保持在默认 Application Insights 监视功能的最大指定流量速率范围内。 如果应用程序产生的遥测数据很少（例如在调试时或由于使用量较小所致），那么，只要数据量低于配置的每秒事件数级别，采样处理器就不会丢弃项。 对于大数据量应用程序，默认阈值为每秒 5 个事件，自适应采样会将每日事件的数量限制为 432,000。 使用典型的平均事件大小 1 KB，这相当于托管应用程序的每个节点每月（按平均 31 天计算）可引入 13.4 GB 的遥测数据（因为采样是在每个节点本地完成的。） 
+使用 ASP.NET SDK 的[自适应采样](sampling.md#adaptive-sampling)，系统会自动调整数据量，将数据量保持在默认 Application Insights 监视功能的最大指定流量速率范围内。 如果应用程序产生的遥测数据很少（例如在调试时或由于使用量较小所致），那么，只要数据量低于配置的每秒事件数级别，采样处理器就不会丢弃项。 对于大数据量应用程序，默认阈值为每秒 5 个事件，自适应采样会将每日事件的数量限制为 432,000。 使用典型的平均事件大小 1 KB，这相当于托管应用程序的每个节点每月（按平均 31 天计算）可引入 13.4 GB 的遥测数据（因为每个节点的采样都是在本地完成的。）
+
+> [!NOTE]
+> Azure Monitor 日志数据大小以 GB 计算（1 GB = 10^9 字节）。
 
 对于不支持自适应采样的 SDK，可以使用[引入采样](./sampling.md#ingestion-sampling)（Application Insights 收到数据时根据要保留的数据百分比采样），或使用 [ASP.NET、ASP.NET Core 和 Java 网站的固定速率采样](sampling.md#fixed-rate-sampling)来减少从 Web 服务器和 Web 浏览器发送的流量
 
@@ -323,7 +326,7 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>演示如何确定不同节点计数的示例
 
-| 方案                               | 每日节点计数总数 |
+| 场景                               | 每日节点计数总数 |
 |:---------------------------------------|:----------------:|
 | 1 个应用程序使用 3 个 Azure 应用服务实例和 1 个虚拟服务器 | 4 |
 | 3 个应用程序正运行在 2 个 VM 上，这些应用程序的 Application Insights 资源属于同一订阅，并且位于“按节点”层中 | 2 | 
