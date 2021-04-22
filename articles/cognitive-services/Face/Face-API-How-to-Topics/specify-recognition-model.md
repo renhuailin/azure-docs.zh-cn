@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cd4ed992557a3c333919b63cc36757beb2f70454
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3d22f2fb0bb550d966cbc5e181882552514513b2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102433550"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936574"
 ---
 # <a name="specify-a-face-recognition-model"></a>指定人脸识别模型
 
@@ -87,7 +87,7 @@ await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", 
 
 ## <a name="find-similar-faces-with-specified-model"></a>使用指定的模型查找类似的人脸
 
-还可以指定一个识别模型来进行类似性搜索。 可以在使用 [FaceList - Create] API 或 [LargeFaceList - Create] 创建人脸列表时，使用 `recognitionModel` 来分配模型版本。 如果不指定此参数，则默认使用 `recognition_01` 模型。 人脸列表始终使用创建它时所用的识别模型，并且将新的人脸添加到该列表时，它们将与此模型相关联；创建后无法对此进行更改。 若要查看人脸列表是使用哪个模型配置的，请结合设置为 **true** 的 _returnRecognitionModel_ 参数使用 [FaceList - Get] API。
+还可以指定一个识别模型来进行类似性搜索。 可以在使用 [FaceList - Create] API 或 [LargeFaceList - Create] 创建 FaceList 时，使用 `recognitionModel` 来分配模型版本。 如果不指定此参数，则默认使用 `recognition_01` 模型。 FaceList 始终使用创建它时所用的识别模型，并且将新的人脸添加到该列表时，它们将与此模型相关联；创建后无法对此进行更改。 若要查看 FaceList 是使用哪个模型配置的，请结合设置为 true 的 returnRecognitionModel 参数使用 [FaceList - Get] API。
 
 请查看适用于 .NET 客户端库的以下代码示例。
 
@@ -95,7 +95,7 @@ await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", 
 await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_04");
 ```
 
-此代码使用 recognition_04 模型来提取特征，创建名为 `My face collection` 的人脸列表。 在此人脸列表中搜索与新检测到的人脸类似的人脸时，该人脸一定是使用 recognition_04 模型检测到的（[人脸 - 检测 ]）。 如上一部分所述，模型需要保持一致。
+此代码使用 recognition_04 模型来提取特征，创建名为 `My face collection` 的 FaceList。 在此 FaceList 中搜索与新检测到的人脸类似的人脸时，该人脸必须已使用 recognition_04 模型检测到 ([Face - Detect])。 如上一部分所述，模型需要保持一致。
 
 无需在 [Face - Find Similar] API 中进行更改；只需在检测中指定模型版本。
 

@@ -4,30 +4,31 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: e9c889dcffe42fde244f8a35ce42032e84d78fff
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 479aa522462d14f295177e6b2d2fcc4707657760
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488074"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106498821"
 ---
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-android-ios.md)]
+
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
-- 已部署的通信服务资源。 [创建通信服务资源](../../create-communication-resource.md)。
-- 用于启用呼叫客户端的`User Access Token`。 详细了解[如何获取`User Access Token`](../../access-tokens.md)
-- 可选：完成[开始向应用程序添加通话功能](../getting-started-with-calling.md)快速入门
+- 已部署的 Azure 通信服务资源。 [创建通信服务资源](../../create-communication-resource.md)。
+- 用于启用通话客户端的用户访问令牌。 [获取用户访问令牌](../../access-tokens.md)。
+- 可选：完成[在应用中添加语音呼叫](../getting-started-with-calling.md)快速入门。
 
-## <a name="setting-up"></a>设置
+## <a name="set-up-your-system"></a>设置系统
 
-### <a name="creating-the-xcode-project"></a>创建 Xcode 项目
+### <a name="create-the-xcode-project"></a>创建 Xcode 项目
 
-> [!NOTE]
-> 本文档使用 1.0.0-beta.8 版的通话客户端库。
+在 Xcode 中，创建新的 iOS 项目，并选择“单视图应用”模板。 本快速入门使用 [SwiftUI 框架](https://developer.apple.com/xcode/swiftui/)，因此应将“语言”设置为“Swift”，并将“用户界面”设置为“SwiftUI”   。 
 
-在 Xcode 中，创建新的 iOS 项目，并选择“单视图应用”模板。 本快速入门使用 [SwiftUI 框架](https://developer.apple.com/xcode/swiftui/)，因此应将“语言”设置为“Swift”，并将“用户界面”设置为“SwiftUI”   。 在本快速入门过程中，不会创建单元测试或 UI 测试。 可同时取消选中“包括单元测试”和“包括 UI 测试” 。
+在本快速入门过程中，不会创建单元测试或 UI 测试。 可随意清除“包括单元测试”和“包括 UI 测试”文本框 。
 
-:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="显示 Xcode 中的创建新项目窗口的屏幕截图。":::
+:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="显示用于在 Xcode 中创建项目的窗口的屏幕截图。":::
 
 ### <a name="install-the-package-and-dependencies-with-cocoapods"></a>使用 CocoaPods 安装包和依赖项
 
@@ -44,11 +45,11 @@ ms.locfileid: "103488074"
    ```
 
 2. 运行 `pod install`。
-3. 使用 XCode 打开 `.xcworkspace`。
+3. 使用 Xcode 打开 `.xcworkspace`。
 
 ### <a name="request-access-to-the-microphone"></a>请求访问麦克风
 
-若要访问设备的麦克风，需要使用 `NSMicrophoneUsageDescription` 更新应用的信息属性列表。 将关联值设置为将包含在系统用于向用户请求访问权限的对话框中的 `string`。
+若要访问设备的麦克风，需要使用 `NSMicrophoneUsageDescription` 更新应用的信息属性列表。 将关联的值设置为将要包含在系统用于向用户请求访问权限的对话框中的 `string`。
 
 右键单击项目树的 `Info.plist` 条目，然后选择“打开为” > “源代码” 。 将以下代码行添加到顶层 `<dict>` 节，然后保存文件。
 
@@ -59,31 +60,34 @@ ms.locfileid: "103488074"
 
 ### <a name="set-up-the-app-framework"></a>设置应用框架
 
-打开项目的 ContentView.swift 文件，然后将 `import` 声明添加到文件顶部以导入 `AzureCommunicationCalling library`。 此外，导入 `AVFoundation`，我们需要使用它在代码中进行音频权限请求。
+打开项目的 ContentView.swift 文件，然后将 `import` 声明添加到文件顶部以导入 `AzureCommunicationCalling` 库。 此外，导入 `AVFoundation`。 你将需要用它来处理代码中的音频权限请求。
 
 ```swift
 import AzureCommunicationCalling
 import AVFoundation
 ```
 
-## <a name="object-model"></a>对象模型
+## <a name="learn-the-object-model"></a>了解对象模型
 
-以下类和接口处理适用于 iOS 的 Azure 通信服务通话客户端库的某些主要功能。
+以下类和接口处理适用于 iOS 的 Azure 通信服务呼叫 SDK 的某些主要功能。
+
+> [!NOTE]
+> 本快速入门使用呼叫 SDK 版本 1.0.0-beta.8。
 
 
 | 名称                                  | 说明                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient | CallClient 是呼叫客户端库的主入口点。|
-| CallAgent | CallAgent 用于启动和管理呼叫。 |
-| CommunicationTokenCredential | CommunicationTokenCredential 用作实例化 CallAgent 的令牌凭据。| 
-| CommunicationIdentifier | CommunicationIdentifier 用于表示用户的标识，可以是 CommunicationUserIdentifier、PhoneNumberIdentifier 或 CallingApplication。 |
+| `CallClient` | `CallClient` 是呼叫 SDK 的主入口点。|
+| `CallAgent` | `CallAgent` 用于启动和管理呼叫。 |
+| `CommunicationTokenCredential` | `CommunicationTokenCredential` 用作实例化 `CallAgent` 的令牌凭据。| 
+| `CommunicationIdentifier` | `CommunicationIdentifier` 用于表示用户的标识。 标识可以是 `CommunicationUserIdentifier`、`PhoneNumberIdentifier` 或 `CallingApplication`。 |
 
 > [!NOTE]
-> 实现事件委托时，应用程序必须持有对需要事件订阅的对象的强引用。 例如，如果在调用方法 `call.addParticipant` 时返回 `RemoteParticipant` 对象，并且应用程序将委托设置为侦听 `RemoteParticipantDelegate`，应用程序必须持有对 `RemoteParticipant` 对象的强引用。 否则，如果收集了此对象，则当通话 SDK 尝试调用对象时，委托将引发严重异常。
+> 应用程序在实现事件委托时，必须持有对需要事件订阅的对象的强引用。 例如，如果在调用方法 `call.addParticipant` 时返回 `RemoteParticipant` 对象，并且应用程序将委托设置为侦听 `RemoteParticipantDelegate`，应用程序必须持有对 `RemoteParticipant` 对象的强引用。 否则，如果收集了此对象，则当呼叫 SDK 尝试调用对象时，委托将引发严重异常。
 
-## <a name="initialize-the-callagent"></a>初始化 CallAgent
+## <a name="initialize-callagent"></a>初始化 CallAgent
 
-若要从 `CallClient` 创建 `CallAgent` 实例，必须使用 `callClient.createCallAgent` 方法，该方法在初始化后异步返回 `CallAgent` 对象
+若要从 `CallClient` 创建 `CallAgent` 实例，必须使用 `callClient.createCallAgent` 方法，该方法在初始化后异步返回 `CallAgent` 对象。
 
 若要创建通话客户端，必须传递 `CommunicationTokenCredential` 对象。
 
@@ -102,14 +106,14 @@ var userCredential: CommunicationTokenCredential?
        return
 }
 
-// tokenProvider needs to be implemented by contoso which fetches new token
+// tokenProvider needs to be implemented by Contoso, which fetches a new token
 public func fetchTokenSync(then onCompletion: TokenRefreshOnCompletion) {
     let newToken = self.tokenProvider!.fetchNewToken()
     onCompletion(newToken, nil)
 }
 ```
 
-将上面创建的 `CommunicationTokenCredential` 对象传递给 `CallClient` 并设置显示名称。
+将创建的 `CommunicationTokenCredential` 对象传递给 `CallClient` 并设置显示名称。
 
 ```swift
 
@@ -131,9 +135,9 @@ callClient?.createCallAgent(userCredential: userCredential!,
 
 ## <a name="place-an-outgoing-call"></a>拨出电话
 
-若要创建并发起通话，需要在 `CallAgent` 上调用其中一个 API，并提供已使用通信服务管理客户端库预配的用户的通信服务标识。
+若要创建并发起通话，需要在 `CallAgent` 上调用其中一个 API，并提供已使用通信服务管理 SDK 预配的用户的通信服务标识。
 
-通话的创建和启动是同步的。 你将收到通话实例，可通过该实例订阅通话中的所有事件。
+创建和发起呼叫的操作是同步的。 你将收到通话实例，可通过该实例订阅通话中的所有事件。
 
 ### <a name="place-a-11-call-to-a-user-or-a-1n-call-with-users-and-pstn"></a>向用户发起一对一通话，或向用户和 PSTN 发起一对多通话
 
@@ -145,7 +149,8 @@ let oneToOneCall = self.callAgent.call(participants: callees, options: StartCall
 ```
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>向用户和 PSTN 发起一对多通话
-若要向 PSTN 发起通话，必须指定通过通信服务获取的电话号码
+若要向 PSTN 发起通话，必须指定通过通信服务获取的电话号码。
+
 ```swift
 
 let pstnCallee = PhoneNumberIdentifier(phoneNumber: '+1999999999')
@@ -154,8 +159,8 @@ let groupCall = self.callAgent.call(participants: [pstnCallee, callee], options:
 
 ```
 
-### <a name="place-a-11-call-with-with-video"></a>发起一对一视频通话
-若要获取设备管理器实例，请参阅[此处](#device-management)
+### <a name="place-a-11-call-with-video"></a>发起一对一视频通话
+若要获取设备管理器实例，请查看有关[管理设备](#manage-devices)的部分。
 
 ```swift
 
@@ -172,7 +177,7 @@ let call = self.callAgent?.call(participants: [callee], options: startCallOption
 ```
 
 ### <a name="join-a-group-call"></a>加入群组通话
-若要加入通话，需要在 CallAgent 上调用其中一个 API
+若要加入通话，需要在 `CallAgent` 上调用其中一个 API。
 
 ```swift
 
@@ -181,8 +186,8 @@ let call = self.callAgent?.join(with: groupCallLocator, joinCallOptions: JoinCal
 
 ```
 
-### <a name="subscribe-for-incoming-call"></a>订阅来电
-订阅来电事件
+### <a name="subscribe-to-an-incoming-call"></a>订阅来电
+订阅来电事件。
 
 ```
 final class IncomingCallHandler: NSObject, CallAgentDelegate, IncomingCallDelegate
@@ -202,8 +207,8 @@ final class IncomingCallHandler: NSObject, CallAgentDelegate, IncomingCallDelega
 ```
 
 ### <a name="accept-an-incoming-call"></a>接听来电
-若要接听来电，请对呼叫对象调用“accept”方法。
-设置到 CallAgent 的委托 
+若要接听来电，请对呼叫对象调用 `accept` 方法。 将委托设置为 `CallAgent`。
+
 ```swift
 final class CallHandler: NSObject, CallAgentDelegate
 {
@@ -233,23 +238,23 @@ if let incomingCall = CallHandler().incomingCall {
 }
 ```
 
-## <a name="push-notification"></a>推送通知
+## <a name="set-up-push-notifications"></a>设置推送通知
 
-移动推送通知是在移动设备中收到的弹出通知。 对于通话，我们将重点介绍 VoIP（IP 语音）推送通知。 我们将让你能够注册推送通知、处理推送通知和注销推送通知。
+移动推送通知是在移动设备中收到的弹出通知。 对于呼叫，我们将重点介绍 VoIP（Internet 语音协议）推送通知。 
 
-### <a name="prerequisite"></a>先决条件
+以下部分介绍如何注册、处理和取消注册推送通知。 在开始这些任务之前，请先满足以下先决条件：
 
-- 步骤 1：Xcode -> 签名和功能 -> 添加功能 >“推送通知”
-- 步骤 2：Xcode -> 签名和功能 -> 添加功能 >“后台模式”
-- 步骤 3：“后台模式”-> 选择“IP 语音”和“远程通知”
+1. 在 Xcode 中，转到“签名和功能”。 选择“+功能”来添加一项功能，然后选择“推送通知” 。
+2. 选择“+功能”来再添加一项功能，然后选择“背景模式” 。
+3. 在“背景模式”下，选中“IP 语音”和“远程通知”复选框  。
 
 :::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="显示如何在 Xcode 中添加功能的屏幕截图。" lightbox="../media/ios/xcode-push-notification.png":::
 
-#### <a name="register-for-push-notifications"></a>注册推送通知
+### <a name="register-for-push-notifications"></a>注册推送通知
 
-若要注册推送通知，请使用设备注册令牌在 CallAgent 实例上调用 registerPushNotification()。
+若要注册推送通知，请使用设备注册令牌在 `CallAgent` 实例上调用 `registerPushNotification()`。
 
-推送通知的注册需要在成功初始化之后调用。 销毁 `callAgent` 对象时，将调用 `logout`，这会自动注销推送通知。
+成功初始化后需要注册推送通知。 销毁 `callAgent` 对象时，将调用 `logout`，这会自动取消注册推送通知。
 
 
 ```swift
@@ -265,8 +270,8 @@ callAgent.registerPushNotifications(deviceToken: deviceToken) { (error) in
 
 ```
 
-#### <a name="push-notification-handling"></a>处理推送通知
-若要接收来电推送通知，请使用字典有效负载在 CallAgent 实例上调用 handlePushNotification() 。
+### <a name="handle-push-notifications"></a>处理推送通知
+若要接收来电推送通知，请使用字典有效负载在 `CallAgent` 实例上调用 `handlePushNotification()`。
 
 ```swift
 
@@ -281,11 +286,12 @@ callAgent.handlePush(notification: callNotification) { (error) in
 }
 
 ```
-#### <a name="unregister-push-notification"></a>注销推送通知
+### <a name="unregister-push-notifications"></a>取消注册推送通知
 
-应用程序可以随时取消注册推送通知。 在 CallAgent 上调用 `unregisterPushNotification` 方法即可。
+应用程序可以随时取消注册推送通知。 在 CallAgent 上调用  方法即可。
+
 > [!NOTE]
-> 注销时，应用程序不会自动注销推送通知。
+> 注销时，应用程序不会自动取消注册推送通知。
 
 ```swift
 
@@ -299,13 +305,13 @@ callAgent.unregisterPushNotifications { (error) in
 
 ```
 
-## <a name="mid-call-operations"></a>通话中操作
+## <a name="perform-mid-call-operations"></a>执行通话中操作
 
 可在通话过程中执行各种操作来管理与视频和音频相关的设置。
 
 ### <a name="mute-and-unmute"></a>静音和取消静音
 
-若要使本地终结点静音或取消静音，可使用 `mute` 和 `unmute` 异步 API：
+若要将本地终结点静音或取消静音，可使用 `mute` 和 `unmute` 异步 API。
 
 ```swift
 call!.mute { (error) in
@@ -318,7 +324,7 @@ call!.mute { (error) in
 
 ```
 
-[异步] 本地取消静音
+使用以下代码以异步方式将本地终结点取消静音。
 
 ```swift
 call!.unmute { (error) in
@@ -332,7 +338,7 @@ call!.unmute { (error) in
 
 ### <a name="start-and-stop-sending-local-video"></a>开始和停止发送本地视频
 
-若要开始向通话中的其他参与者发送本地视频，请使用 `startVideo` API 并使用 `camera` 传递 `localVideoStream`
+若要开始向通话中的其他参与者发送本地视频，请使用 `startVideo` API 并使用 `camera` 传递 `localVideoStream`。
 
 ```swift
 
@@ -349,7 +355,7 @@ call!.startVideo(stream: localVideoStream) { (error) in
 
 ```
 
-开始发送视频后，会将 `LocalVideoStream` 实例添加到通话实例上的 `localVideoStreams` 集合中：
+开始发送视频后，`LocalVideoStream` 实例会添加到通话实例上的 `localVideoStreams` 集合中。
 
 ```swift
 
@@ -357,7 +363,7 @@ call.localVideoStreams[0]
 
 ```
 
-[异步] 若要停止本地视频，请传递从 `call.startVideo` 调用返回的 `localVideoStream`：
+若要停止本地视频，请传递从 `call.startVideo` 调用返回的 `localVideoStream` 实例。 这是异步操作。
 
 ```swift
 
@@ -371,9 +377,9 @@ call!.stopVideo(stream: localVideoStream) { (error) in
 
 ```
 
-## <a name="remote-participants-management"></a>远程参与者管理
+## <a name="manage-remote-participants"></a>管理远程参与者
 
-所有远程参与者均以 `RemoteParticipant` 类型表示，可通过通话实例上的 `remoteParticipants` 集合获得：
+所有远程参与者均以 `RemoteParticipant` 类型表示，可通过通话实例上的 `remoteParticipants` 集合获得。
 
 ### <a name="list-participants-in-a-call"></a>列出通话参与者
 
@@ -383,14 +389,14 @@ call.remoteParticipants
 
 ```
 
-### <a name="remote-participant-properties"></a>远程参与者属性
+### <a name="get-remote-participant-properties"></a>获取远程参与者属性
 
 ```swift
 
 // [RemoteParticipantDelegate] delegate - an object you provide to receive events from this RemoteParticipant instance
 var remoteParticipantDelegate = remoteParticipant.delegate
 
-// [CommunicationIdentifier] identity - same as the one used to provision token for another user
+// [CommunicationIdentifier] identity - same as the one used to provision a token for another user
 var identity = remoteParticipant.identity
 
 // ParticipantStateIdle = 0, ParticipantStateEarlyMedia = 1, ParticipantStateConnecting = 2, ParticipantStateConnected = 3, ParticipantStateOnHold = 4, ParticipantStateInLobby = 5, ParticipantStateDisconnected = 6
@@ -412,7 +418,7 @@ var videoStreams = remoteParticipant.videoStreams // [RemoteVideoStream, RemoteV
 
 ### <a name="add-a-participant-to-a-call"></a>向通话添加参与者
 
-若要向通话添加参与者（用户或电话号码），可调用 `addParticipant`。 这会同步返回一个远程参与者实例。
+若要向通话添加参与者（用户或电话号码），可调用 `addParticipant`。 此命令会同步返回一个远程参与者实例。
 
 ```swift
 
@@ -437,11 +443,11 @@ call!.remove(participant: remoteParticipantAdded) { (error) in
 
 ## <a name="render-remote-participant-video-streams"></a>呈现远程参与者视频流
 
-远程参与者可在通话期间启动视频或屏幕共享。
+远程参与者可在通话期间发起视频或屏幕共享。
 
-### <a name="handle-remote-participant-videoscreen-sharing-streams"></a>处理远程参与者视频/屏幕共享流
+### <a name="handle-video-sharing-or-screen-sharing-streams-of-remote-participants"></a>处理远程参与者的视频共享或屏幕共享流
 
-若要列出远程参与者的流，请检查 `videoStreams` 集合：
+若要列出远程参与者的流，请检查 `videoStreams` 集合。
 
 ```swift
 
@@ -449,7 +455,7 @@ var remoteParticipantVideoStream = call.remoteParticipants[0].videoStreams[0]
 
 ```
 
-### <a name="remote-video-stream-properties"></a>远程视频流属性
+### <a name="get-remote-video-stream-properties"></a>获取远程视频流属性
 
 ```swift
 
@@ -461,9 +467,9 @@ var id: Int = remoteParticipantVideoStream.id // id of remoteParticipantStream
 
 ```
 
-### <a name="render-remote-participant-stream"></a>呈现远程参与者流
+### <a name="render-remote-participant-streams"></a>呈现远程参与者流
 
-若要开始呈现远程参与者流：
+若要开始呈现远程参与者流，请使用以下代码。
 
 ```swift
 
@@ -474,16 +480,16 @@ targetRemoteParticipantView.update(scalingMode: ScalingMode.fit)
 
 ```
 
-### <a name="remote-video-renderer-methods-and-properties"></a>远程视频呈现器方法和属性
+### <a name="get-remote-video-renderer-methods-and-properties"></a>获取远程视频呈现器方法和属性
 
 ```swift
 // [Synchronous] dispose() - dispose renderer and all `RendererView` associated with this renderer. To be called when you have removed all associated views from the UI.
 remoteVideoRenderer.dispose()
 ```
 
-## <a name="device-management"></a>设备管理
+## <a name="manage-devices"></a>管理设备
 
-借助 `DeviceManager`，可枚举通话中可用于传输音频/视频流的本地设备。 还可向用户请求访问麦克风/相机的权限。 可访问 `callClient` 对象上的 `deviceManager`：
+借助 `DeviceManager`，可枚举通话中可用于传输音频或视频流的本地设备。 你还可用它来向用户请求访问麦克风或相机的权限。 可访问 `callClient` 对象上的 `deviceManager`。
 
 ```swift
 
@@ -510,9 +516,9 @@ var localMicrophones = deviceManager.microphones! // [AudioDeviceInfo, AudioDevi
 var localSpeakers = deviceManager.speakers! // [AudioDeviceInfo, AudioDeviceInfo...]
 ``` 
 
-### <a name="set-default-microphonespeaker"></a>设置默认麦克风/扬声器
+### <a name="set-the-default-microphone-or-speaker"></a>设置默认麦克风或扬声器
 
-借助设备管理器，可设置发起通话时要使用的默认设备。 如果未设置堆栈默认值，通信服务将回退到 OS 默认值。
+可使用设备管理器来设置在发起通话时要使用的默认设备。 如果未设置堆栈默认值，通信服务将回退到 OS 默认值。
 
 ```swift
 // get first microphone
@@ -525,9 +531,9 @@ var firstSpeaker = self.deviceManager!.speakers!
 deviceManager.setSpeaker(speakerDevice: firstSpeaker)
 ```
 
-### <a name="local-camera-preview"></a>本地相机预览
+### <a name="get-a-local-camera-preview"></a>获取本地相机预览
 
-可使用 `Renderer` 开始呈现来自本地相机的流。 此流不会发送给其他参与者：这是本地预览源。 这是异步操作。
+可使用 `Renderer` 开始呈现来自本地相机的流。 此流不会发送给其他参与者；这是一项本地预览源。 这是异步操作。
 
 ```swift
 
@@ -538,9 +544,9 @@ self.view = try renderer!.createView()
 
 ```
 
-### <a name="local-camera-preview-properties"></a>本地相机预览属性
+### <a name="get-local-camera-preview-properties"></a>获取本地相机预览属性
 
-呈现器包含一组属性和方法，可使用它们来控制呈现：
+呈现器包含一组属性和方法，可使用它们来控制呈现。
 
 ```swift
 
@@ -565,16 +571,16 @@ localRenderer.dispose()
 
 ```
 
-## <a name="eventing-model"></a>事件模型
+## <a name="subscribe-to-notifications"></a>订阅通知
 
 可订阅大多数属性和集合，以便在值发生更改时收到通知。
 
 ### <a name="properties"></a>属性
-若要订阅 `property changed` 事件，请采取以下操作：
+若要订阅 `property changed` 事件，请使用以下代码。
 
 ```swift
 call.delegate = self
-// Get the property of the call state by doing get on the call's state member
+// Get the property of the call state by getting on the call's state member
 public func onCallStateChanged(_ call: Call!,
                                args: PropertyChangedEventArgs!)
 {
@@ -587,7 +593,7 @@ public func onCallStateChanged(_ call: Call!,
 ```
 
 ### <a name="collections"></a>集合
-若要订阅 `collection updated` 事件，请采取以下操作：
+若要订阅 `collection updated` 事件，请使用以下代码。
 
 ```swift
 call.delegate = self

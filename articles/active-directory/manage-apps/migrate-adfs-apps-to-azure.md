@@ -12,10 +12,10 @@ ms.date: 03/01/2021
 ms.author: kenwith
 ms.reviewer: baselden
 ms.openlocfilehash: ee1d863ccb974b30213179a1aba9e27d5a3a2bda
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103418296"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>将应用程序身份验证从 Active Directory 联合身份验证服务移动到 Azure Active Directory
@@ -27,24 +27,24 @@ ms.locfileid: "103418296"
 
 ## <a name="azure-ad-benefits"></a>Azure AD 优势
 
-如果你的本地目录包含用户帐户，则你可能有许多用户对其进行身份验证的应用程序。 其中每个应用都进行了配置，让用户使用其标识进行访问。
+如果你的本地目录包含用户帐户，你可能有许多应用程序需要验证用户身份。 其中每一个都配置为由用户使用其标识进行访问。
 
-用户还可以直接使用本地 Active Directory 进行身份验证。 Active Directory 联合身份验证服务 (AD FS) 是基于标准的本地标识服务。 它扩展了在受信任业务合作伙伴之间使用单一登录 (SSO) 功能的能力，因此用户无需单独登录每个应用程序。 这称为联合标识。
+用户还可以直接通过本地 Active Directory 进行身份验证。 Active Directory 联合身份验证服务 (AD FS) 是基于标准的本地标识服务。 它扩展了在受信任业务合作伙伴之间使用单一登录 (SSO) 功能的能力，因此用户无需单独登录每个应用程序。 这称为联合标识。
 
 许多组织都有直接与 AD FS 联合的服务型软件 (SaaS) 或自定义业务线应用，以及基于 Microsoft 365 和 Azure AD 的应用。
 
-  ![在本地直接连接的应用程序](media/migrate-adfs-apps-to-azure/app-integration-before-migration-1.png)
+  ![直接在本地连接的应用程序](media/migrate-adfs-apps-to-azure/app-integration-before-migration-1.png)
 
 > [!Important]
-> 为了提高应用程序的安全性，你的目标是在本地环境和云环境中拥有一套单一的访问控制和策略。
+> 为了提高应用程序的安全性，你的目标是在本地环境和云环境中拥有一组访问控制和策略。
 
   ![通过 Azure AD 连接的应用程序](media/migrate-adfs-apps-to-azure/app-integration-after-migration-1.png)
 
 ## <a name="types-of-apps-to-migrate"></a>要迁移的应用类型
 
-将所有应用程序身份验证迁移到 Azure AD 是最佳选择，因为它为你提供了一个用于标识和访问管理的单一控制平面。
+将所有应用程序身份验证迁移到 Azure AD 是最佳选择，因为它为提供了一个用于标识和访问管理的控制平面。
 
-你的应用程序可使用新式或旧版协议进行身份验证。 计划迁移到 Azure AD 时，请考虑首先迁移使用新式身份验证协议（例如 SAML 和 Open ID Connect）的应用。 可通过 Azure 应用库中的内置连接器或通过在 Azure AD 注册应用程序，将这些应用重新配置为向 Azure AD 进行身份验证。 使用旧版协议的应用可以使用应用程序代理进行集成。
+你的应用程序可以使用新式或旧式身份验证协议。 计划迁移到 Azure AD 时，请考虑首先迁移使用新式身份验证协议（例如 SAML 和 Open ID Connect）的应用。 可通过 Azure 应用库中的内置连接器或通过在 Azure AD 注册应用程序，将这些应用重新配置为向 Azure AD 进行身份验证。 使用旧版协议的应用可以使用应用程序代理进行集成。
 
 有关详细信息，请参阅：
 
@@ -409,7 +409,7 @@ AD FS 2016 中的内置访问控制策略：
 
 根据你配置应用的方式，验证 SSO 是否正常工作。
 
-| 身份验证类型| 测试 |
+| 身份验证类型| 正在测试 |
 | :- | :- |
 | OAuth/OpenID Connect| 选择“企业应用程序”>“权限”，并确保你已在应用的用户设置中许可该应用程序。|
 | 基于 SAML 的 SSO | 使用“单一登录”下的[测试 SAML 设置](debug-saml-sso-issues.md)按钮。 |

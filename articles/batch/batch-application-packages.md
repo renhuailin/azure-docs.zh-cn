@@ -2,17 +2,17 @@
 title: 将应用程序包部署到计算节点
 description: 使用 Azure Batch 的应用程序包功能轻松管理要安装在 Batch 计算节点上的多个应用程序和版本。
 ms.topic: how-to
-ms.date: 03/24/2021
+ms.date: 04/13/2021
 ms.custom:
 - H1Hack27Feb2017
 - devx-track-csharp
 - contperf-fy21q1
-ms.openlocfilehash: d0ed5cc47694d6576e6aea46b62dfab8ecb73459
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9c4b40f0e99475fc0b19ec94a14f67af131e5f59
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045784"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389377"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>使用 Batch 应用程序包将应用程序部署到计算节点
 
@@ -61,7 +61,7 @@ ms.locfileid: "105045784"
 可以使用 [Azure 门户](https://portal.azure.com)或 Batch 管理 API 来管理 Batch 帐户中的应用程序包。 以下部分介绍如何在 Azure 门户中关联存储帐户，以及如何添加和管理应用程序和应用程序包。
 
 > [!NOTE]
-> 虽然可以在 [ARM 模板](quick-create-template.md)的 [Microsoft.Batch/batchAccounts](/templates/microsoft.batch/batchaccounts) 资源中定义应用程序值，但目前无法使用 ARM 模板上传要在 Batch 帐户中使用的应用程序包。 必须按照[下面](#add-a-new-application)所述将其上传到链接存储帐户。
+> 虽然可以在 [ARM 模板](quick-create-template.md)的 [Microsoft.Batch/batchAccounts](/azure/templates/microsoft.batch/batchaccounts) 资源中定义应用程序值，但目前无法使用 ARM 模板上传要在 Batch 帐户中使用的应用程序包。 必须按照[下面](#add-a-new-application)所述将其上传到链接存储帐户。
 
 ### <a name="link-a-storage-account"></a>关联存储帐户
 
@@ -154,7 +154,13 @@ CloudPool myCloudPool =
         poolId: "myPool",
         targetDedicatedComputeNodes: 1,
         virtualMachineSize: "standard_d1_v2",
-        cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));
+        VirtualMachineConfiguration: new VirtualMachineConfiguration(
+            imageReference: new ImageReference(
+                                publisher: "MicrosoftWindowsServer",
+                                offer: "WindowsServer",
+                                sku: "2019-datacenter-core",
+                                version: "latest"),
+            nodeAgentSkuId: "batch.node.windows amd64");
 
 // Specify the application and version to install on the compute nodes
 myCloudPool.ApplicationPackageReferences = new List<ApplicationPackageReference>
