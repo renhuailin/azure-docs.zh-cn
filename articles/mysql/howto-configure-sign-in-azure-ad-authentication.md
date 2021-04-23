@@ -1,17 +1,17 @@
 ---
 title: 使用 Azure Active Directory - Azure Database for MySQL
 description: 了解如何设置 Azure Active Directory (Azure AD) 以向 Azure Database for MySQL 进行身份验证
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: mysql
 ms.topic: how-to
 ms.date: 07/23/2020
-ms.openlocfilehash: f5890ddb2a4b1599dbcfd1e624c9fbe71a564de7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 492e56e09129f9d47b863624cd72cd508801c143
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102442751"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728260"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-mysql"></a>使用 Azure Active Directory 进行 MySQL 的身份验证
 
@@ -78,7 +78,6 @@ az login
 ```azurecli-interactive
 az account get-access-token --resource https://ossrdbms-aad.database.windows.net
 ```
-
 上述资源值必须完全按所示方式指定。 对于其他云，可以使用以下命令查看资源值：
 
 ```azurecli-interactive
@@ -90,6 +89,13 @@ az cloud show
 ```azurecli-interactive
 az account get-access-token --resource-type oss-rdbms
 ```
+使用 PowerShell 时，可以使用以下命令获取访问令牌：
+
+```azurepowershell-interactive
+$accessToken = Get-AzAccessToken -ResourceUrl https://ossrdbms-aad.database.windows.net
+$accessToken.Token | out-file C:\temp\MySQLAccessToken.txt
+```
+
 
 身份验证成功后，Azure AD 将返回访问令牌：
 
@@ -105,13 +111,17 @@ az account get-access-token --resource-type oss-rdbms
 
 该令牌是一个 Base 64 字符串，该字符串对有关经过身份验证的用户的所有信息进行编码，并且针对的是 Azure Database for MySQL 服务。
 
-> [!NOTE]
-> 访问令牌的有效期为 5 - 60 分钟。 建议在即将启动 Azure Database for MySQL 登录之前获取访问令牌。
+访问令牌的有效期为 5 - 60 分钟。 建议在即将启动 Azure Database for MySQL 登录之前获取访问令牌。 可以使用以下 Powershell 命令查看令牌有效性。 
+
+```azurepowershell-interactive
+$accessToken.ExpiresOn.DateTime
+```
 
 ### <a name="step-3-use-token-as-password-for-logging-in-with-mysql"></a>步骤 3：使用令牌作为 MySQL 登录的密码
 
-在连接时，需要将访问令牌用作 MySQL 用户密码。 使用 GUI 客户端（如 MySQLWorkbench）时，可以使用上面的方法来检索令牌。 
+在连接时，需要将访问令牌用作 MySQL 用户密码。 使用 GUI 客户端（如 MySQLWorkbench）时，可以使用上述方法来检索令牌。 
 
+#### <a name="using-mysql-cli"></a>使用 MySQL CLI
 使用 CLI 时，可以使用下面的方法快速连接： 
 
 **示例 (Linux/macOS)：**
@@ -121,8 +131,15 @@ mysql -h mydb.mysql.database.azure.com \
   --enable-cleartext-plugin \ 
   --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`
 ```
+#### <a name="using-mysql-workbench"></a>使用 MySQL Workbench
+* 启动 MySQL Workbench 并单击“数据库”选项，然后单击“连接到数据库”
+* 在主机名字段中，输入 MySQL FQDN，例如 mydb.mysql.database.azure.com
+* 在用户名字段中，输入 MySQL Azure Active Directory 管理员名称并在该名称后面追加 MySQL 服务器名称而非 FQDN，例如 user@tenant.onmicrosoft.com@mydb
+* 在密码字段中，单击“在保管库中存储”，在其中粘贴文件中的访问令牌，例如 C:\temp\MySQLAccessToken.txt
+* 单击“高级”选项卡，确保选中“启用明文身份验证插件”
+* 单击“确定”以连接到数据库
 
-连接时的重要注意事项如下：
+#### <a name="important-considerations-when-connecting"></a>连接时的重要注意事项如下：
 
 * `user@tenant.onmicrosoft.com` 是你尝试要以其身份连接的 Azure AD 用户或组的名称
 * 在 Azure AD 用户/组名称的后面始终要追加服务器名称（例如 `@mydb`）

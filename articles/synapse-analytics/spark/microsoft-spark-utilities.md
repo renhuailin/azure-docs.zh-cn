@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 58672bd68d9a2ea85f58b3761f3b89098b9f5afc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8b3bc99d4391e2079d1b0ecc39011f1b2afc4440
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100368653"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106096030"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Microsoft Spark 实用工具简介
 
@@ -25,9 +25,9 @@ Microsoft Spark 实用工具 (MSSparkUtils) 是内置的包，可帮助你轻松
 
 ### <a name="configure-access-to-azure-data-lake-storage-gen2"></a>配置对 Azure Data Lake Storage Gen2 的访问 
 
-Synapse 笔记本使用 Azure Active Directory (Azure AD) 直通来访问 ADLS Gen2 帐户。 你需要成为“Blob 存储数据参与者”才能访问 ADLS Gen2 帐户（或文件夹）。 
+Synapse 笔记本使用 Azure Active Directory (Azure AD) 直通来访问 ADLS Gen2 帐户。 你需要成为“存储 Blob 数据参与者”才能访问 ADLS Gen2 帐户（或文件夹）。 
 
-Synapse 管道使用工作区标识 (MSI) 来访问存储帐户。 若要在管道活动中使用 MSSparkUtils，你的工作区标识需要为“Blob 存储数据参与者”才能访问 ADLS Gen2 帐户（或文件夹）。
+Synapse 管道使用工作区标识 (MSI) 来访问存储帐户。 若要在管道活动中使用 MSSparkUtils，你的工作区标识需要为“存储 Blob 数据参与者”才能访问 ADLS Gen2 帐户（或文件夹）。
 
 请按照以下步骤操作，确保 Azure AD 和工作区 MSI 可以访问 ADLS Gen2 帐户：
 1. 打开 [Azure 门户](https://portal.azure.com/)和要访问的存储帐户。 可以导航到要访问的特定容器。

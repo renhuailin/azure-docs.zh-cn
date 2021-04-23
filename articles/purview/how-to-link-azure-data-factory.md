@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/08/2021
-ms.openlocfilehash: 8812806e535e8e34ca07fdb13e6223bfa0c91d6b
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.date: 03/24/2021
+ms.openlocfilehash: c9f2a21a1183637ec4648868cccd6f343b003f0c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449605"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105026617"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>如何连接 Azure 数据工厂和 Azure Purview
 
@@ -147,6 +147,11 @@ Azure Purview 从以下 Azure 数据工厂活动捕获运行时世系：
 - 针对基于文件的存储的源分区发现选项。
 - 将数据复制到基于文件的接收器，该接收器具有每个文件的最大行数设置。
 - 复制期间添加其他列。
+
+除世系外，还会报告以下连接器的数据资产架构（“资产”->“架构”选项卡中会显示）：
+
+- Azure Blob、Azure 文件存储、ADLS Gen1、ADLS Gen2 和 Amazon S3 上的 CSV 和 Parquet 文件
+- Azure 数据资源管理器、Azure SQL 数据库、Azure SQL 托管实例、Azure Synapse Analytics、SQL Server、Teradata
 
 ### <a name="data-factory-data-flow-support"></a>数据工厂数据流支持
 
