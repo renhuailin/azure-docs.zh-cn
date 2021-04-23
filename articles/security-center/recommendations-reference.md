@@ -7,18 +7,19 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: a44a5e4e715238c42e51e65dfe16d4f70dfcf54d
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: e994aead1840fd3ef9b57e92cf95e94837608d7a
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504800"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719126"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>安全建议 - 参考指南
 
 本文列出了 Azure 安全中心可能会显示的建议。 环境中显示的建议取决于要保护的资源和自定义的配置。
 
-安全中心的建议以 [Azure 安全基准](../security/benchmarks/introduction.md)为基础。 Azure 安全基准是由 Microsoft 创作的特定于 Azure 的一组准则，适用于基于常见合规框架的安全与合规最佳做法。 这一公认的基准建立在 [Internet 安全中心 (CIS)](https://www.cisecurity.org/benchmark/azure/) 和[国家标准与技术研究院 (NIST)](https://www.nist.gov/) 的控制基础上，重点关注以云为中心的安全性。
+安全中心的建议以 [Azure 安全基准](https://docs.microsoft.com/security/benchmark/azure/introduction)为基础。
+Azure 安全基准是由 Microsoft 创作的特定于 Azure 的一组准则，适用于基于常见合规框架的安全与合规最佳做法。 这一公认的基准建立在 [Internet 安全中心 (CIS)](https://www.cisecurity.org/benchmark/azure/) 和[国家标准与技术研究院 (NIST)](https://www.nist.gov/) 的控制基础上，重点关注以云为中心的安全性。
 
 若要了解如何响应这些建议，请参阅 [Azure 安全中心的修正建议](security-center-remediate-recommendations.md)。
 
