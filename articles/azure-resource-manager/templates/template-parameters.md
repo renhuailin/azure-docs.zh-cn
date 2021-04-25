@@ -1,18 +1,18 @@
 ---
 title: 模板中的参数
-description: 介绍如何在 Azure 资源管理器模板中定义参数 (ARM 模板) 和 Bicep 文件。
+description: 介绍如何在 Azure 资源管理器模板（ARM 模板）和 Bicep 文件中定义参数。
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.openlocfilehash: a8608e4733960d7f5ba7e5f548c47f16a2b244bb
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102123388"
 ---
 # <a name="parameters-in-arm-templates"></a>ARM 模板中的参数
 
-本文介绍如何在 Azure 资源管理器模板 (ARM 模板) 和 Bicep 文件中定义和使用参数。 为参数提供不同的值即可针对不同环境重复使用模板。
+本文介绍如何在 Azure 资源管理器模板（ARM 模板）和 Bicep 文件中定义和使用参数。 为参数提供不同的值即可针对不同环境重复使用模板。
 
 资源管理器会在启动部署操作之前解析参数值。 只要在模板中使用参数，资源管理器就会将其替换为解析的值。
 
@@ -22,7 +22,7 @@ ms.locfileid: "102123388"
 
 ## <a name="minimal-declaration"></a>最小声明
 
-每个参数至少需要名称和类型。 在 Bicep 中，参数不能与同一作用域中的变量、资源、输出或其他参数具有相同的名称。
+每个参数至少需要一个名称和类型。 在 Bicep 中，参数不能与同一范围内的变量、资源、输出或其他参数同名。
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -60,7 +60,7 @@ param demoArray array
 
 ## <a name="secure-parameters"></a>安全参数
 
-你可以将字符串或对象参数标记为安全的。 安全参数的值不会保存到部署历史记录中，并且不会被记录下来。
+可以将字符串或对象参数标记为安全。 安全参数的值不会保存到部署历史记录中，不会有日志记录。
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -89,7 +89,7 @@ param demoSecretObject object
 
 ## <a name="allowed-values"></a>允许的值
 
-可以为参数定义允许的值。 可在数组中提供允许的值。 如果为参数传递的值不是允许的值之一，则部署将在验证过程中失败。
+可以为参数定义允许的值。 可在数组中提供允许的值。 如果为参数传入的值不是允许的值之一，则部署会在验证过程中失败。
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -119,7 +119,7 @@ param demoEnum string
 
 ## <a name="default-value"></a>默认值
 
-可以为参数指定默认值。 在部署过程中未提供值时，将使用默认值。
+可以为参数指定默认值。 如果在部署过程中未提供值，则使用默认值。
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -140,7 +140,7 @@ param demoParam string = 'Contoso'
 
 ---
 
-若要指定默认值以及参数的其他属性，请使用以下语法。
+若要为参数指定默认值以及其他属性，请使用以下语法。
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -169,9 +169,9 @@ param demoParam string = 'Contoso'
 
 ---
 
-您可以使用具有默认值的表达式。 不能在 parameters 节中使用 [reference](template-functions-resource.md#reference) 函数或任何 [list](template-functions-resource.md#list) 函数。 在解析参数时，这些函数获取资源的运行时状态，不能在部署之前执行。
+可以使用具有默认值的表达式。 不能在 parameters 节中使用 [reference](template-functions-resource.md#reference) 函数或任何 [list](template-functions-resource.md#list) 函数。 在解析参数时，这些函数获取资源的运行时状态，不能在部署之前执行。
 
-表达式不允许用于其他参数属性。
+表达式不允许有其他参数属性。
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -192,7 +192,7 @@ param location string = resourceGroup().location
 
 ---
 
-可以使用另一个参数值来生成默认值。 以下模板从站点名称构造主机计划名称。
+可以使用另一个参数值来生成默认值。 以下模板基于站点名称构造主机计划名称。
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -220,9 +220,9 @@ param hostingPlanName string = '${siteName}-plan'
 
 ## <a name="length-constraints"></a>长度约束
 
-您可以指定字符串和数组参数的最小长度和最大长度。 您可以设置一个或两个约束。 对于字符串，长度指示字符数。 对于数组，长度指示数组中的项数。
+可以为字符串和数组参数指定最小和最大长度。 可以设置一个或两个约束。 对于字符串，长度指示字符数。 对于数组，长度指示数组中的项数。
 
-下面的示例声明了两个参数。 一个参数用于必须包含3-24 个字符的存储帐户名称。 另一个参数是必须包含1-5 个项的数组。
+以下示例声明两个参数。 一个参数对应于一个必须具有 3-24 个字符的存储帐户名称。 另一个参数是一个必须包含 1-5 个项的数组。
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -257,7 +257,7 @@ param appNames array
 
 ## <a name="integer-constraints"></a>整数约束
 
-可以设置整数参数的最小值和最大值。 您可以设置一个或两个约束。
+可以为整数参数设置最小值和最大值。 可以设置一个或两个约束。
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -281,9 +281,9 @@ param month int
 
 ---
 
-## <a name="description"></a>说明
+## <a name="description"></a>描述
 
-你可以向参数添加说明，以帮助你的模板用户了解要提供的值。 通过门户部署模板时，在说明中提供的文本自动用作该参数的提示。 仅当文本提供的信息超过了可从参数名称推断出的信息时，才添加说明。
+可以向参数添加说明，帮助模板用户了解要提供的值。 通过门户部署模板时，在说明中提供的文本自动用作该参数的提示。 仅当文本提供的信息超过可从参数名称推断出的信息时，才添加说明。
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -310,7 +310,7 @@ param virtualMachineSize string = 'Standard_DS1_v2'
 
 ## <a name="use-parameter"></a>使用参数
 
-在 JSON 模板中，使用 [parameters](template-functions-deployment.md#parameters) 函数引用参数的值。 在 Bicep 中，可以使用参数名称。 下面的示例使用 Key Vault 名称的参数值。
+在 JSON 模板中，可以使用 [parameters](template-functions-deployment.md#parameters) 函数引用参数值。 在 Bicep 中，请使用参数名称。 以下示例使用参数值表示 Key Vault 名称。
 
 # <a name="json"></a>[JSON](#tab/json)
 

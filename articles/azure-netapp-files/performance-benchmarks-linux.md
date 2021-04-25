@@ -1,5 +1,5 @@
 ---
-title: 适用于 Linux 的 Azure NetApp 文件性能基准 |Microsoft Docs
+title: 适用于 Linux 的 Azure NetApp 文件性能基准 | Microsoft Docs
 description: 介绍 Azure NetApp 文件为 Linux 提供的性能基准。
 services: azure-netapp-files
 documentationcenter: ''
@@ -15,15 +15,15 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: b-juche
 ms.openlocfilehash: b763a734866dd5fed5bf0500d4d52b9324c92a79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "82614585"
 ---
 # <a name="azure-netapp-files-performance-benchmarks-for-linux"></a>适用于 Linux 的 Azure NetApp 文件性能基准
 
-本文介绍了适用于 Linux 的 Azure NetApp 文件的性能基准。
+本文介绍 Azure NetApp 文件为 Linux 提供的性能基准。
 
 ## <a name="linux-scale-out"></a>Linux 横向扩展
 
@@ -31,47 +31,47 @@ ms.locfileid: "82614585"
 
 ### <a name="linux-workload-throughput"></a>Linux 工作负荷吞吐量  
 
-下图64表示 kibibyte (KiB) 顺序工作负荷和 1 TiB 工作集。 它显示单个 Azure NetApp 文件卷可在 ~ 1600 MiB/s 纯顺序写入和 ~ 4500 MiB/s 纯顺序读取之间进行处理。  
+下图表示一个 64 千位字节 (KiB) 顺序工作负荷和一个 1-TiB 工作集。 它显示单个 Azure NetApp 文件卷的处理速度可在大约 1,600 MiB/秒（纯顺序写入）到大约 4,500 MiB/秒（纯顺序读取）之间。  
 
-此图说明了一次从纯读取到纯写，每次减少10%。 它演示了使用不同的读/写比率时可以预期的内容 (100%：0%、90%：10%、80%：20% 等) 。
+该图说明从纯读取到纯写入一次减少了 10%。 它演示了在使用不同的读/写比率（100%:0%、90%:10%、80%:20%，等等）时可以预期的结果。
 
 ![Linux 工作负荷吞吐量](../media/azure-netapp-files/performance-benchmarks-linux-workload-throughput.png)  
 
 ### <a name="linux-workload-iops"></a>Linux 工作负荷 IOPS  
 
-下图表示 kibibyte (KiB) 随机工作负荷和 1 TiB 工作集。 此图显示 Azure NetApp 文件卷可在 ~ 130000 纯随机写入和 ~ 460000 纯随机读取之间进行处理。  
+下图表示一个 4 千位字节 (KiB) 随机工作负荷和一个 1-TiB 工作集。 该图显示 Azure NetApp 文件卷的处理次数可在大约 130,000 次（纯随机写入）到大约 460,000 次（纯随机读取）之间。  
 
-此图说明了一次从纯读取到纯写，每次减少10%。 它演示了使用不同的读/写比率时可以预期的内容 (100%：0%、90%：10%、80%：20% 等) 。
+此图说明从纯读取到纯写入一次减少了 10%。 它演示了在使用不同的读/写比率（100%:0%、90%:10%、80%:20%，等等）时可以预期的结果。
 
 ![Linux 工作负荷 IOPS](../media/azure-netapp-files/performance-benchmarks-linux-workload-iops.png)  
 
-## <a name="linux-scale-up"></a>Linux 向上扩展  
+## <a name="linux-scale-up"></a>Linux 纵向扩展  
 
-Linux 5.3 内核启用了单一客户端横向扩展网络（NFS） `nconnect` 。 此部分中的关系图显示了 NFSv3 的客户端装载选项的验证测试结果。 从19.10 版本) 开始，使用 SLES12SP4) 和 Ubuntu (开始，SUSE (上提供了此功能。 它在概念上类似于 SMB 多通道和 Oracle 直接 NFS。
+Linux 5.3 内核为 NFS-`nconnect` 启用了单客户端横向扩展网络。 本部分的图显示了使用 NFSv3 对客户端装载选项进行验证测试的结果。 此功能可以在 SUSE（从 SLES12SP4 开始）和 Ubuntu（从 19.10 版本开始）上使用。 它在概念上类似于 SMB 多通道和 Oracle Direct NFS。
 
-此关系图将的优点与 `nconnect` 非连接的已装入卷进行比较。 在图形中，FIO 从 west2 Azure 区域中的单个 D32s_v3 实例生成了工作负荷。
+这些图比较了 `nconnect` 相对于未连接的装入卷的优点。 在这些图中，FIO 从 us-west2 Azure 区域的单个 D32s_v3 实例生成了工作负荷。
 
 ### <a name="linux-read-throughput"></a>Linux 读取吞吐量  
 
-以下关系图显示了顺序读取 ~ 3500 MiB/s `nconnect` ，大约为 2.3 x 非 `nconnect` 。
+下图显示了使用 `nconnect` 时，顺序读取速度约为 3,500 MiB/秒，大约是使用非 `nconnect` 时的 2.3 倍。
 
 ![Linux 读取吞吐量](../media/azure-netapp-files/performance-benchmarks-linux-read-throughput.png)  
 
 ### <a name="linux-write-throughput"></a>Linux 写入吞吐量  
 
-下图显示了顺序写入。 它们表明 `nconnect` 对于顺序写入并没有明显的好处。 1500 MiB/s 大致大致为序列写入量的上限和 D32s_v3 实例出口限制。
+下图显示了顺序写入。 这些图指示就顺序写入来说，`nconnect` 没有明显的优势。 1,500 MiB/秒大致是顺序写入量的上限和 D32s_v3 实例的流出量限制。
 
 ![Linux 写入吞吐量](../media/azure-netapp-files/performance-benchmarks-linux-write-throughput.png)  
 
 ### <a name="linux-read-iops"></a>Linux 读取 IOPS  
 
-以下关系图显示了200000的读取 IOPS 的随机读取 `nconnect` ，大约为3倍非 `nconnect` 。
+下图显示了使用 `nconnect` 时随机读取约为 200,000 读取 IOPS，大约是使用非 `nconnect` 时的 3 倍。
 
 ![Linux 读取 IOPS](../media/azure-netapp-files/performance-benchmarks-linux-read-iops.png)  
 
 ### <a name="linux-write-iops"></a>Linux 写入 IOPS  
 
-以下关系图显示了大约135000写入 IOPS 的随机写入 `nconnect` ，其大致为3倍 `nconnect` 。
+下图显示了使用 `nconnect` 时随机写入约为 135,000 写入 IOPS，大约是使用非 `nconnect` 时的 3 倍。
 
 ![Linux 写入 IOPS](../media/azure-netapp-files/performance-benchmarks-linux-write-iops.png)  
 

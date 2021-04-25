@@ -1,6 +1,6 @@
 ---
-title: 教程：为 Iris Intranet 配置 Azure Active Directory 的自动用户预配 |Microsoft Docs
-description: 了解如何自动将用户 Azure AD 帐户预配到 Iris Intranet 并取消其预配。
+title: 教程：使用 Azure Active Directory 为 Iris Intranet 配置自动用户预配 | Microsoft Docs
+description: 了解如何将用户帐户从 Azure AD 自动预配到 Iris Intranet 以及如何取消预配。
 services: active-directory
 documentationcenter: ''
 author: Zhchia
@@ -16,23 +16,23 @@ ms.topic: article
 ms.date: 01/15/2021
 ms.author: Zhchia
 ms.openlocfilehash: 8acf65f1614c286e0996d1430c65d6c2d1e67618
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101645596"
 ---
-# <a name="tutorial-configure-iris-intranet-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Iris Intranet
+# <a name="tutorial-configure-iris-intranet-for-automatic-user-provisioning"></a>教程：为 Iris Intranet 配置自动用户预配
 
-本教程介绍了需要在 Iris Intranet 和 Azure Active Directory (Azure AD) 中执行的步骤，以配置自动用户预配。 配置后，Azure AD 会使用 Azure AD 预配服务自动设置用户和组并取消其预配到 [Iris Intranet](https://www.triptic.nl/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。 
+本教程介绍在 Iris Intranet 和 Azure Active Directory (Azure AD) 中配置自动用户预配需执行的步骤。 配置后，Azure AD 会使用 Azure AD 预配服务自动为 [Iris Intranet](https://www.triptic.nl/) 预配和取消预配用户和组。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
 > [!div class="checklist"]
 > * 在 Iris Intranet 中创建用户
-> * 如果用户不需要访问权限，请删除 Iris Intranet 中的用户
+> * 在用户不再有访问需求的情况下，在 Iris Intranet 中删除用户
 > * 使用户属性在 Azure AD 和 Iris Intranet 之间保持同步
-> * [单一登录](iris-intranet-tutorial.md) 到 Iris Intranet (建议) 
+> * [单一登录](iris-intranet-tutorial.md)到 Iris Intranet（推荐）
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,21 +46,21 @@ ms.locfileid: "101645596"
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 计划预配部署
 1. 了解[预配服务的工作原理](../app-provisioning/user-provisioning.md)。
 2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
-3. 确定要 [在 Azure AD 和 Iris Intranet 之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
+3. 确定要[在 Azure AD 与 Iris Intranet 之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
 
-## <a name="step-2-configure-iris-intranet-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 Iris Intranet 以支持 Azure AD 的预配
+## <a name="step-2-configure-iris-intranet-to-support-provisioning-with-azure-ad"></a>步骤 2。 将 Iris Intranet 配置为支持通过 Azure AD 进行预配
 
-若要配置 Iris Intranet 以支持预配 Azure AD 需要通过将邮件放到 [Iris Intranet 支持团队](mailto:support@triptic.nl)来获取 **租户 URL** 和 **机密令牌**。这些值将输入到 Azure 门户中 Iris Intranet 应用程序的 "预配" 选项卡的 "**机密令牌**" 和 "**租户 URL** " 字段中。
+若要将 Iris Intranet 配置为支持通过 Azure AD 进行预配，需要通过向 [Iris Intranet 支持团队](mailto:support@triptic.nl)投递邮件来获取“租户 URL”和“机密令牌”。这些值将输入到 Azure 门户 Iris Intranet 应用程序的“预配”选项卡的“机密令牌”和“租户 URL”字段中。
 
 ## <a name="step-3-add-iris-intranet-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库添加 Iris Intranet
 
-从 Azure AD 应用程序库中添加 Iris Intranet，开始管理 Iris Intranet 的预配。 如果以前为 SSO 设置了 Iris Intranet，则可以使用相同的应用程序。 但建议你在最初测试集成时创建一个单独的应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-application-portal.md)。 
+从 Azure AD 应用程序库添加 Iris Intranet，开始管理 Iris Intranet 的预配。 如果以前为 Iris Intranet 设置过 SSO，则可以使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-application-portal.md)。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁在预配范围中 
 
 使用 Azure AD 预配服务，可以根据对应用的分配或用户/组的特性来限定谁在预配范围内。 如果选择根据分配来限定要将谁预配到应用，可以按照下面的[步骤](../manage-apps/assign-user-or-group-access-portal.md)操作，将用户和组分配到应用。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的范围筛选器。 
 
-* 将用户和组分配到 Iris Intranet 时，必须选择 " **默认" 访问权限** 以外的其他角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](../develop/howto-add-app-roles-in-azure-ad-apps.md)以添加其他角色。 
+* 将用户和组分配到 Iris Intranet 时，必须选择“默认访问”以外的角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](../develop/howto-add-app-roles-in-azure-ad-apps.md)以添加其他角色。 
 
 * 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。 
 
@@ -69,7 +69,7 @@ ms.locfileid: "101645596"
 
 本部分介绍了如何配置 Azure AD 预配服务以基于 Azure AD 中的用户和/或组分配在 TestApp 中创建、更新和禁用用户和/或组。
 
-### <a name="to-configure-automatic-user-provisioning-for-iris-intranet-in-azure-ad"></a>若要在 Azure AD 中配置 Iris Intranet 的自动用户预配：
+### <a name="to-configure-automatic-user-provisioning-for-iris-intranet-in-azure-ad"></a>若要在 Azure AD 中为 Iris Intranet 配置自动用户预配，请执行以下操作：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 依次选择“企业应用程序”、“所有应用程序” 。
 
@@ -87,7 +87,7 @@ ms.locfileid: "101645596"
 
     ![“预配”选项卡“自动”](common/provisioning-automatic.png)
 
-5. 在 " **管理员凭据** " 部分中，输入你的 Iris INTRANET 租户 URL 和机密令牌。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Iris Intranet。 如果连接失败，请确保 Iris Intranet 帐户具有管理员权限，然后重试。
+5. 在“管理员凭据”部分，输入 Iris Intranet 租户 URL 和机密令牌。 单击“测试连接”，确保 Azure AD 可以连接到 Iris Intranet。 如果连接失败，请确保 Iris Intranet 帐户具有管理员权限，然后重试。
 
     ![标记](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -97,9 +97,9 @@ ms.locfileid: "101645596"
 
 7. 选择“保存”。
 
-8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Iris Intranet**"。
+8. 在“映射”部分，选择“将 Azure Active Directory 用户同步到 Iris Intranet” 。
 
-9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Iris Intranet 的用户属性。 选为 " **匹配** " 属性的属性用于匹配 Iris Intranet 中的用户帐户以执行更新操作。 如果选择更改 [匹配的目标属性](../app-provisioning/customize-application-attributes.md)，将需要确保 IRIS Intranet API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改  。
+9. 在“属性映射”部分，查看从 Azure AD 同步到 Iris Intranet 的用户属性。 选为“匹配”属性的属性用于匹配 Iris Intranet 中的用户帐户以执行更新操作。 如果选择更改[匹配目标属性](../app-provisioning/customize-application-attributes.md)，则需要确保 Iris Intranet API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
    |Attribute|类型|支持筛选|
    |---|---|---|
@@ -116,11 +116,11 @@ ms.locfileid: "101645596"
 
 10. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
-11. 若要为 Iris Intranet 启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
+11. 若要为 Iris Intranet 启用 Azure AD 预配服务，请在“设置”部分将“预配状态”更改为“启用” 。
 
     ![预配状态已打开](common/provisioning-toggle-on.png)
 
-12. 通过在 "**设置**" 部分的 "**范围**" 中选择所需的值，定义要预配到 Iris Intranet 的用户和/或组。
+12. 通过在“设置”部分的“范围”中选择所需的值，定义要预配到 Iris Intranet 的用户和/或组 。
 
     ![预配范围](common/provisioning-scope.png)
 

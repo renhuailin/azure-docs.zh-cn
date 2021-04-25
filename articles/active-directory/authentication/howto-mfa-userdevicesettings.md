@@ -12,25 +12,25 @@ manager: daveba
 ms.reviewer: michmcla, dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fc0be7e50c5cce511fafd7d8b407626bd57659bd
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98183126"
 ---
 # <a name="manage-user-authentication-methods-for-azure-ad-multi-factor-authentication"></a>管理 Azure AD 多重身份验证的用户身份验证方法
 
-Azure AD 中的用户有两组不同的联系信息：  
+Azure AD 中的用户有两组不同的联系人信息：  
 
-- 公共个人资料联系人信息，在用户配置文件中管理并对组织的成员可见。 对于从本地 Active Directory 同步的用户，此信息在本地 Windows Server Active Directory 域服务中进行管理。
-- 身份验证方法，始终保密并仅用于身份验证，包括多重身份验证 (MFA) 。 管理员可以在用户的身份验证方法边栏选项卡中管理这些方法，用户可以在 "我的帐户" 的 "安全信息" 页中管理其方法。
+- 公共配置文件联系人信息，在用户配置文件中进行管理，对组织成员可见。 对于从本地 Active Directory 同步的用户，此信息在本地 Windows Server Active Directory 域服务中进行管理。
+- 身份验证方法，始终保密并仅用于身份验证，包括多重身份验证 (MFA)。 管理员可以在用户的身份验证方法边栏选项卡中管理这些方法，用户可以在 MyAccount 的“安全信息”页中管理其方法。
 
 为用户管理 Azure AD 多重身份验证方法时，身份验证管理员可以： 
 
-1. 添加特定用户的身份验证方法，包括用于 MFA 的电话号码。
+1. 为特定用户添加身份验证方法，包括用于 MFA 的电话号码。
 1. 重置用户密码。
 1. 要求用户重新注册 MFA。
-1. 撤消现有的 MFA 会话。
+1. 撤销现有 MFA 会话。
 1. 删除用户的现有应用密码  
 
 ## <a name="add-authentication-methods-for-a-user"></a>为用户添加身份验证方法 
@@ -38,25 +38,25 @@ Azure AD 中的用户有两组不同的联系信息：
 可以通过 Azure 门户或 Microsoft Graph 为用户添加身份验证方法。  
 
 > [!NOTE]
-> 出于安全原因，不应使用公共用户联系人信息字段来执行 MFA。 相反，用户应填充其身份验证方法编号以用于 MFA。  
+> 出于安全原因，不应使用公共用户联系人信息字段来执行 MFA， 而应让用户应填写用于 MFA 的身份验证方法电话号码。  
 
 :::image type="content" source="media/howto-mfa-userdevicesettings/add-authentication-method-detail.png" alt-text="从 Azure 门户添加身份验证方法":::
 
-通过 Azure 门户添加用户的身份验证方法：  
+若要通过 Azure 门户为用户添加身份验证方法，请执行以下操作：  
 
 1. 登录到 **Azure 门户**。 
-1. 浏览到 **Azure Active Directory**"  >    >  **所有用户**"。 
-1. 选择要为其添加身份验证方法的用户，然后选择 " **身份验证方法**"。  
-1. 在窗口顶部，选择 " **+ 添加身份验证方法**"。
-   1. 选择 (电话号码或电子邮件) 的方法。 电子邮件可用于自密码重置，但不能用于身份验证。 添加电话号码时，请选择电话号码，并输入有效格式 (例如 + 1 4255551234) 的电话号码。
-   1. 选择 **添加** 。
+1. 浏览到“Azure Active Directory” > “用户” > “所有用户”  。 
+1. 选择要为其添加身份验证方法的用户，然后选择“身份验证方法”。  
+1. 在窗口顶部，选择“+ 添加身份验证方法”。
+   1. 选择方法（电话号码或电子邮件）。 电子邮件可用于自助式密码重置，但不能用于身份验证。 添加电话号码时，请选择电话类型，然后输入格式有效的电话号码（例如“+1 4255551234”）。
+   1. 选择“添加”。
 
 > [!NOTE]
-> 预览体验允许管理员为用户添加任何可用的身份验证方法，而原始体验仅允许更新手机和备用电话方法。
+> 预览体验允许管理员为用户添加任何可用的身份验证方法，而原始体验仅允许更新电话和备用电话方法。
 
-### <a name="manage-methods-using-powershell"></a>使用 PowerShell 管理方法：  
+### <a name="manage-methods-using-powershell"></a>使用 PowerShell 来管理方法：  
 
-使用以下命令，安装找 PowerShell 模块。 
+使用以下命令安装 Microsoft.Graph.Identity.Signins PowerShell 模块。 
 
 ```powershell
 Install-module Microsoft.Graph.Identity.Signins
@@ -70,7 +70,7 @@ Select-MgProfile -Name beta
 Get-MgUserAuthenticationPhoneMethod -UserId balas@contoso.com
 ```
 
-为特定用户创建手机身份验证方法。
+为特定用户创建移动电话身份验证方法。
 
 ```powershell
 New-MgUserAuthenticationPhoneMethod -UserId balas@contoso.com -phoneType "mobile" -phoneNumber "+1 7748933135"
@@ -82,7 +82,7 @@ New-MgUserAuthenticationPhoneMethod -UserId balas@contoso.com -phoneType "mobile
 Remove-MgUserAuthenticationPhoneMethod -UserId balas@contoso.com -PhoneAuthenticationMethodId 3179e48a-750b-4051-897c-87b9720928f7
 ```
 
-还可以使用 Microsoft Graph Api 管理身份验证方法，可以在文档中找到详细信息 [Azure AD 身份验证方法 API 概述](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta&preserve-view=true)
+也可以使用 Microsoft Graph API 来管理身份验证方法。有关详细信息，可参阅文档：[Azure AD 身份验证方法 API 概述](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta&preserve-view=true)
 
 ## <a name="manage-user-authentication-options"></a>管理用户身份验证选项
 

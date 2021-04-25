@@ -1,6 +1,6 @@
 ---
-title: 正在为 Azure Media Player 编写插件
-description: 了解如何使用 JavaScript 编写带有 Azure Media Player 的插件
+title: 为 Azure Media Player 编写插件
+description: 了解如何使用 JavaScript 编写 Azure Media Player 插件
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: c1a64bff8b81735d9c4c9a14d2c1e12bd0bfe57e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91296155"
 ---
-# <a name="writing-plugins-for-azure-media-player"></a>正在为 Azure Media Player 编写插件 #
+# <a name="writing-plugins-for-azure-media-player"></a>为 Azure Media Player 编写插件 #
 
-插件是为扩展或增强播放机而编写的 JavaScript。 你可以编写插件来更改 Azure Media Player 的外观、其功能，甚至使其与其他服务交互。 可以通过两个简单的步骤来执行此操作：
+插件是为扩展或增强播放器而编写的 JavaScript。 你可以编写插件来更改 Azure Media Player 的外观、功能，甚至使其与其他服务交互。 可以通过两个简单的步骤完成此操作：
 
 ## <a name="step-1"></a>步骤 1 ##
 
@@ -34,9 +34,9 @@ ms.locfileid: "91296155"
     }).call(this);
 ```
 
-您可以直接在 HTML 页的 `<script>` 标记或外部 JavaScript 文件中编写代码。 如果执行后一项操作，请确保在您的 HTML 页面的中包含 JavaScript 文件，然后再添加 `<head>` AMP 脚本。 *after*
+可以直接在 HTML 页的 `<script>` 标记内或某个外部 JavaScript 文件中编写代码。 如果是后者，请确保在 AMP 脚本之后的 HTML 页的 `<head>` 中包括 JavaScript 文件。
 
-例如：
+示例：
 
 ```javascript
     <!--*****START OF Azure Media Player Scripts*****-->
@@ -48,7 +48,7 @@ ms.locfileid: "91296155"
 ```
 
 ## <a name="step-2"></a>步骤 2 ##
-通过以下两种方式之一，用 JavaScript 初始化插件：
+通过以下两种方式之一，使用 JavaScript 初始化插件：
 
 方法 1：
 
@@ -75,20 +75,20 @@ ms.locfileid: "91296155"
     video.yourPluginName({[your plugins option]: [example option]});
 ```
 
-不需要插件选项，其中包括仅允许开发人员使用插件配置其行为，而无需更改源代码。
+插件选项不是必需的，包括这些选项只是允许使用插件的开发人员配置其行为而不必更改源代码。
 
-有关创建插件的灵感和更多示例，请查看我们的 [库](azure-media-player-plugin-gallery.md)
+有关创建插件的灵感和更多示例，请查看我们的[库](azure-media-player-plugin-gallery.md)
 
 >[!NOTE]
-> 插件代码在查看器的播放机体验的生存期内动态更改 DOM 中的项，而永远不会对播放机的源代码进行永久更改。 这就是了解浏览器的开发人员工具的便利。 例如，如果想要更改播放机中某个元素的外观，可以通过其类名称找到其 HTML 元素，然后添加或更改其中的属性。 下面是有关[更改 HTML 属性](http://www.w3schools.com/js/js_htmldom_html.asp)的有用资源。
+> 插件代码会在观看者的播放器体验期间动态更改 DOM 中的项目，而永远不会对播放器的源代码进行永久更改。 这就是了解浏览器的开发人员工具的方便之处。 例如，如果想要更改播放器中某个元素的外观，则可以通过其类名找到其 HTML 元素，然后在那里添加或更改属性。 下面是有关[更改 HTML 属性](http://www.w3schools.com/js/js_htmldom_html.asp)的有用资源。
 
 ### <a name="integrated-plugins"></a>集成插件 ###
 
- 目前有两个融入到 AMP 的插件： [时间提示](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/timetip/example.html) 和 [热键](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/hotkeys/example.html)。 这些插件最初开发为播放机的模块化插件，但现在已包含在播放机源代码中。
+ 目前有两个插件烘焙到 AMP 中：[时间提示](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/timetip/example.html)和[热键](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/hotkeys/example.html)。 这些插件最初是为播放器开发的模块化插件，但现在已包含在播放器源代码中。
 
 ### <a name="plugin-gallery"></a>插件库 ###
 
-[插件库](https://aka.ms/ampplugins)包含多个插件，社区已为时间线标记、缩放、分析等功能提供了这些插件。 页面提供对插件的访问以及有关如何设置插件的说明，以及演示如何进行操作的演示。 如果您创建的是您认为应该包含在库中的冷插件，则可随意提交，以便我们可以将其签出。
+[插件库](https://aka.ms/ampplugins)有几个由社区贡献的插件，适用于时间线标记、缩放、分析等功能。 该页提供对插件的访问、有关如何设置插件的说明，以及介绍如何使用插件的演示。 如果你创建了一个很酷的插件，认为应该将其包括在我们的库中，请随时提交，以便我们对其进行检查。
 
 ## <a name="next-steps"></a>后续步骤 ##
 

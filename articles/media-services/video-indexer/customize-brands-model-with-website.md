@@ -11,96 +11,96 @@ ms.topic: article
 ms.date: 12/15/2019
 ms.author: kumud
 ms.openlocfilehash: a2de9dbb479f43d6b646cd9f6cf604d6a08c8b6a
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97586088"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-website"></a>使用视频索引器网站自定义品牌模型
 
-在对视频和音频内容进行索引和重新索引的过程中，可以使用视频索引器从语音和视觉文本中检测品牌。 品牌检测功能可以确定内容中是否提到必应品牌数据库建议的产品、服务和公司。 例如，如果 Microsoft 是在视频或音频内容中提到的，或者如果显示在视频的视频文本中，则视频索引器会将其作为内容中的品牌来检测。
+在对视频和音频内容进行索引和重新索引的过程中，可以使用视频索引器从语音和视觉文本中检测品牌。 品牌检测功能可以确定内容中是否提到必应品牌数据库建议的产品、服务和公司。 例如，如果在某个视频或音频内容中提到了 Microsoft，或者 Microsoft 出现在视频的视觉文本中，则视频索引器会将其作为内容中的品牌检测到。
 
-自定义品牌模型允许：
+使用自定义品牌模型，你可以：
 
-- 如果希望视频索引器检测来自必应品牌数据库的品牌，请选择。
-- 如果希望视频索引器排除检测到某些品牌 (实质上是创建品牌) 的拒绝列表，请选择 "确定"。
-- 如果希望视频索引器包含的品牌应为可能不在 Bing 品牌数据库中的模型的一部分， (实质上是创建品牌) 的接受列表。
+- 选择是否想要视频索引器从必应品牌数据库中检测品牌。
+- 选择是否想要视频索引器将某些品牌排除在检测范围之外（实质上是创建一个包含品牌的拒绝列表）。
+- 选择是否想要视频索引器包括应属于你的模型但可能不在必应的品牌数据库中的品牌（实质上是创建一个包含品牌的接受列表）。
 
-有关详细概述，请参阅此 [概述](customize-brands-model-overview.md)。
+如需详细的概述，请参阅[此概述](customize-brands-model-overview.md)。
 
 可以使用视频索引器网站来创建、使用和编辑视频中检测到的自定义品牌模型，如本主题所述。 也可使用 API，如[使用 API 自定义品牌模型](customize-brands-model-with-api.md)中所述。
 
 > [!NOTE]
-> 如果在添加品牌之前对视频编制了索引，则需要对其重新编制索引。 你会在下拉菜单中找到与视频关联的 **索引** 项。 选择 "**高级选项**"  ->  **品牌类别**，并选中 "**所有品牌**"。
+> 如果在添加品牌之前已为视频编制了索引，则需要对其重新编制索引。 你会在与视频关联的下拉菜单中找到“重新索引”项。 选择“高级选项” -> “品牌类别”，并选中“所有品牌”。
 
 ## <a name="edit-brands-model-settings"></a>编辑品牌模型设置
 
 可以选择设置是否需要检测必应品牌数据库中的品牌。 若要设置此选项，需要编辑品牌模型的设置。 执行以下步骤:
 
-1. 请参阅 [视频索引器](https://www.videoindexer.ai/) 网站并登录。
-1. 若要在帐户中自定义模型，请在页面左侧选择 " **内容模型自定义** " 按钮。
+1. 转到[视频索引器](https://www.videoindexer.ai/)网站并登录。
+1. 若要自定义帐户中的模型，请选择页面左侧的“内容模型自定义”按钮。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/content-model-customization/content-model-customization.png" alt-text="自定义视频索引器中的内容模型":::
+    > :::image type="content" source="./media/content-model-customization/content-model-customization.png" alt-text="在视频索引器中自定义内容模型":::
 1. 若要编辑品牌，请选择“品牌”选项卡。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/customize-brand-model/customize-brand-model.png" alt-text="屏幕截图显示 &quot;内容模型自定义&quot; 对话框的 &quot;品牌&quot; 选项卡":::
-1. 如果希望视频索引器检测 Bing 建议的品牌，请选中 " **显示按 bing 推荐的品牌** " 选项，如果不是，则将该选项保持未选中状态。
+    > :::image type="content" source="./media/customize-brand-model/customize-brand-model.png" alt-text="此屏幕截图显示了“内容模型自定义”对话框的“品牌”选项卡":::
+1. 如果想要视频索引器检测必应建议的品牌，请选中“显示必应建议的品牌”选项；如果不想，请取消选中该选项。
 
 ## <a name="include-brands-in-the-model"></a>在模型中包括品牌
 
-" **包含品牌** " 部分表示你希望视频索引器检测的自定义品牌，即使它们不是必应的。  
+“包括品牌”部分表示你想要视频索引器检测的自定义品牌，即使这些品牌不是必应建议的。  
 
-### <a name="add-a-brand-to-include-list"></a>将品牌添加到包含列表
+### <a name="add-a-brand-to-include-list"></a>将品牌添加到包括列表
 
-1. 选择 " **+ 创建新品牌**"。
+1. 选择“+ 创建新品牌”。
 
     提供名称（必填）、类别（可选）、说明（可选）和引用 URL（可选）。
     类别字段用于对品牌进行标记。 在使用视频索引器 API 时，此字段显示为品牌的标记。 例如，品牌“Azure”可以标记或归类为“云”。
 
-    "引用 URL" 字段可以是品牌 (的任何参考网站，如) 的维基百科页面的链接。
+    引用 URL 字段可以是品牌的任何引用网站（例如其维基百科页的链接）。
 
-2. 选择 " **保存** "，你会看到已将品牌添加到 " **包含品牌** " 列表。
+2. 选择“保存”，你会看到该品牌已添加到“包括品牌”列表中。
 
-### <a name="edit-a-brand-on-the-include-list"></a>编辑 "包含列表" 上的品牌
+### <a name="edit-a-brand-on-the-include-list"></a>编辑包括列表中的品牌
 
 1. 选择要编辑的品牌旁边的铅笔图标。
 
     可以更新品牌的类别、说明或引用 URL。 不能更改品牌的名称，因为品牌的名称是唯一的。 如果需要更改品牌名称，请删除整个品牌（参见下一部分），然后使用新名称创建一个新品牌。
 
-2. 选择 " **更新** " 按钮以用新信息更新品牌。
+2. 选择“更新”按钮，使用新信息更新品牌。
 
-### <a name="delete-a-brand-on-the-include-list"></a>删除包含列表中的品牌
+### <a name="delete-a-brand-on-the-include-list"></a>删除包括列表中的品牌
 
-1. 选择要删除的品牌旁边的 "垃圾桶" 图标。
-2. 选择 " **删除** "，该品牌将不再出现在 " *包含品牌* " 列表中。
+1. 选择要删除的品牌旁边的回收站图标。
+2. 选择“删除”，该品牌将不再出现在“包括品牌”列表中。
 
 ## <a name="exclude-brands-from-the-model"></a>从模型中排除品牌
 
-" **排除品牌** " 部分表示不希望视频索引器检测的品牌。
+“排除品牌”部分表示你不想要视频索引器检测的品牌。
 
 ### <a name="add-a-brand-to-exclude-list"></a>向排除列表添加品牌
 
-1. 选择 " **+ 创建新品牌"。**
+1. 选择“+ 创建新品牌”。
 
     提供名称（必填）、类别（可选）。
 
-2. 选择 " **保存** "，你会看到已将品牌添加到 " *排除品牌* " 列表中。
+2. 选择“保存”，你会看到该品牌已添加到“排除品牌”列表中。
 
-### <a name="edit-a-brand-on-the-exclude-list"></a>编辑排除列表上的品牌
+### <a name="edit-a-brand-on-the-exclude-list"></a>编辑排除列表中的品牌
 
 1. 选择要编辑的品牌旁边的铅笔图标。
 
     只能更新品牌的类别。 不能更改品牌的名称，因为品牌的名称是唯一的。 如果需要更改品牌名称，请删除整个品牌（参见下一部分），然后使用新名称创建一个新品牌。
 
-2. 选择 " **更新** " 按钮以用新信息更新品牌。
+2. 选择“更新”按钮，使用新信息更新品牌。
 
-### <a name="delete-a-brand-on-the-exclude-list"></a>删除排除列表上的品牌
+### <a name="delete-a-brand-on-the-exclude-list"></a>删除排除列表中的品牌
 
-1. 选择要删除的品牌旁边的 "垃圾桶" 图标。
-2. 选择 " **删除** "，该品牌将不再显示在 " *排除品牌* " 列表中。
+1. 选择要删除的品牌旁边的回收站图标。
+2. 选择“删除”，该品牌将不再出现在“排除品牌”列表中。
 
 ## <a name="next-steps"></a>后续步骤
 
