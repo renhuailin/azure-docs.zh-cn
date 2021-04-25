@@ -9,12 +9,12 @@ ms.subservice: automatic-os-upgrade
 ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 1e32ff4bc1c39e8a3385f8037f88cedbdc17d3a6
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 047eab6cb90caa18362830c8c74656f76865a9ec
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375740"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762868"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 虚拟机规模集自动 OS 映像升级
 
@@ -130,7 +130,7 @@ Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" 
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-使用 [az vmss update](/cli/azure/vmss#az-vmss-update) 为规模集配置 OS 映像自动升级。 使用 Azure CLI 2.0.47 或更高版本。 以下示例为 myResourceGroup 资源组中的 myScaleSet 规模集配置自动升级 ：
+使用 [az vmss update](/cli/azure/vmss#az_vmss_update) 为规模集配置 OS 映像自动升级。 使用 Azure CLI 2.0.47 或更高版本。 以下示例为 myResourceGroup 资源组中的 myScaleSet 规模集配置自动升级 ：
 
 ```azurecli-interactive
 az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
@@ -237,7 +237,7 @@ Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -OS
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-使用 [az vmss get-os-upgrade-history](/cli/azure/vmss#az-vmss-get-os-upgrade-history) 检查规模集的 OS 升级历史记录。 使用 Azure CLI 2.0.47 或更高版本。 以下示例详细说明如何检查 myResourceGroup 资源组中 myScaleSet 规模集的 OS 升级状态 ：
+使用 [az vmss get-os-upgrade-history](/cli/azure/vmss#az_vmss_get_os_upgrade_history) 检查规模集的 OS 升级历史记录。 使用 Azure CLI 2.0.47 或更高版本。 以下示例详细说明如何检查 myResourceGroup 资源组中 myScaleSet 规模集的 OS 升级状态 ：
 
 ```azurecli-interactive
 az vmss get-os-upgrade-history --resource-group myResourceGroup --name myScaleSet
@@ -285,7 +285,7 @@ Start-AzVmssRollingOSUpgrade -ResourceGroupName "myResourceGroup" -VMScaleSetNam
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-使用 [az vmss rolling-upgrade start](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) 检查规模集的 OS 升级历史记录。 使用 Azure CLI 2.0.47 或更高版本。 以下示例详细说明如何在 myResourceGroup 资源组中的 myScaleSet 规模集上启动 OS 滚动升级 ：
+使用 [az vmss rolling-upgrade start](/cli/azure/vmss/rolling-upgrade#az_vmss_rolling_upgrade_start) 检查规模集的 OS 升级历史记录。 使用 Azure CLI 2.0.47 或更高版本。 以下示例详细说明如何在 myResourceGroup 资源组中的 myScaleSet 规模集上启动 OS 滚动升级 ：
 
 ```azurecli-interactive
 az vmss rolling-upgrade start --resource-group "myResourceGroup" --name "myScaleSet" --subscription "subscriptionId"

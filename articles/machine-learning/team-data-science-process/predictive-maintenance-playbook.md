@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 1e939b86eeadfee276378488cfcb40c07f28684d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b6cf2abfa797965d75bacd0b9c5e2eaf02b57a4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98880652"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308568"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>针对预测性维护解决方案的 Azure AI 指南
 
@@ -439,15 +439,16 @@ PdM 的建议方法是以时间相关的方式将示例拆分为训练、验证�
 
 | 培训资源  | 可用性 |
 |:-------------------|--------------|
-| [使用树和随机林学习 PdM 的路径](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | 公共 | 
-| [使用深度学习学习 PdM 的路径](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | 公共 |
-| [Azure 上的 AI 开发人员](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | 公共 |
-| [Microsoft AI 学校](https://aischool.microsoft.com/learning-paths) | 公共 |
-| [GitHub 中的 Azure AI 学习资源](https://github.com/Azure/connectthedots/blob/master/readme.md) | 公共 |
+| [Microsoft Docs：数据科学家角色](https://docs.microsoft.com/learn/roles/data-scientist) | 公用 |
+| [Microsoft Docs：AI 工程师角色](https://docs.microsoft.com/learn/roles/ai-engineer) | 公用 |
+| [Microsoft Docs：数据工程师角色](https://docs.microsoft.com/learn/roles/data-engineer) | 公共 |
+| [Microsoft AI 学校](https://www.microsoft.com/ai/ai-school) | 公共 |
 | [LinkedIn Learning](https://www.linkedin.com/learning) | 公共 |
-| [Microsoft AI YouTube 网络研讨会](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | 公共 |
+| [Microsoft：YouTube 上关于人工智能和分析的播放列表](https://www.youtube.com/c/MicrosoftAzure/playlists?view=50&sort=dd&shelf_id=7) | 公共 |
 | [Microsoft AI 展示](https://channel9.msdn.com/Shows/AI-Show) | 公共 |
-| [LearnAI@MS](https://learnanalytics.microsoft.com) | 合作伙伴 |
+| [AI 平台概述](https://azure.microsoft.com/overview/ai-platform/) | 公用 |
+| [AI 实验室](https://www.microsoft.com/ai/ai-lab) | 公用 |
+| [Microsoft AI](https://www.microsoft.com/AI) | 公用 |
 | [Microsoft 合作伙伴网络](https://partner.microsoft.com/training/training-center) | 合作伙伴 |
 
 此外，Stanford 和 MIT 等学术机构以及其他培训公司也在线提供了有关 AI 的免费 MOOCS（大型开放式在线课程）。

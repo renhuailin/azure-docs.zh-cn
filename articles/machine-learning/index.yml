@@ -13,12 +13,12 @@ metadata:
   author: BlackMist
   ms.date: 09/21/2020
   ms.custom: contperf-fy21q1
-  ms.openlocfilehash: 11815192c0076ed826ede60bfbb741caf87545c1
-  ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+  ms.openlocfilehash: c128830ec7219fd5080c2c348542c736af4eef5a
+  ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/22/2021
-  ms.locfileid: "107872022"
+  ms.lasthandoff: 04/25/2021
+  ms.locfileid: "107944974"
 landingContent:
 - title: 入门：代码优先
   linkLists:
@@ -55,7 +55,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 将模型部署到云
-      url: how-to-deploy-existing-model.md
+      url: how-to-deploy-and-where.md
     - text: 跟踪 MLflow 模型
       url: how-to-use-mlflow.md
 - title: 部署和管理模型 (MLOps)

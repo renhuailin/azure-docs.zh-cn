@@ -11,10 +11,10 @@ ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
 ms.openlocfilehash: 40af9ac692a226b12f984db447db9635cba655e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91530249"
 ---
 # <a name="set-up-a-mobile-device-as-your-two-factor-verification-method"></a>将移动设备设置为双因素验证方法
@@ -26,30 +26,30 @@ ms.locfileid: "91530249"
 
 ## <a name="set-up-your-mobile-device-to-use-a-text-message-as-your-verification-method"></a>将移动设备设置为使用短信作为验证方法
 
-1. 在“其他安全验证”  页上，选择“身份验证电话”  （从“第 1 步:  我们如何与您联系”区域），从下拉列表中选择你所在的国家或地区，然后键入移动设备电话号码。
+1. 在“其他安全验证”页面上，从“第 1 步: 我们如何与你联系?”区域中选择“身份验证电话”，从下拉列表中选择你的国家/地区或区域，然后键入你的移动设备电话号码。
 
-2. 从“方法”  区域中选择“通过文本消息向我发送代码”  ，然后选择“下一步”  。
+2. 从“方法”区域中选择“通过文本消息向我发送代码”，然后选择“下一步”。
 
-    ![显示 "其他安全验证" 页的屏幕截图，其中包含 "身份验证电话" 和 "通过短信向我发送代码"。](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
+    ![显示了“其他安全验证”页的屏幕截图，其中选择了“身份验证电话”和“通过文本消息向我发送代码”。](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
 
-3. 将 Microsoft 发送的文本消息中的验证码键入“第 2 步:  我们已将文本消息发送至您的手机”区域，然后选择“验证”  。
+3. 将 Microsoft 发送的文本消息中的验证码键入到“第 2 步: 我们已将文本消息发送到你的手机”区域中，然后选择“验证”。
 
     ![“其他安全验证”页，其中显示身份验证电话和文本消息](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message-test.png)
 
-4. 从“第 3 步:  继续使用你的现有应用程序”区域，复制提供的应用密码，并将其粘贴到安全位置。
+4. 在“第 3 步: 仍然使用你的现有应用程序”区域中，复制提供的应用密码，并将其粘贴到安全位置。
 
     ![“其他安全验证”页的“应用密码”区域](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
     >[!Note]
     >有关如何将应用密码用于旧应用的信息，请参阅[管理应用密码](multi-factor-authentication-end-user-app-passwords.md)。 如果要继续使用不支持双重验证的旧应用，只需使用应用密码即可。
 
-5. 选择“完成”  。
+5. 选择“完成”。
 
 ## <a name="set-up-your-mobile-device-to-receive-a-phone-call"></a>设置移动设备以接收电话呼叫
 
-1. 在“其他安全验证”  页上，选择“身份验证电话”  （从“第 1 步:  我们如何与您联系”区域），从下拉列表中选择你所在的国家或地区，然后键入移动设备电话号码。
+1. 在“其他安全验证”页面上，从“第 1 步: 我们如何与你联系?”区域中选择“身份验证电话”，从下拉列表中选择你的国家/地区或区域，然后键入你的移动设备电话号码。
 
-2. 从“方法”  区域选择“呼叫我”  ，然后选择“下一步”  。
+2. 从“方法”区域选择“呼叫我”，然后选择“下一步”。
 
     ![“其他安全验证”页，其中显示身份验证电话和电话呼叫](media/multi-factor-authentication-verification-methods/multi-factor-authentication-phone-call.png)
 
@@ -57,14 +57,14 @@ ms.locfileid: "91530249"
 
     ![测试指定的电话号码](media/multi-factor-authentication-verification-methods/multi-factor-authentication-phone-call-test.png)
 
-4. 从“第 3 步:  继续使用你的现有应用程序”区域，复制提供的应用密码，并将其粘贴到安全位置。
+4. 在“第 3 步: 仍然使用你的现有应用程序”区域中，复制提供的应用密码，并将其粘贴到安全位置。
 
     ![“其他安全验证”页的“应用密码”区域](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
     >[!Note]
     >有关如何将应用密码用于旧应用的信息，请参阅[管理应用密码](multi-factor-authentication-end-user-app-passwords.md)。 如果要继续使用不支持双重验证的旧应用，只需使用应用密码即可。
 
-5. 选择“完成”  。
+5. 选择“完成”。
 
 ## <a name="next-steps"></a>后续步骤
 

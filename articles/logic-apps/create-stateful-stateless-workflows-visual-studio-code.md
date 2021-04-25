@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 03/30/2021
-ms.openlocfilehash: 491d5f14cc8f456d228a5bc6efaa6686575979c1
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 4010f7e2d0d20216107a45109056478694c940ca
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078734"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772498"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>在 Visual Studio Code 中使用 Azure 逻辑应用（预览版）扩展创建有状态和无状态工作流
 
@@ -360,7 +360,7 @@ ms.locfileid: "106078734"
    ![屏幕截图显示了“资源管理器”窗格，其中打开了“在 Azure 中启用连接器”列表，并且“使用 Azure 提供的连接器”处于选中状态。](./media/create-stateful-stateless-workflows-visual-studio-code/use-connectors-from-azure.png)
 
    > [!NOTE]
-   > 对于部署在 Azure 中的[托管连接器](../connectors/apis-list.md#managed-api-connectors)，无状态工作流目前仅支持操作，不支持触发器。 尽管你可以选择在 Azure 中为无状态工作流启用连接器，但设计器不会显示任何托管连接器触发器供你选择。
+   > 对于部署在 Azure 中的[托管连接器](../connectors/managed.md)，无状态工作流目前仅支持操作，不支持触发器。 尽管你可以选择在 Azure 中为无状态工作流启用连接器，但设计器不会显示任何托管连接器触发器供你选择。
 
 1. 从“选择订阅”列表中，选择要用于你的逻辑应用项目的 Azure 订阅。
 
@@ -465,7 +465,7 @@ ms.locfileid: "106078734"
 
    ![屏幕截图显示了工作流设计器，其中显示了 Office 365 Outlook 操作“发送电子邮件”的详细信息。](./media/create-stateful-stateless-workflows-visual-studio-code/send-email-action-details.png)
 
-   | 属性 | 必选 | 值 | 说明 |
+   | 属性 | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **To** | 是 | <*your-email-address*> | 电子邮件收件人，这可以是你自己的电子邮件地址（用于测试）。 此示例使用虚构的电子邮件 `sophiaowen@fabrikam.com`。 |
    | **主题** | 是 | `An email from your example workflow` | 电子邮件主题 |

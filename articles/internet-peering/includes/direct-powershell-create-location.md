@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: dbaa0b5fc87cb5393b323b8a9b7a38b72efe9518
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "81680770"
 ---
-PowerShell cmdlet **AzPeeringLocation** 返回具有必需参数的对等互连位置的列表 `Kind` ，你将在后续步骤中使用该参数。
+PowerShell cmdlet Get-AzPeeringLocation 返回具有必需参数 `Kind` 的对等互连位置的列表，你将在后续步骤中用到该参数。
 
 ```powershell
 Get-AzPeeringLocation -Kind Direct
@@ -23,12 +23,12 @@ Get-AzPeeringLocation -Kind Direct
 
 直接对等互连位置包含以下字段：
 * PeeringLocation 
-* 国家/地区
+* Country
 * PeeringDBFacilityId
 * PeeringDBFacilityLink
 * BandwidthOffers
 
-请参阅 [PeeringDB](https://wwww.peeringdb.com)，验证你是否在所需的对等互连设施上提供。
+请参阅 [PeeringDB](https://wwww.peeringdb.com)，验证你是否在所需的对等互连设施中。
 
 此示例演示如何使用西雅图作为对等互连位置创建直接对等互连。
 

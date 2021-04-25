@@ -9,12 +9,12 @@ ms.subservice: verifiable-credentials
 ms.topic: how-to
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 1e8bb59c09622a39dad680940ff34e643ee0cc3b
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: a50c8b083c1cd453dbe3c51c63ec9cf53859c3bd
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222735"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587259"
 ---
 # <a name="how-to-create-a-free-azure-active-directory-developer-tenant"></a>如何创建免费的 Azure Active Directory 开发人员租户
 
@@ -45,7 +45,7 @@ ms.locfileid: "106222735"
 
 此时，已创建一个具有 25 个 E5 用户许可证的租户。 E5 许可证包括 Azure AD P2 许可证。 也可添加具有用户、组、邮件和 SharePoint 的示例数据包，以便于在开发环境中进行测试。 不需要可验证凭据颁发服务。
 
-为方便起见，可在新创建的租户中将自己的工作帐户添加为[来宾](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal.md)，并使用该帐户来管理租户。 若希望来宾帐户能够管理可验证凭据服务，需要为该用户分配“全局管理员”角色。
+为方便起见，可在新创建的租户中将自己的工作帐户添加为[来宾](/azure/active-directory/external-identities/b2b-quickstart-add-guest-users-portal)，并使用该帐户来管理租户。 若希望来宾帐户能够管理可验证凭据服务，需要为该用户分配“全局管理员”角色。
 
 ## <a name="next-steps"></a>后续步骤
 

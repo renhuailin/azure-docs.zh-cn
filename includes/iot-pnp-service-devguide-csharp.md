@@ -5,25 +5,25 @@ ms.service: iot-pnp
 ms.topic: include
 ms.date: 10/20/2020
 ms.openlocfilehash: a92e37326cf9db0eba186b2bdca44c452c02ea91
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92521357"
 ---
 还可以使用以下资源：
 
-- [.NET SDK 参考文档](/dotnet/api/microsoft.azure.devices)
+- [.Net SDK 参考文档](/dotnet/api/microsoft.azure.devices)
 - [服务客户端示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples)
 - [数字孪生示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/DigitalTwinClientSamples)
 
 ## <a name="iot-hub-service-client-examples"></a>IoT 中心服务客户端示例
 
-本部分介绍使用 IoT 中心服务客户端和 **RegistryManager** 和 **ServiceClient** 类的 c # 示例。 使用 **RegistryManager** 类通过设备孪生与设备状态交互。 还可以使用 **RegistryManager** 类在 IoT 中心 [查询设备注册](../articles/iot-hub/iot-hub-devguide-query-language.md) 。 使用 **ServiceClient** 类调用设备上的命令。 设备的 [DTDL](../articles/iot-pnp/concepts-digital-twin.md) 模型定义设备实现的属性和命令。 在代码片段中， `deviceTwinId` 变量保存注册到 iot 中心的 iot 即插即用设备的设备 ID。
+本部分介绍的 C# 示例使用 IoT 中心服务客户端以及 RegistryManager 类和 ServiceClient 类 。 使用 RegistryManager 类通过设备孪生与设备状态交互。 还可以使用 RegistryManager 类在 IoT 中心[查询设备注册](../articles/iot-hub/iot-hub-devguide-query-language.md)。 使用 ServiceClient 类在设备上调用命令。 设备的 [DTDL](../articles/iot-pnp/concepts-digital-twin.md) 模型定义了设备实现的属性和命令。 在代码片段中，`deviceTwinId` 变量保存注册到 IoT 中心的 IoT 即插即用设备的设备 ID。
 
-### <a name="get-the-device-twin-and-model-id"></a>获取设备克隆和模型 ID
+### <a name="get-the-device-twin-and-model-id"></a>获取设备孪生和模型 ID
 
-若要获取连接到 IoT 中心的 IoT 即插即用设备的设备克隆和模型 ID，请执行以下操作：
+若要获取连接到 IoT 中心的 IoT 即插即用设备的设备孪生和模型 ID，请执行以下命令：
 
 ```csharp
 RegistryManager registryManager = RegistryManager.CreateFromConnectionString(parameters.HubConnectionString);
@@ -35,7 +35,7 @@ Console.WriteLine($"Model ID: {twin.ModelId}.");
 
 ### <a name="update-device-twin"></a>更新设备孪生
 
-下面的代码段演示如何更新 `targetTemperature` 设备上的属性。 此示例演示如何在更新之前获取克隆的 `ETag` 。 在设备的默认组件中定义属性：
+下面的代码片段展示如何更新设备上的 `targetTemperature` 属性。 此示例演示你需要如何在更新孪生体之前获取其 `ETag`。 在设备的默认组件中定义该属性：
 
 ```csharp
 Twin twin = await registryManager.GetTwinAsync(deviceTwinId);
@@ -51,7 +51,7 @@ Console.WriteLine($"Update the targetTemperature property to {desiredTargetTempe
 await registryManager.UpdateTwinAsync(deviceTwinId, twinPatch, twin.ETag);
 ```
 
-以下代码片段演示如何更新组件的 `targetTemperature` 属性。 此示例演示如何在更新之前获取克隆的 `ETag` 。 在 **Thermostat1** 组件中定义属性：
+以下代码片段演示如何更新组件上的 `targetTemperature` 属性。 此示例演示你需要如何在更新孪生体之前获取其 `ETag`。 在 Thermostat1 组件中定义该属性：
 
 ```csharp
 Twin twin = await registryManager.GetTwinAsync(deviceTwinId);
@@ -76,7 +76,7 @@ private static Twin CreatePropertyPatch(string propertyName, object propertyValu
 }
 ```
 
-对于组件中的属性，属性修补程序类似于以下示例：
+对于组件中的属性，属性补丁类似于以下示例：
 
 ```json
 {
@@ -88,9 +88,9 @@ private static Twin CreatePropertyPatch(string propertyName, object propertyValu
 }
 ```
 
-### <a name="call-command"></a>Call 命令
+### <a name="call-command"></a>调用命令
 
-以下代码片段演示如何调用 `getMaxMinReport` 默认组件中定义的命令：
+以下代码片段演示如何调用默认组件中定义的 `getMaxMinReport` 命令：
 
 ```csharp
 ServiceClient serviceClient = ServiceClient.CreateFromConnectionString(parameters.HubConnectionString);
@@ -115,7 +115,7 @@ catch (DeviceNotFoundException)
 }
 ```
 
-以下代码片段演示如何对组件调用 `getMaxMinReport` 命令。 命令在 **Thermostat1** 组件中定义：
+以下代码片段演示如何在组件上调用 `getMaxMinReport` 命令。 在 Thermostat1 组件中定义该命令：
 
 ```csharp
 // Create command name to invoke for component. The command is formatted as <component name>*<command name>
@@ -139,11 +139,11 @@ catch (DeviceNotFoundException)
 }
 ```
 
-## <a name="iot-hub-digital-twin-examples"></a>IoT 中心数字输出示例
+## <a name="iot-hub-digital-twin-examples"></a>IoT 中心数字孪生体示例
 
-使用 **DigitalTwinClient** 类通过数字孪生与设备状态交互。 设备的 [DTDL](../articles/iot-pnp/concepts-digital-twin.md) 模型定义设备实现的属性和命令。
+使用 DigitalTwinClient 类通过数字孪生体与设备状态交互。 设备的 [DTDL](../articles/iot-pnp/concepts-digital-twin.md) 模型定义了设备实现的属性和命令。
 
-本部分介绍使用数字孪生 API 的 c # 示例。 以下代码片段使用以下类来表示恒温器和温度控制器设备的数字输出：
+本部分演示有关使用数字孪生 API 的 C# 示例。 以下代码片段使用以下类来表示恒温器和温度控制器设备的数字孪生体：
 
 ```csharp
 using Microsoft.Azure.Devices.Serialization;
@@ -208,11 +208,11 @@ namespace Microsoft.Azure.Devices.Samples
 }
 ```
 
-`digitalTwinId`变量包含注册到 iot 中心的 iot 即插即用设备的设备 ID。
+`digitalTwinId` 变量保存注册到 IoT 中心的 IoT 即插即用设备的设备 ID。
 
-### <a name="get-the-digital-twin-and-model-id"></a>获取数字克隆和型号 ID
+### <a name="get-the-digital-twin-and-model-id"></a>获取数字孪生体和模型 ID
 
-若要获取连接到 IoT 中心的 IoT 即插即用设备的数字输出和型号 ID，请执行以下操作：
+若要获取连接到 IoT 中心的 IoT 即插即用设备的数字孪生体和模型 ID，请执行以下命令：
 
 ```csharp
 DigitalTwinClient digitalTwinClient = DigitalTwinClient.CreateFromConnectionString(parameters.HubConnectionString);
@@ -223,9 +223,9 @@ Console.WriteLine($"Model ID: {thermostatTwin.Metadata.ModelId}.");
 Console.WriteLine($"Digital Twin: \n{JsonConvert.SerializeObject(thermostatTwin, Formatting.Indented)}");
 ```
 
-### <a name="update-digital-twin"></a>更新数字克隆
+### <a name="update-digital-twin"></a>更新数字孪生体
 
-下面的代码段演示如何更新 `targetTemperature` 设备上的属性。 在设备的默认组件中定义属性：
+下面的代码片段展示如何更新设备上的 `targetTemperature` 属性。 在设备的默认组件中定义该属性：
 
 ```csharp
 var updateOperation = new UpdateOperationsUtility();
@@ -258,7 +258,7 @@ HttpOperationHeaderResponse<DigitalTwinUpdateHeaders> updateDigitalTwinResponse 
 Console.WriteLine($"Update {digitalTwinId} digital twin response: {updateDigitalTwinResponse.Response.StatusCode}.");
 ```
 
-以下代码片段演示如何更新组件的 `targetTemperature` 属性。 在 **Thermostat1** 组件中定义属性：
+以下代码片段演示如何更新组件上的 `targetTemperature` 属性。 在 Thermostat1 组件中定义该属性：
 
 ```csharp
 int desiredTargetTemperature = 60;
@@ -303,9 +303,9 @@ HttpOperationHeaderResponse<DigitalTwinUpdateHeaders> updateDigitalTwinResponse 
 Console.WriteLine($"Update {digitalTwinId} digital twin response: {updateDigitalTwinResponse.Response.StatusCode}.");
 ```
 
-### <a name="call-command"></a>Call 命令
+### <a name="call-command"></a>调用命令
 
-以下代码片段演示如何调用 `getMaxMinReport` 默认组件中定义的命令：
+以下代码片段演示如何调用默认组件中定义的 `getMaxMinReport` 命令：
 
 ```csharp
 DateTimeOffset since = DateTimeOffset.Now.Subtract(TimeSpan.FromMinutes(2));
@@ -327,7 +327,7 @@ catch (HttpOperationException e)
 }
 ```
 
-以下代码片段演示如何对组件调用 `getMaxMinReport` 命令。 命令在 **Thermostat1** 组件中定义：
+以下代码片段演示如何在组件上调用 `getMaxMinReport` 命令。 在 Thermostat1 组件中定义该命令：
 
 ```csharp
 DateTimeOffset since = DateTimeOffset.Now.Subtract(TimeSpan.FromMinutes(2));
@@ -349,11 +349,11 @@ catch (HttpOperationException e)
 }
 ```
 
-## <a name="read-device-telemetry"></a>读取设备遥测
+## <a name="read-device-telemetry"></a>读取设备遥测数据
 
-IoT 即插即用设备将在 DTDL 模型中定义的遥测发送到 IoT 中心。 默认情况下，IoT 中心会将遥测路由到事件中心终结点，你可以在其中使用该终结点。 若要了解详细信息，请参阅 [使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点](../articles/iot-hub/iot-hub-devguide-messages-d2c.md)。
+IoT 即插即用设备将 DTDL 模型中定义的遥测数据发送到 IoT 中心。 默认情况下，IoT 中心会将遥测数据路由到一个可供你在其中使用遥测数据的事件中心终结点。 若要了解详细信息，请参阅[使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点](../articles/iot-hub/iot-hub-devguide-messages-d2c.md)。
 
-下面的代码段演示如何从默认事件中心终结点读取遥测数据。 此代码段中的代码来自 IoT 中心快速入门，将 [遥测数据从设备发送到 IoT 中心，并使用后端应用程序进行读取](../articles/iot-hub/quickstart-send-telemetry-dotnet.md)：
+下面的代码片段演示如何从默认事件中心终结点读取遥测数据。 此代码片段中的代码取自 IoT 中心快速入门：[将设备的遥测数据发送到 IoT 中心并使用后端应用程序进行读取](../articles/iot-hub/quickstart-send-telemetry-dotnet.md)：
 
 ```csharp
 await using EventHubConsumerClient consumer = new EventHubConsumerClient(EventHubConsumerClient.DefaultConsumerGroupName, connectionString, EventHubName);
@@ -389,7 +389,7 @@ catch (TaskCanceledException)
 }
 ```
 
-以下来自前面代码的输出显示了 **恒温器** IoT 即插即用设备上只有默认组件发送的温度遥测。 " `dt-dataschema` 系统" 属性显示模型 ID：
+此前的代码的以下输出显示了由仅包含默认组件的无组件 Thermostat IoT 即插即用设备发送的温度遥测数据。 `dt-dataschema` 系统属性显示模型 ID：
 
 ```cmd/sh
 Message received on partition 1:
@@ -406,7 +406,7 @@ System properties (set by IoT Hub):
         content-encoding: utf-8
 ```
 
-前面代码的以下输出显示了由多组件 **TemperatureController** IoT 即插即用设备发送的温度遥测。 " `dt-subject` 系统" 属性显示发送了遥测数据的组件的名称。 在此示例中，两个组件都是 `thermostat1` 和 `thermostat2` 在 DTDL 模型中定义的。 " `dt-dataschema` 系统" 属性显示模型 ID：
+此前的代码的以下输出显示了由多组件 TemperatureController IoT 即插即用设备发送的温度遥测数据。 `dt-subject` 系统属性显示发送了遥测数据的组件的名称。 此示例中的两个组件是 DTDL 模型中定义的 `thermostat1` 和 `thermostat2`。 `dt-dataschema` 系统属性显示模型 ID：
 
 ```cmd/sh
 Message received on partition 1:
@@ -437,11 +437,11 @@ System properties (set by IoT Hub):
         content-encoding: utf-8
 ```
 
-## <a name="read-device-twin-change-notifications"></a>读取设备克隆更改通知
+## <a name="read-device-twin-change-notifications"></a>读取设备孪生更改通知
 
-可以将 IoT 中心配置为生成设备克隆更改通知，以路由到受支持的终结点。 若要了解详细信息，请参阅 [使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点，> 非遥测事件](../articles/iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)。
+可以配置 IoT 中心，以便生成要路由到支持的终结点的设备孪生更改通知。 若要了解详细信息，请参阅[使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点 > 非遥测事件](../articles/iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)。
 
-当 IoT 中心为非组件恒温器设备生成设备克隆更改通知时，前面的 c # 代码段中显示的代码将生成以下输出。 应用程序属性 `iothub-message-schema` ，并 `opType` 向你显示有关更改通知类型的信息：
+当 IoT 中心为无组件恒温器设备生成设备孪生更改通知时，前面 C# 代码片段中显示的代码将生成以下输出。 应用程序属性 `iothub-message-schema` 和 `opType` 提供有关更改通知类型的信息：
 
 ```cmd/sh
 Message received on partition 1:
@@ -462,7 +462,7 @@ System properties (set by IoT Hub):
         content-encoding: utf-8
 ```
 
-当 IoT 中心为包含组件的设备生成设备克隆更改通知时，前面的 c # 代码段中显示的代码将生成以下输出。 此示例显示了具有恒温器组件的温度传感器设备生成通知时的输出。 应用程序属性 `iothub-message-schema` ，并 `opType` 向你显示有关更改通知类型的信息：
+当 IoT 中心为包含组件的设备生成设备孪生更改通知时，前面 C# 代码片段中显示的代码将生成以下输出。 此示例显示当具有恒温器组件的温度传感器设备生成通知时所生成的输出。 应用程序属性 `iothub-message-schema` 和 `opType` 提供有关更改通知类型的信息：
 
 ```cmd/sh
 Message received on partition 1:
@@ -483,11 +483,11 @@ System properties (set by IoT Hub):
         content-encoding: utf-8
 ```
 
-## <a name="read-digital-twin-change-notifications"></a>读取数字克隆更改通知
+## <a name="read-digital-twin-change-notifications"></a>读取数字孪生体更改通知
 
-可以配置 IoT 中心来生成数字克隆更改通知，以路由到受支持的终结点。 若要了解详细信息，请参阅 [使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点，> 非遥测事件](../articles/iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)。
+可以配置 IoT 中心，以便生成要路由到支持的终结点的数字孪生体更改通知。 若要了解详细信息，请参阅[使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点 > 非遥测事件](../articles/iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)。
 
-当 IoT 中心生成非组件恒温器设备的数字克隆更改通知时，前面的 c # 代码段中显示的代码将生成以下输出。 应用程序属性 `iothub-message-schema` ，并 `opType` 向你显示有关更改通知类型的信息：
+当 IoT 中心为无组件恒温器设备生成数字孪生体更改通知时，此前的 C# 代码片段中显示的代码会生成以下输出。 应用程序属性 `iothub-message-schema` 和 `opType` 提供有关更改通知类型的信息：
 
 ```cmd/sh
 Message received on partition 1:
@@ -508,7 +508,7 @@ System properties (set by IoT Hub):
         content-encoding: utf-8
 ```
 
-当 IoT 中心为包含组件的设备生成数字克隆更改通知时，前面的 c # 代码段中显示的代码将生成以下输出。 此示例显示了具有恒温器组件的温度传感器设备生成通知时的输出。 应用程序属性 `iothub-message-schema` ，并 `opType` 向你显示有关更改通知类型的信息：
+当 IoT 中心为包含组件的设备生成数字孪生体更改通知时，此前的 C# 代码片段中显示的代码会生成以下输出。 此示例显示当具有恒温器组件的温度传感器设备生成通知时所生成的输出。 应用程序属性 `iothub-message-schema` 和 `opType` 提供有关更改通知类型的信息：
 
 ```cmd/sh
 Message received on partition 1:

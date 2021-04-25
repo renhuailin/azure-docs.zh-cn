@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: 01f43ceab36b519f3aafbbdc711df15c80481398
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 75615b4bb8773d0c0b8f72278e5598462c779ceb
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104597430"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365223"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure SQL 数据库中复制和转换数据
 
@@ -66,7 +66,7 @@ Azure SQL 数据库链接服务支持以下属性：
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的 |
 | servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 **SecureString**，以安全地将其存储在 Azure 数据工厂中或 [引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的 |
 | tenant | 指定应用程序所在的租户的信息（例如域名或租户 ID）。 将鼠标悬停在 Azure 门户右上角进行检索。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的 |
-| azureCloudType | 对于服务主体身份验证，请指定 Azure AD 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为 AzurePublic、AzureChina、AzureUsGovernment 和 AzureGermany   。 默认情况下使用数据工厂的云环境。 | 否 |
+| azureCloudType | 对于服务主体身份验证，请指定 Azure AD 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为 AzurePublic、AzureChina、AzureUsGovernment 和 AzureGermany   。 默认情况下，使用数据工厂的云环境。 | 否 |
 | connectVia | 此[集成运行时](concepts-integration-runtime.md)用于连接到数据存储。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定，则使用默认 Azure Integration Runtime。 | 否 |
 
 有关各种身份验证类型，请参阅关于先决条件和 JSON 示例的以下各部分：
@@ -76,7 +76,7 @@ Azure SQL 数据库链接服务支持以下属性：
 - [Azure AD 应用程序令牌身份验证：Azure 资源的托管标识](#managed-identity)
 
 >[!TIP]
->如果遇到错误（错误代码为“UserErrorFailedToConnectToSqlServer”，且消息如“数据库的会话限制为 XXX 且已达到。”），请将 `Pooling=false` 添加到连接字符串中，然后重试。
+>如果遇到错误（错误代码为“UserErrorFailedToConnectToSqlServer”，且消息如“数据库的会话限制为 XXX 且已达到。”），请将 `Pooling=false` 添加到连接字符串中，然后重试。 对于“SHIR(自承载集成运行时)”类型的链接服务设置，也建议添加 `Pooling=false`。 可以在链接服务创建窗体的“其他连接属性”部分中将池和其他连接参数添加为新参数名称和值。
 
 ### <a name="sql-authentication"></a>SQL 身份验证
 
@@ -384,7 +384,7 @@ GO
 | writeBatchSize | 每批要插入到 SQL 表中的行数。<br/> 允许的值为 **integer**（行数）。 默认情况下，Azure 数据工厂会根据行大小动态确定适当的批大小。 | 否 |
 | writeBatchTimeout | 超时前等待批插入操作完成的时间。<br/> 允许的值为 **timespan**。 例如“00:30:00”（30 分钟）。 | 否 |
 | disableMetricsCollection | 数据工厂收集指标（如 Azure SQL 数据库 DTU），以获取复制性能优化和建议，从而引入额外的主数据库访问权限。 如果你担心此行为，请指定 `true` 将其关闭。 | 否（默认值为 `false`） |
-| maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的数目上限。 仅当要限制并发连接数目时指定一个值。| 否 |
+| maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的数目上限。 仅在要限制并发连接数目时指定一个值。| 否 |
 
 **示例 1：追加数据**
 
@@ -727,7 +727,7 @@ ADF 在后续的更新、更新插入和删除中会使用你在此处将其选�
 | 小数 |小数 |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
-| image |Byte[] |
+| 图像 |Byte[] |
 | int |Int32 |
 | money |小数 |
 | nchar |String, Char[] |
@@ -778,7 +778,7 @@ ADF 在后续的更新、更新插入和删除中会使用你在此处将其选�
         Driver={ODBC Driver 17 for SQL Server};Server=<serverName>;Database=<databaseName>;ColumnEncryption=Enabled;KeyStoreAuthentication=KeyVaultClientSecret;KeyStorePrincipalId=<servicePrincipalKey>;KeyStoreSecret=<servicePrincipalKey>
         ```
 
-    - 如果在 Azure 虚拟机上运行自承载集成运行时，则可以对 Azure VM 的标识使用“托管标识身份验证”：
+    - 如果在 Azure 虚拟机上运行自承载集成运行时，则可对 Azure VM 的标识使用“托管标识身份验证”：
 
         1. 按照相同的[先决条件](#managed-identity)为托管标识创建数据库用户，并在数据库中授予适当的角色。
         2. 在链接服务中，如下所示指定 ODBC 连接字符串，并选择“匿名”身份验证，因为连接字符串本身指示 `Authentication=ActiveDirectoryMsi`。

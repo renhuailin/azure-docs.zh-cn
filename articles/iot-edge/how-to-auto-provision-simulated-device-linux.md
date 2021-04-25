@@ -8,12 +8,12 @@ ms.date: 04/09/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ca16099cffc22a19c2ee35b00ae6f1bcbe2977a7
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 79fe8acd06084c58b0cf9b47bf93e933c648510c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312393"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481984"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>在 Linux 上使用 TPM 创建和预配 IoT Edge 设备
 
@@ -149,7 +149,7 @@ ms.locfileid: "107312393"
 在 DPS 中创建注册时，可以声明“初始设备孪生状态”。  在设备孪生中可以设置标记，以便按解决方案中所需的任何指标（例如区域、环境、位置或设备类型）将设备分组。 这些标记用于创建[自动部署](how-to-deploy-at-scale.md)。
 
 > [!TIP]
-> 在 Azure CLI 中，可以创建[注册](/cli/azure/ext/azure-iot/iot/dps/enrollment)并使用“edge-enabled”标志来指定某个设备是 IoT Edge 设备。
+> 在 Azure CLI 中，可以创建[注册](/cli/azure/iot/dps/enrollment)并使用“edge-enabled”标志来指定某个设备是 IoT Edge 设备。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到 IoT 中心设备预配服务的实例。
 
@@ -218,7 +218,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 
 1. （可选）使用 `always_reprovision_on_startup` 或 `dynamic_reprovisioning` 行来配置设备的重新预配行为。 如果设备设置为在启动时重新预配，它将始终尝试先使用 DPS 进行预配，如果失败，则回退到预配备份。 如果设备设置为动态重新预配自身，则 IoT Edge 将重启，并在检测到重新预配事件时重新预配。 有关详细信息，请参阅 [IoT 中心设备重新预配概念](../iot-dps/concepts-device-reprovision.md)。
 
-1. 保存并关闭文件。
+1. 保存并关闭该文件。
 
 :::moniker-end
 <!-- end 1.1 -->
@@ -252,7 +252,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 
 1. （可选）找到文件的自动重新预配模式部分。 使用 `auto_reprovisioning_mode` 参数将设备的重新预配行为配置为 `Dynamic`、`AlwaysOnStartup` 或 `OnErrorOnly`。 有关详细信息，请参阅 [IoT 中心设备重新预配概念](../iot-dps/concepts-device-reprovision.md)。
 
-1. 保存并关闭文件。
+1. 保存并关闭该文件。
 :::moniker-end
 <!-- end 1.2 -->
 

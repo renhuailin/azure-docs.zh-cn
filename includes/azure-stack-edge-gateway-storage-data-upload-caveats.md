@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/13/2020
 ms.author: alkohli
 ms.openlocfilehash: dc18efe03cbc8a3f657ae4afc781941e8e76611c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96466317"
 ---
 将数据移动到 Azure 中时，下面的警告适用。
@@ -20,4 +20,4 @@ ms.locfileid: "96466317"
 - 如果与 Azure 存储容器关联的共享上传的 blob 与创建时为该共享定义的 blob 类型不匹配，则不会更新此类 blob。 例如，在设备上创建块 Blob 共享。 将该共享与具有页 Blob 的现有云容器相关联。 刷新该共享以下载文件。 修改已作为页 Blob 存储在云中的某些已刷新文件。 你将看到上传失败。
 - 不支持在共享中创建文件后重命名该文件。
 - 从共享中删除文件并不删除存储帐户中的条目。
-- 如果使用 rsync 复制数据，则 `rsync -a` 不支持选项。
+- 如果使用 rsync 复制数据，则不支持 `rsync -a` 选项。

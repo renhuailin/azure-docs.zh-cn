@@ -171,7 +171,7 @@
           displayName: authorization authentication encryption aad azure active directory
           href: concept-enterprise-security.md
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/machine-learning-security-baseline
         - name: Azure Policy 的安全控件
           href: ./security-controls-policy.md
         - name: 数据加密
@@ -462,10 +462,7 @@
           href: how-to-deploy-and-where.md
         - name: 部署目标
           items:
-            - name: 使用现有模型
-              displayName: publish existing model
-              href: how-to-deploy-existing-model.md
-            - name: Azure ML 计算实例
+            - name: Local
               href: how-to-deploy-local-container-notebook-vm.md
             - name: Azure Kubernetes 服务
               displayName: 'aks, aad, authentication, azure active directory'

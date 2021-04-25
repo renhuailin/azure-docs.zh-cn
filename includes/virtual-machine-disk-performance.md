@@ -9,59 +9,59 @@ ms.date: 09/25/2020
 ms.author: albecker1
 ms.custom: include file
 ms.openlocfilehash: 4770ac0181c64ef800aa02ba87284c8add357e36
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92518038"
 ---
-本文介绍如何在将 Azure 虚拟机和 Azure 磁盘结合使用时，澄清磁盘性能以及其工作原理。 还介绍了如何诊断磁盘 IO 的瓶颈，以及可以进行哪些更改以优化性能。
+本文阐述了磁盘性能，以及在将 Azure 虚拟机和 Azure 磁盘组合使用时磁盘性能的工作原理。 此外还介绍了如何诊断磁盘 IO 的瓶颈，以及可以进行哪些更改以优化性能。
 
-## <a name="how-does-disk-performance-work"></a>磁盘性能如何工作？
-Azure 虚拟机根据虚拟机类型和大小，每秒有输入/输出操作 (IOPS) 和吞吐量性能限制。 OS 磁盘和数据磁盘可以附加到虚拟机。 磁盘具有其各自的 IOPS 和吞吐量限制。
+## <a name="how-does-disk-performance-work"></a>磁盘性能工作原理
+Azure 虚拟机具有每秒输入/输出操作数 (IOPS) 和吞吐量性能限制，这些限制由虚拟机类型和大小决定。 OS 磁盘和数据磁盘可以附加到虚拟机。 磁盘具有各自的 IOPS 和吞吐量限制。
 
-当应用程序请求的 IOPS 或吞吐量超出为虚拟机或附加磁盘分配的 IOPS 或吞吐量时，应用程序的性能会受到限制。 上限时，应用程序的性能将会提高。 这可能导致负面后果，如增加延迟。 让我们通过几个示例来阐明这一概念。 要使这些示例易于理解，只需查看 IOPS。 但是，相同的逻辑也适用于吞吐量。
+当应用程序所请求的 IOPS 或吞吐量大于为虚拟机或附加磁盘分配的 IOPS 或吞吐量时，应用程序的性能会达到上限。 达到上限时，应用程序的性能会降低。 这可能会导致负面后果，例如延迟增大。 让我们通过几个示例来阐明此概念。 为了使这些示例更容易理解，我们只看 IOPS。 但是，同样的逻辑也适用于吞吐量。
 
 ## <a name="disk-io-capping"></a>磁盘 IO 上限
 
-**程序**
+设置：
 
 - Standard_D8s_v3
-  - 未缓存 IOPS：12800
+  - 未缓存的 IOPS：12,800
 - E30 OS 磁盘
   - IOPS：500
-- 两个 E30 数据磁盘×2
+- 两个 E30 数据磁盘 × 2
   - IOPS：500
 
-![显示磁盘级上限的关系图。](media/vm-disk-performance/disk-level-throttling.jpg)
+![示意图中显示了磁盘级上限。](media/vm-disk-performance/disk-level-throttling.jpg)
 
-虚拟机上运行的应用程序向虚拟机发出要求 10000 IOPS 的请求。 VM 允许所有这些，因为 Standard_D8s_v3 虚拟机最多可执行 12800 IOPS。
+在虚拟机上运行的应用程序向虚拟机发出要求 10,000 个 IOPS 的请求。 VM 允许所有这些请求，因为 Standard_D8s_v3 虚拟机最多可以执行 12,800 个 IOPS。
 
-10000 IOPS 请求会划分为三个不同磁盘的三个不同请求：
+10,000 IOPS 的请求随后会被分解为对不同磁盘的三个不同请求：
 
-- 1000 IOPS 请求操作系统磁盘。
-- 每个数据磁盘请求 4500 IOPS。
+- 向操作系统磁盘请求 1,000 IOPS。
+- 向每个数据磁盘请求 4,500 IOPS。
 
-所有附加的磁盘都是 E30 磁盘，只能处理 500 IOPS。 因此，它们每个都响应 500 IOPS。 应用程序的性能由附加的磁盘上限，并且只能处理 1500 IOPS。 如果使用更好执行的磁盘（如高级 SSD P30 磁盘），则应用程序可在 10000 IOPS 的情况下工作。
+所有附加的磁盘都是 E30 磁盘，只能处理 500 IOPS。 因此，它们每个都以 500 IOPS 返回响应。 应用程序的性能会受到附加磁盘的限制，只能处理 1,500 IOPS。 如果使用性能更好的磁盘（例如，高级 SSD P30 磁盘），则应用程序的峰值性能可以达到 10,000 IOPS。
 
 ## <a name="virtual-machine-io-capping"></a>虚拟机 IO 上限
 
-**程序**
+设置：
 
 - Standard_D8s_v3
-  - 未缓存 IOPS：12800
+  - 未缓存的 IOPS：12,800
 - P30 OS 磁盘
-  - IOPS：5000
-- 两个 P30 数据磁盘×2
-  - IOPS：5000
+  - IOPS：5,000
+- 两个 P30 数据磁盘 × 2
+  - IOPS：5,000
 
-![显示虚拟机级别上限的关系图。](media/vm-disk-performance/vm-level-throttling.jpg)
+![示意图中显示了虚拟机级上限。](media/vm-disk-performance/vm-level-throttling.jpg)
 
-虚拟机上运行的应用程序发出请求，要求 15000 IOPS。 遗憾的是，仅将 Standard_D8s_v3 虚拟机设置为处理 12800 IOPS。 应用程序受虚拟机限制的限制，必须分配分配的 12800 IOPS。
+在虚拟机上运行的应用程序发出需要 15,000 IOPS 的请求。 遗憾的是，Standard_D8s_v3 虚拟机仅预配为处理 12,800 IOPS。 应用程序受限于虚拟机限制，必须对分配给它的 12,800 IOPS 进行分配。
 
-请求的 12800 IOPS 分为三个不同磁盘的三个不同请求：
+请求的这 12,800 IOPS 随后会被分解为对不同磁盘的三个不同请求：
 
-- 4267 IOPS 请求操作系统磁盘。
-- 每个数据磁盘请求 4266 IOPS。
+- 向操作系统磁盘请求 4,267 IOPS。
+- 向每个数据磁盘请求 4,266 IOPS。
 
-所有附加的磁盘都是 P30 的磁盘，可处理 5000 IOPS。 因此，它们会回复其请求的数量。
+所有附加的磁盘都是可处理 5,000 IOPS 的 P30 磁盘。 因此，它们将以所请求的数量返回响应。

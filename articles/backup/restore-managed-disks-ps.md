@@ -3,12 +3,12 @@ title: 使用 Azure PowerShell 还原 Azure 托管磁盘
 description: 了解如何使用 Azure PowerShell 还原 Azure 托管磁盘。
 ms.topic: conceptual
 ms.date: 03/26/2021
-ms.openlocfilehash: 0ddf552947c39692ea01d0dea7e67f147d754fcc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c6625b43c313d45d4b295dd406e29a2b1d85b387
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629683"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107520031"
 ---
 # <a name="restore-azure-managed-disks-using-azure-powershell"></a>使用 Azure PowerShell 还原 Azure 托管磁盘
 
@@ -92,4 +92,4 @@ $job = Search-AzDataProtectionJobInAzGraph -Subscription $sub -ResourceGroupName
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure 磁盘备份常见问题解答](disk-backup-faq.md)
+- [Azure 磁盘备份常见问题解答](disk-backup-faq.yml)
