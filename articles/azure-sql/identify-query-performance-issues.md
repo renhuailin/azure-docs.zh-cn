@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
 ms.date: 1/14/2021
-ms.openlocfilehash: 4d0f5404a64eae99ced0dd797954ba042b50060f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 039332a8728e5d7e5b605f51f4bb53e6dcbb6381
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98217220"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109163"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Azure SQL 数据库中可检测的查询性能瓶颈类型
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -139,7 +139,7 @@ ORDER BY count (distinct p.query_id) DESC;
 
 - **更改了物理设计**：例如，新建的索引可以更有效地解决查询要求。 如果查询优化器认为利用这些新索引比最初选择用于第一个版本的查询执行的数据结构更有利，则可以在新的编译中使用这些新索引。 对引用的对象进行任何物理更改可能会导致在编译时生成新的计划选项。
 
-- **服务器资源差异**：如果一个系统中的计划不同于另一个系统中的计划，则资源可用性（例如可用的处理器数）可能会影响生成的计划。 例如，如果一个系统的处理器数较多，则可能会选择并行计划。
+- **服务器资源差异**：如果一个系统中的计划不同于另一个系统中的计划，则资源可用性（例如可用的处理器数）可能会影响生成的计划。 例如，如果一个系统的处理器数较多，则可能会选择并行计划。 有关 Azure SQL 数据库中的并行度的详细信息，请参阅[在 Azure SQL 数据库中配置最大并行度 (MAXDOP)](database/configure-max-degree-of-parallelism.md)。
 
 - **不同的统计信息**：与引用的对象关联的统计信息发生了更改，或者与原始系统的统计信息有本质的差别。 如果统计信息发生更改并重新编译，则查询优化器将使用从更改时间开始的统计信息。 修改后的统计信息的数据分布和频率可能不同于原始编译中的情况。 这些更改用于创建基数估算。 （基数估算是预计要流经逻辑查询树的行数。）更改基数估算值可以引导我们选择不同的物理运算符和关联的操作顺序。 即使对统计信息进行少量的更改，也可能会导致查询执行计划发生变化。
 
@@ -181,6 +181,8 @@ ORDER BY count (distinct p.query_id) DESC;
 
 使用智能见解检测[工作负荷增大](database/intelligent-insights-troubleshoot-performance.md#workload-increase)和[计划回归](database/intelligent-insights-troubleshoot-performance.md#plan-regression)。
 
+- 并行度：并行度过高会使其他查询得不到 CPU 和工作线程资源，从而导致其他并发工作负载的性能降低。 有关 Azure SQL 数据库中的并行度的详细信息，请参阅[在 Azure SQL 数据库中配置最大并行度 (MAXDOP)](database/configure-max-degree-of-parallelism.md)。
+
 ## <a name="waiting-related-problems"></a>与等待相关的问题
 
 消除与执行问题相关的欠佳计划和等待相关问题后，性能问题通常与查询可能正在等待某个资源有关。 等待相关的问题的可能原因如下：
@@ -220,6 +222,11 @@ ORDER BY count (distinct p.query_id) DESC;
 > - [TigerToolbox 等待和闩锁](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
 > - [TigerToolbox usp_whatsup](https://github.com/Microsoft/tigertoolbox/tree/master/usp_WhatsUp)
 
+## <a name="see-also"></a>另请参阅
+
+* [在 Azure SQL 数据库中配置最大并行度 (MAXDOP)](database/configure-max-degree-of-parallelism.md)
+* [了解并解决 Azure SQL 数据库阻塞问题](database/understand-resolve-blocking.md)
+
 ## <a name="next-steps"></a>后续步骤
 
-[SQL 数据库监视和优化概述](database/monitor-tune-overview.md)
+* [SQL 数据库监视和优化概述](database/monitor-tune-overview.md)

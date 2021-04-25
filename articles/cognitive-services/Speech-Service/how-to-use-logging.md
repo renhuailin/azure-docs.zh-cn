@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: f044596cf084e68b6c9ca10e3da4fbdf4c8c2062
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32715ad1a01366d7d56e6fa8129151b15c315e1d
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95026516"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504169"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>在语音 SDK 中启用日志记录
 
-将日志记录到文件是语音 SDK 的一项可选功能。 在开发期间，日志记录可以提供语音 SDK 核心组件的附加信息和诊断数据。 将语音配置对象中的属性 `Speech_LogFilename` 设置为日志文件的位置和名称可以启用日志记录。 基于该配置创建识别器后，将会全局激活日志记录，以后无法将其禁用。 在运行日志记录会话期间，无法更改日志文件的名称。
+将日志记录到文件是语音 SDK 的一项可选功能。 在开发期间，日志记录可以提供语音 SDK 核心组件的附加信息和诊断数据。 将语音配置对象中的属性 `Speech_LogFilename` 设置为日志文件的位置和名称可以启用日志记录。 日志记录由语音 SDK 本机库中的静态类处理。 你可以启用任何语音 SDK 识别器或合成器实例的日志记录。 同一进程中的所有实例都将日志条目写入相同日志文件。
 
 > [!NOTE]
 > 从语音 SDK 版本 1.4.0 开始，日志记录可在所有支持的语音 SDK 编程语言中使用，但 JavaScript 除外。

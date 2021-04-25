@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 337275cef0f2159cb5fac40ac0435408baf3bbef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9fee7965e7834f0e05dba91f8652a0e155087b14
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96170916"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257868"
 ---
 # <a name="tutorial-for-configuring-theaccesshub-admin-tool-with-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中配置 TheAccessHub Admin Tool 的教程
 
@@ -44,7 +44,7 @@ ms.locfileid: "96170916"
 
 - [可选] 你要从中迁移客户数据的任何数据库或轻型目录访问协议 (LDAP) 的连接信息和凭据信息。
 
-- [可选] 使用[自定义策略](./custom-policy-get-started.md)配置了 Azure AD B2C 环境（如果要将 TheAccessHub Admin Tool 集成到注册策略流中）。
+- [可选] 使用[自定义策略](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)配置了 Azure AD B2C 环境（如果要将 TheAccessHub Admin Tool 集成到注册策略流中）。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -358,7 +358,7 @@ TheAccessHub Admin Tool 使用 Microsoft Graph API 来读取目录以及对目�
 
 ## <a name="configure-azure-ad-b2c-policies"></a>配置 Azure AD B2C 策略
 
-有时，TheAccessHub Admin Tool 同步功能可能无法将其状态与 Azure AD B2C 保持同步。 我们可以利用 TheAccessHub Admin Tool 的 API 和 Azure AD B2C 策略，在发生更改时立即通知 TheAccessHub Admin Tool。 此解决方案要求具有 [Azure AD B2C 自定义策略](./custom-policy-get-started.md)方面的技术知识。 在下一节中，我们将介绍用于向 TheAccessHub Admin Tool 通知自定义注册策略中的新帐户的示例策略步骤和安全证书。
+有时，TheAccessHub Admin Tool 同步功能可能无法将其状态与 Azure AD B2C 保持同步。 我们可以利用 TheAccessHub Admin Tool 的 API 和 Azure AD B2C 策略，在发生更改时立即通知 TheAccessHub Admin Tool。 此解决方案要求具有 [Azure AD B2C 自定义策略](./user-flow-overview.md)方面的技术知识。 在下一节中，我们将介绍用于向 TheAccessHub Admin Tool 通知自定义注册策略中的新帐户的示例策略步骤和安全证书。
 
 ### <a name="create-a-secure-credential-to-invoke-theaccesshub-admin-tools-api"></a>创建用于调用 TheAccessHub Admin Tool 的 API 的安全凭据
 
@@ -386,7 +386,7 @@ TheAccessHub Admin Tool 使用 Microsoft Graph API 来读取目录以及对目�
 
 5. 选择“下载”以获取 zip 文件，其中包含用于在客户注册时将客户添加到 TheAccessHub Admin Tool 的基本策略。
 
-6. 按照本[教程](./custom-policy-get-started.md)中所述，开始在 Azure AD B2C 中设计自定义策略。
+6. 按照本[教程](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)中所述，开始在 Azure AD B2C 中设计自定义策略。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -394,4 +394,4 @@ TheAccessHub Admin Tool 使用 Microsoft Graph API 来读取目录以及对目�
 
 - [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

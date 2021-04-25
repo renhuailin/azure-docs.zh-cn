@@ -1,18 +1,18 @@
 ---
 title: Azure Key Vault 身份验证基础知识
 description: 了解密钥保管库的身份验证模式的工作原理
-author: ShaneBala-keyvault
-ms.author: sudbalas
-ms.date: 09/25/2020
+author: msmbaldwin
+ms.author: mbaldwin
+ms.date: 04/15/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: c43995a8b3a072d98db0ba2c8219694f17e49a26
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: f0cd2fb341dd790a7628cc3cf6a5bdd87d7c3687
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363421"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753409"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault 身份验证基础知识
 
@@ -119,7 +119,7 @@ Azure Active Directory 角色分配授予对密钥保管库执行管理平面操
 
 若要详细了解 Key Vault 的 Azure RBAC，请参阅以下文档：
 
-* Key Vault 的 Azure RBAC [链接](./secure-your-key-vault.md#management-plane-and-azure-rbac)
+* Key Vault 的 Azure RBAC [链接](rbac-guide.md)
 * Key Vault 角色的 Azure RBAC [链接](../../role-based-access-control/built-in-roles.md#key-vault-administrator)
 
 ## <a name="configure-key-vault-firewall"></a>配置 Key Vault 防火墙

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 4/5/2021
-ms.openlocfilehash: 3758e2d458e1a6bd052ac746ac361de033d508e9
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 161204bf02ac36c1f5a3969cf57c61e98560c9b5
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107023828"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518892"
 ---
 # <a name="upgrade-hyperscale-citus-server-group"></a>升级超大规模 (Citus) 服务器组
 
@@ -23,7 +23,7 @@ ms.locfileid: "107023828"
 升级 PostgreSQL 会带来比你想象的更多的更改，因为超大规模 (Citus) 还将升级[数据库扩展](concepts-hyperscale-extensions.md)，包括 Citus 扩展。
 强烈建议在升级生产环境之前，使用新的 PostgreSQL 和 Citus 版本测试应用程序。
 
-一种简单的测试方法是使用[时间点还原](concepts-hyperscale-backup.md#point-in-time-restore-pitr)服务器组的副本。 升级副本并针对它测试应用程序。 验证一切正常后，升级源服务器组。
+一种简单的测试方法是使用[时间点还原](concepts-hyperscale-backup.md#restore)服务器组的副本。 升级副本并针对它测试应用程序。 验证一切正常后，升级源服务器组。
 
 ## <a name="upgrade-a-server-group-in-the-azure-portal"></a>在 Azure 门户中升级服务器组
 

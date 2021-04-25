@@ -8,16 +8,16 @@ ms.service: ddos-protection
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/07/2021
+ms.date: 04/14/2021
 ms.author: yitoh
 ms.custom: subject-policy-reference
 ms.topic: include
-ms.openlocfilehash: 6a0496740fbd82090ba7199ca3e064f5bd2bf7c5
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 86fa383fe2456eabe0cce142bd4a9c665fb95a2a
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107803"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505694"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-ddos-protection-standard"></a>Azure DDoS 防护标准的 Azure Policy 内置定义
 
@@ -30,7 +30,7 @@ ms.locfileid: "107107803"
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[虚拟网络应受 Azure DDoS 防护标准保护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F94de2ad3-e0c1-4caf-ad78-5d47bbc83d3d)|使用 Azure DDoS 防护标准来保护虚拟网络免受容量耗尽攻击和协议攻击。 有关详细信息，请访问 [https://aka.ms/ddosprotectiondocs](https://aka.ms/ddosprotectiondocs)。|Modify、Audit、Disabled|[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkDdosStandard_Audit.json)|
-|[公共 IP 地址应启用 Azure DDoS 防护标准的资源日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F752154a7-1e0f-45c6-a880-ac75a7e4f648)|在诊断设置中启用公共 IP 地址的资源日志，以便流式传输到 Log Analytics 工作区。 详细了解攻击流量，以及为了缓解那些利用通知、报告和流日志进行的 DDoS 攻击所采取的操作。|AuditIfNotExists、DeployIfNotExists、Disabled|[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/PublicIpDdosLogging_Audit.json)|
+|[公共 IP 地址应启用 Azure DDoS 防护标准的资源日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F752154a7-1e0f-45c6-a880-ac75a7e4f648)|在诊断设置中启用公共 IP 地址的资源日志，以便流式传输到 Log Analytics 工作区。 详细了解利用通知、报告和流日志降低 DDoS 攻击所采取的攻击流量和操作。|AuditIfNotExists、DeployIfNotExists、Disabled|[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/PublicIpDdosLogging_Audit.json)|
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -8,12 +8,12 @@ author: tcare
 ms.author: tcare
 description: 本文提供使用 GitOps 的 CI/CD 工作流的概念性概述
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes 服务, 容器, CI, CD, Azure DevOps
-ms.openlocfilehash: a51a9f2b32f1088cec390dc4d74300a38f37b160
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 47633ed5bec1a07c878983d0e93e03149d8967ba
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121773"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025860"
 ---
 # <a name="cicd-workflow-using-gitops---azure-arc-enabled-kubernetes"></a>使用 GitOps 的 CI/CD 工作流 - 已启用 Azure Arc 的 Kubernetes
 
@@ -30,7 +30,7 @@ ms.locfileid: "102121773"
 ### <a name="application-repo"></a>应用程序存储库
 应用程序存储库包含开发人员在运行其内部循环期间处理的应用程序代码。 应用程序的部署模板以某种常规格式（例如 Helm 或 Kustomize）驻留在此存储库中。 不会存储环境特定的值。 对此存储库进行更改会调用一个启动部署过程的 PR 或 CI 管道。
 ### <a name="container-registry"></a>容器注册表
-容器注册表保存 Kubernetes 环境中使用的所有第一方和第三方映像。 使用用户可读的标记以及用于生成映像的 Git 提交内容来标记第一方应用程序映像。 缓存第三方映像以提高安全性、速度和复原能力。 设置计划以便及时测试和集成安全更新。 有关详细信息，请参阅[通过 ACR 使用和维护公共内容](https://docs.microsoft.com/azure/container-registry/tasks-consume-public-content)指南中的示例。
+容器注册表保存 Kubernetes 环境中使用的所有第一方和第三方映像。 使用用户可读的标记以及用于生成映像的 Git 提交内容来标记第一方应用程序映像。 缓存第三方映像以提高安全性、速度和复原能力。 设置计划以便及时测试和集成安全更新。 有关详细信息，请参阅[通过 ACR 使用和维护公共内容](../../container-registry/tasks-consume-public-content.md)指南中的示例。
 ### <a name="pr-pipeline"></a>PR 管道
 成功运行 PR 管道时，对应用程序存储库的 PR 将受到门限控制。 此管道运行基本质量门，例如对应用程序代码运行 Lint 检查和单元测试。 该管道将测试应用程序，并通过 Lint 检查用于部署到 Kubernetes 环境的 Dockerfile 和 Helm 模板。 应生成并测试 Docker 映像，但不要推送映像。 使管道持续时间保持相对较短，以便快速迭代。
 ### <a name="ci-pipeline"></a>CI 管道

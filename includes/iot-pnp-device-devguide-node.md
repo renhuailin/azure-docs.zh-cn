@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/19/2020
-ms.openlocfilehash: dea63ba4939579f3f227d2eac05eb124ada1e4ec
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
-ms.translationtype: MT
+ms.openlocfilehash: 0aa13d8d23f4f18004131a25f8eb42388d79834b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99616583"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104582748"
 ---
 ## <a name="model-id-announcement"></a>模型 ID 公告
 
@@ -23,14 +23,14 @@ await client.open();
 ```
 
 > [!TIP]
-> 对于模块和 IoT Edge，使用 `ModuleClient` 代替 `Client` 。
+> 对于模块和 IoT Edge，使用 `ModuleClient` 代替 `Client`。
 
 > [!TIP]
-> 这是设备可以设置模型 ID 的唯一时间，在设备连接后将无法更新。
+> 设备只有这一次机会设置模型 ID，设备连接后将无法更新模型 ID。
 
 ## <a name="dps-payload"></a>DPS 有效负载
 
-使用 [设备预配服务 (DPS) ](../articles/iot-dps/about-iot-dps.md) 的设备可以包括 `modelId` 使用以下 JSON 有效负载的预配过程中要使用的。
+使用[设备预配服务 (DPS)](../articles/iot-dps/about-iot-dps.md) 的设备可以包含要在使用以下 JSON 有效负载的预配过程中使用的 `modelId`。
 
 ```json
 {
@@ -40,7 +40,7 @@ await client.open();
 
 ## <a name="implement-telemetry-properties-and-commands"></a>实现遥测、属性和命令
 
-如 [了解 IoT 即插即用模型中的组件](../articles/iot-pnp/concepts-components.md)中所述，设备构建者必须决定是否要使用组件来描述其设备。 使用组件时，设备必须遵循本部分中所述的规则。
+如[了解 IoT 即插即用模型中的组件](../articles/iot-pnp/concepts-modeling-guide.md)一文中所述，设备构建者必须决定是否要使用组件来描述其设备。 使用组件时，设备必须遵循本节中所述的规则。
 
 ### <a name="telemetry"></a>遥测
 
@@ -82,7 +82,7 @@ deviceTwin.properties.reported.update(patchThermostat, function (err) {
 });
 ```
 
-用下一个报告的属性更新设备克隆：
+使用下一个报告的属性更新设备孪生：
 
 ```json
 {
@@ -118,7 +118,7 @@ deviceTwin.properties.reported.update(patchThermostat1Info, function (err) {
 });
 ```
 
-用下一个报告的属性更新设备克隆：
+使用下一个报告的属性更新设备孪生：
 
 ```json
 {
@@ -133,13 +133,13 @@ deviceTwin.properties.reported.update(patchThermostat1Info, function (err) {
 
 ### <a name="writable-properties"></a>可写属性
 
-这些属性可以由设备设置或通过解决方案更新。 如果解决方案更新属性，则客户端会在或中接收到作为回调的 `Client` 通知 `ModuleClient` 。 若要遵循 IoT 即插即用约定，设备必须通知服务属性已成功接收。
+这些属性可以由设备设置或通过解决方案更新。 如果解决方案更新属性，客户端会接收到通知，即在 `Client` 或 `ModuleClient` 中的回调。 若要遵循 IoT 即插即用约定，设备必须通知服务属性已成功接收。
 
 #### <a name="report-a-writable-property"></a>报告可写属性
 
-当设备报告可写属性时，它必须包含 `ack` 约定中定义的值。
+设备报告可写属性时，必须包含约定中定义的 `ack` 值。
 
-若要从默认组件报告可写属性：
+从默认组件报告可写属性：
 
 ```nodejs
 patch = {
@@ -156,7 +156,7 @@ deviceTwin.properties.reported.update(patch, function (err) {
 });
 ```
 
-用下一个报告的属性更新设备克隆：
+使用下一个报告的属性更新设备孪生：
 
 ```json
 {
@@ -171,7 +171,7 @@ deviceTwin.properties.reported.update(patch, function (err) {
 }
 ```
 
-若要从嵌套组件报告可写属性，则克隆必须包括标记：
+若要从嵌套组件报告可写属性，孪生必须包括标记：
 
 ```nodejs
 patch = {
@@ -190,7 +190,7 @@ deviceTwin.properties.reported.update(patch, function (err) {
 });
 ```
 
-用下一个报告的属性更新设备克隆：
+使用下一个报告的属性更新设备孪生：
 
 ```json
 {
@@ -208,11 +208,11 @@ deviceTwin.properties.reported.update(patch, function (err) {
 }
 ```
 
-#### <a name="subscribe-to-desired-property-updates"></a>订阅所需属性更新
+#### <a name="subscribe-to-desired-property-updates"></a>订阅所需的属性更新
 
-服务可以更新在连接的设备上触发通知的所需属性。 此通知包括更新的所需属性，其中包括用于标识更新的版本号。 设备必须用与报告属性相同的消息进行响应 `ack` 。
+服务可以更新所需的属性，从而在连接的设备上触发通知。 此通知包括更新后的所需属性，其中包括用于标识更新的版本号。 设备必须使用与报告的属性相同的 `ack` 消息进行响应。
 
-默认组件将查看单个属性，并 `ack` 使用收到的版本创建报告：
+默认组件会查看单个属性，并使用收到的版本创建报告的 `ack`：
 
 ```nodejs
 const propertyUpdateHandler = (deviceTwin, propertyName, reportedValue, desiredValue, version) => {
@@ -241,7 +241,7 @@ desiredPropertyPatchHandler = (deviceTwin) => {
 };
 ```
 
-设备克隆在所需的和报告的部分显示属性：
+设备孪生在所需部分和报告部分显示属性：
 
 ```json
 {
@@ -260,7 +260,7 @@ desiredPropertyPatchHandler = (deviceTwin) => {
 }
 ```
 
-嵌套组件接收用组件名称包装的所需属性，并报告返回 `ack` 报告的属性：
+嵌套组件接收用组件名称包装的所需属性，并且应报告 `ack` 报告的属性：
 
 ```nodejs
 const desiredPropertyPatchListener = (deviceTwin, componentNames) => {
@@ -295,7 +295,7 @@ const desiredPropertyPatchListener = (deviceTwin, componentNames) => {
 };
 ```
 
-组件的设备克隆显示了所需的和报告的部分，如下所示：
+组件的设备孪生显示了所需部分和报告部分，如下所示：
 
 ```json
 {
@@ -324,7 +324,7 @@ const desiredPropertyPatchListener = (deviceTwin, componentNames) => {
 
 默认组件接收服务调用的命令名称。
 
-嵌套组件接收以组件名称和分隔符为前缀的命令名称 `*` 。
+嵌套组件接收带有组件名称和 `*` 分隔符前缀的命令名称。
 
 ```nodejs
 const commandHandler = async (request, response) => {
@@ -345,9 +345,9 @@ const commandHandler = async (request, response) => {
 client.onDeviceMethod('thermostat1*reboot', commandHandler);
 ```
 
-#### <a name="request-and-response-payloads"></a>请求和响应负载
+#### <a name="request-and-response-payloads"></a>请求和响应有效负载
 
-命令使用类型来定义其请求和响应负载。 设备必须反序列化传入的输入参数并序列化响应。 下面的示例演示如何实现具有负载中定义的复杂类型的命令：
+命令使用类型定义其请求和响应有效负载。 设备必须反序列化传入的输入参数并串行化响应。 下面的示例演示如何实现具有在有效负载中定义的复杂类型的命令：
 
 ```json
 {
@@ -398,7 +398,7 @@ client.onDeviceMethod('thermostat1*reboot', commandHandler);
 }
 ```
 
-下面的代码段演示了设备如何实现此命令定义，其中包括用于启用序列化和反序列化的类型：
+下面的代码片段演示了设备如何实现此命令定义，其中包括用于启用序列化和反序列化的类型：
 
 ```nodejs
 class TemperatureSensor {
@@ -435,4 +435,4 @@ const commandHandler = async (request, response) => {
 ```
 
 > [!Tip]
-> 请求和响应名称不存在于通过网络传输的序列化有效负载中。
+> 请求和响应名称不存在于通过网络传输的串行化有效负载中。

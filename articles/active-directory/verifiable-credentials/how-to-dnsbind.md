@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 90ea52b0ed5ee2d8e36caab18491eecd6e1295fd
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: ad5bb6e45479b4cccfa0b002427066439135e468
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222809"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588439"
 ---
 # <a name="link-your-domain-to-your-decentralized-identifier-did"></a>将域链接到分散式身份识别 (DID)
 
@@ -29,7 +29,7 @@ ms.locfileid: "106222809"
 > * 域链接流程的工作原理是什么？
 > * 验证/未验证域逻辑的工作原理是什么？
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要将 DID 链接到域，需要完成以下操作。
 
@@ -122,7 +122,7 @@ DID 作为未定位到现有系统的标识符启动。 DID 的作用在于可�
 
 4. 复制 DID 并打开 [ION 网络资源管理器](https://identity.foundation/ion/explorer)，验证 DID 文档中是否包含相同的域。 
 
-5. 在指定位置托管已知配置资源。 示例：https://www.example.com/.well-known/did-configuration.json
+5. 在指定位置托管已知配置资源。 示例： `https://www.example.com/.well-known/did-configuration.json`
 
 6. 尝试使用 Microsoft Authenticator 颁发或演示以进行验证。 请确保 Authenticator“警告不安全应用”中的设置已打开。
 

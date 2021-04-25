@@ -5,15 +5,15 @@ services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm, azla
-ms.topic: article
-ms.date: 04/05/2021
+ms.topic: conceptual
+ms.date: 04/19/2021
 tags: connectors
-ms.openlocfilehash: 5eae6b48a65f919ea233ad77a215ed5672425175
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: a19253e117f748b4d4045bfd2a29552018bba91e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385847"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781552"
 ---
 # <a name="create-and-manage-sftp-files-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
@@ -123,7 +123,7 @@ SFTP-SSH 触发器会轮询 SFTP 文件系统并查找自上次轮询以来已�
 
 ### <a name="trigger-recurrence-shift-and-drift"></a>触发器重复周期移动和偏移
 
-你需要首先为其创建连接的基于连接的触发器（例如 SFTP SSH 触发器）不同于在 Azure 逻辑应用中以原生方式运行的内置触发器，如[重复周期触发器](../connectors/connectors-native-recurrence.md)。 在基于连接的周期性触发器中，重复周期计划不是控制执行的唯一驱动因素，并且时区只确定初始开始时间。 后续运行取决于定期计划、上一次触发器执行以及其他可能导致运行时间发生偏差或产生意外行为的因素。 例如，当夏令时 (DST) 开始和结束时，意外的行为可能包括无法维持指定的时间表。 若要确保重复周期时间在 DST 生效时不会变化，请手动调整重复周期。 这样一来，工作流将继续在预期时间运行。 否则，开始时间将在 DST 开始时向前移动 1 小时，在 DST 结束时向后移动 1 小时。 有关详细信息，请参阅[基于连接的触发器的重复周期](../connectors/apis-list.md#recurrence-connection-based)。
+你需要首先为其创建连接的基于连接的触发器（例如 SFTP SSH 触发器）不同于在 Azure 逻辑应用中以原生方式运行的内置触发器，如[重复周期触发器](../connectors/connectors-native-recurrence.md)。 在基于连接的周期性触发器中，重复周期计划不是控制执行的唯一驱动因素，并且时区只确定初始开始时间。 后续运行取决于定期计划、上一次触发器执行以及其他可能导致运行时间发生偏差或产生意外行为的因素。 例如，当夏令时 (DST) 开始和结束时，意外的行为可能包括无法维持指定的时间表。 若要确保重复周期时间在 DST 生效时不会变化，请手动调整重复周期。 这样一来，工作流将继续在预期时间运行。 否则，开始时间将在 DST 开始时向前移动 1 小时，在 DST 结束时向后移动 1 小时。 有关详细信息，请参阅[基于连接的触发器的重复周期](../connectors/apis-list.md#recurrence-for-connection-based-triggers)。
 
 <a name="convert-to-openssh"></a>
 

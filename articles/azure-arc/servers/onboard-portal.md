@@ -1,18 +1,18 @@
 ---
 title: 从 Azure 门户将混合计算机连接到 Azure
-description: 本文介绍如何使用 Azure 门户中的启用了 Azure Arc 的服务器安装代理并将计算机连接到 Azure。
+description: 本文介绍如何安装代理，并通过 Azure 门户使用已启用 Azure Arc 的服务器将计算机连接到 Azure。
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.openlocfilehash: d7a89db7b8a42476a312a8f9a96c5ad230b140a2
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102183142"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>从 Azure 门户将混合计算机连接到 Azure
 
-你可以通过手动执行一组步骤，为你的环境中的一台或多台 Windows 或 Linux 计算机启用启用了 Azure Arc 的服务器。 或者，可以运行我们提供的模板脚本来使用自动化方法。 此脚本可以自动下载和安装两个代理。
+可以手动执行一系列步骤，为环境中的一台或少量 Windows 或 Linux 计算机启用已启用 Azure Arc 的服务器。 或者，可以运行我们提供的模板脚本来使用自动化方法。 此脚本可以自动下载和安装两个代理。
 
 这种安装和配置代理的方法要求你在计算机上拥有管理员权限。 在 Linux 上，需使用 root 帐户；在 Windows 上，你需是“本地管理员组”的成员。
 
@@ -22,7 +22,7 @@ ms.locfileid: "102183142"
 
 ## <a name="generate-the-installation-script-from-the-azure-portal"></a>从 Azure 门户生成安装脚本
 
-Azure 门户中提供了用于自动下载和安装以及与 Azure Arc 建立连接的脚本。 若要完成此过程，请执行以下步骤：
+Azure 门户中提供了用于自动下载和安装以及与 Azure Arc 建立连接的脚本。 若要完成该过程，请执行以下步骤：
 
 1. 在浏览器中转到 [Azure 门户](https://portal.azure.com)。
 
@@ -38,7 +38,7 @@ Azure 门户中提供了用于自动下载和安装以及与 Azure Arc 建立连
 
     1. 在“资源组”下拉列表中，选择要从中管理计算机的资源组。
     1. 在“区域”下拉列表中，选择用于存储服务器元数据的 Azure 区域。
-    1. 在 " **操作系统** " 下拉列表中，选择要在其中运行脚本的操作系统。
+    1. 在“操作系统”下拉列表中，选择脚本配置为要在其上运行的操作系统。
     1. 如果计算机是通过代理服务器连接到 Internet 进行通信的，请指定计算机用来与代理服务器通信的代理服务器 IP 地址或名称以及端口号。 按格式 `http://<proxyURL>:<proxyport>` 输入值。
     1. 在完成时选择“下一步:  标记”。
 
@@ -58,7 +58,7 @@ Azure 门户中提供了用于自动下载和安装以及与 Azure Arc 建立连
 >* 若要安装或卸载代理，必须拥有“管理员”权限。
 >* 必须先下载 Installer 包并将其复制到目标服务器上的某个文件夹，或者从共享网络文件夹下载。 如果在不指定任何选项的情况下运行该 Installer 包，它将启动一个安装向导，以交互方式指导用户安装代理。
 
-如果计算机需要通过代理服务器与服务进行通信，则在安装代理后，需要运行以下步骤中描述的命令。 此命令设置代理服务器系统环境变量 `https_proxy` 。
+如果计算机需要通过代理服务器来与服务通信，则在安装代理后，需要运行以下步骤中所述的某个命令。 此命令将设置代理服务器系统环境变量 `https_proxy`。
 
 如果不熟悉 Windows Installer 包的命令行选项，请查看 [Msiexec 标准命令行选项](/windows/win32/msi/standard-installer-command-line-options)和 [Msiexec 命令行选项](/windows/win32/msi/command-line-options)。
 
@@ -74,9 +74,9 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
     msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
     ```
 
-    如果完成安装后代理无法启动，请检查日志以获取详细的错误信息。 日志目录为 *%ProgramData%\AzureConnectedMachineAgent\log*。
+    如果完成安装后代理无法启动，请检查日志以获取详细的错误信息。 日志目录为 %ProgramData%\AzureConnectedMachineAgent\log。
 
-2. 如果计算机需要通过代理服务器进行通信，若要设置代理服务器环境变量，请运行以下命令：
+2. 如果计算机需要通过代理服务器通信，若要设置代理服务器环境变量，请运行以下命令：
 
     ```powershell
     [Environment]::SetEnvironmentVariable("https_proxy", "http://{proxy-url}:{proxy-port}", "Machine")
@@ -102,12 +102,12 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
 1. 打开权限提升的 PowerShell 命令提示符。
 
     >[!NOTE]
-    >此脚本仅支持在64位版本的 Windows PowerShell 中运行。
+    >仅支持在 64 位版本的 Windows PowerShell 中运行该脚本。
     >
 
 1. 切换到脚本所复制到的文件夹或共享，然后在服务器上运行 `./OnboardingScript.ps1` 脚本来执行复制的脚本。
 
-如果完成安装后代理无法启动，请检查日志以获取详细的错误信息。 日志目录为 *%ProgramData%\AzureConnectedMachineAgent\log*。
+如果完成安装后代理无法启动，请检查日志以获取详细的错误信息。 日志目录为 %ProgramData%\AzureConnectedMachineAgent\log。
 
 ## <a name="install-and-validate-the-agent-on-linux"></a>在 Linux 上安装并验证代理
 
@@ -150,11 +150,11 @@ bash ~/Install_linux_azcmagent.sh
 
 ### <a name="install-with-the-scripted-method"></a>使用脚本方法安装
 
-1. 使用具有根访问权限的帐户登录到服务器。
+1. 使用拥有 root 访问权限的帐户登录到服务器。
 
 1. 切换到脚本所复制到的文件夹或共享，然后在服务器上运行 `./OnboardingScript.sh` 脚本来执行复制的脚本。
 
-如果完成安装后代理无法启动，请检查日志以获取详细的错误信息。 日志目录为 *var/opt/azcmagent/log*。
+如果完成安装后代理无法启动，请检查日志以获取详细的错误信息。 日志目录为 var/opt/azcmagent/log。
 
 ## <a name="verify-the-connection-with-azure-arc"></a>验证是否与 Azure Arc 连接
 
@@ -164,8 +164,8 @@ bash ~/Install_linux_azcmagent.sh
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关疑难解答信息，请参阅 [连接计算机代理疑难解答指南](troubleshoot-agent-onboard.md)。
+- 在 [Connected Machine Agent 故障排除指南](troubleshoot-agent-onboard.md)中可以找到故障排除信息。
 
-- 了解如何使用 [Azure 策略](../../governance/policy/overview.md)管理计算机，例如 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否已向预期的 Log Analytics 工作区进行报告，使用 [vm Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md)启用监视等操作。
+- 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)、验证计算机是否向预期的 Log Analytics 工作区报告、使用[用于 VM 的 Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md) 启用监视，等等。
 
-- 详细了解 [Log Analytics 代理](../../azure-monitor/agents/log-analytics-agent.md)。 如果要使用用于 VM 的 Azure Monitor 收集操作系统和工作负荷监视数据，请使用 Log Analytics agent for Windows 和 Linux，并使用自动化 runbook 或功能（如更新管理）管理它，或使用 [Azure 安全中心](../../security-center/security-center-introduction.md)之类的其他 azure 服务。
+- 详细了解 [Log Analytics 代理](../../azure-monitor/agents/log-analytics-agent.md)。 如果你想要使用用于 VM 的 Azure Monitor 收集操作系统和工作负载监视数据、使用自动化 Runbook 或“更新管理”等功能管理这些数据，或使用 [Azure 安全中心](../../security-center/security-center-introduction.md)等其他 Azure 服务，则需要适用于 Windows 和 Linux 的 Log Analytics 代理。

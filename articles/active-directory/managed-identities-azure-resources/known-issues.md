@@ -1,5 +1,5 @@
 ---
-title: 托管标识的 FAQ 和已知问题 - Azure AD
+title: 托管标识的已知问题 - Azure Active Directory
 description: Azure 资源托管标识的已知问题。
 services: active-directory
 documentationcenter: ''
@@ -13,138 +13,23 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 02/04/2021
+ms.date: 04/08/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 3f1be2e64435cb0bcdb369a398a9a65fc3714fb2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d2b6323a15595e57e7e89c6a83f9f718422e1d7
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100008530"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226916"
 ---
-# <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure 资源托管标识的 FAQ 和已知问题
+# <a name="known-issues-with-managed-identities"></a>托管标识的已知问题
 
-[!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
+本文讨论有关托管标识的几个问题以及如何解决这些问题。 [常见问题](managed-identities-faq.md)一文中介绍了有关托管标识的常见问题。
+## <a name="vm-fails-to-start-after-being-moved"></a>迁移后无法启动 VM 
 
-## <a name="frequently-asked-questions-faqs"></a>常见问题解答 (FAQ)
-
-> [!NOTE]
-> Azure 资源托管标识是以前称为托管服务标识 (MSI) 的服务的新名称。
-
-### <a name="how-can-you-find-resources-that-have-a-managed-identity"></a>如何查找具有托管标识的资源？
-
-可通过使用以下 Azure CLI 命令来查找具有系统分配的托管标识的资源列表： 
-
-```azurecli-interactive
-az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table
-```
-
-### <a name="do-managed-identities-have-a-backing-app-object"></a>托管标识是否具有后备应用对象？
-
-不能。 托管标识和 Azure AD 应用注册在目录中是不同的。 
-
-应用注册有两个组件：应用程序对象和服务主体对象。 Azure 资源的托管标识仅包含以下组件之一：一个服务主体对象。 
-
-托管标识在目录中没有通常用于授予 MS Graph 应用权限的应用程序对象。 需要直接将托管标识的 MS Graph 权限授予服务主体。  
-
-### <a name="can-the-same-managed-identity-be-used-across-multiple-regions"></a>是否可以跨多个区域使用同一托管标识？
-
-简而言之，是的，可以在多个 Azure 区域中使用用户分配的托管标识。 展开来说就是，当用户分配的托管标识作为区域资源创建时，在 Azure AD 中创建的关联[服务主体](../develop/app-objects-and-service-principals.md#service-principal-object) (SPN) 可在全球范围使用。 可以从任何 Azure 区域使用服务主体，其可用性取决于 Azure AD 的可用性。 例如，如果在中南部区域创建了一个用户分配的托管标识，而该区域变为不可用，则此问题仅影响托管标识本身的[控制平面](../../azure-resource-manager/management/control-plane-and-data-plane.md)活动。  已经配置为使用托管标识的任何资源执行的活动都不会受到影响。
-
-### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Azure 资源托管标识可以用于 Azure 云服务吗？
-
-否，Azure 云服务中没有支持 Azure 资源托管标识的计划。
-
-### <a name="what-is-the-credential-associated-with-a-managed-identity-how-long-is-it-valid-and-how-often-is-it-rotated"></a>与托管标识关联的凭据是什么？ 它的有效时间有多长？其轮换频率有多高？
-
-> [!NOTE]
-> 托管标识的身份验证方式属于在内部具体实施的措施，可能会在不通知的情况下更改。
-
-托管标识使用基于证书的身份验证。 每个托管标识的凭据的有效期为 90 天，在 45 天后轮换。
-
-### <a name="what-is-the-security-boundary-of-managed-identities-for-azure-resources"></a>什么是 Azure 资源托管标识的安全边界？
-
-标识的安全边界是标识所附加到的资源。 例如，启用了 Azure 资源托管标识的虚拟机的安全边界是虚拟机。 在该 VM 上运行的任何代码都可以调用 Azure 资源托管标识终结点和请求令牌。 使用支持 Azure 资源托管标识的其他资源也具有类似体验。
-
-### <a name="what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request"></a>如果没有在请求中指定标识，IMDS 将默认采用什么标识？
-
-- 如果启用了系统分配的托管标识并且没有在请求中指定标识，则 IMDS 将默认采用系统分配的托管标识。
-- 如果未启用系统分配的托管标识并且仅存在一个用户分配的托管标识，则 IMDS 将默认采用该单一用户分配的托管标识。 
-- 如果未启用系统分配的托管的标识，并且存在多个用户分配的托管标识，则必须在请求中指定一个托管标识。
-
-### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>如果我将订阅移动到另一个目录中，是否会自动重新创建托管标识？
-
-否。 如果将订阅移到另一个目录中，则必须手动重新创建托管标识并重新向它们授予 Azure 角色分配。
-- 对于系统分配的托管标识：禁用并重新启用。 
-- 对于用户分配的托管标识：删除、重新创建并重新将其附加到所需的资源（例如虚拟机）
-
-### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>是否可以使用托管标识来访问不同目录/租户中的资源？
-
-否。 托管标识当前不支持跨目录方案。 
-
-### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>在资源上进行标识托管需要什么 Azure RBAC 权限？ 
-
-- 系统分配的托管标识：需要针对资源的写入权限。 例如，对于虚拟机，你需要 Microsoft.Compute/virtualMachines/write 权限。 此操作包含在特定于资源的内置角色（如[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)）中。
-- 用户分配的托管标识：需要对资源的写入权限。 例如，对于虚拟机，你需要 Microsoft.Compute/virtualMachines/write 权限。 除了针对托管标识分配的[托管标识操作员](../../role-based-access-control/built-in-roles.md#managed-identity-operator)角色外。
-
-### <a name="how-do-i-prevent-the-creation-of-user-assigned-managed-identities"></a>如何阻止创建用户分配的托管标识？
-
-可以使用 [Azure Policy](../../governance/policy/overview.md) 来阻止用户创建用户分配的托管标识
-
-- 导航到 [Azure 门户](https://portal.azure.com)，然后转到“策略”。
-- 选择“定义”
-- 选择“+ 策略定义”并输入必要的信息。
-- 在策略规则部分，粘贴
-
-```json
-{
-  "mode": "All",
-  "policyRule": {
-    "if": {
-      "field": "type",
-      "equals": "Microsoft.ManagedIdentity/userAssignedIdentities"
-    },
-    "then": {
-      "effect": "deny"
-    }
-  },
-  "parameters": {}
-}
-
-```
-
-创建策略后，将其分配给你想要使用的资源组。
-
-- 导航到资源组。
-- 查找要用于测试的资源组。
-- 从左侧菜单中选择“策略”。
-- 选择“分配策略”
-- 在“基本信息”部分中，提供：
-    - 范围：用于测试的资源组
-    - 策略定义：之前创建的策略。
-- 将所有其他设置保留为默认设置，然后选择“查看 + 创建”
-
-此时，在资源组中创建用户分配的托管标识的任何尝试都将失败。
-
-  ![策略冲突](./media/known-issues/policy-violation.png)
-
-## <a name="known-issues"></a>已知问题
-
-### <a name="automation-script-fails-when-attempting-schema-export-for-managed-identities-for-azure-resources-extension"></a>尝试 Azure 资源托管标识扩展的架构导出功能时，“自动化脚本”失败
-
-如果在 VM 上启用了 Azure 资源托管标识，当尝试将“自动化脚本”功能用于 VM 或其资源组时，将显示以下错误：
-
-![Azure 资源托管标识自动化脚本导出错误](./media/msi-known-issues/automation-script-export-error.png)
-
-Azure 资源托管标识 VM 扩展（计划在 2019 年 1 月弃用）当前不支持将其架构导出到资源组模板的功能。 因此，生成的模板不显示用于在资源上启用 Azure 资源托管标识的配置参数。 按照[使用模板在 Azure VM 上配置 Azure 资源托管标识](qs-configure-template-windows-vm.md)中的示例，可以手动添加这些部分。
-
-当架构导出功能可用于 Azure 资源托管标识 VM 扩展（计划在 2019 年 1 月弃用）时，它将在[导出包含 VM 扩展的资源组](../../virtual-machines/extensions/export-templates.md#supported-virtual-machine-extensions)中列出。
-
-### <a name="vm-fails-to-start-after-being-moved-from-resource-group-or-subscription"></a>从资源组或订阅迁移后无法启动 VM
-
-如果迁移处于运行状态的 VM，它将在迁移期间继续运行。 不过，如果在迁移后停止并重启 VM，那么它将无法启动。 导致此问题发生的原因是，VM 未更新对 Azure 资源托管标识的标识的引用，仍然继续指向旧资源组中的标识。
+如果从资源组或订阅中移动处于运行状态的 VM，它将在移动过程中继续运行。 不过，如果在迁移后停止并重启 VM，那么它将无法启动。 导致此问题发生的原因是，VM 未更新对 Azure 资源托管标识的标识的引用，仍然继续指向旧资源组中的标识。
 
 **解决方法** 
  
@@ -164,7 +49,7 @@ az vm update -n <VM Name> -g <Resource Group> --set tags.fixVM=1
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
 
-### <a name="transferring-a-subscription-between-azure-ad-directories"></a>在 Azure AD 目录之间转移订阅
+## <a name="transferring-a-subscription-between-azure-ad-directories"></a>在 Azure AD 目录之间转移订阅
 
 将订阅移动/转移到另一个目录时，托管标识不会更新。 因此，任何现存的系统分配的或用户分配的托管标识将被破坏。 
 
@@ -175,6 +60,7 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 
 有关详细信息，请参阅[将 Azure 订阅转移到其他 Azure AD 目录](../../role-based-access-control/transfer-subscription.md)。
 
-### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>将用户分配的托管标识移动到其他资源组/订阅
 
-不支持将用户分配的托管标识移动到其他资源组。
+## <a name="next-steps"></a>后续步骤
+
+你可以查看列出了[支持托管标识的服务](services-support-managed-identities.md)和[常见问题](managed-identities-faq.md)的文章

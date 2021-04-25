@@ -3,14 +3,14 @@ title: 在 Service Fabric 群集中部署纯无状态节点类型
 description: 了解如何在 Azure Service Fabric 群集中创建和部署无状态节点类型。
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 09/25/2020
+ms.date: 04/16/2021
 ms.author: pepogors
-ms.openlocfilehash: 74680f7b56ad98851e2839b53c1f9e92b6c6c23a
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 68c617b6e9345910bfd913e61e227a8e6c401bbc
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107029999"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576034"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types"></a>使用纯无状态节点类型部署 Azure Service Fabric 群集
 关于 Service Fabric 节点类型，有一个固有的假设，即在某个时间点，有状态服务可能会被放置到节点上。 无状态节点类型放宽了对节点类型的这种假设，因此允许节点类型使用其他功能，例如更快的横向扩展操作、支持在“青铜”持续性级别下自动升级 OS，以及在一个虚拟机规模集中扩展到 100 多个节点。

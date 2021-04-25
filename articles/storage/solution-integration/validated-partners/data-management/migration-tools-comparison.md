@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/31/2021
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 862feace6aab4f49ad3482c4ccd6510669c876a1
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: 15daeb0e6bf320a0727d8e6ea502063a30e67ad0
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107576527"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106230898"
 ---
 # <a name="comparison-matrix"></a>比较矩阵
 
@@ -85,7 +85,7 @@ ms.locfileid: "107576527"
 | 随时间推移的年龄分布      | 否      | 是 | 是 | 是            |
 | 访问时间                     | 否      | 是 | 是 | 是            |
 | 修改时间                   | 否      | 是 | 是 | 是            |
-| 创建时间                   | 否      | 是 | 是 | 是            |
+| 创建时间                   | 否      | 是 | 是 | 是 （限 SMB） |
 | 每个文件/对线报表状态 | 部分 | 是 | 是 | 是            |
 
 ## <a name="licensing"></a>许可
@@ -141,7 +141,7 @@ ms.locfileid: "107576527"
 
 列表的上次验证时间为 2021 年 3 月 31 日。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [Azure 存储迁移概述](../../../common/storage-migration-overview.md)
 - [选择 Azure 数据传输解决方案](/azure/storage/common/storage-choose-data-transfer-solution?toc=/azure/storage/blobs/toc.json)

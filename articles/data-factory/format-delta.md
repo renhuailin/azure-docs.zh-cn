@@ -1,17 +1,17 @@
 ---
 title: Azure 数据工厂中的增量格式
 description: 使用增量格式转换和移动来自 delta lake 的数据
-author: djpmsft
+author: dcstwh
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.author: daperlov
-ms.openlocfilehash: bb5360a678751b37cf36677fca611b39746621f4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/26/2020
+ms.author: weetok
+ms.openlocfilehash: 6d9d2b0d185750cf8ed8192661f28a2b82d88b78
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100386486"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222532"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Azure 数据工厂中的增量格式
 
@@ -75,6 +75,8 @@ source(output(movieId as integer,
 | 压缩级别 | 选择压缩是否尽快完成，或者是否应该以最佳方式压缩生成的文件。 | 如果指定了 `compressedType`，则为必需项。 | `Optimal` 或 `Fastest` | compressionLevel |
 | 清空 | 以小时为单位指定旧版本表的保留期阈值。 小于等于 0 的值默认为 30 天 | 是 | Integer | vacuum |
 | Update 方法 | 指定在 delta lake 上允许哪些更新操作。 对于不插入的方法，需要执行前面的更改行转换才能标记行。 | 是 | `true` 或 `false` | deletable <br> insertable <br> 可更新 <br> merge |
+| 优化写入 | 通过优化 Spark 执行程序中的内部随机选择，使写入操作实现更高的吞吐量。 因此，你可能会注意到较大的分区和文件较少 | 否 | `true` 或 `false` | optimizedWrite: true |
+| 自动压缩 | 完成任何写入操作后，Spark 会自动执行 ```OPTIMIZE``` 命令以重新组织数据，并在必要时生成更多分区，以便在将来获得更好的读取性能 | 否 | `true` 或 `false` |    autoCompact: true |
 
 ### <a name="delta-sink-script-example"></a>Delta 接收器脚本示例
 

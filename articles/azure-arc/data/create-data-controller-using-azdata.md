@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 03/02/2021
+ms.date: 04/07/2021
 ms.topic: how-to
-ms.openlocfilehash: facb7db73bf7a709b9ed07e460d8653d79f1ed2f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f7bc90f2748d230ad50868cff5d7a8f7b69d850a
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101687579"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029533"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>使用 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 创建 Azure Arc 数据控制器
 
@@ -30,7 +30,7 @@ ms.locfileid: "101687579"
 
 无论选择哪个目标平台，都需要先设置以下环境变量，再创建数据控制器管理员用户。 你可以根据需要，向需要对数据控制器具有管理员访问权限的其他人员提供这些凭据。
 
-AZDATA_USERNAME - 为数据控制器管理员用户选择的用户名。 示例：`arcadmin`
+AZDATA_USERNAME - 为数据控制器管理员用户选择的用户名。 示例： `arcadmin`
 
 AZDATA_PASSWORD - 为数据控制器管理员用户选择的密码。 密码的长度必须至少为 8 个字符，并且必须包含以下四种字符中的三种：大写字母、小写字母、数字和符号。
 
@@ -57,131 +57,6 @@ kubectl get namespace
 kubectl config current-context
 ```
 
-### <a name="connectivity-modes"></a>连接模式
-
-如[连接模式和要求](./connectivity.md)中所述，Azure Arc 数据控制器可使用 `direct` 或 `indirect` 连接模式进行部署。 使用 `direct` 连接模式时，会自动将使用情况数据持续地发送到 Azure。 在本文中，示例指定 `direct` 连接模式，如下所示：
-
-   ```console
-   --connectivity-mode direct
-   ```
-
-   若要使用 `indirect` 连接模式创建控制器，请更新示例中的脚本，如下所示：
-
-   ```console
-   --connectivity-mode indirect
-   ```
-
-#### <a name="create-service-principal"></a>创建服务主体
-
-如果要使用 `direct` 连接模式部署 Azure Arc 数据控制器，则需要服务主体凭据来实现 Azure 连接性。 服务主体用于上传使用情况和指标数据。 
-
-请按照以下命令来创建指标上传服务主体：
-
-> [!NOTE]
-> 创建服务主体需要 [Azure 中的特定权限](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
-
-若要创建服务主体，请更新以下示例。 将 `<ServicePrincipalName>` 替换为服务主体的名称，并运行以下命令：
-
-```azurecli
-az ad sp create-for-rbac --name <ServicePrincipalName>
-``` 
-
-如果你在前面创建了服务主体，并且只是需要获取当前凭据，那么，请运行以下命令来重置该凭据。
-
-```azurecli
-az ad sp credential reset --name <ServicePrincipalName>
-```
-
-例如，若要创建名为 `azure-arc-metrics` 的服务主体，请运行以下命令
-
-```console
-az ad sp create-for-rbac --name azure-arc-metrics
-```
-
-示例输出：
-
-```output
-"appId": "2e72adbf-de57-4c25-b90d-2f73f126e123",
-"displayName": "azure-arc-metrics",
-"name": "http://azure-arc-metrics",
-"password": "5039d676-23f9-416c-9534-3bd6afc78123",
-"tenant": "72f988bf-85f1-41af-91ab-2d7cd01ad1234"
-```
-
-将 `appId`、`password` 和 `tenant` 值保存在环境变量中，供以后使用。 
-
-#### <a name="save-environment-variables-in-windows"></a>在 Windows 中保存环境变量
-
-```console
-SET SPN_CLIENT_ID=<appId>
-SET SPN_CLIENT_SECRET=<password>
-SET SPN_TENANT_ID=<tenant>
-SET SPN_AUTHORITY=https://login.microsoftonline.com
-```
-
-#### <a name="save-environment-variables-in-linux-or-macos"></a>在 Linux 或 macOS 中保存环境变量
-
-```console
-export SPN_CLIENT_ID='<appId>'
-export SPN_CLIENT_SECRET='<password>'
-export SPN_TENANT_ID='<tenant>'
-export SPN_AUTHORITY='https://login.microsoftonline.com'
-```
-
-#### <a name="save-environment-variables-in-powershell"></a>在 PowerShell 中保存环境变量
-
-```console
-$Env:SPN_CLIENT_ID="<appId>"
-$Env:SPN_CLIENT_SECRET="<password>"
-$Env:SPN_TENANT_ID="<tenant>"
-$Env:SPN_AUTHORITY="https://login.microsoftonline.com"
-```
-
-在创建了服务主体后，请将该服务主体分配到相应的角色。 
-
-### <a name="assign-roles-to-the-service-principal"></a>将角色分配到服务主体
-
-请运行此命令，以将该服务主体分配到你的数据库实例资源所在的订阅上的 `Monitoring Metrics Publisher` 角色：
-
-#### <a name="run-the-command-on-windows"></a>在 Windows 上运行该命令
-
-> [!NOTE]
-> 在从 Windows 环境中运行时，需要对角色名称使用双引号。
-
-```azurecli
-az role assignment create --assignee <appId> --role "Monitoring Metrics Publisher" --scope subscriptions/<Subscription ID>
-az role assignment create --assignee <appId> --role "Contributor" --scope subscriptions/<Subscription ID>
-```
-
-#### <a name="run-the-command-on-linux-or-macos"></a>在 Linux 或 macOS 上运行该命令
-
-```azurecli
-az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/<Subscription ID>
-az role assignment create --assignee <appId> --role 'Contributor' --scope subscriptions/<Subscription ID>
-```
-
-#### <a name="run-the-command-in-powershell"></a>在 PowerShell 中运行该命令
-
-```powershell
-az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/<Subscription ID>
-az role assignment create --assignee <appId> --role 'Contributor' --scope subscriptions/<Subscription ID>
-```
-
-```output
-{
-  "canDelegate": null,
-  "id": "/subscriptions/<Subscription ID>/providers/Microsoft.Authorization/roleAssignments/f82b7dc6-17bd-4e78-93a1-3fb733b912d",
-  "name": "f82b7dc6-17bd-4e78-93a1-3fb733b9d123",
-  "principalId": "5901025f-0353-4e33-aeb1-d814dbc5d123",
-  "principalType": "ServicePrincipal",
-  "roleDefinitionId": "/subscriptions/<Subscription ID>/providers/Microsoft.Authorization/roleDefinitions/3913510d-42f4-4e42-8a64-420c39005123",
-  "scope": "/subscriptions/<Subscription ID>",
-  "type": "Microsoft.Authorization/roleAssignments"
-}
-```
-
-将服务主体分配给相应角色，并设置环境变量后，可以继续创建数据控制器 
-
 ## <a name="create-the-azure-arc-data-controller"></a>创建 Azure Arc 数据控制器
 
 > [!NOTE]
@@ -203,10 +78,10 @@ az role assignment create --assignee <appId> --role 'Contributor' --scope subscr
 如果要使用 `managed-premium` 作为存储类，则可以运行以下命令来创建数据控制器。 用资源组名称、订阅 ID 和 Azure 位置替换命令中的占位符。
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
+azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
+#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
 ```
 
 如果不确定要使用哪种存储类，则应使用无论使用的是哪种 VM 类型均受支持的 `default` 存储类。 它只是不能提供最快的性能。
@@ -214,10 +89,10 @@ azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace ar
 如果要使用 `default` 存储类，则可以运行以下命令：
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
+azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
+#azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
 ```
 
 运行该命令后，请继续[监视创建状态](#monitoring-the-creation-status)。
@@ -229,10 +104,10 @@ azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace ar
 你可以运行以下命令，使用 managed-premium 存储类来创建数据控制器：
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
+azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
+#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
 ```
 
 如果不确定要使用哪种存储类，则应使用无论使用的是哪种 VM 类型均受支持的 `default` 存储类。 在 Azure Stack Hub 中，高级磁盘和标准磁盘由同一存储基础结构提供支持。 因此，它们预计会提供相同的常规性能，但具有不同的 IOPS 限制。
@@ -240,10 +115,10 @@ azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace ar
 如果要使用 `default` 存储类，则可以运行以下命令。
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
+azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
+#azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
 ```
 
 运行该命令后，请继续[监视创建状态](#monitoring-the-creation-status)。
@@ -255,10 +130,10 @@ azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace ar
 你可以运行以下命令，使用 `default` 存储类和 `LoadBalancer` 服务类型来创建数据控制器。
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
+azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
+#azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
 ```
 
 运行该命令后，请继续[监视创建状态](#monitoring-the-creation-status)。
@@ -290,10 +165,10 @@ azdata arc dc config init --source azure-arc-azure-openshift --path ./custom
 > 在此处和上面的 `oc adm policy add-scc-to-user` 命令中使用相同的命名空间。 例如 `arc`。
 
 ```console
-azdata arc dc create --profile-name azure-arc-azure-openshift --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
+azdata arc dc create --profile-name azure-arc-azure-openshift --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
 
 #Example
-#azdata arc dc create --profile-name azure-arc-azure-openshift --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
+#azdata arc dc create --profile-name azure-arc-azure-openshift --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
 ```
 
 运行该命令后，请继续[监视创建状态](#monitoring-the-creation-status)。
@@ -381,10 +256,10 @@ azdata arc dc config replace --path ./custom/control.json --json-values spec.sec
 
 
 ```console
-azdata arc dc create --path ./custom --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
+azdata arc dc create --path ./custom --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
 
 #Example:
-#azdata arc dc create --path ./custom --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
+#azdata arc dc create --path ./custom --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
 ```
 
 运行该命令后，请继续[监视创建状态](#monitoring-the-creation-status)。
@@ -425,10 +300,10 @@ azdata arc dc config replace --path ./custom/control.json --json-values "$.spec.
 现在，可以使用以下命令创建数据控制器了。
 
 ```console
-azdata arc dc create --path ./custom --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
+azdata arc dc create --path ./custom --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
 
 #Example:
-#azdata arc dc create --path ./custom --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
+#azdata arc dc create --path ./custom --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
 ```
 
 运行该命令后，请继续[监视创建状态](#monitoring-the-creation-status)。
@@ -440,10 +315,10 @@ azdata arc dc create --path ./custom --namespace arc --name arc --subscription <
 运行以下命令，使用提供的 EKS 部署配置文件创建数据控制器。
 
 ```console
-azdata arc dc create --profile-name azure-arc-eks --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
+azdata arc dc create --profile-name azure-arc-eks --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-eks --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
+#azdata arc dc create --profile-name azure-arc-eks --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
 ```
 
 运行该命令后，请继续[监视创建状态](#monitoring-the-creation-status)。
@@ -455,10 +330,10 @@ azdata arc dc create --profile-name azure-arc-eks --namespace arc --name arc --s
 运行以下命令，使用提供的 GKE 部署配置文件创建数据控制器。
 
 ```console
-azdata arc dc create --profile-name azure-arc-gke --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
+azdata arc dc create --profile-name azure-arc-gke --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-gke --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
+#azdata arc dc create --profile-name azure-arc-gke --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
 ```
 
 运行该命令后，请继续[监视创建状态](#monitoring-the-creation-status)。
@@ -478,7 +353,7 @@ kubectl get datacontroller/arc --namespace arc
 kubectl get pods --namespace arc
 ```
 
-还可运行如下命令来检查任何特定 Pod 的创建状态。 这对于排查问题特别有用。
+还可以通过运行如下命令来检查任何特定 Pod 的创建状态。 这对于排查问题特别有用。
 
 ```console
 kubectl describe po/<pod name> --namespace arc

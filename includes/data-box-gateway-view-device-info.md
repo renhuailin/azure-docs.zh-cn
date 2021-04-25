@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: alkohli
 ms.openlocfilehash: ca060e75e50a3e2327fc0516c3cfc9550afbf90f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96581610"
 ---
 1. [连接到 PowerShell 接口](#connect-to-the-powershell-interface)。
@@ -43,16 +43,16 @@ ms.locfileid: "96581610"
     IsRegistered                  : False
     ```
 
-    下面是汇总一些重要设备信息的表：
+    下表汇总了一些重要的设备信息：
 
-    | 参数 | 描述 |
+    | 参数 | 说明 |
     |-----------|-------------|
-    | FriendlyName                   | 设备部署过程中通过本地 web UI 配置的设备的友好名称。 默认的友好名称为设备序列号。  |
-    | SerialNumber                   | 设备序列号是在工厂中分配的唯一编号。                                                                             |
-    | 建模                          | 设备的型号。 模型对于 Data Box Gateway 是虚拟的。                   |
-    | FriendlySoftwareVersion        | 对应于设备软件版本的友好字符串。 对于运行预览版的系统，友好软件版本将为 1902 Data Box Edge。 |
-    | HcsVersion                     | 设备上运行的 HCS 软件版本。 例如，与 Data Box Edge 1902 对应的 HCS 软件版本为1.4.771.324。            |
-    | LocalCapacityInMb              | 设备的总本地容量（以 Mb 为单位）。                                                                                                        |
-    | IsRegistered                   | 此值用于指示是否将设备与服务一起激活。                                                                                         |
+    | FriendlyName                   | 在部署设备期间通过本地 Web UI 配置的设备易记名称。 默认的友好名称为设备序列号。  |
+    | SerialNumber                   | 设备序列号是出厂分配的唯一编号。                                                                             |
+    | 模型                          | 设备模型。 该模型对于 Data Box Gateway 是虚拟的。                   |
+    | FriendlySoftwareVersion        | 对应于设备软件版本的友好字符串。 对于运行预览版的系统，友好软件版本将为 Data Box Edge 1902。 |
+    | HcsVersion                     | 设备上运行的 HCS 软件版本。 例如，与 Data Box Edge 1902 对应的 HCS 软件版本为 1.4.771.324。            |
+    | LocalCapacityInMb              | 设备的总本地容量（以 MB 为单位）。                                                                                                        |
+    | IsRegistered                   | 此值用于指示设备是否已通过该服务激活。                                                                                         |
 
 

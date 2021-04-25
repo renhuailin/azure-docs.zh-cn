@@ -1,0 +1,64 @@
+### YamlMime:Landing
+title: 光学字符识别文档
+summary: 基于云的 OCR API 为开发人员提供了对高级算法的访问权限，这些高级算法用于读取图像中的文本和返回结构化内容。 通过快速入门、教程和示例了解如何提取多种语言的打印文本和手写文本。
+metadata:
+  title: 光学字符识别文档 - 快速入门、教程和 API 参考 - Azure 认知服务 | Microsoft Docs
+  description: 基于云的 OCR API 为开发人员提供了对高级算法的访问权限，这些高级算法用于读取图像中的文本和返回结构化内容。 通过快速入门、教程和示例了解如何提取多种语言的打印文本和手写文本。
+  services: cognitive-services
+  ms.service: cognitive-services
+  ms.subservice: computer-vision
+  ms.topic: landing-page
+  author: PatrickFarley
+  ms.author: pafarley
+  ms.date: 03/31/2021
+  ms.openlocfilehash: d6d0c4be1b465d2120c097aa0d58e1574af061f6
+  ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 04/03/2021
+  ms.locfileid: "106287466"
+landingContent:
+- title: 关于光学字符识别
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: OCR 概述
+      url: overview-ocr.md
+  - linkListType: quickstart
+    links:
+    - text: OCR 快速入门
+      url: quickstarts-sdk/client-library.md
+- title: 使用 OCR 进行开发
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 调用读取 API
+      url: Vision-API-How-to-Topics/call-read-api.md
+    - text: 从 Read 2.x 升级到 Read 3.x
+      url: upgrade-api-versions.md
+- title: 使用读取 OCR 容器
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 安装和运行容器
+      url: computer-vision-how-to-install-containers.md
+  - linkListType: how-to-guide
+    links:
+    - text: 配置容器
+      url: computer-vision-resource-container-config.md
+    - text: 与 Kubernetes 和 Jenkins 配合使用
+      url: deploy-computer-vision-on-premises.md
+- title: 参考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 语言支持
+      url: language-support.md
+    - text: OCR REST API
+      url: https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b
+- title: 帮助和反馈
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 支持和帮助选项
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context

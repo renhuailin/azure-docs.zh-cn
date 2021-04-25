@@ -3,12 +3,12 @@ title: 容器组的 YAML 参考
 description: Azure 容器实例支持的用于配置容器组的 YAML 文件参考
 ms.topic: article
 ms.date: 07/06/2020
-ms.openlocfilehash: d0ec8d13eebba1c60f5a52f8c43bdd8b90eeb913
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: efbea7b64ccdf685d4c82bd406f2aa09227e53e1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87084754"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771130"
 ---
 # <a name="yaml-reference-azure-container-instances"></a>YAML 参考：Azure 容器实例
 
@@ -156,9 +156,9 @@ properties: # Properties of container group
 
 ### <a name="microsoftcontainerinstancecontainergroups-object"></a>Microsoft.ContainerInstance/containerGroups 对象
 
-|  名称 | 类型 | 必选 | 值 |
+|  名称 | 类型 | 必须 | 值 |
 |  ---- | ---- | ---- | ---- |
-|  name | 字符串 | 是 | 容器组的名称。 |
+|  name | string | 是 | 容器组的名称。 |
 |  apiVersion | 枚举 | 是 | 2018-10-01 |
 |  location | string | 否 | 资源位置。 |
 |  tags | object | 否 | 资源标记。 |
@@ -170,7 +170,7 @@ properties: # Properties of container group
 
 ### <a name="containergroupidentity-object"></a>ContainerGroupIdentity 对象
 
-|  名称 | 类型 | 必选 | Value |
+|  名称 | 类型 | 必须 | Value |
 |  ---- | ---- | ---- | ---- |
 |  type | 枚举 | 否 | 容器组使用的标识类型。 类型“SystemAssigned ,UserAssigned”包含隐式创建的标识和一组用户分配的标识。 类型“None”删除容器组中的所有标识。 - SystemAssigned、UserAssigned、SystemAssigned、UserAssigned、None |
 |  userAssignedIdentities | object | 否 | 与容器组关联的用户标识列表。 用户标识字典键引用是采用以下格式的 Azure 资源管理器资源 ID：“/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}”。 |
@@ -180,7 +180,7 @@ properties: # Properties of container group
 
 ### <a name="containergroupproperties-object"></a>ContainerGroupProperties 对象
 
-|  名称 | 类型 | 必选 | Value |
+|  名称 | 类型 | 必须 | Value |
 |  ---- | ---- | ---- | ---- |
 |  containers | array | 是 | 容器组中的容器。 - [Container 对象](#container-object) |
 |  imageRegistryCredentials | array | 否 | 创建容器组所依据的映像注册表凭据。 - [ImageRegistryCredential 对象](#imageregistrycredential-object) |
@@ -200,9 +200,9 @@ properties: # Properties of container group
 
 ### <a name="container-object"></a>Container 对象
 
-|  名称 | 类型 | 必选 | 值 |
+|  名称 | 类型 | 必须 | 值 |
 |  ---- | ---- | ---- | ---- |
-|  name | 字符串 | 是 | 用户提供的容器实例名称。 |
+|  name | string | 是 | 用户提供的容器实例名称。 |
 |  properties | object | 是 | 容器实例的属性。 - [ContainerProperties 对象](#containerproperties-object) |
 
 
@@ -210,7 +210,7 @@ properties: # Properties of container group
 
 ### <a name="imageregistrycredential-object"></a>ImageRegistryCredential 对象
 
-|  名称 | 类型 | 必选 | Value |
+|  名称 | 类型 | 必须 | Value |
 |  ---- | ---- | ---- | ---- |
 |  server | string | 是 | 没有协议（例如“http”或“https”）的 Docker 映像注册表服务器。 |
 |  username | string | 是 | 专用注册表的用户名。 |
@@ -221,7 +221,7 @@ properties: # Properties of container group
 
 ### <a name="ipaddress-object"></a>IpAddress 对象
 
-|  名称 | 类型 | 必选 | Value |
+|  名称 | 类型 | 必须 | Value |
 |  ---- | ---- | ---- | ---- |
 |  ports | array | 是 | 容器组上公开的端口列表。 - [Port 对象](#port-object) |
 |  type | 枚举 | 是 | 指定 IP 是否向公共 Internet 或专用 VNET 公开。 - Public 或 Private |
@@ -233,9 +233,9 @@ properties: # Properties of container group
 
 ### <a name="volume-object"></a>Volume 对象
 
-|  名称 | 类型 | 必选 | 值 |
+|  名称 | 类型 | 必须 | 值 |
 |  ---- | ---- | ---- | ---- |
-|  name | 字符串 | 是 | 卷的名称。 |
+|  name | string | 是 | 卷的名称。 |
 |  azureFile | object | 否 | Azure 文件卷。 - [AzureFileVolume 对象](#azurefilevolume-object) |
 |  emptyDir | object | 否 | 空目录卷。 |
 |  secret | object | 否 | 机密卷。 |
@@ -246,7 +246,7 @@ properties: # Properties of container group
 
 ### <a name="containergroupdiagnostics-object"></a>ContainerGroupDiagnostics 对象
 
-|  名称 | 类型 | 必选 | Value |
+|  名称 | 类型 | 必须 | Value |
 |  ---- | ---- | ---- | ---- |
 |  logAnalytics | object | 否 | 容器组日志分析信息。 - [LogAnalytics 对象](#loganalytics-object) |
 
@@ -255,16 +255,16 @@ properties: # Properties of container group
 
 ### <a name="containergroupnetworkprofile-object"></a>ContainerGroupNetworkProfile 对象
 
-|  名称 | 类型 | 必选 | Value |
+|  名称 | 类型 | 必须 | Value |
 |  ---- | ---- | ---- | ---- |
-|  id | 字符串 | 是 | 网络配置文件的标识符。 |
+|  id | string | 是 | 网络配置文件的标识符。 |
 
 
 
 
 ### <a name="dnsconfiguration-object"></a>DnsConfiguration 对象
 
-|  名称 | 类型 | 必选 | Value |
+|  名称 | 类型 | 必须 | Value |
 |  ---- | ---- | ---- | ---- |
 |  nameServers | array | 是 | 容器组的 DNS 服务器。 - string |
 |  searchDomains | string | 否 | 容器组中主机名查找的 DNS 搜索域。 |
@@ -273,25 +273,25 @@ properties: # Properties of container group
 
 ### <a name="encryptionproperties-object"></a>EncryptionProperties 对象
 
-| 名称  | 类型  | 必选  | 值 |
+| 名称  | 类型  | 必须  | 值 |
 |  ---- | ---- | ---- | ---- |
-| vaultBaseUrl  | 字符串    | 是   | 密钥保管库基础 URL。 |
-| keyName   | 字符串    | 是   | 加密密钥名称。 |
-| keyVersion    | 字符串    | 是   | 加密密钥版本。 |
+| vaultBaseUrl  | string    | 是   | 密钥保管库基础 URL。 |
+| keyName   | string    | 是   | 加密密钥名称。 |
+| keyVersion    | string    | 是   | 加密密钥版本。 |
 
 ### <a name="initcontainerdefinition-object"></a>InitContainerDefinition 对象
 
-| 名称  | 类型  | 必选  | 值 |
+| 名称  | 类型  | 必须  | 值 |
 |  ---- | ---- | ---- | ---- |
-| name  | 字符串 |  是 | Init 容器的名称。 |
+| name  | string |  是 | Init 容器的名称。 |
 | properties    | object    | 是   | Init 容器的属性。 - [InitContainerPropertiesDefinition 对象](#initcontainerpropertiesdefinition-object)
 
 
 ### <a name="containerproperties-object"></a>ContainerProperties 对象
 
-|  名称 | 类型 | 必选 | Value |
+|  名称 | 类型 | 必须 | Value |
 |  ---- | ---- | ---- | ---- |
-|  图像 | 字符串 | 是 | 用于创建容器实例的映像的名称。 |
+|  图像 | string | 是 | 用于创建容器实例的映像的名称。 |
 |  command | array | 否 | 要在容器实例中执行的 exec 形式的命令。 - string |
 |  ports | array | 否 | 容器实例上的已公开端口。 - [ContainerPort 对象](#containerport-object) |
 |  environmentVariables | array | 否 | 要在容器实例中设置的环境变量。 - [EnvironmentVariable 对象](#environmentvariable-object) |
@@ -305,7 +305,7 @@ properties: # Properties of container group
 
 ### <a name="port-object"></a>Port 对象
 
-|  名称 | 类型 | 必选 | Value |
+|  名称 | 类型 | 必须 | Value |
 |  ---- | ---- | ---- | ---- |
 |  协议 | 枚举 | 否 | 与端口关联的协议。 - TCP 或 UDP |
 |  port | integer | 是 | 端口号。 |
@@ -315,7 +315,7 @@ properties: # Properties of container group
 
 ### <a name="azurefilevolume-object"></a>AzureFileVolume 对象
 
-|  名称 | 类型 | 必选 | Value |
+|  名称 | 类型 | 必须 | Value |
 |  ---- | ---- | ---- | ---- |
 |  shareName | string | 是 | 要以卷形式装载的 Azure 文件共享的名称。 |
 |  readOnly | boolean | 否 | 指示以卷形式装载的 Azure 文件共享是否为只读的标志。 |
@@ -327,7 +327,7 @@ properties: # Properties of container group
 
 ### <a name="gitrepovolume-object"></a>GitRepoVolume 对象
 
-|  名称 | 类型 | 必选 | Value |
+|  名称 | 类型 | 必须 | Value |
 |  ---- | ---- | ---- | ---- |
 |  目录 | string | 否 | 目标目录名称。 不得包含“..”，也不能以其开头。  如果提供了“.”，则卷目录将是 Git 存储库。  否则，卷将包含子目录中具有给定名称的 Git 存储库（如果已指定）。 |
 |  repository | string | 是 | 存储库 URL |
@@ -337,7 +337,7 @@ properties: # Properties of container group
 
 ### <a name="loganalytics-object"></a>LogAnalytics 对象
 
-|  名称 | 类型 | 必选 | Value |
+|  名称 | 类型 | 必须 | Value |
 |  ---- | ---- | ---- | ---- |
 |  workspaceId | string | 是 | Log Analytics 的工作区 ID |
 |  workspaceKey | string | 是 | Log Analytics 的工作区键 |
@@ -347,7 +347,7 @@ properties: # Properties of container group
 
 ### <a name="initcontainerpropertiesdefinition-object"></a>InitContainerPropertiesDefinition 对象
 
-| 名称  | 类型  | 必选  | Value |
+| 名称  | 类型  | 必须  | Value |
 |  ---- | ---- | ---- | ---- |
 | 图像 | string    | 否    | Init 容器的映像。 |
 | command   | array | 否    | 要在 Init 容器中以 exec 形式执行的命令。 - string |
@@ -356,7 +356,7 @@ properties: # Properties of container group
 
 ### <a name="containerport-object"></a>ContainerPort 对象
 
-|  名称 | 类型 | 必选 | Value |
+|  名称 | 类型 | 必须 | Value |
 |  ---- | ---- | ---- | ---- |
 |  协议 | 枚举 | 否 | 与端口关联的协议。 - TCP 或 UDP |
 |  port | integer | 是 | 容器组中公开的端口号。 |
@@ -366,9 +366,9 @@ properties: # Properties of container group
 
 ### <a name="environmentvariable-object"></a>EnvironmentVariable 对象
 
-|  名称 | 类型 | 必选 | 值 |
+|  名称 | 类型 | 必须 | 值 |
 |  ---- | ---- | ---- | ---- |
-|  name | 字符串 | 是 | 环境变量的名称。 |
+|  name | string | 是 | 环境变量的名称。 |
 |  value | string | 否 | 环境变量的值。 |
 |  secureValue | string | 否 | 安全环境变量的值。 |
 
@@ -377,7 +377,7 @@ properties: # Properties of container group
 
 ### <a name="resourcerequirements-object"></a>ResourceRequirements 对象
 
-|  名称 | 类型 | 必选 | Value |
+|  名称 | 类型 | 必须 | Value |
 |  ---- | ---- | ---- | ---- |
 |  请求 | object | 是 | 此容器实例的资源请求。 - [ResourceRequests 对象](#resourcerequests-object) |
 |  限制 | object | 否 | 此容器实例的资源限制。 - [ResourceLimits 对象](#resourcelimits-object) |
@@ -387,9 +387,9 @@ properties: # Properties of container group
 
 ### <a name="volumemount-object"></a>VolumeMount 对象
 
-|  名称 | 类型 | 必选 | 值 |
+|  名称 | 类型 | 必须 | 值 |
 |  ---- | ---- | ---- | ---- |
-|  name | 字符串 | 是 | 卷装入点的名称。 |
+|  name | string | 是 | 卷装入点的名称。 |
 |  mountPath | string | 是 | 容器中要将该卷装载到的路径。 不得包含冒号 (:)。 |
 |  readOnly | boolean | 否 | 指示卷装入点是否为只读的标志。 |
 
@@ -398,7 +398,7 @@ properties: # Properties of container group
 
 ### <a name="containerprobe-object"></a>ContainerProbe 对象
 
-|  名称 | 类型 | 必选 | Value |
+|  名称 | 类型 | 必须 | Value |
 |  ---- | ---- | ---- | ---- |
 |  exec | object | 否 | 用于探测的执行命令 - [ContainerExec 对象](#containerexec-object) |
 |  httpGet | object | 否 | 用于探测的 Http Get 设置 - [ContainerHttpGet 对象](#containerhttpget-object) |
@@ -413,7 +413,7 @@ properties: # Properties of container group
 
 ### <a name="resourcerequests-object"></a>ResourceRequests 对象
 
-|  名称 | 类型 | 必选 | Value |
+|  名称 | 类型 | 必须 | Value |
 |  ---- | ---- | ---- | ---- |
 |  memoryInGB | number | 是 | 此容器实例的内存请求 (GB)。 |
 |  cpu | number | 是 | 此容器实例的 CPU 请求。 |
@@ -424,7 +424,7 @@ properties: # Properties of container group
 
 ### <a name="resourcelimits-object"></a>ResourceLimits 对象
 
-|  名称 | 类型 | 必选 | Value |
+|  名称 | 类型 | 必须 | Value |
 |  ---- | ---- | ---- | ---- |
 |  memoryInGB | number | 否 | 此容器实例的内存限制 (GB)。 |
 |  cpu | number | 否 | 此容器实例的 CPU 限制。 |
@@ -435,7 +435,7 @@ properties: # Properties of container group
 
 ### <a name="containerexec-object"></a>ContainerExec 对象
 
-|  名称 | 类型 | 必选 | Value |
+|  名称 | 类型 | 必须 | Value |
 |  ---- | ---- | ---- | ---- |
 |  command | array | 否 | 要在容器中执行的命令。 - string |
 
@@ -444,7 +444,7 @@ properties: # Properties of container group
 
 ### <a name="containerhttpget-object"></a>ContainerHttpGet 对象
 
-|  名称 | 类型 | 必选 | Value |
+|  名称 | 类型 | 必须 | Value |
 |  ---- | ---- | ---- | ---- |
 |  path | string | 否 | 要探测的路径。 |
 |  port | integer | 是 | 要探测的端口号。 |
@@ -455,7 +455,7 @@ properties: # Properties of container group
 
 ### <a name="gpuresource-object"></a>GpuResource 对象
 
-|  名称 | 类型 | 必选 | Value |
+|  名称 | 类型 | 必须 | Value |
 |  ---- | ---- | ---- | ---- |
 |  count | integer | 是 | GPU 资源计数。 |
 |  sku | 枚举 | 是 | GPU 资源的 SKU。 - K80、P100、V100 |
@@ -468,5 +468,4 @@ properties: # Properties of container group
 参阅使用 YAML 文件在[虚拟网络](container-instances-vnet.md)中部署容器组或[装载外部卷](container-instances-volume-azure-files.md)的示例。
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container#az-container-create
-
+[az-container-create]: /cli/azure/container#az_container_create

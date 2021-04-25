@@ -3,12 +3,12 @@ title: 将托管服务产品发布到 Azure 市场
 description: 了解如何发布可将客户添加到 Azure Lighthouse 的托管服务产品。
 ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: f59d9708925b52bcf9432663fe6d3137a54b37ad
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 3f790c37a36fa1c5092a50c02429260825158c72
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107442"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491349"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>将托管服务产品发布到 Azure 市场
 
@@ -16,7 +16,7 @@ ms.locfileid: "107107442"
 
 ## <a name="publishing-requirements"></a>发布要求
 
-若要创建和发布产品/服务，你需要拥有有效的[合作伙伴中心帐户](../../marketplace/create-account.md)。 若无帐户，可以按照[注册流程](https://aka.ms/joinmarketplace)中的步骤，先在合作伙伴中心创建帐户，再加入商业市场计划。
+若要创建和发布产品/服务，你需要拥有有效的[合作伙伴中心帐户](../../marketplace/partner-center-portal/create-account.md)。 若无帐户，可以按照[注册流程](https://aka.ms/joinmarketplace)中的步骤，先在合作伙伴中心创建帐户，再加入商业市场计划。
 
 根据[托管服务产品认证要求](/legal/marketplace/certification-policies#700-managed-services)，你必须达到[白银级或黄金级云平台资格级别](/partner-center/learn-about-competencies)，或是 [Azure 专家 MSP](https://partner.microsoft.com/membership/azure-expert-msp)，才能发布托管服务产品。 此外，你[还必须输入潜在客户目标](../../marketplace/plan-managed-service-offer.md#customer-leads)，此后，每次客户部署你的产品/服务时，CRM 系统中都会创建一条客户记录。
 
@@ -26,7 +26,7 @@ ms.locfileid: "107107442"
 
 |**注意事项**  |**托管服务产品**  |**ARM 模板**  |
 |---------|---------|---------|
-|需要[合作伙伴中心帐户](../../marketplace/create-account.md)   |是         |否        |
+|需要[合作伙伴中心帐户](../../marketplace/partner-center-portal/create-account.md)   |是         |否        |
 |需满足[白银级或黄金级云平台资格级别](/partner-center/learn-about-competencies)或 [Azure 专家 MSP](https://partner.microsoft.com/membership/azure-expert-msp)      |是         |否         |
 |通过 Azure 市场提供给新客户     |是     |否       |
 |可以只向特定客户发布产品/服务     |是（仅适用于私有产品/服务，不适用于通过云解决方案提供商 (CSP) 计划的经销商获得的订阅）         |是         |

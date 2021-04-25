@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 03/30/2021
 ms.author: victorh
-ms.openlocfilehash: 923c6b685d20ff68788e7d9cfcb45ebaecb535e3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 622fde49a31105b2f66a678d3e55d48fabea9487
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96490102"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105966905"
 ---
 # <a name="what-are-security-partner-providers"></a>什么是安全合作伙伴提供程序？
 
@@ -32,15 +32,21 @@ ms.locfileid: "96490102"
 
 - 虚拟网络 (VNet) 到 Internet
 
-   为在 Azure 上运行的云工作负荷提供高级用户感知型 Internet 保护。
+   对 Azure 上运行的云工作负载使用高级用户感知型 Internet 保护。
 
-- 分支到 Internet
+- 分支位置到 Internet
 
-   利用 Azure 连接和全球分布，轻松为分支到 Internet 方案添加第三方 NSaaS 筛选。 可以使用 Azure 虚拟 WAN 构建全球传输网络和安全边缘。
+   使用 Azure 连接和全球分布，轻松为分支位置到 Internet 方案添加第三方 NSaaS 筛选。 可以使用 Azure 虚拟 WAN 构建全球传输网络和安全边缘。
 
 支持以下方案：
-- 通过安全合作伙伴提供程序实现 VNet/分支到 Internet 以及通过 Azure 防火墙到其他流量（辐射到辐射、辐射到分支、分支到辐射）。
-- 通过安全合作伙伴提供程序实现 VNet/分支到 Internet
+- 中心中有两个安全提供程序
+
+   通过安全合作伙伴提供程序的 VNet/分支位置到 Internet，以及通过 Azure 防火墙的其他流量（分支到分支、分支到分支位置、分支位置到分支）。
+- 中心中有单个提供程序
+
+   - 受 Azure 防火墙保护的所有流量（分支到分支、分支到分支位置、分支位置到分支、VNet/分支位置到 Internet）<br>
+      或
+   - 通过安全合作伙伴提供程序的 VNet/分支位置到 Internet
 
 ## <a name="best-practices-for-internet-traffic-filtering-in-secured-virtual-hubs"></a>安全虚拟中心中筛选 Internet 流量的最佳做法
 

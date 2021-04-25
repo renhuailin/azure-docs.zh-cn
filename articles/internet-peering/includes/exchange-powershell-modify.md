@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 12d169697a35af446392843eb57e6ec3a5508e45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "81678671"
 ---
 Exchange 对等互连支持以下修改操作：
@@ -45,7 +45,7 @@ $exchangePeering | Update-AzPeering
 
 ### <a name="remove-exchange-peering-connections"></a>删除 Exchange 对等互连连接
 
-此示例介绍如何删除与现有 Exchange 对等互连的连接。
+此示例说明如何删除与现有 Exchange 对等互连的连接。
 
 ```powershell
 
@@ -73,7 +73,7 @@ Tags              : {}
 
 ```
 
-在下面的命令中，为要删除的连接输入索引号，而不是0。
+在下面的命令中，输入要删除的连接的索引号，而不是 0。
 
 ```powershell
 

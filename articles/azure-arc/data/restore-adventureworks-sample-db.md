@@ -9,16 +9,16 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d238a889648e789087a0803f6b50288318462c7b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a6b3577fe820c9dadcb3c8415aa7a951a3283284
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91629057"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641808"
 ---
 # <a name="restore-the-adventureworks-sample-database-into-sql-managed-instance---azure-arc"></a>将 AdventureWorks 示例数据库还原到 SQL 托管实例 - Azure Arc
 
-[AdventureWorks](/sql/samples/adventureworks-install-configure?view=sql-server-ver15&tabs=tsql&preserve-view=true) 是一个示例数据库，其中包含教程和示例中经常使用的 OLTP 数据库。 它由 Microsoft 提供并维护，是 [SQL Server 示例 GitHub 存储库](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases)的一部分。
+[AdventureWorks](/sql/samples/adventureworks-install-configure) 是一个示例数据库，其中包含教程和示例中经常使用的 OLTP 数据库。 它由 Microsoft 提供并维护，是 [SQL Server 示例 GitHub 存储库](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases)的一部分。
 
 本文档介绍将 AdventureWorks 示例数据库还原到 SQL 托管实例 - Azure Arc 的简单过程。
 

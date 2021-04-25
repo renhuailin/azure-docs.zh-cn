@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/15/2021
 ms.author: sajaya
-ms.openlocfilehash: a8c007d7f4419ddbe1555b50ceb6fb92ea0a6f98
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 5550c53289228f154fab485b4b7bbff17555aad7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783892"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105045733"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>有关 Azure 容器注册表的常见问题解答
 
@@ -484,7 +484,7 @@ curl $redirect_url
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>为什么拉取或推送请求失败，并出现不受允许的操作？
 
 以下是一些可能出现不允许进行操作的情况：
-* 不再支持经典注册表。 请使用 [az acr update](/cli/azure/acr#az_acr_update)或 Azure 门户升级到受支持的[服务层](./container-registry-skus.md)。
+* 不再支持经典注册表。 请使用 [az acr update](/cli/azure/acr#az-acr-update)或 Azure 门户升级到受支持的[服务层](./container-registry-skus.md)。
 * 映像或存储库可能已锁定，因此无法进行删除或更新。 可以使用 [az acr show repository](./container-registry-image-lock.md) 命令来查看当前属性。
 * 如果映像处于隔离状态，则会禁用某些操作。 详细了解[隔离](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)。
 * 注册表可能已达到其[存储限制](container-registry-skus.md#service-tier-features-and-limits)。

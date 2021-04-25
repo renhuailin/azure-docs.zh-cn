@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/13/2020
 ms.author: juliako
 ms.openlocfilehash: fbc77b960cac0db2d077345c74d64485bd7ad8bb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95994481"
 ---
 一个 URL，用于通知客户（使用 POST 请求）以下事件：
@@ -20,7 +20,7 @@ ms.locfileid: "95994481"
         |---|---|
         |id|视频 ID|
         |state|视频状态|  
-    - 示例： https： \/ /test.com/notifyme?projectName=MyProject&id = 1234abcd&状态 = 已处理
+    - 示例：https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - 在视频中标识的人：
   - 属性
     
@@ -31,4 +31,4 @@ ms.locfileid: "95994481"
       |knownPersonId|在人脸模型中唯一的个人 ID|
       |personName|人名|
         
-    - 示例： https： \/ /test.com/notifyme?projectName=MyProject&id = 1234abcd&faceid = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
+    - 示例：https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 

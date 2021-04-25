@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: e0912fb452a7f587fef19de835eea111b349a9a4
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 500833d1bb4fc492942c08239bd488c2d2c16d30
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310013"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484313"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway"></a>将下游 IoT Edge 设备连接到 Azure IoT Edge 网关
 
@@ -78,9 +78,9 @@ ms.locfileid: "107310013"
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI 的 [azure-iot](/cli/azure/ext/azure-iot) 扩展提供管理 IoT 资源的命令。 可以在创建新设备标识时或通过编辑现有设备管理 IoT 和 IoT Edge 设备的父/子关系。
+Azure CLI 的 [azure-iot](/cli/azure/iot) 扩展提供管理 IoT 资源的命令。 可以在创建新设备标识时或通过编辑现有设备管理 IoT 和 IoT Edge 设备的父/子关系。
 
-[az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) 命令集用于管理给定设备的父/子关系。
+[az iot hub device-identity](/cli/azure/iot/hub/device-identity) 命令集用于管理给定设备的父/子关系。
 
 `create` 命令包含用于在创建设备时添加子设备和设置父设备的参数。
 
@@ -166,7 +166,7 @@ Azure CLI 的 [azure-iot](/cli/azure/ext/azure-iot) 扩展提供管理 IoT 资�
    image: "mcr.microsoft.com/azureiotedge-agent:1.2"
    ```
 
-1. 在配置文件中到“Edge CA certificate”节。 将此节中的行取消注释，并提供 IoT Edge 设备上证书和密钥文件的文件 URI 路径。
+1. 在配置文件中到“Edge CA certificate”节。 将该节中的行取消注释，并提供 IoT Edge 设备上证书和密钥文件的文件 URI 路径。
 
    ```toml
    [edge_ca]
@@ -231,7 +231,7 @@ Azure CLI 的 [azure-iot](/cli/azure/ext/azure-iot) 扩展提供管理 IoT 资�
 
 API 代理模块已经过设计，可以通过自定义来处理最常见的网关方案。 本文提供了一个以基本配置设置模块的示例。 有关详细信息和示例，请参阅[配置适用于网关层次结构方案的 API 代理模块](how-to-configure-api-proxy-module.md)。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 在 [Azure 门户](https://portal.azure.com)中导航到 IoT 中心。
 1. 从导航菜单中选择“IoT Edge”。

@@ -3,12 +3,12 @@ title: 部署资源的多个实例
 description: 在 Azure 资源管理器模板（ARM 模板）中使用复制操作和数组多次部署资源类型。
 ms.topic: conceptual
 ms.date: 04/01/2021
-ms.openlocfilehash: 3af676cce544c125e441857f06556b9ff7eee697
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 5ddb0cabf0acae1ffe9b9e77e6defa70f9cbd61b
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385696"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479961"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM 模板中的资源迭代
 
@@ -47,7 +47,7 @@ ms.locfileid: "106385696"
   @batchSize(<number>)
   resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for <item> in <collection>: {
     <resource-properties>
-  }
+  }]
   ```
 
 - 循环访问数组的元素
@@ -56,7 +56,7 @@ ms.locfileid: "106385696"
   @batchSize(<number>)
   resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for (<item>, <index>) in <collection>: {
     <resource-properties>
-  }
+  }]
   ```
 
 - 使用循环索引
@@ -65,7 +65,7 @@ ms.locfileid: "106385696"
   @batchSize(<number>)
   resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for <index> in range(<start>, <stop>): {
     <resource-properties>
-  }
+  }]
   ```
 
 ---

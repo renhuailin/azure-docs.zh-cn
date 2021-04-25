@@ -4,15 +4,15 @@ description: Azure Kubernetes 服务 (AKS) 中的 Open Service Mesh (OSM)
 services: container-service
 ms.topic: article
 ms.date: 3/12/2021
-ms.custom: mvc, devx-track-azurecli
+ms.custom: mvc
 ms.author: pgibson
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: bbc07a7ee3f996c778cfc1b9d1764f10a613c50b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0052c8d2f9b85c34d50a3e9d01253ecaf2d02bab
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107782938"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106707"
 ---
 # <a name="open-service-mesh-aks-add-on-preview"></a>Open Service Mesh AKS 附加产品（预览版）
 
@@ -107,7 +107,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-在 Azure 中，可将相关的资源分配到资源组。 使用 [az group create](/cli/azure/group#az_group_create) 创建资源组。 以下示例在 eastus2 位置（区域）创建名为 myOsmAksGroup 的资源组： 
+在 Azure 中，可将相关的资源分配到资源组。 使用 [az group create](/cli/azure/group#az-group-create) 创建资源组。 以下示例在 eastus2 位置（区域）创建名为 myOsmAksGroup 的资源组： 
 
 ```azurecli-interactive
 az group create --name <myosmaksgroup> --location <eastus2>
@@ -215,7 +215,7 @@ kubectl patch ConfigMap -n kube-system osm-config --type merge --patch '{"data":
 
 ## <a name="deploy-a-new-application-to-be-managed-by-the-open-service-mesh-osm-azure-kubernetes-service-aks-add-on"></a>部署要由 Open Service Mesh (OSM) Azure Kubernetes 服务 (AKS) 附加产品管理的新应用程序
 
-### <a name="before-you-begin"></a>在开始之前
+### <a name="before-you-begin"></a>开始之前
 
 本演练中详细介绍的步骤假定你已创建 AKS 群集（Kubernetes `1.19+` 和更高版本，并且已启用 Kubernetes RBAC），与该群集建立了 `kubectl` 连接（如果需要获取有关任意这些项的帮助，请参阅 [AKS 快速入门](./kubernetes-walkthrough.md)），并且安装了 AKS OSM 附加产品。
 
@@ -241,7 +241,7 @@ kubectl patch ConfigMap -n kube-system osm-config --type merge --patch '{"data":
 for i in bookstore bookbuyer bookthief bookwarehouse; do kubectl create ns $i; done
 ```
 
-应会看到以下输出：
+应该会看到以下输出：
 
 ```Output
 namespace/bookstore created
@@ -258,7 +258,7 @@ namespace/bookwarehouse created
 osm namespace add bookstore bookbuyer bookthief bookwarehouse
 ```
 
-应会看到以下输出：
+应该会看到以下输出：
 
 ```Output
 Namespace [bookstore] successfully added to mesh [osm]
@@ -624,7 +624,7 @@ trafficsplit.split.smi-spec.io/bookstore-split created
 
 ## <a name="manage-existing-deployed-applications-to-be-managed-by-the-open-service-mesh-osm-azure-kubernetes-service-aks-add-on"></a>管理要由 Open Service Mesh (OSM) Azure Kubernetes 服务 (AKS) 附加产品管理的现有已部署应用程序
 
-### <a name="before-you-begin"></a>在开始之前
+### <a name="before-you-begin"></a>开始之前
 
 本演练中详细介绍的步骤假定你之前已为 AKS 群集启用了 OSM AKS 附加产品。 否则，请参阅[为现有 AKS 群集启用 Open Service Mesh (OSM) Azure Kubernetes 服务 (AKS) 附加产品](#enable-open-service-mesh-osm-azure-kubernetes-service-aks-add-on-for-an-existing-aks-cluster)一节，然后再继续操作。 此外，你的 AKS 群集必须是 Kubernetes `1.19+` 和更高版本，已启用 Kubernetes RBAC，与该群集建立了 `kubectl` 连接（如果需要获取有关任意这些项的帮助，请参阅 [AKS 快速入门](./kubernetes-walkthrough.md)），并且安装了 AKS OSM 附加产品。
 
@@ -669,7 +669,7 @@ OSM configmap 的输出应如下所示：
 osm namespace add bookstore
 ```
 
-应会看到以下输出：
+应该会看到以下输出：
 
 ```Output
 Namespace [bookstore] successfully added to mesh [osm]
@@ -694,7 +694,7 @@ bookbuyer-78666dcff8-wh6wl   1/1     Running   0          43s
 kubectl get deployment -n bookbuyer
 ```
 
-应会看到以下输出：
+应该会看到以下输出：
 
 ```Output
 NAME        READY   UP-TO-DATE   AVAILABLE   AGE
@@ -707,7 +707,7 @@ bookbuyer   1/1     1            1           23h
 kubectl rollout restart deployment bookbuyer -n bookbuyer
 ```
 
-应会看到以下输出：
+应该会看到以下输出：
 
 ```Output
 deployment.apps/bookbuyer restarted
@@ -1000,7 +1000,7 @@ Open Service Mesh (OSM) 是一种轻型、可扩展的云原生服务网格，�
 > - 创建用于应用程序的 NGINX 入口控制器
 > - 通过 Azure 应用程序网关入口在 Internet 上公开服务
 
-### <a name="before-you-begin"></a>在开始之前
+### <a name="before-you-begin"></a>开始之前
 
 本文中详细介绍的步骤假定你已创建 AKS 群集（Kubernetes `1.19+` 和更高版本，并且已启用 Kubernetes RBAC），与该群集建立了 `kubectl` 连接（如果需要获取有关任意这些项的帮助，请参阅 [AKS 快速入门](./kubernetes-walkthrough.md)），并且安装了 AKS OSM 附加产品。
 
@@ -1052,7 +1052,7 @@ kubectl get configmap -n kube-system osm-config -o json | jq '.data'
 for i in bookstore bookbuyer bookthief bookwarehouse; do kubectl create ns $i; done
 ```
 
-应会看到以下输出：
+应该会看到以下输出：
 
 ```Output
 namespace/bookstore created
@@ -1069,7 +1069,7 @@ namespace/bookwarehouse created
 osm namespace add bookstore bookbuyer bookthief bookwarehouse
 ```
 
-应会看到以下输出：
+应该会看到以下输出：
 
 ```Output
 Namespace [bookstore] successfully added to mesh [osm]
@@ -1243,7 +1243,7 @@ spec:
 EOF
 ```
 
-应会看到以下输出：
+应该会看到以下输出：
 
 ```Output
 Warning: extensions/v1beta1 Ingress is deprecated in v1.14+, unavailable in v1.22+; use networking.k8s.io/v1 Ingress
@@ -1286,7 +1286,7 @@ nginx-ingress-ingress-nginx-controller-admission   ClusterIP      10.0.163.98   
 curl -H 'Host: bookbuyer.contoso.com' http://EXTERNAL-IP/
 ```
 
-应会看到以下输出：
+应该会看到以下输出：
 
 ```Output
 <!doctype html>
@@ -1363,7 +1363,7 @@ Open Service Mesh (OSM) 是一种轻型、可扩展的云原生服务网格，�
 > - 创建要用作应用程序的入口控制器的 Azure 应用程序网关
 > - 通过 Azure 应用程序网关入口在 Internet 上公开服务
 
-### <a name="before-you-begin"></a>在开始之前
+### <a name="before-you-begin"></a>开始之前
 
 本文中详细介绍的步骤假定你已创建 AKS 群集（Kubernetes `1.19+` 和更高版本，并且已启用 Kubernetes RBAC），与该群集建立了 `kubectl` 连接（如果需要获取有关任意这些项的帮助，请参阅 [AKS 快速入门](./kubernetes-walkthrough.md)），安装了 AKS OSM 附加产品，并且将为入口创建新的 Azure 应用程序网关。
 
@@ -1416,7 +1416,7 @@ kubectl get configmap -n kube-system osm-config -o json | jq '.data'
 for i in bookstore bookbuyer bookthief bookwarehouse; do kubectl create ns $i; done
 ```
 
-应会看到以下输出：
+应该会看到以下输出：
 
 ```Output
 namespace/bookstore created
@@ -1433,7 +1433,7 @@ namespace/bookwarehouse created
 osm namespace add bookstore bookbuyer bookthief bookwarehouse
 ```
 
-应会看到以下输出：
+应该会看到以下输出：
 
 ```Output
 Namespace [bookstore] successfully added to mesh [osm]
@@ -2150,7 +2150,7 @@ kubectl port-forward $GRAF_POD_NAME 3000
 
 OSM 仪表板通过以下两个途径提供：
 
-- [我们的存储库](https://github.com/grafana/grafana)，可通过 Web 管理门户作为 json blob 导入
+- [我们的存储库](/charts/osm/grafana)，可通过 Web 管理门户作为 json blob 导入
 - [在线提供，网址为 Grafana.com](https://grafana.com/grafana/dashboards/14145)
 
 若要导入仪表板，请在左侧菜单中查找 `+` 符号，然后选择`import`。
@@ -2535,17 +2535,17 @@ kubectl get ConfigMap -n kube-system osm-config -o json | jq '.data'
 | egress                           | bool   | true、false                                             | `"false"`                              | 在网格中启用出口。                                                                                                                                                                                                             |
 | enable_debug_server              | bool   | true、false                                             | `"true"`                               | 在 osm-controller Pod 上启用调试终结点，以列出有关网格的信息（例如代理连接、证书和 SMI 策略）。                                                                                    |
 | enable_privileged_init_container | bool   | true、false                                             | `"false"`                              | 为网格中的 Pod 启用特权 Init 容器。 如果设置为 false，Init 容器只有 NET_ADMIN。                                                                                                                                   |
-| envoy_log_level                  | string | trace、debug、info、warning、warn、error、critical 和 off | `"error"`                              | 设置 Envoy 代理挎斗的日志记录详细程度，仅适用于加入网格的新创建的 Pod。 若要更新现有 Pod 的日志级别，请使用 `kubectl rollout restart` 重启部署。                            |
-| outbound_ip_range_exclusion_list | string | 以逗号分隔的 IP 范围列表，格式为 a.b.c.d/x | `-`                                    | 要从挎斗代理的出站流量截获中排除的 IP 地址范围的全局列表。                                                                                                                                    |
+| envoy_log_level                  | 字符串 | trace、debug、info、warning、warn、error、critical 和 off | `"error"`                              | 设置 Envoy 代理挎斗的日志记录详细程度，仅适用于加入网格的新创建的 Pod。 若要更新现有 Pod 的日志级别，请使用 `kubectl rollout restart` 重启部署。                            |
+| outbound_ip_range_exclusion_list | 字符串 | 以逗号分隔的 IP 范围列表，格式为 a.b.c.d/x | `-`                                    | 要从挎斗代理的出站流量截获中排除的 IP 地址范围的全局列表。                                                                                                                                    |
 | permissive_traffic_policy_mode   | bool   | true、false                                             | `"false"`                              | 如果设置为 `true`，则会在网格中启用“全部允许”模式，即不在网格中强制执行流量策略。 如果设置为 `false`，则会在网格中启用“全部拒绝”流量策略，即服务需要 `SMI Traffic Target`才能进行通信。 |
 | prometheus_scraping              | bool   | true、false                                             | `"true"`                               | 在挎斗代理上启用 Prometheus 指标抓取。                                                                                                                                                                                 |
-| service_cert_validity_duration   | string | 24h、1h30m（任何持续时间）                          | `"24h"`                                | 设置服务证书有效期，以十进制数字的序列表示，其中每个数字都有可选的分数和单位后缀。                                                                                             |
+| service_cert_validity_duration   | 字符串 | 24h、1h30m（任何持续时间）                          | `"24h"`                                | 设置服务证书有效期，以十进制数字的序列表示，其中每个数字都有可选的分数和单位后缀。                                                                                             |
 | tracing_enable                   | bool   | true、false                                             | `"false"`                              | 为网格启用 Jaeger 跟踪。                                                                                                                                                                                                    |
-| tracing_address                  | string | jaeger.mesh-namespace.svc.cluster.local                 | `jaeger.kube-system.svc.cluster.local` | Jaeger 部署的地址（如果已启用跟踪）。                                                                                                                                                                                |
-| tracing_endpoint                 | string | /api/v2/spans                                           | /api/v2/spans                          | 跟踪数据的终结点（如果已启用跟踪）。                                                                                                                                                                                          |
+| tracing_address                  | 字符串 | jaeger.mesh-namespace.svc.cluster.local                 | `jaeger.kube-system.svc.cluster.local` | Jaeger 部署的地址（如果已启用跟踪）。                                                                                                                                                                                |
+| tracing_endpoint                 | 字符串 | /api/v2/spans                                           | /api/v2/spans                          | 跟踪数据的终结点（如果已启用跟踪）。                                                                                                                                                                                          |
 | tracing_port                     | int    | 任何非零整数值                              | `"9411"`                               | 启用跟踪的端口。                                                                                                                                                                                                       |
 | use_https_ingress                | bool   | true、false                                             | `"false"`                              | 在网格上启用 HTTPS 入口。                                                                                                                                                                                                      |
-| config_resync_interval           | string | 如果值小于 1 分钟，将禁用此功能                            | 0（禁用）                           | 如果提供的值大于 1m (60s)，则 OSM 控制器会按给定的时间间隔将所有可用的配置发送到每个已连接的 Envoy                                                                                                    |
+| config_resync_interval           | 字符串 | 如果值小于 1 分钟，将禁用此功能                            | 0（禁用）                           | 如果提供的值大于 1m (60s)，则 OSM 控制器会按给定的时间间隔将所有可用的配置发送到每个已连接的 Envoy                                                                                                    |
 
 #### <a name="check-namespaces"></a>检查命名空间
 

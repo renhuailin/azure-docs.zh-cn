@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 867cdc97ff91d5932230b733dee4d7660d499c39
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96027060"
 ---
 #### <a name="to-complete-the-minimum-storsimple-device-setup"></a>完成最低要求的 StorSimple 设备设置
@@ -30,15 +30,15 @@ ms.locfileid: "96027060"
 
        2. 为控制器 0 和控制器 1 提供固定 IP 地址。 **控制器的固定 IP 地址需为子网内可由设备 IP 地址访问的可用 IP。** 如果已为 IPv4 配置 DATA 0 接口，需要以 IPv4 格式提供固定 IP 地址。 如果已为 IPv6 配置提供了前缀，则固定 IP 地址会自动填充到这些字段中。
 
-            ![StorSimple 最小设备设置网络接口2](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig2.png)
+            ![StorSimple 最小设备设置网络接口 2](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig2.png)
 
             控制器的固定 IP 地址用于为设备提供更新以及垃圾回收。 因此，这些固定 IP 必须可路由并能够连接到 Internet。 可以使用 [Test-HcsmConnection][Test] cmdlet 检查固定控制器 IP 是否可路由。 下面的示例演示固定控制器 IP 路由到 Internet，并且可以访问 Microsoft Update 服务器。
 
             ![Test-HcsmConnection 显示可路由的 IP](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig3.png)
 
-1. 单击“确定”。 设备配置将启动。 当设备配置完成时，将收到通知。 在“设备”边栏选项卡中，设备状态将更改为“联机”。
+1. 单击" **确定**"。 设备配置将启动。 当设备配置完成时，将收到通知。 在“设备”边栏选项卡中，设备状态将更改为“联机”。
 
-    ![StorSimple 最小设备设置网络接口3](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig4.png)
+    ![StorSimple 最小设备设置网络接口 3](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig4.png)
 
 <!--Link reference-->
 [Test]: /previous-versions/windows/powershell-scripting/dn715782(v=wps.630)

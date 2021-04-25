@@ -1,0 +1,74 @@
+### YamlMime:Landing
+title: 图像分析文档
+summary: 使用基于云的图像分析 API，开发者可以访问高级算法，此算法可用于处理图像并返回视觉特征信息。 该服务可根据输入信息和用户选择以不同方式分析可视内容。 通过快速入门、教程和示例，了解如何分析可视内容。
+metadata:
+  title: 图像分析文档 - 快速入门、教程和 API 参考 - Azure 认知服务 | Microsoft Docs
+  description: 使用基于云的图像分析 API，开发者可以访问高级算法，此算法可用于处理图像并返回视觉特征信息。 该服务可根据输入信息和用户选择以不同方式分析可视内容。 通过快速入门、教程和示例，了解如何分析可视内容。
+  services: cognitive-services
+  ms.service: cognitive-services
+  ms.subservice: computer-vision
+  ms.topic: landing-page
+  author: PatrickFarley
+  ms.author: pafarley
+  ms.date: 30/31/2021
+  ms.openlocfilehash: b9c4d44879c0988359d08c52e0383a03631a46c0
+  ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 04/03/2021
+  ms.locfileid: "106287463"
+landingContent:
+- title: 关于图像分析
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 图像分析概述
+      url: overview-image-analysis.md
+  - linkListType: quickstart
+    links:
+    - text: 图像分析快速入门
+      url: quickstarts-sdk/image-analysis-client-library.md
+- title: 图像分析功能
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 内容标记
+      url: concept-tagging-images.md
+    - text: 对象检测
+      url: concept-object-detection.md
+    - text: 品牌检测
+      url: concept-brand-detection.md
+    - text: 图像分类
+      url: concept-categorizing-images.md
+    - text: 图像说明
+      url: concept-describing-images.md
+    - text: 人脸检测
+      url: concept-detecting-faces.md
+    - text: 特定于域的内容
+      url: concept-detecting-domain-content.md
+    - text: 智能裁剪的缩略图
+      url: concept-generating-thumbnails.md
+    - text: 成人内容检测
+      url: concept-detecting-adult-content.md
+- title: 通过图像分析进行开发
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 调用图像分析 API
+      url: Vision-API-How-to-Topics/HowToCallVisionAPI.md
+  - linkListType: tutorial
+    links:
+    - text: 生成图像的元数据
+      url: Tutorials/storage-lab-tutorial.md
+- title: 参考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 图像分析 REST API
+      url: https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b
+- title: 帮助和反馈
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 支持和帮助选项
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context

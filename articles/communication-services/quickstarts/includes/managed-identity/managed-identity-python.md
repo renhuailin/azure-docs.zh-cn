@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 42d079a2aa98549b12aafecdd8d58f3361db8b4d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 3fcfb364ebffdd3643e803922cbe4f3dd0d87935
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307419"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107513170"
 ---
 ## <a name="setting-up"></a>设置
 
@@ -45,7 +45,7 @@ from azure.communication.sms import SmsClient
      credential = DefaultAzureCredential()
 ```
 
-## <a name="create-an-identity-and-issue-a-token-with-managed-identities"></a>创建一个标识，并使用托管标识颁发令牌。
+## <a name="create-an-identity-and-issue-a-token-with-managed-identities"></a>创建一个标识，并使用托管标识颁发令牌
 
 现在，我们将添加使用已创建的凭据的代码来颁发 VoIP 访问令牌。 稍后我们将调用此代码：
 
@@ -138,7 +138,7 @@ sms_result = send_sms(endpoint, "<FROM_NUMBER>", "<TO_NUMBER>", "Hello from Mana
 print(f'SMS ID: {sms_result[0].message_id}');
 print(f'Send Result Successful: {sms_result[0].successful}');
 ```
-## <a name="run-the-program"></a>运行该程序
+## <a name="run-the-program"></a>运行程序
 
 完成所有操作后，可以通过从项目目录中输入 `python managed-identity.py` 来运行该文件。 如果一切顺利，应会看到如下内容。
 
