@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 25f00024fb7371fd08bf6c4ceec3177cfaca029b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c43995a8b3a072d98db0ba2c8219694f17e49a26
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103572802"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363421"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault 身份验证基础知识
 
@@ -104,7 +104,7 @@ Azure Active Directory 角色分配授予对密钥保管库执行管理平面操
 > [!IMPORTANT]
 > 经典密钥保管库访问策略和 Azure Active Directory 角色分配相互独立。 在订阅级别为安全主体分配“参与者”角色不会自动使安全主体有权对订阅范围内的每个密钥保管库执行数据平面操作。 仍需向安全主体授权，否则安全主体就必须向自己授予执行数据平面操作所需的访问策略权限。
 
-### <a name="data-plane-access-option-2--azure-rbac-for-key-vault-preview"></a>数据平面访问选项 2：Key Vault 的 Azure RBAC（预览版）
+### <a name="data-plane-access-option-2--azure-rbac-for-key-vault"></a>数据平面访问选项 2：Key Vault 的 Azure RBAC
 
 若要授予对密钥保管库数据平面的访问权限，一种新方法是使用针对密钥保管库的 Azure 基于角色的访问控制 (Azure RBAC)。
 

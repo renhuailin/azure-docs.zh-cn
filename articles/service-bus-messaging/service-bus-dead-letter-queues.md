@@ -4,12 +4,12 @@ description: 介绍 Azure 服务总线中的死信队列。 服务总线队列�
 ms.topic: article
 ms.date: 04/08/2021
 ms.custom: fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: cb791982b50d7afff7b74d70adfd285bb5e0a11c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6459c8edd03427357810c1ad30161e87c18e059c
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773218"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304318"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>服务总线死信队列概述
 
@@ -31,7 +31,7 @@ DLQ 不会自动执行清理操作。 消息将保留在 DLQ 中，直到从 DLQ
 
 ![DLQ 消息计数](./media/service-bus-dead-letter-queues/dead-letter-queue-message-count.png)
 
-还可以通过使用 Azure CLI 命令：[`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription#az_servicebus_topic_subscription_show) 来获取 DLQ 消息的计数。 
+还可以通过使用 Azure CLI 命令：[`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription#az-servicebus-topic-subscription-show) 来获取 DLQ 消息的计数。 
 
 ## <a name="moving-messages-to-the-dlq"></a>将消息移到 DLQ
 服务总线中有几个活动会导致从消息引擎本身将消息推送到 DLQ。 应用程序也可以显式将消息移到 DLQ。 以下两个属性（死信原因和死信说明）将添加到死信消息中。 应用程序可以为死信原因属性定义其自己的代码，但系统会设置以下值。
@@ -80,3 +80,4 @@ DLQ 不会自动执行清理操作。 消息将保留在 DLQ 中，直到从 DLQ
 
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
 * [Azure 队列和服务总线队列比较](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43a0ef208a1a56416f748c69f552ec9169d21479
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4d939207af195abf117645e17f4ff189b163244f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102424225"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305525"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的无密码身份验证选项
 
@@ -139,6 +139,8 @@ FIDO2 安全密钥可用于登录到其 Azure AD 或已建立混合 Azure AD 联
 | KONA I | [https://konai.com/business/security/fido](https://konai.com/business/security/fido) |
 | Excelsecu | [https://www.excelsecu.com/productdetail/esecufido2secu.html](https://www.excelsecu.com/productdetail/esecufido2secu.html) |
 | Token2 Switzerland | [https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key](https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key) |
+| GoTrustID Inc. | [https://www.gotrustid.com/idem-key](https://www.gotrustid.com/idem-key) |
+| Kensington | [https://www.kensington.com/solutions/product-category/why-biometrics/](https://www.kensington.com/solutions/product-category/why-biometrics/) |
 
 > [!NOTE]
 > 如果你购买并计划使用基于 NFC 的安全密钥，则需要为安全密钥提供支持的 NFC 读卡器。 Azure 未要求或限制使用 NFC 读卡器。 有关支持的 NFC 读卡器的列表，请与供应商联系以获取基于 NFC 的安全密钥。

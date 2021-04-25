@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
 ms.openlocfilehash: cec44bbabdb7d528c30a8d3396b819f2eb3c5386
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95999415"
 ---
-虽然此功能很容易设置，但这并不意味着你的体验不会遇到任何问题。 如果在访问所需终结点时遇到问题，可以使用某些实用程序来测试从应用控制台发出的连接。 可以使用两种控制台。 一种是 Kudu 控制台，另一种是 Azure 门户中的控制台。 若要访问应用中的 Kudu 控制台，请转到“工具” > “Kudu”。 此外，还可以通过 [sitename].scm.azurewebsites.net 访问 Kudo 控制台。 打开网站负载后，转到“调试控制台”选项卡。若要从应用访问 Azure 门户托管的控制台，请转到“工具” > “控制台”。
+虽然此功能很容易设置，但这并不意味着你的体验不会遇到任何问题。 如果在访问所需终结点时遇到问题，可以使用某些实用程序来测试从应用控制台发出的连接。 可以使用两种控制台。 一种是 Kudu 控制台，另一种是 Azure 门户中的控制台。 若要访问应用中的 Kudu 控制台，请转到“工具”   >   “Kudu”。 此外，还可以通过 [sitename].scm.azurewebsites.net 访问 Kudo 控制台。 打开网站负载后，转到“调试控制台”选项卡  。若要从应用访问 Azure 门户托管的控制台，请转到“工具”   >   “控制台”。
 
 #### <a name="tools"></a>工具
-在本机 Windows 应用程序中，工具 **ping**、 **nslookup** 和 **tracert** 不会通过控制台工作，因为它们 (它们在 [自定义 Windows 容器](../articles/app-service/quickstart-custom-container.md)) 中工作。 为了填补此空白，我们添加了两个单独的工具。 我们添加了名为 nameresolver.exe 的工具，用于测试 DNS 功能。 语法为：
+在本机 Windows 应用中，由于存在安全约束，ping、nslookup 和 tracert 工具无法通过控制台来使用（可在[自定义 Windows 容器](../articles/app-service/quickstart-custom-container.md)中使用）  。 为了填补此空白，我们添加了两个单独的工具。 我们添加了名为 nameresolver.exe 的工具，用于测试 DNS 功能。 语法为：
 
 ```console
 nameresolver.exe hostname [optional: DNS Server]
@@ -43,10 +43,10 @@ tcpping.exe hostname [optional: port]
 如果这些方法未解决问题，请首先检查以下因素：
 
 **区域 VNet 集成**
-* 你的目标是不是 RFC1918 的地址，并且未将 WEBSITE_VNET_ROUTE_ALL 设置为1？
-* 你的集成子网是否有 NSG 阻止出口？
-* 如果要跨越 Azure ExpressRoute 或 VPN，是否配置了本地网关，以将流量重新路由到 Azure？ 如果可以访问虚拟网络中的终结点，但不能访问本地的终结点，请检查路由。
-* 你是否有足够的权限在集成子网上设置委派？ 在区域 VNet 集成配置期间，集成子网会委托给 serverFarms/。 VNet 集成 UI 会自动将子网委托给 serverFarms/。 如果你的帐户没有足够的网络权限来设置委派，你将需要可设置集成子网中的属性的用户来委派子网。 若要手动委派集成子网，请参阅 Azure 虚拟网络子网 UI，并设置 serverFarms/的委派。
+* 目标是否为非 RFC1918 地址，并且未将 WEBSITE_VNET_ROUTE_ALL 设置为 1？
+* 是否有 NSG 阻止了集成子网传出数据？
+* 如果通过 Azure ExpressRoute 或 VPN 传输，本地网关是否配置为将流量路由回 Azure？ 如果可以访问虚拟网络中的终结点，但不能访问本地的终结点，请检查路由。
+* 是否有足够的权限在集成子网上设置委派？ 在区域 VNet 集成配置期间，集成子网会委托给 Microsoft.Web/serverFarms。 VNet 集成 UI 会自动将子网委托给 Microsoft.Web/serverFarms。 如果帐户没有足够的网络权限来设置委派，将需要可设置集成子网中的属性的用户来委托子网。 若要手动委托集成子网，请转到 Azure 虚拟网络子网 UI，并设置 Microsoft.Web/serverFarms 的委派。
 
 **需要网关的 VNet 集成**
 * 点到站点地址范围是否在 RFC 1918 范围内 (10.0.0.0-10.255.255.255 / 172.16.0.0-172.31.255.255 / 192.168.0.0-192.168.255.255)？

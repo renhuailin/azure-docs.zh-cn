@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 5bd89a734a20c913bacca1f5531aa76d76418c80
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 26262f83e14602d6ea93f96ec47630ef870c357d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448213"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309299"
 ---
 # <a name="estimate-azure-monitor-costs"></a>估计 Azure Monitor 成本
 
@@ -35,7 +35,7 @@ Windows 虚拟桌面 Azure Monitor 的预定义数据集包括：
 - 会话主机的 Windows 事件日志
 - 服务基础结构中的 Windows 虚拟桌面诊断
 
-数据引入和存储成本取决于你的环境规模、健康状况和使用情况。 本文所使用的示例，建立在正常运行的虚拟机从轻到强运行的基础之上，基于[虚拟机大小调整准则](/remote/remote-desktop-services/virtual-machine-recs)计算所需的成本范围，以计算一系列数据引入和存储成本。
+数据引入和存储成本取决于你的环境规模、健康状况和使用情况。 本文所使用的示例，建立在正常运行的虚拟机从轻到强运行的基础之上，基于[虚拟机大小调整准则](/windows-server/remote/remote-desktop-services/virtual-machine-recs)计算所需的成本范围，以计算一系列数据引入和存储成本。
 
 我们将在本示例中使用的轻运行虚拟机包含以下组件：
 
