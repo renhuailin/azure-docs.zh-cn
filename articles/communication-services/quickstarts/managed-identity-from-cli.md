@@ -9,22 +9,22 @@ ms.topic: how-to
 ms.date: 03/10/2021
 ms.author: jbeauregardb
 ms.reviewer: mikben
-ms.openlocfilehash: e708536395807fc74dc5bfd73836e050832cca39
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2ef5a3b162d62fa79ed01a156345070ee12b4862
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103493333"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105110672"
 ---
 # <a name="authorize-access-with-managed-identity-to-your-communication-resource-in-your-development-environment"></a>使用托管标识向开发环境中的通信资源授予访问权限
 
-Azure 标识客户端库为 Azure SDK 提供 Azure Active Directory (Azure AD) 令牌身份验证支持。 适用于 .NET、Java、Python 和 JavaScript 的最新版本的 Azure 通信服务客户端库与 Azure 标识库集成，提供了一种简单而安全的方法来获取用于授权 Azure 通信服务请求的 OAuth 2.0 令牌。
+Azure 标识 SDK 为 Azure SDK 提供 Azure Active Directory (Azure AD) 令牌身份验证支持。 适用于 .NET、Java、Python 和 JavaScript 的最新版本 Azure 通信服务 SDK 与 Azure 标识库集成，提供了一种简单而安全的方法来获取用于授权 Azure 通信服务请求的 OAuth 2.0 令牌。
 
-Azure 标识客户端库的优点在于，它使你可以使用相同的代码跨多项服务验证你的应用程序是在开发环境中运行还是在 Azure 中运行。 Azure 标识客户端库对安全主体进行身份验证。 代码在 Azure 中运行时，安全主体是 Azure 资源的托管标识。 在开发环境中，不存在托管标识，因此客户端库将对用户或已注册的应用程序进行身份验证，以便进行测试。
+Azure 标识 SDK 的优点在于，它使你可以使用相同的代码跨多项服务验证你的应用程序是在开发环境中运行还是在 Azure 中运行。 Azure 标识 SDK 对安全主体进行身份验证。 代码在 Azure 中运行时，安全主体是 Azure 资源的托管标识。 在开发环境中，不存在托管标识，因此 SDK 将对用户或已注册的应用程序进行身份验证，以便进行测试。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
- - Azure CLI。 [安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)
+ - Azure CLI。 [安装指南](/cli/azure/install-azure-cli)
  - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free)
 
 ## <a name="setting-up"></a>设置
@@ -35,7 +35,7 @@ Azure 标识客户端库的优点在于，它使你可以使用相同的代码�
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager 模板](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
-- [Azure 资源管理器客户端库](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
+- [Azure 资源管理器 SDK](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 - [应用程序服务](../../app-service/overview-managed-identity.md)
 
 ## <a name="authenticate-a-registered-application-in-the-development-environment"></a>在开发环境中对已注册的应用程序进行身份验证
@@ -68,7 +68,7 @@ az ad sp create-for-rbac --name <application-name>
 
 #### <a name="set-environment-variables"></a>设置环境变量。
 
-Azure 标识客户端库会在运行时读取三个环境变量中的值，以对应用程序进行身份验证。 下表介绍了为每个环境变量设置的值。
+Azure 标识 SDK 会在运行时读取三个环境变量中的值，以对应用程序进行身份验证。 下表介绍了为每个环境变量设置的值。
 
 |环境变量|Value
 |-|-

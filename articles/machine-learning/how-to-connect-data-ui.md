@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to, data4ml
-ms.openlocfilehash: 0e2230bdcf2b2f4358db4a0d600506b711f39c45
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a0265984c4ae83b8869071017e2fb571a7ff548c
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508225"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027646"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>使用 Azure 机器学习工作室连接到数据
 
@@ -69,7 +69,7 @@ ms.locfileid: "102508225"
 创建数据存储后，创建一个数据集以与数据交互。 数据集可将数据打包成一个延迟计算的可供机器学习任务（例如训练）使用的对象。 [了解有关数据集的详细信息](how-to-create-register-datasets.md)。
 
 有两种类型的数据集：FileDataset 和 TablerDataSet。 
-[FileDatasets](how-to-create-register-datasets.md#filedataset) 创建对单个或多个文件或公共 URL 的引用。 然而，[TabularDatasets](how-to-create-register-datasets.md#tabulardataset) 以表格格式表示数据。 
+[FileDatasets](how-to-create-register-datasets.md#filedataset) 创建对单个或多个文件或公共 URL 的引用。 然而，[TabularDatasets](how-to-create-register-datasets.md#tabulardataset) 以表格格式表示数据。 可以从 .csv、.tsv、.parquet、.jsonl 文件以及从 SQL 查询结果创建 TabularDatasets。
 
 以下步骤和动画演示如何在 [Azure 机器学习工作室](https://ml.azure.com)中创建数据集。
 
@@ -119,7 +119,7 @@ ms.locfileid: "102508225"
 |类型|列的推理类型。 可能的值包括：字符串、布尔值、日期和小数。
 |Min| 列的最小值。 对于没有固有顺序（例如布尔值）的特征类型，将显示空白条目。
 |Max| 列的最大值。 
-|Count| 列中缺失和未缺失条目的总数。
+|计数| 列中缺失和未缺失条目的总数。
 |非缺失计数| 列中未缺失的条目数。 空字符串和误差被视为值，因此它们不会计入“未缺少计数”。
 |分位数| 每个分位数中的近似值，用于提供数据分布的概观。
 |平均值| 列的算术中间值或平均值。

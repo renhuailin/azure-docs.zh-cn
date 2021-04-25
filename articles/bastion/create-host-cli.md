@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: cherylmc
-ms.openlocfilehash: e4f0a3ea85fa479826fe9e666df2b18f8dba7ce3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8654b557de8242910c665596ca8bfd29fe86d1ff
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92079116"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106578821"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-cli"></a>使用 Azure CLI 创建 Azure Bastion 主机
 
@@ -25,6 +25,10 @@ ms.locfileid: "92079116"
 确保拥有 Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial)。
 
 [!INCLUDE [Cloud Shell CLI](../../includes/vpn-gateway-cloud-shell-cli.md)]
+
+ >[!NOTE]
+ >目前不支持一起使用 Azure Bastion 和 Azure 专用 DNS 区域。 开始之前，请确保计划在其中部署 Bastion 资源的虚拟网络未链接到专用 DNS 区域。
+ >
 
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>创建 Bastion 主机
 

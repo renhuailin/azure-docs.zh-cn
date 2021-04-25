@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: risverma
 ms.custom: include file
-ms.openlocfilehash: fc61c111291f9862f71f9a81828fa0fa828ab2ad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 83a19dea56693a1caff2c982b9f772543fe1cf2e
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102510616"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073477"
 ---
 Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟机大小。 独立大小在特定的硬件生成上有效并运行，当硬件生成失效时，将弃用。
 
@@ -31,6 +31,7 @@ Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟�
 * Standard_M128ms
 * Standard_GS5
 * Standard_G5
+* Standard_DC8_v2
 
 
 > [!NOTE]
@@ -48,6 +49,7 @@ Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟�
 | Standard_GS5  | 2022 年 2 月 15 日 |
 | Standard_E64i_v3  | 2022 年 2 月 15 日 |
 | Standard_E64is_v3  | 2022 年 2 月 15 日 |
+| Standard_DC8_v2 | 2022 年 2 月 15 日 |
 
 
 ## <a name="faq"></a>常见问题解答
@@ -82,7 +84,7 @@ Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟�
 | 日期 | 操作 |
 |---|---|
 | 2021 年 2 月 15 日<sup>1</sup> | G5/GS5/E64i_v3/E64is_v3 隔离停用公告 |
-| 2022 年 2 月 15 日 | G5/GS5/E64i_v3/E64is_v3 隔离保证被取消 |
+| 2022 年 2 月 28 日 | G5/GS5/E64i_v3/E64is_v3 隔离保证被取消 |
 
 <sup>1</sup> 使用这些大小的现有客户将会收到公告电子邮件，其中包含有关后续步骤的详细说明。  
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 746198f87e23cd7aca2a3177c23974917cb4b12a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96027232"
 ---
 #### <a name="to-create-a-new-service"></a>创建新服务
@@ -19,9 +19,9 @@ ms.locfileid: "96027232"
 
     ![创建 StorSimple Device Manager](./media/storsimple-8000-create-new-service/createssdevman1.png)
 
-    搜索“StorSimple 物理”。 选择并单击“StorSimple 物理设备系列”，单击“创建”。 或者，在 Azure 门户单击， **+** 然后在 " **存储**" 下单击 " **StorSimple 物理设备系列**"。
+    搜索“StorSimple 物理”。 选择并单击“StorSimple 物理设备系列”，单击“创建”。 或者，在 Azure 门户中，单击 **+** ，并在“存储”下单击“StorSimple 物理设备系列”。 
 
-    ![创建 StorSimple 设备管理器2](./media/storsimple-8000-create-new-service/createssdevman11.png)
+    ![创建 StorSimple 设备管理器 2](./media/storsimple-8000-create-new-service/createssdevman11.png)
 
 3. 在“StorSimple 设备管理器”边栏选项卡中，执行以下步骤：
 
@@ -42,8 +42,8 @@ ms.locfileid: "96027232"
 
    7. 单击“创建”以创建 StorSimple 设备管理器。
 
-       ![创建 StorSimple 设备管理器3](./media/storsimple-8000-create-new-service/createssdevman2.png)
+       ![创建 StorSimple 设备管理器 3](./media/storsimple-8000-create-new-service/createssdevman2.png)
 
 创建服务需要几分钟时间。 在服务成功创建后，会发出一条通知并且会打开新的服务边栏选项卡。
 
-![创建 StorSimple 设备管理器4](./media/storsimple-8000-create-new-service/createssdevman5.png)
+![创建 StorSimple 设备管理器 4](./media/storsimple-8000-create-new-service/createssdevman5.png)

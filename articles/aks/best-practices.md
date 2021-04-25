@@ -3,19 +3,24 @@ title: 适用于 Azure Kubernetes 服务 (AKS) 的最佳做法
 description: 群集操作员和开发人员最佳做法的集合，用于在 Azure Kubernetes 服务 (AKS) 中生成并管理应用程序
 services: container-service
 ms.topic: article
-ms.date: 12/07/2018
-ms.openlocfilehash: e8f9c1946567ac3c3ea1045a216d6b0486fd959a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/09/2021
+ms.openlocfilehash: f4bd109ce6827de26b1649380b6f6a2ba7c10e17
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94686253"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105895"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>群集操作员和开发人员的最佳做法，用于在 Azure Kubernetes 服务 (AKS) 中生成并管理应用程序
 
-若要在 Azure Kubernetes 服务 (AKS) 中成功地生成并运行应用程序，需要了解并实施一些关键的注意事项。 此方面的内容包括多租户和计划程序功能、群集和 Pod 安全性，或者业务连续性和灾难恢复。 以下最佳做法已分组，目的是帮助群集操作员和开发人员了解每个方面的注意事项，并实现相应的功能。
+在 Azure Kubernetes 服务 (AKS) 中成功生成并运行应用程序需要了解和实现一些关键注意事项，包括：
+* 多租户和计划程序功能。
+* 群集和 Pod 安全性。
+* 业务连续性和灾难恢复。 
 
-这些最佳做法和概念文章是与 AKS 产品组、工程团队和现场团队（包括全球黑带 (GBB)）一起共同撰写的。
+
+以下最佳做法和概念文章由 AKS 产品组、工程团队和现场团队（包括全球黑带 [GBB]）提供、撰写并分组。 其目的是帮助群集操作员和开发人员了解上述注意事项并实现相应的功能。
+
 
 ## <a name="cluster-operator-best-practices"></a>群集操作员最佳做法
 

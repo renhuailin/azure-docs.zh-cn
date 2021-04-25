@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/16/2020
 ms.author: alkohli
 ms.openlocfilehash: 27503d1d60d961bac6dd41ebfe4fb083948cb251
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96581547"
 ---
 还可以查看指标以监视设备的性能，并在某些情况下排除设备故障。
@@ -29,11 +29,11 @@ ms.locfileid: "96581547"
 
 3. 在下拉列表中选择用于监视设备的指标。 有关这些指标的完整列表，请参阅[设备上的指标](#metrics-on-your-device)。
 
-4. 当在下拉列表中选择指标后，即可定义聚合。 聚合指的是在指定时间范围内聚合的实际值。 聚合值可以是平均值、最小值或最大值。 从平均值、最大值或最小值中选择聚合。
+4. 当在下拉列表中选择指标后，即可定义聚合。 聚合指的是在指定时间范围内聚合的实际值。 聚合值可以为平均值、最小值或最大值。 从平均值、最大值或最小值中选择聚合。
 
     ![查看图表](media/data-box-gateway-view-metrics/view-metrics-view-chart.png)
 
-5. 如果所选指标有多个实例，则可以使用拆分选项。 选择 " **应用拆分**"，然后选择要查看其细目的值。
+5. 如果所选指标有多个实例，则可以使用拆分选项。 选择“应用拆分”，然后选择要按其显示明细图表的值。
 
     ![应用拆分](media/data-box-gateway-view-metrics/view-metrics-apply-splitting.png)
 

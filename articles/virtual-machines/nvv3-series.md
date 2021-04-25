@@ -8,12 +8,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 276afba62a26a53fe32f7aa9d47f42ada251d6b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 356c6043f1262d680aa22aa02a864412f1d37814
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102613045"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310353"
 ---
 # <a name="nvv3-series"></a>NVv3 系列
 
@@ -23,6 +23,7 @@ NVv3 实例中的每个 GPU 都带有 GRID 许可证。 使用此许可证，可
 
 [高级存储](premium-storage-performance.md)：支持<br>
 [高级存储缓存](premium-storage-performance.md)：支持<br>
+[超级磁盘](disks-types.md#ultra-disk)：支持（[详细了解](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312)可用性、使用情况和性能） <br>
 [实时迁移](maintenance-and-updates.md)：不支持<br>
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>

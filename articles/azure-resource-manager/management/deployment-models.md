@@ -2,13 +2,13 @@
 title: 资源管理器部署和经典部署
 description: 介绍 Resource Manager 部署模型与经典（或服务管理）部署模型之间的差异。
 ms.topic: conceptual
-ms.date: 02/06/2020
-ms.openlocfilehash: da260db84de0cc8bd092eb95491b7cc38df93a12
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: c2009034c431e53d162cb0f2c1f0d9815c8d1942
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96185838"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306921"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure 资源管理器和经典部署：了解部署模型和资源状态
 
@@ -17,7 +17,7 @@ ms.locfileid: "96185838"
 
 本文介绍 Azure 资源管理器和经典部署模型。 Resource Manager 部署模型和经典部署模型代表两种不同的 Azure 解决方案部署和管理方式。 可以通过两种不同的 API 集使用这两种模型，已部署的资源可能包含重大差异。 这两个模型互不兼容。 本文介绍这些差异。
 
-若要简化资源部署和管理，Microsoft 建议为所有新资源使用 Resource Manager。 如果可能，Microsoft 建议通过 Resource Manager 重新部署现有资源。
+若要简化资源部署和管理，Microsoft 建议为所有新资源使用 Resource Manager。 如果可能，Microsoft 建议通过 Resource Manager 重新部署现有资源。 如果已使用云服务，则可以将解决方案迁移到[云服务（外延支持）](../../cloud-services-extended-support/overview.md)。
 
 如果不熟悉 Resource Manager，请先查看 [Azure Resource Manager 概述](overview.md)中定义的术语。
 
@@ -40,7 +40,7 @@ Azure 在 2014 年引入了 Resource Manager，增加了资源组这一概念。
 
 下面是需要了解的三种情况：
 
-1. 云服务不支持资源管理器部署模型。
+1. [云服务（经典）](../../cloud-services/cloud-services-choose-me.md)不支持资源管理器部署模型。 [云服务（外延支持）](../../cloud-services-extended-support/overview.md)支持资源管理器部署模型。
 2. 虚拟机、存储帐户和虚拟网络同时支持资源管理器和经典部署模型。
 3. 其他所有 Azure 服务都支持资源管理器。
 
@@ -95,7 +95,7 @@ SRP：存储资源提供程序；CRP：计算资源提供程序；NRP：网络�
 
 托管虚拟机的经典解决方案包括：
 
-* 一项必不可少的云服务，用作宿主虚拟机的容器（计算）。 虚拟机自动配备一个网络接口卡以及由 Azure 分配的 IP 地址。 此外，云服务包含一个外部负载均衡器实例、一个公共 IP 地址以及若干默认终结点，以支持远程桌面、针对 Windows 虚拟机的远程 PowerShell 流量和针对 Linux 虚拟机的 Secure Shell (SSH) 流量。
+* 云服务（经典）用作宿主虚拟机的容器（计算）。 虚拟机自动配备一个网络接口卡以及由 Azure 分配的 IP 地址。 此外，云服务包含一个外部负载均衡器实例、一个公共 IP 地址以及若干默认终结点，以支持远程桌面、针对 Windows 虚拟机的远程 PowerShell 流量和针对 Linux 虚拟机的 Secure Shell (SSH) 流量。
 * 一个必不可少的存储帐户，它用于存储虚拟机的虚拟硬盘，包括操作系统、临时文件和附加的数据磁盘（存储）。
 * 一个可选的虚拟网络，用作额外的容器，可以在其中创建子网结构并选择虚拟机所在的子网（网络）。
 

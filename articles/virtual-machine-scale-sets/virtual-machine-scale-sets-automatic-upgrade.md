@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: automatic-os-upgrade
 ms.date: 06/26/2020
 ms.reviewer: jushiman
-ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 39649d9fc12e78f962fac25a12db796b71015db8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: avverma
+ms.openlocfilehash: 1e32ff4bc1c39e8a3385f8037f88cedbdc17d3a6
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934540"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375740"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 虚拟机规模集自动 OS 映像升级
 
@@ -79,7 +79,7 @@ ms.locfileid: "105934540"
 ### <a name="service-fabric-requirements"></a>Service Fabric 要求
 
 如果使用的是 Service Fabric，请确保满足以下条件：
--   Service Fabric [持久性级别](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) 为 Silver 或 Gold，而不是 Bronze。
+-   Service Fabric [持续性级别](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)为白银或黄金，而不是青铜（支持自动 OS 升级的纯无状态节点类型除外）。
 -   根据规模集模型定义，Service Fabric 扩展必须具有 TypeHandlerVersion 1.1 或更高版本。
 -   根据规模集模型定义，Service Fabric 群集与 Service Fabric 扩展的持久性级别应相同。
 - 不需要额外的运行状况探测或使用应用程序运行状况扩展。
@@ -163,7 +163,7 @@ OS 升级过程中，规模集中的 VM 实例每次只升级一批。 只有客
 ```
 
 > [!NOTE]
-> 使用带 Service Fabric 的自动 OS 升级时，更新域将推出新的 OS 映像，以维持 Service Fabric 中运行的服务的高可用性。 若要利用 Service Fabric 中的自动 OS 升级，必须将群集配置为使用银级持久性层或更高层级。 有关 Service Fabric 群集的持续性特征的详细信息，请参阅[此文档](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)。
+> 使用带 Service Fabric 的自动 OS 升级时，更新域将推出新的 OS 映像，以维持 Service Fabric 中运行的服务的高可用性。 若要利用 Service Fabric 中的自动 OS 升级，必须将群集节点类型配置为使用白银持续性层或更高层级。 对于青铜持续性层，仅无状态节点类型支持自动 OS 升级。 有关 Service Fabric 群集的持续性特征的详细信息，请参阅[此文档](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)。
 
 ### <a name="keep-credentials-up-to-date"></a>请使凭据保持最新
 如果规模集使用任何凭据访问外部资源（例如进行配置以使用 SAS 令牌访问存储帐户的 VM 扩展），请确保凭据保持最新。 如果任何凭据（包括证书和令牌）过期，则升级将失败，并且第一批 VM 将处于失败状态。

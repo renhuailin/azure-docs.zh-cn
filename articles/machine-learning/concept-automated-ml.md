@@ -10,18 +10,29 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
-ms.openlocfilehash: 44bcc27f877f6b2a547c51ecd3848214719cb085
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cbc147cb0aabc0540e3a91c99243aa88a8cca146
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643662"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210786"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什么是自动化机器学习 (AutoML)？
 
 自动化机器学习也称为自动化 ML 或 AutoML，是将机器学习模型开发过程中耗时的反复性任务自动化的过程。 数据科学家、分析师和开发人员可以使用它来生成高度可缩放、高效且高产能的 ML 模型，同时保证模型的质量。 Azure 机器学习中的自动化 ML 基于 [Microsoft Research 部门](https://www.microsoft.com/research/project/automl/)的突破性技术。
 
 传统的机器学习模型开发是资源密集型的，需要具备丰富的领域知识，并需要花费大量的时间来生成和比较数十个模型。 使用自动化机器学习可以缩减生成生产就绪型 ML 模型所需的时间，同时使工作变得更轻松高效。
+
+## <a name="automl-in-azure-machine-learning"></a>Azure 机器学习中的 AutoML
+
+Azure 机器学习提供了两种使用自动化 ML 的体验方式：
+
+* 编程经验丰富的客户可以使用 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro)。  请先查看[教程：使用自动化机器学习预测出租车费](tutorial-auto-train-models.md)。
+
+* 编程经验有限/无经验的客户可以使用 [https://ml.azure.com](https://ml.azure.com/) 上的 Azure 机器学习工作室。  请先查看以下教程：
+    * [教程：使用 Azure 机器学习中的自动化 ML 创建分类模型](tutorial-first-experiment-automated-ml.md)。
+    *  [教程：使用自动化机器学习预测需求](tutorial-automated-ml-forecast.md)
+
 
 ## <a name="when-to-use-automl-classify-regression--forecast"></a>何时使用 AutoML：分类、回归和预测
 
@@ -199,14 +210,6 @@ ms.locfileid: "105643662"
 * 预测每家店铺的销售额
 * 对数百口油井进行预测性维护
 * 为个人用户定制体验。
-
-## <a name="automl-in-azure-machine-learning"></a>Azure 机器学习中的 AutoML
-
-Azure 机器学习提供了两种使用自动化 ML 的体验方式：
-
-* 对于编码经验丰富的客户，可以使用 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro) 
-
-* 编程经验有限/无经验的客户可以使用 [https://ml.azure.com](https://ml.azure.com/) 上的 Azure 机器学习工作室  
 
 <a name="parity"></a>
 

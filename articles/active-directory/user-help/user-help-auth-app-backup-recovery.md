@@ -12,10 +12,10 @@ ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: e7608196c962a6918a90b91457f856f3e11b04f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91530895"
 ---
 # <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 应用备份和恢复帐户凭据
@@ -81,23 +81,23 @@ Microsoft Authenticator 应用可将帐户凭据和相关的应用设置（例�
 
 ### <a name="to-provide-more-verification-for-personal-accounts"></a>为个人帐户提供更多验证
 
-1. 在 Microsoft Authenticator 应用程序的 " **帐户** " 屏幕上，点击要恢复的帐户以打开该帐户的全屏视图。
+1. 在 Microsoft Authenticator 应用的“帐户”屏幕上，点击要恢复的帐户以打开该帐户的全屏视图。
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png" alt-text="显示具有可用帐户磁贴的 Microsoft Authenticator 应用程序的屏幕截图。" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png" alt-text="屏幕截图显示了具有可用帐户磁贴的 Microsoft Authenticator 应用。" border="true":::
 
-1. 点击要恢复的帐户的磁贴，然后点击 "登录" 选项以恢复。 输入密码，然后确认你的电子邮件地址或电话号码作为附加验证。
+1. 点击要恢复的帐户的磁贴，然后点击用于登录后进行恢复的选项。 输入你的密码，然后确认用作附加验证方式的电子邮件地址或电话号码。
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="显示具有可用帐户磁贴的 Microsoft Authenticator 应用程序的屏幕截图。" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="屏幕截图显示了 Microsoft Authenticator 一次性密码代码。" border="true":::
 
 ### <a name="to-provide-more-verification-for-work-or-school-accounts"></a>为工作或学校帐户提供更多验证
 
-1. 在 Microsoft Authenticator 应用程序的 " **帐户** " 屏幕上，点击要恢复的帐户以打开该帐户的全屏视图。
+1. 在 Microsoft Authenticator 应用的“帐户”屏幕上，点击要恢复的帐户以打开该帐户的全屏视图。
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="显示具有可用帐户磁贴的 Microsoft Authenticator 应用程序的屏幕截图。" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="Microsoft Authenticator 应用，显示了可用帐户磁贴" border="true":::
 
-1. 在全屏视图中，点击选项以扫描 QR 代码以完全恢复。
+1. 在全屏视图中，点击用于扫描 QR 代码以便完全进行恢复的选项。
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="显示具有可用帐户磁贴的 Microsoft Authenticator 应用程序的屏幕截图。" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="Authenticator 提供一次性密码作为验证码" border="true":::
 
 >[!NOTE]
 >有关 QR 码以及如何获取 QR 码的详细信息，请参阅 [Microsoft Authenticator 应用入门](./user-help-auth-app-download-install.md)或[设置安全信息以使用 Authenticator 应用](./security-info-setup-auth-app.md)，具体取决于管理员是否已启用安全信息。
@@ -118,7 +118,7 @@ Microsoft Authenticator 应用可将帐户凭据和相关的应用设置（例�
 
 - **现有的 Microsoft Authenticator 帐户**：如果已在 Microsoft Authenticator 应用中设置了帐户，该应用将无法恢复备份的帐户。 阻止恢复有助于确保帐户详细信息不会被过期的信息覆盖。 在这种情况下，必须先从 Authenticator 应用中设置的现有帐户删除现有的帐户信息，然后才能恢复备份。
 
-- **备份已过期**：如果备份信息已过期，系统可能会要求你再次登录 Microsoft 恢复帐户以刷新信息。 恢复帐户是最初用于存储备份的个人 Microsoft 帐户。 如果需要登录，你会在菜单或操作栏上看到一个红点，或者你将看到一个惊叹号图标，提示你登录以完成从备份还原。 选择相应的图标后，系统将提示你再次登录以更新你的信息。
+- **备份已过期**：如果备份信息已过期，系统可能会要求你再次登录 Microsoft 恢复帐户以刷新信息。 恢复帐户是最初用于存储备份的个人 Microsoft 帐户。 如果需要登录，你会在菜单或操作栏上看到一个红点，或者会看到一个感叹号图标，提示你登录以完成从备份中还原的操作。 选择合适的图标后，系统会提示你再次登录以更新信息。
 
 ## <a name="next-steps"></a>后续步骤
 

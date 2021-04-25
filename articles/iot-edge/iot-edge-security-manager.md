@@ -9,12 +9,12 @@ ms.author: eustacea
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 468f1b91d6c6157cd2af6de9599bad7f43c1ad8f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ed73c114c015ce38fefa02d2b71e27e8f85dca39
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103492551"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028666"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge 安全管理器
 
@@ -119,12 +119,17 @@ HSM PAL 将所有硬件信任根抽象化，从而使 IoT Edge 开发者或用�
 
 ## <a name="iot-edge-security-manager-integration-and-maintenance"></a>IoT Edge 安全管理器集成和维护
 
-IoT Edge 安全管理器旨在标识并隔离保护 Azure IoT Edge 平台的安全性和完整性的组件，以增强自定义。 第三方（如设备制造商）应使用其设备硬件提供可用的自定义安全功能。  有关如何在 Linux 和 Windows 平台上通过受信任的平台模块 (TPM) 增强 Azure IoT 安全管理器的信息，请访问“后续步骤”一节中的链接。 这些示例使用软件或虚拟 TPM，但直接应用于使用离散 TPM 设备。  
+IoT Edge 安全管理器旨在标识并隔离保护 Azure IoT Edge 平台的安全性和完整性的组件，以增强自定义。 第三方（如设备制造商）应使用其设备硬件提供可用的自定义安全功能。  
+
+了解如何使用软件或虚拟 TPM 通过受信任的平台模块 (TPM) 强化 Azure IoT 安全管理器：  
+
+[使用 Linux 虚拟机上的虚拟 TPM](how-to-auto-provision-simulated-device-linux.md) 创建和预配 IoT Edge 设备。
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+在 Windows 上使用模拟的 TPM 创建和预配 [IoT Edge 设备](how-to-auto-provision-simulated-device-windows.md)。
+:::moniker-end
 
 ## <a name="next-steps"></a>后续步骤
 
 阅读博客 [Securing the intelligent edge](https://azure.microsoft.com/blog/securing-the-intelligent-edge/)（保护智能边缘）。
-
-[使用 Linux 虚拟机上的虚拟 TPM](how-to-auto-provision-simulated-device-linux.md) 创建和预配 IoT Edge 设备。
-
-在 Windows 上使用模拟的 TPM 创建和预配 [IoT Edge 设备](how-to-auto-provision-simulated-device-windows.md)。

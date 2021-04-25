@@ -5,15 +5,15 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
 ms.openlocfilehash: 7661066bc2666070c8b3ed9263b1223c09d6c720
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101734717"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
-现在比以往更轻松地在 [Azure 应用服务](../../app-service/index.yml) 上运行的 ASP.NET、ASP.NET Core 和基于 Node.js 的 web 应用程序上启用监视。 以前需要手动安装某个站点扩展，而现在应用服务映像中默认会内置最新的扩展/代理。 本文逐步讲解如何启用 Application Insights 监视，并提供有关如何自动完成大规模部署的初步指导。
+现在，可以比过去更轻松地针对 [Azure 应用服务](../../app-service/index.yml)中运行的基于 ASP.NET、ASP.NET Core 和 Node.js 的 Web 应用程序启用监视。 以前需要手动安装某个站点扩展，而现在应用服务映像中默认会内置最新的扩展/代理。 本文逐步讲解如何启用 Application Insights 监视，并提供有关如何自动完成大规模部署的初步指导。
 
 > [!NOTE]
 > 通过“开发工具” > “扩展”手动添加 Application Insights 站点扩展的功能已弃用。  此扩展安装方法依赖于每个新版本的手动更新。 扩展的最新稳定版现在会[预装](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions)在应用服务映像中。 这些文件位于 `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` 中，每发布一个稳定版本，它们都会自动更新。 如果在下文中遵循基于代理的说明启用监视，系统会自动删除已弃用的扩展。
@@ -76,7 +76,7 @@ ms.locfileid: "101734717"
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/netcore)
 
 > [!IMPORTANT]
-> 支持以下版本的 ASP.NET Core： ASP.NET Core 2.1 和3.1。 版本2.0、2.2 和3.0 已经停用，不再受支持。 请升级到 [受支持](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) 的 .net Core 版本，使自动检测能够正常工作。
+> 支持以下 ASP.NET Core 版本：ASP.NET Core 2.1 和 ASP.NET Core 3.1。 版本 2.0、2.2 和 3.0 已停用，不再受支持。 请升级到 .NET Core 的[受支持版本](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)，使自动检测能够正常工作。
 
 基于代理/扩展的监视目前不支持将 ASP.NET Core 提供的完整框架、独立部署和基于 Linux 的应用程序作为目标。 （在上述所有方案中，都可通过代码进行[手动检测](./asp-net-core.md)。）
 
@@ -91,7 +91,7 @@ ms.locfileid: "101734717"
 
      ![检测 Web 应用](./media/azure-web-apps/create-resource-01.png)
 
-2. 指定要使用哪些资源后，可以选择 Application Insights 根据平台为应用程序收集数据的方式。 ASP.NET Core 提供 ASP.NET Core 2.1 和3.1 的 **推荐收集** 或 **禁用** 。
+2. 指定要使用哪些资源后，可以选择 Application Insights 根据平台为应用程序收集数据的方式。 对于 ASP.NET Core 2.1 和 3.1，ASP.NET Core 提供“建议的集合”或“已禁用”。 
 
     ![根据平台选择选项](./media/azure-web-apps/choose-options-new-net-core.png)
 
@@ -170,7 +170,7 @@ ms.locfileid: "101734717"
 |XDT_MicrosoftApplicationInsights_Mode |  （仅限默认模式）已启用基本功能以确保最佳性能。 | `default` 或 `recommended`。 |
 |InstrumentationEngine_EXTENSION_VERSION | 控制是否要启用二进制重写引擎 `InstrumentationEngine`。 此设置会对性能以及冷启动/启动时间造成影响。 | `~1` |
 |XDT_MicrosoftApplicationInsights_BaseExtensions | 控制是否要随依赖项调用一起捕获 SQL 和 Azure 表文本。 性能警告：应用程序冷启动时间将会受到影响。 此设置需要 `InstrumentationEngine`。 | `~1` |
-|XDT_MicrosoftApplicationInsights_PreemptSdk | 仅适用于 ASP.NET Core 应用。 启用 Application Insights SDK) 互操作 (互操作。 将扩展与 SDK 并行加载，并使用它发送遥测 (禁用 Application Insights SDK) 。 |`1`|
+|XDT_MicrosoftApplicationInsights_PreemptSdk | 仅适用于 ASP.NET Core 应用。 启用与 Application Insights SDK 的互操作。 将此扩展与 SDK 并行加载，并使用它来发送遥测数据（禁用 Application Insights SDK）。 |`1`|
 
 ### <a name="app-service-application-settings-with-azure-resource-manager"></a>使用 Azure 资源管理器配置应用服务应用程序设置
 
@@ -383,7 +383,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
         即使 Application Insights SDK 被最初使用或尝试使用，现在仍将使用无代码方法发送数据。
 
         > [!IMPORTANT]
-        > 如果应用程序使用 Application Insights SDK 发送任何遥测数据，则将禁用此类遥测数据，换言之，自定义遥测（如有任何 Track * () 方法，以及任何自定义设置，如采样）都将被禁用。 
+        > 如果应用程序使用 Application Insights SDK 发送任何遥测数据，则将禁用此类遥测 - 也就是说，自定义遥测（如果有，例如任何 Track*() 方法）和任何自定义设置（例如采样）都将被禁用。 
 
 
 ### <a name="php-and-wordpress-are-not-supported"></a>不支持 PHP 和 WordPress
@@ -422,11 +422,11 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 使用无代码监视时，只需要连接字符串。 但是，我们仍然建议设置检测密钥，以便在执行手动检测时保持与旧版 SDK 的后向兼容性。
 
-### <a name="difference-between-standard-metrics-from-application-insights-vs-azure-app-service-metrics"></a>标准指标与 Application Insights 与 Azure App Service 指标之间有何区别？
+### <a name="difference-between-standard-metrics-from-application-insights-vs-azure-app-service-metrics"></a>Application Insights 中的标准指标与 Azure 应用服务指标之间有何区别？
 
-Application Insights 为发出到应用程序的请求收集遥测数据。 如果在 WebApps/IIS 中发生故障，并且请求未到达用户应用程序，则 Application Insights 将不会有任何有关它的遥测。
+Application Insights 为向应用程序发出的那些请求收集遥测数据。 如果在 WebApps/IIS 中发生故障，并且请求未到达用户应用程序，则 Application Insights 将不会有任何有关它的遥测数据。
 
-Application Insights 计算的持续时间 `serverresponsetime` 不一定与 Web 应用观察到的服务器响应时间匹配。 这是因为 Application Insights 只计算请求实际到达用户应用程序时的持续时间。 如果请求在 IIS 中停滞/排队，则该等待时间将包含在 Web 应用指标中，但不会包含在 Application Insights 度量值中。
+Application Insights 算出的 `serverresponsetime` 持续时间不一定与 Web 应用观察到的服务器响应时间匹配。 这是因为 Application Insights 仅计算实际到达用户应用程序的持续时间。 如果请求在 IIS 中停滞/排队，则该等待时间将包含在 Web 应用指标中，但不会包含在 Application Insights 指标中。
 
 ## <a name="release-notes"></a>发行说明
 

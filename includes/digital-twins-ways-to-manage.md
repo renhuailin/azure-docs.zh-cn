@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 11/11/2020
 ms.author: baanders
-ms.openlocfilehash: 02f6c59a76a3fdb7bd4360570b29d7b40a1aff8d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f66101fc1231be2e5ce36dc348b1ca850113867
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102473674"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303742"
 ---
 本文重点介绍如何使用 [Azure 数字孪生 .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/management)完成不同的管理操作。 还可使用[如何：使用 Azure 数字孪生 API 和 SDK](../articles/digital-twins/how-to-use-apis-sdks.md) 中所述的其他语言 SDK 创建这些管理调用。
 

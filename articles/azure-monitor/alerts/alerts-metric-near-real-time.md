@@ -5,13 +5,13 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 03/11/2021
-ms.openlocfilehash: efc1438fdc539af278ebff1f292c5fa0a91b7b91
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2021
+ms.openlocfilehash: 24298734a46b8339a2a8818692641b4c10812294
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103016094"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107104875"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Monitor 中的指标警报支持的资源
 
@@ -29,15 +29,16 @@ Azure Monitor 现在支持[新型指标警报类型](./alerts-overview.md)，它
 
 |资源类型  |支持维度 |多资源警报| 可用指标|
 |---------|---------|-----|----------|
-|Microsoft.Aadiam/azureADMetrics | 是 | 否 | |
+|Microsoft.Aadiam/azureADMetrics | 是 | 否 | [Azure AD](../essentials/metrics-supported.md#microsoftaadiamazureadmetrics) |
 |Microsoft.ApiManagement/service | 是 | 否 | [API 管理](../essentials/metrics-supported.md#microsoftapimanagementservice) |
 |Microsoft.AppConfiguration/configurationStores |是 | 否 | [应用配置](../essentials/metrics-supported.md#microsoftappconfigurationconfigurationstores) |
-|Microsoft.AppPlatform/Spring | 是 | 否 | [Azure Spring Cloud](../essentials/metrics-supported.md#microsoftappplatformspring) |
+|Microsoft.AppPlatform/spring | 是 | 否 | [Azure Spring Cloud](../essentials/metrics-supported.md#microsoftappplatformspring) |
 |Microsoft.Automation/automationAccounts | 是| 否 | [自动化帐户](../essentials/metrics-supported.md#microsoftautomationautomationaccounts) |
 |Microsoft.AVS/privateClouds | 否 | 否 | [Azure VMware 解决方案](../essentials/metrics-supported.md#microsoftavsprivateclouds) |
 |Microsoft.Batch/batchAccounts | 是 | 否 | [Batch 帐户](../essentials/metrics-supported.md#microsoftbatchbatchaccounts) |
 |Microsoft.BotService/botServices | 是 | 否 | [机器人服务](../essentials/metrics-supported.md#microsoftbotservicebotservices) |
-|Microsoft.Cache/Redis | 是 | 是 | [用于 Redis 的 Azure 缓存](../essentials/metrics-supported.md#microsoftcacheredis) |
+|Microsoft.Cache/redis | 是 | 是 | [用于 Redis 的 Azure 缓存](../essentials/metrics-supported.md#microsoftcacheredis) |
+|microsoft.Cdn/profiles | 是 | 否 | [CDN 配置文件](../essentials/metrics-supported.md#microsoftcdnprofiles) |
 |Microsoft.ClassicCompute/domainNames/slots/roles | 否 | 否 | [经典云服务](../essentials/metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) |
 |Microsoft.ClassicCompute/virtualMachines | 否 | 否 | [经典虚拟机](../essentials/metrics-supported.md#microsoftclassiccomputevirtualmachines) |
 |Microsoft.ClassicStorage/storageAccounts | 是 | 否 | [存储帐户（经典）](../essentials/metrics-supported.md#microsoftclassicstoragestorageaccounts) |

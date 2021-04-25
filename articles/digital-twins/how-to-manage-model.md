@@ -4,19 +4,19 @@ titleSuffix: Azure Digital Twins
 description: 了解如何在 Azure 数字孪生中创建、编辑和删除模型。
 author: baanders
 ms.author: baanders
-ms.date: 3/12/2020
+ms.date: 4/07/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 75911e91bb61b84d2e9315421f794739f2b5088b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3c896e2aad7dae8d03b26e2a16ecb96224ab547b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104953691"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303744"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 数字孪生模型
 
-可使用 [DigitalTwinModels API](/rest/api/digital-twins/dataplane/models)、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) 或 [Azure 数字孪生 CLI](how-to-use-cli.md)来管理 Azure 数字孪生实例熟悉的[模型](concepts-models.md)。 
+可使用 [DigitalTwinModels API](/rest/api/digital-twins/dataplane/models)、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) 或 [Azure 数字孪生 CLI](how-to-use-cli.md)来管理 Azure 数字孪生实例的[模型](concepts-models.md)。 
 
 管理操作包括上传、验证、检索和删除模型。 
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/15/2020
-ms.openlocfilehash: cba248d3f254c9bb97c66ff7a3d39275b4b912c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 75f9080b43333168802a72e60751eec2a765c6d4
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102616071"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580813"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>复制活动性能和可伸缩性指南
 
@@ -54,7 +54,7 @@ ADF 提供一个可在不同级别实现并行度的无服务器体系结构。
 通过此体系结构，可开发能最大程度地提高环境数据移动吞吐量的管道。 这些管道充分利用以下资源：
 
 * 源数据存储与目标数据存储之间的网络带宽
-* 源或目标数据存储每秒输入/输出操作数 (IOPS) 和带宽
+* 源数据存储或目标数据存储的每秒输入/输出操作数 (IOPS) 和带宽
 
 这种充分利用意味着你可通过测量以下资源可用的最小吞吐量来估计总体吞吐量：
 
@@ -62,7 +62,10 @@ ADF 提供一个可在不同级别实现并行度的无服务器体系结构。
 * 目标数据存储
 * 源数据存储与目标数据存储之间的网络带宽
 
-下表计算了复制持续时间。 持续时间取决于环境的数据大小和网络/数据存储带宽限制。
+下表显示了数据移动持续时间的计算。 根据给定的网络和数据存储带宽以及给定的数据有效负载大小来计算每个单元中的持续时间。
+
+> [!NOTE]
+> 下面提供的持续时间旨在表示使用 ADF 实现的端到端数据集成解决方案中可实现的性能，方法是使用[复制性能优化功能](#copy-performance-optimization-features)中描述的一种或多种性能优化技术，包括使用 ForEach 对多个并发复制活动进行分区和生成。 建议执行[性能优化步骤](#performance-tuning-steps)中列出的步骤，以优化特定数据集和系统配置的复制性能。 应将性能优化测试中获取的数字用于生产部署计划、容量计划和计费计划。
 
 &nbsp;
 

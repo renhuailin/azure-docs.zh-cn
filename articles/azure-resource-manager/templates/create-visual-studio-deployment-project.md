@@ -2,13 +2,13 @@
 title: 创建和部署 Visual Studio 资源组项目
 description: 使用 Visual Studio 创建 Azure 资源组项目，并将资源部署到 Azure。
 ms.topic: conceptual
-ms.date: 10/16/2019
-ms.openlocfilehash: f1a06a3e89c5fd2ea8906ff9a438c170f135d6ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: 4c0e19042506e0cf1772398b0a02b81f0245b1c7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98704408"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306970"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>通过 Visual Studio 创建和部署 Azure 资源组
 
@@ -45,9 +45,9 @@ ms.locfileid: "98704408"
    | --- | --- |
    | Deploy-AzureResourceGroup.ps1 |一个 PowerShell 脚本，运行 PowerShell 命令以部署到 Azure 资源管理器。 Visual Studio 使用此 PowerShell 脚本来部署模板。 |
    | WebSite.json |资源管理器模板，定义要部署到 Azure 的基础结构，以及在部署期间可以提供的参数。 它还定义各资源之间的依赖关系，以便资源管理器按正确的顺序部署资源。 |
-   | WebSite.parameters.json |包含模板所需值的参数文件。 需要传入这些参数值来自定义每个部署。 |
+   | WebSite.parameters.json |包含模板所需值的参数文件。 需要传入这些参数值来自定义每个部署。 请注意将“生成操作”设置为“内容” 。 如果添加更多参数文件，请确保将“生成操作”设置为“内容”。 |
 
-    所有资源组部署项目都包含这些基本文件。 其他项目可能包含其他文件以支持其他功能。
+    所有资源组部署项目都包含这些基本文件。 其他项目可能包含更多文件以支持其他功能。
 
 ## <a name="customize-resource-manager-template"></a>自定义资源管理器模板
 
@@ -245,7 +245,7 @@ ms.locfileid: "98704408"
 "packageUri": "[concat(parameters('_artifactsLocation'), parameters('ExampleAppPackageFolder'), '/', parameters('ExampleAppPackageFileName'), parameters('_artifactsLocationSasToken'))]",
 ```
 
-请注意，在前面的示例中，在 parameters('_artifactsLocation') 和 parameters('ExampleAppPackageFolder') 之间没有 `'/',`  。
+请注意，在前面的示例中，在 parameters('_artifactsLocation') 和 parameters('ExampleAppPackageFolder') 之间没有 `'/',` 。
 
 重新生成项目。 生成项目可确保需部署的文件添加到暂存文件夹中。
 

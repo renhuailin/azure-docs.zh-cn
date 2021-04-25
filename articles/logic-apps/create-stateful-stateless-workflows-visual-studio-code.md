@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/08/2021
-ms.openlocfilehash: f7f8082cc9120345336610d5cb49741140d3b606
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/30/2021
+ms.openlocfilehash: 491d5f14cc8f456d228a5bc6efaa6686575979c1
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102557006"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078734"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>在 Visual Studio Code 中使用 Azure 逻辑应用（预览版）扩展创建有状态和无状态工作流
 
@@ -101,8 +101,8 @@ ms.locfileid: "102557006"
 1. 将连接字符串保存在一个安全的位置。 在 Visual Studio Code 中创建逻辑应用项目后，必须将该字符串添加到项目根目录级文件夹中的 **local.settings.json** 文件。
 
    > [!IMPORTANT]
-   > 如果你计划部署到 Docker 容器，则还需要将该连接字符串添加到用于部署的 Docker 文件。
-
+   > 如果计划部署到 Docker 容器，还需要用到用于部署 Docker 文件的连接字符串。 对于生产方案，请确保护此类机密和敏感信息安全，例如，可以使用密钥保管库。
+  
 ### <a name="tools"></a>工具
 
 * [Visual Studio Code 1.30.1（2019 年 1 月）或更高版本](https://code.visualstudio.com/)（一个免费工具）。 此外，请为 Visual Studio Code 下载并安装以下工具（如果尚未安装）：
@@ -305,6 +305,9 @@ ms.locfileid: "102557006"
       }
       ```
 
+      > [!IMPORTANT]
+      > 对于生产方案，请确保护此类机密和敏感信息安全，例如，可以使用密钥保管库。
+
    1. 完成时，请务必保存所做的更改。
 
 <a name="enable-built-in-connector-authoring"></a>
@@ -462,7 +465,7 @@ ms.locfileid: "102557006"
 
    ![屏幕截图显示了工作流设计器，其中显示了 Office 365 Outlook 操作“发送电子邮件”的详细信息。](./media/create-stateful-stateless-workflows-visual-studio-code/send-email-action-details.png)
 
-   | 属性 | 必须 | 值 | 说明 |
+   | 属性 | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **To** | 是 | <*your-email-address*> | 电子邮件收件人，这可以是你自己的电子邮件地址（用于测试）。 此示例使用虚构的电子邮件 `sophiaowen@fabrikam.com`。 |
    | **主题** | 是 | `An email from your example workflow` | 电子邮件主题 |
@@ -557,7 +560,7 @@ ms.locfileid: "102557006"
 
 ## <a name="manage-breakpoints-for-debugging"></a>管理用于调试的断点
 
-在通过启动调试会话来运行和测试逻辑应用工作流之前，你可以在每个工作流的 **workflow.json** 文件中设置[断点](https://code.visualstudio.com/docs/editor/debugging#_breakpoints)。 无需进行其他设置。 
+在通过启动调试会话来运行和测试逻辑应用工作流之前，你可以在每个工作流的 **workflow.json** 文件中设置 [断点](https://code.visualstudio.com/docs/editor/debugging#_breakpoints)。 无需进行其他设置。 
 
 目前，断点仅可用于操作，不可用于触发器。 每个操作定义都包含以下断点位置：
 
@@ -597,7 +600,7 @@ ms.locfileid: "102557006"
    此时将打开“终端”窗口，以便你可以查看调试会话。
 
    > [!NOTE]
-   > 如果收到错误 **运行 preLaunchTask“generateDebugSymbols”后存在错误**，请参阅故障排除部分中的[调试会话未能启动](#debugging-fails-to-start)。
+   > 如果收到错误 **运行 preLaunchTask“generateDebugSymbols”后存在错误**，请参阅故障排除部分中的 [调试会话未能启动](#debugging-fails-to-start)。
 
 1. 现在，在请求触发器上查找终结点的回调 URL。
 
@@ -1205,7 +1208,10 @@ ms.locfileid: "102557006"
 
 * 构建 Docker 容器时使用的工作流的 Docker 文件
 
-  例如，此示例 Docker 文件部署一个逻辑应用。 该文件指定连接字符串，其中包含用于将逻辑应用发布到 Azure 门户的 Azure 存储帐户的访问密钥。 若要查找此字符串，请参阅[获取存储帐户连接字符串](#find-storage-account-connection-string)。
+  例如，该示例 Docker 文件部署逻辑应用并指定连接字符串，其中包含访问 Azure 存储帐户的密钥，可用来将逻辑应用公布到 Azure 门户。 若要查找此字符串，请参阅[获取存储帐户连接字符串](#find-storage-account-connection-string)。 更多信息，请参阅[编写 Docker 文件的最佳做法](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)。
+  
+  > [!IMPORTANT]
+  > 对于生产方案，请确保护此类机密和敏感信息安全，例如，可以使用密钥保管库。 特别是对于 Docker 文件，请查看[用 BuildKit 生成映像](https://docs.docker.com/develop/develop-images/build_enhancements/)和[用 Docker 机密管理敏感数据](https://docs.docker.com/engine/swarm/secrets/)。
 
    ```text
    FROM mcr.microsoft.com/azure-functions/node:3.0
@@ -1219,8 +1225,6 @@ ms.locfileid: "102557006"
 
    RUN cd /home/site/wwwroot
    ```
-
-   有关详细信息，请参阅[编写 Dockerfile 的最佳做法](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)。
 
 <a name="find-storage-account-connection-string"></a>
 

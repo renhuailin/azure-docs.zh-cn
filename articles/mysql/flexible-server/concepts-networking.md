@@ -1,17 +1,17 @@
 ---
 title: 网络概述 - Azure Database for MySQL 灵活服务器
 description: 了解 Azure Database for MySQL 的灵活服务器部署选项中的连接和网络选项
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/23/2020
-ms.openlocfilehash: a8e2d77ff3c7cb2e4352b21cd87d630331e28660
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c83f36216e7488df94c372234d0541a4ee9f99b5
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96906142"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492216"
 ---
 # <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活服务器（预览版）的连接和网络概念
 
@@ -29,9 +29,9 @@ ms.locfileid: "96906142"
 * 专用访问(VNet 集成) - 可以将灵活服务器部署到 [Azure 虚拟网络](../../virtual-network/virtual-networks-overview.md)中。 Azure 虚拟网络提供专用的安全网络通信。 虚拟网络中的各个资源可通过专用 IP 地址进行通信。
 
    如果需要以下功能，请选择“VNet 集成”选项：
-   * 使用专用 IP 地址从同一虚拟网络中的 Azure 资源连接到灵活服务器
+   * 从同一个虚拟网络或[对等互连虚拟网络](../../virtual-network/virtual-network-peering-overview.md)中的 Azure 资源连接到灵活服务器
    * 使用 VPN 或 ExpressRoute 从非 Azure 资源连接到灵活服务器
-   * 灵活服务器没有公共终结点
+   * 无公共终结点
 
 * **公共访问（允许的 IP 地址）** - 可以通过公共终结点访问灵活服务器。 公共终结点是可公开解析的 DNS 地址。 “允许的 IP 地址”一词是指你选择向其授予访问服务器的权限的一系列 IP。 这些权限称为“防火墙规则”。 
 
@@ -57,13 +57,32 @@ ms.locfileid: "96906142"
 
     虚拟网络必须处于灵活服务器所在的 Azure 区域。
 
-
 * 委托子网 - 虚拟网络包含子网。 可以通过子网将虚拟网络分成较小的地址空间。 Azure 资源被部署到虚拟网络的特定子网中。 
 
    MySQL 灵活服务器必须位于委托为仅供 MySQL 灵活服务器使用的子网中。 该委派意味着只有 Azure Database for MySQL 灵活服务器才能使用该子网。 不能在委派子网中使用其他 Azure 资源类型。 通过将子网的委托属性指定为 Microsoft.DBforMySQL/flexibleServers 来委托子网。
 
 * 网络安全组 (NSG) - 使用网络安全组中的安全规则，可以筛选可流入和流出虚拟网络子网和网络接口的网络流量的类型。 有关详细信息，请参阅[网络安全组概述](../../virtual-network/network-security-groups-overview.md)。
 
+* 虚拟网络对等互连 - 使用虚拟网络对等互连可以无缝连接 Azure 中的两个或更多虚拟网络。 出于连接目的，对等互连虚拟网络会显示为一个网络。 对等互连虚拟网络中虚拟机之间的流量使用 Microsoft 主干基础结构。 对等互连 VNet 中客户端应用程序和灵活服务器之间的流量仅通过 Microsoft 的专用网络进行路由，并且仅隔离到该网络。
+
+灵活服务器支持在同一个 Azure 区域中建立虚拟网络对等互连。 不支持跨区域对等互连 VNet。 有关详细信息，请参阅[虚拟网络对等互连概念](../../virtual-network/virtual-network-peering-overview.md)。
+
+### <a name="connecting-from-peered-vnets-in-same-azure-region"></a>从同一个 Azure 区域中的对等互连 VNet 连接
+如果尝试连接到灵活服务器的客户端应用程序位于对等互连虚拟网络中，则它可能无法使用灵活服务器的服务器名称进行连接，因为它无法解析对等互连 VNet 中的灵活服务器的 DNS 名称。 可以通过以下两种方法解决此问题：
+* 使用专用 IP 地址（建议用于开发/测试方案）- 此方法可用于开发或测试用途。 你可以使用 nslookup 来反向查找灵活服务器的服务器名称（完全限定的域名）的专用 IP 地址，然后使用该专用 IP 地址从客户端应用程序进行连接。 对于生产用途，不建议将专用 IP 地址用于连接到灵活服务器，因为无论是发生计划内事件还是计划外事件期间，专用 IP 地址都会更改。
+* 使用专用 DNS 区域（建议用于生产用途）- 此方法适用于生产用途。 预配[专用 DNS 区域](../../dns/private-dns-getstarted-portal.md)，并将其链接到客户端虚拟网络。 在该专用 DNS 区域中，使用其专用 IP 地址为灵活服务器添加 [A 记录](../../dns/dns-zones-records.md#record-types)。 然后，你可以使用该 A 记录从对等互连虚拟网络中的客户端应用程序连接到灵活服务器。
+
+### <a name="connecting-from-on-premises-to-flexible-server-in-virtual-network-using-expressroute-or-vpn"></a>使用 ExpressRoute 或 VPN 从本地连接到虚拟网络中的灵活服务器
+对于需要从本地网络访问虚拟网络中的灵活服务器的工作负载，你将需要 [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute/) 或 [VPN](/azure/architecture/reference-architectures/hybrid-networking/vpn/) 以及[连接到本地](/azure/architecture/reference-architectures/hybrid-networking/)的虚拟网络。 此设置准备就绪后，如果要从本地虚拟网络上运行的客户端应用程序（例如 MySQL Workbench）进行连接，则需要使用 DNS 转发器来解析灵活服务器的服务器名称。 此 DNS 转发器负责通过服务器级转发器将所有 DNS 查询解析为 Azure 提供的 DNS 服务 [168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)。
+
+若要正确进行配置，需要以下资源：
+
+- 本地网络
+- 预配了专用访问的 MySQL 灵活服务器（VNet 集成）
+- [连接到本地](/azure/architecture/reference-architectures/hybrid-networking/)的虚拟网络
+- 使用 Azure 中部署的 DNS 转发器 [168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)
+
+然后，可以使用灵活服务器的服务器名称 (FQDN) 从对等互连虚拟网络或本地网络中的客户端应用程序连接到灵活服务器。
 
 ### <a name="unsupported-virtual-network-scenarios"></a>不受支持的虚拟网络场景
 * 公共终结点（或公共 IP 或 DNS）- 部署到虚拟网络的灵活服务器不能有公共终结点
@@ -99,7 +118,7 @@ ms.locfileid: "96906142"
 ### <a name="troubleshooting-public-access-issues"></a>排查公共访问问题
 在对 Microsoft Azure Database for MySQL 服务器服务的访问与预期不符时，请考虑以下几点：
 
-* 对允许列表的更改尚未生效：对 Azure Database for MySQL 服务器防火墙配置所做的更改可能需要多达 5 分钟的延迟才可生效。
+* 对允许列表的更改尚未生效：对 Azure Database for MySQL 服务器防火墙配置所做的更改生效之前，可能会有长达 5 分钟的延迟。
 
 * 身份验证失败：如果某个用户对 Azure Database for MySQL 服务器没有权限或者使用的密码不正确，则与 Azure Database for MySQL 服务器的连接会被拒绝。 创建防火墙设置只是为客户端提供尝试连接到服务器的机会。 每个客户端必须提供必需的安全凭据。
 
@@ -119,11 +138,24 @@ ms.locfileid: "96906142"
 * 如果可能，请避免使用 `hostname = 10.0.0.4`（专用地址）或 `hostname = 40.2.45.67`（公共 IP）
 
 
-
 ## <a name="tls-and-ssl"></a>TLS 和 SSL
-Azure Database for MySQL 灵活服务器支持使用传输层安全性 (TLS) 将客户端应用程序连接到 MySQL 服务。 TLS 是一种行业标准协议，可确保在数据库服务器与客户端应用程序之间实现加密网络连接。 TLS 是安全套接字层 (SSL) 的更新协议。
+Azure Database for MySQL 灵活服务器支持使用安全套接字层 (SSL) 和传输层安全性 (TLS) 加密将客户端应用程序连接到 MySQL 服务器。 TLS 是一种行业标准协议，可确保在数据库服务器与客户端应用程序之间实现加密的网络连接，使你能够满足合规性要求。
 
-Azure Database for MySQL 灵活服务器仅支持那些使用传输层安全性 (TLS 1.2) 的加密连接。 使用 TLS 1.0 和 TLS 1.1 的所有传入连接都会被拒绝。 无法禁用或更改用于连接到 Azure Database for MySQL 灵活服务器的 TLS 版本。
+默认情况下，Azure Database for MySQL 灵活服务器支持使用传输层安全性 (TLS 1.2) 的加密连接，并且会拒绝所有使用 TLS 1.0 和 TLS 1.1 的传入连接。 可以配置和更改灵活服务器上的加密连接强制要求或 TLS 版本配置。 
+
+下面是适用于灵活服务器的 SSL 和 TLS 设置的不同配置：
+
+| 方案   | 服务器参数设置      | 说明                                    |
+|------------|--------------------------------|------------------------------------------------|
+|禁用 SSL（加密连接） | require_secure_transport 设置为 OFF |如果旧版应用程序不支持与 MySQL 服务器建立加密连接，则可以通过将 require_secure_transport 设置为 OFF，来禁用与灵活服务器建立加密连接的强制要求。|
+|强制使用 SSL 和低于 TLS 版本 1.2 的版本 | require_secure_transport 设置为 ON，且 tls_version 设置为 TLSV1 或 TLSV1.1| 如果旧版应用程序支持加密连接，但需要低于 TLS 版本 1.2 的版本，你可以启用加密连接，但将灵活服务器配置为允许连接使用应用程序支持的 TLS 版本（v1.0 或 v1.1）|
+|强制使用 SSL 和 TLS 版本 1.2（默认配置）|require_secure_transport 设置为 ON，且 tls_version 设置为 TLSV1.2| 这是为灵活服务器建议的配置，同时也是默认配置。|
+|强制使用 SSL 和 TLS 版本 1.3（受 MySQL v8.0 和更高版本支持）| require_secure_transport 设置为 ON，且 tls_version 设置为 TLSV1.3| 这是为新应用程序开发建议的有用配置|
+
+> [!Note]
+> 不支持对灵活服务器上的 SSL 密码进行更改。 将 tls_version 设置为 TLS 版本 1.2 时，默认强制使用 FIPS 密码套件。 对于版本 1.2 以外的其他 TLS 版本，SSL 密码将设为 MySQL 社区安装附带的默认设置。
+
+请参阅[使用 SSL/TLS 进行连接](how-to-connect-tls-ssl.md)了解详细信息。 
 
 
 ## <a name="next-steps"></a>后续步骤

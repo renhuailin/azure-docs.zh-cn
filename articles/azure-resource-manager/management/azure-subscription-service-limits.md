@@ -2,13 +2,13 @@
 title: Azure 订阅限制和配额
 description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 本文包括有关如何增加限制以及最大值的信息。
 ms.topic: conceptual
-ms.date: 03/15/2021
-ms.openlocfilehash: 4dd62c926cce765ebc2b21378308650e313716ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: 3ef3e6f3b67e8c92e0137f36e19c62cba79e1c14
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103471006"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030809"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -34,9 +34,9 @@ ms.locfileid: "103471006"
 
 某些限制在区域级别进行管理。
 
-让我们以 vCPU 配额为例。 若要请求提高 vCPU 支持数目的配额，必须确定要在哪些区域中使用多少 vCPU。 然后针对所需的 Azure 资源组 vCPU 配额的数量和区域发出特定请求。 如果需要在西欧使用 30 个 vCPU 以在那里运行应用程序，则应专门在西欧请求 30 个 vCPU。 这不会增加任何其他区域的 vCPU 配额 - 西欧的配额为 30 个 vCPU。
+让我们以 vCPU 配额为例。 若要请求提高 vCPU 支持数目的配额，必须确定要在哪些区域中使用多少 vCPU。 然后请求增加所需 vCPU 配额的数量和区域。 如果需要在西欧使用 30 个 vCPU 以在那里运行应用程序，则应专门在西欧请求 30 个 vCPU。 这不会增加任何其他区域的 vCPU 配额 - 西欧的配额为 30 个 vCPU。
 
-因此，请考虑针对任意区域中的工作负荷来确定所需的 Azure 资源组配额， 然后在需将内容部署到其中的每个区域中请求相应的量。 有关如何确定特定区域的当前配额的帮助，请参阅[解决资源配额错误](../templates/error-resource-quota.md)。
+因此，针对任意区域中的工作负荷来确定所需的配额。 然后在需将内容部署到其中的每个区域中请求相应的量。 有关如何确定特定区域的当前配额的帮助，请参阅[解决资源配额错误](../templates/error-resource-quota.md)。
 
 ## <a name="general-limits"></a>一般限制
 

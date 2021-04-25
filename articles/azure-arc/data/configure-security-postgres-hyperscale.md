@@ -10,15 +10,15 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: d6e27fddceb69efbb2c1697c09ee9b61d7f38ee4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101687968"
 ---
 # <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>为已启用 Azure Arc 的 PostgreSQL 超大规模服务器组配置安全性
 
-本文档介绍与服务器组安全相关的各个方面：
+本文档介绍与服务器组的安全性相关的各方面：
 - 静态加密
 - 用户管理
    - 常规透视
@@ -28,43 +28,43 @@ ms.locfileid: "101687968"
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="encryption-at-rest"></a>静态加密
-可以通过加密存储数据库的磁盘和/或使用数据库函数对插入或更新的数据进行加密，来实现静态加密。
+可以通过对存储数据库的磁盘进行加密和/或使用数据库函数对插入或更新的数据进行加密，来实现静态加密。
 
-### <a name="hardware-linux-host-volume-encryption"></a>硬件： Linux 主机卷加密
-实施系统数据加密可以保护驻留在支持 Azure Arc 的数据服务安装程序所使用的磁盘上的任何数据。 你可以阅读有关本主题的详细信息：
-- 通常，Linux 上的[静态数据加密](https://wiki.archlinux.org/index.php/Data-at-rest_encryption) 
-- 通过 LUKS `cryptsetup` 加密命令 (Linux)  (的磁盘加密 https://www.cyberciti.biz/security/howto-linux-hard-disk-encryption-with-luks-cryptsetup-command/) 具体来说，由于 Azure Arc 启用的数据服务在你提供的物理基础结构上运行，因此你需要负责保护基础结构。
+### <a name="hardware-linux-host-volume-encryption"></a>硬件：Linux 主机卷加密
+实现系统数据加密来保护在设置启用了 Azure Arc 的数据服务时使用的磁盘上驻留的任何数据。 可以进一步了解此主题：
+- Linux 上的常规[静态数据加密](https://wiki.archlinux.org/index.php/Data-at-rest_encryption) 
+- 通过 LUKS `cryptsetup` 加密命令 (Linux)(https://www.cyberciti.biz/security/howto-linux-hard-disk-encryption-with-luks-cryptsetup-command/) 实现的磁盘加密，具体来说，由于支持 Azure Arc 的数据服务在你提供的物理基础结构上运行，你需要负责保护基础结构。
 
-### <a name="software-use-the-postgresql-pgcrypto-extension-in-your-server-group"></a>软件：使用 `pgcrypto` 服务器组中的 PostgreSQL 扩展
-除了加密用于托管 Azure Arc 设置的磁盘之外，还可以配置启用了 Azure Arc 的 PostgreSQL 超大规模服务器组，以公开应用程序可用于加密数据库中的数据的机制)  (。 此 `pgcrypto` 扩展是 `contrib` Postgres 扩展的一部分，可在启用了 Azure Arc 的 PostgreSQL 超大规模服务器组中使用。 可在此处找到有关 `pgcrypto` 扩展[](https://www.postgresql.org/docs/current/pgcrypto.html)的详细信息。
-总而言之，使用以下命令可以启用扩展，并使用它：
+### <a name="software-use-the-postgresql-pgcrypto-extension-in-your-server-group"></a>软件：在服务器组中使用 PostgreSQL `pgcrypto` 扩展
+除了对用于托管 Azure Arc 设置的磁盘进行加密外，还可以配置已启用 Azure Arc 的超大规模 PostgreSQL 服务器组，以便公开应用程序可用于加密数据库中数据的机制。 此 `pgcrypto` 扩展是 `contrib` Postgres 扩展的一部分，可在已启用 Azure Arc 的超大规模 PostgreSQL 服务器组中使用。 可在[此处](https://www.postgresql.org/docs/current/pgcrypto.html)查看有关 `pgcrypto` 扩展的详细信息。
+总而言之，可以使用以下命令启用、创建并使用该扩展：
 
 
 #### <a name="create-the-pgcrypto-extension"></a>创建 `pgcrypto` 扩展
-用所选的客户端工具连接到你的服务器组，然后运行标准 PostgreSQL 查询：
+使用所选的客户端工具连接到你的服务器组，然后运行标准 PostgreSQL 查询：
 ```console
 CREATE EXTENSION pgcrypto;
 ```
 
-> 可在 [此处](get-connection-endpoints-and-connection-strings-postgres-hyperscale.md) 找到有关如何连接的详细信息。
+> 可在[此处](get-connection-endpoints-and-connection-strings-postgres-hyperscale.md)查看有关如何连接的详细信息。
 
-#### <a name="verify-the-list-the-extensions-ready-to-use-in-your-server-group"></a>验证是否列出了可以在服务器组中使用的扩展
-你可以 `pgcrypto` 通过列出你的服务器组中提供的扩展来验证扩展是否可供使用。
-用所选的客户端工具连接到你的服务器组，然后运行标准 PostgreSQL 查询：
+#### <a name="verify-the-list-the-extensions-ready-to-use-in-your-server-group"></a>通过列出可随时在服务器组中使用的扩展来进行验证
+可以通过列出可在服务器组中使用的扩展来验证 `pgcrypto` 扩展是否可供使用。
+使用所选的客户端工具连接到你的服务器组，然后运行标准 PostgreSQL 查询：
 ```console
 select * from pg_extension;
 ```
-你应会看到 `pgcrypto` 你是否已启用并在上面指示的命令中创建它。
+如果使用了上述命令启用并创建了 `pgcrypto`，应会看到它。
 
 #### <a name="use-the-pgcrypto-extension"></a>使用 `pgcrypto` 扩展
-现在，你可以调整应用程序的代码，使其使用提供的任何函数 `pgcrypto` ：
+现在可以调整应用程序的代码，以便使用 `pgcrypto` 提供的函数：
 - 常规哈希函数
 - 密码哈希函数
 - PGP 加密函数
 - 原始加密函数
 - 随机数据函数
 
-例如，生成哈希值。 运行以下命令：
+例如，用于生成哈希值。 运行以下命令：
 
 ```console
 Select crypt('Les sanglots longs des violons de l_automne', gen_salt('md5'));
@@ -92,15 +92,15 @@ select hmac('Les sanglots longs des violons de l_automne', 'md5', 'sha256');
  \xd4e4790b69d2cc8dbce3385ee63272bc7760f1603640bb211a7b864e695570c5
 ```
 
-例如，若要存储加密数据（例如密码），请执行以下操作：
+或，例如，要存储加密数据（如密码）：
 
-假设应用程序将机密存储在下表中：
+假设我们的应用程序将机密存储在下表中：
 
 ```console
 create table mysecrets(USERid int, USERname char(255), USERpassword char(512));
 ```
 
-创建用户时，会对其密码进行加密：
+在创建用户时我对其密码进行加密：
 
 ```console
 insert into mysecrets values (1, 'Me', crypt('MySecretPasswrod', gen_salt('md5')));
@@ -114,13 +114,13 @@ select * from mysecrets;
 
 输出：
 
-- USERid：1
-- 用户名： Me
-- USERpassword： $ 1 $ Uc7jzZOp $ NTfcGo7F10zGOkXOwjHy31
+- USERid: 1
+- USERname: Me
+- USERpassword: $1$Uc7jzZOp$NTfcGo7F10zGOkXOwjHy31
 
-当我连接到我的应用程序并传递密码时，它将在表中查找， `mysecrets` 如果提供给应用程序的密码与表中存储的密码匹配，将返回用户的名称。 例如：
+当我连接我的应用程序并传递一个密码时，它会在 `mysecrets` 表中查找，如果提供给应用程序的密码与表中存储的某个密码匹配，则返回相应用户的名称。 例如：
 
-- 我传递了错误的密码：
+- 我传递错误的密码：
    ```console
    select USERname from mysecrets where (USERpassword = crypt('WrongPassword', USERpassword));
    ```
@@ -132,7 +132,7 @@ select * from mysecrets;
    ---------
    (0 rows)
    ```
-- 我传递了正确的密码：
+- 我传递正确的密码：
 
    ```console
    select USERname from mysecrets where (USERpassword = crypt('MySecretPasswrod', USERpassword));
@@ -147,23 +147,23 @@ select * from mysecrets;
    (1 row)
    ```
 
-此小示例演示了如何使用 Postgres 扩展在启用了 PostgreSQL 超大规模的 Azure Arc 中加密静态数据 (存储加密的数据) `pgcrypto` ，你的应用程序可以使用提供的函数 `pgcrypto` 来操作此加密数据。
+这个小示例展示了可以使用 Postgres `pgcrypto` 扩展在已启用 Azure Arc 的超大规模 PostgreSQL 中加密静态数据（存储加密的数据），且你的应用程序可以使用 `pgcrypto` 提供的函数来操作此加密数据。
 
 ## <a name="user-management"></a>用户管理
 ### <a name="general-perspectives"></a>常规透视
-可以使用标准 Postgres 方式创建用户或角色。 但是，如果这样做，这些项目将仅在协调器角色上可用。 在预览期间，这些用户/角色尚不能够访问在服务器组的协调器节点外部和工作器节点上分布的数据。 原因在于，在预览版中，用户定义不会复制到工作器节点。
+可以使用标准 Postgres 方式来创建用户或角色。 但是，如果这样做，这些项目将仅在协调器角色上可用。 在预览期间，这些用户/角色尚不能够访问在服务器组的协调器节点外部和工作器节点上分布的数据。 原因在于，在预览版中，用户定义不会复制到工作器节点。
 
 ### <a name="change-the-password-of-the-_postgres_-administrative-user"></a>更改 _postgres_ 管理用户的密码
-启用 Azure Arc 后，PostgreSQL 超大规模附带了标准 Postgres 管理用户 _Postgres_ ，你可以在创建服务器组时设置密码。
+已启用 Azure Arc 的超大规模 PostgreSQL 附带了标准 Postgres 管理用户 _postgres_，你将在创建服务器组时为其设置密码。
 用于更改其密码的命令的常规格式为：
 ```console
 azdata arc postgres server edit --name <server group name> --admin-password
 ```
 
-其中 `--admin-password` ，是一个与在 AZDATA_PASSWORD **会话** 环境变量中存在值相关的布尔值。
-如果 AZDATA_PASSWORD **会话** 环境变量存在并且具有值，则运行上述命令会将 postgres 用户的密码设置为此环境变量的值。
+其中 `--admin-password` 是布尔值，与 AZDATA_PASSWORD **会话** 环境变量中是否存在某个值相关。
+如果 AZDATA_PASSWORD **会话** 环境变量存在且具有某个值，则运行上述命令会将 postgres 用户的密码设置为此环境变量的值。
 
-如果 AZDATA_PASSWORD **会话** 环境变量存在，但没有值或 AZDATA_PASSWORD **会话** 环境变量不存在，则运行上述命令将提示用户以交互方式输入密码
+如果 AZDATA_PASSWORD **会话** 环境变量存在但不具有值或 AZDATA_PASSWORD **会话** 环境变量不存在，则运行上述命令后将提示用户以交互方式输入密码
 
 #### <a name="change-the-password-of-the-postgres-administrative-user-in-an-interactive-way"></a>以交互方式更改 postgres 管理用户的密码
 
@@ -172,7 +172,7 @@ azdata arc postgres server edit --name <server group name> --admin-password
    ```console
    azdata arc postgres server edit --name <server group name> --admin-password
    ```
-   例如
+   例如：
    ```console
    azdata arc postgres server edit -n postgres01 --admin-password
    ```
@@ -181,7 +181,7 @@ azdata arc postgres server edit --name <server group name> --admin-password
    Postgres Server password:
    Confirm Postgres Server password:
    ```
-   更新密码时，该命令的输出将显示：
+   在密码更新时，该命令的输出显示为：
    ```console
    Updating password
    Updating postgres01 in namespace `arc`
@@ -189,17 +189,17 @@ azdata arc postgres server edit --name <server group name> --admin-password
    ```
    
 #### <a name="change-the-password-of-the-postgres-administrative-user-using-the-azdata_password-session-environment-variable"></a>使用 AZDATA_PASSWORD **会话** 环境变量更改 postgres 管理用户的密码：
-1. 将 AZDATA_PASSWORD **会话** 环境变量的值设置为你想要的密码。
+1. 将 AZDATA_PASSWORD **会话** 环境变量的值设置为所需密码。
 2. 运行命令：
    ```console
    azdata arc postgres server edit --name <server group name> --admin-password
    ```
-   例如
+   例如：
    ```console
    azdata arc postgres server edit -n postgres01 --admin-password
    ```
    
-   更新密码时，该命令的输出将显示：
+   在密码更新时，该命令的输出显示为：
    ```console
    Updating password
    Updating postgres01 in namespace `arc`
@@ -207,7 +207,7 @@ azdata arc postgres server edit --name <server group name> --admin-password
    ```
 
 > [!NOTE]
-> 若要验证 AZDATA_PASSWORD 会话的环境变量是否存在以及它所具有的值，请运行：
+> 若要验证 AZDATA_PASSWORD 会话的环境变量是否存在以及所具有的值，请运行：
 > - 在 Linux 客户端上：
 > ```console
 > printenv AZDATA_PASSWORD
@@ -220,10 +220,10 @@ azdata arc postgres server edit --name <server group name> --admin-password
 
 ## <a name="audit"></a>审核
 
-对于审核方案，请将服务器组配置为使用 `pgaudit` Postgres 的扩展。 有关更多详细信息， `pgaudit` 请参阅[ `pgAudit` GitHub 项目](https://github.com/pgaudit/pgaudit/blob/master/README.md)。 若要 `pgaudit` 在服务器组中启用该扩展， [请阅读 Use PostgreSQL extension](using-extensions-in-postgresql-hyperscale-server-group.md)。
+如果要用于审核方案，请将服务器组配置为使用 Postgres 的 `pgaudit` 扩展。 有关 `pgaudit` 的更多详细信息，请参阅 [`pgAudit`GitHub 项目](https://github.com/pgaudit/pgaudit/blob/master/README.md)。 若要在服务器组中启用 `pgaudit` 扩展，请阅读[使用 PostgreSQL 扩展](using-extensions-in-postgresql-hyperscale-server-group.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
-- 请参阅[ `pgcrypto` 扩展](https://www.postgresql.org/docs/current/pgcrypto.html)
-- 请参阅 [使用 PostgreSQL 扩展](using-extensions-in-postgresql-hyperscale-server-group.md)
+- 请见[`pgcrypto`扩展](https://www.postgresql.org/docs/current/pgcrypto.html)
+- 请阅读[使用 PostgreSQL 扩展](using-extensions-in-postgresql-hyperscale-server-group.md)
 

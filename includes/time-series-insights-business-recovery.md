@@ -4,13 +4,13 @@ ms.service: time-series-insights
 author: deepakpalled
 ms.author: dpalled
 manager: diviso
-ms.date: 07/09/2020
-ms.openlocfilehash: f25c335c568c112c05f81df51d69e83aeff423e2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.date: 04/01/2021
+ms.openlocfilehash: 6529aa49d06e64947deb5ae54db0c39ad2575569
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96027965"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106288603"
 ---
 ## <a name="business-disaster-recovery"></a>业务灾难恢复
 
@@ -22,8 +22,8 @@ ms.locfileid: "96027965"
 
 通过 Azure 提供的其他高可用性功能（以及同样适用于任何 Azure 时序见解实例的功能）包括：
 
-- **故障转移**： Azure 提供 [异地复制和负载均衡](/azure/architecture/resiliency/recovery-loss-azure-region)。
-- **数据还原** 和 **存储恢复**： Azure 提供 [多个选项用于保留和恢复数据](/azure/architecture/resiliency/recovery-data-corruption)。
+- **故障转移**：Azure 提供了[异地复制和负载均衡](/azure/architecture/resiliency/recovery-loss-azure-region)备份方式。
+- **数据还原** 和 **存储恢复**：Azure 提供了[保留和恢复数据的多个选项](/azure/architecture/resiliency/recovery-data-corruption)。
 - **Azure Site Recovery**：Azure 通过 [Azure Site Recovery](../articles/site-recovery/index.yml) 提供站点恢复功能。
 - **Azure 备份**：[Azure 备份](../articles/backup/backup-architecture.md)支持 Azure VM 的本地和云中备份。
 
@@ -44,7 +44,7 @@ ms.locfileid: "96027965"
 
 ### <a name="azure-time-series-insights"></a>Azure 时序见解
 
-可通过多种方式使 Azure 时序见解数据、应用和服务保持正常运行，即使发生中断。 
+可通过多种方式使 Azure 时序见解数据、应用和服务保持正常运行，即使发生中断。
 
 但是，还可以确定是否需要出于以下目的，来创建 Azure 时序环境的完整备份副本：
 
@@ -63,12 +63,13 @@ ms.locfileid: "96027965"
 发生事件时：
 
 1. 如果主要区域在灾难事件期间受到影响，请将操作重新路由到备用 Azure 时序见解环境。
+1. 由于故障转移后的中心序列号从 0 重新开始编制，因此，请为不同使用者组的区域/环境均重新创建事件源，以免创建看似重复的事件。
 1. 使用第二个区域来备份和恢复所有 Azure 时序见解遥测数据与查询数据。
 
 > [!IMPORTANT]
 > 发生故障转移时：
-> 
-> * 也可能会发生延迟。
-> * 由于需要重新路由操作，还可能会出现短暂的消息处理高峰。
-> 
+>
+> - 也可能会发生延迟。
+> - 由于需要重新路由操作，还可能会出现短暂的消息处理高峰。
+>
 > 有关详细信息，请参阅[缓解 Azure 时序见解中的延迟](../articles/time-series-insights/time-series-insights-environment-mitigate-latency.md)。

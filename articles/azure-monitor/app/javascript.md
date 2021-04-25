@@ -214,7 +214,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | enable&#8203;AutoRoute&#8203;Tracking | 自动跟踪单页应用程序 (SPA) 中的路由更改。 如果为 true，则每次更改路由都会将一个新的页面视图发送到 Application Insights。 哈希路由更改 (`example.com/foo#bar`) 也会记录为新的页面视图。| boolean<br/>false |
 | enableRequest&#8203;HeaderTracking | 如果为 true，则跟踪 AJAX & Fetch 请求标头。 | boolean<br/> false |
 | enableResponse&#8203;HeaderTracking | 如果为 true，则跟踪 AJAX & Fetch 请求的响应头。 | boolean<br/> false |
-| distributedTracingMode | 设置分布式跟踪模式。 如果设置了 AI_AND_W3C 模式或 W3C 模式，则将生成 W3C 跟踪上下文标头 (traceparent/tracestate)，并将其包含在所有传出请求中。 提供 AI_AND_W3C 是为了与任何旧版 Application Insights 检测服务向后兼容。 请参阅[此处](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)的示例。| `DistributedTracingModes`或<br/>numeric<br/>（自 v2.6.0 起）`DistributedTracingModes.AI_AND_W3C`<br />（v 2.5.11 或更早版本）`DistributedTracingModes.AI` |
+| distributedTracingMode | 设置分布式跟踪模式。 如果设置了 AI_AND_W3C 模式或 W3C 模式，则将生成 W3C 跟踪上下文标头 (traceparent/tracestate)，并将其包含在所有传出请求中。 提供 AI_AND_W3C 是为了与任何旧版 Application Insights 检测服务向后兼容。 请参阅[此处](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)的示例。| `DistributedTracingModes` 或<br/>numeric<br/>（自 v2.6.0 起）`DistributedTracingModes.AI_AND_W3C`<br />（v 2.5.11 或更早版本）`DistributedTracingModes.AI` |
 | enable&#8203;AjaxErrorStatusText | 如果为 true，则在 AJAX 请求失败时包含依赖关系事件中的响应错误数据文本。 | boolean<br/> false |
 | enable&#8203;AjaxPerfTracking |用于启用查找并包含报告的 `ajax`（XHR 和 fetch）报告的指标中其他浏览器 window.performance 计时的标记。 | boolean<br/> false |
 | maxAjaxPerf&#8203;LookupAttempts | 查找 window.performance 计时的最大次数，此值为必需，因为并非所有浏览器在报告 XHR 请求完成之前都会填充 window.performance，而对于 fetch 请求，将在请求完成之后添加该值。| numeric<br/> 3 |

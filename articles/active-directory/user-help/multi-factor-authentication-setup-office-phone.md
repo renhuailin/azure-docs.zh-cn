@@ -11,10 +11,10 @@ ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
 ms.openlocfilehash: 9dd9853bae324a047c673852f14d2b4c1639d914
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83739203"
 ---
 # <a name="set-up-an-office-phone-as-your-two-factor-verification-method"></a>将办公室电话设置为双因素验证方法
@@ -26,7 +26,7 @@ ms.locfileid: "83739203"
 
 ## <a name="set-up-your-office-phone-number-as-your-verification-method"></a>将办公室电话号码设置为验证方法
 
-1. 在“其他安全验证”  页上，选择“办公室电话”  （从“第 1 步:  我们如何与您联系”区域），从下拉列表中选择你所在的国家或地区，键入办公室电话号码，然后键入分机（如果有）。
+1. 在“其他安全验证”页面上，从“第 1 步: 我们如何与你联系?”区域中选择“办公电话”，从下拉列表中选择你的国家/地区或区域，键入你的办公电话号码，然后键入你的分机（如果有）。
 
     ![“其他安全验证”页，其中显示身份验证电话和电话呼叫](media/multi-factor-authentication-verification-methods/multi-factor-authentication-office-phone.png)
 
@@ -34,14 +34,14 @@ ms.locfileid: "83739203"
 
     ![测试指定的电话号码](media/multi-factor-authentication-verification-methods/multi-factor-authentication-office-phone-test.png)
 
-3. 从“第 3 步:  继续使用你的现有应用程序”区域，复制提供的应用密码，并将其粘贴到安全位置。
+3. 在“第 3 步: 仍然使用你的现有应用程序”区域中，复制提供的应用密码，并将其粘贴到安全位置。
 
     ![“其他安全验证”页的“应用密码”区域](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
     >[!Note]
     >有关如何将应用密码用于旧应用的信息，请参阅[管理应用密码](multi-factor-authentication-end-user-app-passwords.md)。 如果要继续使用不支持双重验证的旧应用，只需使用应用密码即可。
 
-4. 选择“完成”  。
+4. 选择“完成”。
 
 ## <a name="next-steps"></a>后续步骤
 

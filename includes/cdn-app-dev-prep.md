@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
 ms.openlocfilehash: 4967991b0edaa854acbf6b308596859d662311fe
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95993381"
 ---
 ## <a name="prerequisites"></a>先决条件
@@ -26,10 +26,10 @@ ms.locfileid: "95993381"
     ![创建新资源组](./media/cdn-app-dev-prep/cdn-new-rg-1-include.png)
 3. 将资源组命名为 *CdnConsoleTutorial*。  选择订阅，并选择离你最近的位置。  如果需要，可以单击“固定到仪表板”复选框，将资源组固定到门户中的仪表板。  这便于以后查找该资源组。  完成选择后，单击“创建”。
 
-    !["资源组" 对话框的屏幕截图。](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
+    ![“资源组”对话框的屏幕截图。](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
 4. 创建资源组之后，如果未将它固定到仪表板，可以依次单击“浏览”和“资源组”找到它。   要打开该资源组，请单击它。  记下 **订阅 ID**。 稍后需要用到此信息。
 
-    ![C D N 控制台教程部分的屏幕截图。](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
+    ![CDN 控制台教程部分的屏幕截图。](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
 
 ### <a name="creating-the-azure-ad-application-and-applying-permissions"></a>创建 Azure AD 应用程序并应用权限
 可通过两种方法使用 Azure Active Directory 进行应用身份验证：单个用户或服务主体。 服务主体类似于 Windows 中的服务帐户。  不是向特定用户授予与 CDN 配置文件进行交互的权限，权限将授予给服务主体。  服务主体通常用于自动化的非交互式流程。  尽管本教程涉及到编写交互式控制台应用，但重点介绍服务主体身份验证方式。

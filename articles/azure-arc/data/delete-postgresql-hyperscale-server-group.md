@@ -1,6 +1,6 @@
 ---
-title: 删除启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
-description: 删除启用了 Azure Arc 的 Postgres 超大规模服务器组
+title: 删除已启用 Azure Arc 的超大规模 PostgreSQL 服务器组
+description: 删除已启用 Azure Arc 的超大规模 Postgres 服务器组
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,22 +9,22 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: ac620909996b03a97a311e5f06c31d6dab8f1a60
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
-ms.translationtype: MT
+ms.openlocfilehash: 7932ad3b30910e539acfbff2329a03f80a4d1a0b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218640"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670352"
 ---
-# <a name="delete-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>删除启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
+# <a name="delete-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>删除已启用 Azure Arc 的超大规模 PostgreSQL 服务器组
 
-本文档介绍了从 Azure Arc 设置中删除服务器组的步骤。
+本文档介绍从 Azure Arc 设置中删除服务器组的步骤。
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="delete-the-server-group"></a>删除服务器组
 
-例如，我们想要从以下安装程序中删除 _postgres01_ 实例：
+例如，我们考虑从下面的设置中删除 postgres01 实例：
 
 ```console
 azdata arc postgres server list
@@ -33,11 +33,16 @@ Name        State    Workers
 postgres01  Ready    3
 ```
 
-Delete 命令的常规格式为：
+删除命令的一般格式为：
 ```console
 azdata arc postgres server delete -n <server group name>
 ```
-有关 delete 命令的详细信息，请运行：
+执行此命令时，系统将请求你确认删除服务器组。 如果使用脚本自动执行删除操作，则需要使用 --force 参数绕过确认请求。 例如，你将运行如下命令： 
+```console
+azdata arc postgres server delete -n <server group name> --force
+```
+
+有关删除命令的详细信息，请运行：
 ```console
 azdata arc postgres server delete --help
 ```
@@ -48,19 +53,19 @@ azdata arc postgres server delete --help
 azdata arc postgres server delete -n postgres01
 ```
 
-## <a name="reclaim-the-kubernetes-persistent-volume-claims-pvcs"></a>回收 Kubernetes 永久性卷声明 (Pvc) 
+## <a name="reclaim-the-kubernetes-persistent-volume-claims-pvcs"></a>回收 Kubernetes 永久性卷声明 (PVC)
 
-删除服务器组不会删除其关联的 [pvc](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)。 这是设计的结果。 目的是帮助用户访问数据库文件，以防意外删除实例。 删除 PVC 不是必需的， 但建议这样做。 如果不回收这些 PVC，最终会出现错误，因为 Kubernetes 群集会认为磁盘空间不足。 若要回收 PVC，请执行以下步骤：
+删除服务器组不会删除其关联的 [PVC](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)。 这是设计的结果。 目的是帮助用户访问数据库文件，以防意外删除实例。 删除 PVC 不是必需的， 但建议这样做。 如果不回收这些 PVC，最终会出现错误，因为 Kubernetes 群集会认为磁盘空间不足。 若要回收 PVC，请执行以下步骤：
 
-### <a name="1-list-the-pvcs-for-the-server-group-you-deleted"></a>1. 列出已删除的服务器组的 Pvc
+### <a name="1-list-the-pvcs-for-the-server-group-you-deleted"></a>1.列出已删除的服务器组的 PVC
 
-若要列出 Pvc，请运行以下命令：
+若要列出 PVC，请运行以下命令：
 
 ```console
 kubectl get pvc [-n <namespace name>]
 ```
 
-它将返回 Pvc 列表，尤其是你删除的服务器组的 Pvc。 例如：
+它将返回 PVC 列表，尤其是你删除的服务器组的 PVC。 例如：
 
 ```output
 kubectl get pvc
@@ -74,13 +79,13 @@ logs-few7hh0k4npx9phsiobdc3hq-postgres01-1   Bound    pvc-51d1e91b-08a9-4b6b-858
 logs-few7hh0k4npx9phsiobdc3hq-postgres01-2   Bound    pvc-8e5ad55e-300d-4353-92d8-2e383b3fe96e   5Gi        RWO            default        2d18h
 logs-few7hh0k4npx9phsiobdc3hq-postgres01-3   Bound    pvc-f9e4cb98-c943-45b0-aa07-dd5cff7ea585   5Gi        RWO            default        2d15h
 ```
-此服务器组有8个 Pvc。
+此服务器组有 8 个 PVC。
 
-### <a name="2-delete-each-of-the-pvcs"></a>2. 删除每个 Pvc
+### <a name="2-delete-each-of-the-pvcs"></a>2.删除每个 PVC
 
-删除已删除的服务器组 (协调器和工作线程) 的每个 PostgreSQL 超大规模节点的数据和日志 Pvc。
+删除已删除的服务器组的每个 PostgreSQL 超大规模节点（协调器和辅助角色）的数据和日志 PVC。
 
-此命令的常规格式为： 
+此命令的一般格式为： 
 
 ```console
 kubectl delete pvc <name of pvc>  [-n <namespace name>]
@@ -107,7 +112,7 @@ persistentvolumeclaim "data-postgres01-0" deleted
   
 
 >[!NOTE]
-> 如前所述，如果不删除这些 Pvc，可能最终会在出现错误的情况下获取 Kubernetes 群集。 其中的一些错误可能包括无法通过 azdata 登录到 Kubernetes 群集，因为此存储问题 (正常 Kubernetes 行为) 。
+> 如前所述，不删除这些 PVC 可能最终导致 Kubernetes 群集引发错误。 其中的一些错误可能包括无法通过 azdata 登录 Kubernetes 群集，因为由于此存储问题，Pod 可能会被逐出集群（正常的 Kubernetes 行为）。
 >
 > 例如，你可能会在日志中看到类似于以下内容的消息：  
 > ```output
@@ -118,4 +123,4 @@ persistentvolumeclaim "data-postgres01-0" deleted
 > ```
     
 ## <a name="next-step"></a>后续步骤
-创建 [启用 Azure Arc 的 PostgreSQL 超大规模](create-postgresql-hyperscale-server-group.md)
+创建[已启用 Azure Arc 的超大规模 PostgreSQL](create-postgresql-hyperscale-server-group.md)

@@ -12,23 +12,18 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 382cdf87016044748685e5e64ff04ebac53f018d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e0912fb452a7f587fef19de835eea111b349a9a4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199142"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310013"
 ---
-# <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>将下游 IoT Edge 设备连接到 Azure IoT Edge 网关（预览版）
+# <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway"></a>将下游 IoT Edge 设备连接到 Azure IoT Edge 网关
 
 [!INCLUDE [iot-edge-version-202011](../../includes/iot-edge-version-202011.md)]
 
 本文说明了如何在 IoT Edge 网关和下游 IoT Edge 设备之间建立信任连接。
-
->[!NOTE]
->此功能要求运行 Linux 容器的 IoT Edge 1.2 版本，该版本为公共预览版。
->
->本文反映 IoT Edge 版本 1.2 的最新预览版。 请确保设备运行的是版本 [1.2.0-rc4](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc4) 或更高版本。 有关在设备上获取最新预览版的步骤，请参阅[安装适用于 Linux 的 Azure IoT Edge（版本 1.2）](how-to-install-iot-edge.md)或[将 IoT Edge 更新到版本 1.2](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12)。
 
 在网关方案中，IoT Edge 设备既可以是网关，也可以是下游设备。 可以将多个 IoT Edge 网关分层，以创建设备的层次结构。 下游设备（或子设备）可以通过其网关设备（或父设备）进行身份验证以及发送或接收消息。
 
@@ -130,7 +125,7 @@ Azure CLI 的 [azure-iot](/cli/azure/ext/azure-iot) 扩展提供管理 IoT 资�
 1. 在此 IoT Edge 设备上安装根 CA 证书。
 
    ```bash
-   sudo cp <path>/<root ca certificate>.pem /usr/local/share/ca-certificates/<root ca certificate>.pem
+   sudo cp <path>/<root ca certificate>.pem /usr/local/share/ca-certificates/<root ca certificate>.pem.crt
    ```
 
 1. 更新证书存储。
@@ -162,13 +157,13 @@ Azure CLI 的 [azure-iot](/cli/azure/ext/azure-iot) 扩展提供管理 IoT 资�
 
 1. 找到“Trust bundle cert”节。 将 `trust_bundle_cert` 参数取消注释并更新为设备上根 CA 证书的文件 URI。
 
-1. 当此功能为公共预览版时，需要将 IoT Edge 设备配置为在启动时使用 IoT Edge 代理的公共预览版。
+1. 验证 IoT Edge 设备在启动时将使用正确版本的 IoT Edge 代理。
 
-   找到“Default Edge Agent”节，将映像值更新为公共预览版映像：
+   找到“Default Edge Agent”节，并验证映像值是否为 IoT Edge 版本 1.2。 如果不是，请更新：
 
    ```toml
    [agent.config]
-   image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4"
+   image: "mcr.microsoft.com/azureiotedge-agent:1.2"
    ```
 
 1. 在配置文件中到“Edge CA certificate”节。 将此节中的行取消注释，并提供 IoT Edge 设备上证书和密钥文件的文件 URI 路径。
@@ -200,21 +195,6 @@ Azure CLI 的 [azure-iot](/cli/azure/ext/azure-iot) 扩展提供管理 IoT 资�
 
    >[!TIP]
    >IoT Edge 检查工具使用容器来执行某些诊断检查。 若要在下游 IoT Edge 设备上使用此工具，请确保它们可以访问 `mcr.microsoft.com/azureiotedge-diagnostics:latest`，或将容器映像置于专用容器注册表中。
-
-## <a name="configure-runtime-modules-for-public-preview"></a>配置公共预览版的运行时模块
-
-当此功能为公共预览版时，需要将 IoT Edge 设备配置为使用 IoT Edge 运行时模块的公共预览版。 上一部分提供了在启动时配置 edgeAgent 的步骤。 你还需要在设备的部署中配置运行时模块。
-
-1. 将 edgeHub 模块配置为使用公共预览版映像 `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4`。
-
-1. 为 edgeHub 模块配置以下环境变量：
-
-   | 名称 | Value |
-   | - | - |
-   | `experimentalFeatures__enabled` | `true` |
-   | `experimentalFeatures__nestedEdgeEnabled` | `true` |
-
-1. 将 edgeAgent 模块配置为使用公共预览版映像 `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4`。
 
 ## <a name="network-isolate-downstream-devices"></a>网络隔离的下游设备
 
@@ -250,6 +230,8 @@ Azure CLI 的 [azure-iot](/cli/azure/ext/azure-iot) 扩展提供管理 IoT 资�
 除了可以在设备上运行的任何工作负荷模块外，网关层次结构顶层的 IoT Edge 设备还有一组必须部署到其中的必需模块。
 
 API 代理模块已经过设计，可以通过自定义来处理最常见的网关方案。 本文提供了一个以基本配置设置模块的示例。 有关详细信息和示例，请参阅[配置适用于网关层次结构方案的 API 代理模块](how-to-configure-api-proxy-module.md)。
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 在 [Azure 门户](https://portal.azure.com)中导航到 IoT 中心。
 1. 从导航菜单中选择“IoT Edge”。
@@ -337,6 +319,109 @@ API 代理模块已经过设计，可以通过自定义来处理最常见的网�
 1. 选择“查看 + 创建”，转到最后一步。
 1. 选择“创建”以部署到设备。
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. 在 [Azure Cloud Shell](https://shell.azure.com/) 中创建一个部署 JSON 文件。 例如：
+
+   ```json
+   {
+       "modulesContent": {
+           "$edgeAgent": {
+               "properties.desired": {
+                   "modules": {
+                       "dockerContainerRegistry": {
+                           "settings": {
+                               "image": "registry:latest",
+                               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5000/tcp\":[{\"HostPort\":\"5000\"}]}}}"
+                           },
+                           "type": "docker",
+                           "version": "1.0",
+                           "env": {
+                               "REGISTRY_PROXY_REMOTEURL": {
+                                   "value": "The URL for the container registry you want this registry module to map to. For example, https://myregistry.azurecr"
+                               },
+                               "REGISTRY_PROXY_USERNAME": {
+                                   "value": "Username to authenticate to the container registry."
+                               },
+                               "REGISTRY_PROXY_PASSWORD": {
+                                   "value": "Password to authenticate to the container registry."
+                               }
+                           },
+                           "status": "running",
+                           "restartPolicy": "always"
+                       },
+                       "IoTEdgeAPIProxy": {
+                           "settings": {
+                               "image": "mcr.microsoft.com/azureiotedge-api-proxy:1.0",
+                               "createOptions": "{\"HostConfig\": {\"PortBindings\": {\"443/tcp\": [{\"HostPort\":\"443\"}]}}}"
+                           },
+                           "type": "docker",
+                           "env": {
+                               "NGINX_DEFAULT_PORT": {
+                                   "value": "443"
+                               },
+                               "DOCKER_REQUEST_ROUTE_ADDRESS": {
+                                   "value": "registry:5000"
+                               }
+                           },
+                           "status": "running",
+                           "restartPolicy": "always",
+                           "version": "1.0"
+                       }
+                   },
+                   "runtime": {
+                       "settings": {
+                           "minDockerVersion": "v1.25"
+                       },
+                       "type": "docker"
+                   },
+                   "schemaVersion": "1.1",
+                   "systemModules": {
+                       "edgeAgent": {
+                           "settings": {
+                               "image": "mcr.microsoft.com/azureiotedge-agent:1.2",
+                               "createOptions": ""
+                           },
+                           "type": "docker"
+                       },
+                       "edgeHub": {
+                           "settings": {
+                               "image": "mcr.microsoft.com/azureiotedge-hub:1.2",
+                               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
+                           },
+                           "type": "docker",
+                           "env": {},
+                           "status": "running",
+                           "restartPolicy": "always"
+                       }
+                   }
+               }
+           },
+           "$edgeHub": {
+               "properties.desired": {
+                   "routes": {
+                       "route": "FROM /messages/* INTO $upstream"
+                   },
+                   "schemaVersion": "1.1",
+                   "storeAndForwardConfiguration": {
+                       "timeToLiveSecs": 7200
+                   }
+               }
+           }
+       }
+   }
+   ```
+
+   此部署文件将 API 代理模块配置为侦听端口 443。 为防止端口绑定冲突，该文件将 edgeHub 模块配置为不侦听端口 443。 改为让 API 代理模块在端口 443 上路由任何 edgeHub 流量。
+
+1. 输入以下命令，创建到 IoT Edge 设备的部署：
+
+   ```bash
+   az iot edge set-modules --device-id <device_id> --hub-name <iot_hub_name> --content ./<deployment_file_name>.json
+   ```
+
+---
+
 ### <a name="deploy-modules-to-lower-layer-devices"></a>将模块部署到下层设备
 
 除了可以在设备上运行的任何工作负荷模块外，网关层次结构下层的 IoT Edge 设备还有一个必须部署到其中的必需模块。
@@ -347,7 +432,7 @@ API 代理模块已经过设计，可以通过自定义来处理最常见的网�
 
 如果下层设备无法连接到云，但你希望它们照常拉取模块映像，则必须将网关层次结构的顶层设备配置为处理这些请求。 顶层设备需要运行一个映射到容器注册表的 Docker 注册表模块。 然后，配置 API 代理模块，以便将容器请求路由到该模块。 本文前面的部分已讨论这些详细信息。 在此配置中，下层设备不应指向云容器注册表，而应指向在顶层运行的注册表。
 
-例如，下层设备应调用 `$upstream:443/azureiotedge-api-proxy:latest`，而不应调用 `mcr.microsoft.com/azureiotedge-api-proxy:latest`。
+例如，下层设备应调用 `$upstream:443/azureiotedge-api-proxy:1.0`，而不应调用 `mcr.microsoft.com/azureiotedge-api-proxy:1.0`。
 
 $upstream 参数指向下层设备的父设备，因此，请求会以路由的形式通过所有层，直到到达顶层，而顶层的代理环境会将容器请求路由到注册表模块。 此示例中的 `:443` 端口应替换为父设备上的 API 代理模块正在侦听的端口。
 
@@ -369,7 +454,7 @@ name = "edgeAgent"
 type = "docker"
 
 [agent.config]
-image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc4"
+image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2"
 ```
 
 如果使用本地容器注册表，或在设备上手动提供容器映像，请相应地更新配置文件。

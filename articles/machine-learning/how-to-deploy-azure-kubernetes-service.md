@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: ef9c03b687bbc9b8fe736c872bbde14b8daba899
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68fc4a10f5a54af7bab82843b7a921fd84e7af40
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519378"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259262"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes 服务群集
 
@@ -139,7 +139,7 @@ Azureml-fe 会纵向（垂直）扩展以使用更多的核心，并会横向（
 
 部署模型并启动服务后，azureml-fe 将使用 AKS API 自动发现它，并准备将请求路由到该模型。 它必须能够与模型 Pod 通信。
 >[!Note]
->如果部署的模型需要任何连接（例如查询外部数据库或其他 REST 服务，下载 BLOG 等），则应启用这些服务的 DNS 解析和出站通信。
+>如果部署的模型需要任何连接（例如查询外部数据库或其他 REST 服务，下载 BLOB 等），则应启用这些服务的 DNS 解析和出站通信。
 
 ## <a name="deploy-to-aks"></a>部署到 AKS
 
@@ -179,7 +179,7 @@ print(service.get_logs())
 要使用 CLI 进行部署，请使用以下命令。 将 `myaks` 替换为 AKS 计算目标的名称。 将 `mymodel:1` 替换为注册的模型的名称和版本。 将 `myservice` 替换为要赋予此服务的名称：
 
 ```azurecli-interactive
-az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
+az ml model deploy --ct myaks -m mymodel:1 -n myservice --ic inferenceconfig.json --dc deploymentconfig.json
 ```
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aks-deploy-config.md)]

@@ -5,20 +5,23 @@ author: MalcolmTyrrell
 ms.author: matyrr
 ms.date: 09/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 13c4b841fe2d0b62472628d9382b5f6ee3d1fa6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a094755dfb9381b1e4d6abdf1c0e6342d7427c1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91318069"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308433"
 ---
 # <a name="laying-out-files-for-conversion"></a>为转换设计文件布局
 
 为了正确处理资产，转换服务需要能够找到所有输入文件。
 这其中包括正在转换的主要资产文件，以及通常由该资产文件中的路径引用的其他一些文件。
-针对资产转换请求提供了两个参数，用于确定转换服务查找这些文件的方式：`input.folderPath`（可选）和 `input.inputAssetPath`。
+针对资产转换请求提供了两个参数，用于确定转换服务查找这些文件的方式：`settings.inputLocation.blobPrefix`（可选）和 `settings.inputLocation.relativeInputAssetPath`。
 它们完整记录在[转换 REST API](conversion-rest-api.md) 页中。
-为设计文件布局，需要注意的重点是，`folderPath` 将确定在处理资产时可用于转换服务的完整文件集。
+为设计文件布局，需要注意的重点是，`BlobPrefix` 将确定在处理资产时可用于转换服务的完整文件集。
+
+> [!Note]
+> 该服务将下载 input.BlobPrefix 下的所有文件。 确保文件名和路径不超过 [Windows 路径长度限制](https://docs.microsoft.com/windows/win32/fileio/maximum-file-path-limitation)，以免出现服务问题。 
 
 ## <a name="placing-files-so-they-can-be-found"></a>放置文件以便可以找到它们
 

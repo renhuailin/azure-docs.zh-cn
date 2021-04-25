@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 10/14/2020
+ms.date: 04/09/2021
 ms.author: alkohli
-ms.openlocfilehash: bd90a16c09dce65115cea2f097d18f2e0ced931a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f4f7e5f69e6b496395b74dbdcd58b3ada0a7f349
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102632027"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285186"
 ---
 # <a name="security-and-data-protection-for-azure-stack-edge-pro-r-and-azure-stack-edge-mini-r"></a>Azure Stack Edge Pro R 和 Azure Stack Edge Mini R 的安全性和数据保护
 
@@ -100,17 +100,23 @@ Azure Stack Edge 服务是 Azure 中托管的一项管理服务。 该服务用�
 > [!NOTE]
 > OS 磁盘具有单层 BitLocker XTS-AES-256 软件加密。
 
-激活设备后，系统会提示你保存一个密钥文件，该文件包含恢复密钥，如果设备无法启动，此密钥可帮助恢复设备上的数据。 此文件中有两个密钥：
+激活设备之前，需要在设备上配置静态加密。 此设置是必需项；在成功配置该设置后，你才可激活设备。 
 
-- 一个密钥可恢复 OS 卷上的设备配置。
-<!-- - Second key is to unlock the BitLocker on the data disks. -->
-- 第二个密钥可解锁数据磁盘中的硬件加密。
+出厂时，在设备创建映像后，会启用卷级别的 BitLocker 加密。 你在收到设备后，需要配置静态加密。 这会重新创建存储池和卷，你可提供 BitLocker 密钥来启用静态加密，进而为静态数据创建另一层加密。 
+
+静态加密密钥是你提供的 32 个字符长的 Base-64 编码的密钥，此密钥用于保护实际的加密密钥。 Microsoft 无权访问用于保护数据的此静态加密密钥。 激活设备后，密钥将保存在“云详细信息”页上的密钥文件中。
+
+激活设备后，系统会提示你保存密钥文件，该文件包含恢复密钥，如果设备无法启动，此密钥可帮助恢复设备上的数据。 某些恢复方案将提示你输入已保存的密钥文件。 密钥文件具有以下恢复密钥：
+
+- 用于解锁第一层加密的密钥。
+- 用于解锁数据磁盘中的硬件加密的密钥。
+- 有助于恢复 OS 卷上的设备配置的密钥。
+- 用于保护经过 Azure 服务的数据流的密钥。
 
 > [!IMPORTANT]
 > 请将密钥文件保存在设备本身之外的安全位置。 如果设备无法启动，而你又没有密钥，则可能会导致数据丢失。
 
-- 某些恢复方案将提示你输入已保存的密钥文件。 
-<!--- If a node isn't booting up, you will need to perform a node replacement. You will have the option to swap the data disks from the failed node to the new node. For a 4-node device, you won't need a key file. For a 1-node device, you will be prompted to provide a key file.-->
+
 
 #### <a name="restricted-access-to-data"></a>限制对数据的访问
 
@@ -132,7 +138,6 @@ Azure Stack Edge 服务是 Azure 中托管的一项管理服务。 该服务用�
 ### <a name="protect-data-in-storage-accounts"></a>保护存储帐户中的数据
 
 [!INCLUDE [azure-stack-edge-gateway-data-rest](../../includes/azure-stack-edge-gateway-protect-data-storage-accounts.md)]
-
 - 定期轮换并[同步你的存储帐户密钥](azure-stack-edge-gpu-manage-storage-accounts.md)，以帮助保护你的存储帐户，使未经授权的用户无法访问它。
 
 ## <a name="manage-personal-information"></a>管理个人信息

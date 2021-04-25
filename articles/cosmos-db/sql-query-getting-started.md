@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 04/09/2021
 ms.author: tisande
-ms.openlocfilehash: d5d5bc0a108cd08283ea29ce3bdc2de49310c5aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad43d83782a2c7e9eb5cc20128be89a45f0213d1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499554"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312172"
 ---
 # <a name="getting-started-with-sql-queries"></a>SQL 查询入门
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,7 @@ Azure Cosmos DB 上的大部分读取密集型工作负荷使用点读取和 SQL
 
 ## <a name="upload-sample-data"></a>上传示例数据
 
-在 SQL API Cosmos DB 帐户中，打开[数据资源管理器](./data-explorer.md)以创建名为 `Families` 的容器。 创建后，使用数据结构浏览器来查找它并打开。 在 `Families` 容器中，你会在容器名称下面看到 `Items` 选项。 打开此选项，你会在屏幕中心的菜单栏中看到一个按钮，创建“新建项”。 你将使用此功能创建下面的 JSON 项。
+在 SQL API Cosmos DB 帐户中，打开[数据资源管理器](./data-explorer.md)以创建名为 `Families` 的容器。 创建容器后，使用数据结构浏览器来查找并打开它。 在 `Families` 容器中，你会在容器名称下面看到 `Items` 选项。 打开此选项，你会在屏幕中心的菜单栏中看到一个按钮，创建“新建项”。 你将使用此功能创建下面的 JSON 项。
 
 ### <a name="create-json-items"></a>创建 JSON 项
 

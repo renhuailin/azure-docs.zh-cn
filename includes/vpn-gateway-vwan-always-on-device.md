@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 34e841a5f17d589c4fbef54a4a8674a99ac6c640
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96028085"
 ---
 必须满足以下要求才能成功建立设备隧道：
@@ -28,7 +28,7 @@ ms.locfileid: "96028085"
 
 配置虚拟网络网关并在 Windows 10 客户端的本地计算机存储中安装客户端证书后，使用以下示例配置客户端设备隧道：
 
-1. 复制以下文本，并将其另存为 ***devicecert.ps1** _。
+1. 复制以下文本，并将其另存为 devicecert.ps1。
 
    ```
    Param(
@@ -80,7 +80,7 @@ ms.locfileid: "96028085"
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. 复制以下文本，并将其作为 _*_VPNProfile.xml_*_ 保存在与 _ * devicecert.ps1 * * 相同的文件夹中。 编辑以下文本，使之与你的环境相匹配。
+1. 复制以下文本，并在 devicecert.ps1 所在的文件夹中将其另存为 VPNProfile.xml。 编辑以下文本，使之与你的环境相匹配。
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers> <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address> <= IP of resource in the vnet or the vnet address space`
@@ -123,18 +123,18 @@ ms.locfileid: "96028085"
    PsExec64.exe Powershell for 64-bit Windows
    ```
 
-   ![屏幕截图显示一个命令提示符窗口，其中包含用于启动64位版本的 PowerShell 的命令。](./media/vpn-gateway-vwan-always-on-device/powershell.png)
+   ![屏幕截图显示了一个命令提示符窗口，其中包含用于启动 64 位版本 PowerShell 的命令。](./media/vpn-gateway-vwan-always-on-device/powershell.png)
 1. 在 PowerShell 中，切换到 **devicecert.ps1** 和 **VPNProfile.xml** 所在的文件夹，然后运行以下命令：
 
    ```powershell
    .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
    ```
    
-   ![屏幕截图显示已使用 devicesert 脚本运行 MachineCertTest 的 PowerShell 窗口。](./media/vpn-gateway-vwan-always-on-device/machinecerttest.png)
+   ![屏幕截图显示了一个 PowerShell 窗口，该窗口使用 devicesert 脚本运行了 MachineCertTest。](./media/vpn-gateway-vwan-always-on-device/machinecerttest.png)
 1. 运行 **rasphone**。
 
-   ![屏幕截图显示了一个已选择 rasphone 的 "运行" 对话框。](./media/vpn-gateway-vwan-always-on-device/rasphone.png)
+   ![屏幕截图显示了一个已选择“rasphone”的“运行”对话框。](./media/vpn-gateway-vwan-always-on-device/rasphone.png)
 1. 找到 **MachineCertTest** 条目并单击“连接”。 
 
-   ![屏幕截图显示 "网络连接" 对话框，其中选择了 MachineCertTest 并显示了 "连接" 按钮。](./media/vpn-gateway-vwan-always-on-device/connect.png)
+   ![屏幕截图显示了一个已选择“MachineCertTest”的“网络连接”对话框和一个“连接”按钮。](./media/vpn-gateway-vwan-always-on-device/connect.png)
 1. 如果连接成功，请重新启动计算机。 隧道将自动连接。

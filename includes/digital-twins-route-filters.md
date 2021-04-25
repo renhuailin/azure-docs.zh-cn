@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 12/04/2020
 ms.author: baanders
-ms.openlocfilehash: d93f484e318c10489eb1db3e9c65c6e0c7479c90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 811e59e8fd2fea1d8ee90014d4a5ea11229eec63
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98859706"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257292"
 ---
 | 筛选器名称 | 说明 | 筛选器文本架构 | 支持的值 | 
 | --- | --- | --- | --- |
@@ -21,7 +21,7 @@ ms.locfileid: "98859706"
 | 数据架构 | DTDL 模型 ID | `dataschema = '<model-dtmi-ID>'` | **对于遥测**：数据架构是孪生体或发出遥测的组件的模型 ID。 例如： `dtmi:example:com:floor4;2` <br>**对于通知（创建/删除）** ：可以通过 `$body.$metadata.$model` 访问通知正文中的数据架构。 <br>**对于通知（更新）** ：可以通过 `$body.modelId` 访问通知正文中的数据架构|
 | 内容类型 | 数据值的内容类型 | `datacontenttype = '<contentType>'` | 内容类型为 `application/json` |
 | 规范版本 | 所使用的事件架构的版本 | `specversion = '<version>'` | 版本必须为 `1.0`。 这指示 CloudEvents 架构版本 1.0 |
-| 通知正文 | 引用通知的 `data` 字段中的任何属性 | `$body.<property>` | 有关通知的示例，请参阅[如何：了解事件数据](../articles/digital-twins/how-to-interpret-event-data.md)。 `data` 字段中的任何属性都可以使用 `$body` 进行引用
+| 通知正文 | 引用通知的 `data` 字段中的任何属性 | `$body.<property>` | 有关通知示例，请参阅 [*概念：事件通知*](../articles/digital-twins/concepts-event-notifications.md)。 `data` 字段中的任何属性都可以使用 `$body` 进行引用
 
 以下数据类型可以用作对上述数据进行引用后返回的值：
 

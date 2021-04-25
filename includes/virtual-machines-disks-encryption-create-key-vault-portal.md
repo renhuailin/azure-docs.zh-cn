@@ -9,10 +9,10 @@ ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: a967777b65c06cf23239a47e8e691fb3a29231b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "88815464"
 ---
 如果你是第一次执行此操作，则为磁盘设置客户托管密钥时将要求你按特定顺序创建资源。 首先，需要创建并设置 Azure Key Vault。
@@ -22,7 +22,7 @@ ms.locfileid: "88815464"
 1. 登录到 [Azure 门户](https://aka.ms/diskencryptionupdates)。
 1. 搜索并选择“Key Vault”。
 
-    [![展开 "搜索" 对话框时的 Azure 门户屏幕截图。](./media/virtual-machines-disk-encryption-portal/server-side-encryption-key-vault-portal-search.png)](./media/virtual-machines-disk-encryption-portal/sever-side-encryption-key-vault-portal-search-expanded.png#lightbox)
+    [![Azure 门户的屏幕截图，其中展开了“搜索”对话框。](./media/virtual-machines-disk-encryption-portal/server-side-encryption-key-vault-portal-search.png)](./media/virtual-machines-disk-encryption-portal/sever-side-encryption-key-vault-portal-search-expanded.png#lightbox)
 
     > [!IMPORTANT]
     > Azure Key Vault、磁盘加密集、VM、磁盘和快照必须都位于同一区域和订阅中才能成功部署。
@@ -57,12 +57,12 @@ ms.locfileid: "88815464"
     ![磁盘加密门户主屏幕的屏幕截图。 突出显示“添加”按钮](./media/virtual-machines-disk-encryption-portal/sever-side-encryption-create-disk-encryption-set.png)
 
 1. 选择资源组，命名加密集，然后选择与 Key Vault 相同的区域。
-1. 对于 " **加密类型** "，请选择 " **使用客户管理的密钥进行静态加密**"。
+1. 对于“加密类型”，请选择“使用客户管理的密钥进行静态加密” 。
 
     > [!NOTE]
-    > 一旦创建了具有特定加密类型的磁盘加密集，就不能对其进行更改。 如果要使用不同的加密类型，则必须创建新的磁盘加密集。
+    > 一旦创建了具有特定加密类型的磁盘加密集，就无法对其进行更改。 如果要使用其他加密类型，则必须创建新的磁盘加密集。
 
-1. 选择 **"单击以选择密钥"**。
+1. 选择“单击以选择密钥”。
 1. 选择先前创建的 Key Vault 和密钥，以及版本。
 1. 按“选择”。
 1. 选择“审阅 + 创建”，然后选择“创建” 。
@@ -73,6 +73,6 @@ ms.locfileid: "88815464"
 
     ![警报弹出窗口的屏幕截图：“若要将磁盘、映像或快照与磁盘加密设置相关联，必须向 Key Vault 授予权限”。 选择此警报以继续](./media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-encryption-set-alert-fix.png)
 
-    应弹出两个通知并成功。 这允许你将磁盘加密集用于密钥保管库。
+    应弹出两个通知并成功。 这将使你能够将磁盘加密集与 Key Vault 协同使用。
 
     ![Key Vault 的成功权限和角色分配的屏幕截图。](./media/virtual-machines-disk-encryption-portal/disk-encryption-notification-success.png)

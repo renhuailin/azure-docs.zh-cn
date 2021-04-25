@@ -4,13 +4,13 @@ description: Azure Monitor 指标警报的常见问题和可能的解决方案�
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 03/15/2021
-ms.openlocfilehash: f14142632f6ded9f598d6e94fd1e91ec17f6d0a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: 85be4100d62971ef7f69840ae3e9b117fbc3c047
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466491"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305219"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>排查 Azure Monitor 指标警报的问题 
 
@@ -91,9 +91,10 @@ ms.locfileid: "103466491"
 如果希望对[指标的特定维度值](./alerts-metric-overview.md#using-dimensions)发出警报，但找不到这些值，请注意以下事项：
 
 1. 维度值可能需要几分钟时间才能显示在“维度值”列表下
-1. 显示的维度值基于在前一天收集到的指标数据
-1. 如果维度值尚未发出或未显示，可以使用“添加自定义值”选项添加自定义维度值
-1. 如果要对某个维度所有的可能值（包括将来的值）发出警报，请选中“选择所有当前和将来的值”选项
+2. 显示的维度值基于在前一天收集到的指标数据
+3. 如果维度值尚未发出或未显示，可以使用“添加自定义值”选项添加自定义维度值
+4. 如果要对某个维度所有的可能值（包括将来的值）发出警报，请选中“选择所有当前和将来的值”选项
+5. 默认情况下，Application Insights 资源的自定义指标维度处于关闭状态。 若要打开这些自定义指标的维度集合，请参阅[此处](../app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)。
 
 ## <a name="metric-alert-rules-still-defined-on-a-deleted-resource"></a>在已删除资源上仍然会定义指标警报规则 
 
@@ -138,7 +139,7 @@ ms.locfileid: "103466491"
 ## <a name="export-the-azure-resource-manager-template-of-a-metric-alert-rule-via-the-azure-portal"></a>通过 Azure 门户导出指标警报规则的 Azure 资源管理器模板
 
 导出指标警报规则的资源管理器模板有助于了解其 JSON 语法和属性，并可用于自动执行后续部署。
-1. 在 Azure 门户中，打开警报规则以查看其详细信息。
+1. 在 Azure 门户中，打开警报规则可查看其详细信息。
 2. 单击 **“属性”**。
 3. 在“自动化”下，选择“导出模板”。
 

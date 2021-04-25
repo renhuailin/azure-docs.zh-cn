@@ -4,13 +4,13 @@ description: 了解如何连接到 Apache Beeline 客户端以通过 HDInsight �
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperf-fy21q1
-ms.date: 05/27/2020
-ms.openlocfilehash: ab5dedf6718dad4f16fde59d905e2e59be5c495f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: 5dcb6168a263be11410126ff08bd8b015da5af46
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98944465"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103430"
 ---
 # <a name="connect-to-apache-beeline-on-hdinsight-or-install-it-locally"></a>连接到 HDInsight 上的 Apache Beeline 或将其安装在本地
 
@@ -77,7 +77,9 @@ Apache Spark 提供自己的 HiveServer2 实现（有时称为 Spark Thrift 服�
 
 #### <a name="through-public-or-private-endpoints"></a>通过公共或专用终结点
 
-使用的连接字符串略有不同。 它使用 `httpPath/sparkhive2`，而不包含 `httpPath=/hive2`。 将 `clustername` 替换为 HDInsight 群集的名称。 将 `admin` 替换为群集的群集登录帐户。 对于 ESP 群集，请使用完整的 UPN（例如 user@domain.com）。 将 `password` 替换为群集登录帐户的密码。
+使用的连接字符串略有不同。 它使用 `httpPath/sparkhive2`，而不包含 `httpPath=/hive2`。 将 `clustername` 替换为 HDInsight 群集的名称。 将 `admin` 替换为群集的群集登录帐户。 将 `password` 替换为群集登录帐户的密码。
+> [!NOTE]
+> 对于 ESP 群集，请将 `admin` 替换为完整的 UPN（例如 user@domain.com）。 
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'

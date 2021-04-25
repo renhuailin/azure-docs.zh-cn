@@ -8,13 +8,13 @@ ms.custom: seodec18, references_regions
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 12/10/2020
-ms.openlocfilehash: 0a2d0ce683261ca3460c7aeaa0d7a42152b81a1e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2020
+ms.openlocfilehash: a7a7bbb8b911f86b81cdeafe3fe57e1fdf820681
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98680156"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228276"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>在认知服务中的语言理解 (LUIS) 中导出和删除客户数据
 
@@ -85,7 +85,15 @@ LUIS 用户具有完全控制权限可在门户上查看数据，但是，若要
 
 * 欧洲或澳大利亚创作区域不支持的 Azure 地理区域
 
-部署到这些 Azure 地理区域时，终结点从应用的最终用户收到的言语将存储在 Azure 的美国地理区域中，以便进行主动学习。 
+部署到这些 Azure 地理区域时，终结点从应用的最终用户收到的言语将存储在 Azure 的美国地理区域中，以便进行主动学习。
+
+### <a name="switzerland-north"></a>瑞士北部
+
+瑞士北部创作（也称为编程 API）资源托管在 Azure 瑞士地理区域，支持将终结点部署到以下 Azure 地理区域：
+
+* 瑞士 
+
+部署到这些 Azure 地理区域时，终结点从应用的最终用户收到的话语将存储在 Azure 瑞士地理区域中，以便进行主动学习。
 
 ## <a name="disable-active-learning"></a>禁用主动学习
 

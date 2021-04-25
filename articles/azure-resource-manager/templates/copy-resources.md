@@ -2,25 +2,27 @@
 title: 部署资源的多个实例
 description: 在 Azure 资源管理器模板（ARM 模板）中使用复制操作和数组多次部署资源类型。
 ms.topic: conceptual
-ms.date: 12/21/2020
-ms.openlocfilehash: c9bcb22ec53129520fd9574d0eb58b1e5777531e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/01/2021
+ms.openlocfilehash: 3af676cce544c125e441857f06556b9ff7eee697
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97724487"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385696"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM 模板中的资源迭代
 
-本文介绍如何在 Azure 资源管理器模板（ARM 模板）中创建一个资源的多个实例。 通过将 `copy` 元素添加到模板的 resources 节，可以动态设置要部署的资源数。 还可以避免重复模板语法。
+本文介绍如何在 Azure 资源管理器模板（ARM 模板）中创建一个资源的多个实例。 通过将 copy 循环添加到模板的 resources 节，可以动态设置要部署的资源数。 还可以避免重复模板语法。
 
-还可以将 `copy` 用于 [properties](copy-properties.md)、[variables](copy-variables.md) 和 [outputs](copy-outputs.md)。
+还可以将 copy 循环用于 [properties](copy-properties.md)、[variables](copy-variables.md) 和 [outputs](copy-outputs.md)。
 
 如需指定究竟是否部署资源，请参阅 [condition 元素](conditional-resource-deployment.md)。
 
 ## <a name="syntax"></a>语法
 
-`copy` 元素采用以下常规格式：
+# <a name="json"></a>[JSON](#tab/json)
+
+将 `copy` 元素添加到模板的 resources 节可部署资源的多个实例。 `copy` 元素采用以下常规格式：
 
 ```json
 "copy": {
@@ -35,53 +37,87 @@ ms.locfileid: "97724487"
 
 使用 `mode` 和 `batchSize` 属性指定是并行还是按顺序部署资源。 [串行或并行](#serial-or-parallel)中介绍了这些属性。
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+可以通过以下方式使用循环来声明多个属性：
+
+- 循环访问数组：
+
+  ```bicep
+  @batchSize(<number>)
+  resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for <item> in <collection>: {
+    <resource-properties>
+  }
+  ```
+
+- 循环访问数组的元素
+
+  ```bicep
+  @batchSize(<number>)
+  resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for (<item>, <index>) in <collection>: {
+    <resource-properties>
+  }
+  ```
+
+- 使用循环索引
+
+  ```bicep
+  @batchSize(<number>)
+  resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for <index> in range(<start>, <stop>): {
+    <resource-properties>
+  }
+  ```
+
+---
+
 ## <a name="copy-limits"></a>复制限制
 
 count 不能超过 800。
 
 count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 REST API 部署模板，则它可以为零。 具体而言，必须使用：
 
-* Azure PowerShell 2.6 或更高版本
-* Azure CLI 2.0.74 或更高版本
-* REST API 版本 2019-05-10 或更高版本
-* [链接的部署](linked-templates.md)必须将 API 版本 2019-05-10 或更高版本用于部署资源类型
+- Azure PowerShell 2.6 或更高版本
+- Azure CLI 2.0.74 或更高版本
+- REST API 版本 2019-05-10 或更高版本
+- [链接的部署](linked-templates.md)必须将 API 版本 2019-05-10 或更高版本用于部署资源类型
 
 更早版本的 PowerShell、CLI 和 REST API 不支持将 count 设为零。
 
-将[完整模式部署](deployment-modes.md)与复制一起使用时要小心。 如果以完整模式重新部署到资源组，则在解析复制循环后会删除模板中未指定的任何资源。
+将[完整模式部署](deployment-modes.md)与 copy 循环一起使用时要小心。 如果以完整模式重新部署到资源组，则在解析复制循环后会删除模板中未指定的任何资源。
 
 ## <a name="resource-iteration"></a>资源迭代
 
 以下示例创建在 `storageCount` 参数中指定的存储帐户数目。
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storageCount": {
-            "type": "int",
-            "defaultValue": 2
-        }
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2019-04-01",
-            "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
-            "location": "[resourceGroup().location]",
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {},
-            "copy": {
-                "name": "storagecopy",
-                "count": "[parameters('storageCount')]"
-            }
-        }
-    ],
-    "outputs": {}
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageCount": {
+      "type": "int",
+      "defaultValue": 2
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2019-04-01",
+      "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "properties": {},
+      "copy": {
+        "name": "storagecopy",
+        "count": "[parameters('storageCount')]"
+      }
+    }
+  ]
 }
 ```
 
@@ -93,9 +129,9 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 
 将创建以下名称：
 
-* storage0
-* storage1
-* storage2。
+- storage0
+- storage1
+- storage2。
 
 若要偏移索引值，可以在 `copyIndex()` 函数中传递一个值。 迭代次数仍在 copy 元素中指定，但 `copyIndex` 的值会偏移一个指定的值。 因此，以下示例：
 
@@ -105,13 +141,35 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 
 将创建以下名称：
 
-* storage1
-* storage2
-* storage3
+- storage1
+- storage2
+- storage3
 
 处理数组时可以使用复制操作，因为可对数组中的每个元素执行迭代操作。 可以对数组使用 `length` 函数来指定迭代计数，并使用 `copyIndex` 来检索数组中的当前索引。
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param storageCount int = 2
+
+resource storage_id 'Microsoft.Storage/storageAccounts@2019-04-01' = [for i in range(0, storageCount): {
+  name: '${i}storage${uniqueString(resourceGroup().id)}'
+  location: resourceGroup().location
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'Storage'
+  properties: {}
+}]
+```
+
+请注意，创建存储帐户资源名称时将使用索引 `i`。
+
+---
+
 以下示例为参数中提供的每个名称创建一个存储帐户。
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -148,17 +206,43 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param storageNames array = [
+  'contoso'
+  'fabrikam'
+  'coho'
+]
+
+resource storageNames_id 'Microsoft.Storage/storageAccounts@2019-04-01' = [for name in storageNames: {
+  name: concat(name, uniqueString(resourceGroup().id))
+  location: resourceGroup().location
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'Storage'
+  properties: {}
+}]
+```
+
+---
+
 如果要从已部署的资源返回值，可以使用[在输出部分中复制](copy-outputs.md)。
 
 ## <a name="serial-or-parallel"></a>串行或并行
 
 默认情况下，资源管理器并行创建资源。 除了模板中 800 个资源的总限制外，它对并行部署的资源数量没有限制。 不会保证它们的创建顺序。
 
-但是，你可能希望将资源指定为按顺序部署。 例如，在更新生产环境时，可能需要错开更新，使任何一次仅更新一定数量。 若要按顺序部署多个资源实例，请将 `mode` 设置为“串行”，并将 `batchSize` 设置为一次要部署的实例数量。 在串行模式下，资源管理器会在循环中创建早前实例的依赖项，以便在前一个批处理完成之前它不会启动一个批处理。
-
-`batchSize` 的值不能超过 copy 元素中 `count` 的值。
+但是，你可能希望将资源指定为按顺序部署。 例如，在更新生产环境时，可能需要错开更新，使任何一次仅更新一定数量。
 
 例如，若要按顺序一次部署两个存储帐户，请使用：
+
+# <a name="json"></a>[JSON](#tab/json)
+
+若要按顺序部署多个资源实例，请将 `mode` 设置为“串行”，并将 `batchSize` 设置为一次要部署的实例数量。 在串行模式下，资源管理器会在循环中创建早前实例的依赖项，以便在前一个批处理完成之前它不会启动一个批处理。
+
+`batchSize` 的值不能超过 copy 元素中 `count` 的值。
 
 ```json
 {
@@ -189,6 +273,25 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 
 `mode` 属性也接受“parallel”（默认值）。
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+若要按顺序部署多个资源实例，请将 `batchSize` [修饰器](./bicep-file.md#resource-and-module-decorators)设置为一次要部署的实例数量。 在串行模式下，资源管理器会在循环中创建早前实例的依赖项，以便在前一个批处理完成之前它不会启动一个批处理。
+
+```bicep
+@batchSize(2)
+resource storage_id 'Microsoft.Storage/storageAccounts@2019-04-01' = [for i in range(0, 4): {
+  name: '${i}storage${uniqueString(resourceGroup().id)}'
+  location: resourceGroup().location
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'Storage'
+  properties: {}
+}]
+```
+
+---
+
 ## <a name="iteration-for-a-child-resource"></a>子资源的迭代
 
 不能对子资源使用 copy 循环。 要创建通常定义为嵌套在另一个资源中的资源的多个实例，必须将该资源创建为顶级资源。 可以通过 type 和 name 属性定义与父资源的关系。
@@ -198,7 +301,7 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 ```json
 "resources": [
 {
-  "type": "Microsoft.DataFactory/datafactories",
+  "type": "Microsoft.DataFactory/factories",
   "name": "exampleDataFactory",
   ...
   "resources": [
@@ -219,15 +322,17 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 
 以下示例演示实现过程：
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 "resources": [
 {
-  "type": "Microsoft.DataFactory/datafactories",
+  "type": "Microsoft.DataFactory/factories",
   "name": "exampleDataFactory",
   ...
 },
 {
-  "type": "Microsoft.DataFactory/datafactories/datasets",
+  "type": "Microsoft.DataFactory/factories/datasets",
   "name": "[concat('exampleDataFactory', '/', 'exampleDataSet', copyIndex())]",
   "dependsOn": [
     "exampleDataFactory"
@@ -239,6 +344,22 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
   ...
 }]
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+resource dataFactoryName_resource 'Microsoft.DataFactory/factories@2018-06-01' = {
+  name: "exampleDataFactory"
+  ...
+}
+
+resource dataFactoryName_ArmtemplateTestDatasetIn 'Microsoft.DataFactory/factories/datasets@2018-06-01' = [for i in range(0, 3): {
+  name: 'exampleDataFactory/exampleDataset${i}'
+  ...
+}
+```
+
+---
 
 ## <a name="example-templates"></a>示例模板
 
@@ -252,11 +373,11 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要设置在复制循环中创建的资源的依赖项，请参阅[在 ARM 模板中定义部署资源的顺序](define-resource-dependency.md)。
-* 若要完成教程，请参阅[教程：使用 ARM 模板创建多个资源实例](template-tutorial-create-multiple-instances.md)。
-* 有关介绍资源副本的 Microsoft Learn 模块，请参阅[使用高级 ARM 模板功能管理复杂云部署](/learn/modules/manage-deployments-advanced-arm-template-features/)。
-* 有关 copy 元素的其他用法，请参阅：
-  * [ARM 模板中的属性迭代](copy-properties.md)
-  * [ARM 模板中的变量迭代](copy-variables.md)
-  * [ARM 模板中的输出迭代](copy-outputs.md)
-* 有关将副本与嵌套的模板配合使用的信息，请参阅[使用副本](linked-templates.md#using-copy)。
+- 若要设置在复制循环中创建的资源的依赖项，请参阅[在 ARM 模板中定义部署资源的顺序](define-resource-dependency.md)。
+- 若要完成教程，请参阅[教程：使用 ARM 模板创建多个资源实例](template-tutorial-create-multiple-instances.md)。
+- 有关介绍资源副本的 Microsoft Learn 模块，请参阅[使用高级 ARM 模板功能管理复杂云部署](/learn/modules/manage-deployments-advanced-arm-template-features/)。
+- 有关 copy 循环的其他用法，请参阅：
+  - [ARM 模板中的属性迭代](copy-properties.md)
+  - [ARM 模板中的变量迭代](copy-variables.md)
+  - [ARM 模板中的输出迭代](copy-outputs.md)
+- 有关将副本与嵌套的模板配合使用的信息，请参阅[使用副本](linked-templates.md#using-copy)。

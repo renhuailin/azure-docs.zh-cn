@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 3c6fb1ca23bcc9c57e73bcaf960e0387611fcff3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00f9c6510a87770367472c0da6774b94034c6d72
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599199"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029771"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何调用文本分析 REST API
 
@@ -34,6 +34,14 @@ ms.locfileid: "104599199"
 2.  选择要用于终结点的区域。  请注意，`/analyze` 和 `/health` 终结点仅在以下区域提供：美国西部 2、美国东部 2、美国中部、欧洲北部和欧洲西部。
 
 3.  创建文本分析资源，并转到页面左侧的“密钥和终结点边栏选项卡”。 复制稍后调用 API 时要使用的密钥。 稍后会将此添加为 `Ocp-Apim-Subscription-Key` 标头的值。
+
+4. 若要检查使用文本分析资源发送的文本记录数，请执行以下操作：
+
+    1. 导航到 Azure 门户中的文本分析资源。 
+    2. 单击左侧导航菜单中的“监视”下的“指标” 。 
+    3. 在“指标”下拉框中选择“已处理的文本记录”。
+    
+每个文本记录包含 1000 个字符。
 
 ## <a name="change-your-pricing-tier"></a>更改定价层 
 

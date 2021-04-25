@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperf-fy21q1
-ms.openlocfilehash: 888761bb976b9d7a87211a77cb6504a44f108bbd
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 9f2ca089a6d885227bd61940d71ec7bb7960fbd6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200061"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043149"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>将 IoT Edge 设备配置为通过代理服务器进行通信
 
@@ -69,7 +69,11 @@ IoT Edge 设备将发送 HTTPS 请求以与 IoT 中心进行通信。 如果设�
 
 若要在 Linux 设备上安装 IoT Edge 运行时，请将包管理器配置为通过代理服务器访问安装包。 例如，[设置 apt-get 以使用 http-proxy](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)。 配置包管理器后，请按照[安装 Azure IoT Edge 运行时](how-to-install-iot-edge.md)中的说明照常进行操作。
 
-### <a name="windows-devices"></a>Windows 设备
+### <a name="windows-devices-using-iot-edge-for-linux-on-windows"></a>在 Windows 使用 Linux IoT Edge 的 Windows 设备
+
+如果要在 Windows 上使用 Linux IoT Edge 安装 IoT Edge 运行时，则默认会在 Linux 虚拟机上安装 IoT Edge。 无需其他安装或更新步骤。
+
+### <a name="windows-devices-using-windows-containers"></a>使用 Windows 容器的 Windows 设备
 
 若要在 Windows 设备上安装 IoT Edge 运行时，需要两次通过代理服务器执行操作。 第一个连接用于下载安装程序脚本文件，第二个连接用于在安装过程中下载必需的组件。 可以在 Windows 设置中配置代理信息，或直接在 PowerShell 命令中包含代理信息。
 
@@ -206,7 +210,17 @@ systemctl show --property=Environment aziot-identityd
 :::moniker-end
 <!--end 1.2-->
 
-#### <a name="windows"></a>Windows
+#### <a name="windows-using-iot-edge-for-linux-on-windows"></a>在 Windows 上使用 Linux IoT Edge 的 Windows
+
+登录到 Windows 虚拟机上的 Linux IoT Edge：
+
+```azurepowershell-interactive
+Ssh-EflowVm
+```
+
+按照上述 Linux 部分中的相同步骤配置 IoT Edge 守护程序。
+
+#### <a name="windows-using-windows-containers"></a>使用 Windows 容器的 windows
 
 以管理员身份打开 PowerShell 窗口，运行以下命令来使用新的环境变量编辑注册表。 将 \<proxy url> 替换为代理服务器地址和端口。
 
@@ -249,13 +263,13 @@ IoT Edge 代理是在任意 IoT Edge 设备上启动的第一个模块。 它首
 
 5. 将更改保存到 config.yaml 并关闭编辑器。 重新启动 IoT Edge 以使更改生效。
 
-   * Linux：
+   * Windows 的 Linux 和 Linux IoT Edge
 
       ```bash
       sudo systemctl restart iotedge
       ```
 
-   * Windows:
+   * 使用 Windows 容器的 Windows：
 
       ```powershell
       Restart-Service iotedge

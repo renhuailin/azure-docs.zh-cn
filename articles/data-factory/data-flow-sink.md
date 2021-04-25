@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/10/2021
-ms.openlocfilehash: 5548d82326ec4ac2306e2c8945bedc20236a4e54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/06/2021
+ms.openlocfilehash: 8970fc2d5f11d106f34cf2f4c05a1c61bdc6c438
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103009328"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107408"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>映射数据流中的接收器转换
 
@@ -120,7 +120,35 @@ Azure 数据工厂可以访问 [90 多个原生连接器](connector-overview.md)
 
 ## <a name="data-preview-in-sink"></a>接收器中的数据预览
 
-在调试群集上获取数据预览时，不会将任何数据写入接收器。 将返回数据的快照，但不会将任何内容写入目标。 要测试将数据写入接收器，请从管道画布运行管道调试。
+在调试群集中获取数据预览时，不会将任何数据写入接收器。 将返回数据的快照，但不会将任何内容写入目标。 要测试将数据写入接收器，请从管道画布运行管道调试。
+
+## <a name="data-flow-script"></a>数据流脚本
+
+### <a name="example"></a>示例
+
+下面是接收器转换及其数据流脚本的一个示例：
+
+```
+sink(input(
+        movie as integer,
+        title as string,
+        genres as string,
+        year as integer,
+        Rating as integer
+    ),
+    allowSchemaDrift: true,
+    validateSchema: false,
+    deletable:false,
+    insertable:false,
+    updateable:true,
+    upsertable:false,
+    keys:['movie'],
+    format: 'table',
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true,
+    saveOrder: 1,
+    errorHandlingOption: 'stopOnFirstError') ~> sink1
+```
 
 ## <a name="next-steps"></a>后续步骤
 

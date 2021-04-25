@@ -9,10 +9,10 @@ ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: e978a5e7e76c8ddc9b7e6b80ec7170c45baa2cae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "82784106"
 ---
 ### <a name="azure-regions-within-a-geopolitical-region"></a>地缘政治区域中的 Azure 区域
@@ -28,10 +28,10 @@ ms.locfileid: "82784106"
 | 印度 | 印度西部、印度中部、印度南部 |
 | 日本  | 日本西部、日本东部 |
 | 大洋洲 | 澳大利亚东南部、澳大利亚东部 |
-| 南非 | 南非北部、南非西北部 |
-| 南美洲 |巴西南部 |
+| 南非 | 南非北部、南非西部 |
+| 南美洲 |Brazil South |
 | 韩国 | 韩国中部、韩国南部 |
-| 阿拉伯联合酋长国 | 阿拉伯联合酋长国北部，阿拉伯联合酋长国中部 |
+| 阿拉伯联合酋长国 | 阿联酋北部、阿联酋中部 |
 
 
 

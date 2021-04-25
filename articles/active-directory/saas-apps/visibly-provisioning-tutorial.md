@@ -1,6 +1,6 @@
 ---
-title: 教程：通过 Azure Active Directory 直观配置自动用户预配 |Microsoft Docs
-description: 了解如何从 Azure AD 自动预配和取消预配用户帐户。
+title: 教程：使用 Azure Active Directory 为 Visibly 配置自动用户预配 | Microsoft Docs
+description: 了解如何将用户帐户从 Azure AD 自动预配到 Visibly 及如何取消预配。
 services: active-directory
 documentationcenter: ''
 author: Zhchia
@@ -16,24 +16,24 @@ ms.topic: article
 ms.date: 09/30/2020
 ms.author: Zhchia
 ms.openlocfilehash: c2feae18c4b32e1a1a87d153219aff0bfee3b756
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96182183"
 ---
-# <a name="tutorial-configure-visibly-for-automatic-user-provisioning"></a>教程：为自动用户预配配置可见
+# <a name="tutorial-configure-visibly-for-automatic-user-provisioning"></a>教程：为 Visibly 配置自动用户预配
 
-本教程介绍了 Azure Active Directory 在 (Azure AD) 配置自动用户预配时需要执行的步骤。 配置时，Azure AD 会自动预配和取消预配用户和组，从而使用 Azure AD 预配服务进行 [直观](https://www.visibly.io/) 地处理。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。 
+本教程介绍了在 Visibly 和 Azure Active Directory (Azure AD) 中配置自动用户预配所需执行的步骤。 配置后，Azure AD 会使用 Azure AD 预配服务自动将用户和组预配到 [Visibly](https://www.visibly.io/) 以及取消预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
 > [!div class="checklist"]
-> * 以可见的顺序创建用户
-> * 当用户不再需要访问权限时，可以直观删除用户
-> * 使用户属性在 Azure AD 和明显之间保持同步
-> * 以可见的预配组和组成员身份
-> * [单一登录](./visibly-tutorial.md) 到明显 (建议) 
+> * 在 Visibly 中创建用户
+> * 在用户不再有访问需求的情况下，在 Visibly 中删除用户
+> * 使用户属性在 Azure AD 与 Visibly 之间保持同步
+> * 在 Visibly 中预配组和组成员身份
+> * [单一登录](./visibly-tutorial.md)到 Visibly（推荐）
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,35 +41,35 @@ ms.locfileid: "96182183"
 
 * [Azure AD 租户](../develop/quickstart-create-new-tenant.md) 
 * Azure AD 中[有权](../roles/permissions-reference.md)配置预配的用户帐户（例如应用管理员、云应用管理员、应用所有者或全局管理员）。 
-* [可见](https://www.visibly.io/)租户
+* [Visibly](https://www.visibly.io/) 租户
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
+## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 计划预配部署
 1. 了解[预配服务的工作原理](../app-provisioning/user-provisioning.md)。
 2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
-3. 确定要 [在 Azure AD 和明显之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
+3. 确定要[在 Azure AD 与 Visibly 之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
 
-## <a name="step-2-configure-visibly-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置可视以支持设置 Azure AD
+## <a name="step-2-configure-visibly-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 Visibly 以支持通过 Azure AD 进行预配
 
-与可视的支持团队联系以获取 **租户 URL** 和 **机密令牌**。 这些值将输入到 Azure 门户中可视应用程序的 "预配" 选项卡中。
+与 Visibly 支持团队联系，以获取租户 URL 和机密令牌。  将在 Azure 门户中 Visibly 应用程序的“预配”选项卡中输入这些值。
 
-## <a name="step-3-add-visibly-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库中添加可见
+## <a name="step-3-add-visibly-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 Visibly
 
-从 Azure AD 应用程序库中添加直观的，开始管理预配。 如果以前为 SSO 设置了可见，则可以使用相同的应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](../manage-apps/add-application-portal.md)详细了解如何从库中添加应用程序。 
+从 Azure AD 应用程序库添加 Visibly，开始管理 Visibly 的预配。 如果之前已为 Visibly 设置了 SSO，则可使用该应用程序。 但建议你在最初测试集成时创建一个单独的应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-application-portal.md)。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁在预配范围中 
 
-使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的范围筛选器。 
+使用 Azure AD 预配服务，可以根据对应用的分配或用户/组的特性来限定谁在预配范围内。 如果选择根据分配来限定要将谁预配到应用，可以按照下面的[步骤](../manage-apps/assign-user-or-group-access-portal.md)操作，将用户和组分配到应用。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的范围筛选器。 
 
-* 将用户和组分配到可见时，必须选择 " **默认" 访问权限** 以外的角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](../develop/howto-add-app-roles-in-azure-ad-apps.md)以添加其他角色。 
+* 将用户和组分配到 Visibly 时，必须选择“默认访问”以外的角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](../develop/howto-add-app-roles-in-azure-ad-apps.md)以添加其他角色。 
 
 * 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。 
 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-visibly"></a>步骤 5。 将自动用户预配配置为可见 
+## <a name="step-5-configure-automatic-user-provisioning-to-visibly"></a>步骤 5。 配置 Visibly 的自动用户预配 
 
 本部分介绍了如何配置 Azure AD 预配服务以基于 Azure AD 中的用户和/或组分配在 TestApp 中创建、更新和禁用用户和/或组。
 
-### <a name="to-configure-automatic-user-provisioning-for-visibly-in-azure-ad"></a>若要配置自动用户预配以直观地 Azure AD：
+### <a name="to-configure-automatic-user-provisioning-for-visibly-in-azure-ad"></a>若要在 Azure AD 中为 Visibly 配置自动用户预配，请执行以下操作：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 依次选择“企业应用程序”、“所有应用程序” 。
 
@@ -77,9 +77,9 @@ ms.locfileid: "96182183"
 
 2. 在应用程序列表中，选择“Visibly”。
 
-    ![应用程序列表中的可见链接](common/all-applications.png)
+    ![应用程序列表中的 Visibly 链接](common/all-applications.png)
 
-3. 选择“预配”选项卡。
+3. 选择“预配”  选项卡。
 
     ![“预配”选项卡](common/provisioning.png)
 
@@ -87,9 +87,9 @@ ms.locfileid: "96182183"
 
     ![“预配”选项卡“自动”](common/provisioning-automatic.png)
 
-5. 在 " **管理员凭据** " 部分下，输入你在步骤2中之前检索到的可视租户 URL 和机密令牌。 单击 " **测试连接** " 以确保 Azure AD 可以连接到可见。 如果连接失败，请确保可见帐户具有管理员权限，然后重试。
+5. 在“管理员凭据”部分下，输入之前在步骤 2 中检索的 Visibly 租户 URL 和机密令牌。 单击“测试连接”，确保 Azure AD 可连接到 Visibly。 如果连接失败，请确保 Visibly 帐户具有管理员权限，然后重试。
 
-      ![令牌](common/provisioning-testconnection-tenanturltoken.png)
+      ![标记](common/provisioning-testconnection-tenanturltoken.png)
 
 6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送电子邮件通知”复选框 。
 
@@ -97,23 +97,23 @@ ms.locfileid: "96182183"
 
 7. 选择“保存”。
 
-8. 在 " **映射** " 部分下，选择 " **同步 Azure Active Directory 用户**"。
+8. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Visibly”。 
 
-9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到可见的用户属性。 选为 " **匹配** " 属性的属性将用于匹配用户帐户以可见的方式进行更新操作。 如果选择更改 [匹配的目标属性](../app-provisioning/customize-application-attributes.md)，将需要确保可视的 API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改  。
+9. 在“属性映射”部分中，查看从 Azure AD 同步到 Visibly 的用户属性。 选为“匹配”属性的特性用于匹配 Visibly 中的用户帐户以执行更新操作。 如果选择更改[匹配目标特性](../app-provisioning/customize-application-attributes.md)，则需要确保 Visibly API 支持基于该特性筛选用户。 选择“保存”按钮以提交任何更改。
 
    |Attribute|类型|
    |---|---|
    |userName|字符串|
    |活动|Boolean|
    |displayName|字符串|
-   |名称. giveName|字符串|
+   |name.giveName|字符串|
    |name.familyName|字符串|
    |name.formatted|字符串|
    |externalId|字符串|
 
-10. 在 " **映射** " 部分下，选择 " **同步 Azure Active Directory 组**"。
+10. 在“映射”部分下，选择“将 Azure Active Directory 组同步到 Visibly”。 
 
-11. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到可见的组属性。 选为 " **匹配** " 属性的属性用于匹配 "可见" 更新操作的组。 选择“保存”按钮以提交任何更改  。
+11. 在“特性映射”部分中，查看从 Azure AD 同步到 Visibly 的组特性。 选为“匹配”属性的特性用于匹配 Visibly 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
       |Attribute|类型|
       |---|---|
@@ -123,11 +123,11 @@ ms.locfileid: "96182183"
 
 12. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
-13. 若要为直观地启用 Azure AD 预配服务，请在 "设置" 部分中将 **设置****状态** 更改为 **"打开**"。
+13. 若要为 Visibly 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”。  
 
     ![预配状态已打开](common/provisioning-toggle-on.png)
 
-14. 通过在 "**设置**" 部分的 "**范围**" 中选择所需的值，定义要进行直观预配的用户和/或组。
+14. 通过在“设置”部分的“范围”中选择所需的值，定义要预配到 Visibly 的用户和/或组。 
 
     ![预配范围](common/provisioning-scope.png)
 

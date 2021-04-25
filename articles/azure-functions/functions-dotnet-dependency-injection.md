@@ -4,15 +4,15 @@ description: 了解如何在 .NET 函数中使用依赖项注入来注册和使�
 author: ggailey777
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 01/27/2021
+ms.date: 03/24/2021
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 66e2cd22f4bcb95be65d6d04345dcac622436a04
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 32cd2760eadc94466cdf55883611c78ac0cf24e6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98955082"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608113"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入
 
@@ -21,6 +21,11 @@ Azure Functions 支持依赖项注入 (DI) 软件设计模式，这是一种在�
 - Azure Functions 中的依赖项注入基于 .NET Core 依赖项注入功能构建。 建议熟悉 [.NET Core 依赖项注入](/aspnet/core/fundamentals/dependency-injection)。 两者在如何替代依赖项以及如何使用 Azure Functions 对消耗计划读取配置值方面存在差异。
 
 - 从 Azure Functions 2.x 支持依赖项注入。
+
+- 依赖项注入模式的不同之处取决于 C# 函数是[在进程内](functions-dotnet-class-library.md)运行还是在[进程外](dotnet-isolated-process-guide.md)运行。  
+
+> [!IMPORTANT]
+> 本文的指导仅适用于 [C# 类库函数](functions-dotnet-class-library.md)，该函数在运行时在进程内运行。 该自定义依赖项注入模型不适用于[.Net 隔离函数](dotnet-isolated-process-guide.md)，故可以在进程外运行.Net 5.0 函数。 .NET 独立进程模型依赖于常规 ASP.NET Core 依赖项注入模式。 若要了解更多信息，请参阅.NET 独立过程指南中的[依赖项注入](dotnet-isolated-process-guide.md#dependency-injection)。
 
 ## <a name="prerequisites"></a>先决条件
 

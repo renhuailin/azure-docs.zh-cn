@@ -5,14 +5,14 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: eb19005019a6e4e878f6b0bd6a145048d4a2804c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 74680f7b56ad98851e2839b53c1f9e92b6c6c23a
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103563770"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029999"
 ---
-# <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>使用纯无状态节点类型部署 Azure Service Fabric 群集（预览版）
+# <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types"></a>使用纯无状态节点类型部署 Azure Service Fabric 群集
 关于 Service Fabric 节点类型，有一个固有的假设，即在某个时间点，有状态服务可能会被放置到节点上。 无状态节点类型放宽了对节点类型的这种假设，因此允许节点类型使用其他功能，例如更快的横向扩展操作、支持在“青铜”持续性级别下自动升级 OS，以及在一个虚拟机规模集中扩展到 100 多个节点。
 
 * 主节点类型不能配置为无状态
@@ -23,7 +23,7 @@ ms.locfileid: "103563770"
 现提供示例模板：[Service Fabric 无状态节点类型模板](https://github.com/Azure-Samples/service-fabric-cluster-templates)
 
 ## <a name="enabling-stateless-node-types-in-service-fabric-cluster"></a>在 Service Fabric 群集中启用无状态节点类型
-若要在群集资源中将一个或多个节点类型设置为无状态，请将“isStateless”属性设置为“true”。 使用无状态节点类型部署 Service Fabric 群集时，请记住在群集资源中至少使用一个主节点类型。
+若要在群集资源中将一个或多个节点类型设置为无状态，请将“isStateless”属性设置为“true” 。 使用无状态节点类型部署 Service Fabric 群集时，请记住在群集资源中至少使用一个主节点类型。
 
 * Service Fabric 群集资源 apiVersion 应为“2020-12-01-preview”或更高版本。
 
@@ -44,7 +44,7 @@ ms.locfileid: "103563770"
         },
         "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
         "isPrimary": true,
-        "isStateless": false,
+        "isStateless": false, // Primary Node Types cannot be stateless
         "vmInstanceCount": "[parameters('nt0InstanceCount')]"
     },
     {
@@ -72,16 +72,15 @@ ms.locfileid: "103563770"
 若要启用无状态节点类型，应按以下方式配置底层虚拟机规模集资源：
 
 * singlePlacementGroup 属性的值应设置为 false（如果需要扩展到超过 100 个 VM） 。
-* 在规模集的 upgradePolicy 中，应将“模式”设置为“滚动升级”  。
+* 应将规模集的“upgradeMode”设置为“滚动升级” 。
 * 设置为滚动升级模式时，需要配置应用程序运行状况扩展或运行状况探测。 按照以下建议，使用无状态节点类型的默认配置来配置运行状况探测。 将应用程序部署到节点类型后，可以更改运行状况探测/运行状况扩展端口，以监视应用程序运行状况。
 
 >[!NOTE]
-> 如果某个无状态节点类型由跨多个区域的虚拟机规模集提供支持，则平台容错域计数必须更新为 5。 有关详细信息，请参阅此[模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-2-NodeTypes-Windows-Stateless-CrossAZ-Secure)。
-> 
-> platformFaultDomainCount:5
+> 在对无状态节点类型使用自动缩放时，纵向缩减操作后，不会自动清除节点状态。 若要在自动缩放期间清除已关闭节点的节点状态，建议使用 [Service Fabric 自动缩放帮助程序](https://github.com/Azure/service-fabric-autoscale-helper)。
+
 ```json
 {
-    "apiVersion": "2018-10-01",
+    "apiVersion": "2019-03-01",
     "type": "Microsoft.Compute/virtualMachineScaleSets",
     "name": "[parameters('vmNodeType1Name')]",
     "location": "[parameters('computeLocation')]",
@@ -92,8 +91,9 @@ ms.locfileid: "103563770"
           "automaticOSUpgradePolicy": {
             "enableAutomaticOSUpgrade": true
           }
-        }
-    }
+        },
+        "platformFaultDomainCount": 5
+    },
     "virtualMachineProfile": {
     "extensionProfile": {
     "extensions": [
@@ -136,6 +136,18 @@ ms.locfileid: "103563770"
     ]
 }
 ```
+
+## <a name="configuring-stateless-node-types-with-multiple-availability-zones"></a>配置具有多个可用性区域的无状态节点类型
+若要配置跨多个可用性区域的无状态节点类型，请遵循[此处](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set)的文档进行操作，并作如下一些更改：
+
+* 设置 singlePlacementGroup：如果需要启用多个放置组，将其设置为“false” 。
+* 设置 upgradeMode：如上所述，将其设置为“滚动升级”，并添加应用程序运行状况扩展/运行状况探测 。
+* 设置 platformFaultDomainCount：对于虚拟机规模集，将其设置为“5” 。
+
+>[!NOTE]
+> 无论群集中的 VMSSZonalUpgradeMode 如何配置，对于跨多个区域的无状态节点类型，总是会按顺序一次对一个可用性区域进行虚拟机规模集更新，因为该节点类型使用滚动升级模式。
+
+有关参考，请查看[模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-2-NodeTypes-Windows-Stateless-CrossAZ-Secure)以配置具有多个可用性区域的无状态节点类型
 
 ## <a name="networking-requirements"></a>网络要求
 ### <a name="public-ip-and-load-balancer-resource"></a>公共 IP 和负载均衡器资源
@@ -184,7 +196,7 @@ ms.locfileid: "103563770"
 ```
 
 >[!NOTE]
-> 目前不能在公共 IP 和负载均衡器资源上就地更改 SKU。 如果要从具有基本 SKU 的现有资源进行迁移，请参阅本文的迁移部分。
+> 目前不能在公共 IP 和负载均衡器资源上就地更改 SKU。 
 
 ### <a name="virtual-machine-scale-set-nat-rules"></a>虚拟机规模集 NAT 规则
 负载均衡器入站 NAT 规则应匹配虚拟机规模集中的 NAT 池。 每个虚拟机规模集必须有一个唯一的入站 NAT 池。
@@ -243,7 +255,7 @@ ms.locfileid: "103563770"
 
 
 
-### <a name="migrate-to-using-stateless-node-types-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip"></a>从使用基本 SKU 负载均衡器和基本 SKU IP 的群集迁移为使用无状态节点类型
+## <a name="migrate-to-using-stateless-node-types-in-a-cluster"></a>迁移为在群集中使用无状态节点类型
 对于所有迁移方案，都需要添加一个新的纯无状态节点类型。 现有节点类型不能迁移到纯无状态类型。
 
 若要迁移使用基本 SKU 负载均衡器和 IP 的群集，必须先使用标准 SKU 创建全新的负载均衡器和 IP 资源。 目前无法就地更新这些资源。
@@ -256,9 +268,6 @@ ms.locfileid: "103563770"
 * 由在其中部署虚拟机规模集的子网所引用的 NSG。
 
 资源完成部署后，你就可以开始禁用要从原始群集中删除的节点类型中的节点。
-
->[!NOTE]
-> 对具有青铜级持久性的无状态节点类型使用自动缩放时，在执行纵向缩减操作后，节点状态不会自动清除。 若要在自动缩放期间清除已关闭节点的节点状态，建议使用 [Service Fabric 自动缩放帮助程序](https://github.com/Azure/service-fabric-autoscale-helper)。
 
 ## <a name="next-steps"></a>后续步骤 
 * [Reliable Services](service-fabric-reliable-services-introduction.md)

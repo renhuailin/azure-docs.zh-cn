@@ -2,13 +2,13 @@
 title: 模板中的用户定义函数
 description: 介绍如何在 Azure 资源管理器模板（ARM 模板）中定义和使用用户定义函数。
 ms.topic: conceptual
-ms.date: 02/11/2021
-ms.openlocfilehash: 9c7480958e6315c8aea1fd8d12613bcf9d606723
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: 802ac6e1c70db8caa58aecde3efe814430c79682
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100379618"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307769"
 ---
 # <a name="user-defined-functions-in-arm-template"></a>ARM 模板中用户定义的函数
 
@@ -107,6 +107,7 @@ ms.locfileid: "100379618"
 * 函数仅可使用函数中定义的参数。 在用户定义函数中使用 [parameters](template-functions-deployment.md#parameters) 函数时，只能使用该函数的参数。
 * 该函数不能调用其他用户定义的函数。
 * 该函数不能使用 [reference](template-functions-resource.md#reference) 函数或任何 [list](template-functions-resource.md#list) 函数。
+* 该函数不能使用 [dateTimeAdd](template-functions-date.md#datetimeadd) 函数。
 * 该函数的参数不能具有默认值。
 
 ## <a name="next-steps"></a>后续步骤

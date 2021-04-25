@@ -9,10 +9,10 @@ ms.date: 09/15/2018
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: 1be6a654962b513cfcf755d45e562b86067e7b25
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95994992"
 ---
 #### <a name="to-create-a-new-service"></a>创建新服务
@@ -45,6 +45,6 @@ ms.locfileid: "95994992"
 
     7.  单击“创建”以创建 StorSimple 设备管理器。
 
-        ![创建新服务2](./media/storsimple-virtual-array-create-new-service/createnewservice4.png)  
+        ![创建新服务 2](./media/storsimple-virtual-array-create-new-service/createnewservice4.png)  
 
 随后会定向到“服务”登陆页。 创建服务需要几分钟时间。 成功创建服务之后，将向你发出相应的通知，而且服务的状态将更改为 **“活动”**。

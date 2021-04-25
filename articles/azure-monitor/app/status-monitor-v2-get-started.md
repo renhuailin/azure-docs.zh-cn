@@ -6,12 +6,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 01/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 21184e1623fd47e8367d4c5dfbc2c85debe93124
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d24e67eac54b3ce4eadfc6a4bde47410d59fae8b
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100587392"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581096"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>本地服务器的 Azure Monitor Application Insights 代理入门
 
@@ -26,6 +26,8 @@ ms.locfileid: "100587392"
 ## <a name="download-and-install-via-powershell-gallery"></a>通过 PowerShell 库下载并安装
 
 ### <a name="install-prerequisites"></a>安装先决条件
+
+- 若要启用监视，你需要一个连接字符串。 连接字符串显示在 Application Insights 资源的“概述”边栏选项卡上。 有关详细信息，请参阅[连接字符串](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#finding-my-connection-string)页。
 
 > [!NOTE]
 > 从 2020 年 4 月起，PowerShell 库已弃用了 TLS 1.1 和 TLS 1.0。
@@ -50,9 +52,10 @@ Install-Module -Name Az.ApplicationMonitor -AllowPrerelease -AcceptLicense
 ``` 
 
 ### <a name="enable-monitoring"></a>启用监视
+
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
-Enable-ApplicationInsightsMonitoring -ConnectionString xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Enable-ApplicationInsightsMonitoring -ConnectionString 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 ```
     
         
@@ -69,9 +72,11 @@ $pathInstalledModule = "$Env:ProgramFiles\WindowsPowerShell\Modules\Az.Applicati
 Expand-Archive -LiteralPath $pathToZip -DestinationPath $pathInstalledModule
 ```
 ### <a name="enable-monitoring"></a>启用监视
+
 ```powershell
-Enable-ApplicationInsightsMonitoring -ConnectionString xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Enable-ApplicationInsightsMonitoring -ConnectionString 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 ```
+
 
 
 

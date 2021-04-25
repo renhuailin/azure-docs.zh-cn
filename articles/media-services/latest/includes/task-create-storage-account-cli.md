@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 08/17/2020
 ms.author: inhenkel
 ms.custom: CLI
-ms.openlocfilehash: a6349188a2c6b4da68009df93fbea5fa6eabacf1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f0d0322f6f5f14b94a67285fe8688d72c941b3a4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102234334"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105105032"
 ---
 <!-- ### Create a storage account -->
 
@@ -20,7 +20,7 @@ ms.locfileid: "102234334"
 
 在此示例中，我们创建一个常规用途 v2 标准 LRS 帐户。 若要通过存储帐户进行试验，请使用 `--sku Standard_LRS`。 但是，在选取用于生产的 SKU 时，应考虑 `--sku Standard_RAGRS`，以便通过异地复制确保业务连续性。 有关详细信息，请参阅[存储帐户](/cli/azure/storage/account)。
 
-以下命令创建将与媒体服务帐户相关联的存储帐户。 在以下脚本中，可以将 `storageaccountforams` 替换为你的值。 `amsResourceGroup` 必须与在上一步中为资源组指定的值匹配。 存储帐户名称的长度必须小于 24。
+以下命令创建将与媒体服务帐户相关联的存储帐户。 在下面的脚本中，将 `storageaccountforams` 替换为你自己的唯一名称（长度小于 24 个字符）。 `amsResourceGroup` 必须与在上一步中为资源组指定的值匹配。
 
 ```azurecli
 az storage account create --name storageaccountforams --kind StorageV2 --sku Standard_LRS -l westus2 -g amsResourceGroup

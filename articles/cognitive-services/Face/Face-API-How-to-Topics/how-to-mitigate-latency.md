@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
 ms.author: v-jawe
-ms.openlocfilehash: 2c771509de5ac246bac0d8e006a5d0b884a410b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9198fa6fdd52c91b5be5697fcecbda89a3dbdb3
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101706803"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276886"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>操作说明：使用人脸服务时降低延迟
 
@@ -86,6 +86,7 @@ IEnumerable<DetectedFace> results = faces_1.Result.Concat (faces_2.Result);
 缓解措施：
 - 创建人脸订阅时，请确保选择最靠近应用程序托管位置的区域。
 - 如果你需要调用多个服务方法，请考虑并行调用这些方法（如果你的应用程序设计允许这样做）。 有关示例，请参阅上一部分。
+- 如果长时间延迟影响用户体验，请在重试 API 调用之前选择超时阈值（例如最大 5s） 
 
 ## <a name="next-steps"></a>后续步骤
 

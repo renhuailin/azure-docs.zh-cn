@@ -4,15 +4,15 @@ description: 了解如何与 Azure 防火墙集成，以保护应用服务环境
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 09/24/2020
+ms.date: 03/25/2021
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: ec506546b52a2d137d448f07f4b7a6827c01b4d2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b930412508753ba2025e8126b9720d9a519d9281
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100594122"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220056"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
 
@@ -126,14 +126,14 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 |----------| ----- |
 | \*:123 | NTP 时钟检查。 在端口 123 上的多个终结点中检查流量 |
 | \*:12000 | 此端口用于某些系统监视活动。 如果阻止此端口，则有些问题将难以诊断，但 ASE 会继续运行 |
-| 40.77.24.27:80 | 监视 ASE 问题和发出相关警报时需要此端口 |
-| 40.77.24.27:443 | 监视 ASE 问题和发出相关警报时需要此端口 |
-| 13.90.249.229:80 | 监视 ASE 问题和发出相关警报时需要此端口 |
-| 13.90.249.229:443 | 监视 ASE 问题和发出相关警报时需要此端口 |
-| 104.45.230.69:80 | 监视 ASE 问题和发出相关警报时需要此端口 |
-| 104.45.230.69:443 | 监视 ASE 问题和发出相关警报时需要此端口 |
-| 13.82.184.151:80 | 监视 ASE 问题和发出相关警报时需要此端口 |
-| 13.82.184.151:443 | 监视 ASE 问题和发出相关警报时需要此端口 |
+| 40.77.24.27:80 | 需要使用它监视 ASE 问题并发出警报 |
+| 40.77.24.27:443 | 需要使用它监视 ASE 问题并发出警报 |
+| 13.90.249.229:80 | 需要使用它监视 ASE 问题并发出警报 |
+| 13.90.249.229:443 | 需要使用它监视 ASE 问题并发出警报 |
+| 104.45.230.69:80 | 需要使用它监视 ASE 问题并发出警报 |
+| 104.45.230.69:443 | 需要使用它监视 ASE 问题并发出警报 |
+| 13.82.184.151:80 | 需要使用它监视 ASE 问题并发出警报 |
+| 13.82.184.151:443 | 需要使用它监视 ASE 问题并发出警报 |
 
 使用 Azure 防火墙时，将使用 FQDN 标记自动配置以下所有设置。 
 
@@ -146,6 +146,8 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 |login.windows.com:443 |
 |login.windows.net:443 |
 |login.microsoftonline.com:443 |
+|\*.login.microsoftonline.com:443|
+|\*.login.microsoft.com:443|
 |client.wns.windows.com:443 |
 |definitionupdates.microsoft.com:443 |
 |go.microsoft.com:80 |
@@ -299,13 +301,13 @@ Linux 在 US Gov 区域中不可用，因此未在可选配置中列出。
 |----------| ----- |
 | \*:123 | NTP 时钟检查。 在端口 123 上的多个终结点中检查流量 |
 | \*:12000 | 此端口用于某些系统监视活动。 如果阻止此端口，则有些问题将难以诊断，但 ASE 会继续运行 |
-| 40.77.24.27:80 | 监视 ASE 问题和发出相关警报时需要此端口 |
-| 40.77.24.27:443 | 监视 ASE 问题和发出相关警报时需要此端口 |
-| 13.90.249.229:80 | 监视 ASE 问题和发出相关警报时需要此端口 |
-| 13.90.249.229:443 | 监视 ASE 问题和发出相关警报时需要此端口 |
-| 104.45.230.69:80 | 监视 ASE 问题和发出相关警报时需要此端口 |
-| 104.45.230.69:443 | 监视 ASE 问题和发出相关警报时需要此端口 |
-| 13.82.184.151:80 | 监视 ASE 问题和发出相关警报时需要此端口 |
+| 40.77.24.27:80 | 需要使用它监视 ASE 问题并发出警报 |
+| 40.77.24.27:443 | 需要使用它监视 ASE 问题并发出警报 |
+| 13.90.249.229:80 | 需要使用它监视 ASE 问题并发出警报 |
+| 13.90.249.229:443 | 需要使用它监视 ASE 问题并发出警报 |
+| 104.45.230.69:80 | 需要使用它监视 ASE 问题并发出警报 |
+| 104.45.230.69:443 | 需要使用它监视 ASE 问题并发出警报 |
+| 13.82.184.151:80 | 需要使用它监视 ASE 问题并发出警报 |
 | 13.82.184.151:443 | 需要使用它监视 ASE 问题并发出警报 |
 
 #### <a name="dependencies"></a>依赖项 ####

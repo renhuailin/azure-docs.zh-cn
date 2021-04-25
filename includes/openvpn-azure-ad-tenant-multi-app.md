@@ -9,10 +9,10 @@ ms.date: 10/15/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c3236f9c60cb359349d96e93f674c3e278e44f1e
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93375767"
 ---
 ## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1.创建 Azure AD 租户
@@ -72,12 +72,12 @@ ms.locfileid: "93375767"
     ```
 
 > [!NOTE]
-> 如果你使用的全局管理员帐户不是 Azure AD 租户的本机用户提供许可，请在 URL 中将 "common" 替换为 Azure AD 的目录 id。 还可能需要在某些其他情况下将 "common" 替换为目录 id。
+> 如果你使用并非 Azure AD 租户本机的全局管理员帐户来授予同意，请在 URL 中将“common”替换为 Azure AD Directory ID。 在某些其他情况下，可能还需要将“common”替换为你的 Directory ID。
 >
 
 5. 如果出现提示，请选择“全局管理员”帐户。
 
-    ![目录 ID 2](./media/openvpn-azure-ad-tenant-multi-app/pick.png)
+    ![Directory ID 2](./media/openvpn-azure-ad-tenant-multi-app/pick.png)
 
 6. 出现提示时选择“接受”。
 
@@ -132,7 +132,7 @@ ms.locfileid: "93375767"
 
 将用户分配到你的应用程序。
 
-1. 在“Azure AD > 企业应用程序”下，选择新注册的应用程序，然后单击“属性” 。 确保“需要进行用户分配?”设置为“是”。  单击“ **保存** ”。
+1. 在“Azure AD > 企业应用程序”下，选择新注册的应用程序，然后单击“属性” 。 确保“需要进行用户分配?”设置为“是”。  单击“保存”  。
 
     ![Azure VPN 8](./media/openvpn-azure-ad-tenant-multi-app/user2.png)
 

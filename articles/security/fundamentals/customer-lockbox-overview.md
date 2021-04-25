@@ -7,27 +7,28 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 02/19/2021
-ms.openlocfilehash: 0146e4fcaf70d37975dc587a266c47bf4b3f4601
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.date: 04/05/2021
+ms.openlocfilehash: 80d1e4f39d69f761b801ccec834c0228057e4847
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103461668"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448519"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 客户密码箱
 
 > [!NOTE]
 > 若要使用此功能，组织必须具有一个最低级别为“开发人员”的 [Azure 支持计划](https://azure.microsoft.com/support/plans/)。
 
-Microsoft Azure 客户密码箱提供一个界面供客户查看和批准/拒绝客户数据访问请求。 当 Microsoft 工程师需要在支持请求期间访问客户数据时，可以使用此功能。
+Microsoft 人员和子处理器执行的大多数操作、支持和故障排除都不需要访问客户数据。 只有在极少数的情况下需要访问，Microsoft Azure 客户密码箱为客户提供查看、同意或拒绝客户数据访问请求的接口。 适用于 Microsoft 工程师为了响应客户发起的支持票证或是出现由 Microsoft 识别的问题时，需要访问客户数据的情况。
 
 本文介绍如何启用客户密码箱，以及如何启动、跟踪密码箱请求和存储这些请求供以后进行审查和审核。
 
 <a name='supported-services-and-scenarios-in-general-availability'></a><a name='supported-services-and-scenarios-in-preview'></a>
-## <a name="supported-services-and-scenarios-general-availability"></a>支持的服务和方案（正式版）
+## <a name="supported-services-and-scenarios"></a>支持的服务和方案
 
-以下服务现已推出客户密码箱正式版：
+### <a name="general-availability"></a>正式版
+以下服务普遍适用于客户密码箱：
 
 - Azure API 管理
 - Azure 应用服务
@@ -49,6 +50,12 @@ Microsoft Azure 客户密码箱提供一个界面供客户查看和批准/拒绝
 - Azure Synapse Analytics
 - Azure 中的虚拟机（包括远程桌面访问，以及对内存转储和托管磁盘的访问）
 
+### <a name="public-preview"></a>公共预览版
+当前客户密码箱预览版支持以下服务：
+
+- Azure 机器学习
+- Azure Batch
+
 ## <a name="enable-customer-lockbox"></a>启用客户密码箱
 
 现在可以通过[管理模块](https://aka.ms/customerlockbox/administration)中的“客户密码箱”边栏选项卡启用客户密码箱。  
@@ -66,7 +73,7 @@ Microsoft Azure 客户密码箱提供一个界面供客户查看和批准/拒绝
 
 3. Azure 支持工程师在审查服务请求后，确定了解决该问题的后续步骤。
 
-4. 如果支持工程师无法使用标准工具和遥测来排查问题，则下一步是使用即时 (JIT) 访问服务请求提升的权限。 此请求可能来自最初的支持工程师或其他工程师，因为问题已上报到 Azure DevOps 团队。
+4. 如果支持工程师无法使用标准工具和服务生成的数据排除问题故障，下一步应使用实时 (JIT) 访问服务请求提升权限。 此请求可能来自最初的支持工程师或其他工程师，因为问题已上报到 Azure DevOps 团队。
 
 5. 在 Azure 工程师提交访问请求后，即时服务将在考虑到如下所述因素的前提下评估该请求：
     - 资源的范围
@@ -129,8 +136,10 @@ Microsoft Azure 客户密码箱提供一个界面供客户查看和批准/拒绝
 
 在以下工程支持场景中不会触发客户密码箱请求：
 
-- Microsoft 工程师需要执行超出标准操作过程范围的活动。 例如，在意外或不可预测的情况下恢复或还原服务。
-- Microsoft 工程师在故障排除过程中访问 Azure 平台，并且无意中有权访问客户数据。 例如，Azure 网络团队会执行故障排除，导致在网络设备上捕获数据包。 在此场景中，如果客户加密了处于传输中状态的数据，则工程师无法读取该数据。
+- 不属于标准操作过程的紧急情况。 例如，在意外或不可预测的情况下，需要立即恢复或还原重大服务中断。 此类“中断玻璃”事件很少见，在大多数情况下，不需要访问任何客户数据即可解决。
+- Microsoft 工程师在故障排除过程中访问 Azure 平台，无意中接触到客户数据。 例如，Azure 网络团队会执行故障排除，导致在网络设备上捕获数据包。 这种情况很少会导致对有意义数量的客户数据的访问。 客户可以通过使用传输中和静态加密进一步保护其数据。
+
+对数据的外部法律要求也不会触发客户密码箱请求。 有关详细信息，请参阅 Microsoft 信任中心上有关[政府数据请求](https://www.microsoft.com/trust-center/)的讨论。
 
 ## <a name="next-steps"></a>后续步骤
 

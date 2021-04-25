@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/19/2020
-ms.openlocfilehash: ea136069da73d88174d9d40fe9c60e84982909df
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
-ms.translationtype: MT
+ms.openlocfilehash: 51f66a674f9e730670084a43bd7bf059a0742cc3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99616621"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104582751"
 ---
 ## <a name="model-id-announcement"></a>模型 ID 公告
 
@@ -21,17 +21,17 @@ options.setModelId(MODEL_ID);
 deviceClient = new DeviceClient(deviceConnectionString, protocol, options);
 ```
 
-`ClientOptions`重载在 `DeviceClient` 用于初始化连接的所有方法中可用。
+`ClientOptions` 重载在用于初始化连接的所有 `DeviceClient` 方法中均可用。
 
 > [!TIP]
-> 对于模块和 IoT Edge，使用 `ModuleClient` 代替 `DeviceClient` 。
+> 对于模块和 IoT Edge，使用 `ModuleClient` 而不是 `DeviceClient`。
 
 > [!TIP]
-> 这是设备可以设置模型 ID 的唯一时间，在设备连接后将无法更新。
+> 设备只有在这时能够设置模型 ID，设备连接后将无法更新模型 ID。
 
 ## <a name="dps-payload"></a>DPS 有效负载
 
-使用 [设备预配服务 (DPS) ](../articles/iot-dps/about-iot-dps.md) 的设备可以包括 `modelId` 使用以下 JSON 有效负载的预配过程中要使用的。
+使用[设备预配服务 (DPS)](../articles/iot-dps/about-iot-dps.md) 的设备可以包含要在使用以下 JSON 有效负载的预配过程中使用的 `modelId`。
 
 ```json
 {
@@ -41,7 +41,7 @@ deviceClient = new DeviceClient(deviceConnectionString, protocol, options);
 
 ## <a name="implement-telemetry-properties-and-commands"></a>实现遥测、属性和命令
 
-如 [了解 IoT 即插即用模型中的组件](../articles/iot-pnp/concepts-components.md)中所述，设备构建者必须决定是否要使用组件来描述其设备。 使用组件时，设备必须遵循本部分中所述的规则。
+如[了解 IoT 即插即用模型中的组件](../articles/iot-pnp/concepts-modeling-guide.md)中所述，设备构建者必须决定是否要使用组件来描述其设备。 使用组件时，设备必须遵循本部分中所述的规则。
 
 ### <a name="telemetry"></a>遥测
 
@@ -76,7 +76,7 @@ Property reportedProperty = new Property("maxTempSinceLastReboot", 38.7);
 deviceClient.sendReportedProperties(Collections.singleton(reportedProperty));
 ```
 
-用下一个报告的属性更新设备克隆：
+使用下一个报告的属性更新设备孪生：
 
 ```json
 {
@@ -99,7 +99,7 @@ Set<Property> reportedProperty = new Property("thermostat1", componentProperty)
 deviceClient.sendReportedProperties(reportedProperty);
 ```
 
-用下一个报告的属性更新设备克隆：
+使用下一个报告的属性更新设备孪生：
 
 ```json
 {
@@ -114,13 +114,13 @@ deviceClient.sendReportedProperties(reportedProperty);
 
 ### <a name="writable-properties"></a>可写属性
 
-这些属性可以由设备设置或通过解决方案更新。 如果解决方案更新属性，则客户端会在或中接收到作为回调的 `DeviceClient` 通知 `ModuleClient` 。 若要遵循 IoT 即插即用约定，设备必须通知服务属性已成功接收。
+这些属性可以由设备设置或通过解决方案更新。 解决方案更新属性时，客户端会接收到通知（作为 `DeviceClient` 或 `ModuleClient` 中的回调）。 若要遵循 IoT 即插即用约定，设备必须通知服务已成功接收属性。
 
 #### <a name="report-a-writable-property"></a>报告可写属性
 
-当设备报告可写属性时，它必须包含 `ack` 约定中定义的值。
+设备报告可写属性时，必须包含约定中定义的 `ack` 值。
 
-若要从默认组件报告可写属性：
+从默认组件报告可写属性：
 
 ```java
 @AllArgsConstructor
@@ -143,7 +143,7 @@ Property reportedPropertyCompleted = new Property("targetTemperature", completed
 deviceClient.sendReportedProperties(Collections.singleton(reportedPropertyCompleted));
 ```
 
-用下一个报告的属性更新设备克隆：
+使用下一个报告的属性更新设备孪生：
 
 ```json
 {
@@ -158,7 +158,7 @@ deviceClient.sendReportedProperties(Collections.singleton(reportedPropertyComple
 }
 ```
 
-若要从嵌套组件报告可写属性，则克隆必须包括标记：
+若要从嵌套组件报告可写属性，孪生必须包括标记：
 
 ```java
 Map<String, Object> embeddedProperty = new HashMap<String, Object>() {{
@@ -178,7 +178,7 @@ Set<Property> reportedProperty = new Property("thermostat1", componentProperty))
 deviceClient.sendReportedProperties(reportedProperty);
 ```
 
-用下一个报告的属性更新设备克隆：
+使用下一个报告的属性更新设备孪生：
 
 ```json
 {
@@ -196,11 +196,11 @@ deviceClient.sendReportedProperties(reportedProperty);
 }
 ```
 
-#### <a name="subscribe-to-desired-property-updates"></a>订阅所需属性更新
+#### <a name="subscribe-to-desired-property-updates"></a>订阅所需的属性更新
 
-服务可以更新在连接的设备上触发通知的所需属性。 此通知包括更新的所需属性，其中包括用于标识更新的版本号。 设备必须用与报告属性相同的消息进行响应 `ack` 。
+服务可以更新所需的属性，在连接的设备上触发通知。 此通知包括更新的所需属性（包括用于标识更新的版本号）。 设备必须使用与报告的属性相同的 `ack` 消息进行响应。
 
-默认组件将查看单个属性，并 `ack` 使用收到的版本创建报告：
+默认组件会查看单个属性，并使用收到的版本创建报告的 `ack`：
 
 ```java
 private static class TargetTemperatureUpdateCallback implements TwinPropertyCallBack {
@@ -227,7 +227,7 @@ Map<Property, Pair<TwinPropertyCallBack, Object>> desiredPropertyUpdateCallback 
 deviceClient.subscribeToTwinDesiredProperties(desiredPropertyUpdateCallback);
 ```
 
-设备克隆在所需的和报告的部分显示属性：
+设备孪生在所需部分和报告部分显示属性：
 
 ```json
 {
@@ -246,7 +246,7 @@ deviceClient.subscribeToTwinDesiredProperties(desiredPropertyUpdateCallback);
 }
 ```
 
-嵌套组件接收用组件名称包装的所需属性，并报告返回 `ack` 报告的属性：
+嵌套组件接收用组件名称包装的所需属性，并且应报告 `ack` 报告的属性：
 
 ```java
 private static final Map<String, Double> temperature = new HashMap<>();
@@ -298,7 +298,7 @@ Map<Property, Pair<TwinPropertyCallBack, Object>> desiredPropertyUpdateCallback 
 deviceClient.subscribeToTwinDesiredProperties(desiredPropertyUpdateCallback);
 ```
 
-嵌套组件的设备克隆显示了所需的和报告的部分，如下所示：
+嵌套组件的设备孪生显示了所需部分和报告部分，如下所示：
 
 ```json
 {
@@ -327,7 +327,7 @@ deviceClient.subscribeToTwinDesiredProperties(desiredPropertyUpdateCallback);
 
 默认组件接收服务调用的命令名称。
 
-嵌套组件接收以组件名称和分隔符为前缀的命令名称 `*` 。
+嵌套组件接收带有组件名称和 `*` 分隔符前缀的命令名称。
 
 ```java
 deviceClient.subscribeToDeviceMethod(new MethodCallback(), null, new MethodIotHubEventCallback(), null);
@@ -365,11 +365,11 @@ private static class MethodCallback implements DeviceMethodCallback {
 }
 ```
 
-#### <a name="request-and-response-payloads"></a>请求和响应负载
+#### <a name="request-and-response-payloads"></a>请求和响应有效负载
 
-命令使用类型来定义其请求和响应负载。 设备必须反序列化传入的输入参数并序列化响应。
+命令使用类型定义其请求和响应有效负载。 设备必须对传入的输入参数进行反序列化，并对响应进行序列化。
 
-下面的示例演示如何实现具有负载中定义的复杂类型的命令：
+下面的示例演示如何实现在有效负载中定义了复杂类型的命令：
 
 ```json
 {
@@ -420,7 +420,7 @@ private static class MethodCallback implements DeviceMethodCallback {
 }
 ```
 
-下面的代码段演示了设备如何实现此命令定义，其中包括用于启用序列化和反序列化的类型：
+下面的代码片段演示了设备如何实现此命令定义，包括用于启用序列化和反序列化的类型：
 
 ```java
 deviceClient.subscribeToDeviceMethod(new GetMaxMinReportMethodCallback(), "getMaxMinReport", new MethodIotHubEventCallback(), "getMaxMinReport");

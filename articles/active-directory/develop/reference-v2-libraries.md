@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
-ms.date: 01/29/2021
+ms.date: 03/30/2021
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 590e57d587c8e6e254811892b5c5e740b511c302
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 321a5c473df30dd6f00bbcd1294d48ce8da34009
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104690647"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060374"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft 标识平台身份验证库
 
@@ -29,7 +29,7 @@ Microsoft 标识平台已由 OpenID Foundation 认证为[经认证的 OpenID 提
 
 ## <a name="single-page-application-spa"></a>单页面应用程序 (SPA)
 
-单页应用程序完全在浏览器表面上运行，以动态方式或在应用程序加载时提取页面数据（HTML、CSS 和 JavaScript）。 它可以调用 Web API 与后端数据源进行交互。
+单页应用程序完全在浏览器中运行，并动态提取或在应用程序加载时提取页面数据（HTML、CSS 和 JavaScript）。 它可以调用 Web API 与后端数据源进行交互。
 
 因为 SPA 的代码完全在浏览器中运行，所以它被视为公共客户端，无法安全存储机密。
 
@@ -45,7 +45,7 @@ Web 应用程序在服务器上运行代码，该服务器生成 HTML、CSS 和 
 
 ## <a name="desktop-application"></a>桌面应用程序
 
-桌面应用程序通常是显示用户界面的二进制（编译）代码，旨在在用户桌面上运行。
+桌面应用程序通常是二进制（编译的）代码，它显示用户界面，并设计为在用户的桌面上运行。
 
 由于桌面应用程序在用户的桌面上运行，因此它被视为无法安全存储机密的公共客户端。
 
@@ -53,7 +53,7 @@ Web 应用程序在服务器上运行代码，该服务器生成 HTML、CSS 和 
 
 ## <a name="mobile-application"></a>移动应用程序
 
-移动应用程序通常是显示用户界面的二进制（编译）代码，旨在在用户的移动设备上运行。
+移动应用程序通常是二进制（编译的）代码，它显示用户界面，并设计为在用户的移动设备上运行。
 
 由于移动应用程序在用户的移动设备上运行，因此它被视为无法安全存储机密的公共客户端。
 

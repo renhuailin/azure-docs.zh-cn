@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/6/2020
-ms.openlocfilehash: 2e7e56616300566839fadef762c2165c8d989e6e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c0cb9e0da3ba5dd899cac56f393d7332bac6c597
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100570812"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258480"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的慢查询日志
 在 Azure Database for MariaDB 中，慢查询日志可供用户使用。 不支持访问事务日志。 可以使用慢查询日志来查明性能瓶颈以进行故障排除。
@@ -45,7 +45,7 @@ ms.locfileid: "100570812"
 使用 Azure Monitor 诊断日志可以通过管道将慢查询日志传输到 Azure Monitor 日志 (Log Analytics)、Azure 存储或事件中心。 有关详细信息，请参阅[下文](concepts-server-logs.md#diagnostic-logs)。
 
 ## <a name="local-server-storage-log-retention"></a>本地服务器存储日志保留期
-将日志记录到服务器的本地存储时，日志在创建后的七天内可用。 如果可用日志的总大小超过了 7 GB，则会删除最旧的文件，直到有空间可用。
+将日志记录到服务器的本地存储时，日志在创建后的七天内可用。 如果可用日志的总大小超过了 7 GB，则会删除最旧的文件，直到有空间可用。 服务器日志的 7 GB 存储空间限制是免费提供的，无法扩展。 
 
 日志每 24 小时或每 7 GB 轮换一次（以先达到的条件为准）。
 

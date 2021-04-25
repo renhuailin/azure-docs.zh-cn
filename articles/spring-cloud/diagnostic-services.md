@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: c354435f689f5182dd368fd53fdab28f1ab63d48
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 68b9aee49e4cf7c02c07fc7dd90e9cc6065a443c
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218785"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259415"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>通过诊断设置分析日志和指标
 
@@ -110,7 +110,7 @@ ms.locfileid: "102218785"
 > [!NOTE]
 > `==` 区分大小写，但 `=~` 不区分大小写。
 
-若要详细了解 Log Analytics 中使用的查询语言，请参阅 [Azure Monitor 日志查询](/azure/data-explorer/kusto/query/)。
+若要详细了解 Log Analytics 中使用的查询语言，请参阅 [Azure Monitor 日志查询](/azure/data-explorer/kusto/query/)。 要从一个集中的客户端查询所有 Log Analytics 日志，请查看 [Azure 数据资源管理器](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)。
 
 ### <a name="use-your-storage-account"></a>使用存储帐户
 

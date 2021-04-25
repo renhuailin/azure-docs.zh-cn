@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: cce4c6aff986c2e8c3d879d962714e13f6b2e7ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 72bf8e76217e8a3bcecd381d8d61815c539dd196
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97694681"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209581"
 ---
 # <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用无服务器 SQL 池查询 Parquet 文件
 
@@ -119,7 +119,7 @@ ORDER BY
 
 读取 Parquet 文件时，无需使用 OPENROWSET WITH 子句。 系统会自动从 Parquet 文件中读取列名称和数据类型。
 
-下面的示例显示 Parquet 文件的自动架构推理功能。 该示例在不指定架构的情况下返回 2017 年 9 月的行数。
+下面的示例显示 Parquet 文件的自动架构推理功能。 该示例在不指定架构的情况下返回 2018 年 9 月的行数。
 
 > [!NOTE]
 > 读取 Parquet 文件时，无需指定 OPENROWSET WITH 子句中的列。 在这种情况下，无服务器 SQL 池查询服务将利用 Parquet 文件中的元数据，并按名称绑定列。
@@ -128,7 +128,7 @@ ORDER BY
 SELECT TOP 10 *
 FROM  
     OPENROWSET(
-        BULK 'puYear=2018/puMonth=*/*.snappy.parquet',
+        BULK 'puYear=2018/puMonth=9/*.snappy.parquet',
         DATA_SOURCE = 'YellowTaxi',
         FORMAT='PARQUET'
     ) AS nyc

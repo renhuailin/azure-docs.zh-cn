@@ -12,12 +12,12 @@ ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: 本地, OCR, Docker, 容器
-ms.openlocfilehash: 1c9e681e3c02cb65b2a54070cc778051a0e7ac53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53d59822b378a658f8b6c048de1a32db53a795d1
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102432547"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285716"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>安装“读取 OCR”Docker 容器（预览版） 
 
@@ -25,7 +25,7 @@ ms.locfileid: "102432547"
 
 借助容器，你可以在自己的环境中运行计算机视觉 API。 容器非常适合用于满足特定的安全性和数据管理要求。 在本文中，你将了解如何下载、安装和运行计算机视觉容器。
 
-“读取 OCR”容器用于从图像和文档中提取打印文本和手写文本，并支持 JPEG、PNG、BMP、PDF 和 TIFF 文件格式。 有关详细信息，请参阅[“读取 API”文档](concept-recognizing-text.md#read-api)。
+“读取 OCR”容器用于从图像和文档中提取打印文本和手写文本，并支持 JPEG、PNG、BMP、PDF 和 TIFF 文件格式。 有关详细信息，请参阅[读取 API 操作指南](Vision-API-How-to-Topics/call-read-api.md)。
 
 ## <a name="read-32-preview-container"></a>读取 3.2-preview 容器
 
@@ -96,7 +96,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 使用 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令下载容器映像。
 
-### <a name="docker-pull-for-the-read-container"></a>适用于读取容器的 Docker 拉取
+### <a name="docker-pull-for-the-read-ocr-container"></a>适用于读取 OCR 容器的 Docker 拉取
 
 # <a name="version-32-preview"></a>[版本 3.2-preview](#tab/version-3-2)
 
@@ -139,7 +139,7 @@ ApiKey={API_KEY}
 
 此命令：
 
-* 从容器映像运行读取容器。
+* 从容器映像运行读取 OCR 容器。
 * 分配 8 个 CPU 核心和 18 千兆字节 (GB) 的内存。
 * 公开 TCP 端口 5000，并为容器分配伪 TTY。
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。
@@ -156,7 +156,7 @@ ApiKey={API_KEY}
 
 此命令：
 
-* 从容器映像运行读取容器。
+* 从容器映像运行读取 OCR 容器。
 * 分配 8 个 CPU 核心和 16 千兆字节 (GB) 内存。
 * 公开 TCP 端口 5000，并为容器分配伪 TTY。
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。
@@ -392,7 +392,7 @@ ApiKey={API_KEY}
 ---
 
 > [!IMPORTANT]
-> 如果要将多个“读取”容器部署在负载平衡器之后（例如，在 Docker Compose 或 Kubernetes 下面），则必须具有外部缓存。 由于进行处理的容器和 GET 请求容器可能不是同一个容器，因此外部缓存会存储结果并在容器之间共享这些结果。 有关缓存设置的详细信息，请参阅[配置计算机视觉 Docker 容器](./computer-vision-resource-container-config.md)。
+> 如果将多个 Read OCR 容器部署在负载均衡器之后（例如，在 Docker Compose 或 Kubernetes 下面），则必须有外部缓存。 由于进行处理的容器和 GET 请求容器可能不是同一个容器，因此外部缓存会存储结果并在容器之间共享这些结果。 有关缓存设置的详细信息，请参阅[配置计算机视觉 Docker 容器](./computer-vision-resource-container-config.md)。
 
 ### <a name="synchronous-read"></a>同步读取
 
@@ -445,7 +445,7 @@ JSON 响应对象具有与异步版本相同的对象图。 如果你是 JavaScr
 * 计算机视觉为 Docker 提供 Linux 容器，用于封装读取。
 * 可从 Azure 中的“容器预览版”容器注册表下载容器映像。
 * 容器映像在 Docker 中运行。
-* 可以使用 REST API 或 SDK 通过指定容器的主机 URI 来调用读取容器中的操作。
+* 可以使用 REST API 或 SDK 通过指定容器的主机 URI 来调用读取 OCR 容器中的操作。
 * 必须在实例化容器时指定账单信息。
 
 > [!IMPORTANT]
@@ -454,7 +454,7 @@ JSON 响应对象具有与异步版本相同的对象图。 如果你是 JavaScr
 ## <a name="next-steps"></a>后续步骤
 
 * 查看[配置容器](computer-vision-resource-container-config.md)了解配置设置
-* 查看[计算机视觉概述](overview.md)，了解有关识别印刷文本和手写文本的详细信息
-* 有关该容器支持的方法的详细信息，请参阅[计算机视觉 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b)。
+* 查看 [OCR 概述](overview-ocr.md)，了解有关识别印刷文本和手写文本的详细信息
+* 如需详细了解该容器支持的方法，请参阅[读取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b)。
 * 参阅[常见问题解答 (FAQ)](FAQ.md)，以解决与计算机视觉功能相关的问题。
 * 使用更多[认知服务容器](../cognitive-services-container-support.md)

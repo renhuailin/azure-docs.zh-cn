@@ -1,14 +1,14 @@
 ---
 title: 如何保护资源层次结构 - Azure 治理
 description: 了解如何通过层次结构设置（包括设置默认管理组）来保护资源层次结构。
-ms.date: 02/05/2021
+ms.date: 04/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0f0afb5401fc646d26598a211604790af191f156
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 11c20ccf5aff74d810533cd56e0a7b116f2dc64b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99594580"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303638"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>如何保护资源层次结构
 
@@ -50,7 +50,7 @@ ms.locfileid: "99594580"
 
 ### <a name="set-default-management-group-with-rest-api"></a>使用 REST API 设置默认管理组
 
-若要使用 REST API 配置此设置，请调用[层次结构设置](/rest/api/resources/hierarchysettings)终结点。 为此，请使用以下 REST API URI 和正文格式。 将 `{rootMgID}` 替换为根管理组 ID，将 `{defaultGroupID}` 替换为将成为默认管理组的管理组 ID：
+若要使用 REST API 配置此设置，请调用[层次结构设置](/rest/api/managementgroups/hierarchysettings)终结点。 为此，请使用以下 REST API URI 和正文格式。 将 `{rootMgID}` 替换为根管理组 ID，将 `{defaultGroupID}` 替换为将成为默认管理组的管理组 ID：
 
 - REST API URI
 
@@ -91,7 +91,7 @@ ms.locfileid: "99594580"
 
 ### <a name="set-require-authorization-with-rest-api"></a>使用 REST API 设置“需要授权”
 
-若要使用 REST API 配置此设置，请调用[层次结构设置](/rest/api/resources/hierarchysettings)终结点。 为此，请使用以下 REST API URI 和正文格式。 此值是布尔值，因此请为该值提供 true 或 false。 值 true 允许这种保护管理组层次结构的方法：
+若要使用 REST API 配置此设置，请调用[层次结构设置](/rest/api/managementgroups/hierarchysettings)终结点。 为此，请使用以下 REST API URI 和正文格式。 此值是布尔值，因此请为该值提供 true 或 false。 值 true 允许这种保护管理组层次结构的方法：
 
 - REST API URI
 
@@ -110,6 +110,28 @@ ms.locfileid: "99594580"
   ```
 
 若要重新打开该设置，请使用相同终结点，并将 requireAuthorizationForGroupCreation 设置为值 false。
+
+## <a name="powershell-sample"></a>PowerShell 示例
+
+PowerShell 没有用于设置默认管理组“Az”命令，或者设置需要授权，但作为一种解决方法，你可以将 REST API 与下面的 PowerShell 示例结合使用：
+
+```powershell
+$root_management_group_id = "Enter the ID of root management group"
+$default_management_group_id = "Enter the ID of default management group (or use the same ID of the root management group)"
+
+$body = '{
+     "properties": {
+          "defaultManagementGroup": "/providers/Microsoft.Management/managementGroups/' + $default_management_group_id + '",
+          "requireAuthorizationForGroupCreation": true
+     }
+}'
+
+$token = (Get-AzAccessToken).Token
+$headers = @{"Authorization"= "Bearer $token"; "Content-Type"= "application/json"}
+$uri = "https://management.azure.com/providers/Microsoft.Management/managementGroups/$root_management_group_id/settings/default?api-version=2020-02-01"
+
+Invoke-RestMethod -Method PUT -Uri $uri -Headers $headers -Body $body
+```
 
 ## <a name="next-steps"></a>后续步骤
 

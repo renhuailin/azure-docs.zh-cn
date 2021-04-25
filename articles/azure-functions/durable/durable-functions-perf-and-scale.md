@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 120335a7bce83bc3d4771ea64f665d67c7d1079a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d41b06bb0c2b26776f9d9c195c3a713e4dae9f82
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98572793"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626573"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions 中的性能和缩放 (Azure Functions)
 
@@ -40,7 +40,7 @@ Durable Functions 中的每个任务中心都有一个工作项队列。 它是�
 
 ### <a name="control-queues"></a>控制队列
 
-Durable Functions 中的每个任务中心有多个控制队列。 与较为简单的工作项队列相比，控制队列更加复杂。 控制队列用于触发有状态的业务流程协调程序和实体函数。 由于业务流程协调程序和实体函数实例是有状态的单一实例，无法使用竞争性使用者模型在 VM 之间分配负载。 业务流程协调程序和实体消息会在控制队列之间进行负载均衡。 后续部分将会更详细地介绍此行为。
+Durable Functions 中的每个任务中心有多个控制队列。 与较为简单的工作项队列相比，控制队列更加复杂。 控制队列用于触发有状态的业务流程协调程序和实体函数。 由于业务流程协调程序和实体函数实例均为有状态的单一实例，因此，每个业务流程协调程序或实体一次仅由一个辅助角色处理非常重要。 为实现此目的，每个业务流程实例或实体均分配给单个控制队列。 这些控制队列会在辅助角色之间进行负载均衡，以确保每个队列一次仅由一个辅助角色处理。 后续部分将会更详细地介绍此行为。
 
 控制队列包含各种业务流程生命周期消息类型。 示例包括[业务流程协调程序控制消息](durable-functions-instance-management.md)、活动函数响应消息和计时器消息。 在单次轮询中，最多会从一个控制队列中取消 32 条消息的排队。 这些消息包含有效负载数据以及元数据，包括适用的业务流程实例。 如果将多个取消排队的消息用于同一业务流程实例，将会批处理这些消息。
 
@@ -56,7 +56,7 @@ Durable Task 扩展实现了随机指数退让算法，以降低空闲队列轮�
 ### <a name="orchestration-start-delays"></a>业务流程启动延迟
 通过在某个任务中心的控制队列中放置 `ExecutionStarted` 消息来启动业务流程实例。 在某些情况下，你可能会观察到计划的业务流程运行时间与它实际开始运行的时间之间存在数秒延迟。 在此时间间隔内，业务流程实例仍处于 `Pending` 状态。 造成这种延迟的潜在原因有两个：
 
-1. 积压的控制队列：如果此实例的控制队列包含大量消息，则运行时可能需要一段时间才能接收并处理 `ExecutionStarted` 消息。 当业务流程同时处理大量事件时，可能会出现消息积压。 进入控制队列的事件包括业务流程启动事件、活动完成、持久计时器、终止和外部事件。 如果在正常情况下发生此延迟，请考虑创建具有大量分区的新任务中心。 配置更多分区会使运行时创建更多用于分配负载的控制队列。
+1. 积压的控制队列：如果此实例的控制队列包含大量消息，则运行时可能需要一段时间才能接收并处理 `ExecutionStarted` 消息。 当业务流程同时处理大量事件时，可能会出现消息积压。 进入控制队列的事件包括业务流程启动事件、活动完成、持久计时器、终止和外部事件。 如果在正常情况下发生此延迟，请考虑创建具有大量分区的新任务中心。 配置更多分区会使运行时创建更多用于分配负载的控制队列。 每个分区对应 1:1，其中包含一个控制队列，分区数量最多为 16 个。
 
 2. 回退轮询延迟：业务流程延迟的另一个常见原因是之[前所说的控制队列的回退轮询行为](#queue-polling)。 但是，仅当应用横向扩展到两个或更多实例时，才会出现这种延迟。 如果只有一个应用实例，或启动业务流程的应用实例与轮询目标控制队列的是同一个实例，则不会出现队列轮询延迟。 如前所述，可以通过更新 host.json 设置来减少回退轮询延迟。
 
@@ -94,7 +94,12 @@ Durable Task 扩展实现了随机指数退让算法，以降低空闲队列轮�
 
 ## <a name="orchestrator-scale-out"></a>业务流程协调程序横向扩展
 
-活动函数是无状态的，可通过添加 VM 自动进行横向扩展。 另一方面，业务流程协调程序函数和实体已在一个或多个控制队列中分区。 控制队列的数目在 **host.json** 文件中定义。 以下示例 host.json 片段将 `durableTask/storageProvider/partitionCount` 属性（或 Durable Functions 1.x 中的 `durableTask/partitionCount`）设置为 `3`。
+尽管可以通过灵活添加更多的 VM 横向扩展活动功能，但单个协调程序实例和实体仅可拥有单个分区，最大分区数受到`partitionCount`设置限制（`host.json`中）。 
+
+> [!NOTE]
+> 一般而言，业务流程协调程序函数是轻量型的，应该不需要大量的计算能力。 因此，无需创建大量的控制队列分区即可获得业务流程的极佳吞吐量。 大部分繁重工作应在可无限横向扩展的无状态活动函数中完成。
+
+控制队列的数目在 **host.json** 文件中定义。 以下示例 host.json 片段将 `durableTask/storageProvider/partitionCount` 属性（或 Durable Functions 1.x 中的 `durableTask/partitionCount`）设置为 `3`。 请注意，控制队列与分区数量相同。
 
 ### <a name="durable-functions-2x"></a>Durable Functions 2.x
 
@@ -124,11 +129,25 @@ Durable Task 扩展实现了随机指数退让算法，以降低空闲队列轮�
 
 可将任务中心配置为包含 1 到 16 个分区。 如果未指定分区数，则会使用默认分区数 **4**。
 
-横向扩展到多个函数主机实例（通常在不同的 VM 上）时，每个实例会获取某个控制队列上的锁。 这些锁在内部实现为 Blob 存储租约，确保一个业务流程实例或实体每次只在一个主机实例上运行。 如果为任务中心配置了三个控制队列，则最多可在三个 VM 上对业务流程实例和实体进行负载均衡。 可以添加更多的 VM，以提高活动函数执行容量。
+通信量较少时，应用程序将缩放，因此分区将由少量的辅助角色管理。 以下图为例。
+
+![缩放业务流程图](./media/durable-functions-perf-and-scale/scale-progression-1.png)
+
+上图表明协调程序 1 到 6 在分区之间进行负载均衡。 同样，分区（如活动）在辅助角色之间进行负载均衡。 无论启动多少业务流程协调程序，分区均可在辅助角色之间进行负载平衡。
+
+如果在 Azure Functions 消耗或弹性高级计划中运行，或者如果配置了基于负载的自动缩放，则在通信量增加时将分配更多的辅助角色，而分区最终会在所有辅助角色之间进行负载均衡。 如果继续横向扩展，则最终每个分区由单个辅助角色管理。 另一方面，活动将继续在所有辅助角色之间进行负载均衡。 下图显示了这种方法。
+
+![首次横向扩展业务流程图](./media/durable-functions-perf-and-scale/scale-progression-2.png)
+
+在“任意给定时间”，最大并发活动业务流程数的上限等于分配给应用程序的辅助角色数量 _乘以_`maxConcurrentOrchestratorFunctions`的值。 当分区在辅助角色之间充分横向扩展时，此上限会更精确。 完全向外扩展时，由于每个辅助角色只有单个函数主机实例，因此 _活动_ 并发业务流程协调程序实例的最大数目等于分区数 _乘以_ `maxConcurrentOrchestratorFunctions`的值。 下图为充分横向扩展方案，其中添加了更多的协调器，但有些处于非活动状态，以灰色显示。
+
+![第二次横向扩展业务流程图](./media/durable-functions-perf-and-scale/scale-progression-3.png)
+
+横向扩展期间可跨函数主机实例重新分配控制队列锁，确保分区均匀分布。 这些锁在内部以 Blob 存储租约的形式实现，确保一个业务流程实例或实体每次仅在一个主机实例上运行。 如果为任务中心配置了三个分区（三个控制队列），则可以在所有三个包含租约的主机实例上对业务流程实例和实体进行负载均衡。 可以添加更多的 VM，以提高活动函数执行容量。
 
 下图演示了 Azure Functions 主机如何与横向扩展环境中的存储实体交互。
 
-![缩放示意图](./media/durable-functions-perf-and-scale/scale-diagram.png)
+![缩放示意图](./media/durable-functions-perf-and-scale/scale-interactions-diagram.png)
 
 如上图所示，所有 VM 都会争用工作项队列中的消息。 但是，只有三个 VM 可从控制队列获取消息，每个 VM 锁定了单个控制队列。
 

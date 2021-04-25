@@ -14,10 +14,10 @@ ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: 0435b99525c34eb72d7cc5315ccb4359859cd528
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90033041"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>在组织的网络上注册个人设备
@@ -31,7 +31,7 @@ ms.locfileid: "90033041"
 
 - Windows 在组织的网络上注册设备。
 
-- 根据组织的选择，可能会要求你通过 [双重身份验证](multi-factor-authentication-end-user-first-time.md) 或 [安全信息](./security-info-setup-signin.md)设置双重验证。
+- （可选）根据组织的选择，你可能需要通过[双重身份验证](multi-factor-authentication-end-user-first-time.md)或[安全信息](./security-info-setup-signin.md)设置双重验证。
 
 - （可选）根据组织的选择，可能会自动注册移动设备管理，如 Microsoft Intune。 有关在 Microsoft Intune 中注册的详细信息，请参阅[在 Intune 中注册设备](/intune-user-help/enroll-your-device-in-intune-all)。
 

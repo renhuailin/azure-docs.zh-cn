@@ -1,20 +1,20 @@
 ---
-title: 启用了 Azure Arc 的服务器的 VM 扩展管理
-description: 启用 Azure Arc 的服务器可以管理虚拟机扩展的部署，这些扩展提供部署后配置和自动化任务和非 Azure Vm。
-ms.date: 03/01/2021
+title: 通过已启用 Azure Arc 的服务器管理虚拟机扩展
+description: 已启用 Azure Arc 的服务器可以管理虚拟机扩展的部署，这些扩展向非 Azure VM 提供部署后配置和自动化任务。
+ms.date: 03/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 039c52ccbee03636da0f5acc0fc5844be9b646f5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 9af2700f036352188e646188485285482ee70c69
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687900"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799575"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>通过已启用 Azure Arc 的服务器进行虚拟机扩展管理
 
-虚拟机 (VM) 扩展是小型应用程序，用于在 Azure Vm 上提供部署后配置和自动化任务。 例如，如果虚拟机要求安装软件、防病毒保护或运行其中的脚本，则可以使用 VM 扩展。
+虚拟机 (VM) 扩展是小型应用程序，可在 Azure VM 上提供部署后配置和自动化任务。 例如，如果虚拟机需要安装软件、进行防病毒保护或运行脚本，便可以使用 VM 扩展。
 
-使用启用了 azure Arc 的服务器，可以将 Azure VM 扩展部署到非 Azure Windows 和 Linux Vm，从而简化混合计算机在其生命周期中的管理。 可以在混合计算机上或通过启用了 Arc 的服务器管理的服务器上使用以下方法来管理 VM 扩展：
+使用已启用 Azure Arc 的服务器，可以将 Azure VM 扩展部署到非 Azure Windows 和 Linux VM，从而简化在混合计算机生命周期内对其进行的管理。 在由已启用 Arc 的服务器所管理的混合计算机或服务器上，可以使用以下方法来管理 VM 扩展：
 
 - [Azure 门户](manage-vm-extensions-portal.md)
 - [Azure CLI](manage-vm-extensions-cli.md)
@@ -23,47 +23,50 @@ ms.locfileid: "101687900"
 
 ## <a name="key-benefits"></a>主要优点
 
-支持 Azure Arc 的服务器 VM 扩展支持提供以下主要优势：
+已启用 Azure Arc 的服务器 VM 扩展支持提供了以下主要优势：
 
-- 通过启用 Log Analytics 代理 VM 扩展，收集用于通过日志进行分析的日志数据 [Azure Monitor](../../azure-monitor/logs/data-platform-logs.md) 。 这对于跨不同类型的源中的数据进行复杂分析非常有用。
+- 通过启用 Log Analytics 代理 VM 扩展，使用 [Azure Monitor Logs](../../azure-monitor/logs/data-platform-logs.md) 来收集日志数据进行分析。 当在不同类型的源的数据中进行复杂分析时，这非常有用。
 
-- 在 [用于 VM 的 Azure Monitor](../../azure-monitor/vm/vminsights-overview.md)中，会分析 Windows 和 Linux vm 的性能，并监视其进程和其他资源和外部进程的依赖项。 这是通过同时启用 Log Analytics 代理和依赖项代理 VM 扩展来实现的。
+- 使用[用于 VM 的 Azure Monitor](../../azure-monitor/vm/vminsights-overview.md) 分析 Windows 和 Linux VM 的性能和运行状况，并监视它们的进程及其对其他资源和外部进程的依赖性。 这是通过同时启用 Log Analytics 代理和 Dependency 代理 VM 扩展来实现的。
 
-- 使用自定义脚本扩展在混合连接的计算机上下载和执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置或管理任务。
+- 使用自定义脚本扩展在连接的混合计算机上下载和执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置或管理任务。
 
-- 自动刷新 [Azure Key Vault](../../key-vault/general/overview.md)中存储的证书。
+- 自动刷新 [Azure Key Vault](../../key-vault/general/overview.md) 中存储的证书。
 
 ## <a name="availability"></a>可用性
 
-VM 扩展功能仅在 [受支持区域](overview.md#supported-regions)的列表中提供。 确保你在其中一个区域中载入计算机。
+VM 扩展功能仅在[受支持区域](overview.md#supported-regions)列表所列的区域中提供。 确保在其中一个区域中加入计算机。
 
-## <a name="extensions"></a>Extensions
+## <a name="extensions"></a>扩展
 
 在此版本中，我们在 Windows 和 Linux 计算机上支持以下 VM 扩展。
 
-若要了解有关 Azure 连接的计算机代理包以及有关扩展代理组件的详细信息，请参阅 [代理概述](agent-overview.md#agent-component-details)。
+若要了解有关 Azure Connected Machine 代理包以及 Extension 代理组件的详细信息，请参阅[代理概述](agent-overview.md#agent-component-details)。
+
+> [!NOTE]
+> 对于已启用 Arc 的服务器删除了针对 DSC VM 扩展的最近支持。 另外，我们建议使用自定义脚本扩展来管理服务器或计算机的部署后配置。
 
 ### <a name="windows-extensions"></a>Windows 扩展
 
-|分机 |Publisher |类型 |其他信息 |
+|扩展名 |Publisher |类型 |其他信息 |
 |----------|----------|-----|-----------------------|
-|Azure Defender 集成漏洞扫描程序 |Qualys |WindowsAgent.AzureSecurityCenter |[Azure 和混合计算机的 azure Defender 集成漏洞评估解决方案](../../security-center/deploy-vulnerability-assessment-vm.md)|
+|Azure Defender 集成漏洞扫描程序 |Qualys |WindowsAgent.AzureSecurityCenter |[适用于 Azure 和混合计算机的 Azure Defender 集成式漏洞评估解决方案](../../security-center/deploy-vulnerability-assessment-vm.md)|
 |自定义脚本扩展 |Microsoft.Compute | CustomScriptExtension |[Windows 自定义脚本扩展](../../virtual-machines/extensions/custom-script-windows.md)|
 |Log Analytics 代理 |Microsoft.EnterpriseCloud.Monitoring |MicrosoftMonitoringAgent |[适用于 Windows 的 Log Analytics VM 扩展](../../virtual-machines/extensions/oms-windows.md)|
-|用于 VM 的 Azure Monitor (insights)  |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentWindows | [适用于 Windows 的依赖关系代理虚拟机扩展](../../virtual-machines/extensions/agent-dependency-windows.md)|
-|Azure Key Vault 证书同步 | 。保管库 |KeyVaultForWindows | [适用于 Windows 的 Key Vault 虚拟机扩展](../../virtual-machines/extensions/key-vault-windows.md) |
-|Azure Monitor 代理 |Microsoft Azure。监视器 |AzureMonitorWindowsAgent |[ (预览版安装 Azure Monitor 代理) ](../../azure-monitor/agents/azure-monitor-agent-install.md) |
+|用于 VM 的 Azure Monitor（见解） |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentWindows | [适用于 Windows 的 Dependency 代理虚拟机扩展](../../virtual-machines/extensions/agent-dependency-windows.md)|
+|Azure Key Vault 证书同步 | Microsoft.Azure.Key.Vault |KeyVaultForWindows | [适用于 Windows 的 Key Vault 虚拟机扩展](../../virtual-machines/extensions/key-vault-windows.md) |
+|Azure Monitor 代理 |Microsoft.Azure.Monitor |AzureMonitorWindowsAgent |[安装 Azure Monitor 代理（预览版）](../../azure-monitor/agents/azure-monitor-agent-install.md) |
 
 ### <a name="linux-extensions"></a>Linux 扩展
 
-|分机 |Publisher |类型 |其他信息 |
+|扩展名 |Publisher |类型 |其他信息 |
 |----------|----------|-----|-----------------------|
-|Azure Defender 集成漏洞扫描程序 |Qualys |LinuxAgent.AzureSecurityCenter |[Azure 和混合计算机的 azure Defender 集成漏洞评估解决方案](../../security-center/deploy-vulnerability-assessment-vm.md)|
-|自定义脚本扩展 |Microsoft Azure 扩展 |CustomScript |[Linux 自定义脚本扩展版本2](../../virtual-machines/extensions/custom-script-linux.md) |
+|Azure Defender 集成漏洞扫描程序 |Qualys |LinuxAgent.AzureSecurityCenter |[适用于 Azure 和混合计算机的 Azure Defender 集成式漏洞评估解决方案](../../security-center/deploy-vulnerability-assessment-vm.md)|
+|自定义脚本扩展 |Microsoft.Azure.Extensions |CustomScript |[Linux 自定义脚本扩展版本 2](../../virtual-machines/extensions/custom-script-linux.md) |
 |Log Analytics 代理 |Microsoft.EnterpriseCloud.Monitoring |OmsAgentForLinux |[适用于 Linux 的 Log Analytics VM 扩展](../../virtual-machines/extensions/oms-linux.md) |
-|用于 VM 的 Azure Monitor (insights)  |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentLinux |[适用于 Linux 的依赖关系代理虚拟机扩展](../../virtual-machines/extensions/agent-dependency-linux.md) |
-|Azure Key Vault 证书同步 | 。保管库 |KeyVaultForLinux | [适用于 Linux 的 Key Vault 虚拟机扩展](../../virtual-machines/extensions/key-vault-linux.md) |
-|Azure Monitor 代理 |Microsoft Azure。监视器 |AzureMonitorLinuxAgent |[ (预览版安装 Azure Monitor 代理) ](../../azure-monitor/agents/azure-monitor-agent-install.md) |
+|用于 VM 的 Azure Monitor（见解） |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentLinux |[适用于 Linux 的 Dependency 代理虚拟机扩展](../../virtual-machines/extensions/agent-dependency-linux.md) |
+|Azure Key Vault 证书同步 | Microsoft.Azure.Key.Vault |KeyVaultForLinux | [适用于 Linux 的 Key Vault 虚拟机扩展](../../virtual-machines/extensions/key-vault-linux.md) |
+|Azure Monitor 代理 |Microsoft.Azure.Monitor |AzureMonitorLinuxAgent |[安装 Azure Monitor 代理（预览版）](../../azure-monitor/agents/azure-monitor-agent-install.md) |
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -72,23 +75,23 @@ VM 扩展功能仅在 [受支持区域](overview.md#supported-regions)的列表�
 - Microsoft.HybridCompute
 - Microsoft.GuestConfiguration
 
-如果尚未注册，请按照 [注册 Azure 资源提供程序](agent-overview.md#register-azure-resource-providers)中的步骤进行操作。
+如果尚未注册，请按照[注册 Azure 资源提供程序](agent-overview.md#register-azure-resource-providers)中的步骤进行操作。
 
-务必查看上表中引用的每个 VM 扩展的文档，以了解它是否有任何网络或系统要求。 这可以帮助你避免在依赖于 VM 扩展的 Azure 服务或功能中遇到任何连接问题。
+务必查看上表中引用的每个 VM 扩展的文档，以了解它是否有任何网络或系统要求。 这可以帮助你避免在 Azure 服务或者在依赖于该 VM 扩展的功能中遭遇任何连接问题。
 
 ### <a name="log-analytics-vm-extension"></a>Log Analytics VM 扩展
 
 适用于 Linux 的 Log Analytics 代理 VM 扩展需要在目标计算机上安装 Python 2.x。
 
-### <a name="azure-key-vault-vm-extension-preview"></a>Azure Key Vault VM 扩展 (预览版) 
+### <a name="azure-key-vault-vm-extension-preview"></a>Azure Key Vault VM 扩展（预览版）
 
-Key Vault VM 扩展 (预览版) 不支持以下 Linux 操作系统：
+Key Vault VM 扩展（预览版）不支持以下 Linux 操作系统：
 
 - CentOS Linux 7 (x64)
 - Red Hat Enterprise Linux (RHEL) 7 (x64)
 - Amazon Linux 2 (x64)
 
-仅支持使用以下内容来部署 Key Vault VM 扩展 (预览版) ：
+仅支持使用以下内容来部署 Key Vault VM 扩展（预览版）：
 
 - Azure CLI
 - Azure PowerShell
@@ -96,18 +99,18 @@ Key Vault VM 扩展 (预览版) 不支持以下 Linux 操作系统：
 
 在部署扩展之前，需要完成以下操作：
 
-1.  (自签名或导入) [创建保管库和证书](../../key-vault/certificates/quick-create-portal.md)。
+1. [创建保管库和证书](../../key-vault/certificates/quick-create-portal.md)（自签名或导入）。
 
-2. 向启用了 Azure Arc 的服务器授予对证书机密的访问权限。 如果使用的是 [RBAC 预览](../../key-vault/general/rbac-guide.md)，请搜索 Azure Arc 资源的名称，并为其分配 **Key Vault 机密用户 (预览版)** 角色。 如果你使用 [Key Vault 访问策略](../../key-vault/general/assign-access-policy-portal.md)，请为 Azure Arc 资源的系统分配的标识分配机密 **获取** 权限。
+2. 向已启用 Azure Arc 的服务器授予对证书机密的访问权限。 如果使用 [RBAC 预览版](../../key-vault/general/rbac-guide.md)，请搜索 Azure Arc 资源的名称，并为其分配“Key Vault 机密用户(预览)”角色。 如果使用 [Key Vault 访问策略](../../key-vault/general/assign-access-policy-portal.md)，请为 Azure Arc 资源系统分配的标识分配机密“Get”权限。
 
 ### <a name="connected-machine-agent"></a>Connected Machine 代理
 
-验证计算机是否与支持 Azure 连接的计算机代理的 Windows 和 Linux 操作系统的 [支持版本](agent-overview.md#supported-operating-systems) 相匹配。
+验证计算机是否与适用于 Azure Connected Machine 代理的 Windows 和 Linux 操作系统的[受支持版本](agent-overview.md#supported-operating-systems)相匹配。
 
-Windows 和 Linux 上此功能支持的已连接计算机代理的最低版本为1.0 版。
+Windows 和 Linux 上此功能支持的 Connected Machine 代理的最低版本为 1.0 版。
 
-若要将计算机升级到所需的代理版本，请参阅 [升级代理](manage-agent.md#upgrading-agent)。
+若要将计算机升级到所需的代理版本，请参阅[升级代理](manage-agent.md#upgrading-agent)。
 
 ## <a name="next-steps"></a>后续步骤
 
-你可以使用 [Azure CLI](manage-vm-extensions-cli.md)、 [Azure PowerShell](manage-vm-extensions-powershell.md)、 [Azure 门户](manage-vm-extensions-portal.md)或 [Azure 资源管理器模板](manage-vm-extensions-template.md)来部署、管理和删除 VM 扩展。
+可以使用 [Azure CLI](manage-vm-extensions-cli.md)、[Azure PowerShell](manage-vm-extensions-powershell.md) 在 [Azure 门户](manage-vm-extensions-portal.md)或 [Azure 资源管理器模板](manage-vm-extensions-template.md)中部署、管理和删除 VM 扩展。

@@ -2,14 +2,14 @@
 title: 锁定资源以防止更改
 description: 通过对所有用户和角色应用锁，来防止用户更新或删除 Azure 资源。
 ms.topic: conceptual
-ms.date: 03/09/2021
+ms.date: 04/07/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6d989f2077618ce80382b38acc651553cb331d5a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1cc96a855c2bfe79bbf5876f0476c016d36ca9a4
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932754"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030060"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>锁定资源，以防止意外更改
 
@@ -34,11 +34,13 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 
 * 存储帐户上的只读锁阻止用户列出帐户密钥。 Azure 存储[列出密钥](/rest/api/storagerp/storageaccounts/listkeys)操作通过 POST 请求进行处理，以保护对帐户密钥的访问，从而提供对存储帐户中数据的完全访问。 如果为存储帐户配置了只读锁，没有帐户密钥的用户就必须使用 Azure AD 凭据来访问 blob 或队列数据。 只读锁还阻止分配存储帐户或数据容器（blob 容器或队列）范围内的 Azure RBAC 角色。
 
-* 存储帐户上的无法删除锁不会阻止删除或修改该帐户中的数据。 此类型的锁仅保护存储帐户本身不被删除，而不会保护存储帐户中的 Blob、队列、表或文件数据。 
+* 存储帐户上的无法删除锁不会阻止删除或修改该帐户中的数据。 此类型的锁仅保护存储帐户本身不被删除，而不会保护存储帐户中的 blob、队列、表或文件数据。 
 
-* 存储帐户上的只读锁不会阻止删除或修改该帐户中的数据。 此类型的锁仅保护存储帐户本身不被删除或修改，而不会保护存储帐户中的 Blob、队列、表或文件数据。 
+* 存储帐户上的只读锁不会阻止删除或修改该帐户中的数据。 此类型的锁仅保护存储帐户本身不被删除或修改，而不会保护存储帐户中的 blob、队列、表或文件数据。 
 
 * **应用服务** 资源上的只读锁将阻止 Visual Studio 服务器资源管理器显示资源的文件，因为该交互需要写入访问权限。
+
+* 包含应用服务计划的资源组上的只读锁会阻止你[纵向或横向扩展计划](../../app-service/manage-scale-up.md) 。
 
 * 包含 **虚拟机** 的 **资源组** 上的只读锁将阻止所有用户启动或重启该虚拟机。 这些操作需要 POST 请求。
 
@@ -324,7 +326,7 @@ az lock delete --ids $lockid
 
 ### <a name="rest-api"></a>REST API
 
-可以使用 [管理锁的 REST API](/rest/api/resources/managementlocks/managementlocks)锁定已部署的资源。 REST API 可用于创建和删除锁，并且检索有关现有锁的信息。
+可以使用 [管理锁的 REST API](/rest/api/resources/managementlocks)锁定已部署的资源。 REST API 可用于创建和删除锁，并且检索有关现有锁的信息。
 
 若要创建一个锁，请运行：
 

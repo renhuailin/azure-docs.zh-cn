@@ -2,13 +2,13 @@
 title: 创建参数文件
 description: 创建用于在 Azure 资源管理器模板部署过程中传入值的参数文件
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: 2b6d942b21594fa608127bb8f403e72295671005
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: d557bcdfe246dc2c9bfccde17b7f9590c2686358
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89276637"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312036"
 ---
 # <a name="create-resource-manager-parameter-file"></a>创建资源管理器参数文件
 
@@ -210,6 +210,8 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
 
 > [!NOTE]
 > 不能在门户中将参数文件与自定义模板边栏选项卡一起使用。
+
+如果要使用 [Visual Studio 中的 Azure 资源组项目](create-visual-studio-deployment-project.md)，请确保将参数文件的“生成操作”设置为“内容” 。
 
 ## <a name="file-name"></a>文件名
 

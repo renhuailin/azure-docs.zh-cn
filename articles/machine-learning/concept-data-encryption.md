@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 11/09/2020
-ms.openlocfilehash: 13d5c02fbb4ae06c7a5279ab7c5d3af90c263f71
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 31b2a993267e6e8abbf7184d745889b74e587c50
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521061"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311764"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>使用 Azure 机器学习进行数据加密
 
@@ -37,7 +37,7 @@ Azure 机器学习在训练模型和执行推理时使用各种 Azure 数据存�
 * 在不同运行之间清理本地暂存磁盘
 * 使用密钥保管库，将存储帐户、容器注册表和 SSH 帐户的凭据从执行层安全地传递到计算群集
 * 启用 IP 筛选，以确保基础批处理池不会由除 AzureMachineLearningService 以外的任何外部服务调用
-* 请注意，HBI 工作区不支持计算实例
+* HBI 工作区不支持计算实例
 
 ### <a name="azure-blob-storage"></a>Azure Blob 存储
 

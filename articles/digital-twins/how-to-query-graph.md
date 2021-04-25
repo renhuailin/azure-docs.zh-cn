@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 3fd504ec36abae3f00cd2a7eb4e1f7b639be0cea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d15e2b8bfcddfd1f554ab2a27083fe5256e9e2b
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462671"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226322"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查询 Azure 数字孪生孪生图
 
@@ -94,19 +94,14 @@ ms.locfileid: "103462671"
 
 当基于数字孪生体的关系进行查询时，Azure 数字孪生查询语言有一个特殊的语法。
 
-关系将被拉取到 `FROM` 子句中的查询范围内。 与“经典”SQL 类型语言的重要区别如下：此 `FROM` 子句中的每个表达式均不是表；确切地说，`FROM` 子句表示跨实体关系遍历，并且是使用 `JOIN` 的 Azure 数字孪生版本编写的。
+关系将被拉取到 `FROM` 子句中的查询范围内。 与“经典”SQL 类型语言的区别如下：此 `FROM` 子句中的每个表达式均不是表；确切地说，`FROM` 子句表示跨实体关系遍历。 为了跨关系遍历，Azure 数字孪生使用自定义版本的 `JOIN`。
 
-回想一下，由于 Azure 数字孪生[模型](concepts-models.md)功能，关系并不独立于孪生存在。 这意味着 Azure 数字孪生查询语言的 `JOIN` 与常规 SQL `JOIN` 略有不同，因为此处的关系不能独立查询，必须绑定到孪生体。
-要弥补这种差异，可在 `JOIN` 子句中使用关键字 `RELATED` 来引用孪生体的一组关系。
+回想一下，由于 Azure 数字孪生[模型](concepts-models.md)功能，关系并不独立于孪生存在。 这表示此处的关系不能独立查询，必须绑定到孪生体。
+为处理这种情况，在 `JOIN` 子句中使用关键字 `RELATED`，以从孪生体集合中拉取某种类型的关系集。 然后，该查询必须在 `WHERE` 子句中筛选要在关系查询中使用哪些特定孪生体（使用孪生体的 `$dtId` 值）。
 
-下节提供了多个示例进行介绍。
+下节提供了示例进行介绍。
 
-> [!TIP]
-> 从概念上讲，此功能模仿以文档为中心的 CosmosDB 功能，可以对文档内的子对象执行 `JOIN`。 CosmosDB 使用 `IN` 关键字来指示 `JOIN` 用于迭代当前上下文文档中的数组元素。
-
-### <a name="relationship-based-query-examples"></a>基于关系的查询示例
-
-要获取包含关系的数据集，请使用单个 `FROM` 语句，然后使用多个 `JOIN` 语句，其中 `JOIN` 语句表示与先前 `FROM` 或 `JOIN` 语句的结果相关的关系。
+### <a name="basic-relationship-query"></a>基本关系查询
 
 下方是基于示例关系的查询。 此代码片段选择 ID 属性为“ABC”的所有数字孪生体，以及所有通过“包含”关系与这些数字孪生体相关的数字孪生体 。
 
@@ -114,6 +109,18 @@ ms.locfileid: "103462671"
 
 > [!NOTE]
 > 开发人员无需将此 `JOIN` 与 `WHERE` 子句中的键值相关联（也不需要使用 `JOIN` 定义以内联方式指定键值）。 此关联由系统自动计算，因为关系属性本身标识目标实体。
+
+### <a name="query-by-the-source-or-target-of-a-relationship"></a>按关系的源或目标进行查询
+
+可使用关系查询结构来标识作为关系的源或目标的数字孪生体。
+
+例如，你可从源孪生体开始，然后按照其关系查找关系的目标孪生体。 下面是一个查询示例，该查询查找来自孪生体 source-twin 的源关系的目标孪生体 。
+
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationshipSource":::
+
+也可以从关系的目标开始，追溯关系以查找源孪生体。 下面是一个查询示例，该查询查找孪生体 target-twin 的源关系的源孪生体 。
+
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationshipTarget":::
 
 ### <a name="query-the-properties-of-a-relationship"></a>查询关系的属性
 
@@ -128,7 +135,9 @@ ms.locfileid: "103462671"
 
 ### <a name="query-with-multiple-joins"></a>使用多个 JOIN 查询
 
-单个查询最多支持五个 `JOIN`。 这使你可以一次遍历多个级别的关系。
+单个查询最多支持五个 `JOIN`。 这使你可以一次遍历多个级别的关系。 
+
+要查询多种级别的关系，请使用单个 `FROM` 语句，然后使用多个 `JOIN` 语句，其中 `JOIN` 语句表示与先前 `FROM` 或 `JOIN` 语句的结果相关的关系。
 
 以下示例说明多联接查询如何获取房间 1 和 2 中照明配电盘所包含的所有灯泡数。
 

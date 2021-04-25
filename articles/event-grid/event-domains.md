@@ -2,13 +2,13 @@
 title: Azure 事件网格中的事件域
 description: 本文介绍如何使用事件域来管理各种业务组织、客户或应用程序的自定义事件流。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 46a50a8ecc50bd1b80efcba41228564df1c36c9f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/13/2021
+ms.openlocfilehash: 32c06ac55f667ec9807c7952127c2cf0f0384024
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102198641"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374703"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>了解用于管理事件网格主题的事件域
 
@@ -43,6 +43,9 @@ ms.locfileid: "102198641"
 ## <a name="subscribing-to-topics"></a>订阅主题
 
 订阅事件域中主题的事件与[创建自定义主题的事件订阅](./custom-event-quickstart.md)或订阅 Azure 服务中的事件相同。
+
+> [!IMPORTANT]
+> 域主题在事件网格中被视为自动托管资源。 可以在域主题范围内创建事件订阅，而无需创建域主题。 在这种情况下，事件网格会代表你自动创建域主题。 当然，你仍然可以选择手动创建域主题。 通过此行为，你可以在处理大量域主题时少担心一个资源。 删除域主题的最后一个订阅时，还会删除域主题，无论该域主题是手动创建还是自动创建的。 
 
 ### <a name="domain-scope-subscriptions"></a>域范围订阅
 
@@ -94,7 +97,7 @@ ms.locfileid: "102198641"
 - 50 个域范围订阅 
 - 每秒 5,000 个事件的引入速率（引入到域）
 
-如果这些限制不适合你，请通过开具支持票证或向 [askgrid@microsoft.com](mailto:askgrid@microsoft.com) 发送电子邮件来联系产品团队。 
+如果这些限制不适合你，请开具支持票证或向 [askgrid@microsoft.com](mailto:askgrid@microsoft.com) 发送电子邮件。 
 
 ## <a name="pricing"></a>定价
 事件域将使用与事件网格中所有其他功能相同的[操作定价](https://azure.microsoft.com/pricing/details/event-grid/)。

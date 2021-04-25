@@ -1,22 +1,22 @@
 ---
-title: 收集 Spring Cloud Resilience4J 断路器指标
-description: 如何收集 Spring Cloud Resilience4J 断路器指标。
+title: 通过 Micrometer 收集 Spring Cloud Resilience4J 断路器指标
+description: 如何在 Azure Spring Cloud 中通过 Micrometer 收集 Spring Cloud Resilience4J 断路器指标。
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9fc8ccc5ba21f02885b2002d5040051baac92068
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0b24e8e07b4038d6def9945b7c347bb81ae5378b
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877194"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258174"
 ---
-# <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-preview"></a>收集 Spring Cloud Resilience4J 断路器指标（预览版）
+# <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-with-micrometer-preview"></a>通过 Micrometer 收集 Spring Cloud Resilience4J 断路器指标（预览版）
 
-本文档介绍了如何通过 Application Insights java 进程内代理收集 Spring Cloud Resilience4j 断路器指标。  利用此功能，你可以通过 Application Insights 监视 resilience4j 断路器的指标。
+本文档介绍了如何通过 Application Insights java 进程内代理收集 Spring Cloud Resilience4j 断路器指标。 利用此功能，你可以使用 Micrometer 通过 Application Insights 监视 resilience4j 断路器的指标。
 
 我们使用 [spring-cloud-circuit-breaker-demo](https://github.com/spring-cloud-samples/spring-cloud-circuitbreaker-demo) 来展示其工作原理。
 

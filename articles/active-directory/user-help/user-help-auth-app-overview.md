@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
 ms.openlocfilehash: 7f4c09a32794e13b0e0041ee916401b714d8509e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90055225"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>什么是 Microsoft Authenticator 应用？
@@ -40,18 +40,18 @@ Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登�
 | 术语|说明|
 | ----|-----------|
 | 双重验证 | 要求专门使用两个验证信息片段（例如密码和 PIN）的验证过程。 Microsoft Authenticator 应用支持标准双重验证和无密码登录。 |
-| 多重身份验证 (MFA) | 所有双重验证都属于多重身份验证，要求根据组织的需求至少使用两个验证信息片段。  |
-| Microsoft 帐户（也称 MSA） | 你可以创建自己的个人帐户，以便访问面向使用者的 Microsoft 产品和云服务（例如 Outlook、OneDrive、Xbox LIVE 或 Microsoft 365）。 Microsoft 帐户在由 Microsoft 运行的 Microsoft 使用者标识帐户系统中创建和存储。 |
-| 工作或学校帐户 | 你的组织将创建你的工作或学校帐户 (如 alain@contoso.com) ，使你能够访问内部和可能受限的资源，如 Microsoft Azure、Windows Intune 和 Microsoft 365。 |
+| 多重身份验证 (MFA) | 所有双重验证都属于多重身份验证，要求根据组织的需求至少使用两个验证信息片段。 |
+| Microsoft 帐户（也称 MSA） | 创建自己的个人帐户，用于访问面向使用者的 Microsoft 产品和云服务，例如 Outlook、OneDrive、Xbox LIVE 或 Microsoft 365。 Microsoft 帐户在由 Microsoft 运行的 Microsoft 使用者标识帐户系统中创建和存储。 |
+| 工作或学校帐户 | 组织会为你创建工作或学校帐户（例如 alain@contoso.com），使你能够访问内部的和可能受限的资源，例如 Microsoft Azure、Windows Intune 和 Microsoft 365。 |
 | 验证码 | 在每个添加的帐户下显示在验证器应用中的六位代码。 验证码每 30 秒更改一次，以防有人多次使用一个代码。 这也称为一次性密码 (OTP)。 |
 
 ## <a name="how-two-factor-verification-works-with-the-app"></a>如何在应用中使用双重验证
 
 Microsoft Authenticator 应用通过两种方式执行双重验证：
 
-- **通知。** 在要登录到的设备中，键入工作或学校帐户或 Microsoft 个人帐户的用户名和密码，然后，Microsoft Authenticator 应用会发送一条通知，要求你**批准登录**。 如果你认可这次登录，请选择“批准”。  否则请选择“拒绝”  。 如果选择“拒绝”，则还可以将请求标记为欺诈。 
+- **通知。** 在要登录到的设备中，键入工作或学校帐户或 Microsoft 个人帐户的用户名和密码，然后，Microsoft Authenticator 应用会发送一条通知，要求你 **批准登录**。 如果你认可这次登录，请选择“批准”。 否则请选择“拒绝”。 如果选择“拒绝”，则还可以将请求标记为欺诈。
 
-- **验证码。** 在要登录到的设备中，键入工作或学校帐户或 Microsoft 个人帐户的用户名和密码，然后复制 Microsoft Authenticator 应用的“帐户”屏幕中显示的关联验证码。  验证码也称为一次性密码 (OTP) 身份验证。
+- **验证码。** 在要登录到的设备中，键入工作或学校帐户或 Microsoft 个人帐户的用户名和密码，然后复制 Microsoft Authenticator 应用的“帐户”屏幕中显示的关联验证码。 验证码也称为一次性密码 (OTP) 身份验证。
 
 - **无密码登录。** 在要登录到的设备中，键入工作或学校帐户或 Microsoft 个人帐户的用户名，然后在移动设备上使用指纹、人脸或 PIN 验证自己的身份。 对于这种方法，无需输入密码。
 
@@ -67,7 +67,7 @@ Microsoft Authenticator 应用通过两种方式执行双重验证：
 
 - **Microsoft 个人帐户。** 可以选择为 Microsoft 个人帐户（例如 alain@outlook.com）设置双重验证。 有关添加个人 Microsoft 帐户的详细信息，请参阅[添加个人帐户](user-help-auth-app-add-personal-ms-account.md)。
 
-- **非 Microsoft 帐户。** 可以选择为非 Microsoft 帐户（例如 alain@gmail.com）设置双重验证。 非 Microsoft 帐户可能不使用“两重验证”这一术语，但你应该可以在“安全性”或“登录”设置中找到类似功能。   Microsoft Authenticator 应用适用于支持 TOTP 标准的任何帐户。 有关添加非 Microsoft 帐户的详细信息，请参阅[添加非 Microsoft 帐户](user-help-auth-app-add-non-ms-account.md)。
+- **非 Microsoft 帐户。** 可以选择为非 Microsoft 帐户（例如 alain@gmail.com）设置双重验证。 非 Microsoft 帐户可能不使用“两重验证”这一术语，但你应该可以在“安全性”或“登录”设置中找到类似功能。 Microsoft Authenticator 应用适用于支持 TOTP 标准的任何帐户。 有关添加非 Microsoft 帐户的详细信息，请参阅[添加非 Microsoft 帐户](user-help-auth-app-add-non-ms-account.md)。
 
 ## <a name="in-this-section"></a>在本节中
 

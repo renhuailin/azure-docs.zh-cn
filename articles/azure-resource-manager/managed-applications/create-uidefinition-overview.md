@@ -3,14 +3,14 @@ title: 用于门户窗格的 CreateUiDefinition.json 文件
 description: 介绍如何为 Azure 门户创建用户界面定义。 定义 Azure 托管应用程序时使用。
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 03/26/2021
 ms.author: tomfitz
-ms.openlocfilehash: 327fa1d7eb73d8e65bb4f81c1dff0fe2bec2913b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 586237c6dd909312780163cf316220d2f3fddd8c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89319555"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641656"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>适合 Azure 托管应用程序的创建体验的 CreateUiDefinition.json
 
@@ -63,25 +63,29 @@ parameters 属性的架构取决于所指定的 handler 和 version 的组合。
             "constraints": {
                 "validations": [
                     {
-                        "isValid": "[expression for checking]",
-                        "message": "Please select a valid subscription."
+                        "isValid": "[not(contains(subscription().displayName, 'Test'))]",
+                        "message": "Can't use test subscription."
                     },
                     {
-                        "permission": "<Resource Provider>/<Action>",
-                        "message": "Must have correct permission to complete this step."
+                        "permission": "Microsoft.Compute/virtualmachines/write",
+                        "message": "Must have write permission for the virtual machine."
+                    },
+                    {
+                        "permission": "Microsoft.Compute/virtualMachines/extensions/write",
+                        "message": "Must have write permission for the extension."
                     }
                 ]
             },
             "resourceProviders": [
-                "<Resource Provider>"
+                "Microsoft.Compute"
             ]
         },
         "resourceGroup": {
             "constraints": {
                 "validations": [
                     {
-                        "isValid": "[expression for checking]",
-                        "message": "Please select a valid resource group."
+                        "isValid": "[not(contains(resourceGroup().name, 'test'))]",
+                        "message": "Resource group name can't contain 'test'."
                     }
                 ]
             },
@@ -103,11 +107,13 @@ parameters 属性的架构取决于所指定的 handler 和 version 的组合。
 },
 ```
 
+对于 `isValid` 属性，请编写解析为 true 或 false 的表达式。 对于 `permission` 属性，请指定一个[资源提供程序操作](../../role-based-access-control/resource-provider-operations.md)。
+
 ### <a name="wizard"></a>向导
 
 `isWizard` 属性使你能够在继续下一步之前要求对每个步骤进行成功的验证。 如果未指定 `isWizard` 属性，则默认值为 **false**，不需要逐步验证。
 
-启用了 `isWizard` 时，将设置为 **true**，“基本信息”选项卡可用，所有其他选项卡被禁用。 选择“下一步”按钮时，该选项卡的图标指示选项卡的验证是通过还是失败。 完成并验证某个选项卡的必填字段之后，即可通过“下一步”按钮导航到下一个选项卡。所有选项卡都通过验证后，你可以进入“查看并创建”页面，选择“创建”按钮开始进行部署。
+启用了 `isWizard` 时，将设置为 **true**，“基本信息”选项卡可用，所有其他选项卡被禁用。 选择“下一步”按钮时，该选项卡的图标指示选项卡的验证是通过还是失败。 完成并验证某个选项卡的必填字段之后，即可通过“下一步”按钮导航到下一个选项卡。所有选项卡都通过验证后，你可以进入“查看并创建”页面，选择“创建”按钮开始进行部署。  
 
 :::image type="content" source="./media/create-uidefinition-overview/tab-wizard.png" alt-text="选项卡向导":::
 
@@ -150,7 +156,7 @@ parameters 属性的架构取决于所指定的 handler 和 version 的组合。
 
 ## <a name="steps"></a>步骤
 
-步骤属性包含零个或多个在基本信息步骤后显示的其他步骤。 每个步骤包含一个或多个元素。 请考虑按所部署的应用程序的角色或层添加步骤。 例如，针对群集中的主节点输入添加一个步骤，针对辅助角色节点添加另一个步骤。
+步骤属性包含零个或多个在基本信息步骤后显示的步骤。 每个步骤包含一个或多个元素。 请考虑按所部署的应用程序的角色或层添加步骤。 例如，针对群集中的主节点输入添加一个步骤，针对工作器节点添加另一个步骤。
 
 ```json
 "steps": [

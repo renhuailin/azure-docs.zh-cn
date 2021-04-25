@@ -6,18 +6,18 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 03/08/2021
+ms.date: 04/05/2021
 tags: connectors
-ms.openlocfilehash: 983e0d34692d67302e11c35abac590fefd610b2e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5eae6b48a65f919ea233ad77a215ed5672425175
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102449622"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385847"
 ---
-# <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
+# <a name="create-and-manage-sftp-files-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
-若要使用[安全外壳 (SSH)](https://www.ssh.com/ssh/protocol/) 协议自动完成用于在[安全文件传输协议 (SFTP)](https://www.ssh.com/ssh/sftp/) 服务器上监视、创建、发送和接收文件的任务，可以使用 Azure 逻辑应用和 SFTP-SSH 连接器来生成并自动完成集成工作流。 SFTP 是通过任何可靠数据流提供文件访问、文件传输和文件管理的网络协议。
+若要使用 [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) 协议自动完成用于在采用[安全文件传输协议 (SFTP)](https://www.ssh.com/ssh/sftp/) 的服务器上创建和管理文件的任务，可以使用 Azure 逻辑应用和 SFTP-SSH 连接器来生成并自动完成集成工作流。 SFTP 是通过任何可靠数据流提供文件访问、文件传输和文件管理的网络协议。
 
 下面是可以自动完成的一些示例任务：
 
@@ -27,7 +27,7 @@ ms.locfileid: "102449622"
 * 获取文件内容和元数据。
 * 将存档提取到文件夹。
 
-可以使用触发器来监视 SFTP 服务器上的事件，并使输出可用于其他操作。 可以使用操作针对 SFTP 服务器执行各种任务。 还可以让逻辑应用中的其他操作使用 SFTP 操作的输出。 例如，如果你定期从 SFTP 服务器检索文件，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送有关这些文件及其内容的电子邮件警报。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+在工作流中，可以使用触发器来监视 SFTP 服务器上的事件，并使输出可为其他操作所用。 可以使用操作针对 SFTP 服务器执行各种任务。 还可以让其他操作使用来自 SFTP-SSH 操作的输出。 例如，如果你定期从 SFTP 服务器检索文件，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送有关这些文件及其内容的电子邮件警报。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
 有关 SFTP-SSH 连接器和 SFTP 连接器之间的差异，请参阅本主题后面的[比较 SFTP-SSH 与 SFTP](#comparison) 部分。
 
@@ -40,16 +40,14 @@ ms.locfileid: "102449622"
   * OpenText Secure MFT
   * OpenText GXS
 
-* SFTP-SSH 连接器支持私钥身份验证或密码身份验证，但不支持同时使用这两种身份验证。
-
-* 支持[分块](../logic-apps/logic-apps-handle-large-messages.md)的 SFTP-SSH 操作最多可以处理 1 GB 的文件，而不支持分块的 SFTP-SSH 操作最多可以处理 50 MB 的文件。 尽管默认的区块大小为 15 MB，但此大小可以根据网络延迟、服务器响应时间等因素动态变化，从 5 MB 开始逐渐增加到最大值 50 MB。
+* 支持[分块](../logic-apps/logic-apps-handle-large-messages.md)的 SFTP-SSH 操作最多可以处理 1 GB 的文件，而不支持分块的 SFTP-SSH 操作最多可以处理 50 MB 的文件。 默认分块大小为 15 MB。 但是，此大小可动态变化，最小为 5 MB，并可逐渐增加，最大为 50 MB。 大小的动态调整视诸如网络延迟、服务器响应时间等因素而定。
 
   > [!NOTE]
   > 对于[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中的逻辑应用，此连接器的 ISE 标记版本需要分块操作以使用 [ISE 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
   当改用[指定固定区块大小](#change-chunk-size)时，可以重写此自适应行为。 此大小的范围为 5 MB 到 50 MB。 例如，假设你有一个 45 MB 的文件，以及一个可以支持该文件大小且没有延迟的网络。 自适应分块会导致多次调用，而不是一次调用。 若要减少调用次数，可以尝试设置 50 MB 的区块大小。 在不同情况下，如果逻辑应用超时（例如，当使用 15 MB 的块时），可以尝试将该大小减小到 5 MB。
 
-  区块大小与连接相关，这意味着你可以对支持分块的操作以及不支持分块的操作使用相同的连接。 在这种情况下，不支持分块的操作的区块大小范围为 5 MB 到 50 MB。 下表显示了哪些 SFTP-SSH 操作支持分块：
+  分块大小与连接相关联。 这个属性意味着你可以为支持分块的操作和不支持分块的操作使用同一个连接。 在这种情况下，不支持分块的操作的区块大小范围为 5 MB 到 50 MB。 下表显示了哪些 SFTP-SSH 操作支持分块：
 
   | 操作 | 分块支持 | 重写区块大小支持 |
   |--------|------------------|-----------------------------|
@@ -69,15 +67,15 @@ ms.locfileid: "102449622"
 
 * SFTP-SSH 触发器不支持消息分块。 请求文件内容时，触发器仅选择 15 MB 或更小的文件。 若要获取大于 15 MB 的文件，请改为遵循以下模式：
 
-  1. 使用仅返回文件属性的 SFTP-SSH 触发器，如“添加或修改文件时(仅属性)”。
+  1. 使用只返回文件属性的 SFTP-SSH 触发器。 这些触发器具有包含说明的名（仅限属性）。
 
-  1. 跟随触发器执行 SFTP-SSH 的“获取文件内容”操作，该操作读取完整文件并隐式使用消息分块。
+  1. 在使用触发器后，采取 SFTP-SSH Get file content（获取文件内容）操作。 这一操作将读取完整的文件并默认使用消息区块。
 
 <a name="comparison"></a>
 
 ## <a name="compare-sftp-ssh-versus-sftp"></a>SFTP-SSH 与 SFTP 的比较
 
-下面是 SFTP-SSH 连接器与 SFTP 连接器（SFTP-SSH 连接器具有其功能）之间的其他重要差异：
+以下列表描述了不同于 SFTP 连接器的密钥 SFTP SSH 功能：
 
 * 使用 [SSH.NET 库](https://github.com/sshnet/SSH.NET)，该库是支持 .NET 的开源安全外壳 (SSH) 库。
 
@@ -85,30 +83,25 @@ ms.locfileid: "102449622"
 
 * 提供“重命名文件”操作，用于在 SFTP 服务器上重命名文件。
 
-* 将 SFTP 服务器连接缓存最长 1 小时，这可以提高性能，并减少服务器的连接尝试次数。 若要设置此缓存行为的持续时间，请在 SFTP 服务器上编辑 SSH 配置中的 [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) 属性。
+* 缓存至 SFTP 服务器的链接，缓存时间可长达 1 小时。 此功能可提高性能并减少连接器尝试连接到服务器的频率。 若要设置此缓存行为的持续时间，请在 SFTP 服务器上编辑 SSH 配置中的 [ClientAliveInterval 属性](https://man.openbsd.org/sshd_config#ClientAliveInterval)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* SFTP 服务器地址和帐户凭据，可让逻辑应用访问 SFTP 帐户。 还需要有权访问 SSH 私钥和 SSH 私钥密码。 若要在上传大文件时使用分块，你需要对 SFTP 服务器上的根文件夹具有读写权限。 否则，你将收到“401 未授权”错误。
+* SFTP 服务器地址和帐户凭据，便于工作流访问 SFTP 帐户。 还需要有权访问 SSH 私钥和 SSH 私钥密码。 若要在上传大文件时使用分块，你需要对 SFTP 服务器上的根文件夹具有读写权限。 否则，你将收到“401 未授权”错误。
 
-  > [!IMPORTANT]
-  >
-  > SFTP-SSH 连接器仅支持以下私钥、格式、算法和指纹：
-  >
-  > * **私钥格式**：采用 OpenSSH 和 ssh.com 格式的 RSA (Rivest Shamir Adleman) 和 DSA（数字签名算法）密钥。 如果私钥为 PuTTY (.ppk) 文件格式，请先[将密钥转换为 OpenSSH (.pem) 文件格式](#convert-to-openssh)。
-  >
-  > * **加密算法**：DES-EDE3-CBC、DES-EDE3-CFB、DES-CBC、AES-128-CBC、AES-192-CBC 和 AES-256-CBC
-  >
-  > * **指纹**：MD5
-  >
-  > 在向逻辑应用添加所需的 SFTP-SSH 触发器或操作之后，必须提供 SFTP 服务器的连接信息。 为此连接提供 SSH 密钥时，***请勿手动输入或编辑密钥***，否则可能导致连接失败。 请确保从 SSH 私钥文件中复制密钥，并将该密钥粘贴到连接详细信息中。 
-  > 有关详细信息，请参阅本文后面的[使用 SSH 连接到 SFTP](#connect) 部分。
+  SFTP-SSH 连接器支持私钥身份验证和密码身份验证。 然而，SFTP-SSH 连接器仅支持以下私钥、格式、算法和指纹：
+
+  * **私钥格式**：采用 OpenSSH 和 ssh.com 格式的 RSA (Rivest Shamir Adleman) 和 DSA（数字签名算法）密钥。 如果私钥为 PuTTY (.ppk) 文件格式，请先[将密钥转换为 OpenSSH (.pem) 文件格式](#convert-to-openssh)。
+  * **加密算法**：DES-EDE3-CBC、DES-EDE3-CFB、DES-CBC、AES-128-CBC、AES-192-CBC 和 AES-256-CBC
+  * **指纹**：MD5
+
+  在向工作流添加所需的 SFTP-SSH 触发器或操作之后，必须提供 SFTP 服务器的连接信息。 为此连接提供 SSH 密钥时，请勿手动输入或编辑密钥*_，否则可能导致连接失败。 请确保从 SSH 私钥文件中复制密钥，并将该密钥粘贴_*到连接详细信息中。 有关详细信息，请参阅本文后面的[使用 SSH 连接到 SFTP](#connect) 部分。
 
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
-* 要在其中访问 SFTP 帐户的逻辑应用。 若要从 SFTP-SSH 触发器开始，请[创建一个空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 SFTP-SSH 操作，请使用另一个触发器（例如“重复”触发器）启动逻辑应用。
+* 要在其中访问 SFTP 帐户的逻辑应用工作流。 若要从 SFTP-SSH 触发器开始，请[创建一个空白逻辑应用工作流](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 SFTP-SSH 操作，请使用另一个触发器（例如“重复”触发器）启动工作流。
 
 ## <a name="how-sftp-ssh-triggers-work"></a>SFTP-SSH 触发器的工作原理
 
@@ -130,13 +123,13 @@ SFTP-SSH 触发器会轮询 SFTP 文件系统并查找自上次轮询以来已�
 
 ### <a name="trigger-recurrence-shift-and-drift"></a>触发器重复周期移动和偏移
 
-你需要首先为其创建连接的基于连接的触发器（例如 SFTP SSH 触发器）不同于在 Azure 逻辑应用中以原生方式运行的内置触发器，如[重复周期触发器](../connectors/connectors-native-recurrence.md)。 在基于连接的周期性触发器中，重复周期计划不是控制执行的唯一驱动因素，并且时区只确定初始开始时间。 后续运行取决于重复周期计划、上一次触发器执行以及其他可能导致运行时间发生偏差或产生意外行为的因素，例如，在夏令时 (DST) 开始和结束时未维护指定的计划。 若要确保重复周期时间在 DST 生效时不会移动，请手动调整重复周期，使逻辑应用继续按预期时间运行。 否则，开始时间将在 DST 开始时向前移动 1 小时，在 DST 结束时向后移动 1 小时。 有关详细信息，请参阅[基于连接的触发器的重复周期](../connectors/apis-list.md#recurrence-connection-based)。
+你需要首先为其创建连接的基于连接的触发器（例如 SFTP SSH 触发器）不同于在 Azure 逻辑应用中以原生方式运行的内置触发器，如[重复周期触发器](../connectors/connectors-native-recurrence.md)。 在基于连接的周期性触发器中，重复周期计划不是控制执行的唯一驱动因素，并且时区只确定初始开始时间。 后续运行取决于定期计划、上一次触发器执行以及其他可能导致运行时间发生偏差或产生意外行为的因素。 例如，当夏令时 (DST) 开始和结束时，意外的行为可能包括无法维持指定的时间表。 若要确保重复周期时间在 DST 生效时不会变化，请手动调整重复周期。 这样一来，工作流将继续在预期时间运行。 否则，开始时间将在 DST 开始时向前移动 1 小时，在 DST 结束时向后移动 1 小时。 有关详细信息，请参阅[基于连接的触发器的重复周期](../connectors/apis-list.md#recurrence-connection-based)。
 
 <a name="convert-to-openssh"></a>
 
 ## <a name="convert-putty-based-key-to-openssh"></a>将基于 PuTTY 的密钥转换为 OpenSSH
 
-如果密钥采用 PuTTY 格式（使用 .ppk（PuTTY 私钥）文件扩展名），请先将该密钥转换为 OpenSSH 格式（使用 .pem（隐私强化邮件）文件扩展名）。
+PuTTY 格式和 OpenSSH 格式使用不同的文件扩展名。 PuTTY 格式使用 .ppk 或 PuTTY 私钥，文件扩展名。 OpenSSH 格式使用 pem 或隐私增强邮件的文件扩展名。 如果你的私钥采用 PuTTY 格式，并且你必须使用 OpenSSH 格式，请先按照以下步骤将密钥转换为 OpenSSH 格式：
 
 ### <a name="unix-based-os"></a>基于 Unix 的 OS
 
@@ -176,7 +169,7 @@ SFTP-SSH 触发器会轮询 SFTP 文件系统并查找自上次轮询以来已�
 
 ### <a name="use-different-sftp-folders-for-file-upload-and-processing"></a>使用不同的 SFTP 文件夹进行文件上传和处理
 
-在 SFTP 服务器上，请确保在存储已上传文件的位置以及触发器监视这些文件以进行处理的位置使用单独的文件夹，这意味着你需要一种方法在这些文件夹之间移动文件。 否则，触发器将不会触发且行为不可预测，例如，跳过触发器处理的随机数量的文件。
+在 SFTP 服务器上，使用单独的文件夹来存储上传的文件，并使用触发器来监视这些文件以进行处理。 否则，触发器将不会触发且行为不可预测，例如，跳过触发器处理的随机数量的文件。 但是，这一要求意味着你需要一种在这些文件夹之间移动文件的方法。 
 
 如果发生此问题，请从触发器监视的文件夹中删除这些文件，并使用其他文件夹存储已上传的文件。
 
@@ -214,9 +207,9 @@ SFTP-SSH 触发器会轮询 SFTP 文件系统并查找自上次轮询以来已�
 
    1. 在记事本的“编辑”菜单中，选择“全选”。  
 
-   1. 选择“编辑” > “复制”。
+   1. 选择“编辑”   >   “复制”。
 
-   1. 在添加的 SFTP-SSH 触发器或操作中，粘贴已复制到“SSH 私钥”属性中的完整密钥，支持换行。  请确保粘贴了密钥。不要手动输入或编辑密钥。
+   1. 在 SFTP-SSH 触发器或操作中，粘贴已复制到“SSH 私钥”属性中的完整密钥，支持换行。 不要手动输入或编辑密钥。
 
 1. 输入完连接详细信息后，请选择“创建”。
 
@@ -244,9 +237,9 @@ SFTP-SSH 触发器会轮询 SFTP 文件系统并查找自上次轮询以来已�
 
 ### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP - SSH 触发器：添加或修改文件时
 
-在 SFTP 服务器上添加或更改文件时，此触发器将启动逻辑应用工作流。 例如，可以添加一个条件，用于检查文件内容，并根据该内容是否符合指定的条件来获取内容。 然后可以添加一个操作，用于获取文件内容并将其放在 SFTP 服务器上的某个文件夹中。
+在 SFTP 服务器上添加或更改文件时，此触发器将启动工作流。 例如跟进操作，工作流可以使用条件来检查文件内容是否符合指定的标准。 如果内容符合条件，则“获取文件内容”SFTP-SSH 操作可以获取内容，另一个 sftp SSH 操作可以将该文件放入 SFTP 服务器上的另一个文件夹中。
 
-**企业示例**：可以使用此触发器监视 SFTP 文件夹中表示客户订单的新文件。 然后，可以使用“获取文件内容”等 SFTP 操作来获取订单内容以做进一步处理，并将该订单存储在订单数据库中。
+**企业示例**：可以使用此触发器监视 SFTP 文件夹中表示客户订单的新文件。 然后，可以使用“获取文件内容”等 SFTP-SSH 操作来获取订单内容以做进一步处理，并将该订单存储在订单数据库中。
 
 <a name="get-content"></a>
 
@@ -282,7 +275,7 @@ SFTP-SSH 触发器会轮询 SFTP 文件系统并查找自上次轮询以来已�
 
 ### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404 错误：“引用了不存在的文件或文件夹”
 
-如果逻辑应用通过 SFTP-SSH“创建文件”操作在 SFTP 服务器上创建新文件，但在逻辑应用服务可以获取该文件的元数据之前立即移动了新创建的文件，则可能会发生此错误。 当逻辑应用运行“创建文件”操作时，逻辑应用服务也会自动调用 SFTP 服务器来获取文件的元数据。 但是，如果逻辑应用移动了该文件，逻辑应用服务将无法再找到该文件，因此你将收到 `404` 错误消息。
+如果工作流通过 SFTP-SSH“创建文件”操作在 SFTP 服务器上创建文件，但在逻辑应用服务可以获取该文件的元数据之前立即移动了文件，则可能会发生此错误。 当工作流运行“创建文件”操作时，逻辑应用服务会自动调用 SFTP 服务器来获取文件的元数据。 但是，如果逻辑应用移动了该文件，逻辑应用服务将无法再找到该文件，因此你将收到 `404` 错误消息。
 
 如果无法避免或延迟移动文件，则可以在创建文件后跳过读取文件元数据的操作，方法是执行以下步骤：
 

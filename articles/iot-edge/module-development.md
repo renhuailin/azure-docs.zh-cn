@@ -8,12 +8,12 @@ ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a30b4b056d56e096f80b9494ab80a585fff76e66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6274d0f0265220877938775ab6efd72ff22b84e4
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489912"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031114"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>开发你自己的 IoT Edge 模块
 
@@ -134,7 +134,7 @@ IoT Edge 支持多种操作系统、设备体系结构和开发语言，因此�
 
 ### <a name="linux"></a>Linux
 
-对于下表中的所有语言，IoT Edge 支持 AMD64 和 ARM32 Linux 设备的开发。
+对于下表中的所有语言，IoT Edge 支持 AMD64 和 ARM32 Linux 容器的开发。
 
 | 开发语言 | 开发工具 |
 | -------------------- | ----------------- |
@@ -145,16 +145,30 @@ IoT Edge 支持多种操作系统、设备体系结构和开发语言，因此�
 | Python | Visual Studio Code |
 
 >[!NOTE]
->[公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)中提供了对 ARM64 Linux 设备的开发和调试支持。 有关详细信息，请参阅[在 Visual Studio Code（预览版）中开发和调试 ARM64 IoT Edge 模块](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)。
+>[公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)中提供了对 ARM64 Linux 容器的开发和调试支持。 有关详细信息，请参阅[在 Visual Studio Code（预览版）中开发和调试 ARM64 IoT Edge 模块](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)。
 
 ### <a name="windows"></a>Windows
 
-对于下表中的所有语言，IoT Edge 支持 AMD64 Windows 设备的开发。
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+对于下表中的所有语言，IoT Edge 支持 AMD64 Windows 容器的开发。
 
 | 开发语言 | 开发工具 |
 | -------------------- | ----------------- |
 | C | Visual Studio 2017/2019 |
 | C# | Visual Studio Code（无调试功能）<br>Visual Studio 2017/2019 |
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+IoT Edge 1.1 LTS 是最后一个支持 Windows 容器的发布通道。 从版本 1.2 开始，将不再支持 Windows 容器。
+
+有关通过 Windows 容器进行开发的信息，请参阅本文的 [IoT Edge 1.1](?view=iotedge-2018-06&preserve-view=true) 版本。
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="next-steps"></a>后续步骤
 

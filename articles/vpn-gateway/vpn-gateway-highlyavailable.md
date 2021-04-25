@@ -7,18 +7,18 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 48756b43e64576a5dd38467bb1dd97e91c168a06
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d193850461eeaa5041e1cfd6d64def503ad676d4
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91360848"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374754"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>高可用性跨界连接与 VNet 到 VNet 连接
 本文概述使用 Azure VPN 网关的跨界连接和 VNet 到 VNet 连接的高可用性配置选项。
 
 ## <a name="about-azure-vpn-gateway-redundancy"></a><a name = "activestandby"></a>关于 Azure VPN 网关冗余
-每个 Azure VPN 网关由两个采用主动-待机配置的实例组成。 当主动实例发生任何计划内维护或计划外中断时，待机实例会自动接管负载（故障转移），恢复 S2S VPN 连接或 VNet 到 VNet 连接。 这种交接会造成短暂的中断。 发生计划内维护时，10 到 15 秒内应可恢复连接。 发生计划外的问题时，恢复连接所需的时间更长，在最糟的情况下大约需要 1 到 1.5 分钟。 对于 P2S VPN 客户端到网关的连接，会断开 P2S 连接，并且用户需要从客户端计算机重新连接。
+每个 Azure VPN 网关由两个采用主动-待机配置的实例组成。 当主动实例发生任何计划内维护或计划外中断时，待机实例会自动接管负载（故障转移），恢复 S2S VPN 连接或 VNet 到 VNet 连接。 这种交接会造成短暂的中断。 发生计划内维护时，10 到 15 秒内应可恢复连接。 发生计划外的问题时，恢复连接所需的时间更长，在最糟的情况下大约需要 1 到 3 分钟。 对于 P2S VPN 客户端到网关的连接，会断开 P2S 连接，并且用户需要从客户端计算机重新连接。
 
 ![此图中显示了一个本地站点，其中的专用 IP 子网和本地 VPN 通过连接到一个活动 Azure VPN 网关来连接到 Azure 中托管的子网，并有一个可用的备用网关。](./media/vpn-gateway-highlyavailable/active-standby.png)
 

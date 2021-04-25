@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: d5ff3fb988a7e907308ccccc8d0900d45a0601c0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c5dfd442bb52a5b1d319bd0a40b656d549134e7e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101671602"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612297"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中创建、开发和维护 Synapse Studio 笔记本
 
@@ -41,9 +41,6 @@ Synapse 团队将新的笔记本组件引入 Synapse Studio，为 Microsoft 客�
 |%%html| 不支持 |&#9745;|
 |拖放移动单元格| 不支持 |&#9745;|
 |永久显示() 输出|&#9745;| 不可用 |
-|全部取消| &#9745;| 不可用|
-|运行上面所有单元格|&#9745;| 不可用 |
-|运行下面所有单元格|&#9745;| 不可用 |
 |通过工具栏按钮设置文本单元格的格式|&#9745;| 不可用 |
 |撤消单元格操作| &#9745;| 不可用 |
 
@@ -115,7 +112,7 @@ Azure Synapse Studio 笔记本支持四种 Apache Spark 语言：
 
    ![Synapse spark magic 命令](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
 
-### <a name="use-temp-tables-to-reference-data-across-languages"></a>使用临时表跨语言引用数据
+### <a name="use-temp-tables-to-reference-data-across-languages&quot;></a>使用临时表跨语言引用数据
 
 不能直接在 Synapse Studio 笔记本中跨不同语言引用数据或变量。 在 Spark 中，可以跨语言引用临时表。 下面是一个示例，说明如何使用 Spark 临时表作为解决方法，在 `PySpark` 和 `SparkSQL` 中读取 `Scala` 数据帧。
 
@@ -123,7 +120,7 @@ Azure Synapse Studio 笔记本支持四种 Apache Spark 语言：
 
    ```scala
    %%scala
-   val scalaDataFrame = spark.read.sqlanalytics("mySQLPoolDatabase.dbo.mySQLPoolTable")
+   val scalaDataFrame = spark.read.sqlanalytics(&quot;mySQLPoolDatabase.dbo.mySQLPoolTable")
    scalaDataFrame.createOrReplaceTempView( "mydataframetable" )
    ```
 
@@ -273,28 +270,38 @@ Azure Synapse Studio 笔记本集成了 Monaco 编辑器，将 IDE 样式的 Int
    ![run-all-cells](./media/apache-spark-development-using-notebooks/synapse-run-all.png)
 
 
-# <a name="classical-notebook"></a>[经典笔记本](#tab/classical)
-
 ### <a name="run-all-cells-above-or-below"></a>运行上方或下方的所有单元格
+
+# <a name="classical-notebook"></a>[经典笔记本](#tab/classical)
 
 要访问最右侧的其他单元格操作菜单，请选择省略号 (…)。然后选择“运行上方的单元格”，按顺序运行当前单元格上方的所有单元格。 选择“运行下方的单元格”，按顺序运行当前单元格下方的所有单元格。
 
    ![run-cells-above-or-below](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
+# <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
+
+展开“全部运行”中的下拉列表，然后选择“运行上面的单元”，按顺序运行当前单元格上方的所有单元格。  选择“运行下方的单元格”，按顺序运行当前单元格下方的所有单元格。
+
+   ![azure-notebook-run-cells-above-or-below](./media/apache-spark-development-using-notebooks/synapse-aznb-run-cells-above-or-below.png)
+
+---
 
 ### <a name="cancel-all-running-cells"></a>取消所有正在运行的单元格
+
+# <a name="classical-notebook"></a>[经典笔记本](#tab/classical)
 选择“全部取消”按钮可取消正在运行的单元格或在队列中等待的单元格。 
    ![cancel-all-cells](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
 
 # <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
 
-预览笔记本体验尚未提供取消所有正在运行的单元格功能。 
+选择“全部取消”按钮可取消正在运行的单元格或在队列中等待的单元格。 
+   ![azure-notebook-cancel-all-cells](./media/apache-spark-development-using-notebooks/synapse-aznb-cancel-all.png) 
 
 ---
 
 
 
-### <a name="reference-notebook"></a>引用笔记本
+### <a name="notebook-reference"></a>笔记本引用
 
 # <a name="classical-notebook"></a>[经典笔记本](#tab/classical)
 
@@ -305,6 +312,11 @@ Azure Synapse Studio 笔记本集成了 Monaco 编辑器，将 IDE 样式的 Int
 可以使用 ```%run <notebook path>``` magic 命令在当前笔记本上下文中引用另一个笔记本。 引用笔记本中定义的所有变量在当前笔记本中都可用。 ```%run``` magic 命令支持嵌套调用，但不支持递归调用。 如果语句超过五行，则将收到异常。 ```%run``` 命令目前仅支持以参数形式传递笔记本路径。 
 
 示例：``` %run /path/notebookA ```。
+
+> [!NOTE]
+> Synapse 管道不支持笔记本引用。
+>
+>
 
 ---
 
@@ -346,7 +358,10 @@ Azure Synapse Studio 笔记本仅基于 Spark。 代码单元格在无服务器 
     }
 }
 ```
-
+> [!NOTE]
+> Synapse 管道不支持 Spark 会话 config magic 命令。
+>
+>
 
 ## <a name="bring-data-to-a-notebook"></a>将数据引入笔记本
 
@@ -420,6 +435,11 @@ df = spark.read.option("header", "true") \
 ## <a name="magic-commands"></a>magic 命令
 可以在 Azure Synapse Studio 笔记本中使用熟悉的 Jupyter magic 命令。 查看以下列表了解当前可用的 magic 命令。 告诉我们[你在 GitHub 上的用例](https://github.com/MicrosoftDocs/azure-docs/issues/new)，以便我们可以继续构建更多 magic 命令来满足你的需求。
 
+> [!NOTE]
+> Synapse 管道仅支持以下 magic 命令：%%pyspark、%%spark、%%csharp 和 %%sql。 
+>
+>
+
 # <a name="classical-notebook"></a>[经典笔记本](#tab/classical)
 
 可用行 magic：[%lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic)、[%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)、[%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
@@ -430,7 +450,7 @@ df = spark.read.option("header", "true") \
 
 # <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
 
-可用行 magic：[%lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic)、[%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)、[%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)、[%history](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-history)、[%run](#reference-notebook)、[%load](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-load)
+可用行 magic：[%lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic)、[%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)、[%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)、[%history](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-history)、[%run](#notebook-reference)、[%load](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-load)
 
 可用单元格 magic：[%%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)、[%%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)、[%%capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture)、[%%writefile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile)、[%%sql](#use-multiple-languages)、[%%pyspark](#use-multiple-languages)、[%%spark](#use-multiple-languages)、[%%csharp](#use-multiple-languages)、[%%html](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-html)、[%%configure](#spark-session-config-magic-command)
 

@@ -1,23 +1,23 @@
 ---
 title: 自动增长存储 - Azure CLI - Azure Database for PostgreSQL（单一服务器）
 description: 本文介绍如何使用 Azure CLI 在 Azure Database for PostgreSQL（单一服务器）中配置存储的自动增长。
-author: rothja
-ms.author: jroth
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 8/7/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e323dfd0449b0fb4ad5119955227a2aa9bea1031
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: d16fe5ef6654ee29c3e345ff0532ed91206d86d3
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551095"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366158"
 ---
 # <a name="auto-grow-azure-database-for-postgresql-storage---single-server-using-the-azure-cli"></a>使用 Azure CLI 自动增长 Azure Database for PostgreSQL 存储（单一服务器）
 本文介绍如何将 Azure Database for PostgreSQL 服务器存储配置为在不影响工作负荷的情况下增长。
 
-[达到存储限制](./concepts-pricing-tiers.md#reaching-the-storage-limit)的服务器将设置为只读。 如果启用了存储自动增长，则对于预配的存储大小小于 100 GB 的服务器，可用存储空间一旦小于 1 GB 或预配存储的 10%（以这二者中的较大值为准），预配的存储大小就会立即增加 5 GB。 对于预配的存储大小大于 100 GB 的服务器，可用存储空间小于预配的存储大小的 5% 时，预配的存储大小就会增加 5%。 [此处](./concepts-pricing-tiers.md#storage)所指定的最大存储限制适用。
+[达到存储限制](./concepts-pricing-tiers.md#reaching-the-storage-limit)的服务器将设置为只读。 如果启用了存储自动增长，则对于预配的存储大小小于 100 GB 的服务器，可用存储空间一旦小于 1 GB 或预配存储的 10%（以这二者中的较大值为准），预配的存储大小就会立即增加 5 GB。 对于预配存储大小大于 100 GB 的服务器，可用存储空间小于预配存储大小 10GB 时，预配存储大小会增加 5%。 [此处](./concepts-pricing-tiers.md#storage)所指定的最大存储限制适用。
 
 ## <a name="prerequisites"></a>必备条件
 

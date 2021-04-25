@@ -1,7 +1,7 @@
 ---
-title: 将数据从 PostgreSQL 数据库迁移到启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
+title: 将数据从 PostgreSQL 数据库迁移到已启用 Azure Arc 的超大规模 PostgreSQL 服务器组
 titleSuffix: Azure Arc enabled database services
-description: 将数据从 PostgreSQL 数据库迁移到启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
+description: 将数据从 PostgreSQL 数据库迁移到已启用 Azure Arc 的超大规模 PostgreSQL 服务器组
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -11,32 +11,32 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: d9cbfc30b10373ad2a4f4304987dac426b5dcabe
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101643569"
 ---
-# <a name="migrate-postgresql-database-to-azure-arc-enabled-postgresql-hyperscale-server-group"></a>将 PostgreSQL 数据库迁移到启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
+# <a name="migrate-postgresql-database-to-azure-arc-enabled-postgresql-hyperscale-server-group"></a>从 PostgreSQL 数据库迁移到已启用 Azure Arc 的超大规模 PostgreSQL 服务器组
 
-本文档介绍了如何将现有的 PostgreSQL 数据库 (不在启用了 Azure Arc 的数据服务) 中的数据库托管到启用了 Azure Arc 的 PostgreSQL 超大规模服务器组中。
+本文档介绍将现有的 PostgreSQL 数据库（不在已启用 Azure Arc 的数据服务中托管的数据库）放入已启用 Azure Arc 的超大规模 PostgreSQL 服务器组中的步骤。
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="considerations"></a>注意事项
 
-启用了 Azure Arc PostgreSQL 超大规模服务器组是 PostgreSQL 的社区版本，并已启用 CitusData 扩展。 因此，在 Azure Arc 之外处理 PostgreSQL 的任何工具都应该适用于启用了 Azure Arc 的 PostgreSQL 超大规模服务器组。
+已启用 Azure Arc 的超大规模 PostgreSQL 服务器组是 PostgreSQL 的社区版本，并在已启用 CitusData 扩展的情况下运行。 因此，任何适用于 PostgreSQL（Azure Arc 之外）的工具都应该适用于已启用 Azure Arc 的超大规模 PostgreSQL 服务器组。
 
 
-因此，使用今天用于 Postgres 的一组工具，你应该能够：
-1. 从 Azure Arc 外托管的实例备份 Postgres 数据库
-2. 在启用了 Azure Arc 的 PostgreSQL 超大规模服务器组中还原它
+因此，使用现在用于 Postgres 的一组工具，应该能够执行以下操作：
+1. 从托管在 Azure Arc 之外的实例备份 Postgres 数据库
+2. 在已启用 Azure Arc 的超大规模 PostgreSQL 服务器组中还原它
 
-您要做的就是：
+你要执行的只剩：
 - 重置服务器参数
-- 重置安全上下文：重新创建用户、角色和重置权限 .。。
+- 重置安全性上下文：重新创建用户、角色和重置权限...
 
-若要执行此备份/还原操作，可以使用任何能够对 Postgres 执行备份/还原操作的工具。 例如：
+若要执行此备份/还原操作，可以使用任何能够针对 Postgres 进行备份/还原的工具。 例如：
 - Azure Data Studio 及其 Postgres 扩展
 - `pgcli`
 - `pgAdmin`
@@ -46,37 +46,37 @@ ms.locfileid: "101643569"
 - ...
 
 ## <a name="example"></a>示例
-让我们使用工具来说明这些步骤 `pgAdmin` 。
-请考虑下列设置：
+让我们使用 `pgAdmin` 工具来说明这些步骤。
+请考虑以下设置：
 - **Source：**  
-    在裸机服务器上本地运行并名为 JEANYDSRV 的 Postgres 服务器。 它的版本为12，并托管一个名为 MyOnPremPostgresDB 的数据库，该数据库具有一个具有1行迁移的表 T1 :::image type="content" source="media/postgres-hyperscale/migrate-pg-source.jpg" alt-text="-源":::
+    在裸机服务器上本地运行的 Postgres 服务器，名为 JEANYDSRV。 它的版本为 12，并托管一个名为 MyOnPremPostgresDB 的数据库，该数据库具有一个包含 1 行的表 T1 :::image type="content" source="media/postgres-hyperscale/migrate-pg-source.jpg" alt-text="Migrate-source":::
 
-- **位置**  
-    在 Azure Arc 环境中运行并名为 postgres01 的 Postgres 服务器。 它的版本为12。 它没有任何数据库，标准 Postgres 数据库除外。  
-    :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination.jpg" alt-text="迁移-目标":::
+- **目标：**  
+    在 Azure Arc 环境中运行的 Postgres 服务器，名为 postgres01。 它的版本为 12。 除了标准 Postgres 数据库，它没有任何其他数据库。  
+    :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination.jpg" alt-text="Migrate-destination":::
 
 
 ### <a name="take-a-backup-of-the-source-database-on-premises"></a>在本地备份源数据库
 
-:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup.jpg" alt-text="迁移-源-备份":::
+:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup.jpg" alt-text="Migrate-source-backup":::
 
-配置：
-1. 为它指定文件名： **MySourceBackup**
-2. 将格式设置为 **自定义** 
- :::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup2.jpg" alt-text="迁移-源-备份-配置":::
+对其进行配置：
+1. 为它指定文件名：MySourceBackup
+2. 将格式设置为“自定义”
+:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup2.jpg" alt-text="Migrate-source-backup-configure":::
 
 备份成功完成：  
-:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup3.jpg" alt-text="迁移-源-备份-已完成":::
+:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup3.jpg" alt-text="Migrate-source-backup-completed":::
 
-### <a name="create-an-empty-database-on-the-destination-system-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>在启用了 Azure Arc 的 PostgreSQL 超大规模服务器组中的目标系统上创建空数据库
+### <a name="create-an-empty-database-on-the-destination-system-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>在已启用 Azure Arc 的超大规模 PostgreSQL 服务器组中的目标系统上创建空数据库
 
 > [!NOTE]
-> 若要在该工具中注册 Postgres 实例 `pgAdmin` ，需要在 Kubernetes 群集中使用实例的公共 IP，并适当地设置端口和安全上下文。 `psql`运行以下命令后，你将在终结点行上找到这些详细信息：
+> 若要在 `pgAdmin` 工具中注册 Postgres 实例，需要使用 Kubernetes 群集中实例的公共 IP，并相应地设置端口和安全性上下文。 运行以下命令后，你将在 `psql` 终结点行上找到这些详细信息：
 
 ```console
 azdata arc postgres endpoint list -n postgres01
 ```
-这会返回如下所示的输出：
+该命令返回如下输出：
 ```console
 [
   {
@@ -94,39 +94,39 @@ azdata arc postgres endpoint list -n postgres01
 ]
 ```
 
-让我们将目标数据库命名 **RESTORED_MyOnPremPostgresDB**。
+让我们将目标数据库命名为 RESTORED_MyOnPremPostgresDB。
 
-:::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbcreate.jpg" alt-text="迁移-目标-db-创建" lightbox="media/postgres-hyperscale/migrate-pg-destination-dbcreate.jpg":::
+:::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbcreate.jpg" alt-text="Migrate-destination-db-create" lightbox="media/postgres-hyperscale/migrate-pg-destination-dbcreate.jpg":::
 
-### <a name="restore-the-database-in-your-arc-setup"></a>在弧线设置中还原数据库
+### <a name="restore-the-database-in-your-arc-setup"></a>在 Arc 设置中还原数据库
 
-:::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore.jpg" alt-text="Migratre-还原":::
+:::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore.jpg" alt-text="Migratre-db-restore":::
 
 配置还原：
-1. 指向包含要还原的备份的文件： **MySourceBackup**
-2. 将格式保留设置为 "**自定义" 或 "tar**- 
-    :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore2.jpg" alt-text="还原-配置":::"
+1. 指向包含要还原的备份的文件：MySourceBackup
+2. 将格式设置保留为“Custom or tar”
+   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore2.jpg" alt-text="Migrate-db-restore-configure":::
 
 3. 请单击“还原”。  
 
    还原成功。  
-   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore3.jpg" alt-text="迁移-数据库-还原-已完成":::
+   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore3.jpg" alt-text="Migrate-db-restore-completed":::
 
-### <a name="verify-that-the-database-was-successfully-restored-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>验证是否已在启用了 Azure Arc 的 PostgreSQL 超大规模服务器组中成功还原数据库
+### <a name="verify-that-the-database-was-successfully-restored-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>验证是否已启用 Azure Arc 的超大规模 PostgreSQL 服务器组中成功还原了该数据库
 
 使用以下方法之一：
 
-**源 `pgAdmin` ：**  
+**从 `pgAdmin`：**  
 
-展开在 Azure Arc 设置中托管的 Postgres 实例。 您将看到数据库中已还原的表，当您选择数据时，它会显示与在本地实例中相同的行：
+展开在 Azure Arc 设置中托管的 Postgres 实例。 你将看到已还原的数据库中的表，当选择数据时，它会显示与本地实例中拥有的相同的行：
 
-   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestoreverif.jpg" alt-text="迁移-数据库-还原-验证":::
+   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestoreverif.jpg" alt-text="Migrate-db-restore-verification":::
 
-**从 `psql` Azure Arc 设置中：**  
+**从 Azure Arc 设置中的 `psql`：**  
 
-在您的弧形设置中，您可以使用 `psql` 连接到 Postgres 实例，将数据库上下文设置为 `RESTORED_MyOnPremPostgresDB` 并查询数据：
+在 Arc 设置中，可以使用 `psql` 连接到 Postgres 实例、将数据库上下文设置为 `RESTORED_MyOnPremPostgresDB` 以及查询数据：
 
-1. 列出连接字符串中的终结点 `psql` ：
+1. 列出 `psql` 连接字符串中的终结点，以提供帮助：
 
    ```console
    azdata arc postgres endpoint list -n postgres01
@@ -146,13 +146,13 @@ azdata arc postgres endpoint list -n postgres01
    ]
    ```
 
-1. 在 `psql` 连接字符串中，使用 `-d` 参数指示数据库名称。 在下面的命令中，系统将提示你输入密码：
+1. 从 `psql` 连接字符串，使用 `-d` 参数指示数据库名称。 使用下面的命令时，系统将提示你输入密码：
 
    ```console
    psql -d RESTORED_MyOnPremPostgresDB -U postgres -h 10.0.0.4 -p 32639
    ```
 
-   `psql` 连线.
+   `psql` 连接。
 
    ```output
    Password for user postgres:
@@ -165,7 +165,7 @@ azdata arc postgres endpoint list -n postgres01
    RESTORED_MyOnPremPostgresDB=#   
    ```
 
-1. 选择表，你将看到从本地 Postgres 实例还原的数据：
+1. 选择该表，你将看到你从本地 Postgres 实例还原的数据：
 
    ```console
    RESTORED_MyOnPremPostgresDB=# select * from t1;
@@ -179,13 +179,13 @@ azdata arc postgres endpoint list -n postgres01
    ```
 
 > [!NOTE]
-> - 在 PostgreSQL 超大规模上运行的 Azure Arc 上运行时，你将看不到如此多的性能好处，直到你向外扩展，并跨 PostgreSQL 超大规模服务器组的辅助角色节点分片/分布数据。 请参阅 [后续步骤](#next-steps)。
+> - 在已启用 Azure Arc 的超大规模 PostgreSQL 上运行时，在进行横向扩展并在超大规模 PostgreSQL 服务器组的工作器节点上分片/分布数据之前，你将不会看到如此多的性能优势。 请参阅[后续步骤](#next-steps)。
 >
-> - 目前不可能将在本地或任何其他云中运行的现有 Postgres 实例 "加入 Azure Arc"。 换句话说，不能在现有的 Postgres 实例上安装某种类型的 "Azure Arc agent"，使其成为 Azure Arc 启用的 Postgres 设置。相反，你需要创建一个新的 Postgres 实例并将数据传输到该实例。 您可以使用以上所示的方法来执行此操作，也可以使用所选的任何 ETL 工具。
+> - 目前，无法将现有的会在本地或任何其他云中运行的 Postgres 实例“加入到 Azure Arc”。 换言之，无法在现有 Postgres 实例上安装某种“Azure Arc 代理”来使其成为 Azure Arc 启用的 Postgres 设置。而是需要创建新的 Postgres 实例，并将数据传输到该实例。 你可以使用以上所示的方法来实现此目的，也可以使用所选的任何 ETL 工具。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读 Azure Database for PostgreSQL 超大规模的概念和操作方法指南，以将数据分散到多个 PostgreSQL 超大规模节点并受益于 Azure Database for PostgreSQL 超大规模的所有功能：
+- 阅读 Azure Database for PostgreSQL 超大规模的概念和操作方法指南，以将数据分布到多个 PostgreSQL 超大规模节点并利用 Azure Database for PostgreSQL 超大规模的所有功能：
     * [节点和表](../../postgresql/concepts-hyperscale-nodes.md)
     * [确定应用程序类型](../../postgresql/concepts-hyperscale-app-type.md)
     * [选择分布列](../../postgresql/concepts-hyperscale-choose-distribution-column.md)
@@ -194,6 +194,6 @@ azdata arc postgres endpoint list -n postgres01
     * [设计多租户数据库](../../postgresql/tutorial-design-database-hyperscale-multi-tenant.md)*
     * [设计实时分析仪表板](../../postgresql/tutorial-design-database-hyperscale-realtime.md)*
 
-> * 在这些文档中，跳过 **登录到 Azure 门户** 的部分， **创建 Azure Database For Postgres-超大规模 (Citus)**。 在 Azure Arc 部署中执行剩余步骤。 这些章节特定于在 Azure 云中作为 PaaS 服务提供的 Azure Database for PostgreSQL 超大规模 (Citus) ，但文档的其他部分直接适用于启用了 Azure Arc 的 PostgreSQL 超大规模。
+> *在这些文档中，跳过“登录到 Azure 门户”和“创建 Azure Database for Postgres - 超大规模 (Citus)”部分 。 在 Azure Arc 部署中执行剩余步骤。 这些部分特定于在 Azure 云中作为 PaaS 服务提供的 Azure Database for PostgreSQL 超大规模 (Citus)，但文档的其他部分直接适用于已启用 Azure Arc 的超大规模 PostgreSQL。
 
 - [横向扩展 Azure Database for PostgreSQL 超大规模服务器组](scale-out-postgresql-hyperscale-server-group.md)

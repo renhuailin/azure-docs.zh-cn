@@ -9,15 +9,15 @@ ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/29/2021
 ms.author: aahi
 keywords: 本地, Docker, 容器, 情绪分析, 自然语言处理
-ms.openlocfilehash: ac82781ed4a05fbbca7f5b16edb0b5349dfc400a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 012e725e31097af5af634a1aba7693048c4c6b3e
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102432054"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277464"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 
@@ -32,7 +32,7 @@ ms.locfileid: "102432054"
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
 > [!IMPORTANT]
-> 免费帐户限制为每月 5000 个事务，并且只有“免费”和“标准”<a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">定价层</a>才对容器有效 。 有关事务请求费率的更多信息，请参阅[数据限制](../overview.md#data-limits)。
+> 免费帐户限制为每月 5000 个事务，并且只有“免费”和“标准”<a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">定价层</a>才对容器有效 。 有关事务请求费率的更多信息，请参阅[数据限制](../concepts/data-limits.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,6 +49,8 @@ ms.locfileid: "102432054"
 |文本分析资源 |若要使用容器，必须具有：<br><br>使用免费 (F0) 或标准 (S) [定价层](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)的 Azure [文本分析资源](../../cognitive-services-apis-create-account.md)。 你将需要通过导航到 Azure 门户中资源的“密钥和终结点”页来获取关联的 API 密钥和终结点 URI。 <br><br>{API_KEY}：两个可用资源密钥之一。 <br><br>{ENDPOINT_URI}：资源的终结点。 |
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
+
+如果使用的是运行状况容器的文本分析，则[负责的 AI](https://docs.microsoft.com/legal/cognitive-services/text-analytics/transparency-note-health) (RAI) 确认的值也必须为 `accept`。
 
 ## <a name="the-host-computer"></a>主计算机
 
@@ -73,7 +75,7 @@ CPU 核心和内存对应于 `--cpus` 和 `--memory` 设置，用作 `docker run
 
 Microsoft 容器注册表中提供了文本分析的容器映像。
 
-# <a name="sentiment-analysis"></a>[情绪分析 ](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[情绪分析](#tab/sentiment)
 
 [!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
 

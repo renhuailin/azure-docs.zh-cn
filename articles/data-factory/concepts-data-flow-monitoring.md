@@ -3,17 +3,16 @@ title: 监视映射数据流
 description: 如何以可视化方式监视 Azure 数据工厂中的映射数据流
 author: kromerm
 ms.author: makromer
-ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/22/2020
-ms.openlocfilehash: 9ca5ea5cdebe297af5081ae6e219935c56ba942e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/11/2021
+ms.openlocfilehash: 82aba428627cba1a3df26fc67c5da0cde52d368c
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96004853"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309061"
 ---
 # <a name="monitor-data-flows"></a>监视数据流
 
@@ -77,9 +76,15 @@ ms.locfileid: "96004853"
 }
 ```
 
-### <a name="post-processing-time"></a>后期处理时间
+### <a name="sink-processing-time"></a>接收器处理时间
 
 当你在映射中选择接收器转换图标时，右侧的滑动面板将在底部显示名为“后期处理时间”的其他数据点。 这是加载、转换和写入数据后在 Spark 群集上执行作业所花费的时间。 此时间可能包括关闭连接池、驱动程序关闭、删除文件、合并文件等。当你在流中执行诸如“移动文件”和“输出到单个文件”之类的操作时，可能会看到后期处理时间值的增加。
+
+* 写入阶段持续时间：将数据写入到 Synapse SQL 暂存位置的时间
+* 表操作 SQL 持续时间：将数据从临时表移动到目标表所花费的时间
+* 前 SQL 持续时间和后 SQL 持续时间：运行前/后 SQL 命令所花费的时间
+* 前命令持续时间和后命令持续时间：针对基于文件的源/接收器运行任何前/后操作所花费的时间。 例如，在处理后移动或删除文件。
+* 合并持续时间：合并文件所花费的时间，在写入到单个文件或使用“作为列数据的文件名”时，合并文件用于基于文件的接收器。 如果在此指标中花费了大量时间，则应避免使用这些选项。
   
 ## <a name="error-rows"></a>错误行
 

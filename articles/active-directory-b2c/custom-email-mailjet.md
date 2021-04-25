@@ -8,19 +8,30 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/09/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 48e823b19c1c6d30e73a7a673cbeab82a4d007a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: a40f3286b4e832f5c73e650859fa9a1d4fe4b6cb
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489213"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256950"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>使用 Mailjet 进行自定义电子邮件验证
 
-使用 Azure Active Directory B2C (Azure AD B2C) 中的自定义电子邮件向注册使用你的应用程序的用户发送自定义电子邮件。 通过使用 [DisplayControls](display-controls.md)（当前提供预览版）和第三方电子邮件提供商 Mailjet，你可以使用自己的电子邮件模板和“发件人:”地址和主题，并支持本地化和自定义一次性密码 (OTP) 设置。
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+使用 Azure Active Directory B2C (Azure AD B2C) 中的自定义电子邮件向注册使用你的应用程序的用户发送自定义电子邮件。 通过使用第三方电子邮件提供商 Mailjet，你可以使用自己的电子邮件模板和“发件人:”地址和主题，并支持本地化和自定义一次性密码 (OTP) 设置。
+
+::: zone pivot="b2c-user-flow"
+
+[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 自定义电子邮件验证要求使用第三方电子邮件提供程序（如 [Mailjet](https://Mailjet.com)、[SendGrid](./custom-email-sendgrid.md) 或 [SparkPost](https://sparkpost.com)），自定义 REST API，或任何基于 HTTP 的电子邮件提供商（包括你自己的）。 本文介绍如何设置使用 Mailjet 的解决方案。
 
@@ -576,3 +587,5 @@ JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimT
 
 - [自定义电子邮件验证 - DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
 - 有关使用自定义 REST API 或任何基于 HTTP 的 SMTP 电子邮件提供商的信息，请参阅[在 Azure AD B2C 自定义策略中定义 RESTful 技术配置文件](restful-technical-profile.md)。
+
+::: zone-end

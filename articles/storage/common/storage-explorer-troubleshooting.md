@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 15df9b38abe35fe3eefad2fa160e1c1f16fe7aa7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 593ccac7326a0a04884fe433cac85cb8eaf79319
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439453"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228225"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器故障排除指南
 
@@ -62,16 +62,16 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 
 1. 打开“连接”对话框。
 1. 选择要连接到的资源类型。
-1. 选择“使用 Azure Active Directory(Azure AD) 登录”。 选择“下一步”。
-1. 选择与要连接到的资源关联的用户帐户和租户。 选择“下一步”。
+1. 选择“使用 Azure Active Directory (Azure AD)登录”。 选择“下一步”  。
+1. 选择与要连接到的资源关联的用户帐户和租户。 选择“下一步”  。
 1. 输入资源的 URL，并为连接输入唯一的显示名称。 选择“下一步”，然后选择“连接” 。
 
 对于其他资源类型，我们目前尚未制定与 Azure RBAC 相关的解决方案。 作为一种解决方法，你可以请求 SAS URL，然后通过以下步骤连接到你的资源：
 
 1. 打开“连接”对话框。
 1. 选择要连接到的资源类型。
-1. 选择“共享访问签名(SAS)”。 选择“下一步”。
-1. 输入你收到的 SAS URL，并输入连接的独特显示名称。 选择“下一步”，然后选择“连接” 。
+1. 选择“共享访问签名(SAS)”。 选择“下一步”  。
+1. 输入你收到的 SAS URL，并输入连接的唯一显示名称。 选择“下一步”，然后选择“连接” 。
  
 有关连接到资源的详细信息，请参阅[连接到单个资源](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#attach-to-an-individual-resource)。
 
@@ -289,20 +289,20 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 
 完成所有连接后，针对所有未添加回的连接名称，必须清除其损坏的数据（如果有），并使用存储资源管理器中的标准步骤将其重新添加。
 
-# <a name="windows"></a>[Windows](#tab/Windows)
+### <a name="windows"></a>[Windows](#tab/Windows)
 
 1. 在“开始”菜单中，搜索“凭据管理器”并将其打开。 
 2. 转到“Windows 凭据”。
 3. 在“一般凭据”下，找到具有 `<connection_type_key>/<corrupted_connection_name>` 键的条目（例如 `StorageExplorer_CustomConnections_Accounts_v1/account1`）。
 4. 删除这些条目并重新添加连接。
 
-# <a name="macos"></a>[macOS](#tab/macOS)
+### <a name="macos"></a>[macOS](#tab/macOS)
 
 1. 打开“聚焦”（命令键+空格键），搜索“Keychain 访问”。
 2. 找到具有 `<connection_type_key>/<corrupted_connection_name>` 键的条目（例如 `StorageExplorer_CustomConnections_Accounts_v1/account1`）。
 3. 删除这些条目并重新添加连接。
 
-# <a name="linux"></a>[Linux](#tab/Linux)
+### <a name="linux"></a>[Linux](#tab/Linux)
 
 本地凭据管理因 Linux 分发版的不同而异。 如果 Linux 分发版不提供内置 GUI 工具用于本地凭据管理，你可以安装第三方工具来管理本地凭据。 例如，可以使用 [Seahorse](https://wiki.gnome.org/Apps/Seahorse/)（一个开源 GUI 工具）来管理 Linux 本地凭据。
 
@@ -356,7 +356,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 > [!NOTE]
 > 存储资源管理器 1.7.0 及更低版本需要 .NET Core 2.0。 如果安装了更高版本的 .NET Core，则必须[修补存储资源管理器](#patching-storage-explorer-for-newer-versions-of-net-core)。 如果运行存储资源管理器 1.8.0 或更高版本，则至少需要 .NET Core 2.1。
 
-# <a name="ubuntu-2004"></a>[Ubuntu 20.04](#tab/2004)
+### <a name="ubuntu-2004"></a>[Ubuntu 20.04](#tab/2004)
 
 1. 下载存储资源管理器 .tar.gz 文件。
 2. 安装 [.NET Core 运行时](/dotnet/core/install/linux)：
@@ -369,7 +369,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
      sudo apt-get install -y dotnet-runtime-2.1
    ```
 
-# <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
+### <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. 下载存储资源管理器 .tar.gz 文件。
 2. 安装 [.NET Core 运行时](/dotnet/core/install/linux)：
@@ -382,7 +382,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
      sudo apt-get install -y dotnet-runtime-2.1
    ```
 
-# <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
+### <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. 下载存储资源管理器 .tar.gz 文件。
 2. 安装 [.NET Core 运行时](/dotnet/core/install/linux)：
@@ -431,6 +431,98 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 * Mozilla Firefox
 * Google Chrome
 * Microsoft Internet Explorer
+
+## <a name="gathering-logs"></a>收集日志
+
+向 GitHub 报告问题时，可能会要求你收集特定日志来帮助诊断问题。
+
+### <a name="storage-explorer-logs"></a>存储资源管理器日志
+
+从版本 1.16.0 开始，存储资源管理器会将各种内容记录到其自己的应用程序日志中。 可以通过单击“帮助”>“打开日志目录”来轻松访问这些日志。 默认情况下，存储资源管理器按较低详细级别进行日志记录。 若要更改详细级别，请添加名称为 `STG_EX_LOG_LEVEL` 的环境变量以及以下任何值：
+- `silent`
+- `critical`
+- `error`
+- `warning`
+- `info`（默认级别）
+- `verbose`
+- `debug`
+
+日志会拆分到所运行的每个存储资源管理器会话的相应文件夹中。 对于需要共享的任何日志文件，建议将它们置于 zip 存档中，并将来自不同会话的文件放在不同的文件夹中。
+
+### <a name="authentication-logs"></a>身份验证日志
+
+对于与登录或存储资源管理器身份验证库相关的问题，很可能需要收集身份验证日志。 身份验证日志存储在以下位置：
+- Windows： `C:\Users\<your username>\AppData\Local\Temp\servicehub\logs`
+- macOS 和 Linux `~/.ServiceHub/logs`
+
+通常可以按照以下步骤收集日志：
+
+1. 转到“设置”>“登录”> 选中“详细身份验证日志记录”。 如果存储资源管理器由于其身份验证库出现问题而未能启动，则系统会为你完成此操作。
+2. 关闭存储资源管理器。
+1. 可选/建议：清除 `logs` 文件夹中的现有日志。 这样做会减少必须向我们发送的信息量。
+4. 打开存储资源管理器并重现问题
+5. 关闭存储资源管理器
+6. 压缩 `log` 文件夹的内容。
+
+### <a name="azcopy-logs"></a>AzCopy 日志
+
+如果在传输数据时遇到问题，则可能需要获取 AzCopy 日志。 可以通过两种不同的方法轻松找到 AzCopy 日志：
+- 对于仍在活动日志中的失败传输，请单击“转到 AzCopy 日志文件”
+- 对于过去失败的传输，请转到 AzCopy 日志文件夹。 可在以下位置找到此文件夹：
+  - Windows： `C:\Users\<your username>\.azcopy`
+  - macOS 和 Linux `~/.azcopy
+
+### <a name="network-logs"></a>网络日志
+
+对于某些问题，需要提供存储资源管理器进行的网络调用的日志。 在 Windows 上，可以使用 Fiddler 执行此操作。
+
+> [!NOTE]
+> Fiddler 跟踪可能包含在收集跟踪期间在浏览器中输入/发送的密码。 请确保阅读有关如何清理 Fiddler 跟踪的说明。 请勿将 Fiddler 跟踪上传到 GitHub。 系统会告诉你可以安全发送 Fiddler 跟踪的位置。
+
+第 1 部分：安装和配置 Fiddler
+
+1. 安装 Fiddler
+2. 启动 Fiddler
+3. 转到“工具”>“选项”
+4. 单击“HTTPS”选项卡
+5. 请确保已选中“捕获连接”和“解密 HTTPS 流量”
+6. 单击“操作”按钮
+7. 选择“信任根证书”，然后在下一个对话框中选择“是”
+8. 再次单击“操作”按钮
+9. 选择“将根证书导出到桌面”
+10. 转到桌面
+11. 找到 FiddlerRoot.cer 文件
+12. 双击以打开
+13. 转到“详细信息”选项卡
+14. 单击“复制到文件...”
+15. 在导出向导中，选择以下选项
+    - Base-64 编码的 X.509
+    - 对于文件名，浏览… 到 C:\Users\<your user dir>\AppData\Roaming\StorageExplorer\certs，然后可以将它保存为任何文件名
+16. 关闭证书窗口
+17. 启动存储资源管理器
+18. 转到“编辑”>“配置代理”
+19. 在对话框中，选择“使用应用代理设置”，并将 URL 设置为 http://localhost ，将端口设置为 8888
+20. 单击“确定”
+21. 重启存储资源管理器
+22. 你应开始看到来自 `storageexplorer:` 进程的网络调用显示在 Fiddler 中
+
+第 2 部分：重现问题
+1. 关闭除 Fiddler 以外的所有应用
+2. 清除 Fiddler 日志（左上角的 X 图标，“视图”菜单附件）
+3. 可选/建议：让 Fiddler 设置几分钟，如果看到网络调用出现，请右键单击它们，然后选择“立即筛选”>“隐藏 <process name>”
+4. 启动存储资源管理器
+5. 再现问题
+6. 单击“文件”>“保存”>“所有会话…”，保存在不会忘记的某个位置
+7. 关闭 Fiddler 和存储资源管理器
+
+第 3 部分：清理 Fiddler 跟踪
+1. 双击 fiddler 跟踪（.saz 文件）
+2. 按 `ctrl`+`f`
+3. 在出现的对话框中，确保设置了以下选项：“搜索”=“请求和响应”，“检查”=“标头和正文”
+4. 搜索在收集 fiddler 跟踪时使用的任何密码，突出显示所有条目，右键单击，然后选择“删除”>“所选会话”
+5. 如果在收集跟踪时确实在浏览器中输入了密码，但在使用 ctrl + f 时找不到任何条目，并且不希望更改密码/所用的密码还用于其他帐户，则可以跳过向我们发送 .saz 文件。 安全第一。 :)
+6. 使用新名称再次保存跟踪
+7. 可选：删除原始跟踪
 
 ## <a name="next-steps"></a>后续步骤
 

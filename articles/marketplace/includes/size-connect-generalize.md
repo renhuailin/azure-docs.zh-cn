@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
 author: mingshen-ms
 ms.author: krsh
-ms.date: 10/20/2020
-ms.openlocfilehash: c60d2a9b13cce9251ff0f730081a9d677206770d
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.date: 03/25/2021
+ms.openlocfilehash: 8898a762e8a1e7a2d5c104f99d12032c676a5ca4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102630092"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105629827"
 ---
 ## <a name="generalize-the-image"></a>通用化映像
 
@@ -52,7 +52,9 @@ VM 准备就绪后，即可在 Azure 共享映像库中捕获映像。 请按照
 8. 选择“查看 + 创建”可查看选择。
 9. 传递验证后，选择“创建”。
 
-若要发布，发布服务器帐户必须具有对 SIG 的所有者访问权限。 若要授予访问权限，请执行以下操作：
+包含 SIG 的 Azure 订阅必须与发布者帐户位于同一租户才能发布。 此外，发布者帐户必须具有对 SIG 的所有者访问权限。 
+
+若要授予访问权限，请执行以下操作：
 
 1. 转到共享映像库。
 2. 在左窗格中，选择“访问控制”(IAM)。

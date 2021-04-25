@@ -2,13 +2,13 @@
 title: VMware 软件版本
 description: Azure VMware 解决方案支持的 VMware 软件版本。
 ms.topic: include
-ms.date: 03/13/2021
-ms.openlocfilehash: 9a1781d163e67c2f9b6a4f756a616e59a969696f
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.date: 03/31/2021
+ms.openlocfilehash: a6441b55bbc6a8f694c50bbf022a6a2ae52d60bf
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103462502"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106097607"
 ---
 <!-- Used in faq.md and concepts-private-clouds-clusters.md -->
 
@@ -17,10 +17,10 @@ ms.locfileid: "103462502"
 
 | 软件              |    版本   |
 | :---                  |     :---:    |
-| VCSA / vSphere / ESXi |    6.7 U3    | 
-| ESXi                  |    6.7 U3    | 
-| vSAN                  |    6.7 U3    |
-| NSX-T <br />注意：NSX-T 是唯一支持的 NSX 版本。               |      2.5     |
+| VCSA / vSphere / ESXi |    6.7 U3l    | 
+| ESXi                  |    6.7 U3l    | 
+| vSAN                  |    6.7 U3l    |
+| NSX-T <br />注意：NSX-T 是唯一支持的 NSX 版本。               |      3.1.1     |
 
 
 新群集已添加到现有私有云，应用当前运行的软件版本。 有关详细信息，请参阅 [VMware 软件版本要求](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html)。

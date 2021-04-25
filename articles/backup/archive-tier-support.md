@@ -3,12 +3,12 @@ title: 存档层支持（预览版）
 description: 了解对 Azure 备份的存档层支持
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: 322bc9d7e2160cc9156c793859b9fda833b3df09
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7a42b8702cfdda14a18aa3cdd4e084ed78767b0a
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563967"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012142"
 ---
 # <a name="archive-tier-support-preview"></a>存档层支持（预览版）
 
@@ -40,6 +40,8 @@ ms.locfileid: "105563967"
 
 ## <a name="get-started-with-powershell"></a>PowerShell 入门
 
+1. 从 GitHub 下载[最新](https://github.com/PowerShell/PowerShell/releases)版本的 PowerShell。
+
 1. 在 PowerShell 中运行以下命令：
   
     ```azurepowershell
@@ -57,7 +59,13 @@ ms.locfileid: "105563967"
 
 1. 获取备份项列表：
 
-    `$BackupItemList = Get-AzRecoveryServicesBackupItem -vaultId $vault.ID -BackupManagementType "AzureVM/AzureWorkload" -WorkloadType "AzureVM/MSSQL"`
+    - 对于 Azure 虚拟机：
+
+        `$BackupItemList = Get-AzRecoveryServicesBackupItem -vaultId $vault.ID -BackupManagementType "AzureVM" -WorkloadType "AzureVM"`
+
+    - 对于 Azure 虚拟机中的 SQL Server：
+
+        `$BackupItemList = Get-AzRecoveryServicesBackupItem -vaultId $vault.ID -BackupManagementType "AzureWorkload" -WorkloadType "MSSQL"`
 
 1. 获取备份项。
 

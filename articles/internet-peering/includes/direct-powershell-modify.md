@@ -9,21 +9,21 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: b2609a069872ec55ac9068fadcbb3f312d68a630
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "81680777"
 ---
 本部分介绍如何对直接对等互连执行以下修改操作：
 
-* 添加直接对等连接。
-* 删除直接对等连接。
+* 添加直接对等互连连接。
+* 删除直接对等互连连接。
 * 升级或降级活动连接上的带宽。
 * 在活动连接上添加 IPv4 或 IPv6 会话。
 * 删除活动连接上的 IPv4 或 IPv6 会话。
 
-### <a name="add-direct-peering-connections"></a>添加直接对等连接
+### <a name="add-direct-peering-connections"></a>添加直接对等互连连接
 
 此示例说明如何将连接添加到现有直接对等互连。
 
@@ -44,9 +44,9 @@ $directPeering.Connections.Add($connection)
 $directPeering | Update-AzPeering
 ```
 
-### <a name="remove-direct-peering-connections"></a>删除直接对等连接
+### <a name="remove-direct-peering-connections"></a>删除直接对等互连连接
 
-PowerShell 当前不支持删除连接。 有关详细信息，请联系 [Microsoft 对等互连](mailto:peeringexperience@microsoft.com)。
+PowerShell 当前不支持删除连接。 有关详细信息，请联系 [Microsoft 对等互连](mailto:peeringexperience@microsoft.com)团队。
 
 <!--
 ```powershell
@@ -70,7 +70,7 @@ $directPeering | Update-AzPeering
 
 ### <a name="add-ipv4-or-ipv6-sessions-on-active-connections"></a>在活动连接上添加 IPv4 或 IPv6 会话
 
-此示例说明如何只使用一个 IPv4 会话在现有直接连接上添加 IPv6 会话。 
+此示例说明如何在只具有 IPv4 会话的现有直接连接上添加 IPv6 会话。 
 
 ```powershell
 
@@ -82,4 +82,4 @@ $directPeering | Update-AzPeering
 
 ### <a name="remove-ipv4-or-ipv6-sessions-on-active-connections"></a>删除活动连接上的 IPv4 或 IPv6 会话
 
-PowerShell 当前不支持从现有连接中删除 IPv4 或 IPv6 会话。 有关详细信息，请联系 [Microsoft 对等互连](mailto:peeringexperience@microsoft.com)。
+PowerShell 当前不支持从现有连接中删除 IPv4 或 IPv6 会话。 有关详细信息，请联系 [Microsoft 对等互连](mailto:peeringexperience@microsoft.com)团队。

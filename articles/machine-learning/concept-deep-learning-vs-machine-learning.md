@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 01/14/2020
+ms.date: 04/12/2021
 ms.custom: contperf-fy21q1,contperfq1
-ms.openlocfilehash: 48de06d28442b4d05cd3a7ab287732c0999e434c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9e87796c3557f21bb6192c7d7d0c0925d08d786
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101659692"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311747"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Azure 机器学习中的深度学习与机器学习
 
@@ -99,7 +99,7 @@ ms.locfileid: "101659692"
 
 基于深度学习方法的文本分析涉及到分析大量文本数据（例如医疗文档或开支收据）、识别模式，并从中创建有条理的简洁信息。
 
-公司可以使用深度学习来执行文本分析，以检测内幕交易以及政府法规的合规性。 另一个常见示例是保险欺诈：人们经常使用文本分析来分析大量的文件，以识别欺诈性保险索赔的可能性。 
+公司可以使用深度学习来执行文本分析，以检测内幕交易以及政府法规的合规性。 另一个常见示例是保险欺诈：人们经常使用文本分析来分析大量的文件，以识别欺诈性保险索赔的可能性。
 
 ## <a name="artificial-neural-networks"></a>人工神经网络
 
@@ -111,15 +111,33 @@ ms.locfileid: "101659692"
 
 前馈神经网络是最简单的人工神经网络类型。 在前馈网络中，信息只朝一个方向移动：从输入层移向输出层。 前馈神经网络通过使某个输入经历一系列隐藏层来转换该输入。 每个层由一组神经元组成，每个层完全连接到前一层中的所有神经元。 最后一个完全连接的层（输出层）代表生成的预测。
 
-### <a name="recurrent-neural-network"></a>递归神经网络
+### <a name="recurrent-neural-network-rnn"></a>循环神经网络 (RNN)
 
 递归神经网络是广泛使用的人工神经网络。 这些网络保存层的输出，并将其馈送回到输入层，以帮助预测该层的结果。 递归神经网络具有极高的学习能力。 它们广泛应用于时序预测、学习手写和识别语言等复杂任务。
 
-### <a name="convolutional-neural-network"></a>卷积神经网络
+### <a name="convolutional-neural-network-cnn"></a>卷积神经网络 (CNN)
 
 卷积神经网络是特别高效的人工神经网络，它提供独特的体系结构。 层组织成三个维度：宽度、高度和深度。 一个层中的神经元不会连接到下一层中的所有神经元，而只连接到下一层神经元的较小区域。 最终输出化简为沿深度维组织的单个概率评分向量。 
 
 卷积神经网络已在视频识别、图像识别和推荐器系统等领域中使用。
+
+### <a name="generative-adversarial-network-gan"></a>生成对抗网络 (GAN)
+
+生成对抗网络是为创建真实内容（如映像）而训练的生成模型。 它由两个称为“生成器”和“鉴别器”的网络组成。 这两个网络同时进行训练。 在训练过程中，生成器使用随机噪音来创建新合成数据（与真实数据非常相似）。 鉴别器将生成器的输出作为输入，并使用实际数据来确定生成的内容是真实内容还是合成内容。 两个网络彼此竞争。 生成器正在尝试生成与真实内容几乎没有差别的合成内容，而鉴别器正在尝试将输入正确分类为真实或合成内容。 这一输出随后将被用来更新两个网络的权重，帮助它们更好地实现各自的目标。
+
+生成对抗网络用于解决映像转换和时限进度等问题。
+
+### <a name="transformers"></a>Transformers
+
+转换器是一种模型体系结构，适用于解决包含序列（如文本或时序数据）的问题。 它们包含[编码器层和解码器层](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)#Encoder)。 编码器接受输入，并将其映射到包含上下文等信息的数值表示形式。 解码器使用编码器中的信息生成输出，例如已翻译文本。 使转换器不同于包含编码器和解码器的其他体系结构的是关注子层。 关注是指根据其上下文相对于序列中其他输入的重要性，专注于输入的特定部分。 例如，在总结一篇新闻文章时，并不是所有句子都与描述中心思想相关。 通过把重点放在文章的关键词上，总结可以用一句话来完成，即标题。
+
+转换器已用于解决自然语言处理问题，例如翻译、文本生成、问题解答和文本摘要。
+
+转换器的一些著名实现有：
+
+- Bidirectional Encoder Representations from Transformers (BERT)
+- Generative Pre-trained Transformer 2 (GPT-2)
+- Generative Pre-trained Transformer 3 (GPT-3)
 
 ## <a name="next-steps"></a>后续步骤
 

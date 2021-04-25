@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 18d0a24de6f0775fdb35799512f9796a323d353a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: be12a9054fd67b243530ff671c10fa53acafc308
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045478"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366345"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>从网络性能监视器迁移到连接监视器
 
@@ -43,7 +43,7 @@ ms.locfileid: "105045478"
     
 ## <a name="prerequisites"></a>先决条件
 
-* 确保在订阅和 Log Analytics 工作区的区域中启用了网络观察程序。 
+* 确保在订阅和 Log Analytics 工作区的区域中启用了网络观察程序。 如果未执行此操作，可能会出现一个错误，指出“在尝试迁移之前，请在选择订阅和所选的 LA 工作区位置中启用网络观察程序扩展”。
 * 如果 Azure VM（所属的区域/订阅不同于 Log Analytics 工作区的区域/订阅）用作终结点，请确保已为订阅和区域启用网络观察程序。   
 * 必须通过网络观察程序扩展启用安装有 Log Analytics 代理的 Azure 虚拟机。
 
@@ -57,6 +57,10 @@ ms.locfileid: "105045478"
     
 1. 在下拉列表中，选择订阅和工作区，然后选择要迁移的 NPM 功能。 
 1. 选择“导入”以迁移测试。
+* 如果工作区中未启用 NPM，则会出现一个错误，指出“未找到有效的 NPM 配置”。 
+* 如果在步骤 2 中选择的功能中不存在任何测试，则会出现一个错误，指出“所选工作区没有 <feature> 配置”。
+* 如果没有有效的测试，则会出现一个错误，指出“所选工作区没有有效的测试”
+* 你的测试可能包含不再处于活动状态，但可能在过去处于活动状态的代理。 会出现一个错误，指出“少数测试包含不再处于活动状态的代理。 非活动代理列表 - {0}。 这些代理可能在过去运行，但已关闭/不再运行。 启用代理并迁移到连接监视器。 单击‘继续’以迁移不包含非活动代理的测试”。
 
 迁移开始后，将进行以下更改： 
 * 创建新的连接监视器资源。

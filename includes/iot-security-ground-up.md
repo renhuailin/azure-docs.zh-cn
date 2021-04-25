@@ -9,10 +9,10 @@ ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 234407e6973657ba3ad0d78189e7cb1d363c15e2
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95562776"
 ---
 物联网 (IoT) 使全球企业面临独特的安全、隐私权与合规性挑战。 不同于传统网络技术（这些问题是以软件及其实现方式为中心），IoT 在意的是当网络与物理世界融合时会发生什么情况。 保护 IoT 解决方案要求确保安全预配设备，保护这些设备与云之间的连接，以及在处理和存储期间保护云中数据的安全。 但是，针对此类功能运行的是资源受限的设备、根据地理位置分布的部署，以及解决方案中的大量设备。
@@ -31,7 +31,7 @@ ms.locfileid: "95562776"
 
 ## <a name="secure-infrastructure-from-the-ground-up"></a>安全基础结构基础知识
 
-[Microsoft 云](https://azure.microsoft.com)基础结构支持127国家/地区的1000000000多个客户。 使用 Microsoft 数十年之久构建企业软件的体验，并在世界各地运行一些大型在线服务，相较于多数客户可自行实现，Microsoft 云提供更高级别的增强安全、隐私权、合规性及威胁缓解实践。
+[Microsoft 云](https://azure.microsoft.com)基础结构支持 127 个国家/地区十亿个以上的客户。 使用 Microsoft 数十年之久构建企业软件的体验，并在世界各地运行一些大型在线服务，相较于多数客户可自行实现，Microsoft 云提供更高级别的增强安全、隐私权、合规性及威胁缓解实践。
 
 [安全开发生命周期 (SDL)](https://www.microsoft.com/sdl/) 提供必要的全企业开发过程，将安全要求嵌入整个软件生命周期中。 为了帮助确保运行活动遵循一致的安全优先级，SDL 使用 Microsoft 运行安全保证 (OSA) 流程中规定的严苛安全指导方针。 Microsoft 还与第三方审核机构合作以持续验证其符合法规遵循义务，并通过创建卓越的中心（包括 Microsoft 反数字犯罪部门、Microsoft 安全响应中心和 Microsoft 恶意软件防护中心），致力于产生广泛的安全成果。
 
@@ -89,9 +89,9 @@ Microsoft 的系统提供持续的入侵检测和防护、服务攻击预防、�
 
 将数据移到云中之后，可以在任何用户定义工作流中处理和存储数据。 访问数据的每个部分根据所用的存储服务通过 Azure Active Directory 来控制。
 
-IoT 基础结构使用的所有密钥存储在云的安全存储中，并具有滚动更新能力，以防密钥需要重新预配。 数据可以存储在 [Azure Cosmos DB](../articles/cosmos-db/introduction.md) 或 [SQL 数据库](../articles/azure-sql/database/sql-database-paas-overview.md)中，启用所需安全级别的定义。 此外，Azure 提供一种方式用于监视和审核对数据的所有访问权限，以提醒有任何入侵或未经授权的访问。
+IoT 基础结构使用的所有密钥存储在云的安全存储中，并具有滚动更新能力，以防密钥需要重新预配。 数据可以存储在 [Azure Cosmos DB](../articles/cosmos-db/introduction.md) 或 [SQL 数据库](../articles/azure-sql/database/sql-database-paas-overview.md)中，启用对所需安全级别的定义。 此外，Azure 提供一种方式用于监视和审核对数据的所有访问权限，以提醒有任何入侵或未经授权的访问。
 
-## <a name="conclusion"></a>结论
+## <a name="conclusion"></a>结束语
 
 物联网是从事物开始 — 对业务最重要的事物。 IoT 可以通过降低成本、提高营收和使业务转型，为企业提供令人赞叹的价值。 这种转型的成败主要取决于是否选择了正确的 IoT 软件和服务提供商。 这意味着要找到适当的提供商，其不仅可通过了解企业需要与要求来催化这种转型，也将提供使用安全、隐私、透明性与合规性构建的服务和软件作为主要设计考虑因素。 Microsoft 具有开发和部署安全软件与服务的丰富经验，并持续在这个新的物联网时代中保持领先地位。
 
@@ -107,8 +107,8 @@ IoT 基础结构使用的所有密钥存储在云的安全存储中，并具有�
 
 * [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)：云中的实时流处理，可让用户快速开发和部署低成本分析解决方案，以便从设备、传感器、基础结构和应用程序实时获取深入见解。 来自这种完全托管服务的数据可缩放为任何数量，同时保持高吞吐量、低延迟和复原能力。
 
-* [**Azure 应用服务**](https://azure.microsoft.com/services/app-service/)：一个云平台，用于构建可连接到任何位置的强大 web 和移动应用;在云中或本地。 构建具有吸引力的 iOS、Android 和 Windows 移动应用。 与软件即服务 (SaaS) 和企业应用程序相集成，这些应用程序一经使用便可直接连接到数十种基于云的服务和企业应用程序。 使用偏好的语言和 IDE（.NET、Node.js、PHP、Python 或 Java）进行编码，比以往更快速地构建 Web 应用和 API。
+* [**Azure 应用程序服务**](https://azure.microsoft.com/services/app-service/)：一个云平台，用以构建能够连接到任何地方（在云中或本地）的数据的强大 Web 和移动应用。 构建具有吸引力的 iOS、Android 和 Windows 移动应用。 与软件即服务 (SaaS) 和企业应用程序相集成，这些应用程序一经使用便可直接连接到数十种基于云的服务和企业应用程序。 使用偏好的语言和 IDE（.NET、Node.js、PHP、Python 或 Java）进行编码，比以往更快速地构建 Web 应用和 API。
 
-* [**逻辑应用**](https://azure.microsoft.com/services/app-service/logic/)： Azure App Service 的逻辑应用功能可帮助将 IoT 解决方案集成到现有业务线系统并自动执行工作流程。 逻辑应用可让开发人员设计从触发过程开始，并运行一系列步骤的工作流 — 使用功能强大的连接器来与业务过程集成的规则和操作。 Logic Apps 提供与 SaaS、基于云和本地应用程序的广泛生态系统的实时连接。
+* [Logic Apps](https://azure.microsoft.com/services/app-service/logic/)：Azure 应用服务的逻辑应用功能可帮助用户将 IoT 解决方案集成到现有业务线系统并自动执行工作流程。 逻辑应用可让开发人员设计从触发过程开始，并运行一系列步骤的工作流 — 使用功能强大的连接器来与业务过程集成的规则和操作。 Logic Apps 提供与 SaaS、基于云和本地应用程序的广泛生态系统的实时连接。
 
-* [**Azure Blob 存储**](https://azure.microsoft.com/services/storage/)：可靠且经济实惠的云存储，适用于设备发送到云的数据。
+* [**Azure Blob 存储**](https://azure.microsoft.com/services/storage/)：可靠且符合经济效益的云存储，适用于设备发送到云的数据。

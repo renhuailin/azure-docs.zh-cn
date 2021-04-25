@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9434bd4042798dc05a33401e1884e11a73774936
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 21f31a21921953148ae0438cee04d846706161cc
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102448330"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382923"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 OpenID Connect 注册与登录
 
@@ -43,7 +43,7 @@ ms.locfileid: "102448330"
 
 ## <a name="scope"></a>作用域
 
-范围定义你希望从自定义标识提供者收集的信息和权限。 OpenID Connect 请求必须包含 `openid` 范围值，以便从标识提供者接收 ID 令牌。 如果没有 ID 令牌，用户就无法使用自定义标识提供者登录到 Azure AD B2C。 可以追加其他范围（以空格分隔）。 请参阅自定义标识提供者的文档，查看其他可用范围。
+范围定义了你希望从标识提供者处收集的信息和权限，例如 `openid profile`。 为便于从标识提供者处接收 ID 令牌，必须指定 `openid` 范围。 如果没有 ID 令牌，用户就无法使用自定义标识提供者登录到 Azure AD B2C。 可以追加其他范围（以空格分隔）。 请参阅自定义标识提供者的文档，查看其他可用范围。
 
 ## <a name="response-type"></a>响应类型
 
@@ -80,7 +80,7 @@ ms.locfileid: "102448330"
 1. 在“社交标识提供者”下，选择已添加的标识提供者。 例如，Contoso。
 1. 选择“保存”。
 1. 若要测试策略，请选择“运行用户流”。
-1. 对于“应用程序”，选择前面已注册的名为“testapp1”的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择前面已注册的名为 *testapp1* 的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 选择“运行用户流”按钮。
 1. 在注册或登录页中，选择要登录的标识提供者。 例如，Contoso。
 

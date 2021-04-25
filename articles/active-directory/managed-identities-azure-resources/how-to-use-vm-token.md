@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 04/12/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 541f76ad825f492679530902c571096ca4b01902
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1ee7739d9dbfd34190dc1e856b98fdd21be15743
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98726225"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364934"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>如何在 Azure VM 上使用 Azure 资源的托管标识获取访问令牌 
 
@@ -80,22 +80,6 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `object_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 object_id。 如果 VM 有用户分配的多个托管标识，则为必需的。|
 | `client_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 client_id。 如果 VM 有用户分配的多个托管标识，则为必需的。|
 | `mi_res_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 mi_res_id（Azure 资源 ID）。 如果 VM 有用户分配的多个托管标识，则为必需的。 |
-
-使用 Azure 资源托管标识 VM 扩展终结点（计划于 2019 年 1 月弃用）的示例请求：
-
-```http
-GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
-Metadata: true
-```
-
-| 元素 | 说明 |
-| ------- | ----------- |
-| `GET` | HTTP 谓词，指示想要从终结点检索数据。 在本例中，该数据为 OAuth 访问令牌。 | 
-| `http://localhost:50342/oauth2/token` | Azure 资源的托管标识终结点，其中 50342 是可配置的默认端口。 |
-| `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 它也会显示在所颁发令牌的 `aud`（受众）声明中。 本示例请求一个用于访问 Azure 资源管理器的、应用 ID URI 为 `https://management.azure.com/` 的令牌。 |
-| `Metadata` | 一个 HTTP 请求标头字段，Azure 资源的托管标识需要使用该元素来缓解服务器端请求伪造 (SSRF) 攻击。 必须将此值设置为“true”（全小写）。|
-| `object_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 object_id。 如果 VM 有用户分配的多个托管标识，则为必需的。|
-| `client_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 client_id。 如果 VM 有用户分配的多个托管标识，则为必需的。|
 
 示例响应：
 
@@ -342,11 +326,12 @@ echo The managed identities for Azure resources access token is $access_token
 
 ## <a name="token-caching"></a>令牌缓存
 
-正在使用的 Azure 资源的托管标识子系统（IMDS/Azure 资源 VM 扩展的托管标识）缓存令牌时，我们还建议在代码中实现令牌缓存。 因此，应准备资源指示令牌已过期的方案。 
+尽管 Azure 资源托管标识子系统确实会缓存令牌，但我们仍建议在代码中实施令牌缓存。 因此，应准备资源指示令牌已过期的方案。 
 
 仅在下列情况下会对 Azure AD 结果进行在线调用：
-- 由于 Azure 资源子系统缓存的托管标识中没有令牌，因此将发生缓存失误
-- 缓存令牌已过期
+
+- 由于 Azure 资源子系统托管标识缓存中没有令牌，因此会发生缓存失误。
+- 缓存令牌已过期。
 
 ## <a name="error-handling"></a>错误处理。
 
@@ -377,7 +362,7 @@ Azure 资源的托管标识终结点通过 HTTP 响应消息标头的状态代�
 | 400 错误的请求 | bad_request_102 | 未指定必需的元数据标头 | 请求中缺少 `Metadata` 请求标头字段，或者该字段的格式不正确。 必须将该值指定为 `true`（全小写）。 有关示例，请参阅前面 REST 部分中的“示例请求”。|
 | 401 未授权 | unknown_source | 未知源 \<URI\> | 检查是否已正确设置 HTTP GET 请求 URI 的格式。 必须将 `scheme:host/resource-path` 部分指定为 `http://localhost:50342/oauth2/token`。 有关示例，请参阅前面 REST 部分中的“示例请求”。|
 |           | invalid_request | 请求中缺少必需的参数、包含无效的参数值、多次包含某个参数，或格式不正确。 |  |
-|           | unauthorized_client | 客户端无权使用此方法请求访问令牌。 | 此错误是由于某个请求未使用本地环回来调用扩展导致的，或者是由于发出请求的 VM 没有为 Azure 资源正确配置托管标识导致的。 如需 VM 配置方面的帮助，请参阅[使用 Azure 门户在 VM 上配置 Azure 资源的托管标识](qs-configure-portal-windows-vm.md)。 |
+|           | unauthorized_client | 客户端无权使用此方法请求访问令牌。 | 此错误是由在未正确配置 Azure 资源托管标识的 VM 上发出请求造成的。 如需 VM 配置方面的帮助，请参阅[使用 Azure 门户在 VM 上配置 Azure 资源的托管标识](qs-configure-portal-windows-vm.md)。 |
 |           | access_denied | 资源所有者或授权服务器拒绝了请求。 |  |
 |           | unsupported_response_type | 授权服务器不支持使用此方法获取访问令牌。 |  |
 |           | invalid_scope | 请求的范围无效、未知或格式不正确。 |  |

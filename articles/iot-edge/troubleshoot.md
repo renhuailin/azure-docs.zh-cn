@@ -8,12 +8,12 @@ ms.date: 04/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 56eff095cca1b24678f742e4c3ce8dfb1aaea2dd
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 6fa49af946a1e5fc631eeb1ee9b9c7c99d3adff8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275577"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308262"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>排除 IoT Edge 设备故障
 
@@ -64,6 +64,18 @@ sudo iotedge check
 * “生产准备情况检查”将寻找建议的生产最佳做法，例如设备证书颁发机构 (CA) 颁发证书的状态以及模块日志文件配置。
 
 IoT Edge 检查工具使用容器运行其诊断。 容器映像 (`mcr.microsoft.com/azureiotedge-diagnostics:latest`)，可通过 [Microsoft 容器注册表](https://github.com/microsoft/containerregistry)获取。 如果需要在不直接访问 Internet 的情况下运行对设备的检查，你的设备需要具有对容器映像的访问权限。
+
+<!-- <1.2> -->
+:::moniker range=">=iotedge-2020-11"
+
+在使用嵌套 IoT Edge 设备的方案中，可以通过路由通过父设备拉取的映像来访问子设备上的诊断映像。
+
+```bash
+sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:<port_for_api_proxy_module>/azureiotedge-diagnostics:1.2
+```
+
+<!-- </1.2> -->
+:::moniker-end
 
 有关此工具运行的每个诊断检查的信息，包括可在出现错误或警告时执行的操作，请参阅 [IoT Edge 排除故障检查](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)。
 
@@ -161,7 +173,7 @@ sudo iotedge support-bundle --since 6h
 
      ```bash
      [Service]
-     Environment=IOTEDGE_LOG=edgelet=debug
+     Environment=IOTEDGE_LOG=debug
      ```
 
   3. 重启 IoT Edge 安全守护程序：
@@ -302,7 +314,7 @@ iotedge logs <container name>
 <!-- 1.2 -->
 :::moniker range=">=iotedge-2020-11"
 
-可查看通过 IoT Edge 中心的消息，并收集来自运行时容器的详细日志的见解。 若要在这些容器上启用详细日志，请设置部署清单中的 `RuntimeLogLevel` 环境变量。
+查看通过 IoT Edge 中心的消息，并通过来自运行时容器的详细日志收集见解。 若要在这些容器上启用详细日志，请在部署清单中设置 `RuntimeLogLevel` 环境变量。
 
 若要查看通过 IoT Edge 中心的消息，请将 edgeHub 模块的 `RuntimeLogLevel` 环境变量设置为 `debug`。
 

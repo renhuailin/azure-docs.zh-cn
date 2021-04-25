@@ -3,13 +3,13 @@ author: v-dalc
 ms.service: databox
 ms.author: alkohli
 ms.topic: include
-ms.date: 03/02/2021
-ms.openlocfilehash: 57415ec76a3e8d9fc3c160b47668d3419ff6ea5c
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.date: 03/23/2021
+ms.openlocfilehash: 0d912d0ac3f0fcf4c52116e67909038a1973304b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103621969"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105104972"
 ---
 使用 IoT Edge 代理运行时响应解决与计算相关的错误。 下面是可能的响应的列表：
 
@@ -32,7 +32,7 @@ ms.locfileid: "103621969"
 
 #### <a name="suggested-solution"></a>建议的解决方案
 
-删除 IoT Edge 服务，然后重新部署模块。 有关详细信息，请参阅[删除 IoT Edge 服务](../articles/databox-online/azure-stack-edge-j-series-manage-compute.md#remove-iot-edge-service)。
+删除 IoT Edge 服务，然后重新部署模块。 有关详细信息，请参阅[删除 IoT Edge 服务](../articles/databox-online/azure-stack-edge-gpu-manage-compute.md#remove-iot-edge-service)。
 
 
 ### <a name="modules-show-as-running-but-are-not-working"></a>模块显示为正在运行，但不起作用
@@ -65,4 +65,44 @@ ms.locfileid: "103621969"
 1. 为“Kubernetes 外部服务 IP”输入静态的连续 IP 范围。 `edgehub` 服务需要 1 个 IP。 此外，每个 IoT Edge 模块以及要部署的每个 VM 都需要一个 IP。 
 1. 选择“应用”。 更改的 IP 范围应立即生效。
 
-有关详细信息，请参阅[更改容器的外部服务 IP](../articles/databox-online/azure-stack-edge-j-series-manage-compute.md#change-external-service-ips-for-containers)。
+有关详细信息，请参阅[更改容器的外部服务 IP](../articles/databox-online/azure-stack-edge-gpu-manage-compute.md#change-external-service-ips-for-containers)。
+
+### <a name="configure-static-ips-for-iot-edge-modules"></a>为 IoT Edge 模块配置静态 IP
+
+#### <a name="problem-description"></a>问题描述
+
+Kubernetes 向 Azure Stack Edge Pro GPU 设备上的每个 IoT Edge 模块分配动态 IP。 需要一种方法来为模块配置静态 Ip。
+
+#### <a name="suggested-solution"></a>建议的解决方案
+
+可以通过 K8s 实验性部分为 IoT Edge 模块指定固定 IP 地址，如下所述： 
+
+```yaml
+{
+  "k8s-experimental": {
+    "serviceOptions" : {
+      "loadBalancerIP" : "100.23.201.78",
+      "type" : "LoadBalancer"
+    }
+  }
+}
+```
+### <a name="expose-kubernetes-service-as-cluster-ip-service-for-internal-communication"></a>将 Kubernetes 服务公开为用于内部通信的群集 IP 服务
+
+#### <a name="problem-description"></a>问题描述
+
+默认情况下，IoT 服务类型为负载均衡器类型，并为其分配面向外部的 IP 地址。 你可能不需要应用程序的面向外部的 IP 地址。 你可能需要将 KUbernetes 群集中的 Pod 公开为其他 Pod 用于访问，而不是作为外部公开的负载均衡器服务。 
+
+#### <a name="suggested-solution"></a>建议的解决方案
+
+可以通过 K8s 实验性部分使用创建选项。 以下服务选项应适用于端口绑定。
+
+```yaml
+{
+"k8s-experimental": {
+  "serviceOptions" : {
+    "type" : "ClusterIP"
+    }
+  }
+}
+```

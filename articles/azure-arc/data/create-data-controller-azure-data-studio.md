@@ -7,20 +7,22 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 12/09/2020
+ms.date: 04/07/2021
 ms.topic: how-to
-ms.openlocfilehash: f2d44cc769e9673eeb75828126f806d2b2308a17
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6e61c8819e7ccd868ec92458cff69c37f9277d80
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103573874"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029618"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>在 Azure Data Studio 中创建数据控制器
 
 可以使用 Azure Data Studio 通过部署向导和笔记本创建数据控制器。
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+目前，可以使用本文中所述的方法创建数据控制器。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,13 +35,13 @@ ms.locfileid: "103573874"
 按照以下步骤使用部署向导创建 Azure Arc 数据控制器。
 
 1. 在 Azure Data Studio 中，单击左侧导航栏上的“连接”选项卡。
-2. 单击“连接”面板顶部的“…”按钮，然后选择“新建部署…” 
-3. 在新建部署向导中，选择“Azure Arc 数据控制器”，然后单击底部的“选择”按钮 。
-4. 确保必备工具可用并满足所需的版本。 单击“下一步”。
-5. 使用默认的 kubeconfig 文件或选择另一个文件。  单击“下一步”。
-6. 选择 Kubernetes 群集上下文。 单击“下一步”。
-7. 根据目标 Kubernetes 群集选择部署配置文件。 单击“下一步”。
-8. 如果使用的是 Azure Red Hat OpenShift 或 Red Hat OpenShift 容器平台，请应用安全性上下文约束。 按照[在 OpenShift 上为已启用 Azure Arc 的数据服务应用安全性上下文约束](how-to-apply-security-context-constraint.md)中的说明进行操作。
+1. 单击“连接”面板顶部的“…”按钮，然后选择“新建部署…” 
+1. 在新建部署向导中，选择“Azure Arc 数据控制器”，然后单击底部的“选择”按钮 。
+1. 确保必备工具可用并满足所需的版本。 单击“下一步”。
+1. 使用默认的 kubeconfig 文件或选择另一个文件。  单击“下一步”。
+1. 选择 Kubernetes 群集上下文。 单击“下一步”。
+1. 根据目标 Kubernetes 群集选择部署配置文件。 单击“下一步”。
+1. 如果使用的是 Azure Red Hat OpenShift 或 Red Hat OpenShift 容器平台，请应用安全性上下文约束。 按照[在 OpenShift 上为已启用 Azure Arc 的数据服务应用安全性上下文约束](how-to-apply-security-context-constraint.md)中的说明进行操作。
 
    >[!IMPORTANT]
    >在 Azure Red Hat OpenShift 或 Red Hat OpenShift 容器平台上，必须先应用安全性上下文约束，然后才能创建数据控制器。
@@ -48,23 +50,21 @@ ms.locfileid: "103573874"
 1. 选择 Azure 位置。
    
    此处选择的 Azure 位置是 Azure 中将存储数据控制器元数据及其所管理数据库实例元数据的位置。 数据控制器和数据库实例实际上将在 Kubernetes 群集中创建，无论该群集在何处。
+   
+   完成操作后，单击“下一步”。
 
-10. 选择适当的连接模式。 了解有关[连接模式](./connectivity.md)的详细信息。 单击“下一步”。
-
-    如果选择直接连接模式，则需要服务主体凭据，如[创建服务主体](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal)中所述。
-
-11. 为数据控制器和将在其中创建数据控制器的命名空间输入名称。
+1. 为数据控制器和将在其中创建数据控制器的命名空间输入名称。
 
     数据控制器和命名空间名称将用于在 Kubernetes 群集中创建自定义资源，因此它们必须符合 [Kubernetes 命名约定](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names)。
     
     如果命名空间已存在，则在命名空间还不包含其他 Kubernetes 对象（pod 等）的情况下，将使用该命名空间。如果命名空间不存在，则会尝试创建命名空间。  在 Kubernetes 群集中创建命名空间需要 Kubernetes 群集管理员权限。  如果你没有 Kubernetes 群集管理员权限，请让 Kubernetes 群集管理员执行[使用 Kubernetes 原生工具创建数据控制器](./create-data-controller-using-kubernetes-native-tools.md)一文中的前几个步骤；在你完成此向导之前，Kubernetes 管理员需要执行这些步骤。
 
 
-12. 选择将在其中部署数据控制器的存储类。 
-13.  输入用户名和密码，并确认数据控制器管理员用户帐户的密码。 单击“下一步”。
+1. 选择将在其中部署数据控制器的存储类。 
+1.  输入用户名和密码，并确认数据控制器管理员用户帐户的密码。 单击“下一步”。
 
-14. 查看部署配置。
-15. 单击“部署”以部署所需的配置，或单击“脚本到笔记本”以查看部署说明或进行任何必要的更改（例如存储类名称或服务类型） 。 单击笔记本顶部的“全部运行”。
+1. 查看部署配置。
+1. 单击“部署”以部署所需的配置，或单击“脚本到笔记本”以查看部署说明或进行任何必要的更改（例如存储类名称或服务类型） 。 单击笔记本顶部的“全部运行”。
 
 ## <a name="monitoring-the-creation-status"></a>监视创建状态
 

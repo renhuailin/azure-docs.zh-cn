@@ -2,21 +2,22 @@
 title: 在用户帐户下运行任务
 description: 了解用户帐户的类型以及如何配置它们。
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 04/13/2021
 ms.custom: seodec18
-ms.openlocfilehash: cce374e7d7ffb513bed882b048ea54bcbad81b0b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 02cad0bff9e76ec5db82c417f2439b12ef088045
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88719353"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389275"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>在批处理中的用户帐户下运行任务
 
 > [!NOTE]
 > 出于安全原因，本文中所述的用户帐户与用于远程桌面协议 (RDP) 或安全外壳 (SSH) 的用户帐户不同。
 >
-> 若要通过 SSH 连接到运行 Linux 虚拟机配置的节点，请参阅[使用远程桌面连接到 Azure 中的 Linux VM](../virtual-machines/linux/use-remote-desktop.md)。 若要通过 RDP 连接到运行 Windows 的节点，请参阅[连接到 Windows Server VM](../virtual-machines/windows/connect-logon.md)。<br /><br />
+> 若要通过 SSH 连接到运行 Linux 虚拟机配置的节点，请参阅 [安装和配置 xrdp 以配合使用远程桌面与 Ubuntu](../virtual-machines/linux/use-remote-desktop.md)。 若要通过 RDP 连接到运行 Windows 的节点，请参阅[如何连接并登录运行 Windows 的 Azure 虚拟机](../virtual-machines/windows/connect-logon.md)。
+>
 > 若要通过 RDP 连接到运行云服务配置的节点，请参阅[为 Azure 云服务中的角色启用远程桌面连接](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)。
 
 Azure Batch 中的任务始终在用户帐户下运行。 默认情况下，任务在没有管理员权限的标准用户帐户下运行。 对于某些方案，建议你配置用于运行任务的用户帐户。 本文介绍用户帐户的类型以及如何为方案配置这些帐户。
@@ -30,7 +31,7 @@ Azure Batch 提供两种类型的用户帐户来运行任务：
 - **命名用户帐户。** 创建池时，可为该池指定一个或多个命名用户帐户。 每个用户帐户在该池的每个节点上创建。 除了帐户名以外，还可以指定用户帐户密码、提升级别，对于 Linux 池，还可以指定 SSH 私钥。 添加任务时，可以指定任务应在其下运行的命名用户帐户。
 
 > [!IMPORTANT]
-> 批处理服务版本 2017-01-01.4.0 引入了一项重大更改，需要更新代码才能调用该版本。 如果要从旧版批处理迁移代码，请注意，REST API 或批处理客户端库不再支持 **runElevated** 属性。 请使用任务的新 **userIdentity** 属性指定提升级别。 有关如何在使用某个客户端库时更新 Batch 代码的快速指导，请参阅[将代码更新到最新的 Batch 客户端库](#update-your-code-to-the-latest-batch-client-library)。
+> Batch 服务 2017-01-01.4.0 版引入了一项重大更改，需要更新代码才能调用该版本或更高版本。 请参阅[将代码更新到最新 Batch 客户端库](#update-your-code-to-the-latest-batch-client-library)，直接参考如何更新旧版 Batch 代码。
 
 ## <a name="user-account-access-to-files-and-directories"></a>用户帐户对文件和目录的访问权限
 
@@ -77,6 +78,7 @@ Azure Batch 提供两种类型的用户帐户来运行任务：
 ```csharp
 task.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin, scope: AutoUserScope.Task));
 ```
+
 #### <a name="batch-java"></a>批处理 Java
 
 ```java
@@ -150,7 +152,13 @@ pool = batchClient.PoolOperations.CreatePool(
     poolId: poolId,
     targetDedicatedComputeNodes: 3,
     virtualMachineSize: "standard_d1_v2",
-    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));
+    VirtualMachineConfiguration: new VirtualMachineConfiguration(
+    imageReference: new ImageReference(
+                        publisher: "MicrosoftWindowsServer",
+                        offer: "WindowsServer",
+                        sku: "2019-datacenter-core",
+                        version: "latest"),
+    nodeAgentSkuId: "batch.node.windows amd64");
 
 // Add named user accounts.
 pool.UserAccounts = new List<UserAccount>
@@ -236,7 +244,7 @@ PoolAddParameter addParameter = new PoolAddParameter()
         .withId(poolId)
         .withTargetDedicatedNodes(POOL_VM_COUNT)
         .withVmSize(POOL_VM_SIZE)
-        .withCloudServiceConfiguration(configuration)
+        .withVirtualMachineConfiguration(configuration)
         .withUserAccounts(userList);
 batchClient.poolOperations().createPool(addParameter);
 ```
@@ -278,7 +286,7 @@ task.UserIdentity = new UserIdentity(AdminUserAccountName);
 
 ## <a name="update-your-code-to-the-latest-batch-client-library"></a>将代码更新到最新的批处理客户端库
 
-批处理服务版本 2017-01-01.4.0 引入了一项重大更改，已将早期版本中的 **runElevated** 属性替换为 **userIdentity** 属性。 下表提供了从早期版本的客户端库更新代码时可以参考的简单更改对照。
+Batch 服务 2017-01-01.4.0 版引入了一项重大更改，将早期版本中的 **runElevated** 属性替换为 **userIdentity** 属性。 下表提供了从早期版本的客户端库更新代码时可以参考的简单更改对照。
 
 ### <a name="batch-net"></a>批处理 .NET
 

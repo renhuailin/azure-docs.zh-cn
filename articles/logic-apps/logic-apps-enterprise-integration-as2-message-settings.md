@@ -1,6 +1,6 @@
 ---
 title: AS2 消息设置
-description: 带 Enterprise Integration Pack 的 Azure 逻辑应用中的 AS2 发送和接收设置的参考指南
+description: 有关在配有 Enterprise Integration Pack 的 Azure 逻辑应用中进行 AS2 发送和接收设置的参考指南
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -9,15 +9,15 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2019
 ms.openlocfilehash: ad047a30b901d71604c775e9882b0f242f094638
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74793027"
 ---
-# <a name="reference-for-as2-message-settings-in-azure-logic-apps-with-enterprise-integration-pack"></a>带 Enterprise Integration Pack 的 Azure 逻辑应用中的 AS2 消息设置参考
+# <a name="reference-for-as2-message-settings-in-azure-logic-apps-with-enterprise-integration-pack"></a>有关在配有 Enterprise Integration Pack 的 Azure 逻辑应用中进行 AS2 消息设置的参考指南
 
-此参考描述了可设置的属性，这些属性用于指定 AS2 协议处理在贸易合作伙伴之间发送和接收的消息的方式。 根据要与其交换消息的合作伙伴达成的协议来设置这些属性。
+本参考指南将介绍在指定 AS2 协议如何处理贸易合作伙伴之间交换的消息时可设置的属性。 请根据与消息交换合作伙伴之间达成的协议来配置这些属性。
 
 <a name="AS2-incoming-messages"></a>
 
@@ -25,17 +25,17 @@ ms.locfileid: "74793027"
 
 ![选择“接收设置”](./media/logic-apps-enterprise-integration-as2-message-settings/receive-settings.png)
 
-| properties | 必选 | 说明 |
+| 属性 | 必选 | 说明 |
 |----------|----------|-------------|
-| **重写消息属性** | 否 | 用属性设置重写传入消息的属性。 |
-| **应对消息进行签名** | 否 | 指定是否必须对所有传入消息进行数字签名。 如果需要签名，请在“证书”列表中，选择现有的来宾合作伙伴公共证书来验证消息的签名。  如果没有证书，请详细了解如何[添加证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。 |
-| **应加密消息** | 否 | 指定是否必须对所有传入消息进行加密。 未加密的消息会被拒绝。 如果需要加密，请在“证书”列表中，选择现有的宿主合作伙伴专用证书来解密传入的消息。  如果没有证书，请详细了解如何[添加证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。 |
-| **应压缩消息** | 否 | 指定是否必须对所有传入消息进行压缩。 未压缩的消息会被拒绝。 |
-| **禁止消息 ID 重复** | 否 | 指定是否允许消息使用重复 ID。 如果不允许重复 ID，请选择检查的间隔天数。 也可选择是否暂停重复项。 |
+| **替代消息属性** | 否 | 用属性设置替代传入消息的属性。 |
+| **应对消息进行签名** | 否 | 指定是否必须对所有传入消息进行数字签名。 若需要签名，在“证书”列表中选择现有来宾合作伙伴公共证书来验证消息的签名。 若没有证书，请详细了解如何[添加证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。 |
+| **对消息进行加密** | 否 | 指定是否必须对所有传入消息进行加密。 未加密的消息会被拒绝。 若需要加密，在“证书”列表中选择现有宿主合作伙伴私有证书来解密传入的消息。 若没有证书，请详细了解如何[添加证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。 |
+| **对消息进行压缩** | 否 | 指定是否必须对所有传入消息进行压缩。 未压缩的消息会被拒绝。 |
+| 禁用消息 ID 重复项 | 否 | 指定是否允许消息具有重复 ID。 若禁用重复 ID，请选择检查的间隔天数。 还可选择是否暂停重复项。 |
 | **MDN 文本** | 否 | 指定要发送到消息发送方的默认消息处置通知 (MDN)。 |
 | **发送 MDN** | 否 | 指定是否为接收的消息发送同步 MDN。  |
-| **发送签名的 MDN** | 否 | 指定是否为接收的消息发送签名的 MDN。 如果需要签名，请从“MIC 算法”  列表中选择用于消息签名的算法。 |
-| **发送异步 MDN** | 否 | 指定是否异步发送 MDN。 如果选择异步 MDN，请在“URL”  框中指定要将 MDN 发送到的 URL。 |
+| **发送已签名的 MDN** | 否 | 指定是否为接收的消息发送已签名的 MDN。 若需要签名，请在“MIC 算法”列表中选择用于对消息进行签名的算法。 |
+| **发送异步 MDN** | 否 | 指定是否异步发送 MDN。 若选择异步 MDN，请在 URL 框中指定要将 MDN 发送到的 URL。 |
 ||||
 
 <a name="AS2-outgoing-messages"></a>
@@ -44,17 +44,17 @@ ms.locfileid: "74793027"
 
 ![选择“发送设置”](./media/logic-apps-enterprise-integration-as2-message-settings/send-settings.png)
 
-| properties | 必选 | 说明 |
+| 属性 | 必选 | 说明 |
 |----------|----------|-------------|
-| **启用消息签名** | 否 | 指定是否必须对所有传出消息进行数字签名。 如果需要签名，请选择以下值： <p>- 在“签名算法”  列表中，选择用于消息签名的算法。 <br>- 在“证书”列表中，选择现有的宿主合作伙伴专用证书，对消息进行签名。  如果没有证书，请详细了解如何[添加证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。 |
-| **启用消息加密** | 否 | 指定是否必须对所有传出消息进行加密。 如果需要加密，请选择以下值： <p>- 在“加密算法”列表中选择来宾合作伙伴公共证书算法，用于加密消息。  <br>- 在“证书”列表中，选择现有的来宾合作伙伴专用证书来解密传出的消息。  如果没有证书，请详细了解如何[添加证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。 |
+| **启用消息签名** | 否 | 指定是否必须对所有传出消息进行数字签名。 若需要签名，请选择以下值： <p>- 请在“签名算法”列表中，选择用于对消息进行签名的算法。 <br>- 请在“证书”列表中，选择用于对消息进行签名的现有宿主合伙伙伴私有证书。 若没有证书，请详细了解如何[添加证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。 |
+| **启用消息加密** | 否 | 指定是否必须对所有传出消息进行加密。 若需要加密，请选择以下值： <p>- 请在“加密算法”列表中，选择用于对消息进行加密的来宾合作伙伴公共证书算法。 <br>- 请在“证书”列表中，选择用于对传出信息进行加密的现有宿主合作伙伴私有证书。 若没有证书，请详细了解如何[添加证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。 |
 | **启用消息压缩** | 否 | 指定是否必须对所有传出消息进行压缩。 |
-| **展开 HTTP 标头** | 否 | 将 HTTP `content-type` 标头置于单个行。 |
-| **在 MIME 标头中传输文件名** | 否 | 指定是否在 MIME 标头中包含文件名。 |
+| **展开 HTTP 标头** | 否 | 将 HTTP `content-type` 标头置于单行上方。 |
+| 在 MIME 标头中传输文件名 | 否 | 指定是否在 MIME 标头中包含文件名。 |
 | **请求 MDN** | 否 | 指定是否接收所有传出消息的消息处置通知 (MDN)。 |
-| **请求签名的 MDN** | 否 | 指定是否接收所有传出消息的已签名 MDN。 如果需要签名，请从“MIC 算法”  列表中选择用于消息签名的算法。 |
-| **请求异步 MDN** | 否 | 指定是否异步接收 MDN。 如果选择异步 MDN，请在“URL”  框中指定要将 MDN 发送到的 URL。 |
-| **启用 NRR** | 否 | 指定是否要求不可否认性接收 (NRR)。 此通信属性提供数据已按址接收到的证据。 |
+| **要求对 MDN 进行签名** | 否 | 指定是否接收所有传出消息的已签名 MDN。 若需要签名，请在“MIC 算法”列表中选择用于对消息进行签名的算法。 |
+| **要求发送异步 MDN** | 否 | 指定是否异步接收 MDN。 若选择异步 MDN，请在 URL 框中指定要将 MDN 发送到的 URL。 |
+| **启用 NRR** | 否 | 指定是否需要不可否认性回执 (NRR)。 这种通信属性提供数据已按址接收到的证据。 |
 | **SHA2 算法格式** | 否 | 指定用于对传出 AS2 消息或 MDN 的标头进行签名的 MIC 算法格式 |
 ||||
 

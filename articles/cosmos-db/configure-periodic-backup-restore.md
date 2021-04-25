@@ -4,15 +4,15 @@ description: 本文介绍了如何为 Azure Cosmos DB 帐户配置定期备份�
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/13/2020
+ms.date: 04/05/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 69a9f0a82f5c19504564825e47f69ab8414e0909
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0470759a589927b65462f258b20446af608175c
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565817"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284018"
 ---
 # <a name="configure-azure-cosmos-db-account-with-periodic-backup"></a>为 Azure Cosmos DB 帐户配置定期备份
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,11 +31,32 @@ Azure Cosmos DB 会定期自动备份数据。 自动备份不会影响数据库
 
 * 备份不会影响应用程序的性能或可用性。 Azure Cosmos DB 在后台执行数据备份，不会消耗任何额外的预配吞吐量 (RU)，也不会影响数据库的性能和可用性。
 
+## <a name="backup-storage-redundancy"></a><a id="backup-storage-redundancy"></a>备份存储冗余
+
+Azure Cosmos DB 默认将定期模式备份数据存储在复制到[配对区域](../best-practices-availability-paired-regions.md)的异地冗余 [blob 存储](../storage/common/storage-redundancy.md)中。  
+
+要确保备份数据保留在预配 Azure Cosmos DB 帐户所在的同一区域内，可更改默认异地冗余备份存储，并配置本地冗余或区域冗余存储。 Azure 存储冗余机制会存储多个备份副本，以防范各种计划内和计划外的事件，包括暂时性的硬件故障、网络中断或断电、重大自然灾害等。
+
+Azure Cosmos DB 中的备份数据会在主要区域中复制三次。 可在创建帐户时为定期备份模式配置存储冗余，或针对现有帐户进行更新。 在定期备份模式中，可使用以下三种数据冗余选项：
+
+* 异地冗余备份存储：此选项跨配对区域异步复制数据。
+
+* 区域冗余备份存储：此选项跨主要区域中的三个 Azure 可用性区域异步复制数据。
+
+* 本地冗余备份存储：此选项在主要区域中的单个物理位置异步复制数据三次。
+
+> [!NOTE]
+> 区域冗余存储目前仅在[特定区域](high-availability.md#availability-zone-support)可用。 基于所选区域，此选项将不可用于新帐户或现有帐户。
+>
+> 更新备份存储冗余不会对备份存储定价产生任何影响。
+
 ## <a name="modify-the-backup-interval-and-retention-period"></a><a id="configure-backup-interval-retention"></a>修改备份时间间隔和保持期
 
 Azure Cosmos DB 每 4 小时自动对数据库执行一次完整备份，而且在任何时候都只存储最新的 2 个备份。 此配置是默认选项，无需额外付费即可使用。 你可以在创建 Azure Cosmos 帐户期间或创建帐户之后更改默认备份时间间隔和保持期。 备份配置是在 Azure Cosmos 帐户级别设置的，需要在每个帐户上配置。 为帐户配置备份选项后，它将应用于该帐户中的所有容器。 目前，你只能从 Azure 门户更改它们的备份选项。
 
 如果数据被意外删除或损坏，在你创建支持请求以申请还原数据之前，请确保将帐户的备份保留期延长到至少 7 天。最好在发生此事件的 8 小时内延长保留期。 这样，Azure Cosmos DB 团队才有足够的时间来还原你的帐户。
+
+### <a name="modify-backup-options-for-an-existing-account"></a>修改现有帐户的备份选项
 
 使用以下步骤可为现有 Azure Cosmos 帐户更改默认备份选项：
 
@@ -48,11 +69,18 @@ Azure Cosmos DB 每 4 小时自动对数据库执行一次完整备份，而且�
 
    * 保留的数据副本 - 默认情况下，会免费提供数据的两个备份副本。 如果需要两个以上的副本，则需支付额外的费用。 请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)中的“已用存储”部分，了解额外副本的确切价格。
 
-   :::image type="content" source="./media/configure-periodic-backup-restore/configure-backup-interval-retention.png" alt-text="为现有 Azure Cosmos 帐户配置备份间隔和保留期。" border="true":::
+   * 备份存储冗余 — 选择所需的存储冗余选项，有关可用选项，请参阅[备份存储冗余](#backup-storage-redundancy)部分。 现有定期备份模式帐户默认具有异地冗余存储。 可选择本地冗余等其他存储，以确保备份不会复制到另一个区域。 对现有帐户所做更改将仅应用于将来的备份。 更新现有帐户的备份存储冗余后，可能需要最多两次备份间隔才能使更改生效，但将无法立即还原旧备份。
 
-如果在帐户创建过程中配置备份选项，则可以配置“备份策略”（是“定期”或“连续”）  。 定期策略使你可以配置备份间隔和备份保留期。 连续策略目前仅通过注册提供。 Azure Cosmos DB 团队会评估你的工作负载并审批你的请求。
+   > [!NOTE]
+   > 必须在订阅级别分配 Azure [Cosmos DB 帐户读取者角色](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)才能配置备份存储冗余。
 
-:::image type="content" source="./media/configure-periodic-backup-restore/configure-periodic-continuous-backup-policy.png" alt-text="为新 Azure Cosmos 帐户配置定期或连续备份策略。" border="true":::
+   :::image type="content" source="./media/configure-periodic-backup-restore/configure-backup-options-existing-accounts.png" alt-text="为现有 Azure Cosmos 帐户配置备份间隔、保留期和存储冗余。" border="true":::
+
+### <a name="modify-backup-options-for-a-new-account"></a>修改新帐户的备份选项
+
+预配新帐户时，请在“备份策略”选项卡中选择“定期”备份策略。 _ 通过定期策略可配置备份时间间隔、备份保留期和备份存储冗余。 例如，可选择“本地冗余备份存储”*或“区域冗余备份存储”选项，以防止在区域外进行备份数据复制。
+
+:::image type="content" source="./media/configure-periodic-backup-restore/configure-backup-options-new-accounts.png" alt-text="为新 Azure Cosmos 帐户配置定期或连续备份策略。" border="true":::
 
 ## <a name="request-data-restore-from-a-backup"></a><a id="request-restore"></a>请求从备份还原数据
 
@@ -115,8 +143,7 @@ Azure Cosmos DB 每 4 小时自动对数据库执行一次完整备份，而且�
 属于 [CosmosdbBackupOperator](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)、所有者或参与者角色的主体可以请求还原或更改保留期。
 
 ## <a name="understanding-costs-of-extra-backups"></a>了解额外备份的成本
-免费提供 2 个备份，额外备份需要根据[备份存储定价](https://azure.microsoft.com/en-us/pricing/details/cosmos-db/)中介绍的基于区域的备份存储定价付费。 例如，如果将“备份保留期”配置为 240 小时，即 10 天，并将“备份间隔”设置为 24 小时， 则意味着备份数据会有 10 个副本。 假定在美国西部 2 有 1 TB 数据，那么对于给定月份中的备份存储，费用将为 0.12 * 1000 * 8。 
-
+免费提供 2 个备份，额外备份需要根据[备份存储定价](https://azure.microsoft.com/pricing/details/cosmos-db/)中介绍的基于区域的备份存储定价付费。 例如，如果将“备份保留期”配置为 240 小时，即 10 天，并将“备份间隔”设置为 24 小时， 则意味着备份数据会有 10 个副本。 假定在美国西部 2 有 1 TB 数据，那么对于给定月份中的备份存储，费用将为 0.12 * 1000 * 8。
 
 ## <a name="options-to-manage-your-own-backups"></a>管理自己的备份的选项
 

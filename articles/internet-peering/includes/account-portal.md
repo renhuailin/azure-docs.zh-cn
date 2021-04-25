@@ -9,20 +9,20 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 9e9a9a0415a85c8b8c5fb27d911124c43a2447d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "81678586"
 ---
-在浏览器中，打开 Azure [门户](https://portal.azure.com/) 并使用 azure 帐户登录。
+在浏览器中，转到 Azure [门户](https://portal.azure.com/)，然后使用你的 Azure 帐户登录。
 
 如果有多个订阅并且需要切换订阅：
 
-1. 选择 "配置文件" 按钮，然后选择 " **切换目录**"。
+1. 选择“配置文件”按钮，然后选择“切换目录”。
 
     > [!div class="mx-imgBorder"]
-    > ![选择切换目录](../media/choose-subscription-2.png)
+    > ![选择“切换目录”](../media/choose-subscription-2.png)
 
 1. 选择要用于对等互连设置的订阅。
 

@@ -4,13 +4,16 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 8d4e573cefd595669d9cb2cf9a7b83595eea7971
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 45a772b4a1d65b67f918107fd33135a56f6302f2
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103622055"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "106073645"
 ---
+[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-android-ios.md)]
+
+
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
@@ -23,9 +26,8 @@ ms.locfileid: "103622055"
 ### <a name="install-the-package"></a>安装包
 
 > [!NOTE]
-> 本文档使用 1.0.0-beta.8 版的通话客户端库。
+> 本文档使用版本 1.0.0-beta.8 的通话 SDK。
 
-<!-- TODO: update with instructions on how to download, install and add package to project -->
 找到项目级别 build.gradle，确保将 `mavenCentral()` 添加到 `buildscript` 和 `allprojects` 下的存储库列表中
 ```groovy
 buildscript {
@@ -59,11 +61,11 @@ dependencies {
 
 ## <a name="object-model"></a>对象模型
 
-以下类和接口处理 Azure 通信服务呼叫客户端库的某些主要功能：
+以下类和接口用于处理 Azure 通信服务通话 SDK 的某些主要功能：
 
 | 名称                                  | 说明                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient| CallClient 是呼叫客户端库的主入口点。|
+| CallClient| CallClient 是通话 SDK 的主入口点。|
 | CallAgent | CallAgent 用于启动和管理呼叫。 |
 | CommunicationTokenCredential | CommunicationTokenCredential 用作实例化 CallAgent 的令牌凭据。|
 | CommunicationIdentifier | CommunicationIdentifier 用作可参与通话的不同类型的参与者。|
@@ -224,10 +226,10 @@ Android 应用程序需要一组权限才能接收来自 Firebase Cloud Messagin
 
 若要注册推送通知，应用程序需要使用设备注册令牌在 CallAgent 实例上调用 `registerPushNotification()`。
 
-若要获取设备注册令牌，请在 `dependencies` 部分添加以下行（如果尚不存在），将 Firebase 客户端库添加到应用程序模块的 build.gradle 文件中：
+若要获取设备注册令牌，请在 `dependencies` 部分添加以下行（如果尚不存在），将 Firebase SDK 添加到应用程序模块的 build.gradle 文件中：
 
 ```
-    // Add the client library for Firebase Cloud Messaging
+    // Add the SDK for Firebase Cloud Messaging
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.google.firebase:firebase-messaging:20.2.4'
 ```
@@ -244,7 +246,7 @@ Android 应用程序需要一组权限才能接收来自 Firebase Cloud Messagin
 apply plugin: 'com.google.gms.google-services'
 ```
 
-在工具栏中选择“立即同步”。 添加以下代码片段，获取 Firebase Cloud Messaging 客户端库为客户端应用程序实例生成的设备注册令牌。请务必将以下导入内容添加到实例主“活动”的标头中。 代码片段检索令牌时需要这些内容：
+在工具栏中选择“立即同步”。 添加以下代码片段，获取 Firebase Cloud Messaging SDK 为客户端应用程序实例生成的设备注册令牌。请务必将以下导入内容添加到实例主“活动”的标头中。 代码片段检索令牌时需要这些内容：
 
 ```
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -272,7 +274,7 @@ import com.google.firebase.iid.InstanceIdResult;
                     }
                 });
 ```
-在呼叫服务客户端库中注册设备注册令牌，以接收来电推送通知：
+在通话服务 SDK 中注册设备注册令牌，以接收来电推送通知：
 
 ```java
 String deviceRegistrationToken = "<Device Token from previous section>";
@@ -288,7 +290,7 @@ catch(Exception e) {
 
 若要接收来电推送通知，请使用有效负载在 CallAgent 实例上调用 handlePushNotification() 。
 
-若要从 Firebase Cloud Messaging 获取有效负载，请先创建一个新服务（“文件”>“新建”>“服务”>“服务”），该服务可扩展 FirebaseMessagingService Firebase 客户端库类并替代 `onMessageReceived` 方法。 当 Firebase Cloud Messaging 将推送通知传递到应用程序时，此方法被称为事件处理程序。
+若要从 Firebase Cloud Messaging 获取有效负载，请先创建一个新服务（“文件”>“新建”>“服务”>“服务”），该服务可扩展 FirebaseMessagingService Firebase SDK 类并替代 `onMessageReceived` 方法。 当 Firebase Cloud Messaging 将推送通知传递到应用程序时，此方法被称为事件处理程序。
 
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
@@ -318,7 +320,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         </service>
 ```
 
-- 检索到有效负载后，可将其传递给通信服务客户端库，以解析为内部 IncomingCallInformation 对象，该对象将通过在 CallAgent 实例上调用 handlePushNotification 方法进行处理   。 `CallAgent` 实例是通过在 `CallClient` 类上调用 `createCallAgent(...)` 方法来创建的。
+- 检索到有效负载后，可将其传递给通信服务 SDK 以解析为内部 IncomingCallInformation 对象，该对象将通过在 CallAgent 实例上调用 handlePushNotification 方法进行处理   。 `CallAgent` 实例是通过在 `CallClient` 类上调用 `createCallAgent(...)` 方法来创建的。
 
 ```java
 try {

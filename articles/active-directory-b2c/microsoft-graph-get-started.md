@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 67870a458138101f3b8a009f7c96c74991396284
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0dcb959184e12ffa22ae25443087684123598e47
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98675180"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382449"
 ---
 # <a name="register-a-microsoft-graph-application"></a>注册 Microsoft Graph 应用程序
 
@@ -56,31 +56,38 @@ ms.locfileid: "98675180"
 1. 选择“注册”。
 1. 记下应用“概述”页上显示的“应用程序(客户端) ID”。 在稍后的步骤中会使用此值。
 
-### <a name="grant-api-access"></a>授予 API 访问权限
+## <a name="grant-api-access"></a>授予 API 访问权限
 
-接下来，向已注册的应用程序授予权限，以允许其通过调用 Microsoft Graph API 来操作租户资源。
+若要让应用程序访问 Microsoft Graph 中的数据，请向已注册的应用程序授予相关[应用程序权限](https://docs.microsoft.com/graph/permissions-reference)。 应用程序的有效权限是权限默示的完整特权级别。 例如，若要创建、读取、更新和删除 Azure AD B2C 租户中的每个用户，请添加“User.ReadWrite.All”权限。 
+
+> [!NOTE]
+> “User.ReadWrite.Al”权限不包括更新用户帐户密码的功能。 如果应用程序需要更新用户帐户密码，请[授予用户管理员角色](#optional-grant-user-administrator-role)。 授予[用户管理员](../active-directory/roles/permissions-reference.md#user-administrator)角色时，不需要执行“User.ReadWrite.All”。 “用户管理员”角色包括管理用户所需的所有内容。
+
+你可以为应用程序授予多项应用程序权限。 例如，如果应用程序还需要管理 Azure AD B2C 租户中的组，则还需添加“Group.ReadWrite.All”权限。 
 
 [!INCLUDE [active-directory-b2c-permissions-directory](../../includes/active-directory-b2c-permissions-directory.md)]
 
-### <a name="create-client-secret"></a>创建客户端机密
 
-[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
+## <a name="optional-grant-user-administrator-role"></a>[可选]授予用户管理员角色
 
-现在，你有了一个有权限在 Azure AD B2C 租户中创建、读取、更新和删除用户的应用程序。    前进到下一部分，添加“密码更新”权限。
+如果应用程序或脚本需要更新用户的密码，你需要将“用户管理员”角色分配给应用程序。 [用户管理员](../active-directory/roles/permissions-reference.md#user-administrator)角色具有你向应用程序授予的一组固定权限。 
 
-## <a name="enable-user-delete-and-password-update"></a>启用用户删除和密码更新
-
-“读取和写入目录数据”权限 **未** 包括删除用户或更新用户帐户密码的能力。
-
-如果你的应用程序或脚本需要删除用户或更新其密码，请将“用户管理员”角色分配给你的应用程序：
+若要添加“用户管理员”角色，请遵照以下步骤：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，使用“目录 + 订阅”筛选器切换到你的 Azure AD B2C 租户。
 1. 搜索并选择“Azure AD B2C”。
 1. 在“管理”下，选择“角色和管理员”。 
-1. 选择“用户管理员”角色。
+1. 选择“用户管理员”角色。 
 1. 选择“添加分配”。
-1. 在“选择”文本框中，输入前面注册的应用程序的名称，例如 *managementapp1*。 该应用程序显示在搜索结果中后，请将它选中。
+1. 在“选择”文本框中，输入之前注册的应用程序的名称或 ID，如“managementapp1”。 当它出现在搜索结果中时，选择应用程序。
 1. 选择“添加”  。 可能需要几分钟才能完全传播权限。
+
+## <a name="create-client-secret"></a>创建客户端机密
+
+请求令牌时，应用程序需要使用客户端密码证明其身份。 若要添加客户端机密，请执行以下步骤：
+
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
+
 
 ## <a name="next-steps"></a>后续步骤
 

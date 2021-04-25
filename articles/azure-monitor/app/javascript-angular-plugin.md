@@ -8,18 +8,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: lagayhar
-ms.openlocfilehash: d45d8bed328dc91dfeeabd6ce878074fa1218623
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7ac83d0c43026b431370fab1d8c49aec1adf6659
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101737012"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312716"
 ---
 # <a name="angular-plugin-for-application-insights-javascript-sdk"></a>适用于 Application Insights JavaScript SDK 的 Angular 插件
 
 适用于 Application Insights JavaScript SDK 的 Angular 插件支持：
 
 - 跟踪路由器更改
+- 跟踪未捕获的异常
 
 > [!WARNING]
 > Angular 插件与 ECMAScript 3 (ES3) 不兼容。
@@ -62,6 +63,24 @@ export class AppComponent {
         appInsights.loadAppInsights();
     }
 }
+```
+
+若要跟踪未捕获的异常，请在以下文件中设置 ApplicationinsightsAngularpluginErrorService`app.module.ts`：
+
+```js
+import { ApplicationinsightsAngularpluginErrorService } from '@microsoft/applicationinsights-angularplugin-js';
+
+@NgModule({
+  ...
+  providers: [
+    {
+      provide: ErrorHandler,
+      useClass: ApplicationinsightsAngularpluginErrorService
+    }
+  ]
+  ...
+})
+export class AppModule { }
 ```
 
 ## <a name="next-steps"></a>后续步骤

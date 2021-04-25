@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: 453d7e118b946d60eb3d84c6a66abdbea7db2410
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ca1a2edec70b13f111ffd89278aa39d1ddea7f67
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96499214"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105035636"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>以最短的停机时间动态缩放数据库资源
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -60,6 +60,9 @@ Azure SQL 数据库提供动态缩放数据库的功能：
 - [SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)使用 [vCore](../managed-instance/sql-managed-instance-paas-overview.md#vcore-based-purchasing-model) 模式，并允许定义分配给实例的最大 CPU 核心数和最大存储空间。 该托管实例中的所有数据库都将共享分配给该实例的资源。
 
 以任何风格启动纵向扩展或缩减操作将会重启数据库引擎进程，并根据需要将其移到另一虚拟机。 将数据库引擎进程移到新虚拟机是一个 **在线过程**，在该过程进行时，你可以继续使用现有的 Azure SQL 数据库服务。 目标数据库引擎完全启动并做好处理查询的准备以后，连接会[从源数据库引擎切换到目标数据库引擎](single-database-scale.md#impact)。
+
+> [!NOTE]
+> 建议不要在运行长期事务（例如数据导入、数据处理作业、索引重新生成等）或实例上有任何活动连接时缩放托管实例。 为防止完成缩放所耗费的时间比平时更长，应在所有长时间运行的操作完成后缩放实例。
 
 > [!NOTE]
 > 当放大/缩小过程完成时，可能会出现短暂的连接中断。 如果已实现了[标准暂时性错误的重试逻辑](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)，则不会注意到故障转移。

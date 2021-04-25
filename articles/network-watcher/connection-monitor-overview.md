@@ -1,5 +1,5 @@
 ---
-title: Azure 中的连接监视器 |Microsoft Docs
+title: Azure 中的连接监视器 | Microsoft Docs
 description: 了解如何使用连接监视器监视分布式环境中的网络通信。
 services: network-watcher
 documentationcenter: na
@@ -15,29 +15,29 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 7abaae033d2dbdb329a1f99d8f9845e5965d806c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 24c181c17e49fe5b7c3001c1cb2839bc957ef463
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712311"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490482"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>使用连接监视器进行网络连接监视
 
 > [!IMPORTANT]
-> 自2021年7月1日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你还将无法在 (经典) 的连接监视器中添加新的连接监视器。 你可以继续使用在2021年7月1日之前创建的测试和连接监视器。 若要最大程度地减少对当前工作负荷的服务中断，请在2024年2月29日之前，将 [测试从网络性能监视器 ](migrate-to-connection-monitor-from-network-performance-monitor.md) 或  [从连接监视器迁移 (经典) ](migrate-to-connection-monitor-from-connection-monitor-classic.md) 升级到 Azure 网络观察程序中的新连接监视器。
+> 自 2021 年 7 月 1 日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你还将无法在连接监视器（经典版）中添加新的连接监视器。 可以继续使用在 2021 年 7 月 1 日之前创建的测试和连接监视器。 为了最大程度地减少当前工作负荷的服务中断，请在 2024 年 2 月 29 日之前，在 Azure 网络观察程序中[将测试从网络性能监视器迁移到新连接监视器](migrate-to-connection-monitor-from-network-performance-monitor.md)或[从连接监视器（经典版）迁移到新连接监视器](migrate-to-connection-monitor-from-connection-monitor-classic.md)。
 
 连接监视器在 Azure 网络观察程序中提供统一的端到端连接监视。 连接监视器功能支持混合部署和 Azure 云部署。 网络观察程序提供的工具可用于监视、诊断和查看针对 Azure 部署的与连接相关的指标。
 
 下面是连接监视器的一些用例：
 
 - 前端 Web 服务器 VM 与多层应用程序中的数据库服务器 VM 进行通信。 你希望检查两个 VM 之间的网络连接。
-- 希望美国东部区域中的 Vm 对美国中部区域中的 Vm 进行 ping 操作，并且需要比较跨区域网络延迟。
-- 你有多个位于华盛顿州西雅图的本地办公场所，在阿什本，弗吉尼亚州。 你的办公地点连接到 Microsoft 365 URL。 对于 Microsoft 365 Url 的用户，比较西雅图与阿什本之间的延迟。
+- 你希望美国东部区域的 VM 能够端对端连接到美国中部区域的 VM，并且希望比较两者的跨区域网络延迟。
+- 你有多个本地办公场所位于华盛顿州西雅图和弗吉尼亚州阿什本。 你的办公地点连接到 Microsoft 365 URL。 针对 Microsoft 365 URL 的用户，在西雅图和阿什本之间比较延迟。
 - 混合应用程序需要连接到 Azure 存储终结点。 本地站点和 Azure 应用程序连接到相同的 Azure 存储终结点。 希望比较本地站点的延迟与 Azure 应用程序的延迟。
 - 希望检查本地设置与托管云应用程序的 Azure VM 之间的连接。
 
-连接监视器组合了两个功能的优点：网络观察程序 [连接监视器 (经典) ](./network-watcher-monitoring-overview.md#monitor-communication-between-a-virtual-machine-and-an-endpoint) 功能和网络性能监视器 (NPM) [服务连接监视器](../azure-monitor/insights/network-performance-monitor-service-connectivity.md)、 [ExpressRoute 监视](../expressroute/how-to-npm.md)和 [性能监视](../azure-monitor/insights/network-performance-monitor-performance-monitor.md) 功能。
+连接监视器结合了以下两项功能的优点：网络观察程序[连接监视器（经典）](./network-watcher-monitoring-overview.md#monitor-communication-between-a-virtual-machine-and-an-endpoint)功能，以及网络性能监视器 (NPM) [服务连接监视器](../azure-monitor/insights/network-performance-monitor-service-connectivity.md)、[ExpressRoute 监视](../expressroute/how-to-npm.md)和[性能监视](../azure-monitor/insights/network-performance-monitor-performance-monitor.md)功能。
 
 下面是连接监视器的一些优点：
 
@@ -89,7 +89,7 @@ ms.locfileid: "101712311"
 
  请注意，在工作区使用的所有代理中，所用的端口号都应该相同。 
 
-该脚本可创建解决方案所需的注册表项。 它还会创建 Windows 防火墙规则，允许代理创建彼此之间的 TCP 连接。 该脚本创建的注册表项指定是否记录调试日志和该日志文件的路径。 该脚本还会定义用于通信的代理 TCP 端口。 该脚本会自动设置这些注册表项的值。 请勿手动更改这些注册表项。 默认打开的端口为 8084。 通过向该脚本提供参数 portNumber 即可使用自定义端口。 在运行该脚本的所有计算机上使用相同端口。 [阅读](../azure-monitor/agents/log-analytics-agent.md#network-requirements) 有关 Log Analytics 代理网络要求的详细信息
+该脚本可创建解决方案所需的注册表项。 它还会创建 Windows 防火墙规则，允许代理创建彼此之间的 TCP 连接。 该脚本创建的注册表项指定是否记录调试日志和该日志文件的路径。 该脚本还会定义用于通信的代理 TCP 端口。 该脚本会自动设置这些注册表项的值。 请勿手动更改这些注册表项。 默认打开的端口为 8084。 通过向该脚本提供参数 portNumber 即可使用自定义端口。 在运行该脚本的所有计算机上使用相同端口。 [详细了解](../azure-monitor/agents/log-analytics-agent.md#network-requirements) Log Analytics 代理的网络要求
 
 此脚本仅在本地配置 Windows 防火墙。 如果有网络防火墙，请确保该防火墙允许流量去往网络性能监视器使用的 TCP 端口。
 
@@ -127,7 +127,7 @@ ms.locfileid: "101712311"
 
  ![显示连接监视器的示意图（该图定义了测试组和测试之间的关系）](./media/connection-monitor-2-preview/cm-tg-2.png)
 
-可以使用[Azure 门户](./connection-monitor-create-using-portal.md)、 [ARMClient](./connection-monitor-create-using-template.md)或[PowerShell](connection-monitor-create-using-powershell.md)创建连接监视器
+可以使用 [Azure 门户](./connection-monitor-create-using-portal.md)、[ARMClient](./connection-monitor-create-using-template.md) 或 [PowerShell](connection-monitor-create-using-powershell.md) 创建连接监视器
 
 添加到测试组中的所有源、目标和测试配置将细分为单独的测试。 下面是如何分解源和目标的示例：
 
@@ -289,9 +289,9 @@ ms.locfileid: "101712311"
 
 | 指标 | Display name | 计价单位 | 聚合类型 | 说明 | 维度 |
 | --- | --- | --- | --- | --- | --- |
-| ProbesFailedPercent (经典)  |  (经典) 探测失败 | 百分比 | 平均值 | 连接监视探测的失败百分比。 | 无维度 |
-| AverageRoundtripMs (经典)  | 平均往返时间 (ms)  (经典)  | 毫秒 | 平均值 | 源和目标之间发送的连接监视探测的平均网络 RTT。 |             无维度 |
-| ChecksFailedPercent | % 检查失败 | 百分比 | 平均值 | 测试的检查失败百分比。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>协议 <br>目的地地址 <br>DestinationName <br>DestinationResourceId <br>目标类型 <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>区域 |
+| ProbesFailedPercent（经典） | 失败的探测百分比（经典） | 百分比 | 平均值 | 连接监视探测的失败百分比。 | 无维度 |
+| AverageRoundtripMs（经典） | 平均值往返时间（毫秒）（经典） | 毫秒 | 平均值 | 源和目标之间发送的连接监视探测的平均网络 RTT。 |             无维度 |
+| ChecksFailedPercent | 检查未通过百分比 | 百分比 | 平均值 | 测试的检查失败百分比。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>协议 <br>目的地地址 <br>DestinationName <br>DestinationResourceId <br>目标类型 <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>区域 |
 | RoundTripTimeMs | 往返时间（毫秒） | 毫秒 | 平均值 | 在源和目标之间发送的用于检查的 RTT。 此值不是平均值。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>协议 <br>目的地地址 <br>DestinationName <br>DestinationResourceId <br>目标类型 <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>区域 |
 | TestResult | 测试结果 | 计数 | 平均值 | 连接监视器测试结果 | SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>协议 <br>目的地地址 <br>DestinationName <br>DestinationResourceId <br>目标类型 <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>SourceIP <br>DestinationIP <br>SourceSubnet <br>DestinationSubnet |
 
@@ -358,6 +358,8 @@ ms.locfileid: "101712311"
     * 两个网关之间的隧道已断开连接或处于缺失状态。
     * 第二个网关没有让隧道发现。
     * 无法找到对等信息。
+> [!NOTE]
+> 如果有 2 个连接的网关，并且其中一个网关与源终结点不在同一个区域，则 CM 会在拓扑视图中将其标识为“未学习路由”。 连接不受影响。 这是一个已知问题，正在进行修复。 
 * Microsoft Edge 中缺少路由。
 * 由于系统路由或 UDR 的原因，流量已停止。
 * 网关连接上未启用 BGP。

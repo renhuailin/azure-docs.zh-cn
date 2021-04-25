@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 08/12/2020
+ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-js
-ms.openlocfilehash: 8408cdada40bd3595f9bf7cf2c6a2de90040ec0b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a3e21abe2f4ed24726256689af16b48ed6721ce8
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102217255"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366141"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Node.js SDK：发行说明和资源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -29,7 +29,8 @@ ms.locfileid: "102217255"
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
 > * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
-> * [Spark 连接器](sql-api-sdk-java-spark.md)
+> * [Spark 3 OLTP 连接器](sql-api-sdk-java-spark-v3.md)
+> * [Spark 2 OLTP 连接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST 资源提供程序](/rest/api/cosmos-db-resource-provider/)
@@ -472,7 +473,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 | [1.0.1](#1.0.1) |2015年 5 月 15日 |2020 年 8 月 30 日 |
 | [1.0.0](#1.0.0) |2015 年 4 月 8 日 |2020 年 8 月 30 日 |
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>另请参阅

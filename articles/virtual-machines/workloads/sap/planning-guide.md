@@ -8,15 +8,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/17/2020
+ms.date: 04/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 8bc289e90470ae9bc8b1996ac08c3144ea78de35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67ef0bf7a8c3906122468c895325a77de555c196
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102504706"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258786"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机规划和实施指南
 
@@ -588,7 +588,11 @@ Azure 中的每个虚拟机都需要连接到虚拟网络。
 > [!NOTE]
 > 应该通过 Azure 方式将静态 IP 地址分配给单个 vNIC。 不应将来宾 OS 中的静态 IP 地址分配给 vNIC。 某些 Azure 服务（例如 Azure 备份服务）依赖于至少主 vNIC 设置为 DHCP 而不是静态 IP 地址这一事实。 另请参阅文档[排查 Azure 虚拟机备份问题](../../../backup/backup-azure-vms-troubleshoot.md#networking)。
 >
->
+
+
+##### <a name="secondary-ip-addresses-for-sap-hostname-virtualization"></a>SAP 主机名虚拟化的辅助 IP 地址
+每个 Azure 虚拟机的网络接口卡可以有多个分配给它的 IP 地址，此辅助 IP 可用于 SAP 虚拟主机名，在需要时可映射到 DNS A/PTR 记录。 必须按[本文](../../../virtual-network/virtual-network-multiple-ip-addresses-portal.md)所述将辅助 IP 地址分配到 Azure vNICs IP 配置，并在 OS 中进行配置，因为未通过 DHCP 分配辅助 IP。 每个辅助 IP 必须来自 vNIC 绑定到的同一子网。 对于辅助 IP 配置（如 Pacemaker 群集），[不支持]( https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations) 使用 Azure 负载均衡器的浮动 IP，在这种情况下，负载均衡器的 IP 会启用 SAP 虚拟主机名。 另请参阅有关使用虚拟主机名的一般指南的 SAP 说明 [#962955](https://launchpad.support.sap.com/#/notes/962955)。
+
 
 ##### <a name="multiple-nics-per-vm"></a>每个 VM 可以有多个 NIC
 
@@ -1236,7 +1240,7 @@ Azure 异地复制在 VM 中的每个 VHD 上本地执行，并且不会跨 VM �
 ---
 ### <a name="final-deployment"></a>最终部署
 
-有关最终部署和确切的步骤，尤其是在部署适用于 SAP 的 Azure 扩展方面，请参阅[部署指南][deployment-guide]。
+有关最终部署和确切的步骤，尤其是部署适用于 SAP 的 Azure 扩展，请参阅[部署指南][deployment-guide]。
 
 ## <a name="accessing-sap-systems-running-within-azure-vms"></a>访问 Azure VM 中运行的 SAP 系统
 
@@ -1657,7 +1661,7 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 
 ##### <a name="configuring-the-transport-domain"></a>配置传输域
 
-根据[配置传输域控制器](https://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm)中所述，在指定为传输域控制器的系统上配置传输域。 随后将创建系统用户 TMSADM，并生成所需的 RFC 目标。 可以在事务 SM59 中检查这些 RFC 连接。 必须在整个传输域中启用主机名解析。
+根据[配置传输域控制器](https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/44b4a0b47acc11d1899e0000e829fbbd.html?q=Configuring%20the%20Transport%20Domain%20Controller)中所述，在指定为传输域控制器的系统上配置传输域。 随后将创建系统用户 TMSADM，并生成所需的 RFC 目标。 可以在事务 SM59 中检查这些 RFC 连接。 必须在整个传输域中启用主机名解析。
 
 如何：
 
@@ -1670,12 +1674,12 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 
 在传输域中包含 SAP 系统的操作顺序如下所述：
 
-* 在 Azure 中的 DEV 系统上，转到传输系统（客户端 000）并调用事务 STMS。 从对话框中选择“其他配置”，并选择“将系统包含在域中”。 将域控制器指定为目标主机（[传输域中包含 SAP 系统](https://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0c17acc11d1899e0000e829fbbd/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm)）。 现在，该系统正在等待包含到传输域中。
+* 在 Azure 中的 DEV 系统上，转到传输系统（客户端 000）并调用事务 STMS。 从对话框中选择“其他配置”，并选择“将系统包含在域中”。 将域控制器指定为目标主机（[传输域中包含 SAP 系统](https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/44b4a0c17acc11d1899e0000e829fbbd.html?q=Including%20SAP%20Systems%20in%20the%20Transport%20Domain)）。 现在，该系统正在等待包含到传输域中。
 * 出于安全原因，现在必须返回到域控制器以确认请求。 选择“系统概览”，并选择“审批”以审批等待中的系统。 然后确认提示消息，随后将会分发该配置。
 
 现在，此 SAP 系统已包含有关传输域中所有其他 SAP 系统的必要信息。 同时，新 SAP 系统的地址数据已发送到所有其他 SAP 系统，并且该 SAP 系统已输入到传输控制程序的传输配置文件中。 检查 RFC 是否正常工作，以及是否能够访问域的传输目录。
 
-根据文档[更改与传输系统](https://help.sap.com/saphelp_nw70ehp3/helpdata/en/48/c4300fca5d581ce10000000a42189c/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm)中所述，像平时一样继续配置传输系统。
+根据文档[更改与传输系统](https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/3bdfba3692dc635ce10000009b38f839.html)中所述，像平时一样继续配置传输系统。
 
 如何：
 
@@ -1687,13 +1691,13 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 
 在采用站点到站点连接的跨界方案中，本地与 Azure 之间的延迟可能仍然很高。 如果在从开发、测试系统到生产的整个流程中都遵循传输对象的顺序，或者考虑向不同系统应用传输或支持包的话，会认识到，根据中心传输目录的位置，有一部分系统在中心传输目录中读取或写入数据时会遇到较高的延迟。 如果 SAP 布局配置中的不同系统分散在不同的数据中心，而这些数据中心之间的距离又非常远，那么，这种配置也会出现类似的情况。
 
-要解决这种延迟，使系统能够快速地从传输目录中读取或者向其写入数据，可以设置两个 STMS 传输域（一个用于本地，一个用于 Azure 中的系统），并将其链接起来。 请查看下面的文档，了解 SAP TMS 中这一概念所依据的原则：<https://help.sap.com/saphelp_me60/helpdata/en/c4/6045377b52253de10000009b38f889/content.htm?frameset=/en/57/38dd924eb711d182bf0000e829fbfe/frameset.htm>。
+要解决这种延迟，使系统能够快速地从传输目录中读取或者向其写入数据，可以设置两个 STMS 传输域（一个用于本地，一个用于 Azure 中的系统），并将其链接起来。 请查看此[文档](<https://help.sap.com/saphelp_me60/helpdata/en/c4/6045377b52253de10000009b38f889/content.htm?frameset=/en/57/38dd924eb711d182bf0000e829fbfe/frameset.htm) ，了解 SAP TMS 中这一概念所依据的原则。
+
 
 如何：
 
-* 使用事务 STMS 在每个位置（本地和 Azure）设置传输域 <https://help.sap.com/saphelp_nw70ehp3/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm>
-* 使用域链接来链接这些域，并确认两个域之间的链接。
-  <https://help.sap.com/saphelp_nw73ehp1/helpdata/en/a3/139838280c4f18e10000009b38f8cf/content.htm>
+* 使用事务 STMS 在每个位置（本地和 Azure）[设置传输域](<https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/44b4a0b47acc11d1899e0000e829fbbd.html?q=Set%20up%20a%20transport%20domain)
+* [使用域链接来链接这些域](https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/14c795388d62e450e10000009b38f889.html?q=Link%20the%20domains%20with%20a%20domain%20link)，并确认两个域之间的链接。
 * 将配置分发到链接的系统。
 
 #### <a name="rfc-traffic-between-sap-instances-located-in-azure-and-on-premises-cross-premises"></a>位于 Azure 与本地的 SAP 实例之间的 RFC 流量（跨界）

@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 5516e17a74fffd28f432df305dfa7f592644d4a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6a33d0fb36fabea039b83a0ce8dcf7872435b264
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102611566"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304743"
 ---
 # <a name="nd-series"></a>ND 系列
 
@@ -20,6 +20,7 @@ ND 系列虚拟机是针对 AI 和深度学习工作负荷设计的 GPU 系列�
 
 [高级存储](premium-storage-performance.md)：支持<br>
 [高级存储缓存](premium-storage-performance.md)：支持<br>
+[超级磁盘](disks-types.md#ultra-disk)：支持（[详细了解](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312)可用性、使用情况和性能） <br>
 [实时迁移](maintenance-and-updates.md)：不支持<br>
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>

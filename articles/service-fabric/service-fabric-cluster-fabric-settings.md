@@ -3,12 +3,12 @@ title: 更改 Azure Service Fabric 群集设置
 description: 本文介绍可以自定义的结构设置和结构升级策略。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 78d83faea802862d3cd6d1b1a9cf9f1016245065
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65ae2337ac7dbe4370411a154463a6ddc37f83b2
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103232045"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107255965"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
 本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板自定义设置。 有关详细信息，请参阅[升级 Azure 群集配置](service-fabric-cluster-config-upgrade-azure.md)。 对于独立群集，可通过更新 ClusterConfig.json 文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -60,6 +60,12 @@ ms.locfileid: "103232045"
 |SecretEncryptionCertX509StoreName|string，推荐的值为“My”（无默认值） |    动态|    这表示用来加密和解密 X.509 证书存储的凭据名称的证书，备份还原服务用此加密解密存储凭据 |
 |TargetReplicaSetSize|int，默认值为 0|静态| The TargetReplicaSetSize for BackupRestoreService |
 
+## <a name="centralsecretservice"></a>CentralSecretService
+
+| **参数** | **允许的值** | **升级策略** | **指导或简短说明** |
+| --- | --- | --- | --- |
+|DeployedState |wstring，默认值为 L"Disabled" |静态 |CSS 的两阶段删除。 |
+
 ## <a name="clustermanager"></a>ClusterManager
 
 | **参数** | **允许的值** | **升级策略** | **指导或简短说明** |
@@ -95,6 +101,7 @@ ms.locfileid: "103232045"
 
 | **参数** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
+|AllowCreateUpdateMultiInstancePerNodeServices |Bool，默认值为 false |动态|允许为每个节点创建一个服务的多个无状态实例。 此功能目前以预览版提供。 |
 |PerfMonitorInterval |以秒为单位的时间，默认值为 1 |动态|指定以秒为单位的时间范围。 性能监视时间间隔。 设置为 0 或负值，将禁用监视。 |
 
 ## <a name="defragmentationemptynodedistributionpolicy"></a>DefragmentationEmptyNodeDistributionPolicy
@@ -122,8 +129,8 @@ ms.locfileid: "103232045"
 |ApplicationLogsFormatVersion |Int，默认值为 0 | 动态 |用于应用程序日志格式的版本。 支持的值是 0 和 1. 版本 1 比版本 0 包含更多 ETW 事件记录的字段。 |
 |AuditHttpRequests |Bool，默认值为 false | 动态 | 启用或禁用 HTTP 审核。 审核的目的是查看已针对群集执行的活动，包括请求的发起者。 请注意，会尽最大努力进行日志记录，但可能会发生跟踪丢失的情况。 不记录使用“用户”身份验证的 HTTP 请求。 |
 |CaptureHttpTelemetry|Bool，默认值为 true | 动态 | 启用或禁用 HTTP 遥测。 遥测的目的是使 Service Fabric 能够捕获遥测数据来帮助规划未来的工作并确定问题区域。 遥测不会记录任何个人数据和请求正文。 遥测会捕获所有 HTTP 请求，除非另行配置。 |
-|ClusterId |字符串 | 动态 |群集的唯一 ID。 于群集创建时生成。 |
-|ConsumerInstances |字符串 | 动态 |DCA 使用者实例列表。 |
+|ClusterId |String | 动态 |群集的唯一 ID。 于群集创建时生成。 |
+|ConsumerInstances |String | 动态 |DCA 使用者实例列表。 |
 |DiskFullSafetySpaceInMB |Int，默认值为 1024 | 动态 |要避免被 DCA 使用的剩余磁盘空间（以 MB 为单位）。 |
 |EnableCircularTraceSession |Bool，默认值为 false | 静态 |标志指示是否应使用循环跟踪会话。 |
 |EnablePlatformEventsFileSink |Bool，默认值为 false | 静态 |启用/禁用将平台事件写入磁盘的操作 |
@@ -131,7 +138,7 @@ ms.locfileid: "103232045"
 |FailuresOnlyHttpTelemetry | Bool，默认值为 false | 动态 | 如果启用了 HTTP 遥测捕获，则仅捕获失败的请求。 这有助于减少为遥测生成的事件数。 |
 |HttpTelemetryCapturePercentage | int，默认值为 50 | 动态 | 如果启用了 HTTP 遥测捕获，则仅捕获随机百分比的请求。 这有助于减少为遥测生成的事件数。 |
 |MaxDiskQuotaInMB |Int，默认值为 65536 | 动态 |Windows 和 Linux Fabric 日志文件的磁盘配额（以 MB 为单位）。 |
-|ProducerInstances |字符串 | 动态 |DCA 生成者实例列表。 |
+|ProducerInstances |String | 动态 |DCA 生成者实例列表。 |
 
 ## <a name="dnsservice"></a>DnsService
 | **参数** | **允许的值** |**升级策略**| **指导或简短说明** |
@@ -304,6 +311,7 @@ ms.locfileid: "103232045"
 | **参数** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |EnableApplicationTypeHealthEvaluation |Bool，默认值为 false |静态|群集运行状况评估策略：启用按应用程序类型的运行状况评估。 |
+|EnableNodeTypeHealthEvaluation |Bool，默认值为 false |静态|群集运行状况评估策略：启用按节点类型的运行状况评估。 |
 |MaxSuggestedNumberOfEntityHealthReports|Int，默认值为 100 |动态|在引发关于监视程序运行状况报告逻辑的担忧之前，实体可具有的运行状况报告数量上限。 每个运行状况实体都应具有相对较少的运行状况报告。 如果报告计数超过此数字，监视程序的实现可能会出现问题。 计算实体时，报告数太多的实体通过“警告”运行状况报告进行标记。 |
 
 ## <a name="healthmanagerclusterhealthpolicy"></a>HealthManager/ClusterHealthPolicy
@@ -349,7 +357,7 @@ ms.locfileid: "103232045"
 |DisableContainers|bool，默认值为 FALSE|静态|用于禁用容器的配置 - 使用此项而不是 DisableContainerServiceStartOnContainerActivatorOpen，后者是已弃用的配置 |
 |DisableDockerRequestRetry|bool，默认值为 FALSE |动态| 默认情况下，SF 与 DD（docker 守护程序）进行通信，对于发送到它的每个 http 请求，超时都是“DockerRequestTimeout”。 如果 DD 在此时间段内没有响应，并且顶级操作仍然有剩余时间，则 SF 会重新发送请求。  对于 hyperv 容器，DD 有时候需要花费更多时间才能激活容器或停用容器。 在这种情况下，从 SF 的角度来看，DD 请求超时并且 SF 将重试操作。 有时，这好像给 DD 增加了更多压力。 此配置允许禁用此重试并等待 DD 做出响应。 |
 |DnsServerListTwoIps | 布尔值，默认为 FALSE | 静态 | 此标志会添加本地 DNS 服务器两次，以帮助缓解间歇性解析问题。 |
-| DockerTerminateOnLastHandleClosed | bool，默认值为 FALSE | 静态 | 默认情况下，如果 FabricHost 正在管理“dockerd”（基于：SkipDockerProcessManagement == false），则此设置配置 FabricHost 或 dockerd 崩溃时会发生的情况。 当设置为 `true` 时，如果这两个进程中的任一个崩溃，则所有正在运行的容器都会被 HCS 强制终止。 如果设置为 `false`，则容器会继续保持运行状态。 注意：在 8.0 之前的版本中，此行为无意中与 `false` 等效。 此处的默认设置 `true` 是我们期望默认情况下发生的事情，这样是为了让我们的清理逻辑在重启这些进程时生效。 |
+| DockerTerminateOnLastHandleClosed | bool，默认值为 TRUE | 静态 | 默认情况下，如果 FabricHost 正在管理“dockerd”（基于：SkipDockerProcessManagement == false），则此设置配置 FabricHost 或 dockerd 崩溃时会发生的情况。 当设置为 `true` 时，如果这两个进程中的任一个崩溃，则所有正在运行的容器都会被 HCS 强制终止。 如果设置为 `false`，则容器会继续保持运行状态。 注意：在 8.0 之前的版本中，此行为无意中与 `false` 等效。 此处的默认设置 `true` 是我们期望默认情况下发生的事情，这样是为了让我们的清理逻辑在重启这些进程时生效。 |
 | DoNotInjectLocalDnsServer | bool，默认值为 FALSE | 静态 | 阻止运行时注入本地 IP 来用作容器的 DNS 服务器。 |
 |EnableActivateNoWindow| bool，默认值为 FALSE|动态| 激活进程是在不使用任何控制台的情况下在后台中创建的。 |
 |EnableContainerServiceDebugMode|bool，默认值为 TRUE|静态|为 docker 容器启用/禁用日志记录。  仅限 Windows。|
@@ -507,7 +515,7 @@ ms.locfileid: "103232045"
 
 | **参数** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-|计数器 |字符串 | 动态 |要收集的性能计数器的逗号分隔列表。 |
+|计数器 |String | 动态 |要收集的性能计数器的逗号分隔列表。 |
 |IsEnabled |Bool，默认值为 true | 动态 |标志指示是否启用本地节点上的性能计数器集合。 |
 |MaxCounterBinaryFileSizeInMB |Int，默认值为 1 | 动态 |每个性能计数器二进制文件的最大大小（以 MB 为单位）。 |
 |NewCounterBinaryFileCreationIntervalInMinutes |Int，默认值为 10 | 动态 |在其之后创建新的性能计数器二进制文件的最大间隔（以秒为单位）。 |
@@ -552,6 +560,8 @@ ms.locfileid: "103232045"
 |MovementPerPartitionThrottleCountingInterval | 以秒为单位的时间，默认值为 600 |静态| 指定以秒为单位的时间范围。 指示刚过去的用于跟踪每个分区的副本移动的时间间隔的长度（与 MovementPerPartitionThrottleThreshold 配合使用）。 |
 |MovementPerPartitionThrottleThreshold | Uint，默认值为 50 |动态| 如果分区副本的均衡相关移动数量在刚过去的、由 MovementPerPartitionThrottleCountingInterval 指示的间隔时间中已达到或超过 MovementPerFailoverUnitThrottleThreshold，则该分区不会发生均衡相关的移动。 |
 |MoveParentToFixAffinityViolation | Bool，默认值为 false |动态| 该设置决定是否可通过移动父副本来修复相关性约束。|
+|NodeTaggingEnabled | Bool，默认值为 false |动态| 如果为 true，将启用 NodeTagging 功能。 |
+|NodeTaggingConstraintPriority | Int，默认值为 0 |动态| 可配置的节点标记优先级。 |
 |PartiallyPlaceServices | Bool，默认值为 true |动态| 决定在给定有限的适当节点的情况下，是否“全部或完全不”放置群集中的所有服务副本。|
 |PlaceChildWithoutParent | Bool，默认值为 true | 动态|该设置决定如果没启用父副本，是否可以放置子服务副本。 |
 |PlacementConstraintPriority | Int，默认值为 0 | 动态|确定放置约束的优先级：0：硬；1：软；负值：忽略。 |
@@ -572,7 +582,7 @@ ms.locfileid: "103232045"
 |UpgradeDomainConstraintPriority | Int，默认值为 1| 动态|确定升级域约束的优先级：0：硬；1：软；负值：忽略。 |
 |UseMoveCostReports | Bool，默认值为 false | 动态|指示 LB 忽略评分函数的成本元素，从而可能产生大量可优化平衡放置的移动。 |
 |UseSeparateSecondaryLoad | Bool，默认值为 true | 动态|确定是否应对次要副本使用单独负载的设置。 |
-|UseSeparateSecondaryMoveCost | Bool，默认值为 false | 动态|确定是否应对次要副本使用单独的迁移成本的设置。 |
+|UseSeparateSecondaryMoveCost | Bool，默认值为 true | 动态|此设置确定 PLB 是否应当为每个节点上的辅助负载使用不同的移动成本。 如果关闭了 UseSeparateSecondaryMoveCost：为一个节点上的辅助负载报告的移动成本将覆盖（所有其他节点上）每个辅助负载的移动成本。如果开启了 UseSeparateSecondaryMoveCost：为一个节点上的辅助负载报告的移动成本将仅在该辅助负载上生效（不影响其他节点上的辅助负载）。如果副本发生故障，则会使用在服务级别上指定的默认移动成本创建新副本。如果 PLB 移动现有副本，则移动成本与之匹配。 |
 |ValidatePlacementConstraint | Bool，默认值为 true |动态| 指定更新服务的服务说明时，是否验证服务的放置约束表达式。 |
 |ValidatePrimaryPlacementConstraintOnPromote| Bool，默认值为 TRUE |动态|指定是否在故障转移时评估服务的 PlacementConstraint 表达式的主要首选项。 |
 |VerboseHealthReportLimit | Int，默认值为 20 | 动态|定义副本进入未放置状态的次数超过多少次后，便报告副本运行状况警告（如果已启用详细运行状况报告）。 |
@@ -688,7 +698,7 @@ ms.locfileid: "103232045"
 |SettingsX509StoreName| string，默认值为“MY”| 动态|结构用于保护配置的 X509 证书存储 |
 |UseClusterCertForIpcServerTlsSecurity|bool，默认值为 FALSE|静态|是否使用群集证书保护 IPC 服务器 TLS 传输单元 |
 |X509Folder|string，默认值为 /var/lib/waagent|静态|X509 证书和私钥所在的文件夹 |
-|TLS1_2_CipherList| 字符串| 静态|对于 TLS1.2 及更低版本，如果设置为非空字符串，则替代受支持的密码列表。 请参阅“openssl-ciphers”文档来检索受支持的密码列表和列表格式。TLS1.2 的强密码列表的示例为：“ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-CBC-SHA384:ECDHE-ECDSA-AES128-CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA256”。仅适用于 Linux。 |
+|TLS1_2_CipherList| string| 静态|对于 TLS1.2 及更低版本，如果设置为非空字符串，则替代受支持的密码列表。 请参阅“openssl-ciphers”文档来检索受支持的密码列表和列表格式。TLS1.2 的强密码列表的示例为：“ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-CBC-SHA384:ECDHE-ECDSA-AES128-CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA256”。仅适用于 Linux。 |
 
 ## <a name="securityadminclientx509names"></a>Security/AdminClientX509Names
 
@@ -767,6 +777,7 @@ ms.locfileid: "103232045"
 |RecoverServicePartitions |string，默认值为“Admin” |动态| 用于恢复服务分区的安全性配置。 |
 |RecoverSystemPartitions |string，默认值为“Admin” |动态| 用于恢复系统服务分区的安全性配置。 |
 |RemoveNodeDeactivations |string，默认值为“Admin” |动态| 用于在多个节点上还原停用操作的安全性配置。 |
+|ReportCompletion |wstring，默认值为 L"Admin" |动态| 用于报告完成情况的安全性配置。 |
 |ReportFabricUpgradeHealth |string，默认值为“Admin” |动态| 用于恢复群集升级并提供当前升级进度的安全性配置。 |
 |ReportFault |string，默认值为“Admin” |动态| 用于报告故障的安全性配置。 |
 |ReportHealth |string，默认值为“Admin” |动态| 用于报告运行状况的安全性配置。 |
@@ -841,10 +852,10 @@ ms.locfileid: "103232045"
 | --- | --- | --- | --- |
 |ContainerNetworkName|string，默认值为“”| 静态 |设置容器网络时要使用的网络名称。|
 |ContainerNetworkSetup|bool，Linux 的默认值为 FALSE，Windows 的默认值为 TRUE| 静态 |是否设置容器网络。|
-|FabricDataRoot |字符串 | 不允许 |Service Fabric 数据根目录。 Azure 默认位置为 d:\svcfab |
-|FabricLogRoot |字符串 | 不允许 |Service Fabric 日志根目录。 这是放置 SF 日志和跟踪信息的位置。 |
+|FabricDataRoot |String | 不允许 |Service Fabric 数据根目录。 Azure 默认位置为 d:\svcfab |
+|FabricLogRoot |String | 不允许 |Service Fabric 日志根目录。 这是放置 SF 日志和跟踪信息的位置。 |
 |NodesToBeRemoved|string，默认值为“”| 动态 |应在配置升级过程中删除的节点。 （仅适用于独立部署）|
-|ServiceRunAsAccountName |字符串 | 不允许 |运行 Fabric 主机服务的帐户名称。 |
+|ServiceRunAsAccountName |String | 不允许 |运行 Fabric 主机服务的帐户名称。 |
 |SkipContainerNetworkResetOnReboot|bool，默认值为 FALSE|NotAllowed|是否在重启时跳过容器网络重置。|
 |SkipFirewallConfiguration |Bool，默认值为 false | 不允许 |指定是否需要由系统设置防火墙设置。 仅当使用 Windows 防火墙时适用。 如果使用第三方防火墙，则必须打开端口以供系统和应用程序使用 |
 

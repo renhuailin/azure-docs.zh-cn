@@ -6,16 +6,19 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: cba9615a8c76387b593109bc2174ab4718f1750a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 59f70659f25f925f8f802b0fcaa1f61d4e7f7dc0
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609297"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106932"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>与 Azure Database for MySQL 兼容的 MySQL 驱动程序和管理工具
-[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
-本文介绍与 Azure Database for MySQL 兼容的驱动程序和管理工具。
+
+本文介绍与 Azure Database for MySQL 单一服务器兼容的驱动程序和管理工具。
+
+>[!NOTE]
+>本文仅适用于 Azure Database for MySQL 单一服务器，以确保驱动程序与单一服务器服务的[连接性体系结构](concepts-connectivity-architecture.md)兼容。 [Azure Database for MySQL 灵活服务器](/../flexible-server/overview.md)与所有受支持的驱动程序和工具兼容，并与 MySQL 社区版兼容。 
 
 ## <a name="mysql-drivers"></a>MySQL 驱动程序
 Azure Database for MySQL 使用世界上最常用的 MySQL 数据库社区版。 因此，它与多种编程语言和驱动程序兼容。 目标是支持三个最新版本的 MySQL 驱动程序，并且与来自开源社区的创建者共同努力，不断改进 MySQL 驱动程序的功能和可用性。 下表提供了已测试并确认与 Azure Database for MySQL 5.6 和 5.7 兼容的驱动程序列表：

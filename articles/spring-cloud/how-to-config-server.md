@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: de113e3c005e11bd2bcd13ec6c1554664ba8fbaf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 52b3d902b2cbfdacfe92117dcf0057dab1fe9a83
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877171"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012203"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>为服务设置 Spring Cloud 配置服务器实例
 
@@ -242,9 +242,9 @@ Azure Spring Cloud 可以访问公开、由 SSH 保护的，或使用 HTTP 基�
 
    ![Spring Cloud Config Server](media/spring-cloud-tutorial-config-server/config-server-azure-repos.png)
 
-## <a name="delete-your-app-configuration"></a>删除应用配置
+## <a name="delete-your-configuration"></a>删除配置
 
-保存配置文件后，“配置”选项卡中会显示“删除应用配置”按钮 。单击此按钮会彻底清除现有的设置。 如果你希望将配置服务器实例连接到另一个源（例如，从 GitHub 移到 Azure DevOps），则应选择该选项。
+可以选择“配置服务器”选项卡中显示的“重置”按钮，以彻底清除现有的设置 。 如果你希望将配置服务器实例连接到另一个源（例如，从 GitHub 移到 Azure DevOps），请删除配置服务器设置。
 
 
 

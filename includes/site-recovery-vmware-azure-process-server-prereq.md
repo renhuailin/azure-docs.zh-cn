@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/28/2019
 ms.author: raynew
 ms.openlocfilehash: de15e3028cf22cdd03ce29385278fc5e2babaa9b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96008460"
 ---
 本文假设
 
 1. 已在本地网络和 Azure 虚拟网络之间建立 **站点到站点 VPN** 或 **ExpressRoute** 连接。
 2. 用户帐户有权在 Azure 订阅（虚拟机已故障转移到其中）中创建新的虚拟机。
-3. 订阅至少有8个核心可用于启动新的进程服务器虚拟机。
+3. 订阅至少有 8 个内核可用于启动新的进程服务器虚拟机。
 4. 可以提供 **配置服务器通行短语**。
 
 > [!TIP]

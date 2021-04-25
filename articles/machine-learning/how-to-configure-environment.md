@@ -8,15 +8,15 @@ ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.date: 11/16/2020
+ms.date: 03/22/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 7e493404e7a36b60e8f9e62cd4ac2f2b32845bb9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7f35f9196fb4ab67de724ba73982fed69ac81361
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102501611"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306834"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>为 Azure 机器学习设置 Python 开发环境
 
@@ -134,7 +134,12 @@ ms.locfileid: "102501611"
 1. 安装 [Visual Studio Code](https://code.visualstudio.com/Download)。
 1. 安装 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)（预览版）。
 
-安装 Visual Studio Code 扩展后，你可以管理 [Azure 机器学习资源](how-to-manage-resources-vscode.md)、[运行和调试试验](how-to-debug-visual-studio-code.md)，以及[部署训练后的模型](tutorial-train-deploy-image-classification-model-vscode.md)。
+安装 Visual Studio Code 扩展后，请使用它来执行以下操作：
+
+* [管理 Azure 机器学习资源](how-to-manage-resources-vscode.md)
+* [连接到 Azure 机器学习计算实例](how-to-set-up-vs-code-remote.md)
+* [运行和调试试验](how-to-debug-visual-studio-code.md)
+* [部署已训练模型](tutorial-train-deploy-image-classification-model-vscode.md)。
 
 ## <a name="azure-machine-learning-compute-instance"></a><a id="compute-instance"></a>Azure 机器学习计算实例
 
@@ -151,7 +156,7 @@ Azure 机器学习[计算实例](concept-compute-instance.md)是一个安全的�
 
 除了 Jupyter Notebook 服务器和 JupyterLab 以外，还可以在 [Azure 机器学习工作室内的集成笔记本功能](how-to-run-jupyter-notebooks.md)中使用计算实例。
 
-你还可以使用 Azure 机器学习 Visual Studio Code 扩展，[将 Azure 机器学习计算实例配置为远程 Jupyter Notebook 服务器](how-to-set-up-vs-code-remote.md#configure-compute-instance-as-remote-notebook-server)。
+还可以使用 Azure 机器学习 Visual Studio Code 扩展以[通过 VS Code 连接到远程计算实例](how-to-set-up-vs-code-remote.md)。
 
 ## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Data Science Virtual Machine
 

@@ -5,14 +5,14 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: bbe36e072d10b81c421331b2212d8b161afd2693
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fdc299ef1945e3ee0810f1c314fc07edfb4f4873
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87095973"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313294"
 ---
-# <a name="microsoftcommonarmapicontrol-ui-element"></a>Microsoft.Common.ArmApiControl UI element
+# <a name="microsoftsolutionsarmapicontrol-ui-element"></a>Microsoft.Solutions.ArmApiControl UI element
 
 ArmApiControl 可让你从 Azure 资源管理器 API 操作获取结果。 使用结果填充其他控件中的动态内容。
 
@@ -46,7 +46,14 @@ ArmApiControl 可让你从 Azure 资源管理器 API 操作获取结果。 使�
 ## <a name="remarks"></a>备注
 
 - `request.method` 属性指定 HTTP 方法。 仅允许 `GET` 或 `POST`。
-- `request.path` 属性指定 URL 的相对路径。 它可以是静态路径，也可以通过引用其他控件的输出值来动态构造。
+- `request.path` 属性指定一个 URL，该 URL 必须是指向 ARM 终结点的相对路径。 它可以是静态路径，也可以通过引用其他控件的输出值来动态构造。
+
+  例如，对 `Microsoft.Network/expressRouteCircuits` 资源提供程序的 ARM 调用：
+
+  ```json
+  "path": "<subid>/resourceGroup/<resourceGroupName>/providers/Microsoft.Network/expressRouteCircuits/<routecircuitName>/?api-version=2020-05-01"
+  ```
+
 - `request.body` 属性为可选。 使用它指定与请求一起发送的 JSON 正文。 正文可以是静态内容，也可以通过引用其他控件的输出值来动态构造。
 
 ## <a name="example"></a>示例
@@ -81,5 +88,5 @@ ArmApiControl 可让你从 Azure 资源管理器 API 操作获取结果。 使�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)。
-* 有关 UI 元素中的公用属性的说明，请参阅 [CreateUiDefinition 元素](create-uidefinition-elements.md)。
+- 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)。
+- 有关 UI 元素中的公用属性的说明，请参阅 [CreateUiDefinition 元素](create-uidefinition-elements.md)。

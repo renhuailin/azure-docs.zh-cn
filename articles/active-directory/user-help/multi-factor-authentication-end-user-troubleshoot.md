@@ -14,10 +14,10 @@ ms.author: curtand
 ms.reviewer: kexia
 ms.custom: contperf-fy21q1
 ms.openlocfilehash: 0cb5e3463eda5d77bbbdefe223954105fd125c71
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98033976"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>双因素验证以及工作或学校帐户的常见问题
@@ -53,7 +53,7 @@ Azure Active Directory (Azure AD) 组织可以为你的帐户启用双重验证�
 
 ## <a name="i-cant-turn-two-factor-verification-off"></a>我无法禁用双因素验证
 
-- 如果对 Microsoft 服务的个人帐户（如）使用双重验证， alain@outlook.com 则可以 [打开和关闭该功能](https://account.live.com/proofs/Manage)。
+- 不过，如果你是将双重验证用于 Microsoft 服务的个人帐户（例如 alain@outlook.com），则可以[启用和禁用此功能](https://account.live.com/proofs/Manage)。
 
 - 如果你是将双重验证用于工作或学校帐户，那么这很可能意味着你的组织已决定你必须使用这一附加的安全功能。 无法单独将其关闭。
 
@@ -74,7 +74,7 @@ Azure Active Directory (Azure AD) 组织可以为你的帐户启用双重验证�
 
 尝试此操作 | 指导信息
 --------- | ------------
-使用 Microsoft 验证器应用或验证码 | 你在登录过程中收到“你已达到验证呼叫限制”或“你已达到文本验证码限制”错误消息。 <br/><br/>Microsoft 可能会限制同一用户在短时间内尝试重复身份验证的次数。 此限制不适用于 Microsoft Authenticator 或验证码。 如果你已达到这些限制，则可以使用 Authenticator 应用、验证码或在几分钟后尝试再次登录。 <br/><br/> 你在登录过程中收到 "很抱歉，我们无法验证你的帐户" 的错误消息。 <br/><br/> Microsoft 可能因语音或短信身份验证尝试次数过多而限制或阻止由同一用户、电话号码或组织执行的语音或短信身份验证尝试。 如果遇到此错误，可以尝试其他方法，例如验证器应用或验证代码，或联系管理员获取支持。
+使用 Microsoft 验证器应用或验证码 | 你在登录过程中收到“你已达到验证呼叫限制”或“你已达到文本验证码限制”错误消息。 <br/><br/>Microsoft 可能会限制同一用户在短时间内尝试重复身份验证的次数。 此限制不适用于 Microsoft Authenticator 或验证码。 如果你已达到这些限制，则可以使用 Authenticator 应用、验证码或在几分钟后尝试再次登录。 <br/><br/> 你在登录期间收到“抱歉，我们无法验证你的帐户”错误消息。 <br/><br/> 由于失败的语音或短信身份验证尝试次数过多，Microsoft 可能会限制或阻止同一用户、电话号码或组织执行的语音或短信身份验证尝试。 如果遇到此错误，可以尝试其他方法，例如 Authenticator 应用或验证码，或者联系管理员获取支持。
 重启移动设备 | 有时，设备只是需要刷新一下。 重启设备时，将结束所有后台进程和服务。 重启还会关闭设备的核心组件。 重启设备时，将刷新任何服务或组件。
 验证安全信息是否正确无误 | 确保你的安全验证方法信息是准确的，特别是你的电话号码。 如果你输入了错误的电话号码，那么所有警报都会发送到这一错误号码。 幸运的是，这名用户无法使用警报执行任何操作，但这也不能帮助你登录帐户。 若要确保你的信息正确无误，请参阅[管理双因素验证方法设置](multi-factor-authentication-end-user-manage-settings.md)一文中的说明。
 验证是否已启用通知 | 请确保移动设备启用了通知。 确保允许以下通知模式： <br/><br/> &bull; 电话呼叫 <br/> &bull; 身份验证应用 <br/> &bull; 短信应用 <br/><br/> 请确保这些模式创建在你的设备上可见的警报。
@@ -104,17 +104,17 @@ Azure Active Directory (Azure AD) 组织可以为你的帐户启用双重验证�
 
 可选步骤：
 
-- 按照 [下载并安装 Microsoft Authenticator 应用](user-help-auth-app-download-install.md) 一文中的步骤，在你的移动设备上安装 Microsoft Authenticator 应用。
+- 按照[下载并安装 Microsoft Authenticator 应用](user-help-auth-app-download-install.md)一文中的步骤操作，在移动设备上安装 Microsoft Authenticator 应用。
 
 - 按照[管理双因素验证方法设置](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)一文中的“在受信任的设备上启用双因素验证提示”部分中的步骤操作，为受信任的设备启用双因素验证。
 
 ## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>旅行时，我在移动设备上登录时遇到问题
 
-你可能会发现，当你身处国外时，使用与移动设备相关的验证方法（比如短信）会更加困难。 你的移动设备还可能会导致产生漫游费用。 对于这种情况，建议使用带有连接到 Wi-Fi 热点的选项的 Microsoft Authenticator 应用。 有关如何在移动设备上设置 Microsoft Authenticator 应用的详细信息，请参阅 [下载并安装 Microsoft Authenticator 应用](user-help-auth-app-download-install.md) 一文。
+你可能会发现，当你身处国外时，使用与移动设备相关的验证方法（比如短信）会更加困难。 你的移动设备还可能会导致产生漫游费用。 对于这种情况，建议使用带有连接到 Wi-Fi 热点的选项的 Microsoft Authenticator 应用。 若要详细了解如何在移动设备上设置 Microsoft Authenticator 应用，请参阅[下载并安装 Microsoft Authenticator 应用](user-help-auth-app-download-install.md)一文。
 
 ## <a name="i-cant-get-my-app-passwords-to-work"></a>我的应用密码不起作用
 
-对于不支持双因素验证的旧桌面应用，应用密码可以替代普通密码。 首先，请确保输入的密码正确。 如果这不能解决此问题，请尝试为应用程序创建新的应用密码。 按照使用 "[管理应用密码](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page)" 一文中的 "我的应用程序" 门户中的 "**创建和删除应用密码**" 一节中的步骤执行此操作。
+对于不支持双因素验证的旧桌面应用，应用密码可以替代普通密码。 首先，请确保输入的密码正确。 如果这不能解决此问题，请尝试为应用创建一个新的应用密码。 请按照[管理双重验证的应用密码](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page)一文中“使用‘我的应用’门户创建和删除应用密码”部分的步骤执行此操作。
 
 ## <a name="i-cant-turn-off-two-factor-verification"></a>我无法禁用双重验证
 

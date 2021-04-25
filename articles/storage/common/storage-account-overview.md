@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/09/2021
+ms.date: 04/02/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 24d955b0d1c53f57f5927f9e893b6ecd75fb3ca8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7eca7d8f3cd40f4a3961f0ac478fba290be3041
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561885"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279657"
 ---
 # <a name="storage-account-overview"></a>存储帐户概述
 
@@ -175,10 +175,6 @@ Azure 存储提供不同的选项，适用于根据使用模型访问块 Blob �
 > [!IMPORTANT]
 > 更改现有存储帐户或 Blob 的访问层可能会产生额外费用。 有关详细信息，请参阅[存储帐户计费](#storage-account-billing)。
 
-## <a name="encryption"></a>Encryption
-
-存储帐户中的所有数据均在服务端加密。 有关加密的详细信息，请参阅[静态数据的 Azure 存储服务加密](storage-service-encryption.md)。
-
 ## <a name="storage-account-endpoints"></a>存储帐户终结点
 
 存储帐户在 Azure 中为数据提供唯一的命名空间。 存储在 Azure 存储中的每个对象都有一个地址，其中包含唯一的帐户名称。 将帐户名称与 Azure 存储服务终结点组合在一起，即可构成适用于存储帐户的终结点。
@@ -200,22 +196,17 @@ Azure 存储提供不同的选项，适用于根据使用模型访问块 Blob �
 
 也可将存储帐户配置为对 Blob 使用自定义域。 有关详细信息，请参阅[为 Azure 存储帐户配置自定义域名](../blobs/storage-custom-domain-name.md)。  
 
-## <a name="control-access-to-account-data"></a>控制对帐户数据的访问
+## <a name="migrating-a-storage-account"></a>迁移存储帐户
 
-默认情况下，只有你，即帐户所有者，才能使用帐户中的数据。 你可以控制哪些用户可以访问你的数据，以及这些用户可以有什么权限。
+下表列出了有关移动、升级或迁移存储帐户的指导：
 
-对存储帐户发出的每个请求都必须获得授权。 在服务级别，请求必须包含有效的 *Authorization* 标头。 具体说来，该标头包含服务在执行请求之前对其进行验证所需的所有信息。
-
-可以通过下述任意方法授予对存储帐户中数据的访问权限：
-
-- **Azure Active Directory：** 使用 Azure Active Directory (Azure AD) 凭据对访问 Blob 和队列数据的用户、组或其他标识进行身份验证。 如果某个标识的身份验证成功，则 Azure AD 会返回一个令牌，在对访问 Azure Blob 存储或队列存储的请求授权时可以使用该令牌。 有关详细信息，请参阅[使用 Azure Active Directory 对 Azure 存储访问进行身份验证](storage-auth-aad.md)。
-- **共享密钥授权：** 使用存储帐户访问密钥构造一个连接字符串，应用程序在运行时将使用该连接字符串来访问 Azure 存储。 连接字符串中的值用于构造传递给 Azure 存储的 *Authorization* 标头。 有关详细信息，请参阅[配置 Azure 存储连接字符串](storage-configure-connection-string.md)。
-- **共享访问签名：** 共享访问签名 (SAS) 是一个令牌，用于对存储帐户中的资源进行委托访问。 SAS 令牌封装了对目标对象为 URL 处的 Azure 存储的请求进行授权所需的所有信息。 创建 SAS 时，你可以指定 SAS 授予对资源的哪些权限以及权限在多长的时间间隔内有效。 可以使用 Azure AD 凭据或共享密钥来签署 SAS 令牌。 有关详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](storage-sas-overview.md)。
-
-> [!NOTE]
-> 与其他授权方式相比，使用 Azure AD 凭据对用户或应用程序进行身份验证可以提供优越的安全性和易用性。 虽然可以继续为应用程序使用共享密钥授权，但是，使用 Azure AD 不需要将帐户访问密钥与代码存储在一起。 也可以继续使用共享访问签名 (SAS) 授予对存储帐户中的资源的精细访问权限，但 Azure AD 提供了类似的功能，并且不需要管理 SAS 令牌，也不需要担心吊销已泄露的 SAS。
->
-> Microsoft 建议尽量为 Azure 存储 Blob 和队列应用程序使用 Azure AD 身份验证。
+| 迁移方案 | 详细信息 |
+|--|--|
+| 将存储帐户移到其他订阅 | Azure 资源管理器提供将资源移到其他订阅的选项。 有关详细信息，请参阅[将资源移到新资源组或订阅](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。 |
+| 将存储帐户移到其他资源组 | Azure 资源管理器提供将资源移到其他资源组的选项。 有关详细信息，请参阅[将资源移到新资源组或订阅](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。 |
+| 将存储帐户移到其他区域 | 若要移动某个存储帐户，请在另一个区域中创建该存储帐户的副本。 然后，使用 AzCopy 或其他所选工具将数据移到该帐户。 有关详细信息，请参阅[将 Azure 存储帐户移到另一区域](storage-account-move.md)。 |
+| 升级到常规用途 v2 存储帐户 | 你可以将常规用途 v1 存储帐户或 Blob 存储帐户升级到常规用途 v2 存储帐户。 注意，该操作无法撤消。 有关详细信息，请参阅[升级到常规用途 v2 存储帐户](storage-account-upgrade.md)。 |
+| 将经典存储帐户迁移到 Azure 资源管理器 | 在功能、可伸缩性和安全性方面，Azure 资源管理器部署模型优于经典部署模型。 有关将经典存储帐户迁移到 Azure 资源管理器的详细信息，请参阅“平台支持的从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移”中的[迁移存储帐户](../../virtual-machines/migration-classic-resource-manager-overview.md#migration-of-storage-accounts)。 |
 
 ## <a name="copying-data-into-a-storage-account"></a>将数据复制到存储帐户中
 
@@ -239,6 +230,10 @@ AzCopy 是一个 Windows 命令行实用程序，用于将数据高性能复制�
 
 > [!IMPORTANT]
 > 使用客户端加密进行加密的 Blob 会将与加密相关的元数据与 Blob 一起存储。 如果复制使用客户端加密来加密的 Blob，请确保复制操作保留 Blob 元数据，尤其是与加密相关的元数据。 如果复制不包含此加密元数据的 Blob，则不能再次检索 Blob 内容。 有关加密相关元数据的详细信息，请参阅 [Azure 存储客户端加密](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+
+## <a name="encryption"></a>Encryption
+
+存储帐户中的所有数据均在服务端加密。 有关加密的详细信息，请参阅[静态数据的 Azure 存储服务加密](storage-service-encryption.md)。
 
 ## <a name="storage-account-billing"></a>存储帐户计费
 

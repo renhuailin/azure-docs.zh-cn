@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 12/10/2020
 ms.author: rolyon
-ms.openlocfilehash: 5a4be6052e72c27ad83b5af64f1acb3ad8d4e3be
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.openlocfilehash: 93821979e0c14a879b805049a4f662e9ef6d5b15
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555901"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075672"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>将 Azure 订阅转移到其他 Azure AD 目录
 
@@ -58,7 +58,7 @@ ms.locfileid: "100555901"
 转移订阅的过程需要停机才能完成。 可以根据情况考虑以下替代方法：
 
 - 重新创建资源并将数据复制到目标目录和订阅中。
-- 采用多目录体系结构，并将订阅保留在源目录中。 使用 Azure Lighthouse 委托资源，以便目标目录中的用户可以访问源目录中的订阅。 有关详细信息，请参阅 [Azure Lighthouse in 企业方案](../lighthouse/concepts/enterprise.md)。
+- 采用多目录体系结构，并将订阅保留在源目录中。 使用 Azure Lighthouse 委托资源，以便目标目录中的用户可以访问源目录中的订阅。 更多信息，请参阅 [Azure Lighthouse 企业方案](../lighthouse/concepts/enterprise.md)。
 
 ### <a name="understand-the-impact-of-transferring-a-subscription"></a>了解转移订阅的影响
 
@@ -74,7 +74,7 @@ ms.locfileid: "100555901"
 | 系统分配的托管标识 | “是” | “是” | [列出托管标识](#list-role-assignments-for-managed-identities) | 必须禁用并重新启用托管标识。 必须重新创建角色分配。 |
 | 用户分配的托管标识 | “是” | “是” | [列出托管标识](#list-role-assignments-for-managed-identities) | 必须删除、重新创建托管标识并将其附加到相应的资源。 必须重新创建角色分配。 |
 | Azure Key Vault | “是” | “是” | [列出 Key Vault 访问策略](#list-key-vaults) | 必须更新与密钥保管库关联的租户 ID。 必须删除并添加新的访问策略。 |
-| 启用了 Azure AD 身份验证集成的 Azure SQL 数据库 | 是 | 否 | [检查采用 Azure AD 身份验证的 Azure SQL 数据库](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
+| 启用了 Azure AD 身份验证集成的 Azure SQL 数据库 | 是 | 否 | [检查采用 Azure AD 身份验证的 Azure SQL 数据库](#list-azure-sql-databases-with-azure-ad-authentication) |  | 
 | Azure 存储和 Azure Data Lake Storage Gen2 | 是 | 是 |  | 必须重新创建任何 ACL。 |
 | Azure Data Lake Storage Gen1 | 是 | 是 |  | 必须重新创建任何 ACL。 |
 | Azure 文件 | 是 | 是 |  | 必须重新创建任何 ACL。 |
@@ -82,7 +82,7 @@ ms.locfileid: "100555901"
 | Azure 托管磁盘 | 是 | 是 |  |  如果使用磁盘加密集通过客户管理的密钥对托管磁盘进行加密，则必须先禁用再重新启用与磁盘加密集关联的系统分配标识。 你必须重新创建角色分配，即，向密钥保管库中的磁盘加密集再次授予所需权限。 |
 | Azure Kubernetes 服务 | 是 | 是 |  |  |
 | Azure Policy | 是 | 否 | 所有 Azure Policy 对象，包括自定义定义、分配、豁免和符合性数据。 | 必须[导出](../governance/policy/how-to/export-resources.md)、导入和重新分配定义。 然后，创建新的策略分配以及任何必需的[策略豁免](../governance/policy/concepts/exemption-structure.md)。 |
-| Azure Active Directory 域服务 | “是” | 否 |  |  |
+| Azure Active Directory 域服务 | 是 | 否 |  |  |
 | 应用注册 | “是” | 是 |  |  |
 
 > [!WARNING]
@@ -92,7 +92,7 @@ ms.locfileid: "100555901"
 
 若要完成这些步骤，需要：
 
-- [Bash Azure Cloud Shell](../cloud-shell/overview.md) 或 [Azure CLI](/cli/azure)
+- [Azure Cloud Shell Bash](../cloud-shell/overview.md) 或 [Azure CLI](/cli/azure)
 - 要在源目录中转移的订阅的帐户管理员
 - 目标目录中的[所有者](built-in-roles.md#owner)角色
 
@@ -241,9 +241,9 @@ ms.locfileid: "100555901"
 
 ### <a name="list-acls"></a>列出 ACL
 
-1. 如果使用 Azure Data Lake Storage Gen1，请使用 Azure 门户或 PowerShell 列出应用到任何文件的 Acl。
+1. 如果使用的是 Azure Data Lake Storage Gen1，请使用 Azure 门户或 PowerShell 列出适用于任何文件的 ACL。
 
-1. 如果使用 Azure Data Lake Storage Gen2，请使用 Azure 门户或 PowerShell 列出应用到任何文件的 Acl。
+1. 如果使用的是 Azure Data Lake Storage Gen2，请使用 Azure 门户或 PowerShell 列出适用于任何文件的 ACL。
 
 1. 如果使用的是 Azure 文件，请列出应用于任何文件的 ACL。
 
@@ -275,7 +275,7 @@ ms.locfileid: "100555901"
 1. 将订阅转移到另一目录。
 
     - 若要保留当前计费所有权，请按照[将 Azure 订阅关联或添加到 Azure Active Directory 租户](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)中的步骤进行操作。
-    - 如果还想要转让帐单所有权，请遵循将 [Azure 订阅的帐单所有权转移到另一个帐户](../cost-management-billing/manage/billing-subscription-transfer.md)中的步骤。 若要将订阅转移到不同的目录，必须选中 " **订阅 Azure AD 租户** " 复选框。
+    - 如果还想转让帐单所有权，请遵循[将 Azure 订阅的帐单所有权转让给其他帐户](../cost-management-billing/manage/billing-subscription-transfer.md)中的步骤。 将订阅转移到不同目录，必须选中“订阅 Azure AD 租户”复选框。
 
 1. 完成订阅转移后，请返回到本文，了解如何在目标目录中重新创建资源。
 
@@ -309,7 +309,7 @@ ms.locfileid: "100555901"
 
 ### <a name="assign-roles"></a>分配角色
 
-- 使用 [az role 分配 create](/cli/azure/role/assignment#az_role_assignment_create) 将角色分配给用户、组和服务主体。 有关详细信息，请参阅 [使用 Azure CLI 分配 Azure 角色](role-assignments-cli.md)。
+- 使用 [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) 为用户、组和服务主体分配角色分配。 有关详细信息，请参阅[使用 Azure CLI 分配 Azure 角色](role-assignments-cli.md)。
 
     ```azurecli
     az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
@@ -325,7 +325,7 @@ ms.locfileid: "100555901"
     | 虚拟机规模集 | [使用 Azure CLI 在虚拟机规模集上配置 Azure 资源托管标识](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#system-assigned-managed-identity) |
     | 其他服务 | [支持 Azure 资源托管标识的服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) |
 
-1. 使用 [az role 赋值 create](/cli/azure/role/assignment#az_role_assignment_create) 将角色分配给系统分配的托管标识。 有关详细信息，请参阅[使用 Azure CLI 为托管标识分配对资源的访问权限](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)。
+1. 使用 [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) 为系统分配的托管身份分配角色。 有关详细信息，请参阅[使用 Azure CLI 为托管标识分配对资源的访问权限](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)。
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
@@ -341,7 +341,7 @@ ms.locfileid: "100555901"
     | 虚拟机规模集 | [使用 Azure CLI 在虚拟机规模集上配置 Azure 资源托管标识](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#user-assigned-managed-identity) |
     | 其他服务 | [支持 Azure 资源托管标识的服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)<br/>[使用 Azure CLI 创建、列出或删除用户分配的托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) |
 
-1. 使用 [az role 赋值 create](/cli/azure/role/assignment#az_role_assignment_create) 将角色分配给用户分配的托管标识。 有关详细信息，请参阅[使用 Azure CLI 为托管标识分配对资源的访问权限](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)。
+1. 使用 [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) 为用户分配的托管身份分配角色。 有关详细信息，请参阅[使用 Azure CLI 为托管标识分配对资源的访问权限](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)。
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
@@ -359,9 +359,9 @@ ms.locfileid: "100555901"
 
 ### <a name="update-acls"></a>更新 ACL
 
-1. 如果使用的是 Azure Data Lake Storage Gen1，请分配相应的 Acl。 有关详细信息，请参阅[保护 Azure Data Lake Storage Gen1 中存储的数据](../data-lake-store/data-lake-store-secure-data.md)。
+1. 如果使用的是 Azure Data Lake Storage Gen1，请分配相应的 ACL。 有关详细信息，请参阅[保护 Azure Data Lake Storage Gen1 中存储的数据](../data-lake-store/data-lake-store-secure-data.md)。
 
-1. 如果使用的是 Azure Data Lake Storage Gen2，请分配相应的 Acl。 有关详细信息，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](../storage/blobs/data-lake-storage-access-control.md)。
+1. 如果使用的是 Azure Data Lake Storage Gen2，请分配相应的 ACL。 有关详细信息，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](../storage/blobs/data-lake-storage-access-control.md)。
 
 1. 如果使用的是 Azure 文件存储，请分配相应的 ACL。
 

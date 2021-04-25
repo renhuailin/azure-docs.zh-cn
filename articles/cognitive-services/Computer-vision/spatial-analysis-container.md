@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 87076febd4597556fd2b28245f47442308cd6e6c
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: d257a77940b460bf8be64e3f8376353a859365f7
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106108348"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284713"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>安装和运行空间分析容器（预览版）
 
@@ -326,7 +326,7 @@ sudo systemctl restart iotedge
 
 #### <a name="azure-vm-with-gpu"></a>[带 GPU 的 Azure VM](#tab/virtual-machine)
 
-也可以使用带 GPU 的 Azure 虚拟机来运行空间分析。 以下示例将使用带有一个 K80 GPU 的 [NC 系列](../../virtual-machines/nc-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) VM。
+也可以使用搭载 GPU 的 Azure 虚拟机来运行空间分析。 以下示例将使用带有一个 K80 GPU 的 [NC 系列](../../virtual-machines/nc-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) VM。
 
 #### <a name="create-the-vm"></a>创建 VM
 
@@ -529,7 +529,7 @@ sudo az iot edge set-modules --hub-name "<iothub-name>" --device-id "<device-nam
 | `--target-condition` | 主计算机的 IoT Edge 设备名称。 |
 | `-–subscription` | 订阅 ID 或名称。 |
 
-此命令将启动部署。 在 Azure 门户中导航到 Azure IoT 中心实例的页面，以查看部署状态。 在设备完成下载容器映像并开始运行之前，状态可能显示为“417 – 设备的部署配置未设置”。
+此命令将启动部署。 在 Azure 门户中导航到 Azure IoT 中心实例的页面，以查看部署状态。 在设备完成容器映像下载并开始运行映像之前，状态可能显示为“417 - 设备的部署配置未设置”。
 
 ## <a name="validate-that-the-deployment-is-successful"></a>验证部署是否成功
 
@@ -539,7 +539,7 @@ sudo az iot edge set-modules --hub-name "<iothub-name>" --device-id "<device-nam
 
 部署完成并且容器运行后，**主计算机** 会开始将事件发送到 Azure IoT 中心。 如果使用了操作的 `.debug` 版本，对于在部署清单中配置的每个相机，你将看到一个可视化工具窗口。 现在，可以定义要在部署清单中监视的视线和区域，然后按照说明重新部署。 
 
-## <a name="configure-the-operations-performed-by-spatial-analysis"></a>配置空间分析执行的操作
+## <a name="configure-the-operations-performed-by-spatial-analysis"></a>配置由空间分析执行的操作
 
 需使用[空间分析操作](spatial-analysis-operations.md)将容器配置为使用连接的相机、配置操作，等等。 对于配置的每个相机设备，空间分析的操作会生成发送到 Azure IoT 中心实例的 JSON 消息输出流。
 
@@ -547,12 +547,12 @@ sudo az iot edge set-modules --hub-name "<iothub-name>" --device-id "<device-nam
 
 若要开始使用容器生成的输出，请参阅以下文章：
 
-*   使用适用于所选编程语言的 Azure 事件中心 SDK 连接到 Azure IoT 中心终结点，并接收事件。 有关详细信息，请参阅[从内置终结点读取设备到云的消息](../../iot-hub/iot-hub-devguide-messages-read-builtin.md)。 
-*   在 Azure IoT 中心设置消息路由，以将事件发送到其他终结点，或者将事件保存到 Azure Blob 存储，等等。有关详细信息，请参阅 [IoT 中心消息路由](../../iot-hub/iot-hub-devguide-messages-d2c.md)。 
+*    使用适用于所选编程语言的 Azure 事件中心 SDK 连接到 Azure IoT 中心终结点，并接收事件。 有关详细信息，请参阅[从内置终结点读取设备到云的消息](../../iot-hub/iot-hub-devguide-messages-read-builtin.md)。 
+*    在 Azure IoT 中心设置消息路由，以将事件发送到其他终结点，或者将事件保存到 Azure Blob 存储，等等。有关详细信息，请参阅 [IoT 中心消息路由](../../iot-hub/iot-hub-devguide-messages-d2c.md)。 
 
 ## <a name="running-spatial-analysis-with-a-recorded-video-file"></a>对录制的视频文件运行空间分析
 
-可对录制的视频或直播视频使用空间分析。 若要对录制的视频使用空间分析，请尝试录制一个视频文件，并将其保存为 mp4 文件。 在 Azure 中创建一个 Blob 存储帐户，或使用现有帐户。 然后在 Azure 门户中更新以下 Blob 存储设置：
+可对录制的视频或直播视频使用空间分析。 若要对录制的视频使用空间分析，请尝试录制一个视频文件，并将其另存为 mp4 文件。 在 Azure 中创建一个 Blob 存储帐户，或使用现有帐户。 然后在 Azure 门户中更新以下 Blob 存储设置：
     1. 将“需要安全传输”更改为“已禁用” 
     2. 将“允许 Blob 公共访问”更改为“已启用” 
 
@@ -562,7 +562,7 @@ sudo az iot edge set-modules --hub-name "<iothub-name>" --device-id "<device-nam
 
 在所有图中，请将 [Azure Stack Edge 设备](https://go.microsoft.com/fwlink/?linkid=2142179)、[台式机](https://go.microsoft.com/fwlink/?linkid=2152270)或[带 GPU 的 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) 的部署清单中的 `VIDEO_URL` 替换为创建的 URL。 将 `VIDEO_IS_LIVE` 设置为 `false`，然后使用更新的清单重新部署空间分析容器。 请参阅以下示例。
 
-空间分析模块将开始使用视频文件，而且也会持续自动重播。
+空间分析模块将开始使用视频文件，而且会持续自动重播。
 
 
 ```json

@@ -4,10 +4,10 @@ description: 本文介绍如何使用 Windows PowerShell DSC 通过已启用 Azu
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.openlocfilehash: c0ae9c97afe14559aa36c1b8387f07897aa4c43b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100587641"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>如何使用 Windows PowerShell DSC 安装 Connected Machine Agent
@@ -42,7 +42,7 @@ ms.locfileid: "100587641"
 
 ## <a name="install-the-agent-and-connect-to-azure"></a>安装代理并连接到 Azure
 
-此模块中的资源旨在管理 Azure Connected Machine Agent 配置。 还包括一个 PowerShell 脚本 `AzureConnectedMachineAgent.ps1`，位于 `AzureConnectedMachineDsc\examples` 文件夹中。 它使用社区资源来自动执行下载和安装，并与 Azure Arc 建立连接。此脚本执行[从 Azure 门户将混合计算机连接到 Azure](onboard-portal.md) 文章中所述的类似步骤。
+此模块中的资源旨在管理 Azure Connected Machine Agent 配置。 还包括一个 PowerShell 脚本 `AzureConnectedMachineAgent.ps1`，位于 `AzureConnectedMachineDsc\examples` 文件夹中。 它使用社区资源自动执行下载和安装，并建立与 Azure Arc 的连接。此脚本执行[从 Azure 门户将混合计算机连接到 Azure](onboard-portal.md) 一文中所述的类似步骤。
 
 如果计算机需要通过代理服务器来与服务进行通信，则在安装代理后，需要运行[此处](manage-agent.md#update-or-remove-proxy-settings)所述的某个命令。 此命令将设置代理服务器系统环境变量 `https_proxy`。 可以使用 [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc) 模块通过 DSC 执行此步骤，而不是手动运行该命令。
 

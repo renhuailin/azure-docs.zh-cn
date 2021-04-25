@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: jordane
 author: jpe316
-ms.date: 11/16/2020
-ms.openlocfilehash: cc844cbd2518bb131f6902d1da3e7653951224b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2021
+ms.openlocfilehash: 2dc50702113f591075b790878347c4ca47beec4e
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102547843"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027799"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure 机器学习的 Git 集成
 
@@ -25,6 +25,11 @@ Azure 机器学习完全支持用于跟踪工作的 Git 存储库 - 你可以将
 在向 Azure 机器学习提交作业时，如果源文件存储在本地 git 存储库中，那么系统会将有关存储库的信息作为训练过程的一部分进行跟踪。
 
 由于 Azure 机器学习会跟踪来自本地 git 存储库的信息，因此它不会绑定到任何特定的中心存储库。 可以从 GitHub、GitLab、Bitbucket、Azure DevOps 或任何其他与 git 兼容的服务克隆存储库。
+
+> [!TIP]
+> 使用 Visual Studio Code 通过图形用户界面与 Git 交互。 若要使用 Visual Studio Code 连接到 Azure 机器学习远程计算实例，请参阅[在 Visual Studio Code（预览版）中连接到 Azure 机器学习计算实例](how-to-set-up-vs-code-remote.md)
+>
+> 有关 Visual Studio Code 版本控制功能的详细信息，请参阅[使用 VS Code 中的版本控制](https://code.visualstudio.com/docs/editor/versioncontrol)和[在 VS Code 中使用 GitHub](https://code.visualstudio.com/docs/editor/github)。
 
 ## <a name="clone-git-repositories-into-your-workspace-file-system"></a>将 Git 存储库克隆到你的工作区文件系统
 Azure 机器学习为工作区中的所有用户提供了一个共享文件系统。

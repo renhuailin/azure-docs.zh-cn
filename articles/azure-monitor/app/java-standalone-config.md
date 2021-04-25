@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: e58d69634712a9cc640ba9e4785a7bf1effaf88c
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: 997a4e115f8632544b2f73aef498d40dceb0d459
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103224650"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449964"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>配置选项 - 适用于 Java 的 Azure Monitor Application Insights
 
@@ -39,14 +39,14 @@ ms.locfileid: "103224650"
 
 ## <a name="configuration-file-path"></a>配置文件路径
 
-默认情况下，Application Insights Java 3.0 要求将配置文件命名为 `applicationinsights.json` 并置于 `applicationinsights-agent-3.0.2.jar` 所在的目录中。
+默认情况下，Application Insights Java 3.0 要求将配置文件命名为 `applicationinsights.json` 并置于 `applicationinsights-agent-3.0.3.jar` 所在的目录中。
 
 可以使用以下任一方法指定你自己的配置文件路径：
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE` 环境变量，或者
 * `applicationinsights.configuration.file` Java 系统属性
 
-如果你指定相对路径，系统会相对于 `applicationinsights-agent-3.0.2.jar` 所在的目录对其进行解析。
+如果你指定相对路径，系统会相对于 `applicationinsights-agent-3.0.3.jar` 所在的目录对其进行解析。
 
 ## <a name="connection-string"></a>连接字符串
 
@@ -61,7 +61,7 @@ ms.locfileid: "103224650"
 }
 ```
 
-也可以使用环境变量 `APPLICATIONINSIGHTS_CONNECTION_STRING` 来设置连接字符串（如果也在 json 配置中指定连接字符串，那么将会优先使用这种方式）。
+你还可以使用环境变量设置连接字符串 `APPLICATIONINSIGHTS_CONNECTION_STRING`（优先级将高于 json 配置中指定的连接字符串）。
 
 如果未设置连接字符串，则将禁用 Java 代理。
 
@@ -81,7 +81,7 @@ ms.locfileid: "103224650"
 
 如果你未设置云角色名称，系统会使用 Application Insights 资源的名称在应用程序映射上标记该组件。
 
-也可以使用环境变量 `APPLICATIONINSIGHTS_ROLE_NAME` 来设置云角色名称（如果也在 json 配置中指定云角色名称，那么将会优先使用这种方式）。
+你还可以使用环境变量设置云角色名 `APPLICATIONINSIGHTS_ROLE_NAME`（优先级将高于 json 配置中指定的云角色名）。
 
 ## <a name="cloud-role-instance"></a>云角色实例
 
@@ -98,7 +98,7 @@ ms.locfileid: "103224650"
 }
 ```
 
-也可以使用环境变量 `APPLICATIONINSIGHTS_ROLE_INSTANCE` 来设置云角色实例（如果也在 json 配置中指定云角色实例，那么将会优先使用这种方式）。
+你还可以使用环境变量设置云角色实例，`APPLICATIONINSIGHTS_ROLE_INSTANCE`（优先级将高于 json 配置中指定的云角色实例）。
 
 ## <a name="sampling"></a>采样
 
@@ -117,10 +117,21 @@ ms.locfileid: "103224650"
 }
 ```
 
-也可以使用环境变量 `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` 来设置采样率百分比（如果也在 json 配置中指定采样率百分比，那么将会优先使用这种方式）。
+你还可以使用环境变量设置采样百分比 `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE`（优先级将高于 json 配置中指定的采样百分比）。
 
 > [!NOTE]
 > 对于采样百分比，请选择一个接近于 100/N 的百分比，其中 N 是整数。 当前采样不支持其他值。
+
+## <a name="sampling-overrides-preview"></a>采样替代（预览版）
+
+此功能为预览版，从 3.0.3 开始。
+
+采样替代允许你替代[默认采样百分比](#sampling)，例如：
+* 将采样百分比设置为 0（或某个小值）以检查干扰运行状况。
+* 将采样百分比设置为 0（或一些小值）以调用干扰依赖项。
+* 针对某个重要请求类型（例如，`/login`），将采样百分比设置为 100，即使你将默认采样配置为低于此值也是如此。
+
+更多信息，请查看[采样替代](./java-standalone-sampling-overrides.md)文档。
 
 ## <a name="jmx-metrics"></a>JMX 指标
 
@@ -176,9 +187,13 @@ ms.locfileid: "103224650"
 它可用于配置将应用于请求、依赖项和跟踪遥测的规则，例如：
  * 屏蔽敏感数据
  * 有条件地添加自定义维度
- * 更新用于聚合和显示的遥测名称
+ * 更新用于聚合 Azure 门户中相似遥测数据的范围名称。
+ * 删除范围属性以控制数据引入成本。
 
 有关详细信息，请查看[遥测处理器](./java-standalone-telemetry-processors.md)文档。
+
+> [!NOTE]
+> 如果希望删除特定（整体）范围来控制数据引入成本，请参阅[采样替代](./java-standalone-sampling-overrides.md)。
 
 ## <a name="auto-collected-logging"></a>自动收集的日志记录
 
@@ -200,7 +215,7 @@ ms.locfileid: "103224650"
 }
 ```
 
-也可以使用环境变量 `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` 来设置级别（如果也在 json 配置中指定级别，那么将会优先使用这种方式）。
+你还可以使用环境变量设置级别 `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL`（优先级将高于 json 配置中指定的级别）。
 
 下面介绍了你可以在 `applicationinsights.json` 文件中指定的有效 `level` 值，以及这些值如何对应于不同记录框架中的日志记录级别：
 
@@ -241,9 +256,32 @@ ms.locfileid: "103224650"
 }
 ```
 
+## <a name="auto-collected-azure-sdk-telemetry"></a>自动收集的 Azure SDK 遥测数据
+
+此功能为预览版。
+
+许多最新的 Azure SDK 库会发出遥测数据。
+
+从 3.0.3 版本开始，可以启用对此遥测数据的收集：
+
+```json
+{
+  "preview": {
+    "instrumentation": {
+      "azureSdk": {
+        "enabled": true
+      }
+    }
+  }
+}
+```
+
+你还可以使用环境变量 `APPLICATIONINSIGHTS_PREVIEW_INSTRUMENTATION_AZURE_SDK_ENABLED` 启用此功能
+（优先级将高于 json 配置中指定的已启用功能）。
+
 ## <a name="suppressing-specific-auto-collected-telemetry"></a>取消特定的自动收集遥测
 
-从版本 3.0.2 开始，可使用以下配置选项取消特定的自动收集遥测：
+从 3.0.3 版本开始，可使用以下配置选项取消特定的自动收集遥测：
 
 ```json
 {
@@ -252,6 +290,9 @@ ms.locfileid: "103224650"
       "enabled": false
     },
     "jdbc": {
+      "enabled": false
+    },
+    "jms": {
       "enabled": false
     },
     "kafka": {
@@ -265,10 +306,28 @@ ms.locfileid: "103224650"
     },
     "redis": {
       "enabled": false
+    },
+    "springScheduling": {
+      "enabled": false
     }
   }
 }
 ```
+
+还可以使用以下环境变量取消这些检测：
+
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_CASSANDRA_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_JDBC_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_JMS_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_KAFKA_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_MONGO_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_REDIS_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_SPRING_SCHEDULING_ENABLED`
+
+（优先级将高于 json 配置中指定的已启用功能）。
+
+> 注意，如果要查找更精细的控件，例如，要取消某些 redis 调用，而不是所有 redis 调用，请参阅[采样替代](./java-standalone-sampling-overrides.md)。
 
 ## <a name="heartbeat"></a>检测信号
 
@@ -306,7 +365,7 @@ Application Insights Java 3.0 还沿用全局 `-Dhttps.proxyHost` 和 `-Dhttps.p
 
 默认情况下，每 60 秒捕获一次指标。
 
-从版本 3.0.3-BETA 开始，可以更改此间隔：
+从 3.0.3 版本开始，可以更改此间隔：
 
 ```json
 {
@@ -366,13 +425,13 @@ Application Insights Java 3.0 还沿用全局 `-Dhttps.proxyHost` 和 `-Dhttps.p
 
 `level` 可以为 `OFF`、`ERROR`、`WARN`、`INFO`、`DEBUG` 或 `TRACE` 中的一个。
 
-`path` 可以是绝对或相对路径。 相对路径根据 `applicationinsights-agent-3.0.2.jar` 所在的目录进行解析。
+`path` 可以是绝对或相对路径。 相对路径根据 `applicationinsights-agent-3.0.3.jar` 所在的目录进行解析。
 
 `maxSizeMb` 是日志文件滚动更新之前的最大大小。
 
 `maxHistory` 是保留的滚动更新日志文件的数目（除当前日志文件外）。
 
-从版本 3.0.2 开始，还可以使用环境变量 `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` 来设置自诊断 `level`（如果也在 json 配置中指定自诊断 `level`，那么将会优先使用这种方式）。
+从 3.0.2 版本开始，你还可以使用环境变量 `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL`（优先级将高于 json 配置中指定的自我诊断级别）设置自我诊断 `level`。
 
 ## <a name="an-example"></a>示例
 

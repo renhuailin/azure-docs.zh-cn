@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/05/2021
+ms.date: 04/12/2021
 ms.author: victorh
-ms.openlocfilehash: adbc2a9eb6cd3b054df84911604143ddb711ad20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e08be08f2d898b017bb34ed38c9c3a69ee0582fa
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499129"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312971"
 ---
 # <a name="azure-firewall-active-ftp-support"></a>Azure 防火墙主动 FTP 支持
 
@@ -20,6 +20,12 @@ ms.locfileid: "102499129"
 
 默认情况下，在 Azure 防火墙上禁用主动 FTP 支持，防范使用 FTP `PORT` 命令进行的 FTP 弹跳攻击。 但是，可以在使用 Azure PowerShell、Azure CLI 或 Azure ARM 模板进行部署时启用主动 FTP。
 
+若要支持主动模式 FTP，需要打开以下 TCP 端口：
+
+- 任意位置的 FTP 服务器端口 21（客户端启动连接）
+- FTP 服务器端口 21 到端口 > 1023（服务器响应客户端的控制端口）
+- FTP 服务器端口 20 到客户端上的端口 > 1023（服务器启动到客户端数据端口的数据连接）
+- 客户端上的端口 > 1023 的 FTP 服务器端口 20（客户端向服务器的数据端口发送 ACK）
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

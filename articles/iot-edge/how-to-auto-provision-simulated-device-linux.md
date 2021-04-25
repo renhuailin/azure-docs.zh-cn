@@ -4,27 +4,22 @@ description: 使用 Linux VM 上的模拟 TPM 来测试 Azure IoT Edge 的 Azure
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 6/30/2020
+ms.date: 04/09/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5beb3c750f99b8fe314fabbc2ff6109bfa6bc67c
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: ca16099cffc22a19c2ee35b00ae6f1bcbe2977a7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166592"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312393"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>在 Linux 上使用 TPM 创建和预配 IoT Edge 设备
 
-[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 本文介绍如何使用受信任的平台模块 (TPM) 在 Linux IoT Edge 设备上测试自动预配。 可以使用[设备预配服务](../iot-dps/index.yml)自动预配 Azure IoT Edge 设备。 如果你不熟悉自动预配过程，请在继续操作之前查看[预配](../iot-dps/about-iot-dps.md#provisioning-process)概述。
-
-:::moniker range=">=iotedge-2020-11"
-> [!NOTE]
-> 目前，IoT Edge 版本 1.2 不支持使用 TPM 身份验证的自动预配。
-:::moniker-end
 
 任务如下：
 
@@ -34,7 +29,7 @@ ms.locfileid: "106166592"
 1. 安装 IoT Edge 运行时并将设备连接到 IoT 中心。
 
 > [!TIP]
-> 本文介绍了如何使用 TPM 模拟器测试 DPS 预配，但其中的大部分内容都适用于物理 TPM 硬件，例如 [Infineon OPTIGA&trade; TPM](https://devicecatalog.azure.com/devices/3f52cdee-bbc4-d74e-6c79-a2546f73df4e)（一款 Azure IoT 认证设备）。
+> 本文介绍了如何使用 TPM 模拟器测试 DPS 预配，但其中的大部分内容都适用于物理 TPM 硬件，例如 [Infineon OPTIGA&trade; TPM](https://catalog.azureiotsolutions.com/details?title=OPTIGA-TPM-SLB-9670-Iridium-Board)（一款 Azure IoT 认证设备）。
 >
 > 如果使用的是物理设备，则可以跳至本文的[从物理设备中检索预配信息](#retrieve-provisioning-information-from-a-physical-device)部分。
 
@@ -191,6 +186,9 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 
 在设备上安装运行时后，请借助它用于连接到设备预配服务和 IoT 中心的信息来配置设备。
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 1. 了解在先前部分中收集的 DPS ID 范围和设备注册 ID 。
 
 1. 在 IoT Edge 设备上打开配置文件。
@@ -216,11 +214,52 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
    # dynamic_reprovisioning: false
    ```
 
-   （可选）使用 `always_reprovision_on_startup` 或 `dynamic_reprovisioning` 行来配置设备的重新预配行为。 如果设备设置为在启动时重新预配，它将始终尝试先使用 DPS 进行预配，如果失败，则回退到预配备份。 如果设备设置为动态重新预配自身，则 IoT Edge 将重启，并在检测到重新预配事件时重新预配。 有关详细信息，请参阅 [IoT 中心设备重新预配概念](../iot-dps/concepts-device-reprovision.md)。
-
 1. 将 `scope_id` 和 `registration_id` 的值更新为你的 DPS 和设备信息。
 
+1. （可选）使用 `always_reprovision_on_startup` 或 `dynamic_reprovisioning` 行来配置设备的重新预配行为。 如果设备设置为在启动时重新预配，它将始终尝试先使用 DPS 进行预配，如果失败，则回退到预配备份。 如果设备设置为动态重新预配自身，则 IoT Edge 将重启，并在检测到重新预配事件时重新预配。 有关详细信息，请参阅 [IoT 中心设备重新预配概念](../iot-dps/concepts-device-reprovision.md)。
+
+1. 保存并关闭文件。
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. 了解在先前部分中收集的 DPS ID 范围和设备注册 ID 。
+
+1. 在 IoT Edge 设备上打开配置文件。
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+1. 找到该文件的预配配置部分。 取消评论 TPM 预配的行，并确保注释禁止任何其他预配行。
+
+   ```toml
+   # DPS provisioning with TPM
+   [provisioning]
+   source = "dps"
+   global_endpoint = "https://global.azure-devices-provisioning.net"
+   id_scope = "<SCOPE_ID>"
+   
+   [provisioning.attestation]
+   method = "tpm"
+   registration_id = "<REGISTRATION_ID>"
+   ```
+
+1. 将 `id_scope` 和 `registration_id` 的值更新为你的 DPS 和设备信息。
+
+1. （可选）找到文件的自动重新预配模式部分。 使用 `auto_reprovisioning_mode` 参数将设备的重新预配行为配置为 `Dynamic`、`AlwaysOnStartup` 或 `OnErrorOnly`。 有关详细信息，请参阅 [IoT 中心设备重新预配概念](../iot-dps/concepts-device-reprovision.md)。
+
+1. 保存并关闭文件。
+:::moniker-end
+<!-- end 1.2 -->
+
 ## <a name="give-iot-edge-access-to-the-tpm"></a>向 IoT Edge 授予 TPM 的访问权限
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
 IoT Edge 运行时需要访问 TPM 以自动预配设备。
 
@@ -272,9 +311,68 @@ IoT Edge 运行时需要访问 TPM 以自动预配设备。
    ```
 
    如果未看到应用了正确的权限，请尝试重新启动计算机来刷新 udev。
+:::moniker-end
+<!-- end 1.1 -->
 
-## <a name="restart-the-iot-edge-runtime"></a>重启 IoT Edge 运行时
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+IoT Edge 运行时依赖于 TPM 服务，该服务是对设备 TPM 的访问的中转站。 该服务需要访问 TPM 以自动预配设备。
 
+通过覆盖系统设置可以授予对 TPM 的访问权限，以便 `aziottpm` 服务获得根特权。 如果不想提升服务权限，也可以使用以下步骤手动提供 TPM 访问权限。
+
+1. 在设备上找到 TPM 硬件模块的文件路径，并将其保存为本地变量。
+
+   ```bash
+   tpm=$(sudo find /sys -name dev -print | fgrep tpm | sed 's/.\{4\}$//')
+   ```
+
+2. 创建一条新规则，用于向 IoT Edge 运行时授予 tpm0 的访问权限。
+
+   ```bash
+   sudo touch /etc/udev/rules.d/tpmaccess.rules
+   ```
+
+3. 打开 rules 文件。
+
+   ```bash
+   sudo nano /etc/udev/rules.d/tpmaccess.rules
+   ```
+
+4. 将以下访问信息复制到 rules 文件。
+
+   ```input
+   # allow aziottpm access to tpm0
+   KERNEL=="tpm0", SUBSYSTEM=="tpm", OWNER="aziottpm", MODE="0600"
+   ```
+
+5. 保存并退出该文件。
+
+6. 触发 udev 系统来评估新规则。
+
+   ```bash
+   /bin/udevadm trigger $tpm
+   ```
+
+7. 验证是否已成功应用该规则。
+
+   ```bash
+   ls -l /dev/tpm0
+   ```
+
+   成功的输出如下所示：
+
+   ```output
+   crw-rw---- 1 root aziottpm 10, 224 Jul 20 16:27 /dev/tpm0
+   ```
+
+   如果未看到应用了正确的权限，请尝试重新启动计算机来刷新 udev。
+:::moniker-end
+<!-- end 1.2 -->
+
+## <a name="restart-iot-edge-and-verify-successful-installation"></a>重启 IoT Edge 并验证安装是否成功
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 重启 IoT Edge 运行时，使之拾取你在设备上所做的所有配置更改。
 
    ```bash
@@ -287,6 +385,12 @@ IoT Edge 运行时需要访问 TPM 以自动预配设备。
    sudo systemctl status iotedge
    ```
 
+检查守护程序日志。
+
+```cmd/sh
+journalctl -u iotedge --no-pager --no-full
+```
+
 如果出现预配错误，可能表示配置更改尚未生效。 请尝试再次重启 IoT Edge 守护程序。
 
    ```bash
@@ -294,22 +398,40 @@ IoT Edge 运行时需要访问 TPM 以自动预配设备。
    ```
 
 或者，请尝试重启虚拟机，以确定重新启动后更改是否生效。
+:::moniker-end
+<!-- end 1.1 -->
 
-## <a name="verify-successful-installation"></a>验证是否成功安装
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+应用在设备上所做的配置更改。
 
-如果运行时成功启动，则可以转到 IoT 中心，查看新设备是否自动预配。 现在，设备已准备好运行 IoT Edge 模块。
+   ```bash
+   sudo iotedge config apply
+   ```
 
-检查 IoT Edge 守护程序的状态。
+检查 IoT Edge 运行时是否正在运行。
 
-```cmd/sh
-systemctl status iotedge
-```
+   ```bash
+   sudo iotedge system status
+   ```
 
 检查守护程序日志。
 
-```cmd/sh
-journalctl -u iotedge --no-pager --no-full
-```
+   ```cmd/sh
+   sudo iotedge system logs
+   ```
+
+如果出现预配错误，可能表示配置更改尚未生效。 请尝试重启 IoT Edge 守护程序。
+
+   ```bash
+   sudo systemctl daemon-reload
+   ```
+
+或者，请尝试重启虚拟机，以确定重新启动后更改是否生效。
+:::moniker-end
+<!-- end 1.2 -->
+
+如果运行时成功启动，则可以转到 IoT 中心，查看新设备是否自动预配。 现在，设备已准备好运行 IoT Edge 模块。
 
 列出正在运行的模块。
 

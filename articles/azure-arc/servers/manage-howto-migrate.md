@@ -1,39 +1,39 @@
 ---
-title: 如何跨区域迁移启用了 Azure Arc 的服务器
-description: 了解如何将启用了 Azure Arc 的服务器从一个区域迁移到另一个区域。
+title: 如何跨区域迁移已启用 Azure Arc 的服务器
+description: 了解如何将已启用 Azure Arc 的服务器从一个区域迁移到另一个区域。
 ms.date: 02/10/2021
 ms.topic: conceptual
 ms.openlocfilehash: 251a347205d93af715add52db293d8000438df44
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101650169"
 ---
-# <a name="how-to-migrate-azure-arc-enabled-servers-across-regions"></a>如何跨区域迁移启用了 Azure Arc 的服务器
+# <a name="how-to-migrate-azure-arc-enabled-servers-across-regions"></a>如何跨区域迁移已启用 Azure Arc 的服务器
 
-在某些情况下，你想要将现有的 Azure Arc 启用的服务器从一个区域移到另一个区域。 例如，你已在错误的区域中注册了计算机，从而提高了可管理性，或出于管理目的而移动了计算机。
+在某些情况下，你希望将现有的已启用 Azure Arc 的服务器从一个区域移到另一个区域。 例如，你发现计算机注册到了错误的区域、想要提高可管理性，或者出于监管原因而要移动计算机。
 
-若要将启用了 Azure Arc 的服务器从一个 Azure 区域迁移到另一个 Azure 区域，你必须卸载 VM 扩展，删除 Azure 中的资源，然后在另一个区域中重新创建它。 在执行这些步骤之前，你应该审核计算机以验证安装了哪些 VM 扩展。
-
-> [!NOTE]
-> 当完成此过程后，安装的扩展将继续运行并执行正常操作，你将无法对其进行管理。 如果尝试在计算机上重新部署扩展，则可能会遇到不可预知的行为。
-
-## <a name="move-machine-to-other-region"></a>将计算机移动到其他区域
+若要将已启用 Azure Arc 的服务器从一个 Azure 区域迁移到另一个区域，必须卸载 VM 扩展，删除 Azure 中的资源，然后在另一个区域中重新创建该资源。 在执行这些步骤之前，应该审核计算机以确认安装了哪些 VM 扩展。
 
 > [!NOTE]
-> 在此操作过程中，它会在迁移期间造成停机。
+> 尽管在完成此过程后，已安装的扩展将继续运行并执行其常规操作，但你无法管理这些扩展。 如果你尝试在计算机上重新部署扩展，可能会遇到不可预知的行为。
 
-1. 使用[Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension)或[Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension)删除从[Azure 门户](manage-vm-extensions-portal.md#uninstall-extension)安装的 VM 扩展。
+## <a name="move-machine-to-other-region"></a>将计算机移到另一区域
 
-2. 使用带有 [disconnect](manage-agent.md#disconnect)参数的 **Azcmagent** 工具从 azure Arc 断开计算机的连接，并从 azure 中删除计算机资源。 断开计算机与启用了 Arc 的服务器的连接不会删除已连接的计算机代理，因此不需要在此过程中删除代理。 可以通过交互方式登录，也可以使用用于集成多个代理的相同服务主体或使用 Microsoft 标识平台 [访问令牌](../../active-directory/develop/access-tokens.md)自动运行。 如果未使用服务主体向启用了 Azure Arc 的服务器注册计算机，请参阅以下 [文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) 创建服务主体。
+> [!NOTE]
+> 在迁移过程中会造成停机。
 
-3. 在另一个区域中，将已连接的计算机代理重新注册为启用了 Arc 的服务器。 运行 `azcmagent` 带有 [Connect](manage-agent.md#connect) 参数的工具完成此步骤。
+1. 使用 [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension) 或 [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension) 删除通过 [Azure 门户](manage-vm-extensions-portal.md#uninstall-extension)安装的 VM 扩展。
 
-4. 重新部署最初部署到启用了 Arc 的服务器上的虚拟机的 VM 扩展。 如果使用 Azure 策略将用于 VM 的 Azure Monitor (insights) 代理或 Log Analytics 代理部署，则在下一个 [评估周期](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)后重新部署代理。
+2. 结合 [Disconnect](manage-agent.md#disconnect) 参数使用 azcmagent 工具从 Azure Arc 断开连接计算机，然后从 Azure 中删除计算机资源。 从已启用 Arc 的服务器断开连接计算机不会删除 Connected Machine Agent，并且在此过程中不需要删除该代理。 可以在登录后以交互方式运行此工具，或者使用用于加入多个代理的同一服务主体或使用 Microsoft 标识平台[访问令牌](../../active-directory/develop/access-tokens.md)自动运行此工具。 如果你未使用服务主体将计算机注册到已启用 Azure Arc 的服务器，请参阅以下[文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)创建服务主体。
+
+3. 将 Connected Machine Agent 重新注册到另一区域中的已启用 Arc 的服务器。 结合 [Connect](manage-agent.md#connect) 参数运行 `azcmagent` 工具即可完成此步骤。
+
+4. 重新部署最初部署到了已启用 Arc 的服务器中的计算机的 VM 扩展。 如果你使用 Azure 策略部署了用于 VM 的 Azure Monitor（见解）代理或 Log Analytics 代理，将在下一个[评估周期](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)后重新部署这些代理。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关疑难解答信息，请参阅 [连接计算机代理疑难解答指南](troubleshoot-agent-onboard.md)。
+* 在 [Connected Machine Agent 故障排除指南](troubleshoot-agent-onboard.md)中可以找到故障排除信息。
 
-* 了解如何使用 [Azure 策略](../../governance/policy/overview.md)管理计算机，例如 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区进行报告，使用 [vm 策略 Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md) 启用监视，等等。
+* 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)、验证计算机是否向预期的 Log Analytics 工作区报告、使用[用于 VM 的 Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md) 策略启用监视，等等。

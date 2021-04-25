@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: c25a9d69df4786afa6600c4749d02fc148d0f1c3
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 6ef268b349d5a21cdbadd55ffd2199a35f650e5b
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385779"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376284"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Azure SQL 数据库的 DNS 别名
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -93,10 +93,10 @@ Azure SQL 数据库的 DNS 别名功能有助于实现以下方案：
 
 代码示例中使用的 cmdlet 如下：
 
-- [New-AzSqlServerDNSAlias](/powershell/module/az.Sql/New-azSqlServerDnsAlias)：在 Azure SQL 数据库服务系统中创建新的 DNS 别名。 该别名指代服务器 1。
-- [Get-AzSqlServerDNSAlias](/powershell/module/az.Sql/Get-azSqlServerDnsAlias)：获取并列出分配给服务器 1 的所有 DNS 别名。
-- [Set-AzSqlServerDNSAlias](/powershell/module/az.Sql/Set-azSqlServerDnsAlias)：将别名根据配置引用的服务器名称从“服务器 1”修改为“服务器 2”。
-- [Remove-AzSqlServerDNSAlias](/powershell/module/az.Sql/Remove-azSqlServerDnsAlias)：使用别名从服务器 2 删除 DNS 别名。
+- [New-AzSqlServerDnsAlias](/powershell/module/az.Sql/New-azSqlServerDnsAlias)：在 Azure SQL 数据库服务系统中创建新的 DNS 别名。 该别名指代服务器 1。
+- [Get-AzSqlServerDnsAlias](/powershell/module/az.Sql/Get-azSqlServerDnsAlias)：获取并列出分配给服务器 1 的所有 DNS 别名。
+- [Set-AzSqlServerDnsAlias](/powershell/module/az.Sql/Set-azSqlServerDnsAlias)：将别名根据配置引用的服务器名称从“服务器 1”修改为“服务器 2”。
+- [Remove-AzSqlServerDnsAlias](/powershell/module/az.Sql/Remove-azSqlServerDnsAlias)：使用别名从服务器 2 删除 DNS 别名。
 
 ## <a name="limitations"></a>限制
 

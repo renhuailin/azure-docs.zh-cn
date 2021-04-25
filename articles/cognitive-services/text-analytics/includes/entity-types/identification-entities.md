@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 03/11/2021
 ms.author: aahi
-ms.openlocfilehash: 352b81bf2dfeca1d7413e7cac131264d06c7b92e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a74c0cad971389168d643c9504f5bb809438a1ea
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599286"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106097785"
 ---
 ### <a name="financial-account-identification"></a>财务帐户标识
 
@@ -34,7 +34,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        美国银行家协会 (ABA) 转账路由号码。
+        美国银行家协会 (ABA) 转账路由号码。 也随 `domain=phi` 一起返回。
 
         若要获得此实体类别，请将 `ABARoutingNumber` 添加到 `pii-categories` 参数中。 如果检测到 `ABARoutingNumber`，也会在 API 响应中返回。
       
@@ -62,9 +62,9 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        付款说明信息中的 SWIFT 代码。
+        付款说明信息中的 SWIFT 代码。 也随 `domain=phi` 一起返回。
 
-        若要获得此实体类别，请将 `SWIFTCode` 添加到 `pii-categories` 参数中。 如果检测到 `SWIFTCode`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `SWIFTCode` 添加到 `pii-categories` 参数中。 如果检测到 `SWIFTCode`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="2":::
@@ -89,9 +89,9 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        信用卡卡号。 
+        信用卡卡号。 也随 `domain=phi` 一起返回。
 
-        若要获得此实体类别，请将 `CreditCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `CreditCardNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `CreditCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `CreditCardNumber`，会在 API 响应中返回。
 
     :::column-end:::
     :::column span="2":::
@@ -116,9 +116,9 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        付款说明信息中的 IBAN 代码。
+        付款说明信息中的 IBAN 代码。 也随 `domain=phi` 一起返回。
 
-        若要获得此实体类别，请将 `InternationlBankingAccountNumber` 添加到 `pii-categories` 参数中。 如果检测到 `InternationlBankingAccountNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `InternationlBankingAccountNumber` 添加到 `pii-categories` 参数中。 如果检测到 `InternationlBankingAccountNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="2":::
@@ -144,13 +144,13 @@ ms.locfileid: "104599286"
     :::column span="":::
         **实体**
 
-        阿根廷国民身份证 (DNI) 号码
+        阿根廷国民身份证 (DNI) 号码 
 
     :::column-end:::
     :::column span="2":::
-        **详细信息**
-
-        若要获得此实体类别，请将 `ARNationalIdentityNumber` 添加到 `pii-categories` 参数中。 如果检测到 `ARNationalIdentityNumber`，也会在 API 响应中返回。
+        **详细信息** 也随 `domain=phi` 一起返回。
+        
+        若要获得此实体类别，请将 `ARNationalIdentityNumber` 添加到 `pii-categories` 参数中。 如果检测到 `ARNationalIdentityNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -174,7 +174,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `ATIdentityCard` 添加到 `pii-categories` 参数中。 如果检测到 `ATIdentityCard`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `ATIdentityCard` 添加到 `pii-categories` 参数中。 如果检测到 `ATIdentityCard`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -233,7 +233,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `AUDriversLicenseNumber` 添加到 `pii-categories` 参数中。 如果检测到 `AUDriversLicenseNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `AUDriversLicenseNumber` 添加到 `pii-categories` 参数中。 如果检测到 `AUDriversLicenseNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -359,7 +359,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `BENationalNumber` 添加到 `pii-categories` 参数中。 如果检测到 `BENationalNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `BENationalNumber` 添加到 `pii-categories` 参数中。 如果检测到 `BENationalNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -402,7 +402,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `BRLegalEntityNumber` 添加到 `pii-categories` 参数中。 如果检测到 `BRLegalEntityNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `BRLegalEntityNumber` 添加到 `pii-categories` 参数中。 如果检测到 `BRLegalEntityNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -459,7 +459,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `CABankAccountNumber` 添加到 `pii-categories` 参数中。 如果检测到 `CABankAccountNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `CABankAccountNumber` 添加到 `pii-categories` 参数中。 如果检测到 `CABankAccountNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -572,7 +572,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `CLIdentityCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `CLIdentityCardNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `CLIdentityCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `CLIdentityCardNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -595,7 +595,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `CNResidentIdentityCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `CNResidentIdentityCardNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `CNResidentIdentityCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `CNResidentIdentityCardNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -619,7 +619,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `EUDebitCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `EUDebitCardNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `EUDebitCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `EUDebitCardNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -744,7 +744,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `FRDriversLicenseNumber` 添加到 `pii-categories` 参数中。 如果检测到 `FRDriversLicenseNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `FRDriversLicenseNumber` 添加到 `pii-categories` 参数中。 如果检测到 `FRDriversLicenseNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -869,7 +869,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `DEDriversLicenseNumber` 添加到 `pii-categories` 参数中。 如果检测到 `DEDriversLicenseNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `DEDriversLicenseNumber` 添加到 `pii-categories` 参数中。 如果检测到 `DEDriversLicenseNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -961,7 +961,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `HKIdentityCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `HKIdentityCardNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `HKIdentityCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `HKIdentityCardNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -984,7 +984,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `HUPersonalIdentificationNumber` 添加到 `pii-categories` 参数中。 如果检测到 `HUPersonalIdentificationNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `HUPersonalIdentificationNumber` 添加到 `pii-categories` 参数中。 如果检测到 `HUPersonalIdentificationNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -1041,7 +1041,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `INPermanentAccount` 添加到 `pii-categories` 参数中。 如果检测到 `INPermanentAccount`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `INPermanentAccount` 添加到 `pii-categories` 参数中。 如果检测到 `INPermanentAccount`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -1084,7 +1084,7 @@ ms.locfileid: "104599286"
 
         **详细信息**
 
-        若要获得此实体类别，请将 `IDIdentityCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `IDIdentityCardNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `IDIdentityCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `IDIdentityCardNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -1107,7 +1107,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `IEPersonalPublicServiceNumber` 添加到 `pii-categories` 参数中。 如果检测到 `IEPersonalPublicServiceNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `IEPersonalPublicServiceNumber` 添加到 `pii-categories` 参数中。 如果检测到 `IEPersonalPublicServiceNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -1125,7 +1125,7 @@ ms.locfileid: "104599286"
     :::column-end:::
     :::column span="2":::
 
-        若要获得此实体类别，请将 `IEPersonalPublicServiceNumberV2` 添加到 `pii-categories` 参数中。 如果检测到 `IEPersonalPublicServiceNumberV2`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `IEPersonalPublicServiceNumberV2` 添加到 `pii-categories` 参数中。 如果检测到 `IEPersonalPublicServiceNumberV2`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -1148,7 +1148,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `ILNationalID` 添加到 `pii-categories` 参数中。 如果检测到 `ILNationalID`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `ILNationalID` 添加到 `pii-categories` 参数中。 如果检测到 `ILNationalID`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -1188,7 +1188,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `ITDriversLicenseNumber` 添加到 `pii-categories` 参数中。 如果检测到 `ITDriversLicenseNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `ITDriversLicenseNumber` 添加到 `pii-categories` 参数中。 如果检测到 `ITDriversLicenseNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -1246,7 +1246,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `JPBankAccountNumber` 添加到 `pii-categories` 参数中。 如果检测到 `JPBankAccountNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `JPBankAccountNumber` 添加到 `pii-categories` 参数中。 如果检测到 `JPBankAccountNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -1388,7 +1388,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `LUNationalIdentificationNumberNatural` 添加到 `pii-categories` 参数中。 如果检测到 `LUNationalIdentificationNumberNatural`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `LUNationalIdentificationNumberNatural` 添加到 `pii-categories` 参数中。 如果检测到 `LUNationalIdentificationNumberNatural`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -1428,7 +1428,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `MTIdentityCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `MTIdentityCardNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `MTIdentityCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `MTIdentityCardNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -1469,7 +1469,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `NZBankAccountNumber` 添加到 `pii-categories` 参数中。 如果检测到 `NZBankAccountNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `NZBankAccountNumber` 添加到 `pii-categories` 参数中。 如果检测到 `NZBankAccountNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -1561,7 +1561,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `PHUnifiedMultiPurposeIDNumber` 添加到 `pii-categories` 参数中。 如果检测到 `PHUnifiedMultiPurposeIDNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `PHUnifiedMultiPurposeIDNumber` 添加到 `pii-categories` 参数中。 如果检测到 `PHUnifiedMultiPurposeIDNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -1584,7 +1584,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `PTCitizenCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `PTCitizenCardNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `PTCitizenCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `PTCitizenCardNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -1624,7 +1624,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `PTTaxIdentificationNumber` 添加到 `pii-categories` 参数中。 如果检测到 `PTTaxIdentificationNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `PTTaxIdentificationNumber` 添加到 `pii-categories` 参数中。 如果检测到 `PTTaxIdentificationNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -1648,7 +1648,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `ZAIdentificationNumber` 添加到 `pii-categories` 参数中。 如果检测到 `ZAIdentificationNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `ZAIdentificationNumber` 添加到 `pii-categories` 参数中。 如果检测到 `ZAIdentificationNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -1672,7 +1672,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `KRResidentRegistrationNumber` 添加到 `pii-categories` 参数中。 如果检测到 `KRResidentRegistrationNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `KRResidentRegistrationNumber` 添加到 `pii-categories` 参数中。 如果检测到 `KRResidentRegistrationNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -1695,7 +1695,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `ESDNI` 添加到 `pii-categories` 参数中。 如果检测到 `ESDNI`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `ESDNI` 添加到 `pii-categories` 参数中。 如果检测到 `ESDNI`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -1752,7 +1752,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `CHSocialSecurityNumber` 添加到 `pii-categories` 参数中。 如果检测到 `CHSocialSecurityNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `CHSocialSecurityNumber` 添加到 `pii-categories` 参数中。 如果检测到 `CHSocialSecurityNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -1776,7 +1776,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `TWNationalID` 添加到 `pii-categories` 参数中。 如果检测到 `TWNationalID`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `TWNationalID` 添加到 `pii-categories` 参数中。 如果检测到 `TWNationalID`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -1833,7 +1833,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `UKDriversLicenseNumber` 添加到 `pii-categories` 参数中。 如果检测到 `UKDriversLicenseNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `UKDriversLicenseNumber` 添加到 `pii-categories` 参数中。 如果检测到 `UKDriversLicenseNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::
@@ -1943,7 +1943,7 @@ ms.locfileid: "104599286"
     :::column span="2":::
         **详细信息**
 
-        若要获得此实体类别，请将 `USSocialSecurityNumber` 添加到 `pii-categories` 参数中。 如果检测到 `USSocialSecurityNumber`，也会在 API 响应中返回。
+        若要获得此实体类别，请将 `USSocialSecurityNumber` 添加到 `pii-categories` 参数中。 如果检测到 `USSocialSecurityNumber`，会在 API 响应中返回。
       
     :::column-end:::
     :::column span="":::

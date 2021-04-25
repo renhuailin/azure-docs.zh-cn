@@ -1,0 +1,64 @@
+### YamlMime:Landing
+title: 空间分析文档
+summary: 空间分析服务通过了解人员在给定地区的移动情况和状态，来帮助组织最大限度地提高其物理空间的价值。 通过该功能可从 CCTV 或监视摄像头引入视频，运行 AI 操作从视频流中提取见解，并可生成事件供其他系统使用。
+metadata:
+  title: 空间分析文档 - 快速入门、教程和 API 参考 - Azure 认知服务 | Microsoft Docs
+  description: 空间分析服务通过了解人员在给定地区的移动情况和状态，来帮助组织最大限度地提高其物理空间的价值。 通过该功能可从 CCTV 或监视摄像头引入视频，运行 AI 操作从视频流中提取见解，并可生成事件供其他系统使用。
+  services: cognitive-services
+  ms.service: cognitive-services
+  ms.subservice: computer-vision
+  ms.topic: landing-page
+  author: PatrickFarley
+  ms.author: pafarley
+  ms.date: 30/31/2021
+  ms.openlocfilehash: b57a90d1897fc7dce92cdebd0c0f81e9f59854b7
+  ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 04/03/2021
+  ms.locfileid: "106287465"
+landingContent:
+- title: 关于空间分析
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 空间分析概述
+      url: intro-to-spatial-analysis-public-preview.md
+  - linkListType: quickstart
+    links:
+    - text: 设置主机并运行容器
+      url: spatial-analysis-container.md
+- title: 使用空间分析进行开发
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 配置操作
+      url: spatial-analysis-operations.md
+  - linkListType: concept
+    links:
+    - text: 区域和线条放置
+      url: spatial-analysis-zone-line-placement.md
+    - text: 相机放置
+      url: spatial-analysis-camera-placement.md
+    - text: 日志记录和故障排除
+      url: spatial-analysis-logging.md
+- title: 负责使用 AI
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 空间分析的透明度注释
+      url: /legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+  - linkListType: concept
+    links:
+    - text: AI 部署中负责任的使用
+      url: /legal/cognitive-services/computer-vision/responsible-use-deployment?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+    - text: 披露设计准则
+      url: /legal/cognitive-services/computer-vision/disclosure-design?context=/azure/cognitive-services/computer-vision/context/context
+    - text: 数据、隐私和安全性
+      url: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+- title: 帮助和反馈
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 支持和帮助选项
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context

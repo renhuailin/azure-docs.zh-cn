@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 8e1fc816e32e563161e1604bdcd7a7006353e4ed
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 175473f5abd74fa208962fd94852e9ddedfaf7e3
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047377"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105794"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>使用 Azure CLI 2.0 创建 Log Analytics 工作区
 
@@ -49,7 +49,7 @@ Azure CLI 2.0 用于从命令行或脚本创建和管理 Azure 资源。 本快�
 
 ### <a name="create-and-deploy-template"></a>创建和部署模板
 
-1. 将以下 JSON 语法复制并粘贴到文件中：
+1. 将以下 JSON 语法复制并粘贴到该文件中：
 
     ```json
     {
@@ -107,7 +107,7 @@ Azure CLI 2.0 用于从命令行或脚本创建和管理 Azure 资源。 本快�
 
 2. 按要求编辑模板。 查看 [Microsoft.OperationalInsights/workspaces 模板](/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces)参考，了解支持的属性和值。
 3. 在本地文件夹中将此文件另存为 **deploylaworkspacetemplate.json**。   
-4. 已做好部署此模板的准备。 在包含模板的文件夹中使用以下命令。 当系统提示输入工作区名称时，提供一个在所有 Azure 订阅中全局唯一的名称。
+4. 已做好部署此模板的准备。 在包含模板的文件夹中使用以下命令。 当系统提示输入工作区名称时，提供一个在资源组中唯一的名称。
 
     ```azurecli
     az deployment group create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deploylaworkspacetemplate.json
@@ -120,7 +120,7 @@ Azure CLI 2.0 用于从命令行或脚本创建和管理 Azure 资源。 本快�
 ## <a name="troubleshooting"></a>疑难解答
 如果创建了一个工作区，该工作区已在过去 14 天内删除且处于[软删除状态](../logs/delete-workspace.md#soft-delete-behavior)，那么该操作可能会有不同的结果，具体取决于你的工作区配置：
 1. 如果你提供的工作区名称、资源组、订阅和区域与已删除的工作区中的相同，则将恢复你的工作区，包括其数据、配置和连接的代理。
-2. 如果你使用相同的工作区名称，但提供不同的资源组、订阅或区域，则将收到“工作区名称 workspace-name 不是唯一的或存在冲突”错误 。 若要替换软删除，同时永久删除你的工作区并创建新的同名工作区，请按照以下步骤，先恢复工作区再执行永久删除：
+2. 每个资源组的工作区名称必须是唯一的。 如果你使用已经存在（也在资源组的软删除中）的工作区名称，则会收到错误消息“工作区名称‘workspace-name’不唯一”或“冲突” 。 若要替换软删除，同时永久删除你的工作区并创建新的同名工作区，请按照以下步骤，先恢复工作区再执行永久删除：
    * [恢复](../logs/delete-workspace.md#recover-workspace)工作区
    * [永久删除](../logs/delete-workspace.md#permanent-workspace-delete)工作区
    * 使用相同的工作区名称创建新的工作区

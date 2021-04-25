@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.openlocfilehash: 33435d2367b92f312d41f0e32fdbb3a93d59a9fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1a0fb15be92e25b576cd29e671eed3c6a5b948f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95999920"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313260"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>使用特征增强字词列表的信号
 
@@ -37,7 +37,7 @@ ms.locfileid: "95999920"
 
     为 LUIS 输入足够的值后，会显示建议。 对于建议的值，可以单击“+ 全部添加”，也可选择单个术语。
 
-1. 如果短语可以交换使用，则让“这些值可以交换”保持选中状态。
+1. 如果短语可以交换使用，则让“这些值可以交换”保持选中状态。 可交换短语列表功能可用作训练的同义词列表。 不可交换短语列表可用作训练的单独功能（即功能相似，但意图在交换短语时发生变化）。
 
 1. 可以使用“全局”设置将短语列表应用于整个应用，或应用于特定模型（意向或实体）。 如果创建短语列表，并作为意向或实体的特征，则切换后不会设置为全局。 在这种情况下，切换的意义在于该特征仅对该模型是本地的，因此对应用程序而言不是全局的。
 

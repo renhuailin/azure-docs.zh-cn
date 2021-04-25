@@ -2,19 +2,25 @@
 title: 没有 800 计数限制的资源
 description: 列出可以在一个资源组中有 800 多个实例的 Azure 资源类型。
 ms.topic: conceptual
-ms.date: 01/08/2021
-ms.openlocfilehash: 6736118f0713a27a91618173e06423530e6f10cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: d132773ff35d53dc373c759326efc8179f4993d6
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103563107"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366532"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>没有每个资源组 800 个实例限制的资源
 
 默认情况下，就单个资源类型来说，可以在每个资源组中部署最多 800 个实例。 不过，某些资源类型没有 800 个实例的限制。 本文列出了可以在一个资源组中有 800 多个实例的 Azure 资源类型。 所有其他资源类型有 800 个实例的限制。
 
 就某些资源类型来说，若要移除 800 个实例的限制，需联系支持部门。 这些资源类型已在本文中注明。
+
+
+## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
+
+* resourceHealthAlertRules
+* smartDetectorAlertRules
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
@@ -75,6 +81,7 @@ ms.locfileid: "103563107"
 
 * flexibleServers
 * serverGroups
+* serverGroupsv2
 * servers
 * serversv2
 
@@ -107,7 +114,7 @@ ms.locfileid: "103563107"
 ## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
 
 * 计算机 - 最多支持 5,000 个实例
-* 扩展 - 支持的 VM 扩展实例数没有限制
+* 计算机/扩展 - 支持的 VM 扩展实例数没有限制
 
 ## <a name="microsoftinsights"></a>microsoft.insights
 
@@ -129,6 +136,7 @@ ms.locfileid: "103563107"
 * netAppAccounts/capacityPools/volumes
 * netAppAccounts/capacityPools/volumes/mountTargets
 * netAppAccounts/capacityPools/volumes/snapshots
+* netAppAccounts/volumeGroups
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -179,6 +187,7 @@ ms.locfileid: "103563107"
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 
+* autoScaleVCores - 默认情况下，限制为 800 个实例。 可以通过联系支持人员来提高该限制。
 * capacities - 默认情况下，限制为 800 个实例。 可以通过联系支持人员来提高该限制。
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay

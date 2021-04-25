@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 03/26/2021
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: e60c829831bde3b454ab180d1a39ec46cb346963
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: db60c26ed50dae3b4b28a6c44d152a921eb96a69
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94658630"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627551"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>使用 Azure PowerShell 在混合网络中部署和配置 Azure 防火墙
 
@@ -61,9 +61,9 @@ ms.locfileid: "94658630"
 请参阅本文的[创建路由](#create-the-routes)部分来了解如何创建这些路由。
 
 >[!NOTE]
->Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubnet 知道通过 BGP 的本地网络的默认路由，则必须将其替代为 0.0.0.0/0 UDR，将 NextHopType 值设置为 Internet 以保持 Internet 直接连接 。
+>Azure 防火墙必须具有直接的 Internet 连接。 如果你的 AzureFirewallSubnet 通过 BGP 学习本地网络的默认路由，则必须在强制隧道模式下配置 Azure 防火墙。 如果这是现有的 Azure 防火墙，并且无法在强制隧道模式下重新配置该防火墙，则建议在 AzureFirewallSubnet 上添加 0.0.0.0/0 UDR 并将 NextHopType 值设置为 Internet，以维护直接 Internet 连接。 
 >
->可将 Azure 防火墙配置为支持强制隧道。 有关详细信息，请参阅 [Azure 防火墙强制隧道](forced-tunneling.md)。
+>有关详细信息，请参阅 [Azure 防火墙强制隧道](forced-tunneling.md)。
 
 >[!NOTE]
 >即使 UDR 指向作为默认网关的 Azure 防火墙，也会直接路由直接对等互连 VNet 之间的流量。 若要在此方案中将子网到子网流量发送到防火墙，UDR 必须在这两个子网上显式地包含目标子网网络前缀。
