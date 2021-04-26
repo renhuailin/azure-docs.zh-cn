@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 7932ad3b30910e539acfbff2329a03f80a4d1a0b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "104670352"
 ---
 # <a name="delete-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>删除已启用 Azure Arc 的超大规模 PostgreSQL 服务器组
@@ -57,7 +57,7 @@ azdata arc postgres server delete -n postgres01
 
 删除服务器组不会删除其关联的 [PVC](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)。 这是设计的结果。 目的是帮助用户访问数据库文件，以防意外删除实例。 删除 PVC 不是必需的， 但建议这样做。 如果不回收这些 PVC，最终会出现错误，因为 Kubernetes 群集会认为磁盘空间不足。 若要回收 PVC，请执行以下步骤：
 
-### <a name="1-list-the-pvcs-for-the-server-group-you-deleted"></a>1.列出已删除的服务器组的 PVC
+### <a name="1-list-the-pvcs-for-the-server-group-you-deleted"></a>1. 列出已删除的服务器组的 PVC
 
 若要列出 PVC，请运行以下命令：
 
@@ -81,7 +81,7 @@ logs-few7hh0k4npx9phsiobdc3hq-postgres01-3   Bound    pvc-f9e4cb98-c943-45b0-aa0
 ```
 此服务器组有 8 个 PVC。
 
-### <a name="2-delete-each-of-the-pvcs"></a>2.删除每个 PVC
+### <a name="2-delete-each-of-the-pvcs"></a>2. 删除每个 PVC
 
 删除已删除的服务器组的每个 PostgreSQL 超大规模节点（协调器和辅助角色）的数据和日志 PVC。
 

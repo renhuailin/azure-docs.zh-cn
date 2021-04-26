@@ -4,10 +4,10 @@ description: 有关已启用 Azure Arc 的服务器的安全信息。
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: aa8653b783e7eb3e211b7514831604dd5642cfbe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98117021"
 ---
 # <a name="azure-arc-for-servers-security-overview"></a>Azure Arc for servers 安全概述
@@ -32,7 +32,7 @@ Azure Connected Machine 加入角色可用于进行大规模加入，只能在 A
 
 Azure Connected Machine 代理由三个服务组成，这些服务在计算机上运行。
 
-* Hybrid Instance Metadata Service (HIMDS) 负责 Arc 的所有核心功能。这包括向 Azure 发送检测信号，为其他应用公开本地实例元数据服务，以了解计算机的 Azure 资源 ID，并检索 Azure AD 令牌以便对其他 Azure 服务进行身份验证。 此服务在 Windows 上作为无特权虚拟服务帐户运行，在 Linux 上作为 himds 用户运行。
+* Hybrid Instance Metadata Service (himds) 服务负责处理 Arc 的各项核心功能。这包括向 Azure 发送检测信号，为其他应用公开本地实例元数据服务来了解计算机的 Azure 资源 ID，还有检索 Azure AD 令牌来对其他 Azure 服务进行身份验证。 此服务在 Windows 上作为无特权虚拟服务帐户运行，在 Linux 上作为 himds 用户运行。
 
 * 来宾配置服务 (GCService) 负责评估计算机上的 Azure Policy。
 

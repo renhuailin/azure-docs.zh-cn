@@ -1,7 +1,7 @@
 ---
-title: 显示启用了 Arc 的 PostgreSQL 超大规模服务器组的配置
+title: 显示已启用 Arc 的超大规模 PostgreSQL 服务器组的配置
 titleSuffix: Azure Arc enabled data services
-description: 显示启用了 Arc 的 PostgreSQL 超大规模服务器组的配置
+description: 显示已启用 Arc 的超大规模 PostgreSQL 服务器组的配置
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -11,24 +11,24 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: a268cd6b2fa3da6846554e3d1b170298abec7f18
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93279395"
 ---
-# <a name="show-the-configuration-of-an-arc-enabled-postgresql-hyperscale-server-group"></a>显示启用了 Arc 的 PostgreSQL 超大规模服务器组的配置
+# <a name="show-the-configuration-of-an-arc-enabled-postgresql-hyperscale-server-group"></a>显示已启用 Arc 的超大规模 PostgreSQL 服务器组的配置
 
-本文介绍如何)  (显示服务器组的配置。 这样做的目的是预测您可能会问自己的一些问题，并回答这些问题。 有时可能会有多个有效的答案。 本文 pitches 最常见或最有用的项目。 它按主题对这些问题进行分组：
+本文介绍如何显示服务器组的配置。 文章预测你可能会问自己的一些问题，并解答问题，以此进行说明。 有时问题可能会有多个有效答案。 本文介绍最常见或最有用的答案。 文章按主题对这些问题进行分组：
 
-- 从 Kubernetes 的角度来看
-- 从启用了 Azure Arc 的数据服务角度来看
+- 从 Kubernetes 的角度看
+- 从已启用 Azure Arc 的数据服务的角度看
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="from-a-kubernetes-point-of-view"></a>从 Kubernetes 的角度来看
+## <a name="from-a-kubernetes-point-of-view"></a>从 Kubernetes 的角度看
 
-### <a name="how-many-pods-are-used-by-azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 启用了多少盒 PostgreSQL 超大规模？
+### <a name="how-many-pods-are-used-by-azure-arc-enabled-postgresql-hyperscale"></a>已启用 Azure Arc 的超大规模 PostgreSQL 使用多少个 Pod？
 
 列出 Postgres 类型的 Kubernetes 资源。 运行以下命令：
 
@@ -36,7 +36,7 @@ ms.locfileid: "93279395"
 kubectl get postgresqls [-n <namespace name>]
 ```
 
-此命令的输出显示创建的服务器组的列表。 对于每个，它表示 pod 的数目。 例如：
+此命令的输出显示已创建的服务器组的列表。 每个服务器组会显示 Pod 数。 例如：
 
 ```output
 NAME                                             STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
@@ -44,9 +44,9 @@ postgresql-12.arcdata.microsoft.com/postgres01   Ready   3/3          10.0.0.4:3
 postgresql-12.arcdata.microsoft.com/postgres02   Ready   3/3          10.0.0.4:31066      6d7h
 ```
 
-此示例显示2个服务器组已创建，每个服务器组在3个 pod 上运行 (1 协调器 + 2 个工作线程) 。 这意味着在此 Azure Arc 数据控制器中创建的服务器组使用6个 pod。
+此示例显示已创建 2 个服务器组，每个服务器组在 3 个 Pod 上运行（1 个协调器 + 2 个工作器）。 这意味着在此 Azure Arc 数据控制器中创建的服务器组使用 6 个 Pod。
 
-### <a name="what-pods-are-used-by-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>启用了 Azure Arc 的 PostgreSQL 超大规模服务器组使用哪些 pod？
+### <a name="what-pods-are-used-by-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>已启用 Azure Arc 的超大规模 PostgreSQL 服务器组使用哪些 Pod？
 
 运行：
 
@@ -54,7 +54,7 @@ postgresql-12.arcdata.microsoft.com/postgres02   Ready   3/3          10.0.0.4:3
 kubectl get pods [-n <namespace name>]
 ```
 
-这会返回 pod 列表。 你会看到服务器组根据你为这些服务器组提供的名称使用的 pod。 例如：
+这会返回 Pod 列表。 根据给这些服务器组的命名可以看到服务器组所使用的 Pod。 例如：
 
 ```console 
 NAME                 READY   STATUS    RESTARTS   AGE
@@ -76,7 +76,7 @@ postgres02-1         3/3     Running   0          22h
 postgres02-2         3/3     Running   0          22h
 ```
 
-在此示例中，承载创建的两个服务器组的六个 pod 是：
+在此示例中，托管已创建的两个服务器组的六个 Pod 是：
 - `postgres01-0`
 - `postgres01-1`
 - `postgres01-2`
@@ -84,25 +84,25 @@ postgres02-2         3/3     Running   0          22h
 - `postgres02-1`
 - `postgres02-2`  
 
-### <a name="what-server-group-pod-is-used-for-what-role-the-server-group"></a>哪个服务器组 pod 用于服务器组的角色？
+### <a name="what-server-group-pod-is-used-for-what-role-the-server-group"></a>哪个服务器组 Pod 用于服务器组的哪个角色？
 
-带有后缀的任何 pod 名称 `-0` 表示协调器节点。 以1或更大的为后缀的任何节点名称 `-x` 为辅助节点。 在上述示例中：
-- 协调员为： `postgres01-0` 、 `postgres02-0`
-- 辅助角色为： `postgres01-2` 、 `postgres01-2` 、 `postgres02-1` 、 `postgres02-2`
+以 `-0` 为后缀的任何 Pod 名称表示协调器节点。 以 `-x` 为后缀（其中后缀 为 1 或更大的数字）的任何节点名称表示工作器节点。 在上述示例中：
+- 协调器为：`postgres01-0`、`postgres02-0`
+- 工作器为：`postgres01-2`、`postgres01-2`、`postgres02-1`、`postgres02-2`
 
-### <a name="what-is-the-status-of-the-pods"></a>盒的状态是什么？
+### <a name="what-is-the-status-of-the-pods"></a>Pod 的状态是什么？
 
-运行 `kubectl get pods` 并查看列 `STATUS`
+运行 `kubectl get pods` 并查看 `STATUS` 列
 
-### <a name="what-persistent-volume-claims-pvcs-are-being-used"></a>使用哪些永久性卷声明 (Pvc) ？ 
+### <a name="what-persistent-volume-claims-pvcs-are-being-used"></a>使用了哪些永久性卷声明（PVC）？ 
 
-若要了解使用哪些 Pvc 以及哪些 Pvc 用于数据、日志和备份，请运行： 
+如果要了解使用了哪些 PVC 以及哪些 PVC 用于数据、日志和备份，请运行： 
 
 ```console
 kubectl get pvc [-n <namespace name>]
 ```
 
-默认情况下，PVC 的名称前缀指示其用法：
+默认情况下，PVC 的名称前缀表示其用途：
 
 - `backups-`...：是用于备份的 PVC
 - `data-`...：是用于数据文件的 PVC
@@ -127,21 +127,21 @@ logs-few7hh0k4npx9phsiobdc3hq-postgres01-2      Bound    local-pv-5ccd02e6   193
 ```
 
 
-## <a name="from-an-azure-arc-enabled-data-services-point-of-view"></a>从启用了 Azure Arc 的数据服务角度来看：
+## <a name="from-an-azure-arc-enabled-data-services-point-of-view"></a>从已启用 Azure Arc 的数据服务角度看：
 
-* 在 Arc 数据控制器中创建了多少个服务器组？
-* 它们的名称是什么？
-* 它们使用多少辅助角色节点？
-* 它们运行的 Postgres 版本是什么？
+* Arc 数据控制器中创建了多少个服务器组？
+* 服务器组的名称是什么？
+* 服务器组使用多少工作器节点？
+* 服务器组运行何种版本的 Postgres？
 
-使用以下命令之一。
-- **With kubectl：**
+使用以下任一命令。
+- 使用 kubectl：
 
    ```console
    kubectl get postgresqls [-n <namespace name>]
    ``` 
 
-   例如，它将生成以下输出，其中每行都是 `servergroup` 。 下面显示的名称的结构如下所示：
+   例如，它将生成以下输出，其中每行都是 `servergroup`。 下面显示的名称结构形式为：
 
    `<Name-Of-Custom-Resource-Definition>`/`<Server-Group-Name>`
 
@@ -151,13 +151,13 @@ logs-few7hh0k4npx9phsiobdc3hq-postgres01-2      Bound    local-pv-5ccd02e6   193
    postgresql-12.arcdata.microsoft.com/postgres02   Ready   3/3          10.0.0.4:31066      6d7h
    ```
 
-   上面的输出显示2个 Postgres 版本为12的服务器组。 如果版本为 Postgres 11，则 .CRD 的名称将为 postgresql-11.arcdata.microsoft.com。
+   以上输出显示了 2 个 Postgres 版本为 12 的服务器组。 如果版本为 Postgres 11，则 CRD 的名称为 postgresql-11.arcdata.microsoft.com。
 
-   其中每个在3个节点上运行：1个协调器和2个辅助角色。
+   每个服务器组在 3 个节点/Pod 上运行：1 个协调器和 2 个工作器。
 
-- **With azdata：**
+- 使用 azdata：
 
-运行以下命令。 输出显示的信息类似于 kubectl 显示的信息：
+运行以下命令。 输出显示的信息与运行 kubectl 显示的信息类似：
 
    ```console
    azdata arc postgres server list
@@ -170,14 +170,14 @@ logs-few7hh0k4npx9phsiobdc3hq-postgres01-2      Bound    local-pv-5ccd02e6   193
    ```
 
 
-### <a name="how-much-memory-and-vcores-are-being-used-and-what-extensions-were-created-for-a-group"></a>正在使用多少内存和 Vcore 以及为某个组创建了哪些扩展？
+### <a name="how-much-memory-and-vcores-are-being-used-and-what-extensions-were-created-for-a-group"></a>使用多少内存和 vCore 以及为服务器组创建了哪些扩展？
 
-运行以下命令之一
+运行以下任一命令
 
-**With Kubectl：**
+使用 kubectl：
 
-使用 kubectl 描述 Postgres 资源。 为此，需要 (名称 (.CRD) 为相应的 Postgres 版本，如上文所示) 和服务器组的名称。
-此命令的常规格式为：
+使用 kubectl 描述 Postgres 资源。 为此，需要其种类（如上所示，对应 Postgres 版本的 Kubernetes 资源 (CRD) 的名称）和服务器组的名称。
+此命令的一般格式为：
 
 ```console
 kubectl describe <CRD name>/<server group name> [-n <namespace name>]
@@ -237,31 +237,31 @@ Events:               <none>
 ```
 
 >[!NOTE]
->在2020年10月之前 `Workers` 的版本中，是 `Shards` 前面的示例中的。 有关详细信息，请参阅 [发行说明-启用了 Azure Arc 的数据服务 (预览) ](release-notes.md) 。
+>2020 年 10 月之前的版本，上述示例中的 `Workers` 是 `Shards`。 有关详细信息，请参阅“[发行说明 - 已启用 Azure Arc 的数据服务（预览版）](release-notes.md)”。
 
-让我们来了解上面所示的说明中的一些具体相关要点 `servergroup` 。 它告诉我们有关此服务器组的内容是什么？
+我们来了解以上所示 `servergroup` 说明中的一些具体兴趣点。 它告诉我们哪些有关此服务器组的内容？
 
-- 这是 Postgres 的版本12： 
+- 服务器组使用 Postgres 版本 12： 
    > ```json
    > Kind:         `postgresql-12`
    > ```
-- 它是在2020年8月创建的：
+- 服务器组在 2020 年 8 月期间创建：
    > ```json
    > Creation Timestamp:  `2020-08-31T21:01:07Z`
    > ```
-- 此服务器组中创建了两个 Postgres 扩展： `citus` 和 `pg_stat_statements`
+- 此服务器组中创建了两个 Postgres 扩展：`citus` 和 `pg_stat_statements`
    > ```json
    > Engine:
    >    Extensions:
    >      Name:  `citus`
    >      Name:  `pg_stat_statements`
    > ```
-- 它使用两个辅助角色节点
+- 服务器组使用两个工作器节点
    > ```json
    > Scale:
    >    Workers:  `2`
    > ```
-- 保证每个节点使用1个 cpu/vCore 和 512MB Ram。 它将使用4个以上的 cpu/Vcore 和1024MB 内存：
+- 服务器组保证每个节点使用 1 个 cpu/vCore 和 512MB Ram。 服务器组将使用 4 个以上 cpu/Vcore 和 1024MB 内存：
    > ```json
    > Scheduling:
    >    Default: 
@@ -273,7 +273,7 @@ Events:               <none>
    >          Cpu:     1
    >          Memory:  512Mi
    > ```
- - 它可用于查询，没有任何问题。 所有节点都已启动并正在运行：
+ - 服务器组可供查询，不存在任何问题。 所有节点都已启动并在运行：
    > ```json
    > Status:
    >  ...
@@ -281,9 +281,9 @@ Events:               <none>
    >  State:              Ready
    > ```
 
-**With azdata：**
+使用 azdata：
 
-命令的常规格式为：
+此命令的一般格式为：
 
 ```console
 azdata arc postgres server show -n <server group name>
@@ -295,7 +295,7 @@ azdata arc postgres server show -n <server group name>
 azdata arc postgres server show -n postgres02
 ```
 
-返回下面的输出，格式与内容非常类似于 kubectl 返回的输出。
+返回下列输出，其格式与内容与 kubectl 返回的输出十分相似。
 
 ```console
 {
@@ -361,10 +361,10 @@ azdata arc postgres server show -n postgres02
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- [了解 Azure Arc enabled PostgreSQL 超大规模的概念](concepts-distributed-postgres-hyperscale.md)
-- [阅读有关如何横向扩展 () 服务器组添加辅助角色节点](scale-out-postgresql-hyperscale-server-group.md)
-- [了解如何扩展/缩减 (增加或减少) 服务器组的内存和/或 Vcore](scale-up-down-postgresql-hyperscale-server-group-using-cli.md)
-- [了解存储配置](storage-configuration.md)
+- [阅读已启用 Azure Arc 的超大规模 PostgreSQL 的概念](concepts-distributed-postgres-hyperscale.md)
+- [阅读如何横向扩展（添加工作器节点）服务器组](scale-out-postgresql-hyperscale-server-group.md)
+- [阅读如何纵向扩展/缩减（增加或减少内存和/或 vCore）服务器组](scale-up-down-postgresql-hyperscale-server-group-using-cli.md)
+- [阅读存储配置](storage-configuration.md)
 - [阅读如何监视数据库实例](monitor-grafana-kibana.md)
-- [在启用了 Azure Arc 的 PostgreSQL 超大规模服务器组中使用 PostgreSQL 扩展](using-extensions-in-postgresql-hyperscale-server-group.md)
+- [在启用了 Azure Arc 的超大规模 PostgreSQL 服务器组中使用 PostgreSQL 扩展](using-extensions-in-postgresql-hyperscale-server-group.md)
 - [为已启用 Azure Arc 的 PostgreSQL 超大规模服务器组配置安全性](configure-security-postgres-hyperscale.md)

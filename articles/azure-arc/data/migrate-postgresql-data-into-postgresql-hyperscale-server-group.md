@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: d9cbfc30b10373ad2a4f4304987dac426b5dcabe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101643569"
 ---
 # <a name="migrate-postgresql-database-to-azure-arc-enabled-postgresql-hyperscale-server-group"></a>从 PostgreSQL 数据库迁移到已启用 Azure Arc 的超大规模 PostgreSQL 服务器组
@@ -181,7 +181,7 @@ azdata arc postgres endpoint list -n postgres01
 > [!NOTE]
 > - 在已启用 Azure Arc 的超大规模 PostgreSQL 上运行时，在进行横向扩展并在超大规模 PostgreSQL 服务器组的工作器节点上分片/分布数据之前，你将不会看到如此多的性能优势。 请参阅[后续步骤](#next-steps)。
 >
-> - 目前，无法将现有的会在本地或任何其他云中运行的 Postgres 实例“加入到 Azure Arc”。 换言之，无法在现有 Postgres 实例上安装某种“Azure Arc 代理”来使其成为 Azure Arc 启用的 Postgres 设置。而是需要创建新的 Postgres 实例，并将数据传输到该实例。 你可以使用以上所示的方法来实现此目的，也可以使用所选的任何 ETL 工具。
+> - 目前，无法将现有的会在本地或任何其他云中运行的 Postgres 实例“加入到 Azure Arc”。 换句话说，无法在现有 Postgres 实例上安装某种“Azure Arc 代理”来使其成为 Azure Arc 启用的 Postgres 设置。转而，你需要创建新的 Postgres 实例，并将数据传输到该实例。 你可以使用以上所示的方法来实现此目的，也可以使用所选的任何 ETL 工具。
 
 ## <a name="next-steps"></a>后续步骤
 

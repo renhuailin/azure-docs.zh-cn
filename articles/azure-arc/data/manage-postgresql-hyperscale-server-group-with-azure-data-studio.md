@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 7dcc0f916a15598060e034dcf62536ee13e2672e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92320237"
 ---
 # <a name="use-azure-data-studio-to-manage-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>使用 Azure Data Studio 管理已启用 Azure Arc 的超大规模 PostgreSQL 服务器组
@@ -59,7 +59,7 @@ Azure Data Studio 将显示你的 Arc 数据控制器。 展开该数据控制�
 
 PostgreSQL 仪表板视图：
 
-该窗格的左侧列出了多个仪表板：
+它具有该窗格左侧列出的多个仪表板：
 
 - 概述：显示有关实例的摘要信息，例如名称、PostgreSQL 管理员用户名、Azure 订阅 ID、配置、数据库引擎版本、Grafana 和 Kibana 的终结点，等等
 - 连接字符串：显示连接到 PostgreSQL 实例（例如 psql、Node.js、PHP、Ruby 等）时可能需要用到的各种连接字符串

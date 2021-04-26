@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 86563b0a44bade2cedaf76af3c247821756111fe
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90934521"
 ---
 # <a name="migrate-sql-server-to-azure-arc-enabled-sql-managed-instance"></a>迁移：从 SQL Server 到已启用 Azure Arc 的 SQL 托管实例
@@ -194,4 +194,4 @@ GO
 
 [首先创建数据控制器](create-data-controller.md)
 
-[已创建数据控制器？接下来请创建已启用 Azure Arc 的 SQL 托管实例](create-sql-managed-instance.md)
+[已创建数据控制器？请创建已启用 Azure Arc 的 SQL 托管实例](create-sql-managed-instance.md)

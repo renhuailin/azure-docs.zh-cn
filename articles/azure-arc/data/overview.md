@@ -1,20 +1,21 @@
 ---
 title: 什么是已启用 Azure Arc 的数据服务
 description: 介绍已启用 Azure Arc 的数据服务
+ms.custom: references_regions
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 09/22/2020
+ms.date: 03/31/2021
 ms.topic: overview
-ms.openlocfilehash: ef16a4c0b6ea40fb4934307916f1fe79ccea72f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d866dcb5b2a0be9e6468b3d40258e37ac93834e
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97609133"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107716090"
 ---
 # <a name="what-are-azure-arc-enabled-data-services-preview"></a>什么是已启用 Azure Arc 的数据服务（预览）？
 
@@ -46,6 +47,16 @@ Azure Arc 还提供了其他云优势，例如快速部署和大规模自动化�
 ## <a name="disconnected-scenario-support"></a>断开连接的方案支持
 
 无论是否直接连接到 Azure，许多服务（例如自助式预配、自动备份/还原和监视）都可以在基础结构中在本地运行。 若直接连接到 Azure，这样可提供用于与其他 Azure 服务（例如 Azure Monitor）集成的其他选项，并且可以在世界各地使用 Azure 门户和 Azure 资源管理器 API 来管理已启用 Azure Arc 的数据服务。
+
+## <a name="supported-regions"></a>支持的区域
+
+下表介绍了启用了 Arc 的数据服务当前支持的方案。
+
+|Azure 区域  |直接连接模式  |间接连接模式  |
+|---------|---------|---------|
+|美国东部|可用|可用
+|西欧 |可用 |可用
+|北欧|可用|可用
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 将 GitOps 和 Helm 配合用于已启用 Azure Arc 的群集配置
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes 服务, 容器
-ms.openlocfilehash: 75e2fcb25680817fc3e2bddabbbdd9c52b7dd059
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: df9b40764ec463553659803749f282bbc4587bde
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121399"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449537"
 ---
 # <a name="deploy-helm-charts-using-gitops-on-an-arc-enabled-kubernetes-cluster"></a>在已启用 Arc 的 Kubernetes 群集上使用 GitOps 部署 Helm 图表
 
@@ -21,9 +21,17 @@ Helm 是一种开放源打包工具，有助于安装和管理 Kubernetes 应用
 
 本文介绍了如何配置 Helm 并将其用于启用了 Azure Arc 的 Kubernetes。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="prerequisites"></a>必备条件
 
-验证是否具有现有的已启用 Azure Arc 的 Kubernetes 连接的群集。 如果需要连接的群集，请参阅[连接已启用 Azure Arc 的 Kubernetes 群集快速入门](./quickstart-connect-cluster.md)。
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 一个现有的已启用 Azure Arc 的 Kubernetes 连接的群集。
+    - 如果尚未连接群集，请参阅[连接已启用 Azure Arc 的 Kubernetes 群集快速入门](quickstart-connect-cluster.md)。
+- 了解此功能的好处和体系结构。 有关详细信息，请参阅[配置和 GitOps - 已启用 Azure Arc 的 Kubernetes 一文](conceptual-configurations.md)。
+- 安装 `k8s-configuration` Azure CLI 扩展版本，版本不得低于 1.0.0：
+  
+  ```azurecli
+  az extension add --name k8s-configuration
+  ```
 
 ## <a name="overview-of-using-gitops-and-helm-with-azure-arc-enabled-kubernetes"></a>将 GitOps 与 Helm 配合用于已启用 Azure Arc 的 Kubernetes 概述
 
@@ -64,7 +72,7 @@ spec:
 
 Helm 发布配置包含以下字段：
 
-| 字段 | 描述 |
+| 字段 | 说明 |
 | ------------- | ------------- | 
 | `metadata.name` | 必需字段。 需要遵循 Kubernetes 命名约定。 |
 | `metadata.namespace` | 可选字段。 确定创建发布的位置。 |

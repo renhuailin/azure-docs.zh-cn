@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: 本文提供已启用 Azure Arc 的 Kubernetes 的 GitOps 和配置功能的概念性概述。
 keywords: Kubernetes, Arc, Azure, 容器, 配置, GitOps
-ms.openlocfilehash: 88a30876b25730e4cb0b4b1e19fac94b9e556adc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 198bd45374d998ef0d9d0e612e974484d52e2f20
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121790"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443300"
 ---
 # <a name="configurations-and-gitops-with-azure-arc-enabled-kubernetes"></a>已启用 Azure Arc 的 Kubernetes 中的配置和 GitOps
 
@@ -33,7 +33,7 @@ ms.locfileid: "102121790"
 
 群集中运行的 `config-agent` 负责：
 * 跟踪已启用 Azure Arc 的 Kubernetes 资源上的新配置资源或已更新的配置资源。
-* 部署 Flux operator 用于监视 Git 存储库中的每个配置资源。
+* 部署 Flux operator 用于监视每个配置资源的 Git 存储库。
 * 应用对任何配置资源所做的任何更新。 
 
 可在同一个已启用 Azure Arc 的 Kubernetes 群集上创建多个命名空间范围的配置资源，以实现多租户。
@@ -50,6 +50,6 @@ ms.locfileid: "102121790"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 参考我们的快速入门[将 Kubernetes 群集连接到 Azure Arc](./connect-cluster.md)。
-* 已将 Kubernetes 群集连接到 Azure Arc？ [在已启用 Arc 的 Kubernetes 群集上创建配置](./use-gitops-connected-cluster.md)。
-* 了解如何[使用 Azure Policy 大规模应用配置](./use-azure-policy.md)。
+* 使用我们的快速入门[将 Kubernetes 群集连接到 Azure Arc](./quickstart-connect-cluster.md)。
+* 在已启用 Azure Arc 的 Kubernetes 群集上[创建配置](./tutorial-use-gitops-connected-cluster.md)。
+* [使用 Azure Policy 大规模应用配置](./use-azure-policy.md)。

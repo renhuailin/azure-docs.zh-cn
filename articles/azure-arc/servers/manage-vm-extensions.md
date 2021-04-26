@@ -1,14 +1,14 @@
 ---
 title: 通过已启用 Azure Arc 的服务器管理虚拟机扩展
 description: 已启用 Azure Arc 的服务器可以管理虚拟机扩展的部署，这些扩展向非 Azure VM 提供部署后配置和自动化任务。
-ms.date: 03/22/2021
+ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9af2700f036352188e646188485285482ee70c69
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 67f1b5b3db6ef446342e8381d54d487af1f3426a
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799575"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389785"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>通过已启用 Azure Arc 的服务器进行虚拟机扩展管理
 
@@ -20,6 +20,9 @@ ms.locfileid: "104799575"
 - [Azure CLI](manage-vm-extensions-cli.md)
 - [Azure PowerShell](manage-vm-extensions-powershell.md)
 - Azure [资源管理器模板](manage-vm-extensions-template.md)
+
+> [!NOTE]
+> 已启用 Azure Arc 的服务器不支持管理 VM 扩展，也不支持将 VM 扩展部署到 Azure 虚拟机。 对于 Azure VM，请查看下面的 [VM 扩展概述](../../virtual-machines/extensions/overview.md)一文。
 
 ## <a name="key-benefits"></a>主要优点
 
@@ -48,7 +51,7 @@ VM 扩展功能仅在[受支持区域](overview.md#supported-regions)列表所�
 
 ### <a name="windows-extensions"></a>Windows 扩展
 
-|扩展名 |Publisher |类型 |其他信息 |
+|分机 |Publisher |类型 |其他信息 |
 |----------|----------|-----|-----------------------|
 |Azure Defender 集成漏洞扫描程序 |Qualys |WindowsAgent.AzureSecurityCenter |[适用于 Azure 和混合计算机的 Azure Defender 集成式漏洞评估解决方案](../../security-center/deploy-vulnerability-assessment-vm.md)|
 |自定义脚本扩展 |Microsoft.Compute | CustomScriptExtension |[Windows 自定义脚本扩展](../../virtual-machines/extensions/custom-script-windows.md)|
@@ -59,7 +62,7 @@ VM 扩展功能仅在[受支持区域](overview.md#supported-regions)列表所�
 
 ### <a name="linux-extensions"></a>Linux 扩展
 
-|扩展名 |Publisher |类型 |其他信息 |
+|分机 |Publisher |类型 |其他信息 |
 |----------|----------|-----|-----------------------|
 |Azure Defender 集成漏洞扫描程序 |Qualys |LinuxAgent.AzureSecurityCenter |[适用于 Azure 和混合计算机的 Azure Defender 集成式漏洞评估解决方案](../../security-center/deploy-vulnerability-assessment-vm.md)|
 |自定义脚本扩展 |Microsoft.Azure.Extensions |CustomScript |[Linux 自定义脚本扩展版本 2](../../virtual-machines/extensions/custom-script-linux.md) |
@@ -68,7 +71,7 @@ VM 扩展功能仅在[受支持区域](overview.md#supported-regions)列表所�
 |Azure Key Vault 证书同步 | Microsoft.Azure.Key.Vault |KeyVaultForLinux | [适用于 Linux 的 Key Vault 虚拟机扩展](../../virtual-machines/extensions/key-vault-linux.md) |
 |Azure Monitor 代理 |Microsoft.Azure.Monitor |AzureMonitorLinuxAgent |[安装 Azure Monitor 代理（预览版）](../../azure-monitor/agents/azure-monitor-agent-install.md) |
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 此功能依赖于订阅中的以下 Azure 资源提供程序：
 
@@ -95,7 +98,7 @@ Key Vault VM 扩展（预览版）不支持以下 Linux 操作系统：
 
 - Azure CLI
 - Azure PowerShell
-- Azure 资源管理器模板
+- Azure Resource Manager 模板
 
 在部署扩展之前，需要完成以下操作：
 

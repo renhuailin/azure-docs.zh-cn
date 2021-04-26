@@ -10,11 +10,11 @@ ms.reviewer: mikeray
 ms.date: 02/11/2021
 ms.topic: how-to
 ms.openlocfilehash: b1a56c8acf1789690c01f1c16b7c37a237720e39
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100417131"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564868"
 ---
 # <a name="limitations-of-azure-arc-enabled-postgresql-hyperscale"></a>已启用 Azure Arc 的超大规模 PostgreSQL 的限制
 
@@ -33,7 +33,7 @@ ms.locfileid: "100417131"
 不支持在一个服务器组中承载多个数据库。
 
 
-## <a name="security"></a>安全性
+## <a name="security"></a>安全
 
 不支持管理用户和角色。 目前，请继续使用 postgres 标准用户。
 
@@ -59,7 +59,7 @@ Microsoft 及其客户在 Azure PaaS 服务（平台即服务）和 Azure 混合
 
 ## <a name="next-steps"></a>后续步骤
 
-- **试用。** 在 Azure Kubernetes 服务 (AKS)、AWS Elastic Kubernetes 服务 (EKS)、Google Cloud Kubernetes Engine (GKE) 或 Azure VM 中，通过 [Azure Arc 快速入门](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/)快速开始操作。 
+- 请试用。在 Azure Kubernetes 服务 (AKS)、AWS Elastic Kubernetes Service (EKS)、Google Cloud Kubernetes Engine (GKE) 或 Azure VM 中通过 [Azure Arc 快速入门](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/)快速开始。 
 
 - **创建自己的服务器组。** 按照以下步骤在自己的 Kubernetes 群集上创建： 
    1. [安装客户端工具](install-client-tools.md)

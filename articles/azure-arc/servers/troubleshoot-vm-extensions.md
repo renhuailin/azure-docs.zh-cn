@@ -4,10 +4,10 @@ description: 本文介绍如何排查和解决已启用 Azure Arc 的服务器�
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.openlocfilehash: 799e5c8ec00a894c6a54c64494edd8f259faf2dc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100584676"
 ---
 # <a name="troubleshoot-arc-enabled-servers-vm-extension-issues"></a>排查已启用 Arc 的服务器 VM 扩展问题
@@ -24,7 +24,7 @@ ms.locfileid: "100584676"
 
 2. 对于 Windows，请在 `%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>` 中检查特定扩展的扩展日志以了解详细信息。 对于在 Linux 上安装的每个扩展，扩展输出会记录到 `/var/lib/GuestConfig/extension_logs` 下的文件中。
 
-3. 查看特定扩展文档中有关错误代码和已知问题等的故障排除部分。可以在扩展概述的“故障排除和支持”部分中找到每个扩展的其他故障排除信息。 这包括写入日志的错误代码的说明。 扩展文章链接在[扩展表](manage-vm-extensions.md#extensions)中。
+3. 请查看扩展特定文档中有关错误代码和已知问题等的故障排除部分。可在扩展概述的“故障排除和支持”部分中找到每个扩展的其他故障排除信息。 这包括写入日志的错误代码的说明。 扩展文章链接在[扩展表](manage-vm-extensions.md#extensions)中。
 
 4. 查看系统日志。 检查其他可能影响了扩展的操作，例如，长时间安装另一个需要包管理器独占访问权限的应用程序。
 

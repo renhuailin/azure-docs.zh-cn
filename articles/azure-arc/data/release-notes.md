@@ -7,14 +7,14 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 03/02/2021
+ms.date: 04/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6b4d5c1372a8351f1fe5a6608aff38bf232aabd8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1fe5974bafddcb4e474ef59a062836e071ab9461
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121943"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304913"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>发行说明 - 已启用 Azure Arc 的数据服务（预览版）
 
@@ -22,11 +22,50 @@ ms.locfileid: "102121943"
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
+## <a name="march-2021"></a>2021 年 3 月
+
+2021 年 3 月版最初于 2021 年 4 月 5 日推出，发布的最后阶段于 2021 年 4 月 9 日完成。
+
+在[已知问题 - 已启用 Azure Arc 的数据服务（预览版）](known-issues.md)中可查看此版本的限制。
+
+Azure Data CLI (`azdata`) 版本号：20.3.2。 可以从[安装 Azure 数据 CLI (`azdata`)](/sql/azdata/install/deploy-install-azdata) 中安装 `azdata`。
+
+### <a name="data-controller"></a>数据控制器
+
+- 在门户上以直接连接模式部署已启用 Azure Arc 的数据服务数据控制器。 从[部署数据控制器 - 直接连接模式（先决条件）](deploy-data-controller-direct-mode-prerequisites.md)开始。
+
+### <a name="azure-arc-enabled-postgresql-hyperscale"></a>已启用 Azure Arc 的超大规模 PostgreSQL
+
+PostgreSQL 的两个自定义资源定义 (CRD) 已经合并到一个 CRD 中。 请参阅下表。
+
+|发布 |CRD |
+|-----|-----|
+|2021 年 2 月及之前| postgresql-11s.arcdata.microsoft.com<br/>postgresql-12s.arcdata.microsoft.com |
+|2021 年 3 月开始 | postgresqls.arcdata.microsoft.com
+
+清除过去的安装时，将删除以前的 CRD。 请参阅[清除过去的安装](create-data-controller-using-kubernetes-native-tools.md#cleanup-from-past-installations)。
+
+### <a name="azure-arc-enabled-sql-managed-instance"></a>已启用 Azure Arc 的 SQL 托管实例
+
+- 你现在可以在 Azure 门户中以接连接模式创建一个 SQL 托管实例。
+
+- 你现在可以将数据库还原为包含 3 个副本的 SQL 托管实例，它将自动添加到可用性组中。 
+
+- 你现在可以连接到部署有 3 个副本的 SQL 托管实例上的只读辅助终结点。 使用 `azdata arc sql endpoint list` 查看只读辅助连接终结点。
+
+### <a name="known-issues"></a>已知问题
+
+- 在直接连接模式下，使用 `azdata arc dc upload` 上传使用量、指标和日志当前已被阻止。 使用量会自动上传。 在间接连接模式下创建的数据控制器的上传应继续工作。
+- 直接模式下的数据控制器部署只能通过 Azure 门户完成，而不能通过 azdata、Azure Data Studio 或 kubectl 等客户端工具进行。
+- 直接模式下的已启用 Azure Arc 的 SQL 托管实例的部署只能通过 Azure 门户完成，而不能通过 azdata、Azure Data Studio 或 kubectl 等工具进行。
+- 目前尚无法在直接模式下部署已启用 Azure Arc 的超大规模 PostgreSQL。
+- 如果通过 `–proxy-cert <path-t-cert-file>` 使用代理，则在直接连接模式下自动上传使用量数据将失败。
+
 ## <a name="february-2021"></a>2021 年 2 月
 
 ### <a name="new-capabilities-and-features"></a>新功能和特性
 
-Azure 数据 CLI (`azdata`) 版本号：20.3.1。 下载位置 [https://aka.ms/azdata](https://aka.ms/azdata)。 可以从[安装 Azure 数据 CLI (`azdata`)](/sql/azdata/install/deploy-install-azdata) 中安装 `azdata`。
+Azure 数据 CLI (`azdata`) 版本号：20.3.1。 可以从[安装 Azure 数据 CLI (`azdata`)](/sql/azdata/install/deploy-install-azdata) 中安装 `azdata`。
 
 其他更新包括：
 
@@ -44,7 +83,7 @@ Azure 数据 CLI (`azdata`) 版本号：20.3.1。 下载位置 [https://aka.ms/a
 
 ### <a name="new-capabilities-and-features"></a>新功能和特性
 
-Azure 数据 CLI (`azdata`) 版本号：20.3.0。 下载位置 [https://aka.ms/azdata](https://aka.ms/azdata)。 可以从[安装 Azure 数据 CLI (`azdata`)](/sql/azdata/install/deploy-install-azdata) 中安装 `azdata`。
+Azure 数据 CLI (`azdata`) 版本号：20.3.0。 可以从[安装 Azure 数据 CLI (`azdata`)](/sql/azdata/install/deploy-install-azdata) 中安装 `azdata`。
 
 其他更新包括：
 - 适用于 17 种新语言的本地化门户
@@ -70,7 +109,7 @@ Azure 数据 CLI (`azdata`) 版本号：20.3.0。 下载位置 [https://aka.ms/a
 
 ### <a name="new-capabilities--features"></a>新功能和特性
 
-Azure 数据 CLI (`azdata`) 版本号：20.2.5。 下载位置 [https://aka.ms/azdata](https://aka.ms/azdata)。
+Azure 数据 CLI (`azdata`) 版本号：20.2.5。 可以从[安装 Azure 数据 CLI (`azdata`)](/sql/azdata/install/deploy-install-azdata) 中安装 `azdata`。
 
 使用 Azure 数据 CLI (`azdata`) 通过 `azdata arc sql endpoint list` 和 `azdata arc postgres endpoint list` 命令查看 SQL 托管实例和超大规模 PostgreSQL 的终结点。
 
@@ -127,16 +166,9 @@ azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc
 
    :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="取消选中每个区域对应的复选框，以指定为“无”。":::
 
-#### <a name="postgresql"></a>PostgreSQL
-
-- 如果已启用 Azure Arc 的超大规模 PostgreSQL 无法还原到指示的相对时间点，将返回不准确的错误消息。 例如，当指定的还原时间点早于备份包含的时间点时，还原将失败并出现如下错误消息：错误: (404)。 原因: 未找到。 HTTP 响应正文: {"代码":404，"internalStatus": "NOT_FOUND"，"原因":"未能还原服务器的备份...}
-发生这种情况时，请指示一个处于备份对应的日期范围内的时间点，然后重启该命令。 通过列出备份并查看对应日期，即可确定此范围。
-- 仅在服务器组上支持时间点还原。 时间点还原操作的目标服务器不能是备份时所用的服务器。 必须选择其他服务器组。 但是，支持对同一服务器组进行完全还原。
-- 执行完整还原时，需要备份 ID。 默认情况下，如果未指示备份 ID，则将使用最新的备份。 这不适用于本版本。
-
 ## <a name="october-2020"></a>2020 年 10 月 
 
-Azure 数据 CLI (`azdata`) 版本号：20.2.3。 下载位置 [https://aka.ms/azdata](https://aka.ms/azdata)。
+Azure 数据 CLI (`azdata`) 版本号：20.2.3。 可以从[安装 Azure 数据 CLI (`azdata`)](/sql/azdata/install/deploy-install-azdata) 中安装 `azdata`。
 
 ### <a name="breaking-changes"></a>中断性变更
 

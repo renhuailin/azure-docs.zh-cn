@@ -1,43 +1,43 @@
 ---
 title: 数据驻留
-description: 数据驻留和有关启用了 Azure Arc 的服务器的信息。
+description: 数据驻留和有关已启用 Azure Arc 的服务器的信息。
 ms.topic: reference
 ms.date: 02/16/2021
 ms.custom: references_regions
 ms.openlocfilehash: d4764772473bbf2e5aafe2607a9462c9a6a15203
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100559503"
 ---
-# <a name="azure-arc-enabled-servers-data-residency"></a>启用了 Azure Arc 的服务器：数据驻留
+# <a name="azure-arc-enabled-servers-data-residency"></a>已启用 Azure Arc 的服务器：数据驻留
 
-本文介绍数据驻留的概念，以及如何将其应用于启用了 Azure Arc 的服务器。
+本文介绍数据驻留的概念，以及它应用于已启用 Azure Arc 的服务器的方式。
 
-已启用 Azure Arc 的服务器可在 **美国、欧洲、英国、澳大利亚和亚太** 中 **[找到](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)**。
+已启用 Azure Arc 的服务器在美国、欧洲、英国、澳大利亚和亚太地区[提供](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)。 
 
 ## <a name="data-residency"></a>数据驻留
 
-启用了 azure Arc 的服务器存储 [AZURE VM 扩展](manage-vm-extensions.md) 配置设置 (也就是说，扩展) 的属性值需要在连接的计算机上尝试启用之前指定。 例如，当你启用 Log Analytics VM 扩展时，它将要求提供 Log Analytics **工作区 ID** 和 **主密钥**。
+已启用 Azure Arc 的服务器先存储扩展需要指定的 [Azure VM 扩展](manage-vm-extensions.md)配置设置（即属性值），然后再尝试在已连接的计算机上启用该设置。 例如，启用 Log Analytics VM 扩展时，将要求你提供 Log Analytics 工作区 ID 和主键。 
 
-还会收集有关连接的计算机的元数据信息。 具体来说：
+还会收集有关连接的计算机的元数据信息。 具体而言：
 
 * 操作系统名称、类型和版本
 * 计算机名称
 * 计算机完全限定域名 (FQDN)
 * Connected Machine 代理版本
-*  (FQDN Active Directory 和 DNS 完全限定的域名) 
-* UUID (BIOS ID) 
-* 连接的计算机代理检测信号
+* Active Directory 和 DNS 完全限定的域名 (FQDN)
+* UUID (BIOS ID)
+* Connected Machine 代理程序检测信号
 * Connected Machine 代理版本
 * 托管标识的公钥
-* 策略符合性状态和详细信息 (如果使用 Azure 策略来宾配置策略) 
+* 策略合规性状态和详细信息（如果使用 Azure Policy Guest Configuration 策略）
 
-启用 Arc 的服务器允许指定存储数据的区域。 Microsoft 可能会复制到其他区域以进行数据恢复，但 Microsoft 不会复制或移动地理位置之外的数据。 此数据存储在配置 Azure Arc 计算机资源的区域中。 例如，如果计算机是在美国东部地区的 Arc 上注册的，则此数据存储在美国区域。
+已启用 Arc 的服务器允许指定存储数据的区域。 Microsoft 可能会将数据复制到其他区域来提高数据复原能力，但 Microsoft 不会将数据复制或移动到相应地理位置之外。 此数据存储在配置了 Azure Arc 计算机资源的区域中。 例如，如果计算机在美国东部区域注册了 Arc，则此数据存储在美国区域中。
 
-有关区域复原和合规性支持的详细信息，请参阅 [Azure 地域](https://azure.microsoft.com/global-infrastructure/geographies/)。
+有关区域复原能力和合规性支持的详细信息，请参阅“[Azure 地理](https://azure.microsoft.com/global-infrastructure/geographies/)”。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [Azure 复原](/azure/architecture/reliability/architect)设计的详细信息。
+了解有关[Azure 复原能力](/azure/architecture/reliability/architect)设计的详细信息。

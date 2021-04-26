@@ -4,10 +4,10 @@ description: 了解如何将已启用 Azure Arc 的服务器从一个区域迁�
 ms.date: 02/10/2021
 ms.topic: conceptual
 ms.openlocfilehash: 251a347205d93af715add52db293d8000438df44
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101650169"
 ---
 # <a name="how-to-migrate-azure-arc-enabled-servers-across-regions"></a>如何跨区域迁移已启用 Azure Arc 的服务器
@@ -22,11 +22,11 @@ ms.locfileid: "101650169"
 ## <a name="move-machine-to-other-region"></a>将计算机移到另一区域
 
 > [!NOTE]
-> 在迁移过程中会造成停机。
+> 在此操作中，会导致迁移期间出现停机。
 
 1. 使用 [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension) 或 [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension) 删除通过 [Azure 门户](manage-vm-extensions-portal.md#uninstall-extension)安装的 VM 扩展。
 
-2. 结合 [Disconnect](manage-agent.md#disconnect) 参数使用 azcmagent 工具从 Azure Arc 断开连接计算机，然后从 Azure 中删除计算机资源。 从已启用 Arc 的服务器断开连接计算机不会删除 Connected Machine Agent，并且在此过程中不需要删除该代理。 可以在登录后以交互方式运行此工具，或者使用用于加入多个代理的同一服务主体或使用 Microsoft 标识平台[访问令牌](../../active-directory/develop/access-tokens.md)自动运行此工具。 如果你未使用服务主体将计算机注册到已启用 Azure Arc 的服务器，请参阅以下[文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)创建服务主体。
+2. 结合使用 azcmagent 工具与 [Disconnect](manage-agent.md#disconnect) 参数从 Azure Arc 中断开计算机的连接，然后从 Azure 中删除计算机资源。 从已启用 Arc 的服务器断开计算机的连接不会删除 Connected Machine 代理，并且在此过程中不需要删除该代理。 可以在以交互方式登录时手动运行此内容，或者使用用于加入多个代理的同一服务主体或使用 Microsoft 标识平台[访问令牌](../../active-directory/develop/access-tokens.md)来自动运行此内容。 如果你未使用服务主体将计算机注册到已启用 Azure Arc 的服务器，请参阅以下[文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)创建服务主体。
 
 3. 将 Connected Machine Agent 重新注册到另一区域中的已启用 Arc 的服务器。 结合 [Connect](manage-agent.md#connect) 参数运行 `azcmagent` 工具即可完成此步骤。
 

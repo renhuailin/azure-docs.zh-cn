@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 02/11/2021
 ms.topic: how-to
 ms.openlocfilehash: 046f9d80c034e1ac1f2e7ffe144b4f389861b043
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101687934"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>创建启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
@@ -181,7 +181,7 @@ azdata arc postgres endpoint list -n <server group name>
 ]
 ```
 
-你可以使用 PostgreSQL 实例终结点从 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)、[pgcli](https://www.pgcli.com/) psql、pgAdmin 等你喜欢的工具连接到超大规模 PostgreSQL 服务器组。这样做时，可连接到协调器节点/实例，该协调器节点/实例负责将查询路由到相应的工作器节点/实例（如果创建了分布式表）。 有关更多详细信息，请参阅[已启用 Azure Arc 的超大规模 PostgreSQL 的概念](concepts-distributed-postgres-hyperscale.md)。
+可使用 PostgreSQL 实例终结点从你喜欢的工具连接到 PostgreSQL 超大规模服务器组：[Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)、[Pgcli](https://www.pgcli.com/) psql、pgAdmin 等。这样做时，可连接到协调器节点/实例，它负责将查询路由到相应的工作器节点/实例（如果创建了分布式表）。 有关更多详细信息，请参阅[已启用 Azure Arc 的超大规模 PostgreSQL 的概念](concepts-distributed-postgres-hyperscale.md)。
 
 ## <a name="special-note-about-azure-virtual-machine-deployments"></a>有关 Azure 虚拟机部署的特别说明
 

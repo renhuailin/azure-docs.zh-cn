@@ -16,16 +16,8 @@
       displayName: 'Troubleshooting, import'
 - name: LUIS 快速入门
   items:
-    - name: 构建预生成域应用
-      href: luis-get-started-create-app.md
     - name: 使用 LUIS 门户
-      items:
-        - name: 创建应用
-          href: get-started-portal-build-app.md
-          displayName: 'intent, entity, create app, test, example utterance'
-        - name: 部署应用
-          href: get-started-portal-deploy-app.md
-          displayName: 'assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish'
+      href: luis-get-started-create-app.md
     - name: 使用浏览器
       href: luis-get-started-get-intent-from-browser.md
     - name: 使用客户端库和 REST API

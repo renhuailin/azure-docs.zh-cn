@@ -1,7 +1,7 @@
 ---
-title: 启用 Azure Arc 托管实例高可用性
+title: 启用了 Azure Arc 的托管实例高可用性
 titleSuffix: Deploy Azure Arc enabled Managed Instance with high availability
-description: 了解如何部署启用了 Azure Arc 托管实例的高可用性。
+description: 了解如何使用高可用性部署已启用 Azure Arc 的托管实例。
 author: vin-yu
 ms.author: vinsonyu
 ms.reviewer: mikeray
@@ -11,36 +11,36 @@ services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.openlocfilehash: 92f5c900238fc5d40e22870e2f00f8adeb5d335f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102032188"
 ---
-# <a name="azure-arc-enabled-managed-instance-high-availability"></a>启用 Azure Arc 托管实例高可用性
+# <a name="azure-arc-enabled-managed-instance-high-availability"></a>启用了 Azure Arc 的托管实例高可用性
 
-启用 Azure Arc 托管实例作为容器化应用程序部署在 Kubernetes 上，并使用 Kubernetes 构造（如有状态集和永久存储）来提供内置的运行状况监视、故障检测和故障转移机制来维护服务运行状况。 为了提高可靠性，还可以配置启用了 Azure Arc 托管实例以便在高可用性配置中使用额外副本进行部署。 监视、故障检测和自动故障转移由 Arc data services 数据控制器管理。 无需用户干预即可提供此服务：从设置可用性组、配置数据库镜像终结点到将数据库添加到可用性组或故障转移和升级协调等等。 本文档介绍这两种类型的高可用性。
+已启用 Azure Arc 的托管实例作为容器化应用程序部署在 Kubernetes 上，并使用 Kubernetes 构造（如 StatefulSet 和永久存储）来提供内置运行状况监视、故障检测和故障转移机制，以维护服务运行状况。 为了提高可靠性，还可以配置已启用 Azure Arc 的托管实例，在高可用性配置中使用额外副本进行部署。 监视、故障检测和自动故障转移由 Arc 数据服务数据控制器管理。 无需用户干预即可提供此服务：从设置可用性组、配置数据库镜像终结点到将数据库添加到可用性组或故障转移和升级协调等等。 本文档介绍这两种类型的高可用性。
 
 ## <a name="built-in-high-availability"></a>内置的高可用性 
 
-当远程持久存储已配置并与 Arc 数据服务部署使用的节点共享时，Kubernetes 提供内置的高可用性。 在此配置中，Kubernetes 充当群集业务流程协调程序的作用。 当容器或基础节点中的托管实例发生故障时，orchestrator 会引导该容器的另一个实例，并将其附加到同一个永久性存储。 默认情况下，在部署启用了 Azure Arc 托管实例的情况下启用此类型。
+当远程永久性存储已配置并与 Arc 数据服务部署使用的节点共享时，Kubernetes 提供内置高可用性。 在此配置中，Kubernetes 充当群集业务流程协调程序的作用。 当容器中的托管实例或基础节点发生故障时，业务流程协调程序会启动容器的另一个实例并附加到同一永久性存储中。 部署已启用 Azure Arc 的托管实例时，默认启用此类型。
 
-### <a name="verify-built-in-high-availability"></a>验证内置的高可用性
+### <a name="verify-built-in-high-availability"></a>验证内置高可用性
 
-本部分将验证 Kubernetes 提供的内置高可用性。 当你按照这些步骤来测试此功能时，你将删除现有托管实例的 pod，并验证 Kubernetes 是否从此操作恢复。 
+本部分将验证 Kubernetes 提供的内置高可用性。 当按照这些步骤来测试此功能时，将删除现有托管实例的 Pod，并验证 Kubernetes 是否从该操作恢复。 
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
-- Kubernetes 群集必须具有 [共享的远程存储](storage-configuration.md#factors-to-consider-when-choosing-your-storage-configuration) 
-- 已启用 Azure Arc 托管实例使用一个副本部署 (默认) 
+- Kubernetes 群集必须具有[共享的远程存储](storage-configuration.md#factors-to-consider-when-choosing-your-storage-configuration) 
+- 已启用 Azure Arc 的托管实例使用一个副本部署（默认）
 
-1. 查看 pod。 
+1. 查看 Pod。 
 
    ```console
    kubectl get pods -n <namespace of data controller>
    ```
 
-2. 删除托管实例 pod。
+2. 删除托管实例 Pod。
 
    ```console
    kubectl delete pod <name of managed instance>-0 -n <namespace of data controller>
@@ -53,7 +53,7 @@ ms.locfileid: "102032188"
    pod "sql1-0" deleted
    ```
 
-3. 查看 pod，验证托管实例是否正在恢复。
+3. 查看 Pod，验证托管实例是否正在恢复。
 
    ```console
    kubectl get pods -n <namespace of data controller>
@@ -67,23 +67,23 @@ ms.locfileid: "102032188"
    sql1-0               2/3     Running   0          22s
    ```
 
-在 pod 中的所有容器都恢复之后，可以连接到托管实例。
+在 Pod 中的所有容器都恢复之后，可以连接到托管实例。
 
-## <a name="deploy-with-always-on-availability-groups"></a>部署 Always On 可用性组
+## <a name="deploy-with-always-on-availability-groups"></a>使用 Always On 可用性组部署
 
-为了提高可靠性，你可以配置启用了 Azure Arc 托管实例以便在高可用性配置中使用额外副本进行部署。 
+为了提高可靠性，可以配置已启用 Azure Arc 的托管实例，在高可用性配置中使用额外副本进行部署。 
 
 可用性组启用的功能：
 
-- 当使用多个副本部署时，将创建一个名为的单一可用性组 `containedag` 。 默认情况下，`containedag` 有三个副本，其中包括主要副本。 可用性组的所有 CRUD 操作都在内部进行管理，包括创建可用性组或将副本联接到创建的可用性组。 无法在启用了 Azure Arc 托管实例中创建其他可用性组。
+- 使用多个副本进行部署时，将创建一个名为 `containedag` 的可用性组。 默认情况下，`containedag` 有三个副本，其中包括主要副本。 可用性组的所有 CRUD 操作都在内部进行管理，包括创建可用性组或将副本联接到创建的可用性组。 无法在已启用 Azure Arc 的托管实例中创建其他可用性组。
 
-- 所有数据库都将自动添加到可用性组，包括所有用户和系统数据库（如 `master` 和 `msdb`）。 此功能提供跨可用性组副本的单系统视图。 `containedag_master` `containedag_msdb` 如果直接连接到实例，请注意和数据库。 `containedag_*` 数据库表示可用性组中的 `master` 和 `msdb`。
+- 所有数据库都将自动添加到可用性组，包括所有用户和系统数据库（如 `master` 和 `msdb`）。 此功能提供跨可用性组副本的单系统视图。 如果直接连接到实例，请注意 `containedag_master` 和 `containedag_msdb` 数据库。 `containedag_*` 数据库表示可用性组中的 `master` 和 `msdb`。
 
 - 系统会自动预配外部终结点，以便与可用性组中的数据库建立连接。 此终结点 `<managed_instance_name>-svc-external` 扮演可用性组侦听器的角色。
 
 ### <a name="deploy"></a>部署
 
-若要使用可用性组部署托管实例，请运行以下命令。
+如果要使用可用性组部署托管实例，请运行以下命令。
 
 ```console
 azdata arc sql mi create -n <name of instance> --replicas 3
@@ -119,31 +119,31 @@ user@pc:/#  azdata arc sql mi show -n sql2
 }
 ```
 
-请注意额外数量的 `Replicas` 和 `AGstatus` 指示可用性组的运行状况的字段。 如果所有副本都已启动并同步，则此值为 `healthy` 。 
+请注意 `Replicas` 和 `AGstatus` 字段的额外数量，其指示可用性组的运行状况。 如果所有副本都已启动并同步，则此值为 `healthy`。 
 
 ### <a name="restore-a-database"></a>还原数据库 
-若要将数据库还原到可用性组，则需要执行其他步骤。 以下步骤演示如何将数据库还原到托管实例，并将其添加到可用性组。 
+将数据库还原到可用性组则还需要执行其他步骤。 以下步骤演示如何将数据库还原到托管实例，并将其添加到可用性组。 
 
 1. 通过创建新的 Kubernetes 服务来公开主实例外部终结点。
 
-    通过连接到托管实例并运行以下内容来确定承载主副本的 pod：
+    通过连接到托管实例来确定托管主要副本的 Pod，并运行以下命令：
 
     ```sql
     SELECT @@SERVERNAME
     ```
-    如果 kubernetes 群集使用 nodePort services，请运行以下命令，以创建 kubernetes 服务到主实例。 `podName`将替换为在上一步骤中返回的服务器的名称，将 `serviceName` 创建 Kubernetes 服务的首选名称。
+    如果 kubernetes 群集使用 nodePort 服务，请通过运行以下命令，向主实例创建 kubernetes 服务。 将 `podName` 替换为在上一步骤中返回的服务器的名称，将 `serviceName` 替换为创建的 Kubernetes 服务的首选名称。
 
     ```bash
     kubectl -n <namespaceName> expose pod <podName> --port=1533  --name=<serviceName> --type=NodePort
     ```
 
-    对于 LoadBalancer 服务，运行相同的命令，但所创建的服务的类型为 `LoadBalancer` 。 例如： 
+    对于 LoadBalancer 服务，运行相同的命令，但所创建的服务的类型为 `LoadBalancer`。 例如： 
 
     ```bash
     kubectl -n <namespaceName> expose pod <podName> --port=1533  --name=<serviceName> --type=LoadBalancer
     ```
 
-    下面是针对 Azure Kubernetes 服务运行的此命令的示例，其中承载主副本的 pod 是 `sql2-0` ：
+    下面是针对 Azure Kubernetes 服务运行此命令的示例，其中托管主副本的 Pod 为 `sql2-0`：
 
     ```bash
     kubectl -n arc-cluster expose pod sql2-0 --port=1533  --name=sql2-0-p --type=LoadBalancer
@@ -219,7 +219,7 @@ user@pc:/#  azdata arc sql mi show -n sql2
 
 ### <a name="limitations"></a>限制
 
-启用 Azure Arc 托管实例可用性组具有与 [大数据群集可用性组相同的限制。单击此处了解详细信息。](/sql/big-data-cluster/deployment-high-availability#known-limitations)
+已启用 Azure Arc 的托管实例可用性组的限制和[大数据群集可用性组相同。单击此处了解详细信息。](/sql/big-data-cluster/deployment-high-availability#known-limitations)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
-title: 将指标上载到 Azure Monitor
-description: 将启用了 Azure Arc 的数据服务指标上载到 Azure Monitor
+title: 将指标上传到 Azure Monitor
+description: 将已启用 Azure Arc 的数据服务指标上传到 Azure Monitor
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -11,36 +11,36 @@ ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
 ms.openlocfilehash: d7c611f1cdb5e3294e38f87c0534003813e50388
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100575687"
 ---
-# <a name="upload-metrics-to-azure-monitor"></a>将指标上载到 Azure Monitor
+# <a name="upload-metrics-to-azure-monitor"></a>将指标上传到 Azure Monitor
 
-你可以定期导出监视指标，并将其上传到 Azure。 数据的导出和上传还会在 Azure 中创建和更新数据控制器、SQL 托管实例和 PostgreSQL 超大规模服务器组资源。
+用户可以定期导出监视指标，然后将这些指标上传到 Azure。 数据的导出和上传也会在 Azure 中创建并更新数据控制器、SQL 托管实例和超大规模 PostgreSQL 服务器组资源。
 
 > [!NOTE] 
-> 在预览期间，使用启用了 Azure Arc 的数据服务不会产生费用。
+> 在预览版期间，使用已启用 Azure Arc 的数据服务不会产生费用。
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
-在继续操作之前，请确保已创建了所需的服务主体，并已将其分配到适当的角色。 有关详细信息，请参阅：
+在继续操作之前，请确保已创建所需的服务主体，并已将该主体分配到相应的角色。 有关详细信息，请参阅：
 * [创建服务主体](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal)。
-* [向服务主体分配角色](upload-metrics-and-logs-to-azure-monitor.md#assign-roles-to-the-service-principal)
+* [将角色分配到服务主体](upload-metrics-and-logs-to-azure-monitor.md#assign-roles-to-the-service-principal)
 
 ## <a name="upload-metrics"></a>上传指标
 
-利用 Azure Arc 数据服务，您可以选择将指标上载到 Azure Monitor 以便聚合和分析指标，引发警报，发送通知，或触发自动操作。 
+利用 Azure Arc 数据服务，用户可以选择将指标上传到 Azure Monitor，以便可以聚合和分析指标，引发警报，发送通知，或触发自动操作。 
 
-通过将你的数据发送到 Azure Monitor，你还可以将指标数据存储在异地并大规模地存储，从而为高级分析实现数据的长期存储。
+通过将数据发送到 Azure Monitor，还可以用非现场和大规模的方式存储指标数据，使数据能够长期存储，以便进行高级分析。
 
-如果有多个具有 Azure Arc 数据服务的站点，则可以使用 Azure Monitor 作为中心位置，收集整个站点中的所有日志和指标。
+如果有多个具有 Azure Arc 数据服务的站点，可以使用 Azure Monitor 作为中心位置来收集各站点中的所有日志和指标。
 
-## <a name="set-final-environment-variables-and-confirm"></a>设置最终环境变量和确认
+## <a name="set-final-environment-variables-and-confirm"></a>设置最终环境变量并确认
 
 在环境变量中设置 SPN 授权 URL：
 
@@ -68,7 +68,7 @@ export SPN_AUTHORITY='https://login.microsoftonline.com'
 
 ::: zone-end
 
-如果需要，请检查以确保设置所需的所有环境变量：
+如果需要，请检查以确保设置了所有必需的环境变量：
 
 
 ::: zone pivot="client-operating-system-powershell"
@@ -105,37 +105,37 @@ echo %SPN_AUTHORITY%
 
 ::: zone-end
 
-## <a name="upload-metrics-to-azure-monitor"></a>将指标上载到 Azure Monitor
+## <a name="upload-metrics-to-azure-monitor"></a>将指标上传到 Azure Monitor
 
-若要上载启用了 Azure arc 的 SQL 托管实例和启用了 Azure Arc 的 PostgreSQL 超大规模服务器组的指标，请运行以下 CLI 命令：
+如果要上传已启用 Azure Arc 的 SQL 托管实例和已启用 Azure Arc 的超大规模 PostgreSQL 服务器组的指标，请运行以下 CLI 命令：
 
-1. 用登录到数据控制器 `azdata` 。
+1. 使用 `azdata` 登录到数据控制器。
  
-1. 将所有指标导出到指定的文件：
+1. 将所有指标导出到指定文件：
 
    ```console
    azdata arc dc export --type metrics --path metrics.json
    ```
 
-2. 将指标上传到 Azure monitor：
+2. 将指标上传到 Azure Monitor：
 
    ```console
    azdata arc dc upload --path metrics.json
    ```
 
    >[!NOTE]
-   >为第一次上载创建 Azure Arc 启用的数据实例后，请等待至少30分钟。
+   >在为第一次上传创建已启用 Azure Arc 的数据实例后，请等待至少 30 分钟。
    >
-   >请确保 `upload` 此后的指标 `export` Azure Monitor 仅接受过去30分钟的指标。 [了解详细信息](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting)。
+   >请确保在 `export` 之后立即 `upload` 指标，因为 Azure Monitor 只接受最近 30 分钟的指标。 [了解详细信息](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting)。
 
 
-如果在导出过程中看到指示 "无法获取指标" 的任何错误，请 `true` 通过运行以下命令来检查数据收集是否设置为：
+如果在导出过程中看到任何指示“无法获取指标”的错误，请通过运行以下命令来检查数据收集是否设置为 `true`：
 
 ```console
 azdata arc dc config show
 ```
 
-在 "安全" 部分下查找
+在“安全部分”下查找
 
 ```output
  "security": {
@@ -146,60 +146,60 @@ azdata arc dc config show
     },
 ```
 
-验证 `allowNodeMetricsCollection` 和属性是否 `allowPodMetricsCollection` 设置为 `true` 。
+验证 `allowNodeMetricsCollection` 和 `allowPodMetricsCollection` 属性是否设置为 `true`。
 
 ## <a name="view-the-metrics-in-the-portal"></a>在门户中查看指标
 
-上传度量值后，可以从 Azure 门户查看它们。
+在上传指标后，可以从 Azure 门户中看到这些指标。
 > [!NOTE]
-> 请注意，可能需要几分钟时间来处理上载的数据，然后才能在门户中查看度量值。
+> 请注意，处理上传的数据可能需要几分钟时间，然后才能在门户中查看这些指标。
 
 
-若要在门户中查看度量值，请使用此链接打开门户： <https://portal.azure.com> 然后在搜索栏中按名称搜索数据库实例：
+如果要在门户中查看指标，请使用此链接来打开门户：<https://portal.azure.com>。然后，在搜索栏中按名称搜索数据库实例：
 
-你可以在 "概述" 页上查看 CPU 利用率，或者如果想要更详细的指标，可以单击左侧导航面板中的 "指标"
+可以在“概述”页上查看 CPU 利用率，或者，如果需要更详细的指标，可以单击左侧导航面板中的指标
 
 选择 sql server 作为指标命名空间：
 
-选择要可视化的指标 (也可以选择多个) ：
+选择要可视化的指标（也可以选择多个）：
 
-将频率更改为最近30分钟：
+将频率更改为最近 30 分钟：
 
 > [!NOTE]
-> 只能上载过去30分钟的指标。 Azure Monitor 拒绝超过30分钟的指标。
+> 只能上传最近 30 分钟的指标。 Azure Monitor 拒绝 30 分钟以前的指标。
 
-## <a name="automating-uploads-optional"></a>自动上载 (可选) 
+## <a name="automating-uploads-optional"></a>自动上传（可选）
 
-如果要按计划上载指标和日志，可以创建一个脚本，并每隔几分钟在计时器上运行它。 下面是使用 Linux shell 脚本自动执行上载的示例。
+如果你要按计划上传指标和日志，可以创建脚本，并每隔几分钟按照计时器运行该脚本。 下面是使用 Linux shell 脚本自动执行上传的示例。
 
-在常用文本/代码编辑器中，将以下脚本添加到该文件中，并将其另存为脚本可执行文件，例如 (Linux/Mac) 或 .cmd，.bat，. ps1。
+在常用的文本/代码编辑器中，将以下脚本添加到文件，并将该文件另存为脚本可执行文件，如 .sh (Linux/Mac) 或 .cmd、.bat、.ps1。
 
 ```console
 azdata arc dc export --type metrics --path metrics.json --force
 azdata arc dc upload --path metrics.json
 ```
 
-使脚本文件可执行
+使脚本文件成为可执行文件
 
 ```console
 chmod +x myuploadscript.sh
 ```
 
-每隔20分钟运行一次脚本：
+每隔 20 分钟运行该脚本：
 
 ```console
 watch -n 1200 ./myuploadscript.sh
 ```
 
-你还可以使用诸如 cron 或 Windows 任务计划程序的作业计划程序或 Ansible、Puppet 或 Chef 等 orchestrator。
+还可以使用 cron 或 Windows 任务计划程序等作业计划程序或 Ansible、Puppet 或 Chef 等业务流程协调程序。
 
-## <a name="general-guidance-on-exporting-and-uploading-usage-metrics"></a>有关导出和上载使用情况的一般指南，指标
+## <a name="general-guidance-on-exporting-and-uploading-usage-metrics"></a>有关导出和上传使用情况和指标的一般原则
 
-在启用了 Azure Arc 的数据服务上创建、读取、更新和删除 (CRUD) 操作，以便进行计费和监视。 存在监视这些 CRUD 操作并相应计算消耗的后台服务。 实际使用情况或消耗计算按计划进行，并在后台完成。 
+针对已启用 Azure Arc 的数据服务的创建、读取、更新和删除 (CRUD) 操作会被记录到日志，以用于计费和监视。 有后台服务会监视这些 CRUD 操作并相应计算消耗。 实际的使用情况或消耗的计算会按计划进行，并且在后台完成。 
 
-在预览期间，此过程在夜间发生。 一般原则是每天仅上载一次使用。 当在同一个24小时内将使用情况信息导出并上传多次时，只 Azure 门户中的资源清单进行更新，而不会更新资源使用情况。
+在预览版期间，此过程在夜间发生。 一般原则是每天只上传一次使用情况。 如果在同一个 24 小时内多次导出并上传使用情况信息，则只会更新 Azure 门户中的资源清单，而不会更新资源使用情况。
 
-对于上传指标，Azure monitor 只接受过去30分钟的数据 ([了解更多](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting)) 。 上传指标的指导是在创建导出文件后立即上载指标，以便查看 Azure 门户中的整个数据集。 例如，如果在 2:00 PM 导出指标，并在 2:50 PM 运行上传命令。 由于 Azure Monitor 仅接受过去30分钟的数据，因此你可能在门户中看不到任何数据。 
+对于上传指标，Azure Monitor 只接受最近 30 分钟的数据（[了解详细信息](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting)）。 上传指标的原则是要在创建导出文件后立即上传指标，这样就可以在 Azure 门户中看到整个数据集。 例如，如果在下午 2:00 导出指标，然后在下午 2:50 运行上传命令。 由于 Azure Monitor 只接受最近 30 分钟的数据，因此在门户中可能看不到任何数据。 
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -207,6 +207,6 @@ watch -n 1200 ./myuploadscript.sh
 
 [将使用情况数据、指标和日志上传到 Azure Monitor](upload-usage-data.md)
 
-[将计费数据上传到 Azure 并在 Azure 门户中查看](view-billing-data-in-azure.md)
+[将计费数据上传到 Azure 并在 Azure 门户中查看该数据](view-billing-data-in-azure.md)
 
-[查看 Azure 门户中的 Azure Arc 数据控制器资源](view-data-controller-in-azure-portal.md)
+[在 Azure 门户中查看 Azure Arc 数据控制器资源](view-data-controller-in-azure-portal.md)

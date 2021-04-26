@@ -4,15 +4,15 @@ description: 本文介绍如何安装代理，并使用已启用 Azure Arc 的�
 ms.date: 10/28/2020
 ms.topic: conceptual
 ms.openlocfilehash: 07a00de9077378ce3e3f7a7578b66e93d1b04f2b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100584936"
 ---
 # <a name="connect-hybrid-machines-to-azure-by-using-powershell"></a>使用 PowerShell 将混合计算机连接到 Azure
 
-对于已启用 Azure Arc 的服务器，可以采取手动步骤为环境中的一个或多个 Windows 或 Linux 计算机启用这些服务器。 或者，可以使用 PowerShell cmdlet [Connect-AzConnectedMachine](/powershell/module/az.connectedmachine/remove-azconnectedmachine) 下载 Connected Machine Agent，安装该代理，并将计算机注册到 Azure Arc。该 cmdlet 将从 Microsoft 下载中心下载 Windows 代理包 (Windows Installer)，并从 Microsoft 包存储库下载 Linux 代理包。
+对于已启用 Azure Arc 的服务器，可以采取手动步骤为环境中的一个或多个 Windows 或 Linux 计算机启用这些服务器。 或者，可使用 PowerShell cmdlet [Connect-AzConnectedMachine](/powershell/module/az.connectedmachine/remove-azconnectedmachine) 下载 Connected Machine Agent，安装该代理，并将计算机注册到 Azure Arc。该 cmdlet 将从 Microsoft 下载中心下载 Windows 代理包 (Windows Installer)，并从 Microsoft 包存储库下载 Linux 代理包。
 
 这种安装和配置代理的方法要求你在计算机上拥有管理员权限。 在 Linux 上，需使用 root 帐户；在 Windows 上，你需是“本地管理员组”的成员。 可以使用 [PowerShell 远程处理](/powershell/scripting/learn/ps101/08-powershell-remoting)在 Windows 服务器上以交互方式或远程方式完成此过程。
 

@@ -7,12 +7,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: 在已启用 Azure Arc 的 Kubernetes 上部署扩展并管理其生命周期
-ms.openlocfilehash: 63fb14818d148dcc579300fdb4c89d636b47fd05
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 854d7418515d7927a3c0b4b8790ed4770af555ab
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450742"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312614"
 ---
 # <a name="kubernetes-cluster-extensions"></a>Kubernetes 群集扩展
 
@@ -25,7 +25,7 @@ Kubernetes 扩展功能可在已启用 Azure Arc 的 Kubernetes 群集上实现�
 
 [!INCLUDE [preview features note](./includes/preview/preview-callout.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - [安装或升级 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)，确保其版本 >= 2.16.0。
 - `connectedk8s`（版本 >= 1.1.0）和 `k8s-extension`（版本 >= 0.2.0）Azure CLI 扩展。 运行以下命令安装这些 Azure CLI 扩展：
@@ -51,7 +51,7 @@ Kubernetes 扩展功能可在已启用 Azure Arc 的 Kubernetes 群集上实现�
 | 分机 | 说明 |
 | --------- | ----------- |
 | [Azure Monitor](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json) | 提供 Kubernetes 群集上部署的工作负载的性能相关信息。 从控制器、节点和容器收集内存与 CPU 利用率指标。 |
-| [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json) | 从 Kubernetes 群集的控制平面节点收集审核日志数据。 基于收集的数据提供建议和威胁警报。 |
+| [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json) | 从 Kubernetes 群集收集与安全相关的信息，如审核日志数据。 基于收集的数据提供建议和威胁警报。 |
 
 ## <a name="usage-of-cluster-extensions"></a>群集扩展的用法
 
@@ -101,7 +101,7 @@ az k8s-extension create --name azuremonitor-containers  --extension-type Microso
 
 > [!NOTE]
 > * 服务无法将敏感信息保留 48 小时以上。 如果已启用 Azure Arc 的 Kubernetes 代理保持网络连接的时间不超过 48 小时，且无法确定是否要在群集上创建扩展，则扩展会转换为 `Failed` 状态。 一旦进入 `Failed` 状态，你就需要再次运行 `k8s-extension create` 以创建全新的扩展 Azure 资源。
-> * * 用于容器的 Azure Monitor 是单一实例扩展（在每个群集上只需要一个）。 需要先清理所有以前的用于容器的 Azure Monitor（不带扩展）Helm 图表安装，然后才能通过扩展安装同一实例。 请按照[运行 `az k8s-extension create` 之前删除 Helm 图表](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-optout-hybrid)中的说明操作。
+> * * 用于容器的 Azure Monitor 是单一实例扩展（在每个群集上只需要一个）。 需要清理所有以前的用于容器的 Azure Monitor（不带扩展）Helm 图表安装，才能通过扩展安装同一组件。 请按照[运行 `az k8s-extension create` 之前删除 Helm 图表](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-optout-hybrid)中的说明操作。
 
 **必需的参数**
 
@@ -235,31 +235,6 @@ az k8s-extension list --cluster-name <clusterName> --resource-group <resourceGro
   }
 ]
 ```
-
-### <a name="update-an-existing-extension-instance"></a>更新现有的扩展实例
-
-使用 `k8s-extension update` 并传入要更新的值，更新群集上的扩展实例。  此命令仅更新 `auto-upgrade-minor-version`、`release-train` 和 `version` 属性。 例如：
-
-- **更新版本序列：**
-
-    ```azurecli
-    az k8s-extension update --name azuremonitor-containers --cluster-type connectedClusters --cluster-name <clusterName> --resource-group <resourceGroupName> --release-train Preview
-    ```
-
-- **禁用自动升级并将扩展实例固定到特定版本：**
-
-    ```azurecli
-    az k8s-extension update --name azuremonitor-containers --cluster-type connectedClusters --cluster-name <clusterName> --resource-group <resourceGroupName> --auto-upgrade-minor-version false --version 2.2.2
-    ```
-
-- **为扩展实例启用自动升级：**
-
-    ```azurecli
-    az k8s-extension update --name azuremonitor-containers --cluster-type connectedClusters --cluster-name <clusterName> --resource-group <resourceGroupName> --auto-upgrade-minor-version true
-    ```
-
-> [!NOTE]
-> 仅当 `--auto-upgrade-minor-version` 设置为 `false` 时，才能设置 `version` 参数。
 
 ### <a name="delete-extension-instance"></a>删除扩展实例
 

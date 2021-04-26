@@ -1,6 +1,6 @@
 ---
-title: 将计费数据上传到 Azure 并在 Azure 门户中查看
-description: 将计费数据上传到 Azure 并在 Azure 门户中查看
+title: 将计费数据上传到 Azure 并在 Azure 门户中查看该数据
+description: 将计费数据上传到 Azure 并在 Azure 门户中查看该数据
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -10,51 +10,51 @@ ms.reviewer: mikeray
 ms.date: 03/02/2021
 ms.topic: how-to
 ms.openlocfilehash: 7ef1cd43d2efbc5ab92cc2b4cba4d237805d8921
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102202648"
 ---
-# <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>将计费数据上传到 Azure 并在 Azure 门户中查看
+# <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>将计费数据上传到 Azure 并在 Azure 门户中查看该数据
 
 > [!IMPORTANT] 
->  预览期间使用启用了 Azure Arc 的数据服务不会产生费用。 尽管计费系统的工作结束，但计费计量器设置为 $0。  如果遵循此方案，你将在你的帐单中看到一个当前命名为 **混合数据服务** 的服务以及一个名为 **`<resource type>` AzureArcData/** 的类型资源的条目。 你将能够看到你创建的每个数据服务的记录-Azure Arc，但每个记录将按 $0 计费。
+>  预览期间使用已启用 Azure Arc 的数据服务不会产生费用。 尽管计费系统端到端工作，但计费计量器设置为 0 美元。  如果遵循此方案，用户将在计费中看到当前名为“混合数据服务”的服务条目和“Microsoft.AzureArcData/”类型的资源条目 **`<resource type>`** 。 用户将能够看到创建的每个数据服务 - Azure Arc 的记录，但每个记录将收取 0 美元。
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="connectivity-modes---implications-for-billing-data"></a>连接模式-计费数据的含意
+## <a name="connectivity-modes---implications-for-billing-data"></a>连接模式 - 计费数据的含意
 
-将来，可以通过两种模式运行启用了 Azure Arc 的数据服务：
+将来，可以通过两种模式运行已启用 Azure Arc 的数据服务：
 
-- **间接连接** -不会直接连接到 Azure。 数据仅通过导出/上载过程发送到 Azure。 目前，所有 Azure Arc 数据服务部署在此模式下均以预览版的方式运行。
-- **直接连接** -在此模式下，将依赖于支持 azure Arc 的 Kubernetes 服务，以便在 azure 与启用了 azure arc 的数据服务的 Kubernetes 群集之间提供直接连接。 这可以实现更多功能，还可让你使用 Azure 门户和 Azure CLI 管理启用了 Azure Arc 的数据服务，就像在 Azure PaaS 中管理数据服务一样。  此连接模式目前尚不提供预览版，但即将推出。
+- **间接连接** - 不会直接连接到 Azure。 数据仅通过导出/上传过程发送到 Azure。 目前，预览版中所有 Azure Arc 数据服务部署均以此模式工作。
+- **直接连接** - 在此模式下，将依赖于已启用 Azure Arc 的 Kubernetes 服务，在 Azure 与已启用 Azure Arc 的数据服务运行的 Kubernetes 群集之间提供直接连接。 这可以实现更多功能，还可让用户使用 Azure 门户和 Azure CLI 管理已启用 Azure Arc 的数据服务，就像在 Azure PaaS 中管理数据服务一样。  预览版目前尚不提供此连接模式，但即将推出。
 
-可以阅读有关 [连接模式](./connectivity.md)之间差异的详细信息。
+可以阅读有关[连接模式](./connectivity.md)之间差异的详细信息。
 
-在间接连接模式下，计费数据会定期从 Azure Arc 数据控制器输出到安全文件，然后上传到 Azure 并进行处理。  在即将到来的直接连接模式下，计费数据会自动发送到 Azure 大约1小时，以便对服务成本进行近乎实时的查看。 在间接连接模式下导出和上传数据的过程也可以使用脚本自动进行，我们可能会构建一个可为你执行此操作的服务。
+在间接连接模式下，计费数据会定期从 Azure Arc 数据控制器导出到安全文件，然后上传到 Azure 并进行处理。  在即将推出的直接连接模式下，计费数据会大约每小时自动发送到 Azure 1 次，以便准实时查看服务成本。 在间接连接模式下，也可以使用脚本自动进行导出和上传数据的过程，或者我们可以构建一个为用户执行此操作的服务。
 
 ## <a name="upload-billing-data-to-azure"></a>将计费数据上传到 Azure
 
-若要将帐单数据上传到 Azure，应首先执行以下操作：
+如果要将计费数据上传到 Azure，应首先执行以下操作：
 
-1. 如果还没有启用了 Azure Arc 的数据服务，请创建一个。 例如，创建以下项之一：
+1. 如果还没有已启用 Azure Arc 的数据服务，请先创建。 例如，创建以下服务之一：
    - [在 Azure Arc 上创建 Azure SQL 托管实例](create-sql-managed-instance.md)
    - [创建启用了 Azure Arc 的 PostgreSQL 超大规模服务器组](create-postgresql-hyperscale-server-group.md)
-1. [将资源清单、使用情况数据、指标和日志上传到 Azure Monitor （](upload-metrics-and-logs-to-azure-monitor.md) 如果尚未这样做）。
-1. 等待至少2小时后，创建数据服务，以便计费遥测收集过程可以收集一些计费数据。
+1. 如果尚未将资源清单、使用情况数据、指标和日志上传到 Azure Monitor，请[上传](upload-metrics-and-logs-to-azure-monitor.md)。
+1. 创建数据服务之后至少等待 2 小时，以便计费遥测收集过程收集一些计费数据。
 
-运行以下命令以导出帐单数据：
+运行以下命令以导出计费数据：
 
 ```console
 azdata arc dc export -t usage -p usage.json
 ```
 
-目前，文件未加密，因此可以查看内容。 可以随意在文本编辑器中打开，并查看内容的外观。
+目前，文件未加密以便查看内容。 可以随意在文本编辑器中打开，并查看内容的呈现情况。
 
-你会注意到有两个数据集： `resources` 和 `data` 。 `resources`是数据控制器、PostgreSQL 超大规模服务器组和 SQL 托管实例。 `resources`数据中的记录将捕获资源历史记录中的相关事件-创建时间、更新时间以及删除时间。 `data`记录将捕获给定实例每小时可使用的核心数。
+你会注意到有两个数据集：`resources` 和 `data`。 `resources` 是数据控制器、PostgreSQL 超大规模服务器组和 SQL 托管实例。 数据中的 `resources` 记录捕获资源历史记录中的相关事件 - 创建时间、更新时间以及删除时间。 `data` 记录捕获给定实例每小时可使用的核心数。
 
-条目的示例 `resource` ：
+`resource` 条目的示例：
 
 ```console
     {
@@ -74,7 +74,7 @@ azdata arc dc export -t usage -p usage.json
     }
 ```
 
-条目的示例 `data` ：
+`data` 条目的示例：
 
 ```console
         {
@@ -101,63 +101,63 @@ azdata arc dc export -t usage -p usage.json
         }
 ```
 
-运行以下命令，将文件中的 usage.js上传到 Azure：
+运行以下命令，将 usage.json 文件上传到 Azure：
 
 ```console
 azdata arc dc upload -p usage.json
 ```
 
-## <a name="view-billing-data-in-azure-portal"></a>查看 Azure 门户中的计费数据
+## <a name="view-billing-data-in-azure-portal"></a>在 Azure 门户中查看计费数据
 
 请按照以下步骤在 Azure 门户中查看计费数据：
 
 1. 打开 [Azure 门户](https://portal.azure.com)。
-1. 在 " **成本管理** " 中屏幕类型顶部的搜索框中，单击 "成本管理" 服务。
-1. 在 " **成本管理概述**" 下，单击 " **成本管理** " 选项卡。
-1. 单击左侧的 " **成本分析** " 选项卡。
-1. 单击视图顶部的 " **按资源计算成本** " 按钮。
-1. 确保你的作用域设置为在其中创建了数据服务资源的订阅。
-1. 在视图顶部附近的 "范围" 选择器旁的 "视图" 下拉菜单中选择 " **按资源成本** "。
-1. 请确保日期筛选器设置为 **本月** ，或在给定创建数据服务资源的时间时有意义的其他时间范围。
-1.    =  `Microsoft.AzureArcData/<data service type>` 如果要仅筛选到一种类型的支持 Azure Arc 的数据服务，请单击 "添加筛选器" 以按资源类型添加筛选器。
-1. 现在，你将看到已创建并上载到 Azure 的所有资源的列表。 由于计费指标为 $0，你会看到成本始终为 $0。
+1. 在“成本管理”中屏幕类型顶部的搜索框中，单击“成本管理”服务。
+1. 在“成本管理概述”下，单击“成本管理”选项卡。 
+1. 单击左侧的“成本分析”选项卡。
+1. 单击视图顶部的“按资源划分的成本”按钮。
+1. 确保“范围”设置为在其中创建了数据服务资源的订阅。
+1. 在视图顶部附近的“范围”选择器旁的“视图”下拉菜单中选择“按资源划分的成本”。
+1. 请确保日期筛选器设置为“本月”，或设置为鉴于创建数据服务资源的时间确定的其他一些合理时间范围。
+1. 如果要筛选出仅一种类型的已启用 Azure Arc 的数据服务，请单击“添加筛选器”以按“资源类型”  = `Microsoft.AzureArcData/<data service type>`添加筛选器。
+1. 现在，你将看到已创建并上传到 Azure 的所有资源的列表。 由于计费计量器为 0 美元，成本始终为 0 美元。
 
 ## <a name="download-billing-data"></a>下载计费数据
 
-您可以直接从 Azure 门户下载帐单汇总数据。
+你可以直接从 Azure 门户下载计费摘要数据。
 
-1. 按照上述说明，在 " **按资源类型查看 > 查看** " 视图中，单击顶部附近的 "下载" 按钮。
-1. 选择下载文件类型-Excel 或 CSV，并单击 " **下载数据** " 按钮。
+1. 在按照上述说明转到的同一“成本分析 -> 按资源类型查看”视图中，单击顶部附近的“下载”按钮。
+1. 选择下载文件类型 - Excel 或 CSV，并单击“下载数据”按钮。
 1. 根据所选的文件类型，在适当的编辑器中打开文件。
 
-## <a name="export-billing-data"></a>导出帐单数据
+## <a name="export-billing-data"></a>导出计费数据
 
-你还可以通过创建计费导出作业来定期自动将 **详细** 的使用情况和计费数据导出到 Azure 存储容器。 如果希望查看计费的详细信息（例如，计费期间内某个给定实例按多少小时计费），这会很有用。
+用户还可以创建计费导出作业，定期自动将“详细的”使用情况和计费数据导出到 Azure 存储容器。 如果用户想要查看计费的详细信息，例如计费周期内某个给定实例计费了几个小时，此功能会很有用。
 
 请按照以下步骤设置计费导出作业：
 
-1. 单击左侧的 " **导出** "。
-1. 单击“添加”。
-1. 输入名称和导出频率，并单击 "下一步"。
-1. 选择创建新的存储帐户或使用现有的存储帐户，并填写表单以指定要将帐单数据文件导出到的存储帐户、容器和目录路径，然后单击 "下一步"。
+1. 单击左侧的“导出”。
+1. 单击“添加” 。
+1. 输入名称和导出频率，并单击“下一步”。
+1. 选择创建新的存储帐户或使用现有的存储帐户，并填写表单以指定要将计费数据文件导出到的存储帐户、容器和目录路径，然后单击“下一步”。
 1. 单击“创建”。
 
-计费数据导出文件将在大约4小时内可用，并将按照创建计费导出作业时指定的计划导出。
+计费数据导出文件将在大约 4 小时后可用，并将按照创建计费导出作业时指定的计划导出。
 
-按照以下步骤查看导出的计费数据文件：
+按照以下步骤查看已导出的计费数据文件：
 
-可以在 Azure 门户中验证帐单数据文件。 
+可以在 Azure 门户中验证计费数据文件。 
 
 > [!IMPORTANT]
-> 创建计费导出作业后，请等待4小时，然后继续执行以下步骤。
+> 创建计费导出作业后，请等待 4 小时，然后继续执行以下步骤。
 
-1. 在门户顶部的 "搜索" 框中，键入 **存储帐户** ，并单击 " **存储帐户**"。
-3. 单击在上面创建计费导出作业时指定的存储帐户。
-4. 单击左侧的 "容器"。
-5. 单击上面创建计费导出作业时指定的容器。
-6. 单击上面创建计费导出作业时指定的文件夹。
-7. 向下钻取生成的文件夹和文件，然后单击其中一个生成的 .csv 文件。
-8. 单击 " **下载** " 按钮，该按钮会将文件保存到本地下载文件夹。
-9. 使用 .csv 文件查看器（如 Excel）打开该文件。
-10. 筛选结果以仅显示 **资源类型** 为的行  =  `Microsoft.AzureArcData/<data service resource type` 。
-11. 你将在 UsageQuantity 列中看到当前24小时内使用实例的小时数。
+1. 在门户顶部的“搜索”框中，输入“存储帐户”，并单击“存储帐户”。 
+3. 单击创建上述计费导出作业时指定的存储帐户。
+4. 单击左侧的“容器”。
+5. 单击创建上述计费导出作业时指定的容器。
+6. 单击创建上述计费导出作业时指定的文件夹。
+7. 向下钻取已生成的文件夹和文件，然后单击其中一个生成的 .csv 文件。
+8. 单击“下载”按钮，该按钮会将文件保存到本地“下载”文件夹。
+9. 使用 .csv 文件查看器（例如 Excel）打开该文件。
+10. 筛选结果以仅显示有“资源类型” = `Microsoft.AzureArcData/<data service resource type`的行。
+11. 你会在 UsageQuantity 列中看到当前 24 小时内使用实例的小时数。

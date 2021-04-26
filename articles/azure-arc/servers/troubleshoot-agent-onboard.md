@@ -1,18 +1,52 @@
 ---
 title: 排查已启用 Azure Arc 的服务器代理连接问题
 description: 本文介绍如何在尝试连接到服务时，排查已启用 Azure Arc 的服务器的已连接计算机代理的问题并解决这些问题。
-ms.date: 09/02/2020
+ms.date: 04/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: 36feb6a65ec52d99dfd664ae54cb099ea6a7e239
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ae26b599a72129b5ed7f47d76d10353be5c0e8ac
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90900672"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107497993"
 ---
-# <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>排查连接的计算机代理连接问题
+# <a name="troubleshoot-azure-arc-enabled-servers-agent-connection-issues"></a>排查已启用 Azure Arc 的服务器代理连接问题
 
 本文提供有关如何排查在尝试为 Windows 或 Linux 配置已启用 Azure Arc 的服务器连接的计算机代理时可能出现的问题，以及如何解决这些问题。 文中包括配置与服务的连接时的交互式和大规模安装方法。 如需常规信息，请参阅[已启用 Arc 的服务器概述](./overview.md)。
+
+## <a name="agent-error-codes"></a>代理错误代码
+
+如果在配置已启用 Azure Arc 的服务器代理时发生错误，可查看下表确定可能的原因和帮助解决你的问题的建议步骤。 你将需要打印到控制台的 `AZCM0000`（“0000”可以是任意 4 位数）或脚本输出才能继续操作。
+
+| 错误代码 | 可能的原因 | 建议的补救措施 |
+|------------|----------------|-----------------------|
+| AZCM0000 | 操作成功 | 空值 |
+| AZCM0001 | 发生未知错误 | 请联系 Microsoft 支持部门获取进一步的帮助 |
+| AZCM0011 | 用户已取消操作 (CTRL+C) | 重试上一命令 |
+| AZCM0012 | 提供的访问令牌无效 | 获取新的访问令牌，然后重试 |
+| AZCM0013 | 提供的标记无效 | 检查标记是否用双引号引起来且用逗号分隔，并且带空格的任何名称或值是否用单引号引起来：`--tags "SingleName='Value with spaces',Location=Redmond"`
+| AZCM0014 | 云无效 | 指定支持的云：`AzureCloud` 或 `AzureUSGovernment` |
+| AZCM0015 | 指定的 相关 ID 不是有效的 GUID | 为 `--correlation-id` 提供有效的 GUID |
+| AZCM0016 | 缺少必需参数 | 查看输出，确定是否缺少哪些参数 |
+| AZCM0017 | 资源名称无效 | 指定一个仅使用字母数字字符、连字符和/或下划线的名称。 名称不能以连字符和下划线结尾。 |
+| AZCM0018 | 在没有管理权限的情况下执行了命令 | 在提升的命令提示符或控制台会话中使用管理员或根特权重试命令。 |
+| AZCM0041 | 提供的凭据无效 | 对于设备登录，请验证指定的用户帐户是否有权访问将创建服务器资源的租户和订阅。 对于服务主体登录，请检查客户端 ID 和机密是否正确、机密的到期日期，以及服务主体是否来自将创建服务器资源的同一租户。 |
+| AZCM0042 | 已启用 Arc 的服务器资源创建失败 | 验证指定的用户/服务主体是否具有访问权限来在指定的资源组中创建已启用 Arc 的服务器资源。 |
+| AZCM0043 | 已启用 Arc 的服务器资源删除失败 | 验证指定的用户/服务主体是否具有访问权限来在指定的资源组中删除已启用 Arc 的服务器资源。 如果资源在 Azure 中不复存在，请使用 `--force-local-only` 标志继续操作。 |
+| AZCM0044 | 已存在同名的资源 | 请为 `--resource-name` 参数指定其他名称，或者删除 Azure 中现有已启用 Arc 的服务器，然后重试。 |
+| AZCM0061 | 无法访问代理服务 | 验证你是否正在提升的用户上下文（管理员/根）中运行命令，以及你的服务器上是否正在运行 HIMDS 服务。 |
+| AZCM0062 | 连接服务器时出错 | 查看输出中的其他错误代码，获取更具体的信息。 如果在创建 Azure 资源后发生错误，你需要先从资源组中删除 Arc 服务器，然后再重试。 |
+| AZCM0063 | 断开服务器连接时出错 | 查看输出中的其他错误代码，获取更具体的信息。 如果仍然遇到此错误，可删除 Azure 中的资源，然后在服务器上运行 `azcmagent disconnect --force-local-only` 来断开代理连接。 |
+| AZCM0064 | 代理服务未响应 | 检查 `himds` 服务的状态，确保它正在运行。 如果该服务未在运行，请将其启动。 如果正在运行，请稍等片刻，然后再重试。 |
+| AZCM0065 | 出现内部代理通信错误 | 请联系 Microsoft 支持部门获取帮助 |
+| AZCM0066 | 代理 Web 服务未响应或不可用 | 请联系 Microsoft 支持部门获取帮助 |
+| AZCM0067 | 代理已连接到 Azure | 请先按照[断开代理连接](manage-agent.md#unregister-machine)中的步骤进行操作，然后再重试。 |
+| AZCM0068 | 断开服务器与 Azure 的连接时出现内部错误 | 请联系 Microsoft 支持部门获取帮助 |
+| AZCM0081 | 下载 Azure Active Directory 托管标识证书时出错 | 如果尝试将服务器连接到 Azure 时出现此消息，则表示代理无法与 Azure Arc 服务通信。 请删除 Azure 中的资源，然后重试连接。 |
+| AZCM0101 | 未成功分析命令 | 请运行 `azcmagent <command> --help` 来查看正确的命令语法 |
+| AZCM0102 | 无法检索计算机主机名 | 请运行 `hostname` 以检查是否有任何系统级别的错误消息，然后联系 Microsoft 支持部门。 |
+| AZCM0103 | 生成 RSA 密钥时出错 | 请联系 Microsoft 支持部门获取帮助 |
+| AZCM0104 | 未能读取系统信息 | 验证用于运行 `azcmagent` 的标识在系统上是否具有管理员/根特权，然后重试。 |
 
 ## <a name="agent-verbose-log"></a>代理详细日志
 
@@ -67,7 +101,7 @@ azcmagent connect \
 
 下表列出了一些已知错误以及如何排除和解决这些问题的建议。
 
-|Message |错误 |可能的原因 |解决方案 |
+|消息 |错误 |可能的原因 |解决方案 |
 |--------|------|---------------|---------|
 |未能获取授权令牌设备流 |`Error occurred while sending request for Device Authorization Code: Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/devicecode?api-version=1.0:  dial tcp 40.126.9.7:443: connect: network is unreachable.` |无法访问 `login.windows.net` 终结点 | 验证与终结点的连接。 |
 |未能获取授权令牌设备流 |`Error occurred while sending request for Device Authorization Code: Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/devicecode?api-version=1.0:  dial tcp 40.126.9.7:443: connect: network is Forbidden`. |代理或防火墙正在阻止对 `login.windows.net` 终结点的访问。 | 验证与终结点的连接，并确保它未被防火墙或代理服务器阻止。 |

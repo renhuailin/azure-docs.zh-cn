@@ -1,14 +1,14 @@
 ---
 title: 使用 Azure 资源管理器模板启用 VM 扩展
 description: 本文介绍如何使用 Azure 资源管理器模板将虚拟机扩展部署到在混合云环境中运行的已启用 Azure Arc 的服务器。
-ms.date: 03/01/2021
+ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 88296cd4f410defcaf7db15507ddac42e80cba2d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 095f95192a2054d34e438d8683ac9c2e20a824f1
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101688257"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389632"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>使用 ARM 模板启用 Azure VM 扩展
 
@@ -18,6 +18,9 @@ VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过�
 
 >[!NOTE]
 >虽然可以将多个扩展分批在一起并进行处理，但它们是以串行方式安装的。 第一个扩展安装完成后，将尝试安装下一扩展。
+
+> [!NOTE]
+> 已启用 Azure Arc 的服务器不支持管理 VM 扩展，也不支持将 VM 扩展部署到 Azure 虚拟机。 对于 Azure VM，请查看下面的 [VM 扩展概述](../../virtual-machines/extensions/overview.md)一文。
 
 ## <a name="deploy-the-log-analytics-vm-extension"></a>部署 Log Analytics VM 扩展
 

@@ -8,16 +8,16 @@ author: shashankbarsin
 ms.author: shasb
 description: 本文提供已启用 Azure Arc 的 Kubernetes 代理的体系结构概述
 keywords: Kubernetes、Arc、Azure、容器
-ms.openlocfilehash: ec95efdfef871777e7f53617b057529e301739dd
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: f59a897e4868d7b16d0a50c28ce2142320992f71
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953062"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106442535"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>已启用 Azure Arc 的 Kubernetes 代理体系结构
 
-[Kubernetes](https://kubernetes.io/) 本身可以在混合环境和多云环境中以一致的方式部署容器化工作负载。 但是，已启用 Azure Arc 的 Kubernetes 可充当集中式一致控制平面，从而跨异构环境管理策略、调控和安全性。 本文提供以下内容：
+[Kubernetes](https://kubernetes.io/) 本身可以在混合环境和多云环境中以一致的方式部署容器化工作负载。 但是，已启用 Azure Arc 的 Kubernetes 可充当集中式一致控制平面，从而跨异构环境管理策略、调控和安全性。 本文将提供：
 
 * 将群集连接到 Azure Arc 的体系结构概述。
 * 代理遵循的连接模式。
@@ -43,14 +43,17 @@ ms.locfileid: "104953062"
         | Agent | 说明 |
         | ----- | ----------- |
         | `deployment.apps/clusteridentityoperator` | 已启用 Azure Arc 的 Kubernetes 目前仅支持[系统分配的标识](../../active-directory/managed-identities-azure-resources/overview.md)。 `clusteridentityoperator` 发起首次出站通信。 此首次通信将提取由其他代理用来与 Azure 通信的托管服务标识 (MSI) 证书。 |
-        | `deployment.apps/config-agent` | 监视连接的群集上应用的源代码管理配置资源。 更新符合性状态。 |
-        | `deployment.apps/controller-manager` | 用于协调 Azure Arc 组件之间的交互的一个或多个 operator。 |    
+        | `deployment.apps/config-agent` | 监视连接的群集，查看群集上应用的源代码管理配置资源。 更新符合性状态。 |
+        | `deployment.apps/controller-manager` | 充当“操作员”角色的操作员，协调 Azure Arc 组件之间的交互。 |    
         | `deployment.apps/metrics-agent` | 收集其他 Arc 代理的指标以验证性能是否最佳。 |
         | `deployment.apps/cluster-metadata-operator` | 收集群集元数据，包括群集版本、节点计数和 Azure Arc 代理版本。 |
         | `deployment.apps/resource-sync-agent` | 将上述群集元数据同步到 Azure。 |
         | `deployment.apps/flux-logs-agent` | 从在源代码管理配置过程中部署的 flux operator 收集日志。 |
-    
-1. 在所有已启用 Azure Arc 的 Kubernetes 代理 Pod 均处于 `Running` 状态后，验证群集是否已连接到 Azure Arc。应会看到：
+        | `deployment.apps/extension-manager` | 安装和管理扩展 Helm 图表的生命周期 |  
+        | `deployment.apps/clusterconnect-agent` | 使群集连接功能可提供对群集的 `apiserver` 的访问权限的反向代理程序。 这是一个可选组件，仅在群集上启用了 `cluster-connect` 功能才部署   |
+        | `deployment.apps/guard` | 用于 AAD RBAC 功能的身份验证和授权 Webhook 服务器。 这是一个可选组件，仅在群集上启用了 `azure-rbac` 功能才部署   |
+
+1. 在所有已启用 Azure Arc 的 Kubernetes 代理 Pod 均处于 `Running` 状态后，验证群集是否已连接到 Azure Arc。你应会看到：
     * [Azure 资源管理器](../../azure-resource-manager/management/overview.md)中已启用 Azure Arc 的 Kubernetes 资源。 Azure 将此资源作为客户管理的 Kubernetes 群集的投影，而不是实际 Kubernetes 群集本身进行跟踪。
     * 群集元数据（例如 Kubernetes 版本、代理版本和节点数）以元数据的形式显示在已启用 Azure Arc 的 Kubernetes 资源上。
 
@@ -80,7 +83,7 @@ ms.locfileid: "104953062"
 | ------ | ----------- |
 | Connecting | 已启用 Azure Arc 的 Kubernetes 资源是在 Azure 资源管理器中创建的，但服务尚未收到代理检测信号。 |
 | 已连接 | 已启用 Azure Arc 的 Kubernetes 服务在过去 15 分钟内的某个时间收到了代理检测信号。 |
-| 脱机 | 已启用 Azure Arc 的 Kubernetes 资源事先已连接，但服务有 15 分钟未收到任何代理检测信号。 |
+| Offline | 已启用 Azure Arc 的 Kubernetes 资源事先已连接，但服务有 15 分钟未收到任何代理检测信号。 |
 | 已过期 | MSI 证书过期时限为 90 天（在其颁发后）。 此证书过期后，会将资源视为 `Expired`，所有功能（例如配置、监视和策略）将在此群集上停止工作。 在[常见问题解答文章](./faq.md#how-to-address-expired-azure-arc-enabled-kubernetes-resources)中可以找到有关如何解决已启用 Azure Arc 的 Kubernetes 资源过期问题的详细信息。 |
 
 ## <a name="understand-connectivity-modes"></a>了解连接模式

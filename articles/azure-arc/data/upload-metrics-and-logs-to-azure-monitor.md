@@ -11,22 +11,22 @@ ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
 ms.openlocfilehash: a522a650413be056ff64d26e90b6c15cf88d9a7d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101643484"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>将使用情况数据、指标和日志上传到 Azure Monitor
 
-你可以定期为计费目的、监视指标和日志导出使用情况信息，然后将其上传到 Azure。 这三种类型的数据的导出和上传还将在 Azure 中创建和更新数据控制器、SQL 托管实例和 PostgreSQL 超大规模服务器组资源。
+用户可以定期导出使用情况信息进行计费，监视指标和日志，然后将其上传到 Azure。 导出并上传这三种类型的数据还将在 Azure 中创建并更新数据控制器、SQL 托管实例和超大规模 PostgreSQL 服务器组资源。
 
 > [!NOTE] 
-> 在预览期间，使用启用了 Azure Arc 的数据服务不会产生费用。
+> 在预览版期间，使用已启用 Azure Arc 的数据服务不会产生费用。
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-上载使用情况数据、指标或日志之前，需要执行以下操作：
+在上传使用情况数据、指标或日志之前，需要执行以下操作：
 
 * 安装工具 
 * [注册 `Microsoft.AzureArcData` 资源提供程序](#register-the-resource-provider) 
@@ -35,22 +35,22 @@ ms.locfileid: "101643484"
 ## <a name="install-tools"></a>安装工具
 
 必需的工具包括： 
-* Azure CLI (az)  
+* Azure CLI (az) 
 * [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 
 
-请参阅 [安装工具](./install-client-tools.md)。
+请参阅[安装工具](./install-client-tools.md)。
 
 ## <a name="register-the-resource-provider"></a>注册资源提供程序
 
-在将指标或用户数据上传到 Azure 之前，需要确保 Azure 订阅已 `Microsoft.AzureArcData` 注册了资源提供程序。
+在将指标或用户数据上传到 Azure 之前，需要确保 Azure 订阅已经注册了 `Microsoft.AzureArcData` 资源提供程序。
 
-若要验证资源提供程序，请运行以下命令：
+如果要验证资源提供程序，请运行以下命令：
 
 ```azurecli
 az provider show -n Microsoft.AzureArcData -o table
 ```
 
-如果你的订阅中当前未注册资源提供程序，则可以注册它。 若要注册，请运行以下命令。  完成此命令可能需要一到两分钟的时间。
+如果该资源提供程序尚未在订阅中注册，可将其注册。 如果要进行注册，请运行以下命令。  完成此命令可能需要一到两分钟的时间。
 
 ```azurecli
 az provider register -n Microsoft.AzureArcData --wait
@@ -58,26 +58,26 @@ az provider register -n Microsoft.AzureArcData --wait
 
 ## <a name="create-service-principal"></a>创建服务主体
 
-服务主体用于上载使用情况和指标数据。
+服务主体用于上传使用情况和指标数据。
 
-按照以下命令创建指标上载服务主体：
+请按照以下命令来创建指标上传服务主体：
 
 > [!NOTE]
-> 若要创建服务主体，需要 [在 Azure 中具有特定权限](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
+> 创建服务主体需要 [Azure 中的特定权限](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
 
-若要创建服务主体，请更新以下示例。 `<ServicePrincipalName>` `SubscriptionId` 将和替换 `resourcegroup` 为你的值，并运行以下命令：
+如果要创建服务主体，请更新以下示例。 请将 `<ServicePrincipalName>`、`SubscriptionId` 和 `resourcegroup` 替换为你的值，并运行以下命令：
 
 ```azurecli
 az ad sp create-for-rbac --name <ServicePrincipalName> --role Contributor --scopes /subscriptions/{SubscriptionId}/resourceGroups/{resourcegroup}
 ```
 
-如果前面创建了服务主体，只需获取当前凭据，请运行以下命令来重置凭据。
+如果你在前面创建了服务主体，并且只是需要获取当前凭据，那么，请运行以下命令来重置该凭据。
 
 ```azurecli
 az ad sp credential reset --name <ServicePrincipalName>
 ```
 
-例如，若要创建名为的服务主体 `azure-arc-metrics` ，请运行以下命令
+例如，如果要创建名为 `azure-arc-metrics` 的服务主体，请运行以下命令
 
 ```azurecli
 az ad sp create-for-rbac --name azure-arc-metrics --role Contributor --scopes /subscriptions/a345c178a-845a-6a5g-56a9-ff1b456123z2/resourceGroups/myresourcegroup
@@ -93,7 +93,7 @@ az ad sp create-for-rbac --name azure-arc-metrics --role Contributor --scopes /s
 "tenant": "72f988bf-85f1-41af-91ab-2d7cd01ad1234"
 ```
 
-将 `appId` 、 `password` 和值保存 `tenant` 在环境变量中供以后使用。 
+将 `appId`、`password` 和 `tenant` 值保存在环境变量中，供以后使用。 
 
 ::: zone pivot="client-operating-system-windows-command"
 
@@ -125,16 +125,16 @@ $Env:SPN_TENANT_ID="<tenant>"
 
 ::: zone-end
 
-在创建服务主体后，将服务主体分配给相应的角色。 
+在创建了服务主体后，请将该服务主体分配到相应的角色。 
 
-## <a name="assign-roles-to-the-service-principal"></a>向服务主体分配角色
+## <a name="assign-roles-to-the-service-principal"></a>将角色分配到服务主体
 
-运行此命令，将服务主体分配到 `Monitoring Metrics Publisher` 数据库实例资源所在的订阅上的角色：
+请运行此命令，以将该服务主体分配到数据库实例资源所在的订阅上的 `Monitoring Metrics Publisher` 角色：
 
 ::: zone pivot="client-operating-system-windows-command"
 
 > [!NOTE]
-> 在 Windows 环境中运行时，你需要为角色名称使用双引号。
+> 在从 Windows 环境中运行时，角色名称需要使用双引号。
 
 ```azurecli
 az role assignment create --assignee <appId> --role "Monitoring Metrics Publisher" --scope subscriptions/{SubscriptionID}/resourceGroups/{resourcegroup}
@@ -173,30 +173,30 @@ az role assignment create --assignee <appId> --role 'Monitoring Metrics Publishe
 }
 ```
 
-将服务主体分配到适当的角色后，可以继续上传度量值或用户数据。 
+在将服务主体分配到相应的角色后，可以继续上传指标或用户数据。 
 
 ## <a name="upload-logs-metrics-or-user-data"></a>上传日志、指标或用户数据
 
-用于上传日志、指标或用户数据的具体步骤因你要上载的信息类型而异。 
+用于上传日志、指标或用户数据的具体步骤因要上传的信息类型而异。 
 
 [将日志上传到 Azure Monitor](upload-logs.md)
 
-[将指标上载到 Azure Monitor](upload-metrics.md)
+[将指标上传到 Azure Monitor](upload-metrics.md)
 
 [将使用情况数据上传到 Azure Monitor](upload-usage-data.md)
 
-## <a name="general-guidance-on-exporting-and-uploading-usage-metrics"></a>有关导出和上载使用情况的一般指南，指标
+## <a name="general-guidance-on-exporting-and-uploading-usage-metrics"></a>有关导出和上传使用情况和指标的一般原则
 
-在启用了 Azure Arc 的数据服务上创建、读取、更新和删除 (CRUD) 操作，以便进行计费和监视。 存在监视这些 CRUD 操作并相应计算消耗的后台服务。 实际使用情况或消耗计算按计划进行，并在后台完成。 
+针对已启用 Azure Arc 的数据服务的创建、读取、更新和删除 (CRUD) 操作会被记录到日志，以用于计费和监视。 有后台服务会监视这些 CRUD 操作并相应计算消耗。 实际的使用情况或消耗的计算会按计划进行，并且在后台完成。 
 
-在预览期间，此过程在夜间发生。 一般原则是每天仅上载一次使用。 当在同一个24小时内将使用情况信息导出并上传多次时，只 Azure 门户中的资源清单进行更新，而不会更新资源使用情况。
+在预览版期间，此过程在夜间发生。 一般原则是每天只上传一次使用情况。 如果在同一个 24 小时内多次导出并上传使用情况信息，则只会更新 Azure 门户中的资源清单，而不会更新资源使用情况。
 
-对于上传指标，Azure monitor 只接受过去30分钟的数据 ([了解更多](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting)) 。 上传指标的指导是在创建导出文件后立即上载指标，以便查看 Azure 门户中的整个数据集。 例如，如果在 2:00 PM 导出指标，并在 2:50 PM 运行上传命令。 由于 Azure Monitor 仅接受过去30分钟的数据，因此你可能在门户中看不到任何数据。 
+对于上传指标，Azure Monitor 只接受最近 30 分钟的数据（[了解详细信息](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting)）。 上传指标的原则是要在创建导出文件后立即上传指标，这样就可以在 Azure 门户中看到整个数据集。 例如，如果在下午 2:00 导出指标，然后在下午 2:50 运行上传命令。 由于 Azure Monitor 只接受最近 30 分钟的数据，因此在门户中可能看不到任何数据。 
 
 ## <a name="next-steps"></a>后续步骤
 
 [了解服务主体](/powershell/azure/azurerm/create-azure-service-principal-azureps#what-is-a-service-principal)
 
-[将计费数据上传到 Azure 并在 Azure 门户中查看](view-billing-data-in-azure.md)
+[将计费数据上传到 Azure 并在 Azure 门户中查看该数据](view-billing-data-in-azure.md)
 
-[查看 Azure 门户中的 Azure Arc 数据控制器资源](view-data-controller-in-azure-portal.md)
+[在 Azure 门户中查看 Azure Arc 数据控制器资源](view-data-controller-in-azure-portal.md)

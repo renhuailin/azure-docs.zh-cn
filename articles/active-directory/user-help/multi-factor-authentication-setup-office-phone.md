@@ -10,19 +10,21 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 9dd9853bae324a047c673852f14d2b4c1639d914
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c77672ce895cc63a04973c4cb3e752ca319e269d
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "83739203"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553407"
 ---
 # <a name="set-up-an-office-phone-as-your-two-factor-verification-method"></a>将办公室电话设置为双因素验证方法
 
 可以设置办公室电话，使其充当双因素验证方法。
 
->[!Note]
-> 如果“办公室电话”选项灰显，则可能是你的组织不允许你使用办公室电话号码进行验证。 在这种情况下，需选择另一种方法，或与管理员联系以获取进一步帮助。
+> [!Note]
+> 如果“办公室电话”选项不可供选择，则可能是你的组织禁止你使用办公室电话号码进行验证。 在这种情况下，需选择另一种方法，或与管理员联系以获取进一步帮助。 
+> 
+> 组合注册用户将不会看到将扩展与“办公室电话”选项一起使用的选项。
 
 ## <a name="set-up-your-office-phone-number-as-your-verification-method"></a>将办公室电话号码设置为验证方法
 

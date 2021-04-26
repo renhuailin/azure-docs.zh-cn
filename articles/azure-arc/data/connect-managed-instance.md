@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: abd27e15ccf5b421e69e78b2b726d192ffdecacb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92372355"
 ---
 # <a name="connect-to-azure-arc-enabled-sql-managed-instance"></a>连接到已启用 Azure Arc 的 SQL 托管实例
@@ -41,7 +41,7 @@ sqldemo 1/1         10.240.0.4:32023  Ready
 如果你使用 AKS、kubeadm 或 OpenShift 等，可以从此处复制外部 IP 和端口号，并使用偏好的工具连接到此 IP 和端口，以连接到 Azure Data Studio 或 SQL Server Management Studio 等 SQL Server/Azure SQL 实例。  但是，如果你使用快速入门 VM，请参阅以下有关如何从 Azure 外部连接到该 VM 的特殊信息。 
 
 > [!NOTE]
-> 你的企业策略可能会阻止访问该 IP 和端口，尤其是当此 VM 是在公有云中创建的时。
+> 你的企业策略可能会阻止访问该 IP 和端口，尤其是当此 VM 是在公有云中创建时。
 
 ## <a name="connect"></a>连接 
 

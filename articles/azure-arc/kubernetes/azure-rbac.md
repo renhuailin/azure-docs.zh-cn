@@ -7,16 +7,16 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: 在启用了 Azure Arc 的 Kubernetes 群集上使用 Azure RBAC 进行授权检查
-ms.openlocfilehash: bd8029cb2772a6f6bd9821abe6acf69c9c08599d
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 0ee5f86ce12a39d86754d2e6e88263d8a03a012b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450673"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304199"
 ---
-# <a name="azure-rbac-for-azure-arc-enabled-kubernetes-clusters"></a>适用于启用了 Azure Arc 的 Kubernetes 群集的 Azure RBAC
+# <a name="integrate-azure-active-directory-with-azure-arc-enabled-kubernetes-clusters"></a>将 Azure Active Directory 与已启用 Azure Arc 的 Kubernetes 群集集成
 
-Kubernetes [ClusterRoleBinding 和 RoleBinding](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) 对象类型可以帮助你以本机方式在 Kubernetes 中定义授权。 利用 Azure RBAC，可以在 Azure 中使用 Azure Active Directory 和角色分配来控制群集上的授权检查。 这意味着现在可以使用 Azure 角色分配来精确控制谁可以读取、写入和删除部署、Pod 和服务之类的 Kubernetes 对象
+Kubernetes [ClusterRoleBinding 和 RoleBinding](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) 对象类型可以帮助你以本机方式在 Kubernetes 中定义授权。 借助此功能，可在 Azure 中使用 Azure Active Directory 和角色分配来控制群集上的授权检查。 这意味着现在可以使用 Azure 角色分配来精确控制谁可以读取、写入和删除部署、Pod 和服务之类的 Kubernetes 对象
 
 有关此功能的概念性概述，请参阅 [Azure RBAC - 启用了 Azure Arc 的 Kubernetes](conceptual-azure-rbac.md) 一文。
 
@@ -274,10 +274,10 @@ Kubernetes [ClusterRoleBinding 和 RoleBinding](https://kubernetes.io/docs/refer
 
 | 角色 | 说明 |
 |---|---|
-| Azure Arc Kubernetes 查看者 | 允许进行只读访问并查看命名空间中的大多数对象。 此角色不允许查看密码。 这是因为，密码上的 `read` 权限允许访问命名空间中的 `ServiceAccount` 凭据，进而允许使用该 `ServiceAccount` 进行 API 访问（这是一种特权提升形式）。 |
-| Azure Arc Kubernetes 写入者 | 允许对命名空间中的大多数对象进行读/写访问。 此角色不允许查看或修改角色或角色绑定。 但是，此角色允许以命名空间中任何 `ServiceAccount` 的身份访问密码和运行 Pod，因此可用于获取命名空间中任何 `ServiceAccount` 的 API 访问级别。 |
-| Azure Arc Kubernetes 管理员 | 授予管理员访问权限。 旨在使用 RoleBinding 在命名空间内授予。 如果在 RoleBinding 中使用，则允许对命名空间中的大部分资源进行读/写访问，包括能够在该命名空间内创建角色和角色绑定。 此角色不允许对资源配额或命名空间本身进行写入访问。 |
-| Azure Arc Kubernetes 群集管理员 | 授予超级用户访问权限（对任何资源执行任何操作）。 在 ClusterRoleBinding 中使用时，即授予对群集中以及所有命名空间中每个资源的完全控制权。 在 RoleBinding 中使用时，即授予对该角色绑定的命名空间中每个资源（包括该命名空间本身）的完全控制权。|
+| [Azure Arc Kubernetes 查看者](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-viewer) | 允许进行只读访问并查看命名空间中的大多数对象。 此角色不允许查看密码。 这是因为，密码上的 `read` 权限允许访问命名空间中的 `ServiceAccount` 凭据，进而允许使用该 `ServiceAccount` 进行 API 访问（这是一种特权提升形式）。 |
+| [Azure Arc Kubernetes 写入者](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-writer) | 允许对命名空间中的大多数对象进行读/写访问。 此角色不允许查看或修改角色或角色绑定。 但是，此角色允许以命名空间中任何 `ServiceAccount` 的身份访问密码和运行 Pod，因此可用于获取命名空间中任何 `ServiceAccount` 的 API 访问级别。 |
+| [Azure Arc Kubernetes 管理员](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-admin) | 授予管理员访问权限。 旨在使用 RoleBinding 在命名空间内授予。 如果在 RoleBinding 中使用，则允许对命名空间中的大部分资源进行读/写访问，包括能够在该命名空间内创建角色和角色绑定。 此角色不允许对资源配额或命名空间本身进行写入访问。 |
+| [Azure Arc Kubernetes 群集管理员](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-cluster-admin) | 授予超级用户访问权限（对任何资源执行任何操作）。 在 ClusterRoleBinding 中使用时，即授予对群集中以及所有命名空间中每个资源的完全控制权。 在 RoleBinding 中使用时，即授予对该角色绑定的命名空间中每个资源（包括该命名空间本身）的完全控制权。|
 
 在 Azure 门户上，你可在群集资源的“`Access Control (IAM)`”边栏选项卡上创建角色分配，其作用域为启用了 Arc 的 Kubernetes 群集。 此外，还可以使用 Azure CLI 命令，如下所示：
 
@@ -402,4 +402,4 @@ az connectedk8s proxy -n <clusterName> -g <resourceGroupName>
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> 使用 [Cluster Connect](cluster-connect.md) 安全地连接至群集
+> 使用[群集连接](cluster-connect.md)安全连接到群集

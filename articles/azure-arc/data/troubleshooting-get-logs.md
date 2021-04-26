@@ -1,6 +1,6 @@
 ---
-title: 获取用于排查启用了 Azure Arc 的数据服务的日志
-description: 了解如何从数据控制器获取日志文件，以便对启用了 Azure Arc 的数据服务进行故障排除。
+title: 获取日志以便对已启用 Azure Arc 的数据服务进行故障排除
+description: 了解如何从数据控制器获取日志文件，以便对已启用 Azure Arc 的数据服务进行故障排除。
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -10,13 +10,13 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 0c4cff7583f08fe27649cee464fcef802cddd88f
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93234031"
 ---
-# <a name="get-logs-to-troubleshoot-azure-arc-enabled-data-services"></a>获取用于排查启用了 Azure Arc 的数据服务的日志
+# <a name="get-logs-to-troubleshoot-azure-arc-enabled-data-services"></a>获取日志以便对已启用 Azure Arc 的数据服务进行故障排除
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -24,12 +24,12 @@ ms.locfileid: "93234031"
 
 在继续操作之前，需要：
 
-* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]. 有关详细信息，请参阅 [安装用于部署和管理 Azure Arc 数据服务的客户端工具](./install-client-tools.md)。
+* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]. 有关详细信息，请参阅“[安装用于部署和管理 Azure Arc 数据服务的客户端工具](./install-client-tools.md)”。
 * 用于登录到已启用 Azure Arc 的数据控制器的管理员帐户。
 
 ## <a name="get-log-files"></a>获取日志文件
 
-可以在所有 pod 或特定的 pod 中获取服务日志，以便进行故障排除。 一种方法是使用标准的 Kubernetes 工具，如 `kubectl logs` 命令。 在本文中，你将使用 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 工具，这样一来，可以更轻松地一次获取所有日志。
+可以在所有 Pod 或特定 Pod 中获取服务日志，以便进行故障排除。 一种方法是使用标准的 Kubernetes 工具，如 `kubectl logs` 命令。 在本文中，你将使用 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 工具，这样可以更轻松地一次获取所有日志。
 
 1. 使用管理员帐户登录到数据控制器。
 
@@ -37,7 +37,7 @@ ms.locfileid: "93234031"
    azdata login
    ```
 
-2. 运行以下命令以转储日志：
+2. 运行以下命令来转储日志：
 
    ```console
    azdata arc dc debug copy-logs --namespace <namespace name> --exclude-dumps --skip-compress
@@ -49,19 +49,19 @@ ms.locfileid: "93234031"
    #azdata arc dc debug copy-logs --namespace arc --exclude-dumps --skip-compress
    ```
 
-数据控制器会在名为的子目录中的当前工作目录中创建日志文件 `logs` 。 
+数据控制器会在名为“`logs`”的子目录中的当前工作目录中创建日志文件。 
 
 ## <a name="options"></a>选项
 
-`azdata arc dc debug copy-logs`命令提供以下选项来管理输出：
+`azdata arc dc debug copy-logs` 命令提供了以下用于管理输出的选项：
 
-* 使用参数将日志文件输出到不同的目录 `--target-folder` 。
-* 通过省略参数来压缩文件 `--skip-compress` 。
-* 通过省略来触发并包括内存转储 `--exclude-dumps` 。 除非 Microsoft 支持部门已请求内存转储，否则不建议采用此方法。 获取内存转储要求在 `allowDumps` `true` 创建数据控制器时，将数据控制器设置设置为。
-* 筛选以仅收集特定 pod (`--pod`) 或容器 (`--container` 名称) 的日志。
-* 通过传递和参数，筛选以收集特定自定义资源的日志 `--resource-kind` `--resource-name` 。 `resource-kind`参数值应为自定义资源定义名称之一。 您可以使用命令检索这些名称 `kubectl get customresourcedefinition` 。
+* 使用 `--target-folder` 参数将日志文件输出到不同的目录。
+* 通过省略 `--skip-compress` 参数来压缩文件。
+* 通过省略 `--exclude-dumps` 来触发并包括内存转储。 除非 Microsoft 支持部门要求提供内存转储，否则不建议采用此方法。 获取内存转储需要数据控制器在数据控制器创建时将 `allowDumps` 设置为`true`。
+* 进行筛选以便只按名称收集某个特定 Pod (`--pod`) 或容器 (`--container`) 的日志。
+* 通过传递 `--resource-kind` 和 `--resource-name` 参数来进行筛选，以便收集某个特定的自定义资源的日志。 `resource-kind` 参数值应该是自定义资源定义名称之一。 可以通过使用命令 `kubectl get customresourcedefinition` 来检索这些名称。
 
-利用这些参数，可以替换 `<parameters>` 以下示例中的： 
+使用这些参数，可以替换以下示例中的 `<parameters>`： 
 
 ```console
 azdata arc dc debug copy-logs --target-folder <desired folder> --exclude-dumps --skip-compress -resource-kind <custom resource definition name> --resource-name <resource name> --namespace <namespace name>
@@ -73,7 +73,7 @@ azdata arc dc debug copy-logs --target-folder <desired folder> --exclude-dumps -
 #azdata arc dc debug copy-logs --target-folder C:\temp\logs --exclude-dumps --skip-compress --resource-kind postgresql-12 --resource-name pg1 --namespace arc
 ```
 
-以下文件夹层次结构是一个示例。 它按 pod 名称、then 容器和容器中的目录层次结构进行组织。
+以下文件夹层次结构是一个示例。 它按 Pod 名称，然后按容器，再按该容器中的目录层次结构来进行组织。
 
 ```output
 <export directory>

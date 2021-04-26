@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: de7d23689ae984ea0abece5edb03cf8a0c3a9be1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "104670335"
 ---
 # <a name="get-connection-endpoints-and-form-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>为已启用 Arc 的超大规模 PostgreSQL 服务器组获取连接终结点并形成连接字符串
@@ -27,7 +27,7 @@ ms.locfileid: "104670335"
 ## <a name="get-connection-end-points"></a>获取连接终结点：
 
 ### <a name="from-cli-with-azdata"></a>使用 azdata 从 CLI 获取
-#### <a name="1-connect-to-your-arc-data-controller"></a>1.连接到 Arc 数据控制器：
+#### <a name="1-connect-to-your-arc-data-controller"></a>1. 连接到 Arc 数据控制器：
 - 如果已在 Arc 数据控制器的主机上打开会话，请运行以下命令：
 ```console
 azdata login
@@ -38,7 +38,7 @@ azdata login
 azdata login --endpoint https://<external IP address of host/data controller>:30080
 ```
 
-#### <a name="2-show-the-connection-endpoints"></a>2.显示连接终结点
+#### <a name="2-show-the-connection-endpoints"></a>2. 显示连接终结点
 运行以下命令：
 ```console
 azdata arc postgres endpoint list -n <server group name>
@@ -153,7 +153,7 @@ host=192.168.1.121; dbname=postgres user=postgres password={your_password_here} 
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 阅读了解如何[横向扩展（添加工作器节点）](scale-out-postgresql-hyperscale-server-group.md)服务器组
-- 阅读了解如何[纵向扩展或缩减（增加/减少内存/vcore）](scale-up-down-postgresql-hyperscale-server-group-using-cli.md)服务器组
+- 了解如何[横向扩展（添加工作器节点）](scale-out-postgresql-hyperscale-server-group.md)服务器组
+- 了解如何[纵向扩展或缩减（增加/减少内存/vCore）](scale-up-down-postgresql-hyperscale-server-group-using-cli.md)服务器组
 
 
