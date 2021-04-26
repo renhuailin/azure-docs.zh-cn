@@ -2,21 +2,21 @@
 title: 如何在 Azure AD 中使用自助应用程序访问
 description: 启用自助服务以方便用户在 Azure AD 中查找应用
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/11/2017
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: japere,asteen
-ms.openlocfilehash: 13f91fdd9e2d9501fba426bd6facbf9824a39285
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8e3851a702da46d07634a4141c774275845fa44d
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99257011"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377609"
 ---
 # <a name="how-to-use-self-service-application-access"></a>如何使用自助服务应用程序访问
 
