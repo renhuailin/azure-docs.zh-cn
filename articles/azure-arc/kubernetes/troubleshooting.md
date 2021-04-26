@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 排查已启用 Arc 的 Kubernetes 群集的常见问题。
 keywords: Kubernetes, Arc, Azure, 容器
-ms.openlocfilehash: e1f4e84f16c6b584f1ffbd918a86c251f47efcca
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 992ea75c48b2630032e1314610986fbc610eec7b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101653994"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025775"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting"></a>已启用 Azure Arc 的 Kubernetes 故障排除
 
@@ -46,7 +46,7 @@ REVISION: 5
 TEST SUITE: None
 ```
 
-如果找不到或缺少 Helm 版本，请再次尝试[将群集连接到 Azure Arc](./connect-cluster.md)。
+如果找不到或缺少 Helm 版本，请再次尝试[将群集连接到 Azure Arc](./quickstart-connect-cluster.md)。
 
 如果 Helm 版本存在并且 `STATUS: deployed`，请使用 `kubectl` 来检查代理的状态：
 

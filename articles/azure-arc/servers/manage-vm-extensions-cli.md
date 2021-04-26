@@ -1,19 +1,22 @@
 ---
 title: 使用 Azure CLI 启用 VM 扩展
 description: 本文介绍如何使用 Azure CLI 将虚拟机扩展部署到在混合云环境中运行的已启用 Azure Arc 的服务器。
-ms.date: 01/05/2021
+ms.date: 04/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6edb7d55e542f963c75693d535fa3b50dc5b827b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 25e75ede30139201789cd86e6ebddda09a664eb4
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97916195"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388731"
 ---
 # <a name="enable-azure-vm-extensions-using-the-azure-cli"></a>使用 Azure CLI 启用 Azure VM 扩展
 
 本文介绍如何使用 Azure CLI 将已启用 Azure Arc 的服务器支持的 VM 扩展部署到 Linux 或 Windows 混合计算机并将其卸载。
+
+> [!NOTE]
+> 已启用 Azure Arc 的服务器不支持管理 VM 扩展，也不支持将 VM 扩展部署到 Azure 虚拟机。 对于 Azure VM，请查看下面的 [VM 扩展概述](../../virtual-machines/extensions/overview.md)一文。
 
 [!INCLUDE [Azure CLI Prepare your environment](../../../includes/azure-cli-prepare-your-environment.md)]
 
