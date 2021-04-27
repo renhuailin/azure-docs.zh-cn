@@ -77,25 +77,25 @@
     - name: 常见问题 (FAQ)
       items:
         - name: 常见问题解答 - 恢复服务保管库
-          href: backup-azure-backup-faq.md
+          href: backup-azure-backup-faq.yml
         - name: 常见问题解答 - 备份中心
           href: backup-center-faq.yml
         - name: 常见问题解答 - Azure VM 备份
           href: backup-azure-vm-backup-faq.yml
         - name: 常见问题解答 - MARS 代理
-          href: backup-azure-file-folder-backup-faq.md
+          href: backup-azure-file-folder-backup-faq.yml
         - name: 常见问题解答 - 备份 Azure 文件
-          href: backup-azure-files-faq.md
+          href: backup-azure-files-faq.yml
         - name: 常见问题解答 - Azure 磁盘备份
-          href: disk-backup-faq.md
+          href: disk-backup-faq.yml
         - name: 常见问题解答 - 备份 Azure VM 上的 SQL Server 数据库
-          href: faq-backup-sql-server.md
+          href: faq-backup-sql-server.yml
         - name: 常见问题解答 - 备份 Azure VM 上的 SAP HANA 数据库
-          href: sap-hana-faq-backup-azure-vm.md
+          href: sap-hana-faq-backup-azure-vm.yml
         - name: 常见问题解答 - Azure 备份服务器和 DPM
-          href: backup-azure-dpm-azure-server-faq.md
+          href: backup-azure-dpm-azure-server-faq.yml
         - name: 常见问题解答 - Azure 备份监视警报
-          href: backup-azure-monitor-alert-faq.md
+          href: backup-azure-monitor-alert-faq.yml
     - name: 备份体系结构
       href: backup-architecture.md
     - name: 指南和最佳做法
@@ -224,10 +224,18 @@
       items:
         - name: 概述
           href: disk-backup-overview.md
-        - name: 备份
-          href: backup-managed-disks.md
-        - name: 还原
-          href: restore-managed-disks.md
+        - name: 通过 Azure 门户
+          items:
+            - name: 备份
+              href: backup-managed-disks.md
+            - name: 还原
+              href: restore-managed-disks.md
+        - name: 使用 PowerShell
+          items:
+            - name: 备份
+              href: backup-managed-disks-ps.md
+            - name: 还原
+              href: restore-managed-disks-ps.md
     - name: Azure Blob 备份
       items:
         - name: 概述
@@ -420,7 +428,7 @@
               href: backup-azure-arm-userestapi-restoreazurevms.md
             - name: 管理 Azure 备份作业
               href: backup-azure-arm-userestapi-managejobs.md
-        - name: 资源管理器模板
+        - name: Resource Manager 模板
           href: backup-rm-template-samples.md
     - name: 安全性
       items:
@@ -452,7 +460,7 @@
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/backup-security-baseline
     - name: 访问层
       items:
         - name: 存档层
@@ -492,7 +500,7 @@
     - name: Azure PowerShell
       href: /powershell/module/az.recoveryservices
     - name: PowerShell – Azure 备份代理
-      href: /powershell/module/msonlinebackup/msonlinebackup
+      href: /powershell/module/msonlinebackup/?view=msonlinebackup-ps
     - name: REST - 备份
       href: /rest/api/backup/
     - name: REST - 恢复服务保管库
