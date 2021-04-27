@@ -1,25 +1,28 @@
 ---
 title: 从 Azure 门户启用 VM 扩展
 description: 本文介绍如何从 Azure 门户将虚拟机扩展部署到在混合云环境中运行的已启用 Azure Arc 的服务器。
-ms.date: 01/22/2020
+ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: b0e114b314179d42ccd47b7d7bd534d3a824a411
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b5b4ff79d68ec9ff0cc61b9dbb7d3c5d7fe93598
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100587661"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388272"
 ---
 # <a name="enable-azure-vm-extensions-from-the-azure-portal"></a>从 Azure 门户启用 Azure VM 扩展
 
 本文介绍如何通过 Azure 门户将已启用 Azure Arc 的服务器支持的 Azure VM 扩展部署到 Linux 或 Windows 混合计算机，以及如何将其卸载。
 
 > [!NOTE]
-> 密钥保管库 VM 扩展（预览版）不支持从 Azure 门户进行部署，它仅支持 Azure CLI、Azure PowerShell 或 Azure 资源管理器模板进行部署。
+> Key Vault VM 扩展（预览版）不支持从 Azure 门户进行部署，仅支持使用 Azure CLI、Azure PowerShell 或 Azure 资源管理器模板进行部署。
+
+> [!NOTE]
+> 已启用 Azure Arc 的服务器不支持管理 VM 扩展，也不支持将 VM 扩展部署到 Azure 虚拟机。 对于 Azure VM，请查看下面的 [VM 扩展概述](../../virtual-machines/extensions/overview.md)一文。
 
 ## <a name="enable-extensions-from-the-portal"></a>从门户启用扩展
 
-可通过 Azure 门户将 VM 扩展应用到已启用 Arc 的服务器托管计算机。
+可通过 Azure 门户将 VM 扩展应用到用于服务器托管计算机的 Arc。
 
 1. 在浏览器中转到 [Azure 门户](https://portal.azure.com)。
 

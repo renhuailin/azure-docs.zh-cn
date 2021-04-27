@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 17bdae658c7095c44a7ae9f30fd85a6c45bf1546
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96779968"
 ---
 # <a name="scale-out-your-azure-arc-enabled-postgresql-hyperscale-server-group-by-adding-more-worker-nodes"></a>通过增加更多的工作器节点横向扩展已启用 Azure Arc 的超大规模 PostgreSQL 服务器组
@@ -129,7 +129,7 @@ SELECT create_distributed_table('github_users', 'user_id');
 ```
 
 #### <a name="load-sample-data"></a>加载示例数据
-使用以下命令加载数据：COPY ...FROM PROGRAM：
+使用 COPY ... FROM PROGRAM 加载数据：
 
 ```sql
 COPY github_users FROM PROGRAM 'curl "https://examples.citusdata.com/users.csv"' WITH ( FORMAT CSV );

@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: caaab07200a8631935a2b5d5368a0c16ea9a60c5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 04/19/2021
 ms.locfileid: "92320217"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>超大规模 PostgreSQL 服务器组故障排除
@@ -100,7 +100,7 @@ kubectl config use-context default/my_kubeuser/ArcDataControllerAdmin
 此时会打开“TSG100 - 已启用 Azure Arc 的超大规模 PostgreSQL 故障排除笔记本”：:::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook2.jpg" alt-text="Azure Data Studio - 使用 PostgreSQL 故障排除笔记本":::
 
 #### <a name="run-the-scripts"></a>运行脚本
-选择顶部的“全部运行”按钮一次性执行笔记本中的所有代码单元，或者，也可以逐步执行每个代码单元。
+选择顶部的“全部运行”按钮一次性执行笔记本中的所有代码单元，也可逐个执行每个代码单元。
 
 查看执行代码单元后的输出，以发现任何潜在问题。
 
