@@ -12,17 +12,17 @@ ms.topic: end-user-help
 ms.date: 09/10/2020
 ms.author: curtand
 ms.openlocfilehash: c47d573dab3e72a956f6f0b9d09a1dafadf0225c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91827772"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>使用安全信息重置工作或学校密码
 
 如果忘记了工作或学校密码、从来没有从组织处得到过密码，或者帐户被锁定，则可使用安全信息和移动设备来重置工作或学校密码。 你的管理员必须已启用此功能，你才能设置信息并[重置你的密码](./active-directory-passwords-reset-register.md)。
 
-如果你知道密码，但想要对其进行更改，请参阅本文的 [更改密码步骤](#how-to-change-your-password) 部分。
+如果知道密码而想进行更改，可以转到本文中的[更改密码步骤](#how-to-change-your-password)部分。
 
 >[!Important]
 >本文适用于尝试重置工作或学校帐户密码的用户。 如果你是管理员，并且正在查找有关如何为员工或其他用户启用自助式密码重置的详细信息，请参阅[部署 Azure AD 自助式密码重置](../authentication/howto-sspr-deployment.md)。
@@ -69,7 +69,7 @@ ms.locfileid: "91827772"
 
     3. 键入并确认新密码，然后选择“完成”。
 
-- **使用电话号码重置密码。** 将自动语音呼叫置于你之前在 "安全信息" 中设置的电话号码。 如果管理员已启用安全信息体验，可以在[设置安全信息以使用电话（预览版）](security-info-setup-phone-number.md)一文中找到有关设置电话号码的详细信息。 如果尚未使用安全信息，可以在[设置帐户以便进行双重验证](multi-factor-authentication-end-user-first-time.md)一文中找到有关设置电话号码的详细信息。
+- **使用电话号码重置密码。** 向之前在安全信息中设置的电话号码进行自动语音呼叫。 如果管理员已启用安全信息体验，可以在[设置安全信息以使用电话（预览版）](security-info-setup-phone-number.md)一文中找到有关设置电话号码的详细信息。 如果尚未使用安全信息，可以在[设置帐户以便进行双重验证](multi-factor-authentication-end-user-first-time.md)一文中找到有关设置电话号码的详细信息。
 
     1. 选择“呼叫移动电话”，键入电话号码，并选择“呼叫”。
 
@@ -103,11 +103,11 @@ ms.locfileid: "91827772"
 
      如果仍无法访问帐户，应联系组织管理员，寻求进一步的帮助。
 
-重置密码后，你可能会收到一封确认电子邮件，该电子邮件来自 "Microsoft 代表" 之类的帐户 \<*your_organization*> 。 如果收到类似电子邮件，但最近未重置密码，必须立即联系组织管理员。
+重置密码后，你可能会收到一封来自“Microsoft 代表 \<*your_organization*>”之类帐户的确认电子邮件。 如果收到类似电子邮件，但最近未重置密码，必须立即联系组织管理员。
 
 ## <a name="how-to-change-your-password"></a>如何更改密码
 
-如果只是想要更改密码，可以通过 Office 365 门户、"我的应用" 门户或 Windows 10 登录页来执行此操作。
+如果只想更改密码，可通过 Office 365 门户、“我的应用”门户或 Windows 10 登录页来执行此操作。
 
 ### <a name="to-change-your-password-using-the-office-365-portal"></a>使用 Office 365 门户更改密码
 
@@ -121,11 +121,11 @@ ms.locfileid: "91827772"
 
 4. 键入旧密码，创建并确认新密码，然后选择“提交”。
 
-### <a name="to-change-your-password-from-the-my-apps-portal"></a>从 "我的应用" 门户更改密码
+### <a name="to-change-your-password-from-the-my-apps-portal"></a>如何从“我的应用”门户更改密码
 
-如果通常从 "我的应用" 门户访问应用，请使用此方法：
+如果通常使用“我的应用”门户来访问应用，则请使用此方法：
 
-1. 使用现有密码登录到 " [我的应用" 门户](https://myapps.microsoft.com/)。
+1. 使用现有密码登录到[“我的应用”门户](https://myapps.microsoft.com/)。
 
 2. 选择右上角的个人资料，然后选择“个人资料”。
 

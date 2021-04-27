@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: c68e01e0eb7c926f47c99b16efa87d23a10b6711
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91537027"
 ---
 # <a name="set-up-text-messaging-as-your-verification-method"></a>设置短信作为验证方法
@@ -52,7 +52,7 @@ ms.locfileid: "91537027"
 
 4. 在“电话”页上，键入移动设备的电话号码，选择“以短信形式向我发送验证码”，然后选择“下一步”  。
 
-    ![显示 "电话" 页的屏幕截图，其中选中了 "将代码文本显示为"。](media/security-info/securityinfo-myprofile-phonetext-addnumber.png)
+    ![该屏幕截图显示了“电话”页面，其中已选中“以短信形式向我发送验证码”。](media/security-info/securityinfo-myprofile-phonetext-addnumber.png)
 
 5. 输入以短信形式发送到移动设备的验证码，然后选择“下一步”。
 
@@ -77,7 +77,7 @@ ms.locfileid: "91537027"
 
     ![从安全信息中删除电话和短信方法的链接](media/security-info/securityinfo-myprofile-phonetext-delete.png)
 
-2. 从确认框中选择“是”，以删除**电话**号码。 删除电话号码后，该帐户将从你的安全信息中删除，并从“安全信息”页消失。 如果“电话”是默认方法，则默认方法将更改为另一种可用方法。
+2. 从确认框中选择“是”，以删除 **电话** 号码。 删除电话号码后，该帐户将从你的安全信息中删除，并从“安全信息”页消失。 如果“电话”是默认方法，则默认方法将更改为另一种可用方法。
 
 ## <a name="change-your-default-security-info-method"></a>更改默认的安全信息方法
 
@@ -103,7 +103,7 @@ ms.locfileid: "91537027"
 
 - **移动设备或工作电话。** 输入移动设备号码，获取将用于双重验证或密码重置的电话。 有关如何使用电话号码验证身份的分步说明，请参阅[设置安全信息以使用电话](security-info-setup-phone-number.md)。
 
-- **安全密钥。** 注册与 Microsoft 兼容的安全密钥，并将其与 PIN 一起使用来进行双重验证或密码重置。 有关如何使用安全密钥验证身份的分步说明，请参阅[设置安全信息以使用安全密钥](security-info-setup-security-key.md)。
+- 安全密钥。 注册与 Microsoft 兼容的安全密钥，并将其与 PIN 一起使用来进行双重验证或密码重置。 有关如何使用安全密钥验证身份的分步说明，请参阅[设置安全信息以使用安全密钥](security-info-setup-security-key.md)。
 
 - **电子邮件地址。** 输入工作或学校电子邮件地址，获取用于密码重置的电子邮件。 此选项不可用于双重验证。 有关如何设置电子邮件的分步说明，请参阅[设置安全信息以使用电子邮件](security-info-setup-email.md)。
 
