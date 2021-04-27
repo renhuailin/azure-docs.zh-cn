@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 774eb05ae43e393db3d11e8e21a427736614809b
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: a37b740333e599d19248ffa9b21be3e4d6fe78b3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285104"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306290"
 ---
 # <a name="language-support-for-computer-vision"></a>计算机视觉的语言支持
 
@@ -25,7 +25,7 @@ ms.locfileid: "106285104"
 
 计算机视觉的 OCR API 支持多种语言。 它们不要求你指定语言代码。 有关详细信息，请参阅[光学字符识别 (OCR) 概述](overview-ocr.md)。
 
-|语言| 语言代码 | OCR API | Read 3.0/3.1 | Read v3.2 预览版 |
+|语言| 语言代码 | OCR API | Read 3.0/3.1 | Read v3.2 |
 |:-----|:----:|:-----:|:---:|:---:|
 |南非荷兰语|`af`| | |✔ |
 |阿尔巴尼亚语 |`sq`| | |✔ |
@@ -46,7 +46,7 @@ ms.locfileid: "106285104"
 |丹麦语 | `da` |✔ | |✔ |
 |荷兰语 | `nl` |✔ |✔ |✔ |
 |英语 | `en` |✔ |✔ |✔ |
-|爱沙尼亚语  |`crh`| | |✔ |
+|爱沙尼亚语  |`et`| | |✔ |
 |斐济语 |`fj`| | |✔ |
 |菲律宾语  |`fil`| | |✔ |
 |芬兰语 | `fi` |✔ | |✔ |

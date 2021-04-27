@@ -4,14 +4,14 @@ description: 介绍如何为缓存配置其他设置（例如 MTU、自定义 NT
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 04/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: 6e1e1283cb82dcb900da6473de65ef087a5cea82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b3996df3c75ff31d0825be1d332dbd055305963
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773226"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259755"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>配置其他 Azure HPC 缓存设置
 
@@ -47,24 +47,26 @@ Azure 门户中的“网络”页提供了用于自定义多个设置的选项�
 
 ## <a name="customize-ntp"></a>自定义 NTP
 
-缓存默认使用基于 Azure 的时间服务器 time.microsoft.com。 如果你希望缓存使用其他 NTP 服务器，请在“NTP 配置”部分中指定。 请使用完全限定的域名或 IP 地址。
+缓存默认使用基于 Azure 的时间服务器 time.windows.com。 如果你希望缓存使用其他 NTP 服务器，请在“NTP 配置”部分中指定。 请使用完全限定的域名或 IP 地址。
 
 ## <a name="set-a-custom-dns-configuration"></a>设置自定义 DNS 配置
 
 > [!CAUTION]
 > 如果没有必要，请不要更改缓存 DNS 配置。 配置不当可能导致极其严重的后果。 如果配置无法解析 Azure 服务名称，HPC 缓存实例将永久不可访问。
+>
+> 在尝试设置自定义 DNS 配置之前，请咨询 Azure 代表。
 
 Azure HPC 缓存已自动配置为使用安全便捷的 Azure DNS 系统。 但是，某些不寻常的配置要求缓存使用单独的本地 DNS 系统而不是 Azure 系统。 “网络”页的“DNS 配置”部分用于指定此类系统。 
 
 请咨询 Azure 代表或 Microsoft 服务和支持人员来确定是否需要使用自定义缓存 DNS 配置。
 
-如果你为要使用的 Azure HPC 缓存配置了自己的本地 DNS 系统，必须确保该配置可以解析 Azure 服务的 Azure 终结点名称。 必须将自定义 DNS 环境配置为向 Azure DNS 或根据需要向另一服务器转发特定的名称解析请求。
+如果你为要使用的 Azure HPC 缓存配置了自己的本地 DNS 系统，必须确保本地 DNS 服务器能够直接解析 Azure 服务终结点名称。 如果 DNS 服务器受限，无法进行公共名称解析，则 HPC 缓存将无法正常运行。
 
 在将 DNS 配置用于 Azure HPC 缓存之前，请检查它是否能够成功解析以下各项：
 
 * ``*.core.windows.net``
 * 证书吊销列表 (CRL) 下载和联机证书状态协议 (OCSP) 验证服务。 此 [Azure TLS 文章](../security/fundamentals/tls-certificate-changes.md)末尾的[防火墙规则项](../security/fundamentals/tls-certificate-changes.md#will-this-change-affect-me)中提供了部分列表，但你应该咨询 Microsoft 技术代表来了解所有要求。
-* NTP 服务器（time.microsoft.com 或自定义服务器）的完全限定域名
+* NTP 服务器（time.windows.com 或自定义服务器）的完全限定域名
 
 如果需要为缓存设置自定义 DNS 服务器，请使用提供的字段：
 

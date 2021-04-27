@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 03/02/2021
+ms.date: 04/07/2021
 ms.topic: how-to
-ms.openlocfilehash: 9c928040aa2ff5a6ebfb7102c03450d3d7297b59
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 12d0997e677bcca423f32951e99a6202855104ad
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101686472"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030860"
 ---
 # <a name="create-an-azure-arc-data-controller-in-the-azure-portal"></a>在 Azure 门户中创建 Azure Arc 数据控制器
 
@@ -26,24 +26,23 @@ ms.locfileid: "101686472"
 
 Azure Arc 的许多创建体验都是从 Azure 门户中开始，即使要创建或管理的资源在 Azure 基础结构之外也是如此。 在这些情况下，尤其是当 Azure 与环境之间没有直接连接时，用户体验模式是使用 Azure 门户生成脚本，然后可以在环境中下载并执行该脚本，以建立与 Azure 的安全连接。 例如，已启用 Azure Arc 的服务器遵循此模式来[创建已启用 Arc 的服务器](../servers/onboard-portal.md)。
 
-就目前来说，考虑到预览仅支持已启用 Azure Arc 的数据服务的“间接连接模式”，因此可以使用 Azure 门户生成一个笔记本，然后可以在 Azure Data Studio 中下载并针对 Kubernetes 群集运行这个笔记本。 将来，当“直接连接”模式可用时，用户将能够直接从 Azure 门户预配数据控制器。 可阅读有关[连接模式](connectivity.md)的更多信息。
+当你使用已启用 Azure Arc 的数据服务的间接连接模式时，你可以使用 Azure 门户为你生成笔记本，然后针对 Kubernetes 群集下载并在 Azure Data Studio 中运行该笔记本。 
+
+使用直接连接模式时，可以直接从 Azure 门户预配数据控制器。 可阅读有关[连接模式](connectivity.md)的更多信息。
 
 ## <a name="use-the-azure-portal-to-create-an-azure-arc-data-controller"></a>使用 Azure 门户创建 Azure Arc 数据控制器
 
 按照以下步骤使用 Azure 门户和 Azure Data Studio 创建 Azure Arc 数据控制器。
 
 1. 首先登录到 [Azure 门户市场](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home/searchQuery/azure%20arc%20data%20controller)。  系统将过滤市场搜索结果，显示“Azure Arc 数据控制器”。
-2. 如果第一步没有输入搜索条件。 请输入搜索结果，然后单击“Azure Arc 数据控制器”。
-3. 从市场中选择“Azure 数据控制器”磁贴。
-4. 单击“创建”按钮。
-5. 查看创建 Azure Arc 数据控制器的要求，并安装任何缺少的必备软件，如 Azure Data Studio 和 kubectl。
-6. 单击“数据控制器详细信息”按钮。
-7. 选择订阅、资源组和 Azure 位置，就像在 Azure 门户中创建任何其他资源一样。 在这种情况下，选择的 Azure 位置将是存储资源元数据的位置。  资源本身将创建在选择的任何基础结构上。 资源不需要在 Azure 基础结构上。
-8. 输入数据控制器的名称。
-9. 选择数据控制器的连接模式。 详细了解“[连接模式和要求](./connectivity.md)”。 
-
-   > [!NOTE] 
-   > 如果选择“直接”连接模式，请确保按照“[创建服务主体](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal)”中所述通过环境变量设置服务主体凭据。 
+1. 如果第一步没有输入搜索条件。 请输入搜索结果，然后单击“Azure Arc 数据控制器”。
+1. 从市场中选择“Azure 数据控制器”磁贴。
+1. 单击“创建”按钮。
+1. 选择间接连接模式。 详细了解“[连接模式和要求](./connectivity.md)”。 
+1. 查看创建 Azure Arc 数据控制器的要求，并安装任何缺少的必备软件，如 Azure Data Studio 和 kubectl。
+1. 单击“下一步：数据控制器详细信息”按钮。
+1. 选择订阅、资源组和 Azure 位置，就像在 Azure 门户中创建任何其他资源一样。 在这种情况下，选择的 Azure 位置将是存储资源元数据的位置。  资源本身将创建在选择的任何基础结构上。 资源不需要在 Azure 基础结构上。
+1. 输入数据控制器的名称。
 
 1. 选择部署配置文件。
 1. 单击“在 Azure Studio 中打开”按钮。
@@ -60,7 +59,7 @@ Azure Arc 的许多创建体验都是从 Azure 门户中开始，即使要创建
 创建控制器需要几分钟才能完成。 可使用以下命令在另一个终端窗口中监视进度：
 
 > [!NOTE]
->  下面的示例命令假设用户创建了一个名为“arc”的数据控制器和 Kubernetes 命名空间。  如果使用其他命名空间/数据控制器名称，则可以将“arc”替换为自己的名称。
+>  下面的示例命令假设你创建了一个名为“arc”的数据控制器和 Kubernetes 命名空间。  如果使用其他命名空间/数据控制器名称，则可以将“arc”替换为自己的名称。
 
 ```console
 kubectl get datacontroller/arc --namespace arc
@@ -81,4 +80,4 @@ kubectl describe po/<pod name> --namespace arc
 
 ## <a name="troubleshooting-creation-problems"></a>排查创建问题
 
-如果在创建过程中遇到任何问题，请参阅《[故障排除指南](troubleshoot-guide.md)》。
+如果在创建过程中遇到任何问题，请参阅[故障排除指南](troubleshoot-guide.md)。

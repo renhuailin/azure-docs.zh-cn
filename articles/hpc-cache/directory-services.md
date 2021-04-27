@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: fd5dce0760953bf19c72e1a1062a9c03ffe861e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9db7576cb2278cc2ef0d8b93ef04bb633962cd0e
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103563362"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107255743"
 ---
 # <a name="configure-directory-services"></a>配置目录服务
 
@@ -30,7 +30,7 @@ ms.locfileid: "103563362"
 
 “下载的用户名”字段显示最新组信息的下载状态。
 
-![门户中目录服务设置页的屏幕截图，其中“扩展组”选择了“是”选项，并标有“下载源”的下拉菜单已打开](media/directory-services-select-group-source.png)
+![门户中目录服务设置页的屏幕截图，其中选择了“扩展组”对应的“是”选项，并已打开标有“下载源”的下拉菜单](media/directory-services-select-group-source.png)
 
 ## <a name="configure-active-directory"></a>配置 Active Directory
 

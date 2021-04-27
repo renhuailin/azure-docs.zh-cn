@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 015fa201fe1c31dde2e30c2fe689ac13452b1b01
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9652e940674ec7580b006cd38df2a7d17014f939
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105607586"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309979"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>排查 Azure 中共享映像库的问题
 
@@ -303,6 +303,14 @@ ms.locfileid: "105607586"
 **原因**：用来部署虚拟机的映像定义未包含最新版本中包括的任何映像版本。  
 **解决方法**：请确保至少有一个映像版本将“从最新版本中排除”设置为 False。 
 
+**消息**：库映像 /subscriptions/<subscriptionID\>/resourceGroups/<resourceGroup\>/providers/Microsoft.Compute/galleries/<galleryName\>/images/<imageName\>/versions/<versionNumber\> 在 <region\> 区域不可用。请联系映像所有者以将其复制到此区域，或者更改你请求的区域。  
+**原因**：选择用于部署的版本不存在或在指定的区域中没有副本。  
+**解决方法**：请确保映像资源的名称正确，并且在指定的区域中至少有一个副本。 
+
+**消息**：库映像 /subscriptions/<subscriptionID\>/resourceGroups/<resourceGroup\>/providers/Microsoft.Compute/galleries/<galleryName\>/images/<imageName\> 在 <region\> 区域不可用。请联系映像所有者以将其复制到此区域，或者更改你请求的区域。  
+**原因**：选择用于部署的映像定义没有包含在最新版本和指定区域中的任何映像版本。  
+**解决方法**：请确保区域中至少有一个映像版本将“从最新版本中排除”设置为 False。 
+
 **消息**：客户端有权在范围 <resourceID\> 中执行操作“Microsoft.Compute/galleries/images/versions/read”，但当前租户 <tenantID\> 无权访问链接的订阅 <subscriptionID\>。  
 **原因**：虚拟机或规模集是通过另一租户中的 SIG 映像创建的。 你尝试对虚拟机或规模集进行更改，但无权访问拥有该映像的订阅。  
 **解决方法**：联系该映像版本的订阅的所有者，请求其授予对该映像版本的读取访问权限。
@@ -318,10 +326,6 @@ ms.locfileid: "105607586"
 **消息**：必需的参数“osProfile”缺失或为 null。  
 **原因**：VM 是基于通用映像创建的，并且缺少管理员用户名、密码或 SSH 密钥。 因为通用映像不会保留管理员用户名、密码或 SSH 密钥，因此，在创建 VM 或规模集的过程中，必须指定这些字段。  
 **解决方法**：指定管理员用户名、密码或 SSH 密钥，或使用专用映像版本。
-
-**消息**：无法基于 <resourceID\> 创建库映像版本，因为父级库映像中的 OS 状态（“专用”）不是“通用”。  
-**原因**：该映像版本是基于通用源创建的，但其父级定义是专用的。  
-**解决方法**：使用专用源创建映像版本，或者使用一个通用的父级定义。
 
 **消息**：无法更新虚拟机规模集 <vmssName\>，因为 VM 规模集的当前 OS 状态为“通用”，不同于更新后的库映像 OS 状态“专用”。  
 **原因**：规模集的当前源映像是一个通用源映像，但使用专用的源映像进行更新。 规模集的当前源映像和新的源映像必须处于相同状态。  

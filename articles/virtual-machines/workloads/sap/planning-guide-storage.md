@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/26/2020
+ms.date: 04/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 329e09221467c2602355e091876c95f305db3578
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ecd33549536323658a7116d7d5c311eaaec98487
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101673740"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107302941"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>适用于 SAP 工作负载的 Azure 存储类型
 Azure 具有多种存储类型，它们在功能、吞吐量、延迟和价格上各不相同。 某些存储类型不可用于 SAP 方案，或者只能在此类方案中受限使用。 但是，有几种 Azure 存储类型非常适合特定的 SAP 工作负载方案或针对特定的 SAP 工作负载方案进行了优化。 尤其是对于 SAP HANA，某些 Azure 存储类型经认证可在 SAP HANA 中使用。 本文档将介绍不同类型的存储、其功能以及在 SAP 工作负载和 SAP 组件中的可用性。
@@ -135,24 +135,24 @@ Azure 中部署的各种堆栈组件中的 SAP 工作负载需要持久性存储
 
 下面是 SAP 工作负载的功能矩阵：
 
-| 功能| 评论| 备注/链接 | 
+| 功能| 注释| 备注/链接 | 
 | --- | --- | --- | 
 | OS 基本 VHD | 适用 | 所有系统 |
 | 数据磁盘 | 适用 | 所有系统 - [特别适用于 SAP HANA](../../how-to-enable-write-accelerator.md) |
-| SAP 全局传输目录 | YES | [支持](https://launchpad.support.sap.com/#/notes/2015553) |
+| SAP 全局传输目录 | 是 | [支持](https://launchpad.support.sap.com/#/notes/2015553) |
 | SAP sapmnt | 适用 | 所有系统 |
 | 备份存储 | 适用 | 用于短期存储备份 |
 | 共享/共享磁盘 | 不可用 | 需要 Azure 高级文件存储或第三方存储 |
 | 复原能力 | LRS | 不为磁盘提供 GRS 或 ZRS |
 | 延迟 | 低到中 | - |
-| IOPS SLA | YES | - |
+| IOPS SLA | 是 | - |
 | IOPS 根据容量线性变化 | 托架中为半线性变化  | [托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/) |
 | 每个磁盘的最大 IOPS | 20,000 [与磁盘大小相关](https://azure.microsoft.com/pricing/details/managed-disks/) | 还要考虑 [VM 限制](../../sizes.md) |
-| 吞吐量 SLA | YES | - |
+| 吞吐量 SLA | 是 | - |
 | 吞吐量根据容量线性变化 | 托架中为半线性变化 | [托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| HANA 认证 | YES | [特别适用于 SAP HANA](../../how-to-enable-write-accelerator.md) |
-| 可以使用磁盘快照 | YES | - |
-| 可以使用 Azure 备份 VM 快照 | YES | [写入加速器](../../how-to-enable-write-accelerator.md)缓存磁盘除外  |
+| HANA 认证 | 是 | [特别适用于 SAP HANA](../../how-to-enable-write-accelerator.md) |
+| 可以使用磁盘快照 | 是 | - |
+| 可以使用 Azure 备份 VM 快照 | 是 | [写入加速器](../../how-to-enable-write-accelerator.md)缓存磁盘除外  |
 | 成本 | MEDIUM | - |
 
 Azure 高级存储不使用 Azure 高级存储提供的常用缓存类型来实现 SAP HANA 存储延迟 KPI。 若要实现 SAP HANA 日志写入的存储延迟 KPI，需要根据[启用写入加速器](../../how-to-enable-write-accelerator.md)一文中所述使用 Azure 写入加速器缓存。 Azure 写入加速器可为所有其他 DBMS 系统的事务日志写入和重写日志写入带来好处。 因此，我们建议在所有 SAP DBMS 部署中使用它。 对于 SAP HANA，Azure 写入加速器必须与 Azure 高级存储结合使用。
@@ -193,22 +193,22 @@ Azure 超级磁盘为 Azure IaaS VM 提供高吞吐量、高 IOPS 和一贯低�
 
 下面是 SAP 工作负载的功能矩阵：
 
-| 功能| 评论| 备注/链接 | 
+| 功能| 注释| 备注/链接 | 
 | --- | --- | --- | 
 | OS 基本 VHD | 不可用 | - |
 | 数据磁盘 | 适用 | 所有系统  |
-| SAP 全局传输目录 | YES | [支持](https://launchpad.support.sap.com/#/notes/2015553) |
+| SAP 全局传输目录 | 是 | [支持](https://launchpad.support.sap.com/#/notes/2015553) |
 | SAP sapmnt | 适用 | 所有系统 |
 | 备份存储 | 适用 | 用于短期存储备份 |
 | 共享/共享磁盘 | 不可用 | 需要第三方组件 |
 | 复原能力 | LRS | 不为磁盘提供 GRS 或 ZRS |
 | 延迟 | 极低 | - |
-| IOPS SLA | YES | - |
+| IOPS SLA | 是 | - |
 | IOPS 根据容量线性变化 | 托架中为半线性变化  | [托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/) |
 | 每个磁盘的最大 IOPS | 1,200 到 160,000 | 与磁盘容量相关 |
-| 吞吐量 SLA | YES | - |
+| 吞吐量 SLA | 是 | - |
 | 吞吐量根据容量线性变化 | 托架中为半线性变化 | [托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| HANA 认证 | YES | - |
+| HANA 认证 | 是 | - |
 | 可以使用磁盘快照 | 是 | - |
 | 可以使用 Azure 备份 VM 快照 | 是 | - |
 | 成本 | 高于高级存储 | - |
@@ -236,6 +236,7 @@ Azure 超级磁盘为 Azure IaaS VM 提供高吞吐量、高 IOPS 和一贯低�
     - [带有适用于 SAP 应用程序的 Azure NetApp 文件的 SUSE Linux Enterprise Server 上 Azure VM 上的 SAP NetWeaver 的高可用性](./high-availability-guide-suse-netapp-files.md)
     - [使用适用于 SAP 应用程序的 Azure NetApp 文件实现 Red Hat Enterprise Linux 上的 SAP NetWeaver 的 Azure 虚拟机高可用性](./high-availability-guide-rhel-netapp-files.md)
 - 为 /hana/data 和 /hana/log 卷使用 NFS v4.1 共享和/或为 /hana/shared 卷使用 NFS v4.1 或 NFS v3 卷的 SAP HANA 部署，如 [SAP HANA Azure 虚拟机存储配置](./hana-vm-operations-storage.md)一文中所述
+- 为 Oracle 数据和重做日志卷使用 [dNFS](https://docs.oracle.com/en/database/oracle/oracle-database/19/ntdbi/creating-an-oracle-database-on-direct-nfs.html#GUID-2A0CCBAB-9335-45A8-B8E3-7E8C4B889DEA) 的 Oracle Linux 来宾 OS 中的 Oracle 部署。 有关更多详细信息，请参阅[适用于 SAP 工作负载的 Azure 虚拟机 Oracle DBMS 部署](./dbms_guide_oracle.md)一文
 
 > [!NOTE]
 > 基于 Azure NetApp 文件的 NFS 或 SMB 共享不支持其他 DBMS 工作负载。 如果今后在此方面有变化，我们将提供更新和更改。
@@ -248,22 +249,22 @@ Azure 超级磁盘为 Azure IaaS VM 提供高吞吐量、高 IOPS 和一贯低�
 
 下面是 SAP 工作负载的功能矩阵：
 
-| 功能| 评论| 备注/链接 | 
+| 功能| 注释| 备注/链接 | 
 | --- | --- | --- | 
 | OS 基本 VHD | 不可用 | - |
 | 数据磁盘 | 适用 | 仅限 SAP HANA  |
-| SAP 全局传输目录 | YES | SMB 和 NFS |
+| SAP 全局传输目录 | 是 | SMB 和 NFS |
 | SAP sapmnt | 适用 | 所有系统 SMB（仅适用于 Windows）或 NFS（仅适用于 Linux） |
 | 备份存储 | 适用 | - |
-| 共享/共享磁盘 | YES | SMB 3.0、NFS v3 和 NFS v4.1 |
+| 共享/共享磁盘 | 是 | SMB 3.0、NFS v3 和 NFS v4.1 |
 | 复原能力 | LRS | 不为磁盘提供 GRS 或 ZRS |
 | 延迟 | 极低 | - |
-| IOPS SLA | YES | - |
+| IOPS SLA | 是 | - |
 | IOPS 根据容量线性变化 | 严格线性  | 取决于[服务级别](../../../azure-netapp-files/azure-netapp-files-service-levels.md) |
-| 吞吐量 SLA | YES | - |
+| 吞吐量 SLA | 是 | - |
 | 吞吐量根据容量线性变化 | 托架中为半线性变化 | 取决于[服务级别](../../../azure-netapp-files/azure-netapp-files-service-levels.md) |
-| HANA 认证 | YES | - |
-| 可以使用磁盘快照 | YES | - |
+| HANA 认证 | 是 | - |
+| 可以使用磁盘快照 | 是 | - |
 | 可以使用 Azure 备份 VM 快照 | 是 | - |
 | 成本 | 高于高级存储 | - |
 
@@ -281,7 +282,7 @@ ANF 存储的其他内置功能：
 ## <a name="azure-standard-ssd-storage"></a>Azure 标准 SSD 存储
 与 Azure 标准 HDD 存储相比，Azure 标准 SSD 存储提供更高的可用性、一致性、可靠性和更低的延迟。 它已针对需要在较低 IOPS 级别保持一致性能的工作负载进行优化。 此存储是 IOPS 和吞吐量需求较低的非生产 SAP 系统使用的最低配存储。 下面是 SAP 工作负载的功能矩阵：
 
-| 功能| 评论| 备注/链接 | 
+| 功能| 注释| 备注/链接 | 
 | --- | --- | --- | 
 | OS 基本 VHD | 受限适用 | 非生产系统 |
 | 数据磁盘 | 受限适用 | IOPS 和延迟需求较低的某些非生产系统 |
@@ -295,8 +296,8 @@ ANF 存储的其他内置功能：
 | 每个磁盘的最大 IOPS | 500 | 与磁盘大小无关 |
 | 吞吐量 SLA | 是 | - |
 | HANA 认证 | 是 | - |
-| 可以使用磁盘快照 | YES | - |
-| 可以使用 Azure 备份 VM 快照 | YES | - |
+| 可以使用磁盘快照 | 是 | - |
+| 可以使用 Azure 备份 VM 快照 | 是 | - |
 | 成本 | LOW | - |
 
 
@@ -308,7 +309,7 @@ ANF 存储的其他内置功能：
 ## <a name="azure-standard-hdd-storage"></a>Azure 标准 HDD 存储
 在 2014 年当 Azure 基础结构经认证适用于 SAP NetWeaver 工作负载时，Azure 标准 HDD 存储是唯一的存储类型。 在 2014 年，Azure 虚拟机都比较小，而且存储吞吐量较低。 因此，此存储类型刚好能够满足需求。 该存储非常适合对延迟不敏感的工作负载，而在 SAP 空间中很难遇到这种工作负载。 随着 Azure VM 吞吐量以及这些 VM 生成的工作负载不断增长，我们不再认为此存储类型适合在 SAP 方案中使用。 下面是 SAP 工作负载的功能矩阵：
 
-| 功能| 评论| 备注/链接 | 
+| 功能| 注释| 备注/链接 | 
 | --- | --- | --- | 
 | OS 基本 VHD | 不适用 | - |
 | 数据磁盘 | 不适用 | - |
@@ -322,8 +323,8 @@ ANF 存储的其他内置功能：
 | 每个磁盘的最大 IOPS | 500 | 与磁盘大小无关 |
 | 吞吐量 SLA | 是 | - |
 | HANA 认证 | 是 | - |
-| 可以使用磁盘快照 | YES | - |
-| 可以使用 Azure 备份 VM 快照 | YES | - |
+| 可以使用磁盘快照 | 是 | - |
+| 可以使用 Azure 备份 VM 快照 | 是 | - |
 | 成本 | LOW | - |
 
 

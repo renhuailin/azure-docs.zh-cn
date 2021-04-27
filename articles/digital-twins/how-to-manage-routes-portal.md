@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 31f960b39e771e7bfbf67c6e52c5da8e1fc6e0ec
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8a8cc6563d8e3cae942c4dfb43afa3d05f6f2b75
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932448"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257291"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>在 Azure 数字孪生中管理终结点和路由（门户）
 
 [!INCLUDE [digital-twins-route-selector.md](../../includes/digital-twins-route-selector.md)]
 
-在 Azure 数字孪生中，可将[事件通知](how-to-interpret-event-data.md)路由到下游服务或连接的计算资源。 首先需要设置可接收事件的终结点。 然后，可创建[事件路由](concepts-route-events.md)来指定由 Azure 数字孪生生成的哪些事件传递到哪些终结点。
+在 Azure 数字孪生中，可将[事件通知](concepts-event-notifications.md)路由到下游服务或连接的计算资源。 首先需要设置可接收事件的终结点。 然后，可创建[事件路由](concepts-route-events.md)来指定由 Azure 数字孪生生成的哪些事件传递到哪些终结点。
 
 本文介绍使用 [Azure 门户](https://portal.azure.com)创建终结点和路由的过程。
 
@@ -37,7 +37,7 @@ ms.locfileid: "105932448"
 
 从结果中选择实例，即可在实例概述中查看这些详细信息：
 
-:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="Azure 数字孪生实例“概述”页的屏幕截图。名称和资源组突出显示。":::
+:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="Azure 数字孪生实例“概述”页的屏幕截图。名称和资源组已突出显示。":::
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>为 Azure 数字孪生创建终结点
 
@@ -82,7 +82,7 @@ ms.locfileid: "105932448"
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="用于验证终结点创建情况的通知的屏幕截图。门户顶部栏中铃形图标已选定，显示一条通知，指示“终结点 ADT-eh-endpoint 已成功创建”。":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="用于验证终结点创建的通知的屏幕截图。门户顶部栏中铃形图标已选定，显示一条通知表示“已成功创建终结点 ADT-eh-endpoint”。":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -131,7 +131,7 @@ ms.locfileid: "105932448"
 * “名称”字段的路由名称
 * 要用于创建路由的“终结点” 
 
-要启用该路由，还必须“添加事件路由筛选器”，其值至少为 `true`。 （保留默认值 `false` 会创建路由，但不会向其发送事件。）为此，请切换“高级编辑器”的开关将其启用，并在“筛选器”框中写入 `true`。
+要启用该路由，还必须“添加事件路由筛选器”，其值至少为 `true`。 （保留默认值 `false` 会创建路由，但不会向其发送事件。）因此，请切换“高级编辑器”的开关将其启用，并在“筛选器”框中写入 `true`。
 
 :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="为实例创建事件路由的屏幕截图。" lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
 
@@ -163,7 +163,7 @@ ms.locfileid: "105932448"
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-1.png" alt-text="使用基本筛选器创建事件路由的屏幕截图。选中了事件的复选框。":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-1.png" alt-text="使用基本筛选器创建事件路由的屏幕截图。选择事件的复选框。":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -173,7 +173,7 @@ ms.locfileid: "105932448"
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-2.png" alt-text="使用基本筛选器创建事件路由的屏幕截图。显示了选择事件后自动填充的筛选器文本。":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-2.png" alt-text="使用基本筛选器创建事件路由的屏幕截图。显示选择事件后自动填充的筛选器文本。":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -202,4 +202,4 @@ ms.locfileid: "105932448"
 ## <a name="next-steps"></a>后续步骤
 
 阅读可接收的不同类型的事件消息：
-* [如何：解释事件数据](how-to-interpret-event-data.md)
+* [概念：事件通知](concepts-event-notifications.md)

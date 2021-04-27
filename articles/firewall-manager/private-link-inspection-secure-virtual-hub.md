@@ -7,14 +7,17 @@ ms.service: firewall-manager
 ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: jocorte
-ms.openlocfilehash: a1237077b9e0a1af67d34c85d8ea8d526bd71372
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 7322bab635d398fc7a5335546ba6fef327ff24b2
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106281201"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259347"
 ---
 # <a name="secure-traffic-destined-to-private-endpoints-in-azure-virtual-wan"></a>保护发往 Azure 虚拟 WAN 中专用终结点的流量
+
+> [!NOTE]
+> 本文仅适用于安全虚拟中心。 如果要在中心虚拟网络中使用 Azure 防火墙检查流向专用终结点的流量，请参阅[使用 Azure 防火墙检查流向专用终结点的流量](../private-link/inspect-traffic-with-azure-firewall.md)。
 
 [Azure 专用终结点](../private-link/private-endpoint-overview.md)是 [Azure 专用链接](../private-link/private-link-overview.md)的构建基块。 在虚拟网络中部署的 Azure 资源可以通过专用终结点来与专用链接资源进行私密通信。
 
@@ -26,10 +29,10 @@ Azure 防火墙使用以下任何方法筛选流量：
 
 * [网络规则中的 FQDN](../firewall/fqdn-filtering-network-rules.md)，适用于 TCP 和 UDP 协议
 * [应用程序规则中的 FQDN](../firewall/features.md#application-fqdn-filtering-rules)，适用于 HTTP、HTTPS 和 MSSQL。
-* 使用[网络规则](../firewall/features.md#network-traffic-filtering-rules)检查源和目标 IP 地址、端口与协议
+* 使用[网络规则](../firewall/features.md#network-traffic-filtering-rules)的源和目标 IP 地址、端口与协议
 
 使用应用程序规则而不是网络规则来检查发往专用终结点的流量。
-安全虚拟中心由 Microsoft 管理，无法链接到[专用 DNS 区域](../dns/private-dns-privatednszone.md)。 但是，需要建立这种链接才能将[专用链接资源](../private-link/private-endpoint-overview.md#private-link-resource) FQDN 解析为其相应的专用终结点 IP 地址。
+安全虚拟中心由 Microsoft 管理，无法链接到[专用 DNS 区域](../dns/private-dns-privatednszone.md)。 需要建立这种链接才能将[专用链接资源](../private-link/private-endpoint-overview.md#private-link-resource) FQDN 解析为其相应的专用终结点 IP 地址。
 
 仅在[代理模式](../azure-sql/database/connectivity-architecture.md#connection-policy)下支持 SQL FQDN 筛选（端口 1433）。 与重定向相比，代理模式可能会导致更高的延迟 。 如果你要继续使用重定向模式（这是在 Azure 中进行连接的客户端的默认模式），可以使用防火墙网络规则中的 FQDN 来筛选访问。
 

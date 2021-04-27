@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: 8f679626b69bd855e86b94cdde51955edd068e8f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8846efa3619cec383809cdbd6efe70e3622fa007
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91714906"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365189"
 ---
 # <a name="enable-automanage-for-virtual-machines-through-azure-policy"></a>通过 Azure Policy 为虚拟机启用 Automanage
 
@@ -30,6 +30,8 @@ ms.locfileid: "91714906"
 > [!IMPORTANT]
 > 启用 Automanage 需要以下 Azure RBAC 权限：“所有者”角色或“参与者”角色，以及“用户访问管理员”角色。
 
+## <a name="direct-link-to-policy"></a>策略的直接链接
+可在 Azure 门户中按[配置要加入 Azure Automanage 的虚拟机](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F270610db-8c04-438a-a739-e8e6745b22d3)的名称找到 Automanage 策略定义。 如果单击此链接，请直接跳到下面的[查找并分配策略](#locate-and-assign-the-policy)中的步骤 8。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -53,9 +55,9 @@ ms.locfileid: "91714906"
 1. 在“基本信息”选项卡下，通过设置“订阅”和“资源组”来填写“范围”
 
     > [!NOTE]
-    > “范围”可让你定义此策略适用于哪些 VM。 可以在订阅级别或资源组级别设置应用程序。 如果设置资源组，则该资源组中当前存在的所有 VM 或我们添加到该资源组中的任何将来的 VM 都会自动启用 Automanage。 
+    > “范围”可让你定义此策略适用于哪些 VM。 可以在订阅级别或资源组级别设置应用程序。 如果设置资源组，则该资源组中当前存在的所有 VM 或我们添加到该资源组中的任何将来的 VM 都会自动启用 Automanage。
 
-1. 单击“参数”选项卡，然后设置“Automanage 帐户”和所需的“配置文件” 
+1. 单击“参数”选项卡，然后设置“Automanage 帐户”和所需的“配置文件”
 1. 在“查看 + 创建”选项卡下，查看设置
 1. 通过单击“创建”应用分配
 1. 在“定义”旁边的“分配”选项卡中查看分配
@@ -64,9 +66,9 @@ ms.locfileid: "91714906"
 > 一段时间过后，该策略才会对当前在资源组或订阅中的 VM 生效。
 
 
-## <a name="next-steps"></a>后续步骤 
+## <a name="next-steps"></a>后续步骤
 
-了解通过 Azure 门户为虚拟机启用 Azure Automanage 的另一种方法。 
+了解通过 Azure 门户为虚拟机启用 Azure Automanage 的另一种方法。
 
 > [!div class="nextstepaction"]
 > [在 Azure 门户中为虚拟机启用 Automanage](quick-create-virtual-machines-portal.md)

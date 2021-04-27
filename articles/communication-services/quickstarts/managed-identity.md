@@ -10,32 +10,39 @@ ms.date: 03/10/2021
 ms.author: peiliu
 ms.reviewer: mikben
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: e4b71cc889615fd4784f11c9edd77b44ef421d9e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: aedf54c8c958e96b2bbfa31652b4861ff452f75a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105110712"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307416"
 ---
 # <a name="use-managed-identities"></a>使用托管标识
 通过使用托管标识开始使用 Azure 通信服务。 通信服务标识和 SMS SDK 支持通过 [Azure 资源托管标识](../../active-directory/managed-identities-azure-resources/overview.md)进行 Azure Active Directory (Azure AD) 身份验证。
 
 本快速入门介绍如何通过支持托管标识的 Azure 环境授予对标识和 SMS SDK 的访问权限。 还介绍了如何在开发环境中测试代码。
 
+## <a name="prerequisites"></a>先决条件
+
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free)
+- 有效的 Azure 通信服务资源，如果没有，请参阅[创建一个通信服务资源](./create-communication-resource.md)。
+- 若要发送短信，需要一个[电话号码](./telephony-sms/get-phone-number.md)。
+- 用于开发环境的设置托管标识，请参阅[使用托管标识授予访问权限](./managed-identity-from-cli.md)
+
 ::: zone pivot="programming-language-csharp"
-[!INCLUDE [.NET](./includes/managed-identity-net.md)]
+[!INCLUDE [.NET](./includes/managed-identity/managed-identity-net.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
-[!INCLUDE [JavaScript](./includes/managed-identity-js.md)]
+[!INCLUDE [JavaScript](./includes/managed-identity/managed-identity-js.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-[!INCLUDE [Java](./includes/managed-identity-java.md)]
+[!INCLUDE [Java](./includes/managed-identity/managed-identity-java.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-[!INCLUDE [Python](./includes/managed-identity-python.md)]
+[!INCLUDE [Python](./includes/managed-identity/managed-identity-python.md)]
 ::: zone-end
 
 ## <a name="next-steps"></a>后续步骤

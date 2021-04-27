@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 04/09/2021
 ms.author: ramakk
-ms.openlocfilehash: 96d8ba058a33d408ec2ee2a1adfba9011f393da9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d002932bca51300fa6a031ce7ab0d69186afe9c3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96184478"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311679"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp 文件网络规划指南
 
@@ -46,7 +46,7 @@ Azure NetApp 文件目前不支持以下功能：
 
 以下网络限制适用于 Azure NetApp 文件：
 
-* 含有 Azure NetApp 文件（包括对等互连 VNet）的 VNet 中使用的 IP 数量不能超过 1000。 我们正在努力提高此限制以满足客户缩放需求。 
+* 含有 Azure NetApp 文件（包括立即对等的 VNet）的 VNet 中使用的 IP 数量不能超过 1000。 我们正在努力提高此限制以满足客户缩放需求。 
 * 在每个 Azure 虚拟网络 (VNet) 中，只能将一个子网委派给 Azure NetApp 文件。
 
 

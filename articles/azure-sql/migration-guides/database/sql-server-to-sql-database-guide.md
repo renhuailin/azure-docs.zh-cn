@@ -10,17 +10,17 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 03/19/2021
-ms.openlocfilehash: e2de694a153276dcace1070d35af44dec1056e03
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6ce7de649876ed8ccff1254f25a7213b407dacae
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564919"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284079"
 ---
 # <a name="migration-guide-sql-server-to-azure-sql-database"></a>迁移指南：SQL Server 到 Azure SQL 数据库
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
 
-本指南帮助你将 SQL Server 实例迁移至 Azure SQL 数据库。 
+在本指南中，了解如何将 SQL Server 实例[迁移](https://azure.microsoft.com/migration/migration-journey)到 Azure SQL 数据库。 
 
 你可以迁移在本地或以下位置运行的 SQL Server： 
 
@@ -36,7 +36,7 @@ ms.locfileid: "105564919"
 
 ## <a name="prerequisites"></a>先决条件 
 
-若要将 SQL Server 迁移到 Azure SQL 数据库，请确保满足以下先决条件： 
+若要将 [SQL Server 迁移](https://azure.microsoft.com/en-us/migration/sql-server/)到 Azure SQL 数据库，请确保满足以下先决条件： 
 
 - 一个已选定的[迁移方法](sql-server-to-sql-database-overview.md#compare-migration-options)及相应的工具。
 - 在可以连接到源 SQL Server 的计算机上安装的[数据迁移助手 (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)。
@@ -47,7 +47,7 @@ ms.locfileid: "105564919"
 
 ## <a name="pre-migration"></a>迁移前
 
-验证你的源环境是否受支持后，开始预迁移阶段。 发现所有现有数据源，评估迁移可行性，确定可能会妨碍迁移的任何阻碍性问题。 
+验证你的源环境是否受支持后，开始预迁移阶段。 发现所有现有数据源，评估迁移可行性，确定可能会妨碍 [Azure 云迁移](https://azure.microsoft.com/migration)的任何阻碍性问题。
 
 ### <a name="discover"></a>发现
 
@@ -200,6 +200,10 @@ ms.locfileid: "105564919"
 
 - 有关在执行各种数据库和数据迁移方案及专门任务时可为你提供帮助的 Microsoft 与第三方服务和工具的矩阵，请参阅[数据迁移服务和工具](../../../dms/dms-tools-matrix.md)。
 
+
+- 若要详细了解 [Azure Migrate](https://azure.microsoft.com/services/azure-migrate)，请参阅
+   - [Azure Migrate](../../../migrate/migrate-services-overview.md)
+
 - 若要详细了解 SQL 数据库，请参阅：
     - [Azure SQL 数据库概述](../../database/sql-database-paas-overview.md)
    - [Azure 总拥有成本计算器](https://azure.microsoft.com/pricing/tco/calculator/) 
@@ -208,6 +212,7 @@ ms.locfileid: "105564919"
 - 有关云迁移的框架和采用周期的详细信息，请参阅
    -  [适用于 Azure 的云采用框架](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [为迁移到 Azure 的工作负载计算成本和调整大小的最佳做法](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [云迁移资源](https://azure.microsoft.com/migration/resources)
 
 - 若要评估应用程序访问层，请参阅 [Data Access Migration Toolkit（预览版）](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)
 - 若要详细了解如何执行数据访问层 A/B 测试，请参阅[数据库实验助手](/sql/dea/database-experimentation-assistant-overview)。

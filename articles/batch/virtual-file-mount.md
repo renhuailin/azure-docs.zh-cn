@@ -4,12 +4,12 @@ description: 了解如何在 Batch 池上装载虚拟文件系统。
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 03/26/2021
-ms.openlocfilehash: dc5fbdf9ca0df8362a8999856c3f7163dd5e59b9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dcd56a12d8728b83cdcb7cea4c16c4aedd4251a7
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626021"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105742"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>在 Batch 池上装载虚拟文件系统
 
@@ -53,7 +53,7 @@ Azure Batch 支持在 Batch 池的 Windows 或 Linux 计算节点上装载云存
 
 ### <a name="azure-files-share"></a>Azure 文件存储共享
 
-Azure 文件存储是标准的 Azure 云文件系统产品/服务。 若要详细了解如何获取装载配置代码示例中的任何参数，请参阅[使用 Azure 文件存储共享](../storage/files/storage-how-to-use-files-windows.md)。
+Azure 文件存储是标准的 Azure 云文件系统产品/服务。 若要详细了解如何获取装载配置代码示例中的任何参数，请查看[使用 Azure 文件存储共享 - SMB](../storage/files/storage-how-to-use-files-windows.md) 或[使用 Azure 文件存储共享 - NFS](../storage/files/storage-files-how-to-create-nfs-shares.md)。
 
 ```csharp
 new PoolAddParameter

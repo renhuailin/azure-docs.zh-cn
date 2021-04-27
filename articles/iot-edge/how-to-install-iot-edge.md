@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 03/26/2021
 ms.author: kgremban
-ms.openlocfilehash: a98eed61904b580988fe34302999f3ec6a24ac9e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 39e165d862d6e174f763cd58529727fd26b8bd46
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640916"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311067"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>安装或卸载 Azure IoT Edge for Linux
 
@@ -125,10 +125,10 @@ IoT Edge 安全守护程序提供和维护 IoT Edge 设备上的安全标准。 
    sudo apt-get install iotedge
    ```
 
-或者，如果要安装特定版本的安全守护程序，请从 apt 列表输出中指定该版本。 还要为 libiothsm-std 包指定同一版本，否则将安装其最新版本。 例如，以下命令将安装最新的 1.0.10 发行版：
+或者，如果要安装特定版本的安全守护程序，请从 apt 列表输出中指定该版本。 还要为 libiothsm-std 包指定同一版本，否则将安装其最新版本。 例如，以下命令将安装最新的 1.1 发行版：
 
    ```bash
-   sudo apt-get install iotedge=1.0.10* libiothsm-std=1.0.10*
+   sudo apt-get install iotedge=1.1* libiothsm-std=1.1*
    ```
 
 如果你要安装的版本未列出，请按照本文后面的[脱机或特定版本安装](#offline-or-specific-version-installation-optional)步骤进行操作。 此部分说明了如何将 IoT Edge 安全守护程序的任何之前版本或候选发布版本作为目标。
@@ -146,7 +146,7 @@ IoT 标识服务在 IoT Edge 1.2 版中引入。 此服务处理 IoT Edge 以及
 本部分中的步骤表示在具有 Internet 连接的设备上安装最新版本的典型过程。 如果需要安装特定版本（如预发行版）或需要在脱机状态下安装，请按照本文后面的[脱机或特定版本安装](#offline-or-specific-version-installation-optional)步骤进行操作。
 
 >[!NOTE]
->本部分中的步骤说明了如何安装 IoT Edge 1.2 版（当前为公共预览版）。 如果你正在寻找安装 IoT Edge 最新正式发布版的步骤，请查看本文的 [1.1 (LTS)](?view=iotedge-2018-06&preserve-view=true) 版本。
+>本部分的步骤说明如何安装 IoT Edge 版本 1.2。
 >
 >如果你已经有运行旧版本的 IoT Edge 设备并想要升级到 1.2，请按照[更新 IoT Edge 安全守护程序和运行时](how-to-update-iot-edge.md)中的步骤操作。 1\.2 版与先前的 IoT Edge 版本有很大不同，因此需要采取特定的步骤进行升级。
 
@@ -168,15 +168,11 @@ IoT 标识服务在 IoT Edge 1.2 版中引入。 此服务处理 IoT Edge 以及
    sudo apt-get install aziot-edge
    ```
 
-<!-- commenting out for public preview. reintroduce at GA
-
-Or, if you want to install a specific version of IoT Edge and the identity service, specify the versions from the apt list output. Specify the same versions for both services.. For example, the following command installs the most recent version of the 1.2 release:
+或者，如果要安装特定版本的 IoT Edge 和标识服务，请从 apt 列表输出中指定版本。 为两个服务指定相同的版本。 例如，以下命令将安装最新的 1.2 发行版：
 
    ```bash
    sudo apt-get install aziot-edge=1.2* aziot-identity-service=1.2*
    ```
-
--->
 
 <!-- end 1.2 -->
 ::: moniker-end
@@ -336,7 +332,7 @@ Or, if you want to install a specific version of IoT Edge and the identity servi
    sudo nano /etc/aziot/config.toml
    ```
 
-找到文件的预配部分，并取消注释“使用 X.509 标识证书进行手动预配”行。 确保所有其他预配部分都已被注释掉。
+找到文件的预配部分，并取消注释“使用 X.509 标识证书进行手动预配”行。 请确保注释掉任何其他预配部分。
 
    ```toml
    # Manual provisioning with x.509 certificates
@@ -357,8 +353,8 @@ Or, if you want to install a specific version of IoT Edge and the identity servi
 
 * **iothub_hostname**：设备将连接到的 IoT 中心的主机名。 例如 `{IoT hub name}.azure-devices.net`。
 * **device_id**：注册设备时提供的 ID。
-* **identity_cert**：设备上标识证书的 URI，例如 `file:///path/identity_certificate.pem`。 或者，使用 EST 或本地证书颁发机构动态颁发证书。
-* **identity_pk**：所提供标识证书的私钥文件 URI，例如 `file:///path/identity_key.pem`。 或者，提供 PKCS#11 URI，然后在配置文件的 PKCS#11 部分提供你的配置信息。
+* identity_cert：设备上标识证书的 URI，例如 `file:///path/identity_certificate.pem`。 或者，使用 EST 或本地证书颁发机构动态颁发证书。
+* identity_pk：所提供标识证书的私钥文件 URI，例如 `file:///path/identity_key.pem`。 或者，提供 PKCS#11 URI，然后在配置文件的 PKCS#11 部分提供你的配置信息。
 
 保存并关闭该文件。
 
@@ -462,7 +458,7 @@ Or, if you want to install a specific version of IoT Edge and the identity servi
    2. 将复制的链接用在以下命令中，安装该版本的 hsmlib：
 
       ```bash
-      curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
+      curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo apt-get install ./libiothsm-std.deb
       ```
 
    3. 找到与 IoT Edge 设备的体系结构匹配的 **iotedge** 文件。 右键单击文件链接并复制链接地址。
@@ -470,7 +466,7 @@ Or, if you want to install a specific version of IoT Edge and the identity servi
    4. 将复制的链接用在以下命令中，安装该版本的 IoT Edge 安全守护程序：
 
       ```bash
-      curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
+      curl -L <iotedge link> -o iotedge.deb && sudo apt-get install ./iotedge.deb
       ```
 
 <!-- end 1.1 -->

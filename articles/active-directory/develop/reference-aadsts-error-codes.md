@@ -12,12 +12,12 @@ ms.date: 03/17/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 56ffa8c33c409e274318407a70f33edaabb5073d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 75d838e8ce785a4f59b056bf0dec736b982ea716
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104578492"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107283807"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 身份验证和授权错误代码
 
@@ -123,7 +123,7 @@ ms.locfileid: "104578492"
 | AADSTS50055 | InvalidPasswordExpiredPassword - 密码已过期。 |
 | AADSTS50056 | 密码无效或为 null - 密码在此用户的存储中不存在。 |
 | AADSTS50057 | UserDisabled - 用户帐户处于禁用状态。 帐户已被管理员禁用。 |
-| AADSTS50058 | UserInformationNotProvided - 表示用户未登录。 这是一个常见的错误，如果用户未经过身份验证并且尚未登录，则预期会出现此错误。</br>如果在用户登录的 SSO 上下文中遇到此错误，则表示 SSO 会话未找到或无效。</br>如果指定了 prompt=none，则可能会在应用程序中返回此错误。 |
+| AADSTS50058 | UserInformationNotProvided - 表示用户未登录。 这是一个常见的错误，如果用户未经过身份验证并且尚未登录，则预期会出现此错误。</br>如果在用户之前已登录的 SSO 上下文中遇到此错误，这表示 SSO 会话未找到或无效。</br>如果指定了 prompt=none，则可能会在应用程序中返回此错误。 |
 | AADSTS50059 | MissingTenantRealmAndNoUserInformationProvided - 在请求中未找到租户标识信息，或者任何提供的凭据未隐式指定此信息。 用户可以联系租户管理员来帮助解决此问题。 |
 | AADSTS50061 | SignoutInvalidRequest - 注销请求无效。 |
 | AADSTS50064 | CredentialAuthenticationError - 用户名或密码凭据验证失败。 |
@@ -168,7 +168,7 @@ ms.locfileid: "104578492"
 | AADSTS50168 | ChromeBrowserSsoInterruptRequired - 客户端能够通过 Windows 10 帐户扩展获取 SSO 令牌，但在请求中找不到令牌，或提供的令牌已过期。 |
 | AADSTS50169 | InvalidRequestBadRealm - 领域不是当前服务命名空间的已配置领域。 |
 | AADSTS50170 | MissingExternalClaimsProviderMapping - 缺少外部控制映射。 |
-| AADSTS50173 | FreshTokenNeeded - 所提供的授权因被撤销而过期，需要一个全新的身份验证令牌。 管理员或用户撤销了该用户的令牌，导致后续的令牌刷新失败，需要重新进行身份验证。 让用户重新登录。 |
+| AADSTS50173 | FreshTokenNeeded - 所提供的授权因被撤销而过期，需要一个新的身份验证令牌。 管理员或用户撤销了该用户的令牌，导致后续的令牌刷新失败，需要重新进行身份验证。 让用户重新登录。 |
 | AADSTS50177 | ExternalChallengeNotSupportedForPassthroughUsers - 直通用户不支持外部质询。 |
 | AADSTS50178 | SessionControlNotSupportedForPassthroughUsers - 直通用户不支持会话控制。 |
 | AADSTS50180 | WindowsIntegratedAuthMissing - 需要 Windows 集成身份验证。 为租户启用无缝 SSO。 |
@@ -187,7 +187,7 @@ ms.locfileid: "104578492"
 | AADSTS53002 | ApplicationUsedIsNotAnApprovedApp - 使用的应用不是批准用于条件访问的应用。 用户需使用可用的获批准应用列表中的某个应用才能获取访问权限。 |
 | AADSTS53003 | BlockedByConditionalAccess - 条件访问策略已阻止访问。 访问策略不允许令牌颁发。 |
 | AADSTS53004 | ProofUpBlockedDueToRisk - 在访问此内容之前，用户需要完成多重身份验证注册过程。 用户应注册多重身份验证。 |
-| AADSTS53011 | 由于主租户存在风险，用户被阻止。 |
+| AADSTS53011 | 用户因主租户的风险而被阻止。 |
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist - 用户或管理员尚未许可将应用程序与 ID X 配合使用。请发送针对该用户和资源的交互式授权请求。 |
 | AADSTS65004 | UserDeclinedConsent - 用户已拒绝许可访问该应用。 让用户重试登录并许可应用|

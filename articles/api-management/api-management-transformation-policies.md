@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: c0c7a6b25c15be2e521e0985c315baf819650aa5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 48f8445e30bd186681d1a4384d16f228a3382473
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99491750"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012431"
 ---
 # <a name="api-management-transformation-policies"></a>API 管理转换策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](./api-management-policies.md)。
@@ -214,7 +214,7 @@ ms.locfileid: "99491750"
 ```
 
 > [!NOTE]
-> 后端实体可以通过 [Azure 门户](how-to-configure-service-fabric-backend.md)、管理 [API](/rest/api/apimanagement) 和 [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) 进行管理。
+> 后端实体可以通过 [Azure 门户](how-to-configure-service-fabric-backend.md) 管理 [API](/rest/api/apimanagement) 和 [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) 进行管理。
 
 ### <a name="example"></a>示例
 
@@ -269,7 +269,7 @@ ms.locfileid: "99491750"
 |名称|说明|必须|默认|
 |----------|-----------------|--------------|-------------|
 |base-url|新的后端服务基 URL。|必须存在 `base-url` 或 `backend-id` 中的一个。|空值|
-|backend-id|要路由到的后端标识符。 （后端实体通过 [Azure 门户](how-to-configure-service-fabric-backend.md)、[API](/rest/api/apimanagement) 和 [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) 进行管理。）|必须存在 `base-url` 或 `backend-id` 中的一个。|空值|
+|backend-id|要路由到的后端标识符。 （后端实体可以通过 [Azure 门户](how-to-configure-service-fabric-backend.md) [API](/rest/api/apimanagement) 和 [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) 进行管理。）|必须存在 `base-url` 或 `backend-id` 中的一个。|空值|
 |sf-partition-key|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 用于从名称解析服务中解析特定分区。|否|空值|
 |sf-replica-type|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 控制请求是否应转到分区的主要副本或次要副本。 |否|空值|
 |sf-resolve-condition|只有在后端为 Service Fabric 服务时才适用。 确定对 Service Fabric 后端的调用是否针对新解析重复进行的条件。|否|空值|
@@ -366,7 +366,7 @@ ms.locfileid: "99491750"
 > [!IMPORTANT]
 > 在“C# 模式”下配置 `set-body` 策略中使用的 Liquid 的实现。 执行筛选之类的操作时这点尤为重要。 例如，使用日期筛选器需要使用 Pascal 大小写和 C# 日期格式，如：
 >
-> {{body.foo.startDateTime| Date:"yyyyMMddTHH:mm:ddZ"}}
+> {{body.foo.startDateTime| Date:"yyyyMMddTHH:mm:ssZ"}}
 
 > [!IMPORTANT]
 > 为正确绑定到使用 Liquid 模板的 XML 正文，请使用 `set-header` 策略将 Content-Type 设置为 application/xml、text/xml 或任何以 +xml 结尾的类型；对于 JSON 正文，其必须是 application/json、text/json 或任何以 +json 结尾的类型。

@@ -12,12 +12,12 @@ ms.date: 04/05/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c9de6b8d99f09d43a045787ee6185233b9d7ef25
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 074bffb8614be1f71ba1956fd5a238bc19354c58
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443232"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028720"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>使用 Application Insights 收集 Azure Active Directory B2C 日志
 
@@ -118,6 +118,50 @@ ms.locfileid: "106443232"
 
 有关查询的详细信息，请参阅 [Azure Monitor 中的日志查询概述](../azure-monitor/logs/log-query-overview.md)。
 
+## <a name="see-the-logs-in-vs-code-extension"></a>查看 VS Code 扩展中的日志
+
+建议为 [VS Code](https://code.visualstudio.com/) 安装 [Azure AD B2C 扩展](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)。 使用 Azure AD B2C 扩展，将按策略名称、相关 ID（Application Insights 显示相关 ID 的第一位数字）和日志时间戳组织日志。 此功能可帮助你根据本地时间戳查找相关日志，并查看 Azure AD B2C 执行的用户旅程。
+
+> [!NOTE]
+> 社区已开发适用于 Azure AD B2C 的 VS Code 扩展来帮助标识开发人员。 Microsoft 不支持此扩展，它严格按原样提供。
+
+### <a name="set-application-insights-api-access"></a>设置 Application Insights API 访问权限
+
+设置 Application Insights 并配置自定义策略后，需要获取 Application Insights API ID，然后创建 API 密钥 。 Azure AD B2C 扩展使用 API ID 和 API 密钥读取 Application Insights 事件（遥测）。 API 密钥的管理与密码类似。 请勿泄露。
+
+> [!NOTE]
+> Azure AD B2C 使用你先前创建的 Application Insights 检测密钥将遥测发送到 Application Insights。 仅在 Azure AD B2C 策略中使用检测密钥，而不在 VS Code 扩展中使用。
+
+获取 Application Insights ID 和密钥：
+
+1. 在 Azure 门户中，打开应用程序的 Application Insights 资源。
+1. 选择“设置”，然后选择“API 访问” 。
+1. 复制应用程序 ID
+1. 选择“创建 API 密钥”
+1. 选中“读取遥测”框。
+1. 在关闭“创建 API 密钥”边栏选项卡之前复制该密钥并将其保持在安全位置。 如果丢失了密钥，则需要创建另一个密钥。
+
+    ![演示如何创建 API 访问密钥的屏幕截图。](./media/troubleshoot-with-application-insights/application-insights-api-access.png)
+
+### <a name="set-up-azure-ad-b2c-vs-code-extension"></a>设置 Azure AD B2C VS Code 扩展
+
+现在你已经拥有了 Azure Application Insights API ID 和密钥，可以配置 VS Code 扩展以读取日志。 Azure AD B2C VS Code 扩展提供了两个设置范围：
+
+- **用户全局设置** - 这些设置全局适用于打开的任何 VS Code 实例。
+- **工作区设置** - 这些设置存储在工作区内，仅在工作区打开时才适用（使用 VS Code“打开文件夹”）。
+
+1. 在“Azure AD B2C 跟踪”资源管理器中，单击“设置”图标 。
+
+    ![演示如何选择 Application Insights 设置的屏幕截图。](./media/troubleshoot-with-application-insights/app-insights-settings.png)
+
+1. 提供 Azure Application Insights ID 和密钥 。
+1. 单击“保存” 
+
+保存设置后，Application Insights 日志将显示在“Azure AD B2C 跟踪(App Insights)”窗口中。
+
+![适用于 VS Code 的 Azure AD B2C 扩展的屏幕截图，其中显示了 Azure Application Insights 跟踪。](./media/troubleshoot-with-application-insights/vscode-extension-application-insights-trace.png)
+
+
 ## <a name="configure-application-insights-in-production"></a>在生产环境中配置 Application Insights
 
 为了提高生产环境性能和用户体验，有必要配置策略来使其忽略不重要的消息。 使用以下配置来仅向 Application Insights 发送严重错误消息。 
@@ -143,12 +187,8 @@ ms.locfileid: "106443232"
    
 1. 上传并测试策略。
 
+
+
 ## <a name="next-steps"></a>后续步骤
 
-社区已开发一个用户旅程查看器来帮助标识开发人员。 它将读取 Application Insights 实例，并提供用户旅程事件的有序视图。 可以获取源代码并将其部署在自己的解决方案中。
-
-Microsoft 不支持用户旅程播放器，它严格按原样提供。
-
-可在 GitHub 上的 Application Insights 中找到读取事件的查看器版本，具体网址是：
-
-[Azure-Samples/active-directory-b2c-advanced-policies](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/wingtipgamesb2c/src/WingTipUserJourneyPlayerWebApplication)
+- 了解如何[排查 Azure AD B2C 自定义策略问题](troubleshoot-custom-policies.md)

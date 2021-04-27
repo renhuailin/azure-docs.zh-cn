@@ -5,20 +5,20 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 04/06/2021
 ms.author: memildin
-ms.openlocfilehash: 664e985e0da1a9eeb43c99775b1685bb7645ff20
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 940cae8829a99ee7ffacdb41844237acc85b7761
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492641"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029193"
 ---
 # <a name="defend-azure-arc-enabled-kubernetes-clusters-running-in-on-premises-and-multi-cloud-environments"></a>保护本地和多云环境中运行的已启用 Azure Arc 的 Kubernetes 群集
 
-若要使用目前为 Azure Kubernetes 服务群集提供的相同威胁检测功能来保护本地群集，请在群集上启用 Azure Arc，并部署 Azure Defender For Kubernetes 群集扩展
+Azure Defender for Kubernetes 群集扩展使用为 Azure Kubernetes 服务群集提供的相同威胁检测功能来保护本地群集。 在群集启用[已启用 Azure Arc 的 Kubernetes](../azure-arc/kubernetes/overview.md)，并按照本页所述部署扩展。 
 
-还可以使用该扩展来保护其他云提供商中的计算机上部署的 Kubernetes 群集（不过，这些群集不在其托管 Kubernetes 服务上）。
+该扩展还可以保护其他云提供商上的 Kubernetes 群集（不过，这些群集不在其托管 Kubernetes 服务上）。
 
 > [!TIP]
 > 我们在 [GitHub 上的安装示例](https://aka.ms/kubernetes-extension-installation-examples)中提供了一些示例文件，以帮助你完成安装过程。
@@ -27,7 +27,7 @@ ms.locfileid: "106492641"
 
 | 方面 | 详细信息 |
 |--------|---------|
-| 发布状态 | **预览** [!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]|
+| 发布状态 | **预览**<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]|
 | 所需的角色和权限 | [安全管理员](../role-based-access-control/built-in-roles.md#security-admin)可以消除警报<br>[安全读取者](../role-based-access-control/built-in-roles.md#security-reader)可以查看结果 |
 | 定价 | 需要 [Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md) |
 | 支持的 Kubernetes 分布 | [Azure Stack HCI 上的 Azure Kubernetes 服务](/azure-stack/aks-hci/overview)<br>[Kubernetes](https://kubernetes.io/docs/home/)<br> [AKS 引擎](https://github.com/Azure/aks-engine)<br> [Red Hat OpenShift](https://www.openshift.com/learn/topics/kubernetes/)（4.6 或更高版本） |
@@ -114,7 +114,7 @@ Azure 安全中心的专业建议提供：
     az k8s-extension create --name microsoft.azuredefender.kubernetes --cluster-type connectedClusters --cluster-name <your-connected-cluster-name> --resource-group <your-rg> --extension-type microsoft.azuredefender.kubernetes --configuration-settings logAnalyticsWorkspaceResourceID=<log-analytics-workspace-resource-id> auditLogPath=<your-auditlog-path>
     ```
 
-### <a name="resource-manager"></a>[**Resource Manager**](#tab/k8s-deploy-resource-manager)
+### <a name="resource-manager"></a>[**资源管理器**](#tab/k8s-deploy-resource-manager)
 
 ### <a name="use-azure-resource-manager-to-deploy-the-azure-defender-extension"></a>使用 Azure 资源管理器部署 Azure Defender 扩展
 
@@ -141,7 +141,7 @@ Azure 安全中心的专业建议提供：
 
     其中：
 
-    | 名称            | 在   | 必需 | 类型   | 描述                                  |
+    | 名称            | 在   | 必须 | 类型   | 描述                                  |
     |-----------------|------|----------|--------|----------------------------------------------|
     | 订阅 ID | path | True     | 字符串 | 已启用 Azure Arc 的 Kubernetes 资源的订阅 ID |
     | 资源组  | path | True     | 字符串 | 包含已启用 Azure Arc 的 Kubernetes 资源的资源组的名称 |
@@ -324,7 +324,7 @@ Azure 安全中心的专业建议提供：
 DELETE https://management.azure.com/subscriptions/{{Subscription Id}}/resourcegroups/{{Resource Group}}/providers/Microsoft.Kubernetes/connectedClusters/{{Cluster Name}}/providers/Microsoft.KubernetesConfiguration/extensions/microsoft.azuredefender.kubernetes?api-version=2020-07-01-preview
 ```
 
-| 名称            | 在   | 必需 | 类型   | 描述                                           |
+| 名称            | 在   | 必须 | 类型   | 描述                                           |
 |-----------------|------|----------|--------|-------------------------------------------------------|
 | 订阅 ID | path | True     | 字符串 | 已启用 Arc 的 Kubernetes 群集的订阅 ID |
 | 资源组  | path | True     | 字符串 | 已启用 Arc 的 Kubernetes 群集的资源组  |

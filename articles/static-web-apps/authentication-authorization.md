@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 9c8dd723c9cde5c0534d9fd5ca4084c7ed15d213
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 29821733b73717634aa8f0ab72270f058ffd3ddc
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106218628"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309384"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Azure 静态 Web 应用预览版的身份验证和授权
 
@@ -24,7 +24,7 @@ Azure 静态 Web 应用通过使用以下提供程序管理身份验证来简化
 - Google<sup>1</sup>
 - Twitter
 
-特定于提供程序的[邀请](#invitations)将用户与角色关联，并根据 routes.json 文件中定义的规则向授权用户授予对[路由](routes.md)的访问权限。
+特定于提供程序的[邀请](#invitations)将用户与角色关联，并根据 staticwebapp.config.json 文件中定义的规则向授权用户授予对[路由](routes.md)的访问权限。
 
 默认情况下，将启用所有身份验证提供程序。 若要限制身份验证提供程序，请使用自定义路由规则[阻止访问](#block-an-authorization-provider)。
 
@@ -32,18 +32,18 @@ Azure 静态 Web 应用通过使用以下提供程序管理身份验证来简化
 
 ## <a name="roles"></a>角色
 
-访问静态 Web 应用的每个用户都属于一个或多个角色。  用户可以属于两个内置角色：
+访问静态 Web 应用的每个用户都属于一个或多个角色。 用户可以属于两个内置角色：
 
 - 匿名：所有用户都自动属于“匿名”角色。
 - 已通过身份验证：已登录的所有用户都属于“已通过身份验证”角色。
 
-除了内置角色以外，你还可以创建新角色，通过邀请将其分配给用户，并在 routes.json 文件中引用它们。
+除了内置角色以外，你还可以创建新角色，通过邀请将其分配给用户，并在 staticwebapp.config.json 文件中引用它们。
 
 ## <a name="role-management"></a>角色管理
 
 ### <a name="add-a-user-to-a-role"></a>将用户添加到角色
 
-若要将用户添加到你的网站，请生成允许你将用户关联到特定角色的邀请。 角色在 routes.json 文件中定义和维护。
+若要将用户添加到你的网站，请生成允许你将用户关联到特定角色的邀请。 角色在 staticwebapp.config.json 文件中定义和维护。
 
 <a name="invitations" id="invitations"></a>
 
@@ -53,25 +53,25 @@ Azure 静态 Web 应用通过使用以下提供程序管理身份验证来简化
 
 <a name="provider-user-details" id="provider-user-details"></a>
 
-| 授权提供程序 | 公开用户的  |
-| ---------------------- | ----------------- |
-| Azure Active Directory | 电子邮件地址     |
-| Facebook               | 电子邮件地址     |
-| GitHub                 | username          |
-| Google<sup>1</sup>     | 电子邮件地址     |
-| Twitter                | username          |
+| 授权提供程序 | 公开用户的 |
+| ---------------------- | ---------------- |
+| Azure Active Directory | 电子邮件地址    |
+| Facebook               | 电子邮件地址    |
+| GitHub                 | username         |
+| Google<sup>1</sup>     | 电子邮件地址    |
+| Twitter                | username         |
 
 1. 在 [Azure 门户](https://portal.azure.com)中导航到静态 Web 应用资源。
 1. 在“设置”下面，单击“角色管理”。
 1. 单击“邀请”按钮。
 1. 从选项列表中选择“授权提供程序”。
 1. 在“被邀请者详细信息”框中添加收件人的用户名或电子邮件地址。
-    - 对于 GitHub 和 Twitter，输入用户名。 对于所有其他工具，输入收件人的电子邮件地址。
+   - 对于 GitHub 和 Twitter，输入用户名。 对于所有其他工具，输入收件人的电子邮件地址。
 1. 从“域”下拉列表中选择静态站点的域。
-    - 你选择的域是在邀请中显示的域。 如果有与站点关联的自定义域，则可能需要选择自定义域。
+   - 你选择的域是在邀请中显示的域。 如果有与站点关联的自定义域，则可能需要选择自定义域。
 1. 在“角色”框中添加以逗号分隔的角色名称列表。
 1. 输入希望邀请保持有效的最大小时数。
-    - 可能的最大限制为 168 小时，即 7 天。
+   - 可能的最大限制为 168 小时，即 7 天。
 1. 单击“生成”按钮。
 1. 从“邀请链接”框中复制链接。
 1. 将邀请链接通过电子邮件的方式发送给相关人员，你授予了该人员访问你的应用的权限。

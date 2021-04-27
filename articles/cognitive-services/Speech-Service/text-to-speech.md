@@ -12,18 +12,18 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: 文本转语音
-ms.openlocfilehash: 1a7ff7befc1a5e82c5518cf103a81b35ec38c7db
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 73e37fde4b3c2dd1aeb6ab171c3726f1b4353949
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449352"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106082"
 ---
 # <a name="what-is-text-to-speech"></a>什么是文本转语音？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-在本概述中，你将了解文本转语音服务的优势和功能，该服务使你的应用程序、工具或设备可以将文本转换为类似于人的合成语音。 从标准和神经语音中选择，或创建产品或品牌特有的自定义语音。 75 种以上的标准语音已在 45 种以上的语言和区域设置中提供，5 种神经语音已在一组精选的语言和区域设置中提供。 有关支持的语音、语言和区域设置的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
+在本概述中，你将了解文本转语音服务的优势和功能，该服务使你的应用程序、工具或设备可以将文本转换为类似于人的合成语音。 使用类似于人的神经语音，或创建产品或品牌特有的自定义语音。 有关支持的语音、语言和区域设置的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
 
 本文档包含以下文章类型：
 
@@ -42,8 +42,6 @@ ms.locfileid: "106449352"
 
 * 长音频的异步合成 - 使用[长音频 API](long-audio-api.md) 异步合成 10 分钟以上的文本转语音文件（例如有声书籍或讲座）。 不同于使用语音 SDK 或语音转文本 REST API 执行的合成，响应不会实时返回。 预期会异步发送请求，以轮询的方式获取响应，并会下载合成音频（在服务提供该音频的情况下）。 仅支持自定义神经语音。
 
-* 标准语音 - 使用统计参数合成和/或串联合成技术创建。 这些语音的辨识度很高，且听起来非常自然。 你可以轻松地让应用程序使用多种语音选项以 45 种以上的语言讲述。 这些声音提供较高的发音准确度，支持缩写、缩略词扩展、日期/时间解释、多音字等。 有关标准语音的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
-
 * 神经语音 - 深层神经网络用于克服有关口语中的重读和语调的传统语音合成限制。 韵律预测和语音合成以同步方式执行，使输出听起来更流畅且自然。 使用神经语音可使得与聊天机器人和语音助手的交流更加自然且富有吸引力、将数字文本（如电子书）转换为有声读物以及增强车载导航系统。 神经语音可以生成类人的自然韵律和清晰的字词发音，当你在与 AI 系统交互时，它可以显著减轻听力疲劳。 有关神经语音的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
 
 * 使用 SSML 调整说话风格 - 语音合成标记语言 (SSML) 是一种基于 XML 的标记语言，用于自定义语音转文本输出。 使用 SSML，你可以调整音调、添加暂停、改进发音、提高或降低语速、增加或减少音量，以及将多个语音赋予单个文档。 请参阅[操作说明](speech-synthesis-markup.md)调整说话风格。
@@ -51,7 +49,7 @@ ms.locfileid: "106449352"
 * 视素 - [视素](how-to-speech-synthesis-viseme.md)是观察到的语音中的关键姿态，包括在产生特定音素时嘴唇、下巴和舌头的位置。 视素与语音和音素有很强的关联性。 使用语音 SDK 中的视素事件，可以生成面部动画数据，用于制作唇读交流、教育、娱乐、客户服务等方面的面部动画。
 
 > [!NOTE]
-> 目前，视素仅适用于 `en-US-AriaNeural` 语音。
+> 目前只支持 `en-US-AriaNeural` 语音的视素事件。
 
 ## <a name="get-started"></a>入门
 
@@ -66,7 +64,7 @@ GitHub 上提供了文本转语音的示例代码。 这些示例涵盖了最流
 
 ## <a name="customization"></a>自定义
 
-除了标准语音和神经语音外，还可以创建和微调产品或品牌独有的自定义语音。 只需准备好几个音频文件和关联的听录内容即可完全入门。 有关详细信息，请参阅[自定义语音入门](how-to-custom-voice.md)
+除了神经语音外，还可以创建和微调产品或品牌独有的自定义语音。 只需准备好几个音频文件和关联的听录内容即可完全入门。 有关详细信息，请参阅[自定义语音入门](how-to-custom-voice.md)
 
 ## <a name="pricing-note"></a>定价说明
 

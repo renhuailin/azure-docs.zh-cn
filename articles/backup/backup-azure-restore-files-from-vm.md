@@ -4,12 +4,12 @@ description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: ed231a4870af7489d48ff54548be380c2cf0799c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c2af279ec7e846316a94e58977e7079305ab9b03
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104864884"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579362"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -111,7 +111,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 | Debian | 7 及更高版本 |
 | Oracle Linux | 6.4 及更高版本 |
 | SLES | 12 及更高版本 |
-| OpenSUSE | 42.2 及更高版本 |
+| openSUSE | 42.2 及更高版本 |
 
 > [!NOTE]
 > 我们发现，在使用 SLES 12 SP4 OS 的计算机上运行文件恢复脚本时会出现一些问题，我们正在与 SLES 团队一起调查这些问题。
@@ -133,12 +133,12 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 如果在访问受限的计算机上运行该脚本，请确保能够访问：
 
-- `download.microsoft.com`
+- NSG 中的 `download.microsoft.com` 或 `AzureFrontDoor.FirstParty` 服务标记
 - 恢复服务 URL（地区名称指恢复服务保管库所在的区域）
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com`（适用于 Azure 公共区域）
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn`（适用于 Azure 中国世纪互联）
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us`（适用于 Azure 美国政府）
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de`（适用于 Azure 德国）
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com`（适用于 Azure 公共区域）或 NSG 中的 `AzureBackup` 服务标记
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn`（适用于 Azure 中国世纪互联）或 NSG 中的 `AzureBackup` 服务标记
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us`（适用于 Azure 美国政府）或 NSG 中的 `AzureBackup` 服务标记
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de`（适用于 Azure 德国）或 NSG 中的 `AzureBackup` 服务标记
 - 出站端口 53 (DNS)、443、3260
 
 > [!NOTE]

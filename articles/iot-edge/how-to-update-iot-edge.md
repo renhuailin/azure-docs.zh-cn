@@ -5,16 +5,16 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/01/2021
+ms.date: 04/07/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b24276974eba76aa841cdd7f02145210713474eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e5034c228a354c98b5792492d484da9eb10b8cf2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104872279"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310846"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>更新 IoT Edge 安全守护程序和运行时
 
@@ -33,7 +33,7 @@ IoT Edge 安全守护程序是一个本机组件，需要使用 IoT Edge 设备�
 使用命令 `iotedge version` 检查设备上运行的安全守护程序的版本。
 
 >[!IMPORTANT]
->如果要将设备从版本 1.0 或 1.1 更新到版本 1.2，安装和配置过程有所不同，需要执行额外的步骤。 有关详细信息，请参阅本文后面的步骤：[特殊情况：从 1.0 或 1.1 更新为 1.2](#special-case-update-from-10-or-11-to-12)。
+>如果要将设备从版本 1.0 或 1.1 更新到版本 1.2，则需要执行额外步骤的安装和配置过程存在差异。 有关详细信息，请参阅本文后面的步骤：[特殊情况：从 1.0 或 1.1 更新到 1.2](#special-case-update-from-10-or-11-to-12)。
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
@@ -87,17 +87,17 @@ IoT Edge 安全守护程序是一个本机组件，需要使用 IoT Edge 设备�
    sudo apt-get install iotedge
    ```
 
-如果要更新到特定版本的安全守护程序，请从 apt 列表输出中指定该版本。 每当更新 **iotedge** 时，它都会自动尝试将 **libiothsm-std** 包更新到其最新版本，这可能会导致依赖项冲突。 如果不打算使用最新版本，请确保两个包都是针对同一版本。 例如，以下命令安装 1.0.9 发行版的特定版本：
+如果要更新到特定版本的安全守护程序，请从 apt 列表输出中指定该版本。 每当更新 **iotedge** 时，它都会自动尝试将 **libiothsm-std** 包更新到其最新版本，这可能会导致依赖项冲突。 如果不打算使用最新版本，请确保两个包都是针对同一版本。 例如，以下命令安装 1.1 发行版的特定版本：
 
    ```bash
-   sudo apt-get install iotedge=1.0.9-1 libiothsm-std=1.0.9-1
+   sudo apt-get install iotedge=1.1.1 libiothsm-std=1.1.1
    ```
 
 如果要安装的版本无法通过 apt-get 获取，则可使用 curl 将 [IoT Edge 发行版](https://github.com/Azure/azure-iotedge/releases)存储库中的任何版本作为目标。 不管要安装哪个版本，请找到设备的相应 **libiothsm-std** 和 **iotedge** 文件。 右键单击每个文件对应的链接，并复制链接地址。 使用链接地址安装这些组件的特定版本：
 
 ```bash
-curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
-curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
+curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo apt-get install ./libiothsm-std.deb
+curl -L <iotedge link> -o iotedge.deb && sudo apt-get install ./iotedge.deb
 ```
 <!-- end 1.1 -->
 :::moniker-end
@@ -132,7 +132,7 @@ curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
 <!-- 1.2 -->
 :::moniker range=">=iotedge-2020-11"
 
-目前不支持在 Windows 设备上运行的 IoT Edge 版本 1.2。
+目前，不支持在 Windows 设备上运行 IoT Edge 版本 1.2。
 
 :::moniker-end
 
@@ -140,7 +140,7 @@ curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
 
 ## <a name="update-the-runtime-containers"></a>更新运行时容器
 
-更新 IoT Edge 代理和 IoT Edge 中心容器的方式取决于在部署中使用的是滚动标记（如 1.0）还是特定标记（如 1.0.7）。
+更新 IoT Edge 代理和 IoT Edge 中心容器的方式取决于在部署中使用的是滚动标记（如 1.1）还是特定标记（如 1.1.1）。
 
 使用 `iotedge logs edgeAgent` 或 `iotedge logs edgeHub` 命令检查设备上目前安装的 IoT Edge 代理和 IoT Edge 中心模块的版本。
 
@@ -156,13 +156,13 @@ IoT Edge 代理和 IoT Edge 中心映像使用与之关联的 IoT Edge 版本进
 
 ### <a name="update-a-rolling-tag-image"></a>更新滚动更新标记映像
 
-如果在部署中使用滚动更新标记（例如 mcr.microsoft.com/azureiotedge-hub:**1.0**），则需要在设备上强制实施容器运行时，以提取最新版本的映像。
+如果在部署中使用滚动更新标记（例如 mcr.microsoft.com/azureiotedge-hub:1.1），则需要在设备上强制实施容器运行时，以提取最新版本的映像。
 
 从 IoT Edge 设备中删除本地版本的映像。 在 Windows 计算机上，卸载安全守护程序时也会删除运行时映像，因此不需再次执行此步骤。
 
 ```bash
-docker rmi mcr.microsoft.com/azureiotedge-hub:1.0
-docker rmi mcr.microsoft.com/azureiotedge-agent:1.0
+docker rmi mcr.microsoft.com/azureiotedge-hub:1.1
+docker rmi mcr.microsoft.com/azureiotedge-agent:1.1
 ```
 
 可能需要使用 `-f`（强制）标志来删除映像。
@@ -171,7 +171,7 @@ IoT Edge 服务将提取最新版本的运行时映像，并自动在设备上�
 
 ### <a name="update-a-specific-tag-image"></a>更新特定标记映像
 
-如果在部署中使用特定标记（例如 mcr.microsoft.com/azureiotedge-hub:**1.0.8**），则只需更新部署清单中的标记，并将更改应用到设备即可。
+如果在部署中使用特定标记（例如 mcr.microsoft.com/azureiotedge-hub:1.1.1），则只需更新部署清单中的标记，并将更改应用到设备即可。
 
 1. 在 Azure 门户的 IoT 中心，选择 IoT Edge 设备，然后选择“设置模块”  。
 
@@ -193,22 +193,23 @@ IoT Edge 服务将提取最新版本的运行时映像，并自动在设备上�
 
 ## <a name="special-case-update-from-10-or-11-to-12"></a>特殊情况：从 1.0 或 1.1 更新到 1.2
 
-从版本 1.2 开始，IoT Edge 服务使用新的包名称，并且安装和配置过程有所不同。 如果 IoT Edge 设备运行版本 1.0 或 1.1，请使用以下说明了解如何更新到 1.2。
+从版本 1.2 开始，IoT Edge 服务使用新的包名称，并且在安装和配置过程中存在一些差异。 如果有运行版本 1.0 或 1.1 的 IoT Edge 设备，请使用这些说明了解如何更新到 1.2。
 
 >[!NOTE]
->目前不支持在 Windows 设备上运行的 IoT Edge 版本 1.2。
+>目前，不支持在 Windows 设备上运行 IoT Edge 版本 1.2。
 
-1\.2 与更早版本之间的一些主要差异包括：
+1\.2 及更早版本之间的一些主要差异包括：
 
 * 包名称从 iotedge 更改为 aziot-edge 。
-* 不再使用 libiothsm-std 包。 如果你使用的是 IoT Edge 版本中提供的标准包，则可以将你的配置传输到新版本。 如果你之前使用的是 libiothsm 的不同实现，则需要重新配置用户提供的所有证书（如设备标识证书、设备 CA 和信任捆绑）。
-* 1\.2 版本中引入了新的标识服务 aziot-identity-service。 此服务处理 IoT Edge 以及需要与 IoT 中心通信的其他设备组件的标识预配和管理，如 Azure IoT 中心设备更新。 <!--TODO: add link to ADU when available -->
-* 默认配置文件采用新的名称和位置。 默认情况下，设备配置信息现在应位于 `/etc/aziot/config.toml` 中，而以前位于 `/etc/iotedge/config.yaml` 中。 可借助 `iotedge config import` 命令将配置信息从旧位置迁移到新位置，并将旧语法更改为新语法。
-* 更新后，任何使用 IoT Edge 工作负荷 API 来加密或解密持久性数据的模块都无法再解密。 IoT Edge 动态生成主标识密钥和在内部使用的加密密钥。 此密钥不会传输到新服务。 IoT Edge v1.2 会生成新的密钥。
+* 不再使用 libiothsm-std 包。 如果使用的是 IoT Edge 版本中提供的标准包，则可以将配置传输到新版本。 如果使用的是 libiothsm-std 的不同实现，则需要重新配置用户提供的任何证书，例如设备标识证书、设备 CA 和信任捆绑。
+* 1\.2 版本中引入了新的标识服务 aziot-identity-service。 此服务处理 IoT Edge 以及需要与 IoT 中心通信的其他设备组件的标识预配和管理，如 [IoT 中心的设备更新](../iot-hub-device-update/understand-device-update.md)。
+* 默认配置文件具有新的名称和位置。 设备配置信息以前在 `/etc/iotedge/config.yaml` 中，现在默认情况下应位于 `/etc/aziot/config.toml` 中。 可借助 `iotedge config import` 命令将配置信息从旧位置迁移到新位置，并将旧语法更改为新语法。
+  * 导入命令无法检测或修改设备受信任的平台模块 (TPM) 的访问规则。 如果设备使用 TPM 证明，则需要手动更新 /etc/udev/rules.d/tpmaccess.rules 文件以授予对 aziottpm 服务的访问权限。 有关详细信息，请参阅[向 IoT Edge 授予 TPM 的访问权限](how-to-auto-provision-simulated-device-linux.md?view=iotedge-2020-11&preserve-view=true#give-iot-edge-access-to-the-tpm)。
+* 版本 1.2 中的工作负载 API 以新格式保存加密的机密。 如果从旧版本升级到 1.2 版本，则会导入现有的主加密密钥。 工作负载 API 可以使用导入的加密密钥读取以先前的格式保存的机密。 但是，工作负载 API 无法以旧格式写入加密的机密。 机密一旦被模块重新加密，便会以新格式保存。 在版本 1.2 中加密的机密无法被版本 1.1 中的同一模块读取。 如果将加密的数据持久保存到主机装载的文件夹或卷中，请始终在升级之前创建数据的备份副本，以便必要时能够降级。
 
-在自动执行任何更新过程之前，请在测试计算机上验证其是否可正常工作。
+在自动执行任何更新过程之前，请验证它是否适用于测试计算机。
 
-准备就绪后，请按照以下步骤在你的设备上更新 IoT Edge：
+准备就绪后，请按照以下步骤更新设备上的 IoT Edge：
 
 1. 从 Microsoft 获取最新的存储库配置：
 
@@ -243,7 +244,7 @@ IoT Edge 服务将提取最新版本的运行时映像，并自动在设备上�
    sudo apt-get update
    ```
 
-5. 卸载先前版本的 IoT Edge，保留配置文件。
+5. 卸载以前版本的 IoT Edge，使配置文件保持不变。
 
    ```bash
    sudo apt-get remove iotedge
@@ -255,21 +256,21 @@ IoT Edge 服务将提取最新版本的运行时映像，并自动在设备上�
    sudo apt-get install aziot-edge
    ```
 
-7. 将旧 yaml 文件导入为其新格式，并应用配置信息。
+7. 将旧的 config.yaml 文件导入到新格式中，并应用配置信息。
 
    ```bash
    sudo iotedge config import
    ```
 
-现在，设备上运行的 IoT Edge 服务已更新，接下来请按照本文中的步骤[更新运行时容器](#update-the-runtime-containers)。
+现在，在设备上运行的 IoT Edge 服务已更新，请按照本文中的步骤操作，并[更新运行时容器](#update-the-runtime-containers)。
 
 ## <a name="special-case-update-to-a-release-candidate-version"></a>特殊情况：更新到候选发布版本
 
 Azure IoT Edge 定期发布新版 IoT Edge 服务。 在发布每个稳定版本之前，会有一个或多个候选发布 (RC) 版本。 RC 版本包括发布版的所有计划内功能，但仍需进行测试和验证。 若要提前测试某项新功能，可以安装 RC 版本，然后通过 GitHub 提供反馈。
 
-候选发布版本遵循相同的版本编号约定，但会在末尾追加 **-rc** 和一个增量数字。 可以在与稳定版本相同的 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)列表中查看候选发布版本。 例如，可以找到 **1.0.9-rc5** 和 **1.0.9-rc6** 这两个在 **1.0.9** 之前发布的候选发布版本。 还可以看到 RC 版本带有 **预发行版** 标签。
+候选发布版本遵循相同的版本编号约定，但会在末尾追加 **-rc** 和一个增量数字。 可以在与稳定版本相同的 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)列表中查看候选发布版本。 例如查找 1.2.0-rc4，它是 1.2.0 之前发布的候选发布之一 。 还可以看到 RC 版本带有 **预发行版** 标签。
 
-IoT Edge 代理和中心模块包含根据相同约定标记的 RC 版本。 例如 **mcr.microsoft.com/azureiotedge-hub:1.0.9-rc6**。
+IoT Edge 代理和中心模块包含根据相同约定标记的 RC 版本。 例如 mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4。
 
 充当预览版的候选发布版本不会包括在常规安装程序所针对的最新版本中。 需要手动将要测试的 RC 版资产设为目标。 大多数情况下，安装或更新到 RC 版本的过程与将目标设为任何其他特定版本的 IoT Edge 相同。
 

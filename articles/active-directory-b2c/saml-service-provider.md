@@ -13,12 +13,12 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 97718fef0aecd07dd364677ce1b72eb5bba78475
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 652bc9a236a4e4b9d3f99dab640919f2be985984
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384266"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257715"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中注册 SAML 应用程序
 
@@ -47,7 +47,7 @@ ms.locfileid: "106384266"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 完成 [Azure AD B2C 中的自定义策略](custom-policy-get-started.md)中的步骤。 你需要本文讨论的自定义策略入门包中的 SocialAndLocalAccounts 自定义策略。
+* 完成 [Azure AD B2C 中的自定义策略](tutorial-create-user-flows.md?pivots=b2c-custom-policy)中的步骤。 你需要本文讨论的自定义策略入门包中的 SocialAndLocalAccounts 自定义策略。
 * 基本了解 SAML 协议，并熟悉应用程序的 SAML 实现。
 * 一个已配置为 SAML 应用程序的应用程序。 对于本教程，你可以使用我们提供的 [SAML 测试应用程序][samltest]。
 
@@ -293,14 +293,14 @@ ms.locfileid: "106384266"
 
 要使 Azure AD B2C 信任你的应用程序，你需要创建一个 Azure AD B2C 应用程序注册，其中包含应用程序的元数据终结点等配置信息。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 选择“应用注册”，然后选择“新建注册” 。
 1. 输入应用程序的“名称”。 例如，SAMLApp1。
 1. 在“支持的帐户类型”下，选择“仅此组织目录中的帐户” 。
 1. 在“重定向 URI”下，选择“Web”，然后输入 `https://localhost`。 稍后你将在应用程序注册的清单中修改此值。
-1. 选择“注册”  。
+1. 选择“注册”。
 
 ### <a name="configure-your-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中配置应用程序
 

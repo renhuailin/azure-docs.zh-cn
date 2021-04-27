@@ -6,18 +6,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: cpercy737
 ms.author: camper
-ms.date: 03/22/2021
+ms.date: 04/12/2021
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 53edd3ec9a8d30d0c25f994db4a8b6f0199c2169
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7f09e744dfdd7be73c62c70bcfa91804f14aaa68
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558408"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313668"
 ---
 # <a name="azure-customer-usage-attribution"></a>Azure 客户使用情况归因
 
-客户使用情况归因可将部署你的 IP 时创建的客户订阅中 Azure 资源的使用情况与你（作为合作伙伴）关联起来。 在内部 Microsoft 系统中形成这些关联可以更好地了解运行软件的 Azure 内存占用情况。 对于[商业市场中的 Azure 应用程序产品/服务](#commercial-marketplace-azure-apps)，此跟踪功能可帮助你与 Microsoft 销售团队保持一致，并获得 Microsoft 合作伙伴计划的信用额度。
+客户使用情况归因可将部署你的 IP 时创建的客户订阅中 Azure 资源的使用情况与你（作为合作伙伴）关联起来。 在内部 Microsoft 系统中形成这些关联可以更好地了解运行软件的 Azure 内存占用情况。 对于[商业市场中的 Azure 应用程序产品/服务](#commercial-marketplace-azure-apps)，此跟踪功能可帮助你与 Microsoft 销售团队保持一致，并获得 Microsoft 合作伙伴计划的信用额度。 客户使用情况归因不适用于[商业市场中的 Azure 虚拟机产品/服务](./azure-vm-create.md)。 对于虚拟机产品/服务，市场发布者无需执行任何操作，即可确保在最终客户订阅中跟踪其 Azure 使用量。
 
 客户使用情况归因支持三个部署选项：
 
@@ -164,7 +164,7 @@ foreach ($deployment in $deployments){
 
 在某些情况下，你可能直接调用资源管理器 REST API 来部署 Azure 服务。 [Azure 支持使用多个 SDK](../index.yml?pivot=sdkstools) 来启用这些调用。 你可以使用其中一个 SDK，也可以直接调用 REST API 来部署资源。
 
-要启用客户使用情况归因，在设计 API 调用时，请在请求的用户代理标头中包含跟踪 ID。 将字符串的格式设置为采用 `pid-` 前缀。 示例：
+要启用客户使用情况归因，在设计 API 调用时，请在请求的用户代理标头中包含跟踪 ID。 将字符串的格式设置为采用 `pid-` 前缀。 示例:
 
 ```xml
 //Commercial Marketplace Azure app
@@ -262,7 +262,7 @@ Microsoft 合作伙伴技术顾问将电话联系你，确定你的需求。
 ## <a name="report"></a>报表
 通过客户使用情况归因跟踪的 Azure 使用情况的报告目前对 ISV 合作伙伴不可用。 将报告添加到合作伙伴中心内的商业市场计划以涵盖客户使用情况归因的功能计划在 2021 年下半年推出。
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>FAQ
 
 #### <a name="after-a-tracking-id-is-added-can-it-be-changed"></a>添加跟踪 ID 后是否可对其进行更改？
 
@@ -276,7 +276,7 @@ Microsoft 合作伙伴技术顾问将电话联系你，确定你的需求。
 
 #### <a name="does-the-customer-receive-reporting-as-well"></a>客户是否也会收到报告？
 
-不是。 客户可在 Azure 门户中跟踪所有资源或资源组的使用情况。 客户看不到按 CUA 跟踪 ID 细分的使用情况。
+否。 客户可在 Azure 门户中跟踪所有资源或资源组的使用情况。 客户看不到按 CUA 跟踪 ID 细分的使用情况。
 
 #### <a name="is-customer-usage-attribution-similar-to-the-digital-partner-of-record-dpor-or-partner-admin-link-pal"></a>客户使用情况是否类似于记录合作伙伴 (DPOR) 或合作伙伴管理链接 (PAL)？
 

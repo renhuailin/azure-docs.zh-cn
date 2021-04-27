@@ -8,20 +8,20 @@ ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 10/28/2020
+ms.date: 04/07/2021
 ms.author: kumud
-ms.openlocfilehash: 3145a52a6050272c01cd7ccb64afef0b89812753
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 34e31bacbb276feb5b11d1b955096877376e989b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169628"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107697"
 ---
 # <a name="azure-networking-services-overview"></a>Azure 网络服务概述
 
 Azure 中的网络服务提供可以搭配使用或单独使用的各种网络功能。 请单击以下任一重要功能了解更多相关信息：
 - [连接服务](#connect)：使用 Azure 中的以下任一网络服务或其组合连接 Azure 资源和本地资源 - 虚拟网络 (VNet)、虚拟 WAN、ExpressRoute、VPN 网络、虚拟网络 NAT 网关、Azure DNS、对等互连服务和 Azure Bastion。
-- [应用程序保护服务](#protect)：使用 Azure 中的以下任一网络服务或其组合来保护应用程序 - 专用链接、DDoS 保护、防火墙、网络安全组、Web 应用程序防火墙和虚拟网络终结点。
+- [应用程序保护服务](#protect)：使用 Azure 中的以下任一网络服务或其组合来保护应用程序 - 负载均衡器、专用链接、DDoS 保护、防火墙、网络安全组、Web 应用程序防火墙和虚拟网络终结点。
 - [应用程序分发服务](#deliver)：使用 Azure 中的以下任一网络服务或其组合在 Azure 网络中分发应用程序 - 内容分发网络 (CDN)、Azure Front Door 服务、流量管理器、应用程序网关、Internet 分析器和负载均衡器。
 - [网络监视](#monitor)：使用 Azure 中的以下任一网络服务或其组合来监视网络资源 - 网络观察程序、ExpressRoute Monitor、Azure Monitor 或 VNet 终端接入点 (TAP)。
 
@@ -158,13 +158,13 @@ Azure 应用程序网关是一种 Web 流量负载均衡器，可用于管理 We
 :::image type="content" source="./media/networking-overview/figure1-720.png" alt-text="应用程序网关示例":::
 
 ## <a name="network-monitoring-services"></a><a name="monitor"></a>网络监视服务
-本部分介绍 Azure 中有助于监视网络资源的网络服务 - 网络观察程序、Azure 网络监视器、ExpressRoute 监视器、Azure Monitor 和虚拟网络终端接入点。
+本部分介绍 Azure 中有助于监视网络资源的网络服务 - 网络观察程序、Azure Monitor 网络见解、Azure Monitor、ExpressRoute 监视器和虚拟网络 TAP。
 
 ### <a name="network-watcher"></a><a name="networkwatcher"></a>网络观察程序
 Azure 网络观察程序提供所需的工具用于监视、诊断 Azure 虚拟网络中的资源、查看其指标，以及为其启用或禁用日志。 有关详细信息，请参阅[什么是网络观察程序？](../../network-watcher/network-watcher-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
-### <a name="azure-monitor-for-networks-preview"></a>Azure 网络监视器预览版
-Azure 网络监视器为已部署的所有网络资源提供运行状况和指标的全面视图，并且无需任何配置。 它还提供对网络监视功能的访问，如[连接监视器](../../network-watcher/connection-monitor-overview.md)、[网络安全组的流日志记录](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)和[流量分析](../../network-watcher/traffic-analytics.md)。 有关详细信息，请参阅 [Azure 网络监视器预览版](../../azure-monitor/insights/network-insights-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)。
+### <a name="azure-monitor-network-insights"></a>Azure Monitor 网络见解
+Azure 网络监视器为已部署的所有网络资源提供运行状况和指标的全面视图，并且无需任何配置。 它还提供对网络监视功能的访问，如[连接监视器](../../network-watcher/connection-monitor-overview.md)、[网络安全组的流日志记录](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)和[流量分析](../../network-watcher/traffic-analytics.md)。 有关详细信息，请查看 [Azure Monitor 网络见解](../../azure-monitor/insights/network-insights-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)。
 
 ### <a name="expressroute-monitor"></a><a name="expressroutemonitor"></a>ExpressRoute Monitor
 若要了解如何查看 ExpressRoute 线路指标、资源日志和警报，请参阅 [ExpressRoute 监视、指标和警报](../../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json)。

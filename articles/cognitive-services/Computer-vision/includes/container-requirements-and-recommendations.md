@@ -6,14 +6,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/23/2020
+ms.date: 04/09/2021
 ms.author: aahi
-ms.openlocfilehash: 2a399b683dc9596d3514ce7d3be1fa2444449e2a
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 5cbf07ab97206ae3509701a6d6b0f71e961b0bf8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284926"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308757"
 ---
 > [!NOTE]
 > 这些要求和建议基于这样的基准：每秒一个请求，使用包含 29 行和总共 803 个字符的经过扫描的业务信函的 8 MB。
@@ -23,7 +23,7 @@ ms.locfileid: "106284926"
 | 容器 | 最小值 | 建议 |
 |-----------|---------|-------------|
 | 读取 2.0-preview | 1 个内核，8 GB 内存 |    8 个内核，16 GB 内存 |
-| Read 3.2-preview | 8 个内核，16 GB 内存 | 8 个内核，24 GB 内存 |
+| Read 3.2 | 8 个内核，16 GB 内存 | 8 个内核，24 GB 内存 |
 
 * 每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
 

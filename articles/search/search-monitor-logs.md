@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 3c8dd5cd9da2fd1e741635a6471c0662066d147e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f0d85f056cfaaa58fcc72eb9c2182b3e1a78affb
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709933"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581618"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>收集和分析 Azure 认知搜索的日志数据
 
-诊断或操作日志提供 Azure 认知搜索的详细操作的见解，可用于监视服务和工作负荷流程。 在内部，Microsoft 会在后端短暂地保留系统信息（大约 30 天），如果你提交了支持票证，这个时间足以进行调查和分析。 但是，如果想要自行掌握操作数据，则应配置诊断设置以指定要从何处收集日志记录信息。
+诊断或操作日志提供有关 Azure 认知搜索详细操作的见解，有助于监视服务运行状况和进程。 在内部，Microsoft 会在后端短暂地保留系统信息（大约 30 天），如果你提交了支持票证，这个时间足以进行调查和分析。 但是，如果想要自行掌握操作数据，则应配置诊断设置以指定要从何处收集日志记录信息。
 
 诊断日志记录功能是通过与 [Azure Monitor](../azure-monitor/index.yml) 集成实现的。 
 

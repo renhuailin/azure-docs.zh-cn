@@ -2,18 +2,18 @@
 title: Azure 资源日志支持的服务和架构
 description: 了解 Azure 资源日志支持的服务和事件架构。
 ms.topic: reference
-ms.date: 09/01/2020
-ms.openlocfilehash: 661cba2d78dbb176bb04e6831cf8e045a285535e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/07/2020
+ms.openlocfilehash: 09415353d93313f1b3c4844202b59f577ef3838d
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033089"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105759"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Azure 资源日志的通用架构和特定于服务的架构
 
 > [!NOTE]
-> 资源日志以前称为诊断日志。 此名称在 2019 年 10 月发生了更改，因为 Azure Monitor 收集的日志类型已转变，不仅仅包括 Azure 资源。 此外，你可以收集的资源日志类别列表过去曾在本文中列出。 它们已移到[资源日志类别](resource-logs-categories.md)。 
+> 资源日志以前称为诊断日志。 此名称在 2019 年 10 月发生了更改，因为 Azure Monitor 收集的日志类型已转变，不仅仅包括 Azure 资源。 此外，你可以收集的资源日志类别列表过去曾在本文中列出。 它们现在位于[资源日志类别](resource-logs-categories.md)。 
 
 [Azure Monitor 资源日志](../essentials/platform-logs-overview.md)是 Azure 服务发出的日志，用于描述这些服务或资源的操作。 通过 Azure Monitor 提供的所有资源日志共享公共顶级架构，且每个服务都能灵活地为其事件发出唯一属性。
 
@@ -65,6 +65,7 @@ ms.locfileid: "102033089"
 | Azure Database for MySQL | [Azure Database for MySQL 诊断日志](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Azure Database for PostgreSQL 日志](../../postgresql/concepts-server-logs.md#resource-logs) |
 | Azure Databricks | [Azure Databricks 中的诊断日志记录](/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs) |
+| DDoS 保护 | [Azure DDoS 防护标准版的日志记录](../../ddos-protection/diagnostic-logging.md#log-schemas) |
 | Azure 数字孪生 | [设置 Azure 数字孪生诊断](../../digital-twins/troubleshoot-diagnostics.md#log-schemas)
 | 事件中心 |[Azure 事件中心日志](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | Express Route | 架构不可用。 |
@@ -76,13 +77,13 @@ ms.locfileid: "102033089"
 | 负载均衡器 |[Azure 负载均衡器的 Log Analytics](../../load-balancer/load-balancer-monitor-log.md) |
 | 逻辑应用 |[逻辑应用 B2B 自定义跟踪架构](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | 网络安全组 |[网络安全组 (NSG) 的 Log Analytics](../../virtual-network/virtual-network-nsg-manage-log.md) |
-| DDoS 保护 | [Azure DDoS 防护标准版的日志记录](../../ddos-protection/diagnostic-logging.md#log-schemas) |
 | Power BI 专用 | [Azure 中 Power BI Embedded 的日志记录](/power-bi/developer/azure-pbie-diag-logs) |
 | 恢复服务 | [Azure 备份的数据模型](../../backup/backup-azure-reports-data-model.md)|
 | 搜索 |[允许并使用搜索流量分析](../../search/search-traffic-analytics.md) |
 | 服务总线 |[Azure 服务总线日志](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | SQL 数据库 | [Azure SQL 数据库日志记录](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md) |
 | 流分析 |[作业日志](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
+| 存储 | [Blob](/azure/storage/blobs/monitor-blob-storage-reference#resource-logs-preview)、[文件](/azure/storage/files/storage-files-monitoring-reference#resource-logs-preview)、[队列](/azure/storage/queues/monitor-queue-storage-reference#resource-logs-preview)、[表](/azure/storage/tables/monitor-table-storage-reference#resource-logs-preview) |
 | 流量管理器 | [流量管理器日志架构](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | 虚拟网络 | 架构不可用。 |
 | 虚拟网络网关 | 架构不可用。 |

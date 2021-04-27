@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: IoT Plug and Play Certification Requirements
 ms.service: certification
-ms.openlocfilehash: bbe9a3f18463285521dde0ee64b369cffcd71d75
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: b26fab6f8b92e3cb996f545f1f6201d32b1eaced
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105975637"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310506"
 ---
 # <a name="iot-plug-and-play-certification-requirements"></a>IoT 即插即用认证要求
 
@@ -39,7 +39,7 @@ IoT 即插即用认证的承诺包括以下内容：
 | **适用于**          | 叶设备/边缘设备                                      |
 | **OS**                  | 不可知                                                     |
 | **验证类型**     | 自动                                                    |
-| **验证**          | 设备必须将任何遥测架构发送到 IoT 中心。 Microsoft 提供了[门户工作流](https://certify.azure.com)来执行这些测试。 设备到云（必需）：**1.** 验证设备是否可以将消息发送到 AICS 托管 IoT 中心 **2.** 用户必须指定消息的数量和频率。 **3.** AICS 验证由中心实例接收的遥测 |
+| **验证**          | 设备必须将任何遥测架构发送到 IoT 中心。 Microsoft 提供了[门户工作流](https://certify.azure.com)来执行这些测试。 设备到云（必需）：1. 验证设备是否可以将消息发送到 AICS 托管 IoT 中心 **2.** 用户必须指定消息的数量和频率。 **3.** AICS 验证由中心实例接收的遥测 |
 | **资源**           | [认证步骤](./overview.md)（具有所有附加资源） |
 
 **[必需] DPS：测试的目的是通过三种证明方法中的一种来检查设备是否实现并支持 IoT 中心设备预配服务**
@@ -50,8 +50,8 @@ IoT 即插即用认证的承诺包括以下内容：
 | **适用于**          | 任何设备                                                   |
 | **OS**                  | 不可知                                                     |
 | **验证类型**     | 自动                                                    |
-| **验证**          | 设备必须实现 DPS ID 范围所有权的轻松传输，而无需重新编译嵌入代码。 Microsoft 提供了 [门户工作流](https://certify.azure.com)来执行这些测试，以验证设备是否支持 DPS **1.** 用户必须选择一种证明方法（X.509、TPM 和 SAS 密钥）**2.** 根据证明方法，用户需要执行相应的操作（例如 a) 将 X.509 证书上传到 AICS 托管的 DPS 范围；b) 在设备中实现 SAS 密钥或认可密钥）  |
-| **资源**           | **a)** [设备预配服务概述](../iot-dps/about-iot-dps.md)，**b)** [用于 DPS ID 范围传送的示例配置文件](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/digitaltwin_client/samples/digitaltwin_sample_ll_device/sample_config) |
+| **验证**          | 设备必须实现 DPS ID 范围所有权的轻松传输，而无需重新编译嵌入代码。 Microsoft 提供了 [门户工作流](https://certify.azure.com)来执行这些测试，以验证设备是否支持 DPS **1.** 用户必须选择一种证明方法（X.509、TPM 和 SAS 密钥）2. 根据证明方法，用户需要执行相应的操作（例如 a) 将 X.509 证书上传到 AICS 托管的 DPS 范围；b) 在设备中实现 SAS 密钥或认可密钥）  |
+| **资源**           | **a)** [设备预配服务概述](../iot-dps/about-iot-dps.md)，**b)** [用于 DPS ID 范围传送的示例配置文件](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/serializer/samples/devicetwin_simplesample) |
 
 **[必需] DTDL v2：测试目的是确保定义的设备模型和接口符合数字孪生定义语言 v2。**                                                              
 
@@ -85,7 +85,7 @@ IoT 即插即用认证的承诺包括以下内容：
 | **验证类型**                       | 手动                                                       |
 | **验证**                            | 要安排在物理设备上执行其他验证，合作伙伴必须与 Microsoft 联系人 ([iotcert@microsoft.com](mailto:iotcert@microsoft.com)) 联系。 由于新冠肺炎疫情的影响，我们正在探索多种方法来执行物理设备验证，而无需将设备寄送给 Microsoft。 |
 | **资源**                             | 稍后将提供详细信息                                 |
-| **Azure 建议**       | 不适用    |
+| **Azure 建议**       | 空值    |
 
 **[如果已实现]设备信息接口：测试的目的是验证设备代码中是否已正确实现设备信息接口**
 
@@ -95,9 +95,9 @@ IoT 即插即用认证的承诺包括以下内容：
 | **适用于**          | 任何设备                                                   |
 | **OS**                  | 不可知                                                     |
 | **验证类型**     | 自动                                                    |
-| **验证**          | [门户工作流](https://certify.azure.com)验证设备代码是否实现 [设备信息接口](https://repo.azureiotrepository.com/Models/dtmi:azure:DeviceManagement:DeviceInformation;1?api-version=2020-05-01-previewureiot:DeviceManagement:DeviceInformation:1) **1.** 检查值是否由设备代码发送到 IoT 中心 **2.** 检查接口是否已在 DCM 中实现（此实现将在 DTDL v2 中更改）**3.** 检查属性是否为不可写（只读）**4.** 检查架构类型是否为字符串和/或 long 且不为 null |
+| **验证**          | [门户工作流](https://certify.azure.com)验证设备代码是否实现设备信息接口 **1.** 检查值是否由设备代码发送到 IoT 中心 **2.** 检查接口是否已在 DCM 中实现（此实现将在 DTDL v2 中更改）**3.** 检查属性是否为不可写（只读）**4.** 检查架构类型是否为字符串和/或 long 且不为 null |
 | **资源**           | [Microsoft 定义的接口](../iot-pnp/overview-iot-plug-and-play-preview-updates.md) |
-| **Azure 建议**  | 不适用                                                          |
+| **Azure 建议**  | 空值                                                          |
 
 **[如果已实现]云到设备：测试的目的是确保可以将消息从云发送到设备**
 
@@ -129,5 +129,5 @@ IoT 即插即用认证的承诺包括以下内容：
 | **适用于**          | 叶设备/边缘设备                                      |
 | **OS**                  | 不可知                                                     |
 | **验证类型**     | 自动                                                    |
-| **验证**          | 设备必须将任何遥测架构发送到 IoT 中心。 Microsoft 提供了[门户工作流](https://certify.azure.com)来执行这些测试。 设备孪生属性（如果已实现）**1.** AICS 验证设备孪生 JSON 中的读/写属性 **2.** 用户必须指定要更改的 JSON 有效负载 **3.** AICS 验证从 IoT 中心发送的指定必需属性和设备收到的 ACK 消息 |
+| **验证**          | 设备必须将任何遥测架构发送到 IoT 中心。 Microsoft 提供了[门户工作流](https://certify.azure.com)来执行这些测试。 设备孪生属性（如果已实现）**1.** AICS 验证设备孪生 JSON 中的读/写属性 **2.** 用户必须指定要更改的 JSON 有效负载 3. AICS 验证从 IoT 中心发送的指定必需属性和设备收到的 ACK 消息 |
 | **资源**           | **1.** [认证步骤](./overview.md)（具有所有附加资源），**2.** [将设备孪生与 IoT 中心配合使用](../iot-hub/iot-hub-devguide-device-twins.md) |

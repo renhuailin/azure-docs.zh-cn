@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 04/20/2020
-ms.openlocfilehash: 3e4b4fc3d4a6c9529c7c0ac0daef8a28173e0bf3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e08fe67dece02b936aa3a22e9cac58d809f19f46
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99225337"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285677"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Azure SQL 托管实例的事务复制（预览）
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -154,7 +154,7 @@ Azure SQL 托管实例可以支持成为以下版本的 SQL Server 的订阅服�
 
 使用事务复制的 SQL 托管实例不支持[活动异地复制](../database/active-geo-replication-overview.md)。 使用[自动故障转移组](../database/auto-failover-group-overview.md)而不是活动异地复制，但请注意，必须从主托管实例中[手动删除](transact-sql-tsql-differences-sql-server.md#replication)发布，并在故障转移后在辅助 SQL 托管实例上重新创建。
 
-如果对[故障转移组](../database/auto-failover-group-overview.md)中的“发布服务器”或“分发服务器”SQL 托管实例启用了异地复制，则 SQL 托管实例管理员必须清理旧的主节点上的所有发布内容，然后在故障转移后，在新的主节点上重新配置这些发布内容 。 在此方案中，需要执行以下活动：
+如果“发布服务器”或“分发服务器”SQL 托管实例位于[故障转移组](../database/auto-failover-group-overview.md)中，则 SQL 托管实例管理员必须清理旧的主节点上的所有发布内容，然后在故障转移后，在新的主节点上重新配置这些发布内容 。 在此方案中，需要执行以下活动：
 
 1. 停止数据库上运行的所有复制作业（如果有）。
 1. 通过在发布服务器数据库上运行以下脚本，删除发布服务器中的订阅元数据：

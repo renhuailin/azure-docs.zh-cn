@@ -1,18 +1,21 @@
 ---
-title: Azure VMware 解决方案 vSAN 上使用本机共享磁盘的 Windows Server 故障转移群集
-description: 在 Azure VMware 解决方案上设置 Windows Server 故障转移群集 (WSFC)，并利用需要 WSFC 功能的解决方案。
+title: 配置 Azure VMware 解决方案 vSAN 上的 Windows Server 故障转移群集
+description: 使用本机共享磁盘设置 Azure VMware 解决方案 vSAN 上的 Windows Server 故障转移群集 (WSFC)。
 ms.topic: how-to
-ms.date: 03/09/2021
-ms.openlocfilehash: 8162e15675d8bbde9267126c785f152d1cb860bd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/09/2021
+ms.openlocfilehash: f1bc8199eb0d3317e4b6e07a6a297b4ebfe95cc8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562233"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308671"
 ---
-# <a name="windows-server-failover-cluster-on-azure-vmware-solution-vsan-with-native-shared-disks"></a>Azure VMware 解决方案 vSAN 上使用本机共享磁盘的 Windows Server 故障转移群集
+# <a name="configure-windows-server-failover-cluster-on-azure-vmware-solution-vsan"></a>配置 Azure VMware 解决方案 vSAN 上的 Windows Server 故障转移群集
 
-本文将演练如何在 Azure VMware 解决方案上设置 Windows Server 故障转移群集。 本文中的实现用于进行概念证明和试验。 我们建议使用 Cluster-in-a-Box (CIB) 配置，直到放置策略可用。
+在本文中，你将了解如何使用本机共享磁盘设置 Azure VMware 解决方案 vSAN 上的 Windows Server 故障转移群集。 
+
+>[!IMPORTANT]
+>本文中的实现用于进行概念证明和试验。 我们建议使用 Cluster-in-a-Box (CIB) 配置，直到放置策略可用。
 
 Windows Server 故障转移群集 (WSFC)（以前称为 Microsoft 服务群集服务 (MSCS)）是 Windows Server 操作系统 (OS) 的一项功能。 WSFC 是一项业务关键型功能，许多应用程序都需要此功能。 例如，以下配置都需要 WSFC：
 
@@ -43,7 +46,7 @@ Azure VMware 解决方案为虚拟化 WSFC 提供本机支持。 它在虚拟磁
 
 下图说明了 Azure VMware 解决方案私有云上 WSFC 虚拟节点的体系结构。 它显示了 Azure VMware 解决方案的驻留位置（就更广泛的 Azure 平台而言），其中包括 WSFC 虚拟服务器（红框）。 此图展示了一个典型的中心辐射型体系结构，但使用 Azure 虚拟 WAN 也可以实现类似设置。 两种设置都可以提供其他 Azure 服务能带给你的所有价值。
 
-[![显示 Azure VMware 解决方案私有云上 WSFC 虚拟节点体系结构的示意图。](media/windows-server-failover-cluster/windows-server-failover-architecture.png)](media/windows-server-failover-cluster/windows-server-failover-architecture.png#lightbox)
+:::image type="content" source="media/windows-server-failover-cluster/windows-server-failover-architecture.svg" alt-text="Azure VMware 解决方案私有云上 Windows Server 故障转移群集虚拟节点的体系结构关系图。" border="false" lightbox="media/windows-server-failover-cluster/windows-server-failover-architecture.svg":::
 
 ## <a name="supported-configurations"></a>支持的配置
 

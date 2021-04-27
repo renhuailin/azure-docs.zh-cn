@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Maps 中的天气服务（预览版）概念
-description: 了解适用于 Microsoft Azure Maps 天气服务（预览版）的概念。
+title: Microsoft Azure Maps 中的天气服务概念
+description: 了解适用于 Microsoft Azure Maps 天气服务的概念。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/10/2020
@@ -8,18 +8,14 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 657cb6a86122d267b86e82b6f02eb58e968cddd3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 76d4eb08ba9cc0394610fdd00f6faba02278e8e3
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96904731"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258004"
 ---
-# <a name="weather-services-preview-in-azure-maps"></a>Azure Maps 中的天气服务（预览版）
-
-> [!IMPORTANT]
-> Azure Maps 天气服务目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="weather-services-in-azure-maps"></a>Azure Maps 中的天气服务
 
 本文介绍适用于 Azure Maps [天气服务](/rest/api/maps/weather)的概念。 建议在开始使用天气 API 之前通读本文。
 
@@ -51,7 +47,7 @@ ms.locfileid: "96904731"
 |19      |开氏温度              |
 |20      |%             |
 |21      |FLOAT               |
-|22      |整型             |
+|22      |integer             |
 
 
 ## <a name="weather-icons"></a>天气图标
@@ -519,7 +515,7 @@ ms.locfileid: "96904731"
   户外活动           |29| [差 - 优 1](#poor-excellent-1)
   户外烧烤           |24| [差 - 优 1](#poor-excellent-1)
   户外音乐会            |8| [差 - 优 1](#poor-excellent-1)
-  正在运行                    |1|  [差 - 优 1](#poor-excellent-1)
+  运行                    |1|  [差 - 优 1](#poor-excellent-1)
   网球                     |6| [差 - 优 1](#poor-excellent-1)
   口渴                     |41| [低 - 极高 2](#low-extreme-2)
   航行                    |11| [差 - 优 1](#poor-excellent-1)

@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: fda69d582f26b0c9189898bb5c8b0004a1e47360
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 711b4f6577b17e84a5d30774fa7be4c9033d4340
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104722763"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031118"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
@@ -40,7 +40,7 @@ IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计�
 
 ### <a name="install-production-certificates"></a>安装生产证书
 
-生产环境中的每个 IoT Edge 设备上需要安装设备证书颁发机构 (CA) 证书。 然后，在配置文件中向 IoT Edge 运行时声明该 CA 证书。 对于开发和测试场景，如果配置文件中没有声明证书，则 IoT Edge 运行时会创建临时证书。 但是，这些临时证书将在三个月后过期，并且对于生产方案而言并不安全。 对于生产方案，你应该提供自己的设备 CA 证书，不管是自签名证书颁发机构颁发的证书，还是从商业证书颁发机构购买的证书。
+生产环境中的每个 IoT Edge 设备上需要安装设备证书颁发机构 (CA) 证书。 然后，在配置文件中向 IoT Edge 运行时声明该 CA 证书。 对于开发和测试方案，如果在配置文件中没有声明证书，则 IoT Edge 运行时会创建临时证书。 但是，这些临时证书将在三个月后过期，并且对于生产方案而言并不安全。 对于生产方案，你应该提供自己的设备 CA 证书，不管是自签名证书颁发机构颁发的证书，还是从商业证书颁发机构购买的证书。
 
 <!--1.1-->
 :::moniker range="iotedge-2018-06"
@@ -64,7 +64,7 @@ IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计�
 * IoT Edge
 * CA 证书
 
-有关详细信息，请参阅[更新 IoT Edge 运行时](how-to-update-iot-edge.md)。 更新 IoT Edge 的当前方法需要通过物理方式或 SSH 方式访问 IoT Edge 设备。 若要更新许多设备，请考虑在脚本中添加更新步骤，或使用 Ansible 等自动化工具。
+有关详细信息，请参阅[更新 IoT Edge 运行时](how-to-update-iot-edge.md)。 当前的用于更新 IoT Edge 的方法需要通过物理方式或通过 SSH 来访问 IoT Edge 设备。 若要更新许多设备，请考虑在脚本中添加更新步骤，或使用 Ansible 等自动化工具。
 
 ### <a name="use-moby-as-the-container-engine"></a>使用 Moby 作为容器引擎
 
@@ -81,7 +81,7 @@ IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计�
 * MQTTWS
 * AMQPWS
 
-请在设备本身的配置文件中配置 IoT Edge 代理的 UpstreamProtocol 变量。 例如，如果 IoT Edge 设备位于阻止 AMQP 端口的代理服务器后面，则可能需要将 IoT Edge 代理配置为使用基于 WebSocket 的 AMQP (AMQPWS)，这样才能与 IoT 中心建立初始连接。
+请在设备本身的配置文件中为 IoT Edge 代理配置 UpstreamProtocol 变量。 例如，如果 IoT Edge 设备位于阻止 AMQP 端口的代理服务器后面，则可能需要将 IoT Edge 代理配置为使用基于 WebSocket 的 AMQP (AMQPWS)，这样才能与 IoT 中心建立初始连接。
 
 IoT Edge 设备建立连接后，请务必在将来的部署中继续为两个运行时模块配置 UpstreamProtocol 变量。 [将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)中提供了此过程的示例。
 
@@ -174,7 +174,7 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 
 ### <a name="use-tags-to-manage-versions"></a>使用标记管理版本
 
-标记是一个 Docker 概念，可用于区分 Docker 容器的版本。 标记是附加在容器存储库末尾的后缀（如 **1.0**）。 例如 **mcr.microsoft.com/azureiotedge-agent:1.0**。 标记是可变的，随时可能更改为指向另一容器，因此，团队应该议定一种约定，以便今后在更新模块映像时遵循。
+标记是一个 Docker 概念，可用于区分 Docker 容器的版本。 标记是附加在容器存储库末尾的后缀（如 1.1）。 例如 mcr.microsoft.com/azureiotedge-agent:1.1。 标记是可变的，随时可能更改为指向另一容器，因此，团队应该议定一种约定，以便今后在更新模块映像时遵循。
 
 标记还可帮助你针对 IoT Edge 设备强制实施更新。 将模块的更新版本推送到容器注册表时，请递增标记。 然后，使用递增的标记将新部署推送到设备。 容器引擎将递增的标记识别为新版本，并将最新模块版本提取到设备。
 
@@ -182,7 +182,7 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 
 IoT Edge 代理和 IoT Edge 中心映像使用与之关联的 IoT Edge 版本进行标记。 可通过两种不同的方法对运行时映像使用标记：
 
-* **滚动更新标记** - 仅使用版本号的前两个值来获取匹配这些数字的最新映像。 例如，每当有新版本指向最新的 1.1.x 版时，就会更新 1.1。 如果 IoT Edge 设备的容器运行时重新提取映像，则运行时模块会更新到最新版本。 Azure 门户中的部署默认使用滚动更新标记。 *建议在开发时使用此方法。*
+* **滚动更新标记** - 仅使用版本号的前两个值来获取匹配这些数字的最新映像。 例如，每当有新版本指向最新的 1.1.x 版时，都会更新 1.1。 如果 IoT Edge 设备的容器运行时重新提取映像，则运行时模块会更新到最新版本。 Azure 门户中的部署默认使用滚动更新标记。 *建议在开发时使用此方法。*
 
 * **特定标记** - 使用版本号的所有三个值，以显式设置映像版本。 例如，1.1.0 在其初始版本发布后不会更改。 准备好更新时，可以在部署清单中声明新的版本号。 *建议在生产环境中使用此方法。*
 
@@ -216,7 +216,7 @@ IoT Edge 代理和 IoT Edge 中心映像使用与之关联的 IoT Edge 版本进
 
 ### <a name="review-outboundinbound-configuration"></a>检查出站/入站配置
 
-Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大多数 IoT Edge 方案，只需建立三个连接。 容器引擎需要连接到保存模块映像的一个或多个容器注册表。 IoT Edge 运行时需要连接到 IoT 中心，以检索设备配置信息，以及发送消息和遥测数据。 如果使用自动预配，则 IoT Edge 需要连接到设备预配服务。 有关详细信息，请参阅[防火墙和端口配置规则](troubleshoot.md#check-your-firewall-and-port-configuration-rules)。
+Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大多数 IoT Edge 方案，只需建立三个连接。 容器引擎需要连接到保存模块映像的一个或多个容器注册表。 IoT Edge 运行时需要连接到 IoT 中心，以检索设备配置信息，以及发送消息和遥测数据。 而如果使用自动预配，则 IoT Edge 需要连接到设备预配服务。 有关详细信息，请参阅[防火墙和端口配置规则](troubleshoot.md#check-your-firewall-and-port-configuration-rules)。
 
 ### <a name="allow-connections-from-iot-edge-devices"></a>允许从 IoT Edge 设备进行连接
 
@@ -241,13 +241,13 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
    | \*.azure-devices.net | 5671、8883、443 | IoT 中心访问 |
    | \*.docker.io  | 443 | Docker 中心访问（可选） |
 
-其中一些防火墙规则继承自 Azure 容器注册表。 有关详细信息，请参阅[配置规则以访问防火墙后的 Azure 容器注册表](../container-registry/container-registry-firewall-access-rules.md)。
+这些防火墙规则中有一些是从 Azure 容器注册表继承的。 有关详细信息，请参阅[配置规则以访问防火墙后的 Azure 容器注册表](../container-registry/container-registry-firewall-access-rules.md)。
 
 > [!NOTE]
-> 为了在 REST 和数据终结点之间提供一致的 FQDN，从 2020 年 6 月 15 日开始，Microsoft Container Registry 数据终结点将从 `*.cdn.mscr.io` 更改为 `*.data.mcr.microsoft.com`  
-> 有关详细信息，请参阅 [Microsoft Container Registry 客户端防火墙规则配置](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md)
+> 为了在 REST 和数据终结点之间提供一致的 FQDN，从 2020 年 6 月 15 日开始，Microsoft 容器注册表数据终结点从 `*.cdn.mscr.io` 更改为 `*.data.mcr.microsoft.com`  
+> 有关详细信息，请参阅 [Microsoft 容器注册表客户端防火墙规则配置](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md)
 
-如果你不想将防火墙配置为允许访问公共容器注册表，则可以在专用容器注册表中存储映像，如[在专用注册表中存储运行时容器](#store-runtime-containers-in-your-private-registry)中所述。
+如果不需要将防火墙配置为允许访问公共容器注册表，则可在专用容器注册表中存储映像，如[将运行时容器存储在专用注册表中](#store-runtime-containers-in-your-private-registry)中所述。
 
 ### <a name="configure-communication-through-a-proxy"></a>配置为通过代理进行通信
 
@@ -263,10 +263,21 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
 
 在 Linux 上，IoT Edge 守护程序使用日志作为默认的日志记录驱动程序。 可以使用命令行工具 `journalctl` 查询守护程序日志。
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+在 Windows 上，IoT Edge 守护程序使用 PowerShell 诊断。 使用 `Get-IoTEdgeLog` 可以查询守护程序的日志。 IoT Edge 模块使用 JSON 驱动程序（默认设置）进行日志记录。  
+
+```powershell
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
+```
+
+:::moniker-end
+<!-- end 1.1 -->
+
 <!--1.2-->
 :::moniker range=">=iotedge-2020-11"
 
-从 1.2 版开始，IoT Edge 依赖于多个守护程序。 虽然可以使用 `journalctl` 单独查询每个守护程序的日志，但若要以便捷方式查询组合日志，则应使用 `iotedge system` 命令。
+IoT Edge 从版本 1.2 开始依赖于多个守护程序。 虽然可以通过 `journalctl` 单独查询每个守护程序的日志，但若要查询合并的日志，可使用 `iotedge system` 命令，后者提供的方法很方便。
 
 * 合并的 `iotedge` 命令：
 
@@ -274,19 +285,13 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
   sudo iotedge system logs
   ```
 
-* 等效 `journalctl` 命令：
+* 等效的 `journalctl` 命令：
 
   ```bash
   journalctl -u aziot-edge -u aziot-identityd -u aziot-keyd -u aziot-certd -u aziot-tpmd
   ```
 
 :::moniker-end
-
-在 Windows 上，IoT Edge 守护程序使用 PowerShell 诊断。 使用 `Get-IoTEdgeLog` 可以查询守护程序的日志。 IoT Edge 模块使用 JSON 驱动程序（默认设置）进行日志记录。  
-
-```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
-```
 
 测试 IoT Edge 部署时，通常可以访问设备来检索日志和进行故障排除。 在部署方案中，可能做不到这一点。 考虑如何收集有关生产环境中设备的信息。 一种做法是使用日志记录模块从其他模块收集信息，然后将其发送到云中。 日志记录模块的一个示例是 [logspout-loganalytics](https://github.com/veyalla/logspout-loganalytics)，你也可以设计自己的模块。
 
@@ -308,12 +313,24 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
 }
 ```
 
-将此信息添加（或附加）到名为 `daemon.json` 的文件，然后将此文件放到设备平台上的适当位置。
+将此信息添加（或附加）到名为 `daemon.json` 的文件，然后将该文件放到以下位置：
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 | 平台 | 位置 |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
 | Windows | `C:\ProgramData\iotedge-moby\config\` |
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+* `/etc/docker/`
+
+:::moniker-end
+<!-- end 1.2 -->
 
 必须重启容器引擎才能使更改生效。
 

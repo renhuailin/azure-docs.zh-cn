@@ -12,22 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 04/09/2021
 ms.author: b-juche
-ms.openlocfilehash: 2031cbf07d700307ae1e11c516f9fc736bce5080
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 2546236399853f3ed6fad9e07e031edb568fbfe9
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106498859"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311526"
 ---
 # <a name="configure-adds-ldap-with-extended-groups-for-nfs-volume-access"></a>为 NFS 卷访问配置具有扩展组的 ADDS LDAP
 
-[创建 NFS 卷](azure-netapp-files-create-volumes.md)时，可以选择为卷启用具有扩展组 LDAP 功能（LDAP 选项）。 此功能使 Active Directory LDAP 用户和扩展组（最多 1024 个组）可以访问卷。  
+[创建 NFS 卷](azure-netapp-files-create-volumes.md)时，可以选择为卷启用具有扩展组 LDAP 功能（LDAP 选项）。 此功能使 Active Directory LDAP 用户和扩展组（最多 1024 个组）可以访问卷。 可将“具有扩展组的 LDAP”功能用于 NFSv4.1 和 NFSv3 卷。 
 
 本文介绍在创建 NFS 卷时启用具有扩展组的 LDAP 的注意事项和步骤。  
 
 ## <a name="considerations"></a>注意事项
+
+* 具有扩展组的 LDAP 仅支持用于 Active Directory 域服务 (ADDS) 或 Azure Active Directory 域服务 (AADDS)。 不支持 OpenLDAP 或其他第三方 LDAP 目录服务。 
 
 * 如果使用 Azure Active Directory 域服务 (AADDS)，则不能启用 LDAP over TLS。  
 
@@ -69,11 +71,23 @@ ms.locfileid: "106498859"
 
 2. LDAP 卷需要 LDAP 服务器设置的 Active Directory 配置。 按照 [Active Directory 连接的要求](create-active-directory-connections.md#requirements-for-active-directory-connections)和[创建 Active Directory 连接](create-active-directory-connections.md#create-an-active-directory-connection)中的说明在 Azure 门户上配置 Active Directory 连接。  
 
-3. 确保 Active Directory LDAP 服务器在 Active Directory 上已启动并正在运行。 为此，你可以在 AD 计算机上安装并配置 [Active Directory 轻型目录服务 (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) 角色。
+    > [!NOTE]
+    > 请确保你已配置 Active Directory 连接设置。 计算机帐户将在 Active Directory 连接设置中指定的组织单位 (OU) 中创建。 LDAP 客户端使用这些设置来向 Active Directory 进行身份验证。
 
-4. LDAP NFS 用户在 LDAP 服务器上需要具有某些 POSIX 属性。 请按照[管理 LDAP POSIX 属性](create-volumes-dual-protocol.md#manage-ldap-posix-attributes)中所述，设置所需的属性。  
+3. 确保 Active Directory LDAP 服务器在 Active Directory 上已启动并正在运行。 
 
-5. 如果要配置集成 LDAP 的 Linux 客户端，请参阅[为 Azure NetApp 文件配置 NFS 客户端](configure-nfs-clients.md)。
+4. LDAP NFS 用户在 LDAP 服务器上需要具有某些 POSIX 属性。 为 LDAP 用户和 LDAP 组设置属性，如下所示： 
+
+    * LDAP 用户必需的属性：   
+        `uid: Alice`, `uidNumber: 139`, `gidNumber: 555`, `objectClass: user`
+    * LDAP 组必需的属性：   
+        `objectClass: group`, `gidNumber: 555`
+
+    可使用“Active Directory 用户和计算机”MMC 管理单元来管理 POSIX 属性。 以下示例展示了 Active Directory 属性编辑器：  
+
+    ![Active Directory 属性编辑器](../media/azure-netapp-files/active-directory-attribute-editor.png) 
+
+5. 如果要配置集成 LDAP 的 NFSv4.1 Linux 客户端，请查看[为 Azure NetApp 文件配置 NFS 客户端](configure-nfs-clients.md)。
 
 6.  按照[为 Azure NetApp 文件创建 NFS 卷](azure-netapp-files-create-volumes.md)中的步骤创建 NFS 卷。 在创建卷的过程中，将“协议”选项卡下的“LDAP”选项设置为“启用”。    
 

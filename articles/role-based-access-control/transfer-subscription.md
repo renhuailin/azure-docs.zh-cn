@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/10/2020
+ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: 93821979e0c14a879b805049a4f662e9ef6d5b15
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 5baf5f503542f31b26c4c210741f1ce986f6a549
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075672"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580119"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>将 Azure 订阅转移到其他 Azure AD 目录
 
@@ -74,15 +74,15 @@ ms.locfileid: "106075672"
 | 系统分配的托管标识 | “是” | “是” | [列出托管标识](#list-role-assignments-for-managed-identities) | 必须禁用并重新启用托管标识。 必须重新创建角色分配。 |
 | 用户分配的托管标识 | “是” | “是” | [列出托管标识](#list-role-assignments-for-managed-identities) | 必须删除、重新创建托管标识并将其附加到相应的资源。 必须重新创建角色分配。 |
 | Azure Key Vault | “是” | “是” | [列出 Key Vault 访问策略](#list-key-vaults) | 必须更新与密钥保管库关联的租户 ID。 必须删除并添加新的访问策略。 |
-| 启用了 Azure AD 身份验证集成的 Azure SQL 数据库 | 是 | 否 | [检查采用 Azure AD 身份验证的 Azure SQL 数据库](#list-azure-sql-databases-with-azure-ad-authentication) |  | 
+| 启用了 Azure AD 身份验证集成的 Azure SQL 数据库 | 是 | 否 | [检查采用 Azure AD 身份验证的 Azure SQL 数据库](#list-azure-sql-databases-with-azure-ad-authentication) | 不能将启用了 Azure AD 身份验证的 Azure SQL 数据库传输到不同的目录中。 有关详细信息，请查看[使用 Azure Active Directory 身份验证](../azure-sql/database/authentication-aad-overview.md)。 | 
 | Azure 存储和 Azure Data Lake Storage Gen2 | 是 | 是 |  | 必须重新创建任何 ACL。 |
 | Azure Data Lake Storage Gen1 | 是 | 是 |  | 必须重新创建任何 ACL。 |
 | Azure 文件 | 是 | 是 |  | 必须重新创建任何 ACL。 |
-| Azure 文件同步 | 是 | 是 |  |  |
+| Azure 文件同步 | 是 | 是 |  | 存储同步服务和/或存储帐户可移动到不同的目录中。 有关详细信息，请查看 [Azure 文件存储常见问题解答 (FAQ)](../storage/files/storage-files-faq.md#azure-file-sync) |
 | Azure 托管磁盘 | 是 | 是 |  |  如果使用磁盘加密集通过客户管理的密钥对托管磁盘进行加密，则必须先禁用再重新启用与磁盘加密集关联的系统分配标识。 你必须重新创建角色分配，即，向密钥保管库中的磁盘加密集再次授予所需权限。 |
-| Azure Kubernetes 服务 | 是 | 是 |  |  |
+| Azure Kubernetes 服务 | 是 | 否 |  | 不能将 AKS 群集及其关联资源传输到不同的目录中。 有关详细信息，请查看 [Azure Kubernetes 服务 (AKS) 的常见问题解答](../aks/faq.md) |
 | Azure Policy | 是 | 否 | 所有 Azure Policy 对象，包括自定义定义、分配、豁免和符合性数据。 | 必须[导出](../governance/policy/how-to/export-resources.md)、导入和重新分配定义。 然后，创建新的策略分配以及任何必需的[策略豁免](../governance/policy/concepts/exemption-structure.md)。 |
-| Azure Active Directory 域服务 | 是 | 否 |  |  |
+| Azure Active Directory 域服务 | 是 | 否 |  | 不能将 Azure AD 域服务托管域传输到不同的目录中。 有关详细信息，请查看 [Azure Active Directory (AD) 域服务的常见问题解答 (FAQ)](../active-directory-domain-services/faqs.md) |
 | 应用注册 | “是” | 是 |  |  |
 
 > [!WARNING]

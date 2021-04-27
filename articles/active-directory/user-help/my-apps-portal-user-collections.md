@@ -1,5 +1,5 @@
 ---
-title: “我的应用”门户中的集合（预览版）- Azure AD
+title: 在“我的应用”门户中将应用整理到集合中 - Azure AD
 description: 了解如何在“我的应用”中创建、编辑、删除、隐藏和显示应用集合。
 services: active-directory
 author: curtand
@@ -8,22 +8,20 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 01/19/2021
+ms.date: 04/07/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 843f957ef8871f6372c1b08a5534f6e90098cc85
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7ac5dede27262d3ce8bc44b4b278ed623063f8e1
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100095114"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209657"
 ---
-# <a name="user-collections-preview-in-my-apps"></a>“我的应用”中的用户集合（预览版）
+# <a name="organize-apps-using-collections-from-my-apps"></a>通过“我的应用”使用集合来整理应用
 
 “我的应用”是用于启动和管理所有工作或学校应用的一站式服务。 创建集合来组织你的应用，使你更容易查找所需的应用。
-
-[!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
 在本文中，你将了解如何执行以下操作：
 
@@ -55,7 +53,7 @@ ms.locfileid: "100095114"
 
     :::image type="content" source="media/my-apps-portal-user-collections/3-add-apps.png" alt-text="将列表中的应用添加到集合":::
 
-1. 然后，你可以重新排列或删除应用，或选择“添加应用”，为集合选择更多应用。 如果对你的选择感到满意，请选择“新建”。  
+1. 在“新建”窗格中，可重新排列或删除应用，或者选择“添加应用”，为集合选择更多应用 。 如果对你的选择感到满意，请选择“新建”。  
 
     :::image type="content" source="media/my-apps-portal-user-collections/4-create-button.png" alt-text="选择“新建”按钮以将集合保存到“我的应用”":::
 
@@ -72,7 +70,7 @@ ms.locfileid: "100095114"
 
     :::image type="content" source="media/my-apps-portal-user-collections/6-manage-apps.png" alt-text="页面或省略号菜单包含用于管理应用的“管理”命令":::
 
-1. 你可以查看你有权访问的所有集合，无论它们是由你创建的，还是由你的管理员创建的。找到你要编辑的集合，打开集合菜单 :::image type="content" source="media/my-apps-portal-user-collections/18-collection-menu-icon.png" alt-text="选择集合的与集合级菜单对应的省略号图标":::，然后选择“编辑”。
+1. 你可查看你有权访问的所有集合，而无论这些集合是由你还是管理员创建的。找到你想要编辑的集合，打开集合菜单 :::image type="content" source="media/my-apps-portal-user-collections/18-collection-menu-icon.png" alt-text="对于集合级别菜单，选择集合上的省略号图标":::，然后选择“编辑”。
 
     :::image type="content" source="media/my-apps-portal-user-collections/7-edit-command.png" alt-text="集合的省略号菜单包含“编辑”命令":::
 
@@ -100,7 +98,7 @@ ms.locfileid: "100095114"
 
     :::image type="content" source="media/my-apps-portal-user-collections/11-manage-apps-again.png" alt-text="页面级省略号菜单包含用于管理应用的“管理”命令":::
 
-1. 你可以查看你有权访问的所有集合，无论它们是由你创建的，还是由你的管理员创建的。找到你要编辑的集合，打开集合菜单 :::image type="content" source="media/my-apps-portal-user-collections/18-collection-menu-icon.png" alt-text="选择集合的与集合级菜单对应的三点图标":::，然后选择“隐藏”。 隐藏的集合显示在同一集合列表中，恰好位于“隐藏”下拉列表下。  
+1. 你可查看你有权访问的所有集合，而无论这些集合是由你还是管理员创建的。找到你想要编辑的集合，打开集合菜单 :::image type="content" source="media/my-apps-portal-user-collections/18-collection-menu-icon.png" alt-text="对于集合级别菜单，选择集合上的三个点图标":::，然后选择“隐藏”。 隐藏的集合显示在同一集合列表中，恰好位于“隐藏”下拉列表下。  
 
     :::image type="content" source="media/my-apps-portal-user-collections/12-hide-collection.png" alt-text="集合省略号菜单包含“隐藏”命令":::
 
@@ -114,7 +112,7 @@ ms.locfileid: "100095114"
 
     :::image type="content" source="media/my-apps-portal-user-collections/13-manage-apps-again.png" alt-text="页面菜单包含用于管理应用的“管理”命令":::
 
-1. 在这里，你可以查看你有权访问的所有集合，无论它们是由你创建的，还是由你的管理员创建的。隐藏的集合显示在同一集合列表中，恰好位于“隐藏”下拉列表下。 找到你要编辑的集合，打开集合菜单 :::image type="content" source="media/my-apps-portal-user-collections/18-collection-menu-icon.png" alt-text="选择集合的与集合级菜单对应的省略号图标":::，然后选择“显示”。 集合将会移到可见集合列表的末尾。
+1. 在这里，你将看到你有权访问的所有集合，而无论这些集合是由你还是管理员创建的。隐藏的集合显示在同一集合列表中，就在“已隐藏”下拉列表的下方。 找到你要编辑的集合，打开集合菜单 :::image type="content" source="media/my-apps-portal-user-collections/18-collection-menu-icon.png" alt-text="选择集合的与集合级菜单对应的省略号图标":::，然后选择“显示”。 集合将会移到可见集合列表的末尾。
 
     :::image type="content" source="media/my-apps-portal-user-collections/14-show-collection.png" alt-text="集合省略号菜单包含“显示”命令":::
 
@@ -127,6 +125,6 @@ ms.locfileid: "100095114"
 
     :::image type="content" source="media/my-apps-portal-user-collections/15-manage-apps-again.png" alt-text="选择“管理”命令来管理你的应用":::
 
-1. 在这里，你会看到你有权访问的所有集合，无论它们是由你创建的，还是由你的管理员创建的。找到你要编辑的集合，打开集合菜单 :::image type="content" source="media/my-apps-portal-user-collections/18-collection-menu-icon.png" alt-text="选择集合的与集合级菜单对应的省略号图标":::，然后选择“删除”。  
+1. 在这里，你将看到你有权访问的所有集合，而无论这些集合是由你还是管理员创建的。找到你想要编辑的集合，打开集合菜单 :::image type="content" source="media/my-apps-portal-user-collections/18-collection-menu-icon.png" alt-text="对于集合级别菜单，选择集合上的省略号图标":::，然后选择“删除”。  
 
     :::image type="content" source="media/my-apps-portal-user-collections/16-delete-collection.png" alt-text="集合省略号菜单包含“删除”命令":::

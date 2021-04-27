@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: keli19
 author: likebupt
-ms.date: 03/19/2021
+ms.date: 04/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 09eabffb0e01ee6c5ea6b541378773a7d60397a3
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 30ae737a170c337fe6be51521aeb358cdcebd44b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106080695"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107324"
 ---
 # <a name="use-pipeline-parameters-in-the-designer-to-build-versatile-pipelines"></a>在设计器中使用管道参数生成通用管道
 
@@ -95,9 +95,11 @@ ms.locfileid: "106080695"
 
 现在，你就可以在下次运行管道时使用管道参数来指定其他数据集。
 
-## <a name="attach-module-parameter-to-pipeline-parameter"></a>将模块参数附加到管道参数 
+## <a name="attach-and-detach-module-parameter-to-pipeline-parameter"></a>将模块参数附加到管道参数以及将两者拆离 
 
-在本部分，你将了解如何将模块参数附加到管道参数。
+在本部分，你将了解如何将模块参数附加到管道参数以及将两者拆离。
+
+### <a name="attach-module-parameter-to-pipeline-parameter"></a>将模块参数附加到管道参数
 
 如果要在触发管道运行的同时更改值，可以将重复模块的相同模块参数附加到同一个管道参数。
 
@@ -115,10 +117,16 @@ ms.locfileid: "106080695"
 
    ![屏幕截图显示如何附加管道参数](media/how-to-use-pipeline-parameter/attach-replace-value-to-pipeline-parameter.png)
 
-已成功将“替换值”字段附加到管道参数。 模块中的“替换值”是不可操作的。
+已成功将“替换值”字段附加到管道参数。 
+
+
+### <a name="detach-module-parameter-to-pipeline-parameter"></a>将模块参数与管道参数拆离
+
+将“替换值”附加到管道参数后，该字段是不可操作的。
+
+可通过单击模块参数旁的省略号 (...) 并选择“从管道参数拆离”，将模块参数与管道参数拆离 。
 
  ![屏幕截图显示了附加到管道参数后该值无法操作](media/how-to-use-pipeline-parameter/non-actionable-module-parameter.png)
-
 
 ## <a name="update-and-delete-pipeline-parameters"></a>更新和删除管道参数
 
@@ -133,7 +141,7 @@ ms.locfileid: "106080695"
 
 ### <a name="delete-a-dataset-pipeline-parameter"></a>删除数据集管道参数
 
-按照以下步骤拆离数据集管道参数：
+使用以下步骤删除数据集管道参数：
 
 1. 选择数据集模块。
 1. 取消选中“设置为管道参数”选项。
@@ -147,22 +155,14 @@ ms.locfileid: "106080695"
 
 1. 选择管道参数旁边的省略号 (…)。
 
-    此视图显示管道参数附加到的模块。 若要删除管道参数，必须首先将其从任何模块参数中拆离出来。
+    此视图显示管道参数附加到的模块。
 
-    ![屏幕截图显示了应用于模块的当前管道参数](media/how-to-use-pipeline-parameter/current-pipeline-parameter.png)
+    ![屏幕截图显示了应用于模块的当前管道参数](media/how-to-use-pipeline-parameter/delete-pipeline-parameter2.png)
 
-1. 在画布中，选择管道参数仍附加到的模块。
-1. 在右侧的模块属性窗格中，找到管道参数附加到的字段。
-1. 将鼠标悬停在附加字段上。 然后，选择显示的省略号 (…)。
-1. 选择“从管道参数拆离”
-
-    ![显示从管道参数拆离的屏幕截图](media/how-to-use-pipeline-parameter/detach-from-pipeline-parameter.png)
-
-1. 重复上述步骤，直到将管道参数从所有字段中拆离出来。
-1. 选择管道参数旁边的省略号 (…)。
 1. 选择“删除参数”以删除管道参数。
 
-    ![显示删除管道参数的屏幕截图](media/how-to-use-pipeline-parameter/delete-pipeline-parameter.png)
+    > [!NOTE]
+    > 删除管道参数将导致所有附加的模块参数被拆离，拆离模块参数的值将保留当前的管道参数值。     
 
 ## <a name="trigger-a-pipeline-run-with-pipeline-parameters"></a>使用管道参数触发管道运行 
 

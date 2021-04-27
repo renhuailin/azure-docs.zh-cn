@@ -6,14 +6,14 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 04/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 751d475fcb2e8c96d05daa5b5e2144909d21a409
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: a0559028192b0a99aeffd45a3b2896f9c9d159be
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382294"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310184"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>用于 Amazon S3 的 Azure Purview 连接器
 
@@ -97,7 +97,7 @@ ms.locfileid: "106382294"
 此过程介绍了如何创建新的 Purview 凭据以在扫描 AWS 存储桶时使用。
 
 > [!TIP]
-> 你也可以在[配置扫描](#create-a-scan-for-your-amazon-s3-bucket)过程中创建新凭据。 在这种情况下，请在“凭据”字段中选择“新建”。
+> 你也可以在[配置扫描](#create-a-scan-for-one-or-more-amazon-s3-buckets)过程中创建新凭据。 在这种情况下，请在“凭据”字段中选择“新建”。
 >
 
 1. 在 Purview 中，导航到“管理中心”，然后在“安全性和访问”下选择“凭据”。
@@ -116,9 +116,30 @@ ms.locfileid: "106382294"
 
     完成上述操作后，选择“创建”以完成创建凭据的过程。
 
-有关 Purview 凭据的详细信息，请参阅 [Azure Purview 公共预览版文档](manage-credentials.md)。
+1. 如果还没有完成，请复制并粘贴“Microsoft 帐户 ID”和“外部 ID”值，以便在[为 Purview 创建新的 AWS 角色](#create-a-new-aws-role-for-purview)时使用，这是下一步 。
+
+有关 Purview 凭据的详细信息，请参阅 [Azure Purview 中用于源身份验证的凭据](manage-credentials.md)。
 
 ### <a name="create-a-new-aws-role-for-purview"></a>为 Purview 创建新的 AWS 角色
+
+此过程要求你在创建 AWS 角色时输入 Azure 帐户 ID 和外部 ID 的值。
+
+如果没有这些值，请先在 [Purview 凭据](#create-a-purview-credential-for-your-aws-bucket-scan)中找到这些值。
+
+查找 Microsoft 帐户 ID 和外部 ID：
+
+1. 在 Purview 中，导航到“管理中心” > “安全性和访问” > “凭据”  。
+
+1. 选择[为 AWS Bucket 扫描创建的](#create-a-purview-credential-for-your-aws-bucket-scan)凭据，然后在工具栏中选择“编辑”。
+
+1. 在右侧显示的“编辑凭据”窗格中，将“Microsoft 帐户 ID”和“外部 ID”值复制到单独的文件中，或保留这两个 ID 以便粘贴到 AWS 中的相关字段  。
+
+    例如：
+
+    [![查找 Microsoft 帐户 ID 和外部 ID 值。](./media/register-scan-amazon-s3/locate-account-id-external-id.png)](./media/register-scan-amazon-s3/locate-account-id-external-id.png#lightbox)
+
+
+为 Purview 创建 AWS 角色：
 
 1.  打开“Amazon Web Services”控制台，在“安全性、标识与合规性”下选择“IAM”。
 
@@ -129,12 +150,8 @@ ms.locfileid: "106382294"
     |字段  |说明  |
     |---------|---------|
     |**帐户 ID**     |    输入你的 Microsoft 帐户 ID。 例如：`615019938638`     |
-    |**外部 ID**     |   在“选项”下，选择“需要外部 ID...”，然后在指定字段中输入外部 ID。 <br>例如：`e7e2b8a3-0a9f-414f-a065-afaf4ac6d994`    <br><br>可以找到此外部 ID。  |
+    |**外部 ID**     |   在“选项”下，选择“需要外部 ID...”，然后在指定字段中输入外部 ID。 <br>例如：`e7e2b8a3-0a9f-414f-a065-afaf4ac6d994`     |
     | | |
-
-    > [!NOTE]
-    > 在你用于[创建 Purview 凭据](#create-a-purview-credential-for-your-aws-bucket-scan)的 Purview“管理中心” > “凭据”区域中，可以找到“Microsoft 帐户 ID”和“外部 ID” 的值。
-    >
 
     例如：
 
@@ -231,7 +248,7 @@ AWS 存储桶支持多种加密类型。 对于使用 AWS-KMS 加密的存储桶
 
 ### <a name="retrieve-your-new-role-arn"></a>检索新的角色 ARN
 
-你将需要记录 AWS 角色 ARN，并在[创建 Amazon S3 存储桶扫描](#create-a-scan-for-your-amazon-s3-bucket)时将其复制到 Purview。
+你将需要记录 AWS 角色 ARN，并在[创建 Amazon S3 存储桶扫描](#create-a-scan-for-one-or-more-amazon-s3-buckets)时将其复制到 Purview。
 
 **检索角色 ARN：**
 
@@ -241,11 +258,11 @@ AWS 存储桶支持多种加密类型。 对于使用 AWS-KMS 加密的存储桶
 
     ![将角色 ARN 值复制到剪贴板。](./media/register-scan-amazon-s3/aws-copy-role-purview.png)
 
-1. 将此值粘贴到一个安全的位置，当你[创建 Amazon S3 存储桶扫描](#create-a-scan-for-your-amazon-s3-bucket)时，将会用到它。
+1. 将此值粘贴到一个安全的位置，当你[创建 Amazon S3 存储桶扫描](#create-a-scan-for-one-or-more-amazon-s3-buckets)时，将会用到它。
 
 ### <a name="retrieve-your-amazon-s3-bucket-name"></a>检索 Amazon S3 存储桶名称
 
-你需要有 Amazon S3 存储桶的名称，以便在 [创建 Amazon S3 存储桶扫描](#create-a-scan-for-your-amazon-s3-bucket) 时将该名称复制到 Purview
+你需要有 Amazon S3 存储桶的名称，以便在 [创建 Amazon S3 存储桶扫描](#create-a-scan-for-one-or-more-amazon-s3-buckets) 时将该名称复制到 Purview
 
 **检索存储桶名称：**
 
@@ -282,6 +299,8 @@ AWS 帐户 ID 是用于登录到 AWS 控制台的那个 ID。 在你登录后，
 
 如果你只有一个 S3 存储桶，并且想要将它注册到 Purview 作为数据源，或者你的 AWS 帐户中有多个存储桶，但你并不想将这些存储桶全部都注册到 Purview，请使用此过程。
 
+添加 Bucket： 
+
 1. 通过用于 Amazon S3 的 Purview 连接器的专用 URL 启动 Purview 门户。 Amazon S3 Purview 连接器产品管理团队已向你提供此 URL。
 
     ![启动 Purview 门户。](./media/register-scan-amazon-s3/purview-portal-amazon-s3.png)
@@ -305,12 +324,15 @@ AWS 帐户 ID 是用于登录到 AWS 控制台的那个 ID。 在你登录后，
 
     完成后，选择“完成”以完成注册。
 
-继续[创建 Amazon S3 存储桶扫描](#create-a-scan-for-your-amazon-s3-bucket)。
+继续执行[创建一个或多个 Amazon S3 Bucket 的扫描](#create-a-scan-for-one-or-more-amazon-s3-buckets)。
 
-## <a name="add-all-of-your-amazon-s3-buckets-as-purview-resources"></a>添加所有 Amazon S3 存储桶作为 Purview 资源
+## <a name="add-an-amazon-account-as-a-purview-resource"></a>添加一个 Amazon 帐户作为 Purview 源
 
-如果你的 Amazon 帐户中有多个 S3 存储桶，并且你想要将所有存储桶都注册为数据源，请使用此过程。
+如果你的 Amazon 帐户中有多个 S3 Bucket，并且你想要将所有 Bucket 都注册为 Purview 数据源，请使用此过程。
 
+[配置扫描](#create-a-scan-for-one-or-more-amazon-s3-buckets)时，如果不希望同时扫描所有 Bucket，则可以选择要扫描的特定 Bucket。
+
+添加 Amazon 帐户：
 1. 通过用于 Amazon S3 的 Purview 连接器的专用 URL 启动 Purview 门户。 Amazon S3 Purview 连接器产品管理团队已向你提供此 URL。
 
     ![启动用于 Amazon S3 的连接器的专用 Purview 门户](./media/register-scan-amazon-s3/purview-portal-amazon-s3.png)
@@ -334,9 +356,9 @@ AWS 帐户 ID 是用于登录到 AWS 控制台的那个 ID。 在你登录后，
 
     完成后，选择“完成”以完成注册。
 
-继续[创建 Amazon S3 存储桶扫描](#create-a-scan-for-your-amazon-s3-bucket)。
+继续执行[创建一个或多个 Amazon S3 Bucket 的扫描](#create-a-scan-for-one-or-more-amazon-s3-buckets)。
 
-## <a name="create-a-scan-for-your-amazon-s3-bucket"></a>创建 Amazon S3 存储桶扫描
+## <a name="create-a-scan-for-one-or-more-amazon-s3-buckets"></a>创建一个或多个 Amazon S3 Bucket 的扫描
 
 当你添加存储桶作为 Purview 数据源后，可以配置一个按计划的时间间隔运行或立即运行的扫描。
 
@@ -352,9 +374,10 @@ AWS 帐户 ID 是用于登录到 AWS 控制台的那个 ID。 在你登录后，
     |**名称**     |  为扫描输入一个有意义的名称，或者使用默认值。       |
     |类型 |只有当你添加了 AWS 帐户并且其中包含所有存储桶时，此字段才会显示。 <br><br>当前选项只有“所有” > “Amazon S3”。 随着 Purview 支持矩阵扩大，敬请期待更多可选选项。 |
     |**凭据**     |  为角色 ARN 选择 Purview 凭据。 <br><br>提示：如果你要立即创建新凭据，请选择“新建”。 有关详细信息，请参阅[创建 Purview 凭据以用于扫描 AWS 存储桶](#create-a-purview-credential-for-your-aws-bucket-scan)。     |
-    |     |         |
+    | **Amazon S3**    |   只有当你添加了 AWS 帐户并且其中包含所有存储桶时，此字段才会显示。 <br><br>选择一个或多个 Bucket 进行扫描，或选择“全选”以扫描帐户中的所有 Bucket。      |
+    | | |
 
-    Purview 会自动检查角色 ARN 是否有效，以及存储桶内的存储桶和对象是否可供访问，如果连接成功，则继续操作。
+    Purview 会自动检查角色 ARN 是否有效，以及 Bucket 及其中的对象是否可供访问，如果连接成功，则继续操作。
 
     > [!TIP]
     > 在继续操作前，若要输入其他值并自行测试连接，请先在底部选择“测试连接”，然后再选择“继续”。

@@ -8,12 +8,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/04/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 16433d5b148d7bc441e375591c64af497cd7b8de
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 90ee39039b0734bf434e7339a973358989c08175
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505326"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311356"
 ---
 # <a name="access-config-server-and-service-registry"></a>访问 Config Server 和服务注册表
 
@@ -39,7 +39,7 @@ ms.locfileid: "106505326"
 
 分配“Azure Spring Cloud 数据读取者”角色后，客户可以访问 Spring Cloud Config Server 和 Spring Cloud 服务注册表终结点。 请执行以下过程：
 
-1. 获取访问令牌。 为 Azure AD 用户分配“Azure Spring Cloud 数据读取者”角色后，客户可运行以下命令，使用用户身份、服务主体或托管标识登录到 Azure CLI 以获取访问令牌。 有关详细信息，请参阅 [Azure CLI 身份验证](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)。 
+1. 获取访问令牌。 为 Azure AD 用户分配“Azure Spring Cloud 数据读取者”角色后，客户可运行以下命令，使用用户身份、服务主体或托管标识登录到 Azure CLI 以获取访问令牌。 有关详细信息，请参阅[验证 Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)。 
 
     ```azurecli
     az login
@@ -47,20 +47,20 @@ ms.locfileid: "106505326"
     ```
 2. 组成终结点。 我们支持 Azure Spring Cloud 管理的 Spring Cloud Config Server 和 Spring Cloud 服务注册表的默认终结点。 有关详细信息，请参阅[生产就绪的终结点](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready-endpoints)。 客户还可以通过访问终结点，来获取 Azure Spring Cloud 管理的 Spring Cloud Config Server 和 Spring Cloud 服务注册表的受支持终结点完整列表：
 
-    * *https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/*
-    * *https://SERVICE_NAME.svc.azuremicroservices.io/config/actuator/* 
+    * *'https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/'*
+    * *'https://SERVICE_NAME.svc.azuremicroservices.io/config/actuator/'* 
 
 >[!NOTE]
 > 如果你使用的是 Azure 中国云，请将 `*.azuremicroservices.io` 替换为 `*.microservices.azure.cn`。[了解详细信息](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)。
 
 3. 使用访问令牌访问组成的终结点。 将访问令牌放在某个头中以提供授权。  仅支持“GET”方法。
 
-    例如，访问诸如 *https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/health* 的终结点可查看 eureka 的运行状况。
+    例如，访问诸如 https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/health 的终结点可查看 eureka 的运行状况。
 
     如果响应为“401 未授权”，请检查是否已成功分配角色。  角色需要在几分钟后才能生效。或者，请验证访问令牌是否未过期。
 
 ## <a name="next-steps"></a>后续步骤
-* [Azure CLI 身份验证](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)
+* [验证 Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)
 * [生产就绪的终结点](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready-endpoints)
 
 ## <a name="see-also"></a>请参阅
