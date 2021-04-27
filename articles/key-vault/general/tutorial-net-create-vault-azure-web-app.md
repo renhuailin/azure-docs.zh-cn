@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 2960726cf687908e8e4aed9333fce490dd7ff006
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 901f2b938512f842a5b4c34adbfc61f9379e5131
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98788731"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772156"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>教程：使用托管标识将 Key Vault 连接到 .NET 中的 Azure Web 应用
 
@@ -34,7 +34,7 @@ ms.locfileid: "98788731"
 
 * Azure 订阅。 [免费创建一个。](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [.NET Core 3.1 SDK（或更高版本）](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
-* [Git](https://www.git-scm.com/downloads) 安装。
+* 版本 2.28.0 或更高版本的 [Git](https://www.git-scm.com/downloads) 安装。
 * [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/)。
 * [Azure Key Vault](./overview.md)。 可以使用 [Azure 门户](quick-create-portal.md)、[Azure CLI](quick-create-cli.md) 或 [Azure PowerShell](quick-create-powershell.md) 来创建密钥保管库。
 * Key Vault [机密](../secrets/about-secrets.md)。 可以使用 [Azure 门户](../secrets/quick-create-portal.md)、[PowerShell](../secrets/quick-create-powershell.md) 或 [Azure CLI](../secrets/quick-create-cli.md) 来创建机密。
@@ -78,14 +78,14 @@ dotnet run
 在终端窗口中，选择 Ctrl+C 关闭 Web 服务器。  为 .NET Core 项目初始化 Git 存储库：
 
 ```bash
-git init
+git init --initial-branch=main
 git add .
 git commit -m "first commit"
 ```
 
 可以通过 FTP 和本地 Git 使用 deployment user 来部署 Azure Web 应用。 配置部署用户之后，可对所有 Azure 部署使用此用户。 帐户级部署用户名和密码不同于 Azure 订阅凭据。 
 
-若要配置部署用户，请运行 [az webapp deployment user set](/cli/azure/webapp/deployment/user?#az-webapp-deployment-user-set) 命令。 选择符合以下准则的用户名和密码： 
+若要配置部署用户，请运行 [az webapp deployment user set](/cli/azure/webapp/deployment/user?#az_webapp_deployment_user_set) 命令。 选择符合以下准则的用户名和密码： 
 
 - 用户名在 Azure 中必须唯一。 对于本地 Git 推送，它不能包含 at 符号 (@)。 
 - 密码必须至少为 8 个字符，且包含字母、数字和符号这三种元素中的两种。 
@@ -100,7 +100,7 @@ JSON 输出会将该密码显示为 `null`。 如果收到 `'Conflict'. Details:
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-资源组是一个逻辑容器，可以在其中部署和管理 Azure 资源。 使用 [az group Create](/cli/azure/group?#az-group-create) 命令创建一个资源组用于包含密钥保管库和 Web 应用：
+资源组是一个逻辑容器，可以在其中部署和管理 Azure 资源。 使用 [az group Create](/cli/azure/group?#az_group_create) 命令创建一个资源组用于包含密钥保管库和 Web 应用：
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" -l "EastUS"
@@ -167,8 +167,13 @@ Local git is configured with url of 'https://&lt;username&gt;@&lt;your-webapp-na
 }
 </pre>
 
-
 Git 远程的 URL 将显示在 `deploymentLocalGitUrl` 属性中，其格式为 `https://<username>@<your-webapp-name>.scm.azurewebsites.net/<your-webapp-name>.git`。 保存此 URL。 稍后需要用到此信息。
+
+现在，将 Web 应用配置为从 `main` 分支部署：
+
+```azurecli-interactive
+ az webapp config appsettings set -g MyResourceGroup -name "<your-webapp-name>"--settings deployment_branch=main
+```
 
 使用以下命令转到新应用。 将 `<your-webapp-name>` 替换为你的应用名称。
 
@@ -238,7 +243,7 @@ http://<your-webapp-name>.azurewebsites.net
 
 在本教程中，我们将使用[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)对 Key Vault 进行身份验证。 托管标识会自动管理应用程序凭据。
 
-在 Azure CLI 中，若要为此应用程序创建标识，请运行 [az webapp-identity assign](/cli/azure/webapp/identity?#az-webapp-identity-assign) 命令：
+在 Azure CLI 中，若要为此应用程序创建标识，请运行 [az webapp-identity assign](/cli/azure/webapp/identity?#az_webapp_identity_assign) 命令：
 
 ```azurecli-interactive
 az webapp identity assign --name "<your-webapp-name>" --resource-group "myResourceGroup"
@@ -254,7 +259,7 @@ az webapp identity assign --name "<your-webapp-name>" --resource-group "myResour
 }
 ```
 
-若要为 Web 应用授予在密钥保管库上执行 get 和 list 的权限，请将 `principalId` 传递到 Azure CLI [az keyvault set-policy](/cli/azure/keyvault?#az-keyvault-set-policy) 命令 ：
+若要为 Web 应用授予在密钥保管库上执行 get 和 list 的权限，请将 `principalId` 传递到 Azure CLI [az keyvault set-policy](/cli/azure/keyvault?#az_keyvault_set_policy) 命令 ：
 
 ```azurecli-interactive
 az keyvault set-policy --name "<your-keyvault-name>" --object-id "<principalId>" --secret-permissions get list
@@ -338,4 +343,4 @@ http://<your-webapp-name>.azurewebsites.net
 - [将 Azure Key Vault 与部署到 .NET 虚拟机的应用程序结合使用](./tutorial-net-virtual-machine.md)
 - 详细了解 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)
 - 查看[开发人员指南](./developers-guide.md)
-- [保护对密钥保管库的访问](./secure-your-key-vault.md)
+- [保护对密钥保管库的访问](./security-overview.md)

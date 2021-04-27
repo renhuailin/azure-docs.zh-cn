@@ -9,12 +9,12 @@ ms.date: 07/06/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: acebc75b579b13ebb2cfad0e18057245781165ad
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3c8d0927c3fb74c52e54ceb5ff8ba5c0361c4f46
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175271"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787821"
 ---
 # <a name="create-an-app-service-app-and-deploy-private-endpoint-using-azure-cli"></a>使用 Azure CLI 创建应用服务应用并部署专用终结点
 
@@ -37,7 +37,7 @@ az group create --name myResourceGroup --location francecentral
 ## <a name="create-an-app-service-plan"></a>创建应用服务计划
 
 需要创建应用服务计划来托管 Web 应用。
-使用 [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) 创建应用服务计划。
+使用 [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) 创建应用服务计划。
 此示例在 francecentral 位置创建名为 myAppServicePlan 的应用服务计划，该计划包含 P1V2 SKU 并仅有一个辅助角色  ： 
 
 ```azurecli-interactive
@@ -52,7 +52,7 @@ az appservice plan create \
 ## <a name="create-a-web-app"></a>创建 Web 应用
 
 拥有应用服务计划后，即可部署 Web 应用。
-使用 [az appservice plan create](/cli/azure/webapp#az-webapp-create 创建 Web 应用。
+使用 [az appservice plan create](/cli/azure/webapp#az_webapp_create 创建 Web 应用。
 此示例在名为 myAppServicePlan 的计划中创建一个名为 mySiteName 的 Web 应用 
 
 ```azurecli-interactive
@@ -78,7 +78,7 @@ az network vnet create \
 
 ## <a name="configure-the-subnet"></a>配置子网 
 
-需要更新子网以禁用专用终结点网络策略。 使用 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) 更新名为 *mySubnet* 的子网配置：
+需要更新子网以禁用专用终结点网络策略。 使用 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) 更新名为 *mySubnet* 的子网配置：
 
 ```azurecli-interactive
 az network vnet subnet update \

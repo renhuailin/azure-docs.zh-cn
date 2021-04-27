@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 15bf8f4fde2128181664fa7b94f2479bac7ad5b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60b58f7cf67a22e019ff186e4e1811ff5b001d84
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98881511"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714445"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>将 VMware VM 迁移到 Azure（使用基于代理的方法）
 
@@ -156,7 +156,11 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以发现要�
 6. 选择“确认迁移的目标区域为 <区域名称>”。
 7. 单击“创建资源”。 随即会在后台创建一个 Azure Site Recovery 保管库。 单击此按钮后，无法更改此项目的目标区域，并且所有后续迁移都指向此区域。
 
-    ![创建恢复服务保管库](./media/tutorial-migrate-vmware-agent/create-resources.png)
+    ![创建恢复服务保管库](./media/tutorial-migrate-vmware-agent/create-resources.png)  
+
+    > [!NOTE]
+    > 如果在创建 Azure Migrate 项目时选择了专用终结点作为该项目的连接方法，则还将为专用终结点连接配置恢复服务保管库。 确保可从复制设备访问专用终结点：[了解详细信息](how-to-use-azure-migrate-with-private-endpoints.md#troubleshoot-network-connectivity)
+
 
 8. 在“是否安装新的复制设备?”中，选择“安装复制设备”。 
 9. 单击“下载”。 这将下载 OVF 模板。
@@ -201,7 +205,7 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以发现要�
     - 将代理名称指定为 **http://ip-address** 或 **http://FQDN** 。 不支持 HTTPS 代理服务器。
 5. 当系统提示你输入订阅、资源组和保管库详细信息时，请添加下载设备模板时记下的详细信息。
 6. 在“安装第三方软件”中，接受许可协议。 选择“下载并安装”，安装 MySQL 服务器。
-7. 选择“安装 VMware PowerCLI”。 执行此操作之前，请确保所有浏览器窗口已关闭。 然后选择“继续”。 
+7. 选择“安装 VMware PowerCLI”。 执行此操作之前，请确保所有浏览器窗口已关闭。 然后选择“继续”。
 8. 在“验证设备配置”中验证先决条件，然后继续。
 9. 在“配置 vCenter Server/vSphere ESXi 服务器”中，输入要复制的 VM 所在的 vCenter Server 或 vSphere 主机的 FQDN 或 IP 地址。 输入服务器侦听的端口。 为保管库中的 VMware 服务器输入一个可用的友好名称。
 10. 输入[创建](#prepare-an-account-to-discover-vms)的用于发现 VMware 的帐户的凭据。 选择“添加” > “继续” 。
@@ -245,12 +249,17 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以发现要�
     - 如果不需要为迁移的计算机使用其中任何可用性配置，则选择“无需基础结构冗余”选项。
 9. 检查要迁移的每个 VM。 然后单击“下一页:目标设置”。
 10. 在“目标设置”中，选择订阅以及要迁移到的目标区域，并指定迁移之后 Azure VM 所在的资源组。
-11. 在“虚拟网络”中，选择迁移之后 Azure VM 要加入到的 Azure VNet/子网。
-12. 在“可用性选项”中，选择：
+11. 在“虚拟网络”中，选择迁移之后 Azure VM 要加入到的 Azure VNet/子网。  
+12. 在“缓存存储帐户”中，保留默认选项，以使用为项目自动创建的缓存存储帐户。 如果要指定其他存储帐户用作复制的缓存存储帐户，请使用下拉列表。 <br/> 
+    > [!NOTE]
+    >
+    > - 如果选择了专用终结点作为 Azure Migrate 项目的连接方法，请向恢复服务保管库授予对缓存存储帐户的访问权限。 [**了解详细信息**](how-to-use-azure-migrate-with-private-endpoints.md#grant-access-permissions-to-the-recovery-services-vault)
+    > - 若要使用结合专用对等互连的 ExpressRoute 进行复制，请为缓存存储帐户创建专用终结点。 [**了解详细信息**](how-to-use-azure-migrate-with-private-endpoints.md#create-a-private-endpoint-for-the-storage-account-optional) 
+13. 在“可用性选项”中，选择：
     -  可用性区域，将迁移的计算机固定到区域中的特定可用性区域。 使用此选项可跨可用性区域分配形成多节点应用程序层的服务器。 如果选择此选项，则需要在“计算”选项卡中指定用于每个选定计算机的可用性区域。仅当为迁移选择的目标区域支持可用性区域时，此选项才可用
     -  可用性集，将迁移的计算机放入可用性集。 若要使用此选项，所选的目标资源组必须具有一个或多个可用性集。
     - 如果不需要为迁移的计算机使用其中任何可用性配置，则选择“无需基础结构冗余”选项。
-13. 在“磁盘加密类型”中，选择以下类型：
+14. 在“磁盘加密类型”中，选择以下类型：
     - 使用平台管理的密钥进行静态加密
     - 使用客户管理的密钥进行静态加密
     - 通过平台管理的密钥和客户管理的密钥进行双重加密
@@ -258,25 +267,25 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以发现要�
    > [!NOTE]
    > 若要使用 CMK 复制 VM，需要在目标资源组下[创建磁盘加密集](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set)。 磁盘加密集对象将托管磁盘映射到包含 CMK 的密钥保管库，以用于 SSE。
   
-14. 在“Azure 混合权益”中：
+15. 在“Azure 混合权益”中：
 
     - 如果你不想要应用 Azure 混合权益，请选择“否”。 然后单击“下一步”。
     - 如果你的 Windows Server 计算机享有有效软件保障或 Windows Server 订阅的权益，并且你想要将此权益应用到所要迁移的计算机，请选择“是”。 然后单击“下一步”。
 
     ![目标设置](./media/tutorial-migrate-vmware/target-settings.png)
 
-15. 在“计算”中，查看 VM 名称、大小、OS 磁盘类型和可用性配置（如果在上一步中选定）。 VM 必须符合 [Azure 要求](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)。
+16. 在“计算”中，查看 VM 名称、大小、OS 磁盘类型和可用性配置（如果在上一步中选定）。 VM 必须符合 [Azure 要求](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)。
 
    - **VM 大小**：如果你正在使用评估建议，则 VM 大小下拉列表会显示建议大小。 否则，Azure Migrate 会根据 Azure 订阅中最接近的匹配项选择大小。 或者，请在“Azure VM 大小”中的手动选择一个大小。 
     - **OS 磁盘**：为 VM 指定 OS（启动）磁盘。 OS 磁盘是包含操作系统引导加载程序和安装程序的磁盘。 
     - **可用性区域**：指定要使用的可用性区域。
     - **可用性集**：指定要使用的可用性集。
 
-16. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。 然后单击“下一步”。
+17. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。 然后单击“下一步”。
     - 可以从复制中排除磁盘。
     - 如果排除了磁盘，迁移后，这些磁盘将不会出现在 Azure VM 中。 
 
-17. 在“检查并开始复制”中检查设置，然后单击“复制”启动服务器的初始复制。 
+18. 在“检查并开始复制”中检查设置，然后单击“复制”启动服务器的初始复制。 
 
 > [!NOTE]
 > 在复制开始之前，随时可以在“管理” > “复制计算机”中更新复制设置。 开始复制后无法更改设置。

@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/29/2021
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 41b3552a633c9cebce1138fa042dbd154eee0cb5
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: da4ada8b505c747d24738e175a1701b5ea73b4e4
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107314110"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536743"
 ---
 # <a name="what-is-optical-character-recognition"></a>什么是光学字符识别？
 
@@ -42,7 +42,6 @@ OCR API 总共支持 73 种语言的印刷体文本。 请参阅 [OCR 支持的�
 * 支持的文件格式：JPEG、PNG、BMP、PDF 和 TIFF
 * 对于 PDF 和 TIFF 文件，最多处理 2000 个页面（对于免费层，只处理前两个页面）。
 * 文件大小必须小于 50 MB（对于免费层，则为 4 MB），且尺寸介于 50 x 50 和 10000 x 10000 像素之间。 
-* PDF 尺寸必须为 17 x 17 英寸或更小，对应于 Legal 或 A3 纸张尺寸及更小。
 
 ## <a name="read-api"></a>读取 API 
 
@@ -50,6 +49,21 @@ OCR API 总共支持 73 种语言的印刷体文本。 请参阅 [OCR 支持的�
 
 ![OCR 如何将图像和文档转换为带有提取文本的结构化输出](./Images/how-ocr-works.svg)
 
+### <a name="key-features"></a>主要功能
+
+读取 API 包括以下功能。 
+
+* 73 种语言的打印文本提取
+* 英语手写文本提取
+* 具有位置和置信度分数的文本行和字词
+* 不需要语言标识
+* 支持混合语言、混合模式（打印和手写）
+* 从大型多页文档中选择页面和页面范围
+* 文本行的自然阅读顺序
+* 文本行的手写分类
+* 本地部署可用的 Distroless Docker 容器
+
+了解[如何使用 OCR 功能](./vision-api-how-to-topics/call-read-api.md)。
 
 ## <a name="use-the-cloud-api-or-deploy-on-premise"></a>使用云 API 或本地部署
 大多数客户都青睐读取 3.x 云 API，因为它易于集成，而且其现成可用的性质能够提高工作效率。 Azure 和计算机视觉服务将处理缩放、性能、数据安全与合规需求，你只需将工作重心放在满足客户需求上。

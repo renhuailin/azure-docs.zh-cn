@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 0d6d5a08ea85ebb666acc0336f1e1d7ec5e097da
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e82e9fc93bf8c816fcbfd5869156745dea630313
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044662"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517549"
 ---
 # <a name="claim-sets"></a>声明集
 
@@ -30,11 +30,66 @@ ms.locfileid: "105044662"
 
 由策略作者用于在 SGX 证明策略中定义授权规则的声明：
 
-- **x-ms-sgx-is-debuggable**：布尔值，指示 enclave 是否已启用调试
-- **x-ms-sgx-product-id**：SGX enclave 的产品 ID 值 
-- **x-ms-sgx-mrsigner**：Quote 的“mrsigner”字段的十六进制编码值
-- **x-ms-sgx-mrenclave**：Quote 的“mrenclave”字段的十六进制编码值
-- **x-ms-sgx-svn**：在 Quote 中编码的安全版本号 
+- **x-ms-sgx-is-debuggable**：布尔值，指示是否已启用 enclave 调试。
+  
+  可在禁用或启用调试的情况下加载 SGX enclave。 当 enclave 中的标志设置为 true 时，它将为 enclave 代码启用调试功能。 这包括访问 enclave 内存的能力。 因此，建议仅出于开发目的将标志设置为 true。 如果在生产环境中启用，不会保留 SGX 安全保证。
+  
+  Azure 证明用户可以使用证明策略来验证是否为 SGX enclave 禁用了调试。 添加策略规则后，当恶意用户打开调试支持以获取对 enclave 内容的访问权限时，证明将会失败。
+
+- **x-ms-sgx-product id**：一个整数值，指示 SGX enclave 的产品 ID。
+
+  enclave 作者为每个 enclave 分配一个产品 ID。 产品 ID 允许 enclave 作者使用同一个 MRSIGNER 对 enclave 进行分段。 通过在证明策略中添加验证规则，客户可以检查他们是否正在使用预期的 enclave。 如果 enclave 的产品 ID 与 enclave 作者发布的值不匹配，则证明将会失败。
+
+- **x-mrsigner**：一个字符串值，用于标识 SGX enclave 的作者。
+
+  MRSIGNER 是 enclave 作者的公钥的哈希，用于对 enclave 二进制文件进行签名。 通过证明策略验证 MRSIGNER，客户可以验证受信任的二进制文件是否在 enclave 中运行。 如果策略声明与 enclave 作者的 MRSIGNER 不匹配，则表示 enclave 二进制文件未由受信任的源签名，并且证明失败。
+  
+  当 enclave 作者出于安全原因而偏好轮换 MRSIGNER 时，必须更新 Azure 证明策略以支持新的和旧的 MRSIGNER 值，然后再更新二进制文件。 否则，授权检查将失败，从而导致证明失败。
+  
+  必须使用以下格式更新认证策略。 
+ 
+  #### <a name="before-key-rotation"></a>密钥轮换之前
+ 
+   ```
+    version= 1.0;
+    authorizationrules 
+    {
+    [ type=="x-ms-sgx-is-debuggable", value==false]&&
+    [ type=="x-ms-sgx-mrsigner", value=="mrsigner1"] => permit(); 
+    };
+  ```
+
+   #### <a name="during-key-rotation"></a>密钥轮换期间
+
+    ```
+      version= 1.0;
+      authorizationrules 
+      {
+      [ type=="x-ms-sgx-is-debuggable", value==false]&&
+      [ type=="x-ms-sgx-mrsigner", value=="mrsigner1"] => permit(); 
+      [ type=="x-ms-sgx-is-debuggable", value==false ]&& 
+      [ type=="x-ms-sgx-mrsigner", value=="mrsigner2"] => permit(); 
+      };
+    ```
+
+   #### <a name="after-key-rotation"></a>密钥轮换之后
+
+    ```
+      version= 1.0;
+      authorizationrules 
+      { 
+      [ type=="x-ms-sgx-is-debuggable", value==false]&& 
+      [ type=="x-ms-sgx-mrsigner", value=="mrsigner2"] => permit(); 
+      };
+    ```
+
+- **x-mrenclave**：一个字符串值，用于标识在 enclave 内存中加载的代码和数据。 
+
+  MRENCLAVE 是可用于验证 enclave 二进制文件的 enclave 度量值之一。 它是在 enclave 中运行的代码的哈希。 每次对 enclave 二进制代码进行更改时，度量值都会发生变化。 通过证明策略验证 MRENCLAVE，客户可以验证预期的二进制文件是否在 enclave 中运行。 但是，由于 MRENCLAVE 预期随现有代码的任何简单修改而频繁更改，因此建议在证明策略中使用 MRSIGNER 验证来验证 enclave 二进制文件。
+
+- **x-ms-sgx-svn**：一个整数值，指示 SGX enclave 的安全版本号
+
+  enclave 作者将安全版本号 (SVN) 分配给 SGX enclave 的每个版本。 在 enclave 代码中发现安全问题时，enclave 作者会在修复漏洞后递增 SVN 值。 为了防止与不安全的 enclave 代码交互，客户可以在证明策略中添加一条验证规则。 如果 enclave 代码的 SVN 与 enclave 作者推荐的版本不匹配，则证明将会失败。
 
 以下声明被视为已弃用，但受完全支持，并且将来将继续被包含在内。 建议使用未弃用的声明名称。
 

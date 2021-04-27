@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: cynthn
-ms.openlocfilehash: b3435d1dabf604cf7a1394c14ee62d65b923714b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8def06990b72d6e08127e8c4f16e0dfd87905d4f
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565931"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565179"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>从 Azure 下载 Linux VHD
 
@@ -21,7 +21,9 @@ ms.locfileid: "102565931"
 
 ## <a name="stop-the-vm"></a>停止 VM
 
-如果 VHD 附加到正在运行的 VM，则不能从 Azure 下载。 需要停止 VM，才能下载 VHD。 
+如果 VHD 附加到正在运行的 VM，则不能从 Azure 下载。 如果要使 VM 保持运行，可以[创建快照，然后下载快照](#alternative-snapshot-the-vm-disk)。
+
+若要停止 VM，请执行以下操作：
 
 1.  登录 [Azure 门户](https://portal.azure.com/)。
 2.  在左侧菜单中，选择“虚拟机”。
@@ -29,6 +31,24 @@ ms.locfileid: "102565931"
 4.  在 VM 的页面上，选择“停止”。
 
     :::image type="content" source="./media/download-vhd/export-stop.PNG" alt-text="显示用于停止 VM 的菜单按钮。":::
+
+### <a name="alternative-snapshot-the-vm-disk"></a>替代方法：创建 VM 磁盘快照
+
+创建要下载的磁盘的快照。
+
+1. 在[门户](https://portal.azure.com)中选择 VM。
+2. 在左侧菜单中选择“磁盘”，然后选择要创建快照的磁盘。 系统将显示磁盘的详细信息。  
+3. 从页面的顶部菜单选择“创建快照”。 此时将打开“创建快照”页。
+4. 在“名称”中键入快照的名称。 
+5. 对于“快照类型”，选择“完全”或“增量”  。
+6. 完成操作后，选择“查看 + 创建”。
+
+很快会创建快照，然后可以使用该快照下载或创建另一个 VM。
+
+> [!NOTE]
+> 如果不先停止 VM，将不会清理快照。 快照的状态就好像在创建快照时 VM 已重启或崩溃一样。  尽管这通常是安全的，但如果当时正在运行的应用程序不具备抵抗崩溃的能力，可能会导致问题。
+>  
+> 此方法只推荐给具有单个操作系统磁盘的 VM。 在下载快照之前，或者在为操作系统磁盘和每个数据磁盘创建快照之前，应停止具有一个或多个数据磁盘的 VM。
 
 ## <a name="generate-sas-url"></a>生成 SAS URL
 

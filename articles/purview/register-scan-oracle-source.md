@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 76aadd667691e12c61e0e5e13c13ca0241a9f0ce
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 40c5e0ff2c2301607f5a548ff05c742c5c5a948d
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045495"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517056"
 ---
 # <a name="register-and-scan-oracle-source-preview"></a>注册并扫描 Oracle 源（预览版）
 
@@ -38,9 +38,7 @@ Oracle 源支持完全扫描（用于从 Oracle 数据库中提取元数据）�
 
 5.  支持的 Oracle 数据库版本为 6i 到 19c。
 
-6.  用户权限：若要确保第一次扫描成功，你需要具有“完全权限系统管理员”类型的权限。
-
-    对于后续扫描，需要对系统表具有只读访问权限。 用户应当具有创建会话的权限并且应当分配有 SELECT\_CATALOG\_ROLE 角色。 另外，还可以针对此连接器从中查询元数据的每个单独系统表向用户授予 SELECT 权限：
+6.  用户权限：需要对系统表具有只读访问权限。 用户应当具有创建会话的权限并且应当分配有 SELECT\_CATALOG\_ROLE 角色。 另外，还可以针对此连接器从中查询元数据的每个单独系统表向用户授予 SELECT 权限：
        > grant create session to \[user\];\
         grant select on all\_users to \[user\];\
         grant select on dba\_objects to \[user\];\

@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 04d17e17ef11696efd52f04ea83639f2a9b81fea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e718ef30d029995c49efe36f19a6efcf7de0616
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96938743"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589595"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>教程：为 Dropbox for Business 配置自动用户预配
 
 本教程的目的是演示要将 Azure AD 配置为自动将用户和/或组预配到 Dropbox for Business 以及取消其预配需在 Dropbox for Business 和 Azure Active Directory (Azure AD) 中执行的步骤。
 
 > [!IMPORTANT]
-> Microsoft 和 Dropbox 将从 2021 年 4 月 1 日起弃用旧的 Dropbox 集成。 为避免服务中断，我们建议迁移到支持组的新 Dropbox 集成。 若要迁移到新的 Dropbox 集成，请使用以下步骤添加和配置 Dropbox 的新实例，以便在 Azure AD 租户中进行配置。 配置新的 Dropbox 集成后，请禁用旧 Dropbox 集成上的预配以避免预配冲突。 有关迁移到新 Dropbox 集成的更详细步骤，请参阅[使用 Azure AD 更新到最新的 Dropbox for Business 应用程序](https://help.dropbox.com/installs-integrations/third-party/update-dropbox-azure-ad-connector)。
+> Microsoft 和 Dropbox 以后将弃用旧的 Dropbox 集成。 最初计划在 2021 年 4 月 1 日弃用，但此日期已无限期推迟。 但是，为了避免服务中断，我们建议迁移到支持组的新 SCIM 2.0 Dropbox 集成。 若要迁移到新的 Dropbox 集成，请使用以下步骤添加和配置 Dropbox 的新实例，以便在 Azure AD 租户中进行配置。 配置新的 Dropbox 集成后，请禁用旧 Dropbox 集成上的预配以避免预配冲突。 有关迁移到新 Dropbox 集成的更详细步骤，请参阅[使用 Azure AD 更新到最新的 Dropbox for Business 应用程序](https://help.dropbox.com/installs-integrations/third-party/update-dropbox-azure-ad-connector)。
 
 > [!NOTE]
 > 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。
@@ -93,7 +93,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”  设置为“自动”  。
+4. 将“预配模式”设置为“自动”。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 

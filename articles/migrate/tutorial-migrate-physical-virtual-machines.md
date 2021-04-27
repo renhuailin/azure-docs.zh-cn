@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: aeeb810174ff5c21a81bcec8aa9265ff100edf91
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1563543dec0a27094c00e446a205e94535e54229
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99626319"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713497"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>将计算机作为物理服务器迁移到 Azure
 
@@ -125,23 +125,25 @@ ms.locfileid: "99626319"
 
     ![发现 VM](./media/tutorial-migrate-physical-virtual-machines/migrate-discover.png)
 
-3. 在“发现计算机” > “计算机是否已虚拟化?”中，单击“未虚拟化/其他”。  
-4. 在“目标区域”中，选择要将计算机迁移到的 Azure 区域。
-5. 选择“确认迁移的目标区域为 <区域名称>”。
-6. 单击“创建资源”。 随即会在后台创建一个 Azure Site Recovery 保管库。
+2. 在“发现计算机” > “计算机是否已虚拟化?”中，单击“未虚拟化/其他”。  
+3. 在“目标区域”中，选择要将计算机迁移到的 Azure 区域。
+4. 选择“确认迁移的目标区域为 <区域名称>”。
+5. 单击“创建资源”。 随即会在后台创建一个 Azure Site Recovery 保管库。
     - 如果已使用 Azure Migrate 的服务器迁移工具设置迁移，则由于已设置资源，因此无法配置目标选项。    
     - 单击此按钮后，无法更改此项目的目标区域。
-    - 所有后续迁移的目标都是此区域。
+    - 所有后续迁移的目标都是此区域。 
+    > [!NOTE]
+    > 如果在创建 Azure Migrate 项目时选择了专用终结点作为该项目的连接方法，则还将为专用终结点连接配置恢复服务保管库。 确保可从复制设备访问专用终结点。 [**了解详细信息**](how-to-use-azure-migrate-with-private-endpoints.md#troubleshoot-network-connectivity)
 
-7. 在“是否安装新的复制设备?”中，选择“安装复制设备”。 
-9. 在“下载并安装复制设备软件”中，下载设备安装程序和注册密钥。 需要使用该密钥来注册设备。 下载的密钥有效期为 5 天。
+6. 在“是否安装新的复制设备?”中，选择“安装复制设备”。 
+7. 在“下载并安装复制设备软件”中，下载设备安装程序和注册密钥。 需要使用该密钥来注册设备。 下载的密钥有效期为 5 天。
 
     ![下载提供程序](media/tutorial-migrate-physical-virtual-machines/download-provider.png)
 
-10. 将设备安装程序文件和密钥文件复制到为该设备创建的 Windows Server 2016 计算机。
-11. 安装完成后，设备配置向导将自动启动（也可使用在设备的桌面上创建的 cspsconfigtool 快捷方式手动启动该向导）。 使用向导的“管理帐户”选项卡可添加要用于移动服务的推送安装的帐户详细信息。 在本教程中，我们将在要复制的源 VM 上手动安装移动服务，因此请在此步骤中创建一个虚拟帐户，然后继续。 可以提供以下详细信息来创建虚拟帐户：“guest”作为友好名称，“username”作为用户名，“password”作为帐户密码。 你将在“启用复制”阶段使用此虚拟帐户。 
+8. 将设备安装程序文件和密钥文件复制到为该设备创建的 Windows Server 2016 计算机。
+9. 安装完成后，设备配置向导将自动启动（也可使用在设备的桌面上创建的 cspsconfigtool 快捷方式手动启动该向导）。 使用向导的“管理帐户”选项卡可添加要用于移动服务的推送安装的帐户详细信息。 在本教程中，我们将在要复制的源 VM 上手动安装移动服务，因此请在此步骤中创建一个虚拟帐户，然后继续。 可以提供以下详细信息来创建虚拟帐户：“guest”作为友好名称，“username”作为用户名，“password”作为帐户密码。 你将在“启用复制”阶段使用此虚拟帐户。 
 
-12. 设备已安装并重启后，在“发现计算机”中的“选择配置服务器”内选择新设备，然后单击“完成注册”。   “完成注册”步骤会执行最终的几个任务来准备复制设备。
+10. 设备已安装并重启后，在“发现计算机”中的“选择配置服务器”内选择新设备，然后单击“完成注册”。   “完成注册”步骤会执行最终的几个任务来准备复制设备。
 
     ![完成注册](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
 
@@ -216,18 +218,24 @@ ms.locfileid: "99626319"
 2. 在“复制”>“源设置” > “你的计算机是否已虚拟化?”中，选择“未虚化/其他”   。
 3. 在“本地设备”中，选择已设置的 Azure Migrate 设备的名称。
 4. 在“进程服务器”中，选择复制设备的名称。
-6. 在“来宾凭据”中，请选择以前在[复制安装程序设置](#download-the-replication-appliance-installer)过程中创建的虚拟帐户，以手动安装出行服务（不支持推送安装）。 然后单击“下一页:虚拟机”。   
+5. 在“来宾凭据”中，请选择以前在[复制安装程序设置](#download-the-replication-appliance-installer)过程中创建的虚拟帐户，以手动安装出行服务（不支持推送安装）。 然后单击“下一页:虚拟机”。   
 
     ![“复制”屏幕中“源设置”选项卡的屏幕截图，其中突出显示了“来宾凭据”字段。](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 
-7. 在“虚拟机”中的“从评估中导入迁移设置?”内，保留默认设置“否，我将手动指定迁移设置”。  
-8. 检查要迁移的每个 VM。 然后单击“下一页:目标设置”。
+6. 在“虚拟机”中的“从评估中导入迁移设置?”内，保留默认设置“否，我将手动指定迁移设置”。  
+7. 检查要迁移的每个 VM。 然后单击“下一页:目标设置”。
 
     ![选择 VM](./media/tutorial-migrate-physical-virtual-machines/select-vms.png)
 
 
-9. 在“目标设置”中，选择订阅以及要迁移到的目标区域，并指定迁移之后 Azure VM 所在的资源组。
-10. 在“虚拟网络”中，选择迁移之后 Azure VM 要加入到的 Azure VNet/子网。
+8. 在“目标设置”中，选择订阅以及要迁移到的目标区域，并指定迁移之后 Azure VM 所在的资源组。
+9. 在“虚拟网络”中，选择迁移之后 Azure VM 要加入到的 Azure VNet/子网。   
+10. 在“缓存存储帐户”中，保留默认选项，以使用为项目自动创建的缓存存储帐户。 如果要指定其他存储帐户用作复制的缓存存储帐户，请使用下拉列表。 <br/> 
+    > [!NOTE]
+    >
+    > - 如果选择了专用终结点作为 Azure Migrate 项目的连接方法，请向恢复服务保管库授予对缓存存储帐户的访问权限。 [**了解详细信息**](how-to-use-azure-migrate-with-private-endpoints.md#grant-access-permissions-to-the-recovery-services-vault)
+    > - 若要使用结合专用对等互连的 ExpressRoute 进行复制，请为缓存存储帐户创建专用终结点。 [**了解详细信息**](how-to-use-azure-migrate-with-private-endpoints.md#create-a-private-endpoint-for-the-storage-account-optional) 
+  
 11. 在“可用性选项”中，选择：
     -  可用性区域，将迁移的计算机固定到区域中的特定可用性区域。 使用此选项可跨可用性区域分配形成多节点应用程序层的服务器。 如果选择此选项，则需要在“计算”选项卡中指定用于每个选定计算机的可用性区域。仅当为迁移选择的目标区域支持可用性区域时，此选项才可用
     -  可用性集，将迁移的计算机放入可用性集。 若要使用此选项，所选的目标资源组必须具有一个或多个可用性集。
@@ -246,7 +254,7 @@ ms.locfileid: "99626319"
     - 如果你不想要应用 Azure 混合权益，请选择“否”。 然后单击“下一步”。
     - 如果你的 Windows Server 计算机享有有效软件保障或 Windows Server 订阅的权益，并且你想要将此权益应用到所要迁移的计算机，请选择“是”。 然后单击“下一步”。
 
-    ![目标设置](./media/tutorial-migrate-vmware/target-settings.png)
+    ![目标设置](./media/tutorial-migrate-physical-virtual-machines/target-settings.png)
 
 14. 在“计算”中，查看 VM 名称、大小、OS 磁盘类型和可用性配置（如果在上一步中选定）。 VM 必须符合 [Azure 要求](migrate-support-matrix-physical-migration.md#azure-vm-requirements)。
 

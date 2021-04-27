@@ -1,18 +1,18 @@
 ---
 title: 简介
-description: 了解使用 Azure VMware 解决方案在 Azure 中部署和管理基于 VMware 的工作负载的功能和优势。
+description: 了解使用 Azure VMware 解决方案在 Azure 中部署和管理基于 VMware 的工作负载的功能和优势。 Azure VMware 解决方案 SLA 保证 Azure VMware 管理工具（vCenter Server 和 NSX 管理器）将在至少 99.9% 的时间内可用。
 ms.topic: overview
-ms.date: 03/24/2021
-ms.openlocfilehash: 32dd73108dc12d7d7acc605f43a0fbf6d2cf1cd7
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.date: 04/20/2021
+ms.openlocfilehash: 9471aa2e427d28e0b8211dc8b25b2e61a4bfa8c4
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107974"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752635"
 ---
 # <a name="what-is-azure-vmware-solution"></a>什么是 Azure VMware 解决方案？
 
-Azure VMware 解决方案为你提供了私有云，这些私有云包含基于专用裸机 Azure 基础结构构建的 vSphere 群集。 最低初始部署为三个主机，但可以逐个添加更多的主机，每个群集最多可以包含 16 个主机。  所有预配的私有云都具有 vCenter Server、vSAN、vSphere 和 NSX-T。 可以从本地环境迁移工作负载、部署新的虚拟机 (VM)，并从私有云使用 Azure 服务。
+Azure VMware 解决方案为你提供了私有云，这些私有云包含基于专用裸机 Azure 基础结构构建的 vSphere 群集。 最低初始部署为三个主机，但可以逐个添加更多的主机，每个群集最多可以包含 16 个主机。  所有预配的私有云都具有 vCenter Server、vSAN、vSphere 和 NSX-T。 可以从本地环境迁移工作负载、部署新的虚拟机 (VM)，并从私有云使用 Azure 服务。  Azure VMware 管理工具（vCenter Server 和 NSX 管理器）将在至少 99.9% 的时间内可用。 有关详细信息，请参阅 [Azure VMware 解决方案 SLA](https://aka.ms/avs/sla)。
 
 Azure VMware 解决方案是经过 VMware 验证的解决方案，我们会持续对增强和升级进行验证和测试。 Microsoft 管理和维护私有云基础结构和软件。 因此，你可以专注于在私有云中开发和运行工作负载。 
 

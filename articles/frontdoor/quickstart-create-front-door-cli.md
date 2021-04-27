@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/21/2020
+ms.date: 4/19/2021
 ms.author: duau
-ms.openlocfilehash: a64c91910ba65901a6d1374df9633062398a90e4
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 99204a2d4c3a2455f0916878fb09a348dc79ac7a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067644"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778745"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>快速入门：使用 Azure CLI 创建 Front Door 以实现高度可用的全局 Web 应用程序
 
@@ -25,7 +25,9 @@ ms.locfileid: "106067644"
 
 Front Door 会将 Web 流量定向到后端池中的特定资源。 你已定义前端域，请将资源添加到后端池，并创建路由规则。 本文使用一个后端池的简单配置，其中包含两个 Web 应用资源和一个使用默认路径匹配“/*”的路由规则。
 
-## <a name="prerequisites"></a>先决条件
+:::image type="content" source="media/quickstart-create-front-door/environment-diagram.png" alt-text="使用 Azure CLI 的 Front Door 部署环境示意图。" border="false":::
+
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 本地安装的 Azure CLI 或 Azure Cloud Shell
@@ -45,7 +47,7 @@ az extension add --name front-door
 
 对于本快速入门，你需要两个资源组。 一个在“美国中部”，另一个在“美国中南部”。
 
-使用 [az group create](/cli/azure/group#az-group-create) 创建资源组：
+使用 [az group create](/cli/azure/group#az_group_create) 创建资源组：
 
 ```azurecli-interactive
 az group create \
@@ -53,8 +55,8 @@ az group create \
     --location centralus
 
 az group create \
-    --name myRGFDSouthCentral \
-    --location southcentralus
+    --name myRGFDEast \
+    --location eastus
 ```
 
 ## <a name="create-two-instances-of-a-web-app"></a>创建 Web 应用的两个实例
@@ -65,7 +67,7 @@ az group create \
 
 ### <a name="create-app-service-plans"></a>创建应用服务计划
 
-在创建 Web 应用之前，你将需要两个应用服务计划，一个在“美国中部”，另一个在“美国中南部”。
+在创建 Web 应用之前，你将需要两个应用服务计划，一个在“美国中部”，另一个在“美国东部”。
 
 使用 [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create&preserve-view=true) 创建应用服务计划：
 
@@ -75,8 +77,8 @@ az appservice plan create \
 --resource-group myRGFDCentral
 
 az appservice plan create \
---name myAppServicePlanSouthCentralUS \
---resource-group myRGFDSouthCentral
+--name myAppServicePlanEastUS \
+--resource-group myRGFDEast
 ```
 
 ### <a name="create-web-apps"></a>创建 Web 应用
@@ -87,14 +89,14 @@ az appservice plan create \
 
 ```azurecli-interactive
 az webapp create \
---name WebAppContoso1 \
+--name WebAppContoso-1 \
 --resource-group myRGFDCentral \
 --plan myAppServicePlanCentralUS 
 
 az webapp create \
---name WebAppContoso2 \
---resource-group myRGFDSouthCentral \
---plan myAppServicePlanSouthCentralUS
+--name WebAppContoso-2 \
+--resource-group myRGFDEast \
+--plan myAppServicePlanEastUS
 ```
 
 记下每个 Web 应用的默认主机名，以便在下一步部署 Front Door 时可以定义后端地址。
@@ -110,7 +112,7 @@ az network front-door create \
 --resource-group myRGFDCentral \
 --name contoso-frontend \
 --accepted-protocols http https \
---backend-address webappcontoso1.azurewebsites.net webappcontoso2.azurewebsites.net 
+--backend-address webappcontoso-1.azurewebsites.net webappcontoso-2.azurewebsites.net 
 ```
 
 **--resource-group：** 指定要在其中部署 Front Door 的资源组。
@@ -140,7 +142,7 @@ az group delete \
 --name myRGFDCentral 
 
 az group delete \
---name myRGFDSouthCentral
+--name myRGFDEast
 ```
 
 ## <a name="next-steps"></a>后续步骤

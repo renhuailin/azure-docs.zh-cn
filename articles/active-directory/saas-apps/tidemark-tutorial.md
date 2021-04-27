@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: c9e1de7b5dee8e351cd8744287c07b0bbb174512
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8cbccc3fb4cc513d7c86253ae07fbced4626a15e
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92516454"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599649"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tidemark"></a>教程：Azure Active Directory 与 Tidemark 集成
 
@@ -113,7 +113,7 @@ ms.locfileid: "92516454"
     - `https://<subdomain>.tidemark.net/saml`
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Tidemark 客户端支持团队](http://www.tidemark.com/contact-us)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 Tidemark 客户端支持团队获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
@@ -131,7 +131,7 @@ ms.locfileid: "92516454"
 
 ### <a name="configure-tidemark-single-sign-on"></a>配置 Tidemark 单一登录
 
-若要在 **Tidemark** 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Tidemark 支持团队](http://www.tidemark.com/contact-us)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Tidemark 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 Tidemark 支持团队 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -185,7 +185,7 @@ ms.locfileid: "92516454"
 
 ### <a name="create-tidemark-test-user"></a>创建 Tidemark 测试用户
 
-在本部分，我们将在 Tidemark 中创建名为 Britta Simon 的用户。 请与 [Tidemark 支持团队](http://www.tidemark.com/contact-us)协作，将用户添加到 Tidemark 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分，我们将在 Tidemark 中创建名为 Britta Simon 的用户。 请与 Tidemark 支持团队协作，将用户添加到 Tidemark 平台。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 6b7ead2e54889327bfbea188ad464012c3861556
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 75de7b122bff75ea13e3b66bb0b79452142dc36c
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968605"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500084"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>教程：设置 Azure SQL 数据库和 SQL Server 的数据库之间的 SQL 数据同步
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -236,6 +236,11 @@ SQL 数据同步是否能完全创建表？
 **是否需要手动批准专用链接，然后才能开始使用它？**
 
 是的，你必须在同步组部署期间或通过使用 PowerShell 在 Azure 门户的专用终结点连接页中手动批准服务管理的专用终结点。
+
+为何在同步作业预配 Azure 数据库时出现防火墙错误？
+
+出现此情况的原因可能是不允许 Azure 资源访问服务器。 确保 Azure 数据库上的防火墙将“允许 Azure 服务和资源访问此服务器”设置设为“是”。
+
 
 ## <a name="next-steps"></a>后续步骤
 

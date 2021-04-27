@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 06/16/2020
-ms.openlocfilehash: bb86ccafaa0b9eac5ef35e96bbe3031a40f350ee
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 18163c3e5cdf83d736cdb52a3de028bf8890e728
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067514"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568567"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用后端应用程序读取该数据 (Python)
 
@@ -34,7 +34,7 @@ ms.locfileid: "106067514"
 
 * [Python 3.7+](https://www.python.org/downloads/)。 有关支持的其他 Python 版本，请参阅 [Azure IoT 设备功能](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features)。
 
-* [一个示例 Python 项目](https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip)。
+* Github 中的[示例 Python 项目](https://github.com/Azure-Samples/azure-iot-samples-python/)。 使用 github 存储库中的“代码”按钮下载或克隆示例。
 
 * 端口 8883 在防火墙中处于打开状态。 本快速入门中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
@@ -91,6 +91,8 @@ ms.locfileid: "106067514"
 ## <a name="send-simulated-telemetry"></a>发送模拟遥测数据
 
 模拟设备应用程序会连接到 IoT 中心上特定于设备的终结点，并发送模拟的温度和湿度遥测数据。
+
+1. 使用 [azure-iot-samples-python 存储库页](https://github.com/Azure-Samples/azure-iot-samples-python/)上的“代码”按钮下载或克隆 azure-iot-samples-python 存储库。
 
 1. 在本地终端窗口中，导航到示例 Python 项目的根文件夹。 然后导航到 **iot-hub\Quickstarts\simulated-device** 文件夹。
 

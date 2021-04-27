@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: tutorial
 ms.date: 11/16/2020
 ms.author: apimpm
-ms.openlocfilehash: 90544fbafe7393630c3f3fbc694ae367eccb7f90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c341dee3106530715248355da4412b97ed30980
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96012965"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739613"
 ---
 # <a name="tutorial-access-and-customize-the-developer-portal"></a>教程：访问和自定义开发人员门户
 
@@ -45,6 +45,35 @@ ms.locfileid: "96012965"
 1. 在 [Azure 门户](https://portal.azure.com)，导航到 API 管理实例。
 1. 在顶部导航栏中选择“开发人员门户”按钮。 此时会打开一个新的浏览器标签页，其中包含管理版本的门户。
 
+
+## <a name="developer-portal-architectural-concepts"></a>开发人员门户体系结构概念
+
+门户组件在逻辑上可以划分为两个类别：代码和内容。 
+
+### <a name="code"></a>代码
+
+代码在 API Management 开发人员门户 [GitHub 存储库](https://github.com/Azure/api-management-developer-portal)中维护，包括：
+
+- **小组件** - 表示视觉元素，并结合 HTML、JavaScript、样式设置功能、设置和内容映射。 例如，图像、文本段落、表单、API 列表等。
+- **样式设置定义** - 指定如何设置小组件的样式
+- **引擎** - 基于门户内容生成静态网页，是以 JavaScript 编写的
+- **视觉对象编辑器** - 用于浏览器内部的自定义和创作体验
+
+### <a name="content"></a>Content
+
+内容划分为两个子类别：门户内容和 API 管理内容 。
+
+门户内容特定于门户，包括：
+
+- **页面** - 例如登陆页、API 教程和博客文章
+- **媒体** - 图像、动画和其他基于文件的内容
+- **布局** - 与 URL 匹配的模板，定义页面显示方式
+- **样式** - 样式设置定义值，例如字体、颜色和边框
+- **设置** - 网站图标、网站元数据等配置
+
+    门户内容（媒体除外）以 JSON 文档的形式表示。
+
+API 管理内容包括 API、操作、产品和订阅等实体。
 ## <a name="understand-the-portals-administrative-interface"></a>了解门户的管理界面
 
 ### <a name="default-content"></a>默认内容 
@@ -138,7 +167,7 @@ ms.locfileid: "96012965"
 
 ## <a name="apply-the-cors-policy-on-apis"></a>在 API 上应用 CORS 策略
 
-若要让门户的访问者通过内置交互控制台来测试 API，请在 API 上启用 CORS（跨域资源共享）。 有关详细信息，请参阅 [Azure API 管理开发人员门户概述](api-management-howto-developer-portal.md#cors)。
+若要让门户的访问者通过内置交互控制台来测试 API，请在 API 上启用 CORS（跨域资源共享）。 有关详细信息，请参阅 [Azure API 管理开发人员门户常见问题解答](developer-portal-faq.md#cors)。
 
 ## <a name="next-steps"></a>后续步骤
 

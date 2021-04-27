@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/24/2020
+ms.date: 04/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 325f6ad7d9685fac17e17b28c4ffbe31b1245cca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef121112bb4ff3ff6a297677a5c713f642cb3b78
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98734523"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519509"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-confluence"></a>教程：Azure Active Directory 单一登录 (SSO) 与 EasySSO for Confluence 的集成
 
@@ -37,10 +37,10 @@ ms.locfileid: "98734523"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* EasySSO for Confluence 支持 SP 和 IDP 发起的 SSO
-* EasySSO for Confluence 支持实时用户预配
+* EasySSO for Confluence 支持 SP 和 IDP 发起的 SSO。
+* EasySSO for Confluence 支持实时用户预配。
 
-## <a name="adding-easysso-for-confluence-from-the-gallery"></a>从库中添加 EasySSO for Confluence
+## <a name="add-easysso-for-confluence-from-the-gallery"></a>从库中添加 EasySSO for Confluence
 
 若要配置 EasySSO for Confluence 与 Azure AD 的集成，需要从库中将 EasySSO for Confluence 添加到托管 SaaS 应用列表。
 
@@ -50,7 +50,6 @@ ms.locfileid: "98734523"
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“EasySSO for Confluence”。
 1. 从结果面板中选择“EasySSO for Confluence”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-easysso-for-confluence"></a>配置并测试 EasySSO for Confluence 的 Azure AD SSO
 
@@ -71,7 +70,7 @@ ms.locfileid: "98734523"
 
 1. 在 Azure 门户的“EasySSO for Confluence”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -129,9 +128,7 @@ ms.locfileid: "98734523"
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
 1. 在应用程序列表中，选择“EasySSO for Confluence”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
-
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
-
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。

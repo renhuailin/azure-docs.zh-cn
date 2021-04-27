@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 7168a4c8339d062287c57b07696c3a7f51be7aed
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: f566b96dc9001d3912911d2799ca935842e9c83e
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090560"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107498460"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -18,8 +18,12 @@ ms.locfileid: "106090560"
 |[审核未配置灾难恢复的虚拟机](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0015ea4d-51ff-4ce3-8d8c-f3f8f0179a56) |审核未配置灾难恢复的虚拟机。 若要详细了解灾难恢复，请访问 [https://aka.ms/asr-doc](https://aka.ms/asr-doc)。 |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/RecoveryServices_DisasterRecovery_Audit.json) |
 |[审核未使用托管磁盘的 VM](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F06a78e20-9358-41c9-923c-fb736d382a4d) |此策略审核未使用托管磁盘的 VM |审核 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMRequireManagedDisk_Audit.json) |
 |[通过启用复制对虚拟机配置灾难恢复](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fac34a73f-9fa5-4067-9247-a3ecae514468) |未配置灾难恢复的虚拟机容易受到中断和其他干扰的影响。 如果虚拟机尚未配置灾难恢复，则请使用预设配置启用复制来启动这一功能，以帮助实现业务连续性。 若要详细了解灾难恢复，请访问 [https://aka.ms/asr-doc](https://aka.ms/asr-doc)。 |DeployIfNotExists、Disabled |[1.2.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/AzureSiteRecovery-Replication-Policy.json) |
+|[使用专用终结点配置磁盘访问资源](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F582bd7a6-a5f6-4dc6-b9dc-9cb81fe0d4c5) |在没有公共 IP 地址的情况下，专用终结点可在源或目标位置将虚拟网络连接到 Azure 服务。 通过将专用终结点映射到磁盘访问资源，可以降低数据泄露风险。 有关专用链接的详细信息，请访问：[https://aka.ms/disksprivatelinksdoc](https://aka.ms/disksprivatelinksdoc)。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/DiskAccesses_PrivateEndpoints_DeployIfNotExists.json) |
+|[将托管磁盘配置为禁用公用网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8426280e-b5be-43d9-979e-653d12a08638) |禁用对托管磁盘资源的公用网络访问，确保无法通过公共 Internet 对其进行访问。 这样可以减少数据泄露风险。 有关详细信息，请访问：[https://aka.ms/disksprivatelinksdoc](https://aka.ms/disksprivatelinksdoc)。 |修改，已禁用 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/AddDiskAccessToDisk_Modify.json) |
 |[为 Windows Server 部署默认 Microsoft IaaSAntimalware 扩展](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2835b622-407b-4114-9198-6f7064cbe0dc) |如果 VM 未配置反恶意软件扩展，则此策略部署使用默认配置的 Microsoft IaaSAntimalware 扩展。 |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMAntimalwareExtension_Deploy.json) |
+|[磁盘访问资源应使用专用链接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff39f5f49-4abf-44de-8c70-0756997bfb51) |通过 Azure 专用链接，在没有源位置或目标位置的公共 IP 地址的情况下，也可以将虚拟网络连接到 Azure 服务。 专用链接平台处理使用者与服务之间通过 Azure 主干网络进行的连接。 通过将专用终结点映射到 diskAccesses，可以降低数据泄露风险。 有关专用链接的详细信息，请访问：[https://aka.ms/disksprivatelinksdoc](https://aka.ms/disksprivatelinksdoc)。  |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/DiskAccesses_PrivateEndpoints_Audit.json) |
 |[应使用平台管理的密钥和客户管理的密钥双重加密托管磁盘](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fca91455f-eace-4f96-be59-e6e2c35b4816) |对安全性高度敏感的客户如果担心出现与任何特定加密算法、实现或密钥泄露相关的风险，可以选择在使用平台管理的加密密钥的基础结构层上使用其他加密算法/模式的额外加密层。 需要提供磁盘加密集才能使用双重加密。 更多信息请访问 [https://aka.ms/disks-doubleEncryption](https://aka.ms/disks-doubleEncryption)。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/DoubleEncryptionRequired_Deny.json) |
+|[托管磁盘应禁用公用网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8405fdab-1faf-48aa-b702-999c9c172094) |禁用公用网络访问可确保托管磁盘不会在公共 Internet 上公开，从而提高了安全性。 创建专用终结点可以限制托管磁盘的公开。 有关详细信息，请访问：[https://aka.ms/disksprivatelinksdoc](https://aka.ms/disksprivatelinksdoc)。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/Disks_ExportLimitNetworkAccess_Audit.json) |
 |[托管磁盘应使用一组特定的磁盘加密集来进行客户管理的密钥加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd461a302-a187-421a-89ac-84acdb4edc04) |要求对托管磁盘使用一组特定的磁盘加密集可以控制用于静态加密的密钥。 可以选择允许的加密集，所有其他加密集在附加到磁盘时将被拒绝。 更多信息请访问 [https://aka.ms/disks-cmk](https://aka.ms/disks-cmk)。 |Audit、Deny、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ManagedDiskEncryptionSetsAllowed_Deny.json) |
 |[Microsoft Antimalware for Azure 应配置为自动更新保护签名](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc43e4a30-77cb-48ab-a4dd-93f175c63b57) |此策略会审核所有未配置自动更新 Microsoft Antimalware 保护签名的 Windows 虚拟机。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VirtualMachines_AntiMalwareAutoUpdate_AuditIfNotExists.json) |
 |[应在 Windows Server 上部署 Microsoft IaaSAntimalware 扩展](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9b597639-28e4-48eb-b506-56b05d366257) |此策略会审核所有未部署 Microsoft IaaSAntimalware 扩展的 Windows Server VM。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/WindowsServers_AntiMalware_AuditIfNotExists.json) |

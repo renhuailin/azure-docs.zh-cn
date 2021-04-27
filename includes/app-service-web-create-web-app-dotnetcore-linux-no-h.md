@@ -7,13 +7,13 @@ ms.service: app-service
 ms.topic: include
 ms.date: 04/22/2020
 ms.author: cephalin
-ms.custom: include file
-ms.openlocfilehash: efe46c9a4e229c84f38a7643b880e5c498961104
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 727e49e9086e5800fbbcb4e42a37a8b1a0c1c4b7
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102244649"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107512192"
 ---
 在 `myAppServicePlan` 应用服务计划中创建一个 [Web 应用](../articles/app-service/overview.md#app-service-on-linux)。 
 
@@ -44,7 +44,7 @@ Local git is configured with url of 'https://<username>@<app-name>.scm.azurewebs
 }
 </pre>
 
-已在 Linux 容器中创建了空的 Web 应用并启用了 Git 部署。
+已在 Linux 容器中创建了一个空的 Web 应用并启用了 Git 部署。
 
 > [!NOTE]
 > Git 远程的 URL 将显示在 `deploymentLocalGitUrl` 属性中，其格式为 `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git`。 保存此 URL，后续将会用到。

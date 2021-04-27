@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/05/2021
+ms.date: 04/19/2021
 ms.author: b-juche
-ms.openlocfilehash: 94981cd0912f76b710b3a60040ffbffd38381bcd
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 3c6da2137f2db43284ce7a533ff763e9ef157f35
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552098"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726639"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp 文件中的新增功能
 
@@ -27,12 +27,16 @@ Azure NetApp 文件会定期更新。 本文总结了最新的新功能和增强
 
 ## <a name="april-2021"></a>2021 年 4 月
 
+* [SMB3 协议加密](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)（预览版） 
+
+    现在可以在 Azure NetApp 文件 SMB 和双协议卷上启用 SMB3 协议加密。 此功能使用 [SMB 3.0 上的 AES-CCM 算法和 SMB 3.1.1 上的 AES-GCM 算法](/windows-server/storage/file-server/file-server-smb-overview#features-added-in-smb-311-with-windows-server-2016-and-windows-10-version-1607)连接，对传送中的 SMB3 数据启用加密。 未使用 SMB3 加密的 SMB 客户端无法访问此卷。 无论此设置如何，静态数据都会加密。 SMB 加密进一步增强了安全性。 但是，它可能会对客户端产生影响（加密和解密消息的 CPU 开销）。 它还可能会影响存储资源利用率（降低吞吐量）。 在将工作负载部署到生产环境之前，应测试对应用程序的加密性能影响。
+
 * [Active Directory 域服务 (ADDS) LDAP 用户映射到 NFS 扩展组](configure-ldap-extended-groups.md)（预览版）   
 
     默认情况下，Azure NetApp 文件在处理 NFS 用户凭据时最多支持 16 个组 ID，如 [RFC 5531](https://tools.ietf.org/html/rfc5531) 中所定义。 利用这一新功能，如果用户人数超过群组的默认成员数量，则现在可以将最大值增加到 1,024。 若要支持此功能，现在还可以向 ADDS LDAP 添加 NFS 卷，这会使的具有扩展组条目（有多达 1,024 组）的 Active Directory LDAP 用户可以访问该卷。 
 
 ## <a name="march-2021"></a>2021 年 3 月
-
+ 
 * [SMB 连续可用性 (CA) 共享](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)（预览）  
 
     SMB 透明故障转移可在 Azure NetApp 文件服务上实现维护操作，并且依然保持连接到存储和访问 SMB 卷上的数据的服务器应用程序。 为支持 SMB 透明故障转移，Azure NetApp 文件现在支持 SMB 连续可用性共享选项，适用于在 Azure 虚拟机上运行的基于 SMB 的 SQL Server 应用程序。 目前 Windows SQL Server 支持此功能。 目前 Linux SQL Server 不支持此功能。 启用这一功能可为[单实例、Always-On 故障转移群集实例和 Always-On 可用性组部署](azure-netapp-files-solution-architectures.md#sql-server)带来显著的 SQL Server 性能改进以及规模和成本效益。 请参阅[使用 Azure NetApp 文件进行 SQL Server 部署的好处](solutions-benefits-azure-netapp-files-sql-server.md)。

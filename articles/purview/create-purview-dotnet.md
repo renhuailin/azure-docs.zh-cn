@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 4/2/2021
 ms.author: nayenama
-ms.openlocfilehash: 04ed5cef351c81355a2390dd0b983c162f2b9532
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: b3dc7bf8ac7650a7219c15a09a31d4dcf84a40bf
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106387132"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587793"
 ---
 # <a name="quickstart-create-a-purview-account-using-net-sdk"></a>快速入门：使用 .NET SDK 创建 Purview 帐户
 
@@ -55,7 +55,7 @@ ms.locfileid: "106387132"
 
 1. 启动 **Visual Studio**。
 2. 在“开始”窗口中，选择“创建新项目” > “控制台应用(.NET Framework)” 。 需要 .NET 4.5.2 或更高版本。
-3. 在“项目名称”中，输入 ADFv2QuickStart 。
+3. 在“项目名称”中，输入“PurviewQuickStart” 。
 4. 选择“创建”来创建项目。
 
 ## <a name="install-nuget-packages"></a>安装 NuGet 包

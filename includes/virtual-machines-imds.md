@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 357223751112af03bf797ae9a0e6352a10132ab9
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: 98866a4f06df0380d52d1aee3eede8aa2f70aaed
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103464950"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588117"
 ---
 Azure 实例元数据服务 (IMDS) 提供有关当前正在运行的虚拟机实例的信息。 可以使用它来管理和配置虚拟机。
 这些信息包括 SKU、存储、网络配置和即将发生的维护事件。 有关可用数据的完整列表，请参阅[终结点类别摘要](#endpoint-categories)。
@@ -247,6 +247,7 @@ IMDS 进行了版本控制，在 HTTP 请求中指定 API 版本是必需的。 
 - 2020-09-01
 - 2020-10-01
 - 2020-12-01
+- 2021-01-01
 
 ### <a name="swagger"></a>Swagger
 
@@ -332,7 +333,7 @@ GET /metadata/instance
 | 数据 | 说明 | 引入的版本 |
 |------|-------------|--------------------|
 | `azEnvironment` | VM 运行时所在的 Azure 环境 | 2018-10-01
-| `customData` | 此功能目前已禁用。 当该功能可用时，我们将更新此文档 | 2019-02-01
+| `customData` | 此功能[在 IMDS 中](#frequently-asked-questions)已弃用且已禁用。 它已被 `userData` 取代 | 2019-02-01
 | `evictionPolicy` | 设置逐出[现成 VM](../articles/virtual-machines/spot-vms.md) 的方式。 | 2020-12-01
 | `isHostCompatibilityLayerVm` | 标识 VM 是否在主机兼容性层上运行 | 2020-06-01
 | `licenseType` | [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit)许可证的类型。 这仅适用于启用了 AHB 的 VM | 2020-09-01
@@ -360,6 +361,7 @@ GET /metadata/instance
 | `subscriptionId` | 虚拟机的 Azure 订阅 | 2017-08-01
 | `tags` | 虚拟机的[标记](../articles/azure-resource-manager/management/tag-resources.md)  | 2017-08-01
 | `tagsList` | 格式化为 JSON 数组以方便编程分析的标记  | 2019-06-04
+| `userData` | 创建 VM 时指定的一组数据，在预配期间或之后使用（Base64 编码）  | 2021-01-01
 | `version` | VM 映像的版本 | 2017-04-02
 | `vmId` | VM 的[唯一标识符](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
 | `vmScaleSetName` | 虚拟机规模集的[虚拟机规模集名称](../articles/virtual-machine-scale-sets/overview.md) | 2017-12-01
@@ -421,6 +423,31 @@ OS 磁盘对象包含有关 VM 所用 OS 磁盘的以下信息：
 | `subnet.prefix` | 子网前缀，例如 24 | 2017-04-02
 | `ipv6.ipAddress` | VM 的本地 IPv6 地址 | 2017-04-02
 | `macAddress` | VM mac 地址 | 2017-04-02
+
+### <a name="get-user-data"></a>获取用户数据
+
+在创建新 VM 时，可以指定一组要在 VM 预配期间或之后使用的数据，并通过 IMDS 进行检索。 若要设置用户数据，请使用[此处](https://aka.ms/ImdsUserDataArmTemplate)的快速入门模板。 下面的示例介绍如何通过 IMDS 检索此数据。
+
+> [!NOTE]
+> 此功能随版本 `2021-01-01` 发布，取决于 Azure 平台更新，目前正在推出，但可能尚未在所有区域提供。
+
+> [!NOTE]
+> 安全声明：IMDS 对 VM 上的所有应用程序开放，敏感数据不应放在用户数据中。
+
+
+#### <a name="windows"></a>[Windows](#tab/windows/)
+
+```powershell
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/userData?api-version=2021-01-01&format=text" | base64 --decode
+```
+
+#### <a name="linux"></a>[Linux](#tab/linux/)
+
+```bash
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/userData?api-version=2021-01-01&format=text" | base64 --decode
+```
+
+---
 
 
 #### <a name="sample-1-tracking-vm-running-on-azure"></a>示例 1：跟踪 Azure 上正在运行的 VM
@@ -1148,6 +1175,9 @@ openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -un
 
 - 我一段时间以前通过 Azure 资源管理器创建了 VM。 为什么我无法看到计算元数据信息？
   - 如果在 2016 年 9 月之后创建了 VM，请添加[标记](../articles/azure-resource-manager/management/tag-resources.md)以开始查看计算元数据。 如果在 2016 年 9 月之前创建了 VM，请在 VM 实例中添加或删除扩展或数据磁盘以刷新元数据。
+
+- 用户数据与自定义数据是否相同？
+  - 用户数据提供了与自定义数据类似的功能，使你可以将自己的元数据传递给 VM 实例。 不同之处在于，用户数据是通过 IMDS 进行检索的，并且在 VM 实例的整个生存期内保持不变。 现有的自定义数据功能将继续按照[本文](https://docs.microsoft.com/azure/virtual-machines/custom-data)所述正常运行。 但是，只能通过本地系统文件夹获取自定义数据，而不能通过 IMDS 获取。
 
 - 为什么我看不到为新版本填充的任何数据？
   - 如果在 2016 年 9 月之后创建了 VM，请添加[标记](../articles/azure-resource-manager/management/tag-resources.md)以开始查看计算元数据。 如果在 2016 年 9 月之前创建了 VM，请在 VM 实例中添加或删除扩展或数据磁盘以刷新元数据。

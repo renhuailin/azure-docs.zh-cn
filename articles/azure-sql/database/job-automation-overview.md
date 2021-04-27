@@ -13,12 +13,12 @@ author: williamdassafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 2/1/2021
-ms.openlocfilehash: 1f4bd28d2b95aeebe07fcad84d757327622d51f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 295889cf64d27761021dd09549a3366ea142516e
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101690424"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752023"
 ---
 # <a name="automate-management-tasks-using-elastic-jobs-preview"></a>使用弹性作业（预览版）自动完成管理任务
 
@@ -159,7 +159,7 @@ ms.locfileid: "101690424"
 
 #### <a name="job-history"></a>作业历史记录
 
-通过[查询表 jobs.job_executions](elastic-jobs-tsql-create-manage.md#monitor-job-execution-status)，在作业数据库中查看弹性作业执行历史记录。 系统清除作业会清除时间超过 45 天的执行历史记录。 若要删除时间不到 45 天的历史记录，请调用作业数据库中的 **sp_purge_history** 存储过程。
+通过[查询表 jobs.job_executions](elastic-jobs-tsql-create-manage.md#monitor-job-execution-status)，在作业数据库中查看弹性作业执行历史记录。 系统清除作业会清除时间超过 45 天的执行历史记录。 若要删除时间不到 45 天的历史记录，请调用作业数据库中的 sp_purge_jobhistory 存储过程。
 
 #### <a name="job-status"></a>作业状态
 

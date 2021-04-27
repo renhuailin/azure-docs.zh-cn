@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 476a0c2d75dcbee5c1ed4d758e0cbc9d4726ff95
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b65013bbf21faa8bffdcf799a991952b69f5fead
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97587190"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714463"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>教程：使用 Azure IoT Central 创建水消耗量监测应用程序
 
@@ -200,22 +200,23 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 
    ![“规则”窗格](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-rules.png)
 
-1. 选择“高 pH 警报”，它是应用程序中的一项预配置规则  。
+1. 选择“高水流量警报”，它是应用程序中的一项预配置规则。
 
      ![高 pH 警报](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-highflowalert.png)
 
-    `High flow alert` 规则配置为根据条件 `Acidity (pH)``greater than``Max flow threshold` 进行检查。 最大流量阈值是在“智能阀”设备模板中定义的云属性  。 每个设备实例均设有 `Max flow threshold` 值。
+    `High water flow alert` 规则配置为根据条件 `Flow``greater than``Max flow threshold` 进行检查。 最大流量阈值是在“智能阀”设备模板中定义的云属性  。 每个设备实例均设有 `Max flow threshold` 值。
 
 现在，让我们创建电子邮件操作。
 
 若要向规则添加操作，请执行以下操作：
 
 1. 选择“+ 电子邮件”  。
-1. 输入“高 pH 警报”作为操作的易记显示名称   。
+1. 输入“高流量警报”作为操作的易记显示名称 。
 1. 在“收件人”中输入与 Azure IoT Central 帐户关联的电子邮件地址  。
 1. （可选）输入要包含在电子邮件文本中的注释。
 1. 选择“完成”  ，完成操作。
-1. 选择“保存”  以保存并激活新规则。
+1. 选择“保存”，以保存新规则。
+1. 启用该规则。
 
 满足配置条件后，你应该能在几分钟内收到电子邮件。
 

@@ -3,20 +3,22 @@ title: 快速入门：为应用程序的 HA 创建配置文件 - Azure 门户 - 
 description: 本快速入门文章介绍如何使用 Azure 门户创建流量管理器配置文件，以生成高度可用的 Web 应用。
 services: traffic-manager
 author: duongau
-manager: twooley
-ms.service: traffic-manager
-ms.devlang: na
-ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/15/2020
 ms.author: duau
-ms.openlocfilehash: 1a26becbc7ffaddc09dc06c5dff12f83deaa9ee2
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+manager: twooley
+ms.date: 04/19/2021
+ms.topic: quickstart
+ms.service: traffic-manager
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.custom:
+- mode-portal
+ms.openlocfilehash: 13b5925310c615461424f78d90ba9849c9bf58c5
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067208"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727971"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建流量管理器配置文件
 
@@ -24,13 +26,15 @@ ms.locfileid: "106067208"
 
 本快速入门介绍 Web 应用程序的两个实例。 每个实例在不同的 Azure 区域运行。 需根据[终结点优先级](traffic-manager-routing-methods.md#priority-traffic-routing-method)创建流量管理器配置文件。 此配置文件将用户流量定向到运行 Web 应用程序的主站点。 流量管理器持续监视 Web 应用程序。 如果主站点不可用，它会提供目标为备份站点的自动故障转移。
 
+:::image type="content" source="./media/quickstart-create-traffic-manager-profile/environment-diagram.png" alt-text="流量管理器部署环境示意图。" border="false":::
+
 如果还没有 Azure 订阅，请现在就创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
 本快速入门需要两个部署在两个不同的 Azure 区域（美国东部和西欧）的 Web 应用程序实例。   每个都可以充当流量管理器的主终结点和故障转移终结点。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在屏幕的左上方，选择“创建资源”。 搜索“Web 应用”，然后选择“创建” 。
 
@@ -81,7 +85,7 @@ ms.locfileid: "106067208"
 1. 从搜索结果中选择该配置文件。
 1. 在“流量管理器配置文件”  的“设置”  部分，选择“终结点”  ，然后选择  “添加”。
 
-    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-endpoint-menu.png" alt-text="流量管理器配置文件中的终结点设置":::
+    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-endpoint-menu.png" alt-text="流量管理器配置文件中的终结点设置的屏幕截图。":::
 
 1. 输入或选择以下设置：
 
@@ -93,7 +97,7 @@ ms.locfileid: "106067208"
     | 目标资源 | 选择“选择应用服务” > “美国东部” |
     | 优先度 | 选择“1”。  如果此终结点处于正常状态，则所有流量都会转到此终结点。 |
 
-    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/add-traffic-manager-endpoint.png" alt-text="将终结点添加到流量管理器配置文件的屏幕截图":::
+    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/add-traffic-manager-endpoint.png" alt-text="将终结点添加到流量管理器配置文件的屏幕截图。":::
     
 1. 选择“确定”  。
 1. 若要为第二个 Azure 区域创建故障转移终结点，请使用以下设置重复步骤 3 和 4：
@@ -120,16 +124,16 @@ ms.locfileid: "106067208"
 1. 选择流量管理器配置文件。 此时会显示“概览”  。
 1. “流量管理器配置文件”  会显示新建的流量管理器配置文件的 DNS 名称。
   
-    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-dns-name.png" alt-text="流量管理器 DNS 名称位置的屏幕截图":::
+    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-dns-name.png" alt-text="流量管理器 DNS 名称位置的屏幕截图。":::
 
 ### <a name="view-traffic-manager-in-action"></a>查看正在运行的流量管理器
 
 1. 在 Web 浏览器中输入流量管理器配置文件的 DNS 名称，以便查看 Web 应用的默认网站。
 
     > [!NOTE]
-    > 在本快速入门方案中，所有请求都路由到主终结点。 它设置为“优先级 1”。 
+    > 在本快速入门方案中，所有请求都路由到主终结点。 它设置为“优先级 1”。
 
-    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-test.png" alt-text="用于确认流量管理器配置文件可用性的网页的屏幕截图":::
+    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-test.png" alt-text="用于确认流量管理器配置文件可用性的网页的屏幕截图。":::
 
 1. 若要查看流量管理器故障转移如何进行，请禁用主站点：
     1. 在“流量管理器配置文件”页的“概览”部分，选择“myPrimaryEndpoint”。  

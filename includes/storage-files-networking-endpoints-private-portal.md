@@ -5,17 +5,17 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 5/11/2020
+ms.date: 04/15/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 09723030f0da0252120f66f36347cad2e3a3546a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 958c40ed311ebe8b2a83ce0d4d394d00f48d1afa
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93375827"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107732532"
 ---
-导航到要为其创建专用终结点的存储帐户。 在存储帐户的目录中选择“专用终结点连接”，然后选择“+ 专用终结点”创建新的专用终结点。  
+导航到要为其创建专用终结点的存储帐户。 在存储帐户的目录中依次选择“网络”、“专用终结点连接”，然后选择“+ 专用终结点”创建新的专用终结点  。 
 
 [![存储帐户目录中“专用终结点连接”项的屏幕截图](media/storage-files-networking-endpoints-private-portal/create-private-endpoint-0.png)](media/storage-files-networking-endpoints-private-portal/create-private-endpoint-0.png#lightbox)
 

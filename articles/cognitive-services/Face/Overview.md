@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 04/19/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 人脸识别, 人脸识别软件, 人脸分析, 人脸匹配, 人脸识别应用, 按图像搜索人脸, 人脸识别搜索
-ms.openlocfilehash: 26076289d8c6659abdd55fa805c27b13690feccd
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 30707dd844769f730f135a451cd5306ca7e402cb
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258735"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726981"
 ---
 # <a name="what-is-the-azure-face-service"></a>什么是 Azure 人脸服务？
 
@@ -33,7 +33,7 @@ Azure 人脸服务提供用于检测、识别和分析图像中人脸的 AI 算�
 * [快速入门](./Quickstarts/client-libraries.md)是分步说明，可按照其调用服务，并在短时间内获得结果。 
 * [操作指南](./Face-API-How-to-Topics/HowtoDetectFacesinImage.md)包含以更具体的方式或自定义方式使用服务的说明。
 * [概念性文章](./concepts/face-detection.md)对服务的功能和特性进行了深入说明。
-* [教程](./Tutorials/FaceAPIinCSharpTutorial.md)是较长的指南，向你演示了如何在更广泛的业务解决方案中使用此服务作为组件。
+* [教程](./enrollment-overview.md)是较长的指南，向你演示了如何在更广泛的业务解决方案中使用此服务作为组件。
 
 ## <a name="face-detection"></a>人脸检测
 
@@ -52,7 +52,7 @@ Azure 人脸服务提供用于检测、识别和分析图像中人脸的 AI 算�
 
 ## <a name="face-identification"></a>人脸识别
 
-识别 API 也以检测为基础，解决“检测到的人脸是否与数据库中任一注册人脸匹配？”这一问题。 由于它类似于人脸识别搜索，因此也称为“一对多”匹配。 根据具有检测人脸的探测模板与每个注册模板的匹配程度返回候选匹配项。
+识别 API 也以检测为基础，解决“检测到的人脸是否与数据库中任一注册人脸匹配？”这一问题 由于它类似于人脸识别搜索，因此也称为“一对多”匹配。 根据具有检测人脸的探测模板与每个注册模板的匹配程度返回候选匹配项。
 
 下图显示名为 `"myfriends"` 的数据库的示例。 每个组最多可以包含 100 万个不同的 person 对象。 每个人员对象可以注册最多 248 张人脸。
 
@@ -64,7 +64,7 @@ Azure 人脸服务提供用于检测、识别和分析图像中人脸的 AI 算�
 
 ## <a name="find-similar-faces"></a>查找相似人脸
 
-查找相似人脸 API 会在目标人脸和一组候选人脸之间进行人脸匹配，找出与目标人脸相似的一小组人脸。 这对于按图像进行人脸搜索很有用。 
+查找相似人脸 API 会在目标人脸和一组候选人脸之间进行人脸匹配，找出与目标人脸相似的一小组人脸。 此操作对于按图像进行人脸搜索很有用。 
 
 该 API 支持两种工作模式：matchPerson 和 matchFace 。 使用[验证 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) 针对同一人进行筛选后，matchPerson 模式会返回相似人脸。 matchFace 模式会忽略同一人筛选器。 它返回相似候选人脸的列表，这些人脸不一定属于同一人。
 

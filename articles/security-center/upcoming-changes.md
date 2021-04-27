@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 04/08/2021
+ms.date: 04/20/2021
 ms.author: memildin
-ms.openlocfilehash: f9e1b5d19acbc9bcee86c374a3f843530b8adc61
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 3307d3aed422c3eab63412388244ef14ef3be699
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103753"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750980"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>即将推出的对 Azure 安全中心的重要更改
 
@@ -30,7 +30,8 @@ ms.locfileid: "107103753"
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
 | [21 条建议在不同安全控制之间进行了调动](#21-recommendations-moving-between-security-controls)                                                           | 2021 年 4 月                |
 | [“应用系统更新”安全控制中的两项建议将被弃用](#two-recommendations-from-apply-system-updates-security-control-being-deprecated) | 2021 年 4 月                |
-| [将发布来自 AWS 的正式版 (GA) 建议](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | 2021 年 8 月             |
+| [正在将 ISO 27001 的旧版实现替换为新的 ISO 27001:2013](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)          | 2021 年 6 月                 |
+| [将发布来自 AWS 的正式版 (GA) 建议](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | 2021 年 8 月           |
 | [SQL 数据分类建议的增强](#enhancements-to-sql-data-classification-recommendation)                                                     | 2021 年第 2 季度                   |
 |                                                                                                                                                                       |                           |
 
@@ -59,6 +60,12 @@ ms.locfileid: "107103753"
 - **应为你的云服务角色更新 OS 版本** - 默认情况下，Azure 会定期将来宾 OS 更新为 OS 系列（在服务配置 (.cscfg) 中指定）中支持的最新映像，例如 Windows Server 2016。
 - **Kubernetes Services 应升级到不容易受到攻击的 Kubernetes 版本** - 这项建议的评估覆盖面并不像我们所希望的那样广泛。 这项建议的当前版本最终将替换为增强版本，以更好地与客户的安全需求相匹配。
 
+
+### <a name="legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013"></a>正在将 ISO 27001 的旧版实现替换为新的 ISO 27001:2013
+
+将从安全中心的监管合规性仪表板中删除 ISO 27001 的旧版实现。 如果要跟踪 ISO 27001 与安全中心的合规性，请针对所有相关管理组或订阅加入新的 ISO 27001:2013 标准，很快将会从仪表板中删除当前的旧版 ISO 27001。
+
+:::image type="content" source="media/upcoming-changes/removing-iso-27001-legacy-implementation.png" alt-text="安全中心的监管合规性仪表板，其中显示了有关删除 ISO 27001 的旧版实现的消息。" lightbox="media/upcoming-changes/removing-iso-27001-legacy-implementation.png":::
 
 ### <a name="recommendations-from-aws-will-be-released-for-general-availability-ga"></a>将发布来自 AWS 的正式版 (GA) 建议
 

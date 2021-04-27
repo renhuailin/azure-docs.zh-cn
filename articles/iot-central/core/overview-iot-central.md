@@ -3,23 +3,23 @@ title: 什么是 Azure IoT Central | Microsoft Docs
 description: Azure IoT Central 是一个 IoT 应用程序平台，可简化 IoT 解决方案的创建，并有助于减轻 IoT 管理、运营和开发的负担以及降低相关成本。 本文概述了 Azure IoT Central 的功能。
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/23/2020
+ms.date: 04/19/2021
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, contperf-fy21q2
-ms.openlocfilehash: 6f7b24c711d99b1127ee77a920b305acb114d20e
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 88f59c1b3fc1014cef5035845f1f2e8616bea908
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505121"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739901"
 ---
 # <a name="what-is-azure-iot-central"></a>什么是 Azure IoT Central？
 
 IoT Central 是一个 IoT 应用程序平台，可减轻开发、管理和维护企业级 IoT 解决方案的负担和成本。 选择使用 IoT Central 进行构建可将时间、金钱和精力集中于使用 IoT 数据转换业务，而不仅仅是维护和更新复杂且不断发展的 IoT 基础结构。
 
-通过 Web UI 可以监视设备条件、创建规则并在其整个生命周期中管理数百万个设备及其数据。 此外，该平台将 IoT 智能扩展到了业务线应用程序，你可以利用该平台根据设备的见解采取行动。
+通过 Web UI 可以快速连接设备、监视设备条件、创建规则并在其整个生命周期中管理数百万个设备及其数据。 此外，该平台将 IoT 智能扩展到了业务线应用程序，你可以利用该平台根据设备的见解采取行动。
 
 本文概述了与 IoT Central 相关的以下内容：
 
@@ -41,14 +41,18 @@ IoT Central 是一个 IoT 应用程序平台，可减轻开发、管理和维护
 
 ## <a name="create-your-iot-central-application"></a>创建 IoT Central 应用程序
 
-作为解决方案构建者，你可以使用 IoT Central 为组织创建自定义的、托管在云中的 IoT 解决方案。 自定义的 IoT 解决方案通常包括：
+可以快速部署新的 IoT Central 应用程序，然后对其进行自定义以满足特定要求。 一开始可以使用通用 _应用程序模板_，或使用针对以下任一行业的应用程序模板：
 
-- 一个基于云的应用程序，它从设备接收遥测数据并使得你可以管理这些设备。
-- 运行自定义代码且连接到基于云的应用程序的多个设备。
+- [零售](../retail/overview-iot-central-retail.md)
+- [能源](../energy/overview-iot-central-energy.md)
+- 政府
+- [医疗保健](../healthcare/overview-iot-central-healthcare.md)。
 
-可以快速部署新的 IoT Central 应用程序，然后在浏览器中对其进行自定义以满足特定要求。 一开始可以使用普通的应用程序模板，或使用以[零售](../retail/overview-iot-central-retail.md)、[能源](../energy/overview-iot-central-energy.md)、[政府](../government/overview-iot-central-government.md)或[医疗保健](../healthcare/overview-iot-central-healthcare.md)行业为中心的某个应用程序模板。
+请参阅[创建新的应用程序](quick-deploy-iot-central.md)快速入门，了解如何创建你的第一个应用程序。
 
-作为解决方案构建者，你可以使用基于 Web 的工具为连接到应用程序的设备创建“设备模板”。 设备模板是定义一种设备的特征和行为的蓝图，例如：
+## <a name="connect-devices"></a>连接设备
+
+创建应用程序后，第一步是创建并连接设备。 连接到 IoT Central 的每台设备都使用 _设备模板_。 设备模板是定义一种设备的特征和行为的蓝图，例如：
 
 - 它发送的遥测。 示例包含温度和湿度。 遥测是流式处理数据。
 - 操作员可以修改的业务属性。 示例包含客户地址和最后维护日期。
@@ -56,9 +60,9 @@ IoT Central 是一个 IoT 应用程序平台，可减轻开发、管理和维护
 - 由操作员设置的属性，决定了设备的行为。 例如，设备的目标温度。
 - 操作员可以调用的、在设备上运行的命令。 例如，用于远程重启设备的命令。
 
-此[设备模板](howto-set-up-template.md)包括：
+每个[设备模板](howto-set-up-template.md)包括：
 
-- 设备模型，描述设备应实现的功能。 设备功能包括：
+- 描述设备应实现的功能的 _设备模型_。 设备功能包括：
 
   - 流式传输到 IoT Central 的遥测。
   - 用于将状态报告给 IoT Central 的只读属性。
@@ -68,25 +72,21 @@ IoT Central 是一个 IoT 应用程序平台，可减轻开发、管理和维护
 - 不存储在设备上的云属性。
 - 属于 IoT Central 应用程序的自定义、仪表板和窗体。
 
-### <a name="create-device-templates"></a>创建设备模板
-
-作为解决方案构建者，你在创建设备模板时有多种选择：
+你在创建设备模板时有多种选择：
 
 - 在 IoT Central 中设计设备模板，然后在设备代码中实现其设备模型。
 - 使用 Visual Studio code 创建设备模型，并将模型发布到存储库。 基于模型实现设备代码，并将设备连接到 IoT Central 应用程序。 IoT Central 从存储库中查找设备模型，并创建简单的设备模板。
 - 使用 Visual Studio Code 创建设备模型。 基于模型实现设备代码。 将设备模型手动导入到 IoT Central 应用程序中，然后添加 IoT Central 应用程序所需的任何云属性、自定义项和仪表板。
 
-作为解决方案构建者，你可以使用 IoT Central 来生成测试设备的代码，以便验证设备模板。
-
-如果你是设备开发人员，请参阅 [IoT Central 设备开发概述](./overview-iot-central-developer.md)，了解如何实现使用这些设备模板的设备。
+请参阅[添加模拟设备](quick-create-simulated-device.md)快速入门，以了解如何创建和连接你的第一个设备。
 
 ### <a name="customize-the-ui"></a>自定义 UI
 
-作为解决方案构建者，你还可以为负责日常使用应用程序的操作员自定义 IoT Central 应用程序 UI。 解决方案构建者可以进行的自定义包括：
+你还可以为负责日常使用应用程序的操作员自定义 IoT Central 应用程序 UI。 可以进行的自定义包括：
 
-- 在设备模板上定义属性和设置的布局。
 - 配置自定义仪表板，以帮助操作员获得见解，并更快地解决问题。
 - 配置自定义分析来从已连接的设备探究时序数据。
+- 在设备模板上定义属性和设置的布局。
 
 ## <a name="manage-your-devices"></a>管理设备
 
@@ -96,9 +96,9 @@ IoT Central 是一个 IoT 应用程序平台，可减轻开发、管理和维护
 - 排查和修正设备问题。
 - 预配新设备。
 
-作为解决方案构建者，你可以[定义对连接设备的数据流进行操作的自定义规则和操作](howto-configure-rules.md)。 操作员可以在设备级别启用或禁用这些规则来控制和自动执行应用程序中的任务。
+你可以定义对连接设备的数据流进行操作的[自定义规则和操作](howto-configure-rules.md)。 操作员可以在设备级别启用或禁用这些规则来控制和自动执行应用程序中的任务。
 
-对于旨在大规模运行的 IoT 解决方案，以结构化的方式管理设备非常重要。 只是将设备连接到云是不够的，还需要使设备保持连接状态并正常运行。 在整个应用程序生命周期内，操作员可使用以下 IoT Central 功能来管理设备：
+对于旨在大规模运行的 IoT 解决方案，以结构化的方式管理设备非常重要。 只是将设备连接到云是不够的，还需要使设备保持连接状态并正常运行。 在整个应用程序生命周期内，可使用以下 IoT Central 功能来管理设备：
 
 ### <a name="dashboards"></a>仪表板
 

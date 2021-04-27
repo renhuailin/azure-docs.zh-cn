@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/01/2020
+ms.date: 04/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 13b62646728eb03a7470d9bb57741bcb90cc24fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02fcd8fc14a300b7031677185a91d7e6c9aa3b09
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92447698"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518331"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grammarly"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Grammarly 的集成
 
@@ -37,8 +37,8 @@ ms.locfileid: "92447698"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Grammarly 支持 IDP 发起的 SSO
-* Grammarly 支持实时用户预配
+* Grammarly 支持 IDP 发起的 SSO。
+* Grammarly 支持实时用户预配。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -53,7 +53,6 @@ ms.locfileid: "92447698"
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中键入“Grammarly” 。
 1. 从结果面板中选择“Grammarly”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-grammarly"></a>配置并测试 Grammarly 的 Azure AD SSO
 
@@ -74,7 +73,7 @@ ms.locfileid: "92447698"
 
 1. 在 Azure 门户的“Grammarly”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -131,12 +130,12 @@ ms.locfileid: "92447698"
 
 ## <a name="test-sso"></a>测试 SSO 
 
-在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
-1. 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 Grammarly 
+* 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 Grammarly。
 
-2. 可以使用 Microsoft 访问面板。 在访问面板中单击“Grammarly”磁贴时，应会自动登录到为其设置了 SSO 的 Grammarly。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Grammarly”磁贴时，应会自动登录到为其设置了 SSO 的 Grammarly。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Grammarly 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
+配置 Grammarly 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。

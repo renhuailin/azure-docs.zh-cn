@@ -10,18 +10,18 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 04/04/2021
-ms.openlocfilehash: 92d1534b5dd0233ce88b81d605c6502b67a121df
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: f4cc631bd3ff05dc63566677ec96ef0360d362c9
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307888"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517345"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>探索 Synapse 知识中心
 
 在本教程中，你将了解如何使用 Synapse Studio 知识中心。
 
-## <a name="introduction-to-the-knowledge-center"></a>知识中心简介
+## <a name="finding-to-the-knowledge-center"></a>找到知识中心
 
 在 Synapse Studio 中，有两种方法可以找到知识中心：
 
@@ -30,12 +30,14 @@ ms.locfileid: "107307888"
 
 选择任一方法并打开“知识中心”。
 
+## <a name="exploring-the-knowledge-center"></a>探索知识中心
+
 显示后，能看到知识中心允许执行以下三项操作：
 * **立即使用示例**。 如果你需要一个快速示例来了解 Synapse 如何工作，请选择此选项。
 * **浏览库**。 此选项允许你链接示例数据集，并以 SQL 脚本、笔记本和管道的形式添加示例代码。
 * **浏览 Synapse Studio**。 此选项将带你简单了解 Synapse Studio 的基本部分。 如果你以前从未使用过 Synapse Studio，则这很有用。
 
-## <a name="exploring-use-samples-immediately"></a>浏览：立即使用示例
+## <a name="use-samples-immediately-three-samples-to-help-you-get-started-fast"></a>立即使用示例：三个示例可帮助你快速入门
 
 本部分包含三个项：
 * 使用 Spark 浏览示例数据
@@ -49,7 +51,7 @@ ms.locfileid: "107307888"
 1. 滚动到第一个查询（第 28 行到第 32 行），然后选择查询文本。
 1. 单击“运行”。 它只会运行所选代码。
 
-## <a name="loading-more-nyc-taxi-data"></a>加载更多 NYC 出租车数据
+## <a name="gallery-a-collectiopn-of-sample-data-sets-and-sample-code"></a>库：示例数据集和示例代码的集合
 
 1. 转到“知识中心”，单击“浏览库” 。
 1. 选择顶部的“SQL 脚本”选项卡。

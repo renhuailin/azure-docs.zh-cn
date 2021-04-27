@@ -3,12 +3,12 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/25/2020
-ms.openlocfilehash: 1a4ddee8262ddc8a573cf83715999f5c12cfd1dd
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: d73fef916c2652f1fa4b98fd84173c1ec0abb263
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106113403"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725115"
 ---
 适用于 Python 的自定义视觉客户端库入门。 请按照以下步骤安装包并试用用于生成对象检测模型的示例代码。 你将创建一个项目，添加标记，训练该项目，并使用该项目的预测终结点 URL 以编程方式对其进行测试。 使用此示例作为模板来构建你自己的图像识别应用。
 
@@ -64,7 +64,7 @@ pip install azure-cognitiveservices-vision-customvision
 >
 > 可以在资源的“概览”选项卡上找到列为“订阅 ID”的预测资源 ID 值 。
 >
-> 请记住在完成后将密钥从代码中删除，永远不要公开发布这些密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 有关详细信息，请参阅认知服务[安全性](../../../../cognitive-services/cognitive-services-security.md)文章。
+> 请记住在完成后将密钥从代码中删除，永远不要公开发布这些密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 有关详细信息，请参阅[认知服务安全性](../../../cognitive-services-security.md)一文。
 
 ## <a name="object-model"></a>对象模型
 

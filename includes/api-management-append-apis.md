@@ -2,25 +2,43 @@
 author: vladvino
 ms.service: api-management
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 04/16/2021
 ms.author: vlvinogr
-ms.openlocfilehash: 2bfa356deeede1c16bd5a464ea7081132a67faf6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 329ea156b296810395eb7b8e8310bed5ee0ee4c9
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96183802"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107601919"
 ---
 ## <a name="append-other-apis"></a>追加其他 API
 
-API 可以包含由其他服务公开的 API，这些服务包括 OpenAPI 规范、SOAP API、Azure 应用服务的 API 应用功能、Azure Function App、Azure 逻辑应用和 Azure Service Fabric。
+可以为不同服务公开的 API 撰写 API，包括：
+* OpenAPI 规范
+* SOAP API
+* Azure 应用服务的 API 应用功能
+* Azure 函数应用
+* Azure 逻辑应用
+* Azure Service Fabric
 
-![导入 API](./media/api-management-append-apis/import.png)
+按照以下步骤将其他 API 追加到现有 API。 
 
-若要将其他 API 追加到现有 API，请完成以下步骤。 导入另一个 API 时，操作将追加到当前 API 后面。
+>[!NOTE] 
+> 导入另一个 API 时，操作将追加到当前 API 后面。
 
 1. 在 Azure 门户中转到自己的 Azure API 管理实例。
-2. 在左侧菜单中选择“API”  。
-3. 单击要将另一个 API 追加到的 API 旁边的“...”。
-4. 从下拉菜单中选择“导入”。
-5. 选择要从中导入 API 的服务。
+
+    :::image type="content" source="./media/api-management-append-apis/service-page.png" alt-text="转到 Azure API 管理实例":::
+
+1. 在左侧菜单中选择“API”  。
+
+    :::image type="content" source="./media/api-management-append-apis/api-select.png" alt-text="选择“API”":::
+
+1. 单击要将另一个 API 追加到的 API 旁边的“...”。
+1. 从下拉菜单中选择“导入”。
+
+    :::image type="content" source="./media/api-management-append-apis/append-01.png" alt-text="选择“导入”":::
+
+1. 选择要从中导入 API 的服务。
+
+    :::image type="content" source="./media/api-management-append-apis/select-to-import.png" alt-text="选择服务":::

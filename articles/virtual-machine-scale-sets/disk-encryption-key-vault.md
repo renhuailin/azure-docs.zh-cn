@@ -8,19 +8,19 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: 3d30d506ae3b49b2e247ee77ef17d101f94854c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 77a2fc900e3888575fb6411a8c2b76b2c639d719
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501000"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107748581"
 ---
 # <a name="create-and-configure-a-key-vault-for-azure-disk-encryption"></a>为 Azure 磁盘加密创建和配置密钥保管库
 
-Azure Disk Encryption 使用 Azure Key Vault 来控制和管理磁盘加密密钥和机密。  有关 Key Vault 的详细信息，请参阅 [Azure Key Vault 入门](../key-vault/general/overview.md)和[保护 Key Vault](../key-vault/general/secure-your-key-vault.md)。
+Azure Disk Encryption 使用 Azure Key Vault 来控制和管理磁盘加密密钥和机密。  有关密钥保管库的详细信息，请参阅 [Azure Key Vault 入门](../key-vault/general/overview.md)和 [Azure Key Vault 安全功能](../key-vault/general/security-overview.md)。
 
-创建和配置用于 Azure 磁盘加密的密钥保管库涉及三个步骤：
+创建和配置用于 Azure 磁盘加密的 Key Vault 需要三个步骤：
 
 1. 创建资源组（如果需要）。
 2. 创建密钥保管库。 

@@ -2,20 +2,20 @@
 title: 教程 - 将函数添加到 Azure 资源管理器 Bicep 文件
 description: 将函数添加到 Bicep 文件以构造值。
 author: mumian
-ms.date: 03/10/2021
+ms.date: 04/20/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: references_regions
-ms.openlocfilehash: b909beb0cce9ad04ba00068ee25247520dcff47d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 43dec6ceb21a6604bc0034b3f14b79ffd2cbe263
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102633149"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773794"
 ---
 # <a name="tutorial-add-functions-to-azure-resource-manager-bicep-file"></a>教程：将函数添加到 Azure 资源管理器 Bicep 文件
 
-本教程介绍如何将[模板函数](template-functions.md)添加到 Bicep 模板。 我们使用函数来动态构造值。 除了这些系统提供的模板函数，还可以创建[用户定义的函数](./template-user-defined-functions.md)。 完成本教程需要 **7 分钟**。
+本教程介绍如何将[模板函数](template-functions.md)添加到 Bicep 模板。 我们使用函数来动态构造值。 目前，Bicep 不支持用户定义的函数。 完成本教程需要 **7 分钟**。
 
 [!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 

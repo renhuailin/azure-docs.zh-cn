@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 335f78bba24947b1b6c3d6132bc38f237b3298b9
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: fb874c25ab688cc5e6723d1023157b8acd9478b9
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449079"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483831"
 ---
 # <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>快速入门：使用 Azure Static Web Apps 生成第一个静态站点
 
@@ -58,21 +58,35 @@ Azure Static Web Apps 通过从代码存储库生成应用程序发布网站。 
     # <a name="no-framework"></a>[无框架](#tab/vanilla-javascript)
     :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="应用程序预设：无框架":::
 
-    输入“./”作为应用程序文件的位置
+    输入“./”作为应用程序文件的位置。
 
     :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="应用程序文件位置":::
 
-    选择“立即跳过”作为 Azure Functions API 的位置
+    对于 Azure Functions API 的位置，选择“暂时跳过”。
 
     :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="API 位置":::
 
-    输入“./”作为生成输出位置
+    输入“./”作为生成输出位置。
 
     :::image type="content" source="media/getting-started/extension-build-location.png" alt-text="应用程序生成输出位置":::
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
-    :::image type="content" source="media/getting-started/extension-presets-angular.png" alt-text="应用程序预设：Angular":::
+    尽管预设了 Angular，但请选择“自定义”选项，以便为此应用程序提供相应的输出位置。
+
+    :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="应用程序预设：Angular":::
+
+    输入“./”作为应用程序文件的位置。
+
+    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="应用程序文件位置：Angular":::
+
+    对于 Azure Functions API 的位置，选择“暂时跳过”。
+
+    :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="API 位置：Angular":::
+
+    输入 dist/angular-basic 作为生成输出位置。
+
+    :::image type="content" source="media/getting-started/extension-angular.png" alt-text="应用程序生成输出位置：Angular":::
 
     # <a name="react"></a>[React](#tab/react)
 

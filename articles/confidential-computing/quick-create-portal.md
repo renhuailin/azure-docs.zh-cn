@@ -2,18 +2,20 @@
 title: 快速入门 - 在 Azure 门户中创建 Azure 机密计算虚拟机
 description: 了解如何在 Azure 门户中快速创建机密计算虚拟机，以便开始进行部署。
 author: JBCook
+ms.author: JenCook
+ms.date: 04/23/2020
+ms.topic: quickstart
 ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.workload: infrastructure
-ms.topic: quickstart
-ms.date: 04/23/2020
-ms.author: JenCook
-ms.openlocfilehash: 3f0984acd66bd5d6c148be8451938d3152fb9ca7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- mode-portal
+ms.openlocfilehash: f43229570f6bab942cc57a2ea3be163d37f02f89
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102566662"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536177"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>快速入门：在 Azure 门户中部署 Azure 机密计算 VM
 
@@ -148,7 +150,7 @@ ssh azureadmin@40.55.55.555
 
 按照分步说明在运行 Ubuntu 18.04 LTS Gen 2 映像的 DCsv2 系列虚拟机上安装 [OE SDK](https://github.com/openenclave/openenclave)。 
 
-如果虚拟机在 Ubuntu 16.04 LTS Gen 2 上运行，则需要按照[适用于 Ubuntu 16.04 的安装说明](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_16.04.md)进行操作。
+如果虚拟机在 Ubuntu 18.04 LTS Gen 2 上运行，则需要按照[适用于 Ubuntu 18.04 的安装说明](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_18.04.md)进行操作。
 
 #### <a name="1-configure-the-intel-and-microsoft-apt-repositories"></a>1.配置 Intel 和 Microsoft APT 存储库
 

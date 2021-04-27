@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 0e07839c3c5ce542335eeadc92e6a3c98fe87856
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 418c8f0844bf2336ce0d4a681071f237d81877ca
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606974"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505711"
 ---
 # <a name="what-is-azure-dedicated-hsm"></a>什么是 Azure 专用 HSM？
 
@@ -32,7 +32,7 @@ Azure 专用 HSM 是一项 Azure 服务，用于提供 Azure 中的加密密钥�
 
 ### <a name="fips-140-2-level-3-compliance"></a>FIPS 140-2 级别 3 符合性
 
-许多组织都有严格的行业法规，规定必须将加密密钥存储在通过 [FIPS 140-2 级别 3](https://csrc.nist.gov/publications/detail/fips/140/2/final) 验证的 HSM 中。 Azure 专用 HSM 和新的单租户产品/服务 [Azure Key Vault 托管 HSM（预览版）](https://docs.microsoft.com/azure/key-vault/managed-hsm)可帮助各个行业（例如，金融服务行业、政府机构等）的客户达到 FIPS 140-2 级别 3 要求。 同时，Microsoft 的多租户 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) 服务目前使用通过 FIPS 140-2 级别 2 验证的 HSM。 
+许多组织都有严格的行业法规，规定必须将加密密钥存储在通过 [FIPS 140-2 级别 3](https://csrc.nist.gov/publications/detail/fips/140/2/final) 验证的 HSM 中。 Azure 专用 HSM 和新的单租户产品/服务 [Azure Key Vault 托管 HSM](https://docs.microsoft.com/azure/key-vault/managed-hsm) 可帮助各个行业（例如，金融服务行业、政府机构等）的客户达到 FIPS 140-2 级别 3 要求。 同时，Microsoft 的多租户 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) 服务目前使用通过 FIPS 140-2 级别 2 验证的 HSM。 
 
 ### <a name="single-tenant-devices"></a>单租户设备
 
@@ -72,7 +72,7 @@ Azure 专用 HSM 不适合以下类型的方案：支持通过客户托管密钥
 
 ### <a name="it-depends"></a>视情况而定
 
-Azure 专用 HSM 是否适合取决于你能否做出需求和妥协的复杂组合。 例如 FIPS 140-2 级别 3 要求。 这项要求很常见，Azure 专用 HSM 和新的单租户产品/服务 [Azure Key Vault 托管 HSM（预览版）](https://docs.microsoft.com/azure/key-vault/managed-hsm)是目前满足此要求的唯一选择。 如果这些强制要求与你不相关，你通常可以在 Azure Key Vault 和 Azure 专用 HSM 之间进行选择。 在做出决定之前评估要求。
+Azure 专用 HSM 是否适合取决于你能否做出需求和妥协的复杂组合。 例如 FIPS 140-2 级别 3 要求。 这项要求很常见，Azure 专用 HSM 和新的单租户产品/服务 [Azure Key Vault 托管 HSM](https://docs.microsoft.com/azure/key-vault/managed-hsm) 是目前满足此要求的唯一选择。 如果这些强制要求与你不相关，你通常可以在 Azure Key Vault 和 Azure 专用 HSM 之间进行选择。 在做出决定之前评估要求。
 
 需要权衡选择的情况包括： 
 

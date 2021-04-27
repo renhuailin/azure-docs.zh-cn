@@ -3,20 +3,22 @@ title: 快速入门：创建配置文件以实现应用程序的高可用性 - A
 description: 本快速入门文章介绍如何创建流量管理器配置文件，以生成高度可用的 Web 应用程序。
 services: traffic-manager
 author: duongau
-mnager: twooley
-ms.service: traffic-manager
-ms.devlang: na
-ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: ed3f6c96f6c02d5dad686947ee7f61e8852b559f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+manager: kumud
+ms.date: 04/19/2021
+ms.topic: quickstart
+ms.service: traffic-manager
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.custom:
+- mode-api
+ms.openlocfilehash: 96580a56abaffcc11180a406e00aaabb1cb1e2e7
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063808"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727828"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建流量管理器配置文件以实现 Web 应用程序的高可用性
 
@@ -24,13 +26,15 @@ ms.locfileid: "106063808"
 
 在本快速入门中，我们将创建 Web 应用程序的两个实例。 每个实例在不同的 Azure 区域运行。 需根据[终结点优先级](traffic-manager-routing-methods.md#priority-traffic-routing-method)创建流量管理器配置文件。 此配置文件将用户流量定向到运行 Web 应用程序的主站点。 流量管理器持续监视 Web 应用程序。 如果主站点不可用，它会提供目标为备份站点的自动故障转移。
 
+:::image type="content" source="./media/quickstart-create-traffic-manager-profile/environment-diagram.png" alt-text="使用 Azure PowerShell 的流量管理器部署环境示意图。" border="false":::
+
 ## <a name="prerequisites"></a>先决条件
 
 如果还没有 Azure 订阅，请现在就创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组。
 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建资源组。
@@ -38,7 +42,7 @@ ms.locfileid: "106063808"
 ```azurepowershell-interactive
 
 # Variables
-$Location1="WestUS"
+$Location1="EastUS"
 
 # Create a Resource Group
 New-AzResourceGroup -Name MyResourceGroup -Location $Location1
@@ -75,39 +79,37 @@ New-AzTrafficManagerProfile `
 ```azurepowershell-interactive
 
 # Variables
-$App1Name="AppServiceTM1$Random"
-$App2Name="AppServiceTM2$Random"
-$Location1="WestUS"
-$Location2="EastUS"
+$Location1="EastUS"
+$Location2="WestEurope"
 
 # Create an App service plan
-New-AzAppservicePlan -Name "$App1Name-Plan" -ResourceGroupName MyResourceGroup -Location $Location1 -Tier Standard
-New-AzAppservicePlan -Name "$App2Name-Plan" -ResourceGroupName MyResourceGroup -Location $Location2 -Tier Standard
+New-AzAppservicePlan -Name "myAppServicePlanEastUS" -ResourceGroupName MyResourceGroup -Location $Location1 -Tier Standard
+New-AzAppservicePlan -Name "myAppServicePlanEastUS" -ResourceGroupName MyResourceGroup -Location $Location2 -Tier Standard
 
 ```
 ### <a name="create-a-web-app-in-the-app-service-plan"></a>在应用服务计划中创建 Web 应用
-在应用服务计划中使用 [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) 在“美国西部”和“美国东部”Azure 区域中创建 Web 应用程序的两个实例。
+在应用服务计划中使用 [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) 在“美国东部”和“西欧”Azure 区域中创建 Web 应用程序的两个实例。 
 
 ```azurepowershell-interactive
-$App1ResourceId=(New-AzWebApp -Name $App1Name -ResourceGroupName MyResourceGroup -Location $Location1 -AppServicePlan "$App1Name-Plan").Id
-$App2ResourceId=(New-AzWebApp -Name $App2Name -ResourceGroupName MyResourceGroup -Location $Location2 -AppServicePlan "$App2Name-Plan").Id
+$App1ResourceId=(New-AzWebApp -Name myWebAppEastUS -ResourceGroupName MyResourceGroup -Location $Location1 -AppServicePlan "myAppServicePlanEastUS").Id
+$App2ResourceId=(New-AzWebApp -Name myWebAppWestEurope -ResourceGroupName MyResourceGroup -Location $Location2 -AppServicePlan "myAppServicePlanWestEurope").Id
 
 ```
 
 ## <a name="add-traffic-manager-endpoints"></a>添加流量管理器终结点
 使用 [New-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) 将两个 Web 应用作为流量管理器终结点添加到流量管理器配置文件，如下所示：
-- 将“美国西部”Azure 区域中的 Web 应用添加为主要终结点，以路由所有用户流量。 
-- 将“美国东部”Azure 区域中的 Web 应用添加为故障转移终结点。 当主终结点不可用时，流量自动路由到故障转移终结点。
+- 将“美国东部”Azure 区域中的 Web 应用添加为主要终结点，以路由所有用户流量。 
+- 将“西欧”Azure 区域中的 Web 应用添加为故障转移终结点。 当主终结点不可用时，流量自动路由到故障转移终结点。
 
 ```azurepowershell-interactive
-New-AzTrafficManagerEndpoint -Name "$App1Name-$Location1" `
+New-AzTrafficManagerEndpoint -Name "myPrimaryEndpoint" `
 -ResourceGroupName MyResourceGroup `
 -ProfileName "$mytrafficmanagerprofile" `
 -Type AzureEndpoints `
 -TargetResourceId $App1ResourceId `
 -EndpointStatus "Enabled"
 
-New-AzTrafficManagerEndpoint -Name "$App2Name-$Location2" `
+New-AzTrafficManagerEndpoint -Name "myFailoverEndpoint" `
 -ResourceGroupName MyResourceGroup `
 -ProfileName "$mytrafficmanagerprofile" `
 -Type AzureEndpoints `
@@ -138,7 +140,7 @@ Get-AzTrafficManagerProfile -Name $mytrafficmanagerprofile `
 2. 若要查看流量管理器故障转移如何进行，请使用 [Disable-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/disable-aztrafficmanagerendpoint) 禁用主要站点。
 
    ```azurepowershell-interactive
-    Disable-AzTrafficManagerEndpoint -Name $App1Name-$Location1 `
+    Disable-AzTrafficManagerEndpoint -Name "myPrimaryEndpoint" `
     -Type AzureEndpoints `
     -ProfileName $mytrafficmanagerprofile `
     -ResourceGroupName MyResourceGroup `

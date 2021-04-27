@@ -7,16 +7,16 @@ ms.topic: overview
 ms.date: 04/09/2021
 ms.custom: template-overview
 ms.service: certification
-ms.openlocfilehash: b9d599542a53e3d809748b72028512c66409b4ec
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: e7cd664e9eb61cae4f1888e4c94f02f19301e9e5
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307701"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502090"
 ---
 # <a name="what-is-the-azure-certified-device-program"></a>什么是 Azure 认证设备计划？
 
-感谢你关注 Azure 认证设备计划！ 通过此一站式计划，可以轻松推广、查找已构建为在 Azure 上运行的 IoT 设备并突显其独特之处。 从智能相机，到连接的传感器，再到边缘基础结构，此增强型 IoT 设备认证计划都可以帮助设备制造商提高其产品知名度，并为客户节省构建解决方案的时间。
+感谢你关注 Azure 认证设备计划！ Azure 认证设备是一个免费程序，让你可以区分、认证和升级构建用于在 Azure 上运行的 IoT 设备。 从智能相机，到连接的传感器，再到边缘基础结构，此增强型 IoT 设备认证计划都可以帮助设备制造商提高其产品知名度，并为客户节省构建解决方案的时间。
 
 ## <a name="our-certification-promise"></a>我们的认证承诺
 
@@ -58,7 +58,10 @@ Azure 认证设备计划为两种不同的受众提供服务。
 1. 验证设备功能
 1. 提交并完成评审过程
 
-认证设备后，可以选择性地完成以下两个活动：
+> [!Note]
+> 评审过程可能需要长达一周的时间才能完成，但有时可能需要更长的时间。
+
+认证设备后，可以选择性地完成以下两个活动： 
 
 1. 发布到 Azure 认证设备目录（可选）
 1. 在批准/发布项目后更新项目（可选）

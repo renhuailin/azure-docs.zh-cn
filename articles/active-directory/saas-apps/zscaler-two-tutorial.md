@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 04/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 8c3d76f24cce860538dc3bd5dcf29b59708bdb5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4d39492a05ee90c0ba2e081336d7b04579a5c43
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98726188"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518969"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>教程：Azure Active Directory 与 Zscaler Two 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "98726188"
 * 让用户使用其 Azure AD 帐户自动登录到 Zscaler Two。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Zscaler Two 的集成，需要以下项：
 
@@ -37,11 +37,14 @@ ms.locfileid: "98726188"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Zscaler Two 支持 SP 发起的 SSO 
+* Zscaler Two 支持 SP 发起的 SSO。
 
-* Zscaler Two 支持恰时用户预配 
+* Zscaler Two 支持实时用户预配。
 
-## <a name="adding-zscaler-two-from-the-gallery"></a>从库添加 Zscaler Two
+> [!NOTE]
+> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
+
+## <a name="add-zscaler-two-from-the-gallery"></a>从库添加 Zscaler Two
 
 若要配置 Zscaler Two 与 Azure AD 的集成，需从库中将 Zscaler Two 添加到托管 SaaS 应用列表。
 
@@ -69,7 +72,7 @@ ms.locfileid: "98726188"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 Azure 门户的 Zscaler Three 应用程序集成页上，找到“管理”部分，并选择“单一登录”  。
+1. 在 Azure 门户的“Zscaler Two”应用程序集成页上，找到“管理”部分，选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
@@ -134,23 +137,15 @@ ms.locfileid: "98726188"
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分，通过授予 Britta Simon 访问 Zscaler Two 的权限，允许她使用 Azure 单一登录。
+在本部分中，你将通过授予 B.Simon 访问 Zscaler Two 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Zscaler Two”    。
-2. 在应用程序列表中，选择“Zscaler Two”  。
-3. 在左侧菜单中，选择“用户和组”  。
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
-5. 在“用户和组”对话框中，从列表中选择用户（例如“Britta Simon”），然后单击屏幕底部的“选择”按钮    。
-
-    ![显示“用户和组”对话框的屏幕截图，你可以在其中选择用户。](./media/zscaler-two-tutorial/tutorial_zscalertwo_users.png)
-
-6. 从“选择角色”对话框中，选择列表中合适的用户角色，然后单击屏幕底部的“选择”按钮   。
-
-    ![显示“选择角色”对话框的屏幕截图，你可以在其中选择用户角色。](./media/zscaler-two-tutorial/tutorial_zscalertwo_roles.png)
-
-7. 在“添加分配”  对话框中，选择“分配”  按钮。
-
-    ![显示“添加分配”对话框的屏幕截图，你可以在其中选择“分配”。](./media/zscaler-two-tutorial/tutorial_zscalertwo_assign.png)
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“Zscaler Two”  。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-zscaler-two-sso"></a>配置 Zscaler Two SSO
 
@@ -166,7 +161,7 @@ ms.locfileid: "98726188"
 
 4. 转到“管理”>“身份验证”>“身份验证设置”并执行以下步骤： 
    
-    ![显示包含所述步骤的 Zscaler One 站点的屏幕截图。](./media/zscaler-two-tutorial/ic800206.png "管理")
+    ![显示包含所述步骤的 Zscaler One 站点的屏幕截图。](./media/zscaler-two-tutorial/administrator.png "管理")
 
     a. 在“身份验证类型”下选择“SAML”。 
 
@@ -174,7 +169,7 @@ ms.locfileid: "98726188"
 
 5. 在“编辑 SAML”窗口中，执行以下步骤并单击“保存”。   
             
-    ![管理用户和身份验证](./media/zscaler-two-tutorial/ic800208.png "管理用户和身份验证")
+    ![管理用户和身份验证](./media/zscaler-two-tutorial/authentication.png "管理用户和身份验证")
     
     a. 在“SAML 门户 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”   。
 
@@ -194,20 +189,21 @@ ms.locfileid: "98726188"
 
 6. 在“配置用户身份验证”  对话框页上，执行以下步骤：
 
-    ![显示选择了“激活”的“配置用户身份验证”对话框的屏幕截图。](./media/zscaler-two-tutorial/ic800207.png)
+    ![显示选择了“激活”的“配置用户身份验证”对话框的屏幕截图。](./media/zscaler-two-tutorial/activation.png)
 
     a. 将鼠标悬停在左下角附近的“激活”菜单上。 
 
     b. 单击“激活”  。
 
 ## <a name="configuring-proxy-settings&quot;></a>配置代理设置
+
 ### <a name=&quot;to-configure-the-proxy-settings-in-internet-explorer&quot;></a>在 Internet Explorer 中配置代理设置
 
 1. 启动 **Internet Explorer**。
 
 2. 从“工具”菜单中选择“Internet 选项”，打开“Internet 选项”对话框。      
     
-     ![Internet 选项](./media/zscaler-two-tutorial/ic769492.png &quot;Internet 选项")
+     ![Internet 选项](./media/zscaler-two-tutorial/internet.png &quot;Internet 选项")
 
 3. 单击“连接”  选项卡。   
   
@@ -217,7 +213,7 @@ ms.locfileid: "98726188"
 
 5. 在“代理服务器”部分中，执行以下步骤：   
    
-    ![代理服务器](./media/zscaler-two-tutorial/ic769494.png "代理服务器")
+    ![代理服务器](./media/zscaler-two-tutorial/proxy.png "代理服务器")
 
     a. 选择“为 LAN 使用代理服务器”。 
 
@@ -239,7 +235,7 @@ ms.locfileid: "98726188"
 >[!Note]
 >如果需要手动创建用户，请联系 [Zscaler Two 支持团队](https://www.zscaler.com/company/contact)。
 
-### <a name="test-sso"></a>测试 SSO 
+## <a name="test-sso"></a>测试 SSO 
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
@@ -248,7 +244,6 @@ ms.locfileid: "98726188"
 * 直接转到 Zscaler Two 登录 URL，并从那里启动登录流。
 
 * 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Zscaler Two 磁贴时，会重定向到 Zscaler Two 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
-
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,14 +12,15 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeea88d8c21ba754fbeadbb24891126b639616c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc51c645c470f2b5b0a009eaf831db2f1957617e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96437216"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780131"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>快速入门：在 Azure Active Directory 中创建一个新租户
+
 可使用 Azure Active Directory (Azure AD) 门户执行所有管理任务，包括为组织创建新的租户。 
 
 在该快速入门中，你将学习如何转到 Azure 门户和 Azure Active Directory，以及如何为组织创建基本租户。
@@ -27,6 +28,7 @@ ms.locfileid: "96437216"
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="create-a-new-tenant-for-your-organization"></a>为组织创建新的租户
+
 登录到 Azure 门户后，即可为组织创建新的租户。 新的租户代表你的组织，可帮助你管理面向内部和外部用户的特定 Microsoft 云服务实例。
 
 ### <a name="to-create-a-new-tenant"></a>创建新的租户
@@ -59,10 +61,20 @@ ms.locfileid: "96437216"
 
 新租户是使用 contoso.onmicrosoft.com 域创建的。
 
+## <a name="your-user-account-in-the-new-tenant"></a>新租户中的用户帐户
+
+创建新的 Azure AD 租户时，你会成为该租户的第一位用户。 作为第一个用户，系统将自动为你分配[全局管理员](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference#global-administrator)角色。 通过导航到[用户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/MsGraphUsers)页面来查看你的用户帐户。
+
+默认情况下，你还会作为租户的[技术联系人](https://docs.microsoft.com/microsoft-365/admin/manage/change-address-contact-and-more?view=o365-worldwide#what-do-these-fields-mean)列出。 可在[属性](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)中更改技术联系人信息。
+
+> [!WARNING]
+> 确保你的目录至少具有两个分配有全局管理员权限的帐户。 这有助于应对一个全局管理员被锁定的情况。有关更多详细信息，请参阅[在 Azure AD 中管理紧急访问帐户](../roles/security-emergency-access.md)一文。
+
 ## <a name="clean-up-resources"></a>清理资源
+
 如果不打算继续使用此应用程序，可按以下步骤删除该租户：
 
-- 确保你已登录到要通过 Azure 门户中的“目录 + 订阅”筛选器删除的目录，并根据需要切换到目标目录。
+- 确保你已登录到要通过 Azure 门户中的“目录 + 订阅”筛选器删除的目录。 根据需要切换到目标目录。
 - 选择 Azure Active Directory，然后在“Contoso - 概述”页面上，选择“删除目录”    。
 
     这会删除此租户及其关联的信息。
@@ -70,6 +82,7 @@ ms.locfileid: "96437216"
     <kbd>![突出显示“删除目录”按钮的概述页](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)</kbd>
 
 ## <a name="next-steps"></a>后续步骤
+
 - 更改或添加其他域名，请参阅[如何向 Azure Active Directory 添加自定义域名](add-custom-domain.md)
 
 - 添加用户，请参阅[添加新用户或删除用户](add-users-azure-active-directory.md)

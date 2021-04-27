@@ -2,19 +2,73 @@
 title: Azure Defender for IoT 中的新增功能
 description: 本文介绍 Defender for IoT 最新版本中的新增功能。
 ms.topic: overview
-ms.date: 03/14/2021
-ms.openlocfilehash: 7d8c4ebfc55c80878b780fe9f663aaec62a75f9d
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.date: 04/19/2021
+ms.openlocfilehash: da5358ccf0f69ca2ba8f5722b75889b6b7c92c07
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382906"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752599"
 ---
 # <a name="whats-new-in-azure-defender-for-iot"></a>Azure Defender for IoT 中的新增功能是什么？
 
 本文列出了 Defender for IoT 的新功能和功能增强。
 
 标记的功能目前处于预览阶段。 [Azure 预览版补充条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+
+## <a name="april-2021"></a>2021 年 4 月
+
+### <a name="work-with-automatic-threat-intelligence-updates-public-preview"></a>使用自动威胁智能更新（公共预览版）
+
+现可将新的威胁智能包自动推送到云连接传感器，因为它们由 Microsoft Defender for IoT 发布。 还可以下载威胁智能包，然后将其上传到传感器。
+
+使用自动更新有助于降低运营工作量和确保更高的安全性。 启用自动更新：启用“自动威胁智能更新”切换开关后，在 Defender for IoT 门户上载入云连接传感器。
+
+如果想要采用更保守的方法更新威胁智能数据，可以仅在需要时才将包从 Azure Defender for IoT 门户手动推送到云连接传感器。
+这样就可以控制何时安装包，而无需下载包并将其上传到传感器。 从 Defender for IoT“站点和传感器”页面手动将更新推送到传感器。
+
+还可以查看有关威胁智能包的下列信息：
+
+- 安装的包版本
+- 威胁智能更新模式 
+- 威胁智能更新状态
+
+### <a name="view-cloud-connected-sensor-information-public-preview"></a>查看云连接传感器信息（公共预览版）
+
+在“站点和传感器”页面上查看有关云连接传感器的重要操作信息。
+
+- 安装的传感器版本
+- 传感器的云连接状态。
+- 上次检测到传感器连接到云的时间。
+
+### <a name="alert-api-enhancements"></a>警报 API 的增强功能
+
+使用警报 API 的用户可以使用新字段。
+
+**本地管理控制台**
+
+- 源地址和目标地址
+- 修正步骤
+- 用户定义的传感器的名称
+- 与传感器关联的区域的名称 
+- 与传感器关联的站点的名称
+
+**传感器**
+
+- 源地址和目标地址
+- 修正步骤
+
+使用新字段时，需要 API 版本 2。
+
+### <a name="features-delivered-as-generally-available-ga"></a>以正式发布版 (GA) 提供的功能
+
+以下功能以前提供的是公共预览版，现已提供正式发布版 (GA)：
+
+- 传感器 - 增强的自定义警报规则
+- 本地管理控制台 - 导出警报
+- 将第二个网络接口添加到本地管理控制台
+- 设备生成器 - 新的微代理
+
 ## <a name="march-2021"></a>2021 年 3 月
 
 ### <a name="sensor---enhanced-custom-alert-rules-public-preview"></a>传感器 - 增强的自定义警报规则（公共预览版）
@@ -27,7 +81,13 @@ ms.locfileid: "106382906"
 
 现在可以从本地管理控制台将警报信息导出到 .csv 文件。 可以导出检测到的所有警报的信息或导出基于筛选视图的信息。
 
-此功能在版本 10.2 的本地管理控制台上提供。
+此功能在 10.2 版本的本地管理控制台上提供。
+
+### <a name="add-second-network-interface-to-on-premises-management-console-public-preview"></a>将第二个网络接口添加到本地管理控制台（公共预览版）
+
+现在可以通过将第二个网络接口添加到本地管理控制台来增强部署的安全性。 此功能可让本地管理在一个安全网络上拥有连接的传感器，同时允许用户通过另一个独立的网络界面访问本地管理控制台。
+
+此功能在 10.2 版本的本地管理控制台上提供。
 
 ### <a name="add-second-network-interface-to-on-premises-management-console-public-preview"></a>将第二个网络接口添加到本地管理控制台（公共预览版）
 

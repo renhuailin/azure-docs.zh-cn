@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: cbc415411e05d6fdecee1acf2fbc02b3c170b9d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 628bb9886264574bf33ac927cf5480f91144c39c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501118"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533999"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 设置 Azure 证明
 
@@ -120,6 +120,10 @@ $attestationResourceGroup = "<attestation provider resource group name>"
 New-AzResourceGroup -Name $attestationResourceGroup -Location $location 
 ```
 
+ > [!NOTE]
+   > 在此资源组中创建证明提供程序后，Azure AD 用户必须具有该提供程序上的证明参与者角色，才能执行策略配置/策略签名者证书管理等操作。 这些权限还可以通过订阅/资源组上的所有者（通配符权限）/参与者（通配符权限）角色继承 。  
+
+
 ## <a name="create-and-manage-an-attestation-provider"></a>创建和管理证明提供程序
 
 New-AzAttestation 创建证明提供程序。
@@ -170,12 +174,12 @@ Remove-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationR
 - Microsoft.Attestation/attestationProviders/attestation/write
 - Microsoft.Attestation/attestationProviders/attestation/delete
 
-可以通过“所有者”（通配符权限）、“参与者”（通配符权限）或“证明参与者”（仅适用于 Azure 证明的特定权限）等角色将这些权限分配给 AD 用户。  
+ 若要执行这些操作，Azure AD 用户必须具有证明提供程序上的证明参与者角色。 这些权限还可以通过订阅/资源组上的所有者（通配符权限）/参与者（通配符权限）角色继承 。  
 
 为了读取策略，Azure AD 用户需要对“操作”具有以下权限：
 - Microsoft.Attestation/attestationProviders/attestation/read
 
-可以通过“读取器”（通配符权限）或“证明读取器”（仅适用于 Azure 证明的特定权限）等角色将此权限分配给 AD 用户。
+ 若要执行此操作，Azure AD 用户必须具有证明提供程序上的证明读取者角色。 读取权限还可以通过订阅/资源组上的读取者（通配符权限）角色继承。  
 
 下面的 PowerShell cmdlet 为证明提供程序提供策略管理（一次一个 TEE）。
 

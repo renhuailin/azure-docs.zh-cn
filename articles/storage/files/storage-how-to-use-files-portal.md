@@ -4,15 +4,15 @@ description: 了解如何在 Azure 门户中创建和管理 Azure 文件共享�
 author: roygara
 ms.service: storage
 ms.topic: quickstart
-ms.date: 10/18/2018
+ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6a88124397812f7599ce54b46b23d22e626cf520
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7867a4bd60bb179c18fff49691072d683660f7e
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629812"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717817"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>快速入门：使用 Azure 门户创建和管理 Azure 文件共享 
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以在 Windows、Linux 和 macOS 中装载 Azure 文件共享。 本指南介绍通过 [Azure 门户](https://portal.azure.com/)来使用 Azure 文件共享的基本知识。
@@ -26,12 +26,13 @@ ms.locfileid: "94629812"
 若要创建 Azure 文件共享，请执行以下操作：
 
 1. 从仪表板中选择存储帐户。
-2. 在存储帐户页的“服务”部分，选择“文件”。
-    ![存储帐户的服务部分的屏幕截图；选择“文件”服务](media/storage-how-to-use-files-portal/create-file-share-1.png)
+1. 在存储帐户页的“服务”部分，选择“文件”。
+    
+    ![存储帐户的数据存储部分的屏幕截图，其中选择了“文件共享”。](media/storage-how-to-use-files-portal/create-file-share-1.png)
 
-3. 在“文件服务”页顶部的菜单中，单击“文件共享”。 “新建文件共享”页此时会向下拉开。
-4. 在“名称”中，键入 *myshare*。
-5. 单击“确定”以创建 Azure 文件共享。
+1. 在“文件服务”页顶部的菜单中，单击“文件共享”。 “新建文件共享”页此时会向下拉开。
+1. 在“名称”中键入 myshare，输入一个引号，并且对于“层级”，使“事务已优化”保持选中状态 。
+1. 选择“创建”以创建 Azure 文件共享。
 
 共享名必须全部采用小写字母、数字和单个连字符，但不能以连字符开头。 有关命名文件共享和文件的完整详细信息，请参阅 [命名和引用共享、目录、文件和元数据](/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)。
 
@@ -60,20 +61,21 @@ Azure 文件存储提供三种在 Azure 文件共享中使用文件和文件夹�
 若要在 Azure 文件共享的根目录中创建名为 *myDirectory* 的新目录，请执行以下操作：
 
 1. 在“文件服务”页面中，选择“myshare”文件共享。 文件共享的页面此时会打开。
-2. 在页面顶部的菜单中选择“+ 添加目录”。 “新建目录”页此时会向下拉开。
-3. 键入 *myDirectory*，然后单击“确定”。
+1. 在页面顶部的菜单中选择“+ 添加目录”。 “新建目录”页此时会向下拉开。
+1. 键入 *myDirectory*，然后单击“确定”。
 
 #### <a name="upload-a-file"></a>上传文件 
 若要演示如何上传文件，首先需创建或选择一个需要上传的文件。 可以根据需要采用任何方式来这样做。 选定要上传的文件以后，请执行以下操作：
 
 1. 单击 **myDirectory** 目录。 此时会打开 **myDirectory** 面板。
-2. 在顶部菜单中，单击“上传”。 “上传文件”面板此时会打开。  
+1. 在顶部菜单中，选择“上传”。 “上传文件”面板此时会打开。  
+    
     ![“上传文件”面板的屏幕截图](media/storage-how-to-use-files-portal/upload-file-1.png)
 
-3. 单击文件夹图标，打开一个用来浏览本地文件的窗口。 
-4. 选择一个文件，然后单击“打开”。 
-5. 在“上传文件”页中验证文件名，然后单击“上传”。
-6. 完成后，文件会显示在 **myDirectory** 页的列表中。
+1. 单击文件夹图标，打开一个用来浏览本地文件的窗口。 
+1. 选择一个文件，然后单击“打开”。 
+1. 在“上传文件”页中验证文件名，然后单击“上传”。
+1. 完成后，文件会显示在 **myDirectory** 页的列表中。
 
 #### <a name="download-a-file"></a>下载文件
 若要下载已上传文件的副本，可以右键单击该文件。 单击下载按钮后的具体体验取决于所使用的操作系统和浏览器。

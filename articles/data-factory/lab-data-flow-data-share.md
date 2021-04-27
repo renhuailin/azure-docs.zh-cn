@@ -6,13 +6,13 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 12/09/2020
-ms.openlocfilehash: fa424f7e1f5e1f885dd433b8abc8aae1dc1bc206
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.openlocfilehash: 392b1a1650ab40951704d003f2a5e5337cf3c0f5
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97006125"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566676"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>使用 Azure 数据工厂和 Azure Data Share 实现数据集成
 
@@ -64,12 +64,9 @@ ms.locfileid: "97006125"
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>创建 Azure SQL 数据库链接服务
 
-1. 在创作页中，可以创建管道、数据集、数据流、触发器和链接服务等数据工厂资源。 若要创建链接服务，请单击右下角的“连接”按钮。
+1. 若要创建链接服务，请选择左侧栏中的“管理”中心，在“连接”窗格中选择“链接服务”，然后选择“新建”以添加新的链接服务   。
 
     ![门户配置 2](media/lab-data-flow-data-share/configure2.png)
-1. 在“连接”选项卡中，单击“新建”以添加新的链接服务。
-
-    ![门户配置 3](media/lab-data-flow-data-share/configure3.png)
 1. 要配置的第一个链接服务是 Azure SQL 数据库。 可以使用搜索栏来筛选数据存储列表。 单击“Azure SQL 数据库”磁贴，然后单击“继续”。
 
     ![门户配置 4](media/lab-data-flow-data-share/configure-4.png)
@@ -99,9 +96,11 @@ ms.locfileid: "97006125"
 
 在“使用映射数据流转换数据”部分，你将生成映射数据流。 在生成映射数据流之前，最佳做法是启用调试模式，以便能够在活动的 Spark 群集上快速测试转换逻辑。
 
-若要启用调试，请在工厂顶部栏中单击“数据流调试”滑块。 弹出确认对话框时，请单击“确定”。 启动群集大约需要 5-7 分钟。 当初始化正在进行时，请继续执行“使用复制活动将数据从 Azure SQL 数据库引入 ADLS Gen2”。
+若要启用调试，请在有数据流活动时单击数据流画布或管道画布顶部栏中的“数据流调试”滑块 。 弹出确认对话框时，请单击“确定”。 启动群集大约需要 5-7 分钟。 当初始化正在进行时，请继续执行“使用复制活动将数据从 Azure SQL 数据库引入 ADLS Gen2”。
 
 ![门户配置 10](media/lab-data-flow-data-share/configure10.png)
+
+![屏幕截图显示了“数据流调试”滑块的位置。](media/lab-data-flow-data-share/configure-11.png)
 
 ## <a name="ingest-data-using-the-copy-activity"></a>使用复制活动引入数据
 

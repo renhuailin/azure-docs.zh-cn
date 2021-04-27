@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 1/20/2021
 ms.author: baanders
-ms.openlocfilehash: 43cc3dfc5b425df6d9dd5e2c2f35a792907ccdea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00d584690d37f1dcc47b785ef533abe888befec3
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103622203"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107511436"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,7 +27,7 @@ ms.locfileid: "103622203"
 
 本教程由一个使用 C# 编写的示例项目驱动。 示例如下所示：[Azure 数字孪生端到端示例](/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 导航到示例链接，然后选择标题下方的“浏览代码”按钮，在你的计算机上获取示例项目。 这会将你转到这些示例的 GitHub 存储库，可以通过选择“代码”按钮和“下载 ZIP”将其下载为 .ZIP  。
 
-:::image type="content" source="../articles/digital-twins/media/includes/download-repo-zip.png" alt-text="GitHub 上 digital-twins-samples 存储库的视图。选中了“代码”按钮，生成了一个小对话框，其中突出显示了“下载 ZIP”按钮。" lightbox="../articles/digital-twins/media/includes/download-repo-zip.png":::
+:::image type="content" source="../articles/digital-twins/media/includes/download-repo-zip.png" alt-text="GitHub 上 digital-twins-samples 存储库的屏幕截图。选中了“代码”按钮，生成了一个小对话框，其中突出显示了“下载 ZIP”按钮。" lightbox="../articles/digital-twins/media/includes/download-repo-zip.png":::
 
 这会将 .ZIP 文件夹以 digital-twins-samples-master.zip 的形式下载到计算机上。 解压缩文件夹并提取文件。
 

@@ -12,12 +12,12 @@ ms.date: 04/12/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 4130ed4bb690edb3c0c5d72d7d158262ed6ff39d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 3d53c96c4b0306911b0c8a0b8576f35a73419db0
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305593"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107498146"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Tutorial:开发 SCIM 终结点并计划其预配
 
@@ -210,7 +210,8 @@ SCIM RFC 中定义了多个终结点。 可以从 `/User` 终结点开始，然�
 * 对于 SCIM 中的结构元素，不要求区分大小写匹配，尤其是[第 3.5.2 节](https://tools.ietf.org/html/rfc7644#section-3.5.2)中定义的 PATCH `op` 操作值。 AAD 发出 `op` 的值，分别为 Add、Replace 和 Remove  。
 * Microsoft AAD 发出用于提取随机用户和组的请求，以确保终结点和凭据有效。 在 [Azure 门户](https://portal.azure.com)的“测试连接”流中也会完成此操作。 
 * 应在 [Azure 门户](https://portal.azure.com)中将可以查询其资源的特性设置为应用程序的匹配特性，请参阅[自定义用户设置特性映射](customize-application-attributes.md)。
-* 在 SCIM 终结点上支持 HTTPS
+* 不支持权利属性。
+* 在 SCIM 终结点上支持 HTTPS。
 * [架构发现](#schema-discovery)
   * 自定义应用程序当前不支持架构发现，但某些库应用程序正在运行它。 日后，架构发现将用作向连接器添加其他属性的主要方法。 
   * 如果值不存在，则不发送 NULL 值。

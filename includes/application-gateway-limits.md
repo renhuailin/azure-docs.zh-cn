@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: c98d88d66e89df3efe186212d8c004ec2a65158d
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 1166585c7291c4fe0d78cbc9540e3f08f985db6c
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106450423"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107589917"
 ---
 | 资源 | 限制 | 注意 |
 | --- | --- | --- |
@@ -37,7 +37,7 @@ ms.locfileid: "106450423"
 | 每个重写规则集的条件数|40| |
 | 并发的 WebSocket 连接数 |中型网关 2 万<sup>2</sup><br> 大型网关 5 万<sup>2</sup>| |
 | 最大 URL 长度|32KB| |
-| 适用于 HTTP/2 的最大标头大小 |4KB| |
+| 适用于 HTTP/2 的最大标头大小 |16KB| |
 | 最大文件上传大小，标准 |2 GB | |
 | 最大文件上传大小 WAF |V1 中型 WAF 网关，100 MB<br>V1 大型 WAF 网关，500 MB<br>V2 WAF，750 MB| |
 | WAF 正文大小限制（不带文件）|128 KB||

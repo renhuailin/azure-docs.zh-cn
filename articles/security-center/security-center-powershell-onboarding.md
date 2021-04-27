@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 01/24/2021
+ms.date: 04/19/2021
 ms.author: memildin
-ms.openlocfilehash: 25639509cfb689e025ea4388f302378648af8ba6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f9ab258f59279112d0b90c5d460e6761ac911a2d
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439487"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713347"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>使用 PowerShell 自动载入 Azure 安全中心
 
@@ -75,9 +75,9 @@ ms.locfileid: "102439487"
     > 建议启用自动预配，以确保 Azure 虚拟机自动受到 Azure 安全中心的保护。
     >
 
-1. 可选：强烈建议为你加入的订阅定义安全联系人详细信息，该信息将被用作接收安全中心所生成警报和通知的收件人：
+1. 可选：强烈建议为你使用的订阅[定义安全联系人详细信息](security-center-provide-security-contact-details.md)，该信息将被用作接收安全中心所生成警报和通知的收件人：
 
-    ```Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertAdmin -NotifyOnAlert```
+    ```Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -AlertAdmin -NotifyOnAlert```
 
 1. 分配默认安全中心策略计划：
 

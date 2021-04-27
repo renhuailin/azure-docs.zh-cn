@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: c37f6d89d5ebd3e18177db8add048739a62c883f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 28c54865ab9c2876d998896f5f536a11088962f8
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307939"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566420"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>如何在 Azure Synapse Analytics 中通过无服务器 SQL 池使用 OPENROWSET
 
@@ -138,7 +138,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
 可以通过在路径末尾指定 /* 来指示无服务器 SQL 池遍历文件夹，如示例中所示：`https://sqlondemandstorage.blob.core.windows.net/csv/population/**`
 
 > [!NOTE]
-> 与 Hadoop 和 PolyBase 不同，无服务器 SQL 池不返回子文件夹，除非在路径末尾指定 /**。
+> 与 Hadoop 和 PolyBase 不同，无服务器 SQL 池不返回子文件夹，除非在路径末尾指定 /**。 与 Hadoop 和 PolyBase 一样，它不会返回文件名以下划线 (_) 或句点 (.) 开头的文件。
 
 在以下示例中，如果 unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/`，则无服务器 SQL 池查询将返回 mydata.txt 中的行。 它不返回 mydata2.txt 和 mydata3.txt，因为这些文件位于子文件夹中。
 
@@ -276,10 +276,10 @@ Parquet 文件包含每一列的类型说明。 下表介绍了如何将 Parquet
 | BINARY |STRING |varchar \*（UTF8 排序规则） |
 | BINARY |ENUM|varchar \*（UTF8 排序规则） |
 | FIXED_LEN_BYTE_ARRAY |UUID |uniqueidentifier |
-| BINARY |DECIMAL |Decimal |
+| BINARY |DECIMAL |decimal |
 | BINARY |JSON |varchar(8000) \*（UTF8 排序规则） |
 | BINARY |BSON | 不支持 |
-| FIXED_LEN_BYTE_ARRAY |DECIMAL |Decimal |
+| FIXED_LEN_BYTE_ARRAY |DECIMAL |decimal |
 | BYTE_ARRAY |INTERVAL | 不支持 |
 | INT32 |INT(8, true) |smallint |
 | INT32 |INT(16, true) |smallint |
@@ -288,11 +288,11 @@ Parquet 文件包含每一列的类型说明。 下表介绍了如何将 Parquet
 | INT32 |INT(16, false) |int |
 | INT32 |INT(32, false) |bigint |
 | INT32 |DATE |date |
-| INT32 |DECIMAL |Decimal |
+| INT32 |DECIMAL |decimal |
 | INT32 |TIME (MILLIS)|time |
 | INT64 |INT(64, true) |bigint |
 | INT64 |INT(64, false) |decimal(20,0) |
-| INT64 |DECIMAL |Decimal |
+| INT64 |DECIMAL |decimal |
 | INT64 |TIME (MICROS) |time - 不支持 TIME(NANOS) |
 |INT64 |TIMESTAMP (MILLIS/MICROS) |datetime2 - 不支持 TIMESTAMP(NANOS) |
 |[复杂类型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |列表 |varchar(8000)，序列化为 JSON |

@@ -2,13 +2,13 @@
 title: 快速入门：入门
 description: 在本快速入门中，你将开始了解 Defender for IoT 部署的基本工作流。
 ms.topic: quickstart
-ms.date: 2/18/2021
-ms.openlocfilehash: aa26ea26a3fb0a08d931657cb7ad236c68972e2f
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.date: 04/17/2021
+ms.openlocfilehash: b1e7686e1d68d5a3f239320930d69f22c78e13cb
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384947"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750439"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>快速入门：Defender for IoT 入门
 
@@ -17,10 +17,6 @@ ms.locfileid: "106384947"
 - 在 Azure Defender for IoT 门户注册订阅和传感器。
 - 安装传感器和本地管理控制台软件。
 - 执行传感器和管理控制台的初始激活。
-
-## <a name="prerequisites"></a>先决条件
-
-- 无
 
 ## <a name="permission-requirements"></a>权限要求
 
@@ -32,7 +28,7 @@ ms.locfileid: "106384947"
 
 | 权限 | 安全读取者 | 安全管理员 | 订阅参阅者 | 订阅所有者 |
 |--|--|--|--|--|
-| 查看 Defender for IoT 的所有屏幕和数据 | ✓ | ✓ | ✓ | ✓ |
+| 查看详细信息并访问软件、激活文件和威胁情报包  | ✓ | ✓ | ✓ | ✓ |
 | 加入传感器  |  |  ✓ | ✓ | ✓ |
 | 更新定价  |  |  ✓ | ✓ | ✓ |
 | 恢复密码  | ✓  |  ✓ | ✓ | ✓ |
@@ -85,21 +81,20 @@ Azure Defender for IoT 支持物理和虚拟部署。 对于物理部署，你�
 1. 安装本地管理控制台软件。 有关详细信息，请参阅 [Defender for IoT 安装](how-to-install-software.md)。
 1. 激活并设置管理控制台。 有关详细信息，请参阅[激活并设置本地管理控制台](how-to-activate-and-set-up-your-on-premises-management-console.md)。
 
-## <a name="onboard-a-sensor"></a>加入传感器
+## <a name="onboard-a-sensor"></a>加入传感器 ##
 
 通过在 Azure Defender for IoT 注册传感器并下载传感器激活文件，加入传感器：
 
 1. 定义传感器名称并将其与订阅关联。
+1. 选择传感器连接模式：
 
-1. 选择传感器管理模式：
+   - 云连接的传感器：传感器检测到的信息会在传感器控制台中显示。 此外，警告信息会通过 IoT 中心传递，并且可以与 Azure Sentinel 等其他 Azure 服务共享。  还可以选择自动将威胁情报包从 Azure Defender for IoT 门户推送到传感器。 有关详细信息，请参阅[威胁情报研究和包](how-to-work-with-threat-intelligence-packages.md)。
 
-   - 云连接的传感器：传感器检测到的信息会在传感器控制台中显示。 此外，警告信息会通过 IoT 中心传递，并且可以与 Azure Sentinel 等其他 Azure 服务共享。
-
-   - 本地管理的传感器：传感器检测到的信息会在传感器控制台中显示。 如果使用气隙网络，并且想要统一查看由多个本地托管的传感器检测到的所有信息，请使用本地管理控制台。 
+   - 本地管理的传感器：传感器检测到的信息会在传感器控制台中显示。 如果使用气隙网络，并且想要统一查看由多个本地托管的传感器检测到的所有信息，请使用本地管理控制台。
 
 1. 下载传感器激活文件。
 
-有关详细信息，请参阅[在 Defender for IoT 门户中加入和管理传感器](how-to-manage-sensors-on-the-cloud.md)。
+有关加入的详细信息，请参阅[在 Defender for IoT 门户中加入和管理传感器](how-to-manage-sensors-on-the-cloud.md)。
 
 ## <a name="install-and-set-up-the-sensor"></a>安装并设置传感器
 
@@ -131,8 +126,8 @@ Azure Defender for IoT 支持物理和虚拟部署。 对于物理部署，你�
 
 通过配置 Azure Sentinel 将警报信息发送到 Azure Sentinel。 请参阅[将数据从 Defender for IoT 连接到 Azure Sentinel](how-to-configure-with-sentinel.md)。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤 ##
 
-> [!div class="nextstepaction"]
-> [欢迎使用 Azure Defender for IoT](overview.md)
-> [Azure Defender for IoT 体系结构](architecture.md)
+[欢迎使用 Azure Defender for IoT](overview.md)
+
+[Azure Defender for IoT 体系结构](architecture.md)

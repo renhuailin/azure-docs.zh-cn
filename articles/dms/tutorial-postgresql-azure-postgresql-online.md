@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019, devx-track-azurecli
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: bb4dd08b4f30982ec4572fd4e130a89112578175
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 37f33a217467619240d3339363c6a2fcd8800a12
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203549"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505541"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>教程：通过 Azure CLI 使用 DMS 将 PostgreSQL 联机迁移到 Azure DB for PostgreSQL
 
@@ -155,7 +155,7 @@ ms.locfileid: "102203549"
 
 6. 如果任何表中有 ENUM 数据类型，建议在目标表中将其临时更新为“character varying”数据类型。 数据复制操作完成以后，请将数据类型还原为 ENUM。
 
-## <a name="provisioning-an-instance-of-dms-using-the-cli"></a>使用 CLI 预配 DMS 的实例
+## <a name="provisioning-an-instance-of-dms-using-the-azure-cli"></a>使用 Azure CLI 预配 DMS 的实例
 
 1. 安装 dms 同步扩展：
    * 通过运行以下命令登录到 Azure：

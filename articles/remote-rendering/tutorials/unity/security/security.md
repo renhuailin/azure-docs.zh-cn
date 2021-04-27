@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b1bcba264589d6cbe9b4f671e1e4f2c9b1dbf2c5
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 6e595f7ff313ff85a12209e8c124b9aa376b20b6
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594242"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739724"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>教程：保护 Azure 远程渲染和模型存储
 
@@ -211,7 +211,7 @@ RemoteRenderingCoordinator 脚本具有一个名为 ARRCredentialGetter 的委�
     ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
-
+    
     using Microsoft.Azure.RemoteRendering;
     using Microsoft.Identity.Client;
     using System;
@@ -219,17 +219,9 @@ RemoteRenderingCoordinator 脚本具有一个名为 ARRCredentialGetter 的委�
     using System.Threading;
     using System.Threading.Tasks;
     using UnityEngine;
-
+    
     public class AADAuthentication : BaseARRAuthentication
     {
-        [SerializeField]
-        private string accountDomain;
-        public string AccountDomain
-        {
-            get => accountDomain.Trim();
-            set => accountDomain = value;
-        }
-
         [SerializeField]
         private string activeDirectoryApplicationClientID;
         public string ActiveDirectoryApplicationClientID
@@ -237,7 +229,7 @@ RemoteRenderingCoordinator 脚本具有一个名为 ARRCredentialGetter 的委�
             get => activeDirectoryApplicationClientID.Trim();
             set => activeDirectoryApplicationClientID = value;
         }
-
+    
         [SerializeField]
         private string azureTenantID;
         public string AzureTenantID
@@ -245,7 +237,15 @@ RemoteRenderingCoordinator 脚本具有一个名为 ARRCredentialGetter 的委�
             get => azureTenantID.Trim();
             set => azureTenantID = value;
         }
-
+    
+        [SerializeField]
+        private string azureRemoteRenderingDomain;
+        public string AzureRemoteRenderingDomain
+        {
+            get => azureRemoteRenderingDomain.Trim();
+            set => azureRemoteRenderingDomain = value;
+        }
+    
         [SerializeField]
         private string azureRemoteRenderingAccountID;
         public string AzureRemoteRenderingAccountID
@@ -255,37 +255,37 @@ RemoteRenderingCoordinator 脚本具有一个名为 ARRCredentialGetter 的委�
         }
     
         [SerializeField]
-        private string azureRemoteRenderingAccountAuthenticationDomain;
-        public string AzureRemoteRenderingAccountAuthenticationDomain
+        private string azureRemoteRenderingAccountDomain;
+        public string AzureRemoteRenderingAccountDomain
         {
-            get => azureRemoteRenderingAccountAuthenticationDomain.Trim();
-            set => azureRemoteRenderingAccountAuthenticationDomain = value;
-        }
-
+            get => azureRemoteRenderingAccountDomain.Trim();
+            set => azureRemoteRenderingAccountDomain = value;
+        }    
+    
         public override event Action<string> AuthenticationInstructions;
-
+    
         string authority => "https://login.microsoftonline.com/" + AzureTenantID;
-
+    
         string redirect_uri = "https://login.microsoftonline.com/common/oauth2/nativeclient";
-
-        string[] scopes => new string[] { "https://sts." + AzureRemoteRenderingAccountAuthenticationDomain + "/mixedreality.signin" };
-
+    
+        string[] scopes => new string[] { "https://sts." + AzureRemoteRenderingAccountDomain + "/mixedreality.signin" };
+    
         public void OnEnable()
         {
             RemoteRenderingCoordinator.ARRCredentialGetter = GetAARCredentials;
             this.gameObject.AddComponent<ExecuteOnUnityThread>();
         }
-
+    
         public async override Task<SessionConfiguration> GetAARCredentials()
         {
             var result = await TryLogin();
             if (result != null)
             {
                 Debug.Log("Account signin successful " + result.Account.Username);
-
+    
                 var AD_Token = result.AccessToken;
-
-                return await Task.FromResult(new SessionConfiguration(AzureRemoteRenderingAccountAuthenticationDomain, AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+    
+                return await Task.FromResult(new SessionConfiguration(AzureRemoteRenderingAccountDomain, AzureRemoteRenderingDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
             }
             else
             {
@@ -293,7 +293,7 @@ RemoteRenderingCoordinator 脚本具有一个名为 ARRCredentialGetter 的委�
             }
             return default;
         }
-
+    
         private Task DeviceCodeReturned(DeviceCodeResult deviceCodeDetails)
         {
             //Since everything in this task can happen on a different thread, invoke responses on the main Unity thread
@@ -303,10 +303,10 @@ RemoteRenderingCoordinator 脚本具有一个名为 ARRCredentialGetter 的委�
                 Debug.Log(deviceCodeDetails.Message);
                 AuthenticationInstructions?.Invoke(deviceCodeDetails.Message);
             });
-
+    
             return Task.FromResult(0);
         }
-
+    
         public override async Task<AuthenticationResult> TryLogin()
         {
             var clientApplication = PublicClientApplicationBuilder.Create(ActiveDirectoryApplicationClientID).WithAuthority(authority).WithRedirectUri(redirect_uri).Build();
@@ -314,11 +314,11 @@ RemoteRenderingCoordinator 脚本具有一个名为 ARRCredentialGetter 的委�
             try
             {
                 var accounts = await clientApplication.GetAccountsAsync();
-
+    
                 if (accounts.Any())
                 {
                     result = await clientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
-
+    
                     return result;
                 }
                 else
@@ -356,7 +356,7 @@ RemoteRenderingCoordinator 脚本具有一个名为 ARRCredentialGetter 的委�
                 Debug.LogError("GetAccountsAsync");
                 Debug.LogException(ex);
             }
-
+    
             return null;
         }
     }
@@ -372,10 +372,10 @@ RemoteRenderingCoordinator 脚本具有一个名为 ARRCredentialGetter 的委�
 从 ARR 的角度来看，此类最重要的部分是这一行：
 
 ```cs
-return await Task.FromResult(new SessionConfiguration(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+return await Task.FromResult(new SessionConfiguration(AzureRemoteRenderingAccountDomain, AzureRemoteRenderingDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
 ```
 
-在这里，我们使用帐户域、帐户 ID、帐户身份验证域和访问令牌创建新的 SessionConfiguration 对象。 只要基于先前配置的基于角色的权限向用户授予了所需权限，ARR 服务便可以使用此令牌来查询、创建和加入远程渲染会话。
+在这里，我们使用远程渲染域、帐户 ID、帐户域和访问令牌创建新的 SessionConfiguration 对象。 只要基于先前配置的基于角色的权限向用户授予了所需权限，ARR 服务便可以使用此令牌来查询、创建和加入远程渲染会话。
 
 进行此更改后，应用程序的当前状态及其对 Azure 资源的访问权限如下所示：
 
@@ -393,11 +393,11 @@ return await Task.FromResult(new SessionConfiguration(AccountDomain, AzureRemote
 
 1. 填写客户 ID 和租户 ID 的值。 这些值可以在应用程序注册的概述页面中找到：
 
-    * 帐户域与你在 RemoteRenderingCoordinator 的帐户域中使用的域相同 。
     * Active Directory 应用程序客户端 ID 是 AAD 应用注册中的应用程（客户端）ID（见下图）。
     * Active 租户 ID 是在 AAD 应用注册中找到的目录(租户) ID（请参阅下图）。
+    * Azure 远程渲染域与你在 RemoteRenderingCoordinator 的远程渲染域中使用的域相同 。
     * Azure 远程渲染帐户 ID 与用于 RemoteRenderingCoordinator 的帐户 ID 相同  。
-    * 帐户身份验证域与你在 RemoteRenderingCoordinator 中使用的帐户身份验证域相同  。
+    * Azure 远程渲染帐户域与你在 RemoteRenderingCoordinator 中使用的帐户域相同  。
 
     ![屏幕截图，其中突出显示了“应用程序(客户端)ID”和“目录(租户) ID”。](./media/app-overview-data.png)
 

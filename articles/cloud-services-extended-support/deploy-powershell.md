@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: bcf6b2f6b964a056b9d90f08c0586fcbdec5b260
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: a7e4e76aa0619d78a91d766a9a43c0b1a02a48d3
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167270"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717380"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-azure-powershell"></a>使用 Azure PowerShell 部署云服务（外延支持）
 
@@ -69,7 +69,7 @@ ms.locfileid: "106167270"
     $virtualNetwork = New-AzVirtualNetwork -Name “ContosoVNet” -Location “East US” -ResourceGroupName “ContosOrg” -AddressPrefix "10.0.0.0/24" -Subnet $subnet 
     ```
  
-7. 创建公共 IP 地址，并设置公共 IP 地址的 DNS 标签属性。 云服务（外延支持）仅支持[基本] (https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) SKU 公共 IP 地址。 标准 SKU 公共 IP 不适用于云服务。
+7. 创建公共 IP 地址，并设置公共 IP 地址的 DNS 标签属性。 云服务（外延支持）仅支持[基本](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) SKU 公共 IP 地址。 标准 SKU 公共 IP 不适用于云服务。
 如果使用的是静态 IP，则需要在服务配置 (.cscfg) 文件中将其作为保留 IP 引用。 
 
     ```powershell

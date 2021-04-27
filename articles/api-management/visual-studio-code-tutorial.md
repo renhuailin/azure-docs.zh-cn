@@ -6,12 +6,12 @@ author: dlepow
 ms.author: apimpm
 ms.topic: tutorial
 ms.date: 12/10/2020
-ms.openlocfilehash: 0dea8e43d5f09b84c5795bc257cf3331ad919fcb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0090d981e93cee12f2feaaf7d2c12f341564f6ec
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649540"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482324"
 ---
 # <a name="tutorial-use-the-api-management-extension-for-visual-studio-code-to-import-and-manage-apis"></a>教程：使用 Visual Studio Code 的 API 管理扩展来导入和管理 API
 
@@ -101,7 +101,7 @@ API 管理提供可为 API 配置的[策略](api-management-policies.md)。 策�
 ### <a name="test-an-api-operation"></a>测试 API 操作
 
 1. 在“资源管理器”窗格中，展开你导入的 demo-conference-api 下的“操作”节点。
-1. 选择操作，如 GetSpeakers。
+1. 选择一个操作，如“GetSpeakers”，然后右键单击该操作并选择“测试操作”。
 1. 在编辑器窗口中的 Ocp-Apim-Subscription-Key 旁边，将 `{{SubscriptionKey}}` 替换为你复制的订阅密钥。
 1. 选择“发送请求”。  
 

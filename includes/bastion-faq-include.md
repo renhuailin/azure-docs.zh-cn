@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b58040917ed3d3345a35b7acbe31b6b500f05562
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: c0ca74b6cf63e3c81d830eca76eea6815548faa1
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107073753"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107732602"
 ---
 ### <a name="do-i-need-a-public-ip-on-my-virtual-machine-to-connect-via-azure-bastion"></a><a name="publicip"></a>我的虚拟机上是否需要公共 IP 才能通过 Azure Bastion 进行连接？
 
@@ -51,7 +51,7 @@ RDP 和 SSH 都是基于使用率的协议。 会话的使用率高将导致堡�
 
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>支持哪些浏览器？
 
-使用 Windows 上的 Microsoft Edge 浏览器或 Google Chrome。 对于 Apple Mac，可使用 Google Chrome 浏览器。 Windows 和 Mac 上也支持 Microsoft Edge Chromium。
+浏览器必须支持 HTML 5。 使用 Windows 上的 Microsoft Edge 浏览器或 Google Chrome。 对于 Apple Mac，可使用 Google Chrome 浏览器。 Windows 和 Mac 上也支持 Microsoft Edge Chromium。
 
 ### <a name="where-does-azure-bastion-store-customer-data"></a><a name="data"></a>Azure Bastion 将客户数据存储在何处？
 

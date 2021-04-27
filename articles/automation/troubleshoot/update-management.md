@@ -3,14 +3,14 @@ title: 排查 Azure 自动化更新管理问题
 description: 本文介绍如何排查和解决 Azure 自动化更新管理的问题。
 services: automation
 ms.subservice: update-management
-ms.date: 01/13/2021
+ms.date: 04/16/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: c16b032502401b633532ab0fcf9518aa85a1b8d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f23632ba6a6b83f92b2bfc90beb4c1a8613c090a
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579739"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587357"
 ---
 # <a name="troubleshoot-update-management-issues"></a>排查“更新管理”问题
 
@@ -188,11 +188,13 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 5. 如果未列出该提供程序，请按照[解决资源提供程序注册错误](../../azure-resource-manager/templates/error-register-resource-provider.md)中的步骤操作，注册 Microsoft.Automation 提供程序。
 
-## <a name="scenario-scheduled-update-with-a-dynamic-schedule-missed-some-machines"></a><a name="scheduled-update-missed-machines"></a>场景：设置了动态计划的计划更新缺失了某些计算机
+## <a name="scenario-scheduled-update-did-not-patch-some-machines"></a><a name="scheduled-update-missed-machines"></a>场景：计划的更新未修补一些计算机
 
 ### <a name="issue"></a>问题
 
-更新预览中包含的计算机不会全部显示在要在计划的运行期间进行修补的计算机的列表中。
+更新预览中包含的计算机不会全部显示在要在计划的运行期间进行修补的计算机的列表中，或者动态组的所选作用域的 VM 没有显示在门户的更新预览列表中。
+
+更新预览列表包含通过 [Azure Resource Graph](../../governance/resource-graph/overview.md) 查询针对所选作用域检索的所有计算机。 作用域筛选为安装了系统混合 Runbook 辅助角色的计算机以及你具有访问权限的计算机。
 
 ### <a name="cause"></a>原因
 
@@ -201,6 +203,12 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 * 没有为注册的自动化资源提供程序配置动态查询作用域中定义的订阅。
 
 * 执行计划时，计算机不可用或缺少适当的标记。
+
+* 对所选作用域不具有正确的访问权限。
+
+* Azure Resource Graph 查询不检索预期的计算机。
+
+* 计算机未安装系统混合 Runbook 辅助角色。
 
 ### <a name="resolution"></a>解决方法
 
@@ -238,31 +246,15 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 7. 重新运行更新计划，以确保具有指定动态组的部署包括所有计算机。
 
-## <a name="scenario-expected-machines-dont-appear-in-preview-for-dynamic-group"></a><a name="machines-not-in-preview"></a>场景：动态组的预览中未显示预期的计算机
-
-### <a name="issue"></a>问题
-
-Azure 门户预览列表中未显示动态组的所选作用域的 VM。 此列表包含 ARG 查询针对所选作用域检索的所有计算机。 作用域筛选为安装了混合 Runbook 辅助角色的计算机以及你具有访问权限的计算机。
-
-### <a name="cause"></a>原因
-
-可能导致此问题的原因包括：
-
-* 对所选作用域不具有正确的访问权限。
-* ARG 查询未检索到预期的计算机。
-* 计算机未安装混合 Runbook 辅助角色。
-
-### <a name="resolution"></a>解决方法 
-
 #### <a name="incorrect-access-on-selected-scopes"></a>对所选作用域的访问权限不正确
 
 Azure 门户仅显示你在给定作用域内具有写入访问权限的计算机。 如果你在某个范围内没有适当的访问权限，请参阅[教程：使用 Azure 门户授予用户对 Azure 资源的访问权限](../../role-based-access-control/quickstart-assign-role-user-portal.md)。
 
-#### <a name="arg-query-doesnt-return-expected-machines"></a>ARG 查询未返回预期的计算机
+#### <a name="resource-graph-query-doesnt-return-expected-machines"></a>Resource Graph 查询未返回预期的计算机
 
 按照以下步骤操作，查看查询是否正常工作。
 
-1. 运行 ARG 查询，格式如下方 Azure 门户的 Resource Graph 资源管理器边栏选项卡中所示。 此查询模拟在更新管理中创建动态组时所选的筛选器。 请参阅[将动态组与更新管理配合使用](../update-management/configure-groups.md)。
+1. 运行 Azure Resource Graph 查询，格式如下方 Azure 门户的 Resource Graph 资源管理器边栏选项卡中所示。 如果你不熟悉 Azure Resource Graph，请参阅此[快速入门](../../governance/resource-graph/first-query-portal.md)，了解如何使用 Resource Graph 资源管理器。 此查询模拟在更新管理中创建动态组时所选的筛选器。 请参阅[将动态组与更新管理配合使用](../update-management/configure-groups.md)。
 
     ```kusto
     where (subscriptionId in~ ("<subscriptionId1>", "<subscriptionId2>") and type =~ "microsoft.compute/virtualmachines" and properties.storageProfile.osDisk.osType == "<Windows/Linux>" and resourceGroup in~ ("<resourceGroupName1>","<resourceGroupName2>") and location in~ ("<location1>","<location2>") )
@@ -287,7 +279,7 @@ Azure 门户仅显示你在给定作用域内具有写入访问权限的计算�
 
 #### <a name="hybrid-runbook-worker-not-installed-on-machines"></a>未在计算机上安装的混合 Runbook 辅助角色
 
-ARG 查询结果中确实显示了计算机，但动态组预览中仍未显示。 在这种情况下，可能不会将计算机指定为混合辅助角色，因此无法运行 Azure 自动化和更新管理作业。 若要确保将所需计算机设置为混合 Runbook 辅助角色，请执行以下操作：
+Azure Resource Graph 查询结果中确实显示了计算机，但动态组预览中仍未显示。 在这种情况下，可能不会将计算机指定为系统混合 Runbook 辅助角色，因此无法运行 Azure 自动化和更新管理作业。 若要确保将所需计算机设置为系统混合 Runbook 辅助角色，请执行以下操作：
 
 1. 在 Azure 门户中，转到自动化帐户，找到某个未正确显示的计算机。
 
@@ -297,11 +289,9 @@ ARG 查询结果中确实显示了计算机，但动态组预览中仍未显示�
 
 4. 验证是否为该计算机显示了混合辅助角色。
 
-5. 如果计算机未设置为混合辅助角色，请按照[使用混合 Runbook 辅助角色自动执行数据中心或云中的资源](../automation-hybrid-runbook-worker.md)中的说明进行调整。
+5. 如果未将计算机设置为系统混合 Runbook 辅助角色，请在“更新管理概述”一文的[启用更新管理](../update-management/overview.md#enable-update-management)部分下查看启用计算机的方法。 用于启用的方法基于计算机的运行环境。
 
-6. 将计算机加入到混合 Runbook 辅助角色组。
-
-7. 针对预览中未显示的所有计算机，重复上述步骤。
+6. 针对预览中未显示的所有计算机，重复上述步骤。
 
 ## <a name="scenario-update-management-components-enabled-while-vm-continues-to-show-as-being-configured"></a><a name="components-enabled-not-working"></a>场景：已启用更新管理组件，但 VM 仍显示为正在配置
 

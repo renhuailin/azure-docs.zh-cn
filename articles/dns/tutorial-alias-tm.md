@@ -6,19 +6,18 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
-ms.date: 9/25/2018
+ms.date: 04/19/2021
 ms.author: rohink
-ms.openlocfilehash: 4bdfc950cc1277809811dc2c548a57cc2138a8e4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e0101133c68142845a8ada50d9921d341cf10ad0
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "77149943"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738785"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>教程：配置使用流量管理器支持顶点域名的别名记录 
 
 可以为域名顶点创建别名记录，以引用 Azure 流量管理器配置文件。 例如 contoso.com。 请配置 Azure DNS 以直接从区域中引用流量管理器配置文件，不需使用重定向服务。 
-
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -27,7 +26,6 @@ ms.locfileid: "77149943"
 > * 创建流量管理器配置文件。
 > * 创建别名记录。
 > * 测试别名记录。
-
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -39,24 +37,28 @@ ms.locfileid: "77149943"
 本教程中使用的示例域为 contoso.com，但请使用自己的域名。
 
 ## <a name="create-the-network-infrastructure"></a>创建网络基础结构
+
 首先，创建要放置 Web 服务器的虚拟网络和子网。
+
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 2. 在门户的左上角，选择“创建资源”。  在搜索框中输入“资源组”，然后创建名为 RG-DNS-Alias-TM 的资源组。
 3. 选择“创建资源” > “网络” > “虚拟网络”。   
 4. 创建名为“VNet-Servers”的虚拟网络。 将其放在 RG-DNS-Alias-TM 资源组中，然后将子网命名为 SN-Web。
 
 ## <a name="create-two-web-server-virtual-machines"></a>创建两个 Web 服务器虚拟机
+
 1. 选择“创建资源” > “Windows Server 2016 VM”   。
 2. 输入名称“Web-01”  ，然后将 VM 放在“RG-DNS-Alias-TM”  资源组中。 输入用户名和密码，然后选择“确定”。
 3. 对于“大小”，请选择具有 8 GB RAM 的 SKU  。
 4. 对于“设置”  ，请选择“VNet-Servers”  虚拟网络和“SN-Web”  子网。
 5. 选择“公共 IP 地址”。 在“分配”下选择“静态”，然后选择“确定”。
-6. 对于公共入站端口，请选择“HTTP” > “HTTPS” > “RDP (3389)”，然后选择“确定”     。
+6. 对于公共入站端口，请选择“HTTP (80)” > “HTTPS (443)” > “RDP (3389)”，然后选择“确定”   。
 7. 在“摘要”  页中，选择“创建”  。 此过程需要几分钟才能完成。
 
 重复此过程，创建名为 Web-02 的另一个虚拟机。
 
 ### <a name="add-a-dns-label"></a>添加 DNS 标签
+
 公共 IP 地址需要 DNS 标签，以使用流量管理器。
 1. 在 RG-DNS-Alias-TM 资源组中，选择 Web-01-ip 公共 IP 地址。
 2. 在“设置”下，选择“配置”。

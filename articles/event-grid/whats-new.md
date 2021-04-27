@@ -3,12 +3,12 @@ title: 新增功能 发行说明 - Azure 事件网格
 description: 了解 Azure 事件网格的最新信息，例如最新的发行说明、已知问题、bug 修复、已弃用的功能和即将应用的更改。
 ms.topic: overview
 ms.date: 07/23/2020
-ms.openlocfilehash: da0b26e4f163f428e6955a37636ceb19bb34abc5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f135b25f28002c037dd24fa0cb3bb7476a06309f
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107527"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389581"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>Azure 事件网格的最新信息
 
@@ -21,6 +21,24 @@ Azure 事件网格会不断改进。 为了让大家随时了解最新的开发�
 - Bug 修复
 - 已弃用的功能
 - 更改计划
+
+## <a name="610-preview-2020-10"></a>6.1.0-preview (2020-10)
+- [系统主题的托管标识](enable-identity-system-topics.md)
+- [自定义传递属性](delivery-properties.md)
+- [存储队列 - 消息生存时间 (TTL)](delivery-properties.md#configure-time-to-live-on-outgoing-events-to-azure-storage-queues)
+- [高级筛选改进](event-filtering.md#advanced-filtering)
+    - 支持筛选传入事件中的数组数据
+    - 允许筛选 CloudEvents 扩展上下文属性
+    - 新运算符
+        - StringNotContains
+        - StringNotBeginsWith
+        - StringNotEndsWith
+        - NumberInRange
+        - NumberNotInRange
+        - IsNull
+        - IsNotNull
+- [允许事件网格架构针对自定义主题和域进行 CloudEvents 1.0 架构转换](cloudevents-schema.md#configure-event-grid-for-cloudevents)
+        
 
 ## <a name="600-2020-06"></a>6.0.0 (2020-06)
 - 添加对新的正式发布 (GA) 服务 API 版本 2020-06-01 的支持。

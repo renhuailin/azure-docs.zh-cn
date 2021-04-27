@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: pipeline
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 05c33db130bfa3fcc1a4f5d75935294fcc0ba1d7
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 19bff62883341947eb5290118494b8244c5476ac
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365461"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518246"
 ---
 # <a name="integrate-with-pipelines"></a>与管道集成
 
@@ -23,12 +23,10 @@ ms.locfileid: "107365461"
 
 ## <a name="create-a-pipeline-and-add-a-notebook-activity"></a>创建管道并添加笔记本活动
 
-
-
 1. 在 Synapse Studio 中，转到“集成”中心。
 1. 选择 + > “管道”以创建新管道 。 单击新管道对象以打开管道设计器。
 1. 在“活动”下，展开 Synapse 文件夹，然后将笔记本对象拖到设计器中  。
-1. 选择笔记本活动属性的“设置”选项卡。 使用下拉列表选择当前 Synapse 工作区中的任意笔记本。
+1. 选择笔记本活动属性的“设置”选项卡。 使用下拉列表选择当前 Synapse 工作区中的笔记本。
 
 ## <a name="schedule-the-pipeline-to-run-every-hour"></a>计划每小时运行一次管道
 
@@ -37,14 +35,19 @@ ms.locfileid: "107365461"
 1. 选择“确定”。 
 1. 选择“全部发布”。 
 
+## <a name="forcing-a-pipeline-to-run-immediately"></a>强制立即运行管道
+
+管道发布后，你可能希望立即运行它，而不必等待一小时。
+
+1. 打开管道。
+1. 单击“添加触发器” > “立即触发”。
 
 ## <a name="monitor-pipeline-execution"></a>监视管道执行
 
-1. 发布管道后，若要使管道立即运行而不用等待一个小时，请选择“添加触发器” > “立即触发” 。
-1. 在 Synapse Studio 中，转到“监视”中心。
+1. 转到“监视”选项卡。
 1. 选择“管道运行”以监视管道执行进度。
-
-
+1. 在此视图中，可以在表格“列表”和显示图形“甘特”图表之间进行切换 。 
+1. 单击管道名称可查看该管道中活动的状态。
 
 ## <a name="next-steps"></a>后续步骤
 

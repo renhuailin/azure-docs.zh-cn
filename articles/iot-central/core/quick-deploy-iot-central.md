@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: a1492593c24c2bc350205536006b648608cc5e46
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b33beaad580e64a4760b0557f04f266ecfc1b4d
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101712634"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718802"
 ---
 # <a name="quickstart---create-an-azure-iot-central-application"></a>快速入门 - 创建 Azure IoT Central 应用程序
 
@@ -21,13 +21,14 @@ ms.locfileid: "101712634"
 
 ## <a name="prerequisite"></a>先决条件 
 
-你需要一个具有“参与者”访问权限的 Azure 订阅。
+ - 具有活动订阅的 Azure 帐户。 [免费](https://aka.ms/createazuresubscription)创建帐户。
+ - 你的 Azure 订阅应具有参与者访问权限
 
 ## <a name="create-an-application"></a>创建应用程序
 
 导航到 [Azure IoT Central 生成](https://aka.ms/iotcentral)站点。 然后使用 Microsoft 个人、工作或学校帐户登录。
 
-若要创建一个新应用程序，可以从行业相关的 IoT Central 模板列表中选择一个模板来帮助你快速入门，或者可以使用“自定义应用”  模板从头开始创建。 在本快速入门中，使用“自定义应用程序”  模板。
+若要创建一个新应用程序，可以从行业相关的 IoT Central 模板列表中选择一个模板来帮助你快速入门，或者可以使用“自定义应用”模板从头开始创建。 在本快速入门中，使用“自定义应用程序”  模板。
 
 若要基于“自定义应用程序”  模板新建 Azure IoT Central 应用程序，请执行以下操作：
 
@@ -35,11 +36,13 @@ ms.locfileid: "101712634"
 
     :::image type="content" source="media/quick-deploy-iot-central/iotcentralcreate-new-application.png" alt-text="生成 IoT 应用程序页面":::
 
-1. 选择“自定义应用程序”  并确保选择了“自定义应用程序”  模板。
+1. 选择“自定义应用”
 
-1. Azure IoT Central 会根据所选应用程序模板自动建议应用程序名称  。 可以使用此名称或输入自己的友好应用程序名称。
+1. 在“新建应用程序”页上，确保在“应用程序模板”下选择了“自定义应用程序”  。
 
-1. Azure IoT Central 还会根据应用程序名称为你生成唯一的应用程序 URL 前缀  。 使用此 URL 访问应用程序。 如果你愿意，可以将此 URL 前缀更改为更令人难忘的内容。
+1. Azure IoT Central 会根据所选应用程序模板自动建议应用程序名称。 可以使用此名称或输入自己的友好应用程序名称。
+
+1. Azure IoT Central 还会根据应用程序名称为你生成唯一的 URL 前缀。 使用此 URL 访问应用程序。 如果你愿意，可以将此 URL 前缀更改为更令人难忘的内容。
 
     :::image type="content" source="media/quick-deploy-iot-central/iotcentralcreate-custom.png" alt-text="Azure IoT Central 的“创建应用程序”页":::
 

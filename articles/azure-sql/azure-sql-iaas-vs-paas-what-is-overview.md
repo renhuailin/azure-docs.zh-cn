@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: ea097119111d5dbd5eba3c11aba549d201186e3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 394b3390386c60e2a64f52dd944dfcdb0d33951e
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592177"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727017"
 ---
 # <a name="what-is-azure-sql"></a>什么是 Azure SQL？ 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -98,18 +98,19 @@ Azure SQL 数据库提供了以下部署选项：
 ### <a name="sql-server-on-azure-vm"></a>Azure VM 上的 SQL Server
 
 [Azure VM 上的 SQL Server](virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) 属于“基础结构即服务 (IaaS)”行业类别，可让你在 Azure 中完全托管的虚拟机 (VM) 上运行 SQL Server。 
-- 最适合用于需要 OS 级别访问的迁移和应用程序。 Azure 中的 SQL 虚拟机随时可直接迁移，适用于需要快速迁移到云中且只需进行极少量更改甚至不需要任何更改的现有应用程序。 SQL 虚拟机针对要迁移到 Azure 的 SQL Server 实例和底层 OS 提供全面的管理控制度。 
-- 想要快速完成开发和测试方案，但又不想购买本地 SQL Server 非生产硬件。 SQL 虚拟机也在 Microsoft 所拥有、托管及维护的标准化硬件上运行。 使用 SQL 虚拟机时，既可使用 SQL Server 映像中已包含的 SQL Server 许可证即用即付，也可轻松使用现有的许可证。 还可以根据需要停止或恢复 VM。 
 - 在云中安装和托管的 SQL Server 将在 Azure 上运行的 Windows Server 或 Linux 虚拟机上运行，也称为基础结构即服务 (IaaS)。 SQL 虚拟机非常适合用于迁移本地 SQL Server 数据库和应用程序，无需进行任何数据库更改。 所有当前 SQL Server 版本都可安装在 IaaS 虚拟机中。 
-
-    与 SQL 数据库和 SQL 托管实例之间最重要的差别在于，可使用 Azure 虚拟机上的 SQL Server 完全控制数据库引擎。 可以选择维护/修补开始时间、将恢复模式更改为简单模式或批量记录模式、根据需要暂停或启动服务，并且可以完全自定义 SQL Server 数据库引擎。 控制度的提高也意味着在管理虚拟机方面需要承担更大的责任。
+- 最适合用于需要 OS 级别访问的迁移和应用程序。 Azure 中的 SQL 虚拟机随时可直接迁移，适用于需要快速迁移到云中且只需进行极少量更改甚至不需要任何更改的现有应用程序。 SQL 虚拟机针对要迁移到 Azure 的 SQL Server 实例和底层 OS 提供全面的管理控制度。 
+- 与 SQL 数据库和 SQL 托管实例之间最重要的差别在于，可使用 Azure 虚拟机上的 SQL Server 完全控制数据库引擎。 可以选择维护/修补开始时间、将恢复模式更改为简单模式或批量记录模式、根据需要暂停或启动服务，并且可以完全自定义 SQL Server 数据库引擎。 控制度的提高也意味着在管理虚拟机方面需要承担更大的责任。
+- 想要快速完成开发和测试方案，但又不想购买本地 SQL Server 非生产硬件。 SQL 虚拟机也在 Microsoft 所拥有、托管及维护的标准化硬件上运行。 使用 SQL 虚拟机时，既可使用 SQL Server 映像中已包含的 SQL Server 许可证即用即付，也可轻松使用现有的许可证。 还可以根据需要停止或恢复 VM。 
 - 已针对将现有应用程序迁移到 Azure 或将现有本地应用程序扩展到混合部署中的云进行了优化。 此外，可以使用虚拟机中的 SQL Server 开发和测试传统 SQL Server 应用程序。 有了 SQL 虚拟机，即拥有了专用 SQL Server 实例和基于云的 VM 的完全管理权限。 当组织拥有可用来维护虚拟机的 IT 资源时，此选项是最佳选择。 使用这些功能可以构建高度定制的系统，解决应用程序的具体性能与可用性要求。
+
+
+### <a name="comparison-table"></a>比较表
 
 下表列出了其他差别，但 SQL 数据库和 SQL 托管实例都经过优化，可将预配和管理许多数据库的整体管理成本降到最低。 由于无需管理任何虚拟机、操作系统或数据库软件，因此可持续降低管理成本。 用户不必管理升级、高可用性或[备份](database/automated-backups-overview.md)。 
 
-一般而言，SQL 数据库和 SQL 托管实例会大幅增加由单个 IT 或开发资源管理的数据库数目。 [弹性池](database/elastic-pool-overview.md)也支持 SaaS 多租户应用程序体系结构，提供租户隔离等功能，并可以跨数据库共享资源，通过缩放来降低成本。 [SQL 托管实例](managed-instance/sql-managed-instance-paas-overview.md)支持面向实例的功能，可用于轻松迁移现有应用程序，以及在数据库之间共享资源。
+一般而言，SQL 数据库和 SQL 托管实例会大幅增加由单个 IT 或开发资源管理的数据库数目。 [弹性池](database/elastic-pool-overview.md)也支持 SaaS 多租户应用程序体系结构，提供租户隔离等功能，并可以跨数据库共享资源，通过缩放来降低成本。 [SQL 托管实例](managed-instance/sql-managed-instance-paas-overview.md)支持面向实例的功能，可用于轻松迁移现有应用程序，以及在数据库之间共享资源。 而 [Azure VM 上的 SQL Server](virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) 为 DBA 提供与他们熟悉的本地环境最相似的体验。 
 
-### <a name="comparison-table"></a>比较表
 
 | Azure SQL 数据库 | Azure SQL 托管实例 | Azure VM 上的 SQL Server |
 | :--- | :--- | :--- |

@@ -4,20 +4,22 @@ description: 本快速入门介绍如何通过 Azure 门户使用 Azure Front Do
 services: front-door
 documentationcenter: na
 author: duongau
-manager: KumudD
-ms.service: frontdoor
-ms.devlang: na
-ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/16/2020
 ms.author: duau
-ms.openlocfilehash: 1869098362e37ea18c7ca9a9f827b0e5ec98ea3c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+manager: KumudD
+ms.date: 04/19/2021
+ms.topic: quickstart
+ms.service: frontdoor
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.custom:
+- mode-portal
+ms.openlocfilehash: 74b7c16904c86751076d40056027999fe44cb868
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067565"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727860"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>快速入门：创建 Front Door，以实现高度可用的全局 Web 应用程序
 
@@ -25,7 +27,9 @@ ms.locfileid: "106067565"
 
 在本快速入门中，Azure Front Door 汇集了在不同 Azure 区域中运行的某个 Web 应用程序的两个实例。 你将基于权重相等且优先级相同的后端创建 Front Door 配置。 此配置将流量定向到运行该应用程序的最近站点。 Azure Front Door 会持续监视该 Web 应用程序。 当最近的站点不可用时，该服务会提供到下一个可用站点的自动故障转移。
 
-## <a name="prerequisites"></a>先决条件
+:::image type="content" source="media/quickstart-create-front-door/environment-diagram.png" alt-text="使用 Azure 门户的 Front Door 部署环境示意图。" border="false":::
+
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -65,8 +69,8 @@ ms.locfileid: "106067565"
 | ---              | ---  |
 | **资源组**   | 选择“新建”，并输入“FrontDoorQS_rg2” |
 | **名称**             | 输入 Web 应用的唯一名称，本示例使用 WebAppContoso-2  |
-| **区域**           | 一个不同的区域，本示例使用“美国中南部” |
-| “应用服务计划” > “Windows 计划”         | 选择“新建”并输入 myAppServicePlanSouthCentralUS，然后选择“确定” |
+| **区域**           | 一个不同的区域，本示例使用“美国东部” |
+| “应用服务计划” > “Windows 计划”         | 选择“新建”并输入 myAppServicePlanEastUS，然后选择“确定” |
 
 ## <a name="create-a-front-door-for-your-application"></a>为应用程序创建 Front Door
 

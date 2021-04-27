@@ -5,14 +5,14 @@ ms.subservice: ''
 ms.topic: overview
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/23/2021
+ms.date: 04/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: 899249c98c3ce0fdf061b1e689182f71c120aa13
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f8b4d6965a8a1f046fd2459ce9fe5cce8ea45443
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101729381"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531081"
 ---
 # <a name="whats-new-in-azure-automation"></a>Azure 自动化有哪些新增功能？
 
@@ -23,6 +23,70 @@ Azure 自动化会不断改进。 为了让大家随时了解最新的开发成�
 - Bug 修复
 
 本页面每月更新，请不时回来查看。
+
+## <a name="march-2021"></a>2021 年 3 月
+
+### <a name="new-azure-automation-built-in-policies"></a>新的 Azure 自动化内置策略
+
+**类型：** 新功能
+
+Azure 自动化添加了 5 个新的内置策略：
+
+- 自动化帐户应禁用公用网络访问，
+- Azure 自动化帐户应使用客户管理的密钥来加密静态数据
+- 将 Azure 自动化帐户配置为禁用公用网络访问
+- 在 Azure 自动化帐户上配置专用终结点连接
+- 应启用自动化帐户上的专用终结点连接。
+
+有关更多详细信息，请参阅[策略参考](./policy-reference.md)文章。
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-south-india"></a>已在印度南部正式发布对自动化和 State Configuration 的支持声明
+
+**类型：** 新功能
+
+可在印度南部使用过程自动化和 State Configuration 功能。 有关详细信息，请参阅[公告](https://azure.microsoft.com/updates/azure-automation-in-south-india-region/)。
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-uk-west"></a>已在英国西部正式发布对自动化和 State Configuration 的支持声明
+
+**类型：** 新功能
+
+可在英国西部使用过程自动化和 State Configuration 功能。 有关详细信息，请阅读[公告](https://azure.microsoft.com/updates/azure-automation-in-uk-west-region/)。
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-uae-central"></a>已在阿联酋中部正式发布对自动化和 State Configuration 的支持声明
+
+**类型：** 新功能
+
+可在阿联酋中部使用过程自动化和 State Configuration 功能。 有关详细信息，请参阅[公告](https://azure.microsoft.com/updates/azure-automation-in-uae-central-region/)。
+
+### <a name="support-for-automation-and-state-configuration-available-in-australia-central-2--norway-west-and-france-south"></a>在澳大利亚中部 2、挪威西部和法国南部推出对自动化和状态配置的支持
+
+**类型：** 新功能
+
+在[“数据驻留”页](https://azure.microsoft.com/global-infrastructure/data-residency/)上选择每个区域的地理位置以查看详细信息。
+
+### <a name="new-scripts-added-for-installing-hybrid-worker-on-windows-and-linux"></a>添加了新的脚本，用于在 Windows 和 Linux 上安装混合辅助角色
+
+**类型：** 新功能
+
+在 Azure 自动化 [GitHub 存储库](https://github.com/azureautomation)中添加了两个新脚本，用于应对在 Windows 或 Linux 计算机上设置混合 Runbook 辅助角色的 Azure 自动化关键方案之一。 此脚本将创建一个新的 VM 或使用现有 VM，根据需要创建 Log Analytics 工作区，安装适用于 Windows 的 Log Analytics 代理或适用于 Linux 的 Log Analytics 代理，并将计算机注册到 Log Analytics 工作区。 Windows 脚本名为 Create Automation Windows HybridWorker，Linux 脚本名为 Create Automation Linux HybridWorker。 
+
+### <a name="invoke-runbook-through-an-azure-resource-manager-template-webhook"></a>通过 Azure 资源管理器模板 webhook 调用 runbook
+
+**类型：** 新功能
+
+有关更多详细信息，请参阅[使用 ARM 模板中的 webhook](./automation-webhooks.md#use-a-webhook-from-an-arm-template)。
+
+### <a name="azure-update-management-now-supports-centos-8x-red-hat-enterprise-linux-server-8x-and-suse-linux-enterprise-server-15"></a>Azure 更新管理现在支持Centos 8.x、Red Hat Enterprise Linux Server 8.x 和 SUSE Linux Enterprise Server 15
+
+**类型：** 新功能
+
+有关更多详细信息，请参阅支持的 Linux 操作系统的[完整列表](./update-management/overview.md#supported-operating-systems)。
+
+### <a name="in-region-data-residency-support-for-brazil-south-and-south-east-asia"></a>巴西南部和东南亚的区域内数据驻留支持 
+
+**类型：** 新功能
+
+在除巴西南部和东南亚以外的所有区域中，Azure 自动化数据都存储在其他区域（Azure 配对区域），以提供业务连续性和灾难恢复 (BCDR)。 对于巴西和东南亚区域，我们现在将 Azure 自动化数据存储在同一区域中，以适应这些区域的数据驻留要求。 有关更多详细信息，请参阅 [Azure 自动化中的异地复制](./automation-managing-data.md#geo-replication-in-azure-automation)。
 
 ## <a name="february-2021"></a>2021 年 2 月
 
@@ -62,9 +126,9 @@ Azure 自动化会不断改进。 为了让大家随时了解最新的开发成�
 
 类型。 新功能
 
-混合 Runbook 辅助角色功能支持 CentOS 8.x、REHL 8.x 和 SLES 15 分发版，仅用于对混合 Runbook 辅助角色的进程自动化。  请参阅[受支持的操作系统](automation-linux-hrw-install.md#supported-linux-operating-systems)，获取反映这些更改的文档更新。
+混合 Runbook 辅助角色功能支持 CentOS 8.x、REHL 8.x 和 SLES 15 分发版，仅用于对混合 Runbook 辅助角色的进程自动化。 请参阅[受支持的操作系统](automation-linux-hrw-install.md#supported-linux-operating-systems)，获取反映这些更改的文档更新。
 
-### <a name="update-management--change-tracking-availability-in-australia-east-east-asia-west-us--central-us-regions"></a>现可在澳大利亚东部、东亚、美国西部和美国中部地区使用更新管理和更改跟踪
+### <a name="update-management-and-change-tracking-availability-in-australia-east-east-asia-west-us-and-central-us-regions"></a>现可在澳大利亚东部、东亚、美国西部和美国中部地区使用更新管理和更改跟踪
 
 **类型：** 新功能
 
@@ -72,7 +136,7 @@ Azure 自动化会不断改进。 为了让大家随时了解最新的开发成�
 
 ### <a name="introduced-public-preview-of-python-3-runbooks-in-us-government-cloud"></a>在美国政府云中引入了 Python 3 runbook 公共预览版
 
-类型：新功能 Azure 自动化在美国政府云区域中引入了对 Python 3 云和混合 runbook 执行的公共预览版支持。  有关详细信息，请参阅[公告](https://azure.microsoft.com/updates/azure-automation-python-3-public-preview/)。
+类型：新功能 Azure 自动化在美国政府云区域中引入了对 Python 3 云和混合 runbook 执行的公共预览版支持。 有关详细信息，请参阅[公告](https://azure.microsoft.com/updates/azure-automation-python-3-public-preview/)。
 
 ### <a name="azure-automation-runbooks-moved-from-technet-script-center-to-github"></a>Azure 自动化 runbook 从 TechNet 脚本中心移到了 GitHub
 
@@ -222,7 +286,7 @@ Azure 自动化区域映射已经更新，现支持在中国东部 2 区域使�
 
 Azure 自动化 DNS 记录已经更新，现支持专用链接。 有关详细信息，请阅读[公告](https://azure.microsoft.com/updates/azure-automation-updateddns-records/)。
 
-### <a name="added-capability-to-keep-automation-runbooks--dsc-scripts-encrypted-by-default"></a>已添加使自动化 runbook 和 DSC 脚本默认加密的功能
+### <a name="added-capability-to-keep-automation-runbooks-and-dsc-scripts-encrypted-by-default"></a>已添加使自动化 runbook 和 DSC 脚本默认加密的功能
 
 **类型：** 新功能
 

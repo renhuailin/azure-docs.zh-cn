@@ -8,12 +8,12 @@ ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5611088b76d8acf785fc0951100dcd4a2f439250
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9aec838aa762cd018a96b2f17e80cc04ea95795d
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104593163"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738983"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>快速入门：使用 Azure CLI 创建和管理 Azure 文件共享
 本指南介绍通过 Azure CLI 来使用 [Azure 文件共享](storage-files-introduction.md)的基本知识。 Azure 文件共享与其他文件共享一样，只不过是存储在云中并由 Azure 平台提供支持。 Azure 文件共享支持行业标准服务器消息块 (SMB) 协议、网络文件系统 (NFS) 协议（预览版），并可以跨多个计算机、应用程序和实例进行文件共享。 
@@ -73,16 +73,17 @@ export storageAccountKey=$(az storage account keys list \
 ```
 
 ## <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
-现在可以创建第一个 Azure 文件共享了。 请使用 [az storage share create](/cli/azure/storage/share) 命令创建文件共享。 以下示例创建名为 *myshare* 的 Azure 文件共享： 
+现在可以创建第一个 Azure 文件共享了。 请使用 [az storage share-rm create](/cli/azure/storage/share-rm?view=azure-cli-latest&preserve-view=false#az_storage_share_rm_create) 命令创建文件共享。 以下示例创建名为 *myshare* 的 Azure 文件共享： 
 
 ```azurecli-interactive
 shareName="myshare"
 
-az storage share create \
-    --account-name $storageAccountName \
-    --account-key $storageAccountKey \
+az storage share-rm create \
+    --resource-group $resourceGroupName \
+    --storage-account $storageAccountName \
     --name $shareName \
     --quota 1024 \
+    --enabled-protocols SMB \
     --output none
 ```
 
@@ -169,11 +170,12 @@ az storage file download \
 ```azurecli-interactive
 otherShareName="myshare2"
 
-az storage share create \
-    --account-name $storageAccountName \
-    --account-key $storageAccountKey \
+az storage share-rm create \
+    --resource-group $resourceGroupName \
+    --storage-account $storageAccountName \
     --name $otherShareName \
     --quota 1024 \
+    --enabled-protocols SMB \
     --output none
 
 az storage directory create \

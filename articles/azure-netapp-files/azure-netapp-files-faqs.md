@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/06/2021
+ms.date: 04/19/2021
 ms.author: b-juche
-ms.openlocfilehash: d63587eec1f7e6d24ae1638e8365b85fd1ec2c94
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: a8c06b25b923d663e982e940100be7b9a2a009e1
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504985"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726837"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>有关 Azure NetApp 文件的常见问题解答
 
@@ -27,9 +27,9 @@ ms.locfileid: "106504985"
 
 ## <a name="networking-faqs"></a>网络常见问题解答
 
-### <a name="does-the-nfs-data-path-go-over-the-internet"></a>NFS 数据路径是否通过 Internet？  
+### <a name="does-the-data-path-for-nfs-or-smb-go-over-the-internet"></a>NFS 或 SMB 数据路径是否通过 Internet？  
 
-不是。 NFS 数据路径不通过 Internet。 Azure NetApp 文件是一项 Azure 本机服务，已部署到可以使用该服务的 Azure 虚拟网络 (VNet) 中。 Azure NetApp 文件使用委托子网，并直接在 VNet 中预配网络接口。 
+不是。 NFS 或 SMB 数据路径不通过 Internet。 Azure NetApp 文件是一项 Azure 本机服务，已部署到可以使用该服务的 Azure 虚拟网络 (VNet) 中。 Azure NetApp 文件使用委托子网，并直接在 VNet 中预配网络接口。 
 
 有关详细信息，请参阅 [Azure NetApp 文件网络规划指南](./azure-netapp-files-network-topologies.md)。  
 
@@ -213,6 +213,43 @@ SMB 客户端报告的卷大小是 Azure NetApp 文件卷可以增长到的最�
 ### <a name="how-can-i-obtain-the-ip-address-of-an-smb-volume-via-the-portal"></a>如何通过门户获取 SMB 卷的 IP 地址？
 
 使用卷概述窗格中的“JSON 视图”链接，并查看“properties” -> “mountTargets”下的“startIp”标识符   。
+
+### <a name="smb-encryption-faqs"></a>SMB 加密常见问题解答
+
+本部分解答有关 SMB 加密（SMB 3.0 和 SMB 3.1.1）的常见问题。
+
+#### <a name="what-is-smb-encryption"></a>什么是 SMB 加密？  
+
+[SMB 加密](/windows-server/storage/file-server/smb-security)提供 SMB 数据的端对端加密，并防止数据在不受信任网络中遭到窃听。 SMB 3.0 及更高版本支持 SMB 加密。 
+
+#### <a name="how-does-smb-encryption-work"></a>SMB 加密的工作原理是什么？
+
+向存储发送请求时，客户端会对该请求进行加密，随后存储会进行解密。 同样，响应由服务器加密并由客户端解密。
+
+#### <a name="which-clients-support-smb-encryption"></a>哪些客户端支持 SMB 加密？
+
+Windows 10、Windows 2012 及更高版本支持 SMB 加密。
+
+#### <a name="with-azure-netapp-files-at-what-layer-is-smb-encryption-enabled"></a>借助 Azure NetApp 文件，在哪个层启用了 SMB 加密？  
+
+在共享级别启用 SMB 加密。
+
+#### <a name="what-forms-of-smb-encryption-are-used-by-azure-netapp-files"></a>Azure NetApp 文件使用哪些形式的 SMB 加密？
+
+SMB 3.0 采用 AES-CCM 算法，而 SMB 3.1.1 采用 AES-GCM 算法
+
+#### <a name="is-smb-encryption-required"></a>SMB 加密是必需的吗？
+
+SMB 加密不是必需的。 因此，只有当用户要求 Azure NetApp 文件对特定共享启用加密时，才会启用它。 Azure NetApp 文件共享从不在 Internet 中公开。 它们只能从特定 VNet 中通过 VPN 或快速路由进行访问，因此，Azure NetApp 文件共享本质上是安全的。 启用 SMB 加密的选择完全由用户决定。 在启用此功能之前，请注意预期的性能损失。
+
+#### <a name="what-is-the-anticipated-impact-of-smb-encryption-on-client-workloads"></a><a name="smb_encryption_impact"></a>SMB 加密对客户端工作负载的预期影响有哪些？
+
+尽管 SMB 加密会对客户端（加密和解密消息的 CPU 开销）和存储（降低吞吐量）产生影响，但下表只重点介绍了存储影响。 在将工作负载部署到生产环境之前，应测试加密性能对应用程序的影响。
+
+|     I/O 配置文件       |     影响        |
+|-  |-  |
+|     读取和写入工作负载      |     10% 到 15%        |
+|     元数据密集型        |     5%    |
 
 ## <a name="capacity-management-faqs"></a>容量管理常见问题解答
 

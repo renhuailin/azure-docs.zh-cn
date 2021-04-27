@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 9443c6fbaca16cf075745972a1655a2b4b2ea43c
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: b240806b934cae54810cf9dfe1a6c1f369cede7e
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077527"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587504"
 ---
 # <a name="tutorial-create-and-import-glossary-terms-in-azure-purview-preview"></a>教程：在 Azure Purview（预览版）中创建和导入术语表术语
 
@@ -96,6 +96,9 @@ ms.locfileid: "106077527"
 1. 请注意 StarterKitTerms.csv 文件的存储位置，该文件是你在[本教程系列的第 1 部分](tutorial-scan-data.md)中下载的初学者工具包的一部分。
 
    此文件包含与数据资产相关的预填充术语列表。
+
+ > [!Important]
+   > .CSV 文件中专员和专家的电子邮件地址应是 AAD 组中用户的主要地址。 尚不支持备用电子邮件地址、用户主体名称和非 AAD 电子邮件地址。 需要将电子邮件地址替换为组织中的 AAD 主要地址。
 
 1. 若要开始导入，请选择“术语表”，然后选择“导入术语” 。
 

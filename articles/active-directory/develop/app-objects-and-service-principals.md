@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/15/2021
+ms.date: 04/16/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: 358e066631304e727d18d092bd4b9a5b2a0bb89a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc1b5356ab607ecb60a457a7295831958e6815e1
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199614"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727053"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory 中的应用程序对象和服务主体对象
 
@@ -47,15 +47,21 @@ Microsoft Graph [Application 实体][MS-Graph-App-Entity]定义应用程序对�
 ## <a name="service-principal-object"></a>服务主体对象
 若要访问受 Azure AD 租户保护的资源，需要访问的实体必须由安全主体来表示。 此要求同时适用于用户（用户主体）和应用程序（服务主体）。 安全主体定义 Azure AD 租户中用户/应用程序的访问策略和权限。 这样便可实现核心功能，如在登录时对用户/应用程序进行身份验证，在访问资源时进行授权。
 
-服务主体是单个租户或目录中某个全局应用程序对象的本地表示形式或应用程序实例。 服务主体是从应用程序对象中创建的具体实例，并从该应用程序对象继承某些属性。 服务主体是在使用应用程序的每个租户中创建的，并引用全局唯一应用对象。  服务主体对象定义应用可在特定租户中实际执行的操作、可访问应用的用户以及应用可访问的资源。
+有三种类型的服务主体：应用程序、托管标识和旧版应用。
+
+第一种类型的服务主体是单个租户或目录中某个全局应用程序对象的本地表示形式或应用程序实例。 在本例中，服务主体是从应用程序对象中创建的具体实例，并从该应用程序对象继承某些属性。 服务主体是在使用应用程序的每个租户中创建的，并引用全局唯一应用对象。  服务主体对象定义应用可在特定租户中实际执行的操作、可访问应用的用户以及应用可访问的资源。
 
 当应用程序被授予了对租户中资源的访问权限时（根据注册或[许可](developer-glossary.md#consent)），将创建一个服务主体对象。 还可使用 [Azure PowerShell](howto-authenticate-service-principal-powershell.md)、[Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli)、[Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?tabs=http) 和 [Azure 门户][AZURE-Portal]以及其他工具在租户中创建服务主体对象。 如果使用门户，会在注册应用程序时自动创建服务主体。
+
+第二种类型的服务主体用于表示[托管标识](/azure/active-directory/managed-identities-azure-resources/overview)。 托管标识使开发人员无需管理凭据。 托管标识为应用程序提供一个标识，可以在连接到支持 Azure AD 身份验证的资源时使用。 启用托管标识后，在你的租户中会创建一个表示该托管标识的服务主体。 可以向表示托管标识的服务主体授予访问权限和相关权限，但不能直接更新或修改。
+
+第三种类型的服务主体表示旧版应用（在通过旧版体验引入或创建应用注册之前创建的应用）。 旧版服务主体可以具有凭据、服务主体名称、回复 URL 以及其他可由已授权用户编辑的属性，但没有关联的应用注册。 服务主体只能在创建它的租户中使用。
+
+Microsoft Graph [ServicePrincipal 实体][MS-Graph-Sp-Entity]定义服务主体对象属性的架构。
 
 门户中的“企业应用程序”边栏选项卡用于在租户中列出和管理服务主体。 可查看服务主体的权限、用户已同意的权限、提供了相应同意的用户、登录信息等等。
 
 ![企业应用边栏选项卡](./media/app-objects-and-service-principals/enterprise-apps-blade.png)
-
-Microsoft Graph [ServicePrincipal 实体][MS-Graph-Sp-Entity]定义服务主体对象属性的架构。
 
 ## <a name="relationship-between-application-objects-and-service-principals"></a>应用程序对象与服务主体之间的关系
 

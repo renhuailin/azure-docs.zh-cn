@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 430ece58bd3dc1651ac391ba0e29515085ee507b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4879c8370953a5ac8c6b46efe8010db9692d3052
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98878183"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714499"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>发现、评估 Amazon Web Services (AWS) VM 并将其迁移到 Azure
 
@@ -145,7 +145,9 @@ ms.locfileid: "98878183"
 5. 单击“创建资源”。 随即会在后台创建一个 Azure Site Recovery 保管库。
     - 如果已设置使用 Azure Migrate 服务器迁移进行迁移，则无法配置目标选项，因为之前已设置了资源。
     - 单击此按钮后，无法更改此项目的目标区域。
-    - 若要将 VM 迁移到其他区域，需要创建一个新的/不同的 Azure Migrate 项目。
+    - 若要将 VM 迁移到其他区域，需要创建一个新的/不同的 Azure Migrate 项目。  
+    > [!NOTE]
+    > 如果在创建 Azure Migrate 项目时选择了专用终结点作为该项目的连接方法，则还将为专用终结点连接配置恢复服务保管库。 确保可从复制设备访问专用终结点。 [**了解详细信息**](how-to-use-azure-migrate-with-private-endpoints.md#troubleshoot-network-connectivity)
 
 6. 在“是否安装新的复制设备?”中，选择“安装复制设备”。 
 7. 在“下载并安装复制设备软件”中，下载设备安装程序和注册密钥。 需要使用该密钥来注册设备。 下载的密钥有效期为 5 天。
@@ -244,13 +246,18 @@ ms.locfileid: "98878183"
     ![选择 VM](./media/tutorial-migrate-physical-virtual-machines/select-vms.png)
 
 8. 在“目标设置”中，选择订阅以及要迁移到的目标区域，并指定迁移之后 Azure VM 所在的资源组。
-9. 在“虚拟网络”中，选择迁移之后 Azure VM 要加入到的 Azure VNet/子网。
-10. 在“可用性选项”中，选择：
+9. 在“虚拟网络”中，选择迁移之后 Azure VM 要加入到的 Azure VNet/子网。  
+10. 在“缓存存储帐户”中，保留默认选项，以使用为项目自动创建的缓存存储帐户。 如果要指定其他存储帐户用作复制的缓存存储帐户，请使用下拉列表。 <br/> 
+    > [!NOTE]
+    >
+    > - 如果选择了专用终结点作为 Azure Migrate 项目的连接方法，请向恢复服务保管库授予对缓存存储帐户的访问权限。 [**了解详细信息**](how-to-use-azure-migrate-with-private-endpoints.md#grant-access-permissions-to-the-recovery-services-vault)
+    > - 若要使用结合专用对等互连的 ExpressRoute 进行复制，请为缓存存储帐户创建专用终结点。 [**了解详细信息**](how-to-use-azure-migrate-with-private-endpoints.md#create-a-private-endpoint-for-the-storage-account-optional) 
+11. 在“可用性选项”中，选择：
     -  可用性区域，将迁移的计算机固定到区域中的特定可用性区域。 使用此选项可跨可用性区域分配形成多节点应用程序层的服务器。 如果选择此选项，则需要在“计算”选项卡中指定用于每个选定计算机的可用性区域。仅当为迁移选择的目标区域支持可用性区域时，此选项才可用
     -  可用性集，将迁移的计算机放入可用性集。 若要使用此选项，所选的目标资源组必须具有一个或多个可用性集。
     - 如果不需要为迁移的计算机使用其中任何可用性配置，则选择“无需基础结构冗余”选项。
     
-11. 在“磁盘加密类型”中，选择以下类型：
+12. 在“磁盘加密类型”中，选择以下类型：
     - 使用平台管理的密钥进行静态加密
     - 使用客户管理的密钥进行静态加密
     - 通过平台管理的密钥和客户管理的密钥进行双重加密
@@ -258,14 +265,14 @@ ms.locfileid: "98878183"
    > [!NOTE]
    > 若要使用 CMK 复制 VM，需要在目标资源组下[创建磁盘加密集](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set)。 磁盘加密集对象将托管磁盘映射到包含 CMK 的密钥保管库，以用于 SSE。
   
-12. 在“Azure 混合权益”中：
+13. 在“Azure 混合权益”中：
 
     - 如果你不想要应用 Azure 混合权益，请选择“否”。 然后单击“下一步”。
     - 如果你的 Windows Server 计算机享有有效软件保障或 Windows Server 订阅的权益，并且你想要将此权益应用到所要迁移的计算机，请选择“是”。 然后单击“下一步”。
 
     ![目标设置](./media/tutorial-migrate-vmware/target-settings.png)
 
-13. 在“计算”中，查看 VM 名称、大小、OS 磁盘类型和可用性配置（如果在上一步中选定）。 VM 必须符合 [Azure 要求](migrate-support-matrix-physical-migration.md#azure-vm-requirements)。
+14. 在“计算”中，查看 VM 名称、大小、OS 磁盘类型和可用性配置（如果在上一步中选定）。 VM 必须符合 [Azure 要求](migrate-support-matrix-physical-migration.md#azure-vm-requirements)。
 
     - **VM 大小**：如果你正在使用评估建议，则 VM 大小下拉列表会显示建议大小。 否则，Azure Migrate 会根据 Azure 订阅中最接近的匹配项选择大小。 或者，请在“Azure VM 大小”中的手动选择一个大小。
     - **OS 磁盘**：为 VM 指定 OS（启动）磁盘。 OS 磁盘是包含操作系统引导加载程序和安装程序的磁盘。
@@ -274,13 +281,13 @@ ms.locfileid: "98878183"
 
 ![计算设置](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
-14. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。 然后单击“下一步”。
+15. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。 然后单击“下一步”。
     - 可以从复制中排除磁盘。
     - 如果排除了磁盘，迁移后，这些磁盘将不会出现在 Azure VM 中。 
 
     ![磁盘设置](./media/tutorial-migrate-physical-virtual-machines/disks.png)
 
-15. 在“检查并开始复制”中检查设置，然后单击“复制”启动服务器的初始复制。 
+16. 在“检查并开始复制”中检查设置，然后单击“复制”启动服务器的初始复制。 
 
 > [!NOTE]
 > 在复制开始之前，随时可以在“管理” > “复制计算机”中更新复制设置。 开始复制后无法更改设置。

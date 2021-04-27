@@ -3,7 +3,6 @@ title: 教程 - 更新 Key Vault 中的证书自动轮换频率 | Microsoft Docs
 description: 本教程展示了如何使用 Azure 门户更新 Azure Key Vault 中证书的自动轮换频率
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
@@ -11,12 +10,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: ec648f02918717dad6b739aa6ae99206bcec1d6e
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: ec88dfc7ded7ecb1d640eb4d73ef4c8045e549cf
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581815"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791978"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>教程：配置 Key Vault 中的证书自动轮换
 
@@ -80,10 +79,12 @@ Key Vault 通过与 CA 建立的合作关系自动轮换证书。 由于 Key Vau
    - **有效期**：输入值（以月为单位）。 建议的安全做法是创建短期证书。 默认情况下，新创建的证书的“有效期”值为 12 个月。
    - **生存期操作类型**：选择证书的自动续订和警报操作，然后更新“生存期到达的百分比”或“距离到期还剩的天数”。 默认情况下，证书的自动续订设置为其生存期的 80%。 从下拉菜单中选择以下选项之一。
 
-        |  在给定时间自动续订| 在给定时间向所有联系人发送电子邮件 |
-        |-----------|------|
-        |选择此选项会启用自动轮换。 | 选择此选项不会自动轮换，而只会提醒联系人。|
-         You can learn about [setting up Email contact here](https://docs.microsoft.com/azure/key-vault/certificates/overview-renew-certificate#get-notified-about-certificate-expiration)
+      |  在给定时间自动续订| 在给定时间向所有联系人发送电子邮件 |
+      |-----------|------|
+      |选择此选项会启用自动轮换。 | 选择此选项不会自动轮换，而只会提醒联系人。|
+      
+      你可以在此处了解如何[设置电子邮件联系人](https://docs.microsoft.com/azure/key-vault/certificates/overview-renew-certificate#get-notified-about-certificate-expiration)
+
 1. 选择“创建”。
 
 ![证书生命周期](../media/certificates/tutorial-rotate-cert/create-cert-lifecycle.png)
@@ -134,7 +135,7 @@ Set-AzureKeyVaultCertificatePolicy -VaultName $vaultName
 > }
 >  ```
 > 
-若要详细了解参数，请参阅 [az keyvault certificate](/cli/azure/keyvault/certificate#az-keyvault-certificate-set-attributes)。
+若要详细了解参数，请参阅 [az keyvault certificate](/cli/azure/keyvault/certificate#az_keyvault_certificate_set_attributes)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

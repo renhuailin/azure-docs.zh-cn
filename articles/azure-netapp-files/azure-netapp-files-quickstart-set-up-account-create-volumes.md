@@ -8,16 +8,16 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: e31a1cef427062723adf4b45bd47cd8009630128
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77d5ce2cc903be51b7a38d6edc34bb8424c52ddb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94888804"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786092"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>快速入门：设置 Azure NetApp 文件并创建 NFS 卷
 
-本文介绍如何快速设置 Azure NetApp 文件和创建卷。
+本文介绍如何快速设置 Azure NetApp 文件和创建 NFS 卷。 
 
 在本快速入门中，你将设置以下项：
 
@@ -27,6 +27,8 @@ ms.locfileid: "94888804"
 - 一个用于 Azure NetApp 文件的 NFS 卷
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+若要查看可为 NFS 卷启用的所有功能以及相关注意事项，请参阅[创建 NFS 卷](azure-netapp-files-create-volumes.md)。 
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -145,7 +147,7 @@ ms.locfileid: "94888804"
     > 若要获取命令行工具支持的区域名称，请使用 `az account list-locations --query "[].{Region:name}" --out table`
     >
 
-2. 使用 [az group create](/cli/azure/group#az-group-create) 命令创建新的资源组：
+2. 使用 [az group create](/cli/azure/group#az_group_create) 命令创建新的资源组：
 
     ```azurecli-interactive
     az group create \
@@ -153,7 +155,7 @@ ms.locfileid: "94888804"
         --location $LOCATION
     ```
 
-3. 使用 [az netappfiles account create](/cli/azure/netappfiles/account#az-netappfiles-account-create) 命令创建 Azure NetApp 文件帐户：
+3. 使用 [az netappfiles account create](/cli/azure/netappfiles/account#az_netappfiles_account_create) 命令创建 Azure NetApp 文件帐户：
 
     ```azurecli-interactive
     az netappfiles account create \
@@ -224,7 +226,7 @@ ms.locfileid: "94888804"
     SERVICE_LEVEL="Premium" # Valid values are Standard, Premium and Ultra
     ```
 
-2. 使用 [az netappfiles pool create](/cli/azure/netappfiles/pool#az-netappfiles-pool-create) 创建新的容量池
+2. 使用 [az netappfiles pool create](/cli/azure/netappfiles/pool#az_netappfiles_pool_create) 创建新的容量池
 
     ```azurecli-interactive
     az netappfiles pool create \
@@ -248,7 +250,7 @@ ms.locfileid: "94888804"
 
 ---
 
-## <a name="create-nfs-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 NFS 卷
+## <a name="create-an-nfs-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 NFS 卷
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
@@ -341,7 +343,7 @@ ms.locfileid: "94888804"
     SUBNET_NAME="myANFSubnet"
     ```
 
-1. 使用 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) 命令创建没有子网的虚拟网络。
+1. 使用 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) 命令创建没有子网的虚拟网络。
 
     ```azurecli-interactive
     az network vnet create \
@@ -352,7 +354,7 @@ ms.locfileid: "94888804"
 
     ```
 
-2. 使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) 命令创建委托子网。
+2. 使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) 命令创建委托子网。
 
     ```azurecli-interactive
     az network vnet subnet create \
@@ -363,7 +365,7 @@ ms.locfileid: "94888804"
         --delegations "Microsoft.NetApp/volumes"
     ```
 
-3. 使用 [az netappfiles volume create](/cli/azure/netappfiles/volume#az-netappfiles-volume-create) 命令创建卷。
+3. 使用 [az netappfiles volume create](/cli/azure/netappfiles/volume#az_netappfiles_volume_create) 命令创建卷。
 
     ```azurecli-interactive
     VNET_ID=$(az network vnet show --resource-group $RESOURCE_GROUP --name $VNET_NAME --query "id" -o tsv)
@@ -447,7 +449,7 @@ ms.locfileid: "94888804"
 > [!IMPORTANT]
 > 资源组中的所有资源将被永久删除，并且无法撤消。
 
-1. 使用 [az group delete](/cli/azure/group#az-group-delete) 命令删除资源组。
+1. 使用 [az group delete](/cli/azure/group#az_group_delete) 命令删除资源组。
 
     ```azurecli-interactive
     az group delete \

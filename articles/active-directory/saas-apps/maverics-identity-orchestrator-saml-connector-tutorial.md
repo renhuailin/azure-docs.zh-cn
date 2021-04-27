@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 19f6b0601afe9ad84f02c93d7f6e1ae3a71a06a4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 402f6cd6961108cdf1e9c94fb4f93309fbf15ead
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104585088"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599020"
 ---
 # <a name="integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>将 Azure AD 单一登录与 Maverics Identity Orchestrator SAML Connector 集成
 
@@ -35,7 +35,7 @@ Strata 的 Maverics Identity Orchestrator 提供了一种简单方法，可以�
 
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 * 已启用 Maverics Identity Orchestrator SAML Connector SSO 的订阅。 若要获取 Mavericks 软件，请联系 [Strata 销售部](mailto:sales@strata.io)。
-* 至少一个使用基于标头的身份验证的应用程序。 这些示例不适用于名为 Sonar 的应用程序和名为 Connectulum 的应用程序，前者托管在 https://app.sonarsystems.com 上，后者托管在 https://app.connectulum.com 上。
+* 至少一个使用基于标头的身份验证的应用程序。 这些示例不适用于名为 Connectulum 的应用程序（托管在 `https://app.connectulum.com` 上）。
 * 用于托管 Maverics Orchestrator 的 Linux 计算机
   * OS：RHEL 7.7 或更高版本，CentOS 7 +
   * 磁盘：>= 10 GB
@@ -107,7 +107,7 @@ tls:
     keyFile: /etc/maverics/maverics.key
 ```
 
-若要确认 TLS 配置正确，请重新启动 Maverics 服务，并向状态终结点发出请求。 从浏览器中请求 https://sonar.maverics.com/status 。
+若要确认 TLS 配置正确，请重新启动 Maverics 服务，并向状态终结点发出请求。
 
 ## <a name="step-2-proxy-an-application"></a>步骤 2：代理应用程序
 
@@ -131,7 +131,7 @@ appgateways:
     upstream: https://app.sonarsystems.com
 ```
 
-若要确认代理运行正确，请重新启动 Maverics 服务，并通过 Maverics 代理向应用程序发出请求。 从浏览器中请求 https://sonar.maverics.com 。 可以选择性地向特定应用程序资源发出请求，例如，`https://sonar.maverics.com/RESOURCE`，其中 `RESOURCE` 是受保护上游应用的有效应用程序资源。
+若要确认代理运行正确，请重新启动 Maverics 服务，并通过 Maverics 代理向应用程序发出请求。 可以选择性地向特定应用程序资源发出请求。
 
 ## <a name="step-3-register-an-enterprise-application-in-azure-ad"></a>步骤 3：在 Azure AD 中注册企业应用程序
 
@@ -325,7 +325,7 @@ connectors:
 
 可能已注意到，代码在应用程序网关定义中添加了 `host` 字段。 通过 `host` 字段，Maverics Orchestrator 可以区分要将流量代理到哪个上游主机。
 
-若要确认新添加的应用程序网关运行正确，请向 https://connectulum.maverics.com 发出请求。
+若要确认新添加的应用程序网关运行正确，请向 `https://connectulum.maverics.com` 发出请求。
 
 ## <a name="advanced-scenarios"></a>高级方案
 

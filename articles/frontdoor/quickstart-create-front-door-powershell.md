@@ -4,21 +4,22 @@ description: 本快速入门介绍如何通过 Azure PowerShell 来使用 Azure 
 services: front-door
 documentationcenter: na
 author: duongau
-manager: KumudD
-ms.assetid: ''
-ms.service: frontdoor
-ms.devlang: na
-ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/21/2020
 ms.author: duau
-ms.openlocfilehash: a3ecb8cacd8fa47709432e26243bd754511658d2
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+manager: KumudD
+ms.date: 04/19/2021
+ms.topic: quickstart
+ms.service: frontdoor
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.custom:
+- mode-api
+ms.openlocfilehash: 17fa18e1f29622b941c281b9cdce27f6e72eb13a
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057909"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739973"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建 Front Door，以实现高度可用的全局 Web 应用程序
 
@@ -26,7 +27,9 @@ ms.locfileid: "106057909"
 
 Front Door 会将 Web 流量定向到后端池中的特定资源。 你已定义前端域，请将资源添加到后端池，并创建路由规则。 本文使用一个后端池的简单配置，其中包含两个 Web 应用资源和一个使用默认路径匹配“/*”的路由规则。
 
-## <a name="prerequisites"></a>先决条件
+:::image type="content" source="media/quickstart-create-front-door/environment-diagram.png" alt-text="使用 PowerShell 的 Front Door 环境示意图。" border="false":::
+
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 本地安装的 Azure PowerShell 或 Azure Cloud Shell
@@ -54,17 +57,17 @@ New-AzResourceGroup -Name myResourceGroupFD -Location centralus
 ```azurepowershell-interactive
 # Create first web app in Central US region.
 $webapp1 = New-AzWebApp `
--Name "WebAppContoso-$(Get-Random)" `
+-Name "WebAppContoso-1" `
 -Location centralus `
 -ResourceGroupName myResourceGroupFD `
 -AppServicePlan myAppServicePlanCentralUS
 
 # Create second web app in South Central US region.
 $webapp2 = New-AzWebApp `
--Name "WebAppContoso-$(Get-Random)" `
+-Name "WebAppContoso-2" `
 -Location southcentralus `
 -ResourceGroupName myResourceGroupFD `
--AppServicePlan myAppServicePlanSouthCentralUS
+-AppServicePlan myAppServicePlanEastUS
 ```
 
 ## <a name="create-a-front-door"></a>创建 Front Door

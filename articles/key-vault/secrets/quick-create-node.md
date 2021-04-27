@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 769a63819925caa50ff364869b8d9a14c3258a2e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3d8f20f598243754e3fd39f649e7c84d55b64817
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102214535"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751663"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-javascript-version-4"></a>快速入门：适用于 JavaScript 的 Azure Key Vault 机密客户端库（版本 4）
 
@@ -154,7 +154,7 @@ const { SecretClient } = require("@azure/keyvault-secrets");
 
 本快速入门使用登录用户向 Key Vault 进行身份验证，这是本地开发的首选方法。 对于部署到 Azure 的应用程序，应将托管标识分配给应用服务或虚拟机。有关详细信息，请参阅[托管标识概述](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
 
-在下面的示例中，Key Vault 的名称将扩展为 Key Vault URI，格式为“https://\<your-key-vault-name\>.vault.azure.net”。 此示例使用 [Azure 标识库](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)中的[“DefaultAzureCredential()”](https://docs.microsoft.com/javascript/api/@azure/identity/defaultazurecredential)类。利用该类，我们可以在具有不同选项的不同环境中使用相同的代码来提供标识。 有关向密钥保管库进行身份验证的详细信息，请参阅[开发人员指南](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)。
+在下面的示例中，Key Vault 的名称将扩展为 Key Vault URI，格式为“https://\<your-key-vault-name\>.vault.azure.net”。 此示例使用 [Azure 标识库](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)中的[“DefaultAzureCredential()”](https://docs.microsoft.com/javascript/api/@azure/identity/defaultazurecredential)类。利用该类，我们可以在具有不同选项的不同环境中使用相同的代码来提供标识。 有关向 Key Vault 进行身份验证的详细信息，请参阅[开发人员指南](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)。
 
 将以下代码添加到“main()”函数
 
@@ -285,6 +285,6 @@ main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
 
 - 阅读 [Azure Key Vault 概述](../general/overview.md)
 - 阅读 [Azure Key Vault 机密概述](about-secrets.md)
-- 如何[保护对密钥保管库的访问](../general/secure-your-key-vault.md)
+- 如何[保护对密钥保管库的访问](../general/security-overview.md)
 - 参阅 [Azure Key Vault 开发人员指南](../general/developers-guide.md)
 - 请参阅 [Key Vault 安全性概述](../general/security-overview.md)

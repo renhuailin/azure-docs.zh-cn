@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: b22954edf4f3a5a935c470326aa43bd24ee2d708
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 4b7251be220c012ca51970863ac2eed55d46d711
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366056"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751141"
 ---
 # <a name="creating-a-synapse-workspace"></a>创建 Synapse 工作区
 
@@ -43,7 +43,10 @@ ms.locfileid: "107366056"
 填写以下字段：
 
 1. **工作区名称** - 选取任何全局唯一名称。 在本教程中，我们将使用 myworkspace。
-1. **区域** - 选取任何区域。
+1. **区域** - 选择放置客户端应用程序/服务（例如 Azure VM、Power BI、Azure Analysis Service）和包含数据的存储（例如 Azure Data Lake 存储、Azure Cosmos DB 分析存储）的区域。
+
+> [!NOTE]
+> 工作区与客户端应用程序或存储没有位于同一位置，可能是许多性能问题的根本原因。 如果将数据或客户端放置在多个区域中，则可以在与数据和客户端位于同一位置的其他区域中创建单独的工作区。
 
 在“选择 Data Lake Storage 第二代”下方：
 
@@ -71,9 +74,17 @@ ms.locfileid: "107366056"
 * 将此文件下载到计算机： https://azuresynapsestorage.blob.core.windows.net/sampledata/NYCTaxiSmall/NYCTripSmall.parquet 
 * 在 Synapse Studio 中，导航到“数据中心”。 
 * 选择“已链接”。
-* 在 Azure Data Lake Storae Gen2 类别下，可看到一个名称类似于 myworkspace ( Primary - contosolake ) 的项 。
+* 在 Azure Data Lake Storage Gen2 类别下，可看到一个名称类似于 myworkspace ( Primary - contosolake ) 的项 。
 * 选择名为 users (Primary) 的容器。
 * 选择“上传”并选择已下载的 `NYCTripSmall.parquet` 文件。
+
+上传 parquet 文件后，可通过两个等效的 URI 获取它：
+* `https://contosolake.dfs.core.windows.net/users/NYCTripSmall.parquet` 
+* `abfss://users@contosolake.dfs.core.windows.net/NYCTripSmall.parquet`
+
+在本教程后面的示例中，请确保将 UI 中的 contosolake 替换为你为工作区选择的主存储帐户的名称。
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

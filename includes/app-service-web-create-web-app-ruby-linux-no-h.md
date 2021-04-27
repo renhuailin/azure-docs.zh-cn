@@ -7,13 +7,13 @@ ms.service: app-service
 ms.topic: include
 ms.date: 07/10/2019
 ms.author: cephalin
-ms.custom: include file
-ms.openlocfilehash: 2f88c8766ccf41b2491c7fa88e29853f73eed471
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 07ce4171e4adb6af87d0bb6f638dfa2c161be025
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102234323"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483500"
 ---
 在 `myAppServicePlan` 应用服务计划中创建一个 [Web 应用](../articles/app-service/overview.md#app-service-on-linux)。 
 

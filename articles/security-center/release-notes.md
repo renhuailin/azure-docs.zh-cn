@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 04/11/2021
+ms.date: 04/20/2021
 ms.author: memildin
-ms.openlocfilehash: 3e4dddf61656ea38bac406366bf993788fd34943
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 92138b0253d28c8bf2617ee7b17474f30ac5cafe
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303145"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751196"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -30,10 +30,12 @@ ms.locfileid: "107303145"
 4 月的更新包括：
 - [最近拉取的容器注册表映像现在将每周重新扫描（正式发布）](#recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability)
 - [使用 Azure Defender for Kubernetes 保护混合和多云 Kubernetes 部署（预览版）](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview)
+- [关于启用适用于 DNS 和资源管理器的 Azure Defender 的建议（预览版）](#recommendations-to-enable-azure-defender-for-dns-and-resource-manager-preview)
 - [与来宾配置相关的四个新建议（预览版）](#four-new-recommendations-related-to-guest-configuration-preview)
 - [CMK 建议移动到最佳做法安全控制](#cmk-recommendations-moved-to-best-practices-security-control)
 - [11 Azure Defender 警报已弃用](#11-azure-defender-alerts-deprecated)
 - [“应用系统更新”安全控制中的两个建议已弃用](#two-recommendations-from-apply-system-updates-security-control-were-deprecated)
+- [从 Azure Defender 仪表板中删除了适用于计算机上的 SQL 的 Azure Defender 磁贴](#azure-defender-for-sql-on-machine-tile-removed-from-azure-defender-dashboard)
 
 ### <a name="recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability"></a>最近拉取的容器注册表映像现在将每周重新扫描（正式发布）
 
@@ -65,6 +67,19 @@ Azure 安全中心、Azure Defender 和启用了 Azure Arc 的 Kubernetes 之间
 有关详细信息，[请参阅通过本地和多云 Kubernetes 群集使用 Azure Defender for Kubernetes](defender-for-kubernetes-azure-arc.md)。
 
 :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="有关为已启用 Azure Arc 的 Kubernetes 群集部署 Azure Defender 扩展的 Azure 安全中心建议。" lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
+
+
+### <a name="recommendations-to-enable-azure-defender-for-dns-and-resource-manager-preview"></a>关于启用适用于 DNS 和资源管理器的 Azure Defender 的建议（预览版）
+
+添加了两项新建议，以简化启用[适用于资源管理器的 Azure Defender](defender-for-resource-manager-introduction.md) 和[适用于 DNS 的 Azure Defender](defender-for-dns-introduction.md)：
+
+- **应启用适用于资源管理器的 Azure Defender** - 适用于资源管理器的 Defender 会自动监视组织中的资源管理操作。 Azure Defender 会检测威胁，并向你发出有关可疑活动的警报。
+- **应启用适用于 DNS 的 Azure Defender** - 适用于 DNS 的 Defender 通过持续监视所有来自 Azure 资源的 DNS 查询为云资源额外提供保护层。 Azure Defender 会在 DNS 层向你发出有关可疑活动的警报。
+
+启用 Azure Defender 计划会产生费用。 若要了解各区域的定价详细信息，请访问安全中心的定价页：https://aka.ms/pricing-security-center。
+
+> [!TIP]
+> 预览版建议不会显示资源运行不正常，并且在计算安全功能分数时不会包含这些建议。 请尽量修正这些建议，以便在预览期结束之后，借助这些建议提高安全功能分数。 如需详细了解如何响应这些建议，请参阅[修正 Azure 安全中心的建议](security-center-remediate-recommendations.md)。
 
 ### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>与来宾配置相关的四个新建议（预览版）
 
@@ -141,6 +156,10 @@ Azure 安全中心的安全控制是相关安全建议的逻辑组，反映了�
 建议检查连续导出和工作流自动化配置，以查看这些建议是否包括在其中。 此外，任何仪表板或其他可能使用它们的监视工具都应该相应地进行更新。
 
 有关这些建议的详细信息，请参阅[安全建议参考页面](recommendations-reference.md)。
+
+### <a name="azure-defender-for-sql-on-machine-tile-removed-from-azure-defender-dashboard"></a>从 Azure Defender 仪表板中删除了适用于计算机上的 SQL 的 Azure Defender 磁贴
+
+Azure Defender 仪表板的覆盖区包括对应于环境相关 Azure Defender 计划的磁贴。 由于报告受保护和未受保护资源数量时出现问题，我们决定在解决此问题前暂时删除适用于计算机上的 SQL 的 Azure Defender 的资源覆盖状态。
 
 
 ## <a name="march-2021"></a>2021 年 3 月
@@ -329,7 +348,7 @@ Microsoft Defender for Endpoint 是一种整体的、云交付的终结点安全
 支持现在已扩展为包括 Windows Server 2019 和 [Windows 虚拟桌面 (WVD)](../virtual-desktop/overview.md)。
 
 > [!NOTE]
-> 如果要在 Windows Server 2019 计算机上启用 Defender for Endpoint，请确保它满足[启用 Microsoft Defender for Endpoint 集成](security-center-wdatp.md#enabling-the-microsoft-defender-for-endpoint-integration)中所述的先决条件。
+> 如果要在 Windows Server 2019 计算机上启用 Defender for Endpoint，请确保它满足[启用 Microsoft Defender for Endpoint 集成](security-center-wdatp.md#enable-the-microsoft-defender-for-endpoint-integration)中所述的先决条件。
 
 ### <a name="direct-link-to-policy-from-recommendation-details-page"></a>直接链接到建议详细信息页中的策略
 
@@ -411,7 +430,7 @@ Azure 安全基准是由 Microsoft 创作的特定于 Azure 的一组准则，�
 
 若要了解详细信息，请参阅以下页面：
 
-- [详细了解 Azure 安全基准](../security/benchmarks/introduction.md)
+- [详细了解 Azure 安全基准](https://docs.microsoft.com/security/benchmark/azure/introduction)
 - [在监管合规仪表板中自定义标准集](update-regulatory-compliance-packages.md)
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga"></a>本地和多云计算机的漏洞评估已发布正式发布版 (GA)
@@ -526,7 +545,7 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 
 ### <a name="35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>添加了 35 条预览建议，以扩大 Azure 安全基准的覆盖范围
 
-Azure 安全基准是 Azure 安全中心的默认策略计划。 
+[Azure 安全基准](https://docs.microsoft.com/security/benchmark/azure/introduction)是 Azure 安全中心的默认策略计划。 
 
 为扩大此基准的覆盖范围，安全中心已添加下列 35 条预览建议。
 
@@ -544,7 +563,7 @@ Azure 安全基准是 Azure 安全中心的默认策略计划。
 
 相关链接：
 
-- [详细了解 Azure 安全基准](../security/benchmarks/introduction.md)
+- [详细了解 Azure 安全基准](https://docs.microsoft.com/security/benchmark/azure/introduction)
 - [详细了解 Azure Database for MariaDB](../mariadb/overview.md)
 - [详细了解 Azure Database for MySQL](../mysql/overview.md)
 - [详细了解 Azure Database for PostgreSQL](../postgresql/overview.md)
@@ -770,7 +789,7 @@ Azure 安全中心会监视所有已连接的资源并生成安全建议。 可�
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>添加了 29 条预览建议，以扩大 Azure 安全基准的覆盖范围
 
-Azure 安全基准是 Microsoft 制定的一组 Azure 专属准则，适合基于常见合规框架的安全性与合规性最佳做法。 [详细了解 Azure 安全基准](../security/benchmarks/introduction.md)。
+Azure 安全基准是 Microsoft 制定的一组 Azure 专属准则，适合基于常见合规框架的安全性与合规性最佳做法。 [详细了解 Azure 安全基准](https://docs.microsoft.com/security/benchmark/azure/introduction)。
 
 已在安全中心添加下列 29 条预览建议，以扩大此基准的覆盖范围。
 
@@ -787,7 +806,7 @@ Azure 安全基准是 Microsoft 制定的一组 Azure 专属准则，适合基�
 
 相关链接：
 
-- [详细了解 Azure 安全基准](../security/benchmarks/introduction.md)
+- [详细了解 Azure 安全基准](https://docs.microsoft.com/security/benchmark/azure/introduction)
 - [详细了解 Azure API 应用](../app-service/app-service-web-tutorial-rest-api.md)
 - [详细了解 Azure 函数应用](../azure-functions/functions-overview.md)
 - [详细了解 Azure Web 应用](../app-service/overview.md)

@@ -10,12 +10,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: de24f6c8436b4537519f8cc65931325dd7d5f8d9
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 9f0562d4471ac1129bf9bc7ecfee058cddac7c61
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313345"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533142"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device-preview"></a>快速入门：将第一个 IoT Edge 模块部署到 Windows 设备（预览版）
 
@@ -59,7 +59,7 @@ ms.locfileid: "107313345"
   * Windows Server 2019 内部版本 17763 或更高版本
 
 * 硬件要求
-  * 最小可用内存：2 GB
+  * 最小可用内存：1 GB
   * 最小可用磁盘空间：10 GB
 
 >[!NOTE]

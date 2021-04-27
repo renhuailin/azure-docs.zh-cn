@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 02/24/2021
 ms.author: ambapat
-ms.openlocfilehash: a7e709ba9a4de5ff77524a2d2b1b64a5933131a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 171e0c03dc6f246d0f56d11f793ca711b0082f49
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102489406"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588286"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>将 HSM 保护的密钥导入 Key Vault
 
@@ -33,7 +33,7 @@ ms.locfileid: "102489406"
 
 |供应商名称|供应商类型|支持的 HSM 模型|支持的 HSM 密钥传输方法|
 |---|---|---|---|
-|[nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|制造商，<br/>HSM 即服务|<ul><li>HSM 的 nShield 系列</li><li>nShield 即服务</ul>|方法 1：[nCipher BYOK](hsm-protected-keys-ncipher.md)（已弃用）<br/>方法 2：[使用新的 BYOK 方法](hsm-protected-keys-byok.md)（推荐）|
+|[nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|制造商，<br/>HSM 即服务|<ul><li>HSM 的 nShield 系列</li><li>nShield 即服务</ul>|方法 1：[nCipher BYOK](hsm-protected-keys-ncipher.md)（已弃用）。 <strong>2021 年 6 月 30 日</strong>之后将不再支持此方法<br/>方法 2：[使用新的 BYOK 方法](hsm-protected-keys-byok.md)（推荐）|
 |Thales|制造商|<ul><li>固件版本为 7.3 或更高版本的 Luna HSM 7 系列</li></ul>| [使用新的 BYOK 方法](hsm-protected-keys-byok.md)|
 |Fortanix|制造商，<br/>HSM 即服务|<ul><li>自防御密钥管理服务 (SDKMS)</li><li>Equinix SmartKey</li></ul>|[使用新的 BYOK 方法](hsm-protected-keys-byok.md)|
 |Marvell|制造商|所有具有以下固件版本的 LiquidSecurity HSM<ul><li>固件版本 2.0.4 或更高版本</li><li>固件版本 3.2 或更高版本</li></ul>|[使用新的 BYOK 方法](hsm-protected-keys-byok.md)|

@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7eadc9121c54b636fa8b42579284d4018043e1c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: efdd9666c8876ddaf12b9555fa66beb62c56e93e
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91355119"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107740047"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>排查 Azure 认知搜索中的常见索引器问题
 
@@ -68,6 +68,86 @@ Azure Functions（可用作[自定义 Web API 技能](cognitive-search-custom-sk
 ### <a name="cosmosdb-indexing-isnt-enabled"></a>未启用 CosmosDB“索引编制”
 
 Azure 认知搜索对 Cosmos DB 索引存在隐式依赖。 如果在 Cosmos DB 中关闭自动索引，Azure 认知搜索会返回成功状态，但无法索引容器内容。 有关如何查看设置和启用索引功能的说明，请参阅[管理 Azure Cosmos DB 中的索引编制](../cosmos-db/how-to-manage-indexing-policy.md#use-the-azure-portal)。
+
+### <a name="sharepoint-online-conditional-access-policies"></a>SharePoint Online 条件访问策略
+
+创建 SharePoint Online 索引器时，需要完成一个必需的步骤，即在提供设备代码后登录到 AAD 应用。 如果你收到一条消息，指明“登录已成功，但管理员要求请求访问的设备必须由以下人员管理”，说明索引器可能由于[条件访问](https://review.docs.microsoft.com/azure/active-directory/conditional-access/overview)策略而被阻止访问 SharePoint Online 文档库。
+
+若要更新策略以允许索引器访问文档库，请执行以下步骤：
+
+1. 打开 Azure 门户并搜索“Azure AD 条件访问”，然后在左侧菜单中选择“策略”。 如果你没有查看此页的权限，则需要查找有访问权限或可获取访问权限的用户。
+
+1. 确定阻止 SharePoint Online 索引器访问文档库的具体策略。 可能会阻止索引器的策略包括用于在“用户和组”部分的索引器创建步骤中进行身份验证的用户帐户。 此策略还可能具有以下条件：
+    * 限制 Windows 平台。
+    * 限制“移动应用和桌面客户端”。
+    * 将“设备状态”配置为“是”。
+
+1. 确认存在阻止索引器的策略后，接下来需要为索引器创建豁免。 检索搜索服务 IP 地址。
+
+    1. 获取搜索服务的完全限定的域名 (FQDN)。 它将如下所示：`<search-service-name>.search.windows.net`。 可以通过在 Azure 门户上查找搜索服务来查找 FQDN。
+
+   ![获取服务 FQDN](media\search-indexer-howto-secure-access\search-service-portal.png "获取服务 FQDN")
+
+    通过对 FQDN 执行 `nslookup`（或 `ping`），可以获取搜索服务的 IP 地址。 在下面的示例中，将“150.0.0.1”添加到 Azure 存储防火墙的入站规则中。 更新防火墙设置之后，可能需要等待 15 分钟，之后搜索服务索引器才能访问 Azure 存储帐户。
+
+    ```azurepowershell
+
+    nslookup contoso.search.windows.net
+    Server:  server.example.org
+    Address:  10.50.10.50
+    
+    Non-authoritative answer:
+    Name:    <name>
+    Address:  150.0.0.1
+    Aliases:  contoso.search.windows.net
+    ```
+
+1. 获取你所在区域的索引器执行环境的 IP 地址范围。
+
+    额外的 IP 地址用于来自索引器的[多租户执行环境](search-indexer-securing-resources.md#indexer-execution-environment)的请求。 可以从服务标记获取此 IP 地址范围。
+
+    `AzureCognitiveSearch` 服务标记的 IP 地址范围可通过[发现 API（预览版）](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview)或[可下载的 JSON 文件](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)获取。
+
+    对于本演练，假设搜索服务是 Azure 公有云，应下载 [Azure 公共 JSON 文件](https://www.microsoft.com/download/details.aspx?id=56519)。
+
+   ![下载 JSON 文件](media\search-indexer-troubleshooting\service-tag.png "下载 JSON 文件")
+
+    在 JSON 文件中，假设搜索服务位于美国中西部，多租户索引器执行环境的 IP 地址列表如下。
+
+    ```json
+        {
+          "name": "AzureCognitiveSearch.WestCentralUS",
+          "id": "AzureCognitiveSearch.WestCentralUS",
+          "properties": {
+            "changeNumber": 1,
+            "region": "westcentralus",
+            "platform": "Azure",
+            "systemService": "AzureCognitiveSearch",
+            "addressPrefixes": [
+              "52.150.139.0/26",
+              "52.253.133.74/32"
+            ]
+          }
+        }
+    ```
+
+1. 返回到 Azure 门户的“条件访问”页，从左侧菜单中选择“命名位置”，然后选择“+ IP 范围位置”。 为新的命名位置提供一个名称，并为你在最后两个步骤中收集的搜索服务和索引器执行环境添加 IP 范围。
+    * 对于搜索服务 IP 地址，你可能需要将“/32”添加到 IP 地址的末尾，因为它只接受有效的 IP 范围。
+    * 请注意，对于索引器执行环境 IP 范围，只需添加搜索服务所在区域的 IP 范围。
+
+1. 从策略中排除新的命名位置。 
+    1. 在左侧菜单上选择“策略”。 
+    1. 选择阻止索引器的策略。
+    1. 选择“条件”。
+    1. 选择“位置”。
+    1. 选择“排除”，然后添加新的命名位置。
+    1. 保存更改。
+
+1. 请等待几分钟，以使策略更新并强制执行新的策略规则。
+
+1. 再次尝试创建索引器
+    1. 为你创建的数据源对象发送更新请求。
+    1. 重新发送索引器创建请求。 使用新代码登录，并在成功登录后发送另一个索引器创建请求。
 
 ## <a name="document-processing-errors"></a>文档处理错误
 

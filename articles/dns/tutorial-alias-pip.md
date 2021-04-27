@@ -5,18 +5,18 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
-ms.date: 9/25/2018
+ms.date: 04/19/2021
 ms.author: rohink
-ms.openlocfilehash: d3017d09e94040d16950598dad360fe32930c16b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28e37ad0b404b5275a224c8debab5c11c07948b4
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80985433"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738803"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>教程：配置表示 Azure 公共 IP 地址的别名记录 
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建网络基础结构。
@@ -27,7 +27,7 @@ ms.locfileid: "80985433"
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 必须具有可用于在 Azure DNS 中托管以供测试的域名。 必须能够完全控制此域。 完全控制包括能够为域设置名称服务器 (NS) 记录。
 
 有关在 Azure DNS 中托管域的说明，请参阅[教程：在 Azure DNS 中托管域](dns-delegate-domain-azure-dns.md)。
@@ -36,8 +36,8 @@ ms.locfileid: "80985433"
 
 ## <a name="create-the-network-infrastructure"></a>创建网络基础结构
 首先，创建要放置 Web 服务器的虚拟网络和子网。
-1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
-2. 在门户的左上角，选择“创建资源”。  在搜索框中输入“资源组”，然后创建名为 **RG-DNS-Alias-pip** 的资源组  。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在 Azure 门户的左窗格中，选择“创建资源”。 在搜索框中输入“资源组”，然后创建名为 **RG-DNS-Alias-pip** 的资源组  。
 3. 选择“创建资源” > “网络” > “虚拟网络”。   
 4. 创建名为“VNet-Server”的虚拟网络。  将其放在 **RG-DNS-Alias-pip** 资源组中，然后将子网命名为 **SN-Web**。
 
@@ -45,10 +45,10 @@ ms.locfileid: "80985433"
 1. 选择“创建资源” > “Windows Server 2016 VM”   。
 2. 输入名称“Web-01”  ，然后将 VM 放在“RG-DNS-Alias-TM”  资源组中。 输入用户名和密码，然后选择“确定”。 
 3. 对于“大小”，请选择具有 8 GB RAM 的 SKU  。
-4. 对于“设置”  ，请选择“VNet-Servers”  虚拟网络和“SN-Web”  子网。 对于公共入站端口，请选择“HTTP” > “HTTPS” > “RDP (3389)”，然后选择“确定”     。
+4. 对于“设置”  ，请选择“VNet-Servers”  虚拟网络和“SN-Web”  子网。 对于公共入站端口，请选择“HTTP (80)” > “HTTPS (443)” > “RDP (3389)”，然后选择“确定”   。
 5. 在“摘要”  页中，选择“创建”  。
 
-此过程需要几分钟才能完成。 虚拟机会有一个附加的 NIC，该 NIC 将有一个名为 Web-01-ip 的基本动态公共 IP。 每次重启虚拟机时，此公共 IP 都会更改。
+此部署需要几分钟时间才能完成。 虚拟机会有一个附加的 NIC，其中包含一个名为 Web-01-ip 的基本动态公共 IP。 每次重启虚拟机时，此公共 IP 都会更改。
 
 ### <a name="install-iis"></a>安装 IIS
 

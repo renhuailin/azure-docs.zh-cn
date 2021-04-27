@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: iangithinji
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: d81ad34c81a451f1faecb6cb33c0cc427567f122
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 202ccf6f540ec78c2bb30e0f0a0173609bba578c
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379598"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751447"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Azure AD 中的单一登录选项
 
@@ -86,13 +86,12 @@ ms.locfileid: "107379598"
 
 基于密码的单一登录使用应用程序提供的现有身份验证过程。 为应用程序启用密码单一登录时，Azure AD 会收集并安全地存储应用程序的用户名和密码。 用户凭据以加密状态存储在目录中。
 
+此外，管理员可以为基于密码的 SSO 启用 Azure AD 条件访问策略或多重身份验证。
+
 在以下情况下选择基于密码的单一登录：
 
 - 应用程序不支持 SAML 单一登录协议。
 - 应用程序使用用户名和密码而非访问令牌和标头进行身份验证。
-
->[!NOTE]
->不能将条件访问策略或多重身份验证应用于基于密码的 SSO。
 
 对于提供了基于 HTML 的登录页面的任何基于云的应用程序都支持基于密码的单一登录。 用户可以使用以下任一浏览器：
 

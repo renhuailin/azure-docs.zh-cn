@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 9f368a4aebc4d5de38ebbab800241366650633e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 92553e9d598823ee1b812a4f07480dec380b2490
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97936577"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739415"
 ---
 # <a name="tutorial-configure-zscaler-for-automatic-user-provisioning"></a>教程：为 Zscaler 配置自动用户预配
 
@@ -76,6 +76,10 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="configuring-automatic-user-provisioning-to-zscaler"></a>配置 Zscaler 的自动用户预配
 
 本部分逐步介绍了如何配置 Azure AD 预配服务以基于 Azure AD 中的用户和/或组分配在 Zscaler 中创建、更新以及禁用用户和/或组。
+
+
+> [!NOTE]
+> 打开[支持票证](https://help.zscaler.com/)，在 Zscaler 上创建域。
 
 > [!TIP]
 > 还可选择按照 [Zscaler 单一登录教程](zscaler-tutorial.md)中提供的说明为 Zscaler 启用基于 SAML 的单一登录。 可以独立于自动用户预配配置单一登录，尽管这两个功能互相补充。
