@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 4/8/2021
-ms.openlocfilehash: 1f8373130fbead2204dd0ac2515595d68dd3b2e8
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 9f315a0446c1fb712558c1031df56760e6d5b7e7
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107491325"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123422"
 ---
 # <a name="authentication-failed"></a>验证失败
 
@@ -31,7 +31,7 @@ Azure Digital Twins Explorer 应用程序使用 [DefaultAzureCredential](/dotnet
 
 如错误文本所述，如果你未提供由 `DefaultAzureCredential` 选择的本地凭据，则可能会出现此错误。
 
-若要详细了解如何在 Azure Digital Twins Explorer 中使用本地凭据，请参阅 Azure 数字孪生的“快速入门：浏览示例方案”中的[设置本地 Azure 凭据](quickstart-adt-explorer.md#set-up-local-azure-credentials)部分。
+若要详细了解如何在 Azure Digital Twins Explorer 中使用本地凭据，请参阅 Azure 数字孪生的“快速入门：浏览示例方案”中的[设置本地 Azure 凭据](./quickstart-azure-digital-twins-explorer.md#set-up-local-azure-credentials)部分。
 
 ### <a name="cause-2"></a>原因 #2
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 6956b8ba2dcad0e67caac797a47e5308e649d042
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: f2ce885de4c3745f48cbc9f9df69a1d9e868f9bb
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516007"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146088"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gigya"></a>教程：Azure Active Directory 与 Gigya 集成
 
@@ -170,8 +170,8 @@ ms.locfileid: "107516007"
 
 * 直接转到 Gigya 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Gigya 磁贴时，会重定向到 Gigya 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Gigya 磁贴时，会重定向到 Gigya 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Gigya 后，即可强制实施会话控制，实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 Gigya 后，即可强制实施会话控制，实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

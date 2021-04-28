@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 2ecbd207c4b1946a69b01f43ec2bc77d29b1a8c9
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f20099943d3cfa3dd4afc161c26e5582e467ca8d
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106072946"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107590064"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -50,7 +50,7 @@ npm install @azure/communication-calling --save
 
 `createCallAgent` 方法使用 `CommunicationTokenCredential` 作为参数。 它接受[用户访问令牌](../../access-tokens.md)。
 
-创建 `callAgent` 实例后，可以在 `CallClient` 实例上使用 `getDeviceManager` 方法来访问 `deviceManager`。
+可在 `CallClient` 实例上使用 `getDeviceManager` 方法来访问 `deviceManager`。
 
 ```js
 // Set the logger's log level
@@ -109,9 +109,10 @@ const groupCall = callAgent.startCall([userCallee, pstnCallee], {alternateCaller
 > [!IMPORTANT]
 > 当前最多只能有一个传出本地视频流。
 
-若要发起视频通话，必须使用 `deviceManager` 中的 `getCameras()` 方法指定相机。
+若要发起视频通话，必须使用 `deviceManager` 中的 `getCameras()` 方法枚举本地相机。
 
 选择相机后，请使用它来构造 `LocalVideoStream` 实例。 在 `videoOptions` 中将该实例作为 `localVideoStream` 数组中的项传递到 `startCall` 方法。
+
 
 ```js
 const deviceManager = await callClient.getDeviceManager();
@@ -146,7 +147,7 @@ const call = callAgent.join(context);
 > [!NOTE]
 > 此 API 以预览状态提供给开发者，可能根据我们收到的反馈更改。 请勿在生产环境中使用此 API。 若要使用此 API，请使用 ACS 通话 Web SDK 的 beta 版本
 
-若要加入 Teams 会议，请使用 `join` 方法并传递会议链接或坐标。
+若要加入 Teams 会议，请使用 `join` 方法并传递会议链接或会议坐标。
 
 使用会议链接加入：
 
@@ -173,9 +174,13 @@ const call = callAgent.join(locator);
 
 ```js
 const incomingCallHander = async (args: { incomingCall: IncomingCall }) => {
-
-    //Get incoming call ID
+    const incomingCall = args.incomingCall; 
+    // Get incoming call ID
     var incomingCallId = incomingCall.id
+    // Get information about this Call. This API is provided as a preview for developers
+    // and may change based on feedback that we receive. Do not use this API in a production environment.
+    // To use this api please use 'beta' release of ACS Calling Web SDK
+    var callInfo = incomingCall.info;
 
     // Get information about caller
     var callerInfo = incomingCall.callerInfo
@@ -210,6 +215,12 @@ callAgentInstance.on('incomingCall', incomingCallHander);
    ```js
     const callId: string = call.id;
    ```
+获取通话信息：
+> [!NOTE]
+> 此 API 以预览状态提供给开发者，可能根据我们收到的反馈更改。 请勿在生产环境中使用此 API。 若要使用此 API，请使用 ACS 通话 Web SDK 的 beta 版本
+   ```js
+   const callInfo = call.info;
+   ```
 
 通过检查“call”实例上的 `remoteParticipants` 集合了解通话中的其他参与者：
 
@@ -240,6 +251,7 @@ callAgentInstance.on('incomingCall', incomingCallHander);
   - `Connected`：指示通话已连接。
   - `LocalHold`：指示通话被本地参与者暂停。 本地终结点与远程参与者之间没有媒体流动。
   - `RemoteHold`：指示通话被远程参与者暂停。 本地终结点与远程参与者之间没有媒体流动。
+  - `InLobby`：指示用户位于会议厅中。
   - `Disconnecting`：在通话进入 `Disconnected` 状态之前的过渡状态。
   - `Disconnected`：最终通话状态。 如果网络连接断开，则两分钟后状态将变为 `Disconnected`。
 
@@ -276,17 +288,8 @@ callAgentInstance.on('incomingCall', incomingCallHander);
    const localVideoStreams = call.localVideoStreams;
    ```
 
-### <a name="check-a-callended-event"></a>检查 callEnded 事件
 
-通话结束时，`call` 实例将发出 `callEnded` 事件。 若要侦听此事件，请使用以下代码进行订阅：
 
-```js
-const callEndHander = async (args: { callEndReason: CallEndReason }) => {
-    console.log(args.callEndReason)
-};
-
-call.on('callEnded', callEndHander);
-```
 
 ### <a name="mute-and-unmute"></a>静音和取消静音
 
@@ -304,7 +307,7 @@ await call.unmute();
 
 ### <a name="start-and-stop-sending-local-video"></a>开始和停止发送本地视频
 
-若要启动视频，必须在 `deviceManager` 对象上使用 `getCameras` 方法来指定相机。 然后，通过将所需相机作为参数传递给 `startVideo` 方法，创建一个新的 `LocalVideoStream` 实例：
+若要开始发送视频，必须在 `deviceManager` 对象上使用 `getCameras` 方法来枚举相机。 接下来使用所需相机创建一个新的 `LocalVideoStream` 实例，然后将 `LocalVideoStream` 对象传递给 `startVideo` 方法：
 
 ```js
 const deviceManager = await callClient.getDeviceManager();
@@ -377,6 +380,7 @@ call.remoteParticipants; // [remoteParticipant, remoteParticipant....]
   - `Connected`：参与者已连接到通话。
   - `Hold`：参与者已暂停通话。
   - `EarlyMedia`：在参与者连接到通话之前播放的通知。
+  - `InLobby`：指示远程参与者位于会议厅中。
   - `Disconnected`：最终状态。 参与者已断开通话连接。 如果远程参与者断开了其网络连接，则两分钟后其状态将变为 `Disconnected`。
 
 - `callEndReason`：若要了解参与者退出通话的原因，请检查 `callEndReason` 属性：
@@ -412,7 +416,7 @@ call.remoteParticipants; // [remoteParticipant, remoteParticipant....]
 
 ### <a name="add-a-participant-to-a-call"></a>向通话添加参与者
 
-若要向通话添加参与者（用户或电话号码），可以使用 `addParticipant`。 提供 `Identifier` 类型之一。 它将返回 `remoteParticipant` 实例。
+若要向通话添加参与者（用户或电话号码），可以使用 `addParticipant`。 提供 `Identifier` 类型之一。 它将同步返回 `remoteParticipant` 实例。 当参与者成功添加到通话中时，通话中将引发 `remoteParticipantsUpdated` 事件。
 
 ```js
 const userIdentifier = { communicationUserId: <ACS_USER_ID> };
@@ -441,7 +445,7 @@ const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStr
 const streamType: MediaStreamType = remoteVideoStream.mediaStreamType;
 ```
 
-若要呈现 `RemoteVideoStream`，你必须订阅 `isAvailableChanged` 事件。 如果该 `isAvailable` 属性更改为 `true`，则远程参与者正在发送流。 发生该情况后，请创建一个新的 `VideoStreamRenderer` 实例，然后使用异步 `createView` 方法创建一个新的 `VideoStreamRendererView` 实例。  然后，可以将 `view.target` 附加到任何 UI 元素。
+若要呈现 `RemoteVideoStream`，你必须订阅它的 `isAvailableChanged` 事件。 如果该 `isAvailable` 属性更改为 `true`，则远程参与者正在发送流。 发生该情况后，请创建一个新的 `VideoStreamRenderer` 实例，然后使用异步 `createView` 方法创建一个新的 `VideoStreamRendererView` 实例。  然后，可以将 `view.target` 附加到任何 UI 元素。
 
 每当远程流的可用性发生变化时，可以选择销毁整个 `VideoStreamRenderer`、特定的 `VideoStreamRendererView`，或将其保留，但这将导致显示空白的视频帧。
 
@@ -488,7 +492,6 @@ function subscribeToRemoteVideoStream(remoteVideoStream: RemoteVideoStream) {
   ```
 
 ### <a name="videostreamrenderer-methods-and-properties"></a>VideoStreamRenderer 方法和属性
-
 创建一个 `VideoStreamRendererView` 实例，该实例可以附加到应用程序 UI 中来呈现远程视频流；使用异步 `createView()` 方法，该方法在流准备好呈现时进行解析，并返回一个具有 `target` 属性（表示 `video` 元素）的对象，该对象可以附加到 DOM 树中的任何位置
 
   ```js
@@ -523,7 +526,7 @@ view.updateScalingMode('Crop')
 
 ## <a name="device-management"></a>设备管理
 
-在 `deviceManager` 中，你可以指定可在通话中传输音频和视频流的本地设备。 它还帮助你请求权限，以使用原生浏览器 API 访问其他用户的麦克风和相机。
+在 `deviceManager` 中，你可以枚举可在通话中传输音频和视频流的本地设备。 还可使用它来请求访问本地设备的麦克风和相机的权限。
 
 可以调用 `callClient.getDeviceManager()` 方法来访问 `deviceManager`：
 
@@ -533,7 +536,7 @@ const deviceManager = await callClient.getDeviceManager();
 
 ### <a name="get-local-devices"></a>获取本地设备
 
-若要访问本地设备，可在 `deviceManager` 上使用枚举方法。
+若要访问本地设备，可在 `deviceManager` 上使用枚举方法。 枚举是异步操作
 
 ```js
 //  Get a list of available video devices for use.

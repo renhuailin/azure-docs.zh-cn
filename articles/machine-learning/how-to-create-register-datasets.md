@@ -5,19 +5,19 @@ description: 了解如何创建 Azure 机器学习数据集以访问机器学习
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, contperf-fy21q1, data4ml
+ms.topic: how-to
+ms.custom: contperf-fy21q1, data4ml
 ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 592c128a05b66b268c954ccd32b06863df5b25d1
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 0125f33bb01d177442bb1da8a1f45e172659c7c2
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107029108"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107889837"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集
 
@@ -190,9 +190,10 @@ titanic_ds.take(3).to_pandas_dataframe()
 如果不需要进行任何数据处理或浏览，请参阅[使用数据集进行训练](how-to-train-with-datasets.md)，了解如何在训练脚本中使用数据集，以便提交 ML 试验。
 
 ### <a name="filter-datasets-preview"></a>筛选数据集（预览版）
+
 筛选功能取决于你拥有的数据集的类型。 
 > [!IMPORTANT]
-> 使用公共预览版方法筛选数据集，[`filter()`](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) 是一个[试验性](/python/api/overview/azure/ml/#stable-vs-experimental)预览功能，可能会随时更改。 
+> 使用预览方法筛选数据集，[`filter()`](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) 是一个[试验性](/python/api/overview/azure/ml/#stable-vs-experimental)预览功能，可能会随时更改。 
 > 
 对于 TabularDatasets，可以使用 [keep_columns()](/python/api/azureml-core/azureml.data.tabulardataset#keep-columns-columns--validate-false-) 和 [drop_columns()](/python/api/azureml-core/azureml.data.tabulardataset#drop-columns-columns-) 方法保留或删除列。
 
@@ -229,6 +230,59 @@ labeled_dataset = labeled_dataset.filter(labeled_dataset['label'] == 'dog')
 # Dataset that only contains records where the label and isCrowd columns are True and where the file size is larger than 100000
 labeled_dataset = labeled_dataset.filter((labeled_dataset['label']['isCrowd'] == True) & (labeled_dataset.file_metadata['Size'] > 100000))
 ```
+
+### <a name="partition-data-preview"></a>对数据进行分区（预览）
+
+可以通过在创建 TabularDataset 或 FileDataset 时包含 `partitions_format` 参数来对数据集进行分区。 
+
+> [!IMPORTANT]
+> 创建数据集分区是一个[试验性](/python/api/overview/azure/ml/#stable-vs-experimental)预览功能，可能会随时更改。 
+
+对数据集进行分区时，每个文件路径的分区信息都将根据指定的格式提取到列中。 格式应从文件路径结束之前的第一个分区键位置开始。 
+
+例如，给定路径 `../Accounts/2019/01/01/data.jsonl`，其中分区是按部门名称和时间划分的；`partition_format='/{Department}/{PartitionDate:yyyy/MM/dd}/data.jsonl'` 创建值为“Accounts”的字符串列“Department”和值为 `2019-01-01` 的日期/时间列“PartitionDate”。
+
+如果数据已有现有分区，并希望保留该格式，请在 [`from_files()`](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory#from-files-path--validate-true--partition-format-none-) 方法中包含 `partitioned_format` 参数以创建 FileDataset。 
+
+若要创建保留现有分区的 TabularDataset，请在 [from_parquet_files()](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) 或 [from_delimited_files()](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false--empty-as-string-false--encoding--utf8--) 方法中包含 `partitioned_format` 参数。
+
+下面的示例，
+* 从分区文件创建 FileDataset。
+* 获取分区键
+* 创建新的已编制索引的 FileDataset
+ 
+```Python
+
+file_dataset = Dataset.File.from_files(data_paths, partition_format = '{userid}/*.wav')
+ds.register(name='speech_dataset')
+
+# access partition_keys
+indexes = file_dataset.partition_keys # ['userid']
+
+# get all partition key value pairs should return [{'userid': 'user1'}, {'userid': 'user2'}]
+partitions = file_dataset.get_partition_key_values()
+
+
+partitions = file_dataset.get_partition_key_values(['userid'])
+# return [{'userid': 'user1'}, {'userid': 'user2'}]
+
+# filter API, this will only download data from user1/ folder
+new_file_dataset = file_dataset.filter(ds['userid'] == 'user1').download()
+```
+
+还可以使用 [partitions_by()](/python/api/azureml-core/azureml.data.tabulardataset#partition-by-partition-keys--target--name-none--show-progress-true--partition-as-file-dataset-false-) 方法为 TabularDatasets 创建新的分区结构。
+
+```Python
+
+ dataset = Dataset.get_by_name('test') # indexed by country, state, partition_date
+
+# call partition_by locally
+new_dataset = ds.partition_by(name="repartitioned_ds", partition_keys=['country'], target=DataPath(datastore, "repartition"))
+partition_keys = new_dataset.partition_keys # ['country']
+```
+
+>[!IMPORTANT]
+> TabularDataset 分区也可以应用到 Azure 机器学习管道中，作为许多模型应用程序中 ParallelRunStep 的输入。 请参阅[多个模型加速器文档](https://github.com/microsoft/solution-accelerator-many-models/blob/master/01_Data_Preparation.ipynb)中的示例。
 
 ## <a name="explore-data"></a>浏览数据
 

@@ -1,22 +1,21 @@
 ---
-title: include 文件
+title: 包含文件
 description: include 文件
 services: storage
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 09/16/2020
+ms.date: 04/26/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 06db7bcb5698f152dd5062762fdb3d59ae326e22
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 04ded4340eef0bfe5bc91ee2e3f2552975df2e05
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102603229"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108065594"
 ---
 Azure 文件共享的 SMB 多通道当前具有以下限制：
-- 只能与本地冗余 FileStorage 帐户一起使用。
 - 仅支持 Windows 客户端。 
 - 最大通道数为四。
 - 不支持 SMB Direct。

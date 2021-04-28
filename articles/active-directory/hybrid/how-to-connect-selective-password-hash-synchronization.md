@@ -12,12 +12,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a73f4eba9581965470b95111e6dda1d8014e4cb
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 02bd0f40a54bcd3f36e28fac2fa3114f87f77ebf
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167492"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146322"
 ---
 # <a name="selective-password-hash-synchronization-configuration-for-azure-ad-connect"></a>为 Azure AD Connect 配置选择性密码哈希同步
 
@@ -51,7 +51,7 @@ ms.locfileid: "106167492"
 此属性可以使用以下方式设置：
 
 - 使用 Active Directory 用户和计算机 UI
-- 使用 `Set-ADUser` PowerShell cmdlet。  有关详细信息，请参阅 [Set-ADUser](https://docs.microsoft.com/powershell/module/addsadministration/set-aduser)。
+- 使用 `Set-ADUser` PowerShell cmdlet。  有关详细信息，请参阅 [Set-ADUser](/powershell/module/activedirectory/set-aduser)。
 
  
 

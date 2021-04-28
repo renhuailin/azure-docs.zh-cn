@@ -9,18 +9,16 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, responsible-ml
-ms.openlocfilehash: fda1bc2ef0a112a8a32ba7c4caebf29028c8cdd7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.custom: devx-track-python, responsible-ml
+ms.openlocfilehash: 6afe193cb29b313f45335e46aa9fcaec2e8bf240
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98222745"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107889045"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>使用可解释性包通过 Python 解释 ML 模型和预测（预览版）
-
-
 
 本操作指南介绍如何使用 Azure 机器学习 Python SDK 的可解释性包来执行以下任务：
 
@@ -36,8 +34,9 @@ ms.locfileid: "98222745"
 * 将评分解释器与模型一起部署，以便在推理过程中观察解释。
 
 
-
 若要详细了解受支持的可解释性技术和机器学习模型，请参阅 [Azure 机器学习中的模型可解释性](how-to-machine-learning-interpretability.md)和[笔记本示例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)。
+
+有关如何为使用自动机器学习进行训练的模型启用可解释性的指导，请参阅[可解释性：自动机器学习模型的模型说明（预览）](how-to-machine-learning-interpretability-automl.md)。 
 
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>在个人计算机上生成特征重要性值 
 以下示例演示如何在不使用 Azure 服务的情况下在个人计算机上使用可解释性包。
@@ -296,7 +295,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 ## <a name="visualizations"></a>可视化效果
 
-将解释下载到本地 Jupyter Notebook 后，可以使用可视化效果仪表板来了解和解释模型。 若要在 Jupyter Notebook 中加载可视化效果仪表板小组件，请使用以下代码：
+将说明下载到本地 Jupyter Notebook 后，可以使用说明仪表板中的可视化效果来了解和解释模型。 若要在 Jupyter Notebook 中加载说明仪表板小组件，请使用以下代码：
 
 ```python
 from interpret_community.widget import ExplanationDashboard
@@ -304,7 +303,7 @@ from interpret_community.widget import ExplanationDashboard
 ExplanationDashboard(global_explanation, model, datasetX=x_test)
 ```
 
-可视化效果同时支持有关工程化特征和原始特征的解释。 原始解释基于原始数据集的特征，工程化解释基于应用了特征工程的数据集的特征。
+可视化效果同时支持有关工程化特征和原始特征的说明。 原始解释基于原始数据集的特征，工程化解释基于应用了特征工程的数据集的特征。
 
 尝试解释与原始数据集相关的模型时，建议使用原始解释，因为每个特征重要性将对应于原始数据集中的一个列。 工程化解释可能有用的一个场景是，从分类特征观察各个类别的影响。 如果对某个分类特征应用了独热编码，则生成的工程化解释会为每个类别包含一个不同的重要性值，为每个独热工程化特征包含一个重要性值。 这在缩小范围以确定数据集的哪一部分提供的信息对模型最有用时很有用。
 
@@ -353,11 +352,11 @@ ExplanationDashboard(global_explanation, model, datasetX=x_test)
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Azure 机器学习工作室中的可视化效果
 
-如果完成了[远程可解释性](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs)步骤（将生成的解释上传到 Azure 机器学习运行历史记录），则可在 [Azure 机器学习工作室](https://ml.azure.com)中查看可视化仪表板。 此仪表板是前面所述的可视化仪表板的简化版本。 What-if 数据点生成和 ICE 绘图已禁用，因为 Azure 机器学习工作室中没有可以执行实时计算的活动计算。
+如果完成了[远程可解释性](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs)步骤（将生成的说明上传到 Azure 机器学习运行历史记录），则可在 [Azure 机器学习工作室](https://ml.azure.com)中查看说明仪表板上的可视化效果。 此仪表板是在 Jupyter 笔记本中生成的仪表板小组件的简洁版本。 What-if 数据点生成和 ICE 绘图已禁用，因为 Azure 机器学习工作室中没有可以执行实时计算的活动计算。
 
 如果数据集、全局和本地解释可用，则数据会填充所有选项卡。 如果只有全局解释可用，则会禁用“单个特征重要性”选项卡。
 
-通过以下途径之一访问 Azure 机器学习工作室中的可视化仪表板：
+按照以下路径之一来访问 Azure 机器学习工作室中的“说明”仪表板：
 
 * “试验”窗格（预览）
   1. 在左侧窗格中选择“试验”，以查看在 Azure 机器学习中运行的试验列表。
@@ -368,7 +367,7 @@ ExplanationDashboard(global_explanation, model, datasetX=x_test)
 
 * “模型”窗格
   1. 如果已遵循[使用 Azure 机器学习部署模型](./how-to-deploy-and-where.md)中的步骤注册了原始模型，则可以在左侧窗格中选择“模型”来查看它。
-  1. 选择一个模型，然后选择“解释”选项卡来查看解释可视化仪表板。
+  1. 选择一个模型，然后选择“说明”选项卡来查看说明仪表板。
 
 ## <a name="interpretability-at-inference-time"></a>推理时的可解释性
 

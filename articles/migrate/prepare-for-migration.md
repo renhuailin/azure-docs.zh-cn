@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: d8f9d4e0b002348f286f45c6b45c96531c5d6530
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b8c9610ca7043ed6b8baa86e35ea76c74ed75bba
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558221"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107883987"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>准备好要迁移到 Azure 的本地计算机
 
@@ -84,7 +84,7 @@ ms.locfileid: "105558221"
 
 **Action** | **VMware（无代理迁移）** | **VMware （基于代理）/物理计算机** | **Hyper-V 上的 Windows** 
 --- | --- | --- | ---
-**将 SAN 策略配置为“全部联机”**<br/><br/> 此操作确保 Azure VM 中的 Windows 卷使用的驱动器号分配与本地 VM 相同。 | 运行 Windows Server 2008 R2 或更高版本的虚拟机会自动设置。<br/><br/> 早期版本的操作系统需要手动配置。 | 大多数情况下会自动设置。 | 手动配置。
+**将 SAN 策略配置为“全部联机”**<br/><br/> | 运行 Windows Server 2008 R2 或更高版本的虚拟机会自动设置。<br/><br/> 早期版本的操作系统需要手动配置。 | 大多数情况下会自动设置。 | 手动配置。
 **安装 Hyper-V 来宾集成** | 运行 Windows Server 2003 的计算机需要[手动安装](prepare-windows-server-2003-migration.md#install-on-vmware-vms)。 | 运行 Windows Server 2003 的计算机需要[手动安装](prepare-windows-server-2003-migration.md#install-on-vmware-vms)。 | 运行 Windows Server 2003 的计算机需要[手动安装](prepare-windows-server-2003-migration.md#install-on-hyper-v-vms)。
 **启用 Azure 串行控制台**。<br/><br/>在 Azure VM 上[启用控制台](/troubleshoot/azure/virtual-machines/serial-console-windows)，来帮助进行故障排除。 无需重新启动 VM。 Azure VM 将使用磁盘映像启动。 启动磁盘映像相当于重新启动新 VM。 | 需要手动启用 | 需要手动启用 | 需要手动启用
 **在迁移后进行连接**<br/><br/> 若要在迁移后进行连接，请在迁移之前执行一些步骤。 | 需要[手动设置](#prepare-to-connect-to-azure-windows-vms)。 | 需要[手动设置](#prepare-to-connect-to-azure-windows-vms)。 | 需要[手动设置](#prepare-to-connect-to-azure-windows-vms)。

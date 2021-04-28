@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/11/2019
 ms.author: vikancha
-ms.openlocfilehash: c4c6bee6d3f9e423d83458ad48d213fe65223514
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c61d0164b84258e8e0c9d130e809b0d86fd41eda
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551754"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108073964"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>在运行 Linux 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序
 
@@ -128,6 +128,25 @@ sudo reboot
    ```
 
    安装可能需要几分钟。 
+   
+    > [!NOTE]
+   >  请访问 [Fedora](https://dl.fedoraproject.org/pub/epel/) 和 [Nvidia CUDA 存储库](https://developer.download.nvidia.com/compute/cuda/repos/)，为要使用的 CentOS 或 RHEL 版本选择正确的包。
+   >  
+
+例如，CentOS 8 和 RHEL 8 将需要以下步骤。
+
+   ```bash
+   sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+   sudo yum install dkms
+   
+   CUDA_REPO_PKG=cuda-repo-rhel8-10.2.89-1.x86_64.rpm
+   wget https://developer.download.nvidia.com/compute/cuda/repos/rhel8/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
+
+   sudo rpm -ivh /tmp/${CUDA_REPO_PKG}
+   rm -f /tmp/${CUDA_REPO_PKG}
+
+   sudo yum install cuda-drivers
+   ```
 
 4. 若要安装完整的 CUDA 工具包，请键入：
 

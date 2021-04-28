@@ -7,15 +7,15 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: tutorial
-ms.custom: mvc, devx-track-azurecli
+ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 67531c1c5d37b02f9107dfc487c10b2fcac734d8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 81f5f2f9f9ad0e5e4daed5b6548d789722e47ef8
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791960"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108073910"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>教程：在 Azure Key Vault 中导入证书
 
@@ -153,4 +153,4 @@ Import-AzureKeyVaultCertificate
 
 - 详细了解如何[在 Azure Key Vault 中管理证书创建](./create-certificate-scenarios.md)
 - 参阅[使用 REST API 导入证书](/rest/api/keyvault/importcertificate/importcertificate)的示例
-- 请参阅 [Key Vault 安全性概述](../general/security-overview.md)
+- 请参阅 [Key Vault 安全性概述](../general/security-features.md)

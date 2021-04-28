@@ -9,14 +9,14 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 06/17/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 6797c32ded5c12bbac3fafa1eabd1e6f74d28e07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.custom: devx-track-python, deploy
+ms.openlocfilehash: 4d461bf0558f59c903b0327cf26d4cdf854cd172
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519242"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107889639"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>使用 GPU 为推理部署深度学习模型
 

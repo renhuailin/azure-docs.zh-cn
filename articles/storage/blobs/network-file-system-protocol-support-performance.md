@@ -9,12 +9,12 @@ ms.date: 02/23/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: de511fa30caa608c2dc87b6c0ba166ed56ff9499
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 16c2927aef83dfa1a3a69298e865c5684f40b7b9
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490176"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144576"
 ---
 # <a name="network-file-system-nfs-30-performance-considerations-in-azure-blob-storage-preview"></a>Azure Blob 存储中的网络文件系统 (NFS) 3.0 性能注意事项（预览版）
 
@@ -39,7 +39,7 @@ Azure Blob 存储可线性扩展，直至达到最大存储帐户流出量和流
 
 ## <a name="use-premium-performance-tier-for-small-scale-applications"></a>将高级性能层用于小型应用程序
 
-并非所有应用程序都可以通过添加更多客户端实现扩展。 对于这些应用程序，[Azure 高级块 blob 存储帐户](storage-blob-create-account-block-blob.md)提供一致的低延迟和高事务率。 高级块 blob 存储帐户可以用更少的线程和客户端达到最大带宽。 例如，使用单个客户端时，与使用标准性能常规用途 v2 存储帐户的相同设置相比，高级块 blob 存储帐户可以实现 2.3 倍带宽。 
+并非所有应用程序都可以通过添加更多客户端实现扩展。 对于这些应用程序，[Azure 高级块 blob 存储帐户](../common/storage-account-create.md)提供一致的低延迟和高事务率。 高级块 blob 存储帐户可以用更少的线程和客户端达到最大带宽。 例如，使用单个客户端时，与使用标准性能常规用途 v2 存储帐户的相同设置相比，高级块 blob 存储帐户可以实现 2.3 倍带宽。 
 
 下图中的每个条形图显示了高级和标准性能存储帐户在实现带宽方面的差异。 随着客户端数量的增加，这一差异会降低。  
 

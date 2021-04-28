@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/14/2020
-ms.openlocfilehash: 26852ec77194714c8236856b7cb496170bf0d777
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4a6567f8576e2507704956233bc593b203b48239
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81606323"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588728"
 ---
 # <a name="sort-transformation-in-mapping-data-flow"></a>映射数据流中的排序转换
 
@@ -22,7 +22,7 @@ ms.locfileid: "81606323"
 借助排序转换，可对当前数据流上的传入行进行排序。 可以选择各个列，然后按升序或降序对其进行排序。
 
 > [!NOTE]
-> 映射数据流在 Spark 群集上执行，这些数据流跨多个节点和分区分布。 如果选择在后续转换中对数据进行重新分区，则可能会因为数据重排而丢失排序。
+> 映射数据流在 Spark 群集上执行，这些数据流跨多个节点和分区分布。 如果选择在后续转换中对数据进行重新分区，则可能会因为数据重排而丢失排序。 若要在数据流中维护排序顺序，最佳方法是在转换的“优化”选项卡中设置单个分区，并使排序转换尽可能接近接收器。
 
 ## <a name="configuration"></a>Configuration
 

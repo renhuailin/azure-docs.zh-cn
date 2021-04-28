@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: article
-ms.date: 03/29/2021
+ms.date: 04/16/2021
 ms.author: duau
-ms.openlocfilehash: c4c36013f100d2fc5265024432cc01a6622a4024
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0bbe16fb63a4546b4b4745df16074f6a4b0cb26b
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932363"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599530"
 ---
 # <a name="azure-route-server-preview-faq"></a>Azure 路由服务器（预览版）常见问题解答
 
@@ -29,24 +29,33 @@ Azure 路由服务器是一项完全托管的服务，可让你轻松管理网�
 
 不是。 Azure 路由服务器是一项旨在提供高可用性的服务。 如果将它部署在支持[可用性区域](../availability-zones/az-overview.md)的 Azure 区域中，它将具有区域级别冗余。
 
+### <a name="how-many-route-servers-can-i-create-in-a-virtual-network"></a>可以在虚拟网络中创建多少个路由服务器？
+
+只能在 VNet 中创建一个路由服务器。 必须将其部署在名为 RouteServerSubnet 的指定子网中。
+
+### <a name="does-azure-route-server-support-vnet-peering"></a>Azure 路由服务器是否支持 VNet 对等互连？
+
+是。 如果将托管 Azure 路由服务器的 VNet 对等互连到另一个 VNet，并在该 VNet 上启用“使用远程网关”，则 Azure 路由服务器将获知该 VNet 的地址空间，并将其发送到所有已对等互连的 NVA。 它还会将来自 NVA 的路由编入已对等互连的 VNet 中 VM 的路由表。 
+
+
 ### <a name="what-routing-protocols-does-azure-route-server-support"></a><a name = "protocol"></a>Azure 路由服务器支持哪些路由协议？
 
 Azure 路由服务器仅支持边界网关协议 (BGP)。 NVA 需要支持多跃点外部 BGP，因为你将需要在虚拟网络的专用子网中部署 Azure 路由服务器。 在 NVA 上配置 BGP 时，所选的 [ASN](https://en.wikipedia.org/wiki/Autonomous_system_(Internet)) 必须与 Azure 路由服务器使用的不同。
 
 ### <a name="does-azure-route-server-route-data-traffic-between-my-nva-and-my-vms"></a>Azure 路由服务器是否会在我的 NVA 和 VM 之间路由数据流量？
 
-不是。 Azure 路由服务器仅与 NVA 交换 BGP 路由。 数据流量直接从 NVA 流入所选的 VM，并直接从 VM 流入 NVA。
+不是。 Azure 路由服务器仅与 NVA 交换 BGP 路由。 数据流量直接从 NVA 流入目标 VM，并直接从 VM 流入 NVA。
 
 ### <a name="does-azure-route-server-store-customer-data"></a>Azure 路由服务器是否存储客户数据？
-不知道。 Azure 路由服务器仅与 NVA 交换 BGP 路由，然后将其传播到虚拟网络。
+不是。 Azure 路由服务器仅与 NVA 交换 BGP 路由，然后将其传播到虚拟网络。
 
-### <a name="if-azure-route-server-receives-the-same-route-from-more-than-one-nva-will-it-program-all-copies-of-the-route-but-each-with-a-different-next-hop-to-the-vms-in-the-virtual-network"></a>如果 Azure 路由服务器接收到来自多个 NVA 的相同路由，它是否会将路由的所有副本（但每个副本都有不同的下一个跃点）编入虚拟网络中的 VM？
+### <a name="if-azure-route-server-receives-the-same-route-from-more-than-one-nva-how-does-it-handle-them"></a>如果 Azure 路由服务器接收来自多个 NVA 的相同路由，它会如何处理这些路由？
 
-会，只有当路由具有相同的 AS 路径长度时才可以。 当 VM 将流量发送到此路由的目标位置时，VM 主机将执行等价多路径 (ECMP) 路由。 但是，如果一个 NVA 发送的路由的 AS 路径长度比其他 NVA 短。 Azure 路由服务器只会将下一个跃点设置为此 NVA 的路由编入虚拟网络中的 VM。
+如果路由的 AS 路径长度相同，Azure 路由服务器会将路由的多个副本（每个副本有不同的下一个跃点）编入虚拟网络中的 VM。 当 VM 将流量发送到此路由的目标位置时，VM 主机将执行等价多路径 (ECMP) 路由。 但是，如果一个 NVA 发送的路由的 AS 路径长度比其他 NVA 的短，则 Azure 路由服务器只会将下一个跃点设置为此 NVA 的路由编入虚拟网络中的 VM。
 
-### <a name="does-azure-route-server-support-vnet-peering"></a>Azure 路由服务器是否支持 VNet 对等互连？
+### <a name="does-azure-route-server-preserve-the-bgp-communities-of-the-route-it-receives"></a>Azure 路由服务器是否保留其接收的路由的 BGP 社区？
 
-是。 如果将托管 Azure 路由服务器的 VNet 对等互连到另一个 VNet，并且在该 VNet 上启用“使用远程网关”。 Azure 路由服务器将获知该 VNet 的地址空间，并将其发送到所有已对等互连的 NVA。
+是的，Azure 路由服务器按原样传播路由及 BGP 社区。
 
 ### <a name="what-autonomous-system-numbers-asns-can-i-use"></a>我可以使用哪些自治系统编号 (ASN)？
 

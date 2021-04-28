@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 04/20/2021
+ms.date: 04/27/2021
 ms.author: memildin
-ms.openlocfilehash: 3307d3aed422c3eab63412388244ef14ef3be699
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: b8b8b15083711c868add7ac041514bcf1facc30d
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750980"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076880"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>即将推出的对 Azure 安全中心的重要更改
 
@@ -28,27 +28,11 @@ ms.locfileid: "107750980"
 
 | 计划的更改                                                                                                                                                        | 预计更改日期 |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
-| [21 条建议在不同安全控制之间进行了调动](#21-recommendations-moving-between-security-controls)                                                           | 2021 年 4 月                |
 | [“应用系统更新”安全控制中的两项建议将被弃用](#two-recommendations-from-apply-system-updates-security-control-being-deprecated) | 2021 年 4 月                |
 | [正在将 ISO 27001 的旧版实现替换为新的 ISO 27001:2013](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)          | 2021 年 6 月                 |
 | [将发布来自 AWS 的正式版 (GA) 建议](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | 2021 年 8 月           |
 | [SQL 数据分类建议的增强](#enhancements-to-sql-data-classification-recommendation)                                                     | 2021 年第 2 季度                   |
 |                                                                                                                                                                       |                           |
-
-
-### <a name="21-recommendations-moving-between-security-controls"></a>21 条建议在不同安全控制之间进行了调动 
-
-**预计更改日期：** 2021 年 4 月
-
-以下建议将被移动到其他的安全控制。 安全控制是相关安全建议的逻辑组，反映了你易受攻击的攻击面。 这一调动确保了每个建议都处于最适当的控制之下，以满足其目标。 
-
-请在安全控件及其建议中了解每个安全控件中的建议。
-
-|建议 |更改和影响  |
-|---------|---------|
-|应对 SQL Server 启用漏洞评估<br>应对 SQL 托管实例启用漏洞评估<br>应立即修正 SQL 数据库的漏洞<br>应修正 VM 中的 SQL 数据库漏洞     |从“修正漏洞”（得 6 分）<br>变为“修正安全配置“（得 4 分）。<br>根据你的环境，这些建议会减少对评分的影响。|
-|应该为你的订阅分配了多个所有者<br>自动化帐户变量应进行加密<br> IoT 设备 - 经审核的进程已停止发送事件<br> IoT 设备 - 操作系统基线验证失败<br> IoT 设备 - 需要进行 TLS 加密套件升级<br> IoT 设备 - 打开设备上的端口<br> IoT 设备 - 在其中一个链中找到了宽容防火墙策略<br> IoT 设备 - 在输入链中找到了宽容防火墙规则<br> IoT 设备 - 在输出链中找到了宽容防火墙规则<br>应启用 IoT 中心的诊断日志<br> IoT 设备 - 代理正在发送未充分利用的消息<br>IoT 设备 - 默认 IP 筛选策略应为“拒绝”<br>IoT 设备 - IP 筛选器规则为“大范围 IP”<br>IoT 设备 - 应调整代理消息间隔和大小<br>IoT 设备 - 完全相同的身份验证凭据<br>IoT 设备 - 经审核的进程停止发送事件<br>IoT 设备 - 应修复操作系统 (OS) 基线配置|移到 **实施安全最佳做法**。<br>如果某条建议移到“实施安全最佳做法”控制（不得分），则这条建议不再影响安全分数。|
-|||
 
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>“应用系统更新”安全控制中的两项建议将被弃用

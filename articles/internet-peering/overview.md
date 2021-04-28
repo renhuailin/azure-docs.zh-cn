@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: overview
 ms.date: 12/15/2020
 ms.author: prmitiki
-ms.openlocfilehash: 8f960e58d47963cbb239d498af52e7adfc77caa9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99cfad67742c5f1261811469b3c41f5bb3bad1ba
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97586860"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108145062"
 ---
 # <a name="internet-peering-overview"></a>Internet 对等互连概述
 
@@ -53,4 +53,4 @@ Microsoft 有一项选择性的但通常处于打开状态的对等互连策略�
 
 * 若要了解如何通过相关步骤设置与 Microsoft 的直接对等互连，请按[直接对等互连演练](walkthrough-direct-all.md)进行操作
 * 若要了解如何通过相关步骤设置与 Microsoft 的 Exchange 对等互连，请按 [Exchange 对等互连演练](walkthrough-exchange-all.md)进行操作
-* 了解 Azure 的部分其他关键[网络功能](../networking/networking-overview.md)。
+* 了解 Azure 的部分其他关键[网络功能](../networking/fundamentals/networking-overview.md)。

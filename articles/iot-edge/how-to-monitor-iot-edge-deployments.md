@@ -8,14 +8,13 @@ ms.date: 04/21/2020
 ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
-ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: f4f2f8522f6d3d1039673803d946323deb485db9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b06ea5e541634a3b6738272c7b6540ff17006df
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200253"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108073615"
 ---
 # <a name="monitor-iot-edge-deployments"></a>监视 IoT Edge 部署
 
@@ -50,7 +49,7 @@ IoT 中心服务使此数据可供你在 Azure 门户和 Azure CLI 中监视。
     | ID | 部署的名称。 |
     | 类型 | 部署的类型（“部署”或“分层部署”） 。 |
     | 目标条件 | 用于定义目标设备的标记。 |
-    | 优先级 | 分配给部署的优先级编号。 |
+    | 优先度 | 分配给部署的优先级编号。 |
     | 系统指标 | IoT 中心内与目标条件匹配的设备孪生数。 “已应用”指定 IoT 中心内已将部署内容应用到其模块孪生的设备数。 |
     | 设备指标 | 从 IoT Edge 客户端运行时报告成功或错误的 IoT Edge 设备数。 |
     | 自定义指标 | IoT Edge 设备数，此类设备针对你为部署定义的任何指标报告数据。 |
@@ -69,7 +68,7 @@ IoT 中心服务使此数据可供你在 Azure 门户和 Azure CLI 中监视。
 
 ## <a name="monitor-a-deployment-with-azure-cli"></a>使用 Azure CLI 监视部署
 
-使用 [az IoT Edge deployment show](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show) 命令显示单个部署的详细信息：
+使用 [az iot edge deployment show](/cli/azure/iot/edge/deployment) 命令显示单个部署的详细信息：
 
 ```azurecli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
@@ -87,7 +86,7 @@ deployment show 命令采用以下参数：
 * **reportedSuccessfulCount** - 一个设备指标，用于指定通过 IoT Edge 客户端运行时报告成功的部署中的 IoT Edge 设备数。
 * reportedFailedCount - 一个设备指标，指定已通过 IoT Edge 客户端运行时报告失败的部署中的 IoT Edge 设备数。
 
-可以使用 [az IoT Edge deployment show-metric](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show-metric) 命令显示每个指标的设备 ID 或对象的列表：
+可使用 [az iot edge deployment show-metric](/cli/azure/iot/edge/deployment) 命令显示每个指标的设备 ID 或对象的列表：
 
 ```azurecli
 az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name]

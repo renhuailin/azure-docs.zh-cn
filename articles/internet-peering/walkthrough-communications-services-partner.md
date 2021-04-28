@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.author: gatharej
-ms.openlocfilehash: ff6750883a904ff5ddbddd3ddfd1ed82e72aebbc
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 4c4e3e2331ce334fbdd1c273fecd899bcd24612b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106498848"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124556"
 ---
 # <a name="azure-internet-peering-for-communications-services-walkthrough"></a>用于通信服务的 Azure Internet 对等互连演练
 
@@ -47,7 +47,7 @@ Azure Internet 对等互连为通信服务提供高度可靠且启用服务质�
 
 如果对等机已将公共 ASN 与 Azure 订阅相关联，请跳过此步骤。
 
-[使用门户将对等机 ASN 与 Azure 订阅相关联 - Azure | Microsoft Docs](https://docs.microsoft.com/azure/internet-peering/howto-subscription-association-portal)
+[使用门户将对等机 ASN 与 Azure 订阅相关联 - Azure | Microsoft Docs](./howto-subscription-association-portal.md)
 
 下一步是为对等互连服务创建直接对等连接。
 
@@ -56,7 +56,7 @@ Azure Internet 对等互连为通信服务提供高度可靠且启用服务质�
 
 2\.    为对等互连服务创建直接对等互连连接：
 
-按照说明[使用门户创建或修改直接对等互连](https://docs.microsoft.com/azure/internet-peering/howto-direct-portal)
+按照说明[使用门户创建或修改直接对等互连](./howto-direct-portal.md)
 
 确保它满足高可用性要求。
 
@@ -83,10 +83,10 @@ Azure Internet 对等互连为通信服务提供高度可靠且启用服务质�
   2a. 将现有直接对等互连连接用于对等互连服务
 
 如果要使用现有直接对等互连为对等互连服务提供支持，可在 Azure 门户上激活它。
-1.  按照说明[使用门户将旧版直接对等互连转换为 Azure 资源](https://docs.microsoft.com/azure/internet-peering/howto-legacy-direct-portal)。
+1.  按照说明[使用门户将旧版直接对等互连转换为 Azure 资源](./howto-legacy-direct-portal.md)。
 根据需要订购额外线路以满足高可用性要求。
 
-2.  按照相应步骤使用门户在直接对等互连上[启用对等互连服务](https://docs.microsoft.com/azure/internet-peering/howto-peering-service-portal)。
+2.  按照相应步骤使用门户在直接对等互连上[启用对等互连服务](./howto-peering-service-portal.md)。
 
 
 
@@ -94,7 +94,7 @@ Azure Internet 对等互连为通信服务提供高度可靠且启用服务质�
 3\.    注册前缀以优化路由
 
 若要优化通信服务基础结构前缀的路由，应向对等互连注册你的所有前缀。
-[注册 Azure 对等互连服务 - Azure 门户 | Microsoft Docs](https://docs.microsoft.com/azure/peering-service/azure-portal)
+[注册 Azure 对等互连服务 - Azure 门户 | Microsoft Docs](../peering-service/azure-portal.md)
 
 系统会为通信服务合作伙伴自动填充前缀键，因此，合作伙伴无需使用任何前缀键进行注册。 
 
@@ -141,4 +141,4 @@ Azure Internet 对等互连为通信服务提供高度可靠且启用服务质�
 
 **Q.** 是否可以使用 API 来加入？
 
-**A.** 目前未提供 API 支持，必须通过 Web 门户执行配置。 
+**A.** 目前未提供 API 支持，必须通过 Web 门户执行配置。

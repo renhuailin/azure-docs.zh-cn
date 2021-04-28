@@ -3,19 +3,18 @@ title: 证书创建方法
 description: 了解用于在 Azure Key Vault 中创建或导入 Key Vault 证书的不同选项。 有多种方法可创建 Key Vault 证书。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f06f2de1f373f72aa5e55da17c249ff119a36950
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 20f11983a76b4ea703981e257b088c13cf577935
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581833"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123386"
 ---
 # <a name="certificate-creation-methods"></a>证书创建方法
 
@@ -93,5 +92,5 @@ KV 证书创建是一个异步过程。 此操作会创建 KV 证书请求并返
 
 ## <a name="see-also"></a>另请参阅
 
- - 有关使用[门户](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal)、[Azure CLI](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-cli)、[Azure Powershell](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-powershell) 在 Key Vault 中创建证书的操作指南
+ - 有关使用[门户](./quick-create-portal.md)、[Azure CLI](./quick-create-cli.md)、[Azure PowerShell](./quick-create-powershell.md) 在 Key Vault 中创建证书的操作指南
  - [监视和管理证书创建](create-certificate-scenarios.md)

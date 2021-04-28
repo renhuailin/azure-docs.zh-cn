@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/08/2020
-ms.openlocfilehash: a11dbfbd6d6510b5c421e54cd2547c3aedb1bfb6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.openlocfilehash: f9f2bf2e2204e6b74bb8a31ac856dbe276a6e983
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100378190"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588745"
 ---
 # <a name="creating-a-new-branch-in-mapping-data-flow"></a>在映射数据流中创建新分支
 
@@ -27,3 +27,10 @@ ms.locfileid: "100378190"
 在下面的示例中，数据流正在读取出租车行程数据。 需要按日期和供应商汇总的输出。 可以添加一个新的分支，而不是创建从同一源读取的两个单独的数据流。 这样，两种聚合都可以作为同一数据流的一部分执行。 
 
 ![屏幕截图显示来自源的两个分支的数据流。](media/data-flow/new-branch.png "添加新分支")
+
+> [!NOTE]
+> 单击加号 (+) 将转换添加到图形时，如果存在后续转换块，将只会看到“新建分支”选项。 这是因为“新建分支”会创建对现有流的引用，并需要进一步的上游处理才能继续操作。 如果看不到“新建分支”选项，请首先添加派生列或其他转换，然后返回到上一个块，就会看到“新建分支”选项。
+
+## <a name="next-steps"></a>后续步骤
+
+建立分支后，建议使用[数据流转换](data-flow-transformation-overview.md)

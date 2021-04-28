@@ -1,20 +1,20 @@
 ---
 title: 快速入门：使用 Python 创建 Azure 数据工厂
 description: 使用数据工厂将数据从 Azure Blob 存储中的一个位置复制到另一位置。
-author: dcstwh
-ms.author: weetok
+author: ssabat
+ms.author: susabat
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 04/12/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 534b5b3aca86cc2f6d7ee2d703939420f80abb8e
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 665944688533b4efa6e0e14077ae7df22d352d50
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365087"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123620"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>快速入门：使用 Python 创建数据工厂和管道
 
@@ -75,7 +75,7 @@ Azure 数据工厂是基于云的数据集成服务，用于创建数据驱动�
     ```
     > [!NOTE] 
     > 在某些常见依赖关系上，“azure-identity”包可能与“azure-cli”冲突。 如果遇到任何身份验证问题，请删除“azure-cli”及其依赖关系，或使用未安装“azure-cli”包的初始状态计算机，以确保“azure-identity”包正常工作。
-    > 对于主权云，必须使用适当的云特定常量。  请参阅[使用用于 Python 的 Azure 库连接到所有区域 - 多云 | 有关在主权云中连接 Python 的 Microsoft Docs 说明。](https://docs.microsoft.com/azure/developer/python/azure-sdk-sovereign-domain)
+    > 对于主权云，必须使用适当的云特定常量。  请参阅[使用用于 Python 的 Azure 库连接到所有区域 - 多云 | 有关在主权云中连接 Python 的 Microsoft Docs 说明。](/azure/developer/python/azure-sdk-sovereign-domain)
     
     
 ## <a name="create-a-data-factory-client"></a>创建数据工厂客户端

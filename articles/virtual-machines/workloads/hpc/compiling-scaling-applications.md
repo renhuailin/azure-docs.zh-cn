@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/25/2021
+ms.date: 04/16/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 4ab2c599bea4b2e3e682755a80a2ee348e4de7ef
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f81d40abdf402b1e19090c5375dfa8c335418248
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606770"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600958"
 ---
 # <a name="scaling-hpc-applications"></a>缩放 HPC 应用程序
 
@@ -112,4 +112,7 @@ gcc $(OPTIMIZATIONS) $(OMP) $(STACK) $(STREAM_PARAMETERS) stream.c -o stream.gcc
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 Azure 上的 [HPC](/azure/architecture/topics/high-performance-computing/)。
+- 使用[有关优化 Azure 上的 HPC 应用程序的学习模块](https://docs.microsoft.com/learn/modules/optimize-tightly-coupled-hpc-apps/)来检测知识。
+- 查看 [HBv3 系列概述](hbv3-series-overview.md)和 [HC 系列概述](hc-series-overview.md)。
+- 在 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)上阅读最新公告、HPC 工作负载示例和性能结果。
+- 详细了解 Azure 上的 [HPC](/azure/architecture/topics/high-performance-computing/)。

@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: nibaccam
-author: aniththa
+author: cartacioS
 ms.reviewer: nibaccam
 ms.date: 12/20/2020
-ms.topic: conceptual
-ms.custom: how-to, automl
-ms.openlocfilehash: 2e06375441d6540d6630cfe9d4d8c3beec558879
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.custom: automl
+ms.openlocfilehash: e744f7bb4d457e18f73c308fa5eaf29918b97e88
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103562716"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107888307"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>使用 Azure 机器学习创建、查看和部署自动化机器学习模型
 
@@ -180,15 +180,15 @@ ms.locfileid: "103562716"
 
 [![迭代详细信息](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
 
-## <a name="model-explanations"></a>模型说明
+## <a name="model-explanations-preview"></a>模型说明（预览）
 
-若要更好地了解模型，请通过模型说明仪表板了解会影响模型预测的数据特征（原始特征或经过设计的特征）。 
+若要更好地了解模型，可以通过模型说明仪表板了解会影响模型预测的数据特征（原始特征或经过设计的特征）。 
 
-模型说明仪表板可提供对经过训练的模型的整体分析及其预测和说明。 通过该仪表板，还可以深入了解单个数据点及其个体特征重要性。 [详细了解说明仪表板可视化效果和特定绘图](how-to-machine-learning-interpretability-aml.md#visualizations)。
+模型说明仪表板可提供对经过训练的模型的整体分析及其预测和说明。 通过该仪表板，还可以深入了解单个数据点及其个体特征重要性。 [详细了解说明仪表板可视化效果](how-to-machine-learning-interpretability-aml.md#visualizations)。
 
 若要获取特定模型的说明，请执行以下操作： 
 
-1. 在“模型”选项卡上，选择要使用的模型。 
+1. 在“模型”选项卡上，选择要了解的模型。 
 1. 选择“说明模型”按钮，并提供可用于生成说明的计算。
 1. 检查“子运行”选项卡的状态。 
 1. 完成后，导航到“说明(预览)”选项卡，其中包含说明仪表板。 

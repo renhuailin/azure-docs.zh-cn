@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 4fdc222fa20aef6639bf6d5d485f7dcf6b6ca535
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f80e78da5c7d226c704c8b13fc496e416f5d0f0d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641134"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125582"
 ---
 # <a name="efficiently-scale-out-a-custom-skill"></a>有效地横向扩展自定义技能
 
@@ -26,7 +26,7 @@ ms.locfileid: "105641134"
 
 + 查看[自定义技能接口](cognitive-search-custom-skill-interface.md)，其中介绍了自定义技能应该实现的输入/输出接口。
 
-+ 设置环境 你可以从[此端到端教程](/azure/azure-functions/create-first-function-vs-code-python)着手，以使用 Visual Studio Code 和 Python 扩展设置无服务器 Azure 函数。
++ 设置环境 你可以从[此端到端教程](../azure-functions/create-first-function-vs-code-python.md)着手，以使用 Visual Studio Code 和 Python 扩展设置无服务器 Azure 函数。
 
 ## <a name="skillset-configuration"></a>技能集配置
 

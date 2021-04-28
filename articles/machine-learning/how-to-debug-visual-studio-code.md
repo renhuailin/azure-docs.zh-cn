@@ -5,16 +5,16 @@ description: 使用 Visual Studio Code 以交互方式调试 Azure 机器学习�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: 783b5afdaef369582614cde3525f7968fdb5e567
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d3c4438cdfa8ddd41cb306e84623ccd569ac1680
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508633"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885571"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>使用 Visual Studio Code 进行交互式调试
 
@@ -278,7 +278,7 @@ ip_address: 10.3.0.5
 保存 `ip_address` 值。 下一部分会用到它。
 
 > [!TIP]
-> 还可以在此管道步骤的子运行的运行日志中找到 IP 地址。 有关如何查看此信息的详细信息，请参阅[监视 Azure ML 试验运行和指标](how-to-track-experiments.md)。
+> 还可以在此管道步骤的子运行的运行日志中找到 IP 地址。 有关如何查看此信息的详细信息，请参阅[监视 Azure ML 试验运行和指标](how-to-log-view-metrics.md)。
 
 ### <a name="configure-development-environment"></a>配置开发环境
 

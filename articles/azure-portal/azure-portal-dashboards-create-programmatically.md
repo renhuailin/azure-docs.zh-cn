@@ -3,12 +3,12 @@ title: 以编程方式创建 Azure 仪表板
 description: 使用 Azure 门户中的仪表板作为模板以编程方式创建 Azure 仪表板。 包括 JSON 引用。
 ms.topic: how-to
 ms.date: 12/4/2020
-ms.openlocfilehash: 416eeb772e347b28fcb4a4dcc93c746562ea3571
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 92848ac238ff11a90afc82713639b8abebf076ec
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767052"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878787"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>以编程方式创建 Azure 仪表板
 
@@ -658,27 +658,27 @@ id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/v
 
 - 这些示例使用以下仪表板：[portal-dashboard-template-testvm.json](https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-portal/portal-dashboard-template-testvm.json) 将尖括号中的内容替换为你的值。
 
-运行 [az portal dashboard create](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_create) 命令来创建仪表板：
+运行 [az portal dashboard create](/cli/azure/portal/dashboard#az_portal_dashboard_create) 命令来创建仪表板：
 
 ```azurecli
 az portal dashboard create --resource-group myResourceGroup --name 'Simple VM Dashboard' \
    --input-path portal-dashboard-template-testvm.json --location centralus
 ```
 
-可以使用 [az portal dashboard update](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_update) 命令更新仪表板：
+可以使用 [az portal dashboard update](/cli/azure/portal/dashboard#az_portal_dashboard_update) 命令更新仪表板：
 
 ```azurecli
 az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Dashboard' \
 --input-path portal-dashboard-template-testvm.json --location centralus
 ```
 
-通过运行 [az portal dashboard show](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_show) 命令查看仪表板的详细信息：
+通过运行 [az portal dashboard show](/cli/azure/portal/dashboard#az_portal_dashboard_show) 命令查看仪表板的详细信息：
 
 ```azurecli
 az portal dashboard show --resource-group myResourceGroup --name 'Simple VM Dashboard'
 ```
 
-若要查看当前订阅的所有仪表板，请使用 [az portal dashboard list](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_list)：
+若要查看当前订阅的所有仪表板，请使用 [az portal dashboard list](/cli/azure/portal/dashboard#az_portal_dashboard_list)：
 
 ```azurecli
 az portal dashboard list
@@ -694,4 +694,4 @@ az portal dashboard list --resource-group myResourceGroup
 
 有关桌面的详细信息，请参阅[管理 Azure 门户设置和首选项](set-preferences.md)。
 
-有关对仪表板的 Azure CLI 支持的详细信息，请参阅 [az portal dashboard](/cli/azure/ext/portal/portal/dashboard)。
+有关对仪表板的 Azure CLI 支持的详细信息，请参阅 [az portal dashboard](/cli/azure/portal/dashboard)。

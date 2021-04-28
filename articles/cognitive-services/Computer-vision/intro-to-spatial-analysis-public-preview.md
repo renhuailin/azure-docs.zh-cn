@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 03/29/2021
-ms.openlocfilehash: 5aa34ce15d96112450a7c15debcd92312c1d9e19
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: fc0d0b0a589ff5b8354a56a2f8c95062f4d2d9a9
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284536"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076142"
 ---
 # <a name="what-is-spatial-analysis"></a>什么是空间分析？
 
@@ -45,7 +45,7 @@ ms.locfileid: "106284536"
 
 ### <a name="public-preview-gating"></a>公共预览版限制
 
-为确保空间分析的使用场景符合其设计用途，我们正在使这项技术可通过一个申请流程提供给客户。 要获取空间分析的访问权限，首先需要填写我们的在线登记表。 [在此开始申请](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyQZ7B8Cg2FEjpibPziwPcZUNlQ4SEVORFVLTjlBSzNLRlo0UzRRVVNPVy4u)。
+为确保空间分析的使用场景符合其设计用途，我们正在使这项技术可通过一个申请流程提供给客户。 要获取空间分析的访问权限，首先需要填写我们的在线登记表。 [在此开始申请](https://aka.ms/csgate)。
 
 空间分析公共预览版访问权限由 Microsoft 全权决定，决定因素包括我们的资格标准、审查流程以及在此受限预览期间支持有限客户数量的能力。 在公共预览版中，我们要寻找的是与 Microsoft 关系密切、有意就建议用例以及有利于践行我们 AI 责任承诺的其他方案与我们合作的客户。
 

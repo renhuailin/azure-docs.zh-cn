@@ -5,18 +5,18 @@ description: 了解如何使用 Azure Kubernetes 服务将 Azure 机器学习模
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, contperf-fy21q1, deploy
+ms.topic: how-to
+ms.custom: contperf-fy21q1, deploy
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: 68fc4a10f5a54af7bab82843b7a921fd84e7af40
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: ae16fbd97a6994edb796da7eb8210d414bbe6de5
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259262"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107889729"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes 服务群集
 
@@ -184,7 +184,7 @@ az ml model deploy --ct myaks -m mymodel:1 -n myservice --ic inferenceconfig.jso
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aks-deploy-config.md)]
 
-有关详细信息，请参阅 [az ml model deploy](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy) 参考文档。
+有关详细信息，请参阅 [az ml model deploy](/cli/azure/ml/model#az_ml_model_deploy) 参考文档。
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -372,7 +372,7 @@ print(token)
 >
 > Microsoft 强烈建议在 Azure Kubernetes 服务群集所在的相同区域中创建 Azure 机器学习工作区。 要使用令牌进行身份验证，Web 服务将调用创建 Azure 机器学习工作区的区域。 如果工作区区域不可用，即使群集和工作区不在同一区域，也将无法获取 Web 服务的令牌。 这实际上会导致在工作区的区域再次可用之前，基于令牌的身份验证不可用。 此外，群集区域和工作区区域的距离越远，获取令牌所需的时间就越长。
 >
-> 若要检索令牌，必须使用 Azure 机器学习 SDK 或 [az ml service get-access-token](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-get-access-token) 命令。
+> 若要检索令牌，必须使用 Azure 机器学习 SDK 或 [az ml service get-access-token](/cli/azure/ml/service#az_ml_service_get_access_token) 命令。
 
 
 ### <a name="vulnerability-scanning"></a>漏洞扫描

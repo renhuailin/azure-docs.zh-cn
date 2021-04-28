@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 06/25/2020
-ms.topic: conceptual
-ms.custom: how-to, data4ml, contperf-fy21q2
-ms.openlocfilehash: e7da81e896c0d59af966cca2760b1adb163762aa
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.topic: how-to
+ms.custom: data4ml, contperf-fy21q2
+ms.openlocfilehash: e73b14e24fffacde11e355ae5a4caf0cb76f07ba
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067497"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107884869"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>检测数据集中的数据偏移（预览版）
 
@@ -28,7 +28,7 @@ Azure 机器学习数据集监视器（预览版）具有以下功能：
 * **监视新数据**，以了解任何基线与目标数据集之间的差异。
 * **分析数据中的特征**，以跟踪统计属性在一段时间内的变化。
 * **针对数据偏移设置警报**，以便针对潜在问题提前发出警告。 
-* 当你确定数据偏移太大时，[创建新的数据集版本](how-to-version-track-datasets。
+* 如果已确定数据偏移太大，请 **[创建新的数据集版本](how-to-version-track-datasets.md)** 。
 
 使用 [Azure 机器学习数据集](how-to-create-register-datasets.md)来创建监视器。 此数据集必须包含一个时间戳列。
 

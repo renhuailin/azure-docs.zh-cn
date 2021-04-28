@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d3570a22fdd935237e673ea3e43ab5e463b66456
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b3f0dd599f982e19fee7febc3b85d46f91a55b35
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104590528"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589289"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>了解 Azure 数字孪生中的孪生模型
 
@@ -32,10 +32,18 @@ DTDL 基于 JSON-LD，独立于编程语言。 DTDL 并非专用于 Azure 数字
 
 本文的余下内容总结了如何在 Azure 数字孪生中使用该语言。
 
-> [!NOTE] 
-> 并非使用 DTDL 的所有服务都实现完全相同的 DTDL 功能。 例如，IoT 即插即用不使用适用于图的 DTDL 功能，而 Azure 数字孪生目前不实现 DTDL 命令。
->
-> 有关特定于 Azure 数字孪生的 DTDL 功能的详细信息，请参阅本文后面的 [Azure 数字孪生 DTDL 实现细节](#azure-digital-twins-dtdl-implementation-specifics)部分。
+### <a name="azure-digital-twins-dtdl-implementation-specifics"></a>Azure 数字孪生 DTDL 实现细节
+
+并非使用 DTDL 的所有服务都实现完全相同的 DTDL 功能。 例如，IoT 即插即用不使用适用于图的 DTDL 功能，而 Azure 数字孪生目前不实现 DTDL 命令。 
+
+要使 DTDL 模型与 Azure 数字孪生兼容，必须满足以下要求：
+
+* 模型中的所有顶级 DTDL 元素必须是接口类型。 这是因为，Azure 数字孪生模型 API 可以接收表示某个接口或接口数组的 JSON 对象。 因此，不允许在最高级别使用其他 DTDL 元素类型。
+* 用于 Azure 数字孪生的 DTDL 不得定义任何命令。
+* Azure 数字孪生只允许单个级别的组件嵌套。 这意味着，用作组件的接口本身不能包含任何组件。 
+* 不能在其他 DTDL 接口中以内联方式定义接口；接口必须定义为具有自身 ID 的独立顶级实体。 然后，当另一个接口想要以组件形式或通过继承包含该接口时，这另一个接口可以引用该接口的 ID。
+
+此外，Azure 数字孪生不关注属性或关系中的 `writable` 特性。 尽管可以根据 DTDL 规范设置此值，但 Azure 数字孪生不会使用此值。 这些值始终被视为可供对 Azure 数字孪生服务拥有常规写入权限的外部客户端写入。
 
 ## <a name="elements-of-a-model"></a>模型的元素
 
@@ -50,7 +58,7 @@ DTDL 基于 JSON-LD，独立于编程语言。 DTDL 并非专用于 Azure 数字
     
     >[!TIP] 
     >组件还可用于进行组织，以便在模型接口中将相关属性集分组到一起。 在这种情况下，可以将每个组件视为该接口中的命名空间或“文件夹”。
-* **关系** - 使用关系可以表示一个数字孪生与其他数字孪生的关连方式。 关系可以表示不同的语义含义，例如 contains ("floor contains room")、cools ("hvac cools room")、isBilledTo ("compressor is billed to user")，等等。解决方案可以使用关系来提供相互关联的实体的图。
+* **关系** - 使用关系可以表示一个数字孪生与其他数字孪生的关连方式。 关系可以表示不同的语义含义，例如 contains ("floor contains room")、cools ("hvac cools room")、isBilledTo ("compressor is billed to user")，等等。解决方案可以使用关系来提供相互关联的实体的图。 关系还可具有其自己的[属性](#properties-of-relationships)。
 
 > [!NOTE]
 > [DTDL 规范](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)还定义了 **命令**。命令是可以在数字孪生上执行的方法（例如重置命令，或者打开或关闭风扇的命令）。 但是，Azure 数字孪生中目前不支持命令。
@@ -73,20 +81,40 @@ Azure 数字孪生模型的属性和遥测的区别如下：
 
 你还可以通过 Azure 数字孪生 API 发布遥测事件。 与其他遥测一样，该事件是一个生存期较短的事件，需要通过一个侦听器对其进行处理。
 
-### <a name="azure-digital-twins-dtdl-implementation-specifics"></a>Azure 数字孪生 DTDL 实现细节
+#### <a name="properties-of-relationships"></a>关系的属性
 
-要使 DTDL 模型与 Azure 数字孪生兼容，必须满足以下要求。
+DTDL 还允许关系具有其自己的属性。 在 DTDL 模型中定义关系时，关系可以有它自己的 `properties` 字段，你可以在其中定义自定义属性来描述特定于关系的状态。
 
-* 模型中的所有顶级 DTDL 元素必须是接口类型。 这是因为，Azure 数字孪生模型 API 可以接收表示某个接口或接口数组的 JSON 对象。 因此，不允许在最高级别使用其他 DTDL 元素类型。
-* 用于 Azure 数字孪生的 DTDL 不得定义任何命令。
-* Azure 数字孪生只允许单个级别的组件嵌套。 这意味着，用作组件的接口本身不能包含任何组件。 
-* 不能在其他 DTDL 接口中以内联方式定义接口；接口必须定义为具有自身 ID 的独立顶级实体。 然后，当另一个接口想要以组件形式或通过继承包含该接口时，这另一个接口可以引用该接口的 ID。
+## <a name="model-inheritance"></a>模型继承
 
-此外，Azure 数字孪生不关注属性或关系中的 `writable` 特性。 尽管可以根据 DTDL 规范设置此值，但 Azure 数字孪生不会使用此值。 这些值始终被视为可供对 Azure 数字孪生服务拥有常规写入权限的外部客户端写入。
+有时你可能想要进一步将模型专用化。 例如，使用一个泛型模型 *Room* 以及专用化变体 *ConferenceRoom* 和 *Gym* 可能会很有用。 为了表达专用化，DTDL 支持继承：接口可以从一个或多个其他接口继承。 
 
-## <a name="example-model-code"></a>示例模型代码
+以下示例将前面的 DTDL 示例中的 *Planet* 模型重新假设为更大 *CelestialBody* 模型的子类型。 首先定义“父”模型，然后，“子”模型将使用字段 `extends` 构建在“父”模型的基础之上。
+
+:::code language="json" source="~/digital-twins-docs-samples/models/CelestialBody-Planet-Crater.json":::
+
+在此示例中，*CelestialBody* 向 *Planet* 提供名称、质量和温度。 `extends` 节是接口名称或接口名称的数组（允许扩展接口以根据需要从多个父模型继承）。
+
+应用继承后，扩展接口会公开整个继承链中的所有属性。
+
+扩展接口不能更改父接口的任何定义；只能在父接口中添加定义。 此外，扩展接口不能重新定义已在该接口的父接口中定义的功能（即使定义的功能相同）。 例如，如果父接口定义了 `double` 属性 *mass*，则扩展接口不能包含 *mass* 的声明，即使该声明也是 `double`。
+
+## <a name="model-code"></a>模型代码
 
 可以在任何文本编辑器中编写孪生类型模型。 DTDL 语言遵循 JSON 语法，因此你应使用扩展名 *.json* 存储模型。 使用 JSON 扩展名可使许多编程文本编辑器在你的 DTDL 文档中提供基本语法检查和突出显示。 还有一个适用于 [Visual Studio Code](https://code.visualstudio.com/) 的 [DTDL 扩展名](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl)。
+
+### <a name="possible-schemas"></a>可能的架构
+
+根据 DTDL，属性和遥测特性的架构可以是标准基元类型（`integer`、`double`、`string` 和 `Boolean`），也可以是 `DateTime` 和 `Duration` 等其他类型。  
+
+除基元类型外，属性和遥测字段还可以使用以下复杂类型： 
+* `Object`
+* `Map`
+* `Enum`
+
+遥测字段还支持 `Array`。
+
+### <a name="example-model"></a>示例模型
 
 本部分包含一个以 DTDL 接口形式编写的典型模型示例。 该模型描述 **行星**，每个行星具有名称、质量和温度。
  
@@ -106,31 +134,6 @@ Azure 数字孪生模型的属性和遥测的区别如下：
 
 > [!NOTE]
 > 请注意，组件接口（本示例中为 *Crater*）是在使用该接口的接口 (*Planet*) 所在的同一数组中定义的。 必须以这种方式在 API 调用中定义组件才能找到该接口。
-
-### <a name="possible-schemas"></a>可能的架构
-
-根据 DTDL，属性和遥测特性的架构可以是标准基元类型（`integer`、`double`、`string` 和 `Boolean`），也可以是 `DateTime` 和 `Duration` 等其他类型。  
-
-除基元类型外，属性和遥测字段还可以使用以下复杂类型： 
-* `Object`
-* `Map`
-* `Enum`
-
-遥测字段还支持 `Array`。
-
-### <a name="model-inheritance"></a>模型继承
-
-有时你可能想要进一步将模型专用化。 例如，使用一个泛型模型 *Room* 以及专用化变体 *ConferenceRoom* 和 *Gym* 可能会很有用。 为了表达专用化，DTDL 支持继承：接口可以从一个或多个其他接口继承。 
-
-以下示例将前面的 DTDL 示例中的 *Planet* 模型重新假设为更大 *CelestialBody* 模型的子类型。 首先定义“父”模型，然后，“子”模型将使用字段 `extends` 构建在“父”模型的基础之上。
-
-:::code language="json" source="~/digital-twins-docs-samples/models/CelestialBody-Planet-Crater.json":::
-
-在此示例中，*CelestialBody* 向 *Planet* 提供名称、质量和温度。 `extends` 节是接口名称或接口名称的数组（允许扩展接口以根据需要从多个父模型继承）。
-
-应用继承后，扩展接口会公开整个继承链中的所有属性。
-
-扩展接口不能更改父接口的任何定义；只能在父接口中添加定义。 此外，扩展接口不能重新定义已在该接口的父接口中定义的功能（即使定义的功能相同）。 例如，如果父接口定义了 `double` 属性 *mass*，则扩展接口不能包含 *mass* 的声明，即使该声明也是 `double`。
 
 ## <a name="best-practices-for-designing-models"></a>有关设计模型的最佳做法
 

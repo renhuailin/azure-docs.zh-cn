@@ -9,12 +9,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 04/02/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 8e912e141ab769f3121fcccdecb9c3952920572f
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: f30cd528a329708a7478b1a4a343f7be3b9eac04
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516206"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877779"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>安装和使用 Azure 机器学习的 CLI 扩展
 
@@ -94,7 +94,7 @@ az extension remove -n azure-cli-ml
     az ml workspace create -w myworkspace -g myresourcegroup
     ```
 
-    有关详细信息，请参阅 [az ml workspace create](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-create)。
+    有关详细信息，请参阅 [az ml workspace create](/cli/azure/ml/workspace#az_ml_workspace_create)。
 
 + 将工作区配置附加到某个文件夹，以启用 CLI 上下文感知。
 
@@ -104,7 +104,7 @@ az extension remove -n azure-cli-ml
 
     此命令创建包含示例 runconfig 和 conda 环境文件的 `.azureml` 子目录。 此子目录还包含用来与 Azure 机器学习工作区通信的 `config.json` 文件。
 
-    有关详细信息，请参阅 [az ml folder attach](/cli/azure/ext/azure-cli-ml/ml/folder#ext-azure-cli-ml-az-ml-folder-attach)。
+    有关详细信息，请参阅 [az ml folder attach](/cli/azure/ml/folder#az_ml_folder_attach)。
 
 + 将某个 Azure Blob 容器附加为数据存储。
 
@@ -112,7 +112,7 @@ az extension remove -n azure-cli-ml
     az ml datastore attach-blob  -n datastorename -a accountname -c containername
     ```
 
-    有关详细信息，请参阅 [az ml datastore attach-blob](/cli/azure/ext/azure-cli-ml/ml/datastore#ext-azure-cli-ml-az-ml-datastore-attach-blob)。
+    有关详细信息，请参阅 [az ml datastore attach-blob](/cli/azure/ml/datastore#az_ml_datastore_attach-blob)。
 
 + 将文件上传到数据存储。
 
@@ -120,7 +120,7 @@ az extension remove -n azure-cli-ml
     az ml datastore upload  -n datastorename -p sourcepath
     ```
 
-    有关详细信息，请参阅 [az ml datastore upload](/cli/azure/ext/azure-cli-ml/ml/datastore#ext-azure-cli-ml-az-ml-datastore-upload)。
+    有关详细信息，请参阅 [az ml datastore upload](/cli/azure/ml/datastore#az_ml_datastore_upload)。
 
 + 将某个 AKS 群集附加为计算目标。
 
@@ -128,7 +128,7 @@ az extension remove -n azure-cli-ml
     az ml computetarget attach aks -n myaks -i myaksresourceid -g myresourcegroup -w myworkspace
     ```
 
-    有关详细信息，请参阅 [az ml computetarget attach aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/attach#ext-azure-cli-ml-az-ml-computetarget-attach-aks)
+    有关详细信息，请参阅 [az ml computetarget attach aks](/cli/azure/ml/computetarget/attach#az_ml_computetarget_attach-aks)
 
 ### <a name="compute-clusters"></a>计算群集
 
@@ -165,7 +165,7 @@ az extension remove -n azure-cli-ml
         az ml computetarget amlcompute identity assign --name cpu-cluster '[system]'
         ```
 
-有关详细信息，请参阅 [az ml computetarget create amlcompute](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)。
+有关详细信息，请参阅 [az ml computetarget create amlcompute](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_amlcompute)。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-note.md)]
 
@@ -180,7 +180,7 @@ az extension remove -n azure-cli-ml
     az ml computetarget create computeinstance -n cpu -s "STANDARD_D3_V2" -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget create computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-computeinstance)。
+    有关详细信息，请参阅 [az ml computetarget create computeinstance](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_computeinstance)。
 
 + 停止 computeinstance。
 
@@ -188,7 +188,7 @@ az extension remove -n azure-cli-ml
     az ml computetarget computeinstance stop -n cpu -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget computeinstance stop](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop)。
+    有关详细信息，请参阅 [az ml computetarget computeinstance stop](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_stop)。
 
 + 启动 computeinstance。
 
@@ -196,7 +196,7 @@ az extension remove -n azure-cli-ml
     az ml computetarget computeinstance start -n cpu -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget computeinstance start](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start)。
+    有关详细信息，请参阅 [az ml computetarget computeinstance start](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_start)。
 
 + 重启 computeinstance。
 
@@ -204,7 +204,7 @@ az extension remove -n azure-cli-ml
     az ml computetarget computeinstance restart -n cpu -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget computeinstance restart](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart)。
+    有关详细信息，请参阅 [az ml computetarget computeinstance restart](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_restart)。
 
 + 删除 computeinstance。
 
@@ -212,7 +212,7 @@ az extension remove -n azure-cli-ml
     az ml computetarget delete -n cpu -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget delete computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget#ext-azure-cli-ml-az-ml-computetarget-delete)。
+    有关详细信息，请参阅 [az ml computetarget delete computeinstance](/cli/azure/ml/computetarget#az_ml_computetarget_delete)。
 
 
 ## <a name="run-experiments"></a><a id="experiments"></a>运行试验
@@ -230,7 +230,7 @@ az extension remove -n azure-cli-ml
     >
     > 可在此 [JSON 文件](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)中找到完整的 runconfig 架构。 该架构通过每个对象的 `description` 键自行记录。 此外，还有可能值的枚举，在末尾还有模板代码片段。
 
-    有关详细信息，请参阅 [az ml run submit-script](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-submit-script)。
+    有关详细信息，请参阅 [az ml run submit-script](/cli/azure/ml/run#az_ml_run_submit_script)。
 
 * 查看试验列表：
 
@@ -238,7 +238,7 @@ az extension remove -n azure-cli-ml
     az ml experiment list
     ```
 
-    有关详细信息，请参阅 [az ml experiment list](/cli/azure/ext/azure-cli-ml/ml/experiment#ext-azure-cli-ml-az-ml-experiment-list)。
+    有关详细信息，请参阅 [az ml experiment list](/cli/azure/ml/experiment#az_ml_experiment_list)。
 
 ### <a name="hyperdrive-run"></a>HyperDrive 运行
 
@@ -282,7 +282,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 
     如需用于定义数据集的 JSON 文件的格式信息，请使用 `az ml dataset register --show-template`。
 
-    有关详细信息，请参阅 [az ml dataset register](/cli/azure/ext/azure-cli-ml/ml/dataset#ext-azure-cli-ml-az-ml-dataset-register)。
+    有关详细信息，请参阅 [az ml dataset register](/cli/azure/ml/dataset#az_ml_dataset_register)。
 
 + 列出工作区中的所有数据集：
 
@@ -290,7 +290,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml dataset list
     ```
 
-    有关详细信息，请参阅 [az ml dataset list](/cli/azure/ext/azure-cli-ml/ml/dataset#ext-azure-cli-ml-az-ml-dataset-list)。
+    有关详细信息，请参阅 [az ml dataset list](/cli/azure/ml/dataset#az_ml_dataset_list)。
 
 + 获取数据集的详细信息：
 
@@ -298,7 +298,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml dataset show -n dataset-name
     ```
 
-    有关详细信息，请参阅 [az ml dataset show](/cli/azure/ext/azure-cli-ml/ml/dataset#ext-azure-cli-ml-az-ml-dataset-show)。
+    有关详细信息，请参阅 [az ml dataset show](/cli/azure/ml/dataset#az_ml_dataset_show)。
 
 + 取消注册数据集：
 
@@ -306,7 +306,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml dataset unregister -n dataset-name
     ```
 
-    有关详细信息，请参阅 [az ml dataset unregister](/cli/azure/ext/azure-cli-ml/ml/dataset#ext-azure-cli-ml-az-ml-dataset-archive)。
+    有关详细信息，请参阅 [az ml dataset unregister](/cli/azure/ml/dataset#az_ml_dataset_archive)。
 
 ## <a name="environment-management"></a>环境管理
 
@@ -318,7 +318,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml environment scaffold -n myenv -d myenvdirectory
     ```
 
-    有关详细信息，请参阅 [az ml environment scaffold](/cli/azure/ext/azure-cli-ml/ml/environment#ext-azure-cli-ml-az-ml-environment-scaffold)。
+    有关详细信息，请参阅 [az ml environment scaffold](/cli/azure/ml/environment#az_ml_environment_scaffold)。
 
 + 注册环境：
 
@@ -326,7 +326,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml environment register -d myenvdirectory
     ```
 
-    有关详细信息，请参阅 [az ml environment register](/cli/azure/ext/azure-cli-ml/ml/environment#ext-azure-cli-ml-az-ml-environment-register)。
+    有关详细信息，请参阅 [az ml environment register](/cli/azure/ml/environment#az_ml_environment_register)。
 
 + 列出已注册的环境：
 
@@ -334,7 +334,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml environment list
     ```
 
-    有关详细信息，请参阅 [az ml environment list](/cli/azure/ext/azure-cli-ml/ml/environment#ext-azure-cli-ml-az-ml-environment-list)。
+    有关详细信息，请参阅 [az ml environment list](/cli/azure/ml/environment#az_ml_environment_list)。
 
 + 下载已注册的环境：
 
@@ -342,7 +342,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml environment download -n myenv -d downloaddirectory
     ```
 
-    有关详细信息，请参阅 [az ml environment download](/cli/azure/ext/azure-cli-ml/ml/environment#ext-azure-cli-ml-az-ml-environment-download)。
+    有关详细信息，请参阅 [az ml environment download](/cli/azure/ml/environment#az_ml_environment_download)。
 
 ### <a name="environment-configuration-schema"></a>环境配置架构
 
@@ -413,7 +413,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml pipeline create -n mypipeline -y mypipeline.yml
     ```
 
-    有关详细信息，请参阅 [az ml pipeline create](/cli/azure/ext/azure-cli-ml/ml/pipeline#ext-azure-cli-ml-az-ml-pipeline-create)。
+    有关详细信息，请参阅 [az ml pipeline create](/cli/azure/ml/pipeline#az_ml_pipeline_create)。
 
     有关管道 YAML 文件的详细信息，请参阅[在 YAML 中定义机器学习管道](reference-pipeline-yaml.md)。
 
@@ -423,7 +423,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml run submit-pipeline -n myexperiment -y mypipeline.yml
     ```
 
-    有关详细信息，请参阅 [az ml run submit-pipeline](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-submit-pipeline)。
+    有关详细信息，请参阅 [az ml run submit-pipeline](/cli/azure/ml/run#az_ml_run_submit_pipeline)。
 
     有关管道 YAML 文件的详细信息，请参阅[在 YAML 中定义机器学习管道](reference-pipeline-yaml.md)。
 
@@ -433,7 +433,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml pipeline create-schedule -n myschedule -e myexpereiment -i mypipelineid -y myschedule.yml
     ```
 
-    有关详细信息，请参阅 [az ml pipeline create-schedule](/cli/azure/ext/azure-cli-ml/ml/pipeline#ext-azure-cli-ml-az-ml-pipeline-create-schedule)。
+    有关详细信息，请参阅 [az ml pipeline create-schedule](/cli/azure/ml/pipeline#az_ml_pipeline_create-schedule)。
 
     有关管道计划 YAML 文件的详细信息，请参阅[在 YAML 中定义机器学习管道](reference-pipeline-yaml.md#schedules)。
 
@@ -447,14 +447,14 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml model register -n mymodel -p sklearn_regression_model.pkl
     ```
 
-    有关详细信息，请参阅 [az ml model register](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-register)。
+    有关详细信息，请参阅 [az ml model register](/cli/azure/ml/model#az_ml_model_register)。
 
 + **（可选）** 分析模型以获取部署的最佳 CPU 和内存值。
     ```azurecli-interactive
     az ml model profile -n myprofile -m mymodel:1 --ic inferenceconfig.json -d "{\"data\": [[1,2,3,4,5,6,7,8,9,10],[10,9,8,7,6,5,4,3,2,1]]}" -t myprofileresult.json
     ```
 
-    有关详细信息，请参阅 [az ml model profile](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-profile)。
+    有关详细信息，请参阅 [az ml model profile](/cli/azure/ml/model#az_ml_model_profile)。
 
 + 将模型部署到 AKS
     ```azurecli-interactive
@@ -465,7 +465,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     
     有关部署配置文件架构的详细信息，请参阅[部署配置架构](#deploymentconfig)。
 
-    有关详细信息，请参阅 [az ml model deploy](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy)。
+    有关详细信息，请参阅 [az ml model deploy](/cli/azure/ml/model#az_ml_model_deploy)。
 
 <a id="inferenceconfig"></a>
 
@@ -491,6 +491,6 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 
 ## <a name="next-steps"></a>后续步骤
 
-* [机器学习 CLI 扩展的命令参考](/cli/azure/ext/azure-cli-ml/ml)。
+* [机器学习 CLI 扩展的命令参考](/cli/azure/ml)。
 
 * [使用 Azure Pipelines 训练和部署机器学习模型](/azure/devops/pipelines/targets/azure-machine-learning)

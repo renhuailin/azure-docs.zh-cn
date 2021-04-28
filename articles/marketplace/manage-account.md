@@ -7,12 +7,12 @@ ms.topic: article
 author: varsha-sarah
 ms.author: vavargh
 ms.date: 04/07/2021
-ms.openlocfilehash: c76d9d06425405cf7f43e089cb9c2995e30410ee
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 8edac35fd83ef5dbf122e7f0959564fa072fbadd
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107873"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144918"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心管理商业市场帐户
 
@@ -179,7 +179,7 @@ ms.locfileid: "107107873"
 
 ## <a name="create-a-billing-profile"></a>创建计费对象信息
 
-如果要发布 [Dynamics 365 for Customer Engagement & Power Apps](./partner-center-portal/create-new-customer-engagement-offer.md) 或 [Dynamics 365 for Operations](./partner-center-portal/create-new-operations-offer.md) 产品/服务，则需要填写计费对象信息。
+如果要发布 [Dynamics 365 for Customer Engagement & Power Apps](dynamics-365-customer-engage-offer-setup.md) 或 [Dynamics 365 for Operations](./partner-center-portal/create-new-operations-offer.md) 产品/服务，则需要填写计费对象信息。
 
 帐单邮寄地址是通过你的法律实体预填充的，可以稍后更新此地址。 税务和增值税 ID 字段对于某些国家/地区是必填字段，对于其他国家/地区是可选字段。 无法编辑国家/地区名称和公司名称。
 
@@ -189,7 +189,7 @@ ms.locfileid: "107107873"
 
 ## <a name="multi-user-account-management"></a>多用户帐户管理
 
-合作伙伴中心使用 [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) 进行多用户帐户访问和管理。 组织的 Azure AD 会在注册过程中自动与合作伙伴中心帐户关联。
+合作伙伴中心使用 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) 进行多用户帐户访问和管理。 组织的 Azure AD 会在注册过程中自动与合作伙伴中心帐户关联。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,14 +9,14 @@ ms.subservice: service
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 03/10/2021
+ms.date: 04/17/2021
 ms.author: sstein
-ms.openlocfilehash: 9827a40b2ebc91c17ad7b5457259b8d82565edee
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d0522fe2c8b6d6b623903a720e6c8e760bd6aa92
+ms.sourcegitcommit: 089c2bd1ac4861f43c4b89396d3d056a6eef4913
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640090"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107602083"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例中的新增功能有哪些？
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -95,6 +95,7 @@ Azure SQL 数据库和 Azure SQL 托管实例的相关文档已拆分为单独�
 
 |问题  |发现日期  |状态  |解决日期  |
 |---------|---------|---------|---------|
+|[更改连接类型不会影响通过故障转移组终结点的连接](#changing-the-connection-type-does-not-affect-connections-through-the-failover-group-endpoint)|2021 年 1 月|具有解决方法||
 |[使用 @query 参数时，过程 sp_send_dbmail 可能会暂时失败](#procedure-sp_send_dbmail-may-transiently-fail-when--parameter-is-used)|2021 年 1 月|具有解决方法||
 |[从服务器信任组删除托管实例后，可以执行分布式事务](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|2020 年 10 月|具有解决方法||
 |[执行托管实例缩放操作后无法执行分布式事务](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|2020 年 10 月|具有解决方法||
@@ -126,6 +127,12 @@ Azure SQL 数据库和 Azure SQL 托管实例的相关文档已拆分为单独�
 |如果源数据库包含内存中 OLTP 对象，则从“业务关键”层级到“常规用途”层级的时间点数据库还原将不会成功。||已解决|2019 年 10 月|
 |使用具有安全连接的外部（非 Azure）邮件服务器时出现数据库邮件功能问题||已解决|2019 年 10 月|
 |SQL 托管实例不支持包含的数据库||已解决|2019 年 8 月|
+
+### <a name="changing-the-connection-type-does-not-affect-connections-through-the-failover-group-endpoint"></a>更改连接类型不会影响通过故障转移组终结点的连接
+
+如果某个实例加入[自动故障转移组](https://docs.microsoft.com/azure/azure-sql/database/auto-failover-group-overview)，则更改该实例的[连接类型](https://docs.microsoft.com/azure/azure-sql/managed-instance/connection-types-overview)对通过故障转移组侦听器终结点建立的连接不起作用。
+
+**解决方法**：更改连接类型后删除并重新创建自动故障转移组。
 
 ### <a name="procedure-sp_send_dbmail-may-transiently-fail-when-query-parameter-is-used"></a>使用 @query 参数时，过程 sp_send_dbmail 可能会暂时失败
 

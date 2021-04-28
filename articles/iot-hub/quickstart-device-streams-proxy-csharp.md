@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: references_regions, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 3bca2701b708bfb957dce1c954f43f60f55b7dae
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: e327a8ec5ef2df8419bd4e66a5ae92395f964f1c
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479911"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891133"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>快速入门：使用 C# 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案（预览）
 
@@ -37,7 +37,7 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 
 * 本快速入门中运行的两个示例应用程序是使用 C# 编写的。 开发计算机上需要有 .NET Core SDK 2.1.0 或更高版本。
 
-    可以[从 .NET 下载适用于多个平台的 .NET Core SDK](https://www.microsoft.com/net/download/all)。
+    可以[从 .NET 下载适用于多个平台的 .NET Core SDK](https://dotnet.microsoft.com/download)。
 
     使用以下命令验证开发计算机上 C# 的当前版本：
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: reference
 ms.date: 03/30/2021
-ms.openlocfilehash: 53e96f4057b35fa6c849ec643ac1c9e0c7d5b402
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 90ee8ad1113f3c62ff5a1a40440d1b4e9a7a66eb
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076541"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133504"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>有关在 Azure 逻辑应用和 Power Automate 的表达式中使用函数的参考指南
 
@@ -682,14 +682,14 @@ addProperty(<object>, '<property>', <value>)
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*object*> | 是 | 对象 | 要将属性添加到的 JSON 对象 |
+| <*object*> | 是 | Object | 要将属性添加到的 JSON 对象 |
 | <*property*> | 是 | 字符串 | 要添加的属性的名称 |
 | <*value*> | 是 | 任意 | 属性的值 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*updated-object*> | 对象 | 具有指定属性的更新后 JSON 对象 |
+| <*updated-object*> | Object | 具有指定属性的更新后 JSON 对象 |
 ||||
 
 若要向现有属性中添加父属性，请使用 `setProperty()` 函数，而不是 `addProperty()` 函数。 否则，函数仅返回子对象作为输出。
@@ -700,7 +700,7 @@ setProperty(<object>['<parent-property>'], '<parent-property>', addProperty(<obj
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*object*> | 是 | 对象 | 要将属性添加到的 JSON 对象 |
+| <*object*> | 是 | Object | 要将属性添加到的 JSON 对象 |
 | <*parent-property*> | 是 | 字符串 | 要在其中添加子属性的父属性的名称 |
 | <*child-property*> | 是 | 字符串 | 要添加的子属性的名称 |
 | <*value*> | 是 | 任意 | 要为指定属性设置的值 |
@@ -708,7 +708,7 @@ setProperty(<object>['<parent-property>'], '<parent-property>', addProperty(<obj
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*updated-object*> | 对象 | 设置了其属性的更新后 JSON 对象 |
+| <*updated-object*> | Object | 设置了其属性的更新后 JSON 对象 |
 ||||
 
 *示例 1*
@@ -868,12 +868,12 @@ and(<expression1>, <expression2>, ...)
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression1*>, <*expression2*>, ... | 是 | 布尔 | 要检查的表达式 |
+| <*expression1*>, <*expression2*>, ... | 是 | Boolean | 要检查的表达式 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | -----| ----------- |
-| true 或 false | 布尔 | 当所有表达式均为 true 时返回 true。 当至少一个表达式为 false 时返回 false。 |
+| true 或 false | Boolean | 当所有表达式均为 true 时返回 true。 当至少一个表达式为 false 时返回 false。 |
 ||||
 
 *示例 1*
@@ -1252,7 +1252,7 @@ contains([<collection>], '<value>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | 布尔 | 当找到该项时返回 true。 找不到时返回 false。 |
+| true 或 false | Boolean | 当找到该项时返回 true。 找不到时返回 false。 |
 ||||
 
 *示例 1*
@@ -1284,7 +1284,7 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | 字符串 | 包含时间戳的字符串 |
-| <*destinationTimeZone*> | 是 | 字符串 | 目标时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
+| <*destinationTimeZone*> | 是 | 字符串 | 目标时区的名称。 如需了解时区名称，请参阅 [Microsoft Windows 默认时区](/windows-hardware/manufacture/desktop/default-time-zones)，但可能需要删除时区名称中的所有标点。 |
 | <*format*> | 否 | 字符串 | [单一格式的说明符](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddTHH:mm:ss.fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
@@ -1326,8 +1326,8 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | 字符串 | 包含时间戳的字符串 |
-| <*sourceTimeZone*> | 是 | 字符串 | 源时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
-| <*destinationTimeZone*> | 是 | 字符串 | 目标时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
+| <*sourceTimeZone*> | 是 | 字符串 | 源时区的名称。 如需了解时区名称，请参阅 [Microsoft Windows 默认时区](/windows-hardware/manufacture/desktop/default-time-zones)，但可能需要删除时区名称中的所有标点。 |
+| <*destinationTimeZone*> | 是 | 字符串 | 目标时区的名称。 如需了解时区名称，请参阅 [Microsoft Windows 默认时区](/windows-hardware/manufacture/desktop/default-time-zones)，但可能需要删除时区名称中的所有标点。 |
 | <*format*> | 否 | 字符串 | [单一格式的说明符](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddTHH:mm:ss.fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
@@ -1369,7 +1369,7 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | 字符串 | 包含时间戳的字符串 |
-| <*sourceTimeZone*> | 是 | 字符串 | 源时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
+| <*sourceTimeZone*> | 是 | 字符串 | 源时区的名称。 如需了解时区名称，请参阅 [Microsoft Windows 默认时区](/windows-hardware/manufacture/desktop/default-time-zones)，但可能需要删除时区名称中的所有标点。 |
 | <*format*> | 否 | 字符串 | [单一格式的说明符](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddTHH:mm:ss.fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
@@ -1708,7 +1708,7 @@ div(<dividend>, <divisor>)
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*quotient-result*> | 整数或浮点数 | 将第一个数字除以第二个数字后得到的结果。 如果被除数或除数为浮点类型，则结果也是浮点类型。 <p><p>**注意**：若要将浮点结果转换为整数，请尝试在逻辑应用中[创建一个函数并在 Azure 中调用该函数](../logic-apps/logic-apps-azure-functions.md)。 |
+| <*quotient-result*> | 整数或浮点数 | 将第一个数字除以第二个数字后得到的结果。 如果被除数或除数为浮点类型，则结果也是浮点类型。 <p><p>**注意**：若要将浮点结果转换为整数，请尝试在逻辑应用中 [创建一个函数并在 Azure 中调用该函数](../logic-apps/logic-apps-azure-functions.md)。 |
 ||||
 
 *示例 1*
@@ -1781,7 +1781,7 @@ empty([<collection>])
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | 布尔 | 当集合为空时返回 true。 不为空时返回 false。 |
+| true 或 false | Boolean | 当集合为空时返回 true。 不为空时返回 false。 |
 ||||
 
 *示例*
@@ -1818,7 +1818,7 @@ endsWith('<text>', '<searchText>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false  | 布尔 | 当找到结尾子字符串时返回 true。 找不到时返回 false。 |
+| true 或 false  | Boolean | 当找到结尾子字符串时返回 true。 找不到时返回 false。 |
 ||||
 
 *示例 1*
@@ -1859,7 +1859,7 @@ equals('<object1>', '<object2>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | 布尔 | 当两者相等时返回 true。 不相等时返回 false。 |
+| true 或 false | Boolean | 当两者相等时返回 true。 不相等时返回 false。 |
 ||||
 
 *示例*
@@ -2198,7 +2198,7 @@ greater('<value>', '<compareTo>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | 布尔 | 当第一个值大于第二个值时返回 true。 当第一个值等于或小于第二个值时返回 false。 |
+| true 或 false | Boolean | 当第一个值大于第二个值时返回 true。 当第一个值等于或小于第二个值时返回 false。 |
 ||||
 
 *示例*
@@ -2235,7 +2235,7 @@ greaterOrEquals('<value>', '<compareTo>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | 布尔 | 当第一个值大于或等于第二个值时返回 true。 当第一个值小于第二个值时返回 false。 |
+| true 或 false | Boolean | 当第一个值大于或等于第二个值时返回 true。 当第一个值小于第二个值时返回 false。 |
 ||||
 
 *示例*
@@ -2300,7 +2300,7 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression*> | 是 | 布尔 | 要检查的表达式 |
+| <*expression*> | 是 | Boolean | 要检查的表达式 |
 | <*valueIfTrue*> | 是 | 任意 | 当表达式为 true 时要返回的值 |
 | <*valueIfFalse*> | 是 | 任意 | 当表达式为 false 时要返回的值 |
 |||||
@@ -2834,7 +2834,7 @@ less('<value>', '<compareTo>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | 布尔 | 当第一个值小于第二个值时返回 true。 当第一个值等于或大于第二个值时返回 false。 |
+| true 或 false | Boolean | 当第一个值小于第二个值时返回 true。 当第一个值等于或大于第二个值时返回 false。 |
 ||||
 
 *示例*
@@ -2871,7 +2871,7 @@ lessOrEquals('<value>', '<compareTo>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false  | 布尔 | 当第一个值小于或等于第二个值时返回 true。 当第一个值大于第二个值时返回 false。 |
+| true 或 false  | Boolean | 当第一个值小于或等于第二个值时返回 true。 当第一个值大于第二个值时返回 false。 |
 ||||
 
 *示例*
@@ -3077,12 +3077,12 @@ not(<expression>)
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression*> | 是 | 布尔 | 要检查的表达式 |
+| <*expression*> | 是 | Boolean | 要检查的表达式 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | 布尔 | 当表达式为 false 时返回 true。 当表达式为 true 时返回 false。 |
+| true 或 false | Boolean | 当表达式为 false 时返回 true。 当表达式为 true 时返回 false。 |
 ||||
 
 *示例 1*
@@ -3126,12 +3126,12 @@ or(<expression1>, <expression2>, ...)
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression1*>, <*expression2*>, ... | 是 | 布尔 | 要检查的表达式 |
+| <*expression1*>, <*expression2*>, ... | 是 | Boolean | 要检查的表达式 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | 布尔 | 当至少一个表达式为 true 时返回 true。 当所有表达式均为 false 时返回 false。 |
+| true 或 false | Boolean | 当至少一个表达式为 true 时返回 true。 当所有表达式均为 false 时返回 false。 |
 ||||
 
 *示例 1*
@@ -3369,13 +3369,13 @@ removeProperty(<object>, '<property>')
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*object*> | 是 | 对象 | 要从中删除属性的 JSON 对象 |
+| <*object*> | 是 | Object | 要从中删除属性的 JSON 对象 |
 | <*property*> | 是 | 字符串 | 要删除的属性的名称 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*updated-object*> | 对象 | 不具有指定属性的更新后 JSON 对象 |
+| <*updated-object*> | Object | 不具有指定属性的更新后 JSON 对象 |
 ||||
 
 若要从现有属性中删除子属性，请使用以下语法：
@@ -3386,14 +3386,14 @@ removeProperty(<object>['<parent-property>'], '<child-property>')
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*object*> | 是 | 对象 | 要删除其属性的 JSON 对象 |
+| <*object*> | 是 | Object | 要删除其属性的 JSON 对象 |
 | <*parent-property*> | 是 | 字符串 | 要删除其子属性的父属性的名称 |
 | <*child-property*> | 是 | 字符串 | 要删除的子属性的名称 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*updated-object*> | 对象 | 删除了其子属性的已更新 JSON 对象 |
+| <*updated-object*> | Object | 删除了其子属性的已更新 JSON 对象 |
 ||||
 
 *示例 1*
@@ -3592,7 +3592,7 @@ setProperty(<object>, '<property>', <value>)
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*object*> | 是 | 对象 | 要设置其属性的 JSON 对象 |
+| <*object*> | 是 | Object | 要设置其属性的 JSON 对象 |
 | <*property*> | 是 | 字符串 | 要设置的现有属性或新属性的名称 |
 | <*value*> | 是 | 任意 | 要为指定属性设置的值 |
 |||||
@@ -3605,7 +3605,7 @@ setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<obj
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*object*> | 是 | 对象 | 要设置其属性的 JSON 对象 |
+| <*object*> | 是 | Object | 要设置其属性的 JSON 对象 |
 | <*parent-property*> | 是 | 字符串 | 要设置其子属性的父属性的名称 |
 | <*child-property*> | 是 | 字符串 | 要设置的子属性的名称 |
 | <*value*> | 是 | 任意 | 要为指定属性设置的值 |
@@ -3613,7 +3613,7 @@ setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<obj
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*updated-object*> | 对象 | 设置了其属性的更新后 JSON 对象 |
+| <*updated-object*> | Object | 设置了其属性的更新后 JSON 对象 |
 ||||
 
 *示例 1*
@@ -3857,7 +3857,7 @@ startsWith('<text>', '<searchText>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false  | 布尔 | 当找到起始子字符串时返回 true。 找不到时返回 false。 |
+| true 或 false  | Boolean | 当找到起始子字符串时返回 true。 找不到时返回 false。 |
 ||||
 
 *示例 1*
@@ -4749,7 +4749,7 @@ xml('<value>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*xml-version*> | 对象 | 指定的字符串或 JSON 对象的编码 XML |
+| <*xml-version*> | Object | 指定的字符串或 JSON 对象的编码 XML |
 ||||
 
 *示例 1*

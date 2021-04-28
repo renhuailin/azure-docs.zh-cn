@@ -5,18 +5,18 @@ description: 了解如何使用 SmartNoise 开放源代码库将差异隐私最�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, responsible-ml
+ms.topic: how-to
+ms.custom: responsible-ml
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 01/21/2020
-ms.openlocfilehash: 62a002569696da4ef18e7bd967f027eb8247ef65
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81c93d33b752a3620163169d0f2b8f900a5b9052
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98681398"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885139"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>在 Azure 机器学习（预览版）中使用差分隐私
 
@@ -145,7 +145,7 @@ Privacy usage: approximate {
 
 | 统计信息    | 机制 | 实用程序  |
 | ------------- |------------|------------|
-| Count         | 高斯   | 强制转换       |
+| 计数         | 高斯   | 强制转换       |
 | 直方图     | 几何  | 钳位   |
 | 平均值          | 拉普拉斯    | 数字化   |
 | 分位数     |            | 筛选器     |

@@ -2,15 +2,15 @@
 title: 迁移到适用于 HDInsight 的 Azure 资源管理器工具
 description: 如何迁移到适用于 HDInsight 群集的 Azure Resource Manager 开发工具
 ms.service: hdinsight
-ms.custom: hdinsightactive, devx-track-azurecli
+ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 02/21/2018
-ms.openlocfilehash: a8f808cd43f96f26db0de28e8059d02d9488320a
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 3794d2b552bcbcc91ce463d57bd6837fc6978640
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102434655"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074126"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>迁移到适用于 HDInsight 群集的基于 Azure Resource Manager 的开发工具
 

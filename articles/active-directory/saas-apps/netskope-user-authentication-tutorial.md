@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 78ef49740c3e74c4ad5a30838d9721969ca70b36
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: df740794280350bbfcdc48e3d55b45f7e0a7b85c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516794"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124188"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-user-authentication"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Netskope 用户身份验证的集成
 
@@ -73,7 +73,7 @@ ms.locfileid: "107516794"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<tenantname>.goskope.com/<customer entered string>`
 
@@ -197,8 +197,8 @@ ms.locfileid: "107516794"
 
 * 在 Azure 门户中单击“测试此应用程序”后，应该会自动登录到为其设置了 SSO 的 Netskope 用户身份验证。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Netskope 用户身份验证磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页，以便启动登录流；如果是在 IDP 模式下配置的，则应该会自动登录到为其设置了 SSO 的 Netskope 用户身份验证。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Netskope 用户身份验证磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页，以便启动登录流；如果是在 IDP 模式下配置的，则应该会自动登录到为其设置了 SSO 的 Netskope 用户身份验证。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Netskope 用户身份验证后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 Netskope 用户身份验证后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

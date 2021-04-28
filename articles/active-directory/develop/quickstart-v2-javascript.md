@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 8e35342bd704f662d41f676f58e2cc14b54f29a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c71e7deeb746a08ccc94784ef2b1115b434a6961
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023378"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071879"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入门：在 JavaScript SPA 中登录用户并获得访问令牌
 
@@ -49,7 +49,7 @@ ms.locfileid: "105023378"
 >
 > 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
-> 1. 搜索并选择“Azure Active Directory”  。
+> 1. 搜索并选择“Azure Active Directory”。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 > 1. 输入应用程序的 **名称**。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 > 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。 
@@ -207,7 +207,7 @@ npm install msal
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-|Where  | 说明 |
+|其中  | 说明 |
 |---------|---------|
 |`clientId`     | 在 Azure 门户中注册的应用程序的应用程序 ID|
 |`authority`    | （可选）支持帐户类型的颁发机构 URL，如前面的配置部分所述。 默认颁发机构为 `https://login.microsoftonline.com/common`。 |
@@ -235,7 +235,7 @@ myMSALObj.loginPopup(loginRequest)
 });
 ```
 
-|Where  | 说明 |
+|其中  | 说明 |
 |---------|---------|
 | `scopes`   | （可选）包含在登录时为了获得用户许可而请求的范围。 例如：`[ "user.read" ]`（针对 Microsoft Graph）或 `[ "<Application ID URL>/scope" ]`（针对自定义 Web API，即 `api://<Application ID>/access_as_user`）。 |
 
@@ -264,7 +264,7 @@ myMSALObj.acquireTokenSilent(tokenRequest)
     });
 ```
 
-|Where  | 说明 |
+|其中  | 说明 |
 |---------|---------|
 | `scopes`   | 包含请求的需要在 API 的访问令牌中返回的作用域。 例如：`[ "mail.read" ]`（针对 Microsoft Graph）或 `[ "<Application ID URL>/scope" ]`（针对自定义 Web API，即 `api://<Application ID>/access_as_user`）。|
 

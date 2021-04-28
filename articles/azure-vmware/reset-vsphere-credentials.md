@@ -3,12 +3,12 @@ title: 重置 Azure VMware 解决方案的 vSphere 凭据
 description: 了解如何重置 Azure VMware 解决方案私有云的 vSphere 凭据，并确保 HCX 连接器具有最新的 vSphere 凭据。
 ms.topic: how-to
 ms.date: 03/31/2021
-ms.openlocfilehash: 793b79e42a0adbca54804d1b66102736aff22d7a
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 3533de03cbea0014a8a50cd0103f96273f0680a7
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109095"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108145296"
 ---
 # <a name="reset-vsphere-credentials-for-azure-vmware-solution"></a>重置 Azure VMware 解决方案的 vSphere 凭据
 
@@ -21,7 +21,7 @@ ms.locfileid: "106109095"
  首先，让我们重置 Azure VMare 解决方案组件凭据。 你的 vCenter Server CloudAdmin 和 NSX-T 管理员凭据不会过期；但是，你可以按照这些步骤为这些帐户生成新密码。
 
 > [!NOTE]
-> 如果将 CloudAdmin 凭据用于连接服务（如 HCX、vRealize Orchestrator、vRealizae Operations Manager 或 VMware Horizon），则更新密码后，连接会停止工作。  在启动密码轮换之前应停止这些服务。  否则可能会导致 vCenter CloudAdmin 和 NSX-T 管理员帐户临时锁定，因为这些服务将使用你的旧凭据继续调用。  有关为连接服务设置单独帐户的详细信息，请参阅[访问和标识的概念](https://docs.microsoft.com/azure/azure-vmware/concepts-identity)。
+> 如果将 CloudAdmin 凭据用于连接服务（如 HCX、vRealize Orchestrator、vRealizae Operations Manager 或 VMware Horizon），则更新密码后，连接会停止工作。  在启动密码轮换之前应停止这些服务。  否则可能会导致 vCenter CloudAdmin 和 NSX-T 管理员帐户临时锁定，因为这些服务将使用你的旧凭据继续调用。  有关为连接服务设置单独帐户的详细信息，请参阅[访问和标识的概念](./concepts-identity.md)。
 
 1. 在 Azure 门户中，打开 Azure Cloud Shell 会话。
 

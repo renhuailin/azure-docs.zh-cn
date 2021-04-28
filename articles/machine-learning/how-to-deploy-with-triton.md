@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
 ms.date: 02/16/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, devx-track-azurecli
-ms.openlocfilehash: 8775696a35bfccc363aa2c6ec06c6c44115916b9
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 971a6474b3e48f70c1e4e96a784bf1d92709cf71
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479264"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885211"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>利用 Triton 推理服务器实现的高性能服务（预览） 
 
@@ -58,7 +58,7 @@ Triton 是针对推理进行了优化的框架。 它提供更好的 GPU 利用�
 
 * 系统将请求直接发送到 Triton 服务器。
 * Triton 对请求进行批处理，以最大程度利用 GPU。
-* 客户端使用 Triton URI 发出请求。 例如 `https://myservice.azureml.net/v2/models/${MODEL_NAME}/versions/${MODEL_VERSION}/infer`。
+* 客户端使用 Triton URI 发出请求。 例如，`https://myservice.azureml.net/v2/models/${MODEL_NAME}/versions/${MODEL_VERSION}/infer`。
 
 :::image type="content" source="./media/how-to-deploy-with-triton/triton-deploy.png" alt-text="仅使用 Triton 进行 Inferenceconfig 部署，无 Python 中间件":::
 
@@ -67,7 +67,7 @@ Triton 是针对推理进行了优化的框架。 它提供更好的 GPU 利用�
 * 已启用多个 [Gunicorn](https://gunicorn.org/) 辅助角色来并发处理传入请求。
 * 请求会转发到“Triton 服务器”。 
 * Triton 对请求进行批处理，以最大程度利用 GPU。
-* 客户端使用 Azure ML 评分 URI 发出请求。 例如 `https://myservice.azureml.net/score`。
+* 客户端使用 Azure ML 评分 URI 发出请求。 例如，`https://myservice.azureml.net/score`。
 
 :::image type="content" source="./media/how-to-deploy-with-triton/inference-config-deploy.png" alt-text="使用 Triton 和 Python 中间件进行部署":::
 
@@ -116,7 +116,7 @@ models
 az ml model register -n my_triton_model -p models --model-framework=Multi
 ```
 
-有关 `az ml model register` 的详细信息，请参阅[参考文档](/cli/azure/ext/azure-cli-ml/ml/model)。
+有关 `az ml model register` 的详细信息，请参阅[参考文档](/cli/azure/ml/model)。
 
 在 Azure 机器学习中注册模型时，`--model-path  -p` 参数的值必须为 Triton 的父文件夹的名称。  
 在以上示例中，`--model-path` 是“模型”。
@@ -339,7 +339,7 @@ print(local_service.scoring_uri)
 
 ---
 
-部署完成后将显示评分 URI。 对于此本地部署，则为 `http://localhost:6789/score`。 如果部署到云，则可以使用 [az ml service show](/cli/azure/ext/azure-cli-ml/ml/service#ext_azure_cli_ml_az_ml_service_show) CLI 命令来获取评分 URI。
+部署完成后将显示评分 URI。 对于此本地部署，则为 `http://localhost:6789/score`。 如果部署到云，则可以使用 [az ml service show](/cli/azure/ml/service#az_ml_service_show) CLI 命令来获取评分 URI。
 
 有关如何创建将推理请求发送到评分 URI 的客户端的信息，请参阅[使用部署为 Web 服务的模型](how-to-consume-web-service.md)。
 

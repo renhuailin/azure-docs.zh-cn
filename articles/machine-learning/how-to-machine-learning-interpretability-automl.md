@@ -5,25 +5,25 @@ description: 了解使用 Azure 机器学习 SDK 时如何获取解释，以了�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, automl, responsible-ml
+ms.topic: how-to
+ms.custom: automl, responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 535ff489060c8099ba3c695f2b615f3c38309698
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 716ed2920b1e731a8515b7f099e77853955d9943
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167934"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107884797"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>可解释性：自动化机器学习（预览版）中的模型说明
 
 
-
-本文介绍如何在 Azure 机器学习中获取自动机器学习 (AutoML) 的解释。 AutoML 有助于你了解生成的模型的特征重要性。 
+本文介绍如何在 Azure 机器学习中使用 Python SDK 获取自动化机器学习（自动化 ML）的说明。 自动化 ML 有助于你了解生成的模型的特征重要性。 
 
 默认情况下，1.0.85 之后的所有 SDK 版本设置 `model_explainability=True`。 在 SDK 版本 1.0.85 及更早版本中，用户需要在 `AutoMLConfig` 对象中设置 `model_explainability=True`，才能使用模型可解释性。 
+
 
 在本文中，学习如何：
 
@@ -34,7 +34,7 @@ ms.locfileid: "106167934"
 ## <a name="prerequisites"></a>先决条件
 
 - 可解释性特征。 运行 `pip install azureml-interpret` 以获取所需的包。
-- 构建 AutoML 试验的知识。 要详细了解如何使用 Azure 机器学习 SDK，请完成此[回归模型教程](tutorial-auto-train-models.md)，或参阅如何[配置 AutoML 试验](how-to-configure-auto-train.md)。
+- 生成自动化 ML 试验的知识。 有关如何使用 Azure 机器学习 SDK 的详细信息，请完成此[回归模型教程](tutorial-auto-train-models.md)，或参阅如何[配置自动化 ML 试验](how-to-configure-auto-train.md)。
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>训练最佳模型过程中的可解释性
 
@@ -105,11 +105,11 @@ automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_t
 
 ### <a name="initialize-the-mimic-explainer-for-feature-importance"></a>初始化模拟解释器以计算特征重要性
 
-若要生成自动化 ML 模型的解释，请使用 `MimicWrapper` 类。 可使用以下参数初始化 MimicWrapper：
+若要生成自动化 ML 模型的说明，请使用 `MimicWrapper` 类。 可使用以下参数初始化 MimicWrapper：
 
 - 解释器设置对象
 - 工作区
-- 用于解释 `fitted_model` AutoML 模型的代理项模型
+- 用于解释 `fitted_model` 自动化 ML 模型的代理项模型
 
 MimicWrapper 还获取 `automl_run` 对象，工程解释将上传到该对象。
 
@@ -128,7 +128,7 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
 
 ### <a name="use-mimic-explainer-for-computing-and-visualizing-engineered-feature-importance"></a>使用模拟解释器来计算并可视化工程特征重要性
 
-可以结合转换的测试样本在 MimicWrapper 中调用 `explain()` 方法，以获取生成的工程特征的特征重要性。 还可以登录到 [Azure 机器学习工作室](https://ml.azure.com/)，以便查看 AutoML 特征化器生成的工程特征的特征重要性值的仪表板可视化效果。
+可以结合转换的测试样本在 MimicWrapper 中调用 `explain()` 方法，以获取生成的工程特征的特征重要性。 还可以登录到 [Azure 机器学习工作室](https://ml.azure.com/)，以便查看自动化 ML 特征化器所生成的工程特征的特征重要性值的说明仪表板可视化效果。
 
 ```python
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
@@ -184,7 +184,7 @@ print(raw_explanations.get_feature_importance_dict())
 
 ## <a name="interpretability-during-inference"></a>推理过程中的可解释性
 
-本部分介绍如何使用在上一部分用于计算解释的解释器将 AutoML 模型操作化。
+本部分介绍如何使用解释器（在上一部分用于计算解释）将自动化 ML 模型操作化。
 
 ### <a name="register-the-model-and-the-scoring-explainer"></a>注册模型和评分解释器
 
@@ -321,9 +321,9 @@ if service.state == 'Healthy':
     print('raw_local_importance_values:\n{}\n'.format(output['raw_local_importance_values']))
 ```
 
-### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>在训练时进行可视化以发现数据和解释中的模式
+## <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>在训练时进行可视化以发现数据和解释中的模式
 
-可以在[机器学习工作室](https://ml.azure.com)中的工作区内可视化特征重要性图表。 AutoML 运行完成后，选择“查看模型详细信息”以查看特定的运行。 选择“解释”选项卡以查看解释可视化仪表板。
+可以在 [Azure 机器学习工作室](https://ml.azure.com)中的工作区内可视化特征重要性图表。 AutoML 运行完成后，选择“查看模型详细信息”以查看特定的运行。 选择“说明”选项卡以查看说明仪表板中的可视化效果。
 
 [![机器学习可解释性体系结构](./media/how-to-machine-learning-interpretability-automl/automl-explanation.png)](./media/how-to-machine-learning-interpretability-automl/automl-explanation.png#lightbox)
 

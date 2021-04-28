@@ -9,14 +9,13 @@ ms.reviewer: aashishb
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 11/16/2020
-ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: b6e6288f125da2a29a8eff56b64f327914f90cb4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.openlocfilehash: d879820c4cb960c4aa90820abed6ee99936a656c
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102520466"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107884329"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>对 Azure Kubernetes 服务中的机器学习 Web 服务使用 Azure AD 标识
 

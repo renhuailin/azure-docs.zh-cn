@@ -5,18 +5,18 @@ description: 了解如何理解和说明机器学习模型使用 Azure 机器学
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, responsible-ml
+ms.topic: how-to
+ms.custom: responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 02/25/2021
-ms.openlocfilehash: 44ccf6b6d2459b87040fcac7d9cdcd336cc7b82f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2adbeb66229f180963eb7d2e235db5e7bebb3ef9
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102522030"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107889009"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure 机器学习（预览版）中的模型可解释性
 
@@ -104,5 +104,6 @@ SDK 的 `azureml.interpret` 包支持使用以下数据集格式训练的模型�
 ## <a name="next-steps"></a>后续步骤
 
 - 参阅[操作指南](how-to-machine-learning-interpretability-aml.md)，为本地的模型训练以及 Azure 机器学习远程计算资源上的模型训练启用可解释性。 
+- 了解如何启用[自动机器学习模型的可解释性](how-to-machine-learning-interpretability-automl.md)。
 - 参阅[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)了解更多方案。 
 - 如果对文本方案的可解释性感兴趣，请参阅 [Interpret-text](https://github.com/interpretml/interpret-text)（[Interpret-Community](https://github.com/interpretml/interpret-community/) 的相关开源存储库）来了解用于 NLP 的可解释性技术。 `azureml.interpret` 包目前不支持这些技术，但你可以从[文本分类上的示例笔记本](https://github.com/interpretml/interpret-text/blob/master/notebooks/text_classification/text_classification_classical_text_explainer.ipynb)入手。

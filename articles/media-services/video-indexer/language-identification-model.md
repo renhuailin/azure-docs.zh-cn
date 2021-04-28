@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/12/2020
 ms.author: ellbe
-ms.openlocfilehash: 40f2e146956919e154f59d90b56a1b03379abbb2
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 3a71a29fdf4af10162e2f7961fb457d0e99b18e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600631"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "81687125"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>通过语言识别模型自动识别口述语言
 
@@ -27,7 +27,7 @@ ms.locfileid: "107600631"
 
 ## <a name="choosing-auto-language-identification-on-indexing"></a>在编制索引时选择自动语言识别
 
-使用 API 为视频编制索引或[重新编制索引](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video)时，请在 `sourceLanguage` 参数中选择 `auto detect` 选项。
+使用 API 为视频编制索引或[重新编制索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?)时，请在 `sourceLanguage` 参数中选择 `auto detect` 选项。
 
 使用门户时，请在[视频索引器](https://www.videoindexer.ai/)主页上转到你的帐户视频，并将鼠标悬停在要重新索引的视频的名称上。 在右下角单击重新索引按钮。 在“重新索引视频”对话框中，从“视频源语言”下拉框中选择“自动检测”。
 

@@ -7,13 +7,13 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
-ms.date: 3/17/2021
-ms.openlocfilehash: b626012ad825b263e4f837159a067ed1d817d93a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 4/15/2021
+ms.openlocfilehash: ff67d5150e6bb95e900d3a81e0025216ffb19471
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608454"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133378"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>与 Microsoft 销售团队和合作伙伴联合销售概述
 
@@ -80,13 +80,13 @@ Azure 的联合销售状态：
 - 市场服务费用从 20% 减少到 10%。 此折扣适用于你的通过商业市场销售的基础结构即服务 (IaaS) 解决方案或软件即服务 (SaaS) 解决方案。 有关详细信息，请参阅[商业市场服务费用](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees)。
 - 云解决方案提供商 (CSP) 合作伙伴获得 10% 的激励，可销售你的 IaaS 解决方案或 SaaS 产品/服务。 若要详细了解 CSP 计划，请参阅[云解决方案提供商计划](cloud-solution-providers.md)。
 - 通过 Azure 市场销售的产品/服务会计入客户的 Azure 消耗承诺。 符合条件的客户会在 Azure 门户中看到标记为“有资格获得 Azure 权益”的产品/服务。 有关详细信息，请参阅 [Azure 消耗承诺权益](azure-consumption-commitment-benefit.md)。
-- 达到“Azure IP 联合销售激励”状态或以联合销售就绪状态注册了 [Microsoft 业务应用程序 ISV Connect 计划](business-applications-isv-program.md)的产品/服务将在在线商店的产品/服务列表页上获得“Microsoft 首选解决方案”徽章。 徽章可在特定的行业垂直领域或解决方案领域提升产品/服务的质量、性能和满足客户需求的能力。
+- 达到“Azure IP 联合销售激励”状态或以联合销售就绪状态注册了 [Microsoft 业务应用程序 ISV Connect 计划](business-applications-isv-program.md)的产品/服务将在在线商店（[Azure 市场](https://azuremarketplace.microsoft.com/)和 [AppSource](https://appsource.microsoft.com/)）的产品/服务列表页上获得“Microsoft 首选解决方案”徽章。  产品/服务达到相应的状态后，首选解决方案徽章可能需要多达 30 天的时间才能显示在在线商店。 徽章可在特定的行业垂直领域或解决方案领域提升产品/服务的质量、性能和满足客户需求的能力。
 
 若要了解如何达到联合销售就绪和联合销售激励状态，请参阅[联合销售就绪和联合销售激励要求](co-sell-requirements.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解要求，请参阅[联合销售就绪和联合销售激励要求](co-sell-requirements.md)
-- 若要配置用于联合销售的产品/服务，请参阅[配置商业市场产品/服务的联合销售](commercial-marketplace-co-sell.md)
+- 若要配置用于联合销售的产品/服务，请参阅[配置商业市场产品/服务的联合销售](./co-sell-configure.md)
 - 若要验证联合销售状态，请参阅[验证产品/服务的联合销售状态](co-sell-status.md)。
 - 详细了解[通过 Microsoft 进行的联合销售](https://partner.microsoft.com/membership/sell-with-microsoft)。

@@ -5,18 +5,18 @@ description: 了解如何在 Azure 机器学习工作区中创建计算群集。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
+ms.topic: how-to
+ms.custom: devx-track-azurecli
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 2d23e073a43d61a501e93e0288f222ef26407744
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 116a0fd6fce399327d8ac5434a383d80e8b351e6
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538235"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107890035"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>创建 Azure 机器学习计算群集
 
@@ -96,7 +96,7 @@ Azure 机器学习计算群集是一个托管的计算基础结构，可让你�
 az ml computetarget create amlcompute -n cpu --min-nodes 1 --max-nodes 1 -s STANDARD_D3_V2
 ```
 
-有关详细信息，请参阅 [az ml computetarget create amlcompute](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)。
+有关详细信息，请参阅 [az ml computetarget create amlcompute](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_amlcompute)。
 
 # <a name="studio"></a>[工作室](#tab/azure-studio)
 

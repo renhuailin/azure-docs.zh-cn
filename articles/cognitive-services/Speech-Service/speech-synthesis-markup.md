@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e5a3459c0264d087759572bffc497430cdb69ac9
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 1d21691af4d52892f507695a56331816b14bf517
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105966939"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588371"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言 (SSML) 改善合成
 
@@ -27,11 +27,9 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 > [!IMPORTANT]
 > 中文、日语和韩语字符按两个字符计费。 有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
-## <a name="standard-neural-and-custom-voices"></a>标准、神经和自定义语音
+## <a name="neural-and-custom-voices"></a>神经和自定义语音
 
-从标准和神经语音中选择，或创建自己产品或品牌特有的自定义语音。 超过 75 种的标准语音可用于 45 种以上的语言和区域设置，5 种神经语音可用于 4 种语言和区域设置。 有关支持的语言、区域设置和语音（神经和标准）的完整列表，请参阅[语言支持](language-support.md)。
-
-若要详细了解标准、神经和自定义语音，请参阅[文本转语音概述](text-to-speech.md)。
+使用类似于人的神经语音，或创建产品或品牌所特有的你自己的自定义语音。 有关支持的语言、区域设置和语音的完整列表，请参阅[语言支持](language-support.md)。 若要详细了解神经和自定义语音，请参阅[文本转语音概述](text-to-speech.md)。
 
 
 > [!NOTE]
@@ -194,12 +192,9 @@ speechConfig!.setPropertyTo(
 
 ## <a name="adjust-speaking-styles"></a>调整讲话风格
 
-> [!IMPORTANT]
-> 调整讲话风格的操作仅适用于神经语音。
+默认情况下，对于神经语音，文本转语音服务使用中性讲话风格来合成文本。 你可以调整说话风格来表达不同的情感（例如愉悦、同情和冷静），或使用 `mstts:express-as` 元素针对不同场景（例如自定义服务、新闻广播和语音助手）优化语音。 这是语音服务特有的可选元素。
 
-默认情况下，对于标准和神经语音，文本转语音服务将使用中性讲话风格合成文本。 使用神经语音，可以调整说话风格来表达不同的情感（例如愉悦、同情和冷静），或使用 `mstts:express-as` 元素针对不同场景（例如自定义服务、新闻广播和语音助手）优化语音。 这是语音服务特有的可选元素。
-
-目前，支持调整以下神经语音的讲话风格：
+目前以下神经语音支持讲话风格调整：
 * `en-US-AriaNeural`
 * `en-US-JennyNeural`
 * `en-US-GuyNeural`
@@ -215,11 +210,11 @@ speechConfig!.setPropertyTo(
 
 可进一步更改说话风格的强度，更好地适应你的使用场景。 可以使用 `styledegree` 指定更强或更柔和的风格，使语音更具表现力或更柔和。 目前，中文（普通话，简体）神经语音支持说话风格调整。
 
-除了调整说话风格和风格程度，还可调整 `role` 参数，使语音模拟不同的年龄和性别。 例如，男性语音可以提高音调和改变语调来模拟女性语音，但语音名称不会更改。 目前，这些中文（普通话，简体）神经语音支持角色扮演调整：
+除了调整说话风格和风格程度，还可调整 `role` 参数，使语音模拟不同的年龄和性别。 例如，男性语音可以提高音调和改变语调来模拟女性语音，但语音名称不会更改。 目前，这些中文（普通话，简体）神经语音支持角色调整：
 * `zh-CN-XiaomoNeural`
 * `zh-CN-XiaoxuanNeural`
 
-上述更改将在句子级别应用，风格和角色扮演因语音而异。 如果某种风格或角色扮演不受支持，则该服务将以默认的中性讲话方式返回语音。 通过[语音列表 API](rest-text-to-speech.md#get-a-list-of-voices)或免代码[音频内容创建](https://aka.ms/audiocontentcreation)平台，可查看每种语音支持哪些风格和角色扮演。
+上述更改将在句子级别应用，风格和角色扮演因语音而异。 如果某种风格或角色扮演不受支持，则该服务将以默认的中性讲话方式返回语音。 通过[语音列表 API](rest-text-to-speech.md#get-a-list-of-voices) 或免代码[音频内容创建](https://aka.ms/audiocontentcreation)平台可查看每种语音支持的风格和角色。
 
 **语法**
 
@@ -631,7 +626,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 考虑到 IPA 不容易记住，语音服务为七种语言（`en-US`、`fr-FR`、`de-DE`、`es-ES`、`ja-JP`、`zh-CN`和 `zh-TW`）定义语音集。
 
-可以使用 `sapi` 作为 `alphabet` 属性的值，而自定义词典则如下所示：
+可以使用 `sapi` 作为 `alphabet` 属性的值，且自定义词典如下所示：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -717,7 +712,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Guy24kRUS">
+    <voice name="en-US-AriaNeural">
         Welcome to <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody>
     </voice>
 </speak>
@@ -1020,7 +1015,7 @@ Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
 
 # <a name="swift"></a>[Swift](#tab/swift)
 
-有关详细信息，请参阅 <a href="https://docs.microsoft.com/swift/cognitive-services/speech/spxspeechsynthesizer#addbookmarkreachedeventhandler" target="_blank"> `addBookmarkReachedEventHandler` </a>。
+有关详细信息，请参阅 <a href="/objectivec/cognitive-services/speech/spxspeechsynthesizer" target="_blank"> `addBookmarkReachedEventHandler` </a>。
 
 ---
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1b7a846ee92da001ea2ac3ddd02efa9a870f72c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 958b0de97b79b447f2570dd9c57c87f380bcd551
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102501900"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589314"
 ---
 # <a name="write-client-app-authentication-code"></a>编写客户端应用验证码
 
@@ -107,6 +107,20 @@ Azure 数字孪生使用[基于 OAUTH 2.0 的 Azure AD 安全令牌](../active-d
 * [启用托管标识](../app-service/overview-managed-identity.md?tabs=dotnet)
 * 使用[环境变量](/sandbox/functions-recipes/environment-variables?tabs=csharp)（视情况而定）
 * 向函数应用分配权限，使其能够访问数字孪生 API。 有关 Azure Functions 过程的详细信息，请参阅[操作指南：设置用于处理数据的 Azure 函数](how-to-create-azure-function.md)。
+
+## <a name="authenticate-across-tenants"></a>跨租户进行身份验证
+
+Azure 数字孪生是一项仅支持一个 [Azure Active Directory (Azure AD) 租户](../active-directory/develop/quickstart-create-new-tenant.md)的服务：Azure 数字孪生实例所在的订阅的主租户。
+
+[!INCLUDE [digital-twins-tenant-limitation](../../includes/digital-twins-tenant-limitation.md)]
+
+如果需要使用属于实例中不同租户的服务主体或用户帐户来访问 Azure 数字孪生实例，可以让其他租户的每个联合标识从 Azure 数字孪生实例的“主”租户请求令牌。 
+
+[!INCLUDE [digital-twins-tenant-solution-1](../../includes/digital-twins-tenant-solution-1.md)]
+
+还可以在代码的凭据选项中指定主租户。 
+
+[!INCLUDE [digital-twins-tenant-solution-2](../../includes/digital-twins-tenant-solution-2.md)]
 
 ## <a name="other-credential-methods"></a>其他凭据方法
 

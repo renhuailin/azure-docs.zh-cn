@@ -5,18 +5,18 @@ description: 了解如何创建和管理 Azure 机器学习计算实例。 用�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
+ms.topic: how-to
+ms.custom: devx-track-azurecli
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 2778f52b312e5d2fda7879b834fcd204285b7144
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4ae4094e4a356c5394c2bdf887d3b60e40989ecd
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628945"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885733"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>创建和管理 Azure 机器学习计算实例
 
@@ -93,7 +93,7 @@ except ComputeTargetException:
 az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 ```
 
-有关详细信息，请查看 [az ml computetarget create computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext_azure_cli_ml_az_ml_computetarget_create_computeinstance) 参考文档。
+有关详细信息，请查看 [az ml computetarget create computeinstance](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_computeinstance) 参考文档。
 
 # <a name="studio"></a>[工作室](#tab/azure-studio)
 
@@ -181,7 +181,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
     az ml computetarget stop computeinstance -n instance -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget stop computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop)。
+    有关详细信息，请参阅 [az ml computetarget stop computeinstance](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_stop)。
 
 * 开始 
 
@@ -189,7 +189,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
     az ml computetarget start computeinstance -n instance -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget start computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start)。
+    有关详细信息，请参阅 [az ml computetarget start computeinstance](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_start)。
 
 * 重启 
 
@@ -197,7 +197,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
     az ml computetarget restart computeinstance -n instance -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget restart computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart)。
+    有关详细信息，请参阅 [az ml computetarget restart computeinstance](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_restart)。
 
 * Delete
 
@@ -205,7 +205,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
     az ml computetarget delete -n instance -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget delete computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget#ext-azure-cli-ml-az-ml-computetarget-delete)。
+    有关详细信息，请参阅 [az ml computetarget delete computeinstance](/cli/azure/ml/computetarget#az_ml_computetarget_delete)。
 
 # <a name="studio"></a>[工作室](#tab/azure-studio)
 

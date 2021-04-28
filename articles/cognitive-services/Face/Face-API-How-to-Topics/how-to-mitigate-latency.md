@@ -3,18 +3,16 @@ title: 使用人脸服务时如何降低延迟
 titleSuffix: Azure Cognitive Services
 description: 了解使用人脸服务时如何降低延迟。
 services: cognitive-services
-author: v-jaswel
 manager: chrhoder
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
-ms.author: v-jawe
-ms.openlocfilehash: 412105e3262a3baf8780bd3bd1082508967ea486
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: a306883573387a2a5c20a53c7015c6dbd3eddf65
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012578"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878661"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>操作说明：使用人脸服务时降低延迟
 

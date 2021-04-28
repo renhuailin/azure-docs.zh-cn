@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 09/05/2019
+ms.date: 04/13/2021
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: afb6efcee2ad4f5cf25a411eed353ff2fc27d75c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ab94a83a64ca9770f0c216ddf42145b262629c6d
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96460785"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107598986"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>使用有序聚集列存储索引优化性能  
 
@@ -44,7 +44,7 @@ FROM sys.pdw_nodes_partitions AS pnp
    JOIN sys.pdw_nodes_column_store_segments AS cls ON pnp.partition_id = cls.partition_id AND pnp.distribution_id  = cls.distribution_id
 JOIN sys.columns as cols ON o.object_id = cols.object_id AND cls.column_id = cols.column_id
 WHERE o.name = '<Table Name>' and cols.name = '<Column Name>'  and TMap.physical_name  not like '%HdTable%'
-ORDER BY o.name, pnp.distribution_id, cls.min_data_id 
+ORDER BY o.name, pnp.distribution_id, cls.min_data_id;
 
 
 ```
@@ -66,7 +66,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```sql
 
 CREATE CLUSTERED COLUMNSTORE INDEX MyOrderedCCI ON  T1
-ORDER (Col_C, Col_B, Col_A)
+ORDER (Col_C, Col_B, Col_A);
 
 ```
 
@@ -134,6 +134,13 @@ OPTION (MAXDOP 1);
 5.    针对 Table_A 中的每个分区重复步骤 3 和 4。
 6.    将所有分区从 Table_A 切换到 Table_B 并重新生成这些分区后，删除 Table_A，并将 Table_B 重命名为 Table_A。 
 
+>[!TIP]
+> 对于具有有序 CCI 的专用 SQL 池表，ALTER INDEX REBUILD 将使用 tempdb 重新对数据进行排序。 重新生成操作期间监视 tempdb。 如果需要更多 tempdb 空间，请纵向扩展该池。 完成索引重新生成之后，缩小为原空间大小。
+>
+> 对于具有有序 CCI 的专用 SQL 池表，ALTER INDEX REORGANIZE 不对数据进行重新排序。 若要重新排序数据，请使用 ALTER INDEX REBUILD。
+>
+> 有关有序 CCI 维护的详细信息，请参阅[优化聚集列存储索引](sql-data-warehouse-tables-index.md#optimizing-clustered-columnstore-indexes)。
+
 ## <a name="examples"></a>示例
 
 **A.检查有序列和序号：**
@@ -142,15 +149,15 @@ OPTION (MAXDOP 1);
 SELECT object_name(c.object_id) table_name, c.name column_name, i.column_store_order_ordinal 
 FROM sys.index_columns i 
 JOIN sys.columns c ON i.object_id = c.object_id AND c.column_id = i.column_id
-WHERE column_store_order_ordinal <>0
+WHERE column_store_order_ordinal <>0;
 ```
 
 **B.若要更改列序号，请在顺序列表中添加或删除列，或者从 CCI 更改为有序 CCI：**
 
 ```sql
-CREATE CLUSTERED COLUMNSTORE INDEX InternetSales ON  InternetSales
+CREATE CLUSTERED COLUMNSTORE INDEX InternetSales ON dbo.InternetSales
 ORDER (ProductKey, SalesAmount)
-WITH (DROP_EXISTING = ON)
+WITH (DROP_EXISTING = ON);
 ```
 
 ## <a name="next-steps"></a>后续步骤

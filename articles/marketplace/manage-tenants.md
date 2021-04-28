@@ -8,12 +8,12 @@ author: varsha-sarah
 ms.author: vavargh
 ms.custom: contperf-fy21q2
 ms.date: 04/07/2021
-ms.openlocfilehash: 446792b26527126a4db99da14a2585c17cf8610c
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 79120eb6d3d5aad9c27ed42bc825fdad4907af49
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107862"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144755"
 ---
 # <a name="manage-tenants-in-the-commercial-marketplace"></a>在商业市场中管理租户
 
@@ -53,7 +53,7 @@ ms.locfileid: "107107862"
 1. 选择“创建”以确认新域和帐户信息。
 1. 使用新的 Azure AD 全局管理员用户名和密码登录以开始[添加和管理用户](add-manage-users.md)。
 
-有关如何在 Azure 门户中（而不是通过合作伙伴中心门户）创建新租户的详细信息，请参阅[在 Azure Active Directory 中创建新租户](/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)一文。
+有关如何在 Azure 门户中（而不是通过合作伙伴中心门户）创建新租户的详细信息，请参阅[在 Azure Active Directory 中创建新租户](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)一文。
 
 ## <a name="remove-a-tenant"></a>删除租户
 

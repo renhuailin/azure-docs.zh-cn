@@ -8,12 +8,12 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: b45bb353ae32f1037fde7dc5d518472089edf12f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c52ac859f72c440e2cebd59555606c7b3986a314
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766328"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814867"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>快速入门：适用于 Java 的 Azure Key Vault 机密客户端库
 适用于 Java 的 Azure Key Vault 机密客户端库入门。 请遵循以下步骤安装包并试用基本任务的示例代码。
@@ -281,4 +281,4 @@ public class App {
 
 - 阅读 [Azure Key Vault 概述](../general/overview.md)
 - 参阅 [Azure Key Vault 开发人员指南](../general/developers-guide.md)
-- 如何[保护对密钥保管库的访问](../general/security-overview.md)
+- 如何[保护对密钥保管库的访问](../general/security-features.md)
