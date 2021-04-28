@@ -1,23 +1,23 @@
 ---
-title: SQL Server 到 Azure SQL 托管实例：性能分析
+title: SQL Server 到 Azure SQL 托管实例：性能基线
 description: 了解如何在将 SQL Server 数据库迁移到 Azure SQL 托管实例时创建和比较性能基线。
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: mokabiru
 ms.date: 11/06/2020
-ms.openlocfilehash: a97dabe36efb252b04c1b5c8fa741d33a6c92703
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a47684bf29f1f34b8c9c59c04b7d33d234505cc2
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023667"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389700"
 ---
-# <a name="migration-performance-sql-server-to--azure-sql-managed-instance-performance-analysis"></a>迁移性能：SQL Server 到 Azure SQL 托管实例性能分析
+# <a name="migration-performance-sql-server-to--azure-sql-managed-instance-performance-baseline"></a>迁移性能：SQL Server 到 Azure SQL 托管实例性能基线
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
 
 创建性能基线，对 SQL 托管实例上工作负载的性能和 SQL Server 上运行的原始工作负载的性能进行比较。 

@@ -5,12 +5,12 @@ author: MalcolmTyrrell
 ms.author: matyrr
 ms.date: 09/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 9a094755dfb9381b1e4d6abdf1c0e6342d7427c1
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: ab01143fcab5ceb5468ef8fde233905b8d3e05d1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308433"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124538"
 ---
 # <a name="laying-out-files-for-conversion"></a>为转换设计文件布局
 
@@ -21,7 +21,7 @@ ms.locfileid: "107308433"
 为设计文件布局，需要注意的重点是，`BlobPrefix` 将确定在处理资产时可用于转换服务的完整文件集。
 
 > [!Note]
-> 该服务将下载 input.BlobPrefix 下的所有文件。 确保文件名和路径不超过 [Windows 路径长度限制](https://docs.microsoft.com/windows/win32/fileio/maximum-file-path-limitation)，以免出现服务问题。 
+> 该服务将下载 input.BlobPrefix 下的所有文件。 确保文件名和路径不超过 [Windows 路径长度限制](/windows/win32/fileio/maximum-file-path-limitation)，以免出现服务问题。 
 
 ## <a name="placing-files-so-they-can-be-found"></a>放置文件以便可以找到它们
 

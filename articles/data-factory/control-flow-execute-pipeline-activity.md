@@ -1,18 +1,18 @@
 ---
 title: Azure 数据工厂中的 Execute Pipeline 活动
 description: 了解如何使用 Execute Pipeline 活动从一个数据工厂管道调用另一个数据工厂管道。
-author: dcstwh
-ms.author: weetok
+author: chez-charlie
+ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: a24bd6988a9bc8f15723ebf931f2751a09c42e26
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c2f3d601e991fab77281351116624fa55a3b4dce
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783738"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904075"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Execute Pipeline 活动
 
@@ -60,7 +60,7 @@ Execute Pipeline 活动允许一个数据工厂管道调用另一个管道。
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必需
 -------- | ----------- | -------------- | --------
 name | Execute Pipeline 活动的名称。 | 字符串 | 是
 type | 必须设置为：**ExecutePipeline**。 | 字符串 | 是

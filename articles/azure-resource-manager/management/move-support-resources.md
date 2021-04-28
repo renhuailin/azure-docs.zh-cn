@@ -2,13 +2,13 @@
 title: 资源类型支持的移动操作
 description: 列出了可移动到新资源组、订阅或区域的 Azure 资源类型。
 ms.topic: conceptual
-ms.date: 04/16/2021
-ms.openlocfilehash: a56a9e6f04aa800e16bbab0190ce7b41d87da590
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.date: 04/23/2021
+ms.openlocfilehash: 90fd683a12dcc9f9d63003f1fd87332db5f2b9aa
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107740081"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107945982"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 
@@ -112,6 +112,7 @@ ms.locfileid: "107740081"
 > - [Microsoft.ImportExport](#microsoftimportexport)
 > - [microsoft.insights](#microsoftinsights)
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
+> - [Microsoft.IoTHub](#microsoftiothub)
 > - [Microsoft.IoTSpaces](#microsoftiotspaces)
 > - [Microsoft.KeyVault](#microsoftkeyvault)
 > - [Microsoft.Kubernetes](#microsoftkubernetes)
@@ -586,7 +587,7 @@ ms.locfileid: "107740081"
 > | 资源类型 | 资源组 | 订阅 | 区域移动 |
 > | ------------- | ----------- | ---------- | ----------- |
 > | accounts | 是 | 是 | 否 |
-> | 认知搜索 | 待批准 | 待批准 | 支持手动步骤。<br/><br/> 了解如何[将 Azure 认知搜索服务移动到其他区域](../../search/search-howto-move-across-regions.md) |
+> | 认知搜索 | 是 | 是 | 支持手动步骤。<br/><br/> 了解如何[将 Azure 认知搜索服务移动到其他区域](../../search/search-howto-move-across-regions.md) |
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
 
@@ -1103,7 +1104,7 @@ ms.locfileid: "107740081"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 | 区域移动 |
 > | ------------- | ----------- | ---------- | ----------- |
-> | accounts | 待批准 | 待批准 | 不是。 [了解详细信息](../../azure-monitor/faq.md#how-do-i-move-an-application-insights-resource-to-a-new-region)。 |
+> | accounts | 是 | 是 | 否。 [了解详细信息](../../azure-monitor/faq.md#how-do-i-move-an-application-insights-resource-to-a-new-region)。 |
 > | actiongroups | 是 | 是 | 否 |
 > | activitylogalerts | 否 | 否 | 否 |
 > | alertrules | 是 | 是 | 否 |
@@ -1155,7 +1156,7 @@ ms.locfileid: "107740081"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 | 区域移动 |
 > | ------------- | ----------- | ---------- | ----------- |
-> | iothub | 待批准 | 待批准 | 是（克隆中心） <br/><br/> [将 IoT 中心克隆到其他区域](../../iot-hub/iot-hub-how-to-clone.md) |
+> | iothub | 是 | 是 | 是（克隆中心） <br/><br/> [将 IoT 中心克隆到其他区域](../../iot-hub/iot-hub-how-to-clone.md) |
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
 

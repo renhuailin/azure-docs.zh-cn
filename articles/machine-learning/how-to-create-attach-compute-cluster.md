@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 1e3549a6f5f4f9d7f6a6da574378c90c20e42dcf
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 2d23e073a43d61a501e93e0288f222ef26407744
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169566"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538235"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>创建 Azure 机器学习计算群集
 
@@ -36,6 +36,14 @@ ms.locfileid: "106169566"
 
 * [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro) 或 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)。
 
+* 如果使用 Python SDK，请[使用工作区设置开发环境](how-to-configure-environment.md)。  设置环境后，附加到 Python 脚本中的工作区：
+
+    ```python
+    from azureml.core import Workspace
+    
+    ws = Workspace.from_config() 
+    ```
+
 ## <a name="what-is-a-compute-cluster"></a>什么是计算群集？
 
 Azure 机器学习计算群集是一个托管的计算基础结构，可让你轻松创建单节点或多节点计算。 该计算是在工作区区域内部创建的，是可与工作区中的其他用户共享的资源。 提交作业时，计算会自动扩展，并可以放入 Azure 虚拟网络。 计算在容器化环境中执行，将模型的依赖项打包在 [Docker 容器](https://www.docker.com/why-docker)中。
@@ -53,7 +61,7 @@ Azure 机器学习计算群集是一个托管的计算基础结构，可让你�
 * Azure 允许你在资源上放置锁，这样这些资源就无法被删除，或者会处于只读状态。 __请勿将资源锁应用于包含工作区的资源组__。 将锁应用于包含工作区的资源组会阻止对 Azure ML 计算群集进行缩放操作。 若要详细了解如何锁定资源，请参阅[锁定资源以防止意外更改](../azure-resource-manager/management/lock-resources.md)。
 
 > [!TIP]
-> 一般情况下，只要所需核心数方面的配额足够，群集就可以扩展到多达 100 个节点。 默认情况下，设置群集时会启用群集节点之间的通信（例如，为了支持 MPI 作业）。 但是，可以将群集扩展到数千个节点，只需[提交支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)并请求将你的订阅、工作区或特定群集加入允许列表以禁用节点间通信即可。 
+> 一般情况下，只要所需核心数方面的配额足够，群集就可以扩展到多达 100 个节点。 默认情况下，设置群集时会启用群集节点之间的通信（例如，为了支持 MPI 作业）。 但是，可以将群集扩展到数千个节点，只需[提交支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)并请求将你的订阅、工作区或特定群集加入允许列表以禁用节点间通信即可。
 
 
 ## <a name="create"></a>创建
@@ -70,11 +78,11 @@ Azure 机器学习计算群集是一个托管的计算基础结构，可让你�
     
 # <a name="python"></a>[Python](#tab/python)
 
-若要在 Python 中创建持久性 Azure 机器学习计算资源，请指定 **vm_size** 和 **max_nodes** 属性。 然后，Azure 机器学习将对其他属性使用智能默认值。 
+
+若要在 Python 中创建持久性 Azure 机器学习计算资源，请指定 **vm_size** 和 **max_nodes** 属性。 然后，Azure 机器学习将对其他属性使用智能默认值。
     
 * **vm_size**：Azure 机器学习计算创建的节点的 VM 系列。
 * **max_nodes**：在 Azure 机器学习计算中运行作业时自动扩展到的最大节点数。
-
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
 
@@ -132,16 +140,18 @@ az ml computetarget create amlcompute --name lowpriocluster --vm-size Standard_N
 
 * 在预配配置中配置托管标识：  
 
-    * 系统分配的托管标识：
+    * 在名为 `ws` 的工作区中创建的系统分配的托管标识
         ```python
         # configure cluster with a system-assigned managed identity
         compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
                                                                 max_nodes=5,
                                                                 identity_type="SystemAssigned",
                                                                 )
+        cpu_cluster_name = "cpu-cluster"
+        cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
         ```
     
-    * 用户分配的托管标识：
+    * 在名为 `ws` 的工作区中创建的用户分配的托管标识
     
         ```python
         # configure cluster with a user-assigned managed identity
@@ -154,7 +164,7 @@ az ml computetarget create amlcompute --name lowpriocluster --vm-size Standard_N
         cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
         ```
 
-* 将托管标识添加到现有计算群集 
+* 将托管标识添加到名为 `cpu_cluster` 的现有计算群集
     
     * 系统分配的托管标识：
     

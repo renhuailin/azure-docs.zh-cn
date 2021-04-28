@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/15/2021
-ms.openlocfilehash: 53fe53e1406bfcde1f2d8c7b2a1ce8369303426f
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 56fe69ad7f56d62c9f61738448ea0276fee47063
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379360"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862518"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-using-azure-cli-preview"></a>快速入门：使用 Azure CLI 创建 Azure Managed Instance for Apache Cassandra 群集（预览版）
 
@@ -66,7 +66,7 @@ Azure Managed Instance for Apache Cassandra 为托管的开源 Apache Cassandra 
    > [!NOTE]
    > 上一命令中的 `assignee` 和 `role` 值是固定值，请完全按照命令中的说明输入这些值。 如果不这样做，则会在创建群集时出错。 如果在执行此命令时遇到任何错误，则你可能没有运行此命令的权限，请与管理员联系以获取权限。
 
-1. 接下来，使用 [az managed-cassandra cluster create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_create) 命令在新创建的虚拟网络中创建群集。 运行以下命令，`delegatedManagementSubnetId` 变量的值：
+1. 接下来，使用 [az managed-cassandra cluster create](/cli/azure/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_cluster_create) 命令在新创建的虚拟网络中创建群集。 运行以下命令，`delegatedManagementSubnetId` 变量的值：
 
    > [!NOTE]
    > 你将在下面提供的 `delegatedManagementSubnetId` 变量的值与你在上面的命令中提供的 `--scope` 的值完全相同：
@@ -87,7 +87,7 @@ Azure Managed Instance for Apache Cassandra 为托管的开源 Apache Cassandra 
       --debug
    ```
 
-1. 最后，使用 [az managed-cassandra datacenter create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_create) 命令为群集创建一个数据中心，其中包含三个节点：
+1. 最后，使用 [az managed-cassandra datacenter create](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_create) 命令为群集创建一个数据中心，其中包含三个节点：
 
    ```azurecli-interactive
    dataCenterName='dc1'
@@ -102,7 +102,7 @@ Azure Managed Instance for Apache Cassandra 为托管的开源 Apache Cassandra 
       --node-count 3 
    ```
 
-1. 创建数据中心后，如果想要纵向扩展或缩减数据中心内的节点，请运行 [az managed-cassandra datacenter update](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_update) 命令。 将 `node-count` 参数的值更改为所需的值：
+1. 创建数据中心后，如果想要纵向扩展或缩减数据中心内的节点，请运行 [az managed-cassandra datacenter update](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_update) 命令。 将 `node-count` 参数的值更改为所需的值：
 
    ```azurecli-interactive
    resourceGroupName='<Resource_Group_Name>'

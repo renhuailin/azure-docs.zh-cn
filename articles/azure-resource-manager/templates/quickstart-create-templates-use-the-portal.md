@@ -2,16 +2,16 @@
 title: 部署模板 - Azure 门户
 description: 了解如何使用 Azure 门户创建第一个 Azure 资源管理器模板（ARM 模板），以及如何部署该模板。
 author: mumian
-ms.date: 03/26/2021
+ms.date: 04/27/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.custom: contperfq1
-ms.openlocfilehash: 279dde9c4cd7b19086d29d3ba31a32c60a8cdf0b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 90c7145e6761820dea11fa13fc883dc87bec999e
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612919"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108075116"
 ---
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建和部署 ARM 模板
 
@@ -88,7 +88,7 @@ Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入了已存
 1. 选择“加载文件”，然后按说明加载在上部分下载的 template.json。
 1. 对模板进行以下三处更改：
 
-    ![Azure 资源管理器模板](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-edit-storage-account-template-revised.png)
+    ![Azure Resource Manager 模板](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-edit-storage-account-template-revised.png)
 
    - 删除“storageAccountName”参数，如上一屏幕截图所示。
    - 添加一个名为“storageAccountName”的变量，如上一屏幕截图所示：

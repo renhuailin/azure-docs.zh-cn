@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 87ce580e16d1ca3b90eb66562f06828d775b09ea
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 527b2bf9e7f97e0ffffa3d2cab1fae45a6393f49
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285649"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125474"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-captivate-prime"></a>教程：Azure Active Directory 与 Adobe Captivate Prime 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "106285649"
 * 让用户使用其 Azure AD 帐户自动登录到 Adobe Captivate Prime。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -132,8 +132,8 @@ ms.locfileid: "106285649"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置 SSO 的 Adobe Captivate Prime。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Adobe Captivate Prime”磁贴时，系统应会自动登录到为其设置 SSO 的 Adobe Captivate Prime。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Adobe Captivate Prime”磁贴时，系统应会自动登录到为其设置 SSO 的 Adobe Captivate Prime。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置  Adobe Captivate Prime 后，你可以强制实施会话控制，实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置  Adobe Captivate Prime 后，你可以强制实施会话控制，实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

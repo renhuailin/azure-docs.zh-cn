@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f540ab40a14af09aa8667860286021f572eb6f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aec870e6027d9a6d2e6c3b66363f93c73fad5e78
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104587893"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108064136"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>管控 Azure AD 服务帐户
 
@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) 中有三种类型的服务帐户：[托管标
 | 数据| 说明| 详细信息 |
 | - | - | - |
 | “所有者”| 负责管理和监视服务帐户的用户或组。| 为所有者提供必要的权限以监视帐户并实施一种缓解问题的方法。 可由所有者或通过请求 IT 来实现问题缓解。 |
-| 目标| 如何使用帐户。| 将服务帐户映射到特定服务、应用程序或脚本。 避免创建多用途服务帐户。 |
+| 目的| 如何使用帐户。| 将服务帐户映射到特定服务、应用程序或脚本。 避免创建多用途服务帐户。 |
 | 权限（范围）| 预期权限集。| 记录它将访问的资源以及对这些资源的权限。 |
 | CMDB 链接| 链接到要访问的资源以及在其中使用服务帐户的脚本。| 确保记录资源和脚本所有者，以便能够与更改的任何必要的上游和下游影响进行通信。 |
 | 风险评估| 如果帐户受损将产生的风险和业务影响。| 使用此信息来缩小权限范围，并确定谁应有权访问帐户信息。 |
@@ -96,7 +96,7 @@ Azure Active Directory (Azure AD) 中有三种类型的服务帐户：[托管标
 
 主动监视服务帐户，以确保服务帐户的使用模式反映了预期模式，并且服务帐户仍在使用。
 
-**使用以下方法之一收集和监视服务帐户登录：**
+使用以下方法之一收集和监视服务帐户登录：
 
 * 在 Azure AD 门户中使用 Azure AD 登录日志。
 
@@ -105,7 +105,7 @@ Azure Active Directory (Azure AD) 中有三种类型的服务帐户：[托管标
 
 ![显示服务主体登录屏幕的屏幕截图。](./media/securing-service-accounts/service-accounts-govern-azure-1.png)
 
-**应在登录日志中查找的信息包括：**
+应在登录日志中查找的信息包括：
 
 * 是否有服务帐户不再登录到租户？
 
@@ -131,7 +131,7 @@ Microsoft 的免费 PowerShell 示例收集了服务主体的 OAuth2 授权和�
 
 建立审查流程以确保服务帐户定期由其所有者和安全或 IT 团队进行审核。 
 
-**该流程应包括：**
+该流程应包括：
 
 * 如何确定每个服务帐户的审查周期（应记录在 CMDB 中）。
 
@@ -143,7 +143,7 @@ Microsoft 的免费 PowerShell 示例收集了服务主体的 OAuth2 授权和�
 
 * 有关如何确定上游和下游依赖关系并向其他资源所有者通知任何影响的说明。
 
-**审查应包括所有者及其 IT 合作伙伴验证以下内容：**
+审查应包括所有者及其 IT 合作伙伴验证以下内容：
 
 * 帐户仍是必需的。
 
@@ -170,9 +170,9 @@ Microsoft 的免费 PowerShell 示例收集了服务主体的 OAuth2 授权和�
 
 * 凭据已过期，或者该帐户不起作用，并且没有收到任何投诉。
 
-**取消预配的流程应包括以下任务。**
+取消预配的流程应包括以下任务。
 
-1. 取消预配关联的应用程序或脚本后，[监视登录](../reports-monitoring/concept-sign-ins.md#sign-ins-report)和服务帐户的资源访问。
+1. 取消预配关联的应用程序或脚本后，[监视登录](../reports-monitoring/concept-sign-ins.md)和服务帐户的资源访问。
 
    * 如果帐户仍处于活动状态，则在执行后续步骤之前确定其使用方式。
  

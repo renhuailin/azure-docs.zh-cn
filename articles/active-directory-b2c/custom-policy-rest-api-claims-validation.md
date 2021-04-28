@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 761bc4db7760ef5e84e3fc3c8a5deea5d4508f51
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 89542a0a30bacf5cb45755fb578b22ce5c34ba4e
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94951921"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070706"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>演练：在 Azure AD B2C 用户旅程中集成 REST API 声明交换来验证用户输入
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-支撑 Azure Active Directory B2C (Azure AD B2C) 的 Identity Experience Framework (IEF) 可让标识开发人员在用户旅程中将某种交互与 RESTful API 集成。  完成本演练后，就可以创建与 [RESTful 服务](custom-policy-rest-api-intro.md)交互的 Azure AD B2C 用户旅程以验证用户输入。
+支撑 Azure Active Directory B2C (Azure AD B2C) 的 Identity Experience Framework (IEF) 可让标识开发人员在用户旅程中将某种交互与 RESTful API 集成。  完成本演练后，就可以创建与 [RESTful 服务](api-connectors-overview.md)交互的 Azure AD B2C 用户旅程以验证用户输入。
 
 在这种情况下，我们将添加用户在 Azure AD B2C 注册页面中输入会员号的功能。 通过将此数据发送到 REST API，我们将验证电子邮件和会员号的组合是否映射到促销代码。 如果 REST API 找到该用户的促销代码，它将被返回到 Azure AD B2C。 最后，促销代码将插入到令牌声明中，以供应用程序使用。
 
@@ -30,8 +30,8 @@ ms.locfileid: "94951921"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 完成[自定义策略入门](custom-policy-get-started.md)中的步骤。 应准备好一个有效的自定义策略，以便使用本地帐户注册和登录。
-- 了解如何[在 Azure AD B2C 自定义策略中集成 REST API 声明交换](custom-policy-rest-api-intro.md)。
+- 完成[自定义策略入门](tutorial-create-user-flows.md?pivots=b2c-custom-policy)中的步骤。 应准备好一个有效的自定义策略，以便使用本地帐户注册和登录。
+- 了解如何[在 Azure AD B2C 自定义策略中集成 REST API 声明交换](api-connectors-overview.md)。
 
 ## <a name="prepare-a-rest-api-endpoint"></a>准备 REST API 终结点
 

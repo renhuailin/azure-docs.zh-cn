@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 26262f83e14602d6ea93f96ec47630ef870c357d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d3c65c08691a234934a1641af9cc8203f655ef8c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309299"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144306"
 ---
 # <a name="estimate-azure-monitor-costs"></a>估计 Azure Monitor 成本
 
@@ -180,7 +180,7 @@ Windows 事件日志是在 Windows 虚拟机上的 Log Analytics 代理收集的
 下面是优化 Log Analytics 设置以管理数据引入的一些建议：
 
 - 使用 Windows 虚拟桌面资源的指定 Log Analytics 工作区确保 Log Analytics 只收集 Windows 虚拟桌面部署中的性能计数器和虚拟机事件。
-- 调整 Log Analytics 存储设置以管理成本。 可以缩短保持期，评估固定的存储定价层是否会更具成本效益，或对引入数据量的多少设置边界，减轻不正常部署的影响。 想了解更多信息，请参阅[管理 Azure Monitor 日志的使用和成本](../azure-monitor/platform/manage-cost-storage.md)。
+- 调整 Log Analytics 存储设置以管理成本。 可以缩短保持期，评估固定的存储定价层是否会更具成本效益，或对引入数据量的多少设置边界，减轻不正常部署的影响。 想了解更多信息，请参阅[管理 Azure Monitor 日志的使用和成本](../azure-monitor/logs/manage-cost-storage.md)。
 
 ### <a name="remove-excess-data"></a>删除过量数据
 
@@ -208,7 +208,7 @@ Perf
 
 此查询将显示在环境中启用的所有性能计数器，而不只是 Windows 虚拟桌面 Azure Monitor 的默认计数器。 该信息可帮助你了解哪些领域要降低成本，比如降低计数器的频率或将其全部删除。
 
-你还可以通过删除性能计数器来降低成本。 若要了解如何删除性能计数器或编辑以降低现有计数器频率，请参阅[配置性能计数器](../azure-monitor/platform/data-sources-performance-counters.md#configuring-performance-counters)。
+你还可以通过删除性能计数器来降低成本。 若要了解如何删除性能计数器或编辑以降低现有计数器频率，请参阅[配置性能计数器](../azure-monitor/agents/data-sources-performance-counters.md#configuring-performance-counters)。
 
 ### <a name="manage-windows-event-logs"></a>管理 Windows 事件日志
 

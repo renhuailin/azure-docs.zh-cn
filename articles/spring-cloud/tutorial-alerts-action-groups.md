@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: d12a48729616a5181f019f84f19779390e736cb4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 919c72453b4fcbe3b7decc7a045a6656171ecb06
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877083"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132442"
 ---
 # <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>教程：使用警报和操作组监视 Spring Cloud 资源
 
@@ -26,7 +26,7 @@ Azure Spring Cloud 警报支持根据可用存储、请求速率或数据用量�
 
 ## <a name="prerequisites"></a>先决条件
 
-除了 Azure Spring 要求外，本教程中的过程还适用于已部署的 Azure Spring Cloud 实例。  按[快速入门](spring-cloud-quickstart.md)的说明开始操作。
+除了 Azure Spring 要求外，本教程中的过程还适用于已部署的 Azure Spring Cloud 实例。  按[快速入门](./quickstart.md)的说明开始操作。
 
 以下过程初始化 **操作组**，以及从 Spring Cloud 实例左侧导航窗格中的“警报”选项启动的 **警报**。 （该过程也可以从 Azure 门户的“监视器概述”页启动。） 
 
@@ -86,7 +86,7 @@ Azure Spring Cloud 警报支持根据可用存储、请求速率或数据用量�
 
 1. 单击“完成”。
 
-   若要详细了解可用于监视的条件，请参阅[用户门户指标选项](spring-cloud-concept-metrics.md#user-metrics-options)。
+   若要详细了解可用于监视的条件，请参阅[用户门户指标选项](./concept-metrics.md#user-metrics-options)。
 
 1. 在“操作”下，单击“选择操作组” 。 在“操作”窗格中，选择前面定义的“操作组” 。
 

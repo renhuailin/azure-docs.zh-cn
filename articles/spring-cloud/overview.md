@@ -8,12 +8,12 @@ ms.date: 12/02/2020
 ms.author: brendm
 ms.custom: devx-track-java, contperf-fy21q2
 customer intent: As an Azure Cloud user, I want to deploy, run, and monitor Spring Boot microservices.
-ms.openlocfilehash: a92e535cb1edeb0eeaa285e442b4b24766e20ead
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 119128fcc2b2f08ba101c5c44768281cf7e6e600
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877193"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132802"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Azure Spring Cloud 是什么？
 
@@ -50,26 +50,26 @@ Azure Spring Cloud 是 Azure 生态系统的一部分，用户可以通过它轻
 本文档包括说明如何入门和利用 Azure Spring Cloud 服务的部分。
 
 * 入门
-    * [启动你的第一个应用](spring-cloud-quickstart.md)
-    * [预配 Azure Spring Cloud 服务](spring-cloud-quickstart-provision-service-instance.md)
+    * [启动你的第一个应用](./quickstart.md)
+    * [预配 Azure Spring Cloud 服务](./quickstart-provision-service-instance.md)
     * [设置配置服务器]()
-    * [构建和部署应用](spring-cloud-quickstart-deploy-apps.md)
-    * [使用日志指标和跟踪](spring-cloud-quickstart-logs-metrics-tracing.md)
+    * [构建和部署应用](./quickstart-deploy-apps.md)
+    * [使用日志指标和跟踪](./quickstart-logs-metrics-tracing.md)
 * 操作说明
     * [开发](how-to-prepare-app-deployment.md)：准备现有的需要部署到 Azure Spring Cloud 的 Java Spring 应用程序。 正确配置后，Azure Spring Cloud 可以提供强大的服务来监视、缩放和更新 Java Spring Cloud 应用程序。
-    * [部署](spring-cloud-howto-staging-environment.md)：如何使用 Azure Spring Cloud 中的蓝绿部署模式来设置暂存部署。 蓝/绿部署是一种 Azure DevOps 持续交付模式，它依赖于在部署新（绿色）版本时保持现有（蓝色）版本的活动性。
-    * [配置应用](spring-cloud-howto-start-stop-delete.md)：启动、停止和删除 Azure Spring Cloud 应用程序。 使用 Azure 门户或 Azure CLI 在 Azure Spring Cloud 中更改应用程序的状态。
-    * [缩放](spring-cloud-howto-scale-manual.md)：使用 Azure 门户中的 Azure Spring Cloud 仪表板或使用自动缩放设置来缩放任何微服务应用程序。 公共 IP 可用于与外部资源（例如数据库、存储和密钥保管库）进行通信。
-    * [监视应用](spring-cloud-howto-distributed-tracing.md)：分布式跟踪工具，可轻松调试和监视复杂问题。 Azure Spring Cloud 将 Spring Cloud Sleuth 与 Azure 的 Application Insights 集成。 这种集成可以通过 Azure 门户提供强大的分布式跟踪功能。
-    * [安全应用](spring-cloud-howto-enable-system-assigned-managed-identity.md)：Azure 资源在 Azure Active Directory 中提供自动托管标识。 此标识可用于通过支持 Azure AD 身份验证的任何服务的身份验证，这样就无需在代码中插入凭据了。
-    * [与其他 Azure 服务集成](spring-cloud-howto-bind-cosmos.md)：可以将所选 Azure 服务自动绑定到应用程序（例如，将应用程序绑定到 Azure Cosmos DB 数据库），而不必手动配置 Spring Boot 应用程序。
-    * [自动化](spring-cloud-howto-cicd.md)：借助持续集成和持续交付工具，能够以最少的工作量将更新快速部署到现有应用程序，同时将风险降至最低。 Azure DevOps 有助于组织和控制这些关键任务。 
-    * [故障排除](spring-cloud-howto-self-diagnose-solve.md)：Azure Spring Cloud 诊断提供的交互式体验可帮助对应用进行故障排除。 不需要任何配置。 如果发现问题，Azure Spring Cloud 诊断会识别问题并指导你获取有助于排查和解决问题的信息。
+    * [部署](./how-to-staging-environment.md)：如何使用 Azure Spring Cloud 中的蓝绿部署模式来设置暂存部署。 蓝/绿部署是一种 Azure DevOps 持续交付模式，它依赖于在部署新（绿色）版本时保持现有（蓝色）版本的活动性。
+    * [配置应用](./how-to-start-stop-delete.md)：启动、停止和删除 Azure Spring Cloud 应用程序。 使用 Azure 门户或 Azure CLI 在 Azure Spring Cloud 中更改应用程序的状态。
+    * [缩放](./how-to-scale-manual.md)：使用 Azure 门户中的 Azure Spring Cloud 仪表板或使用自动缩放设置来缩放任何微服务应用程序。 公共 IP 可用于与外部资源（例如数据库、存储和密钥保管库）进行通信。
+    * [监视应用](./how-to-distributed-tracing.md)：分布式跟踪工具，可轻松调试和监视复杂问题。 Azure Spring Cloud 将 Spring Cloud Sleuth 与 Azure 的 Application Insights 集成。 这种集成可以通过 Azure 门户提供强大的分布式跟踪功能。
+    * [安全应用](./how-to-enable-system-assigned-managed-identity.md)：Azure 资源在 Azure Active Directory 中提供自动托管标识。 此标识可用于通过支持 Azure AD 身份验证的任何服务的身份验证，这样就无需在代码中插入凭据了。
+    * [与其他 Azure 服务集成](./how-to-bind-cosmos.md)：可以将所选 Azure 服务自动绑定到应用程序（例如，将应用程序绑定到 Azure Cosmos DB 数据库），而不必手动配置 Spring Boot 应用程序。
+    * [自动化](./how-to-cicd.md)：借助持续集成和持续交付工具，能够以最少的工作量将更新快速部署到现有应用程序，同时将风险降至最低。 Azure DevOps 有助于组织和控制这些关键任务。 
+    * [故障排除](./how-to-self-diagnose-solve.md)：Azure Spring Cloud 诊断提供的交互式体验可帮助对应用进行故障排除。 不需要任何配置。 如果发现问题，Azure Spring Cloud 诊断会识别问题并指导你获取有助于排查和解决问题的信息。
     * [迁移](/azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud)：如何迁移现有的 Spring Cloud 应用程序或 Spring Boot 应用程序，使其在 Azure Spring Cloud 上运行。
 
  如要入门，请参阅：
 
 > [!div class="nextstepaction"]
-> [Spring Cloud 快速入门](spring-cloud-quickstart.md)
+> [Spring Cloud 快速入门](./quickstart.md)
 
 可在 GitHub 上找到示例：[Azure Spring Cloud 示例](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/)。

@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: larryfr
 author: BlackMist
 ms.date: 03/05/2020
-ms.openlocfilehash: c800901ae139b16e75613b0cc8de3a9485186896
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c680be897c4c1bf2ccf20df1d34ab6f59f559f2
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521367"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816145"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench 有何遭遇？
 
@@ -35,13 +35,13 @@ ms.locfileid: "102521367"
 
 最新版 Azure 机器学习包括以下功能：
 + [简化的 Azure 资源模型](concept-azure-machine-learning-architecture.md)。
-+ [全新门户 UI](how-to-track-experiments.md)，用于管理试验和计算目标。
++ [全新门户 UI](how-to-log-view-metrics.md)，用于管理试验和计算目标。
 + 更全面的全新 Python <a href="/python/api/overview/azure/ml/intro" target="_blank">SDK</a>。
 + 已扩充的全新 [Azure CLI 扩展](reference-azure-machine-learning-cli.md)，用于机器学习。
 
 重新设计的[架构](concept-azure-machine-learning-architecture.md)，易于使用。 无需使用多个 Azure 资源和帐户，只需使用 [Azure 机器学习工作区](concept-workspace.md)即可。 可以在 [Azure 门户](how-to-manage-workspace.md)中快速创建工作区。 通过使用工作区，多个用户可以存储定型和部署计算目标、模型试验、Docker 映像、已部署模型等。
 
-虽然当前版本中有新的已改进的 CLI 和 SDK 客户端，但桌面工作台应用程序本身已经停用。 可以在 [Azure 机器学习工作室的工作区仪表板](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal)中管理试验。 借助仪表板，可以获取试验历史记录、管理附加到工作区的计算目标、管理模型和 Docker 映像，甚至还能部署 Web 服务。
+虽然当前版本中有新的已改进的 CLI 和 SDK 客户端，但桌面工作台应用程序本身已经停用。 可以在 [Azure 机器学习工作室的工作区仪表板](how-to-log-view-metrics.md#view-the-experiment-in-the-web-portal)中管理试验。 借助仪表板，可以获取试验历史记录、管理附加到工作区的计算目标、管理模型和 Docker 映像，甚至还能部署 Web 服务。
 
 <a name="timeline"></a>
 

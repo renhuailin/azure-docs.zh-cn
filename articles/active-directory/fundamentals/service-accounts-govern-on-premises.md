@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10ea524620f810e0bf1dddc230716031bbc10e69
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: caffa68a111b66f3607954b1086ca858162863a4
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642376"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108072668"
 ---
 # <a name="governing-on-premises-service-accounts"></a>监管本地服务帐户
 
@@ -64,7 +64,7 @@ Windows Active Directory 中有四种类型的本地服务帐户：
 
 *  **LogonWorkstations**：在服务帐户可登录的位置方面限制其权限。 如果服务帐户在计算机本地运行并只能访问该计算机上的资源，则限制它在其他任何位置登录。
 
-* [**不能更改密码**](/powershell/module/addsadministration/set-aduser)：通过将参数设置为 false，防止服务帐户更改其自身的密码。
+* [**不能更改密码**](/powershell/module/activedirectory/set-aduser)：通过将参数设置为 false，防止服务帐户更改其自身的密码。
 
  
 ## <a name="build-a-lifecycle-management-process"></a>构建生命周期管理过程
@@ -151,9 +151,9 @@ Windows Active Directory 中有四种类型的本地服务帐户：
 
 * [帐户过期](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps&preserve-view=true)
 
-   * 对于用作服务帐户的所有用户帐户，定义实际且明确的使用终止日期。 使用“帐户过期”标志进行此设置。 有关更多详细信息，请参阅 [Set-ADAccountExpiration](/powershell/module/addsadministration/set-adaccountexpiration)。 
+   * 对于用作服务帐户的所有用户帐户，定义实际且明确的使用终止日期。 使用“帐户过期”标志进行此设置。 有关更多详细信息，请参阅 [Set-ADAccountExpiration](/powershell/module/activedirectory/set-adaccountexpiration)。 
 
-* 登录到 ([LogonWorkstation](/powershell/module/addsadministration/set-aduser))
+* 登录到 ([LogonWorkstation](/powershell/module/activedirectory/set-aduser))
 
 * [密码策略](../../active-directory-domain-services/password-policy.md)要求
 

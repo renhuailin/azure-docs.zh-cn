@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 6d15e2b8bfcddfd1f554ab2a27083fe5256e9e2b
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 6979f44600d29c0bcc18ebf7fc7e444e9b6bcf73
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226322"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107902941"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查询 Azure 数字孪生孪生图
 
@@ -28,13 +28,13 @@ ms.locfileid: "107226322"
 
 下方是一个基本查询，它将返回实例中所有数字孪生的列表：
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="GetAllTwins":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="GetAllTwins":::
 
 ## <a name="query-by-property"></a>按属性查询
 
 按属性（包括 ID 和元数据）获取数字孪生：
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty1":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByProperty1":::
 
 如以上查询所示，将使用元数据字段 `$dtId` 查询数字孪生体的 ID。
 
@@ -43,19 +43,19 @@ ms.locfileid: "107226322"
 
 还可以根据是否定义了某个属性来获取孪生。 以下查询可获取定义了 Location 属性的孪生：
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty2":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByProperty2":::
 
 如[向数字孪生添加标签](how-to-use-tags.md)中所述，这有助于按孪生的 tag 属性获取该孪生。 以下查询可获取标记为 red 的所有孪生：
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags1":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryMarkerTags1":::
 
 还可以根据属性类型获取孪生。 以下查询可获取 Temperature 属性为数字的孪生：
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty3":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByProperty3":::
 
 >[!TIP]
 > 如果属性的类型为 `Map`，则可以直接在查询中使用映射键和值，如下所示：
-> :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty4":::
+> :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByProperty4":::
 
 ## <a name="query-by-model"></a>按模型查询
 
@@ -73,22 +73,22 @@ ms.locfileid: "107226322"
 `IS_OF_MODEL` 的最简单用法仅使用 `twinTypeName` 参数：`IS_OF_MODEL(twinTypeName)`。
 以下查询示例将值传入此参数：
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByModel1":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByModel1":::
 
 若要在存在多个孪生集合时（例如使用 `JOIN` 时）指定搜索某一孪生集合，请添加 `twinCollection` 参数：`IS_OF_MODEL(twinCollection, twinTypeName)`。
 以下查询示例将为此参数添加值：
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByModel2":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByModel2":::
 
 若要进行完全匹配，请添加 `exact` 参数：`IS_OF_MODEL(twinTypeName, exact)`。
 以下查询示例将为此参数添加值：
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByModel3":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByModel3":::
 
 你也可以同时传递所有三个参数：`IS_OF_MODEL(twinCollection, twinTypeName, exact)`。
 以下查询示例为所有三个参数指定值：
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByModel4":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByModel4":::
 
 ## <a name="query-by-relationship"></a>按关系查询
 
@@ -105,7 +105,7 @@ ms.locfileid: "107226322"
 
 下方是基于示例关系的查询。 此代码片段选择 ID 属性为“ABC”的所有数字孪生体，以及所有通过“包含”关系与这些数字孪生体相关的数字孪生体 。
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationship1":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByRelationship1":::
 
 > [!NOTE]
 > 开发人员无需将此 `JOIN` 与 `WHERE` 子句中的键值相关联（也不需要使用 `JOIN` 定义以内联方式指定键值）。 此关联由系统自动计算，因为关系属性本身标识目标实体。
@@ -116,11 +116,11 @@ ms.locfileid: "107226322"
 
 例如，你可从源孪生体开始，然后按照其关系查找关系的目标孪生体。 下面是一个查询示例，该查询查找来自孪生体 source-twin 的源关系的目标孪生体 。
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationshipSource":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByRelationshipSource":::
 
 也可以从关系的目标开始，追溯关系以查找源孪生体。 下面是一个查询示例，该查询查找孪生体 target-twin 的源关系的源孪生体 。
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationshipTarget":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByRelationshipTarget":::
 
 ### <a name="query-the-properties-of-a-relationship"></a>查询关系的属性
 
@@ -129,7 +129,7 @@ ms.locfileid: "107226322"
 
 例如，考虑具有 reportedCondition 属性的 servicedBy 关系 。 在以下查询中，将为此关系提供一个别名“R”，以便引用其属性。
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationship2":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByRelationship2":::
 
 在上述示例中，注意 reportedCondition 为何是 servicedBy 关系本身的属性（以及为何不是某些具有 servicedBy 关系的数字孪生的属性）  。
 
@@ -141,27 +141,27 @@ ms.locfileid: "107226322"
 
 以下示例说明多联接查询如何获取房间 1 和 2 中照明配电盘所包含的所有灯泡数。
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationship3":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByRelationship3":::
 
 ## <a name="count-items"></a>项目计数
 
 可以使用 `Select COUNT` 子句计算结果集中的项目数：
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="SelectCount1":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="SelectCount1":::
 
 添加 `WHERE` 子句以计算满足特定条件的项目数。 以下示例使用基于孪生模型类型的应用筛选器进行计数（若要详细了解此语法，请参阅下方的[按模型查询](#query-by-model)）：
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="SelectCount2":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="SelectCount2":::
 
 还可以将 `COUNT` 与 `JOIN` 子句结合使用。 以下查询可计算房间 1 和 2 中照明配电盘所包含的所有灯泡的数量：
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="SelectCount3":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="SelectCount3":::
 
 ## <a name="filter-results-select-top-items"></a>筛选结果：选择排名靠前的项目
 
 可以使用 `Select TOP` 子句在查询中选择多个“排名靠前”的项目。
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="SelectTop":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="SelectTop":::
 
 ## <a name="filter-results-specify-return-set-with-projections"></a>筛选结果：使用投影指定返回集
 
@@ -172,25 +172,25 @@ ms.locfileid: "107226322"
 
 以下示例说明查询如何使用投影返回孪生和关系。 以下查询对方案中的客户、工厂和边缘进行了投影，其中 ID 为 ABC 的工厂通过 Factory.customer 关系与客户相关联，而该关系则表示为边缘       。
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="Projections1":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections1":::
 
 你还可以使用投影返回孪生的属性。 以下查询对客户的 Name 属性进行了投影，这些客户通过 Factory.customer 关系与 ID 为 ABC 的工厂相关联    。
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="Projections2":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections2":::
 
 你还可以使用投影返回关系的属性。 与先前的示例类似，以下查询对客户的 Name 属性进行了投影，这些客户通过 Factory.customer 关系与 ID 为 ABC 的工厂相关联；但现在该查询还返回了该关系的 prop1 和 prop2 两个属性      。 它通过将关系命名为边缘并收集其属性来实现这一点。  
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="Projections3":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections3":::
 
 你也可以使用别名来简化使用投影的查询。
 
 以下查询执行与先前示例相同的操作，但会对属性名称采用以下别名：`consumerName`、`first`、`second` 和 `factoryArea`。
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="Projections4":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections4":::
 
 以下类似查询可查询上述集合，但仅将 Consumer.name 属性投影为 `consumerName`，并将整个工厂投影为孪生 。
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="Projections5":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections5":::
 
 ## <a name="build-efficient-queries-with-the-in-operator"></a>使用 IN 运算符生成高效的查询
 
@@ -200,7 +200,7 @@ ms.locfileid: "107226322"
 
 1. 根据 `contains` 关系查找建筑物中的楼层。
 
-    :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="INOperatorWithout":::
+    :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="INOperatorWithout":::
 
 2. 若要查找房间，可以查询建筑物中楼层的集合（以下查询中命名为“楼层”），而不是考虑逐个楼层并运行 `JOIN` 查询查找每个楼层的房间。
 
@@ -212,18 +212,18 @@ ms.locfileid: "107226322"
     
     在查询中：
     
-    :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="INOperatorWith":::
+    :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="INOperatorWith":::
 
 ## <a name="other-compound-query-examples"></a>其他复合查询示例
 
 可以使用合并运算符合并所有上述类型的查询，从而在单个查询中加入更多详细信息。 以下是复合查询的其他部分示例，这些查询一次可查询多种类型的孪生描述符。
 
 * 从房间 123 拥有的设备中，返回充当操作员角色的 MxChip 设备
-    :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="OtherExamples1":::
+    :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="OtherExamples1":::
 * 获取具有“包含”关系的孪生，以及另一个 ID 为 id1 的孪生 
-    :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="OtherExamples2":::
+    :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="OtherExamples2":::
 * 获取此房间模型中 floor11 所包含的所有房间
-    :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="OtherExamples3":::
+    :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="OtherExamples3":::
 
 ## <a name="run-queries-with-the-api"></a>使用 API 运行查询
 

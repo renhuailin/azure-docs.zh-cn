@@ -5,35 +5,35 @@ ms.service: sql-database
 ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 8952e6e1bda8763d403c02dcd5815f1e1c0941e8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d4510aa5cda61dac88102c89b3e03da231380bd6
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641875"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389445"
 ---
 # <a name="migration-guide-mysql-to-azure-sql-database"></a>迁移指南：MySQL 到 Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-本指南将介绍如何使用适用于 MySQL 的 SQL Server 迁移助手 (SSMA for MySQL) 将 MySQL 数据库迁移到 Azure SQL 数据库。 
+本指南将介绍如何使用适用于 MySQL 的 [SQL Server 迁移](https://azure.microsoft.com/en-us/migration/sql-server/)助手 (SSMA for MySQL) 将 MySQL 数据库[迁移](https://azure.microsoft.com/migration/migration-journey)到 Azure SQL 数据库。 
 
 有关其他迁移指南，请参阅 [Azure 数据库迁移指南](https://docs.microsoft.com/data-migration)。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始将 MySQL 数据库迁移到 SQL 数据库之前，请执行以下操作：
 
-- 验证源环境是否受支持。 目前支持 MySQL 5.6 和 5.7。 
+- 验证源环境是否受支持。 目前不支持 MySQL 5.6 和 5.7。 
 - 下载并安装[适用于 MySQL 的 SQL Server 迁移助手](https://www.microsoft.com/download/details.aspx?id=54257)。
 - 请确保具有连接以及访问源和目标的足够权限。
 
 ## <a name="pre-migration"></a>预迁移 
 
-满足先决条件后，就已准备就绪，可以探索环境的拓扑并评估迁移的可行性了。
+满足先决条件后，就已准备就绪，可以探索环境的拓扑并评估 [Azure 云迁移](https://azure.microsoft.com/migration)的可行性了。
 
 ### <a name="assess"></a>评估 
 
@@ -52,7 +52,7 @@ ms.locfileid: "105641875"
 
    ![用于指定与源的连接的“连接到 MySQL”窗格的屏幕截图。](./media/mysql-to-sql-database-guide/connect-to-mysql.png)
 
-1. 在“MySQL 元数据资源管理器”窗格中，右键单击 MySQL 架构，然后选择“创建报表” 。 或者，可以选择右上方的“创建报表”选项卡。
+1. 在“MySQL 元数据资源管理器”窗格中，右键单击 MySQL 架构，然后选择“创建报表” 。 或者，可以选择右上方的“创建报告”选项卡。
 
    ![SSMA for MySQL 中“创建报表”链接的屏幕截图。](./media/mysql-to-sql-database-guide/create-report.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "105641875"
    a. 输入用于连接到 SQL 数据库的详细信息。  
    b. 在下拉列表中选择目标 SQL 数据库。 也可以提供新名称（在这种情况下，将在目标服务器上创建一个数据库）。  
    c. 提供身份验证详细信息。  
-   d. 选择“连接”。
+   d. 选择“连接”  。
 
    ![SSMA for MySQL 中“连接到 Azure SQL 数据库”窗格的屏幕截图。](./media/mysql-to-sql-database-guide/connect-to-sqldb.png)
  
@@ -95,7 +95,7 @@ ms.locfileid: "105641875"
 
 1. 转换完成后，查看转换后的对象与起始对象并进行比较，以识别潜在问题并根据建议解决这些问题。 
 
-   ![显示转换后的对象与起始对象进行比较的屏幕截图。](./media/mysql-to-sql-database-guide/table-comparison.png)
+   ![显示转换后的对象与起始对象的比较的屏幕截图。](./media/mysql-to-sql-database-guide/table-comparison.png)
 
    将转换后的 Transact-SQL 文本与原始代码进行比较，并查看建议。
 
@@ -125,9 +125,9 @@ ms.locfileid: "105641875"
 
    ![“MySQL 元数据资源管理器”窗格上“迁移数据”命令的屏幕截图。](./media/mysql-to-sql-database-guide/migrate-data.png)
 
-1. 迁移完成后，查看“数据迁移报表”。
+1. 迁移完成后，查看“数据迁移报告”。
    
-   ![数据迁移报表的屏幕截图。](./media/mysql-to-sql-database-guide/data-migration-report.png)
+   ![数据迁移报告的屏幕截图。](./media/mysql-to-sql-database-guide/data-migration-report.png)
 
 1. 使用 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) 连接到 SQL 数据库，并通过查看数据和架构来验证迁移。
 
@@ -135,7 +135,7 @@ ms.locfileid: "105641875"
 
 ## <a name="post-migration"></a>迁移后 
 
-成功完成迁移阶段后，需要完成一系列的迁移后任务，以确保一切都能尽量顺畅高效地正常进行。
+成功完成“迁移”阶段后，需要完成一系列的迁移后任务，以确保一切都能尽量顺畅高效地正常进行。
 
 ### <a name="remediate-applications"></a>修正应用程序
 
@@ -155,17 +155,17 @@ ms.locfileid: "105641875"
 
 ### <a name="optimize"></a>优化
 
-迁移后阶段对于协调所有数据准确性问题、验证完整性以及解决工作负载的性能问题至关重要。
+迁移后阶段对于协调任何数据准确性问题、验证完整性以及解决工作负载的性能问题至关重要。
 
 有关这些问题及其缓解步骤的详细信息，请参阅[迁移后验证和优化指南](/sql/relational-databases/post-migration-validation-and-optimization-guide)。
 
 ## <a name="migration-assets"></a>迁移资产
 
-若要获得完成此迁移场景的更多帮助，请参阅以下资源。 它是为支持实际迁移项目编制的。
+若要获得完成此迁移方案的更多帮助，请参阅以下资源。 它是为支持实际迁移项目编制的。
 
 | 标题 | 说明 |
 | --- | --- |
-| [数据工作负荷评估模型和工具](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | 为指定工作负载提供建议的“最适合”目标平台、云就绪性和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。 |
+| [数据工作负荷评估模型和工具](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | 为指定工作负载提供建议的“最适合”目标平台、云就绪性和应用程序/数据库修正级别。 它提供简单的一键式计算和报告生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。 |
 
 数据 SQL 工程团队开发了这些资源。 此团队的核心章程是解锁和加速到 Microsoft 的 Azure 数据平台的数据平台迁移项目的复杂现代化进程。
 
@@ -178,3 +178,6 @@ ms.locfileid: "105641875"
 - 有关其他迁移指南，请参阅 [Azure 数据库迁移指南](https://datamigration.microsoft.com/)。 
 
 - 有关迁移视频，请参阅[迁移之旅以及推荐的迁移和评估工具及服务的概述](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/)。
+
+- 有关更多[云迁移资源](https://azure.microsoft.com/migration/resources/)，请参阅[云迁移解决方案](https://azure.microsoft.com/migration)。
+

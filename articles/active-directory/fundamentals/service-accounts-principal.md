@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 297c0a53fb2ab4ee0b2c5291cabf5a63c8841664
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6f101c8a3d3af9658414e816afff9050402d71ce
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604696"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108064064"
 ---
 # <a name="securing-service-principals"></a>保护服务主体
 
@@ -116,7 +116,7 @@ ApplicationID 代表全局应用程序，对于租户的所有应用程序实例
 
 [创建服务主体](../develop/howto-create-service-principal-portal.md)
 
- [监视服务主体登录](../reports-monitoring/concept-sign-ins.md#sign-ins-report)
+ [监视服务主体登录](../reports-monitoring/concept-sign-ins.md)
 
 **详细了解保护服务帐户：**
 

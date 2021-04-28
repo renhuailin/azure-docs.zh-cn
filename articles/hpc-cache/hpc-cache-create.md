@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 63a179f7123f088c9c60fbfb8996a5b21d1c704d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 02934a1943ef37d282dd2a2e7862c5695bbd6ecb
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773260"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862698"
 ---
 # <a name="create-an-azure-hpc-cache"></a>创建 Azure HPC 缓存
 
@@ -107,7 +107,7 @@ Azure HPC 缓存会管理缓存和预加载哪些文件，以最大限度地提�
 > [!NOTE]
 > Azure CLI 当前不支持使用客户托管的加密密钥创建缓存。 使用 Azure 门户。
 
-使用 [az hpc-cache create](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-create) 命令创建新的 Azure HPC 缓存。
+使用 [az hpc-cache create](/cli/azure/hpc-cache#az_hpc_cache_create) 命令创建新的 Azure HPC 缓存。
 
 提供以下值：
 
@@ -126,7 +126,7 @@ nets/<cache_subnet_name>"``
   * 缓存大小 (GB)
   * 缓存基础结构中使用的虚拟机的 SKU
 
-  [az hpc-cache skus list](/cli/azure/ext/hpc-cache/hpc-cache/skus) 显示了可用的 SKU 以及每个 SKU 的有效缓存大小选项。 缓存大小选项的范围为 3 TB 到 48 TB，但仅支持某些值。
+  [az hpc-cache skus list](/cli/azure/hpc-cache/skus) 显示了可用的 SKU 以及每个 SKU 的有效缓存大小选项。 缓存大小选项的范围为 3 TB 到 48 TB，但仅支持某些值。
 
   此图显示在准备此文档时（2020 年 7 月），哪些缓存大小和 SKU 组合有效。
 

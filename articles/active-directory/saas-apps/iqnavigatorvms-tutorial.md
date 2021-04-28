@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: jeedes
-ms.openlocfilehash: beef52641b9744b39873a7f48e39eb2f94ed4c9f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2fe674f0f290c58a7e32a05c3666be8fc2c324bc
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92459720"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074501"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iqnavigator-vms"></a>教程：Azure Active Directory 单一登录 (SSO) 与 IQNavigator VMS 集成
 
@@ -93,7 +93,7 @@ ms.locfileid: "92459720"
     d. 在“中继状态”文本框中，使用以下模式键入 URL：`https://<subdomain>.iqnavigator.com` 
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际回复 URL 和中继状态更新这些值。 请联系 [IQNavigator VMS 客户端支持团队](https://www.beeline.com/support-iqn/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 使用实际回复 URL 和中继状态更新这些值。 请联系 [IQNavigator VMS 客户端支持团队](https://www.beeline.com/contact-support/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 1. IQNavigator 应用程序希望在名称标识符声明中的用户标识符是唯一的。 用户可以为名称标识符声明映射正确的值。 在这种情况下，出于演示目的，我们映射了 user.UserPrincipalName。 但是你应该根据组织设置映射正确的值。
 
@@ -135,11 +135,11 @@ ms.locfileid: "92459720"
 
 ## <a name="configure-iqnavigator-vms-sso"></a>配置 IQNavigator VMS SSO
 
-若要在“IQNavigator VMS”端配置单一登录，需将应用联合元数据 URL 发送给 [IQNavigator VMS 支持团队](https://www.beeline.com/support-iqn/)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在“IQNavigator VMS”端配置单一登录，需将应用联合元数据 URL 发送给 [IQNavigator VMS 支持团队](https://www.beeline.com/contact-support/)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-iqnavigator-vms-test-user"></a>创建 IQNavigator VMS 测试用户
 
-在本部分，将在 IQNavigator VMS 中创建一个名为 Britta Simon 的用户。 请与 [IQNavigator VMS 支持团队](https://www.beeline.com/support-iqn/)协作，将用户添加到 IQNavigator VMS 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分，将在 IQNavigator VMS 中创建一个名为 Britta Simon 的用户。 请与 [IQNavigator VMS 支持团队](https://www.beeline.com/contact-support/)协作，将用户添加到 IQNavigator VMS 平台。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 

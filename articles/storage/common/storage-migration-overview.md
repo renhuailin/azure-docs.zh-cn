@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/31/2021
 ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: f6f00075c7c66679281d776f9472ec4a1a590d76
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 3e9baedafb436bc92f734bf39519918686cec58d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106230899"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124466"
 ---
 # <a name="azure-storage-migration-overview"></a>Azure 存储迁移概述
 
@@ -28,7 +28,7 @@ ms.locfileid: "106230899"
 - 将文件从网络附加存储 (NAS) 迁移到 Azure 文件产品/服务之一：
   - [Azure 文件](https://azure.microsoft.com/services/storage/files/)
   - [Azure NetApp 文件](https://azure.microsoft.com/services/netapp/)
-  - [独立软件供应商 (ISV) 解决方案](/azure/storage/solution-integration/validated-partners/primary-secondary-storage/partner-overview)。
+  - [独立软件供应商 (ISV) 解决方案](../solution-integration/validated-partners/primary-secondary-storage/partner-overview.md)。
 - 将对象从对象存储解决方案迁移到 Azure 对象存储平台：
   - [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)
   - Azure Data Lake Storage。
@@ -66,7 +66,7 @@ ms.locfileid: "106230899"
 - 性能特征
 - 目标存储服务的限制
 
-下图是一个简化的决策树，可帮助你选择建议的 Azure 文件服务。 如果原生的 Azure 服务不满足要求，还有各种[独立软件供应商 (ISV) 解决方案](/azure/storage/solution-integration/validated-partners/primary-secondary-storage/partner-overview)可满足要求。
+下图是一个简化的决策树，可帮助你选择建议的 Azure 文件服务。 如果原生的 Azure 服务不满足要求，还有各种[独立软件供应商 (ISV) 解决方案](../solution-integration/validated-partners/primary-secondary-storage/partner-overview.md)可满足要求。
 
 完成技术评估并选择正确的目标后，执行成本评估以确定最经济高效的选项。
 
@@ -74,31 +74,31 @@ ms.locfileid: "106230899"
 
 为使决策树保持简洁，示意图中未包含目标存储服务的限制。 若要详细了解当前限制，并确定是否需要基于这些限制修改你的选项，请参阅：
 
-- [存储帐户限制](/azure/azure-resource-manager/management/azure-subscription-service-limits#storage-limits)
-- [Blob 存储限制](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-blob-storage-limits)
-- [Azure 文件可伸缩性和性能目标](/azure/storage/files/storage-files-scale-targets)
-- [Azure NetApp 文件资源限制](/azure/azure-netapp-files/azure-netapp-files-resource-limits)
+- [存储帐户限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)
+- [Blob 存储限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-blob-storage-limits)
+- [Azure 文件可伸缩性和性能目标](../files/storage-files-scale-targets.md)
+- [Azure NetApp 文件资源限制](../../azure-netapp-files/azure-netapp-files-resource-limits.md)
 
-如有任何限制对使用某个服务造成了阻碍，还可以选择多家存储供应商在 Azure 市场中提供的解决方案，这些解决方案均受 Azure 支持。 有关提供文件服务的经验证的 ISV 合作伙伴的信息，请参阅[主要和辅助存储的 Azure 存储合作伙伴](/azure/storage/solution-integration/validated-partners/primary-secondary-storage/partner-overview)。
+如有任何限制对使用某个服务造成了阻碍，还可以选择多家存储供应商在 Azure 市场中提供的解决方案，这些解决方案均受 Azure 支持。 有关提供文件服务的经验证的 ISV 合作伙伴的信息，请参阅[主要和辅助存储的 Azure 存储合作伙伴](../solution-integration/validated-partners/primary-secondary-storage/partner-overview.md)。
 
 ##### <a name="select-the-migration-method"></a>选择迁移方法
 
 可使用两种基本迁移方法进行存储迁移。
 
-- **联机映像服务**。 联机方法使用网络进行数据迁移。 可以使用公共 Internet 或 [Azure ExpressRoute](/azure/expressroute/expressroute-introduction)。 如果服务没有公共终结点，则必须将 VPN 与公共 Internet 配合使用。
+- **联机映像服务**。 联机方法使用网络进行数据迁移。 可以使用公共 Internet 或 [Azure ExpressRoute](../../expressroute/expressroute-introduction.md)。 如果服务没有公共终结点，则必须将 VPN 与公共 Internet 配合使用。
 - **脱机。** 脱机方法使用 [Azure Data Box](https://azure.microsoft.com/services/databox/) 设备之一。
 
 是要使用联机方法还是脱机方法取决于可用的网络带宽。 如果有足够的网络带宽可供在所需时间线内执行迁移，则联机方法是首选方法。
 
 可以将这两种方法结合使用：脱机方法用于初始的批量迁移，联机方法用于对更改进行增量迁移。 同时使用这两种方法需具备较高的协调水平，因此不建议这样做。 如果选择使用这两种方法，请将联机迁移的数据集与脱机迁移的数据集隔离开来。
 
-有关不同迁移方法的详细信息和指导，请参阅[选择用于数据传输的 Azure 解决方案](/azure/storage/common/storage-choose-data-transfer-solution)和[迁移到 Azure 文件共享](/azure/storage/files/storage-files-migration-overview)。
+有关不同迁移方法的详细信息和指导，请参阅[选择用于数据传输的 Azure 解决方案](./storage-choose-data-transfer-solution.md)和[迁移到 Azure 文件共享](../files/storage-files-migration-overview.md)。
 
 ##### <a name="choose-the-best-migration-tool-for-the-job"></a>为作业选择最佳迁移工具
 
 有多种迁移工具可用于执行迁移。 其中一些工具是开源的，例如 AzCopy、robocopy、xcopy 和 rsync；还有一些工具是商用的。 [比较矩阵](../solution-integration/validated-partners/data-management/migration-tools-comparison.md)中提供了可用商用工具列表以及这些工具的比较。
 
-开源工具非常适合小规模迁移。 要从 Windows 文件服务器迁移到 Azure 文件存储，Microsoft 建议从 Azure 文件存储原生功能着手，并使用 [Azure 文件同步](https://docs.microsoft.com/windows-server/manage/windows-admin-center/azure/azure-file-sync)。对于涉及不同的源、大容量或特殊要求（例如限制，或者带审核功能的详细报告）的较复杂迁移，商用工具是最佳选择。 这些工具可以简化迁移并大幅降低风险。 大多数商用工具还可以执行发现，这为评估提供了重要的输入。
+开源工具非常适合小规模迁移。 要从 Windows 文件服务器迁移到 Azure 文件存储，Microsoft 建议从 Azure 文件存储原生功能着手，并使用 [Azure 文件同步](/windows-server/manage/windows-admin-center/azure/azure-file-sync)。对于涉及不同的源、大容量或特殊要求（例如限制，或者带审核功能的详细报告）的较复杂迁移，商用工具是最佳选择。 这些工具可以简化迁移并大幅降低风险。 大多数商用工具还可以执行发现，这为评估提供了重要的输入。
 
 #### <a name="migration-phase"></a>迁移阶段
 
@@ -114,13 +114,13 @@ ms.locfileid: "106230899"
 
 基于块的设备迁移通常是在迁移虚拟机或物理主机的过程中完成的。 一个常见的错误认知是将块存储决策推迟到迁移之后。 在适当考虑工作负载要求的情况下提前做出这些决策可以更顺利地迁移到云中。
 
-若要了解可迁移的工作负载和可采用的方法，请参阅 [Azure 磁盘存储文档](/azure/virtual-machines/disks-types)，以及[磁盘存储产品页](https://azure.microsoft.com/services/storage/disks/#resources)上的资源。 可以了解哪些磁盘符合你的要求，以及[磁盘突发](/azure/virtual-machines/disk-bursting)等最新功能。 若要详细了解如何将虚拟机连同基于块的基础设备一起进行迁移，请参阅 [Azure Migrate](/azure/migrate/) 文档。
+若要了解可迁移的工作负载和可采用的方法，请参阅 [Azure 磁盘存储文档](../../virtual-machines/disks-types.md)，以及[磁盘存储产品页](https://azure.microsoft.com/services/storage/disks/#resources)上的资源。 可以了解哪些磁盘符合你的要求，以及[磁盘突发](../../virtual-machines/disk-bursting.md)等最新功能。 若要详细了解如何将虚拟机连同基于块的基础设备一起进行迁移，请参阅 [Azure Migrate](../../migrate/index.yml) 文档。
 
 ## <a name="see-also"></a>另请参阅
 
-- [选择 Azure 数据传输解决方案](/azure/storage/common/storage-choose-data-transfer-solution)
+- [选择 Azure 数据传输解决方案](./storage-choose-data-transfer-solution.md)
 - [商用迁移工具的比较](../solution-integration/validated-partners/data-management/migration-tools-comparison.md)
-- [迁移到 Azure 文件共享](/azure/storage/files/storage-files-migration-overview)
-- [使用 WANdisco LiveData Platform for Azure 迁移到 Data Lake Storage](/azure/storage/blobs/migrate-gen2-wandisco-live-data-platform)
-- [使用 AzCopy 将数据复制或移动到 Azure 存储](https://aka.ms/azcopy)
+- [迁移到 Azure 文件共享](../files/storage-files-migration-overview.md)
+- [使用 WANdisco LiveData Platform for Azure 迁移到 Data Lake Storage](../blobs/migrate-gen2-wandisco-live-data-platform.md)
+- [使用 AzCopy 将数据复制或移动到 Azure 存储](./storage-use-azcopy-v10.md)
 - [使用 AzReplicate 将大型数据集迁移到 Azure Blob 存储](https://github.com/Azure/AzReplicate/tree/master/)

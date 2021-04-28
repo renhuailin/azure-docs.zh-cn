@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: e06881d078b4e881174c3e931f7898cb622ad7f9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0163204e0ba953c34adf3f1b44bd385cb517fed5
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766346"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133576"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>快速入门：适用于 Python 的 Azure Key Vault 机密客户端库
 
@@ -139,9 +139,9 @@ python kv_secrets.py
 
 ### <a name="authenticate-and-create-a-client"></a>进行身份验证并创建客户端
 
-本快速入门使用登录用户向 Key Vault 进行身份验证，这是本地开发的首选方法。 对于部署到 Azure 的应用程序，应将托管标识分配给应用服务或虚拟机。有关详细信息，请参阅[托管标识概述](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
+本快速入门使用登录用户向 Key Vault 进行身份验证，这是本地开发的首选方法。 对于部署到 Azure 的应用程序，应将托管标识分配给应用服务或虚拟机。有关详细信息，请参阅[托管标识概述](../../active-directory/managed-identities-azure-resources/overview.md)。
 
-在下面的示例中，Key Vault 的名称将扩展为 Key Vault URI，格式为“https://\<your-key-vault-name\>.vault.azure.net”。 此示例使用 ['DefaultAzureCredential()' ](https://docs.microsoft.com/python/api/azure-identity/azure.identity.defaultazurecredential)类，该类允许在具有不同选项的不同环境中使用相同代码提供标识。 有关详细信息，请参阅[默认 Azure 凭据身份验证](https://docs.microsoft.com/python/api/overview/azure/identity-readme)。 
+在下面的示例中，Key Vault 的名称将扩展为 Key Vault URI，格式为“https://\<your-key-vault-name\>.vault.azure.net”。 此示例使用 ['DefaultAzureCredential()' ](/python/api/azure-identity/azure.identity.defaultazurecredential)类，该类允许在具有不同选项的不同环境中使用相同代码提供标识。 有关详细信息，请参阅[默认 Azure 凭据身份验证](/python/api/overview/azure/identity-readme)。 
 
 ```python
 credential = DefaultAzureCredential()
@@ -200,7 +200,7 @@ az group delete --resource-group KeyVault-PythonQS-rg
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure 密钥保管库概述](../general/overview.md)
-- [保护对密钥保管库的访问](../general/security-overview.md)
+- [保护对密钥保管库的访问](../general/security-features.md)
 - [Azure Key Vault 开发人员指南](../general/developers-guide.md)
-- [Key Vault 安全性概述](../general/security-overview.md)
+- [Key Vault 安全性概述](../general/security-features.md)
 - [使用 Key Vault 进行身份验证](../general/authentication.md)

@@ -3,13 +3,13 @@ title: Azure Monitor 中的警报架构定义
 description: 了解 Azure Monitor 的常见警报架构定义
 author: ofirmanor
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 709ec2dee1be6930ca7c09de334aede8a76e95f4
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.date: 04/12/2021
+ms.openlocfilehash: 6d835b6d2c3519bc47decf8256ab3f3380170df6
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491706"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565111"
 ---
 # <a name="common-alert-schema-definitions"></a>常见警报架构定义
 
@@ -72,7 +72,7 @@ ms.locfileid: "106491706"
 
 | 字段 | 说明|
 |:---|:---|
-| alertId | 唯一标识警报实例的 GUID。 |
+| alertId | 标识警报实例的唯一资源 ID。 |
 | alertRule | 生成了警报实例的警报规则的名称。 |
 | 严重性 | 警报严重性。 可能的值：Sev0、Sev1、Sev2、Sev3 或 Sev4。 |
 | signalType | 标识其上定义了警报规则的信号。 可能的值：Metric、Log 或 Activity Log。 |
@@ -110,7 +110,7 @@ ms.locfileid: "106491706"
 
 ## <a name="alert-context"></a>警报上下文
 
-### <a name="metric-alerts"></a>指标警报
+### <a name="metric-alerts-excluding-availability-tests"></a>指标警报（排除可用性测试）
 
 #### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
 
@@ -136,6 +136,37 @@ ms.locfileid: "106491706"
               }
             ],
             "metricValue": 31.1105
+          }
+        ],
+        "windowStartTime": "2019-03-22T13:40:03.064Z",
+        "windowEndTime": "2019-03-22T13:45:03.064Z"
+      }
+    }
+}
+```
+
+### <a name="metric-alerts-availability-tests"></a>指标警报（可用性测试）
+
+#### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
+
+**示例值**
+```json
+{
+  "alertContext": {
+      "properties": null,
+      "conditionType": "WebtestLocationAvailabilityCriteria",
+      "condition": {
+        "windowSize": "PT5M",
+        "allOf": [
+          {
+            "metricName": "Failed Location",
+            "metricNamespace": null,
+            "operator": "GreaterThan",
+            "threshold": "2",
+            "timeAggregation": "Sum",
+            "dimensions": [],
+            "metricValue": 5,
+            "webTestName": "myAvailabilityTest-myApplication"
           }
         ],
         "windowStartTime": "2019-03-22T13:40:03.064Z",

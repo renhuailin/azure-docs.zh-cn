@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 2a52635dbaa7a76034f3a535b099320a901e8c07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 547dd3f039f2205d5d83c4b5b5f6105482f94d87
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83758769"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108065036"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>使用条件访问管理对 Azure 管理的访问权限
 
@@ -44,6 +44,9 @@ Azure Active Directory (Azure AD) 中的条件访问基于你指定的具体条�
 - Visual Studio 订阅管理员门户
 - Azure DevOps
 - Azure 数据工厂门户
+- [Azure SQL 数据库](https://docs.microsoft.com/azure/azure-sql/database/conditional-access-configure)
+- SQL 托管实例
+- Azure Synapse
 
 请注意，该策略适用于调用 Azure 资源管理器 API 的 Azure PowerShell。 它不适用于调用 Microsoft Graph 的 [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2)。
 

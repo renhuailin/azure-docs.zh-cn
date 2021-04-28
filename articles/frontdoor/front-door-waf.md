@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: d315fa5b588c6e5f2e4643ca18626e400e6ca01b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f02a8fff9ed3e75f5add287a2d5205988f87949f
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785642"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896776"
 ---
 # <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>教程：使用 Azure Front Door 和 Azure Web 应用程序防火墙 (WAF) 快速缩放和保护 Web 应用程序
 
@@ -48,7 +48,7 @@ ms.locfileid: "107785642"
    ```
 
 > [!NOTE] 
-> 有关本教程中使用的命令的详细信息，请参阅 [适用于 Azure Front Door 的 Azure CLI 参考](/cli/azure/ext/front-door)。
+> 有关本教程中使用的命令的详细信息，请参阅 [适用于 Azure Front Door 的 Azure CLI 参考](/cli/azure/)。
 
 ## <a name="create-an-azure-front-door-resource"></a>创建 Azure Front Door 资源
 

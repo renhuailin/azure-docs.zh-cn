@@ -8,14 +8,14 @@ ms.subservice: core
 author: peterclu
 ms.author: peterlu
 ms.date: 06/28/2020
-ms.topic: conceptual
-ms.custom: how-to, designer
-ms.openlocfilehash: 10904275d382c7f9dbf223ded78cab0adf14992a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.custom: designer
+ms.openlocfilehash: 322408dac79b7ef113c6b0b51a25d5836688baea
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101661046"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107889423"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>在 Azure 机器学习设计器中转换数据
 

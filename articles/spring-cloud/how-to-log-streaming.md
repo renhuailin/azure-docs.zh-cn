@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 1eeb291c7a058efd8905e95ebf1ea14fed046691
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: df58be32123f662ae2a2782d6ebb7f19bd5c339c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877178"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134926"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>实时流式传输 Azure Spring Cloud 应用日志
 
@@ -23,7 +23,7 @@ Azure Spring Cloud 支持在 Azure CLI 中进行日志流式处理，以获取�
 ## <a name="prerequisites"></a>先决条件
 
 * 安装适用于 Spring Cloud 的 [Azure CLI 扩展](/cli/azure/install-azure-cli)，最低版本为 0.2.0。
-* 具有正在运行的应用程序的 Azure Spring Cloud 实例，例如 [Spring Cloud 应用](./spring-cloud-quickstart.md)。
+* 具有正在运行的应用程序的 Azure Spring Cloud 实例，例如 [Spring Cloud 应用](./quickstart.md)。
 
 > [!NOTE]
 >  ASC CLI 扩展已从 0.2.0 版本更新为 0.2.1 版本。 此更改影响日志流式处理命令的语法：`az spring-cloud app log tail`，将其替换为 `az spring-cloud app logs`。 `az spring-cloud app log tail` 命令将在未来版本中弃用。 如果你一直使用 0.2.0 版本，可以升级到 0.2.1。 首先，使用 `az extension remove -n spring-cloud` 命令删除旧版本。  然后，使用 `az extension add -n spring-cloud` 命令安装 0.2.1 版本。
@@ -90,6 +90,5 @@ az spring-cloud app logs -h
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [快速入门：通过日志、指标和跟踪来监视 Azure Spring Cloud 应用](spring-cloud-quickstart-logs-metrics-tracing.md)
+* [快速入门：通过日志、指标和跟踪来监视 Azure Spring Cloud 应用](./quickstart-logs-metrics-tracing.md)
 * [通过诊断设置分析日志和指标](./diagnostic-services.md)
-

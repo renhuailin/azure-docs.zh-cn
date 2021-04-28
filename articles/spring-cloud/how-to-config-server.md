@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 52b3d902b2cbfdacfe92117dcf0057dab1fe9a83
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 773ae30cd888e76793bd65f8f31a8c110b128c01
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012203"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135214"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>为服务设置 Spring Cloud 配置服务器实例
 
@@ -24,7 +24,7 @@ Spring Cloud Config 为分布式系统中的外部化配置提供服务器和客
 
 ## <a name="prerequisites"></a>先决条件
 * Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
-* 一个已预配的处于运行状态的 Azure Spring Cloud 服务。 若要设置并启动 Azure Spring Cloud 服务，请参阅[快速入门：使用 Azure CLI 启动 Java Spring 应用程序](spring-cloud-quickstart.md)。
+* 一个已预配的处于运行状态的 Azure Spring Cloud 服务。 若要设置并启动 Azure Spring Cloud 服务，请参阅[快速入门：使用 Azure CLI 启动 Java Spring 应用程序](./quickstart.md)。
 
 ## <a name="restriction"></a>限制
 
@@ -250,4 +250,4 @@ Azure Spring Cloud 可以访问公开、由 SSH 保护的，或使用 HTTP 基�
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何启用和配置 Spring Cloud Config Server 实例。 若要详细了解如何管理应用程序，请参阅[在 Azure Spring Cloud 中缩放应用程序](spring-cloud-howto-scale-manual.md)。
+本文介绍了如何启用和配置 Spring Cloud Config Server 实例。 若要详细了解如何管理应用程序，请参阅[在 Azure Spring Cloud 中缩放应用程序](./how-to-scale-manual.md)。

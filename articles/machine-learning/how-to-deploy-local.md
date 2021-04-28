@@ -8,14 +8,14 @@ ms.subservice: core
 ms.author: laobri
 author: lobrien
 ms.date: 11/20/2020
-ms.topic: conceptual
-ms.custom: how-to, deploy
-ms.openlocfilehash: a7d1212d1106f0883d05a860b498b90e4e5f8e00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.custom: deploy
+ms.openlocfilehash: 6e9a53a36403e24fa9573c6e65ae062a23bd9cb6
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102517508"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107889567"
 ---
 # <a name="deploy-models-trained-with-azure-machine-learning-on-your-local-machines"></a>在本地计算机上部署通过 Azure 机器学习训练的模型 
 
@@ -185,7 +185,7 @@ print("prediction:", resp.text)
 你可以下载模型：  
 
 - 在门户中，选择“模型”选项卡，接着选择所需模型，然后在“详细信息”页上选择“下载”。
-- 从命令行使用 `az ml model download`。 （参阅[模型下载。](/cli/azure/ext/azure-cli-ml/ml/model#ext_azure_cli_ml_az_ml_model_download)）
+- 从命令行使用 `az ml model download`。 （参阅[模型下载。](/cli/azure/ml/model#az_ml_model_download)）
 - 使用 Python SDK `Model.download()` 方法。 （请参阅[模型类](/python/api/azureml-core/azureml.core.model.model#download-target-dir------exist-ok-false--exists-ok-none-)。）
 
 Azure 模型是一个或多个序列化 Python 对象，打包为 Python pickle 文件（.pkl 扩展名）。 pickle 文件的内容取决于用于训练模型的机器学习库或技术。 例如，如果你使用教程中的模型，则可以使用以下命令来加载模型：

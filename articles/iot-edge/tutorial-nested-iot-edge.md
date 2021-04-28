@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 44fe6bb3787e1fe0df7ccf83200497b46c473568
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 79ccd1f8107eb5d287cf74084978b92715b936fa
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728493"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133738"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices"></a>教程：创建 IoT Edge 设备的层次结构
 
@@ -77,7 +77,7 @@ ms.locfileid: "107728493"
     --query "properties.outputs.[publicFQDN.value, publicSSH.value]" -o tsv
    ```
 
-   虚拟机使用 SSH 密钥对用户进行身份验证。 如果不熟悉如何创建和使用 SSH 密钥，可按照 [Azure 中 Linux VM 的 SSH 公钥-私钥密钥对说明](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)进行操作。
+   虚拟机使用 SSH 密钥对用户进行身份验证。 如果不熟悉如何创建和使用 SSH 密钥，可按照 [Azure 中 Linux VM 的 SSH 公钥-私钥密钥对说明](../virtual-machines/linux/mac-create-ssh-keys.md)进行操作。
 
    IoT Edge 版本 1.2 预装了此 ARM 模板，因此用户不必在虚拟机上手动安装这些资产。 如果要在自己的设备上安装 IoT Edge，请参阅[安装 Azure IoT Edge for Linux（版本 1.2）](how-to-install-iot-edge.md)或[将 IoT Edge 更新为版本 1.2](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12)。
 
