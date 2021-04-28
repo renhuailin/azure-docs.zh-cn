@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/24/2021
 ms.author: jeedes
-ms.openlocfilehash: a5daf83346db901288d5bc614f341c354d0c008f
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 62a64270083b7589bb1c6bfb0298ddac8cd71227
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481338"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130665"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cylanceprotect"></a>教程：Azure Active Directory 单一登录 (SSO) 与 CylancePROTECT 集成
 
@@ -151,9 +151,9 @@ ms.locfileid: "107481338"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应能够自动登录到为其设置了 SSO 的 CylancePROTECT。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 CylancePROTECT 磁贴时，应当会自动登录到已为其设置了 SSO 的 CylancePROTECT。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 CylancePROTECT 磁贴时，应当会自动登录到已为其设置了 SSO 的 CylancePROTECT。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 CylancePROTECT 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 CylancePROTECT 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0dcb959184e12ffa22ae25443087684123598e47
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 28e7a6be84a260c26b27b9e6042a6c323d4167ec
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382449"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128750"
 ---
 # <a name="register-a-microsoft-graph-application"></a>注册 Microsoft Graph 应用程序
 
@@ -58,7 +58,7 @@ ms.locfileid: "106382449"
 
 ## <a name="grant-api-access"></a>授予 API 访问权限
 
-若要让应用程序访问 Microsoft Graph 中的数据，请向已注册的应用程序授予相关[应用程序权限](https://docs.microsoft.com/graph/permissions-reference)。 应用程序的有效权限是权限默示的完整特权级别。 例如，若要创建、读取、更新和删除 Azure AD B2C 租户中的每个用户，请添加“User.ReadWrite.All”权限。 
+若要让应用程序访问 Microsoft Graph 中的数据，请向已注册的应用程序授予相关[应用程序权限](/graph/permissions-reference)。 应用程序的有效权限是权限默示的完整特权级别。 例如，若要创建、读取、更新和删除 Azure AD B2C 租户中的每个用户，请添加“User.ReadWrite.All”权限。 
 
 > [!NOTE]
 > “User.ReadWrite.Al”权限不包括更新用户帐户密码的功能。 如果应用程序需要更新用户帐户密码，请[授予用户管理员角色](#optional-grant-user-administrator-role)。 授予[用户管理员](../active-directory/roles/permissions-reference.md#user-administrator)角色时，不需要执行“User.ReadWrite.All”。 “用户管理员”角色包括管理用户所需的所有内容。

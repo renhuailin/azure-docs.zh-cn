@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7651142d1c2b24da64d9f72dd2300dc0c3807e93
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 70ece71d1f342ac355878afd592964525ac962fe
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937869"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108016628"
 ---
 # <a name="call-flow-basics"></a>呼叫流基础知识
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include-phone-numbers.md)]
 
 以下部分提供 Azure 通信服务中的呼叫流概述。 信号和媒体流取决于用户所进行的呼叫的类型。 呼叫类型的示例包括一对一 VoIP、一对一 PSTN 以及包含 VoIP 和 PSTN 连接的参与者组合的群呼。 查看[呼叫类型](./voice-video-calling/about-call-types.md)。
 

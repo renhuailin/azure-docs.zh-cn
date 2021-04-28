@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 6a14b16e34faa827228594bf6d4f0bd9ed48cf72
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: a70f88857bdbff825271793b58b442e6ea78c8ee
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106221749"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108145927"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>教程：Azure Active Directory 与 Greenhouse 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "106221749"
 * 让用户使用其 Azure AD 帐户自动登录到 Greenhouse。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -77,7 +77,7 @@ ms.locfileid: "106221749"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<COMPANYNAME>.greenhouse.io`
 
@@ -196,7 +196,7 @@ ms.locfileid: "106221749"
 
 * 在 Azure 门户中单击“测试此应用程序”后，系统应会自动登录到为其设置 SSO 的 Greenhouse 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“Greenhouse”磁贴时，如果是在 SP 模式下进行配置，系统会重定向到应用程序登录页启动登录流；如果是在 IDP 模式下进行配置，则应会自动登录到为其设置 SSO 的 Greenhouse。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“Greenhouse”磁贴时，如果是在 SP 模式下进行配置，系统会重定向到应用程序登录页启动登录流；如果是在 IDP 模式下进行配置，则应会自动登录到为其设置 SSO 的 Greenhouse。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 5816bc542ff550accedd33ba9a7fd9d98583b3d1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 275aba6e9c7b87ec7c6fb1cbc986b3ebaa3a9696
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653756"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130946"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>教程：生成使用 Microsoft 标识平台的多租户守护程序
 
@@ -203,7 +203,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>创建 dotnet-web-daemon-v2 并将其发布到 Azure 网站
 
-1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
+1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 1. 在左上角，选择“创建资源”。
 1. 选择“Web” > “Web 应用”，然后为网站命名。  例如，将它命名为 **dotnet-web-daemon-v2-contoso.azurewebsites.net**。
 1. 选择“订阅”、“资源组”和“应用服务计划和位置”的信息。   为“OS”选择“Windows”，为“发布”选择“代码”。   
@@ -233,7 +233,7 @@ Visual Studio 将发布项目，同时自动打开浏览器并加载该项目的
 1. 在“身份验证” > “重定向 URI”菜单的值列表中添加相同的 URL。  如果有多个重定向 URL，请确保每个重定向 URL 都有一个使用应用服务的 URI 的新条目。
 
 ## <a name="clean-up-resources"></a>清理资源
-如果不再需要，请删除[注册应用程序](#register-your-application) 步骤中创建的应用对象。  若要删除应用程序，请按照[删除你或你的组织编写的应用程序](quickstart-remove-app.md#remove-an-application-authored-by-you-or-your-organization)中的说明进行操作。
+如果不再需要，请删除[注册应用程序](#register-your-application) 步骤中创建的应用对象。  若要删除应用程序，请按照[删除你或你的组织编写的应用程序](./howto-remove-app.md#remove-an-application-authored-by-you-or-your-organization)中的说明进行操作。
 
 ## <a name="get-help"></a>获取帮助
 

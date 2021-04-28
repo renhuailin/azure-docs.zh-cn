@@ -1,14 +1,16 @@
 ---
 title: 与 Azure Monitor 集成的合作伙伴
 description: 了解 Azure 监视器的合作伙伴，以及如何访问相关文档，以便与它们的产品集成。
+author: rboucher
+ms.author: robb
 ms.topic: conceptual
-ms.date: 02/19/2021
-ms.openlocfilehash: ca58023510eb9329bc8ddf1339df4d8c27aae5e6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/14/2021
+ms.openlocfilehash: d449f660fa97af8b5c24542258029834a964b3f2
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102101012"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751609"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 
@@ -111,7 +113,7 @@ Azure 使客户能够迁移其应用程序并将其现代化，以便与许多�
 
 Dynatrace OneAgent 通过 Azure 扩展机制来与 Azure VM 和应用服务集成。 这样，Dynatrace OneAgent 便可以收集有关主机、网络和服务的性能指标。 除了显示指标，Dynatrace 还会以端到端方式将环境可视化。 它显示从客户端到数据库层的事务。 Dynatrace 可以对问题和完全集成的根本原因分析进行基于 AI 的关联，从方法级别了解代码和数据库。 这样一来，进行故障排除和性能优化就要容易得多。
 
-[Dynatrack 文档](https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/)
+[Dynatrace 文档](https://www.dynatrace.com/support/help/technology-support/cloud-platforms/microsoft-azure-services/)
 
 
 ## <a name="elastic"></a>Elastic
@@ -296,6 +298,14 @@ Site24x7 提供高级完整堆栈 Azure 监视解决方案，为应用程序提�
 ## <a name="solarwinds"></a>SolarWinds
 
 [SolarWinds 文档](https://www.solarwinds.com/topics/azure-monitoring)
+
+## <a name="speartip"></a>SpearTip
+
+![SpearTip 徽标](./media/partners/speartip.png)
+
+SpearTip 的全天候安全运营中心持续监视 Azure 环境中的网络威胁。 利用 ShadowSpear 与 Azure Monitor 的集成，可以收集安全事件并分析其中是否存在高级威胁，而 SpearTip 工程师可进行调查并做出响应，以在中途阻止威胁参与者。 集成是无缝的，并且在部署集成后提供即时值。
+
+[SpearTip 文档](https://www.speartip.com/identify/)
 
 ## <a name="splunk"></a>Splunk
 

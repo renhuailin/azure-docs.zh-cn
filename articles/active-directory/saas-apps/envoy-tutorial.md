@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/01/2021
 ms.author: jeedes
-ms.openlocfilehash: bbf961e7b99efe29fd8b13c2104c33e42ae7d4be
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 643ab787e07cdb1f3a61d1028838a2fc68a169f2
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286485"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147978"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-envoy"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Envoy 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "106286485"
 * 让用户使用其 Azure AD 帐户自动登录到 Envoy。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -170,8 +170,8 @@ ms.locfileid: "106286485"
 
 * 直接转到 Envoy 登录 URL，并从这里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Envoy”磁贴时，系统会重定向到 Envoy 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Envoy”磁贴时，系统会重定向到 Envoy 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Envoy 后，你可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 Envoy 后，你可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

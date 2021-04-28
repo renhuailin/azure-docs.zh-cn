@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4199c5576662eee1dd6cedc388440a71e21f8b74
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c24c38368ef20dadd0dc19b1804f9d27ad68bd27
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100581217"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833681"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>将 Azure 自动化作业数据转发到 Azure Monitor 日志
 
@@ -96,7 +97,7 @@ Azure 自动化诊断将在 Azure Monitor 日志中创建两种类型的记录�
 | CorrelationId |Runbook 作业的关联 GUID。 |
 | ResourceId |Runbook 的 Azure 自动化帐户资源 ID。 |
 | SubscriptionId | 自动化帐户的 Azure 订阅 GUID。 |
-| ResourceGroup | 自动化帐户的资源组的名称。 |
+| resourceGroup | 自动化帐户的资源组的名称。 |
 | ResourceProvider | 资源提供程序。 值为 MICROSOFT.AUTOMATION。 |
 | ResourceType | 资源类型。 值为 AUTOMATIONACCOUNTS。 |
 
@@ -118,7 +119,7 @@ Azure 自动化诊断将在 Azure Monitor 日志中创建两种类型的记录�
 | CorrelationId |Runbook 作业的关联 GUID。 |
 | ResourceId |Runbook 的 Azure 自动化帐户资源 ID。 |
 | SubscriptionId | 自动化帐户的 Azure 订阅 GUID。 |
-| ResourceGroup | 自动化帐户的资源组的名称。 |
+| resourceGroup | 自动化帐户的资源组的名称。 |
 | ResourceProvider | 资源提供程序。 值为 MICROSOFT.AUTOMATION。 |
 | ResourceType | 资源类型。 值为 AUTOMATIONACCOUNTS。 |
 

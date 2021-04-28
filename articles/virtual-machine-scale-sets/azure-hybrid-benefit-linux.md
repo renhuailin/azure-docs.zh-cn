@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/20/2021
 ms.author: mathapli
-ms.openlocfilehash: a714434c39a0c40c2e908f2d0c424f02851921a6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fb5f00cf2e7078ab8d85f0ac1c2a2d54be907f89
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933672"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127166"
 ---
 # <a name="azure-hybrid-benefit-for-linux-virtual-machine-scale-set-public-preview"></a>Linux 虚拟机规模集的 Azure 混合权益（公共预览版）
 
-Linux 虚拟机规模集的 Azure 混合权益现已推出公共预览版。 Azure 混合权益可帮助降低运行 RHEL 和 SLES [虚拟机规模集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)的成本。
+Linux 虚拟机规模集的 Azure 混合权益现已推出公共预览版。 Azure 混合权益可帮助降低运行 RHEL 和 SLES [虚拟机规模集](./overview.md)的成本。
 
 使用此权益，只需支付规模集的基础结构成本。 该权益适用于所有 RHEL 和 SLES 市场即用即付 (PAYG) 映像。
 
 
 >[!NOTE]
-> 本文介绍适用于 Linux VMSS 的 Azure 混合权益。 这里提供了一篇单独的文章：[Linux VM 的 Azure 混合权益](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)，自 2020 年 11 月起，已面向 Azure 客户提供该权益。
+> 本文介绍适用于 Linux VMSS 的 Azure 混合权益。 这里提供了一篇单独的文章：[Linux VM 的 Azure 混合权益](../virtual-machines/linux/azure-hybrid-benefit-linux.md)，自 2020 年 11 月起，已面向 Azure 客户提供该权益。
 
 ## <a name="benefit-description"></a>权益说明
 Azure 混合让你能够使用 Red Hat 或 SUSE 的现有云访问许可证，并灵活地将虚拟机规模集实例转换为自带订阅 (BYOS) 计费。 
@@ -94,7 +94,7 @@ az vmss update -g myResourceGroup -n myVmName --license-type None
 ```
 
 >[!NOTE]
-> 规模集有一项[“升级策略”](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)，该策略决定了如何使用最新的规模集模型对 VM 进行更新。 因此，如果 VMSS 具有“自动”升级策略，则在更新 VM 实例时将自动应用 Azure 混合权益。 如果 VMSS 具有“滚动”升级策略，将基于计划的更新应用 AHB。
+> 规模集有一项[“升级策略”](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)，该策略决定了如何使用最新的规模集模型对 VM 进行更新。 因此，如果 VMSS 具有“自动”升级策略，则在更新 VM 实例时将自动应用 Azure 混合权益。 如果 VMSS 具有“滚动”升级策略，将基于计划的更新应用 AHB。
 如果具有“手动”升级策略，需要对每个现有 VM 执行“手动升级”。  
 
 ### <a name="cli-example-to-upgrade-virtual-machine-scale-set-instances-in-case-of-manual-upgrade-policy"></a>在“手动升级”策略情况下升级虚拟机规模集实例的 CLI 示例 

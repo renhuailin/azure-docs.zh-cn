@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: 242dd2476783a3d1db6b74452d35e87c5cd189b6
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: da93da4c08a23e158d5a22c4552d5e5754ceb01a
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516546"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988039"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows 虚拟桌面中有哪些新增功能？
 
@@ -315,7 +315,7 @@ Azure 政府云现已正式发布。 有关详细信息，请参阅[我们的博
 
 - Windows 虚拟桌面现包含 Azure 顾问。 通过 Azure 门户访问 Windows 虚拟桌面时，你可以查看关于优化 Windows 虚拟桌面环境的建议。 有关详细信息，请参阅 [Azure 顾问](azure-advisor.md)。
 
-- Azure CLI 现支持 Windows 虚拟桌面 (`az desktopvirtualization`)，可帮助你自动执行 Windows 虚拟桌面部署。 如需查看扩展命令的列表，请查看 [desktopvirtualization](/cli/azure/ext/desktopvirtualization/)。
+- Azure CLI 现支持 Windows 虚拟桌面 (`az desktopvirtualization`)，可帮助你自动执行 Windows 虚拟桌面部署。 如需查看扩展命令的列表，请查看 [desktopvirtualization](/cli/azure/desktopvirtualization)。
 
 - 我们更新了部署模板，更新后的模板与 Windows 虚拟桌面 Azure 资源管理器接口完全兼容。 你可在 [GitHub](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates) 上找到这些模板。
 

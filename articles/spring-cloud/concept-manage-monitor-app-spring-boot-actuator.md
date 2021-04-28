@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 93fd286aa76a0409a515abbf8c9dabd88a9a65c4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bfe5dc7c4f6fc40154a6fc9bc3a087873ba9eaef
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877182"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129236"
 ---
 # <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>使用 Azure Spring Boot Actuator 管理和监视应用
 
@@ -21,7 +21,7 @@ ms.locfileid: "104877182"
 在将新的二进制文件部署到应用后，可能需要检查功能并查看有关正在运行的应用程序的信息。 本文介绍了如何从 Azure Spring Cloud 提供的测试终结点访问 API，并公开了用于应用的生产就绪功能。
 
 ## <a name="prerequisites"></a>先决条件
-本文假定你有一个可以在 Azure Spring Cloud 服务上成功部署和启动的 Spring Boot 2.x 应用程序。  请参阅[快速入门：使用 Azure 门户启动现有的 Azure Spring Cloud 应用程序](spring-cloud-quickstart.md)
+本文假定你有一个可以在 Azure Spring Cloud 服务上成功部署和启动的 Spring Boot 2.x 应用程序。  请参阅[快速入门：使用 Azure 门户启动现有的 Azure Spring Cloud 应用程序](./quickstart.md)
 
 ## <a name="verify-app-through-test-endpoint"></a>通过测试终结点验证应用
 1. 请转到“应用程序仪表板”并单击你的应用，以进入应用概述页。
@@ -76,6 +76,5 @@ ms.locfileid: "104877182"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解用于 Azure Spring Cloud 的指标](spring-cloud-concept-metrics.md)
-* [了解 Azure Spring Cloud 中的应用状态](spring-cloud-concept-app-status.md)
-
+* [了解用于 Azure Spring Cloud 的指标](./concept-metrics.md)
+* [了解 Azure Spring Cloud 中的应用状态](./concept-app-status.md)

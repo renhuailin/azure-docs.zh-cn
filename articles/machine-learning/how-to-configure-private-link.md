@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 92b5283e5779cc79ce0a745190b57884a6ca0f7e
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 0ea4e3ae0113608203dad63f636ae4adb4eeff9b
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056005"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107737507"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>为 Azure 机器学习工作区配置 Azure 专用链接
 
@@ -27,7 +27,7 @@ ms.locfileid: "106056005"
 > [!IMPORTANT]
 > Azure 专用链接不影响 Azure 控制平面（管理操作），例如删除工作区或管理计算资源。 例如，创建、更新或删除计算目标。 这些操作像往常一样通过公共 Internet 执行。 数据平面操作（如使用 Azure 机器学习工作室）、API（包括已发布管道）或 SDK 使用专用终结点。
 >
-> 如果使用的是 Mozilla Firefox，则在尝试访问工作区的专用终结点时可能会遇到问题。 此问题可能与 Mozilla 中 HTTPS 上的 DNS 有关。 作为一个解决方法，建议使用 Google Chrome 的 Microsoft Edge。
+> 如果使用的是 Mozilla Firefox，则在尝试访问工作区的专用终结点时可能会遇到问题。 此问题可能与 Mozilla 中 HTTPS 上的 DNS 有关。 建议使用 Microsoft Edge 或 Google Chrome 来避开此问题。
 
 ## <a name="prerequisites"></a>先决条件
 

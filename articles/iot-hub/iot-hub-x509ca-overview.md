@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: System Architecture'
-ms.openlocfilehash: 455f1f3e1c8181646fbe165d0f1aea6a2fb2fb13
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b0cf04adbf3da1f02e9f18b5e3c20760f9dbf53
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92150703"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147186"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>使用 X.509 CA 证书进行设备身份验证
 
@@ -68,13 +68,13 @@ X.509 CA 证书的所有者能以加密方式为某个中间 CA 签名，而该 
 
 所有权证明步骤涉及到在你与 IoT 中心之间执行加密质询和响应过程。  假设数字证书内容是公开的，因而容易遭到窃听，则 IoT 中心需要确认 CA 证书真正由你拥有。  为此，IoT 中心将会生成一个必须使用 CA 证书的相应私钥签名的随机质询。  如果如前所述保持私钥的机密性并对其进行保护，则只有你才能拥有所需的信息来完成此步骤。 私钥的机密性是此方法的信任源。  为质询签名后，可通过上传包含结果的文件来完成此步骤。
 
-在此处了解如何[注册 CA 证书](iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub)
+在此处了解如何[注册 CA 证书](./tutorial-x509-scripts.md)
 
 ## <a name="how-to-create-a-device-on-iot-hub"></a>如何在 IoT 中心创建设备
 
 为了防止设备模拟，IoT 中心要求告知设备的预期。  为此，可在 IoT 中心的设备注册表中创建一个设备条目。  使用 IoT 中心[设备预配服务](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/)时，此过程会自动执行。 
 
-在此处了解如何[在 IoT 中心手动创建设备](iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub)。
+在此处了解如何[在 IoT 中心手动创建设备](./tutorial-x509-scripts.md)。
 
 为 IoT 中心创建 X.509 设备
 
@@ -84,7 +84,7 @@ X.509 CA 证书的所有者能以加密方式为某个中间 CA 签名，而该 
 
 设备成功连接到 IoT 中心后，身份验证过程即告完成，这也表明设置正确。
 
-在此处了解如何[完成此设备连接步骤](iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates)。
+在此处了解如何[完成此设备连接步骤](./tutorial-x509-scripts.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

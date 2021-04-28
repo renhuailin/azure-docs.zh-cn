@@ -6,12 +6,12 @@ ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: 6b404516c513dea0888974ffb4fa3d8d43db6c44
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 15b2e5ef5873ea48c6c3f2c790619392f622fb66
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98015159"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870132"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>使用 Azure PowerShell cmdlet 监视和管理流分析作业
 了解如何使用可执行基本流分析任务的 Azure PowerShell cmdlet 和 PowerShell 脚本来监视和管理流分析资源。
@@ -555,7 +555,7 @@ Test-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-
 [msdn-rest-api-create-stream-analytics-job]: ./stream-analytics-quick-create-portal.md
 [msdn-rest-api-create-stream-analytics-input]: ./stream-analytics-define-inputs.md
 [msdn-rest-api-create-stream-analytics-output]: ./stream-analytics-define-outputs.md
-[msdn-rest-api-create-stream-analytics-transformation]: /cli/azure/ext/stream-analytics/stream-analytics/transformation
+[msdn-rest-api-create-stream-analytics-transformation]: /cli/azure/stream-analytics/transformation
 
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md

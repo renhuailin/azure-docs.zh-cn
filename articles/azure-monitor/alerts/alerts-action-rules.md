@@ -2,13 +2,13 @@
 title: Azure Monitor 警报的操作规则
 description: 了解 Azure Monitor 中的操作规则是什么，以及如何配置和管理操作规则。
 ms.topic: conceptual
-ms.date: 03/15/2021
-ms.openlocfilehash: 12e7cf8e72c5423b4a2edd6ea2a0f4537e328b08
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/08/2021
+ms.openlocfilehash: 4f54ee7d21d52386bd18921aec33cabe02046852
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105036775"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772552"
 ---
 # <a name="action-rules-preview"></a>操作规则（预览版）
 
@@ -67,7 +67,7 @@ ms.locfileid: "105036775"
 
 * **严重性**  
 此规则仅应用于具有所选严重性的警报。  
-例如，“严重性 = Sev1”表示该规则仅应用于具有 Sev1 严重性的警报。
+例如，“严重性 = "Sev1"”表示该规则仅应用于具有 Sev1 严重性的警报。
 * **监视服务**  
 此规则仅应用于来自所选监视服务的警报。  
 例如，“监视服务 =‘Azure 备份’”表示该规则仅应用于备份警报（来自 Azure 备份）。
@@ -79,7 +79,7 @@ ms.locfileid: "105036775"
 例如，“警报规则 ID =‘/subscriptions/SubId1/resourceGroups/RG1/providers/microsoft.insights/metricalerts/API-Latency’”表示此规则仅应用于来自“API 延迟”指标警报规则的警报。  
 注意 - 可通过以下方式获取正确的警报规则 ID：在 CLI 中列出警报规则，或者在门户中打开特定警报规则，单击“属性”，然后复制“资源 ID”值。
 * **监视条件**  
-此规则仅应用于具有指定监视条件的警报事件 -“已触发”或“已解决”。 
+此规则仅应用于具有指定监视条件（“已触发”或“已解决”）的警报事件 。
 * **说明**  
 此规则仅应用于包含警报说明字段中特定字符串的警报。 该字段包含警报规则说明。  
 例如，“说明包含‘生产’”表示该规则仅匹配说明中包含字符串“生产”的警报。
@@ -87,7 +87,14 @@ ms.locfileid: "105036775"
 此规则仅应用于包含警报上下文字段中任何一个或多个特定值的警报。  
 例如，“警报上下文(有效负载)包含‘Computer-01’”表示该规则仅应用于有效负载包含字符串“Computer-01”的警报。
 
-如果你在规则中设置多个筛选器，将应用所有这些筛选器。 例如，如果你设置“资源类型 =‘虚拟机’”和“严重性 =‘Sev0’”，则该规则将仅应用于虚拟机上的 Sev0 警报。 
+> [!NOTE]
+> 每个筛选器最多可以包含五个值。  
+> 例如，监视服务中的筛选器最多可以包含五个监视器服务名称。
+
+
+
+
+如果你在规则中设置多个筛选器，将应用所有这些筛选器。 例如，如果你设置“资源类型 =‘虚拟机’”和“严重性 = "Sev0"”，则该规则将仅应用于虚拟机上的 Sev0 警报 。
 
 ![操作规则筛选器](media/alerts-action-rules/action-rules-new-rule-creation-flow-filters.png)
 
@@ -136,7 +143,7 @@ ms.locfileid: "105036775"
 
 1. 登录。
 
-   如果使用的是 CLI 的本地安装，请使用 [az login](/cli/azure/reference-index#az-login) 命令登录。  遵循终端中显示的步骤完成身份验证过程。
+   如果使用的是 CLI 的本地安装，请使用 [az login](/cli/azure/reference-index#az_login) 命令登录。  遵循终端中显示的步骤完成身份验证过程。
 
     ```azurecli
     az login

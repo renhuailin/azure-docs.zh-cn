@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 68b9aee49e4cf7c02c07fc7dd90e9cc6065a443c
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 7e2042294ebaefa2640873bb1ce941d9a60c7834
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259415"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128984"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>通过诊断设置分析日志和指标
 
@@ -27,7 +27,7 @@ ms.locfileid: "107259415"
 选择要监视的日志类别和指标类别。
 
 > [!TIP]
-> 只想要流式传输日志？ 看看这个 [Azure CLI 命令](/cli/azure/ext/spring-cloud/spring-cloud/app#ext-spring-cloud-az-spring-cloud-app-logs)吧！
+> 只想要流式传输日志？ 看看这个 [Azure CLI 命令](/cli/azure/spring-cloud/app#az_spring_cloud_app_logs)吧！
 
 ## <a name="logs"></a>日志
 
@@ -38,7 +38,7 @@ ms.locfileid: "107259415"
 
 ## <a name="metrics"></a>指标
 
-有关指标的完整列表，请参阅 [Spring Cloud 指标](./spring-cloud-concept-metrics.md#user-metrics-options)。
+有关指标的完整列表，请参阅 [Spring Cloud 指标](./concept-metrics.md#user-metrics-options)。
 
 若要开始，请启用其中一项服务来接收数据。 若要了解如何配置 Log Analytics，请参阅[开始在 Azure Monitor 中使用 Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md)。
 
@@ -110,7 +110,7 @@ ms.locfileid: "107259415"
 > [!NOTE]
 > `==` 区分大小写，但 `=~` 不区分大小写。
 
-若要详细了解 Log Analytics 中使用的查询语言，请参阅 [Azure Monitor 日志查询](/azure/data-explorer/kusto/query/)。 要从一个集中的客户端查询所有 Log Analytics 日志，请查看 [Azure 数据资源管理器](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)。
+若要详细了解 Log Analytics 中使用的查询语言，请参阅 [Azure Monitor 日志查询](/azure/data-explorer/kusto/query/)。 要从一个集中的客户端查询所有 Log Analytics 日志，请查看 [Azure 数据资源管理器](/azure/data-explorer/query-monitor-data)。
 
 ### <a name="use-your-storage-account"></a>使用存储帐户
 
@@ -208,4 +208,4 @@ AppPlatformLogsforSpring
 
 ## <a name="next-steps"></a>后续步骤
 
-* [快速入门：部署第一个 Azure Spring Cloud 应用程序](spring-cloud-quickstart.md)
+* [快速入门：部署第一个 Azure Spring Cloud 应用程序](./quickstart.md)

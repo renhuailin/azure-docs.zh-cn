@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 67153fa750fee765dcaa1072eec87a2f6169b918
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7fb40d95c4659bf353366770da7c903ffa1bd09
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93397274"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107866931"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>使用 Azure 门户创建支持 HTTP 到 HTTPS 重定向的应用程序网关
 
@@ -34,7 +34,7 @@ ms.locfileid: "93397274"
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 
-为供生产使用，应导入由受信任的提供程序签名的有效证书。 对于本教程，请使用 [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) 创建自签名证书。 可以结合返回的指纹使用 [Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate)，从证书导出 pfx 文件。
+为供生产使用，应导入由受信任的提供程序签名的有效证书。 对于本教程，请使用 [New-SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate) 创建自签名证书。 可以结合返回的指纹使用 [Export-PfxCertificate](/powershell/module/pki/export-pfxcertificate)，从证书导出 pfx 文件。
 
 ```powershell
 New-SelfSignedCertificate `
@@ -103,9 +103,9 @@ Export-PfxCertificate `
 3. 输入 myBackendSubnet  作为子网名称。
 4. 输入 10.0.2.0/24  作为地址范围，然后选择“确定”  。
 
-## <a name="add-a-listener-and-redirection-rule"></a>添加侦听器和重定向规则
+## <a name="add-a-listener-and-redirection-rule&quot;></a>添加侦听器和重定向规则
 
-### <a name="add-the-listener"></a>添加侦听器
+### <a name=&quot;add-the-listener&quot;></a>添加侦听器
 
 首先，为端口 80 添加名为 myListener  的侦听器。
 
@@ -115,7 +115,7 @@ Export-PfxCertificate `
 4. 输入 httpPort  作为新的前端端口名称，并输入 80  作为端口。
 5. 确保将协议设置为“HTTP”  ，然后选择“确定”  。
 
-### <a name="add-a-routing-rule-with-a-redirection-configuration"></a>添加具有重定向配置的路由规则
+### <a name=&quot;add-a-routing-rule-with-a-redirection-configuration&quot;></a>添加具有重定向配置的路由规则
 
 1. 在“myAppGateway”  上，选择“规则”  ，然后选择“+请求路由规则”  。
 2. 对于“规则名称”  ，键入“Rule2”  。
@@ -127,7 +127,7 @@ Export-PfxCertificate `
 8. 对于“包含查询字符串”  和“包含路径”  ，请选择“是”  。
 9. 选择“添加”   。
 
-## <a name="create-a-virtual-machine-scale-set"></a>创建虚拟机规模集
+## <a name=&quot;create-a-virtual-machine-scale-set&quot;></a>创建虚拟机规模集
 
 在此示例中，将创建虚拟机规模集，以便为应用程序网关的后端池提供服务器。
 
@@ -147,7 +147,7 @@ Export-PfxCertificate `
 14. 确保“子网”  设置为 myBackendSubnet  。
 15. 选择“创建”  。
 
-### <a name="associate-the-scale-set-with-the-proper-backend-pool"></a>将规模集与正确的后端池关联
+### <a name=&quot;associate-the-scale-set-with-the-proper-backend-pool&quot;></a>将规模集与正确的后端池关联
 
 虚拟机规模集门户 UI 可为规模集创建新后端池，但是要将它与现有 appGatewayBackendPool 关联。
 
@@ -164,7 +164,7 @@ Export-PfxCertificate `
 11. 在“网络接口配置”  下，选择“myvmssNic”  。
 12. 选择“保存”  。
 
-### <a name="upgrade-the-scale-set"></a>升级规模集
+### <a name=&quot;upgrade-the-scale-set&quot;></a>升级规模集
 
 最后，必须使用这些更改升级规模集。
 
@@ -176,14 +176,14 @@ Export-PfxCertificate `
 6. 选择“myAppGatewaymyvmss”  ，然后选择“删除”  。
 7. 选择“确定”以确认。 
 
-### <a name="install-iis"></a>安装 IIS
+### <a name=&quot;install-iis&quot;></a>安装 IIS
 
 在规模集上安装 IIS 的一种简单方法是使用 PowerShell。 在门户中，单击 Cloud Shell 图标，并确保选择了“PowerShell”。
 
 将以下代码粘贴到 PowerShell 窗口中，然后按 Enter。
 
 ```azurepowershell
-$publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1"); 
+$publicSettings = @{ &quot;fileUris&quot; = (,&quot;https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1"); 
   "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
 $vmss = Get-AzVmss -ResourceGroupName myResourceGroupAG -VMScaleSetName myvmss
 Add-AzVmssExtension -VirtualMachineScaleSet $vmss `

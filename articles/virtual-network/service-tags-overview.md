@@ -10,15 +10,15 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/30/2020
+ms.date: 4/14/2021
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 2d14ca2423d34926a9e297823a6515c2c5dde06a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4a18e0f257ac8d7b7d981d53249cf29f2f8f38bd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105607110"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790142"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记
 <a name="network-service-tags"></a>
@@ -78,7 +78,7 @@ ms.locfileid: "105607110"
 | **AzureKeyVault** | Azure Key Vault。<br/><br/>*注意：* 此标记依赖于 **AzureActiveDirectory** 标记。 | 出站 | 是 | 是 |
 | **AzureLoadBalancer** | Azure 基础结构负载均衡器。 此标记将转换为[主机的虚拟 IP 地址](./network-security-groups-overview.md#azure-platform-considerations) (168.63.129.16)，Azure 的运行状况探测源于该 IP。 这只包括探测流量，而不包括到后端资源的实际流量。 如果不使用 Azure 负载均衡器，则可替代此规则。 | 推送、请求和匿名 | 否 | 否 |
 | **AzureMachineLearning** | Azure 机器学习。 | 推送、请求和匿名 | 否 | 是 |
-| **AzureMonitor** | Log Analytics、Application Insights、AzMon 和自定义指标（GiG 终结点）。<br/><br/>注意：如果是日志分析，亦必须有“存储”标记。 如果使用了 Linux 代理，亦必须有“GuestAndHybridManagement”。 | 出站 | 否 | 是 |
+| **AzureMonitor** | Log Analytics、Application Insights、AzMon 和自定义指标（GiG 终结点）。<br/><br/>注意：对于 Log Analytics，还需要“存储”标记。 如果使用 Linux 代理，则还需要 GuestAndHybridManagement 标记。 | 出站 | 否 | 是 |
 | **AzureOpenDatasets** | Azure 开放数据集。<br/><br/>*注意：* 此标记依赖于 AzureFrontDoor.Frontend 和 Storage 标记 。 | 出站 | 否 | 否 |
 | **AzurePlatformDNS** | 基本基础结构（默认）DNS 服务。<br/><br>可以使用此标记来禁用默认 DNS。 使用此标记时要格外小心。 建议你阅读 [Azure 平台注意事项](./network-security-groups-overview.md#azure-platform-considerations)。 我们还建议你在使用此标记之前执行测试。 | 出站 | 否 | 否 |
 | **AzurePlatformIMDS** | Azure 实例元数据服务 (IMDS)，它是一个基本基础结构服务。<br/><br/>可以使用此标记来禁用默认 IMDS。 使用此标记时要格外小心。 建议你阅读 [Azure 平台注意事项](./network-security-groups-overview.md#azure-platform-considerations)。 我们还建议你在使用此标记之前执行测试。 | 出站 | 否 | 否 |
@@ -135,11 +135,13 @@ ms.locfileid: "105607110"
 
 - [REST](/rest/api/virtualnetwork/servicetags/list)
 - [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
-- [Azure CLI](/cli/azure/network#az-network-list-service-tags)
+- [Azure CLI](/cli/azure/network#az_network_list_service_tags)
 
 > [!NOTE]
-> 在公共预览版中，发现 API 返回的信息可能不如 JSON 下载所返回的信息新。 （请参阅下一节。）
+> 在 API 结果中传播新服务标记数据需要最长 4 周时间。 发生这种情况时，响应元数据中的更改号将递增。 如果指定了不同的位置值，结果中可能会存在临时差异。 使用结果创建 NSG 规则时，应将位置参数设置为与 NSG 区域匹配。 
 
+> [!NOTE]
+> API 数据将表示可以与 NSG 规则一起使用的那些标记，它们是可下载的 JSON 文件中当前包含的部分标记。 在公共预览版中，我们不保证在两次更新之间数据保持不变。 
 
 ### <a name="discover-service-tags-by-using-downloadable-json-files"></a>使用可下载的 JSON 文件发现服务标记 
 可以下载包含最新服务标记列表和 IP 地址范围详细信息的 JSON 文件。 这些列表每周更新和发布。 每个云的位置如下：

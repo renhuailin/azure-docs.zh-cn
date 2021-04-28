@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e2846b7ba07ec0a7678a8287fe6a84bc169497a3
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 07e7f21bd706d9f83d2813b0ab491b01fbc53672
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785120"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107867558"
 ---
 # <a name="create-an-azure-time-series-insights-gen2-environment-using-the-azure-cli"></a>使用 Azure CLI 创建 Azure 时序见解第 2 代环境
 
@@ -62,7 +62,7 @@ az tsi environment gen2 create --name "my-tsi-env" --location eastus2 --resource
 
 可以使用 Azure CLI 删除单个资源（例如时序见解环境），或删除资源组及其所有资源（包括任何时序见解环境）。
 
-若要[删除时序见解环境](/cli/azure/ext/timeseriesinsights/tsi/environment#ext_timeseriesinsights_az_tsi_environment_delete)，请运行以下命令：
+若要[删除时序见解环境](/cli/azure/tsi/environment#az_tsi_environment_delete)，请运行以下命令：
 
 ```azurecli-interactive
 az tsi environment delete --name "my-tsi-env" --resource-group $rg

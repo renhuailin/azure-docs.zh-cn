@@ -3,22 +3,23 @@ title: Azure Monitor 资源日志支持的服务和类别
 description: Azure Monitor 参考：了解 Azure 资源日志支持的服务和事件架构。
 ms.topic: reference
 ms.date: 03/30/2021
-ms.openlocfilehash: a4ab4a2e425b752198223da5efd1b07466ab83d1
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: b9bac212a8be040349a8d78c64d7beab291e1f9e
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166932"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108016007"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Azure 资源日志支持的类别
 
 > [!NOTE]
-> 资源日志以前称为诊断日志。 此名称在 2019 年 10 月发生了更改，因为 Azure Monitor 收集的日志类型已转变，不仅仅包括 Azure 资源。
+> 此列表基本上是自动生成的。 通过 GitHub 对此列表所做的任何修改都可能在不发出警告的情况下进行改写。 请与本文的作者联系，以获取有关如何进行永久更新的详细信息。
 
 [Azure Monitor 资源日志](../essentials/platform-logs-overview.md)是 Azure 服务发出的日志，用于描述这些服务或资源的操作。 通过 Azure Monitor 提供的所有资源日志共享公共顶级架构，且每个服务都能灵活地为其事件发出唯一属性。
 
-资源类型（为 `resourceId` 属性时可用）和 `category` 的组合唯一标识架构。 所有资源日志都有一个通用架构，其中包含特定于服务的字段，这些字段随后会针对不同的日志类别进行添加。 有关详细信息，请参阅 [Azure 资源日志的通用架构和特定于服务的架构]()
+资源日志以前称为诊断日志。 此名称在 2019 年 10 月发生了更改，因为 Azure Monitor 收集的日志类型已转变，不仅仅包括 Azure 资源。
 
+资源类型（为 `resourceId` 属性时可用）和 `category` 的组合唯一标识架构。 所有资源日志都有一个通用架构，其中包含特定于服务的字段，这些字段随后会针对不同的日志类别进行添加。 有关详细信息，请参阅 [Azure 资源日志的通用架构和特定于服务的架构]()
 
 ## <a name="costs"></a>成本
 
@@ -653,14 +654,6 @@ ms.locfileid: "106166932"
 |---|---|---|
 |FrontdoorAccessLog|Frontdoor 访问日志|否|
 |FrontdoorWebApplicationFirewallLog|Frontdoor Web 应用程序防火墙日志|否|
-
-
-## <a name="microsoftnetworkloadbalancers"></a>Microsoft.Network/loadBalancers
-
-|Category|类别显示名称|导出成本|
-|---|---|---|
-|LoadBalancerAlertEvent|负载均衡器警报事件|否|
-|LoadBalancerProbeHealthStatus|负载均衡器探测运行状况|否|
 
 
 ## <a name="microsoftnetworknetworksecuritygroups"></a>Microsoft.Network/networksecuritygroups

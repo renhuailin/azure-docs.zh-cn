@@ -1,19 +1,19 @@
 ---
 title: Synapse 工作区的持续集成和交付
 description: 了解如何使用持续集成和交付将工作区中的更改从一个环境（开发、测试、生产）部署到另一个环境。
-services: synapse-analytics
-author: liud
+author: liudan66
 ms.service: synapse-analytics
+ms.subservice: cicd
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: de3738573bb9bb6f045a45d290c74ba9e6902a5e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d49deef4cc7f646032219ff9e8f541cc9c1afd6
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103561951"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131180"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure Synapse 工作区的持续集成和交付
 
@@ -21,16 +21,61 @@ ms.locfileid: "103561951"
 
 持续集成是每次团队成员将更改提交到版本控制时自动生成和测试代码的过程。 持续部署 (CD) 指从多个测试或过渡环境到生产环境的生成、测试、配置和部署过程。
 
-对于 Azure Synapse 工作区，持续集成和交付 (CI/CD) 将所有实体从一个环境（开发、测试、生产）移到另一个环境。 若要将工作区提升到其他工作区，请完成两个部分：使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/overview.md)创建或更新工作区资源（池和工作区）；在 Azure DevOps 中通过 Synapse CI/CD 工具迁移项目（SQL 脚本、笔记本、Spark 作业定义、管道、数据集、数据流等）。 
+在 Azure Synapse Analytics 工作区中，持续集成和交付 (CI/CD) 将所有实体从一个环境（开发、测试、生产）移到另一个环境。 若要将你的工作区提升为另一个工作区，相关过程包括两个部分。 首先，使用 [Azure 资源管理器模板（ARM 模板）](../../azure-resource-manager/templates/overview.md)创建或更新工作区资源（池和工作区）。 然后，在 Azure DevOps 中通过 Azure Synapse Analytics CI/CD 工具迁移项目（SQL 脚本、笔记本、Spark 作业定义、管道、数据集、数据流等等）。 
 
-本文概述如何使用 Azure 发布管道将 Synapse 工作区自动部署到多个环境。
+本文概述了如何使用 Azure DevOps 发布管道自动将 Azure Synapse 工作区部署到多个环境。
 
 ## <a name="prerequisites"></a>先决条件
 
--   用于开发的工作区已在 Studio 中使用 Git 存储库进行配置，请参阅 [Synapse Studio 中的源代码管理](source-control.md)。
--   Azure DevOps 项目已准备好运行发布管道。
+必须准备好这些先决条件和配置才可自动将 Azure Synapse 工作区部署到多个环境。
 
-## <a name="set-up-a-release-pipelines"></a>设置发布管道
+### <a name="azure-devops"></a>Azure DevOps
+
+- Azure DevOps 项目已准备好运行发布管道。
+- [为将签入代码的用户授予组织级别的“基本”访问权限](/azure/devops/organizations/accounts/add-organization-users?view=azure-devops&tabs=preview-page&preserve-view=true)，以便他们能够查看存储库。
+- 授予针对 Azure Synapse 存储库的所有者权限。
+- 请确保已创建自承载 Azure DevOps VM 代理，或使用 Azure DevOps 托管的代理。
+- [为资源组创建 Azure 资源管理器服务连接](/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml&preserve-view=true)的权限。
+- Azure Active Director (Azure AD) 管理员必须[在 Azure DevOps 组织中安装 Azure DevOps Synapse 工作区部署代理扩展](/azure/devops/marketplace/install-extension)。
+- 创建或指定现有服务帐户，以便管道以该服务帐户的身份运行。 你可以使用个人访问令牌，而不是服务帐户，但在删除用户帐户后，你的管道将不起作用。
+
+### <a name="azure-active-directory"></a>Azure Active Directory
+
+- 在 Azure AD 中，创建要用于部署的服务主体。 Synapse 工作区部署任务不支持在版本 1* 及更早版本中使用托管标识。
+- 此操作需要 Azure AD 管理员权限。
+
+### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
+
+> [!NOTE]
+> 可以通过使用相同的管道、ARM 模板或 Azure CLI 来自动化和部署这些先决条件，但本文不介绍相关过程。
+
+- 必须在 Synapse Studio 中为用于开发的“源”工作区配置 Git 存储库。 有关详细信息，请参阅 [Synapse Studio 中的源代码管理](source-control.md#configuration-method-2-manage-hub)。
+
+- 要部署到的空白工作区。 设置空白工作区：
+
+  1. 创建新的 Azure Synapse Analytics 工作区。
+  1. 向 VM 代理和服务主体参与者授予针对托管新工作区的资源组的权限。
+  1. 在新工作区中，请勿配置 Git 存储库连接。
+  1. 在 Azure 门户中，找到新的 Azure Synapse Analytics 工作区，并向自己和要运行 Azure DevOps 管道的任何人授予 Azure Synapse Analytics 工作区所有者权限。 
+  1. 将 Azure DevOps VM 代理和服务主体添加到工作区的参与者角色（应该已继承该角色，但请验证是否已继承）。
+  1. 在 Azure Synapse Analytics 工作区中，转到“Studio” > “管理” > “IAM”  。 将 Azure DevOps VM 代理和服务主体添加到工作区管理员组。
+  1. 打开用于工作区的存储帐户。 在 IAM 中，将 VM 代理和服务主体添加到“选择存储 Blob 数据参与者”角色。
+  1. 在支持订阅中创建密钥保管库，并确保现有工作区和新工作区都至少具有对保管库的 GET 和 LIST 权限。
+  1. 为了使自动部署正常工作，请确保在链接服务中指定的任何连接字符串都位于密钥保管库中。
+
+### <a name="additional-prerequisites"></a>其他先决条件
+ 
+ - 未在管道中创建 Spark 池和自承载集成运行时。 如果有使用自承载集成运行时的链接服务，请在新的工作区中手动创建该运行时。
+ - 如果要开发笔记本并将其连接到 Spark 池，请在工作区中重新创建 Spark 池。
+ - 链接到环境中不存在的 Spark 池的笔记本不会进行部署。
+ - 两个工作区中的 Spark 池名称必须相同。
+ - 在这两个工作区中将所有数据库、SQL 池和其他资源命名为相同的名称。
+ - 如果在尝试部署时预配的 SQL 池已暂停，则部署可能会失败。
+
+有关详细信息，请参阅 [Azure Synapse Analytics 中的 CI CD 第 4 部分 - 发布管道](https://techcommunity.microsoft.com/t5/data-architecture-blog/ci-cd-in-azure-synapse-analytics-part-4-the-release-pipeline/ba-p/2034434)。 
+
+
+## <a name="set-up-a-release-pipeline"></a>设置发布管道
 
 1.  在 [Azure DevOps](https://dev.azure.com/)中，打开为发布创建的项目。
 
@@ -58,9 +103,9 @@ ms.locfileid: "103561951"
 
     ![添加项目](media/release-creation-publish-branch.png)
 
-## <a name="set-up-a-stage-task-for-arm-resource-create-and-update"></a>为 ARM 资源创建和更新设置阶段任务 
+## <a name="set-up-a-stage-task-for-an-arm-template-to-create-and-update-resource"></a>为 ARM 模板设置阶段任务，以创建和更新资源 
 
-添加 Azure 资源管理器部署任务来创建或更新资源，包括工作区和池：
+如果你有用于部署资源（如 Azure Synapse 工作区、Spark 池、SQL 池或密钥保管库）的 ARM 模板，请添加 Azure 资源管理器部署任务来创建或更新这些资源：
 
 1. 在阶段视图中选择“查看阶段任务”。
 
@@ -89,7 +134,7 @@ ms.locfileid: "103561951"
  > [!WARNING]
 > 在完整部署模式下，将删除资源组中已存在但尚未在新资源管理器模板中指定的资源。 有关详细信息，请参阅 [Azure 资源管理部署模式](../../azure-resource-manager/templates/deployment-modes.md)
 
-## <a name="set-up-a-stage-task-for-artifacts-deployment"></a>为项目部署设置阶段任务 
+## <a name="set-up-a-stage-task-for-synapse-artifacts-deployment"></a>为 Synapse 项目部署设置阶段任务 
 
 使用 [Synapse 工作区部署](https://marketplace.visualstudio.com/items?itemName=AzureSynapseWorkspace.synapsecicd-deploy)扩展在 Synapse 工作区中部署其他项，例如数据集、SQL 脚本、笔记本、spark 作业定义、数据流、管道、链接服务、凭据和 IR（集成运行时）。  
 
@@ -113,7 +158,7 @@ ms.locfileid: "103561951"
 
 1. 选择连接、资源组和目标工作区的名称。 
 
-1. 在“替代模板参数”框旁边 （位于“替代模板参数”框旁边），并输入目标工作区的所需参数值。 
+1. 在“替代模板参数”框旁边 选择“…”，并输入目标工作区所需的参数值（包括在链接服务中使用的连接字符串和帐户密钥）。 [单击此处了解详细信息] (https://techcommunity.microsoft.com/t5/data-architecture-blog/ci-cd-in-azure-synapse-analytics-part-4-the-release-pipeline/ba-p/2034434) )
 
     ![Synapse 工作区部署](media/create-release-artifacts-deployment.png)
 
@@ -225,6 +270,7 @@ ms.locfileid: "103561951"
     }
 }
 ```
+
 下面说明如何构造上述模板并按资源类型划分该模板。
 
 #### <a name="notebooks"></a>笔记本 
@@ -262,19 +308,19 @@ ms.locfileid: "103561951"
 
 ## <a name="best-practices-for-cicd"></a>CI/CD 最佳做法
 
-如果使用 Synapse 工作区的 Git 集成，并且某个 CI/CD 管道会将更改从开发环境依次转移到测试和生产环境，则我们建议采用以下最佳做法：
+如果使用 Azure Synapse 工作区的 Git 集成，并且某个 CI/CD 管道会将更改从开发环境依次转移到测试和生产环境，则我们建议采用以下最佳做法：
 
--   **Git 集成**。 仅配置具有 Git 集成的开发 Synapse 工作区。 对测试和生产工作区所做的更改将通过 CI/CD 进行部署，不需要 Git 集成。
+-   **Git 集成**。 仅配置具有 Git 集成的开发 Azure Synapse 工作区。 对测试和生产工作区所做的更改将通过 CI/CD 进行部署，不需要 Git 集成。
 -   **在项目迁移之前准备池**。 如果已将 SQL 脚本或笔记本附加到开发工作区中的池，则需要在不同环境中使用相同的池名称。 
 -   **基础结构即代码 (IaC)** 。 在描述性模型中管理基础结构（网络、虚拟机、负载均衡器和连接拓扑），使用与 DevOps 团队所用相同的版本控制来管理源代码。 
 -   其他。 请参阅 [ADF 项目的最佳做法](../../data-factory/continuous-integration-deployment.md#best-practices-for-cicd)
 
 ## <a name="troubleshooting-artifacts-deployment"></a>排查项目部署问题 
 
-### <a name="use-the-synapse-workspace-deployment-task"></a>使用 Synapse 工作区部署任务
+### <a name="use-the-azure-synapse-analytics-workspace-deployment-task"></a>使用 Azure Synapse Analytics 工作区部署任务
 
-在 Synapse 中，有许多不是 ARM 资源的项目。 不同于 Azure 数据工厂。 ARM 模板部署任务无法正常工作来部署 Synapse 项目
+在 Azure Synapse Analytics 中，有许多不是 ARM 资源的项目。 不同于 Azure 数据工厂。 ARM 模板部署任务无法正常工作来部署 Azure Synapse Analytics 项目。
  
 ### <a name="unexpected-token-error-in-release"></a>发布中出现意外的标记错误
 
-如果参数文件包含未转义的参数值，则发布管道将无法分析文件，并生成错误“意外标记”。 建议替代参数或使用 Azure KeyVault 检索参数值。 还可以使用双转义符作为变通方法。
+如果参数文件包含未转义的参数值，则发布管道将无法分析文件，并生成错误“意外标记”。 建议替代参数或使用 Azure Key Vault 检索参数值。 还可以使用双转义符作为变通方法。

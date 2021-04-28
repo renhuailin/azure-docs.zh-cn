@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: af653585ec1b57b5fd697dc755e495a96e04e677
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: f03b71f956f075a730939f657f42c94bebec5b02
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565400"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146574"
 ---
 # <a name="troubleshooting-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>对 Azure Synapse Analytics 中的专用 SQL 池（以前称为 SQL DW）进行故障排除
 
@@ -55,7 +55,7 @@ ms.locfileid: "107565400"
 | TempDB 空间问题 | [监视 TempDB](sql-data-warehouse-manage-monitor.md#monitor-tempdb) 空间使用情况。  用尽 TempDB 空间的常见原因包括：<br>- 分配给查询的资源不足，从而导致数据溢出到 TempDB。  请参阅[工作负荷管理](resource-classes-for-workload-management.md) <br>- 统计信息缺失或过期，从而导致数据移动过多。  有关如何创建统计信息的详细信息，请参阅[维护表的统计信息](sql-data-warehouse-tables-statistics.md)<br>- TempDB 空间按服务级别进行分配。  [将专用 SQL 池（以前称为 SQL DW）扩展](sql-data-warehouse-manage-compute-overview.md#scaling-compute)到更高的 DWU 设置会分配更多的 TempDB 空间。|
 | 查询性能和计划不佳通常是由于缺少统计信息 | 性能不佳的最常见原因是缺少数据表的统计信息。  有关如何创建统计信息以及统计信息为何对性能至关重要的详细信息，请参阅[维护表的统计信息](sql-data-warehouse-tables-statistics.md)。 |
 | 低并发性/查询排队                             | 若要了解如何利用并发性平衡内存分配，了解[工作负荷管理](resource-classes-for-workload-management.md)很重要。 |
-| 如何实施最佳做法                              | 若要开始了解如何提高查询性能，最好是参阅[专用 SQL 池（以前称为 SQL DW）最佳做法](sql-data-warehouse-best-practices.md)一文。 |
+| 如何实施最佳做法                              | 若要开始了解如何提高查询性能，最好是参阅[专用 SQL 池（以前称为 SQL DW）最佳做法](../sql/best-practices-dedicated-sql-pool.md)一文。 |
 | 如何通过缩放提高性能                      | 有时，若要提高性能，只需通过[缩放专用 SQL 池（以前称为 SQL DW）](sql-data-warehouse-manage-compute-overview.md)提高查询的计算能力即可。 |
 | 由于索引质量不佳导致查询性能不佳     | 有时，由于[列存储索引质量不佳](sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality)，查询速度可能会减慢。  有关详细信息以及如何[重建索引以提高段质量](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)，请参阅本文。 |
 

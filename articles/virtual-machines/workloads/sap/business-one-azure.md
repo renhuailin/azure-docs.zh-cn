@@ -6,12 +6,12 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: juergent
-ms.openlocfilehash: e17739c65c0b80beb1f6fdd09f31897b317d7858
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7647fdd9d7dd9d535477fdc4e69ea382a9c25443
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506882"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146250"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure 虚拟机上的 SAP Business One
 本文档提供在 Azure 虚拟机上部署 SAP Business One 的指南。 本文档不能替代 SAP Business One 的安装文档。 本文档涵盖运行 Business One 应用程序所在的 Azure 基础结构的基本规划和部署指南。
@@ -134,7 +134,7 @@ SQL Server 的 DBMS 端的粗略大小估算值为：
 
 对于围绕着 SAP HANA 作为 Azure 中 Business One 数据库的高可用性和灾难恢复配置，应该阅读文档 [Azure 虚拟机的 SAP HANA 高可用性](./sap-hana-availability-overview.md)以及该文档中提到的文档。
 
-对于 SAP HANA 备份和还原策略，应阅读文档 [Azure 虚拟机上的 SAP HANA 备份指南](./sap-hana-backup-guide.md)以及该文档中提到的文档。
+对于 SAP HANA 备份和还原策略，应阅读文档 [Azure 虚拟机上的 SAP HANA 备份指南](../../../backup/sap-hana-db-about.md)以及该文档中提到的文档。
 
  
 ### <a name="business-one-client-server"></a>Business One 客户端服务器

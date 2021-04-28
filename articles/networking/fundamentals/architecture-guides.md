@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/30/2021
 ms.author: kumud
-ms.openlocfilehash: c98bdbb9fba2a6ba01e4ce590c36d57e68390f17
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 8ed448f9f4f8dc688271f2ce671b2d89da0f342f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107484789"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146805"
 ---
 # <a name="azure-networking-architecture-documentation"></a>Azure 网络体系结构文档
 
@@ -46,8 +46,8 @@ ms.locfileid: "107484789"
 |标题 |说明  |
 |---------|---------|
 |[多区域 N 层应用程序](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)  | 介绍一个使用流量管理器将传入请求路由到主要区域的多区域 N 层应用程序，如果主要区域变得不可用，流量管理器将故障转移到次要区域。      |
-| [Azure 上的多租户 SaaS](https://docs.microsoft.com/azure/architecture/example-scenario/multi-saas/multitenant-saas)       |   使用结合应用 Front Door 和应用程序网关的多租户解决方案。  Front Door 有助于跨区域对流量进行负载均衡，应用程序网关将应用程序内部的流量进行负载均衡并路由到满足客户端业务需求的各种服务。  |
-| [可实现高可用性和灾难恢复的多层 Web 应用程序](https://docs.microsoft.com/azure/architecture/example-scenario/infrastructure/multi-tier-app-disaster-recovery)        |      部署为实现高可用性和灾难恢复而构建的可复原的多层应用程序。 如果主要区域变得不可用，则流量管理器将故障转移到次要区域。  |
+| [Azure 上的多租户 SaaS](/azure/architecture/example-scenario/multi-saas/multitenant-saas)       |   使用结合应用 Front Door 和应用程序网关的多租户解决方案。  Front Door 有助于跨区域对流量进行负载均衡，应用程序网关将应用程序内部的流量进行负载均衡并路由到满足客户端业务需求的各种服务。  |
+| [可实现高可用性和灾难恢复的多层 Web 应用程序](/azure/architecture/example-scenario/infrastructure/multi-tier-app-disaster-recovery)        |      部署为实现高可用性和灾难恢复而构建的可复原的多层应用程序。 如果主要区域变得不可用，则流量管理器将故障转移到次要区域。  |
 |[IaaS：包含关系数据库的 Web 应用程序](/azure/architecture/high-availability/ref-arch-iaas-web-and-db)    |   介绍如何使用跨多个区域分布的资源来提供高可用性体系结构，以托管基础结构即服务 (IaaS) Web 应用程序和 SQL Server 数据库。     |
 |[使用低成本无服务器 Azure 服务实时共享位置](/azure/architecture/example-scenario/signalr/#azure-front-door)       |   使用 Azure Front Door 为应用程序提供与部署到单个区域相比更高的可用性。 如果区域性故障影响主要区域，可以使用 Front Door 来故障转移到次要区域。      |
 |[高度可用的网络虚拟设备](/azure/architecture/reference-architectures/dmz/nva-ha)     | 展示了如何在 Azure 中部署一组网络虚拟设备 (NVA) 以实现高可用性。        |

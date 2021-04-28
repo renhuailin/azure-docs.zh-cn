@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/16/2021
 ms.author: jeedes
-ms.openlocfilehash: 01b3bbc0a4f0c7d53ed0a9ba2449cf5985b2ab86
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bcbf68523fda8ccd8041d5147f9904f0b8520521
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608351"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147960"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-exium"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Exium 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "104608351"
 * 让用户使用其 Azure AD 帐户自动登录到 Exium。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -157,11 +157,9 @@ ms.locfileid: "104608351"
 
 * 直接转到 Exium 登录 URL，并从这里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Exium 磁贴时，会重定向到 Exium 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Exium 磁贴时，会重定向到 Exium 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Exium 后，可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+配置 Exium 后，可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
