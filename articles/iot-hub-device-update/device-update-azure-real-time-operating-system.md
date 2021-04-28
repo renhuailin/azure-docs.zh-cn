@@ -1,17 +1,17 @@
 ---
 title: Azure 实时操作系统的设备更新 | Microsoft Docs
 description: Azure 实时操作系统的设备更新入门
-author: valls
+author: ValOlson
 ms.author: valls
 ms.date: 3/18/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 66da860a5cdae1f5c7c18e4136b1f2d960492ca8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d03ed1b23966d92a4e289534c427b84e5fc14789
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629047"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141895"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-azure-real-time-operating-system-rtos"></a>有关使用 Azure 实时操作系统 (RTOS) 的 Azure IoT 中心的设备更新教程
 
@@ -29,7 +29,7 @@ ms.locfileid: "105629047"
 
 ## <a name="prerequisites"></a>先决条件
 * 对 IoT 中心的访问权限。 建议使用 S1（标准）层或更高层级。
-* 链接到 IoT 中心的设备更新实例和帐户。 按照指南[创建并链接](http://create-device-update-account.md/)一个设备更新帐户（如果尚未这样做）。
+* 链接到 IoT 中心的设备更新实例和帐户。 按照指南[创建并链接](create-device-update-account.md)一个设备更新帐户（如果尚未这样做）。
 
 ## <a name="get-started"></a>入门
 
@@ -41,7 +41,7 @@ ms.locfileid: "105629047"
 6. 接下来，将固件映像和清单发布到 IoT 中心设备更新。
 7. 最后，在设备上下载并运行项目。
 
-详细了解 [Azure RTOS](https://docs.microsoft.com/azure/rtos/)。  
+详细了解 [Azure RTOS](/azure/rtos/)。  
 
 ## <a name="tag-your-device"></a>标记设备
 

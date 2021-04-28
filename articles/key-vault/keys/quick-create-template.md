@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: 48686fb78dc4295da3bd390d92ae3837cd09a4d0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 66d41ed1bb900f55db0d3670c1ce312950ff165d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639426"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147042"
 ---
 # <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template"></a>快速入门：使用 ARM 模板创建 Azure 密钥保管库和密钥 
 
@@ -168,7 +168,7 @@ ms.locfileid: "105639426"
 可以在 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault&pageNumber=1&sort=Popular)中找到更多 Azure Key Vault 模板示例。
 
 ## <a name="deploy-the-template"></a>部署模板
-可以使用 [Azure 门户](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal)、Azure PowerShell、Azure CLI 或 REST API。 要了解部署方法，请参阅[部署模板](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)。
+可以使用 [Azure 门户](../../azure-resource-manager/templates/deploy-portal.md)、Azure PowerShell、Azure CLI 或 REST API。 要了解部署方法，请参阅[部署模板](../../azure-resource-manager/templates/deploy-powershell.md)。
 
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 
@@ -223,4 +223,4 @@ Write-Host "Press [ENTER] to continue..."
 
 - 阅读 [Azure Key Vault 概述](../general/overview.md)
 - 了解有关 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)的详细信息
-- 请参阅 [Key Vault 安全性概述](../general/security-overview.md)
+- 请参阅 [Key Vault 安全性概述](../general/security-features.md)

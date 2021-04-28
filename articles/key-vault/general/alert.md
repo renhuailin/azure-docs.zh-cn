@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 03/31/2021
 ms.author: mbaldwin
-ms.openlocfilehash: f8f9dd6d51b974ebd31804daf0402ca5535ffc92
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 51a354bfc6df43938d8e2117a7d93f9bd6749225
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751573"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140778"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Azure Key Vault 的监视和警报
 
@@ -26,7 +26,7 @@ ms.locfileid: "107751573"
 + 如何配置指标并创建仪表板
 + 如何根据指定阈值创建警报
 
-用于密钥保管库的 Azure Monitor 结合了日志和指标来提供全局监视解决方案。 [在此处详细了解用于 Key Vault 的 Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview#introduction-to-azure-monitor-for-key-vault)
+用于密钥保管库的 Azure Monitor 结合了日志和指标来提供全局监视解决方案。 [在此处详细了解用于 Key Vault 的 Azure Monitor](../../azure-monitor/insights/key-vault-insights-overview.md#introduction-to-azure-monitor-for-key-vault)
 
 ## <a name="basic-key-vault-metrics-to-monitor"></a>要监视的基本 Key Vault 指标
 
@@ -210,6 +210,4 @@ ms.locfileid: "107751573"
 
 ## <a name="next-steps"></a>后续步骤
 
-恭喜，现在已成功创建了一个用于密钥保管库的监视仪表板并配置了警报！ 完成上述所有步骤后，当密钥保管库满足配置的警报条件时，就会收到电子邮件警报。 下面显示了一个示例。 使用本文中设置的工具积极监视密钥保管库的运行状况。 
-
-
+恭喜，现在已成功创建了一个用于密钥保管库的监视仪表板并配置了警报！ 完成上述所有步骤后，当密钥保管库满足配置的警报条件时，就会收到电子邮件警报。 下面显示了一个示例。 使用本文中设置的工具积极监视密钥保管库的运行状况。

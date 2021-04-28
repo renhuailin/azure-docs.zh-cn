@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 04/17/2021
 ms.author: sstein
-ms.openlocfilehash: d0522fe2c8b6d6b623903a720e6c8e760bd6aa92
-ms.sourcegitcommit: 089c2bd1ac4861f43c4b89396d3d056a6eef4913
+ms.openlocfilehash: 7746b8aa84bea9ec8c18b4c4af0851ca3e5e3957
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107602083"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132008"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例中的新增功能有哪些？
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -61,8 +61,8 @@ Azure SQL 数据库和 Azure SQL 托管实例的相关文档已拆分为单独�
 
 | 功能 | 详细信息 |
 | ---| --- |
-| [分布式事务](/azure/azure-sql/database/elastic-transactions-overview) | 跨托管实例的分布式事务。 |
-| [实例池](/azure/sql-database/sql-database-instance-pools) | 提供一种方便且经济高效的方式，用于将小型 SQL 实例迁移到云。 |
+| [分布式事务](./elastic-transactions-overview.md) | 跨托管实例的分布式事务。 |
+| [实例池](../managed-instance/instance-pools-overview.md) | 提供一种方便且经济高效的方式，用于将小型 SQL 实例迁移到云。 |
 | [实例级 Azure AD 服务器主体（登录名）](/sql/t-sql/statements/create-login-transact-sql) | 使用 [CREATE LOGIN FROM EXTERNAL PROVIDER](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) 语句创建实例级登录名。 |
 | [事务复制](../managed-instance/replication-transactional-overview.md) | 将表中的更改复制到 SQL 托管实例、SQL 数据库或 SQL Server 中的其他数据库。 或当 SQL 托管实例或 SQL Server 的其他实例中某些行发生更改时更新表。 若要了解信息，请参阅[在 Azure SQL 托管实例中配置复制](../managed-instance/replication-between-two-instances-configure-tutorial.md)。 |
 | 威胁检测 |若要了解信息，请参阅[在 Azure SQL 托管实例中配置威胁检测](../managed-instance/threat-detection-configure.md)。|
@@ -130,7 +130,7 @@ Azure SQL 数据库和 Azure SQL 托管实例的相关文档已拆分为单独�
 
 ### <a name="changing-the-connection-type-does-not-affect-connections-through-the-failover-group-endpoint"></a>更改连接类型不会影响通过故障转移组终结点的连接
 
-如果某个实例加入[自动故障转移组](https://docs.microsoft.com/azure/azure-sql/database/auto-failover-group-overview)，则更改该实例的[连接类型](https://docs.microsoft.com/azure/azure-sql/managed-instance/connection-types-overview)对通过故障转移组侦听器终结点建立的连接不起作用。
+如果某个实例加入[自动故障转移组](./auto-failover-group-overview.md)，则更改该实例的[连接类型](../managed-instance/connection-types-overview.md)对通过故障转移组侦听器终结点建立的连接不起作用。
 
 **解决方法**：更改连接类型后删除并重新创建自动故障转移组。
 
