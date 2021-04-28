@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 4c8a50f419fbf80d9159bbe3748bbe000ef4b369
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 02bb1f539369cf72a5d5b6503a3584069589b19e
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134188"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727341"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Azure VM 上的 SQL Server 常见问题解答
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -171,7 +171,7 @@ ms.locfileid: "108134188"
    是的。 SQL Server 安装介质位于 **C** 驱动器上的某个文件夹中。 可从该位置运行 **Setup.exe** 以添加新的 SQL Server 实例，或更改计算机上 SQL Server 的其他已安装功能。 请注意，某些功能（例如自动备份、自动修补和 Azure Key Vault 集成）仅对默认实例或配置正确的命名实例起作用（请参阅问题 3）。 使用 [通过 Azure 混合权益获得软件保障](licensing-model-azure-hybrid-benefit-ahb-change.md)或 **即用即付** 许可模型的客户无需支付额外的许可费用，即可在虚拟机上安装 SQL Server 的多个实例。 除非配置正确，否则安装更多 SQL Server 实例可能会导致系统资源变得紧张。 
 
 1. **一个 VM 上的最大实例数是多少？**
-   SQL Server 2012 至 SQL Server 2019 可以支持一个独立服务器上的 [50 个实例](/sql/sql-server/editions-and-components-of-sql-server-version-15#RDBMSSP)。 不管是在 Azure 中还是在本地，此限制都是相同的。 请参阅[最佳做法](./performance-guidelines-best-practices-checklist.md)了解如何更好地准备环境。 
+   SQL Server 2012 至 SQL Server 2019 可以支持一个独立服务器上的 [50 个实例](/sql/sql-server/editions-and-components-of-sql-server-version-15#RDBMSSP)。 不管是在 Azure 中还是在本地，此限制都是相同的。 请参阅[最佳做法](performance-guidelines-best-practices.md#multiple-instances)了解如何更好地准备环境。 
 
 1. **是否可以卸载 SQL Server 的默认实例？**
 
@@ -347,7 +347,7 @@ ms.locfileid: "108134188"
 * [在 Windows VM 上预配 SQL Server](create-sql-vm-portal.md)
 * [将数据库迁移到 Azure VM 上的 SQL Server](migrate-to-vm-from-sql-server.md)
 * [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](business-continuity-high-availability-disaster-recovery-hadr-overview.md)
-* [Azure 虚拟机中 SQL Server 的性能最佳做法](./performance-guidelines-best-practices-checklist.md)
+* [Azure 虚拟机中 SQL Server 的性能最佳做法](performance-guidelines-best-practices.md)
 * [Azure 虚拟机中的 SQL Server 的应用程序模式和开发策略](application-patterns-development-strategies.md)
 
 **Linux VM**：

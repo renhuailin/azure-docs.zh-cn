@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: 5baf5f503542f31b26c4c210741f1ce986f6a549
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 72dc92ae211034e2a49bc77f60880f17ab15dec7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580119"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868170"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>将 Azure 订阅转移到其他 Azure AD 目录
 
@@ -116,7 +116,7 @@ ms.locfileid: "106580119"
 
 ### <a name="install-the-azure-resource-graph-extension"></a>安装 Azure Resource Graph 扩展
 
- 借助 [Azure Resource Graph](../governance/resource-graph/index.yml) 的 Azure CLI 扩展 resource-graph，你可以使用 [az graph](/cli/azure/ext/resource-graph/graph) 命令来查询由 Azure 资源管理器管理的资源。 后续步骤中需要使用此命令。
+ 借助 [Azure Resource Graph](../governance/resource-graph/index.yml) 的 Azure CLI 扩展 resource-graph，你可以使用 [az graph](/cli/azure/graph) 命令来查询由 Azure 资源管理器管理的资源。 后续步骤中需要使用此命令。
 
 1. 使用 [az extension list](/cli/azure/extension#az_extension_list) 查看是否安装了 resource-graph 扩展。
 
@@ -233,7 +233,7 @@ ms.locfileid: "106580119"
 
 ### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>列出采用 Azure AD 身份验证的 Azure SQL 数据库
 
-- 使用 [az sql server ad-admin list](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) 和 [az graph](/cli/azure/ext/resource-graph/graph) 扩展来查看是否正在使用启用了 Azure AD 身份验证集成的 Azure SQL 数据库。 有关详细信息，请参阅[使用 SQL 配置和管理 Azure Active Directory 身份验证](../azure-sql/database/authentication-aad-configure.md)。
+- 使用 [az sql server ad-admin list](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) 和 [az graph](/cli/azure/graph) 扩展来查看是否正在使用启用了 Azure AD 身份验证集成的 Azure SQL 数据库。 有关详细信息，请参阅[使用 SQL 配置和管理 Azure Active Directory 身份验证](../azure-sql/database/authentication-aad-configure.md)。
 
     ```azurecli
     az sql server ad-admin list --ids $(az graph query -q 'resources | where type == "microsoft.sql/servers" | project id' -o tsv | cut -f1)
@@ -255,7 +255,7 @@ ms.locfileid: "106580119"
     subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"$//')
     ```
 
-1. 使用 [az graph](/cli/azure/ext/resource-graph/graph) 扩展列出具有已知 Azure AD 目录依赖项的其他 Azure 资源。
+1. 使用 [az graph](/cli/azure/graph) 扩展列出具有已知 Azure AD 目录依赖项的其他 Azure 资源。
 
     ```azurecli
     az graph query -q \

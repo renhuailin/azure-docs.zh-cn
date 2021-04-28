@@ -6,12 +6,12 @@ ms.author: margard
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/10/2020
-ms.openlocfilehash: b737ea751d3b3d2132691e04a1a2cd853748db65
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6742c55dffb86e591542f5da1379c483ccd1ebcd
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107792500"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138402"
 ---
 # <a name="tutorial-use-a-managed-identity-to-invoke-azure-functions-from-an-azure-spring-cloud-app"></a>教程：使用托管标识从 Azure Spring Cloud 应用调用 Azure Functions
 
@@ -173,6 +173,6 @@ az spring-cloud app create --name "msiapp" --service "mymsispringcloud" --resour
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何为 Azure Spring Cloud 应用程序启用系统分配的托管标识](./spring-cloud-howto-enable-system-assigned-managed-identity.md)
+* [如何为 Azure Spring Cloud 应用程序启用系统分配的托管标识](./how-to-enable-system-assigned-managed-identity.md)
 * [了解有关 Azure 资源的托管标识的详细信息](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
 * [配置客户端应用以访问应用服务](../app-service/configure-authentication-provider-aad.md#configure-client-apps-to-access-your-app-service)

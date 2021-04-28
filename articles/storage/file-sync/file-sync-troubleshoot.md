@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 4/20/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: b88d63f86c863b5f1c050e293912cb6628d50b00
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 386a95b46bd4787ea9ad2925ea1d2b2a0627a05e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140022"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107795885"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -46,9 +46,9 @@ CAQuietExec64:  + FullyQualifiedErrorId : UnauthorizedAccess
 CAQuietExec64:  Error 0x80070001: Command line returned an error.
 ```
 
-如果使用组策略配置 [PowerShell 执行策略](/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy)，并且策略设置是“仅允许签名脚本”，则会出现此问题。 Azure 文件同步代理随附的所有脚本均已签名。 Azure 文件同步代理安装失败，因为安装程序使用跳过执行策略设置来完成脚本执行。
+如果使用组策略配置 [PowerShell 执行策略](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy)，并且策略设置是“仅允许签名脚本”，则会出现此问题。 Azure 文件同步代理随附的所有脚本均已签名。 Azure 文件同步代理安装失败，因为安装程序使用“跳过执行”策略设置来完成脚本执行。
 
-若要解决此问题，请暂时禁用服务器上的[启用脚本执行](/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy)组策略设置。 代理安装完成后，就可以重新启用组策略设置了。
+若要解决此问题，请暂时禁用服务器上的[启用脚本执行](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy)组策略设置。 代理安装完成后，可以重新启用组策略设置。
 
 <a id="agent-installation-on-DC"></a>**Active Directory 域控制器上的代理安装失败**  
 如果尝试在 Active Directory 域控制器上安装同步代理，且该控制器中 PDC 角色所有者位于 Windows Server 2008 R2 上或更低的 OS 版本上，则可能遇到同步代理安装失败的问题。

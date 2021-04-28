@@ -4,15 +4,15 @@ description: Azure Kubernetes 服务 (AKS) 中的 Open Service Mesh (OSM)
 services: container-service
 ms.topic: article
 ms.date: 3/12/2021
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 0052c8d2f9b85c34d50a3e9d01253ecaf2d02bab
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: b0a37400d02ff324e7191bb0b04243d7f16090bd
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106707"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877149"
 ---
 # <a name="open-service-mesh-aks-add-on-preview"></a>Open Service Mesh AKS 附加产品（预览版）
 
@@ -107,7 +107,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-在 Azure 中，可将相关的资源分配到资源组。 使用 [az group create](/cli/azure/group#az-group-create) 创建资源组。 以下示例在 eastus2 位置（区域）创建名为 myOsmAksGroup 的资源组： 
+在 Azure 中，可将相关的资源分配到资源组。 使用 [az group create](/cli/azure/group#az_group_create) 创建资源组。 以下示例在 eastus2 位置（区域）创建名为 myOsmAksGroup 的资源组： 
 
 ```azurecli-interactive
 az group create --name <myosmaksgroup> --location <eastus2>
@@ -2150,7 +2150,7 @@ kubectl port-forward $GRAF_POD_NAME 3000
 
 OSM 仪表板通过以下两个途径提供：
 
-- [我们的存储库](/charts/osm/grafana)，可通过 Web 管理门户作为 json blob 导入
+- [我们的存储库](https://github.com/grafana/grafana)，可通过 Web 管理门户作为 json blob 导入
 - [在线提供，网址为 Grafana.com](https://grafana.com/grafana/dashboards/14145)
 
 若要导入仪表板，请在左侧菜单中查找 `+` 符号，然后选择`import`。
@@ -2535,17 +2535,17 @@ kubectl get ConfigMap -n kube-system osm-config -o json | jq '.data'
 | egress                           | bool   | true、false                                             | `"false"`                              | 在网格中启用出口。                                                                                                                                                                                                             |
 | enable_debug_server              | bool   | true、false                                             | `"true"`                               | 在 osm-controller Pod 上启用调试终结点，以列出有关网格的信息（例如代理连接、证书和 SMI 策略）。                                                                                    |
 | enable_privileged_init_container | bool   | true、false                                             | `"false"`                              | 为网格中的 Pod 启用特权 Init 容器。 如果设置为 false，Init 容器只有 NET_ADMIN。                                                                                                                                   |
-| envoy_log_level                  | 字符串 | trace、debug、info、warning、warn、error、critical 和 off | `"error"`                              | 设置 Envoy 代理挎斗的日志记录详细程度，仅适用于加入网格的新创建的 Pod。 若要更新现有 Pod 的日志级别，请使用 `kubectl rollout restart` 重启部署。                            |
-| outbound_ip_range_exclusion_list | 字符串 | 以逗号分隔的 IP 范围列表，格式为 a.b.c.d/x | `-`                                    | 要从挎斗代理的出站流量截获中排除的 IP 地址范围的全局列表。                                                                                                                                    |
+| envoy_log_level                  | string | trace、debug、info、warning、warn、error、critical 和 off | `"error"`                              | 设置 Envoy 代理挎斗的日志记录详细程度，仅适用于加入网格的新创建的 Pod。 若要更新现有 Pod 的日志级别，请使用 `kubectl rollout restart` 重启部署。                            |
+| outbound_ip_range_exclusion_list | string | 以逗号分隔的 IP 范围列表，格式为 a.b.c.d/x | `-`                                    | 要从挎斗代理的出站流量截获中排除的 IP 地址范围的全局列表。                                                                                                                                    |
 | permissive_traffic_policy_mode   | bool   | true、false                                             | `"false"`                              | 如果设置为 `true`，则会在网格中启用“全部允许”模式，即不在网格中强制执行流量策略。 如果设置为 `false`，则会在网格中启用“全部拒绝”流量策略，即服务需要 `SMI Traffic Target`才能进行通信。 |
 | prometheus_scraping              | bool   | true、false                                             | `"true"`                               | 在挎斗代理上启用 Prometheus 指标抓取。                                                                                                                                                                                 |
-| service_cert_validity_duration   | 字符串 | 24h、1h30m（任何持续时间）                          | `"24h"`                                | 设置服务证书有效期，以十进制数字的序列表示，其中每个数字都有可选的分数和单位后缀。                                                                                             |
+| service_cert_validity_duration   | string | 24h、1h30m（任何持续时间）                          | `"24h"`                                | 设置服务证书有效期，以十进制数字的序列表示，其中每个数字都有可选的分数和单位后缀。                                                                                             |
 | tracing_enable                   | bool   | true、false                                             | `"false"`                              | 为网格启用 Jaeger 跟踪。                                                                                                                                                                                                    |
-| tracing_address                  | 字符串 | jaeger.mesh-namespace.svc.cluster.local                 | `jaeger.kube-system.svc.cluster.local` | Jaeger 部署的地址（如果已启用跟踪）。                                                                                                                                                                                |
-| tracing_endpoint                 | 字符串 | /api/v2/spans                                           | /api/v2/spans                          | 跟踪数据的终结点（如果已启用跟踪）。                                                                                                                                                                                          |
+| tracing_address                  | string | jaeger.mesh-namespace.svc.cluster.local                 | `jaeger.kube-system.svc.cluster.local` | Jaeger 部署的地址（如果已启用跟踪）。                                                                                                                                                                                |
+| tracing_endpoint                 | string | /api/v2/spans                                           | /api/v2/spans                          | 跟踪数据的终结点（如果已启用跟踪）。                                                                                                                                                                                          |
 | tracing_port                     | int    | 任何非零整数值                              | `"9411"`                               | 启用跟踪的端口。                                                                                                                                                                                                       |
 | use_https_ingress                | bool   | true、false                                             | `"false"`                              | 在网格上启用 HTTPS 入口。                                                                                                                                                                                                      |
-| config_resync_interval           | 字符串 | 如果值小于 1 分钟，将禁用此功能                            | 0（禁用）                           | 如果提供的值大于 1m (60s)，则 OSM 控制器会按给定的时间间隔将所有可用的配置发送到每个已连接的 Envoy                                                                                                    |
+| config_resync_interval           | string | 如果值小于 1 分钟，将禁用此功能                            | 0（禁用）                           | 如果提供的值大于 1m (60s)，则 OSM 控制器会按给定的时间间隔将所有可用的配置发送到每个已连接的 Envoy                                                                                                    |
 
 #### <a name="check-namespaces"></a>检查命名空间
 

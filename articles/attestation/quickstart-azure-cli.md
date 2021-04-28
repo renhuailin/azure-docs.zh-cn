@@ -7,16 +7,16 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ae283785b4d4dc80c6b9b6c3997aaf82c9ff0f2f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 648317c6e534d7f6af84704e9dd2b2fb603806ee
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178705"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108016304"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>快速入门：使用 Azure CLI 设置 Azure 证明
 
-[通过使用 Azure CLI 开始使用 Azure 证明](/cli/azure/ext/attestation/attestation)。
+[通过使用 Azure CLI 开始使用 Azure 证明](/cli/azure/attestation)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -69,13 +69,13 @@ ms.locfileid: "102178705"
 
 可使用以下命令创建和管理证明提供程序：
 
-1. 运行 [az attestation create](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_create) 命令，创建没有策略签名要求的证明提供程序：
+1. 运行 [az attestation create](/cli/azure/attestation#az_attestation_create) 命令，创建没有策略签名要求的证明提供程序：
 
    ```azurecli
    az attestation create --name "myattestationprovider" --resource-group "MyResourceGroup" --location westus
    ```
    
-1. 运行 [az attestation show](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_show) 命令检索证明提供程序属性（例如 status 和 AttestURI）：
+1. 运行 [az attestation show](/cli/azure/attestation#az_attestation_show) 命令检索证明提供程序属性（例如 status 和 AttestURI）：
 
    ```azurecli
    az attestation show --name "myattestationprovider" --resource-group "MyResourceGroup"
@@ -95,7 +95,7 @@ ms.locfileid: "102178705"
    TagsTable:
    ```
 
-可使用 [az attestation delete](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_delete) 命令删除证明提供程序：
+可使用 [az attestation delete](/cli/azure/attestation#az_attestation_delete) 命令删除证明提供程序：
 
 ```azurecli
 az attestation delete --name "myattestationprovider" --resource-group "sample-resource-group"
@@ -105,7 +105,7 @@ az attestation delete --name "myattestationprovider" --resource-group "sample-re
 
 使用此处所述的命令可为证明提供程序（一次一个证明类型）提供策略管理。
 
-[az attestation policy show](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_show) 命令返回指定 TEE 的当前策略：
+[az attestation policy show](/cli/azure/attestation/policy#az_attestation_policy_show) 命令返回指定 TEE 的当前策略：
 
 ```azurecli
 az attestation policy show --name "myattestationprovider" --resource-group "MyResourceGroup" --attestation-type SGX-IntelSDK
@@ -120,7 +120,7 @@ az attestation policy show --name "myattestationprovider" --resource-group "MyRe
 - `SGX-OpenEnclaveSDK`
 - `TPM`
 
-使用 [az attestation policy set](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_set) 命令为指定的证明类型设置新策略。
+使用 [az attestation policy set](/cli/azure/attestation/policy#az_attestation_policy_set) 命令为指定的证明类型设置新策略。
 
 若要使用文件路径以文本格式为给定类型的证明设置策略，请运行以下命令：
 

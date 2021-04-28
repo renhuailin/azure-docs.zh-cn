@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 04/1/2021
 ms.custom: references_regions
-ms.openlocfilehash: c364a27b7885877231e76a694472a7ad81fe3e29
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: fb53ad309c741fc898bcf3e27347038c0e382ea4
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108147006"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107508931"
 ---
 # <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-with-azure-cli"></a>通过 Azure CLI 在 Azure Database for MySQL 灵活服务器中管理区域冗余高可用性
 
@@ -24,7 +24,7 @@ ms.locfileid: "108147006"
 高可用性功能预配在不同区域中物理分隔主副本和备用副本。 有关详细信息，请参阅[高可用性概念文档](./concepts/../concepts-high-availability.md)。 启用或禁用高可用性不会更改其他设置，包括 VNET 配置、防火墙设置和备份保留。 禁用高可用性不会影响应用程序的连接和操作。
 
 > [!IMPORTANT]
-> 区域冗余高可用性在一组有限的区域中提供。 请在[此处](./overview.md#azure-regions)查看受支持的区域。 
+> 区域冗余高可用性在一组有限的区域中提供。 请在[此处](https://docs.microsoft.com/azure/mysql/flexible-server/overview#azure-regions)查看受支持的区域。 
 
 ## <a name="prerequisites"></a>先决条件
 - 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。

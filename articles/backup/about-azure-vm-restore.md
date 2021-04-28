@@ -3,12 +3,12 @@ title: 关于 Azure 虚拟机还原过程
 description: 了解 Azure 备份服务如何还原 Azure 虚拟机
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 62d1ff7973693f29c77c77fe2ad4fbbb598a5fa4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: eca8045a2da3492e523a54a808997d018e696118
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738406"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129704"
 ---
 # <a name="about-azure-vm-restore"></a>关于 Azure VM 还原
 
@@ -50,6 +50,6 @@ ms.locfileid: "101738406"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [有关 VM 还原的常见问题](/azure/backup/backup-azure-vm-backup-faq#restore)
+- [有关 VM 还原的常见问题](/azure/backup/backup-azure-vm-backup-faq.yml#restore)
 - [支持的还原方法](./backup-support-matrix-iaas.md#supported-restore-methods)
 - [排查还原问题](./backup-azure-vms-troubleshoot.md#restore)

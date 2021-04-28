@@ -5,18 +5,18 @@ description: 了解如何通过 Azure 机器学习创建新的 Azure Kubernetes 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
-ms.custom: devx-track-azurecli
+ms.topic: conceptual
+ms.custom: how-to, devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 04/08/2021
-ms.openlocfilehash: 949975c1f28c2c1d630319e5172f853f5ed44b35
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 1c9434d137114560b5585b081961497412dfbf69
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890017"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770248"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>创建并附加 Azure Kubernetes 服务群集
 
@@ -198,7 +198,7 @@ aks_target.wait_for_completion(show_output = True)
 az ml computetarget create aks -n myaks
 ```
 
-有关详细信息，请参阅 [az ml computetarget create aks](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_aks) 参考文档。
+有关详细信息，请参阅 [az ml computetarget create aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-aks) 参考文档。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
@@ -275,7 +275,7 @@ az aks show -n myexistingcluster -g myresourcegroup --query id
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
 ```
 
-有关详细信息，请参阅 [az ml computetarget attach aks](/cli/azure/ml/computetarget/attach#az_ml_computetarget_attach_aks) 参考文档。
+有关详细信息，请参阅 [az ml computetarget attach aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/attach#ext-azure-cli-ml-az-ml-computetarget-attach-aks) 参考文档。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 

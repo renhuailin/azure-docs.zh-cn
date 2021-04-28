@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 493752a3857b80b43668b6bf1b20480604442955
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 583124e9e3ca657ee13e4726eda981ae26022856
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567989"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138510"
 ---
 # <a name="tutorial-map-an-existing-custom-domain-to-azure-spring-cloud"></a>教程：将现有自定义域映射到 Azure Spring Cloud
 
@@ -23,7 +23,7 @@ ms.locfileid: "107567989"
 证书用于对 Web 流量进行加密。 可将这些 TLS/SSL 证书存储在 Azure Key Vault 中。 
 
 ## <a name="prerequisites"></a>先决条件
-* 一个已部署到 Azure Spring Cloud 的应用程序（请参阅[快速入门：使用 Azure 门户启动现有 Azure Spring Cloud 应用程序](spring-cloud-quickstart.md)，或使用现有应用）。
+* 一个已部署到 Azure Spring Cloud 的应用程序（请参阅[快速入门：使用 Azure 门户启动现有 Azure Spring Cloud 应用程序](./quickstart.md)，或使用现有应用）。
 * 一个有权访问域提供商（例如 GoDaddy）的 DNS 注册表的域名。
 * 来自第三方提供商的私有证书（即你的自签名证书）。 该证书必须与域匹配。
 * 一个已部署的 [Azure Key Vault](../key-vault/general/overview.md) 实例
@@ -164,7 +164,7 @@ az spring-cloud certificate list --resource-group <resource group name> --servic
 ![DNS 记录页](./media/custom-dns-tutorial/dns-records.png)
 
 ## <a name="map-your-custom-domain-to-azure-spring-cloud-app"></a>将自定义域映射到 Azure Spring Cloud 应用
-如果你在 Azure Spring Cloud 中没有应用程序，请按照以下教程操作：[快速入门：使用 Azure 门户启动现有 Azure Spring Cloud 应用程序](./spring-cloud-quickstart.md)。
+如果你在 Azure Spring Cloud 中没有应用程序，请按照以下教程操作：[快速入门：使用 Azure 门户启动现有 Azure Spring Cloud 应用程序](./quickstart.md)。
 
 #### <a name="portal"></a>[门户](#tab/Azure-portal)
 转到应用程序页。
@@ -234,4 +234,4 @@ az spring-cloud app update -n <app name> --resource-group <resource group name> 
 ## <a name="see-also"></a>另请参阅
 * [什么是 Azure 密钥保管库？](../key-vault/general/overview.md)
 * [导入证书](../key-vault/certificates/certificate-scenarios.md#import-a-certificate)
-* [使用 Azure CLI 启动 Spring Cloud 应用](./spring-cloud-quickstart.md)
+* [使用 Azure CLI 启动 Spring Cloud 应用](./quickstart.md)

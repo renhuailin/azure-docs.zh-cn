@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: c5dfd442bb52a5b1d319bd0a40b656d549134e7e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6859a2f8571c11e6ef93a5e5b1635cdbe39ad001
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612297"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107737652"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中创建、开发和维护 Synapse Studio 笔记本
 
@@ -40,7 +40,6 @@ Synapse 团队将新的笔记本组件引入 Synapse Studio，为 Microsoft 客�
 |%load| 不支持 |&#9745;|
 |%%html| 不支持 |&#9745;|
 |拖放移动单元格| 不支持 |&#9745;|
-|永久显示() 输出|&#9745;| 不可用 |
 |通过工具栏按钮设置文本单元格的格式|&#9745;| 不可用 |
 |撤消单元格操作| &#9745;| 不可用 |
 
@@ -150,6 +149,18 @@ Azure Synapse Studio 笔记本集成了 Monaco 编辑器，将 IDE 样式的 Int
 |Spark (Scala)|是|是|是|是|-|-|-|是|
 |SparkSQL|是|是|-|-|-|-|-|-|
 |.NET for Spark (C#)|是|-|-|-|-|-|-|-|
+
+
+
+### <a name="code-snippets"></a>代码段
+
+Azure Synapse Studio 笔记本提供代码片段，可更轻松地输入常用的代码模式，例如配置 Spark 会话、将数据作为 Spark 数据帧读取，或者使用 matplotlib 等绘制图表。
+
+代码片段与其他建议混合在一起显示在 [IntelliSense](#ide-style-intellisense) 中。 代码片段内容与代码单元格语言一致。 可通过在代码单元格编辑器中键入“代码片段”或代码片段标题中出现的任何关键字来查看可用的代码片段。 例如，通过键入“读取”，可查看用于从各种数据源读取数据的代码片段列表。
+
+![Synapse 代码片段](./media/apache-spark-development-using-notebooks/synapse-code-snippets.gif#lightbox)
+
+
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>通过工具栏按钮设置文本单元格的格式
 
@@ -274,7 +285,7 @@ Azure Synapse Studio 笔记本集成了 Monaco 编辑器，将 IDE 样式的 Int
 
 # <a name="classical-notebook"></a>[经典笔记本](#tab/classical)
 
-要访问最右侧的其他单元格操作菜单，请选择省略号 (…)。然后选择“运行上方的单元格”，按顺序运行当前单元格上方的所有单元格。 选择“运行下方的单元格”，按顺序运行当前单元格下方的所有单元格。
+若要访问最右侧的其他单元格操作菜单，请选择省略号 (…)。然后选择“运行上方的单元格”，按顺序运行当前单元格上方的所有单元格 。 选择“运行下方的单元格”，按顺序运行当前单元格下方的所有单元格。
 
    ![run-cells-above-or-below](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
@@ -468,7 +479,7 @@ df = spark.read.option("header", "true") \
 
 # <a name="classical-notebook"></a>[经典笔记本](#tab/classical)
 
-若要对笔记本进行参数化，选择省略号 (…) 以访问最右侧的其他单元格操作菜单。 然后选择“切换参数单元格”，将该单元格指定为参数单元格。
+若要对笔记本进行参数化，请选择省略号 (…) 以访问最右侧的其他单元格操作菜单。 然后选择“切换参数单元格”，将该单元格指定为参数单元格。
 
 ![toggle-parameter](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
 

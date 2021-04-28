@@ -3,12 +3,12 @@ title: 在 Azure 事件网格中使用 Azure AD 进行安全的 WebHook 传递
 description: 介绍如何将事件传递到受到 Azure Active Directory 通过 Azure 事件网格进行保护的 HTTPS 终结点
 ms.topic: how-to
 ms.date: 04/13/2021
-ms.openlocfilehash: 0d92b89b1df6b6969491d39b04764f15b7a510d1
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 6a0f9059e17d96d497b425abc9749e69c5ab4d41
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125798"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575541"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>将事件发布到受 Azure Active Directory 保护的终结点
 本文介绍如何使用 Azure Active Directory (Azure AD) 来保护事件订阅和 Webhook 终结点之间的连接 。 有关 Azure AD 应用程序和服务主体的概述，请参阅 [Microsoft 标识平台 (v2.0) 概述](../active-directory/develop/v2-overview.md)。
@@ -20,7 +20,7 @@ ms.locfileid: "108125798"
 
 
 ## <a name="create-an-azure-ad-application"></a>创建 Azure AD 应用程序
-通过为受保护的终结点创建 Azure AD 应用程序，向 Azure AD 注册 Webhook。 请参阅[方案：受保护的 Web API](../active-directory/develop/scenario-protected-web-api-overview.md)。 将受保护的 API 配置为通过守护程序应用进行调用。
+通过为受保护的终结点创建 Azure AD 应用程序，向 Azure AD 注册 Webhook。 请参阅[方案：受保护的 Web API](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview)。 将受保护的 API 配置为通过守护程序应用进行调用。
     
 ## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>允许事件网格使用 Azure AD 应用程序
 本部分说明如何启用事件网格来使用 Azure AD 应用程序。 

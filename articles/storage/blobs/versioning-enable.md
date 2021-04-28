@@ -10,12 +10,12 @@ ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5b6bd16eacf4b1bbb7b93f5500813e7fa9dc7eef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6a1d315342ea98ccaf1382630eccca876ada3f1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100095829"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870186"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>启用和管理 blob 版本控制
 
@@ -54,7 +54,7 @@ Update-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要使用 Azure CLI 为存储帐户启用 blob 版本控制，请首先安装 Azure CLI 版本 2.2.0 或更高版本。 然后调用 [az storage account blob-service-properties update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update) 命令来启用版本控制，如以下示例所示。 请务必将尖括号中的值替换为你自己的值：
+若要使用 Azure CLI 为存储帐户启用 blob 版本控制，请首先安装 Azure CLI 版本 2.2.0 或更高版本。 然后调用 [az storage account blob-service-properties update](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_update) 命令来启用版本控制，如以下示例所示。 请务必将尖括号中的值替换为你自己的值：
 
 ```azurecli
 az storage account blob-service-properties update \

@@ -4,12 +4,12 @@ description: Microsoft Azure 中的自动缩放
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 4727d562e21b92e58c8091f1161cf53198ff0b26
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b3ac08addac4fb668b58ebb218ffb57bb920813
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101725996"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139680"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Microsoft Azure 自动缩放概述
 本文介绍了 Microsoft Azure 自动缩放是什么、其对用户的好处，以及如何开始使用它。  
@@ -107,7 +107,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 | API 管理服务|[自动缩放 Azure API 管理实例](../../api-management/api-management-howto-autoscale.md)
 | Azure 数据资源管理器群集|[管理 Azure 数据资源管理器群集缩放以适应不断变化的需求](/azure/data-explorer/manage-cluster-horizontal-scaling)|
 | 逻辑应用 |[添加集成服务环境 (ISE) 容量](../../logic-apps/ise-manage-integration-service-environment.md#add-ise-capacity)|
-| Spring Cloud |[为微服务应用程序设置自动缩放功能](../../spring-cloud/spring-cloud-tutorial-setup-autoscale.md)|
+| Spring Cloud |[为微服务应用程序设置自动缩放功能](../../spring-cloud/how-to-setup-autoscale.md)|
 | 服务总线 |[自动更新 Azure 服务总线命名空间的消息传送单元。](../../service-bus-messaging/automate-update-messaging-units.md)|
 
 ## <a name="next-steps"></a>后续步骤
