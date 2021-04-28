@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 04/01/2021
 ms.author: cshoe
-ms.openlocfilehash: e81f0a9e4fc50cf0d80f2905b9328af3c721865c
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: c0a4156fb0015c6d319700c82f6285dbf0ed1443
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166389"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107947872"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>什么是 Azure 静态 Web 应用预览版？
 
@@ -44,7 +44,7 @@ Azure 静态 Web 应用的工作流适用于开发人员的日常工作流。 �
 
 ## <a name="what-you-can-do-with-static-web-apps"></a>可对静态 Web 应用执行的操作
 
-- 使用 [Angular](getting-started.md?tabs=angular)、[React](getting-started.md?tabs=react)、[Svelte](/learn/modules/publish-app-service-static-web-app-api/)、[Vue](getting-started.md?tabs=react) 等 JavaScript 框架和库构建新式 Web 应用程序，或使用带 [Azure Functions](apis.md) 后端的 [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) 创建 WebAssembly 应用程序。
+- 使用 [Angular](getting-started.md?tabs=angular)、[React](getting-started.md?tabs=react)、[Svelte](/learn/modules/publish-app-service-static-web-app-api/)、[Vue](getting-started.md?tabs=vue) 等 JavaScript 框架和库构建新式 Web 应用程序，或使用带 [Azure Functions](apis.md) 后端的 [Blazor](./deploy-blazor.md) 创建 WebAssembly 应用程序。
 - 使用 [Gatsby](publish-gatsby.md)、[Hugo](publish-hugo.md)、[VuePress](publish-vuepress.md) 等框架发布静态站点。
 - 使用 [Next.js](deploy-nextjs.md) 和 [Nuxt.js](deploy-nuxtjs.md) 等框架部署 Web 应用程序。
 

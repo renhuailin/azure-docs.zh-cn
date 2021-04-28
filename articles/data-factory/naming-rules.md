@@ -1,18 +1,18 @@
 ---
 title: Azure 数据工厂实体的命名规则
 description: 描述数据工厂实体的命名规则。
-author: dcstwh
-ms.author: weetok
+author: ssabat
+ms.author: susabat
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: a1a0622c0736bad5f6c205fab01f4405577ed67a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 349a768af9b1e7693840880df5e870991336a8ba
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783347"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903632"
 ---
 # <a name="azure-data-factory---naming-rules"></a>Azure 数据工厂 - 命名规则
 

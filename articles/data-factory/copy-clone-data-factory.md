@@ -2,17 +2,17 @@
 title: 在 Azure 数据工厂中复制或克隆数据工厂
 description: 了解如何在 Azure 数据工厂中复制或克隆数据工厂
 ms.service: data-factory
-author: chez-charlie
-ms.author: chez
+author: minhe-msft
+ms.author: hemin
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e13aa0a66d1c1a65462e80f14efc048dd2f06c8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39ec94a63d7a4318a0774508ebb1c1c2abc3a927
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104780270"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903823"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>在 Azure 数据工厂中复制或克隆数据工厂
 

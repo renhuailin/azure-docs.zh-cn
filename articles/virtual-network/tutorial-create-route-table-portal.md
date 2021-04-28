@@ -12,12 +12,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/16/2021
 ms.author: kumud
-ms.openlocfilehash: 7da59e996ec37d3653dbde68c5f56caa9e8261ee
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 1d8a3bf8a17d04d98f605be3bcc01f47a61fdc89
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061904"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906055"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>教程：使用 Azure 门户通过路由表路由网络流量
 
@@ -35,11 +35,7 @@ ms.locfileid: "106061904"
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，需要一个包含有效订阅的 Azure 帐户。 如果你没有帐户，可以[免费创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-## <a name="prerequisites"></a>先决条件
-
-- Azure 订阅。
+在开始之前，需要一个包含有效订阅的 Azure 帐户。 如果没有帐户，可以[免费创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 

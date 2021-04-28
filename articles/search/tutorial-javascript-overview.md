@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 03/18/2021
 ms.custom: devx-track-js
 ms.devlang: javascript
-ms.openlocfilehash: 03192b8a84b78682b53bf3d47e7de7b65eb8bceb
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: da341d202dcfd0fc81a6becec6646b1116069aa7
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104723445"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123278"
 ---
 # <a name="1---overview-of-adding-search-to-a-website"></a>1 - 将搜索添加到网站的概述
 
@@ -59,7 +59,7 @@ ms.locfileid: "104723445"
     - [Azure 认知搜索 0.2.0+](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch)
     - [Azure 静态 Web 应用](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestaticwebapps) 
 - 可选：
-    - 本教程不在本地运行 Azure Function API，但如果您想要在本地运行它，则需要通过以下 bash 命令全局安装 [azure-functions-core-tools](/azure/azure-functions/functions-run-local?tabs=linux%2Ccsharp%2Cbash)： 
+    - 本教程不在本地运行 Azure Function API，但如果您想要在本地运行它，则需要通过以下 bash 命令全局安装 [azure-functions-core-tools](../azure-functions/functions-run-local.md?tabs=linux%2ccsharp%2cbash)： 
     
     ```bash
     npm install -g azure-functions-core-tools

@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: dc2d2d3e92435c7a028b43a095f456c2c383ecb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4cb31017d87c235f4a26d6f86080c20b0c3b2a8a
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199630"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905281"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>将下游设备连接到 Azure IoT Edge 网关
 
@@ -56,7 +56,7 @@ ms.locfileid: "103199630"
 :::moniker range=">=iotedge-2020-11"
 下游设备可以是包含通过 Azure IoT 中心云服务创建的标识的任何应用程序或平台。 在许多情况下，这些应用程序使用 [Azure IoT 设备 SDK](../iot-hub/iot-hub-devguide-sdks.md)。 下游设备甚至可以是 IoT Edge 网关设备本身上运行的应用程序。
 
-本文提供将 IoT 设备连接为下游设备的步骤。 如果有 IoT Edge 设备作为下游设备，请参阅[将下游 IoT Edge 设备连接到 Azure IoT Edge 网关](how-to-connect-downstream-iot-edge-device.md)。
+本文提供将 IoT 设备连接为下游设备的步骤。 如果将 IoT Edge 设备作为下游设备，请参阅[将下游 IoT Edge 设备连接到 Azure IoT Edge 网关](how-to-connect-downstream-iot-edge-device.md)。
 :::moniker-end
 <!-- end 1.2 -->
 
@@ -114,7 +114,7 @@ sudo update-ca-certificates
 
 以下示例步骤演示如何在 Windows 主机上安装 CA 证书。 此示例假设使用先决条件文章中的 **azure-iot-test-only.root.ca.cert.pem** 证书，并且已将该证书复制到下游设备上的某个位置。
 
-可以使用 PowerShell 的 [Import-Certificate](/powershell/module/pkiclient/import-certificate) 以管理员身份安装证书：
+可以使用 PowerShell 的 [Import-Certificate](/powershell/module/pki/import-certificate) 以管理员身份安装证书：
 
 ```powershell
 import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorelocation cert:\LocalMachine\root
@@ -228,7 +228,7 @@ openssl s_client -connect mygateway.contoso.com:8883 -CAfile <CERTDIR>/certs/azu
 
 如果叶设备与其网关设备之间的连接是断断续续的，请尝试执行以下步骤来解决问题。
 
-1. 连接字符串中的网关主机名与网关设备上 IoT Edge 配置文件中的主机名值相同吗？
+1. 连接字符串中的网关主机名是否与网关设备上 IoT Edge 配置文件中的主机名值相同？
 2. 网关主机名是否可以解析为 IP 地址？ 可以通过使用 DNS 或通过在叶设备上添加一个主机文件条目来解决连接断断续续的问题。
 3. 防火墙中是否打开了通信端口？ 必须能够在下游设备和透明 IoT Edge 之间进行基于所用协议 (MQTTS:8883/AMQPS:5671/HTTPS:433) 的通信。
 

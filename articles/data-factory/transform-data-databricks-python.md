@@ -4,15 +4,15 @@ description: 了解如何通过在 Azure 数据工厂管道中运行 Databricks 
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/15/2018
-author: dcstwh
-ms.author: weetok
+author: nabhishek
+ms.author: abnarain
 ms.custom: devx-track-python
-ms.openlocfilehash: 49dfe11ceb01471e3b5afadd30259dcd63e7b82a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 6e25c08554e50311613ac4a79ac40c7efce23ae9
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373940"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107902977"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>通过运行 Azure Databricks 中的 Python 活动转换数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -58,7 +58,7 @@ ms.locfileid: "100373940"
 
 下表描述了 JSON 定义中使用的 JSON 属性：
 
-|properties|说明|必须|
+|属性|说明|必需|
 |---|---|---|
 |name|管道中活动的名称。|是|
 |description|描述活动用途的文本。|否|
@@ -108,18 +108,18 @@ ms.locfileid: "100373940"
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>如何上传 Databricks 中的库
 
-### <a name="you-can-use-the-workspace-ui"></a>您可以使用工作区 UI：
+### <a name="you-can-use-the-workspace-ui"></a>可以使用工作区 UI：
 
 1. [使用 Databricks 工作区 UI](/azure/databricks/libraries/#create-a-library)
 
-2. 若要获取使用 UI 添加的库的 dbfs 路径，可以使用 [DATABRICKS CLI](/azure/databricks/dev-tools/cli/#install-the-cli)。
+2. 若要获取使用 UI 添加的库的 dbfs 路径，可以使用 [Databricks CLI](/azure/databricks/dev-tools/cli/#install-the-cli)。
 
    使用 UI 时，Jar 库通常存储在 dbfs:/FileStore/jars 下。 可以通过 CLI 列出所有库：databricks fs ls dbfs:/FileStore/job-jars
 
-### <a name="or-you-can-use-the-databricks-cli"></a>或者，可以使用 Databricks CLI：
+### <a name="or-you-can-use-the-databricks-cli"></a>或者可以使用 Databricks CLI：
 
-1. 跟踪 [使用 DATABRICKS CLI 复制库](/azure/databricks/dev-tools/cli/#copy-a-file-to-dbfs)
+1. 遵循[使用 Databricks CLI 复制库](/azure/databricks/dev-tools/cli/#copy-a-file-to-dbfs)
 
-2. 使用 Databricks CLI [ (安装步骤) ](/azure/databricks/dev-tools/cli/#install-the-cli)
+2. 使用 Databricks CLI[（安装步骤）](/azure/databricks/dev-tools/cli/#install-the-cli)
 
-   例如，要将 JAR 复制到 dbfs： `dbfs cp SparkPi-assembly-0.1.jar dbfs:/docs/sparkpi.jar`
+   例如，将 JAR 复制到 dbfs：`dbfs cp SparkPi-assembly-0.1.jar dbfs:/docs/sparkpi.jar`

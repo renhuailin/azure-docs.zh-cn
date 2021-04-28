@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 46b056c22a6d1c70a729f5b9558f53c685a878f0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2f92c0646ef8c14134e8fc2f9b7558519f71fe8d
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732847"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930994"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活服务器（预览版）
 
@@ -136,7 +136,7 @@ MySQL 是一种常用的数据库引擎，用于运行 Internet 规模的 Web �
 | --- | --- | --- |
 | 西欧 | :heavy_check_mark: | :heavy_check_mark: |
 | 北欧 | :heavy_check_mark: | :heavy_check_mark: |
-| 英国南部 | :heavy_check_mark: | :x: | 
+| 英国南部 | :heavy_check_mark: | :heavy_check_mark: | 
 | 美国东部 2 | :heavy_check_mark: | :heavy_check_mark: |
 | 美国西部 2 | :heavy_check_mark: | :heavy_check_mark: |
 | 美国中部 | :heavy_check_mark: | :x: | 
@@ -144,8 +144,10 @@ MySQL 是一种常用的数据库引擎，用于运行 Internet 规模的 Web �
 | 加拿大中部 | :heavy_check_mark: | :x: | 
 | Southeast Asia | :heavy_check_mark: | :heavy_check_mark: |
 | 韩国中部 | :heavy_check_mark: | :x: | 
-| Japan East | :heavy_check_mark: | :x: | 
+| Japan East | :heavy_check_mark: | :heavy_check_mark: | 
 | 澳大利亚东部 | :heavy_check_mark: | :heavy_check_mark: |
+| 法国中部 | :heavy_check_mark: | :x:|
+| Brazil South | :heavy_check_mark: | :x: |
 
 我们即将添加新的区域。
 

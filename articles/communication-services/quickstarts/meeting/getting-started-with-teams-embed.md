@@ -8,20 +8,18 @@ ms.date: 01/25/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-ios-android
-ms.openlocfilehash: fee77b799ce0e415d8a968ef623f35d5ac31c6ee
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b26c0631ed8a8982578d1c910d40689ff27dcc91
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726849"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903141"
 ---
 # <a name="quickstart-add-joining-a-teams-meeting-to-your-app"></a>快速入门：向应用中添加“加入 Teams 会议”功能
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 通过使用通信服务 Teams Embed SDK 向应用添加 Teams 会议，开启 Azure 通信服务使用旅程。 
-
-[!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
 ::: zone pivot="platform-android"
 [!INCLUDE [Teams Embed with Android](./includes/get-started-android.md)]

@@ -10,19 +10,19 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 322f54e4fa2e8096f68d5bbc216032a5b4e53c22
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 579af219c095fcf2e8faa77e0fb3fe7e2ea55d79
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726636"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107931717"
 ---
 ## <a name="prerequisites"></a>先决条件
 在开始之前，请务必：
 
 - 创建活动订阅的 Azure 帐户。 有关详细信息，请参阅[创建免费账户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 安装 [Node.js](https://nodejs.org/en/download/) Active LTS 和 Maintenance LTS 版本。
-- 创建 Azure 通信服务资源。 有关详细信息，请参阅[创建 Azure 通信资源](../../create-communication-resource.md)。 为完成此快速入门，需要记录资源终结点。
+- 创建 Azure 通信服务资源。 有关详细信息，请参阅[创建 Azure 通信服务资源](../../create-communication-resource.md)。 为完成此快速入门，需要记录资源终结点。
 - 创建 3 个 ACS 用户，并向他们颁发用户访问令牌[用户访问令牌](../../access-tokens.md)。 请确保将范围设置为“聊天”，并记下令牌字符串和 userId 字符串 。 完整的演示将创建一个具有两个初始参与者的会话，然后将第三个参与者添加到该会话。
 
 ## <a name="setting-up"></a>设置
@@ -176,7 +176,7 @@ async function createChatThread() {
       }
     ]
   };
-  const createChatTtreadResult = await chatClient.createChatThread(
+  const createChatThreadResult = await chatClient.createChatThread(
     createChatThreadRequest,
     createChatThreadOptions
   );

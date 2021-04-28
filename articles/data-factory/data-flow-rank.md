@@ -1,19 +1,19 @@
 ---
 title: 映射数据流中的排名转换
 description: 如何使用 Azure 数据工厂的映射数据流排名转换生成排名列
-author: dcstwh
-ms.author: weetok
+author: kromerm
+ms.author: makromer
 ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/05/2020
-ms.openlocfilehash: b7adb6bf13cba5f886b442515e8ba5661cfeb8ef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc0a4d8701f8d53f0acff362713054269378a88a
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96490918"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903733"
 ---
 # <a name="rank-transformation-in-mapping-data-flow"></a>映射数据流中的排名转换 
 

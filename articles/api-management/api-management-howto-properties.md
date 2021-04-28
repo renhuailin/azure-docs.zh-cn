@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: b0e076f3b248942870ba58a51c85c3df1f1277a4
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: a970eb23c171522907b6066454d9ca15d85f0835
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750601"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812257"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>在 Azure API 管理策略中使用命名值
 
@@ -42,7 +42,7 @@ ms.locfileid: "107750601"
 建议使用密钥保管库机密，因为它有助于提高 API 管理安全性：
 
 * 密钥保管库中存储的机密可以在服务之间重复使用
-* 可以为机密应用精细[访问策略](../key-vault/general/security-overview.md#privileged-access)
+* 可以为机密应用精细[访问策略](../key-vault/general/security-features.md#privileged-access)
 * 在密钥保管库中更新的机密会自动在 API 管理中轮换。 在密钥保管库中更新后，API 管理中的命名值会在 4 小时内更新。 你还可以使用 Azure 门户或通过管理 REST API 手动刷新机密。
 
 ### <a name="prerequisites-for-key-vault-integration"></a>密钥保管库集成的先决条件

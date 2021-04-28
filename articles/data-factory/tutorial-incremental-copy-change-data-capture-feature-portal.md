@@ -1,17 +1,17 @@
 ---
 title: 使用变更数据捕获以增量方式复制数据
 description: 在本教程中，你将创建一个 Azure 数据工厂管道，该管道以增量方式将增量数据从 Azure SQL 托管实例数据库中的表复制到 Azure 存储。
-ms.author: nihurt
-author: hurtn
+ms.author: yexu
+author: dearandyxu
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 02/18/2021
-ms.openlocfilehash: a00ec8698b188b8fa87935e498e8cfab3aeab5aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c7bfaf6bd6ca11593a986ca8d929faf063be720
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101724976"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905767"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>使用变更数据捕获 (CDC)，以增量方式将 Azure SQL 托管实例中的数据加载到 Azure 存储
 

@@ -2,13 +2,13 @@
 title: 教程 - 网络规划清单
 description: 了解 Azure VMware 解决方案中网络连接和网络端口的网络要求。
 ms.topic: tutorial
-ms.date: 03/13/2021
-ms.openlocfilehash: 8cee5fa24aab8bd7fe6a9527f9c8e7cdff997511
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/23/2021
+ms.openlocfilehash: 2e7854100df7e19ec8cfcc9b6de647fa8ed31d38
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462059"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107945442"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Azure VMware 解决方案的网络规划清单 
 
@@ -88,8 +88,6 @@ Azure VMware 解决方案私有云要求至少对子网使用 CIDR 网络地址�
 在私有云环境中运行的应用程序和工作负载需要使用名称解析和 DHCP 服务来进行查找和 IP 地址分配。 需有适当的 DHCP 和 DNS 基础结构才能提供这些服务。 在私有云环境中，可以配置一个虚拟机来提供这些服务。  
 
 使用内置于 NSX 的 DHCP 服务，或使用私有云中的本地 DHCP 服务器，而不要通过 WAN 将广播 DHCP 流量路由回本地。
-
-有关更多详细信息，请参阅[为 NSX-T 网段提供 DHCP 服务](deploy-azure-vmware-solution.md#optional-provide-dhcp-services-to-nsx-t-network-segment)一文。
 
 
 ## <a name="next-steps"></a>后续步骤

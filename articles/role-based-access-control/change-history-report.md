@@ -1,6 +1,6 @@
 ---
 title: 查看 Azure RBAC 更改的活动日志
-description: 查看 Azure RBAC 在过去90天内 (Azure RBAC) 更改的基于角色的访问控制的活动日志。
+description: 查看 Azure 基于角色的访问控制 (Azure RBAC) 在过去 90 天所做更改的活动日志。
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 03/01/2021
 ms.author: rolyon
-ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: d9b39bc9a2f00fe83cae0ff78c6346042967e8bf
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 625cf443ab9bd334d2a10e3fb15348459b85f625
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042109"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108069986"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>查看 Azure RBAC 更改的活动日志
 
@@ -36,9 +36,9 @@ ms.locfileid: "102042109"
 
 ![使用门户的活动日志 - 屏幕截图](./media/change-history-report/activity-log-portal.png)
 
-若要获取详细信息，请单击某个条目以打开 "摘要" 窗格。 单击 " **JSON** " 选项卡获取详细日志。
+若要获取详细信息，请单击某个条目以打开“摘要”窗格。 单击“JSON”选项卡获取详细日志。
 
-![使用门户和摘要窗格打开活动日志-屏幕截图](./media/change-history-report/activity-log-summary-portal.png)
+![使用门户的活动日志（打开了“摘要”窗格）- 屏幕截图](./media/change-history-report/activity-log-summary-portal.png)
 
 门户中的活动日志有多个筛选器。 下面是与 Azure RBAC 相关的筛选器：
 
@@ -50,21 +50,21 @@ ms.locfileid: "102042109"
 有关活动日志的更多信息，请参阅[查看活动日志以监视对资源的操作](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)。
 
 
-## <a name="interpret-a-log-entry"></a>解释日志条目
+## <a name="interpret-a-log-entry"></a>解析日志条目
 
-"JSON" 选项卡、Azure PowerShell 或 Azure CLI 中的日志输出可以包含很多信息。 下面是尝试解释日志条目时要查找的一些关键属性。 有关使用 Azure PowerShell 或 Azure CLI 来筛选日志输出的方法，请参阅以下部分。
+“JSON”选项卡、Azure PowerShell 或 Azure CLI 中的日志输出可以包含很多信息。 下面是尝试解析日志条目时要查找的一些关键属性。 有关使用 Azure PowerShell 或 Azure CLI 来筛选日志输出的方法，请参阅以下部分。
 
 > [!div class="mx-tableFixed"]
 > | 属性 | 示例值 | 说明 |
 > | --- | --- | --- |
-> | 授权：操作 | Microsoft.Authorization/roleAssignments/write | 创建角色分配 |
+> | authorization:action | Microsoft.Authorization/roleAssignments/write | 创建角色分配 |
 > |  | Microsoft.Authorization/roleAssignments/delete | 删除角色分配 |
 > |  | Microsoft.Authorization/roleDefinitions/write | 创建或更新角色定义 |
 > |  | Microsoft.Authorization/roleDefinitions/delete | 删除角色定义 |
-> | 授权：范围 | /subscriptions/{subscriptionId}<br/>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId} | 操作的范围 |
-> | caller | admin@example.com<br/>ObjectId | 谁启动了该操作 |
-> | eventTimestamp | 2021-03-01T22-12Z：07： 41.126243 Z | 操作发生的时间 |
-> | 状态：值 | Started<br/>已成功<br/>失败 | 操作的状态 |
+> | authorization:scope | /subscriptions/{subscriptionId}<br/>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId} | 操作范围 |
+> | caller | admin@example.com<br/>{objectId} | 谁启动了操作 |
+> | eventTimestamp | 2021-03-01T22:07:41.126243Z | 操作发生的时间 |
+> | status:value | Started<br/>已成功<br/>失败 | 操作状态 |
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -84,13 +84,13 @@ Get-AzLog -ResourceGroupName pharma-sales -StartTime (Get-Date).AddDays(-7) | Wh
 
 ### <a name="filter-log-output"></a>筛选日志输出
 
-日志输出可以包含许多信息。 此命令列出在过去7天内订阅中的所有角色分配和角色定义更改，并筛选输出：
+日志输出可以包含许多信息。 此命令列出过去 7 天内订阅中所有角色分配和角色定义的更改，并筛选输出：
 
 ```azurepowershell
 Get-AzLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/role*'} | Format-List Caller,EventTimestamp,{$_.Authorization.Action},Properties
 ```
 
-下面显示了在创建角色分配时筛选的日志输出的示例：
+下面显示了在创建角色分配时筛选日志输出的示例：
 
 ```azurepowershell
 Caller                  : admin@example.com
@@ -117,7 +117,7 @@ Properties              :
 
 ```
 
-如果要使用服务主体来创建角色分配，则调用方属性将是服务主体对象 ID。 可以使用 [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) 获取有关服务主体的信息。
+如果使用服务主体来创建角色分配，则 Caller 属性将是一个服务主体对象 ID。 可以使用 [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) 获取有关服务主体的信息。
 
 ```Example
 Caller                  : {objectId}
@@ -133,13 +133,13 @@ Properties              :
 
 若要使用 Azure CLI 查看活动日志，请使用 [az monitor activity-log list](/cli/azure/monitor/activity-log#az_monitor_activity_log_list) 命令。
 
-此命令列出资源组中的活动日志，从3月1日起，期待七天：
+此命令列出了资源组中从 3 月 1 日起 7 天的活动日志：
 
 ```azurecli
 az monitor activity-log list --resource-group example-group --start-time 2021-03-01 --offset 7d
 ```
 
-此命令列出了从3月1日到过去7天的授权资源提供程序的活动日志：
+此命令列出了授权资源提供程序从 3 月 1 日起 7 天的活动日志：
 
 ```azurecli
 az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 2021-03-01 --offset 7d
@@ -147,13 +147,13 @@ az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 
 
 ### <a name="filter-log-output"></a>筛选日志输出
 
-日志输出可以包含许多信息。 此命令列出在过去7天内订阅中的所有角色分配和角色定义更改，并筛选输出：
+日志输出可以包含许多信息。 此命令列出后续 7 天订阅中所有角色分配和角色定义的更改，并筛选输出：
 
 ```azurecli
 az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 2021-03-01 --offset 7d --query '[].{authorization:authorization, caller:caller, eventTimestamp:eventTimestamp, properties:properties}'
 ```
 
-下面显示了在创建角色分配时筛选的日志输出的示例：
+下面显示了在创建角色分配时筛选日志输出的示例：
 
 ```azurecli
 [
@@ -212,7 +212,7 @@ az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 
 
    ![门户中的 Azure Monitor 日志选项](./media/change-history-report/azure-log-analytics-option.png)
 
-1. （可选）使用 [Azure Monitor Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) 查询并查看日志。 有关详细信息，请参阅 [Azure Monitor 中的日志查询入门](../azure-monitor/logs/get-started-queries.md)。
+1. （可选）使用 [Azure Monitor Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) 查询并查看日志。 有关详细信息，请参阅 [Azure Monitor 日志查询入门](../azure-monitor/logs/get-started-queries.md)。
 
 以下查询返回由目标资源提供程序组织的新角色分配：
 
@@ -236,4 +236,4 @@ AzureActivity
 
 ## <a name="next-steps"></a>后续步骤
 * [查看活动日志以监视对资源的操作](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
-* [通过 Azure 活动日志监视订阅活动](../azure-monitor/essentials/platform-logs-overview.md)
+* [使用 Azure 活动日志监视订阅活动](../azure-monitor/essentials/platform-logs-overview.md)

@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 09ebbaa6bb7cd5a2b4dcdee4e18fe905c5b2fbd3
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f1eb7a5b4697801775d23091c610ab594b0b27ec
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106062516"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813373"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作原理：体系结构和概念
 
@@ -116,9 +116,9 @@ Azure 机器学习在试验中记录所有运行并存储以下信息：
 
 ### <a name="logging"></a>日志记录
 
-Azure 机器学习会自动为你记录标准运行指标。 不过，你也可以[使用 Python SDK 记录任意指标](how-to-track-experiments.md)。
+Azure 机器学习会自动为你记录标准运行指标。 不过，你也可以[使用 Python SDK 记录任意指标](how-to-log-view-metrics.md)。
 
-查看日志的方法有多种：实时监视运行状态，或在完成后查看结果。 有关详细信息，请参阅[监视和查看 ML 运行日志](how-to-monitor-view-training-logs.md)。
+查看日志的方法有多种：实时监视运行状态，或在完成后查看结果。 有关详细信息，请参阅[监视和查看 ML 运行日志](how-to-log-view-metrics.md)。
 
 
 > [!NOTE]
@@ -256,8 +256,8 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 Azure 机器学习提供以下监视和日志记录功能：
 
 * 对于数据科学家，可监视实验并记录来自训练运行的信息。 有关详细信息，请参阅以下文章：
-   * [启动、监视和取消训练运行](how-to-manage-runs.md)
-   * [记录训练运行的指标](how-to-track-experiments.md)
+   * [启动、监视和取消训练运行](how-to-track-monitor-analyze-runs.md)
+   * [记录训练运行的指标](how-to-log-view-metrics.md)
    * [使用 MLflow 跟踪试验](how-to-use-mlflow.md)
    * [使用 TensorBoard 将运行可视化](how-to-monitor-tensorboard.md)
 * 对于管理员，可使用 Azure Monitor 监视工作区、相关 Azure 资源及事件（例如资源创建和删除）的相关信息。 有关详细信息，请参阅[如何监视 Azure 机器学习](monitor-azure-machine-learning.md)。

@@ -1,7 +1,7 @@
 ---
-title: 使用视频索引器自动标识口述语言-Azure
+title: 使用视频索引器自动识别口语 - Azure
 titleSuffix: Azure Media Services
-description: 本文介绍如何使用视频索引器语言标识模型来自动识别视频中的语言。
+description: 本文介绍如何使用视频索引器语言识别模型来自动识别视频中的口语。
 services: media-services
 author: juliako
 manager: femila
@@ -10,34 +10,34 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/12/2020
 ms.author: ellbe
-ms.openlocfilehash: 3a71a29fdf4af10162e2f7961fb457d0e99b18e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 40f2e146956919e154f59d90b56a1b03379abbb2
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81687125"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600631"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>通过语言识别模型自动识别口述语言
 
-视频索引器支持自动语言标识 (盖子) ，这是从音频自动标识口述语言内容并发送要以主要标识语言转录的媒体文件的过程。 
+视频索引器支持自动语言识别 (LID)，这是一个从音频中自动识别口语内容，并发送媒体文件，以便将其以主导识别语言进行转录的过程。 
 
-目前的盖子支持：英语、西班牙语、法语、德语、意大利语、普通话中文、日语、俄语和葡萄牙语 (巴西) 。 
+目前 LID 支持：英语、西班牙语、法语、德语、意大利语、中文（普通话）、日语、俄语和葡萄牙语（巴西）。 
 
-请确保查看下面的 " [准则和限制](#guidelines-and-limitations) " 部分。
+请确保查看下面的[准则和限制](#guidelines-and-limitations)部分。
 
-## <a name="choosing-auto-language-identification-on-indexing"></a>为索引选择自动语言识别
+## <a name="choosing-auto-language-identification-on-indexing"></a>在编制索引时选择自动语言识别
 
-使用 API 为视频编制索引或 [重新创建索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) 时，请 `auto detect` 在参数中选择选项 `sourceLanguage` 。
+使用 API 为视频编制索引或[重新编制索引](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video)时，请在 `sourceLanguage` 参数中选择 `auto detect` 选项。
 
-使用门户时，请在[视频索引器](https://www.videoindexer.ai/)主页上，中转到你的**帐户视频**，并将鼠标悬停在要对其重新编制索引的视频的名称上。 在右下角单击 "重新索引" 按钮。 在 "**重新索引视频**" 对话框中，从 "**视频源语言**" 下拉框中选择 "*自动检测*"。
+使用门户时，请在[视频索引器](https://www.videoindexer.ai/)主页上转到你的帐户视频，并将鼠标悬停在要重新索引的视频的名称上。 在右下角单击重新索引按钮。 在“重新索引视频”对话框中，从“视频源语言”下拉框中选择“自动检测”。
 
 ![自动检测](./media/language-identification-model/auto-detect.png)
 
 ## <a name="model-output"></a>模型输出
 
-如果此语言的置信度为，则视频索引器会根据最可能的语言转录视频 `> 0.6` 。 如果无法自信地识别语言，则假定语言为英语。 
+视频索引器会根据最可能的语言（如果该语言的置信度 `> 0.6`）转录视频。 如果该语言无法通过置信度识别，则视频索引器会假定所讲语言为英语。 
 
-在 " `sourceLanguage` 根/视频/见解) 下，模型主导语言在" (的属性 "中提供。 属性下也提供了相应的置信度分数 `sourceLanguageConfidence` 。
+模型主导语言在见解 JSON 中以 `sourceLanguage` 属性（在“root/videos/insights”下）的形式提供。 相应的置信度分数也会在 `sourceLanguageConfidence` 属性下提供。
 
 ```json
 "insights": {
@@ -53,16 +53,16 @@ ms.locfileid: "81687125"
 
 ## <a name="guidelines-and-limitations"></a>指导原则和限制
 
-* 自动语言标识 (盖子) 支持以下语言： 
+* 自动语言识别 (LID) 支持以下语言： 
 
-    英语、西班牙语、法语、德语、意大利语、普通话 Chines、日语、俄语和葡萄牙语 (巴西) 。
-* 尽管视频索引器支持阿拉伯 (新式标准和 Levantine) 、印地语和韩语，但在盖子中不支持这些语言。
-* 如果音频包含除以上支持的列表之外的其他语言，则结果为意外的结果。
-* 如果视频索引器无法识别出足够置信度 () 的语言 `>0.6` ，则回退语言为英语。
-* 对于带有混合语言音频的文件没有当前支持。 如果音频包含混合语言，则结果为意外的结果。 
-* 低质量音频可能会影响模型结果。
-* 该模型在音频中要求至少一分钟的语音。
-* 该模型用于识别自发对话语音 (不会 ) 语音命令、唱歌等。
+    英语、西班牙语、法语、德语、意大利语、中文（普通话）、日语、俄语和葡萄牙语（巴西）。
+* 尽管视频索引器支持阿拉伯语（现代标准和黎凡特）、印地语和韩语，但 LID 不支持这些语言。
+* 如果音频包含上述支持列表以外的语言，则会出现意外结果。
+* 如果视频索引器无法以足够高的置信度 (`>0.6`) 识别语言，则回退语言为英语。
+* 当前不支持使用混合语言音频的文件。 如果音频包含混合语言，则会出现意外结果。 
+* 低质音频可能会影响模型结果。
+* 该模型要求音频中至少有一分钟的语音。
+* 该模型旨在识别自发的对话语音（而不是语音命令、唱歌等）。
 
 ## <a name="next-steps"></a>后续步骤
 

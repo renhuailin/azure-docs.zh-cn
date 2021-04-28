@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: 36ce494c7fd51a1341834d5c231e32e60c5a32b9
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: ae4c52ec1390166eccb0e73d6f81a8553c445b2e
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751987"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813283"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>将客户管理的加密密钥用于 Azure HPC 缓存
 
@@ -56,7 +56,7 @@ ms.locfileid: "107751987"
 
 * 创建 Azure HPC 缓存的用户必须具有与 [Key Vault 参与者角色](../role-based-access-control/built-in-roles.md#key-vault-contributor)等同的权限。 设置和管理 Azure Key Vault 需要相同的权限。
 
-  有关详细信息，请阅读[保护对密钥保管库的访问](../key-vault/general/security-overview.md)。
+  有关详细信息，请阅读[保护对密钥保管库的访问](../key-vault/general/security-features.md)。
 
 ## <a name="1-set-up-azure-key-vault"></a>1. 设置 Azure Key Vault
 

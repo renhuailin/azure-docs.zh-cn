@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 99b8cdbb1528caefd30fb11c9702dff1e817c0ab
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 2283af1f2fc64e5a0d547fb462695a7442cad2f5
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061802"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108122936"
 ---
 # <a name="vpn-gateway-design"></a>VPN 网关设计
 
@@ -108,4 +108,4 @@ ExpressRoute 是从 WAN （不通过公共 Internet）到 Microsoft 服务（包
 
 * 查看[订阅和服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)。
 
-* 了解 Azure 的一些其他关键[网络功能](../networking/networking-overview.md)。
+* 了解 Azure 的一些其他关键[网络功能](../networking/fundamentals/networking-overview.md)。

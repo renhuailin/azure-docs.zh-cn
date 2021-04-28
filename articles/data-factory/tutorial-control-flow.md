@@ -1,19 +1,19 @@
 ---
 title: Azure 数据工厂管道中的分支
 description: 了解如何通过分支和链接活动控制 Azure 数据工厂中的数据流。
-author: dcstwh
-ms.author: weetok
+author: ssabat
+ms.author: susabat
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 83bc90ca251fddd498dd365f1a4b00689a471475
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1b15e1df6360d58c22de0da2d1745a2478fd02b4
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785659"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904759"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>数据工厂管道中的分支和链接活动
 
