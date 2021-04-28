@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 09/01/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e8e70884838d56003694e2da09668527ce5b6c7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d92a5e0b0d1a6953d0043f85ff98f6740aaacebb
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100652983"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864007"
 ---
 # <a name="get-started-with-service-bus-queues"></a>服务总线队列入门
 在本教程中，你将创建 .NET Core 控制台应用程序来向服务总线队列发送消息以及从中接收消息。
@@ -21,7 +21,7 @@ ms.locfileid: "100652983"
 ## <a name="prerequisites"></a>先决条件
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs)。
-- [NET Core SDK](https://www.microsoft.com/net/download/windows) 2.0 或更高版本。
+- [NET Core SDK](https://dotnet.microsoft.com/download) 2.0 或更高版本。
 - Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或[注册免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 - 如果没有可使用的队列，请遵循[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文来创建队列。
 

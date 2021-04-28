@@ -9,16 +9,16 @@ ms.service: key-vault
 ms.devlang: azurecli
 ms.date: 01/06/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e07bc758b1ef86b3d8c605cbce72f6db564a355f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 80d5bbb54715c5a1a5102f8991f366e273145edc
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98020849"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868944"
 ---
 # <a name="quickstart-create-an-azure-dedicated-hsm-by-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure 专用 HSM
 
-本文介绍如何使用 [az dedicated-hsm](/cli/azure/ext/hardware-security-modules/dedicated-hsm) Azure CLI 扩展来创建和管理 Azure 专用 HSM。
+本文介绍如何使用 [az dedicated-hsm](/cli/azure/dedicated-hsm) Azure CLI 扩展来创建和管理 Azure 专用 HSM。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -44,7 +44,7 @@ az group create --name myRG --location westus
 
 ## <a name="create-a-dedicated-hsm"></a>创建专用 HSM
 
-若要创建专用 HSM，请使用 [az dedicated-hsm create](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_create) 命令。 以下示例在 `westus` 区域、`myRG` 资源组、指定的订阅、虚拟网络和子网中预配名为 `hsm1` 的专用 HSM。 所需参数为 `name`、`location` 和 `resource group`。
+若要创建专用 HSM，请使用 [az dedicated-hsm create](/cli/azure/dedicated-hsm#az_dedicated_hsm_create) 命令。 以下示例在 `westus` 区域、`myRG` 资源组、指定的订阅、虚拟网络和子网中预配名为 `hsm1` 的专用 HSM。 所需参数为 `name`、`location` 和 `resource group`。
 
 ```azurecli-interactive
 az dedicated-hsm create \
@@ -63,7 +63,7 @@ az dedicated-hsm create \
 
 ## <a name="get-a-dedicated-hsm"></a>获取专用 HSM
 
-若要获取当前的专用 HSM，请运行 [az dedicated-hsm show](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_show) 命令。 以下示例获取 `myRG` 资源组中的 `hsm1` 专用 HSM。
+若要获取当前的专用 HSM，请运行 [az dedicated-hsm show](/cli/azure/dedicated-hsm#az_dedicated_hsm_show) 命令。 以下示例获取 `myRG` 资源组中的 `hsm1` 专用 HSM。
 
 ```azurecli-interactive
 az dedicated-hsm show --resource-group myRG --name hsm1
@@ -71,7 +71,7 @@ az dedicated-hsm show --resource-group myRG --name hsm1
 
 ## <a name="update-a-dedicated-hsm"></a>更新专用 HSM
 
-使用 [az dedicated-hsm update](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_update) 命令更新专用 HSM。 以下示例更新 `myRG` 资源组中的 `hsm1` 专用 HSM 及其标记：
+使用 [az dedicated-hsm update](/cli/azure/dedicated-hsm#az_dedicated_hsm_update) 命令更新专用 HSM。 以下示例更新 `myRG` 资源组中的 `hsm1` 专用 HSM 及其标记：
 
 ```azurecli-interactive
 az dedicated-hsm update --resource-group myRG –-name hsm1 --tags resourceType="hsm" Environment="prod" Slice="A"
@@ -79,7 +79,7 @@ az dedicated-hsm update --resource-group myRG –-name hsm1 --tags resourceType=
 
 ## <a name="list-dedicated-hsms"></a>列出专用 HSM
 
-运行 [az dedicated-hsm list](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_list) 命令，获取有关当前专用 HSM 的信息。 以下示例列出 `myRG` 资源组中的专用 HSM：
+运行 [az dedicated-hsm list](/cli/azure/dedicated-hsm#az_dedicated_hsm_list) 命令，获取有关当前专用 HSM 的信息。 以下示例列出 `myRG` 资源组中的专用 HSM：
 
 ```azurecli-interactive
 az dedicated-hsm list --resource-group myRG
@@ -87,7 +87,7 @@ az dedicated-hsm list --resource-group myRG
 
 ## <a name="remove-a-dedicated-hsm"></a>删除专用 HSM
 
-若要删除专用 HSM，请使用 [az dedicated-hsm delete](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_delete) 命令。 以下示例从 `myRG` 资源组中删除 `hsm1` 专用 HSM：
+若要删除专用 HSM，请使用 [az dedicated-hsm delete](/cli/azure/dedicated-hsm#az_dedicated_hsm_delete) 命令。 以下示例从 `myRG` 资源组中删除 `hsm1` 专用 HSM：
 
 ```azurecli-interactive
 az dedicated-hsm delete --resource-group myRG –-name hsm1

@@ -14,12 +14,12 @@ ms.author: dbradish
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d8400eb051c09fac4cb88863ad2fac12d2ca0a1b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d9754bb1390e242b12944b0b59595d4a4d46af33
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789854"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873570"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>使用 Azure CLI 创建 Azure 通知中心
 
@@ -48,7 +48,7 @@ az group create --name spnhubrg --location eastus
 
 1. 创建通知中心的命名空间。
 
-   命名空间包含一个或多个中心，其名称在所有 Azure 订阅上必须保持唯一且长度至少为六个字符。 若要检查名称是否可用，请使用 [az notification-hub namespace check-availability](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-check-availability) 命令。
+   命名空间包含一个或多个中心，其名称在所有 Azure 订阅上必须保持唯一且长度至少为六个字符。 若要检查名称是否可用，请使用 [az notification-hub namespace check-availability](/cli/azure/notification-hub/namespace#az_notification_hub_namespace_check-availability) 命令。
 
    ```azurecli
    az notification-hub namespace check-availability --name spnhubns
@@ -69,7 +69,7 @@ az group create --name spnhubrg --location eastus
    }
    ```
 
-   请注意 Azure CLI 响应中的第二行 `"isAvailable": true`。 如果为命名空间指定的所需名称不可用，此行将读取 `false`。 确认名称的可用性后，请运行 [az notification-hub namespace create](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-create) 命令来创建命名空间。  
+   请注意 Azure CLI 响应中的第二行 `"isAvailable": true`。 如果为命名空间指定的所需名称不可用，此行将读取 `false`。 确认名称的可用性后，请运行 [az notification-hub namespace create](/cli/azure/notification-hub/namespace#az_notification_hub_namespace_create) 命令来创建命名空间。  
 
    ```azurecli
    az notification-hub namespace create --resource-group spnhubrg --name spnhubns  --location eastus --sku Free
@@ -92,7 +92,7 @@ az group create --name spnhubrg --location eastus
 
 2. 获取命名空间的列表。
 
-   若要查看有关新命名空间的详细信息，请使用 [az notification-hub namespace list](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-list) 命令。 如果要查看订阅的所有命名空间，则 `--resource-group` 参数为可选。
+   若要查看有关新命名空间的详细信息，请使用 [az notification-hub namespace list](/cli/azure/notification-hub/namespace#az_notification_hub_namespace_list) 命令。 如果要查看订阅的所有命名空间，则 `--resource-group` 参数为可选。
 
    ```azurecli
    az notification-hub namespace list --resource-group spnhubrg
@@ -102,7 +102,7 @@ az group create --name spnhubrg --location eastus
 
 1. 创建第一个通知中心。
 
-   现在，可在新的命名空间中创建一个或多个通知中心。 运行 [az notification-hub create](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-create) 命令创建通知中心。
+   现在，可在新的命名空间中创建一个或多个通知中心。 运行 [az notification-hub create](/cli/azure/notification-hub#az_notification_hub_create) 命令创建通知中心。
 
    ```azurecli
    az notification-hub create --resource-group spnhubrg --namespace-name spnhubns --name spfcmtutorial1nhub --location eastus --sku Free
@@ -118,7 +118,7 @@ az group create --name spnhubrg --location eastus
 
 3. 获取通知中心的列表。
 
-   Azure CLI 会在执行每个命令后返回成功或错误消息；不过你一定能够查询通知中心的列表。 [az notification-hub list](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-list) 命令旨在实现此目的。
+   Azure CLI 会在执行每个命令后返回成功或错误消息；不过你一定能够查询通知中心的列表。 [az notification-hub list](/cli/azure/notification-hub#az_notification_hub_list) 命令旨在实现此目的。
 
    ```azurecli
    az notification-hub list --resource-group spnhubrg --namespace-name spnhubns --output table
@@ -126,7 +126,7 @@ az group create --name spnhubrg --location eastus
 
 ## <a name="work-with-access-policies"></a>使用访问策略
 
-1. Azure 通知中心通过使用访问策略来获得[共享访问签名安全性](./notification-hubs-push-notification-security.md)。 创建通知中心时，会自动创建两个策略。 需要这些策略中的连接字符串来配置推送通知。 [az notification-hub authorization-rule list](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) 命令提供策略名称及其各自资源组的列表。
+1. Azure 通知中心通过使用访问策略来获得[共享访问签名安全性](./notification-hubs-push-notification-security.md)。 创建通知中心时，会自动创建两个策略。 需要这些策略中的连接字符串来配置推送通知。 [az notification-hub authorization-rule list](/cli/azure/notification-hub/authorization-rule#az_notification_hub_authorization-rule-list) 命令提供策略名称及其各自资源组的列表。
 
    ```azurecli
    az notification-hub authorization-rule list --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --output table
@@ -135,13 +135,13 @@ az group create --name spnhubrg --location eastus
    > [!IMPORTANT]
    > 请不要在应用程序中使用 _DefaultFullSharedAccessSignature_ 策略。 此策略只能在后端使用。 请仅在客户端应用程序中使用 `Listen` 访问策略。
 
-2. 如果要使用有意义的名称创建其他授权规则，可使用 [az notification-hub authorization-rule create](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-create) 命令来创建和自定义你自己的访问策略。 `--rights` 参数是要分配的权限的空格分隔列表。
+2. 如果要使用有意义的名称创建其他授权规则，可使用 [az notification-hub authorization-rule create](/cli/azure/notification-hub/authorization-rule#az_notification_hub_authorization_rule_create) 命令来创建和自定义你自己的访问策略。 `--rights` 参数是要分配的权限的空格分隔列表。
 
    ```azurecli
    az notification-hub authorization-rule create --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --name spnhub1key --rights Listen Manage Send
    ```
 
-3. 每个访问策略有两组密钥和连接字符串。 稍后在[配置通知中心](./configure-notification-hub-portal-pns-settings.md)时需要它们。 若要列出通知中心访问策略的密钥和连接字符串，请使用 [az notification-hub authorization-rule list-keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) 命令。
+3. 每个访问策略有两组密钥和连接字符串。 稍后在[配置通知中心](./configure-notification-hub-portal-pns-settings.md)时需要它们。 若要列出通知中心访问策略的密钥和连接字符串，请使用 [az notification-hub authorization-rule list-keys](/cli/azure/notification-hub/authorization-rule#az_notification_hub_authorization_rule_list_keys) 命令。
 
    ```azurecli
    # query the keys and connection strings for DefaultListenSharedAccessSignature
@@ -154,7 +154,7 @@ az group create --name spnhubrg --location eastus
    ```
 
    > [!NOTE]
-   > [通知中心命名空间](/cli/azure/ext/notification-hub/notification-hub/namespace/authorization-rule#ext-notification-hub-az-notification-hub-namespace-authorization-rule-list-keys)和[通知中心](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys)具有不同的访问策略。 查询密钥和连接字符串时，请确保使用正确的 Azure CLI 参考内容。
+   > [通知中心命名空间](/cli/azure/notification-hub/namespace/authorization-rule#az_notification_hub_namespace_authorization_rule_list_keys)和[通知中心](/cli/azure/notification-hub/authorization-rule#az_notification_hub_authorization_rule_list_keys)具有不同的访问策略。 查询密钥和连接字符串时，请确保使用正确的 Azure CLI 参考内容。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -170,10 +170,10 @@ az group delete --name spnhubrg
 
 * 了解大量用于通过 Azure CLI 管理通知中心的功能：
 
-  [通知中心的完整参考列表](/cli/azure/ext/notification-hub/notification-hub)
+  [通知中心的完整参考列表](/cli/azure/notification-hub)
 
-  [通知中心命名空间的参考列表](/cli/azure/ext/notification-hub/notification-hub/namespace)
+  [通知中心命名空间的参考列表](/cli/azure/notification-hub/namespace)
 
-  [通知中心授权规则的参考列表](/cli/azure/ext/notification-hub/notification-hub/authorization-rule)
+  [通知中心授权规则的参考列表](/cli/azure/notification-hub/authorization-rule)
 
-  [通知中心凭据的参考列表](/cli/azure/ext/notification-hub/notification-hub/credential)
+  [通知中心凭据的参考列表](/cli/azure/notification-hub/credential)

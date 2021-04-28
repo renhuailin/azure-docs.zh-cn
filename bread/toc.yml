@@ -470,6 +470,10 @@
     - name: Cosmos DB
       tocHref: /azure/cosmos-db/
       topicHref: /azure/cosmos-db/
+      items:
+        - name: MongoDB API
+          tocHref: /azure/cosmos-db/mongodb/
+          topicHref: /azure/cosmos-db/mongodb/
     - name: 适用于 Apache Cassandra 的 Azure 托管实例
       tocHref: /azure/managed-instance-apache-cassandra/
       topicHref: /azure/managed-instance-apache-cassandra/

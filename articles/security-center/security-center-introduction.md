@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 741cd68145b262c1f200ced9a7f28b25673b6925
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: fb505c42cda53db549cd5187972ad6fabfdf7ca4
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107738911"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137086"
 ---
 # <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
 
@@ -72,7 +72,7 @@ Azure 安全中心解决了三个最紧急的安全性挑战：
 
 ### <a name="continuous-assessments"></a>持续评估
 
-安全中心会持续发现部署在工作负荷中的新资源并评估它们是否已根据安全最佳做法进行了配置，如果没有，则会将它们标记出来，并且你将获得一个按优先级排列的建议列表，便于你进行修复以保护计算机。 此建议列表由 [Azure 安全基准](https://docs.microsoft.com/security/benchmark/azure/introduction)实现和支持；该基准是 Microsoft 针对基于常见合规性框架的安全与合规最佳做法创作的一组特定于 Azure 的准则。 这一公认的基准建立在 [Internet 安全中心 (CIS)](https://www.cisecurity.org/benchmark/azure/) 和[国家标准与技术研究院 (NIST)](https://www.nist.gov/) 的控制基础上，重点关注以云为中心的安全性。
+安全中心会持续发现部署在工作负荷中的新资源并评估它们是否已根据安全最佳做法进行了配置，如果没有，则会将它们标记出来，并且你将获得一个按优先级排列的建议列表，便于你进行修复以保护计算机。 此建议列表由 [Azure 安全基准](/security/benchmark/azure/introduction)实现和支持；该基准是 Microsoft 针对基于常见合规性框架的安全与合规最佳做法创作的一组特定于 Azure 的准则。 这一公认的基准建立在 [Internet 安全中心 (CIS)](https://www.cisecurity.org/benchmark/azure/) 和[国家标准与技术研究院 (NIST)](https://www.nist.gov/) 的控制基础上，重点关注以云为中心的安全性。
 
 为了帮助你了解每个建议对整体安全状况的重要程度，安全中心将建议分组到安全控件中，并向每个控件添加“安全分数”值。 这一点在你设置安全工作的优先级时至关重要。
 

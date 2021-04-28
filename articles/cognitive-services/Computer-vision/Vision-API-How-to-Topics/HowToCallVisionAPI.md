@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 3f9a6afe3202df40e26332c3a8c91b8c3eca8a32
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 39db32a7ee7eb8fed1da9ac8c9eb609efcf57c74
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012262"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070814"
 ---
 # <a name="call-the-image-analysis-api"></a>调用图像分析 API
 
@@ -32,7 +32,7 @@ ms.locfileid: "107012262"
 
 ###  <a name="select-visual-features"></a>选择视觉特征
 
-使用[分析 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b) 可以访问所有服务的图像分析特征。 需要设置 URL 查询参数来指定要使用的特征。 参数可以具有多个值（用逗号分隔）。 指定的每项特征都需要额外的计算时间，因此只需指定所需的特征。
+使用[分析 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) 可以访问所有服务的图像分析特征。 需要设置 URL 查询参数来指定要使用的特征。 参数可以具有多个值（用逗号分隔）。 指定的每项特征都需要额外的计算时间，因此只需指定所需的特征。
 
 |URL 参数 | 值 | 说明|
 |---|---|--|
@@ -71,7 +71,7 @@ ms.locfileid: "107012262"
 > [!NOTE]
 > **范围内 API 调用**
 >
-> 可以直接调用图像分析中的某些特征，也可以通过分析 API 调用来调用。 例如，你可以向 `https://{endpoint}/vision/v3.2-preview.3/tag` 发出请求来执行仅限图像标记的作用域分析。 有关可单独调用的其他特征，请参阅[参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b)。
+> 可以直接调用图像分析中的某些特征，也可以通过分析 API 调用来调用。 例如，你可以向 `https://{endpoint}/vision/v3.2-preview.3/tag` 发出请求来执行仅限图像标记的作用域分析。 有关可单独调用的其他特征，请参阅[参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b)。
 
 ## <a name="get-results-from-the-service"></a>获取服务结果
 
@@ -139,4 +139,4 @@ description.captions[].confidence    | `number`    | 短语的置信度评分。
 
 ## <a name="next-steps"></a>后续步骤
 
-试用 REST API，请转到[图像分析 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b)。
+试用 REST API，请转到[图像分析 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b)。

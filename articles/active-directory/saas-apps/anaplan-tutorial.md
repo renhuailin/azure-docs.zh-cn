@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 7548230f624fe6c574f1cd03ece877f3565e7e73
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 95f764ec806109f0b14a2c79bc168bee309ccaee
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284373"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126644"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-anaplan"></a>教程：Azure Active Directory 与 Anaplan 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "106284373"
 * 让用户使用其 Azure AD 帐户自动登录到 Anaplan。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -130,8 +130,8 @@ ms.locfileid: "106284373"
 
 * 直接转到 Anaplan 登录 URL，并从此处启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Anaplan”磁贴时，系统会重定向到 Anaplan 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Anaplan”磁贴时，系统会重定向到 Anaplan 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Anaplan 后，你可以强制实施会话控制，实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 Anaplan 后，你可以强制实施会话控制，实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

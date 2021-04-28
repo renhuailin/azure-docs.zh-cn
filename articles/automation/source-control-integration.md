@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 281da27ce95649e85dae5d0795bb743f21fdb578
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d94da9792d40a389e3981163e565d85d82a9cdc9
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102631738"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831233"
 ---
 # <a name="use-source-control-integration"></a>使用源代码管理集成
 
@@ -110,7 +111,7 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<
 
 下表定义了 GitHub 所需的最低 PAT 权限。 如需详细了解如何在 GitHub 中创建 PAT，请参阅[创建命令行的个人访问令牌](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)。
 
-|范围  |说明  |
+|作用域  |说明  |
 |---------|---------|
 |**`repo`**     |         |
 |`repo:status`     | 访问提交状态         |
@@ -126,7 +127,7 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<
 
 下表定义了 Azure Repos 所需的最低 PAT 权限。 如需详细了解如何在 Azure Repos 中创建 PAT，请参阅[使用个人访问令牌进行身份验证访问](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)。
 
-| 范围  |  访问类型  |
+| 作用域  |  访问类型  |
 |---------| ----------|
 | `Code`      | 读取  |
 | `Project and team` | 读取 |

@@ -4,12 +4,12 @@ description: 安装运行时、SDK 和工具并创建本地开发群集。 完�
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: d08046c8f29901dd9650a1edc886efa2ff226e00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6fe551f8371322af8d955b5233e6d9d05741f3d9
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93086771"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868116"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>在 Mac OS X 上设置开发环境
 > [!div class="op_single_selector"]
@@ -195,7 +195,7 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 
 ## <a name="set-up-net-core-31-development"></a>设置 .NET Core 3.1 开发
 
-安装[用于 Mac 的 .NET Core 3.1 SDK](https://www.microsoft.com/net/core#macos)，开始[创建 C# Service Fabric 应用程序](service-fabric-create-your-first-linux-application-with-csharp.md)。 .NET Core Service Fabric 应用程序包在 NuGet.org 上托管。
+安装[用于 Mac 的 .NET Core 3.1 SDK](https://dotnet.microsoft.com/download?initial-os=macos)，开始[创建 C# Service Fabric 应用程序](service-fabric-create-your-first-linux-application-with-csharp.md)。 .NET Core Service Fabric 应用程序包在 NuGet.org 上托管。
 
 ## <a name="install-the-service-fabric-plug-in-for-eclipse-on-your-mac"></a>在 Mac 上为 Eclipse 安装 Service Fabric 插件
 

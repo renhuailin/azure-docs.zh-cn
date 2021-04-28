@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/08/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 2a756313a4659dfc531289c2c86890371f700367
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8196267ff7a71fb3910848fd0fef11a40a3c1c32
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452282"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869934"
 ---
 # <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>教程：创建可改进 Web 应用程序访问的应用程序网关
 
@@ -36,7 +36,7 @@ ms.locfileid: "102452282"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-本教程要求在本地运行管理 Azure PowerShell 会话。 必须安装 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 验证 PowerShell 版本以后，请运行 `Connect-AzAccount`，以便创建与 Azure 的连接。
+本教程要求在本地运行管理 Azure PowerShell 会话。 必须安装 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 验证 PowerShell 版本以后，请运行 `Connect-AzAccount`，以便创建与 Azure 的连接。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -58,7 +58,7 @@ New-AzResourceGroup -Name $rg -Location $location
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 
-为供生产使用，应导入由受信任的提供程序签名的有效证书。 对于本教程，请使用 [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) 创建自签名证书。 可以结合返回的指纹使用 [Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate)，从证书导出 pfx 文件。
+为供生产使用，应导入由受信任的提供程序签名的有效证书。 对于本教程，请使用 [New-SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate) 创建自签名证书。 可以结合返回的指纹使用 [Export-PfxCertificate](/powershell/module/pki/export-pfxcertificate)，从证书导出 pfx 文件。
 
 ```powershell
 New-SelfSignedCertificate `

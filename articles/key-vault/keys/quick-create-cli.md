@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 01/27/2021
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4141e60370b397e799664b7d42384bbeb096bd05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f5281c02f68598b1cf121a6ab8a574f0694f5ea2
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99071165"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813427"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-cli"></a>快速入门：使用 Azure CLI 在 Azure Key Vault 中设置和检索密钥
 
@@ -66,4 +66,4 @@ az keyvault key show --name "ExampleKey" --vault-name "<your-unique-keyvault-nam
 
 - 阅读 [Azure Key Vault 概述](../general/overview.md)
 - 请参阅 [Azure CLI az keyvault 命令](/cli/azure/keyvault)参考
-- 请参阅 [Key Vault 安全性概述](../general/security-overview.md)
+- 请参阅 [Key Vault 安全性概述](../general/security-features.md)

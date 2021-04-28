@@ -3,12 +3,12 @@ title: 快速入门：安装 Defender for IoT 微代理（预览版）
 description: 通过本快速入门，了解如何安装 Defender 微代理并对其进行身份验证。
 ms.date: 3/9/2021
 ms.topic: quickstart
-ms.openlocfilehash: a153b640a1d1e86f9b761817d05fda7d3e47da98
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: a78b633dffda42122114d2fce55ef6d8ccb323dc
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384402"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137430"
 ---
 # <a name="quickstart-install-defender-for-iot-micro-agent-preview"></a>快速入门：安装 Defender for IoT 微代理（预览版）
 
@@ -94,7 +94,7 @@ sudo apt-get install defender-iot-micro-agent
 
 若要使用证书进行身份验证：
 
-1. 按照[这些说明](../iot-hub/iot-hub-security-x509-get-started.md)获取证书。
+1. 按照[这些说明](../iot-hub/tutorial-x509-scripts.md)获取证书。
 
 1. 将证书的 PEM 编码的公共部分和私钥放在 Defender 代理目录的文件 `certificate_public.pem` 和 `certificate_private.pem` 中。 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: fa1c01c2d9da19ec1f60878de83a509b7cf561e8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b845ecabe74040e154886476a8ba28efecc99325
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606821"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868854"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-the-azure-cli"></a>教程：使用 Azure CLI 将 HSM 部署到现有虚拟网络中
 
@@ -102,7 +102,7 @@ az network vnet subnet create \
 
 配置网络后，请使用以下 Azure CLI 命令预配 HSM。
 
-1. 使用 [az dedicated-hsm create](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_create) 命令预配第一个 HSM。 HSM 的名称为 hsm1。 替换你的订阅：
+1. 使用 [az dedicated-hsm create](/cli/azure/dedicated-hsm#az_dedicated_hsm_create) 命令预配第一个 HSM。 HSM 的名称为 hsm1。 替换你的订阅：
 
    ```azurecli
    az dedicated-hsm create --location westus --name hsm1 --resource-group myRG --network-profile-network-interfaces \
@@ -111,7 +111,7 @@ az network vnet subnet create \
 
    完成此部署应该需要大约 25 到 30 分钟，大部分时间花在 HSM 设备上。
 
-1. 若要查看当前的 HSM，请运行 [az dedicated-hsm show](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_show) 命令：
+1. 若要查看当前的 HSM，请运行 [az dedicated-hsm show](/cli/azure/dedicated-hsm#az_dedicated_hsm_show) 命令：
 
    ```azurecli
    az dedicated-hsm show --resource group myRG --name hsm1
@@ -124,19 +124,19 @@ az network vnet subnet create \
         /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Network/virtualNetworks/MyHSM-vnet/subnets/MyHSM-vnet
    ```
 
-1. 运行 [az dedicated-hsm list](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_list) 命令，查看有关当前 HSM 的详细信息：
+1. 运行 [az dedicated-hsm list](/cli/azure/dedicated-hsm#az_dedicated_hsm_list) 命令，查看有关当前 HSM 的详细信息：
 
    ```azurecli
    az dedicated-hsm list --resource-group myRG
    ```
 
-还有其他可能有用的命令。 使用 [az dedicated-hsm update](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_update) 命令更新 HSM：
+还有其他可能有用的命令。 使用 [az dedicated-hsm update](/cli/azure/dedicated-hsm#az_dedicated_hsm_update) 命令更新 HSM：
 
 ```azurecli
 az dedicated-hsm update --resource-group myRG –name hsm1
 ```
 
-若要删除 HSM，请使用 [az dedicated-hsm delete](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_delete) 命令：
+若要删除 HSM，请使用 [az dedicated-hsm delete](/cli/azure/dedicated-hsm#az_dedicated_hsm_delete) 命令：
 
 ```azurecli
 az dedicated-hsm delete --resource-group myRG –name hsm1

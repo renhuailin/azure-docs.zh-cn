@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a82c2cdf7084b31eb6ba861e48ecffb81e6d1363
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6338b76e2f14e9f842b3395113badadcd37c8d32
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102453693"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814165"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-net-sdk-v4"></a>快速入门：适用于 .NET 的 Azure Key Vault 机密客户端库 (SDK v4)
 
@@ -252,4 +252,4 @@ Purging your secret from <your-unique-keyvault-name> ... done.
 - 请参阅[从应用服务应用程序访问 Key Vault 的教程](../general/tutorial-net-create-vault-azure-web-app.md)
 - 请参阅[从虚拟机访问 Key Vault 的教程](../general/tutorial-net-virtual-machine.md)
 - 参阅 [Azure Key Vault 开发人员指南](../general/developers-guide.md)
-- 请参阅 [Key Vault 安全性概述](../general/security-overview.md)
+- 请参阅 [Key Vault 安全性概述](../general/security-features.md)

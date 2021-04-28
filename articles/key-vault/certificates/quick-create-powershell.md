@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurepowershell
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: a641ca1206cb41ded0513db72daa278dc3753c85
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 32150fb4cce76d5a2537c5ec969f265e0d8aae20
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750367"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816181"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 在 Azure Key Vault 中设置和检索证书
 
@@ -84,4 +84,4 @@ Set-AzKeyVaultAccessPolicy -VaultName <KeyVaultName> -ObjectId <AzureObjectID> -
 
 - 阅读 [Azure Key Vault 概述](../general/overview.md)
 - 请参阅 [Azure PowerShell Key Vault cmdlet](/powershell/module/az.keyvault/) 参考
-- 请参阅 [Key Vault 安全性概述](../general/security-overview.md)
+- 请参阅 [Key Vault 安全性概述](../general/security-features.md)

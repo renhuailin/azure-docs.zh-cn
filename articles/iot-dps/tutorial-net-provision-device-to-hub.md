@@ -9,14 +9,14 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: f9a14ee6ee3e10b36d64ec11fc23807efe2bfaf2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 84fe935c1122d3d5c65423341b8760643257f992
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94966558"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868564"
 ---
-# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>教程：使用 Azure IoT 中心预配服务客户端 (.NET) 将设备登记到 IoT 中心
+# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>教程：使用 Azure IoT 中心设备预配服务客户端将设备注册到 IoT 中心 (.NET)
 
 前面的教程介绍了设置设备以连接到设备预配服务的方法。 本教程介绍如何使用此服务通过 **_单独登记_** 和 **_登记组_** 将设备预配到单个 IoT 中心。 本教程演示如何：
 
@@ -32,7 +32,7 @@ ms.locfileid: "94966558"
 * Visual Studio
 
 > [!NOTE]
-> 不需要 Visual Studio。 只需安装 [.NET](https://www.microsoft.com/net) 便已足够，开发人员可以在 Windows 或 Linux 上使用其偏好的编辑器。  
+> 不需要 Visual Studio。 只需安装 [.NET](https://dotnet.microsoft.com) 便已足够，开发人员可以在 Windows 或 Linux 上使用其偏好的编辑器。  
 
 本教程模拟在将设备信息添加到预配服务时，硬件制造过程中或紧接在该过程之后的情况。 此代码通常在电脑上，或者在可以运行 .NET 代码的工厂设备上运行，不应添加到设备本身。
 

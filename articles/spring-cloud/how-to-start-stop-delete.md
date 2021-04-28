@@ -6,13 +6,13 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: brendm
-ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 46d79de612a17c7b21e7cc51dcf4904209e1625d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-java
+ms.openlocfilehash: f5fcd28f35260bf3b312e089e788f765c0219745
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877176"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070904"
 ---
 # <a name="start-stop-and-delete-your-azure-spring-cloud-application"></a>启动、停止和删除 Azure Spring Cloud 应用程序
 
@@ -32,7 +32,7 @@ ms.locfileid: "104877176"
 ## <a name="using-the-azure-cli"></a>使用 Azure CLI
 
 > [!NOTE]
-> 可以使用可选参数，并使用 Azure CLI 配置默认值。 通过阅读[我们的参考文档](/cli/azure/ext/spring-cloud/spring-cloud)详细了解 Azure CLI。  
+> 可以使用可选参数，并使用 Azure CLI 配置默认值。 通过阅读[我们的参考文档](/cli/azure/spring-cloud)详细了解 Azure CLI。  
 
 首先，安装用于 Azure CLI 的 Azure Spring Cloud 扩展，如下所示：
 
