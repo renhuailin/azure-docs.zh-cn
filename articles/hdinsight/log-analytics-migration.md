@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.author: ali
 author: AliciaLiMicrosoft
 ms.date: 04/19/2021
-ms.openlocfilehash: 6659b515ee2d25a4b9136ccfac4cc3444e491438
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 5e312941e02c5605132971a55041a0b4f7d6dbc9
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107741051"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139086"
 ---
 # <a name="log-analytics-migration-guide-for-azure-hdinsight-clusters"></a>适用于 Azure HDInsight 群集的 Log Analytics 迁移指南
 
@@ -59,7 +59,7 @@ Azure HDInsight 在 2017 年实现了与 Log Analytics 的集成。 HDInsight �
 ## <a name="activate-a-new-azure-monitor-integration"></a>激活新 Azure Monitor 集成 
 
 > [!NOTE]
-> 启用新集成之前，你必须在有权访问的订阅中创建 Log Analytics 工作区。 有关如何创建 Log Analytics 工作区的详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
+> 启用新集成之前，你必须在有权访问的订阅中创建 Log Analytics 工作区。 有关如何创建 Log Analytics 工作区的详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)。
 
 转到群集的门户页面并向下滚动左侧菜单，直到达到“监视”部分，以激活新集成。 在“监视”部分中，选择“监视集成” 。 然后，选择“启用”，可以选择要将日志发送到的 Log Analytics 工作区。 选择了工作区后，选择“保存”。 
 
@@ -112,7 +112,7 @@ Azure HDInsight 在 2017 年实现了与 Log Analytics 的集成。 HDInsight �
 
 #### <a name="insights"></a>洞察力
 
-见解是使用 [Azure 工作簿](../azure-monitor/platform/workbooks-overview.md)创建的特定于群集的可视化效果仪表板。 这些仪表板可提供有关群集运行情况的详细图和可视化效果。 仪表板包含用于每种群集类型、YARN、系统指标和组件日志的部分。 可以在门户中访问群集页面，向下滚动到“监视”部分，然后选择“见解”窗格，从而访问群集的仪表板 。 如果已启用新集成，则仪表板会自动加载。 在查询日志时，留出几秒钟让图加载。
+见解是使用 [Azure 工作簿](../azure-monitor/visualize/workbooks-overview.md)创建的特定于群集的可视化效果仪表板。 这些仪表板可提供有关群集运行情况的详细图和可视化效果。 仪表板包含用于每种群集类型、YARN、系统指标和组件日志的部分。 可以在门户中访问群集页面，向下滚动到“监视”部分，然后选择“见解”窗格，从而访问群集的仪表板 。 如果已启用新集成，则仪表板会自动加载。 在查询日志时，留出几秒钟让图加载。
 
 :::image type="content" source="./media/log-analytics-migration/visualization-dashboard.png" lightbox="./media/log-analytics-migration/visualization-dashboard.png" alt-text="显示可视化效果仪表板的屏幕截图。":::
 
@@ -132,7 +132,7 @@ Azure HDInsight 在 2017 年实现了与 Log Analytics 的集成。 HDInsight �
 
 #### <a name="alerts"></a>警报
 
-可以在日志查询编辑器中向群集和工作区添加自定义警报。 通过从群集或工作区门户选择“日志”窗格，转到日志查询编辑器。 运行查询，然后选择“新建警报规则”，如以下屏幕截图所示。 有关详细信息，请参阅[配置警报](../azure-monitor/platform/alerts-log.md)。
+可以在日志查询编辑器中向群集和工作区添加自定义警报。 通过从群集或工作区门户选择“日志”窗格，转到日志查询编辑器。 运行查询，然后选择“新建警报规则”，如以下屏幕截图所示。 有关详细信息，请参阅[配置警报](../azure-monitor/alerts/alerts-log.md)。
 
 :::image type="content" source="./media/log-analytics-migration/new-rule-alert.png" alt-text="显示新建警报规则的屏幕截图。" border="false":::
 

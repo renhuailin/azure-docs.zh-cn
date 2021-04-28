@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中使用静态公共 IP 地址安装和配置 NGINX 入口控制器。
 services: container-service
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: 8de0d25bc30d53f11ddaed5ab7b53ff992a5c88c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 04/23/2021
+ms.openlocfilehash: 6e03d69cbdf3837610e3b165c88c9680d7a1cc6a
+ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779824"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108006973"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用静态公共 IP 地址创建入口控制器
 
@@ -104,7 +104,7 @@ nginx-ingress-ingress-nginx-controller   LoadBalancer   10.0.74.133   EXTERNAL_I
 你可以通过查询公共 IP 地址上的 FQDN 来验证是否已应用 DNS 名称标签，如下所示：
 
 ```azurecli-interactive
-az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query "[?ipAddress=='myAKSPublicIP'].[dnsSettings.fqdn]" -o tsv
+az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query "[?name=='myAKSPublicIP'].[dnsSettings.fqdn]" -o tsv
 ```
 
 现在可以通过 IP 地址或 FQDN 访问入口控制器。
@@ -132,7 +132,7 @@ helm repo update
 helm install \
   cert-manager \
   --namespace ingress-basic \
-  --version v0.16.1 \
+  --version v1.3.1 \
   --set installCRDs=true \
   --set nodeSelector."beta\.kubernetes\.io/os"=linux \
   jetstack/cert-manager
@@ -277,7 +277,7 @@ kubectl apply -f ingress-demo.yaml --namespace ingress-basic
 创建名为 `hello-world-ingress.yaml` 的文件，并将其复制到以下示例 YAML 中。
 
 ```yaml
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: hello-world-ingress
@@ -295,18 +295,27 @@ spec:
   - host: demo-aks-ingress.eastus.cloudapp.azure.com
     http:
       paths:
-      - backend:
-          serviceName: aks-helloworld
-          servicePort: 80
-        path: /hello-world-one(/|$)(.*)
-      - backend:
-          serviceName: ingress-demo
-          servicePort: 80
-        path: /hello-world-two(/|$)(.*)
-      - backend:
-          serviceName: aks-helloworld
-          servicePort: 80
-        path: /(.*)
+      - path: /hello-world-one(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: aks-helloworld
+            port:
+              number: 80
+      - path: /hello-world-two(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: ingress-demo
+            port:
+              number: 80
+      - path: /(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: aks-helloworld
+            port:
+              number: 80
 ```
 
 使用 `kubectl apply` 命令创建入口资源。

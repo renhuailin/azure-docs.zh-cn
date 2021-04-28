@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: a34fd5480ae47678f250dbf888005c396ba32f38
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 843db24707b8c826fe48e9d50aa7ec5bc135399f
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107792140"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107863598"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用 Azure CLI 监视该数据
 
@@ -94,7 +94,7 @@ Azure CLI 要求你登录到 Azure 帐户。 Azure CLI Shell 会话与 IoT 中�
 在本部分中，将在第一个 CLI 会话中创建模拟设备。 模拟设备将设备遥测数据发送到 IoT 中心。 在第二个 CLI 会话中，将监视事件和遥测数据，并将云到设备的消息发送到模拟设备。
 
 若要创建和启动模拟设备，请执行以下操作：
-1. 在第一个 CLI 会话中运行 [az iot hub device-identity create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) 命令。 这会创建模拟设备标识。 
+1. 在第一个 CLI 会话中运行 [az iot hub device-identity create](/cli/azure/iot/hub/device-identity#az_iot_hub_device_identity_create) 命令。 这会创建模拟设备标识。 
 
     *YourIotHubName*。 将下面的占位符替换为你为 IoT 中心选择的名称。 
 
@@ -104,7 +104,7 @@ Azure CLI 要求你登录到 Azure 帐户。 Azure CLI Shell 会话与 IoT 中�
     az iot hub device-identity create --device-id simDevice --hub-name {YourIoTHubName} 
     ```
 
-1. 在第一个 CLI 会话中运行 [az iot device simulate](/cli/azure/ext/azure-iot/iot/device#ext-azure-iot-az-iot-device-simulate) 命令。  这会启动模拟设备。 设备将遥测数据发送到 IoT 中心，并从其中接收消息。  
+1. 在第一个 CLI 会话中运行 [az iot device simulate](/cli/azure/iot/device#az_iot_device_simulate) 命令。  这会启动模拟设备。 设备将遥测数据发送到 IoT 中心，并从其中接收消息。  
 
     *YourIotHubName*。 将下面的占位符替换为你为 IoT 中心选择的名称。 
 
@@ -113,7 +113,7 @@ Azure CLI 要求你登录到 Azure 帐户。 Azure CLI Shell 会话与 IoT 中�
     ```
 
 若要监视设备，请执行以下操作：
-1. 在第二个 CLI 会话中，运行 [az iot hub monitor-events](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) 命令。 这会开始监视模拟设备。 输出显示模拟设备发送到 IoT 中心的遥测数据。
+1. 在第二个 CLI 会话中，运行 [az iot hub monitor-events](/cli/azure/iot/hub#az_iot_hub_monitor_events) 命令。 这会开始监视模拟设备。 输出显示模拟设备发送到 IoT 中心的遥测数据。
 
     *YourIotHubName*。 将下面的占位符替换为你为 IoT 中心选择的名称。 
 
@@ -136,7 +136,7 @@ Azure CLI 要求你登录到 Azure 帐户。 Azure CLI Shell 会话与 IoT 中�
     az iot device simulate -d simDevice -n {YourIoTHubName}
     ```
 
-1. 在第二个 CLI 会话中，运行 [az iot device c2d-message send](/cli/azure/ext/azure-iot/iot/device/c2d-message#ext-azure-iot-az-iot-device-c2d-message-send) 命令。 这会将云到设备的消息从 IoT 中心发送到模拟设备。 该消息包含一个字符串和两个键值对。  
+1. 在第二个 CLI 会话中，运行 [az iot device c2d-message send](/cli/azure/iot/device/c2d-message#az_iot_device_c2d-message-send) 命令。 这会将云到设备的消息从 IoT 中心发送到模拟设备。 该消息包含一个字符串和两个键值对。  
 
     *YourIotHubName*。 将下面的占位符替换为你为 IoT 中心选择的名称。 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2021
 ms.author: jeedes
-ms.openlocfilehash: a27d06774b1795f736497057b129945b617a6258
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 5d7fac3829adaace3b049448eb535fa44feed587
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107494892"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143946"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-codility"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Codility 集成
 
@@ -75,7 +75,7 @@ ms.locfileid: "107494892"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
     a. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.codility.net/social/complete/saml/`
 
@@ -145,10 +145,8 @@ ms.locfileid: "107494892"
 
 * 在 Azure 门户中单击“测试此应用程序”，你应该会自动登录到为其设置了 SSO 的 Codility 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 当你在“我的应用”中单击 Codility 磁贴时，如果这是在 SP 模式下配置的，系统会将你重定向到应用程序登录页来启动登录流；如果这是在 IDP 模式下配置的，系统会让你自动登录到为其设置了 SSO 的 Codility。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 当你在“我的应用”中单击 Codility 磁贴时，如果这是在 SP 模式下配置的，系统会将你重定向到应用程序登录页来启动登录流；如果这是在 IDP 模式下配置的，系统会让你自动登录到为其设置了 SSO 的 Codility。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-在配置 Codility 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+在配置 Codility 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

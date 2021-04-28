@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e81cb9018d817fb206915a81fdc3bdd60f6b08c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ab37861a78ef80949e9afb4a3f51a6d9fdbad321
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105611882"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126615"
 ---
 # <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>续签 Microsoft 365 和 Azure Active Directory 的联合身份验证证书
 ## <a name="overview"></a>概述
@@ -38,7 +38,7 @@ ms.locfileid: "105611882"
 
 > [!IMPORTANT]
 > Microsoft 强烈建议使用硬件安全模块 (HSM) 来保护和妥善保存证书。
-> 有关详细信息，请参阅保护 AD FS 最佳做法下的[硬件安全模块](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#hardware-security-module-hsm) 。
+> 有关详细信息，请参阅保护 AD FS 最佳做法下的[硬件安全模块](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#hardware-security-module-hsm) 。
 
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>令牌签名证书的默认 AD FS 配置
 令牌签名证书和令牌解密证书通常是自签名证书，有效期为一年。 默认情况下，AD FS 包含名为 **AutoCertificateRollover** 的自动续订进程。 如果使用的是 AD FS 2.0 或更高版本，Microsoft 365 和 Azure AD 会在证书过期之前自动对其进行更新。

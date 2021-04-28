@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: fd179bf17f481ae84f768d619c6ddc0b9afab280
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ce0d0f9df4862d3c8ac8417e257fbf340e41961f
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202546"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864076"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>快速入门：通过 IoT 中心设备流在 C 中与设备应用程序通信（预览）
 
@@ -114,7 +114,7 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
 ## <a name="register-a-device"></a>注册设备
 
-必须先将设备注册到 IoT 中心，然后该设备才能进行连接。 在本部分中，我们将使用具有 [IoT 扩展](/cli/azure/ext/azure-iot/iot)的 Azure Cloud Shell 注册模拟设备。
+必须先将设备注册到 IoT 中心，然后该设备才能进行连接。 在本部分中，我们将使用具有 [IoT 扩展](/cli/azure/iot)的 Azure Cloud Shell 注册模拟设备。
 
 1. 若要创建设备标识，请在 Cloud Shell 中运行以下命令：
 

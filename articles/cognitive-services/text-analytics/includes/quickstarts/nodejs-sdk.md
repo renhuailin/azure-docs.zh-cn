@@ -6,16 +6,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 04/19/2021
 ms.author: aahi
 ms.reviewer: sumeh, assafi
 ms.custom: devx-track-js
-ms.openlocfilehash: 3640a03f8ac814fec2823a761e651ab386438c5c
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 72ca331546d53f85ca82f33ec6a02558d91f1c1e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107327034"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765035"
 ---
 <a name="HOLTop"></a>
 
@@ -710,8 +710,7 @@ ID: 0
 
 # <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
-> [!CAUTION]
-> 若要使用“分析”操作，必须使用标准 (S) 定价层的“文本分析”资源。  
+[!INCLUDE [Analyze Batch Action pricing](../analyze-operation-pricing-caution.md)]
 
 创建名为 `analyze_example()` 的新函数，它将调用 `beginAnalyze()` 函数。 结果将是一个长期操作，将轮询该操作以获得结果。
 

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: db7c0f2dbc547d78e3caa9ab37450c86278929bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 13ba043582efe4a9e8d52f96f279b02ad8dab963
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555935"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141354"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>教程：监视更改和更新 Azure 中的 Windows 虚拟机
 
@@ -178,7 +178,7 @@ New-AzVm `
 * Windows 注册表
 * Windows 文件
 
-有关更改跟踪的详细信息，请参阅[排查 VM 上的更改问题](../../automation/automation-tutorial-troubleshoot-changes.md)。
+有关更改跟踪的详细信息，请参阅[排查 VM 上的更改问题](../../automation/troubleshoot/change-tracking.md)。
 
 ### <a name="view-inventory"></a>查看清单
 

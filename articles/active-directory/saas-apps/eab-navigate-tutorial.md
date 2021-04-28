@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/30/2021
 ms.author: jeedes
-ms.openlocfilehash: bed45b413ae1c6ab3b83c1b8ef656891c13a2723
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 2660f9b4262db7a98dc7c1b124439896c4c45d23
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106223126"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147990"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab"></a>教程：Azure Active Directory 单一登录 (SSO) 与 EAB 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "106223126"
 * 让用户使用其 Azure AD 帐户自动登录到 EAB。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -137,7 +137,7 @@ ms.locfileid: "106223126"
 
 * 直接转到 EAB 登录 URL，并从此处启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“EAB”磁贴时，系统会将你重定向到 EAB 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“EAB”磁贴时，系统会将你重定向到 EAB 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,14 +1,14 @@
 ---
-ms.openlocfilehash: 3fcfb364ebffdd3643e803922cbe4f3dd0d87935
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 6a9628f3bd77e2e7001a5c8cf371259c18fa373c
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107513170"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107984456"
 ---
 ## <a name="setting-up"></a>设置
 
-## <a name="create-a-new-python-application"></a>创建新的 Python 应用程序
+### <a name="create-a-new-python-application"></a>创建新的 Python 应用程序
 
 打开终端或命令窗口，为应用创建一个新目录，并导航到该目录。
 

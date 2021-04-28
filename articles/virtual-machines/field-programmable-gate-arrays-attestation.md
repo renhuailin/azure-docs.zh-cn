@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: vikancha
-ms.openlocfilehash: 563155bb6559f8443f1453a65fa0b1574af106f7
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: c16e324809fd688adf4a970f105cb364e73d7004
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106555864"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128786"
 ---
 # <a name="fpga-attestation-for-azure-np-series-vms-preview"></a>适用于 Azure NP 系列 VM 的 FPGA 证明（预览版）
 
@@ -52,7 +52,7 @@ https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-lates
 
 必须将网表文件上传到 Azure 存储 Blob 容器供证明服务访问。  
 
-有关创建帐户和容器，以及将网表作为 Blob 上传到该容器的详细信息，请参阅以下页面： https://docs.microsoft.com/azure/storage/blobs/storage-quickstartblobs-cli 。  
+有关创建帐户和容器，以及将网表作为 Blob 上传到该容器的详细信息，请参阅以下页面：[https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-cli](../storage/blobs/storage-quickstart-blobs-cli.md)。  
 
 也可以使用 Azure 门户执行此操作。  
 
@@ -60,7 +60,7 @@ https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-lates
 
 可通过多种方式复制文件；下面演示了使用 az storage upload cmdlet 的示例。 az 命令在 Linux 和 Windows 上均可运行。 可以选择任何名称作为“Blob”名称，但请确保保留 xclbin 扩展名。 
 
-```az storage blob upload --account-name <storage account to receive netlist> container-name <blob container name> --name <blob filename> --file <local file with netlist>  ```
+```az storage blob upload --account-name <storage account to receive netlist> --container-name <blob container name> --name <blob filename> --file <local file with netlist>  ```
 
 ## <a name="download-the-attestation-scripts"></a>下载证明脚本  
 
@@ -82,13 +82,13 @@ zip 文件包含两个 PowerShell 脚本，其中一个脚本用于提交，另�
 
 ### <a name="powershell"></a>PowerShell   
 
-```$sas=$(az storage container generate-sas --account-name <storage acct name> -name <blob container name> --https-only --permissions rwc --expiry <e.g., 2021-01-07T17:00Z> --output tsv)  ```
+```$sas=$(az storage container generate-sas --account-name <storage acct name> --name <blob container name> --https-only --permissions rwc --expiry <e.g., 2021-01-07T17:00Z> --output tsv)  ```
 
 ```.\Validate-FPGAImage.ps1 -StorageAccountName <storage acct name> -Container <blob container name> -BlobContainerSAS $sas -NetlistName <netlist blob filename>  ```
 
 ### <a name="bash"></a>Bash  
 
-``` sas=az storage container generate-sas --account-name <storage acct name> -name <blob container name> --https-only --permissions rwc --expiry <2021-01-07T17:00Z> --output tsv  ```
+``` sas=az storage container generate-sas --account-name <storage acct name> --name <blob container name> --https-only --permissions rwc --expiry <2021-01-07T17:00Z> --output tsv  ```
 
 ```validate-fpgaimage.sh --storage-account <storage acct name> --container <blob container name> --netlist-name <netlist blob filename> --blob-container-sas $sas ``` 
 
@@ -124,5 +124,4 @@ https://fpga-attestation.azurewebsites.net/api/ComputeFPGA_HttpGetStatus
 
 如果通不过验证，则会写入一个 error-*.txt 文件，指出哪个步骤失败。 另外，还可在日志文件中检查是否有错误日志指出证明已失败。 联系我们请求支持时，请务必连同业务流程 ID 一起，将所有这些文件包含为支持请求的一部分。  
 
-可以使用 Azure 门户创建容器，以及上传网表和下载位流与日志文件。 目前不支持通过门户提交证明请求及监视其进度，必须如前所述通过脚本实现此目的。 
-
+可以使用 Azure 门户创建容器，以及上传网表和下载位流与日志文件。 目前不支持通过门户提交证明请求及监视其进度，必须如前所述通过脚本实现此目的。

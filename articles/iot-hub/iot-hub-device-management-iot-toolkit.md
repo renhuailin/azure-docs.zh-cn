@@ -7,18 +7,18 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: d85e0e967dd802a77ccbc11b884d7a9f2891524d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b48def283ea27fdd0eaa3230a2eb9a8327461ff1
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81688098"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567007"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>使用适用于 Visual Studio Code 的 Azure IoT 工具进行 Azure IoT 中心设备管理
 
 ![端到端关系图](media/iot-hub-get-started-e2e-diagram/2.png)
 
-[Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)是一个有用的 Visual Studio Code 扩展，可以使 IoT 中心管理和 IoT 应用程序开发更加容易。 它附带了可用于执行各种任务的管理选项。
+在本文中，你将了解如何在开发计算机上通过各种管理选项使用适用于 Visual Studio Code 的 Azure IoT Tools。 [Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)是一个有用的 Visual Studio Code 扩展，可以使 IoT 中心管理和 IoT 应用程序开发更加容易。 它附带了可用于执行各种任务的管理选项。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -35,15 +35,7 @@ ms.locfileid: "81688098"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="what-you-learn"></a>学习内容
-
-了解在开发计算机上通过各种管理选项使用适用于 Visual Studio Code 的 Azure IoT 工具。
-
-## <a name="what-you-do"></a>准备工作
-
-使用各种管理选项运行适用于 Visual Studio Code 的 Azure IoT 工具。
-
-## <a name="what-you-need"></a>需要什么
+## <a name="prerequisites"></a>先决条件
 
 * 一个有效的 Azure 订阅。
 * 已在订阅中创建一个 Azure IoT 中心。

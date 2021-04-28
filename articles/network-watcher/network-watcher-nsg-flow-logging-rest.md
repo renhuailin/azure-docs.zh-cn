@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: b45d066d0996aaba2a25500f8134085f5e9b6ffb
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 0c2725ff58e40bc56aac528a17fe4d66a128d475
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535192"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146934"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>使用 REST API 配置网络安全组流日志
 
@@ -31,7 +31,7 @@ ms.locfileid: "107535192"
 
 ## <a name="before-you-begin"></a>开始之前
 
-通过 PowerShell 调用 REST API 时，使用的是 ARMclient。 根据 [Chocolatey 上的 ARMClient](https://chocolatey.org/packages/ARMClient) 中所述在 chocolatey 上找到 ARMClient。 可在[此处](https://docs.microsoft.com/rest/api/network-watcher/flowlogs)找到 NSG 流日志 REST API 详细规范 
+通过 PowerShell 调用 REST API 时，使用的是 ARMclient。 根据 [Chocolatey 上的 ARMClient](https://chocolatey.org/packages/ARMClient) 中所述在 chocolatey 上找到 ARMClient。 可在[此处](/rest/api/network-watcher/flowlogs)找到 NSG 流日志 REST API 详细规范 
 
 此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
 

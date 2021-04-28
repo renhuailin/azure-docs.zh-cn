@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: 58dccf56cd493782a422b0ddf0386e31d4d87daf
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: bb8f2d77c04e01c47318042337db819ac2f36d46
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765982"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107863166"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure 流分析作业
 
@@ -59,7 +59,7 @@ ms.locfileid: "107765982"
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"
     ```
 
-3. 使用 [az iot hub device-identity show-connection-string](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-show-connection-string) 命令获取设备连接字符串。 复制整个连接字符串并将其保存。这样，在创建 Raspberry Pi 模拟器时，就可以使用该字符串。
+3. 使用 [az iot hub device-identity show-connection-string](/cli/azure/iot/hub/device-identity#az_iot_hub_device_identity_show_connection_string) 命令获取设备连接字符串。 复制整个连接字符串并将其保存。这样，在创建 Raspberry Pi 模拟器时，就可以使用该字符串。
 
     ```azurecli
     az iot hub device-identity show-connection-string --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice" --output table
@@ -108,7 +108,7 @@ ms.locfileid: "107765982"
 
 以下 Azure CLI 代码块创建流分析作业。 查看介绍代码的部分
 
-1. 使用 [az stream-analytics job create](/cli/azure/ext/stream-analytics/stream-analytics/job#ext-stream-analytics-az-stream-analytics-job-create) 命令创建流分析作业。
+1. 使用 [az stream-analytics job create](/cli/azure/stream-analytics/job#az_stream_analytics_job_create) 命令创建流分析作业。
 
 ```azurecli
 az stream-analytics job create \
@@ -124,7 +124,7 @@ az stream-analytics job create \
 
 ## <a name="configure-input-to-the-job"></a>配置作业输入
 
-使用 [az stream-analytics input](/cli/azure/ext/stream-analytics/stream-analytics/input#ext-stream-analytics-az-stream-analytics-input-create) cmdlet 将输入添加到作业。 此 cmdlet 使用作业名称、作业输入名称、资源组名称和作业输入定义作为参数。 作业输入定义是一个 JSON 文件，其中包含配置作业的输入所需的属性。 在此示例中，需将 IoT 中心创建为输入。
+使用 [az stream-analytics input](/cli/azure/stream-analytics/input#az_stream_analytics_input_create) cmdlet 将输入添加到作业。 此 cmdlet 使用作业名称、作业输入名称、资源组名称和作业输入定义作为参数。 作业输入定义是一个 JSON 文件，其中包含配置作业的输入所需的属性。 在此示例中，需将 IoT 中心创建为输入。
 
 在本地计算机上创建名为 `datasource.json` 的文件，并向其添加以下 JSON 数据。 确保将 `sharedAccessPolicyKey` 的值替换为在上一部分保存的 IoT 中心设备连接字符串的 `SharedAccessKey` 部分。
 
@@ -166,7 +166,7 @@ az stream-analytics input create \
 
 ## <a name="configure-output-to-the-job"></a>配置作业输出
 
-使用 [az stream-analytics output create](/cli/azure/ext/stream-analytics/stream-analytics/output#ext-stream-analytics-az-stream-analytics-output-create) cmdlet 将输出添加到作业。 此 cmdlet 使用作业名称、作业输出名称、资源组名称和作业输出定义作为参数。 作业输出定义是一个 JSON 文件，其中包含配置作业的输出所需的属性。 此示例使用 Blob 存储作为输出。
+使用 [az stream-analytics output create](/cli/azure/stream-analytics/output#az_stream_analytics_output_create) cmdlet 将输出添加到作业。 此 cmdlet 使用作业名称、作业输出名称、资源组名称和作业输出定义作为参数。 作业输出定义是一个 JSON 文件，其中包含配置作业的输出所需的属性。 此示例使用 Blob 存储作为输出。
 
 在本地计算机上创建名为 `datasink.json` 的文件，并向其添加以下 JSON 数据。 确保将 `accountKey` 的值替换为存储帐户的访问密钥，该密钥是存储在 $storageAccountKey 值中的值。
 
@@ -201,7 +201,7 @@ az stream-analytics output create \
 
 ## <a name="define-the-transformation-query"></a>定义转换查询
 
-使用 [az stream-analytics transformation create](/cli/azure/ext/stream-analytics/stream-analytics/transformation#ext-stream-analytics-az-stream-analytics-transformation-create) cmdlet 将转换添加到作业。 此 cmdlet 使用作业名称、作业转换名称、资源组名称和作业转换定义作为参数。 
+使用 [az stream-analytics transformation create](/cli/azure/stream-analytics/transformation#az_stream_analytics_transformation_create) cmdlet 将转换添加到作业。 此 cmdlet 使用作业名称、作业转换名称、资源组名称和作业转换定义作为参数。 
 
 运行 `az stream-analytics transformation create` cmdlet。
 
@@ -225,7 +225,7 @@ az stream-analytics transformation create \
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>启动流分析作业并检查输出
 
-使用 [az stream-analytics job start](/cli/azure/ext/stream-analytics/stream-analytics/job#ext-stream-analytics-az-stream-analytics-job-start) cmdlet 启动作业。 此 cmdlet 使用作业名称、资源组名称、输出启动模式和启动时间作为参数。 `OutputStartMode` 接受的值为 `JobStartTime`、`CustomTime` 或 `LastOutputEventTime`。
+使用 [az stream-analytics job start](/cli/azure/stream-analytics/job#az_stream_analytics_job_start) cmdlet 启动作业。 此 cmdlet 使用作业名称、资源组名称、输出启动模式和启动时间作为参数。 `OutputStartMode` 接受的值为 `JobStartTime`、`CustomTime` 或 `LastOutputEventTime`。
 
 以下 cmdlet 在运行以后会返回 `True` 作为输出（如果作业启动）。 在存储容器中，创建的输出文件夹包含已转换的数据。
 

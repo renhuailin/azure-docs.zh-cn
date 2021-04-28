@@ -8,19 +8,19 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 02/05/2021
-ms.openlocfilehash: 2e862915bcc524db50e7e66c969b713f729c64aa
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 5ab11ac23fac73341c111d0d81fc225358bb689f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479638"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138276"
 ---
 # <a name="use-the-linux-diagnostic-extension-40-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展 4.0 监视指标和日志
 
 本文档介绍 Linux 诊断扩展 (LAD) 的最新版本。
 
 > [!IMPORTANT]
-> 有关版本 3.x 的信息，请参阅[使用 Linux 诊断扩展 3.0 监视指标和日志](./diagnostics-linux-v3.md)。 有关版本 2.3 及更早版本的信息，请参 [监视 Linux VM 的性能和诊断数据](https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)。
+> 有关版本 3.x 的信息，请参阅[使用 Linux 诊断扩展 3.0 监视指标和日志](./diagnostics-linux-v3.md)。 有关版本 2.3 及更早版本的信息，请参 [监视 Linux VM 的性能和诊断数据](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)。
 
 ## <a name="introduction"></a>简介
 
@@ -52,7 +52,7 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM �
 * 捕获 LAD 2.3 允许的默认 syslog 收集。
 * 允许 Azure 门户体验，以便对 VM 指标进行制图以及就其发送警报。
 
-可下载配置只是一个示例。 可修改它以满足你的需要。
+可下载配置只是一个示例。 可对其进行修改来满足自己的需要。
 
 ### <a name="supported-linux-distributions"></a>支持的 Linux 分发
 
@@ -68,9 +68,9 @@ Linux 诊断扩展支持许多分发和版本。 分发和版本的以下列表�
 - OpenSUSE 13.1+
 - SUSE Linux Enterprise Server 12
 - Debian 9、8、7
-- Red Hat Enterprise Linux (RHEL) 7、6.7+
+- Red Hat Enterprise Linux (RHEL) 7，6.7+
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 * Azure Linux 代理 2.2.0 版或更高版本。 大部分 Azure VM Linux 库映像包含 2.2.7 或更高版本。 运行 `/usr/sbin/waagent -version` 以确认 VM 上安装的版本。 如果 VM 正在运行较早版本的来宾代理，请[更新 Linux 代理](./update-linux-agent.md)。
 * **Azure CLI**。 在计算机上[设置 Azure CLI](/cli/azure/install-azure-cli) 环境。
@@ -257,7 +257,7 @@ sinksConfig | （可选）可将指标和事件传递到的替换目标的详细
 
 可通过 Azure 门户构造所需的 SAS 令牌：
 
-1. 选择想要扩展写入的通用存储帐户。
+1. 选择希望扩展写入的常规用途存储帐户。
 1. 在左侧菜单中的“设置”下，选择“共享访问签名” 。
 1. 按照前面所述进行选择。
 1. 选择“生成 SAS”。
@@ -281,7 +281,7 @@ sinksConfig | （可选）可将指标和事件传递到的替换目标的详细
 },
 ```
 
-`sinksConfig` 可选部分用于定义扩展要将收集到的信息发送到的更多目标。 `"sink"` 数组包含每个附加数据接收器的对象。 `"type"` 属性确定对象中的其他属性。
+`sinksConfig` 可选部分用于定义扩展要将收集到的信息发送到的更多目标。 `"sink"` 数组包含每个附加数据接收器的对象。 `"type"` 特性确定对象中的其他特性。
 
 元素 | 值
 ------- | -----
@@ -444,7 +444,7 @@ counter | 与 `"class"` 一起标识提供程序的命名空间中的特定指�
 counterSpecifier | 标识 Azure Monitor 指标命名空间中的特定指标。
 condition | （可选）选择应用指标的对象的实例。 或选择该对象的所有实例的聚合。 
 sampleRate | IS 8601 时间间隔，用于设置收集此指标原始样本的速率。 如果未设置该值，则收集时间间隔由 [`sampleRateInSeconds`](#ladcfg) 的值设置。 支持的最短采样率为 15 秒 (PT15S)。
-unit | 定义指标的单位。 应为以下字符串之一：`"Count"`、`"Bytes"`、`"Seconds"`、`"Percent"`、`"CountPerSecond"``"BytesPerSecond"` 和 `"Millisecond"`。 所收集数据的使用者会预期收集到的数据值与此单位匹配。 LAD 会忽略此字段。
+unit | 定义指标的单位。 应为以下字符串之一：`"Count"`、`"Bytes"`、`"Seconds"`、`"Percent"`、`"CountPerSecond"`、`"BytesPerSecond"` 和 `"Millisecond"`。 所收集数据的使用者会预期收集到的数据值与此单位匹配。 LAD 会忽略此字段。
 displayName | 要附加到 Azure Monitor 指标中的数据的标签。 此标签采用关联区域设置指定的语言。 LAD 会忽略此字段。
 
 `counterSpecifier` 是任意标识符。 Azure 门户绘图和警报功能等指标使用者使用 `counterSpecifier` 作为标识指标或指标实例的“关键字”。 
@@ -457,7 +457,7 @@ displayName | 要附加到 Azure Monitor 指标中的数据的标签。 此标�
 
 LAD 和 Azure 门户不要求 `counterSpecifier` 值与任何模式匹配。 请以相同的模式构造各个 `counterSpecifier` 值。
 
-指定 `performanceCounters` 时，LAD 始终将数据写入 Azure 存储中的表。 可以将相同数据写入 JSON blob 和/或事件中心。 但不能禁止将数据存储到表。 
+指定 `performanceCounters` 时，LAD 始终将数据写入 Azure 存储中的表。 可以将相同的数据写入 JSON blob 或事件中心，或两者都写入。 但不能禁止将数据存储到表。 
 
 使用相同存储帐户名称和终结点的所有 LAD 实例会将其指标和日志添加到同一个表中。 如果有过多 VM 写入同一表分区，则 Azure 可能限制写入该分区。 
 
@@ -495,7 +495,7 @@ sinks | 一个逗号分隔列表，包含要将单个日志事件发布到其中
 facilityName | Syslog 辅助参数名称，例如 `"LOG\_USER"` 或 `"LOG\_LOCAL0"`。 有关详细信息，请参阅 [syslog 手册页](http://man7.org/linux/man-pages/man3/syslog.3.html)的“辅助参数”部分。
 minSeverity | Syslog 严重性级别，例如 `"LOG\_ERR"` 或 `"LOG\_INFO"`。 有关详细信息，请参阅 [syslog 手册页](http://man7.org/linux/man-pages/man3/syslog.3.html)的“级别”部分。 扩展将捕获发送到该辅助参数的等于或高于指定级别的事件。
 
-指定 `syslogEvents` 时，LAD 始终将数据写入 Azure 存储中的表。 可以将相同数据写入 JSON blob 和/或事件中心。 但不能禁止将数据存储到表。 
+指定 `syslogEvents` 时，LAD 始终将数据写入 Azure 存储中的表。 可以将相同的数据写入 JSON blob 或事件中心，或两者都写入。 但不能禁止将数据存储到表。 
 
 此表的分区行为与 `performanceCounters` 的描述相同。 表名是这些字符串的串联：
 
@@ -598,7 +598,7 @@ PercentAvailableSwap | 未使用的交换空间占交换空间总量的百分比
 UsedSwap | 已使用的交换空间 (MB)
 PercentUsedSwap | 已使用的交换空间占交换空间总量的百分比
 
-此类指标仅有一个实例。 `"condition"` 属性没有有用的设置，应当省略。
+此类指标仅有一个实例。 `"condition"` 特性没有有用的设置，应当省略。
 
 ### <a name="builtin-metrics-for-the-network-class"></a>网络类的内置指标
 
@@ -627,8 +627,8 @@ FreeSpace | 可用磁盘空间（字节）
 UsedSpace | 已用磁盘空间（字节）
 PercentFreeSpace | 可用空间百分比
 PercentUsedSpace | 已用空间百分比
-PercentFreeInodes | 未使用的 Inode 节点的百分比 (inode)
-PercentUsedInodes | 所有文件系统中已分配的（使用中）inode 的百分比之和
+PercentFreeInodes | 未使用的索引节点 (Inode) 的百分比
+PercentUsedInodes | 所有文件系统中已分配的（使用中）Inode 的百分比之和
 BytesReadPerSecond | 每秒读取的字节数
 BytesWrittenPerSecond | 每秒写入的字节数
 每秒字节数 | 每秒读取或写入的字节数
@@ -695,7 +695,7 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
 
 * 存储帐户。
 * 匹配的帐户 SAS 令牌。
-* 几个接收器（带有 SAS 令牌的 `JsonBlob`或 `EventHub`）。
+* 几个接收器（带有 SAS 令牌的 `JsonBlob` 或 `EventHub`）。
 
 ```json
 {

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 727354593488cd5af77408eaa7c8d9e747a0b071
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 99a2544a755f04bad0fcf36ead865a4311705566
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877249"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132838"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>快速入门：生成应用并将其部署到 Azure Spring Cloud
 
@@ -24,8 +24,8 @@ ms.locfileid: "104877249"
 
 * 完成此系列中前面的快速入门：
 
-  * [预配 Azure Spring Cloud 服务](spring-cloud-quickstart-provision-service-instance.md)。
-  * [设置 Azure Spring Cloud 配置服务器](spring-cloud-quickstart-setup-config-server.md)。
+  * [预配 Azure Spring Cloud 服务](./quickstart-provision-service-instance.md)。
+  * [设置 Azure Spring Cloud 配置服务器](./quickstart-setup-config-server.md)。
 
 ## <a name="download-the-sample-app"></a>下载示例应用
 
@@ -183,7 +183,7 @@ https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
 * Maven 插件
 * Intellij
 
-在使用 Azure CLI 或 Maven 进行部署之前，请完成[预配 Azure Spring Cloud 实例](spring-cloud-quickstart-provision-service-instance.md)和[设置配置服务器](spring-cloud-quickstart-setup-config-server.md)的示例。
+在使用 Azure CLI 或 Maven 进行部署之前，请完成[预配 Azure Spring Cloud 实例](./quickstart-provision-service-instance.md)和[设置配置服务器](./quickstart-setup-config-server.md)的示例。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -313,7 +313,7 @@ https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
 1. 在“名称”字段中，将“:gateway”追加到现有“名称”。
 1. 在“项目”文本框中，选择“com.piggymetrics:gateway:1.0-SNAPSHOT”。
 1. 在“订阅”文本框中，验证订阅。
-1. 在“Spring Cloud”文本框中，选择你在[预配 Azure Spring Cloud 实例](./spring-cloud-quickstart-provision-service-instance.md)中创建的 Azure Spring Cloud 实例。
+1. 在“Spring Cloud”文本框中，选择你在[预配 Azure Spring Cloud 实例](./quickstart-provision-service-instance.md)中创建的 Azure Spring Cloud 实例。
 1. 将“公共终结点”设置为“启用”。
 1. 在“应用:”文本框中，选择“创建应用…” 。
 1. 输入“网关”，然后单击“确定”。
@@ -355,7 +355,7 @@ https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
 
 ## <a name="next-steps"></a>后续步骤
 
-在此快速入门中，你创建了 Azure 资源，如果这些资源保留在订阅中，将继续产生费用。 如果不打算继续学习下一个快速入门，请参阅[清理资源](spring-cloud-quickstart-logs-metrics-tracing.md#clean-up-resources)。 否则，请继续学习下一个快速入门：
+在此快速入门中，你创建了 Azure 资源，如果这些资源保留在订阅中，将继续产生费用。 如果不打算继续学习下一个快速入门，请参阅[清理资源](./quickstart-logs-metrics-tracing.md#clean-up-resources)。 否则，请继续学习下一个快速入门：
 
 > [!div class="nextstepaction"]
-> [日志、指标和跟踪](spring-cloud-quickstart-logs-metrics-tracing.md)
+> [日志、指标和跟踪](./quickstart-logs-metrics-tracing.md)

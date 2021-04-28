@@ -9,12 +9,12 @@ ms.date: 03/24/2021
 ms.custom:
 - template-quickstart
 - devx-track-azurecli
-ms.openlocfilehash: 9af5f276e49e9eb2756dc544db353c75c99bc5a9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b40407f4c4fb81bbf76bd0b552f3c9f2c827232a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937944"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871500"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure 数据工厂
 
@@ -73,7 +73,7 @@ ms.locfileid: "105937944"
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-若要创建 Azure 数据工厂，请运行 [az datafactory factory create](/cli/azure/ext/datafactory/datafactory/factory#ext_datafactory_az_datafactory_factory_create) 命令：
+若要创建 Azure 数据工厂，请运行 [az datafactory factory create](/cli/azure/datafactory/factory#az_datafactory_factory_create) 命令：
 
 ```azurecli
 az datafactory factory create --resource-group ADFQuickStartRG \
@@ -83,7 +83,7 @@ az datafactory factory create --resource-group ADFQuickStartRG \
 > [!IMPORTANT]
 > 请将 `ADFTutorialFactory` 替换为全局唯一的数据工厂名称，例如 ADFTutorialFactorySP1127。
 
-可以使用 [az datafactory factory show](/cli/azure/ext/datafactory/datafactory/factory#ext_datafactory_az_datafactory_factory_show) 命令查看创建的数据工厂：
+可以使用 [az datafactory factory show](/cli/azure/datafactory/factory#az_datafactory_factory_show) 命令查看创建的数据工厂：
 
 ```azurecli
 az datafactory factory show --resource-group ADFQuickStartRG \
@@ -94,7 +94,7 @@ az datafactory factory show --resource-group ADFQuickStartRG \
 
 接下来，创建一个链接服务和两个数据集。
 
-1. 使用 [az storage account show-connection-string](/cli/azure/ext/datafactory/datafactory/factory#ext_datafactory_az_datafactory_factory_show) 命令获取存储帐户的连接字符串：
+1. 使用 [az storage account show-connection-string](/cli/azure/datafactory/factory#az_datafactory_factory_show) 命令获取存储帐户的连接字符串：
 
    ```azurecli
    az storage account show-connection-string --resource-group ADFQuickStartRG \
@@ -115,7 +115,7 @@ az datafactory factory show --resource-group ADFQuickStartRG \
    }
    ```
 
-1. 使用 [az datafactory linked-service create](/cli/azure/ext/datafactory/datafactory/linked-service#ext_datafactory_az_datafactory_linked_service_create) 命令创建名为 `AzureStorageLinkedService` 的链接服务：
+1. 使用 [az datafactory linked-service create](/cli/azure/datafactory/linked-service#az_datafactory_linked_service_create) 命令创建名为 `AzureStorageLinkedService` 的链接服务：
 
    ```azurecli
    az datafactory linked-service create --resource-group ADFQuickStartRG \
@@ -146,7 +146,7 @@ az datafactory factory show --resource-group ADFQuickStartRG \
    }
    ```
 
-1. 使用 [az datafactory dataset create](/cli/azure/ext/datafactory/datafactory/dataset#ext_datafactory_az_datafactory_dataset_create) 命令创建名为 `InputDataset` 的输入数据集：
+1. 使用 [az datafactory dataset create](/cli/azure/datafactory/dataset#az_datafactory_dataset_create) 命令创建名为 `InputDataset` 的输入数据集：
 
    ```azurecli
    az datafactory dataset create --resource-group ADFQuickStartRG \
@@ -177,7 +177,7 @@ az datafactory factory show --resource-group ADFQuickStartRG \
    }
    ```
 
-1. 使用 [az datafactory dataset create](/cli/azure/ext/datafactory/datafactory/dataset#ext_datafactory_az_datafactory_dataset_create) 命令创建名为 `OutputDataset` 的输出数据集：
+1. 使用 [az datafactory dataset create](/cli/azure/datafactory/dataset#az_datafactory_dataset_create) 命令创建名为 `OutputDataset` 的输出数据集：
 
    ```azurecli
    az datafactory dataset create --resource-group ADFQuickStartRG \
@@ -243,7 +243,7 @@ az datafactory factory show --resource-group ADFQuickStartRG \
    }
    ```
 
-1. 使用 [az datafactory pipeline create](/cli/azure/ext/datafactory/datafactory/pipeline#ext_datafactory_az_datafactory_pipeline_create) 命令创建名为 `Adfv2QuickStartPipeline` 的管道：
+1. 使用 [az datafactory pipeline create](/cli/azure/datafactory/pipeline#az_datafactory_pipeline_create) 命令创建名为 `Adfv2QuickStartPipeline` 的管道：
 
    ```azurecli
    az datafactory pipeline create --resource-group ADFQuickStartRG \
@@ -251,7 +251,7 @@ az datafactory factory show --resource-group ADFQuickStartRG \
        --pipeline @Adfv2QuickStartPipeline.json
    ```
 
-1. 使用 [az datafactory pipeline create-run](/cli/azure/ext/datafactory/datafactory/pipeline#ext_datafactory_az_datafactory_pipeline_create_run) 命令运行管道：
+1. 使用 [az datafactory pipeline create-run](/cli/azure/datafactory/pipeline#az_datafactory_pipeline_create_run) 命令运行管道：
 
    ```azurecli
    az datafactory pipeline create-run --resource-group ADFQuickStartRG \
@@ -260,7 +260,7 @@ az datafactory factory show --resource-group ADFQuickStartRG \
 
    此命令将返回运行 ID。 请复制此 ID 以便在下一命令中使用。
 
-1. 使用 [az datafactory pipeline-run show](/cli/azure/ext/datafactory/datafactory/pipeline-run#ext_datafactory_az_datafactory_pipeline_run_show) 命令验证管道运行是否成功：
+1. 使用 [az datafactory pipeline-run show](/cli/azure/datafactory/pipeline-run#az_datafactory_pipeline_run_show) 命令验证管道运行是否成功：
 
    ```azurecli
    az datafactory pipeline-run show --resource-group ADFQuickStartRG \
@@ -277,7 +277,7 @@ az datafactory factory show --resource-group ADFQuickStartRG \
 az group delete --name ADFQuickStartRG
 ```
 
-如果你还要将此资源组用在别处，请删除单个资源。 例如，若要删除链接服务，请使用 [az datafactory linked-service delete](/cli/azure/ext/datafactory/datafactory/linked-service#ext_datafactory_az_datafactory_linked_service_delete) 命令。
+如果你还要将此资源组用在别处，请删除单个资源。 例如，若要删除链接服务，请使用 [az datafactory linked-service delete](/cli/azure/datafactory/linked-service#az_datafactory_linked_service_delete) 命令。
 
 在本快速入门中，你创建了以下 JSON 文件：
 

@@ -8,16 +8,16 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c22b3f3164cbb7c1a7ed150d093f77777c7b1023
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20f9aaf73fe0cb30b136254d57e6c9b960c16af4
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501288"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107716967"
 ---
 # <a name="enable-and-create-large-file-shares"></a>启用和创建大型文件共享
 
-在存储帐户上启用大文件共享时，文件共享可以纵向扩展到 100 TiB，同时还可以提高标准共享的 IOPS 和吞吐量上限。 也可以在现有存储帐户中为现有的文件共享启用此缩放。 有关详细信息，请参阅[文件共享和文件缩放目标](storage-files-scale-targets.md#azure-files-scale-targets)。 
+在存储帐户上启用大型文件共享后，Azure 文件共享最多可以纵向扩展到 100 TiB。 启用大型文件共享时，还可能增加文件共享的 IOPS 和吞吐量限制。 你也可以在现有存储帐户中为现有的和新的文件共享实现此扩展。 有关性能差异的详细信息，请参阅[文件共享和文件缩放目标](storage-files-scale-targets.md#azure-files-scale-targets)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,7 +27,7 @@ ms.locfileid: "102501288"
 
 ## <a name="restrictions"></a>限制
 
-目前，只能在启用了大型文件共享的帐户中使用本地冗余存储 (LRS) 或区域冗余存储 (ZRS)。 不能使用异地区域冗余存储 (GZRS)、异地冗余存储 (GRS)、读取访问异地冗余存储 (RA-GRS) 或读取访问异地区域冗余存储 (RA-GZRS)。
+目前，只能在启用了大型文件共享的存储帐户中使用本地冗余存储 (LRS) 或区域冗余存储 (ZRS)。 不能使用异地区域冗余存储 (GZRS)、异地冗余存储 (GRS)、读取访问异地冗余存储 (RA-GRS) 或读取访问异地区域冗余存储 (RA-GZRS)。
 
 在帐户中启用大型文件共享是一个不可逆的过程。 启用后，无法将帐户转换为 GZRS、GRS、RA-GRS 或 RA-GZRS。
 
@@ -35,32 +35,15 @@ ms.locfileid: "102501288"
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在 Azure 门户中，选择“所有服务”。 
 1. 在资源列表中输入“存储帐户”。 键入时，列表会根据输入的内容进行筛选。 选择“存储帐户”。
-1. 在显示的“存储帐户”窗口中，选择“添加”。 
-1. 选择用于创建存储帐户的订阅。
-1. 在“资源组”字段下，选择“新建”。 输入新资源组的名称。
-
-    ![显示如何在门户中创建资源组的屏幕截图](media/storage-files-how-to-create-large-file-share/create-large-file-share.png)
-
-1. 然后，输入存储帐户的名称。 该名称在 Azure 中必须唯一。 该名称的长度必须是 3 到 24 个字符，只能包含数字和小写字母。
-1. 选择存储帐户的位置。
-1. 将复制设置为“本地冗余存储”或“区域冗余存储” 。
-1. 将以下字段保留其默认值：
-
-   |字段  |Value  |
-   |---------|---------|
-   |部署模型     |Resource Manager         |
-   |性能     |标准         |
-   |帐户种类     |StorageV2（常规用途 v2）         |
-   |访问层     |热         |
-
-1. 选择“高级”，然后选择“大型文件共享”右侧的“已启用”选项按钮。  
+1. 在显示的“存储帐户”边栏选项卡中选择“+ 新建”。 
+1. 在“基本信息”边栏选项卡中填写所需的选择。
+1. 确保将“性能”设置为“标准” 。
+1. 将“冗余”设置为“本地冗余存储”或“区域冗余存储”  。
+1. 选择“高级”边栏选项卡，然后选择“大型文件共享”右侧的“启用”选项按钮。  
 1. 选择“查看+创建”可查看存储帐户设置并创建帐户。
-
-    ![Azure 门户中新存储帐户对应的“已启用”选项按钮的屏幕截图](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
-
 1. 选择“创建” 。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -92,12 +75,13 @@ New-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAc
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. 打开 [Azure 门户](https://portal.azure.com)，转到要在其中启用大型文件共享的存储帐户。
-1. 打开存储帐户并选择“配置”。
+1. 打开 [Azure 门户](https://portal.azure.com)，并导航到要在其中启用大型文件共享的存储帐户。
+1. 打开存储帐户，然后选择“文件共享”。
 1. 选择“大型文件共享”对应的“已启用”，然后选择“保存”。  
 1. 依次选择“概述”、“刷新”。 
+1.   选择“共享容量”，然后选择“100 TiB”和“保存”。
 
-![在 Azure 门户中选择现有存储帐户对应的“已启用”选项按钮](media/storage-files-how-to-create-large-file-share/enable-large-file-shares-on-existing.png)
+    :::image type="content" source="media/storage-files-how-to-create-large-file-share/files-enable-large-file-share-existing-account.png" alt-text="Azure 存储帐户和突出显示了 100 TiB 共享的“文件共享”边栏选项卡的屏幕截图。":::
 
 现已在存储帐户中启用大型文件共享。 接下来，必须[更新现有共享的配额](#expand-existing-file-shares)才能利用提高的容量和规模。
 

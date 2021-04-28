@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 03/16/2021
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 79eb7783fd3daf546539dd5b9048f4e9f484374f
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 7cc854c850b02674151da7c88d94a2800b6572f5
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279793"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015962"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-net"></a>向 Azure 服务总线主题发送消息，并从该主题的订阅接收消息 (.NET)
 在本教程中，将创建一个 C# 应用程序来执行以下任务：
@@ -188,7 +188,7 @@ ms.locfileid: "106279793"
     下面是代码中的重要步骤：
     1. 使用命名空间的连接字符串创建 [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) 对象。 
     1. 对 `ServiceBusClient` 对象调用 [CreateSender](/dotnet/api/azure.messaging.servicebus.servicebusclient.createsender) 方法，从而为指定的“服务总线”主题创建 [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender) 对象。 
-    1. 调用帮助器方法 `GetMessages` 以获取要发送到“服务总线”主题的消息队列。 
+    1. 调用帮助器方法 `CreateMessages` 以获取要发送到“服务总线”主题的消息队列。 
     1. 使用 [ServiceBusSender.CreateMessageBatchAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.createmessagebatchasync) 创建 [ServiceBusMessageBatch](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch)。
     1. 使用 [ServiceBusMessageBatch.TryAddMessage](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch.tryaddmessage) 将消息添加到该批次。 在消息被添加到批次后，将从 .NET 队列中删除这些消息。 
     1. 使用 [ServiceBusSender.SendMessagesAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.sendmessagesasync) 方法将批量消息发送到“服务总线”主题。

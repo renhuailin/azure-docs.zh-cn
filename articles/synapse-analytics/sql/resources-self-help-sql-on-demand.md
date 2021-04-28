@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: f94134b2a06155b1b1f390175578e501a840038b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae9a1a374724465148f922efe486c4680e1e36ab
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669421"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144270"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>无服务器 SQL 池自助服务
 
@@ -41,7 +41,7 @@ ms.locfileid: "101669421"
 
 - 如果你的查询针对 CSV 文件，请考虑[创建统计信息](develop-tables-statistics.md#statistics-in-serverless-sql-pool)。 
 
-- 请访问[适用于无服务器 SQL 池的性能最佳做法](best-practices-sql-on-demand.md)以优化查询。  
+- 请访问[适用于无服务器 SQL 池的性能最佳做法](./best-practices-serverless-sql-pool.md)以优化查询。  
 
 ## <a name="create-statement-is-not-supported-in-master-database"></a>主数据库不支持 CREATE 'STATEMENT' 语句
 

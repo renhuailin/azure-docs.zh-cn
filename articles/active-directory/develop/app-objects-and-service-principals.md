@@ -13,12 +13,12 @@ ms.date: 04/16/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: fc1b5356ab607ecb60a457a7295831958e6815e1
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 1d117ecaed626c6226a381c34b3d9a0f4f21175b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727053"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126788"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory 中的应用程序对象和服务主体对象
 
@@ -53,7 +53,7 @@ Microsoft Graph [Application 实体][MS-Graph-App-Entity]定义应用程序对�
 
 当应用程序被授予了对租户中资源的访问权限时（根据注册或[许可](developer-glossary.md#consent)），将创建一个服务主体对象。 还可使用 [Azure PowerShell](howto-authenticate-service-principal-powershell.md)、[Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli)、[Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?tabs=http) 和 [Azure 门户][AZURE-Portal]以及其他工具在租户中创建服务主体对象。 如果使用门户，会在注册应用程序时自动创建服务主体。
 
-第二种类型的服务主体用于表示[托管标识](/azure/active-directory/managed-identities-azure-resources/overview)。 托管标识使开发人员无需管理凭据。 托管标识为应用程序提供一个标识，可以在连接到支持 Azure AD 身份验证的资源时使用。 启用托管标识后，在你的租户中会创建一个表示该托管标识的服务主体。 可以向表示托管标识的服务主体授予访问权限和相关权限，但不能直接更新或修改。
+第二种类型的服务主体用于表示[托管标识](../managed-identities-azure-resources/overview.md)。 托管标识使开发人员无需管理凭据。 托管标识为应用程序提供一个标识，可以在连接到支持 Azure AD 身份验证的资源时使用。 启用托管标识后，在你的租户中会创建一个表示该托管标识的服务主体。 可以向表示托管标识的服务主体授予访问权限和相关权限，但不能直接更新或修改。
 
 第三种类型的服务主体表示旧版应用（在通过旧版体验引入或创建应用注册之前创建的应用）。 旧版服务主体可以具有凭据、服务主体名称、回复 URL 以及其他可由已授权用户编辑的属性，但没有关联的应用注册。 服务主体只能在创建它的租户中使用。
 

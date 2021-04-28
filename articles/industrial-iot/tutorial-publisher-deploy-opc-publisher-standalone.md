@@ -6,18 +6,18 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 3/22/2021
-ms.openlocfilehash: c82d15541459b5b482e427fc707b92755aa02c6c
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: a47f9d6a47876f09ca241c30e3443886642e4fd8
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104787197"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137231"
 ---
 # <a name="tutorial-deploy-the-opc-publisher"></a>教程：部署 OPC 发布服务器
 
 OPC 发布服务器是一种完全受支持的 Microsoft 产品，在开放的环境中开发，可弥补工业资产与 Microsoft Azure 云之间的差距。 它通过连接到启用了 OPC UA 的资产或工业连接软件来实现此目的，并以各种格式将遥测数据发布到 [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)，包括 IEC62541 OPC UA PubSub 标准格式（从2.6 版开始）。
 
-它作为模块在 [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) 上运行，或者作为容器在纯 Docker 上运行。 由于它利用 [.NET 跨平台运行时](https://docs.microsoft.com/dotnet/core/introduction)，因此也会在 Linux 和 Windows 10 上本地运行。
+它作为模块在 [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) 上运行，或者作为容器在纯 Docker 上运行。 由于它利用 [.NET 跨平台运行时](/dotnet/core/introduction)，因此也会在 Linux 和 Windows 10 上本地运行。
 
 在本教程中，你将了解如何执行以下操作：
 

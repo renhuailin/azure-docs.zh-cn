@@ -10,19 +10,19 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: d4fb33e8e904d12e242f7eeaf9c2dc50a02eff4d
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 2133f3da926dfd1e92d911004393893f58d27db6
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105961245"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136442"
 ---
 # <a name="migration-guide-oracle-to-sql-server-on-azure-virtual-machines"></a>迁移指南：Oracle 到 Azure 虚拟机上的 SQL Server
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
 本指南讲解了如何使用适用于 Oracle 的 SQL Server 迁移助手将 Oracle 架构迁移到 Azure 虚拟机上的 SQL Server。 
 
-有关其他迁移指南，请参阅[数据库迁移](https://docs.microsoft.com/data-migration)。 
+有关其他迁移指南，请参阅[数据库迁移](/data-migration)。 
 
 ## <a name="prerequisites"></a>先决条件 
 
@@ -220,7 +220,7 @@ ms.locfileid: "105961245"
    ![屏幕截图，显示 SSMA 中的 SQL Server 实例。](./media/oracle-to-sql-on-azure-vm-guide/validate-in-ssms.png)
 
 你可以使用 SQL Server Integration Services (SSIS) 来迁移数据，而不是使用 SSMA。 若要了解更多信息，请参阅以下文章： 
-- [SQL Server Integration Services](https://docs.microsoft.com//sql/integration-services/sql-server-integration-services) 一文。
+- [SQL Server Integration Services](//sql/integration-services/sql-server-integration-services) 一文。
 - [使用 SSIS 移动 Azure 数据和混合数据](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx)白皮书。
 
 
@@ -292,5 +292,3 @@ ms.locfileid: "105961245"
 
 - 若要评估应用程序访问层，请使用 [Data Access Migration Toolkit 预览版](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)。
 - 若要详细了解如何执行数据访问层 A/B 测试，请参阅[数据库实验助手概述](/sql/dea/database-experimentation-assistant-overview)。
-
-

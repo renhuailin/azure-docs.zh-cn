@@ -8,12 +8,12 @@ ms.subservice: confidential-computing
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: JenCook
-ms.openlocfilehash: 0ba6ee92111da66a2118ba4c490b94e5bc9449e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 571c1a4ce545976db09f46a07d963d5344c02c29
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551379"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791006"
 ---
 # <a name="application-development-on-intel-sgx"></a>在 Intel SGX 上开发应用程序 
 
@@ -23,6 +23,7 @@ ms.locfileid: "102551379"
 若要利用领地和独立环境的强大功能，需要使用支持机密计算的工具。 有多种工具支持领地应用程序开发。 例如，可以使用以下开源框架： 
 
 - [Open Enclave 软件开发工具包 (OE SDK)](#oe-sdk)
+- [EGo 软件开发工具包](#ego)
 - [机密联盟框架 (CCF)](#ccf)
 
 ## <a name="overview"></a>概述
@@ -48,6 +49,10 @@ ms.locfileid: "102551379"
 若要编写在领地中运行的代码，请使用提供商支持的库或框架。 [开放领地 SDK](https://github.com/openenclave/openenclave) (OE SDK) 是一个开源 SDK，可以在支持机密计算的不同硬件上实现抽象化。 
 
 OE SDK 旨在充当任何 CSP 的任何硬件上的单个抽象层。 可以在 Azure 机密计算虚拟机的基础上使用 OE SDK，以创建并运行基于领地的应用程序。
+
+## <a name="ego-software-development-kit"></a>EGo 软件开发工具包 <a id="ego"></a>
+
+[EGo](https://ego.dev/) 是一种开源 SDK，可让你运行在 enclave 内以 Go 编程语言编写的应用程序。 EGo 在 OE SDK 的基础上构建，并且包括用于证明和密封的 in-enclave Go 库。 许多现有的 Go 应用程序在 EGo 上运行而无需进行任何修改。  
 
 ## <a name="confidential-consortium-framework-ccf"></a>机密联盟框架 (CCF) <a id="ccf"></a>
 

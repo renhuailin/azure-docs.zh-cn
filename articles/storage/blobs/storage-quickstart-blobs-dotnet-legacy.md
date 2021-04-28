@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5eacf9c53715bf42c466aaf6a58938bd681630b9
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 631b01dadacf81d66c3f42dc1401d2cf492316b8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280643"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869232"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v11
 
@@ -401,5 +401,5 @@ Press any key to delete the example files and example container.
 > [!div class="nextstepaction"]
 > [上传和处理图像](storage-upload-process-images.md)
 
-* 若要详细了解 .NET Core，请参阅 [Get started with .NET in 10 minutes](https://www.microsoft.com/net/learn/get-started/)（.NET 10 分钟入门）。
+* 若要详细了解 .NET Core，请参阅 [Get started with .NET in 10 minutes](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/intro)（.NET 10 分钟入门）。
 * 若要了解可以通过用于 Windows 的 Visual Studio 部署的示例应用程序，请参阅 [.NET Photo Gallery Web Application Sample with Azure Blob Storage](https://azure.microsoft.com/resources/samples/storage-blobs-dotnet-webapp/)（.NET 照片库 Web 应用程序示例与 Azure Blob 存储）。

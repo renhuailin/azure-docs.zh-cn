@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 6ae56e4e1586a875d4d3d75d41580f375df0eebf
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: aa4a5ec19f9747014bf1a00c35778af6bfc396c3
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105962843"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134656"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>快速入门：部署第一个 Azure Spring Cloud 应用程序
 
@@ -345,9 +345,9 @@ info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
 
 ## <a name="generate-a-spring-cloud-project"></a>生成 Spring Cloud 项目
 
-首先，使用 [Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.9.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client) 生成一个包含推荐的 Azure Spring Cloud 依赖项的示例项目。 下图显示了为此示例项目设置的 Initializr。
+首先，使用 [Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.10.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client) 生成一个包含推荐的 Azure Spring Cloud 依赖项的示例项目。 下图显示了为此示例项目设置的 Initializr。
 ```url
-https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client
+https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.10.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client
 ```
 请注意，此示例使用 Java 版本 8。  如果要使用 Java 版本 11，请更改“项目元数据”下的选项。
 
@@ -449,7 +449,7 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4
 1. 在“名称”字段中接受应用的名称。 “名称”是指配置，不是应用名称。 用户通常不需更改它。
 1. 在“项目”文本框中，选择 hellospring-0.0.1-SNAPSHOT.jar。
 1. 在“订阅”文本框中，验证订阅。
-1. 在“Spring Cloud”文本框中，选择你在[预配 Azure Spring Cloud 实例](./spring-cloud-quickstart-provision-service-instance.md)中创建的 Azure Spring Cloud 实例。
+1. 在“Spring Cloud”文本框中，选择你在[预配 Azure Spring Cloud 实例](./quickstart-provision-service-instance.md)中创建的 Azure Spring Cloud 实例。
 1. 将“公共终结点”设置为“启用”。
 1. 在“应用:”文本框中，选择“创建应用…” 。
 1. 输入“hellospring”，然后单击“确定”。
@@ -520,6 +520,6 @@ az group delete --name <your resource group name; for example: hellospring-15584
 若要了解如何使用更多 Azure Spring 功能，请转到将示例应用程序部署到 Azure Spring Cloud 的快速入门系列：
 
 > [!div class="nextstepaction"]
-> [生成并运行微服务](spring-cloud-quickstart-sample-app-introduction.md)
+> [生成并运行微服务](./quickstart-sample-app-introduction.md)
 
 GitHub 中提供了更多示例：[Azure Spring Cloud 示例](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)。

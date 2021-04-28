@@ -11,12 +11,12 @@ ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3f7d6f8ca285fdc024db9ba952af9f7d169e7188
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ace250e843e0e9fd0a99e4948c344abd65a3beec
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98678468"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140004"
 ---
 # <a name="optimizing-transactions-in-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中优化专用 SQL 池中的事务
 
@@ -419,4 +419,4 @@ END
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅[专用 SQL 池中的事务](sql-data-warehouse-develop-transactions.md)，以便详细了解隔离级别和事务限制。  有关其他最佳做法的概述，请参阅[专用 SQL 池最佳做法](sql-data-warehouse-best-practices.md)。
+请参阅[专用 SQL 池中的事务](sql-data-warehouse-develop-transactions.md)，以便详细了解隔离级别和事务限制。  有关其他最佳做法的概述，请参阅[专用 SQL 池最佳做法](../sql/best-practices-dedicated-sql-pool.md)。

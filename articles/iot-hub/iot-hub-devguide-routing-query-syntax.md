@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 83c290adea02915db1dc52bd359b4d3165611522
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4ba48377d868404ff130ec458e50e2b42fae977
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92547701"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790510"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT 中心消息路由查询语法
 
@@ -168,6 +168,13 @@ length($body.Weather.Location.State) = 2
 ```sql
 $body.Weather.Temperature = 50 AND processingPath = 'hot'
 ```
+
+> [!NOTE] 
+> 只能对正文引用中的属性运行查询和函数。 不能对整个正文引用运行查询或函数。 例如，以下查询不受支持，并且将返回 `undefined`：
+> 
+> ```sql
+> $body[0] = 'Feb'
+> ```
 
 ## <a name="message-routing-query-based-on-device-twin"></a>基于设备孪生的消息路由查询 
 

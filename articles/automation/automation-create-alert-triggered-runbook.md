@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: ea7979ad4a401d317ec126b7abfe354690475235
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 36f1881ddd10498e7736de2d117a42021075abdc
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104953096"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834869"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>使用警报触发 Azure 自动化 Runbook
 
@@ -52,7 +53,7 @@ ms.locfileid: "104953096"
 1. 转到 Azure 自动化帐户。
 2. 在“过程自动化”下，选择“Runbook”。 
 3. 在 Runbook 列表的顶部选择“+ 创建 Runbook”。
-4. 在“添加 runbook”页上，输入 Stop-AzureVmInResponsetoVMAlert 作为 runbook 名称 。 对于 runbook 类型，选择“PowerShell”。 然后选择“创建”  。  
+4. 在“添加 runbook”页上，输入 Stop-AzureVmInResponsetoVMAlert 作为 runbook 名称 。 对于 runbook 类型，选择“PowerShell”。 然后选择“创建”。  
 5. 将以下 PowerShell 示例复制到“编辑”页中。
 
     ```powershell-interactive
