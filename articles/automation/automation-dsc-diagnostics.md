@@ -8,13 +8,14 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
+ms.custom: devx-track-azurepowershell
 manager: carmonm
-ms.openlocfilehash: 0afe349473bcddcbf1ac35136f2991ffe82670c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8952ea87cfd9317225ecb9e313174f8d1fe8e519
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100576067"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834797"
 ---
 # <a name="integrate-with-azure-monitor-logs"></a>与 Azure Monitor 日志集成
 
@@ -155,7 +156,7 @@ Azure 自动化诊断将在 Azure Monitor 日志中创建以下两种类别的�
 | ResourceId |Azure 自动化帐户的资源标识符。 |
 | ResultDescription | 此操作的资源说明。 |
 | SubscriptionId | 自动化帐户的 Azure 订阅 ID (GUID)。 |
-| ResourceGroup | 自动化帐户的资源组的名称。 |
+| resourceGroup | 自动化帐户的资源组的名称。 |
 | ResourceProvider | MICROSOFT.AUTOMATION。 |
 | ResourceType | AUTOMATIONACCOUNTS。 |
 | CorrelationId | 用作符合性报告相关性标识符的 GUID。 |
@@ -186,7 +187,7 @@ Azure 自动化诊断将在 Azure Monitor 日志中创建以下两种类别的�
 | ResourceId |Azure 自动化帐户的标识符。 |
 | ResultDescription | 此操作的说明。 |
 | SubscriptionId | 自动化帐户的 Azure 订阅 ID (GUID)。 |
-| ResourceGroup | 自动化帐户的资源组的名称。 |
+| resourceGroup | 自动化帐户的资源组的名称。 |
 | ResourceProvider | MICROSOFT.AUTOMATION。 |
 | ResourceType | AUTOMATIONACCOUNTS。 |
 | CorrelationId |用作符合性报告相关性 ID 的 GUID。 |

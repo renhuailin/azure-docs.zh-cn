@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 08b1294436ead372234104008a48ca23e56de389
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 875669d774684c2960d7e56b655ce0e9234e61db
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589304"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108148104"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp-globalview-deprecated"></a>Azure Active Directory 单一登录 (SSO) 与 ADP Globalview 集成（已弃用）
 
@@ -26,7 +26,7 @@ ms.locfileid: "104589304"
 * 让用户使用其 Azure AD 帐户自动登录到 ADP Globalview（已弃用）。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -87,7 +87,7 @@ ms.locfileid: "104589304"
     > [!NOTE]
     > 此值不是真实值。 请使用实际标识符更新此值。 请联系 [ADP Globalview（已弃用）客户端支持团队](https://www.adp.com/contact-us/overview.aspx)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -133,9 +133,9 @@ ms.locfileid: "104589304"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 ADP Globalview（已弃用）
 
-* 你可使用 Microsoft 的“我的应用”。 在访问面板中单击“ADP Globalview（已弃用）”磁贴时，应会自动登录到设置了 SSO 的 ADP Globalview（已弃用）。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 在访问面板中单击“ADP Globalview（已弃用）”磁贴时，应会自动登录到设置了 SSO 的 ADP Globalview（已弃用）。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 ADP Globalview（已弃用）后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 ADP Globalview（已弃用）后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

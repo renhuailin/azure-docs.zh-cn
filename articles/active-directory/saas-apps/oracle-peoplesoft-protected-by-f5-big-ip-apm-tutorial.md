@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 3af149f0c1db7f354be6bd968bbd0cf858493d4c
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: a45b4d1c006762cdad7f818c22f59b9e18436b95
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219291"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146106"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-peoplesoft---protected-by-f5-big-ip-apm"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Oracle PeopleSoft - Protected by F5 BIG-IP APM 集成
 
@@ -87,7 +87,7 @@ ms.locfileid: "106219291"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<FQDN>.peoplesoft.f5.com`
 
@@ -329,8 +329,8 @@ ms.locfileid: "106219291"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到受 F5 BIG-IP APM 保护的 Oracle PeopleSoft（已为其设置 SSO）。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 单击“我的应用”中的“受 F5 BIG-IP APM 保护的 Oracle PeopleSoft”磁贴时，如果是在 SP 模式下进行配置，系统会将你重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下进行配置，则系统会自动登录到受 F5 BIG-IP APM 保护的 Oracle PeopleSoft（已为其设置 SSO）。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 单击“我的应用”中的“受 F5 BIG-IP APM 保护的 Oracle PeopleSoft”磁贴时，如果是在 SP 模式下进行配置，系统会将你重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下进行配置，则系统会自动登录到受 F5 BIG-IP APM 保护的 Oracle PeopleSoft（已为其设置 SSO）。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置受 F5 BIG-IP APM 保护的 Oracle PeopleSoft 后，你可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置受 F5 BIG-IP APM 保护的 Oracle PeopleSoft 后，你可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

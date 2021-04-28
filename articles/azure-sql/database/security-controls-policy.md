@@ -1,18 +1,18 @@
 ---
 title: Azure SQL 数据库的 Azure Policy 法规遵从性控制
 description: 列出可用于 Azure SQL 数据库和 SQL 托管实例的 Azure Policy 法规遵从性控制。 这些内置的策略定义提供了管理 Azure 资源合规性的常用方法。
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.service: sql-database
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 7073811a53d085c8fc547875c05f897449b25873
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: fc732a047719ccb9f7f1c2b7c03659969cb98382
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107500051"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871699"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-sql-database--sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例的 Azure Policy 法规遵从性控制
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

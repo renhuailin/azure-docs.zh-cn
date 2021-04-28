@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/04/2020
-ms.openlocfilehash: 51059dd1c4c5c93e155cd7a2d34c3cbaf29db6e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae5ca6ac822dabd32b6463c3a742901f32b34323
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101705579"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862248"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>创建和管理 Azure 逻辑应用中用于 B2B 企业集成的集成帐户
 
@@ -47,9 +47,9 @@ ms.locfileid: "101705579"
 
 ## <a name="create-integration-account"></a>创建集成帐户
 
-### <a name="portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[门户](#tab/azure-portal)
 
-对于此任务，可以使用 Azure 门户并执行本部分中所述的步骤，也可以使用 [Azure PowerShell](/powershell/module/Az.LogicApp/New-AzIntegrationAccount) 或 [Azure CLI](/cli/azure/resource#az-resource-create)。
+对于此任务，可以使用 Azure 门户并执行本部分中所述的步骤，也可以使用 [Azure PowerShell](/powershell/module/Az.LogicApp/New-AzIntegrationAccount) 或 [Azure CLI](/cli/azure/resource#az_resource_create)。
 
 1. 使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -65,7 +65,7 @@ ms.locfileid: "101705579"
 
    ![提供集成帐户详细信息](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
-   | 属性 | 必选 | 值 | 说明 |
+   | 属性 | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **名称** | 是 | <integration-account-name>  | 集成帐户的名称，只能包含字母、数字、连字符 (`-`)、下划线 (`_`)、括号（`(`、`)`）和句点 (`.`)。 本示例使用的名称是“Fabrikam-Integration”。 |
    | **订阅** | 是 | <*Azure-subscription-name*> | Azure 订阅的名称 |
@@ -93,7 +93,7 @@ ms.locfileid: "101705579"
 
 使用这些命令创建集成帐户。
 
-1. 若要添加 [az 逻辑集成帐户](/cli/azure/ext/logic/logic/integration-account)扩展，请使用 [az extension add](/cli/azure/extension#az_extension_add) 命令：
+1. 若要添加 [az 逻辑集成帐户](/cli/azure/logic/integration-account)扩展，请使用 [az extension add](/cli/azure/extension#az_extension_add) 命令：
 
    ```azurecli
    az extension add –-name logic
@@ -105,13 +105,13 @@ ms.locfileid: "101705579"
    az group create --name myresourcegroup --location westus
    ```
 
-   若要列出资源组的集成帐户，请使用 [az log integration-account list](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_list) 命令：
+   若要列出资源组的集成帐户，请使用 [az log integration-account list](/cli/azure/logic/integration-account#az_logic_integration_account_list) 命令：
 
    ```azurecli
    az logic integration-account list --resource-group myresourcegroup
    ```
 
-1. 若要创建集成帐户，请运行 [az logic integration-account create](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_create) 命令：
+1. 若要创建集成帐户，请运行 [az logic integration-account create](/cli/azure/logic/integration-account#az_logic_integration_account_create) 命令：
 
    ```azurecli
    az logic integration-account create --resource-group myresourcegroup \
@@ -123,13 +123,13 @@ ms.locfileid: "101705579"
    > [!TIP]
    > 若要在[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中创建集成帐户，请选择 ISE 作为位置。 有关详细信息，请参阅[在 ISE 中创建集成帐户](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)。
 
-   若要查看特定的集成帐户，请使用 [az logic integration-account show](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_show) 命令：
+   若要查看特定的集成帐户，请使用 [az logic integration-account show](/cli/azure/logic/integration-account#az_logic_integration_account_show) 命令：
 
    ```azurecli
    az logic integration-account show --name integration_account_01 --resource-group myresourcegroup
    ```
 
-   你可以使用 [az logic integration-account update](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_update) 命令更改你的 SKU 或定价层：
+   你可以使用 [az logic integration-account update](/cli/azure/logic/integration-account#az_logic_integration_account_update) 命令更改你的 SKU 或定价层：
 
    ```azurecli
    az logic integration-account update --sku name=Basic --name integration_account_01 \
@@ -142,14 +142,14 @@ ms.locfileid: "101705579"
    * [逻辑应用限制和配置](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)
    * [逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)
 
-若要使用 JSON 文件导入集成帐户，请使用 [az logic integration-account import](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_import) 命令：
+若要使用 JSON 文件导入集成帐户，请使用 [az logic integration-account import](/cli/azure/logic/integration-account#az_logic_integration_account_import) 命令：
 
 ```azurecli
 az logic integration-account import --name integration_account_01 \
     --resource-group myresourcegroup --input-path integration.json
 ```
 
-你可以使用 [az logic integration-account delete](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_delete) 命令：
+你可以使用 [az logic integration-account delete](/cli/azure/logic/integration-account#az_logic_integration_account_delete) 命令：
 
 ```azurecli
 az logic integration-account delete --name integration_account_01 --resource-group myresourcegroup
@@ -197,7 +197,7 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
 可以使用 Azure 门户或 Azure CLI 进行更改。
 
-#### <a name="portal"></a>[Portal](#tab/azure-portal)
+#### <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -223,7 +223,7 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
    ![打开 Azure Cloud Shell](./media/logic-apps-enterprise-integration-create-integration-account/open-azure-cloud-shell-window.png)
 
-1. 在命令提示符下输入 [**az resource** 命令](/cli/azure/resource#az-resource-update)，并将 `skuName` 设置为所需的更高层。
+1. 在命令提示符下输入 [**az resource** 命令](/cli/azure/resource#az_resource_update)，并将 `skuName` 设置为所需的更高层。
 
    ```azurecli
    az resource update --resource-group {ResourceGroupName} --resource-type Microsoft.Logic/integrationAccounts --name {IntegrationAccountName} --subscription {AzureSubscriptionID} --set sku.name={SkuName}
@@ -249,7 +249,7 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
    ![打开 Azure Cloud Shell](./media/logic-apps-enterprise-integration-create-integration-account/open-azure-cloud-shell-window.png)
 
-1. 在命令提示符下输入 [**az resource** 命令](/cli/azure/resource#az-resource-update)，并将 `skuName` 设置为所需的更低层。
+1. 在命令提示符下输入 [**az resource** 命令](/cli/azure/resource#az_resource_update)，并将 `skuName` 设置为所需的更低层。
 
    ```azurecli
    az resource update --resource-group <resourceGroupName> --resource-type Microsoft.Logic/integrationAccounts --name <integrationAccountName> --subscription <AzureSubscriptionID> --set sku.name=<skuName>
@@ -309,7 +309,7 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
 可将集成帐户移到另一个 Azure 资源组或 Azure 订阅。 移动资源时，Azure 会创建新的资源 ID，因此请确保改用新 ID，并更新与所移动的资源关联的任何脚本或工具。 若要更改订阅，还必须指定现有或新的资源组。
 
-对于此任务，可以使用 Azure 门户并执行本部分中所述的步骤，或使用 [Azure CLI](/cli/azure/resource#az-resource-move)。
+对于此任务，可以使用 Azure 门户并执行本部分中所述的步骤，或使用 [Azure CLI](/cli/azure/resource#az_resource_move)。
 
 1. 使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -341,7 +341,7 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
 ## <a name="delete-integration-account"></a>删除集成帐户
 
-对于此任务，可以使用 Azure 门户并执行本部分中所述的步骤，也可以使用 [Azure CLI](/cli/azure/resource#az-resource-delete) 或 [Azure PowerShell](/powershell/module/az.logicapp/remove-azintegrationaccount)。
+对于此任务，可以使用 Azure 门户并执行本部分中所述的步骤，也可以使用 [Azure CLI](/cli/azure/resource#az_resource_delete) 或 [Azure PowerShell](/powershell/module/az.logicapp/remove-azintegrationaccount)。
 
 1. 使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com)。
 

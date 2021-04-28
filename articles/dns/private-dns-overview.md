@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 04/09/2021
 ms.author: rohink
-ms.openlocfilehash: 560a88c973d71b3e2c6533e05e4f374f9a5bcd8f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 4c867ad3888544df93f8a6e5a6236a01197eefc2
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311475"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127832"
 ---
 # <a name="what-is-azure-private-dns"></a>什么是 Azure 专用 DNS？
 
@@ -78,4 +78,4 @@ Azure DNS 具有以下限制：
 
 * 访问 [DNS 区域和记录概述](dns-zones-records.md)，了解 DNS 区域和记录。
 
-* 了解 Azure 的一些其他关键[网络功能](../networking/networking-overview.md)。
+* 了解 Azure 的一些其他关键[网络功能](../networking/fundamentals/networking-overview.md)。

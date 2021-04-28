@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: c49a721a4db758965c9cf8d71f5d73b5754b6088
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e8be77851d0d7102d7c0cef85d9fbfefd8dc2a2
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104654469"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137159"
 ---
 # <a name="backend-pool-management"></a>后端池管理
 后端池是负载均衡器的一个关键组成部分。 后端池定义将在给定负载均衡规则下提供流量的资源的组。
@@ -324,4 +324,4 @@ IP 地址配置的后端池具有以下限制：
 
 详细了解 [Azure 负载均衡器](load-balancer-overview.md)。
 
-查看用于基于 IP 的后端池管理的 [REST API](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerbackendaddresspools/createorupdate)。
+查看用于基于 IP 的后端池管理的 [REST API](/rest/api/load-balancer/loadbalancerbackendaddresspools/createorupdate)。

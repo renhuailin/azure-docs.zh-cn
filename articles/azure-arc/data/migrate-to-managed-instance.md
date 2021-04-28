@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 86563b0a44bade2cedaf76af3c247821756111fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e0fbd0e49b1ac80161d0447d2f75a9cc03844abb
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90934521"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130118"
 ---
 # <a name="migrate-sql-server-to-azure-arc-enabled-sql-managed-instance"></a>迁移：从 SQL Server 到已启用 Azure Arc 的 SQL 托管实例
 
@@ -36,7 +36,7 @@ ms.locfileid: "90934521"
 
 ### <a name="step-1-provision-azure-blob-storage"></a>步骤 1：预配 Azure Blob 存储
 
-1. 按照[创建 Azure Blob 存储帐户](../../storage/blobs/storage-blob-create-account-block-blob.md?tabs=azure-portal)中所述的步骤操作
+1. 按照[创建 Azure Blob 存储帐户](../../storage/common/storage-account-create.md?tabs=azure-portal)中所述的步骤操作
 1. 启动 Azure 存储资源管理器
 1. [登录到 Azure](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#sign-in-to-azure) 以访问在上一步骤中创建的 Blob 存储
 1. 右键单击 Blob 存储帐户，并选择“创建 Blob 容器”以创建要将备份文件存储到的新容器

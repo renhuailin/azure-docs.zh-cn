@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 9366bb5b2bb5820245ec1b699bbf2ddda0dd9f9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0cc32a84ee0d214df9533b480a1c29bb57ee1c7
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100103169"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071732"
 ---
 # <a name="single-page-application-app-registration"></a>单页应用程序：应用注册
 
@@ -68,8 +68,6 @@ ms.locfileid: "100103169"
 1. 选择“配置”以添加重定向 URI。
 
 现在，你已经完成了单页应用程序 (SPA) 的注册，并配置了重定向 URI，客户端将被重定向到该 URI，并且安全令牌也将发送到该 URI。 通过选择“ID 令牌”和“访问令牌”中的一个或选择两个，即表示启用了隐式授权流。
-
-如需进一步的指导，请参阅[教程](tutorial-v2-javascript-spa.md)。
 
 ## <a name="note-about-authorization-flows"></a>关于授权流的注意事项
 

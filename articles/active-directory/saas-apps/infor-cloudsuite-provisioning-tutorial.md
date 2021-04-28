@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 8fdd2c8a326fbdc68d1aec65377f4c465c5ee4c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cea5b360abc265601a366f73a92a5340713fccac
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96353895"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074288"
 ---
 # <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>教程：为 Infor CloudSuite 配置自动用户设置
 
@@ -32,7 +32,7 @@ ms.locfileid: "96353895"
 本教程中概述的方案假定你已具有以下先决条件：
 
 * Azure AD 租户
-* [Infor CloudSuite 租户](https://www.infor.com/products/infor-os)
+* [Infor CloudSuite 租户](https://www.infor.com/products)
 * Infor CloudSuite 中具有管理员权限的用户帐户。
 
 ## <a name="assigning-users-to-infor-cloudsuite"></a>将用户分配到 Infor CloudSuite

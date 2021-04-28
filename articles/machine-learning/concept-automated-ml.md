@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
-ms.openlocfilehash: cbc147cb0aabc0540e3a91c99243aa88a8cca146
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 6f8f775e474b47cbfd5f3b4aca8987a009a7f6e1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210786"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874128"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什么是自动化机器学习 (AutoML)？
 
@@ -92,7 +92,7 @@ Azure 机器学习提供了两种使用自动化 ML 的体验方式：
     
 1. **指定已标记训练数据的源和格式**：Numpy 数组或 Pandas 数据帧
 
-1. **配置模型训练的计算目标**，例如 [本地计算机、Azure 机器学习计算、远程 VM 或 Azure Databricks](how-to-set-up-training-targets.md)。  了解如何对[远程资源](how-to-auto-train-remote.md)进行自动训练。
+1. **配置模型训练的计算目标**，例如 [本地计算机、Azure 机器学习计算、远程 VM 或 Azure Databricks](how-to-set-up-training-targets.md)。
 
 1. **配置自动化机器学习参数**，用于确定要对不同模型运行的迭代次数、超参数设置、高级预处理/特征化，以及在确定最佳模型时要查看的具体指标。  
 1. **提交训练运行。**
@@ -106,8 +106,6 @@ Azure 机器学习提供了两种使用自动化 ML 的体验方式：
 还可以检查记录的运行信息，其中[包含的指标](how-to-understand-automated-ml.md)是在运行期间收集的。 训练运行会生成一个包含模型和数据预处理的 Python 序列化对象（`.pkl` 文件）。
 
 模型生成是自动化的，同时，你也可以[了解特征对于生成的模型而言如何重要或者彼此相关](how-to-configure-auto-train.md#explain)。
-
-了解如何使用[远程计算目标](how-to-auto-train-remote.md)。
 
 
 

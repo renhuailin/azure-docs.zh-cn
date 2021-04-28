@@ -3,14 +3,15 @@ title: 通过 Webhook 启动 Azure 自动化 Runbook
 description: 本文介绍如何使用 Webhook 通过 HTTP 调用在 Azure 自动化中启动 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 06/24/2020
+ms.date: 03/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: df19f32be41b17e13a9da575e828830e29da4e55
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 338fb56c4af5c24b7b746ffd6508c2fe7d52b131
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98894756"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830189"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>从 Webhook 启动 Runbook
 
@@ -30,7 +31,7 @@ ms.locfileid: "98894756"
 | 属性 | 说明 |
 |:--- |:--- |
 | 名称 |Webhook 的名称。 可以提供任何名称，因为该名称不会公开给客户端。 它只用来标识 Azure 自动化中的 Runbook。 最好是为 Webhook 提供一个名称，该名称需要与使用它的客户端相关。 |
-| URL |Webhook 的 URL。 这是客户端通过 HTTP POST 来调用的唯一地址，用于启动链接到 Webhook 的 Runbook。 它是在创建 Webhook 时自动生成的。 无法指定自定义 URL。 <br> <br> URL 包含一个允许第三方系统调用 Runbook 的安全令牌，不需要进一步进行身份验证。 因此，应该将 URL 视为密码。 出于安全原因，只能在创建 Webhook 时通过 Azure 门户查看该 URL。 请将保存在安全位置的 URL 记下来，供将来使用。 |
+| 代码 |Webhook 的 URL。 这是客户端通过 HTTP POST 来调用的唯一地址，用于启动链接到 Webhook 的 Runbook。 它是在创建 Webhook 时自动生成的。 无法指定自定义 URL。 <br> <br> URL 包含一个允许第三方系统调用 Runbook 的安全令牌，不需要进一步进行身份验证。 因此，应该将 URL 视为密码。 出于安全原因，只能在创建 Webhook 时通过 Azure 门户查看该 URL。 请将保存在安全位置的 URL 记下来，供将来使用。 |
 | 到期日期 | Webhook 的到期日期，该日期之后不能再使用它。 创建 Webhook 后，只要它没有到期，就可以修改到期日期。 |
 | 已启用 | 指示 Webhook 是否在创建后默认启用的设置。 如果将此属性设置为“禁用”，则任何客户端都无法使用 Webhook。 可以在创建 Webhook 或 Webhook 创建后的任何其他时间设置此属性。 |
 
@@ -101,8 +102,8 @@ Webhook 的安全性取决于其 URL 的私密性，可以通过 URL 中包含�
 4. 填写 Webhook 的“名称”和“到期日期”字段，并指定是否应启用此功能 。 如需详细了解 Webhook 属性，请参阅 [Webhook 属性](#webhook-properties)。
 5. 单击复制图标，并按 Ctrl+C 以复制 Webhook 的 URL。 然后，将其记录在某个安全的位置。 
 
-    > [!NOTE]
-    > 一旦创建 Webhook，就不能再次检索该 URL。
+    > [!IMPORTANT]
+    > 一旦创建 Webhook，就不能再次检索该 URL。 请务必按上面所述对其进行复制并记录。
 
    ![Webhook URL](media/automation-webhooks/copy-webhook-url.png)
 
@@ -134,6 +135,111 @@ http://<Webhook Server>/token?=<Token Value>
 ```
 
 客户端无法从 Webhook 确定 Runbook 的作业何时完成或其完成状态。 可以使用作业 ID 并配合其他机制（例如 [Windows PowerShell](/powershell/module/servicemanagement/azure.service/get-azureautomationjob) 或 [Azure 自动化 API](/rest/api/automation/job)）来了解此信息。
+
+### <a name="use-a-webhook-from-an-arm-template"></a>通过 ARM 模板使用 Webhook
+
+自动化 Webhook 还可以通过 [Azure 资源管理器 (ARM) 模板](/azure/azure-resource-manager/templates/overview)进行调用。 ARM 模板可发出 `POST` 请求，并接收返回代码，就像任何其他客户端一样。 请参阅[使用 Webhook](#use-a-webhook)。
+
+   > [!NOTE]
+   > 出于安全原因，仅在首次部署模板时才返回 URI。
+
+此示例模板会创建一个测试环境，并返回它创建的 Webhook 的 URI。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "automationAccountName": {
+            "type": "String",
+            "metadata": {
+                "description": "Automation account name"
+            }
+        },
+        "webhookName": {
+            "type": "String",
+            "metadata": {
+                "description": "Webhook Name"
+            }
+        },
+        "runbookName": {
+            "type": "String",
+            "metadata": {
+                "description": "Runbook Name for which webhook will be created"
+            }
+        },
+        "WebhookExpiryTime": {
+            "type": "String",
+            "metadata": {
+                "description": "Webhook Expiry time"
+            }
+        },
+        "_artifactsLocation": {
+            "defaultValue": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-automation/",
+            "type": "String",
+            "metadata": {
+                "description": "URI to artifacts location"
+            }
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Automation/automationAccounts",
+            "apiVersion": "2020-01-13-preview",
+            "name": "[parameters('automationAccountName')]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "sku": {
+                    "name": "Free"
+                }
+            },
+            "resources": [
+                {
+                    "type": "runbooks",
+                    "apiVersion": "2018-06-30",
+                    "name": "[parameters('runbookName')]",
+                    "location": "[resourceGroup().location]",
+                    "dependsOn": [
+                        "[parameters('automationAccountName')]"
+                    ],
+                    "properties": {
+                        "runbookType": "Python2",
+                        "logProgress": "false",
+                        "logVerbose": "false",
+                        "description": "Sample Runbook",
+                        "publishContentLink": {
+                            "uri": "[uri(parameters('_artifactsLocation'), 'scripts/AzureAutomationTutorialPython2.py')]",
+                            "version": "1.0.0.0"
+                        }
+                    }
+                },
+                {
+                    "type": "webhooks",
+                    "apiVersion": "2018-06-30",
+                    "name": "[parameters('webhookName')]",
+                    "dependsOn": [
+                        "[parameters('automationAccountName')]",
+                        "[parameters('runbookName')]"
+                    ],
+                    "properties": {
+                        "isEnabled": true,
+                        "expiryTime": "[parameters('WebhookExpiryTime')]",
+                        "runbook": {
+                            "name": "[parameters('runbookName')]"
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "outputs": {
+        "webhookUri": {
+            "type": "String",
+            "value": "[reference(parameters('webhookName')).uri]"
+        }
+    }
+}
+```
 
 ## <a name="renew-a-webhook"></a>续订 Webhook
 

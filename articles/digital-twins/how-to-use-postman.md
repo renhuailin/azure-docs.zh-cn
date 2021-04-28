@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: d4a6e25578cd26b10b34f74a9f859d4957cc553b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a528e224511fda363afb80a7749a018e07b5fa26
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783806"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587997"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>如何使用 Postman 将请求发送到 Azure 数字孪生 API
 
@@ -29,7 +29,7 @@ ms.locfileid: "104783806"
 
 Azure 数字孪生提供了两个可用的 API 集：数据平面和控制平面 。 如需详细了解这些 API 集之间的差异，请参阅[操作指南：使用 Azure 数字孪生 API 和 SDK](how-to-use-apis-sdks.md)。 本文包含这两个 API 集的信息。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要继续使用 Postman 访问 Azure 数字孪生 API，需要设置 Azure 数字孪生实例并下载 Postman。 本部分的其余部分将指导你完成这些步骤。
 
@@ -77,6 +77,8 @@ Azure 数字孪生提供了两个可用的 API 集：数据平面和控制平面
     ```
     ---
 
+    >[!NOTE]
+    > 如果需要使用属于不同于实例的 Azure Active Directory 租户的服务主体或用户帐户来访问 Azure 数字孪生实例，则需要从 Azure 数字孪生实例的“主”租户请求令牌。 有关此过程的详细信息，请参阅[操作指南：编写应用身份验证代码](how-to-authenticate-client.md#authenticate-across-tenants)。
 
 3. 复制结果中 `accessToken` 的值并将其保存，以便在下一部分中使用。 这就是你将提供给 Postman 用于授权请求的令牌值。
 

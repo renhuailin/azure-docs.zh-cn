@@ -9,12 +9,12 @@ ms.date: 01/29/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: a5d1d6af68fcbd6a5822b2652ee79c464d02241f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d48ab6223485807400b6749bcf72691261405495
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200766"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134548"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure 存储分析日志记录
 
@@ -35,7 +35,7 @@ ms.locfileid: "103200766"
  仅在针对服务终结点发出请求时才会创建日志条目。 例如，如果存储帐户的 Blob 终结点中存在活动，而表或队列终结点中没有该活动，则仅创建与 Blob 服务有关的日志。
 
 > [!NOTE]
->  存储分析日志记录现仅可用于 Blob、队列和表服务。 存储分析日志记录也可用于高性能 [BlockBlobStorage](../blobs/storage-blob-create-account-block-blob.md) 帐户。 但是，它不适用于具有高级性能的常规用途 v2 帐户。
+>  存储分析日志记录现仅可用于 Blob、队列和表服务。 存储分析日志记录也可用于高性能 [BlockBlobStorage](./storage-account-create.md) 帐户。 但是，它不适用于具有高级性能的常规用途 v2 帐户。
 
 ## <a name="requests-logged-in-logging"></a>日志记录中记录的请求
 ### <a name="logging-authenticated-requests"></a>记录经过身份验证的请求
@@ -97,7 +97,7 @@ ms.locfileid: "103200766"
 
  下表说明了日志名称中的每个属性：
 
-|属性|说明|
+|Attribute|说明|
 |---------------|-----------------|
 |`<service-name>`|存储服务的名称 例如，`blob`、`table` 或 `queue`|
 |`YYYY`|用四位数表示的日志年份。 例如： `2011`|
@@ -121,7 +121,7 @@ ms.locfileid: "103200766"
 
  所有日志 Blob 与可用于确定 Blob 包含哪些日志记录数据的元数据一起存储。 下表说明了每个元数据属性：
 
-|属性|说明|
+|Attribute|说明|
 |---------------|-----------------|
 |`LogType`|描述日志是否包含与读取、写入或删除操作有关的信息。 该值可能包含一种类型，也可能包含所有三种类型的组合并用逗号隔开。<br /><br /> 示例 1：`write`<br /><br /> 示例 2：`read,write`<br /><br /> 示例 3：`read,write,delete`|
 |`StartTime`|日志中条目的最早时间，采用 `YYYY-MM-DDThh:mm:ssZ` 形式。 例如： `2011-07-31T18:21:46Z`|

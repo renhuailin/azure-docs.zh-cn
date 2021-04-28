@@ -12,17 +12,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/10/2020
-ms.openlocfilehash: 1d8859f4790610e72ad517f74bbbbf0cf77d9316
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1fe39e0ff9acc0c092199ab2dd199cf396f67d01
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97705194"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874758"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database"></a>快速入门：使用 Visual Studio 中的 .NET 和 C# 来连接和查询数据库
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-本快速入门展示了如何使用 Visual Studio 中的 [.NET Framework](https://www.microsoft.com/net/) 和 C# 代码通过 Transact-SQL 语句查询 Azure SQL 或 Synapse SQL 中的数据库。
+本快速入门展示了如何使用 Visual Studio 中的 [.NET Framework](https://dotnet.microsoft.com) 和 C# 代码通过 Transact-SQL 语句查询 Azure SQL 或 Synapse SQL 中的数据库。
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc51c645c470f2b5b0a009eaf831db2f1957617e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 93ae1982dfaef6e10edf39013474b6663dd688d0
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780131"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130604"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>快速入门：在 Azure Active Directory 中创建一个新租户
 
@@ -63,9 +63,9 @@ ms.locfileid: "107780131"
 
 ## <a name="your-user-account-in-the-new-tenant"></a>新租户中的用户帐户
 
-创建新的 Azure AD 租户时，你会成为该租户的第一位用户。 作为第一个用户，系统将自动为你分配[全局管理员](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference#global-administrator)角色。 通过导航到[用户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/MsGraphUsers)页面来查看你的用户帐户。
+创建新的 Azure AD 租户时，你会成为该租户的第一位用户。 作为第一个用户，系统将自动为你分配[全局管理员](../roles/permissions-reference.md#global-administrator)角色。 通过导航到[用户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/MsGraphUsers)页面来查看你的用户帐户。
 
-默认情况下，你还会作为租户的[技术联系人](https://docs.microsoft.com/microsoft-365/admin/manage/change-address-contact-and-more?view=o365-worldwide#what-do-these-fields-mean)列出。 可在[属性](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)中更改技术联系人信息。
+默认情况下，你还会作为租户的[技术联系人](/microsoft-365/admin/manage/change-address-contact-and-more?view=o365-worldwide#what-do-these-fields-mean)列出。 可在[属性](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)中更改技术联系人信息。
 
 > [!WARNING]
 > 确保你的目录至少具有两个分配有全局管理员权限的帐户。 这有助于应对一个全局管理员被锁定的情况。有关更多详细信息，请参阅[在 Azure AD 中管理紧急访问帐户](../roles/security-emergency-access.md)一文。

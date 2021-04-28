@@ -4,12 +4,12 @@ description: 本文介绍了如何查看和查询由 Azure Application Insights 
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d06fe64ddc0475b5ca7d9c16876c8dfc9acda544
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 47d5bbf8d8a1f85c4f9441076ef29ffd94710947
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101729362"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108064118"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>在 Application Insights 中分析 Azure Functions 遥测数据 
 
@@ -146,7 +146,7 @@ traces
 
 | 指标 | 说明 |
 | ---- | ---- |
-| **FunctionExecutionCount** | 函数执行计数表示函数应用已执行的次数。 这与函数在应用中运行的次数相关。 此指标目前不支持在 Linux 上运行的高级和专用（App 服务）计划。 |
+| **FunctionExecutionCount** | 函数执行计数表示函数应用已执行的次数。 这与函数在应用中运行的次数相关。 |
 | **FunctionExecutionUnits** | 函数执行单位由执行次数和内存使用组成。  目前无法通过 Azure Monitor 获取内存数据这一指标。 但是，如果要优化应用的内存用量，可以使用 Application Insights 收集的性能计数器数据。 此指标目前不支持在 Linux 上运行的高级和专用（App 服务）计划。|
 
 若要详细了解如何使用 Application Insights 数据计算消耗计划的成本，请参阅[估计消耗计划成本](functions-consumption-costs.md)。 若要详细了解如何使用监视器资源管理器查看指标，请参阅 [Azure 指标资源管理器入门](../azure-monitor/essentials/metrics-getting-started.md)。

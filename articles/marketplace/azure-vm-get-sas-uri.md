@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
-ms.date: 03/10/2021
-ms.openlocfilehash: 21ccafe3e15f902e35657a9aa31516bbaeb3b4c8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/21/2021
+ms.openlocfilehash: 0f7d63a1213b6fe6625f16f33f18680b7a9e6bcb
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558000"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906829"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>如何为 VM 映像生成 SAS URI
 
@@ -21,7 +21,6 @@ ms.locfileid: "105558000"
 
 为 VHD 生成 SAS URI 需要满足以下要求：
 
-- SAS URI 仅支持非托管的 VHD。
 - 只需要“列出”和“读取”权限。 不要提供“写入”或“删除”访问权限。
 - 访问权限持续时间（过期日期）应至少是从 SAS URI 创建时间开始算起的 3 周。
 - 若要防范 UTC 时间更改，请将开始日期设置为当前日期的前一天。 例如，如果当前日期是 2020 年 6 月 16 日，请选择 6/15/2020。

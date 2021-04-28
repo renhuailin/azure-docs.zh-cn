@@ -14,16 +14,16 @@ ms.topic: how-to
 ms.date: 03/16/2021
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74769feba1d717a2f1a72d311f85bdfbeac7b7db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 035215bf9350243f667c4883786a923a172cb89c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103574773"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126554"
 ---
 # <a name="ad-fs-sign-ins-in-azure-ad-with-connect-health---preview"></a>使用 Connect Health 在 Azure AD 中进行 AD FS 登录 - 预览
 
-现在，可以使用 Connect Health 将 AD FS 登录集成到 Azure Active Directory 登录报告中。 [Azure AD 登录报告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-all-sign-ins#:~:text=Interactive%20user%20sign-ins%20are%20sign-ins%20where%20a%20user,to%20Azure%20AD%20or%20to%20a%20helper%20app.)包含有关用户、应用程序和受管理资源何时登录到 Azure AD 并访问资源的信息。 
+现在，可以使用 Connect Health 将 AD FS 登录集成到 Azure Active Directory 登录报告中。 [Azure AD 登录报告](../reports-monitoring/concept-all-sign-ins.md)包含有关用户、应用程序和受管理资源何时登录到 Azure AD 并访问资源的信息。 
 
 Connect Health for AD FS 代理会关联 AD FS 中的多个事件 ID（具体取决于服务器版本），以便在请求失败时提供有关请求的信息和错误详细信息。 此信息将关联到 Azure AD 登录报告架构，并显示在 Azure AD 登录报告 UX 中。 除报告以外，还会连同 AD FS 数据以及新的 Azure Monitor 工作簿模板一起提供新的 Log Analytics 流。 可以使用并修改该模板，以便对 AD FS 帐户锁定、错误的密码尝试和出现意外登录尝试高峰等场景进行深入分析。
 
@@ -111,8 +111,3 @@ Azure AD Connect Health for AD FS 代理会关联 AD FS 中的事件 ID（具体
 * [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Azure AD Connect Health 代理安装](how-to-connect-health-agent-install.md)
 * [有风险的 IP 报告](how-to-connect-health-adfs-risky-ip.md)
-
-
-
-
-

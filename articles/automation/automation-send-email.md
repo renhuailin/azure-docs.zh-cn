@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: 915a0d75622a98b33f647041f3c3b622cb5236b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a2650e3a9ce58b611c1aff1a569cc1e8f0980fd4
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99053714"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833483"
 ---
 # <a name="send-an-email-from-a-runbook"></a>从 Runbook 发送电子邮件
 
@@ -79,7 +80,7 @@ Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -P
 1. 转到 Azure 自动化帐户。
 2. 在“过程自动化”下，选择“Runbook”。 
 3. 在 Runbook 列表的顶部选择“+ 创建 Runbook”。
-4. 在“添加 Runbook”页上，输入 Send-GridMailMessage 作为 runbook 名称。 对于 runbook 类型，选择“PowerShell”。 然后选择“创建”  。
+4. 在“添加 Runbook”页上，输入 Send-GridMailMessage 作为 runbook 名称。 对于 runbook 类型，选择“PowerShell”。 然后选择“创建”。
    ![创建 Runbook](./media/automation-send-email/automation-send-email-runbook.png)
 5. 此时会创建 Runbook 并打开“编辑 PowerShell Runbook”页。
    ![编辑 Runbook](./media/automation-send-email/automation-send-email-edit.png)

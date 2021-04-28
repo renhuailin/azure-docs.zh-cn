@@ -5,16 +5,16 @@ author: emaher
 ms.topic: article
 ms.date: 03/30/2021
 ms.author: enewman
-ms.openlocfilehash: 888e04db76567051f8c5eae7cf94c77e684cb146
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 70be69cad59cd00ef9feaa78ad2294c64626d07a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106110876"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125672"
 ---
 # <a name="using-external-file-storage-in-lab-services"></a>在实验室服务中使用外部文件存储
 
-本文将介绍使用 Azure 实验室服务时可选择的一些外部文件存储选项。  [Azure 文件存储](https://azure.microsoft.com/services/storage/files/)在云中提供[可通过 SMB 2.1 和 SMB 3.0 访问](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)的完全托管式文件共享。  Azure 文件存储共享可以在虚拟网络中以公共方式或以专用方式连接。  此外，还可以将其配置为使用学生的 AD 凭据来连接到文件共享。  对于 Azure 实验室服务中的外部文件存储，还可以选择使用具有适用于 Linux 计算机的 NFS 卷的 Azure NetApp 文件。  
+本文将介绍使用 Azure 实验室服务时可选择的一些外部文件存储选项。  [Azure 文件存储](https://azure.microsoft.com/services/storage/files/)在云中提供[可通过 SMB 2.1 和 SMB 3.0 访问](../storage/files/storage-how-to-use-files-windows.md)的完全托管式文件共享。  Azure 文件存储共享可以在虚拟网络中以公共方式或以专用方式连接。  此外，还可以将其配置为使用学生的 AD 凭据来连接到文件共享。  对于 Azure 实验室服务中的外部文件存储，还可以选择使用具有适用于 Linux 计算机的 NFS 卷的 Azure NetApp 文件。  
 
 ## <a name="deciding-which-solution-to-use"></a>确定要使用的解决方案
 
@@ -46,16 +46,16 @@ Azure 实验室服务的使用成本不包括外部存储的使用成本。  有
 - 此方法需要文件共享虚拟网络与实验室帐户建立对等互连。  在创建实验室之前，Azure 存储帐户的虚拟网络必须与实验室帐户的虚拟网络建立对等互连。
 
 > [!NOTE]
-> 仅[[本地冗余存储 (LRS) 帐户]](/azure/storage/files/storage-files-how-to-create-large-file-share#restrictions)可进行超过 5TB 的文件共享。
+> 仅[[本地冗余存储 (LRS) 帐户]](../storage/files/storage-files-how-to-create-large-file-share.md#restrictions)可进行超过 5TB 的文件共享。
 
 按照以下步骤创建连接到 Azure 文件共享的 VM。
 
-1. 创建 [Azure 存储帐户](/azure/storage/files/storage-how-to-create-file-share)。 在“连接方法”页上，选择公共终结点或专用终结点。
-2. 如果使用，请创建[专用终结点](/azure/private-link/create-private-endpoint-storage-portal)，以便从虚拟网络访问文件共享。  创建[专用 DNS 区域](/azure/dns/private-dns-privatednszone)，或使用现有的 DNS 区域。 专用 Azure DNS 区域在虚拟网络中提供了名称解析。
-3. 创建 [Azure 文件共享](/azure/storage/files/storage-how-to-create-file-share)。 使用存储帐户的公共主机名可访问文件共享。
+1. 创建 [Azure 存储帐户](../storage/files/storage-how-to-create-file-share.md)。 在“连接方法”页上，选择公共终结点或专用终结点。
+2. 如果使用，请创建[专用终结点](../private-link/tutorial-private-endpoint-storage-portal.md)，以便从虚拟网络访问文件共享。  创建[专用 DNS 区域](../dns/private-dns-privatednszone.md)，或使用现有的 DNS 区域。 专用 Azure DNS 区域在虚拟网络中提供了名称解析。
+3. 创建 [Azure 文件共享](../storage/files/storage-how-to-create-file-share.md)。 使用存储帐户的公共主机名可访问文件共享。
 4. 在模板 VM 中装载 Azure 文件共享：
-    - [[Windows]](/azure/storage/files/storage-how-to-use-files-windows)
-    - [[Linux]](/azure/storage/files/storage-how-to-use-files-linux)。  请参阅[通过 Linux 使用 Azure 文件](#using-azure-files-with-linux)，以避免学生 VM 出现装载问题。
+    - [[Windows]](../storage/files/storage-how-to-use-files-windows.md)
+    - [[Linux]](../storage/files/storage-how-to-use-files-linux.md)。  请参阅[通过 Linux 使用 Azure 文件](#using-azure-files-with-linux)，以避免学生 VM 出现装载问题。
 5. [发布](how-to-create-manage-template.md#publish-the-template-vm)模板 VM。
 
 > [!IMPORTANT]
@@ -98,14 +98,14 @@ sudo mount -t cifs //$storage_account_name.file.core.windows.net/$fileshare_name
 
 学生应运行 `mount -a` 来重新装载目录。
 
-有关通过 Linux 使用文件共享的更多基本信息，请参阅[通过 Linux 使用 Azure 文件存储](/azure/storage/files/storage-how-to-use-files-linux)。
+有关通过 Linux 使用文件共享的更多基本信息，请参阅[通过 Linux 使用 Azure 文件存储](../storage/files/storage-how-to-use-files-linux.md)。
 
 ## <a name="azure-files-with-identity-base-authorization"></a>具有基于标识的授权的 Azure 文件存储
 
 如果满足以下条件，还可使用 AD 身份验证访问 Azure 文件存储共享
 
 1. 学生 VM 已加入域。
-2. 托管文件共享的 [Azure 存储帐户上已启用](/azure/storage/files/storage-files-active-directory-overview) AD 身份验证。  
+2. 托管文件共享的 [Azure 存储帐户上已启用](../storage/files/storage-files-active-directory-overview.md) AD 身份验证。  
 
 网络驱动器是使用用户的标识（而不是存储帐户的密钥）安装在虚拟机上的。  可以使用公共或专用终结点访问存储帐户。
 
@@ -125,13 +125,13 @@ sudo mount -t cifs //$storage_account_name.file.core.windows.net/$fileshare_name
 
 按照以下步骤创建启用了 AD 身份验证的 Azure 文件存储共享和域加入实验室 VM。
 
-1. 创建 [Azure 存储帐户](/azure/storage/files/storage-how-to-create-file-share)。
-2. 如果使用，请创建[专用终结点](/azure/private-link/create-private-endpoint-storage-portal)，以便从虚拟网络访问文件共享。  创建[专用 DNS 区域](/azure/dns/private-dns-privatednszone)，或使用现有的 DNS 区域。 专用 Azure DNS 区域在虚拟网络中提供了名称解析。
-3. 创建 [Azure 文件共享](/azure/storage/files/storage-how-to-create-file-share)。
-4. 按照以下步骤启用基于标识的授权。  如果要使用同步到 Azure AD 的本地 AD，请按照[通过 SMB 针对 Azure 文件共享进行本地 Active Directory 域服务身份验证](/azure/storage/files/storage-files-identity-auth-active-directory-enable)中的步骤进行操作。  如果只使用 Azure AD，请按照以下步骤[在 Azure 文件存储上启用 Azure Active Directory 域服务身份验证](/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable)。
+1. 创建 [Azure 存储帐户](../storage/files/storage-how-to-create-file-share.md)。
+2. 如果使用，请创建[专用终结点](../private-link/tutorial-private-endpoint-storage-portal.md)，以便从虚拟网络访问文件共享。  创建[专用 DNS 区域](../dns/private-dns-privatednszone.md)，或使用现有的 DNS 区域。 专用 Azure DNS 区域在虚拟网络中提供了名称解析。
+3. 创建 [Azure 文件共享](../storage/files/storage-how-to-create-file-share.md)。
+4. 按照以下步骤启用基于标识的授权。  如果要使用同步到 Azure AD 的本地 AD，请按照[通过 SMB 针对 Azure 文件共享进行本地 Active Directory 域服务身份验证](../storage/files/storage-files-identity-auth-active-directory-enable.md)中的步骤进行操作。  如果只使用 Azure AD，请按照以下步骤[在 Azure 文件存储上启用 Azure Active Directory 域服务身份验证](../storage/files/storage-files-identity-auth-active-directory-domain-service-enable.md)。
     >[!IMPORTANT]
     >与 AD 管理团队联系，确定是否满足说明中列出的所有先决条件。
-5. 在 Azure 中分配 SMB 共享权限角色。  有关每个角色所获得的权限的详细信息，请参阅[共享级权限](/azure/storage/files/storage-files-identity-ad-ds-assign-permissions)。
+5. 在 Azure 中分配 SMB 共享权限角色。  有关每个角色所获得的权限的详细信息，请参阅[共享级权限](../storage/files/storage-files-identity-ad-ds-assign-permissions.md)。
     1. 必须向将设置文件共享内容权限的人员或组分配“存储文件数据 SMB 共享提升参与者”角色。
     2. 应为需在文件共享中添加或编辑文件的学生分配“存储文件数据 SMB 共享参与者”角色。
     3. 应为只需从文件共享中读取文件的学生分配“存储文件数据 SMB 共享读者”角色。
@@ -147,7 +147,7 @@ sudo mount -t cifs //$storage_account_name.file.core.windows.net/$fileshare_name
 10. 在模板计算机上，下载并运行脚本，以[将学生计算机加入域](https://github.com/Azure/azure-devtestlab/blob/master/samples/ClassroomLabs/Scripts/ActiveDirectoryJoin/README.md#usage)。  `Join-AzLabADTemplate` 脚本将自动[发布模板 VM](how-to-create-manage-template.md#publish-the-template-vm)。  
     > [!NOTE]
     > 模板计算机将不会加入域。 讲师应为自己分配已发布的学生 VM，以查看共享中的文件。
-11. 使用 Windows 的学生获得文件共享路径后即可使用凭据通过[资源管理器](/azure/storage/files/storage-how-to-use-files-windows)连接到 Azure 文件存储共享。  此外，学生还可以运行先前创建的脚本连接到网络驱动器。  如果学生使用 Linux，请运行先前创建的脚本。
+11. 使用 Windows 的学生获得文件共享路径后即可使用凭据通过[资源管理器](../storage/files/storage-how-to-use-files-windows.md)连接到 Azure 文件存储共享。  此外，学生还可以运行先前创建的脚本连接到网络驱动器。  如果学生使用 Linux，请运行先前创建的脚本。
 
 ## <a name="netapp-files-with-nfs-volumes"></a>具有 NFS 卷的 NetApp 文件
 
@@ -162,7 +162,7 @@ sudo mount -t cifs //$storage_account_name.file.core.windows.net/$fileshare_name
 按照以下步骤在 Azure 实验室服务中使用 Azure NetApp 文件共享。
 
 1. 如有需要，请加入到 [Azure NetApp 文件](https://aka.ms/azurenetappfiles)。
-2. 若要创建 NetApp 文件容量池和 NFS 卷，请参阅[设置 Azure NetApp 文件和 NFS 卷](/azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes)。  有关服务级别的信息，请参阅 [Azure NetApp 文件的服务级别](/azure/azure-netapp-files/azure-netapp-files-service-levels)。
+2. 若要创建 NetApp 文件容量池和 NFS 卷，请参阅[设置 Azure NetApp 文件和 NFS 卷](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md)。  有关服务级别的信息，请参阅 [Azure NetApp 文件的服务级别](../azure-netapp-files/azure-netapp-files-service-levels.md)。
 3. [ NetApp 文件容量池的虚拟网络与实验室帐户之间建立对等互连](how-to-connect-peer-virtual-network.md)。
 4. [创建教室实验室](how-to-manage-classroom-labs.md)。
 5. 在模板 VM 上，安装必要的组件以使用 NFS 文件共享。
@@ -179,7 +179,7 @@ sudo mount -t cifs //$storage_account_name.file.core.windows.net/$fileshare_name
         sudo yum install nfs-utils
         ```
 
-6. 在模板 VM 上，将以下脚本另存为 `mount_fileshare.sh`，以[安装 NetApp 文件共享](/azure/azure-netapp-files/azure-netapp-files-mount-unmount-volumes-for-virtual-machines)。  为 `capacity_pool_ipaddress` 变量分配容量池的装载目标 IP 地址。  获取卷的装载说明，以查找适当的值。  脚本需要 NetApp 文件卷的路径/名称。  请牢记运行 `chmod u+x mount_fileshare.sh`，确保用户可以执行脚本。
+6. 在模板 VM 上，将以下脚本另存为 `mount_fileshare.sh`，以[安装 NetApp 文件共享](../azure-netapp-files/azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)。  为 `capacity_pool_ipaddress` 变量分配容量池的装载目标 IP 地址。  获取卷的装载说明，以查找适当的值。  脚本需要 NetApp 文件卷的路径/名称。  请牢记运行 `chmod u+x mount_fileshare.sh`，确保用户可以执行脚本。
 
     ```bash
     #!/bin/bash
@@ -205,7 +205,7 @@ sudo mount -t cifs //$storage_account_name.file.core.windows.net/$fileshare_name
 
 7. 如果所有学生均可访问同一 NetApp 文件卷，则发布之前可以在模板计算机上运行 `mount_fileshare.sh` 脚本。  如果每个学生都有自己的卷，请保存脚本，供学生稍后运行。
 8. [发布](how-to-create-manage-template.md#publish-the-template-vm)模板 VM。
-9. 针对文件共享[配置策略](/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)。  导出策略可以允许单个 VM 或多个 VM 访问卷。  可以授予只读或读取/写入访问权限。
+9. 针对文件共享[配置策略](../azure-netapp-files/azure-netapp-files-configure-export-policy.md)。  导出策略可以允许单个 VM 或多个 VM 访问卷。  可以授予只读或读取/写入访问权限。
 10. 学生必须启动其 VM 并运行脚本，以装载文件共享。  学生只需运行一次脚本。  命令将类似于 `./mount_fileshare.sh myvolumename`。
 
 ## <a name="next-steps"></a>后续步骤

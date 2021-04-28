@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2b3079407774c3d36fe5515b39e964018f9087e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 146cee9ddd6f0cef5ca23272ad9991af847f30ba
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548846"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108072146"
 ---
 # <a name="securing-standalone-managed-service-accounts"></a>保护独立托管服务帐户
 
@@ -44,7 +44,7 @@ ms.locfileid: "102548846"
 
    * 主计算机的 DNS 名称已更改。
 
-   * 使用 [PowerShell](/powershell/module/addsadministration/set-adserviceaccount) 添加或删除其他 sam-accountname 或 dns-hostname 参数时
+   * 使用 [PowerShell](/powershell/module/activedirectory/set-adserviceaccount) 添加或删除其他 sam-accountname 或 dns-hostname 参数时
 
 ## <a name="when-to-use-smsas"></a>何时使用 sMSA
 
@@ -64,7 +64,7 @@ sMSA 本质上比需要持续进行密码管理的标准用户帐户更安全。
 | 安全问题| 缓解措施 |
 | - | - |
 | sMSA 是特权组的成员|从提升权限的特权组（例如，“域管理员”组）中删除 sMSA。 <br> 使用最少特权模型，为 sMSA 仅授予运行其服务所需的权利和权限。 <br> 如果你不确定所需的权限，请咨询服务创建者。 |
-| sMSA 具有对敏感资源的读/写访问权限。|审核对敏感资源的访问权限。 将审核日志存档到 SIEM（Azure Log Analytics 或 Azure Sentinel）进行分析。 <br> 如果检测到不适当的访问级别，请修正资源权限。 |
+| sMSA 具有对敏感资源的读/写访问权限。|审核对敏感资源的访问。 将审核日志存档到 SIEM（Azure Log Analytics 或 Azure Sentinel）进行分析。 <br> 如果检测到不适当的访问级别，请修正资源权限。 |
 | 默认情况下，sMSA 密码滚动更新频率为 30 天| 根据企业安全要求，可以使用组策略来优化持续时间。 <br> *可以使用以下路径设置密码过期期限。 <br>计算机配置\策略\Windows 设置\安全设置\安全选项\域成员：计算机帐户密码最长期限 |
 
 

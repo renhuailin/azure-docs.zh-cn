@@ -6,12 +6,12 @@ ms.author: mingshen
 ms.service: marketplace
 ms.topic: overview
 ms.date: 10/15/2020
-ms.openlocfilehash: de8e9060f8e7ccdcf38b9f0908dfb05063811817
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: b624b8ba997acf75c652a522ce1eae9737371c97
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103398"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133180"
 ---
 # <a name="what-is-the-microsoft-commercial-marketplace"></a>什么是 Microsoft 商业市场？
 
@@ -75,7 +75,7 @@ Azure 客户可通过 [Azure 门户](https://portal.azure.com/)中的“创建�
 
 - 利用让应用程序为上市做好准备所需的技术资源，从技术支持、应用程序设计和体系结构设计到 Azure 开发和测试额度。
 - 了解免费的 Microsoft 市场推广基础知识，可帮助发布和推广解决方案。 你还可能有资格参加其他 Microsoft 市场营销活动，其中包含成为商业市场主打产品的机会。
-- 通过[云解决方案提供商](https://partner.microsoft.com/cloud-solution-provider) (CSP) 计划、[联合销售](marketplace-co-sell.md)计划和 Microsoft 销售团队，联系其他客户并扩展销售机会。
+- 通过[云解决方案提供商](https://partner.microsoft.com/cloud-solution-provider) (CSP) 计划、[联合销售](./co-sell-overview.md)计划和 Microsoft 销售团队，联系其他客户并扩展销售机会。
 
 若要了解有关这些权益的更多详细信息，请参阅[商业市场权益](gtm-your-marketplace-benefits.md)。
 

@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 8a18a47331eb5d4a9ed5578cca320beef5e0ba45
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6a98571f513e25d801acd4f4a9c2901dcd56fabc
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766980"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869214"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的监视解决方案
 
@@ -48,7 +48,7 @@ Azure Monitor 的解决方案“概述”页针对 Log Analytics 工作区中安
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-使用 [az monitor log-analytics solution list](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution#ext-log-analytics-solution-az-monitor-log-analytics-solution-list) 命令列出订阅中安装的监视解决方案。   在运行 `list` 命令之前，请遵循[安装监视解决方案](#install-a-monitoring-solution)中找到的先决条件。
+使用 [az monitor log-analytics solution list](/cli/azure/monitor/log-analytics/solution#az_monitor_log_analytics_solution_list) 命令列出订阅中安装的监视解决方案。   在运行 `list` 命令之前，请遵循[安装监视解决方案](#install-a-monitoring-solution)中找到的先决条件。
 
 ```azurecli
 # List all log-analytics solutions in the current subscription.
@@ -142,7 +142,7 @@ Get-AzMonitorLogAnalyticsSolution -ResourceGroupName MyResourceGroup
 
 安装解决方案时，必须选择要在其中安装该解决方案的 [Log Analytics 工作区](../logs/manage-access.md)，以及要将解决方案数据收集到的位置。  使用 Azure CLI，你可以通过 [az monitor log-analytics workspace](/cli/azure/monitor/log-analytics/workspace) 引用命令来管理工作区。  请遵循 [Log Analytics 工作区和自动化帐户](#log-analytics-workspace-and-automation-account)中所述的过程来链接工作区和帐户。
 
-使用 [az monitor log-analytics solution create](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution) 安装监视解决方案。  方括号中的参数是可选的。
+使用 [az monitor log-analytics solution create](/cli/azure/monitor/log-analytics/solution) 安装监视解决方案。  方括号中的参数是可选的。
 
 ```azurecli
 az monitor log-analytics solution create --name
@@ -241,7 +241,7 @@ New-AzMonitorLogAnalyticsSolution -Type Containers -ResourceGroupName MyResource
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要通过 Azure CLI 删除已安装的解决方案，请使用 [az monitor log-analytics solution delete](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution#ext-log-analytics-solution-az-monitor-log-analytics-solution-delete) 命令。
+若要通过 Azure CLI 删除已安装的解决方案，请使用 [az monitor log-analytics solution delete](/cli/azure/monitor/log-analytics/solution#az_monitor_log_analytics_solution_delete) 命令。
 
 ```azurecli
 az monitor log-analytics solution delete --name

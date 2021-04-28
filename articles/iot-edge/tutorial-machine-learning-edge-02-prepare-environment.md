@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 723d7b6ae5b96cf6dc622be1b1bb98065151787f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 71ef55d720ca768bfa45ea13ba7ec481b908d915
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463140"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133792"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>教程：在 IoT Edge 上设置机器学习环境
 
@@ -36,7 +36,7 @@ ms.locfileid: "103463140"
 
 此步骤通常由云开发人员执行。 其中一些软件也可能对数据科学家有所帮助。
 
-我们创建了一个 PowerShell 脚本，用于创建已配置多个先决条件的 Azure 虚拟机。 创建的 VM 必须能够处理[嵌套虚拟化](../virtual-machines/windows/nested-virtualization.md)，因此我们要选择 [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) 虚拟机大小。
+我们创建了一个 PowerShell 脚本，用于创建已配置多个先决条件的 Azure 虚拟机。 创建的 VM 必须能够处理[嵌套虚拟化](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)，因此我们要选择 [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) 虚拟机大小。
 
 为开发 VM 设置以下项：
 

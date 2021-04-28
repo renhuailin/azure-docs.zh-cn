@@ -3,12 +3,12 @@ title: 快速入门：使用 Azure CLI 创建蓝图
 description: 在本快速入门中，通过 Azure CLI 使用 Azure 蓝图创建、定义和部署项目。
 ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: fbe5c12f1c94d4b59dbdc2a97b6a4cb9af5a2328
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 506877eddd78ce54681bd4870e1d9040b4738c27
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563661"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877401"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>快速入门：使用 Azure CLI 定义和分配 Azure 蓝图
 
@@ -117,7 +117,7 @@ ms.locfileid: "105563661"
 
      > [!NOTE]
      > 导入蓝图定义时，请使用文件名 blueprint.json。
-     > 调用 [az blueprint import](/cli/azure/ext/blueprint/blueprint#ext_blueprint_az_blueprint_import) 时使用此文件名。
+     > 调用 [az blueprint import](/cli/azure/blueprint#az_blueprint_import) 时使用此文件名。
 
      默认情况下，会在默认订阅中创建蓝图对象。 若要指定管理组，请使用参数 managementgroup。 若要指定订阅，请使用参数 subscription。
 

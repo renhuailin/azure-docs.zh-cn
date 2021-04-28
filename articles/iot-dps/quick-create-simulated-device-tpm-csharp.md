@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: b2648382fb19fafcfc342379aa9da974f6f8d1ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 43ad18173c96c506c0df87a01fc7452065442bc9
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90528412"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868656"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 C# 设备 SDK 创建和预配模拟的 TPM 设备
 
@@ -37,7 +37,7 @@ Azure IoT 设备预配服务支持两类注册：
 <a id="setupdevbox"></a>
 ## <a name="prepare-the-development-environment"></a>准备开发环境 
 
-1. 确保在计算机上已安装 [.NET Core 2.1 SDK 或更高版本](https://www.microsoft.com/net/download/windows)。 
+1. 确保在计算机上已安装 [.NET Core 2.1 SDK 或更高版本](https://dotnet.microsoft.com/download)。 
 
 1. 确保在计算机上安装 `git` 并将其添加到可供命令窗口访问的环境变量。 请参阅[软件自由保护组织提供的 Git 客户端工具](https://git-scm.com/download/)，了解要安装的最新版 `git` 工具，其中包括 Git Bash，这是一个命令行应用，可以用来与本地 Git 存储库交互。 
 

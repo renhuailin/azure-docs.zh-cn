@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: cdfeb2fdeefabb0d2d4af2fb63222adda5d023fb
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 37778bc096c9089e3706907fcdd6b9c816cc5fbc
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576019"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817479"
 ---
 # <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>教程：将 ML 试验转换为生产 Python 代码
 
@@ -527,5 +527,5 @@ def test_train_model():
 现在，你已了解了如何从试验代码转换为生产代码，接下来请参阅以下链接来了解详细信息和后续步骤：
 
 + [MLOpsPython](https://github.com/microsoft/MLOpsPython/blob/master/docs/custom_model.md)：构建一个 CI/CD 管道，以使用 Azure Pipelines 和 Azure 机器学习来训练、评估和部署自己的模型
-+ [监视 Azure ML 试验运行和指标](./how-to-track-experiments.md)
++ [监视 Azure ML 试验运行和指标](./how-to-log-view-metrics.md)
 + [监视 ML Web 服务终结点并从中收集数据](./how-to-enable-app-insights.md)

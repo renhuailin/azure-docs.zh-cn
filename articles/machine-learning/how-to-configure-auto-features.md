@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to,automl,contperf-fy21q2
+ms.topic: how-to
+ms.custom: automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: c90ef9fe49a87c18c7f4f55175bafaebfd31d722
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 563f4e84bf17f749eb4a02bd9a470984e20aa289
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98610295"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131433"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>自动化机器学习中的数据特征化
 
@@ -319,7 +319,7 @@ class_prob = fitted_model.predict_proba(X_test)
 
 AutoML 会为 BERT 执行以下步骤。 
 
-1. 所有文本列的预处理和标记化。 例如，可以在最终模型的特征化摘要中找到“StringCast”转换器。 [此笔记本](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b)中提供了一个有关如何生成模型的特征化摘要的示例。
+1. 所有文本列的预处理和标记化。 例如，可以在最终模型的特征化摘要中找到“StringCast”转换器。 [此笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)中提供了一个有关如何生成模型的特征化摘要的示例。
 
 2. **将所有文本列连接到单个文本列中**，因此在最终模型中会调用 `StringConcatTransformer`。 
 
@@ -363,4 +363,4 @@ automl_settings = {
 
 * 详细了解[如何以及在何处部署模型](how-to-deploy-and-where.md)。
 
-* 详细了解[如何使用自动化机器学习训练回归模型](tutorial-auto-train-models.md)或[如何在远程资源上使用自动化机器学习进行训练](how-to-auto-train-remote.md)。
+* 详细了解[如何使用自动化机器学习训练回归模型](tutorial-auto-train-models.md)或[如何在远程资源上使用自动化机器学习进行训练](concept-automated-ml.md#local-remote)。
