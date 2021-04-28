@@ -1,18 +1,18 @@
 ---
 title: Azure 数据工厂中的 Filter 活动
 description: Filter 活动将筛选输入。
-author: dcstwh
-ms.author: weetok
+author: chez-charlie
+ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.openlocfilehash: 97693d9f31b01bf6187843586f6971c92fe79bff
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6a488fff5e5c5f75697e787cdcede4de080a04ba
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786186"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906264"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Filter 活动
 可以在管道中使用 Filter 活动将筛选器表达式应用到输入数组。 
@@ -33,7 +33,7 @@ ms.locfileid: "104786186"
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必需
 -------- | ----------- | -------------- | --------
 name | `Filter` 活动的名称。 | String | 是
 type | 必须设置为  “filter”。 | String | 是

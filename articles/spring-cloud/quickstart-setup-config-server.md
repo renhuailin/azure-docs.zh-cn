@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 643d1cd6df3791b2e5ea2118425eecb29dbcdea2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1c456599ac6c2ca87f7beb88398d1ef9117f3106
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877244"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134602"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>快速入门：设置 Azure Spring Cloud Config Server
 
@@ -23,7 +23,7 @@ Azure Spring Cloud 配置服务器是分布式系统的集中式配置服务。 
 
 ## <a name="prerequisites"></a>先决条件
 
-* 完成此系列中前面的快速入门：[预配 Azure Spring Cloud 服务](spring-cloud-quickstart-provision-service-instance.md)。
+* 完成此系列中前面的快速入门：[预配 Azure Spring Cloud 服务](./quickstart-provision-service-instance.md)。
 
 ## <a name="azure-spring-cloud-config-server-procedures"></a>Azure Spring Cloud Config Server 过程
 
@@ -51,7 +51,7 @@ Azure Spring Cloud Config Server 是分布式系统的集中式配置服务。 �
 
 #### <a name="portal"></a>[门户](#tab/Azure-portal)
 
-以下过程使用 Azure 门户设置 Config Server，以部署 [Piggymetrics 示例](spring-cloud-quickstart-sample-app-introduction.md)。
+以下过程使用 Azure 门户设置 Config Server，以部署 [Piggymetrics 示例](./quickstart-sample-app-introduction.md)。
 
 1. 转到服务的“概览”页，选择“配置服务器”。 
 
@@ -73,7 +73,7 @@ Azure Spring Cloud Config Server 是分布式系统的集中式配置服务。 �
 
 #### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 
-以下过程使用 Azure CLI 设置 Config Server，以部署 [Piggymetrics 示例](spring-cloud-quickstart-sample-app-introduction.md)。
+以下过程使用 Azure CLI 设置 Config Server，以部署 [Piggymetrics 示例](./quickstart-sample-app-introduction.md)。
 
 使用项目的 Git 存储库的位置设置 Config Server：
 
@@ -84,7 +84,7 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 ::: zone-end
 
 > [!TIP]
-> 如果将专用存储库用于配置服务器，请参阅[介绍设置身份验证的教程](./spring-cloud-howto-config-server.md)。
+> 如果将专用存储库用于配置服务器，请参阅[介绍设置身份验证的教程](./how-to-config-server.md)。
 
 ## <a name="troubleshooting-of-azure-spring-cloud-config-server"></a>Azure Spring Cloud Config Server 的故障排除
 
@@ -113,7 +113,7 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 
 ## <a name="next-steps"></a>后续步骤
 
-在此快速入门中，你创建了 Azure 资源，如果这些资源保留在订阅中，将继续产生费用。 如果不打算继续学习下一个快速入门，请参阅[清理资源](spring-cloud-quickstart-logs-metrics-tracing.md#clean-up-resources)。 否则，请继续学习下一个快速入门：
+在此快速入门中，你创建了 Azure 资源，如果这些资源保留在订阅中，将继续产生费用。 如果不打算继续学习下一个快速入门，请参阅[清理资源](./quickstart-logs-metrics-tracing.md#clean-up-resources)。 否则，请继续学习下一个快速入门：
 
 > [!div class="nextstepaction"]
-> [构建和部署应用](spring-cloud-quickstart-deploy-apps.md)
+> [构建和部署应用](./quickstart-deploy-apps.md)

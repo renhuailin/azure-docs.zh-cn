@@ -11,12 +11,12 @@ author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
 ms.custom: data4ml
-ms.openlocfilehash: 41e93584937ca10740e9ee0be3353d1edf5efb3e
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 53521233e4e0b130eb6416f230aba5d01d974b03
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587674"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141732"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>教程：创建用于多类图像分类的标记项目 
 
@@ -70,7 +70,7 @@ Azure 机器学习数据存储用于存储连接信息，例如订阅 ID 和令�
     数据存储名称 | 为数据存储提供一个名称。  此处我们使用 labeling_tutorial。
     数据存储类型 | 选择存储的类型。  此处我们使用“Azure Blob 存储”，这是适用于图像的首选存储。
     帐户选择方法 | 选择“手动输入”。
-    URL | `https://azureopendatastorage.blob.core.windows.net/openimagescontainer`
+    代码 | `https://azureopendatastorage.blob.core.windows.net/openimagescontainer`
     身份验证类型 | 选择“SAS 令牌”。
     帐户密钥 | `?sv=2019-02-02&ss=bfqt&srt=sco&sp=rl&se=2025-03-25T04:51:17Z&st=2020-03-24T20:51:17Z&spr=https&sig=7D7SdkQidGT6pURQ9R4SUzWGxZ%2BHlNPCstoSRRVg8OY%3D`
 
@@ -210,5 +210,4 @@ Azure 机器学习数据存储用于存储连接信息，例如订阅 ID 和令�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [训练机器学习图像识别模型](/azure/machine-learning/how-to-use-labeled-dataset)。
-
+> [训练机器学习图像识别模型](how-to-use-labeled-dataset.md)。

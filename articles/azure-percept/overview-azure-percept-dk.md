@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: b20448a88cee6c4ea4af0bcbfaa6ec465f2e28bb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5c510bbe6717b37664ac67ea7d10c79d1af74d78
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105560958"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128354"
 ---
 # <a name="azure-percept-dk-overview"></a>Azure Percept DK 概述
 
@@ -31,7 +31,7 @@ Azure Percept DK 是一种边缘 AI 开发工具包，旨在通过 [Azure Percep
 
 - 内置硬件信任根安全性。 详细了解 [Azure Percept 安全性](./overview-percept-security.md)。
 
-- 与 [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) 和其他 Azure 服务（例如，Azure IoT 中心、Azure 认知服务和[实时视频分析](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/overview)）无缝集成。
+- 与 [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) 和其他 Azure 服务（例如，Azure IoT 中心、Azure 认知服务和[实时视频分析](../media-services/live-video-analytics-edge/overview.md)）无缝集成。
 
 - 与 [Azure Percept Audio](./overview-azure-percept-audio.md)（用于构建 AI 音频解决方案的可选配件）兼容。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 014bbe4421bf00f35b2d80505cea288e75f8ca94
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c8a50f419fbf80d9159bbe3748bbe000ef4b369
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103224667"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134188"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Azure VM 上的 SQL Server 常见问题解答
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -94,7 +94,7 @@ ms.locfileid: "103224667"
 
 1. **客户是否需有 SQL Server 客户端访问许可证 (CAL) 才能连接到 Azure 虚拟机上运行的 SQL Server 即用即付映像？**
 
-   不知道。 如果客户使用自带许可证，并要将其 SQL Server SA 服务器/CAL VM 转移到 Azure VM，则需要 CAL。 
+   不是。 如果客户使用自带许可证，并要将其 SQL Server SA 服务器/CAL VM 转移到 Azure VM，则需要 CAL。 
 
 1. **如果已通过即用即付库映像之一创建了 VM，是否可以将该 VM 更改为使用自己的 SQL Server 许可证？**
 
@@ -123,7 +123,7 @@ ms.locfileid: "103224667"
    若要获得备用辅助可用性组或故障转移群集实例的免费被动许可证，必须满足[产品许可条款](https://www.microsoft.com/licensing/product-licensing/products)中所述的以下所有条件：
 
    1. 已通过[软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)获得[许可移动性](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2)。 
-   1. 被动 SQL Server 实例不会为客户端提供 SQL Server 数据，也不会运行活动的 SQL Server 工作负荷。 它只用于与主服务器同步，或者使被动数据库保持热备用状态。 如果它正在提供数据（例如，向运行活动 SQL Server 工作负载的客户端报告，或执行未在产品条款中指定的任何工作），则它必须是付费许可的 SQL Server 实例。 允许对辅助实例执行以下活动：数据库一致性检查或 CheckDB、完整备份、事务日志备份，以及资源使用情况数据监视。 还可以在每隔 90 天运行一次灾难恢复测试的短暂时段内，同时运行主实例和相应的灾难恢复实例。 
+   1. 被动 SQL Server 实例不向客户端提供 SQL Server 数据，也不运行主动 SQL Server 工作负载。 它仅用于与主服务器同步，否则将被动数据库保持在热备用状态。 如果它正在提供数据（例如，向运行活动 SQL Server 工作负载的客户端报告，或执行未在产品条款中指定的任何工作），则它必须是付费许可的 SQL Server 实例。 在次要实例上允许进行以下活动：数据库一致性检查或 CheckDB、完整备份、事务日志备份和监视资源使用情况数据。 还可以同时运行主灾难恢复实例和相应灾难恢复实例，以便每 90 天进行一次短暂的灾难恢复测试。 
    1. 主动 SQL Server 许可证包含在软件保障中，并且允许“一个”被动的次要 SQL Server 实例，最多也只能具有与许可的主动服务器相同的计算量。 
    1. 次要 SQL Server VM 在 Azure 门户中使用[灾难恢复](business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure)许可证。
    
@@ -145,7 +145,7 @@ ms.locfileid: "103224667"
 
 1. **将 VM 注册到新的 SQL IaaS 代理扩展是否需额外付费？**
 
-   不知道。 SQL IaaS 代理扩展只是进一步提高了 Azure VM 上的 SQL Server 的可管理性，不会额外收费。 
+   不是。 SQL IaaS 代理扩展只是进一步提高了 Azure VM 上的 SQL Server 的可管理性，不会额外收费。 
 
 1. **SQL IaaS 代理扩展是否适用于所有客户？**
  
@@ -171,7 +171,7 @@ ms.locfileid: "103224667"
    是的。 SQL Server 安装介质位于 **C** 驱动器上的某个文件夹中。 可从该位置运行 **Setup.exe** 以添加新的 SQL Server 实例，或更改计算机上 SQL Server 的其他已安装功能。 请注意，某些功能（例如自动备份、自动修补和 Azure Key Vault 集成）仅对默认实例或配置正确的命名实例起作用（请参阅问题 3）。 使用 [通过 Azure 混合权益获得软件保障](licensing-model-azure-hybrid-benefit-ahb-change.md)或 **即用即付** 许可模型的客户无需支付额外的许可费用，即可在虚拟机上安装 SQL Server 的多个实例。 除非配置正确，否则安装更多 SQL Server 实例可能会导致系统资源变得紧张。 
 
 1. **一个 VM 上的最大实例数是多少？**
-   SQL Server 2012 至 SQL Server 2019 可以支持一个独立服务器上的 [50 个实例](/sql/sql-server/editions-and-components-of-sql-server-version-15#RDBMSSP)。 不管是在 Azure 中还是在本地，此限制都是相同的。 请参阅[最佳做法](performance-guidelines-best-practices.md#multiple-instances)了解如何更好地准备环境。 
+   SQL Server 2012 至 SQL Server 2019 可以支持一个独立服务器上的 [50 个实例](/sql/sql-server/editions-and-components-of-sql-server-version-15#RDBMSSP)。 不管是在 Azure 中还是在本地，此限制都是相同的。 请参阅[最佳做法](./performance-guidelines-best-practices-checklist.md)了解如何更好地准备环境。 
 
 1. **是否可以卸载 SQL Server 的默认实例？**
 
@@ -193,6 +193,7 @@ ms.locfileid: "103224667"
    1. 彻底卸载 SQL Server，包括 SQL IaaS 扩展（如果有）。
    1. 安装免费的 [SQL Express 版本](https://www.microsoft.com/sql-server/sql-server-downloads)。
    1. 在[轻型模式](sql-agent-extension-manually-register-single-vm.md)下注册到 SQL IaaS 代理扩展。
+   1. 在 [Azure 门户](https://portal.azure.com)中[将 SQL Server 的版本更改](change-sql-server-edition.md#change-edition-in-portal)为 Express 以停止计费。  
    1. （可选）通过禁用服务启动来禁用 Express SQL Server 服务。 
 
 1. **是否可以使用 Azure 门户来管理同一 VM 上的多个实例？**
@@ -247,7 +248,7 @@ ms.locfileid: "103224667"
     
 1. **Azure SQL 虚拟机是否将客户数据移出区域，或者在区域外部存储客户数据？**
 
-   不知道。 事实上，Azure SQL 虚拟机和 SQL IaaS 代理扩展不存储任何客户数据。
+   不是。 事实上，Azure SQL 虚拟机和 SQL IaaS 代理扩展不存储任何客户数据。
 
 ## <a name="sql-server-iaas-agent-extension"></a>SQL Server IaaS 代理扩展
 
@@ -286,11 +287,11 @@ ms.locfileid: "103224667"
 
 1. **是否可以在不指定 SQL Server 许可证类型的情况下注册到 SQL IaaS 代理扩展？**
 
-   不知道。 注册到 SQL IaaS 代理扩展时，SQL Server 许可证类型不是可选属性。 在所有可管理性模式（“无代理”、“轻型”和“完全”）下注册到 SQL IaaS 代理扩展时，都必须将 SQL Server 许可证类型设置为即用即付或 Azure 混合权益。 如果安装了任何免费版本的 SQL Server（例如开发人员版或评估版），则必须注册即用即付许可。 Azure 混合权益仅适用于付费版本的 SQL Server，例如企业版和标准版。
+   不是。 注册到 SQL IaaS 代理扩展时，SQL Server 许可证类型不是可选属性。 在所有可管理性模式（“无代理”、“轻型”和“完全”）下注册到 SQL IaaS 代理扩展时，都必须将 SQL Server 许可证类型设置为即用即付或 Azure 混合权益。 如果安装了任何免费版本的 SQL Server（例如开发人员版或评估版），则必须注册即用即付许可。 Azure 混合权益仅适用于付费版本的 SQL Server，例如企业版和标准版。
 
 1. **是否可将 SQL Server IaaS 扩展从无代理模式升级为完全模式？**
 
-   不知道。 对于无代理模式，无法将可管理性模式升级为“完全”或“轻型”。 这是 Windows Server 2008 的技术限制。 需要首先将 OS 升级到 Windows Server 2008 R2 或更高版本，然后才能升级到完整管理模式。 
+   不是。 对于无代理模式，无法将可管理性模式升级为“完全”或“轻型”。 这是 Windows Server 2008 的技术限制。 需要首先将 OS 升级到 Windows Server 2008 R2 或更高版本，然后才能升级到完整管理模式。 
 
 1. 是否可以将 SQL Server IaaS 扩展从轻型模式升级到完整模式？
 
@@ -304,11 +305,11 @@ ms.locfileid: "103224667"
 
 1. **是否可以通过 Azure 门户注册到 SQL IaaS 代理扩展？**
 
-   不知道。 无法在 Azure 门户中注册到 SQL IaaS 代理扩展。 仅支持使用 Azure CLI 或 Azure PowerShell 注册到 SQL IaaS 代理扩展。 
+   不是。 无法在 Azure 门户中注册到 SQL IaaS 代理扩展。 仅支持使用 Azure CLI 或 Azure PowerShell 注册到 SQL IaaS 代理扩展。 
 
 1. **是否可以在安装 SQL Server 之前将 VM 注册到 SQL IaaS 代理扩展？**
 
-   不知道。 VM 必须至少有一个 SQL Server（数据库引擎）实例才能成功注册到 SQL IaaS 代理扩展。 如果 VM 上没有 SQL Server 实例，则新的 Microsoft.SqlVirtualMachine 资源会处于失败状态。
+   不是。 VM 必须至少有一个 SQL Server（数据库引擎）实例才能成功注册到 SQL IaaS 代理扩展。 如果 VM 上没有 SQL Server 实例，则新的 Microsoft.SqlVirtualMachine 资源会处于失败状态。
 
 1. **如果有多个 SQL Server 实例，是否可将 VM 注册到 SQL IaaS 代理扩展？**
 
@@ -346,7 +347,7 @@ ms.locfileid: "103224667"
 * [在 Windows VM 上预配 SQL Server](create-sql-vm-portal.md)
 * [将数据库迁移到 Azure VM 上的 SQL Server](migrate-to-vm-from-sql-server.md)
 * [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](business-continuity-high-availability-disaster-recovery-hadr-overview.md)
-* [Azure 虚拟机中 SQL Server 的性能最佳做法](performance-guidelines-best-practices.md)
+* [Azure 虚拟机中 SQL Server 的性能最佳做法](./performance-guidelines-best-practices-checklist.md)
 * [Azure 虚拟机中的 SQL Server 的应用程序模式和开发策略](application-patterns-development-strategies.md)
 
 **Linux VM**：

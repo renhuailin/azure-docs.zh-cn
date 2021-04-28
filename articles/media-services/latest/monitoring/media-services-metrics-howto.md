@@ -14,18 +14,18 @@ ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7f8aa7e8cd38de37f5d3757804f7836612ad64cb
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: b408020ecf6e4618f97c8bc51749278dc0361579
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227749"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138906"
 ---
 # <a name="monitor-media-services-metrics"></a>监视媒体服务指标
 
 [!INCLUDE [media services api v3 logo](../includes/v3-hr.md)]
 
-可以通过 [Azure Monitor](/azure/azure-monitor/overview) 监视指标和诊断日志，以便了解应用程序的执行情况。 有关此功能的详细说明以及应使用 Azure 媒体服务指标和诊断日志的原因，请参阅[监视媒体服务指标和诊断日志](monitor-media-services-data-reference.md)。
+可以通过 [Azure Monitor](../../../azure-monitor/overview.md) 监视指标和诊断日志，以便了解应用程序的执行情况。 有关此功能的详细说明以及应使用 Azure 媒体服务指标和诊断日志的原因，请参阅[监视媒体服务指标和诊断日志](monitor-media-services-data-reference.md)。
 
 Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 Azure CLI 查询指标。 本文介绍如何使用 Azure 门户图表和 Azure CLI 监视指标。
 
@@ -69,8 +69,8 @@ az monitor metrics list --resource \
 
 ## <a name="see-also"></a>另请参阅
 
-- [Azure Monitor 指标](/azure/azure-monitor/data-platform)
-- [使用 Azure Monitor 创建、查看和管理指标警报](/azure/azure-monitor/alerts/alerts-metric)。
+- [Azure Monitor 指标](../../../azure-monitor/data-platform.md)
+- [使用 Azure Monitor 创建、查看和管理指标警报](../../../azure-monitor/alerts/alerts-metric.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

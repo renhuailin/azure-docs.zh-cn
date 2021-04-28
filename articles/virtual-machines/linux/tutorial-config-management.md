@@ -16,18 +16,18 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 16e8cfd9c6b20e3a8d17ba335079b1b6fe8b499f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: bbc294f006859e30aa891c7aa1b9ad4d1665a21c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785012"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139950"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>教程：监视更改并更新 Azure 中的 Linux 虚拟机
 
 Azure [更改跟踪](../../automation/change-tracking/overview.md)允许你轻松识别更改，[更新管理](../../automation/update-management/overview.md)允许你管理 Azure Linux VM 的操作系统更新。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 管理 Linux 更新
@@ -170,7 +170,7 @@ az vm create \
 
 在 VM 中的“操作”下选择“更改跟踪”。 选择“编辑设置”，此时会显示“更改跟踪”页。 选择要跟踪的设置类型，然后选择“+ 添加”以配置设置。 Linux 上的可用选项为“Linux 文件”。
 
-有关更改跟踪的详细信息，请参阅[排查 VM 上的更改问题](../../automation/automation-tutorial-troubleshoot-changes.md)
+有关更改跟踪的详细信息，请参阅[排查 VM 上的更改问题](../../automation/troubleshoot/change-tracking.md)
 
 ### <a name="view-inventory"></a>查看清单
 
@@ -192,7 +192,7 @@ az vm create \
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你配置并查看了 VM 的更改跟踪和更新管理。 你已了解如何：
+在本教程中，你配置并查看了 VM 的更改跟踪和更新管理。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建资源组和 VM

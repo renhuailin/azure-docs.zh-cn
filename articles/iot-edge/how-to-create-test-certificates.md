@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d8cf3dbe9d1dc2ad329a0b5ab8fa9554c85ae55c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: adfb46894e769a23a2ac48bdb4ac3e432d9cebce
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199075"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139050"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>创建演示证书用于测试 IoT Edge 设备功能
 
@@ -361,7 +361,7 @@ IoT 设备还需要其设备证书的副本，以便可以在 IoT 中心进行�
 然后执行验证，以向 IoT 中心证明你拥有该根 CA 证书。
 最后，使用同一个根 CA 证书创建要放在 IoT 设备上的设备证书，使设备能够在 IoT 中心进行身份验证。
 
-本部分中的证书用于[在 Azure IoT 中心设置 X.509 安全性](../iot-hub/iot-hub-security-x509-get-started.md)中的步骤。
+本部分中的证书用于[在 Azure IoT 中心设置 X.509 安全性](../iot-hub/tutorial-x509-scripts.md)中的步骤。
 
 #### <a name="windows"></a>Windows
 

@@ -5,22 +5,22 @@ ms.service: sql-database
 ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: f9fa2426e371ab9fd99e88979cbcbbb34adb00d6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 741a47120b9410f91ef7f6de21879aab796e9a5e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643587"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136721"
 ---
 # <a name="migration-guide-access-to-azure-sql-database"></a>迁移指南：Access 到 Azure SQL 数据库
 
-本指南介绍如何使用适用于 Access 的 SQL Server 迁移助手（适用于 Access 的 SSMA）将 Microsoft Access 数据库迁移到 Azure SQL 数据库。
+本指南介绍如何使用适用于 Access 的 [SQL Server 迁移](https://azure.microsoft.com/en-us/migration/sql-server/)助手（适用于 Access 的 SSMA）将 Microsoft Access 数据库[迁移](https://azure.microsoft.com/migration/migration-journey)到 Azure SQL 数据库。
 
-有关其他迁移指南，请参阅 [Azure 数据库迁移指南](https://docs.microsoft.com/data-migration)。 
+有关其他迁移指南，请参阅 [Azure 数据库迁移指南](/data-migration)。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,7 +32,7 @@ ms.locfileid: "105643587"
 
 ## <a name="pre-migration"></a>迁移前
 
-满足先决条件后，就可以发现环境的拓扑并评估迁移的可行性。
+满足先决条件后，就已准备就绪，可以探索环境的拓扑并评估 [Azure 云迁移](https://azure.microsoft.com/migration)的可行性了。
 
 
 ### <a name="assess"></a>评估 
@@ -124,7 +124,7 @@ ms.locfileid: "105643587"
 
 1. 迁移数据。 右键单击要迁移的数据库或对象，然后选择“迁移数据”。 或者，可以选择右上方的“迁移数据”选项卡。  
 
-   若要迁移整个数据库的数据，请选中数据库名称旁边的复选框。 若要从单个表中迁移数据，请展开数据库，展开“表”，然后勾选表旁边的复选框。 若要忽略单个表中的数据，请清除对应的复选框。
+   若要迁移整个数据库的数据，请选中数据库名称旁边的复选框。 若要从单个表中迁移数据，请展开数据库，展开“表”，然后选中表旁边的复选框。 若要忽略单个表中的数据，请清除对应的复选框。
 
     ![“Access 元数据资源管理器”窗格上“迁移数据”命令的屏幕截图。](./media/access-to-sql-database-guide/migrate-data.png)
 
@@ -154,22 +154,22 @@ ms.locfileid: "105643587"
 
 1. **运行验证测试**：针对源和目标运行验证测试，然后分析结果。
 
-1. **运行性能测试**：针对源和目标运行性能测试，然后分析和比较结果。
+1. 运行性能测试：针对源和目标运行性能测试，然后分析和比较结果。
 
 
 ### <a name="optimize"></a>优化
 
-迁移后阶段对于协调所有数据准确性问题、验证完整性以及解决工作负载的性能问题至关重要。
+迁移后阶段对于协调任何数据准确性问题、验证完整性以及解决工作负载的性能问题至关重要。
 
 有关这些问题及其缓解步骤的详细信息，请参阅[迁移后验证和优化指南](/sql/relational-databases/post-migration-validation-and-optimization-guide)。
 
 ## <a name="migration-assets"></a>迁移资产 
 
-有关完成此迁移方案的更多帮助，请参阅以下资源。 它是为支持实际迁移项目而开发的。
+若要获得完成此迁移场景的更多帮助，请参阅以下资源。 它是为支持实际迁移项目编制的。
 
 | 标题 | 说明 |
 | --- | --- |
-| [数据工作负荷评估模型和工具](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | 为指定工作负载提供建议的“最适合”的目标平台、云就绪性和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。 |
+| [数据工作负荷评估模型和工具](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | 为指定工作负载提供建议的“最适合”目标平台、云就绪性和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。 |
 
 数据 SQL 工程团队开发了这些资源。 此团队的核心章程是解锁和加速到 Microsoft 的 Azure 数据平台的数据平台迁移项目的复杂现代化进程。
 
@@ -182,9 +182,11 @@ ms.locfileid: "105643587"
    - [Azure 总拥有成本计算器](https://azure.microsoft.com/pricing/tco/calculator/) 
 
 
-- 有关云迁移的框架和采用周期的详细信息，请参阅：
+- 要详细了解云迁移的框架和采用周期，请参阅：
    -  [适用于 Azure 的云采用框架](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [为迁移到 Azure 的工作负载计算成本和调整大小的最佳做法](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [云迁移资源](https://azure.microsoft.com/migration/resources)
+
 
 - 若要评估应用程序访问层，请参阅 [Data Access Migration Toolkit（预览版）](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)。
 - 有关如何执行数据访问层 A/B 测试的信息，请参阅[数据库实验助手概述](/sql/dea/database-experimentation-assistant-overview)。

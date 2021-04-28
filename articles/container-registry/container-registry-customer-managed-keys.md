@@ -4,12 +4,12 @@ description: 了解 Azure 容器注册表的静态加密，以及如何使用 Az
 ms.topic: article
 ms.date: 03/03/2021
 ms.custom: ''
-ms.openlocfilehash: 09eea79eb6fb9ad9e4526b1a0390664e5dd9d61e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 9ec32e32d187a3db07f023c78efbd301ef578cbc
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784036"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817028"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>使用客户管理的密钥加密注册表
 
@@ -601,7 +601,7 @@ az acr identity assign -n myRegistry --identities xxxxxxxxx-xxxx-xxxx-xxxx-xxxxx
 ## <a name="next-steps"></a>后续步骤
 
 * 详细了解 [Azure 中的静态加密](../security/fundamentals/encryption-atrest.md)。
-* 详细了解访问策略以及如何[保护对密钥保管库的访问](../key-vault/general/security-overview.md)。
+* 详细了解访问策略以及如何[保护对密钥保管库的访问](../key-vault/general/security-features.md)。
 
 
 <!-- LINKS - external -->

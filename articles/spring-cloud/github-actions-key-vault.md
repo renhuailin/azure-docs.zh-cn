@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 0ea0db1faf8c452958b8d95c193d45506057777c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9c51a7a953fca4ebdd7014beeb39e732670b15df
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877260"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129020"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>在 GitHub Actions 中使用密钥保管库对 Azure Spring Cloud 进行身份验证
 
@@ -42,7 +42,7 @@ az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTIO
     "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
-然后，按[设置 GitHub 存储库并进行 Azure 身份验证](./spring-cloud-howto-github-actions.md#set-up-github-repository-and-authenticate)中所述，将结果保存到 GitHub 机密。
+然后，按[设置 GitHub 存储库并进行 Azure 身份验证](./how-to-github-actions.md#set-up-github-repository-and-authenticate)中所述，将结果保存到 GitHub 机密。
 
 ## <a name="add-access-policies-for-the-credential"></a>添加凭据的访问策略
 在上文中创建的凭据只能获取密钥保管库的一般信息，不能获取其存储的内容。  若要获取密钥保管库中存储的机密，需设置凭据的访问策略。
@@ -114,4 +114,4 @@ jobs:
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [Spring Cloud GitHub Actions](./spring-cloud-howto-github-actions.md)
+* [Spring Cloud GitHub Actions](./how-to-github-actions.md)

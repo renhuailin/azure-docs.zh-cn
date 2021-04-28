@@ -8,12 +8,12 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4702682dcd6af68242fd5a34d1fb2e0a9273da36
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 59b2e3d5ccefaa9740359891815d83ddd14ad09d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482018"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140797"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>通过 Azure IoT 中心对下游设备进行身份验证
 
@@ -125,7 +125,7 @@ az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {exis
 
 5. 根据首选语言，查看在 IoT 应用程序中引用 X.509 证书的示例：
 
-   * C#：[在 Azure IoT 中心设置 X.509 安全性](../iot-hub/iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates)
+   * C#：[在 Azure IoT 中心设置 X.509 安全性](../iot-hub/tutorial-x509-scripts.md)
    * C: [iotedge_downstream_device_sample.c](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iotedge_downstream_device_sample)
    * Node.js：[simple_sample_device_x509.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device_x509.js)
    * Java:[SendEventX509.java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/send-event-x509)
@@ -143,19 +143,19 @@ az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway 
 
 对于 X.509 证书颁发机构 (CA) 签名的身份验证，你需要在 IoT 中心注册一个用来为下游设备的证书签名的根 CA 证书。 使用根 CA 证书或其任何中间证书颁发的证书的任何设备都可进行身份验证。
 
-本部分基于 IoT 中心文章[在 Azure IoT 中心设置 X.509 安全性](../iot-hub/iot-hub-security-x509-get-started.md)中详述的说明。
+本部分基于 IoT 中心文章[在 Azure IoT 中心设置 X.509 安全性](../iot-hub/tutorial-x509-scripts.md)中详述的说明。
 
 1. 使用 CA 证书，为下游设备创建两个设备证书（主要和辅助）。
 
    如果你没有用于创建 X.509 证书的证书颁发机构，可以使用 IoT Edge 演示证书脚本[创建下游设备证书](how-to-create-test-certificates.md#create-downstream-device-certificates)。 请按照创建 CA 签名的证书的步骤进行操作。 请使用已为网关设备生成证书的同一根 CA 证书。
 
-2. 请遵照“在 Azure IoT 中心设置 X.509 安全性”的[将 X.509 CA 证书注册到 IoT 中心](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub)部分中的说明操作。 在本部分，你将执行以下步骤：
+2. 请遵照“在 Azure IoT 中心设置 X.509 安全性”的[将 X.509 CA 证书注册到 IoT 中心](../iot-hub/tutorial-x509-scripts.md)部分中的说明操作。 在本部分，你将执行以下步骤：
 
    1. 上传根 CA 证书。 如果使用演示证书，则根 CA 为 **\<path>/certs/azure-iot-test-only.root.ca.cert.pem**。
 
    2. 验证你是否拥有该根 CA 证书。
 
-3. 请遵照“在 Azure IoT 中心设置 X.509 安全性”的[为 IoT 中心创建 X.509 设备](../iot-hub/iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub)部分中的说明操作。 在本部分，你将执行以下步骤：
+3. 请遵照“在 Azure IoT 中心设置 X.509 安全性”的[为 IoT 中心创建 X.509 设备](../iot-hub/tutorial-x509-scripts.md)部分中的说明操作。 在本部分，你将执行以下步骤：
 
    1. 添加新设备。 为 **设备 ID** 提供小写名称，并选择身份验证类型“X.509 CA 签名”。
 
@@ -169,7 +169,7 @@ az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway 
 
 6. 根据首选语言，查看在 IoT 应用程序中引用 X.509 证书的示例：
 
-   * C#：[在 Azure IoT 中心设置 X.509 安全性](../iot-hub/iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates)
+   * C#：[在 Azure IoT 中心设置 X.509 安全性](../iot-hub/tutorial-x509-scripts.md)
    * C: [iotedge_downstream_device_sample.c](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iotedge_downstream_device_sample)
    * Node.js：[simple_sample_device_x509.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device_x509.js)
    * Java:[SendEventX509.java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/send-event-x509)

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/31/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 414f7dc64027b286d8a963452d2b86126b3c5818
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dda826b50a74c109609fc7eec734b1d0de927ab3
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877258"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135340"
 ---
 # <a name="bind-azure-cache-for-redis-to-your-azure-spring-cloud-application"></a>将 Azure Cache for Redis 绑定到 Azure Spring Cloud 应用程序 
 
@@ -26,7 +26,7 @@ ms.locfileid: "104877258"
 * Azure Redis 缓存服务实例
 * 用于 Azure CLI 的 Azure Spring Cloud 扩展
 
-如果没有已部署的 Azure Spring Cloud 实例，请按照[有关如何部署 Azure Spring Cloud 应用的快速入门](spring-cloud-quickstart.md)中的步骤操作。
+如果没有已部署的 Azure Spring Cloud 实例，请按照[有关如何部署 Azure Spring Cloud 应用的快速入门](./quickstart.md)中的步骤操作。
 
 ## <a name="bind-azure-cache-for-redis"></a>绑定 Azure Redis 缓存
 
@@ -58,4 +58,4 @@ ms.locfileid: "104877258"
 
 ## <a name="next-steps"></a>后续步骤
 
-本问介绍了如何将 Azure Spring Cloud 应用程序绑定到 Azure Cache for Redis。 若要详细了解如何将服务绑定到应用程序，请参阅[绑定到 Azure Database for MySQL 实例](spring-cloud-howto-bind-mysql.md)。
+本问介绍了如何将 Azure Spring Cloud 应用程序绑定到 Azure Cache for Redis。 若要详细了解如何将服务绑定到应用程序，请参阅[绑定到 Azure Database for MySQL 实例](./how-to-bind-mysql.md)。

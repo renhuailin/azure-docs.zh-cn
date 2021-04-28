@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 49e59c43e9eaedf770b1a8e052dd73aa331d31ce
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 0dd856970e2139f816947f1b26589289a823ea9a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389564"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129344"
 ---
 # <a name="azure-database-for-mysql-version-support-policy"></a>Azure Database for MySQL 版本支持策略
 
@@ -20,21 +20,21 @@ ms.locfileid: "107389564"
 
 ## <a name="supported--mysql-versions"></a>支持的 MySQL 版本
 
-使用 InnoDB 存储引擎通过 [MySQL 社区版](https://www.mysql.com/products/community/)开发了 Azure Database for MySQL。 该服务支持社区目前支持的所有主版本，即 MySQL 5.6、5.7 和 8.0。 MySQL 使用 X.Y.Z 命名方案，其中 X 为主版本，Y 为次要版本，Z 为 bug 修复版本。 有关方案的详细信息，请参阅 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/which-version.html)。
+使用 InnoDB 存储引擎通过 [MySQL 社区版](https://www.mysql.com/products/community/)开发了 Azure Database for MySQL。 服务支持社区支持的所有当前主版本，即 MySQL 5.6、5.7 和 8.0。 MySQL 使用 X.Y.Z 命名方案，其中 X 为主版本，Y 为次要版本，Z 为 bug 修补版本。 有关方案的详细信息，请参阅 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/which-version.html)。
 
 Azure Database for MySQL 当前支持以下主版本和次要版本的 MySQL：
 
-| 版本 | [单一服务器](overview.md) <br/> 当前次要版本 |[灵活服务器（预览版）](/azure/mysql/flexible-server/overview) <br/> 当前次要版本  |
+| 版本 | [单一服务器](overview.md) <br/> 当前次要版本 |[灵活服务器（预览版）](./flexible-server/overview.md) <br/> 当前次要版本  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
 |MySQL 版本 5.6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html)（已停用） | 不支持|
 |MySQL 版本 5.7 | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|
 |MySQL 版本 8.0 | [8.0.15](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html) | [8.0.21](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html)|
 
 > [!NOTE]
-> 在单一服务器部署选项中，网关用于将连接重定向到服务器实例。 建立连接后，MySQL 客户端显示网关中设置的 MySQL 版本，而不是 MySQL 服务器实例上运行的实际版本。 若要确定 MySQL 服务器实例的版本，可在 MySQL 提示符处使用 `SELECT VERSION();` 命令。 如果应用程序需要连接到特定主版本（例如，v5.7 或 v8.0），则可通过更改服务器连接字符串中的端口来实现，如我们[此处](concepts-supported-versions.md#connect-to-a-gateway-node-that-is-running-a-specific-mysql-version)的文档所述。
+> 在单一服务器部署选项中，网关用于将连接重定向到服务器实例。 建立连接后，MySQL 客户端显示网关中设置的 MySQL 版本，而不是 MySQL 服务器实例上运行的实际版本。 若要确定 MySQL 服务器实例的版本，可在 MySQL 提示符处使用 `SELECT VERSION();` 命令。 如果你的应用程序需要连接到特定的主版本（例如 v5.7 或 v8.0），则可以通过更改服务器连接字符串中的端口来实现此目的，如[此处](concepts-supported-versions.md#connect-to-a-gateway-node-that-is-running-a-specific-mysql-version)的文档所述。
 
 > [!IMPORTANT]
-> 自 2021 年 2 月起，MySQL v5.6 已在单一服务器上停用。 从 2021 年 9 月 1 日开始，你将无法在 Azure Database for MySQL（单一服务器部署选项）上新建 v5.6 服务器。 但能够执行时间点恢复并为现有服务器创建只读副本。
+> MySQL v5.6 从 2021 年 2 月起在单一服务器上停用。 从 2021 年 9 月 1 日开始，你将无法在 Azure Database for MySQL 单一服务器部署选项上创建新的 v5.6 服务器。 但能够执行时间点恢复并为现有服务器创建只读副本。
 
 请阅读[版本支持策略文档](concepts-version-policy.md#retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql)中已停用版本的版本支持策略。
 

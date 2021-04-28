@@ -2,22 +2,25 @@
 title: 在 Azure 事件网格中使用 Azure AD 进行安全的 WebHook 传递
 description: 介绍如何将事件传递到受到 Azure Active Directory 通过 Azure 事件网格进行保护的 HTTPS 终结点
 ms.topic: how-to
-ms.date: 03/20/2021
-ms.openlocfilehash: 1298910db78ba468dd9744e84ee4629161e0a776
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.date: 04/13/2021
+ms.openlocfilehash: 0d92b89b1df6b6969491d39b04764f15b7a510d1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076030"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125798"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>将事件发布到受 Azure Active Directory 保护的终结点
 本文介绍如何使用 Azure Active Directory (Azure AD) 来保护事件订阅和 Webhook 终结点之间的连接 。 有关 Azure AD 应用程序和服务主体的概述，请参阅 [Microsoft 标识平台 (v2.0) 概述](../active-directory/develop/v2-overview.md)。
 
 本文使用 Azure 门户进行演示，但也可通过 CLI、PowerShell 或 SDK 来启用此功能。
 
+> [!IMPORTANT]
+> 2021 年 3 月 30 日，事件创建或更新中引入了附加访问检查，以解决安全漏洞。 订阅服务器客户端的服务主体需要是所有者或已分配有目标应用程序服务主体中的角色。 请按照下面的新说明重新配置 AAD 应用程序。
+
 
 ## <a name="create-an-azure-ad-application"></a>创建 Azure AD 应用程序
-通过为受保护的终结点创建 Azure AD 应用程序，向 Azure AD 注册 Webhook。 请参阅[方案：受保护的 Web API](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview)。 将受保护的 API 配置为通过守护程序应用进行调用。
+通过为受保护的终结点创建 Azure AD 应用程序，向 Azure AD 注册 Webhook。 请参阅[方案：受保护的 Web API](../active-directory/develop/scenario-protected-web-api-overview.md)。 将受保护的 API 配置为通过守护程序应用进行调用。
     
 ## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>允许事件网格使用 Azure AD 应用程序
 本部分说明如何启用事件网格来使用 Azure AD 应用程序。 
@@ -46,9 +49,7 @@ $eventGridSP = Get-AzureADServicePrincipal -Filter ("appId eq '" + $eventGridApp
 if ($eventGridSP -match "Microsoft.EventGrid")
 {
     Write-Host "The Service principal is already defined.`n"
-}
-else
-{
+} else {
     # Create a service principal for the "Azure Event Grid" AAD Application and add it to the role
     Write-Host "Creating the Azure Event Grid service principal"
     $eventGridSP = New-AzureADServicePrincipal -AppId $eventGridAppId
@@ -91,9 +92,7 @@ Write-Host $myAppRoles
 if ($myAppRoles -match $eventGridRoleName)
 {
     Write-Host "The Azure Event Grid role is already defined.`n"
-}
-else
-{      
+} else {      
     # Add our new role to the Azure AD Application
     Write-Host "Creating the Azure Event Grid role in Azure Ad Application: " $myWebhookAadApplicationObjectId
     $newRole = CreateAppRole -Name $eventGridRoleName -Description "Azure Event Grid Role"
@@ -107,10 +106,13 @@ Write-Host $myAppRoles
 
 ```
 
-### <a name="create-a-role-assignment"></a>创建角色分配
+### <a name="create-role-assignment-for-the-client-creating-event-subscription"></a>为创建事件订阅的客户端创建角色分配
 应在 Webhook Azure AD 应用中为创建事件订阅的 AAD 应用或 AAD 用户创建角色分配。 根据是 AAD 应用还是 AAD 用户在创建事件订阅，使用以下脚本之一。
 
-#### <a name="option-a-create-a-role-assignment-for-event-subscription-aad-app"></a>选项 A：为事件订阅 AAD 应用创建角色分配 
+> [!IMPORTANT]
+> 2021 年 3 月 30 日，事件创建或更新中引入了附加访问检查，以解决安全漏洞。 订阅服务器客户端的服务主体需要是所有者或已分配有目标应用程序服务主体中的角色。 请按照下面的新说明重新配置 AAD 应用程序。
+
+#### <a name="create-role-assignment-for-an-event-subscription-aad-app"></a>为事件订阅 AAD 应用创建角色分配 
 
 ```powershell
 # This is the app id of the application which will create event subscription. Set to $null if you are not assigning the role to app.
@@ -125,10 +127,11 @@ if ($eventSubscriptionWriterSP -eq $null)
 }
 
 Write-Host "Creating the Azure Ad App Role assignment for application: " $eventSubscriptionWriterAppId
-New-AzureADServiceAppRoleAssignment -Id $myApp.AppRoles[0].Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventSubscriptionWriterSP.ObjectId -PrincipalId $eventSubscriptionWriterSP.ObjectId
+$eventGridAppRole = $myApp.AppRoles | Where-Object -Property "DisplayName" -eq -Value $eventGridRoleName
+New-AzureADServiceAppRoleAssignment -Id $eventGridAppRole.Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventSubscriptionWriterSP.ObjectId -PrincipalId $eventSubscriptionWriterSP.ObjectId
 ```
 
-#### <a name="option-b-create-a-role-assignment-for-event-subscription-aad-user"></a>选项 B：为事件订阅 AAD 用户创建角色分配 
+#### <a name="create-role-assignment-for-an-event-subscription-aad-user"></a>为事件订阅 AAD 用户创建角色分配 
 
 ```powershell
 # This is the user principal name of the user who will create event subscription. Set to $null if you are not assigning the role to user.
@@ -138,14 +141,16 @@ $myServicePrincipal = Get-AzureADServicePrincipal -Filter ("appId eq '" + $myApp
     
 Write-Host "Creating the Azure Ad App Role assignment for user: " $eventSubscriptionWriterUserPrincipalName
 $eventSubscriptionWriterUser = Get-AzureAdUser -ObjectId $eventSubscriptionWriterUserPrincipalName
-New-AzureADUserAppRoleAssignment -Id $myApp.AppRoles[0].Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventSubscriptionWriterUser.ObjectId -PrincipalId $eventSubscriptionWriterUser.ObjectId
+$eventGridAppRole = $myApp.AppRoles | Where-Object -Property "DisplayName" -eq -Value $eventGridRoleName
+New-AzureADUserAppRoleAssignment -Id $eventGridAppRole.Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventSubscriptionWriterUser.ObjectId -PrincipalId $eventSubscriptionWriterUser.ObjectId
 ```
 
-### <a name="add-event-grid-service-principal-to-the-role"></a>将事件网格服务主体添加到角色
+### <a name="create-role-assignment-for-event-grid-service-principal"></a>为事件网格服务主体创建角色分配
 运行 New-AzureADServiceAppRoleAssignment 命令，将事件网格服务主体分配给你在上一步中创建的角色。
 
 ```powershell
-New-AzureADServiceAppRoleAssignment -Id $myApp.AppRoles[0].Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventGridSP.ObjectId -PrincipalId $eventGridSP.ObjectId
+$eventGridAppRole = $myApp.AppRoles | Where-Object -Property "DisplayName" -eq -Value $eventGridRoleName
+New-AzureADServiceAppRoleAssignment -Id $eventGridAppRole.Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventGridSP.ObjectId -PrincipalId $eventGridSP.ObjectId
 ```
 
 运行以下命令以输出稍后将使用的信息。
@@ -168,7 +173,7 @@ Write-Host "My Webhook's Azure AD Application ObjectId Id$($myApp.ObjectId)"
 1. 在“其他功能”选项卡上，执行以下步骤：
     1. 选择“使用 AAD 身份验证”，并配置租户 ID 和应用程序 ID：
     1. 从脚本输出中复制 Azure AD 租户 ID，将其输入“AAD 租户 ID”字段中。
-    1. 从脚本输出中复制 Azure AD 应用程序 ID，将其输入“AAD 应用程序 ID”字段中。
+    1. 从脚本输出中复制 Azure AD 应用程序 ID，将其输入“AAD 应用程序 ID”字段中。 或者，可以使用 AAD 应用程序 ID URI。 有关应用程序 ID URI 的详细信息，请参阅[本文](../app-service/configure-authentication-provider-aad.md)。
 
         ![保护 Webhook 操作](./media/secure-webhook-delivery/aad-configuration.png)
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 9b6cf2abfa797965d75bacd0b9c5e2eaf02b57a4
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 5a8b722b7bef393422eec395f16de0f38e806152
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308568"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141750"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>针对预测性维护解决方案的 Azure AI 指南
 
@@ -439,9 +439,9 @@ PdM 的建议方法是以时间相关的方式将示例拆分为训练、验证�
 
 | 培训资源  | 可用性 |
 |:-------------------|--------------|
-| [Microsoft Docs：数据科学家角色](https://docs.microsoft.com/learn/roles/data-scientist) | 公用 |
-| [Microsoft Docs：AI 工程师角色](https://docs.microsoft.com/learn/roles/ai-engineer) | 公用 |
-| [Microsoft Docs：数据工程师角色](https://docs.microsoft.com/learn/roles/data-engineer) | 公共 |
+| [Microsoft Docs：数据科学家角色](/learn/roles/data-scientist) | 公用 |
+| [Microsoft Docs：AI 工程师角色](/learn/roles/ai-engineer) | 公用 |
+| [Microsoft Docs：数据工程师角色](/learn/roles/data-engineer) | 公共 |
 | [Microsoft AI 学校](https://www.microsoft.com/ai/ai-school) | 公共 |
 | [LinkedIn Learning](https://www.linkedin.com/learning) | 公共 |
 | [Microsoft：YouTube 上关于人工智能和分析的播放列表](https://www.youtube.com/c/MicrosoftAzure/playlists?view=50&sort=dd&shelf_id=7) | 公共 |

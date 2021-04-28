@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/22/2021
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9035c0a91bbbd7493437c692540fcbb3136a094e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9741c2e85a7cd3523ffe7fe8262e5f5d821b62c3
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612948"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126590"
 ---
 # <a name="emergency-rotation-of-the-ad-fs-certificates"></a>AD FS 证书的紧急轮换
 如果需要立即轮换 AD FS 证书，可以按照本部分下面概述的步骤进行操作。
@@ -26,7 +26,7 @@ ms.locfileid: "105612948"
 
 > [!NOTE]
 > Microsoft 强烈建议使用硬件安全模块 (HSM) 来保护证书。
-> 有关详细信息，请参阅保护 AD FS 的最佳做法下的[硬件安全模块](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#hardware-security-module-hsm)。
+> 有关详细信息，请参阅保护 AD FS 的最佳做法下的[硬件安全模块](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#hardware-security-module-hsm)。
 
 ## <a name="determine-your-token-signing-certificate-thumbprint"></a>确定令牌签名证书指纹
 若要吊销 AD FS 当前正在使用的旧令牌签名证书，需要确定令牌签名证书的指纹。  为此，请按照下列步骤操作：
@@ -69,7 +69,7 @@ AutoCertificateRollover 属性描述 AD FS 是否配置为自动续订令牌签�
 ## <a name="generating-new-certificates-manually-if-autocertificaterollover-is-set-to-false"></a>如果 AutoCertificateRollover 设置为 FALSE，则手动生成新的证书
 如果未使用默认自动生成的自签名令牌签名和令牌解密证书，则必须手动续订和配置这些证书。  这涉及创建两个新的令牌签名证书并将其导入。  然后，将一个证书提升为主要证书，吊销旧证书，并将另一个证书配置为辅助证书。
 
-首先，必须从证书颁发机构获取两个新证书，并将其导入到每个联合服务器上的本地计算机个人证书存储中。 有关说明，请参阅[导入证书](https://technet.microsoft.com/library/cc754489.aspx)这篇文章。
+首先，必须从证书颁发机构获取两个新证书，并将其导入到每个联合服务器上的本地计算机个人证书存储中。 有关说明，请参阅[导入证书](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754489(v=ws.11))这篇文章。
 
 >[!IMPORTANT]
 >我们创建两个证书是因为 Azure 保存有关上一个证书的信息。  通过创建另一个证书，我们将强制 Azure 发布有关旧证书的信息，并将其替换为有关第二个证书的信息。
@@ -118,9 +118,9 @@ AutoCertificateRollover 属性描述 AD FS 是否配置为自动续订令牌签�
 ## <a name="replace-ssl-certificates"></a>替换 SSL 证书
 如果因泄漏而需要替换令牌签名证书，则还应吊销并替换 AD FS 和 WAP 服务器的 SSL 证书。  
 
-必须在颁发 SSL 证书的证书颁发机构 (CA) 吊销该证书。  这些证书通常由第三方提供商（例如 GoDaddy）颁发。  有关示例，请参阅（吊销证书 | SSL 证书 - GoDaddy 帮助 CN）。  有关详细信息，请参阅[证书吊销的工作原理](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee619754(v=ws.10)?redirectedfrom=MSDN)。
+必须在颁发 SSL 证书的证书颁发机构 (CA) 吊销该证书。  这些证书通常由第三方提供商（例如 GoDaddy）颁发。  有关示例，请参阅（吊销证书 | SSL 证书 - GoDaddy 帮助 CN）。  有关详细信息，请参阅[证书吊销的工作原理](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee619754(v=ws.10))。
 
-吊销旧的 SSL 证书并颁发新证书后，你可以替换 SSL 证书。 有关详细信息，请参阅[替换 AD FS 的 SSL 证书](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap#replacing-the-ssl-certificate-for-ad-fs)。
+吊销旧的 SSL 证书并颁发新证书后，你可以替换 SSL 证书。 有关详细信息，请参阅[替换 AD FS 的 SSL 证书](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap#replacing-the-ssl-certificate-for-ad-fs)。
 
 
 ## <a name="remove-your-old-certificates"></a>删除旧证书
@@ -139,29 +139,10 @@ AutoCertificateRollover 属性描述 AD FS 是否配置为自动续订令牌签�
 
 
 ## <a name="revoke-refresh-tokens-via-powershell"></a>通过 PowerShell 吊销刷新令牌
-现在，我们想要为可能具有刷新令牌的用户吊销这些令牌，并强制用户重新登录并获取新令牌。  这会将用户从其电话、当前 Web 邮件会话以及使用令牌和刷新令牌的其他项中注销。  可在[此处](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0&preserve-view=true)找到信息，还可以参考如何[撤销 Azure Active Directory 中的用户访问权限](../../active-directory/enterprise-users/users-revoke-access.md)。
+现在，我们想要为可能具有刷新令牌的用户吊销这些令牌，并强制用户重新登录并获取新令牌。  这会将用户从其电话、当前 Web 邮件会话以及使用令牌和刷新令牌的其他项中注销。  可在[此处](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?preserve-view=true&view=azureadps-2.0)找到信息，还可以参考如何[撤销 Azure Active Directory 中的用户访问权限](../../active-directory/enterprise-users/users-revoke-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 Windows Server 2016 中管理 AD FS 和 WAP 中的 SSL 证书](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap#replacing-the-ssl-certificate-for-ad-fs)
-- [获取和配置 AD FS 令牌签名证书和令牌解密证书](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn781426(v=ws.11)#updating-federation-partners)
+- [在 Windows Server 2016 中管理 AD FS 和 WAP 中的 SSL 证书](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap#replacing-the-ssl-certificate-for-ad-fs)
+- [获取和配置 AD FS 令牌签名证书和令牌解密证书](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn781426(v=ws.11)#updating-federation-partners)
 - [续签 Microsoft 365 和 Azure Active Directory 的联合身份验证证书](how-to-connect-fed-o365-certs.md)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

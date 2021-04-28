@@ -4,18 +4,18 @@ description: 本文包含一组 AzCopy 示例命令，可帮助你与 Azure Blob
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: ec341243811eaa271511baba04ea1c48a4fefdab
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8b3340c00d856b13edefc7728d5baa327399a441
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728889"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502923"
 ---
-# <a name="synchronize-with-azure-blob-storage-by-using-azcopy-v10"></a>使用 AzCopy v10 与 Azure Blob 存储同步
+# <a name="synchronize-with-azure-blob-storage-by-using-azcopy"></a>使用 AzCopy 与 Azure Blob 存储同步
 
 可以使用 AzCopy v10 命令行实用程序将本地存储与 Azure Blob 存储同步。 
 
@@ -41,7 +41,11 @@ ms.locfileid: "105728889"
 
 - 如果将 `--delete-destination` 标志设置为 `true`，AzCopy 将删除文件且不提供提示。 若要在 AzCopy 删除文件之前显示提示，请将 `--delete-destination` 标志设置为 `prompt`。
 
+- 如果计划将 `--delete-destination` 标志设置为 `prompt` 或 `false`，请考虑使用 [copy](storage-ref-azcopy-copy.md) 命令而不是 [sync](storage-ref-azcopy-sync.md) 命令，并将 `--overwrite` 参数设置为 `ifSourceNewer`。 [copy](storage-ref-azcopy-copy.md) 命令占用的内存较少，且费用较低，因为在移动文件之前，复制操作无需为源或目标编制索引。 
+
 - 为了防止意外删除，请务必在使用 `--delete-destination=prompt|true` 标志之前启用[软删除](../blobs/soft-delete-blob-overview.md)功能。
+
+- 运行 sync 命令的计算机应具有准确的系统时钟，因为上次修改时间对于确定是否应传输文件至关重要。 如果你的系统有严重的时钟偏差，请避免修改目标中的文件的时间与计划运行 sync 命令的时间太过接近。
 
 ## <a name="update-a-container-with-changes-to-a-local-file-system"></a>使用对本地文件系统所做的更改来更新容器
 
@@ -50,10 +54,15 @@ ms.locfileid: "105728889"
 > [!TIP]
 > 此示例将路径参数括在单引号 ('') 内。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
 
-| 语法/示例  |  代码 |
-|--------|-----------|
-| **语法** | `azcopy sync '<local-directory-path>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
-| **示例** | `azcopy sync 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive` |
+**语法**
+
+`azcopy sync '<local-directory-path>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive`
+
+**示例**
+
+```azcopy
+azcopy sync 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive
+```
 
 ## <a name="update-a-local-file-system-with-changes-to-a-container"></a>使用对容器所做的更改来更新本地文件系统
 
@@ -62,10 +71,15 @@ ms.locfileid: "105728889"
 > [!TIP]
 > 此示例将路径参数括在单引号 ('') 内。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
 
-| 语法/示例  |  代码 |
-|--------|-----------|
-| **语法** | `azcopy sync 'https://<storage-account-name>.blob.core.windows.net/<container-name>' 'C:\myDirectory' --recursive` |
-| **示例** | `azcopy sync 'https://mystorageaccount.blob.core.windows.net/mycontainer' 'C:\myDirectory' --recursive` |
+**语法**
+
+`azcopy sync 'https://<storage-account-name>.blob.core.windows.net/<container-name>' 'C:\myDirectory' --recursive`
+
+**示例**
+
+```azcopy
+azcopy sync 'https://mystorageaccount.blob.core.windows.net/mycontainer' 'C:\myDirectory' --recursive
+```
 
 ## <a name="update-a-container-with-changes-in-another-container"></a>使用一个容器的更改来更新另一个容器
 
@@ -74,10 +88,15 @@ ms.locfileid: "105728889"
 > [!TIP]
 > 此示例将路径参数括在单引号 ('') 内。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
 
-| 语法/示例  |  代码 |
-|--------|-----------|
-| **语法** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
-| **示例** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/mycontainer' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
+**语法**
+
+`azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive`
+
+**示例**
+
+```azcopy
+azcopy sync 'https://mysourceaccount.blob.core.windows.net/mycontainer' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive
+```
 
 ## <a name="update-a-directory-with-changes-to-a-directory-in-another-container"></a>使用对另一个容器中的目录所做的更改来更新一个目录
 
@@ -86,10 +105,15 @@ ms.locfileid: "105728889"
 > [!TIP]
 > 此示例将路径参数括在单引号 ('') 内。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
 
-| 语法/示例  |  代码 |
-|--------|-----------|
-| **语法** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive` |
-| **示例** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive` |
+**语法**
+
+`azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive`
+
+**示例**
+
+```azcopy
+azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive
+```
 
 ## <a name="synchronize-with-optional-flags"></a>使用可选标志同步
 
@@ -101,7 +125,10 @@ ms.locfileid: "105728889"
 |基于模式排除文件。|**--exclude-path**|
 |指定你希望与同步相关的日志条目达到何种详细程度。|**--log-level**=\[WARNING\|ERROR\|INFO\|NONE\]|
 
-有关完整列表，请参阅[选项](storage-ref-azcopy-sync.md#options)。
+有关标志的完整列表，请参阅[选项](storage-ref-azcopy-sync.md#options)。
+
+> [!NOTE]
+> 默认情况下，`--recursive` 标志设置为 `true`。 `--exclude-pattern` 和 `--include-pattern` 标志仅适用于文件名，而不适用于文件路径的其他部分。 
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -111,6 +138,13 @@ ms.locfileid: "105728889"
 - [示例：下载](storage-use-azcopy-blobs-download.md)
 - [示例：在帐户之间复制](storage-use-azcopy-blobs-copy.md)
 - [示例：Amazon S3 存储桶](storage-use-azcopy-s3.md)
+- [示例：Google Cloud Storage](storage-use-azcopy-google-cloud.md)
 - [示例：Azure 文件存储](storage-use-azcopy-files.md)
 - [教程：使用 AzCopy 将本地数据迁移到云存储](storage-use-azcopy-migrate-on-premises-data.md)
-- [对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)
+
+请参阅以下文章了解如何配置设置、优化性能和排查问题：
+
+- [AzCopy 配置设置](storage-ref-azcopy-configuration-settings.md)
+- [优化 AzCopy 的性能](storage-use-azcopy-optimize.md)
+- [使用日志文件排查 Azure 存储中的 AzCopy V10 问题](storage-use-azcopy-configure.md)
+

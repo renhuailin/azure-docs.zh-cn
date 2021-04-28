@@ -7,24 +7,24 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 0ddecff0162f8bd405c9f5fe6d3fdc20c6bc24aa
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 6c9d15c1bacc6acf53ac8d30dc3d06247962efa1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313634"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141534"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Azure 静态 Web 应用预览中的路由
 
 > [!IMPORTANT]
 > routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#routes)中更好地实现。
 
-Azure Static Web Apps 中的路由定义静态内容和 API 的后端路由规则和授权行为<sup>1</sup>。 规则在 staticwebapp.config.json 文件中定义为一组规则。
+Azure Static Web Apps 中的路由定义静态内容和 API 的后端路由规则和授权行为<sup>1</sup>。 规则在 routes.json 文件中定义为一组规则。
 
-- staticwebapp.config.json 文件必须存在于应用生成工件文件夹的根目录中。
+- routes.json 文件必须存在于应用生成工件文件夹的根目录中。
 - 规则按照其在 `routes` 数组中显示的顺序执行。
 - 规则评估将在第一次匹配时停止。 路由规则不会链接在一起。
-- 角色在 staticwebapp.config.json 文件中定义，并且用户通过[邀请](authentication-authorization.md)关联到角色。
+- 角色在 routes.json 文件中定义，并且用户通过[邀请](authentication-authorization.md)关联到角色。
 - 你可以完全控制角色名称。
 
 路由主题明显与身份验证和授权概念重叠。 务必要阅读[身份验证和授权](authentication-authorization.md)指南以及本文。
@@ -34,11 +34,11 @@ Azure Static Web Apps 中的路由定义静态内容和 API 的后端路由规�
 ## <a name="location"></a>位置
 
 > [!IMPORTANT]
-> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#routes)中更好地实现。
+> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#file-location)中更好地实现。
 
-staticwebapp.config.json 文件必须存在于应用生成工件文件夹的根目录中。 如果 Web 应用包含将生成的文件从特定文件夹复制到生成工件文件夹的生成步骤，则 staticwebapp.config.json 文件需要存在于该特定文件夹中。
+routes.json 文件必须存在于应用生成工件文件夹的根目录中。 如果 Web 应用包含将生成的文件从特定文件夹复制到生成工件文件夹的生成步骤，则 routes.json 文件需要存在于该特定文件夹中。
 
-下表列出了在其中放置若干前端框架和库的 staticwebapp.config.json 文件的相应位置。
+下表列出了在其中放置若干前端框架和库的 routes.json 文件的相应位置。
 
 | 框架/库 | 位置  |
 | ------------------- | --------- |
@@ -55,7 +55,7 @@ staticwebapp.config.json 文件必须存在于应用生成工件文件夹的根�
 > [!IMPORTANT]
 > routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#routes)中更好地实现。
 
-路由在 staticwebapp.config.json 文件中定义为 `routes` 属性上的路由规则数组。 每个规则都包含一个路由模式，以及一个或多个可选的规则属性。 有关用法示例，请参阅[路由文件示例](#example-route-file)。
+路由在 routes.json 文件中定义为 `routes` 属性上的路由规则数组。 每个规则都包含一个路由模式，以及一个或多个可选的规则属性。 有关用法示例，请参阅[路由文件示例](#example-route-file)。
 
 | 规则属性  | 必选 | 默认值 | 注释                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | -------------- | -------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -67,7 +67,7 @@ staticwebapp.config.json 文件必须存在于应用生成工件文件夹的根�
 ## <a name="securing-routes-with-roles"></a>使用角色保护路由
 
 > [!IMPORTANT]
-> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#routes)中更好地实现。
+> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#securing-routes-with-roles)中更好地实现。
 
 通过将一个或多个角色名称添加到规则的 `allowedRoles` 数组中来保护路由。 有关用法示例，请参阅[路由文件示例](#example-route-file)。
 
@@ -95,7 +95,7 @@ staticwebapp.config.json 文件必须存在于应用生成工件文件夹的根�
 ## <a name="wildcards"></a>通配符
 
 > [!IMPORTANT]
-> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#routes)中更好地实现。
+> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#wildcards)中更好地实现。
 
 通配符规则与给定路由模式下的所有请求相匹配。 如果在规则中定义 `serve` 值，则命名的文件或路径将作为响应提供。
 
@@ -125,7 +125,7 @@ staticwebapp.config.json 文件必须存在于应用生成工件文件夹的根�
 ## <a name="fallback-routes"></a>回退路由
 
 > [!IMPORTANT]
-> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#routes)中更好地实现。
+> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#fallback-routes)中更好地实现。
 
 无论是使用前端 JavaScript 框架、库还是 WebAssembly 平台（如 Blazor），单页应用程序通常都依赖于客户端路由来实现 Web 应用导航。 这些客户端路由规则无需向服务器发回请求即可更新浏览器的窗口位置。 如果刷新页面，或直接导航到客户端路由规则生成的位置，则需要服务器端回退路由来提供相应的 HTML 页面。
 
@@ -175,9 +175,9 @@ staticwebapp.config.json 文件必须存在于应用生成工件文件夹的根�
 ## <a name="custom-error-pages"></a>自定义错误页
 
 > [!IMPORTANT]
-> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#routes)中更好地实现。
+> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#response-overrides)中更好地实现。
 
-用户可能会遇到多个可能导致错误的不同情况。 使用 `platformErrorOverrides` 数组，可以提供自定义体验来响应这些错误。 请参阅[示例路由文件](#example-route-file)，以便将数组放置在 staticwebapp.config.json 文件中。
+用户可能会遇到多个可能导致错误的不同情况。 使用 `platformErrorOverrides` 数组，可以提供自定义体验来响应这些错误。 请参阅[示例路由文件](#example-route-file)，以便将数组放置在 routes.json 文件中。
 
 > [!NOTE]
 > 一旦请求发送到平台重写级别，就不会再次运行路由规则。
@@ -197,7 +197,7 @@ staticwebapp.config.json 文件必须存在于应用生成工件文件夹的根�
 ## <a name="custom-mime-types"></a>自定义 MIME 类型
 
 > [!IMPORTANT]
-> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#routes)中更好地实现。
+> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#example-configuration-file)中更好地实现。
 
 通过与 `routes` 数组在同一级别列出的 `mimeTypes` 对象，可将 [MIME 类型](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types)与文件扩展名关联。
 
@@ -223,7 +223,7 @@ staticwebapp.config.json 文件必须存在于应用生成工件文件夹的根�
 ## <a name="default-headers"></a>默认标头
 
 > [!IMPORTANT]
-> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#routes)中更好地实现。
+> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#example-configuration-file)中更好地实现。
 
 通过与 `routes` 数组在同一级别列出的 `defaultHeaders` 对象，可添加、修改或删除[响应头](https://developer.mozilla.org/docs/Web/HTTP/Headers)。
 
@@ -248,14 +248,14 @@ staticwebapp.config.json 文件必须存在于应用生成工件文件夹的根�
 - 如果为 Null 或空值，则会在处理标头时删除标头。
 - 键或值不能超过 8,000 个字符。
 - 定义的标头将与所有请求一起提供。
-- 在 staticwebapp.config.json 中定义的标头仅适用于静态内容。 可以在函数的代码中自定义 API 终结点的响应头。
+- 在 routes.json 中定义的标头仅适用于静态内容。 可以在函数的代码中自定义 API 终结点的响应头。
 
 ## <a name="example-route-file"></a>路由文件示例
 
 > [!IMPORTANT]
-> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#routes)中更好地实现。
+> routes.json 文件中定义的功能已弃用，且已在 Azure Static Web Apps [配置文件](./configuration.md#example-configuration-file)中更好地实现。
 
-下面的示例演示如何在 staticwebapp.config.json 文件中生成静态内容和 API 的路由规则。 某些路由使用 [/.auth 系统文件夹](authentication-authorization.md)来访问与身份验证相关的终结点。
+下面的示例演示如何在 routes.json 文件中生成静态内容和 API 的路由规则。 某些路由使用 [/.auth 系统文件夹](authentication-authorization.md)来访问与身份验证相关的终结点。
 
 ```json
 {
@@ -342,8 +342,8 @@ staticwebapp.config.json 文件必须存在于应用生成工件文件夹的根�
 
 ## <a name="restrictions"></a>限制
 
-- staticwebapp.config.json 文件不能超过 100 KB
-- staticwebapp.config.json 文件最多支持 50 个不同的角色
+- routes.json 文件不能超过 100 KB
+- routes.json 文件最多支持 50 个不同的角色
 
 有关一般限制和局限性，请参阅[有关配额的文章](quotas.md)。
 
