@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 52a4dbc4ff01515af8cd7d2503877184a09f7e64
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 52e0b750f02044afafe233a76e4f43755d9ed303
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94566089"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725091"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>向客户端应用程序发送自定义命令活动
 
@@ -26,7 +26,7 @@ ms.locfileid: "94566089"
 - 从自定义命令应用程序定义并发送自定义 JSON 有效负载
 - 从 C# UWP 语音 SDK 客户端应用程序接收并可视化自定义 JSON 有效负载内容
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) 或更高版本。 本指南使用 Visual Studio 2019
 > * 语音服务的 Azure 订阅密钥：[免费获取一个](overview.md#try-the-speech-service-for-free)或在 [Azure 门户](https://portal.azure.com)上创建它
@@ -161,4 +161,4 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [如何：设置 Web 终结点（预览版）](./how-to-custom-commands-setup-web-endpoints.md)
+> [操作说明：设置 Web 终结点](./how-to-custom-commands-setup-web-endpoints.md)

@@ -2,13 +2,13 @@
 title: 使用 MABS 备份 Hyper-V 虚拟机
 description: 本文介绍使用 Microsoft Azure 备份服务器 (MABS) 来备份和恢复虚拟机的过程。
 ms.topic: conceptual
-ms.date: 07/18/2019
-ms.openlocfilehash: c1c894df29659dce312d092f1aa3ea5d584e248a
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 04/20/2021
+ms.openlocfilehash: b4de791269161b477fc07d6539feaa975fdd72ad
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107204"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739991"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>使用 Azure 备份服务器备份 Hyper-V 虚拟机
 
@@ -126,7 +126,7 @@ MABS 按如下步骤使用 VSS 执行备份。 为清楚起见，本说明中的
 
 若你可以恢复已备份的虚拟机，可使用恢复向导选择虚拟机和特定恢复点。 若要打开恢复向导并恢复虚拟机，请执行以下操作：
 
-1. 在 MABS 管理员控制台中，键入 VM 的名称，或展开受保护项列表，然后选择要恢复的 VM。
+1. 在 MABS 管理员控制台中，键入 VM 的名称，或展开受保护项列表，导航到“所有受保护的 HyperV 数据”，然后选择要恢复的 VM。
 
 2. 在“以下对象的恢复点”窗格中的日历上，选择任意日期来查看可用的恢复点。 然后，在“路径”窗格中，选择要在恢复向导中使用的恢复点。
 

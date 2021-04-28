@@ -3,12 +3,12 @@ title: 快速入门：使用 Azure CLI 创建共享查询
 description: 本快速入门将按照步骤为 Azure CLI 启用 Resource Graph 扩展，并创建共享查询。
 ms.date: 02/05/2021
 ms.topic: quickstart
-ms.openlocfilehash: ec1b010771790339a13777624f04c7bd2db01f11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2befc2b6895cd9d2c797fc8ed0e28a27eb6e73e8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99594360"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870546"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>快速入门：使用 Azure CLI 创建 Resource Graph 共享查询
 
@@ -58,7 +58,7 @@ ms.locfileid: "99594360"
    az group create --name 'resource-graph-queries' --location 'westus2'
    ```
 
-1. 使用 `graph` 扩展和 [az graph shared-query create](/cli/azure/ext/resource-graph/graph/shared-query#ext_resource_graph_az_graph_shared_query_create) 命令创建 Azure Resource Graph 共享查询：
+1. 使用 `graph` 扩展和 [az graph shared-query create](/cli/azure/graph/shared-query#az_graph_shared_query_create) 命令创建 Azure Resource Graph 共享查询：
 
    ```azurecli-interactive
    # Create the Azure Resource Graph shared query
@@ -68,14 +68,14 @@ ms.locfileid: "99594360"
       --resource-group 'resource-graph-queries'
    ```
 
-1. 列出新资源组中的共享查询。 [az graph shared-query list](/cli/azure/ext/resource-graph/graph/shared-query#ext_resource_graph_az_graph_shared_query_list) 命令返回值数组。
+1. 列出新资源组中的共享查询。 [az graph shared-query list](/cli/azure/graph/shared-query#az_graph_shared_query_list) 命令返回值数组。
 
    ```azurecli-interactive
    # List all the Azure Resource Graph shared queries in a resource group
    az graph shared-query list --resource-group 'resource-graph-queries'
    ```
 
-1. 若要仅获取单个共享查询结果，请使用 [az graph shared query show](/cli/azure/ext/resource-graph/graph/shared-query#ext_resource_graph_az_graph_shared_query_show) 命令。
+1. 若要仅获取单个共享查询结果，请使用 [az graph shared query show](/cli/azure/graph/shared-query#az_graph_shared_query_show) 命令。
 
    ```azurecli-interactive
    # Show a specific Azure Resource Graph shared query
@@ -83,7 +83,7 @@ ms.locfileid: "99594360"
       --name 'Summarize resources by location'
    ```
 
-1. 使用 [az graph query](/cli/azure/ext/resource-graph/graph#ext_resource_graph_az_graph_query) 命令中的 `{{shared-query-uri}}` 语法在 Azure CLI 中运行共享查询。
+1. 使用 [az graph query](/cli/azure/graph#az_graph_query) 命令中的 `{{shared-query-uri}}` 语法在 Azure CLI 中运行共享查询。
    首先，从前面的 `show` 命令结果中复制 `id` 字段。 将示例中 `shared-query-uri` 文本替换为 `id` 字段中的值，但保留周围的 `{{` 和 `}}` 字符。
 
    ```azurecli-interactive
@@ -100,7 +100,7 @@ ms.locfileid: "99594360"
 
 如果要从 Azure CLI 环境中删除 Resource Graph 共享查询、资源组和扩展，可以使用以下命令执行此操作：
 
-- [az graph shared-query delete](/cli/azure/ext/resource-graph/graph/shared-query#ext_resource_graph_az_graph_shared_query_delete)
+- [az graph shared-query delete](/cli/azure/graph/shared-query#az_graph_shared_query_delete)
 - [az group delete](/cli/azure/group#az_group_delete)
 - [az extension remove](/cli/azure/extension#az_extension_remove)
 

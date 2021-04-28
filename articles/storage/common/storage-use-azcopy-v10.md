@@ -4,16 +4,16 @@ description: AzCopy 是一个命令行实用工具，可用于向/从存储帐�
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 826effb152d3f069e0a7c5b8e169f7083117ed22
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34d3bd45d2c0bf0260a4f8524cff6f8ac03b746c
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103494489"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501707"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
 
@@ -40,25 +40,13 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 > [!NOTE]
 > 若要向/从 [Azure 表存储](../tables/table-storage-overview.md)服务复制数据，请安装 [AzCopy 版本 7.3](https://aka.ms/downloadazcopynet)。
 
-
 ## <a name="run-azcopy"></a>运行 AzCopy
 
 为方便使用，请考虑将 AzCopy 可执行文件的目录位置添加到系统路径。 这样就可以在系统上的任何目录中键入 `azcopy`。
 
 如果不将 AzCopy 目录添加到系统路径，则必须将目录切换到 AzCopy 可执行文件所在的位置，然后在 Windows PowerShell 命令提示符中键入 `azcopy` 或 `.\azcopy`。
 
-若要查看命令列表，请键入 `azcopy -h` 并按 ENTER 键。
-
-若要了解特定的命令，只需包含该命令的名称（例如：`azcopy list -h`）。
-
-> [!div class="mx-imgBorder"]
-> ![联机帮助](media/storage-use-azcopy-v10/azcopy-inline-help.png)
-
-
-若要查找每个命令和命令参数的详细参考文档，请参阅 [azcopy](storage-ref-azcopy.md)
-
-> [!NOTE] 
-> 系统不会自动向 Azure 存储帐户的所有者分配数据访问权限。 在使用 AzCopy 执行任何有意义的操作之前，需确定如何向存储服务提供身份验证凭据。 
+系统不会自动向 Azure 存储帐户的所有者分配数据访问权限。 在使用 AzCopy 执行任何有意义的操作之前，需确定如何向存储服务提供身份验证凭据。 
 
 <a id="choose-how-youll-provide-authorization-credentials"></a>
 
@@ -95,24 +83,61 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 若要详细了解 SAS 令牌及其获取方式，请参阅[使用共享访问签名 (SAS)](./storage-sas-overview.md)。
 
+> [!NOTE]
+> 存储帐户的[需要安全传输](storage-require-secure-transfer.md)设置决定了与存储帐户的连接是否通过传输层安全 (TLS) 进行安全保护。 默认情况下，此设置处于启用状态。   
+
 <a id="transfer-data"></a>
 
 ## <a name="transfer-data"></a>传输数据
 
 对标识授权或获取 SAS 令牌后，即可开始传输数据。
 
-> [!NOTE]
-> 存储帐户的[需要安全传输](storage-require-secure-transfer.md)设置决定了与存储帐户的连接是否通过传输层安全 (TLS) 进行安全保护。 默认情况下，此设置处于启用状态。   
-
 若要查找示例命令，请参阅以下文章中的任何一篇。
 
 | 服务 | 文章 |
 |--------|-----------|
-|Azure Blob 存储 |[将文件上传到 Azure Blob 存储](storage-use-azcopy-blobs-upload.md)<br><br>[从 Azure Blob 存储下载 Blob](storage-use-azcopy-blobs-download.md)<br><br>[在 Azure 存储帐户之间复制 Blob](storage-use-azcopy-blobs-copy.md)<br><br>[与 Azure Blob 存储同步](storage-use-azcopy-blobs-synchronize.md)|
+|Azure Blob 存储|[将文件上传到 Azure Blob 存储](storage-use-azcopy-blobs-upload.md) |
+|Azure Blob 存储|[从 Azure Blob 存储下载 Blob](storage-use-azcopy-blobs-download.md)|
+|Azure Blob 存储|[在 Azure 存储帐户之间复制 Blob](storage-use-azcopy-blobs-copy.md)|
+|Azure Blob 存储|[与 Azure Blob 存储同步](storage-use-azcopy-blobs-synchronize.md)|
 |Azure 文件 |[使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)|
 |Amazon S3|[将数据从 Amazon S3 复制到 Azure 存储](storage-use-azcopy-s3.md)|
 |Google Cloud Storage|[将数据从 Google Cloud Storage 复制到 Azure 存储（预览版）](storage-use-azcopy-google-cloud.md)|
 |Azure Stack 存储|[使用 AzCopy 和 Azure Stack 存储传输数据](/azure-stack/user/azure-stack-storage-transfer#azcopy)|
+
+## <a name="get-command-help"></a>获取命令帮助
+
+若要查看命令列表，请键入 `azcopy -h` 并按 ENTER 键。
+
+若要了解特定的命令，只需包含该命令的名称（例如：`azcopy list -h`）。
+
+> [!div class="mx-imgBorder"]
+> ![联机帮助](media/storage-use-azcopy-v10/azcopy-inline-help.png)
+
+### <a name="list-of-commands"></a>命令列表
+
+下表列出了所有 AzCopy v10 命令。 每个命令链接到参考文章。 
+
+|命令|说明|
+|---|---|
+|[azcopy bench](storage-ref-azcopy-bench.md?toc=/azure/storage/blobs/toc.json)|通过将测试数据上传到指定位置或从指定位置下载测试数据来运行性能基准测试。|
+|[azcopy copy](storage-ref-azcopy-copy.md?toc=/azure/storage/blobs/toc.json)|将源数据复制到目标位置|
+|[azcopy doc](storage-ref-azcopy-doc.md?toc=/azure/storage/blobs/toc.json)|以 Markdown 格式生成工具的文档。|
+|[azcopy env](storage-ref-azcopy-env.md?toc=/azure/storage/blobs/toc.json)|显示可配置 AzCopy 行为的环境变量。|
+|[azcopy jobs](storage-ref-azcopy-jobs.md?toc=/azure/storage/blobs/toc.json)|与管理作业相关的子命令。|
+|[azcopy jobs clean](storage-ref-azcopy-jobs-clean.md?toc=/azure/storage/blobs/toc.json)|删除所有作业的所有日志和计划文件。|
+|[azcopy jobs list](storage-ref-azcopy-jobs-list.md?toc=/azure/storage/blobs/toc.json)|显示有关所有作业的信息。|
+|[azcopy jobs remove](storage-ref-azcopy-jobs-remove.md?toc=/azure/storage/blobs/toc.json)|删除与给定作业 ID 关联的所有文件。|
+|[azcopy jobs resume](storage-ref-azcopy-jobs-resume.md?toc=/azure/storage/blobs/toc.json)|恢复具有给定作业 ID 的现有作业。|
+|[azcopy jobs show](storage-ref-azcopy-jobs-show.md?toc=/azure/storage/blobs/toc.json)|显示有关给定作业 ID 的详细信息。|
+|[azcopy load](storage-ref-azcopy-load.md)|与以特定格式传输数据相关的子命令。|
+|[azcopy load clfs](storage-ref-azcopy-load-avere-cloud-file-system.md?toc=/azure/storage/blobs/toc.json)|将本地数据传输到容器中，并以 Microsoft 的 Avere Cloud FileSystem (CLFS) 格式存储。|
+|[azcopy list](storage-ref-azcopy-list.md?toc=/azure/storage/blobs/toc.json)|列出给定资源中的实体。|
+|[azcopy login](storage-ref-azcopy-login.md?toc=/azure/storage/blobs/toc.json)|登录到 Azure Active Directory 以访问 Azure 存储资源。|
+|[azcopy logout](storage-ref-azcopy-logout.md?toc=/azure/storage/blobs/toc.json)|注销用户并终止对 Azure 存储资源的访问。|
+|[azcopy make](storage-ref-azcopy-make.md?toc=/azure/storage/blobs/toc.json)|创建容器或文件共享。|
+|[azcopy remove](storage-ref-azcopy-remove.md?toc=/azure/storage/blobs/toc.json)|从 Azure 存储帐户中删除 blob 或文件。|
+|[azcopy sync](storage-ref-azcopy-sync.md?toc=/azure/storage/blobs/toc.json)|将源位置复制到目标位置。|
 
 ## <a name="use-in-a-script"></a>在脚本中使用
 
@@ -161,7 +186,13 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 ## <a name="configure-optimize-and-fix"></a>配置、优化和修复
 
-请参阅[对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)
+查看以下任意资源：
+
+- [AzCopy 配置设置](storage-ref-azcopy-configuration-settings.md)
+
+- [优化 AzCopy 的性能](storage-use-azcopy-optimize.md)
+
+- [使用日志文件排查 Azure 存储中的 AzCopy V10 问题](storage-use-azcopy-configure.md)
 
 ## <a name="use-a-previous-version"></a>使用以前的版本
 

@@ -6,12 +6,12 @@ ms.author: chrhar
 ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 01/25/2021
-ms.openlocfilehash: f64cc67ad6f0296ad289d858795ee783943f3daf
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: fb1c1d64d77ca1c69960b77cbec7f60bb717c26c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259859"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143514"
 ---
 # <a name="tutorial-access-data-in-cosmos-db-using-mongoose-with-azure-static-web-apps"></a>教程：使用 Mongoose 通过 Azure Static Web Apps 访问 Cosmos DB 中的数据
 
@@ -37,7 +37,7 @@ ms.locfileid: "107259859"
 
 ## <a name="create-a-cosmos-db-serverless-database"></a>创建 Cosmos DB 无服务器数据库
 
-首先创建一个 [Cosmos DB 无服务器](https://docs.microsoft.com/azure/cosmos-db/serverless)帐户。 利用无服务器帐户，你只需为使用的资源付费，而无需创建完整基础结构。
+首先创建一个 [Cosmos DB 无服务器](../cosmos-db/serverless.md)帐户。 利用无服务器帐户，你只需为使用的资源付费，而无需创建完整基础结构。
 
 1. 导航到 [https://portal.azure.com](https://portal.azure.com)
 2. 单击“创建资源”
@@ -140,4 +140,3 @@ ms.locfileid: "107259859"
 继续学习下一篇文章了解如何配置本地开发…
 > [!div class="nextstepaction"]
 > [设置本地开发](./local-development.md)
- 

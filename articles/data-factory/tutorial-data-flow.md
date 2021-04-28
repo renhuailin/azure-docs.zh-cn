@@ -1,19 +1,19 @@
 ---
 title: 使用映射数据流转换数据
 description: 本教程提供有关通过 Azure 数据工厂使用映射数据流转换数据的分步说明
-author: kromerm
-ms.author: makromer
+author: dcstwh
+ms.author: weetok
 ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/16/2021
-ms.openlocfilehash: dda6d756b1e660fa90e54c6cc0b80178363cd73e
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: f8570c8b252fae91986508abd3725cbbedd361a0
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905731"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565417"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>使用映射数据流转换数据
 
@@ -50,7 +50,7 @@ ms.locfileid: "107905731"
 
    ![在“新建”窗格中选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
 
-3. 在“新建数据工厂”页的“名称”下输入 **ADFTutorialDataFactory** 。
+3. 在“新建数据工厂”  页的“名称”下输入 **ADFTutorialDataFactory**  。
 
    Azure 数据工厂的名称必须 *全局唯一*。 如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 （例如 yournameADFTutorialDataFactory）。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: cbf070dce056795ad8e4a5f3e4d609e7d36d631e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 330a6e54ee88781f71c4a861051aab94f8eef81f
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200810"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587895"
 ---
 # <a name="understanding-resource-sets"></a>了解资源集
 
@@ -66,7 +66,7 @@ Azure Purview 支持以下资源集模式。 这些模式可能显示为目录�
 
 | 模式名称 | 显示名称 | 说明 |
 |--------------|--------------|-------------|
-| GUID         | {GUID}       | [RFC 4122](https://tools.ietf.org/html/rfc4122) 中定义的全局唯一标识符 |
+| Guid         | {GUID}       | [RFC 4122](https://tools.ietf.org/html/rfc4122) 中定义的全局唯一标识符 |
 | Number       | {N}          | 一个或多个数字 |
 | 日期/时间格式 | {Year}{Month}{Day}{N}     | 我们支持各种日期/时间格式，但所有格式采用 {Year}[delimiter]{Month}[delimiter]{Day} 或 {N} 系列表示形式。 |
 | 4ByteHex     | {HEX}        | 一个 4 位数的十六进制数。 |
@@ -102,14 +102,15 @@ Azure Purview 支持以下资源集模式。 这些模式可能显示为目录�
 
 显示名称：“data”
 
-## <a name="known-issues-with-resource-sets"></a>资源集的已知问题
+## <a name="customizing-resource-set-grouping-using-pattern-rules"></a>使用模式规则自定义资源集分组
 
-尽管资源集在大多数情况下都能正常工作，但也可能出现以下问题，其中 Azure Purview：
+扫描存储帐户时，Azure Purview 使用一组定义的模式来确定一组资产是否为资源集。 在某些情况下，Azure Purview 的资源集分组可能无法准确反映数据资产。 这些问题可能包括：
 
 - 错误地将资产标记为资源集
 - 将资产放入错误的资源集
 - 错误地将资产标记为不是资源集
 
+若要自定义或替代 Azure Purview 检测哪些资源可分组为资源集的方式，以及其在目录中的显示方式，你可以在管理中心定义模式规则。 有关分步说明和语法，请参阅[资源集模式规则](how-to-resource-set-pattern-rules.md)。
 ## <a name="next-steps"></a>后续步骤
 
 若要开始使用 Azure Purview，请参阅[快速入门：创建 Azure Purview 帐户](create-catalog-portal.md)。

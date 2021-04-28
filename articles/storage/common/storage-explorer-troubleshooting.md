@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 593ccac7326a0a04884fe433cac85cb8eaf79319
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: dfc8fe0f1b4bc043feecd5c76340d48bc5421854
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107228225"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568533"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器故障排除指南
 
@@ -62,15 +62,15 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 
 1. 打开“连接”对话框。
 1. 选择要连接到的资源类型。
-1. 选择“使用 Azure Active Directory (Azure AD)登录”。 选择“下一步”  。
-1. 选择与要连接到的资源关联的用户帐户和租户。 选择“下一步”  。
+1. 选择“使用 Azure Active Directory (Azure AD)登录”。 选择“下一步”。
+1. 选择与要连接到的资源关联的用户帐户和租户。 选择“下一步”。
 1. 输入资源的 URL，并为连接输入唯一的显示名称。 选择“下一步”，然后选择“连接” 。
 
 对于其他资源类型，我们目前尚未制定与 Azure RBAC 相关的解决方案。 作为一种解决方法，你可以请求 SAS URL，然后通过以下步骤连接到你的资源：
 
 1. 打开“连接”对话框。
 1. 选择要连接到的资源类型。
-1. 选择“共享访问签名(SAS)”。 选择“下一步”  。
+1. 选择“共享访问签名(SAS)”。 选择“下一步”。
 1. 输入你收到的 SAS URL，并输入连接的唯一显示名称。 选择“下一步”，然后选择“连接” 。
  
 有关连接到资源的详细信息，请参阅[连接到单个资源](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#attach-to-an-individual-resource)。
@@ -120,34 +120,62 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 
 ## <a name="sign-in-issues"></a>登录问题
 
-### <a name="blank-sign-in-dialog-box"></a>空白登录对话框
+### <a name="understanding-sign-in"></a>了解登录
 
-出现空白登录对话框的原因往往是 Active Directory 联合身份验证服务 (AD FS) 提示存储资源管理器执行 Electron 不支持的重定向。 若要解决此问题，可以尝试使用设备代码流进行登录。 为此，请执行以下步骤：
+请确保已阅读[登录到存储资源管理器](./storage-explorer-sign-in.md)文档。
 
-1. 在左侧垂直工具栏上，打开“设置”。 在“设置”面板中，转到“应用程序” > “登录” 。 启用“使用设备代码流登录”。
-2. 打开“连接”对话框（选择左侧纵栏上的插头图标，或选择帐户面板上的“添加帐户”） 。
-3. 选择要登录到的环境。
-4. 选择“登录”。
-5. 按照下一个面板上的说明进行操作。
+### <a name="frequently-having-to-reenter-credentials"></a>经常需要重新输入凭据
 
-如果由于默认浏览器已登录到其他帐户而导致你无法登录到要使用的帐户，请执行以下操作之一：
+很可能是基于 AAD 管理员设置的条件访问策略才要求你重新输入凭据。 存储资源管理器要求你从帐户面板重新输入凭据时，应会看到“错误详细信息...”链接。 单击该链接以查看存储资源管理器要求你重新输入凭据的原因。 要求重新输入凭据的条件访问策略错误可能类似于以下内容：
+- 刷新令牌已过期...
+- 必须使用多重身份验证才能访问...
+- 由于管理员所做的配置更改...
 
-- 手动将链接和代码复制到浏览器的私有会话中。
-- 手动将链接和代码复制到其他浏览器中。
+为了减少由于上述错误而不得不重新输入凭据的频率，需要与 AAD 管理员联系。
+
+### <a name="conditional-access-policies"></a>条件性访问策略
+
+如果帐户需要满足条件访问策略，请确保将“默认 web 浏览器”值用于“登录方式”设置 。 有关此设置的信息，请参阅[更改登录的位置](./storage-explorer-sign-in.md#changing-where-sign-in-happens)。
+
+### <a name="unable-to-acquire-token-tenant-is-filtered-out"></a>无法获取令牌，租户已被筛除
+
+如果你看到一条错误消息，指出由于租户被筛除而无法获取令牌，则意味着你正在尝试访问已被筛除的租户中的资源。若要取消筛选该租户，请转到“帐户面板”，并确保选中错误中指定租户的复选框。 有关在存储资源管理器中筛选租户的详细信息，请参阅[管理帐户](./storage-explorer-sign-in.md#managing-accounts)。
+
+## <a name="authentication-library-failed-to-start-properly"></a>身份验证库未能正确启动
+
+如果在启动时看到一条错误消息，指出存储资源管理器的身份验证库未能正常启动，请确保安装环境满足所有[先决条件](../../vs-azure-tools-storage-manage-with-storage-explorer.md#prerequisites)。 未满足先决条件是导致该错误消息的最常见原因。
+
+如果认为安装环境满足所有先决条件，请[在 GitHub 上提问](https://github.com/Microsoft/AzureStorageExplorer/issues/new)。 提问时，请确保提供以下信息：
+- 你的 OS。
+- 尝试使用的存储资源管理器版本。
+- 是否已检查先决条件。
+- 存储资源管理器启动失败时的[身份验证日志](#authentication-logs)。 发生此类错误后，会自动启用详细身份验证日志记录。
+
+### <a name="blank-window-when-using-integrated-sign-in"></a>使用集成登录时的空白窗口
+
+如果选择使用集成登录并看到一个空白的登录窗口，则可能需要切换为其他登录方法。 出现空白登录对话框的原因往往是 Active Directory 联合身份验证服务 (ADFS) 服务器提示存储资源管理器执行 Electron 不支持的重定向。
+
+通过在“设置” > “应用程序” > “登录”下更改“登录方式”设置，可更改为其他登录方法   。 有关不同类型的登录方法的信息，请参阅[更改登录的位置](./storage-explorer-sign-in.md#changing-where-sign-in-happens)。
 
 ### <a name="reauthentication-loop-or-upn-change"></a>重新验证循环或 UPN 更改
 
-如果你处于重新验证循环中，或者已更改其中一个帐户的 UPN，请执行以下步骤：
+如果你处于重新验证循环中，或者已更改其中一个帐户的 UPN，请尝试以下步骤：
 
-1. 删除所有帐户，然后关闭存储资源管理器。
-2. 从计算机中删除 .IdentityService 文件夹。 在 Windows 中，该文件夹位于 `C:\users\<username>\AppData\Local`。 对于 Mac 和 Linux，可以在用户目录的根目录中找到该文件夹。
-3. 如果运行 Mac 或 Linux，则还需要从操作系统的密钥存储中删除 Microsoft.Developer.IdentityService 条目。 在 Mac 上，密钥存储是 *Gnome Keychain* 应用程序。 对于 Linux，该应用程序通常称为 _Keyring_，但名称可能会有所不同，具体取决于分发版。
+1. 打开存储资源管理器
+2. 转到“帮助”>“重置”
+3. 请确保至少“身份验证”处于选中状态。 可以取消选中不希望重置的其他项。
+4. 单击“重置”按钮
+5. 重启存储资源管理器并再次尝试登录。
 
-### <a name="conditional-access"></a>条件性访问
+如果在执行重置后仍有问题，请尝试以下步骤：
 
-由于存储资源管理器使用的 Azure AD 库中存在限制，在 Windows 10、Linux 或 macOS 上使用存储资源管理器时，不支持条件访问。
+1. 打开存储资源管理器
+2. 删除所有帐户，然后关闭存储资源管理器。
+3. 从计算机中删除 `.IdentityService` 文件夹。 在 Windows 中，该文件夹位于 `C:\users\<username>\AppData\Local`。 对于 Mac 和 Linux，可以在用户目录的根目录中找到该文件夹。
+4. 如果运行 Mac 或 Linux，则还需要从操作系统的密钥存储中删除 Microsoft.Developer.IdentityService 条目。 在 Mac 上，密钥存储是 *Gnome Keychain* 应用程序。 对于 Linux，该应用程序通常称为 _Keyring_，但名称可能会有所不同，具体取决于分发版。
+6. 重启存储资源管理器并再次尝试登录。
 
-## <a name="mac-keychain-errors"></a>Mac 密钥链错误
+### <a name="macos-keychain-errors-or-no-sign-in-window"></a>macOS：密钥链错误或无登录窗口
 
 有时，macOS 密钥链可能会进入导致存储资源管理器的身份验证库出现问题的状态。 若要使 Keychain 进入此状态，请执行以下步骤：
 
@@ -162,15 +190,16 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 6. 此时会出现一条类似于“服务中心想要访问 Keychain”的消息。 输入 Mac 管理员帐户密码，然后选择“始终允许”（如果未显示“始终允许”，则选择“允许”）。
 7. 请尝试登录。
 
-### <a name="general-sign-in-troubleshooting-steps"></a>常规登录故障排除步骤
+### <a name="default-browser-doesnt-open"></a>默认浏览器无法打开
 
-* 在 macOS 上操作时，如果登录窗口永远不会出现，而是一直显示“正在等待身份验证”对话框，请尝试[这些步骤](#mac-keychain-errors)。
-* 重启存储资源管理器。
-* 如果身份验证窗口为空，请等待至少一分钟，然后关闭身份验证对话框。
-* 确保为计算机和存储资源管理器正确配置了代理和证书设置。
-* 如果运行 Windows，并且你有权访问同一台计算机上的 Visual Studio 2019 和登录凭据，请尝试登录到 Visual Studio 2019。 成功登录 Visual Studio 2019 后，则可打开存储资源管理器并在帐户面板中查看帐户。
+如果尝试登录时默认浏览器无法打开，请尝试以下所有方法：
+- 重启存储资源管理器
+- 在开始登录之前手动打开浏览器
+- 尝试使用“集成登录”，有关操作说明，请参阅[更改登录的位置](./storage-explorer-sign-in.md#changing-where-sign-in-happens)。
 
-如果这些方法均不起作用，请[在 GitHub 上提出问题](https://github.com/Microsoft/AzureStorageExplorer/issues)。
+### <a name="other-sign-in-issues"></a>其他登录问题
+
+如果上述方法均不适用于你的登录问题，或者无法解决你的问题，请[在 GitHub 上提问](https://github.com/Microsoft/AzureStorageExplorer/issues)。
 
 ### <a name="missing-subscriptions-and-broken-tenants"></a>缺少订阅和中断的租户
 
@@ -180,9 +209,9 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 * 请确保已通过正确的 Azure 环境登录（Azure、Azure 中国 21Vianet、Azure 德国、Azure 美国政府或自定义环境）。
 * 如果使用代理服务器，请确保已正确配置存储资源管理器代理。
 * 尝试删除并重新添加帐户。
-* 如果有“更多信息”链接，请检查针对失败的租户报告的错误消息。 如果你不确定如何处理错误消息，请随意[在 GitHub 上提出问题](https://github.com/Microsoft/AzureStorageExplorer/issues)。
+* 如果有“更多信息”或“错误详细信息”链接，请查看针对失败的租户报告的错误消息。 如果你不确定如何处理错误消息，请随意[在 GitHub 上提出问题](https://github.com/Microsoft/AzureStorageExplorer/issues)。
 
-## <a name="cant-remove-an-attached-account-or-storage-resource"></a>无法删除附加的帐户或存储资源
+## <a name="cant-remove-an-attached-storage-account-or-resource"></a>无法删除附加的存储帐户或资源
 
 如果无法通过 UI 删除附加的帐户或存储资源，可以通过删除以下文件夹来手动删除所有附加的资源：
 
@@ -526,6 +555,8 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 ## <a name="next-steps"></a>后续步骤
 
-如果上述解决方法均不起作用，请[在 GitHub 上提出问题](https://github.com/Microsoft/AzureStorageExplorer/issues)。 也可以选择左下角的“向 GitHub 报告问题”按钮。
+如果这些解决方案都无效，你可以：
+- 创建支持票证
+- [在 GitHub 上提问](https://github.com/Microsoft/AzureStorageExplorer/issues) 也可以选择左下角的“向 GitHub 报告问题”按钮。
 
 ![反馈](./media/storage-explorer-troubleshooting/feedback-button.PNG)

@@ -8,14 +8,14 @@ ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 3246f6668a653c05599001a2f8d8fc8d376936ce
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: eda711d6dce705cb64c1545a9c6ffe9b373ad442
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642413"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140418"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>将托管标识与 Azure 机器学习结合使用（预览版）
 
@@ -234,7 +234,7 @@ env.docker.base_image = "my-acr.azurecr.io/my-repo/my-image:latest"
 
 创建工作区时，可以指定用户分配的托管标识，该标识将用于访问关联的资源：ACR、KeyVault、存储和 App Insights。
 
-首先[创建用户分配的托管标识](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli)，并记下托管标识的 ARM 资源 ID。
+首先[创建用户分配的托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)，并记下托管标识的 ARM 资源 ID。
 
 然后，使用 Azure CLI 或 Python SDK 创建工作区。 使用 CLI 时，使用 `--primary-user-assigned-identity` 参数指定 ID。 使用 SDK 时，请使用 `primary_user_assigned_identity`。 以下是使用 Azure CLI 和 Python 通过以下参数创建新工作区的示例：
 

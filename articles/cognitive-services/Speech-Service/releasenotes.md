@@ -8,17 +8,23 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 04/20/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 4acd25fc410f179414395ea5c7d03c3b6200e828
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: f97ecedd4088a825b9ec5a076f4da70df92a3269
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106122112"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775396"
 ---
 # <a name="speech-service-release-notes"></a>语音服务发行说明
+
+## <a name="text-to-speech-2021-april-release"></a>文本转语音 2021 年 4 月发行版
+
+**神经 TTS 在 21 个区域提供**
+
+- **添加了十二个新区域** - 神经 TTS 现在可用于以下 12 个新区域：`Japan East`、`Japan West`、`Korea Central`、`North Central US`、`North Europe`、`South Central US`、`Southeast Asia`、`UK South`、`west Central US`、`West Europe`、`West US`、`West US 2`。 查看[此处](regions.md#text-to-speech)，了解 21 个受支持区域的完整列表。
 
 ## <a name="text-to-speech-2021-march-release"></a>文本转语音 2021 年 3 月发行版
 
@@ -51,7 +57,7 @@ ms.locfileid: "106122112"
 
 - C++/C#/Java/Python：已迁移到最新版本的 GStreamer (1.18.3)，支持在 Windows、Linux 和 Android 上转录任何媒体格式。 参阅[此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams)的文档。
 - **C++/C#/Java/Objective-C/Python**：为 SDK 新增了以下支持：解码压缩的 TTS/合成音频。 如果将输出音频格式设置为 PCM，并且系统上有 GStreamer，则 SDK 会自动从服务请求压缩的音频以节省带宽，然后在客户端对音频进行解码。 可以将 `SpeechServiceConnection_SynthEnableCompressedAudioTransmission` 设置为 `false` 以禁用此功能。 有关 [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#propertyid)、[C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.propertyid?view=azure-dotnet)、[Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.propertyid?view=azure-java-stable)、[Objective-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxpropertyid)、[Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.propertyid?view=azure-python) 的详细信息。
-- JavaScript：Node.js 用户现在可以使用 [`AudioConfig.fromWavFileInput` API](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest#fromWavFileInput_File_)。 这解决了 [GitHub 问题 #252](https://github.com/microsoft/cognitive-services-speech-sdk-JavaScript/issues/252)。
+- JavaScript：Node.js 用户现在可以使用 [`AudioConfig.fromWavFileInput` API](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest#fromWavFileInput_File_)。 这解决了 [GitHub 问题 #252](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/252)。
 - C++/C#/Java/Objective-C/Python：添加了用于 TTS 的 `GetVoicesAsync()` 方法，用于返回所有可用的合成语音。 有关 [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#getvoicesasync)、[C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer?view=azure-dotnet#methods)、[Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer?view=azure-java-stable#methods)、[Objective-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechsynthesizer#getvoiceasync) 和 [Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer?view=azure-python#methods) 的详细信息。
 - **C++/C#/Java/JavaScript/Objective-C/Python**：为 TTS/语音合成添加了 `VisemeReceived` 事件，用于返回同步的视素动画。 参阅[此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-speech-synthesis-viseme)的文档。
 - **C++/C#/Java/JavaScript/Objective-C/Python**：为 TTS 添加了 `BookmarkReached` 事件。 你可以在输入 SSML 中设置书签，并获取每个书签的音频偏移量。 参阅[此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup#bookmark-element)的文档。
@@ -61,6 +67,10 @@ ms.locfileid: "106122112"
 - C++/C#/Java/Objective-C/Python：添加了对用于控制音频麦克风和扬声器的单独共享库的支持。 这样就可以在没有所需音频库依赖项的环境中使用 SDK。
 - **Objective-C/Swift**：添加了对具有伞式标头的模块框架的支持。 这允许在 iOS/Mac Objective-C/Swift 应用中将语音 SDK 作为模块导入。 这解决了 [GitHub 问题 #452](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/452)。
 - **Python**：添加了对 [Python 3.9](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-python) 的支持，根据 Python 的 [3.5 生命周期终止](https://devguide.python.org/devcycle/#end-of-life-branches)删除了对 Python 3.5 的支持。
+
+**已知问题**
+
+- **C++/C#/Java**：`DialogServiceConnector` 无法使用 `CustomCommandsConfig` 来访问自定义命令应用程序，会发生连接错误。 可以通过使用 `config.SetServiceProperty("X-CommandsAppId", "your-application-id", ServicePropertyChannel.UriQueryParameter)` 手动将应用程序 ID 添加到请求来解决此错误。 在下一版本中，将还原 `CustomCommandsConfig` 的预期行为。
 
 #### <a name="improvements"></a>改进
 
@@ -132,7 +142,7 @@ ms.locfileid: "106122112"
 **新功能**
 - **全部**：可通过 TTS 语音合成 API 使用适用于自定义神经语音个人预览版的新 48KHz 输出格式：Audio48Khz192KBitRateMonoMp3、audio-48khz-192kbitrate-mono-mp3、Audio48Khz96KBitRateMonoMp3、audio-48khz-96kbitrate-mono-mp3、Raw48Khz16BitMonoPcm、raw-48khz-16bit-mono-pcm、Riff48Khz16BitMonoPcm、riff-48khz-16bit-mono-pcm。
 - **全部**：自定义语音也更易于使用。 添加了通过 `EndpointId` 设置自定义语音的支持（[C++](/cpp/cognitive-services/speech/speechconfig#setendpointid)、[C#](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.endpointid#Microsoft_CognitiveServices_Speech_SpeechConfig_EndpointId)、[Java](/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setendpointid#com_microsoft_cognitiveservices_speech_SpeechConfig_setEndpointId_String_)、[JavaScript](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig#endpointId)、[Objective-C](/objectivec/cognitive-services/speech/spxspeechconfiguration#endpointid)、[Python](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig#endpoint-id)）。 在此项更改之前，自定义语音用户需要通过 `FromEndpoint` 方法设置终结点 URL。 现在，客户可以像处理公共语音一样使用 `FromSubscription` 方法，然后通过设置 `EndpointId` 来提供部署 ID。 这简化了自定义语音的设置。 
-- **C++/C#/Java/Objective-C/Python**：从 `IntentRecognizer` 获取比首要意向更多的信息。 它现在支持使用 `verbose=true` uri 参数通过 `LanguageUnderstandingModel FromEndpoint` 方法来配置包含所有意向（而不仅仅是首要评分意向）的 JSON 结果。 这解决了 [GitHub 问题 #880](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/880)。 请参阅[此处](./quickstarts/intent-recognition.md#add-a-languageunderstandingmodel-and-intents)的已更新文档。
+- **C++/C#/Java/Objective-C/Python**：从 `IntentRecognizer` 获取比首要意向更多的信息。 它现在支持使用 `verbose=true` uri 参数通过 `LanguageUnderstandingModel FromEndpoint` 方法来配置包含所有意向（而不仅仅是首要评分意向）的 JSON 结果。 这解决了 [GitHub 问题 #880](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/880)。 请参阅[此处](./get-started-intent-recognition.md#add-a-languageunderstandingmodel-and-intents)的已更新文档。
 - C++/C#/Java：使语音助理或机器人立即停止收听。 `DialogServiceConnector`（[C++](/cpp/cognitive-services/speech/dialog-dialogserviceconnector)、[C#](/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector)、[Java](/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector)）现有一个与 `ListenOnceAsync()` 配合使用的 `StopListeningAsync()` 方法。 此方法会立即停止音频捕获并正常等待结果，因此非常适合用于按动“立即停止”按钮的场景。
 - **C++/C#/Java/JavaScript**：使语音助理或机器人更好地对底层系统错误做出反应。 `DialogServiceConnector`（[C++](/cpp/cognitive-services/speech/dialog-dialogserviceconnector)、[C#](/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector)、[Java](/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector)、[JavaScript](/javascript/api/microsoft-cognitiveservices-speech-sdk/dialogserviceconnector)）现有一个新的 `TurnStatusReceived` 事件处理程序。 这些可选事件对应于机器人上的每个 [`ITurnContext`](/dotnet/api/microsoft.bot.builder.iturncontext) 解决方案，并且将在发生轮次执行失败（例如，由于 Direct Line Speech 与机器人之间发生未经处理的异常、超时或断网）时予以报告。 使用 `TurnStatusReceived` 可以更轻松地对失败状况做出响应。 举例而言，如果机器人在后端数据库查询（例如查找产品）上花费的时间太长，`TurnStatusReceived` 将允许客户端适时地以“抱歉，我有点迷糊，请重试”或类似内容重新发出提示。
 - **C++/C#** ：在更多平台上使用语音 SDK。 [语音 SDK NuGet 包](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech)现在支持 Windows ARM/ARM64 桌面本机二进制文件（UWP 已受支持），使语音 SDK 在更多类型的计算机上有更大的用途。
@@ -527,7 +537,7 @@ SPX 是命令行接口，无需编写代码即可使用 Azure 语音服务。 �
 
 **示例**
 - **Go**：添加了 [语音识别](./get-started-speech-to-text.md?pivots=programming-language-go)和 [自定义语音助理](./quickstarts/voice-assistants.md?pivots=programming-language-go)的快速入门。 在[此处](https://github.com/microsoft/cognitive-services-speech-sdk-go/tree/master/samples)查找示例代码。 
-- **JavaScript**：添加了 [文本转语音](./get-started-text-to-speech.md?pivots=programming-language-javascript)、 [翻译](./get-started-speech-translation.md?pivots=programming-language-csharp&tabs=script)和 [意向识别](./quickstarts/intent-recognition.md?pivots=programming-language-javascript)的快速入门。
+- **JavaScript**：添加了 [文本转语音](./get-started-text-to-speech.md?pivots=programming-language-javascript)、 [翻译](./get-started-speech-translation.md?pivots=programming-language-csharp&tabs=script)和 [意向识别](./get-started-intent-recognition.md?pivots=programming-language-javascript)的快速入门。
 - 适用于 [C\#](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer) 和 [Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer) 的关键字识别示例 (Android)。  
 
 **COVID-19 缩减测试：** 由于过去几周一直在远程工作，我们无法像往常那样执行那么多手动验证测试。 我们没有做我们认为可能会造成任何破坏的任何更改，我们的自动化测试已全部通过。 如果我们遗漏了什么内容，请在 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) 上告诉我们。<br>

@@ -7,12 +7,12 @@ ms.service: certification
 ms.topic: how-to
 ms.date: 04/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 9b406e489fb83083d47f01e1483160181601d518
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 591436de14916a919f0179978825b88dcc80117c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107558643"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129722"
 ---
 # <a name="troubleshoot-your-iot-plug-and-play-certification-project"></a>IoT 即插即用认证项目故障排除
 
@@ -20,7 +20,7 @@ ms.locfileid: "107558643"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 你应当登录到 [Azure 认证设备门户](https://certify.azure.com)并在其上为设备创建一个项目。 有关详细信息，请查看[教程](tutorial-01-creating-your-project.md)。
+- 应登录 [Azure 认证设备门户](https://certify.azure.com)，并为你的设备创建一个项目。 有关详细信息，请查看[教程](tutorial-01-creating-your-project.md)。
 
 ## <a name="when-aics-tests-arent-passing"></a>当 AICS 测试未通过时
 
@@ -42,7 +42,7 @@ AICS 测试可能会由于多种原因而未通过。 请按照以下步骤检�
 
 ## <a name="when-you-need-help-with-the-model-repository"></a>当你需要模型存储库方面的帮助时
 
-对于与模型存储库相关的 IoT 即插即用问题，请参阅[有关设备模型存储库的文档指导](https://docs.microsoft.com/azure/iot-pnp/concepts-model-repository)。
+对于与模型存储库相关的 IoT 即插即用问题，请参阅[有关设备模型存储库的文档指导](../iot-pnp/concepts-model-repository.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

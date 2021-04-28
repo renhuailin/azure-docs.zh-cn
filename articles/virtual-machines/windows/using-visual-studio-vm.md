@@ -1,21 +1,21 @@
 ---
 title: 在 Azure 虚拟机上使用 Visual Studio
 description: 在 Azure 虚拟机上使用 Visual Studio。
-author: cathysull
-manager: cathys
+author: andysterland
+manager: andster
 ms.service: virtual-machines
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.author: cathys
+ms.author: andster
 keywords: visualstudio
-ms.openlocfilehash: a6acf27743f17941e14adc3f6deea903f4f5ca87
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b37c8bde959822dfcb1b3db2ec96b377217d2bfc
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562072"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138204"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上的 Visual Studio 映像
 使用预配置的 Azure 虚拟机 (VM) 中的 Visual Studio 是从无到启动并运行的开发环境的简单快捷方法。 具有不同 Visual Studio 配置的系统映像位于 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure)。
@@ -44,7 +44,7 @@ ms.locfileid: "102562072"
 ## <a name="what-features-are-installed"></a>安装了哪些功能？
 每个映像都包含为该 Visual Studio 版本推荐的功能集。 通常，安装包括：
 
-* 所有可用工作负荷，包括每个工作负荷推荐的可选组件
+* 所有可用工作负载，包括每个工作负载推荐的可选组件。 有关包含工作负载、组件和 SDK 的 Visual Studio 详细信息，请参阅 [Visual Studio 文档](/visualstudio/install/workload-and-component-ids)
 * .NET 4.6.2 和 .NET 4.7 SDK、目标包和开发人员工具
 * Visual F#
 * 适用于 Visual Studio 的 GitHub 扩展

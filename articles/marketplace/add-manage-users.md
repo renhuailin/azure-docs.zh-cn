@@ -8,12 +8,12 @@ author: varsha-sarah
 ms.author: vavargh
 ms.custom: contperf-fy21q2
 ms.date: 04/07/2021
-ms.openlocfilehash: d5b9197bfd2526dd414406ebf1aca509d3b3fa91
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 108beee178cbf65bb4ba4f29479b335ab8d01a1e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107808"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141588"
 ---
 # <a name="add-and-manage-users-for-the-commercial-marketplace"></a>添加和管理商业市场的用户
 
@@ -63,7 +63,7 @@ ms.locfileid: "107107808"
 
 如果需要重新发送邀请，请访问“用户”页，在用户列表中查找该邀请，选择其电子邮件地址（或显示“邀请挂起”的文本）。 然后，在页面底部，选择“重新发送邀请”。
 
-如果你的组织使用[目录集成](https://docs.microsoft.com/previous-versions/azure/azure-services/jj573653(v=azure.100))将本地目录服务与 Azure AD 同步，则无法在合作伙伴中心创建新用户、组或 Azure AD 应用程序。 你（或本地目录中的其他管理员）将需要直接在本地目录中创建它们，然后才能在合作伙伴中心查看并添加它们。
+如果你的组织使用[目录集成](/previous-versions/azure/azure-services/jj573653(v=azure.100))将本地目录服务与 Azure AD 同步，则无法在合作伙伴中心创建新用户、组或 Azure AD 应用程序。 你（或本地目录中的其他管理员）将需要直接在本地目录中创建它们，然后才能在合作伙伴中心查看并添加它们。
 
 ## <a name="remove-a-user"></a>删除用户
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d482f21955b76e6b90523afe3b4933378c91d36e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 806ff92fcf75ff8d1c8e092d7ff4435751a9e7db
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98107355"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529903"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>如何管理已加入 Azure AD 的设备上的本地管理员组
 
@@ -68,11 +68,7 @@ ms.locfileid: "98107355"
 
 ## <a name="manage-administrator-privileges-using-azure-ad-groups-preview"></a>使用 Azure AD 组管理管理员权限（预览版）
 
->[!NOTE]
-> 此功能目前处于预览状态。
-
-
-从 Windows 10 2004 更新开始，你可以使用 Azure AD 组通过[受限组](/windows/client-management/mdm/policy-csp-restrictedgroups) MDM 策略来管理 Azure AD 联接的设备上的管理员特权。 通过此策略，你可以将单个用户或 Azure AD 组分配给 Azure AD 联接的设备上的本地管理员组，从而可以为不同的设备组配置不同的管理员。 
+从 Windows 10 版本 2004 开始，你可以使用 Azure AD 组通过[受限组](/windows/client-management/mdm/policy-csp-restrictedgroups) MDM 策略来管理 Azure AD 联接的设备上的管理员特权。 通过此策略，你可以将单个用户或 Azure AD 组分配给 Azure AD 联接的设备上的本地管理员组，从而可以为不同的设备组配置不同的管理员。 
 
 >[!NOTE]
 > 从 Windows 10 20H2 更新开始，我们推荐使用[本地用户和组](/windows/client-management/mdm/policy-csp-localusersandgroups)策略而不是“受限组”策略
@@ -80,11 +76,11 @@ ms.locfileid: "98107355"
 
 当前，Intune 中没有用于管理这些策略的 UI，需要使用[自定义 OMA-URI 设置](/mem/intune/configuration/custom-settings-windows-10)对其进行配置。 使用以下任一策略时，需要注意以下事项： 
 
-- 通过该策略添加 Azure AD 组需要该组的 SID，可以通过执行[适用于组的 Microsoft Graph API](/graph/api/resources/group?view=graph-rest-beta) 可以获得该组的 SID。 SID 由 API 响应中的属性 `securityIdentifier` 定义。
+- 通过该策略添加 Azure AD 组需要该组的 SID，可以通过执行[适用于组的 Microsoft Graph API](/graph/api/resources/group) 可以获得该组的 SID。 SID 由 API 响应中的属性 `securityIdentifier` 定义。
 - 实施“受限组”策略时，将删除不在“成员”列表中的任何当前组成员。 因此，对新成员或组实施此策略将从设备中删除现有管理员（即联接设备的用户）、设备管理员角色，以及公司管理员角色。 为避免删除现有成员，需要将他们配置为“受限组”策略中“成员”列表的一部分。 如果使用允许对组成员资格进行增量更新的“本地用户和组”策略，则可以解决此限制
 - 仅针对 Windows 10 设备上的以下知名组评估使用这两种策略的管理员特权：管理员，用户、来宾、高级用户、远程桌面用户和远程管理用户。 
 - 使用 Azure AD 组管理本地管理员不适用于已建立混合 Azure AD 联接或已向 Azure AD 注册的设备。
-- 虽然 Windows 10 2004 更新之前存在“受限组”策略，但它不支持 Azure AD 组作为设备本地管理员组的成员。 
+- 虽然 Windows 10 版本 2004 之前存在“受限组”策略，但它不支持 Azure AD 组作为设备本地管理员组的成员。 
 
 ## <a name="manage-regular-users"></a>管理常规用户
 

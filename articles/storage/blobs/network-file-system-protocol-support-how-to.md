@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 2a37d206955e3372b9ecf97be8d27142bd417192
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: bf6b06ba7cc7f547f752ffa7877fca186ba4465e
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490448"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713779"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>使用网络文件系统 (NFS) 3.0 协议（预览版）装载 Blob 存储
 
@@ -68,15 +68,15 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFS
 
 ## <a name="step-4-configure-network-security"></a>步骤 4：配置网络安全
 
-保护帐户中数据的唯一方法是使用 VNet 和其他网络安全设置。 用于保护数据的任何其他工具（包括帐户密钥授权、Azure Active Directory [AD] 安全性）以及访问控制列表 (ACL) 在其上启用了 NFS 3.0 协议支持的帐户中不受支持。 
+保护帐户中数据的唯一方法是使用 VNet 和其他网络安全设置。 用于保护数据的任何其他工具（包括帐户密钥授权、Azure Active Directory [AD] 安全性）以及访问控制列表 (ACL) 在其上启用了 NFS 3.0 协议支持的帐户中不受支持。
 
 若要保护帐户中的数据，请参阅以下建议：[针对 Blob 存储的网络安全建议](security-recommendations.md#networking)。
 
 ## <a name="step-5-create-and-configure-a-storage-account"></a>步骤 5：创建和配置存储帐户
 
-若要使用 NFS 3.0 装载容器，必须在将该功能注册到订阅后创建存储帐户。 你无法启用注册该功能之前已存在的帐户。 
+若要使用 NFS 3.0 装载容器，必须在将该功能注册到订阅后创建存储帐户。 你无法启用注册该功能之前已存在的帐户。
 
-在此功能的预览版本中，[BlockBlobStorage](../blobs/storage-blob-create-account-block-blob.md) 和 [general-purpose V2](../common/storage-account-overview.md#general-purpose-v2-accounts) 帐户支持 NFS 3.0 协议。
+在此功能的预览版本中，标准常规用途 v2 存储帐户和高级块 blob 存储帐户支持 NFS 3.0 协议。 有关这些类型的存储帐户的详细信息，请参阅[存储帐户概述](../common/storage-account-overview.md)。
 
 配置帐户时，请选择以下值：
 

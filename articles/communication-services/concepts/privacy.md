@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: beb8b81710cf4728259a8eb1df920cd74efce3ce
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9ccc192bb5cf4c5e183e21add8e73d9e096d281c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728124"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136006"
 ---
 # <a name="region-availability-and-data-residency"></a>区域可用性和数据驻留
 
@@ -49,7 +49,7 @@ Azure 通信服务维护标识目录，使用 [DeleteIdentity](/rest/api/communi
 
 ### <a name="telephone-number-management"></a>电话号码管理
 
-Azure 通信服务维护与通信服务资源关联的电话号码目录。 使用[电话号码管理 API](/rest/api/communication/phonenumberadministration) 可检索电话号码并将其删除：
+Azure 通信服务维护与通信服务资源关联的电话号码目录。 使用[电话号码管理 API](/rest/api/communication/phonenumbers) 可检索电话号码并将其删除：
 
 - `Get All Phone Numbers`
 - `Release Phone Number`

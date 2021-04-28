@@ -3,15 +3,15 @@ title: 连接时启动虚拟机 - Azure
 description: 如何配置连接时启动虚拟机功能。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/31/2021
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: d9ce9811cd660c9a9b1fcb6f9e24cadd65d3c2bc
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: af95cf5d3e4112c717d653062f186797d48fb515
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445595"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389802"
 ---
 # <a name="start-virtual-machine-on-connect-preview"></a>连接时启动虚拟机（预览版）
 
@@ -35,8 +35,7 @@ ms.locfileid: "106445595"
 
 可以在[技术社区论坛](https://aka.ms/wvdtc)中查看有关更新和客户端支持的公告。
 
->[!IMPORTANT]
->连接时启动 VM 功能目前仅支持 PowerShell 和 REST API，而不支持 Azure 门户。 有关详细信息，请参阅[创建或更新主机池](/rest/api/desktopvirtualization/hostpools/createorupdate)。
+Azure 政府云目前不支持连接时启动 VM。
 
 ## <a name="create-a-custom-role-for-start-vm-on-connect"></a>为连接时启动 VM 创建自定义角色
 
@@ -115,6 +114,24 @@ ms.locfileid: "106445595"
 
 >[!IMPORTANT]
 > 只能在现有的主机池中配置此功能。 创建新的主机池时，此功能不可用。
+
+### <a name="use-the-azure-portal"></a>使用 Azure 门户
+
+若要使用 Azure 门户配置连接时启动 VM 功能：
+
+1. 打开浏览器，并转到 [Azure 门户](https://portal.azure.com)。
+
+2. 在 Azure 门户中转到 Windows 虚拟桌面。
+
+3. 选择“主机池”，然后查找包含你向其分配了角色的个人桌面的主机池。
+
+   >[!NOTE]
+   > 配置有此功能的主机池必须具有直接分配了角色的个人桌面。 如果主机池中的桌面配置不正确，配置过程将不起作用。
+
+4. 在主机池中，选择“属性”。 在“连接时启动 VM”下选择“是”，然后选择“保存”以立即应用设置  。
+
+    > [!div class="mx-imgBorder"]
+    > ![“属性”窗口的屏幕快照。 “连接时启动 VM”选项以红色突出显示。](media/properties-start-vm-on-connect.png)
 
 ### <a name="use-powershell"></a>使用 PowerShell
 

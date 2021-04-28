@@ -12,16 +12,16 @@ ms.date: 03/30/2020
 ms.author: amishu
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-twenty-two
-ms.openlocfilehash: 1e08203076de2073e39c5b5f5eb40b66c88490d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db902019b4fb1237c8403c719862d8fca4ba4f28
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103417686"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772516"
 ---
 # <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>在语音 SDK 中使用编解码器压缩的音频输入
 
-语音服务 SDK 压缩音频输入流 API 提供了一种使用 `PullStream` 或 `PushStream` 将压缩音频流式传输到语音服务的方法。
+语音服务 SDK 可以接受压缩的音频格式。 它会先解压缩音频，然后再将音频作为原始 PCM 通过网络发送到语音服务。
 
 平台 | 语言 | 支持的 GStreamer 版本
 | :--- | ---: | :---:

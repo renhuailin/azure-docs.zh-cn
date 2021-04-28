@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: iangithinji
 author: iantheninja
 manager: CelesteDG
-ms.openlocfilehash: 17dca502d3c65563cb9e4d2c382afb79f4d612e9
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 57a26592ec34153020e88450f3eb36b3361649b4
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376046"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144168"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory 应用程序管理：新增内容
 
@@ -83,7 +83,7 @@ ms.locfileid: "107376046"
 - [了解链接登录](configure-linked-sign-on.md)
 - [了解基于密码的单一登录](configure-password-single-sign-on-non-gallery-applications.md)
 - [了解基于 SAML 的单一登录](configure-saml-single-sign-on.md)
-- [排查在 Azure Active Directory 中添加或删除应用程序时遇到的常见问题](troubleshoot-adding-apps.md)
+- [排查在 Azure Active Directory 中添加或删除应用程序时遇到的常见问题](/troubleshoot/azure/active-directory/troubleshoot-adding-apps)
 - [查看使用 Azure AD 租户进行标识管理的应用](application-types.md)
 - [了解如何在 Azure Active Directory 中将用户分配到应用](ways-users-get-assigned-to-applications.md)
 - [快速入门：从 Azure Active Directory (Azure AD) 租户中删除应用程序](delete-application-portal.md)
@@ -141,7 +141,7 @@ ms.locfileid: "107376046"
 
 ### <a name="updated-articles"></a>更新的文章
 - [快速入门：向 Azure Active Directory (Azure AD) 租户添加应用程序](add-application-portal.md)
-- [排查在 Azure Active Directory 中添加或删除应用程序时遇到的常见问题](troubleshoot-adding-apps.md)
+- [排查在 Azure Active Directory 中添加或删除应用程序时遇到的常见问题](/troubleshoot/azure/active-directory/troubleshoot-adding-apps)
 - [管理应用程序的许可和评估同意请求](manage-consent-requests.md)
 - [查看使用 Azure AD 租户进行标识管理的应用](application-types.md)
 - [了解如何在 Azure Active Directory 中将用户分配到应用](ways-users-get-assigned-to-applications.md)

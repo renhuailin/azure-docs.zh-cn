@@ -7,18 +7,21 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 4f1f432da33bded4fc0f04170673e5943dec5fb0
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: b20a1670c13a272ed48088567a205d854ac99179
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311322"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791240"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Azure 静态 Web 应用的 GitHub Actions 工作流预览版
 
-当你创建新的 Azure 静态 Web 应用资源时，Azure 会生成一个 GitHub Actions 工作流来控制应用的持续部署。 该工作流由 YAML 文件驱动。 本文详细介绍该工作流文件的结构和选项。
+创建新的 Azure Static Web Apps 资源时，Azure 会生成一个 GitHub Actions 工作流来控制应用的持续部署。 该工作流由 YAML 文件驱动。 本文详细介绍该工作流文件的结构和选项。
 
 部署由[触发器](#triggers)启动，该触发器运行由单个[步骤](#steps)定义的[作业](#jobs)。
+
+> [!NOTE]
+> Azure Static Web Apps 还支持 Azure DevOps。 请参阅[使用 Azure DevOps 发布](publish-devops.md)，了解如何设置管道。
 
 ## <a name="file-location"></a>文件位置
 
@@ -179,13 +182,16 @@ with:
 
 ## <a name="route-file-location"></a>路由文件位置
 
-你可以自定义工作流，以在存储库的任何文件夹中查找 [staticwebapp.config.json](routes.md)。 可以在作业的 `with` 部分下定义以下属性。
+你可以自定义工作流，以在存储库的任何文件夹中查找 [routes.json](routes.md)。 可以在作业的 `with` 部分下定义以下属性。
 
 | properties          | 说明                                                                                                                                 |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `routes_location` | 定义找到 _staticwebapp.config.json_ 文件的目录位置。 此位置相对于存储库的根目录。 |
+| `routes_location` | 定义找到 routes.json 文件的目录位置。 此位置相对于存储库的根目录。 |
 
-默认情况下，如果前端框架生成步骤不会将此文件移到 `output_location`，则显式定义 _staticwebapp.config.json_ 文件的位置尤为重要。
+如果你的前端框架生成步骤不会在默认情况下将此文件移到 `output_location`，则显式了解 routes.json 文件的位置尤为重要。
+
+> [!IMPORTANT]
+> routes.json 文件上定义的功能现已弃用。 有关 staticwebapp.config.json 的信息，请参阅 Azure Static Web Apps [配置文件](./configuration.md)。
 
 ## <a name="environment-variables"></a>环境变量
 

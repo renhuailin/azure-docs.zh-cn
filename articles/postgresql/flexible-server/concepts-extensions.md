@@ -5,13 +5,13 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/17/2021
-ms.openlocfilehash: e8f71eb120b86f35672c9123b52f7f19c9fee662
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/22/2021
+ms.openlocfilehash: 9fdc2d2567e6ea24a68398139007be978cb639b5
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608453"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107989353"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器中的 PostgreSQL 扩展
 
@@ -60,6 +60,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 > |[pg_visibility](https://www.postgresql.org/docs/12/pgvisibility.html)                      | 1.2             | 检查可见性映射 (VM) 和页面级别的可见性信息|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.4             | 提供审核功能|
 > |[pgcrypto](https://www.postgresql.org/docs/12/pgcrypto.html)                     | 1.3             | 加密函数|
+> |[pglogical](https://github.com/2ndQuadrant/pglogical)                     | 2.3.2           | PostgreSQL 逻辑复制|
 > |[pgrowlocks](https://www.postgresql.org/docs/12/pgrowlocks.html)                   | 1.2             | 显示行级锁定信息|
 > |[pgstattuple](https://www.postgresql.org/docs/12/pgstattuple.html)                  | 1.5             | 显示元组级别统计信息|
 > |[plpgsql](https://www.postgresql.org/docs/12/plpgsql.html)                      | 1.0             | PL/pgSQL 过程语言|
@@ -109,6 +110,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 > |[pg_visibility](https://www.postgresql.org/docs/11/pgvisibility.html)                      | 1.2             | 检查可见性映射 (VM) 和页面级别的可见性信息|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.3.1             | 提供审核功能|
 > |[pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html)                     | 1.3             | 加密函数|
+> |[pglogical](https://github.com/2ndQuadrant/pglogical)                     | 2.3.2           | PostgreSQL 逻辑复制|
 > |[pgrowlocks](https://www.postgresql.org/docs/11/pgrowlocks.html)                   | 1.2             | 显示行级锁定信息|
 > |[pgstattuple](https://www.postgresql.org/docs/11/pgstattuple.html)                  | 1.5             | 显示元组级别统计信息|
 > |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1.0             | PL/pgSQL 过程语言|

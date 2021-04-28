@@ -7,17 +7,17 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 2ba0e836f1be97681d677158f5cb81c5b033e915
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-js
+ms.openlocfilehash: aaa73eaf95001d23efd09419d6ff3bb46ae005be
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103008495"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140058"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>在 Azure 存储中托管静态网站
 
-可以直接从[常规用途 v2](../common/storage-account-create.md) 或 [ BlockBlobStorage](storage-blob-create-account-block-blob.md) 帐户中的容器提供静态内容（HTML、CSS、JavaScript 和图像文件）。 若要了解详细信息，请参阅 [Azure 存储中的静态网站托管](storage-blob-static-website.md)。
+可以直接从[常规用途 V2](../common/storage-account-create.md) 或 [ BlockBlobStorage](../common/storage-account-create.md) 帐户中的容器提供静态内容（HTML、CSS、JavaScript 和图像文件）。 若要了解详细信息，请参阅 [Azure 存储中的静态网站托管](storage-blob-static-website.md)。
 
 本文介绍如何使用 Azure 门户、Azure CLI 或 PowerShell 启用静态网站托管。
 
@@ -25,7 +25,7 @@ ms.locfileid: "103008495"
 
 静态网站托管是必须在存储帐户上启用的一项功能。
 
-### <a name="portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)即可开始操作。
 
@@ -199,7 +199,7 @@ set-AzStorageblobcontent -File "<path-to-file>" `
 
 可以使用网站的公共 URL 从浏览器查看网站的页面。
 
-### <a name="portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[门户](#tab/azure-portal)
 
 在存储帐户的“帐户概述”页旁显示的窗格中，选择“静态网站”。 你的站点的 URL 显示在“主终结点”字段中。
 

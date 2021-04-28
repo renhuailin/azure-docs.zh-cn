@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2021
+ms.date: 04/14/2021
 ms.author: aldomel
-ms.openlocfilehash: 0dd053fa268e88c281c1fe6c00339fe6a6edf27a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 232b83fef2da312828f4f9f332ab2505e3a68100
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732595"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503637"
 ---
 # <a name="virtual-network-traffic-routing"></a>虚拟网络流量路由
 
@@ -111,7 +111,7 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
    3. AzureCloud 区域标记（例如 AzureCloud.canadacentral、AzureCloud.eastasia）
    4. AzureCloud 标记 </br></br>
 
-若要使用此功能，请在路由表命令中指定地址前缀参数的服务标记名称。 例如，可在 Powershell 中使用以下命令创建新的路由，将发送到 Azure 存储 IP 前缀的流量定向到虚拟设备： </br>
+若要使用此功能，请在路由表命令中指定地址前缀参数的服务标记名称。 例如，可在 Powershell 中使用以下命令创建新的路由，将发送到 Azure 存储 IP 前缀的流量定向到虚拟设备： </br></br>
 
 ```azurepowershell-interactive
 New-AzRouteConfig -Name "StorageRoute" -AddressPrefix "Storage" -NextHopType "VirtualAppliance" -NextHopIpAddress "10.0.100.4"
@@ -123,6 +123,10 @@ New-AzRouteConfig -Name "StorageRoute" -AddressPrefix "Storage" -NextHopType "Vi
 az network route-table route create -g MyResourceGroup --route-table-name MyRouteTable -n StorageRoute --address-prefix Storage --next-hop-type VirtualAppliance --next-hop-ip-address 10.0.100.4
 ```
 </br>
+
+#### <a name="known-issues-april-2021"></a>已知问题（2021 年 4 月）
+
+当存在 BGP 路由或者在子网上配置了服务终结点时，可能无法使用正确的优先级评估路由。 我们正在修复这些问题 </br>
 
 
 > [!NOTE] 

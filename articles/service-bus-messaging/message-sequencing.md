@@ -2,17 +2,17 @@
 title: Azure 服务总线消息序列化和时间戳 | Microsoft Docs
 description: 本文介绍如何保留 Azure 服务总线消息的序列化和排序（使用时间戳）。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: fdb18802e576ad114fd3f783d5efd7bb826a5f94
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: 3d5300568232afae1238445113d60eda8cdb2f1b
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85341174"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107497091"
 ---
 # <a name="message-sequencing-and-timestamps"></a>消息序列化和时间戳
 
-序列化和时间戳是所有服务总线实体上始终启用的两项功能，通过收到或检索到的消息的 [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber) 和 [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc) 属性体现。
+序列化和时间戳是所有服务总线实体上始终启用的两项功能，通过收到或检索到的消息的 `SequenceNumber` 和 `EnqueuedTimeUtc` 属性体现。
 
 如果消息的绝对顺序至关重要，和/或使用者需要消息的可信唯一标识符，中转站会向消息分发相对于队列或主题的无间隔递增序列号。 对于已分区实体，序列号是相对于分区进行分发。
 
@@ -30,7 +30,11 @@ SequenceNumber 值是在中转站接受并存储消息时分配给消息的唯�
 
 在定义的排队时间前，计划的消息不会在队列中具体化。 在此之前，可以取消计划的消息。 取消操作会将消息删除。
 
-可以在通过常规发送路径发送消息时设置 [ScheduledEnqueueTimeUtc](/dotnet/api/microsoft.azure.servicebus.message.scheduledenqueuetimeutc) 属性，也可以明确使用 [ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) API 来安排消息。 后一种方法立即返回计划的消息的 SequenceNumber，稍后可用于根据需要取消计划的消息。 也可以使用[消息浏览](message-browsing.md)，发现计划的消息及其序列号。
+可以通过两种方式使用我们的任何客户端来计划消息：
+- 使用常规发送 API，但在发送之前设置消息上的 `ScheduledEnqueueTimeUtc` 属性。
+- 使用计划消息 API，同时传递常规消息和计划时间。 这将返回计划的消息的 SequenceNumber，稍后可用于根据需要取消计划的消息。 
+
+也可以使用[消息浏览](message-browsing.md)，发现计划的消息及其序列号。
 
 只有当计划的消息处于此状态时，消息的 SequenceNumber 才有效。 当消息转换为有效状态时，消息就会被追加到队列中，就像瞬时排入队列一样，包括分配新的 SequenceNumber。
 

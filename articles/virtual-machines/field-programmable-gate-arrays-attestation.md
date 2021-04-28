@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: vikancha
-ms.openlocfilehash: c16e324809fd688adf4a970f105cb364e73d7004
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a3408d30a9caa24355cf3976235c3a9b8061b95f
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128786"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531228"
 ---
 # <a name="fpga-attestation-for-azure-np-series-vms-preview"></a>适用于 Azure NP 系列 VM 的 FPGA 证明（预览版）
 
@@ -52,7 +52,7 @@ https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-lates
 
 必须将网表文件上传到 Azure 存储 Blob 容器供证明服务访问。  
 
-有关创建帐户和容器，以及将网表作为 Blob 上传到该容器的详细信息，请参阅以下页面：[https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-cli](../storage/blobs/storage-quickstart-blobs-cli.md)。  
+有关创建帐户和容器，以及将网表作为 Blob 上传到该容器的详细信息，请参阅以下页面：[https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-cli](/azure/storage/blobs/storage-quickstart-blobs-cli)。  
 
 也可以使用 Azure 门户执行此操作。  
 
@@ -122,6 +122,7 @@ https://fpga-attestation.azurewebsites.net/api/ComputeFPGA_HttpGetStatus
 
 服务会将其输出写回到容器。 如果成功通过了验证，则容器将具有原始网表文件 (abc.xclbin)、包含位流的文件 (abc.xclbin)、用于标识所存储位流的专用位置的文件 (abc.azure.xclbin) 和四个日志文件：启动进程有一个日志文件 (abc-log.txt)，执行验证的三个并行阶段各有一个日志文件。 这些文件命名为 *logPhaseX.txt，其中 X 是阶段的编号。 将在 VM 上使用 azure.xclbin，以发出将已验证的映像上传到 U250 的信号。 
 
-如果通不过验证，则会写入一个 error-*.txt 文件，指出哪个步骤失败。 另外，还可在日志文件中检查是否有错误日志指出证明已失败。 联系我们请求支持时，请务必连同业务流程 ID 一起，将所有这些文件包含为支持请求的一部分。  
+如果通不过验证，则会写入一个 error-*.txt 文件，指出哪个步骤失败。 另外，可在日志文件中检查是否有错误日志指出证明失败。 联系我们请求支持时，请务必连同业务流程 ID 一起，将所有这些文件包含为支持请求的一部分。  
 
-可以使用 Azure 门户创建容器，以及上传网表和下载位流与日志文件。 目前不支持通过门户提交证明请求及监视其进度，必须如前所述通过脚本实现此目的。
+可以使用 Azure 门户创建容器，以及上传网表和下载位流与日志文件。 目前不支持通过门户提交证明请求及监视其进度，必须如前所述通过脚本实现此目的。 
+

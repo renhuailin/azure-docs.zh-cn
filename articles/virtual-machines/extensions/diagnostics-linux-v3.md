@@ -8,19 +8,19 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 12/13/2018
-ms.openlocfilehash: 121ea47322303ab06a9240cd4a80e61ad882954d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: fe03bbfb33f3637eecc4e68f24846c929dad5fa4
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138294"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479247"
 ---
 # <a name="use-linux-diagnostic-extension-30-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展 3.0 监视指标和日志
 
 本文档介绍 Linux 诊断扩展 (LAD) 3.0 和更高版本。
 
 > [!IMPORTANT]
-> 有关版本 2.3 及更早版本的信息，请参阅[监视 Linux VM 的性能和诊断数据](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)。
+> 有关版本 2.3 及更早版本的信息，请参阅[监视 Linux VM 的性能和诊断数据](https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)。
 
 ## <a name="introduction"></a>简介
 
@@ -554,7 +554,7 @@ sinks | （可选）日志行发送到的更多接收器的名称的逗号分隔
 
 处理器类指标提供有关 VM 中处理器使用情况的信息。 聚合百分比时，结果是所有 CPU 的平均值。 
 
-在双 vCPU VM 中，如果一个 vCPU 是 100% 忙碌，另一个是 100% 空闲，则报告的 `PercentIdleTime` 是 50。 如果在相同时段内每个 vCPU 都是 50% 忙碌，则报告的结果也是 50。 在四 vCPU VM 中，如果一个 vCPU 是 100% 忙碌，其他几个是空闲，则报告的 `PercentIdleTime` 是 75。
+在双 vCPU VM 中，如果一个 vCPU 是 100% 忙碌，另一个是 100% 空闲，则报告的 `PercentIdleTime` 是 50。 如果在相同时段内每个 vCPU 都是 50% 忙碌，则报告的结果也是 50。 在四个 vCPU 的 VM 中，如果一个 vCPU 是 100% 忙碌，其他几个是空闲，则报告的 `PercentIdleTime` 是 75。
 
 计数器 | 含义
 ------- | -------

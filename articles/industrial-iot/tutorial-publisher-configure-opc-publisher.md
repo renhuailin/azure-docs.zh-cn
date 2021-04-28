@@ -6,12 +6,12 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 3/22/2021
-ms.openlocfilehash: 4d4f9c90fd96365216480164f29f08fad92eb9d0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e4d26856d269a07ce87b22843c61be97b73bbea3
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104787209"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137249"
 ---
 # <a name="tutorial-configure-the-opc-publisher"></a>教程：配置 OPC 发布服务器
 
@@ -100,7 +100,7 @@ OPC 发布服务器具有在端口 62222 上运行的内置 OPC UA 服务器。 
 >[!NOTE] 
 > 此功能仅在 OPC 发布服务器版本 2.5 及更低版本中提供。**
 
-OPC 发布服务器实现了以下 [IoT 中心直接方法](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods)，可通过使用 [IoT 中心设备 SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) 从应用程序（从世界各地的任何地方）调用：
+OPC 发布服务器实现了以下 [IoT 中心直接方法](../iot-hub/iot-hub-devguide-direct-methods.md)，可通过使用 [IoT 中心设备 SDK](../iot-hub/iot-hub-devguide-sdks.md) 从应用程序（从世界各地的任何地方）调用：
 
   - PublishNodes
   - UnpublishNodes

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: f78420a65cd9c2402266eb9ba973eabe758d7ee5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4119d64dcadd23415cc750e88d560057bda6af8e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608222"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138010"
 ---
 # <a name="hbv3-series-virtual-machine-overview"></a>HBv3 系列虚拟机概述 
 
@@ -130,7 +130,7 @@ HBv3 VM 具有 3 台物理本地 SSD 设备。 一台设备已预先格式化以
 | Orchestrator 支持           | Azure CycleCloud、Azure Batch、AKS；[群集配置选项](../../sizes-hpc.md#cluster-configuration-options)                      | 
 
 > [!NOTE] 
-> 在 HBv3 和大于 64（虚拟或物理）核的其他 VM 上，不支持 Windows Server 2012 R2。 请参阅[此处](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)了解详细信息。
+> 在 HBv3 和大于 64（虚拟或物理）核的其他 VM 上，不支持 Windows Server 2012 R2。 请参阅[此处](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)了解详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

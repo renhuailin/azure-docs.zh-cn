@@ -4,15 +4,15 @@ description: 了解如何更改域委托并使用 Azure DNS 名称服务器提�
 services: dns
 author: rohinkoul
 ms.service: dns
-ms.date: 2/19/2019
+ms.date: 04/19/2021
 ms.author: rohink
 ms.topic: conceptual
-ms.openlocfilehash: 9304556edb5e6207296d8ee4e8392e345869cb92
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4753b07cc2f3ccd998c26a3392eb08c8761dd6f7
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "76939056"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738839"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>使用 Azure DNS 委托 DNS 区域
 
@@ -35,7 +35,7 @@ ms.locfileid: "76939056"
 有两种类型的 DNS 服务器：
 
 * *权威* DNS 服务器托管 DNS 区域。 它只应答这些区域中的 DNS 记录查询。
-* *递归* DNS 服务器不托管 DNS 区域。 它调用权威 DNS 服务器来收集所需的数据，以应答所有 DNS 查询。
+* 递归 DNS 服务器不托管 DNS 区域。 它调用权威 DNS 服务器来收集所需的数据，以应答所有 DNS 查询。
 
 Azure DNS 提供权威 DNS 服务。  它不提供递归 DNS 服务。 Azure 中的云服务和 VM 自动配置为使用 Azure 基础结构中单独提供的递归 DNS 服务。 有关如何更改这些 DNS 设置的详细信息，请参阅 [Name Resolution in Azure](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)（Azure 中的名称解析）。
 
@@ -43,7 +43,7 @@ Azure DNS 提供权威 DNS 服务。  它不提供递归 DNS 服务。 Azure 中
 
 当递归 DNS 服务器收到 DNS 记录查询时（例如“www.contoso.com”），必须先找到托管“contoso.com”域的区域的名称服务器。 若要查找名称服务器，请从根名称服务器开始，接着查找托管“com”区域的名称服务器。 然后，查询“com”名称服务器，查找托管“contoso.com”区域的名称服务器。  最后，它便可以向这些名称服务器查询“www.contoso.com”。
 
-此过程称为 DNS 名称解析。 严格地说，DNS 解析还有其他步骤，例如跟踪 CNAME，但这对于了解 DNS 委托的工作原理并不重要。
+此过程称为 DNS 名称解析。 严格地说，DNS 解析包括更多的步骤，例如跟踪 CNAME，但这对于了解 DNS 委托的工作原理并不重要。
 
 父区域如何“指向”子区域的名称服务器？ 方法是使用一种特殊的 DNS 记录，名为 NS 记录（NS 代表“名称服务器”）。 例如，根区域包含“com”的 NS 记录，并显示“com”区域的名称服务器。 而“com”区域又包含“contoso.com”的 NS 记录，其中显示“contoso.com”区域的名称服务器。 在父区域中设置子区域的 NS 记录称为委托域。
 
@@ -68,4 +68,3 @@ Azure DNS 提供权威 DNS 服务。  它不提供递归 DNS 服务。 Azure 中
 ## <a name="next-steps"></a>后续步骤
 
 了解如何[将域委托给 Azure DNS](dns-delegate-domain-azure-dns.md)
-

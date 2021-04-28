@@ -2,14 +2,14 @@
 title: Azure 备份支持矩阵
 description: 汇总 Azure 备份服务的支持设置和限制。
 ms.topic: conceptual
-ms.date: 02/17/2019
+ms.date: 04/14/2021
 ms.custom: references_regions
-ms.openlocfilehash: 349a48b6178d5e4618aa62d9f0c3a150fe561e05
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 5c74a34efe8075ab7a34fab4570d9513900b3f81
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107284385"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517413"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
 
@@ -33,7 +33,7 @@ Azure 备份使用恢复服务保管库来协调和管理以下工作负荷类�
 --- | ---
 **订阅中的保管库数** | 单个订阅中最多可以有 500 个恢复服务保管库。
 **保管库中的计算机数** | 可在单个保管库中跨所有工作负荷（如 Azure VM、SQL Server VM、MABS 服务器等）保护最多 2000 个数据源。<br><br>单个保管库中最多可以有 1,000 个 Azure VM。<br/><br/> 单个保管库中最多可注册 50 个 MABS 服务器。
-**数据源** | 单个[数据源](./backup-azure-backup-faq.md#how-is-the-data-source-size-determined)的最大大小为 54,400 GB。 此限制不适用于 Azure VM 备份。 可以备份到保管库的数据总量没有限制。
+**数据源** | 单个[数据源](./backup-azure-backup-faq.yml#how-is-the-data-source-size-determined-)的最大大小为 54,400 GB。 此限制不适用于 Azure VM 备份。 可以备份到保管库的数据总量没有限制。
 **保管库备份** | **Azure VM：** 每天 1 次。<br/><br/>**受 DPM/MABS 保护的计算机：** 一天两次。<br/><br/> **直接使用 MARS 代理备份的计算机：** 一天三次。
 **在保管库之间备份** | 备份在一个区域内进行。<br/><br/> 在包含想要备份的 VM 的每个 Azure 区域中都需要有一个保管库。 无法备份到其他区域。
 **移动保管库** | 可以跨订阅或同一订阅中的资源组之间[移动保管库](./backup-azure-move-recovery-services-vault.md)。 但是，不支持跨区域移动保管库。
@@ -151,7 +151,7 @@ Azure 备份添加了“跨区域还原”功能以增强数据可用性和复�
 
 | 备份管理类型 | 支持                                                    | 支持的区域 |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | 同时具有托管磁盘和非托管磁盘的 Azure VM 支持。 经典 VM 不支持。 | 在除法国中部、澳大利亚中部、南非北部、阿联酋北部、瑞士北部、德国中西部、挪威东部、UG 爱荷华州和 UG 弗吉尼亚州以外的所有 Azure 公共区域和主权区域提供。 <br>若要了解它在这些区域的使用，请联系 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
+| Azure VM               | 同时具有托管磁盘和非托管磁盘的 Azure VM（包括加密 Azure VM）支持。 经典 VM 不支持。 | 在除法国中部、澳大利亚中部、南非北部、阿联酋北部、瑞士北部、德国中西部、挪威东部、UG 爱荷华州和 UG 弗吉尼亚州以外的所有 Azure 公共区域和主权区域提供。 <br>若要了解它在这些区域的使用，请联系 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
 | SQL/SAP HANA | 预览                                                      | 在除法国中部、澳大利亚中部、南非北部、阿联酋北部、瑞士北部、德国中西部、挪威东部、UG 爱荷华州和 UG 弗吉尼亚州以外的所有 Azure 公共区域和主权区域提供。 <br>若要了解它在这些区域的使用，请联系 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
 | MARS 代理/本地  | 否                                                           | 空值               |
 | AFS（Azure 文件共享）                 | 否                                                           | 空值               |

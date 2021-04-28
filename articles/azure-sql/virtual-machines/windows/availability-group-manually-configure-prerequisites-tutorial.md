@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4c64a4e06ed452c895c1bc2cf20adc2d9c0060c3
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 1f7d73a6553d8baed86c87da0c4e7a5b036e99f7
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219257"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134314"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>教程：在 Azure 虚拟机中的 SQL Server 上创建可用性组的先决条件
 
@@ -374,7 +374,7 @@ Azure 会创建虚拟机。
 <br/>
 
 > [!NOTE]
-> 此处建议的计算机大小适合用于在 Azure 虚拟机中测试可用性组。 为获得生产工作负荷的最佳性能，请参阅 [Azure 虚拟机中 SQL Server 的性能最佳实践](performance-guidelines-best-practices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中关于 SQL Server 计算机大小和配置的建议。
+> 此处建议的计算机大小适合用于在 Azure 虚拟机中测试可用性组。 为获得生产工作负荷的最佳性能，请参阅 [Azure 虚拟机中 SQL Server 的性能最佳实践](./performance-guidelines-best-practices-checklist.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中关于 SQL Server 计算机大小和配置的建议。
 >
 
 预配完三台 VM 后，需将其加入到 **corp.contoso.com** 域中，并向这些计算机授予 CORP\Install 管理权限。

@@ -6,12 +6,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: thvankra
-ms.openlocfilehash: 3e44625d23a302c58ea065a4fc3ecec5605e60b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ea28bf21424f0624b4f1bb5856a17672c1c7b106
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103564501"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875442"
 ---
 # <a name="manage-azure-managed-instance-for-apache-cassandra-resources-using-azure-cli-preview"></a>使用 Azure CLI 管理 Azure Managed Instance for Apache Cassandra 资源（预览版）
 
@@ -42,7 +42,7 @@ ms.locfileid: "103564501"
 
 ### <a name="create-a-managed-instance-cluster"></a><a id="create-cluster"></a>创建托管实例群集
 
-通过使用 [az managed-cassandra cluster create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_create) 命令来创建 Azure Managed Instance for Apache Cassandra 群集：
+通过使用 [az managed-cassandra cluster create](/cli/azure/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_cluster_create) 命令来创建 Azure Managed Instance for Apache Cassandra 群集：
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -65,7 +65,7 @@ az managed-cassandra cluster create \
 
 ### <a name="delete-a-managed-instance-cluster"></a><a id="delete-cluster"></a>删除托管实例群集
 
-通过使用 [az managed-cassandra cluster delete](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_delete) 命令来删除群集：
+通过使用 [az managed-cassandra cluster delete](/cli/azure/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_cluster_delete) 命令来删除群集：
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -78,7 +78,7 @@ az managed-cassandra cluster delete \
 
 ### <a name="get-the-cluster-details"></a><a id="get-cluster-details"></a>获取群集详细信息
 
-通过使用 [az managed-cassandra cluster show](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_show) 命令来获取群集详细信息：
+通过使用 [az managed-cassandra cluster show](/cli/azure/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_cluster_show) 命令来获取群集详细信息：
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -91,7 +91,7 @@ az managed-cassandra cluster show \
 
 ### <a name="get-the-cluster-node-status"></a><a id="get-cluster-status"></a>获取群集节点状态
 
-通过使用 [az managed-cassandra cluster node-status](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_node_status) 命令来获取群集节点状态：
+通过使用 [az managed-cassandra cluster node-status](/cli/azure/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_cluster_node_status) 命令来获取群集节点状态：
 
 ```azurecli-interactive
 clusterName='cassandra-hybrid-cluster'
@@ -104,7 +104,7 @@ az managed-cassandra cluster node-status \
 
 ### <a name="list-the-clusters-by-resource-group"></a><a id="list-clusters-resource-group"></a>按资源组列出群集
 
-通过使用 [az managed-cassandra cluster list](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_list) 命令来按资源组列出群集：
+通过使用 [az managed-cassandra cluster list](/cli/azure/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_cluster_list) 命令来按资源组列出群集：
 
 ```azurecli-interactive
 subscriptionId='MySubscriptionId'
@@ -116,7 +116,7 @@ az managed-cassandra cluster list\
 
 ### <a name="list-clusters-by-subscription-id"></a><a id="list-clusters-subscription"></a>按订阅 ID 列出群集
 
-通过使用 [az managed-cassandra cluster list](/cli/azure/ext/cosmosdb-preview/managed-cassandra?view=azure-cli-latest&preserve-view=true) 命令来按订阅 ID 列出群集：
+通过使用 [az managed-cassandra cluster list](/cli/azure/managed-cassandra?view=azure-cli-latest&preserve-view=true) 命令来按订阅 ID 列出群集：
 
 ```azurecli-interactive
 # set your subscription id
@@ -137,7 +137,7 @@ az managed-cassandra cluster list
 
 ### <a name="create-a-datacenter"></a><a id="create-datacenter"></a>创建数据中心
 
-通过使用 [az managed-cassandra datacenter create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_create) 命令来创建数据中心：
+通过使用 [az managed-cassandra datacenter create](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_create) 命令来创建数据中心：
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -157,7 +157,7 @@ az managed-cassandra datacenter create \
 
 ### <a name="delete-a-datacenter"></a><a id="delete-datacenter"></a>删除数据中心
 
-通过使用 [az managed-cassandra datacenter delete](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_delete) 命令来删除数据中心：
+通过使用 [az managed-cassandra datacenter delete](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_delete) 命令来删除数据中心：
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -172,7 +172,7 @@ az managed-cassandra datacenter delete \
 
 ### <a name="get-datacenter-details"></a><a id="get-datacenter-details"></a>获取数据中心详细信息
 
-通过使用 [az managed-cassandra datacenter show](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_show) 命令来获取数据中心详细信息：
+通过使用 [az managed-cassandra datacenter show](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_show) 命令来获取数据中心详细信息：
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -187,7 +187,7 @@ az managed-cassandra datacenter show \
 
 ### <a name="update-or-scale-a-datacenter"></a><a id="update-datacenter"></a>更新或缩放数据中心
 
-通过使用 [az managed-cassandra datacenter update](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_update) 命令来更新或缩放数据中心（以缩放/更改 nodeCount 值）：
+通过使用 [az managed-cassandra datacenter update](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_update) 命令来更新或缩放数据中心（以缩放/更改 nodeCount 值）：
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -205,7 +205,7 @@ az managed-cassandra datacenter update \
 
 ### <a name="get-the-datacenters-in-a-cluster"></a><a id="get-datacenters-cluster"></a>获取群集中的数据中心
 
-通过使用 [az managed-cassandra datacenter list](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_list) 命令来获取群集中的数据中心：
+通过使用 [az managed-cassandra datacenter list](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_list) 命令来获取群集中的数据中心：
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'

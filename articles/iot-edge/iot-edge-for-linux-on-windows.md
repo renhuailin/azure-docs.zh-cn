@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: kgremban
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 330eaf5c12372347917e9f3a4aeafb6a2088c592
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3c7fd6c842d465dd5af5257628044666f10f2ece
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103492568"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538200"
 ---
 # <a name="what-is-azure-iot-edge-for-linux-on-windows-preview"></a>什么是 Azure IoT Edge for Linux on Windows（预览版）
 
@@ -48,7 +48,7 @@ Windows 进程与 Linux 虚拟机之间的双向通信意味着，Windows 进程
 
 IoT Edge for Linux on Windows 着重于 Linux 和 Windows 组件之间的互操作性。
 
-如果需要通过示例来演示 Windows 应用程序与 IoT Edge 模块之间的通信，请参阅 [Windows 10 IoT 示例](https://github.com/microsoft/Windows-IoT-Samples)。
+如果需要通过示例来演示 Windows 应用程序与 IoT Edge 模块之间的通信，请参阅 [EFLOW & Windows 10 示例](https://aka.ms/AzEFLOW-Samples)。
 
 ## <a name="public-preview"></a>公共预览版
 
@@ -58,7 +58,7 @@ IoT Edge for Linux on Windows 目前为[公共预览版](https://azure.microsoft
 
 使用 IoT Edge 支持和反馈通道，获取有关 IoT Edge for Linux on Windows 的帮助。
 
-**报告 bug** - 可以在 IoT Edge 开源项目的[问题页](https://github.com/azure/iotedge/issues)上报告 bug。 与 Azure IoT Edge for Linux on Windows 相关的 bug 可以在 [iotedge-eflow 问题页](https://github.com/azure/iotedge-eflow/issues)上报告。
+**报告 bug** - 可以在 IoT Edge 开源项目的 [问题页](https://github.com/azure/iotedge/issues)上报告 bug。 与 Azure IoT Edge for Linux on Windows 相关的 bug 可以在 [iotedge-eflow 问题页](https://aka.ms/AzEFLOW-Issues)上报告。
 
 **Microsoft 客户支持团队** – 拥有 [支持计划](https://azure.microsoft.com/support/plans/)的用户可以通过直接从 [Azure 门户](https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac)创建支持票证来与 Microsoft 客户支持团队进行沟通。
 

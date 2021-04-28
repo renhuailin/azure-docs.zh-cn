@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
-ms.openlocfilehash: 63194ab87e0f2228b8585e962394aa1ebfff48d6
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c19dba659fd88fc17ba89987cdf5245ca365dcbf
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767218"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108018378"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>在基于 Linux 上的 Azure 应用服务中生成 Ruby 和 Postgres 应用
 
@@ -125,7 +125,7 @@ rails server
 az extension add --name db-up
 ```
 
-如以下示例所示，使用 [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) 命令在 Azure 中创建 Postgres 数据库。 将 \<postgresql-name> 替换为唯一名称（服务器终结点为 https://\<postgresql-name>.postgres.database.azure.com）  。 对于 \<admin-username> 和 \<admin-password>，请指定用来为此 Postgres 服务器创建管理员用户的凭据 。
+如以下示例所示，使用 [`az postgres up`](/cli/azure/postgres#az_postgres_up) 命令在 Azure 中创建 Postgres 数据库。 将 \<postgresql-name> 替换为唯一名称（服务器终结点为 https://\<postgresql-name>.postgres.database.azure.com）  。 对于 \<admin-username> 和 \<admin-password>，请指定用来为此 Postgres 服务器创建管理员用户的凭据 。
 
 <!-- Issue: without --location -->
 ```azurecli

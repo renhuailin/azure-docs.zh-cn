@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3a15cce45c527a92c99e0488661e0b67bb8e2371
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 71e98b735b4aa4631d73f8730a48c56a8c7585ab
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101713059"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107497636"
 ---
 # <a name="get-face-detection-data"></a>获取人脸检测数据
 
@@ -78,9 +78,9 @@ ms.locfileid: "101713059"
 
 ## <a name="next-steps"></a>后续步骤
 
-本指南介绍了如何使用人脸检测的各项功能。 接下来，请按深度教程的说明操作，将这些功能集成到应用中。
+本指南介绍了如何使用人脸检测的各项功能。 接下来，将这些功能集成到应用中，以添加用户的人脸数据。
 
-- [教程：创建一个用于显示图像中人脸数据的 WPF 应用](../Tutorials/FaceAPIinCSharpTutorial.md)
+- [教程：向人脸服务添加用户](../enrollment-overview.md)
 
 ## <a name="related-topics"></a>相关主题
 

@@ -8,29 +8,41 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/19/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c5381a93308b5b3c8988cb8e25df541af1043418
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: d63e7916423038e53c375b2be4114582cf4d6152
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105031301"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725757"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>使用 SendGrid 进行自定义电子邮件验证
 
-使用 Azure Active Directory B2C (Azure AD B2C) 中的自定义电子邮件向注册使用你的应用程序的用户发送自定义电子邮件。 通过使用 [DisplayControls](display-controls.md)（当前提供预览版）和第三方电子邮件提供商 SendGrid，你可以使用自己的电子邮件模板和“发件人:”地址和主题，并支持本地化和自定义一次性密码 (OTP) 设置。
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+使用 Azure Active Directory B2C (Azure AD B2C) 中的自定义电子邮件向注册使用你的应用程序的用户发送自定义电子邮件。 通过使用第三方电子邮件提供商 SendGrid，你可以使用自己的电子邮件模板和“发件人:”地址和主题，并支持本地化和自定义一次性密码 (OTP) 设置。
+
+::: zone pivot="b2c-user-flow"
+
+[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 自定义电子邮件验证要求使用第三方电子邮件提供程序（如 [SendGrid](https://sendgrid.com)、[Mailjet](https://Mailjet.com) 或 [SparkPost](https://sparkpost.com)），自定义 REST API，或任何基于 HTTP 的电子邮件提供商（包括你自己的）。 本文介绍如何设置使用 SendGrid 的解决方案。
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="create-a-sendgrid-account"></a>创建 SendGrid 帐户
 
 如果你还没有 SendGrid 帐户，请先设置一个（Azure 客户每月可免费查看 25,000 封电子邮件）。 有关安装说明，请参阅[如何在 Azure 中使用 SendGrid 发送电子邮件](../sendgrid-dotnet-how-to-send-email.md)中的[创建 SendGrid 帐户](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account)部分。
 
 请确保完成[创建 SendGrid API 密钥](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key)部分。 记下 API 密钥，因为后面的步骤将要用到。
+
+> [!IMPORTANT]
+> 借助 SendGrid，客户能够从共享 IP 和[专用 IP 地址](https://sendgrid.com/docs/ui/account-and-settings/dedicated-ip-addresses/)发送电子邮件。 使用专用 IP 地址时，需要通过 IP 地址预热来适当地建立自己的信誉。 有关详细信息，请参阅 [预热 IP 地址](https://sendgrid.com/docs/ui/sending-email/warming-up-an-ip-address/)。
 
 ## <a name="create-azure-ad-b2c-policy-key"></a>创建 Azure AD B2C 策略密钥
 
@@ -290,6 +302,9 @@ JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimT
 ## <a name="add-otp-technical-profiles"></a>添加 OTP 技术配置文件
 
 `GenerateOtp` 技术配置文件为电子邮件地址生成代码。 `VerifyOtp` 技术配置文件验证与电子邮件地址关联的代码。 你可以更改格式的配置以及一次性密码的有效期。 有关 OTP 技术配置文件的详细信息，请参阅[定义一次性密码技术配置文件](one-time-password-technical-profile.md)。
+
+> [!NOTE]
+> Web.TPEngine.Providers.OneTimePasswordProtocolProvider 协议生成的 OTP 代码绑定到浏览器会话。 这意味着用户可以在不同的浏览器会话中生成唯一的 OTP 代码，每个代码对其对应的会话有效。 相比之下，由内置用户流生成的 OTP 代码独立于浏览器会话，因此如果用户在新的浏览器会话中生成新的 OTP 代码，它将替换以前的 OTP 代码。
 
 将以下技术配置文件添加到 `<ClaimsProviders>` 元素。
 
@@ -556,3 +571,5 @@ JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimT
 
 - [自定义电子邮件验证 - DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
 - 有关使用自定义 REST API 或任何基于 HTTP 的 SMTP 电子邮件提供商的信息，请参阅[在 Azure AD B2C 自定义策略中定义 RESTful 技术配置文件](restful-technical-profile.md)。
+
+::: zone-end

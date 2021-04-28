@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: azure-redhat-openshift
 ms.topic: article
 ms.date: 04/09/2021
-ms.openlocfilehash: 24c4686306aff9d84fe7bf74ddfdccff987244d9
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: c15e7261587952c93d059cfcfadd06c7d204d80d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107368458"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135666"
 ---
 # <a name="control-egress-traffic-for-your-azure-red-hat-openshift-aro-cluster-preview"></a>控制 Azure Red Hat OpenShift (ARO) 群集（预览版）的出口流量
 
@@ -19,7 +19,7 @@ ms.locfileid: "107368458"
 
 ## <a name="before-you-begin"></a>在开始之前
 
-本文假定你要创建新的 AKS 群集。 如果需要基本 ARO 群集，请参阅 [ARO 快速入门](https://docs.microsoft.com/azure/openshift/tutorial-create-cluster)。
+本文假定你要创建新的 AKS 群集。 如果需要基本 ARO 群集，请参阅 [ARO 快速入门](./tutorial-create-cluster.md)。
 
 > [!IMPORTANT]
 > ARO 预览版功能是可选择启用的自助功能。 预览版是“按原样”和“按可用”提供的，并且未包含在服务级别协议和有限保修中。 客户支持部门会尽力为 ARO 预览版功能提供部分支持。
@@ -99,7 +99,7 @@ ms.locfileid: "107368458"
 
 ### <a name="azure-monitor-for-containers"></a>用于容器的 Azure Monitor
 
-有两个选项可以提供对用于容器的 Azure Monitor 的访问，你可以允许 Azure Monitor [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags)或者提供对必需 FQDN/应用程序规则的访问权限。  下面是有关如何将 Azure Monitor 添加到现有 ARO 群集的[说明](https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-azure-redhat4-setup)。
+有两个选项可以提供对用于容器的 Azure Monitor 的访问，你可以允许 Azure Monitor [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags)或者提供对必需 FQDN/应用程序规则的访问权限。  下面是有关如何将 Azure Monitor 添加到现有 ARO 群集的[说明](../azure-monitor/containers/container-insights-azure-redhat4-setup.md)。
 
 #### <a name="required-network-rules"></a>必需的网络规则
 

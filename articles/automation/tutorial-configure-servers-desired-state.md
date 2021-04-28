@@ -4,13 +4,14 @@ description: 本文介绍如何使用 Azure Automation State Configuration 将�
 services: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.date: 08/08/2018
-ms.openlocfilehash: f16db3f55ebd0f09e4d7b75750fa319daf03977e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/15/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d29c8ec4e0b992f38eec9e203ad6ad302f71308b
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99053561"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108018486"
 ---
 # <a name="configure-machines-to-a-desired-state"></a>将计算机配置为所需状态
 
@@ -29,7 +30,7 @@ ms.locfileid: "99053561"
 
 - 一个 Azure 自动化帐户。 若要了解有关 Azure 自动化帐户及其要求的更多信息，请参阅[自动化帐户身份验证概述](./automation-security-overview.md)。
 - 一个运行 Windows Server 2008 R2 或更高版本的 Azure 资源管理器 VM（非经典）。 如需创建 VM 的说明，请参阅[在 Azure 门户中创建第一个 Windows 虚拟机](../virtual-machines/windows/quick-create-portal.md)。
-- Azure PowerShell 模块 3.6 版或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。
+- Azure PowerShell 模块 3.6 版或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/azurerm/install-azurerm-ps)（安装 Azure PowerShell 模块）。
 - 熟悉所需状态配置 (DSC)。 有关 DSC 文档的信息，请参阅 [Windows PowerShell Desired State Configuration 概述](/powershell/scripting/dsc/overview/overview)。
 
 ## <a name="support-for-partial-configurations"></a>对部分配置的支持
@@ -136,27 +137,6 @@ $reports = Get-AzAutomationDscNodeReport -ResourceGroupName 'MyResourceGroup' -A
 # Display the most recent report
 $reports[0]
 ```
-
-## <a name="remove-nodes-from-service"></a>从服务中删除节点
-
-将节点添加到 Azure Automation State Configuration 时，本地 Configuration Manager 中的设置会设置为向服务注册，并提取配置以及用于配置计算机的必需模块。
-如果选择从服务中删除节点，则可以使用 Azure 门户或 Az cmdlet 执行此操作。
-
-> [!NOTE]
-> 要从服务中注销节点，只需设置本地 Configuration Manager 设置，以便节点不再连接到服务。
-> 这不会影响当前应用于节点的配置。
-> 要删除当前配置，请使用 [PowerShell](/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument) 或删除本地配置文件（这是 Linux 节点的唯一选项）。
-
-### <a name="azure-portal"></a>Azure 门户
-
-在 Azure 自动化中，单击目录中的“State Configuration (DSC)”。
-接下来，单击“节点”，查看在服务中注册的节点的列表。
-单击要删除的节点的名称。
-在打开的节点视图中，单击“注销”。
-
-### <a name="powershell"></a>PowerShell
-
-要使用 PowerShell 从 Azure Automation State Configuration 服务中注销节点，请按照 cmdlet [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode) 的文档进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 

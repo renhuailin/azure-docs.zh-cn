@@ -12,12 +12,12 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5dd1044895ba55d1fbc6be7f4f4a2d7f615daa16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 31d915cd44bcf60f3515eb1a84309980f45d40b0
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94887257"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868278"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>快速入门：在通知中心设置推送通知
 
@@ -75,13 +75,13 @@ Azure 通知中心提供了一种易于使用且可扩展的推送引擎。使�
 
 ### <a name="set-up-push-notifications-for-google-fcm"></a>为 Google FCM 设置推送通知
 
-1. 使用 [az notification-hub credential gcm update](/cli/azure/ext/notification-hub/notification-hub/credential/gcm#ext-notification-hub-az-notification-hub-credential-gcm-update) 命令将 Google API 密钥添加到通知中心。
+1. 使用 [az notification-hub credential gcm update](/cli/azure/notification-hub/credential/gcm#az_notification_hub_credential_gcm_update) 命令将 Google API 密钥添加到通知中心。
 
    ```azurecli
    az notification-hub credential gcm update --resource-group spnhubrg --namespace-name spnhubns    --notification-hub-name spfcmtutorial1nhub --google-api-key myKey
    ```
 
-2. Android 应用需要连接字符串才能连接到通知中心。  使用 [az notification-hub authorization-rule list](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) 命令列出可用的访问策略。  使用 [az notification-hub authorization-rule list-keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) 命令获取访问策略连接字符串。  在 `--query` 参数中指定 **primaryConnectionString** 或 **secondaryConnectionString**，以直接获取主连接字符串。
+2. Android 应用需要连接字符串才能连接到通知中心。  使用 [az notification-hub authorization-rule list](/cli/azure/notification-hub/authorization-rule#az_notification_hub_authorization_rule_list) 命令列出可用的访问策略。  使用 [az notification-hub authorization-rule list-keys](/cli/azure/notification-hub/authorization-rule#az_notification_hub_authorization_rule_list_keys) 命令获取访问策略连接字符串。  在 `--query` 参数中指定 **primaryConnectionString** 或 **secondaryConnectionString**，以直接获取主连接字符串。
 
    ```azurecli
    #list access policies for a notification hub
@@ -94,7 +94,7 @@ Azure 通知中心提供了一种易于使用且可扩展的推送引擎。使�
    az notification-hub authorization-rule list-keys --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --name myAccessPolicyName --query primaryConnectionString
    ```
 
-3. 使用 [az notification-hub test-send](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-test-send) 命令测试向 Android 应用发送消息的操作。
+3. 使用 [az notification-hub test-send](/cli/azure/notification-hub#az_notification_hub_test_send) 命令测试向 Android 应用发送消息的操作。
 
    ```azurecli
    #test with message body
@@ -104,7 +104,7 @@ Azure 通知中心提供了一种易于使用且可扩展的推送引擎。使�
    az notification-hub test-send --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --notification-format gcm --payload "{\"data\":{\"message\":\"my JSON string\"}}"
    ```
 
-通过 [az notification-hub credential](/cli/azure/ext/notification-hub/notification-hub/credential) 命令获取其他平台的 Azure CLI 引用。
+通过 [az notification-hub credential](/cli/azure/notification-hub/credential) 命令获取其他平台的 Azure CLI 引用。
 
 若要详细了解如何将通知发送到 Android 应用程序，请参阅[使用 Firebase 将推送通知发送到 Android 设备](notification-hubs-android-push-notification-google-fcm-get-started.md)。
 

@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/13/2019
 ms.author: cynthn
-ms.openlocfilehash: a33b248c18bcbf322a1e2d911453a1c4c087e625
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32b9753b79273ce747d00cba077dd8a5ee6d724d
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102550512"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565281"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>从 Azure 下载 Windows VHD
 
@@ -22,7 +22,7 @@ ms.locfileid: "102550512"
 
 ## <a name="optional-generalize-the-vm"></a>可选：通用化 VM
 
-如果要使用 VHD 作为[映像](tutorial-custom-images.md)来创建其他 VM，则应使用 [Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) 来通用化操作系统。 
+如果要使用 VHD 作为[映像](tutorial-custom-images.md)来创建其他 VM，则应使用 [Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) 来通用化操作系统。 否则，必须为要创建的每个 VM 复制磁盘。
 
 若要使用 VHD 作为映像创建其他 VM，请通用化该 VM。
 
@@ -33,15 +33,33 @@ ms.locfileid: "102550512"
 5. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”。
 6. 在“关闭选项”中选择“关闭”，然后单击“确定”。 
 
+如果不想通用化当前 VM，仍可首先[创建 OS 磁盘的快照](#alternative-snapshot-the-vm-disk)、从快照创建新的 VM，然后对副本进行通用化，从而创建通用映像。
 
 ## <a name="stop-the-vm"></a>停止 VM
 
-如果 VHD 附加到正在运行的 VM，则不能从 Azure 下载。 需要停止 VM，才能下载 VHD。 
+如果 VHD 附加到正在运行的 VM，则不能从 Azure 下载。 如果要使 VM 保持运行，可[创建快照，然后下载快照](#alternative-snapshot-the-vm-disk)。
 
 1. 在 Azure 门户的“中心”菜单上，单击“虚拟机”。
 1. 从列表中选择 VM。
 1. 在 VM 的边栏选项卡上，单击“停止”。
 
+### <a name="alternative-snapshot-the-vm-disk"></a>替代方法：创建 VM 磁盘快照
+
+创建要下载的磁盘快照。
+
+1. 在[门户](https://portal.azure.com)中选择 VM。
+2. 在左侧菜单中选择“磁盘”，然后选择要创建快照的磁盘。 系统将显示磁盘的详细信息。  
+3. 从页面的顶部菜单选择“创建快照”。 “创建快照”页将打开。
+4. 在“名称”中键入快照的名称。 
+5. 对于“快照类型”，选择“完全”或“增量”  。
+6. 完成操作后，选择“查看 + 创建”。
+
+快照将很快创建，然后可用于下载或从中创建另一个 VM。
+
+> [!NOTE]
+> 如果不先停止 VM，快照将不会清理。 快照的状态就好像在创建快照时 VM 已重启或崩溃一样。  尽管这通常是安全的，但如果当时正在运行的应用程序会因崩溃受到影响，则可能会导致问题。
+>  
+> 仅建议具有单个操作系统磁盘的 VM 使用此方法。 在下载快照之前或为操作系统磁盘和每个数据磁盘创建快照之前，应停止具有一个或多个数据磁盘的 VM。
 
 ## <a name="generate-download-url"></a>生成下载 URL
 
@@ -50,11 +68,11 @@ ms.locfileid: "102550512"
 1. 在 VM 的页面上，单击左侧菜单中的“磁盘”。
 1. 选择 VM 的操作系统磁盘。
 1. 在磁盘的页面上，从左侧菜单中选择“磁盘导出”。
-1. URL 默认的过期时间为 *3600* 秒。 对于 Windows OS 磁盘，将此提高为 **36000** 秒。
+1. URL 默认的过期时间为 3600 秒（1 小时）。 对于 Windows OS 磁盘或大型数据磁盘，可能需要增加此时间。 通常，36000 秒（10 小时）足够了。
 1. 单击“生成 URL”。
 
 > [!NOTE]
-> 从默认值增加到期时间，以便提供足够时间来下载 Windows Server 操作系统的大型 VHD 文件。 可能需要包含 Windows Server 操作系统的 VHD 文件，以便根据连接花几个小时下载。 如果下载的是数据磁盘的 VHD，则默认时间就足够了。 
+> 从默认值增加到期时间，以便提供足够时间来下载 Windows Server 操作系统的大型 VHD 文件。 下载大型 VHD 可能需要几个小时，具体取决于你的连接和 VM 大小。 
 > 
 > 
 

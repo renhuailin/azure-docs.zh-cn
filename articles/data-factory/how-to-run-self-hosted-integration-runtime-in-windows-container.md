@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/05/2020
-ms.openlocfilehash: e34e1f589442be41e2a4eac3ac893f377675e4b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2423d6bd29d893f9a27749dcc2b6d2af8a12e941
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100379499"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478125"
 ---
 # <a name="how-to-run-self-hosted-integration-runtime-in-windows-container"></a>如何在 Windows 容器中运行自承载集成运行时
 
@@ -24,7 +24,7 @@ Azure 数据工厂当前提供对自承载集成运行时的官方 Windows 容�
 ## <a name="prerequisites"></a>先决条件 
 - [Windows 容器要求](/virtualization/windowscontainers/deploy-containers/system-requirements)
 - Docker 版本 2.3 和更高版本 
-- 自承载集成运行时版本 4.11.7512.1 和更高版本 
+- 自承载集成运行时 5.2.7713.1 和更高版本 
 ## <a name="get-started"></a>入门 
 1.  安装 Docker 并启用 Windows 容器 
 2.  从 https://github.com/Azure/Azure-Data-Factory-Integration-Runtime-in-Windows-Container 下载源代码
@@ -40,7 +40,7 @@ docker build . -t "yourDockerImageName" 
 ```
 6.  运行 docker 容器： 
 ```console
-docker run -d -e NODE_NAME="irNodeName" -e AUTH_KEY="IR_AUTHENTICATION_KEY" -e ENABLE_HA=true HA_PORT=8060 "yourDockerImageName"    
+docker run -d -e NODE_NAME="irNodeName" -e AUTH_KEY="IR_AUTHENTICATION_KEY" -e ENABLE_HA=true -e HA_PORT=8060 "yourDockerImageName"    
 ```
 > [!NOTE]
 > 此命令必须使用 AUTH_KEY。 NODE_NAME、ENABLE_HA 和 HA_PORT 是可选项。 如果未设置值，该命令将使用默认值。 ENABLE_HA 的默认值为 false，HA_PORT 的默认值为 8060。

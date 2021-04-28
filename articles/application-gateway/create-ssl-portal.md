@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 01/28/2021
 ms.author: victorh
-ms.openlocfilehash: c976ea236ae1d37cc0a543b10a9de55609035632
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa7123a1c4dea5fcede3e94250576f6677671176
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98986746"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872238"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>教程：使用 Azure 门户配置带有 TLS 终止的应用程序网关
 
@@ -36,7 +36,7 @@ ms.locfileid: "98986746"
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 
-在本部分中，你将使用 [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) 创建自签名证书。 为应用程序网关创建侦听器时，需要将该证书上传到 Azure 门户。
+在本部分中，你将使用 [New-SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate) 创建自签名证书。 为应用程序网关创建侦听器时，需要将该证书上传到 Azure 门户。
 
 在本地计算机上，以管理员身份打开 Windows PowerShell 窗口。 运行以下命令以创建证书：
 
@@ -56,7 +56,7 @@ Thumbprint                                Subject
 E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 ```
 
-将 [Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate) 与返回的指纹配合使用，从证书导出 pfx 文件。 请确保密码长度为 4 到 12 个字符：
+将 [Export-PfxCertificate](/powershell/module/pki/export-pfxcertificate) 与返回的指纹配合使用，从证书导出 pfx 文件。 请确保密码长度为 4 到 12 个字符：
 
 
 ```powershell

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 394cfe25c0015218e6b78606d7cf5d83cd2292ae
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 29340852cabcc77b7488f734a4677697b4a9b972
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146952"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535233"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-powershell"></a>使用 PowerShell 配置网络安全组流日志
 
@@ -29,7 +29,7 @@ ms.locfileid: "108146952"
 
 网络安全组流日志是网络观察程序的一项功能，用于查看通过网络安全组的入口和出口 IP 流量的信息。 这些流日志以 json 格式编写，并根据规则显示出站和入站流、流所适用的 NIC、有关流的 5 元组信息（源/目标 IP、源/目标端口、协议），以及是允许还是拒绝流量。
 
-可在[此处](/powershell/module/az.network/#network-watcher)找到各种版本的 AzPowerShell 的所有 NSG 流日志的详细规范
+可在[此处](https://docs.microsoft.com/powershell/module/az.network/#network-watcher)找到各种版本的 AzPowerShell 的所有 NSG 流日志的详细规范
 
 ## <a name="register-insights-provider"></a>注册 Insights 提供程序
 

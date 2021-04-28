@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 9081aab3bb4560d1ee358dae72498ed7e8a3674f
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: e73a446d8b54c434971eb708c3d8903dc927aa67
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106094943"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871509"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -20,5 +20,8 @@ ms.locfileid: "106094943"
 |[Azure 数据工厂链接服务应使用 Key Vault 来存储机密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F127ef6d7-242f-43b3-9eef-947faf1725d0) |为了确保机密（如连接字符串）得到安全管理，需要用户使用 Azure Key Vault 提供机密，而不是在链接服务中内联指定它们。 |Audit、Deny、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/LinkedService_InlineSecrets_Audit.json) |
 |[Azure 数据工厂链接服务应使用系统分配的托管标识身份验证（如果受支持）](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff78ccdb4-7bf4-4106-8647-270491d2978a) |在通过链接服务与数据存储进行通信时，使用系统分配的托管标识可以避免使用密码或连接字符串等安全性较低的凭据。 |Audit、Deny、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/LinkedService_All_Auth_Audit_except_MSI.json) |
 |[Azure 数据工厂应使用 Git 存储库进行源代码管理](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F77d40665-3120-4348-b539-3192ec808307) |对数据工厂启用源代码管理，以获取更改跟踪、协作、持续集成和部署等功能。 |Audit、Deny、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/Factory_None_GIT_Audit.json) |
+|[Azure 数据工厂应使用专用链接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8b0323be-cc25-4b61-935d-002c3798c6ea) |通过 Azure 专用链接，在没有源位置或目标位置的公共 IP 地址的情况下，也可以将虚拟网络连接到 Azure 服务。 专用链接平台处理使用者与服务之间通过 Azure 主干网络进行的连接。 通过将专用终结点映射到 Azure 数据工厂，可以降低数据泄露风险。 有关专用链接的详细信息，请访问：[https://docs.microsoft.com/azure/data-factory/data-factory-private-link](https://docs.microsoft.com/azure/data-factory/data-factory-private-link)。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/DataFactory_PrivateEndpoints_Audit.json) |
+|[将数据工厂配置为禁用公用网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F08b1442b-7789-4130-8506-4f99a97226a7) |禁用对数据工厂的公用网络访问，确保无法通过公共 Internet 对其进行访问。 这样可以减少数据泄露风险。 有关详细信息，请访问：[https://docs.microsoft.com/azure/data-factory/data-factory-private-link](https://docs.microsoft.com/azure/data-factory/data-factory-private-link)。 |修改，已禁用 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/DataFactory_PublicNetworkAccess_Modify.json) |
+|[为数据工厂配置专用终结点](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F496ca26b-f669-4322-a1ad-06b7b5e41882) |专用终结点可在源或目标位置没有公共 IP 地址的情况下将虚拟网络连接到 Azure 服务。  将专用终结点映射到 Azure 数据工厂可降低数据泄露风险。  有关详细信息，请访问：[https://docs.microsoft.com/azure/data-factory/data-factory-private-link](https://docs.microsoft.com/azure/data-factory/data-factory-private-link)。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/DataFactory_PrivateEndpoints_DeployIfNotExists.json) |
 |[应禁用对 Azure 数据工厂的公用网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1cf164be-6819-4a50-b8fa-4bcaa4f98fb6) |禁用公用网络访问属性可确保只能从专用终结点访问 Azure 数据工厂，从而提高安全性。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/DataFactory_PublicNetworkAccess_Audit.json) |
 |[应将 Azure 数据工厂上的 SQL Server Integration Services 集成运行时加入到虚拟网络](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0088bc63-6dee-4a9c-9d29-91cfdc848952) |Azure 虚拟网络部署为 Azure 数据工厂上的 SQL Server Integration Services 集成运行时提供增强的安全性和隔离性，并提供子网、访问控制策略和其他进一步限制访问的功能。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/SSISIR_JoinVirtualNetwork_Audit.json) |

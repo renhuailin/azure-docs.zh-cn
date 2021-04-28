@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 20f11983a76b4ea703981e257b088c13cf577935
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 72ff2a1a7b8bcff768248833183ce03a169f9a4d
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108123386"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752113"
 ---
 # <a name="certificate-creation-methods"></a>证书创建方法
 
@@ -92,5 +92,5 @@ KV 证书创建是一个异步过程。 此操作会创建 KV 证书请求并返
 
 ## <a name="see-also"></a>另请参阅
 
- - 有关使用[门户](./quick-create-portal.md)、[Azure CLI](./quick-create-cli.md)、[Azure PowerShell](./quick-create-powershell.md) 在 Key Vault 中创建证书的操作指南
+ - 有关使用[门户](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal)、[Azure CLI](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-cli)、[Azure PowerShell](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-powershell) 在 Key Vault 中创建证书的操作指南
  - [监视和管理证书创建](create-certificate-scenarios.md)

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/06/2021
 ms.author: mbullwin
-ms.openlocfilehash: 1318a8c410f14f4a1dc91072d66f18e39f7ca7e7
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: a657b8f5bf967131a0168dbea5bb1db86b3b559e
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107318757"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107800223"
 ---
 开始使用适用于 .NET 的异常检测器多变量客户端库。 请按照以下步骤安装软件包并开始使用服务提供的算法。 新的多变量异常情况检测 API 使开发人员能够轻松地集成高级 AI 来检测指标组中的异常，且无需机器学习知识或标记的数据。 不同信号之间的依赖关系和相互关联会自动计为关键因素。 这可以帮助你主动防范复杂系统发生故障。
 
@@ -22,6 +22,8 @@ ms.locfileid: "107318757"
 * 检测一组时序中的系统级异常。
 * 当任何单独的时序都不能告知太多信息时，而你不得不查看所有信号来检测问题。
 * 使用数十到数百种不同类型的传感器对昂贵的物理资产进行预测维护，以测量系统运行状况的各个方面。
+
+[库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/anomalydetector/Azure.AI.AnomalyDetector) | [包 (NuGet)](https://www.nuget.org/packages/Azure.AI.AnomalyDetector/3.0.0-preview.3)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -223,11 +225,9 @@ private async Task exportAsync(AnomalyDetectorClient client, Guid model_id, stri
 {
     try
     {
-        Response model_response = await client.ExportModelAsync(model_id).ConfigureAwait(false);
-        Stream model;
-        if (model_response.ContentStream != null)
+        Stream model = await client.ExportModelAsync(model_id).ConfigureAwait(false);
+        if (model != null)
         {
-            model = model_response.ContentStream;
             var fileStream = File.Create(model_path);
             model.Seek(0, SeekOrigin.Begin);
             model.CopyTo(fileStream);
