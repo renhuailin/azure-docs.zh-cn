@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 5ee4481b3151e28d5d37760e486a43adbc194994
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2be762adfeb296546a289e745794e53e4ee16a09
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553215"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107895840"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>第一部分：为 Azure 文件共享启用 AD DS 身份验证 
 
@@ -41,27 +41,30 @@ AzFilesHybrid PowerShell 模块中的 cmdlet 为你进行必要的修改并启�
 在 PowerShell 中执行占位符值之前，请在参数中将其替换为你自己的值。
 > [!IMPORTANT]
 > 域加入 cmdlet 将创建一个 AD 帐户来表示 AD 中的存储帐户（文件共享）。 你可以选择注册为计算机帐户或服务登录帐户，有关详细信息，请参阅[常见问题解答](./storage-files-faq.md#security-authentication-and-access-control)。 对于计算机帐户，AD 中的默认密码过期时间设置为 30 天。 同样，服务登录帐户可能在 AD 域或组织单位 (OU) 上设置了默认密码过期时间。
-> 对于这两种帐户类型，建议你检查 AD 环境中配置的密码过期时间，并计划在密码过期之前[更新 AD 帐户的存储帐户标识的密码](storage-files-identity-ad-ds-update-password.md)。 可以考虑[在 AD 中创建新的 AD 组织单位 (OU)](/powershell/module/addsadministration/new-adorganizationalunit)，并相应地在[计算机帐户](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11))或服务登录帐户上禁用密码过期策略。 
+> 对于这两种帐户类型，建议你检查 AD 环境中配置的密码过期时间，并计划在密码过期之前[更新 AD 帐户的存储帐户标识的密码](storage-files-identity-ad-ds-update-password.md)。 可以考虑[在 AD 中创建新的 AD 组织单位 (OU)](/powershell/module/activedirectory/new-adorganizationalunit)，并相应地在[计算机帐户](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11))或服务登录帐户上禁用密码过期策略。 
 
 ```PowerShell
-#Change the execution policy to unblock importing AzFilesHybrid.psm1 module
+# Change the execution policy to unblock importing AzFilesHybrid.psm1 module
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 
 # Navigate to where AzFilesHybrid is unzipped and stored and run to copy the files into your path
 .\CopyToPSPath.ps1 
 
-#Import AzFilesHybrid module
+# Import AzFilesHybrid module
 Import-Module -Name AzFilesHybrid
 
-#Login with an Azure AD credential that has either storage account owner or contributer Azure role assignment
+# Login with an Azure AD credential that has either storage account owner or contributer Azure role assignment
+# If you are logging into an Azure environment other than Public (ex. AzureUSGovernment) you will need to specify that.
+# See https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-ps
+# for more information.
 Connect-AzAccount
 
-#Define parameters
+# Define parameters, $StorageAccountName currently has a maximum limit of 15 characters
 $SubscriptionId = "<your-subscription-id-here>"
 $ResourceGroupName = "<resource-group-name-here>"
 $StorageAccountName = "<storage-account-name-here>"
 
-#Select the target subscription for the current session
+# Select the target subscription for the current session
 Select-AzSubscription -SubscriptionId $SubscriptionId 
 
 # Register the target storage account with your active directory environment under the target OU (for example: specify the OU with Name as "UserAccounts" or DistinguishedName as "OU=UserAccounts,DC=CONTOSO,DC=COM"). 
@@ -89,7 +92,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 
 ### <a name="checking-environment"></a>检查环境
 
-首先，必须检查你的环境状态。 具体来说，必须检查是否安装了 [Active Directory PowerShell](/powershell/module/addsadministration/)，以及是否正在以管理员权限执行 shell。 然后查看是否已安装 [Az.Storage 2.0 module](https://www.powershellgallery.com/packages/Az.Storage/2.0.0)，如果未安装，请立即安装。 完成这些检查后，请检查 AD DS，查看是否有一个已使用 SPN/UPN 创建为“cifs/your-storage-account-name-here.file.core.windows.net”的[计算机帐户](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory)（默认）或[服务登录帐户](/windows/win32/ad/about-service-logon-accounts)。 如果帐户不存在，请按照下一节的说明创建一个帐户。
+首先，必须检查你的环境状态。 具体来说，必须检查是否安装了 [Active Directory PowerShell](/powershell/module/activedirectory/)，以及是否正在以管理员权限执行 shell。 然后查看是否已安装 [Az.Storage 2.0 module](https://www.powershellgallery.com/packages/Az.Storage/2.0.0)，如果未安装，请立即安装。 完成这些检查后，请检查 AD DS，查看是否有一个已使用 SPN/UPN 创建为“cifs/your-storage-account-name-here.file.core.windows.net”的[计算机帐户](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory)（默认）或[服务登录帐户](/windows/win32/ad/about-service-logon-accounts)。 如果帐户不存在，请按照下一节的说明创建一个帐户。
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>在 AD 中手动创建可代表存储帐户的标识
 

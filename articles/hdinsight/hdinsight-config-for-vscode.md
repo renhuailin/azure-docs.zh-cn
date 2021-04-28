@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 04/07/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: a9a444c2557ea17114123cbd5084cbbd9fe6dac6
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: e5bfa66f7c7d22617c17c6bd57eff373574021f4
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259898"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142056"
 ---
 # <a name="azure-hdinsight-configuration-settings-reference"></a>Azure HDInsight 配置设置参考
 
@@ -81,5 +81,5 @@ ms.locfileid: "107259898"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关适用于 VSCode 的 Azure HDInsight 的信息，请参阅[适用于 Visual Studio Code 的 Spark 和 Hive 工具](https://docs.microsoft.com/sql/big-data-cluster/spark-hive-tools-vscode)。
+- 有关适用于 VSCode 的 Azure HDInsight 的信息，请参阅[适用于 Visual Studio Code 的 Spark 和 Hive 工具](/sql/big-data-cluster/spark-hive-tools-vscode)。
 - 有关演示了如何使用适用于 Visual Studio Code 的 Spark 和 Hive 的视频，请观看[适用于 Visual Studio Code 的 Spark 和 Hive](https://go.microsoft.com/fwlink/?linkid=858706)。

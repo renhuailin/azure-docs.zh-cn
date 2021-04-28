@@ -10,14 +10,14 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: edb7ebc94d2706d1bf20db8ed9a869107163ff8d
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.topic: how-to
+ms.custom: devx-track-python, data4ml
+ms.openlocfilehash: e3462b8e8bdf7d831b76c7821c5e8e22d3384586
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107387983"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107888289"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>使用 Azure 机器学习数据集来训练模型 
 
@@ -316,7 +316,7 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 使用 TabularDataset [自动训练机器学习模型](how-to-auto-train-remote.md)。
+* 使用 TabularDataset [自动训练机器学习模型](how-to-configure-auto-train.md#data-source-and-format)。
 
 * 使用 FileDataset [训练图像分类模型](https://aka.ms/filedataset-samplenotebook)。
 

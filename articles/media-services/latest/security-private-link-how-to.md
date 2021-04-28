@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: inhenkel
-ms.openlocfilehash: 0efbadf69dec6d0ea06fd743a62d69c0d25a7e33
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 43997810798322a628490aa72db74944f2fc38c7
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138654"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589753"
 ---
 # <a name="create-a-media-services-and-storage-account-with-a-private-link"></a>使用专用链接创建媒体服务和存储帐户
 
@@ -22,9 +22,9 @@ ms.locfileid: "108138654"
 
 使用指向 VNet 的专用链接创建媒体服务帐户和存储帐户。 Azure 资源管理器 (ARM) 模板还为这两个专用链接设置 DNS。 最后该模板将创建一个 VM，以允许用户试用专用链接。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-请阅读[快速入门：使用 Azure 门户创建和部署 ARM 模板](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
+请阅读[快速入门：使用 Azure 门户创建和部署 ARM 模板](https://docs.microsoft.com/azure/azure-resource-manager/templates/quickstart-create-templates-use-the-portal)。
 
 ## <a name="limitations"></a>限制
 

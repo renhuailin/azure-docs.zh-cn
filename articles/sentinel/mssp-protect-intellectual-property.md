@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/12/2021
 ms.author: bagol
-ms.openlocfilehash: 1c15c341d85fae667ee23883043350340ad866b8
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: b6ada209d556ae981360661cea4db71219dbba37
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107315178"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124520"
 ---
 # <a name="protecting-mssp-intellectual-property-in-azure-sentinel"></a>在 Azure Sentinel 中保护 MSSP 知识产权
 
@@ -63,7 +63,7 @@ ms.locfileid: "107315178"
 
     这允许 MSSP 根据需要隐藏 Azure Sentinel 组件，如分析规则和搜寻查询。
 
-有关详细信息，请参阅 [Azure Lighthouse 文档](/azure/lighthouse/concepts/cloud-solution-provider)。
+有关详细信息，请参阅 [Azure Lighthouse 文档](../lighthouse/concepts/cloud-solution-provider.md)。
 
 ## <a name="enterprise-agreements-ea--pay-as-you-go-payg"></a>企业协议 (EA)/即用即付 (PAYG)
 
@@ -127,7 +127,7 @@ workspace('<customer-workspace>').SecurityEvent
 - **使工作簿可视化更易于共享**。 你可以向客户发送 Power BI 仪表板的链接，用户可以在其中查看报告的数据，而无需 Azure 访问权限。
 - **启用计划**。 将 Power BI 配置为定期发送包含该时间段的仪表板快照的电子邮件。
 
-有关详细信息，请参阅[将 Azure Monitor 日志数据导入 Power BI](/azure/azure-monitor/visualize/powerbi)。
+有关详细信息，请参阅[将 Azure Monitor 日志数据导入 Power BI](../azure-monitor/visualize/powerbi.md)。
 
 ### <a name="playbooks"></a>攻略
 

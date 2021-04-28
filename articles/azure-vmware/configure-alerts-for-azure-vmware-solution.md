@@ -3,16 +3,16 @@ title: 在 Azure VMware 解决方案中配置警报并使用指标
 description: 了解如何使用警报来接收通知。 同时了解如何使用指标来更深入地了解 Azure VMware 解决方案私有云。
 ms.topic: how-to
 ms.date: 04/02/2021
-ms.openlocfilehash: 486f25eba017b2d4e37c0796909a0d26adee6ba8
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 2e7a04a11b5a569c6e12e7a8315f13ea740a812c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309622"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126277"
 ---
 # <a name="configure-azure-alerts-in-azure-vmware-solution"></a>在 Azure VMware 解决方案中配置 Azure 警报 
 
-在本文中，你将了解如何在 [Microsoft Azure 警报](/azure/azure-monitor/alerts/alerts-overview)中配置 [Azure 操作组](/azure/azure-monitor/alerts/action-groups)，以便接收你定义的已触发事件的通知。 你还将了解如何使用 [Azure Monitor 指标](/azure/azure-monitor/essentials/data-platform-metrics)更深入地了解 Azure VMware 解决方案私有云。
+在本文中，你将了解如何在 [Microsoft Azure 警报](../azure-monitor/alerts/alerts-overview.md)中配置 [Azure 操作组](../azure-monitor/alerts/action-groups.md)，以便接收你定义的已触发事件的通知。 你还将了解如何使用 [Azure Monitor 指标](../azure-monitor/essentials/data-platform-metrics.md)更深入地了解 Azure VMware 解决方案私有云。
 
 
 ## <a name="supported-metrics-and-activities"></a>支持的指标和活动
@@ -126,13 +126,8 @@ ms.locfileid: "107309622"
 ## <a name="next-steps"></a>后续步骤
 
 为 Azure VMware 解决方案私有云配置了警报规则后，现在，你可能想要详细了解以下内容：
-- [Azure Monitor 指标](/azure/azure-monitor/essentials/data-platform-metrics)
-- [Azure Monitor 警报](/azure/azure-monitor/alerts/alerts-overview)
-- [Azure 操作组](/azure/azure-monitor/alerts/action-groups)
+- [Azure Monitor 指标](../azure-monitor/essentials/data-platform-metrics.md)
+- [Azure Monitor 警报](../azure-monitor/alerts/alerts-overview.md)
+- [Azure 操作组](../azure-monitor/alerts/action-groups.md)
 
 你还可以继续学习其他 [Azure VMware 解决方案](index.yml)操作指南。
-
-
-
-
-

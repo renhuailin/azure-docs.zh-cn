@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: a45b8db1f17ead8e55bac2b2bf82aa44cb7f080e
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: ceb39893327af82e8dff3e82ef570727b3bdfa33
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304692"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141943"
 ---
 # <a name="glossary-of-iot-terms"></a>IoT 术语词汇表
 
@@ -178,7 +178,7 @@ IoT 即插即用认证计划验证设备是否符合 IoT 即插即用认证要�
 
 ### <a name="device-model"></a>设备型号
 
-设备模型是使用[数字孪生体定义语言](#digital-twins-definition-language-dtdl)来描述 IoT 即插即用设备功能的一种[模型](#model)。 简单设备模型使用单个接口来描述设备功能。 较复杂的设备模型包含多个组件，每个组件描述一组功能。 有关详细信息，请参阅[模型中的 IoT 即插即用组件](../iot-pnp/concepts-components.md)。
+设备模型是使用[数字孪生体定义语言](#digital-twins-definition-language-dtdl)来描述 IoT 即插即用设备功能的一种[模型](#model)。 简单设备模型使用单个接口来描述设备功能。 较复杂的设备模型包含多个组件，每个组件描述一组功能。 有关详细信息，请参阅[模型中的 IoT 即插即用组件](../iot-pnp/concepts-modeling-guide.md)。
 
 ### <a name="device-modeling"></a>设备建模
 

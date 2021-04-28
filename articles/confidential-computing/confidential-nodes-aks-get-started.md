@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/08/2021
 ms.author: amgowda
 ms.custom: contentperf-fy21q3, devx-track-azurecli
-ms.openlocfilehash: 261deb0c4f5f28be51e806ab76261278709efc3b
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: b7dd9685be5e0928743eaf9a541c88de6a49a36c
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482868"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891242"
 ---
 # <a name="quickstart-deploy-an-aks-cluster-with-confidential-computing-nodes-by-using-the-azure-cli"></a>快速入门：使用 Azure CLI 部署具有机密计算节点的 AKS 群集
 
@@ -211,7 +211,7 @@ az aks nodepool delete --cluster-name myAKSCluster --name confcompool1 --resourc
 要删除 AKS 群集，请使用以下命令： 
 
 ```azurecli-interactive
-az aks delete --resource-group myResourceGroup --name myAKSCluster
+az aks delete --resource-group myResourceGroup --cluster-name myAKSCluster
 ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -103,11 +103,7 @@
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 支持
       items:
-        - name: 用户之声论坛
-          href: 'https://cognitive.uservoice.com/forums/555907-bing-web-search-api'
-        - name: 堆栈溢出
+        - name: Stack Overflow
           href: 'https://stackoverflow.com/search?q=bing+web+search'
-        - name: 知识库
-          href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'

@@ -3,12 +3,12 @@ title: 使用多实例任务运行 MPI 应用程序
 description: 了解如何在 Azure Batch 中使用多实例任务类型执行消息传递接口 (MPI) 应用程序。
 ms.topic: how-to
 ms.date: 04/13/2021
-ms.openlocfilehash: e96cfb89b186d69f6ad969949b8df609956114d2
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: b25008e4001676d1289f8a035cad972084d025bc
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389394"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126230"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>在 Batch 中使用多实例任务来运行消息传递接口 (MPI) 应用程序
 
@@ -310,5 +310,5 @@ Sample complete, hit ENTER to exit...
 
 ## <a name="next-steps"></a>后续步骤
 
-- 更多详细信息，参阅 [Azure Batch 上有关 Linux 的 MPI 支持](https://docs.microsoft.com/archive/blogs/windowshpc/introducing-mpi-support-for-linux-on-azure-batch)。
+- 更多详细信息，参阅 [Azure Batch 上有关 Linux 的 MPI 支持](/archive/blogs/windowshpc/introducing-mpi-support-for-linux-on-azure-batch)。
 - 了解如何[创建 Linux 计算节点池](batch-linux-nodes.md)，以便将其用在 Azure Batch MPI 解决方案中。

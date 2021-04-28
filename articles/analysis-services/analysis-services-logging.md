@@ -4,16 +4,16 @@ description: 描述如何设置日志记录以监视 Azure Analysis Services 服
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 04/27/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8ede7572079b6a54672234cbf9fe1445dafbad7b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0a2f1ee5f898e6cbdf0f5d2dd4c3becb0160c4be
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769204"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130316"
 ---
 # <a name="setup-diagnostic-logging"></a>设置诊断日志记录
 
@@ -79,7 +79,7 @@ ms.locfileid: "107769204"
 
 2. 在“诊断设置”中，指定以下选项： 
 
-    * **名称**。 为要创建的日志输入名称。
+    * **Name**。 为要创建的日志输入名称。
 
     * **存档到存储帐户**。 要使用此选项，需要一个可连接到的现有存储帐户。 请参阅[创建存储帐户](../storage/common/storage-account-create.md)。 按照说明创建一个资源管理器常规用途帐户，然后返回到门户中的此页面来选择存储帐户。 新创建的存储帐户可能几分钟后才会显示在下拉菜单中。
     * **流式传输到事件中心**。 要使用此选项，需要一个可连接到的现有事件中心命名空间和事件中心。 若要了解详细信息，请参阅[使用 Azure 门户创建事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)。 然后在门户中返回到此页，选择事件中心命名空间和策略名称。
@@ -133,7 +133,7 @@ ms.locfileid: "107769204"
    (Get-AzOperationalInsightsWorkspace).ResourceId
    ```
 
-可以组合这些参数，以启用多个输出选项。
+可以结合这些参数启用多个输出选项。
 
 ### <a name="rest-api"></a>REST API
 

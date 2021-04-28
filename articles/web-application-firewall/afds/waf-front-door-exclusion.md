@@ -7,16 +7,16 @@ ms.service: web-application-firewall
 ms.date: 11/10/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: a92679bb3114c4a60870424f3ec68a8de7b303da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83baf03c414d9b0f7acb6a93db03794a539a3c58
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499911"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107860826"
 ---
 # <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>带有 Front Door 服务排除列表的 Web 应用程序防火墙 (WAF) 
 
-有时，Web 应用程序防火墙 (WAF) 可能会阻止要允许应用程序发出的请求。 例如，Active Directory 插入用于身份验证的令牌。 这些令牌可包含特殊字符，这些字符可能会从 WAF 规则中可能触发误报。 WAF 排除列表允许你忽略 WAF 评估中的某些请求属性。  可以使用 [PowerShell](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject)、[Azure CLI](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add)、[Rest API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate) 或 Azure 门户配置排除列表。 下面的示例显示 Azure 门户配置。 
+有时，Web 应用程序防火墙 (WAF) 可能会阻止要允许应用程序发出的请求。 例如，Active Directory 插入用于身份验证的令牌。 这些令牌可包含特殊字符，这些字符可能会从 WAF 规则中可能触发误报。 WAF 排除列表允许你忽略 WAF 评估中的某些请求属性。  可以使用 [PowerShell](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject)、[Azure CLI](/cli/azure/network/front-door/waf-policy/managed-rules/exclusion#az_network_front_door_waf_policy_managed_rules_exclusion_add)、[Rest API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate) 或 Azure 门户配置排除列表。 下面的示例显示 Azure 门户配置。 
 ## <a name="configure-exclusion-lists-using-the-azure-portal"></a>使用 Azure 门户配置排除列表
 可从 WAF 门户的“托管规则”下访问“管理排除项” 
 

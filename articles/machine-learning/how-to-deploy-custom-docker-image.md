@@ -9,14 +9,14 @@ ms.author: sagopal
 author: saachigopal
 ms.reviewer: larryfr
 ms.date: 11/16/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: f621bb2a7d4543620d22ab85fb8b44752c9989ac
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.topic: how-to
+ms.custom: devx-track-python, deploy
+ms.openlocfilehash: 55e38db17fcaa1c3f3955cc942936a7ff810d31b
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376250"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897714"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自定义 Docker 基础映像部署模型
 
@@ -139,9 +139,9 @@ CPU 映像从 ubuntu16.04 生成。 cuda9 的 GPU 映像从 nvidia/cuda:9.0-cudn
     ```text
     FROM ubuntu:16.04
 
-    ARG CONDA_VERSION=4.7.12
+    ARG CONDA_VERSION=4.9.2
     ARG PYTHON_VERSION=3.7
-    ARG AZUREML_SDK_VERSION=1.13.0
+    ARG AZUREML_SDK_VERSION=1.27.0
     ARG INFERENCE_SCHEMA_VERSION=1.1.0
 
     ENV LANG=C.UTF-8 LC_ALL=C.UTF-8

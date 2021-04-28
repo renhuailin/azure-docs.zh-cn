@@ -1,17 +1,17 @@
 ---
 title: Azure 数据工厂中的等待活动
 description: 等待活动在一段指定的时间内暂停管道的执行。
-author: dcstwh
-ms.author: weetok
+author: chez-charlie
+ms.author: chez
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: 9271723e68e5edd6805f0197bca9cdefc3c5e921
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb9227546b135365fb3ac8d47156da95e75470bb
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100388322"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906184"
 ---
 # <a name="execute-wait-activity-in-azure-data-factory"></a>在 Azure 数据工厂中执行等待活动
 在管道中使用等待活动时，管道将等待一段指定的时间，然后继续执行后续活动。 
@@ -34,7 +34,7 @@ ms.locfileid: "100388322"
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必需
 -------- | ----------- | -------------- | --------
 name | `Wait` 活动的名称。 | String | 是
 type | 必须被设置为 **Wait**。 | String | 是

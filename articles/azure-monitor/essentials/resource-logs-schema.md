@@ -3,12 +3,12 @@ title: Azure 资源日志支持的服务和架构
 description: 了解 Azure 资源日志支持的服务和事件架构。
 ms.topic: reference
 ms.date: 04/07/2020
-ms.openlocfilehash: 09415353d93313f1b3c4844202b59f577ef3838d
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: d219153f9d1dfbcd05cbe28a5ac0609a156c68a9
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105759"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142560"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Azure 资源日志的通用架构和特定于服务的架构
 
@@ -83,7 +83,7 @@ ms.locfileid: "107105759"
 | 服务总线 |[Azure 服务总线日志](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | SQL 数据库 | [Azure SQL 数据库日志记录](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md) |
 | 流分析 |[作业日志](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
-| 存储 | [Blob](/azure/storage/blobs/monitor-blob-storage-reference#resource-logs-preview)、[文件](/azure/storage/files/storage-files-monitoring-reference#resource-logs-preview)、[队列](/azure/storage/queues/monitor-queue-storage-reference#resource-logs-preview)、[表](/azure/storage/tables/monitor-table-storage-reference#resource-logs-preview) |
+| 存储 | [Blob](../../storage/blobs/monitor-blob-storage-reference.md#resource-logs-preview)、[文件](../../storage/files/storage-files-monitoring-reference.md#resource-logs-preview)、[队列](../../storage/queues/monitor-queue-storage-reference.md#resource-logs-preview)、[表](../../storage/tables/monitor-table-storage-reference.md#resource-logs-preview) |
 | 流量管理器 | [流量管理器日志架构](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | 虚拟网络 | 架构不可用。 |
 | 虚拟网络网关 | 架构不可用。 |

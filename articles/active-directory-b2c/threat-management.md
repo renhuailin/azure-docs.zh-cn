@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/26/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e5184698cab1874f327173fb30cf527feee48cad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 55c77354e50ce96ae80ce922798fbb8c2a49f41f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85384968"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126878"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理对资源和数据的威胁
 
@@ -49,8 +49,8 @@ Azure AD B2C 使用复杂策略来锁定帐户。 将根据请求的 IP 和输�
 
 ## <a name="view-locked-out-accounts"></a>查看锁定的帐户
 
-若要获取有关已锁定帐户的信息，可以检查 Active Directory [登录活动报表](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)。 在“状态”下，选择“失败”。 登录尝试失败，“登录错误代码”为 `50053`，表示帐户已锁定：
+若要获取有关已锁定帐户的信息，可以检查 Active Directory [登录活动报表](../active-directory/reports-monitoring/concept-sign-ins.md)。 在“状态”下，选择“失败”。 登录尝试失败，“登录错误代码”为 `50053`，表示帐户已锁定：
 
 ![Azure AD 登录报表部分，显示锁定的帐户](./media/threat-management/portal-01-locked-account.png)
 
-若要了解如何在 Azure Active Directory 中查看登录活动报表，请参阅[登录活动报表错误代码](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)。
+若要了解如何在 Azure Active Directory 中查看登录活动报表，请参阅[登录活动报表错误代码](../active-directory/reports-monitoring/concept-sign-ins.md)。

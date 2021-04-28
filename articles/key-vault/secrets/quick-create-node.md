@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 3d8f20f598243754e3fd39f649e7c84d55b64817
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 90e505a4d505cc52920f1c7727afb321f4eda462
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751663"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814147"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-javascript-version-4"></a>快速入门：适用于 JavaScript 的 Azure Key Vault 机密客户端库（版本 4）
 
@@ -285,6 +285,6 @@ main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
 
 - 阅读 [Azure Key Vault 概述](../general/overview.md)
 - 阅读 [Azure Key Vault 机密概述](about-secrets.md)
-- 如何[保护对密钥保管库的访问](../general/security-overview.md)
+- 如何[保护对密钥保管库的访问](../general/security-features.md)
 - 参阅 [Azure Key Vault 开发人员指南](../general/developers-guide.md)
-- 请参阅 [Key Vault 安全性概述](../general/security-overview.md)
+- 请参阅 [Key Vault 安全性概述](../general/security-features.md)

@@ -8,14 +8,14 @@ ms.subservice: core
 ms.author: laobri
 author: lobrien
 ms.date: 03/04/2021
-ms.topic: conceptual
-ms.custom: how-to, synapse-azureml
-ms.openlocfilehash: b03915608c6143a9e205ba1a1e08e411b8aa9093
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.custom: synapse-azureml
+ms.openlocfilehash: 8ef4eca10971f9f7f405292fa7b722b26c7d53cd
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104868640"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896758"
 ---
 # <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>如何在机器学习管道中使用由 Azure Synapse Analytics 提供支持的 Apache Spark（预览版）
 
@@ -199,7 +199,7 @@ sdf.coalesce(1).write\
 
 ## <a name="use-the-synapsesparkstep-in-a-pipeline"></a>在管道中使用 `SynapseSparkStep`
 
-管道中的其他步骤可能具有自己独特的环境，并在适合当前任务的不同计算资源上运行。 示例笔记本在小型 CPU 群集上运行“训练步骤”：
+下面的示例使用在[上一部分](#create-a-synapsesparkstep-that-uses-the-linked-apache-spark-pool)中创建的 `SynapseSparkStep` 中的输出。 管道中的其他步骤可能具有自己独特的环境，并在适合当前任务的不同计算资源上运行。 示例笔记本在小型 CPU 群集上运行“训练步骤”：
 
 ```python
 from azureml.core.compute import AmlCompute

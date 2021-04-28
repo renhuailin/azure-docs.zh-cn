@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: b34beb65bb8c4136887651d8365c937b17718572
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a831aa7b2f3b0d438d9db8fefa3d26428fea3680
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103471900"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862590"
 ---
 # <a name="manage-your-cache"></a>管理缓存
 
@@ -60,13 +60,13 @@ Azure 门户中的缓存概述页面显示了缓存的项目详细信息、缓�
 
 [设置适用于 Azure HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)。
 
-使用 [az hpc-cache stop](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-stop) 命令暂停缓存。 仅当缓存的状态为“正常”或“已降级”时，此操作才有效 。
+使用 [az hpc-cache stop](/cli/azure/hpc-cache#az_hpc_cache_stop) 命令暂停缓存。 仅当缓存的状态为“正常”或“已降级”时，此操作才有效 。
 
 缓存会在停止前自动将其内容刷新到存储目标。 此过程可能需要一些时间，但可以确保数据一致性。
 
 操作完成后，状态更改为“已停止”。
 
-使用 [az hpc-cache start](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-start) 重新激活已停止的缓存。
+使用 [az hpc-cache start](/cli/azure/hpc-cache#az_hpc_cache_start) 重新激活已停止的缓存。
 
 发出 start 或 stop 命令时，命令行会显示状态消息“正在运行”，直到操作完成。
 
@@ -115,7 +115,7 @@ $ az hpc-cache start --name doc-cache0629
 
 [设置适用于 Azure HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)。
 
-使用 [az hpc-cache flush](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-flush) 强制缓存将所有已更改数据写入存储目标。
+使用 [az hpc-cache flush](/cli/azure/hpc-cache#az_hpc_cache_flush) 强制缓存将所有已更改数据写入存储目标。
 
 示例：
 
@@ -163,9 +163,9 @@ $
 
 [设置适用于 Azure HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)。
 
-在 Azure CLI 上，缓存状态报告的末尾包含新的软件信息。 （使用 [az hpc-cache show](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-show) 进行检查。）在消息中查找字符串“upgradeStatus”。
+在 Azure CLI 上，缓存状态报告的末尾包含新的软件信息。 （使用 [az hpc-cache show](/cli/azure/hpc-cache#az_hpc_cache_show) 进行检查。）在消息中查找字符串“upgradeStatus”。
 
-如果有更新，请使用 [az hpc-cache upgrade-firmware](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-upgrade-firmware) 来应用更新。
+如果有更新，请使用 [az hpc-cache upgrade-firmware](/cli/azure/hpc-cache#az_hpc_cache_upgrade-firmware) 来应用更新。
 
 如果没有可用的更新，此操作便不起作用。
 
@@ -227,7 +227,7 @@ $
 
 [设置适用于 Azure HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)。
 
-使用 Azure CLI 命令 [az hpc-cache delete](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-delete) 永久删除缓存。
+使用 Azure CLI 命令 [az hpc-cache delete](/cli/azure/hpc-cache#az_hpc_cache_delete) 永久删除缓存。
 
 示例：
 ```azurecli

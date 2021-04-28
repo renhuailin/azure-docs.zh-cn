@@ -9,14 +9,14 @@ ms.author: keli19
 author: likebupt
 ms.reviewer: peterlu
 ms.date: 10/29/2020
-ms.topic: conceptual
-ms.custom: how-to, deploy, studio, designer
-ms.openlocfilehash: 35acfc51ae76fdacef11f03b1fbd91ad58650ae6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.custom: deploy, studio, designer
+ms.openlocfilehash: 110bb5e6349ab5cb64366ba365ccace8ab029362
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97722617"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107949427"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>使用工作室部署在设计器中训练的模型
 
@@ -33,7 +33,7 @@ ms.locfileid: "97722617"
 
 还可以直接在设计器中部署模型，以跳过模型注册和文件下载步骤。 这对于快速部署非常有用。 有关详细信息，请参阅[通过设计器部署模型](tutorial-designer-automobile-price-deploy.md)。
 
-在设计器中训练的模型也可以通过 SDK 或命令行接口 (CLI) 进行部署。 有关详细信息，请参阅[使用 Azure 机器学习部署现有模型](how-to-deploy-existing-model.md)。
+在设计器中训练的模型也可以通过 SDK 或命令行接口 (CLI) 进行部署。 有关详细信息，请参阅[使用 Azure 机器学习部署现有模型](how-to-deploy-and-where.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

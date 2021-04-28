@@ -1,50 +1,27 @@
 ---
-title: 监视任何网站的可用性和响应能力 | Microsoft Docs
-description: 在 Application Insights 中设置 Web 测试。 当网站不可用或响应速度缓慢时接收警报。
+title: 监视任何网站的可用性和响应能力 - Azure Monitor
+description: 在 Application Insights 中设置 ping 测试。 当网站不可用或响应速度缓慢时接收警报。
 ms.topic: conceptual
-ms.date: 03/10/2021
+ms.date: 04/15/2021
 ms.reviewer: sdash
-ms.openlocfilehash: d7c610e374dcb7b97850d815ba8bb927cdebacfc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60698862e26175425221940a4b69867cb414fe86
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103012558"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107598867"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>监视任意网站的可用性
 
-部署 Web 应用/网站后，可以设置重复执行的测试来监视可用性和响应能力。 [Azure Application Insights](./app-insights-overview.md) 将来自全球各地的 Web 请求定期发送到应用程序。 如果应用程序无响应或响应太慢，它可以提醒你。
+“URL ping 测试”这个名称有点用词不当。 澄清一下，这些测试不使用 ICMP（Internet 控制消息协议）来检查站点的可用性， 而是使用更高级的 HTTP 请求功能来验证终结点是否响应。 它们还测量与该响应相关联的性能，并添加设置自定义成功标准的功能，以及更多高级功能，例如分析从属请求、允许重试。
 
-对于可以从公共 Internet 访问的任何 HTTP 或 HTTPS 终结点，均可设置可用性测试。 无需更改要测试的网站。 事实上，该网站甚至不需要是你拥有的网站。 可以测试服务所依赖的 REST API 的可用性。
+为了创建可用性测试，需要使用现有的 Application insights 资源或[创建 Application Insights 资源](create-new-resource.md)。
 
-### <a name="types-of-availability-tests"></a>可用性测试类型：
+  **** 若要创建第一个可用性请求，请打开“可用性”窗格并选择“创建测试”。
 
-有三种类型的可用性测试：
+:::image type="content" source="./media/monitor-web-app-availability/availability-create-test-001.png" alt-text="创建测试的屏幕截图。":::
 
-* [URL ping 测试](#create-a-url-ping-test)：可以在 Azure 门户中创建的简单测试。
-* [多步骤 Web 测试](availability-multistep.md)：记录一系列 Web 请求，这些请求可以通过再现来测试更复杂的场景。 多步骤 Web 测试在 Visual Studio Enterprise 中创建并上传到门户执行。
-* [自定义跟踪可用性测试](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability)：如果决定创建自定义应用程序以运行可用性测试，则可以使用 `TrackAvailability()` 方法将结果发送到 Application Insights。
-
-**对于每个 Application Insights 资源，最多可以创建 100 个可用性测试。**
-
-> [!IMPORTANT]
-> [URL ping 测试](#create-a-url-ping-test)和[多步骤 Web 测试](availability-multistep.md)都依赖公共 Internet DNS 基础结构来解析已测试终结点的域名。 这意味着，如果你使用专用 DNS，则必须确保测试的每个域名也可由公共域名服务器解析，如果不可能，则可以改用[自定义跟踪可用性测试](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability)。
-
-## <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
-
-若要创建可用性测试，首先需创建 Application Insights 资源。 如果已创建资源，请转到下一部分，[创建 URL Ping 测试](#create-a-url-ping-test)。
-
-在 Azure 门户中选择“创建资源”   > “开发人员工具”   > “Application Insights”  ，[创建 Application Insights 资源](create-new-resource.md)。
-
-## <a name="create-a-url-ping-test"></a>创建 URL ping 测试
-
-“URL ping 测试”这个名称有点用词不当。 澄清一下，此测试不使用 ICMP（Internet 控制消息协议）来检查站点的可用性， 而是使用更高级的 HTTP 请求功能来验证终结点是否响应。 它还度量与该响应相关联的性能，并添加设置自定义成功标准的功能，该标准与更高级的功能（例如分析从属请求、允许重试）耦联。
-
-若要创建第一个可用性请求，请打开“可用性”窗格并选择“创建测试”。 
-
-![至少填写网站的 URL](./media/monitor-web-app-availability/availability-create-test-001.png)
-
-### <a name="create-a-test"></a>创建测试
+## <a name="create-a-test"></a>创建测试
 
 |设置| 说明
 |----|----|----|
@@ -59,7 +36,7 @@ ms.locfileid: "103012558"
 > [!NOTE]
 > 强烈建议从多个位置进行测试，**至少为 5 个位置**。 这是为了防止可能由特定位置的暂时性问题导致的虚假警报。 此外，我们发现最佳配置是使 **测试位置的数目等于警报位置阈值 + 2**。
 
-### <a name="success-criteria"></a>成功标准
+## <a name="success-criteria"></a>成功标准
 
 |设置| 说明
 |----|----|----|
@@ -67,18 +44,18 @@ ms.locfileid: "103012558"
 | **HTTP 响应** | 视为成功的返回状态代码。 代码 200 指示返回了正常网页。|
 | **内容匹配** | 类似于“欢迎!”的字符串。 我们测试区分大小写的匹配项是否出现在每个响应中。 它必须是不带通配符的纯字符串。 别忘了，如果页面内容更改，可能需要更新。 **内容匹配仅支持英文字符** |
 
-### <a name="alerts"></a>警报
+## <a name="alerts"></a>警报
 
 |设置| 说明
 |----|----|----|
 |**近实时（预览）** | 我们建议使用近实时警报。 在创建可用性测试后会配置此类警报。  |
 |**警报位置阈值**|建议最少 3/5 个位置。 警报位置阈值和测试位置数目之间的最佳关系是警报位置阈值  =  测试位置数 - 2，至少有 5 个测试位置   。|
 
-### <a name="location-population-tags"></a>位置填充标记
+## <a name="location-population-tags"></a>位置填充标记
 
 使用 Azure 资源管理器部署可用性 URL ping 测试时，可以将以下填充标记用于地理位置属性。
 
-#### <a name="azure-gov"></a>Azure Gov
+### <a name="azure-gov"></a>Azure 政府
 
 | 显示名称   | 填充名称     |
 |----------------|---------------------|
@@ -115,11 +92,11 @@ ms.locfileid: "103012558"
 
 几分钟之后，单击“刷新”  即可查看测试结果。
 
-![屏幕截图显示突出显示了“刷新”按钮的“可用性”页。](./media/monitor-web-app-availability/availability-refresh-002.png)
+:::image type="content" source="./media/monitor-web-app-availability/availability-refresh-002.png" alt-text="屏幕截图显示突出显示了“刷新”按钮的“可用性”页。":::
 
 散点图视图显示其中有诊断测试步骤详细信息的测试结果示例。 测试引擎存储已失败的测试的诊断详细信息。 对于成功的测试，将存储执行子集的诊断详细信息。 将鼠标悬停在任何绿点/红点上，可查看测试、测试名称和位置。
 
-![折线图视图](./media/monitor-web-app-availability/availability-scatter-plot-003.png)
+:::image type="content" source="./media/monitor-web-app-availability/availability-scatter-plot-003.png" alt-text="行视图。" border="false":::
 
 选择特定测试、位置或减少时间段，可查看围绕感兴趣的时间段的更多结果。 使用搜索资源管理器以查看所有执行结果，或者使用分析查询以针对此数据运行自定义报告。
 
@@ -127,28 +104,29 @@ ms.locfileid: "103012558"
 
 若要编辑、临时禁用或删除某个测试，请单击测试名称旁边的省略号。 进行更改后，将配置更改传播到所有测试代码最多可能需要 20 分钟。
 
-![查看测试详细信息。 编辑和禁用 Web 测试](./media/monitor-web-app-availability/edit.png)
+:::image type="content" source="./media/monitor-web-app-availability/edit.png" alt-text="查看测试详细信息。编辑以及禁用 Web 测试。" border="false":::
 
 对服务执行维护时，可能需要禁用可用性测试或与这些测试关联的警报规则。
 
 ## <a name="if-you-see-failures"></a>如果看到失败
 
-单击红点。
+选择红点。
 
-![单击红点](./media/monitor-web-app-availability/open-instance-3.png)
+:::image type="content" source="./media/monitor-web-app-availability/end-to-end.png" alt-text="端到端事务详细信息选项卡的屏幕截图。" border="false":::
 
 从可用性测试结果中，可以看到所有组件的事务详细信息。 在此门户中，可以：
 
+* 查看故障排除报表以确定导致测试失败的原因，但应用程序仍然可用。
 * 检查从服务器收到的响应。
 * 使用在处理失败的可用性测试时收集的相关服务器端遥测数据进行故障诊断。
 * 在 Git 或 Azure Boards 中记录问题或工作项以跟踪问题。 Bug 中将包含转至此事件的链接。
 * 在 Visual Studio 中打开 Web 测试结果。
 
-从[此处](./transaction-diagnostics.md)详细了解端到端事务诊断体验。
+若要详细了解端到端事务诊断体验，请访问[事务诊断文档](./transaction-diagnostics.md)。
 
 单击异常行可查看导致综合可用性测试失败的服务器端异常的详细信息。 还可以获取[调试快照](./snapshot-debugger.md)，进行更丰富的代码级诊断。
 
-![服务器端诊断](./media/monitor-web-app-availability/open-instance-4.png)
+:::image type="content" source="./media/monitor-web-app-availability/open-instance-4.png" alt-text="服务器端诊断。":::
 
 除了原始结果外，还可以在[指标资源管理器](../essentials/metrics-getting-started.md)中查看两个关键的可用性指标：
 
@@ -160,12 +138,9 @@ ms.locfileid: "103012558"
 * [使用 PowerShell 脚本自动设置可用性测试](./powershell.md#add-an-availability-test)。
 * 设置在引发警报时调用的 [webhook](../alerts/alerts-webhooks.md) 。
 
-## <a name="troubleshooting"></a>故障排除
-
-专用[故障排除文章](troubleshoot-availability.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [可用性警报](availability-alerts.md)
 * [多步骤 Web 测试](availability-multistep.md)
-
+* [故障排除](troubleshoot-availability.md)

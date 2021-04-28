@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 12/08/2020
-ms.openlocfilehash: ea2b44d05d25756a16b6b84f0734966b1f579848
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.openlocfilehash: 339b87abad863f19a012dc6ed3a14ab13a44fc48
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97007596"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107949103"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>如何通过评审终结点言语来改进 LUIS 应用
 
@@ -61,7 +61,7 @@ ms.locfileid: "97007596"
 
 ## <a name="disable-active-learning"></a>禁用主动学习
 
-若要禁用主动学习，请不要记录用户查询。 这可以通过使用 `log=false` 查询字符串参数和值设置[终结点查询](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)，或不使用查询字符串值（因为默认值是 false）来实现。
+若要禁用主动学习，请不要记录用户查询。 这可以通过使用 `log=false` 查询字符串参数和值设置[终结点查询](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)，或不使用查询字符串值（因为默认值是 false）来实现。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
-title: 教程：为自动用户预配配置 Azure Active Directory |Microsoft Docs
-description: 了解如何从 Azure AD 自动预配和取消预配用户帐户，以进行分析。
+title: 教程：使用 Azure Active Directory 为 Parsable 配置自动用户预配 | Microsoft Docs
+description: 了解如何将用户帐户从 Azure AD 自动预配到 Parsable 以及如何取消预配。
 services: active-directory
 documentationcenter: ''
 author: Zhchia
@@ -16,23 +16,23 @@ ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
 ms.openlocfilehash: 817b6b373f521543234cf02818cde8c4b4ba40c1
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100526419"
 ---
-# <a name="tutorial-configure-parsable-for-automatic-user-provisioning"></a>教程：为自动用户预配配置分析
+# <a name="tutorial-configure-parsable-for-automatic-user-provisioning"></a>教程：为 Parsable 配置自动用户预配
 
-本教程介绍了在可分析和 Azure Active Directory (Azure AD) 配置自动用户预配时需要执行的步骤。 配置时，Azure AD 会自动预配和取消预配用户和组，以使用 Azure AD 预配服务进行 [分析](https://www.parsable.com/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。 
+本教程介绍在 Parsable 和 Azure Active Directory (Azure AD) 中配置自动用户预配需执行的步骤。 配置后，Azure AD 会使用 Azure AD 预配服务自动将用户和组预配到 [Parsable](https://www.parsable.com/) 并自动取消预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
 > [!div class="checklist"]
-> * 在分析中创建用户
-> * 当用户不再需要访问时，可在可分析的用户中删除用户
-> * 使用户属性在 Azure AD 和解析之间保持同步
-> * 在分析中预配组和组成员身份
+> * 在 Parsable 中创建用户
+> * 在用户不再有访问需求的情况下，在 Parsable 中删除用户
+> * 使用户属性在 Azure AD 与 Parsable 之间保持同步
+> * 在 Parsable 中预配组和组成员身份
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,46 +40,46 @@ ms.locfileid: "100526419"
 
 * [Azure AD 租户](../develop/quickstart-create-new-tenant.md) 
 * 具有配置预配[权限](../roles/permissions-reference.md)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。 
-* ) 的租户 (团队。
-* 使用管理员权限的用户帐户。
+* Parsable 租户（团队）。
+* Parsable 中具有管理员权限的用户帐户。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 计划预配部署
 1. 了解[预配服务的工作原理](../app-provisioning/user-provisioning.md)。
 2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
-3. 确定要 [在 Azure AD 和可分析之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
+3. 确定要[在 Azure AD 与 Parsable 之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
 
-## <a name="step-2-configure-parsable-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置可分析以支持设置 Azure AD
+## <a name="step-2-configure-parsable-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 Parsable 以支持通过 Azure AD 进行预配
 
-1. 请联系可分析客户的成功代表，以选择加入此预发布功能。
-2. 他们将进一步帮助你提出支持票证，以获取所需的 **持有者令牌** (机密令牌) 。
-3. 复制并保存“持有者令牌”。 此值将在 Azure 门户中可分析应用程序的 "预配" 选项卡的 " **机密令牌** " 字段中输入。
+1. 请联系 Parsable 客户成功代表以选择启用此预发布功能。
+2. 他们会进一步协助你提交支持票证以获得必要的“持有者令牌”（机密令牌）。
+3. 复制并保存“持有者令牌”。 需将此值输入 Azure 门户中 Parsable 应用程序的“预配”选项卡的“机密令牌”字段。
 
-## <a name="step-3-add-parsable-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加分析
+## <a name="step-3-add-parsable-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库添加 Parsable
 
-添加 Azure AD 应用程序库中的可分析，开始管理预配以进行分析。 如果以前为 SSO 安装了可分析的，则可以使用相同的应用程序。 不过，建议在最初测试集成时单独创建一个应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-application-portal.md)。 
+从 Azure AD 应用程序库添加 Parsable，以便开始管理 Parsable 的预配。 如果之前为 Parsable 设置过 SSO，则可使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-application-portal.md)。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁在预配范围中 
 
-使用 Azure AD 预配服务，可以根据对应用的分配或用户/组的特性来限定谁在预配范围内。 如果选择根据分配来限定要将谁预配到应用，可以按照下面的[步骤](../manage-apps/assign-user-or-group-access-portal.md)操作，将用户和组分配到应用。 如果选择只根据用户或组的特性来限定谁在预配范围内，可以使用范围筛选器，如[此处](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述。 
+使用 Azure AD 预配服务，可以根据对应用的分配或用户/组的特性来限定谁在预配范围内。 如果选择根据分配来限定要将谁预配到应用，可以按照下面的[步骤](../manage-apps/assign-user-or-group-access-portal.md)操作，将用户和组分配到应用。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的范围筛选器。 
 
-* 将用户和组分配到可分析时，必须选择 "默认" **访问权限** 以外的其他角色。 具有“默认访问”角色的用户被排除在预配范围之外，并在预配日志中被标记为无有效资格。 如果应用上唯一可用的角色是“默认访问”角色，可以[更新应用清单](../develop/howto-add-app-roles-in-azure-ad-apps.md)来添加其他角色。 
+* 将用户和组分配到 Parsable 时，必须选择“默认访问”以外的角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](../develop/howto-add-app-roles-in-azure-ad-apps.md)以添加其他角色。 
 
 * 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。 
 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-parsable"></a>步骤 5。 配置自动用户预配以进行可分析 
+## <a name="step-5-configure-automatic-user-provisioning-to-parsable"></a>步骤 5。 配置 Parsable 的自动用户预配 
 
-此部分逐步介绍了如何将 Azure AD 预配服务配置为根据 Azure AD 中的用户和/或组分配在 TestApp 中创建、更新和禁用用户和/或组。
+本部分介绍了如何配置 Azure AD 预配服务以基于 Azure AD 中的用户和/或组分配在 TestApp 中创建、更新和禁用用户和/或组。
 
-### <a name="to-configure-automatic-user-provisioning-for-parsable-in-azure-ad"></a>若要配置自动用户预配以便在 Azure AD 中进行分析：
+### <a name="to-configure-automatic-user-provisioning-for-parsable-in-azure-ad"></a>在 Azure AD 中为 Parsable 配置自动用户预配：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 依次选择“企业应用”和“所有应用”。
+1. 登录 [Azure 门户](https://portal.azure.com)。 依次选择“企业应用程序”、“所有应用程序” 。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择 " **分析**"。
+2. 在应用程序列表中，选择“Parsable”。
 
-    ![应用程序列表中的 "分析" 链接](common/all-applications.png)
+    ![应用程序列表中的 Parsable 链接](common/all-applications.png)
 
 3. 选择“预配”  选项卡。
 
@@ -89,9 +89,9 @@ ms.locfileid: "100526419"
 
     ![“预配”选项卡“自动”](common/provisioning-automatic.png)
 
-5. 在 " **管理员凭据** " 部分中，输入你的分析的租户 URL 和机密令牌。 单击 " **测试连接** " 以确保 Azure AD 可以连接到可分析的。 如果连接失败，请确保可以分析的帐户具有管理员权限，然后重试。
+5. 在“管理员凭据”部分，输入 Parsable 租户 URL 和机密令牌。 单击“测试连接”，以确保 Azure AD 可连接到 Parsable。 如果连接失败，请确保 Parsable 帐户具有管理员权限，然后重试。
 
-    ![令牌](common/provisioning-testconnection-tenanturltoken.png)
+    ![标记](common/provisioning-testconnection-tenanturltoken.png)
 
 6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送电子邮件通知”复选框 。
 
@@ -99,18 +99,18 @@ ms.locfileid: "100526419"
 
 7. 选择“保存”。
 
-8. 在 " **映射** " 部分下，选择 " **同步 Azure Active Directory 用户进行分析**"。
+8. 在“映射”部分，选择“将 Azure Active Directory 用户同步到 Parsable” 。
 
-9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到可分析的用户属性。 选为“匹配”属性的特性用于匹配 Parsable 中的用户帐户以执行更新操作。 如果选择更改[匹配目标属性](../app-provisioning/customize-application-attributes.md)，则需要确保 Parsable Suite API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
+9. 在“属性映射”部分，查看从 Azure AD 同步到 Parsable 的用户属性。 选为“匹配”属性的特性用于匹配 Parsable 中的用户帐户以执行更新操作。 如果选择更改[匹配目标属性](../app-provisioning/customize-application-attributes.md)，则需要确保 Parsable Suite API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
    |Attribute|类型|支持筛选|
    |---|---|---|
    |userName|字符串|&check;|
-   |displayName|String|
+   |displayName|字符串|
 
-10. 在 " **映射** " 部分下，选择 " **同步 Azure Active Directory 组" 以进行分析**。
+10. 在“映射”部分，选择“将 Azure Active Directory 组同步到 Parsable” 。
 
-11. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到可分析的组属性。 选为 " **匹配** " 属性的属性用于匹配可分析的中的组以执行更新操作。 选择“保存”按钮以提交任何更改  。
+11. 在“属性映射”部分，查看从 Azure AD 同步到 Parsable 的组属性。 选为“匹配”属性的属性用于匹配 Parsable 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
       |Attribute|类型|支持筛选|
       |---|---|---|
@@ -118,11 +118,11 @@ ms.locfileid: "100526419"
       |members|参考|
 12. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
-13. 若要为可分析启用 Azure AD 预配服务，请在 "**设置**" 部分中将 **预配状态** 更改为 **"打开**"。
+13. 若要为 Parsable 启用 Azure AD 预配服务，请在“设置”部分将“预配状态”更改为“启用”  。
 
     ![预配状态已打开](common/provisioning-toggle-on.png)
 
-14. 通过在 "**设置**" 部分的 "**范围**" 中选择所需的值，定义要进行解析的用户和/或组。
+14. 通过在“设置”部分的“范围”中选择所需的值，定义要预配到 Parsable 的用户和/或组 。
 
     ![预配范围](common/provisioning-scope.png)
 
@@ -141,7 +141,7 @@ ms.locfileid: "100526419"
 
 ## <a name="change-log"></a>更改日志
 
-* 02/15/2021-组设置已启用。
+* 2021/02/15 - 启用了组预配。
 
 ## <a name="additional-resources"></a>其他资源
 

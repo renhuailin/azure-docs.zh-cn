@@ -3,12 +3,13 @@ title: 将混合计算机大规模连接到 Azure
 description: 本文介绍如何使用已启用 Azure Arc 的服务器通过服务主体将计算机连接到 Azure。
 ms.date: 03/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: c1ad3d4619896ff46db266789a17bfca80712e70
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4aad01fd6991c059b2cf891fd4f06ae83a78a0e4
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175934"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831593"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>将混合计算机大规模连接到 Azure
 

@@ -3,13 +3,13 @@ title: 通过命令行创建 TypeScript 函数 - Azure Functions
 description: 了解如何通过命令行创建 TypeScript 函数，然后将本地项目发布到 Azure Functions 中的无服务器托管。
 ms.date: 11/03/2020
 ms.topic: quickstart
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 488ef9fa3fd5b6c09ed435483dbf8f6fa3eb5bef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: c7b37700d93ea129ba46de81989f06dd2afe52ba
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97937189"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831809"
 ---
 # <a name="quickstart-create-a-typescript-function-in-azure-from-the-command-line"></a>快速入门：在 Azure 中通过命令行创建 TypeScript 函数
 

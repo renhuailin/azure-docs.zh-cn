@@ -5,18 +5,18 @@ description: 了解如何通过 Azure 机器学习创建新的 Azure Kubernetes 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
+ms.topic: how-to
+ms.custom: devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 03/11/2021
-ms.openlocfilehash: 28a647949fdb3ff4d8527268919dbd7e49b27ea4
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.date: 04/08/2021
+ms.openlocfilehash: 949975c1f28c2c1d630319e5172f853f5ed44b35
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276648"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107890017"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>创建并附加 Azure Kubernetes 服务群集
 
@@ -67,6 +67,10 @@ Azure 机器学习可以将经过训练的机器学习模型部署到 Azure Kube
     - [在 AKS 中设置群集自动缩放程序](../aks/cluster-autoscaler.md)
 
 - __不要使用 YAML 配置直接更新群集__。 虽然 Azure Kubernetes 服务支持通过 YAML 配置进行更新，但 Azure 机器学习部署将覆盖更改。 唯一不会覆盖的两个 YAML 字段为 request limits 和 cpu and memory 。
+
+- 使用 Azure 机器学习工作室 UI、SDK 或 CLI 扩展来创建 AKS 群集的过程并不是幂等的。 再次尝试创建资源会导致错误，因为已存在具有相同名称的群集。
+    
+    - 使用 Azure 资源管理器模板和 [Microsoft.MachineLearningServices/workspaces/computes](/azure/templates/microsoft.machinelearningservices/2019-11-01/workspaces/computes) 资源来创建 AKS 群集也不是幂等的。 如果再次尝试使用该模板来更新已有的资源，会收到相同的错误。
 
 ## <a name="azure-kubernetes-service-version"></a>Azure Kubernetes 服务版本
 
@@ -194,7 +198,7 @@ aks_target.wait_for_completion(show_output = True)
 az ml computetarget create aks -n myaks
 ```
 
-有关详细信息，请参阅 [az ml computetarget create aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-aks) 参考文档。
+有关详细信息，请参阅 [az ml computetarget create aks](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_aks) 参考文档。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
@@ -219,7 +223,7 @@ az ml computetarget create aks -n myaks
 
 有关如何使用 Azure CLI 或门户创建 AKS 群集的详细信息，请参阅以下文章：
 
-* [创建 AKS 群集 (CLI)](/cli/azure/aks?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2faks%2fTOC.json#az-aks-create)
+* [创建 AKS 群集 (CLI)](/cli/azure/aks?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2faks%2fTOC.json#az_aks_create)
 * [创建 AKS 群集（门户）](../aks/kubernetes-walkthrough-portal.md)
 * [创建 AKS 群集（Azure 快速入门模板上的 ARM 模板）](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
 
@@ -271,7 +275,7 @@ az aks show -n myexistingcluster -g myresourcegroup --query id
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
 ```
 
-有关详细信息，请参阅 [az ml computetarget attach aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/attach#ext-azure-cli-ml-az-ml-computetarget-attach-aks) 参考文档。
+有关详细信息，请参阅 [az ml computetarget attach aks](/cli/azure/ml/computetarget/attach#az_ml_computetarget_attach_aks) 参考文档。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 

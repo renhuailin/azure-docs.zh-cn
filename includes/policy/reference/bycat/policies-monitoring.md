@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 29c6ca6a394c2fe4343159f985a90f8bc13cadfb
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 837ee0669c0dbd1743b47dc4a31a40ee950d0af3
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107498578"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862897"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -69,7 +69,7 @@ ms.locfileid: "107498578"
 |[\[预览\]：Log Analytics 代理应安装在 Windows Azure Arc 计算机中](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd69b1763-b96d-40b8-a2d9-ca31e9fd0d3e) |如果 Log Analytics 代理未安装，此策略审核 Windows Azure Arc 计算机。 |AuditIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Arc_Windows_LogAnalytics_Audit.json) |
 |[\[预览\]：应在 Linux 虚拟机上安装网络流量数据收集代理](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F04c4380f-3fae-46e8-96c9-30193528f602) |安全中心使用 Microsoft Dependency Agent 从 Azure 虚拟机收集网络流量数据，以启用高级网络保护功能，如网络映射上的流量可视化、网络强化建议和特定网络威胁。 |AuditIfNotExists、Disabled |[1.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ASC_Dependency_Agent_Audit_Linux.json) |
 |[\[预览\]：应在 Windows 虚拟机上安装网络流量数据收集代理](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2f2ee1de-44aa-4762-b6bd-0893fc3f306d) |安全中心使用 Microsoft Dependency Agent 从 Azure 虚拟机收集网络流量数据，以启用高级网络保护功能，如网络映射上的流量可视化、网络强化建议和特定网络威胁。 |AuditIfNotExists、Disabled |[1.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ASC_Dependency_Agent_Audit_Windows.json) |
-|[公共 IP 地址应启用 Azure DDoS 防护标准的资源日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F752154a7-1e0f-45c6-a880-ac75a7e4f648) |在诊断设置中启用公共 IP 地址的资源日志以流式传输到 Log Analytics 工作区。 详细了解利用通知、报告和流日志降低 DDoS 攻击所采取的攻击流量和操作。 |AuditIfNotExists、DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/PublicIpDdosLogging_Audit.json) |
+|[公共 IP 地址应启用 Azure DDoS 防护标准的资源日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F752154a7-1e0f-45c6-a880-ac75a7e4f648) |在诊断设置中启用公共 IP 地址的资源日志，以便流式传输到 Log Analytics 工作区。 详细了解利用通知、报告和流日志降低 DDoS 攻击所采取的攻击流量和操作。 |AuditIfNotExists、DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/PublicIpDdosLogging_Audit.json) |
 |[应将 Azure Monitor 中已保存的查询保存在客户存储帐户中以进行日志加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffa298e57-9444-42ba-bf04-86e8470e32c7) |将存储帐户链接到 Log Analytics 工作区，以通过存储帐户加密保护保存的查询。 为了满足法规合规性并更好地控制对 Azure Monitor 中保存的查询的访问，通常需要使用客户管理的密钥。 有关上述内容的更多详细信息，请参阅 [https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys?tabs=portal#customer-managed-key-for-saved-queries](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys?tabs=portal#customer-managed-key-for-saved-queries)。 |审核、拒绝、已禁用 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalyticsWorkspaces_CMKBYOSQueryEnabled_Deny.json) |
 |[必须使用 BYOK 对包含具有活动日志的容器的存储帐户进行加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffbb99e8e-e444-4da0-9ff1-75c92f5a85b2) |此策略审核是否已使用 BYOK 对包含具有活动日志的容器的存储帐户进行加密。 仅当存储帐户在设计上依赖于与活动日志相同的订阅时，此策略才起作用。 有关 Azure 存储静态加密的详细信息，请参阅 [https://aka.ms/azurestoragebyok](https://aka.ms/azurestoragebyok)。  |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_StorageAccountBYOK_Audit.json) |
 |[应在虚拟机规模集上安装 Log Analytics 代理](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fefbde977-ba53-4479-b8e9-10b957924fbf) |此策略审核是否有任何 Windows/Linux 虚拟机规模集未安装 Log Analytics 代理。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/VMSS_LogAnalyticsAgent_AuditIfNotExists.json) |

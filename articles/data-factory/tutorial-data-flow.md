@@ -1,19 +1,19 @@
 ---
 title: 使用映射数据流转换数据
 description: 本教程提供有关通过 Azure 数据工厂使用映射数据流转换数据的分步说明
-author: dcstwh
-ms.author: weetok
+author: kromerm
+ms.author: makromer
 ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/11/2021
-ms.openlocfilehash: 2363afc4c84ee7606410ceecd6819c12d0333dbb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/16/2021
+ms.openlocfilehash: dda6d756b1e660fa90e54c6cc0b80178363cd73e
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563287"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905731"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>使用映射数据流转换数据
 
@@ -54,7 +54,7 @@ ms.locfileid: "105563287"
 
    Azure 数据工厂的名称必须 *全局唯一*。 如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 （例如 yournameADFTutorialDataFactory）。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
 
-    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="针对重复名称的新数据工厂错误消息。":::
+    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="在名称重复的情况下新建数据工厂出现的错误消息。":::
 4. 选择要在其中创建数据工厂的 Azure **订阅**。
 5. 对于“资源组”，请执行以下步骤之一： 
 
@@ -78,15 +78,15 @@ ms.locfileid: "105563287"
    ![创建管道](./media/doc-common-process/get-started-page.png)
 
 1. 在管道的“常规”选项卡中，输入 TransformMovies 作为管道的名称  。
-1. 在工厂顶部栏中，将“数据流调试”滑块滑动到打开。 调试模式允许针对实时 Spark 群集进行转换逻辑的交互式测试。 数据流群集需要 5-7 分钟才能预热，如果用户计划进行数据流开发，建议先打开调试。 有关详细信息，请参阅[调试模式](concepts-data-flow-debug-mode.md)。
-
-    ![数据流活动](media/tutorial-data-flow/dataflow1.png)
 1. 在“活动”窗格中，展开“移动和转换”可折叠部分 。 将“数据流”活动从该窗格拖放到管道画布上。
 
     ![显示管道画布的屏幕截图，你可以在其中放置数据流活动。](media/tutorial-data-flow/activity1.png)
 1. 在“添加数据流”弹出窗口中，选择“创建新数据流”，然后将数据流命名为 TransformMovies  。 完成操作后，请单击“完成”。
 
     ![显示在创建新数据流时对数据流进行命名的位置的屏幕截图。](media/tutorial-data-flow/activity2.png)
+1. 在管道画布的顶部栏中，将“数据流调试”滑块滑动到打开。 调试模式允许针对实时 Spark 群集进行转换逻辑的交互式测试。 数据流群集需要 5-7 分钟才能预热，如果用户计划进行数据流开发，建议先打开调试。 有关详细信息，请参阅[调试模式](concepts-data-flow-debug-mode.md)。
+
+    ![数据流活动](media/tutorial-data-flow/dataflow1.png)
 
 ## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>在数据流画布中构建转换逻辑
 
@@ -100,7 +100,7 @@ ms.locfileid: "105563287"
     ![显示在命名源后选择“新建”的位置的屏幕截图。](media/tutorial-data-flow/dataflow3.png)
 1. 选择 Azure Data Lake Storage Gen2。 单击“继续”(Continue)。
 
-    ![显示 Azure Data Lake Storage Gen2 磁贴的屏幕截图。](media/tutorial-data-flow/dataset1.png)
+    ![显示 Azure Data Lake Storage Gen2 磁贴位置的屏幕截图。](media/tutorial-data-flow/dataset1.png)
 1. 选择 DelimitedText。 单击“继续”(Continue)。
 
     ![显示 DelimitedText 磁贴的屏幕截图。](media/tutorial-data-flow/dataset2.png)

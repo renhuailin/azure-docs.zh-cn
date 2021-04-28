@@ -4,14 +4,14 @@ description: 了解如何在 Azure 数据工厂中监视不同类型的集成运
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/11/2020
-author: dcstwh
-ms.author: weetok
-ms.openlocfilehash: 1cb4fcaa51e1a59ee9d09eb178faf9b250173709
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+author: minhe-msft
+ms.author: hemin
+ms.openlocfilehash: 17c3d67d80f03a5c504885914cf9bb4f1036e86e
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740013"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904381"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中监视集成运行时
 
@@ -232,7 +232,7 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 
 “正在运行/已请求的节点”信息磁贴比较当前正在运行的节点数与先前为 Azure-SSIS IR 请求的节点总数。
 
-**双重备用对/角色** 信息磁贴显示了与 Azure SQL 数据库/托管实例故障转移组同步的双重备用 Azure-SSIS IR 对的名称，以实现业务连续性和灾难恢复 (BCDR) 和 Azure-SSIS IR 的当前主/辅助角色。 发生 SSISDB 故障转移时，主要和辅助 Azure-SSIS IRs 将交换角色 (参阅 [为 BCDR) 配置 Azure-SSIS IR](./configure-bcdr-azure-ssis-integration-runtime.md) 。
+双备用对/角色信息磁贴显示了双备用 Azure-SSIS IR 对的名称，该双备用对与 Azure SQL 数据库/托管实例故障转移组同步工作，以实现业务连续性和灾难恢复 (BCDR) 以及 Azure-SSIS IR 的当前主要/辅助角色。 发生 SSISDB 故障转移时，主要和辅助 Azure-SSIS IR 将交换角色（请参阅[为 BCDR 配置 Azure-SSIS IR](./configure-bcdr-azure-ssis-integration-runtime.md)）。
 
 下面将更详细地介绍功能磁贴。
 
@@ -270,7 +270,7 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 
 如果为 Azure-SSIS IR 提供了自己的静态公共 IP 地址，则会在 Azure-SSIS IR 监视页面上看到“静态公共 IP 地址”磁贴（请参阅[为 Azure-SSIS IR 提供自己的静态公共 IP 地址](./join-azure-ssis-integration-runtime-virtual-network.md#publicIP)）。 在此磁贴上，你可以选择为 Azure-SSIS IR 指定第一个/第二个静态公共 IP 地址的链接，以弹出一个窗口，并可在窗口的文本框中复制其资源 ID (`/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/publicIPAddresses/YourPublicIPAddress`)。 在弹出窗口中，你还可以选择“查看第一个/第二个静态公共 IP 地址设置”链接，以管理 Azure 门户中的第一个/第二个静态公共 IP 地址。
 
-![监视 Azure-SSIS IR-静态磁贴](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png)
+![监视 Azure-SSIS IR -“静态”磁贴](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png)
 
 #### <a name="package-stores-tile"></a>“包存储”磁贴
 
@@ -282,7 +282,7 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 
 如果 Azure-SSIS IR 的启动/停止/维护/升级存在问题，可在 Azure-SSIS IR 监视页上看到一个附加的“错误”磁贴。 在此磁贴上，你可以选择一个指定由 Azure-SSIS IR 生成的错误数的链接以弹出一个窗口，你可以在其中详细了解这些错误并进行复制，以在我们的疑难解答指南中找到推荐的解决方案（请参阅[对 Azure-SSIS IR 进行故障排除](./ssis-integration-runtime-management-troubleshoot.md)）。
 
-![监视 Azure-SSIS IR-错误磁贴](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-error.png)
+![监视 Azure-SSIS IR -“错误”磁贴](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-error.png)
 
 ### <a name="monitor-the-azure-ssis-integration-runtime-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure-SSIS 集成运行时
 

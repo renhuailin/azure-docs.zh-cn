@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 02/26/2021
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 34adcf2218e29572ec9a86583addc7c021313085
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.custom: devx-track-python, contperf-fy21q1
+ms.openlocfilehash: 4154d73cbf7a82c78dcc8ea30f11b8d984dd6af0
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519633"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896668"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>使用 Azure 机器学习对模型进行超参数优化
 
@@ -183,7 +183,7 @@ run_logger.log("accuracy", float(val_accuracy))
 
 训练脚本会计算 `val_accuracy`，并将其记录为主要指标“准确度”。 每次记录指标时，超参数优化服务都会收到该指标。 你需要确定报告频率。
 
-若要详细了解如何在模型训练运行中记录值，请参阅[在 Azure ML 训练运行中启用日志记录](how-to-track-experiments.md)。
+若要详细了解如何在模型训练运行中记录值，请参阅[在 Azure ML 训练运行中启用日志记录](how-to-log-view-metrics.md)。
 
 ## <a name="specify-early-termination-policy"></a><a name="early-termination"></a> 指定提前终止策略
 
@@ -424,7 +424,7 @@ hd_config = HyperDriveConfig(run_config=script_run_config,
 
 ### <a name="studio"></a>工作室
 
-可以在 [Azure 机器学习工作室](https://ml.azure.com)中将所有超参数优化运行可视化。 要详细了解如何在门户中查看试验，请参阅[在工作室中查看运行记录](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal)。
+可以在 [Azure 机器学习工作室](https://ml.azure.com)中将所有超参数优化运行可视化。 要详细了解如何在门户中查看试验，请参阅[在工作室中查看运行记录](how-to-log-view-metrics.md#view-the-experiment-in-the-web-portal)。
 
 - **指标图**：此可视化效果跟踪在超参数优化持续时间内为每个 hyperdrive 子运行记录的指标。 每行表示一个子运行，每个点测量运行时迭代的主要指标值。  
 
@@ -464,7 +464,7 @@ RunDetails(hyperdrive_run).show()
 ```Python
 best_run = hyperdrive_run.get_best_run_by_primary_metric()
 best_run_metrics = best_run.get_metrics()
-parameter_values = best_run.get_details()['runDefinition']['Arguments']
+parameter_values = best_run.get_details()['runDefinition']['arguments']
 
 print('Best Run Id: ', best_run.id)
 print('\n Accuracy:', best_run_metrics['accuracy'])
@@ -481,5 +481,5 @@ print('\n batch size:',parameter_values[7])
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>后续步骤
-* [跟踪试验](how-to-track-experiments.md)
+* [跟踪试验](how-to-log-view-metrics.md)
 * [部署定型的模型](how-to-deploy-and-where.md)

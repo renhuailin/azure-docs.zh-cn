@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 85dea807ee09338e7f0e9e388f6b196fd3beef33
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6c5691759983d8ec40598834e5dbcd507ccf00cf
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104588658"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816865"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>教程：使用 MNIST 数据和 scikit-learn 训练图像分类模型 
 
@@ -396,7 +396,7 @@ RunDetails(run).show()
 
 ![Notebook 小组件](./media/tutorial-train-models-with-aml/widget.png)
 
-如果需要取消运行，可以遵照[这些说明](./how-to-manage-runs.md)。
+如果需要取消运行，可以遵照[这些说明](./how-to-track-monitor-analyze-runs.md)。
 
 ### <a name="get-log-results-upon-completion"></a>完成时获取日志结果
 

@@ -9,14 +9,13 @@ ms.author: minxia
 author: mx-iao
 ms.reviewer: peterlu
 ms.date: 01/14/2020
-ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: b1cb14e07f6c0e402510abad6f1cb160f5215c63
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.openlocfilehash: 1a261a972636021bec88244704b2b491ae8bcc61
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518375"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107888433"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模训练 PyTorch 模型
 
@@ -383,7 +382,7 @@ run = Experiment(ws, 'experiment_name').submit(src)
 在本文中，你使用 Azure 机器学习中的 PyTorch 训练并注册了一个深度学习神经网络。 若要了解如何部署模型，请继续参阅模型部署一文。
 
 * [部署模型的方式和位置](how-to-deploy-and-where.md)
-* [在训练期间跟踪运行指标](how-to-track-experiments.md)
+* [在训练期间跟踪运行指标](how-to-log-view-metrics.md)
 * [优化超参数](how-to-tune-hyperparameters.md)
 * [部署定型的模型](how-to-deploy-and-where.md)
 * [Azure 中分布式深度学习训练的参考体系结构](/azure/architecture/reference-architectures/ai/training-deep-learning)

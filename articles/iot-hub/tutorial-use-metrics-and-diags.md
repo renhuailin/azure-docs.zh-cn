@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: 099b7f4e812e92503c7ed8e3eb733f2e49ccd8b9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 96a9f7c50f3e30d86497c7a612ddda248db3f703
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768064"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865686"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>教程：通过 IoT 中心设置和使用指标和日志
 
@@ -44,7 +44,7 @@ ms.locfileid: "107768064"
 
 - Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-- 开发计算机上需要有 .NET Core SDK 2.1 或更高版本。 可以从 [.NET](https://www.microsoft.com/net/download/all) 为多个平台下载 .NET Core SDK。
+- 开发计算机上需要有 .NET Core SDK 2.1 或更高版本。 可以从 [.NET](https://dotnet.microsoft.com/download) 为多个平台下载 .NET Core SDK。
 
   可以使用以下命令验证开发计算机上 C# 的当前版本：
 

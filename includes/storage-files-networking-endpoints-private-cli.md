@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 5/11/2020
 ms.author: rogarana
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: e6cc45c3aedc013b63f9d7876b923e7db36ccd37
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: fd0953348de109101ed14c20ac342054d2faf3a1
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107511051"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107893219"
 ---
 若要为存储帐户创建专用终结点，首先需要获取对存储帐户的引用，以及要将专用终结点添加到的虚拟网络子网的引用。 请替换下面的 `<storage-account-resource-group-name>`、`<storage-account-name>`、`<vnet-resource-group-name>`、`<vnet-name>` 和 `<vnet-subnet-name>`：
 
