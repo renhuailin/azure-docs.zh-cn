@@ -3,12 +3,12 @@ title: 控制平面和数据平面操作
 description: 介绍控制平面操作和数据平面操作之间的差异。 控制平面操作由 Azure 资源管理器处理。 数据平面操作由服务处理。
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.openlocfilehash: 76304c81a1af1eef87d12cfd4130867851a61d28
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 40bb3291e4eec589c88bcd6ffd0f94a718ce8d1f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105544088"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132082"
 ---
 # <a name="azure-control-plane-and-data-plane"></a>Azure 控制平面和数据平面
 
@@ -33,7 +33,7 @@ Azure 操作可以分为两个类别 - 控制平面和数据平面。 本文介�
 * 对于 Azure 德国，该 URL 是 `https://management.microsoftazure.de/`。
 * 对于 Microsoft Azure 中国世纪互联，该 URL 是 `https://management.chinacloudapi.cn`。
 
-若要发现哪些操作使用 Azure 资源管理器 URL，请参阅 [Azure REST API](/rest/api/azure/)。 例如，用于 MySql 的[创建或更新操作](/rest/api/mysql/databases/createorupdate)是控制平面操作，因为请求 URL 是：
+若要发现哪些操作使用 Azure 资源管理器 URL，请参阅 [Azure REST API](/rest/api/azure/)。 例如，用于 MySql 的[创建或更新操作](/rest/api/mysql/flexibleserver(preview)/servers/update)是控制平面操作，因为请求 URL 是：
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/databases/{databaseName}?api-version=2017-12-01
@@ -52,7 +52,7 @@ Azure 资源管理器处理所有控制平面请求。 它将自动应用已实�
 
 ## <a name="data-plane"></a>数据平面
 
-对数据平面操作的请求将发送到特定于你的实例的终结点。 例如，认知服务中的[检测语言操作](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection)是一项数据平面操作，因为请求 URL 是：
+对数据平面操作的请求将发送到特定于你的实例的终结点。 例如，认知服务中的[检测语言操作](../../cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection.md)是一项数据平面操作，因为请求 URL 是：
 
 ```http
 POST {Endpoint}/text/analytics/v2.0/languages

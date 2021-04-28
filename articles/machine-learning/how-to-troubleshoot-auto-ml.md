@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 03/08/2021
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, automl, references_regions
-ms.openlocfilehash: 2e6e4e468adec76d50242b31922e4db1c7e910ab
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.topic: troubleshooting
+ms.custom: devx-track-python, automl, references_regions
+ms.openlocfilehash: 6f64d3511da8fbf953a50eab44702c7356ad3c5b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210476"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140472"
 ---
 # <a name="troubleshoot-automated-ml-experiments-in-python"></a>对 Python 中的自动化 ML 试验进行故障排除
 
@@ -189,6 +189,6 @@ ms.locfileid: "107210476"
 
 ## <a name="next-steps"></a>后续步骤
 
-+ 详细了解[如何使用自动化机器学习训练回归模型](tutorial-auto-train-models.md)或[如何使用自动化机器学习对远程资源进行训练](how-to-auto-train-remote.md)。
++ 详细了解[如何使用自动化机器学习训练回归模型](tutorial-auto-train-models.md)或[如何使用自动化机器学习对远程资源进行训练](concept-automated-ml.md#local-remote)。
 
 + 详细了解[如何以及在何处部署模型](how-to-deploy-and-where.md)。

@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 796abf8506a832c4053b505e903bb24ef9d09004
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 40d61de140cb0b3537c56af37eb18f004a72c148
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279028"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138888"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -84,7 +84,7 @@ ms.locfileid: "106279028"
  
 - 全天候实时事件支持
 - ARM REST API、适用于 .NET core、Node.js、Python、Java、Go 和 Ruby 的客户端 SDK。
-- 客户管理的密钥、受信任的存储集成和专用链接支持[等等](https://docs.microsoft.com/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+- 客户管理的密钥、受信任的存储集成和专用链接支持[等等](./migrate-v-2-v-3-migration-benefits.md)
 
 #### <a name="action-required"></a>所需的操作
 
@@ -132,7 +132,7 @@ ms.locfileid: "106279028"
 
 ### <a name="new-live-stand-by-mode-to-support-faster-startup-from-warm-state"></a>添加了新的实时待机模式以支持从暖状态更快启动
 
-实时事件现在支持对“待机”采用成本更低的计费模式。 这样，客户便能够以更低的成本预分配实时事件，从而创建“热池”。 然后，客户可以使用待机实时事件转换到“正在运行”状态，而且转换速度比创建后从冷状态启动更快。  这可以大大缩短启动通道的时间，并使用以价格更低的模式运行的计算机快速分配热池。
+实时事件现在支持对“待机”采用成本更低的计费模式。 这样，客户便能够以更低的成本预分配实时事件，从而创建“热池”。 然后，客户可以使用待机实时事件转换到“正在运行”状态，而且转换速度比创建后从冷状态启动更快。  这可以大大缩短启动通道的时间，并可对以更低价的模式运行的计算机进行快速热池分配。
 请参阅[此处](https://azure.microsoft.com/pricing/details/media-services)的最新定价详细信息。
 有关待机状态和其他实时事件状态的详细信息，请参阅文章 - [实时事件状态和计费](./live-event-states-billing-concept.md)。
 

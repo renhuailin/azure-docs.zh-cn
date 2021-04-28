@@ -8,14 +8,13 @@ ms.subservice: core
 ms.author: minxia
 author: mx-iao
 ms.date: 09/28/2020
-ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 583f588004f41fc07037e7f5e4ce75538a581c70
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.openlocfilehash: 297721d9801385d9fdbff708c723c5b6e02949ad
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518324"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950597"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模训练 TensorFlow 模型
 
@@ -23,7 +22,7 @@ ms.locfileid: "102518324"
 
 此示例使用深度神经网络 (DNN) 训练并注册 TensorFlow 模型来对手写数字进行分类。
 
-无论是从头开始开发 TensorFlow 模型，还是将[现有模型](how-to-deploy-existing-model.md)引入云中，都可以使用 Azure 机器学习来横向扩展开源训练作业，以便构建、部署和监视生产级模型以及对其进行版本控制。
+无论是从头开始开发 TensorFlow 模型，还是将[现有模型](how-to-deploy-and-where.md)引入云中，都可以使用 Azure 机器学习来横向扩展开源训练作业，以便构建、部署和监视生产级模型以及对其进行版本控制。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -361,6 +360,6 @@ service = Model.deploy(ws, "tensorflow-web-service", [model])
 
 在本文中，你训练并注册了一个 TensorFlow 模型，并了解了部署选项。 有关 Azure 机器学习的详细信息，请参阅以下其他文章。
 
-* [在训练期间跟踪运行指标](how-to-track-experiments.md)
+* [在训练期间跟踪运行指标](how-to-log-view-metrics.md)
 * [优化超参数](how-to-tune-hyperparameters.md)
 * [Azure 中分布式深度学习训练的参考体系结构](/azure/architecture/reference-architectures/ai/training-deep-learning)

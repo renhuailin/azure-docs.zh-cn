@@ -9,14 +9,13 @@ ms.author: minxia
 author: mx-iao
 ms.reviewer: peterlu
 ms.date: 09/28/2020
-ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 2b4af9dec2bf397ad2766c68d547eeac85a9a9a3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.openlocfilehash: 5a641f349b070f3b4cb285b3d0007baa54219683
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518358"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107884419"
 ---
 # <a name="train-keras-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模训练 Keras 模型
 
@@ -243,7 +242,7 @@ for f in run.get_file_names():
 在本文中，你在 Azure 机器学习上训练和注册了 Keras 模型。 若要了解如何部署模型，请继续参阅模型部署一文。
 
 * [部署模型的方式和位置](how-to-deploy-and-where.md)
-* [在训练期间跟踪运行指标](how-to-track-experiments.md)
+* [在训练期间跟踪运行指标](how-to-log-view-metrics.md)
 * [优化超参数](how-to-tune-hyperparameters.md)
 * [部署定型的模型](how-to-deploy-and-where.md)
 * [Azure 中分布式深度学习训练的参考体系结构](/azure/architecture/reference-architectures/ai/training-deep-learning)

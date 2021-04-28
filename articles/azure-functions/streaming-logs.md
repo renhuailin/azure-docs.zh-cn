@@ -3,13 +3,13 @@ title: 在 Azure Functions 中流式传输执行日志
 description: 115-145 个字符（包括空格）。 此摘要显示在搜索结果中。
 ms.date: 9/1/2020
 ms.topic: how-to
-ms.custom: contperf-fy21q2, devx-track-azurecli
-ms.openlocfilehash: 085849386fce929ceaec4536844cf31b94fe7539
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: contperf-fy21q2, devx-track-azurepowershell
+ms.openlocfilehash: cc12af12fa41d5556f2c5a0fc000abbc9c13a0d8
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97033045"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076916"
 ---
 # <a name="enable-streaming-execution-logs-in-azure-functions"></a>在 Azure Functions 中启用流式传输执行日志功能
 

@@ -5,24 +5,27 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/25/2021
+ms.date: 04/16/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: d8c3a2d961cc5b6fd719b77dae07b6e46c3d8b65
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f5bdae17126048da153f70bf27609bcc4b92fe21
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604832"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599581"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>H 系列和 N 系列 VM 的已知问题
 
 本文尝试列出使用 [H 系列](../../sizes-hpc.md)和 [N 系列](../../sizes-gpu.md) HPC 和 GPU VM 时最常见的问题及其解决方案。
 
+## <a name="qp0-access-restriction"></a>qp0 访问限制
+
+若要防止可能导致安全漏洞的低级别硬件访问，来宾 VM 将无法访问队列对 0。 这只会影响通常与 ConnectX InfiniBand NIC 的管理相关的操作，以及运行一些 InfiniBand 诊断（如 ibdiagnet），而不会影响最终用户应用程序。
+
 ## <a name="mofed-installation-on-ubuntu"></a>Ubuntu 上的 MOFED 安装
-在 Ubuntu-18.04 上，Mellanox OFED 与内核版本 `5.4.0-1039-azure #42` 和更高版本不兼容，这导致 VM 启动时间增加至约 30 分钟。 Mellanox OFED 版本 5.2-1.0.4.0 和 5.2-2.2.0.0 均存在此问题。
-临时解决方案是使用 Canonical:UbuntuServer:18_04-lts-gen2:18.04.202101290 市场映像或更低版本，而不是更新内核。
-这个问题有望在新的 MOFED (TBD) 中得到解决。
+在内核版本为 `5.4.0-1039-azure #42` 及更高版本的基于 Ubuntu-18.04 的市场 VM 映像上，某些早期 Mellanox OFED 不兼容，这会导致在某些情况下 VM 启动时间增加长达 30 分钟。 Mellanox OFED 版本 5.2-1.0.4.0 和 5.2-2.2.0.0 均存在此问题。 可通过 Mellanox OFED 5.3-1.0.0.1 解决此问题。
+如果需要使用不兼容的 OFED，一种解决方案是使用 Canonical:UbuntuServer:18_04-lts-gen2:18.04.202101290 市场 VM 映像或更低版本，而不是更新内核。
 
 ## <a name="mpi-qp-creation-errors"></a>MPI QP 创建错误
 如果在运行任何 MPI 工作负载的过程中，引发了如下所示的 InfiniBand QP 创建错误，建议重启 VM 并重试工作负载。 将来会解决此问题。
@@ -72,10 +75,6 @@ Ubuntu VM 映像上的 cloud-init 在尝试打开 IB 接口时出现已知问题
       version: 2
     EOF
     ```
-
-## <a name="qp0-access-restriction"></a>qp0 访问限制
-
-若要防止可能导致安全漏洞的低级别硬件访问，来宾 VM 将无法访问队列对 0。 这只会影响通常与 ConnectX-5 NIC 的管理相关的操作，以及运行一些 InfiniBand 诊断（如 ibdiagnet），而不会影响最终用户应用程序本身。
 
 ## <a name="dram-on-hb-series-vms"></a>HB 系列 VM 上的 DRAM
 
@@ -132,4 +131,4 @@ echo 3 > /proc/sys/vm/drop_caches [cleans page-cache and slab objects]
 
 - 查看 [HB 系列概述](hb-series-overview.md)和 [HC 系列概述](hc-series-overview.md)，以了解如何对工作负载进行优化配置以提高性能和可伸缩性。
 - 在 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)上阅读最新公告、HPC 工作负载示例和性能结果。
-- 若要从体系结构角度更概略性地看待如何运行 HPC 工作负载，请参阅 [Azure 上的高性能计算 (HPC)](/azure/architecture/topics/high-performance-computing/)。
+- 有关运行 HPC 工作负荷的高层架构视图，请参阅 [Azure 上的高性能计算 (HPC)](/azure/architecture/topics/high-performance-computing/)。

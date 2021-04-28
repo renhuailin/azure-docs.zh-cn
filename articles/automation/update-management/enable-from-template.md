@@ -5,12 +5,13 @@ services: automation
 ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: 95ef52acedc9171ba86110a665d08ea97c59bfbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 687c3d49f98fe6832d23dc1529a9761d862e0666
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100575816"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830873"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板启用“更新管理”
 
@@ -72,7 +73,7 @@ JSON 模板为其他参数指定默认值，这些参数将会用作环境中的
 
 ## <a name="deploy-template"></a>部署模板
 
-1. 将以下 JSON 语法复制并粘贴到文件中：
+1. 将以下 JSON 语法复制并粘贴到该文件中：
 
     ```json
     {

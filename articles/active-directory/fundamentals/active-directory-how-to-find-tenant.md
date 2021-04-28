@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, devx-track-azurepowershell
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cba823775849fdad8407c7bb697a53761e8ccbcd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6a6bba9a1fc7974d324696e88e059c1d44924dac
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764344"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108016682"
 ---
 # <a name="how-to-find-your-azure-active-directory-tenant-id"></a>如何查找 Azure Active Directory 租户 ID
 
@@ -59,7 +59,7 @@ az account list
 az account tenant list
 ```
 
-有关详细信息，请参阅 [az login](/cli/azure/reference-index#az_login) 命令参考、[az account](/cli/azure/ext/account/account) 命令参考或 [az account tenant](/cli/azure/ext/account/account/tenant) 命令参考。
+有关详细信息，请参阅 [az login](/cli/azure/reference-index#az_login) 命令参考、[az account](/cli/azure/account) 命令参考或 [az account tenant](/cli/azure/account/tenant) 命令参考。
 
 
 对于 Microsoft 365 CLI，请使用 tenant id 这一 cmdlet，如以下示例所示：

@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 0a3fd1b492d19e241d89cc5477891c7c836e4640
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 063ebc43e0654268b758c705ca2a92b8cf88fb35
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078972"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136294"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-managed-instance"></a>迁移概述：将 SQL Server 到 Azure SQL 托管实例
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "106078972"
 - Google Cloud Platform (GCP) 中的计算引擎。  
 - GCP 中 SQL Server 的云 SQL。 
 
-有关其他迁移指南，请参阅[数据库迁移](https://docs.microsoft.com/data-migration)。 
+有关其他迁移指南，请参阅[数据库迁移](/data-migration)。 
 
 ## <a name="overview"></a>概述
 

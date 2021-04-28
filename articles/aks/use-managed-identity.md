@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用托管标识
 services: container-service
 ms.topic: article
 ms.date: 12/16/2020
-ms.openlocfilehash: 3ace7f1c93ab3918f460d245a863db43d98f1db5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 59da03985f0bc9248fdb498d7b0222158029e0d8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176087"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777664"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes 服务中使用托管标识
 
@@ -66,42 +66,14 @@ az group create --name myResourceGroup --location westus2
 az aks create -g myResourceGroup -n myManagedCluster --enable-managed-identity
 ```
 
-使用托管标识成功创建群集的命令中包含以下服务主体配置文件信息：
-
-```output
-"servicePrincipalProfile": {
-    "clientId": "msi"
-  }
-```
-
-使用以下命令查询控制平面托管标识的 objectid：
-
-```azurecli-interactive
-az aks show -g myResourceGroup -n myManagedCluster --query "identity"
-```
-
-结果应如下所示：
-
-```output
-{
-  "principalId": "<object_id>",   
-  "tenantId": "<tenant_id>",      
-  "type": "SystemAssigned"                                 
-}
-```
-
 创建群集后，你便可以将应用程序工作负荷部署到新群集中，并与之交互，就像与基于服务主体的 AKS 群集交互一样。
-
-> [!NOTE]
-> 若要创建并使用自己的 VNet、静态 IP 地址或附加的 Azure 磁盘（资源位于工作器节点资源组外部），请使用群集系统分配的托管标识的 PrincipalID 来执行角色分配。 有关角色分配的详细信息，请参阅[委托对其他 Azure 资源的访问权限](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)。
->
-> 向 Azure 云提供商使用的群集托管标识授予的权限可能需要 60 分钟才能填充完毕。
 
 最后，获取用于访问群集的凭据：
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
+
 ## <a name="update-an-aks-cluster-to-managed-identities-preview"></a>将 ASK 群集更新至托管标识（预览版）
 
 现在可以使用以下 CLI 命令更新当前使用服务主体的 AKS 集群以使用托管标识。
@@ -131,6 +103,43 @@ az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identi
 ```
 > [!NOTE]
 > 将系统分配的标识或用户分配的标识更新为托管标识后，请在节点上执行 `az aks nodepool upgrade --node-image-only` 以完成对托管标识的更新。
+
+## <a name="obtain-and-use-the-system-assigned-managed-identity-for-your-aks-cluster"></a>获取系统分配的托管标识并将其用于 AKS 群集
+
+使用以下 CLI 命令确认 AKS 群集是否正在使用托管标识：
+
+```azurecli-interactive
+az aks show -g <RGName> -n <ClusterName> --query "servicePrincipalProfile"
+```
+
+如果群集正在使用托管标识，你将看到 `clientId` 值为“msi”。 改用服务主体的群集将改为显示对象 ID。 例如： 
+
+```output
+{
+  "clientId": "msi"
+}
+```
+
+验证群集是否正在使用托管标识后，可以使用以下命令来查找控制平面系统分配的标识的对象 ID：
+
+```azurecli-interactive
+az aks show -g <RGName> -n <ClusterName> --query "identity"
+```
+
+```output
+{
+    "principalId": "<object-id>",
+    "tenantId": "<tenant-id>",
+    "type": "SystemAssigned",
+    "userAssignedIdentities": null
+},
+```
+
+> [!NOTE]
+> 若要创建并使用自己的 VNet、静态 IP 地址或附加的 Azure 磁盘（资源位于工作器节点资源组外部），请使用群集系统分配的托管标识的 PrincipalID 来执行角色分配。 有关角色分配的详细信息，请参阅[委托对其他 Azure 资源的访问权限](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)。
+>
+> 向 Azure 云提供商使用的群集托管标识授予的权限可能需要 60 分钟才能填充完毕。
+
 
 ## <a name="bring-your-own-control-plane-mi"></a>自带控制平面 MI
 凭借自定义控制平面标识，即可在创建群集之前将访问权限授予现有标识。 此功能适用于多种场景，例如将自定义 VNET 或 outboundType UDR 与预先创建的托管标识结合使用。
@@ -205,5 +214,5 @@ az aks create \
 
 <!-- LINKS - external -->
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
-[az-identity-create]: /cli/azure/identity#az-identity-create
-[az-identity-list]: /cli/azure/identity#az-identity-list
+[az-identity-create]: /cli/azure/identity#az_identity_create
+[az-identity-list]: /cli/azure/identity#az_identity_list

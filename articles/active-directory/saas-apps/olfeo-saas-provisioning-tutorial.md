@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2021
 ms.author: Zhchia
-ms.openlocfilehash: b74175c7847bb19aa9410edd613afbfe1d762d05
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0afd2e2420868e40847ff1243fc61fb5b15c4853
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105548773"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144051"
 ---
 # <a name="tutorial-configure-olfeo-saas-for-automatic-user-provisioning"></a>教程：为 Olfeo SAAS 配置自动用户预配
 
-本教程介绍了在 Olfeo SAAS 和 Azure Active Directory (Azure AD) 中配置自动用户预配时需执行的步骤。 配置后，Azure AD 会使用 Azure AD 预配服务自动将用户和组预配到 [Olfeo SAAS](https://www.olfeo.com) 并自动取消预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程介绍了在 Olfeo SAAS 和 Azure Active Directory (Azure AD) 中配置自动用户预配时需执行的步骤。 配置后，Azure AD 会使用 Azure AD 预配服务自动将用户和组预配到 [Olfeo SAAS](https://www.olfeo.com) 并自动取消预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
@@ -60,7 +60,7 @@ ms.locfileid: "105548773"
 
 ## <a name="step-3-add-olfeo-saas-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 Olfeo SAAS
 
-从 Azure AD 应用程序库添加 Olfeo SAAS，开始管理 Olfeo SAAS 的预配。 如果以前为 Olfeo SAAS 设置过 SSO，则可以使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-gallery-app.md)。 
+从 Azure AD 应用程序库添加 Olfeo SAAS，开始管理 Olfeo SAAS 的预配。 如果以前为 Olfeo SAAS 设置过 SSO，则可以使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-application-portal.md)。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁在预配范围中 
 

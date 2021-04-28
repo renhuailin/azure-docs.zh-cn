@@ -6,16 +6,16 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 3/22/2021
-ms.openlocfilehash: 4c344dc09ad6c8aa4b2aa431952fc271d946b60d
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 9a18609ab0dc41031a22db6d8b21c1fff83920f2
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104787201"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137303"
 ---
 # <a name="tutorial-pull-azure-industrial-iot-data-into-adx"></a>教程：将 Azure 工业 IoT 数据拉取到 ADX
 
-Azure 工业 IoT (IIoT) 平台将边缘模块和云微服务与大量 Azure PaaS 服务相结合，为工业资产发现提供功能，并使用 OPC UA 从这些资产中收集数据。 [Azure 数据资源管理器 (ADX) ](https://docs.microsoft.com/azure/data-explorer)是包含数据分析功能的 IIoT 数据的自然目标，可让您从通过 OPC 发布者连接到 IoT 中心的 OPC UA 服务器对引入数据运行灵活的查询。 尽管 ADX 群集可以直接从 IoT 中心引入数据，但 IIoT 平台会进一步处理数据，使其更有用，然后再在完全部署微服务时将其放在所提供的事件中心（参见 IIoT 平台体系结构）。
+Azure 工业 IoT (IIoT) 平台将边缘模块和云微服务与大量 Azure PaaS 服务相结合，为工业资产发现提供功能，并使用 OPC UA 从这些资产中收集数据。 [Azure 数据资源管理器 (ADX) ](/azure/data-explorer)是包含数据分析功能的 IIoT 数据的自然目标，可让您从通过 OPC 发布者连接到 IoT 中心的 OPC UA 服务器对引入数据运行灵活的查询。 尽管 ADX 群集可以直接从 IoT 中心引入数据，但 IIoT 平台会进一步处理数据，使其更有用，然后再在完全部署微服务时将其放在所提供的事件中心（参见 IIoT 平台体系结构）。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -31,13 +31,13 @@ Azure 工业 IoT (IIoT) 平台将边缘模块和云微服务与大量 Azure PaaS
 ![结构](media/tutorial-iiot-data-adx/industrial-iot-in-azure-data-explorer-pic-1.png)
 
 下面是使数据在 ADX 群集中可用并能有效查询该数据所需的步骤。  
-1. 创建 ADX 群集。 如果尚未使用 IIoT 平台预配 ADX 群集，或者想要使用其他群集，请按照[此处](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal#create-a-cluster)的步骤操作。 
-2. 如[此处](https://docs.microsoft.com/azure/data-explorer/ingest-data-streaming#enable-streaming-ingestion-on-your-cluster)所述，在 ADX 群集上启用流式引入。 
-3. 按照[此处](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal#create-a-database)的步骤创建 ADX 数据库。
+1. 创建 ADX 群集。 如果尚未使用 IIoT 平台预配 ADX 群集，或者想要使用其他群集，请按照[此处](/azure/data-explorer/create-cluster-database-portal#create-a-cluster)的步骤操作。 
+2. 如[此处](/azure/data-explorer/ingest-data-streaming#enable-streaming-ingestion-on-your-cluster)所述，在 ADX 群集上启用流式引入。 
+3. 按照[此处](/azure/data-explorer/create-cluster-database-portal#create-a-database)的步骤创建 ADX 数据库。
 
-下一步，我们将使用 [ADX Web 界面](https://docs.microsoft.com/azure/data-explorer/web-query-data)来运行必要的查询。 请确保将群集添加到 Web 界面，如链接中所述。  
+下一步，我们将使用 [ADX Web 界面](/azure/data-explorer/web-query-data)来运行必要的查询。 请确保将群集添加到 Web 界面，如链接中所述。  
  
-4. 在 ADX 中创建一个表，将引入数据放入。  尽管 MonitoredItemMessageModel 类可用于定义 ADX 表的架构，但建议先将数据引入包含一列类型为[动态](https://docs.microsoft.com/azure/data-explorer/kusto/query/scalar-data-types/dynamic)的临时表中。 这样，我们就可以更灵活地处理数据，并将数据处理到其他表中（可能会将其与其他数据源组合），从而满足多个用例的需求。 以下 ADX 查询创建临时表“iiot_stage”，其中包含一个“有效负载”列，
+4. 在 ADX 中创建一个表，将引入数据放入。  尽管 MonitoredItemMessageModel 类可用于定义 ADX 表的架构，但建议先将数据引入包含一列类型为[动态](/azure/data-explorer/kusto/query/scalar-data-types/dynamic)的临时表中。 这样，我们就可以更灵活地处理数据，并将数据处理到其他表中（可能会将其与其他数据源组合），从而满足多个用例的需求。 以下 ADX 查询创建临时表“iiot_stage”，其中包含一个“有效负载”列，
 
 ```
 .create table ['iiot_stage']  (['payload']:dynamic)
@@ -50,7 +50,7 @@ Azure 工业 IoT (IIoT) 平台将边缘模块和云微服务与大量 Azure PaaS
 ```
 
 5. 现在，我们的表已准备好从事件中心接收数据。 
-6. 使用[此处](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub#connect-to-the-event-hub)的说明将事件中心连接到 ADX 群集，并开始将数据引入到临时表中。 只需创建连接，因为我们已经有了 IIoT 平台预配的事件中心。  
+6. 使用[此处](/azure/data-explorer/ingest-data-event-hub#connect-to-the-event-hub)的说明将事件中心连接到 ADX 群集，并开始将数据引入到临时表中。 只需创建连接，因为我们已经有了 IIoT 平台预配的事件中心。  
 7. 验证连接后，数据将开始流动到表中，并且在短暂延迟后，可以开始检查表中的数据。 在 ADX Web 界面中使用以下查询查看 10 行数据示例。 在此，我们可以看到有效负载中的数据与前面提到的 MonitoredItemMessageModel 类的相似之处。
 
 ![查询](media/tutorial-iiot-data-adx/industrial-iot-in-azure-data-explorer-pic-2.png)
@@ -95,9 +95,9 @@ iiot_stage
 }
 ```
 
-有关在 ADX 中映射数据类型的更多信息，请参阅[此处](https://docs.microsoft.com/azure/data-explorer/kusto/query/scalar-data-types/dynamic)，有关 ADX 中的函数，可从[此处](https://docs.microsoft.com/azure/data-explorer/kusto/query/schema-entities/stored-functions)开始。
+有关在 ADX 中映射数据类型的更多信息，请参阅[此处](/azure/data-explorer/kusto/query/scalar-data-types/dynamic)，有关 ADX 中的函数，可从[此处](/azure/data-explorer/kusto/query/schema-entities/stored-functions)开始。
  
-11. 使用更新策略将上一步中的函数应用到已分析的表中。 每当基于对插入源表的数据运行的转换查询将新数据插入源表时，更新[策略](https://docs.microsoft.com/azure/data-explorer/kusto/management/updatepolicy)都会指示 ADX 自动将数据追加到目标表中。 对于我们在上一步创建的函数所定义的更新策略，我们可以使用以下查询将已分析的表指定为目标，将临时表指定为源。
+11. 使用更新策略将上一步中的函数应用到已分析的表中。 每当基于对插入源表的数据运行的转换查询将新数据插入源表时，更新[策略](/azure/data-explorer/kusto/management/updatepolicy)都会指示 ADX 自动将数据追加到目标表中。 对于我们在上一步创建的函数所定义的更新策略，我们可以使用以下查询将已分析的表指定为目标，将临时表指定为源。
 
 ```
 .alter table iiot_parsed policy update

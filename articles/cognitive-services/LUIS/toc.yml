@@ -123,8 +123,9 @@
         - name: 容器限制
           href: luis-container-limitations.md
           displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
-        - name: 认知服务容器文档
+        - name: 所有认知服务容器文档
           href: ../containers/index.yml
+          maintainContext: true
     - name: 企业就绪情况
       items:
         - name: 设置虚拟网络

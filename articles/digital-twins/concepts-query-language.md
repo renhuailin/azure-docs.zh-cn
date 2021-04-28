@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: fc9cd95063f84a9af7f989af9a65ce8f99852dc1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef583d21647681cb1be730ea93a67a9339c74aae
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103490970"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930976"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>关于 Azure 数字孪生的查询语言
 
@@ -39,7 +39,7 @@ ms.locfileid: "103490970"
 * 记得区分大小写：所有 Azure 数字孪生查询操作都区分大小写，因此请务必使用模型中定义的确切名称。 如果属性名称拼写错误或大小写不正确，则结果集为空，并且不返回任何错误。
 * 转义单引号：如果查询文本的数据中包含单引号字符，则需要使用 `\` 字符对引号进行转义。 下面是一个处理 D'Souza 属性值的示例：
 
-  :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="EscapedSingleQuote":::
+  :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="EscapedSingleQuote":::
 
 ## <a name="reference-expressions-and-conditions"></a>参考：表达式和条件
 

@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81a909d946b55ee8b06d68aa8bee53bc50d2190e
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 50d8ef544029e7097d90651707da24d603bcecc9
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532294"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137952"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -59,7 +59,7 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 - Azure 商业云
 - Office 365 GCC 和 WW
 
-有关其他指导，请参阅[在环境中启用 TLS 1.2 支持，以便弃用 Azure AD TLS 1.1 和 1.0](https://docs.microsoft.com/troubleshoot/azure/active-directory/enable-support-tls-environment)。
+有关其他指导，请参阅[在环境中启用 TLS 1.2 支持，以便弃用 Azure AD TLS 1.1 和 1.0](/troubleshoot/azure/active-directory/enable-support-tls-environment)。
 
 ---
 
@@ -79,7 +79,7 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 **服务类别：** 其他  
 **产品功能：** 开发人员体验
  
-现在，客户可以从 Azure 门户查看、还原和永久移除已删除的应用注册。 这仅适用于关联到目录的应用程序，不适用于来自个人 Microsoft 帐户的应用程序。 [了解详细信息](../develop/quickstart-restore-app.md)。
+现在，客户可以从 Azure 门户查看、还原和永久移除已删除的应用注册。 这仅适用于关联到目录的应用程序，不适用于来自个人 Microsoft 帐户的应用程序。 [了解详细信息](../develop/howto-restore-app.md)。
  
 ---
 
@@ -153,7 +153,7 @@ AD FS 登录活动现在可以与 Azure AD 活动报告集成，从而提供混�
 **服务类别：** Azure AD 域服务  
 **产品功能：** Azure AD 域服务
  
-Azure AD DS 中的副本集功能现已正式发布。 [了解详细信息](https://docs.microsoft.com/azure/active-directory-domain-services/concepts-replica-sets)。
+Azure AD DS 中的副本集功能现已正式发布。 [了解详细信息](../../active-directory-domain-services/concepts-replica-sets.md)。
  
 ---
 
@@ -210,7 +210,7 @@ Microsoft Azure 政府云中的组织现在可以允许其来宾使用电子邮�
 **服务类别：** MS Graph  
 **产品功能：** B2B/B2C
 
-[适用于公司品牌的 MS Graph API](https://docs.microsoft.com/graph/api/resources/organizationalbrandingproperties) 可用于 Azure AD 或 Microsoft 365 登录体验，允许以编程方式管理品牌参数。
+[适用于公司品牌的 MS Graph API](/graph/api/resources/organizationalbrandingproperties) 可用于 Azure AD 或 Microsoft 365 登录体验，允许以编程方式管理品牌参数。
 
 ---
 
@@ -768,7 +768,7 @@ Microsoft 已部署新的 Azure AD Connect 终结点 (API)，可提高 Azure Act
 
 相关公告：所有客户端-服务器和浏览器-服务器组合都应使用 TLS 1.2 和新式密码套件来维护与 Azure Active Directory、Office 365 和 Microsoft 365 服务的安全连接。 这一更改与[在 US Gov 云中弃用 Azure Active Directory TLS 1.0、Azure Active Directory TLS 1.1 和 3DES 密码套件](whats-new.md#azure-active-directory-tls-10-tls-11-and-3des-deprecation-in-us-gov-cloud)相关。
 
-有关删除弃用的协议依赖项的指导，请参阅[在环境中启用 TLS 1.2 支持，以便弃用 Azure AD TLS 1.1 和 1.0](https://docs.microsoft.com/troubleshoot/azure/active-directory/enable-support-tls-environment)。
+有关删除弃用的协议依赖项的指导，请参阅[在环境中启用 TLS 1.2 支持，以便弃用 Azure AD TLS 1.1 和 1.0](/troubleshoot/azure/active-directory/enable-support-tls-environment)。
 
 ---
 
@@ -997,7 +997,7 @@ Microsoft 在将 Azure 服务更新为使用来自一组不同的根证书颁发
 - Azure US Gov
 - [Office 365 GCC High 和 DoD](/microsoft-365/compliance/tls-1-2-in-office-365-gcc)
 
-有关删除弃用的协议依赖项的指导，请参阅[在环境中启用 TLS 1.2 支持，以便弃用 Azure AD TLS 1.1 和 1.0](https://docs.microsoft.com/troubleshoot/azure/active-directory/enable-support-tls-environment)。
+有关删除弃用的协议依赖项的指导，请参阅[在环境中启用 TLS 1.2 支持，以便弃用 Azure AD TLS 1.1 和 1.0](/troubleshoot/azure/active-directory/enable-support-tls-environment)。
  
 ---
 

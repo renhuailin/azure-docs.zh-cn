@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 了解如何刷新已在 Azure 机器学习中部署的 Web 服务。 可以更新设置，如模型、环境和入口脚本。
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
 ms.custom: deploy
-ms.openlocfilehash: da018f212844e1587ad0e434902e49765f72e521
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a586d29fd25ee7332f11737345aef8209de8824
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102520086"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107889333"
 ---
 # <a name="update-a-deployed-web-service"></a>更新已部署的 Web 服务
 
@@ -86,7 +86,7 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 >
 > 若要更新服务以使用新的入口脚本或环境，请创建[推理配置文件](./reference-azure-machine-learning-cli.md#inference-configuration-schema)并使用 `ic` 参数指定它。
 
-有关详细信息，请参阅 [az ml 服务更新](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-update)文档。
+有关详细信息，请参阅 [az ml 服务更新](/cli/azure/ml/service#az_ml_service_update)文档。
 
 ## <a name="next-steps"></a>后续步骤
 

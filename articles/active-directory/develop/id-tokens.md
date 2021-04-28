@@ -9,17 +9,19 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 04/02/2021
 ms.author: hirsin
 ms.reviewer: hirsin
-ms.custom: aaddev, identityplatformtop40
-ms:custom: fasttrack-edit
-ms.openlocfilehash: 21e0b800e06b7a5ad0351ff53d26a5e2cd2ba71c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom:
+- aaddev
+- identityplatformtop40
+- fasttrack-edit
+ms.openlocfilehash: 885379a02c8866f2829fb681683a93b1d8d314fa
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175382"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530018"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft 标识平台 ID 令牌
 
@@ -124,6 +126,12 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
   ...
 }
 ```
+
+## <a name="id-token-lifetime"></a>ID 令牌生存期
+
+默认情况下，ID 令牌的有效期为 1 小时 - 1 小时后，客户端必须获取新的 ID 令牌。
+
+可以调整 ID 令牌的生存期，控制客户端应用程序使应用程序会话过期的频率，以及要求用户重新进行身份验证（以无提示方式或交互方式）的频率。 有关详细信息，请参阅[可配置的令牌生存期](active-directory-configurable-token-lifetimes.md)。
 
 ## <a name="validating-an-id_token"></a>验证 id_token
 

@@ -2,13 +2,13 @@
 title: 新增功能 发行说明 - Azure 事件网格
 description: 了解 Azure 事件网格的最新信息，例如最新的发行说明、已知问题、bug 修复、已弃用的功能和即将应用的更改。
 ms.topic: overview
-ms.date: 07/23/2020
-ms.openlocfilehash: f135b25f28002c037dd24fa0cb3bb7476a06309f
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.date: 04/27/2021
+ms.openlocfilehash: ccb8df774838a1b71ddec08394d7487bf3176039
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389581"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135916"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>Azure 事件网格的最新信息
 
@@ -35,7 +35,7 @@ Azure 事件网格会不断改进。 为了让大家随时了解最新的开发�
         - StringNotEndsWith
         - NumberInRange
         - NumberNotInRange
-        - IsNull
+        - IsNullOrUndefined
         - IsNotNull
 - [允许事件网格架构针对自定义主题和域进行 CloudEvents 1.0 架构转换](cloudevents-schema.md#configure-event-grid-for-cloudevents)
         

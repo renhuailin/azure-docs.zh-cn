@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 10/01/2020
-ms.openlocfilehash: a18ee02b5e91b628a25655949a652270bd7436c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e5fd0fdd5a6f9a4a7537a844b096efdfef253638
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100575148"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816847"
 ---
 # <a name="monitor-azure-machine-learning"></a>监视 Azure 机器学习
 
@@ -24,8 +24,8 @@ ms.locfileid: "100575148"
 > [!TIP]
 > 本文档中的信息主要面向管理员，因为它介绍针对 Azure 机器学习服务和关联的 Azure 服务的监视。 如果你是一名数据科学家或开发人员，并且想要监视与模型训练运行相关的信息，请参阅以下文档 ：
 >
-> * [启动、监视和取消训练运行](how-to-manage-runs.md)
-> * [记录训练运行的指标](how-to-track-experiments.md)
+> * [启动、监视和取消训练运行](how-to-track-monitor-analyze-runs.md)
+> * [记录训练运行的指标](how-to-log-view-metrics.md)
 > * [使用 MLflow 跟踪试验](how-to-use-mlflow.md)
 > * [使用 TensorBoard 将运行可视化](how-to-monitor-tensorboard.md)
 >

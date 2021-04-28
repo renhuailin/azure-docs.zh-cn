@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 2bb019a692178c5b44c3589d401d3b2b34c3dccb
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 5e3b84c0a4b4124a020c54f02393eb1319707c21
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553900"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136438"
 ---
 # <a name="migration-guide-oracle-to-azure-sql-managed-instance"></a>迁移指南：Oracle 到 Azure SQL 托管实例
 
@@ -23,7 +23,7 @@ ms.locfileid: "106553900"
 
 本指南介绍如何使用适用于 Oracle 的 SQL Server 迁移助手 (SSMA for Oracle) 将 Oracle 架构迁移到 Azure SQL 托管实例。
 
-有关其他迁移指南，请参阅 [Azure 数据库迁移指南](https://docs.microsoft.com/data-migration)。
+有关其他迁移指南，请参阅 [Azure 数据库迁移指南](/data-migration)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -155,7 +155,7 @@ ms.locfileid: "106553900"
 1. **开发验证测试**：要测试数据库迁移，需要使用 SQL 查询。 必须创建针对源数据库和目标数据库运行的验证查询。 验证查询应涵盖已定义的范围。
 2. **设置测试环境**：测试环境应包含源数据库和目标数据库的副本。 请确保隔离测试环境。
 3. **运行验证测试**：针对源和目标运行验证测试，然后分析结果。
-4. **运行性能测试**：针对源和目标运行性能测试，然后分析和比较结果。
+4. 运行性能测试：针对源和目标运行性能测试，然后分析和比较结果。
 
 ### <a name="optimize"></a>优化
 
@@ -170,7 +170,7 @@ ms.locfileid: "106553900"
 
 | **标题/链接**                                                                                                                                          | **说明**                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [数据工作负载评估模型和工具](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | 此工具为给定工作负载提供建议的“最适合的”目标平台、云就绪性和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。                                                          |
+| [数据工作负载评估模型和工具](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | 此工具为给定工作负载提供建议的“最适合”目标平台、云就绪性和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。                                                          |
 | [Oracle 清单脚本项目](https://github.com/Microsoft/DataMigrationTeam/tree/master/Oracle%20Inventory%20Script%20Artifacts)                 | 该资产包含一个 PL/SQL 查询，它会命中 Oracle 系统表，并按架构类型、对象类型和状态提供对象计数。 它还提供每个架构中原始数据和表大小的粗略估算，结果以 CSV 格式存储。                                                                                                               |
 | [自动进行 SSMA Oracle 评估收集和整合](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Automate%20SSMA%20Oracle%20Assessment%20Collection%20%26%20Consolidation)                                             | 这组资源使用 .csv 文件作为输入（项目文件夹中的 sources.csv），来生成在控制台模式下运行 SSMA 评估所需的 xml 文件。 source.csv 是客户根据现有 Oracle 实例的清单提供的。 输出文件为 AssessmentReportGeneration_source_1.xml、ServersConnectionFile.xml 和 VariableValueFile.xml。|
 | [SSMA for Oracle 的常见错误及其解决方法](https://aka.ms/dmj-wp-ssma-oracle-errors)                                                           | 借助 Oracle，可在 WHERE 子句中分配非标量条件。 但是，SQL Server 不支持这种类型的条件。 因此，SSMA for Oracle 不会在 WHERE 子句中使用非标量条件转换查询。 相反，它会生成错误 O2SS0001。 可在该白皮书中更详细地了解问题及其解决方法。          |

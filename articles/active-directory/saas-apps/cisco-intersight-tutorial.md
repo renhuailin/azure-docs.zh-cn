@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 6efec61ec5866547ab6b432cb9c566642f3191ff
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: a53fbdf23d4d76056d51bd787603931f7c017371
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107580646"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144162"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-intersight"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cisco Intersight 集成
 
@@ -143,11 +143,9 @@ ms.locfileid: "107580646"
 
 * 直接转到 Cisco Intersight 登录 URL，并从中启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Cisco Intersight”磁贴时，会自动重定向到 Cisco Intersight 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Cisco Intersight”磁贴时，会自动重定向到 Cisco Intersight 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Cisco Intersight 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+配置 Cisco Intersight 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

@@ -5,18 +5,18 @@ description: 了解如何为自动化机器学习试验配置数据集拆分和�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, automl
+ms.topic: how-to
+ms.custom: automl
 ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 02/23/2021
-ms.openlocfilehash: 31d3dc2c2d8194541ba1fe7d0865e6c939d75f73
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00c3cd6f6a4e5878a3a426aa5622cc53487f2bdd
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102501569"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131397"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>在自动化机器学习中配置数据拆分和交叉验证
 
@@ -47,7 +47,7 @@ ms.locfileid: "102501569"
 
 ## <a name="default-data-splits-and-cross-validation-in-machine-learning"></a>机器学习中的默认数据拆分和交叉验证
 
-使用 [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) 对象定义试验和训练设置。 请注意，在下面的代码片段中，只定义了必需的参数，也就是说，**未** 包括 `n_cross_validation` 或 `validation_ data` 的参数。
+使用 [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) 对象定义试验和训练设置。 请注意，在下面的代码片段中，只定义了必需的参数，也就是说，**未** 包括 `n_cross_validations` 或 `validation_data` 的参数。
 
 ```python
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
@@ -62,7 +62,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
                             )
 ```
 
-如果未显式指定 `validation_data` 或 `n_cross_validation` 参数，则自动化 ML 将根据单个数据集 `training_data` 中提供的行数来应用默认技术：
+如果未显式指定 `validation_data` 或 `n_cross_validations` 参数，则自动化 ML 将根据单个数据集 `training_data` 中提供的行数来应用默认技术：
 
 |训练数据大小| 验证技术 |
 |---|-----|

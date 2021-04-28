@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/17/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 8cecd1b57395fa51fd95c824e88885d9c3ae3f09
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7056027965bd5e0f41c07835d21b454ab772a55a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023293"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132244"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>设置 Azure Percept DK 并部署你的第一个 AI 模型
 
@@ -130,7 +130,7 @@ ms.locfileid: "105023293"
     - 选择 S1（标准）定价层。
 
     > [!NOTE]
-    > 如果最终需要更高的[消息吞吐量](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling#message-throughput)用于边缘 AI 应用程序，随时可以在 Azure 门户中[将 IoT 中心升级到更高的标准层](https://docs.microsoft.com/azure/iot-hub/iot-hub-upgrade)。 B 和 F 层不支持 Azure Percept。
+    > 如果最终需要更高的[消息吞吐量](../iot-hub/iot-hub-scaling.md#message-throughput)用于边缘 AI 应用程序，随时可以在 Azure 门户中[将 IoT 中心升级到更高的标准层](../iot-hub/iot-hub-upgrade.md)。 B 和 F 层不支持 Azure Percept。
 
 1. IoT 中心部署可能需要几分钟时间。 部署完成后，单击“注册”。
 

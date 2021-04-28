@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 03/23/2021
 ms.author: apedward
-ms.openlocfilehash: f82ae60ab7f57b20a727deefa6e286d698ee5b6c
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 4283bccf543dc496342d64cc0e7b898a4f279866
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365750"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141624"
 ---
 # <a name="tutorial-publish-azure-static-web-apps-with-azure-devops"></a>教程：使用 Azure DevOps 发布 Azure Static Web Apps
 
@@ -25,9 +25,9 @@ ms.locfileid: "107365750"
 
 ## <a name="prerequisites"></a>先决条件
 
-- **有效的 Azure 帐户：** 如果你没有帐户，可以[免费创建一个帐户](https://azure.microsoft.com/free/)。
-- **Azure DevOps 项目：** 如果你没有项目，可以[免费创建一个项目](https://azure.microsoft.com/pricing/details/devops/azure-devops-services/)。
-- **Azure DevOps 管道：** 如需帮助入门，请参阅[创建第一个管道](https://docs.microsoft.com/azure/devops/pipelines/create-first-pipeline?view=azure-devops&preserve-view=true)。
+- **有效的 Azure 帐户：** 如果你没有帐户，可以 [免费创建一个帐户](https://azure.microsoft.com/free/)。
+- **Azure DevOps 项目：** 如果你没有项目，可以 [免费创建一个项目](https://azure.microsoft.com/pricing/details/devops/azure-devops-services/)。
+- **Azure DevOps 管道：** 如需帮助入门，请参阅 [创建第一个管道](/azure/devops/pipelines/create-first-pipeline?preserve-view=true&view=azure-devops)。
 
 ## <a name="create-a-static-web-app-in-an-azure-devops-repository"></a>在 Azure DevOps 存储库中创建静态 Web 应用
 

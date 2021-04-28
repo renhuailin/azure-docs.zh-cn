@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 870a04af244d18826e1041316895f746e27870eb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8ac5a199df831ef954e870543d2be80f3c7abe2c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107786578"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138312"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>教程：使用托管标识将密钥保管库连接到 Azure Spring Cloud 应用
 
@@ -232,6 +232,6 @@ az keyvault set-policy --name "<your-keyvault-name>" --object-id ${SERVICE_IDENT
 ## <a name="next-steps"></a>后续步骤
 
 * [如何使用 Azure Spring Cloud 中的托管标识访问 Storage Blob](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/managed-identity-storage-blob)
-* [如何为 Azure Spring Cloud 应用程序启用系统分配的托管标识](./spring-cloud-howto-enable-system-assigned-managed-identity.md)
+* [如何为 Azure Spring Cloud 应用程序启用系统分配的托管标识](./how-to-enable-system-assigned-managed-identity.md)
 * [了解有关 Azure 资源的托管标识的详细信息](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
-* [在 GitHub Actions 中使用密钥保管库对 Azure Spring Cloud 进行身份验证](./spring-cloud-github-actions-key-vault.md)
+* [在 GitHub Actions 中使用密钥保管库对 Azure Spring Cloud 进行身份验证](./github-actions-key-vault.md)

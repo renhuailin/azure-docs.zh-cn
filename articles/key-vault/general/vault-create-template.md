@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 3/14/2021
 ms.author: mbaldwin
-ms.openlocfilehash: e70906cbf26c899744bfbe137da4ce9cfa651b20
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: d157419614ee3a3f89036177e962e5b7fc4466b2
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107753139"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815024"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>如何使用资源管理器模板创建 Azure 密钥保管库和保管库访问策略
 
@@ -22,7 +22,7 @@ ms.locfileid: "107753139"
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 完成本文中的步骤：
 
@@ -213,10 +213,10 @@ Write-Host "Press [ENTER] to continue..."
 
 - 阅读 [Azure Key Vault 概述](../general/overview.md)。
 - 了解有关 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) 的详细信息。
-- 请参阅 [Azure Key Vault 安全性概述](security-overview.md)
+- 请参阅 [Azure Key Vault 安全性概述](security-features.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-- [保护对密钥保管库的访问](security-overview.md)
+- [保护对密钥保管库的访问](security-features.md)
 - [向密钥保管库进行身份验证](authentication.md)
 - [Azure 密钥保管库开发人员指南](developers-guide.md)

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 5171cefdb82b958ae8148ff63f1daef5f67916c6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 36b54cc9b4440f883b4335fc6ad2ca069a5b19db
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044951"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137574"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>在 Linux 计算机上安装 Log Analytics 代理
 本文详细介绍如何使用以下方法在 Linux 计算机上安装 Log Analytics 代理：
@@ -71,16 +71,16 @@ Python2 可执行文件必须将别名设置为“python”。 下面是可用�
     ```
 
 ## <a name="supported-linux-hardening"></a>支持的 Linux 强化
-OMS 代理对 Linux 提供了有限的自定义支持。 
+OMS 代理对 Linux 提供了有限的自定义支持和强化支持。
 
 当前支持以下内容： 
 - FIPS
 
-以下内容正在考虑中，但尚不受支持：
+不支持以下各项：
 - CIS
 - SELINUX
 
-OMS 代理不支持且未计划使用其他强化和自定义方法。  
+[Azure 监视代理](./azure-monitor-agent-overview.md)计划提供 CIS 和 SELINUX 强化支持。 OMS 代理不支持且未计划使用深入强化和自定义方法。  
 
 ## <a name="agent-prerequisites"></a>代理必备组件
 
