@@ -4,14 +4,15 @@ description: 本文介绍了如何删除不同配置方案中的自动化帐户�
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-ms.date: 03/18/2021
+ms.date: 04/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: c3a514aa507fcf069671f987e175b7ae5be59d10
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: fe2d99a610be3877b4a347e4bd0dd17df53ba326
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105734902"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834149"
 ---
 # <a name="how-to-delete-your-azure-automation-account"></a>如何删除 Azure 自动化帐户
 
@@ -28,7 +29,10 @@ ms.locfileid: "105734902"
 * 取消 Log Analytics 工作区与自动化帐户的链接，并删除自动化帐户。
 * 从链接的工作区中删除该功能，取消该帐户与工作区的链接，然后删除自动化帐户。
 
-本文介绍如何通过 Azure 门户、PowerShell、Azure CLI 或 REST API 彻底删除自动化帐户。
+本文介绍如何通过 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 彻底删除自动化帐户。
+
+> [!NOTE]
+> 在继续之前，请确认订阅、资源组或资源上没有应用任何[资源管理器锁](../azure-resource-manager/management/lock-resources.md)，以防止意外删除或修改关键资源。 如果已部署“在空闲时间启动/停止 VM”解决方案，该解决方案将针对自动化帐户中的多个从属资源（特别是其 runbook 和变量）将锁定级别设置为“CanNotDelete”。 删除自动化帐户之前，需要删除任何锁。
 
 ## <a name="delete-the-dedicated-resource-group"></a>删除专用资源组
 

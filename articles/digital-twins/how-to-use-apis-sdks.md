@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 21247f6b396cb1f7016c74cbec528149c0583724
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 219d791d4e5e12f0153012a17963bcbe2873168c
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587198"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107945486"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure 数字孪生 API 和 SDK
 
@@ -70,7 +70,6 @@ Azure 数字孪生配备有“控制平面 API”和“数据平面 API”，用
    - 可从 PyPi 查看并安装包：[适用于 Python 的 Azure 数字孪生核心客户端库](https://pypi.org/project/azure-digitaltwins-core/)。
    - 可查看 [SDK 参考文档](/python/api/azure-digitaltwins-core/azure.digitaltwins.core)。
    - 可在 GitHub 中找到 SDK 源：[适用于 Python 的 Azure 数字孪生核心客户端库](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
-* 可使用 AutoRest 生成其他语言 SDK。 按照[操作指南：使用 AutoRest 为 Azure 数字孪生创建自定义 SDK](how-to-create-custom-sdks.md)中的说明进行操作。
 
 还可通过 [CLI](how-to-use-cli.md) 与 Azure 数字孪生交互，运用数据平面 API。
 

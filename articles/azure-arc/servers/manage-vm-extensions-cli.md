@@ -4,12 +4,12 @@ description: 本文介绍如何使用 Azure CLI 将虚拟机扩展部署到在�
 ms.date: 04/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 25e75ede30139201789cd86e6ebddda09a664eb4
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: f2255742e626e62f771730359c1c19c3b10f9d71
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388731"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015170"
 ---
 # <a name="enable-azure-vm-extensions-using-the-azure-cli"></a>使用 Azure CLI 启用 Azure VM 扩展
 
@@ -30,7 +30,7 @@ az extension add --name connectedmachine
 
 ## <a name="enable-extension"></a>启用扩展
 
-要在已启用 Arc 的服务器上启用 VM 扩展，请结合使用 [az connectedmachine extension create](/cli/azure/ext/connectedmachine/connectedmachine/extension#ext_connectedmachine_az_connectedmachine_extension_create) 命令以及 `--machine-name`、`--extension-name`、`--location`、`--type`、`settings` 和 `--publisher` 参数。
+要在已启用 Arc 的服务器上启用 VM 扩展，请结合使用 [az connectedmachine extension create](/cli/azure/connectedmachine/extension#az_connectedmachine_extension_create) 命令以及 `--machine-name`、`--extension-name`、`--location`、`--type`、`settings` 和 `--publisher` 参数。
 
 以下示例将在已启用 Arc 的服务器上启用日志分析 VM 扩展：
 
@@ -52,7 +52,7 @@ az connectedmachine extension create --resource-group "resourceGroupName" --mach
 
 ## <a name="list-extensions-installed"></a>列出已安装的扩展
 
-要获取已启用 Arc 的服务器上的 VM 扩展列表，请结合使用 [az connectedmachine extension list](/cli/azure/ext/connectedmachine/connectedmachine/extension#ext_connectedmachine_az_connectedmachine_extension_list) 命令以及 `--machine-name` 和 `--resource-group` 参数。
+要获取已启用 Arc 的服务器上的 VM 扩展列表，请结合使用 [az connectedmachine extension list](/cli/azure/connectedmachine/extension#az_connectedmachine_extension_list) 命令以及 `--machine-name` 和 `--resource-group` 参数。
 
 示例：
 
@@ -77,7 +77,7 @@ az connectedmachine extension list --machine-name "myMachineName" --resource-gro
 
 ## <a name="remove-an-installed-extension"></a>删除已安装的扩展
 
-要删除已启用 Arc 的服务器上安装的 VM 扩展，请结合使用 [az connectedmachine extension delete](/cli/azure/ext/connectedmachine/connectedmachine/extension#ext_connectedmachine_az_connectedmachine_extension_delete) 命令以及 `--extension-name`、`--machine-name` 和 `--resource-group` 参数。
+要删除已启用 Arc 的服务器上安装的 VM 扩展，请结合使用 [az connectedmachine extension delete](/cli/azure/connectedmachine/extension#az_connectedmachine_extension_delete) 命令以及 `--extension-name`、`--machine-name` 和 `--resource-group` 参数。
 
 例如，要删除适用于 Linux 的日志分析 VM 扩展，请运行以下命令：
 
@@ -91,4 +91,4 @@ az connectedmachine extension delete --machine-name "myMachineName" --name "OmsA
 
 - 有关故障排除信息，请参阅《[VM 扩展故障排除指南](troubleshoot-vm-extensions.md)》。
 
-- 有关命令的详细信息，请参阅 Azure CLI VM 扩展“[概述](/cli/azure/ext/connectedmachine/connectedmachine/extension)”一文。
+- 有关命令的详细信息，请参阅 Azure CLI VM 扩展“[概述](/cli/azure/connectedmachine/extension)”一文。

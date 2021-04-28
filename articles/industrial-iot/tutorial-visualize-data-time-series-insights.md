@@ -6,12 +6,12 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 3/22/2021
-ms.openlocfilehash: 5bd218c0d94922b6137a964e3993f516216ca4b7
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 9a07f2b1d4b63005bff4a8963bd1258ad72e87ee
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104787211"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137267"
 ---
 # <a name="tutorial-visualize-data-with-time-series-insights-tsi"></a>教程：使用时序见解 (TSI) 可视化数据
 
@@ -54,13 +54,13 @@ OPC 发布服务器模块连接到 OPC UA 服务器，并将这些服务器中�
 
 可以通过右键单击 TSI 实例并选择“值”来在图表中对遥测数据进行可视化。 要在图表中使用的期限可以在右上角进行调整。 可以基于相同的时间选择来可视化多个实例的值。
 
-有关详细信息，请参阅[快速入门：浏览 Azure 时序见解预览版](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart)
+有关详细信息，请参阅[快速入门：浏览 Azure 时序见解预览版](../time-series-insights/quickstart-explore-tsi.md)
 
 ## <a name="define-and-apply-a-new-model"></a>定义并应用新模型
 
 由于遥测实例现在只是原始格式，因此需要进行情景化 
 
-有关 TSI 模型的详细信息，请参阅 [Azure 时序见解预览版中的时序模型](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-tsm)
+有关 TSI 模型的详细信息，请参阅 [Azure 时序见解预览版中的时序模型](../time-series-insights/concepts-model-overview.md)
 
 1. 步骤 1 - 在资源管理器的“模型”选项卡中，为引入的遥测数据定义一个新的层次结构。 层次结构是一种逻辑树结构，旨在使用户能够插入通过 TSI 实例进行更直观的导航所需的元信息。 用户可以创建/删除/修改以后可针对各种 TSI 实例实例化的层次结构模板。
 
@@ -88,7 +88,7 @@ OPC 发布服务器模块连接到 OPC UA 服务器，并将这些服务器中�
 
 ## <a name="connect-time-series-insights-to-power-bi"></a>将时序见解连接到 Power BI
 
-还可以将时序见解环境连接到 Power BI。  有关详细信息，请参阅[如何将 TSI 连接到 Power BI](https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi) 和[在 Power BI 中可视化 TSI 中的数据](https://docs.microsoft.com/azure/time-series-insights/concepts-power-bi)。
+还可以将时序见解环境连接到 Power BI。  有关详细信息，请参阅[如何将 TSI 连接到 Power BI](../time-series-insights/how-to-connect-power-bi.md) 和[在 Power BI 中可视化 TSI 中的数据](../time-series-insights/concepts-power-bi.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

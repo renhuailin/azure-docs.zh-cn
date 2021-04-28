@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 23ba50a6eca1e398b9d459153b84719909f2ecac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4121d4b9ac73ed18da7dce0e397fe919589ac6f0
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99583733"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478754"
 ---
 # <a name="using-web-browsers-msalnet"></a>使用 Web 浏览器 (MSAL.NET)
 
@@ -63,11 +63,11 @@ MSAL.NET 是一个多框架库，它具有特定于框架的代码，可在 UI �
 
 使用系统浏览器可获得的重要优势是，无需使用中介（公司门户/Authenticator）即可与其他应用程序和 Web 应用程序共享 SSO 状态。 默认情况下，适用于 Xamarin iOS 和 Xamarin Android 平台的 MSAL.NET 中使用了系统浏览器，因为在这些平台上，系统 Web 浏览器会占据整个屏幕，因此用户体验更佳。 系统 Web 视图与对话框并无区别。 但在 iOS 上，用户可能需要许可浏览器回调应用程序，这是一个烦人的操作。
 
-## <a name="system-browser-experience-on-net-core"></a>.NET Core 上的系统浏览器体验
+## <a name="system-browser-experience-on-net"></a>.NET 上的系统浏览器体验 
 
 在 .NET Core 上，MSAL.NET 将以单独进程的形式启动系统浏览器。 MSAL.NET 无法控制此浏览器，但一旦用户完成身份验证，网页就会重定向，使 MSAL.NET 能够截获 URI。
 
-你也可以将针对 .NET Classic 编写的应用配置为使用此浏览器，方法是指定
+还可以通过指定以下命令，将为 .NET Classic 或 .NET 5 编写的应用配置为使用此浏览器：
 
 ```csharp
 await pca.AcquireTokenInteractive(s_scopes)

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 04/19/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f6907db7f6e53247a8f2fc0042e8c8e6b081dbd3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 462d69a8bde0dec2689ac30620276b5bcd335410
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97516373"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717686"
 ---
 # <a name="secure-your-restful-services"></a>保护 RESTful 服务 
 
@@ -230,9 +230,50 @@ Authorization: Bearer <token>
 
 ### <a name="acquiring-an-access-token"></a>获取访问令牌 
 
-可通过以下几种方式之一获取访问令牌：[从联合身份验证标识提供程序](idp-pass-through-user-flow.md)获取、调用会返回访问令牌的 REST API、使用 [ROPC 流](../active-directory/develop/v2-oauth-ropc.md)、或者使用[客户端凭据流](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)。  
+可通过以下几种方式之一获取访问令牌：[从联合身份验证标识提供程序](idp-pass-through-user-flow.md)获取、调用会返回访问令牌的 REST API、使用 [ROPC 流](../active-directory/develop/v2-oauth-ropc.md)、或者使用[客户端凭据流](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)。 客户端凭据流通常用于必须在后台运行的服务器间交互，不需要立即与用户交互。
 
-下面的示例使用 REST API 技术配置文件和作为 HTTP 基本身份验证传递的客户端凭据向 Azure AD 令牌终结点发出请求。 要在 Azure AD 中配置此设置，请参阅 [Microsoft 标识平台和 OAuth 2.0 客户端凭据流](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)。 可能需要修改此设置才能与标识提供程序交互。 
+#### <a name="acquiring-an-azure-ad-access-token"></a>获取 Azure AD 访问令牌 
+
+下面的示例使用 REST API 技术配置文件和作为 HTTP 基本身份验证传递的客户端凭据向 Azure AD 令牌终结点发出请求。 有关详细信息，请参阅 [Microsoft 标识平台和 OAuth 2.0 客户端凭据流](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)。 
+
+若要获取 Azure AD 访问令牌，请在 Azure AD 租户中创建应用程序：
+
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD 租户的目录。
+1. 在左侧菜单中，选择“Azure Active Directory”  。 或者选择“所有服务”，搜索并选择“Azure Active Directory”。 
+1. 选择“应用注册”，然后选择“新建注册” 。
+1. 输入应用程序的“名称”。 例如 Client_Credentials_Auth_app。
+1. 在“支持的帐户类型”下，选择“仅此组织目录中的帐户” 。
+1. 选择“注册”。
+2. 记录“应用程序(客户端) ID”。 
+
+
+对于客户端凭据流，需要创建应用程序机密。 客户端密码也称为应用程序密码。 应用程序将使用该机密来获取访问令牌。
+
+1. 在“Azure AD B2C - 应用注册”页中，选择已创建的应用程序，例如 Client_Credentials_Auth_app。
+1. 在左侧菜单中“管理”下，选择“证书和机密”。 
+1. 选择“新建客户端机密”。
+1. 在“说明”框中输入客户端机密的说明。 例如，*clientsecret1*。
+1. 在“过期时间”下，选择机密持续生效的时间，然后选择“添加”。
+1. 记录密码的 **值**，以便在客户端应用程序代码中使用。 退出此页面后，此机密值永不再显示。 在应用程序的代码中将此值用作应用程序机密。
+
+#### <a name="create-azure-ad-b2c-policy-keys"></a>创建 Azure AD B2C 策略密钥
+
+需要存储前面在 Azure AD B2C 租户中记录的客户端 ID 和客户端机密。
+
+1. 登录 [Azure 门户](https://portal.azure.com/)。
+2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
+3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
+4. 在“概述”页上选择“标识体验框架”。
+5. 选择“策略密钥”，然后选择“添加”。
+6. 对于“选项”，请选择 `Manual`。
+7. 输入策略密钥 `SecureRESTClientId` 的“名称”。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+8. 在“机密”中输入前面记录的客户端 ID。
+9. 在“密钥用法”处选择 `Signature`。
+10. 单击“创建”。
+11. 使用以下设置创建另一个策略密钥：
+    -   **名称**：`SecureRESTClientSecret`。
+    -   **机密**：输入前面记录的客户端机密
 
 对于 ServiceUrl，将 your-tenant-name 替换为 Azure AD 租户的名称。 有关所有可用选项，请参阅 [RESTful 技术配置文件](restful-technical-profile.md)参考。
 
@@ -251,7 +292,7 @@ Authorization: Bearer <token>
   </CryptographicKeys>
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="grant_type" DefaultValue="client_credentials" />
-    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="https://secureb2cfunction.azurewebsites.net/.default" />
+    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="https://graph.microsoft.com/.default" />
   </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="bearerToken" PartnerClaimType="access_token" />

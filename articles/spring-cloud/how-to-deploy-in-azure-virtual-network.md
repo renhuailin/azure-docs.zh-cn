@@ -6,17 +6,17 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 07/21/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: 82dcd8c59c55a2866b51fd6dee896ea1298b6cf6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 5a27fdc91f376127f26ba9f207ca72d8ada8a7b9
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877170"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891745"
 ---
 # <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>在虚拟网络中部署 Azure Spring Cloud
 
-本文适用于：✔️ Java ✔️ C#
+这篇文章适用于：âœ”ï¸ Java âœ”ï¸ C#
 
 本教程介绍如何在虚拟网络中部署 Azure Spring Cloud 实例。 此部署有时称为 VNet 注入。
 

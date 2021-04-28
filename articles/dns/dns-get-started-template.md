@@ -11,12 +11,12 @@ ms.service: dns
 ms.custom:
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: 34e810fa8244cf3ff00e57f193624a2c1fa4d755
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 3ec97385d9774b93c04ebc4b8c5885d7effbbcd0
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107539016"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107949445"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-an-arm-template"></a>使用 ARM 模板创建 Azure DNS 区域和记录
 
@@ -26,7 +26,7 @@ ms.locfileid: "107539016"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-dns-new-zone%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fazure-dns-new-zone%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,7 +38,7 @@ ms.locfileid: "107539016"
 
 本快速入门将使用后缀 `azurequickstart.org` 创建唯一的 DNS 区域。 指向两个 IP 地址的 `A` 记录也将放置在该区域中。
 
-:::code language="json" source="~/quickstart-templates/101-azure-dns-new-zone/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/azure-dns-new-zone/azuredeploy.json":::
 
 该模板中已定义了两个 Azure 资源：
 
@@ -54,7 +54,7 @@ ms.locfileid: "107539016"
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-azure-dns-new-zone/azuredeploy.json"
+    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.network/azure-dns-new-zone/azuredeploy.json"
 
     $resourceGroupName = "${projectName}rg"
 

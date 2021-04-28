@@ -1,6 +1,6 @@
 ---
-title: 使用 CLI 在 OS 磁盘之间交换
-description: 使用 CLI 更改由 Azure 虚拟机使用的操作系统磁盘。
+title: 使用 Azure CLI 在 OS 磁盘之间交换
+description: 使用 Azure CLI 更改由 Azure 虚拟机使用的操作系统磁盘。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: disks
@@ -8,14 +8,15 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 24cd71cafa9dc0bd9131255caf50841f6d5909d1
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 85d6350a36e62ace8f1922d30493d0f1d448d315
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311237"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765928"
 ---
-# <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>使用 CLI 更改由 Azure VM 使用的 OS 磁盘
+# <a name="change-the-os-disk-used-by-an-azure-vm-using-the-azure-cli"></a>使用 Azure CLI 更改由 Azure VM 使用的 OS 磁盘
 
 
 如果有现有 VM，但希望将磁盘交换为备份磁盘或其他 OS 磁盘，则可使用 Azure CLI 交换 OS 磁盘。 无需删除和重新创建 VM。 甚至可在另一资源组中使用托管磁盘，只要该磁盘尚未使用。
@@ -46,7 +47,7 @@ az vm stop \
 ```
 
 
-使用 [az vm update](/cli/azure/vm#az-vm-update) 以及新磁盘的完整资源 ID 获取 `--osdisk` 参数 
+使用 [az vm update](/cli/azure/vm#az_vm_update) 以及新磁盘的完整资源 ID 获取 `--osdisk` 参数 
 
 ```azurecli-interactive 
 az vm update \

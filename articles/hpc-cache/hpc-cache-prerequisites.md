@@ -4,14 +4,14 @@ description: 使用 Azure HPC 缓存所要满足的先决条件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/14/2021
 ms.author: v-erkel
-ms.openlocfilehash: 7d40dcf80d9ec566146bbe46bc2cb3c558584fcd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3cddbba3dca64561d7e2b7b27715152a26a8c9e9
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775759"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717578"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC 缓存的先决条件
 
@@ -59,7 +59,7 @@ Azure HPC 缓存需要具有以下特质的专用子网：
 缓存需要通过 DNS 访问其虚拟网络外部的资源。 根据所用的资源，可能需要设置一个自定义的 DNS 服务器，并在该服务器与 Azure DNS 服务器之间配置转发：
 
 * 若要访问 Azure Blob 存储终结点和其他内部资源，需要使用基于 Azure 的 DNS 服务器。
-* 若要访问本地存储，需要配置一个可解析存储主机名的自定义 DNS 服务器。 必须在创建缓存 **之前** 完成此配置。
+* 若要访问本地存储，需要配置一个可解析存储主机名的自定义 DNS 服务器。 必须在创建缓存之前完成此配置。
 
 如果只使用 Blob 存储，则可以使用 Azure 为缓存提供的默认 DNS 服务器。 但是，如果需要访问 Azure 外部的存储或其他资源，则应创建一个自定义 DNS 服务器，并将其配置为向 Azure DNS 服务器转发任何特定于 Azure 的解析请求。
 
@@ -106,14 +106,16 @@ Azure HPC 缓存需要具有以下特质的专用子网：
 
 在尝试添加存储目标之前创建帐户。 添加目标时可以创建新容器。
 
-若要创建兼容的存储帐户，请使用以下设置：
+若要创建兼容的存储帐户，请使用以下组合之一：
 
-* 性能：“标准”
-* 帐户类型：“StorageV2 (常规用途 v2)”
-* 复制：“本地冗余存储(LRS)”
-* 访问层(默认)：“热”
+| 性能 | 类型 | 复制 | 访问层 |
+|--|--|--|--|
+| 标准 | StorageV2（常规用途 v2）| 本地冗余存储 (LRS) 或区域冗余存储 (ZRS) | 热 |
+| Premium | 块 Blob | 本地冗余存储 (LRS) | 热 |
 
-最好是使用与缓存位于同一位置的存储帐户。
+必须可以从缓存的专用子网访问存储帐户。 如果帐户使用专用终结点或者仅限于特定虚拟网络的公共终结点，请确保支持从缓存的子网进行访问。 （不建议使用开放的公共端点。）
+
+最好是使用与缓存位于同一 Azure 区域的存储帐户。
 
 此外，必须按照前面的[权限](#permissions)中所述，向缓存应用程序授予对你的 Azure 存储帐户的访问权限。 遵循[添加存储目标](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)中的过程为缓存提供所需的访问角色。 如果你不是存储帐户所有者，请让所有者执行此步骤。
 
@@ -127,9 +129,9 @@ Azure HPC 缓存需要具有以下特质的专用子网：
 
 [排查 NAS 配置和 NFS 存储目标问题](troubleshoot-nas.md)中提供了详细信息。
 
-* **网络连接：** Azure HPC 缓存需要在缓存子网与 NFS 系统的数据中心之间进行高带宽网络访问。 建议使用 [ExpressRoute](../expressroute/index.yml) 或类似的访问方式。 如果使用 VPN，可能需要对其进行配置，以将 TCP MSS 钳制在 1350，确保不会阻止较大的数据包。 在排查 VPN 设置问题时如需更多帮助，请阅读 [VPN 数据包大小限制](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions)。
+* 网络连接： Azure HPC 缓存需要在缓存子网与 NFS 系统的数据中心之间进行高带宽网络访问。 建议使用 [ExpressRoute](../expressroute/index.yml) 或类似的访问方式。 如果使用 VPN，可能需要对其进行配置，以将 TCP MSS 钳制在 1350，确保不会阻止较大的数据包。 在排查 VPN 设置问题时如需更多帮助，请阅读 [VPN 数据包大小限制](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions)。
 
-* **端口访问：** 缓存需要访问存储系统上的特定 TCP/UDP 端口。 不同类型的存储具有不同的端口要求。
+* 端口访问： 缓存需要访问存储系统上的特定 TCP/UDP 端口。 不同类型的存储具有不同的端口要求。
 
   若要检查存储系统的设置，请遵循以下过程。
 
@@ -157,7 +159,7 @@ Azure HPC 缓存需要具有以下特质的专用子网：
 
   * 检查防火墙设置，确保它们允许所有这些必需端口上的流量。 请务必检查 Azure 中使用的防火墙以及数据中心内的本地防火墙。
 
-* **Root 访问权限**（读/写）：缓存以用户 ID 0 的身份连接到后端系统。 在存储系统上检查以下设置：
+* Root 访问权限（读/写）：缓存以用户 ID 0 的身份连接到后端系统。 在存储系统上检查以下设置：
   
   * 启用 `no_root_squash`。 此选项确保远程 root 用户可以访问 root 拥有的文件。
 
@@ -197,6 +199,8 @@ ADLS-NFS Blob 存储目标和标准 Blob 存储目标的存储帐户要求不同
    * 按照前面的[权限](#permissions)中所述，向缓存应用程序授予对你的 Azure 存储帐户的访问权限。 可以在首次创建存储目标时执行此操作。 遵循[添加存储目标](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)中的过程为缓存提供所需的访问角色。
 
      如果你不是存储帐户所有者，请让所有者执行此步骤。
+
+若要详细了解如何将 ADLS-NFS 存储目标与 Azure HPC 缓存配合使用，请参阅[将 NFS 装载的 Blob 存储与 AZURE HPC 缓存配合使用](nfs-blob-considerations.md)。
 
 ## <a name="set-up-azure-cli-access-optional"></a>设置 Azure CLI 访问（可选）
 

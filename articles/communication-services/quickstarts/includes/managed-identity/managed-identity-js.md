@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: d70514e81bc838b4193862e66b0c03440d006128
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: ce29158c2a44f01fa06649e4b4497bf5c5076866
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307418"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107512595"
 ---
 ## <a name="setting-up"></a>设置
 
@@ -82,7 +82,7 @@ async function sendSms(resourceEndpoint, fromNumber, toNumber, message) {
 }
 ```
 
-## <a name="write-the-main-method"></a>编写 Main 方法
+## <a name="write-the-main-function"></a>编写 main 函数
 
 创建函数后，我们可以编写一个用于调用它们的 main 函数并演示托管标识的使用：
 ```JavaScript
@@ -154,7 +154,7 @@ async function main() {
 main();
 ```
 
-## <a name="run-the-program"></a>运行该程序
+## <a name="run-the-program"></a>运行程序
 
 完成所有操作后，可以通过从项目目录中输入 `node index.js` 来运行该文件。 如果一切顺利，应会看到如下内容。
 

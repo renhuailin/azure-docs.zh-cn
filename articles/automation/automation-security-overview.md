@@ -4,16 +4,17 @@ description: 本文概述了 Azure 自动化帐户身份验证。
 keywords: 自动化安全性, 安全的自动化; 自动化身份验证
 services: automation
 ms.subservice: process-automation
-ms.date: 02/26/2021
+ms.date: 04/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: c559a81b17b92f48b2d51b7c2d26325d6a1b1cca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 546407ce7286cebc04d3c86422f6242051d1dbf3
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708894"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830423"
 ---
-# <a name="automation-account-authentication-overview"></a>自动化帐户身份验证概述
+# <a name="azure-automation-account-authentication-overview"></a>Azure 自动化帐户身份验证概述
 
 Azure 自动化让可以通过其他云提供程序（如 Amazon Web Services (AWS)）针对 Azure、本地中的资源来自动执行任务。 可以使用 Runbook 来自动完成任务；如果你有要在 Azure 外部管理的业务或操作过程，也可以使用混合 Runbook 辅助角色。 在上述任一环境中工作都需要权限，以使用所需的最小权限安全地访问资源。
 
@@ -30,6 +31,31 @@ Azure 自动化帐户不同于 Microsoft 帐户或在 Azure 订阅中创建的�
 每个自动化帐户的自动化资源都与单个 Azure 区域相关联，但该帐户可以管理 Azure 订阅中的所有资源。 如果你的策略要求将数据和资源隔离到特定的区域，则这是在不同区域中创建自动化帐户的主要原因。
 
 在 Azure 自动化中使用 Azure 资源管理器和 PowerShell cmdlet 针对资源创建的所有任务必须使用基于 Azure Active Directory (Azure AD) 组织标识凭据的身份验证向 Azure 进行身份验证。
+
+## <a name="managed-identities-preview"></a>托管标识（预览）
+
+借助 Azure Active Directory (Azure AD) 的托管标识，runbook 可以轻松访问其他受 Azure AD 保护的资源。 标识由 Azure 平台托管，无需设置或转交任何机密。 有关 Azure AD 中的托管标识的详细信息，请参阅 [Azure 资源的托管标识](/azure/active-directory/managed-identities-azure-resources/overview)。
+
+下面是使用托管标识的一些好处：
+
+- 可以使用托管标识对支持 Azure AD 身份验证的任何 Azure 服务进行身份验证。 它们可用于云和混合作业。 混合作业在运行于 Azure 或非 Azure VM 上的混合 Runbook 辅助角色上运行时可以使用托管标识。
+
+- 无需额外付费也可使用托管标识。
+
+- 你不需要续订自动化运行方式帐户所使用的证书。
+
+- 不必在 runbook 代码中指定运行方式连接对象。 可以使用自动化帐户的托管标识通过 runbook 访问资源，而无需创建证书、连接、运行方式帐户等。
+
+可以向自动化帐户授予两种类型的标识：
+
+- 系统分配的标识与你的应用程序相绑定，如果删除应用，标识也会被删除。 一个应用只能具有一个系统分配的标识。
+
+- 用户分配的标识是可以分配给应用的独立 Azure 资源。 一个应用可以具有多个用户分配的标识。
+
+>[!NOTE]
+> 尚不支持用户分配的标识。
+
+有关使用托管标识的详细信息，请参阅[为 Azure 自动化（预览）启用托管标识](enable-managed-identity-for-automation.md)。
 
 ## <a name="run-as-accounts"></a>运行方式帐户
 
@@ -94,7 +120,7 @@ Azure 自动化中的运行方式帐户提供的身份验证适用于管理 Azur
 
 <sup>1</sup> Azure AD 租户中的非管理员用户可以[注册 AD 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)，前提是 Azure AD 租户的“用户设置”页中的“用户可以注册应用程序”选项已设置为“是”  。 如果应用程序注册设置为“否”，则执行此操作的用户必须具有此表中定义的角色。
 
-如果你在被添加到订阅的全局管理员角色之前不是订阅的 Active Directory 实例的成员，则会将你添加为来宾。 在这种情况下，“添加自动化帐户”页上会显示 `You do not have permissions to create…` 警告。
+如果你在被添加到订阅的全局管理员角色之前不是订阅的 Active Directory 实例的成员，则会将你添加为来宾。 在这种情况下，将在“添加自动化帐户”页上收到 `You do not have permissions to create…` 警告。
 
 若要验证生成错误消息的情况是否已解决：
 
@@ -120,3 +146,4 @@ Azure 自动化中的运行方式帐户提供的身份验证适用于管理 Azur
 * 若要从 Azure 门户创建自动化帐户，请参阅[创建独立的 Azure 自动化帐户](automation-create-standalone-account.md)。
 * 如果你喜欢使用模板创建帐户，请参阅[使用 Azure 资源管理器模板创建自动化帐户](quickstart-create-automation-account-template.md)。
 * 有关如何使用 Amazon Web Services 进行身份验证，请参阅[使用 Amazon Web Services 对 Runbook 进行身份验证](automation-config-aws-account.md)。
+* 如需支持 Azure 资源托管标识功能的 Azure 服务的列表，请参阅[支持 Azure 资源托管标识的服务](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)。

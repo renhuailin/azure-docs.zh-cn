@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 07/20/2020
-ms.openlocfilehash: cb3c74a2176ee7fcac53afb5185e8c62e66f4dfb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/13/2021
+ms.openlocfilehash: 7155a829655645e13e0485ed7d51305ec50e5b0a
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104798793"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502753"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>LUIS 模型中每个区域性的实体
 
@@ -23,7 +23,7 @@ ms.locfileid: "104798793"
 ## <a name="entity-resolution"></a>实体解析
 当应用程序中包括预构建实体时，LUIS 会在终结点响应中包括对应的实体解析。 所有陈述示例都标记有实体。
 
-不能修改预生成的实体行为，但可通过[将预生成的实体作为功能添加到机器学习实体或子实体](luis-concept-entity-types.md#effective-prebuilt-entities)来改进实体解析。
+不能修改预生成的实体行为，但可通过[将预生成的实体作为功能添加到机器学习实体或子实体](luis-concept-entity-types.md#prebuilt-entity)来改进实体解析。
 
 ## <a name="availability"></a>可用性
 除非另行说明，预构建实体在所有 LUIS 应用程序区域设置（语言区域）中都可用。 下表显示了每个语言区域支持的预构建实体。

@@ -9,12 +9,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6d4f3f744a85c14c42ffef1c894b237081e871f8
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: dc4368075e1cecb43887c9fab21e55b23208dbab
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752419"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814921"
 ---
 # <a name="about-azure-key-vault-secrets"></a>关于 Azure Key Vault 机密
 
@@ -132,5 +132,5 @@ Key Vault 可以管理 [Azure 存储帐户](../../storage/common/storage-account
 - [关于键、密钥和证书](../general/about-keys-secrets-certificates.md)
 - [关于密钥](../keys/about-keys.md)
 - [关于证书](../certificates/about-certificates.md)
-- [保护对密钥保管库的访问](../general/security-overview.md)
+- [保护对密钥保管库的访问](../general/security-features.md)
 - [Key Vault 开发人员指南](../general/developers-guide.md)

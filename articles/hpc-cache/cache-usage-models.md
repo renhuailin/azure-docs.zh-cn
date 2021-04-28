@@ -4,14 +4,14 @@ description: 介绍不同的缓存使用情况模式，以及如何在其中选�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: 3ad252520ca0cf7acdb3c84ef1da87c8076f3172
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7e1b11fd15cca9b11fc627222318f08d31743336
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775708"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719180"
 ---
 # <a name="understand-cache-usage-models"></a>了解缓存使用情况模型
 
@@ -39,7 +39,7 @@ ms.locfileid: "104775708"
 
 ## <a name="choose-the-right-usage-model-for-your-workflow"></a>为工作流选择适当的使用情况模型
 
-必须为使用的每个已装载 NFS 的存储目标选择一个使用情况模型。 Azure Blob 存储目标具有一个不可自定义的内置使用情况模型。
+必须为使用的每个 NFS 协议存储目标选择一个使用情况模型。 Azure Blob 存储目标具有一个不可自定义的内置使用情况模型。
 
 HPC 缓存使用情况模型可让你选择如何在快速响应与所获数据过时的风险之间实现平衡。 如果你想要优化文件读取速度，那么你可能不会在意是否根据后端文件检查缓存中的文件。 另一方面，若要确保你的文件始终与远程存储中的文件一样保持最新状态，请选择一个频繁执行检查的模型。
 
@@ -77,6 +77,29 @@ HPC 缓存使用情况模型可让你选择如何在快速响应与所获数据�
 [!INCLUDE [usage-models-table.md](includes/usage-models-table.md)]
 
 如果你在哪个使用情况模型最适合你的 Azure HPC 缓存工作流方面有任何疑问，请与 Azure 代表联系，或提出支持请求以获取帮助。
+
+## <a name="know-when-to-remount-clients-for-nlm"></a>了解何时为 NLM 重新装载客户端
+
+在某些情况下，如果更改存储目标的使用模型，则可能需要重新装载客户端。 需要执行此操作是因为不同的使用模型处理网络锁定管理器 (NLM) 请求的方式不同。
+
+HPC 缓存位于客户端与后端存储系统之间。 通常，缓存会将 NLM 请求传递到后端存储系统，但在某些情况下，缓存本身会确认 NLM 请求并向客户端返回值。 在 Azure HPC 缓存中，仅当使用“读取操作频繁，写入操作罕见”这一使用模型（或是具有标准 blob 存储目标，该目标没有可配置的使用模型）时，才会发生这种情况。
+
+如果在“读取操作频繁，写入操作罕见”使用模型与不同使用模型之间进行更改，则存在出现文件冲突的小风险。 无法将当前 NLM 状态从缓存传输到存储系统，反之亦然。 因此，客户端的锁定状态是不准确的。
+
+重新装载客户端可确保它们随新的锁定管理器具有准确的 NLM 状态。
+
+如果客户端在使用模型或后端存储不支持时发送 NLM 请求，则会收到错误。
+
+### <a name="disable-nlm-at-client-mount-time"></a>在客户端装载时禁用 NLM
+
+并非总是可以轻松地了解客户端系统是否会发送 NLM 请求。
+
+在 ``mount`` 命令中使用选项 ``-o nolock``，可在客户端装载群集时禁用 NLM。
+
+``nolock`` 选项的确切行为取决于客户端操作系统，因此请查看客户端操作系统的装载文档 (man 5 nfs)。 在大多数情况下，它会在本地将锁移动到客户端。 如果应用程序跨多个客户端锁定文件，请谨慎使用。
+
+> [!NOTE]
+> ADLS-NFS 不支持 NLM。 使用 ADLS-NFS 存储目标时，应使用上述装载选项禁用 NLM。
 
 ## <a name="next-steps"></a>后续步骤
 

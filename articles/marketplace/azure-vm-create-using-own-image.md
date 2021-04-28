@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: krsh
 ms.author: krsh
-ms.date: 03/10/2021
-ms.openlocfilehash: 4711ea76af83594ec529cfda13a308fbe6646398
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.openlocfilehash: 47fe7b42b68ae42f74a74e5fc69c8d1041d3bf8d
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200462"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727108"
 ---
 # <a name="how-to-create-a-virtual-machine-using-your-own-image"></a>如何使用自己的映像创建虚拟机
 
@@ -49,6 +49,9 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 若要�
 
 ## <a name="bring-your-image-into-azure"></a>将映像引入 Azure
 
+> [!NOTE]
+> 包含 SIG 的 Azure 订阅必须与发布者帐户位于同一租户才能发布。 此外，发布者帐户必须至少具有对包含 SIG 的订阅的参与者访问权限。
+
 可通过三种方式将映像引入 Azure：
 
 1. 将 VHD 上传到共享映像库 (SIG)。
@@ -57,7 +60,7 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 若要�
 
 以下三个部分将介绍这些选项。
 
-### <a name="option-1-upload-the-vhd-as-shared-image-gallery"></a>选项 1：将 VHD 上传为共享映像库
+### <a name="option-1-upload-the-vhd-as-shared-image-gallery"></a>选项 1：将 VHD 上传到共享映像库
 
 1. 将 VHD 上传到存储帐户。
 2. 在 Azure 门户上搜索“部署自定义模板”。
@@ -197,7 +200,7 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 若要�
 
 遵循以下步骤在 [Azure 门户](https://ms.portal.azure.com/)中创建基础 VM 映像。
 
-1. 登录 [Azure 门户](https://ms.portal.azure.com/)。
+1. 登录到 [Azure 门户](https://ms.portal.azure.com/)。
 2. 选择“虚拟机”。
 3. 选择“+ 添加”以打开“创建虚拟机”屏幕 。
 4. 从下拉列表中选择映像，或选择“浏览所有公共和专用映像”，以搜索或浏览所有可用的虚拟机映像。
@@ -222,7 +225,7 @@ Azure 随即开始预配所指定的虚拟机。 通过选择左侧菜单中的�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [测试 VM 映像](azure-vm-image-test.md)，以确保它满足 Azure 市场发布要求。 此为可选项。
+- [测试 VM 映像](azure-vm-image-test.md)，以确保它满足 Azure 市场发布要求。 该地址为可选。
 - 如果你不想测试 VM 映像，请登录到[合作伙伴中心](https://partner.microsoft.com/)并发布 SIG 映像（选项 #1）。
 - 如果你已按照选项 #2 或 #3 进行操作，请[生成 SAS URI](azure-vm-get-sas-uri.md)。
 - 如果在创建基于 Azure 的新 VHD 时遇到问题，请参阅 [Azure 市场 VM 常见问题解答](azure-vm-create-faq.md)。

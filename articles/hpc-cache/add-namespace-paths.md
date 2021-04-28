@@ -4,14 +4,14 @@ description: 如何通过 Azure HPC 缓存为后端存储创建面向客户端�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/11/2021
+ms.date: 04/22/2021
 ms.author: v-erkel
-ms.openlocfilehash: 5427389f007b7598274d35425a9b3e8e10a63e49
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3eddd53d8b1d4ff59f27535a070924cf0e86c5a7
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104798521"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904408"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>设置聚合命名空间
 
@@ -65,7 +65,7 @@ Azure Blob 存储目标只能有一个命名空间路径。
 
 使用 Azure CLI 时，必须在创建存储目标时添加命名空间路径。 有关详细信息，请参阅[添加新的 Azure Blob 存储目标](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-azure-blob-storage-target)。
 
-若要更新目标的命名空间路径，请使用 [az hpc-cache blob-storage-target 更新](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-update)命令。 更新命令的参数与创建命令的参数类似，不同之处在于不传递容器名称或存储帐户。
+若要更新目标的命名空间路径，请使用 [az hpc-cache blob-storage-target 更新](/cli/azure/hpc-cache/blob-storage-target#az_hpc_cache_blob_storage_target_update)命令。 更新命令的参数与创建命令的参数类似，不同之处在于不传递容器名称或存储帐户。
 
 不能使用 Azure CLI 从 blob 存储目标删除命名空间路径，但可以使用不同的值覆盖该路径。
 
@@ -77,27 +77,7 @@ Azure Blob 存储目标只能有一个命名空间路径。
 
 为 NFS 存储目标规划命名空间时，请记住，每个路径必须是唯一的，并且不能是另一个命名空间路径的子目录。 例如，如果你有一个名为 ``/parent-a`` 的命名空间路径，那么你也不能创建类似于 ``/parent-a/user1`` 和 ``/parent-a/user2`` 的命名空间路径。 这些目录路径已在命名空间中作为 ``/parent-a`` 的子目录来访问。
 
-NFS 存储系统的所有命名空间路径都是在一个存储目标上创建的。 大多数缓存配置最多可支持每个存储目标 10 个命名空间路径，但较大的配置可支持 20 个。
-
-此列表显示了每个配置的最大命名空间路径数。
-
-* 高达 2 GB/秒的吞吐量：
-
-  * 3 TB 缓存 - 10 个命名空间路径
-  * 6 TB 缓存 - 10 个命名空间路径
-  * 12 TB 缓存 - 20 个命名空间路径
-
-* 高达 4 GB/秒的吞吐量：
-
-  * 6 TB 缓存 - 10 个命名空间路径
-  * 12 TB 缓存 - 10 个命名空间路径
-  * 24 TB 缓存 - 20 个命名空间路径
-
-* 高达 8 GB/秒的吞吐量：
-
-  * 12 TB 缓存 - 10 个命名空间路径
-  * 24 TB 缓存 - 10 个命名空间路径
-  * 48 TB 缓存 - 20 个命名空间路径
+NFS 存储系统的所有命名空间路径都是在一个存储目标上创建的。
 
 对于每个 NFS 命名空间路径，提供面向客户端的路径和存储系统导出，还可以选择提供导出子目录。
 
@@ -129,7 +109,7 @@ NFS 存储系统的所有命名空间路径都是在一个存储目标上创建�
 
 使用 Azure CLI 时，必须在创建存储目标时至少添加一个命名空间路径。 有关详细信息，请参阅[添加新的 NFS 存储目标](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target)。
 
-若要更新目标的命名空间路径或添加其他路径，请使用 [az hpc-cache nfs-storage-target 更新](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-update)命令。 使用 ``--junction`` 选项指定所需的所有命名空间路径。
+若要更新目标的命名空间路径或添加其他路径，请使用 [az hpc-cache nfs-storage-target 更新](/cli/azure/hpc-cache/nfs-storage-target#az_hpc_cache_nfs_storage_target_update)命令。 使用 ``--junction`` 选项指定所需的所有命名空间路径。
 
 用于更新命令的选项与创建命令类似，不同之处在于，不传递存储系统信息传递（IP 地址或主机名），而且使用模型是可选的。 有关 ``--junction`` 选项的语法的更多详细信息，请参阅[添加新的 NFS 存储目标](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target)。
 

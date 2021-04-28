@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 04/08/2021
 ms.author: barclayn
-ms.openlocfilehash: 0d6527c27420617728428e440c94a60236701212
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 07b106630cffae75c5e4588d14de7ae938945614
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376760"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534114"
 ---
 # <a name="managed-identities-for-azure-resources-frequently-asked-questions---azure-ad"></a>有关 Azure 资源的托管标识的常见问题解答 - Azure AD
 
@@ -132,14 +132,14 @@ Azure 资源的托管标识仅包含以下组件之一：一个服务主体对�
 
 ### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>是否可以使用托管标识来访问不同目录/租户中的资源？
 
-否。 托管标识当前不支持跨目录方案。 
+不是。 托管标识当前不支持跨目录方案。 
 
 ### <a name="are-there-any-rate-limits-that-apply-to-managed-identities"></a>是否有适用于托管标识的速率限制？
 
 托管标识限制依赖于 Azure 服务限制、Azure 实例元数据服务 (IMDS) 限制和 Azure Active Directory 服务限制。
 
 - **Azure 服务限制** 定义可在租户和订阅级别执行的创建操作的数量。 用户分配的托管标识在命名方式上也有[限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#managed-identity-limits)。
-- **IMDS** 一般情况下，对 IMDS 的请求限制为每秒 5 个。 系统会拒绝超过此阈值的请求，并显示 429 响应。 对托管标识类别的请求限制为每秒 20 个请求，并发请求数限制为 5 个。 有关详细信息，请参阅 [Azure 实例元数据服务 (Windows) ](../../virtual-machines/windows/instance-metadata-service.md?tabs=windows#managed-identity) 文章。
+- **IMDS** 一般情况下，对 IMDS 的请求限制为每秒 5 个。 系统会拒绝超过此阈值的请求，并显示 429 响应。 对托管标识类别的请求限制为每秒 20 个请求，并发请求数限制为 5 个。 有关详细信息，请参阅 [Azure 实例元数据服务 (Windows)](../../virtual-machines/windows/instance-metadata-service.md?tabs=windows#managed-identity) 一文。
 - **Azure Active Directory 服务** 如 [Azure AD 服务限制和局限性](../enterprise-users/directory-service-limits-restrictions.md)中所述，每个托管标识都计入 Azure AD 租户中的对象配额限制。
 
 

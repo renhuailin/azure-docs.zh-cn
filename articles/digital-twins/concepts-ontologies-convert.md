@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: aa4dde51c077152dd5c8a938ad64ad0a051f89ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22b41fce59bf7dbe9db1186036c5ed44f07a4aad
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100561376"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484467"
 ---
 # <a name="convert-industry-standard-ontologies-to-dtdl-for-azure-digital-twins"></a>将行业标准本体转换为适用于 Azure 数字孪生的 DTDL
 
@@ -49,7 +49,9 @@ ms.locfileid: "100561376"
 
 可在此处获取该示例：[RdfToDtdlConverter](/samples/azure-samples/rdftodtdlconverter/digital-twins-model-conversion-samples/)。 
 
-若要将代码下载到计算机，请单击示例登录页标题下面的“下载 ZIP”按钮。 将下载 RdfToDtdlConverter_sample_application_to_convert_RDF_to_DTDL.zip 名称下的 ZIP文件，之后你可以进行解压缩和浏览。
+若要将代码下载到计算机，请在示例页上的标题下选择“浏览代码”按钮，转到该示例的 GitHub 存储库。   选择“代码”按钮，然后选择“下载 ZIP”将示例下载为名为 RdfToDtdlConverter-main.zip 的 .ZIP 文件。 然后可以对该文件进行解压并浏览代码。
+
+:::image type="content" source="media/concepts-ontologies-convert/download-repo-zip.png" alt-text="GitHub 上 RdfToDtdlConverter 存储库的屏幕截图。选中了“代码”按钮，生成了一个小对话框，其中突出显示了“下载 ZIP”按钮。" lightbox="media/concepts-ontologies-convert/download-repo-zip.png":::
 
 你可以使用此示例在上下文中查看转换模式，并将其用作自己的应用程序构建块，根据自己的特定需要执行模型转换。
 

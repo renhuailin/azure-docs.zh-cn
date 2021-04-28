@@ -10,12 +10,12 @@ ms.devlang: java
 ms.custom:
 - devx-track-java
 - mode-api
-ms.openlocfilehash: 15453fb8177248087cbec98fd734bcff3bf66868
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 0d93b9b645aaf4190a36dbc523d40dec2757a18b
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533229"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869790"
 ---
 # <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>快速入门：通过 Java 使用 Azure Functions 和 SignalR 服务创建聊天室
 
@@ -31,7 +31,7 @@ Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Az
    > Java 中所需的 SignalR 服务绑定仅在 Azure Function Core Tools 版本2.4.419（主机版本 2.0.12332）或更高版本中受支持。
 
    > [!NOTE]
-   > 若要安装扩展，Azure Functions Core Tools 需要安装 [.NET Core SDK](https://www.microsoft.com/net/download)。 但是，构建 JavaScript Azure Function 应用不需要了解 .NET。
+   > 若要安装扩展，Azure Functions Core Tools 需要安装 [.NET Core SDK](https://dotnet.microsoft.com/download)。 但是，构建 JavaScript Azure Function 应用不需要了解 .NET。
 
 - [Java 开发人员工具包](https://www.azul.com/downloads/zulu/)版本 8
 - [Apache Maven](https://maven.apache.org) 版本 3.0 或更高版本

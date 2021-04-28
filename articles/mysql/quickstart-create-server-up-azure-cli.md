@@ -8,19 +8,19 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: d89cc41ed26124ae4ad2e6689be6d59278c3d9da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cfe19f71af5f8ac876ca7d57dc2ad3328c766eb4
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94542161"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987013"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>快速入门：使用简单的 Azure CLI 命令 az mysql up 创建 Azure Database for MySQL（预览）
 
 > [!IMPORTANT]
-> [az mysql up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) Azure CLI 命令处于预览状态。
+> [az mysql up](/cli/azure/mysql#az_mysql_up) Azure CLI 命令处于预览状态。
 
-Azure Database for MySQL 是一种托管服务，可用于在云中运行、管理和缩放高可用性的 MySQL 数据库。 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 此快速入门介绍了如何使用 [az mysql up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) 命令通过 Azure CLI 创建 Azure Database for MySQL 服务器。 除了创建服务器，`az mysql up` 命令还会创建示例数据库、在数据库中创建根用户、为 Azure 服务打开防火墙，并为客户端计算机创建默认防火墙规则。 这有助于加快开发过程。
+Azure Database for MySQL 是一种托管服务，可用于在云中运行、管理和缩放高可用性的 MySQL 数据库。 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 此快速入门介绍了如何使用 [az mysql up](/cli/azure/mysql#az_mysql_up) 命令通过 Azure CLI 创建 Azure Database for MySQL 服务器。 除了创建服务器，`az mysql up` 命令还会创建示例数据库、在数据库中创建根用户、为 Azure 服务打开防火墙，并为客户端计算机创建默认防火墙规则。 这有助于加快开发过程。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,7 +42,8 @@ az account set --subscription <subscription id>
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>创建 Azure Database for MySQL 服务器
 
-要使用命令，请安装 [db-up](/cli/azure/ext/db-up) 扩展。 如果返回错误，则请确保已安装最新版本的 Azure CLI。 请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+要使用命令，请安装 [db-up](/cli/azure/ext/db-up/mysql
+) 扩展。 如果返回错误，则请确保已安装最新版本的 Azure CLI。 请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ```azurecli
 az extension add --name db-up
@@ -71,7 +72,7 @@ admin-user | 系统生成的 | 管理员的登录用户名。
 admin-password | 系统生成的 | 管理员用户的密码。
 
 > [!NOTE]
-> 有关 `az mysql up` 命令及其附加参数的详细信息，请参阅 [Azure CLI 文档](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up)。
+> 有关 `az mysql up` 命令及其附加参数的详细信息，请参阅 [Azure CLI 文档](/cli/azure/mysql#az_mysql_up)。
 
 服务器创建后，随附有以下设置：
 
@@ -88,7 +89,7 @@ admin-password | 系统生成的 | 管理员用户的密码。
 
 在完成 `az mysql up` 命令后，将向你返回一个常用编程语言连接字符串列表。 这些连接字符串使用你新创建的 Azure Database for MySQL 服务器的特定属性进行预配置。
 
-可使用 [az mysql show-connection-string](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-show-connection-string) 命令再次列出这些连接字符串。
+可使用 [az mysql show-connection-string](/cli/azure/mysql#az_mysql_show_connection_string) 命令再次列出这些连接字符串。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -98,7 +99,7 @@ admin-password | 系统生成的 | 管理员用户的密码。
 az mysql down --delete-group
 ```
 
-要删除新创建的服务器，可运行 [az mysql down](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-down) 命令。
+要删除新创建的服务器，可运行 [az mysql down](/cli/azure/mysql#az_mysql_down) 命令。
 
 ```azurecli
 az mysql down
