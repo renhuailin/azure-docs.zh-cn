@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 1c8ea1580047910cb2d6634aad885d61e99113f3
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 74cbbf13b3ecb0b784138df69a8436930c2766ef
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529976"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130892"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft 标识平台和 OAuth 2.0 代理流
 
@@ -211,7 +211,7 @@ SAML 断言的服务到服务请求包含以下参数：
 - **源自 OBO 调用的 SAML 断言的 SubjectConfirmationData**：如果目标应用程序需要 **SubjectConfirmationData** 中的接收方值，则该值必须是资源应用程序配置中的非通配符回复 URL。
 - **SubjectConfirmationData 节点**：此节点不能包含 **InResponseTo** 属性，因为它不是 SAML 响应的一部分。 接收 SAML 令牌的应用程序必须能够在没有 InResponseTo 属性的情况下接受 SAML 断言。
 
-- **许可**：必须授予许可，才能接收包含 OAuth 流上用户数据的 SAML 令牌。 有关权限和获取管理员许可的信息，请参阅 [Azure Active Directory v1.0 终结点中的权限和许可](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent)。
+- **许可**：必须授予许可，才能接收包含 OAuth 流上用户数据的 SAML 令牌。 有关权限和获取管理员许可的信息，请参阅 [Azure Active Directory v1.0 终结点中的权限和许可](../azuread-dev/v1-permissions-consent.md)。
 
 ### <a name="response-with-saml-assertion"></a>使用 SAML 断言进行响应
 

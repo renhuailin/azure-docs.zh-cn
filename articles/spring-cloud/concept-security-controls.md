@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1447e7eec9909c8af33005aab00c267e1a251720
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: faa278b60f3b120fc6f1aad14cd6f8b6dbfb1e21
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105966820"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129182"
 ---
 # <a name="security-controls-for-azure-spring-cloud-service"></a>Azure Spring Cloud 服务的安全控制
 
@@ -38,4 +38,4 @@ ms.locfileid: "105966820"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [快速入门：部署第一个 Azure Spring Cloud 应用程序](spring-cloud-quickstart.md)
+* [快速入门：部署第一个 Azure Spring Cloud 应用程序](./quickstart.md)

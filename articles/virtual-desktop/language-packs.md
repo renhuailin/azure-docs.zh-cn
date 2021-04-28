@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/03/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: eaf6fc789020553b80967341cc9219a30ffce749
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: db1ac3f5de507a5cfdbfec7216afea9a0f4ac541
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446105"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515033"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>将语言包添加到 Windows 10 多会话映像
 
@@ -55,6 +55,7 @@ Windows 虚拟桌面一种服务，用户可以随时随地进行部署。 这�
           - [Windows 10 版本 2004 或 20H2 11C LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2011C.iso)
           - [Windows 10 版本 2004 或 20H2 1C LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2101C.iso)
           - [Windows 10 版本 2004 或 20H2 2C LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2102C.iso)
+          - [Windows 10 版本 2004 或 20H2 3C LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2103C.iso)
 
 - Azure 文件共享或 Windows 文件服务器虚拟机上的文件共享
 

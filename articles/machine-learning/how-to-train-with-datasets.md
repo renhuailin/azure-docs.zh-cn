@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 8b984a17c8c10c3dff7c57b7d0223ba8b4197012
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: edb7ebc94d2706d1bf20db8ed9a869107163ff8d
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640128"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107387983"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>使用 Azure 机器学习数据集来训练模型 
 
@@ -44,7 +44,7 @@ Azure 机器学习数据集提供了与 Azure 机器学习训练功能（如 [Sc
 
 如果有尚未注册为数据集的结构化数据，请创建一个 TabularDataset，并在训练脚本中直接使用它进行本地或远程实验。
 
-在此示例中，你创建一个未注册的 [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset)，并在 ScriptRunConfig 对象中将其指定为脚本参数，以便进行训练。 如果要在工作区中的其他实验中重用此 TabularDataset，请参见[如何将数据集注册到工作区](how-to-create-register-datasets.md#register-datasets)。
+在此示例中，你创建一个未注册的 [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset)，并在 [ScriptRunConfig](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig) 对象中将其指定为脚本参数，以便进行训练。 如果要在工作区中的其他实验中重用此 TabularDataset，请参见[如何将数据集注册到工作区](how-to-create-register-datasets.md#register-datasets)。
 
 ### <a name="create-a-tabulardataset"></a>创建 TabularDataset
 
@@ -119,16 +119,25 @@ run.wait_for_completion(show_output=True)
 
 如果你有非结构化数据，请创建一个 [FileDataset](/python/api/azureml-core/azureml.data.filedataset)，然后装载或下载数据文件，使它们可在训练中用于远程计算目标。 了解何时使用[装载与下载](#mount-vs-download)进行远程训练实验。 
 
-下面的示例创建一个 FileDataset，并通过将该数据集作为参数传递到训练脚本来将其装载到计算目标上。 
+以下示例， 
+
+* 为训练数据创建输入 FileDataset `mnist_ds`。
+* 指定在何处写入训练结果，以及将这些结果作为 FileDataset 进行提升。
+* 将输入数据集装载到计算目标。
 
 > [!Note]
 > 如果使用的是自定义 Docker 基础映像，则需要通过 `apt-get install -y fuse` 安装 fuse，作为让数据集装载正常工作所需的依赖项。 了解如何[生成自定义生成映像](how-to-deploy-custom-docker-image.md#build-a-custom-base-image)。
 
+有关笔记本示例，请参阅[如何使用数据输入和输出配置训练运行](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/scriptrun-with-data-input-output/how-to-use-scriptrun.ipynb)。
+
 ### <a name="create-a-filedataset"></a>创建 FileDataset
 
-以下示例从 Web URL 创建未注册的 FileDataset。 从其他来源详细了解[如何创建数据集](how-to-create-register-datasets.md)。
+以下示例从 Web URL 创建未注册的 FileDataset `mnist_data`。 此 FileDataset 是训练运行的输入数据。
+
+从其他来源详细了解[如何创建数据集](how-to-create-register-datasets.md)。
 
 ```Python
+
 from azureml.core.dataset import Dataset
 
 web_paths = [
@@ -137,22 +146,49 @@ web_paths = [
             'http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
             'http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz'
             ]
+
 mnist_ds = Dataset.File.from_files(path = web_paths)
+
+```
+### <a name="where-to-write-training-output"></a>在何处写入训练输出
+
+可以使用 [OutputFileDatasetConfig 对象](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig)指定在何处写入训练结果。 
+
+OutputFileDatasetConfig 对象使你可以： 
+
+* 将运行的输出装载或上传到指定的云存储。
+* 以 FileDataset 的形式将输出保存到支持的存储类型：
+    * Azure blob
+    * Azure 文件共享
+    * Azure Data Lake Storage 第 1 代和第 2 代
+* 跟踪训练运行之间的数据世系。
+
+下面的代码指定训练结果应以 FileDataset 的形式保存在默认 blob 数据存储 `def_blob_store` 的 `outputdataset` 文件夹中。 
+
+```python
+from azureml.core import Workspace
+from azureml.data import OutputFileDatasetConfig
+
+ws = Workspace.from_config()
+
+def_blob_store = ws.get_default_datastore()
+output = OutputFileDatasetConfig(destination=(def_blob_store, 'sample/outputdataset'))
 ```
 
 ### <a name="configure-the-training-run"></a>配置训练运行
 
-建议在装载时通过 `ScriptRunConfig` 构造函数的 `arguments` 参数将该数据集作为参数传递。 这样，你就可以通过参数在训练脚本中获取数据路径（装入点）。 这样，可以在任何云平台上使用相同的训练脚本进行本地调试和远程训练。
+建议在装载时通过 `ScriptRunConfig` 构造函数的 `arguments` 参数将该数据集作为参数传递。 这样，你就可以通过参数在训练脚本中获取数据路径（装入点）。 这样，便能够在任何云平台上使用相同的训练脚本进行本地调试和远程训练。
 
-下面的示例创建一个 ScriptRunConfig，它通过 `arguments` 传入 FileDataset。 在提交该运行后，`mnist_ds` 数据集引用的数据文件将会装载到计算目标。
+下面的示例创建一个 ScriptRunConfig，它通过 `arguments` 传入 FileDataset。 提交运行后，由数据集 `mnist_ds` 引用的数据文件会装载到计算目标，而训练结果会保存到默认数据存储中的指定 `outputdataset` 文件夹。
 
 ```python
 from azureml.core import ScriptRunConfig
 
+input_data= mnist_ds.as_named_input('input').as_mount()# the dataset will be mounted on the remote compute 
+
 src = ScriptRunConfig(source_directory=script_folder,
-                      script='train_mnist.py',
-                      # the dataset will be mounted on the remote compute and the mounted path passed as an argument to the script
-                      arguments=['--data-folder', mnist_ds.as_mount(), '--regularization', 0.5],
+                      script='dummy_train.py',
+                      arguments=[input_data, output],
                       compute_target=compute_target,
                       environment=myenv)
 
@@ -161,40 +197,31 @@ run = experiment.submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
-### <a name="retrieve-data-in-your-training-script"></a>在训练脚本中检索数据
+### <a name="simple-training-script"></a>简单训练脚本
 
-下面的代码展示了如何在脚本中检索数据。
+下面的脚本通过 ScriptRunConfig 进行提交。 它将 `mnist_ds ` 数据集读取为输入，并将该文件写入默认 blob 数据存储 `def_blob_store` 中的 `outputdataset` 文件夹。
 
 ```Python
-%%writefile $script_folder/train_mnist.py
+%%writefile $source_directory/dummy_train.py
 
-import argparse
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License.
+import sys
 import os
-import numpy as np
-import glob
 
-from utils import load_data
+print("*********************************************************")
+print("Hello Azure ML!")
 
-# retrieve the 2 arguments configured through `arguments` in the ScriptRunConfig
-parser = argparse.ArgumentParser()
-parser.add_argument('--data-folder', type=str, dest='data_folder', help='data folder mounting point')
-parser.add_argument('--regularization', type=float, dest='reg', default=0.01, help='regularization rate')
-args = parser.parse_args()
+mounted_input_path = sys.argv[1]
+mounted_output_path = sys.argv[2]
 
-data_folder = args.data_folder
-print('Data folder:', data_folder)
-
-# get the file paths on the compute
-X_train_path = glob.glob(os.path.join(data_folder, '**/train-images-idx3-ubyte.gz'), recursive=True)[0]
-X_test_path = glob.glob(os.path.join(data_folder, '**/t10k-images-idx3-ubyte.gz'), recursive=True)[0]
-y_train_path = glob.glob(os.path.join(data_folder, '**/train-labels-idx1-ubyte.gz'), recursive=True)[0]
-y_test = glob.glob(os.path.join(data_folder, '**/t10k-labels-idx1-ubyte.gz'), recursive=True)[0]
-
-# load train and test set into numpy arrays
-X_train = load_data(X_train_path, False) / 255.0
-X_test = load_data(X_test_path, False) / 255.0
-y_train = load_data(y_train_path, True).reshape(-1)
-y_test = load_data(y_test, True).reshape(-1)
+print("Argument 1: %s" % mounted_input_path)
+print("Argument 2: %s" % mounted_output_path)
+    
+with open(mounted_input_path, 'r') as f:
+    content = f.read()
+    with open(os.path.join(mounted_output_path, 'output.csv'), 'w') as fw:
+        fw.write(content)
 ```
 
 ## <a name="mount-vs-download"></a>装载和下载
@@ -257,7 +284,7 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 
 ## <a name="notebook-examples"></a>Notebook 示例
 
-+ [数据集笔记本](https://aka.ms/dataset-tutorial)演示了本文中的概念并在其基础上进行了扩展。
++ 有关其他数据集示例和概念，请参阅[数据集笔记本](https://aka.ms/dataset-tutorial)。
 + 请参阅[如何在 ML 管道中参数化数据集](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb)。
 
 ## <a name="troubleshooting"></a>疑难解答

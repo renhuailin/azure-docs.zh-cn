@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: 394b3390386c60e2a64f52dd944dfcdb0d33951e
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 1202843781ab1c08b2d573967e5118ed04d48990
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727017"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129902"
 ---
 # <a name="what-is-azure-sql"></a>什么是 Azure SQL？ 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -168,7 +168,7 @@ Azure SQL 数据库提供了以下部署选项：
 
 Azure SQL 托管实例大大简化了将现有应用程序迁移到 Azure 的过程，让你能够在 Azure 中将已迁移的数据库应用程序快速推向市场。
 
-如果现有或新的应用程序需要大型数据库或者需要访问 SQL Server 或 Windows/Linux 中的所有功能，而且你想要避免购置新本地硬件所耗的时间和费用，那么理想的选择是 Azure VM 上的 SQL。 此外，如果想要将现有的本地应用程序和数据库按原样迁移到 Azure，而 SQL 数据库或 SQL 托管实例并不合适，则上述解决方案也是一个不错的选择。 由于无需更改表示层、应用层和数据层，所以在重新构建现有解决方案时可以节省时间和预算。 相反地，可以将重点放在将所有解决方案迁移到 Azure，并执行 Azure 平台可能需要的某些性能优化。 有关详细信息，请参阅 [Azure 虚拟机上 SQL Server 的性能最佳做法](virtual-machines/windows/performance-guidelines-best-practices.md)。
+如果现有或新的应用程序需要大型数据库或者需要访问 SQL Server 或 Windows/Linux 中的所有功能，而且你想要避免购置新本地硬件所耗的时间和费用，那么理想的选择是 Azure VM 上的 SQL。 此外，如果想要将现有的本地应用程序和数据库按原样迁移到 Azure，而 SQL 数据库或 SQL 托管实例并不合适，则上述解决方案也是一个不错的选择。 由于无需更改表示层、应用层和数据层，所以在重新构建现有解决方案时可以节省时间和预算。 相反地，可以将重点放在将所有解决方案迁移到 Azure，并执行 Azure 平台可能需要的某些性能优化。 有关详细信息，请参阅 [Azure 虚拟机上 SQL Server 的性能最佳做法](./virtual-machines/windows/performance-guidelines-best-practices-checklist.md)。
 
 [!INCLUDE [sql-database-create-manage-portal](includes/sql-database-create-manage-portal.md)]
 

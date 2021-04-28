@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/17/2021
 ms.author: kenwith
-ms.openlocfilehash: 738b89ee9347a25e2d24369a48e966f0bec6daf0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8534c21bb0dad782b89c6518ea2313b4232639a6
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579461"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128660"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>教程 - 为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
 
@@ -113,7 +113,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 - ServiceNow
 - Workday 到 Active Directory/Workday 到 Azure Active Directory
 - SuccessFactors 到 Azure Active Directory Active Directory/SuccessFactors
-- Azure Active Directory（支持 [Azure AD 图形 API 默认属性](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity)和自定义目录扩展）。 了解有关[创建扩展](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning-sync-attributes-for-mapping#create-an-extension-attribute-on-a-cloud-only-user)和[已知限制](https://docs.microsoft.com/azure/active-directory/app-provisioning/known-issues)的详细信息。 
+- Azure Active Directory（支持 [Azure AD 图形 API 默认属性](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity)和自定义目录扩展）。 了解有关[创建扩展](./user-provisioning-sync-attributes-for-mapping.md#create-an-extension-attribute-on-a-cloud-only-user)和[已知限制](./known-issues.md)的详细信息。 
 - 支持 [SCIM 2.0](https://tools.ietf.org/html/rfc7643) 的应用
 - 对于到 Workday 或 SuccessFactors 的 Azure Active Directory 写回，支持更新受支持的属性（XPATH 和 JSONPath）的元数据，但不支持添加默认架构所含范围之外的新的 Workday 或 SuccessFactors 属性
 

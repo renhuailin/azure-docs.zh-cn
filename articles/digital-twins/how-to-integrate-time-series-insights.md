@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 4/7/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1ac9a0bc83c2a33becb5348862e5a572dddf3ac2
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: d89ee4c8e66ba4dda004fbd27e15b96ab13c642b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133918"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783766"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>将 Azure 数字孪生与 Azure 时序见解相集成
 
@@ -20,7 +20,7 @@ ms.locfileid: "108133918"
 
 使用本文中所述的解决方案可以收集和分析有关你的 IoT 解决方案的历史数据。 Azure 数字孪生非常适合用于将数据馈送到时序见解中，因为它支持关联多个数据流，并可在将信息发送到时序见解之前将信息标准化。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 需要设置以下资源，才能设置与时序见解的关系：
 * IoT 中心。 有关说明，请参阅《IoT 中心的发送遥测》快速入门中的[创建 IoT 中心](../iot-hub/quickstart-send-telemetry-cli.md#create-an-iot-hub)部分。
@@ -100,7 +100,7 @@ az dt endpoint create eventhub -n <your-Azure-Digital-Twins-instance-name> --eve
 
 ### <a name="create-twins-hub-event-route"></a>创建孪生体中心事件路由
 
-每当孪生的状态更新后，Azure 数字孪生实例都可以发出[孪生更新事件](./concepts-event-notifications.md)。 在本部分，你将创建一个 Azure 数字孪生事件路由，它会将这些更新事件定向到孪生体中心以供进一步处理。
+每当孪生的状态更新后，Azure 数字孪生实例都可以发出[孪生更新事件](how-to-interpret-event-data.md)。 在本部分，你将创建一个 Azure 数字孪生事件路由，它会将这些更新事件定向到孪生体中心以供进一步处理。
 
 在 Azure 数字孪生中创建[路由](concepts-route-events.md#create-an-event-route)，将孪生体更新事件发送到前面的终结点。 此路由中的筛选器只允许将孪生更新消息传递到你的终结点。 为孪生体中心事件路由指定名称。
 

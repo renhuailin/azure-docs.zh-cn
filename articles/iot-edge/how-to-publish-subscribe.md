@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 25d4774144ff4ea601badb1fb71b51c8142def26
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 1c4760362e7c2b3965638b3213910b5b8cd6f079
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304098"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516172"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge-preview"></a>使用 Azure IoT Edge 发布和订阅（预览版）
 
@@ -94,7 +94,7 @@ ms.locfileid: "107304098"
 在 MQTT 客户端向 IoT Edge 中心进行身份验证后，它需要获得授权才能进行连接。 连接后，它需要获得授权才可针对特定主题进行发布或订阅。 这些授权由 IoT Edge 中心根据其授权策略授予。 授权策略是一组以 JSON 结构表示的语句，通过其孪生体发送到 IoT Edge 中心。 编辑 IoT Edge 中心孪生体以配置其授权策略。
 
 > [!NOTE]
-> 对于公共预览版，只有通过 Visual Studio、Visual Studio Code 或 Azure CLI 才能编辑 MQTT 代理的授权策略。 Azure 门户目前不支持编辑 IoT Edge 中心孪生体及其授权策略。
+> 对于公共预览版，只有 Azure CLI 支持包含 MQTT 代理授权策略的部署。 Azure 门户目前不支持编辑 IoT Edge 中心孪生体及其授权策略。
 
 每个授权策略语句由 `identities`、`allow` 或 `deny` 效果、`operations` 和 `resources` 的组合构成：
 
@@ -170,10 +170,11 @@ ms.locfileid: "107304098"
 - 默认情况下，所有操作都将被拒绝。
 - 授权语句会按照它们在 JSON 定义中出现的顺序接受评估。 它首先查看 `identities`，然后选择与请求匹配的第一个允许或拒绝语句。 如果允许和拒绝语句之间发生冲突，则以拒绝语句为准。
 - 授权策略中可以使用多个变量（例如替换）：
-    - `{{iot:identity}}` 表示当前连接的客户端的标识。 例如，`myDevice` 等设备标识或 `myEdgeDevice/SampleModule` 等模块标识。
-    - `{{iot:device_id}}` 表示当前连接的设备的标识。 例如，`myDevice` 等设备标识或 `myEdgeDevice` 等运行模块的设备标识。
-    - `{{iot:module_id}}` 表示当前连接的模块的标识。 此变量对于已连接的设备为空，或者是模块标识（如 `SampleModule`）。
-    - `{{iot:this_device_id}}` 表示运行授权策略的 IoT Edge 设备的标识。 例如，`myIoTEdgeDevice`。
+
+  - `{{iot:identity}}` 表示当前连接的客户端的标识。 例如，`myDevice` 等设备标识或 `myEdgeDevice/SampleModule` 等模块标识。
+  - `{{iot:device_id}}` 表示当前连接的设备的标识。 例如，`myDevice` 等设备标识或 `myEdgeDevice` 等运行模块的设备标识。
+  - `{{iot:module_id}}` 表示当前连接的模块的标识。 此变量对于已连接的设备为空，或者是模块标识（如 `SampleModule`）。
+  - `{{iot:this_device_id}}` 表示运行授权策略的 IoT Edge 设备的标识。 例如，`myIoTEdgeDevice`。
 
 与用户定义的主题相比，IoT 中心主题的授权处理方式略有不同。 以下是需要记住的要点：
 
@@ -220,40 +221,43 @@ ms.locfileid: "107304098"
 
 1. 在 IoT 中心中创建两个 IoT 设备，将它们作为 IoT Edge 设备的父级：
 
-    ```azurecli-interactive
-    az iot hub device-identity create --device-id  sub_client --hub-name <iot_hub_name> --pd <edge_device_id>
-    az iot hub device-identity create --device-id  pub_client --hub-name <iot_hub_name> --pd <edge_device_id>
-    ```
+   ```azurecli-interactive
+   az iot hub device-identity create --device-id  sub_client --hub-name <iot_hub_name> --pd <edge_device_id>
+   az iot hub device-identity create --device-id  pub_client --hub-name <iot_hub_name> --pd <edge_device_id>
+   ```
 
 2. 通过生成 SAS 令牌获取其密码：
 
-    - 对于设备：
-    
-       ```azurecli-interactive
-       az iot hub generate-sas-token -n <iot_hub_name> -d <device_name> --key-type primary --du 3600
-       ```
-    
-       其中 3600 是 SAS 令牌的持续时间（以秒为单位，例如 3600 = 1 小时）。
-    
-    - 对于模块：
-    
-       ```azurecli-interactive
-       az iot hub generate-sas-token -n <iot_hub_name> -d <device_name> -m <module_name> --key-type primary --du 3600
-       ```
-    
-       其中 3600 是 SAS 令牌的持续时间（以秒为单位，例如 3600 = 1 小时）。
+   - 对于设备：
+
+     ```azurecli-interactive
+     az iot hub generate-sas-token -n <iot_hub_name> -d <device_name> --key-type primary --du 3600
+     ```
+
+     其中 3600 是 SAS 令牌的持续时间（以秒为单位，例如 3600 = 1 小时）。
+
+   - 对于模块：
+
+     ```azurecli-interactive
+     az iot hub generate-sas-token -n <iot_hub_name> -d <device_name> -m <module_name> --key-type primary --du 3600
+     ```
+
+     其中 3600 是 SAS 令牌的持续时间（以秒为单位，例如 3600 = 1 小时）。
 
 3. 复制 SAS 令牌，即输出中与“sas”键对应的值。 以下是上述 Azure CLI 命令的输出示例：
 
-    ```
-    {
-       "sas": "SharedAccessSignature sr=example.azure-devices.net%2Fdevices%2Fdevice_1%2Fmodules%2Fmodule_a&sig=H5iMq8ZPJBkH3aBWCs0khoTPdFytHXk8VAxrthqIQS0%3D&se=1596249190"
-    }
-    ```
+   ```output
+   {
+      "sas": "SharedAccessSignature sr=example.azure-devices.net%2Fdevices%2Fdevice_1%2Fmodules%2Fmodule_a&sig=H5iMq8ZPJBkH3aBWCs0khoTPdFytHXk8VAxrthqIQS0%3D&se=1596249190"
+   }
+   ```
 
 ### <a name="authorize-publisher-and-subscriber-clients"></a>对发布服务器和订阅服务器客户端授权
 
-若要对发布服务器和订阅服务器进行授权，请通过 Azure CLI、Visual Studio 或 Visual Studio Code 创建 IoT Edge 部署来编辑 IoT Edge 中心孪生体，以包含以下授权策略：
+若要对发布服务器和订阅服务器进行授权，请通过包含以下授权策略的 IoT Edge 部署来编辑 IoT Edge 中心孪生体。
+
+>[!NOTE]
+>目前，包含 MQTT 授权属性的部署只能使用 Azure CLI 应用于 IoT Edge 设备。
 
 ```json
 {
@@ -377,13 +381,13 @@ mosquitto_pub \
 
 获取设备/模块孪生不是典型的 MQTT 模式。 客户端需要对 IoT 中心将要服务的孪生体发出请求。
 
-若要接收孪生体，客户端需要针对一个 IoT 中心特定的主题 `$iothub/twin/res/#` 进行订阅。 此主题名称继承自 IoT 中心，所有客户端都需要针对相同的主题进行订阅。 这并不意味着设备或模块接收彼此的孪生体。 IoT 中心和 IoT Edge 中心知道哪个孪生体应在何处交付（即使所有设备都侦听相同的主题名）。 
+若要接收孪生体，客户端需要针对一个 IoT 中心特定的主题 `$iothub/twin/res/#` 进行订阅。 此主题名称继承自 IoT 中心，所有客户端都需要针对相同的主题进行订阅。 这并不意味着设备或模块接收彼此的孪生体。 IoT 中心和 IoT Edge 中心知道哪个孪生体应在何处交付（即使所有设备都侦听相同的主题名）。
 
 订阅完成后，客户端需要针对 IoT 中心特定的主题 `$iothub/twin/GET/?rid=<request_id>/#`（其中 `<request_id>` 是任意标识符）发布消息以请求孪生体。 然后，IoT 中心将发送响应，其中包含有关主题 `$iothub/twin/res/200/?rid=<request_id>`（客户端针对其进行订阅）的请求数据。 这就是客户端如何将其请求与响应配对。
 
 ### <a name="receive-twin-patches"></a>接收孪生体修补程序
 
-若要接收孪生体修补程序，客户端需要针对特定的 IoT 中心主题 `$iothub/twin/PATCH/properties/desired/#` 进行订阅。 订阅完成后，客户端将收到 IoT 中心发送的关于此主题的孪生体修补程序。 
+若要接收孪生体修补程序，客户端需要针对特定的 IoT 中心主题 `$iothub/twin/PATCH/properties/desired/#` 进行订阅。 订阅完成后，客户端将收到 IoT 中心发送的关于此主题的孪生体修补程序。
 
 ### <a name="receive-direct-methods"></a>接收直接方法
 
@@ -398,23 +402,23 @@ mosquitto_pub \
 为了连接两个 MQTT 代理，IoT Edge 中心会包含一个 MQTT 桥。 MQTT 桥通常用于将正在运行的 MQTT 代理连接到另一个 MQTT 代理。 通常只将一部分的本地流量推送到其他中转站。
 
 > [!NOTE]
-> IoT Edge 中心桥目前只能在嵌套的 IoT Edge 设备之间使用。 它不能用于向 IoT 中心发送数据，因为 IoT 中心不是功能齐全的 MQTT 中转站。 若要了解 IoT 中心 MQTT 中转站功能支持的详细信息，请参阅[使用 MQTT 协议与 IoT 中心通信](../iot-hub/iot-hub-mqtt-support.md)。 若要详细了解如何嵌套 IoT Edge 设备，请参阅[将下游 IoT Edge 设备连接到 Azure IoT Edge 网关](how-to-connect-downstream-iot-edge-device.md#configure-iot-edge-on-devices) 
+> IoT Edge 中心桥目前只能在嵌套的 IoT Edge 设备之间使用。 它不能用于向 IoT 中心发送数据，因为 IoT 中心不是功能齐全的 MQTT 中转站。 若要了解 IoT 中心 MQTT 中转站功能支持的详细信息，请参阅[使用 MQTT 协议与 IoT 中心通信](../iot-hub/iot-hub-mqtt-support.md)。 若要详细了解如何嵌套 IoT Edge 设备，请参阅[将下游 IoT Edge 设备连接到 Azure IoT Edge 网关](how-to-connect-downstream-iot-edge-device.md#configure-iot-edge-on-devices)。
 
 在嵌套配置中，IoT Edge 中心 MQTT 桥充当父 MQTT 中转站的客户端，因此必须对父 EdgeHub 设置授权规则，以允许子 EdgeHub 针对为其配置桥的特定用户定义主题进行发布和订阅。
 
 IoT Edge MQTT 桥通过 JSON 结构进行配置，JSON 结构通过其孪生体发送到 IoT Edge 中心。 编辑 IoT Edge 中心孪生体以配置其 MQTT 桥。
 
 > [!NOTE]
-> 对于公共预览版，MQTT 桥的配置仅可通过 Visual Studio、Visual Studio Code 或 Azure CLI 进行。 Azure 门户目前不支持编辑 IoT Edge 中心孪生体及其 MQTT 桥配置。
+> 对于公共预览版，只有 Azure CLI 支持包含 MQTT 桥配置的部署。 Azure 门户目前不支持编辑 IoT Edge 中心孪生体及其 MQTT 桥配置。
 
 可配置 MQTT 桥以将 IoT Edge 中心 MQTT 中转站连接到多个外部中转站。 对于每个外部中转站，需要进行以下设置：
 
 - `endpoint` 是要连接到的远程 MQTT 中转站的地址。 当前仅支持父 IoT Edge 设备，且该设备由变量 `$upstream` 定义。
 - `settings` 定义要为终结点桥接的主题。 每个终结点可以有多个设置，以下值用于配置它：
-    - `direction`：`in`（针对远程中转站的主题进行订阅）或 `out`（针对远程中转站的主题进行发布）
-    - `topic`：要匹配的核心主题模式。 [MQTT 通配符](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718107)可用于定义此模式。 在本地中转站和远程中转站上，可以将不同的前缀应用于此主题模式。
-    - `outPrefix`：在远程代理上应用于 `topic` 模式的前缀。
-    - `inPrefix`：在本地代理上应用于 `topic` 模式的前缀。
+  - `direction`：`in`（针对远程中转站的主题进行订阅）或 `out`（针对远程中转站的主题进行发布）
+  - `topic`：要匹配的核心主题模式。 [MQTT 通配符](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718107)可用于定义此模式。 在本地中转站和远程中转站上，可以将不同的前缀应用于此主题模式。
+  - `outPrefix`：在远程代理上应用于 `topic` 模式的前缀。
+  - `inPrefix`：在本地代理上应用于 `topic` 模式的前缀。
 
 以下是 IoT Edge MQTT 桥配置的示例，该配置将父 IoT Edge 设备收到的所有关于主题 `alerts/#` 的消息重新发布到关于相同主题的子 IoT Edge 设备，并将子 IoT Edge 设备发送的所有关于主题 `/local/telemetry/#` 的消息重新发布到关于主题 `/remote/messages/#` 的父 IoT Edge 设备。
 

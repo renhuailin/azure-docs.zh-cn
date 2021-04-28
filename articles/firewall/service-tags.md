@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 4/5/2021
 ms.author: victorh
-ms.openlocfilehash: 83e9a96573bbc72e0afff61cc0f151f95b081e30
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3cc1e85a18eab1adb0a1dd8307a074cb43ba0c70
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97031573"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529543"
 ---
 # <a name="azure-firewall-service-tags"></a>Azure 防火墙服务标记
 
@@ -23,6 +23,38 @@ Azure 防火墙服务标记可用于网络规则目标字段。 它们可用于�
 ## <a name="supported-service-tags"></a>支持的服务标记
 
 有关可在 Azure 防火墙网络规则中使用的服务标记的列表，请参阅[虚拟网络服务标记](../virtual-network/service-tags-overview.md#available-service-tags)。
+
+## <a name="configuration"></a>配置
+
+Azure 防火墙支持通过 PowerShell、Azure CLI 或 Azure 门户来配置服务标记。
+
+### <a name="configure-via-azure-powershell"></a>通过 Azure PowerShell 配置
+
+在此示例中，我们必须首先获取以前创建的 Azure 防火墙实例的上下文。
+
+```Get the context to an existing Azure Firewall
+$FirewallName = "AzureFirewall"
+$ResourceGroup = "AzureFirewall-RG"
+$azfirewall = Get-AzFirewall -Name $FirewallName -ResourceGroupName $ResourceGroup
+```
+
+接下来必须创建新规则。  对于“源”或“目标”，可以指定要利用的服务标记的文本值，如前文所述。
+
+````Create new Network Rules using Service Tags
+$rule = New-AzFirewallNetworkRule -Name "AllowSQL" -Description "Allow access to Azure Database as a Service (SQL, MySQL, PostgreSQL, Datawarehouse)" -SourceAddress "10.0.0.0/16" -DestinationAddress Sql -DestinationPort 1433 -Protocol TCP
+$ruleCollection = New-AzFirewallNetworkRuleCollection -Name "Data Collection" -Priority 1000 -Rule $rule -ActionType Allow
+````
+
+接下来，必须用创建的新网络规则来更新包含 Azure 防火墙定义的变量。
+
+````Merge the new rules into our existing Azure Firewall variable
+$azFirewall.NetworkRuleCollections.add($ruleCollection)
+`````
+
+最后，必须将网络规则更改提交到正在运行的 Azure 防火墙实例。
+````Commit the changes to Azure
+Set-AzFirewall -AzureFirewall $azfirewall
+````
 
 ## <a name="next-steps"></a>后续步骤
 

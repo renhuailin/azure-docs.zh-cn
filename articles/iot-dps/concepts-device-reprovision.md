@@ -3,16 +3,16 @@ title: Azure IoT 中心设备预配服务 - 设备概念
 description: 介绍 Azure IoT 中心设备预配服务 (DPS) 的设备重新预配概念
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/04/2019
+ms.date: 04/16/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 9653a584382584d982c55008a6e8547de28691b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fbc83ec62c10fae00e371cd9ad95cf2860495fad
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91842846"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575762"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>IoT 中心设备重新预配概念
 
@@ -61,6 +61,9 @@ ms.locfileid: "91842846"
     ![显示与注册项关联的设备提交新的预配请求时策略如何采取措施的图。](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
 
 * **从不重新预配**：设备从不重新分配到不同的中心。 此策略用于管理后向兼容性。
+
+> [!NOTE]
+> 如果设备有新的 [ReturnData](how-to-send-additional-data.md)，DPS 将始终调用自定义分配 Webhook，而不考虑重新预配策略。 如果重新预配策略设置为“从不重新预配”，则会调用 Webhook，但设备不会更改其分配的中心。
 
 ### <a name="managing-backwards-compatibility"></a>管理后向兼容性
 

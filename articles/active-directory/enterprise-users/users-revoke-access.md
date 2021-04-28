@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 03/29/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 578e8f5f3126542c579cd573c82b732049d407b6
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 75547b50289f9fa73b6fc2a28fe7ec53b5c5367a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105959816"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137970"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>在 Azure Active Directory 中撤销用户访问
 
@@ -38,7 +38,7 @@ ms.locfileid: "105959816"
 
 然后 Azure AD 重新评估其授权策略。 如果用户仍获得授权，则 Azure AD 将发布新的访问令牌并刷新令牌。
 
-如果必须在短于令牌的生存期（通常为一小时左右）内撤销访问，则访问令牌可能是一个安全问题。 出于这个原因，Microsoft 正在积极努力将[连续访问评估](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-continuous-access-evaluation)引入 Office 365 应用程序，这有助于确保访问令牌在近乎实时的情况下失效。  
+如果必须在短于令牌的生存期（通常为一小时左右）内撤销访问，则访问令牌可能是一个安全问题。 出于这个原因，Microsoft 正在积极努力将[连续访问评估](../conditional-access/concept-continuous-access-evaluation.md)引入 Office 365 应用程序，这有助于确保访问令牌在近乎实时的情况下失效。  
 
 ## <a name="session-tokens-cookies"></a>会话令牌 (cookies)
 
@@ -60,13 +60,13 @@ ms.locfileid: "105959816"
 
 作为 Active Directory 中的管理员，请连接到本地网络，打开 PowerShell，然后执行以下操作：
 
-1. 禁用 Active Directory 中的用户。 请参阅 [Disable-ADAccount](https://docs.microsoft.com/powershell/module/addsadministration/disable-adaccount?view=win10-ps)。
+1. 禁用 Active Directory 中的用户。 请参阅 [Disable-ADAccount](/powershell/module/activedirectory/disable-adaccount?view=win10-ps)。
 
     ```PowerShell
     Disable-ADAccount -Identity johndoe  
     ```
 
-2. 在 Active Directory 中重置用户密码两次。 请参阅 [Set-ADAccountPassword](https://docs.microsoft.com/powershell/module/addsadministration/set-adaccountpassword?view=win10-ps)。
+2. 在 Active Directory 中重置用户密码两次。 请参阅 [Set-ADAccountPassword](/powershell/module/activedirectory/set-adaccountpassword?view=win10-ps)。
 
     > [!NOTE]
     > 更改用户密码两次的原因是为了降低传递哈希的风险，尤其是在本地密码复制出现延迟的情况下。 如果你可以安全地假设此帐户没有遭到泄露，则只能重置密码一次。
@@ -83,19 +83,19 @@ ms.locfileid: "105959816"
 
 作为 Azure Active Directory 中的管理员，打开 PowerShell，运行 ``Connect-AzureAD``，然后执行以下操作：
 
-1. 禁用 Azure AD 中的用户。 请参阅 [Set-AzureADUser](https://docs.microsoft.com/powershell/module/azuread/Set-AzureADUser?view=azureadps-2.0)。
+1. 禁用 Azure AD 中的用户。 请参阅 [Set-AzureADUser](/powershell/module/azuread/Set-AzureADUser?view=azureadps-2.0)。
 
     ```PowerShell
     Set-AzureADUser -ObjectId johndoe@contoso.com -AccountEnabled $false
     ```
 
-2. 撤消用户的 Azure AD 刷新令牌。 请参阅 [Revoke-AzureADUserAllRefreshToken](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)。
+2. 撤消用户的 Azure AD 刷新令牌。 请参阅 [Revoke-AzureADUserAllRefreshToken](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)。
 
     ```PowerShell
     Revoke-AzureADUserAllRefreshToken -ObjectId johndoe@contoso.com
     ```
 
-3. 禁用用户的设备。 请参阅 [Get-AzureADUserRegisteredDevice](https://docs.microsoft.com/powershell/module/azuread/get-azureaduserregistereddevice?view=azureadps-2.0)。
+3. 禁用用户的设备。 请参阅 [Get-AzureADUserRegisteredDevice](/powershell/module/azuread/get-azureaduserregistereddevice?view=azureadps-2.0)。
 
     ```PowerShell
     Get-AzureADUserRegisteredDevice -ObjectId johndoe@contoso.com | Set-AzureADDevice -AccountEnabled $false
@@ -112,21 +112,21 @@ ms.locfileid: "105959816"
 
 - 部署自动预配和取消预配解决方案。 从应用程序取消预配用户是撤消访问权限的一种有效方法，特别是对于使用会话令牌的应用程序。 开发一个在不支持自动预配和取消预配的应用中对客户取消预配的进程。 确保应用程序撤销其自己的会话令牌，并停止接受 Azure AD 访问令牌，即使它们仍然有效。
 
-  - 使用 [Azure AD SaaS 应用预配](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)。 Azure AD SaaS 应用预配通常每 20-40 分钟自动运行一次。 [配置 Azure AD 预配](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)以在应用程序中取消预配或停用已禁用的用户。
+  - 使用 [Azure AD SaaS 应用预配](../app-provisioning/user-provisioning.md)。 Azure AD SaaS 应用预配通常每 20-40 分钟自动运行一次。 [配置 Azure AD 预配](../saas-apps/tutorial-list.md)以在应用程序中取消预配或停用已禁用的用户。
   
-  - 对于不使用 Azure AD SaaS 应用预配的应用程序，请使用 [Identity Manager (MIM)](https://docs.microsoft.com/microsoft-identity-manager/mim-how-provision-users-adds) 或第三方解决方案自动取消用户的预配。  
+  - 对于不使用 Azure AD SaaS 应用预配的应用程序，请使用 [Identity Manager (MIM)](/microsoft-identity-manager/mim-how-provision-users-adds) 或第三方解决方案自动取消用户的预配。  
   - 为需要手动取消设置的应用程序标识和开发进程。 请确保管理员可以在需要时快速运行所需的手动任务从这些应用中取消对用户的设置。
   
-- [使用 Microsoft Intune 管理设备和应用程序](https://docs.microsoft.com/mem/intune/remote-actions/device-management)。 Intune 托管[设备可以重置为出厂设置](https://docs.microsoft.com/mem/intune/remote-actions/devices-wipe)。 如果设备为非托管设备，可以[从托管应用中擦除公司数据](https://docs.microsoft.com/mem/intune/apps/apps-selective-wipe)。 这些过程可用于从最终用户设备中删除可能敏感的数据。 但是，对于要触发的任一进程，设备必须连接到 Internet。 如果设备处于离线状态，则设备仍可访问所有本地存储的数据。
+- [使用 Microsoft Intune 管理设备和应用程序](/mem/intune/remote-actions/device-management)。 Intune 托管[设备可以重置为出厂设置](/mem/intune/remote-actions/devices-wipe)。 如果设备为非托管设备，可以[从托管应用中擦除公司数据](/mem/intune/apps/apps-selective-wipe)。 这些过程可用于从最终用户设备中删除可能敏感的数据。 但是，对于要触发的任一进程，设备必须连接到 Internet。 如果设备处于离线状态，则设备仍可访问所有本地存储的数据。
 
 > [!NOTE]
 > 擦除后无法恢复设备上的数据。
 
-- 在适当的情况下使用 [Microsoft Cloud App Security (MCAS) 阻止数据下载](https://docs.microsoft.com/cloud-app-security/use-case-proxy-block-session-aad)。 如果只能联机访问数据，组织可以监视会话并实时实施策略。
+- 在适当的情况下使用 [Microsoft Cloud App Security (MCAS) 阻止数据下载](/cloud-app-security/use-case-proxy-block-session-aad)。 如果只能联机访问数据，组织可以监视会话并实时实施策略。
 
-- [在 Azure AD 中启用连续访问评估 (CAE)](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-continuous-access-evaluation)。 CAE 允许管理员为支持 CAE 的应用程序撤销会话令牌和访问令牌。  
+- [在 Azure AD 中启用连续访问评估 (CAE)](../conditional-access/concept-continuous-access-evaluation.md)。 CAE 允许管理员为支持 CAE 的应用程序撤销会话令牌和访问令牌。  
 
 ## <a name="next-steps"></a>后续步骤
 
-- [面向 Azure AD 管理员的安全访问做法](https://docs.microsoft.com/azure/active-directory/roles/security-planning)
+- [面向 Azure AD 管理员的安全访问做法](../roles/security-planning.md)
 - [添加或更新用户配置文件信息](../fundamentals/active-directory-users-profile-azure-portal.md)

@@ -3,13 +3,13 @@ title: 使用 Azure 门户还原 VM
 description: 使用 Azure 门户（包括“跨区域还原”功能）从恢复点还原 Azure 虚拟机。
 ms.reviewer: geg
 ms.topic: conceptual
-ms.date: 08/02/2020
-ms.openlocfilehash: 83681d2bb3622857fb9141a3cec79d92d278a814
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/19/2021
+ms.openlocfilehash: 0f3a715f4fef85b90fd8f06558a8cfdab1ca8900
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568743"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739037"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 门户中还原 Azure VM 数据
 
@@ -23,7 +23,7 @@ Azure 备份提供了几种用来还原 VM 的方法。
 --- | ---
 **创建新 VM** | 从还原点快速创建并正常运行一个基本的 VM。<br/><br/> 可以指定 VM 的名称，选择要将此 VM 放入到的资源组和虚拟网络 (VNet)，以及为已还原的 VM 指定存储帐户。 新 VM 必须在源 VM 所在的区域创建。<br><br>如果由于 Azure VM SKU 在指定的 Azure 区域中不可用，或者由于任何其他问题，VM 还原失败，则 Azure 备份仍将还原指定资源组中的磁盘。
 **还原磁盘** | 还原某个 VM 磁盘，然后使用它来创建新的 VM。<br/><br/> Azure 备份提供一个模板来帮助你自定义和创建 VM。 <br/><br> 还原作业会生成一个模板，可以下载该模板，并使用它来指定自定义的 VM 设置和创建 VM。<br/><br/> 磁盘将复制到指定的资源组。<br/><br/> 或者，可将磁盘附加到现有 VM，或使用 PowerShell 创建新的 VM。<br/><br/> 若要自定义 VM、添加在备份时不存在的配置设置，或添加必须使用模板或 PowerShell 配置的设置，则此选项非常有用。
-**替换现有项** | 可以还原某个磁盘，并使用它来替换现有 VM 上的磁盘。<br/><br/> 当前 VM 必须存在。 如果已将其删除，则无法使用此选项。<br/><br/> Azure 备份会在替换磁盘之前获取现有 VM 的快照，并将其存储在指定的暂存位置。 连接到该 VM 的现有磁盘将替换为所选的还原点。<br/><br/> 快照将复制到保管库，并根据保留策略进行保留。 <br/><br/> 替换磁盘操作完成后，原始磁盘会保留在资源组中。 如果不需要原始磁盘，可选择手动删除它们。 <br/><br/>对于未加密的托管 VM（包括[使用自定义映像创建的](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) VM），支持替换现有磁盘。 对于经典 VM 和非托管 VM，不支持此方法。<br/><br/> 如果还原点中的磁盘数多于或少于当前 VM 中的磁盘数，则还原点中的磁盘数只反映 VM 配置。<br><br> 对于包含链接资源的 VM（例如[用户分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md)或 [Key Vault](../key-vault/general/overview.md)），还支持替换现有磁盘。
+**替换现有项** | 可以还原某个磁盘，并使用它来替换现有 VM 上的磁盘。<br/><br/> 当前 VM 必须存在。 如果已将其删除，则无法使用此选项。<br/><br/> Azure 备份会在替换磁盘之前获取现有 VM 的快照，并将其存储在指定的暂存位置。 连接到该 VM 的现有磁盘将替换为所选的还原点。<br/><br/> 快照将复制到保管库，并根据保留策略进行保留。 <br/><br/> 替换磁盘操作完成后，原始磁盘会保留在资源组中。 如果不需要原始磁盘，可选择手动删除它们。 <br/><br/>对于未加密的托管 VM（包括[使用自定义映像创建的](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) VM），支持替换现有磁盘。 经典 VM、非托管 VM 以及[通用 VM](../virtual-machines/windows/upload-generalized-managed.md) 不支持此操作。<br/><br/> 如果还原点中的磁盘数多于或少于当前 VM 中的磁盘数，则还原点中的磁盘数只反映 VM 配置。<br><br> 对于包含链接资源的 VM（例如[用户分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md)或 [Key Vault](../key-vault/general/overview.md)），还支持替换现有磁盘。
 **跨区域（次要区域）** | 跨区域还原可用于还原次要区域（[Azure 配对区域](../best-practices-availability-paired-regions.md#what-are-paired-regions)）中的 Azure VM。<br><br> 如果备份在次要区域中完成，则可针对所选恢复点还原所有 Azure VM。<br><br> 在备份期间，不会将快照复制到次要区域。 仅会复制存储在保管库中的数据。 因此，次要区域还原只是[保管库层](about-azure-vm-restore.md#concepts)还原。 次要区域的还原时间与主要区域的保管库层还原时间几乎相同。  <br><br> 此功能适用于以下选项：<br> <li> [创建 VM](#create-a-vm) <br> <li> [还原磁盘](#restore-disks) <br><br> 当前不支持[替换现有磁盘](#replace-existing-disks)选项。<br><br> 权限<br> 次要区域中的还原操作可由备份管理员和应用管理员执行。
 
 > [!NOTE]
@@ -150,7 +150,7 @@ Azure 备份提供了几种用来还原 VM 的方法。
 1. 选择“次要区域”以查看次要区域中的项。
 
 >[!NOTE]
->只有支持 CRR 功能的备份管理类型才会显示在列表中。 目前，只允许将次要区域数据还原到次要区域。
+>只有支持 CRR 功能的备份管理类型才会显示在列表中。 目前，只允许将次要区域数据还原到次要区域。<br></br>Azure 托管 VM（包括加密的 Azure VM）支持用于 Azure VM 的 CRR。
 
 ![次要区域中的虚拟机](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
 
@@ -178,6 +178,7 @@ Azure 备份提供了几种用来还原 VM 的方法。
 >- 在触发还原后并处于数据传输阶段时，无法取消还原作业。
 >- “跨区域还原”功能会将启用了 CMK（客户管理的密钥）的 Azure VM（这些虚拟机未在启用了 CMK 的恢复服务保管库中备份）还原为次要区域中未启用 CMK 的 VM。
 >- 在次要区域中进行恢复所需的 Azure 角色与在主要区域中所需的角色相同。
+>- 还原 Azure VM 时，Azure 备份自动在次要区域中配置虚拟网络设置。 如果在部署模板时[还原磁盘](#restore-disks)，请确保提供与次要区域对应的虚拟网络设置。
 
 [Azure 区域固定的 VM](../virtual-machines/windows/create-portal-availability-zone.md) 可以在同一区域的任何[可用性区域](../availability-zones/az-overview.md)中还原。
 

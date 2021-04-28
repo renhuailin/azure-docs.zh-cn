@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: e268cca87479625af023b5970bb27c56721f6d39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62db56ac9791cea7d6f1a40f794241ed68fa90fa
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102049842"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483562"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>将 Azure 数字孪生实例移动到其他 Azure 区域
 
@@ -31,7 +31,7 @@ ms.locfileid: "102049842"
     - 重新链接连接的资源。
 1. 清理源资源：删除原始实例。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在尝试重新创建 Azure 数字孪生实例之前，请先查看原始实例的组件，以明确了解需要重新创建的所有部分。
 
@@ -81,9 +81,13 @@ ms.locfileid: "102049842"
 
 若要继续使用 Azure Digital Twins Explorer，请先下载示例应用程序代码，并将其设置为在计算机上运行。
 
-若要获取示例，请参阅 [Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)。 选择“下载 ZIP”按钮，将此示例代码的 .ZIP 文件作为 Azure_Digital_Twins__ADT__explorer.zip 下载到计算机 。 解压缩文件。
+若要获取示例，请转到 [Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)。 选择标题下方的“浏览代码”按钮，随后会转到示例的相应 GitHub 存储库。 选择“代码”按钮，然后单击“下载 ZIP”，将示例以 .ZIP 文件形式下载到计算机上 。
 
-接下来，设置和配置使用 Azure Digital Twins Explorer 所需的权限。 遵照 Azure 数字孪生快速入门中的[设置 Azure 数字孪生和 Azure Digital Twins Explorer](quickstart-adt-explorer.md#set-up-azure-digital-twins-and-azure-digital-twins-explorer) 部分中的说明进行操作。 其中包括以下步骤：
+:::image type="content" source="media/how-to-move-regions/download-repo-zip.png" alt-text="GitHub 上 digital-twins-explorer 存储库的屏幕截图。选中了“代码”按钮，生成了一个小对话框，其中突出显示了“下载 ZIP”按钮。" lightbox="media/how-to-move-regions/download-repo-zip.png":::
+
+解压缩文件。
+
+接下来，设置和配置使用 Azure Digital Twins Explorer 所需的权限。 遵照 Azure 数字孪生快速入门中的[设置 Azure 数字孪生和 Azure Digital Twins Explorer](quickstart-azure-digital-twins-explorer.md#set-up-azure-digital-twins-and-azure-digital-twins-explorer) 部分中的说明进行操作。 其中包括以下步骤：
 
 1. 设置 Azure 数字孪生实例。 可跳过此部分，因为已拥有一个实例。
 1. 设置本地 Azure 凭据以提供对实例的访问权限。

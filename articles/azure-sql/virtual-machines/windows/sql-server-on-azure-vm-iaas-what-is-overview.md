@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b4b1234b88eafedbd03b78241baaa40231a6cbd6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bdb890ac70d60e7742c4818fef27d5959c2df801
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97356797"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142290"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure 虚拟机 (Windows) 上的 SQL Server 是什么？
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -51,7 +51,7 @@ Azure 还为 Azure VM 中运行的 SQL Server 提供企业级备份解决方案�
 
 ## <a name="performance"></a>性能
 
-Azure 虚拟机提供的虚拟机大小取决于工作负荷需求。 SQL Server VM 还提供按性能要求优化的自动存储配置。 若要详细了解如何为 SQL Server VM 配置存储，请参阅 [SQL Server VM 的存储配置](storage-configuration.md)。 若要优化性能，请参阅 [Azure 虚拟机上 SQL Server 的性能最佳做法](performance-guidelines-best-practices.md)。
+Azure 虚拟机提供的虚拟机大小取决于工作负荷需求。 SQL Server VM 还提供按性能要求优化的自动存储配置。 若要详细了解如何为 SQL Server VM 配置存储，请参阅 [SQL Server VM 的存储配置](storage-configuration.md)。 若要优化性能，请参阅 [Azure 虚拟机上 SQL Server 的性能最佳做法](./performance-guidelines-best-practices-checklist.md)。
 
 ## <a name="get-started-with-sql-server-vms"></a>SQL Server VM 入门
 

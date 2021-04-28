@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/09/2021
+ms.date: 04/19/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a40f3286b4e832f5c73e650859fa9a1d4fe4b6cb
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: b4bb58f106f3255ec6cd80b14b175ff413bc0dc6
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256950"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725793"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>使用 Mailjet 进行自定义电子邮件验证
 
@@ -35,8 +35,6 @@ ms.locfileid: "107256950"
 
 自定义电子邮件验证要求使用第三方电子邮件提供程序（如 [Mailjet](https://Mailjet.com)、[SendGrid](./custom-email-sendgrid.md) 或 [SparkPost](https://sparkpost.com)），自定义 REST API，或任何基于 HTTP 的电子邮件提供商（包括你自己的）。 本文介绍如何设置使用 Mailjet 的解决方案。
 
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
-
 ## <a name="create-a-mailjet-account"></a>创建 Mailjet 帐户
 
 如果还没有 Mailjet 帐户，请先设置一个 Mailjet 帐户（Azure 客户可以解锁 6,000 封电子邮件，限制为 200 封电子邮件/天）。 
@@ -44,6 +42,10 @@ ms.locfileid: "107256950"
 1. 按照[创建 Mailjet 帐户](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/)中的设置说明进行操作。
 1. 若要能够发送电子邮件，请[注册并验证](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/#how-to-configure-mailjet-for-use)发件人电子邮件地址或域。
 2. 导航到 [API 密钥管理页](https://app.mailjet.com/account/api_keys)。 记下 API 密钥和密钥，以供在后面的步骤中使用 。 创建帐户时，会自动生成两个密钥。  
+
+> [!IMPORTANT]
+> 借助 Mailjet，客户能够从共享 IP 和[专用 IP 地址](https://documentation.mailjet.com/hc/articles/360043101973-What-is-a-dedicated-IP)发送电子邮件。 使用专用 IP 地址时，需要使用 IP 地址预热来正确构建自己的信誉。 有关详细信息，请参阅[如何预热 IP？](https://documentation.mailjet.com/hc/articles/1260803352789-How-do-I-warm-up-my-IP-)。
+
 
 ## <a name="create-azure-ad-b2c-policy-key"></a>创建 Azure AD B2C 策略密钥
 
@@ -317,6 +319,9 @@ JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimT
 ## <a name="add-otp-technical-profiles"></a>添加 OTP 技术配置文件
 
 `GenerateOtp` 技术配置文件为电子邮件地址生成代码。 `VerifyOtp` 技术配置文件验证与电子邮件地址关联的代码。 你可以更改格式的配置以及一次性密码的有效期。 有关 OTP 技术配置文件的详细信息，请参阅[定义一次性密码技术配置文件](one-time-password-technical-profile.md)。
+
+> [!NOTE]
+> Web.TPEngine.Providers.OneTimePasswordProtocolProvider 协议生成的 OTP 代码绑定到浏览器会话。 这意味着用户可以在不同的浏览器会话中生成唯一的 OTP 代码，每个代码对其对应的会话有效。 相比之下，由内置用户流生成的 OTP 代码独立于浏览器会话，因此如果用户在新的浏览器会话中生成新的 OTP 代码，它将替换以前的 OTP 代码。
 
 将以下技术配置文件添加到 `<ClaimsProviders>` 元素。
 

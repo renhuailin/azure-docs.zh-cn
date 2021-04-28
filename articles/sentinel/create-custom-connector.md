@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: bagol
-ms.openlocfilehash: 25f83088bdc55dbafe7ccf0ff06b0c6595c9ea71
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a1aaf89624f8d0ab48692629d859f3c1bdb4ba67
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101724347"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738893"
 ---
 # <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>用于创建 Azure Sentinel 自定义连接器的资源
 
@@ -38,7 +38,7 @@ Azure Sentinel 提供各种[适用于 Azure 服务和外部解决方案的内置
 |---------|---------|---------|---------|
 |**[Log Analytics 代理](#connect-with-the-log-analytics-agent)** <br>最适合从本地和 IaaS 源收集文件   | 仅限文件收集  |   否      |低         |
 |**[Logstash](#connect-with-logstash)** <br>最适合用于本地和 IaaS 源、任何有可用插件的源，以及已熟悉 Logstash 的组织  | 可用的插件以及自定义插件，功能可提供极大的灵活性。   |   否；需要 VM 或 VM 群集才能运行           |   低；支持许多使用插件的方案      |
-|**[逻辑应用](#connect-with-logic-apps)** <br>高成本；避免大量数据 <br>最适合用于低数据量的云源  | 无代码编程可实现有限的灵活性，不支持实现算法。<br><br> 没有任何可用操作已支持你的需求时，创建自定义操作可能会增加复杂性。    |    是         |   低；简单、无代码的开发      |
+|[逻辑应用](#connect-with-logic-apps) <br>高成本；避免大量数据 <br>最适合用于低数据量的云源  | 无代码编程可实现有限的灵活性，不支持实现算法。<br><br> 没有任何可用操作已支持你的需求时，创建自定义操作可能会增加复杂性。    |    是         |   低；简单、无代码的开发      |
 |**[PowerShell](#connect-with-powershell)** <br>最适合用于建立原型和定期文件上传 | 直接支持文件收集。 <br><br>可以使用 PowerShell 来收集更多的源，但需要编码脚本以及将脚本配置为服务。      |否               |  低       |
 |**[Log Analytics API](#connect-with-the-log-analytics-api)** <br>最适合用于实现集成的 ISV，以及用于独特的收集需求   | 支持所有通过代码提供的功能。  | 取决于实现           |     高    |
 |**[Azure Functions](#connect-with-azure-functions)** 最适合用于大数据量的云源，以及用于独特的收集需求  | 支持所有通过代码提供的功能。  |  是             |     高；需要编程知识    |
@@ -126,8 +126,6 @@ Azure Sentinel 提供各种[适用于 Azure 服务和外部解决方案的内置
 - [使用 Webhook 的 Palo Alto Prisma 逻辑应用连接器](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Ingest-Prisma)（Azure Sentinel GitHub 社区）
 - [通过计划的激活保护 Microsoft Teams 调用](https://techcommunity.microsoft.com/t5/azure-sentinel/secure-your-calls-monitoring-microsoft-teams-callrecords/ba-p/1574600)（博客）
 - [将 AlienVault OTX 威胁指标引入 Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/ingesting-alien-vault-otx-threat-indicators-into-azure-sentinel/ba-p/1086566)（博客）
-- [将 Proofpoint TAP 日志发送至 Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/sending-proofpoint-tap-logs-to-azure-sentinel/ba-p/767727)（博客）
-
 
 ## <a name="connect-with-powershell"></a>使用 PowerShell 连接
 

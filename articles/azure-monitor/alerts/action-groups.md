@@ -3,14 +3,14 @@ title: 在 Azure 门户中创建和管理器操作组
 description: 了解如何在 Azure 门户中创建和管理操作组。
 author: dkamstra
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 04/07/2021
 ms.author: dukek
-ms.openlocfilehash: fb067e603c181482a863dc9fd75556e32a801bc6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1486415c5d225163dd2b2c7e79cd008ad0a76588
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772342"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107514863"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 
@@ -121,7 +121,7 @@ ms.locfileid: "104772342"
 
 操作组中的 Azure 应用操作数可能有限。
 
-### <a name="email"></a>电子邮件
+### <a name="email"></a>Email
 将从以下电子邮件地址发送电子邮件。 确保电子邮件筛选正确配置
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
@@ -148,6 +148,13 @@ ms.locfileid: "104772342"
 
 操作组中的电子邮件操作数可能有限。 请参阅[速率限制信息](./alerts-rate-limiting.md)一文。
 
+设置电子邮件 ARM 角色时，需要确保满足以下 3 个条件：
+
+1. 要分配给角色的实体类型需要为“用户”。
+2. 需要在“订阅”级别完成分配。
+3. 用户需要在其“AAD 配置文件”中配置电子邮件。 
+
+
 ### <a name="function"></a>函数
 调用 [Azure Functions](../../azure-functions/functions-get-started.md) 中的现有 HTTP 触发器终结点。 若要处理请求，终结点必须处理 HTTP POST 谓词。
 
@@ -162,12 +169,10 @@ ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](./itsmc-overvi
 操作组中的逻辑应用操作数可能有限。
 
 ### <a name="secure-webhook"></a>安全 Webhook
+操作组安全 Webhook 操作使你能够利用 Azure Active Directory 来保护操作组和受保护的 Web API（Webhook 终结点）之间的连接。 下面介绍了利用此功能的整个工作流。 有关 Azure AD 应用程序和服务主体的概述，请参阅 [Microsoft 标识平台 (v2.0) 概述](../../active-directory/develop/v2-overview.md)。
 
 > [!NOTE]
 > 使用 webhook 操作要求目标 webhook 终结点不需要警报的详细信息即可成功运行，或者能够分析在 POST 操作中提供的警报上下文信息。 如果 Webhook 终结点无法自行处理警报上下文信息，则可以使用[逻辑应用操作](./action-groups-logic-app.md)之类的解决方案对警报上下文信息进行自定义操作，以匹配 Webhook 的所需数据格式。
-> 用户应是 webhook 服务主体的所有者，以确保不会违反安全性。 由于任何 Azure 客户都可以通过门户访问所有对象 ID，而无需检查所有者，因此任何人都可以将安全的 Webhook 添加到自己的操作组中，以获取违反安全性的 Azure Monitor 警报通知。
-
-操作组 Webhook 操作使你能够利用 Azure Active Directory 来保护操作组和受保护的 Web API（Webhook 终结点）之间的连接。 下面介绍了利用此功能的整个工作流。 有关 Azure AD 应用程序和服务主体的概述，请参阅 [Microsoft 标识平台 (v2.0) 概述](../../active-directory/develop/v2-overview.md)。
 
 1. 针对受保护的 Web API 创建 Azure AD 应用程序。 请参阅[受保护的 Web API：应用注册](../../active-directory/develop/scenario-protected-web-api-app-registration.md)中的说明进行操作。
     - 将受保护的 API 配置为[通过守护程序应用进行调用](../../active-directory/develop/scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)。

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f4f3fc8c928cd284088cc51120f1a7b485b4fac0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 21247f6b396cb1f7016c74cbec528149c0583724
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104595339"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587198"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure 数字孪生 API 和 SDK
 
@@ -180,6 +180,7 @@ Azure 数字孪生 .NET (C#) SDK 是用于 .NET 的 Azure SDK 的一部分。 �
 * 可使用 HTTP REST 测试工具（如 Postman）直接对 Azure 数字孪生 API 进行调用。 有关此过程的详细信息，请参阅[操作指南：通过 Postman 发出请求](how-to-use-postman.md)。
 * 若要使用 SDK，请实例化 `DigitalTwinsClient` 类。 构造函数需要凭据，可使用各种身份验证方法在 `Azure.Identity` 包中获得。 有关 `Azure.Identity` 的详细信息，请参阅其[命名空间文档](/dotnet/api/azure.identity)。 
 * 你可能会发现 `InteractiveBrowserCredential` 在入门时非常有用，但还有其他几个选项，包括[托管标识](/dotnet/api/azure.identity.interactivebrowsercredential)的凭据，你可使用此类凭据针对 Azure 数字孪生对[使用 MSI 设置的 Azure 函数](../app-service/overview-managed-identity.md?tabs=dotnet)进行身份验证。 有关 `InteractiveBrowserCredential` 的详细信息，请参阅其[类文档](/dotnet/api/azure.identity.interactivebrowsercredential)。
+* 请求 Azure 数字孪生 API 的用户或者服务主体需要属于 Azure 数字孪生实例所在的相同 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) 租户。 为了防止对 Azure 数字孪生终结点进行恶意扫描，将针对使用发起租户外部的访问令牌进行的请求返回“404 找不到子域”错误消息。 即使已通过 [Azure AD B2B](../active-directory/external-identities/what-is-b2b.md) 协作向用户或服务主体授予 Azure 数字孪生数据所有者或 Azure 数字孪生数据读取者角色，也会返回此错误。 有关如何在多个租户之间实现访问的信息，请参阅 [*如何：编写应用身份验证代码*](how-to-authenticate-client.md#authenticate-across-tenants)。
 * 所有服务 API 调用都公开为 `DigitalTwinsClient` 类的成员函数。
 * 所有服务函数都存在于同步和异步版本中。
 * 如果返回状态为 400 或更高，所有服务函数均会引发异常。 请确保将调用包装到 `try` 部分，并至少捕获 `RequestFailedExceptions`。 有关此类异常的详细信息，请参阅[此处](/dotnet/api/azure.requestfailedexception)。
@@ -187,6 +188,7 @@ Azure 数字孪生 .NET (C#) SDK 是用于 .NET 的 Azure SDK 的一部分。 �
 * 包含分页结果的服务方法返回 `Pageable<T>` 或 `AsyncPageable<T>` 作为结果。 有关 `Pageable<T>` 类的详细信息，请参阅[此处](/dotnet/api/azure.pageable-1)；有关 `AsyncPageable<T>` 的详细信息，请参阅[此处](/dotnet/api/azure.asyncpageable-1)。
 * 可使用 `await foreach` 循环来循环访问分页结果。 有关此进程的详细信息，请参阅[此处](/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8)。
 * 基础 SDK 为 `Azure.Core`。 请参阅 [Azure 命名空间文档](/dotnet/api/azure)，了解 SDK 基础结构和类型。
+
 
 服务方法尽可能返回强类型对象。 但由于 Azure 数字孪生是基于用户在运行时自定义配置的模型（通过上传到服务的 DTDL 模型），所以许多服务 API 采用并返回 JSON 格式的孪生数据。
 

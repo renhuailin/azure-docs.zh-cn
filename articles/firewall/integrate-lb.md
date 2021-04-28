@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 09/25/2020
+ms.date: 04/14/2021
 ms.author: victorh
-ms.openlocfilehash: 3b8fbc47b46f8be6e4ad7636a1d7552445501f0f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e14a8afe27fc9dd9ca40730dd7e681c3093e0b50
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94653158"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505898"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>将 Azure 防火墙与 Azure 标准负载均衡器相集成
 
@@ -65,8 +65,7 @@ ms.locfileid: "94653158"
 
 因此，可以像部署公共负载均衡器方案一样部署此方案，但无需防火墙公共 IP 地址主机路由。
 
->[!NOTE]
->后端池中的虚拟机将不含具有此配置的出站 Internet 连接。 </br> 有关提供出站连接的详细信息，请参阅： </br> **[Azure 中的出站连接](../load-balancer/load-balancer-outbound-connections.md)**</br> 用于提供连接的选项： </br> **[仅出站的负载均衡器配置](../load-balancer/egress-only.md)** </br> [**什么是虚拟网络 NAT？**](../virtual-network/nat-overview.md)
+后端池中的虚拟机可以通过 Azure 防火墙建立出站 Internet 连接。 在虚拟机的子网上，使用防火墙作为下一个跃点来配置用户定义的路由。
 
 
 ## <a name="additional-security"></a>其他安全性

@@ -4,14 +4,14 @@ description: 如何定义存储目标，使 Azure HPC 缓存能够使用本地 N
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/22/2021
 ms.author: v-erkel
-ms.openlocfilehash: 44b2534d7aeb12f4819a6c42cfb29d057ce26ddc
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 47cbb3caa46f62ef6b1d4384c50d161963cce908
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259024"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905551"
 ---
 # <a name="add-storage-targets"></a>添加存储目标
 
@@ -19,7 +19,7 @@ ms.locfileid: "107259024"
 
 最多可为一个缓存定义 20 个不同的存储目标。 缓存在一个聚合命名空间中提供所有存储目标。
 
-命名空间路径是在添加存储目标后单独配置的。 一般情况下，一个 NFS 存储目标最多可以有 10 个命名空间路径，对于某些大型配置，其命名空间路径可以更多。 有关详细信息，请阅读 [NFS 命名空间路径](add-namespace-paths.md#nfs-namespace-paths)。
+命名空间路径是在添加存储目标后单独配置的。
 
 请记住，存储导出必须可供从缓存的虚拟网络访问。 对于本地硬件存储，可能需要设置一个 DNS 服务器，该服务器可以解析用于访问 NFS 存储的主机名。 请阅读 [DNS 访问](hpc-cache-prerequisites.md#dns-access)了解详细信息。
 
@@ -126,7 +126,7 @@ Azure HPC 缓存使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-
 
 ### <a name="add-a-blob-storage-target-with-azure-cli"></a>使用 Azure CLI 添加 Blob 存储目标
 
-使用 [az hpc-cache blob-storage-target add](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-add) 接口定义 Azure Blob 存储目标。
+使用 [az hpc-cache blob-storage-target add](/cli/azure/hpc-cache/blob-storage-target#az_hpc_cache_blob_storage_target_add) 接口定义 Azure Blob 存储目标。
 
 > [!NOTE]
 > Azure CLI 命令目前要求在添加存储目标时创建命名空间路径。 这与 Azure 门户界面中使用的过程不同。
@@ -229,7 +229,7 @@ NFS 存储目标的设置不同于 Blob 存储目标。 使用情况模型设置
 
 [设置适用于 Azure HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)
 
-使用 Azure CLI 命令 [az hpc-cache nfs-storage-target add](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-add) 创建存储目标。
+使用 Azure CLI 命令 [az hpc-cache nfs-storage-target add](/cli/azure/hpc-cache/nfs-storage-target#az_hpc_cache_nfs_storage_target_add) 创建存储目标。
 
 > [!NOTE]
 > Azure CLI 命令目前要求在添加存储目标时创建命名空间路径。 这与 Azure 门户界面中使用的过程不同。
@@ -240,7 +240,7 @@ NFS 存储目标的设置不同于 Blob 存储目标。 使用情况模型设置
 * ``--nfs3-target`` - NFS 存储系统的 IP 地址。 （如果缓存能够访问可解析名称的 DNS 服务器，则在此处可以使用完全限定的域名。）
 * ``--nfs3-usage-model`` - 如前面的[选择使用情况模型](#choose-a-usage-model)中所述的数据缓存配置文件之一。
 
-  使用命令 [az hpc-cache usage-model list](/cli/azure/ext/hpc-cache/hpc-cache/usage-model#ext-hpc-cache-az-hpc-cache-usage-model-list) 验证使用情况模型的名称。
+  使用命令 [az hpc-cache usage-model list](/cli/azure/hpc-cache/usage-model#az_hpc_cache_usage_model_list) 验证使用情况模型的名称。
 
 * ``--junction`` - 该接合参数将面向客户端的虚拟文件路径链接到存储系统上的导出路径。
 
@@ -350,13 +350,13 @@ ADLS-NFS 存储目标与 Blob 存储目标和 NFS 存储目标之间具有一些
 
 [设置适用于 Azure HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)
 
-使用 [az hpc-cache storage-target list](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) 选项显示缓存的现有存储目标。 提供缓存名称和资源组（除非已全局设置）。
+使用 [az hpc-cache storage-target list](/cli/azure/hpc-cache/storage-target#az_hpc_cache_storage-target-list) 选项显示缓存的现有存储目标。 提供缓存名称和资源组（除非已全局设置）。
 
 ```azurecli
 az hpc-cache storage-target list --resource-group "scgroup" --cache-name "sc1"
 ```
 
-使用 [az hpc-cache storage-target show](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) 查看有关特定存储目标的详细信息。 （按名称指定存储目标。）
+使用 [az hpc-cache storage-target show](/cli/azure/hpc-cache/storage-target#az_hpc_cache_storage-target-list) 查看有关特定存储目标的详细信息。 （按名称指定存储目标。）
 
 示例：
 

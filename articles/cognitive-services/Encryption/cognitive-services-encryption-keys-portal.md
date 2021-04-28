@@ -6,14 +6,14 @@ services: cognitive-services
 author: erindormier
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/28/2020
+ms.date: 04/07/2021
 ms.author: egeaney
-ms.openlocfilehash: 88a723abc606a527232b7c1949f35c1fedfdba50
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c7476a3ab885e9c127cbd571ad723864bf0d898
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101706837"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534571"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-for-cognitive-services"></a>通过 Azure Key Vault 为认知服务配置客户管理的密钥
 
@@ -31,10 +31,15 @@ ms.locfileid: "101706837"
 * [QnA Maker 静态数据加密](../QnAMaker/encrypt-data-at-rest.md)
 * [翻译器的静态数据加密](../translator/encrypt-data-at-rest.md)
 
+## <a name="speech"></a>语音
+
+* [对静态数据的语音加密](../speech-service/speech-encryption-of-data-at-rest.md)
+
 ## <a name="decision"></a>决策
 
 * [内容审查器静态数据加密](../Content-Moderator/encrypt-data-at-rest.md)
 * [个性化体验创建服务静态数据加密](../personalizer/encrypt-data-at-rest.md)
+* [对静态数据的指标顾问加密](../metrics-advisor/encryption.md)
 
 ## <a name="next-steps"></a>后续步骤
 

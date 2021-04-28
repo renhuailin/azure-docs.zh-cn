@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
-ms.openlocfilehash: be51d4db6c98b63fcb1c9c60df045b494536d78f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4999bd93f338ca7b34b141b88e06e4a769a4aaa1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766509"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876415"
 ---
 在以下部分中，你将设置终端并使用 Azure CLI 来创建 IoT 中心。 若要配置运行 Azure CLI 命令的终端，可以使用基于浏览器的 Azure Cloud Shell，也可以使用本地终端。
 * 若要使用 Cloud Shell，请转到下一部分：[启动 Cloud Shell](#launch-the-cloud-shell)。 
@@ -97,7 +97,7 @@ ms.locfileid: "107766509"
 在本部分中，你将创建一个连接到 IoT 中心的模拟 IoT 设备。 
 
 要创建模拟设备：
-1. 在 CLI shell 中运行 [az iot hub device-identity create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) 命令。 这会创建模拟设备标识。 
+1. 在 CLI shell 中运行 [az iot hub device-identity create](/cli/azure/iot/hub/device-identity#az_iot_hub_device_identity_create) 命令。 这会创建模拟设备标识。 
 
     *YourIotHubName*。 将下面的占位符替换为你为 IoT 中心选择的名称。 
 
@@ -107,7 +107,7 @@ ms.locfileid: "107766509"
     az iot hub device-identity create --device-id myDevice --hub-name {YourIoTHubName} 
     ```
 
-1.  运行 [az iot hub device-identity connection-string show](/cli/azure/ext/azure-iot/iot/hub/device-identity/connection-string#ext_azure_iot_az_iot_hub_device_identity_connection_string_show) 命令。 
+1.  运行 [az iot hub device-identity connection-string show](/cli/azure/iot/hub/device-identity/connection-string#az_iot_hub_device_identity_connection_string_show) 命令。 
 
     ```azurecli
     az iot hub device-identity connection-string show --device-id myDevice --hub-name {YourIoTHubName}

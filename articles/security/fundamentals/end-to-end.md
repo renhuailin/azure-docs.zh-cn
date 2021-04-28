@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 4/07/2021
 ms.author: terrylan
-ms.openlocfilehash: 3ea3c2bcb878dbd8a712e6076dda09853f55e297
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 7612732f01075759d76c2bce5e8c710afc676642
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310336"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132856"
 ---
 # <a name="end-to-end-security-in-azure"></a>Azure 的端到端安全服务
 将 Azure 用于应用程序和服务的最合理原因之一是可以利用其各种安全工具和功能。 这些工具和功能可帮助在安全的 Azure 平台上创建安全的解决方案。 Microsoft Azure 提供具备保密性、完整性和可用性的客户数据，同时还能实现透明的问责制。
@@ -72,10 +72,10 @@ ms.locfileid: "107310336"
 | **数据和应用程序** |  |
 | [Azure 备份](../../backup/backup-overview.md) | 提供简单、安全且经济高效的解决方案来备份数据，并从 Microsoft Azure 云恢复数据。 |
 | [Azure 存储服务加密](../../storage/common/storage-service-encryption.md) | 在存储数据前自动加密数据，并在你检索数据时自动解密数据。 |
-| [Azure 信息保护](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) | 一种基于云的解决方案，使组织能够通过将标签应用于内容来发现文档及电子邮件并进行分类和保护。 |
+| [Azure 信息保护](/azure/information-protection/what-is-information-protection) | 一种基于云的解决方案，使组织能够通过将标签应用于内容来发现文档及电子邮件并进行分类和保护。 |
 | [API 管理](../../api-management/api-management-key-concepts.md) | 一种为现有后端服务创建一致且现代化的 API 网关的方法。 |
 | [Azure 机密计算](../../confidential-computing/overview.md) | 通过该服务，可在云中处理敏感数据时将这些数据隔离。 |
-| [Azure DevOps](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops) | 当开发项目存储在 Azure DevOps 中时，它们会从多个层面的安全和管理技术、操作做法和合规策略中受益。 |
+| [Azure DevOps](/azure/devops/user-guide/what-is-azure-devops) | 当开发项目存储在 Azure DevOps 中时，它们会从多个层面的安全和管理技术、操作做法和合规策略中受益。 |
 | **客户访问** |  |
 | [Azure AD 外部标识](../../active-directory/external-identities/compare-with-b2c.md) | 借助 Azure AD 中的外部标识，可以允许组织外部人员访问应用和资源，而让他们使用所需的任何标识进行登录。 |
 |  | 可以通过 [Azure AD B2B](../../active-directory/external-identities/what-is-b2b.md) 协作与外部用户共享应用和资源。 |
@@ -90,9 +90,9 @@ ms.locfileid: "107310336"
 | [Azure Defender](../../security-center/azure-defender.md) | 为 Azure 和混合资源及工作负载提供高级智能保护。 可在你的环境中使用安全中心的 Azure Defender 仪表板显示和控制云工作负载保护功能。 |
 | [Azure Sentinel](../../sentinel/overview.md) | 可缩放的云原生安全信息事件管理 (SIEM) 和安全业务流程自动响应 (SOAR) 解决方案。 Sentinel 在整个企业范围内提供智能安全分析和威胁智能，为警报检测、威胁可见性、主动搜寻和威胁响应提供单一解决方案。 |
 | **标识&nbsp;&&nbsp;访问&nbsp;管理** |  |
-| [Microsoft 365 Defender](https://docs.microsoft.com/microsoft-365/security/defender/microsoft-365-defender) | 一款统一的破坏前/后企业防御套件，它以本机方式协调各终结点、标识、电子邮件和应用程序中的威胁检测、阻止、调查和响应，以提供针对复杂攻击的综合保护。 |
-|  | [Microsoft Defender for Endpoint](https://docs.microsoft.com/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint.md) 是一个企业终结点安全平台，专门用于帮助企业网络防御、检测、调查和响应高级威胁。 |
-|  | [Microsoft Defender for Identity](https://docs.microsoft.com/defender-for-identity/what-is) 是一个基于云的安全解决方案，可利用本地 Active Directory 信号识别、检测并调查针对组织的高级威胁、身份盗用和恶意内部操作。 |
+| [Microsoft 365 Defender](/microsoft-365/security/defender/microsoft-365-defender) | 一款统一的破坏前/后企业防御套件，它以本机方式协调各终结点、标识、电子邮件和应用程序中的威胁检测、阻止、调查和响应，以提供针对复杂攻击的综合保护。 |
+|  | [Microsoft Defender for Endpoint](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint) 是一个企业终结点安全平台，专门用于帮助企业网络防御、检测、调查和响应高级威胁。 |
+|  | [Microsoft Defender for Identity](/defender-for-identity/what-is) 是一个基于云的安全解决方案，可利用本地 Active Directory 信号识别、检测并调查针对组织的高级威胁、身份盗用和恶意内部操作。 |
 | [Azure AD 标识保护](../../active-directory/identity-protection/howto-identity-protection-configure-notifications.md) | 可发送两种类型的自动通知电子邮件，来帮助你管理用户风险和风险检测：“检测到有风险的用户”电子邮件以及“每周摘要”电子邮件。 |
 | **基础结构和网络** |  |
 | [适用于 IoT 的 Azure Defender](../../defender-for-iot/overview.md) | 一种统一的安全解决方案，用于识别 IoT/OT 设备、漏洞和威胁。 无论你是需要保护现有的 IoT/OT 设备还是为新的 IoT 创新构建安全性，它都使你能够保护整个 IoT/OT 环境。 |
@@ -101,7 +101,7 @@ ms.locfileid: "107310336"
 | **数据和应用程序** |  |
 | [适用于容器注册表的 Azure Defender](../../security-center/defender-for-container-registries-introduction.md) | 包含一个漏洞扫描程序，可扫描基于 Azure 资源管理器的 Azure 容器注册表中的映像，使你能够更深入地了解映像的漏洞。 |
 | [适用于 Kubernetes 的 Azure Defender](../../security-center/defender-for-kubernetes-introduction.md) | 通过 Azure Kubernetes 服务 (AKS) 检索到的日志来监视 AKS 托管服务，从而提供群集级别的威胁防护。 |
-| [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) | 可在多个云中运行的云访问安全代理 (CASB)。 它提供了丰富的显示效果、数据旅程控制和成熟分析服务，用于跨所有云服务发现和防范网络威胁。 |
+| [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) | 可在多个云中运行的云访问安全代理 (CASB)。 它提供了丰富的显示效果、数据旅程控制和成熟分析服务，用于跨所有云服务发现和防范网络威胁。 |
 
 ## <a name="investigate-and-respond"></a>调查和响应
 
@@ -112,11 +112,11 @@ ms.locfileid: "107310336"
 | [Azure Sentinel](../../sentinel/hunting.md) | 强大的搜索和查询工具，可用于在整个组织的数据源中搜寻安全威胁。 |
 | [Azure&nbsp;Monitor&nbsp;日志和指标](../../azure-monitor/overview.md)&nbsp;&nbsp; | 提供了一个全面的解决方案，用于从云和本地环境收集、分析和处理遥测数据。 Azure Monitor 会[将各种源中的数据收集并聚合](../../azure-monitor/data-platform.md#observability-data-in-azure-monitor)到一个通用数据平台，在该平台中，可以使用这些数据进行分析、实现可视化和发出警报。 |
 | **标识&nbsp;&&nbsp;访问&nbsp;管理** |  |
-| [Azure&nbsp;AD&nbsp;报表和监视](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)&nbsp;&nbsp; | 可以通过 [Azure AD 报表](../../active-directory/reports-monitoring/overview-reports.md)全面了解环境中的活动。 |
+| [Azure&nbsp;AD&nbsp;报表和监视](../../active-directory/reports-monitoring/index.yml)&nbsp;&nbsp; | 可以通过 [Azure AD 报表](../../active-directory/reports-monitoring/overview-reports.md)全面了解环境中的活动。 |
 |  | 可以通过 [Azure AD 监视](../../active-directory/reports-monitoring/overview-monitoring.md)将 Azure AD 活动日志路由到其他终结点。|
 | [Azure AD PIM 审核历史记录](../../active-directory/privileged-identity-management/pim-how-to-use-audit-log.md) | 显示过去 30 天内对所有特权角色的所有角色分配和激活情况。 |
 | **数据和应用程序** |  |
-| [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/investigate) | 提供可让你深入了解云环境中活动的工具。 |
+| [Microsoft Cloud App Security](/cloud-app-security/investigate) | 提供可让你深入了解云环境中活动的工具。 |
 
 ## <a name="next-steps"></a>后续步骤
 

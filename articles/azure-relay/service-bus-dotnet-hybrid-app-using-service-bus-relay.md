@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 中继向云中的 Web 应用程序公开�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: 22b582634b623b39545eca225c8df0130606c2bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f12133277d60560a19f35dead3a30be7c934adf
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90983895"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137700"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>使用 Azure 中继向云中的 Web 应用程序公开本地 WCF 服务
 
@@ -245,7 +245,7 @@ ms.locfileid: "90983895"
     ![指定身份验证][18]
 
 1. 返回“创建新 ASP.NET Web 应用程序”，选择“创建”以创建 MVC 应用。
-1. 配置新 Web 应用的 Azure 资源。 遵循[发布 Web 应用](../app-service/quickstart-dotnet-framework.md#launch-the-publish-wizard)中的步骤。 然后，返回本教程并继续执行下一步。
+1. 配置新 Web 应用的 Azure 资源。 遵循[发布 Web 应用](../app-service/quickstart-dotnetcore.md?tabs=netframework48#publish-your-web-app)中的步骤。 然后，返回本教程并继续执行下一步。
 1. 在“解决方案资源管理器”中，右键单击“模型”并选择“添加” > “类”。
 1. 将类命名为 *Product.cs*，然后选择“添加”。
 

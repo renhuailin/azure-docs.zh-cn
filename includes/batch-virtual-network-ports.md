@@ -10,15 +10,15 @@ ms.service: batch
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
-ms.date: 02/16/2021
+ms.date: 04/23/2021
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: baf146bdd89d45c5d7e1ed359822a35d383b7b6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3100e84255f95b2154f7e8d0ce47024546383da4
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103561902"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107990449"
 ---
 ### <a name="general-requirements"></a>一般要求
 
@@ -87,7 +87,7 @@ ms.locfileid: "103561902"
 ### <a name="pools-in-the-cloud-services-configuration"></a>“云服务”配置中的池
 
 > [!WARNING]
-> 云服务配置池已弃用。 请改用虚拟机配置池。
+> 云服务配置池[已被弃用](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)。 请改用虚拟机配置池。
 
 **支持的 VNet** - 仅限经典 VNet
 

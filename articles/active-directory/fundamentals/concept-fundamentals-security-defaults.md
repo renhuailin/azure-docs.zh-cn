@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 04/20/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: efaf6060c0b09e071546038d9e30f2c8065059e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: efa88e1be5c5df5dd09cb5a97c8ece352496ccdb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98600137"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769690"
 ---
 # <a name="what-are-security-defaults"></a>什么是安全默认值？
 
@@ -35,7 +35,7 @@ ms.locfileid: "98600137"
 
 ## <a name="availability"></a>可用性
 
-Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组织能在不增加费用的情况下实现基本级别的安全防护。 你可以在 Azure 门户中打开安全默认值。 如果你的租户是在 2019 年 10 月 22 日或之后创建的，则可能已在租户中启用了安全默认值。 为了保护所有用户，将向所有新创建的租户推出安全默认值。
+Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组织能在不增加费用的情况下实现基本级别的安全防护。 你可以在 Azure 门户中打开安全默认值。 如果你的租户是在 2019 年 10 月 22 日或之后创建的，则可能已在租户中启用了安全默认值。 为了保护我们所有的用户，将向所有新创建的租户推出安全默认值。
 
 ### <a name="whos-it-for"></a>目标用户
 
@@ -70,6 +70,9 @@ Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组
 - 用户管理员
 - 身份验证管理员
 
+> [!WARNING]
+> 确保你的目录至少具有两个分配有全局管理员权限的帐户。 这有助于应对一个全局管理员被锁定的情况。有关更多详细信息，请参阅[在 Azure AD 中管理紧急访问帐户](../roles/security-emergency-access.md)一文。
+
 ### <a name="protecting-all-users"></a>保护所有用户
 
 我们通常认为管理员帐户是唯一需要额外身份验证层的帐户。 管理员对敏感信息具有广泛的访问权限，并且可以更改订阅范围的设置， 但攻击者经常以最终用户为目标。 
@@ -80,7 +83,7 @@ Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组
 
 ### <a name="blocking-legacy-authentication"></a>阻止旧式身份验证
 
-为使用户轻松访问云应用程序，Azure AD 支持各种身份验证协议，包括旧身份验证。 术语“旧式身份验证”是指通过以下方式发出的身份验证请求：
+为使用户轻松访问云应用，Azure AD 支持各种身份验证协议，包括旧身份验证。 术语“旧式身份验证”是指通过以下方式发出的身份验证请求：
 
 - 不使用新式身份验证的客户端（例如 Office 2010 客户端）。
 - 使用 IMAP、SMTP 或 POP3 等旧式邮件协议的任何客户端。

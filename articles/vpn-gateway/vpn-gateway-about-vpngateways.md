@@ -10,12 +10,12 @@ ms.author: cherylmc
 ms.custom:
 - contperf-fy21q1
 - e2e-hybrid
-ms.openlocfilehash: b4a2e1b80fe62c5e8f74e35a1a7f61bdddf89c53
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 9a73b3ab2a9ed939001350609a176dba3c2fc44d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066528"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141138"
 ---
 # <a name="what-is-vpn-gateway"></a>什么是 VPN 网关？
 
@@ -84,4 +84,4 @@ VPN 网关可以部署在 Azure 可用性区域中。 这样可以提高虚拟�
 
 - 有关更多信息，请查看 [VPN 网关常见问题](vpn-gateway-vpn-faq.md)。
 - 查看[订阅和服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)。
-- 了解 Azure 的一些其他关键[网络功能](../networking/networking-overview.md)。
+- 了解 Azure 的一些其他关键[网络功能](../networking/fundamentals/networking-overview.md)。

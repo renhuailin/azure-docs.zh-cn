@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: 41423ce34a62dfdbd5b9a60f683a2366a94d1bfd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f917087eb15d8c77356995299e27dfc1657cb5d
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97976786"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107497194"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUIS 模型和密钥的限制
 LUIS 有几个限制区。 第一个是[模型限制](#model-limits)，它可控制 LUIS 中的意向、实体和功能。 第二个是基于密钥类型的[配额限制](#key-limits)。 限制的第三个区域是用于控制 LUIS 网站的[键盘组合](#keyboard-controls)。 第四个是 LUIS 创作网站和 LUIS [终结点](luis-glossary.md#endpoint) API 之间的[世界区域映射](luis-reference-regions.md)。
@@ -30,7 +30,7 @@ LUIS 有几个限制区。 第一个是[模型限制](#model-limits)，它可控
 | 外部实体 | 无限制 |
 | [意向][intents]|每个应用程序 500 个意向：499 个自定义意向，以及必需的“无”意向。<br>[基于调度](https://aka.ms/dispatch-tool)的应用程序具有相应的 500 个调度源。|
 | [列表实体](./luis-concept-entity-types.md) | 父级：50 个，子级：20,000 项。 规范名称是 *默认最大字符长度。同义词值没有长度限制。 |
-| [机器学习实体 + 角色](./luis-concept-entity-types.md)：<br> 复合、<br>简单、<br>实体角色|限制为 100 个父实体或 330 个实体，以用户先达到的限制为准。 就此限制来说，一个角色计为一个实体。 例如，一个复合实体包含一个简单实体，并且有 2 个角色：1 个复合实体 + 1 个简单实体 + 2 个角色 = 4 个实体（最多 330 个实体）。<br>子实体最多可以嵌套 5 层，每层最多可以有 10 个子级。|
+| [机器学习实体 + 角色](./luis-concept-entity-types.md)：<br> 复合、<br>简单、<br>实体角色|限制为 100 个父实体或 330 个实体，以用户先达到的限制为准。 就此限制来说，一个角色计为一个实体。 例如，一个复合实体包含一个简单实体，并且有 2 个角色：1 个复合实体 + 1 个简单实体 + 2 个角色 = 4 个实体（最多 330 个实体）。<br>子实体最多可以嵌套 5 层，每层最多可以有 20 个子级。|
 |作为特征的模型| 可用作特定模型的特征的模型的最大数量为 10 个模型。 可用作特定模型的特征的短语列表的最大数量为 10 个短语列表。|
 | [预览 - 动态列表实体](./luis-migration-api-v3.md)|2 个列表，其中的每个查询预测终结点请求约 1k 个实体|
 | [模式](luis-concept-patterns.md)|每个应用程序 500 个模式。<br>模式的最大长度为 400 个字符。<br>每个模式 3 个 Pattern.any 实体<br>模式中最多 2 个嵌套可选文本|

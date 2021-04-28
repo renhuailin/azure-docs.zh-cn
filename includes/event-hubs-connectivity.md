@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/21/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 44afd8ea4ef2ab06ec31b7528e9776faebc3b4dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2970a7271761082a358b50c069da82ed785df8b0
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98689717"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107990450"
 ---
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>需要在防火墙上打开哪些端口？ 
 可以将以下协议与 Azure 事件中心配合使用，以便发送和接收事件：
@@ -37,7 +37,7 @@ ms.locfileid: "98689717"
 | 语言 | 选项   |
 | -------- | ----- |
 | .NET     | 具有 [EventHubsTransportType.AmqpTcp](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype) 或 [EventHubsTransportType.AmqpWebSockets](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype) 的 [EventHubConnectionOptions.TransportType](/dotnet/api/azure.messaging.eventhubs.eventhubconnectionoptions.transporttype) 属性 |
-| Java     | 具有 [AmqpTransportType.AMQP](/java/api/com.azure.core.amqp.amqptransporttype) 或 [AmqpTransportType.AMQP_WEB_SOCKETS](/java/api/com.azure.core.amqp.amqptransporttype) 的 [com.microsoft.azure.eventhubs.EventProcessorClientBuilder.transporttype](/java/api/com.azure.messaging.eventhubs.eventprocessorclientbuilder.transporttype) |
+| Java     | 具有 [AmqpTransportType.AMQP](/java/api/com.azure.core.amqp.amqptransporttype) 或 [AmqpTransportType.AMQP_WEB_SOCKETS](/java/api/com.azure.core.amqp.amqptransporttype) 的 [com.microsoft.azure.eventhubs.EventProcessorClientBuilder.transporttype](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/main/java/com/azure/messaging/eventhubs/EventProcessorClientBuilder.java) |
 | 节点  | [EventHubConsumerClientOptions](/javascript/api/@azure/event-hubs/eventhubconsumerclientoptions) 具有 `webSocketOptions` 属性。 |
 | Python | 具有 [TransportType.Amqp](/python/api/azure-eventhub/azure.eventhub.transporttype) 或 [TransportType.AmqpOverWebSocket](/python/api/azure-eventhub/azure.eventhub.transporttype) 的 [EventHubConsumerClient.transport_type](/python/api/azure-eventhub/azure.eventhub.eventhubconsumerclient) |
 

@@ -8,12 +8,12 @@ author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
 ms.date: 4/15/2021
-ms.openlocfilehash: ff67d5150e6bb95e900d3a81e0025216ffb19471
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: dcb77e45f5e1469363eb279626a866c7f719de40
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133378"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537539"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>与 Microsoft 销售团队和合作伙伴联合销售概述
 
@@ -87,6 +87,6 @@ Azure 的联合销售状态：
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解要求，请参阅[联合销售就绪和联合销售激励要求](co-sell-requirements.md)
-- 若要配置用于联合销售的产品/服务，请参阅[配置商业市场产品/服务的联合销售](./co-sell-configure.md)
+- 若要配置用于联合销售的产品/服务，请参阅[配置商业市场产品/服务的联合销售](commercial-marketplace-co-sell.md)
 - 若要验证联合销售状态，请参阅[验证产品/服务的联合销售状态](co-sell-status.md)。
 - 详细了解[通过 Microsoft 进行的联合销售](https://partner.microsoft.com/membership/sell-with-microsoft)。

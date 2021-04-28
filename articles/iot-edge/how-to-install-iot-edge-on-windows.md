@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 98b312066294f2c4ed7f9b089e0f8ea1a68fe4be
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 2799e25dbd84ff07b375c6fa1b103789aae82b49
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059694"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538415"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>在 Windows 设备上安装和预配 Azure IoT Edge for Linux（预览版）
 
@@ -42,7 +42,7 @@ Azure IoT Edge for Linux on Windows 允许你通过 Linux 虚拟机在 Windows �
 
   * Windows 10 版本 1809 或更高版本；内部版本 17763 或更高版本
   * Professional、Enterprise 或 Server 版
-  * 最小可用内存：2 GB
+  * 最小可用内存：1 GB
   * 最小可用磁盘空间：10 GB
   * 如果要使用 Windows 10 创建新的部署，请确保启用 Hyper-V。 有关详细信息，请参阅：如何[在 Windows 10 上安装 Hyper-V](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)。
   * 如果要使用 Windows Server 创建新的部署，请确保安装 Hyper-V 角色。 有关详细信息，请参阅：如何[在 Windows Server 上安装 Hyper-V 角色](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。

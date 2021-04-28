@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: aa364ec434db980bf226008537ca928628fcac1b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35aa0110106f121adb9373f83ff29d299ce049fc
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392079"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135970"
 ---
 # <a name="copy-data-to-and-from-azure-synapse-analytics-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Synapse Analytics 中复制/粘贴数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -252,7 +252,7 @@ Azure Synapse Analytics PolyBase 直接支持作为源并具有特定文件格�
 ```
 
 ## <a name="best-practices-when-using-polybase"></a>使用 PolyBase 的最佳实践
-除了 [Azure Synapse Analytics 的最佳做法](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md)中提到的最佳做法外，以下部分提供其他最佳做法。
+除了 [Azure Synapse Analytics 的最佳做法](../../synapse-analytics/sql/best-practices-dedicated-sql-pool.md)中提到的最佳做法外，以下部分提供其他最佳做法。
 
 ### <a name="required-database-permission"></a>所需数据库权限
 若要使用 PolyBase，要求将数据加载到 Azure Synapse Analytics 的用户在目标数据库上具有[“CONTROL”权限](/sql/relational-databases/security/permissions-database-engine)。 一种实现方法是将该用户添加为“db_owner”角色的成员。 参阅[本节](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)了解如何进行此操作。
@@ -341,7 +341,7 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 | --- | --- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |布尔 |
+| bit |Boolean |
 | char |String, Char[] |
 | date |DateTime |
 | datetime |DateTime |

@@ -5,24 +5,24 @@ description: 了解如何链接 Azure Synapse 和 Azure 机器学习工作区以
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: nibaccam
 author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
-ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 511ee1aa5f5036f5ca5450def0e4481c0608db33
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.custom: devx-track-python, data4ml, synapse-azureml
+ms.openlocfilehash: 3ee5986fbe92d7e585a7c9f2f50bdeceb132c268
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227341"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131379"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>链接 Azure Synapse Analytics 和 Azure 机器学习工作区（预览版）
 
-在本文中，你将了解如何创建一个链接服务来链接 [Azure Synapse Analytics](/azure/synapse-analytics/overview-what-is) 工作区和 [Azure 机器学习工作区](concept-workspace.md)。
+在本文中，你将了解如何创建一个链接服务来链接 [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) 工作区和 [Azure 机器学习工作区](concept-workspace.md)。
 
-通过将 Azure 机器学习工作区与 Azure Synapse 工作区链接起来，你可以将 Apache Spark 池附加为专用计算，用于大规模的数据整理，并从相同笔记本进行模型训练。
+通过将 Azure 机器学习工作区与 Azure Synapse 工作区链接起来，你可以将 Apache Spark 池附加为专用计算，用于大规模的数据整理，或完全从相同 Python 笔记本进行模型训练。
 
 可以通过 [Python SDK](#link-sdk) 或 [Azure 机器学习工作室](#link-studio)链接 ML 工作区和 Synapse 工作区。
 
@@ -35,9 +35,9 @@ ms.locfileid: "107227341"
 
 * [创建 Azure 机器学习工作区](how-to-manage-workspace.md?tabs=python)。
 
-* [在 Azure 门户中创建 Synapse 工作区](/azure/synapse-analytics/quickstart-create-workspace)。
+* [在 Azure 门户中创建 Synapse 工作区](../synapse-analytics/quickstart-create-workspace.md)。
 
-* [使用 Azure 门户、Web 工具或 Synapse Studio 创建 Apache Spark 池](/azure/synapse-analytics/quickstart-create-apache-spark-pool-studio)
+* [使用 Azure 门户、Web 工具或 Synapse Studio 创建 Apache Spark 池](../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)
 
 * 安装 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro)
 

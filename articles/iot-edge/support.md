@@ -4,20 +4,20 @@ description: 了解可以运行 Azure IoT Edge 守护程序和运行时的操作
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/11/2021
+ms.date: 04/16/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f59e2ca06f4ec435522cd06815b22d706a2d894c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67532fce2cac0ec9d05b4caa069e63014b813bd8
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772410"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576340"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge 支持的系统
 
-[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 本文详述 IoT Edge（不管是正式版还是预览版）支持的系统和组件。
 
@@ -52,18 +52,39 @@ Azure IoT Edge 在大多数可以运行容器的操作系统上运行；但是�
   * Microsoft 已在平台上进行了非正式测试，或者知道合作伙伴已在平台上成功运行 Azure IoT Edge
   * 适用于其他平台的安装程序包在这些平台上可能会正常工作
 
-主机 OS 系列必须始终与模块容器内部使用的来宾 OS 系列相匹配。 换言之，在 Linux 上只能使用 Linux 容器，在 Windows 上只能使用 Windows 容器。 使用 Windows 时，仅支持进程隔离容器，而不支持 Hyper-V 隔离容器。  
+主机 OS 系列必须始终与模块容器内部使用的来宾 OS 系列相匹配。
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+换言之，在 Linux 上只能使用 Linux 容器，在 Windows 上只能使用 Windows 容器。 使用 Windows 容器时，仅支持进程隔离的容器，而不支持 Hyper-V 隔离的容器。  
 
 IoT Edge for Linux on Windows 使用 Windows 主机上运行的 Linux 虚拟机中的 IoT Edge。 通过这种方式，可以在 Windows 设备上运行 Linux 模块。
+:::moniker-end
+<!-- end 1.1 -->
 
 ### <a name="tier-1"></a>第 1 层
 
 下表中列出的系统（不管是公开发布版还是公共预览版）受 Microsoft 的支持，并在每个新版本中进行了测试。
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Azure IoT Edge 支持构建为 Linux 或 Windows 容器的模块。 可以将 Linux 容器部署到 Linux 设备，或使用 IoT Edge for Linux on Windows 将 Linux 容器部署到 Windows 设备。 Windows 容器只能部署到 Windows 设备。
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Azure IoT Edge 版本 1.2 仅支持构建为 Linux 容器的模块。
+
+目前不支持在 Windows 设备上运行 IoT Edge 版本 1.2。 [Windows 上的 IoT Edge for Linux](iot-edge-for-linux-on-windows.md) 是在 Windows 设备上运行 IoT Edge 的建议方法，但目前仅运行 IoT Edge 1.1。 有关详细信息，请参阅本文的 [IoT Edge 1.1](?view=iotedge-2018-06&preserve-view=true) 版本。
+
+:::moniker-end
+<!-- end 1.2 -->
 
 #### <a name="linux-containers"></a>Linux 容器
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 构建为 Linux 容器的模块可以部署到 Linux 或 Windows 设备。 对于 Linux 设备，IoT Edge 运行时会直接安装在主机设备上。 对于 Windows 设备，使用 IoT Edge 运行时预生成的 Linux 虚拟机会在主机设备上运行。
 
 [IoT Edge for Linux on Windows](iot-edge-for-linux-on-windows.md) 目前为公共预览版，但我们建议通过它在 Windows 设备上运行 IoT Edge。
@@ -78,12 +99,27 @@ Azure IoT Edge 支持构建为 Linux 或 Windows 容器的模块。 可以将 Li
 | Windows Server 2019 | 公共预览版 |  |  |
 
 所有 Windows 操作系统都必须是 1809 版（内部版本 17763）或更高版本。
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+| 操作系统 | AMD64 | ARM32v7 | ARM64 |
+| ---------------- | ----- | ------- | ----- |
+| Raspberry Pi OS Stretch |  | ![Raspberry Pi OS Stretch + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
+| Ubuntu Server 18.04 | ![Ubuntu Server 18.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | 公共预览版 |
+
+:::moniker-end
+<!-- end 1.2 -->
 
 >[!NOTE]
 >Ubuntu Server 16.04 支持将在 IoT Edge 版本 1.1 发布时结束。
 
 #### <a name="windows-containers"></a>Windows 容器
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 >[!IMPORTANT]
 >IoT Edge 1.1 LTS 是最后一个支持 Windows 容器的发布通道。 从版本 1.2 开始，将不再支持 Windows 容器。 请考虑使用或移动至 [IoT Edge for Linux on Windows](iot-edge-for-linux-on-windows.md) 以在 Windows 设备上运行 IoT Edge。
 
@@ -99,6 +135,17 @@ Azure IoT Edge 支持构建为 Linux 或 Windows 容器的模块。 可以将 Li
 
 >[!NOTE]
 >Windows 10 IoT 核心版支持将在 IoT Edge 版本 1.1 发布时结束。
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+IoT Edge 1.1 LTS 是最后一个支持 Windows 容器的发布通道。 从版本 1.2 开始，将不再支持 Windows 容器。
+
+有关 Windows 容器支持的操作系统的信息，请参阅本文的 [IoT Edge 1.1](?view=iotedge-2018-06&preserve-view=true) 版本。
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ### <a name="tier-2"></a>第 2 层
 
@@ -124,11 +171,17 @@ Azure IoT Edge 支持构建为 Linux 或 Windows 容器的模块。 可以将 Li
 
 IoT Edge 发行资产和发行说明在 [azure-iotedge 版本](https://github.com/Azure/azure-iotedge/releases)页上提供。 本部分介绍这些发行说明中的信息，让你更轻松地直观显示每个版本的组件。
 
-IoT Edge 组件可以单独安装或更新，并后向兼容旧版中的组件。 下表列出了每个版本中包含的组件：
+下表列出了每个版本（以 1.2.0 开始）中包含的组件。 可以单独安装或更新此表中列出的组件，并且它们与旧版本中的组件向后兼容。
 
-| 发布 | 安全守护程序 | Edge 中心<br>Edge 代理 | Libiothsm | Moby |
+| 发布 | aziot-edge | edgeHub<br>edgeAgent | aziot-identity-service |
+| ------- | ---------- | -------------------- | ---------------------- |
+| **1.2** | 1.2.0      | 1.2.0                | 1.2.0                  |
+
+下表列出了每个版本（最高为 1.1 LTS 版本）中包含的组件。 可以单独安装或更新此表中列出的组件，并且它们与旧版本中的组件向后兼容。
+
+| 发布 | iotedge | edgeHub<br>edgeAgent | libiothsm | moby |
 |--|--|--|--|--|
-| **1.1 LTS**<sup>1</sup> | 1.1.0<br>1.1.1 | 1.1.0<br>1.1.1 | 1.1.0<br>1.1.1 |   |
+| **1.1 LTS**<sup>1</sup> | 1.1.0<br>1.1.1<br><br> | 1.1.0<br>1.1.1<br>1.1.2 | 1.1.0<br>1.1.1<br><br> |   |
 | **1.0.10** | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br>1.0.10.3<br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 |  |
 | **1.0.9** | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 |  |
 | **1.0.8** | 1.0.8 | 1.0.8<br>1.0.8.1<br>1.0.8.2<br>1.0.8.3<br>1.0.8.4<br>1.0.8.5 | 1.0.8 | 3.0.6 |
@@ -145,7 +198,8 @@ IoT Edge 使用 Microsoft.Azure.Devices.Client SDK。 有关详细信息，请�
 
 | IoT Edge 版本 | Microsoft.Azure.Devices.Client SDK 版本 |
 |------------------|--------------------------------------------|
-| 1.1 (LTS)      | 1.28.0                                     |
+| 1.2.0            | 1.33.4-NestedEdge
+| 1.1 (LTS)        | 1.28.0                                     |
 | 1.0.10           | 1.28.0                                     |
 | 1.0.9            | 1.21.1                                     |
 | 1.0.8            | 1.20.3                                     |
@@ -158,10 +212,28 @@ IoT Edge 使用 Microsoft.Azure.Devices.Client SDK。 有关详细信息，请�
 Azure IoT Edge 可在虚拟机中运行。 当客户想要利用边缘智能增强现有的基础结构时，经常会使用虚拟机作为 IoT Edge 设备。 主机 VM OS 系列必须与模块容器内部使用的来宾 OS 系列相匹配。 直接在设备上运行 Azure IoT Edge 时，同样要满足此要求。 Azure IoT Edge不区分底层虚拟化技术，将在以 Hyper-V 和 vSphere 等平台为后盾的 VM 中工作。
 
 <br>
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
+<center>
+
+![VM 中的 Azure IoT Edge](./media/support/edge-on-vm-with-windows.png)
+
+</center>
+
+::: moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
 <center>
 
 ![VM 中的 Azure IoT Edge](./media/support/edge-on-vm.png)
+
 </center>
+
+:::moniker-end
 
 ## <a name="minimum-system-requirements"></a>最低系统要求
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: d1302d44a4cb5b09f6dc3b1bf0cb08a12a932c87
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: f18d9cb2a1bf76986a5c77477085f2f12ab728ae
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107029397"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771796"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -78,6 +78,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 |**Azure 事件网格** | Microsoft.EventGrid/topics    | 主题 |
 |**Azure 事件网格** | Microsoft.EventGrid/domains    | 域 |
 |**Azure 应用服务** | Microsoft.Web/sites    | sites |
+|**Azure 应用服务槽** | Microsoft.Web/sites    | sites-`<slot name>` |
 |**Azure 机器学习** | Microsoft.MachineLearningServices/workspaces    | amlworkspace |
 |**SignalR** | Microsoft.SignalRService/SignalR    | signalR |
 |**Azure Monitor** | Microsoft.Insights/privateLinkScopes    | azuremonitor |
@@ -110,7 +111,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 > 只有处于已批准状态的专用终结点才能将流量发送到给定的专用链接资源。 
 
 ### <a name="connecting-using-alias"></a>使用别名进行连接
-别名是当服务所有者在标准负载均衡器后面创建专用链接服务时，生成的唯一名字对象。 服务所有者可与其使用者脱机共享此别名。 使用者可以使用资源 URI 或别名请求连接到专用链接服务。 若要使用别名进行连接，必须使用手动连接批准方法创建专用终结点。 若要使用手动连接批准方法，请在专用终结点创建流期间将手动请求参数设置为 true。 有关详细信息，请查看 [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint) 和 [az network private-endpoint create](/cli/azure/network/private-endpoint#az-network-private-endpoint-create)。 
+别名是当服务所有者在标准负载均衡器后面创建专用链接服务时，生成的唯一名字对象。 服务所有者可与其使用者脱机共享此别名。 使用者可以使用资源 URI 或别名请求连接到专用链接服务。 若要使用别名进行连接，必须使用手动连接批准方法创建专用终结点。 若要使用手动连接批准方法，请在专用终结点创建流期间将手动请求参数设置为 true。 有关详细信息，请查看 [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint) 和 [az network private-endpoint create](/cli/azure/network/private-endpoint#az_network_private_endpoint_create)。 
 
 ## <a name="dns-configuration"></a>DNS 配置 
 使用完全限定的域名 (FQDN) 作为连接字符串的一部分连接到专用链接资源时，必须正确配置 DNS 设置，以解析为分配的专用 IP 地址。 现有的 Azure 服务可能已有在通过公共终结点进行连接时要使用的 DNS 配置。 需要替代此配置，以使用专用终结点进行连接。 

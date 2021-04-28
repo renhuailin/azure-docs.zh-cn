@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/25/2021
 ms.author: memildin
 zone_pivot_groups: manage-asc-initiatives
-ms.openlocfilehash: a901e71da640f8413e5714ad59073324f582c1b9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1231d4b14d4beb2b4e167b3e7572428ec99c8e54
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102441051"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140274"
 ---
 # <a name="create-custom-security-initiatives-and-policies"></a>创建自定义安全计划和策略
 
@@ -24,7 +24,7 @@ ms.locfileid: "102441051"
 如 [Azure Policy 文档](../governance/policy/concepts/definition-structure.md#definition-location)中所述，当你为自定义计划指定位置时，该位置必须是某个管理组或订阅。 
 
 > [!TIP]
-> 有关本页关键概念的概述，请参阅[什么是安全策略、计划和建议？](security-policy-concept.md)
+> 有关本页关键概念的概述，请参阅[什么是安全策略、计划和建议？](security-policy-concept.md)。
 
 ::: zone pivot="azure-portal"
 
@@ -90,7 +90,7 @@ Azure Policy 中的重要概念：
 
 - **分配** 是将计划或策略应用于特定的范围（管理组、订阅等） 
 
-安全中心有一项内置计划（Azure 安全基准），它包括中心内的所有安全策略。 要评估对 Azure 资源的安全中心策略，应对管理组或希望评估的订阅创建一个分配。
+安全中心有一项内置计划（[Azure 安全基准](/security/benchmark/azure/introduction)），它包括中心内的所有安全策略。 要评估对 Azure 资源的安全中心策略，应对管理组或希望评估的订阅创建一个分配。
 
 内置计划默认启用所有安全中心策略。 可以选择禁用内置计划中的某些策略。 例如，若要应用除 Web 应用程序防火墙之外的所有安全中心策略，请将策略的效果参数的值更改为“禁用” 。
 

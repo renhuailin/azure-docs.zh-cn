@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 04/09/2021
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: 本地, OCR, Docker, 容器
-ms.openlocfilehash: 53d59822b378a658f8b6c048de1a32db53a795d1
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: dead48d7d449d1d403359c518eb842b32a54c634
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285716"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779086"
 ---
-# <a name="install-read-ocr-docker-containers-preview"></a>安装“读取 OCR”Docker 容器（预览版） 
+# <a name="install-read-ocr-docker-containers"></a>安装 Read OCR Docker 容器
 
 [!INCLUDE [container hosting on the Microsoft Container Registry](../containers/includes/gated-container-hosting.md)]
 
@@ -27,12 +27,9 @@ ms.locfileid: "106285716"
 
 “读取 OCR”容器用于从图像和文档中提取打印文本和手写文本，并支持 JPEG、PNG、BMP、PDF 和 TIFF 文件格式。 有关详细信息，请参阅[读取 API 操作指南](Vision-API-How-to-Topics/call-read-api.md)。
 
-## <a name="read-32-preview-container"></a>读取 3.2-preview 容器
+## <a name="read-32-container"></a>Read 3.2 容器
 
-> [!NOTE]
-> 读取 3.0-preview 容器已弃用。 
-
-读取 3.2-preview OCR 容器提供：
+Read 3.2 OCR 容器提供的功能：
 * 用于增强准确度的新模型。
 * 对同一文档中的多种语言的支持。
 * 对总共 73 种语言的支持。 请参阅 [OCR 支持的语言](./language-support.md#optical-character-recognition-ocr)完整列表。
@@ -62,7 +59,7 @@ ms.locfileid: "106285716"
 
 填写并提交[请求表单](https://aka.ms/csgate)，以请求批准运行容器。 
 
-[!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
+[!INCLUDE [Request access to run the container](../../../includes/cognitive-services-containers-request-access.md)]
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -92,16 +89,16 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 | 容器 | 容器注册表/存储库/映像名称 |
 |-----------|------------|
 | 读取 2.0-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
-| Read 3.2-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2` |
+| Read 3.2 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2` |
 
 使用 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令下载容器映像。
 
 ### <a name="docker-pull-for-the-read-ocr-container"></a>适用于读取 OCR 容器的 Docker 拉取
 
-# <a name="version-32-preview"></a>[版本 3.2-preview](#tab/version-3-2)
+# <a name="version-32"></a>[版本 3.2](#tab/version-3-2)
 
 ```bash
-docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2
+docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2
 ```
 
 # <a name="version-20-preview"></a>[版本 2.0-preview](#tab/version-2)
@@ -127,11 +124,11 @@ docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview
 
 `docker run` 命令的[示例](computer-vision-resource-container-config.md#example-docker-run-commands)可用。
 
-# <a name="version-32-preview"></a>[版本 3.2-preview](#tab/version-3-2)
+# <a name="version-32"></a>[版本 3.2](#tab/version-3-2)
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -189,9 +186,9 @@ ApiKey={API_KEY}
 
 容器提供了基于 REST 的查询预测终结点 API。 
 
-# <a name="version-32-preview"></a>[版本 3.2-preview](#tab/version-3-2)
+# <a name="version-32"></a>[版本 3.2](#tab/version-3-2)
 
-为容器 API 使用主机 `http://localhost:5000`。 可以在以下位置查看 Swagger 路径：`http://localhost:5000/swagger/vision-v3.2-preview-read/swagger.json`。
+为容器 API 使用主机 `http://localhost:5000`。 可以在以下位置查看 Swagger 路径：`http://localhost:5000/swagger/vision-v3.2-read/swagger.json`。
 
 # <a name="version-20-preview"></a>[版本 2.0-preview](#tab/version-2)
 
@@ -202,7 +199,7 @@ ApiKey={API_KEY}
 ### <a name="asynchronous-read"></a>异步读取
 
 
-# <a name="version-32-preview"></a>[版本 3.2-preview](#tab/version-3-2)
+# <a name="version-32"></a>[版本 3.2](#tab/version-3-2)
 
 可以同时使用 `POST /vision/v3.2/read/analyze` 和 `GET /vision/v3.2/read/operations/{operationId}` 操作来异步读取图像，类似于计算机视觉服务使用相应 REST 操作的方式。 异步 POST 方法将返回一个 `operationId`，它用作 HTTP GET 请求的标识符。
 
@@ -398,7 +395,7 @@ ApiKey={API_KEY}
 
 可以使用以下操作来同步读取图像。 
 
-# <a name="version-32-preview"></a>[版本 3.2-preview](#tab/version-3-2)
+# <a name="version-32"></a>[版本 3.2](#tab/version-3-2)
 
 `POST /vision/v3.2/read/syncAnalyze` 
 
@@ -443,7 +440,7 @@ JSON 响应对象具有与异步版本相同的对象图。 如果你是 JavaScr
 在本文中，你已学习相关概念，以及计算机视觉容器的下载、安装和运行工作流。 综上所述：
 
 * 计算机视觉为 Docker 提供 Linux 容器，用于封装读取。
-* 可从 Azure 中的“容器预览版”容器注册表下载容器映像。
+* 读取容器映像需要应用程序才能运行。 
 * 容器映像在 Docker 中运行。
 * 可以使用 REST API 或 SDK 通过指定容器的主机 URI 来调用读取 OCR 容器中的操作。
 * 必须在实例化容器时指定账单信息。
@@ -455,6 +452,6 @@ JSON 响应对象具有与异步版本相同的对象图。 如果你是 JavaScr
 
 * 查看[配置容器](computer-vision-resource-container-config.md)了解配置设置
 * 查看 [OCR 概述](overview-ocr.md)，了解有关识别印刷文本和手写文本的详细信息
-* 如需详细了解该容器支持的方法，请参阅[读取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b)。
+* 如需详细了解该容器支持的方法，请参阅[读取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b)。
 * 参阅[常见问题解答 (FAQ)](FAQ.md)，以解决与计算机视觉功能相关的问题。
 * 使用更多[认知服务容器](../cognitive-services-container-support.md)

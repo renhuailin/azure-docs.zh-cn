@@ -5,12 +5,12 @@ services: service-fabric
 documentationcenter: .net
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: bbfdc0a30aa673e8602ec9233fde4236c99ef5aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4aed4ab38db9f8d8b95647b6662245c93778afed
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97882205"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107520150"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Azure 上 Service Fabric 群集的概述
 Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 群集中的计算机或 VM 称为群集节点。 群集可以扩展到数千个节点。 如果向群集添加新节点，Service Fabric 会在新增加的节点间重新平衡服务分区副本和实例。 应用程序总体性能提高，访问内存的争用减少。 如果没有高效使用群集中的节点，可以减少群集中节点的数量。 Service Fabric 会再次在减少的节点间重新平衡分区副本和实例以更加充分利用每个节点上的硬件。
@@ -92,25 +92,7 @@ Azure Service Fabric 群集是你拥有的，但部分由 Microsoft 管理的资
 有关详细信息，请阅读[升级群集](service-fabric-cluster-upgrade.md)。
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
-可以在运行以下操作系统的虚拟机上创建群集：
-
-| 操作系统 | 支持的最低 Service Fabric 版本 | 上次支持的 Service Fabric 版本 |
-| --- | --- | --- | 
-| Windows Server 2019 | 6.4.654.9590 | 不适用 |
-| Windows Server 2016 | 所有版本 | 不适用 |
-| Windows Server 20H2 | 7.2.445.9590 | 不适用 |
-| Windows Server 1809 | 6.4.654.9590 | 7.2.445.9590 |
-| Windows Server 1803 | 6.4 | 7.2.445.9590 |
-| Windows Server 1709 | 6.0 | 7.2.445.9590 |
-| Windows Server 2012 | 所有版本 | 不适用 | 
-| Linux Ubuntu 16.04 | 6.0 | 不适用 |
-| Linux Ubuntu 18.04 | 7.1 | 不适用 |
-
-有关其他信息，请参阅 [Azure 中支持的群集版本](./service-fabric-versions.md#supported-operating-systems)
-
-> [!NOTE]
-> 如果决定要在 Windows Server 1709 上部署 Service Fabric，请注意，(1) 它不是长期服务分支，因此你可能必须在将来迁移版本 (2) 如果部署容器，基于 Windows Server 2016 构建的容器不适用于 Windows Server 1709，反之亦然（你必须重新生成它们才能对其进行部署）。
->
+有关其他信息，请参阅 [Azure 中支持的版本](./service-fabric-versions.md)
 
 
 ## <a name="next-steps"></a>后续步骤

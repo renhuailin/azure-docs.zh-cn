@@ -1,17 +1,17 @@
 ---
 title: Azure IoT 设备 SDK 选项概述
 description: 了解如何根据开发角色和任务选择要使用的 Azure IoT 设备 SDK。
-author: elhorton
-ms.author: elhorton
+author: philmea
+ms.author: philmea
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: c9624e9a23d005185429c82199324ac570cbd63e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c35a9045bf809c03630fbb7c57f9d31e7b143422
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102607724"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876450"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Azure IoT 设备 SDK 概述
 

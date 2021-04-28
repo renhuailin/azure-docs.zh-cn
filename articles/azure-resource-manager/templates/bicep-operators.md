@@ -2,23 +2,29 @@
 title: Bicep 运算符
 description: 介绍适用于 Azure 资源管理器部署的 Bicep 运算符。
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: 4bf1005a11b1dcfea9f4b28d6bd3fa7c33e3278f
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.date: 04/15/2021
+ms.openlocfilehash: 0838ebf6bc03f4237ef76e07f1eb6f25aa996fc0
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107211232"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537831"
 ---
 # <a name="bicep-operators"></a>Bicep 运算符
 
-本文介绍创建 Bicep 模板和使用 Azure 资源管理器部署资源时可用的 Bicep 运算符。 运算符用于计算值，比较值或计算条件。 Bicep 运算符有三种类型：[比较](#comparison)、[逻辑](#logical)和[数值](#numeric)。
+本文介绍创建 Bicep 模板和使用 Azure 资源管理器部署资源时可用的 Bicep 运算符。 运算符用于计算值，比较值或计算条件。 有三种类型的 Bicep 运算符：
+
+- [比较](#comparison)
+- [逻辑](#logical)
+- [numeric](#numeric)
+
+将表达式用 `(` 和 `)` 括住，可替代默认 Bicep 运算符优先级。 例如，表达式 x + y/z 先计算除法，然后计算加法。 但表达式 (x + y)/z 则首先计算加法，然后计算除法。
 
 ## <a name="comparison"></a>比较
 
 比较运算符用于比较值并返回 `true` 或 `false`。
 
-| 操作员 | 名称 | 说明 |
+| 运算符 | 名称 | 说明 |
 | ---- | ---- | ---- |
 | `>=` | [大于或等于](bicep-operators-comparison.md#greater-than-or-equal-) | 计算第一个值是否大于或等于第二个值。 |
 | `>`  | 大于 | 计算第一个值是否大于第二个值。 |
@@ -33,7 +39,7 @@ ms.locfileid: "107211232"
 
 逻辑运算符用于计算布尔值，返回非 NULL 值，或计算条件表达式。
 
-| 操作员 | 名称 | 描述 |
+| 运算符 | 名称 | 描述 |
 | ---- | ---- | ---- |
 | `&&` | [And](bicep-operators-logical.md#and-) | 如果所有值为 true，则返回 `true`。 |
 | `||`| [Or](bicep-operators-logical.md#or-) | 确定任一值为 true，则返回 `true`。 |
@@ -45,7 +51,7 @@ ms.locfileid: "107211232"
 
 数值运算符使用整数进行计算并返回整数值。
 
-| 操作员 | 名称 | 说明 |
+| 运算符 | 名称 | 说明 |
 | ---- | ---- | ---- |
 | `*` | [乘](bicep-operators-numeric.md#multiply-) | 两个整数相乘。 |
 | `/` | [除](bicep-operators-numeric.md#divide-) | 两个整数相除。 |

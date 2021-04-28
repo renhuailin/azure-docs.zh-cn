@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 00f9c6510a87770367472c0da6774b94034c6d72
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 5790c7c62b9d97df9683773170301b6e09a47667
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107029771"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728475"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何调用文本分析 REST API
 
@@ -64,6 +64,8 @@ ms.locfileid: "107029771"
 * 用于文本分析的 `/analyze` 终结点，它让你能够在一个 API 调用中使用多个文本分析功能分析同一组文本文档。 以前，若要使用多个功能，需要为每个操作执行单独的 API 调用。 需要使用多个文本分析功能分析大型文档集时，请考虑使用此功能。
 
 * 用于健康状况文本分析的 `/health` 终结点，它可以从临床文档中提取和标记相关的医疗信息。  
+
+请注意，/analyze 和 /health 终结点仅在以下区域提供：美国西部 2、美国东部 2、美国中部、欧洲北部和欧洲西部。
 
 请参阅下表，了解可以通过异步方式使用哪些功能。 请注意，只有几个功能可以从 `/analyze` 终结点进行调用。 
 

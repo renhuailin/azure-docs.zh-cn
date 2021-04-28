@@ -6,12 +6,12 @@ ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: cfc20a30104e24a3950c71bdd8377544803d2f25
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9564160698b1f1bf17fc89ec13b1e292aa3b6098
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604407"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137538"
 ---
 # <a name="azure-percept-firewall-configuration-and-security-recommendations"></a>Azure Percept 防火墙配置和安全性建议
 
@@ -28,7 +28,7 @@ ms.locfileid: "105604407"
 |*.auth.azureperceptdk.azure.net|443|Azure DK SOM 身份验证和授权|
 |*.auth.projectsantacruz.azure.net|443|Azure DK SOM 身份验证和授权|
 
-此外，请查看 [Azure IoT Edge 使用的连接](https://docs.microsoft.com/azure/iot-edge/production-checklist#allow-connections-from-iot-edge-devices)的列表。
+此外，请查看 [Azure IoT Edge 使用的连接](../iot-edge/production-checklist.md#allow-connections-from-iot-edge-devices)的列表。
 
 ## <a name="additional-recommendations-for-deployment-to-production"></a>生产部署的其他建议
 

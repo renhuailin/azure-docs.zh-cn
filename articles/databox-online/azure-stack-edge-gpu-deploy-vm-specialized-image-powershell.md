@@ -6,38 +6,30 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 04/15/2021
 ms.author: alkohli
-ms.openlocfilehash: d03aeb9759fb321b580fa65e06dc09ccde4a44a0
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 6bfa42e99f295b429eba40a27eb59becb8aa80a1
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106555824"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575934"
 ---
-# <a name="deploy-a-vm-from-a-specialized-image-on-your-azure-stack-edge-pro-device-via-azure-powershell"></a>通过 Azure PowerShell 在 Azure Stack Edge Pro 设备上从专用映像部署 VM 
+# <a name="deploy-a-vm-from-a-specialized-image-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>通过 Azure PowerShell 在 Azure Stack Edge Pro GPU 设备上从专用映像部署 VM 
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-本文介绍从专用映像在 Azure Stack Edge Pro 设备上部署虚拟机 (VM) 所需的步骤。 
+本文介绍从专用映像在 Azure Stack Edge Pro GPU 设备上部署虚拟机 (VM) 所需的步骤。 
 
-## <a name="about-specialized-images"></a>关于专用映像
+若要准备通用映像以在 Azure Stack Edge Pro GPU 中部署 VM，请参阅[从 Windows VHD 准备通用映像](azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md)或[从 ISO 准备通用映像](azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md)。
+
+## <a name="about-vm-images"></a>关于 VM 映像
 
 可以使用 Windows VHD 或 VHDX 创建专用映像或通用映像 。 下表汇总了专用映像与通用映像之间的主要差异 。
 
+[!INCLUDE [about-vm-images-for-azure-stack-edge](../../includes/azure-stack-edge-about-vm-images.md)]
 
-|映像类型  |通用  |专用  |
-|---------|---------|---------|
-|目标     |在任何系统上部署         | 面向特定系统        |
-|启动后设置     | 需要在首次启动 VM 时设置。          | 无需设置。 <br> 平台打开 VM。        |
-|配置     |需要主机名、管理员用户和其他特定于 VM 的设置。         |已预配置。         |
-|用于     |从同一个映像创建多个新 VM。         |迁移特定的计算机，或从以前的备份还原 VM。         |
-
-
-本文介绍从专用映像进行部署所需的步骤。 若要从通用映像进行部署，请参阅为设备[使用通用 Windows VHD](azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md)。
-
-
-## <a name="vm-image-workflow"></a>VM 映像工作流
+## <a name="workflow"></a>工作流
 
 从专用映像部署 VM 的概要工作流是：
 
@@ -45,13 +37,12 @@ ms.locfileid: "106555824"
 1. 从 VHD 创建新的托管磁盘。
 1. 从托管磁盘创建新的虚拟机，并附加托管磁盘。
 
-
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在通过 PowerShell 在设备上部署 VM 之前，请确保：
 
 - 你可以访问要用于连接到设备的客户端。
-    - 客户端运行的是[受支持的 OS](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)。
+    - 客户端运行的是[受支持的操作系统](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)。
     - 按照[连接到设备的 Azure 资源管理器](azure-stack-edge-gpu-connect-resource-manager.md)中的说明，将客户端配置为连接到设备的本地 Azure 资源管理器。
 
 ## <a name="verify-the-local-azure-resource-manager-connection"></a>验证本地 Azure 资源管理器连接
@@ -65,7 +56,6 @@ ms.locfileid: "106555824"
     ```
 
 2. 提供用户名 `EdgeArmUser` 和密码以通过 Azure 资源管理器进行连接。 如果你忘记了密码，请[重置 Azure 资源管理器的密码](azure-stack-edge-gpu-set-azure-resource-manager-password.md)，然后使用此密码登录。
- 
 
 ## <a name="deploy-vm-from-specialized-image"></a>从专用映像部署 VM
 
@@ -75,10 +65,10 @@ ms.locfileid: "106555824"
 
 按照以下步骤将 VHD 复制到本地存储帐户：
 
-1. 将源 VHD 复制到 Azure Stack Edge 上的本地 Blob 存储帐户。 
+1. 将源 VHD 复制到 Azure Stack Edge 上的本地 Blob 存储帐户。
 
 1. 记下生成的 URI。 在稍后的步骤中将要使用此 URI。
-    
+
     若要创建和访问本地存储帐户，请参阅[通过 Azure PowerShell 在 Azure Stack Edge 设备上部署 VM](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md) 一文中的[创建存储帐户](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#create-a-storage-account)到[上传 VHD](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#upload-a-vhd) 的每个部分。 
 
 ## <a name="create-a-managed-disk-from-vhd"></a>从 VHD 创建托管磁盘
@@ -301,7 +291,5 @@ ms.locfileid: "106555824"
 
 ## <a name="next-steps"></a>后续步骤
 
-根据部署的性质，可以选择以下过程之一。
-
-- [通过 Azure PowerShell 从通用映像部署 VM](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md)  
-- [通过 Azure 门户部署 VM](azure-stack-edge-gpu-deploy-virtual-machine-portal.md)
+- [从 Windows VHD 准备通用映像，以在 Azure Stack Edge Pro GPU 上部署 VM](azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md)
+- [从 ISO 准备通用映像，以在 Azure Stack Edge Pro GPU 上部署 VM](azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md)

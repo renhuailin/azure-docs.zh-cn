@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: a3dee22a1ee793641e48be6edb1b33a00219217e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 71a4cebcc11657566f65f53508df18efe822c409
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560304"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107514778"
 ---
 # <a name="dv2-and-dsv2-series"></a>Dv2 和 DSv2 系列
 
@@ -28,7 +28,7 @@ Dv2 系列大小在采用 Intel Turbo Boost Technology 2.0的 Intel® Xeon® Pla
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 2 个 vCPU）<br>
 [临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
 <br>
 
@@ -50,7 +50,7 @@ DSv2 系列大小在采用 Intel Turbo Boost Technology 2.0 的 Intel® Xeon® P
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 2 个 vCPU）<br>
 [临时 OS 磁盘](ephemeral-os-disks.md)：支持 <br>
 <br>
 

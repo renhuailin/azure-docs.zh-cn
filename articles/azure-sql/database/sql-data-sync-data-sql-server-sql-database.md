@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: c38e4681c76fb0dd52d77c7dc1438b87a9571a80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 695409740348e78ae51b263b44d9ed1cbadc1054
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103562053"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531925"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>什么是 Azure SQL 数据同步？
 
@@ -151,6 +151,7 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 - 如果存在名称相同但架构不同的表（例如，dbo.customers 和 sales.customers），则只能将其中一个表添加到同步中。
 - 不支持具有用户定义数据类型的列
 - 不支持在不同订阅之间移动服务器。 
+- 如果两个主键只是大小写不同（例如 Foo 和 foo），数据同步也不支持这种情况。
 
 #### <a name="unsupported-data-types"></a>不支持的数据类型
 

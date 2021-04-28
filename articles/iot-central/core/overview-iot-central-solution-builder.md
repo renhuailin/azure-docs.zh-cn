@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 72aa8e5e3284e0ee7fbe63e0fb617b9eba03292e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e762b8c2e2d7f72b89629c520560b205cedcd036
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100417130"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728549"
 ---
 # <a name="iot-central-solution-builder-guide"></a>IoT Central 解决方案构建者指南
 
@@ -51,6 +51,7 @@ IoT Central 具有内置的分析功能，操作员可以使用这些功能来�
 作为解决方案构建者，你可以使用 IoT Central 中的数据导出和规则功能与其他服务集成。 若要了解更多信息，请参阅以下文章：
 
 - [使用数据导出功能将 IoT 数据导出到云目标](howto-export-data.md)
+- [转换 IoT Central 的数据](howto-transform-data.md)
 - [使用工作流将 Azure IoT Central 应用程序与其他云服务相集成](howto-configure-rules-advanced.md)
 - [使用流分析、Azure Functions 和 SendGrid 通过自定义规则扩展 Azure IoT Central](howto-create-custom-rules.md)
 - [使用 Azure Databricks 通过自定义分析扩展 Azure IoT Central](howto-create-custom-analytics.md)

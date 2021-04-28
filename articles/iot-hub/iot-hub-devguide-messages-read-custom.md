@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: 8aebb5b6f6a3ac53bc49fd1d2f75de88667865fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ad57473e0950f031fbeadee2302f85557ed526f
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92147650"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388255"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>对设备到云的消息使用消息路由和自定义终结点
 
@@ -32,13 +32,14 @@ ms.locfileid: "92147650"
 
 ## <a name="endpoints-and-routing"></a>终结点和路由
 
-IoT 中心具有默认的[内置终结点](iot-hub-devguide-messages-read-builtin.md)。 将订阅中的其他服务链接到中心可创建自定义终结点来路由消息。 IoT 中心目前支持将 Azure 存储容器、事件中心、服务总线队列和服务总线主题用作自定义终结点。
+IoT 中心具有默认的[内置终结点](iot-hub-devguide-messages-read-builtin.md)。 将你在订阅中拥有的其他服务链接到中心可创建自定义终结点来路由消息。 IoT 中心目前支持将 Azure 存储容器、事件中心、服务总线队列和服务总线主题用作自定义终结点。
 
 使用路由和自定义终结点时，如果消息不与任何查询匹配，则只将其传送到内置终结点。 若要将消息传递到内置终结点以及自定义终结点，请添加用于将消息发送到内置事件终结点的路由。
 
 > [!NOTE]
 > * IoT 中心仅支持将数据作为 blob 写入 Azure 存储容器。
 > * 不支持将启用“会话”或“重复检测”选项的服务总线队列和主题用作自定义终结点。
+> * 在 Azure 门户中，只能为与中心位于同一订阅中的 Azure 资源创建自定义路由终结点。 可以向你所拥有的其他订阅中的资源创建自定义终结点，但必须使用与 Azure 门户不同的方法来配置自定义终结点。
 
 有关在 IoT 中心创建自定义终结点的详细信息，请参阅 [IoT 中心终结点](iot-hub-devguide-endpoints.md)。
 

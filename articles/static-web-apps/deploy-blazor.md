@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 5b8a94409f082177192847f2c65d44a513ecdbe4
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d683507e8c35db5af3ef7e91674f6a55254e22e2
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305032"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132416"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>教程：在 Azure Static Web Apps 中使用 Blazor 生成静态 Web 应用
 
@@ -43,17 +43,13 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
 
 ## <a name="fallback-route"></a>回退路由
 
-应用程序公开诸如 /counter 和 /fetchdata 这样的 URL，它们映射到应用程序的特定路由 。 由于此应用是作为单页应用程序实现的，因此为所有路由提供了 index.html 文件。 为了确保对于任何路径的请求均返回 index.html，可在客户端项目的“wwwroot”文件夹中找到 staticwebapp.config.json 文件，在该文件中实现[回退路由](./routes.md#fallback-routes)  。
+应用程序公开诸如 /counter 和 /fetchdata 这样的 URL，它们映射到应用程序的特定路由 。 由于此应用是作为单页应用程序实现的，因此为所有路由提供了 index.html 文件。 为了确保对于任何路径的请求均返回 index.html，可在客户端项目的“wwwroot”文件夹中找到 staticwebapp.config.json 文件，在该文件中实现[回退路由](./configuration.md#fallback-routes)  。
 
 ```json
 {
-  "routes": [
-    {
-      "route": "/*",
-      "serve": "/index.html",
-      "statusCode": 200
-    }
-  ]
+  "navigationFallback": {
+    "rewrite": "/index.html"
+  }
 }
 ```
 

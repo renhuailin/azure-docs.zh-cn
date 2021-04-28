@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 09/02/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 28e94cdb0df0a18b41f4c8a0ded362b50df6dcac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a64ccec49248f48a85782cfe9537513a97b2bdfc
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100652966"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868152"
 ---
 # <a name="get-started-with-service-bus-topics"></a>服务总线主题入门
 本教程涵盖以下步骤：
@@ -30,7 +30,7 @@ ms.locfileid: "100652966"
     3. 在此命名空间中创建一个 **主题**。
     4. 在此命名空间中创建对此主题的 **一个订阅**。
 3. [Visual Studio 2017 Update 3（版本 15.3 (26730.01)）](https://www.visualstudio.com/vs)或更高版本。
-4. [NET Core SDK](https://www.microsoft.com/net/download/windows) 2.0 或更高版本。
+4. [NET Core SDK](https://dotnet.microsoft.com/download) 2.0 或更高版本。
  
 ## <a name="send-messages-to-the-topic"></a>将消息发送到主题
 

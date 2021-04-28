@@ -8,12 +8,12 @@ ms.date: 01/03/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 3abca397186572cabb4f7ae99edae8688ea4d9a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e82ac4e1fdb8e5f88c9d83924da50b1ff5c659cc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499503"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777916"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>在 Azure 文件存储上启用 Azure Active Directory 域服务身份验证
 
@@ -93,7 +93,7 @@ ms.locfileid: "102499503"
 
 下图显示了如何通过 SMB 为存储帐户启用 Azure AD DS 身份验证。
 
-![在 Azure 门户中通过 SMB 启用 Azure AD DS 身份验证](media/storage-files-active-directory-enable/portal-enable-active-directory-over-smb.png)
+:::image type="content" source="media/storage-files-active-directory-enable/portal-enable-active-directory-over-smb.png" alt-text="存储帐户中的配置边栏选项卡的屏幕截图，显示 Azure Active Directory 域服务已启用。" lightbox="media/storage-files-active-directory-enable/portal-enable-active-directory-over-smb.png":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -125,7 +125,7 @@ Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
 
 若要使用 Azure CLI 通过 SMB 启用 Azure AD 身份验证，请安装最新的 CLI 版本（版本 2.0.70 或更高版本）。 有关安装 Azure CLI 的详细信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-若要创建新的存储帐户，请调用 [az storage account update](/cli/azure/storage/account#az-storage-account-create)，并将 `--enable-files-aadds` 属性设置为 true。 在下面的示例中，请务必将占位符值替换为你自己的值。 （如果你使用的是以前的预览模块，则用于功能启用的参数为 file-aad。）
+若要创建新的存储帐户，请调用 [az storage account update](/cli/azure/storage/account#az_storage_account_create)，并将 `--enable-files-aadds` 属性设置为 true。 在下面的示例中，请务必将占位符值替换为你自己的值。 （如果你使用的是以前的预览模块，则用于功能启用的参数为 file-aad。）
 
 ```azurecli-interactive
 # Create a new storage account

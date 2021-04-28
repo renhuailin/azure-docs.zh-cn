@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 04/04/2021
 ms.author: memildin
-ms.openlocfilehash: 9d376a374d1934f55b6a6fb15f1642c81b30b2fc
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: e18c7891b5c036e33382578f404c595c106de381
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718658"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138690"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能存档
 
@@ -1063,7 +1063,7 @@ Azure 安全中心对 Azure Key Vault 的威胁防护的支持提供额外的安
 
 为了简化对安全错误配置的修正，快速修正针对批量资源的建议并提高安全评分，请使用“快速修复”修正措施。
 
-此操作可让你选择要对其应用修正措施的资源，并启动一个修正措施来让系统代你配置设置。
+此操作允许你选择要对其应用修正的资源，并启动一个将代表你对设置进行配置的修正操作。
 
 现在，安全中心建议页上已向客户推出了快速修复正式版。
 

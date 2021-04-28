@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: Edge Secured-core Certification Requirements
 ms.service: certification
-ms.openlocfilehash: 5bb02f939bb63fd1c6365fd4570996f09119e958
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: c52a1fe215223d8aceca19f2f382a999f8b470de
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166898"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131704"
 ---
 # <a name="azure-certified-device---edge-secured-core-preview"></a>Azure 认证设备 - Edge Secured-core（预览版） #
 
@@ -161,7 +161,7 @@ Edge Secured-core 是 Azure 认证设备计划中的增量认证，面向运行�
 |(OS)|不可知|
 |验证类型|手动/工具|
 验证|通过工具集验证设备，以确保设备支持最低为 1.2 的 TLS 版本，并支持以下所需的 TLS 密码套件。<ul><li>TLS_RSA_WITH_AES_128_GCM_SHA256</li><li>TLS_RSA_WITH_AES_128_CBC_SHA256</li><li>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256</li><li>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256</li><li>TLS_DHE_RSA_WITH_AES_128_GCM_SHA256</li><li>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256</li><li>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256</li></ul>|
-|资源| [IoT 中心的 TLS 支持](../iot-hub/iot-hub-tls-support.md) <br /> [Windows 10 中的 TLS 密码套件](https://docs.microsoft.com/windows/win32/secauthn/tls-cipher-suites-in-windows-10-v1903) |
+|资源| [IoT 中心的 TLS 支持](../iot-hub/iot-hub-tls-support.md) <br /> [Windows 10 中的 TLS 密码套件](/windows/win32/secauthn/tls-cipher-suites-in-windows-10-v1903) |
 
 ---
 |名称|SecuredCore.Protection.SignedUpdates|

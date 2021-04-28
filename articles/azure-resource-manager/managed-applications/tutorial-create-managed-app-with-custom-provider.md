@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 228d1a8bcd97daebae873de4c69cbec238e0c995
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 7f35f1e82723829f6c0b1190730c5e5fab56fbc8
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312529"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143856"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>教程：创建包含自定义操作和资源的托管应用程序
 
@@ -349,7 +349,7 @@ az managedapp create \
 
 ## <a name="looking-for-help"></a>寻求帮助
 
-如有 Azure 托管应用程序方面的问题，可以尝试使用标记 azure-managed-app 在 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-managed-app) 上提问，或使用标记 azure-managed-application 在 [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-managed-applications.html) 上提问。 该论坛上可能已有类似问题的解答，因此，在发贴之前请先查看以往的提问。 请使用相应的标记以获得更快的响应。 
+如有 Azure 托管应用程序方面的问题，可以尝试使用标记 azure-managed-app 在 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-managed-app) 上提问，或使用标记 azure-managed-application 在 [Microsoft Q&A](/answers/topics/azure-managed-applications.html) 上提问。 该论坛上可能已有类似问题的解答，因此，在发贴之前请先查看以往的提问。 请使用相应的标记以获得更快的响应。 
 
 ## <a name="next-steps"></a>后续步骤
 

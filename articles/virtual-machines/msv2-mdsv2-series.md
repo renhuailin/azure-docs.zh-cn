@@ -1,5 +1,5 @@
 ---
-title: Msv2 系列（预览版）- Azure 虚拟机
+title: Msv2/Mdsv2 中型内存系列 - Azure 虚拟机
 description: Msv2 系列 VM 的规格。
 author: ayshakeen
 ms.service: virtual-machines
@@ -7,18 +7,14 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: a7f4757467523837423d52998eb6b8204090e627
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d85623184ad52fb0d4acd4c49d08badfaf886b30
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562565"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728223"
 ---
-# <a name="msv2-and-mdsv2-series-medium-memory-preview"></a>Msv2 和 Mdsv2 系列中型内存（预览版）
-
-
-> [!IMPORTANT]
-> 通过以下链接填写表单加入预览版： https://aka.ms/Mv2MedMemoryPreview。  
+# <a name="msv2-and-mdsv2-series-medium-memory"></a>Msv2 和 Mdsv2 系列中型内存
 
 Msv2 和 Mdsv2 中型内存 VM 系列具有 Intel® Xeon® Platinum 8280 (Cascade Lake) 处理器，所有核心基础频率为 2.7 GHz，单核睿频为 4.0 GHz。 借助这些 VM，客户可以通过本地磁盘和无磁盘选项获得更大的灵活性。 客户还可以访问一组新的独立 VM 大小，这些 VM 具有更多 CPU 和内存，vCPU 最多可以达到 192 个，内存最多可以达到 4 TiB。 
 

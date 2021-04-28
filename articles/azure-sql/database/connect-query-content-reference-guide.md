@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/17/2021
-ms.openlocfilehash: a8419ff2ba269b05d1fbf7e9d08a284085465fd8
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 96b52c80fa06be8c157ad39fd65be4e491e0cbe3
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257409"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874812"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL 数据库和 Azure SQL 托管实例连接和查询文章
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -86,7 +86,7 @@ Microsoft 提供或支持的所有驱动程序使用传输层安全性 (TLS) 连
 
 | 语言 | 平台 | 其他资源 | 下载 | 入门 |
 | :-- | :-- | :-- | :-- | :-- |
-| C# | Windows、Linux、macOS | [用于 SQL Server 的 Microsoft ADO.NET](/sql/connect/ado-net/microsoft-ado-net-sql-server) | [下载](https://www.microsoft.com/net/download/) | [入门](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
+| C# | Windows、Linux、macOS | [用于 SQL Server 的 Microsoft ADO.NET](/sql/connect/ado-net/microsoft-ado-net-sql-server) | [下载](https://dotnet.microsoft.com/download) | [入门](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
 | Java | Windows、Linux、macOS | [用于 SQL Server 的 Microsoft JDBC 驱动程序](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) | [下载](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server) |  [入门](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
 | PHP | Windows、Linux、macOS| [用于 SQL Server 的 PHP SQL 驱动程序](/sql/connect/php/microsoft-php-driver-for-sql-server) | [下载](/sql/connect/php/download-drivers-php-sql-server) | [入门](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
 | Node.js | Windows、Linux、macOS | [用于 SQL Server 的 Node.js 驱动程序](/sql/connect/node-js/node-js-driver-for-sql-server/) | [安装](/sql/connect/node-js/step-1-configure-development-environment-for-node-js-development/) |  [入门](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)

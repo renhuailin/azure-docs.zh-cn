@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 8701f7bcb2e7ff705e4f1d1b401f4eb3e680f28b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0be2bb59b46dc827001d89f8e0f1be23f35a714d
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501033"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536088"
 ---
 # <a name="configure-geo-replication-for-premium-azure-cache-for-redis-instances"></a>为高级 Azure Cache for Redis 实例配置异地复制
 
@@ -42,7 +42,7 @@ ms.locfileid: "102501033"
 
 完成异地复制配置后，链接缓存对会有以下限制：
 
-- 辅助链接缓存为只读状态；这意味着只能从中读取，但不能向其写入任何数据。 
+- 辅助链接缓存为只读状态；这意味着只能从中读取，但不能向其写入任何数据。 如果选择从 Geo-Secondary 实例读取，务必要注意在 Geo-Primary 和 Geo-Secondary 之间发生完整的数据同步（当 Geo-Primary 或 Geo-Secondary 更新时发生，也会在一些重启情况中发生）时，则 Geo-Secondary 实例将在任何针对它的 Redis 操作中引发错误（表明完整的数据同步正在进行中），直到 Geo-Primary 和 Geo-Secondary 之间完成完整的数据同步。 应生成从 Geo-Seocndary 读取的应用程序，以便在 Geo-Seocndary 引发此类错误时回退到 Geo-Primary。 
 - 添加链接前辅助链接缓存中的任何数据都会被删除。 但如果以后删除了异地复制，复制的数据则会保留在辅助链接缓存中。
 - 链接缓存时无法[缩放](cache-how-to-scale.md)任一缓存。
 - 如果缓存已启用群集功能，则无法[更改分片数目](cache-how-to-premium-clustering.md)。

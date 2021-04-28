@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: 2c1a0ee78e866a12105eca77653b1063943d06db
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4e9eda21f637c285b218b7fdc627631225efdf12
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561060"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131289"
 ---
 # <a name="java-web-app-containerization-and-migration-to-azure-kubernetes-service"></a>将 Java Web 应用容器化并迁移到 Azure Kubernetes 服务
 
@@ -20,7 +20,7 @@ ms.locfileid: "105561060"
 
 Azure Migrate: 应用容器化工具当前支持 -
 
-- 容器化 ASP.NET 应用并将其部署到 AKS 上的 Windows 容器。 [了解详细信息](./tutorial-containerize-aspnet-kubernetes.md)
+- 容器化 ASP.NET 应用并将其部署到 AKS 上的 Windows 容器。 [了解详细信息](./tutorial-app-containerization-aspnet-kubernetes.md)
 - 在 Apache Tomcat（在 Linux 服务器上）上容器化 Java Web 应用，并将其部署到 AKS 上的 Linux 容器中。
 
 
@@ -261,4 +261,4 @@ Azure Migrate: 应用容器化工具可帮助你 -
 
 ## <a name="next-steps"></a>后续步骤
 
-- 容器化 ASP.NET 应用并将其部署到 AKS 上的 Windows 容器。 [了解详细信息](./tutorial-containerize-aspnet-kubernetes.md)
+- 容器化 ASP.NET 应用并将其部署到 AKS 上的 Windows 容器。 [了解详细信息](./tutorial-app-containerization-aspnet-kubernetes.md)

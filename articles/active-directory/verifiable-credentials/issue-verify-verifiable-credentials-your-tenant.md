@@ -10,12 +10,12 @@ ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: e4772b6701065a44416d849faa9a501bd7895f27
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 310c821bf102d267d0b5f77dbf206b896ab2f1c7
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553373"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739217"
 ---
 # <a name="tutorial---issue-and-verify-verifiable-credentials-using-your-tenant-preview"></a>教程：使用租户颁发和识别可验证凭据（预览）
 
@@ -40,7 +40,7 @@ ms.locfileid: "106553373"
 
 任何支持 OpenID Connect 协议的标识提供者都受支持。 支持的标识提供者示例包括 [Azure Active Directory](../fundamentals/active-directory-whatis.md) 和 [Azure AD B2C](../../active-directory-b2c/overview.md)。 在本教程中，我们使用 AAD。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程假设你已完成[前面教程](enable-your-tenant-verifiable-credentials.md)中的步骤，并有权访问你所使用的环境。
 
@@ -227,14 +227,14 @@ ms.locfileid: "106553373"
 
 按照前一教程所述的步骤颁发可验证凭据，并在你的应用中验证该凭据。 一旦成功地完成验证过程，你现在便可以继续了解可验证凭据。
 
-1. 打开命令提示符，然后打开颁发者文件夹。
+1. 打开命令提示符并打开颁发者文件夹。
 2. 运行更新后的节点应用。
 
     ```terminal
     node app.js
     ```
 
-3. 使用其他命令提示符运行 ngrok，在 8081 上设置 URL
+3. 使用其他命令提示符运行 ngrok，在8081上设置 URL
 
     ```terminal
     ngrok http 8081
@@ -250,7 +250,7 @@ ms.locfileid: "106553373"
 
 5. 选择“获取凭据”
 6. 在 Authenticator 中扫描 QR 代码。
-7. 在“此应用或网站可能会出现风险”警告消息中选择“高级”。 
+7. 在“此应用或网站可能会出现风险” 警告消息中选择“高级”。
 
   ![初始警告](media/enable-your-tenant-verifiable-credentials/site-warning.png)
 
@@ -259,26 +259,26 @@ ms.locfileid: "106553373"
   ![有关颁发者的第二条警告](media/enable-your-tenant-verifiable-credentials/site-warning-proceed.png)
 
 
-9. 在“添加凭据”屏幕上，请注意以下几点： 
+9. 在“添加凭据”页面，请注意以下几点： 
     1. 在页面顶部，可以看到红色的“未验证”消息
-    1. 凭据根据我们对显示文件所做的更改进行自定义。
+    1. 凭据根据我们对显示文件所做的更改自定义的。
     1. “登录你的帐户”选项指向 Azure AD 登录页面。
     
-   ![显示有警告的添加凭据页面](media/enable-your-tenant-verifiable-credentials/add-credential-not-verified.png)
+   ![添加凭据页面并显示警告](media/enable-your-tenant-verifiable-credentials/add-credential-not-verified.png)
 
 10. 选择“登录你的帐户”，并使用 Azure AD 租户中的用户进行身份验证。
-11. 身份验证成功后，“添加”按钮不再是灰色。选择“添加”。 
+11. 身份验证成功后，“添加”按钮不再是灰色。选择“添加”。
 
-  ![进行身份验证后的添加凭据屏幕](media/enable-your-tenant-verifiable-credentials/add-credential-not-verified-authenticated.png)
+  ![进行身份验证后添加凭据屏幕](media/enable-your-tenant-verifiable-credentials/add-credential-not-verified-authenticated.png)
 
-现在，我们已使用我们的租户颁发了可验证凭据来生成 VC，同时仍然使用我们的 B2C 租户进行身份验证。
+现在，我们已使用你的租户颁发了可验证凭据来生成 VC，同时仍然使用原来的 B2C 租户进行身份验证。
 
-  ![由 Azure AD 颁发并由 Azure B2C 实例进行身份验证的 VC](media/enable-your-tenant-verifiable-credentials/my-vc-b2c.png)
+  ![由 Azure AD 颁发并由 Azure B2C 实例进行身份验证的 vc](media/enable-your-tenant-verifiable-credentials/my-vc-b2c.png)
 
 
-## <a name="test-verifying-the-vc-using-the-sample-app"></a>使用示例应用验证 VC
+## <a name="test-verifying-the-vc-using-the-sample-app"></a>使用示例应用程序验证 VC
 
-现在，我们已从自己的租户颁发可验证凭据，其中包含来自 Azure AD 的声明，接下来使用示例应用验证该凭据。
+现在，我们已从你自己的租户颁发了可验证凭据，其中包含来自 Azure AD 的声明，接下来使用示例应用验证该凭据。
 
 1. 停止运行颁发者 ngrok 服务。
 
@@ -301,7 +301,7 @@ ms.locfileid: "106553373"
     ```
 
 4. 在浏览器中打开 ngrok url，并使用移动设备中的 Authenticator 扫描 QR 代码。
-5. 在移动设备上，从“新权限请求”页面上选择“允许”。 
+5. 在移动设备上，在“新建权限请求”页面上选择“允许”。
 
    >[!IMPORTANT]
     > 由于示例应用还使用你的 DID 对演示请求进行签名，你会注意到此应用或网站可能会有风险的警告。 此时应该会出现该消息，因为我们尚未将你的 DID 链接到你的域。 按照 [DNS 绑定](how-to-dnsbind.md)说明进行配置。

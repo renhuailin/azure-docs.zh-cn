@@ -10,19 +10,19 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 15d94e17bea6a49bb5bf6fdb6c48252365676042
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 4c3fd064eae2eaa918993b9de9789a25a27d05d7
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107228157"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136471"
 ---
 # <a name="migration-guide-ibm-db2-to-azure-sql-managed-instance"></a>迁移指南：从 Db2 迁移到 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
 
 本指南介绍如何使用适用于 Db2 的 SQL Server 迁移助手将 IBM Db2 数据库迁移到 Azure SQL 托管实例。 
 
-有关其他迁移指南，请参阅 [Azure 数据库迁移指南](https://docs.microsoft.com/data-migration)。 
+有关其他迁移指南，请参阅 [Azure 数据库迁移指南](/data-migration)。 
 
 ## <a name="prerequisites"></a>先决条件 
 

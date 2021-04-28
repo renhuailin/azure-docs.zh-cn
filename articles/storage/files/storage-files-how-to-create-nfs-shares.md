@@ -4,16 +4,16 @@ description: 了解如何创建可使用网络文件系统协议装载的 Azure 
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/22/2021
+ms.date: 04/05/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: b085b9991175d8cd43e2dac0db80c5af4e703c34
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b549c625f0a6ff0480eafc38f84d292e66350950
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521231"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717112"
 ---
 # <a name="how-to-create-an-nfs-share"></a>如何创建 NFS 共享
 Azure 文件共享是位于云中的完全托管文件共享。 本文介绍如何创建可使用 NFS 协议的文件共享。 有关这两种协议的详细信息，请参阅 [Azure 文件共享协议](storage-files-compare-protocols.md)。
@@ -107,25 +107,24 @@ az feature show \
 
 1. 在 Azure 门户中，选择左侧菜单中的“存储帐户”。
 
-    ![Azure 门户主页 - 选择存储帐户](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
+    ![Azure 门户主页 - 选择存储帐户。](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
 
-2. 在显示的“存储帐户”窗口中，选择“添加”。 
-3. 选择要在其中创建存储帐户的订阅。
-4. 选择要在其中创建存储帐户的资源组
+1. 在显示的“存储帐户”窗口中，选择“添加”。 
+1. 选择要在其中创建存储帐户的订阅。
+1. 选择要在其中创建存储帐户的资源组
+1. 然后，输入存储帐户的名称。 所选名称在 Azure 中必须唯一。 该名称还必须为 3 到 24 个字符，并且只能包含数字和小写字母。
+1. 选择存储帐户的位置或使用默认位置。
+1. 对于“性能”，请选择“高级”。 
 
-5. 然后，输入存储帐户的名称。 所选名称在 Azure 中必须唯一。 该名称还必须为 3 到 24 个字符，并且只能包含数字和小写字母。
-6. 选择存储帐户的位置或使用默认位置。
-7. 对于“性能”，请选择“高级”。 
+    必须选择“高级”，“文件共享”才会成为“帐户类型”下拉列表中的可用选项  。
 
-    必须选择“高级”，“FileStorage”才会成为“帐户类型”下拉列表中的可用选项。
+1. 对于“高级帐户类型”，请选择“文件共享” 。
 
-8. 依次选择“帐户类型”、“FileStorage”。 
-9. 将“复制”保留设置为默认值“本地冗余存储(LRS)”。 
+    :::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-performance-premium.png" alt-text="已选中高级性能的屏幕截图。":::
 
-    ![如何创建高级文件共享的存储帐户](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
-
-10. 选择“查看+创建”可查看存储帐户设置并创建帐户。
-11. 选择“创建” 。
+1. 将“复制”保留设置为默认值“本地冗余存储(LRS)”。 
+1. 选择“查看+创建”可查看存储帐户设置并创建帐户。
+1. 选择“创建” 。
 
 创建存储帐户资源后，请导航到该资源。
 
@@ -180,7 +179,7 @@ az storage account create \
     
 1. 选择“创建”。
 
-    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/create-nfs-file-share.png" alt-text="文件共享创建边栏选项卡的屏幕截图":::
+    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/files-nfs-create-share.png" alt-text="文件共享创建边栏选项卡的屏幕截图。":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

@@ -3,14 +3,14 @@ author: baanders
 description: Azure 数字孪生限制的 include 文件
 ms.service: digital-twins
 ms.topic: include
-ms.date: 6/9/2020
+ms.date: 4/8/2021
 ms.author: baanders
-ms.openlocfilehash: 4a69b2ff15fc4857e9fb292d2f753aa68ed875d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34fec713c3764987f07bc7fb89ecb0a0d770a840
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100370083"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728008"
 ---
 ### <a name="functional-limits"></a>功能限制
 
@@ -46,7 +46,8 @@ ms.locfileid: "100370083"
 | API | 功能 | 默认限制 | 可调？ |
 | --- | --- | --- | --- |
 | 模型 API | 每秒请求数 | 100 | 是 |
-| 数字孪生 API | 每秒请求数 | 2,000 | 是 |
+| 数字孪生 API | 每秒读取请求数 | 1,000 | 是 |
+| 数字孪生 API | 每秒 PATCH 请求数 | 1,000 | 是 |
 | 数字孪生 API | 每秒所有孪生体和关系上创建/删除操作的数量 | 50 | 是 |
 | 数字孪生 API | 每秒单个孪生体或其关系上创建/更新/删除操作的数量 | 10 | 否 |
 | 查询 API | 每秒请求数 | 500 | 是 |

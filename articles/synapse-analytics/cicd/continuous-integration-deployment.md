@@ -3,17 +3,17 @@ title: Synapse 工作区的持续集成和交付
 description: 了解如何使用持续集成和交付将工作区中的更改从一个环境（开发、测试、生产）部署到另一个环境。
 author: liudan66
 ms.service: synapse-analytics
-ms.subservice: cicd
+ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 2d49deef4cc7f646032219ff9e8f541cc9c1afd6
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 833478d956560c981bd6cc3ba03b48bb602f563c
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108131180"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739667"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure Synapse 工作区的持续集成和交付
 
@@ -25,17 +25,17 @@ ms.locfileid: "108131180"
 
 本文概述了如何使用 Azure DevOps 发布管道自动将 Azure Synapse 工作区部署到多个环境。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 必须准备好这些先决条件和配置才可自动将 Azure Synapse 工作区部署到多个环境。
 
 ### <a name="azure-devops"></a>Azure DevOps
 
 - Azure DevOps 项目已准备好运行发布管道。
-- [为将签入代码的用户授予组织级别的“基本”访问权限](/azure/devops/organizations/accounts/add-organization-users?view=azure-devops&tabs=preview-page&preserve-view=true)，以便他们能够查看存储库。
+- [为将签入代码的用户授予组织级别的“基本”访问权限](/azure/devops/organizations/accounts/add-organization-users?view=azure-devops&tabs=preview-page)，以便他们能够查看存储库。
 - 授予针对 Azure Synapse 存储库的所有者权限。
 - 请确保已创建自承载 Azure DevOps VM 代理，或使用 Azure DevOps 托管的代理。
-- [为资源组创建 Azure 资源管理器服务连接](/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml&preserve-view=true)的权限。
+- [为资源组创建 Azure 资源管理器服务连接](/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml)的权限。
 - Azure Active Director (Azure AD) 管理员必须[在 Azure DevOps 组织中安装 Azure DevOps Synapse 工作区部署代理扩展](/azure/devops/marketplace/install-extension)。
 - 创建或指定现有服务帐户，以便管道以该服务帐户的身份运行。 你可以使用个人访问令牌，而不是服务帐户，但在删除用户帐户后，你的管道将不起作用。
 

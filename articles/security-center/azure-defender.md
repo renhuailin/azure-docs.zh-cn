@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 0bd0d9c2230b8400aa3197044f944daceb93c715
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 1337167b13b05122aa38b3142a849129171bdc4d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718514"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140292"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender 简介
 
@@ -20,7 +20,7 @@ Azure 安全中心的功能涵盖了云安全性的两大重要领域：
 
 - **云安全态势管理 (CSPM)** - 安全中心对所有 Azure 用户均免费。 免费体验包括 CSPM 功能，如安全功能分数、Azure 计算机中的安全错误配置检测、资产清单等。 使用这些 CSPM 功能增强混合云态势，并跟踪内置策略的合规性。
 
-- **云工作负载保护 (CWP)** - 集成到安全中心内部的云工作负载保护平台 (CWPP)，用于为 Azure 和混合资源及工作负载提供高级智能的保护。 启用 Azure Defender 可带来一系列其他安全功能，如本页所述。 启用任何 Azure Defender 计划后，除了内置策略，还可以添加自定义策略和计划。 可以添加法规标准（例如 NIST 和 Azure CIS）以及 [Azure 安全基准](https://docs.microsoft.com/security/benchmark/azure/introduction)，以获得真正的合规性自定义视图。
+- **云工作负载保护 (CWP)** - 集成到安全中心内部的云工作负载保护平台 (CWPP)，用于为 Azure 和混合资源及工作负载提供高级智能的保护。 启用 Azure Defender 可带来一系列其他安全功能，如本页所述。 启用任何 Azure Defender 计划后，除了内置策略，还可以添加自定义策略和计划。 可以添加法规标准（例如 NIST 和 Azure CIS）以及 [Azure 安全基准](/security/benchmark/azure/introduction)，以获得真正的合规性自定义视图。
 
 可在你的环境中使用安全中心的 Azure Defender 仪表板显示和控制 CWP 功能：
 

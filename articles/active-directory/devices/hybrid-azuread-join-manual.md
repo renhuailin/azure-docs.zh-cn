@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1aafcd8ace846d7da65d95d4148872d5a6eddeee
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 9f1043bf94276c752b816e458ee7513837db0ecd
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587844"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130622"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>教程：手动配置加入到混合 Azure Active Directory 的设备
 
@@ -76,7 +76,7 @@ Azure AD Connect：
 从 Windows 10 1803 开始，即使由联合域中的设备通过 AD FS 进行的混合 Azure AD 加入尝试失败，在 Azure AD Connect 已配置为将计算机/设备对象同步到 Azure AD 的情况下，设备也会尝试使用同步的计算机/设备完成混合 Azure AD 加入操作。
 
 > [!NOTE]
-> 若要使设备注册同步加入成功，作为设备注册配置的一部分，请不要从 Azure AD Connect 同步配置中排除默认设备属性。 若要详细了解同步到 Azure AD 的默认设备属性，请参阅 [Azure AD Connect 同步的属性](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized#windows-10)。
+> 若要使设备注册同步加入成功，作为设备注册配置的一部分，请不要从 Azure AD Connect 同步配置中排除默认设备属性。 若要详细了解同步到 Azure AD 的默认设备属性，请参阅 [Azure AD Connect 同步的属性](../hybrid/reference-connect-sync-attributes-synchronized.md#windows-10)。
 
 若要验证设备是否能够访问系统帐户下的上述 Microsoft 资源，可以使用[测试设备注册连接](/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/)脚本。
 

@@ -12,12 +12,12 @@ ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 5503f9ad57180146c25a01c133a27b34e643496c
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 0acb337af36bdc62504ad7b32de1b31871c1a795
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378340"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141714"
 ---
 # <a name="tutorial-understanding-x509-public-key-certificates"></a>教程：了解 X.509 公钥证书
 
@@ -111,7 +111,7 @@ PEM 证书（扩展名为 .pem）包含以 -----BEGIN CERTIFICATE----- 开头并
 有关详细信息，请参阅以下主题：
 
 * [适用于非专业人士的 X.509 证书术语指南](https://techcommunity.microsoft.com/t5/internet-of-things/the-layman-s-guide-to-x-509-certificate-jargon/ba-p/2203540)
-* [概念性理解 IoT 行业中的 X.509 CA 证书](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-concept)
+* [概念性理解 IoT 行业中的 X.509 CA 证书](./iot-hub-x509ca-concept.md)
 
 ## <a name="next-steps"></a>后续步骤
 

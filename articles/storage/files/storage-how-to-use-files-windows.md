@@ -4,16 +4,16 @@ description: 了解如何在 Windows 和 Windows Server 中使用 Azure 文件�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e64b7efdd430287a7a3a969c5bf62b0c0e2aec9c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e864dcaa2a611746ae813a4f0adf8409fbc50871
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94626888"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789782"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>在 Windows 中使用 Azure 文件共享
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 Azure 文件共享可以在 Windows 和 Windows Server 中无缝使用。 本文介绍在 Windows 和 Windows Server 中使用 Azure 文件共享时的注意事项。
@@ -48,7 +48,7 @@ ms.locfileid: "94626888"
 ## <a name="using-an-azure-file-share-with-windows"></a>在 Windows 中使用 Azure 文件共享
 若要在 Windows 中使用某个 Azure 文件共享，必须装载该文件共享（为其分配驱动器号或装载点路径），或通过其 [UNC 路径](/windows/win32/fileio/naming-a-file)来访问它。 
 
-本文使用存储帐户密钥来访问文件共享。 存储帐户密钥是用于存储帐户的管理员密钥，包括对你要访问的文件共享中所有文件和文件夹的管理员权限，以及对所有文件共享和其他包含在存储帐户中的存储资源（Blob、队列、表等）的权限。 如果这对你的工作负载来说还不够，可使用 [Azure 文件同步](storage-sync-files-planning.md)，或者可使用[通过 SMB 的基于标识的身份验证](storage-files-active-directory-overview.md)。
+本文使用存储帐户密钥来访问文件共享。 存储帐户密钥是用于存储帐户的管理员密钥，包括对你要访问的文件共享中所有文件和文件夹的管理员权限，以及对所有文件共享和其他包含在存储帐户中的存储资源（Blob、队列、表等）的权限。 如果这对你的工作负载来说还不够，可使用 [Azure 文件同步](../file-sync/file-sync-planning.md)，或者可使用[通过 SMB 的基于标识的身份验证](storage-files-active-directory-overview.md)。
 
 若要将预期使用 SMB 文件共享的业务线 (LOB) 应用程序直接迁移到 Azure，通常的模式是使用 Azure 文件共享，而不是在 Azure VM 中运行专用的 Windows 文件服务器。 成功迁移业务线应用程序以使用 Azure 文件共享的一个重要注意事项是，许多业务线应用程序在具有有限系统权限的专用服务帐户的上下文中运行，而不是在 VM 的管理帐户下运行。 因此，必须确保装载/保存服务帐户上下文（而不是管理帐户）中 Azure 文件共享的凭据。
 
@@ -63,7 +63,7 @@ Azure 门户为你提供了一个脚本，你可以使用该脚本将文件共�
 1. 选择“文件共享”。
 1. 选择要装载的文件共享。
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="示例":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="文件共享边栏选项卡的屏幕截图，其中突出显示了文件共享。":::
 
 1. 选择“连接” 。
 
@@ -72,7 +72,7 @@ Azure 门户为你提供了一个脚本，你可以使用该脚本将文件共�
 1. 选择要将共享装载到的驱动器号。
 1. 复制所提供的脚本。
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="示例文本":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="连接边栏选项卡的屏幕截图，其中突出显示了脚本上的复制按钮。":::
 
 1. 将脚本粘贴到你要将文件共享装载到的主机上的 shell 中，然后运行该脚本。
 
@@ -133,13 +133,13 @@ Azure 门户为你提供了一个脚本，你可以使用该脚本将文件共�
 | Windows Server 2019                       | 已禁用             | 使用 Windows 功能删除 |
 | Windows Server 版本 1709+            | 已禁用             | 使用 Windows 功能删除 |
 | Windows 10 版本 1709+                | 已禁用             | 使用 Windows 功能删除 |
-| Windows Server 2016                       | 已启用              | 使用 Windows 功能删除 |
-| Windows 10 版本 1507、1607 和 1703 | 已启用              | 使用 Windows 功能删除 |
-| Windows Server 2012 R2                    | 已启用              | 使用 Windows 功能删除 | 
-| Windows 8.1                               | 已启用              | 使用 Windows 功能删除 | 
-| Windows Server 2012                       | 已启用              | 使用注册表禁用       | 
-| Windows Server 2008 R2                    | 已启用              | 使用注册表禁用       |
-| Windows 7                                 | 已启用              | 使用注册表禁用       | 
+| Windows Server 2016                       | Enabled              | 使用 Windows 功能删除 |
+| Windows 10 版本 1507、1607 和 1703 | Enabled              | 使用 Windows 功能删除 |
+| Windows Server 2012 R2                    | Enabled              | 使用 Windows 功能删除 | 
+| Windows 8.1                               | Enabled              | 使用 Windows 功能删除 | 
+| Windows Server 2012                       | Enabled              | 使用注册表禁用       | 
+| Windows Server 2008 R2                    | Enabled              | 使用注册表禁用       |
+| Windows 7                                 | Enabled              | 使用注册表禁用       | 
 
 ### <a name="auditing-smb-1-usage"></a>审核 SMB 1 使用情况
 > 适用于 Windows Server 2019、Windows Server 半年通道（版本 1709 和 1803）、Windows Server 2016、Windows 10（版本 1507、1607、1703、1709 和 1803）、Windows Server 2012 R2 和 Windows 8.1

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 85e953951d5368dc97312e7810f3c356bda7c6b6
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 69aaf2032ca321d7c0f8039cde2728134138e95c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106218713"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147882"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>教程：将 Azure Active Directory 与 Five9 Plus Adapter (CTI, Contact Center Agents) 集成
 
@@ -146,8 +146,8 @@ ms.locfileid: "106218713"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置 SSO 的 Five9 Plus Adapter（CTI、联系人中心代理）。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Five9 Plus Adapter（CTI、联系人中心代理）”磁贴时，应自动登录到为其设置 SSO 的 Five9 Plus Adapter（CTI、联系人中心代理）。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Five9 Plus Adapter（CTI、联系人中心代理）”磁贴时，应自动登录到为其设置 SSO 的 Five9 Plus Adapter（CTI、联系人中心代理）。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Five9 Plus Adapter（CTI、联系人中心代理）后，你可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 Five9 Plus Adapter（CTI、联系人中心代理）后，你可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

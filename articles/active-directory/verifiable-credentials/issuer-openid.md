@@ -9,16 +9,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 8771c61f96b244e0cc0bca1c61ceb8042b4a5b4c
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 6aa502e1ed0e49192220174d5a8573690035a4a3
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220192"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739127"
 ---
 # <a name="issuer-service-communication-examples-preview"></a>颁发者服务通信示例（预览版）
 
-可验证凭据颁发者服务可以通过从组织的 OpenID 合规标识提供者生成的 ID 令牌中检索声明，来颁发可验证凭据。 本文将会说明如何设置标识提供者，使 Authenticator 能够与它通信，并检索要传递给颁发服务的正确 ID 令牌。 
+Azure AD 可验证凭据服务可以通过从组织的 OpenID 合规标识提供者生成的 ID 令牌中检索声明，来颁发可验证凭据。 本文将会说明如何设置标识提供者，使 Authenticator 能够与它通信，并检索要传递给颁发服务的正确 ID 令牌。 
 
 > [!IMPORTANT]
 > Azure Active Directory 可验证凭据目前为公共预览版。
@@ -31,9 +31,9 @@ ms.locfileid: "106220192"
 | ------- | ----------- |
 | 授权类型 | 必须支持授权代码授权类型。 |
 | 令牌格式 | 必须生成不加密的精简 JWT。 |
-| 签名算法 | 必须生成使用 RSA 256 签名的 JWT。 |
+| 签名算法 | 必须生成使用 RS 256 签名的 JWT。 |
 | 配置文档 | 必须支持 OpenID Connect 配置文档和 `jwks_uri`。 | 
-| 客户端注册 | 必须支持使用 `redirect_uri` 值为 `vclient://openid/` 的公共客户端注册。 | 
+| 客户端注册 | 必须支持使用 `redirect_uri` 值为 `vcclient://openid/` 的公共客户端注册。 | 
 | PKCE | 出于安全原因建议使用，但并非必须使用。 |
 
 下面提供了发送到标识提供者的 HTTP 请求示例。 标识提供者必须根据 OpenID Connect 身份验证标准接受并响应这些请求。

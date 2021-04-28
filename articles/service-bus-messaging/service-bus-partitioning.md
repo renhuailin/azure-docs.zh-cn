@@ -4,12 +4,12 @@ description: 介绍如何使用多个消息中转站对服务总线队列和主�
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9c500a69f853b11437a0dcaa48213fe3a84da53b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc41bcf31102b19dd35f62452b956faf4f029551
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97796629"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750907"
 ---
 # <a name="partitioned-queues-and-topics"></a>分区队列和主题
 
@@ -146,6 +146,7 @@ committableTransaction.Commit();
 * 服务总线当前允许为每个命名空间最多创建 100 个分区队列或主题。 每个分区队列或主题都会计入每个命名空间的 10,000 个实体的配额（不适用于高级层）。
 
 ## <a name="next-steps"></a>后续步骤
+可使用 Azure 门户、PowerShell、CLI、资源管理器模板、.NET、Java、Python 和 JavaScript 来启用分区。 有关详细信息，请参阅[启用分区](enable-partitions.md)。 
 
 在 [AMQP 1.0 协议指南](service-bus-amqp-protocol-guide.md)中了解 AMQP 1.0 消息传送规范的核心概念。
 

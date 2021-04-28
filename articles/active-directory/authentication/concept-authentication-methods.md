@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: ee10aa7c461aca65f385c735f6e9aaa28af7f9e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4d69157f4544daad962cca15e53802e7b912399
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103471692"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530425"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory 中有哪些可用的身份验证和验证方法？
 
@@ -74,7 +74,7 @@ ms.locfileid: "103471692"
 | 语音呼叫                     | 否                     | MFA 和 SSPR              |
 | 密码                       | 是                    |                           |
 
-所有这些身份验证方法都可以在 Azure 门户中进行配置，但更多的是使用 [Microsoft Graph REST API beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta) 进行配置。
+所有这些身份验证方法都可以在 Azure 门户中进行配置，但更多的是使用 [Microsoft Graph REST API](/graph/api/resources/authenticationmethods-overview) 进行配置。
 
 若要详细了解每种身份验证方法的工作原理，请参阅以下单独的概念文章：
 
@@ -104,7 +104,7 @@ ms.locfileid: "103471692"
 
 若要详细了解 MFA 的概念，请参阅 [Azure AD 多重身份验证的工作原理][concept-mfa]。
 
-详细了解如何使用 [Microsoft Graph REST API beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta) 配置身份验证方法。
+详细了解如何使用 [Microsoft Graph REST API 版本](/graph/api/resources/authenticationmethods-overview)配置身份验证方法。
 
 若要审查正在使用的身份验证方法，请参阅[使用 PowerShell 进行 Azure AD 多重身份验证的身份验证方法分析](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/)。
 

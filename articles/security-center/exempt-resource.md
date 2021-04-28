@@ -7,12 +7,12 @@ ms.date: 03/11/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 5ab729f5aa94c7137203c25319a5b830448d00a7
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 13abb35d0fa9ad3ee949b6edf5205de601a02956
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968197"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718550"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>从安全功能分数中免除资源和建议 
 
@@ -34,8 +34,8 @@ ms.locfileid: "105968197"
 |---------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 发布状态：                  | 预览<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]                                                                                                                                                                                                                                             |
 | 定价：                        | 这是一项高级 Azure Policy 功能，Azure Defender 客户无需额外付费即可使用此功能。 对于其他用户，将来可能需要付费。                                                                                                                                                                 |
-| 所需角色和权限： | 要创建免除的订阅所有者或策略参与者 <br>若要创建规则，你需要在 Azure Policy 中编辑策略的权限。<br>若要了解详细信息，请参阅 [Azure Policy 中的 Azure RBAC 权限](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)。                                            |
-| 的限制：                    | 只能为安全中心的默认计划、Azure 安全基准或提供的任意法规标准计划中包含的建议创建免除。 不能免除从自定义计划中生成的建议。 详细了解[策略、计划和建议](security-policy-concept.md)之间的关系。 |
+| 所需角色和权限： | 要创建免除的所有者或资源策略参与者 <br>若要创建规则，你需要在 Azure Policy 中编辑策略的权限。<br>若要了解详细信息，请参阅 [Azure Policy 中的 Azure RBAC 权限](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)。                                            |
+| 的限制：                    | 只能为安全中心的默认计划、[Azure 安全基准](https://docs.microsoft.com/security/benchmark/azure/introduction)或提供的任意法规标准计划中包含的建议创建免除。 不能免除从自定义计划中生成的建议。 详细了解[策略、计划和建议](security-policy-concept.md)之间的关系。 |
 | 云：                         | ![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）                                                                                                                                                                                         |
 |                                 |                                                                                                                                                                                                                                                                                                                                    |
 

@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 2d9b0d97fa1823314f5109a1c7fc79054806c148
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42def04db63d81bdb3eff8098daa8c75924bffec
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93146920"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502073"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>了解 IoT 中心的标识注册表
 
@@ -106,7 +106,7 @@ IoT 中心标识注册表包含名为 **connectionState** 的字段。 开发和
 
 ## <a name="device-and-module-lifecycle-notifications"></a>设备和模块生命周期通知
 
-创建或删除标识时，IoT 中心可通过发送生命周期通知来通知 IoT 解决方案。 为此，IoT 解决方案需要创建一个路由，并将“数据源”设置为等于 *DeviceLifecycleEvents* 或 *ModuleLifecycleEvents*。 默认情况下，不会发送生命周期通知，即无此类路由预先存在。 通知消息包括属性和正文。
+创建或删除设备标识时，IoT 中心可通过发送生命周期通知来通知 IoT 解决方案。 为此，IoT 解决方案需要创建一个路由，并将“数据源”设置为等于 DeviceLifecycleEvents。 默认情况下，不会发送生命周期通知，即无此类路由预先存在。 通过使用等于 DeviceLifecycleEvents 的数据源创建路由，将同时为设备标识和模块标识发送生命周期事件；但是，消息内容会有所不同，具体取决于是为模块标识还是设备标识生成事件。  应注意的是，对于 IoT Edge 模块，模块标识创建流不同于其他模块的创建流，因此对于 IoT Edge 模块，仅当更新的 IoT Edge 模块标识的相应 IoT Edge 设备正在运行时才发送创建通知。 对于其他所有模块，只要在 IoT 中心端更新了模块标识，就发送生命周期通知。  通知消息包括属性和正文。
 
 属性：消息系统属性以 `$` 符号作为前缀。
 

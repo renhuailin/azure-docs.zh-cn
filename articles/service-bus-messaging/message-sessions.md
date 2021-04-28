@@ -2,13 +2,13 @@
 title: Azure 服务总线消息会话 | Microsoft Docs
 description: 本文介绍如何使用会话以连贯有序的方式处理一系列无限多的相关消息。
 ms.topic: article
-ms.date: 04/12/2021
-ms.openlocfilehash: c9a1c4fdccbbc8b38805e23d4895448959126f10
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 04/19/2021
+ms.openlocfilehash: e22dfb2aa7372a227f70fd2bfa8f72d2161cda17
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308460"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750745"
 ---
 # <a name="message-sessions"></a>消息会话
 使用 Microsoft Azure 服务总线会话，能够以连贯有序的方式处理一系列无限多的相关消息。 可以在“先进先出 (FIFO)”和“请求-响应”模式下使用会话。 本文展示了如何在使用服务总线时使用会话来实现这些模式。 
@@ -24,15 +24,6 @@ ms.locfileid: "107308460"
 在会话感知队列或订阅中，如果有至少一个消息带有会话 ID，会话就诞生了。 一旦会话诞生，就没有规定会话何时过期或消失的已定义时间或 API。 理论上讲，从服务总线的角度看，今天可以接收会话的消息，一年后可以接收下一个消息，如果会话 ID 一致，则会话相同。
 
 然而，通常情况下，应用程序都很清楚一组相关消息的开始和结束位置。 服务总线未设置任何具体规则。 例如，应用程序可以将第一个、中间一个和最后一个消息的“Label”属性分别设置为“start”、“content”和“end”   。 content 消息相对位置的计算方式为，当前消息的 SequenceNumber 与 start 消息的 SequenceNumber 的增量值。
-
-可以通过 Azure 资源管理器或在门户中设置标志，为队列或订阅设置 [requiresSession](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) 属性，从而启用此功能。 若要尝试执行相关 API 操作，必须启用此功能。
-
-在门户中，可以在创建实体（队列或订阅）时启用会话，如以下示例中所示。 
-
-:::image type="content" source="./media/message-sessions/queue-sessions.png" alt-text="在创建队列时启用会话":::
-
-:::image type="content" source="./media/message-sessions/subscription-sessions.png" alt-text="在创建订阅时启用会话":::
-
 
 > [!IMPORTANT]
 > 在队列或订阅上启用会话时，客户端应用程序可以 ***不再*** 发送/接收常规消息。 所有消息都必须作为会话的一部分进行发送（通过设置会话 ID）并通过接受会话进行接收。
@@ -90,14 +81,19 @@ ms.locfileid: "107308460"
 > 发送初始请求的应用程序应了解会话 ID，并用它来接受会话，由此锁定需要响应的会话。 一个不错的做法是使用可独一无二地将应用程序实例标识为会话 ID 的 GUID。队列的会话接收方上不应存在会话处理程序或指定的超时，以确保响应可由特定接收方锁定和处理。
 
 ## <a name="next-steps"></a>后续步骤
+可以使用 Azure 门户、PowerShell、CLI、资源管理器模板、.NET、Java、Python 和 JavaScript 在创建队列时启用消息会话。 有关详细信息，请参阅[启用消息会话](enable-message-sessions.md)。 
 
+尝试采用所选语言的示例，了解 Azure 服务总线功能。 
+
+- [适用于 Java 的 Azure 服务总线客户端库示例](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [适用于 Python 的 Azure 服务总线客户端库示例](/samples/azure/azure-sdk-for-python/servicebus-samples/)
+- [适用于 JavaScript 的 Azure 服务总线客户端库示例](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
+- [适用于 TypeScript 的 Azure 服务总线客户端库示例](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
 - [适用于 .NET 的 Azure.Messaging.ServiceBus 示例](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)
-- [适用于 Java 的 Azure 服务总线客户端库 - 示例](/samples/azure/azure-sdk-for-java/servicebus-samples/)
-- [适用于 Python 的 Azure 服务总线客户端库 - 示例](/samples/azure/azure-sdk-for-python/servicebus-samples/)
-- [适用于 JavaScript 的 Azure 服务总线客户端库 - 示例](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
-- [适用于 TypeScript 的 Azure 服务总线客户端库 - 示例](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
-- [适用于 .NET 的 Microsoft.Azure.ServiceBus 示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)（会话和 SessionState 示例）  
 
-若要了解有关服务总线消息的详细信息，请参阅[服务总线队列、主题和订阅](service-bus-queues-topics-subscriptions.md)。
+查找下面的早期 .NET 和 Java 客户端库的示例：
+- [适用于 .NET 的 Microsoft.Azure.ServiceBus 示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
+- [适用于 Java 的 azure-servicebus 示例](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse)
 
 [1]: ./media/message-sessions/sessions.png
+

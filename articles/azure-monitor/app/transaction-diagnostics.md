@@ -4,12 +4,12 @@ description: Application Insights 端到端事务诊断
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 7623b7131e6344a67c468d0436884ebfef9b0058
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60365079c295e154ff0a38277c9ccdec35157e6e
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96746091"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481389"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>统一的跨组件事务诊断
 
@@ -94,3 +94,6 @@ ms.locfileid: "96746091"
 
 这是设计的结果。 所有组件的全部相关项都已显示在左侧（顶部和底部）。 新体验中有两个左侧未包含的相关项：此事件发生前后五分钟内的所有遥测，以及用户时间线。
 
+使用 Application Insights JavaScript SDK 时，事务诊断体验中看到的事件数超过了预期。是否有办法在每个事务中看到更少的事件？
+
+事务诊断体验显示共享[操作 Id](data-model-context.md#operation-id) 的[单个操作](correlation.md#data-model-for-telemetry-correlation)中的所有遥测数据。默认情况下，Application Insights SDK for JavaScript 为每个唯一的页面视图创建一个新操作。 在单页应用程序 (SPA) 中，将仅生成一个页面视图事件，并对生成的所有遥测数据使用单个操作 Id，这会导致许多事件与相同操作相关联。 在这些情况下，你可以使用自动路由跟踪来自动创建新操作，以便在单页应用中进行导航。 必须打开 [enableAutoRouteTracking](javascript.md#single-page-applications)，以便在每次更新 URL 路由（逻辑页面视图出现）时生成页面视图。 若要手动刷新操作 Id，可以通过调用 `appInsights.properties.context.telemetryTrace.traceID = Microsoft.ApplicationInsights.Telemetry.Util.generateW3CId()` 来执行此操作。 手动触发 PageView 事件还将重置操作 Id。

@@ -3,12 +3,12 @@ title: Azure Monitor 警报的操作规则
 description: 了解 Azure Monitor 中的操作规则是什么，以及如何配置和管理操作规则。
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.openlocfilehash: 4f54ee7d21d52386bd18921aec33cabe02046852
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 61c9912fbe12c706c717bed448d3b7c141b40cd2
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772552"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108018342"
 ---
 # <a name="action-rules-preview"></a>操作规则（预览版）
 
@@ -129,7 +129,7 @@ ms.locfileid: "107772552"
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-可使用 Azure CLI 中的 [az monitor action-rule create](/cli/azure/ext/alertsmanagement/monitor/action-rule#ext-alertsmanagement-az-monitor-action-rule-create) 命令创建操作规则。  `az monitor action-rule` 参考只是众多[适用于 Azure Monitor 的 Azure CLI 参考](/cli/azure/azure-cli-reference-for-monitor)中的一种。
+可使用 Azure CLI 中的 [az monitor action-rule create](/cli/azure/monitor/action-rule#az_monitor_action_rule_create) 命令创建操作规则。  `az monitor action-rule` 参考只是众多[适用于 Azure Monitor 的 Azure CLI 参考](/cli/azure/azure-cli-reference-for-monitor)中的一种。
 
 ### <a name="prepare-your-environment"></a>准备环境
 
@@ -165,7 +165,7 @@ ms.locfileid: "107772552"
 
 ### <a name="create-action-rules-with-the-azure-cli"></a>使用 Azure CLI 创建操作规则
 
-查适关于 [az monitor action-rule create](/cli/azure/ext/alertsmanagement/monitor/action-rule#ext-alertsmanagement-az-monitor-action-rule-create) 的 Azure CLI 参考内容，了解必需参数和可选参数。
+查适关于 [az monitor action-rule create](/cli/azure/monitor/action-rule#az_monitor_action_rule_create) 的 Azure CLI 参考内容，了解必需参数和可选参数。
 
 创建操作规则以消除资源组中的通知。
 
@@ -251,7 +251,7 @@ Contoso [在订阅级别定义了一个指标警报](./alerts-metric-overview.md
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-可以使用 Azure CLI 中的 [az monitor action-rule](/cli/azure/ext/alertsmanagement/monitor) 命令查看和管理操作规则。
+可以使用 Azure CLI 中的 [az monitor action-rule](/cli/azure/monitor) 命令查看和管理操作规则。
 
 在使用 Azure CLI 管理操作规则之前，请使用[配置操作规则](#configuring-an-action-rule)中提供的说明来准备环境。
 

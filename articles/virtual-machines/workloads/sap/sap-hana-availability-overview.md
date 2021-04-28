@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 757dfc34e3be12d09b8f965a2bb0295adb712c11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc99f5c21abf23e9323845872ec0a28518473b5c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102504229"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142902"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Azure 虚拟机的 SAP HANA 高可用性
 
@@ -39,7 +39,7 @@ ms.locfileid: "102504229"
 
 - [在 Azure VM 上手动安装单实例 SAP HANA](./hana-get-started.md)
 - [在 Azure VM 中设置 SAP HANA 系统复制](sap-hana-high-availability.md)
-- [备份 Azure VM 上的 SAP HANA](./sap-hana-backup-guide.md)
+- [备份 Azure VM 上的 SAP HANA](../../../backup/sap-hana-db-about.md)
 
 熟悉关于 SAP HANA 的以下文章也是一个不错的主意：
 
@@ -69,19 +69,4 @@ Azure 针对不同组件（如网络、存储和 VM）提供了不同的可用�
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[一个 Azure 区域内的 SAP HANA 可用性](./sap-hana-availability-one-region.md)。
-- 了解[跨 Azure 区域的 SAP HANA 可用性](./sap-hana-availability-across-regions.md)。 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- 了解[跨 Azure 区域的 SAP HANA 可用性](./sap-hana-availability-across-regions.md)。

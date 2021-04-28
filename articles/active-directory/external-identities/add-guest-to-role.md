@@ -12,16 +12,18 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5e9983c265fcc032908424f747066f8f348771f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 455d0ee4855645104dda662785794225f5a23d2d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87908370"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138052"
 ---
 # <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>在 Azure Active Directory 租户中向来自合作伙伴组织的用户授予权限
 
 Azure Active Directory (Azure AD) B2B 协作用户已作为来宾用户添加到目录，默认情况下目录中的来宾权限会受到限制。 企业可能需要某些来宾用户来填充组织中的较高特权角色。 要支持定义较高特权角色，可根据组织需要将来宾用户添加到所需的任何角色。
+
+如果将目录角色分配给来宾用户，则会向来宾用户授予该角色附带的额外权限，包括基本读取权限。 请参阅 [Azure AD 内置角色](../roles/permissions-reference.md)。
 
 ## <a name="default-role"></a>默认角色
 

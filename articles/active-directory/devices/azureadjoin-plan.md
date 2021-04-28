@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc20ca3f3cf6197f8a3ed3a7e0362046f129d369
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 383bd00bb0daf165f37ed98e48a5d36708367920
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305865"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130856"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>操作方法：计划 Azure AD 联接实现
 
@@ -239,7 +239,7 @@ Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混�
 
 ![需要进行多重身份验证才能联接设备](./media/azureadjoin-plan/03.png)
 
-建议：在条件访问中使用[注册或联接设备](/azure/active-directory/conditional-access/concept-conditional-access-cloud-apps#user-actions)这一用户操作，以便在联接设备时强制实施 MFA。
+建议：在条件访问中使用[注册或联接设备](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions)这一用户操作，以便在联接设备时强制实施 MFA。
 
 ## <a name="configure-your-mobility-settings"></a>配置移动性设置
 

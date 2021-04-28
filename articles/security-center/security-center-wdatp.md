@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 04/19/2021
 ms.author: memildin
-ms.openlocfilehash: 88d0a3dcd89ea678d77bc558fc680630bc0f2309
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: e12578fa6da679587d41fb25b17b00eb1645299a
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168172"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718406"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>通过安全中心的集成式 EDR 解决方案 Microsoft Defender for Endpoint 来保护终结点
 
@@ -38,7 +38,7 @@ Microsoft Defender for Endpoint 是一种整体的、云交付的终结点安全
 | 发布状态：                  | 正式发布 (GA)                                                                                                                                                                                                                                                                                      |
 | 定价：                        | 需要[用于服务器的 Azure Defender](defender-for-servers-introduction.md)                                                                                                                                                                                                                                             |
 | 支持的平台：            |  • 运行 Windows 的 Azure 计算机<br> • 运行 Windows 的 Azure Arc 计算机|
-| 支持的 Windows 版本：  |  • 正式发布版 (GA) - 在 Windows Server 2016、2012 R2 和 2008 R2 SP1 上检测<br> • 预览版 - 在 Windows Server 2019、[Windows 虚拟桌面 (WVD)](../virtual-desktop/overview.md) 和 [Windows 10 企业版多会话](../virtual-desktop/windows-10-multisession-faq.yml)（前身为“企业版虚拟桌面”(EVD)）上检测|
+| 用于检测的受支持 Windows 版本：  |  • Windows Server 2019、2016、2012 R2 和 2008 R2 SP1<br> • [Windows 虚拟桌面 (WVD)](../virtual-desktop/overview.md)<br> • [Windows 10 企业版多会话](../virtual-desktop/windows-10-multisession-faq.yml)（前身为企业版虚拟桌面 (EVD)）|
 | 不支持的操作系统：  |  • Windows 10（EVD 或 WVD 除外）<br> • Linux|
 | 所需角色和权限： | 启用/禁用集成：“安全管理员”或“所有者” <br>查看安全中心内的 MDATP 警报：“安全读取者”、“读取者”、“资源组参与者”、“资源组所有者”、“安全管理员”、“订阅所有者”或“订阅参与者”      |
 | 云：                         | ![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) China Gov，其他 Gov                                                        |
@@ -69,20 +69,22 @@ Microsoft Defender for Endpoint 提供：
 配置位置后，无法对其进行更改。 如果自己有 Microsoft Defender for Endpoint 许可，并且需要将数据移动到其他位置，请联系 Microsoft 支持部门重置租户。
 
 
-## <a name="enabling-the-microsoft-defender-for-endpoint-integration"></a>启用 Microsoft Defender for Endpoint 集成
+## <a name="enable-the-microsoft-defender-for-endpoint-integration"></a>启用 Microsoft Defender for Endpoint 集成
 
-1. 确认计算机满足 Defender for Endpoint 的必需要求：
+### <a name="prerequisites"></a>必备知识
 
-    - 对于所有版本的 Windows：
-        - 配置[配置设备代理和 Internet 连接设置](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)中所述的网络设置
-        - 如果要将 Defender to Endpoint 部署到本地计算机，请将其连接到 Azure Arc，如[将混合计算机连接到已启用 Azure Arc 的服务器](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)中所述
-    - 此外，对于 Windows Server 2019 计算机，请确认这些计算机正在运行有效代理，并且具有 MicrosoftMonitoringAgent 扩展
+确认计算机满足 Defender for Endpoint 的必需要求：
 
+1. 配置[配置设备代理和 Internet 连接设置](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)中所述的网络设置
+1. 如果要将 Defender to Endpoint 部署到本地计算机，请将其连接到 Azure Arc，如[将混合计算机连接到已启用 Azure Arc 的服务器](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)中所述
+1. 仅针对 Windows Server 2019 计算机确认计算机正在运行有效代理，并且具有 MicrosoftMonitoringAgent 扩展
 1. 启用适用于服务器的 Azure Defender。 请参阅[快速入门：启用 Azure Defender](enable-azure-defender.md)。
-
 1. 如果已在服务器上许可并部署了 Microsoft Defender for Endpoint，请使用[脱离 Windows 服务器](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers)中所述的过程将其删除。
-1. 在安全中心的菜单中，选择“定价和设置”。
-1. 选择想要更改的订阅。
+1. 如果已在 Azure 租户之间移动订阅，还需要执行一些手动预备步骤。 有关完整的详细信息，请[联系 Microsoft 支持人员](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
+
+
+### <a name="enable-the-integration"></a>启用集成
+1. 从安全中心的菜单中选择“定价和设置”，然后选择要更改的订阅。
 1. 选择“威胁检测”。
 1. 选择“允许 Microsoft Defender for Endpoint 访问我的数据”，然后选择“保存” 。
 

@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: a58e141c6232db08b125b265e3d4ad74c784ba24
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d2b9ea2e075ddcf20860ccb9ab1f2eff654993ad
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92152188"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107499370"
 ---
 # <a name="reference---iot-hub-endpoints"></a>参考 - IoT 中心终结点
 
@@ -76,7 +76,7 @@ Azure IoT 中心属于多租户服务，向各种执行组件公开功能。 下
 
 ## <a name="custom-endpoints"></a>自定义终结点
 
-可将订阅中的现有 Azure 服务链接到用作消息路由终结点的 IoT 中心。 这些终结点充当服务终结点，并用作消息路由的接收器。 设备无法直接写入附加终结点。 详细了解[消息路由](../iot-hub/iot-hub-devguide-messages-d2c.md)。
+可将 Azure 订阅中的现有 Azure 服务链接到充当消息路由终结点的 IoT 中心。 这些终结点充当服务终结点，并用作消息路由的接收器。 设备无法直接写入附加终结点。 详细了解[消息路由](../iot-hub/iot-hub-devguide-messages-d2c.md)。
 
 IoT 中心当前支持将以下 Azure 服务作为附加终结点：
 
