@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: e42096fc32a504ae329d3b179004b6a123de4469
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: f2a8368a5473a3f3d2f679b2be696ca04bc6e5e4
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365631"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070760"
 ---
 # <a name="whats-new-in-computer-vision"></a>计算机视觉中的新增功能
 
@@ -41,7 +41,7 @@ ms.locfileid: "107365631"
 计算机视觉 API 3.2 公共预览版已经更新。 该预览版包含所有计算机视觉功能以及已更新的读取 API 和分析 API。
 
 > [!div class="nextstepaction"]
-> 请参阅[计算机视觉 v3.2 公共预览版 3](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)
+> 请参阅[计算机视觉 v3.2 公共预览版 3](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)
 
 ## <a name="february-2021"></a>2021 年 2 月
 
@@ -56,7 +56,7 @@ ms.locfileid: "107365631"
 若要了解详细信息，请参阅[读取 API 操作指南](Vision-API-How-to-Topics/call-read-api.md)。
 
 > [!div class="nextstepaction"]
-> [使用读取 API v3.2 公共预览版](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)
+> [使用读取 API v3.2 公共预览版](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)
 
 
 ## <a name="january-2021"></a>2021 年 1 月

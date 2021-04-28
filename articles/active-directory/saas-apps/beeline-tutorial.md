@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 4274596f7d53488a2ca5d0e0d3ab3021531907df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9255e10743182c55308fa9a07e9dc8fa08b6bbb4
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97674061"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074756"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-beeline"></a>教程：Azure Active Directory 与 Beeline 集成
 
@@ -110,9 +110,9 @@ ms.locfileid: "97674061"
     ```
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Beeline 客户端支持团队](https://www.beeline.com/support-beeline/)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Beeline 客户端支持团队](https://www.beeline.com/contact-support/)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. Beeline 应用程序需要采用特定格式的 SAML 断言。 请先与 [Beeline 支持团队](https://www.beeline.com/support-beeline/)协作，识别将映射到该应用程序的正确用户标识符。 此外，请接受 [ 支持团队](https://www.beeline.com/support-beeline/)的指导，了解其要用于此映射的属性。 可从应用程序的“用户属性”  选项卡管理此属性的值。 以下屏幕截图显示一个示例。 此处我们已映射了带有“userprincipalname”属性的“用户标识符”声明，这可提供唯一用户 ID，也将在每个后续 SAML 响应中发送到 Beeline 应用程序。
+5. Beeline 应用程序需要采用特定格式的 SAML 断言。 请先与 [Beeline 支持团队](https://www.beeline.com/contact-support/)协作，识别将映射到该应用程序的正确用户标识符。 此外，请接受 [ 支持团队](https://www.beeline.com/contact-support/)的指导，了解其要用于此映射的属性。 可从应用程序的“用户属性”  选项卡管理此属性的值。 以下屏幕截图显示一个示例。 此处我们已映射了带有“userprincipalname”属性的“用户标识符”声明，这可提供唯一用户 ID，也将在每个后续 SAML 响应中发送到 Beeline 应用程序。
 
     ![image](common/edit-attribute.png)
 
@@ -127,7 +127,7 @@ ms.locfileid: "97674061"
 
 ### <a name="configure-beeline-single-sign-on"></a>配置 Beeline 单一登录
 
-若要在 Beeline 端配置单一登录，需要将下载的“联合元数据 XML”以及来自 Azure 门户属性的用户访问 URL 发送给 [Beeline 支持团队](https://www.beeline.com/support-beeline/) 。 他们需要元数据和用户访问 URL，以便在两个端均正确配置 SAML SSO 连接。
+若要在 Beeline 端配置单一登录，需要将下载的“联合元数据 XML”以及来自 Azure 门户属性的用户访问 URL 发送给 [Beeline 支持团队](https://www.beeline.com/contact-support/) 。 他们需要元数据和用户访问 URL，以便在两个端均正确配置 SAML SSO 连接。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -182,7 +182,7 @@ ms.locfileid: "97674061"
 
 ### <a name="create-beeline-test-user"></a>创建 Beeline 测试用户
 
-在本部分中，在 Beeline 中创建用户 Britta Simon。 在执行单一登录前，Beeline 应用程序需要所有用户在应用程序中均进行了预配。 因此，请与 [Beeline 支持团队](https://www.beeline.com/support-beeline/)协作，将所有这些用户预配到应用程序中。
+在本部分中，在 Beeline 中创建用户 Britta Simon。 在执行单一登录前，Beeline 应用程序需要所有用户在应用程序中均进行了预配。 因此，请与 [Beeline 支持团队](https://www.beeline.com/contact-support/)协作，将所有这些用户预配到应用程序中。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

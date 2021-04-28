@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: ccfda4975b6453ed67edc2640520bc0a76df5709
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d063a0870616b5b977df18c56d9d66515b03d0a5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644873"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870852"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>教程：使用 Azure Data Share 接受和接收数据  
 
@@ -106,7 +106,7 @@ ms.locfileid: "105644873"
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-运行 [az datashare consumer invitation list](/cli/azure/ext/datashare/datashare/consumer/invitation#ext_datashare_az_datashare_consumer_invitation_list) 命令查看当前邀请：
+运行 [az datashare consumer invitation list](/cli/azure/datashare/consumer/invitation#az_datashare_consumer_invitation_list) 命令查看当前邀请：
 
 ```azurecli
 az datashare consumer invitation list --subscription 11111111-1111-1111-1111-111111111111
@@ -140,7 +140,7 @@ az datashare consumer invitation list --subscription 11111111-1111-1111-1111-111
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-使用 [az datashare consumer share-subscription create](/cli/azure/ext/datashare/datashare/consumer/share-subscription#ext_datashare_az_datashare_consumer_share_subscription_create) 命令创建 Data Share。
+使用 [az datashare consumer share-subscription create](/cli/azure/datashare/consumer/share-subscription#az_datashare_consumer_share_subscription_create) 命令创建 Data Share。
 
 ```azurecli
 az datashare consumer share-subscription create --resource-group share-rg \
@@ -175,7 +175,7 @@ az datashare consumer share-subscription create --resource-group share-rg \
 
 使用这些命令配置要接收数据的位置。
 
-1. 运行 [az datashare consumer share-subscription list-source-dataset](/cli/azure/ext/datashare/datashare/consumer/share-subscription#ext_datashare_az_datashare_consumer_share_subscription_list_source_dataset) 命令获取数据集 ID：
+1. 运行 [az datashare consumer share-subscription list-source-dataset](/cli/azure/datashare/consumer/share-subscription#az_datashare_consumer_share_subscription_list_source_dataset) 命令获取数据集 ID：
 
    ```azurecli
    az datashare consumer share-subscription list-source-dataset \
@@ -221,7 +221,7 @@ az datashare consumer share-subscription create --resource-group share-rg \
      \"storage_account_name\":\"datashareconsumersa\",\"kind\":\"BlobFolder\",\"prefix\":\"consumer\"}'
    ```
 
-1. 使用 [az datashare consumer dataset-mapping create](/cli/azure/ext/datashare/datashare/consumer/dataset-mapping#ext_datashare_az_datashare_consumer_dataset_mapping_create) 命令创建数据集映射：
+1. 使用 [az datashare consumer dataset-mapping create](/cli/azure/datashare/consumer/dataset-mapping#az_datashare_consumer_dataset_mapping_create) 命令创建数据集映射：
 
    ```azurecli
    az datashare consumer dataset-mapping create --resource-group "share-rg" \
@@ -230,7 +230,7 @@ az datashare consumer share-subscription create --resource-group share-rg \
      --subscription 11111111-1111-1111-1111-111111111111
    ```
 
-1. 运行 [az datashare consumer share-subscription synchronization start](/cli/azure/ext/datashare/datashare/consumer/share-subscription/synchronization#ext_datashare_az_datashare_consumer_share_subscription_synchronization_start) 命令启动数据集同步。
+1. 运行 [az datashare consumer share-subscription synchronization start](/cli/azure/datashare/consumer/share-subscription/synchronization#az_datashare_consumer_share_subscription_synchronization_start) 命令启动数据集同步。
 
    ```azurecli
    az datashare consumer share-subscription synchronization start \
@@ -239,7 +239,7 @@ az datashare consumer share-subscription create --resource-group share-rg \
      --subscription 11111111-1111-1111-1111-111111111111
    ```
 
-   运行 [az datashare consumer share-subscription synchronization list](/cli/azure/ext/datashare/datashare/consumer/share-subscription/synchronization#ext_datashare_az_datashare_consumer_share_subscription_synchronization_list) 命令查看同步的列表：
+   运行 [az datashare consumer share-subscription synchronization list](/cli/azure/datashare/consumer/share-subscription/synchronization#az_datashare_consumer_share_subscription_synchronization_list) 命令查看同步的列表：
 
    ```azurecli
    az datashare consumer share-subscription synchronization list \
@@ -248,7 +248,7 @@ az datashare consumer share-subscription create --resource-group share-rg \
      --subscription 11111111-1111-1111-1111-111111111111
    ```
 
-   使用 [az datashare consumer share-subscription list-source-share-synchronization-setting](/cli/azure/ext/datashare/datashare/consumer/share-subscription#ext_datashare_az_datashare_consumer_share_subscription_list_source_share_synchronization_setting) 命令查看在你的共享上设置的同步设置。
+   使用 [az datashare consumer share-subscription list-source-share-synchronization-setting](/cli/azure/datashare/consumer/share-subscription#az_datashare_consumer_share_subscription_list_source_share_synchronization_setting) 命令查看在你的共享上设置的同步设置。
 
    ```azurecli
    az datashare consumer share-subscription list-source-share-synchronization-setting \
@@ -274,7 +274,7 @@ az datashare consumer share-subscription create --resource-group share-rg \
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-运行 [az datashare consumer trigger create](/cli/azure/ext/datashare/datashare/consumer/trigger#ext_datashare_az_datashare_consumer_trigger_create) 命令来触发快照：
+运行 [az datashare consumer trigger create](/cli/azure/datashare/consumer/trigger#az_datashare_consumer_trigger_create) 命令来触发快照：
 
 ```azurecli
 az datashare consumer trigger create --resource-group "share-rg" \

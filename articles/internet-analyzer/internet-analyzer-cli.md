@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 46caae53ed81de335c2b9d5ddbd3fd7f89424fdd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4e200440bd37d3593d5fc096b3dd79eff25dc1d8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780408"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877220"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>使用 CLI（预览版）创建 Internet 分析器测试
 
@@ -132,6 +132,6 @@ Internet 分析器 CLI 将公开以下类型的资源：
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关支持的命令和用法示例的完整列表，请浏览 [Internet 分析器 CLI 参考](/cli/azure/ext/internet-analyzer/internet-analyzer)。
+* 有关支持的命令和用法示例的完整列表，请浏览 [Internet 分析器 CLI 参考](/cli/azure/internet-analyzer)。
 * 阅读 [Internet 分析器常见问题解答](internet-analyzer-faq.md)。
 * 了解有关嵌入 [Internet 分析器客户端](internet-analyzer-embed-client.md)和创建[自定义终结点](internet-analyzer-custom-endpoint.md)的详细信息。

@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: f1b5d6499594e9026e1615be5361c52c9ce2f4ef
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 44b7d5c4202307eba572caecf6910a90223c51bb
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774802"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015926"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>将受 HSM 保护的密钥导入 Key Vault (BYOK)
 
@@ -58,14 +58,15 @@ ms.locfileid: "107774802"
 
 |供应商名称|供应商类型|支持的 HSM 模型|详细信息|
 |---|---|---|---|
-|nCipher|制造商，<br/>HSM 即服务|<ul><li>HSM 的 nShield 系列</li><li>nShield 即服务</ul>|[nCipher 新的 BYOK 工具和文档](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|
-|Thales|制造商|<ul><li>固件版本为 7.3 或更高版本的 Luna HSM 7 系列</li></ul>| [Luna BYOK 工具和文档](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
-|Fortanix|制造商，<br/>HSM 即服务|<ul><li>自防御密钥管理服务 (SDKMS)</li><li>Equinix SmartKey</li></ul>|[将 SDKMS 密钥导出到 BYOK 的云提供程序 - Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
-|Marvell|制造商|所有具有以下固件版本的 LiquidSecurity HSM<ul><li>固件版本 2.0.4 或更高版本</li><li>固件版本 3.2 或更高版本</li></ul>|[Marvell BYOK 工具和文档](https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/exporting-marvell-hsm-keys-to-cloud-azure-key-vault.html)|
 |Cryptomathic|ISV（企业密钥管理系统）|多个 HSM 品牌和型号，包括<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>有关详细信息，请参阅 [Cryptomathic 站点](https://www.cryptomathic.com/azurebyok)|[Cryptomathic BYOK 工具和文档](https://www.cryptomathic.com/azurebyok)|
+|Entrust|制造商，<br/>HSM 即服务|<ul><li>HSM 的 nShield 系列</li><li>nShield 即服务</ul>|[nCipher 新的 BYOK 工具和文档](https://www.entrust.com/digital-security/hsm/solutions/use-case/cloud-security/bring-your-own-key-hold-your-own-key)|
+|Fortanix|制造商，<br/>HSM 即服务|<ul><li>自防御密钥管理服务 (SDKMS)</li><li>Equinix SmartKey</li></ul>|[将 SDKMS 密钥导出到 BYOK 的云提供程序 - Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
+|IBM|制造商|IBM 476x, CryptoExpress|[IBM Enterprise Key Management Foundation](https://www.ibm.com/security/key-management/ekmf-bring-your-own-key-azure)|
+|Marvell|制造商|所有具有以下固件版本的 LiquidSecurity HSM<ul><li>固件版本 2.0.4 或更高版本</li><li>固件版本 3.2 或更高版本</li></ul>|[Marvell BYOK 工具和文档](https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/exporting-marvell-hsm-keys-to-cloud-azure-key-vault.html)|
+|nCipher|制造商，<br/>HSM 即服务|<ul><li>HSM 的 nShield 系列</li><li>nShield 即服务</ul>|[nCipher 新的 BYOK 工具和文档](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|
 |Securosys SA|制造商，<br/>HSM 即服务|Primus HSM 系列，Securosys Clouds HSM|[Primus BYOK 工具和文档](https://www.securosys.com/primus-azure-byok)|
 |StorMagic|ISV（企业密钥管理系统）|多个 HSM 品牌和型号，包括<ul><li>Utimaco</li><li>Thales</li><li>nCipher</li></ul>请参阅 [StorMagic 站点](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)以了解详细信息|[SvKMS 和 Azure Key Vault BYOK](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|
-|IBM|制造商|IBM 476x, CryptoExpress|[IBM Enterprise Key Management Foundation](https://www.ibm.com/security/key-management/ekmf-bring-your-own-key-azure)|
+|Thales|制造商|<ul><li>固件版本为 7.3 或更高版本的 Luna HSM 7 系列</li></ul>| [Luna BYOK 工具和文档](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
 |Utimaco|制造商，<br/>HSM 即服务|u.trust Anchor, CryptoServer|[Utimaco BYOK 工具和集成指南](https://support.hsm.utimaco.com/support/downloads/byok)|
 ||||
 

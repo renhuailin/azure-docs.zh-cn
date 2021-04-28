@@ -3,13 +3,13 @@ title: 教程：将事件中心数据发送到数据仓库 - 事件网格
 description: 介绍如何通过 Azure Functions 和事件网格触发器将事件中心捕获的数据存储在 Azure Synapse Analytics 中。
 ms.topic: tutorial
 ms.date: 12/07/2020
-ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 7b0e471e32650490e1896bb6ea171c8223b21378
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 094cf874c072e0e59a04447d26070d8ac1a0deef
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96854710"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108073478"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>教程：将大数据流式传输到数据仓库
 Azure [事件网格](overview.md)是一项智能事件路由服务，可用于对应用和服务的通知或事件作出响应。 例如，它可以触发 Azure Function 来处理已捕获到 Blob 存储或 Data Lake Store 的事件中心数据。 本[示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)演示了如何使用事件网格和 Azure Functions 将捕获的事件中心数据从 Blob 存储迁移到 Azure Synapse Analytics（特别是专用的 SQL 池）。

@@ -6,12 +6,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 1b6c02778b0ee790d81c713283e653058c29c153
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 668f661d2c8f349f4dac3f850800d83890d2f4d9
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92899791"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831431"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>教程：创建图形 Runbook
 
@@ -234,9 +235,9 @@ ms.locfileid: "92899791"
 
 5. 选择“ResourceGroupNameParameterSetName”作为参数集。 “ResourceGroupName”和“Name”字段旁边出现了感叹号，表示它们是必需的参数。 请注意，这两个字段都需要字符串值。
 
-6. 选择“名称”。 为“数据源”字段选择“PowerShell 表达式”。 对于用于启动此 Runbook 的 VM，请键入带双引号的计算机名称。 单击 **“确定”** 。
+6. 选择“名称”。 为“数据源”字段选择“PowerShell 表达式”。 对于用于启动此 Runbook 的 VM，请键入带双引号的计算机名称。 单击“确定”。 
 
-7. 选择“ResourceGroupName”。 对“数据源”字段使用值“PowerShell 表达式”，并键入带双引号的资源组名称 。 单击 **“确定”** 。
+7. 选择“ResourceGroupName”。 对“数据源”字段使用值“PowerShell 表达式”，并键入带双引号的资源组名称 。 单击“确定”。 
 
 8. 单击“测试”窗格，以便测试 Runbook。
 
@@ -297,11 +298,11 @@ Runbook 当前会启动资源组中为 `Start-AzVM` cmdlet 指定的 VM。 如�
 
 6. **GetVirtualMachineInResourceGroupNameParamSet** 参数集。 “ResourceGroupName”和“Name”字段旁边出现了感叹号，表示它们指定了必需的参数。 请注意，这两个字段都需要字符串值。
 
-7. 在“Name”的“数据源”下选择“Runbook 输入”，然后选择“VMName”   。 单击 **“确定”** 。
+7. 在“Name”的“数据源”下选择“Runbook 输入”，然后选择“VMName”   。 单击“确定”。 
 
-8. 在“ResourceGroupName”的“数据源”下选择“Runbook 输入”，然后选择“ResourceGroupName”   。 单击 **“确定”** 。
+8. 在“ResourceGroupName”的“数据源”下选择“Runbook 输入”，然后选择“ResourceGroupName”   。 单击“确定”。 
 
-9. 在“Status”的“数据源”下选择“常量值”，然后选择“True”   。 单击 **“确定”** 。
+9. 在“Status”的“数据源”下选择“常量值”，然后选择“True”   。 单击“确定”。 
 
 10. 创建从 `Specify Subscription Id` 到 `Get-AzVM` 的链接。
 

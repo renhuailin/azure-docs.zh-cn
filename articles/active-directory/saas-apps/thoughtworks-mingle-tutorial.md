@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: c3eeb1577e628965e3e5a35fa20c072224383149
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a2450a45140b3ba47c172f05d2eb7200252ca23b
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92514616"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070994"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thoughtworks-mingle"></a>教程：Azure Active Directory 与 Thoughtworks Mingle 集成
 
@@ -104,7 +104,7 @@ ms.locfileid: "92514616"
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.mingle.thoughtworks.com`
 
     > [!NOTE]
-    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Thoughtworks Mingle 客户支持团队](https://support.thoughtworks.com/hc/categories/201743486-Mingle-Community-Support)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 Thoughtworks Mingle 客户支持团队获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -120,13 +120,13 @@ ms.locfileid: "92514616"
 
     c. 注销 URL
 
-### <a name="configure-thoughtworks-mingle-single-sign-on"></a>配置 Thoughtworks Mingle 单一登录
+### <a name="configure-thoughtworks-mingle-single-sign-on&quot;></a>配置 Thoughtworks Mingle 单一登录
 
 1. 以管理员身份登录 **Thoughtworks Mingle** 公司站点。
 
 2. 单击 **“管理员”** 选项卡，然后单击 **SSO 配置**。
    
-    ![“管理员”选项卡](./media/thoughtworks-mingle-tutorial/ic785157.png "SSO 配置")
+    ![“管理员”选项卡](./media/thoughtworks-mingle-tutorial/ic785157.png &quot;SSO 配置")
 
 3. 在 **“SSO 配置”** 部分中，执行以下步骤：
    
@@ -186,7 +186,7 @@ ms.locfileid: "92514616"
 
 7. 在“添加分配”对话框中，单击“分配”按钮。  
 
-### <a name="create-thoughtworks-mingle-test-user"></a>创建 Thoughtworks Mingle 测试用户
+### <a name="create-thoughtworks-mingle-test-user&quot;></a>创建 Thoughtworks Mingle 测试用户
 
 要使 Azure AD 用户能够登录，必须使用其 Azure Active Directory 用户名将其预配到 Thoughtworks Mingle 应用程序中。 对于 Thoughtworks Mingle，预配是一项手动任务。
 
@@ -196,7 +196,7 @@ ms.locfileid: "92514616"
 
 2. 单击 **“配置文件”**。
    
-    ![第一个项目](./media/thoughtworks-mingle-tutorial/ic785160.png "第一个项目")
+    ![第一个项目](./media/thoughtworks-mingle-tutorial/ic785160.png &quot;第一个项目")
 
 3. 单击 **“管理员”** 选项卡，然后单击 **“用户”**。
    

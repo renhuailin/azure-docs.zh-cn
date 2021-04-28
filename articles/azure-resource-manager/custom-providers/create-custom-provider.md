@@ -5,12 +5,12 @@ author: MSEvanhi
 ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: evanhi
-ms.openlocfilehash: 721fe31f514cb948c93dc2a779a92ef3b2775ef9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 915856e3f9875c0a3318bc19138eaae8742bf72f
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779230"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871734"
 ---
 # <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>快速入门：创建自定义提供程序并部署自定义资源
 
@@ -265,7 +265,7 @@ armclient PUT $addURI $requestBody
 
 ## <a name="custom-resource-provider-commands"></a>自定义资源提供程序命令
 
-通过 [custom-providers](/cli/azure/ext/custom-providers/custom-providers/resource-provider) 命令来使用自定义资源提供程序。
+通过 [custom-providers](/cli/azure/custom-providers/resource-provider) 命令来使用自定义资源提供程序。
 
 ### <a name="list-custom-resource-providers"></a>列出自定义资源提供程序
 

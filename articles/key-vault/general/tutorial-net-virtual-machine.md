@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/17/2021
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-csharp, devx-track-azurepowershell
-ms.openlocfilehash: c08d0c210e992cba5bca2695fda0bcf08c4689dc
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ba299ff52ccdf811d739efdb1d379889444a02b8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772084"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868386"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>教程：将 Azure Key Vault 与通过 .NET 编写的虚拟机配合使用
 
@@ -138,7 +138,7 @@ Set-AzKeyVaultAccessPolicy -ResourceGroupName <YourResourceGroupName> -VaultName
 
 ### <a name="install-net-core"></a>安装 .NET Core
 
-若要安装 .NET Core，请转到 [.NET 下载](https://www.microsoft.com/net/download)页。
+若要安装 .NET Core，请转到 [.NET 下载](https://dotnet.microsoft.com/download)页。
 
 ### <a name="create-and-run-a-sample-net-app"></a>创建并运行示例 .NET 应用
 

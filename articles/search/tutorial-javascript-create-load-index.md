@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 03/18/2021
 ms.custom: devx-track-js
 ms.devlang: javascript
-ms.openlocfilehash: 0fd28262f4a4b852386fa354037e69c5097109c5
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: ef48074c5346374b12eb5a3a3aea50b2c753a082
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104723481"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950291"
 ---
 # <a name="2---create-and-load-search-index-with-javascript"></a>2 - 创建和加载包含 JavaScript 的搜索索引
 
@@ -61,14 +61,14 @@ ms.locfileid: "104723481"
 * [npm 包@azure/search-documents](https://www.npmjs.com/package/@azure/search-documents)
 * [参考文档](/javascript/api/overview/azure/search-documents-readme)
 
-1. 在 Visual Studio Code 中，在子目录 `search-web/bulk-insert` 中打开 `bulk_insert_books.js` 文件，将以下变量替换为您自己的值，以便在 Azure 搜索 SDK 中进行身份验证：
+1. 在 Visual Studio Code 中，在子目录 `search-website/bulk-insert` 中打开 `bulk_insert_books.js` 文件，将以下变量替换为您自己的值，以便在 Azure 搜索 SDK 中进行身份验证：
 
     * YOUR-SEARCH-RESOURCE-NAME
     * YOUR-SEARCH-ADMIN-KEY
 
     :::code language="javascript" source="~/azure-search-javascript-samples/search-website/bulk-insert/bulk_insert_books.js" highlight="16,17" :::
 
-1. 在 Visual Studio 中打开用于项目目录的子目录 `search-web/bulk-insert` 的集成终端，并运行以下命令以安装依赖项。 
+1. 在 Visual Studio 中打开用于项目目录的子目录 `search-website/bulk-insert` 的集成终端，并运行以下命令以安装依赖项。 
 
     ```bash
     npm install 
@@ -76,7 +76,7 @@ ms.locfileid: "104723481"
 
 ## <a name="run-the-bulk-import-script-for-search"></a>运行批量导入脚本以进行搜索
 
-1. 继续使用 Visual Studio 中的集成终端作为项目目录的子目录 `search-web/bulk-insert` ，运行以下 bash 命令来运行 `bulk_insert_books.js` 脚本：
+1. 继续使用 Visual Studio 中的集成终端作为项目目录的子目录 `search-website/bulk-insert` ，运行以下 bash 命令来运行 `bulk_insert_books.js` 脚本：
 
     ```javascript
     npm start

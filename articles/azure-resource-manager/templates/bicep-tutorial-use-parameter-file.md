@@ -2,15 +2,15 @@
 title: 教程 - 使用参数文件部署 Azure 资源管理器 Bicep 文件
 description: 使用参数文件，其中包含用于部署 Bicep 文件的值。
 author: mumian
-ms.date: 03/10/2021
+ms.date: 04/27/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ca3a73cde9549bfcdfd47bc4f1955904fac69d1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 73af451292462d9963720924df7718116a78baaa
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102632350"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071480"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-azure-resource-manager-bicep-file"></a>教程：使用参数文件部署 Azure 资源管理器 Bicep 文件
 
@@ -112,7 +112,7 @@ New-AzResourceGroup `
 New-AzResourceGroupDeployment `
   -Name prodenvironment `
   -ResourceGroupName myResourceGroupProd `
-  -TemplateFile $templateFile `
+  -TemplateFile $bicepFile `
   -TemplateParameterFile $parameterFile
 ```
 
@@ -126,7 +126,7 @@ az group create \
 az deployment group create \
   --name prodenvironment \
   --resource-group myResourceGroupProd \
-  --template-file $templateFile \
+  --template-file $bicepFile \
   --parameters $prodParameterFile
 ```
 

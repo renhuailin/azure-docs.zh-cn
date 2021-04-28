@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 1ec046ca6b42a5ca8f33b0347c562c85abd42684
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2eaaeda879e9946610d2f18f7ccf530bc60f7910
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98756174"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108072200"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>教程：使用授权代码流让用户登录并从 JavaScript 单页应用 (SPA) 调用 Microsoft Graph API
 
@@ -574,7 +574,7 @@ ID 令牌包含有关用户的基本信息，例如其显示名称。 如果你�
 1. 直观地提示用户以交互方式登录，用户可以选择在合适的时间登录，应用程序也可以稍后重试 `acquireTokenSilent`。 如果用户可以在不中断应用程序的情况下使用应用程序的其他功能，则通常会使用此方法。 例如，应用程序中有可用的未经身份验证的内容。 在这种情况下，用户可以决定何时登录并访问受保护的资源，或何时刷新已过时的信息。
 
 > [!NOTE]
-> 本教程默认使用 `loginPopup` 和 `acquireTokenPopup` 方法。 如果使用 Internet Explorer，我们建议使用 `loginRedirect` 和 `acquireTokenRedirect` 方法，因为 Internet Explorer 和弹出窗口存在一个[已知问题](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)。 有关使用重定向方法实现相同结果的示例，请参阅 GitHub 上的 [authRedirect.js](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/blob/quickstart/JavaScriptSPA/authRedirect.js)。
+> 本教程默认使用 `loginPopup` 和 `acquireTokenPopup` 方法。 如果使用 Internet Explorer，我们建议使用 `loginRedirect` 和 `acquireTokenRedirect` 方法，因为 Internet Explorer 和弹出窗口存在一个[已知问题](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)。 有关使用重定向方法实现相同结果的示例，请参阅 GitHub 上的 [authRedirect.js](https://github.com/Azure-Samples/ms-identity-javascript-v2/blob/master/app/authRedirect.js)。
 
 ## <a name="call-the-microsoft-graph-api"></a>调用 Microsoft Graph API
 

@@ -7,12 +7,12 @@ ms.service: certification
 ms.topic: tutorial
 ms.date: 03/01/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 11d72847209a2e706d4aa32d38af1b2c8af3dfa0
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 44c053eac2215354fbd43e4c0068f02419010a85
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313991"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131848"
 ---
 # <a name="tutorial-create-your-project"></a>教程：创建项目
 
@@ -27,7 +27,7 @@ ms.locfileid: "107313991"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 需要一个有效的工作/学校 [Azure Active Directory 帐户](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)。
+- 需要一个有效的工作/学校 [Azure Active Directory 帐户](../active-directory/fundamentals/active-directory-whatis.md)。
 - 需要一个已验证的 Microsoft 合作伙伴网络 (MPN) 帐户。 如果你没有 MPN 帐户，请在开始之前[加入合作伙伴网络](https://partner.microsoft.com/)。
 
 ## <a name="signing-into-the-azure-certified-device-portal"></a>登录到 Azure 认证设备门户

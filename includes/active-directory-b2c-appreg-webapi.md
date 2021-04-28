@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
-ms.openlocfilehash: 7cbf6ca7606210b70ae9efa69a8cc6551eb6f36f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 85883cd465626764d7af0c20af480b6075e13f9e
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106073172"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070564"
 ---
 Web API 资源需要先在租户中注册，然后才能接受并响应通过提供访问令牌的客户端应用程序所提出的受保护资源请求。
 
@@ -18,7 +18,7 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过提
 
 #### <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 选择“应用注册”，然后选择“新建注册” 。
@@ -34,9 +34,9 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过提
 1. 在“隐式授权”下，选中“访问令牌”和“ID 令牌”复选框  。
 1. 选择“保存”。
 
-#### <a name="applications"></a>[应用程序](#tab/applications/)
+#### <a name="applications-legacy"></a>[应用程序(旧版)](#tab/applications/)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 选择“应用程序(旧版)”，然后选择“添加” 。

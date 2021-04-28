@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 693c181f8a4a6db3b8b163f4b4d3350a3730b618
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 30abc4a5a1431800cef2bcbda6f5eeedf9a216a3
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106221641"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874632"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>教程：将 Azure Functions 作为 IoT Edge 模块进行部署
 
@@ -51,7 +51,7 @@ ms.locfileid: "106221641"
 若要通过 Azure Functions 开发 IoT Edge 模块，请在开发计算机上安装下述额外的必备组件：
 
 * [适用于 Visual Studio Code 的 C# 扩展（由 OmniSharp 提供支持）](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。
-* [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
+* [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1)。
 
 ## <a name="create-a-function-project"></a>创建函数项目
 
