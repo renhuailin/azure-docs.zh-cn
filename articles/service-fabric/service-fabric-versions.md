@@ -1,218 +1,144 @@
 ---
-title: 升级 Azure Service Fabric 群集版本
-description: 了解 Azure Service Fabric 中的群集版本，包括指向 Service Fabric 团队博客中最新版本的链接。
+title: Azure Service Fabric 版本
+description: 了解主动支持的 Azure Service Fabric 和平台版本中的群集版本
 ms.topic: troubleshooting
-ms.date: 06/15/2020
-ms.openlocfilehash: 3e859a04ffb0b885aab0f31e83afad8380cbcc95
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/12/2021
+ms.openlocfilehash: d106462578879ef3ff6ba902c7c950f2bf6ab308
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103010195"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140112"
 ---
-# <a name="upgrade-your-azure-service-fabric-cluster-version"></a>升级 Azure Service Fabric 群集版本
+# <a name="service-fabric-supported-versions"></a>受支持的 Service Fabric 版本
+本文中的表概述了主动支持的 Service Fabric 和平台版本。
 
-请确保群集始终运行受支持的 Azure Service Fabric 版本。 在公告新版 Service Fabric 的发布日期以后，至少还要过 60 天我们才会结束对旧版本的支持。 可以在 [Service Fabric 团队博客](https://azure.microsoft.com/updates/?product=service-fabric)中找到有关新版本的公告。
+## <a name="windows"></a>Windows
 
-对于每个版本的 Service Fabric 运行时，可以使用指定版本或较旧版本的 SDK/NuGet 包。 较新版本的包可能无法以较旧版本的群集为目标。 较旧版本的群集可能具有较新的包环境不支持的功能或协议更改。
+| Service Fabric 运行时 |可直接从此版本升级|可降级到|兼容的 SDK 或 NuGet 包版本|受支持的 dotnet 运行时** |OS 版本。 |结束支持 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 8.0 RTO | 7.1 CU10 | 7.2 | 版本 5.0 或更低版本 | .NET 5.0 (GA)、.NET Core 3.1、.NET Core 2.1、 <br>所有 4.5 版本及更高版本的 .NET Full Framework| [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 当前版本 |
+| 7.2 CU7 | 7.0 CU9 | 7.1 | 版本 4.2 或更低版本 | .NET 5.0（预览版支持）、.NET Core 3.1、.NET Core 2.1、<br>所有 4.5 版本及更高版本的 .NET Full Framework | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 2021 年 11 月 30 日 |
+| 7.2 CU6 | 7.0 CU4 |7.1 | 版本 4.2 或更低版本 | .NET 5.0（预览版支持）、.NET Core 3.1、.NET Core 2.1、<br>所有 4.5 版本及更高版本的 .NET Full Framework | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date)| 2021 年 11 月 30 日 |
+| 7.2 RTO-CU5 | 7.0 CU4 | 7.1 |版本 4.2 或更低版本 | .NET Core 3.1、.NET Core 2.1、<br>所有 4.5 版本及更高版本的 .NET Full Framework | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date)| 2021 年 11 月 30 日 |
+| 7.1 |7.0 CU3 |不适用 | 版本 4.1 或更低版本 | .NET Core 3.1、.NET Core 2.1、<br>所有 4.5 版本及更高版本的 .NET Full Framework | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 2021 年 7 月 31 日 |
 
-若要详细了解如何使群集始终运行受支持的 Service Fabric 版本，请参阅以下文章：
+** Service Fabric 不提供 .NET Core 运行时。 由服务作者负责确保其<a href="/dotnet/core/deploying/">可用</a>。
 
-- [升级 Azure Service Fabric 群集](service-fabric-cluster-upgrade.md)
-- [升级在单独的 Windows Server 群集上运行的 Service Fabric 版本](service-fabric-cluster-upgrade-windows-server.md)
-
-## <a name="unsupported-versions"></a>不支持的版本
-
-### <a name="upgrade-alert-for-versions-between-57-and-6363"></a>5\.7 和 6.3.63.* 之间的版本升级警报
-
-为了提高安全性和可用性，Azure 基础结构已进行更改，这可能会影响 Service Fabric 客户。 此更改会影响所有运行 5.7 到 6.3 版本的 Service Fabric 群集。
-
-我们提供了一个 Service Fabric 运行时更新，它适用于所有区域中所有受支持的 Service Fabric 版本。 为避免服务中断，请在 2021 年 1 月 19 日之前升级到最新支持版本之一。
-
-如果你有支持计划并需要技术帮助，请通过 Azure 支持渠道联系我们。 为 Azure Service Fabric 开具支持请求，并在支持票证中提及此上下文。
-
-#### <a name="if-you-dont-upgrade-to-a-supported-version"></a>如果未升级到受支持的版本
-
-如果你在 2021 年 1 月 19 日之前没有升级，那么在 5.7 到 6.3.63.* 版本上运行的 Azure Service Fabric 群集将不可用。
-
-#### <a name="required-action"></a>必需的操作
-
-请升级到受支持的 Service Fabric 版本，以避免此更改引发的停机或功能丢失。 请确保你的群集至少运行以下版本，以防止环境中出现问题。
-
-> [!Note]
-> 所有 7.2 发行版都包括必要的更改。
-  
-  | OS | 当前群集中的 Service Fabric 运行时 | CU/修补程序版本 |
-  | --- | --- |--- |
-  | Windows | 7.0.* | 7.0.478.9590 |
-  | Windows | 7.1.* | 7.1.503.9590 |
-  | Windows | 7.2.* | 7.2.* |
-  | Ubuntu 16 | 7.0.* | 7.0.472.1  |
-  | Linux Ubuntu 16.04 | 7.1.* | 7.1.455.1  |
-  | Linux Ubuntu 18.04 | 7.1.* | 7.1.455.1804 |
-  | Linux Ubuntu 16.04 | 7.2.* | 7.2.* |
-  | Linux Ubuntu 18.04 | 7.2.* | 7.2.* |
-
-### <a name="upgrade-alert-for-versions-later-than-63"></a>针对低于 6.3 的版本的升级提醒
-
-为了提高安全性和可用性，Azure 基础结构已进行更改，这可能会影响 Service Fabric 客户。 此更改会影响使用[容器的开放网络模式](./service-fabric-networking-modes.md#set-up-open-networking-mode)并运行版本 6.3 到 7.0 或 7.0 之后不兼容的受支持版本的所有 Service Fabric 群集。 我们提供了一个 Service Fabric 运行时更新，它适用于所有区域中所有受支持的 Service Fabric 版本。
-
-#### <a name="if-you-dont-upgrade-to-a-supported-version"></a>如果未升级到受支持的版本
-
-如果 2021 年 1 月 19 日之前没有升级到受支持的版本，在高于 6.3 的未更改版本上运行的 Azure Service Fabric 群集会出现功能丢失或服务中断的情况。
-  
-  - 对于运行的 Service Fabric 版本高于 6.3 的群集，如果未使用开放网络功能，则群集会保持正常运行状态。
-
- - 对于运行的 Service Fabric 版本高于6.3 的群集，如果使用了[容器的开放网络功能](./service-fabric-networking-modes.md#set-up-open-networking-mode)，则该群集可能会变得不可用并停止运行，这可能会导致工作负荷的服务中断。
- 
- -   对于运行的 [Windows 版本介于 7.0.457 到 7.0.466（包括这两个版本）之间](#supported-version-names)且 Windows OS 已启用 Windows 容器功能的群集（注意：Linux 版本 7.0.457、7.0.464 和 7.0.465 不受影响）。
-    - 影响是：群集会停止运行，这可能会导致工作负荷的服务中断。
-    
-#### <a name="required-action"></a>必需的操作
-
-若要防止停机或功能丢失，请确保群集运行的是以下版本之一。
-
-表中的 Service Fabric 版本包含防止功能丢失所需的更改。 请确保你使用的是这些版本之一。  
-
-> [!Note]
-> Azure Service Fabric 群集在版本 6.5 上运行，必须在基础结构更改之前同时执行多个升级，才能避免群集功能丢失。 
->   -   1. 升级到 7.0.466。 运行的 Windows OS 启用了 Windows 容器功能的群集不能在此中间版本上运行。它们需要执行下面的后续步骤 (ii)，即升级到更安全且合规的版本，以避免服务中断
->   -   2. 升级到 7.0* 版本中的最新兼容版本 (7.0.478) 或下面列出的任何更高版本。
+## <a name="supported-windows-versions-and-support-end-date"></a>受支持的 Windows 版本和支持结束日期
+当对 OS 版本的支持到达其生命周期终止日期时，对特定 OS 上 Service Fabric 的支持随之结束。
 
 
-> [!Note]
-> 所有 7.2 发行版都包括必要的更改。
+### <a name="windows-server"></a>Windows Server
 
- | OS | 当前群集中的 Service Fabric 运行时 | CU/修补程序版本 |
-  | --- | --- |--- |
-  | Windows | 7.0.* | 7.0.478.9590 |
-  | Windows | 7.1.* | 7.1.503.9590 |
-  | Windows | 7.2.* | 7.2.* |
-  | Linux Ubuntu 16.04 | 7.0.* | 7.0.472.1  |
-  | Linux Ubuntu 16.04 | 7.1.* | 7.1.455.1  |
-  | Linux Ubuntu 18.04 | 7.1.* | 7.1.455.1804 |
-  | Linux Ubuntu 16.04 | 7.2.* | 7.2.* |
-  | Linux Ubuntu 18.04 | 7.2.* | 7.2.* |
+| OS 版本 | Service Fabric 支持结束日期 | OS 生命周期链接 |
+|---|---|---|
+|Windows Server 2019|2029/1/9|<a href="/lifecycle/products/windows-server-2019">Windows Server 2019 - Microsoft 生命周期</a>|
+|Windows Server 2016 |2027/1/12|<a href="/lifecycle/products/windows-server-2016">Windows Server 2016 - Microsoft 生命周期</a>|
+|Windows Server 2012 R2 |2023/10/10|<a href="/lifecycle/products/windows-server-2012-r2">Windows Server 2012 R2 - Microsoft 生命周期</a>|
+|版本 20H2 |2022/5/10|<a href="/lifecycle/products/windows-server">Windows Server - Microsoft 生命周期</a>|
+|版本 2004 |2021/12/14|<a href="/lifecycle/products/windows-server">Windows Server - Microsoft 生命周期</a>|
+|版本 1909 |2021/5/11|<a href="/lifecycle/products/windows-server">Windows Server - Microsoft 生命周期</a>|
 
-## <a name="supported-versions"></a>支持的版本
+<br>
 
-下表列出了 Service Fabric 版本及其支持结束日期。
+### <a name="windows-10"></a>Windows 10
 
-| 群集中的 Service Fabric 运行时 | 可以直接从群集版本升级 |兼容的 SDK 或 NuGet 包版本 | 结束支持 |
-| --- | --- |--- | --- |
-| 5\.3.121 之前的所有群集版本 | 5.1.158.* |低于或等于版本 2.3 |2017 年 1 月 20 日 |
-| 5.3.* | 5.1.158.* |低于或等于版本 2.3 |2017 年 2 月 24 日 |
-| 5.4.* | 5.1.158.* |低于或等于版本 2.4 |2017 年 5 月 10 日       |
-| 5.5.* | 5.4.164.* |低于或等于版本 2.5 |2017 年 8 月 10 日    |
-| 5.6.* | 5.4.164.* |低于或等于版本 2.6 |2017 年 10 月 13 日   |
-| 5.7.* | 5.4.164.* |低于或等于版本 2.7 |2017 年 12 月 15 日  |
-| 6.0.* | 5.6.205.* |版本 2.8 或更低版本 |2018 年 3 月 30 日     |
-| 6.1.* | 5.7.221.* |版本 3.0 或更低版本 |2018 年 7 月 15日      |
-| 6.2.* | 6.0.232.* |版本 3.1 或更低版本 |2018 年 10 月 26日   |
-| 6.3.* | 6.1.480.* |版本 3.2 或更低版本 |2019 年 3 月 31 日  |
-| 6.4.* | 6.2.301.* |版本 3.3 或更低版本 |2019 年 9 月 15 日 |
-| 6.5.* | 6.4.617.* |低于或等于版本 3.4 |2020 年 8 月 1 日 |
-| 7.0.466.* | 6.4.664.* |低于或等于版本 4.0|2021 年 1 月 31 日  |
-| 7.0.466.* | 6.5.* |低于或等于版本 4.0|2021 年 1 月 31 日 |
-| 7.0.470.* | 7.0.466.* |低于或等于版本 4.0 |2021 年 1 月 31 日  |
-| 7.0.472.* | 7.0.466.* |低于或等于版本 4.0 |2021 年 1 月 31 日  |
-| 7.0.478.* | 7.0.466.* |低于或等于版本 4.0 |2021 年 1 月 31 日  |
-| 7.1.409.* | 7.0.466.* |低于或等于版本 4.1 |2021 年 7 月 31 日 |
-| 7.1.417.* | 7.0.466.* |低于或等于版本 4.1 |2021 年 7 月 31 日 |
-| 7.1.428.* | 7.0.466.* |低于或等于版本 4.1 |2021 年 7 月 31 日 |
-| 7.1.456.* | 7.0.466.* |低于或等于版本 4.1 |2021 年 7 月 31 日 |
-| 7.1.458。* | 7.0.466.* |低于或等于版本 4.1 |2021 年 7 月 31 日 |
-| 7.1.459.* | 7.0.466.* |低于或等于版本 4.1 |2021 年 7 月 31 日 |
-| 7.1.503.* | 7.0.466.* |低于或等于版本 4.1 |2021 年 7 月 31 日 |
-| 7.1.510.* | 7.0.466.* |低于或等于版本 4.1 |2021 年 7 月 31 日 |
-| 7.2.413.* | 7.0.470.* |低于或等于版本 4.2 |当前版本，因此无结束日期 |
-| 7.2.432.* | 7.0.470.* |低于或等于版本 4.2 |当前版本，因此无结束日期 |
-| 7.2.433.* | 7.0.470.* |低于或等于版本 4.2 |当前版本，因此无结束日期 |
-| 7.2.445.* | 7.0.470.* |低于或等于版本 4.2 |当前版本，因此无结束日期 |
-| 7.2.452.* | 7.0.470.* |低于或等于版本 4.2 |当前版本，因此无结束日期 |
-| 7.2.457.* | 7.0.470.* |低于或等于版本 4.2 |当前版本，因此无结束日期 |
-| 7.2.477.* | 7.0.478.* |低于或等于版本 4.2 |当前版本，因此无结束日期 |
+| OS 版本 | Service Fabric 支持结束日期 | OS 生命周期链接 |
+| --- | --- | --- |
+| Windows 10 2019 LTSC | 2029/1/9 | <a href="/lifecycle/products/windows-10-2019-ltsc">Windows 10 2019 LTSC - Microsoft 生命周期</a> |
+| 版本 20H2 | 2023/5/9 | <a href="/lifecycle/products/windows-10-enterprise-and-education">Windows 10 企业版和教育版 - Microsoft 生命周期</a> |
+| 版本 2004 | 2021/12/14| <a href="/lifecycle/products/windows-10-enterprise-and-education">Windows 10 企业版和教育版 - Microsoft 生命周期</a> |
+| 版本 1909 | 2022/5/10 | <a href="/lifecycle/products/windows-10-enterprise-and-education">Windows 10 企业版和教育版 - Microsoft 生命周期</a> |
+| 版本 1809 | 2021/5/11 | <a href="/lifecycle/products/windows-10-enterprise-and-education">Windows 10 企业版和教育版 - Microsoft 生命周期</a> |
+| 版本 1803 | 2021/5/11 | <a href="/lifecycle/products/windows-10-enterprise-and-education">Windows 10 企业版和教育版 - Microsoft 生命周期</a> |
 
-## <a name="supported-operating-systems"></a>支持的操作系统
+## <a name="linux"></a>Linux
 
-下表列出了支持的 Service Fabric 版本所支持的操作系统。
+| Service Fabric 运行时 | 可直接从此版本升级 |可降级到 |兼容的 SDK 或 NuGet 包版本 | 受支持的 dotnet 运行时** | OS 版本 | 结束支持 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 8.0 RTO | 7.1 CU8 | 7.2 | 版本 5.0 或更低版本 | .NET Core 3.1、.NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 当前版本 |
+| 7.2 CU7 | 7.0 CU9 | 7.1 | 低于或等于版本 4.2 | .NET Core 3.1、.NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2021 年 11 月 30 日 |
+| 7.2 RTO-CU6 | 7.0 CU4 | 7.1 | 低于或等于版本 4.2 | .NET Core 3.1、.NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2021 年 11 月 30 日 |
+| 7.1 | 7.0 CU3 | 不适用 | 低于或等于版本 4.1 | .NET Core 3.1、.NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2021 年 7 月 31 日 |
 
-| 操作系统 | 支持的最低 Service Fabric 版本 |
-| --- | --- |
-| Windows Server 2012 R2 | 所有版本 |
-| Windows Server 2016 | 所有版本 |
-| Windows Server 1709 | 6.0 |
-| Windows Server 1803 | 6.4 |
-| Windows Server 1809 | 6.4.654.9590 |
-| Windows Server 2019 | 6.4.654.9590 |
-| Linux Ubuntu 16.04 | 6.0 |
-| Linux Ubuntu 18.04 | 7.1 |
+** Service Fabric 不提供 .NET Core 运行时，由服务作者负责确保其<a href="/dotnet/core/deploying/">可用</a>
 
-## <a name="supported-version-names"></a>支持的版本名称
+## <a name="supported-linux-versions-and-support-end-date"></a>受支持的 Linux 版本和支持结束日期
+当对 OS 版本的支持到达其生命周期终止日期时，对特定 OS 上 Service Fabric 的支持随之结束。
 
+#### <a name="ubuntu"></a>Ubuntu
+| OS 版本 | Service Fabric 支持结束日期| OS 生命周期链接 |
+| --- | --- | --- |
+| Ubuntu 18.04 | 2028 年 4 月 | <a href="https://wiki.ubuntu.com/Releases">Ubuntu 生命周期</a>|
+| Ubuntu 16.04 | 2024 年 4 月 | <a href="https://wiki.ubuntu.com/Releases">Ubuntu 生命周期</a>|
+
+<br>
+
+## <a name="service-fabric-version-name-and-number-reference"></a>Service Fabric 版本名称和版本号参考
 下表列出了 Service Fabric 的版本名称以及相应的版本号。
 
 | 版本名称 | Windows 版本号 | Linux 版本号 |
 | --- | --- | --- |
-| 5.3 RTO | 5.3.121.9494 | 不适用|
-| 5.3 CU1 | 5.3.204.9494 | 不适用|
-| 5.3 CU2 | 5.3.301.9590 | 不适用|
-| 5.3 CU3 | 5.3.311.9590 | 不适用|
-| 5.4 CU2 | 5.4.164.9494 | 不适用|
-| 5.5 CU1 | 5.5.216.0    | 不适用|
-| 5.5 CU2 | 5.5.219.0 | 不适用|
-| 5.5 CU3 | 5.5.227.0 | 不适用|
-| 5.5 CU4 | 5.5.232.0 | 不适用|
-| 5.6 RTO | 5.6.204.9494 | 不适用|
-| 5.6 CU2 | 5.6.210.9494 | 不适用|
-| 5.6 CU3 | 5.6.220.9494 | 不适用|
-| 5.7 RTO | 5.7.198.9494 | 不适用|
-| 5.7 CU4 | 5.7.221.9494 | 不适用|
-| 6.0 RTO | 6.0.211.9494 | 6.0.120.1 |
-| 6.0 CU1 | 6.0.219.9494 | 6.0.127.1 |
-| 6.0 CU2 | 6.0.232.9494 | 6.0.133.1 |
-| 6.1 CU1 | 6.1.456.9494 | 6.1.183.1 |
-| 6.1 CU2 | 6.1.467.9494 | 6.1.185.1 |
-| 6.1 CU3 | 6.1.472.9494 | 不适用|
-| 6.1 CU4 | 6.1.480.9494 | 6.1.187.1 |
-| 6.2 RTO | 6.2.269.9494 | 6.2.184.1 |
-| 6.2 CU1 | 6.2.274.9494 | 6.2.191.1 |
-| 6.2 CU2 | 6.2.283.9494 | 6.2.194.1 |
-| 6.2 CU3 | 6.2.301.9494 | 6.2.199.1 |
-| 6.3 RTO | 6.3.162.9494 | 6.3.119.1 |
-| 6.3 CU1 | 6.3.176.9494 | 6.3.124.1 |
-| 6.3 CU1 | 6.3.187.9494 | 6.3.129.1 |
-| 6.4 RTO | 6.4.617.9590 | 6.4.625.1 |
-| 6.4 CU2 | 6.4.622.9590 | 不适用|
-| 6.4 CU3 | 6.4.637.9590 | 6.4.634.1 |
-| 6.4 CU4 | 6.4.644.9590 | 6.4.639.1 |
-| 6.4 CU5 | 6.4.654.9590 | 6.4.649.1 |
-| 6.4 CU6 | 6.4.658.9590 | 不适用|
-| 6.4 CU7 | 6.4.664.9590 | 6.4.661.1 |
-| 6.4 CU8 | 6.4.670.9590 | 不适用|
-| 6.5 RTO | 6.5.639.9590 | 6.5.435.1 |
-| 6.5 CU1 | 6.5.641.9590 | 6.5.454.1 |
-| 6.5 CU2 | 6.5.658.9590 | 6.5.460.1 |
-| 6.5 CU3 | 6.5.664.9590 | 6.5.466.1 |
-| 6.5 CU5 | 6.5.676.9590 | 6.5.467.1 |
-| 7.0 RTO | 7.0.457.9590 | 7.0.457.1 |
-| 7.0 CU2 | 7.0.464.9590 | 7.0.464.1 |
-| 7.0 CU3 | 7.0.466.9590 | 7.0.465.1 |
-| 7.0 CU4 | 7.0.470.9590 | 7.0.469.1 |
-| 7.0 CU6 | 7.0.472.9590 | 7.0.471.1 |
-| 7.0 CU9 | 7.0.478.9590 | 7.0.472.1 |
-| 7.1 RTO | 7.1.409.9590 | 7.1.410.1 |
-| 7.1 CU1 | 7.1.417.9590 | 7.1.418.1 |
-| 7.1 CU2 | 7.1.428.9590 | 7.1.428.1 |
-| 7.1 CU3 | 7.1.456.9590 | 7.1.452.1 |
-| 7.1 CU5 | 7.1.458.9590 | 7.1.454.1 |
-| 7.1 CU6 | 7.1.459.9590 | 7.1.455.1 |
-| 7.1 CU8 | 7.1.503.9590 | 7.1.508.1 |
-| 7.1 CU10 | 7.1.510.9590 | NA |
-| 7.2 RTO | 7.2.413.9590 | NA |
-| 7.2 CU2 | 7.2.432.9590 | 7.2.431.1 |
-| 7.2 CU3 | 7.2.433.9590 | NA |
-| 7.2 CU4 | 7.2.445.9590 | 7.2.447.1 |
-| 7.2 CU5 | 7.2.452.9590 | 7.2.454.1 |
-| 7.2 CU6 | 7.2.457.9590 | 7.2.456.1 |
+| 8.0 RTO | 8.0.514.9590 | 8.0.513.1 | 
 | 7.2 CU7 | 7.2.477.9590 | 7.2.476.1 |
+| 7.2 CU6 | 7.2.457.9590 | 7.2.456.1 |
+| 7.2 CU5 | 7.2.452.9590 | 7.2.454.1 |
+| 7.2 CU4 | 7.2.445.9590 | 7.2.447.1 |
+| 7.2 CU3 | 7.2.433.9590 | NA |
+| 7.2 CU2 | 7.2.432.9590 | 7.2.431.1 |
+| 7.2 RTO | 7.2.413.9590 | NA |
+| 7.1 CU10 | 7.1.510.9590 | NA |
+| 7.1 CU8 | 7.1.503.9590 | 7.1.508.1 |
+| 7.1 CU6 | 7.1.459.9590 | 7.1.455.1 |
+| 7.1 CU5 | 7.1.458.9590 | 7.1.454.1 |
+| 7.1 CU3 | 7.1.456.9590 | 7.1.452.1 |
+| 7.1 CU2 | 7.1.428.9590 | 7.1.428.1 |
+| 7.1 CU1 | 7.1.417.9590 | 7.1.418.1 |
+| 7.1 RTO | 7.1.409.9590 | 7.1.410.1 |
+| 7.0 CU9 | 7.0.478.9590 | 7.0.472.1 |
+| 7.0 CU6 | 7.0.472.9590 | 7.0.471.1 |
+| 7.0 CU4 | 7.0.470.9590 | 7.0.469.1 |
+| 7.0 CU3 | 7.0.466.9590 | 7.0.465.1 |
+| 7.0 CU2 | 7.0.464.9590 | 7.0.464.1 |
+| 7.0 RTO | 7.0.457.9590 | 7.0.457.1 |
+| 6.5 CU5 | 6.5.676.9590 | 6.5.467.1 |
+| 6.5 CU3 | 6.5.664.9590 | 6.5.466.1 |
+| 6.5 CU2 | 6.5.658.9590 | 6.5.460.1 |
+| 6.5 CU1 | 6.5.641.9590 | 6.5.454.1 |
+| 6.5 RTO | 6.5.639.9590 | 6.5.435.1 |
+| 6.4 CU8 | 6.4.670.9590 | 不适用|
+| 6.4 CU7 | 6.4.664.9590 | 6.4.661.1 |
+| 6.4 CU6 | 6.4.658.9590 | 不适用|
+| 6.4 CU5 | 6.4.654.9590 | 6.4.649.1 |
+| 6.4 CU4 | 6.4.644.9590 | 6.4.639.1 |
+| 6.4 CU3 | 6.4.637.9590 | 6.4.634.1 |
+| 6.4 CU2 | 6.4.622.9590 | 不适用|
+| 6.4 RTO | 6.4.617.9590 | 6.4.625.1 |
+| 6.3 CU1 | 6.3.187.9494 | 6.3.129.1 |
+| 6.3 RTO | 6.3.162.9494 | 6.3.119.1 |
+| 6.2 CU3 | 6.2.301.9494 | 6.2.199.1 |
+| 6.2 CU2 | 6.2.283.9494 | 6.2.194.1 |
+| 6.2 CU1 | 6.2.274.9494 | 6.2.191.1 |
+| 6.2 RTO | 6.2.269.9494 | 6.2.184.1 |
+| 6.1 CU4 | 6.1.480.9494 | 6.1.187.1 |
+| 6.1 CU3 | 6.1.472.9494 | 不适用|
+| 6.1 CU2 | 6.1.467.9494 | 6.1.185.1 |
+| 6.1 CU1 | 6.1.456.9494 | 6.1.183.1 |
+| 6.0 CU2 | 6.0.232.9494 | 6.0.133.1 |
+| 6.0 CU1 | 6.0.219.9494 | 6.0.127.1 |
+| 6.0 RTO | 6.0.211.9494 | 6.0.120.1 |
+| 5.7 CU4 | 5.7.221.9494 | 不适用|
+| 5.7 RTO | 5.7.198.9494 | 不适用|
+| 5.6 CU3 | 5.6.220.9494 | 不适用|
+| 5.6 CU2 | 5.6.210.9494 | 不适用|
+| 5.6 RTO | 5.6.204.9494 | 不适用|
+| 5.5 CU4 | 5.5.232.0 | 不适用|
+| 5.5 CU3 | 5.5.227.0 | 不适用|
+| 5.5 CU2 | 5.5.219.0 | 不适用|
+| 5.5 CU1 | 5.5.216.0    | 不适用|
+| 5.4 CU2 | 5.4.164.9494 | 不适用|
+| 5.3 CU3 | 5.3.311.9590 | 不适用|
+| 5.3 CU2 | 5.3.301.9590 | 不适用|
+| 5.3 CU1 | 5.3.204.9494 | 不适用|
+| 5.3 RTO | 5.3.121.9494 | 不适用|

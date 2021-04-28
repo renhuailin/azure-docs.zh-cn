@@ -4,12 +4,12 @@ description: 在 Linux 上安装运行时和 SDK 并创建本地开发群集。 
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 14b8a278605a908b4182c724831b2e42de54a753
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fcf0aeec27415d03c528e42ad5341a92bd299d88
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93086884"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869394"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
 > [!div class="op_single_selector"]
@@ -261,7 +261,7 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 
 ## <a name="set-up-net-core-31-development"></a>设置 .NET Core 3.1 开发
 
-安装[用于 Ubuntu 的 .NET Core 3.1 SDK](https://www.microsoft.com/net/core#linuxubuntu)，开始[创建 C# Service Fabric 应用程序](service-fabric-create-your-first-linux-application-with-csharp.md)。 .NET Core Service Fabric 应用程序包在 NuGet.org 上托管。
+安装[用于 Ubuntu 的 .NET Core 3.1 SDK](/dotnet/core/install/linux-ubuntu)，开始[创建 C# Service Fabric 应用程序](service-fabric-create-your-first-linux-application-with-csharp.md)。 .NET Core Service Fabric 应用程序包在 NuGet.org 上托管。
 
 ## <a name="set-up-java-development"></a>设置 Java 开发
 

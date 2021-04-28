@@ -8,12 +8,12 @@ ms.subservice: hpc
 ms.topic: overview
 ms.date: 04/09/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 554764b89e5da4cd6777ec89fcb2f2d5ad104ebf
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 8017b3e84c80acc71fca1442c4493bd1ec239175
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600261"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141210"
 ---
 # <a name="high-performance-computing-on-infiniband-enabled-h-series-and-n-series-vms"></a>在支持 InfiniBand 的 H 系列和 N 系列 VM 上进行高性能计算
 
@@ -47,5 +47,5 @@ Azure 的支持 InfiniBand 的 H 系列和 N 系列 VM 旨在为各种实际 HPC
 - 了解如何[配置和优化](configure.md)支持 InfiniBand 的 [H 系列](../../sizes-hpc.md)和 [N 系列](../../sizes-gpu.md) VM。
 - 查看 [HBv3 系列概述](hb-series-overview.md)和 [HC 系列概述](hc-series-overview.md)，以了解如何对工作负载进行优化配置以提高性能和可伸缩性。
 - 在 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)上阅读最新公告、HPC 工作负载示例和性能结果。
-- 使用[有关优化 Azure 上的 HPC 应用程序的学习模块](https://docs.microsoft.com/learn/modules/optimize-tightly-coupled-hpc-apps/)测试知识。
+- 使用[有关优化 Azure 上的 HPC 应用程序的学习模块](/learn/modules/optimize-tightly-coupled-hpc-apps/)测试知识。
 - 若要从体系结构角度更概略性地看待如何运行 HPC 工作负荷，请参阅 [Azure 上的高性能计算 (HPC)](/azure/architecture/topics/high-performance-computing/)。

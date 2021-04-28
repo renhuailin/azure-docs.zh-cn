@@ -10,16 +10,14 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 66edf35f292f5b681578d49b8be784de66e4d904
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7ab843b9e30d1b72c46c6e44d3a272f3b1c72083
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936523"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108016430"
 ---
 # <a name="phone-number-types-in-azure-communication-services"></a>Azure 通信服务中的电话号码类型
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-phone-numbers.md)]
 
 > [!IMPORTANT]
 > 当前，电话号码的可用性仅限于在美国具有帐单邮寄地址的付费 Azure 订阅，和具有美国数据位置的通信服务资源。 无法在试用帐户上或使用 Azure 免费额度获取电话号码。 有关详细信息，请访问本文档的[订阅资格](#azure-subscriptions-eligibility)部分。

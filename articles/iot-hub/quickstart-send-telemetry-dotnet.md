@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 06/01/2020
-ms.openlocfilehash: 1a681cd3f1c624268fdc9bc62cf9841e9ac28827
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: ec26e4a42cdeb7a693c8078c0f065241f32da949
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057501"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107863976"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-service-application-net"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用服务应用程序 (.NET) 读取该数据
 
@@ -35,7 +35,7 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
 * 本快速入门中运行的两个示例应用程序是使用 C# 编写的。 开发计算机上需要有 .NET Core SDK 3.1 或更高版本。
 
-    可以从 [.NET](https://www.microsoft.com/net/download/all) 为多个平台下载 .NET Core SDK。
+    可以从 [.NET](https://dotnet.microsoft.com/download) 为多个平台下载 .NET Core SDK。
 
     可以使用以下命令验证开发计算机上 C# 的当前版本：
 

@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: overview
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: 18672d76c262f8919489ccf132532c117666abe4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae0d4c0fc3ee3f621cc7d90238d9a8ac7b3f773c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99492172"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142220"
 ---
 # <a name="what-is-azure-bastion"></a>什么是 Azure Bastion？
 
@@ -58,4 +58,4 @@ RDP 和 SSH 是连接 Azure 中运行的工作负载的基本方法。 不要通
 ## <a name="next-steps"></a>后续步骤
 
 * [教程：创建 Azure Bastion 主机并连接到 Windows VM](tutorial-create-host-portal.md)。
-* 了解 Azure 的一些其他关键[网络功能](../networking/networking-overview.md)。
+* 了解 Azure 的一些其他关键[网络功能](../networking/fundamentals/networking-overview.md)。

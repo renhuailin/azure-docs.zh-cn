@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 03/15/2021
 ms.author: alkohli
-ms.openlocfilehash: e6cd1f8a1f7d1777e786ab91637b4065a2c5e850
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4405c3d1c6588a67acfc66e458a3c9120d2110d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104585938"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139122"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-fpga"></a>什么是 Azure Stack Edge Pro with FPGA？
 
@@ -86,7 +86,7 @@ Azure Stack Edge Pro 解决方案包括 Azure Stack Edge 资源、Azure Stack Ed
     
 - **目标存储帐户** - 存储数据的存储帐户可在所有 Azure 区域中获得。 存储帐户存储 Azure Stack Edge Pro 数据的区域应靠近设备所在位置，以便获得最佳性能。 远离设备的存储帐户会导致长时间的延迟和性能下降。
 
-Azure Stack Edge 服务是一种非区域性服务。 有关详细信息，请参阅 [Azure 中的区域和可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview)。 Azure Stack Edge 服务不依赖于特定的 Azure 区域，因此可以灵活应对区域范围的服务中断和区域范围的服务中断。
+Azure Stack Edge 服务是一种非区域性服务。 有关详细信息，请参阅 [Azure 中的区域和可用性区域](../availability-zones/az-overview.md)。 Azure Stack Edge 服务不依赖于特定的 Azure 区域，因此可以灵活应对区域范围的服务中断和区域范围的服务中断。
 
 ## <a name="next-steps"></a>后续步骤
 

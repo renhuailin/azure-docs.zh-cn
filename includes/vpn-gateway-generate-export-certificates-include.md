@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 10/29/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: faab8aa124ca2f290938cb6cff0a2f4d072caffd
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 52f332f2c92f97123dc9ab3234edcbdeda410da9
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106073347"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108121086"
 ---
 ## <a name="create-a-self-signed-root-certificate"></a><a name="rootcert"></a>创建自签名根证书
 
-使用 New-SelfSignedCertificate cmdlet 创建自签名根证书。 有关参数的其他信息，请参阅 [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate)。
+使用 New-SelfSignedCertificate cmdlet 创建自签名根证书。 有关参数的其他信息，请参阅 [New-SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate)。
 
 1. 在运行 Windows 10 或 Windows Server 2016 的计算机上，使用提升的权限打开 Windows PowerShell 控制台。 这些示例在 Azure Cloud Shell“试用”中不起作用。 必须本地运行这些示例。
 1. 使用以下示例创建自签名根证书。 以下示例创建名为“P2SRootCert”、会自动安装在“Certificates-Current User\Personal\Certificates”中的自签名根证书。 打开“certmgr.msc”  或“管理用户证书”  ，即可查看证书。
@@ -39,7 +39,7 @@ ms.locfileid: "106073347"
 
 以下步骤引导完成从自签名根证书生成客户端证书的过程。 可以从相同根证书生成多个客户端证书。 使用以下步骤生成客户端证书时，客户端证书会自动安装在用于生成该证书的计算机上。 如果想要在另一台客户端计算机上安装客户端证书，可以导出该证书。
 
-这些示例使用 New-SelfSignedCertificate cmdlet 生成有效期为一年的客户端证书。 有关参数的其他信息（例如为客户端证书设置其他有效期），请参阅 [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate)。
+这些示例使用 New-SelfSignedCertificate cmdlet 生成有效期为一年的客户端证书。 有关参数的其他信息（例如为客户端证书设置其他有效期），请参阅 [New-SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate)。
 
 ### <a name="example-1---powershell-console-session-still-open"></a>示例 1 - PowerShell 控制台会话仍处于打开状态
 

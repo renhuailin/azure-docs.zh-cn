@@ -10,19 +10,19 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: f20af8c61bbfbbbbc20c29470648c3df6a272396
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 429a0d19a0d82ee53c228ad5bfac5ac1d5101fa2
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285490"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136595"
 ---
 # <a name="migration-guide-ibm-db2-to-azure-sql-database"></a>迁移指南：从 IBM Db2 迁移到 Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
 本指南介绍如何使用适用于 Db2 的 [SQL Server 迁移](https://azure.microsoft.com/en-us/migration/sql-server/)助手将 IBM Db2 数据库[迁移](https://azure.microsoft.com/migration/migration-journey)到 Azure SQL 数据库。 
 
-有关其他迁移指南，请参阅 [Azure 数据库迁移指南](https://docs.microsoft.com/data-migration)。 
+有关其他迁移指南，请参阅 [Azure 数据库迁移指南](/data-migration)。 
 
 ## <a name="prerequisites"></a>先决条件 
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: d2ab96fcfa33301f0bd1212b23f9418fa39d0134
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1aab6fa7a2ea659b489a2e65e2a6a79070edc6b3
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102636828"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873757"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge-pro"></a>开发 C# IoT Edge 模块以在 Azure Stack Edge Pro 上移动文件
 
@@ -57,7 +57,7 @@ ms.locfileid: "102636828"
     - [Visual Studio Code](https://code.visualstudio.com/)。
     - [适用于 Visual Studio Code 的 C# 扩展（由 OmniSharp 提供支持）](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。
     - [适用于 Visual Studio Code 的 Azure IoT Edge 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。
-    - [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
+    - [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1)。
     - [Docker CE](https://store.docker.com/editions/community/docker-ce-desktop-windows)。 你可能需要创建一个帐户来下载并安装该软件。
 
 ## <a name="create-a-container-registry"></a>创建容器注册表

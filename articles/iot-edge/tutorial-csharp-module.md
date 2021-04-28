@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: b7695c825dbdd2c207c87799ea801026f7506bcb
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: e24c04152911f976907e6bdc433c33e035ade639
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219444"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874696"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-using-linux-containers"></a>教程：使用 Linux 容器开发 C# IoT Edge 模块
 
@@ -60,7 +60,7 @@ ms.locfileid: "106219444"
 若要完成这些教程，请在开发计算机上准备好下面这些附加的系统必备组件：
 
 * [适用于 Visual Studio Code 的 C# 扩展（由 OmniSharp 提供支持）](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。
-* [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
+* [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1)。
 
 ## <a name="create-a-module-project"></a>创建模块项目
 
@@ -82,7 +82,7 @@ ms.locfileid: "106219444"
    | 提供解决方案名称 | 输入解决方案的描述性名称，或者接受默认的 **EdgeSolution**。 |
    | 选择模块模板 | 选择“C# 模块”。 |
    | 提供模块名称 | 将模块命名为 **CSharpModule**。 |
-   | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是基于你在上一步中提供的名称预先填充的。 将 localhost:5000 替换为 Azure 容器注册表中的“登录服务器”值。 可以在 Azure 门户的容器注册表的“概述”页中检索登录服务器。 <br><br>最终的映像存储库看起来类似于 \<registry name\>.azurecr.io/csharpmodule。 |
+   | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是基于你在上一步中提供的名称预先填充的。 将 localhost:5000 替换为 Azure 容器注册表中的“登录服务器”值 。 可以在 Azure 门户的容器注册表的“概述”页中检索登录服务器。 <br><br>最终的映像存储库看起来类似于 \<registry name\>.azurecr.io/csharpmodule。 |
 
    ![提供 Docker 映像存储库](./media/tutorial-csharp-module/repository.png)
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0d45ef8c32e61b5567798b7c42af28badb222601
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 5631218e40b701a4a8f5cc42531f052e133044c5
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376709"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904057"
 ---
 # <a name="add-tags-to-digital-twins"></a>向数字孪生体添加标记 
 
@@ -52,11 +52,11 @@ ms.locfileid: "107376709"
 
 下面的查询获取已标记为“red”的所有孪生体： 
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags1":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryMarkerTags1":::
 
 还可以对标记进行组合以实现更复杂的查询。 下面的查询获取所有是圆形但不是红色的孪生体： 
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags2":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryMarkerTags2":::
 
 ## <a name="value-tags"></a>值标记 
 
@@ -86,11 +86,11 @@ ms.locfileid: "107376709"
 
 在上面的示例中，`red` 用作记号标记。 请记住，下面的查询获取已标记为“red”的所有孪生体： 
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags1":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryMarkerTags1":::
 
 下面的查询获取所有小型（值标记）且非红色的实体： 
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerValueTags":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryMarkerValueTags":::
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,18 +7,18 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 03/29/2021
 ms.author: banders
-ms.openlocfilehash: df5c5ed74a5e0a63727962fa86d261cfb588a384
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 47f1a1ed182420852682e908c7cd8b5e094bc085
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690555"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932550"
 ---
 # <a name="azure-spending-limit"></a>Azure 支出限制
 
-Azure 中的支出限制可以防止支出超过额度金额。 如果新客户注册包括几个月额度的 Azure 免费帐户或订阅类型，则这些客户都将默认开启支出限制。 支出限制为额度金额，不能更改。 例如，如果注册获取 Azure 免费帐户，则支出限制为 200 美元，不能将其更改为 500 美元。 但是，可以移除支出限制。 因此，你要么没有限制，要么限制为额度金额。 这导致你无法完成大多数类型的支出。 支出限制不适用于具有承诺计划或使用即用即付定价的订阅。 请参阅 [Azure 订阅类型以及支出限制可用性的完整列表](https://azure.microsoft.com/support/legal/offer-details/)。
+Azure 中的支出限制可以防止支出超过额度金额。 如果新客户注册包括几个月额度的 Azure 免费帐户或订阅类型，则这些客户都将默认开启支出限制。 支出限制等于额度金额。 无法更改支出限制的金额。 例如，如果注册获取 Azure 免费帐户，则支出限制为 200 美元，不能将其更改为 500 美元。 但是，可以移除支出限制。 因此，你要么没有限制，要么限制为额度金额。 这导致你无法完成大多数类型的支出。 支出限制不适用于具有承诺计划或使用即用即付定价的订阅。 请参阅 [Azure 订阅类型以及支出限制可用性的完整列表](https://azure.microsoft.com/support/legal/offer-details/)。
 
 ## <a name="reaching-a-spending-limit"></a>达到支出限制
 
@@ -45,7 +45,7 @@ Azure 中的支出限制可以防止支出超过额度金额。 如果新客户�
 
     ![显示搜索“成本管理 + 计费”的屏幕截图 ](./media/spending-limit/search-bar.png)
 
-1. 在“我的订阅”  列表中，选择你的订阅。 例如 *Visual Studio Enterprise*。
+1. 在“我的订阅”列表中，选择你的订阅。 例如 *Visual Studio Enterprise*。
 
    ![显示我的订阅网格概览的屏幕截图](./media/spending-limit/cost-management-overview-msdn-x.png)
 
@@ -89,7 +89,7 @@ Azure 中的支出限制可以防止支出超过额度金额。 如果新客户�
 
     ![显示搜索“成本管理 + 计费”的屏幕截图 ](./media/spending-limit/search-bar.png)
 
-1. 在“我的订阅”  列表中，选择你的订阅。 例如 *Visual Studio Enterprise*。
+1. 在“我的订阅”列表中，选择你的订阅。 例如 *Visual Studio Enterprise*。
 
    ![显示我的订阅网格概览的屏幕截图](./media/spending-limit/cost-management-overview-msdn-x.png)
 

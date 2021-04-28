@@ -10,12 +10,12 @@ ms.service: azure-resource-manager
 ms.custom:
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: c59c7897054b2ad65a76353e6d886af46cac91e0
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 044c5abe7b44ebc4b9d0cd172f14a8cd1a648b2a
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537436"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107951569"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建异地复制容器注册表
 
@@ -25,7 +25,7 @@ ms.locfileid: "107537436"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-container-registry-geo-replication%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.containerregistry%2Fcontainer-registry-geo-replication%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -35,7 +35,7 @@ ms.locfileid: "107537436"
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-container-registry-geo-replication/)。 该模板会设置注册表和其他区域副本。
 
-:::code language="json" source="~/quickstart-templates/101-container-registry-geo-replication/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.containerregistry/container-registry-geo-replication/azuredeploy.json":::
 
 该模板中定义了以下资源：
 
@@ -48,7 +48,7 @@ ms.locfileid: "107537436"
 
  1. 选择下图登录到 Azure 并打开一个模板。
 
-    [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-container-registry-geo-replication%2Fazuredeploy.json)
+    [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.containerregistry%2Fcontainer-registry-geo-replication%2Fazuredeploy.json)
 
  1. 选择或输入以下值。
 

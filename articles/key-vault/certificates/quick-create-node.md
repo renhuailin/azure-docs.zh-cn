@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 1064c6a1e2dddaae98e94ccceca7b1d550897393
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3f933a564e62bf3aae1ec05c6dde048100c22967
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97930848"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815839"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-javascript-version-4"></a>快速入门：适用于 JavaScript 的 Azure Key Vault 证书客户端库（版本 4）
 
@@ -286,4 +286,4 @@ Purging your certificate from mykeyvault ... done
 - 请参阅[从应用服务应用程序访问 Key Vault 的教程](../general/tutorial-net-create-vault-azure-web-app.md)
 - 请参阅[从虚拟机访问 Key Vault 的教程](../general/tutorial-net-virtual-machine.md)
 - 参阅 [Azure Key Vault 开发人员指南](../general/developers-guide.md)
-- 请参阅 [Key Vault 安全性概述](../general/security-overview.md)
+- 请参阅 [Key Vault 安全性概述](../general/security-features.md)

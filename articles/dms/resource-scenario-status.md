@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: 6c1a0853dc59b2e2ceabfd47d81aac364a2b5716
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: f06c1a055b2f08259bf5318afe3c969d763bbbd3
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107589425"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818613"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure 数据库迁移服务支持的迁移方案的状态
 
@@ -26,6 +26,10 @@ Azure 数据库迁移服务旨在支持脱机（一次性）和联机（连续�
 ## <a name="offline-versus-online-migrations"></a>脱机和联机迁移
 
 使用 Azure 数据库迁移服务可以执行脱机或联机迁移。 通过“脱机”迁移，应用程序停机时间在迁移开始的同时开始。 若要限制迁移完成时交接到新环境所需的停机时间，请使用联机迁移。 建议对脱机迁移进行测试，以便确定其停机时间是否可以接受；如果不能接受，请执行联机迁移。
+
+## <a name="migration-scenario-status"></a>迁移方案状态
+
+Azure 数据库迁移服务支持的迁移方案的状态随时间而变化。 一般而言，方案首先在 **个人预览版** 中发布。 个人预览完成后，方案状态将更改为 **公共预览版**。 Azure 数据库迁移服务用户可以直接从用户界面试用公共预览版的迁移方案。 不需要注册。  但是，公共预览版的迁移方案不一定在所有区域中都可用，并且可能会在最终版本发布之前进行其他更改。 经过公共预览后，方案状态将更改为 **正式版**。 正式版 (GA) 是最终发布状态，其功能是完整的且可供所有用户访问。
 
 ## <a name="migration-scenario-support"></a>迁移方案支持
 
@@ -52,7 +56,7 @@ Azure 数据库迁移服务旨在支持脱机（一次性）和联机（连续�
 | **Azure SQL VM** | SQL Server | ✔ | GA |
 |   | Oracle | X |   |
 | **Azure Cosmos DB** | MongoDB | ✔ | GA |
-| **Azure DB for MySQL** | MySQL | X |   |
+| **Azure DB for MySQL** | MySQL | ✔ |   |
 |   | RDS MySQL | X |   |
 | **Azure DB for PostgreSQL（单一服务器）** | PostgreSQL | X |
 |  | RDS PostgreSQL | X |   |

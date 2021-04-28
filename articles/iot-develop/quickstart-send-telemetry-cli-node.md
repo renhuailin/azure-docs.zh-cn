@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: node
 ms.topic: quickstart
 ms.date: 03/25/2021
-ms.openlocfilehash: 3d42ac814678136c2f6342cd1064e3c3ff394507
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0e1c99124228da9490abaa17ecc41b931631d9fb
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777232"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876969"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-nodejs"></a>快速入门：将遥测数据从设备发送到 IoT 中心 (Node.js)
 
@@ -91,7 +91,7 @@ ms.locfileid: "107777232"
     ```bash
     export IOTHUB_DEVICE_SECURITY_TYPE="connectionString"
     ```
-1. 在打开的 CLI shell 中，运行 [az iot hub monitor-events](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) 命令以开始监视模拟 IoT 设备上的事件。  事件消息抵达后，会在终端中输出。
+1. 在打开的 CLI shell 中，运行 [az iot hub monitor-events](/cli/azure/iot/hub#az_iot_hub_monitor_events) 命令以开始监视模拟 IoT 设备上的事件。  事件消息抵达后，会在终端中输出。
 
     ```azurecli
     az iot hub monitor-events --output table --hub-name {YourIoTHubName}

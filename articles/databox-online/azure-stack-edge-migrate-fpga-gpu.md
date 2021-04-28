@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 430e34a1ca631be00ef46170affd4b56c79894a9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5ad065ff74a7cec293b83497d6258bcf62975f26
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566398"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139284"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>将工作负荷从 Azure Stack Edge Pro FPGA 迁移到 Azure Stack Edge Pro GPU
 
@@ -157,10 +157,10 @@ Edge 本地共享中的数据保留在设备上。 通过 Azure 门户在源设�
 
 请按照以下步骤操作，在目标设备上同步 Edge 云共享上的数据：
 
-1. [添加共享](azure-stack-edge-j-series-manage-shares.md#add-a-share)，使其与源设备上创建的共享名称相对应。 创建共享时，请确保将“选择 Blob 容器”设置为“使用现有容器”，然后选择在前一设备上使用的容器。 
-1. [添加用户](azure-stack-edge-j-series-manage-users.md#add-a-user)，使其有权访问之前的设备。
-1. [刷新来自 Azure 的共享数据](azure-stack-edge-j-series-manage-shares.md#refresh-shares)。 刷新共享会将现有容器中的所有云数据拉取到共享中。
-1. 重新创建要与共享关联的带宽计划。 有关详细步骤，请参阅[添加带宽计划](azure-stack-edge-j-series-manage-bandwidth-schedules.md#add-a-schedule)。
+1. [添加共享](./azure-stack-edge-gpu-manage-shares.md#add-a-share)，使其与源设备上创建的共享名称相对应。 创建共享时，请确保将“选择 Blob 容器”设置为“使用现有容器”，然后选择在前一设备上使用的容器。 
+1. [添加用户](./azure-stack-edge-gpu-manage-users.md#add-a-user)，使其有权访问之前的设备。
+1. [刷新来自 Azure 的共享数据](./azure-stack-edge-gpu-manage-shares.md#refresh-shares)。 刷新共享会将现有容器中的所有云数据拉取到共享中。
+1. 重新创建要与共享关联的带宽计划。 有关详细步骤，请参阅[添加带宽计划](./azure-stack-edge-gpu-manage-bandwidth-schedules.md#add-a-schedule)。
 
 
 ### <a name="2-from-edge-local-shares"></a>2.从 Edge 本地共享

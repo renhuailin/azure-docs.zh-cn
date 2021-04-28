@@ -5,12 +5,12 @@ ms.date: 07/23/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 2d94640e1c6a037893fb1ad9198b82195c46dd24
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: da099aa75168e52d0024f4a4381c77b3e9ce67ab
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768118"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876645"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>快速入门：通过 Azure CLI 创建 Azure 区块链服务区块链成员
 
@@ -46,7 +46,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
     使用 Azure CLI 的扩展引用时，必须先安装该扩展。  借助 Azure CLI 扩展，可访问尚未在核心 CLI 中提供的试验性和预发布的命令。  若要详细了解包含更新和卸载的扩展，请参阅[使用 Azure CLI 的扩展](/cli/azure/azure-cli-extensions-overview)。
 
-    通过运行以下命令安装 [Azure 区块链服务扩展](/cli/azure/ext/blockchain/blockchain)：
+    通过运行以下命令安装 [Azure 区块链服务扩展](/cli/azure/blockchain)：
 
     ```azurecli-interactive
     az extension add --name blockchain
@@ -85,7 +85,7 @@ az blockchain member create \
 | 参数 | 说明 |
 |---------|-------------|
 | **resource-group** | 在其中创建 Azure 区块链服务资源的资源组名称。 请使用在上一部分中创建的资源组。
-| name  | 用于标识 Azure 区块链服务区块链成员的唯一名称。 此名称用于公共终结点地址。 例如，`myblockchainmember.blockchain.azure.com`。
+| name | 用于标识 Azure 区块链服务区块链成员的唯一名称。 此名称用于公共终结点地址。 例如，`myblockchainmember.blockchain.azure.com`。
 | **location** | 在其中创建区块链成员的 Azure 区域。 例如，`westus2` 。 选择最靠近用户或其他 Azure 应用程序的位置。 功能在某些地区可能不可用。 Azure 区块链数据管理器在以下 Azure 区域提供：“美国东部”和“西欧”。
 | password | 成员的默认事务节点的密码。 连接到区块链成员的默认事务节点公共终结点时，请使用密码进行基本身份验证。
 | **protocol** | 区块链协议。 目前支持 Quorum 协议。

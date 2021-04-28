@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/23/2021
 ms.author: justinha
-ms.openlocfilehash: 928b1a6dcff7ad186bf5fe9ce07d1a886d429867
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 27e8c108447a3e16a5e61854eb9d43c4a8efffee
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933332"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126896"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>教程：为 Azure Active Directory 域服务托管域配置安全 LDAP
 
@@ -152,7 +152,7 @@ Thumbprint                                Subject
 
     在“安全性”页上，选择“密码”对应的选项来保护 *.PFX* 证书文件。 加密算法必须是 TripleDES-SHA1。 输入并确认密码，然后选择“下一步”。 下一部分将使用此密码来为托管域启用安全 LDAP。
 
-    如果使用 [PowerShell export-pfxcertificate cmdlet](/powershell/module/pkiclient/export-pfxcertificate) 进行导出，则需要使用 TripleDES_SHA1 传递 -CryptoAlgorithmOption 标志。
+    如果使用 [PowerShell export-pfxcertificate cmdlet](/powershell/module/pki/export-pfxcertificate) 进行导出，则需要使用 TripleDES_SHA1 传递 -CryptoAlgorithmOption 标志。
 
     ![如何对密码进行加密的屏幕截图](./media/tutorial-configure-ldaps/encrypt.png)
 
@@ -312,7 +312,7 @@ Thumbprint                                Subject
 
 客户端会尝试使用所提供的名称建立 TLS 连接。 通信需要一路畅通无阻。 DC 会发送服务器身份验证证书的公钥。该证书需要采用正确的证书用法，在使用者名称中签名的名称必须兼容，使客户端相信该服务器是你要连接到的 DNS 名称（也就是说，可以使用没有拼写错误的通配符），并且客户端必须信任证书颁发者。 可以在事件查看器的“系统日志”中检查该链中是否存在任何问题，并筛选“source”等于“Schannel”的事件。 这些片段到位后，就形成了一个会话密钥。  
 
-有关详细信息，请参阅 [TLS 握手](https://docs.microsoft.com/windows/win32/secauthn/tls-handshake-protocol)。
+有关详细信息，请参阅 [TLS 握手](/windows/win32/secauthn/tls-handshake-protocol)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -336,4 +336,4 @@ Thumbprint                                Subject
 <!-- EXTERNAL LINKS -->
 [rsat]: /windows-server/remote/remote-server-administration-tools
 [ldap-query-basics]: /windows/desktop/ad/creating-a-query-filter
-[New-SelfSignedCertificate]: /powershell/module/pkiclient/new-selfsignedcertificate
+[New-SelfSignedCertificate]: /powershell/module/pki/new-selfsignedcertificate

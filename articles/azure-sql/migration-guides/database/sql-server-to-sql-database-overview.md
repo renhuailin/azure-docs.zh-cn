@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: f515725ea0f306546039b92d953254a093b15b8b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 72e27e79bc1eea7633d7594f1f72e31abbfd7744
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065134"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136510"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-database"></a>迁移概述：SQL Server 到 Azure SQL 数据库
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "106065134"
 - Google Cloud Platform (GCP) 中的计算引擎。  
 - GCP 中 SQL Server 的云 SQL。 
 
-有关其他迁移指南，请参阅[数据库迁移](https://docs.microsoft.com/data-migration)。 
+有关其他迁移指南，请参阅[数据库迁移](/data-migration)。 
 
 ## <a name="overview"></a>概述
 
@@ -87,8 +87,8 @@ SQL 数据库为多种[部署模型](../../database/sql-database-paas-overview.m
 
 - 需要直接访问操作系统或文件系统（例如，为了在装有 SQL Server 的同一个虚拟机上安装第三方代理或自定义代理）。 
 - 严重依赖于目前尚不支持的功能，例如 FileStream/FileTable、PolyBase 和跨实例事务。 
-- 需要使用特定的 SQL Server 版本（例如 2012）。 
-- 计算要求远低于托管实例所提供的计算（如一个 vCore），且不接受数据库整合。 
+- 需要保持使用特定的 SQL Server 版本（例如 2012）。 
+- 计算要求比托管实例的要求低得多（如只需一个 vCore），且数据库整合不可接受。 
 
 
 ## <a name="migration-tools"></a>迁移工具 
@@ -139,14 +139,14 @@ SQL 数据库为多种[部署模型](../../database/sql-database-paas-overview.m
 
 ## <a name="feature-interoperability"></a>功能互操作性 
 
-如果迁移的工作负载还依赖其他 SQL Server 功能，则还有更多注意事项。
+如果迁移的工作负载还依赖其他 SQL Server 功能，则还有其他注意事项。
 
 ### <a name="sql-server-integration-services"></a>SQL Server Integration Services
 通过将 SQL Server Integration Services (SSIS) 包重新部署到 [Azure 数据工厂](../../../data-factory/introduction.md)中的 Azure SSIS 运行时，将包迁移到 Azure。 Azure 数据工厂提供运行时以在 Azure 中运行 SSIS 包，从而[支持 SSIS 包的迁移](../../../data-factory/scenario-ssis-migration-overview.md#azure-sql-database-as-database-workload-destination)。 另外，还可以使用[数据流](../../../data-factory/concepts-data-flow-overview.md)，在 Azure 数据工厂中本地重写 SSIS ETL（提取、转换、加载）逻辑。
 
 
 ### <a name="sql-server-reporting-services"></a>SQL Server Reporting Services
-将 SQL Server Reporting Services (SSRS) 报表迁移到 Power BI 中的分页报表。 使用  [RDL 迁移工具](https://github.com/microsoft/RdlMigration)来帮助准备和迁移报表。 Microsoft 开发了此工具，以帮助客户将报表定义语言 (RDL) 报表从 SSRS 服务器迁移到 Power BI。 它在 GitHub 上提供，并记录了迁移方案的端到端演练。 
+将 SQL Server Reporting Services (SSRS) 报表迁移到 Power BI 中的分页报表。 使用  [RDL 迁移工具](https://github.com/microsoft/RdlMigration)来帮助准备和迁移报表。 Microsoft 开发了此工具来帮助客户将报表定义语言 (RDL) 报表从 SSRS 服务器迁移到 Power BI。 它在 GitHub 上提供，并记录了迁移方案的端到端演练。 
 
 ### <a name="high-availability"></a>高可用性
 手动设置 SQL Server 高可用性功能（如 Always On 故障转移群集实例和 Always On 可用性组）在目标 SQL 数据库上已过时。 Azure SQL 数据库的[常规用途（标准可用性模型）](../../database/high-availability-sla.md#basic-standard-and-general-purpose-service-tier-locally-redundant-availability)和[业务关键（高级可用性模型）](../../database/high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability)服务层中均已内置高可用性体系结构。 业务关键/高级服务层还提供读取扩展功能，该功能允许出于只读目的连接到其中一个辅助节点。 
@@ -181,18 +181,18 @@ PowerShell 实用程序自动将 Windows Server Active Directory 帐户映射到
 
 ## <a name="migration-assets"></a>迁移资产 
 
-如需更多帮助，请参阅以下为实际迁移项目而开发的资源。
+如需更多帮助，请参阅以下资源，这些资源是为支持实际迁移项目而开发的。
 
 |资产  |说明  |
 |---------|---------|
-|[数据工作负荷评估模型和工具](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| 此工具为工作负载提供建议的“最佳匹配”目标平台、云就绪性和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过为目标平台提供自动化且统一的决策过程，有助于加速大规模评估。|
-|[DBLoader 实用程序](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|可使用 DBLoader 将带分隔符的文本文件中的数据加载到 SQL Server 中。 此 Windows 控制台实用程序使用 SQL Server 本机客户端大容量加载接口。 此接口适用于所有版本的 SQL Server 以及 Azure SQL 数据库。|
+|[数据工作负荷评估模型和工具](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| 此工具为工作负载提供建议的“最适合”目标平台、云就绪性和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。|
+|[DBLoader 实用工具](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|可使用 DBLoader 将带分隔符的文本文件中的数据加载到 SQL Server 中。 此 Windows 控制台实用程序使用 SQL Server 本机客户端大容量加载接口。 此接口适用于所有版本的 SQL Server 以及 Azure SQL 数据库。|
 |[使用 PowerShell 批量创建数据库](https://github.com/Microsoft/DataMigrationTeam/tree/master/Bulk%20Database%20Creation%20with%20PowerShell)|可以使用一组三个 PowerShell 脚本创建资源组 (create_rg.ps1)、[Azure 中的逻辑服务器](../../database/logical-servers.md) (create_sqlserver.ps1) 和 SQL 数据库 (create_sqldb.ps1)。 这些脚本包括循环功能，因此你可以根据需要循环访问和创建任意数量的服务器和数据库。|
 |[使用 MSSQL-Scripter 和 PowerShell 批量部署架构](https://github.com/Microsoft/DataMigrationTeam/tree/master/Bulk%20Schema%20Deployment%20with%20MSSQL-Scripter%20&%20PowerShell)|此资产在 Azure 中创建一个资源组、一个或多个[逻辑服务器](../../database/logical-servers.md)来承载 Azure SQL 数据库，从一个本地 SQL Server 实例（或多个 SQL Server 2005+ 实例）导出每个架构，并将这些架构导入 Azure SQL 数据库。|
 |[将 SQL Server 代理作业转换为弹性数据库作业](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Convert%20SQL%20Server%20Agent%20Jobs%20into%20Elastic%20Database%20Jobs)|此脚本将源 SQL Server 代理作业迁移到弹性数据库作业。|
 |[从 Azure SQL 数据库发送电子邮件](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/AF%20SendMail)|此解决方案可作为 SendMail 功能的替代方案，在本地 SQL Server 中可用。 该解决方案使用 Azure Functions 和 SendGrid 服务从 Azure SQL 数据库发送电子邮件。|
 |[用于将本地 SQL Server 登录名移动到 Azure SQL 数据库的实用工具](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/MoveLogins)|PowerShell 脚本可创建 T-SQL 命令脚本以重新创建登录名，并从本地 SQL Server 选择数据库用户到 Azure SQL 数据库。 该工具允许将 Windows Server Active Directory 帐户自动映射到 Azure AD 帐户，还可以选择性地迁移 SQL Server 本机登录名。|
-|[使用 Logman 自动执行 Perfmon 数据收集](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|可以使用 Logman 工具收集 Perfmon 数据（以帮助你了解基准性能）并获得迁移目标建议。 该工具使用 logman.exe 创建命令，该命令将创建、启动、停止和删除在远程 SQL Server 实例上设置的性能计数器。|
+|[使用 Logman 自动执行 Perfmon 数据收集](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|可以使用 Logman 工具收集 Perfmon 数据（以帮助你了解基准性能）和获取迁移目标建议。 该工具使用 logman.exe 创建命令，该命令将创建、启动、停止和删除在远程 SQL Server 实例上设置的性能计数器。|
 |[使用 BACPAC 将数据库迁移到 Azure SQL 数据库](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Database%20migrations%20-%20Benchmarks%20and%20Steps%20to%20Import%20to%20Azure%20SQL%20DB%20Single%20Database%20from%20BACPAC.pdf)|此白皮书提供了一些指导和步骤，可帮助你使用 BACPAC 文件加快从 SQL Server 到 Azure SQL 数据库的迁移。|
 
 数据 SQL 工程团队开发了这些资源。 此团队的核心章程是解锁和加速到 Microsoft 的 Azure 数据平台的数据平台迁移项目的复杂现代化进程。
@@ -208,7 +208,7 @@ PowerShell 实用程序自动将 Windows Server Active Directory 帐户映射到
    - [Azure SQL 数据库概述](../../database/sql-database-paas-overview.md)
    - [Azure 总拥有成本计算器](https://azure.microsoft.com/pricing/tco/calculator/) 
 
-- 若要详细了解云迁移的框架和采用周期，请参阅：
+- 有关云迁移的框架和采用周期的详细信息，请参阅：
    -  [适用于 Azure 的云采用框架](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [为迁移到 Azure 的工作负荷计算成本和调整大小的最佳做法](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
 

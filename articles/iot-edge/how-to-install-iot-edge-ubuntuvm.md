@@ -9,13 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: pdecarlo
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1cd89f3f772effce4997fb69b37858ce2077c1dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d0152f18660716a641766327eaaa36829d7fafc
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103201089"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108073604"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>在 Ubuntu 虚拟机上运行 Azure IoT Edge
 
@@ -31,7 +30,7 @@ ms.locfileid: "103201089"
 首次启动时，该 Ubuntu 18.04 LTS 虚拟机会[通过 cloud-init 安装最新版本的 Azure IoT Edge 运行时](https://github.com/Azure/iotedge-vm-deploy/blob/master/cloud-init.txt)。 在运行时启动之前，该虚拟机还会设置提供的连接字符串，使你可以轻松配置和连接 IoT Edge 设备，而无需启动 SSH 或远程桌面会话。
 
 >[!NOTE]
->本文使用的模板安装 IoT Edge 版本1.1。
+>本文使用的模板安装 IoT Edge 版本 1.1。
 
 ## <a name="deploy-using-deploy-to-azure-button"></a>使用“部署到 Azure”按钮进行部署
 

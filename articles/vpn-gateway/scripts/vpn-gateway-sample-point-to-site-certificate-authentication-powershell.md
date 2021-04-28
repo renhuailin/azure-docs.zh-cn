@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: sample
 ms.date: 02/11/2021
 ms.author: alzam
-ms.openlocfilehash: 04d0fe2b322f6b70cb1cda8d61fbd49638ec214a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9310920ead3b36516a9beb16e7cb9be732e7628f
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100385823"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107948250"
 ---
 # <a name="configure-a-point-to-site-vpn---certificate-authentication---powershell-script-sample"></a>配置点到站点 VPN - 证书身份验证 - PowerShell 脚本示例
 
@@ -111,7 +111,7 @@ Remove-AzResourceGroup -Name TestRG1
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | 创建公共 IP 地址。 |
 | [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | 新建网关 IP 配置。 |
 | [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | 创建 VPN 网关。 |
-| [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) | 新建自签名根证书。 |
+| [New-SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate) | 新建自签名根证书。 |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组及其中包含的所有资源。 |
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | 设置虚拟网络的子网配置。 |
 

@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 9eee315aac28847710662b463add7d6e68d8d505
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d3847ec5ce253d2d5f2ad18ce9a0cc912335e2f4
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94967289"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141990"
 ---
 # <a name="x509-certificate-attestation"></a>X.509 证书证明
 
@@ -38,7 +38,7 @@ X.509 证书可以存储在硬件安全模块 HSM 中。
 
 ### <a name="root-certificate"></a>根证书
 
-根证书是表示证书颁发机构 (CA) 的自签名的 X.509 证书。 它是证书链的终点或信任定位点。 根证书可由组织自行颁发或从根证书颁发机构购买。 若要了解详细信息，请参阅[获取 X.509 CA 证书](../iot-hub/iot-hub-security-x509-get-started.md#get-x509-ca-certificates)。 根证书也可称为根 CA 证书。
+根证书是表示证书颁发机构 (CA) 的自签名的 X.509 证书。 它是证书链的终点或信任定位点。 根证书可由组织自行颁发或从根证书颁发机构购买。 若要了解详细信息，请参阅[获取 X.509 CA 证书](../iot-hub/tutorial-x509-scripts.md)。 根证书也可称为根 CA 证书。
 
 ### <a name="intermediate-certificate"></a>中间证书
 

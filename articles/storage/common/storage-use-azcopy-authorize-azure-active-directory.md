@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/01/2021
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: dd3aeaf133c02ef54eceaff776ead34cc2318260
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 9c5e7d1cf318e50e778c59b97b20b03d23fbfe5c
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220471"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903121"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>使用 AzCopy 和 Azure Active Directory (Azure AD) 授予对 blob 的访问权限
 
@@ -159,7 +159,7 @@ azcopy login --service-principal  --application-id application-id --tenant-id=te
 
 如果希望使用自己的凭据进行授权，可将证书上传到应用注册，然后使用该证书来登录。
 
-除了将证书上传到应用注册以外，还需要在运行 AzCopy 的计算机或 VM 中保存该证书的副本。 此证书副本应采用 .PFX 或 .PEM 格式，且必须包含私钥。 该私钥应通过密码予以保护。 如果使用的是 Windows，且证书仅在证书存储中，请确保将该证书导出到 PFX 文件（包括私钥）。 有关指导，请参阅 [Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate)
+除了将证书上传到应用注册以外，还需要在运行 AzCopy 的计算机或 VM 中保存该证书的副本。 此证书副本应采用 .PFX 或 .PEM 格式，且必须包含私钥。 该私钥应通过密码予以保护。 如果使用的是 Windows，且证书仅在证书存储中，请确保将该证书导出到 PFX 文件（包括私钥）。 有关指导，请参阅 [Export-PfxCertificate](/powershell/module/pki/export-pfxcertificate)
 
 接下来，将 `AZCOPY_SPA_CERT_PASSWORD` 环境变量设为证书密码。
 
