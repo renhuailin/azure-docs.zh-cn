@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 03/24/2021
 ms.author: inhenkel
-ms.openlocfilehash: 1d827d734c434204ff6b7ec60d27e507ae626abd
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 3707516818e54dd251bd470eb9231afc6e3fff67
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227681"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138672"
 ---
 # <a name="media-services-v3-samples"></a>媒体服务 v3 示例
 
@@ -47,7 +47,7 @@ ms.locfileid: "107227681"
 | [ContentProtection/OfflinePlayReadyAndWidevine](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/ContentProtection/OfflinePlayReadyAndWidevine)|如何使用 PlayReady 和 Widevine DRM 来动态加密内容，并在不从许可证服务请求许可证的情况下播放内容。 它展示了如何使用内置的 AdaptiveStreaming 预设创建转换，如何提交作业，创建具有开放式限制和 PlayReady/Widevine 永久性配置的 ContentKeyPolicy，将 ContentKeyPolicy 与 StreamingLocator 相关联，以及输出用于播放的 URL。|
 | [Streaming/AssetFilters](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/AssetFilters)|如何使用内置的 AdaptiveStreaming 预设创建转换，如何提交作业，创建资产筛选器和帐户筛选器，将筛选器关联到流式传输定位符，以及输出用于播放的 URL。|
 | [Streaming/StreamHLSAndDASH](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/StreamHLSAndDASH)|如何使用内置的 AdaptiveStreaming 预设创建转换，如何提交作业，发布输出资产以进行 HLS 和 DASH 流式传输。|
-| [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/HighAvailabilityEncodingStreaming/) | 针对使用按需编码或分析的生产系统的指南和最佳做法。 读者应该从[媒体服务和 VOD 的高可用性](https://docs.microsoft.com/azure/media-services/latest/architecture-high-availability-encoding-concept)这一配套文章开始。 为 [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/HighAvailabilityEncodingStreaming/README.md) 示例提供了一个单独的解决方案文件。 |
+| [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/HighAvailabilityEncodingStreaming/) | 针对使用按需编码或分析的生产系统的指南和最佳做法。 读者应该从[媒体服务和 VOD 的高可用性](./architecture-high-availability-encoding-concept.md)这一配套文章开始。 为 [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/HighAvailabilityEncodingStreaming/README.md) 示例提供了一个单独的解决方案文件。 |
 
 ## <a name="nodejs"></a>[Node.JS](#tab/node/)
 

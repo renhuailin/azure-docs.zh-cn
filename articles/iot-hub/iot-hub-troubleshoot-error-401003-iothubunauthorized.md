@@ -11,12 +11,12 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c6ad0e2dd5ce5f223f4e6033ace09c31e58c85a3
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 0e59fa2bcbc2d357857ddef39d990ddee9bc9c90
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061343"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129452"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
@@ -69,7 +69,7 @@ SDK 的默认令牌有效期为 60 分钟；但是，对于某些 SDK，令牌�
 通常情况下，出现的错误消息应说明如何修复此错误。 如果由于某种原因无法访问错误消息详细信息，请确保：
 
 - 所用的 SAS 或其他安全令牌未过期。
-- 对于 X.509 证书身份验证，设备证书或与设备关联的 CA 证书未过期。 若要了解如何将 X.509 CA 证书注册到 IoT 中心，请参阅[在 Azure IoT 中心设置 X.509 安全性](iot-hub-security-x509-get-started.md)。
+- 对于 X.509 证书身份验证，设备证书或与设备关联的 CA 证书未过期。 若要了解如何将 X.509 CA 证书注册到 IoT 中心，请参阅[在 Azure IoT 中心设置 X.509 安全性](./tutorial-x509-scripts.md)。
 - 对于 X.509 证书指纹身份验证，需要向 IoT 中心注册设备证书的指纹。
 - 授权凭据的格式正确，适用于所使用的协议。 若要了解详细信息，请参阅[控制 IoT 中心的访问权限](iot-hub-devguide-security.md)。
 - 使用的授权规则对所请求的操作具有权限。

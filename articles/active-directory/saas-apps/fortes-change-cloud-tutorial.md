@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/18/2021
 ms.author: jeedes
-ms.openlocfilehash: c80d61e367288edfc207fb0160b5d03152ad6ce4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 025d8d2007501f858b0f80e770ce6b8a230650bf
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104583779"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130550"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortes-change-cloud"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Fortes Change Cloud 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "104583779"
 * 让用户使用其 Azure AD 帐户自动登录到 Fortes Change Cloud。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -46,7 +46,7 @@ ms.locfileid: "104583779"
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
-1. 若要添加新的应用程序，请选择“新建应用程序”  。
+1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中键入“Fortes Change Cloud” 。
 1. 从结果面板中选择“Fortes Change Cloud”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
@@ -73,7 +73,7 @@ ms.locfileid: "104583779"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<UNIQUE_IDENTIFIER>.fortes-online.com/saml/metadata`
 
@@ -84,7 +84,7 @@ ms.locfileid: "104583779"
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<UNIQUE_IDENTIFIER>.fortes-online.com/saml/SSO`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Fortes Change Cloud 客户端支持团队](mailto:support@fortes.nl)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Fortes Change Cloud 客户端支持团队](mailto:support@fortes.nl)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 1. Fortes Change Cloud 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 Fortes Change Cloud 应用程序要求通过 user.mail 对唯一用户标识符进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射  。
 
@@ -140,7 +140,7 @@ ms.locfileid: "104583779"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Fortes Change Cloud 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Fortes Change Cloud 磁贴时，如果是在 SP 模式下配置的，则会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Fortes Change Cloud。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Fortes Change Cloud 磁贴时，如果是在 SP 模式下配置的，则会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Fortes Change Cloud。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

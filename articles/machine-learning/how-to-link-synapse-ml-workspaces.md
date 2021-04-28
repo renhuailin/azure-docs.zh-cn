@@ -5,22 +5,22 @@ description: 了解如何链接 Azure Synapse 和 Azure 机器学习工作区以
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
 ms.author: nibaccam
 author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
-ms.custom: devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 3ee5986fbe92d7e585a7c9f2f50bdeceb132c268
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
+ms.openlocfilehash: 23184eee67013e39400446db5f744dd0ddb7bc50
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108131379"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575728"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>链接 Azure Synapse Analytics 和 Azure 机器学习工作区（预览版）
 
-在本文中，你将了解如何创建一个链接服务来链接 [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) 工作区和 [Azure 机器学习工作区](concept-workspace.md)。
+在本文中，你将了解如何创建一个链接服务来链接 [Azure Synapse Analytics](/azure/synapse-analytics/overview-what-is) 工作区和 [Azure 机器学习工作区](concept-workspace.md)。
 
 通过将 Azure 机器学习工作区与 Azure Synapse 工作区链接起来，你可以将 Apache Spark 池附加为专用计算，用于大规模的数据整理，或完全从相同 Python 笔记本进行模型训练。
 
@@ -35,9 +35,9 @@ ms.locfileid: "108131379"
 
 * [创建 Azure 机器学习工作区](how-to-manage-workspace.md?tabs=python)。
 
-* [在 Azure 门户中创建 Synapse 工作区](../synapse-analytics/quickstart-create-workspace.md)。
+* [在 Azure 门户中创建 Synapse 工作区](/azure/synapse-analytics/quickstart-create-workspace)。
 
-* [使用 Azure 门户、Web 工具或 Synapse Studio 创建 Apache Spark 池](../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)
+* [使用 Azure 门户、Web 工具或 Synapse Studio 创建 Apache Spark 池](/azure/synapse-analytics/quickstart-create-apache-spark-pool-studio)
 
 * 安装 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro)
 

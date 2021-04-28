@@ -8,15 +8,14 @@ ms.date: 06/23/2020
 ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.custom:
-- devx-track-azurecli
 - devx-track-azurepowershell
 - mode-arm
-ms.openlocfilehash: 9c235f8e056bf185267aa0bb493b71b897f3c510
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: d3ffdf144d334143fcf6b15bf7e0128c165c7119
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534923"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108075080"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建包含主题和订阅的服务总线命名空间
 

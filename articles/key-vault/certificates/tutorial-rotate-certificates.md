@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: ec88dfc7ded7ecb1d640eb4d73ef4c8045e549cf
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 50cc8f2454aa18dd9a0f1365490fadedcbb623b7
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791978"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140670"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>教程：配置 Key Vault 中的证书自动轮换
 
@@ -83,7 +83,7 @@ Key Vault 通过与 CA 建立的合作关系自动轮换证书。 由于 Key Vau
       |-----------|------|
       |选择此选项会启用自动轮换。 | 选择此选项不会自动轮换，而只会提醒联系人。|
       
-      你可以在此处了解如何[设置电子邮件联系人](https://docs.microsoft.com/azure/key-vault/certificates/overview-renew-certificate#get-notified-about-certificate-expiration)
+      你可以在此处了解如何[设置电子邮件联系人](./overview-renew-certificate.md#get-notified-about-certificate-expiration)
 
 1. 选择“创建”。
 

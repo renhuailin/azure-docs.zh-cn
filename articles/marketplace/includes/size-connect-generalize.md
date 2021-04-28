@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
 author: mingshen-ms
 ms.author: krsh
-ms.date: 03/25/2021
-ms.openlocfilehash: 8898a762e8a1e7a2d5c104f99d12032c676a5ca4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/16/2021
+ms.openlocfilehash: e119d40cd0b8f482d33c3c86c644cf6a0846390a
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629827"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727109"
 ---
 ## <a name="generalize-the-image"></a>通用化映像
 
@@ -40,6 +40,9 @@ Windows OS 磁盘已使用 [sysprep](/windows-hardware/manufacture/desktop/syspr
 
 ### <a name="capture-image"></a>捕获映像
 
+> [!NOTE]
+> 包含 SIG 的 Azure 订阅必须与发布者帐户位于同一租户才能发布。 此外，发布者帐户必须至少具有对包含 SIG 的订阅的参与者访问权限。
+
 VM 准备就绪后，即可在 Azure 共享映像库中捕获映像。 请按照以下步骤进行捕获：
 
 1. 在 [Azure 门户](https://ms.portal.azure.com/)中转到你的虚拟机页。
@@ -51,8 +54,6 @@ VM 准备就绪后，即可在 Azure 共享映像库中捕获映像。 请按照
 7. 提供映像的版本号。
 8. 选择“查看 + 创建”可查看选择。
 9. 传递验证后，选择“创建”。
-
-包含 SIG 的 Azure 订阅必须与发布者帐户位于同一租户才能发布。 此外，发布者帐户必须具有对 SIG 的所有者访问权限。 
 
 若要授予访问权限，请执行以下操作：
 

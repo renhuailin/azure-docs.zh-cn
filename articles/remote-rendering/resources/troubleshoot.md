@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 4990f0d0a10709f2c1c5a17806020cd685f999fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f0fb9ab5c53c3fd1bfb32ac7b112a116301cba7
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99593327"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575337"
 ---
 # <a name="troubleshoot"></a>疑难解答
 
@@ -249,6 +249,39 @@ ARR 提供了一项功能用于确定表面是否可能发生 Z 冲突：[棋盘
 
 在某些情况下，调用 [**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image) 后，对本地内容使用多通道立体渲染模式（在独立的通道中向左眼和右眼渲染）的自定义本机 C++ 应用可能会触发驱动程序 bug。 该 bug 导致不确定性光栅化的问题，进而导致本地内容的各个三角形或部分三角形随机消失。 出于性能原因，建议始终使用更新式的单通道立体渲染技术（例如，使用 **SV_RenderTargetArrayIndex**）来渲染本地内容。
 
+## <a name="conversion-file-download-errors"></a>转换文件下载错误
+
+由于 Windows 和服务的路径长度限制，Conversion 服务在从 Blob 存储下载文件时可能遇到错误。 Blob 存储中的文件路径和文件名不得超过 178 个字符。 例如如果 `models/Assets` 的 `blobPrefix` 是 13 个字符：
+
+`models/Assets/<any file or folder path greater than 164 characters will fail the conversion>`
+
+Conversion 服务将下载 `blobPrefix` 下指定的所有文件，而不仅仅是转换中使用的文件。 在这些情况下，引起问题的文件/文件夹可能不太明显，因此请务必检查存储帐户中 `blobPrefix` 下包含的所有内容。 有关下载的内容，请参阅下面的示例输入。
+``` json
+{
+  "settings": {
+    "inputLocation": {
+      "storageContainerUri": "https://contosostorage01.blob.core.windows.net/arrInput",
+      "blobPrefix": "models/Assets",
+      "relativeInputAssetPath": "myAsset.fbx"
+    ...
+  }
+}
+```
+
+```
+models
+├───Assets
+│   │   myAsset.fbx                 <- Asset
+│   │
+│   └───Textures
+│   |       myTexture.png           <- Used in conversion
+│   |
+|   └───MyFiles
+|          myOtherFile.txt          <- File also downloaded under blobPrefix      
+|           
+└───OtherFiles
+        myReallyLongFileName.txt    <- Ignores files not under blobPrefix             
+```
 ## <a name="next-steps"></a>后续步骤
 
 * [系统要求](../overview/system-requirements.md)

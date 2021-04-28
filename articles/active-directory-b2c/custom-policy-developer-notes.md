@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/19/2020
+ms.date: 04/26/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c175a6d225be268f27854b9ab63886892cf029fb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fdf6398daf2c0206f5239a90667448d9ea789f65
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557269"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001081"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>有关 Azure Active Directory B2C 中的自定义策略的开发人员说明
 
@@ -99,13 +99,13 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [电话因素身份验证](phone-factor-technical-profile.md) |  |  | X |  |
 | [Azure AD MFA 身份验证](multi-factor-auth-technical-profile.md) |  | X |  |  |
-| [一次性密码](one-time-password-technical-profile.md) |  | X |  |  |
+| [一次性密码](one-time-password-technical-profile.md) |  |  | X |  |
 | [Azure Active Directory](active-directory-technical-profile.md) 用作本地目录 |  |  | X |  |
 | 用于电子邮件验证的 Azure 电子邮件子系统 |  |  | X |  |
-| [第三方电子邮件服务提供程序](custom-email-mailjet.md) |  |X  |  |  |
+| [第三方电子邮件服务提供程序](custom-email-mailjet.md) |  |  | X |  |
 | [多语言支持](localization.md)|  |  | X |  |
 | [谓词验证](predicates.md) |  |  | X | 例如，密码复杂性。 |
-| [显示控件](display-controls.md) |  |X  |  |  |
+| [显示控件](display-controls.md) |  |  |X  |  |
 
 
 ### <a name="app-ief-integration"></a>App-IEF 集成

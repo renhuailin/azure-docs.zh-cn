@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 2fbdd46b872c4c70999355d457045f4aac8aa34c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9897ad062de308563dccc7d17191d1757b887fc2
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877167"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135160"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>如何为 Azure Spring Cloud 应用程序启用系统分配的托管标识
 
@@ -24,7 +24,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 资源（如 
 
 ## <a name="prerequisites"></a>先决条件
 如果不熟悉 Azure 资源的托管标识，请参阅[概述部分](../active-directory/managed-identities-azure-resources/overview.md)。
-需要一个已部署的 Azure Spring Cloud 实例。 按照[使用 Azure CLI 进行部署快速入门](spring-cloud-quickstart.md)进行操作。
+需要一个已部署的 Azure Spring Cloud 实例。 按照[使用 Azure CLI 进行部署快速入门](./quickstart.md)进行操作。
 
 ## <a name="add-a-system-assigned-identity"></a>添加系统分配的标识
 若要创建带有系统分配的标识的应用，需在应用程序上设置一个额外的属性。

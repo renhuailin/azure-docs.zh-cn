@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: bf761bded38ffa975610c7a7f217e911704ae3bf
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 73ab7e9bab4106af52f615982666922115af4187
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227936"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135376"
 ---
 # <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>将 Azure Cosmos DB 数据库绑定到 Azure Spring Cloud 应用程序
 
@@ -22,7 +22,7 @@ ms.locfileid: "107227936"
 
 先决条件：
 
-* 部署的 Azure Spring Cloud 实例。 按[有关如何通过 Azure CLI 进行部署的快速入门](spring-cloud-quickstart.md)操作即可入门。
+* 部署的 Azure Spring Cloud 实例。 按[有关如何通过 Azure CLI 进行部署的快速入门](./quickstart.md)操作即可入门。
 * 最低权限级别为“参与者”的 Azure Cosmos DB 帐户。
 
 ## <a name="bind-azure-cosmos-db"></a>绑定 Azure Cosmos DB
@@ -108,4 +108,4 @@ Azure Cosmos DB 具有五种支持绑定的不同 API 类型。 以下过程演�
 
 ## <a name="next-steps"></a>后续步骤
 
-本问介绍了如何将 Azure Spring Cloud 应用程序绑定到 Azure Cosmos DB 数据库。 若要详细了解如何将服务绑定到应用程序，请参阅[绑定到 Azure Cache for Redis 缓存](spring-cloud-howto-bind-redis.md)。
+本问介绍了如何将 Azure Spring Cloud 应用程序绑定到 Azure Cosmos DB 数据库。 若要详细了解如何将服务绑定到应用程序，请参阅[绑定到 Azure Cache for Redis 缓存](./how-to-bind-redis.md)。

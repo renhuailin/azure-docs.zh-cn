@@ -7,14 +7,14 @@ ms.reviewer: cynthn
 ms.service: virtual-machines
 ms.subservice: trusted-launch
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 04/06/2021
 ms.custom: template-how-to
-ms.openlocfilehash: daf4ad39f0379f7e903c40b9d5073ab87f455bab
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 295579d17f3b24adcf43f6907cc4b1aca01dcae2
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106218764"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565910"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>部署已启用受信任启动的 VM（预览版）
 
@@ -41,19 +41,20 @@ ms.locfileid: "106218764"
 5. 在“项目详细信息”下，确保选择了正确的订阅。
 6. 在“资源组”下选择“新建”并键入资源组的名称，或者从下拉列表中选择现有的资源组。
 7. 在“实例详细信息”下，键入一个名称作为虚拟机名称，并选择一个支持[受信任启动](trusted-launch.md#public-preview-limitations)的区域。
-8. 在“映像”下，选择一个[支持受信任启动的映像](trusted-launch.md#public-preview-limitations)。 你可能只能看到映像的第 1 代版本，这没问题，请继续执行下一步。
-9. 通过在页面顶部选择“高级”选项卡，切换到“高级”选项卡。
-10. 向下滚动到“VM 代系”部分，然后选择“第 2 代”。
-11. 仍在“高级”选项卡上时，向下滚动到“受信任启动”，然后选中“受信任启动”复选框。   这样会显示另外两个选项 -“安全启动”和“vTPM”。 选择适合你的部署的选项。
-
-    :::image type="content" source="media/trusted-launch/trusted-launch-portal.png" alt-text="屏幕截图，显示受信任启动的选项。":::
-
-12. 返回到“基本信息”选项卡，在“映像”下确保看到以下消息：“此映像支持受信任启动预览版。请在‘高级’选项卡中进行配置”。现在，第 2 代映像应处于选中状态。
+8. 在“映像”下，选择一个[支持受信任启动的第 2 代映像](trusted-launch.md#public-preview-limitations)。 确保看到以下消息：“此映像支持受信任启动预览版。请在‘高级’选项卡中配置”。
+   > [!TIP]
+   > 如果下拉列表中未显示你需要的第 2 代版本映像，请选择“查看所有映像”，然后将“VM 代系”筛选器更改为仅显示第 2 代映像 。 在列表中查找映像，然后使用“选择”下拉列表选择第 2 代版本。
 
     :::image type="content" source="media/trusted-launch/gen-2-image.png" alt-text="屏幕截图，其中显示的消息确认这是支持受信任启动的第 2 代映像。":::
 
 13. 选择支持受信任启动的 VM 大小。 请查看[受支持的大小](trusted-launch.md#public-preview-limitations)的列表。
-14. 填写“管理员帐户”信息，然后填写“入站端口规则”。
+14. 填写“管理员帐户”信息，然后填写“入站端口规则”。 
+1. 通过在页面顶部选择“高级”选项卡，切换到“高级”选项卡。
+1. 向下滚动到“VM 代系”部分。 确保选中“第 2 代”。
+1. 仍在“高级”选项卡上时，向下滚动到“受信任启动”，然后选中“受信任启动”复选框。   这样会显示另外两个选项 -“安全启动”和“vTPM”。 选择适合你的部署的选项。
+
+    :::image type="content" source="media/trusted-launch/trusted-launch-portal.png" alt-text="屏幕截图，显示受信任启动的选项。":::
+
 15. 在页面底部，选择“查看 + 创建”
 16. 在“创建虚拟机”页上，可以查看要部署的 VM 的详细信息。 准备好以后，选择“创建”。
 
