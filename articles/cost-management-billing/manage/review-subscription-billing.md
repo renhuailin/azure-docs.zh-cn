@@ -7,12 +7,12 @@ ms.subservice: billing
 ms.topic: article
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: b4d6502e49fdd30a68188a1e580a1c137984c89f
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: f23beeb735c83cdf2d42a01ff684510dbd0d9feb
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132374"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058827"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>使用 REST API 查看订阅计费
 
@@ -72,7 +72,7 @@ Authorization: Bearer
 }
 ```
 
-**值**中的每一项均表示有关服务使用的详细信息：
+**值** 中的每一项均表示有关服务使用的详细信息：
 
 |响应属性|说明|
 |----------------|----------|

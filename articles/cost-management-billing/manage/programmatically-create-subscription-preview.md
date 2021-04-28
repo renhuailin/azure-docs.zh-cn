@@ -9,12 +9,12 @@ ms.date: 11/17/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: b524869998dd2464ed359ec61ce655a807899aaa
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: d3247a86795b9661196c3264c60b06e7c61d6e23
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102565710"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877871"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>通过预览 API 以编程方式创建 Azure 订阅
 
@@ -198,7 +198,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 
 首先，通过运行 `az extension add --name subscription` 安装此预览版扩展。
 
-运行以下 [az account create](/cli/azure/ext/subscription/account#-ext-subscription-az-account-create) 命令，并将 `<enrollmentAccountObjectId>` 替换为第一步中收集的 `name` (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```)。 若要指定所有者，请参阅[如何获取用户对象 ID](grant-access-to-create-subscription.md#userObjectId)。
+运行以下 [az account create](/cli/azure/account#-ext-subscription-az-account-create) 命令，并将 `<enrollmentAccountObjectId>` 替换为第一步中收集的 `name` (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```)。 若要指定所有者，请参阅[如何获取用户对象 ID](grant-access-to-create-subscription.md#userObjectId)。
 
 ```azurecli-interactive
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
@@ -213,7 +213,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 | `owner-upn`    | 否       | String | 要在创建订阅时作为 Azure RBAC 所有者添加到订阅的任意用户的电子邮件地址。 可以使用此参数，而不使用 `owner-object-id`。|
 | `owner-spn` | 否       | String | 要在创建订阅时作为 Azure RBAC 所有者添加到订阅的任意服务主体的应用程序 ID。 可以使用此参数，而不使用 `owner-object-id`。 使用此参数时，服务主体必须具有[对该目录的读取访问权限](/powershell/azure/active-directory/signing-in-service-principal#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)。|
 
-要查看所有参数的完整列表，请参阅 [az account create](/cli/azure/ext/subscription/account#-ext-subscription-az-account-create)。
+要查看所有参数的完整列表，请参阅 [az account create](/cli/azure/account#-ext-subscription-az-account-create)。
 
 ---
 
@@ -365,7 +365,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 | `skuId` | 是      | 字符串 | 确定 Azure 计划类型的 SKU ID。 |
 | `owners`      | 否       | 字符串 | 创建订阅时要作为 Azure RBAC 所有者要添加到订阅的任何用户或服务主体的对象 ID。  |
 | `costCenter` | 否      | 字符串 | 与订阅关联的成本中心。 它在使用情况 CSV 文件中显示。 |
-| `managementGroupId` | 否      | 字符串 | 订阅将添加到其中的管理组的 ID。 若要获取管理组列表，请参阅[管理组 - 列表 API](/rest/api/resources/managementgroups/list)。 使用 API 中管理组的 ID。 |
+| `managementGroupId` | 否      | 字符串 | 订阅将添加到其中的管理组的 ID。 若要获取管理组列表，请参阅[管理组 - 列表 API](/rest/api/managementgroups/entities/list)。 使用 API 中管理组的 ID。 |
 
 在响应中，返回 `subscriptionCreationResult` 对象进行监视。 完成订阅创建后，`subscriptionCreationResult` 对象将返回有订阅 ID 的 `subscriptionLink` 对象。
 
