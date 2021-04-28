@@ -9,12 +9,12 @@ ms.subservice: enterprise
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 643aac7927cc7b14693387fbb5765bdcd0214dc2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 5d945c421dc0a4abed17b3a355339c131dd922df
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598247"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728043"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>了解 Azure 企业协议帐单
 
@@ -323,7 +323,7 @@ Azure 市场费用有以下两种类型：
  1. 在左侧导航区域中选择“管理”。
  1. 选择“注册”选项卡。
  1. 在“注册详细信息”部分下，选择位于“DA 查看费用”或“AO 查看费用”旁边的铅笔图标。  
- 1. 选择“启用”。
+ 1. 选择“启用”。 
  1. 选择“保存”。
 
 ### <a name="to-view-reports"></a>查看报表：
@@ -396,51 +396,6 @@ See [Power BI self-service sign up](https://powerbi.microsoft.com/documentation/
 
     可以在 Azure Enterprise 门户中的“下载使用情况”选项卡下获取 API 密钥。选择“API 访问密钥”，然后将该密钥粘贴到“帐户密钥”框中。 
 1. 在 Power BI 中加载数据大约需要 5-30 分钟，具体取决于数据集的大小。
-
-## <a name="reports-faq"></a>报表常见问题解答
-
-本部分解答有关报表的常见问题。
-
-### <a name="why-is-my-cost-showing-as-0"></a>为什么我的成本显示为 $0？
-
-对于 **直接注册** 客户，企业管理员可以向帐户所有者和部门管理员提供对使用情况报表中费用/定价信息的访问权限。 执行以下步骤:
-
-1. 在 Azure Enterprise 门户的左侧导航区域中，选择“管理”。
-1. 选择 DA（部门管理员）查看费用旁边的蓝色铅笔图标。
-1. 选择“启用”并保存。
-1. 选择 AO（帐户所有者）查看费用旁边的蓝色铅笔图标。
-1. 选择“启用”并保存。
-
-> [!NOTE]
-> 如果你是帐户所有者或部门管理员，请联系企业管理员启用定价功能。
-
-对于 **间接注册** 客户，请联系合作伙伴来检查他们是否已为你启用了定价功能。 此操作只能由合作伙伴完成。 为你启用此功能后，你就能以企业管理员身份查看注册的费用和定价。
-
-如果合作伙伴想要为帐户所有者和部门管理员启用“查看费用”的功能，请按照“直接注册”下的步骤操作。
-
-### <a name="why-is-there-no-sku-information-on-my-usage-detail-report"></a>为何使用情况详细信息报表中没有 SKU 信息？
-
-使用情况详细信息报表不包含 SKU 信息。 但是，该报表确实包含使用情况信息。你可以下载价目表报表来获取 SKU 信息。
-
-### <a name="why-doesnt-the-total-amount-on-azure-marketplace-match-the-reports-for-usage-summary-and-detail"></a>Azure 市场的总额为何与使用情况摘要和详细信息的报表不相符？
-
-Azure 市场费用报表仅显示基于用量的费用。 不显示一次性费用。 查看使用情况摘要页可以获取最新的基于用量的费用和一次性费用。
-
-### <a name="why-is-there-no-information-on-my-api-report"></a>我的 API 报表中为何未显示任何信息？
-
-API 密钥每六个月过期。 如果你遇到问题，企业管理员应生成新的 API 密钥。 请记得按照“API 报表常见问题解答”中的步骤操作。
-
-### <a name="why-isnt-my-power-bi-report-working"></a>我的 Power BI 报表为何不正常工作？
-
-如果遇到 Power BI 的问题，请在 [Power BI 支持团队](https://support.powerbi.com)的配合下记录支持票证。
-
-### <a name="why-dont-my-resource-tags-show-on-my-reports"></a>为什么我的报表中未显示我的资源标记
-
-资源标记托管在 Azure 门户上。 可以在 [Azure 门户](https://portal.azure.com)中联系 Azure 订阅团队。 请按照[如何创建 Azure 支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)一文中的步骤操作。
-
-### <a name="why-does-my-resource-rate-change-every-day"></a>为什么资源费率每天都在变化？
-
-详细使用情况报表中的资源费率是计算所得的值。 它表示对某项服务收取的月平均费率。 资源费率是根据一个服务单位的每月承诺和每月超额费用的平均值计算得出的。 在月结算日前按承诺和超额费率收费的这部分用量不断变化。 因此，列出的资源费率在当月内也会变化。 资源费率在月末之后的第五日锁定。
 
 ### <a name="glossary-of-processes-for-calculating-the-resource-rate"></a>用于计算资源费率的过程的术语表
 
