@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 203af340a8bd48bdb6dee70f92c2ecc39708b8e1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cb778d826ef094d71fd27f3c10bc1f2c292baa47
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732323"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862392"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure 资源
 当你的关键应用程序和业务流程依赖于 Azure 资源时，你需要监视这些资源的可用性、性能和操作。 本文描述了 Azure 资源生成的监视数据，介绍如何使用 Azure Monitor 的功能对此数据分析和发出警报。
@@ -131,7 +131,7 @@ Azure Monitor 日志整合了来自多项服务和其他数据源的日志和指
 可通过命令行访问从资源收集的监视数据，也可使用 [Azure PowerShell](/powershell/azure/) 或 [Azure 命令行接口](/cli/azure/)包含在脚本中。 
 
 - 要通过 CLI 访问指标数据，请参阅 [CLI 指标参考](/cli/azure/monitor/metrics)。
-- 要通过 CLI 使用日志查询访问 Azure Monitor 日志数据，请参阅 [CLI Log Analytics 参考](/cli/azure/ext/log-analytics/monitor/log-analytics)。
+- 要通过 CLI 使用日志查询访问 Azure Monitor 日志数据，请参阅 [CLI Log Analytics 参考](/cli/azure/monitor/log-analytics)。
 - 要通过 Azure PowerShell 访问指标数据，请参阅 [Azure PowerShell 指标参考](/powershell/module/azurerm.insights/get-azurermmetric)。
 - 要通过 Azure PowerShell 使用日志查询访问 Azure Monitor 日志数据，请参阅 [Azure PowerShell 日志查询参考](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery)。
 

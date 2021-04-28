@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: e606e21fe2b80683737970b92d57ce87b9103144
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 7c1e908b5b113c5a2eff81105b1f0cd622c57b5e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106864"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127508"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>有关从云合作伙伴门户转换为合作伙伴中心的常见问题解答
 
@@ -81,11 +81,11 @@ ms.locfileid: "107106864"
 | 虚拟机 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请访问[规划虚拟机产品/服务](marketplace-virtual-machines.md)。 |
 | Azure 应用程序 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请访问[创建 Azure 应用程序产品/服务](create-new-azure-apps-offer.md)。 |
 | Dynamics 365 Business Central | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请访问[创建 Dynamics 365 Business Central 产品/服务](partner-center-portal/create-new-business-central-offer.md)。 |
-| Dynamics 365 for Customer Engagement 和 PowerApps | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请访问[创建 Dynamics 365 for Customer Engagement 和 PowerApps 产品/服务](partner-center-portal/create-new-customer-engagement-offer.md)。 |
+| Dynamics 365 for Customer Engagement 和 PowerApps | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请访问[创建 Dynamics 365 for Customer Engagement 和 PowerApps 产品/服务](dynamics-365-customer-engage-offer-setup.md)。 |
 | Dynamics 365 for Operations | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请访问[创建 Dynamics 365 for Operations 产品/服务](partner-center-portal/create-new-operations-offer.md)。 |
 | Power BI 应用 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请访问[创建适用于 AppSource 的 Power BI 应用](partner-center-portal/create-power-bi-app-offer.md)。 |
 | IoT Edge 模块 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请访问[在 Azure 市场中创建、配置和发布 IoT Edge 模块产品/服务](partner-center-portal/azure-iot-edge-module-creation.md)。 |
-| 容器 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请访问[创建 Azure 容器产品/服务](./create-azure-container-offer.md)。 |
+| 容器 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请访问[创建 Azure 容器产品/服务](./azure-container-offer-setup.md)。 |
 | 咨询服务 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请访问[创建咨询服务产品/服务](./create-consulting-service-offer.md)。 |
 | 托管服务 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请访问[创建托管服务产品/服务](./plan-managed-service-offer.md)。 |
 | Dynamics NAV 托管服务 | 否 | Microsoft 已将 Dynamics NAV 托管服务演变为 [Dynamics 365 Business Central](/dynamics365/business-central/)，因此我们将 Dynamics NAV 托管服务上线产品/服务从 AppSource 中退市。 这些产品/服务不再被客户发现，也未移动到合作伙伴中心。 若要在 AppSource 中提供你的产品/服务，请将其作为 Dynamics 365 Business Central 产品/服务提供，并将其提交到[合作伙伴中心](https://partner.microsoft.com/)。 有关详细信息，请访问[创建 Dynamics 365 Business Central 产品/服务](partner-center-portal/create-new-business-central-offer.md)。 |

@@ -4,12 +4,12 @@ description: Azure 应用服务的应用程序性能监视。 对加载和响应
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 7661066bc2666070c8b3ed9263b1223c09d6c720
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9471e4b18fba17fe564536ee8d6bd450a0c383ef
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101734717"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142686"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
@@ -416,7 +416,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 使用 `ASP.NET` 或 `ASP.NET Core` 运行时在 Azure 应用服务中创建 Web 应用时，该应用会部署单个静态 HTML 页面作为入门网站。 该静态网页还会在 IIS 中加载 ASP.NET 托管 Web 部件。 这使得能够测试无代码服务器端监视，但不支持自动客户端监视。
 
-如果你希望在 Azure 应用服务 Web 应用中测试 ASP.NET 或 ASP.NET Core 的无代码服务器和客户端监视，建议遵循[创建 ASP.NET Core Web 应用](../../app-service/quickstart-dotnetcore.md)和[创建 ASP.NET Framework Web 应用](../../app-service/quickstart-dotnet-framework.md)官方指南，然后按照当前文章中的说明来启用监视。
+如果你希望在 Azure 应用服务 Web 应用中测试 ASP.NET 或 ASP.NET Core 的无代码服务器和客户端监视，建议遵循[创建 ASP.NET Core Web 应用](../../app-service/quickstart-dotnetcore.md)和[创建 ASP.NET Framework Web 应用](../../app-service/quickstart-dotnetcore.md?tabs=netframework48)官方指南，然后按照当前文章中的说明来启用监视。
 
 ### <a name="connection-string-and-instrumentation-key"></a>连接字符串和检测密钥
 

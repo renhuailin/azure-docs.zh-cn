@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 61c4125038ea0c64ff8489a25f9c63c5cbb82a21
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7fceffb20f670aedc5d6df01f8a78e027dc7c2dd
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104583813"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142038"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightspace-by-desire2learn"></a>教程：Azure Active Directory 与 Brightspace by Desire2Learn 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "104583813"
 * 可以让用户使用其 Azure AD 帐户自动登录到 Brightspace by Desire2Learn。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -140,8 +140,8 @@ ms.locfileid: "104583813"
 
 * 在 Azure 门户中单击测试此应用程序，然后你应会自动登录到为其设置了 SSO 的 Brightspace by Desire2Learn。
 
-* 你可使用 Microsoft 的“我的应用”。 单击我的应用中的 Brightspace by Desire2Learn 磁贴时，应当会自动登录到为其设置了 SSO 的 Brightspace by Desire2Learn。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击我的应用中的 Brightspace by Desire2Learn 磁贴时，应当会自动登录到为其设置了 SSO 的 Brightspace by Desire2Learn。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Brightspace by Desire2Learn 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 Brightspace by Desire2Learn 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

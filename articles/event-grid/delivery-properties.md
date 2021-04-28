@@ -3,12 +3,12 @@ title: Azure 事件网格 - 对已传递事件设置自定义标头
 description: 介绍如何对已传递事件设置自定义标头（或传递属性）。
 ms.topic: conceptual
 ms.date: 03/24/2021
-ms.openlocfilehash: fb6f0de7919ed7cf9072c0fa35e8f9be5cb5e7db
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 515f2687781329d0f9f9648460663a0a30f7c637
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278280"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107887437"
 ---
 # <a name="custom-delivery-properties"></a>自定义传递属性
 通过事件订阅，可以设置已传递事件中包含的 HTTP 头。 使用此功能，可设置目标所需的自定义标头。 创建事件订阅时，最多可以设置 10 个标头。 每个标头值不应大于 4096 (4K) 字节。
@@ -58,7 +58,7 @@ Authorization: BEARER SlAV32hkKG...
 ```
 
 > [!NOTE]
-> 如果目标是 Webhook，定义授权标头是一个明智的选择。 它不应用于[使用资源 ID 订阅的函数](/rest/api/eventgrid/eventsubscriptions/createorupdate#azurefunctioneventsubscriptiondestination)、服务总线、事件中心和混合连接，因为这些目标在与事件网格一起使用时支持它们自己的身份验证方案。
+> 如果目标是 Webhook，定义授权标头是一个明智的选择。 它不应用于[使用资源 ID 订阅的函数](/rest/api/eventgrid/version2020-06-01/eventsubscriptions/createorupdate#azurefunctioneventsubscriptiondestination)、服务总线、事件中心和混合连接，因为这些目标在与事件网格一起使用时支持它们自己的身份验证方案。
 
 ### <a name="service-bus-example"></a>服务总线示例
 Azure 服务总线支持使用 [BrokerProperties HTTP 头](/rest/api/servicebus/message-headers-and-properties#message-headers)在发送单个消息时定义消息属性。 `BrokerProperties` 标头的值应以 JSON 格式提供。 例如，如果在将单个消息发送到服务总线时需要设置消息属性，请按以下方式设置标头：

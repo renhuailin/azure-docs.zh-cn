@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/23/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: d6e553e93d97f02c618fa33a41b939f90e9042c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 536c63fec9958823191f3b01ad2142022832ef23
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027446"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124376"
 ---
 # <a name="identity-verification-and-proofing-partners"></a>身份验证和证明合作伙伴
 
@@ -38,9 +38,9 @@ Microsoft 与以下 ISV 合作伙伴合作。
 
 ## <a name="additional-information"></a>其他信息
 
-- [Azure AD B2C 中的自定义策略](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](./tutorial-create-user-flows.md?pivots=b2c-custom-policy&tabs=applications)
 
 ## <a name="next-steps"></a>后续步骤
 

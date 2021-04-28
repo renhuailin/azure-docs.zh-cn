@@ -10,25 +10,25 @@ ms.topic: tutorial
 ms.subservice: spark
 ms.date: 03/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: 243618192593d93bba9d5229e7becfb2af62ce32
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: d32d822d0ca85c25401f17411a8d34b4fb2e1eaf
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107719"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125391"
 ---
 # <a name="tutorial-use-azure-log-analytics-to-collect-and-visualize-metrics-and-logs-preview"></a>教程：使用 Azure Log Analytics 收集和可视化指标和日志（预览版）
 
-本教程介绍如何启用 Synapse 内置 Azure Log Analytics 连接器，以便收集 Apache Spark 应用程序指标和日志并将其发送到 [Azure Log Analytics 工作区](/azure/azure-monitor/logs/quick-create-workspace)。 然后，可以利用 Azure Monitor 工作簿可视化指标和日志。
+本教程介绍如何启用 Synapse 内置 Azure Log Analytics 连接器，以便收集 Apache Spark 应用程序指标和日志并将其发送到 [Azure Log Analytics 工作区](../../azure-monitor/logs/quick-create-workspace.md)。 然后，可以利用 Azure Monitor 工作簿可视化指标和日志。
 
 ## <a name="configure-azure-log-analytics-workspace-information-in-synapse-studio"></a>在 Synapse Studio 中配置 Azure Log Analytics 工作区信息
 
 ### <a name="step-1-create-an-azure-log-analytics-workspace"></a>步骤 1：创建 Azure Log Analytics 工作区
 
 可以按照以下文档创建 Log Analytics 工作区：
-- [在 Azure 门户中创建 Log Analytics 工作区](https://docs.microsoft.com/azure/azure-monitor/logs/quick-create-workspace)
-- [使用 Azure CLI 创建 Log Analytics 工作区](https://docs.microsoft.com/azure/azure-monitor/logs/quick-create-workspace-cli)
-- [使用 PowerShell 在 Azure Monitor 中创建和配置 Log Analytics 工作区](https://docs.microsoft.com/azure/azure-monitor/logs/powershell-workspace-configuration)
+- [在 Azure 门户中创建 Log Analytics 工作区](../../azure-monitor/logs/quick-create-workspace.md)
+- [使用 Azure CLI 创建 Log Analytics 工作区](../../azure-monitor/logs/quick-create-workspace-cli.md)
+- [使用 PowerShell 在 Azure Monitor 中创建和配置 Log Analytics 工作区](../../azure-monitor/logs/powershell-workspace-configuration.md)
 
 ### <a name="step-2-prepare-a-spark-configuration-file"></a>步骤 2：准备 Spark 配置文件
 
@@ -49,7 +49,7 @@ spark.synapse.logAnalytics.secret <LOG_ANALYTICS_WORKSPACE_KEY>
 
 > [!NOTE]
 >
-> 需要向将提交 Spark 应用程序的用户授予读取机密权限。 请参阅[使用 Azure 基于角色的访问控制提供对 Key Vault 密钥、证书和机密的访问权限](https://docs.microsoft.com/azure/key-vault/general/rbac-guide)
+> 需要向将提交 Spark 应用程序的用户授予读取机密权限。 请参阅[使用 Azure 基于角色的访问控制提供对 Key Vault 密钥、证书和机密的访问权限](../../key-vault/general/rbac-guide.md)
 
 若要配置 Azure 密钥保管库以存储工作区密钥，请执行以下步骤：
 
@@ -81,7 +81,7 @@ spark.synapse.logAnalytics.keyVault.key.secret <AZURE_KEY_VAULT_SECRET_KEY_NAME>
 
 > [!NOTE]
 >
-> 需要向 Synapse 工作区授予读取机密权限。 请参阅[使用 Azure 基于角色的访问控制提供对 Key Vault 密钥、证书和机密的访问权限](https://docs.microsoft.com/azure/key-vault/general/rbac-guide)
+> 需要向 Synapse 工作区授予读取机密权限。 请参阅[使用 Azure 基于角色的访问控制提供对 Key Vault 密钥、证书和机密的访问权限](../../key-vault/general/rbac-guide.md)
 
 若要在 Synapse Studio 中配置 Azure 密钥保管库链接服务以存储工作区密钥，请执行以下步骤：
 
@@ -123,7 +123,7 @@ spark.synapse.logAnalytics.keyVault.linkedServiceName <LINKED_SERVICE_NAME>
 > - 对于 Azure 中国云，“spark.synapse.logAnalytics.keyVault.uriSuffix”参数应为“ods.opinsights.azure.cn”。 
 > - 对于 Azure 政府云，“spark.synapse.logAnalytics.keyVault.uriSuffix”参数应为“ods.opinsights.azure.us”。 
 
-[uri_suffix]: https://docs.microsoft.com/azure/azure-monitor/logs/data-collector-api#request-uri
+[uri_suffix]: ../../azure-monitor/logs/data-collector-api.md#request-uri
 
 
 ### <a name="step-3-upload-your-spark-configuration-to-a-spark-pool"></a>步骤 3：将 Spark 配置上传到 Spark 池
@@ -210,18 +210,14 @@ spark.synapse.logAnalytics.keyVault.linkedServiceName <LINKED_SERVICE_NAME>
 
 通过 Azure Monitor 警报，用户可以使用 Log Analytics 查询按每个设置的频率评估指标和日志，并根据结果触发警报。
 
-有关详细信息，请参阅[使用 Azure Monitor 创建、查看和管理日志警报](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-log)。
+有关详细信息，请参阅[使用 Azure Monitor 创建、查看和管理日志警报](../../azure-monitor/alerts/alerts-log.md)。
 
 ## <a name="limitation"></a>限制
 
- - 不支持已启用[托管虚拟网络](https://docs.microsoft.com/azure/synapse-analytics/security/synapse-workspace-managed-vnet)的 Azure Synapse Analytics 工作区。
- - 当前不支持以下区域：
-   - 美国东部 2
-   - 挪威东部
-   - 阿拉伯联合酋长国北部
+不支持已启用[托管虚拟网络](/azure/synapse-analytics/security/synapse-workspace-managed-vnet)的 Azure Synapse Analytics 工作区。
 
 ## <a name="next-steps"></a>后续步骤
 
- - 了解如何[在 Synapse Studio 中使用无服务器 Apache Spark 池](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool-studio)。
- - 了解如何[在笔记本中运行 Spark 应用程序](https://docs.microsoft.com/azure/synapse-analytics/spark/apache-spark-development-using-notebooks)。
- - 了解如何[在 Synapse Studio 中创建 Apache Spark 作业定义](https://docs.microsoft.com/azure/synapse-analytics/spark/apache-spark-job-definitions)。
+ - 了解如何[在 Synapse Studio 中使用无服务器 Apache Spark 池](../quickstart-create-apache-spark-pool-studio.md)。
+ - 了解如何[在笔记本中运行 Spark 应用程序](./apache-spark-development-using-notebooks.md)。
+ - 了解如何[在 Synapse Studio 中创建 Apache Spark 作业定义](./apache-spark-job-definitions.md)。

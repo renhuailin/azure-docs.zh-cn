@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: 4eea2611997732a263e9e824bc150b45ed145ecd
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: eb6369e89066451779d05a97057acbdd451de192
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107738965"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146664"
 ---
 # <a name="what-are-security-policies-initiatives-and-recommendations"></a>什么是安全策略、计划和建议？
 
@@ -35,7 +35,7 @@ Azure 计划是针对特定目标或用途组合在一起的 Azure 策略定义�
 
 与安全策略一样，安全中心计划也是在 Azure Policy 中创建的。 你可以使用 [Azure Policy](../governance/policy/overview.md) 来管理策略、构建计划，以及将计划分配到多个订阅或整个管理组。
 
-自动分配给 Azure 安全中心内的每个订阅的默认计划是 Azure 安全基准。 此基准是 Microsoft 制定的一组 Azure 专属准则，适合基于常见合规框架的安全性与合规性最佳做法。 这一公认的基准建立在 [Internet 安全中心 (CIS)](https://www.cisecurity.org/benchmark/azure/) 和[国家标准与技术研究院 (NIST)](https://www.nist.gov/) 的控制基础上，重点关注以云为中心的安全性。 详细了解 [Azure 安全基准](https://docs.microsoft.com/security/benchmark/azure/introduction)。
+自动分配给 Azure 安全中心内的每个订阅的默认计划是 Azure 安全基准。 此基准是 Microsoft 制定的一组 Azure 专属准则，适合基于常见合规框架的安全性与合规性最佳做法。 这一公认的基准建立在 [Internet 安全中心 (CIS)](https://www.cisecurity.org/benchmark/azure/) 和[国家标准与技术研究院 (NIST)](https://www.nist.gov/) 的控制基础上，重点关注以云为中心的安全性。 详细了解 [Azure 安全基准](/security/benchmark/azure/introduction)。
 
 安全中心提供以下选项来让用户使用安全计划和策略：
 

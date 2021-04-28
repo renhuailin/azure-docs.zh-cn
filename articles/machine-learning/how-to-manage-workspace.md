@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: sgilley
 author: sdgilley
-ms.date: 09/30/2020
-ms.topic: conceptual
-ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 472bc66c75881d622e8ecfe23031f58db773a919
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/22/2021
+ms.topic: how-to
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 6271875c368f637140010401cf2ebe21039be9a9
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518919"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897354"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>创建和管理 Azure 机器学习工作区 
 
@@ -186,16 +186,6 @@ Azure 机器学习 Python SDK 提供 [PrivateEndpointConfig](/python/api/azureml
 > [!IMPORTANT]  
 > 将专用终结点与 Azure 机器学习工作区配合使用的功能目前为公共预览版。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。     
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-### <a name="multiple-workspaces-with-private-endpoint"></a>多个具有专用终结点的工作区
-
-创建专用终结点时，会创建一个名为“privatelink.api.azureml.ms”的新专用 DNS 区域。 其中包含指向虚拟网络的链接。 如果在同一资源组中创建具有专用终结点的多个工作区，则仅可将第一个专用终结点的虚拟网络添加到 DNS 区域。 若要添加其他工作区/专用终结点使用的虚拟网络的条目，请执行以下步骤：
-
-1. 在 [Azure 门户](https://portal.azure.com)中，选择包含工作区的资源组。 然后选择名为“privatelink.api.azureml.ms”的专用 DNS 区域资源
-2. 在“设置”中，选择“虚拟网络链接”。 
-3. 选择 __添加__ 。 在“添加虚拟网络链接”页中提供唯一的“链接名称”，然后选择要添加的“虚拟网络”。 选择“确定”以添加网络链接。
-
-有关详细信息，请参阅 [Azure 专用终结点 DNS 配置](../private-link/private-endpoint-dns.md)。
 
 ### <a name="vulnerability-scanning"></a>漏洞扫描
 

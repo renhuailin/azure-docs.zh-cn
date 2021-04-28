@@ -1,24 +1,18 @@
 ---
 title: 受支持的 Azure PaaS 资源的 Azure 安全中心功能。
 description: 此页显示受支持的 Azure PaaS 资源的 Azure 安全中心功能的可用性。
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: be2ab6d5-72a8-411f-878e-98dac21bc5cb
 ms.service: security-center
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/01/2020
+ms.date: 04/25/2021
 ms.author: memildin
-ms.openlocfilehash: 4c56f8cba232220844a8a8f9c408a60c89c581cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ee6b02ad60ad08022cbe2428bb9fb52c3ac2194
+ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91613622"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107992334"
 ---
 # <a name="feature-coverage-for-azure-paas-services"></a>适用于 Azure PaaS 服务的功能覆盖范围 <a name="paas-services"></a>
 
@@ -33,8 +27,8 @@ ms.locfileid: "91613622"
 |用于 Redis 的 Azure 缓存|✔|-|-|
 |Azure 云服务|✔|-|-|
 |Azure 认知搜索|✔|-|-|
-|Azure 容器注册表|-|-|✔|
-|Azure Cosmos DB*|-|✔|-|
+|Azure 容器注册表|✔|✔|✔|
+|Azure Cosmos DB*|✔|✔|-|
 |Azure Data Lake Analytics|✔|-|-|
 |Azure Data Lake Storage|✔|✔|-|
 |Azure Database for MySQL*|-|✔|-|

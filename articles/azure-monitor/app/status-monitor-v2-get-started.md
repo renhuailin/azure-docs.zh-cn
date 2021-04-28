@@ -6,12 +6,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 01/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d24e67eac54b3ce4eadfc6a4bde47410d59fae8b
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 543beb95fd5f207ae7e9a9076feceef42cc854b4
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581096"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130064"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>本地服务器的 Azure Monitor Application Insights 代理入门
 
@@ -27,7 +27,7 @@ ms.locfileid: "106581096"
 
 ### <a name="install-prerequisites"></a>安装先决条件
 
-- 若要启用监视，你需要一个连接字符串。 连接字符串显示在 Application Insights 资源的“概述”边栏选项卡上。 有关详细信息，请参阅[连接字符串](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#finding-my-connection-string)页。
+- 若要启用监视，你需要一个连接字符串。 连接字符串显示在 Application Insights 资源的“概述”边栏选项卡上。 有关详细信息，请参阅[连接字符串](./sdk-connection-string.md?tabs=net#finding-my-connection-string)页。
 
 > [!NOTE]
 > 从 2020 年 4 月起，PowerShell 库已弃用了 TLS 1.1 和 TLS 1.0。
@@ -99,4 +99,3 @@ Enable-ApplicationInsightsMonitoring -ConnectionString 'xxxxxxxx-xxxx-xxxx-xxxx-
 
 - 有关此处找到的命令的说明，请查看[详细说明](status-monitor-v2-detailed-instructions.md)。
 - 使用我们的指南对 Application Insights 代理进行[故障排除](status-monitor-v2-troubleshoot.md)。
-

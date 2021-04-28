@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: 637616c3698cc9ec0cd13a4584bad24b6ed02c34
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 49c4c579d75b964a4b4c37c8a44bddf1ad08c62b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107315165"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142812"
 ---
 # <a name="high-availability-for-sap-hana-scale-out-system-with-hsr-on-suse-linux-enterprise-server"></a>在 SUSE Linux Enterprise Server 上使用 HSR 实现 SAP HANA 横向扩展系统的高可用性 
 
@@ -105,7 +105,7 @@ ms.locfileid: "107315165"
 
 由于 `/hana/data` 和 `/hana/log` 部署在本地磁盘上，因此不必部署单独的子网和单独的虚拟网卡来与存储进行通信。  
 
-Azure NetApp 卷部署在一个单独的子网中，[已委托给 Azure NetApp 文件](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)`anf` 10.23.1.0/26。   
+Azure NetApp 卷部署在一个单独的子网中，[已委托给 Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)`anf` 10.23.1.0/26。   
 
 > [!IMPORTANT]
 > 不支持将系统复制到第三个站点。 有关详细信息，请参阅 [SLES-SAP HANA 系统复制横向扩展性能优化方案](https://documentation.suse.com/sbp/all/html/SLES4SAP-hana-scaleOut-PerfOpt-12/index.html#_important_prerequisites)中的“重要先决条件”部分。     
