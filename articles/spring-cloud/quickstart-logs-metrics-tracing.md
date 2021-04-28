@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 907bf06323d13b2d26dec5003e4739f2ae9faf74
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: b3b94de0fe97bb812921b831a92de44887df4070
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378510"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132964"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>快速入门：通过日志、指标和跟踪来监视 Azure Spring Cloud 应用
 
@@ -26,9 +26,9 @@ ms.locfileid: "107378510"
 
 * 完成此系列中前面的快速入门：
 
-  * [预配 Azure Spring Cloud 服务](spring-cloud-quickstart-provision-service-instance.md)。
-  * [设置 Azure Spring Cloud 配置服务器](spring-cloud-quickstart-setup-config-server.md)。
-  * [构建和部署应用](spring-cloud-quickstart-deploy-apps.md)。
+  * [预配 Azure Spring Cloud 服务](./quickstart-provision-service-instance.md)。
+  * [设置 Azure Spring Cloud 配置服务器](./quickstart-setup-config-server.md)。
+  * [构建和部署应用](./quickstart-deploy-apps.md)。
 
 ## <a name="logs"></a>日志
 
@@ -73,7 +73,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 
    [ ![Logs Analytics 查询 - Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png#lightbox)
 
-1. 若要详细了解 Log Analytics 中使用的查询语言，请参阅 [Azure Monitor 日志查询](/azure/data-explorer/kusto/query/)。 要从一个集中的客户端查询所有 Log Analytics 日志，请查看 [Azure 数据资源管理器](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)。
+1. 若要详细了解 Log Analytics 中使用的查询语言，请参阅 [Azure Monitor 日志查询](/azure/data-explorer/kusto/query/)。 要从一个集中的客户端查询所有 Log Analytics 日志，请查看 [Azure 数据资源管理器](/azure/data-explorer/query-monitor-data)。
 
 ## <a name="metrics"></a>指标
 
@@ -115,9 +115,9 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 
 完成前面的步骤： 
 
-* [预配 Azure Spring Cloud 的实例](spring-cloud-quickstart-provision-service-instance.md)
-* [设置 Config Server](spring-cloud-quickstart-setup-config-server.md)
-* [构建和部署应用](spring-cloud-quickstart-deploy-apps.md)。
+* [预配 Azure Spring Cloud 的实例](./quickstart-provision-service-instance.md)
+* [设置 Config Server](./quickstart-setup-config-server.md)
+* [构建和部署应用](./quickstart-deploy-apps.md)。
 
 ## <a name="logs"></a>日志
 
@@ -171,7 +171,7 @@ az spring-cloud app logs -s <service instance name> -g <resource group name> -n 
 
    [ ![Logs Analytics 查询](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png#lightbox)
 
-1. 若要详细了解 Log Analytics 中使用的查询语言，请参阅 [Azure Monitor 日志查询](/azure/data-explorer/kusto/query/)。 要从一个集中的客户端查询所有 Log Analytics 日志，请查看 [Azure 数据资源管理器](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)。
+1. 若要详细了解 Log Analytics 中使用的查询语言，请参阅 [Azure Monitor 日志查询](/azure/data-explorer/kusto/query/)。 要从一个集中的客户端查询所有 Log Analytics 日志，请查看 [Azure 数据资源管理器](/azure/data-explorer/query-monitor-data)。
 
 ## <a name="metrics"></a>指标
 
@@ -228,6 +228,6 @@ az configure --defaults group=
 > [!div class="nextstepaction"]
 > [诊断服务](diagnostic-services.md)
 >
-> [分布式跟踪](spring-cloud-howto-distributed-tracing.md)
+> [分布式跟踪](./how-to-distributed-tracing.md)
 >
-> [实时流式传输日志](spring-cloud-howto-log-streaming.md)
+> [实时流式传输日志](./how-to-log-streaming.md)

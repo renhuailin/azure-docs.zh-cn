@@ -5,26 +5,26 @@ ms.service: sql-database
 ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 138a23b610ab96194424bb0f88cf94f516c2d223
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0538071ffb9d244fb8b3493d6b63b27c6b56a726
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626446"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388510"
 ---
 # <a name="migration-guide-sap-ase-to-azure-sql-database"></a>迁移指南：SAP ASE 到 Azure SQL 数据库
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-本指南介绍如何使用适用于 SAP Adapter Server Enterprise 的 SQL Server 迁移助手将 SAP Adapter Server Enterprise (ASE) 数据库迁移到 Azure SQL 数据库。
+本指南介绍如何使用适用于 SAP Adapter Server Enterprise 的 [SQL Server 迁移](https://azure.microsoft.com/en-us/migration/sql-server/)助手将 SAP Adapter Server Enterprise (ASE) 数据库[迁移](https://azure.microsoft.com/migration/migration-journey)到 Azure SQL 数据库。
 
 有关其他迁移指南，请参阅 [Azure 数据库迁移指南](https://docs.microsoft.com/data-migration)。 
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 开始将 SAP SE 数据库迁移到 SQL 数据库之前，请执行以下操作：
 
@@ -32,19 +32,19 @@ ms.locfileid: "105626446"
 - 下载并安装[适用于 SAP Adaptive Server Enterprise（之前称为 SAP Sybase ASE）的 SQL Server 迁移助手](https://www.microsoft.com/en-us/download/details.aspx?id=54256)。
 - 请确保具有连接以及访问源和目标的足够权限。
 
-## <a name="pre-migration"></a>迁移前
+## <a name="pre-migration"></a>预迁移
 
-满足先决条件后，就可以发现环境的拓扑并评估迁移的可行性。
+满足先决条件后，就已准备就绪，可以探索环境的拓扑并评估 [Azure 云迁移](https://azure.microsoft.com/migration)的可行性了。
 
 ### <a name="assess"></a>评估
 
-使用[适用于 SAP Adaptive Server Enterprise（之前称为 SAP Sybase ASE）的 SQL Server 迁移助手 (SSMA)](https://www.microsoft.com/en-us/download/details.aspx?id=54256) 可评审数据库对象和数据、评估数据库是否适合迁移、将 Sybase 数据库对象迁移到 SQL 数据库，然后将数据迁移到 SQL 数据库。 若要了解详细信息，请查看 [适用于 Sybase 的 SQL Server 迁移助手 (SybaseToSQL)](/sql/ssma/sybase/sql-server-migration-assistant-for-sybase-sybasetosql)。
+使用[适用于 SAP Adaptive Server Enterprise（之前称为 SAP Sybase ASE）的 SQL Server 迁移助手 (SSMA)](https://www.microsoft.com/en-us/download/details.aspx?id=54256) 可评审数据库对象和数据、评估数据库是否适合迁移、将 Sybase 数据库对象迁移到 SQL 数据库，然后将数据迁移到 SQL 数据库。 若要了解详细信息，请查看[适用于 Sybase 的 SQL Server 迁移助手 (SybaseToSQL)](/sql/ssma/sybase/sql-server-migration-assistant-for-sybase-sybasetosql)。
 
 若要创建评估，请执行以下操作： 
 
 1. 打开 SSMA for Sybase。 
 1. 依次选择“文件”和“新建项目” 。 
-1. 在“新建项目”窗格中，输入项目的名称和位置，然后在“迁移到”下拉列表中，选择“Azure SQL 数据库”  。 
+1. 在“新建项目”窗格中，输入项目的名称和位置，然后在“迁移到”下拉列表中选择“Azure SQL 数据库”  。 
 1. 选择“确定”。
 1. 在“连接到 Sybase”窗格中，输入 SAP 连接详细信息。 
 1. 右键单击要迁移的 SAP 数据库，然后选择“创建报表”。 这会生成一个 HTML 报表。 或者，可以选择右上方的“创建报告”选项卡。
@@ -102,7 +102,7 @@ ms.locfileid: "105626446"
 
 1. 运行验证测试：针对源和目标运行验证测试，然后分析结果。
 
-1. 运行性能测试：针对源和目标运行性能测试，然后分析和比较结果。
+1. 运行性能测试：针对源和目标运行性能测试，然后分析并比较结果。
 
 
 ### <a name="optimize"></a>优化
@@ -116,13 +116,14 @@ ms.locfileid: "105626446"
 
 - 有关在执行各种数据库和数据迁移方案及专门任务时可为你提供帮助的 Microsoft 与第三方服务和工具的矩阵，请参阅[数据迁移服务和工具](../../../dms/dms-tools-matrix.md)。
 
-- 要了解有关 Azure SQL 数据库的详细信息，请参阅：
+- 若要详细了解 Azure SQL 数据库，请参阅：
    - [SQL 数据库概述](../../database/sql-database-paas-overview.md)
    - [Azure 总拥有成本计算器](https://azure.microsoft.com/pricing/tco/calculator/)  
 
 - 有关云迁移的框架和采用周期的详细信息，请参阅：
    -  [适用于 Azure 的云采用框架](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [为迁移到 Azure 的工作负载计算成本和调整大小的最佳做法](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [云迁移资源](https://azure.microsoft.com/migration/resources)
 
 - 若要评估应用程序访问层，请参阅 [Data Access Migration Toolkit（预览版）](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)。
 - 若要详细了解如何执行数据访问层 A/B 测试，请参阅[数据库实验助手](/sql/dea/database-experimentation-assistant-overview)。

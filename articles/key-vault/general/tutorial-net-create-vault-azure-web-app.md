@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 901f2b938512f842a5b4c34adbfc61f9379e5131
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: fdefca482dfa1afeb3eebb284b08eaadf4f1af60
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772156"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897047"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>教程：使用托管标识将 Key Vault 连接到 .NET 中的 Azure Web 应用
 
@@ -172,7 +172,7 @@ Git 远程的 URL 将显示在 `deploymentLocalGitUrl` 属性中，其格式为 
 现在，将 Web 应用配置为从 `main` 分支部署：
 
 ```azurecli-interactive
- az webapp config appsettings set -g MyResourceGroup -name "<your-webapp-name>"--settings deployment_branch=main
+ az webapp config appsettings set -g MyResourceGroup --name "<your-webapp-name>" --settings deployment_branch=main
 ```
 
 使用以下命令转到新应用。 将 `<your-webapp-name>` 替换为你的应用名称。
@@ -343,4 +343,4 @@ http://<your-webapp-name>.azurewebsites.net
 - [将 Azure Key Vault 与部署到 .NET 虚拟机的应用程序结合使用](./tutorial-net-virtual-machine.md)
 - 详细了解 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)
 - 查看[开发人员指南](./developers-guide.md)
-- [保护对密钥保管库的访问](./security-overview.md)
+- [保护对密钥保管库的访问](./security-features.md)

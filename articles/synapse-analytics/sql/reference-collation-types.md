@@ -8,12 +8,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 436dbac814197556385a33d956928f97fd4716bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a83646556838732a3b79f93771c762f00ed5afc
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93311916"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144288"
 ---
 # <a name="database-collation-support-for-synapse-sql-in-azure-synapse-analytics"></a>对 Azure Synapse Analytics 中 Synapse SQL 的数据库排序规则支持 
 
@@ -115,7 +115,5 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
 
 在以下文章中可以找到有关专用 SQL 池和无服务器 SQL 池最佳做法的更多信息：
 
-- [专用 SQL 池最佳做法](best-practices-sql-pool.md)
-- [无服务器 SQL 池最佳做法](best-practices-sql-on-demand.md)
-
-
+- [专用 SQL 池最佳做法](./best-practices-dedicated-sql-pool.md)
+- [无服务器 SQL 池最佳做法](./best-practices-serverless-sql-pool.md)

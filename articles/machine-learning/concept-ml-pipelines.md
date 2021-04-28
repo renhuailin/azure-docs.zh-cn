@@ -10,12 +10,12 @@ ms.author: laobri
 author: lobrien
 ms.date: 02/26/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 584e421b6beac0e4ecfab5b3e3cb735b8465e1b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57f5da06909436e0cbce92559c29c309ca9e20e3
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102503515"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819225"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什么是 Azure 机器学习管道？
 
@@ -47,7 +47,7 @@ Azure 机器学习管道是整个机器学习任务的可独立执行的工作�
 
 通过管道，你可以选择使用不同的硬件来执行不同的任务。 Azure 协调会你使用的各种[计算目标](concept-azure-machine-learning-architecture.md)，因此中间数据可以无缝流向下游计算目标。
 
-可以直接在 Azure 门户中或在[工作区登陆页面（预览）](https://ml.azure.com)[跟踪管道试验的指标](./how-to-track-experiments.md)。 发布管道之后，可以配置 REST 终结点，这样就能够从任何平台或堆栈重新运行管道。
+可以直接在 Azure 门户中或在[工作区登陆页面（预览）](https://ml.azure.com)[跟踪管道试验的指标](./how-to-log-view-metrics.md)。 发布管道之后，可以配置 REST 终结点，这样就能够从任何平台或堆栈重新运行管道。
 
 简而言之，可以通过管道处理机器学习生命周期的所有复杂任务。 其他 Azure 管道技术各有各的优势。 [Azure 数据工厂管道](../data-factory/concepts-pipelines-activities.md)擅长处理数据，[Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) 适合用于持续集成和部署。 但如果关注点是机器学习，则 Azure 机器学习管道可能是满足工作流需求的最佳选择。 
 

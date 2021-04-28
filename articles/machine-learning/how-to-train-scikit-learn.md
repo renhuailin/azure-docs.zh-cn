@@ -8,14 +8,14 @@ ms.subservice: core
 ms.author: jordane
 author: jpe316
 ms.date: 09/28/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 807174fdbede2e4631b3ca1df7220904038da4c8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.custom: devx-track-python
+ms.openlocfilehash: 3337607c8e4dd9dca230456cdf268ec3fbfb2f12
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518290"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107884401"
 ---
 # <a name="train-scikit-learn-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模训练 scikit-learn 模型
 
@@ -203,5 +203,5 @@ web_service = Model.deploy(ws, "scikit-learn-service", [model])
 
 在本文中，你训练并注册了一个 scikit-learn 模型，并了解了部署选项。 有关 Azure 机器学习的详细信息，请参阅以下其他文章。
 
-* [在训练期间跟踪运行指标](how-to-track-experiments.md)
+* [在训练期间跟踪运行指标](how-to-log-view-metrics.md)
 * [优化超参数](how-to-tune-hyperparameters.md)

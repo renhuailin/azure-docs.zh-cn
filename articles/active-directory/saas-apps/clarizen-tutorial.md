@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/08/2021
 ms.author: jeedes
-ms.openlocfilehash: f7e90ff4c69e03482a1608185bc947ccb8604187
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 62cd714fc20cb7620def8a1aaa3cbccba0b13d57
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516773"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144028"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen-one"></a>教程：Azure Active Directory 与 Clarizen One 的集成
 
@@ -177,8 +177,8 @@ ms.locfileid: "107516773"
 
 * 在 Azure 门户中单击“测试此应用程序”，你应该会自动登录到为其设置了 SSO 的 Clarizen One。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Clarizen One 磁贴时，应当会自动登录到为其设置了 SSO 的 Clarizen One。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Clarizen One 磁贴时，应当会自动登录到为其设置了 SSO 的 Clarizen One。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-在配置 Clarizen One 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+在配置 Clarizen One 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

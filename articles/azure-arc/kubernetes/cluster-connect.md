@@ -7,12 +7,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: 使用群集连接安全连接到已启用 Azure Arc 的 Kubernetes 群集
-ms.openlocfilehash: c6b6555c7d18c0aa0d2e7c94ad2c32353da19502
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 54a462164e4b992451cc66f8a0ec229aff27f2e1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450680"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108145584"
 ---
 # <a name="use-cluster-connect-to-connect-to-azure-arc-enabled-kubernetes-clusters"></a>使用群集连接连接到已启用 Azure Arc 的 Kubernetes 群集
 
@@ -26,7 +26,7 @@ ms.locfileid: "106450680"
 
 ## <a name="prerequisites"></a>先决条件   
 
-- [安装或升级 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)，使用 2.16.0 或更高版本
+- [安装或升级 Azure CLI](/cli/azure/install-azure-cli)，使用 2.16.0 或更高版本
 
 - 安装 1.1.0 或更高版本的 `connectedk8s` Azure CLI 扩展：
 
@@ -148,8 +148,8 @@ You must be logged in to the server (Error:Error while retrieving group info. Er
 ```
 
 若要避免此错误，请执行以下操作：
-1. 创建一个不太可能是超过 200 个组的成员的[服务主体](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)。
-1. 运行命令 `az connectedk8s proxy` 之前，先使用服务主体[登录](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli#sign-in-using-a-service-principal)到 Azure CLI。
+1. 创建一个不太可能是超过 200 个组的成员的[服务主体](/cli/azure/create-an-azure-service-principal-azure-cli)。
+1. 运行命令 `az connectedk8s proxy` 之前，先使用服务主体[登录](/cli/azure/create-an-azure-service-principal-azure-cli#sign-in-using-a-service-principal)到 Azure CLI。
 
 ## <a name="next-steps"></a>后续步骤
 

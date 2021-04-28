@@ -4,17 +4,16 @@ titleSuffix: Azure Load Balancer
 description: 本教程将在后端池中创建具有多个可用性集的 Azure 负载均衡器。
 author: asudbring
 ms.author: allensu
-ms.service: virtual-network
-ms.subservice: nat
+ms.service: load-balancer
 ms.topic: tutorial
-ms.date: 04/16/2021
+ms.date: 04/21/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 21ff43217a7b2bd874a384f3b07a48d5223a1be2
-ms.sourcegitcommit: 089c2bd1ac4861f43c4b89396d3d056a6eef4913
+ms.openlocfilehash: 71115da01f47572d77243f25204d5b1127db22cd
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107602311"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107887155"
 ---
 # <a name="tutorial-create-a-load-balancer-with-more-than-one-availability-set-in-the-backend-pool-using-the-azure-portal"></a>教程：在后端池中创建具有多个可用性集的负载均衡器
 

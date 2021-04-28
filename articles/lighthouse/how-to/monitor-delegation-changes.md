@@ -3,12 +3,12 @@ title: 监视管理租户中的委托更改
 description: 了解如何监视客户租户对管理租户进行的委托活动。
 ms.date: 02/18/2021
 ms.topic: how-to
-ms.openlocfilehash: 8bd9e89039c114f3d1088df44198fe00c69bbf82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a12b916fae9794d6d695191a81ec076917bda31
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199058"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814885"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>监视管理租户中的委托更改
 
@@ -86,7 +86,7 @@ az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role
 
 - [创建一个新的服务主体帐户](../../active-directory/develop/howto-create-service-principal-portal.md)专门用于此功能，而不是将此角色分配给用于其他自动化功能的现有服务主体。
 - 确保此服务主体无权访问任何委托的客户资源。
-- [使用证书进行身份验证](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)并[将证书安全存储在 Azure 密钥保管库中](../../key-vault/general/security-overview.md)。
+- [使用证书进行身份验证](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)并[将证书安全存储在 Azure 密钥保管库中](../../key-vault/general/security-features.md)。
 - 限制有权代表服务主体执行操作的用户。
 
 创建对管理租户的根范围拥有“监视读取者”访问权限的新服务主体帐户后，可以使用该帐户来查询和报告租户中的委托活动。

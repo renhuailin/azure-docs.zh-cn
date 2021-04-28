@@ -5,18 +5,18 @@ description: 使用 Azure 机器学习工作室创建数据存储和数据集，
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: nibaccam
 author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
-ms.custom: how-to, data4ml
-ms.openlocfilehash: a0265984c4ae83b8869071017e2fb571a7ff548c
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.custom: data4ml
+ms.openlocfilehash: 4263c3334e19ddeb6a61325e8802f8544a282c6f
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107027646"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107890053"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>使用 Azure 机器学习工作室连接到数据
 

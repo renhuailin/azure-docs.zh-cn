@@ -3,14 +3,14 @@ title: 教程：在 Azure HDInsight 中创建端到端的 ETL 管道以派生销
 description: 了解如何在 Azure HDInsight 中创建 ETL 管道，以使用 Spark 按需群集和 Power BI 从销售数据中获取见解。
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: hdinsightactive, devx-track-azurecli
+ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: 140709a0ddb548c126ceca208fdeef2db77616bf
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f41f202ede49892608e1ca3c5fdfbe703b6a5293
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107761792"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074936"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中创建端到端的数据管道以派生销售见解
 
@@ -251,7 +251,7 @@ cat resourcesoutputs_adf.json | jq -r '.properties.outputs.factoryName.value'
 
 1. 在菜单中，导航到“获取数据” > “更多...” > “Azure”“HDInsight Interactive Query” > 。
 
-1. 选择“连接”  。
+1. 选择“连接”。
 
 1. 在“HDInsight Interactive Query”对话框中执行以下操作：
     1. 在“服务器”文本框中，以 `https://LLAPCLUSTERNAME.azurehdinsight.net` 格式输入 LLAP 群集的名称。

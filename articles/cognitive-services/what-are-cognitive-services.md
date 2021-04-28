@@ -9,15 +9,15 @@ keywords: cognitive services, cognitive intelligence, cognitive solutions, ai se
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: overview
-ms.date: 10/22/2020
+ms.date: 04/16/2021
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: c89131cc34d45ea94f3bb290ac11ec86f4b83be3
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 108c716708936aa5e0e5a563bdb8787466ad06ef
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587606"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076844"
 ---
 # <a name="what-are-azure-cognitive-services"></a>什么是 Azure 认知服务？
 
@@ -59,7 +59,7 @@ Azure 认知服务是具有 REST API 和客户端库 SDK 的基于云的服务�
 
 |服务名称|服务说明|
 |:-----------|:------------------|
-|[语言理解 LUIS](./luis/index.yml "语言理解")|语言理解 (LUIS) 是一种基于云的对话式 AI 服务，可在用户对话的自然语言文本中应用自定义机器学习智能，以便预测整体含义并提炼出相关的详细信息。 请参阅[人脸快速入门](./luis/get-started-portal-build-app.md)，了解如何开始服务。|
+|[语言理解 LUIS](./luis/index.yml "语言理解")|语言理解 (LUIS) 是一种基于云的对话式 AI 服务，可在用户对话的自然语言文本中应用自定义机器学习智能，以便预测整体含义并提炼出相关的详细信息。 请参阅[人脸快速入门](./luis/luis-get-started-create-app.md)，了解如何开始服务。|
 |[QnA Maker](./qnamaker/index.yml "QnA Maker")|通过 QnA Maker，可以从半结构化内容生成问答服务。 请参阅 [QnA Maker 快速入门](./qnamaker/quickstarts/create-publish-knowledge-base.md)，了解如何开始服务。|
 |[文本分析](./text-analytics/index.yml "文本分析")| 文本分析提供对原始文本的自然语言处理，用于情绪分析、关键短语提取和语言检测。 请参阅[文本分析快速入门](./text-analytics/quickstarts/client-libraries-rest-api.md) ，了解如何开始服务。|
 |[翻译](./translator/index.yml "转换器")|“翻译”近乎实时地提供基于机器的文本翻译。|
@@ -134,7 +134,7 @@ Azure 认知服务提供了分层的安全模型，包括通过 Azure Active Dir
 
 认知服务中的 API 托管在不断扩大的 Microsoft 托管数据中心网络上。 你可以在 [Azure 区域列表](https://azure.microsoft.com/regions "Azure 区域列表")中找到每个 API 的区域可用性。
 
-正在寻找我们尚不支持的区域？ 请在我们的 [UserVoice 论坛](https://cognitive.uservoice.com/ "UserVoice 论坛")上填写功能申请，告诉我们你的需求。
+正在寻找我们尚不支持的区域？ 请在我们的 [UserVoice 论坛](https://feedback.azure.com/forums/932041-azure-cognitive-services "UserVoice 论坛")上填写功能申请，告诉我们你的需求。
 
 ## <a name="supported-cultural-languages"></a>支持的区域性语言
 

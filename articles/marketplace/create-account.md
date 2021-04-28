@@ -8,12 +8,12 @@ author: varsha-sarah
 ms.author: vavargh
 ms.custom: contperf-fy21q2
 ms.date: 04/06/2021
-ms.openlocfilehash: 09810008c402d9c47d609fc0c77781af141edd30
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 2b3516d5f573f13655963b678a2f164c460fd140
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107799"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133144"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心创建商业市场帐户
 
@@ -56,7 +56,7 @@ ms.locfileid: "107107799"
 
 #### <a name="agree-to-the-terms-and-conditions"></a>同意条款和条件
 
-作为商业市场注册过程的一部分，你需要同意 [Microsoft 发布者协议](https://go.microsoft.com/fwlink/?LinkID=699560)中的条款和条件。 如果你是 Microsoft 合作伙伴网络的新用户，则还需要同意 Microsoft 合作伙伴网络协议中的条款和条件。
+作为商业市场注册过程的一部分，你需要同意 [Microsoft 发布者协议](/legal/marketplace/msft-publisher-agreement)中的条款和条件。 如果你是 Microsoft 合作伙伴网络的新用户，则还需要同意 Microsoft 合作伙伴网络协议中的条款和条件。
 
 你现在已在合作伙伴中心创建商业市场帐户。 继续[向商业市场添加新的发布者](add-publishers.md)。
 
@@ -93,7 +93,7 @@ ms.locfileid: "107107799"
 
 1. 选择要链接到发布者帐户的 MPN ID，然后输入公司名称。
 
-1. 阅读 [Microsoft 发布者协议](https://go.microsoft.com/fwlink/?LinkID=699560)中的条款和条件，然后选择“接受并继续”完成注册。
+1. 阅读 [Microsoft 发布者协议](/legal/marketplace/msft-publisher-agreement)中的条款和条件，然后选择“接受并继续”完成注册。
 
     > [!IMPORTANT]
     > 要接受这些条款，你必须有权代表你的公司进行操作。
@@ -119,7 +119,7 @@ ms.locfileid: "107107799"
 1. 在右上方，选择“设置” > “帐户设置” > “计划”。
 1. 在“商业市场”下，选择“开始使用”，然后输入你的工作电子邮件地址 。
 1. 在“发布者配置文件”页上填写详细信息。
-1. 阅读 [Microsoft 发布者协议](https://go.microsoft.com/fwlink/?LinkID=699560)中的条款和条件，然后选择“接受并继续”完成注册。
+1. 阅读 [Microsoft 发布者协议](/legal/marketplace/msft-publisher-agreement)中的条款和条件，然后选择“接受并继续”完成注册。
 
     >[!Important]
     > 要接受这些条款，你必须有权代表你的公司进行操作。

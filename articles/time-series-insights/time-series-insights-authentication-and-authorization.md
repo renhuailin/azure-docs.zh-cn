@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.custom: seodec18, has-adal-ref, devx-track-azurecli
-ms.openlocfilehash: 225e72bc00ce0a80ff655a76562b5c6b70b7fa79
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: c174504ea48330821d7734def5b6a5904d3ec2b8
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479485"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107883915"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure 时序见解 API 的身份验证和授权
 
@@ -79,7 +79,7 @@ ms.locfileid: "107479485"
 
 - 若要通过 [Azure 门户](https://portal.azure.com/) UI 授予访问权限，请按照[授予对环境的数据访问权限](concepts-access-policies.md)一文中列出的说明操作。 选择用户时，可以按名称或 ID 搜索托管标识或应用注册。
 
-- 若要使用 Azure CLI 授予访问权限，请运行以下命令。 查看[此处](/cli/azure/ext/timeseriesinsights/tsi/access-policy)的文档获取可用于管理访问权限的完整命令列表。
+- 若要使用 Azure CLI 授予访问权限，请运行以下命令。 查看[此处](/cli/azure/tsi/access-policy)的文档获取可用于管理访问权限的完整命令列表。
 
    ```azurecli-interactive
    az tsi access-policy create --name "ap1" --environment-name "env1" --description "some description" --principal-object-id "aGuid" --roles Reader Contributor --resource-group "rg1"

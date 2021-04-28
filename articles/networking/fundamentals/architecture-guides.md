@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/30/2021
 ms.author: kumud
-ms.openlocfilehash: 9b608312d66e6a3e7455c4577ea4644b33e4e82e
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: c98bdbb9fba2a6ba01e4ce590c36d57e68390f17
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106079742"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484789"
 ---
 # <a name="azure-networking-architecture-documentation"></a>Azure 网络体系结构文档
 
@@ -51,6 +51,7 @@ ms.locfileid: "106079742"
 |[IaaS：包含关系数据库的 Web 应用程序](/azure/architecture/high-availability/ref-arch-iaas-web-and-db)    |   介绍如何使用跨多个区域分布的资源来提供高可用性体系结构，以托管基础结构即服务 (IaaS) Web 应用程序和 SQL Server 数据库。     |
 |[使用低成本无服务器 Azure 服务实时共享位置](/azure/architecture/example-scenario/signalr/#azure-front-door)       |   使用 Azure Front Door 为应用程序提供与部署到单个区域相比更高的可用性。 如果区域性故障影响主要区域，可以使用 Front Door 来故障转移到次要区域。      |
 |[高度可用的网络虚拟设备](/azure/architecture/reference-architectures/dmz/nva-ha)     | 展示了如何在 Azure 中部署一组网络虚拟设备 (NVA) 以实现高可用性。        |
+|[使用流量管理器和应用程序网关实现多区域负载均衡](/azure/architecture/high-availability/reference-architecture-traffic-manager-application-gateway)     | 介绍如何在多个 Azure 区域中部署可复原的多层应用程序，以便实现可用性和可靠的灾难恢复基础结构。        |
 
 ## <a name="secure-your-network-resources"></a>保护你的网络资源
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 2fa03fa948c7768f5e74cc68b528e847c5351273
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 18fc276ec9d95a52c5bb5890cda313fc14fc7c5f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447843"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144324"
 ---
 # <a name="determine-user-connection-latency-in-windows-virtual-desktop"></a>确定 Windows 虚拟桌面中的用户连接延迟
 
@@ -38,4 +38,4 @@ Windows 虚拟桌面使用 [Azure Front Door](https://azure.microsoft.com/servic
 
 - 若要查看延迟最低的最佳位置，请参阅 [Windows 虚拟桌面体验评估器工具](https://azure.microsoft.com/services/virtual-desktop/assessment/)。
 - 有关定价计划，请参阅 [Windows 虚拟桌面定价](https://azure.microsoft.com/pricing/details/virtual-desktop/)。
-- 若要开始进行 Windows 虚拟桌面部署，请查看[我们的教程](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-azure-marketplace)。
+- 若要开始进行 Windows 虚拟桌面部署，请查看[我们的教程](./create-host-pools-azure-marketplace.md)。

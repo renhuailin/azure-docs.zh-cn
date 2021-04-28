@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 11/20/2020
 ms.author: jrasnick
 ms.custom: azure-synapse, devx-track-azurecli
-ms.openlocfilehash: 532c06cc49f9fddab09c6678ee5fff9fe32347cb
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 3903aa0be5ffa63bc4292371c59002846ec9363c
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565927"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107892087"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-with-azure-cli"></a>快速入门：使用 Azure CLI 创建 Synapse SQL 池
 
@@ -77,43 +77,43 @@ az sql server firewall-rule create --resource-group myResourceGroup --name Allow
 > [!NOTE]
 > 你需要一个之前创建的工作区。 有关详细信息，请参阅[快速入门：使用 Azure CLI 创建 Azure Synapse 工作区](../quickstart-create-workspace-cli.md)。
 
-使用 [az synapse sql pool create](/cli/azure/ext/synapse/synapse/sql/pool#ext_synapse_az_synapse_sql_pool_create) 命令创建 SQL 池：
+使用 [az synapse sql pool create](/cli/azure/synapse/sql/pool#az_synapse_sql_pool_create) 命令创建 SQL 池：
 
 ```azurecli
 az synapse sql pool create --resource-group myResourceGroup --name mySampleDataWarehouse \
    --performance-level "DW1000c" --workspace-name testsynapseworkspace
 ```
 
-有关参数选项的详细信息，请参阅 [az synapse sql 池](/cli/azure/ext/synapse/synapse/sql/pool)。
+有关参数选项的详细信息，请参阅 [az synapse sql 池](/cli/azure/synapse/sql/pool)。
 
-可使用 [az synapse sql pool list](/cli/azure/ext/synapse/synapse/sql/pool#ext_synapse_az_synapse_sql_pool_list) 命令查看 SQL 池：
+可使用 [az synapse sql pool list](/cli/azure/synapse/sql/pool#az_synapse_sql_pool_list) 命令查看 SQL 池：
 
 ```azurecli
 az synapse sql pool list --resource-group myResourceGroup --workspace-name testsynapseworkspace
 ```
 
-使用 [az synapse sql pool update](/cli/azure/ext/synapse/synapse/sql/pool#ext_synapse_az_synapse_sql_pool_update) 命令更新现有池：
+使用 [az synapse sql pool update](/cli/azure/synapse/sql/pool#az_synapse_sql_pool_update) 命令更新现有池：
 
 ```azurecli
 az synapse sql pool update --resource-group myResourceGroup --name mySampleDataWarehouse \
    --workspace-name testsynapseworkspace
 ```
 
-使用 [az synapse sql pool pause](/cli/azure/ext/synapse/synapse/sql/pool#ext_synapse_az_synapse_sql_pool_pause) 命令暂停池：
+使用 [az synapse sql pool pause](/cli/azure/synapse/sql/pool#az_synapse_sql_pool_pause) 命令暂停池：
 
 ```azurecli
 az synapse sql pool pause --resource-group myResourceGroup --name mySampleDataWarehouse \
    --workspace-name testsynapseworkspace
 ```
 
-使用 [az synapse sql pool resume](/cli/azure/ext/synapse/synapse/sql/pool#ext_synapse_az_synapse_sql_pool_resume) 命令启动暂停的池：
+使用 [az synapse sql pool resume](/cli/azure/synapse/sql/pool#az_synapse_sql_pool_resume) 命令启动暂停的池：
 
 ```azurecli
 az synapse sql pool resume --resource-group myResourceGroup --name mySampleDataWarehouse \
    --workspace-name testsynapseworkspace
 ```
 
-若要删除现有的 SQL 池，请使用 [az synapse sql pool delete](/cli/azure/ext/synapse/synapse/sql/pool#ext_synapse_az_synapse_sql_pool_delete) 命令：
+若要删除现有的 SQL 池，请使用 [az synapse sql pool delete](/cli/azure/synapse/sql/pool#az_synapse_sql_pool_delete) 命令：
 
 ```azurecli
 az synapse sql pool delete --resource-group myResourceGroup --name mySampleDataWarehouse \

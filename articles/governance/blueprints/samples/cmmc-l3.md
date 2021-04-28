@@ -3,12 +3,12 @@ title: CMMC 级别 3 蓝图示例
 description: CMMC 级别 3 蓝图示例概述。 此蓝图示例可帮助客户评估特定控制要求。
 ms.date: 03/24/2021
 ms.topic: sample
-ms.openlocfilehash: 950c6064ce8b3d9973ac08e5895a4b6f48e37d6a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 100e404567f0241e814280650944e620435dc60c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105572092"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108145080"
 ---
 # <a name="cmmc-level-3-blueprint-sample"></a>CMMC 级别 3 蓝图示例
 
@@ -110,173 +110,173 @@ CMMC 级别 3 蓝图示例提供了使用 [Azure Policy](../../policy/overview.m
 |CMMC 级别 3|策略分配|允许 Kubernetes 群集 Pod 使用主机网络|如果允许 Pod 使用主机网络，则将此值设置为 true；否则，设置为 false。|
 |CMMC 级别 3|策略分配|审核身份验证策略更改|指定在对身份验证策略进行更改时是否生成审核事件。 此设置可用于跟踪域级和林级信任更改以及授予给用户帐户或组的权限的更改。|
 |CMMC 级别 3|策略分配|审核授权策略更改|指定是否在分配和删除用户权限策略中的用户权限、更改安全令牌对象权限、更改资源属性以及对文件系统对象更改中心访问策略时生成审核事件。|
-|CMMC 级别 3|策略分配|策略效果: 应为虚拟机启用 Azure 备份|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 认知服务帐户应限制网络访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: SQL 托管实例应使用客户管理的密钥对数据进行静态加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: Azure API for FHIR 应使用客户管理的密钥 (CMK) 对数据进行静态加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果：应为 Azure Front Door 服务启用 Web 应用程序防火墙 (WAF)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果：SQL Server 的“漏洞评估”设置应包含用来接收扫描报告的电子邮件地址|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应为认知服务帐户禁用公用网络访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: CORS 不得允许所有资源都能访问函数应用|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果：应对面向 Internet 的虚拟机应用自适应网络强化建议|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应该为你的订阅分配了多个所有者|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应在虚拟机上启用磁盘加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应启用向订阅所有者发送高严重性警报的电子邮件通知|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 密钥保管库应启用清除保护|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: SQL Server 应使用客户管理的密钥对数据进行静态加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应当为函数应用禁用远程调试|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应启用用于密钥保管库的 Azure Defender|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应为 Azure Database for MariaDB 启用异地冗余备份|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: CORS 不得允许每个域都能访问 API for FHIR|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: Windows 虚拟机应符合“安全选项 - 网络安全”要求|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应更新自适应应用程序控制策略中的允许列表规则|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果：Web 应用程序防火墙 (WAF) 应对应用程序网关使用指定模式|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应设置密钥的到期日期|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应在 SQL 数据库上启用透明数据加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: Azure Monitor 日志配置文件应为类别 "write"、"delete" 和 "action" 收集日志|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果：应在 SQL 托管实例上启用漏洞评估|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：确保用作 API 应用一部分的“PHP 版本”是最新的|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 密钥保管库应启用软删除|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应该为 SQL 服务器预配 Azure Active Directory 管理员|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果：应只启用与 Azure Cache for Redis 的安全连接|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应为 Azure Database for PostgreSQL 服务器启用基础结构加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应在虚拟机规模集上安装 Endpoint Protection 解决方案|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应启用用于应用服务的 Azure Defender|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: Windows 虚拟机应符合“系统审核策略 - 策略更改”要求|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 认知服务帐户应启用数据加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应阻止来自 Internet 的 SSH 访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应加密未附加的磁盘|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应启用用于存储的 Azure Defender|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 存储帐户应限制网络访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: CORS 不得允许所有资源都能访问 API 应用|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 对存储帐户部署高级威胁防护|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应对自动化帐户变量进行加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应启用 IoT 中心内的诊断日志|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应为 Azure Database for MySQL 服务器启用基础结构加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 对于特定的“安全”操作，应有活动日志警报(Microsoft.Security/securitySolutions/delete)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应该修复虚拟机规模集上安全配置中的漏洞|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: Windows 虚拟机应符合“安全选项 - 网络访问”要求|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应该启用安全传输到存储帐户|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: Azure Monitor 应从所有区域收集活动日志|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果：Web 应用程序防火墙 (WAF) 应对 Azure Front Door 服务使用指定模式|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 存储帐户应有基础结构加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果：应在计算机中启用用于定义安全应用程序的自适应应用程序控制|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应为 Azure Database for PostgreSQL 启用异地冗余备份|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: Windows 虚拟机应符合“安全选项 - 用户帐户控制”要求|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：确保用作 Web 应用一部分的“Java 版本”是最新的|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应启用用于服务器的 Azure Defender|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：只多只为订阅指定 3 个所有者|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 订阅应有用于解决安全问题的联系人电子邮件地址|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应禁止存储帐户公共访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果：应在虚拟机上启用漏洞评估解决方案|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应启用 Azure Defender for Kubernetes|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应在密钥保管库上启用防火墙|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果：应为应用程序网关启用 Web 应用程序防火墙 (WAF)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：CORS 不应允许所有资源访问 Web 应用程序|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 审核允许重用以前的 24 个密码的 Windows 虚拟机|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应使用客户管理的密钥 (CMK) 对容器注册表进行加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应从订阅中删除具有写入权限的外部帐户|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应为 PostgreSQL 灵活服务器禁用公用网络访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应修正 Azure 容器注册表映像中的漏洞|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应从订阅中删除拥有读取权限的外部帐户|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: Service Fabric 群集应将 ClusterProtectionLevel 属性设置为 EncryptAndSign|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应在虚拟机上启用用于 SQL 服务器的 Azure Defender|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 认知服务帐户应启用使用客户管理的密钥进行数据加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应从订阅中删除弃用的帐户|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应该只能通过 HTTPS 访问函数应用|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果:应启用发送高严重性警报的电子邮件通知|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 存储帐户应使用客户管理的密钥进行加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：确保用作 Web 应用一部分的“Python 版本”是最新的|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：确保用作函数应用一部分的“Python 版本”是最新的|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：确保用作 WEB 应用一部分的“PHP 版本”是最新的|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：确保用作 API 应用一部分的“Python 版本”是最新的|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 密钥应是指定的加密类型 RSA 或 EC|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果：Azure 订阅应有用于活动日志的日志配置文件|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: Azure Kubernetes 服务群集中的操作系统和数据磁盘都应使用客户管理的密钥进行加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应启用用于 Azure SQL 数据库服务器的 Azure Defender|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应使用客户管理的密钥进行 Azure 数据资源管理器静态加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 使用 RSA 加密的密钥应有指定的最小密钥大小|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应为 Azure Database for MySQL 启用异地冗余备份|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: Kubernetes 群集 Pod 应只使用已批准的主机网络和端口范围|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应在计算机上安装系统更新|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: Windows 虚拟机应符合“系统审核策略 - 特权使用”要求|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: Azure 流分析作业应使用客户管理的密钥来加密数据|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：确保用作 API 应用一部分的“Java 版本”是最新的|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：确保用于运行 Web 应用的“HTTP 版本”是最新的|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应在 API 应用中使用最新的 TLS 版本|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应对订阅中拥有写入权限的帐户启用 MFA|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果: 确保用于运行 API 应用的“HTTP 版本”是最新的|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应在 Windows 服务器上部署 Microsoft IaaSAntimalware 扩展|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：确保用作函数应用一部分的“Java 版本”是最新的|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应限制在与虚拟机关联的网络安全组上使用所有网络端口|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应选择安全中心标准定价层|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 审核没有将最短密码长度限制为 14 个字符的 Windows 虚拟机|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：审核自定义 RBAC 规则的使用|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：只能通过 HTTPS 访问 Web 应用程序|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应启用 SQL 服务器上的审核|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应在虚拟机上安装 Log Analytics 代理|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应在对订阅拥有所有者权限的帐户上启用 MFA|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应在 SQL 服务器上启用高级数据安全性|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果：应在 SQL 托管实例上启用高级数据安全|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应在 Kubernetes 服务上使用基于角色的访问控制(RBAC)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 虚拟机应有来宾配置扩展|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：监视 Azure 安全中心 Endpoint Protection 的缺失情况|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果：活动日志至少应保留一年|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果：应通过即时网络访问控制来保护虚拟机的管理端口|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应为 PostgreSQL 服务器禁用公用网络访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 为 Cosmos DB 帐户部署高级威胁防护|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应启用应用服务中的诊断日志|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：只能通过 HTTPS 访问 API 应用|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 对于特定的“管理”操作 (Microsoft.ClassicNetwork/networkSecurityGroups/delete)，应有活动日志警报|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 对于特定的“管理”操作 (Microsoft.ClassicNetwork/networkSecurityGroups/securityRules/delete)，应有活动日志警报|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 对于特定的“管理”操作，应有活动日志警报(Microsoft.Network/networkSecurityGroups/delete)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 对于特定的“管理”操作，应有活动日志警报(Microsoft.Network/networkSecurityGroups/securityRules/delete)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 对于特定的“管理”操作，应有活动日志警报(Microsoft.Sql/servers/firewallRules/delete)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应使用网络安全组来保护非面向 Internet 的虚拟机|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 审核未启用密码复杂性设置的 Windows 虚拟机|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应启用用于容器注册表的 Azure Defender|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: Azure Data Box 作业应对设备上的静态数据启用双重加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应在虚拟机规模集上安装系统更新|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: Microsoft Antimalware for Azure 应配置为自动更新保护签名|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 对于特定的“策略”操作，应有活动日志警报(Microsoft.Authorization/policyAssignments/delete)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应为 MySQL 灵活服务器禁用公用网络访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 存储帐户应允许来自受信任的 Microsoft 服务的访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应当为 Web 应用程序禁用远程调试|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 使用 RSA 加密的证书应有指定的最小密钥大小|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 容器注册表不得允许不受限制的网络访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应为 PostgreSQL 数据库服务器启用“强制执行 SSL 连接”|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应使用系统分配的托管标识将来宾配置扩展部署到 Azure 虚拟机|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应为 Azure SQL 数据库启用长期异地冗余备份|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应为 MySQL 服务器禁用公用网络访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 审核没有使用可逆加密来存储密码的 Windows 虚拟机|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: Windows 虚拟机应符合“用户权限分配”要求|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应该修复计算机上安全配置中的漏洞|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：确保用于运行函数应用的“HTTP 版本”是最新的|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应在对订阅拥有读取权限的帐户上启用 MFA|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应阻止来自 Internet 的 RDP 访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 审核没有将 passwd 文件权限设为 0644 的 Linux 虚拟机|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 子网应与网络安全组关联|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应为 MySQL 数据库服务器启用“强制执行 SSL 连接”|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应该修复容器安全配置中的漏洞|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应当为 API 应用禁用远程调试|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果：审核允许在不使用密码的情况下从帐户进行远程连接的 Linux 计算机|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应从订阅中删除拥有所有者权限的已弃用帐户|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应对 Azure 数据资源管理器启用双重加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应对 SQL Server 启用漏洞评估|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应在虚拟机规模集上安装 Log Analytics 代理|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应在 Web 应用中使用最新的 TLS 版本|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应对 Azure 数据资源管理器启用磁盘加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果：面向 Internet 的虚拟机应使用网络安全组进行保护|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果：审核具有不使用密码的帐户的 Linux 计算机|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: Azure Synapse 工作区应使用客户管理的密钥加密静态数据|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应从订阅中删除拥有所有者权限的外部帐户|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应在函数应用中使用最新的 TLS 版本|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: Kubernetes 服务应升级到不易受攻击的 Kubernetes 版本|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 所有 Internet 流量都应通过你部署的 Azure 防火墙进行路由|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: Linux 虚拟机应符合 Azure 安全基线的要求|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 应为 MariaDB 服务器禁用公用网络访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略的效果：应该修复 SQL 数据库中的漏洞|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|CMMC 级别 3|策略分配|策略效果: 使用椭圆曲线加密的密钥应有指定的曲线名称|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
+|CMMC 级别 3|策略分配|策略效果: 应为虚拟机启用 Azure 备份|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 认知服务帐户应限制网络访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: SQL 托管实例应使用客户管理的密钥对数据进行静态加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: Azure API for FHIR 应使用客户管理的密钥 (CMK) 对数据进行静态加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果：应为 Azure Front Door 服务启用 Web 应用程序防火墙 (WAF)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果：SQL Server 的“漏洞评估”设置应包含用来接收扫描报告的电子邮件地址|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应为认知服务帐户禁用公用网络访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: CORS 不得允许所有资源都能访问函数应用|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果：应对面向 Internet 的虚拟机应用自适应网络强化建议|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应该为你的订阅分配了多个所有者|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应在虚拟机上启用磁盘加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应启用向订阅所有者发送高严重性警报的电子邮件通知|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 密钥保管库应启用清除保护|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: SQL Server 应使用客户管理的密钥对数据进行静态加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应当为函数应用禁用远程调试|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应启用用于密钥保管库的 Azure Defender|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应为 Azure Database for MariaDB 启用异地冗余备份|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: CORS 不得允许每个域都能访问 API for FHIR|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: Windows 虚拟机应符合“安全选项 - 网络安全”要求|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应更新自适应应用程序控制策略中的允许列表规则|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果：Web 应用程序防火墙 (WAF) 应对应用程序网关使用指定模式|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应设置密钥的到期日期|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应在 SQL 数据库上启用透明数据加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: Azure Monitor 日志配置文件应为类别 "write"、"delete" 和 "action" 收集日志|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果：应在 SQL 托管实例上启用漏洞评估|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：确保用作 API 应用一部分的“PHP 版本”是最新的|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 密钥保管库应启用软删除|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应该为 SQL 服务器预配 Azure Active Directory 管理员|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果：应只启用与 Azure Cache for Redis 的安全连接|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应为 Azure Database for PostgreSQL 服务器启用基础结构加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应在虚拟机规模集上安装 Endpoint Protection 解决方案|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应启用用于应用服务的 Azure Defender|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: Windows 虚拟机应符合“系统审核策略 - 策略更改”要求|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 认知服务帐户应启用数据加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应阻止来自 Internet 的 SSH 访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应加密未附加的磁盘|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应启用用于存储的 Azure Defender|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 存储帐户应限制网络访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: CORS 不得允许所有资源都能访问 API 应用|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 对存储帐户部署高级威胁防护|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应对自动化帐户变量进行加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应启用 IoT 中心内的诊断日志|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应为 Azure Database for MySQL 服务器启用基础结构加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 对于特定的“安全”操作，应有活动日志警报(Microsoft.Security/securitySolutions/delete)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应该修复虚拟机规模集上安全配置中的漏洞|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: Windows 虚拟机应符合“安全选项 - 网络访问”要求|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应该启用安全传输到存储帐户|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: Azure Monitor 应从所有区域收集活动日志|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果：Web 应用程序防火墙 (WAF) 应对 Azure Front Door 服务使用指定模式|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 存储帐户应有基础结构加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果：应在计算机中启用用于定义安全应用程序的自适应应用程序控制|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应为 Azure Database for PostgreSQL 启用异地冗余备份|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: Windows 虚拟机应符合“安全选项 - 用户帐户控制”要求|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：确保用作 Web 应用一部分的“Java 版本”是最新的|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应启用用于服务器的 Azure Defender|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：只多只为订阅指定 3 个所有者|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 订阅应有用于解决安全问题的联系人电子邮件地址|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应禁止存储帐户公共访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果：应在虚拟机上启用漏洞评估解决方案|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应启用 Azure Defender for Kubernetes|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应在密钥保管库上启用防火墙|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果：应为应用程序网关启用 Web 应用程序防火墙 (WAF)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：CORS 不应允许所有资源访问 Web 应用程序|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 审核允许重用以前的 24 个密码的 Windows 虚拟机|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应使用客户管理的密钥 (CMK) 对容器注册表进行加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应从订阅中删除具有写入权限的外部帐户|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应为 PostgreSQL 灵活服务器禁用公用网络访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应修正 Azure 容器注册表映像中的漏洞|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应从订阅中删除拥有读取权限的外部帐户|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: Service Fabric 群集应将 ClusterProtectionLevel 属性设置为 EncryptAndSign|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应在虚拟机上启用用于 SQL 服务器的 Azure Defender|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 认知服务帐户应启用使用客户管理的密钥进行数据加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应从订阅中删除弃用的帐户|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应该只能通过 HTTPS 访问函数应用|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果:应启用发送高严重性警报的电子邮件通知|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 存储帐户应使用客户管理的密钥进行加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：确保用作 Web 应用一部分的“Python 版本”是最新的|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：确保用作函数应用一部分的“Python 版本”是最新的|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：确保用作 WEB 应用一部分的“PHP 版本”是最新的|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：确保用作 API 应用一部分的“Python 版本”是最新的|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 密钥应是指定的加密类型 RSA 或 EC|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果：Azure 订阅应有用于活动日志的日志配置文件|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: Azure Kubernetes 服务群集中的操作系统和数据磁盘都应使用客户管理的密钥进行加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应启用用于 Azure SQL 数据库服务器的 Azure Defender|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应使用客户管理的密钥进行 Azure 数据资源管理器静态加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 使用 RSA 加密的密钥应有指定的最小密钥大小|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应为 Azure Database for MySQL 启用异地冗余备份|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: Kubernetes 群集 Pod 应只使用已批准的主机网络和端口范围|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应在计算机上安装系统更新|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: Windows 虚拟机应符合“系统审核策略 - 特权使用”要求|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: Azure 流分析作业应使用客户管理的密钥来加密数据|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：确保用作 API 应用一部分的“Java 版本”是最新的|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：确保用于运行 Web 应用的“HTTP 版本”是最新的|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应在 API 应用中使用最新的 TLS 版本|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应对订阅中拥有写入权限的帐户启用 MFA|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果: 确保用于运行 API 应用的“HTTP 版本”是最新的|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应在 Windows 服务器上部署 Microsoft IaaSAntimalware 扩展|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：确保用作函数应用一部分的“Java 版本”是最新的|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应限制在与虚拟机关联的网络安全组上使用所有网络端口|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应选择安全中心标准定价层|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 审核没有将最短密码长度限制为 14 个字符的 Windows 虚拟机|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：审核自定义 RBAC 规则的使用|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：只能通过 HTTPS 访问 Web 应用程序|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应启用 SQL 服务器上的审核|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应在虚拟机上安装 Log Analytics 代理|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应在对订阅拥有所有者权限的帐户上启用 MFA|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应在 SQL 服务器上启用高级数据安全性|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果：应在 SQL 托管实例上启用高级数据安全|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应在 Kubernetes 服务上使用基于角色的访问控制(RBAC)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 虚拟机应有来宾配置扩展|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：监视 Azure 安全中心 Endpoint Protection 的缺失情况|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果：活动日志至少应保留一年|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果：应通过即时网络访问控制来保护虚拟机的管理端口|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应为 PostgreSQL 服务器禁用公用网络访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 为 Cosmos DB 帐户部署高级威胁防护|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应启用应用服务中的诊断日志|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：只能通过 HTTPS 访问 API 应用|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 对于特定的“管理”操作 (Microsoft.ClassicNetwork/networkSecurityGroups/delete)，应有活动日志警报|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 对于特定的“管理”操作 (Microsoft.ClassicNetwork/networkSecurityGroups/securityRules/delete)，应有活动日志警报|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 对于特定的“管理”操作，应有活动日志警报(Microsoft.Network/networkSecurityGroups/delete)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 对于特定的“管理”操作，应有活动日志警报(Microsoft.Network/networkSecurityGroups/securityRules/delete)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 对于特定的“管理”操作，应有活动日志警报(Microsoft.Sql/servers/firewallRules/delete)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应使用网络安全组来保护非面向 Internet 的虚拟机|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 审核未启用密码复杂性设置的 Windows 虚拟机|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应启用用于容器注册表的 Azure Defender|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: Azure Data Box 作业应对设备上的静态数据启用双重加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应在虚拟机规模集上安装系统更新|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: Microsoft Antimalware for Azure 应配置为自动更新保护签名|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 对于特定的“策略”操作，应有活动日志警报(Microsoft.Authorization/policyAssignments/delete)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应为 MySQL 灵活服务器禁用公用网络访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 存储帐户应允许来自受信任的 Microsoft 服务的访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应当为 Web 应用程序禁用远程调试|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 使用 RSA 加密的证书应有指定的最小密钥大小|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 容器注册表不得允许不受限制的网络访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应为 PostgreSQL 数据库服务器启用“强制执行 SSL 连接”|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应使用系统分配的托管标识将来宾配置扩展部署到 Azure 虚拟机|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应为 Azure SQL 数据库启用长期异地冗余备份|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应为 MySQL 服务器禁用公用网络访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 审核没有使用可逆加密来存储密码的 Windows 虚拟机|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: Windows 虚拟机应符合“用户权限分配”要求|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应该修复计算机上安全配置中的漏洞|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：确保用于运行函数应用的“HTTP 版本”是最新的|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应在对订阅拥有读取权限的帐户上启用 MFA|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应阻止来自 Internet 的 RDP 访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 审核没有将 passwd 文件权限设为 0644 的 Linux 虚拟机|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 子网应与网络安全组关联|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应为 MySQL 数据库服务器启用“强制执行 SSL 连接”|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应该修复容器安全配置中的漏洞|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应当为 API 应用禁用远程调试|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果：审核允许在不使用密码的情况下从帐户进行远程连接的 Linux 计算机|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应从订阅中删除拥有所有者权限的已弃用帐户|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应对 Azure 数据资源管理器启用双重加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应对 SQL Server 启用漏洞评估|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应在虚拟机规模集上安装 Log Analytics 代理|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应在 Web 应用中使用最新的 TLS 版本|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应对 Azure 数据资源管理器启用磁盘加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果：面向 Internet 的虚拟机应使用网络安全组进行保护|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果：审核具有不使用密码的帐户的 Linux 计算机|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: Azure Synapse 工作区应使用客户管理的密钥加密静态数据|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应从订阅中删除拥有所有者权限的外部帐户|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应在函数应用中使用最新的 TLS 版本|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: Kubernetes 服务应升级到不易受攻击的 Kubernetes 版本|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 所有 Internet 流量都应通过你部署的 Azure 防火墙进行路由|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: Linux 虚拟机应符合 Azure 安全基线的要求|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 应为 MariaDB 服务器禁用公用网络访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略的效果：应该修复 SQL 数据库中的漏洞|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|CMMC 级别 3|策略分配|策略效果: 使用椭圆曲线加密的密钥应有指定的曲线名称|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
 |CMMC 级别 3|策略分配|从策略评估中排除的命名空间: Kubernetes 群集 Pod 应只使用已批准的主机网络和端口范围|要从策略评估中排除的 Kubernetes 命名空间的列表。|
 |CMMC 级别 3|策略分配|适用于应用服务的最新 Java 版本|应用服务支持的最新 Java 版本|
 |CMMC 级别 3|策略分配|适用于应用服务的最新 Linux Python 版本|应用服务支持的最新 Python 版本|
@@ -298,7 +298,7 @@ CMMC 级别 3 蓝图示例提供了使用 [Azure Policy](../../policy/overview.m
 |CMMC 级别 3|策略分配|网络安全: 配置允许 Kerberos 使用的加密类型|指定允许 Kerberos 使用的加密类型。|
 |CMMC 级别 3|策略分配|网络安全：LAN 管理器身份验证级别|指定哪个质询/响应身份验证协议将用于网络登录。 此选择将影响客户端使用的身份验证协议级别、协商的会话安全级别以及服务器接受的身份验证级别。|
 |CMMC 级别 3|策略分配|网络安全：LDAP 客户端签名要求|指定代表发出 LDAP BIND 请求的客户端请求获取的数据签名的级别。|
-|CMMC 级别 3|策略分配|网络安全：基于 NTLM SSP（包括安全 RPC）客户端的最小会话安全|指定对于使用 NTLM 安全支持提供程序 (SSP) 的应用程序，客户端允许哪些行为。 SSP 接口 (SSPI) 由需要身份验证服务的应用程序使用。 有关详细信息，请参阅 [https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/network-security-minimum-session-security-for-ntlm-ssp-based-including-secure-rpc-servers](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/network-security-minimum-session-security-for-ntlm-ssp-based-including-secure-rpc-servers)。|
+|CMMC 级别 3|策略分配|网络安全：基于 NTLM SSP（包括安全 RPC）客户端的最小会话安全|指定对于使用 NTLM 安全支持提供程序 (SSP) 的应用程序，客户端允许哪些行为。 SSP 接口 (SSPI) 由需要身份验证服务的应用程序使用。 有关详细信息，请参阅 [https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/network-security-minimum-session-security-for-ntlm-ssp-based-including-secure-rpc-servers](/windows/security/threat-protection/security-policy-settings/network-security-minimum-session-security-for-ntlm-ssp-based-including-secure-rpc-servers)。|
 |CMMC 级别 3|策略分配|网络安全：基于 NTLM SSP（包括安全 RPC）服务器的最小会话安全|指定对于使用 NTLM 安全支持提供程序 (SSP) 的应用程序，服务器允许哪些行为。 SSP 接口 (SSPI) 由需要身份验证服务的应用程序使用。|
 |CMMC 级别 3|策略分配|适用于应用服务的最新 PHP 版本|应用服务支持的最新 PHP 版本|
 |CMMC 级别 3|策略分配|所需的 IoT 中心诊断日志保持期(天)||

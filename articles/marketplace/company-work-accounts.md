@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 05/30/2019
-ms.openlocfilehash: 69e9f9d6d7d132476796a1cdfdaaa2490457640c
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: c4433572f503ca086b88e6e42600fff623f34a11
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107805"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133198"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>公司工作帐户和合作伙伴中心
 
@@ -44,7 +44,7 @@ ms.locfileid: "107107805"
 
 用户帐户的电子邮件地址必须是目录中已验证的域名。 可选择左侧导航菜单的“Azure Active Directory” -> “自定义域名”来列出所有已验证的域 。
 
-要详细了解如何在 Azure Active Directory 中添加自定义域，请参阅[在 Azure AD 中添加或关联域](/azure/active-directory/fundamentals/add-custom-domain)。
+要详细了解如何在 Azure Active Directory 中添加自定义域，请参阅[在 Azure AD 中添加或关联域](../active-directory/fundamentals/add-custom-domain.md)。
 
 ## <a name="troubleshoot-work-email-sign-in"></a>排查工作电子邮件登录问题
 

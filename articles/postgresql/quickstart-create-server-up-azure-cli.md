@@ -8,19 +8,19 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 28007b4e17bd698e4aaa2bddbf0c8f9ffaaa8351
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8b1f56e2982afc8767ee1addaa2e47ac26cf29c0
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606447"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108072902"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>快速入门：使用 Azure CLI 命令、az postgres up（预览版）创建 Azure Database for PostgreSQL - 单一服务器
 
 > [!IMPORTANT]
-> [az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure CLI 命令现为预览版。
+> [az postgres up](/cli/azure/postgres#az_postgres_up) Azure CLI 命令现为预览版。
 
-用于 PostgreSQL 的 Azure 数据库是一种托管服务，可用于在云中运行、管理和缩放具有高可用性的 PostgreSQL 数据库。 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 此快速入门介绍了如何使用 [az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) 命令和 Azure CLI 来创建 Azure Database for PostgreSQL 服务器。 除了创建服务器，`az postgres up` 命令还会创建示例数据库、在数据库中创建根用户、为 Azure 服务打开防火墙，并为客户端计算机创建默认防火墙规则。 这些默认值有助于加快开发过程。
+用于 PostgreSQL 的 Azure 数据库是一种托管服务，可用于在云中运行、管理和缩放具有高可用性的 PostgreSQL 数据库。 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 此快速入门介绍了如何使用 [az postgres up](/cli/azure/postgres#az_postgres_up) 命令和 Azure CLI 来创建 Azure Database for PostgreSQL 服务器。 除了创建服务器，`az postgres up` 命令还会创建示例数据库、在数据库中创建根用户、为 Azure 服务打开防火墙，并为客户端计算机创建默认防火墙规则。 这些默认值有助于加快开发过程。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,7 +42,7 @@ az account set --subscription <subscription id>
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>创建 Azure Database for PostgreSQL 服务器
 
-要使用命令，请安装 [db-up](/cli/azure/ext/db-up) 扩展。 如果返回错误，则请确保已安装最新版本的 Azure CLI。 请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+要使用命令，请安装 [db-up](/cli/azure/ext/db-up/mysql) 扩展。 如果返回错误，则请确保已安装最新版本的 Azure CLI。 请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ```azurecli
 az extension add --name db-up
@@ -71,7 +71,7 @@ admin-user | 系统生成的 | 管理员用户名。
 admin-password | 系统生成的 | 管理员用户的密码。
 
 > [!NOTE]
-> 有关 `az postgres up` 命令及其附加参数的详细信息，请参阅 [Azure CLI 文档](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up)。
+> 有关 `az postgres up` 命令及其附加参数的详细信息，请参阅 [Azure CLI 文档](/cli/azure/postgres#az_postgres_up)。
 
 服务器创建后，随附有以下设置：
 
@@ -87,7 +87,7 @@ admin-password | 系统生成的 | 管理员用户的密码。
 
 在完成 `az postgres up` 命令后，将向你返回一个常用编程语言连接字符串列表。 这些连接字符串使用你新创建的 Azure Database for PostgreSQL 服务器的特定属性进行了预配置。
 
-可使用 [az postgres show-connection-string](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-show-connection-string) 命令再次列出这些连接字符串。
+可使用 [az postgres show-connection-string](/cli/azure/postgres#az_postgres_show_connection_string) 命令再次列出这些连接字符串。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -97,7 +97,7 @@ admin-password | 系统生成的 | 管理员用户的密码。
 az postgres down --delete-group
 ```
 
-若要删除新创建的服务器，可运行 [az postgres down](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-down) 命令。
+若要删除新创建的服务器，可运行 [az postgres down](/cli/azure/postgres#az_postgres_down) 命令。
 
 ```azurecli
 az postgres down

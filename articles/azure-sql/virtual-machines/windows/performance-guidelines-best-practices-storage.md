@@ -15,19 +15,19 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: 001a9a15c259d0b0d73eec9c9a39ad7c27f26721
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f1138f0b33e75968f51965355528805dd29033b3
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105572218"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108145621"
 ---
 # <a name="storage-performance-best-practices-for-sql-server-on-azure-vms"></a>存储：Azure VM 上的 SQL Server 的性能最佳做法
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 本文提供存储最佳做法和准则，以优化 Azure 虚拟机 (VM) 上的 SQL Server 的性能。
 
-通常需要在针对成本优化和针对性能优化之间进行权衡。 此性能最佳做法系列侧重于为 Azure 虚拟机上的 SQL Server 实现最佳性能。 如果工作负荷要求较低，可能不需要每项建议的优化。 评估这些建议时应考虑性能需求、成本和工作负荷模式。
+通常需要在针对成本优化和针对性能优化之间进行权衡。 这一系列性能最佳做法侧重于实现 Azure 虚拟机上 SQL Server 的最佳性能。 如果工作负荷要求较低，可能不需要每项建议的优化。 评估这些建议时应考虑性能需求、成本和工作负荷模式。
 
 若要了解详细信息，请参阅本系列中的其他文章：[性能清单](performance-guidelines-best-practices-checklist.md)、[VM 大小](performance-guidelines-best-practices-vm-size.md)和[收集基线](performance-guidelines-best-practices-collect-baseline.md)。 
 
@@ -52,8 +52,8 @@ ms.locfileid: "105572218"
 - 对于开发和测试工作负载和长期备份存档，请考虑使用标准存储。 建议不要将标准 HDD/SDD 用于生产工作负载。
 - [基于额度的磁盘突发](../../../virtual-machines/disk-bursting.md#credit-based-bursting) (P1-P20) 仅应考虑用于较小的开发/测试工作负载和部门系统。
 - 预配与 SQL Server VM 位于同一区域的存储帐户。 
-- 禁用 Azure 异地冗余存储（异地复制），并在存储帐户上使用 LRS（本地冗余存储）。
-- 将数据磁盘格式化，为临时 `D:\` 驱动器（默认为 4 KB）以外的驱动器上放置的所有数据文件使用 64 KB 的分配单元大小。 通过 Azure 市场部署的 SQL Server VM 附带经过格式化的数据磁盘，其中分配单元大小和存储池的交错设置为 64 KB。 
+- 在存储帐户上禁用 Azure 异地冗余存储（异地复制）并使用 LRS（本地冗余存储）。
+- 将数据磁盘格式化，为临时 `D:\` 驱动器（默认为 4 KB）以外的驱动器上放置的所有数据文件使用 64 KB 的块大小（分配单元大小）。 通过 Azure 市场部署的 SQL Server VM 附带经过格式化的数据磁盘，其中块大小和存储池的交错设置为 64 KB。 
 
 若要将存储清单与其他清单进行比较，请参阅全面的[性能最佳做法清单](performance-guidelines-best-practices-checklist.md)。 
 
@@ -163,7 +163,7 @@ ms.locfileid: "105572218"
 
 同样，可以看到，Standard_M32ts 支持 20,000 未缓存的磁盘 IOPS 和 500 MBps 未缓存磁盘吞吐量。 无论基础高级磁盘存储如何，此限制都在虚拟机级别进行控制。
 
-有关详细信息，请参阅[未缓存和已缓存限制](../../../virtual-machines/linux/disk-performance-linux.md#virtual-machine-uncached-vs-cached-limits)。
+有关详细信息，请参阅[未缓存和已缓存限制](../../../virtual-machines/disks-performance.md#virtual-machine-uncached-vs-cached-limits)。
 
 
 ### <a name="cached-and-temp-storage-throughput"></a>缓存吞吐量和临时存储吞吐量
@@ -231,7 +231,7 @@ ms.locfileid: "105572218"
 
 ## <a name="write-acceleration"></a>写入加速
 
-写入加速是一项磁盘功能，仅适用于 [M 系列](https://docs.microsoft.com/azure/virtual-machines/m-series)虚拟机 (VM)。 写入加速的目的在于，当你因大量的任务关键型 OLTP 工作负载或数据仓库环境而需要个位数 I/O 延迟时，可以缩短对 Azure 高级存储进行写入的 I/O 延迟。 
+写入加速是一项磁盘功能，仅适用于 [M 系列](../../../virtual-machines/m-series.md)虚拟机 (VM)。 写入加速的目的在于，当你因大量的任务关键型 OLTP 工作负载或数据仓库环境而需要个位数 I/O 延迟时，可以缩短对 Azure 高级存储进行写入的 I/O 延迟。 
 
 使用写入加速缩短托管日志文件的驱动器的写入延迟。 请不要将写入加速用于 SQL Server 数据文件。 
 

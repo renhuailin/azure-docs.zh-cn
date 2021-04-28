@@ -9,21 +9,21 @@ ms.reviewer: peterlu
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 01/11/2021
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: designer
-ms.openlocfilehash: b940f5c9bd14bcec404827daaef666da802d969b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bbf4168e59f04829603008bedea380f76a67264a
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98065246"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107884563"
 ---
 # <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>在 Azure 机器学习设计器管道中启用日志记录
 
 
 本文介绍如何将日志记录代码添加到设计器管道。 此外，还介绍了如何使用 Azure 机器学习工作室 Web 门户查看这些日志。
 
-有关如何使用 SDK 创作体验来记录指标的详细信息，请参阅[监视 Azure ML 试验运行和指标](how-to-track-experiments.md)。
+有关如何使用 SDK 创作体验来记录指标的详细信息，请参阅[监视 Azure ML 试验运行和指标](how-to-log-view-metrics.md)。
 
 ## <a name="enable-logging-with-execute-python-script"></a>使用“执行 Python 脚本”启用日志记录
 
@@ -33,7 +33,7 @@ ms.locfileid: "98065246"
 
 1. 将“执行 Python 脚本”模块连接到“评估模型”模块的输出 。
 
-    ![将“执行 Python 脚本”模块连接到“评估模型”模块](./media/how-to-track-experiments/designer-logging-pipeline.png)
+    ![将“执行 Python 脚本”模块连接到“评估模型”模块](./media/how-to-log-view-metrics/designer-logging-pipeline.png)
 
 1. 将以下代码粘贴到“执行 Python 脚本”代码编辑器中，以记录训练模型的平均绝对误差。 可以使用类似的模式在设计器中记录任何其他值：
 
@@ -61,7 +61,7 @@ ms.locfileid: "98065246"
     
 此代码使用 Azure 机器学习 Python SDK 来记录值。 它使用 Run.get_context() 来获取当前运行的上下文。 然后，它会使用 run.parent.log() 方法将值记录到该上下文中。 它使用 `parent` 将值记录到父管道运行，而不是模块运行。
 
-有关如何使用 Python SDK 来记录值的详细信息，请参阅[在 Azure ML 训练运行中启用日志记录](how-to-track-experiments.md)。
+有关如何使用 Python SDK 来记录值的详细信息，请参阅[在 Azure ML 训练运行中启用日志记录](how-to-log-view-metrics.md)。
 
 ## <a name="view-logs"></a>查看日志
 
@@ -72,7 +72,7 @@ ms.locfileid: "98065246"
 1. 选择要查看的试验中的运行。
 1. 选择“指标”。
 
-    ![在工作室中查看运行指标](./media/how-to-track-experiments/experiment-page-metrics-across-runs.png)
+    ![在工作室中查看运行指标](./media/how-to-log-view-metrics/experiment-page-metrics-across-runs.png)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -80,5 +80,5 @@ ms.locfileid: "98065246"
 
 
 * 若要了解如何对设计器管道进行故障排除，请参阅[对 ML 管道进行调试和故障排除](how-to-debug-pipelines.md#azure-machine-learning-designer)。
-* 若要了解如何使用 Python SDK 在 SDK 创作体验中记录指标，请参阅[在 Azure ML 训练运行中启用日志记录](how-to-track-experiments.md)。
+* 若要了解如何使用 Python SDK 在 SDK 创作体验中记录指标，请参阅[在 Azure ML 训练运行中启用日志记录](how-to-log-view-metrics.md)。
 * 了解如何在设计器中使用[执行 Python 脚本](./algorithm-module-reference/execute-python-script.md)。

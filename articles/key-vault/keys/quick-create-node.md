@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: c0066409732f4492186ea0bf604261e1ab59ca9f
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 08de0045a19b0f07308778f8716fa48abded445b
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750295"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815533"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-javascript-version-4"></a>快速入门：适用于 JavaScript 的 Azure Key Vault 密钥客户端库（版本 4）
 
@@ -272,6 +272,6 @@ Purging your key from <your-unique-keyvault-name> ... done.
 
 - 阅读 [Azure Key Vault 概述](../general/overview.md)
 - 阅读 [Azure Key Vault 密钥概述](about-keys.md)
-- 如何[保护对密钥保管库的访问](../general/security-overview.md)
+- 如何[保护对密钥保管库的访问](../general/security-features.md)
 - 参阅 [Azure Key Vault 开发人员指南](../general/developers-guide.md)
-- 请参阅 [Key Vault 安全性概述](../general/security-overview.md)
+- 请参阅 [Key Vault 安全性概述](../general/security-features.md)

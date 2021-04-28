@@ -4,12 +4,12 @@ description: 快速入门：了解如何使用 Azure CLI 在 Azure 门户中创�
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ms.date: 12/4/2020
-ms.openlocfilehash: d951c692c7d3c282ae68c5f9b53e9cda5407df10
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 76d4e3b9c1c906dd91a7355af2c7cb957ef6ac95
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481015"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891709"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure 门户仪表板
 
@@ -73,20 +73,20 @@ az vm create --resource-group myResourceGroup --name SimpleWinVM --image win2016
 
 现在可以从 Azure CLI 中部署模板。
 
-1. 运行 [az portal dashboard create](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_create) 命令来部署模板：
+1. 运行 [az portal dashboard create](/cli/azure/portal/dashboard#az_portal_dashboard_create) 命令来部署模板：
 
    ```azurecli
    az portal dashboard create --resource-group myResourceGroup --name 'Simple VM Dashboard' \
       --input-path portal-dashboard-template-testvm.json --location centralus
    ```
 
-1. 通过运行 [az portal dashboard show](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_show) 命令检查是否已成功创建仪表板：
+1. 通过运行 [az portal dashboard show](/cli/azure/portal/dashboard#az_portal_dashboard_show) 命令检查是否已成功创建仪表板：
 
    ```azurecli
    az portal dashboard show --resource-group myResourceGroup --name 'Simple VM Dashboard'
    ```
 
-若要查看当前订阅的所有仪表板，请使用 [az portal dashboard list](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_list)：
+若要查看当前订阅的所有仪表板，请使用 [az portal dashboard list](/cli/azure/portal/dashboard#az_portal_dashboard_list)：
 
 ```azurecli
 az portal dashboard list
@@ -98,7 +98,7 @@ az portal dashboard list
 az portal dashboard list --resource-group myResourceGroup
 ```
 
-可以使用 [az portal dashboard update](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_update) 命令更新仪表板：
+可以使用 [az portal dashboard update](/cli/azure/portal/dashboard#az_portal_dashboard_update) 命令更新仪表板：
 
 ```azurecli
 az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Dashboard' \
@@ -119,7 +119,7 @@ az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Da
 az group delete --name myResourceGroup
 ```
 
-如需仅删除仪表板，请使用 [az portal dashboard delete](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_delete) 命令：
+如需仅删除仪表板，请使用 [az portal dashboard delete](/cli/azure/portal/dashboard#az_portal_dashboard_delete) 命令：
 
 ```azurecli
 az portal dashboard delete --resource-group myResourceGroup --name "Simple VM Dashboard"
@@ -127,4 +127,4 @@ az portal dashboard delete --resource-group myResourceGroup --name "Simple VM Da
 
 ## <a name="next-steps"></a>后续步骤
 
-有关对仪表板的 Azure CLI 支持的详细信息，请参阅 [az portal dashboard](/cli/azure/ext/portal/portal/dashboard)。
+有关对仪表板的 Azure CLI 支持的详细信息，请参阅 [az portal dashboard](/cli/azure/portal/dashboard)。

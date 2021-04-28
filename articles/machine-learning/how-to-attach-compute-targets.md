@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 10/02/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: a3a70ac5d5603cad98c199cbd8e3b98bb095d131
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.topic: how-to
+ms.custom: devx-track-python, contperf-fy21q1
+ms.openlocfilehash: 8c60afc16a75b69c85efc29375a5f10ca147a129
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167662"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143586"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>设置模型训练和部署的计算目标
 
@@ -124,7 +124,7 @@ Azure 机器学习还支持连接 Azure 虚拟机。 VM 必须是 Azure Data Sci
    ```
 
 > [!TIP]
-> 如果要从工作区中删除（拆离）VM，请使用 [RemoteCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.remotecompute#detach--) 方法。
+> 如果要从工作区中删除（拆离）VM，请使用 [RemoteCompute.detach()](/python/api/azureml-core/azureml.core.compute.remotecompute#detach--) 方法。
 >
 > Azure 机器学习不会为你删除 VM。 必须使用 Azure 门户、CLI 或适用于 Azure VM 的 SDK 手动删除 VM。
 
@@ -174,7 +174,7 @@ Azure HDInsight 是用于大数据分析的热门平台。 该平台提供的 Ap
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
 > [!TIP]
-> 如果要从工作区中删除（拆离）HDInsight 群集，请使用 [HDInsightCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.hdinsight.hdinsightcompute#detach--) 方法。
+> 如果要从工作区中删除（拆离）HDInsight 群集，请使用 [HDInsightCompute.detach()](/python/api/azureml-core/azureml.core.compute.hdinsight.hdinsightcompute#detach--) 方法。
 >
 > Azure 机器学习不会为你删除 HDInsight 群集。 必须使用 Azure 门户、CLI 或适用于 Azure HDInsight 的 SDK 将其手动删除。
 

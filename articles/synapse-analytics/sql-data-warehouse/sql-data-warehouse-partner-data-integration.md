@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: procha
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 68243528fe5d3a08a27d5eaacea593c313e9c227
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 89a66fdce102545e3da9ee8d6e674d37dd264754
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935987"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568193"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure Synapse Analytics 数据集成合作伙伴
 
@@ -38,7 +38,7 @@ ms.locfileid: "105935987"
 | ![Dimodelo](./media/sql-data-warehouse-partner-data-integration/dimodelo-logo.png) |**Dimodelo**<br>Dimodelo Data Warehouse Studio 是适用于 Azure 数据平台的数据仓库自动化工具。 Dimodelo 通过专用的数据仓库建模和 ETL 设计工具、基于模式的最佳做法代码生成、一键式部署和 ETL 业务流程，提高开发人员的工作效率。 Dimodelo 使用更改传播增强可维护性，使开发人员能够关注业务成果，并跨数据平台实现可移植性。|[产品页面](https://www.dimodelo.com/data-warehouse-studio-for-azure-synapse/)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/dimodelosolutions.dimodeloazurevs)<br> |
 | ![Fivetran](./media/sql-data-warehouse-partner-data-integration/fivetran_logo.png) |**Fivetran**<br>Fivetran 可帮助你集中管理来自不同来源的数据。 它提供一项零维护、零配置的数据管道产品，还有不断扩增的面向各种常用数据源的内置连接器。 在对数据源和目标数据仓库进行身份验证后，需要用 5 分钟时间进行设置。|[产品页面](https://fivetran.com/)<br> |
 | ![HVR](./media/sql-data-warehouse-partner-data-integration/hvr-logo.png) |**HVR**<br>HVR 提供支持企业现代化工作的实时云数据复制解决方案。 HVR 平台是一种可靠、安全且可伸缩的平台，可在复杂环境中快速有效地集成大型数据卷，从而实现实时数据更新、访问和分析。 各种行业的全球市场领导者都信任 HVR 可以解决其实时数据集成挑战并使其企业彻底革新。 HVR 是一家私人控股公司，位于旧金山，在北美、欧洲和亚洲均设有办事处。|[产品页面](https://www.hvr-software.com/solutions/azure-data-integration/)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/hvr.hvr-for-azure?tab=Overview)<br>|
-| ![Incorta](./media/sql-data-warehouse-partner-data-integration/incorta-logo.png) |**Incorta**<br>通过 Incorta，组织可以自动执行分析复杂数据通常所需的各种数据准备步骤，从而从原始数据中快速发现 Azure 中的可操作见解。 哪一个。 利用称为“直接数据映射”的专有技术和 Incorta 蓝图（预建的内容库以及从真实客户实现中捕获的最佳做法），客户在访问、组织和呈现关键业务决策的数据和见解方面获得了前所未有的速度和简易性。|[产品页面](https://www.incorta.com/solutions/microsoft-azure-synapse)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/incorta.incorta?tab=Overview)<br>|
+| ![Incorta](./media/sql-data-warehouse-partner-data-integration/incorta-logo.png) |**Incorta**<br>通过 Incorta，组织可以自动执行分析复杂数据通常所需的各种数据准备步骤，从而从原始数据中快速发现 Azure 中的可操作见解。 哪一个。 使用称为“直接数据映射”的专有技术和 Incorta 蓝图（预建的内容库以及从真实客户实现中捕获的最佳做法），客户在访问、组织和呈现关键业务决策的数据和见解方面获得了前所未有的速度和简易性。|[产品页面](https://www.incorta.com/solutions/microsoft-azure-synapse)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/incorta.incorta?tab=Overview)<br>|
 | ![Informatica](./media/sql-data-warehouse-partner-data-integration/informatica_logo.png) |**1. Informatica Cloud Services for Azure**<br> Informatica Cloud 提供同类最佳的解决方案来实现自助式数据迁移、集成和管理功能。 客户可从各种不同的来源快速可靠地将 PB 量级的数据导入和导出到 Azure。 适用于 Azure 的 Informatica 云服务为 Azure Synapse、SQL 数据库、Blob 存储、Data Lake Store 和 Azure Cosmos DB 提供大容量的高性能原生连接。 <br><br> **2. Informatica PowerCenter** PowerCenter 是一个元数据驱动的数据集成平台，可以直接启动和加速数据集成项目，以快于人工编程的速度将数据传送到业务平台。 它用作数据集成投资的基础 |**Informatica Cloud services for Azure**<br>[产品页面](https://www.informatica.com/products/cloud-integration.html)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/informatica.iics-winter)<br><br> **Informatica PowerCenter**<br>[产品页面](https://www.informatica.com/products/data-integration/powercenter.html)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/informatica.powercenter/)<br>|
 | ![Information Builders](./media/sql-data-warehouse-partner-data-integration/informationbuilders_logo.png) |**Information Builders（Omni-Gen 数据管理）**<br>Information Builder 的 Omni-Gen 数据管理平台提供了数据集成、数据质量和主数据管理解决方案。 无论格式、位置、数据量或延迟如何，都能通过它轻松访问、移动和混合各种数据。|[产品页面](https://www.informationbuilders.com/3i-platform)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/informationbuilders.omni-gen-mdm) |
 | ![Loome](./media/sql-data-warehouse-partner-data-integration/loome-logo.png) |**Loome**<br>Loome 提供与 Azure Synapse 无缝集成的唯一调控工作台。 使用它可以快速地将数据载入到云中，并将整个数据源以 Parquet 格式加载到 ADLS 中。 可以跨数据工程、数据科学和 HPC 工作负载（包括与 Azure 数据工厂、Python、SQL、Synapse Spark 和 Databricks 的本机集成）协调数据管道。 通过 Loome 可以轻松地监视数据质量异常，使 Synapse 成为你的战略数据质量中心。 Loome 保留已解决问题的审核线索，并使用完全自动化的数据质量引擎主动管理数据质量，从而实时生成面向受众的警报。| [产品页面](https://www.loomesoftware.com)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/bizdataptyltd1592265042221.loome?tab=Overview) |

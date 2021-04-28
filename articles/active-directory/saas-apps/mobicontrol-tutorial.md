@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2021
 ms.author: jeedes
-ms.openlocfilehash: 87cbbd0caf735afaaadfa47bebf13feeaefcc832
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 0c079b789cc63eb231c35f1ba37884bb6f9da394
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107520065"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132496"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobicontrol"></a>教程：Azure Active Directory 与 MobiControl 的集成
 
@@ -126,8 +126,8 @@ ms.locfileid: "107520065"
 
 * 直接转到 MobiControl 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 当你单击“我的应用”中的 MobiControl 磁贴时，系统会将你重定向到 MobiControl 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 当你单击“我的应用”中的 MobiControl 磁贴时，系统会将你重定向到 MobiControl 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 MobiControl 后，即可强制实施会话控制，实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 MobiControl 后，即可强制实施会话控制，实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

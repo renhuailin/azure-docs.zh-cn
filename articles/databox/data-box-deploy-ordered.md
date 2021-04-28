@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: eae8cca0302993c16ea29adddf6e4ee9b5b24be8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ed539df9fec3c66b3881257ff1ce68d03cf4c382
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770877"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878589"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教程：订购 Azure Data Box
 
@@ -449,7 +449,7 @@ PS C:\Windows\System32>
    |query| JMESPath 查询字符串。 有关详细信息，请参阅 [JMESPath](http://jmespath.org/)。 | --query <string>|
    |verbose| 包括详细日志记录。 | --verbose |
 
-2. 在所选的命令提示符或终端中运行 [az databox job create](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-create)，以创建 Azure Data Box 订单。
+2. 在所选的命令提示符或终端中运行 [az databox job create](/cli/azure/databox/job#az_databox_job_create)，以创建 Azure Data Box 订单。
 
    ```azurecli
    az databox job create --resource-group <resource-group> --name <order-name> --location <azure-location> --sku <databox-device-type> --contact-name <contact-name> --phone <phone-number> --email-list <email-list> --street-address1 <street-address-1> --street-address2 <street-address-2> --city "contact-city" --state-or-province <state-province> --country <country> --postal-code <postal-code> --company-name <company-name> --storage-account "storage-account"
@@ -617,7 +617,7 @@ PS C:\Windows\System32>
 
 ### <a name="track-a-single-order"></a>跟踪单个订单
 
-若要获取单个现有 Azure Data Box 订单的跟踪信息，请运行 [`az databox job show`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-show)。 该命令显示有关订单的信息，例如（但不限于）：名称、资源组、跟踪信息、订阅 ID、联系人信息、寄送类型和设备 sku。
+若要获取单个现有 Azure Data Box 订单的跟踪信息，请运行 [`az databox job show`](/cli/azure/databox/job#az_databox_job_show)。 该命令显示有关订单的信息，例如（但不限于）：名称、资源组、跟踪信息、订阅 ID、联系人信息、寄送类型和设备 sku。
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -658,7 +658,7 @@ PS C:\Windows\System32>
 
 ### <a name="list-all-orders"></a>列出所有订单
 
-如果订购了多台设备，可以运行 [`az databox job list`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-list) 查看所有 Azure Data Box 订单。 该命令列出属于特定资源组的所有订单。 输出中还显示：订单名称、寄送状态、Azure 区域、交付类型、订单状态。 已取消的订单也包含在列表中。
+如果订购了多台设备，可以运行 [`az databox job list`](/cli/azure/databox/job#az_databox_job_list) 查看所有 Azure Data Box 订单。 该命令列出属于特定资源组的所有订单。 输出中还显示：订单名称、寄送状态、Azure 区域、交付类型、订单状态。 已取消的订单也包含在列表中。
 此命令还显示每个订单的时间戳。
 
 ```azurecli
@@ -777,7 +777,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="cancel-an-order"></a>取消订单
 
-若要取消 Azure Data Box 订单，请运行 [`az databox job cancel`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-cancel)。 你需要指定取消订单的原因。
+若要取消 Azure Data Box 订单，请运行 [`az databox job cancel`](/cli/azure/databox/job#az_databox_job_cancel)。 你需要指定取消订单的原因。
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -814,7 +814,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="delete-an-order"></a>删除订单
 
-如果取消了 Azure Data Box 订单，可以运行 [`az databox job delete`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-delete) 删除订单。
+如果取消了 Azure Data Box 订单，可以运行 [`az databox job delete`](/cli/azure/databox/job#az_databox_job_delete) 删除订单。
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]

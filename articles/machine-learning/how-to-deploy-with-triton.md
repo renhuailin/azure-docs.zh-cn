@@ -10,13 +10,13 @@ author: gvashishtha
 ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
-ms.custom: deploy
-ms.openlocfilehash: 0bb17ded6822c477fe2107c66711af5e2dc384d3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: deploy, devx-track-azurecli
+ms.openlocfilehash: 8775696a35bfccc363aa2c6ec06c6c44115916b9
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107833"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479264"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>利用 Triton 推理服务器实现的高性能服务（预览） 
 
@@ -58,7 +58,7 @@ Triton 是针对推理进行了优化的框架。 它提供更好的 GPU 利用�
 
 * 系统将请求直接发送到 Triton 服务器。
 * Triton 对请求进行批处理，以最大程度利用 GPU。
-* 客户端使用 Triton URI 发出请求。 例如，`https://myservice.azureml.net/v2/models/${MODEL_NAME}/versions/${MODEL_VERSION}/infer`。
+* 客户端使用 Triton URI 发出请求。 例如 `https://myservice.azureml.net/v2/models/${MODEL_NAME}/versions/${MODEL_VERSION}/infer`。
 
 :::image type="content" source="./media/how-to-deploy-with-triton/triton-deploy.png" alt-text="仅使用 Triton 进行 Inferenceconfig 部署，无 Python 中间件":::
 
@@ -67,7 +67,7 @@ Triton 是针对推理进行了优化的框架。 它提供更好的 GPU 利用�
 * 已启用多个 [Gunicorn](https://gunicorn.org/) 辅助角色来并发处理传入请求。
 * 请求会转发到“Triton 服务器”。 
 * Triton 对请求进行批处理，以最大程度利用 GPU。
-* 客户端使用 Azure ML 评分 URI 发出请求。 例如，`https://myservice.azureml.net/score`。
+* 客户端使用 Azure ML 评分 URI 发出请求。 例如 `https://myservice.azureml.net/score`。
 
 :::image type="content" source="./media/how-to-deploy-with-triton/inference-config-deploy.png" alt-text="使用 Triton 和 Python 中间件进行部署":::
 
