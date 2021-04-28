@@ -4,12 +4,12 @@ description: 比较针对集成任务进行了优化的各种 Microsoft 云服�
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: e6bd97469a6b7b6c42427e130ac103954377c652
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c25f1511203cf3f951e409ebbaa9381329eeed92
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643367"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128372"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>在 Azure 中选择合适的集成和自动化服务
 
@@ -58,7 +58,7 @@ Power Automate 基于逻辑应用而构建。 它们有相同的工作流设计�
 | **操作** | 每个活动都是一个 Azure 函数；为活动函数编写代码 |[现成操作的大型集合](../logic-apps/logic-apps-workflow-actions-triggers.md)|
 | **Monitoring** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure 门户](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[Azure Monitor 日志](../logic-apps/monitor-logic-apps.md)|
 | **管理** | [REST API](durable/durable-functions-http-api.md)、[Visual Studio](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure 门户](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[REST API](/rest/api/logic/)、[PowerShell](/powershell/module/az.logicapp)、[Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md) |
-| **执行上下文** | 可以[在本地](functions-runtime-overview.md)或在云中运行 | 只能在云中运行|
+| **执行上下文** | 可以[在本地](./functions-kubernetes-keda.md)或在云中运行 | 只能在云中运行|
 
 <a name="function"></a>
 

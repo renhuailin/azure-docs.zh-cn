@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 09acdc0c4ea2dbe90c0b7b037b6aec501cc1dd55
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 04a325f313c57158de082c88c2ef7446cb696fdb
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106223024"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132370"
 ---
 # <a name="tutorial-use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>教程：使用 Azure Spring Cloud 的断路器仪表板
 
@@ -20,7 +20,7 @@ ms.locfileid: "106223024"
 
 Spring [Cloud Netflix Turbine](https://github.com/Netflix/Turbine) 广泛用于聚合多个 [Hystrix](https://github.com/Netflix/Hystrix) 指标流，以便可以使用 Hystrix 仪表板在单个视图中监视流。 本教程演示如何在 Azure Spring Cloud 上使用它们。
 > [!NOTE]
-> Netflix Hystrix 已广泛用于许多现有的 Spring Cloud 应用，但不再处于积极开发阶段。 如果要开发新项目，请改用 Spring Cloud 断路器实现，例如 [resilience4j](https://github.com/resilience4j/resilience4j)。 与本教程中所示的 Turbine 不同，新的 Spring Cloud 断路器框架将其指标数据管道的所有实现统一到 Micrometer 中，此设备亦受 Azure Spring Cloud 支持。 [了解详细信息](https://docs.microsoft.com/azure/spring-cloud/how-to-circuit-breaker-metrics)。
+> Netflix Hystrix 已广泛用于许多现有的 Spring Cloud 应用，但不再处于积极开发阶段。 如果要开发新项目，请改用 Spring Cloud 断路器实现，例如 [resilience4j](https://github.com/resilience4j/resilience4j)。 与本教程中所示的 Turbine 不同，新的 Spring Cloud 断路器框架将其指标数据管道的所有实现统一到 Micrometer 中，此设备亦受 Azure Spring Cloud 支持。 [了解详细信息](./how-to-circuit-breaker-metrics.md)。
 
 ## <a name="prepare-your-sample-applications"></a>准备示例应用程序
 示例从此[存储库](https://github.com/StackAbuse/spring-cloud/tree/master/spring-turbine)分叉。
@@ -41,7 +41,7 @@ mvn clean package -D skipTests -f recommendation-service/pom.xml
 mvn clean package -D skipTests -f hystrix-turbine/pom.xml
 ```
 ## <a name="provision-your-azure-spring-cloud-instance"></a>预配 Azure Spring Cloud 实例
-按照[在 Azure CLI 中预配服务实例](./spring-cloud-quickstart.md#provision-an-instance-of-azure-spring-cloud)过程执行操作。
+按照[在 Azure CLI 中预配服务实例](./quickstart.md#provision-an-instance-of-azure-spring-cloud)过程执行操作。
 
 ## <a name="deploy-your-applications-to-azure-spring-cloud"></a>将应用程序部署到 Azure Spring Cloud
 这些应用不使用配置服务器，因此无需为 Azure Spring Cloud 设置配置服务器。  按照以下步骤进行创建和部署：
@@ -81,6 +81,5 @@ az spring-cloud app deploy -n hystrix-turbine --jar-path hystrix-turbine/target/
 作为 Web 应用，Hystrix 仪表板应在 `test-endpoint` 上正常工作。 如果无法正常工作，则可能有两个原因：第一，使用 `test-endpoint` 从 `/ to /<APP-NAME>/<DEPLOYMENT-NAME>` 更改基 URL，或者，第二，Web 应用将绝对路径用于静态资源。 若要使其在 `test-endpoint` 上正常工作，可能需要手动编辑前端文件中的 <base>。
 
 ## <a name="next-steps"></a>后续步骤
-* [在 Azure CLI 中预配服务实例](spring-cloud-quickstart.md#provision-an-instance-of-azure-spring-cloud)
+* [在 Azure CLI 中预配服务实例](./quickstart.md#provision-an-instance-of-azure-spring-cloud)
 * [准备要部署到 Azure Spring Cloud 中的 Java Spring 应用程序](how-to-prepare-app-deployment.md)
-

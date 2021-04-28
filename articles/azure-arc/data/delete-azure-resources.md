@@ -9,22 +9,23 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 60c5ddcc67db6e4a0649458cfbd5c2949aa9a32a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ce46b7afe7344fabde03805dc2a0977411be5811
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202036"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107716072"
 ---
 # <a name="delete-resources-from-azure"></a>从 Azure 中删除资源
 
-> [!NOTE]
->  本文中用于删除资源的选项不可逆！
+本文介绍如何从 Azure 中删除资源。
 
-> [!NOTE]
->  由于目前为已启用 Azure Arc 的数据服务提供的唯一连接模式是“间接连接”模式，因此从 Kubernetes 中删除实例不会将其从 Azure 中删除，从 Azure 中删除实例也不会将其从 Kubernetes 中删除。  目前，删除资源是一个两步过程，这一点将来会进行改进。  今后，Kubernetes 将是事实来源，Azure 会进行更新以反映这种情况。
+> [!WARNING]
+> 如本文所述删除资源时，操作不可逆。
 
-在某些情况下，可能需要在 Azure 资源管理器 (ARM) 中手动删除已启用 Azure Arc 的数据服务资源。  可以使用以下任一选项删除这些资源。
+在间接连接模式中，从 Kubernetes 中删除实例不会将其从 Azure 中删除，从 Azure 中删除实例也不会将其从 Kubernetes 中删除。 对于间接连接模式，删除资源分两步操作，这一点将在未来得到改进。 Kubernetes 将是事实来源，且门户将更新以反映出这一点。
+
+在某些情况下，可能需要在 Azure 中手动删除已启用 Azure Arc 的数据服务资源。  可以使用以下任一选项删除这些资源。
 
 - [从 Azure 中删除资源](#delete-resources-from-azure)
   - [删除整个资源组](#delete-an-entire-resource-group)
@@ -38,11 +39,12 @@ ms.locfileid: "102202036"
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="delete-an-entire-resource-group"></a>删除整个资源组
+
 如果已经为已启用 Azure Arc 的数据服务使用特定的专用资源组，并且想要删除该资源组中的“所有内容”，则可以删除该资源组，这将删除该资源组中的所有内容。  
 
 可以通过执行以下操作，在 Azure 门户中删除资源组：
 
-- 在 Azure 门户中，浏览到已在其中创建已启用 Azure Arc 的数据服务资源的“资源组”。
+- 在 Azure 门户中，转到已在其中创建已启用 Azure Arc 的数据服务资源的资源组。
 - 单击“删除资源组”按钮。
 - 输入资源组名称确认删除并单击“删除”。
 
@@ -50,7 +52,7 @@ ms.locfileid: "102202036"
 
 在 Azure 门户中，可通过执行以下操作删除资源组中特定的已启用 Azure Arc 的数据服务资源：
 
-- 在 Azure 门户中，浏览到已在其中创建已启用 Azure Arc 的数据服务资源的“资源组”。
+- 在 Azure 门户中，转到已在其中创建已启用 Azure Arc 的数据服务资源的资源组。
 - 选择要删除的所有资源。
 - 单击“删除”按钮。
 - 键入“是”确认删除并单击“删除”。

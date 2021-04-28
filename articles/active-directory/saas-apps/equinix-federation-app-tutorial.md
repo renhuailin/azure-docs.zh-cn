@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: c1172cd818a3b40e908bbf5a133ea76d6b0d17b9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6b74f4616f988d27bca7c7087d33bdb5f5a2a324
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642873"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130658"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-equinix-federation-app"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Equinix Federation App 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "105642873"
 * 可让用户使用其 Azure AD 帐户自动登录到 Equinix Federation App。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -136,6 +136,4 @@ ms.locfileid: "105642873"
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Equinix Federation App 后，即可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+配置 Equinix Federation App 后，即可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

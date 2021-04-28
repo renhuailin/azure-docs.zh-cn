@@ -8,12 +8,12 @@ author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
 ms.date: 3/17/2021
-ms.openlocfilehash: 28fdd8b10c7106380c296c8131ade909ee88d0f8
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 3fc50ef5a50c2c499b1c886bcf5aa73b11ba7c45
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107085"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133342"
 ---
 # <a name="co-sell-requirements"></a>联合销售要求
 
@@ -50,12 +50,12 @@ ms.locfileid: "107107085"
 
 ### <a name="complete-the-co-sell-with-microsoft-tab"></a>完成“与 Microsoft 联合销售”选项卡中的操作
 
-发布或更新产品/服务时，请根据[配置商业市场产品/服务的联合销售](commercial-marketplace-co-sell.md)中的详述，在“与 Microsoft 联合销售”选项卡上提供所有必需的信息。 这包括提供以下文档：
+发布或更新产品/服务时，请根据[配置商业市场产品/服务的联合销售](./co-sell-configure.md)中的详述，在“与 Microsoft 联合销售”选项卡上提供所有必需的信息。 这包括提供以下文档：
 
 - 解决方案/产品/服务单页材料
 - 解决方案/产品/服务融资演示文稿
 
-我们会提供模板来帮助你创建这些文档。 有关“与 Microsoft 联合销售”选项卡中的必需信息和可选信息的详细信息，请参阅[配置商业市场产品/服务的联合销售](commercial-marketplace-co-sell.md)。
+我们会提供模板来帮助你创建这些文档。 有关“与 Microsoft 联合销售”选项卡中的必需信息和可选信息的详细信息，请参阅[配置商业市场产品/服务的联合销售](./co-sell-configure.md)。
 
 ### <a name="publish-your-offer-live"></a>发布产品/服务
 
@@ -81,7 +81,7 @@ ms.locfileid: "107107085"
 - 技术验证必须确认超过 50% 的产品/服务基础结构运用 Azure 上的可重用知识产权法令。 请注意，商业市场中可交易的 Azure VM 和 Azure 应用程序解决方案默认都满足此要求。
 
 要求 3 – 提供参考体系结构图示：
-- 在合作伙伴中心连同联合销售文档一起上传参考体系结构图示以供审查。 有关创建此图示的指导，请参阅[参考体系结构图示](reference-architecture-diagram.md)。 有关上传图示的信息，请参阅[配置商业市场产品/服务的联合销售](commercial-marketplace-co-sell.md)。
+- 在合作伙伴中心连同联合销售文档一起上传参考体系结构图示以供审查。 有关创建此图示的指导，请参阅[参考体系结构图示](reference-architecture-diagram.md)。 有关上传图示的信息，请参阅[配置商业市场产品/服务的联合销售](./co-sell-configure.md)。
 
 ## <a name="requirements-for-business-applications-co-sell-incentivized-status"></a>Business Applications“享受联合销售激励措施”状态的要求
 
@@ -89,4 +89,4 @@ ms.locfileid: "107107085"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [配置商业市场产品/服务的联合销售](commercial-marketplace-co-sell.md)
+- [配置商业市场产品/服务的联合销售](./co-sell-configure.md)

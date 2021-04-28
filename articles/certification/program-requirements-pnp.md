@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: IoT Plug and Play Certification Requirements
 ms.service: certification
-ms.openlocfilehash: b26fab6f8b92e3cb996f545f1f6201d32b1eaced
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 06c09527556c92cc3a1bd4bb2784084aeb373d97
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310506"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131740"
 ---
 # <a name="iot-plug-and-play-certification-requirements"></a>IoT 即插即用认证要求
 
@@ -62,7 +62,7 @@ IoT 即插即用认证的承诺包括以下内容：
 | **OS**                  | 不可知                                                     |
 | **验证类型**     | 自动                                                    |
 | **验证**          | [门户工作流](https://certify.azure.com)验证：**1.** 模型 ID 公告，并确保使用 MQTT 或基于 WebSocket 的 MQTT 协议连接设备 **2.** 模型符合 DTDL v2 **3.** 遥测、属性和命令已在设备上正确实现，并在 IoT 中心的数字孪生和设备孪生之间进行交互 |
-| **资源**           | [公共预览版刷新更新](../iot-pnp/overview-iot-plug-and-play-preview-updates.md) |
+| **资源**           | [公共预览版刷新更新](../iot-pnp/overview-iot-plug-and-play.md) |
 
 **[必需]设备模型在公共模型存储库中发布**
 
@@ -73,7 +73,7 @@ IoT 即插即用认证的承诺包括以下内容：
 | **OS**                  | 不可知                                                     |
 | **验证类型**     | 自动                                                    |
 | **验证**          | 所有设备模型都必须在公共存储库中发布。 通过公共存储库中提供的模型来解析设备模型 **1.** 用户必须先手动将模型发布到公共存储库，然后才能提交认证。 **2.** 请注意，模型一旦发布，将不可改变。 强烈建议仅在完成了模型和嵌入式设备代码后再发布。*1  *1 将模型发布到模型存储库后，如果要撤销模型，用户必须联系 Microsoft 支持部门 **3.** 当设备连接到认证服务时，[门户工作流](https://certify.azure.com)将检查公共存储库中是否存在模型 |
-| **资源**           | [模型存储库](../iot-pnp/overview-iot-plug-and-play-preview-updates.md) |
+| **资源**           | [模型存储库](../iot-pnp/overview-iot-plug-and-play.md) |
 
 **[必需]使用 GSG 进行物理设备验证**
 
@@ -85,7 +85,7 @@ IoT 即插即用认证的承诺包括以下内容：
 | **验证类型**                       | 手动                                                       |
 | **验证**                            | 要安排在物理设备上执行其他验证，合作伙伴必须与 Microsoft 联系人 ([iotcert@microsoft.com](mailto:iotcert@microsoft.com)) 联系。 由于新冠肺炎疫情的影响，我们正在探索多种方法来执行物理设备验证，而无需将设备寄送给 Microsoft。 |
 | **资源**                             | 稍后将提供详细信息                                 |
-| **Azure 建议**       | 空值    |
+| **Azure 建议**       | 不适用    |
 
 **[如果已实现]设备信息接口：测试的目的是验证设备代码中是否已正确实现设备信息接口**
 
@@ -96,8 +96,8 @@ IoT 即插即用认证的承诺包括以下内容：
 | **OS**                  | 不可知                                                     |
 | **验证类型**     | 自动                                                    |
 | **验证**          | [门户工作流](https://certify.azure.com)验证设备代码是否实现设备信息接口 **1.** 检查值是否由设备代码发送到 IoT 中心 **2.** 检查接口是否已在 DCM 中实现（此实现将在 DTDL v2 中更改）**3.** 检查属性是否为不可写（只读）**4.** 检查架构类型是否为字符串和/或 long 且不为 null |
-| **资源**           | [Microsoft 定义的接口](../iot-pnp/overview-iot-plug-and-play-preview-updates.md) |
-| **Azure 建议**  | 空值                                                          |
+| **资源**           | [Microsoft 定义的接口](../iot-pnp/overview-iot-plug-and-play.md) |
+| **Azure 建议**  | 不适用                                                          |
 
 **[如果已实现]云到设备：测试的目的是确保可以将消息从云发送到设备**
 
