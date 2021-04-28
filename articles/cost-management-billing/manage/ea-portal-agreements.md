@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: c2c3636e98d67616826b03cca9657b806c5bd653
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: d03ae5062cc81b3e042ed3b714838e14929dbba2
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598005"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778213"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA 协议和修正合同
 
@@ -145,7 +145,7 @@ Microsoft 将至少以你购买的月预付款所含的关联使用量级别提�
 
 ## <a name="requesting-a-quota-increase"></a>请求增加配额
 
-可随时提交[在线请求](https://g.microsoftonline.com/0WAEP00en/6)请求增加配额。 要处理请求，请提供以下信息：
+可随时提交[在线请求](https://ms.portal.azure.com/)请求增加配额。 要处理请求，请提供以下信息：
 
 - 与订阅的帐户所有者关联的 Microsoft 帐户或者工作或学校帐户。 这是用于登录到 Microsoft Azure 门户以管理订阅的电子邮件地址。 另外，请注意此帐户与 EA 合约相关联。
 - 需要增加配额的资源和量。
@@ -174,7 +174,7 @@ Operations Management Suite (OMS) 订阅正是一个例子。 OMS 提供一种�
 1. 在 Azure EA 门户中，选择“管理”选项卡，然后导航到顶部菜单中的“订阅” 。
 1. 确认你是否以该帐户所有者的身份登录。
 1. 单击“+添加订阅”。
-1. 单击“购买”。
+1. 单击“购买”  。
 
 首次向帐户添加订阅时，你需要提供联系人信息。 以后添加订阅时，系统会自动为你填充联系人信息。
 

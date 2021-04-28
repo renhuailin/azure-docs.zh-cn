@@ -5,15 +5,15 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
-ms.custom: subject-armqs, devx-track-azurecli
+ms.custom: subject-armqs
 ms.author: cavoeg
 ms.date: 10/06/2020
-ms.openlocfilehash: 8d7f71477e50e4771bbc7670312943eadf1a8657
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: ee224f0a437aa5b34f29b1b5baf64e44d61fffb4
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103017625"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108072992"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-api-for-fhir"></a>快速入门：使用 ARM 模板部署 Azure API for FHIR
 
@@ -27,7 +27,7 @@ ms.locfileid: "103017625"
 
 ## <a name="prerequisites"></a>先决条件
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/)。
 
@@ -194,7 +194,7 @@ read -p "Press [ENTER] to continue: "
 
 如果不再需要该资源组，可以将其删除，这将删除资源组中的资源。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“资源组”。
 

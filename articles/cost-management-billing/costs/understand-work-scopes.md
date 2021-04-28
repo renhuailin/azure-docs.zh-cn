@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 729444b1d1ccf55f34e54a4b59508131458c472b
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 693045d094ddbf5ad6df81eca8cd16d9cac62fe4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054798"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308602"
 ---
 # <a name="understand-and-work-with-scopes"></a>了解并使用范围
 
@@ -42,7 +42,7 @@ Azure 支持用于资源管理的三个范围。 每个范围支持管理访问�
 
 - [**管理组**](../../governance/management-groups/overview.md) - 用于组织 Azure 订阅的分层容器，最多有八个级别。
 
-    资源类型：[Microsoft.Management/managementGroups](/rest/api/resources/managementgroups)
+    资源类型：[Microsoft.Management/managementGroups](/rest/api/managementgroups/)
 
 - **订阅** - Azure 资源的主容器。
 
