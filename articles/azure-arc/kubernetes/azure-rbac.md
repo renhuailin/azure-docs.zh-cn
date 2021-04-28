@@ -7,12 +7,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: 在启用了 Azure Arc 的 Kubernetes 群集上使用 Azure RBAC 进行授权检查
-ms.openlocfilehash: 0ee5f86ce12a39d86754d2e6e88263d8a03a012b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: f0275e1516e8487b5a00fb08c885b09b6df1684c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304199"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108145692"
 ---
 # <a name="integrate-azure-active-directory-with-azure-arc-enabled-kubernetes-clusters"></a>将 Azure Active Directory 与已启用 Azure Arc 的 Kubernetes 群集集成
 
@@ -24,7 +24,7 @@ Kubernetes [ClusterRoleBinding 和 RoleBinding](https://kubernetes.io/docs/refer
 
 ## <a name="prerequisites"></a>先决条件
 
-- [安装或升级 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)，使用 2.16.0 或更高版本
+- [安装或升级 Azure CLI](/cli/azure/install-azure-cli)，使用 2.16.0 或更高版本
 
 - 安装 1.1.0 或更高版本的 `connectedk8s` Azure CLI 扩展：
 

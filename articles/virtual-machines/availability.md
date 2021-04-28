@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 03/08/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 821c50b5cb48bddb586c3589326a7f31c7bafded
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2acd6fe8450999b4518f19a353d0eab87ddedfaf
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604526"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146412"
 ---
 # <a name="availability-options-for-azure-virtual-machines"></a>Azure 虚拟机可用性选项
 本文概述了 Azure 虚拟机 (VM) 的可用性选项。
@@ -57,6 +57,6 @@ Site Recovery 可以为以下计算机管理复制：
 - 本地 VM、 Azure Stack VM 和物理服务器。
 
 ## <a name="next-steps"></a>后续步骤
-- [在可用性区域中创建虚拟机](/azure/virtual-machines/linux/create-cli-availability-zone)
-- [在可用性集中创建虚拟机](/azure/virtual-machines/linux/tutorial-availability-sets)
+- [在可用性区域中创建虚拟机](./linux/create-cli-availability-zone.md)
+- [在可用性集中创建虚拟机](./linux/tutorial-availability-sets.md)
 - [创建虚拟机规模集](../virtual-machine-scale-sets/quick-create-portal.md)

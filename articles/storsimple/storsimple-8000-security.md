@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 72bf252488878c8b6fabb2ea2d61658a2cd87e14
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ecfeffb490c54d24a6254961cf17b13f0b6a34bc
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94966201"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076664"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple 安全性和数据保护
 
@@ -269,7 +269,7 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 **答：** 可以从 StorSimple 设备管理器服务下载新证书，然后即可将其安装到远程访问客户端的证书存储中。 有关说明，请转到：
 
-* [Import-Certificate cmdlet](/powershell/module/pkiclient/import-certificate)
+* [Import-Certificate cmdlet](/powershell/module/pki/import-certificate)
 
 **问：** 如果 StorSimple 设备管理器服务受到安全威胁，我的数据是否得到保护？
 

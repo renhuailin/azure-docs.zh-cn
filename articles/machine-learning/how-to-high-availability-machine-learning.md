@@ -5,17 +5,17 @@ description: 了解如何通过使用高可用性配置提高 Azure 机器学习
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 09/16/2020
-ms.openlocfilehash: 7a1a63893e6e2988fc5f21e84f21c74315d856b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2ff4d57db8b419bf4d18b6b19e89075ae74c512
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "93325483"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885031"
 ---
 # <a name="increase-azure-machine-learning-resiliency"></a>提高 Azure 机器学习的复原能力
 

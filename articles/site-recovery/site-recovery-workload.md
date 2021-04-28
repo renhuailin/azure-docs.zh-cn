@@ -3,12 +3,12 @@ title: 关于使用zure Site Recovery 实现本地应用程序的灾难恢复
 description: 介绍可以通过将灾难恢复与 Azure Site Recovery 服务配合使用来保护的工作负荷。
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 2b901425a0020c0ccc7b834ee36d965910028018
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a5d20e6feacfe72052142c07dc45753b9bc3138
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80062839"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599105"
 ---
 # <a name="about-disaster-recovery-for-on-premises-apps"></a>关于本地应用的灾难恢复
 
@@ -50,7 +50,7 @@ Site Recovery 与 Microsoft 应用程序集成，例如 SharePoint、Exchange、
 | Linux（操作系统和应用） |是（已由 Microsoft 测试） |是（已由 Microsoft 测试） |是（已由 Microsoft 测试） |是（已由 Microsoft 测试） |是（已由 Microsoft 测试）|
 | Dynamics AX |是 |是 |是 |是 |是|
 | Windows 文件服务器 |是 |是 |是 |是 |是|
-| Citrix XenApp 和 XenDesktop |是|不适用 |是 |不适用 |是 |
+| Citrix XenApp 和 XenDesktop |否|空值 |否 |空值 |否 |
 
 ## <a name="replicate-active-directory-and-dns"></a>复制 Active Directory 和 DNS
 
@@ -151,14 +151,7 @@ Azure Site Recovery 可以将环境中的关键组件复制到冷远程站点或
 
 ## <a name="protect-citrix-xenapp-and-xendesktop"></a>保护 Citrix XenApp 和 XenDesktop
 
-使用 Site Recovery 保护 Citrix XenApp 和 XenDesktop 部署，如下所示：
-
-- 启用对 Citrix XenApp 和 XenDesktop 部署的保护。 将不同的部署层复制到 Azure：Active Directory、DNS 服务器、SQL 数据库服务器、Citrix 传递控制器、StoreFront 服务器、XenApp Master (VDA)、Citrix XenApp 许可证服务器。
-- 使用 Site Recovery 将 Citrix XenApp 和 XenDesktop 部署迁移到 Azure，从而简化云迁移。
-- 按需创建一个与生产类似的副本来进行测试和调试，从而简化 Citrix XenApp/XenDesktop 测试。
-- 此解决方案仅适用于 Windows Server 虚拟桌面，而不适用于客户端虚拟桌面。 Azure 中尚不支持针对客户端虚拟桌面颁布许可证。 [了解](https://azure.microsoft.com/pricing/licensing-faq/) Azure 中的客户端/服务器桌面授权。
-
-[详细了解](site-recovery-citrix-xenapp-and-xendesktop.md) Citrix XenApp 和 XenDesktop 部署的灾难恢复。 另外，你也可以参考 [Citrix 白皮书](https://aka.ms/citrix-xenapp-xendesktop-with-asr)。
+从 2020 年 3 月起，Citrix 已宣布弃用并终止对公有云托管工作负载的支持。 因此，不建议使用 Site Recovery 来保护 Citrix 工作负载。
 
 ## <a name="next-steps"></a>后续步骤
 

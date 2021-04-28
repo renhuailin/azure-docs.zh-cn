@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: bb14d5227204a69f8a2ef9e0bf2da05bd7bde51c
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 033900ddd0bd19332b4a9a996c68b3b187d631c4
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169090"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833555"
 ---
 # <a name="configure-runbook-output-and-message-streams"></a>配置 runbook 输出和消息流
 
@@ -218,7 +219,7 @@ Write-Verbose -Message "This is a verbose message."
 |:--- |:--- |:--- |
 | `WarningPreference` |继续 |停止<br>继续<br>SilentlyContinue |
 | `ErrorActionPreference` |继续 |停止<br>继续<br>SilentlyContinue |
-| `VerbosePreference` |SilentlyContinue |Stop<br>继续<br>SilentlyContinue |
+| `VerbosePreference` |SilentlyContinue |停止<br>继续<br>SilentlyContinue |
 
 下表列出了在 Runbook 中有效的首选项变量值的行为。
 

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: fedebd9182c168b9b7c455d5f6726e66720e0a8b
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: be67e2fb1bafaecd538f6fc671c006ac013cc849
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479153"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135268"
 ---
 # <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-with-micrometer-preview"></a>通过 Micrometer 收集 Spring Cloud Resilience4J 断路器指标（预览版）
 
@@ -22,7 +22,7 @@ ms.locfileid: "107479153"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 根据 [Application Insights 的 Java 进程内代理指南](./spring-cloud-howto-application-insights.md#enable-java-in-process-agent-for-application-insights)启用 Java 进程内代理。 
+* 根据 [Application Insights 的 Java 进程内代理指南](./how-to-application-insights.md#enable-java-in-process-agent-for-application-insights)启用 Java 进程内代理。 
 
 * 根据 [Application Insights 指南](../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)启用 resilience4j 指标的维度收集。
 
@@ -125,6 +125,6 @@ az spring-cloud app deploy -n reactive-resilience4j \
 
 ## <a name="see-also"></a>另请参阅
 
-* [Application insights](spring-cloud-howto-application-insights.md)
-* [分布式跟踪](spring-cloud-howto-distributed-tracing.md)
-* [断路器仪表板](spring-cloud-tutorial-circuit-breaker.md)
+* [Application insights](./how-to-application-insights.md)
+* [分布式跟踪](./how-to-distributed-tracing.md)
+* [断路器仪表板](./tutorial-circuit-breaker.md)

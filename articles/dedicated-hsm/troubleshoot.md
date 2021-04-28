@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 0791f2e8d5119c2087286a24cf83b4259ee9e7af
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f453370530359bc967316957b717f40904f6e392
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105611644"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125978"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>排查 Azure 专用 HSM 服务问题
 
@@ -33,7 +33,7 @@ Azure 专用 HSM 服务有两个不同的方面。 第一个方面是指在 Azur
 
 ### <a name="getting-access-to-dedicated-hsm"></a>获取对专用 HSM 的访问权限
 
-首先问问自己，[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview) 或 [Azure 托管 HSM](https://docs.microsoft.com/azure/key-vault/managed-hsm/overview) 不能解决哪些用例。 然后，如果你认为只有专用 HSM 才能满足自己的密钥存储要求，则可向 HSMrequest@microsoft.com 发送电子邮件，请求访问权限。 请概述你的应用程序和用例、你想要 HSM 的区域以及想要的 HSM 数量。 如果你与 Microsoft 代表（例如客户主管或云解决方案架构师）打交道，则请在请求中提及他们。
+首先问问自己，[Azure Key Vault](../key-vault/general/overview.md) 或 [Azure 托管 HSM](../key-vault/managed-hsm/overview.md) 不能解决哪些用例。 然后，如果你认为只有专用 HSM 才能满足自己的密钥存储要求，则可向 HSMrequest@microsoft.com 发送电子邮件，请求访问权限。 请概述你的应用程序和用例、你想要 HSM 的区域以及想要的 HSM 数量。 如果你与 Microsoft 代表（例如客户主管或云解决方案架构师）打交道，则请在请求中提及他们。
 
 ## <a name="hsm-provisioning"></a>HSM 预配
 
@@ -152,4 +152,4 @@ Shell 管理员密码丢失会导致 HSM 密钥材料丢失。 应提交支持�
 
 ## <a name="next-steps"></a>后续步骤
 
-本文阐述了 HSM 部署生命周期中涉及的各个领域，这些领域可能存在问题、需要进行故障排除或需要仔细考虑。 但愿这篇文章能够让你消除不必要的延迟和困扰。如果你有相关的添加或更改内容，请向 Microsoft 提交支持请求，让我们知道。 
+本文阐述了 HSM 部署生命周期中涉及的各个领域，这些领域可能存在问题、需要进行故障排除或需要仔细考虑。 但愿这篇文章能够让你消除不必要的延迟和困扰。如果你有相关的添加或更改内容，请向 Microsoft 提交支持请求，让我们知道。

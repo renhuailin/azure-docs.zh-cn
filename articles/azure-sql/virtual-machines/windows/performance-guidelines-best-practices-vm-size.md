@@ -14,26 +14,26 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: 9427ae1b9bd68f63df40d24122cc13b5460fbc27
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ebceb120f71c64634d005e6ca120f91ca0b1b8c5
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105572208"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126500"
 ---
 # <a name="vm-size-performance-best-practices-for-sql-server-on-azure-vms"></a>VM 大小：Azure VM 上 SQL Server 的性能最佳做法
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 本文针对 VM 大小提供一系列最佳做法和准则，以优化 Azure 虚拟机 (VM) 上 SQL Server 的性能。
 
-通常需要在针对成本优化和针对性能优化之间进行权衡。 此性能最佳做法系列的重点是确保 Azure 虚拟机上的 SQL Server 实现最佳性能。 如果工作负荷要求较低，可能不需要每项建议的优化。 评估这些建议时应考虑性能需求、成本和工作负荷模式。
+通常需要在针对成本优化和针对性能优化之间进行权衡。 这一系列性能最佳做法侧重于实现 Azure 虚拟机上 SQL Server 的最佳性能。 如果工作负荷要求较低，可能不需要每项建议的优化。 评估这些建议时应考虑性能需求、成本和工作负荷模式。
 
 
 ## <a name="checklist"></a>清单
 
 请查看以下清单，以大致了解本文其余部分详细介绍的 VM 大小最佳做法： 
 
-- 使用具有 4 个或更多 vCPU 的 VM 大小，如 [Standard_M8-4ms](/../../virtual-machines/m-series)、[E4ds_v4](../../../virtual-machines/edv4-edsv4-series.md#edv4-series) 或 [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15)，或使用更大的大小。 
+- 使用具有 4 个或更多 vCPU 的 VM 大小，如 [Standard_M8-4ms](../../../virtual-machines/m-series.md)、[E4ds_v4](../../../virtual-machines/edv4-edsv4-series.md#edv4-series) 或 [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15)，或使用更大的大小。 
 - 使用[内存优化](../../../virtual-machines/sizes-memory.md)的虚拟机大小，以实现 SQL Server 工作负载的最佳性能。 
 - [DSv2 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md)、[Edsv4](../../../virtual-machines/edv4-edsv4-series.md) 系列、[M-](../../../virtual-machines/m-series.md) 和 [Mv2-](../../../virtual-machines/mv2-series.md) 系列提供 OLTP 工作负载所需的最佳内存与 vCore 比率。 这两个 M 系列的 VM 都提供最高的内存与 vCore 比率，可满足任务关键型工作负载的需求，也非常适合用于数据仓库工作负载。 
 - 对于任务关键型工作负载和数据仓库工作负载，考虑更高的内存与 vCore 比率。 
@@ -187,7 +187,7 @@ Lsv2 和 Ls 系列支持[高级存储](../../../virtual-machines/premium-storage
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解详细信息，请参阅本系列中的其他文章：
+若要了解更多信息，请参阅本系列中的其他文章：
 - [快速核对清单](performance-guidelines-best-practices-checklist.md)
 - [存储](performance-guidelines-best-practices-storage.md)
 - [收集基线](performance-guidelines-best-practices-collect-baseline.md)

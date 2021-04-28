@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial, devx-track-azurecli
-ms.openlocfilehash: 9a228ce6f8b18afb77b656765abbad0bb4ae877f
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: e27923ff1f29163f5d3390c2c92a11f3adfa5c87
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107589103"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126608"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>教程：使用已启用 Azure Arc 的 Kubernetes 群集通过 GitOps 实现 CI/CD
 
@@ -58,7 +58,7 @@ ms.locfileid: "107589103"
 
 ## <a name="import-application-and-gitops-repos-into-azure-repos"></a>将应用程序存储库和 GitOps 存储库导入 Azure Repos
 
-将[应用程序存储库](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd#application-repo)和 [GitOps 存储库](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd#gitops-repo)导入 Azure Repos。 对于本教程，请使用以下示例存储库：
+将[应用程序存储库](./conceptual-gitops-ci-cd.md#application-repo)和 [GitOps 存储库](./conceptual-gitops-ci-cd.md#gitops-repo)导入 Azure Repos。 对于本教程，请使用以下示例存储库：
 
 * **arc-cicd-demo-src** 应用程序存储库
    * URL： https://github.com/Azure/arc-cicd-demo-src
@@ -337,4 +337,4 @@ Lint 分析期间出现的错误包括：
 请转到我们的概念文章，详细了解使用已启用 Azure Arc 的 Kubernetes 进行的 GitOps 和配置。
 
 > [!div class="nextstepaction"]
-> [使用 GitOps 的 CI/CD 工作流 - 已启用 Azure Arc 的 Kubernetes](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd)
+> [使用 GitOps 的 CI/CD 工作流 - 已启用 Azure Arc 的 Kubernetes](./conceptual-gitops-ci-cd.md)

@@ -10,12 +10,12 @@ ms.devlang: python
 ms.custom:
 - devx-track-python
 - mode-api
-ms.openlocfilehash: a279c1ed16cac69932001146d4108cec19203e22
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: bfaf0463f1ee4904562a5d7b3dd565c9d149ff35
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536633"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124826"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>快速入门：使用 Python 通过 Azure Functions 和 SignalR 服务创建聊天室
 
@@ -29,7 +29,7 @@ ms.locfileid: "107536633"
 
 安装 [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing)（版本 2.7.1505 或更高版本），以便在本地运行 Python Azure Functions 应用。
 
-Azure Functions 需要 [Python 3.6+](https://www.python.org/downloads/)。 （请参阅[支持的 Python 版本](/azure/azure-functions/functions-reference-python#python-version)）
+Azure Functions 需要 [Python 3.6+](https://www.python.org/downloads/)。 （请参阅[支持的 Python 版本](../azure-functions/functions-reference-python.md#python-version)）
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

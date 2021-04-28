@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2021
 ms.author: Zhchia
-ms.openlocfilehash: d2ab0009f036afa38dc9e401223854a034d45e42
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 385a61b3bda6c75b6fb87a5655fadb45080b7f08
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107368449"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124088"
 ---
 # <a name="tutorial-configure-jostle-for-automatic-user-provisioning"></a>教程：为 Jostle 配置自动用户预配
 
-本教程介绍了在 Jostle 和 Azure Active Directory (Azure AD) 中配置自动用户预配需执行的步骤。 配置后，Azure AD 会使用 Azure AD 预配服务自动将用户和组预配到 [Jostle](https://www.jostle.me/) 并自动取消预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程介绍了在 Jostle 和 Azure Active Directory (Azure AD) 中配置自动用户预配需执行的步骤。 配置后，Azure AD 会使用 Azure AD 预配服务自动将用户和组预配到 [Jostle](https://www.jostle.me/) 并自动取消预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
@@ -81,7 +81,7 @@ ms.locfileid: "107368449"
 1. 接下来，你会使用 API URL 和 API 密钥在 Azure 中配置集成 。
 ## <a name="step-3-add-jostle-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库添加 Jostle
 
-从 Azure AD 应用程序库添加 Jostle，开始管理 Jostle 的预配。 如果之前为 Jostle 设置过 SSO，则可使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-gallery-app.md)。 
+从 Azure AD 应用程序库添加 Jostle，开始管理 Jostle 的预配。 如果之前为 Jostle 设置过 SSO，则可使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-application-portal.md)。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁在预配范围中 
 

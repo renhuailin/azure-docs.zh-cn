@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2021
 ms.author: jamesser
 ms.reviewer: cynthn
-ms.openlocfilehash: c4797420904b6dc03550f658c2aa950a4de99c9c
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: e8e3567d752627915596645b13246236bad321c9
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107250900"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146304"
 ---
 # <a name="add-custom-domain-to-azure-vm-or-resource"></a>将自定义域添加到 Azure VM 或资源
 
@@ -23,7 +23,7 @@ ms.locfileid: "107250900"
 ## <a name="prerequisites"></a>先决条件 
 - 需要一个运行 Web 服务器的 VM。 可以使用[快速入门](./linux/quick-create-cli.md)创建 VM 并添加 NGINX。
 
-- VM 必须可由 Web 访问（打开端口 80 或 443）。 对于更安全的部署，首先将 VM 放在负载均衡器或应用程序网关后面。 有关详细信息，请参阅 [快速入门：负载均衡器](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal?tabs=option-1-create-load-balancer-standard)。
+- VM 必须可由 Web 访问（打开端口 80 或 443）。 对于更安全的部署，首先将 VM 放在负载均衡器或应用程序网关后面。 有关详细信息，请参阅 [快速入门：负载均衡器](../load-balancer/quickstart-load-balancer-standard-public-portal.md?tabs=option-1-create-load-balancer-standard)。
 
 - 具有现有域和对 DNS 设置的访问权限。 有关详细信息，请参阅[购买 Azure 应用服务的自定义域](../app-service/manage-custom-dns-buy-domain.md)。
 
@@ -73,4 +73,3 @@ ms.locfileid: "107250900"
 ## <a name="next-steps"></a>后续步骤
 [应用程序网关的 TLS 终止和端到端 TLS 概述](../application-gateway/ssl-overview.md)。
 
- 

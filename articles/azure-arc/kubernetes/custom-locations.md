@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 ms.custom: references_regions
 description: 使用自定义位置在已启用 Azure Arc 的 Kubernetes 群集上部署 Azure PaaS 服务
-ms.openlocfilehash: ddda6420acd7126cb46b043f5c1bce67758342bc
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: b3a0d89f0c352b8344aea68a613653eae43a41e4
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450745"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147762"
 ---
 # <a name="custom-locations-on-azure-arc-enabled-kubernetes"></a>已启用 Azure Arc 的 Kubernetes 上的自定义位置
 
@@ -27,7 +27,7 @@ ms.locfileid: "106450745"
 
 ## <a name="prerequisites"></a>必备条件
 
-- [安装或升级 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)，使用 2.16.0 或更高版本。
+- [安装或升级 Azure CLI](/cli/azure/install-azure-cli)，使用 2.16.0 或更高版本。
 
 - `connectedk8s`（版本 >= 1.1.0）、`k8s-extension`（版本 >= 0.2.0）和 `customlocation`（版本 >= 0.1.0）Azure CLI 扩展。 运行以下命令安装这些 Azure CLI 扩展：
   

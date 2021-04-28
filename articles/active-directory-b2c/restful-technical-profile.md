@@ -11,18 +11,18 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eb6d82019cccd1da327461cb0a0635aea4f3647f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cff76672c7c687d1755996ba0dbf81daf947b8c2
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102174965"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070616"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 RESTful 技术配置文件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务提供支持。 Azure AD B2C 在输入声明集合中将数据发送到 RESTful 服务，在输出声明集合中接收返回的数据。 有关详细信息，请参阅[在 Azure AD B2C 自定义策略中集成 REST API 声明交换](custom-policy-rest-api-intro.md)。  
+Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务提供支持。 Azure AD B2C 在输入声明集合中将数据发送到 RESTful 服务，在输出声明集合中接收返回的数据。 有关详细信息，请参阅[在 Azure AD B2C 自定义策略中集成 REST API 声明交换](api-connectors-overview.md)。  
 
 ## <a name="protocol"></a>协议
 
@@ -112,7 +112,7 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 
 ## <a name="metadata"></a>Metadata
 
-| 属性 | 必需 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ServiceUrl | 是 | REST API 终结点的 URL。 |
 | AuthenticationType | 是 | RESTful 声明提供程序所执行的身份验证类型。 可能的值：`None`、`Basic`、`Bearer`、`ClientCertificate` 或 `ApiKeyHeader`。 <br /><ul><li>`None` 值指示 REST API 是匿名的。 </li><li>`Basic` 值表示使用 HTTP 基本身份验证保护 REST API。 只有经验证的用户（包括 Azure AD B2C）可以访问你的 API。 </li><li>`ClientCertificate`（建议）值表示 REST API 使用客户端证书身份验证来限制访问。 只有包含相应证书的服务（例如 Azure AD B2C）才能访问你的 API。 </li><li>`Bearer` 值表示 REST API 使用客户端 OAuth2 持有者令牌来限制访问。 </li><li>`ApiKeyHeader` 值指示 REST API 已通过 API 密钥 HTTP 标头（例如 x-functions-key）进行保护。 </li></ul> |
@@ -129,7 +129,7 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 
 以下元数据可用于配置 REST API 失败时显示的错误消息。 可以将错误消息[本地化](localization-string-ids.md#restful-service-error-messages)。
 
-| 属性 | 必需 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | DefaultUserMessageIfRequestFailed | 否 | 所有 REST API 异常的默认自定义错误消息。|
 | UserMessageIfCircuitOpen | 否 | 无法访问 REST API 时的错误消息。 如果未指定，则将返回 DefaultUserMessageIfRequestFailed。 |
@@ -154,7 +154,7 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 
 如果身份验证类型设置为 `Basic`，则 **CryptographicKeys** 元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | BasicAuthenticationUsername | 是 | 用于身份验证的用户名。 |
 | BasicAuthenticationPassword | 是 | 用于身份验证的密码。 |
@@ -179,7 +179,7 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 
 如果身份验证类型设置为 `ClientCertificate`，则 **CryptographicKeys** 元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ClientCertificate | 是 | 用于身份验证的 X509 证书（RSA 密钥集）。 |
 
@@ -200,7 +200,7 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 
 如果身份验证类型设置为 `Bearer`，则 **CryptographicKeys** 元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | BearerAuthenticationToken | 否 | OAuth 2.0 持有者令牌。 |
 
@@ -221,7 +221,7 @@ Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务�
 
 如果身份验证类型设置为 `ApiKeyHeader`，则 **CryptographicKeys** 元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | HTTP 标头的名称，如 `x-functions-key` 或 `x-api-key`。 | 是 | 用于身份验证的密钥。 |
 
@@ -259,7 +259,7 @@ REST API 可能需要返回错误消息，例如“在 CRM 系统中未找到该
 }
 ```
 
-| 属性 | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | 版本 | 是 | REST API 版本。 例如：1.0.1 |
 | 状态 | 是 | 必须为 409 |
@@ -289,7 +289,7 @@ public class ResponseContent
 
 有关使用 RESTful 技术配置文件的示例，请参阅以下文章：
 
-- [在 Azure AD B2C 自定义策略中集成 REST API 声明交换](custom-policy-rest-api-intro.md)
+- [在 Azure AD B2C 自定义策略中集成 REST API 声明交换](api-connectors-overview.md)
 - [演练：在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换](custom-policy-rest-api-claims-validation.md)
 - [演练：在 Azure Active Directory B2C 中将 REST API 声明交换添加到自定义策略](custom-policy-rest-api-claims-validation.md)
 - [保护 REST API 服务](secure-rest-api.md)

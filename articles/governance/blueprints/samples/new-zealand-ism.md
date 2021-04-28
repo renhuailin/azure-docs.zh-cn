@@ -3,12 +3,12 @@ title: 限制性的新西兰 ISM 蓝图示例
 description: 限制性的新西兰 ISM 蓝图示例概述。 此蓝图示例可帮助客户评估特定控制要求。
 ms.date: 03/22/2021
 ms.topic: sample
-ms.openlocfilehash: a52470ea45e6358007dc49122599e87091fbf8f7
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: c406ec453cf980c1e065c70e69151b692a878596
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802976"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125762"
 ---
 # <a name="new-zealand-ism-restricted-blueprint-sample"></a>限制性的新西兰 ISM 蓝图示例
 
@@ -105,88 +105,88 @@ ms.locfileid: "104802976"
 |限制性的新西兰 ISM|策略分配|必须从 Windows VM“管理员”组中排除的用户的列表|以分号分隔的应从管理员本地组中排除的用户列表；示例：管理员；myUser1；myUser2|
 |限制性的新西兰 ISM|策略分配|Windows VM 管理员组只能包含的用户的列表|包含“管理员”本地组的所有预期成员的分号分隔列表；例如：Administrator; myUser1; myUser2|
 |限制性的新西兰 ISM|策略分配|用于 VM 代理报告的 Log Analytics 工作区 ID|VM 代理应在其中报告的 Log Analytics 工作区的 ID (GUID)|
-|限制性的新西兰 ISM|策略分配|策略效果：应为 Azure Front Door 服务启用 Web 应用程序防火墙 (WAF)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略效果：SQL Server 的“漏洞评估”设置应包含用来接收扫描报告的电子邮件地址|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略效果：应对面向 Internet 的虚拟机应用自适应网络强化建议|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：应该为你的订阅分配了多个所有者|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：应在虚拟机上启用磁盘加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：应当为函数应用禁用远程调试|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略效果：Web 应用程序防火墙 (WAF) 应对应用程序网关使用指定模式|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
+|限制性的新西兰 ISM|策略分配|策略效果：应为 Azure Front Door 服务启用 Web 应用程序防火墙 (WAF)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略效果：SQL Server 的“漏洞评估”设置应包含用来接收扫描报告的电子邮件地址|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略效果：应对面向 Internet 的虚拟机应用自适应网络强化建议|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应该为你的订阅分配了多个所有者|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应在虚拟机上启用磁盘加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应当为函数应用禁用远程调试|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略效果：Web 应用程序防火墙 (WAF) 应对应用程序网关使用指定模式|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
 |限制性的新西兰 ISM|策略分配|应用程序网关的 WAF 模式要求|必须为应用程序网关服务启用预防或检测模式|
-|限制性的新西兰 ISM|策略分配|策略的效果：应在 SQL 数据库上启用透明数据加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略效果：应在 SQL 托管实例上启用漏洞评估|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|可选：除策略库中的映像之外，还有受支持的 Windows OS 要添加到范围中的自定义 VM 映像列表：部署 - 配置依赖项代理以在 Windows 虚拟机上启用|有关来宾配置的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)|
-|限制性的新西兰 ISM|策略分配|策略的效果：应该为 SQL 服务器预配 Azure Active Directory 管理员|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略效果：应只启用与 Azure Cache for Redis 的安全连接|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：应在虚拟机规模集上安装 Endpoint Protection 解决方案|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应在 SQL 数据库上启用透明数据加密|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略效果：应在 SQL 托管实例上启用漏洞评估|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|可选：除策略库中的映像之外，还有受支持的 Windows OS 要添加到范围中的自定义 VM 映像列表：部署 - 配置依赖项代理以在 Windows 虚拟机上启用|有关来宾配置的详细信息，请访问 [https://aka.ms/gcpol](../../policy/concepts/guest-configuration.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应该为 SQL 服务器预配 Azure Active Directory 管理员|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略效果：应只启用与 Azure Cache for Redis 的安全连接|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应在虚拟机规模集上安装 Endpoint Protection 解决方案|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
 |限制性的新西兰 ISM|策略分配|包括评估策略时已连接 Arc 的服务器：审核管理员组中缺少任意指定成员的 Windows 计算机|选择“true”表示您同意每月按已连接 Arc 的计算机支付费用|
-|限制性的新西兰 ISM|策略分配|可选：除策略库中的映像之外，还有受支持的 Windows OS 要添加到范围中的自定义 VM 映像列表：[预览版]：应为列出的虚拟机映像启用日志分析代理|有关来宾配置的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)|
-|限制性的新西兰 ISM|策略分配|可选：除策略库中的映像之外，还有受支持的 Linux OS 要添加到范围中的自定义 VM 映像列表：[预览版]：应为列出的虚拟机映像启用日志分析代理|有关来宾配置的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)|
-|限制性的新西兰 ISM|策略分配|策略效果: 存储帐户应限制网络访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|可选：除策略库中的映像之外，还有受支持的 Windows OS 要添加到范围中的自定义 VM 映像列表：部署 - 配置依赖项代理以在 Windows 虚拟机规模集上启用|有关来宾配置的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)|
-|限制性的新西兰 ISM|策略分配|策略的效果：应该修复虚拟机规模集上安全配置中的漏洞|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
+|限制性的新西兰 ISM|策略分配|可选：除策略库中的映像之外，还有受支持的 Windows OS 要添加到范围中的自定义 VM 映像列表：[预览版]：应为列出的虚拟机映像启用日志分析代理|有关来宾配置的详细信息，请访问 [https://aka.ms/gcpol](../../policy/concepts/guest-configuration.md)|
+|限制性的新西兰 ISM|策略分配|可选：除策略库中的映像之外，还有受支持的 Linux OS 要添加到范围中的自定义 VM 映像列表：[预览版]：应为列出的虚拟机映像启用日志分析代理|有关来宾配置的详细信息，请访问 [https://aka.ms/gcpol](../../policy/concepts/guest-configuration.md)|
+|限制性的新西兰 ISM|策略分配|策略效果: 存储帐户应限制网络访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|可选：除策略库中的映像之外，还有受支持的 Windows OS 要添加到范围中的自定义 VM 映像列表：部署 - 配置依赖项代理以在 Windows 虚拟机规模集上启用|有关来宾配置的详细信息，请访问 [https://aka.ms/gcpol](../../policy/concepts/guest-configuration.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应该修复虚拟机规模集上安全配置中的漏洞|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
 |限制性的新西兰 ISM|策略分配|包括评估策略时已连接 Arc 的服务器：审核管理员组中有额外帐户的 Windows 计算机|选择“true”表示您同意每月按已连接 Arc 的计算机支付费用|
-|限制性的新西兰 ISM|策略分配|策略的效果：应该启用安全传输到存储帐户|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略效果：Web 应用程序防火墙 (WAF) 应对 Azure Front Door 服务使用指定模式|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应该启用安全传输到存储帐户|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略效果：Web 应用程序防火墙 (WAF) 应对 Azure Front Door 服务使用指定模式|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
 |限制性的新西兰 ISM|策略分配|Azure Front Door 服务的 WAF 模式要求|必须为 Azure Front Door 服务启用预防或检测模式|
-|限制性的新西兰 ISM|策略分配|策略效果：应在计算机中启用用于定义安全应用程序的自适应应用程序控制|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：只多只为订阅指定 3 个所有者|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略效果：[预览版]：应禁止存储帐户公共访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略效果：应在虚拟机上启用漏洞评估解决方案|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略效果：应为应用程序网关启用 Web 应用程序防火墙 (WAF)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：CORS 不应允许所有资源访问 Web 应用程序|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
+|限制性的新西兰 ISM|策略分配|策略效果：应在计算机中启用用于定义安全应用程序的自适应应用程序控制|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：只多只为订阅指定 3 个所有者|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略效果：[预览版]：应禁止存储帐户公共访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略效果：应在虚拟机上启用漏洞评估解决方案|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略效果：应为应用程序网关启用 Web 应用程序防火墙 (WAF)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：CORS 不应允许所有资源访问 Web 应用程序|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
 |限制性的新西兰 ISM|策略分配|包括评估策略时已连接 Arc 的服务器：审核未使用安全通信协议的 Windows Web 服务器|选择“true”表示您同意每月按已连接 Arc 的计算机支付费用|
 |限制性的新西兰 ISM|策略分配|Windows Web 服务器的最低 TLS 版本|使用较低 TLS 版本的 Windows Web 服务器将被评估为不符合|
-|限制性的新西兰 ISM|策略分配|可选：除策略库中的映像之外，还有受支持的 Linux OS 要添加到范围中的自定义 VM 映像列表：应在虚拟机规模集中为列出的虚拟机映像启用日志分析代理|有关来宾配置的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)|
-|限制性的新西兰 ISM|策略分配|可选：除策略库中的映像之外，还有受支持的 Windows OS 要添加到范围中的自定义 VM 映像列表：应在虚拟机规模集中为列出的虚拟机映像启用日志分析代理|有关来宾配置的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)|
-|限制性的新西兰 ISM|策略分配|策略的效果：应从订阅中删除具有写入权限的外部帐户|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
+|限制性的新西兰 ISM|策略分配|可选：除策略库中的映像之外，还有受支持的 Linux OS 要添加到范围中的自定义 VM 映像列表：应在虚拟机规模集中为列出的虚拟机映像启用日志分析代理|有关来宾配置的详细信息，请访问 [https://aka.ms/gcpol](../../policy/concepts/guest-configuration.md)|
+|限制性的新西兰 ISM|策略分配|可选：除策略库中的映像之外，还有受支持的 Windows OS 要添加到范围中的自定义 VM 映像列表：应在虚拟机规模集中为列出的虚拟机映像启用日志分析代理|有关来宾配置的详细信息，请访问 [https://aka.ms/gcpol](../../policy/concepts/guest-configuration.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应从订阅中删除具有写入权限的外部帐户|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
 |限制性的新西兰 ISM|策略分配|包括评估策略时已连接 Arc 的服务器：审核管理员组中有指定成员的 Windows 计算机|选择“true”表示您同意每月按已连接 Arc 的计算机支付费用|
-|限制性的新西兰 ISM|策略分配|策略的效果：应从订阅中删除弃用的帐户|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：应该只能通过 HTTPS 访问函数应用|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略效果：Azure 订阅应有用于活动日志的日志配置文件|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应从订阅中删除弃用的帐户|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应该只能通过 HTTPS 访问函数应用|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略效果：Azure 订阅应有用于活动日志的日志配置文件|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
 |限制性的新西兰 ISM|策略分配|应启用诊断日志的资源类型列表||
-|限制性的新西兰 ISM|策略分配|策略的效果：应在计算机上安装系统更新|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：应在 API 应用中使用最新的 TLS 版本|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：应对订阅中拥有写入权限的帐户启用 MFA|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：应在 Windows 服务器上部署 Microsoft IaaSAntimalware 扩展|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：只能通过 HTTPS 访问 Web 应用程序|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略效果：应启用 Azure DDoS 防护标准|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：应在对订阅拥有所有者权限的帐户上启用 MFA|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：应在 SQL 服务器上启用高级数据安全性|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略效果：应在 SQL 托管实例上启用高级数据安全|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：监视 Azure 安全中心 Endpoint Protection 的缺失情况|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略效果：活动日志至少应保留一年|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略效果：应通过即时网络访问控制来保护虚拟机的管理端口|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：Service Fabric 群集只应使用 Azure Active Directory 进行客户端身份验证|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：只能通过 HTTPS 访问 API 应用|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略效果：审核未启用 Windows Defender 攻击防护的 Windows 计算机|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应在计算机上安装系统更新|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应在 API 应用中使用最新的 TLS 版本|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应对订阅中拥有写入权限的帐户启用 MFA|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应在 Windows 服务器上部署 Microsoft IaaSAntimalware 扩展|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：只能通过 HTTPS 访问 Web 应用程序|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略效果：应启用 Azure DDoS 防护标准|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应在对订阅拥有所有者权限的帐户上启用 MFA|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应在 SQL 服务器上启用高级数据安全性|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略效果：应在 SQL 托管实例上启用高级数据安全|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：监视 Azure 安全中心 Endpoint Protection 的缺失情况|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略效果：活动日志至少应保留一年|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略效果：应通过即时网络访问控制来保护虚拟机的管理端口|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：Service Fabric 群集只应使用 Azure Active Directory 进行客户端身份验证|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：只能通过 HTTPS 访问 API 应用|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略效果：审核未启用 Windows Defender 攻击防护的 Windows 计算机|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
 |限制性的新西兰 ISM|策略分配|包括评估策略时已连接 Arc 的服务器：审核未启用 Windows Defender 攻击防护的 Windows 计算机|选择“true”表示您同意每月按已连接 Arc 的计算机支付费用|
 |限制性的新西兰 ISM|策略分配|Windows Defender 攻击防护不可用的 Windows 计算机的符合性状态|Windows Defender 攻击防护仅从 Windows 10/带更新 1709 的 Windows Server 开始提供。 如果将此值设置为“不符合”，则会将 Windows Defender 攻击防护不可用的早期版本（例如 Windows Server 2012 R2）的计算机显示为不符合。 如果将此值设置为“符合”，则会将这些计算机显示为符合。|
-|限制性的新西兰 ISM|策略分配|策略的效果：应在虚拟机规模集上安装系统更新|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：应当为 Web 应用程序禁用远程调试|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：应该修复计算机上安全配置中的漏洞|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：应在对订阅拥有读取权限的帐户上启用 MFA|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：应该修复容器安全配置中的漏洞|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：应当为 API 应用禁用远程调试|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略效果：审核允许在不使用密码的情况下从帐户进行远程连接的 Linux 计算机|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应在虚拟机规模集上安装系统更新|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应当为 Web 应用程序禁用远程调试|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应该修复计算机上安全配置中的漏洞|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应在对订阅拥有读取权限的帐户上启用 MFA|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应该修复容器安全配置中的漏洞|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应当为 API 应用禁用远程调试|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略效果：审核允许在不使用密码的情况下从帐户进行远程连接的 Linux 计算机|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
 |限制性的新西兰 ISM|策略分配|包括评估策略时已连接 Arc 的服务器：审核允许在没有密码的情况下从帐户进行远程连接的 Linux 计算机|选择“true”表示您同意每月按已连接 Arc 的计算机支付费用|
-|限制性的新西兰 ISM|策略分配|策略的效果：应从订阅中删除拥有所有者权限的已弃用帐户|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：应对 SQL Server 启用漏洞评估|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：应在 Web 应用中使用最新的 TLS 版本|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略效果：Windows 计算机应符合“安全设置 - 帐户策略”的要求|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应从订阅中删除拥有所有者权限的已弃用帐户|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应对 SQL Server 启用漏洞评估|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应在 Web 应用中使用最新的 TLS 版本|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略效果：Windows 计算机应符合“安全设置 - 帐户策略”的要求|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
 |限制性的新西兰 ISM|策略分配|强制执行 Windows VM 本地帐户的密码历史记录|指定密码重用限制 - 在可以重用密码之前需要为用户帐户创建新密码的次数|
 |限制性的新西兰 ISM|策略分配|包括评估策略时已连接 Arc 的服务器：Windows 计算机应符合“安全设置 - 帐户策略”的要求|选择“true”表示您同意每月按已连接 Arc 的计算机支付费用|
 |限制性的新西兰 ISM|策略分配|Windows VM 本地帐户的最长密码期限|指定必须更改用户帐户密码之前可以经过的最大天数；值的格式为两个用逗号分隔的整数，表示包含范围|
 |限制性的新西兰 ISM|策略分配|Windows VM 本地帐户的最短密码期限|指定必须至少经过多少天才可以更改用户帐户密码|
 |限制性的新西兰 ISM|策略分配|Windows VM 本地帐户的最短密码长度|指定用户帐户密码可以包含的最小字符数|
 |限制性的新西兰 ISM|策略分配|密码必须符合 Windows VM 本地帐户的复杂性要求|指明用户帐户密码是否必须是复杂的；如果是，复杂密码不得包含部分或全部用户帐户名；长度至少为 6 个字符；包含大小写、数字和非字母字符的组合|
-|限制性的新西兰 ISM|策略分配|策略效果：面向 Internet 的虚拟机应使用网络安全组进行保护|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略效果：审核具有不使用密码的帐户的 Linux 计算机|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
+|限制性的新西兰 ISM|策略分配|策略效果：面向 Internet 的虚拟机应使用网络安全组进行保护|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略效果：审核具有不使用密码的帐户的 Linux 计算机|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
 |限制性的新西兰 ISM|策略分配|包括评估策略时已连接 Arc 的服务器：审核具有不使用密码的帐户的 Linux 计算机|选择“true”表示您同意每月按已连接 Arc 的计算机支付费用|
-|限制性的新西兰 ISM|策略分配|策略的效果：应从订阅中删除拥有所有者权限的外部帐户|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：应在函数应用中使用最新的 TLS 版本|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略效果：[预览版]：所有 Internet 流量都应通过所部署的 Azure 防火墙进行路由|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
-|限制性的新西兰 ISM|策略分配|策略的效果：应该修复 SQL 数据库中的漏洞|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](https://aka.ms/policyeffects)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应从订阅中删除拥有所有者权限的外部帐户|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应在函数应用中使用最新的 TLS 版本|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略效果：[预览版]：所有 Internet 流量都应通过所部署的 Azure 防火墙进行路由|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
+|限制性的新西兰 ISM|策略分配|策略的效果：应该修复 SQL 数据库中的漏洞|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md)|
 
 ## <a name="next-steps"></a>后续步骤
 

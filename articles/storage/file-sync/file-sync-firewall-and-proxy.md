@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b2c77c20bfb6fff60f2242d1ac2dad7b3fc9f6fe
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 5c299bc88331c05c89273756ebaf377ee1378199
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107795785"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124448"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure 文件同步代理和防火墙设置
 Azure 文件同步可以将本地服务器连接到 Azure 文件，启用多站点同步和云分层功能。 因此，本地服务器必须连接到 Internet。 IT 管理员需确定服务器访问 Azure 云服务的最佳路径。
@@ -97,7 +97,7 @@ Set-StorageSyncProxyConfiguration -Address $Address -Port $Port -ProxyCredential
 2. 设置 WinHTTP 代理设置 
 
    > [!Note]  
-   > 可通过几种方法（WPAD、PAC 文件、netsh 等）将 Windows Server 配置为使用代理服务器。 以下步骤介绍如何使用 netsh 配置代理设置，但[在 Windows 中配置代理服务器设置](https://docs.microsoft.com/troubleshoot/windows-server/networking/configure-proxy-server-settings)文档中列出的任何方法都是受支持的。
+   > 可通过几种方法（WPAD、PAC 文件、netsh 等）将 Windows Server 配置为使用代理服务器。 以下步骤介绍如何使用 netsh 配置代理设置，但[在 Windows 中配置代理服务器设置](/troubleshoot/windows-server/networking/configure-proxy-server-settings)文档中列出的任何方法都是受支持的。
 
 
    - 从提升的命令提示符或 PowerShell 运行以下命令来查看现有的代理设置：   

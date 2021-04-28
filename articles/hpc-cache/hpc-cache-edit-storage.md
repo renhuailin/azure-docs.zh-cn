@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/29/2021
 ms.author: v-erkel
-ms.openlocfilehash: d61612b6e491fae550559e499cb360efc0f7c044
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: ebf68c1eb06984e2de8114c53e1bb55d52aed70a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258905"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862626"
 ---
 # <a name="edit-storage-targets"></a>编辑存储目标
 
@@ -45,7 +45,7 @@ ms.locfileid: "107258905"
 
 [设置适用于 Azure HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)。
 
-使用 [az hpc-cache storage-target remove](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-remove) 从缓存中删除存储目标。
+使用 [az hpc-cache storage-target remove](/cli/azure/hpc-cache/storage-target#az_hpc_cache_storage_target_remove) 从缓存中删除存储目标。
 
 ```azurecli
 $ az hpc-cache storage-target remove --resource-group cache-rg --cache-name doc-cache0629 --name blob1
@@ -84,7 +84,7 @@ $ az hpc-cache storage-target remove --resource-group cache-rg --cache-name doc-
 
 [设置适用于 Azure HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)。
 
-若要使用 Azure CLI 更改 Blob 存储目标的命名空间，请使用命令 [az hpc-cache blob-storage-target update](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-update)。 只能更改 `--virtual-namespace-path` 值。
+若要使用 Azure CLI 更改 Blob 存储目标的命名空间，请使用命令 [az hpc-cache blob-storage-target update](/cli/azure/hpc-cache/blob-storage-target#az_hpc_cache_blob_storage_target_update)。 只能更改 `--virtual-namespace-path` 值。
 
   ```azurecli
   az hpc-cache blob-storage-target update --cache-name cache-name --name target-name \
@@ -125,7 +125,7 @@ $ az hpc-cache storage-target remove --resource-group cache-rg --cache-name doc-
 
 [设置适用于 Azure HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)。
 
-在 [az hpc-cache nfs-storage-target update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target) 命令中使用 ``--junction`` 选项更改命名空间路径、NFS 导出或导出子目录。
+在 [az hpc-cache nfs-storage-target update](/cli/azure/hpc-cache/nfs-storage-target) 命令中使用 ``--junction`` 选项更改命名空间路径、NFS 导出或导出子目录。
 
 ``--junction`` 参数使用以下值：
 
@@ -170,7 +170,7 @@ az hpc-cache nfs-storage-target update --cache-name mycache \
 
 [设置适用于 Azure HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)。
 
-使用 [az hpc-cache nfs-storage-target update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-update) 命令。
+使用 [az hpc-cache nfs-storage-target update](/cli/azure/hpc-cache/nfs-storage-target#az_hpc_cache_nfs_storage_target_update) 命令。
 
 update 命令与用于添加 NFS 存储目标的命令几乎完全相同。 有关详细信息和示例，请参阅[创建 NFS 存储目标](hpc-cache-add-storage.md#create-an-nfs-storage-target)。
 
@@ -178,7 +178,7 @@ update 命令与用于添加 NFS 存储目标的命令几乎完全相同。 有�
 
 还需要指定缓存名称、存储目标名称和资源组值。
 
-若要验证使用情况模型的名称，请使用命令 [az hpc-cache usage-model list](/cli/azure/ext/hpc-cache/hpc-cache/usage-model#ext-hpc-cache-az-hpc-cache-usage-model-list)。
+若要验证使用情况模型的名称，请使用命令 [az hpc-cache usage-model list](/cli/azure/hpc-cache/usage-model#az_hpc_cache_usage-model-list)。
 
 如果缓存已停止或处于不正常状态，将在缓存正常后应用更新。
 

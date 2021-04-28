@@ -3,12 +3,12 @@ title: 使用 Visual Studio Code 创建 PowerShell 函数 - Azure Functions
 description: 了解如何创建 PowerShell 函数，然后使用 Visual Studio Code 中的 Azure Functions 扩展将本地项目发布到 Azure Functions 中的无服务器托管。
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: 9833b154cdba24f8760e7e8d9040bfc72bbcd271
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58a2b8a5fb386603361afa9fc26b4d323c487691
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99493579"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862536"
 ---
 # <a name="quickstart-create-a-powershell-function-in-azure-using-visual-studio-code"></a>快速入门：在 Azure 中使用 Visual Studio Code 创建 PowerShell 函数
 
@@ -30,7 +30,7 @@ ms.locfileid: "99493579"
 
 + [PowerShell 7](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-+ [.NET Core 3.1 运行时](https://www.microsoft.com/net/download)和 [.NET Core 2.1 运行时](https://dotnet.microsoft.com/download/dotnet-core/2.1)  
++ [.NET Core 3.1 运行时](https://dotnet.microsoft.com/download)和 [.NET Core 2.1 运行时](https://dotnet.microsoft.com/download/dotnet/2.1)  
 
 + 安装在某个[受支持的平台](https://code.visualstudio.com/docs/supporting/requirements#_platforms)上的 [Visual Studio Code](https://code.visualstudio.com/)。    
 

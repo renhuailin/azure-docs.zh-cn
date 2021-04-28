@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 864415f421f4fbecf31fd52a624ac568b4cf9c80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5a6833e07e6743eed4013739f9acda6b5bd1fa4
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103574759"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108145910"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-enterprise-managed-user"></a>教程：Azure Active Directory 单一登录 (SSO) 与 GitHub Enterprise Managed User 的集成
 
@@ -39,7 +39,7 @@ ms.locfileid: "103574759"
 
 * GitHub Enterprise Managed User 支持 **SP 和 IDP** 发起的 SSO。
 * GitHub Enterprise Managed User 支持 **即时** 用户预配。
-* GitHub Enterprise Managed User 支持 [**自动** 用户预配](https://docs.microsoft.com/azure/active-directory/saas-apps/github-enterprise-managed-user-provisioning-tutorial)。
+* GitHub Enterprise Managed User 支持 [**自动** 用户预配](./github-enterprise-managed-user-provisioning-tutorial.md)。
 
 ## <a name="adding-github-enterprise-managed-user-from-the-gallery"></a>从库中添加 GitHub Enterprise Managed User
 
@@ -76,7 +76,7 @@ ms.locfileid: "103574759"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://github.com/enterprise-managed/<ENTITY>`
 
@@ -128,7 +128,7 @@ ms.locfileid: "103574759"
 
 在本部分，我们将在 GitHub Enterprise Managed User 中创建名为 Britta Simon 的用户。 GitHub Enterprise Managed User 支持默认已启用的即时用户预配。 此部分不存在任何操作项。 当你尝试访问 GitHub Enterprise Managed User 时会创建一个新用户（如果 GitHub Enterprise Managed User 中尚不存在该用户）。
 
-GitHub Enterprise Managed User 还支持自动用户预配，在[此处](https://docs.microsoft.com/azure/active-directory/saas-apps/github-enterprise-managed-user-provisioning-tutorial)可以找到有关如何配置自动用户预配的更多详细信息。
+GitHub Enterprise Managed User 还支持自动用户预配，在[此处](./github-enterprise-managed-user-provisioning-tutorial.md)可以找到有关如何配置自动用户预配的更多详细信息。
 
 ## <a name="test-sso"></a>测试 SSO 
 
@@ -144,11 +144,9 @@ GitHub Enterprise Managed User 还支持自动用户预配，在[此处](https:/
 
 * 在 Azure 门户中单击“测试此应用程序”，然后你应会自动登录到为其设置了 SSO 的 GitHub Enterprise Managed User。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“GitHub Enterprise Managed User”磁贴时，如果该应用程序是在 SP 模式下配置的，则你会重定向到应用程序登录页来启动登录流；如果它是在 IDP 模式下配置的，则你应会自动登录到为其设置了 SSO 的 GitHub Enterprise Managed User。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“GitHub Enterprise Managed User”磁贴时，如果该应用程序是在 SP 模式下配置的，则你会重定向到应用程序登录页来启动登录流；如果它是在 IDP 模式下配置的，则你应会自动登录到为其设置了 SSO 的 GitHub Enterprise Managed User。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 GitHub Enterprise Managed User 后，可以强制实施会话控制，实时防止组织的敏感数据遭到外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+配置 GitHub Enterprise Managed User 后，可以强制实施会话控制，实时防止组织的敏感数据遭到外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

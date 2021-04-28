@@ -4,15 +4,16 @@ description: 了解如何通过命令行创建 Python 函数，并将本地项�
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom:
-- devx-track-python
+- devx-track-powershell
 - devx-track-azurecli
+- devx-track-azurepowershell
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: da7f6fdaedd8105363cc62bf55bae2cb5f72f234
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: e144304ae1b36ca02d4b8796e7994e87b09505d9
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102031644"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831089"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>快速入门：在 Azure 中通过命令行创建 Python 函数
 
@@ -239,7 +240,7 @@ py -m venv .venv
     az login
     ```
 
-    使用 [az login](/cli/azure/reference-index#az-login) 命令登录到 Azure 帐户。
+    使用 [az login](/cli/azure/reference-index#az_login) 命令登录到 Azure 帐户。
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
     ```azurepowershell
@@ -258,7 +259,7 @@ py -m venv .venv
     az group create --name AzureFunctionsQuickstart-rg --location westeurope
     ```
  
-    [az group create](/cli/azure/group#az-group-create) 命令可创建资源组。 通常在附近的 <abbr title="对在其中分配资源的特定 Azure 数据中心的地理引用。">region</abbr> 中创建资源组和资源（使用从 `az account list-locations` 命令返回的可用区域）。
+    [az group create](/cli/azure/group#az_group_create) 命令可创建资源组。 通常在附近的 <abbr title="对在其中分配资源的特定 Azure 数据中心的地理引用。">region</abbr> 中创建资源组和资源（使用从 `az account list-locations` 命令返回的可用区域）。
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -280,7 +281,7 @@ py -m venv .venv
     az storage account create --name <STORAGE_NAME> --location westeurope --resource-group AzureFunctionsQuickstart-rg --sku Standard_LRS
     ```
 
-    [az storage account create](/cli/azure/storage/account#az-storage-account-create) 命令可创建存储帐户。 
+    [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令可创建存储帐户。 
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -318,7 +319,7 @@ py -m venv .venv
     
     将 `<STORAGE_NAME>` 替换为上一步中使用的帐户的名称。
 
-    将 `<APP_NAME>` 替换为 <abbr title="该名称在全球各地的所有 Azure 客户中都必须是唯一的。 例如，可使用个人姓名/组织名称、应用程序名称和数字标识符的组合，例如 contoso-bizapp-func-20。">适合自己的全局唯一名称</abbr>. `<APP_NAME>` 也是函数应用的默认 DNS 域。 
+    将 `<APP_NAME>` 替换为 <abbr title="该名称在全球各地的所有 Azure 客户中都必须是唯一的。 例如，可使用个人姓名/组织名称、应用程序名称和数字标识符的组合，例如 contoso-bizapp-func-20。">适合自己的全球唯一名称</abbr>. `<APP_NAME>` 也是函数应用的默认 DNS 域。 
     
     <br/>
     <details>
@@ -400,7 +401,7 @@ func azure functionapp logstream <APP_NAME> --browser
 
 ## <a name="8-clean-up-resources"></a>8.清理资源
 
-如果继续[后续步骤](#next-steps)并添加 <abbr title="一种将函数与存储队列关联，以确保函数可在队列上创建消息的方法。 ">Azure 存储队列输出绑定</abbr>，请将所有资源保存到正确位置，以便根据已完成的工作进行操作。
+如果继续[后续步骤](#next-steps)并添加 <abbr title="一种将函数与存储队列关联，以确保函数可在队列上创建消息的方法。 ">Azure 存储队列输出绑定</abbr>，请将所有资源准备到位，以便在已完成的工作基础上进行操作。
 
 否则，请使用以下命令删除资源组及其包含的所有资源，以免产生额外的费用。
 
