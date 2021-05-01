@@ -13,15 +13,15 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.custom: user-help
 ms.openlocfilehash: cb162231c8cf2bf733c992de0c4aa56bf1fd1be2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92791080"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>在“我的应用”门户中编辑或撤销应用程序权限
 
-在“我的应用”门户中使用组织应用程序时，你通常会授予权限并保存帐户信息  。 为了确保数据安全，你可能需要查看并撤销权限或清除保存的帐户凭据。 删除权限或帐户可能会破坏某些应用的功能。 如果删除权限或帐户后遇到问题，请与组织的支持人员联系以获得更多帮助。
+在“我的应用”门户中使用组织应用程序时，你通常会授予权限并保存帐户信息。 为了确保数据安全，你可能需要查看并撤销权限或清除保存的帐户凭据。 删除权限或帐户可能会破坏某些应用的功能。 如果删除权限或帐户后遇到问题，请与组织的支持人员联系以获得更多帮助。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
@@ -30,13 +30,13 @@ ms.locfileid: "92791080"
 
 ## <a name="manage-app-accounts"></a>管理应用帐户
 
-若要查看你或你的管理员同意的应用，请 **选择 "** 我的 **应用** " 门户中的应用，然后选择 " **管理应用程序** "：
+如果要查看你或你的管理员同意的应用，请在“我的应用”门户中将鼠标悬停在应用上时选择“...”，然后选择“管理应用程序”  ：
 
 ![在“我的应用”门户中管理应用程序](media/my-applications-portal-permissions-saved-accounts/my-apps-home-woodgrove.png)
 
 “权限”窗口的顶部显示个人许可的权限。 应用权限的示例包括能够访问日历、联系人或照相机。
 
-可以通过选择“撤销权限”来撤销许可的任何权限，但是删除许可可能会破坏某些应用的功能  。 如果删除权限或帐户后遇到问题，请与组织的支持人员联系以获得更多帮助。
+可以通过选择“撤销权限”来撤销许可的任何权限，但是删除许可可能会破坏某些应用的功能。 如果删除权限或帐户后遇到问题，请与组织的支持人员联系以获得更多帮助。
 
 ![在“我的应用”门户中撤销应用程序的权限](media/my-applications-portal-permissions-saved-accounts/revoke-permissions.png)
 
@@ -44,14 +44,14 @@ ms.locfileid: "92791080"
 
 ## <a name="next-steps"></a>后续步骤
 
-在“我的应用”门户中管理应用权限并保存帐户后，你可以  ：
+在“我的应用”门户中管理应用权限并保存帐户后，你可以：
 
 - 将应用整理到组织创建和提供的各种类别中。 有关详细信息，请参阅[在“我的应用”门户中访问和使用集合](my-applications-portal-workspaces.md)。
 
 ## <a name="related-articles"></a>相关文章
 
-- [更新个人资料和帐户信息](my-account-portal-overview.md)。 说明如何更新“我的个人资料”门户上显示的个人信息  。
+- [更新个人资料和帐户信息](my-account-portal-overview.md)。 说明如何更新“我的个人资料”门户上显示的个人信息。
 
-- [管理组织](my-account-portal-organizations-page.md)。 说明如何在“我的个人资料”门户的“组织”页中查看和管理与组相关的信息   。
+- [管理组织](my-account-portal-organizations-page.md)。 说明如何在“我的个人资料”门户的“组织”页中查看和管理与组相关的信息。
 
-- [管理已连接的设备](my-account-portal-devices-page.md)。 说明如何在“我的个人资料”门户的“设备”页中使用工作或学校帐户管理已连接到的设备   。
+- [管理已连接的设备](my-account-portal-devices-page.md)。 说明如何在“我的个人资料”门户的“设备”页中使用工作或学校帐户管理已连接到的设备。

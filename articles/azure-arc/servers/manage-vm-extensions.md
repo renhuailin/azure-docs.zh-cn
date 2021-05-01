@@ -3,12 +3,12 @@ title: 通过已启用 Azure Arc 的服务器管理虚拟机扩展
 description: 已启用 Azure Arc 的服务器可以管理虚拟机扩展的部署，这些扩展向非 Azure VM 提供部署后配置和自动化任务。
 ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 67f1b5b3db6ef446342e8381d54d487af1f3426a
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: e28cd7753fc85f2e40385c65392fea73502aa05b
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389785"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832835"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>通过已启用 Azure Arc 的服务器进行虚拟机扩展管理
 
@@ -30,7 +30,7 @@ ms.locfileid: "107389785"
 
 - 通过启用 Log Analytics 代理 VM 扩展，使用 [Azure Monitor Logs](../../azure-monitor/logs/data-platform-logs.md) 来收集日志数据进行分析。 当在不同类型的源的数据中进行复杂分析时，这非常有用。
 
-- 使用[用于 VM 的 Azure Monitor](../../azure-monitor/vm/vminsights-overview.md) 分析 Windows 和 Linux VM 的性能和运行状况，并监视它们的进程及其对其他资源和外部进程的依赖性。 这是通过同时启用 Log Analytics 代理和 Dependency 代理 VM 扩展来实现的。
+- [VM 见解](../../azure-monitor/vm/vminsights-overview.md)分析 Windows 和 Linux VM 的性能状况，并监视这些 VM 在其他资源和外部进程中的进程和依赖关系。 这是通过同时启用 Log Analytics 代理和 Dependency 代理 VM 扩展来实现的。
 
 - 使用自定义脚本扩展在连接的混合计算机上下载和执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置或管理任务。
 
@@ -71,7 +71,7 @@ VM 扩展功能仅在[受支持区域](overview.md#supported-regions)列表所�
 |Azure Key Vault 证书同步 | Microsoft.Azure.Key.Vault |KeyVaultForLinux | [适用于 Linux 的 Key Vault 虚拟机扩展](../../virtual-machines/extensions/key-vault-linux.md) |
 |Azure Monitor 代理 |Microsoft.Azure.Monitor |AzureMonitorLinuxAgent |[安装 Azure Monitor 代理（预览版）](../../azure-monitor/agents/azure-monitor-agent-install.md) |
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 此功能依赖于订阅中的以下 Azure 资源提供程序：
 

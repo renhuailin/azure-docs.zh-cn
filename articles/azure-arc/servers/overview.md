@@ -2,14 +2,14 @@
 title: 已启用 Azure Arc 的服务器概述
 description: 了解如何使用已启用 Azure Arc 的服务器像管理 Azure 资源一样，管理托管在 Azure 外部的服务器。
 keywords: azure automation, DSC, powershell, desired state configuration, update management, change tracking, inventory, runbooks, python, graphical, hybrid
-ms.date: 02/18/2021
+ms.date: 04/21/2021
 ms.topic: overview
-ms.openlocfilehash: 863cab073018c5a592cba6e94451a9af038ebd52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 324f6cc29bd9e4eca1a20413032c213c2618a11e
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023327"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831989"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>什么是已启用 Azure Arc 的服务器？
 
@@ -25,9 +25,9 @@ ms.locfileid: "105023327"
 
 - 使用 Azure 自动化的[更改跟踪和清单](../../automation/change-tracking/overview.md)功能和 [Azure 安全中心文件集成监视](../../security-center/security-center-file-integrity-monitoring.md)功能，报告有关在受监视的服务器上安装的软件、Microsoft 服务、Windows 注册表和文件以及 Linux 守护程序的配置更改（适用于启用了[适用于服务器的 Azure Defender](../../security-center/defender-for-servers-introduction.md) 的服务器）。
 
-- 监视已连接的计算机来宾操作系统性能，并发现应用程序组件，以使用[用于 VM 的 Azure Monitor](../../azure-monitor/vm/vminsights-overview.md) 来监视其进程以及与应用程序通信的其他资源的依赖项。
+- 监视已连接的计算机来宾操作系统性能，并发现应用程序组件，以使用 [VM 见解](../../azure-monitor/vm/vminsights-overview.md)来监视其进程以及与应用程序通信的其他资源的依赖项。
 
-- 使用其他 Azure 服务（如使用受支持的 [Azure VM 扩展](manage-vm-extensions.md)的 Azure 自动化[状态配置](../../automation/automation-dsc-overview.md)和 Azure Monitor Log Analytics 工作区）为非 Azure Windows 或 Linux 计算机简化部署。 这包括使用自定义脚本扩展执行部署后配置或软件安装。
+- 使用其他 Azure 服务（如使用受支持的 [Azure VM 扩展](manage-vm-extensions.md)的 Azure 自动化 [State Configuration](../../automation/automation-dsc-overview.md) 和 Azure Monitor Log Analytics 工作区）为非 Azure Windows 或 Linux 计算机简化部署。 这包括使用自定义脚本扩展执行部署后配置或软件安装。
 
 - 使用 Azure 自动化中的[更新管理](../../automation/update-management/overview.md)为 Windows 和 Linux 服务器管理操作系统更新
 

@@ -2,13 +2,13 @@
 title: 教程 - 使用 Azure 门户新建策略分配
 description: 本教程介绍如何使用 Azure 门户创建 Azure Policy 分配以识别不合规的资源。
 ms.topic: tutorial
-ms.date: 10/07/2020
-ms.openlocfilehash: 9a07e490525ce532f8f843b30b3b83715e65ce3c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/21/2021
+ms.openlocfilehash: 20cb8125a157a3ce97c88278c99f90936b449b65
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91826594"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831647"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>教程：创建策略分配以识别不合规资源
 
@@ -95,9 +95,9 @@ ms.locfileid: "91826594"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你向某个范围分配了策略定义并评估了其合规性报告。 策略定义可验证范围内的所有资源都符合策略，并可标识不符合策略的资源。 现在，你已准备好通过用于 VM 的 Azure Monitor 监视启用了 Azure Arc 的服务器计算机。
+在本教程中，你向某个范围分配了策略定义并评估了其合规性报告。 策略定义可验证范围内的所有资源都符合策略，并可标识不符合策略的资源。 现在，你已准备好通过启用 [VM 见解](../../../azure-monitor/vm/vminsights-overview.md)监视启用了 Azure Arc 的服务器计算机。
 
 若要了解如何监视和查看计算机的性能、正在运行的进程及其依赖项，请继续学习教程：
 
 > [!div class="nextstepaction"]
-> [启用用于 VM 的 Azure Monitor](tutorial-enable-vm-insights.md)
+> [启用 VM 见解](tutorial-enable-vm-insights.md)
