@@ -134,7 +134,7 @@
     - name: 服务级别协议 (SLA)
       href: 'https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/'
     - name: Azure Government
-      href: 'https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure'
+      href: ../azure-government/compare-azure-government-global-azure.md
     - name: 视频
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'
     - name: Azure 博客

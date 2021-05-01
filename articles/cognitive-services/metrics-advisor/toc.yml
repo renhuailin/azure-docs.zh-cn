@@ -16,7 +16,7 @@
     - name: REST API 和客户端库
       href: quickstarts/rest-api-and-client-library.md
 - name: 示例
-  href: 'https://docs.microsoft.com/en-us/samples/browse/?products=azure&terms=metrics-advisor'
+  href: /samples/browse/?products=azure&terms=metrics-advisor
 - name: 操作指南
   items:
     - name: 载入数据
