@@ -38,7 +38,7 @@
     - name: 使用人脸容器
       items:
         - name: 容器概述
-          href: /azure/cognitive-services/cognitive-services-container-support?context=/azure/cognitive-services/face/context/context
+          href: ../cognitive-services-container-support.md?context=%2fazure%2fcognitive-services%2fface%2fcontext%2fcontext
         - name: 安装和运行容器
           href: face-how-to-install-containers.md
         - name: 配置容器
@@ -93,7 +93,7 @@
         - name: 符合性和认证
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Learn 模块
-      href: 'https://docs.microsoft.com/learn/modules/detect-analyze-faces/'
+      href: /learn/modules/detect-analyze-faces/
     - name: 支持和帮助选项
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/face/context/context
     - name: Azure 更新

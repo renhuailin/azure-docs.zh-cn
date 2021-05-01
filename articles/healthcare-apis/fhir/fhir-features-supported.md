@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 4/15/2021
 ms.author: cavoeg
-ms.openlocfilehash: 56e3ba46ffb43aec907d729a2e74cdf6f7a62c32
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: e012bc2bc3c9ec1ab9351ed937e2c5049eef20d5
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530640"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316004"
 ---
 # <a name="features"></a>功能
 
@@ -40,7 +40,7 @@ ms.locfileid: "107530640"
 | history                        | 是       | 是       | 是       |                                                     |
 | create                         | 是       | 是       | 是       | 同时支持 POST/PUT                               |
 | 创建 (条件)            | 是       | 是       | 是       | 问题 [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
-| search                         | 部分   | 部分   | 部分   | 请参阅下面的搜索部分。                           |
+| search                         | 部分   | 部分   | 部分   | 请参阅 [FHIR 搜索概述](overview-of-search.md)。                           |
 | 链式搜索                 | 部分       | 是       | 部分   | 请参阅下面的注释2。                                   |
 | 反向链接搜索         | 部分       | 是       | 部分   | 请参阅下面的注释2。                                   |
 | capabilities                   | 是       | 是       | 是       |                                                     |
@@ -57,66 +57,6 @@ ms.locfileid: "107530640"
 * 在 CosmosDB 中添加对链式和反向链接 FHIR 搜索的 MVP 支持。 
 
   在用于 FHIR 的 Azure API 和 Cosmos 支持的开源 FHIR 服务器中，链式搜索和反向链接搜索是 MVP 实现。 若要在 Cosmos DB 上完成链式搜索，实现会遍历搜索表达式，并发出子查询来解析匹配的资源。 这适用于表达式的每个级别。 如果任何查询返回的结果超过100，则将引发错误。 默认情况下，链式搜索位于功能标志之后。 若要在 Cosmos DB 上使用链式搜索，请使用标头 `x-ms-enable-chained-search: true` 。 有关更多详细信息，请参阅 [PR 1695](https://github.com/microsoft/fhir-server/pull/1695)。
-
-## <a name="search"></a>搜索
-
-支持所有搜索参数类型。 
-
-| 搜索参数类型 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 评论 |
-|-----------------------|-----------|-----------|-----------|---------|
-| Number                | 是       | 是       | 是       |         |
-| Date/DateTime         | 是       | 是       | 是       |         |
-| 字符串                | 是       | 是       | 是       |         |
-| 令牌                 | 是       | 是       | 是       |         |
-| 参考             | 是       | 是       | 是       |         |
-| 合成             | 是       | 是       | 是       |         |
-| 数量              | 是       | 是       | 是       |         |
-| URI                   | 是       | 是       | 是       |         |
-| 特殊               | 否        | 否        | 否        |         |
-
-
-| 修饰符             | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 注释 |
-|-----------------------|-----------|-----------|-----------|---------|
-|`:missing`             | 是       | 是       | 是       |         |
-|`:exact`               | 是       | 是       | 是       |         |
-|`:contains`            | 是       | 是       | 是       |         |
-|`:text`                | 是       | 是       | 是       |         |
-|`:[type]` (引用)   | 是       | 是       | 是       |         |
-|`:not`                 | 是       | 是       | 是       |         |
-|`:below` (uri)          | 是       | 是       | 是       |         |
-|`:above` (uri)          | 否        | 否        | 否        | 问题 [#158](https://github.com/Microsoft/fhir-server/issues/158) |
-|`:in` (标记)           | 否        | 否        | 否        |         |
-|`:below` (标记)        | 否        | 否        | 否        |         |
-|`:above` (标记)        | 否        | 否        | 否        |         |
-|`:not-in` (标记)       | 否        | 否        | 否        |         |
-
-| 常用搜索参数 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 注释 |
-|-------------------------| ----------| ----------| ----------|---------|
-| `_id`                   | 是       | 是       | 是       |         |
-| `_lastUpdated`          | 是       | 是       | 是       |         |
-| `_tag`                  | 是       | 是       | 是       |         |
-| `_list`                 | 是       | 是       | 是       |         |
-| `_type`                 | 是       | 是       | 是       | 问题 [#1562](https://github.com/microsoft/fhir-server/issues/1562)        |
-| `_security`             | 是       | 是       | 是       |         |
-| `_profile`              | 部分   | 部分   | 部分   | 在 STU3 中受支持。 如果在2021年2月20日 **之后** 创建了数据库，则还会在 R4 中提供支持。 我们正在努力在2021年2月20日之前创建的数据库上启用 _profile。 |
-| `_text`                 | 否        | 否        | 否        |         |
-| `_content`              | 否        | 否        | 否        |         |
-| `_has`                  | 否        | 否        | 否        |         |
-| `_query`                | 否        | 否        | 否        |         |
-| `_filter`               | 否        | 否        | 否        |         |
-
-| 搜索结果参数 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 注释 |
-|-------------------------|-----------|-----------|-----------|---------|
-| `_elements`             | 是       | 是       | 是       | 问题 [#1256](https://github.com/microsoft/fhir-server/issues/1256)        |
-| `_count`                | 是       | 是       | 是       | `_count` 限制为1000个字符。 如果设置为高于1000，则仅返回1000，并在捆绑包中返回警告。 |
-| `_include`              | 是       | 是       | 是       |包含的项限制为100。 在 PaaS 上包含 PaaS，Cosmos DB 上的 OSS 不包括：循环访问支持。|
-| `_revinclude`           | 是       | 是       | 是       | 包含的项限制为100。 在 PaaS 上包含 PaaS，Cosmos DB 上的 OSS [不包括：循环访问支持](https://github.com/microsoft/fhir-server/issues/1313)。 问题 [#1319](https://github.com/microsoft/fhir-server/issues/1319)|
-| `_summary`              | 部分   | 部分   | 部分   | 支持 `_summary=count` |
-| `_total`                | 部分   | 部分   | 部分   | `_total=none` 和 `_total=accurate`      |
-| `_sort`                 | 部分   | 部分   | 部分   |   支持 `_sort=_lastUpdated`       |
-| `_contained`            | 否        | 否        | 否        |         |
-| `containedType`         | 否        | 否        | 否        |         |
-| `_score`                | 否        | 否        | 否        |         |
 
 ## <a name="extended-operations"></a>扩展操作
 
