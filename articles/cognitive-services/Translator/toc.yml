@@ -134,6 +134,8 @@
           href: custom-translator/training-and-model.md
         - name: BLEU 分数
           href: custom-translator/what-is-bleu-score.md
+        - name: 客户管理的密钥
+          href: encrypt-data-at-rest.md
 - name: 文档翻译
   items:
     - name: 什么是文档翻译？
@@ -164,22 +166,12 @@
           href: document-translation/reference/get-translation-status.md
         - name: 取消翻译
           href: document-translation/reference/cancel-translation.md
-- name: 操作指南
-  items:
-    - name: 企业就绪情况
-      items:
-        - name: 设置虚拟网络
-          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/translator/context/context
-        - name: 使用客户管理的密钥
-          href: encrypt-data-at-rest.md
 - name: 资源
   items:
-    - name: 企业就绪情况
-      items:
-        - name: 区域支持
-          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-        - name: 符合性和认证
-          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 区域支持
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: 符合性和认证
+      href: 'https://www.microsoft.com/translator/business/notrace/'
     - name: 支持和帮助选项
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
     - name: GitHub 上的代码示例
