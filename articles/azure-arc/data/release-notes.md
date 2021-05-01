@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 04/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1fe5974bafddcb4e474ef59a062836e071ab9461
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 5931b28553b7a6030dc8c7b0adb2c42111ce6751
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304913"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107989407"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>发行说明 - 已启用 Azure Arc 的数据服务（预览版）
 
@@ -60,6 +60,7 @@ PostgreSQL 的两个自定义资源定义 (CRD) 已经合并到一个 CRD 中。
 - 直接模式下的已启用 Azure Arc 的 SQL 托管实例的部署只能通过 Azure 门户完成，而不能通过 azdata、Azure Data Studio 或 kubectl 等工具进行。
 - 目前尚无法在直接模式下部署已启用 Azure Arc 的超大规模 PostgreSQL。
 - 如果通过 `–proxy-cert <path-t-cert-file>` 使用代理，则在直接连接模式下自动上传使用量数据将失败。
+- 已启用 Azure Arc 的 SQL 托管实例和已启用 Azure Arc 的超大规模 PostgreSQL 均未通过 GB18030 认证。
 
 ## <a name="february-2021"></a>2021 年 2 月
 
@@ -157,12 +158,12 @@ azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc
 - 实例名称不能超出 13 个字符
 - Azure Arc 数据控制器或数据库实例不支持就地升级。
 - 启用了 Arc 的数据服务容器映像未签名。  你可能需要将 Kubernetes 节点配置为允许拉取未签名的容器映像。  例如，如果使用 Docker 作为容器运行时，则可以设置 DOCKER_CONTENT_TRUST=0 环境变量，然后重启。  其他容器运行时具有类似的选项，例如在 [OpenShift](https://docs.openshift.com/container-platform/4.5/openshift_images/image-configuration.html#images-configuration-file_image-configuration) 中就是如此。
-- 无法从 Azure 门户创建已启用 Azure Arc 的 SQL 托管实例或 PostgreSQL 超大规模服务器组。
+- 无法从 Azure 门户创建已启用 Azure Arc 的 SQL 托管实例或超大规模 PostgreSQL 服务器组。
 - 现阶段，如果使用的是 NFS，则需要在创建 Azure Arc 数据控制器之前，先在部署配置文件中将 `allowRunAsRoot` 设置为 `true`。
 - 仅限 SQL 和 PostgreSQL 登录身份验证。  不支持 Azure Active Directory 或 Active Directory。
 - 在 OpenShift 上创建数据控制器时，需要放宽安全性约束。  有关详细信息，请参阅文档。
 - 如果在 Azure Stack Hub 上使用的 Azure Kubernetes 服务 (AKS) 引擎中包含 Azure Arc 数据控制器和数据库实例，则不支持升级到较新的 Kubernetes 版本。 请先卸载 Azure Arc 数据控制器和所有数据库实例，然后再升级 Kubernetes 群集。
-- 已启用 Azure Arc 的数据服务目前不支持跨[多个可用性区域](../../aks/availability-zones.md)的 AKS 群集。 若要避免此问题，在 Azure 门户中创建 AKS 群集时，如果选择有可用性区域的区域，请从选择控件中清除所有区域。 参看下图：
+- 已启用 Azure Arc 的数据服务目前不支持跨[多个可用性区域](../../aks/availability-zones.md)的 AKS 群集。 为了避免此问题，在 Azure 门户中创建 AKS 群集时，如果选择多个区域可用的区域，请从选择控件中清除所有区域。 参看下图：
 
    :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="取消选中每个区域对应的复选框，以指定为“无”。":::
 

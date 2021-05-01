@@ -1,14 +1,15 @@
 ---
 title: Connected Machine 代理概述
 description: 本文详细介绍了已启用 Azure Arc 的服务器代理，该代理支持监视混合环境中托管的虚拟机。
-ms.date: 03/25/2021
+ms.date: 04/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2db1758240dca448409af9f4ec00c01d684c920a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 31dfb9ac38b1a6d808b5ab060600297987ab4236
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609219"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071624"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>已启用 Azure Arc 的服务器代理概述
 
@@ -41,6 +42,7 @@ Azure Connected Machine 代理包包含捆绑在一起的多个逻辑组件。
 
 * 操作系统名称、类型和版本
 * 计算机名称
+* 计算机制造商和型号
 * 计算机完全限定域名 (FQDN)
 * Connected Machine 代理版本
 * Active Directory 和 DNS 完全限定的域名 (FQDN)
@@ -49,6 +51,8 @@ Azure Connected Machine 代理包包含捆绑在一起的多个逻辑组件。
 * Connected Machine 代理版本
 * 托管标识的公钥
 * 策略合规性状态和详细信息（如果使用 Azure Policy Guest Configuration 策略）
+* 已安装 SQL Server（布尔值）
+* 适用于 Azure Stack HCI 节点的群集资源 ID 
 
 代理向 Azure 请求以下元数据信息：
 
@@ -81,9 +85,9 @@ Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操�
 
 - Windows Server 2008 R2、Windows Server 2012 R2 和更高版本（包括 Server Core）
 - Ubuntu 16.04 和 18.04 LTS (x64)
-- CentOS Linux 7 (x64)
+- CentOS Linux 7 和 8 (x64)
 - SUSE Linux Enterprise Server (SLES) 15 (x64)
-- Red Hat Enterprise Linux (RHEL) 7 (x64)
+- Red Hat Enterprise Linux (RHEL) 7 和 8 (x64)
 - Amazon Linux 2 (x64)
 - Oracle Linux 7
 

@@ -1,14 +1,14 @@
 ---
 title: 管理已启用 Azure Arc 的服务器代理
 description: 本文介绍在已启用 Azure Arc 的服务器 Connected Machine 代理的生命周期内通常会执行的不同管理任务。
-ms.date: 02/10/2021
+ms.date: 04/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 36ae081f939cbf865db7755a2f766a7ccd87d619
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 25cd997bc1b90da07fd9c463f0097c7bdf53b885
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100587624"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076610"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理并维护 Connected Machine 代理
 
@@ -182,6 +182,8 @@ Azcmagent 工具 (Azcmagent.exe) 用于在安装过程中配置已启用 Azure A
 
 * **Version** - 显示 Connected Machine 代理版本。
 
+* **-useStderr** - 将错误和详细输出定向到 stderr。 包括用于以 JSON 格式输出结果的 `-json` 参数。
+
 * **-h or --help** - 显示可用的命令行参数
 
     例如，若要查看 Connect 参数的详细帮助，请键入 `azcmagent connect -h`。 
@@ -353,7 +355,7 @@ sudo azcmagent_proxy remove
 
 ## <a name="next-steps"></a>后续步骤
 
-* 在 [Connected Machine 代理故障排除指南](troubleshoot-agent-onboard.md)中可以找到故障排除信息。
+* 在 [Connected Machine 代理问题故障排除指南](troubleshoot-agent-onboard.md)中可以找到故障排除信息。
 
 * 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区报告，使用[用于 VM 的 Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md) 启用监视等。
 

@@ -1,5 +1,5 @@
 ---
-title: 通过“我的员工”管理密码和电话号码（预览） - Azure AD | Microsoft Docs
+title: 通过“我的员工”管理密码和电话号码 - Azure AD | Microsoft Docs
 description: 通过“我的员工”管理用户的密码和电话号码
 services: active-directory
 documentationcenter: ''
@@ -9,18 +9,18 @@ ms.topic: end-user-help
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.date: 04/14/2020
+ms.date: 03/17/2021
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 56ee7df52abf97c920dfe2fa4ba5d1d858975f7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 7b435c56f53001275fbdb1a3b3cfae25536a9a63
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537084"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104583592"
 ---
-# <a name="delegate-user-management-with-my-staff-preview"></a>通过“我的员工”委托用户管理（预览）
+# <a name="delegate-user-management-with-my-staff"></a>通过“我的员工”委托用户管理
 
 组织可以使用“我的员工”将用户管理任务委托给权威人士（例如商店经理或团队负责人），以帮助其员工访问所需的应用程序。 如果团队成员因忘记密码而无法访问应用程序，就会丧失生产力。 这也会增加支持成本，并导致管理过程出现瓶颈。  借助“我的员工”，无法访问其帐户的团队成员无需管理员帮助，只需点击几下鼠标即可重新获得访问权限。
 
@@ -104,7 +104,7 @@ ms.locfileid: "91537084"
 
 1. 完成后，请选择“确定”。
 
-    ![显示 "为登录启用电话号码" 的屏幕截图 选中 "确定" 按钮的窗口。](media/my-staff-team-manager/enableforms2.png)
+    ![显示已选中“确定”按钮的“启用电话号码登录?” 窗口的屏幕截图。](media/my-staff-team-manager/enableforms2.png)
 
 ### <a name="remove-a-phone-number"></a>删除电话号码
 

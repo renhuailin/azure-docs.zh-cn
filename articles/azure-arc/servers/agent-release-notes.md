@@ -2,13 +2,13 @@
 title: 已启用 Azure Arc 的服务器代理的新增功能
 description: 本文提供了已启用 Azure Arc 的服务器代理的发行说明。 对于许多汇总问题，提供了指向更多详细信息的链接。
 ms.topic: conceptual
-ms.date: 03/31/2021
-ms.openlocfilehash: ecff23225f4d482cc1e9a4f7b7724c8ffe0a1d73
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.date: 04/27/2021
+ms.openlocfilehash: c223b5dd75ac82706a2b35268813391899170f73
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109061"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071534"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>已启用 Azure Arc 的服务器代理的新增功能
 
@@ -18,17 +18,28 @@ ms.locfileid: "106109061"
 - 已知问题
 - Bug 修复
 
+## <a name="april-2021"></a>2021 年 4 月
+
+1.5 版
+
+### <a name="new-feature"></a>新功能
+
+- 添加了对 Red Hat Enterprise Linux 8 和 CentOS Linux 8 的支持。
+- 用于将错误和详细输出定向到 stderr 的新 `-useStderr` 参数。
+- 用于以 JSON 格式定向输出结果的新 `-json` 参数（与 -useStderr 一起使用时）。
+- 收集其他实例元数据 - 制造商、模型，如果安装了 SQL Server（布尔值），以及群集资源 ID（Azure Stack HCI 节点的）。
+ 
 ## <a name="march-2021"></a>2021 年 3 月
 
 版本 1.4
 
-## <a name="new-feature"></a>新功能
+### <a name="new-feature"></a>新功能
 
 - 添加了对专用终结点的支持（目前为受限预览版）。
 - 展开了 azcmagent 的退出代码列表。
 - 现在，可以使用 `--config` 参数从文件中读取代理配置参数。
 
-## <a name="fixed"></a>固定
+### <a name="fixed"></a>固定
 
 网络终结点检查现在速度更快。
 

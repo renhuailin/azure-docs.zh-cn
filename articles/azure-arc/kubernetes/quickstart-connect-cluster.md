@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 03/03/2021
 ms.custom: template-quickstart, references_regions, devx-track-azurecli
 keywords: Kubernetes, Arc, Azure, 群集
-ms.openlocfilehash: 21ec5000ed7ef9df1805fa6ec43e20efc0f82182
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 8da5ba5c4408cb96008c3d9802ce3a5ccdc25f1f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481236"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140166"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>快速入门：将现有 Kubernetes 群集连接到 Azure Arc 
 
@@ -25,8 +25,13 @@ ms.locfileid: "107481236"
 
 * 已启动并正在运行的 Kubernetes 群集。 如果没有群集，你可以使用以下任意选项创建群集：
     * [Docker 中的 Kubernetes (KIND)](https://kind.sigs.k8s.io/)
-    * 使用 Docker for [Mac](https://docs.docker.com/docker-for-mac/#kubernetes) 或 [Docker for Windows](https://docs.docker.com/docker-for-windows/#kubernetes) 创建 Kubernetes 群集
-    * 使用[群集 API](https://cluster-api.sigs.k8s.io/user/quick-start.html)的自托管 Kubernetes 群集
+    * 使用 [Docker for Mac](https://docs.docker.com/docker-for-mac/#kubernetes) 或 [Docker for Windows](https://docs.docker.com/docker-for-windows/#kubernetes) 创建 Kubernetes 群集
+    * 使用[群集 API](https://cluster-api.sigs.k8s.io/user/quick-start.html) 的自托管 Kubernetes 群集
+    * 如果要将 OpenShift 群集连接到 Azure Arc，只需在运行 `az connectedk8s connect` 之前在群集上执行一次以下命令：
+        
+        ```console
+        oc adm policy add-scc-to-user privileged system:serviceaccount:azure-arc:azure-arc-kube-aad-proxy-sa
+        ```
 
     >[!NOTE]
     > 群集至少需要有一个操作系统和体系结构类型的节点：`linux/amd64`。 目前尚不支持只有 `linux/arm64` 节点的群集。
@@ -36,12 +41,14 @@ ms.locfileid: "107481236"
 
 * 安装[最新版本的 Helm 3](https://helm.sh/docs/intro/install)。
 
-- [安装 Azure CLI 或将其升级](https://docs.microsoft.com/cli/azure/install-azure-cli)到不低于 2.16.0 的版本
+* [安装 Azure CLI 或将其升级](/cli/azure/install-azure-cli)到不低于 2.16.0 的版本
 * 安装 `connectedk8s` Azure CLI 扩展版本，版本不得低于 1.0.0：
   
   ```azurecli
   az extension add --name connectedk8s
   ```
+
+
 
 >[!TIP]
 > 如果已安装 `connectedk8s` 扩展，则可以使用以下命令将其更新到最新版本：`az extension update --name connectedk8s`
@@ -68,7 +75,7 @@ ms.locfileid: "107481236"
 | `https://mcr.microsoft.com`                                                                            | 拉取 Azure Arc 代理的容器映像所需的终结点。                                                                  |  
 | `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`, `https://wcus.his.arc.azure.com`, `https://scus.his.arc.azure.com`, `https://sea.his.arc.azure.com`, `https://uks.his.arc.azure.com`, `https://wus2.his.arc.azure.com`, `https://ae.his.arc.azure.com`, `https://eus2.his.arc.azure.com`, `https://ne.his.arc.azure.com` |  拉取系统分配的托管服务标识 (MSI) 证书所需的终结点。                                                                  |
 
-## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>为已启用 Azure Arc 的 Kubernetes 注册两个提供程序
+## <a name="register-providers-for-azure-arc-enabled-kubernetes"></a>为已启用 Azure Arc 的 Kubernetes 注册提供程序
 
 1. 输入以下命令：
     ```azurecli

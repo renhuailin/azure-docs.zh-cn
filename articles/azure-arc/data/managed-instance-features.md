@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 9c3f973da688a20fa60f2fb649b2c8d689bc2a98
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 61ecbcdd1a96fcc36caa7d0d8c21c66d856d7f89
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076643"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988993"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>已启用 Azure Arc 的 SQL 托管实例的特性和功能
 
@@ -35,27 +35,29 @@ ms.locfileid: "106076643"
   
 |Feature|已启用 Azure Arc 的 SQL 托管实例|
 |-------------|----------------|
-|日志传送|是| 
-|备份压缩|是|
-|数据库快照|是|
 |Always On 故障转移群集实例<sup>1</sup>| 不适用。 可用的类似功能 |
 |Always On 可用性组<sup>2</sup>|已计划 HA 功能。|
 |基本可用性组 <sup>2</sup>|已计划 HA 功能。|
 |最小副本提交可用性组 <sup>2</sup>|已计划 HA 功能。|
 |无群集的可用性组|是|
+|备份数据库 | 是 - `COPY_ONLY` 请参阅 [BACKUP - (Transact-SQL)](/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current&preserve-view=true)|
+|备份压缩|是|
+|备份镜像 |是|
+|备份加密|是|
+|备份到 Azure 以便（备份到 URL）|是|
+|数据库快照|是|
+|快速恢复|是|
+|热插拔内存和 CPU|是|
+|日志传送|是| 
 |联机页面和文件还原|是|
 |联机索引|是|
-|可恢复的联机索引重新生成|是|
 |联机架构更改|是|
-|快速恢复|是|
-|镜像备份|是|
-|热插拔内存和 CPU|是|
-|加密备份|是|
-|Azure 的混合备份（URL 的备份）|是|
+|可恢复的联机索引重新生成|是|
 
 <sup>1</sup> 在 pod 失败的情况下，新的 SQL 托管实例将启动并附加到包含相应数据的永久性卷。 [在此处了解有关 Kubernetes 永久性卷的详细信息](https://kubernetes.io/docs/concepts/storage/persistent-volumes)。
 
-<sup>2</sup> 未来版本将提供 AG 功能 
+<sup>2</sup> 未来的版本将提供 AG 功能。 
+
 
 ###  <a name="rdbms-scalability-and-performance"></a><a name="RDBMSSP"></a> RDBMS Scalability and Performance  
 
