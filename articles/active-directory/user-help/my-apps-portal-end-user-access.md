@@ -13,10 +13,10 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: 6dd9d65ee56bcbf8ca1da72f7d99d4545c5d7fbb
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100094995"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>从“我的应用”门户登录并启动应用
@@ -24,28 +24,28 @@ ms.locfileid: "100094995"
 可以结合使用工作和学校帐户与基于 Web 的“我的应用”门户，以便：
 
 - 查看并启用组织的多个基于云的应用
-- 中转到 " [**我的组** " 门户](https://account.activedirectory.windowsazure.com/r#/groups)
-- 中转到 [**我的帐户** 门户](https://myaccount.microsoft.com/)
+- 转到[“我的组”门户](https://account.activedirectory.windowsazure.com/r#/groups)
+- 转到[“我的帐户”门户](https://myaccount.microsoft.com/)
 
-如果你没有访问 "我的 **应用** " 门户的权限，请与组织的技术支持联系以获取权限。
+如果无权访问“我的应用”门户，请联系组织的支持人员以获取相关权限。
 
 > [!IMPORTANT]
 > 此内容适用于“我的应用”用户。 如果你是管理员，可以在[应用程序管理文档](../manage-apps/index.yml)中查找有关如何设置和管理基于云的应用的详细信息。
 >
-> 如果在使用个人 Microsoft 帐户登录时出现错误，你仍可以使用组织的域名 (例如，你可以通过以下 Url 之一中的管理员使用你的组织的域名例如 contoso.com) 或你的组织的 **租户 ID** ：
+> 如果在使用个人 Microsoft 帐户登录时遇到错误，用户仍可以使用组织的域名（例如 contoso.com）登录，也可以以管理员身份使用组织的“租户 ID”通过以下其中一个 URL 来登录：
 >
->   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
->   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
+>   - https://myapplications.microsoft.com?tenantId= your_domain_name
+>   - https://myapplications.microsoft.com?tenant= your_tenant_ID
 
 ## <a name="supported-browsers"></a>支持的浏览器
 
 可以从以下任意 Web 浏览器访问“我的应用”门户：
 
-- Microsoft Edge (移动版边缘是目前唯一受支持的移动浏览器) 
+- Microsoft Edge（Edge 的移动版是目前唯一受支持的移动浏览器）
 - Google Chrome
 - Mozilla Firefox，版本 26.0 或更高版本
 
-你可以在你的计算机上访问和使用 "我的应用" 门户，也可以通过 iOS 或 Android 移动设备上的 Edge 浏览器的移动版访问。
+可以在计算机上或从 iOS 或 Android 移动设备上的 Edge 浏览器的移动版访问并使用“我的应用”门户。
 
 ![“我的应用”门户中的“应用”页](media/my-apps-portal/my-apps-home.png)
 
@@ -55,7 +55,7 @@ ms.locfileid: "100094995"
 
 1. 在计算机上登录到工作或学校帐户。
 
-1. 在受支持的 web 浏览器中，请跳到 https://myapps.microsoft.com ，或使用你的组织提供的链接（如果将你定向到的自定义页面） `https://myapps.microsoft.com/contoso.com` 。
+1. 在受支持的 Web 浏览器中，转到 https://myapps.microsoft.com ，或者使用组织提供的链接（如果其将你定向到自定义页，如 `https://myapps.microsoft.com/contoso.com` ）。
 
    将显示“应用”页，其中显示组织拥有并可供你使用的所有基于云的应用。
 
@@ -65,28 +65,28 @@ ms.locfileid: "100094995"
 
 ### <a name="download-and-install-the-my-apps-secure-sign-in-extension"></a>下载并安装我的应用安全登录扩展
 
-如果系统提示，请下载并安装 " **我的应用" 安全登录扩展**。 此扩展可帮助你使用桌面浏览器对你的组织的云应用程序使用单一登录。 只需将鼠标悬停在 " **我的应用** " 门户中的应用，选择 " **...**"，然后选择 " **管理应用程序**"。
+如果出现提示，请下载并安装“我的应用安全登录扩展”。 此扩展有助于使用桌面浏览器将单一登录用于组织的云应用。 在“我的应用”门户中将鼠标悬停在应用上，选择“...”，然后选择“管理应用程序”  。
 
 如果组织已将你设置为单一登录，则会自动安装该扩展，可以跳过此部分。
 
-" **我的应用" 安全登录扩展** 可帮助你：
+“我的应用安全登录扩展”有助于：
 
 - 从登录页面直接登录到应用。
 - 使用“快速搜索”功能启动任何应用。
 - 请在“最近使用的项目”部分中查看你最后使用的应用。
-- 使用 [应用程序代理](../manage-apps/application-proxy.md)远程时使用内部公司 url。
+- 远程使用[应用程序代理](../manage-apps/application-proxy.md)时使用公司内部 URL。
 
 ### <a name="to-download-and-install-the-extension"></a>下载并安装扩展
 
-根据所使用的浏览器，下载并安装扩展。
+根据所使用的浏览器下载并安装该扩展。
 
-- **Microsoft edge** -从 Microsoft Store 中，转到 " [我的应用" "安全登录扩展](https://microsoftedge.microsoft.com/addons/detail/my-apps-secure-signin-ex/gaaceiggkkiffbfdpmfapegoiohkiipl) " 功能，然后选择 " **获取** " 以获取 Microsoft Edge 旧版浏览器的扩展。
+- Microsoft Edge - 在 Microsoft Store 中，转到[我的应用安全登录扩展](https://microsoftedge.microsoft.com/addons/detail/my-apps-secure-signin-ex/gaaceiggkkiffbfdpmfapegoiohkiipl)功能，然后选择“获取”以获取 Microsoft Edge 旧版浏览器的扩展 。
 
-- **Google chrome** -从 Chrome Web 应用商店中转到 " [我的应用安全登录扩展](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl) 功能"，然后选择 " **添加到 Chrome**"。
+- Google Chrome - 在 Chrome Web Store 中，转到[我的应用安全登录扩展](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl)功能，然后选择“添加到 Chrome” 。
 
-- **Mozilla firefox** -从 " **firefox 外接程序** " 页，中转到 " [我的应用安全登录扩展](https://addons.mozilla.org/firefox/addon/access-panel-extension/) 功能"，然后选择 " **添加到 Firefox**"。
+- Mozilla Firefox - 在“Firefox 加载项”页中，转到[我的应用安全登录扩展](https://addons.mozilla.org/firefox/addon/access-panel-extension/)功能，然后选择“添加到 Firefox”  。
 
-将在 **地址** 栏的右侧添加一个图标，让用户登录并自定义扩展。
+“地址”栏右侧会添加一个图标，可用于登录并自定义扩展。
 
 ### <a name="to-change-your-my-apps-portal-using-the-extension"></a>使用扩展更改“我的应用”门户
 
@@ -100,13 +100,13 @@ ms.locfileid: "100094995"
 
    ![扩展的“设置”页，其中显示了可用的自定义](media/my-apps-portal/my-apps-portal-extension-settings-page.png)
 
-## <a name="access-and-use-the-my-apps-portal-on-mobile-edge"></a>在移动边缘访问和使用 "我的应用" 门户
+## <a name="access-and-use-the-my-apps-portal-on-mobile-edge"></a>在 Edge 移动版上访问和使用“我的应用”门户
 
-在设备上通过移动版的 Edge 浏览器查看并使用组织的应用。
+在设备上从 Edge 浏览器的移动版中查看和使用组织的应用。
 
-1. 在移动设备上，从 Apple App Store 和 Google Play 商店下载并安装移动边缘浏览器应用。
+1. 在移动设备上，从 Apple App Store 和 Google Play 商店下载并安装移动版 Edge 浏览器应用。
 
-1. 打开 "移动边缘浏览器" 并前往 https://myapps.microsoft.com ，或使用组织提供的链接（如果将您定向到自定义页面，如） https://myapps.microsoft.com/contoso.com 。
+1. 打开移动版 Edge 浏览器应用，转到 https://myapps.microsoft.com ，或使用组织提供的链接（如果其将你定向到自定义页，如 https://myapps.microsoft.com/contoso.com ）。
 
    将显示“应用”页，其中显示组织拥有并可供你使用的所有基于云的应用。
 
@@ -118,7 +118,7 @@ ms.locfileid: "100094995"
 
 如果管理员已授予你权限，则可以将新应用添加到“应用”页。
 
-1. 从 " **应用** " 页中，选择 " **添加自助服务应用**"。
+1. 从“应用”页中，选择“添加自助服务应用” 。
 
    ![myapplications.microsoft.com 上“我的应用”门户中的“添加应用”页](media/my-apps-portal/my-apps-portal-add-app-link.png)
 
@@ -142,15 +142,15 @@ ms.locfileid: "100094995"
 
 - 将应用整理到组织创建和提供的各种类别中。 有关详细信息，请参阅[在“我的应用”门户中访问和使用集合](my-applications-portal-workspaces.md)。
 - 查看、更新或撤销授予应用程序的权限。 有关详细信息，请参阅[在“我的应用”门户中编辑或撤销应用程序权限](my-applications-portal-permissions-saved-accounts.md)。
-- 创建、更新和删除应用帐户。 有关详细信息，请参阅 [编辑或撤消应用程序权限](my-applications-portal-permissions-saved-accounts.md)。
-- 从用于帐户管理的 "**我的应用**" 门户访问 [**我的帐户**](my-account-portal-overview.md)：
+- 创建、更新和删除应用帐户。 有关详细信息，请参阅“[编辑或撤销应用程序权限](my-applications-portal-permissions-saved-accounts.md)”。
+- 从“我的应用”门户访问[我的帐户](my-account-portal-overview.md)进行帐户管理 ：
   
-  - 正在检查异常登录活动
+  - 检查是否有异常登录活动
   - 管理密码
   - 管理连接的设备、订阅、组织和 Office 应用
 
 >[!NOTE]
->如果看不到任何可用的集合或类别，则表示管理员尚未设置或共享任何集合。 若要查看共享集合，请联系组织的技术支持人员以获取其他帮助或权限。
+>如果看不到任何可用的集合或类别，则表示管理员尚未设置或共享任何集合。 若要查看共享的集合，请联系组织的支持人员以获得其他帮助或权限。
 
 ## <a name="next-steps"></a>后续步骤
 

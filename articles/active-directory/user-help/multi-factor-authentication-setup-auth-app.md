@@ -11,10 +11,10 @@ ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
 ms.openlocfilehash: 10b6b788077eccda522c9e8c6e631939ca1819fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91530334"
 ---
 # <a name="set-up-an-authenticator-app-as-your-two-factor-verification-method"></a>将验证器应用设置为双重验证方法
@@ -33,7 +33,7 @@ ms.locfileid: "91530334"
 
 2. 从“你希望如何使用此移动应用”区域选择“接收验证通知”，然后选择“设置”。  
 
-    ![显示 "其他安全验证" 页的屏幕截图，其中包含 "移动应用" 和 "接收验证通知"。](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification.png)
+    ![显示“其他安全验证”页的屏幕截图，其中选中了“移动应用”和“接收验证通知”。](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification.png)
 
     此时会显示“配置移动应用”页。
 
@@ -48,7 +48,7 @@ ms.locfileid: "91530334"
 
 5. 返回到计算机的“其他安全验证”页，确保获得的消息指出配置已成功，然后选择“下一步”。 
 
-    ![显示 "其他安全验证" 页的屏幕截图，其中包含 "已配置移动应用程序 ..."已突出显示成功消息。](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification-confirm.png)
+    ![显示“其他安全验证”页的屏幕截图，其中高亮显示了“移动应用已配置...”成功消息。](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification-confirm.png)
 
     验证器应用会向你的移动设备发送一则测试性的通知。
 

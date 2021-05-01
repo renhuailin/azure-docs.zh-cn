@@ -12,36 +12,36 @@ ms.topic: end-user-help
 ms.date: 01/19/2021
 ms.author: curtand
 ms.openlocfilehash: 5d17c6cb038bf5550f76a8aef7ac2d41244cfda1
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100096559"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>查看组织如何使用与隐私相关的数据
 
-可以在 "**我的帐户**" 门户的 "**设置" & "隐私**" 页中查看组织如何使用数据。
+可以在“我的帐户”门户的“设置和隐私”页中查看组织如何使用自己的数据 。
 
 >[!Note]
-> 如果你在使用个人 Microsoft 帐户登录时遇到错误，你仍可以使用组织的域名 (例如，你可以通过以下 Url 之一中的管理员使用你的组织的域名例如 contoso.com) 或你的组织的 **租户 ID** ：
+> 如果在使用个人 Microsoft 帐户登录时遇到错误，用户仍可以使用组织的域名（例如 contoso.com）登录，也可以以管理员身份使用组织的“租户 ID”通过以下其中一个 URL 来登录：
 >
->   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
->   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+>   - https://myaccount.microsoft.com?tenantId= your_domain_name
+>   - https://myaccount.microsoft.com?tenant= your_tenant_ID
 
 ## <a name="view-your-privacy-related-info"></a>查看与隐私相关的信息
 
-1. 登录到工作或学校帐户，然后转到 https://myaccount.microsoft.com/ 页。 如果你使用个人 Microsoft 帐户登录，则仍可以使用组织的域名 (例如，你可以通过以下 Url 之一在管理员中使用组织的域名例如 contoso.com) 或你的组织的 **租户 ID** ：
+1. 登录到工作或学校帐户，然后转到 https://myaccount.microsoft.com/ 页。 如果使用个人 Microsoft 帐户登录，用户仍可以使用组织的域名（例如 contoso.com）登录，也可以以管理员身份使用组织的“租户 ID”通过以下其中一个 URL 来登录：
 
-   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
-   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+   - https://myaccount.microsoft.com?tenantId= your_domain_name
+   - https://myaccount.microsoft.com?tenant= your_tenant_ID
 
-2. 从左侧导航窗格中选择 "**设置" & "隐私**"，或从 "设置" **& "隐私** 块" 中选择 "**查看设置和隐私**" 链接。
+2. 从左侧导航窗格中选择“设置和隐私”，或从“设置和隐私”块中选择“查看设置和隐私”链接  。
 
-    !["我的帐户" 页，& 隐私链接显示突出显示的设置](media/my-account-portal/my-account-portal-privacy.png)
+    ![“我的帐户”页，其中突出显示了“设置和隐私”链接](media/my-account-portal/my-account-portal-privacy.png)
 
-3. 选择 " **隐私**"，如下面的示例屏幕截图所示，然后查看信息，其中包括：
+3. 选择“隐私”，如下面的示例屏幕截图所示，然后查看信息，其中包括：
 
-    !["设置" & "隐私" 页，显示突出显示的隐私选项卡选项](media/my-account-portal/my-account-portal-privacy-tab.png)
+    ![“设置和隐私”页，其中突出显示了“隐私”选项卡选项](media/my-account-portal/my-account-portal-privacy-tab.png)
 
     - **服务**。 使用工作或学校帐户连接到的联机服务列表。
 

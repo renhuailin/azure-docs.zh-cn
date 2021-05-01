@@ -13,10 +13,10 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: 34885e2a364778a2f81f4920aa26aa3bb5f40320
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100095012"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>在“我的应用”门户中执行访问评审
@@ -30,10 +30,10 @@ ms.locfileid: "100095012"
 >[!Important]
 >此内容适用于“我的应用”用户。 如果你是管理员，可以在[应用程序管理文档](../manage-apps/index.yml)中查找有关如何设置和管理基于云的应用的详细信息。
 >
-> 如果在使用个人 Microsoft 帐户登录时出现错误，你仍可以使用组织的域名 (例如，你可以通过以下 Url 之一中的管理员使用你的组织的域名例如 contoso.com) 或你的组织的 **租户 ID** ：
+> 如果在使用个人 Microsoft 帐户登录时遇到错误，用户仍可以使用组织的域名（例如 contoso.com）登录，也可以以管理员身份，使用组织的“租户 ID”通过以下其中一个 URL 来登录：
 >
->   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
->   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
+>   - https://myapplications.microsoft.com?tenantId= your_domain_name
+>   - https://myapplications.microsoft.com?tenant= your_tenant_ID
 
 ## <a name="manage-access-reviews"></a>管理访问评审
 

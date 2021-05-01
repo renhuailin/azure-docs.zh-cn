@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 22d9df80bce6e79f0058567f8df76935e431e598
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: f571deaa0b67e9be7b8ce3f01d87f5c955f7140d
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103017939"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319064"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>有关用于 FHIR 的 Azure API 的常见问题
 
@@ -104,11 +104,11 @@ _Count 的当前限制为100。 如果将 _count 设置为超过100，则在捆�
 
 ### <a name="what-is-the-default-sort-when-searching-for-resources-in-azure-api-for-fhir"></a>在 Azure API for FHIR 中搜索资源时的默认排序方式是什么？
 
-我们支持按上次更新日期排序： _sort = _lastUpdated。 有关其他受支持的搜索参数的详细信息，请查看我们的 [支持功能页](fhir-features-supported.md#search)。
+我们支持按上次更新日期排序： _sort = _lastUpdated。 有关其他受支持的搜索参数的详细信息，请参阅 [FHIR 搜索概述](overview-of-search.md)。
 
 ### <a name="does-the-azure-api-for-fhir-support-everything"></a>Azure API for FHIR 是否支持 $everything？ 
 
-否。 目前，我们不支持 $everything。 不过，可以通过两个 API 调用来实现此目的。 例如，若要获取患者 $ 一切，你可以先使用/Patient/[ID] 抓取患者记录，然后使用/Patient/[ID]/* 再次调用来检索所有患者数据。
+不是。 目前，我们不支持 $everything。 不过，可以通过两个 API 调用来实现此目的。 例如，若要获取患者 $ 一切，你可以先使用/Patient/[ID] 抓取患者记录，然后使用/Patient/[ID]/* 再次调用来检索所有患者数据。
 
 可以在此 [社区文章](https://chat.fhir.org/#narrow/stream/179166-implementers/topic/.24everything.20with.20_type)中查看更多详细信息。 
 

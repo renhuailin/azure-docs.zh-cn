@@ -13,10 +13,10 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: 4377ed76de971f78336ea9024b59dafc5d513487
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100094961"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>排查“我的应用”门户的相关问题
@@ -31,9 +31,9 @@ ms.locfileid: "100094961"
 
     - Microsoft Edge： 在 Windows 10 周年纪念版或更高版本上运行。
 
-    - Google Chrome： 在 Windows 7 或更高版本以及 macOS X 或更高版本上运行。
+    - Google Chrome： 在 Windows 7 或更高版本，以及 macOS X 或更高版本上运行。
 
-    - Mozilla Firefox 26.0 或更高版本： 在 Windows XP SP2 或更高版本以及 macOS X 10.6 或更高版本上运行。
+    - Mozilla Firefox 26.0 或更高版本： 在 Windows XP SP2 或更高版本，以及 macOS X 10.6 或更高版本上运行。
 
     - Internet Explorer 11： 在 Windows 7 或更高版本（支持受限）上运行。
 
@@ -47,16 +47,16 @@ ms.locfileid: "100094961"
 
 如果在登录“我的应用”门户时遇到问题，可以尝试以下操作：
 
-- 如果在使用个人 Microsoft 帐户登录时出现错误，你仍可以使用组织的域名 (例如，你可以通过以下 Url 之一中的管理员使用你的组织的域名例如 contoso.com) 或你的组织的 **租户 ID** ：
+- 如果在使用个人 Microsoft 帐户登录时遇到错误，用户仍可以使用组织的域名（例如 contoso.com）登录，也可以以管理员身份，使用组织的“租户 ID”通过以下其中一个 URL 来登录：
 
-   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
-   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
+   - https://myapplications.microsoft.com?tenantId= your_domain_name
+   - https://myapplications.microsoft.com?tenant= your_tenant_ID
 
 - 确保使用正确的 URL。 它应该为 https://myapps.microsoft.com 或组织的自定义页面，如 https://myapps.microsoft.com/contoso.com 。
 
 - 确保密码正确且尚未过期。 有关详细信息，请参阅[重置工作或学校密码](active-directory-passwords-update-your-own-password.md)。
 
-- 确保验证信息是最新的，且准确无误。 有关详细信息，请参阅 [Azure AD 多重身份验证对我意味着什么？](./multi-factor-authentication-end-user-first-time.md) 或 [更改安全信息方法和信息](./security-info-setup-auth-app.md)。
+- 确保验证信息是最新的，且准确无误。 有关详细信息，请参阅“[Azure AD 多重身份验证对我而言有什么用途？](./multi-factor-authentication-end-user-first-time.md)”或“[更改安全信息方法和信息](./security-info-setup-auth-app.md)”。
 
 - 将“我的应用”门户 URL 添加“Internet 属性”>“安全”>“受信任的站点”设置 。
 
@@ -80,7 +80,7 @@ ms.locfileid: "100094961"
 
 - 确保密码正确且尚未过期。 有关详细信息，请参阅[重置工作或学校密码](active-directory-passwords-update-your-own-password.md)。
 
-- 确保验证信息是最新的，且准确无误。 有关详细信息，请参阅 [Azure AD 多重身份验证对我意味着什么？](./multi-factor-authentication-end-user-first-time.md) 或 [更改安全信息方法和信息](./security-info-setup-auth-app.md)。
+- 确保验证信息是最新的，且准确无误。 有关详细信息，请参阅“[Azure AD 多重身份验证对我而言有什么用途？](./multi-factor-authentication-end-user-first-time.md)”或“[更改安全信息方法和信息](./security-info-setup-auth-app.md)”。
 
 - 清除浏览器缓存，然后重新尝试登录。
 

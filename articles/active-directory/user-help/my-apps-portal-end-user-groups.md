@@ -13,25 +13,25 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: fc8d211160e757c78a8e2adafad703118628e6dc
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100095038"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>在“我的应用”门户上更新群组信息
 
-你可以通过基于 web 的 **"我的应用** " 门户使用工作或学校帐户来查看和启动你的组织中的多个基于云的应用，更新你的某些配置文件和帐户信息，查看你的 **组** 信息，并为应用和组执行 **访问评审** 。 如果无法访问“我的应用”门户，则必须联系支持人员以获取相关权限。
+可以在基于 Web 的“我的应用”门户中使用工作或学校帐户，以便查看并启动组织的许多基于云的应用、更新部分配置文件和帐户信息、查看“组”信息，以及为应用和组执行“访问评审”。 如果无法访问“我的应用”门户，则必须联系支持人员以获取相关权限。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
 >此内容适用于用户。 如果你是管理员，可以在[应用程序管理文档](../manage-apps/index.yml)中查找有关如何设置和管理基于云的应用的详细信息。
 >
-> 如果在使用个人 Microsoft 帐户登录时出现错误，你仍可以使用组织的域名 (例如，你可以通过以下 Url 之一中的管理员使用你的组织的域名例如 contoso.com) 或你的组织的 **租户 ID** ：
+> 如果在使用个人 Microsoft 帐户登录时遇到错误，用户仍可以使用组织的域名（例如 contoso.com）登录，也可以以管理员身份，使用组织的“租户 ID”通过以下其中一个 URL 来登录：
 >
->   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
->   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
+>   - https://myapplications.microsoft.com?tenantId= your_domain_name
+>   - https://myapplications.microsoft.com?tenant= your_tenant_ID
 
 ## <a name="view-your-groups-information"></a>查看组信息
 
@@ -45,19 +45,19 @@ ms.locfileid: "100095038"
 
 1. 登录到工作或学校帐户。
 
-2. 打开 Web 浏览器并转到 https://myapps.microsoft.com ，或使用组织提供的链接。 例如，你可能会被定向到组织的自定义页面，如 https://myapps.microsoft.com/contoso.com 。 如果你使用个人 Microsoft 帐户登录，则仍可以使用组织的域名 (例如，你可以通过以下 Url 之一在管理员中使用组织的域名例如 contoso.com) 或你的组织的 **租户 ID** ：
+2. 打开 Web 浏览器并转到 https://myapps.microsoft.com ，或使用组织提供的链接。 例如，你可能会被定向到组织的自定义页面，如 https://myapps.microsoft.com/contoso.com 。 如果在使用个人 Microsoft 帐户登录，用户仍可以使用组织的域名（例如 contoso.com）登录，也可以以管理员身份，使用组织的“租户 ID”通过以下其中一个 URL 来登录：
 
-   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
-   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
+   - https://myapplications.microsoft.com?tenantId= your_domain_name
+   - https://myapplications.microsoft.com?tenant= your_tenant_ID
 
 
     此时将显示“应用”页面，其中显示组织拥有并可供你使用的所有基于云的应用。
 
     ![“我的应用”门户中的“应用”页](media/my-apps-portal-end-user-groups/my-apps-home-large.png)
 
-3. 下拉 " **我的应用** " 菜单并选择 **"我的组** "，查看与组相关的信息。
+3. 下拉“我的应用”菜单并选择“我的组”，查看与组相关的信息。
 
-4. 根据你的权限，你可以使用 " **我的组** " 页执行以下操作：
+4. 根据你的权限，你可以使用“我的组”页面：
 
     - **查看你拥有的组。** 从“我拥有的组”区域查看有关你在组织内拥有的任何组的信息。 选择特定组名称可查看有关组的更多详细信息，包括组类型、成员数、加入策略和活动成员列表。
 
