@@ -178,15 +178,15 @@
             - name: 相机放置
               href: spatial-analysis-camera-placement.md
             - name: 所有认知服务容器
-              href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/computer-vision/context/context
+              href: ../containers/index.yml?context=%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
 - name: 操作指南
   items:
     - name: 企业就绪情况
       items:
         - name: 设置虚拟网络
-          href: /azure/cognitive-services/cognitive-services-virtual-networks?context=/azure/cognitive-services/computer-vision/context/context
+          href: ../cognitive-services-virtual-networks.md?context=%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
         - name: 使用 Azure AD 身份验证
-          href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
+          href: ../authentication.md?tabs=powershell%3fcontext%3d%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
 - name: 资源
   items:
     - name: 企业就绪情况
