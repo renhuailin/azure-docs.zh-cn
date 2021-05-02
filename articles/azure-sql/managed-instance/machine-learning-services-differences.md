@@ -12,16 +12,16 @@ ms.author: garye
 ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 03/17/2021
-ms.openlocfilehash: b5ad439a8e10fa9aa44e477ca35f45d65ae40803
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a322efdf5ef21912a8e29e9b3dea4bc041c61cca
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599538"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131884"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>Azure SQL 托管实例和 SQL Server 中机器学习服务之间的主要差异
 
-本文介绍 [Azure SQL 托管实例中的机器学习服务](machine-learning-services-overview.md)与 [SQL Server 机器学习服务](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)在功能上的几个主要区别。
+本文介绍 [Azure SQL 托管实例中的机器学习服务](machine-learning-services-overview.md)与 [SQL Server 机器学习服务](/sql/advanced-analytics/what-is-sql-server-machine-learning)在功能上的几个主要区别。
 
 ## <a name="language-support"></a>语言支持
 
@@ -44,8 +44,8 @@ SQL 托管实例不支持依赖于外部运行时（例如 Java）或需要访�
 
 有关管理 Python 包和 R 包的详细信息，请参阅：
 
-- [获取 Python 包信息](https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true)
-- [获取 R 包信息](https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true)
+- [获取 Python 包信息](/sql/machine-learning/package-management/python-package-information?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current)
+- [获取 R 包信息](/sql/machine-learning/package-management/r-package-information?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current)
 
 ## <a name="resource-governance"></a>资源调控
 
@@ -67,7 +67,7 @@ sp_configure 'external scripts enabled', 0;
 RECONFIGURE WITH OVERRIDE;
 ```
 
-可供 SQL 托管实例使用的总资源数取决于你选择的服务层级。 有关详细信息，请参阅 [Azure SQL 数据库购买模型](/azure/sql-database/sql-database-service-tiers)。
+可供 SQL 托管实例使用的总资源数取决于你选择的服务层级。 有关详细信息，请参阅 [Azure SQL 数据库购买模型](../database/purchasing-models.md)。
 
 ### <a name="insufficient-memory-error"></a>内存不足错误
 

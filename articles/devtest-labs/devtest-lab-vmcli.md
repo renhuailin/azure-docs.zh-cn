@@ -3,12 +3,12 @@ title: 使用 Azure CLI 在开发测试实验室中创建和管理虚拟机
 description: 了解如何通过 Azure 开发测试实验室，使用 Azure CLI 创建和管理虚拟机
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 22ee6bf607fe1b66cece0e7ddb25a2da2830258b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 95e0add8ce14e47c609b1ae951673c261316293f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102201458"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763534"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>使用 Azure CLI 通过开发测试实验室创建和管理虚拟机
 本快速入门将指导你在实验室中进行创建、启动、连接、更新和清理开发计算机的操作。 
@@ -48,7 +48,7 @@ image-type 参数已从“gallery”更改为“custom”。 如果你是要在 
 az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGroup --name sampleVMName --image "Ubuntu Server 16.04 LTS" --image-type gallery --size Standard_DS1_v2 --authentication-type  ssh --generate-ssh-keys --ip-configuration public 
 ```
 
-还可以通过将 image-type 参数设置为“formula”来基于公式创建虚拟机。 如果需要为虚拟机选择特定虚拟网络，请使用 vnet-name 和 subnet 参数。 有关详细信息，请参阅 [az lab vm create](/cli/azure/lab/vm#az-lab-vm-create)。
+还可以通过将 image-type 参数设置为“formula”来基于公式创建虚拟机。 如果需要为虚拟机选择特定虚拟网络，请使用 vnet-name 和 subnet 参数。 有关详细信息，请参阅 [az lab vm create](/cli/azure/lab/vm#az_lab_vm_create)。
 
 ## <a name="verify-that-the-vm-is-available"></a>验证 VM 是否可用。
 在启动并连接到 VM 之前，请使用 `az lab vm show` 命令验证该 VM 是否可用。 

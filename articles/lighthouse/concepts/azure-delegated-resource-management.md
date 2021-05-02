@@ -3,16 +3,16 @@ title: Azure 委派资源管理
 description: Azure 委托资源管理是 Azure Lighthouse 的关键部分，它使服务提供商可以灵活精确地管理大规模委托的资源。
 ms.date: 10/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: d484e61fc4ab3714eb362b26d64d449890065888
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 93a3de257fe88de4915eff3582ff38fc03ef380e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92203851"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767756"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure 委派资源管理
 
-Azure 委托资源管理是 [Azure Lighthouse](../overview.md) 的关键组成部分之一。 借助 Azure 委托资源管理，服务提供商可以简化客户参与和载入体验，同时灵活精确地管理大规模委托资源。 客户可以控制哪些服务提供商可以访问其租户，还可以控制谁可以访问其租户、这些人可以访问哪些资源以及可以执行哪些操作。
+Azure 委托资源管理是 [Azure Lighthouse](../overview.md) 的关键组成部分之一。 借助 Azure 委托资源管理，服务提供商可以简化客户参与和载入体验，同时灵活精确地管理大规模委托资源。 客户对可访问其租户的人员、这些人员可以访问的资源以及可执行的操作保持控制。
 
 ## <a name="what-is-azure-delegated-resource-management"></a>什么是 Azure 委派资源管理？
 

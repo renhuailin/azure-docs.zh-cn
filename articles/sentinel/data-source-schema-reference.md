@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: reference
 ms.custom: ''
 ms.date: 01/14/2021
-ms.openlocfilehash: 84d5f1e4035fb730d33b7bc8dd375273610f0bfb
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 4601f2d6eddbbe8809dfd46a7e0cc5aa3c40c722
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771934"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209564"
 ---
 # <a name="data-source-schema-reference"></a>数据源架构引用
 
@@ -51,7 +51,7 @@ ms.locfileid: "104771934"
 | **Network** | Fortigate   | ALL   | CommonSecurityLog | [日志架构结构](https://docs.fortinet.com/document/fortigate/6.2.3/fortios-log-message-reference/738142/log-schema-structure)         |
 | **Network** | Barracuda | Web 应用程序防火墙 |  CommonSecurityLog   | [如何配置 Syslog 和其他日志](https://campus.barracuda.com/product/webapplicationfirewall/doc/4259935/how-to-configure-syslog-and-other-logs/)  |
 | **Network** | Cisco | ASA | CommonSecurityLog | [Cisco ASA 系列 Syslog 消息](https://www.cisco.com/c/en/us/td/docs/security/asa/syslog/b_syslog/about.html)    |
-| **Network** | Cisco | Firepower   | CommonSecurityLog | [Cisco Firepower 威胁防御 Syslog 消息](https://www.cisco.com/c/en/us/td/docs/security/firepower/Syslogs/b_fptd_syslog_guide.pdf)    |
+| **Network** | Cisco | Firepower   | CommonSecurityLog | [Cisco Firepower 威胁防御 Syslog 消息](https://www.cisco.com/c/en/us/td/docs/security/firepower/Syslogs/b_fptd_syslog_guide.html)    |
 | **Network** | Cisco   | Umbrella  | 自定义日志表  | [日志格式和版本控制](https://docs.umbrella.com/deployment-umbrella/docs/log-formats-and-versioning)   |
 | **Network**   | Cisco | Meraki    | CommonSecurityLog |   [Syslog 事件类型和日志示例](https://documentation.meraki.com/zGeneral_Administration/Monitoring_and_Reporting/Syslog_Event_Types_and_Log_Samples)    |
 | **Network**   | Zscaler | Nano Streaming Service (NSS)|   CommonSecurityLog | [设置 NSS 源格式](https://help.zscaler.com/zia/documentation-knowledgebase/analytics/nss/nss-feeds/formatting-nss-feeds)（仅限 Web、防火墙、DNS 和隧道日志） |

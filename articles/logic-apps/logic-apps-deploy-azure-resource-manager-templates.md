@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 08/25/2020
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 5f5db3fd88f04e7fe569cd675936445dcf730288
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e4672225f65eab6cac98ece488ed07dda17b1ec4
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97705330"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076628"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>为 Azure 逻辑应用部署 Azure 资源管理器模板
 
