@@ -1,31 +1,31 @@
 ---
-title: 如何停止监视混合 Kubernetes 群集 |Microsoft Docs
+title: 如何停止监视混合 Kubernetes 群集 | Microsoft Docs
 description: 本文介绍如何通过容器见解停止监视混合 Kubernetes 群集。
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.openlocfilehash: e8708d6b860683cc96a806160ccc7c8e33949ab2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101713688"
 ---
 # <a name="how-to-stop-monitoring-your-hybrid-cluster"></a>如何停止监视混合群集
 
-启用 Kubernetes 群集的监视后，如果你决定不再想要对其进行监视，可以使用容器见解停止监视群集。 本文介绍如何为以下环境实现此目的：
+启用对 Kubernetes 群集的监视后，如果决定不再监视该群集，则可以使用容器见解停止监视该群集。 本文介绍如何在以下环境中实现此目的：
 
-- Azure 上的 AKS 引擎和 Azure Stack
-- OpenShift 版本4及更高版本
+- Azure 和 Azure Stack 的 AKS 引擎
+- OpenShift 版本 4 及更高版本
 - 启用了 Azure Arc 的 Kubernetes（预览版）
 
 ## <a name="how-to-stop-monitoring-using-helm"></a>如何使用 Helm 停止监视
 
 以下步骤适用于以下环境：
 
-- Azure 上的 AKS 引擎和 Azure Stack
-- OpenShift 版本4及更高版本
+- Azure 和 Azure Stack 的 AKS 引擎
+- OpenShift 版本 4 及更高版本
 
-1. 若要首先确定群集上安装的容器 insights helm 图表版本，请运行以下 helm 命令。
+1. 若要先确定群集上安装的容器见解的 Helm chart 版本，请运行以下 helm 命令。
 
     ```
     helm list
@@ -38,9 +38,9 @@ ms.locfileid: "101713688"
     azmon-containers-release-1      default         3               2020-04-21 15:27:24.1201959 -0700 PDT   deployed        azuremonitor-containers-2.7.0   7.0.0-1
     ```
 
-    *azmon-版本-1* 表示用于容器见解的 helm 图表版本。
+    “azmon-containers-release-1”表示容器见解的 helm chart 版本。
 
-2. 若要删除图表版本，请运行以下 helm 命令。
+2. 若要删除 chart 版本，请运行以下 helm 命令。
 
     `helm delete <releaseName>`
 
@@ -48,44 +48,44 @@ ms.locfileid: "101713688"
 
     `helm delete azmon-containers-release-1`
 
-    这将从群集中删除发布。 可以通过运行 `helm list` 以下命令进行验证：
+    这将从群集中删除该版本。 可通过运行 `helm list` 命令进行验证：
 
     ```
     NAME                            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                           APP VERSION
     ```
 
-配置更改可能需要几分钟才能完成。 因为 Helm 会在你删除发布后对其进行跟踪，因此你可以审核群集的历史记录，甚至还可以使用撤消删除发布 `helm rollback` 。
+配置更改可能需要几分钟才能完成。 由于 Helm 即使在你删除了版本之后也会对其进行跟踪，因此你可以审核群集的历史记录，甚至可以使用 `helm rollback` 取消删除某个版本。
 
-## <a name="how-to-stop-monitoring-on-arc-enabled-kubernetes"></a>如何在启用 Arc 的 Kubernetes 上停止监视
+## <a name="how-to-stop-monitoring-on-arc-enabled-kubernetes"></a>如何停止监视启用了 Arc 的 Kubernetes
 
 ### <a name="using-powershell"></a>使用 PowerShell
 
-1. 使用以下命令将脚本下载并保存到使用监视外接程序配置群集的本地文件夹：
+1. 下载脚本并将其保存到本地文件夹中，该脚本使用以下命令为你的群集配置监视加载项：
 
     ```powershell
     wget https://aka.ms/disable-monitoring-powershell-script -OutFile disable-monitoring.ps1
     ```
 
-2. `$azureArcClusterResourceId`通过设置的相应值来配置变量 `subscriptionId` ， `resourceGroupName` 并 `clusterName` 表示启用了 Azure Arc 的 Kubernetes 群集资源的资源 ID。
+2. 通过设置 `subscriptionId`、`resourceGroupName` 和 `clusterName`（表示已启用 Azure Arc 的 Kubernetes 群集资源的资源 ID）的对应值来配置 `$azureArcClusterResourceId` 变量。
 
     ```powershell
     $azureArcClusterResourceId = "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
     ```
 
-3. `$kubeContext`通过运行命令，配置具有群集的 **kube 上下文** 的变量 `kubectl config get-contexts` 。 如果要使用当前上下文，请将值设置为 `""` 。
+3. 通过运行命令 `kubectl config get-contexts`，使用群集的 kube-context 配置 `$kubeContext` 变量。 若要使用当前上下文，请将值设置为 `""`。
 
     ```powershell
     $kubeContext = "<kubeContext name of your k8s cluster>"
     ```
 
-4. 运行以下命令停止监视群集。
+4. 运行以下命令以停止监视群集。
 
     ```powershell
     .\disable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -kubeContext $kubeContext
     ```
 
 #### <a name="using-service-principal"></a>使用服务主体
-脚本 *disable-monitoring.ps1* 使用交互式设备登录。 如果你更喜欢非交互式登录，则可以使用现有的服务主体，也可以创建一个具有所需权限的新服务主体，如 [先决条件](container-insights-enable-arc-enabled-clusters.md#prerequisites)中所述。 若要使用服务主体，你必须将 $servicePrincipalClientId、$servicePrincipalClientSecret 和 $tenantId 参数替换为你打算用于 enable-monitoring.ps1 脚本的服务主体的值。
+脚本 disable-monitoring.ps1 使用交互式设备登录。 如果你更喜欢非交互式登录，则可以使用现有服务主体，也可以创建一个具有所需权限的新服务主体，如[先决条件](container-insights-enable-arc-enabled-clusters.md#prerequisites)中所述。 若要使用服务主体，必须将 $servicePrincipalClientId、$servicePrincipalClientSecret 和 $tenantId 参数（包含要使用的服务主体的值）传递给 enable-monitoring.ps1 脚本。
 
 ```powershell
 $subscriptionId = "<subscription Id of the Azure Arc connected cluster resource>"
@@ -105,40 +105,40 @@ $tenantId = (Get-AzSubscription -SubscriptionId $subscriptionId).TenantId
 
 ### <a name="using-bash"></a>使用 Bash
 
-1. 使用以下命令将脚本下载并保存到使用监视外接程序配置群集的本地文件夹：
+1. 下载脚本并将其保存到本地文件夹中，该脚本使用以下命令为你的群集配置监视加载项：
 
     ```bash
     curl -o disable-monitoring.sh -L https://aka.ms/disable-monitoring-bash-script
     ```
 
-2. `azureArcClusterResourceId`通过设置的相应值来配置变量 `subscriptionId` ， `resourceGroupName` 并 `clusterName` 表示启用了 Azure Arc 的 Kubernetes 群集资源的资源 ID。
+2. 通过设置 `subscriptionId`、`resourceGroupName` 和 `clusterName`（表示已启用 Azure Arc 的 Kubernetes 群集资源的资源 ID）的对应值来配置 `azureArcClusterResourceId` 变量。
 
     ```bash
     export azureArcClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
     ```
 
-3. `kubeContext`通过运行命令，配置具有群集的 **kube 上下文** 的变量 `kubectl config get-contexts` 。
+3. 通过运行命令 `kubectl config get-contexts`，使用群集的 kube-context 配置 `kubeContext` 变量。
 
     ```bash
     export kubeContext="<kubeContext name of your k8s cluster>"
     ```
 
-4. 若要停止监视群集，可以根据部署方案提供不同的命令。
+4. 若要停止监视群集，可以使用根据部署方案提供的不同命令。
 
-    运行以下命令，使用当前上下文停止监视群集。
+    运行以下命令以使用当前上下文停止监视群集。
 
     ```bash
     bash disable-monitoring.sh --resource-id $azureArcClusterResourceId
     ```
 
-    运行以下命令，通过指定上下文停止监视群集
+    运行以下命令以通过指定上下文来停止监视群集
 
     ```bash
     bash disable-monitoring.sh --resource-id $azureArcClusterResourceId --kube-context $kubeContext
     ```
 
 #### <a name="using-service-principal"></a>使用服务主体
-Bash 脚本 *disable-monitoring.sh* 使用交互式设备登录。 如果你更喜欢非交互式登录，则可以使用现有的服务主体，也可以创建一个具有所需权限的新服务主体，如 [先决条件](container-insights-enable-arc-enabled-clusters.md#prerequisites)中所述。 若要使用服务主体，你必须将你打算用于 *enable-monitoring.sh* bash 脚本的服务主体的客户端 id、--客户端密码和--租户 id 值传递给。
+bash 脚本 disable-monitoring.sh 使用交互式设备登录。 如果你更喜欢非交互式登录，则可以使用现有服务主体，也可以创建一个具有所需权限的新服务主体，如[先决条件](container-insights-enable-arc-enabled-clusters.md#prerequisites)中所述。 若要使用服务主体，你必须将要使用的服务主体的 --client-id、--client-secret 和 --tenant-id 值传递给 enable-monitoring.sh bash 脚本。
 
 ```bash
 subscriptionId="<subscription Id of the Azure Arc connected cluster resource>"
@@ -157,4 +157,4 @@ bash disable-monitoring.sh --resource-id $azureArcClusterResourceId --kube-conte
 
 ## <a name="next-steps"></a>后续步骤
 
-如果 Log Analytics 工作区仅用于支持监视群集，并且不再需要它，则必须手动将其删除。 如果你不熟悉如何删除工作区，请参阅 [删除 Azure Log Analytics 工作区](../logs/delete-workspace.md)。
+如果创建 Log Analytics 工作区只是为了支持监视群集，并且不再需要它，则必须将其手动删除。 如果不熟悉如何删除工作区，请参阅[删除 Azure Log Analytics 工作区](../logs/delete-workspace.md)。

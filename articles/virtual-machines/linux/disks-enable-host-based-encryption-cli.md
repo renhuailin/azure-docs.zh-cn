@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure CLI 托管磁盘上的加密来启用端到端加密
-description: 使用主机上的加密在 Azure 托管磁盘上启用端到端加密。
+title: 通过主机加密启用端到端加密 - Azure CLI - 托管磁盘
+description: 通过主机加密在 Azure 托管磁盘上启用端到端加密。
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
@@ -8,24 +8,20 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 94a691badf056c8e93f47ae8d052fc1388b34e4c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.openlocfilehash: 3eecb584f468bc170f0325da8d734a1890691483
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737466"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601765"
 ---
-# <a name="use-the-azure-cli-to-enable-end-to-end-encryption-using-encryption-at-host"></a>使用 Azure CLI 在主机上使用加密启用端到端加密
+# <a name="use-the-azure-cli-to-enable-end-to-end-encryption-using-encryption-at-host"></a>使用 Azure CLI 通过主机加密来启用端到端加密
 
 启用主机加密时，存储在 VM 主机上的数据将静态加密，且已加密的数据将流向存储服务。 有关主机加密以及其他托管磁盘加密类型的概念信息，请参阅[主机加密 - 为 VM 数据启用端到端加密](../disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)。
 
 ## <a name="restrictions"></a>限制
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](../../../includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
-
-### <a name="supported-regions"></a>支持的区域
-
-[!INCLUDE [virtual-machines-disks-encryption-at-host-regions](../../../includes/virtual-machines-disks-encryption-at-host-regions.md)]
 
 ### <a name="supported-vm-sizes"></a>支持的 VM 大小
 
@@ -35,7 +31,20 @@ ms.locfileid: "98737466"
 
 ## <a name="prerequisites"></a>先决条件
 
-为了能够为 VM 或虚拟机规模集使用主机加密，必须在订阅上启用该功能。 使用你的订阅 Id 向发送电子邮件 encryptionAtHost@microsoft.com ，以便为你的订阅启用该功能。
+必须先为订阅启用此功能，然后才能使用 VM/VMSS 的 EncryptionAtHost 属性。 请按照以下步骤为订阅启用此功能：
+
+1.  执行以下命令，为订阅注册该功能
+
+    ```azurecli
+    az feature register --namespace Microsoft.Compute --name EncryptionAtHost
+    ```
+ 
+2.  在试用该功能之前，请使用以下命令检查注册状态是否为“已注册”（需要几分钟）。
+
+    ```azurecli
+    az feature show --namespace Microsoft.Compute --name EncryptionAtHost
+    ```
+
 
 ### <a name="create-an-azure-key-vault-and-diskencryptionset"></a>创建 Azure Key Vault 和 DiskEncryptionSet
 
@@ -45,9 +54,9 @@ ms.locfileid: "98737466"
 
 ## <a name="examples"></a>示例
 
-### <a name="create-a-vm-with-encryption-at-host-enabled-with-customer-managed-keys"></a>在启用了客户管理密钥的主机上创建具有加密的 VM。 
+### <a name="create-a-vm-with-encryption-at-host-enabled-with-customer-managed-keys"></a>使用客户管理的密钥创建 VM，并启用主机加密。 
 
-使用之前创建的 DiskEncryptionSet 的资源 URI 创建具有托管磁盘的 VM，以使用客户管理的密钥加密 OS 和数据磁盘的缓存。 临时磁盘用平台托管密钥进行加密。 
+使用之前创建的 DiskEncryptionSet 的资源 URI 创建包含托管磁盘的 VM，以便使用客户管理的密钥加密 OS 磁盘和数据磁盘的缓存。 临时磁盘通过平台管理的密钥加密。 
 
 ```azurecli
 rgName=yourRGName
@@ -71,9 +80,9 @@ az vm create -g $rgName \
 --data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
 ```
 
-### <a name="create-a-vm-with-encryption-at-host-enabled-with-platform-managed-keys"></a>在启用了平台管理的密钥的主机上创建具有加密的 VM。 
+### <a name="create-a-vm-with-encryption-at-host-enabled-with-platform-managed-keys"></a>使用平台管理的密钥创建 VM，并启用主机加密。 
 
-创建一个在主机上启用了加密的 VM，以便使用平台管理的密钥加密 OS/数据磁盘和临时磁盘的缓存。 
+创建一个 VM，并启用主机加密，以便使用平台管理的密钥加密 OS/数据磁盘和临时磁盘的缓存。 
 
 ```azurecli
 rgName=yourRGName
@@ -92,7 +101,7 @@ az vm create -g $rgName \
 --data-disk-sizes-gb 128 128 \
 ```
 
-### <a name="update-a-vm-to-enable-encryption-at-host"></a>更新 VM 以便在主机上启用加密。 
+### <a name="update-a-vm-to-enable-encryption-at-host"></a>更新 VM 以启用主机加密。 
 
 ```azurecli
 rgName=yourRGName
@@ -103,7 +112,7 @@ az vm update -n $vmName \
 --set securityProfile.encryptionAtHost=true
 ```
 
-### <a name="check-the-status-of-encryption-at-host-for-a-vm"></a>在主机上检查 VM 的加密状态
+### <a name="check-the-status-of-encryption-at-host-for-a-vm"></a>检查 VM 的主机加密状态
 
 ```azurecli
 rgName=yourRGName
@@ -114,9 +123,9 @@ az vm show -n $vmName \
 --query [securityProfile.encryptionAtHost] -o tsv
 ```
 
-### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-customer-managed-keys"></a>使用客户托管密钥启用的主机上的加密创建虚拟机规模集。 
+### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-customer-managed-keys"></a>使用客户管理的密钥创建虚拟机规模集，并启用主机加密。 
 
-使用之前创建的 DiskEncryptionSet 的资源 URI 创建具有托管磁盘的虚拟机规模集，以便使用客户管理的密钥加密 OS 和数据磁盘的缓存。 临时磁盘用平台托管密钥进行加密。 
+使用之前创建的 DiskEncryptionSet 的资源 URI 创建包含托管磁盘的虚拟机规模集，以便使用客户管理的密钥加密 OS 磁盘和数据磁盘的缓存。 临时磁盘通过平台管理的密钥加密。 
 
 ```azurecli
 rgName=yourRGName
@@ -140,9 +149,9 @@ az vmss create -g $rgName \
 --data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
 ```
 
-### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-platform-managed-keys"></a>使用启用了平台托管密钥的主机上的加密创建虚拟机规模集。 
+### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-platform-managed-keys"></a>使用平台管理的密钥创建虚拟机规模集，并启用主机加密。 
 
-创建在主机上启用了加密的虚拟机规模集，以便使用平台管理的密钥加密 OS/数据磁盘和临时磁盘的缓存。 
+创建一个虚拟机规模集，并启用主机加密，以便使用平台管理的密钥加密 OS/数据磁盘和临时磁盘的缓存。 
 
 ```azurecli
 rgName=yourRGName
@@ -161,7 +170,7 @@ az vmss create -g $rgName \
 --data-disk-sizes-gb 64 128 \
 ```
 
-### <a name="update-a-virtual-machine-scale-set-to-enable-encryption-at-host"></a>更新虚拟机规模集以便在主机上启用加密。 
+### <a name="update-a-virtual-machine-scale-set-to-enable-encryption-at-host"></a>更新虚拟机规模集以启用主机加密。 
 
 ```azurecli
 rgName=yourRGName
@@ -172,7 +181,7 @@ az vmss update -n $vmssName \
 --set virtualMachineProfile.securityProfile.encryptionAtHost=true
 ```
 
-### <a name="check-the-status-of-encryption-at-host-for-a-virtual-machine-scale-set"></a>在主机上检查虚拟机规模集的加密状态
+### <a name="check-the-status-of-encryption-at-host-for-a-virtual-machine-scale-set"></a>检查虚拟机规模集的主机加密状态
 
 ```azurecli
 rgName=yourRGName

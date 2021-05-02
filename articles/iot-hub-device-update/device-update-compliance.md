@@ -1,23 +1,23 @@
 ---
-title: 了解 Azure IoT 中心符合性的设备更新 |Microsoft Docs
-description: 了解 Azure IoT 中心的设备更新如何测量设备更新符合性。
+title: 了解 Device Update for Azure IoT Hub 符合性 | Microsoft Docs
+description: 了解 Device Update for Azure IoT Hub 如何度量设备更新符合性。
 author: vimeht
 ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
 ms.openlocfilehash: ac6094efde8a32b1fcc04c55bbc537afeb4166f7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101662139"
 ---
 # <a name="device-update-compliance"></a>设备更新符合性
 
-在 IoT 中心的设备更新中，符合性会衡量已安装最高版本兼容更新的设备数。 如果设备安装了可兼容的最高版本更新，则该设备符合要求。 
+在 Device Update for IoT Hub 中，符合性会度量已安装最高版本兼容更新的设备数。 如果设备已安装与其兼容的最高版本可用更新，则该设备符合要求。 
 
-例如，请考虑具有以下更新的设备更新实例：
+例如，请考虑具有以下更新的 Device Update 实例：
 
 |更新名称|更新版本|兼容设备型号|
 |-----------|--------------|-----------------------|
@@ -33,21 +33,21 @@ ms.locfileid: "101662139"
 |Deployment2    |Update2    |Group2|
 |Deployment3    |Update3    |Group3|
 
-现在，请考虑以下设备及其组成员身份和已安装的版本：
+现在，请考虑以下设备及其组成员身份和已安装版本：
 
 |DeviceId   |设备型号   |已安装更新版本|组 |合规性|
 |-----------|--------------|-----------------------|-----|---------|
-|Device1    |Model1 |1.0    |Group1 |可用的新更新</span>|
-|Device2    |Model1 |2.0    |Group3 |更新时|
-|Device3    |Model2 |1.0    |Group2 |更新时|
-|-4    |Model1 |1.0    |Group3 |正在进行更新|
+|Device1    |Model1 |1.0    |Group1 |有可用的新更新</span>|
+|Device2    |Model1 |2.0    |Group3 |应用了最新更新|
+|Device3    |Model2 |1.0    |Group2 |应用了最新更新|
+|Device4    |Model1 |1.0    |Group3 |正在进行更新|
 
-Device1 和-4 不合规，因为它们安装了1.0 版，即使在设备更新实例中其模型的版本更新为 "Update3"，也是如此。 设备2和设备3都是相容的，因为它们安装了其模型的最高版本更新。
+Device1 和 Device4 不符合要求，因为它们安装了版本 1.0，虽然在 Device Update 实例中有与它们的型号兼容的更高版本更新 Update3。 Device2 和 Device3 都符合要求，因为它们安装了与其型号兼容的最高版本更新。
 
-合规性不考虑是否将更新部署到设备的组;它会查看发布到设备更新的所有更新。 因此，在上述示例中，尽管 Device1 已安装了部署到它的更新，但它被视为不符合。 在成功安装 Update3 之前，Device1 将继续被视为不符合。 相容性状态可帮助你确定是否需要新的部署。 
+符合性不考虑更新是否已部署到设备的组中；它查看已发布到 Device Update 的任何更新。 因此，在上面的示例中，即使 Device1 已安装了部署到它的更新，它也被认为不符合要求。 Device1 仍会被认为不符合要求，直到它成功安装 Update3 为止。 符合性状态可以帮助你确定是否需要新部署。 
 
-如上所示，IoT 中心的设备更新中有三种符合性状态：
+如上所示，在 Device Update for IoT Hub 中有三种符合性状态：
 
-*   **最新更新** –设备安装了发布到设备更新的版本兼容最高的更新。
-*   **正在进行更新** -活动部署正在向设备提供最高版本的兼容更新。
-*   **可用的新更新** –设备尚未安装兼容最高版本的更新，并且不是针对该更新的活动部署。
+*   应用了最新更新 - 设备已安装发布到 Device Update 的最高版本兼容更新。
+*   正在更新 - 活动部署正在向设备传递最高版本兼容更新。
+*   有可用的新更新 - 设备尚未安装最高版本兼容更新，尚未针对该更新进行积极的部署。

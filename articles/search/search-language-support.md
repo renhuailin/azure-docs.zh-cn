@@ -1,70 +1,148 @@
 ---
 title: 用于非英语搜索查询的多语言索引
 titleSuffix: Azure Cognitive Search
-description: Azure 认知搜索支持 56 种语言，通过 Microsoft 中的 Lucene 和自然语言处理技术利用语言分析器。
+description: 创建一个支持多语言内容的索引，然后创建其范围限定于该内容的查询。
 manager: nitinme
-author: yahnoosh
-ms.author: jlembicz
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: 588de9c9cae114b5f5396db17f7ecb19bcde25c6
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
-ms.translationtype: MT
+ms.date: 03/22/2021
+ms.openlocfilehash: 627ec77af4e492b4f22404972729cecdb1c40f06
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423073"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104801598"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为多种语言创建索引
 
-索引可以包括包含多种语言内容的字段，例如，为特定于语言的字符串创建单独的字段。 为了在索引和查询过程中获得最佳结果，请分配提供适当语言规则的语言分析器。 
+多语言搜索应用程序的一项关键要求是能够按用户自己的语言搜索和检索结果。 在 Azure 认知搜索中，满足多语言应用的语言要求的一种方法是创建专用字段来存储特定语言的字符串，然后在查询时将全文搜索的范围限制为这些字段。
 
-Azure 认知搜索提供了大量来自 Lucene 和 Microsoft 的语言分析器，可以使用 Analyzer 属性将它们分配给各个字段。 还可以在门户中指定语言分析器，如本文所述。
++ 在字段定义中，设置一个会调用目标语言的语言规则的语言分析器。 若要查看支持的分析器的完整列表，请参阅[添加语言分析器](index-add-language-analyzers.md)。
 
-## <a name="add-analyzers-to-fields"></a>将分析器添加到字段
++ 在查询请求中设置参数，以便将全文搜索的范围限定于特定字段，然后，对于其提供的内容与你要提供的搜索体验不兼容的任何字段，请剪裁其结果。
 
-创建字段时指定语言分析器。 将分析器添加到现有字段定义需要覆盖（并重新加载）索引，或创建与原始字段相同但具有分析器分配的新字段。 然后，可以在方便时删除未使用的字段。
+此方法能够成功取决于字段内容的完整性。 在查询执行过程中，Azure 认知搜索不会转换字符串或执行语言检测。 你负责确保字段包含预期的字符串。
 
-1. 登录 [Azure 门户](https://portal.azure.com)并查找搜索服务。
-1. 在服务仪表板顶部的命令栏中单击“添加索引”  即可启动新的索引，或打开现有索引，在添加至现有索引的新字段上设置分析器。
-1. 通过提供名称开始字段定义。
-1. 选择 Edm.String 数据类型。 只有字符串字段是全文可搜索的。
-1. 设置 **可搜索** 特性以启用 Analyzer 属性。 字段必须基于文本才能使用语言分析器。
-1. 选择一个可用的分析器。 
+## <a name="define-fields-for-content-in-different-languages"></a>为采用不同语言的内容定义字段
 
-![在字段定义期间分配语言分析器](media/search-language-support/select-analyzer.png "在字段定义期间分配语言分析器")
+在 Azure 认知搜索中，查询以单个索引为目标。 想要在单个搜索体验中提供特定于语言的字符串的开发人员通常会定义专用字段来存储值：一个字段用于存储英语字符串，一个字段用于存储法语字符串，等等。
 
-默认情况下，所有可搜索字段都使用与语言无关的[标准 Lucene 分析器](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html)。 若要查看支持的分析器的完整列表，请参阅[将语言分析器添加到 Azure 认知搜索索引](index-add-language-analyzers.md)。
+字段定义中的“analyzer”属性用于设置[语言分析器](index-add-language-analyzers.md)。 它将同时用于编制索引和执行查询。
 
-在门户中，分析器旨在按原样使用。 如果需要筛选器和 tokenizer 的自定义设置或特定配置，则应在代码中[创建自定义分析器](index-add-custom-analyzers.md)。 门户不支持选择或配置自定义分析器。
+```JSON
+{
+  "name": "hotels-sample-index",
+  "fields": [
+    {
+      "name": "Description",
+      "type": "Edm.String",
+      "retrievable": true,
+      "searchable": true,
+      "analyzer": "en.microsoft"
+    },
+    {
+      "name": "Description_fr",
+      "type": "Edm.String",
+      "retrievable": true,
+      "searchable": true,
+      "analyzer": "fr.microsoft"
+    },
+```
 
-## <a name="query-language-specific-fields"></a>查询语言特定的字段
+## <a name="build-and-load-an-index"></a>生成和加载索引
 
-为字段选择语言分析器后，它用于该字段的每个索引和搜索请求。 当针对使用不同分析器的多个字段发出查询时，查询将由为每个字段分配的分析器独立处理。
+编写查询之前的一个中间步骤（也许是众所周知的步骤）是[生成并填充索引](search-get-started-dotnet.md)。 为了保持内容完整，此处阐述了此步骤。 确定索引可用性的一种方法是在[门户](https://portal.azure.com)中查看索引列表。
 
-如果已知发出查询的代理的语言，可使用 **searchFields** 查询参数，将搜索请求的范围限制为特定字段。 以下查询将仅针对波兰文描述发出：
+> [!TIP]
+> 通过 [AI 扩充](cognitive-search-concept-intro.md)和[技能组](cognitive-search-working-with-skillsets.md)在数据引入期间支持语言检测和文本翻译。 如果你有一个包含混合语言内容的 Azure 数据源，则可以使用[导入数据向导](cognitive-search-quickstart-blob.md)尝试语言检测和翻译功能。
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=PolishContent&api-version=2020-06-30`
+## <a name="constrain-the-query-and-trim-results"></a>约束查询和修剪结果
 
-使用 [**搜索资源管理器**](search-explorer.md)粘贴类似上述内容的查询，可以从门户查询索引。
+查询中的参数用于将搜索范围限制为特定的字段，然后修剪对方案无用的任何字段的结果。 
+
+| 参数 | 目的 |
+|-----------|--------------|
+| **searchFields** | 将全文搜索限制为命名字段的列表。 |
+| **$select** | 修剪响应，以便只包含指定的字段。 默认情况下，会返回所有可检索字段。 使用 **$Select** 参数可以选择要返回哪些字段。 |
+
+假设目标是将搜索范围限定于包含法语字符串的字段，则可以使用 **searchFields** 将查询目标指定为包含法语字符串的字段。
+
+没有必要在查询请求中指定分析器。 在查询处理过程中，将始终使用基于字段定义的语言分析器。 对于其指定的多个字段会调用不同语言分析器的查询，词语或短语将由为每个字段分配的分析器各自处理。
+
+默认情况下，搜索会返回标记为可检索的所有字段。 因此，可能需要排除不符合想要提供的特定于语言的搜索体验的字段。 具体而言，如果将搜索范围限制为包含法语字符串的字段，也许需要从结果中排除包含英语字符串的字段。 使用 **$select** 查询参数可以控制要将哪些字段返回到调用应用程序。
+
+#### <a name="example-in-rest"></a>REST 中的示例
+
+```http
+POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+{
+    "search": "animaux acceptés",
+    "searchFields": "Tags, Description_fr",
+    "select": "HotelName, Description_fr, Address/City, Address/StateProvince, Tags",
+    "count": "true"
+}
+```
+
+#### <a name="example-in-c"></a>C# 中的示例
+
+```csharp
+private static void RunQueries(SearchClient srchclient)
+{
+    SearchOptions options;
+    SearchResults<Hotel> response;
+
+    options = new SearchOptions()
+    {
+        IncludeTotalCount = true,
+        Filter = "",
+        OrderBy = { "" }
+    };
+
+    options.Select.Add("HotelId");
+    options.Select.Add("HotelName");
+    options.Select.Add("Description_fr");
+    options.SearchFields.Add("Tags");
+    options.SearchFields.Add("Description_fr");
+
+    response = srchclient.Search<Hotel>("*", options);
+    WriteDocuments(response);
+}
+```
 
 ## <a name="boost-language-specific-fields"></a>提升语言特定的字段
 
-有时，发出查询的代理的语言未知，在此情况下，可以针对所有字段同时发出查询。 如果需要，可以使用[计分配置文件](index-add-scoring-profiles.md)来定义采用特定语言的结果首选项。 在下面的示例中，与波兰文和法文的匹配项相比，英文描述中提供的匹配项的评分更高：
+有时，发出查询的代理的语言未知，在此情况下，可以针对所有字段同时发出查询。 可以使用[计分概要文件](index-add-scoring-profiles.md)来定义采用特定语言的结果的首选项。 在以下示例中，与其他语言的匹配项相比，在英文说明中找到的匹配项分数更高：
 
-```http
-    "scoringProfiles": [
-      {
-        "name": "englishFirst",
-        "text": {
-          "weights": { "description_en": 2 }
-        }
+```JSON
+  "scoringProfiles": [
+    {
+      "name": "englishFirst",
+      "text": {
+        "weights": { "description": 2 }
       }
-    ]
+    }
+  ]
 ```
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2020-06-30`
+你可以随后在搜索请求中包含计分概要文件：
+
+```http
+POST /indexes/hotels/docs/search?api-version=2020-06-30
+{
+  "search": "pets allowed",
+  "searchFields": "Tags, Description",
+  "select": "HotelName, Tags, Description",
+  "scoringProfile": "englishFirst",
+  "count": "true"
+}
+```
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你是 .NET 开发人员，请注意，你可以使用 [Azure 认知搜索 .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) 和 [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer) 属性配置语言分析器。
++ [语言分析器](index-add-language-analyzers.md)
++ [Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)
++ [搜索文档 REST API](/rest/api/searchservice/search-documents)
++ [AI 扩充概述](cognitive-search-concept-intro.md)
++ [技能组概述](cognitive-search-working-with-skillsets.md)

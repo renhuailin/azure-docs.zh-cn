@@ -12,38 +12,38 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 12/16/2020
 ms.openlocfilehash: fad19d360f7c476ba71a9bbe00b58387b92f8ac4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101690544"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>管理 Azure SQL 数据库长期备份保留
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-使用 Azure SQL 数据库时，可以将 [长期备份保留](long-term-retention-overview.md) 策略设置 (LTR) ，以自动将备份保留在单独的 Azure Blob 存储容器中，最长可达10年。 然后，可以通过 Azure 门户或 PowerShell 使用这些备份来恢复数据库。 [AZURE SQL 托管实例](../managed-instance/long-term-backup-retention-configure.md)也支持长期保留策略。
+借助 Azure SQL 数据库，可以设置[长期备份保留](long-term-retention-overview.md)策略 (LTR) 以自动将备份保留在单独的 Azure Blob 存储容器中最多 10 年。 然后，可以通过 Azure 门户或 PowerShell 使用这些备份来恢复数据库。 [Azure SQL 托管实例](../managed-instance/long-term-backup-retention-configure.md)也支持长期保留策略。
 
 ## <a name="using-the-azure-portal"></a>使用 Azure 门户
 
-以下部分说明了如何使用 Azure 门户来设置长期保留策略、管理可用的长期保留备份，并从可用备份中还原。
+以下各部分展示了如何使用 Azure 门户设置长期保留策略、管理可用的长期保留备份，以及从可用备份进行还原。
 
 ### <a name="configure-long-term-retention-policies"></a>配置长期保留策略
 
 可以对 SQL 数据库进行配置，使其[保留自动备份](long-term-retention-overview.md)的时间长于你的服务层级的保留期。
 
-1. 在 Azure 门户中，导航到你的服务器，然后选择 " **备份**"。 选择 " **保留策略** " 选项卡以修改备份保留设置。
+1. 在 Azure 门户中，导航到服务器，然后选择“备份”。 选择“保留策略”选项卡以修改备份保留设置。
 
    ![保留策略体验](./media/long-term-backup-retention-configure/ltr-policies-tab.png)
 
-2. 在 "保留策略" 选项卡上，选择要在其上设置或修改长期备份保留策略的数据库 () 。 未选定的数据库将不受影响。
+2. 在“保留策略”选项卡上，选择要为其设置或修改长期备份保留策略的数据库。 未选定的数据库不受影响。
 
    ![选择数据库以配置备份保留策略](./media/long-term-backup-retention-configure/ltr-policies-tab-configure.png)
 
-3. 在 " **配置策略** " 窗格中，为每周、每月或每年备份指定所需的保留期。 选择 "0" 的保留期，指示不应设置长期备份保留。
+3. 在“配置策略”窗格中，为每周、每月或每年备份指定所需的保留期。 将保留期选择为“0”，指示不应设置长期备份保留。
 
-   ![配置策略窗格](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
+   ![“配置策略”窗格](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
 
-4. 选择 " **应用** " 将所选的保留设置应用于所有选定的数据库。
+4. 选择“应用”以将所选保留设置应用于所有选定数据库。
 
 > [!IMPORTANT]
 > 启用长期备份保留策略时，最长可能需要 7 天以后才能查看和还原第一个备份。 有关 LTR 备份频率的详细信息，请参阅[长期备份保留](long-term-retention-overview.md)。
@@ -52,23 +52,23 @@ ms.locfileid: "101690544"
 
 查看通过 LTR 策略为特定数据库保留的备份，并从这些备份进行还原。
 
-1. 在 Azure 门户中，导航到你的服务器，然后选择 " **备份**"。 若要查看特定数据库的可用 LTR 备份，请在 "可用的 LTR 备份" 列下选择 " **管理** "。 将显示一个窗格，其中包含所选数据库的可用 LTR 备份的列表。
+1. 在 Azure 门户中，导航到服务器，然后选择“备份”。 若要查看特定数据库的可用 LTR 备份，请在“可用 LTR 备份”列下选择“管理”。 将显示一个窗格，其中包含所选数据库的可用 LTR 备份的列表。
 
    ![可用备份体验](./media/long-term-backup-retention-configure/ltr-available-backups-tab.png)
 
-1. 在出现的 "从 **左向右备份** " 窗格中，查看可用的备份。 您可以选择要从中还原的备份或删除。
+1. 在显示的“可用 LTR 备份”窗格中，查看可用备份。 可以选择要从中进行还原或删除的备份。
 
-   ![查看可用的 LTR 备份](./media/long-term-backup-retention-configure/ltr-available-backups-manage.png)
+   ![查看可用 LTR 备份](./media/long-term-backup-retention-configure/ltr-available-backups-manage.png)
 
-1. 若要从可用的 LTR 备份还原，请选择要从中还原的备份，然后选择 " **还原**"。
+1. 若要从可用 LTR 备份进行还原，请选择要从中进行还原的备份，然后选择“还原”。
 
-   ![从可用的 LTR 备份还原](./media/long-term-backup-retention-configure/ltr-available-backups-restore.png)
+   ![从可用 LTR 备份进行还原](./media/long-term-backup-retention-configure/ltr-available-backups-restore.png)
 
-1. 选择新数据库的名称，然后选择 " **查看 + 创建** " 以查看还原的详细信息。 选择 " **创建** " 以从所选备份中还原数据库。
+1. 选择新数据库的名称，然后选择“查看 + 创建”以查看还原的详细信息。 选择“创建”以从所选备份还原数据库。
 
    ![配置还原详细信息](./media/long-term-backup-retention-configure/restore-ltr.png)
 
-1. 在工具栏上，选择 "通知" 图标以查看还原作业的状态。
+1. 在工具栏上，选择通知图标可查看还原作业的状态。
 
    ![还原作业进度](./media/long-term-backup-retention-configure/restore-job-progress-long-term.png)
 
@@ -202,7 +202,7 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 ```
 
 > [!IMPORTANT]
-> 若要在删除服务器或资源组后从 LTR 备份进行还原，您必须拥有对服务器订阅的权限，并且该订阅必须处于活动状态。 还必须省略可选的 -ResourceGroupName 参数。
+> 若要在删除服务器或资源组后从 LTR 备份进行还原，必须具有服务器订阅范围内的权限，并且该订阅必须处于活动状态。 还必须省略可选的 -ResourceGroupName 参数。
 
 > [!NOTE]
 > 从此处，可使用 SQL Server Management Studio 连接到已还原的数据库，执行所需任务，例如从恢复的数据库中提取一部分数据，复制到现有数据库或删除现有数据库，并将已还原的数据库重命名为现有数据库名。 请参阅[时间点还原](recovery-using-backups.md#point-in-time-restore)。

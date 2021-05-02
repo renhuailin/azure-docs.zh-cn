@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2020
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: 5f5db3fd88f04e7fe569cd675936445dcf730288
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97705330"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>为 Azure 逻辑应用部署 Azure 资源管理器模板
@@ -119,18 +119,18 @@ az deployment group create -g <Azure-resource-group-name> --template-uri https:/
 
 ## <a name="authorize-oauth-connections"></a>授权 OAuth 连接
 
-部署完成后，逻辑应用使用有效的参数以端到端的方式运行，但为了生成用于 [验证凭据](../active-directory/develop/authentication-vs-authorization.md)的有效访问令牌，你仍需要授权或使用预授权 OAuth 连接。 但是，你只需部署和验证 API 连接资源一次，这意味着在后续部署中无需包含这些连接资源，除非你需要更新连接信息。 如果使用持续集成和连续部署管道，则仅部署已更新的逻辑应用资源，无需每次都重新授权连接。
+部署后，逻辑应用将使用有效的参数完成端到端工作。但是，若要生成用于[验证凭据](../active-directory/develop/authentication-vs-authorization.md)的有效访问令牌，你仍然需要对 OAuth 连接授权，或使用预先授权的 OAuth 连接。 不过，你只需要部署和验证 API 连接资源一次，这意味着你不必在后续部署中包括这些连接资源，除非你必须更新连接信息。 如果使用持续集成和持续部署管道，则只部署更新的逻辑应用资源，而不必每次都对连接重新授权。
 
-下面是一些处理授权连接的建议：
+以下是关于如何处理授权连接的一些建议：
 
-* 在同一区域中的逻辑应用上 Preauthorize 和共享 API 连接资源。 API 连接与逻辑应用独立于 Azure 资源。 逻辑应用与 API 连接资源存在依赖关系，而 API 连接资源不依赖于逻辑应用，并且在删除从属逻辑应用后仍保留。 此外，逻辑应用可以使用其他资源组中存在的 API 连接。 但是，逻辑应用设计器仅支持在与逻辑应用相同的资源组中创建 API 连接。
+* 在同一区域的逻辑应用中对 API 连接资源进行预授权和共享。 API 连接作为 Azure 资源独立于逻辑应用而存在。 虽然逻辑应用依赖于 API 连接资源，但 API 连接资源不依赖于逻辑应用，在删除依赖的逻辑应用后仍然存在。 此外，逻辑应用可以使用其他资源组中存在的 API 连接。 但是，逻辑应用设计器支持仅在逻辑应用所在的资源组中创建 API 连接。
 
   > [!NOTE]
-  > 如果要考虑共享 API 连接，请确保解决方案可以 [处理潜在的限制问题](../logic-apps/handle-throttling-problems-429-errors.md#connector-throttling)。 阻止在连接级别进行，因此跨多个逻辑应用重用相同的连接可能会增加限制问题的可能性。
+  > 如果考虑共享 API 连接，请确保你的解决方案可以[处理潜在的限制问题](../logic-apps/handle-throttling-problems-429-errors.md#connector-throttling)。 限制发生在连接级别，因此在多个逻辑应用中重用同一连接可能会提高出现限制问题的可能性。
 
-* 除非你的方案涉及到需要多重身份验证的服务和系统，否则，你可以使用 PowerShell 脚本为每个 OAuth 连接提供许可，方法是在具有活动浏览器会话以及已提供授权的活动浏览器会话的虚拟机上运行一个普通用户帐户。 例如，你可以重新使用 [逻辑应用 GitHub 存储库中的 LogicAppConnectionAuth 项目](https://github.com/logicappsio/LogicAppConnectionAuth)提供的示例脚本。
+* 除非你的方案涉及需要多重身份验证的服务和系统，否则你可以使用 PowerShell 脚本为每个 OAuth 连接提供同意，方法是：在具有活动浏览器会话且已提供授权和同意的虚拟机上以普通用户帐户身份运行持续集成辅助角色。 例如，可以重新调整[逻辑应用 GitHub 存储库中的 LogicAppConnectionAuth 项目](https://github.com/logicappsio/LogicAppConnectionAuth)提供的示例脚本的用途。
 
-* 通过在逻辑应用设计器中打开逻辑应用，在 Azure 门户或 Visual Studio 中打开逻辑应用，手动授权 OAuth 连接。
+* 若要对 OAuth 连接进行手动授权，请在 Azure 门户或 Visual Studio 的逻辑应用设计器中打开逻辑应用。
 
 * 如果改用 Azure Active Directory (Azure AD) [服务主体](../active-directory/develop/app-objects-and-service-principals.md)来授权连接，请了解如何[在逻辑应用模板中指定服务主体参数](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections)。
 

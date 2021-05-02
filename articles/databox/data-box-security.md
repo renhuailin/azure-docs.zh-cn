@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure Data Box 安全性概述 | Microsoft Docs
-description: 介绍 Azure Data Box 在 Data Box 上的设备、服务和数据中的安全功能。
+description: 介绍了驻留在 Data Box 上的设备、服务和数据中的 Azure Data Box 安全功能。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: alkohli
 ms.openlocfilehash: 4d6c77b3e8920cabc397cdcbc235baefa031e5ab
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97655486"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box 安全性和数据保护
@@ -30,18 +30,18 @@ Microsoft Azure Data Box 解决方案由四个彼此交互的主要组件构成�
 - **连接到设备的客户端/主机** – 基础结构中的客户端，它们连接到 Data Box 设备，并包含需要保护的数据。
 - **云存储** – Azure 云中存储数据的位置。 该位置通常是链接到所创建的 Azure Data Box 资源的存储帐户。
 
-下图显示了通过 Azure Data Box 解决方案从本地到 Azure 的数据流，以及在数据流过解决方案时的各种安全功能。 此流适用于你的 Data Box 的导入顺序。
+下图指示了通过 Azure Data Box 解决方案从本地发往 Azure 的数据流，以及在数据流经解决方案时已经就位的各种安全功能。 此流适用于 Data Box 的导入订单。
 
 ![Data Box 导入安全性](media/data-box-security/data-box-security-import.png)
 
-下图是 Data Box 的出口订单。
+下图适用于 Data Box 的导出订单。
 
-![Data Box 导出安全](media/data-box-security/data-box-security-export.png)
+![Data Box 导出安全性](media/data-box-security/data-box-security-export.png)
 
 在数据流经此解决方案时，将会记录事件并生成日志。 有关详细信息，请转到：
 
-- [Azure Data Box 导入订单的跟踪和事件日志记录](data-box-logs.md)。
-- [Azure Data Box 导出订单的跟踪和事件日志记录](data-box-export-logs.md)
+- [跟踪 Azure Data Box 导入订单并记录其事件](data-box-logs.md)。
+- [跟踪 Azure Data Box 导出订单并记录其事件](data-box-export-logs.md)
 
 ## <a name="security-features"></a>安全功能
 
@@ -55,30 +55,30 @@ Data Box 设备由以下功能提供保护：
 - 硬件和软件篡改检测，可以防止进一步的设备操作。
 - 仅运行 Data Box 特定的软件。
 - 在锁定状态下启动。
-- 通过设备解锁密钥控制设备访问。 此密钥受加密密钥保护。 你可以使用自己的客户托管密钥来保护密钥。 有关详细信息，请参阅[在 Azure Data Box 的 Azure Key Vault 中使用客户管理的密钥](data-box-customer-managed-encryption-key-portal.md)。
-- 访问凭据，用于将数据复制到和复制出设备。 对 Azure 门户中的 **设备凭据** 页的每个访问都记录在 [活动日志](data-box-logs.md#query-activity-logs-during-setup)中。
-- 你可以使用自己的密码进行设备和共享访问。 有关详细信息，请参阅 [教程： Order Azure Data Box](data-box-deploy-ordered.md)。
+- 通过设备解锁密钥控制设备访问。 此密钥受加密密钥保护。 可以使用自己的客户管理密钥来保护密钥。 有关详细信息，请参阅[在 Azure Data Box 的 Azure Key Vault 中使用客户管理的密钥](data-box-customer-managed-encryption-key-portal.md)。
+- 访问凭据，用于将数据复制到和复制出设备。 对 Azure 门户中“设备凭据”页的每次访问都会记录在[活动日志](data-box-logs.md#query-activity-logs-during-setup)中。
+- 可以使用自己的密码进行设备和共享访问。 有关详细信息，请参阅[教程：订购 Azure Data Box](data-box-deploy-ordered.md)。
 
-### <a name="establish-trust-with-the-device-via-certificates"></a>通过证书建立与设备的信任
+### <a name="establish-trust-with-the-device-via-certificates"></a>通过证书与设备建立信任关系
 
-利用 Data Box 设备，你可以自带证书，并安装用于连接到本地 web UI 和 blob 存储的证书。 有关详细信息，请参阅 [将自己的证书与 Data Box 和 Data Box Heavy 设备一起使用](data-box-bring-your-own-certificates.md)。
+Data Box 设备允许你自带证书以及安装用于连接到本地 Web UI 和 blob 存储的证书。 有关详细信息，请参阅[将自己的证书用于 Data Box 和 Data Box Heavy 设备](data-box-bring-your-own-certificates.md)。
 
 ### <a name="data-box-data-protection"></a>Data Box 数据保护
 
 流入和流出 Data Box 的数据由以下功能提供保护：
 
-- 用于静态数据的 AES 256 位加密。 在高安全性环境中，你可以使用基于软件的双加密。 有关详细信息，请参阅 [教程： Order Azure Data Box](data-box-deploy-ordered.md)。
-- 可以为传输中数据使用加密的协议。 建议你在将数据从数据服务器复制到数据服务器时，将 SMB 3.0 与加密配合使用来保护数据。
-- 完成上传到 Azure 后，保护从设备中擦除数据。 数据擦除符合 [NIST 800-88r1 标准中 ATA 硬盘驱动器的附录 A](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf) 中的准则。 数据擦除事件将记录在[订单历史记录](data-box-logs.md#download-order-history)中。
+- 用于静态数据的 AES 256 位加密。 在高安全性环境中，可以使用基于软件的双重加密。 有关详细信息，请参阅[教程：订购 Azure Data Box](data-box-deploy-ordered.md)。
+- 可以为传输中数据使用加密的协议。 从数据服务器向它复制数据时，建议使用具有加密功能的 SMB 3.0 来保护数据。
+- 将数据上传到 Azure 后，就可以安全地擦除设备中的数据。 数据擦除符合 [NIST 800-88r1 标准中 ATA 硬盘驱动器的附录 A](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf) 中的准则。 数据擦除事件将记录在[订单历史记录](data-box-logs.md#download-order-history)中。
 
 ### <a name="data-box-service-protection"></a>Data Box 服务保护
 
 Data Box 服务受以下功能的保护。
 
-- 若要访问 Data Box 服务，需要你的组织拥有包含 Data Box 的 Azure 订阅。 订阅决定可以在 Azure 门户中访问的功能。
+- 访问 Data Box 服务要求组织有一个包含 Data Box 在内的 Azure 订阅。 订阅决定可以在 Azure 门户中访问的功能。
 - 由于 Data Box 服务在 Azure 中托管，因此受 Azure 安全功能的保护。 有关 Microsoft Azure 提供的安全功能的详细信息，请转到 [Microsoft Azure 信任中心](https://www.microsoft.com/TrustCenter/Security/default.aspx)。
-- 可以通过使用 Azure 角色来控制对 Data Box 顺序的访问。 有关详细信息，请参阅[设置对 Data Box 订单的访问控制](data-box-logs.md#set-up-access-control-on-the-order)
-- Data Box 服务存储用于解锁服务中设备的解锁密码。
+- 可以通过使用 Azure 角色来控制对 Data Box 订单的访问。 有关详细信息，请参阅[设置对 Data Box 订单的访问控制](data-box-logs.md#set-up-access-control-on-the-order)
+- Data Box 服务会存储用来解锁服务中的设备的解锁密码。
 - Data box 服务在服务中存储订单详细信息和状态。 删除订单会删除这些信息。
 
 ## <a name="managing-personal-data"></a>管理个人数据
@@ -87,7 +87,7 @@ Azure Data Box 在服务中收集并显示以下关键实例中的个人信息�
 
 - **通知设置** - 创建订单时，需在通知设置下配置用户的电子邮件地址。 此信息可由管理员查看。 当作业进入终止状态或者删除订单时，服务会删除此信息。
 
-- **订单详细信息** -创建订单后，用户的发货地址、电子邮件和联系人信息将存储在 Azure 门户中。 保存的信息包括：
+- 订单详细信息 - 创建订单后，用户的寄送地址、电子邮件和联系信息将存储在 Azure 门户中。 保存的信息包括：
 
   - 联系人姓名
   - 电话号码

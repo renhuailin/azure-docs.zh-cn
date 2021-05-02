@@ -10,15 +10,15 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: b2471ccd2a412c7cbae9d4e59412ac055697e3d7
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102180354"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>静态数据的 Azure 存储加密
 
-Azure 存储 (SSE) 使用服务器端加密，在将数据保存到云中时自动对数据进行加密。 Azure 存储加密可以保护数据，并帮助组织履行在安全性与合规性方面做出的承诺。
+在将数据保存到云时，Azure 存储会使用服务器端加密 (SSE) 自动对数据加密。 Azure 存储加密可以保护数据，并帮助组织履行在安全性与合规性方面做出的承诺。
 
 ## <a name="about-azure-storage-encryption"></a>关于 Azure 存储加密
 
@@ -32,13 +32,13 @@ Azure 存储中的数据将使用 256 位 [AES 加密法](https://en.wikipedia.o
 
 有关 Azure 存储加密的底层加密模块的详细信息，请参见[加密 API：下一代](/windows/desktop/seccng/cng-portal)。
 
-有关 Azure 托管磁盘的加密和密钥管理的信息，请参阅 [azure 托管磁盘的服务器端加密](../../virtual-machines/disk-encryption.md)。
+有关 Azure 托管磁盘的加密和密钥管理的信息，请参阅 [Azure 托管磁盘的服务器端加密](../../virtual-machines/disk-encryption.md)。
 
 ## <a name="about-encryption-key-management"></a>关于加密密钥管理
 
 默认情况下，新存储帐户中的数据使用 Microsoft 管理的密钥进行加密。 你可以继续依赖于使用 Microsoft 管理的密钥来加密数据，也可以使用你自己的密钥来管理加密。 如果你选择使用自己的密钥来管理加密，则有两种选择。 可以使用任何一种类型的密钥管理，或者使用这两种类型：
 
-- 可以指定 *客户托管的密钥* ，以用于在 Blob 存储和 Azure 文件中对数据进行加密和解密。<sup>1，</sup> 必须将客户托管的密钥存储在 Azure Key Vault 或 Azure Key Vault 托管的硬件安全模型 (HSM)  (预览版) 。 若要详细了解客户管理的密钥，请参阅[使用客户管理的密钥进行 Azure 存储加密](./customer-managed-keys-overview.md)。
+- 可以指定客户管理的密钥，用于对 Blob 存储和 Azure 文件存储中的数据进行加密和解密。<sup>1,2</sup> 客户管理的密钥必须存储在 Azure Key Vault 或 Azure Key Vault 托管硬件安全模型 (HSM)（预览版）中。 若要详细了解客户管理的密钥，请参阅[使用客户管理的密钥进行 Azure 存储加密](./customer-managed-keys-overview.md)。
 - 可以在 Blob 存储操作中指定客户提供的密钥。 对 Blob 存储发出读取或写入请求的客户端可以在请求中包含加密密钥，以便精细控制 Blob 数据的加密和解密方式。 有关客户提供的密钥的详细信息，请参阅[在对 Blob 存储的请求中提供加密密钥](../blobs/encryption-customer-provided-keys.md)。
 
 下表比较了 Azure 存储加密的密钥管理选项。
@@ -46,24 +46,24 @@ Azure 存储中的数据将使用 256 位 [AES 加密法](https://en.wikipedia.o
 | 密钥管理参数 | Microsoft 管理的密钥 | 客户管理的密钥 | 客户提供的密钥 |
 |--|--|--|--|
 | 加密/解密操作 | Azure | Azure | Azure |
-| 支持的 Azure 存储服务 | 全部 | Blob 存储，Azure 文件<sup>1，2</sup> | Blob 存储 |
+| 支持的 Azure 存储服务 | 全部 | Blob 存储、Azure 文件存储<sup>1,2</sup> | Blob 存储 |
 | 密钥存储 | Microsoft 密钥存储 | Azure Key Vault 或 Key Vault HSM | 客户自己的密钥存储 |
 | 密钥轮换责任 | Microsoft | 客户 | 客户 |
 | 密钥控制 | Microsoft | 客户 | 客户 |
 
-<sup>1</sup> 有关创建支持对队列存储使用客户托管密钥的帐户的信息，请参阅 [创建支持队列的客户托管密钥的帐户](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。<br />
-<sup>2</sup> 有关创建支持使用客户管理的密钥和表存储的帐户的信息，请参阅 [创建支持表的客户托管密钥的帐户](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
+<sup>1</sup> 若要了解如何创建支持在队列存储中使用客户管理的密钥的帐户，请参阅[为队列创建支持客户管理的密钥的帐户](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。<br />
+<sup>1</sup> 若要了解如何创建支持在表存储中使用客户管理的密钥的帐户，请参阅[为表创建支持客户管理的密钥的帐户](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
 
 > [!NOTE]
 > Microsoft 管理的密钥会根据合规性要求进行适当的轮换。 如果有特定密钥轮换要求，Microsoft 建议你改为使用客户管理的密钥，以便自行管理和审核轮换。
 
 ## <a name="doubly-encrypt-data-with-infrastructure-encryption"></a>通过基础结构加密对数据进行双重加密
 
-如果客户需要确保数据安全的高级别保证，还可以在 Azure 存储基础结构级别启用256位 AES 加密。 启用基础结构加密后，存储帐户中的数据将在服务级别加密两次， &mdash; 一次 &mdash; 使用两种不同的加密算法和两个不同的密钥在基础结构级别进行加密。 对 Azure 存储数据进行双重加密可防止某个加密算法或密钥泄露的情况。 在这种情况下，额外的加密层将继续保护你的数据。
+如果客户要求较高级别的数据安全保证，则客户还可以在 Azure 存储基础结构级别启用 256 位 AES 加密。 启用基础结构加密后，将对存储帐户中的数据进行两次加密 &mdash; 分别在服务级别和基础架构级别 &mdash; 使用两种不同的加密算法和两个不同的密钥。 Azure 存储数据的双重加密可以在其中一种加密算法或密钥可能泄露的情况下提供保护。 在此方案中，附加的一层加密会继续保护你的数据。
 
-服务级别加密支持将 Microsoft 管理的密钥或客户托管的密钥用于 Azure Key Vault。 基础结构级别的加密依赖于 Microsoft 托管的密钥并始终使用单独的密钥。
+服务级别加密支持将 Microsoft 管理的密钥或客户管理的密钥与 Azure Key Vault 配合使用。 基础结构级别的加密依赖于 Microsoft 管理的密钥并始终使用单独的密钥。
 
-有关如何创建启用基础结构加密的存储帐户的详细信息，请参阅 [创建启用了基础结构加密的存储帐户，以便对数据进行双重加密](infrastructure-encryption-enable.md)。
+若要详细了解如何创建启用基础结构加密的存储帐户，请参阅[创建启用了基础结构加密的存储帐户以便对数据进行双重加密](infrastructure-encryption-enable.md)。
 
 ## <a name="encryption-scopes-for-blob-storage-preview"></a>Blob 存储的加密范围（预览）
 
@@ -76,7 +76,7 @@ Azure 存储中的数据将使用 256 位 [AES 加密法](https://en.wikipedia.o
 创建加密范围后，可以对创建容器或 Blob 的请求指定加密范围。 有关如何创建加密范围的详细信息，请参阅[创建和管理加密范围（预览）](../blobs/encryption-scope-manage.md)。
 
 > [!NOTE]
-> 读取访问异地冗余存储不支持加密作用域 (GRS) ，并在预览期间 (GZRS) 帐户读取访问地域冗余存储。
+> 在预览期间，读取访问异地冗余存储 (RA-GRS) 和读取访问异地区域冗余存储 (RA-GZRS) 帐户不支持加密范围。
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 

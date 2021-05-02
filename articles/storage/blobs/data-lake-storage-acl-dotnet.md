@@ -1,6 +1,6 @@
 ---
-title: 使用 .NET 设置 Azure Data Lake Storage Gen2 中的 Acl
-description: 使用 .NET 来管理启用了分层命名空间 (HNS) 的存储帐户中 (ACL) 的访问控制列表。
+title: 使用 .NET 设置 Azure Data Lake Storage Gen2 中的 ACL
+description: 使用 .NET 在启用了分层命名空间 (HNS) 的存储帐户中管理访问控制列表 (ACL)。
 author: normesta
 ms.service: storage
 ms.date: 02/17/2021
@@ -10,19 +10,19 @@ ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 626e89d8d758d5fe31ef6c913076a9154274bb61
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100653994"
 ---
-# <a name="use-net-to-manage-acls-in-azure-data-lake-storage-gen2"></a>使用 .NET 管理 Azure Data Lake Storage Gen2 中的 Acl
+# <a name="use-net-to-manage-acls-in-azure-data-lake-storage-gen2"></a>使用 .NET 管理 Azure Data Lake Storage Gen2 中的 ACL
 
-本文介绍如何使用 .NET 获取、设置和更新目录和文件的访问控制列表。
+本文介绍如何使用 .NET 来获取、设置和更新目录和文件的访问控制列表。
 
-ACL 继承已可用于在父目录下创建的新子项。 但你还可以在父目录的现有子项目上以递归方式添加、更新和删除 Acl，而不必为每个子项目单独进行这些更改。
+ACL 继承已可用于在父目录下创建的新子项。 但是你也可以为父目录的现有子项以递归方式添加、更新和删除 ACL，而不必为每个子项单独进行这些更改。
 
-[包 (NuGet) ](https://www.nuget.org/packages/Azure.Storage.Files.DataLake)  | [示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake)  | [递归 ACL 示例](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2FRecursive-Acl-Sample-Net.zip%3Fsv%3D2019-02-02%26st%3D2020-08-24T07%253A45%253A28Z%26se%3D2021-09-25T07%253A45%253A00Z%26sr%3Db%26sp%3Dr%26sig%3D2GI3f0KaKMZbTi89AgtyGg%252BJePgNSsHKCL68V6I5W3s%253D&data=02%7C01%7Cnormesta%40microsoft.com%7C6eae76c57d224fb6de8908d848525330%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637338865714571853&sdata=%2FWom8iI3DSDMSw%2FfYvAaQ69zbAoqXNTQ39Q9yVMnASA%3D&reserved=0)  | [API 参考](/dotnet/api/azure.storage.files.datalake)  | [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md)  | [提供反馈](https://github.com/Azure/azure-sdk-for-net/issues)
+[包 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake) | [示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake) | [递归 ACL 示例](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2FRecursive-Acl-Sample-Net.zip%3Fsv%3D2019-02-02%26st%3D2020-08-24T07%253A45%253A28Z%26se%3D2021-09-25T07%253A45%253A00Z%26sr%3Db%26sp%3Dr%26sig%3D2GI3f0KaKMZbTi89AgtyGg%252BJePgNSsHKCL68V6I5W3s%253D&data=02%7C01%7Cnormesta%40microsoft.com%7C6eae76c57d224fb6de8908d848525330%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637338865714571853&sdata=%2FWom8iI3DSDMSw%2FfYvAaQ69zbAoqXNTQ39Q9yVMnASA%3D&reserved=0) | [API 参考](/dotnet/api/azure.storage.files.datalake) | [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md) | [提供反馈](https://github.com/Azure/azure-sdk-for-net/issues)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -36,7 +36,7 @@ ACL 继承已可用于在父目录下创建的新子项。 但你还可以在父
 
   - 一个预配的 Azure Active Directory (AD) [安全主体](../../role-based-access-control/overview.md#security-principal)，它在目标容器父资源组或订阅范围中分配有[存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)角色。  
 
-  - 你打算将 ACL 设置应用到的目标容器或目录的拥有用户。 若要以递归方式设置 Acl，这包括目标容器或目录中的所有子项。
+  - 计划将 ACL 设置应用到的目标容器或目录的拥有用户。 为了以递归方式设置 ACL，这包括目标容器或目录中的所有子项。
   
   - 存储帐户密钥。
 
@@ -71,7 +71,7 @@ ACL 继承已可用于在父目录下创建的新子项。 但你还可以在父
 ### <a name="connect-by-using-azure-active-directory-ad"></a>使用 Azure Active Directory (AD) 进行连接
 
 > [!NOTE]
-> 若要使用 Azure Active Directory (Azure AD) 来授予访问权限，请确保已为安全主体分配了[存储 Blob 数据所有者角色](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改它们的影响，请参阅  [Azure Data Lake Storage Gen2 中的访问控制模型](./data-lake-storage-access-control-model.md)。
+> 若要使用 Azure Active Directory (Azure AD) 来授予访问权限，请确保已为安全主体分配了[存储 Blob 数据所有者角色](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改这些权限所带来的影响，请参阅 [Azure Data Lake Storage Gen2 中的访问控制模型](./data-lake-storage-access-control-model.md)。
 
 可以使用[适用于 .NET 的 Azure 标识客户端库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)，通过 Azure AD 对应用程序进行身份验证。
 
@@ -103,9 +103,9 @@ using Azure.Identity;
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Authorize_DataLake.cs" id="Snippet_AuthorizeWithKey":::
 
-## <a name="set-acls"></a>设置 Acl
+## <a name="set-acls"></a>设置 ACL
 
-设置 ACL 时，你将替换整个 ACL，包括其所有条目。 如果要更改安全主体的权限级别，或将新的安全主体添加到 ACL 而不影响其他现有项，则应改为更新 ACL。 若要更新 ACL 而不是替换它，请参阅本文的 [更新 acl](#update-acls) 部分。  
+设置 ACL 时，你将替换整个 ACL，包括其所有条目。 如果要更改安全主体的权限级别，或将新的安全主体添加到 ACL 而不影响其他现有项，则应改为更新 ACL。 若要更新 ACL 而不是替换它，请参阅本文的[更新 ACL](#update-acls) 部分。  
 
 如果选择设置 ACL，则必须为责任用户添加一个条目，为责任组添加一个条目，为所有其他用户添加一个条目。 若要详细了解责任用户、责任组和所有其他用户，请参阅[用户和标识](data-lake-storage-access-control.md#users-and-identities)。
 
@@ -135,7 +135,7 @@ using Azure.Identity;
 
 ### <a name="set-acls-recursively"></a>以递归方式设置 ACL
 
-通过调用 **DataLakeDirectoryClient. SetAccessControlRecursiveAsync** 方法以递归方式设置 acl。 向此方法传递 [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) 的[列表](/dotnet/api/system.collections.generic.list-1)。 每个 [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) 定义一个 ACL 条目。
+通过调用 DataLakeDirectoryClient.SetAccessControlRecursiveAsync 方法以递归方式设置 ACL。 向此方法传递 [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) 的[列表](/dotnet/api/system.collections.generic.list-1)。 每个 [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) 定义一个 ACL 条目。
 
 如果要设置 **默认** ACL 条目，请将 [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) 的 [PathAccessControlItem.DefaultScope](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) 属性设置为 **true**。 
 
@@ -147,24 +147,24 @@ using Azure.Identity;
 
 ## <a name="update-acls"></a>更新 ACL
 
-更新 ACL 时，你将修改 ACL 而非替换 ACL。 例如，你可以将一个新的安全主体添加到 ACL，而不影响 ACL 中列出的其他安全主体。  若要替换 ACL 而不是更新 ACL，请参阅本文的 [设置 acl](#set-acls) 部分。
+更新 ACL 时，你将修改 ACL 而非替换 ACL。 例如，你可以将一个新的安全主体添加到 ACL，而不影响 ACL 中列出的其他安全主体。  若要替换 ACL 而不是更新它，请参阅本文的 [设置 ACL](#set-acls) 部分。
 
 本节介绍如何完成下列操作：
 
 - 更新 ACL
-- 以递归方式更新 Acl
+- 以递归方式更新 ACL
 
 ### <a name="update-an-acl"></a>更新 ACL
 
-首先，通过调用 [DataLakeDirectoryClient. GetAccessControlAsync](/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.getaccesscontrolasync) 方法获取目录的 ACL。 将 ACL 条目列表复制到[PathAccessControl](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrol)对象的新[列表](/dotnet/api/system.collections.generic.list-1)。 然后找到要更新的条目，并将其替换为列表。 通过调用 [DataLakeDirectoryClient. SetAccessControlList](/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.setaccesscontrollist) 方法设置 ACL。
+首先，通过调用 [DataLakeDirectoryClient.GetAccessControlAsync](/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.getaccesscontrolasync) 方法获取目录的 ACL。 将 ACL 条目列表复制到 [PathAccessControl](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrol) 对象的新[列表](/dotnet/api/system.collections.generic.list-1)。 然后找到要更新的条目并在列表中替换它。 通过调用 [DataLakeDirectoryClient.SetAccessControlList](/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.setaccesscontrollist) 方法设置 ACL。
 
 此示例通过替换所有其他用户的 ACL 条目来更新容器的根 ACL。 
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/ACL_DataLake.cs" id="Snippet_UpdateACL":::
 
-### <a name="update-acls-recursively"></a>以递归方式更新 Acl
+### <a name="update-acls-recursively"></a>以递归方式更新 ACL
 
-若要以递归方式更新 ACL，请使用要更新的 ACL 项创建一个新的 ACL 对象，然后在 "更新 ACL" 操作中使用该对象。 不要获取现有 ACL，只需要提供要更新的 ACL 条目。
+若要以递归方式更新 ACL，请创建包含要更新的 ACL 条目的一个新 ACL 对象，然后在“更新 ACL”操作中使用该对象。 不要获取现有 ACL，只需要提供要更新的 ACL 条目。
 
 通过调用 **DataLakeDirectoryClient.UpdateAccessControlRecursiveAsync** 方法以递归方式更新 ACL。  向此方法传递 [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) 的[列表](/dotnet/api/system.collections.generic.list-1)。 每个 [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) 定义一个 ACL 条目。
 
@@ -185,7 +185,7 @@ using Azure.Identity;
 
 ### <a name="remove-an-acl-entry"></a>删除 ACL 条目
 
-首先，通过调用 [DataLakeDirectoryClient. GetAccessControlAsync](/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.getaccesscontrolasync) 方法获取目录的 ACL。 将 ACL 条目列表复制到[PathAccessControl](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrol)对象的新[列表](/dotnet/api/system.collections.generic.list-1)。 然后找到要删除的项，然后调用该集合的 [remove](/dotnet/api/system.collections.ilist.remove) 方法。 通过调用 [DataLakeDirectoryClient. SetAccessControlList](/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.setaccesscontrollist) 方法设置更新后的 ACL。
+首先，通过调用 [DataLakeDirectoryClient.GetAccessControlAsync](/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.getaccesscontrolasync) 方法获取目录的 ACL。 将 ACL 条目列表复制到 [PathAccessControl](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrol) 对象的新[列表](/dotnet/api/system.collections.generic.list-1)。 然后找到要删除的条目并调用集合的 [Remove](/dotnet/api/system.collections.ilist.remove) 方法。 通过调用 [DataLakeDirectoryClient.SetAccessControlList](/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.setaccesscontrollist) 方法设置已更新的 ACL。
 
 此示例通过替换所有其他用户的 ACL 条目来更新容器的根 ACL。 
 
@@ -193,7 +193,7 @@ using Azure.Identity;
 
 ### <a name="remove-acl-entries-recursively"></a>以递归方式删除 ACL 条目
 
-若要以递归方式删除 ACL 项，请为要删除的 ACL 项创建一个新的 ACL 对象，然后在 "删除 ACL" 操作中使用该对象。 不要获取现有 ACL，只需要提供要删除的 ACL 条目。 
+若要以递归方式删除 ACL 条目，请为要删除的 ACL 条目创建一个新的 ACL 对象，然后在“删除 ACL”操作中使用该对象。 不要获取现有 ACL，只需要提供要删除的 ACL 条目。 
 
 通过调用 **DataLakeDirectoryClient.RemoveAccessControlRecursiveAsync** 方法删除 ACL 条目。 向此方法传递 [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) 的[列表](/dotnet/api/system.collections.generic.list-1)。 每个 [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) 定义一个 ACL 条目。 
 
@@ -207,7 +207,7 @@ using Azure.Identity;
 
 ## <a name="recover-from-failures"></a>从故障中恢复
 
-递归修改 Acl 时，可能会遇到运行时错误或权限错误。 对于运行时错误，请从头开始重启此过程。 如果安全主体没有足够的权限修改要修改的目录层次结构中的目录或文件的 ACL，则会出现权限错误。 请解决权限问题，然后选择通过使用继续标记从故障点继续执行此过程，或者从头重启此过程。 如果希望从头开始重启，则无需使用继续标记。 你可以重新应用 ACL 条目，而不会产生任何负面影响。
+以递归方式修改 ACL 时，可能会遇到运行时错误或权限错误。 对于运行时错误，请从头开始重启此过程。 如果安全主体没有足够的权限修改要修改的目录层次结构中的目录或文件的 ACL，则会出现权限错误。 请解决权限问题，然后选择通过使用继续标记从故障点继续执行此过程，或者从头重启此过程。 如果希望从头开始重启，则无需使用继续标记。 你可以重新应用 ACL 条目，而不会产生任何负面影响。
 
 此示例在失败时返回一个继续标记。 应用程序可以在错误得到解决后再次调用此示例方法，并传入继续标记。 如果是第一次调用此示例方法，则应用程序可以为继续标记参数传入 `null` 值。 
 
