@@ -50,7 +50,7 @@ Azure Stack Edge Pro 具有以下功能：
 |支持的文件传输协议      | 支持用于数据引入的标准 SMB、NFS 和 REST 协议。 <br> 有关受支持版本的详细信息，请参阅 [Azure Stack Edge Pro 系统要求](azure-stack-edge-system-requirements.md)。|
 |数据刷新     | 可以使用云中的最新内容刷新本地文件。|
 |加密    | BitLocker 支持本地加密数据，并通过 *http* 安全地将数据传输到云中。|
-|带宽限制| 中止以限制在高峰时段使用带宽。||
+|带宽限制| 中止以限制在高峰时段使用带宽。|
 <!--|ExpressRoute | 通过 ExpressRoute 增加了安全性。 使用对等互连配置，从本地设备到云存储终结点的流量将通过 ExpressRoute 传输。 有关详细信息，请参阅 [ExpressRoute 概述](../expressroute/expressroute-introduction.md)。|-->
 
 ## <a name="components"></a>组件
