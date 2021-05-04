@@ -1,26 +1,26 @@
 ---
 title: 自定义资源缓存参考
-description: Azure 自定义资源提供程序的自定义资源缓存引用。 本文将指导实现缓存自定义资源的终结点的要求。
+description: Azure 自定义资源提供程序的自定义资源缓存参考 本文将详细介绍实现缓存自定义资源的终结点的要求。
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: e1b8c44f020d18066423eed236018308fe88b607
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75650378"
 ---
-# <a name="custom-resource-cache-reference"></a>自定义资源缓存引用
+# <a name="custom-resource-cache-reference"></a>自定义资源缓存参考
 
-本文将指导实现缓存自定义资源的终结点的要求。 如果不熟悉 Azure 自定义资源提供程序，请参阅 [自定义资源提供程序概述](overview.md)。
+本文将详细介绍实现缓存自定义资源的终结点的要求。 如果不熟悉 Azure 自定义资源提供程序，请参阅[自定义资源提供程序概述](overview.md)。
 
 ## <a name="how-to-define-a-cache-resource-endpoint"></a>如何定义缓存资源终结点
 
-可以通过将 **routingType** 指定为 "Proxy，Cache" 来创建代理资源。
+可以通过将 "routingType" 指定为 "Proxy, Cache" 来创建代理资源。
 
-示例自定义资源提供程序：
+自定义资源提供程序示例：
 
 ```JSON
 {
@@ -42,11 +42,11 @@ ms.locfileid: "75650378"
 
 ## <a name="building-proxy-resource-endpoint"></a>生成代理资源终结点
 
-实现 "代理、缓存" 资源**终结**点的**终结点**必须处理 Azure 中新 API 的请求和响应。 在这种情况下， **resourceType** 将为、和生成新的 AZURE 资源 API， `PUT` `GET` `DELETE` 以便在单个资源上执行 CRUD，并 `GET` 检索所有现有资源：
+实现 "Proxy, Cache" 资源终结点的终结点必须处理 Azure 中新 API 的请求和响应。 在本例中，resourceType 将为 `PUT`、`GET` 和 `DELETE` 生成一个新的 Azure 资源 API，以对单个资源执行 CRUD，并执行 `GET` 以检索所有现有资源：
 
 > [!NOTE]
-> Azure API 会生成请求方法 `PUT` 、和， `GET` `DELETE` 但缓存 **终结点** 只需处理 `PUT` 和 `DELETE` 。
-> 建议 **端点** 也实现 `GET` 。
+> Azure API 会生成请求方法 `PUT`、`GET` 和 `DELETE`，但是缓存终结点只需处理 `PUT` 和 `DELETE`。
+> 我们建议终结点也实现 `GET`。
 
 ### <a name="create-a-custom-resource"></a>创建自定义资源
 
@@ -67,7 +67,7 @@ Content-Type: application/json
 }
 ```
 
-然后，此请求将转发到以下形式的 **终结点** ：
+然后，此请求将以以下形式转发到终结点：
 
 ``` HTTP
 PUT https://{endpointURL}/?api-version=2018-09-01-preview
@@ -84,14 +84,14 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-同样，将 **终结点** 的响应转发回客户。 终结点的响应应返回：
+同样，终结点的响应随后将转发回客户。 终结点的响应应返回：
 
-- 有效的 JSON 对象文档。 所有数组和字符串都应嵌套在 top 对象下。
-- `Content-Type`标头应设置为 "application/json;字符集 = utf-8 "。
-- 自定义资源提供程序将覆盖 `name` 请求的、 `type` 和 `id` 字段。
-- 自定义资源提供程序将仅在 `properties` 缓存终结点的对象下返回字段。
+- 有效的 JSON 对象文档。 所有数组和字符串都应嵌套在顶级对象下。
+- `Content-Type` 标头应设置为“application/json; charset=utf-8”。
+- 自定义资源提供程序会覆盖请求的 `name`、`type` 和 `id` 字段。
+- 自定义资源提供程序将仅返回缓存终结点的 `properties` 对象下的字段。
 
-**终结点** 回复
+终结点响应：
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -107,7 +107,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-`name` `id` `type` 自定义资源提供程序会自动为自定义资源生成、和字段。
+自定义资源提供程序会自动为自定义资源生成 `name`、`id` 和 `type` 字段。
 
 Azure 自定义资源提供程序响应：
 
@@ -138,7 +138,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-然后，此请求将转发到以下形式的 **终结点** ：
+然后，此请求将以以下形式转发到终结点：
 
 ``` HTTP
 Delete https://{endpointURL}/?api-version=2018-09-01-preview
@@ -146,13 +146,13 @@ Content-Type: application/json
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}
 ```
 
-同样，将 **终结点** 的响应转发回客户。 终结点的响应应返回：
+同样，终结点的响应随后将转发回客户。 终结点的响应应返回：
 
-- 有效的 JSON 对象文档。 所有数组和字符串都应嵌套在 top 对象下。
-- `Content-Type`标头应设置为 "application/json;字符集 = utf-8 "。
-- 如果返回了200级别的响应，Azure 自定义资源提供程序将仅从其缓存中删除该项。 即使该资源不存在， **终结点** 也应返回204。
+- 有效的 JSON 对象文档。 所有数组和字符串都应嵌套在顶级对象下。
+- `Content-Type` 标头应设置为“application/json; charset=utf-8”。
+- 仅当返回 200 级别的响应时，Azure 自定义资源提供程序才会从其缓存中删除该项。 即使资源不存在，终结点也应返回 204。
 
-**终结点** 回复
+终结点响应：
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -176,7 +176,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-请求将 **不** 会转发到 **终结点**。
+此请求不会转发到终结点。
 
 Azure 自定义资源提供程序响应：
 
@@ -207,7 +207,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-此请求将 **不** 会转发到 **终结点**。
+此请求不会转发到终结点。
 
 Azure 自定义资源提供程序响应：
 
@@ -237,5 +237,5 @@ Content-Type: application/json; charset=utf-8
 - [Azure 自定义资源提供程序概述](overview.md)
 - [快速入门：创建 Azure 自定义资源提供程序和部署自定义资源](./create-custom-provider.md)
 - [教程：在 Azure 中创建自定义操作和资源](./tutorial-get-started-with-custom-providers.md)
-- [如何：将自定义操作添加到 Azure REST API](./custom-providers-action-endpoint-how-to.md)
-- [参考：自定义资源代理引用](proxy-resource-endpoint-reference.md)
+- [操作方法：将自定义操作添加到 Azure REST API](./custom-providers-action-endpoint-how-to.md)
+- [参考：自定义资源代理参考](proxy-resource-endpoint-reference.md)

@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: 5f7afe044ab4f782f2028598c2c56e75edf95860
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92317381"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure 逻辑应用的常见方案、示例、教程和演练
@@ -34,9 +34,9 @@ ms.locfileid: "92317381"
   * 使用[定期触发器](../connectors/connectors-native-recurrence.md)可设置启动日期和时间以及触发逻辑应用的重复周期。 例如，可以选择在星期几和一天中某个时间触发逻辑应用。 有关详细信息，请参阅以下主题：<p>
 
     * [使用 Azure 逻辑应用计划和运行重复性自动任务、过程与工作流](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)
-    * [教程：使用 Azure 逻辑应用创建基于计划的自动化定期工作流](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
+    * [教程：使用 Azure 逻辑应用创建自动化的基于计划的重复工作流](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
 
-  * **收到电子邮件时**，触发器允许逻辑应用检查逻辑应用支持的任何邮件提供商提供的新电子邮件，例如[Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md)、 [Gmail](/connectors/gmail/)、 [Outlook.com](/connectors/outlook/)等。
+  * “收到电子邮件时”触发器使逻辑应用可以检查是否有来自逻辑应用支持的任何邮件提供商（例如，[Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md)、[Gmail](/connectors/gmail/)、[Outlook.com](/connectors/outlook/) 等）的新电子邮件。
 
     > [!IMPORTANT]
     > 如果要使用 Gmail 连接器，则只有 G-Suite 商业帐户可以在逻辑应用中不受限制地使用此连接器。 如果有 Gmail 用户帐户，则只能将此连接器与 Google 批准的特定服务一起使用，也可以[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
@@ -50,7 +50,7 @@ ms.locfileid: "92317381"
 
 * 推送触发器：
 
-  * [**请求**触发器](../connectors/connectors-native-reqres.md)可接收 HTTPS 传入请求。
+  * [**请求** 触发器](../connectors/connectors-native-reqres.md)可接收 HTTPS 传入请求。
 
   * [HTTP Webhook 触发器](../connectors/connectors-native-webhook.md)通过向该服务注册回叫 URL 来订阅服务终结点。 这样一来，服务可只在指定事件发生时通知触发器，触发器便无需轮询服务。
 
@@ -90,7 +90,7 @@ ms.locfileid: "92317381"
 
 ## <a name="access-azure-virtual-network-resources"></a>访问 Azure 虚拟网络资源
 
-有时，逻辑应用和集成帐户需要访问受保护的资源，例如虚拟机 (Vm) 以及 Azure 虚拟网络中的其他系统或服务。 若要设置此访问权限，你可以创建一个集成服务环境 (ISE) ，你可以在该环境中生成并运行逻辑应用。 ISE 是逻辑应用服务的专用和隔离的实例，它使用特定的资源（如存储），并独立于公用 "全局"、"多租户逻辑应用服务" 运行。 分离隔离的私有实例和公共全局实例还有助于降低其他 Azure 租户对应用性能的影响，这也称为 "干扰邻居"。
+有时，逻辑应用和集成帐户需要访问 Azure 虚拟网络中受保护的资源，例如虚拟机 (VM) 和其他系统或服务。 若要设置此访问权限，可以创建一个集成服务环境 (ISE)，以便在其中生成和运行逻辑应用。 ISE 是逻辑应用服务的专用独立实例，它使用专用资源（如存储），并与公共的“全局”多租户逻辑应用服务分开运行。 将独立专用实例与公共全局实例分开也有助于减少其他 Azure 租户可能产生的对应用性能的影响（也称为“邻近干扰”影响）。
 
 * [概述：从 Azure 逻辑应用访问 Azure 虚拟网络资源](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)
 * [从 Azure 逻辑应用连接到 Azure 虚拟网络](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
@@ -114,15 +114,15 @@ ms.locfileid: "92317381"
 ### <a name="manage"></a>管理
 
 * [使用 Visual Studio 管理逻辑应用](../logic-apps/manage-logic-apps-with-visual-studio.md)
-* [为 B2B 企业集成创建和管理集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
-* [在 Azure 逻辑应用中管理 integration service 环境 (ISE) ](../logic-apps/ise-manage-integration-service-environment.md)
+* [创建和管理 B2B 企业集成的集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
+* [在 Azure 逻辑应用中管理集成服务环境 (ISE)](../logic-apps/ise-manage-integration-service-environment.md)
 
 ### <a name="monitor"></a>监视
 
 * [监视运行状态、查看触发器历史记录，并设置 Azure 逻辑应用的警报](../logic-apps/monitor-logic-apps.md)
-* [设置 Azure Monitor 日志并收集 Azure 逻辑应用的诊断数据](../logic-apps/monitor-logic-apps-log-analytics.md)
+* [为 Azure 逻辑应用设置 Azure Monitor 日志并收集诊断数据](../logic-apps/monitor-logic-apps-log-analytics.md)
 * [为 Azure 逻辑应用中的 B2B 消息设置 Azure Monitor 日志并收集诊断数据](../logic-apps/monitor-b2b-messages-log-analytics.md)
-* [查看并创建用于在 Azure 逻辑应用 Azure Monitor 日志中监视和跟踪的查询](../logic-apps/create-monitoring-tracking-queries.md)
+* [查看针对 Azure 逻辑应用的 Azure Monitor 日志并创建用于在其中进行监视和跟踪的查询](../logic-apps/create-monitoring-tracking-queries.md)
 
 ## <a name="handle-content-types-conversions-and-transformations"></a>处理内容类型、转换和变换
 
@@ -139,8 +139,8 @@ Azure 逻辑应用集成许多服务，例如 Azure Functions、Azure API 管理
 * [从 Azure 逻辑应用调用 Azure Functions](../logic-apps/logic-apps-azure-functions.md)
 * [教程：使用 Azure Functions 和 Azure 服务总线调用或触发逻辑应用](../logic-apps/logic-apps-scenario-function-sb-trigger.md)
 * [教程：使用 Azure 逻辑应用和 Azure Functions 创建流式处理客户见解仪表板](../logic-apps/logic-apps-scenario-social-serverless.md)
-* [教程：创建与 Azure 逻辑应用和 Azure 认知服务集成的函数以分析 Twitter post 情绪](../azure-functions/functions-twitter-email.md)
-* [教程：使用 Power BI 和 Azure 逻辑应用构建支持 AI 的社交仪表板](https://aka.ms/logicappsdemo)
+* [教程：创建与 Azure 逻辑应用和 Azure 认知服务集成的函数以分析 Twitter 帖子情绪](../azure-functions/functions-twitter-email.md)
+* [教程：使用 Power BI 和 Azure 逻辑应用生成由 AI 提供支持的社交仪表板](https://aka.ms/logicappsdemo)
 * [教程：通过 Azure 事件网格和逻辑应用监视虚拟机更改](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
 * [教程：通过连接 IoT 中心和邮箱的 Azure 逻辑应用进行 IoT 远程监视并发送通知](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 * [博客：使用 Azure 逻辑应用调用 SOAP 服务](/archive/blogs/logicapps/using-soap-services-with-logic-apps)

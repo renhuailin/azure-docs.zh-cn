@@ -1,6 +1,6 @@
 ---
-title: 向 Android 地图添加控件 |Microsoft Azure 映射
-description: 如何将缩放控件、螺距控件、旋转控件和样式选取器添加到 Microsoft Azure map Android SDK 中的地图。
+title: 向 Android 地图添加控件 | Microsoft Azure Maps
+description: 如何向 Microsoft Azure Maps Android SDK 中的地图添加缩放控件、绕 X 轴旋转控件、旋转控件和样式选取器。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 02/26/2021
@@ -10,19 +10,19 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: 90d037fc02bdc1c4d6fe682386790561c890c1e6
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102100213"
 ---
-# <a name="add-controls-to-a-map-android-sdk"></a>向地图添加控件 (Android SDK) 
+# <a name="add-controls-to-a-map-android-sdk"></a>向地图添加控件 (Android SDK)
 
-本文说明如何将 UI 控件添加到地图。
+本文展示了如何向地图添加 UI 控件。
 
 ## <a name="add-zoom-control"></a>添加缩放控件
 
-缩放控件添加了用于放大和缩小地图的按钮。下面的代码示例创建类的实例 `ZoomControl` 并将其添加到映射。
+缩放控件添加了用于放大和缩小地图的按钮。下面的代码示例创建 `ZoomControl` 类的一个实例并将其添加到地图中。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -42,13 +42,13 @@ map.controls.add(ZoomControl())
 
 ::: zone-end
 
-下面的屏幕截图是在地图上加载的缩放控件。
+下面的屏幕截图显示了地图上加载的缩放控件。
 
-![添加到地图的缩放控件](media/map-add-controls-android/android-zoom-control.jpg)
+![已添加到地图的缩放控件](media/map-add-controls-android/android-zoom-control.jpg)
 
 ## <a name="add-pitch-control"></a>添加绕 X 轴旋转控件
 
-螺距控件添加倾斜的按钮，以相对于水平位置进行地图。 下面的代码示例创建类的实例 `PitchControl` 并将其添加到映射。
+绕 X 轴旋转控件添加了用于倾斜地图平面以相对于地平线来绘制地图的按钮。 下面的代码示例创建 `PitchControl` 类的一个实例并将其添加到地图中。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -68,13 +68,13 @@ map.controls.add(PitchControl())
 
 ::: zone-end
 
-下面的屏幕截图是在地图上加载的螺距控件。
+下面的屏幕截图显示了地图上加载的绕 X 轴旋转控件。
 
-![添加到地图的螺距控件](media/map-add-controls-android/android-pitch-control.jpg)
+![已添加到地图的绕 X 轴旋转控件](media/map-add-controls-android/android-pitch-control.jpg)
 
 ## <a name="add-compass-control"></a>添加指南针控件
 
-指南针控件添加了用于旋转地图的按钮。 下面的代码示例创建类的实例 `CompassControl` 并将其添加到映射。
+指南针控件添加了用于旋转地图的按钮。 下面的代码示例创建 `CompassControl` 类的一个实例并将其添加到地图中。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -94,13 +94,13 @@ map.controls.add(CompassControl())
 
 ::: zone-end
 
-下面的屏幕截图是在地图上加载的罗盘控件。
+下面的屏幕截图显示了地图上加载的指南针控件。
 
-![添加到地图的罗盘控件](media/map-add-controls-android/android-compass-control.jpg)
+![已添加到地图的指南针控件](media/map-add-controls-android/android-compass-control.jpg)
 
-## <a name="add-traffic-control"></a>添加流量控制
+## <a name="add-traffic-control"></a>添加交通控件
 
-流量控件添加一个按钮，用于切换地图上流量数据的可见性。 下面的代码示例创建类的实例 `TrafficControl` 并将其添加到映射。
+交通控件添加了一个按钮，用于切换地图上交通数据的可见性。 下面的代码示例创建 `TrafficControl` 类的一个实例并将其添加到地图中。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -120,13 +120,13 @@ map.controls.add(TrafficControl())
 
 ::: zone-end
 
-下面的屏幕截图是在映射上加载的流量控件。
+下面的屏幕截图显示了地图上加载的交通控件。
 
-![添加到地图的流量控件](media/map-add-controls-android/android-traffic-control.jpg)
+![已添加到地图的交通控件](media/map-add-controls-android/android-traffic-control.jpg)
 
 ## <a name="a-map-with-all-controls"></a>包含所有控件的地图
 
-可以将多个控件置于数组中，并将其同时添加到地图的同一区域，以简化开发。 下面的方法使用此方法将标准导航控件添加到地图中。
+可以将多个控件放入一个数组中，然后将其一次性添加到地图中，并放置在地图的同一区域以简化开发。 下面使用这种方法将标准导航控件添加到地图。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -158,9 +158,9 @@ map.controls.add(
 
 ::: zone-end
 
-下面的屏幕截图显示了地图上加载的所有控件。 请注意，将它们添加到地图的顺序就是它们的显示顺序。
+下面的屏幕截图显示了地图上加载的所有控件。 请注意，它们添加到地图的顺序就是它们的显示顺序。
 
-![添加到地图的所有控件](media/map-add-controls-android/android-all-controls.jpg)
+![已添加到地图的所有控件](media/map-add-controls-android/android-all-controls.jpg)
 
 ## <a name="next-steps"></a>后续步骤
 

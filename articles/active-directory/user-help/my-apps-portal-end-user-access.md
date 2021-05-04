@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 01/19/2021
+ms.date: 03/26/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 6dd9d65ee56bcbf8ca1da72f7d99d4545c5d7fbb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e72667ab562a9e12d233f45dc50efc9b70d2141b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100094995"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642118"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>从“我的应用”门户登录并启动应用
 
@@ -32,18 +32,19 @@ ms.locfileid: "100094995"
 > [!IMPORTANT]
 > 此内容适用于“我的应用”用户。 如果你是管理员，可以在[应用程序管理文档](../manage-apps/index.yml)中查找有关如何设置和管理基于云的应用的详细信息。
 >
-> 如果在使用个人 Microsoft 帐户登录时遇到错误，用户仍可以使用组织的域名（例如 contoso.com）登录，也可以以管理员身份使用组织的“租户 ID”通过以下其中一个 URL 来登录：
+> 如果在使用个人 Microsoft 帐户登录时遇到错误，用户仍可以使用组织的域名（例如 contoso.com）登录，也可以以管理员身份，使用组织的“租户 ID”通过以下其中一个 URL 来登录：
 >
 >   - https://myapplications.microsoft.com?tenantId= your_domain_name
 >   - https://myapplications.microsoft.com?tenant= your_tenant_ID
 
 ## <a name="supported-browsers"></a>支持的浏览器
 
-可以从以下任意 Web 浏览器访问“我的应用”门户：
+可以从以下任意 Web 浏览器访问“我的应用”门户。 Microsoft 建议使用与操作系统兼容的最新浏览器。
 
-- Microsoft Edge（Edge 的移动版是目前唯一受支持的移动浏览器）
-- Google Chrome
-- Mozilla Firefox，版本 26.0 或更高版本
+- Microsoft Edge（最新版本，适用于桌面和移动设备）
+- Safari（最新版本，适用于 Mac 和 iOS）
+- Chrome（最新版本，适用于桌面和移动设备）
+- Firefox（最新版本）
 
 可以在计算机上或从 iOS 或 Android 移动设备上的 Edge 浏览器的移动版访问并使用“我的应用”门户。
 

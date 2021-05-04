@@ -86,6 +86,17 @@
           href: configure-export-data.md
         - name: 配置专用链接
           href: configure-private-link.md
+    - name: 搜索
+      expand: false
+      items:
+        - name: FHIR 搜索概述
+          href: overview-of-search.md
+        - name: 定义自定义搜索参数
+          href: how-to-do-custom-search.md
+        - name: 如何运行重新索引作业
+          href: how-to-run-a-reindex.md
+        - name: 搜索 Azure API for FHIR 的示例
+          href: search-samples.md
     - name: 导出数据
       expanded: false
       items:

@@ -1,6 +1,6 @@
 ---
-title: 匹配 Azure CDN 的标准规则引擎中的条件 |Microsoft Docs
-description: 适用于 Azure 内容传送网络 (Azure CDN) 的标准规则引擎中的匹配条件的参考文档。
+title: Azure CDN 标准规则引擎中的匹配条件 | Microsoft Docs
+description: Azure 内容分发网络 (Azure CDN) 标准规则引擎中的匹配条件的参考文档。
 services: cdn
 author: asudbring
 ms.service: azure-cdn
@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: allensu
 ms.openlocfilehash: b8050b973027ac91ede0ba98f4d1c76831da9828
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "81259914"
 ---
-# <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN 的标准规则引擎中的匹配条件
+# <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN 标准规则引擎中的匹配条件
 
-在 Azure 内容分发网络 (Azure CDN) 的 [标准规则引擎](cdn-standard-rules-engine.md) 中，规则由一个或多个匹配条件和操作组成。 本文详细说明了可以在 Azure CDN 的标准规则引擎中使用的匹配条件。
+在 Azure 内容分发网络 (Azure CDN) [标准规则引擎](cdn-standard-rules-engine.md)中，规则由一个或多个匹配条件和一个操作组成。 本文将详细介绍可在 Azure CDN 标准规则引擎中使用的匹配条件。
 
-规则的第一部分是一个匹配条件或一组匹配条件。 在 Azure CDN 的标准规则引擎中，每个规则最多可以有四个匹配条件。 匹配条件指定要对其执行所定义操作的特定请求类型。 如果使用多个匹配条件，则匹配条件使用 AND 逻辑组合在一起。
+规则的第一部分是一个匹配条件或一组匹配条件。 在 Azure CDN 标准规则引擎中，每个规则最多可以有四个匹配条件。 匹配条件指定要对其执行所定义操作的特定请求类型。 如果使用多个匹配条件，则匹配条件使用 AND 逻辑组合在一起。
 
 例如，可以使用匹配条件：
 
@@ -28,7 +28,7 @@ ms.locfileid: "81259914"
 
 ## <a name="match-conditions"></a>匹配条件
 
-以下匹配条件可在 Azure CDN 的标准规则引擎中使用。 
+可在 Azure CDN 标准规则引擎中使用以下匹配条件。 
 
 ### <a name="device-type"></a>设备类型 
 
@@ -48,26 +48,26 @@ ms.locfileid: "81259914"
 
 操作员 | 支持的值
 ---------|----------------
-等于、不等于 | 2.0、1.1、1.0、0.9、全部
+等于、不等于 | 2.0、1.1、1.0、0.9、All
 
 ### <a name="request-cookies"></a>请求 Cookie
 
-标识基于传入请求中的 cookie 信息的请求。
+根据传入请求中的 Cookie 信息识别请求。
 
 #### <a name="required-fields"></a>Required fields
 
-Cookie 名称 | 操作员 | Cookie 值 | 大小写转换
+Cookie 名称 | 运算符 | Cookie 值 | 大小写转换
 ------------|----------|--------------|---------------
-字符串 | [标准运算符列表](#standard-operator-list) | 字符串、整数 | 无转换，转换为大写，到小写
+字符串 | [标准运算符列表](#standard-operator-list) | 字符串、整数 | 无转换、转换为大写、转换为小写
 
 #### <a name="key-information"></a>重要信息
 
-- 指定 cookie 名称时，不能使用通配符值 (包括星号 (\*) # A3; 必须使用精确的 cookie 名称。
-- 对于此匹配条件的每个实例，只能指定一个 cookie 名称。
+- 指定 Cookie 名称时，不能使用通配符值（包括星号 (\*)）；必须使用确切的 Cookie 名称。
+- 此匹配条件的每个实例只能指定一个 Cookie 名称。
 - Cookie 名称比较不区分大小写。
-- 若要指定多个 cookie 值，请在每个 cookie 值之间使用一个空格。 
+- 若要指定多个 Cookie 值，请在每个 Cookie 值之间使用一个空格。 
 - Cookie 值可以利用通配符值。
-- 如果未指定通配符值，则只有完全匹配项才满足此匹配条件。 例如，"Value" 将匹配 "Value"，而不是 "Value1"。 
+- 如果未指定通配符值，则只有完全匹配才满足此匹配条件。 例如，“Value”将匹配“Value”，但不匹配“Value1”。 
 
 ### <a name="post-argument"></a>Post 参数
 
@@ -77,7 +77,7 @@ Cookie 名称 | 操作员 | Cookie 值 | 大小写转换
 
 参数名称 | 操作员 | 参数值 | 大小写转换
 --------------|----------|----------------|---------------
-字符串 | [标准运算符列表](#standard-operator-list) | 字符串、整数 | 无转换，转换为大写，到小写
+字符串 | [标准运算符列表](#standard-operator-list) | 字符串、整数 | 无转换、转换为大写、转换为小写
 
 ### <a name="query-string"></a>查询字符串
 
@@ -87,7 +87,7 @@ Cookie 名称 | 操作员 | Cookie 值 | 大小写转换
 
 操作员 | 查询字符串 | 大小写转换
 ---------|--------------|---------------
-[标准运算符列表](#standard-operator-list) | 字符串、整数 | 无转换，转换为大写，到小写
+[标准运算符列表](#standard-operator-list) | 字符串、整数 | 无转换、转换为大写、转换为小写
 
 ### <a name="remote-address"></a>远程地址
 
@@ -97,10 +97,10 @@ Cookie 名称 | 操作员 | Cookie 值 | 大小写转换
 
 操作员 | 支持的值
 ---------|-----------------
-Any | 不可用
+任意 | 空值
 地理位置匹配 | 国家/地区代码
 IP 匹配 | IP 地址（以空格分隔）
-不是任何 | 不可用
+非任意 | 空值
 非地理位置匹配 | 国家/地区代码
 非 IP 匹配 | IP 地址（以空格分隔）
 
@@ -122,7 +122,7 @@ IP 匹配 | IP 地址（以空格分隔）
 
 操作员 | 请求正文 | 大小写转换
 ---------|--------------|---------------
-[标准运算符列表](#standard-operator-list) | 字符串、整数 | 无转换，转换为大写，到小写
+[标准运算符列表](#standard-operator-list) | 字符串、整数 | 无转换、转换为大写、转换为小写
 
 ### <a name="request-header"></a>请求标头
 
@@ -132,7 +132,7 @@ IP 匹配 | IP 地址（以空格分隔）
 
 标头名称 | 操作员 | 标头值 | 大小写转换
 ------------|----------|--------------|---------------
-字符串 | [标准运算符列表](#standard-operator-list) | 字符串、整数 | 无转换，转换为大写，到小写
+字符串 | [标准运算符列表](#standard-operator-list) | 字符串、整数 | 无转换、转换为大写、转换为小写
 
 ### <a name="request-method"></a>请求方法
 
@@ -146,7 +146,7 @@ IP 匹配 | IP 地址（以空格分隔）
 
 #### <a name="key-information"></a>重要信息
 
-- 只有 GET request 方法才能在 Azure CDN 中生成缓存内容。 其他所有请求方法均通过网络代理。 
+- 只有 GET 请求方法可在 Azure CDN 中生成缓存的内容。 其他所有请求方法均通过网络代理。 
 
 ### <a name="request-protocol"></a>请求协议
 
@@ -166,7 +166,7 @@ IP 匹配 | IP 地址（以空格分隔）
 
 操作员 | 请求 URL | 大小写转换
 ---------|-------------|---------------
-[标准运算符列表](#standard-operator-list) | 字符串、整数 | 无转换，转换为大写，到小写
+[标准运算符列表](#standard-operator-list) | 字符串、整数 | 无转换、转换为大写、转换为小写
 
 #### <a name="key-information"></a>重要信息
 
@@ -180,7 +180,7 @@ IP 匹配 | IP 地址（以空格分隔）
 
 操作员 | 分机 | 大小写转换
 ---------|-----------|---------------
-[标准运算符列表](#standard-operator-list) | 字符串、整数 | 无转换，转换为大写，到小写
+[标准运算符列表](#standard-operator-list) | 字符串、整数 | 无转换、转换为大写、转换为小写
 
 #### <a name="key-information"></a>重要信息
 
@@ -194,11 +194,11 @@ IP 匹配 | IP 地址（以空格分隔）
 
 操作员 | 文件名 | 大小写转换
 ---------|-----------|---------------
-[标准运算符列表](#standard-operator-list) | 字符串、整数 | 无转换，转换为大写，到小写
+[标准运算符列表](#standard-operator-list) | 字符串、整数 | 无转换、转换为大写、转换为小写
 
 #### <a name="key-information"></a>重要信息
 
-- 若要指定多个文件名，请使用单个空格分隔每个文件名。 
+- 若要指定多个文件名，请用单个空格分隔每个文件名。 
 
 ### <a name="url-path"></a>URL 路径
 
@@ -208,7 +208,7 @@ IP 匹配 | IP 地址（以空格分隔）
 
 操作员 | 值 | 大小写转换
 ---------|-------|---------------
-[标准运算符列表](#standard-operator-list) | 字符串、整数 | 无转换，转换为大写，到小写
+[标准运算符列表](#standard-operator-list) | 字符串、整数 | 无转换、转换为大写、转换为小写
 
 #### <a name="key-information"></a>重要信息
 

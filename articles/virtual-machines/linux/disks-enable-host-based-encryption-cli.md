@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 3eecb584f468bc170f0325da8d734a1890691483
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 45cdb9217eebf6e3129718a96d9f7b72a3ab62b3
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104601765"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533618"
 ---
 # <a name="use-the-azure-cli-to-enable-end-to-end-encryption-using-encryption-at-host"></a>使用 Azure CLI 通过主机加密来启用端到端加密
 
@@ -27,13 +27,14 @@ ms.locfileid: "104601765"
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-suported-sizes](../../../includes/virtual-machines-disks-encryption-at-host-suported-sizes.md)]
 
-你还可以以编程方式找到 VM 大小。 若要了解如何以编程方式检索它们，请参阅[查找支持的 VM 大小](#finding-supported-vm-sizes)部分。
+可以通过编程方式拉取受支持的 VM 大小的完整列表。 若要了解如何以编程方式检索它们，请参阅[查找支持的 VM 大小](#finding-supported-vm-sizes)部分。
+升级 VM 大小将导致进行验证，以检查新 VM 大小是否支持 EncryptionAtHost 功能。
 
 ## <a name="prerequisites"></a>先决条件
 
 必须先为订阅启用此功能，然后才能使用 VM/VMSS 的 EncryptionAtHost 属性。 请按照以下步骤为订阅启用此功能：
 
-1.  执行以下命令，为订阅注册该功能
+1.  执行以下命令，为订阅注册此功能
 
     ```azurecli
     az feature register --namespace Microsoft.Compute --name EncryptionAtHost
@@ -56,7 +57,7 @@ ms.locfileid: "104601765"
 
 ### <a name="create-a-vm-with-encryption-at-host-enabled-with-customer-managed-keys"></a>使用客户管理的密钥创建 VM，并启用主机加密。 
 
-使用之前创建的 DiskEncryptionSet 的资源 URI 创建包含托管磁盘的 VM，以便使用客户管理的密钥加密 OS 磁盘和数据磁盘的缓存。 临时磁盘通过平台管理的密钥加密。 
+使用之前创建的 DiskEncryptionSet 的资源 URI 创建包含托管磁盘的 VM，以便使用客户管理的密钥加密 OS 和数据磁盘的缓存。 临时磁盘通过平台管理的密钥加密。 
 
 ```azurecli
 rgName=yourRGName
@@ -125,7 +126,7 @@ az vm show -n $vmName \
 
 ### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-customer-managed-keys"></a>使用客户管理的密钥创建虚拟机规模集，并启用主机加密。 
 
-使用之前创建的 DiskEncryptionSet 的资源 URI 创建包含托管磁盘的虚拟机规模集，以便使用客户管理的密钥加密 OS 磁盘和数据磁盘的缓存。 临时磁盘通过平台管理的密钥加密。 
+使用之前创建的 DiskEncryptionSet 的资源 URI 创建包含托管磁盘的虚拟机规模集，以便使用客户管理的密钥加密 OS 和数据磁盘的缓存。 临时磁盘通过平台管理的密钥加密。 
 
 ```azurecli
 rgName=yourRGName

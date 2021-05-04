@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/19/2021
+ms.date: 04/22/2021
 ms.author: curtand
-ms.openlocfilehash: 1062c8dfe416af2d39063bf71f39d52e151e28d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 593ec6588e2f55cb9f379dcfac437956bcabc10b
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100096066"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107951287"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-page"></a>从“我的登录”页面查看和搜索最近的登录活动
 
@@ -29,18 +29,18 @@ ms.locfileid: "100096066"
 >[!Note]
 > 如果你在使用个人 Microsoft 帐户登录时遇到错误，你仍可以使用组织的域名（例如 contoso.com）登录，也可以以管理员身份使用组织的“租户 ID”通过以下 URL 之一登录：
 >
->   - https://myaccount.microsoft.com?tenantId= your_domain_name
->   - https://myaccount.microsoft.com?tenant= your_tenant_ID
+>   - `https://myaccount.microsoft.com?tenantId=<your_domain_name>`
+>   - `https://myaccount.microsoft.com?tenant=<your_tenant_ID>`
 
 ## <a name="view-your-recent-sign-in-activity"></a>查看近期的登录活动
 
 1. 登录到工作或学校帐户，然后转到 https://myaccount.microsoft.com/ 页。
 
-2. 从左侧导航窗格中选择“我的登录”，或从“我的登录”块中选择“查看最近的活动”链接  。
+1. 从左侧导航窗格中选择“我的登录”，或从“我的登录”块中选择“查看最近的活动”链接  。
 
     ![突出显示了最近活动链接“我的帐户”页](media/my-account-portal/my-account-portal-sign-ins.png)
 
-3. 展开并查看每个登录项，确保辨认得出每一项。 如果发现不熟悉的登录项，请更改密码，以帮助保护你的帐户以防被盗。
+1. 展开并查看每个登录项，确保辨认得出每一项。 如果发现不熟悉的登录项，请更改密码，以帮助保护你的帐户以防被盗。
 
     ![包含展开的登录详细信息的近期活动页面](media/my-account-portal-sign-ins-page/recent-activity.png)
 
@@ -74,9 +74,51 @@ ms.locfileid: "100096066"
 
 ![异常登录磁贴用于确认你是否尝试过登录](media/my-account-portal-sign-ins-page/this-wasnt-me.png)
 
+## <a name="view-sign-in-activity-on-android"></a>查看 Android 上的登录活动
+
+每次查看或更改安全信息时，都必须登录到你的工作或学校帐户才能继续。
+
+1. 打开 Microsoft Authenticator 应用，然后选择工作或学校帐户的主页。
+
+1. 选择“最近帐户活动”。
+
+    ![工作或学校帐户主页，显示突出显示的最近登录活动链接](media/my-account-portal-sign-ins-page/android-recent-activity.png)
+
+1. 如果登录成功，请查看每个登录项，确保辨认得出每一项。 如果发现不熟悉的登录项，请更改密码，以帮助保护你的帐户以防被盗。
+
+    ![包含登录详细信息的近期活动页面](media/my-account-portal-sign-ins-page/android-activity-page.png)
+
+## <a name="change-your-password-on-android"></a>更改 Android 上的密码
+
+管理员可以让你从 Authenticator 应用重置密码。 每次登录查看或更改安全信息时，都必须登录到你的工作或学校帐户才能继续。
+
+1. 打开 Microsoft Authenticator 应用，然后选择工作或学校帐户的主页。
+
+1. 选择“更改密码”。
+
+    ![工作或学校帐户主页，显示突出显示的“更改密码”链接](media/my-account-portal-sign-ins-page/android-change-password.png)
+
+1. 如果登录成功，可以在“更改密码”页上更新密码信息。
+
+    ![具有新旧密码条目的“最近的活动”页](media/my-account-portal-sign-ins-page/android-password-page.png)
+
+## <a name="update-security-info-on-android"></a>更新 Android 上的安全信息
+
+每次登录查看或更改安全信息时，都必须登录到你的工作或学校帐户才能继续。
+
+1. 打开 Microsoft Authenticator 应用，然后选择工作或学校帐户的主页。
+
+1. 选择“更新安全信息”。
+
+    ![工作或学校帐户主页，显示突出显示的“更新安全信息”链接](media/my-account-portal-sign-ins-page/android-update-security-info.png)
+
+1. 如果登录成功，可以在“安全信息页”上更新安全详细信息。
+
+    ![包含安全信息的“最近的活动”页](media/my-account-portal-sign-ins-page/android-security-info-page.png)
+
 ## <a name="next-steps"></a>后续步骤
 
-查看最近的登录活动后，可以：
+查看最近的登录信息后，可以：
 
 - 查看或管理[安全信息](./security-info-setup-signin.md)。
 

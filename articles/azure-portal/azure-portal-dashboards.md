@@ -1,21 +1,21 @@
 ---
-title: 在 Azure 门户中创建和共享仪表板
-description: 本文介绍如何在 Azure 门户中创建、自定义、发布和共享仪表板。
+title: 在 Azure 门户中创建仪表板
+description: 本文介绍如何在 Azure 门户中创建和自定义仪表板。
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.topic: how-to
-ms.date: 03/23/2020
-ms.openlocfilehash: 10c322c9d9d18f7b79a4419bd9efa2e366a5b7c3
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
-ms.translationtype: MT
+ms.date: 03/16/2021
+ms.openlocfilehash: fa7f1813d86571b568d23d64cab5705f8a117faa
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745819"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774563"
 ---
-# <a name="create-and-share-dashboards-in-the-azure-portal"></a>在 Azure 门户中创建和共享仪表板
+# <a name="create-a-dashboard-in-the-azure-portal"></a>在 Azure 门户中创建仪表板
 
-仪表板是 Azure 门户中具有针对性和组织有序的云资源视图。 可将仪表板用作工作区，在其中可以快速启动日常操作的任务和监视资源。 例如，基于项目、任务或用户角色生成自定义仪表板。
+仪表板是 Azure 门户中具有针对性和组织有序的云资源视图。 可将仪表板用作工作区，在其中监视资源和快速启动日常操作的任务。 例如，基于项目、任务或用户角色生成自定义仪表板。
 
-Azure 门户提供默认仪表板作为起点。 你可以编辑默认仪表板。 可以创建和自定义其他仪表板，以及发布和共享仪表板，使其可供其他用户使用。 本文介绍如何创建新的仪表板、自定义界面以及发布和共享仪表板。
+Azure 门户提供默认仪表板作为起点。 可以编辑默认仪表板，以及创建和自定义其他仪表板。 本文介绍如何创建新的仪表板并对其进行自定义。 若要了解如何共享仪表板，请参阅[使用 Azure 基于角色的访问控制共享 Azure 仪表板](azure-portal-dashboard-share-access.md)。
 
 ## <a name="create-a-new-dashboard"></a>创建新的仪表板
 
@@ -27,17 +27,19 @@ Azure 门户提供默认仪表板作为起点。 你可以编辑默认仪表板�
 
     ![打开仪表板](./media/azure-portal-dashboards/portal-menu-dashboard.png)
 
-1. 选择“新建仪表板”。 
+1. 选择“新建仪表板”，然后选择“空白仪表板”。
 
     ![“新建仪表板”的屏幕截图](./media/azure-portal-dashboards/create-new-dashboard.png)
 
     此操作会打开“磁贴库”，从中可以选择磁贴，并在一个空网格中排列磁贴。 
 
-    ![磁贴库和空网格的屏幕截图](./media/azure-portal-dashboards/dashboard-name.png)
-
 1. 选择仪表板标签中的“我的仪表板”文本，并输入一个名称以帮助你轻松识别自定义仪表板。 
 
-1. 在页头中选择“完成自定义”以退出编辑模式。 
+    ![磁贴库和空网格的屏幕截图](./media/azure-portal-dashboards/dashboard-name.png)
+
+1. 在页眉中，选择“完成自定义”以退出编辑模式，然后选择“保存”。
+
+    :::image type="content" source="media/azure-portal-dashboards/dashboard-save.png" alt-text="仪表板保存过程的屏幕截图":::
 
 此时，仪表板视图将显示新仪表板。 选择仪表板名称旁的箭头，以查看可供你使用的仪表板。 此列表可能包括其他用户已创建和共享的仪表板。
 
@@ -45,7 +47,7 @@ Azure 门户提供默认仪表板作为起点。 你可以编辑默认仪表板�
 
 现在，让我们编辑仪表板以添加、调整和排列代表你的 Azure 资源的磁贴。
 
-### <a name="add-tiles-from-the-dashboard"></a>从仪表板添加磁贴
+### <a name="add-tiles-from-the-tile-gallery"></a>从磁贴库添加磁贴
 
 若要将磁贴添加到仪表板，请执行以下步骤：
 
@@ -55,10 +57,13 @@ Azure 门户提供默认仪表板作为起点。 你可以编辑默认仪表板�
 
 1. 浏览“磁贴库”，或使用搜索字段查找所需的磁贴。 
 
-1. 选择“添加”，以使用默认大小和位置将磁贴添加到仪表板中。  或者将磁贴拖到网格中，并将其放到所需的位置。
+1. 选择“添加”，以使用默认大小和位置将磁贴添加到仪表板中。  或者将磁贴拖到网格中，并将其放到所需的位置。 添加所需的任何磁贴，但需注意这里的几个要点：
 
-> [!TIP]
-> 如果你在多家组织中工作，可将“组织标识”磁贴添加到仪表板，以明确显示资源所属的组织。 
+    - 添加“所有资源”以查看已创建的任何资源。
+
+    - 如果你在多家组织中工作，可将“组织标识”磁贴添加到仪表板，以明确显示资源所属的组织。 
+
+1. 在页眉中，选择“保存”。
 
 ### <a name="add-tiles-from-a-resource-page"></a>从资源页添加磁贴
 
@@ -80,11 +85,11 @@ Azure 门户提供默认仪表板作为起点。 你可以编辑默认仪表板�
 
 ### <a name="additional-tile-configuration"></a>其他磁贴配置
 
-某些磁贴可能需要额外配置才能显示所需的信息。 例如，“指标图表”磁贴必须经过设置才能显示 **Azure Monitor** 中的指标。  还可以自定义磁贴数据以替代仪表板的默认时间设置。
+某些磁贴可能需要额外配置才能显示所需的信息。 例如，“指标图表”磁贴必须经过设置才能显示 Azure Monitor 中的指标。 还可以自定义磁贴数据以替代仪表板的默认时间设置。
 
-需要设置的任何磁贴在自定义它之前会显示“配置磁贴”横幅。  若要自定义磁贴，请执行以下操作：
+需要设置的任何磁贴在你自定义它之前会显示横幅。 对于“指标图表”，横幅为“在指标中编辑”。若要自定义磁贴，请执行以下操作：
 
-1. 在页头中选择“完成自定义”以退出编辑模式。 
+1. 在页眉中，选择“保存”以退出编辑模式。
 
 1. 请选择横幅，然后执行所需的设置。
 
@@ -97,7 +102,7 @@ Azure 门户提供默认仪表板作为起点。 你可以编辑默认仪表板�
 
 仪表板上的数据自动显示过去 24 小时的活动。 若要仅显示此磁贴的不同时间跨度，请执行以下步骤：
 
-1. 从上下文菜单中选择“自定义磁贴数据”，或者从磁贴左上角选择 **筛选器图标** 筛选器。![](./media/azure-portal-dashboards/dashboard-filter.png)
+1. 从上下文菜单或磁贴左上角的 ![筛选器图标](./media/azure-portal-dashboards/dashboard-filter.png) 筛选器中选择“自定义磁贴数据”。
 
     ![磁贴上下文菜单的屏幕截图](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
 
@@ -166,6 +171,10 @@ Azure 门户提供默认仪表板作为起点。 你可以编辑默认仪表板�
 1. 对于专用仪表板，请在确认对话框中选择“确定”以删除仪表板。  对于共享仪表板，请在确认对话框中选中相应的复选框，以确认发布的仪表板不再可供其他人查看。 选择“确定”。 
 
     ![删除确认屏幕截图](./media/azure-portal-dashboards/dashboard-delete-dash.png)
+
+## <a name="recover-a-deleted-dashboard"></a>恢复已删除的仪表板
+
+如果你位于全局 Azure 云中，并在 Azure 门户中删除一个已发布的仪表板，则可以在删除后的 14 天内恢复该仪表板。 有关信息，请参阅[在 Azure 门户中恢复已删除的仪表板](recover-shared-deleted-dashboard.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

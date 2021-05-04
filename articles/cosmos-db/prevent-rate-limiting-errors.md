@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/13/2021
 ms.author: gahllevy
 ms.openlocfilehash: 1e9062b111c30efa90b98c4ebcee710b1d975a1d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99507924"
 ---
 # <a name="prevent-rate-limiting-errors-for-azure-cosmos-db-api-for-mongodb-operations"></a>防止 Azure Cosmos DB API for MongoDB 操作的速率限制错误
@@ -37,29 +37,29 @@ ms.locfileid: "99507924"
 
 ## <a name="use-the-azure-cli"></a>使用 Azure CLI
 
-1. 检查是否已为帐户启用 SSR：
+1. 检查是否已为你的帐户启用了 SSR：
 ```bash
 az cosmosdb show --name accountname --resource-group resourcegroupname
 ```
-2. 为数据库帐户中的所有集合启用 SSR。 为使此更改生效，可能需要 15 分钟。
+2. 为数据库帐户中的所有集合启用 SSR。 此更改生效可能需要长达 15 分钟的时间。
 ```bash
 az cosmosdb update --name accountname --resource-group resourcegroupname --capabilities EnableMongo DisableRateLimitingResponses
 ```
-以下命令将通过从功能列表中删除“DisableRateLimitingResponses”，为数据库帐户中的所有集合禁用 SSR。 为使此更改生效，可能需要 15 分钟。
+以下命令会通过从功能列表中删除“DisableRateLimitingResponses”，对数据库帐户中的所有集合禁用 SSR。 此更改生效可能需要长达 15 分钟的时间。
 ```bash
 az cosmosdb update --name accountname --resource-group resourcegroupname --capabilities EnableMongo
 ```
 
 ## <a name="frequently-asked-questions"></a>常见问题
 * 如何重试请求？
-    * 可以不断（反复）重试请求，直到达到 60 秒的超时时间。 如果达到超时值，客户端将收到 [ExceededTimeLimit 异常 (50)](mongodb-troubleshoot.md)。
-*  如何监视 SSR 的影响？
-    *  可以在“Cosmos DB 指标”窗格中查看服务器端重试的速率限制错误（429 秒）。 请记住，当启用 SSR 时，这些错误不会出现在客户端上，因为它们会在服务器端处理和重试。 
+    * 连续（一次又一次）重试请求，直到出现 60 秒超时为止。 如果超时，则客户端会收到 [ExceededTimeLimit 异常 (50)](mongodb-troubleshoot.md)。
+*  如何监视 SSR 的效果？
+    *  可以在“Cosmos DB 指标”窗格中查看服务器端重试的速率限制错误 (429)。 请记住，启用 SSR 后，这些错误不会传递给客户端，因为它们是在服务器端处理和重试的。 
     *  可以在 [Cosmos DB 资源日志](cosmosdb-monitor-resource-logs.md)中搜索包含“estimatedDelayFromRateLimitingInMilliseconds”的日志条目。
-*  SSR 会影响我的一致性级别吗？
-    *  SSR 不会影响请求的一致性。 如果请求的速率受限（显示 429 错误），则会在服务器端重试请求。 
-*  SSR 是否会影响客户端可能收到的任何类型的错误？
-    *  否，SSR 仅通过在服务器端重试来影响速率限制错误（429 秒）。 此功能会阻止用户在客户端应用程序中处理速率限制错误。 所有[其他错误](mongodb-troubleshoot.md)都将发送到客户端。 
+*  SSR 是否会影响我的一致性级别？
+    *  SSR 不会影响请求的一致性。 如果请求受到速率限制（出现 429 错误），则会在服务器端重试。 
+*  SSR 是否影响客户端可能收到的任何类型的错误？
+    *  否。由于是在服务器端重试，SSR 只会影响速率限制错误 (429)。 有了此功能，就不必在客户端应用程序中处理速率限制错误。 所有[其他错误](mongodb-troubleshoot.md)都会传递到客户端。 
 
 ## <a name="next-steps"></a>后续步骤
 

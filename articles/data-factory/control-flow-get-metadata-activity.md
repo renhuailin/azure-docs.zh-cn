@@ -7,27 +7,27 @@ ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: jingwang
 ms.openlocfilehash: bd8fc3383d6d9a0afb7733cb94643623e6879d23
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102178535"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的“获取元数据”活动
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-可以使用“获取元数据”活动来检索 Azure 数据工厂中任何数据的元数据。 您可以使用条件表达式中的 Get Metadata 活动的输出来执行验证，或在后续活动中使用元数据。
+可以使用“获取元数据”活动来检索 Azure 数据工厂中任何数据的元数据。 你可以在条件表达式中使用“获取元数据”活动的输出来执行验证，也可以在后续活动中使用元数据。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
-“获取元数据”活动采用数据集作为输入，并返回元数据信息作为输出。 目前支持以下连接器和相应的可检索元数据。 返回的元数据的最大大小为 **4 MB**。
+“获取元数据”活动采用数据集作为输入，并返回元数据信息作为输出。 目前支持以下连接器和相应的可检索元数据。 返回的元数据不得超过 4 MB。
 
 ### <a name="supported-connectors"></a>受支持的连接器
 
 **文件存储**
 
-| 连接器/元数据 | itemName<br>（文件/文件夹） | itemType<br>（文件/文件夹） | 大小<br>（文件） | created<br>（文件/文件夹） | lastModified<sup>1</sup><br>（文件/文件夹） |childItems<br>（文件夹） |contentMD5<br>（文件） | 结构<sup>2</sup><br/>（文件） | columnCount<sup>2</sup><br>（文件） | 存在<sup>3</sup><br>（文件/文件夹） |
+| 连接器/元数据 | itemName<br>（文件/文件夹） | itemType<br>（文件/文件夹） | 大小<br>（文件） | created<br>（文件/文件夹） | lastModified<sup>1</sup><br>（文件/文件夹） |childItems<br>（文件夹） |contentMD5<br>（文件） | structure<sup>2</sup><br/>（文件） | columnCount<sup>2</sup><br>（文件） | exists<sup>3</sup><br>（文件/文件夹） |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
@@ -39,23 +39,23 @@ ms.locfileid: "102178535"
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | x/x | √ | x | √ | √ | √/√ |
 
-<sup>1</sup> 元数据 `lastModified` ：
+<sup>1</sup> 元数据 `lastModified`：
 - 对于 Amazon S3 和 Google 云存储，`lastModified` 适用于桶和键，但不适用于虚拟文件夹；而 `exists` 适用于桶和键，但不适用于前缀或虚拟文件夹。 
 - 对于 Azure Blob 存储，`lastModified` 适用于容器和 Blob，但不适用于虚拟文件夹。
 
-<sup>2</sup> `structure` `columnCount` 在从二进制、JSON 或 XML 文件获取元数据时，元数据和不受支持。
+<sup>2</sup> 从二进制文件、JSON 文件或 XML 文件获取元数据时，不支持元数据 `structure` 和 `columnCount`。
 
-<sup>3</sup> 元数据 `exists` ：适用于 Amazon S3 和 Google 云存储， `exists` 适用于 bucket 和密钥，但不适用于前缀或虚拟文件夹。
+<sup>3</sup> 元数据 `exists`：对于 Amazon S3 和 Google Cloud Storage，`exists` 适用于 Bucket 和密钥，但不适用于前缀或虚拟文件夹。
 
 注意以下事项：
 
 - 对文件夹使用“获取元数据”活动时，请确保对给定文件夹具有“列出/执行”权限。
 - “获取元数据”活动不支持文件夹/文件的通配符筛选器。
-- `modifiedDatetimeStart``modifiedDatetimeEnd`在连接器上设置筛选器：
+- 连接器上设置的 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 筛选器：
 
-    - 这两个属性用于在从文件夹中获取元数据时筛选子项目。 它不适用于从文件中获取元数据。
-    - 使用此类筛选器时， `childItems` 输出中仅包含在指定范围内修改的文件，而不包含文件夹。
-    - 若要应用此类筛选器，GetMetadata 活动会枚举指定文件夹中的所有文件，并检查修改后的时间。 即使所需的限定文件数较小，也应避免指向包含大量文件的文件夹。 
+    - 这两个属性用于在从文件夹中获取元数据时筛选子项。 它不适用于从文件中获取元数据的情况。
+    - 使用此类筛选器时，输出中的 `childItems` 仅包括在指定范围内修改的文件，而不包括文件夹。
+    - 为了应用此类筛选器，GetMetadata 活动会枚举指定文件夹中的所有文件，并检查修改后的时间。 即使预期的符合条件的文件数很少，也要避免指向包含大量文件的文件夹。 
 
 **关系数据库**
 
@@ -87,10 +87,10 @@ ms.locfileid: "102178535"
 > 若要验证是否存在某个文件、文件夹或表，请在“获取元数据”活动字段列表中指定 `exists`。 然后可以检查活动输出中的 `exists: true/false` 结果。 如果未在该字段列表中指定 `exists`，那么，在找不到对象时，“获取元数据”活动将会失败。
 
 > [!NOTE]
-> 当从文件存储区中获取元数据并配置 `modifiedDatetimeStart` 或时 `modifiedDatetimeEnd` ， `childItems` 输出中仅包含在指定范围内具有最后修改时间的指定路径中的文件。 子文件夹中的项目不包括在内。
+> 从文件存储获取元数据以及配置 `modifiedDatetimeStart` 或 `modifiedDatetimeEnd` 时，输出中的 `childItems` 只包含指定路径中其最近修改时间在指定范围内的文件。 不包括子文件夹中的项。
 
 > [!NOTE]
-> 要使 **结构** 字段列表为分隔文本和 Excel 格式数据集提供实际的数据结构，您必须启用 `First Row as Header` 属性，该属性仅支持这些数据源。
+> 要使 Structure 字段列表为分隔文本和 Excel 格式的数据集提供实际的数据结构，必须启用“`First Row as Header`”属性（只有这些数据源才支持该属性）。
 
 ## <a name="syntax"></a>语法
 

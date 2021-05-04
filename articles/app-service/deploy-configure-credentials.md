@@ -6,19 +6,19 @@ ms.date: 02/11/2021
 ms.reviewer: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: c7d3c7c8b5da40a4e9ccd9085af5a850b9ebc3dd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102052341"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>为 Azure 应用服务配置部署凭据
-若要从本地计算机保护应用部署， [Azure App Service](./overview.md) 支持两种类型的凭据用于 [本地 Git 部署](deploy-local-git.md) 和 [FTP/S 部署](deploy-ftp.md)。 这些凭据与 Azure 订阅凭据不同。
+为了让你从本地计算机安全地部署应用，[Azure 应用服务](./overview.md)支持两种类型的凭据，分别用于[本地 Git 部署](deploy-local-git.md)和 [FTP/S 部署](deploy-ftp.md)。 这些凭据与 Azure 订阅凭据不同。
 
 [!INCLUDE [app-service-deploy-credentials](../../includes/app-service-deploy-credentials.md)]
 
 > [!NOTE]
-> Azure 门户的 **开发中心 (经典)** 页面，这是旧的部署经验，将于2021年3月弃用。 此更改不会影响你的应用中的任何现有部署设置，你可以继续在 " **部署中心** " 页中管理应用部署。
+> Azure 门户中的“开发中心(经典)”页面（旧部署体验）将于 2021 年 3 月弃用。 此更改不会影响应用中的任何现有部署设置，你可以继续在“部署中心”页中管理应用部署。
 
 ## <a name="configure-user-scope-credentials"></a><a name="userscope"></a>配置用户范围凭据
 
@@ -37,19 +37,19 @@ JSON 输出会将该密码显示为 `null`。
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
 
-不能 Azure PowerShell 配置用户范围凭据。 使用其他方法，或考虑 [使用应用程序范围的凭据](#appscope)。 
+不能使用 Azure PowerShell 配置用户范围凭据。 请使用其他方法，或者考虑[使用应用程序范围凭据](#appscope)。 
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
-可以在任何应用的 [资源页](../azure-resource-manager/management/manage-resources-portal.md#manage-resources)中配置用户范围凭据。 无论在哪个应用中配置这些凭据，它都适用于 Azure 帐户中所有订阅的所有应用。 
+可以在任何应用的[资源页](../azure-resource-manager/management/manage-resources-portal.md#manage-resources)中配置用户范围凭据。 无论是在哪个应用中配置这些凭据，这些凭据都适用于 Azure 帐户中所有订阅的所有应用。 
 
-在 [Azure 门户](https://portal.azure.com)中，必须至少有一个应用，才能访问 "部署凭据" 页面。 配置用户范围凭据：
+在 [Azure 门户](https://portal.azure.com)中，你必须至少有一个应用，才能访问部署凭据页。 配置用户范围凭据的步骤：
 
-1. 在应用程序的左侧菜单中，选择 ">**部署中心**  >  **FTPS 凭据**" 或 "**本地 Git/FTPS 凭据**"。
+1. 在应用的左侧菜单中，选择“部署中心” > “FTPS 凭据”或“本地 Git/FTPS 凭据”。
 
     ![演示如何从 Azure 应用服务的部署中心选择 FTP 仪表板。](./media/app-service-deployment-credentials/access-no-git.png)
 
-2. 向下滚动到 " **用户范围**"，配置 **用户名** 和 **密码**，然后选择 " **保存**"。
+2. 向下滚动到“用户范围”，配置“用户名”和“密码”，然后选择“保存”。
 
 设置部署凭据后，可以在应用的“概述”页中找到 Git 部署用户名，
 
@@ -58,29 +58,29 @@ JSON 输出会将该密码显示为 `null`。
 如果配置了 Git 部署，则该页显示 **Git/部署用户名**；否则，显示 **FTP/部署用户名**。
 
 > [!NOTE]
-> Azure 不会显示用户范围的部署密码。 如果忘记密码，可以按照本部分的步骤重置凭据。
+> Azure 不会显示用户范围部署密码。 如果忘记密码，可以按照本部分的步骤重置凭据。
 >
 > 
 
 -----
 
-## <a name="use-user-scope-credentials-with-ftpftps"></a>通过 FTP/FTPS 使用用户范围凭据
+## <a name="use-user-scope-credentials-with-ftpftps"></a>对 FTP/FTPS 使用用户范围凭据
 
-使用用户范围凭据对 FTP/FTPS 终结点进行身份验证时，需要使用以下格式的用户名： `<app-name>\<user-name>`
+使用用户范围凭据向 FTP/FTPS 终结点进行身份验证时，需要使用以下格式的用户名：`<app-name>\<user-name>`
 
-由于用户范围凭据链接到用户，而不是特定资源，因此用户名必须采用以下格式才能将登录操作定向到正确的应用终结点。
+由于用户范围凭据是关联到用户而不是特定资源，因此用户名必须采用这种格式才能将登录操作定向到正确的应用终结点。
 
 ## <a name="get-application-scope-credentials"></a><a name="appscope"></a>获取应用程序范围凭据
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-使用 [az webapp deployment list-发布-](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_profiles) profile 命令获取应用程序范围的凭据。 例如：
+使用 [az webapp deployment list-publishing-profiles](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_profiles) 命令获取应用程序范围凭据。 例如：
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles --resource-group <group-name> --name <app-name>
 ```
 
-对于 [本地 Git 部署](deploy-local-git.md)，还可以使用 [az webapp deployment list-发布-凭据](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_credentials) 命令获取应用的 Git 远程 URI，其中包含已嵌入的应用程序范围凭据。 例如：
+对于[本地 Git 部署](deploy-local-git.md)，还可以使用 [az webapp deployment list-publishing-credentials](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_credentials) 命令获取应用的 Git 远程 URI（其中已嵌入应用程序范围凭据）。 例如：
 
 ```azurecli-interactive
 az webapp deployment list-publishing-credentials --resource-group <group-name> --name <app-name> --query scmUri
@@ -88,7 +88,7 @@ az webapp deployment list-publishing-credentials --resource-group <group-name> -
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
 
-使用 [AzWebAppPublishingProfile](/powershell/module/az.websites/get-azwebapppublishingprofile) 命令获取应用程序范围的凭据。 例如：
+使用 [Get-AzWebAppPublishingProfile](/powershell/module/az.websites/get-azwebapppublishingprofile) 命令获取应用程序范围凭据。 例如：
 
 ```azurepowershell-interactive
 Get-AzWebAppPublishingProfile -ResourceGroupName <group-name> -Name <app-name>
@@ -96,11 +96,11 @@ Get-AzWebAppPublishingProfile -ResourceGroupName <group-name> -Name <app-name>
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
-1. 在应用程序的左侧菜单中，选择 "**部署中心**  >  **FTPS 凭据**" 或 "**本地 Git/FTPS 凭据**"。
+1. 在应用的左侧菜单中，选择“部署中心” > “FTPS 凭据”或“本地 Git/FTPS 凭据”。
 
     ![演示如何从 Azure 应用服务的部署中心选择 FTP 仪表板。](./media/app-service-deployment-credentials/access-no-git.png)
 
-2. 在 " **应用程序范围** " 部分中，选择 " **复制** " 链接以复制用户名或密码。
+2. 在“应用程序范围”部分，选择“复制”链接以复制用户名或密码。
 
 -----
 
@@ -108,7 +108,7 @@ Get-AzWebAppPublishingProfile -ResourceGroupName <group-name> -Name <app-name>
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-使用 [az resource invoke](/cli/azure/resource#az_resource_invoke_action) 命令重置应用程序范围的凭据：
+使用 [az resource invoke-action](/cli/azure/resource#az_resource_invoke_action) 命令重置应用程序范围凭据：
 
 ```azurecli-interactive
 az resource invoke-action --action newpassword --resource-group <group-name> --name <app-name> --resource-type Microsoft.Web/sites
@@ -116,7 +116,7 @@ az resource invoke-action --action newpassword --resource-group <group-name> --n
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
 
-使用 [AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) 命令重置应用程序范围的凭据：
+使用 [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) 命令重置应用程序范围凭据：
 
 ```azurepowershell-interactive
 Invoke-AzResourceAction -ResourceGroupName <group-name> -ResourceType Microsoft.Web/sites -ResourceName <app-name> -Action newpassword
@@ -124,11 +124,11 @@ Invoke-AzResourceAction -ResourceGroupName <group-name> -ResourceType Microsoft.
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
-1. 在应用程序的左侧菜单中，选择 "**部署中心**  >  **FTPS 凭据**" 或 "**本地 Git/FTPS 凭据**"。
+1. 在应用的左侧菜单中，选择“部署中心” > “FTPS 凭据”或“本地 Git/FTPS 凭据”。
 
     ![演示如何从 Azure 应用服务的部署中心选择 FTP 仪表板。](./media/app-service-deployment-credentials/access-no-git.png)
 
-2. 在 **应用程序范围** 部分，选择 " **重置**"。
+2. 在“应用程序范围”部分，选择“重置”。
 
 -----
 

@@ -1,6 +1,6 @@
 ---
-title: 使用 PowerShell 通过 REST API 开发 Azure NetApp 文件 |Microsoft Docs
-description: 介绍如何使用 PowerShell REST API 开始使用 Azure NetApp 文件。
+title: 通过 PowerShell 使用 REST API 进行 Azure NetApp 文件开发 | Microsoft Docs
+description: 介绍如何通过 PowerShell 开始使用 Azure NetApp 文件 REST API。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,19 +15,19 @@ ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
 ms.openlocfilehash: 2e169bb4f7be8b52657d2caf8f05643875a8348c
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102180371"
 ---
-# <a name="develop-for-azure-netapp-files-with-rest-api-using-powershell"></a>使用 PowerShell 通过 REST API 开发 Azure NetApp 文件
+# <a name="develop-for-azure-netapp-files-with-rest-api-using-powershell"></a>通过 PowerShell 使用 REST API 进行 Azure NetApp 文件开发
 
-适用于 Azure NetApp 文件服务的 REST API 定义了针对 NetApp 帐户、容量池、卷和快照等资源执行的 HTTP 操作。 本文介绍如何使用 PowerShell REST API 使用 Azure NetApp 文件。
+适用于 Azure NetApp 文件服务的 REST API 定义了针对 NetApp 帐户、容量池、卷和快照等资源执行的 HTTP 操作。 本文帮助你通过 PowerShell 开始使用 Azure NetApp 文件 REST API。
 
 ## <a name="azure-netapp-files-rest-api-specification"></a>Azure NetApp 文件 REST API 规范
 
-Azure NetApp 文件的 REST API 规范通过 [GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager)发布：
+Azure NetApp 文件的 REST API 规范通过 [GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager) 发布：
 
 `https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager`
 
@@ -44,7 +44,7 @@ Azure NetApp 文件的 REST API 规范通过 [GitHub](https://github.com/Azure/a
       $RBAC_SP = az ad sp create-for-rbac --name <YOURSPNAMEGOESHERE> | ConvertFrom-Json         
       ```
 
-      若要显示服务主体信息，请键入 `$RBAC_SP` ，然后按 enter。
+      若要显示服务主体信息，请键入 `$RBAC_SP` 并按 Enter。
 
       ```output
       appId       : appID displays here
@@ -54,25 +54,25 @@ Azure NetApp 文件的 REST API 规范通过 [GitHub](https://github.com/Azure/a
       tenant      : your tenant shows here
       ```
         
-      输出保存在变量对象中 `$RBAC_SP` 。 我们将使用 `$RBAC_SP.appId` 、 `$RBAC_SP.password` 和 `$RBAC_SP.tenant` 值。
+      输出保存在变量对象 `$RBAC_SP` 中。 我们将使用 `$RBAC_SP.appId`、`$RBAC_SP.password` 和 `$RBAC_SP.tenant` 值。
 
 3. 请求 OAuth 访问令牌：
 
     本文中的示例使用 PowerShell。 也可以使用 [Postman](https://www.getpostman.com/)、[Insomnia](https://insomnia.rest/) 和 [Paw](https://paw.cloud/) 等各种 API 工具。  
 
-    `$RBAC_SP`现在，使用变量，我们将获取持有者令牌。 
+    使用 `$RBAC_SP` 变量，我们现在将获得持有者令牌。 
     
     ```azurepowershell
     $body = "grant_type=client_credentials&client_id=$($RBAC_SP.appId)&client_secret=$($RBAC_SP.password)&resource=https://management.azure.com/"
     $BearerToken = Invoke-RestMethod -Method Post -body $body -Uri https://login.microsoftonline.com/$($RBAC_SP.tenant)/oauth2/token
     ```
-    输出提供持有者令牌对象。 可以通过键入来查看访问令牌 `$BearerToken.access_token` 。 这类似于以下示例：
+    输出提供持有者令牌对象。 可以通过键入 `$BearerToken.access_token` 来查看访问令牌。 这类似于以下示例：
 
     ```output
     eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSIsImtpZCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSJ9
     ```
 
-    显示的令牌的有效期为 3600 秒。 此期限过后，需要请求新令牌。 令牌保存在变量中，并将在下一步中使用。
+    显示的令牌的有效期为 3600 秒。 此期限过后，需要请求新令牌。 令牌保存在变量中，将在下一步使用。
 
 4. 创建 `headers` 对象：
 
@@ -95,8 +95,8 @@ Azure NetApp 文件的 REST API 规范通过 [GitHub](https://github.com/Azure/a
 
 `https://management.azure.com/subscriptions/$SUBID/resourceGroups/$RESOURCEGROUP/providers/Microsoft.NetApp/netAppAccounts?api-version=2019-11-01`
 
-在运行下面的示例之前，应指定变量值。 可以通过键入访问 PowerShell 变量 `$variablename` 。
-PowerShell 变量是使用分配的 `$variablename = “value”` 。
+在运行以下示例之前，应该使用你自己的值给变量赋值。 通过键入 `$variablename` 来访问 PowerShell 变量。
+使用 `$variablename = “value”` 给 PowerShell 变量赋值。
 
 ```azurepowershell
 $Region = “westus2" 
@@ -117,7 +117,7 @@ $ANFSnapshot = “ANFTestSnapshot"
 
 ### <a name="put-request-examples"></a>PUT 请求示例
 
-使用 PUT 请求在 Azure NetApp 文件中创建新对象，如以下示例所示。 PUT 请求的正文包含用于更改的 JSON 格式的数据。 它必须作为文本包含在 PowerShell 命令中，或作为文件引用。 若要以文件的形式引用正文，请将 json 示例保存到文件中，并将 `-body (Get-Content @<filename>)` 其添加到 PowerShell 命令中。
+使用 PUT 请求在 Azure NetApp 文件中创建新对象，如以下示例所示。 PUT 请求的正文包含用于更改的 JSON 格式数据。 它必须作为文本包含在 PowerShell 命令中，或以文件形式进行引用。 若要以文件形式引用正文，请将 json 示例保存到文件中，并将 `-body (Get-Content @<filename>)` 添加到 PowerShell 命令。
 
 ```azurepowershell
     #create a NetApp account  
@@ -210,7 +210,7 @@ $ANFSnapshot = “ANFTestSnapshot"
     }
 ```
 
-下面的示例演示如何创建新卷。  (卷的默认协议为 "NFSV3"。 )  
+以下示例演示如何创建新卷。 （卷的默认协议为 NFSV3。） 
 
 ```json
     {
@@ -246,7 +246,7 @@ $ANFSnapshot = “ANFTestSnapshot"
 
 ### <a name="get-request-examples"></a>GET 请求示例
 
-如果资源不存在，则会发生错误。 使用 GET 请求查询订阅中 Azure NetApp 文件的对象，如以下示例所示：
+如果资源不存在，则会出现错误。 使用 GET 请求查询订阅中 Azure NetApp 文件的对象，如以下示例所示：
 
 ```azurepowershell
 #get NetApp accounts 

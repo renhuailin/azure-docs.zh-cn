@@ -1,6 +1,6 @@
 ---
-title: '使用现有 VNET (预览，使用 Azure 映像生成器创建 Windows VM) '
-description: 使用 Azure 映像生成器使用现有 VNET 创建 Windows VM
+title: 使用现有 VNET 通过 Azure 映像生成器（预览版）创建 Windows VM
+description: 使用现有 VNET 通过 Azure 映像生成器创建 Windows VM
 author: cynthn
 ms.author: cynthn
 ms.date: 03/02/2021
@@ -10,15 +10,15 @@ ms.subervice: image-builder
 ms.colletion: windows
 ms.reviewer: danis
 ms.openlocfilehash: 3695732f81463efcadb3d8d8b49e367501cb6e29
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102034058"
 ---
-# <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>使用适用于 Windows Vm 的 Azure 映像生成器，允许访问现有的 Azure VNET
+# <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>使用 Azure 映像生成器创建允许访问现有 Azure VNET 的 Windows VM
 
-本文介绍如何使用 Azure 映像生成器创建可访问 VNET 中现有资源的基本自定义 Windows 映像。 你创建的生成 VM 将部署到你在订阅中指定的新的或现有的 VNET。 使用现有的 Azure VNET 时，Azure 映像生成器服务不需要公共网络连接。
+本文介绍如何使用 Azure 映像生成器创建有权访问 VNET 中现有资源的基本自定义 Windows 映像。 创建的生成 VM 将部署到在订阅中指定的新的或现有的 VNET。 使用现有的 Azure VNET 时，Azure 映像生成器服务不需要公共网络连接。
 
 > [!IMPORTANT]
 > Azure 映像生成器目前提供公共预览版。
@@ -28,7 +28,7 @@ ms.locfileid: "102034058"
 
 ## <a name="register-the-features"></a>注册功能
 
-首先，必须注册 Azure 映像生成器服务。 注册将授予服务创建、管理和删除暂存资源组的权限。 服务还具有添加资源所需的资源组的权限。
+首先，必须注册 Azure 映像生成器服务。 注册会向该服务授予创建、管理和删除暂存资源组的权限。 该服务还拥有添加映像生成所需的组资源的权限。
 
 ```powershell-interactive
 # Register for Azure Image Builder Feature
@@ -41,7 +41,7 @@ Get-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamesp
 ```
 ## <a name="set-variables-and-permissions"></a>设置变量和访问权限 
 
-你将重复使用某些信息。 创建一些变量来存储该信息。
+你将反复使用一些信息片段。 请创建一些变量来存储这些信息。
 
 ```powershell-interactive
 # Step 1: Import module
@@ -93,7 +93,7 @@ New-AzResourceGroup -Name $imageResourceGroup -Location $location
 
 ## <a name="configure-networking"></a>配置网络
 
-如果没有现有的 VNET\Subnet\NSG，请使用以下脚本创建一个。
+如果目前没有 VNET/子网/NSG，请使用以下脚本创建一个。
 
 ```powershell-interactive
 New-AzResourceGroup -Name $vnetRgName -Location $location
@@ -112,7 +112,7 @@ New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $vnetRgName -Location $l
 
 ### <a name="add-network-security-group-rule"></a>添加网络安全组规则
 
-此规则允许从 Azure 映像生成器负载均衡器连接到代理 VM。 端口60001适用于 Linux 操作系统，端口60000适用于 Windows OSs。 代理 VM 使用适用于 Linux Os 的端口22和 Windows OSs 的端口5986连接到生成 VM。
+此规则允许建立从 Azure 映像生成器负载均衡器到代理 VM 的连接。 端口 60001 适用于 Linux OS，端口 60000 适用于 Windows OS。 代理 VM 使用端口 22（在 Linux OS 中）或端口 5986（在 Windows OS 中）连接到生成 VM。
 
 ```powershell-interactive
 Get-AzNetworkSecurityGroup -Name $nsgName -ResourceGroupName $vnetRgName  | Add-AzNetworkSecurityRuleConfig -Name AzureImageBuilderAccess -Description "Allow Image Builder Private Link Access to Proxy VM" -Access Allow -Protocol Tcp -Direction Inbound -Priority 400 -SourceAddressPrefix AzureLoadBalancer -SourcePortRange * -DestinationAddressPrefix VirtualNetwork -DestinationPortRange 60000-60001 | Set-AzNetworkSecurityGroup
@@ -202,7 +202,7 @@ New-AzRoleAssignment -ObjectId $idenityNamePrincipalId -RoleDefinitionName $imag
 New-AzRoleAssignment -ObjectId $idenityNamePrincipalId -RoleDefinitionName $networkRoleDefName -Scope "/subscriptions/$subscriptionID/resourceGroups/$vnetRgName"
 ```
 
-有关权限的详细信息，请参阅 [使用 Azure CLI 配置 Azure 映像生成器服务权限](../linux/image-builder-permissions-cli.md) 或 [使用 PowerShell 配置 Azure 映像生成器服务权限](../linux/image-builder-permissions-powershell.md)。
+有关权限的详细信息，请参阅[使用 Azure CLI 配置 Azure 映像生成器服务权限](../linux/image-builder-permissions-cli.md)或[使用 PowerShell 配置 Azure 映像生成器服务权限](../linux/image-builder-permissions-powershell.md)。
 
 ## <a name="create-the-image"></a>创建映像
 
@@ -222,7 +222,7 @@ Invoke-AzResourceAction -ResourceName $imageTemplateName -ResourceGroupName $ima
 
 ## <a name="get-image-build-status-and-properties"></a>获取映像生成状态和属性
 
-### <a name="query-the-image-template-for-current-or-last-run-status-and-image-template-settings"></a>查询当前或上次运行状态以及映像模板设置的映像模板
+### <a name="query-the-image-template-for-current-or-last-run-status-and-image-template-settings"></a>在映像模板中查询“当前运行状态”或“上次运行状态”和“映像模板设置”
 ```powerShell
 $managementEp = $currentAzureContext.Environment.ResourceManagerUrl
 
@@ -234,7 +234,7 @@ $buildJsonStatus
 
 ```
 
-此示例的映像生成大约需要50分钟 (多次重启，windows 更新安装/重新启动) ，当你查询状态时，你需要查找 *lastRunStatus*，下面显示生成仍在运行，如果已成功完成，则会显示 "成功"。
+此示例的映像生成大约需要 50 分钟（多次重启、Windows 更新安装/重启）。当你查询状态时，需要查找“lastRunStatus”。下面显示生成仍在运行，如果它已成功完成，则会显示“succeeded”。
 
 ```text
   "lastRunStatus": {
@@ -246,8 +246,8 @@ $buildJsonStatus
   },
 ```
 
-### <a name="query-the-distribution-properties"></a>查询分布属性
-如果要分发到 VHD 位置、需要托管映像位置属性或共享映像库复制状态，则每次有分发目标时，都需要查询 "runOutput"，你将拥有唯一的 runOutput 来描述分发类型的属性。
+### <a name="query-the-distribution-properties"></a>查询分发属性
+如果你要分发到 VHD 位置，需要托管映像位置属性或共享映像库复制状态，则需查询“runOutput”。每次有分发目标时，你都会有一个独一无二的 runOutput（用于描述分发类型的属性）。
 
 ```powerShell
 $managementEp = $currentAzureContext.Environment.ResourceManagerUrl
@@ -259,7 +259,7 @@ $runOutJsonStatus
 ```
 ## <a name="create-a-vm"></a>创建 VM
 
-生成完成后，可以从映像生成 VM。 使用 [PowerShell New-AzVM 文档](/powershell/module/az.compute/new-azvm#description)中的示例。
+现在生成已完成，你可以从映像生成 VM 了。 使用 [PowerShell New-AzVM 文档](/powershell/module/az.compute/new-azvm#description)中的示例。
 
 ## <a name="clean-up"></a>清理
 

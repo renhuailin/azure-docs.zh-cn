@@ -1,6 +1,6 @@
 ---
-title: 注册 SaaS 应用程序-Azure Marketplace
-description: 了解如何使用 Azure 门户注册 SaaS 应用程序并接收 Azure Active Directory 的安全令牌。
+title: 注册 SaaS 应用程序 - Azure 市场
+description: 了解如何使用 Azure 门户来注册 SaaS 应用程序并接收 Azure Active Directory 安全令牌。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
@@ -8,53 +8,53 @@ ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: 39a0830806d2d9c7358d175cae703e9c81c45b02
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93130011"
 ---
 # <a name="register-a-saas-application"></a>注册 SaaS 应用程序
 
-本文介绍如何使用 Microsoft [Azure 门户](https://portal.azure.com/) 注册 SaaS 应用程序以及如何 (Azure Active Directory 访问令牌) 获取发布者的访问令牌。 发布者将使用此令牌通过调用 SaaS 履单 Api 对 SaaS 应用程序进行身份验证。  履行 Api 使用 OAuth 2.0 客户端凭据授予 Azure Active Directory (v1.0) 终结点上的流，以发出服务到服务访问令牌请求。
+本文介绍如何使用 Microsoft [Azure 门户](https://portal.azure.com/)来注册 SaaS 应用程序，以及如何获取发布者的访问令牌（Azure Active Directory 访问令牌）。 发布者将使用此令牌通过调用 SaaS 履行 API 对 SaaS 应用程序进行身份验证。  履行 API 使用 OAuth 2.0 客户端凭据来授权 Azure Active Directory (v1.0) 终结点上的流发出服务到服务访问令牌请求。
 
-Azure Marketplace 不会对你的 SaaS 服务用于最终用户的身份验证方法施加任何限制。 以下流程仅用于对 Azure Marketplace 中的 SaaS 服务进行身份验证。
+Azure 市场不会对你的 SaaS 服务用于最终用户的身份验证方法施加任何限制。 只是在对 Azure 市场中的 SaaS 服务进行身份验证时才会需要下面的流。
 
-有关 Azure AD (Active Directory) 的详细信息，请参阅 [什么是身份验证](../../active-directory/develop/authentication-vs-authorization.md)？
+有关 Azure AD (Active Directory) 的详细信息，请参阅[什么是身份验证](../../active-directory/develop/authentication-vs-authorization.md)？
 
-## <a name="register-an-azure-ad-secured-app"></a>注册 Azure AD 保护的应用
+## <a name="register-an-azure-ad-secured-app"></a>注册受 Azure AD 保护的应用
 
-任何想要使用 Azure AD 功能的应用程序都必须先在 Azure AD 租户中注册。 此注册过程涉及到提供有关应用程序的 Azure AD 一些详细信息。 若要使用 Azure 门户注册新应用程序，请执行以下步骤：
+任何想要使用 Azure AD 功能的应用程序都必须先在 Azure AD 租户中注册。 此注册过程涉及向 Azure AD 提供有关你的应用程序的一些详细信息。 若要使用 Azure 门户注册新应用程序，请执行以下步骤：
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 如果你的帐户允许访问多个帐户，请单击右上角的帐户，并将门户会话设置为所需的 Azure AD 租户。
-3. 在左侧导航窗格中，依次单击“Azure Active Directory”服务、“应用注册”、“新建应用程序注册”。 
+2. 如果你的帐户有权访问多个 Azure AD 租户，请在右上角单击该帐户，并将门户会话设置为所需租户。
+3. 在左侧导航窗格中，依次单击“Azure Active Directory”服务、“应用注册”、“新建应用程序注册”。
 
     ![SaaS AD 应用注册](./media/saas-offer-app-registration-v1.png)
 
 4. 在“创建”页上，输入应用程序的注册信息：
-    -   **名称** ：输入有意义的应用程序名称
-    -   **应用程序类型** ：  
+    -   **名称**：输入有意义的应用程序名称
+    -   **应用程序类型**：  
         
-        为 [客户端应用程序](../../active-directory/develop/developer-glossary.md#client-application)选择 **WEB 应用/api** ) 和安装在安全服务器上的 [资源/api 应用程序](../../active-directory/develop/developer-glossary.md#resource-server)) 。 此设置用于) 和[基于公共用户代理的客户端](../../active-directory/develop/developer-glossary.md#user-agent-based-client)) 的 OAuth 机密[web 客户端](../../active-directory/develop/developer-glossary.md#web-client)。
+        为安装在安全服务器上的[客户端应用程序](../../active-directory/develop/developer-glossary.md#client-application)和[资源/API 应用程序](../../active-directory/develop/developer-glossary.md#resource-server)选择“Web 应用/API”。 此设置用于 OAuth 机密性 [Web 客户端](../../active-directory/develop/developer-glossary.md#web-client)和公共的[基于用户代理的客户端](../../active-directory/develop/developer-glossary.md#user-agent-based-client)。
         相同的应用程序还可以公开客户端和资源/API。
 
-        有关 web 应用程序的特定示例，请查看[Azure AD 开发人员指南](../../active-directory/develop/index.yml)的 "[入门](../../active-directory/develop/quickstart-create-new-tenant.md)" 部分中提供的快速入门指导设置。
+        有关 Web 应用程序的特定示例，请查看 [Azure AD 开发人员指南](../../active-directory/develop/index.yml)的[入门](../../active-directory/develop/quickstart-create-new-tenant.md)部分提供的快速入门引导式设置。
 
-5. 完成后，单击 " **注册** "。  Azure AD 向新应用程序分配唯一的 *应用程序 ID* 。 建议只将一个应用程序注册为一个租户，并将其注册为单个租户。
+5. 完成后，单击“注册”。  Azure AD 会将一个独一无二的应用程序 ID 分配到你的新应用程序。 建议注册一个只访问该 API 的应用（作为单一租户注册）。
 
-6. 若要创建客户端密码，请导航到 " **证书 & 机密" 页** ，然后单击 " **+ 新建客户端密钥** "。  请确保复制机密值，以便在代码中使用它。
+6. 若要创建客户端密码，请导航到“证书和机密”页，然后单击“+ 新建客户端密码” 。  请确保复制该机密值，以便在代码中使用。
 
-**Azure AD 应用 id** 关联到你的发布者 id，因此请确保你的所有产品/服务中都使用相同的 *应用 id* 。
+Azure AD 应用 ID 与你的发布者 ID 相关联，因此，请确保在你所有的产品/服务中都使用同一应用 ID。
 
 >[!Note]
->如果发布者在合作伙伴中心具有两个不同的帐户，则应使用两个不同的 Azure AD 应用 Id。  伙伴中心中的每个合作伙伴帐户应为通过此帐户发布的所有 SaaS 产品/服务使用唯一的 Azure AD 应用 ID。
+>如果发布者在合作伙伴中心有两个不同的帐户，则应使用两个不同的 Azure AD 应用 ID。  合作伙伴中心的每个合作伙伴帐户都应为通过此帐户发布的所有 SaaS 产品/服务使用独一无二的 Azure AD 应用 ID。
 
 ## <a name="how-to-get-the-publishers-authorization-token"></a>如何获取发布者的授权令牌
 
-注册应用程序后，可以使用 Azure AD V1 终结点) 以编程方式请求发布服务器的授权令牌 (Azure AD 访问令牌。 发布者在调用各种 SaaS 履单 Api 时必须使用此令牌。 此令牌仅在一小时内有效。 
+在注册了应用程序后，可以通过编程方式来请求发布者的授权令牌（Azure AD 访问令牌，使用 Azure AD V1 终结点）。 发布者在调用各种 SaaS 履行 API 时必须使用此令牌。 此令牌仅在 1 小时内有效。 
 
-有关这些令牌的详细信息，请参阅 [Azure Active Directory 访问令牌](../../active-directory/develop/access-tokens.md)。  请注意，在使用低于 V1 终结点令牌的流中。
+有关这些令牌的详细信息，请参阅 [Azure Active Directory 访问令牌](../../active-directory/develop/access-tokens.md)。  请注意，下面的流中使用了 V1 终结点令牌。
 
 ### <a name="get-the-token-with-an-http-post"></a>使用 HTTP POST 获取令牌
 
@@ -68,24 +68,24 @@ Azure Marketplace 不会对你的 SaaS 服务用于最终用户的身份验证�
 
 ##### <a name="uri-parameter"></a>*URI 参数*
 
-|  参数名称    |  必需         |  描述 |
+|  参数名称    |  必需         |  说明 |
 |  ---------------   |  ---------------  | ------------ |
-|  `tenantId`        |  True      |  已注册 AAD 应用程序的租户 ID。 |
+|  `tenantId`        |  True      |  已注册的 AAD 应用程序的租户 ID。 |
 
 ##### <a name="request-header"></a>请求标头
 
-|  标头名称       |  必需         |  描述 |
+|  标头名称       |  必需         |  说明 |
 |  ---------------   |  ---------------  | ------------ |
 |  `content-type`    |  True      |  与请求关联的内容类型。 默认值是 `application/x-www-form-urlencoded`。 |
 
 ##### <a name="request-body"></a>*请求正文*
 
-|  属性名称     |  必需         |  描述 |
+|  属性名称     |  必需         |  说明 |
 |  ---------------   |  ---------------  | ------------ |
-|  `grant_type`      |  True      |  授权类型。 请使用 `"client_credentials"`。 |
+|  `grant_type`      |  True      |  授权类型。 使用 `"client_credentials"`。 |
 |  `client_id`       |  True      |  与 Azure AD 应用关联的客户端/应用标识符。 |
-|  `client_secret`   |  True      |  与 Azure AD 应用相关联的机密。 |
-|  `resource`        |  True      |  为其请求令牌的目标资源。 使用， `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` 因为在这种情况下 Marketplace SAAS API 始终是目标资源。 |
+|  `client_secret`   |  True      |  与 Azure AD 应用关联的机密。 |
+|  `resource`        |  True      |  为其请求令牌的目标资源。 使用 `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`，因为在本例中市场 SaaS API 始终是目标资源。 |
 
 ##### <a name="response"></a>*响应*
 
@@ -109,8 +109,8 @@ Azure Marketplace 不会对你的 SaaS 服务用于最终用户的身份验证�
   }
 ```
 
-`"access_token"`响应中的字段值是在 `<access_token>` 调用所有 SaaS 履单和 Marketplace 计量 api 时将作为授权参数传递的。
+响应中的 `"access_token"` 字段值是 `<access_token>`。在调用所有 SaaS 履行和市场计量 API 时，该值将作为授权参数传递。
 
 ## <a name="next-steps"></a>后续步骤
 
-你的 Azure AD 保护的应用现在可以使用 [SaaS 履单 API 版本 2](./pc-saas-fulfillment-api-v2.md)。
+受 Azure AD 保护的应用现在可以使用 [SaaS 履行 API 版本 2](./pc-saas-fulfillment-api-v2.md)。
