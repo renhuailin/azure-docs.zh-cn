@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 191722d02b493cfe0197c3e45771543fd8c5926a
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 4aaf63d2a4d49f7fff35eb7386b71ac271f1eac9
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105961041"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227391"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储输入绑定
 
@@ -262,7 +262,7 @@ Write-Host "PowerShell Blob trigger: Name: $($TriggerMetadata.Name) Size: $($Inp
 
 `dataType` 属性确定使用的绑定。 以下值可用于支持不同的绑定策略：
 
-| 绑定值 | 默认 | 说明 | 示例 |
+| 绑定值 | 默认 | 描述 | 示例 |
 | --- | --- | --- | --- |
 | `string` | N | 使用泛型绑定，并将输入类型强制转换为 `string` | `def main(input: str)` |
 | `binary` | N | 使用泛型绑定，并将输入 blob 强制转换为 `bytes` Python 对象 | `def main(input: bytes)` |
@@ -276,7 +276,6 @@ import logging
 import azure.functions as func
 
 
-# The type func.InputStream is not supported for blob input binding.
 # The input binding field inputblob can either be 'bytes' or 'str' depends
 # on dataType in function.json, 'binary' or 'string'.
 def main(queuemsg: func.QueueMessage, inputblob: bytes) -> bytes:

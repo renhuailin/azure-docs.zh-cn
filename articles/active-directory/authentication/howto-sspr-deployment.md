@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55fc4c0b5f3e2bbf57c972ad4a7fd2c9bdd3810e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f3e7792546531d7f443a44b127620d508816edcb
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579189"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108285765"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>规划 Azure Active Directory 自助式密码重置部署
 
@@ -87,7 +87,7 @@ Azure Active Directory 按用户许可，这意味着，每个用户需要为其
 |教程 |[完成 Azure AD 自助式密码重置试点推行](./tutorial-enable-sspr.md) |
 | |[启用密码写回](./tutorial-enable-sspr-writeback.md) |
 | |[Windows 10 登录屏幕中的 Azure AD 密码重置](./howto-sspr-windows.md) |
-| 常见问题解答|[密码管理常见问题解答](./active-directory-passwords-faq.md) |
+| 常见问题解答|[密码管理常见问题解答](./active-directory-passwords-faq.yml) |
 
 
 ### <a name="solution-architecture"></a>解决方案体系结构
@@ -106,7 +106,7 @@ Azure Active Directory 按用户许可，这意味着，每个用户需要为其
 
 注意：对于已禁用[密码哈希同步 (PHS)](../hybrid/whatis-phs.md) 的用户，SSPR 仅将密码存储在本地 Active Directory 中。
 
-### <a name="best-practices"></a>最佳做法
+### <a name="best-practices"></a>最佳实践
 
 连同组织中的其他常用应用程序或服务一起部署 SSPR 可帮助用户快速完成注册。 此操作会产生大量登录，可推进注册操作。
 
@@ -328,7 +328,7 @@ Azure AD 可以通过审核和报告提供有关 SSPR 性能的附加信息。
 
 * 参阅[排查自助式密码重置问题](./troubleshoot-sspr.md) 
 
-* 遵循[密码管理常见问题解答](./active-directory-passwords-faq.md) 
+* 遵循[密码管理常见问题解答](./active-directory-passwords-faq.yml) 
 
 ### <a name="helpful-documentation"></a>可提供帮助的文档
 

@@ -1,6 +1,6 @@
 ---
-title: 将检查点数据连接到 Azure Sentinel |Microsoft Docs
-description: 将你的检查点设备配置为通过 Syslog 代理将 Syslog 消息以 CEF 格式转发到 Azure Sentinel 工作区。
+title: 将 Check Point 数据连接到 Azure Sentinel | Microsoft Docs
+description: 将 Check Point 设备配置为通过 Syslog 代理将 Syslog 消息以 CEF 格式转发到 Azure Sentinel 工作区。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,34 +15,34 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 32cbdabef4d89c7fabb47a52ebf0589690b7ab33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85566062"
 ---
-# <a name="connect-check-point-to-azure-sentinel"></a>将检查点连接到 Azure Sentinel
+# <a name="connect-check-point-to-azure-sentinel"></a>将 Check Point 连接到 Azure Sentinel
 
 
 
-本文介绍如何将你的检查点设备连接到 Azure Sentinel。 勾选点数据连接器可让你轻松地将你的检查点日志与 Azure Sentinel 连接，以查看仪表板、创建自定义警报和改进调查。 使用 Azure Sentinel 上的检查点可以更深入地了解组织的 Internet 使用情况，并增强其安全操作功能。 
+本文介绍如何将 Check Point 设备连接到 Azure Sentinel。 使用 Check Point 数据连接器，可以将 Check Point 日志轻松连接到 Azure Sentinel，以查看仪表板、创建自定义警报和改进调查。 使用 Azure Sentinel 上的 Check Point 可以更深入地了解组织的 Internet 使用情况，并增强其安全操作功能。 
 
-## <a name="forward-check-point-logs-to-the-syslog-agent"></a>将检查点日志转发到 Syslog 代理
+## <a name="forward-check-point-logs-to-the-syslog-agent"></a>将 Check Point 日志转发到 Syslog 代理
 
-将你的检查点设备配置为通过 Syslog 代理将 Syslog 消息以 CEF 格式转发到 Azure 工作区。
+将 Check Point 设备配置为通过 Syslog 代理将 Syslog 消息以 CEF 格式转发到 Azure 工作区。
 
-1. 请参阅 [检查点日志导出](https://aka.ms/asi-syslog-checkpoint-forwarding)。
-1. 向下滚动到 "基本" " **部署** "，按照说明使用以下准则设置连接：
-   - 将 **Syslog 端口** 设置为 **514** 或在代理上设置的端口。
-     - 将 CLI 中的 **名称** 和 **目标服务器 IP 地址** 替换为 SYSLOG 代理名称和 IP 地址。
-     - 将格式设置为 **CEF**。
-1. 如果使用的是版本 R 77.30 或 R 80.10，请向上滚动到 " **安装** "，并按照说明安装版本的日志导出程序。
+1. 转到 [Check Point 日志导出](https://aka.ms/asi-syslog-checkpoint-forwarding)。
+1. 向下滚动到“基本部署”，按照说明根据以下准则设置连接：
+   - 将“Syslog 端口”设置为“514”或在代理上设置的端口。
+     - 将 CLI 中的“名称”和“目标服务器 IP 地址”替换为 Syslog 代理名称和 IP 地址。
+     - 将格式设置为“CEF”。
+1. 如果使用的是 R77.30 或 R80.10 版本，请向上滚动至“安装”，然后按照说明为你的版本安装日志导出程序。
 1. 继续执行[步骤 3：验证连接性](connect-cef-verify.md)。
  
 
 ## <a name="next-steps"></a>后续步骤
-本文档介绍了如何将检查点设备连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- [验证连接](connect-cef-verify.md)。
+本文档介绍了如何将 Check Point 设备连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
+- [验证连接性](connect-cef-verify.md)。
 - 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
 - [使用工作簿](tutorial-monitor-your-data.md)监视数据。
 

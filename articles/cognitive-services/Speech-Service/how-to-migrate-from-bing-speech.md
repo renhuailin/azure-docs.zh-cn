@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: d6b7b298e7e4d18e68985ec3cf536c90ef773608
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 139d39eb874860cfacc4bbc6fb3234e77c12c310
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644381"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290762"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>从必应语音迁移到语音服务
 
@@ -26,7 +26,7 @@ ms.locfileid: "105644381"
 单个语音服务订阅密钥授予对以下功能的访问权限。 每个功能单独计量，以便仅针对你使用的功能收费。
 
 * [语音转文本](speech-to-text.md)
-* [自定义语音转文本](/azure/cognitive-services/speech-service/custom-speech-overview)
+* [自定义语音转文本](./custom-speech-overview.md)
 * [文本转语音](text-to-speech.md)
 * [自定义文本转语音声音](./how-to-custom-voice-create-voice.md)
 * [语音翻译](speech-translation.md)（不包括[文本翻译](../translator/translator-info-overview.md)）

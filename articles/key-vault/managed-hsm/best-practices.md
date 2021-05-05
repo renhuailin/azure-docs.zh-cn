@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: ambapat
-ms.openlocfilehash: 9ef3b19e5064c8a88bf80eebf57539be72747fe4
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 7a30a7ab6689b602bc9ad4f696a6fe54c80f2151
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482511"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "90994277"
 ---
 # <a name="best-practices-when-using-managed-hsm"></a>使用托管 HSM 时的最佳做法
 
@@ -23,10 +23,8 @@ ms.locfileid: "107482511"
 托管 HSM 是一种保护加密密钥的云服务。 由于这些密钥很敏感且对业务至关重要，因此只能允许授权的应用程序和用户使用，确保对托管 HSM 的访问安全性。 [此文](access-control.md)简要介绍了访问模型。 它说明了身份验证和授权以及基于角色的访问控制。
 - 为 HSM 管理员创建 [Azure Active Directory 安全组](../../active-directory/fundamentals/active-directory-manage-groups.md)（而不是将“管理员”角色分配给个人）。 这可防止在删除单个帐户时出现“管理锁定”的情况。
 - 锁定对管理组、订阅、资源组和托管 HSM 的访问 - 使用 Azure RBAC 控制对管理组、订阅和资源组的访问
-- 使用[托管 HSM 本地 RBAC](access-control.md#data-plane-and-managed-hsm-local-rbac) 创建按密钥进行的角色分配。
-- 要保持职责分离，请避免将多个角色分配给同一主体。 
-- 使用最低特权访问主体来分配角色。
-- 使用精确的权限集来创建自定义角色定义。
+- 使用[托管 HSM 本地 RBAC](access-control.md#data-plane-and-managed-hsm-local-rbac) 创建按密钥进行的角色分配
+- 使用最低特权访问主体来分配角色
 
 ## <a name="choose-regions-that-support-availability-zones"></a>选择支持可用性区域 (zone) 的区域 (region)
 

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e1b7e091fe09bc2c093cc84473bd07917347f26d
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 1a2d4059f701a45d982f2045dea5e8dfe4e12a20
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220780"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286341"
 ---
 # <a name="communication-services-notifications"></a>通信服务通知
 
@@ -28,7 +28,7 @@ Azure 通信服务与 [Azure 事件网格](https://azure.microsoft.com/services/
 
 :::image type="content" source="./media/notifications/acs-events-int.png" alt-text="显示通信服务如何与事件网格集成的关系图。":::
 
-详细了解 [Azure 通信服务中的事件处理](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services)。
+详细了解 [Azure 通信服务中的事件处理](../../event-grid/event-schema-communication-services.md)。
 
 ## <a name="deliver-push-notifications-via-azure-notification-hubs"></a>通过 Azure 通知中心传递推送通知
 

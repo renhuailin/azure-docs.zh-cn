@@ -1,25 +1,21 @@
 ---
-title: Windows 虚拟桌面准备 MSIX 应用附加映像预览版 - Azure
+title: Windows 虚拟桌面准备 MSIX 应用附加映像 - Azure
 description: 如何为 Windows 虚拟桌面主机池创建 MSIX 应用附加映像。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/13/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 204cc9a05d62caf62179100fa3496be422a3ec0c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+manager: femila
+ms.openlocfilehash: 443f117907381862639564dfbf9752562f4a3564
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97425744"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363659"
 ---
 # <a name="prepare-an-msix-image-for-windows-virtual-desktop"></a>为 Windows 虚拟桌面准备 MSIX 映像
 
-> [!IMPORTANT]
-> MSIX 应用附加目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-MSIX 应用附加（预览版）是一个应用程序分层解决方案，可用于将应用从 MSIX 包动态附加到用户会话。 MSIX 包系统将应用与操作系统分开，这样更易于为虚拟机构建映像。 借助 MSIX 包，还可以更好地控制用户在其虚拟机中可以访问哪些应用。 甚至可以将应用与主映像分开，稍后再将这些应用提供给用户。
+MSIX 应用附加是一个应用程序分层解决方案，可用于将应用从 MSIX 包动态附加到用户会话。 MSIX 包系统将应用与操作系统分开，这样更易于为虚拟机构建映像。 借助 MSIX 包，还可以更好地控制用户在其虚拟机中可以访问哪些应用。 甚至可以将应用与主映像分开，稍后再将这些应用提供给用户。
 
 ## <a name="create-a-vhd-or-vhdx-package-for-msix"></a>为 MSIX 创建 VHD 或 VHDX 包
 

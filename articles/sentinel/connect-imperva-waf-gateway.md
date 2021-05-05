@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
 ms.openlocfilehash: a37abf369d1f34dc8f4a27802dfad88dab79be44
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101698427"
 ---
 # <a name="connect-your-imperva-waf-gateway-appliance-to-azure-sentinel"></a>将 Imperva WAF 网关设备连接到 Azure Sentinel
@@ -47,15 +47,15 @@ ms.locfileid: "101698427"
 
 1. 按照“配置”下的“说明”选项卡中的说明进行操作 ：
 
-    1. 在“1.Linux Syslog 代理配置”下 - 如果尚未运行日志转发器，或者需要其他日志转发器，请执行此步骤。 有关更多详细说明和介绍，请参阅 Azure Sentinel 文档中的[步骤 1：部署日志转发器](connect-cef-agent.md)。
+    1. 在“1. Linux Syslog 代理配置”下 — 如果你还没有运行日志转发器，或者如果你需要其他日志转发器，请执行此步骤。 有关更多详细说明和介绍，请参阅 Azure Sentinel 文档中的[步骤 1：部署日志转发器](connect-cef-agent.md)。
 
-    1. 在“2.将通用事件格式(CEF)日志转发到 Syslog 代理”下 - 此连接器需要在“Imperva SecureSphere MX”管理控制台上创建“操作接口”和“操作集”  。 按照 Imperva 的说明[启用将 Imperva WAF 网关警报记录到 Azure Sentinel 的功能](https://community.imperva.com/blogs/craig-burlingame1/2020/11/13/steps-for-enabling-imperva-waf-gateway-alert)。 此配置应该包含以下元素：
+    1. 在“2. 将通用事件格式 (CEF) 日志转发到 Syslog 代理”下 — 此连接器需要在“Imperva SecureSphere MX”管理控制台上创建“操作接口”和“操作集”。    按照 Imperva 的说明[启用将 Imperva WAF 网关警报记录到 Azure Sentinel 的功能](https://community.imperva.com/blogs/craig-burlingame1/2020/11/13/steps-for-enabling-imperva-waf-gateway-alert)。 此配置应该包含以下元素：
         - 日志目标 – 日志转发服务器的主机名和/或 IP 地址
         - 协议和端口 – TCP 514
         - 日志格式 – CEF
         - 日志类型 – 所有可用类型
 
-    1. 在“3.验证连接”下 - 通过复制连接器页上的命令并在日志转发器上运行该命令来验证数据引入。 有关更多详细说明和介绍，请参阅 Azure Sentinel 文档中的[步骤 3：验证连接性](connect-cef-verify.md)。
+    1. 在“3. 验证连接”下 — 通过复制连接器页上的命令并在日志转发器上运行以验证数据引入。 有关更多详细说明和介绍，请参阅 Azure Sentinel 文档中的[步骤 3：验证连接性](connect-cef-verify.md)。
 
         可能需要长达 20 分钟的时间，日志才会开始显示在 Log Analytics 中。
 

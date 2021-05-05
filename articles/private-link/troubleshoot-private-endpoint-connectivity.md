@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
 ms.openlocfilehash: 90831c0e8d5ab73f65dc801319a357d59799cbc6
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97807546"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>排查 Azure 专用终结点连接问题
@@ -100,24 +100,24 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
     
        ![NSG 出站规则](./media/private-endpoint-tsg/nsg-outbound-rules.png)
 
-1. 源虚拟机应在 NIC 有效路由中将路由到专用终结点 IP 下一跃点为 InterfaceEndpoints。 
+1. 源虚拟机应将到专用终结点 IP 下一跃点的路由作为 NIC 有效路由中的 InterfaceEndpoints。 
 
-    a. 如果无法在源 VM 中看到专用终结点路由，请检查是否 
-     - 源 VM 和专用终结点属于同一 VNET。 如果是，则需联系支持人员。 
-     - 源 VM 和专用终结点属于不同的 Vnet，然后检查 VNET 之间的 IP 连接。 如果有 IP 连接，但仍无法查看路由，请联系支持人员。 
+    a. 如果在源 VM 中看不到专用终结点路由，请检查 
+     - 源 VM 和专用终结点是否属于同一 VNET。 如果是，则需联系支持部门。 
+     - 源 VM 和专用终结点是否属于不同的 VNET，然后检查 VNET 之间是否有 IP 连接。 如果有 IP 连接，但仍看不到路由，请联系支持部门。 
 
 1. 如果连接的验证结果符合预期，则连接问题可能与应用层的其他方面（例如机密、令牌和密码）相关。
    - 在这种情况下，请检查与专用终结点关联的专用链接资源的配置。 有关详细信息，请参阅 [Azure 专用链接故障排除指南](troubleshoot-private-link-connectivity.md)
    
-1. 在提出支持票证之前，最好先缩小。 
+1. 在提交支持票证之前，最好是先缩小问题范围。 
 
-    a. 如果源在本地连接到 Azure 中的专用终结点时出现问题，请尝试连接 
-      - 从本地连接到另一台虚拟机，并检查是否有从本地到虚拟网络的 IP 连接。 
-      - 从虚拟网络中的虚拟机到专用终结点。
+    a. 如果源是从本地连接到 Azure 中存在问题的专用终结点，请尝试 
+      - 从本地连接到另一个虚拟机，并检查是否有从本地到虚拟网络的 IP 连接。 
+      - 从虚拟网络中的虚拟机连接到专用终结点。
       
-    b. 如果源是 Azure，专用终结点在不同的虚拟网络中，则尝试连接 
-      - 从不同的源到专用终结点。 这样做可隔离任何虚拟机特定的问题。 
-      - 到属于专用终结点的同一虚拟网络的任何虚拟机。  
+    b. 如果源是 Azure 且专用终结点位于不同的虚拟网络中，则尝试 
+      - 从其他源连接到专用终结点。 这样做可厘清任何特定于虚拟机的问题。 
+      - 连接到与专用终结点属于同一虚拟网络的任何虚拟机。  
 
 1. 如果问题仍未解决，并且连接问题仍然存在，请联系 [Azure 支持](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)团队。
 
