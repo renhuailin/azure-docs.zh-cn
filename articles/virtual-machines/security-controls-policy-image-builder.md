@@ -1,7 +1,7 @@
 ---
 title: Azure 映像生成器的 Azure Policy 合规性控制措施
 description: 列出可用于 Azure 映像生成器的 Azure Policy 合规性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 04/21/2021
+ms.date: 04/28/2021
 ms.topic: sample
 author: cynthn
 ms.author: cynthn
@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: bb6f24e07d50c38361b25a5e16c72c54b55f9f31
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: b67b42cbca342cae3bce48869946f0edec48e009
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107863905"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108177579"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-image-builder"></a>Azure 映像生成器的 Azure Policy 合规性控制措施
 

@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.workload: identity
-ms.date: 02/15/2021
+ms.date: 04/28/2021
 ms.author: rolyon
-ms.openlocfilehash: 6e8f194cd85a3c381bdabf206777a99dce3c29b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d040b4b49ddb394639633cb40887a116ff1e613b
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100559267"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279327"
 ---
 # <a name="quickstart-assign-an-azure-role-using-an-arm-template"></a>快速入门：使用 ARM 模板分配 Azure 角色
 
@@ -25,7 +25,7 @@ ms.locfileid: "100559267"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-rbac-builtinrole-resourcegroup%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.authorization%2Frbac-builtinrole-resourcegroup%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,7 +39,7 @@ ms.locfileid: "100559267"
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/)。 该模板具有三个参数和资源部分。 请注意，资源部分包含角色分配的三个要素：安全主体、角色定义和作用域。
 
-:::code language="json" source="~/quickstart-templates/101-rbac-builtinrole-resourcegroup/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.authorization/rbac-builtinrole-resourcegroup/azuredeploy.json":::
 
 该模板中定义了以下资源：
 
@@ -59,12 +59,12 @@ ms.locfileid: "100559267"
     $resourceGroupName = Read-Host -Prompt "Enter a resource group name (i.e. ExampleGrouprg)"
     $emailAddress = Read-Host -Prompt "Enter an email address for a user in your directory"
     $location = Read-Host -Prompt "Enter a location (i.e. centralus)"
-    
+
     $roleAssignmentName = New-Guid
     $principalId = (Get-AzAdUser -Mail $emailAddress).id
     $roleDefinitionId = (Get-AzRoleDefinition -name "Virtual Machine Contributor").id
-    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-rbac-builtinrole-resourcegroup/azuredeploy.json"
-    
+    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.authorization/rbac-builtinrole-resourcegroup/azuredeploy.json"
+
     New-AzResourceGroup -Name $resourceGroupName -Location $location
     New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -roleAssignmentName $roleAssignmentName -roleDefinitionID $roleDefinitionId -principalId $principalId
     ```
@@ -83,23 +83,23 @@ ms.locfileid: "100559267"
 
     ```azurepowershell
     PS> New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -roleAssignmentName $roleAssignmentName -roleDefinitionID $roleDefinitionId -principalId $principalId
-    
+
     DeploymentName          : azuredeploy
     ResourceGroupName       : ExampleGrouprg
     ProvisioningState       : Succeeded
     Timestamp               : 5/22/2020 9:01:30 PM
     Mode                    : Incremental
     TemplateLink            :
-                              Uri            : https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-rbac-builtinrole-resourcegroup/azuredeploy.json
+                              Uri            : https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.authorization/rbac-builtinrole-resourcegroup/azuredeploy.json
                               ContentVersion : 1.0.0.0
-    
+
     Parameters              :
                               Name                  Type                       Value
                               ====================  =========================  ==========
                               roleAssignmentName    String                     {roleAssignmentName}
                               roleDefinitionID      String                     9980e02c-c2be-4d73-94e8-173b1dc7cf3c
                               principalId           String                     {principalId}
-    
+
     Outputs                 :
     DeploymentDebugLogLevel :
     ```
@@ -125,13 +125,13 @@ ms.locfileid: "100559267"
     ```azurepowershell
     $emailAddress = Read-Host -Prompt "Enter the email address of the user with the role assignment to remove"
     $resourceGroupName = Read-Host -Prompt "Enter the resource group name to remove (i.e. ExampleGrouprg)"
-    
+
     $principalId = (Get-AzAdUser -Mail $emailAddress).id
-    
+
     Remove-AzRoleAssignment -ObjectId $principalId -RoleDefinitionName "Virtual Machine Contributor" -ResourceGroupName $resourceGroupName
     Remove-AzResourceGroup -Name $resourceGroupName
     ```
-    
+
 1. 输入用户的电子邮件地址，其中包含要删除的角色分配。
 
 1. 输入要删除的资源组名称，如 ExampleGrouprg。

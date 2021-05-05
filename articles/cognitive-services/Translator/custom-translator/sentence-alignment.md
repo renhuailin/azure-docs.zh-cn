@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 04/19/2021
 ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 43268afccbe66a21d2ce78709ba372a8a6682444
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: f286e2bcded99ad59b706bd7e6d8b2b29f4b4c0a
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727143"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292355"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>并行文档中的句子配对和对齐
 
@@ -46,7 +46,7 @@ ms.locfileid: "107727143"
 > - 如果不满足“训练”的 10,000 最小句子计数，训练将不会开始，并且将失败。
 > - “优化”和“测试”是可选的。 如果不提供它们，系统将从“训练”中删除适当的百分比以用于验证和测试。
 > - 可以仅使用字典数据来训练模型。 请参阅[什么是字典](./what-is-dictionary.md)。
-> - 如果字典包含的句子超过 250,000 句，建议选择[文档翻译工具](https://docs.microsoft.com/azure/cognitive-services/translator/document-translation/overview)。
+> - 如果字典包含的句子超过 250,000 句，建议选择[文档翻译工具](../document-translation/overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
