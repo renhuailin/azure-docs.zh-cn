@@ -14,10 +14,10 @@ ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 58ef522f5b048db0ef120625d9e894c8e14c070e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98724401"
 ---
 # <a name="resilient-interfaces-with-external-processes"></a>与外部进程建立可复原接口
@@ -38,7 +38,7 @@ Identity Experience Framework (IEF) 策略允许你使用 [RESTful API 技术配
 
 - 尽可能从预验证路径中删除 API 调用。 如果不能，则必须在 API 前面设置严格的保护措施，以防拒绝服务 (DoS) 分布式拒绝服务 (DDoS) 攻击。 攻击者可以加载登录页面，试图用 DoS 攻击淹没 API，并使应用程序瘫痪。 例如，通过在登录中使用 CAPTCHA，注册流可以提供帮助。
 
-- 在使用标识提供者登录或创建用户之前，尽可能使用 [内置注册用户流的 API 连接器](../../active-directory-b2c/api-connectors-overview.md) 以与 web api 集成。 由于用户流已经过广泛测试，因此您可能无需执行用户流级别的功能、性能或缩放测试。 你仍需测试应用程序的功能、性能和缩放。
+- 在使用标识提供者登录之后或创建用户之前，尽可能使用[内置注册用户流的 API 连接器](../../active-directory-b2c/api-connectors-overview.md)以与 Web API 集成。 由于用户流已经过广泛测试，因此可能无需执行用户流级别的功能、性能或缩放测试。 你仍需测试应用程序的功能、性能和缩放。
 
 - Azure AD RESTFul API [技术配置文件](../../active-directory-b2c/restful-technical-profile.md)不提供任何缓存行为。 相反，RESTFul API 配置文件实现了策略中内置的重试逻辑和超时。
 
@@ -52,7 +52,7 @@ Identity Experience Framework (IEF) 策略允许你使用 [RESTful API 技术配
 
 - API 可能会因各种原因而失败，让你的应用程序能够应对此类故障。 如果 API 无法完成请求，则[返回 HTTP 4XX 错误消息](../../active-directory-b2c/restful-technical-profile.md#returning-validation-error-message)。 在 Azure AD B2C 策略中，尝试妥善处理 API 不可用的问题，可能会呈现更精简的体验。
 
-- [妥善处理暂时性错误](../../active-directory-b2c/restful-technical-profile.md#error-handling)。 RESTFul API 配置文件允许您为各种 [断路](/azure/architecture/patterns/circuit-breaker)程序配置错误消息。
+- [妥善处理暂时性错误](../../active-directory-b2c/restful-technical-profile.md#error-handling)。 RESTFul API 配置文件允许为各种[断路器](/azure/architecture/patterns/circuit-breaker)配置错误消息。
 
 - 主动监视并使用持续集成/持续交付 (CICD)，轮换[技术配置文件引擎](../../active-directory-b2c/restful-technical-profile.md)使用的 API 访问凭据，例如密码和证书。
 

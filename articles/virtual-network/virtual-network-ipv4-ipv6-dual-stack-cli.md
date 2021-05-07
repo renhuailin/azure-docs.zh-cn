@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: e9bb0f499e8df712107a6fcdbff14ee367a02bf4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98934164"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---cli"></a>部署使用基本负载均衡器的 IPv6 双堆栈应用程序 - CLI
@@ -34,7 +34,7 @@ ms.locfileid: "98934164"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-在创建双堆栈虚拟网络之前，必须先使用 [az group create](/cli/azure/group) 创建一个资源组。 以下示例在 " *eastus* " 位置创建名为 " *DsResourceGroup01* " 的资源组：
+在创建双堆栈虚拟网络之前，必须先使用 [az group create](/cli/azure/group) 创建一个资源组。 以下示例在 eastus 位置创建名为 DsResourceGroup01 的资源组：
 
 ```azurecli-interactive
 az group create \
@@ -122,7 +122,7 @@ az network lb frontend-ip create \
 
 ### <a name="configure-ipv6-back-end-address-pool"></a>配置 IPv6 后端地址池
 
-使用 [az network lb address-pool create](/cli/azure/network/lb/address-pool#az-network-lb-address-pool-create) 创建 IPv6 后端地址池。 以下示例创建名为 *dsLbBackEndPool_v6*  的后端地址池，以包含具有 IPv6 NIC 配置的 vm：
+使用 [az network lb address-pool create](/cli/azure/network/lb/address-pool#az-network-lb-address-pool-create) 创建 IPv6 后端地址池。 以下示例创建名为 dsLbBackEndPool_v6 的后端地址池，以包含采用 IPv6 NIC 配置的 VM：
 
 ```azurecli-interactive
 az network lb address-pool create \

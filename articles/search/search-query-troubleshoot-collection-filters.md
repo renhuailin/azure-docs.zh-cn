@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 3050f701c11773207aa6054d4d08d908d87b2ce7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88932060"
 ---
 # <a name="troubleshooting-odata-collection-filters-in-azure-cognitive-search"></a>排查 Azure 认知搜索中的 OData 集合筛选器问题
 
-若要根据 Azure 认知搜索中的集合字段进行[筛选](query-odata-filter-orderby-syntax.md)，可以结合 **Lambda 表达式**使用 [`any` 和 `all` 运算符](search-query-odata-collection-operators.md)。 Lambda 表达式是应用到每个集合元素的子筛选器。
+若要根据 Azure 认知搜索中的集合字段进行 [筛选](query-odata-filter-orderby-syntax.md)，可以结合 **Lambda 表达式** 使用 [`any` 和 `all` 运算符](search-query-odata-collection-operators.md)。 Lambda 表达式是应用到每个集合元素的子筛选器。
 
 并非每个筛选表达式功能都可在 Lambda 表达式中使用。 可用的功能因要筛选的集合字段的数据类型而异。 如果你尝试在 Lambda 表达式中使用该上下文不支持的某个功能，可能会导致错误。 如果你在尝试基于集合字段编写复杂的筛选器时遇到此类错误，本文可帮助你排查问题。
 
@@ -174,7 +174,7 @@ ms.locfileid: "88932060"
   - 涉及 `eq`、`lt`、`le`、`gt` 或 `ge` 的简单比较表达式可与 `and`/`or` 合并。 例如：
     - `ratings/any(r: r gt 2 and r le 5)`
     - `ratings/any(r: r le 5 or r gt 7)`
-  - 使用 `and`（合取）合并的比较表达式可以通过 `or` 进一步合并。 此窗体在布尔逻辑中称为 "[析取范式 Normal form](https://en.wikipedia.org/wiki/Disjunctive_normal_form)" (DNF) 。 例如：
+  - 使用 `and`（合取）合并的比较表达式可以通过 `or` 进一步合并。 此格式在布尔逻辑中称为“[析取范式](https://en.wikipedia.org/wiki/Disjunctive_normal_form)” (DNF)。 例如：
     - `ratings/any(r: (r gt 2 and r le 5) or (r gt 7 and r lt 10))`
 - 适用于 `all` 的规则：
   - 简单的相等性表达式不能有效地与任何其他表达式合并。 例如，允许以下表达式：
@@ -188,7 +188,7 @@ ms.locfileid: "88932060"
   - 涉及 `ne`、`lt`、`le`、`gt` 或 `ge` 的简单比较表达式可与 `and`/`or` 合并。 例如：
     - `ratings/all(r: r gt 2 and r le 5)`
     - `ratings/all(r: r le 5 or r gt 7)`
-  - 使用 `or`（析取）合并的比较表达式可以通过 `and` 进一步合并。 此窗体在布尔逻辑中称为 "[联合 Normal form](https://en.wikipedia.org/wiki/Conjunctive_normal_form)" (.cnf) 。 例如：
+  - 使用 `or`（析取）合并的比较表达式可以通过 `and` 进一步合并。 此格式在布尔逻辑中称为“[合取范式](https://en.wikipedia.org/wiki/Conjunctive_normal_form)” (CNF)。 例如：
     - `ratings/all(r: (r le 2 or gt 5) and (r lt 7 or r ge 10))`
 
 <a name="bkmk_complex"></a>

@@ -1,5 +1,5 @@
 ---
-title: '将 Raspberry Pi web 模拟器连接到 Azure IoT 中心 ( # A0) '
+title: 将 Raspberry Pi web 模拟器连接到 Azure IoT 中心 (Node.js)
 description: 将 Raspberry Pi Web 模拟器连接到 Azure IoT 中心，以供 Raspberry Pi 将数据发送到 Azure 云。
 author: wesmc7777
 manager: philmea
@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-js
 ms.openlocfilehash: 702dee108577665eded6dd1a92203236d74e866e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91308324"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>将 Raspberry Pi 联机模拟器连接到 Azure IoT 中心 (Node.js)
@@ -76,11 +76,11 @@ Web 模拟器中有三个区域。
 
 3. 集成控制台窗口 - 显示代码输出。 在此窗口的顶部，有三个按钮。
 
-   * 运行 - 在编码区域运行应用程序  。
+   * 运行 - 在编码区域运行应用程序。
 
-   * 重置 - 将编码区域重置为默认示例应用程序  。
+   * 重置 - 将编码区域重置为默认示例应用程序。
 
-   * 折叠/展开 - 可使用右侧的按钮折叠/展开控制台窗口  。
+   * 折叠/展开 - 可使用右侧的按钮折叠/展开控制台窗口。
 
 > [!NOTE]
 > 目前 Raspberry Pi Web 模拟器在预览版中可用。 请通过 [Gitter Chatroom](https://gitter.im/Microsoft/raspberry-pi-web-simulator) 向我们提供意见和建议。 源代码在 [GitHub](https://github.com/Azure-Samples/raspberry-pi-web-simulator) 上是公开的。

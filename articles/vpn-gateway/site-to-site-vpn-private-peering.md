@@ -1,6 +1,6 @@
 ---
 title: 通过 ExpressRoute 专用对等互连建立的站点到站点 VPN 连接
-description: 本文可帮助你通过 ExpressRoute 专用对等互连启用站点到站点 VPN，以便对流量进行加密。
+description: 本文可帮助你通过 ExpressRoute 专用对等互连实现站点到站点 VPN，以便对流量进行加密。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: cherylmc
 ms.openlocfilehash: 01d87bcb5697326fa87b25b20354897049900d9d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880519"
 ---
 # <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering"></a>通过 ExpressRoute 专用对等互连配置站点到站点 VPN 连接
 
-可以使用 RFC 1918 IP 地址通过 ExpressRoute 专用对等互连，将站点到站点 VPN 配置为虚拟网络网关。 此配置具有以下优势：
+可使用 RFC 1918 IP 地址通过 ExpressRoute 专用对等互连配置连接到虚拟网络网关的站点到站点 VPN。 该配置具有以下优势：
 
-* 通过专用对等互连的流量已加密。
+* 通过专用对等互连的流量已经过加密。
 
-* 连接到虚拟网络网关的点到站点用户可以通过站点到站点隧道) 使用 ExpressRoute (来访问本地资源。
+* 连接到虚拟网络网关的点到站点用户可使用 ExpressRoute（通过站点到站点隧道）访问本地资源。
 
 >[!NOTE]
 >此功能仅在区域冗余网关上受支持。 例如，VpnGw1AZ、VpnGw2AZ 等。
@@ -28,13 +28,13 @@ ms.locfileid: "98880519"
 
 若要完成此配置，请验证是否满足以下先决条件：
 
-* 你有一个正常运行的 ExpressRoute 线路，该线路链接到将在其中 (或将) 创建 VPN 网关的 VNet。
+* 有一个正常运行的 ExpressRoute 线路，该线路链接到在其中（或将在其中）创建 VPN 网关的 VNet。
 
-* 可以通过 ExpressRoute 线路在 VNet 中通过 RFC1918 (专用) IP 来访问资源。
+* 可以通过 ExpressRoute 线路访问 VNet 中 RFC1918（专用）IP 上的资源。
 
 ## <a name="routing"></a><a name="routing"></a>路由
 
-**图 1** 显示了通过 ExpressRoute 专用对等互连的 VPN 连接的示例。 在此示例中，你将看到本地网络中的网络通过 ExpressRoute 专用对等互连连接到 Azure 集线器 VPN 网关。 此配置的一个重要方面是在本地网络与 Azure 之间通过 ExpressRoute 和 VPN 路径进行路由。
+“图 1”显示了通过 ExpressRoute 专用对等互连建立的 VPN 连接的示例。 在此示例中，你将看到本地网络中通过 ExpressRoute 专用对等互连连接到 Azure 中心 VPN 网关的网络。 此配置的一个重要方面是通过 ExpressRoute 和 VPN 路径在本地网络与 Azure 之间进行路由。
 
 图 1
 
@@ -46,51 +46,51 @@ ms.locfileid: "98880519"
 
 1. 使用本文中的步骤建立 VPN 连接。
 
-### <a name="traffic-from-on-premises-networks-to-azure"></a>从本地网络发往 Azure 的流量
+### <a name="traffic-from-on-premises-networks-to-azure"></a>从本地网络到 Azure 的流量
 
-对于从本地网络到 Azure 的流量，Azure 前缀通过 ExpressRoute 专用对等 BGP 和 VPN BGP 播发。 结果是从本地网络向 Azure) 方向 (两个网络路由：
+对于从本地网络发往 Azure 的流量，Azure 前缀通过 ExpressRoute 专用对等互连 BGP 和 VPN BGP 进行播发。 这会建立从本地网络发往 Azure 的两个网络路由（路径）：
 
-•一个跨 IPsec 保护路径的网络路由。
+•一个通过 IPsec 保护路径建立的网络路由。
 
-•无 IPsec 保护直接通过 ExpressRoute 的一个网络路由。
+•一个不受 IPsec 保护的通过 ExpressRoute 直接建立的网络路由
 
-若要将加密应用于通信，必须确保对于 **图 1** 中的 VPN 连接网络，通过直接 ExpressRoute 路径首选 Azure 路由通过本地 VPN 网关。
+若要将加密应用于通信，必须确保对于“图 1”中所示的已连接 VPN 的网络，优先使用通过本地 VPN 网关建立的 Azure 路由，而不是通过直接 ExpressRoute 路径建立的路由。
 
 ### <a name="traffic-from-azure-to-on-premises-networks"></a>从 Azure 发往本地网络的流量
 
 相同的要求适用于从 Azure 发往本地网络的流量。 为了确保优先使用 IPsec 路径而不是直接 ExpressRoute 路径（不受 IPsec 保护），可以采用两种做法：
 
-• **为 vpn 连接的网络在 VPN BGP 会话上播发更具体的前缀**。 可以通过 ExpressRoute 专用对等互连播发包含已连接 VPN 的网络的更大范围，然后在 VPN BGP 会话中播发更具体的范围。 例如，通过 ExpressRoute 播发 10.0.0.0/16，通过 VPN 播发 10.0.1.0/24。
+• “在已连接 VPN 的网络的 VPN BGP 会话中播发更具体的前缀”。 可以通过 ExpressRoute 专用对等互连播发包含已连接 VPN 的网络的更大范围，然后在 VPN BGP 会话中播发更具体的范围。 例如，通过 ExpressRoute 播发 10.0.0.0/16，通过 VPN 播发 10.0.1.0/24。
 
-• **为 VPN 和 ExpressRoute 播发无交集前缀**。 如果已连接 VPN 的网络范围与已连接 ExpressRoute 的其他网络不相交，则可以分别在 VPN 和 ExpressRoute BGP 会话中播发这些前缀。 例如，通过 ExpressRoute 播发 10.0.0.0/24，通过 VPN 播发 10.0.1.0/24。
+• “为 VPN 和 ExpressRoute 播发不相交的前缀”。 如果已连接 VPN 的网络范围与已连接 ExpressRoute 的其他网络不相交，则可以分别在 VPN 和 ExpressRoute BGP 会话中播发这些前缀。 例如，通过 ExpressRoute 播发 10.0.0.0/24，通过 VPN 播发 10.0.1.0/24。
 
 在这两个示例中，Azure 将通过 VPN 连接将流量发送到 10.0.1.0/24，而不是直接通过不受 VPN 保护的 ExpressRoute 发送。
 
 >[!Warning]
->如果在 ExpressRoute 和 VPN 连接上公布相同的前缀，>Azure 将直接使用 ExpressRoute 路径，而无需 VPN 保护。
+>如果通过 ExpressRoute 和 VPN 连接播发相同的前缀，Azure 将直接使用不受 VPN 保护的 ExpressRoute 路径。
 >
 
 ## <a name="portal-steps"></a><a name="portal"></a>门户步骤
 
-1. 配置站点到站点连接。 有关步骤，请参阅 [站点到站点配置](./tutorial-site-to-site-portal.md) 一文。 务必为网关选择区域冗余的网关 SKU。 
+1. 配置站点到站点连接。 有关步骤，请参阅[站点到站点配置](./tutorial-site-to-site-portal.md)一文。 务必为网关选择区域冗余网关 SKU。 
 
-   区域冗余 Sku 在 SKU 末尾有 "AZ"。 例如， **VpnGw1AZ**。 区域冗余的网关仅适用于可用性区域服务可用的区域。 有关我们支持可用性区域的区域的信息，请参阅 [支持可用性区域的区域](../availability-zones/az-region.md)。
+   区域冗余 SKU 在 SKU 末尾有“AZ”。 例如，“VpnGw1AZ”。 区域冗余网关仅适用于可用性区域服务可用的区域。 有关支持可用性区域的区域信息，请参阅[支持可用性区域的区域](../availability-zones/az-region.md)。
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway.png" alt-text="网关专用 Ip":::
-1. 在网关上启用专用 Ip。 选择 " **配置**"，并将 " **网关专用 ip** " 设置为 " **启用**"。 选择“保存”  以保存更改。
-1. 在 " **概述** " 页上，选择 " **查看更多** " 来查看专用 IP 地址。 记下此信息，以便稍后在配置步骤中使用。
+   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway.png" alt-text="网关专用 IP":::
+1. 在网关上启用专用 IP。 选择“配置”，并将“网关专用 IP”设置为“启用”。   选择“保存”以保存更改。
+1. 在“概述”页上，选择“查看更多”来查看专用 IP 地址。  记下此信息，以便稍后在配置步骤中使用。
 
    :::image type="content" source="media/site-to-site-vpn-private-peering/gateway-overview.png" alt-text="概述页" lightbox="media/site-to-site-vpn-private-peering/gateway-overview.png":::
-1. 若要启用对连接 **使用 Azure 专用 IP 地址** ，请选择 "  **配置**"。 将 " **使用 Azure 专用 IP 地址** " 设置为 " **已启用**"，然后选择 " **保存**"。
+1. 若要在连接上启用“使用 Azure 专用 IP 地址”，选择“配置”。  将“使用 Azure 专用 IP 地址”设置为“启用”，并选择“保存”。  
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/connection.png" alt-text="网关专用 Ip-已启用":::
-1. 在防火墙中，对你在步骤3中记下的专用 IP 进行 ping 操作。 专用 IP 应可通过 ExpressRoute 专用对等互连进行访问。
-1. 使用此专用 IP 作为本地防火墙上的远程 IP，通过 ExpressRoute 专用对等互连建立站点到站点隧道。
+   :::image type="content" source="media/site-to-site-vpn-private-peering/connection.png" alt-text="网关专用 IP - 已启用":::
+1. 在防火墙中，对在步骤 3 中记下的专用 IP 进行 ping 操作。 可通过 ExpressRoute 专用对等互连来访问专用 IP。
+1. 使用此专用 IP 作为本地防火墙上的远程 IP，以通过 ExpressRoute 专用对等互连建立站点到站点隧道。
 
 ## <a name="powershell-steps"></a><a name="powershell"></a>PowerShell 步骤
 
-1. 配置站点到站点连接。 有关步骤，请参阅 [配置站点到站点 VPN](./tutorial-site-to-site-portal.md) 一文。 务必为网关选择区域冗余的网关 SKU。 区域冗余 Sku 在 SKU 末尾有 "AZ"。 例如，VpnGw1AZ。
-1. 将标志设置为使用以下 PowerShell 命令在网关上使用专用 IP：
+1. 配置站点到站点连接。 有关步骤，请参阅[配置站点到站点 VPN](./tutorial-site-to-site-portal.md)一文。 务必为网关选择区域冗余网关 SKU。 区域冗余 SKU 在 SKU 末尾有“AZ”。 例如，VpnGw1AZ。
+1. 使用以下 PowerShell 命令将标志设置为在网关上使用专用 IP：
 
    ```azurepowershell-interactive
    $Gateway = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroup <name of resource group>
@@ -98,7 +98,7 @@ ms.locfileid: "98880519"
    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -EnablePrivateIpAddress $true
    ```
 
-   应该会看到一个公用和专用 IP 地址。 写入输出的 "TunnelIpAddresses" 部分下的 IP 地址。 稍后的步骤中将使用此信息。
+   应该会看到一个公用和一个专用 IP 地址。 写入输出的“TunnelIpAddresses”部分下的 IP 地址。 稍后的步骤需要用到此信息。
 1. 使用以下 PowerShell 命令将连接设置为使用专用 IP 地址：
 
    ```azurepowershell-interactive
@@ -106,9 +106,9 @@ ms.locfileid: "98880519"
 
    Set-AzVirtualNetworkGatewayConnection --VirtualNetworkGatewayConnection $Connection -UseLocalAzureIpAddress $true
    ```
-1. 在防火墙中，对你在步骤2中记下的专用 IP 进行 ping 操作。 它应可通过 ExpressRoute 专用对等互连进行访问。
-1. 使用此专用 IP 作为本地防火墙上的远程 IP，通过 ExpressRoute 专用对等互连建立站点到站点隧道。
+1. 在防火墙中，对在步骤 2 中记下的专用 IP 进行 ping 操作。 可通过 ExpressRoute 专用对等互连来访问专用 IP。
+1. 使用此专用 IP 作为本地防火墙上的远程 IP，以通过 ExpressRoute 专用对等互连建立站点到站点隧道。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 VPN 网关的详细信息，请参阅 [什么是 Vpn 网关？](vpn-gateway-about-vpngateways.md)
+有关 VPN 网关的详细信息，请参阅[什么是 VPN 网关？](vpn-gateway-about-vpngateways.md)

@@ -11,30 +11,30 @@ ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 11/24/2020
 ms.openlocfilehash: e078fb91b3279b6f4321cd51dfb094f82bbe5f14
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98696373"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge 发行说明 
 
 本文介绍每个新的 Azure SQL Edge 内部版本中的新增功能或已更改的内容。
 
-## <a name="azure-sql-edge-102"></a>Azure SQL Edge 1.0。2
+## <a name="azure-sql-edge-102"></a>Azure SQL Edge 1.0.2
 
-SQL 引擎生成15.0.2000.1554
+SQL 引擎内部版本 15.0.2000.1554
 
 ### <a name="fixes"></a>修复项
 
-- T-sql 流式处理  
+- T-SQL 流式处理  
    - 对流式处理对象的所有权和权限进行修复
-   - 日志轮换和日志前缀的日志记录改进
+   - 实现日志轮换和日志添加前缀的日志记录改进
    - Azure 流分析：日志记录改进，改进适配器中的错误代码/错误消息 
 
 - ONNX
     - 并行查询方案和模型清理失败的 Bug 修复
-    - 已将 ONNX 运行时升级到1.5。1
+    - 将 ONNX 运行时升级到 1.5.1
 
 ## <a name="azure-sql-edge-101"></a>Azure SQL Edge 1.0.1
 

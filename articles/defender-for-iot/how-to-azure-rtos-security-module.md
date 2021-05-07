@@ -1,26 +1,16 @@
 ---
-title: 配置并自定义 Azure RTOS 安全模块
-description: 了解如何配置并自定义 Azure RTOS 安全模块。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
+title: 配置和自定义适用于 Azure RTOS 的 Defender-IoT 微代理
+description: 了解如何配置和自定义适用于 Azure RTOS 的 Defender-IoT 微代理。
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/07/2021
-ms.author: shhazam
-ms.openlocfilehash: 524286fa7a923485d0085fb63f3ef9669db1a4d5
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: afab823b6bb187c9a7b7529f52efc37b20e8c66f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449809"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104778978"
 ---
-# <a name="configure-and-customize-defender-iot-micro-agent-for-azure-rtos-ga"></a>配置和自定义适用于 Azure RTOS 正式版的 Defender IoT 微代理
+# <a name="configure-and-customize-defender-iot-micro-agent-for-azure-rtos-preview"></a>配置和自定义适用于 Azure RTOS 的 Defender-IoT-micro-agent（预览版）
 
 本文介绍如何为 Azure RTOS 设备配置 Defender IoT 微代理，以满足网络、带宽和内存要求。
 
@@ -89,5 +79,6 @@ netxduo/addons/azure_iot/azure_iot_security_module/inc/configs/\<target distribu
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看并自定义 Azure RTOS 安全模块的[安全警报和建议](concept-rtos-security-alerts-recommendations.md)
-- 根据需要参阅 [Azure RTOS 安全模块 API](azure-rtos-security-module-api.md)。
+
+- 查看并自定义适用于 Azure RTOS 的 Defender-IoT 微代理的[安全警报和建议](concept-rtos-security-alerts-recommendations.md)
+- 请根据需要参阅[适用于 Azure RTOS 的 Defender-IoT 微代理 API](azure-rtos-security-module-api.md)。

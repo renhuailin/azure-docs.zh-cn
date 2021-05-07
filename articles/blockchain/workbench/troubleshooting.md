@@ -1,24 +1,24 @@
 ---
 title: Azure Blockchain Workbench 故障排除
-description: 如何对 Azure 区块链工作台预览应用程序进行故障排除。
+description: 如何排查 Azure Blockchain Workbench 预览应用程序的问题。
 ms.date: 10/14/2019
 ms.topic: troubleshooting
 ms.reviewer: brendal
 ms.openlocfilehash: 20c0f9bdd6f820a73b1ba6660de805268c0d8714
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85212847"
 ---
-# <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Azure 区块链工作台预览疑难解答
+# <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Azure Blockchain Workbench 预览的故障排除
 
 PowerShell 脚本用于协助开发人员进行调试或提供支持。 此脚本生成摘要并收集进行故障排除所需的详细日志。 收集的日志包括：
 
 * Blockchain 网络，例如 Ethereum
 * Blockchain Workbench 微服务
 * Application Insights
-* Azure 监视 (Azure Monitor 日志) 
+* Azure 监视（Azure Monitor 日志）
 
 可以根据此信息确定后续步骤和问题的根本原因。
 
@@ -42,15 +42,15 @@ collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>
 ```
 此脚本接受以下参数：
 
-| 参数  | 说明 | 必须 |
+| 参数  | 说明 | 必需 |
 |---------|---------|----|
 | 订阅 ID | SubscriptionID，用于创建或定位所有资源。 | 是 |
 | ResourceGroupName | Blockchain Workbench 部署时所在的 Azure 资源组的名称。 | 是 |
 | OutputDirectory | 用于创建输出 .ZIP 文件的路径。 如果未指定，则默认为当前目录。 | 否 |
 | LookbackHours | 拉取遥测数据时要使用的小时数。 默认值为 24 小时。 最大值为 90 小时 | 否 |
-| OmsSubscriptionId | 部署 Azure Monitor 日志的订阅 ID。 仅当区块链网络的 Azure Monitor 日志部署在区块链工作台的资源组之外时才传递此参数。| 否 |
-| OmsResourceGroup |部署 Azure Monitor 日志的资源组。 仅当区块链网络的 Azure Monitor 日志部署在区块链工作台的资源组之外时才传递此参数。| 否 |
-| OmsWorkspaceName | Log Analytics 工作区名称。 仅当区块链网络的 Azure Monitor 日志部署在区块链工作台的资源组外时传递此参数 | 否 |
+| OmsSubscriptionId | 部署 Azure Monitor 日志的订阅 ID。 传递此参数的前提是适用于区块链网络的 Azure Monitor 日志部署在 Blockchain Workbench 的资源组外面。| 否 |
+| OmsResourceGroup |部署 Azure Monitor 日志的资源组。 传递此参数的前提是适用于区块链网络的 Azure Monitor 日志部署在 Blockchain Workbench 的资源组外面。| 否 |
+| OmsWorkspaceName | Log Analytics 工作区名称。 传递此参数的前提是适用于区块链网络的 Azure Monitor 日志部署在 Blockchain Workbench 的资源组外面 | 否 |
 
 ## <a name="what-is-collected"></a>收集什么内容？
 

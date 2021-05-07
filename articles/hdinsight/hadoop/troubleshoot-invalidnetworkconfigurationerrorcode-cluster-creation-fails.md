@@ -1,21 +1,21 @@
 ---
-title: InvalidNetworkConfigurationErrorCode 错误-Azure HDInsight
+title: InvalidNetworkConfigurationErrorCode 错误 - Azure HDInsight
 description: 在 Azure HDInsight 中创建群集失败并出现 InvalidNetworkConfigurationErrorCode 的各种原因
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/12/2021
 ms.openlocfilehash: 83d4819ecb1da91bda5fb4f1cb445bbc34fd007f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98927001"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>在 Azure HDInsight 中创建群集失败并出现 InvalidNetworkConfigurationErrorCode
 
 本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方法。
 
-如果看到错误代码， `InvalidNetworkConfigurationErrorCode` 说明 "虚拟网络配置与 HDInsight 要求不兼容"，则通常表示群集的 [虚拟网络配置](../hdinsight-plan-virtual-network-deployment.md) 存在问题。 请根据错误说明中的余下内容，按照以下部分所述解决问题。
+如果看到错误代码 `InvalidNetworkConfigurationErrorCode` 和说明“虚拟网络配置与 HDInsight 要求不兼容”，这往往表示群集的[虚拟网络配置](../hdinsight-plan-virtual-network-deployment.md)有问题。 请根据错误说明中的余下内容，按照以下部分所述解决问题。
 
 ## <a name="hostname-resolution-failed"></a>“主机名解析失败”
 
@@ -29,13 +29,13 @@ ms.locfileid: "98927001"
 
 ### <a name="resolution"></a>解决方法
 
-1. 通过 SSH 连接到属于群集的 VM，并运行命令 `hostname -f`。 这会返回主机的完全限定域名 (`<host_fqdn>` 在以下说明) 中称为。
+1. 通过 SSH 连接到属于群集的 VM，并运行命令 `hostname -f`。 此命令将返回主机的完全限定域名（在以下说明中称为 `<host_fqdn>`）。
 
-1. 然后运行命令 `nslookup <host_fqdn>`（例如 `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`）。 如果此命令将名称解析为 IP 地址，则表示 DNS 服务器工作正常。 在这种情况下，使用 HDInsight 引发支持案例，我们将调查你的问题。 请在支持案例中包含执行的故障排除步骤。 这有助于我们更快解决问题。
+1. 然后运行命令 `nslookup <host_fqdn>`（例如 `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`）。 如果此命令将名称解析为 IP 地址，则表示 DNS 服务器工作正常。 在这种情况下，请提交有关 HDInsight 的支持案例，我们将调查你的问题。 请在支持案例中包含执行的故障排除步骤。 这有助于我们更快解决问题。
 
 1. 如果以上命令未返回 IP 地址，请运行 `nslookup <host_fqdn> 168.63.129.16`（例如 `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`）。 如果此命令能够解析 IP，则表示 DNS 服务器未将查询转发到 Azure 的 DNS，或者它不是与群集处于同一虚拟网络中的 VM。
 
-1. 如果 Azure VM 不能充当群集的虚拟网络中的自定义 DNS 服务器，则需要先添加此项。 在虚拟网络中创建一个要配置为 DNS 转发器的 VM。
+1. 如果你没有任何可充当群集虚拟网络中的自定义 DNS 服务器的 Azure VM，则需要先添加此 VM。 在虚拟网络中创建一个要配置为 DNS 转发器的 VM。
 
 1. 在虚拟网络中部署 VM 后，在此 VM 上配置 DNS 转发规则。 将所有 iDNS 名称解析请求转发到 168.63.129.16，将剩余的请求转发到 DNS 服务器。 [此处](../hdinsight-plan-virtual-network-deployment.md)提供了一个示例来演示如何为自定义 DNS 服务器完成此设置。
 
@@ -43,11 +43,11 @@ ms.locfileid: "98927001"
 
 ---
 
-## <a name="failed-to-connect-to-azure-storage-account"></a>"无法连接到 Azure 存储帐户"
+## <a name="failed-to-connect-to-azure-storage-account"></a>“无法连接到 Azure 存储帐户”
 
 ### <a name="issue"></a>问题
 
-错误说明包含 "无法连接到 Azure 存储帐户" 或 "无法连接到 Azure SQL"。
+错误说明中包含“无法连接到 Azure 存储帐户”或“无法连接到 Azure SQL”。
 
 ### <a name="cause"></a>原因
 
@@ -65,11 +65,11 @@ Azure 存储和 SQL 没有固定的 IP 地址，因此，我们需要允许与�
 
     如果定义了路由，请确保部署了群集的区域的 IP 地址存在路由，并且每个路由的 **NextHopType** 是 **Internet**。 应该为上述文章中所述的每个所需 IP 地址定义一个路由。
 
-## <a name="failed-to-establish-an-outbound-connection-from-the-cluster-for-the-communication-with-the-hdinsight-resource-provider-please-ensure-that-outbound-connectivity-is-allowed"></a>"无法建立来自群集的出站连接以便与 HDInsight 资源提供程序进行通信。 请确保允许出站连接。 "
+## <a name="failed-to-establish-an-outbound-connection-from-the-cluster-for-the-communication-with-the-hdinsight-resource-provider-please-ensure-that-outbound-connectivity-is-allowed"></a>“无法建立来自群集的出站连接以与 HDInsight 资源提供程序进行通信。 请确保允许出站连接。”
 
 ### <a name="issue"></a>问题
 
-错误说明包含 "无法建立来自群集的出站连接以便与 HDInsight 资源提供程序通信。 请确保允许出站连接。 "
+错误说明包含“无法建立来自群集的出站连接以与 HDInsight 资源提供程序进行通信。 请确保允许出站连接。”
 
 ### <a name="cause"></a>原因
 
@@ -146,11 +146,11 @@ dig @168.63.129.16 <headnode_fqdn> (e.g. dig @168.63.129.16 hn0-hditest.5h6lujo4
 ```
 ### <a name="cause"></a>原因
 
-此错误代码的另一个原因 `InvalidNetworkConfigurationErrorCode` 可能是在 `EnableVmProtection` PowerShell 或 Azure Runbook 中使用了不推荐使用的参数。
+此 `InvalidNetworkConfigurationErrorCode` 错误代码的另一个原因可能是在 PowerShell 或 Azure Runbook 中使用了已弃用的参数 `EnableVmProtection`。
 
 ### <a name="resolution"></a>解决方法
 
-使用的有效参数， `Get-AzVirtualNetwork` 如[AZ PowerShell SDK](/powershell/module/az.network/get-azvirtualnetwork)中所述
+使用 `Get-AzVirtualNetwork` 的有效参数，如 [Az PowerShell SDK](/powershell/module/az.network/get-azvirtualnetwork) 中所述
 
 ---
 

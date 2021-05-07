@@ -1,5 +1,5 @@
 ---
-title: 虚拟机 SAS 失败消息-Azure Marketplace
+title: 虚拟机 SAS 故障消息 - Azure Marketplace
 description: 使用共享访问签名 (SAS) 时的常见问题。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,13 +8,13 @@ author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/15/2020
 ms.openlocfilehash: 1c89887117c10ca77ec4c04b3adbe3e2d9923479
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93126832"
 ---
-# <a name="virtual-machine-sas-failure-messages"></a>虚拟机 SAS 失败消息
+# <a name="virtual-machine-sas-failure-messages"></a>虚拟机 SAS 故障消息
 
 以下介绍使用共享访问签名（用来标识和共享解决方案的已上传 VHD）时遇到的常见问题以及建议的解决方法。
 

@@ -1,6 +1,6 @@
 ---
-title: 使用 "Azure Maps 服务" 模块 |Microsoft Azure 映射
-description: 了解 Azure Maps 服务模块。 请参阅如何加载和使用此帮助程序库，以访问 web 或 Node.js 应用程序中 Azure Maps REST 服务。
+title: 使用 Azure Maps 服务模块 | Microsoft Azure Maps
+description: 了解 Azure Maps 服务模块。 请参阅如何加载和使用此帮助程序库，以访问 Web 或 Node.js 应用程序中 Azure Maps REST 服务。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -10,31 +10,31 @@ services: azure-maps
 manager: cpendleton
 ms.custom: devx-track-js
 ms.openlocfilehash: 2e07b614e87ed5dad94cf9bc5994e78071187839
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96008593"
 ---
 # <a name="use-the-azure-maps-services-module"></a>使用 Azure Maps 服务模块
 
-Azure Maps Web SDK 提供 *服务模块*。 此模块是一个帮助程序库，使用 JavaScript 或 TypeScript 可以轻松地在 web 或 Node.js 应用程序中使用 Azure Maps REST 服务。
+Azure Maps Web SDK 提供了一个服务模块。 此模块是一个帮助程序库，可以让用户使用 JavaScript 或 TypeScript 轻松地在 Web 或 Node.js 应用程序中使用 Azure Maps REST 服务。
 
-## <a name="use-the-services-module-in-a-webpage"></a>使用网页中的服务模块
+## <a name="use-the-services-module-in-a-webpage"></a>在网页中使用服务模块
 
 1. 创建新的 HTML 文件。
-1. 加载 "Azure Maps 服务" 模块。 可以通过以下两种方式之一加载它：
-    - 使用 Azure Maps services 模块的全球托管的 Azure 内容分发网络版本。 将脚本引用添加到 `<head>` 文件的元素中：
+1. 加载 Azure Maps 服务模块。 可以通过两种方法加载这个帮助程序库：
+    - 使用 Azure Maps 服务模块的 Azure 内容分发网络版本（全局托管）。 将脚本引用添加到文件的 `<head>` 元素中：
 
         ```html
         <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
         ```
 
-    - 或者，通过使用 [Azure Maps-rest](https://www.npmjs.com/package/azure-maps-rest) npm 包在本地加载 AZURE MAPS Web SDK 源代码的服务模块，然后将其托管在应用中。 此程序包还包括了 TypeScript 定义。 使用此命令：
+    - 或者，通过使用 [azure-maps-rest npm](https://www.npmjs.com/package/azure-maps-rest) 包在本地加载 Azure Maps Web SDK 源代码的服务模块，然后将其托管在你的应用中。 此程序包还包括了 TypeScript 定义。 使用此命令：
     
         > npm install azure-maps-rest
     
-        然后，将脚本引用添加到该 `<head>` 文件的元素中：
+        然后将脚本引用添加到文件的 `<head>` 元素中：
 
          ```html
         <script src="node_modules/azure-maps-rest/dist/atlas-service.min.js"></script>
@@ -123,9 +123,9 @@ Azure Maps Web SDK 提供 *服务模块*。 此模块是一个帮助程序库，
     }
     ```
 
-    有关详细信息，请参阅 [Azure Maps 的身份验证](azure-maps-authentication.md)。
+    有关详细信息，请参阅[向 Azure Maps 进行身份验证](azure-maps-authentication.md)。
 
-1. 以下代码使用新创建的 Azure Maps 搜索服务 URL 客户端地理编码地址： "1 Microsoft 方法，Redmond，WA"。 此代码使用 `searchAddress` 函数，并将结果以表的形式显示在页面的正文中。
+1. 以下代码使用新创建的 Azure Maps 搜索服务 URL 客户端对地址“1 Microsoft Way, Redmond, WA”进行地理编码。 该代码使用 `searchAddress` 函数，并将结果以表的形式显示在页面的正文中。
 
     ```javascript
     // Search for "1 microsoft way, redmond, wa".
@@ -161,30 +161,30 @@ Azure Maps Web SDK 提供 *服务模块*。 此模块是一个帮助程序库，
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="使用服务模块" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 () ，<a href='https://codepen.io/azuremaps/pen/zbXGMR/'>使用 "服务</a>" Azure Maps 模块 <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>。
+请参阅 <a href='https://codepen.io'>CodePen</a> 中的 Pen <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>使用服务模块</a>，由 Azure Maps 发布 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)。
 </iframe>
 
 <br/>
 
 ## <a name="azure-government-cloud-support"></a>Azure 政府版云支持
 
-Azure Maps Web SDK 支持 Azure 政府云。 用于访问 Azure Maps Web SDK 的所有 JavaScript 和 CSS Url 保持不变，但需要执行以下任务来连接到 Azure Maps 平台的 Azure 政府版云版本。
+Azure Maps Web SDK 支持 Azure 政府版云。 用于访问 Azure Maps Web SDK 的所有 JavaScript 和 CSS URL 保持不变，但需要执行以下任务来连接到 Azure Maps 平台的 Azure 政府版云版本。
 
-使用交互式地图控件时，请在创建类的实例之前添加以下代码行 `Map` 。 
+使用交互式地图控件时，请在创建 `Map` 类的实例之前添加以下代码行。 
 
 ```javascript
 atlas.setDomain('atlas.azure.us');
 ```
 
-验证地图和服务时，请确保使用 Azure 政府版云平台中的 Azure Maps 身份验证详细信息。
+对地图和服务进行身份验证时，请确保使用 Azure 政府版云平台中的 Azure Maps 身份验证详细信息。
 
-使用 "服务" 模块时，需要在创建 API URL 端点的实例时设置服务的域。 例如，下面的代码创建类的一个实例 `SearchURL` ，并将该域指向 Azure 政府云。
+使用服务模块时，需要在创建 API URL 终结点的实例时设置服务的域。 例如，下面的代码创建 `SearchURL` 类的一个实例，并将该域指向 Azure 政府版云。
 
 ```javascript
 var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 ```
 
-如果直接访问 Azure Maps REST 服务，请将 URL 域更改为 `atlas.azure.us` 。 例如，如果使用搜索 API 服务，请将 URL 域从更改 `https://atlas.microsoft.com/search/` 为 `https://atlas.azure.us/search/` 。
+如果直接访问 Azure Maps REST 服务，请将 URL 域更改为 `atlas.azure.us`。 例如，如果使用搜索 API 服务，请将 URL 域从更改 `https://atlas.microsoft.com/search/` 为 `https://atlas.azure.us/search/` 。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -205,7 +205,7 @@ var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 > [!div class="nextstepaction"]
 > [TokenCredential](/javascript/api/azure-maps-rest/atlas.service.tokencredential)
 
-有关使用 "服务" 模块的更多代码示例，请参阅以下文章：
+有关使用服务模块的更多代码示例，请参阅以下文章：
 
 > [!div class="nextstepaction"]
 > [在地图上显示搜索结果](./map-search-location.md)

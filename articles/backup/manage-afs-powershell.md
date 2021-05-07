@@ -4,10 +4,10 @@ description: 了解如何使用 PowerShell 管理和监视 Azure 备份服务备
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: e2f07e56fb9a8715b1b53165ab5f4b45b4e20ccb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89000220"
 ---
 # <a name="manage-azure-file-share-backups-with-powershell"></a>使用 PowerShell 管理 Azure 文件共享备份
@@ -15,7 +15,7 @@ ms.locfileid: "89000220"
 本文介绍如何使用 Azure PowerShell 管理和监视 Azure 备份服务备份的 Azure 文件共享。
 
 > [!WARNING]
-> 请确保将 PowerShell 版本升级到最小版本的 "Az. Microsoft.recoveryservices 2.6.0" for AFS 备份。 有关更多详细信息，请参阅概述此更改的要求的[部分](backup-azure-afs-automation.md#important-notice-backup-item-identification)。
+> 确保 PowerShell 版本已升级到 AFS 备份的最低版本“Az.RecoveryServices 2.6.0”。 有关更多详细信息，请参阅概述此更改的要求的[部分](backup-azure-afs-automation.md#important-notice-backup-item-identification)。
 
 ## <a name="modify-the-protection-policy"></a>修改保护策略
 
@@ -87,7 +87,7 @@ WorkloadName     Operation         Status         StartTime                 EndT
 afsfileshare     DisableBackup     Completed      1/26/2020 2:43:59 PM      1/26/2020 2:44:21 PM      98d9f8a1-54f2-4d85-8433-c32eafbd793f
 ```
 
-输出中的 "作业 ID" 属性对应于 "停止保护" 操作的备份服务创建的作业的作业 ID。 若要跟踪作业的状态，请使用 [Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) cmdlet。
+输出中的作业 ID 属性对应于备份服务为“停止保护”操作创建的作业的作业 ID。 若要跟踪作业的状态，请使用 [Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) cmdlet。
 
 ## <a name="stop-protection-without-retaining-recovery-points"></a>停止保护而不保留恢复点
 

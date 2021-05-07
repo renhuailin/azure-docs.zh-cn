@@ -11,10 +11,10 @@ ms.author: srbozovi
 ms.reviewer: vanto, sstein
 ms.date: 02/08/2021
 ms.openlocfilehash: 7d5f40be895aea26a234d9ae622aa5bf22528231
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99981436"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>在 Azure SQL 托管实例中配置公共终结点
@@ -112,7 +112,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 ## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>获取托管实例公共终结点的连接字符串
 
 1. 导航到为公共终结点启用的托管实例配置页。 选择“设置”配置下的“连接字符串”选项卡。 
-1. 请注意，公用终结点主机名的格式 <mi_name>。<dns_zone> database.windows.net，用于连接的端口为3342。 下面是表示可在 SQL Server Management Studio 或 Azure Data Studio 连接中使用的公共终结点端口的连接字符串的服务器值的示例： `<mi_name>.public.<dns_zone>.database.windows.net,3342`
+1. 注意，公共终结点主机名的格式为 <mi_name>.public.<dns_zone>.database.windows.net，用于连接的端口为 3342。 下面的示例表明了连接字符串的服务器值，该连接字符串可在 SQL Server Management Studio 或 Azure Data Studio 连接中使用并且表示公共终结点端口：`<mi_name>.public.<dns_zone>.database.windows.net,3342`
 
     ![屏幕截图显示了公共终结点和专用终结点的连接字符串。](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
 

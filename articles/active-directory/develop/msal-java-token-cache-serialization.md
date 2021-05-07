@@ -1,5 +1,5 @@
 ---
-title: '自定义令牌缓存序列化 (MSAL4j) '
+title: 自定义令牌缓存序列化 (MSAL4j)
 titleSuffix: Microsoft identity platform
 description: 了解如何序列化 MSAL for Java 的令牌缓存
 services: active-directory
@@ -14,10 +14,10 @@ ms.author: sagonzal
 ms.reviewer: nacanuma
 ms.custom: aaddev, devx-track-java
 ms.openlocfilehash: e85cfb8c03111b889a9f95509f337d415c517163
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87312361"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-java"></a>MSAL for Java 中的自定义令牌缓存序列化
@@ -25,8 +25,8 @@ ms.locfileid: "87312361"
 若要在应用程序实例之间始终使用令牌缓存，需要自定义序列化。 涉及到令牌缓存序列化的 Java 类和接口如下所示：
 
 - [ITokenCache](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCache.html)：表示安全令牌缓存的接口。
-- [ITokenCacheAccessAspect](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessAspect.html)：接口，表示在访问前和访问后对执行代码进行的操作。 可以 @Override *beforeCacheAccess* 和 *afterCacheAccess*，让逻辑负责缓存的序列化和反序列化。
-- [ITokenCacheContext](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessContext.html)：接口，表示访问令牌缓存时所在的上下文。 
+- [ITokenCacheAccessAspect](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessAspect.html)：表示在访问前后对执行代码进行操作的接口。 可以 @Override *beforeCacheAccess* 和 *afterCacheAccess*，让逻辑负责缓存的序列化和反序列化。
+- [ITokenCacheContext](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessContext.html)：表示访问令牌缓存的上下文的接口。 
 
 下面是对令牌缓存序列化/反序列化进行的自定义序列化的简单实现 请勿将它复制并粘贴到生产环境中。
 

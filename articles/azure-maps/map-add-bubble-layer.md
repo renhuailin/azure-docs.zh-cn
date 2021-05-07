@@ -1,6 +1,6 @@
 ---
-title: 向地图添加气泡图层 |Microsoft Azure 映射
-description: 了解如何将地图上的点呈现为固定大小的圆圈。 若要实现此目的，请参阅如何使用 Azure Maps Web SDK 添加和自定义气泡图层。
+title: 向地图添加气泡层 | Microsoft Azure Maps
+description: 了解如何将地图上的点呈现为固定大小的圆。 请参阅如何使用 Azure Maps Web SDK 添加和自定义气泡图层以实现此目标。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -10,22 +10,22 @@ services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: cae29dcc0d334a2296199da0d8e3bc4562e275d3
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92895322"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>将气泡层添加地图
 
-本文介绍如何将数据源中的点数据呈现为地图上的气泡图层。 气泡图层用固定像素半径将点呈现为地图上的圆圈。 
+本文介绍如何将数据源中的点数据呈现为地图上的气泡层。 气泡层将点呈现为地图上具有固定像素半径的圆。 
 
 > [!TIP]
-> 默认情况下，气泡层将呈现数据源中所有几何图形的坐标。 若要将层限制为仅呈现点几何特征，请将 `filter` 层的属性设置为， `['==', ['geometry-type'], 'Point']` 或者 `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` 如果要包含 MultiPoint 功能，则设置为。
+> 默认情况下，气泡层将呈现数据源中所有几何图形的坐标。 若要限制该层以便仅呈现点几何功能，请将该层的 `filter` 属性设置为 `['==', ['geometry-type'], 'Point']` 或 `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`（如果还想包含 MultiPoint 特征）。
 
 ## <a name="add-a-bubble-layer"></a>添加气泡层
 
-下面的代码将一个点数组加载到数据源中。 然后，它将数据点连接到 [气泡图层](/javascript/api/azure-maps-control/atlas.layer.bubblelayer)。 气泡图层用5个像素呈现每个气泡的半径，并使用白色填充颜色。 和，颜色为蓝色，笔划宽度为六个像素。 
+下面的代码将一个点数组加载到数据源中。 然后会将数据点连接到[气泡层](/javascript/api/azure-maps-control/atlas.layer.bubblelayer)。 气泡层用五像素呈现每个气泡的半径，并使用白色为填充色。 描边色为蓝色，描边宽度为六像素。 
 
 ```javascript
 //Add point locations.
@@ -62,7 +62,7 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 
 ## <a name="show-labels-with-a-bubble-layer"></a>显示具有气泡层的标签
 
-此代码演示如何使用气泡图层呈现地图上的点。 以及如何使用符号层呈现标签。 若要隐藏符号层的图标，请将 `image` 图标选项的属性设置为 `'none'` 。
+此代码演示如何使用气泡图层呈现地图上的点。 以及如何使用符号层呈现标签。 若要隐藏符号层的图标，请将图标选项的 `image` 属性设置为 `'none'`。
 
 <br/>
 
@@ -100,4 +100,4 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 > [使用数据驱动样式表达式](data-driven-style-expressions-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [代码示例](/samples/browse/?products=azure-maps)
+> [示例代码](/samples/browse/?products=azure-maps)

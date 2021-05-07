@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
 ms.openlocfilehash: ec16ce3e7f9793be2a012a029bcca31c9a7ea4cf
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97936696"
 ---
 # <a name="manage-connections-in-azure-functions"></a>管理 Azure Functions 中的连接
@@ -103,7 +103,7 @@ public static async Task Run(string input)
     // Rest of function
 }
 ```
-如果使用的是函数 v3. x，则需要对 Microsoft.Azure.DocumentDB 的引用。 在代码中添加引用：
+如果使用的是 Functions v3.x，则需要引用 Microsoft.Azure.DocumentDB.Core。 在代码中添加引用：
 
 ```cs
 #r "Microsoft.Azure.DocumentDB.Core"
@@ -150,6 +150,6 @@ module.exports = async function (context) {
 
 ## <a name="next-steps"></a>后续步骤
 
-有关为何建议静态客户端的详细信息，请参阅不 [正确的实例化对立模式](/azure/architecture/antipatterns/improper-instantiation/)。
+有关为何建议使用静态客户端的详细信息，请参阅[不当实例化反模式](/azure/architecture/antipatterns/improper-instantiation/)。
 
 有关更多 Azure Functions 性能提示，请参阅[优化 Azure Functions 的性能和可靠性](functions-best-practices.md)。

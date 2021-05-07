@@ -7,10 +7,10 @@ ms.date: 12/07/2020
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 19a98b5786f35839d84e1e969c29e45e2b5e8dea
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98573388"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>为 VMware VM 启用到 Azure 的复制
@@ -134,14 +134,14 @@ ms.locfileid: "98573388"
 
 接下来，验证源虚拟机的属性。 请记住，Azure VM 名称需要符合 [Azure 虚拟机要求](vmware-physical-azure-support-matrix.md#replicated-machines)。
 
-1. 中转到 "**设置**  >  " "**复制的项**"，然后选择虚拟机。 “概要”页显示有关 VM 设置和状态的信息。
+1. 转到“设置” > “复制的项”，然后选择虚拟机。 “概要”页显示有关 VM 设置和状态的信息。
 1. 在“属性”中，可以查看 VM 的复制和故障转移信息。
 1. 在“计算和网络” > “计算属性”中，可以更改多个 VM 属性：
 
    :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="“计算和网络属性”窗口":::
 
    - **Azure VM 名称**：根据需要修改名称以使其符合 Azure 要求。
-   - **目标 VM 大小或 VM 类型**：基于一些参数选择默认 VM 大小，这些参数包括目标 Azure 区域中的磁盘计数、NIC 计数、CPU 核心计数、内存和可用 VM 角色大小。 Azure Site Recovery 将选取满足所有条件的第一个可用 VM 大小。 在故障转移之前，随时可以根据需要选择不同的 VM 大小。 VM 磁盘大小还取决于源磁盘大小，并且它只能在故障转移后进行更改。 详细了解 [VM 磁盘的可伸缩性和性能目标的](../virtual-machines/disks-scalability-targets.md)磁盘大小和 IOPS 速率。
+   - **目标 VM 大小或 VM 类型**：基于一些参数选择默认 VM 大小，这些参数包括目标 Azure 区域中的磁盘计数、NIC 计数、CPU 核心计数、内存和可用 VM 角色大小。 Azure Site Recovery 将选取满足所有条件的第一个可用 VM 大小。 在故障转移之前，随时可以根据需要选择不同的 VM 大小。 VM 磁盘大小还取决于源磁盘大小，并且它只能在故障转移后进行更改。 在 [VM 磁盘的可伸缩性和性能目标](../virtual-machines/disks-scalability-targets.md)中了解磁盘大小和 IOPS 速率。
    - **资源组**：可以选择虚拟机会在故障转移后成为其中一部分的 [资源组](../azure-resource-manager/management/overview.md#resource-groups)。 在故障转移之前，随时可以更改此设置。 故障转移之后，如果将虚拟机迁移到其他资源组，则会中断该虚拟机的保护设置。
    - **可用性集**：如果需要虚拟机在故障转移后成为某个 [可用性集](../virtual-machines/windows/tutorial-availability-sets.md)的一部分，可以选择一个可用性集。 选择可用性集时，请注意以下信息：
      - 仅会列出属于指定资源组的可用性集。

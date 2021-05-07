@@ -1,5 +1,5 @@
 ---
-title: Azure Analysis Services 中的长时间运行操作的最佳实践 |Microsoft Docs
+title: Azure Analysis Services 中长时间运行操作的最佳做法 | Microsoft Docs
 description: 本文介绍了长时间运行的操作的最佳做法。
 author: minewiskan
 ms.service: azure-analysis-services
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: owend
 ms.openlocfilehash: 4e069effae0cb7f834b2c3dac696d05304d841a7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92014828"
 ---
 # <a name="best-practices-for-long-running-operations"></a>长时间运行的操作的最佳做法
@@ -24,7 +24,7 @@ ms.locfileid: "92014828"
 - 操作系统修补 
 - 安全更新
 - Azure Analysis Services 服务更新
-- Service Fabric 更新 Service Fabric 是由许多 Microsoft 云服务使用的平台组件，包括 Azure Analysis Services。
+- Service Fabric 更新 Service Fabric 是由许多 Microsoft 云服务（包括 Azure Analysis Services）使用的平台组件。
 
 除了服务中发生的更新外，由于需要进行负载均衡，服务还会在各个节点之间自然移动。 云服务需要进行节点移动。 Azure Analysis Services 会尝试最大程度地降低节点移动影响，但无法完全消除它们。 
 

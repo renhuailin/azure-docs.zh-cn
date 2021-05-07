@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/05/2020
 ms.author: apimpm
 ms.openlocfilehash: 223d119786d99eac611ece597fc0e8de4fcaf6bd
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98762402"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
@@ -214,15 +214,15 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   请求正文中指定的 **容器** **必须存在**。
 -   当备份正在进行时，请 **避免在服务中进行管理更改**，例如 SKU 升级或降级、域名更改等。
 -   从创建时开始，**备份还原仅保证 30 天**。
--   在备份操作正在进行时对服务配置 (（例如，Api、策略和开发人员门户) 外观）所做的 **更改****可能会从备份中排除，并将丢失**。
--   如果 Azure 存储帐户已启用 [防火墙][azure-storage-ip-firewall] ，则客户必须 **允许** 其存储帐户上的 [AZURE API 管理控制平面 IP 地址][control-plane-ip-address] 集，以便备份到或从中进行还原。 Azure 存储帐户可以位于任意 Azure 区域中，API 管理服务所在的区域除外。 例如，如果 API 管理服务位于美国西部，则 Azure 存储帐户可以位于美国西部2，客户需要在防火墙中打开13.64.39.16 为美国西部) 的控制平面 IP (API 管理控制平面 IP。 这是因为，对 Azure 存储空间的请求不会 Snat 转换成 Azure Api 管理控制平面) 同一 Azure 区域中的计算 (。 跨区域存储请求将被 Snat 转换成到公共 IP 地址。
--   **不** 应在 Azure 存储帐户中的 Blob 服务上启用 [跨域资源共享 (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) 。
+-   在正在进行备份操作时对服务配置（例如，API、策略和开发人员门户外观）所做的更改可能不会包含在备份中，将会丢失 。
+-   如果 Azure 存储帐户已启用[防火墙][azure-storage-ip-firewall]，那么客户就必须在其存储帐户上“允许”一组 [Azure API 管理控制平面 IP 地址][control-plane-ip-address]，以便让将数据备份到其中或从中还原数据可以正常工作。 Azure 存储帐户可以位于除 API 管理服务所在区域之外的任意 Azure 区域中。 例如，如果 API 管理服务位于美国西部，Azure 存储帐户就可以位于美国西部 2，并且客户需要在防火墙中打开控制平面 IP 13.64.39.16（美国西部的 API 管理控制平面 IP）。 这是因为对 Azure 存储的请求不会从同一 Azure 区域中的计算（Azure API 管理控制平面）进行 SNAT 以转换为公共 IP。 跨区域存储请求将会进行 SNAT，从而转换为公共 IP 地址。
+-   不应在 Azure 存储帐户中的 Blob 服务上启用[跨域资源共享 (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)。
 -   要还原到的服务的 **SKU** 必须与正在还原的已备份服务的 SKU **匹配**。
 
 ## <a name="what-is-not-backed-up"></a>不备份的内容
 -   用于创建分析报表的 **用法数据** **不包括** 在备份中。 使用 [Azure API 管理 REST API][azure api management rest api] 定期检索分析报表以保证安全。
 -   [自定义域 TLS/SSL](configure-custom-domain.md) 证书。
--   [自定义 CA 证书](api-management-howto-ca-certificates.md)，包括客户上传的中间或根证书。
+-   [自定义 CA 证书](api-management-howto-ca-certificates.md)，包括由客户上传的中间证书或根证书。
 -   [虚拟网络](api-management-using-with-vnet.md)集成设置。
 -   [托管的标识](api-management-howto-use-managed-service-identity.md)配置。
 -   [Azure Monitor 诊断](api-management-howto-use-azure-monitor.md)配置。

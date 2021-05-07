@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50d8ef544029e7097d90651707da24d603bcecc9
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: ab14df388579f46d9467c9d4d68146450691270c
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137952"
+ms.locfileid: "108180385"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -101,7 +101,7 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 **服务类别：** 应用代理  
 **产品功能：** 访问控制
  
-有了这个新功能，连接器组就可以被分配给承载着应用程序的最靠近的区域性应用程序代理服务。 当应用承载在主租户的区域之外的区域中时，这可以提高应用性能。 [了解详细信息](../manage-apps/application-proxy-network-topology.md#optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview)。 
+有了这个新功能，连接器组就可以被分配给承载着应用程序的最靠近的区域性应用程序代理服务。 当应用承载在主租户的区域之外的区域中时，这可以提高应用性能。 [了解详细信息](../app-proxy/application-proxy-network-topology.md#optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview)。 
  
 ---
 

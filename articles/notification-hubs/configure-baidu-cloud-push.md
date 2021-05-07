@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 通知中心中配置百度云推送 |Microsoft Docs
+title: 在 Azure 通知中心配置百度云推送 | Microsoft Docs
 description: 了解如何为 Azure 通知中心配置百度设置。
 services: notification-hubs
 author: sethmanheim
@@ -12,13 +12,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/25/2019
 ms.openlocfilehash: 759e35ba353f470ea3abc5f5d4182fa2b2ea0e73
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96003576"
 ---
-# <a name="deprecated-configure-baidu-cloud-push-settings-for-a-notification-hub-in-the-azure-portal"></a>弃用：为 Azure 门户中的通知中心配置百度云推送设置
+# <a name="deprecated-configure-baidu-cloud-push-settings-for-a-notification-hub-in-the-azure-portal"></a>已弃用：在 Azure 门户中为通知中心配置百度云推送设置
 
 本文介绍如何使用 Azure 门户为 Azure 通知中心配置百度云推送设置。
 

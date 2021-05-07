@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 351407a74f37df24f4d70384d49840e8e6b77dc6
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 9f9626ebdcc52f9aeb2b9283dac6c5790e3df8cf
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144396"
+ms.locfileid: "108179953"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用无服务器 SQL 池查询存储文件
 
@@ -95,9 +95,6 @@ WITH (
 ## <a name="schema-inference"></a>架构推理
 
 通过从 `OPENROWSET` 语句中省略 WITH 子句，可以指示服务从基础文件中自动检测（推理）架构。
-
-> [!NOTE]
-> 目前，这仅适用于 PARQUET 文件格式。
 
 ```sql
 SELECT * FROM

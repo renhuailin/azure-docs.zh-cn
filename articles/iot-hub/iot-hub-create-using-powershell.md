@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell cmdlet 创建 Azure IoT 中心 | Microsoft Docs
-description: 了解如何使用 PowerShell cmdlet 创建资源组，然后在资源组中创建 IoT 中心。 还了解如何删除中心。
+description: 了解如何使用 PowerShell cmdlet 创建资源组，然后在该资源组中创建 IoT 中心。 并了解如何删除中心。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: robinsh
 ms.openlocfilehash: da021e3ba0fd93a182ea76a1ba4b7042b325aacc
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92142376"
 ---
 # <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>使用 New-AzIotHub cmdlet 创建 IoT 中心
@@ -41,7 +41,7 @@ Login-AzAccount
 
 需要一个资源组来部署 IoT 中心。 可以使用现有资源组，也可以创建新组。
 
-若要为 IoT 中心创建资源组，请使用 [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) 命令。 此示例在“美国东部”**** 区域中创建名为 **MyIoTRG1** 的资源组：
+若要为 IoT 中心创建资源组，请使用 [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) 命令。 此示例在“美国东部”区域中创建名为 **MyIoTRG1** 的资源组：
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name MyIoTRG1 -Location "East US"
@@ -49,7 +49,7 @@ New-AzResourceGroup -Name MyIoTRG1 -Location "East US"
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
-若要在上一步创建的资源组中创建 IoT 中心，请使用 [New-AzIotHub](/powershell/module/az.IotHub/New-azIotHub) 命令。 此示例在“美国东部”**** 区域中创建名为 **MyTestIoTHub** 的 **S1** 中心：
+若要在上一步创建的资源组中创建 IoT 中心，请使用 [New-AzIotHub](/powershell/module/az.IotHub/New-azIotHub) 命令。 此示例在“美国东部”区域中创建名为 **MyTestIoTHub** 的 **S1** 中心：
 
 ```azurepowershell-interactive
 New-AzIotHub `

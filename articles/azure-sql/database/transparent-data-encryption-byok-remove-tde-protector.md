@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/24/2020
 ms.openlocfilehash: 31298be4d50c7f562e2e2b9adbf889b165b197e5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96461866"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>使用 PowerShell 删除透明数据加密 (TDE) 保护器
@@ -35,13 +35,13 @@ ms.locfileid: "96461866"
 本操作指南根据事件响应泄露后的预期结果介绍了两种方法：
 
 - 使 Azure SQL 数据库/Azure Synapse Analytics 中的数据库无法访问。
-- 使 Azure SQL 数据库/Azure Azure Synapse Analytics 中的数据库 **不可访问**。
+- 使 Azure SQL 数据库/Azure Synapse Analytics 中的数据库无法访问。
 
 ## <a name="prerequisites"></a>先决条件
 
 - 必须有一个 Azure 订阅，并且是该订阅的管理员
 - 必须安装并运行 Azure PowerShell。
-- 本操作方法指南假设你已将 Azure Key Vault 的密钥用于 Azure SQL 数据库或 Azure Synapse 的 TDE 保护程序。 有关详细信息，请参阅[支持 BYOK 的透明数据加密](transparent-data-encryption-byok-overview.md)。
+- 本操作指南假设已使用 Azure Key Vault 中的密钥作为 Azure SQL 数据库或 Azure Synapse 的 TDE 保护器。 有关详细信息，请参阅[支持 BYOK 的透明数据加密](transparent-data-encryption-byok-overview.md)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

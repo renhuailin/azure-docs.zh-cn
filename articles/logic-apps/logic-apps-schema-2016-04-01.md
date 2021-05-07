@@ -1,5 +1,5 @@
 ---
-title: 架构更新6月-1-2016
+title: 架构更新 2016 年 6 月 1 日
 description: 针对 Azure 逻辑应用中的逻辑应用定义更新了架构版本 2016-06-01
 services: logic-apps
 ms.suite: integration
@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
 ms.openlocfilehash: ccc7df5bfac327fabf05f210764dbe10658b5015
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96000311"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure 逻辑应用的架构更新 - 2016 年 6 月 1 日
@@ -103,25 +103,25 @@ ms.locfileid: "96000311"
 
 1. 在 Azure 门户中打开逻辑应用。
 
-2. 转到“概览”  。 在逻辑应用工具栏上，选择“更新架构”  。
+2. 转到“概览”。 在逻辑应用工具栏上，选择“更新架构”。
    
    ![选择“更新架构”][1]
    
    此时会返回升级的定义，用户可以根据需要将其复制并粘贴到资源定义中。 
 
    > [!IMPORTANT]
-   > *确保* 选择“另存为”  ，以便所有连接引用在升级后的逻辑应用中保持有效。
+   > *确保* 选择“另存为”，以便所有连接引用在升级后的逻辑应用中保持有效。
 
-3. 在升级边栏选项卡工具栏中，选择“另存为”  。
+3. 在升级边栏选项卡工具栏中，选择“另存为”。
 
-4. 输入逻辑名称和状态。 若要部署升级的逻辑应用，请选择“创建”  。
+4. 输入逻辑名称和状态。 若要部署升级的逻辑应用，请选择“创建”。
 
 5. 确认已升级的逻辑应用正常运行。
    
    > [!NOTE]
    > 如果使用 manual 或 request 触发器，则回调 URL 会在新逻辑应用中更改。 请测试新的 URL，确保端到端体验正常。 若要保留以前的 URL，可以通过现有的逻辑应用进行克隆。
 
-6. *可选* 若要使用新的架构版本覆盖以前的逻辑应用，请在工具栏上选择“更新架构”旁边的“克隆”。   仅当需要保留逻辑应用的同一资源 ID 或请求触发器 URL 时，此步骤才是必需的。
+6. *可选* 若要使用新的架构版本覆盖以前的逻辑应用，请在工具栏上选择“更新架构”旁边的“克隆”。 仅当需要保留逻辑应用的同一资源 ID 或请求触发器 URL 时，此步骤才是必需的。
 
 ## <a name="upgrade-tool-notes"></a>升级工具说明
 

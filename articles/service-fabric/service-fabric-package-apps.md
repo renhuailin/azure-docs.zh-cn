@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 168e6d6dc7ab5bfeccc4e1dabc7bd50efcbe8f34
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98789696"
 ---
 # <a name="package-an-application"></a>打包应用程序
 
 本文介绍如何打包 Service Fabric 应用程序并为部署做好准备。
 
-## <a name="package-layout"></a>包布局
+## <a name="package-layout"></a>程序包布局
 
 必须将应用程序清单、一个或多个服务清单和其他必要的包文件组织为一个特定的布局，以部署到 Service Fabric 群集中。 本文中的示例清单需要组织为以下目录结构：
 
@@ -49,7 +49,7 @@ D:\TEMP\MYAPPLICATIONTYPE
 * 设置和初始化服务可执行文件所需的环境变量。 这并不仅限于通过 Service Fabric 编程模型编写的可执行文件。 例如，npm.exe 需要配置一些环境变量来部署 node.js 应用程序。
 * 通过安装安全证书设置访问控制。
 
-有关如何配置 **SetupEntryPoint** 的详细信息，请参阅 [配置服务设置入口点的策略](service-fabric-application-runas-security.md)
+有关如何配置 **SetupEntryPoint** 的详细信息，请参阅[配置服务设置入口点的策略](service-fabric-application-runas-security.md)
 
 <a id="Package-App"></a>
 
@@ -57,13 +57,13 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ### <a name="build-a-package-by-using-visual-studio"></a>使用 Visual Studio 生成包
 
-如果已使用 Visual Studio 创建应用程序，则可以使用 Package  命令自动创建匹配上述布局的包。
+如果使用 Visual Studio 创建应用程序，可以使用“*包*”命令自动创建符合上述布局的包。
 
-若要创建包，请在解决方案资源管理器中右键单击应用程序项目，选择 **Package** 命令：
+若要创建包，请在“*Solution Explorer*”中右键单击应用程序项目，选择“**包**”命令：
 
 ![使用 Visual Studio 打包应用程序][vs-package-command]
 
-打包完成后，该包的位置会显示在“输出”  窗口中。 在 Visual Studio 中部署或调试应用程序时，打包步骤自动发生。
+打包完成后，该包的位置会显示在“输出”窗口中。 在 Visual Studio 中部署或调试应用程序时，打包步骤自动发生。
 
 ### <a name="build-a-package-by-command-line"></a>通过命令行生成一个包
 
@@ -227,11 +227,11 @@ ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);
 
 ## <a name="next-steps"></a>后续步骤
 
-[部署和删除应用程序][10]介绍如何使用 PowerShell 来管理应用程序实例
+“[部署和删除应用程序][10]”介绍了如何使用 PowerShell 来管理应用程序实例
 
-[管理多个环境的应用程序参数][11]介绍如何为不同的应用程序实例配置参数和环境变量。
+[管理多个环境的应用程序参数][11]介绍如何配置不同应用程序实例的参数和环境变量。
 
-[配置应用程序的安全策略][12]介绍如何根据安全策略运行服务，从而限制访问。
+[配置应用程序的安全策略][12]介绍如何在安全策略下运行服务，从而对访问进行限制。
 
 <!--Image references-->
 [vs-package-command]: ./media/service-fabric-package-apps/vs-package-command.png

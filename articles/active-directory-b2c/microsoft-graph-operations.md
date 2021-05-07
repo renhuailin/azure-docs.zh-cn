@@ -12,12 +12,12 @@ ms.date: 01/28/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a8ff94acbd9ffd491bf628ae61ee87634a9c6dd6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 41336d59d51685d5daf78a1809ce6c0df2cd6124
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102033616"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781307"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C
 
@@ -35,9 +35,9 @@ ms.locfileid: "102033616"
 - [更新用户](/graph/api/user-update)
 - [删除用户](/graph/api/user-delete)
 
-## <a name="user-phone-number-management-beta"></a>用户电话号码管理 (beta) 
+## <a name="user-phone-number-management-beta"></a>用户电话号码管理（beta 版本）
 
-一种电话号码，用户可以使用它来通过 [短信或语音呼叫](identity-provider-local.md#phone-sign-in-preview)或 [多重身份验证](multi-factor-authentication.md)进行登录。 有关详细信息，请参阅 [Azure AD authentication 方法 API](/graph/api/resources/phoneauthenticationmethod)。
+一种电话号码，用户可以使用它来通过[短信或语音呼叫](identity-provider-local.md#phone-sign-in-preview)或[多重身份验证](multi-factor-authentication.md)进行登录。 有关详细信息，请参阅 [Azure AD 身份验证方法 API](/graph/api/resources/phoneauthenticationmethod)。
 
 - [添加](/graph/api/authentication-post-phonemethods)
 - [列表](/graph/api/authentication-list-phonemethods)
@@ -45,13 +45,13 @@ ms.locfileid: "102033616"
 - [更新](/graph/api/phoneauthenticationmethod-update)
 - [删除](/graph/api/phoneauthenticationmethod-delete)
 
-请注意， [list](/graph/api/authentication-list-phonemethods) 操作仅返回已启用的电话号码。 应启用以下电话号码来与列表操作一起使用。 
+请注意，[列表](/graph/api/authentication-list-phonemethods)操作仅返回已启用的电话号码。 应启用下述用于列表操作的电话号码。 
 
-![启用电话登录](./media/microsoft-graph-operations/enable-phone-sign-in.png)
+![启用手机登录](./media/microsoft-graph-operations/enable-phone-sign-in.png)
 
-## <a name="self-service-password-reset-email-address-beta"></a>自助服务密码重置电子邮件地址 (beta) 
+## <a name="self-service-password-reset-email-address-beta"></a>自助式密码重置电子邮件地址（beta 版本）
 
-[用户名登录帐户](identity-provider-local.md#username-sign-in)可以使用的电子邮件地址，用于重置密码。 有关详细信息，请参阅 [Azure AD authentication 方法 API](/graph/api/resources/emailauthenticationmethod)。
+一种电子邮件地址，[用户名登录帐户](identity-provider-local.md#username-sign-in)可以使用它来重置密码。 有关详细信息，请参阅 [Azure AD 身份验证方法 API](/graph/api/resources/emailauthenticationmethod)。
 
 - [添加](/graph/api/emailauthenticationmethod-post)
 - [列表](/graph/api/emailauthenticationmethod-list)
@@ -61,7 +61,7 @@ ms.locfileid: "102033616"
 
 ## <a name="identity-providers"></a>标识提供者
 
-管理 Azure AD B2C 租户中用户流可用的 [标识提供者](add-identity-provider.md) 。
+管理 Azure AD B2C 租户中的用户流可用的[标识提供者](add-identity-provider.md)。
 
 - [列出 Azure AD B2C 租户中注册的标识提供者](/graph/api/identityprovider-list)
 - [创建标识提供者](/graph/api/identityprovider-post-identityproviders)
@@ -78,9 +78,9 @@ ms.locfileid: "102033616"
 - [获取用户流](/graph/api/b2cidentityuserflow-get)
 - [删除用户流](/graph/api/b2cidentityuserflow-delete)
 
-## <a name="user-flow-authentication-methods-beta"></a> (beta) 的用户流身份验证方法
+## <a name="user-flow-authentication-methods-beta"></a>用户流身份验证方法（beta 版本）
 
-选择一种机制，让用户通过本地帐户进行注册。 本地帐户是 Azure AD 对标识断言进行身份验证的帐户。 有关详细信息，请参阅 [b2cAuthenticationMethodsPolicy 资源类型](/graph/api/resources/b2cauthenticationmethodspolicy)。
+选择一种让用户通过本地帐户进行注册的机制。 本地帐户是 Azure AD 进行标识断言的帐户。 有关详细信息，请参阅 [b2cAuthenticationMethodsPolicy 资源类型](/graph/api/resources/b2cauthenticationmethodspolicy)。
 
 - [Get](/graph/api/b2cauthenticationmethodspolicy-get)
 - [更新](/graph/api/b2cauthenticationmethodspolicy-update)
@@ -99,7 +99,7 @@ ms.locfileid: "102033616"
 
 Identity Experience Framework 存储着自定义策略中引用的机密，以在组件之间建立信任关系。 这些机密可以是对称或非对称密钥/值。 在 Azure 门户中，这些实体显示为 **策略密钥**。
 
-Microsoft Graph API 中策略密钥的顶层资源是[信任的框架密钥集](/graph/api/resources/trustframeworkkeyset)。 每个 **密钥集** 都包含至少一个 **密钥**。 若要创建密钥，请先创建一个空的密钥集，然后在密钥集中生成一个密钥。 你可以创建手动机密、上传证书或 PKCS12 密钥。 密钥可以是生成的机密、字符串 (例如 Facebook 应用程序机密) 或上传的证书。 如果密钥集具有多个密钥，则只有其中一个密钥处于活动状态。
+Microsoft Graph API 中策略密钥的顶层资源是[信任的框架密钥集](/graph/api/resources/trustframeworkkeyset)。 每个 **密钥集** 都包含至少一个 **密钥**。 若要创建密钥，请先创建一个空的密钥集，然后在密钥集中生成一个密钥。 你可以创建手动机密、上传证书或 PKCS12 密钥。 密钥可以是某个生成的机密、某个字符串（例如 Facebook 应用程序机密），或者是你上传的某个证书。 如果密钥集具有多个密钥，则只有其中一个密钥处于活动状态。
 
 ### <a name="trust-framework-policy-keyset"></a>信任框架策略密钥集
 
@@ -136,15 +136,15 @@ Azure AD B2C 提供一个目录，其中可以保存每个用户的 100 个自�
 
 - [列出审核日志](/graph/api/directoryaudit-list)
 
-有关访问 Azure AD B2C 审核日志的详细信息，请参阅 [访问 Azure AD B2C 审核日志](view-audit-logs.md)。
+若要详细了解如何访问 Azure AD B2C 审核日志，请参阅[访问 Azure AD B2C 审核日志](view-audit-logs.md)。
 
 ## <a name="conditional-access"></a>条件性访问
 
-- [列出所有条件访问策略](/graph/api/resources/conditionalaccessroot-list-policies)
+- [列出所有条件访问策略](/graph/api/conditionalaccessroot-list-policies?view=graph-rest-beta&tabs=http)
 - [读取条件访问策略的属性和关系](/graph/api/conditionalaccesspolicy-get)
 - [创建新的条件访问策略](/graph/api/resources/application)
-- [更新条件性访问策略](/graph/api/conditionalaccesspolicy-update)
-- [删除条件性访问策略](/graph/api/conditionalaccesspolicy-delete)
+- [更新条件访问策略](/graph/api/conditionalaccesspolicy-update)
+- [删除条件访问策略](/graph/api/conditionalaccesspolicy-delete)
 
 ## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>代码示例：如何以编程方式管理用户帐户
 

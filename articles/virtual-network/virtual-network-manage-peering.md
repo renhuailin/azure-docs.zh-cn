@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
 ms.openlocfilehash: dc8db3f1eccce2bb85f03d51fcfd1c4113823d49
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98222660"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>创建、更改或删除虚拟网络对等互连
@@ -53,9 +53,9 @@ ms.locfileid: "98222660"
     - **我知道我的资源 ID：** 如果对要进行对等互连的虚拟网络拥有读取访问权限，请保留取消选中此复选框。 如果不能通过读取方式访问要与之对等互连的虚拟网络或订阅，则请选中此框。 在选中此框时显示的“资源 ID”复选框中，输入要与之对等互连的虚拟网络的完整资源 ID。 输入的虚拟网络资源 ID 必须与此虚拟网络位于同一 Azure [区域](https://azure.microsoft.com/regions)，或[受支持的不同](#requirements-and-constraints) Azure 区域。 完整资源 ID 类似于 `/subscriptions/<Id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>`。 可以通过查看虚拟网络的属性，获取虚拟网络的资源 ID。 若要了解如何查看虚拟网络的属性，请参阅[管理虚拟网络](manage-virtual-network.md#view-virtual-networks-and-settings)。 如果订阅关联的 Azure Active Directory 租户和你要进行对等互连的虚拟网络的订阅不同，则首先将每个租户中的一名用户添加为对方租户中的[来宾用户](../active-directory/external-identities/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory)。
     - **订阅：** 选择要进行对等互连的虚拟网络的 [订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)。 将列出一个或多个订阅，具体取决于帐户可以通过读取方式访问多少个订阅。 如果选中“资源 ID”复选框，则此设置不可用。
     - **虚拟网络：** 选择要进行对等互连的虚拟网络。 可以选择通过任一 Azure 部署模型创建的虚拟网络。 如果要选择不同区域中的虚拟网络，必须选择[受支持区域](#cross-region)中的虚拟网络。 必须能够通过读取方式访问虚拟网络，该虚拟网络才会显示在列表中。 如果列出了某个虚拟网络，但显示为灰色，则可能是因为该虚拟网络的地址空间与此虚拟网络的地址空间重叠。 如果虚拟网络地址空间重叠，则无法进行对等互连。 如果选中“资源 ID”复选框，则此设置不可用。
-    - **允许虚拟网络访问：** 如果要在两个虚拟网络之间通过默认流进行通信，请选择 " **已启用** (默认) " `VirtualNetwork` 。 启用虚拟网络之间的通信可允许资源连接到任意虚拟网络，并以相同的带宽和延迟互相之间进行通信，就如同它们是连接到同一个虚拟网络一样。 这两个虚拟网络中的资源之间的所有通信都在 Azure 专用网络上进行。 当 **启用** 此设置时，网络安全组的 **VirtualNetwork** 服务标记包含虚拟网络和对等互连虚拟网络。  (了解有关网络安全组服务标记的详细信息，请参阅 [网络安全组概述](./network-security-groups-overview.md#service-tags)) 。如果你不希望流量默认流向对等互连虚拟网络，请选择 " **禁用** "。 如果已将虚拟网络与另一个虚拟网络对等互连，但有时想要禁用这两个虚拟网络之间的默认流量流，则可以选择 " **禁用** "。 你会发现，启用/禁用比删除并重新创建对等互连更加方便。 如果禁用此设置，则默认情况下，流量不会在对等互连的虚拟网络之间流动。但是，如果通过包含相应 IP 地址或应用程序安全组的 [网络安全组](./network-security-groups-overview.md) 规则明确允许流量，则流量可能仍会流动。
+    - **允许虚拟网络访问：** 如果需要通过默认的 `VirtualNetwork` 流来启用两个虚拟网络之间的通信，请选择“启用”（默认）。 启用虚拟网络之间的通信可允许资源连接到任意虚拟网络，并以相同的带宽和延迟互相之间进行通信，就如同它们是连接到同一个虚拟网络一样。 这两个虚拟网络中的资源之间的所有通信都在 Azure 专用网络上进行。 在这项设置是“启用”时，网络安全组的 VirtualNetwork 服务标记会包含该虚拟网络和已对等互连的虚拟网络 。 （若要详细了解网络安全组服务标记，请参阅[网络安全组概述](./network-security-groups-overview.md#service-tags)。）如果默认情况下不希望流量流到已对等互连的虚拟网络，请选择“禁用”。 如果已将一个虚拟网络与另一个虚拟网络对等互连，但有时需要禁用这两个虚拟网络之间的默认流量流动，则可以选择“禁用”。 你会发现，启用/禁用比删除并重新创建对等互连更加方便。 在这项设置处于禁用状态时，默认情况下，流量不会在对等互连的虚拟网络之间流动；但是，如果通过[网络安全组](./network-security-groups-overview.md)规则（包括相应的 IP 地址或应用程序安全组）显式允许流量流动，则流量可能仍会流动。
       > [!WARNING]
-      > 禁用 " **允许虚拟网络访问** " 设置仅更改 **VirtualNetwork** 服务标记的定义。 它 *不* 完全阻止跨对等连接的流量，如此设置说明中所述。    
+      > 禁用“允许虚拟网络访问”设置只会更改 VirtualNetwork 服务标记的定义 。 这样并不会完全阻止流量在对等连接上流动，正如本设置说明中所述。    
     - **允许转发的流量：** 选中此框将允许某个虚拟网络中通过网络虚拟设备转发的（不是从该虚拟网络发起的）流量通过对等互连流动到此虚拟网络。 例如，假设有名为 Spoke1、Spoke2 和 Hub 的三个虚拟网络。 每个辐射虚拟网络与中心虚拟网络之间存在一个对等互连，但各个辐射虚拟网络之间不存在对等互连。 一个网络虚拟设备部署在中心虚拟网络中，用户定义的路由应用于通过该网络虚拟设备在各个子网之间路由流量的每个辐射虚拟网络。 如果没有为每个辐射虚拟网络与中心虚拟网络之间的对等互连选中此复选框，则流量不会在各个辐射虚拟网络之间流动，因为中心i不在各个虚拟网络之间转发流量。 虽然启用此功能即可通过对等互连转发流量，但不会创建任何用户定义的路由或网络虚拟设备。 用户定义的路由和网络虚拟设备是单独创建的。 了解[用户定义的路由](virtual-networks-udr-overview.md#user-defined)。 如果流量通过 Azure VPN 网关在虚拟网络之间转发，则无需检查此设置。
     - **允许网关传输：** 如果有附加到此虚拟网络的虚拟网络网关并且想要允许来自已对等互连的虚拟网络的流量流经网关，请选中此框。 例如，此虚拟网络可以通过虚拟网关附加到本地网络。 网关可以是 ExpressRoute 或 VPN 网关。 选中此框将允许来自所对等互连的虚拟网络的流量通过附加到此虚拟网络的网关流到本地网络。 如果选中此框，则已对等互连的虚拟网络不能有已配置的网关。 设置从另一虚拟网络到此虚拟网络的对等互连时，对等互连的虚拟网络必须选中复选框“使用远程网关”。 如果保留此框的未选中状态（默认），则来自已对等互连的虚拟网络的流量仍可流动到此虚拟网络，但无法流经附加到此虚拟网络的虚拟网关。 如果在虚拟网络（资源管理器）和虚拟网络（经典）之间进行对等互连，则网关必须位于虚拟网络（资源管理器）中。
 
@@ -117,7 +117,7 @@ ms.locfileid: "98222660"
 ## <a name="requirements-and-constraints"></a>要求和约束
 
 - <a name="cross-region"></a>可在相同区域或不同区域中的虚拟网络之间建立对等互连。 不同区域中的对等互连虚拟网络也称为“全局 VNet 对等互连”。 
-- 创建全局对等互连时，对等互连虚拟网络可以存在于任何 Azure 公有云区域或中国云区域或政府云区域中。 不能跨云对等互连。 例如，Azure 公有云中的 VNet 不能与 Azure 中国云中的 VNet 对等互连。
+- 创建全球对等互连时，对等虚拟网络可以存在于任何 Azure 公有云区域、中国云区域或政府云区域中。 不能跨云对等互连。 例如，Azure 公有云中的 VNet 不能与 Azure 中国云中的 VNet 对等互连。
 - 一个虚拟网络中的资源无法与全局对等互连虚拟网络中基本内部负载均衡器的前端 IP 地址通信。 对基本负载均衡器的支持仅存在于同一区域内。 VNet 对等互连和全局 VNet 对等互连都支持标准负载均衡器。 [此处](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)记录了使用基本负载均衡器但不能通过全局 VNet 对等互连正常工作的服务。
 - 可以使用远程网关或允许全局对等虚拟网络和本地对等虚拟网络中的网关传输。
 - 虚拟网络可以位于相同或不同的订阅中。 如果对等虚拟网络位于不同的订阅中，两个订阅可关联到同一个或不同的 Azure Active Directory 租户。 如果还没有 AD 租户，可以[创建一个](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant)。
@@ -129,8 +129,8 @@ ms.locfileid: "98222660"
   - *已连接：* 创建从第二个虚拟网络到第一个虚拟网络的对等互连时，对等互连状态为“已连接”。 如果查看第一个虚拟网络的对等互连状态，会看到其状态从“已启动”更改为“已连接”。 直到两个虚拟网络对等互连的对等互连状态均为“已连接”时，对等互连才成功建立。
 - 将一个通过 Resource Manager 创建的虚拟网络与一个通过经典部署模型创建的虚拟网络对等互连时，只需为通过 Resource Manager 部署的虚拟网络配置对等互连。 不能为经典虚拟网络配置对等互连，也不能在两个通过经典部署模型部署的虚拟网络之间配置对等互连。 创建从 Resource Manager 虚拟网络到经典虚拟网络的对等互连时，对等互连状态先为“正在更新”，随后很快更改为“已连接”。
 - 对等互连是在两个虚拟网络之间建立的。 对等互连本身不可传递。 如果在以下虚拟网络之间创建对等互连：
-  - VirtualNetwork1 & VirtualNetwork2-VirtualNetwork1 & VirtualNetwork2
-  - VirtualNetwork2 & VirtualNetwork3-VirtualNetwork2 & VirtualNetwork3
+  - VirtualNetwork1 和 VirtualNetwork2 - VirtualNetwork1 和 VirtualNetwork2
+  - VirtualNetwork2 和 VirtualNetwork3 - VirtualNetwork2 和 VirtualNetwork3
 
 
   不会通过 VirtualNetwork2 在 VirtualNetwork1 和 VirtualNetwork3 之间形成对等互连。 如果要在 VirtualNetwork1 和 VirtualNetwork3 之间创建虚拟网络对等互连，必须在 VirtualNetwork1 和 VirtualNetwork3 之间创建对等互连。 不会通过 VirtualNetwork2 在 VirtualNetwork1 和 VirtualNetwork3 之间形成对等互连。 如果希望 VirtualNetwork1 和 VirtualNetwork3 直接通信，则必须在 VirtualNetwork1 和 VirtualNetwork3 之间创建显式对等互连，或者通过中心网络中的 NVA 来通信。  
@@ -168,6 +168,6 @@ ms.locfileid: "98222660"
   |一个是资源管理器模型，一个是经典模型  |[相同](create-peering-different-deployment-models.md)|
   |                                   |[不同](create-peering-different-deployment-models-subscriptions.md)|
 
-- 了解如何创建 [中心和分支网络拓扑](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- 了解如何创建[中心和分支网络拓扑](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - 使用 [PowerShell](powershell-samples.md) 或 [Azure CLI](cli-samples.md) 示例脚本或使用 Azure [资源管理器模板](template-samples.md)创建虚拟网络对等互连
 - 为虚拟网络创建和分配 [Azure Policy 定义](./policy-reference.md)

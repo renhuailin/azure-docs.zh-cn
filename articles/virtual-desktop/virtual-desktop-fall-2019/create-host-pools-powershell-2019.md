@@ -1,19 +1,19 @@
 ---
-title: 创建 Windows 虚拟桌面 (经典) 主机池 PowerShell-Azure
-description: 如何使用 PowerShell cmdlet 在 Windows 虚拟桌面 (经典) 中创建主机池。
+title: 创建 Windows 虚拟桌面（经典）主机池 PowerShell - Azure
+description: 如何使用 PowerShell cmdlet 在 Windows 虚拟桌面（经典）中创建主机池。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: c035a7fbafe9b3a42fbd16e3f8377014010ddd49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88003549"
 ---
-# <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-powershell"></a>使用 PowerShell 在 Windows 虚拟桌面 (经典) 中创建主机池
+# <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-powershell"></a>使用 PowerShell 在 Windows 虚拟桌面（经典）中创建主机池
 
 >[!IMPORTANT]
 >本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../create-host-pools-powershell.md)。
@@ -67,7 +67,7 @@ $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hos
 - [从非托管映像创建虚拟机](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
 
 >[!NOTE]
->如果使用 Windows 7 作为主机 OS 来部署虚拟机，创建和部署过程会稍有不同。 有关详细信息，请参阅[在 Windows 虚拟桌面上部署 Windows 7 虚拟机](deploy-windows-7-virtual-machine.md)。
+>如果使用 Windows 7 作为主机操作系统来部署虚拟机，创建和部署过程会稍有不同。 有关详细信息，请参阅[在 Windows 虚拟桌面上部署 Windows 7 虚拟机](deploy-windows-7-virtual-machine.md)。
 
 创建会话主机虚拟机后，[将 Windows 许可证应用到会话主机 VM](../apply-windows-license.md#apply-a-windows-license-to-a-session-host-vm)以便运行 Windows 或 Windows Server 虚拟机而不用为其他许可证付费。
 
@@ -89,9 +89,9 @@ $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hos
     >[!NOTE]
     > 如果要将 VM 加入到 Azure Active Directory 域服务 (Azure AD DS) 环境，请确保你的域加入用户也是 [AAD DC 管理员组](../../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group)的成员。
 
-## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool"></a>将虚拟机注册到 Windows 虚拟桌面主机池
+## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool"></a>将虚拟机注册到 Windows 虚拟机主机池
 
-将虚拟机注册到 Windows 虚拟桌面主机池非常简单，只需要安装 Windows 虚拟桌面代理即可。
+将虚拟机注册到 Windows 虚拟机主机池非常简单，只需要安装 Windows 虚拟桌面代理即可。
 
 若要注册 Windows 虚拟桌面代理，请在每个虚拟机上执行以下操作：
 

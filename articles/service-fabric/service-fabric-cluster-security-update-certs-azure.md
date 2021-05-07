@@ -4,10 +4,10 @@ description: 介绍如何向 Service Fabric 群集添加新的证书、滚动更
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 6dd4440d76bed9d110c13baab9f4e67b3a5c64c0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94660893"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>在 Azure 中添加或删除 Service Fabric 群集的证书
@@ -18,7 +18,7 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
 在创建群集期间配置证书安全性时，Service Fabric 允许指定两个群集证书（主要证书和辅助证书）以及客户端证书。 请参阅[通过门户创建 Azure 群集](service-fabric-cluster-creation-via-portal.md)或[通过 Azure 资源管理器创建 Azure 群集](service-fabric-cluster-creation-via-arm.md)，了解在创建时进行相关设置的详细信息。 如果创建时只指定了一个群集证书，将使用该证书作为主要证书。 在创建群集后，可以添加一个新证书作为辅助证书。
 
 > [!NOTE]
-> 对于安全群集，始终需要至少部署一个有效的（未吊销或过期）群集证书（主要或辅助），否则，群集无法正常运行。 90天，在所有有效证书过期之前，系统将在节点上生成警告跟踪和警告运行状况事件。 这些是目前 Service Fabric 发送有关证书过期的通知。
+> 对于安全群集，始终需要至少部署一个有效的（未吊销或过期）群集证书（主要或辅助），否则，群集无法正常运行。 在所有有效证书过期前的 90 天，系统会针对节点生成警告跟踪和警告运行状况事件。 目前，Service Fabric 仅发送了这些有关证书过期的通知。
 > 
 > 
 
@@ -26,7 +26,7 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="add-a-secondary-cluster-certificate-using-the-portal"></a>使用门户添加辅助群集证书
-无法通过 Azure 门户添加辅助群集证书;使用 Azure PowerShell。 稍后在本文档中对该过程进行概述。
+无法通过 Azure 门户使用 Azure PowerShell 添加辅助群集证书。 稍后在本文档中对该过程进行概述。
 
 ## <a name="remove-a-cluster-certificate-using-the-portal"></a>使用门户删除群集证书
 对安全群集，始终需要至少一个有效（未撤销且未过期）证书。 将使用具有最远过期日期的已部署证书，并且删除该证书会导致群集停止运行；请确保仅删除过期的证书或最快过期的未使用证书。
@@ -208,7 +208,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <Resource Group that your clus
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
 ```
 
-下面是相同 PowerShell 的填写示例。
+下面是已填充数据的同一个 PowerShell 命令示例。
 
 ```powershell
 $ResourceGroup2 = "chackosecure5"
@@ -277,7 +277,7 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="adding-application-certificates-to-a-virtual-machine-scale-set"></a>向虚拟机规模集添加应用程序证书
 
-若要将用于应用程序的证书部署到群集，请参阅 [此示例 PowerShell 脚本](scripts/service-fabric-powershell-add-application-certificate.md)。
+若要将用于应用程序的证书部署到群集，请参阅[此示例 PowerShell 脚本](scripts/service-fabric-powershell-add-application-certificate.md)。
 
 ## <a name="next-steps"></a>后续步骤
 有关群集管理的详细信息，请阅读以下文章：

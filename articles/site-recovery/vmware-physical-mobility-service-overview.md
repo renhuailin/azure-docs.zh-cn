@@ -1,5 +1,5 @@
 ---
-title: 关于 Azure Site Recovery 的 VMware Vm 和物理服务器的灾难恢复的移动服务Microsoft Docs
+title: 关于使用 Azure Site Recovery 对 VMware VM 和物理服务器进行灾难恢复的移动服务 | Microsoft Docs
 description: 了解可使用 Azure Site Recovery 服务将 VMware VM 和物理服务器灾难恢复到 Azure 的移动服务代理。
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
 ms.openlocfilehash: 8c90427e2dd4ecf23cb803c4f75dbee34c38f992
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98898573"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>关于适用于 VMware VM 和物理服务器的移动服务
@@ -228,7 +228,7 @@ ms.locfileid: "98898573"
 从 9.36 版本开始作为更新或保护 SUSE Linux Enterprise Server 11 SP3 计算机的先决条件：
 
 1. 确保从 Microsoft 下载中心下载最新的移动代理安装程序，并将其放置在配置服务器和所有横向扩展进程服务器上的推送安装程序存储库中
-2. [下载](site-recovery-whats-new.md) 最新的 SUSE LINUX ENTERPRISE SERVER 11 SP3 agent 安装程序。
+2. [下载](site-recovery-whats-new.md)最新的 SUSE Linux Enterprise Server 11 SP3 代理安装程序。
 3. 导航到配置服务器，将 SUSE Linux Enterprise Server 11 SP3 代理安装程序复制到路径 INSTALL_DIR\home\svsystems\pushinstallsvc\repository
 1. 复制最新的安装程序后，请重启 InMage PushInstall 服务。 
 1. 现在，导航到关联的横向扩展进程服务器，重复步骤 3 和步骤 4。
@@ -240,7 +240,7 @@ ms.locfileid: "98898573"
 从 9.36 版本开始作为更新或保护 RHEL 5 计算机的先决条件：
 
 1. 确保从 Microsoft 下载中心下载最新的移动代理安装程序，并将其放置在配置服务器和所有横向扩展进程服务器上的推送安装程序存储库中
-2. [下载](site-recovery-whats-new.md) 最新的 RHEL 5 或 CentOS 5 代理安装程序。 
+2. [下载](site-recovery-whats-new.md)最新的 RHEL 5 或 CentOS 5 代理安装程序。 
 3. 导航到配置服务器，将 RHEL 5 或 CentOS 5 代理安装程序复制到路径 INSTALL_DIR\home\svsystems\pushinstallsvc\repository
 1. 复制最新的安装程序后，请重启 InMage PushInstall 服务。 
 1. 现在，导航到关联的横向扩展进程服务器，重复步骤 3 和步骤 4。
@@ -252,7 +252,7 @@ ms.locfileid: "98898573"
 从 9.36 版本开始作为更新或保护 Debian 7 计算机的先决条件：
 
 1. 确保从 Microsoft 下载中心下载最新的移动代理安装程序，并将其放置在配置服务器和所有横向扩展进程服务器上的推送安装程序存储库中
-2. [下载](site-recovery-whats-new.md) 最新的 Debian 7 代理安装程序。
+2. [下载](site-recovery-whats-new.md)最新的 Debian 7 代理安装程序。
 3. 导航到配置服务器，将 Debian 7 代理安装程序复制到路径 INSTALL_DIR\home\svsystems\pushinstallsvc\repository
 1. 复制最新的安装程序后，请重启 InMage PushInstall 服务。 
 1. 现在，导航到关联的横向扩展进程服务器，重复步骤 3 和步骤 4。

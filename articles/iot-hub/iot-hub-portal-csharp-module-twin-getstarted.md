@@ -1,5 +1,5 @@
 ---
-title: 'Azure IoT 中心模块标识 & 模块 (门户和 .NET) '
+title: Azure IoT 中心模块标识和模块孪生（门户和 .NET）
 description: 了解如何使用门户和 .NET 创建模块标识和更新模块孪生。
 author: robinsh
 manager: philmea
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: amqp, devx-track-csharp
 ms.openlocfilehash: 0d16d7a6dbf903ae790015c12e3d34e4a2a553d3
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92139348"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>使用门户和 .NET 设备创建 IoT 中心模块标识和模块孪生入门
@@ -22,7 +22,7 @@ ms.locfileid: "92139348"
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
-> [模块标识和模块孪生](iot-hub-devguide-module-twins.md)类似于 Azure IoT 中心设备标识和设备孪生，但提供更精细的粒度。 尽管 Azure IoT 中心设备标识和设备克隆使后端应用程序可以配置设备并提供设备条件的可见性，但模块标识和模块克隆为设备的单个组件提供这些功能。 在支持多个组件的设备上（例如基于操作系统的设备或固件设备），模块标识和模块孪生允许每个部件拥有独立的配置和条件。
+> [模块标识和模块孪生](iot-hub-devguide-module-twins.md)类似于 Azure IoT 中心设备标识和设备孪生，但提供更精细的粒度。 Azure IoT 中心设备标识和设备孪生允许后端应用程序配置设备并提供设备条件的可见性，而模块标识和模块孪生为设备的各个组件提供这些功能。 在支持多个组件的设备上（例如基于操作系统的设备或固件设备），模块标识和模块孪生允许每个部件拥有独立的配置和条件。
 >
 
 本教程介绍：
@@ -32,7 +32,7 @@ ms.locfileid: "92139348"
 * 如何使用 .NET 设备 SDK 更新设备的模块孪生。
 
 > [!NOTE]
-> 有关可用于构建在设备和解决方案后端上运行的应用程序的 Azure IoT Sdk 的信息，请参阅 [Azure Iot sdk](iot-hub-devguide-sdks.md)。
+> 若要了解可用于生成在设备和解决方案后端运行的应用程序的 Azure IoT SDK，请参阅 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 >
 
 ## <a name="prerequisites"></a>先决条件
@@ -139,7 +139,7 @@ ms.locfileid: "92139348"
       }
   ```
 
-4. 最后，将 **Main**方法替换为以下代码：
+4. 最后，将 **Main** 方法替换为以下代码：
 
   ```csharp
   static void Main(string[] args)

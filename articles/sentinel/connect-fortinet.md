@@ -1,5 +1,5 @@
 ---
-title: 将 Fortinet 数据连接到 Azure Sentinel |Microsoft Docs
+title: 将 Fortinet 数据连接到 Azure Sentinel | Microsoft Docs
 description: 将 Fortinet 设备连接到 Azure Sentinel 以查看仪表板、创建自定义警报和改进调查。
 services: sentinel
 documentationcenter: na
@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 60be22f439547d006f54e489833b63171e617e3e
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92913987"
 ---
 # <a name="connect-fortinet-to-azure-sentinel"></a>将 Fortinet 连接到 Azure Sentinel
 
 
 
-本文介绍了如何将 Fortinet 设备连接到 Azure Sentinel。 Fortinet 数据连接器可让你轻松地将 Fortinet 日志连接到 Azure Sentinel，查看仪表板、创建自定义警报和改进调查。 使用 Azure 上的 Fortinet 可以更深入地了解组织的 Internet 使用情况，并增强其安全性操作功能。 
+本文介绍了如何将 Fortinet 设备连接到 Azure Sentinel。 Fortinet 数据连接器可让你轻松地将 Fortinet 日志连接到 Azure Sentinel，查看仪表板、创建自定义警报和改进调查。 使用 Azure Sentinel 上的 Fortinet 可以更深入地了解组织的 Internet 使用情况，并增强其安全性操作功能。 
 
 
  
@@ -45,20 +45,20 @@ ms.locfileid: "92913987"
     end
     ```
 
-    - 将服务器 **ip 地址** 替换为代理的 ip 地址。
-    - 将 **syslog 端口** 设置为 **514** 或在代理上设置的端口。
-    - 若要在早期 FortiOS 版本中启用 CEF 格式，你可能需要运行命令 set **csv disable** 。
+    - 将服务器“IP 地址”替换为代理 IP 地址。
+    - 将“Syslog 端口”设置为“514”或在代理上设置的端口。
+    - 若要在早期 FortiOS 版本中启用 CEF 格式，你可能需要运行命令集“csv 禁用”。
  
    > [!NOTE] 
-   > 有关详细信息，请参阅 [Fortinet 文档库](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary)。 选择版本，并使用 **手册** 和 **日志消息参考** 。
+   > 有关详细信息，请参阅 [Fortinet 文档库](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary)。 选择版本，并使用“手册”和“日志消息参考”。
 
-1. 若要使用 Fortinet 事件的 Azure Monitor Log Analytics 中的相关架构，请搜索 `CommonSecurityLog` 。
+1. 若要在 Azure Monitor Log Analytics 中使用相关架构用于 Fortinet 事件，请搜索 `CommonSecurityLog`。
 
 1. 继续执行[步骤 3：验证连接性](connect-cef-verify.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了如何将 Fortinet 设备连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
+本文章介绍了如何将 Fortinet 设备连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 - 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
 - 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
 - [使用工作簿](tutorial-monitor-your-data.md)监视数据。

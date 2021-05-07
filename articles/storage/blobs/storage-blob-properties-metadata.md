@@ -10,10 +10,10 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 984fb00e163a090534da1fb41850dcfef6c5d516
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95521523"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>使用 .NET 管理 blob 属性和元数据
@@ -27,9 +27,9 @@ ms.locfileid: "95521523"
 - **用户定义的元数据**：用户定义元数据包含一个或多个你为 Blob 存储资源指定的名称/值对对。 可以使用元数据存储资源的其他值。 元数据值仅用于你自己的目的，不会影响资源的行为方式。
 
 > [!NOTE]
-> 使用 Blob 索引标记，还可以将任意用户定义的键/值属性与 Azure Blob 存储资源一起存储。 与元数据类似，只会自动为 blob 索引标记编制索引，并使本机 blob 服务可对其进行搜索。 除非使用了单独的服务（如 Azure 搜索），否则无法对元数据进行索引和查询。
+> 使用 Blob 索引标记，还可以将任意用户定义的键/值属性与 Azure Blob 存储资源一起存储。 虽然与元数据类似，但只会自动为 Blob 索引标记编制索引，并由本机的 blob 服务进行搜索。 除非使用了单独的服务（如 Azure 搜索），否则无法对元数据进行索引和查询。
 >
-> 若要了解有关此功能的详细信息，请参阅 [在 Azure blob 存储中管理和查找数据 (预览) ](storage-manage-find-blobs.md)。
+> 若要详细了解此功能，请参阅[通过 Blob 索引（预览版）管理和查找 Azure Blob 存储上的数据](storage-manage-find-blobs.md)。
 
 ## <a name="set-and-retrieve-properties"></a>设置和检索属性
 
@@ -168,7 +168,7 @@ public static async Task AddBlobMetadataAsync(CloudBlob blob)
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-要检索元数据，请对 blob 或容器调用 [GetProperties](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getproperties) 或 [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getpropertiesasync) 方法以填充 [Metadata](/dotnet/api/azure.storage.blobs.models.blobproperties.metadata) 集合，然后读取值，如下面的示例所示。 **GetProperties** 方法在一次调用中检索 blob 属性和元数据。 这不同于 REST Api，后者需要单独调用来 [获取 Blob 属性](/rest/api/storageservices/get-blob-properties) 和 [获取 blob 元数据](/rest/api/storageservices/get-blob-metadata)。
+要检索元数据，请对 blob 或容器调用 [GetProperties](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getproperties) 或 [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getpropertiesasync) 方法以填充 [Metadata](/dotnet/api/azure.storage.blobs.models.blobproperties.metadata) 集合，然后读取值，如下面的示例所示。 GetProperties 方法将在单个调用中检索 blob 属性和元数据。 这与 REST API 不同，REST API 需要单独调用来[获取 Blob 属性](/rest/api/storageservices/get-blob-properties)和[获取 Blob 元数据](/rest/api/storageservices/get-blob-metadata)。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadBlobMetadata":::
 

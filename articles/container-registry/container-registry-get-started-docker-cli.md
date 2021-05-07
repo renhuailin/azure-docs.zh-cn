@@ -1,30 +1,30 @@
 ---
-title: 推送 & 拉取容器映像
+title: 推送和拉取容器映像
 description: 使用 Docker CLI 将 Docker 映像推送和拉取到 Azure 中的专用容器注册表
 ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017
 ms.openlocfilehash: 83ef385313b035f5e5d7d993e7948725906c75a7
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99987759"
 ---
-# <a name="push-your-first-image-to-your-azure-container-registry-using-the-docker-cli"></a>使用 Docker CLI 将第一个映像推送到 Azure 容器注册表
+# <a name="push-your-first-image-to-your-azure-container-registry-using-the-docker-cli"></a>使用 Docker CLI 将你的第一个映像推送到 Azure 容器注册表
 
-Azure 容器注册表可存储和管理专用容器映像和其他项目，类似于 [Docker Hub](https://hub.docker.com/) 存储公共 Docker 容器映像的方式。 可以使用 docker [命令行界面](https://docs.docker.com/engine/reference/commandline/cli/) (docker CLI) 在容器注册表上 [进行登录](https://docs.docker.com/engine/reference/commandline/login/)、 [推送](https://docs.docker.com/engine/reference/commandline/push/)、 [请求](https://docs.docker.com/engine/reference/commandline/pull/)和其他容器映像操作。
+Azure 容器注册表可存储和管理专用容器映像和其他项目，类似于 [Docker Hub](https://hub.docker.com/) 存储公共 Docker 容器映像的方式。 可以使用 [Docker 命令行接口](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) 对容器注册表执行[登录](https://docs.docker.com/engine/reference/commandline/login/)、[推送](https://docs.docker.com/engine/reference/commandline/push/)、[拉取](https://docs.docker.com/engine/reference/commandline/pull/)和其他容器映像操作。
 
-在以下步骤中，你将下载一个公共 [Nginx 映像](https://store.docker.com/images/nginx)，为专用 Azure 容器注册表标记该映像，将其推送到注册表，然后从注册表中提取它。
+在以下步骤中，你将下载一个公共 [Nginx 映像](https://store.docker.com/images/nginx)，为你的专用 Azure 容器注册表标记该映像，将它推送到你的注册表，然后从注册表中拉取它。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * **Azure 容器注册表** - 在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
 * **Docker CLI** - 还必须在本地安装 Docker。 Docker 提供的包可在任何 [macOS][docker-mac]、[Windows][docker-windows] 或 [Linux][docker-linux] 系统上轻松配置 Docker。
 
 ## <a name="log-in-to-a-registry"></a>登录到注册表
 
-可[通过多种方式验证](container-registry-authentication.md)专用容器注册表。 在命令行中操作时，建议的方法是使用 Azure CLI 命令 [az acr login](/cli/azure/acr#az-acr-login)。 例如，若要登录到名为 *myregistry* 的注册表，请登录到该 Azure CLI，然后对注册表进行身份验证：
+可[通过多种方式验证](container-registry-authentication.md)专用容器注册表。 在命令行中操作时，建议的方法是使用 Azure CLI 命令 [az acr login](/cli/azure/acr#az-acr-login)。 例如，若要登录到名为 myregistry 的注册表，请登录到 Azure CLI，然后向注册表进行身份验证：
 
 ```azurecli
 az login
@@ -44,9 +44,9 @@ docker login myregistry.azurecr.io
 > [!TIP]
 > 使用 `docker login` 以及标记要推送到注册表的映像时，请始终指定完全限定的注册表名称（全部小写）。 在本文的示例中，完全限定的名称为 *myregistry.azurecr.io*。
 
-## <a name="pull-a-public-nginx-image"></a>请求公用 Nginx 映像
+## <a name="pull-a-public-nginx-image"></a>拉取一个公共 Nginx 映像
 
-首先，将公共 Nginx 映像提取到本地计算机。 此示例从 Microsoft 容器注册表中提取映像。
+首次，将一个公共 Nginx 映像拉取到本地计算机。 该示例从 Microsoft Container Registry 中拉取映像。
 
 ```
 docker pull mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
@@ -54,7 +54,7 @@ docker pull mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
 
 ## <a name="run-the-container-locally"></a>在本地运行容器
 
-执行以下 [docker run](https://docs.docker.com/engine/reference/run/) 命令，以交互方式启动 Nginx 容器的本地实例， (`-it` 端口8080上的) 。 `--rm` 参数指定在停止容器时应将其删除。
+执行以下 [docker run](https://docs.docker.com/engine/reference/run/) 命令，以交互方式在端口 8080 上启动 Nginx 容器的本地实例 (`-it`)。 `--rm` 参数指定在停止容器时应将其删除。
 
 ```
 docker run -it --rm -p 8080:80 mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine

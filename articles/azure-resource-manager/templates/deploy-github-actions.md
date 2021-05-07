@@ -3,13 +3,13 @@ title: 使用 GitHub Actions 部署资源管理器模板
 description: 介绍如何使用 GitHub Actions 部署资源管理器模板（ARM 模板）。
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: ec29ae019555c54ccdcef9dd743706f8d6401bbd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: github-actions-azure
+ms.openlocfilehash: 020e142788cf2bd31edeada8d051be74132310cf
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781966"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108075422"
 ---
 # <a name="deploy-arm-templates-by-using-github-actions"></a>使用 GitHub Actions 部署 ARM 模板
 

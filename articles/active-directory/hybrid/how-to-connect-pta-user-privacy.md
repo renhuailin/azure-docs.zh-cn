@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 396344ba90aa3850d7d23dc40d6df95f6d1f6c3f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95996570"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>用户隐私和 Azure Active Directory 直通身份验证
@@ -73,7 +73,7 @@ Foreach ($file in $Files) {
 
 ### <a name="delete-authentication-agent-trace-log-files"></a>删除身份验证代理跟踪日志文件
 
-应定期检查 **%PROGRAMDATA%\MICROSOFT\AZURE AD Connect Authentication Agent\Trace** 的内容，每48小时删除此文件夹中的内容。 
+应每隔 48 小时定期检查“%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace”的内容，并删除此文件夹的内容。 
 
 >[!IMPORTANT]
 >如果身份验证代理服务正在运行，则无法删除此文件夹中的当前日志文件。 重试之前请停止该服务。 为避免用户登录失败，应事先配置直通身份验证以实现[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)。
@@ -92,14 +92,14 @@ Foreach ($file in $files) {
 
 1.  将脚本保存在具有“.PS1”扩展名的文件中。
 2.  打开“控制面板”，单击“系统和安全性”。
-3.  在 " **管理工具** " 标题下，单击 "**计划任务**"。
+3.  在“管理工具”标题下，单击“计划任务” 。
 4.  在“任务计划程序”中，右键单击“任务计划库”，并单击“创建基本任务...”。
 5.  输入新任务的名称，然后单击“下一步”。
 6.  为 **任务触发器** 选择 **每日**，单击 **下一步**。
 7.  将重复周期设置为两天，单击“下一步”。
 8.  选择“启动程序”作为操作，单击“下一步”。
-9.  在 "程序/脚本" 框中键入 "**PowerShell**"，并在标记为 "**(可选) 添加参数**" 的框中输入之前创建的脚本的完整路径，然后单击 " **下一步**"。
-10. 下一屏幕会显示要创建的任务摘要。 验证这些值，然后单击 " **完成** " 以创建任务：
+9.  在“程序/脚本”框中键入 **PowerShell**，在标记为“添加参数(可选)”的框中输入之前创建的脚本的完整路径，然后单击“下一步” 。
+10. 下一屏幕会显示要创建的任务摘要。 检查各个值，然后单击“完成”以创建任务：
  
 ### <a name="note-about-domain-controller-logs"></a>关于域控制器日志的注意事项
 

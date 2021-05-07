@@ -1,19 +1,19 @@
 ---
-title: 排查服务连接问题 Windows 虚拟桌面 (经典) -Azure
-description: 如何解决在 Windows 虚拟桌面 (经典) 租户环境中设置客户端连接时出现的问题。
+title: 排查 Windows 虚拟桌面（经典）服务连接问题 - Azure
+description: 如何解决在 Windows 虚拟桌面（经典）租户环境中设置客户端连接时遇到的问题。
 author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 05/20/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 8a034cb8371972c2c7908cdba4dd491c17d8cc9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+manager: femila
+ms.openlocfilehash: afd5ba23838f2771825511c4aa67b39934e757f6
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88008536"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106444184"
 ---
-# <a name="windows-virtual-desktop-classic-service-connections"></a>Windows 虚拟桌面 (经典) 服务连接
+# <a name="windows-virtual-desktop-classic-service-connections"></a>Windows 虚拟桌面（经典）服务连接
 
 >[!IMPORTANT]
 >本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../troubleshoot-service-connection.md)。

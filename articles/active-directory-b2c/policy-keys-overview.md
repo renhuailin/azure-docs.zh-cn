@@ -11,10 +11,10 @@ ms.date: 09/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 30348d7ca12ded2d1f4b0522a7cabeadf0553a07
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94953349"
 ---
 # <a name="overview-of-policy-keys-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的策略密钥概述
@@ -28,7 +28,7 @@ Azure Active Directory B2C (Azure AD B2C) 以策略密钥的形式存储机密�
  本文讨论了对于 Azure AD B2C 使用的策略密钥，你需要了解的内容。
 
 > [!NOTE]
-> 目前，策略密钥的配置仅限于 [自定义策略](./custom-policy-get-started.md) 。
+> 目前策略密钥的配置仅限于[自定义策略](./custom-policy-get-started.md)。
 
 你可以在 Azure 门户中的“策略密钥”菜单下配置用于在服务之间建立信任的机密和证书。 密钥可以是对称的，也可以是非对称的。 在对称加密或私钥加密中，将使用共享机密来加密和解密数据。 非对称加密或公钥加密这种加密系统使用密钥对，其中包含与信赖方应用程序共享的公钥，以及只有 Azure AD B2C 知道的私钥。
 
@@ -72,7 +72,7 @@ Azure AD B2C 中的策略密钥的顶层资源是 **密钥集** 容器。 每个
 若要添加或删除签名和加密密钥，请执行以下操作：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录  。
+1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 在概述页面上的“策略”下，选择“Identity Experience Framework” 。
 1. 选择“策略密钥” 
@@ -81,10 +81,10 @@ Azure AD B2C 中的策略密钥的顶层资源是 **密钥集** 容器。 每个
 
 ### <a name="replace-a-key"></a>替换密钥
 
-键集中的键不可替换或可移动。 如果需要更改现有密钥，请执行以下操作：
+密钥集里的密钥不可替换或删除。 如果需要更改现有密钥，请执行以下操作：
 
-- 建议将 **激活日期** 设置为当前日期和时间的新密钥。 Azure AD B2C 将激活新密钥并停止使用以前的 active key。
-- 或者，可以使用正确的密钥创建一个新的键集。 更新策略以使用新的密钥集，然后删除旧的密钥集。 
+- 建议添加新密钥，并将新密钥的“激活日期”设置为当前日期和时间。 Azure AD B2C 即将激活新密钥，并停止使用之前使用的密钥。
+- 或者，可以使用正确的密钥创建一个新的密钥集。 更新策略以使用新密钥集，然后删除旧的密钥集。 
 
 ## <a name="next-steps"></a>后续步骤
 

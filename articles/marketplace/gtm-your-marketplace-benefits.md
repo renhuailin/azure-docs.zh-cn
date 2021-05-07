@@ -4,15 +4,15 @@ description: 本部分介绍发布者可以使用的市场推广服务 - Microso
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 03/03/2021
+ms.date: 03/09/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 06f98a8e303d2ff692c0f84314e639c2a51cbcc1
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 58e55527c84db0c368e676f2bf1314dca32e78db
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102489445"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102631013"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商业市场权益
 
@@ -50,18 +50,16 @@ Rewards 团队成员将在产品/服务上线时联系你，具体取决于你�
     1. 更新营销联系人后，选择“激活”以激活要开始使用的权益。 激活权益后，Rewards 团队的成员将在一周内与你的营销联系人联系。
 
 > [!NOTE]
-> 如果产品/服务已上线了四周以上，但没有收到消息，请查看合作伙伴中心，了解组织中相关产品/服务的所有者。 他们应该有跟进信息和后续步骤。
-
-如果无法确定所有者，或者所有者已离开公司，则可以在[帮助和支持](https://aka.ms/marketplacepublishersupport)上提出支持票证。
+> 如果产品/服务已上线了四周以上，但没有收到消息，请查看合作伙伴中心，了解组织中相关产品/服务的所有者。 他们应该有跟进信息和后续步骤。<br><br>如果无法确定所有者，或者所有者已离开公司，则可以在[帮助和支持](https://aka.ms/marketplacepublishersupport)上提出支持票证。
 
 随着你在商业市场中产品/服务的不断增加，你可操作的活动范围也会不断扩大。 所有列表都会收到基本级别的优化建议和促销，这属于资源和最佳做法自助服务电子邮件的一部分。
 
 ## <a name="list-trial-and-consulting-benefits"></a>列出、试用和咨询权益
 
-每次在 Microsoft AppSource 或 Azure 市场上进行发布时，都可获取一组新的权益。 在你的产品/服务上线后，请转到[合作伙伴中心](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fpartner.microsoft.com%2Fdashboard%2Fmpn%2Fmembership%2Fbenefits%2Fcommercialmarketplace&data=04%7C01%7Cv-kilieb%40microsoft.com%7C3b13a8a6e41a47d6d96008d8c7cb3b50%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637479022971578374%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=MF1ZlPX9M5JiJZE2e%2B6kXEsRX1klB5hTcSqcHYDjZq8%3D&reserved=0)来激活你有资格享受的营销、销售和技术权益。
+每次在 Microsoft AppSource 或 Azure 市场上进行发布时，都可获取一组新的权益。 在你的产品/服务上线后，请转到[合作伙伴中心](https://partner.microsoft.com/dashboard)来激活你有资格享受的营销、销售和技术权益。
 
-> [!NOTE]
-> 所有试用和咨询权益都将在 3 个月后到期。
+> [!IMPORTANT]
+> 所有试用和咨询权益将在三个月后过期。
 
 下表总结了列出、试用和咨询产品/服务的资格要求：
 
@@ -80,13 +78,19 @@ Rewards 团队成员将在产品/服务上线时联系你，具体取决于你�
 
 所有提供实时产品/服务的合作伙伴都可与专属项目经理合作，为你的商业市场产品/服务组合选择最有价值的活动。 此参与活动对每个产品/服务长期有效，这意味着你可以选择活动和这些活动的时间，以符合公司提出更广泛的营销和销售战略的时机。
 
+### <a name="marketing-benefits-for-transact-offers"></a>事务处理产品/服务的营销权益
+
 ![营销权益](./media/marketplace-publishers-guide/marketing-benefit.png)
+
+### <a name="sales-benefits-for-transact-offers"></a>事务处理产品/服务的销售权益
 
 ![销售权益](./media/marketplace-publishers-guide/sales-benefit.png)
 
+### <a name="technical-benefits-for-transact-offers"></a>事务处理产品/服务的技术权益
+
 ![技术权益](./media/marketplace-publishers-guide/technical-benefit.png)
 
-\*已售席位阈值仅适用于 Microsoft 365 应用（与 Microsoft Teams、Office、Outlook 或 SharePoint 集成的 SaaS 应用程序），这些权益必须在 2021 年 6 月 30 日前完成。
+已售席位阈值仅适用于 Microsoft 365 应用（与 Microsoft Teams、Office、Outlook 或 SharePoint 集成的 SaaS 应用程序），这些权益必须在 2021 年 6 月 30 日前完成。
 
 有关所有这些权益的详细说明，可查看 [Marketplace Rewards 计划系列](https://aka.ms/marketplacerewards)。
 

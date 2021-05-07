@@ -2,18 +2,15 @@
 title: 使用 Azure Site Recovery 执行 Azure 到 Azure 的灾难恢复体系结构
 description: 概述了使用 Azure Site Recovery 服务为 Azure VM 设置 Azure 区域之间的灾难恢复时使用的体系结构。
 services: site-recovery
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
-ms.author: raynew
-ms.openlocfilehash: 64d1084fd7025c74676977f065062e5e94dabf1d
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
-ms.translationtype: MT
+ms.openlocfilehash: 38bf9d41f81a76c4263952a94b5526984db0705f
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652239"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580942"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 到 Azure 的灾难恢复体系结构
 
@@ -55,7 +52,7 @@ ms.locfileid: "97652239"
 可按如下所述管理目标资源：
 
 - 启用复制时可以修改目标设置。
-- 已开始复制后可以修改目标设置。 请注意，目标区域 VM 的默认 SKU 与源 VM 的 SKU（或仅次于源 VM SKU 的最佳可用 SKU）相同。 与目标资源组、目标名称和其他资源类似，目标区域 VM SKU 也可以在复制期间进行更新。 无法更新的资源是 (单实例、集或区域) 的可用性类型。 若要更改此设置，需要禁用复制、修改设置，然后重新启用复制。 
+- 已开始复制后可以修改目标设置。 请注意，目标区域 VM 的默认 SKU 与源 VM 的 SKU（或仅次于源 VM SKU 的最佳可用 SKU）相同。 与目标资源组、目标名称和其他资源类似，目标区域 VM SKU 也可以在复制期间进行更新。 可用性类型（单一实例、集或区域）是无法更新的资源。 若要更改此设置，需要禁用复制、修改设置，然后重新启用复制。 
 
 
 ## <a name="replication-policy"></a>复制策略 
@@ -104,7 +101,7 @@ Site Recovery 按如下所述创建快照：
 
 **说明** | **详细信息** | 建议
 --- | --- | ---
-应用一致性恢复点是基于应用一致性快照创建的。<br/><br/> 应用一致性快照包含崩溃一致性快照中的所有信息，此外加上内存中的数据，以及正在进行的事务中的数据。 | 应用一致性快照使用卷影复制服务 (VSS)：<br/><br/>   1) Azure Site Recovery 使用 "仅复制备份" (VSS_BT_COPY 不更改 Microsoft SQL 事务日志备份时间和序列号的) 方法 </br></br> 2) 启动快照时，VSS 会在卷上执行写入时复制 (COW) 操作。<br/><br/>   3) 执行 COW 之前，VSS 会告知计算机上的每个应用它需要将内存常驻数据刷新到磁盘。<br/><br/>   4) 然后，VSS 允许备份/灾难恢复应用（在本例中为 Site Recovery）读取快照数据并继续处理。 | 应用一致性快照是按指定的频率创建的。 此频率始终应小于为保留恢复点设置的频率。 例如，如果使用默认设置 24 小时保留恢复点，则应将频率设置为小于 24 小时。<br/><br/>应用一致性快照比崩溃一致性快照更复杂，且完成时间更长。<br/><br/> 应用一致性快照会影响已启用复制的 VM 上运行的应用的性能。 
+应用一致性恢复点是基于应用一致性快照创建的。<br/><br/> 应用一致性快照包含崩溃一致性快照中的所有信息，此外加上内存中的数据，以及正在进行的事务中的数据。 | 应用一致性快照使用卷影复制服务 (VSS)：<br/><br/>   1) Azure Site Recovery 使用仅复制备份 (VSS_BT_COPY) 方法，此方法不会更改 Microsoft SQL 的事务日志备份时间和序列号 </br></br> 2) 启动快照时，VSS 会在卷上执行写入时复制 (COW) 操作。<br/><br/>   3) 执行 COW 之前，VSS 会告知计算机上的每个应用它需要将内存常驻数据刷新到磁盘。<br/><br/>   4) 然后，VSS 允许备份/灾难恢复应用（在本例中为 Site Recovery）读取快照数据并继续处理。 | 应用一致性快照是按指定的频率创建的。 此频率始终应小于为保留恢复点设置的频率。 例如，如果使用默认设置 24 小时保留恢复点，则应将频率设置为小于 24 小时。<br/><br/>应用一致性快照比崩溃一致性快照更复杂，且完成时间更长。<br/><br/> 应用一致性快照会影响已启用复制的 VM 上运行的应用的性能。 
 
 ## <a name="replication-process"></a>复制过程
 
@@ -146,9 +143,9 @@ Site Recovery 按如下所述创建快照：
 
 **规则** |  **详细信息** | **服务标记**
 --- | --- | --- 
-允许 HTTPS 出站通信：端口 443 | 允许对应于源区域中存储帐户的范围 | 储存.\<region-name>
+允许 HTTPS 出站通信：端口 443 | 允许对应于源区域中存储帐户的范围 | 存储。\<region-name>
 允许 HTTPS 出站通信：端口 443 | 允许对应于 Azure Active Directory (Azure AD) 的范围  | AzureActiveDirectory
-允许 HTTPS 出站通信：端口 443 | 允许与目标区域中的事件中心对应的范围。 | EventsHub.\<region-name>
+允许 HTTPS 出站通信：端口 443 | 允许与目标区域中的事件中心对应的范围。 | EventsHub。\<region-name>
 允许 HTTPS 出站通信：端口 443 | 允许与 Azure Site Recovery 对应的范围  | AzureSiteRecovery
 允许 HTTPS 出站通信：端口 443 | 允许与 Azure Key Vault 对应的范围（仅在通过门户为支持 ADE 的虚拟机启用复制时才需要这样做） | AzureKeyVault
 允许 HTTPS 出站通信：端口 443 | 允许与 Azure 自动化控制器对应的范围（仅在通过门户为复制项启用移动代理自动升级时才需要这样做） | GuestAndHybridManagement
@@ -157,9 +154,9 @@ Site Recovery 按如下所述创建快照：
 
 **规则** |  **详细信息** | **服务标记**
 --- | --- | --- 
-允许 HTTPS 出站通信：端口 443 | 允许与目标区域中的存储帐户相对应的范围 | 储存.\<region-name>
+允许 HTTPS 出站通信：端口 443 | 允许对应于目标区域中存储帐户的范围 | 存储。\<region-name>
 允许 HTTPS 出站通信：端口 443 | 允许对应于 Azure AD 的范围  | AzureActiveDirectory
-允许 HTTPS 出站通信：端口 443 | 允许与源区域中的事件中心对应的范围。 | EventsHub.\<region-name>
+允许 HTTPS 出站通信：端口 443 | 允许与源区域中的事件中心对应的范围。 | EventsHub。\<region-name>
 允许 HTTPS 出站通信：端口 443 | 允许与 Azure Site Recovery 对应的范围  | AzureSiteRecovery
 允许 HTTPS 出站通信：端口 443 | 允许与 Azure Key Vault 对应的范围（仅在通过门户为支持 ADE 的虚拟机启用复制时才需要这样做） | AzureKeyVault
 允许 HTTPS 出站通信：端口 443 | 允许与 Azure 自动化控制器对应的范围（仅在通过门户为复制项启用移动代理自动升级时才需要这样做） | GuestAndHybridManagement

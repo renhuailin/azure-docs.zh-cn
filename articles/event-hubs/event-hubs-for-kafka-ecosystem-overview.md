@@ -3,12 +3,12 @@ title: 使用 Apache Kafka 应用中的事件中心 - Azure 事件中心 | Micro
 description: 本文介绍有关 Azure 事件中心提供的 Apache Kafka 支持的信息。
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: b0f0da76bba68f8a66695700d530e871cbd35e3c
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
-ms.translationtype: MT
+ms.openlocfilehash: 1cd6d06b610ccccb8c80818d3bdec726ed94e875
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861339"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505308"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>使用 Apache Kafka 应用程序中的 Azure 事件中心
 事件中心提供与 Apache Kafka® 生成者和使用者 API 兼容的终结点，大多数现有 Apache Kafka 客户端应用程序可以使用这些 API 作为运行你自己的 Apache Kafka 群集的替代方法。 事件中心 1.0 及更高版本支持 Apache Kafka 的生成者和使用者 API 客户端。
@@ -41,15 +41,15 @@ ms.locfileid: "97861339"
 
 事件中心的规模由购买的吞吐量单位数控制，每个吞吐量单位可提供每秒 1 MB 的速度或每秒 1,000 个事件的流入量，而流出量则是流入量的两倍。 如果使用[自动扩充](event-hubs-auto-inflate.md)功能，则在达到吞吐量限制时，事件中心可以自动纵向扩展吞吐量单位；此功能也适用于 Apache Kafka 协议支持。  
 
-### <a name="is-apache-kafka-the-right-solution-for-your-workload"></a>Apache Kafka 适合你的工作负荷的解决方案吗？
+### <a name="is-apache-kafka-the-right-solution-for-your-workload"></a>Apache Kafka 是适合你的工作负载的解决方案吗？
 
-自构建使用 Apache Kafka 的应用程序也很有用，它也有助于了解 Azure 事件中心是一群服务的一部分，这些服务还包括 [Azure 服务总线](../service-bus-messaging/service-bus-messaging-overview.md)和 [azure 事件网格](../event-grid/overview.md)。 
+Apache Kafka 源自于使用 Apache Kafka 构建应用程序，也有助于理解 Azure 事件中心是一系列服务的一部分，这些服务还包括 [Azure 服务总线](../service-bus-messaging/service-bus-messaging-overview.md)和 [Azure 事件网格](../event-grid/overview.md)。 
 
-虽然某些 Apache Kafka 的商业分发提供商可能会建议 Apache Kafka 是所有消息平台需求的一站式商店，但事实是 Apache Kafka 不实现，例如， [竞争使用者](/azure/architecture/patterns/competing-consumers) 队列模式不支持  [发布-订阅](/azure/architecture/patterns/publisher-subscriber) ，它允许订阅者根据服务器评估的规则而不是纯偏移量访问传入消息，并且没有任何工具可以跟踪消息启动的作业的生命周期，或将错误消息 sidelining 到死信队列中，所有这些都是许多企业消息传递方案的基础。
+虽然某些 Apache Kafka 的商业分发提供商可能会指出 Apache Kafka 是所有消息平台需求的一站式商店，但事实是 Apache Kafka 还没有实现，例如，[竞争使用者](/azure/architecture/patterns/competing-consumers)队列模式在某个级别不支持[发布-订阅](/azure/architecture/patterns/publisher-subscriber)，而“发布-订阅”允许订阅者根据服务器评估的规则（而不是纯偏移量）访问传入消息，并且没有任何工具可以跟踪消息启动的作业的生命周期，或将错误消息 sideline（暂存）到死信队列中，这些都是许多企业消息传递方案的基础功能。
 
-若要了解模式之间的差异以及哪个模式最适合使用哪种服务，请查看 [Azure 指南中的异步消息传送选项](/azure/architecture/guide/technology-choices/messaging) 。 作为 Apache Kafka 的用户，你可能会发现，通过 Kafka 实现的通信路径已经实现，使用事件网格或服务总线可以实现的基本复杂性更少，但功能更强大。 
+要了解模式之间的差异以及哪种模式最适合哪种服务，请查看 [Azure 中的异步消息传递选项](/azure/architecture/guide/technology-choices/messaging)指南。 作为 Apache Kafka 的用户，你可能会发现，利用事件网格或服务总线，不仅可以实现目前通过 Kafka 能够实现通信路径，而且基本复杂性降低，功能更强大。 
 
-如果需要 Apache Kafka 的特定功能，这些功能在 Apache Kafka 接口的事件中心中不可用，或者如果实现模式超出 [事件中心配额](event-hubs-quotas.md)，则也可以 [在 Azure HDInsight 中运行本机 Apache Kafka 群集](../hdinsight/kafka/apache-kafka-introduction.md)。  
+如果需要 Apache Kafka 的特定功能，而 Apache Kafka 接口的事件中心未提供这些功能，或者如果你的实施模式超过了[事件中心配额](event-hubs-quotas.md)，则还可以运行 [Azure HDInsight 中的本机 Apache Kafka 群集](../hdinsight/kafka/apache-kafka-introduction.md)。  
 
 ## <a name="security-and-authentication"></a>安全性和身份验证
 每次你发布或使用来自用于 Kafka 的事件中心的事件时，客户端都会尝试访问事件中心资源。 你希望确保使用已授权的实体来访问资源。 在客户端上使用 Apache Kafka 协议时，可以使用 SASL 机制设置用于身份验证和加密的配置。 使用用于 Kafka 的事件中心时，需要进行 TLS 加密（因为使用事件中心传输的所有数据均经过 TLS 加密）。 可以在配置文件中指定 SASL_SSL 选项来完成此设置。 
@@ -67,7 +67,7 @@ bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
 security.protocol=SASL_SSL
 sasl.mechanism=OAUTHBEARER
 sasl.jaas.config=org.apache.kafka.common.security.oauthbearer.OAuthBearerLoginModule required;
-sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler;
+sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler
 ```
 
 #### <a name="shared-access-signature-sas"></a>共享访问签名 (SAS)
@@ -96,7 +96,7 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 
 适用于 Apache Kafka 的事件中心功能是在 Azure 事件中心并发提供的三个协议之一，用于补充 HTTP 和 AMQP。 你可以使用这些协议中的任何一种进行写入，也可以使用任何一种进行读取，以便你当前的 Apache Kafka 生成者可以继续通过 Apache Kafka 进行发布，但是你的读取者可以受益于与事件中心的 AMQP 接口的原生集成，例如 Azure 流分析或 Azure Functions。 反过来，你可以轻松地将 Azure 事件中心作为目标终结点集成到 AMQP 路由网络中，但仍通过 Apache Kafka 集成读取数据。  
 
-此外，事件中心功能（如 [捕获](event-hubs-capture-overview.md)）通过 Azure Blob 存储和 Azure Data Lake Storage 实现极其经济高效的长期存档， [异地灾难恢复](event-hubs-geo-dr.md) 还适用于 Kafka 功能的事件中心。
+此外，事件中心功能（例如[捕获](event-hubs-capture-overview.md)）可通过 Azure Blob 存储和 Azure Data Lake Storage 实现极具成本效益的长期存档，并且[异地灾难恢复](event-hubs-geo-dr.md)也与适用于 Kafka 的事件中心功能一起使用。
 
 ## <a name="apache-kafka-feature-differences"></a>Apache Kafka 功能差异 
 
@@ -118,7 +118,7 @@ Apache Kafka 的客户端[压缩](https://cwiki.apache.org/confluence/display/KA
 
 ### <a name="log-compaction"></a>日志压缩
 
-Apache-Kafka 日志压缩是如下所述的一项功能：它允许从分区中逐出每个键除了最后一条记录之外的所有记录，这实际上会将 Apache Kafka 主题转换为一个键-值存储，其中最后添加的值将替代前一个。 Azure 事件中心目前未实现此功能。 键-值存储模式，即使频繁进行更新，在由 [Azure Cosmos DB](../cosmos-db/introduction.md) 之类的数据库服务提供支持时也比其他支持方式要好得多。 有关更多详细信息，请参阅事件中心联合指南中的 [日志投影](event-hubs-federation-overview.md#log-projections) 主题。 
+Apache-Kafka 日志压缩是如下所述的一项功能：它允许从分区中逐出每个键除了最后一条记录之外的所有记录，这实际上会将 Apache Kafka 主题转换为一个键-值存储，其中最后添加的值将替代前一个。 Azure 事件中心目前未实现此功能。 键-值存储模式，即使频繁进行更新，在由 [Azure Cosmos DB](../cosmos-db/introduction.md) 之类的数据库服务提供支持时也比其他支持方式要好得多。 有关更多详细信息，请参阅事件中心联合指南中的[日志投影](event-hubs-federation-overview.md#log-projections)主题。 
 
 ### <a name="kafka-streams"></a>Kafka Stream
 

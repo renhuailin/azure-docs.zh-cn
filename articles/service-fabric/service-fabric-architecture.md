@@ -1,14 +1,14 @@
 ---
 title: Azure Service Fabric 的体系结构
-description: 本文介绍 Service Fabric（一个分布式系统平台）的体系结构，该平台用于生成面向云的可缩放、可靠且易于管理的应用程序。
+description: 本文解释了 “Service Fabric” 的体系结构，这是一个分布式系统平台，用于为云构建可扩展、可靠且易于管理的应用程序。
 services: service-fabric
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.openlocfilehash: 972700dded1841994de9252b4aa4bbc8eaefeaf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "76024711"
 ---
 # <a name="service-fabric-architecture"></a>Service Fabric 体系结构
@@ -36,11 +36,11 @@ Service Fabric 是利用分层子系统而生成的。 使用这些子系统，�
 
 ## <a name="reliability-subsystem"></a>可靠性子系统
 
-可靠性子系统通过使用*复制器*、*故障转移管理器*和*资源平衡器*提供一种机制，使得 Service Fabric 服务的状态高度可用。
+可靠性子系统通过使用 *复制器*、*故障转移管理器* 和 *资源平衡器* 提供一种机制，使得 Service Fabric 服务的状态高度可用。
 
 * 复制器确保主服务副本中的状态更改会自动复制到辅助副本，从而维护服务副本集中主副本和辅助副本之间的一致性。 复制器负责副本集中副本间的仲裁管理。 它与故障转移单元进行交互以获取要复制的操作列表，重新配置代理为其提供副本集的配置。 该配置指示操作需要复制到哪些副本。 Service Fabric 提供名为 Fabric Replicator 的默认复制器，编程模型 API 可使用它来使服务状态高度可用和高度可靠。
 * 故障转移管理器确保向群集添加节点或从群集中删除节点时，会自动在可用节点间重新分发负载。 如果群集中的节点失败，群集会自动重新配置服务副本以维持可用性。
-* 资源管理器将服务副本放置在群集的各个故障域中，并确保所有故障转移单元都可正常运行。 Resource Manager 还会平衡群集节点基础共享池中的服务资源，从而获得最佳的统一负载分布。
+* Resource Manager 跨集群中的故障域放置服务副本，并确保所有故障转移单元均可运行。 Resource Manager 还会平衡群集节点基础共享池中的服务资源，从而获得最佳的统一负载分布。
 
 ## <a name="management-subsystem"></a>管理子系统
 

@@ -1,6 +1,6 @@
 ---
-title: 在 StorSimple 8000 系列设备上安装更新 5.1 |Microsoft Docs
-description: 介绍如何在 StorSimple 8000 系列设备上安装 StorSimple 8000 系列更新5.1。
+title: 在 StorSimple 8000 系列设备上安装 Update 5.1 | Microsoft Docs
+description: 介绍如何在 StorSimple 8000 系列设备上安装 StorSimple 8000 系列 Update 5.1。
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -13,25 +13,25 @@ ms.workload: TBD
 ms.date: 03/05/2020
 ms.author: alkohli
 ms.openlocfilehash: 5b9958f3dd497aa612a92947b8d968439ef9d0e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91575956"
 ---
-# <a name="install-update-51-on-your-storsimple-device"></a>在 StorSimple 设备上安装更新5。1
+# <a name="install-update-51-on-your-storsimple-device"></a>在 StorSimple 设备上安装 Update 5.1
 
 ## <a name="overview"></a>概述
 
-本教程介绍如何通过 Azure 门户在运行早期软件版本的 StorSimple 设备上安装更新5.1。 <!--The hotfix method is used when you are trying to install Update 5.1 on a device running pre-Update 3 versions. The hotfix method is also used when a gateway is configured on a network interface other than DATA 0 of the StorSimple device and you are trying to update from a pre-Update 1 software version.-->
+本教程介绍如何通过 Azure 门户在运行早期软件版本的 StorSimple 设备上安装 Update 5.1。 <!--The hotfix method is used when you are trying to install Update 5.1 on a device running pre-Update 3 versions. The hotfix method is also used when a gateway is configured on a network interface other than DATA 0 of the StorSimple device and you are trying to update from a pre-Update 1 software version.-->
 
-更新5.1 包括非中断安全更新。 可以通过 Azure 门户应用非中断性更新或常规更新 <!--or by the hotfix method-->.
+Update 5.1 包括非中断性安全更新。 可通过 Azure 门户应用非中断性更新或常规更新。 <!--or by the hotfix method-->.
 
 > [!IMPORTANT]
 >
-> * 更新5.1 是必需的更新，应立即安装。 有关详细信息，请参阅 [Update 5.1 发行说明](storsimple-update51-release-notes.md)。
+> * Update 5.1 是必需的更新，应立即安装。 有关详细信息，请参阅 [Update 5.1 发行说明](storsimple-update51-release-notes.md)。
 > * 在安装之前需进行一组手动的和自动的预检查，以便确定设备在硬件状态和网络连接性方面的运行状况。 仅当从 Azure 门户应用更新时，才会执行这些预检查。
-> * 如果要使用修补程序方法安装，请联系 [Microsoft 支持部门](mailto:support@microsoft.com)。
+> * 如果要使用修补程序方法进行安装，请联系 [Microsoft 支持部门](mailto:support@microsoft.com)。
 
 <!--
 > * We strongly recommend that when updating a device running versions prior to Update 3, you install the updates using hotfix method. If you encounter any issues, [log a support ticket](storsimple-8000-contact-microsoft-support.md). 
@@ -45,9 +45,9 @@ ms.locfileid: "91575956"
 
 [!INCLUDE [storsimple-preparing-for-update](../../includes/storsimple-preparing-for-updates.md)]
 
-## <a name="install-update-51-through-the-azure-portal"></a>通过 Azure 门户安装更新5。1
+## <a name="install-update-51-through-the-azure-portal"></a>通过 Azure 门户安装 Update 5.1
 
-执行以下步骤，将设备更新为 [更新 5.1](storsimple-update51-release-notes.md)。
+执行以下步骤，将设备更新到 [Update 5.1](storsimple-update51-release-notes.md)。
 
 > [!NOTE]
 > Microsoft 从设备中提取其他诊断信息。 因此，当运营团队确定有问题的设备以后，我们就可以更好地从设备中收集信息并诊断问题。
@@ -58,17 +58,17 @@ ms.locfileid: "91575956"
 
     ![选择设备](./media/storsimple-8000-install-update-51/update1.png)
 
-2. 导航到 "**设备设置**" "  >  **设备更新**"。
+2. 导航到“设备设置” > “设备更新”。 
 
-    !["设置" 边栏选项卡的屏幕截图，其中包含称为 "设备更新" 选项。](./media/storsimple-8000-install-update-51/update2.png)
+    ![“设置”边栏选项卡的屏幕截图，其中标出了“设备更新”选项。](./media/storsimple-8000-install-update-51/update2.png)
 
-3. 如果有新的更新可用，则会显示一条通知。 或者，在“设备更新”边栏选项卡中，单击“扫描更新”。******** 已创建一个用于扫描可用更新的作业。 在作业成功完成时，系统会发出通知。
+3. 如果有新的更新可用，则会显示一条通知。 或者，在“设备更新”边栏选项卡中，单击“扫描更新”。 已创建一个用于扫描可用更新的作业。 在作业成功完成时，系统会发出通知。
 
-    !["设置" 边栏选项卡和 "设备更新" 选项的屏幕截图，其中包含新的定期更新。](./media/storsimple-8000-install-update-51/update3.png)
+    ![“设置”边栏选项卡（其中标出了“设备更新”选项）和“设备更新”边栏选项卡（其中标出了“有新的常规更新可用”消息）的屏幕截图。](./media/storsimple-8000-install-update-51/update3.png)
 
-4. 建议先查看版本信息，然后在设备上应用更新。 若要应用更新，请单击“安装更新”。**** 在“确认常规更新”边栏选项卡中，在应用更新之前，复查要完成的先决条件。**** 选中指示已做好更新准备的复选框，并单击“安装”。****
+4. 建议先查看版本信息，然后在设备上应用更新。 若要应用更新，请单击“安装更新”。 在“确认常规更新”边栏选项卡中，在应用更新之前，复查要完成的先决条件。 选中指示已做好更新准备的复选框，并单击“安装”。
 
-    !["设备更新" 边栏选项卡和 "安装更新" 选项的屏幕截图，其中包含 "同意" 选项和 "安装选项"。](./media/storsimple-8000-install-update-51/update4.png)
+    ![“设备更新”边栏选项卡（其中标出了“安装更新”选项）和“确认常规更新”边栏选项卡（其中标出了“同意”选项和“安装”选项）的屏幕截图。](./media/storsimple-8000-install-update-51/update4.png)
 
 5. 此时会开始执行一系列先决条件检查。 这些检查包括：
    
@@ -80,22 +80,22 @@ ms.locfileid: "91575956"
 
 7. 预检查成功完成后，将创建更新作业。 成功创建更新作业后，系统会发出通知。
    
-    ![显示 "正在启动软件更新作业" 的通知屏幕截图。](./media/storsimple-8000-install-update-51/update6.png)
+    ![屏幕截图，其中的通知显示“正在启动软件更新作业”。](./media/storsimple-8000-install-update-51/update6.png)
    
     然后，在设备上应用更新。
 
-9. 更新需要数小时才能完成。 随时可以选择更新作业并单击“详细信息”来查看作业详细信息。****
+9. 更新需要数小时才能完成。 随时可以选择更新作业并单击“详细信息”来查看作业详细信息。
 
-    !["设备更新" 边栏选项卡的屏幕截图，其中包含 "下载并安装正在进行的软件更新" 选项（称为 "已下载" 和 "安装更新"](./media/storsimple-8000-install-update-51/update8.png)
+    ![“设备更新”边栏选项卡（其中标出了“正在下载并安装软件更新”选项）以及“安装更新”边栏选项卡的屏幕截图。](./media/storsimple-8000-install-update-51/update8.png)
 
-     还可以从“设备设置”>“作业”检索更新作业的进度****。 在“作业”边栏选项卡上，可以看到更新进度。****
+     还可以从“设备设置”>“作业”检索更新作业的进度。 在“作业”边栏选项卡上，可以看到更新进度。
 
-     !["设置" 边栏选项卡的屏幕截图，其中包含被称为 "作业" 和 "作业" 边栏选项卡，显示更新进度。](./media/storsimple-8000-install-update-51/update7.png)
+     ![“设置”边栏选项卡（其中标出了“作业”）和“作业”边栏选项卡（其中显示了更新进度）的屏幕截图。](./media/storsimple-8000-install-update-51/update7.png)
 
-10. 在作业完成后，导航到“设备设置”>“设备更新”。**** 软件版本现在应当已更新。
+10. 在作业完成后，导航到“设备设置”>“设备更新”。 软件版本现在应当已更新。
 
 
-验证设备是否正在运行 **StorSimple 8000 系列更新 5.1 (6.3.9600.17885) **。 应修改“上次更新日期”。****
+确保设备运行的是“StorSimple 8000 系列 Update 5.1 (6.3.9600.17885)”。 应修改“上次更新日期”。
 <!-- 5.1 - KB 4542887-->
 
 <!--You will now see that the Maintenance mode updates are available (this message might continue to be displayed for up to 24 hours after you install the updates). The steps to install maintenance mode update are detailed in the next section.
@@ -168,4 +168,4 @@ Perform the following steps to download and install the hotfixes.
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [更新5.1 版本](storsimple-update51-release-notes.md)的详细信息。
+详细了解 [Update 5.1 版本](storsimple-update51-release-notes.md)。

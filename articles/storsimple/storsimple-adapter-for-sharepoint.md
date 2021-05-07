@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: alkohli
 ms.openlocfilehash: 639efab3a9eaef400b3fbe3d0b134d02f458b865
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94966286"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>安装和配置 StorSimple Adapter for SharePoint
@@ -140,7 +140,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
   3. 在左窗格中，单击 **“本地服务器”**。
   4. 在 **“IE 增强的安全配置”** 旁边的右窗格中，单击 **“启用”**。
   5. 在 **“管理员”** 下，单击 **“禁用”**。
-  6. 单击“确定”。
+  6. 单击 **“确定”** 。
 
 ## <a name="remote-blob-storage-rbs-prerequisites"></a>远程 BLOB 存储 (RBS) 先决条件
 确保使用受支持的 SQL Server 版本。 只有以下版本受支持且能够使用 RBS：
@@ -162,7 +162,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 安装 StorSimple Adapter for SharePoint 后，请按照以下过程配置 RBS。
 
 > [!TIP]
-> StorSimple Adapter for SharePoint 已插入 SharePoint 管理中心页，因此可以在 SharePoint 场中的每个内容数据库上启用或禁用 RBS。 不过，在内容服务器上启用或禁用 RBS 会导致 IIS 重置，这可能会使 SharePoint Web (WFE) 前端暂时不可用，具体取决于场配置。  (因素（如使用前端负载均衡器、当前服务器工作负荷等）可以限制或消除这种中断。 ) 若要防止用户中断，建议仅在计划的维护时段内启用或禁用 RBS。
+> StorSimple Adapter for SharePoint 已插入 SharePoint 管理中心页，因此可以在 SharePoint 场中的每个内容数据库上启用或禁用 RBS。 不过，在内容服务器上启用或禁用 RBS 会导致 IIS 重置，这可能会使 SharePoint Web (WFE) 前端暂时不可用，具体取决于场配置。 （前端负载均衡器的使用、当前服务器工作负荷等多种因素可能会限制或消除这种中断现象的发生。）为了避免用户受到服务中断的影响，我们建议仅在计划的维护时间窗口启用或禁用 RBS。
 
 
 [!INCLUDE [storsimple-sharepoint-adapter-configure-rbs](../../includes/storsimple-sharepoint-adapter-configure-rbs.md)]
@@ -196,7 +196,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 > * 以前通过 RBS 转到外部存储的任何文件，必须等到重新安装完成并重新启用 RBS 功能之后才能使用。 为了限制用户受影响的程度，请在规划的维护期间执行任何升级或重新安装。
 > * 升级/重新安装所需的时间取决于 SharePoint 服务器场中的 SharePoint 数据库总数。
 > * 升级/重新安装完成后，需要为内容数据库启用 RBS。 有关详细信息，请参阅[配置 RBS](#configure-rbs)。
-> * 如果为 SharePoint 场配置 RBS，而该场的数据库数量非常多 (大于 200) ，则 **Sharepoint 管理中心** 页可能会超时。如果出现这种情况，请刷新页面。 这不会影响配置过程。
+> * 如果要配置 RBS 的 SharePoint 场包含大量的数据库（超过 200 个），“SharePoint 管理中心”页可能会超时。如果发生这种情况，请刷新页面。 这不会影响配置过程。
 
 
 [!INCLUDE [storsimple-upgrade-sharepoint-adapter](../../includes/storsimple-upgrade-sharepoint-adapter.md)]
@@ -208,7 +208,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 > 必须先将 BLOB 移回内容数据库，然后才能卸载适配器软件。
 
 
-### <a name="before-you-begin"></a>准备阶段
+### <a name="before-you-begin"></a>开始之前
 在将数据移回 SQL Server 内容数据库并开始适配器删除过程之前，请先收集以下信息：
 
 * 所有已启用 RBS 的数据库的名称
@@ -226,7 +226,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 4. 在 **“配置 StorSimple 适配器”** 页上，单击每个要从外部 BLOB 存储中移除的内容数据库下面的 **“禁用”** 按钮。 
 5. 从 SharePoint 中删除对象，并将其重新上载。
 
-或者，你可以使用 `RBS Migrate()` SharePoint 随附的 Microsoft PowerShell cmdlet。 有关详细信息，请参阅[将内容移入或移出 RBS](/previous-versions/office/sharepoint-foundation-2010/ff628255(v=office.14))。
+或者，也可以使用 SharePoint 随附的 Microsoft `RBS Migrate()` PowerShell cmdlet。 有关详细信息，请参阅[将内容移入或移出 RBS](/previous-versions/office/sharepoint-foundation-2010/ff628255(v=office.14))。
 
 将 BLOB 移回内容数据库后，请转到下一步：[卸载适配器](#uninstall-the-adapter)。
 

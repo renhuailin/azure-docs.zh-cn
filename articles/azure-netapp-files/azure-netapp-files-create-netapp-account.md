@@ -15,19 +15,19 @@ ms.topic: how-to
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: e5e0c43aa8c4fbf0db89065e0fab93ee174a4ede
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96006587"
 ---
 # <a name="create-a-netapp-account"></a>创建 NetApp 帐户
 创建 NetApp 帐户将能够设置容量池并随后创建卷。 使用“Azure NetApp 文件”边栏选项卡来创建新的 NetApp 帐户。
 
-## <a name="before-you-begin"></a>准备阶段
-你必须收到 Azure NetApp 文件团队发送的一封电子邮件，确认你已被授予对该服务的访问权限。 请参阅 [提交候补请求以访问服务](azure-netapp-files-register.md#waitlist)。
+## <a name="before-you-begin"></a>开始之前
+用户必须收到 Azure NetApp 文件团队发送的一封电子邮件，确认已被授予对该服务的访问权限。 请参阅[提交访问该服务的候补名单请求](azure-netapp-files-register.md#waitlist)。
 
-还必须使用 NetApp 资源提供程序注册订阅。 请参阅 [注册 NetApp 资源提供程序](azure-netapp-files-register.md#resource-provider)。
+另外，还必须使用 NetApp 资源提供程序注册订阅。 请参阅[注册 NetApp 资源提供程序](azure-netapp-files-register.md#resource-provider)。
 
 ## <a name="steps"></a>步骤 
 
@@ -58,7 +58,7 @@ ms.locfileid: "96006587"
    你创建的 NetApp 帐户现在出现在“Azure NetApp 文件”边栏选项卡中。 
 
 > [!NOTE] 
-> 如果尚未获得 Azure NetApp 文件服务的访问权限，则当你尝试创建第一个 NetApp 帐户时，将收到以下错误：  
+> 如果尚未获得 Azure NetApp 文件服务的访问权限，则当你尝试创建第一个 NetApp 帐户时，将收到以下错误消息：  
 >
 > `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
 

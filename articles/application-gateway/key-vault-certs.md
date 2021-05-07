@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: victorh
-ms.openlocfilehash: 694868f2a75cc66bf9e3ede9d12e30a2cc3d7af9
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
-ms.translationtype: MT
+ms.openlocfilehash: 8a64956deb7849568e70e94c9b58170df60db1e3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185931"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104775726"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>使用 Key Vault 证书进行 TLS 终止
 
@@ -43,14 +43,23 @@ Key Vault 集成提供了两种用于 TLS 终止的模型：
 
 1. **创建用户分配的托管标识**
 
-   你创建或重用现有的用户分配的托管标识，供应用程序网关用来代表你从 Key Vault 检索证书。 有关详细信息，请参阅 [使用 Azure 门户创建、列出、删除或分配用户分配的托管标识的角色](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。 这一步在 Azure Active Directory 租户中创建新标识。 此标识受那个用来创建标识的订阅的信任。
+   你创建或重用现有的用户分配的托管标识，供应用程序网关用来代表你从 Key Vault 检索证书。 有关详细信息，请参阅[使用 Azure 门户创建、列出、删除用户分配的托管标识或为其分配角色](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。 这一步在 Azure Active Directory 租户中创建新标识。 此标识受那个用来创建标识的订阅的信任。
 
 1. **配置密钥保管库**
 
-   然后导入现有的证书，或者在密钥保管库中创建新证书。 此证书将供通过应用程序网关的应用程序使用。 在此步骤中，也可使用密钥保管库机密，该机密将存储为无密码的 base-64 编码的 PFX 文件。 我们建议使用证书类型是因为适用于密钥保管库中证书类型对象的自动续订功能。 在创建证书或机密以后，即可在密钥保管库中定义访问策略，此类策略允许为标识授予对机密的“获取”访问权限。
+   然后导入现有的证书，或者在密钥保管库中创建新证书。 此证书将供通过应用程序网关的应用程序使用。 在此步骤中，也可使用 Key Vault 机密，该机密也允许存储无密码的 base-64 编码 PFX 文件。 我们建议使用“证书”类型，因为 Key Vault 中的此类对象具有自动续订功能。 创建证书或机密后，必须在 Key Vault 中定义访问策略，以允许授予标识对机密的访问权限。
    
    > [!IMPORTANT]
-   > 应用程序网关目前需要 Key Vault 来允许从所有网络进行访问，以便利用集成。 当 Key Vault 设置为“仅允许专用终结点”并选择“网络访问”时，它不支持 Key Vault 集成。 对专用网络和特定网络的支持仍在准备阶段，目的是将 Key Vault 与应用程序网关完全集成。 
+   > 从 2021 年 3 月 15 日开始，Key Vault 会将 Azure 应用程序网关视为受信任的服务之一，从而允许你在 Azure 中构建安全的网络边界。 这样，你便可以拒绝访问从所有网络到 Key Vault 的流量（包括 Internet 流量），但仍可访问你订阅的应用程序网关资源。 
+
+   > 可以通过以下方式在 Key Vault 的受限网络中配置应用程序网关。 <br />
+   > a) 在 Key Vault 的“网络”边栏选项卡下 <br />
+   > b) 在“防火墙和虚拟网络”选项卡中选择“专用终结点和选定网络” <br/>
+   > c) 然后使用“虚拟网络”添加应用程序网关的虚拟网络和子网。 在此过程中，还可以通过选中“Microsoft.KeyVault”服务终结点复选框来对其进行配置。 <br/>
+   > d) 最后，选择“是”以允许受信任的服务绕过 Key Vault 的防火墙。 <br/>
+   > 
+   > ![Key Vault 防火墙](media/key-vault-certs/key-vault-firewall.png)
+
 
    > [!NOTE]
    > 如果通过 ARM 模板来部署应用程序网关（不管是使用 Azure CLI 还是使用 PowerShell），或通过从 Azure 门户部署的 Azure 应用程序来执行此操作，则 SSL 证书将以 base64 编码的 PFX 文件形式存储在密钥保管库中。 必须完成[在部署过程中使用 Azure Key Vault 传递安全参数值](../azure-resource-manager/templates/key-vault-parameter.md)中的步骤。 

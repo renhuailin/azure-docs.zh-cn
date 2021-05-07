@@ -3,13 +3,13 @@ title: 在 Azure 中将 API 管理与 Service Fabric 集成
 description: 了解如何快速开始使用 Azure API 管理以及在 Service Fabric 中将流量路由到后端服务。
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 681a1c5241743a0164d83d73753efa0b6c446109
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.custom: mvc
+ms.openlocfilehash: dcf448ce6e2b553b67801d96369161e368d35f0a
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101735584"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076340"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>在 Azure 中将 API 管理与 Service Fabric 集成
 
@@ -77,7 +77,7 @@ az account set --subscription <guid>
     </Resources>
     ```
 
-    通过删除该端口，Service Fabric 可以从应用程序端口范围动态指定一个端口，该范围通过群集资源管理器模板中的网络安全组打开，允许流量从 API 管理流向该端口。
+    删除端口允许 Service Fabric 从应用程序端口范围动态指定一个端口，可通过群集资源管理器模板中的网络安全组将其打开，从而允许流量从 API 管理流向该端口。
 
  6. 可在本地于 Visual Studio 中按下 F5 来验证 Web API。
 
@@ -293,7 +293,7 @@ az group delete --name $ResourceGroupName
 
 详细了解如何使用 [API 管理](../api-management/import-and-publish.md)。
 
-你还可以使用 [Azure 门户](../api-management/how-to-configure-service-fabric-backend.md) 来创建和管理用于 API 管理的 Service Fabric 后端。
+还可使用 [Azure 门户](../api-management/how-to-configure-service-fabric-backend.md)为 API 管理创建和管理 Service Fabric 后端。
 
 [azure-powershell]: /powershell/azure/
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
 ms.openlocfilehash: 4ad05281f13885327c855a261a3101388f38af83
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98878047"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>使用 Azure 门户创建站点到站点连接（经典）
@@ -36,7 +36,7 @@ ms.locfileid: "98878047"
 * 确认要使用经典部署模型。 如果要使用资源管理器部署模型，请参阅[创建站点到站点连接（资源管理器）](./tutorial-site-to-site-portal.md)。 我们建议你使用资源管理器部署模型，因为经典模型是旧模型。
 * 确保有一台兼容的 VPN 设备和能够对其进行配置的人员。 有关兼容的 VPN 设备和设备配置的详细信息，请参阅[关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。
 * 确认 VPN 设备有一个面向外部的公共 IPv4 地址。
-* 如果熟悉本地网络配置中的 IP 地址范围，则需咨询能够提供此类详细信息的人员。 创建此配置时，必须指定 IP 地址范围前缀，Azure 会将该前缀路由到本地位置。 本地网络的任何子网都不得与要连接到的虚拟网络子网重叠。
+* 如果不熟悉本地网络配置中的 IP 地址范围，则需咨询能够提供此类详细信息的人员。 创建此配置时，必须指定 IP 地址范围前缀，Azure 会将该前缀路由到本地位置。 本地网络的任何子网都不得与要连接到的虚拟网络子网重叠。
 * 需要使用 PowerShell 来指定共享密钥和创建 VPN 网关连接。 [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ### <a name="sample-configuration-values-for-this-exercise"></a><a name="values"></a>此练习的示例配置值
@@ -110,7 +110,7 @@ ms.locfileid: "98878047"
 ## <a name="create-the-connection"></a><a name="CreateConnection"></a>创建连接
 
 > [!NOTE]
-> 对于经典部署模型，此步骤在 Azure 门户或通过 Azure Cloud Shell 不可用。 必须通过桌面以本地方式使用 Azure PowerShell cmdlet 的服务管理 (SM) 版本。
+> 对于经典部署模型，此步骤在 Azure 门户中或通过 Azure Cloud Shell 不可用。 必须通过桌面以本地方式使用 Azure PowerShell cmdlet 的服务管理 (SM) 版本。
 >
 
 在此步骤中，请使用前面步骤中的值设置共享密钥并创建连接。 设置的密钥必须是在 VPN 设备配置中使用过的同一密钥。

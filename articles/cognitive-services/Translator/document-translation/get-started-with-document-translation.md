@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
-ms.openlocfilehash: 780e6defe4f7d09e2d136c080525447ffd29bbb4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a9ec36483196ea6214742522f88ddffcd8a3b899
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612375"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292821"
 ---
 # <a name="get-started-with-document-translation-preview"></a>文档翻译（预览版）入门
 
@@ -261,7 +261,7 @@ gradle run
 
 > [!IMPORTANT]
 >
-> 对于下面的代码示例，你将根据指示对密钥和终结点进行硬编码；请记得在完成操作后从代码中删除密钥，切勿将其公开发布。  有关安全地存储和访问凭据的方式，请参阅 [Azure 认知服务安全性](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp)。
+> 对于下面的代码示例，你将根据指示对密钥和终结点进行硬编码；请记得在完成操作后从代码中删除密钥，切勿将其公开发布。  有关安全地存储和访问凭据的方式，请参阅 [Azure 认知服务安全性](../../cognitive-services-security.md?tabs=command-line%2ccsharp)。
 >
 > 可能需要根据操作更新以下字段：
 >>>

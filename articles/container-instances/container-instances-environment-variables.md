@@ -4,10 +4,10 @@ description: 了解如何在 Azure 容器实例的已运行容器中设置环境
 ms.topic: article
 ms.date: 04/17/2019
 ms.openlocfilehash: 92ae59f69b7cb43fee1d3ce8190a85fc20a11f60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86169759"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>在容器实例中设置环境变量
@@ -49,7 +49,7 @@ az container create \
     --environment-variables 'NumWords'='5' 'MinLength'='8'
 ```
 
-两个容器的状态显示为“已终止”后  （使用 [az container show][az-container-show] 来查看状态），请使用 [az container logs][az-container-logs] 来显示其日志，以便查看输出。
+两个容器的状态显示为“已终止”后（使用 [az container show][az-container-show] 来查看状态），请使用 [az container logs][az-container-logs] 来显示其日志，以便查看输出。
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer1
@@ -58,7 +58,7 @@ az container logs --resource-group myResourceGroup --name mycontainer2
 
 容器的输出显示你如何通过设置环境变量修改了第二个容器的脚本行为。
 
- mycontainer1
+mycontainer1
 ```output
 [('the', 990),
  ('and', 702),
@@ -72,7 +72,7 @@ az container logs --resource-group myResourceGroup --name mycontainer2
  ('HAMLET', 386)]
 ```
 
- mycontainer2
+mycontainer2
 ```output
 [('CLAUDIUS', 120),
  ('POLONIUS', 113),
@@ -106,7 +106,7 @@ New-AzContainerGroup `
     -EnvironmentVariable $envVars
 ```
 
-两个容器的状态均为“已终止”后  （使用 [Get-AzContainerInstanceLog][azure-instance-log] 来查看状态），请使用 [Get-AzContainerInstanceLog][azure-instance-log] 命令来拉取其日志。
+两个容器的状态均为“已终止”后（使用 [Get-AzContainerInstanceLog][azure-instance-log] 来查看状态），请使用 [Get-AzContainerInstanceLog][azure-instance-log] 命令来拉取其日志。
 
 ```azurepowershell-interactive
 Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer1
@@ -141,15 +141,15 @@ Azure:\
 
 ## <a name="azure-portal-example"></a>Azure 门户示例
 
-在 Azure 门户中启动容器时，若要设置环境变量，请在创建容器时所在的“高级”页中指定它们。 
+在 Azure 门户中启动容器时，若要设置环境变量，请在创建容器时所在的“高级”页中指定它们。
 
-1. 在“高级”页上将“重启策略”设置为“在故障时”   
+1. 在“高级”页上将“重启策略”设置为“在故障时”
 2. 在“环境变量”下，为第一个变量输入值为 `5` 的 `NumWords`，并为第二个变量输入值为 `8` 的 `MinLength`。 
-1. 选择“查看 + 创建”进行验证，然后部署容器。 
+1. 选择“查看 + 创建”进行验证，然后部署容器。
 
 ![门户页，显示环境变量“启用”按钮和文本框][portal-env-vars-01]
 
-若要查看容器的日志，请在“设置”  下选择“容器”  ，然后选择“日志”  。 可以查看通过环境变量对脚本行为进行的具体修改，这与在此前的 CLI 和 PowerShell 部分显示的输出类似。 仅显示了五个单词，每个的最小长度为八个字符。
+若要查看容器的日志，请在“设置”下选择“容器”，然后选择“日志”。   可以查看通过环境变量对脚本行为进行的具体修改，这与在此前的 CLI 和 PowerShell 部分显示的输出类似。 仅显示了五个单词，每个的最小长度为八个字符。
 
 ![显示容器日志输出的门户][portal-env-vars-02]
 

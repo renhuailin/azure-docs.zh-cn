@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: azure-synapse, seo-lt-2019, devx-track-csharp
 ms.openlocfilehash: 546c0c21762d0cfe10cf4f1b7a2e1b7d6691166e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98685253"
 ---
 # <a name="connect-to-a-sql-pool-in-azure-synapse"></a>连接到 Azure Synapse 中的 SQL 池 
@@ -24,7 +24,7 @@ ms.locfileid: "98685253"
 
 ## <a name="find-your-server-name"></a>查找服务器名称
 
-以下示例中的服务器名称为 sqlpoolservername.database.windows.net。 若要查找完全限定的服务器名称，请执行以下操作：
+以下示例中的服务器名称是 sqlpoolservername.database.windows.net。 若要查找完全限定的服务器名称，请执行以下操作：
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
 2. 单击“Azure Synapse Analytics”  。

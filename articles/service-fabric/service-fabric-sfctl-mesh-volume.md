@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric sfctl 网格卷
+title: Azure Service Fabric CLI- sfctl mesh volume
 description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于获取和删除卷资源的命令的列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 57efca87aefad346fda175b073409868d21564ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86245496"
 ---
 # <a name="sfctl-mesh-volume"></a>sfctl mesh volume
@@ -17,9 +17,9 @@ ms.locfileid: "86245496"
 
 ## <a name="commands"></a>命令
 
-|Command|描述|
+|命令|说明|
 | --- | --- |
-| “删除” | 删除卷资源。 |
+| delete | 删除卷资源。 |
 | list | 列出所有卷资源。 |
 | 显示 | 获取具有给定名称的卷资源。 |
 
@@ -30,7 +30,7 @@ ms.locfileid: "86245496"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --name -n [必需] | 卷的名称。 |
 
@@ -66,7 +66,7 @@ ms.locfileid: "86245496"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --name -n [必需] | 卷的名称。 |
 

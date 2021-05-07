@@ -10,10 +10,10 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 9edade1aa54d6f4f8160a107f84e6da2e6cf316e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98878013"
 ---
 # <a name="create-a-scale-set-from-a-generalized-image-using-powershell"></a>使用 PowerShell 根据通用化映像创建规模集 
@@ -27,7 +27,7 @@ ms.locfileid: "98878013"
 请注意，使用特定映像版本意味着：如果该特定映像版本由于已删除或已从区域中删除而无法使用，则自动化可能会失败。 建议使用映像定义 ID 来创建新的 VM（除非需要特定的映像版本）。
 
 
-以下示例在 *default-machinelearning-southcentralus* 位置的 *myVMSSRG* 资源组中创建名为 *myScaleSet* 的规模集。 将基于“myGalleryRG”资源组的“myGallery”映像库中的“myImageDefinition”映像创建该规模集。 出现提示时，请为该规模集中的 VM 实例设置自己的管理凭据。
+以下示例介绍了在 *SouthCentralUS* 位置的 *myVMSSRG* 资源组中创建一个名为 *myScaleSet* 的规模集。 将基于“myGalleryRG”资源组的“myGallery”映像库中的“myImageDefinition”映像创建该规模集。 出现提示时，请为该规模集中的 VM 实例设置自己的管理凭据。
 
 
 ## <a name="simplified-parameter-set"></a>简化参数集
@@ -173,7 +173,7 @@ New-AzVmss `
 创建和配置所有的规模集资源和 VM 需要几分钟时间。
 
 ## <a name="next-steps"></a>后续步骤
-[Azure 映像生成器 (预览版) ](../virtual-machines/image-builder-overview.md) 可帮助自动创建映像版本，甚至还可以使用它来更新 [现有映像版本并创建新的映像版本](../virtual-machines/linux/image-builder-gallery-update-image-version.md)。 
+[Azure 映像生成器（预览版）](../virtual-machines/image-builder-overview.md)可以帮助自动创建映像版本，你甚至可以使用它进行更新以及[从现有的映像版本创建新映像版本](../virtual-machines/linux/image-builder-gallery-update-image-version.md)。 
 
 此外可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 

@@ -11,19 +11,19 @@ ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: a74860b7adf4dade5aedc71a4960595cbe55eaf0
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95995295"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>启用和管理 blob 的软删除
 
-Blob 软删除可防止意外或错误地修改或删除数据。 为存储帐户启用 blob 软删除后，可以在指定的保留期内恢复存储帐户中的 blob、blob 版本和快照。
+Blob 软删除可防止意外或错误地修改或删除数据。 为存储帐户启用 blob 软删除时，该存储帐户中的 blob、blob 版本和快照被删除后可以在指定的保留期内恢复。
 
-如果某个应用程序或其他存储帐户用户可能无意中修改或删除了数据，则 Microsoft 建议启用 blob 软删除。 本文介绍如何为 blob 启用软删除。 有关 blob 软删除的更多详细信息，请参阅 [blob 的软删除](soft-delete-blob-overview.md)。
+如果你的数据有可能被应用程序或其他存储帐户用户意外修改或删除，Microsoft 建议启用blob 软删除。 本文介绍如何为 blob 启用软删除。 有关 blob 软删除的更多详细信息，请参阅 [blob 的软删除](soft-delete-blob-overview.md)。
 
-若要了解如何同时为容器启用软删除，请参阅 [启用和管理容器的软删除](soft-delete-container-enable.md)。
+若要了解如何同时为容器启用软删除，请参阅[启用和管理容器的软删除](soft-delete-container-enable.md)。
 
 ## <a name="enable-blob-soft-delete"></a>启用 blob 软删除
 

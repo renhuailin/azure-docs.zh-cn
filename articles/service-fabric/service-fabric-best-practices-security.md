@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: b7af0a4c26a47644973e936eb37e221853d74c03
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98784657"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric 安全 
@@ -87,7 +87,7 @@ ms.locfileid: "98784657"
 > [!NOTE]
 > Service Fabric 群集将使用它在主机的证书存储中找到的第一个有效证书。 在 Windows 上，该证书将是具有最晚到期日期且与公用名和颁发者指纹匹配的证书。
 
-Azure 域，如 * \<YOUR SUBDOMAIN\> . cloudapp.azure.com 或 \<YOUR SUBDOMAIN\> trafficmanager.net，由 Microsoft 拥有。 证书颁发机构不会将域的证书颁发给未授权的用户。 大多数用户需要从注册机构购买域，或者需要是经授权的域管理员，否则证书颁发机构不会向其颁发具有该公用名的证书。
+Azure 域（例如 *\<YOUR SUBDOMAIN\>.cloudapp.azure.com 或 \<YOUR SUBDOMAIN\>.trafficmanager.net,）由 Microsoft 拥有。 证书颁发机构不会将域的证书颁发给未授权的用户。 大多数用户需要从注册机构购买域，或者需要是经授权的域管理员，否则证书颁发机构不会向其颁发具有该公用名的证书。
 
 若要更详细地确定如何配置 DNS 服务，以便将域解析为 Microsoft IP 地址，请了解如何配置[用于托管域的 Azure DNS](../dns/dns-delegate-domain-azure-dns.md)。
 
@@ -205,10 +205,10 @@ access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-v
 cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/Microsoft.DocumentDB/databaseAccounts/<YOUR ACCOUNT>/listKeys?api-version=2016-03-31' -X POST -d "" -H "Authorization: Bearer $access_token" | python -c "import sys, json; print(json.load(sys.stdin)['primaryMasterKey'])")
 ```
 ## <a name="windows-security-baselines"></a>Windows 安全基线
-[我们建议你实现一个行业标准的配置，该配置被广泛已知并且经过良好测试，如 Microsoft 安全基线，而不是自己创建基线](/windows/security/threat-protection/windows-security-baselines);在虚拟机规模集上预配这些虚拟机规模集的选项是使用 Azure Desired State Configuration (DSC) 扩展处理程序，在虚拟机联机时配置 Vm，使它们运行生产软件。
+[我们建议实现广为人知且经过充分测试的业界标准配置，如 Microsoft 安全基线，而不是自行创建基线](/windows/security/threat-protection/windows-security-baselines)；用于在虚拟机规模集上预配这些基线的一个选项是，使用 Azure Desired State Configuration (DSC) 扩展处理程序，以在 VM 处于联机状态时对其进行配置，以便其运行生产软件。
 
 ## <a name="azure-firewall"></a>Azure 防火墙
-[Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。它是一个服务形式的完全有状态防火墙，具有内置的高可用性和不受限制的云可伸缩性。](../firewall/overview.md)；这样就可以将出站 HTTP/S 流量限制为指定的完全限定域名 (FQDN) 列表，包括通配符域名。 此功能不需要 TLS/SSL 终止。 建议利用 Windows 更新的 [Azure 防火墙 FQDN 标记](../firewall/fqdn-tags.md)，并允许到 Microsoft Windows 更新终结点的网络流量流经防火墙。 [使用模板部署 Azure 防火墙](../firewall/deploy-template.md) 提供了一个有关 azureFirewalls 资源模板定义的示例。 常用于 Service Fabric 应用程序的防火墙规则是为群集虚拟网络启用以下站点：
+[Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。它是一个服务形式的完全有状态防火墙，具有内置的高可用性和不受限制的云可伸缩性。](../firewall/overview.md)；这样就可以将出站 HTTP/S 流量限制为指定的完全限定域名 (FQDN) 列表，包括通配符域名。 此功能不需要 TLS/SSL 终止。 建议利用 Windows 更新的 [Azure 防火墙 FQDN 标记](../firewall/fqdn-tags.md)，并允许到 Microsoft Windows 更新终结点的网络流量流经防火墙。 [使用模板部署 Azure 防火墙](../firewall/deploy-template.md)提供了一个有关 Microsoft.Network/azureFirewalls 资源模板定义的示例。 常用于 Service Fabric 应用程序的防火墙规则是为群集虚拟网络启用以下站点：
 
 - *download.microsoft.com
 - *servicefabric.azure.com
@@ -218,7 +218,7 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 
 ## <a name="tls-12"></a>TLS 1.2
 
-Microsoft [Azure 建议](https://azure.microsoft.com/updates/azuretls12/) 所有客户完成到支持传输层安全 (tls) 1.2 的解决方案的迁移，并确保默认情况下使用 tls 1.2。
+Microsoft [Azure 建议](https://azure.microsoft.com/updates/azuretls12/)所有客户完全迁移到支持传输层安全性 (TLS) 1.2 的解决方案，并确保默认使用 TLS 1.2。
 
 Azure 服务（包括 [Service Fabric](https://techcommunity.microsoft.com/t5/azure-service-fabric/microsoft-azure-service-fabric-6-3-refresh-release-cu1-notes/ba-p/791493)）已完成工程工作，消除了对 TLS 1.0/1.1 协议的依赖，并为希望将其工作负载配置为仅接受和启动 TLS 1.2 连接的客户提供全面支持。
 

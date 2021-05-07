@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
 ms.openlocfilehash: 1217d3af855e96b6d6a0f403c2ff351a6b957d9a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96459660"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>用于解决 Azure SQL 数据库和 Azure SQL 托管实例常见安全要求的 playbook
@@ -60,7 +60,7 @@ ms.locfileid: "96459660"
 - [NIST 专刊 800-53 安全控制](https://nvd.nist.gov/800-53)：AC-5、AC-6
 - [PCI DSS](https://www.pcisecuritystandards.org/document_library)：6.3.2、6.4.2
 
-我们计划持续更新本文列出的建议和最佳做法。 使用本文底部的 " **反馈** " 链接提供对此文档的输入或任何更正。
+我们计划持续更新本文列出的建议和最佳做法。 使用本文底部的“反馈”链接提供对此文档的建议或任何更正。
 
 ## <a name="authentication"></a>身份验证
 
@@ -107,16 +107,16 @@ ms.locfileid: "96459660"
 > [!NOTE]
 >
 > - Azure AD 身份验证记录在 Azure SQL 审核日志中，而不是记录在 Azure AD 登录日志中。
-> - Azure 中授予的 azure RBAC 权限不适用于 Azure SQL 数据库或 SQL 托管实例权限。 必须使用现有的 SQL 权限手动创建/映射此类权限。
+> - 在 Azure 中授予的 Azure RBAC 权限不适用于 Azure SQL 数据库或 SQL 托管实例权限。 必须使用现有的 SQL 权限手动创建/映射此类权限。
 > - 在客户端上，Azure AD 身份验证需要访问 Internet，或通过用户定义的路由 (UDR) 访问虚拟网络。
-> - Azure AD 访问令牌缓存在客户端，其生存期取决于令牌配置。 请参阅[Azure Active Directory 中可配置的令牌生存期](../../active-directory/develop/active-directory-configurable-token-lifetimes.md)一文
-> - 有关解决 Azure AD 身份验证问题的指南，请参阅以下博客： [Azure AD 故障排除](https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991)。
+> - Azure AD 访问令牌缓存在客户端，其生存期取决于令牌配置。 请参阅 [Azure Active Directory 中可配置的令牌生存期](../../active-directory/develop/active-directory-configurable-token-lifetimes.md)
+> - 有关排除 Azure AD 身份验证问题的指南，请参阅以下博客：[Azure AD 故障排除](https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991)。
 
 ### <a name="azure-ad-multi-factor-authentication"></a>Azure AD 多重身份验证
 
 > 内容来源：OSA 做法 #2，ISO 访问控制 (AC)
 
-Azure AD 多重身份验证通过要求多种形式的身份验证提供额外的安全性。
+Azure AD 多重身份验证要求完成多种形式的身份验证，因而有助于提高安全性。
 
 **如何实现**：
 
@@ -126,8 +126,8 @@ Azure AD 多重身份验证通过要求多种形式的身份验证提供额外�
 
 **最佳做法**：
 
-- Azure AD (需要高级订阅) 中激活条件性访问。
-  - 请参阅文章 [Azure AD 中的条件性访问](../../active-directory/conditional-access/overview.md)。  
+- 在 Azure AD 中激活条件访问（需要高级订阅）。
+  - 请参阅 [Azure AD 中的条件访问](../../active-directory/conditional-access/overview.md)一文。  
 
 - 创建 Azure AD 组，并使用 Azure AD 条件访问为选定的组启用多重身份验证策略。
   - 请参阅[规划条件访问部署](../../active-directory/conditional-access/plan-conditional-access.md)一文。
@@ -144,7 +144,7 @@ Azure AD 多重身份验证通过要求多种形式的身份验证提供额外�
     - [bcp 实用工具](/sql/tools/bcp-utility)：选项 -G（交互式）
 
 - 实现你的应用程序，以使用支持多重身份验证的交互式身份验证连接到 Azure SQL 数据库或 Azure SQL 托管实例。
-  - 请参阅 [通过 Azure AD 多重身份验证连接到 AZURE SQL 数据库](active-directory-interactive-connect-azure-sql-db.md)一文。
+  - 请参阅文章[使用 Azure AD 多重身份验证连接到 Azure SQL 数据库](active-directory-interactive-connect-azure-sql-db.md)。
   > [!NOTE]
   > 此身份验证模式需要使用基于用户的标识。 如果使用的受信任标识模型会绕过个体 Azure AD 用户身份验证（例如，使用 Azure 资源的托管标识），则不会应用多重身份验证。
 
@@ -320,7 +320,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 - 还可以通过 T-SQL 的 SQL 代理作业步骤或适用于 Azure 角色的 Azure PIM 暂时执行角色分配（也称为动态职责分离 (DSD)）。
 
-- 确保 DBA 无权访问加密密钥或密钥存储，而有权访问密钥的安全管理员无权访问数据库。 [ (EKM) 使用可扩展的密钥管理](/sql/relational-databases/security/encryption/extensible-key-management-ekm)可以使此分离更容易实现。 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 可用于实现 EKM。
+- 确保 DBA 无权访问加密密钥或密钥存储，而有权访问密钥的安全管理员无权访问数据库。 使用[可扩展的密钥管理 (EKM)](/sql/relational-databases/security/encryption/extensible-key-management-ekm) 可以更容易实现此分离。 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)可用于实现 EKM。
 
 - 始终确保针对安全相关的操作提供审核线索。
 
@@ -381,7 +381,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 数据保护是通过加密或模糊处理来防止重要信息遭到透露的一组功能。
 
 > [!NOTE]
-> Microsoft 的 Azure SQL 数据库和 SQL 托管实例已通过 FIPS 140-2 级别 1 合规认证。 认证过程中已确认它严格使用 FIPS 140-2 级别 1 可接受的算法，以及这些算法的、经 FIPS 140-2 级别 1 验证的实例，包括符合所需密钥长度、密钥管理、密钥生成和密钥存储的要求。 此项认证意味着，我们的客户在处理数据或者交付系统或应用程序的过程中，可以满足使用 FIPS 140-2 级别 1 验证实例的需求或要求。 我们定义了上述语句中使用的术语 "FIPS 140-2 Level 1 相容" 和 "FIPS 140-2 Level 1 相容性"，以演示其对美国和加拿大政府使用不同术语 "FIPS 140-2 Level 1 验证" 的预期适用性。
+> Microsoft 的 Azure SQL 数据库和 SQL 托管实例已通过 FIPS 140-2 级别 1 合规认证。 认证过程中已确认它严格使用 FIPS 140-2 级别 1 可接受的算法，以及这些算法的、经 FIPS 140-2 级别 1 验证的实例，包括符合所需密钥长度、密钥管理、密钥生成和密钥存储的要求。 此项认证意味着，我们的客户在处理数据或者交付系统或应用程序的过程中，可以满足使用 FIPS 140-2 级别 1 验证实例的需求或要求。 我们定义了上述语句中使用的术语“FIPS 140-2 级别 1 合规”和“FIPS 140-2 级别 1 合规性”，以演示其对美国和加拿大政府使用不同术语“FIPS 140-2 级别 1 已验证”的预期适用性。
 
 ### <a name="encrypt-data-in-transit"></a>加密传输中的数据
 
@@ -436,7 +436,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 - 如果需要支持数据计算（相等性），请使用确定性加密。 否则请使用随机加密。 避免将确定性加密用于低熵数据集或采用众所周知分布形式的数据集。
 
-- 如果你担心第三方在合法的情况下访问你的数据，请确保能够以纯文本形式访问密钥和数据的所有应用程序和工具在 Microsoft Azure 云的外部运行。 如果第三方无权访问密钥，则除非绕过加密，否则他们无法解密数据。
+- 如果你担心第三方在未经你同意的情况下以合法方式访问你的数据，请确保有权访问纯文本形式的密钥和数据的所有应用程序与工具都在 Microsoft Azure 云外部运行。 如果第三方无权访问密钥，则除非绕过加密，否则他们无法解密数据。
 
 - Always Encrypted 无法轻松支持授予对密钥（和受保护数据）的临时访问权限。 例如，如果需要与 DBA 共享密钥，使 DBA 能够对敏感数据和加密的数据执行一些清理操作。 可靠撤销 DBA 的数据访问权限的唯一方法是，同时轮换用于保护数据的列加密密钥和列主密钥，而这是一项开销较高的操作。
 
@@ -540,7 +540,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 - 通过连接到专用终结点（例如，使用专用数据路径）来限制对 Azure SQL 数据库和 SQL 托管实例的访问：
   - 可将托管实例隔离在虚拟网络内，防止外部访问。 位于同一区域的相同或对等虚拟网络中的应用程序和工具可以直接访问它。 位于不同区域的应用程序和工具可使用虚拟网络到虚拟网络连接，或使用 ExpressRoute 线路对等互连来建立连接。 客户应使用网络安全组 (NSG) 来仅限通过端口 1433 访问需要访问托管实例的资源。
-  - 对于 SQL 数据库，请使用 [专用链接](../../private-link/private-endpoint-overview.md) 功能，该功能为虚拟网络中的服务器提供专用专用 IP。 还可使用[配置了虚拟网络防火墙规则的虚拟网络服务终结点](vnet-service-endpoint-rule-overview.md)来限制对服务器的访问。
+  - 对于 SQL 数据库，请使用[专用链接](../../private-link/private-endpoint-overview.md)功能，该功能可为虚拟网络中的服务器提供专用 IP。 还可使用[配置了虚拟网络防火墙规则的虚拟网络服务终结点](vnet-service-endpoint-rule-overview.md)来限制对服务器的访问。
   - 移动用户应使用点到站点 VPN 连接，通过数据路径进行连接。
   - 连接到本地网络的用户应使用站点到站点 VPN 连接或 ExpressRoute，通过数据路径进行连接。
 
@@ -606,28 +606,28 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 ### <a name="protect-against-distributed-denial-of-service-ddos-attacks"></a>防范分布式拒绝服务 (DDoS) 攻击
 
-分布式拒绝服务 (DDoS) 攻击由恶意用户尝试向 Azure SQL 数据库发送大量网络流量，目的是使 Azure 基础结构成为惊人，并导致其拒绝有效登录和工作负荷。
+分布式拒绝服务 (DDoS) 攻击是恶意用户尝试向 Azure SQL 数据库发送大量网络流量，目的是使 Azure 基础结构瘫痪，从而拒绝有效登录和工作负荷。
 
-> 中提到的： OSA 实践 #9
+> 内容来源：OSA 做法 #9
 
 **如何实现**：
 
-在 Azure 平台中，会自动启用 DDoS 保护。 它包括 always on 流量监视和对公共终结点上网络级别攻击的实时缓解。
+DDoS 防护作为 Azure 平台的一部分自动启用。 它针对公共终结点发生的网络级别攻击提供始终启用的流量监视和实时缓解。
 
-- 使用 [Azure DDoS 防护](../../ddos-protection/ddos-protection-overview.md) 来监视与虚拟网络中部署的资源关联的公共 IP 地址。
+- 使用 [Azure DDoS 防护](../../ddos-protection/ddos-protection-overview.md)监视与虚拟网络中部署的资源关联的公共 IP 地址。
 
-- 使用 [AZURE SQL 数据库的高级威胁防护](threat-detection-overview.md) 来检测对数据库的拒绝服务 (DoS) 攻击。
+- 使用 [Azure SQL 数据库的高级威胁防护](threat-detection-overview.md)检测对数据库发起的拒绝服务 (DoS) 攻击。
 
 **最佳做法**：
 
-- 遵循 [最小化攻击面](#minimize-attack-surface) 中所述的做法有助于最大程度地减少 DDoS 攻击威胁。
+- 遵循[最小化攻击面](#minimize-attack-surface)中所述的做法有助于最大程度减少 DDoS 攻击威胁。
 
-- 高级威胁防护 **强力强制 SQL 凭据** 警报有助于检测暴力破解攻击。 在某些情况下，警报甚至可以区分渗透测试工作负荷。
+- 高级威胁防护 **暴力破解 SQL 凭据** 警报有助于检测暴力破解攻击。 在某些情况下，警报甚至可以区分渗透测试工作负荷。
 
-- 对于托管连接到 SQL 数据库的应用程序的 Azure VM：
-  - 遵循建议，在 Azure 安全中心中通过面向 Internet 的终结点限制访问。
-  - 使用虚拟机规模集在 Azure Vm 上运行应用程序的多个实例。
-  - 禁用来自 Internet 的 RDP 和 SSH，以防止强力攻击。
+- 对于连接到 SQL 数据库的 Azure VM 托管应用程序：
+  - 请遵循建议，以在 Azure 安全中心中通过面向 Internet 的终结点限制访问。
+  - 使用虚拟机规模集在 Azure VM 上运行应用程序的多个实例。
+  - 禁用来自 Internet 的 RDP 和 SSH，以防止暴力破解攻击。
 
 ## <a name="monitoring-logging-and-auditing"></a>监视、日志记录和审核
 
@@ -730,11 +730,11 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 **最佳做法**：
 
-- 定期监视分类仪表板，准确评估数据库的分类状态。 可以导出或打印有关数据库分类状态的报告，以使在合规与审核措施中共享。
+- 定期监视分类仪表板，以准确评估数据库的分类状态。 可以导出或打印有关数据库分类状态的报告，以使在合规与审核措施中共享。
 
 - 持续监视 SQL 漏洞评估中建议的敏感数据的状态。 跟踪敏感数据发现规则，识别建议列中的任何分类偏差。  
 
-- 使用根据你的组织的特定需求定制的方式使用分类。 在 Azure 安全中心的 [SQL 信息保护](../../security-center/security-center-info-protection-policy.md) 策略中，自定义信息保护策略 (敏感度标签、信息类型、发现逻辑) 。
+- 采用根据组织特定需求定制的方式使用分类。 在 Azure 安全中心的 [SQL 信息保护](../../security-center/security-center-info-protection-policy.md)策略中，自定义信息保护策略（敏感度标签、信息类型、发现逻辑）。
 
 ### <a name="track-access-to-sensitive-data"></a>跟踪对敏感数据的访问
 
@@ -781,7 +781,7 @@ Azure SQL 数据库和 SQL 托管实例目前提供以下技术来缓解数据�
 - 如果在 SQL 数据库中使用服务器，请设置以下选项：
   - 将“允许 Azure 服务”设置为“关闭”。
   - 设置 VNet 防火墙规则，仅允许来自包含你的 Azure VM 的子网的流量。
-  - 使用 [专用链接](../../private-link/private-endpoint-overview.md)
+  - 使用[专用链接](../../private-link/private-endpoint-overview.md)
 - 对于 SQL 托管实例，使用专用 IP 访问默认可以解决恶意 VM 的首要数据透露隐患。 在子网中启用子网委托功能，以在 SQL 托管实例子网中自动设置最严格的策略。
 - 恶意 DBA 隐患主要出现在 SQL 托管实例上，因为 SQL 托管实例的受攻击面较大，而网络要求对客户是可见的。 此问题的最佳缓解措施是首先应用本安全指南中的所有做法，以防止出现恶意 DBA 的情景（不仅可以解决数据透露）。 Always Encrypted 是保护敏感数据的一种方法，它可以加密敏感数据，并使 DBA 无法访问密钥。
 
@@ -795,9 +795,9 @@ Azure SQL 数据库和 SQL 托管实例目前提供以下技术来缓解数据�
   - [自动备份](automated-backups-overview.md)
   - [使用自动数据库备份恢复数据库 - 时间点还原](recovery-using-backups.md#point-in-time-restore)
 
-- 可以配置其他业务连续性功能，如跨不同 Azure 地域的区域冗余配置和自动故障转移组： 
-    - [高级 & 业务关键服务层的高可用性区域冗余配置](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability)
-    - [常规用途服务层的高可用性区域冗余配置](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
+- 可配置其他业务连续性功能，例如，区域冗余配置和跨不同的 Azure 地理区域的自动故障转移组： 
+    - [高可用性 - 适合高级和业务关键层的区域冗余配置](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability)
+    - [高可用性 - 适合常规用途服务层的区域冗余配置](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
     - [业务连续性概述](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 
 ## <a name="next-steps"></a>后续步骤

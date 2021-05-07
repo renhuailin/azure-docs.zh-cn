@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
 ms.openlocfilehash: 3752a36d22f879b95b02bd49436be78212fe56a2
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99576035"
 ---
 # <a name="load-balancer-frequently-asked-questions"></a>负载均衡器常见问题解答
@@ -46,21 +46,21 @@ NAT 规则用于指定要将流量路由到其中的后端资源。 例如，将
 
  ```nslookup myip.opendns.com resolver1.opendns.com```
  
-## <a name="can-i-add-a-vm-from-the-same-availability-set-to-different-backend-pools-of-a-load-balancer"></a>能否将同一可用性集的 VM 添加到负载均衡器的不同后端池？
+## <a name="can-i-add-a-vm-from-the-same-availability-set-to-different-backend-pools-of-a-load-balancer"></a>是否可以将同一可用性集中的 VM 添加到负载均衡器的不同后端池？
 不，这不可能。
 
 ## <a name="what-is-the-maximum-data-throughput-that-can-be-achieved-via-an-azure-load-balancer"></a>可以通过 Azure 负载均衡器实现的最大数据吞吐量是多少？
-由于 Azure LB 是传递网络负载平衡器，因此吞吐量限制由后端池中使用的虚拟机类型决定。 若要了解其他与网络吞吐量相关的信息，请参阅 [虚拟机网络吞吐量](../virtual-network/virtual-machine-network-throughput.md)。
+由于 Azure LB 是直通网络负载均衡器，因此吞吐量限制由后端池中使用的虚拟机类型决定。 若要了解其他与网络吞吐量相关的信息，请参阅[虚拟机网络吞吐量](../virtual-network/virtual-machine-network-throughput.md)。
 
 ## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>如何连接到同一区域中的 Azure 存储？
 通过上述方案进行出站连接时不一定要连接到与 VM 位于同一区域的存储。 如果不想这样做，请按上述说明使用网络安全组 (NSG)。 若要连接到其他区域的存储，则需要使用出站连接。 请注意，当从同一区域中的虚拟机连接到存储时，存储诊断日志中的源 IP 地址将是内部提供程序地址，而不是虚拟机的公共 IP 地址。 如果要将对存储帐户的访问限制至同一区域中一个或多个虚拟网络子网中的 VM，请在配置存储帐户防火墙时使用[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)，而不是公共 IP 地址。 配置了服务终结点后，将在存储诊断日志中看到虚拟网络专用 IP 地址，而不是内部提供程序地址。
 
-## <a name="does-azure-load-balancer-support-tlsssl-termination"></a>Azure 负载均衡器是否支持 TLS/SSL 终止？
-不能，Azure 负载均衡器目前不支持终止，因为它是通过网络负载均衡器。 如果你的应用程序需要此解决方案，则应用程序网关可能是一个潜在解决方案。
+## <a name="does-azure-load-balancer-support-tlsssl-termination"></a>Azure 负载均衡器是否支持 TLS/SSL 终端？
+不支持，Azure 负载均衡器目前不支持终端，因为它是直通网络负载均衡器。 如果你的应用程序需要解决方案，则应用程序网关可能是一个潜在解决方案。
 
 ## <a name="what-are-best-practises-with-respect-to-outbound-connectivity"></a>与出站连接有关的最佳做法是什么？
 标准负载均衡器和标准公共 IP 为出站连接引入了功能和不同的行为。 它们不同于基本 SKU。 如果在使用标准 SKU 时需要出站连接，则必须使用标准公共 IP 地址或标准公共负载均衡器显式定义它。 这包括在使用内部标准负载均衡器时创建出站连接。 建议始终使用标准公共负载均衡器上的出站规则。 这意味着使用内部标准负载均衡器时，如果需要出站连接，则需要采取步骤为后端池中的 VM 创建出站连接。 在出站连接的上下文中，单个独立的 VM、可用性集中的所有 VM、VMSS 中的所有实例都表现得像一个组。 这意味着，如果可用性集中的单个 VM 与标准 SKU 关联，则该可用性集中的所有 VM 实例现在都遵循相同的规则，就好像这些 VM 实例与标准 SKU 相关联一样，即使单个实例与标准 SKU 没有直接关联。 如果独立 VM 有连接到负载均衡器的多个网络接口卡，也会出现此行为。 如果将一个 NIC 添加为独立 NIC，也会有相同的行为。 请仔细查看整个文档以了解整体概念，查看[标准负载均衡器](./load-balancer-overview.md)了解 SKU 之间的差异，并查看[出站规则](load-balancer-outbound-connections.md#outboundrules)。
 使用出站规则可以对出站连接的所有方面进行细化管理控制。
  
 ## <a name="next-steps"></a>后续步骤
-如果上面未列出你的问题，请与你的问题一起发送有关本页的反馈。 这会为产品团队创建 GitHub 问题，以确保所有有价值的客户问题都得到了回答。
+如果上面未列出你的问题，请将有关本页的反馈与你的问题一起发送。 这会为产品团队创建 GitHub 问题，以确保所有有价值的客户问题都得到回答。

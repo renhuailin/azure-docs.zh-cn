@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 562c90dcc4f802290b0ed8b4d544fce9d526fa10
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99524662"
 ---
 # <a name="continuous-access-evaluation"></a>连续访问评估
@@ -48,7 +48,7 @@ ms.locfileid: "99524662"
 - 用户的密码已更改或已重置
 - 是否为用户启用了多重身份验证
 - 管理员显式撤销用户的所有刷新令牌
-- Azure AD Identity Protection 检测到高用户风险
+- Azure Active Directory 标识保护检测到用户风险程度高
 
 此过程会导致用户在这些关键事件之一发生后的数分钟内失去对 Microsoft 365 客户端应用中的组织 SharePoint Online 文件、电子邮件、日历或任务和 Teams 的访问权限。 
 
@@ -95,7 +95,7 @@ Exchange 和 SharePoint 能够同步关键的条件访问策略，因此可以�
 
 在 CAE 会话中，令牌生存期增加，可以长时间生存，最长为 28 小时。 吊销是由关键事件和策略评估驱动的，并非可以随时吊销。 此更改提高了应用程序的稳定性，而不会影响安全状况。 
 
-如果你不使用支持 CAE 的客户端，则默认访问令牌生存期将保持为1小时，除非已配置了具有 [可配置令牌生存期 ](../develop/active-directory-configurable-token-lifetimes.md) 的访问令牌生存期 (CTL) preview 功能。
+如果你未使用支持 CAE 的客户端，则默认访问令牌生存期将保持为 1 小时，除非你已使用[可配置令牌生存期 (CTL)](../develop/active-directory-configurable-token-lifetimes.md) 预览版功能配置了访问令牌生存期。
 
 ## <a name="example-flows"></a>示例流
 
@@ -173,7 +173,7 @@ Exchange 和 SharePoint 能够同步关键的条件访问策略，因此可以�
 
 当多个用户同时在同一个文档上协作时，CAE 可能不会根据用户吊销或策略更改事件立即吊销用户对文档的访问权限。 在这种情况下，用户会在关闭文档、Word、Excel 或 PowerPoint 后或 10 小时后完全失去访问权限。
 
-若要缩短这一时间，SharePoint 管理员可以通过[在 SharePoint Online 中配置网络位置策略](/sharepoint/control-access-based-on-network-location)，来减少存储在 SharePoint Online 和 OneDrive for Business 中的文档的共同创作会话的最大生存期。 更改此配置后，合著会话的最长生存期将减少到15分钟，并且可使用 SharePoint Online PowerShell 命令 "Set-spotenant – IPAddressWACTokenLifetime" 进一步调整。
+若要缩短这一时间，SharePoint 管理员可以通过[在 SharePoint Online 中配置网络位置策略](/sharepoint/control-access-based-on-network-location)，来减少存储在 SharePoint Online 和 OneDrive for Business 中的文档的共同创作会话的最大生存期。 更改此配置后，共同创作会话的最长生存期将缩短到 15 分钟，你可以使用 SharePoint Online PowerShell 命令“Set-SPOTenant –IPAddressWACTokenLifetime”进一步对其进行调整
 
 ### <a name="enable-after-a-user-is-disabled"></a>在禁用用户后启用
 

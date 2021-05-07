@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.openlocfilehash: eaafb9536a8667417c0abf4ab570609f2db290bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88935341"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充文档资源
@@ -36,7 +36,7 @@ AI 扩充是基于索引器的索引的加载项，用于查找非文本源和�
 
 + [快速入门：在 Azure 门户中创建认知技能集](cognitive-search-quickstart-blob.md)
 + [教程：使用 AI 扩充的索引](cognitive-search-tutorial-blob.md)
-+ [教程：通过调试会话诊断、修复并提交对技能组合的更改](cognitive-search-tutorial-debug-sessions.md)
++ [教程：用调试会话诊断、修正和提交对技能组的更改](cognitive-search-tutorial-debug-sessions.md)
 
 ## <a name="knowledge-stores"></a>知识存储
 
@@ -51,7 +51,7 @@ AI 扩充是基于索引器的索引的加载项，用于查找非文本源和�
 + [如何定义自定义技能接口](cognitive-search-custom-skill-interface.md)
 + [示例：使用 Azure Functions（和必应实体搜索 API）创建自定义技能](cognitive-search-create-custom-skill-example.md)
 + [示例：使用 Python 创建自定义技能](cognitive-search-custom-skill-python.md)
-+ [示例：使用窗体识别器创建自定义技能](cognitive-search-custom-skill-form.md) 
++ [示例：使用表单识别器创建自定义技能](cognitive-search-custom-skill-form.md) 
 + [示例：使用 Azure 机器学习创建自定义技能](cognitive-search-tutorial-aml-custom-skill.md) 
 
 ## <a name="how-to-guidance"></a>操作说明指南
@@ -84,7 +84,7 @@ AI 扩充是基于索引器的索引的加载项，用于查找非文本源和�
   + [Microsoft.Skills.Util.ShaperSkill](cognitive-search-skill-shaper.md)
 
 + 自定义技能
-  + [Microsoft AmlSkill](cognitive-search-aml-skill.md)
+  + [Microsoft.Skills.Custom.AmlSkill](cognitive-search-aml-skill.md)
   + [Microsoft.Skills.Custom.WebApiSkill](cognitive-search-custom-skill-web-api.md)
 
 + [弃用的技能](cognitive-search-skill-deprecated.md)

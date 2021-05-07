@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 742b9fc79489feba8192b6e62a6431bb37f55ad4
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98613168"
 ---
 # <a name="install-the-azure-ad-connect-provisioning-agent"></a>安装 Azure AD Connect 预配代理
@@ -24,7 +24,7 @@ ms.locfileid: "98613168"
 >[!IMPORTANT]
 >以下安装说明假定已满足所有[先决条件](how-to-prerequisites.md)。
 
-若要安装和配置 Azure AD Connect 云同步，请执行以下步骤：
+安装和配置 Azure AD Connect 云同步通过以下步骤完成：
 
 - [组托管服务帐户](#group-managed-service-accounts) 
 - [安装代理](#install-the-agent)
@@ -32,7 +32,7 @@ ms.locfileid: "98613168"
 
 
 ## <a name="group-managed-service-accounts"></a>Group Managed Service Accounts
-组托管服务帐户是一种托管的域帐户，它提供自动密码管理，简化的服务主体名称 (SPN) 管理、将管理委派给其他管理员以及在多个服务器上扩展此功能的能力。  Azure AD Connect 云同步支持并建议使用组托管服务帐户运行代理。  有关 gMSA 的详细信息，请参阅 [组托管服务帐户](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
+组托管服务帐户是一种托管的域帐户，它提供自动密码管理，简化的服务主体名称 (SPN) 管理、将管理委派给其他管理员以及在多个服务器上扩展此功能的能力。  Azure AD Connect 云同步支持并建议使用组托管服务帐户运行代理。  有关 gMSA 的详细信息，请参阅[组托管服务帐户](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
 
 
 ### <a name="upgrading-an-existing-agent-to-use-the-gmsa-account"></a>升级现有代理以使用 gMSA 帐户
@@ -44,27 +44,27 @@ ms.locfileid: "98613168"
 若要安装代理，请执行以下步骤。
 
  1. 以企业管理员权限登录到要使用的服务器。
- 2. 登录到 Azure 门户，然后 **Azure Active Directory**"。
- 3. 在左侧菜单中，选择 " **Azure AD Connect**"。
- 4. 选择 "**管理云同步**  >  **查看所有代理**"。
+ 2. 登录到 Azure 门户，然后选择“Azure Active Directory”。
+ 3. 在左侧菜单中，选择“Azure AD Connect”。
+ 4. 选择“管理云同步” > “查看所有代理” 
  5. 从 Azure 门户下载 Azure AD Connect 预配代理。
    ![下载本地代理](media/how-to-install/install-9.png)</br>
- 6. 接受条款并单击 "下载"。
+ 6. 接受条款并单击下载。
  7. 运行 Azure AD Connect 预配安装程序 AADConnectProvisioningAgentSetup.msi。
  8. 在“Microsoft Azure AD Connect 预配代理包”屏幕上，接受许可条款，然后选择“安装”。
    ![“Microsoft Azure AD Connect 预配代理包”屏幕](media/how-to-install/install-1.png)</br>
  9. 此操作完成后，配置向导将启动。 使用 Azure AD 全局管理员帐户登录。
- 10. 在 " **配置服务帐户" 屏幕** 上，选择 " **创建 gMSA** " 或 " **使用自定义 gMSA**"。  如果允许代理创建帐户，则将其命名为 provAgentgMSA $。 如果指定 " **使用自定义 gMSA** "，系统会提示提供此帐户。
- 11. 输入用于创建将用于运行代理服务的组托管服务帐户的域管理员凭据。 单击“下一步”  。  
+ 10. 在“配置服务帐户屏幕”上，选择“创建 gMSA”或“使用自定义 gMSA”。    如果允许代理创建帐户，则将其命名为 provAgentgMSA$。 如果指定“使用自定义 gMSA”，系统会提示提供此帐户。
+ 11. 输入用于创建将用于运行代理服务的组托管服务帐户的域管理员凭据。 单击“下一步”。  
    ![创建 gMSA](media/how-to-install/install-12.png)</br>
  12. 在“Connect Active Directory”屏幕上，选择“添加目录”。 然后使用你的 Active Directory 管理员帐户登录。 此操作将添加本地目录。 
- 13. 或者，你可以通过选择 " **选择域控制器优先级** " 和 "对域控制器的列表排序" 来管理代理将使用的域控制器的首选项。   单击“确定”。
-  ![订购域控制器](media/how-to-install/install-2a.png)</br>
- 14. 选择“下一步”。
+ 13. 任选地，可以通过选择“选择域控制器优先级”以及对域控制器列表排序来管理代理将使用的域控制器的首选项。   单击 **“确定”** 。
+  ![对域控制器排序](media/how-to-install/install-2a.png)</br>
+ 14. 选择“**下一步**”。
   ![“Connect Active Directory”屏幕](media/how-to-install/install-3a.png)</br>
- 15.  在 " **代理安装** " 屏幕上确认设置，并单击 " **确认**"。
+ 15.  在“代理安装”屏幕上确认设置和将创建的账户，并单击“确认”。 
   ![确认设置](media/how-to-install/install-11.png)</br>
- 16. 完成此操作后，你应该会看到 **代理安装已完成。** 选择“退出”。
+ 16. 完成此操作后，应该会看到“代理安装已完成。” 选择“退出”。
   ![“配置完成”屏幕](media/how-to-install/install-4a.png)</br>
  17. 如果仍看到初始“Microsoft Azure AD Connect 预配代理包”屏幕，则选择“关闭”。
 
@@ -75,11 +75,11 @@ ms.locfileid: "98613168"
 若要验证 Azure 是否能够识别到代理，请执行以下步骤。
 
  1. 登录到 Azure 门户。
- 2. 在左侧选择“Azure Active Directory” > “Azure AD Connect”。 在中心选择 " **管理云同步**"。
+ 2. 在左侧选择“Azure Active Directory” > “Azure AD Connect”。 在中心位置选择“管理云同步”。
 
    ![Azure 门户](media/how-to-install/install-6.png)</br>
 
- 3.  在 **Azure AD Connect 云同步** 屏幕上，选择 " **查看所有代理**"。
+ 3.  在“Azure AD Connect 云同步”屏幕上，选择“查看所有代理”。
 
    ![“查看所有代理”选项](media/how-to-install/install-7.png)</br>
  
@@ -99,7 +99,7 @@ ms.locfileid: "98613168"
     ![“服务”屏幕](media/how-to-install/troubleshoot-1.png)
 
 >[!IMPORTANT]
->代理已安装，但是在它开始同步用户之前，必须先对其进行配置和启用。 若要配置新代理，请参阅 [为 Azure AD Connect 云同步创建新配置](how-to-configure.md)。
+>代理已安装，但是在它开始同步用户之前，必须先对其进行配置和启用。 若要配置新代理，请参阅[为 Azure AD Connect 云同步创建新配置](how-to-configure.md)。
 
 
 

@@ -1,17 +1,16 @@
 ---
 title: 设计 Azure Monitor 日志部署 | Microsoft Docs
 description: 本文介绍有关客户在 Azure Monitor 中准备部署工作区时的注意事项和建议。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: a889275782388781eadffb7cf0a24771bf6e9e4f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 8502c35a145e4a041f9d44b8396fe16f5db3febc
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030828"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384198"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>设计 Azure Monitor 日志部署
 
@@ -87,9 +86,9 @@ Log Analytics 工作区可提供：
 
     > [!NOTE]
     > 仅当日志已适当地关联到相关资源时，才能对日志进行资源上下文查询。 目前，以下资源存在限制：
-    > - Azure 之外的计算机-仅通过[Azure Arc For Server](../../azure-arc/servers/index.yml)支持资源上下文
+    > - Azure 以外的计算机 - 仅通过 [Azure Arc for Servers](../../azure-arc/servers/index.yml) 支持资源上下文
     > - Service Fabric
-    > - Application Insights-仅当使用[基于工作区的 Application Insights 资源](../app/create-workspace-resource.md)时才支持资源上下文
+    > - Application Insights - 仅在使用[基于工作区的 Application Insights 资源](../app/create-workspace-resource.md)时支持资源上下文
     >
     > 可以通过运行一个查询并检查所需的记录，来测试日志是否已适当关联到其资源。 如果 [_ResourceId](./log-standard-columns.md#_resourceid) 属性中包含正确的资源 ID，则可以对数据进行以资源为中心的查询。
 
@@ -144,7 +143,7 @@ Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发
 
 此方案涉及到 IT 组织订阅中的单个工作区设计，该设计不受数据主权或合规性的约束，或者需要映射到部署资源的区域。 此方案可让组织的安全和 IT 管理团队利用与 Azure 访问管理的改进集成以及更安全的访问控制。
 
-所有资源、监视解决方案和见解（如 Application Insights 和 VM insights）、支持由不同团队维护的基础结构和应用程序配置为将收集的日志数据转发给 IT 组织的集中共享工作区。 为每个团队的用户授予其已有权访问的资源的日志访问权限。
+支持由不同团队维护的基础结构和应用程序的所有资源、监视解决方案和见解（例如 Application Insights 和 VM 见解）将配置为向 IT 组织的集中式共享工作区转发收集的日志数据。 为每个团队的用户授予其已有权访问的资源的日志访问权限。
 
 部署工作区体系结构后，可以使用 [Azure Policy](../../governance/policy/overview.md) 对 Azure 资源强制实施此方案。 此方案可让你定义策略并确保 Azure 资源合规，因此它们将其所有资源日志发送到特定的工作区。 例如，使用 Azure 虚拟机或虚拟机规模集时，可以使用现有的策略来评估工作区合规性和报告结果，或者自定义策略，以便在不合规的情况下予以补救。  
 
@@ -159,7 +158,7 @@ Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发
 * 确定为应用程序团队授予的资源访问权限，并先在开发环境中进行测试，然后在生产环境中实施。
 * 将工作区配置为启用“使用资源或工作区权限”。
 * 删除应用程序团队的工作区读取和查询权限。
-* 启用和配置任何监视解决方案，如 Container insights 和/或用于 VM 的 Azure Monitor、你的自动化帐户 (s) 和管理解决方案，如在原始工作区中部署的更新管理、启动/停止 Vm 等。
+* 启用和配置在原始工作区中部署的任何监视解决方案、见解（例如容器见解和/或适用于 VM 的 Azure Monitor）、你的自动化帐户和管理解决方案（例如更新管理、启动/停止 VM 等）。
 
 ## <a name="next-steps"></a>后续步骤
 

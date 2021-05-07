@@ -1,16 +1,16 @@
 ---
 title: Service Fabric 备份和还原
-description: Service Fabric 备份和还原的概念性文档，该服务用于配置可靠有状态服务和 Reliable Actors 的备份。
+description: Service Fabric 备份和还原的概念文档，这是用于配置可靠有状态服务和 Reliable Actors 备份的服务。
 author: mcoskun
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: mcoskun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2674d1285544e4bc9b6fcb3d0b2e6f4b607786a2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98791605"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>备份和还原 Reliable Services 及 Reliable Actors
@@ -106,7 +106,7 @@ private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, Cancellation
 ## <a name="restore-reliable-services"></a>还原 Reliable Services
 一般而言，可能需要执行还原操作的情况可以为以下类型之一：
 
-  - 服务分区丢失数据。 例如，分区的三个副本中的两个（包括主副本）的磁盘数据已损坏或被擦除。 新的主副本可能需要从备份中还原数据。
+  - 服务分区丢失数据。 例如，分区的三个副本中两个副本（包括主副本）的磁盘数据已损坏或被擦除。 新的主副本可能需要从备份中还原数据。
   - 整个服务已丢失。 例如，管理员删除了整个服务，因此需要还原此服务和数据。
   - 服务复制了损坏的应用程序数据（例如，由于应用程序的 bug）。 在此情况下，必须升级或还原服务来消除损坏的原因，并还原未损坏的数据。
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 8a6bfb1c6aa268914e6dd1157115067b15bfa404
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98786904"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>使用 Azure 门户管理 Azure Data Box Gateway 上的共享 
@@ -36,7 +36,7 @@ ms.locfileid: "98786904"
 
 在 Azure 门户中执行以下步骤，以创建共享。
 
-1. 在 Azure 门户中，转到 Data Box Gateway 资源，然后导航到 " **概述**"。 单击命令栏上的“+ 添加共享”。
+1. 在 Azure 门户中，转到自己的 Data Box Gateway 资源，然后导航到“概述”。 单击命令栏上的“+ 添加共享”。
 2. 在“添加共享”中指定共享设置。 提供共享的唯一名称。 
 
     ![单击“添加共享”](media/data-box-gateway-manage-shares/add-share-1.png)
@@ -47,7 +47,7 @@ ms.locfileid: "98786904"
 
 4. 提供共享所在的 **存储帐户**。 如果还没有容器，则使用共享名称在存储帐户中创建一个容器。 如果该容器已存在，则使用现有容器。  
 
-5. 从块 Blob、页 Blob 或文件中选择“存储服务”。  所选服务的类型取决于数据需要以何种格式驻留在 Azure 中。 例如，在此实例中，我们想要将数据作为 blob 块驻留在 Azure 中，因此我们选择 " **块 blob**"。 如果选择“页 Blob”，必须确保数据按 512 字节对齐。 例如，VHDX 始终按 512 字节对齐。
+5. 从块 Blob、页 Blob 或文件中选择“存储服务”。  所选服务的类型取决于数据需要以何种格式驻留在 Azure 中。 例如，在此实例中，我们希望数据以 Blob 块的形式驻留在 Azure 中，因此选择“块 Blob”。 如果选择“页 Blob”，必须确保数据按 512 字节对齐。 例如，VHDX 始终按 512 字节对齐。
 
    > [!IMPORTANT]
    > 如果要将 Azure 存储帐户用于 Data Box Gateway 设备，请确保所用的帐户没有设置不可变策略。 有关详细信息，请参阅[为 blob 存储设置和管理不可变策略](../storage/blobs/storage-blob-immutability-policies-manage.md)。
@@ -62,7 +62,7 @@ ms.locfileid: "98786904"
 
         ![添加 NFS 共享](media/data-box-gateway-manage-shares/add-share-3.png)
 
-7. 单击 " **创建** " 创建共享。 将通知你“正在创建共享”。 创建具有指定设置的共享后，" **共享** " 边栏选项卡会进行更新以反映新的共享。
+7. 单击“创建”以创建共享。 将通知你“正在创建共享”。 使用指定的设置创建共享后，“共享”边栏选项卡会更新以反映新共享。
  
 ## <a name="delete-a-share"></a>删除共享
 
@@ -94,7 +94,7 @@ ms.locfileid: "98786904"
 
 1. 在 Azure 门户中转到“共享”。 选择并单击要刷新的共享。
 
-   ![选择共享2](media/data-box-gateway-manage-shares/refresh-1.png)
+   ![选择共享 2](media/data-box-gateway-manage-shares/refresh-1.png)
 
 2. 单击“刷新”。 
 
@@ -122,13 +122,13 @@ ms.locfileid: "98786904"
 在 Azure 门户中执行以下步骤，以同步存储访问密钥。
 
 1. 在资源中转到“概述”。 
-2. 在共享列表中，选择并单击与需要同步的存储帐户关联的共享。单击 " **同步存储密钥**"。 
+2. 在共享列表中，选择并单击与需要同步的存储帐户相关联的共享。单击“同步存储密钥”。 
 
      ![同步存储密钥](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
 
 3. 当系统提示确认时，单击“是”。 同步完成后，请退出对话框。
 
-     ![同步存储密钥2](media/data-box-gateway-manage-shares/sync-storage-key-2.png)
+     ![同步存储密钥 2](media/data-box-gateway-manage-shares/sync-storage-key-2.png)
 
 >[!NOTE]
 > 只需针对给定的存储帐户执行此操作一次。 对于与同一存储帐户关联的所有共享，无需重复此操作。

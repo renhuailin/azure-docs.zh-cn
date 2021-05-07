@@ -1,19 +1,19 @@
 ---
-title: 将 Windows 虚拟桌面 (经典) web 客户端连接到 Azure
-description: 如何使用 web 客户端连接到 Windows 虚拟桌面 (经典) 。
+title: 连接 Windows 虚拟桌面（经典）Web 客户端 - Azure
+description: 如何使用 Web 客户端连接到 Windows 虚拟桌面（经典）。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: c8a55e35ba89caefc362024fc871ac5eb800447b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+manager: femila
+ms.openlocfilehash: 0ea095a8ed902b9636b0cb8026f86eb3a0882460
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88008417"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445187"
 ---
-# <a name="connect-to-windows-virtual-desktop-classic-with-the-web-client"></a>通过 web 客户端连接到 Windows 虚拟桌面 (经典) 
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-web-client"></a>使用 Web 客户端连接到 Windows 虚拟桌面（经典）
 
 >[!IMPORTANT]
 >本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../connect-web.md)。
@@ -40,7 +40,7 @@ Web 客户端允许从 Web 浏览器访问 Windows 虚拟桌面资源，而无�
 在浏览器中，导航到 <https://rdweb.wvd.microsoft.com/webclient> 上的 Windows Virtual Desktop Web 客户端，然后使用用户帐户登录。
 
 >[!NOTE]
->如果使用 Azure 资源管理器集成的 Windows 虚拟桌面，请改为连接到资源 <https://rdweb.wvd.microsoft.com/arm/webclient> 。
+>如果同时使用 Windows 虚拟桌面和 Azure 资源管理器，请改为通过 <https://rdweb.wvd.microsoft.com/arm/webclient> 连接到资源。
 
 >[!NOTE]
 >如果已使用与要用于 Windows 虚拟桌面的帐户不同的 Azure Active Directory 帐户登录，则应注销或使用专用浏览器窗口。
@@ -49,4 +49,4 @@ Web 客户端允许从 Web 浏览器访问 Windows 虚拟桌面资源，而无�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关如何使用 Web 客户端的详细信息，请查看 [Web 客户端入门](/windows-server/remote/remote-desktop-services/clients/remote-desktop-web-client)。
+若要详细了解如何使用 Web 客户端，请查看 [Web 客户端入门](/windows-server/remote/remote-desktop-services/clients/remote-desktop-web-client)。

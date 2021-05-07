@@ -4,10 +4,10 @@ description: 本教程介绍如何通过设置一个或多个计时器触发器�
 ms.topic: article
 ms.date: 11/24/2020
 ms.openlocfilehash: 13a4ccac4ea97538583c1c063a6dc61e4d25686a
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96030605"
 ---
 # <a name="tutorial-run-an-acr-task-on-a-defined-schedule"></a>教程：按定义的计划运行 ACR 任务
@@ -36,13 +36,13 @@ ms.locfileid: "96030605"
     * 可在创建任务时指定多个计时器触发器，也可以在以后添加。
     * （可选）为触发器命名以便于管理，否则 ACR 任务将提供默认的触发器名称。
     * 如果多个计时器计划在某个时间发生重叠，ACR 任务将在每个计时器的计划时间触发任务。
-* **其他任务触发器** - 在计时器触发的任务中，还可以基于 [源代码提交](container-registry-tutorial-build-task.md)或 [基础映像更新](container-registry-tutorial-base-image-update.md)启用触发器。 与其他 ACR 任务一样，你也可以 [手动运行][az-acr-task-run] 计划的任务。
+* **其他任务触发器** - 在计时器触发的任务中，还可以基于 [源代码提交](container-registry-tutorial-build-task.md)或 [基础映像更新](container-registry-tutorial-base-image-update.md)启用触发器。 与其他 ACR 任务一样，也可以[手动运行][az-acr-task-run]计划任务。
 
 ## <a name="create-a-task-with-a-timer-trigger"></a>创建具有计时器触发器的任务
 
 ### <a name="task-command"></a>任务命令
 
-首先，使用适用于你的环境的值填充以下 shell 环境变量。 此步骤并非必须执行的步骤，但它能让在此教程中执行多个 Azure CLI 命令更容易。 如果未填充环境变量，则必须在示例命令中出现的任何位置手动替换每个值。
+首先，使用适用于环境的值填充以下 shell 环境变量。 此步骤并非必须执行的步骤，但它能让在此教程中执行多个 Azure CLI 命令更容易。 如果未填充环境变量，则每当示例命令中出现一个值，都必须手动替换该值。
 
 [![嵌入式启动](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
 
@@ -52,7 +52,7 @@ ACR_NAME=<registry-name>        # The name of your Azure container registry
 
 使用 [az acr task create][az-acr-task-create] 命令创建任务时，可以选择性地添加计时器触发器。 添加 `--schedule` 参数并为计时器传递 cron 表达式。
 
-作为一个简单的示例，以下任务触发了 `hello-world` 每天 21:00 UTC 从 Microsoft 容器注册表运行映像。 该任务无需源代码上下文即可运行。
+举个简单的例子，以下任务会触发每天 21:00（UTC 时间）从 Microsoft 容器注册表运行 `hello-world` 映像的操作。 该任务无需源代码上下文即可运行。
 
 ```azurecli
 az acr task create \
@@ -83,7 +83,7 @@ timertask linux       Enabled                           BASE_IMAGE, TIMER
 az acr task run --name timertask --registry $ACR_NAME
 ```
 
-如果容器成功运行，则输出类似于以下内容。 该输出经过简化，只显示关键步骤
+如果容器成功运行，输出将如下所示。 该输出经过简化，只显示关键步骤
 
 ```output
 Queued a run with ID: cf2a
@@ -119,7 +119,7 @@ ca14      timertask  linux       Succeeded  Manual     2020-11-20T20:53:35Z  00:
 
 ### <a name="add-or-update-a-timer-trigger"></a>添加或更新计时器触发器
 
-创建任务后，可以选择性地使用 [az acr task timer add][az-acr-task-timer-add] 命令添加计时器触发器。 下面的示例将计时器触发器名称 *timer2* 添加到之前创建的 *timertask* 。 此计时器每日 10:30（UTC 时间）触发任务。
+创建任务后，可以选择性地使用 [az acr task timer add][az-acr-task-timer-add] 命令添加计时器触发器。 以下示例将名为 timer2 的计时器触发器添加到前面创建的 timertask。 此计时器每日 10:30（UTC 时间）触发任务。
 
 ```azurecli
 az acr task timer add \
@@ -166,7 +166,7 @@ az acr task timer list --name timertask --registry $ACR_NAME
 
 ### <a name="remove-a-timer-trigger"></a>删除计时器触发器
 
-使用 [az acr task timer remove][az-acr-task-timer-remove] 命令从任务中删除计时器触发器。 下面的示例从 *timertask* 中删除 *timer2* 触发器：
+使用 [az acr task timer remove][az-acr-task-timer-remove] 命令从任务中删除计时器触发器。 以下示例从 timertask 中删除 timer2 触发器：
 
 ```azurecli
 az acr task timer remove \
@@ -223,7 +223,7 @@ az ad sp delete --id http://$ACR_NAME-pull
 
 本教程介绍了如何创建由计时器自动触发的 Azure 容器注册表任务。 
 
-有关使用计划任务清理注册表中的存储库的示例，请参阅 [自动清除 Azure 容器注册表](container-registry-auto-purge.md)中的映像。
+有关使用计划任务清理注册表中的存储库的示例，请参阅[从 Azure 容器注册表中自动清除映像](container-registry-auto-purge.md)。
 
 有关由源代码提交或基础映像更新触发的任务的示例，请参阅 [ACR 任务系列教程](container-registry-tutorial-quick-task.md)中的其他文章。
 

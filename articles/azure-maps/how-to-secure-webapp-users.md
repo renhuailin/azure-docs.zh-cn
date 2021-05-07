@@ -1,7 +1,7 @@
 ---
-title: 如何使用交互式单一登录来保护 web 应用程序
+title: 如何使用交互式单一登录来保护 Web 应用
 titleSuffix: Azure Maps
-description: 如何使用 OpenID Connect 协议配置支持 Azure Maps Web SDK Azure AD 单一登录的 web 应用程序。
+description: 如何用应用 OpenID Connect 协议的 Azure Maps Web SDK 配置支持 Azure AD 单一登录的 Web 应用。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
@@ -11,57 +11,57 @@ services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
 ms.openlocfilehash: ebdc4b219e0840c18e6bef8ebfe9b8eefa8faf3b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92895558"
 ---
-# <a name="secure-a-web-application-with-user-sign-in"></a>使用用户登录来保护 web 应用程序
+# <a name="secure-a-web-application-with-user-sign-in"></a>使用用户登录来保护 Web 应用
 
-以下指南适用于在 web 服务器上托管的应用程序，维护多个业务方案，并部署到 web 服务器。 应用程序要求提供仅保护 Azure AD 用户保护的受保护资源。 此方案的目标是使 web 应用程序能够对 Azure AD 进行身份验证，并代表用户调用 Azure Maps REST Api。
+以下指南适用于在 Web 服务器上托管的应用程序，指南维护多个业务方案并部署到 Web 服务器。 应用程序要求提供仅对 Azure AD 用户而言安全的受保护资源。 此方案的目标是使 Web 应用能够对 Azure AD 进行身份验证，并代表用户调用 Azure Maps REST API。
 
 [!INCLUDE [authentication details](./includes/view-authentication-details.md)]
 
 ## <a name="create-an-application-registration-in-azure-ad"></a>在 Azure AD 中创建应用程序注册
 
-你必须在 Azure AD 中创建 web 应用程序，以便用户登录。 然后，此 web 应用程序会委托用户对 Azure Maps REST Api 的访问权限。
+必须在 Azure AD 中创建 Web 应用，以便用户登录。 然后，此 Web 应用会将用户的访问权限委托给 Azure Maps REST API。
 
-1. 在 "Azure 门户的" Azure 服务 "列表中，选择" **Azure Active Directory** "  >  **应用注册** "  >  **新注册** "。  
+1. 在 Azure 门户的 Azure 服务列表中，依次选择“Azure Active Directory” > “应用注册” > “新注册”。    
 
     > [!div class="mx-imgBorder"]
     > ![应用注册](./media/how-to-manage-authentication/app-registration.png)
 
-2. 输入 **名称** ，选择 " **支持帐户类型** "，提供 "重定向 URI"，它表示 Azure AD 将颁发令牌的 url，它是用于托管地图控件的 url。 有关更多详细信息，请参阅 Azure AD [方案：登录用户的 Web 应用](../active-directory/develop/scenario-web-app-sign-user-overview.md)。 完成 Azure AD 方案中提供的步骤。  
+2. 输入“名称”，选择“支持帐户类型”，提供重定向 URI，它表示 Azure AD 将颁发令牌的 url，是用于托管地图控件的 url。 有关更多详细信息，请参阅 Azure AD [方案：用于登录用户的 Web 应用](../active-directory/develop/scenario-web-app-sign-user-overview.md)。 完成 Azure AD 方案中提供的步骤。  
 
-3. 完成应用程序注册后，确认应用程序登录是否适用于用户。 登录完成后，可以向应用程序授予对 Azure Maps REST Api 的委托访问权限。
+3. 完成应用程序注册后，确认应用程序登录是否对用户有效。 登录完成后，可以向应用程序授予 Azure Maps REST Api 的委托访问权限。
     
-4.  若要将委派的 API 权限分配到 Azure Maps，请访问应用程序。 然后选择 " **API 权限** " "  >  **添加权限** "。 在 " **我的组织使用的 api** " 下，搜索并选择 " **Azure Maps** "。
+4.  若要将委托的 API 权限分配给 Azure Maps，请访问应用程序。 然后依次选择“API 权限” > “添加权限”。  在“我的组织使用的 API”下，搜索并选择“Azure Maps” 。
 
     > [!div class="mx-imgBorder"]
     > ![添加应用 API 权限](./media/how-to-manage-authentication/app-permissions.png)
 
-5. 选中 " **Access Azure Maps** 旁边的复选框，然后选择" **添加权限** "。
+5. 选中“访问 Azure Maps”旁边的复选框，然后选择“添加权限” 。
 
     > [!div class="mx-imgBorder"]
     > ![选择应用 API 权限](./media/how-to-manage-authentication/select-app-permissions.png)
 
-6. 通过使用应用程序密钥配置应用注册，使 web 应用程序能够调用 Azure Maps REST Api，有关详细步骤，请参阅用于 [调用 Web api 的 web 应用：应用注册](../active-directory/develop/scenario-web-app-call-api-app-registration.md)。 需要提供机密才能 Azure AD 代表用户进行身份验证。 应用注册证书或机密应存储在安全存储区中，以便 web 应用程序可以检索到 Azure AD 的身份验证。 
+6. 通过用应用程序机密配置应用注册，使 Web 应用能调用 Azure Maps REST API，有关详细步骤，请参阅[调用 Web API 的 Web 应用：应用注册](../active-directory/develop/scenario-web-app-call-api-app-registration.md)。 需要提供机密才能代表用户对 Azure AD 进行身份验证。 应用注册证书或机密应存储在安全存储中，以便 Web 应用检索，对 Azure AD 进行身份验证。 
    
-   * 如果应用程序已配置 Azure AD 应用注册和密钥，则可以跳过此步骤。
+   * 如果应用程序已配置 Azure AD 应用注册和机密，则可以跳过此步骤。
 
 > [!Tip]
-> 如果应用程序托管在 Azure 环境中，我们建议使用 [azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md) 和 Azure Key Vault 实例通过 [获取访问令牌](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) 访问 Azure Key Vault 机密或证书来访问机密。 若要连接到 Azure Key Vault 以检索机密，请参阅 [教程，通过托管标识进行连接](../key-vault/general/tutorial-net-create-vault-azure-web-app.md)。
+> 如果应用程序托管在 Azure 环境中，我们建议使用 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)和Azure Key Vault 实例通过[获取访问令牌](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)以访问 Azure Key Vault 机密或证书，进而访问机密。 若要连接到 Azure Key Vault 以检索机密，请参阅[教程：通过托管标识进行连接](../key-vault/general/tutorial-net-create-vault-azure-web-app.md)。
    
 7. 为 Azure Maps Web SDK 实现一个安全令牌终结点，以访问令牌。 
    
-   * 有关令牌控制器的示例，请参阅 [Azure Maps Azure AD 示例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples/blob/master/src/OpenIdConnect/AzureMapsOpenIdConnectv1/AzureMapsOpenIdConnect/Controllers/TokenController.cs)。 
-   * 对于非 AspNetCore 实现或其他，请参阅从 Azure AD 文档 [获取应用的令牌](../active-directory/develop/scenario-web-app-call-api-acquire-token.md) 。
-   * 安全令牌终结点负责为经过身份验证和授权的用户返回访问令牌，以调用 Azure Maps REST Api。
+   * 对于令牌控制器示例，请参阅 [Azure Maps Azure AD 示例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples/blob/master/src/OpenIdConnect/AzureMapsOpenIdConnectv1/AzureMapsOpenIdConnect/Controllers/TokenController.cs)。 
+   * 对于非 AspNetCore 实现或其他，请参阅从 Azure AD 文档[获取应用令牌](../active-directory/develop/scenario-web-app-call-api-acquire-token.md)。
+   * 安全令牌终结点负责为经过身份验证和授权的用户返回访问令牌，以调用 Azure Maps REST API。
 
-8. 为用户或组配置 azure RBAC)  (azure 基于角色的访问控制。 请参阅 [为用户授予基于角色的访问权限](#grant-role-based-access-for-users-to-azure-maps)。
+8. 为用户或组配置 Azure 基于角色的访问控制 (Azure RBAC)。 请参阅[向用户授予基于角色的访问权限](#grant-role-based-access-for-users-to-azure-maps)。
 
-9. 使用 Azure Maps Web SDK 配置 web 应用程序页，以便访问安全令牌终结点。 
+9. 使用 Azure Maps Web SDK 配置 Web 应用页，以便访问安全令牌终结点。 
 
 ```javascript
 var map = new atlas.Map("map", {
@@ -98,11 +98,11 @@ var map = new atlas.Map("map", {
 
 ## <a name="next-steps"></a>后续步骤
 
-进一步了解 web 应用程序方案：
+进一步了解 Web 应用方案：
 > [!div class="nextstepaction"]
 > [场景：可将用户登录的 Web 应用](../active-directory/develop/scenario-web-app-sign-user-overview.md)
 
-查找 Azure Maps 帐户的 API 使用情况指标：
+查找 Azure Maps 帐户的 API 使用指标：
 > [!div class="nextstepaction"]
 > [查看使用情况指标](how-to-view-api-usage.md)
 

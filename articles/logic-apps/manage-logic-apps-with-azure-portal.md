@@ -10,10 +10,10 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 07/20/2020
 ms.openlocfilehash: d50f577a7170982be004cc8957114f79675fbc6e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96006092"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>在 Azure 门户中管理逻辑应用
@@ -36,7 +36,7 @@ ms.locfileid: "96006092"
 
 1. 在 Azure 搜索栏中输入 `logic apps`，然后选择“逻辑应用”。
 
-   ![Azure 门户菜单的屏幕截图，在搜索栏中搜索和选择逻辑应用。](./media/manage-logic-apps-with-azure-portal/find-select-logic-apps.png)
+   ![该屏幕截图显示 Azure 门户菜单，以及在搜索栏中搜索并选择“逻辑应用”。](./media/manage-logic-apps-with-azure-portal/find-select-logic-apps.png)
 
 1. 在“逻辑应用”页上，找到并选择要管理的逻辑应用。
 
@@ -100,13 +100,13 @@ ms.locfileid: "96006092"
 
    * 在工具栏中选择“禁用”。
 
-     ![逻辑应用工具栏的屏幕截图，显示 "禁用" 按钮已选中。](./media/manage-logic-apps-with-azure-portal/disable-single-logic-app.png)
+     ![逻辑应用工具栏屏幕截图，显示选择了“禁用”按钮。](./media/manage-logic-apps-with-azure-portal/disable-single-logic-app.png)
 
      如果逻辑应用已禁用，则只会看到“启用”选项。
 
    * 在工具栏中选择“启用”。
 
-     ![逻辑应用工具栏的屏幕截图，其中显示了 "启用" 按钮。](./media/manage-logic-apps-with-azure-portal/enable-single-logic-app.png)
+     ![逻辑应用工具栏屏幕截图，显示选择了“启用”按钮。](./media/manage-logic-apps-with-azure-portal/enable-single-logic-app.png)
 
      如果逻辑应用已启用，则只会看到“禁用”选项。 
 
@@ -122,15 +122,15 @@ ms.locfileid: "96006092"
 
 1. 若要检查某个逻辑应用当前是已启用还是已禁用，请在“逻辑应用”页上查看该逻辑应用的“状态”列。  
 
-   !["Azure 门户逻辑应用" 页的屏幕截图，显示按状态列排序的逻辑应用列表。](./media/manage-logic-apps-with-azure-portal/view-logic-app-status.png)
+   ![“Azure 门户逻辑应用”页的屏幕截图，显示按状态列排序的逻辑应用列表。](./media/manage-logic-apps-with-azure-portal/view-logic-app-status.png)
 
    如果“状态”列不可见，请在“逻辑应用”工具栏上选择“试用预览版”。  
 
-   !["Azure 门户逻辑应用" 页的屏幕截图，显示 "尝试预览" 按钮已选中。](./media/manage-logic-apps-with-azure-portal/select-try-preview.png)
+   ![“Azure 门户逻辑应用”页的屏幕截图，显示“尝试预览”按钮已选中。](./media/manage-logic-apps-with-azure-portal/select-try-preview.png)
 
 1. 在复选框列中，选择要禁用或启用的逻辑应用。 在工具栏上选择“禁用”或“启用”。 
 
-   ![Azure 门户逻辑应用 "页的屏幕截图，其中显示了多个逻辑应用的" 启用 "和" 禁用 "按钮。](./media/manage-logic-apps-with-azure-portal/enable-disable-multiple-logic-apps.png)
+   ![“Azure 门户逻辑应用”页的屏幕截图，显示了多个逻辑应用的“启用”和“禁用”按钮。](./media/manage-logic-apps-with-azure-portal/enable-disable-multiple-logic-apps.png)
 
 1. 确认框出现时，选择“是”以继续。
 
@@ -158,7 +158,7 @@ ms.locfileid: "96006092"
 
 1. 在逻辑应用的菜单中，选择“概览”。 在逻辑应用的工具栏上，选择“删除”。
 
-   ![逻辑应用工具栏的屏幕截图，显示 "删除" 按钮已选中。](./media/manage-logic-apps-with-azure-portal/delete-single-logic-app.png)
+   ![逻辑应用工具栏屏幕截图，显示选择了“删除”按钮。](./media/manage-logic-apps-with-azure-portal/delete-single-logic-app.png)
 
 1. 确认框出现时，输入逻辑应用的名称，然后选择“删除”。
 
@@ -174,7 +174,7 @@ ms.locfileid: "96006092"
 
 1. 在复选框列中，选择要删除的逻辑应用。 在工具栏中选择“删除”。
 
-   ![逻辑应用页的屏幕截图，其中显示了一个选定要删除的列表中的多个逻辑应用。](./media/manage-logic-apps-with-azure-portal/delete-multiple-logic-apps.png)
+   ![逻辑应用页的屏幕截图，显示了一个选定要删除的列表中的多个逻辑应用。](./media/manage-logic-apps-with-azure-portal/delete-multiple-logic-apps.png)
 
 1. 确认框出现时，输入 `yes` 并选择“删除”。
 
@@ -196,7 +196,7 @@ ms.locfileid: "96006092"
 
 1. 在逻辑应用菜单中的“开发工具”下，选择“版本”。 
 
-   ![Azure 门户中逻辑应用的屏幕截图，显示 "开发工具" 下的 "版本" 页的选择。](./media/manage-logic-apps-with-azure-portal/logic-apps-menu-versions.png)
+   ![Azure 门户中逻辑应用的屏幕截图，显示“开发工具”下的“版本”页的选择。](./media/manage-logic-apps-with-azure-portal/logic-apps-menu-versions.png)
 
 1. 从列表中选择要管理的逻辑应用的“版本”。 可以在搜索栏中输入“版本”标识符以筛选列表。
 
@@ -216,7 +216,7 @@ ms.locfileid: "96006092"
 
 1. 在打开的“逻辑应用设计器”页上，按需编辑所要提升的版本。 可以在“设计器”和“代码视图”模式之间进行切换。  还可以更新“参数”、“模板”和“连接器”。  
 
-   ![逻辑应用设计器的屏幕截图，显示用于升级逻辑应用的以前版本的按钮。](./media/manage-logic-apps-with-azure-portal/promote-page.png)
+   ![逻辑应用设计器的屏幕截图，显示用于升级逻辑应用以前版本的按钮。](./media/manage-logic-apps-with-azure-portal/promote-page.png)
 
 1. 若要保存任何更新并完成以前版本的提升，请选择“保存”。 （或者，若要取消更改，请选择“放弃”。） 
 

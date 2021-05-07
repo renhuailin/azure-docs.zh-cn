@@ -1,13 +1,13 @@
 ---
 title: 从门户更新现有分配
-description: 了解在 Azure 蓝图中通过门户更新现有蓝图分配的机制。
+description: 了解如何在 Azure 蓝图中通过门户而更新现有蓝图分配的机制。
 ms.date: 01/27/2021
 ms.topic: how-to
 ms.openlocfilehash: c383ebedaf83b3a52062c91f98b816c3baf6618e
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98919387"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>如何更新现有蓝图分配
@@ -24,19 +24,19 @@ ms.locfileid: "98919387"
 
 1. 从左侧页面选择“分配的蓝图”。
 
-1. 在蓝图列表中，选择蓝图分配。 然后，使用 " **更新分配** " 按钮或右键单击蓝图分配，然后选择 " **更新分配**"。
+1. 在蓝图列表中，左键单击蓝图分配。 然后使用“更新分配”按钮，或右键单击蓝图分配并选择“更新分配”。
 
-   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="突出显示 &quot;更新分配&quot; 按钮的蓝图分配页的屏幕截图。" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="突出显示了“更新分配”按钮的“蓝图分配”页面的屏幕截图。" border="false":::
 
-1. " **分配蓝图** " 页加载已预先填充原始赋值的所有值。 可以更改“蓝图定义版本”、“锁定分配”状态，以及蓝图定义上存在的任何动态参数。 完成更改后，选择 " **分配** "。
+1. “分配蓝图”页将加载预先填写的来自原始分配的所有值。 可以更改“蓝图定义版本”、“锁定分配”状态，以及蓝图定义上存在的任何动态参数。 完成更改时，选择“分配”。
 
 1. 在更新后的分配详细信息页上，查看新状态。 在此示例中，我们向分配添加了“锁定”。
 
-   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="显示锁定模式已更改的已更新蓝图分配屏幕截图。" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="显示锁定模式已更改的更新蓝图分配屏幕截图。" border="false":::
 
-1. 使用下拉菜单浏览有关其他 **分配操作** 的详细信息。 **托管资源** 的表由所选的分配操作更新。
+1. 使用下拉列表了解有关其他“分配操作”的详细信息。 “受管理资源”表通过选择的分配操作进行更新。
 
-   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="显示分配操作及其状态的已更新蓝图分配的屏幕截图。" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="显示分配操作及其状态的更新后蓝图分配的屏幕截图。" border="false":::
 
 ## <a name="rules-for-updating-assignments"></a>更新分配规则
 
@@ -54,7 +54,7 @@ ms.locfileid: "98919387"
 
 ## <a name="possible-errors-on-updating-assignments"></a>更新分配上可能出现的错误
 
-更新分配时，在执行期间进行更改可能会导致中断。 一个示例是在部署完成后更改资源组的位置。 [资源管理器](../../../azure-resource-manager/management/overview.md)支持的任何更改都可以进行，但通过资源管理器导致错误的任何更改也会导致分配失败。
+更新分配时，在执行期间进行更改可能会导致中断。 一个示例是在部署完成后更改资源组的位置。 [资源管理器](../../../azure-resource-manager/management/overview.md)支持的任何更改都可以进行，但是任何会在资源管理器中导致错误的更改也将导致分配失败。
 
 可以更新分配的次数没有限制。 如果发生错误，请确定该错误并对分配进行其他更新。  示例错误场景：
 

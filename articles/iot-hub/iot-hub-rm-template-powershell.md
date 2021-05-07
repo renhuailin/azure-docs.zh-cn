@@ -1,6 +1,6 @@
 ---
 title: 使用模板创建 Azure IoT 中心 (PowerShell) | Microsoft Docs
-description: 如何使用 Azure 资源管理器模板创建包含 Azure PowerShell 的 IoT 中心。
+description: 如何使用 Azure 资源管理器模板和 PowerShell 创建 IoT 中心。
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -9,17 +9,17 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: 1fedadfa7e5b4ec3d7de30d0ad3ef1b1bfa0e0ec
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92144395"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>使用 Azure 资源管理器模板创建 IoT 中心 (PowerShell)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-了解如何使用 Azure 资源管理器模板创建 IoT 中心和使用者组。 Resource Manager 模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 有关开发资源管理器模板的详细信息，请参阅 [Azure 资源管理器文档](../azure-resource-manager/index.yml)。
+了解如何使用 Azure 资源管理器模板创建 IoT 中心和使用者组。 资源管理器模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 有关开发资源管理器模板的详细信息，请参阅 [Azure 资源管理器文档](../azure-resource-manager/index.yml)。
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
@@ -33,7 +33,7 @@ ms.locfileid: "92144395"
 
 可通过多种方法来部署模板。  在本教程中，将使用 Azure PowerShell。
 
-若要运行 PowerShell 脚本，请选择 " **尝试** " 以打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择 "粘贴"：
+若要运行 PowerShell 脚本，请选择“试用”以打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -47,7 +47,7 @@ New-AzResourceGroupDeployment `
     -iotHubName $iotHubName
 ```
 
-正如你在 PowerShell 脚本中所见，使用的模板来自 Azure 快速入门模板。 若要使用自己的，需要首先将模板文件上传到 Cloud shell，然后使用 `-TemplateFile` 开关指定文件名。  有关示例，请参阅[部署模板](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template)。
+正如你在 PowerShell 脚本中所见，使用的模板来自 Azure 快速入门模板。 若要使用你自己的模板，你需要先上传模板文件，然后使用 `-TemplateFile` 开关来指定文件名。  有关示例，请参阅[部署模板](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template)。
 
 ## <a name="next-steps"></a>后续步骤
 
