@@ -6,19 +6,18 @@ documentationcenter: na
 author: KumudD
 manager: mtillman
 ms.service: virtual-network
-Customer intent: As an Azure customer, I want to learn more about enabling routing preference for my CDN origin resources.
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2021
 ms.author: mnayak
-ms.openlocfilehash: 1fcc918e5b4b54a415fed0f38d210aeeaa62c008
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e6276ec1a1c3f52b6574ee60d40e743a183086eb
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101679165"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060578"
 ---
 # <a name="what-is-routing-preference-unmetered"></a>什么是不按流量计费的路由首选项？
 
@@ -45,4 +44,4 @@ ms.locfileid: "101679165"
 
 * [使用 Azure PowerShell 为 VM 配置路由首选项](configure-routing-preference-virtual-machine-powershell.md)
 * [使用 Azure CLI 为 VM 配置路由首选项](configure-routing-preference-virtual-machine-cli.md)
-* [为存储帐户配置路由首选项](/azure/storage/common/network-routing-preference)
+* [为存储帐户配置路由首选项](../storage/common/network-routing-preference.md)

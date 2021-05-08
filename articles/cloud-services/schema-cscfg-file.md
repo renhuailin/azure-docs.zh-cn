@@ -1,24 +1,25 @@
 ---
-title: Azure 云服务 (经典) 定义架构 ( .cscfg 文件) |Microsoft Docs
-description: 服务配置 ( .cscfg) 文件指定为每个角色部署的角色实例数、配置值和角色的证书指纹。
+title: Azure 云服务（经典）定义架构（.cscfg 文件）| Microsoft Docs
+description: 服务配置 (.cscfg) 文件指定要为每个角色部署的角色实例数、配置值和角色的证书指纹。
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: ba933d4981fb7ed209a7fb5d5c41113750f312de
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.openlocfilehash: 17fea7c1eb75f8041c4c6a79870bfc653ea767ae
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98743468"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935135"
 ---
-# <a name="azure-cloud-services-classic-config-schema-cscfg-file"></a>Azure 云服务 (经典) Config 架构 ( .cscfg 文件) 
+# <a name="azure-cloud-services-classic-config-schema-cscfg-file"></a>Azure 云服务（经典）配置架构（.cscfg 文件）
 
 > [!IMPORTANT]
-> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
 服务配置文件指定要为服务中每个角色部署的角色实例数、任何配置设置的值，以及与角色关联的任何证书的缩略图。 如果服务属于虚拟网络，必须在服务配置文件以及虚拟网络配置文件中提供网络的配置信息。 服务配置文件的默认扩展名为 .csdef。
 

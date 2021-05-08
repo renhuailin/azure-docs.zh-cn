@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 3393856b25040cff603ea2ef51e8adbcba78dc26
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b7bed0f3b10dd057073203bb9c2e336299c50662
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102034687"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108207980"
 ---
 # <a name="what-is-an-ontology"></a>什么是 ontology？ 
 
@@ -42,16 +42,16 @@ Ontology 为数字孪生解决方案提供了良好的起点。 它们包含一�
 
 | 策略 | 说明 | 资源 |
 | --- | --- | --- |
-| **采用** | 你可以使用开源 DTDL ontology 启动自己的解决方案，这种 ontology 基于广泛采用的行业标准构建。 可以使用现成的模型集，也可以自行添加扩展，形成定制解决方案。 | [*概念：&nbsp;采用&nbsp;行业&nbsp;标准 ontology*](concepts-ontologies-adopt.md)<br><br>[*概念：&nbsp;扩展 &nbsp;ontology*](concepts-ontologies-extend.md) |
-| **转换** | 如果目前已有以其他标准格式表示的模型，则可以将它们转换为 DTDL，以便将它们用于 Azure 数字孪生。 | [*概念：&nbsp;转换 &nbsp;ontology*](concepts-ontologies-convert.md)<br><br>[*概念：&nbsp;扩展 &nbsp;ontology*](concepts-ontologies-extend.md) |
-| **作者** | 你随时都可以使用任何适用的行业标准作为灵感，从头开发自己的自定义 DTDL 模型。 | [*概念：DTDL 模型*](concepts-models.md) |
+| **采用** | 你可以使用开源 DTDL ontology 启动自己的解决方案，这种 ontology 基于广泛采用的行业标准构建。 可以使用现成的模型集，也可以自行添加扩展，形成定制解决方案。 | [概念：&nbsp;采用&nbsp;行业&nbsp;标准 ontology](concepts-ontologies-adopt.md)<br><br>[概念：&nbsp;扩展 &nbsp;ontology](concepts-ontologies-extend.md) |
+| **转换** | 如果目前已有以其他标准格式表示的模型，则可以将它们转换为 DTDL，以便将它们用于 Azure 数字孪生。 | [概念：&nbsp;转换 &nbsp;ontology](concepts-ontologies-convert.md)<br><br>[概念：&nbsp;扩展 &nbsp;ontology](concepts-ontologies-extend.md) |
+| **作者** | 你随时都可以使用任何适用的行业标准作为灵感，从头开发自己的自定义 DTDL 模型。 | [概念：DTDL 模型](concepts-models.md) |
 
 ### <a name="using-ontology-strategies-in-a-model-development-path"></a>在模型开发路径中使用 ontology 策略
 
 无论选用哪种策略来将 ontology 集成到 Azure 数字孪生中，都可以遵循以下完整路径来指导创建 ontology，并将其上传为 DTDL 模型。
 
 1. 首先，查看并了解 [Azure 数字孪生中的 DTDL 建模](concepts-models.md)。
-1. 使用上面所选的 ontology 集成策略（[**采用**](concepts-ontologies-adopt.md)、[**转换**](concepts-ontologies-convert.md)或根据 ontology [**创作**](concepts-models.md)模型）继续执行操作。
+1. 使用上面所选的 ontology 集成策略（[采用](concepts-ontologies-adopt.md)、[转换](concepts-ontologies-convert.md)或根据 ontology [创作](concepts-models.md)模型）继续执行操作。
     1. 如有必要，[扩展](concepts-ontologies-extend.md) ontology 以根据需求对其进行自定义。
 1. [验证](how-to-parse-models.md)模型，以确认它们是有效的 DTDL 文档。
 1. 使用 [API](how-to-manage-model.md#upload-models) 或类似于 [Azure 数字孪生模型上传工具](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader)的示例，将完成的模型上传到 Azure 数字孪生。
@@ -63,8 +63,8 @@ Ontology 为数字孪生解决方案提供了良好的起点。 它们包含一�
 ## <a name="next-steps"></a>后续步骤
 
 阅读有关采用、转换和创作 ontology 策略的详细信息：
-* [*概念：采用行业标准 ontology*](concepts-ontologies-adopt.md)
-* [*概念：转换 ontology*](concepts-ontologies-convert.md)
-* [*如何：管理 DTDL 模型*](how-to-manage-model.md)
+* [概念：采用行业标准 ontology](concepts-ontologies-adopt.md)
+* [概念：转换 ontology](concepts-ontologies-convert.md)
+* [如何：管理 DTDL 模型](how-to-manage-model.md)
 
-或者，了解如何使用模型来创建数字孪生：[*概念：数字孪生和孪生关系图*](concepts-twins-graph.md)。
+或者，了解如何使用模型来创建数字孪生：[概念：数字孪生和孪生关系图](concepts-twins-graph.md)。

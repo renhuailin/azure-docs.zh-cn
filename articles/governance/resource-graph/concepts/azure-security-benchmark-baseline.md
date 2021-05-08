@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e5e01c8d1ac16e5e8be405660a0726796789e645
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ad8968fdb6548da29a031f0e44bd3671f67b5553
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738967"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557711"
 ---
 # <a name="azure-security-baseline-for-azure-resource-graph"></a>Azure Resource Graph 的 Azure 安全基线
 
@@ -30,7 +30,7 @@ ms.locfileid: "101738967"
 
 指导：Azure Resource Graph 根据 Azure 基于角色的访问控制 (Azure RBAC) 来提供对资源类型和属性的访问权限。 定期审核并查看授予安全主体（用户、组和服务帐户）的访问权限，以确保查询返回相应资源的结果。
 
-- [Azure Resource Graph 中的权限](https://docs.microsoft.com/azure/governance/resource-graph/overview#permissions-in-azure-resource-graph)
+- [Azure Resource Graph 中的权限](../overview.md#permissions-in-azure-resource-graph)
 
 - [如何使用 Azure 标识访问评审](../../../active-directory/governance/access-reviews-overview.md)
 
@@ -46,7 +46,7 @@ Azure 安全中心监视：无
 
 指导：使用 Azure RBAC 来控制对数据和资源的访问。 若要使用 Azure Resource Graph，你还必须拥有对想要查询的资源的相应权限。 此访问权限应该限制为只读，并且只应授予所需人员。
 
-- [Azure Resource Graph 中的权限](https://docs.microsoft.com/azure/governance/resource-graph/overview#permissions-in-azure-resource-graph)
+- [Azure Resource Graph 中的权限](../overview.md#permissions-in-azure-resource-graph)
 
 - [如何配置 Azure RBAC](../../../role-based-access-control/role-assignments-rest.md)
 
@@ -96,5 +96,5 @@ Azure 安全中心监视：无
 
 ## <a name="next-steps"></a>后续步骤
 
-- 参阅 [Azure 安全基准 V2 概述](/azure/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)
+- 参阅 [Azure 安全基准 V2 概述](../../../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../../../security/benchmarks/security-baselines-overview.md)

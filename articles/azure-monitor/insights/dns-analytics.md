@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: df9efef1000ab6a824c869e6684ab1424e8462f4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: f01a1204aefbcaabe0ddac254b24bc014c3d5a64
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708095"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104654520"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>使用 DNS Analytics 预览解决方案收集有关 DNS 基础结构的见解
 
@@ -54,15 +54,15 @@ DNS Analytics 可帮助：
 
 ### <a name="configure-the-solution"></a>配置解决方案
 
-在解决方案仪表板上，单击“配置”打开 DNS Analytics 配置页面。 可进行两种类型的配置更改：
+从 Azure 门户中的 Log Analytics 工作区中，选择“**工作区摘要**”，然后单击“**DNS Analytics**”磁贴。 在解决方案仪表板上，单击“配置”打开 DNS Analytics 配置页面。 可进行两种类型的配置更改：
 
-- **Allowlisted 域名**。 解决方案不会处理所有查找查询。 它保留域名后缀的允许列表。 解析为与此允许列表中的域名后缀相匹配的域名的查找查询不会被解决方案处理。 不处理 allowlisted 域名有助于优化发送到 Azure Monitor 的数据。 默认允许列表包括常用公共域名，如 www.google.com 和 www.facebook.com。 可以滚动查看完整的默认列表。
+- **列入允许列表的域名**。 解决方案不会处理所有查找查询。 这样可保留域名后缀允许列表。 查找查询会解析为匹配此允许列表中域名后缀的域名，但不由解决方案处理。 不处理列入允许列表的域名有助于优化发送到 Azure Monitor 的数据。 默认允许列表包括常用的公共域名，例如 www.google.com 和 www.facebook.com。 可以滚动查看完整的默认列表。
 
   可以修改列表，添加任何想要查看的域名后缀，从而查看查找见解。 还可以删除任何不感兴趣的域名后缀，从而查看查找见解。
 
 - **频繁通信的客户端阈值**。 DNS 客户端超出查找请求数的阈值时，将突出显示在“DNS 客户端”边栏选项卡中。 默认阈值为 1,000。 可以编辑该阈值。
 
-    ![Allowlisted 域名](./media/dns-analytics/dns-config.png)
+    ![列入允许列表的域名。](./media/dns-analytics/dns-config.png)
 
 ## <a name="management-packs"></a>管理包
 
@@ -109,7 +109,7 @@ DNS 磁贴包括在其中收集数据的 DNS 服务器的数量。 它还包括�
 - 解析域名得到的 IP 地址。
 - 恶意 IP 地址。
 - 问题严重性。
-- 列入阻止列表恶意 IP 的原因。
+- 将恶意 IP 列入方块列表的原因。
 - 检测时间。
 
 **查询的域**。 提供环境中的 DNS 客户端正在查询的最常见域名。 可以查看所有查询的域名的列表。 还可以向下钻取日志搜索中特定域名的查找请求详细信息。

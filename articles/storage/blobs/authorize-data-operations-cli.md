@@ -12,17 +12,17 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 06b37e8b25d932115384124a45156c801fb9708f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100361666"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-with-azure-cli"></a>选择如何使用 Azure CLI 授权 Blob 数据访问
 
 Azure 存储提供适用于 Azure CLI 的扩展，使你能够指定如何授权针对 Blob 数据的操作。 可通过以下方式授权数据操作：
 
-- 使用 Azure Active Directory (Azure AD) 安全主体。 Microsoft 建议使用 Azure AD 凭据以获得高级安全和易用性。
+- 使用 Azure Active Directory (Azure AD) 安全主体。 Microsoft 建议使用 Azure AD 凭据来实现优异的安全性和易用性。
 - 使用帐户访问密钥或共享访问签名 (SAS) 令牌。
 
 ## <a name="specify-how-data-operations-are-authorized"></a>指定数据操作的授权方式
@@ -35,10 +35,10 @@ Azure 存储提供适用于 Azure CLI 的扩展，使你能够指定如何授权
 若要使用 `--auth-mode` 参数，请确保已安装 Azure CLI 2.0.46 或更高版本。 运行 `az --version` 以查看已安装版本。
 
 > [!NOTE]
-> 当使用 Azure 资源管理器 **ReadOnly** 锁锁定存储帐户时，不允许该存储帐户执行 [列表键](/rest/api/storagerp/storageaccounts/listkeys) 操作。 **列出密钥** 是一项 POST 操作，并且为该帐户配置了 **ReadOnly** 锁后，将阻止所有 POST 操作。 出于此原因，当使用 **ReadOnly** 锁锁定帐户时，还没有帐户密钥的用户用户必须使用 Azure AD 凭据来访问 blob 数据。
+> 在使用 Azure 资源管理器 ReadOnly 锁锁定了某个存储帐户时，不允许为该存储帐户执行[列出密钥](/rest/api/storagerp/storageaccounts/listkeys)操作。 “列出密钥”是 POST 操作，并且在为该帐户配置了 ReadOnly 锁时，所有的 POST 操作都会被阻止 。 出于此原因，在使用 ReadOnly 锁锁定了帐户时，还没有帐户密钥的用户必须使用 Azure AD 凭据来访问 Blob 数据。
 
 > [!IMPORTANT]
-> 如果省略 `--auth-mode` 参数或将其设置为 `key`，则 Azure CLI 会尝试使用帐户访问密钥进行授权。 在这种情况下，Microsoft 建议你在命令或 **AZURE_STORAGE_KEY** 环境变量中提供访问密钥。 有关环境变量的详细信息，请参阅标题为[为授权参数设置环境变量](#set-environment-variables-for-authorization-parameters)的部分。
+> 如果省略 `--auth-mode` 参数或将其设置为 `key`，则 Azure CLI 会尝试使用帐户访问密钥进行授权。 在这种情况下，Microsoft 建议在命令或 AZURE_STORAGE_KEY 环境变量中提供访问密钥。 有关环境变量的详细信息，请参阅标题为[为授权参数设置环境变量](#set-environment-variables-for-authorization-parameters)的部分。
 >
 > 如果不提供访问密钥，则 Azure CLI 会尝试调用 Azure 存储资源提供程序来检索每个操作的访问密钥。 执行多个需要调用资源提供程序的数据操作可能会导致发生限制。 有关资源提供程序限制的详细信息，请参阅 [Azure 存储资源提供程序的可伸缩性和性能目标](../common/scalability-targets-resource-provider.md)。
 
@@ -87,7 +87,7 @@ az storage container create \
 ```
 
 > [!IMPORTANT]
-> 当使用 Azure 资源管理器 **ReadOnly** 锁锁定存储帐户时，不允许该存储帐户执行 [列表键](/rest/api/storagerp/storageaccounts/listkeys) 操作。 **列出密钥** 是一项 POST 操作，并且为该帐户配置了 **ReadOnly** 锁后，将阻止所有 POST 操作。 出于此原因，当使用 **ReadOnly** 锁锁定帐户时，用户必须使用 Azure AD 凭据访问数据。
+> 在使用 Azure 资源管理器 ReadOnly 锁锁定了某个存储帐户时，不允许对该存储帐户执行[列出密钥](/rest/api/storagerp/storageaccounts/listkeys)操作。 “列出密钥”是 POST 操作，并且在为该帐户配置了 ReadOnly 锁时，所有的 POST 操作都会被阻止 。 出于此原因，在使用 ReadOnly 锁锁定了帐户时，用户必须使用 Azure AD 凭据访问数据。
 
 ## <a name="authorize-with-a-sas-token"></a>使用 SAS 令牌授权
 

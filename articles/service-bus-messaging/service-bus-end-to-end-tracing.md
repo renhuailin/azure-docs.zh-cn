@@ -5,15 +5,15 @@ ms.topic: article
 ms.date: 02/03/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 19b284aceb83fbbc2bcf662b2b58941e6a5b36f9
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99539207"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>通过服务总线消息传递进行分布式跟踪和关联
 
-微服务开发中的常见问题之一是能够通过处理中涉及的所有服务从客户端跟踪操作。 此能力对于进行调试、性能分析、A/B 测试和其他典型诊断方案相当有用。
+微服务开发中的常见问题之一是能否通过处理过程中涉及的所有服务跟踪来自客户端的操作。 此能力对于进行调试、性能分析、A/B 测试和其他典型诊断方案相当有用。
 此问题的一个组成部分是跟踪工作的逻辑片段。 这包括消息处理结果和延迟，以及外部依赖项调用。 另一个组成部分是这些诊断事件在进程边界外部的关联。
 
 当生成者通过队列发送消息时，此活动通常发生在其他某个逻辑操作的范围内，并由其他客户端或服务启动。 当使用者收到消息时，会继续相同的操作。 生成者与使用者（以及其他处理该操作的服务）也许会发出遥测事件，以跟踪操作流和结果。 若要将此类事件相关联并以端到端的方式跟踪操作，报告遥测数据的每个服务必须为每个事件提供跟踪上下文戳记。
@@ -21,13 +21,13 @@ ms.locfileid: "99539207"
 Microsoft Azure 服务总线消息传递已定义生成者与使用者应该用来传递此类跟踪上下文的有效负载属性。
 该协议基于 [HTTP 关联协议](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)。
 
-# <a name="azuremessagingservicebus-sdk-latest"></a>[ (最新) 的 Azure 消息传送。 ](#tab/net-standard-sdk-2)
+# <a name="azuremessagingservicebus-sdk-latest"></a>[Azure.Messaging.ServiceBus SDK（最新）](#tab/net-standard-sdk-2)
 | 属性名称        | 说明                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnostic-Id       | 生成者针对队列发出的外部调用的唯一标识符。 请参阅 [HTTP 协议中的 Request-Id](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) 了解事实依据、注意事项和格式 |
 
 ## <a name="service-bus-net-client-autotracing"></a>服务总线 .NET 客户端自动跟踪
-`ServiceBusProcessor`[适用于 .Net 的 Azure 消息服务总线客户端](/dotnet/api/azure.messaging.servicebus.servicebusprocessor)的类提供跟踪系统或客户端代码的一部分可以挂钩的跟踪检测点。 使用检测可以从客户端跟踪对服务总线消息传递服务发出的所有调用。 如果消息处理[ `ProcessMessageAsync` `ServiceBusProcessor` 是使用 (](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processmessageasync)消息处理程序模式) 完成的，则还会检测消息处理。
+[适用于 .NET 的 Azure 消息传送服务总线客户端](/dotnet/api/azure.messaging.servicebus.servicebusprocessor)的 `ServiceBusProcessor` 类提供了可通过跟踪系统或客户端代码片段挂接的跟踪检测点。 使用检测可以从客户端跟踪对服务总线消息传递服务发出的所有调用。 如果消息处理是使用 [`ServiceBusProcessor` 的 `ProcessMessageAsync`](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processmessageasync)（消息处理程序模式）完成的，则还会检测消息处理。
 
 ### <a name="tracking-with-azure-application-insights"></a>使用 Azure Application Insights 进行跟踪
 
@@ -38,7 +38,7 @@ Microsoft Azure 服务总线消息传递已定义生成者与使用者应该用�
 - [ASP.NET Core](../azure-monitor/app/asp-net-core.md) - 安装版本 2.2.0-beta2 或更高版本。
 这些链接提供了有关安装 SDK、创建资源和配置 SDK（如果需要）的详细信息。 针对非 ASP.NET 应用程序，请参阅[适用于控制台应用程序的 Azure Application Insights](../azure-monitor/app/console.md) 一文。
 
-如果[ `ProcessMessageAsync` `ServiceBusProcessor` 使用 (](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processmessageasync)消息处理程序模式) 来处理消息，则还会检测消息处理。 服务完成的所有服务总线调用会自动进行跟踪，并与其他遥测项关联。 否则，请参考以下示例手动进行消息处理跟踪。
+如果你使用 [`ServiceBusProcessor` 的 `ProcessMessageAsync`](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processmessageasync)（消息处理程序模式）来处理消息，则还会检测消息处理。 系统会自动跟踪由服务完成的所有服务总线调用，并将其与其他遥测项关联。 否则，请参考以下示例手动进行消息处理跟踪。
 
 #### <a name="trace-message-processing"></a>跟踪消息处理
 
@@ -71,24 +71,24 @@ async Task ProcessAsync(ProcessMessageEventArgs args)
 }
 ```
 
-在此示例中，将为每个已处理的消息报告请求遥测，时间戳、持续时间和结果 (成功) 。 遥测功能也会提供一组关联属性。 在消息处理期间报告的嵌套跟踪和异常也带有关联属性的戳记，代表它们是 `RequestTelemetry` 的“子级”。
+在本示例中，系统针对每个已处理的消息报告请求遥测，并提供时间戳、持续时间和结果（成功）。 遥测功能也会提供一组关联属性。 在消息处理期间报告的嵌套跟踪和异常也带有关联属性的戳记，代表它们是 `RequestTelemetry` 的“子级”。
 
-如果在消息处理过程中对支持的外部组件进行调用，则它们也会自动进行跟踪和关联。 请参阅[使用 Application Insights .NET SDK 跟踪自定义操作](../azure-monitor/app/custom-operations-tracking.md)来了解手动跟踪和关联。
+如果在消息处理期间对支持的外部组件发出调用，则还会自动跟踪和关联这些调用。 请参阅[使用 Application Insights .NET SDK 跟踪自定义操作](../azure-monitor/app/custom-operations-tracking.md)来了解手动跟踪和关联。
 
-如果除 Application Insights SDK 外，还在运行任何外部代码，则查看 Application Insights 日志时应会看到较长的 **持续时间** 。 
+如果除 Application Insights SDK 之外还运行了外部代码，则在查看 Application Insights 日志时，你会发现持续时间延长。 
 
 ![Application Insights 日志中更长的持续时间](./media/service-bus-end-to-end-tracing/longer-duration.png)
 
-这并不意味着接收消息时存在延迟。 在这种情况下，消息已经被接收，因为消息以参数的形式传递给 SDK 代码。 而且，App Insights 日志（进程）中的“名称”标记指示消息正在由外部事件处理代码处理 。 此问题不与 Azure 相关。 相反，这些指标指示的是外部代码的效率，前提是已从服务总线接收到消息。 
+这并不意味着接收消息时存在延迟。 在这种情况下，消息已经被接收，因为消息以参数的形式传递给 SDK 代码。 而且，App Insights 日志（进程）中的“名称”标记指示消息正在由外部事件处理代码处理 。 此问题与 Azure 无关。 相反，这些指标指示的是外部代码的效率，前提是已从服务总线接收到消息。 
 
 ### <a name="tracking-without-tracing-system"></a>在没有跟踪系统的情况下进行跟踪
-如果跟踪系统不支持自动服务总线调用跟踪，则可能要考虑将此类支持添加到跟踪系统或应用程序中。 本部分介绍服务总线 .NET 客户端发送的诊断事件。  
+如果跟踪系统不支持自动服务总线调用跟踪，可以考虑将此类支持添加到跟踪系统或应用程序中。 本部分介绍服务总线 .NET 客户端发送的诊断事件。  
 
 使用 .NET 跟踪基元 [System.Diagnostics.Activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) 和 [System.Diagnostics.DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) 检测服务总线 .NET 客户端。
 
 `Activity` 充当跟踪上下文，而 `DiagnosticSource` 是通知机制。 
 
-如果 DiagnosticSource 事件没有侦听器，则检测将关闭，从而使检测成本保持为零。 DiagnosticSource 将所有控制权授予侦听器：
+如果没有针对 DiagnosticSource 事件的侦听器，检测会关闭，以避免产生检测成本。 DiagnosticSource 将所有控制权授予侦听器：
 - 侦听器控制要侦听的源和事件
 - 侦听器控制事件速率和采样
 - 事件连同某个有效负载一起发送，该有效负载可提供完整上下文，使你能够在事件发生期间访问和修改 Message 对象
@@ -135,37 +135,37 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 在此示例中，侦听器记录每个服务总线操作的持续时间、结果、唯一标识符和开始时间。
 
 ### <a name="events"></a>事件
-所有事件都具有以下属性，这些属性符合打开的遥测规范： https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/api.md 。
+所有事件都会具有以下属性，这些属性符合开放式遥测规范： https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/api.md 。
 
-- `message_bus.destination` –队列/主题/订阅路径
-- `peer.address` –完全限定的命名空间
-- `kind` –制造者、使用者或客户端。 生成消息时，在接收时使用制造者，并在进行结算时使用客户端。
+- `message_bus.destination` - 队列/主题/订阅路径
+- `peer.address` - 完全限定的命名空间
+- `kind` - 生成者、使用者或客户端。 发送消息时使用生成者，接收时使用使用者，处置时使用客户端。
 - `component` – `servicebus`
 
-所有事件还具有 "实体" 和 "终结点" 属性，下表中省略了这些属性
-  * `string Entity` --实体 (队列和主题的名称，等等 ) 
+此外，所有事件还具有“Entity”和“Endpoint”属性，但下表中省略了这些属性
+  * `string Entity` -  - 实体（队列、主题等）的名称
   * `Uri Endpoint` - 服务总线终结点 URL
 
-### <a name="instrumented-operations"></a>检测操作
-下面是已检测操作的完整列表：
+### <a name="instrumented-operations"></a>检测的操作
+下面是检测的操作的完整列表：
 
 | 操作名称 | 跟踪的 API |
 | -------------- | ----------- | 
-| ServiceBusSender | ServiceBusSender.SendMessageAsync<br/>ServiceBusSender.SendMessagesAsync |
-| ServiceBusSender | ServiceBusSender. ScheduleMessageAsync<br/>ServiceBusSender.ScheduleMessagesAsync | 
-| ServiceBusSender | ServiceBusSender.CancelScheduledMessageAsync<br/>ServiceBusSender.CancelScheduledMessagesAsync |
-| ServiceBusReceiver | ServiceBusReceiver.ReceiveMessageAsync<br/>ServiceBusReceiver.ReceiveMessagesAsync |
+| ServiceBusSender.Send | ServiceBusSender.SendMessageAsync<br/>ServiceBusSender.SendMessagesAsync |
+| ServiceBusSender.Schedule | ServiceBusSender.ScheduleMessageAsync<br/>ServiceBusSender.ScheduleMessagesAsync | 
+| ServiceBusSender.Cancel | ServiceBusSender.CancelScheduledMessageAsync<br/>ServiceBusSender.CancelScheduledMessagesAsync |
+| ServiceBusReceiver.Receive | ServiceBusReceiver.ReceiveMessageAsync<br/>ServiceBusReceiver.ReceiveMessagesAsync |
 | ServiceBusReceiver.ReceiveDeferred | ServiceBusReceiver.ReceiveDeferredMessagesAsync |
-| ServiceBusReceiver | ServiceBusReceiver. PeekMessageAsync<br/>ServiceBusReceiver.PeekMessagesAsync |
-| ServiceBusReceiver | ServiceBusReceiver.AbandonMessagesAsync |
-| ServiceBusReceiver 完成 | ServiceBusReceiver.CompleteMessagesAsync |
-| ServiceBusReceiver. 死信 | ServiceBusReceiver.DeadLetterMessagesAsync |
-| ServiceBusReceiver |  ServiceBusReceiver.DeferMessagesAsync |
+| ServiceBusReceiver.Peek | ServiceBusReceiver.PeekMessageAsync<br/>ServiceBusReceiver.PeekMessagesAsync |
+| ServiceBusReceiver.Abandon | ServiceBusReceiver.AbandonMessagesAsync |
+| ServiceBusReceiver.Complete | ServiceBusReceiver.CompleteMessagesAsync |
+| ServiceBusReceiver.DeadLetter | ServiceBusReceiver.DeadLetterMessagesAsync |
+| ServiceBusReceiver.Defer |  ServiceBusReceiver.DeferMessagesAsync |
 | ServiceBusReceiver.RenewMessageLock | ServiceBusReceiver.RenewMessageLockAsync |
 | ServiceBusSessionReceiver.RenewSessionLock | ServiceBusSessionReceiver.RenewSessionLockAsync |
 | ServiceBusSessionReceiver.GetSessionState | ServiceBusSessionReceiver.GetSessionStateAsync |
 | ServiceBusSessionReceiver.SetSessionState | ServiceBusSessionReceiver.SetSessionStateAsync |
-| ServiceBusProcessor. ProcessMessage | ServiceBusProcessor 上的处理器回调集。 ProcessMessageAsync 属性 |
+| ServiceBusProcessor.ProcessMessage | ServiceBusProcessor 上的处理器回调集。 ProcessMessageAsync 属性 |
 | ServiceBusSessionProcessor.ProcessSessionMessage | ServiceBusSessionProcessor 上的处理器回调集。 ProcessMessageAsync 属性 |
 
 ### <a name="filtering-and-sampling"></a>筛选和采样
@@ -177,19 +177,19 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 按以下顺序调用 `IsEnabled`：
 
-1. `IsEnabled(<OperationName>, string entity, null)`，例如 `IsEnabled("ServiceBusSender.Send", "MyQueue1")`。 请注意，末尾没有 "开始" 或 "停止"。 使用此语句可以筛选出特定的操作或队列。 如果回调方法返回 `false` ，则不会发送操作的事件。
+1. `IsEnabled(<OperationName>, string entity, null)`，例如 `IsEnabled("ServiceBusSender.Send", "MyQueue1")`。 请注意，末尾没有“Start”或“Stop”。 使用此语句可以筛选出特定的操作或队列。 如果回调方法返回 `false`，则表示未发送操作的事件。
 
    * 对于“Process”和“ProcessSession”操作，还会收到 `IsEnabled(<OperationName>, string entity, Activity activity)` 回调。 使用此回调可根据 `activity.Id` 或 Tags 属性筛选事件。
   
-2. `IsEnabled(<OperationName>.Start)`，例如 `IsEnabled("ServiceBusSender.Send.Start")`。 检查是否应激发“Start”事件。 结果只影响 "开始" 事件，但进一步检测并不依赖于它。
+2. `IsEnabled(<OperationName>.Start)`，例如 `IsEnabled("ServiceBusSender.Send.Start")`。 检查是否应激发“Start”事件。 结果只影响“Start”事件，但进一步的检测不依赖它。
 
-没有 `IsEnabled` "停止" 事件。
+“Stop”事件没有 `IsEnabled`。
 
-如果某个操作结果为异常，则会调用 `IsEnabled("ServiceBusSender.Send.Exception")`。 只能订阅“Exception”事件并阻止剩余的检测。 在此情况下，仍需处理此类异常。 由于其他检测已禁用，因此，不应期望跟踪上下文与来自使用者的消息一起流动。
+如果某个操作结果为异常，则会调用 `IsEnabled("ServiceBusSender.Send.Exception")`。 只能订阅“Exception”事件并阻止剩余的检测。 在此情况下，仍需处理此类异常。 由于其他检测已被禁用，因此跟踪上下文不会连同消息一起从使用者流向生成者。
 
-也可以使用 `IsEnabled` 来实现采样策略。 基于或的采样 `Activity.Id` `Activity.RootId` 可确保所有轮 (的采样一致，只要它通过跟踪系统或您自己的代码) 传播即可。
+也可以使用 `IsEnabled` 来实现采样策略。 基于 `Activity.Id` 或 `Activity.RootId` 的采样可确保所有尝试都获取一致的采样结果（前提是采样内容通过跟踪系统或你自己的代码传播）。
 
-对于同一源存在多个 `DiagnosticSource` 侦听器，只需一个侦听器即可接受该事件，因此无法保证 `IsEnabled` 调用。
+如果同一个源存在多个 `DiagnosticSource` 侦听器，则只需一个侦听器接受事件，因此无法保证调用 `IsEnabled`。
 
 
 
@@ -214,7 +214,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 - [ASP.NET Core](../azure-monitor/app/asp-net-core.md) - 安装版本 2.2.0-beta2 或更高版本。
 这些链接提供了有关安装 SDK、创建资源和配置 SDK（如果需要）的详细信息。 针对非 ASP.NET 应用程序，请参阅[适用于控制台应用程序的 Azure Application Insights](../azure-monitor/app/console.md) 一文。
 
-如果使用 [消息处理程序模式](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler) 来处理消息，则已完成：会自动跟踪服务完成的所有服务总线调用，并将其与其他遥测项相关联。 否则，请参考以下示例手动进行消息处理跟踪。
+如果你使用[消息处理程序模式](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler)来处理消息，则无需执行其他操作，系统会自动跟踪由服务完成的所有服务总线调用，并将其与其他遥测项关联。 否则，请参考以下示例手动进行消息处理跟踪。
 
 #### <a name="trace-message-processing"></a>跟踪消息处理
 
@@ -248,22 +248,22 @@ async Task ProcessAsync(Message message)
 在本示例中，系统针对每个已处理的消息报告 `RequestTelemetry`，并提供时间戳、持续时间和结果（成功）。 遥测功能也会提供一组关联属性。
 在消息处理期间报告的嵌套跟踪和异常也带有关联属性的戳记，代表它们是 `RequestTelemetry` 的“子级”。
 
-如果在消息处理过程中对支持的外部组件进行调用，则它们也会自动进行跟踪和关联。 请参阅[使用 Application Insights .NET SDK 跟踪自定义操作](../azure-monitor/app/custom-operations-tracking.md)来了解手动跟踪和关联。
+如果在消息处理期间对支持的外部组件发出调用，则还会自动跟踪和关联这些调用。 请参阅[使用 Application Insights .NET SDK 跟踪自定义操作](../azure-monitor/app/custom-operations-tracking.md)来了解手动跟踪和关联。
 
-如果除 Application Insights SDK 外，还在运行任何外部代码，则查看 Application Insights 日志时应会看到较长的 **持续时间** 。 
+如果除 Application Insights SDK 之外还运行了外部代码，则在查看 Application Insights 日志时，你会发现持续时间延长。 
 
 ![Application Insights 日志中更长的持续时间](./media/service-bus-end-to-end-tracing/longer-duration.png)
 
-这并不意味着接收消息时存在延迟。 在这种情况下，消息已经被接收，因为消息以参数的形式传递给 SDK 代码。 而且，App Insights 日志（进程）中的“名称”标记指示消息正在由外部事件处理代码处理 。 此问题不与 Azure 相关。 相反，这些指标指示的是外部代码的效率，前提是已从服务总线接收到消息。 请参阅 [GitHub 上的此文件](https://github.com/Azure/azure-sdk-for-net/blob/4bab05144ce647cc9e704d46d3763de5f9681ee0/sdk/servicebus/Microsoft.Azure.ServiceBus/src/ServiceBusDiagnosticsSource.cs)，了解从服务总线接收到消息后，生成和分配“进程”标记的位置。 
+这并不意味着接收消息时存在延迟。 在这种情况下，消息已经被接收，因为消息以参数的形式传递给 SDK 代码。 而且，App Insights 日志（进程）中的“名称”标记指示消息正在由外部事件处理代码处理 。 此问题与 Azure 无关。 相反，这些指标指示的是外部代码的效率，前提是已从服务总线接收到消息。 请参阅 [GitHub 上的此文件](https://github.com/Azure/azure-sdk-for-net/blob/4bab05144ce647cc9e704d46d3763de5f9681ee0/sdk/servicebus/Microsoft.Azure.ServiceBus/src/ServiceBusDiagnosticsSource.cs)，了解从服务总线接收到消息后，生成和分配“进程”标记的位置。 
 
 ### <a name="tracking-without-tracing-system"></a>在没有跟踪系统的情况下进行跟踪
-如果跟踪系统不支持自动服务总线调用跟踪，则可能要考虑将此类支持添加到跟踪系统或应用程序中。 本部分介绍服务总线 .NET 客户端发送的诊断事件。  
+如果跟踪系统不支持自动服务总线调用跟踪，可以考虑将此类支持添加到跟踪系统或应用程序中。 本部分介绍服务总线 .NET 客户端发送的诊断事件。  
 
 使用 .NET 跟踪基元 [System.Diagnostics.Activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) 和 [System.Diagnostics.DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) 检测服务总线 .NET 客户端。
 
 `Activity` 充当跟踪上下文，而 `DiagnosticSource` 是通知机制。 
 
-如果 DiagnosticSource 事件没有侦听器，则检测将关闭，从而使检测成本保持为零。 DiagnosticSource 将所有控制权授予侦听器：
+如果没有针对 DiagnosticSource 事件的侦听器，检测会关闭，以避免产生检测成本。 DiagnosticSource 将所有控制权授予侦听器：
 - 侦听器控制要侦听的源和事件
 - 侦听器控制事件速率和采样
 - 事件连同某个有效负载一起发送，该有效负载可提供完整上下文，使你能够在事件发生期间访问和修改 Message 对象
@@ -312,17 +312,17 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 #### <a name="events"></a>事件
 
-对于每个操作，将发送两个事件：“Start”和“Stop”。 大多数情况下，你只对 "停止" 事件感兴趣。 它们提供操作的结果，并将开始时间和持续时间作为活动属性。
+对于每个操作，将发送两个事件：“Start”和“Stop”。 你很可能只对“Stop”事件感兴趣。 这些事件提供操作的结果，并以 Activity 属性的形式提供开始时间和持续时间。
 
 每个事件有效负载为侦听器提供操作上下文，并复制 API 传入参数和返回值。 “Stop”事件有效负载具有“Start”事件有效负载的所有属性，因此可以完全忽略“Start”事件。
 
-所有事件还具有 "实体" 和 "终结点" 属性，下表中省略了这些属性
+此外，所有事件还具有“Entity”和“Endpoint”属性，但下表中省略了这些属性
   * `string Entity` - 实体（队列、主题等）的名称
   * `Uri Endpoint` - 服务总线终结点 URL
 
 每个“Stop”事件具有表示 `TaskStatus` 异步操作已完成的 `Status` 属性，为便于阅读，下表中也省略了该属性。
 
-下面是已检测操作的完整列表：
+下面是检测的操作的完整列表：
 
 | 操作名称 | 跟踪的 API | 特定的有效负载属性|
 |----------------|-------------|---------|
@@ -350,13 +350,13 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 在每个事件中，可以访问保存当前操作上下文的 `Activity.Current`。
 
-#### <a name="logging-more-properties"></a>记录更多属性
+#### <a name="logging-more-properties"></a>将更多属性记录到日志中
 
-`Activity.Current` 提供当前操作及其父级的详细上下文。 有关详细信息，请参阅 [活动文档](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)。
-Service Bus 检测功能提供了中的详细信息 `Activity.Current.Tags` `MessageId` `SessionId` 。
+`Activity.Current` 提供当前操作及其父级的详细上下文。 有关详细信息，请参阅 [Activity 文档](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)。
+服务总线检测在 `Activity.Current.Tags` 中提供更多信息 - 这些信息包含 `MessageId` 和 `SessionId`（如果已提供）。
 
 跟踪“Receive”、“Peek”和“ReceiveDeferred”事件的活动还可能带有 `RelatedTo` 标记。 该标记包含作为结果收到的消息的 `Diagnostic-Id` 相异列表。
-此类操作可能导致收到多个不相关的消息。 此外， `Diagnostic-Id` 操作开始时未知，因此只能使用此标记将 "接收" 操作与 "进程" 操作相关联。 此标记在分析性能问题时相当有用，可以检查接收消息所花费的时间。
+此类操作可能导致收到多个不相关的消息。 此外，当操作启动时，`Diagnostic-Id` 未知，因此，只能使用此标记将“Receive”操作关联到“Process”操作。 此标记在分析性能问题时相当有用，可以检查接收消息所花费的时间。
 
 记录标记的有效方法是循环访问它们，将标记添加到上述示例后，结果如下所示： 
 
@@ -382,19 +382,19 @@ serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, D
 
 按以下顺序调用 `IsEnabled`：
 
-1. `IsEnabled(<OperationName>, string entity, null)`，例如 `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")`。 请注意，末尾没有 "开始" 或 "停止"。 使用此语句可以筛选出特定的操作或队列。 如果回调方法返回 `false` ，则不会发送操作的事件
+1. `IsEnabled(<OperationName>, string entity, null)`，例如 `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")`。 请注意，末尾没有“Start”或“Stop”。 使用此语句可以筛选出特定的操作或队列。 如果回调方法返回 `false`，则表示未发送操作的事件。
 
    * 对于“Process”和“ProcessSession”操作，还会收到 `IsEnabled(<OperationName>, string entity, Activity activity)` 回调。 使用此回调可根据 `activity.Id` 或 Tags 属性筛选事件。
   
-2. `IsEnabled(<OperationName>.Start)`，例如 `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")`。 检查是否应激发“Start”事件。 结果只影响 "开始" 事件，但进一步检测并不依赖于它。
+2. `IsEnabled(<OperationName>.Start)`，例如 `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")`。 检查是否应激发“Start”事件。 结果只影响“Start”事件，但进一步的检测不依赖它。
 
-没有 `IsEnabled` "停止" 事件。
+“Stop”事件没有 `IsEnabled`。
 
-如果某个操作结果为异常，则会调用 `IsEnabled("Microsoft.Azure.ServiceBus.Exception")`。 只能订阅“Exception”事件并阻止剩余的检测。 在此情况下，仍需处理此类异常。 由于其他检测已禁用，因此，不应期望跟踪上下文与来自使用者的消息一起流动。
+如果某个操作结果为异常，则会调用 `IsEnabled("Microsoft.Azure.ServiceBus.Exception")`。 只能订阅“Exception”事件并阻止剩余的检测。 在此情况下，仍需处理此类异常。 由于其他检测已被禁用，因此跟踪上下文不会连同消息一起从使用者流向生成者。
 
-也可以使用 `IsEnabled` 来实现采样策略。 基于或的采样 `Activity.Id` `Activity.RootId` 可确保所有轮 (的采样一致，只要它通过跟踪系统或您自己的代码) 传播即可。
+也可以使用 `IsEnabled` 来实现采样策略。 基于 `Activity.Id` 或 `Activity.RootId` 的采样可确保所有尝试都获取一致的采样结果（前提是采样内容通过跟踪系统或你自己的代码传播）。
 
-对于同一源存在多个 `DiagnosticSource` 侦听器，只需一个侦听器即可接受该事件，因此无法保证 `IsEnabled` 调用。
+如果同一个源存在多个 `DiagnosticSource` 侦听器，则只需一个侦听器接受事件，因此无法保证调用 `IsEnabled`。
 
 ---
 

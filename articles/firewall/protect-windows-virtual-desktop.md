@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: ad4f42d0e33f6d70c75abfcd1daab4f5aa9a515f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d5320f44aa5d922cea852ab09e5141fad277e2b0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94654977"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566020"
 ---
 # <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>使用 Azure 防火墙保护 Windows 虚拟桌面部署
 
@@ -54,7 +54,7 @@ Windows 虚拟桌面是在 Azure 运行的桌面和应用虚拟化服务。 当�
 - 创建网络规则集合添加以下规则：
 
    - 允许 DNS – 允许从 ADDS 专用 IP 地址到 * 的 TCP 和 UDP 端口 53 的流量。
-   - 允许 KMS –允许从 Windows 虚拟桌面虚拟机到 Windows 激活服务 TCP 端口 1688 的流量。 有关目标 IP 地址的详细信息，请参阅[强制隧道方案中的 Windows 激活失败](../virtual-machines/troubleshooting/custom-routes-enable-kms-activation.md#solution)。
+   - 允许 KMS –允许从 Windows 虚拟桌面虚拟机到 Windows 激活服务 TCP 端口 1688 的流量。 有关目标 IP 地址的详细信息，请参阅[强制隧道方案中的 Windows 激活失败](/troubleshoot/azure/virtual-machines/custom-routes-enable-kms-activation#solution)。
 
 > [!NOTE]
 > 某些部署可能不需要 DNS 规则，例如 Azure Active Directory 域控制器将 DNS 查询转发到位于 168.63.129.16 的 Azure DNS。

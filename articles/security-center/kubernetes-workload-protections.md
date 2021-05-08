@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: memildin
-ms.openlocfilehash: eacca5573c672e9f4485c26b1b580ee4c982c5d2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1a6a9080a8957b56d12eca289a500fd45f0e709b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104580738"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310812"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>保护 Kubernetes 工作负载
 
@@ -154,7 +154,6 @@ spec:
       labels:
         app: redis
       annotations:
-        apparmor.security.beta.kubernetes.io/pod: runtime/default
         container.apparmor.security.beta.kubernetes.io/redis: runtime/default
     spec:
       containers:

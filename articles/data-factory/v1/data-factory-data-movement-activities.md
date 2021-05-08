@@ -8,10 +8,10 @@ ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8a3fe99896ff244d2e35737919e6797141095acb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100364012"
 ---
 # <a name="move-data-by-using-copy-activity"></a>使用复制活动移动数据
@@ -76,7 +76,7 @@ ms.locfileid: "100364012"
 
 例如，可执行以下复制活动：
 
-* 复制 SQL Server 数据库中的数据，并以 ORC 格式写入 Azure Data Lake Store。
+* 复制 SQL Server 数据库中的数据，并将其以 ORC 格式写入 Azure Data Lake Store。
 * 从本地文件系统中复制文本 (CSV) 格式文件，并将其以 Avro 格式写入 Azure Blob。
 * 从本地文件系统中复制压缩文件，并将其解压缩然后传到 Azure Data Lake Store。
 * 从 Azure Blob 复制 GZip 压缩文本 (CSV) 格式的数据，并将其写入 Azure SQL 数据库。
@@ -99,15 +99,15 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 | &nbsp; | 美国西部 2 | 美国西部 2 |
 | 加拿大 | 加拿大东部 | 加拿大中部 |
 | &nbsp; | 加拿大中部 | 加拿大中部 |
-| 巴西 | 巴西南部 | Brazil South |
+| 巴西 | 巴西南部 | 巴西南部 |
 | 欧洲 | 北欧 | 北欧 |
 | &nbsp; | 西欧 | 西欧 |
 | 英国 | 英国西部 | 英国南部 |
 | &nbsp; | 英国南部 | 英国南部 |
-| 亚太区 | Southeast Asia | Southeast Asia |
+| 亚太区 | 东南亚 | Southeast Asia |
 | &nbsp; | 东亚 | 东南亚 |
 | 澳大利亚 | 澳大利亚东部 | 澳大利亚东部 |
-| &nbsp; | 澳大利亚东南部 | Australia Southeast |
+| &nbsp; | 澳大利亚东南部 | 澳大利亚东南部 |
 | 印度 | 印度中部 | 印度中部 |
 | &nbsp; | 印度西部 | 印度中部 |
 | &nbsp; | 印度南部 | 印度中部 |
@@ -132,7 +132,7 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 数据工厂复制向导有助于创建包含复制活动的管道。 使用此管道，无需对链接服务、数据集和管道编写 JSON 定义，即可将数据从支持的源复制到目标源。 有关此向导的详细信息，请参阅[数据工厂复制向导](data-factory-copy-wizard.md)。  
 
 ### <a name="by-using-json-scripts"></a>使用 JSON 脚本
-您可以使用 Visual Studio 中的数据工厂编辑器或 Azure PowerShell 通过使用复制活动) 为管道创建 JSON 定义 (。 然后，可对其进行部署以在数据工厂中创建管道。 有关包含分步说明的教程，请参阅[教程：在 Azure 数据工厂管道中使用复制活动](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。    
+可使用 Visual Studio 或 Azure PowerShell 中的数据工厂编辑器（通过使用“复制活动”）为管道创建 JSON 定义。 然后，可对其进行部署以在数据工厂中创建管道。 有关包含分步说明的教程，请参阅[教程：在 Azure 数据工厂管道中使用复制活动](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。    
 
 JSON 属性（例如名称、说明、输入和输出表，以及策略）可用于所有类型的活动。 可用于此活动的 `typeProperties` 节的属性因每个活动类型而异。
 

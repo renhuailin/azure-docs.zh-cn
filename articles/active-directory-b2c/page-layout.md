@@ -8,24 +8,34 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 03/22/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: df94bb5e6066b83afd566181debbc0872dc1a5b4
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
-ms.translationtype: MT
+ms.openlocfilehash: dc52414fa0d2eeffe0381a68bd66eadafe4862ea
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120256"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781273"
 ---
 # <a name="page-layout-versions"></a>页面布局版本
 
 页面布局包会定期更新，其中包括页面元素的修复和改进。 以下更改日志详述了在每个版本中引入的更改。
 
+## <a name="jquery-version"></a>jQuery 版本
+
+Azure AD B2C 页面布局使用以下版本的 [jQuery 库](https://jquery.com/)：
+
+|从页面布局版本  |jQuery 版本  |
+|---------|---------|
+|2.1.4 | 3.5.1 |
+|1.2.0 | 3.4.1 |
+|1.1.0 | 1.10.2 |
+
 ## <a name="self-asserted-page-selfasserted"></a>自断言页面 (selfasserted)
 
 **2.1.2**
-- 修复了西班牙语和法语等语言的本地化编码问题。
+- 修复了各种语言（例如西班牙语和法语）的本地化编码问题。
 
 **2.1.1**
 
@@ -74,9 +84,12 @@ ms.locfileid: "102120256"
 
 ## <a name="unified-sign-in-sign-up-page-with-password-reset-link-unifiedssp"></a>带有密码重置链接的统一登录注册页面 (unifiedssp)
 
+> [!TIP]
+> 如果对页面进行本地化以支持多种区域设置或用户流中的语言。 [本地化 ID](localization-string-ids.md) 提供了一系列可用于所选页面版本的本地化 ID。
+
 **2.1.2**
-- 修复了西班牙语和法语等语言的本地化编码问题。
-- 允许 "忘记密码" 链接用作声明交换。 有关详细信息，请参阅 [自助密码重置](add-password-reset-policy.md#self-service-password-reset-recommended)。
+- 修复了各种语言（例如西班牙语和法语）的本地化编码问题。
+- 允许将“忘记密码”链接用作声明交换。 有关详细信息，请参阅[自助式密码重置](add-password-reset-policy.md#self-service-password-reset-recommended)。
 
 **2.1.1**
 - 除了 `intro` 之外，还添加了一个 UXString `heading` 作为标题显示在页面上。 默认情况下会隐藏此项。

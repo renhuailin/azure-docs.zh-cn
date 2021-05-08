@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: 4cafe9af1eb5a765ab86bafb63cc9ab7d0889dc8
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99627593"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 触发器和绑定概念
@@ -39,19 +39,19 @@ ms.locfileid: "99627593"
 
 ###  <a name="trigger-and-binding-definitions"></a>触发器和绑定的定义
 
-触发器和绑定的定义不同，具体取决于开发语言。
+触发器和绑定的定义根据开发语言的不同而异。
 
 | 语言 | 触发器和绑定的配置方式... |
 |-------------|--------------------------------------------|
 | C# 类库 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用 C# 特性修饰方法和参数 |
-| Java | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用 Java 批注修饰方法和参数  | 
+| Java | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用 Java 注释修饰方法和参数  | 
 | JavaScript/PowerShell/Python/TypeScript | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更新 [function.json](./functions-reference.md)（[架构](http://json.schemastore.org/function)） |
 
-对于依赖 function.js的语言，该门户提供了一个用于在 " **集成** " 选项卡中添加绑定的 UI。你还可以在函数的 " **代码 + 测试** " 选项卡中直接在门户中编辑该文件。 Visual Studio Code 使你可以通过使用一组方便的提示来轻松地 [将绑定添加到文件的 function.js](functions-develop-vs-code.md?tabs=nodejs#add-a-function-to-your-project) 。 
+对于依赖 function.json 的语言，门户在“集成”选项卡中提供了用于添加绑定的 UI。还可以在门户中函数的“代码 + 测试”选项卡中直接编辑该文件。 使用 Visual Studio Code，可以通过一套方便的提示轻松地[将绑定添加到 function.json 文件](functions-develop-vs-code.md?tabs=nodejs#add-a-function-to-your-project)。 
 
-在 .NET 和 Java 中，参数类型定义输入数据的数据类型。 例如，使用 `string` 绑定到队列触发器的文本、要读取为二进制文件的字节数组以及要反序列化到对象的自定义类型。 由于 .NET 类库函数和 Java 函数不依赖于对绑定定义的 *function.js* ，因此不能在门户中创建和编辑这些函数。 C # 门户编辑基于 c # 脚本，该脚本使用 *function.json* 而不是特性。
+在 .NET 和 Java 中，参数类型定义了输入数据的数据类型。 例如，使用 `string` 绑定到队列触发器的文本、一个要读取为二进制内容的字节数组，以及一个要反序列化为对象的自定义类型。 由于 .NET 类库函数和 Java 函数不依赖 function.json 来绑定定义，所以在门户中不能对它们进行创建和编辑。 C# 门户编辑基于C# 脚本，该脚本使用 function.json 而不是特性。
 
-若要了解有关如何将绑定添加到现有函数的详细信息，请参阅 [使用绑定将函数连接到 Azure 服务](add-bindings-existing-function.md)。
+若要详细了解如何将绑定添加到现有函数，请参阅[使用绑定将函数连接到 Azure 服务](add-bindings-existing-function.md)。
 
 对于动态键入的语言（如 JavaScript），请在 function.json 文件中使用 `dataType` 属性。 例如，若要以二进制格式读取 HTTP 请求的内容，将 `dataType` 设置为 `binary`：
 

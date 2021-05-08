@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: a528e224511fda363afb80a7749a018e07b5fa26
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: cacf298fe5f8d6d36bfa6a963e3f3d9a2c996778
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587997"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108207728"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>如何使用 Postman 将请求发送到 Azure 数字孪生 API
 
@@ -21,15 +21,15 @@ ms.locfileid: "107587997"
 
 本文介绍如何通过以下步骤来配置 [Postman REST 客户端](https://www.getpostman.com/)以与 Azure 数字孪生 API 进行交互：
 
-1. 使用 Azure CLI 获取将用于在 Postman 中发出 API 请求的[持有者令牌](#get-bearer-token)。
-1. 设置 [Postman 集合](#about-postman-collections)并配置 Postman REST 客户端以使用持有者令牌进行身份验证。 设置集合时，你可以选择以下两种选项之一：
-    1. [导入](#import-collection-of-azure-digital-twins-apis)预生成的 Azure 数字孪生 API 请求集合。
-    1. 从头开始[创建](#create-your-own-collection)自己的集合。
-1. [将请求添加](#add-an-individual-request)到已配置的集合，并将其发送到 Azure 数字孪生 API。
+1. 使用 Azure CLI 获取将用于在 Postman 中发出 API 请求的持有者令牌。
+1. 设置 Postman 集合并配置 Postman REST 客户端以使用持有者令牌进行身份验证。 设置集合时，你可以选择以下两种选项之一：
+    1. 导入预生成的 Azure 数字孪生 API 请求集合。
+    1. 从头开始创建自己的集合。
+1. 将请求添加到已配置的集合，并将其发送到 Azure 数字孪生 API。
 
-Azure 数字孪生提供了两个可用的 API 集：数据平面和控制平面 。 如需详细了解这些 API 集之间的差异，请参阅[操作指南：使用 Azure 数字孪生 API 和 SDK](how-to-use-apis-sdks.md)。 本文包含这两个 API 集的信息。
+Azure 数字孪生提供了两个可用的 API 集：数据平面和控制平面 。 如需详细了解这些 API 集之间的差异，请参阅操作指南：使用 Azure 数字孪生 API 和 SDK。 本文包含这两个 API 集的信息。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要继续使用 Postman 访问 Azure 数字孪生 API，需要设置 Azure 数字孪生实例并下载 Postman。 本部分的其余部分将指导你完成这些步骤。
 
@@ -39,7 +39,7 @@ Azure 数字孪生提供了两个可用的 API 集：数据平面和控制平面
 
 ### <a name="download-postman"></a>下载 Postman
 
-接下来，下载 Postman 客户端的桌面版本。 导航到 [www.getpostman.com/apps](https://www.getpostman.com/apps)，然后按照提示下载应用。
+接下来，下载 Postman 客户端的桌面版本。 导航到 www.getpostman.com/apps，然后按照提示下载应用。
 
 ## <a name="get-bearer-token"></a>获取持有者令牌
 
@@ -78,7 +78,7 @@ Azure 数字孪生提供了两个可用的 API 集：数据平面和控制平面
     ---
 
     >[!NOTE]
-    > 如果需要使用属于不同于实例的 Azure Active Directory 租户的服务主体或用户帐户来访问 Azure 数字孪生实例，则需要从 Azure 数字孪生实例的“主”租户请求令牌。 有关此过程的详细信息，请参阅[操作指南：编写应用身份验证代码](how-to-authenticate-client.md#authenticate-across-tenants)。
+    > 如果需要使用属于不同于实例的 Azure Active Directory 租户的服务主体或用户帐户来访问 Azure 数字孪生实例，则需要从 Azure 数字孪生实例的“主”租户请求令牌。 有关此过程的详细信息，请参阅操作指南：编写应用身份验证代码。
 
 3. 复制结果中 `accessToken` 的值并将其保存，以便在下一部分中使用。 这就是你将提供给 Postman 用于授权请求的令牌值。
 
@@ -110,14 +110,14 @@ Postman 中的请求保存在集合（请求组）中。 创建集合以对请�
 # <a name="data-plane"></a>[数据平面](#tab/data-plane)
 
 目前有两个 Azure 数字孪生数据平面集合可供选择：
-* [**Azure 数字孪生 Postman 集合**](https://github.com/microsoft/azure-digital-twins-postman-samples)：此集合提供了在 Postman 中使用 Azure 数字孪生的简单入门体验。 请求包括示例数据，所以你只需要进行少量编辑就能运行这些请求。 如果需要易理解的关键 API 请求（包含示例信息）集，可选择此集合。
+* [Azure 数字孪生 Postman 集合](https://github.com/microsoft/azure-digital-twins-postman-samples)：此集合提供了在 Postman 中使用 Azure 数字孪生的简单入门体验。 请求包括示例数据，所以你只需要进行少量编辑就能运行这些请求。 如果需要易理解的关键 API 请求（包含示例信息）集，可选择此集合。
     - 查找该集合需导航到存储库链接，然后打开名为 postman_collection.json 的文件。
-* **[Azure 数字孪生数据平面 Swagger](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)** ：此存储库包含 Azure 数字孪生 API 集的完整 Swagger 文件，可将其作为集合下载并导入到 Postman。 这将提供包含每个 API 请求的完整请求集，但所含的数据部分为空，而不是包含示例数据。 如果需要每个 API 调用的访问权限，并自行填充所有数据，可选择此集合。
+* [Azure 数字孪生数据平面 Swagger](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins) ：此存储库包含 Azure 数字孪生 API 集的完整 Swagger 文件，可将其作为集合下载并导入到 Postman。 这将提供包含每个 API 请求的完整请求集，但所含的数据部分为空，而不是包含示例数据。 如果需要每个 API 调用的访问权限，并自行填充所有数据，可选择此集合。
     - 查找该集合需导航到存储库链接，然后选择最新规范版本的文件夹。 在此处，打开名为 digitaltwins.json 的文件。
 
 # <a name="control-plane"></a>[控制面板](#tab/control-plane)
 
-当前可用于控制平面的集合是 [Azure 数字孪生控制平面 Swagger](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)。 此存储库包含 Azure 数字孪生 API 集的完整 Swagger 文件，可将其作为集合下载并导入到 Postman 中。 这将提供包含每个 API 请求的完整请求集。
+当前可用于控制平面的集合是 Azure 数字孪生控制平面 Swagger。 此存储库包含 Azure 数字孪生 API 集的完整 Swagger 文件，可将其作为集合下载并导入到 Postman 中。 这将提供包含每个 API 请求的完整请求集。
 
 查找该集合需导航到存储库链接，然后选择最新规范版本的文件夹。 在此处，打开名为 digitaltwins.json 的文件。
 
@@ -172,7 +172,7 @@ Postman 中的请求保存在集合（请求组）中。 创建集合以对请�
 
 1. 还是在集合的编辑对话框中，移动到“Variables”选项卡。
 
-1. 使用[先决条件](#prerequisites)部分中实例的主机名来设置相关变量的“CURRENT VALUE”字段。 选择“保存”。
+1. 使用先决条件部分中实例的主机名来设置相关变量的“CURRENT VALUE”字段。 选择“保存”。
 
     :::image type="content" source="media/how-to-use-postman/postman-variables-imported.png" alt-text="Postman 中导入的集合的编辑对话框的屏幕截图，显示了“Variables”选项卡。突出显示了“CURRENT VALUE”字段。" lightbox="media/how-to-use-postman/postman-variables-imported.png":::
 
@@ -204,7 +204,7 @@ Postman 中的请求保存在集合（请求组）中。 创建集合以对请�
 
 提供所有必需的详细信息后，可通过“Send”按钮来运行请求。
 
-还可按照下面的[添加单个请求](#add-an-individual-request)部分中所述的过程，将自己的请求添加到集合中。
+还可按照下面的添加单个请求部分中所述的过程，将自己的请求添加到集合中。
 
 ## <a name="create-your-own-collection"></a>创建自己的集合
 
@@ -277,7 +277,7 @@ Postman 中的请求保存在集合（请求组）中。 创建集合以对请�
 若要继续执行示例查询，本文将使用查询 API（及其[参考文档](/rest/api/digital-twins/dataplane/query/querytwins)）来查询实例中的所有数字孪生。
 
 1. 获取参考文档中的请求 URL 和类型。 对于查询 API，当前为 POST `https://digitaltwins-hostname/query?api-version=2020-10-31`。
-1. 在 Postman 中，设置请求的类型并输入请求 URL，并根据需要填充 URL 中的占位符。 这是你将在[先决条件](#prerequisites)部分中使用实例的主机名的位置。
+1. 在 Postman 中，设置请求的类型并输入请求 URL，并根据需要填充 URL 中的占位符。 这是你将在先决条件部分中使用实例的主机名的位置。
     
    :::image type="content" source="media/how-to-use-postman/postman-request-url.png" alt-text="Postman 中新请求的详细信息的屏幕截图。参考文档中的查询 URL 已填充到请求 URL 框中。" lightbox="media/how-to-use-postman/postman-request-url.png":::
     
@@ -288,7 +288,7 @@ Postman 中的请求保存在集合（请求组）中。 创建集合以对请�
 
    :::image type="content" source="media/how-to-use-postman/postman-request-body.png" alt-text="Postman 中新请求的详细信息的屏幕截图，其中显示了“Body”选项卡。它包含带有“SELECT * FROM DIGITALTWINS”查询的原始 JSON 正文。" lightbox="media/how-to-use-postman/postman-request-body.png":::
 
-   有关创建 Azure 数字孪生查询的详细信息，请参阅[如何：查询孪生体图形](how-to-query-graph.md)。
+   有关创建 Azure 数字孪生查询的详细信息，请参阅如何：查询孪生体图形。
 
 1. 检查参考文档中是否存在请求类型可能需要的任何其他字段。 对于查询 API，现已满足 Postman 请求中的所有要求，因此已完成此步骤。
 1. 使用“发送”按钮发送已完成的请求。
@@ -302,4 +302,4 @@ Postman 中的请求保存在集合（请求组）中。 创建集合以对请�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关数字孪生 API 的详细信息，请参阅[如何：使用 Azure 数字孪生 API 和 SDK](how-to-use-apis-sdks.md)，或查看 [REST API 的参考文档](/rest/api/azure-digitaltwins/)。
+若要了解有关数字孪生 API 的详细信息，请参阅如何：使用 Azure 数字孪生 API 和 SDK，或查看 [REST API 的参考文档](/rest/api/azure-digitaltwins/)。

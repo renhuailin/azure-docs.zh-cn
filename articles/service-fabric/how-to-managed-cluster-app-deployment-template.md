@@ -1,18 +1,18 @@
 ---
-title: 使用 ARM 模板部署 Service Fabric 托管群集 (预览版) 应用程序
-description: 使用 Azure 资源管理器模板将应用程序部署到 Azure Service Fabric 托管群集 (预览版) 。
+title: 使用 ARM 模板部署 Service Fabric 托管群集（预览版）应用程序
+description: 使用 Azure 资源管理器模板将应用程序部署到 Azure Service Fabric 托管群集（预览版）。
 ms.topic: how-to
 ms.date: 02/15/2021
-ms.openlocfilehash: b2d73180de61f44850b9c52a7ac24b0c23c36db2
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
-ms.translationtype: MT
+ms.openlocfilehash: e860c77d77e3aabb70f70defdaa25de14e77e0e1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100642345"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728005"
 ---
-# <a name="deploy-a-service-fabric-managed-cluster-preview-application-using-arm-template"></a>使用 ARM 模板部署 Service Fabric 托管群集 (预览版) 应用程序
+# <a name="deploy-a-service-fabric-managed-cluster-preview-application-using-arm-template"></a>使用 ARM 模板部署 Service Fabric 托管群集（预览版）应用程序
 
-可以使用多个选项在 Service Fabric 托管群集上部署 Azure Service Fabric 应用程序。 建议使用 Azure 资源管理器。 如果使用资源管理器，可以采用 JSON 描述应用程序和服务，然后将其部署到群集所在的同一资源管理器模板中。 不同于使用 PowerShell 或 Azure CLI 来部署和管理应用程序，如果使用资源管理器，则不必等待群集准备就绪；应用程序注册、预配和部署都可以在一个步骤中进行。 使用资源管理器是在群集中管理应用程序生命周期的最佳方式。 有关详细信息，请参阅[最佳做法：基础结构即代码](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)。
+有多个选项可用于在 Service Fabric 托管群集上部署 Azure Service Fabric 应用程序。 建议使用 Azure 资源管理器。 如果使用资源管理器，可以采用 JSON 描述应用程序和服务，然后将其部署到群集所在的同一资源管理器模板中。 不同于使用 PowerShell 或 Azure CLI 来部署和管理应用程序，如果使用资源管理器，则不必等待群集准备就绪；应用程序注册、预配和部署都可以在一个步骤中进行。 使用资源管理器是在群集中管理应用程序生命周期的最佳方式。 有关详细信息，请参阅[最佳做法：基础结构即代码](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)。
 
 在资源管理器中将应用程序作为资源进行管理有助于在以下方面获得改进：
 
@@ -94,10 +94,10 @@ ms.locfileid: "100642345"
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | 要部署到的群集的名称 | sf-cluster123                                                |                                                              |
 | application            | 应用程序的名称                 | Voting                                                       |
-| 版本    | 应用的资源 ID、应用程序类型和版本。       | /providers/Microsoft.ServiceFabric/managedClusters/sf-cluster-123/applicationTypes/VotingType/versions/1.0.0                                               | 必须匹配 ApplicationManifest.xml                 |              |
+| 版本    | 该应用的资源 ID、应用程序类型和版本。       | /providers/Microsoft.ServiceFabric/managedClusters/sf-cluster-123/applicationTypes/VotingType/versions/1.0.0                                               | 必须匹配 ApplicationManifest.xml                 |
 | serviceName            | 服务的名称         | VotingWeb                                             | 必须采用 ServiceType 格式            |
 | serviceTypeName        | 服务的类型名称                | VotingWebType                                                    | 必须匹配 ServiceManifest.xml                 |
-| appPackageUrl          | 应用程序的 Blob 存储 URL     | https： \/ /servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Blob 存储中应用程序包的 URL（设置该 URL 的过程在本文中的后面部分介绍） |
+| appPackageUrl          | 应用程序的 Blob 存储 URL     | https:\//servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Blob 存储中应用程序包的 URL（设置该 URL 的过程在本文中的后面部分介绍） |
 
 ```json
 {

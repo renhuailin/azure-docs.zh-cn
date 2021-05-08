@@ -6,40 +6,42 @@ author: JasonWHowell
 ms.author: jasonh
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 7d0e27802745dda62f87e412053650907e9b812c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 15b48bc41e230ca5b9003675e2caab25741bcbfd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68950158"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "104674761"
 ---
 # <a name="azure-data-catalog-developer-samples"></a>Azure 数据目录开发人员示例
 
-开始使用数据目录 REST API 开发 Azure 数据目录应用。 数据目录 REST API 是基于 REST 的 API，提供对数据目录资源的编程访问，以编程方式注册、批注和搜索数据资产。
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
-## <a name="samples-available-on-githubcom"></a>GitHub.com 上提供的示例
+使用数据目录 REST API 开始开发 Azure 数据目录应用。 数据目录 REST API 是基于 REST 的 API，提供对数据目录资源的编程访问，以编程方式注册、批注和搜索数据资产。
+
+## <a name="samples-available-on-githubcom"></a>可在 GitHub.com 上找到示例
 
 * [Azure 数据目录入门](https://github.com/Azure-Samples/data-catalog-dotnet-get-started/)
   
-   入门示例演示如何使用 Azure AD 进行身份验证，以便使用数据目录 REST API 注册、搜索和删除数据资产。
+   此入门示例演示如何通过 Azure AD 进行身份验证，以使用数据目录 REST API 注册、搜索和删除数据资产。
    
-* [使用服务主体开始使用 Azure 数据目录](https://github.com/Azure-Samples/data-catalog-dotnet-service-principal-get-started/)
+* [使用服务主体的 Azure 数据目录入门](https://github.com/Azure-Samples/data-catalog-dotnet-service-principal-get-started/)
 
-   此示例演示如何使用 REST API 的数据目录注册、搜索和删除数据资产。 此示例使用服务主体身份验证。
+   此示例演示如何使用数据目录 REST API 注册、搜索和删除数据资产。 此示例使用服务主体身份验证。
 
 * [用于 Azure 数据目录的导入/导出工具](https://github.com/Azure-Samples/data-catalog-dotnet-import-export/)
 
-   此示例演示如何使用数据目录 REST API 从 Azure 数据目录中提取资产，并将其序列化到文件中。 还会演示如何采用序列化为 JSON 的资产并将它们推送到目录。 它支持使用搜索查询导出目录的子集。
+   此示例演示如何使用数据目录 REST API 从 Azure 数据目录中提取资产，并将它们序列化到某文件。 还会演示如何采用序列化为 JSON 的资产并将它们推送到目录。 它支持使用搜索查询导出目录的子集。
 
-* [在 Azure 数据目录中批量注册和添加批注](https://github.com/Azure-Samples/data-catalog-dotnet-excel-register-data-assets/)
+* [在 Azure 数据目录中批量注册和批注](https://github.com/Azure-Samples/data-catalog-dotnet-excel-register-data-assets/)
   
-   此示例演示如何使用 REST API 和 Open XML 的数据目录从 Excel 工作簿中批量注册数据资产。
+   此示例演示如何使用数据目录 REST API 和 Open XML 从 Excel 工作簿批量注册数据资产。
   
-* [将术语表术语大容量导入到 Azure 数据目录](https://github.com/Azure-Samples/data-catalog-bulk-import-glossary/)
+* [将术语表术语批量导入到 Azure 数据目录](https://github.com/Azure-Samples/data-catalog-bulk-import-glossary/)
 
    此示例演示如何从 CSV 文件将术语表术语导入到 ADC 术语表。
 
-* [将关系大容量导入到 Azure 数据目录](https://github.com/Azure-Samples/data-catalog-bulk-import-relationship/)
+* [将关系批量导入到 Azure 数据目录](https://github.com/Azure-Samples/data-catalog-bulk-import-relationship/)
 
    此示例演示如何以编程方式将关系信息从 CSV 文件导入到数据目录中。
 

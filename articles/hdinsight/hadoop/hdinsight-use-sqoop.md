@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.openlocfilehash: 1c34b673cd970a9e7577b7ff01d27eb0e4cc1ac1
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98946426"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用
@@ -59,7 +59,7 @@ HDInsight 群集附带了某些示例数据。 可使用以下两个示例：
 
 ## <a name="set-up-test-environment"></a><a name="create-cluster-and-sql-database"></a>设置测试环境
 
-群集、SQL 数据库和其他对象是在 Azure 门户中使用 Azure 资源管理器模板创建的。 可以在 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)中找到该模板。 该资源管理器模板调用 bacpac 包，以将表架构部署到 SQL 数据库。  bacpac 包位于公共 blob 容器 https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac 中。 如果想要私有容器用于 bacpac 文件，请使用模板中的以下值：
+群集、SQL 数据库和其他对象是在 Azure 门户中使用 Azure 资源管理器模板创建的。 可以在 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)中找到此模板。 该资源管理器模板调用 bacpac 包，以将表架构部署到 SQL 数据库。  bacpac 包位于公共 blob 容器 https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac 中。 如果想要私有容器用于 bacpac 文件，请使用模板中的以下值：
 
 ```json
 "storageKeyType": "Primary",
@@ -75,7 +75,7 @@ HDInsight 群集附带了某些示例数据。 可使用以下两个示例：
 
 2. 输入以下属性：
 
-    |字段 |Value |
+    |字段 |值 |
     |---|---|
     |订阅 |从下拉列表中选择你的 Azure 订阅。|
     |资源组 |从下拉列表中选择你的资源组，或新建一个资源组|
@@ -110,7 +110,7 @@ HDInsight 可以使用各种方法运行 Sqoop 作业。 使用下表来确定�
 
 ## <a name="limitations"></a>限制
 
-* 大容量导出-对于基于 Linux 的 HDInsight，用于将数据导出到 Microsoft SQL Server 或 SQL 数据库的 Sqoop 连接器目前不支持大容量插入。
+* 批量导出 - 在基于 Linux 的 HDInsight 上，用于将数据导出到 Microsoft SQL Server 或 SQL 数据库的 Sqoop 连接器目前不支持批量插入。
 * 批处理 - 在基于 Linux 的 HDInsight 上，如果在执行插入时使用 `-batch` 开关，Sqoop 将执行多次插入而不是批处理插入操作。
 
 ## <a name="next-steps"></a>后续步骤

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: cherylmc
 ms.openlocfilehash: 465d877da48e0d7027dbba6615302af32c6bb154
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98872394"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>使用 Azure 门户配置 VNet 到 VNet VPN 网关连接
@@ -86,7 +86,7 @@ ms.locfileid: "98872394"
 * **虚拟网络网关设置**
   * **名称**：VNet1GW
   * **资源组**：美国东部
-  * **生成**：第1代
+  * **代系**：第 1 代
   * **网关类型**：选择“VPN”。 
   * **VPN 类型**：选择“基于路由”。
   * **SKU**：VpnGw1
@@ -95,7 +95,7 @@ ms.locfileid: "98872394"
   * **公共 IP 地址**：新建
   * **公共 IP 地址名称**：VNet1GWpip
 
-* **连接**
+* **Connection**
   * **名称**：VNet1 到 VNet4
   * **共享密钥**：可以自行创建共享密钥。 在 VNet 之间建立连接时，上述值必须匹配。 对于此练习，请使用 abc123。
 
@@ -114,7 +114,7 @@ ms.locfileid: "98872394"
 * **虚拟网络网关设置**
   * **名称**：VNet4GW
   * **资源组**：美国西部
-  * **生成**：第1代
+  * **代系**：第 1 代
   * **网关类型**：选择“VPN”。 
   * **VPN 类型**：选择“基于路由”。
   * **SKU**：VpnGw1
@@ -123,7 +123,7 @@ ms.locfileid: "98872394"
   * **公共 IP 地址**：新建
   * **公共 IP 地址名称**：VNet4GWpip
 
-* **连接**
+* **Connection**
   * **名称**：VNet4 到 VNet1
   * **共享密钥**：可以自行创建共享密钥。 在 VNet 之间建立连接时，上述值必须匹配。 对于此练习，请使用 abc123。
 
@@ -155,7 +155,7 @@ ms.locfileid: "98872394"
 
 ## <a name="configure-the-vnet1-gateway-connection"></a>配置 VNet1 网关连接
 
-VNet1 和 VNet4 的虚拟网关都已完成后，便可以创建虚拟网关连接。 在本部分，请创建从 VNet1 到 VNet4 的连接。 这些步骤仅适用于同一订阅中的 VNet。 如果 Vnet 属于不同的订阅，则必须使用 [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) 进行连接。 不过，如果 VNet 位于同一订阅的不同资源组中，则可使用门户来连接它们。
+VNet1 和 VNet4 的虚拟网关都已完成后，便可以创建虚拟网关连接。 在本部分，请创建从 VNet1 到 VNet4 的连接。 这些步骤仅适用于同一订阅中的 VNet。 如果 VNet 属于不同的订阅，则必须使用 [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) 进行连接。 不过，如果 VNet 位于同一订阅的不同资源组中，则可使用门户来连接它们。
 
 1. 在 Azure 门户中选择“所有资源”，在搜索框中输入“虚拟网络网关”，然后导航到 VNet 的虚拟网络网关。 例如，**VNet1GW**。 选择网关，打开“虚拟网关”页。
 1. 在网关页上，转到“设置”->“连接”。 然后选择“+添加”。

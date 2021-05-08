@@ -6,18 +6,20 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 4eb689b17df8236a00b5914912d1927804944f25
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: 52aaa11278e5bb523594936c75d6810c1638fa7e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009409"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "104674931"
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>如何发现 Azure 数据目录中的数据源
 
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
+
 ## <a name="introduction"></a>简介
 
-Azure 数据目录是一个完全托管的云服务，充当企业数据源的注册和发现系统。 换句话说，数据目录可帮助人们发现、了解和使用数据源。 它可帮助组织从其现有数据中获取更多价值。 数据源注册到数据目录后，其元数据将由此服务编制索引，从而用户可以轻松进行搜索，发现所需数据。
+Azure 数据目录是一个完全托管的云服务，充当企业数据源的注册和发现系统。 换而言之，数据目录可帮助人们发现、了解和使用数据源。 它帮助组织从其现有数据中获取更多价值。 数据源注册到数据目录后，其元数据将由此服务编制索引，从而用户可以轻松进行搜索，发现所需数据。
 
 ## <a name="searching-and-filtering"></a>搜索和筛选
 
@@ -50,13 +52,13 @@ Azure 数据目录是一个完全托管的云服务，充当企业数据源的�
 > [!NOTE]
 > 若要关闭命中词突出显示功能，请使用数据目录门户中的“突出显示”开关。
 
-查看搜索结果时，即使在启用了命中突出显示的情况下，也可能不会始终显而易见地包含数据资产的原因。 由于默认会搜索所有属性，可能会由于列级属性上的匹配而返回某数据资产。 由于多个用户可以用自己的标记和说明对已注册的数据资产进行批注，因此并非所有元数据都显示在搜索结果列表中。
+查看搜索结果时，即使启用了命中词突出显示，包括某个数据资产的原因也并非总是那么明确。 由于默认会搜索所有属性，可能会由于列级属性上的匹配而返回某数据资产。 而且由于多个用户可以使用自己的标记和说明对已注册的数据资产进行批注，因此并非所有元数据都显示在搜索结果列表中。
 
 在默认的磁贴视图中，显示在搜索结果中的每个磁贴都包括“查看搜索词匹配项”图标，因此可以快速查看匹配项数目及其位置，并根据需要跳转到它们。
 
  ![在 Azure 数据目录门户中命中突出显示并搜索匹配项](./media/data-catalog-how-to-discover/search-matches.png)
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 因为使用数据目录注册数据源会将结构性元数据和描述性元数据从数据源复制到目录服务，所以发现和理解数据源更简单。 注册数据源后，可通过使用数据目录门户中的筛选和搜索功能发现数据源。
 

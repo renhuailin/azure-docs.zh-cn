@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: 469d7ba9e86751312ebf6a6c82b35f065ee6cb50
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880366"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>将 VPN 网关（虚拟网络网关）连接到虚拟 WAN
@@ -45,7 +45,7 @@ Azure 虚拟网络
 
 ### <a name="bgp-setting"></a><a name="BGP"></a>BGP 设置
 
-在虚拟网络网关“配置”页上，可以配置“BGP ASN” 。 更改 BGP ASN。 BGP ASN 不能是 65515。 65515将由 Azure 虚拟 WAN 使用。
+在虚拟网络网关“配置”页上，可以配置“BGP ASN” 。 更改 BGP ASN。 BGP ASN 不能是 65515。 65515 将由 Azure 虚拟 WAN 使用。
 
 ![屏幕截图显示了虚拟网络网关的“配置”页，其中已选择“配置 BGP ASN”。](./media/connect-virtual-network-gateway-vwan/bgp.png "bgp")
 

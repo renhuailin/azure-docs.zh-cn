@@ -8,10 +8,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: c427cd90412121e896738ca43f4c66dd24b096dc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100387081"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Azure 数据工厂中的可重复复制
@@ -54,7 +54,7 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    2            2015-05-01 00:00:00
 ```
 
-假设在源文件中发现错误，然后将 Down Tube 数量从 2 更新为 4。 如果你手动重新运行该时间段的数据切片，你会发现在 Azure SQL/SQL Server 数据库中追加了两条新记录。 此示例假设表中的列都没有主键约束。
+假设在源文件中发现错误，然后将 Down Tube 数量从 2 更新为 4。 如果手动重新运行该时间段的数据切片，会发现有两条新记录已追加到 Azure SQL/SQL Server 数据库。 此示例假设表中的列都没有主键约束。
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -99,7 +99,7 @@ ID    Product        Quantity    ModifiedDate
 
 ### <a name="mechanism-2-using-sliceidentifiercolumnname"></a>机制 2：使用 sliceIdentifierColumnName
 > [!IMPORTANT]
-> 目前，Azure Synapse Analytics 不支持 sliceIdentifierColumnName。 
+> Azure Synapse Analytics 目前不支持 sliceIdentifierColumnName。 
 
 实现可重复性的第二种机制是在目标表中使用专用列 (sliceIdentifierColumnName)。 Azure 数据工厂使用此列来确保源与目标保持同步。 如果可以灵活更改或定义目标 SQL 表架构，则很适合使用这种方法。 
 

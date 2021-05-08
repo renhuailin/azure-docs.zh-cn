@@ -7,10 +7,10 @@ ms.author: daberry
 ms.date: 06/23/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 79462dcb503e5835254b89f7ebaa7a9ee34946d3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98933947"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>JavaScript 应用程序的源映射支持
@@ -32,16 +32,16 @@ Application Insights 支持将源映射上传到你自己的存储帐户 Blob �
 
 ## <a name="push-your-source-maps-to-your-blob-container"></a>将源映射推送到 Blob 容器
 
-你应将你的持续部署管道配置为自动将源映射上传到已配置的 Blob 容器，从而将你的持续部署管道集成到你的存储帐户。
+应将持续部署管道配置为自动将源映射上传到已配置的 Blob 容器，从而将持续部署管道集成到你的存储帐户。
 
-可以将源映射上传到 Blob 存储容器，该容器的文件夹结构与 & 部署时所编译的文件夹结构相同。 常见的用例是使用其版本作为部署文件夹的前缀， `1.2.3/static/js/main.js` 例如。 当通过名为的 Azure Blob 容器 unminifying 时 `sourcemaps` ，它将尝试提取位于处的源映射 `sourcemaps/1.2.3/static/js/main.js.map` 。
+可将源映射上传到 Blob 存储容器，其文件夹结构与编译和部署时的文件夹结构相同。 常见的用例是用其版本作为部署文件夹的前缀，例如 `1.2.3/static/js/main.js`。 当通过名为 `sourcemaps` 的 Azure Blob 容器取消缩小时，将尝试提取位于 `sourcemaps/1.2.3/static/js/main.js.map` 处的源映射。
 
-### <a name="upload-source-maps-via-azure-pipelines-recommended"></a>通过 Azure Pipelines 推荐 (上传源地图) 
+### <a name="upload-source-maps-via-azure-pipelines-recommended"></a>推荐通过 Azure Pipelines 上传源映射
 
-如果使用 Azure Pipelines 持续生成和部署应用程序，请将 [Azure 文件复制][azure file copy] 任务添加到管道，以自动上传源映射。
+如果使用 Azure Pipelines 持续生成和部署应用程序，请将 [Azure 文件复制][azure file copy]任务添加到管道，自动上传源映射。
 
 > [!div class="mx-imgBorder"]
-> ![将 Azure 文件复制任务添加到管道，以将源映射上载到 Azure Blob 存储](./media/source-map-support/azure-file-copy.png)
+> ![将 Azure 文件复制任务添加到管道，以将源映射上传到 Azure Blob 存储](./media/source-map-support/azure-file-copy.png)
 
 ## <a name="configure-your-application-insights-resource-with-a-source-map-storage-account"></a>使用源映射存储帐户配置 Application Insights 资源
 

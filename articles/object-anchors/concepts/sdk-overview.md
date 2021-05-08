@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.service: azure-object-anchors
-ms.openlocfilehash: 74663f05c5ff995a090c7cd35e4edf46a754da17
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 551374824610c0257aaf52c45768d31849026524
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034602"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047535"
 ---
 # <a name="runtime-sdk-overview"></a>运行时 SDK 概述
 
@@ -25,59 +25,59 @@ ms.locfileid: "102034602"
 
 ### <a name="objectmodel"></a>ObjectModel
 
-[ObjectModel](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectmodel) 表示物理对象的几何体，并对进行检测和姿态估计所需的参数编码。 必须使用 [Object Anchors 服务](../quickstarts/get-started-model-conversion.md)来创建它。 然后，应用程序可以使用 Object Anchors API 加载生成的模型文件，并查询嵌入该模型中的网格以进行可视化。
+[ObjectModel](/dotnet/api/microsoft.azure.objectanchors.objectmodel) 表示物理对象的几何体，并对进行检测和姿态估计所需的参数编码。 必须使用 [Object Anchors 服务](../quickstarts/get-started-model-conversion.md)来创建它。 然后，应用程序可以使用 Object Anchors API 加载生成的模型文件，并查询嵌入该模型中的网格以进行可视化。
 
 ### <a name="objectsearcharea"></a>ObjectSearchArea
 
-[ObjectSearchArea](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectsearcharea) 指定用于查找一个或多个对象的空间。 它是由空间图节点 ID 以及空间图节点 ID 在坐标系中表示的空间边界定义的。 Object Anchors 运行时 SDK 支持四种类型的边界，即“视野”、“边界框”、“范围”和“位置”。
+[ObjectSearchArea](/dotnet/api/microsoft.azure.objectanchors.objectsearcharea) 指定用于查找一个或多个对象的空间。 它是由空间图节点 ID 以及空间图节点 ID 在坐标系中表示的空间边界定义的。 Object Anchors 运行时 SDK 支持四种类型的边界，即“视野”、“边界框”、“范围”和“位置”。
 
 ### <a name="objectquery"></a>ObjectQuery
 
-[ObjectQuery](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery) 告诉对象观察器如何查找给定模型的对象。 它提供以下可优化的参数，你可以从对象模型中检索这些参数的默认值。
+[ObjectQuery](/dotnet/api/microsoft.azure.objectanchors.objectquery) 告诉对象观察器如何查找给定模型的对象。 它提供以下可优化的参数，你可以从对象模型中检索这些参数的默认值。
 
 #### <a name="minsurfacecoverage"></a>MinSurfaceCoverage
 
-[MinSurfaceCoverage](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.minsurfacecoverage) 属性指示值为多少时将实例视为检测到的实例。
+[MinSurfaceCoverage](/dotnet/api/microsoft.azure.objectanchors.objectquery.minsurfacecoverage) 属性指示值为多少时将实例视为检测到的实例。
 
 对于每个候选对象，观察器会计算转换后的对象模型与场景之间的重叠曲面的比率，仅当覆盖率高于给定阈值时才将该候选对象报告给应用程序。
 
 #### <a name="isexpectedtobestandingongroundplane"></a>IsExpectedToBeStandingOnGroundPlane
 
-[IsExpectedToBeStandingOnGroundPlane](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.isexpectedtobestandingongroundplane) 属性指示目标对象是否应位于地平面上。
+[IsExpectedToBeStandingOnGroundPlane](/dotnet/api/microsoft.azure.objectanchors.objectquery.isexpectedtobestandingongroundplane) 属性指示目标对象是否应位于地平面上。
 
 地平面是搜索区域中最低的水平地面。 它对可能的对象姿态提供良好的约束。 启用此标志会引导观察器在有限的空间内估计姿态，并且可以提高准确度。 如果模型不应位于地平面上，则此参数会被忽略。
 
 #### <a name="expectedmaxverticalorientationindegrees"></a>ExpectedMaxVerticalOrientationInDegrees
 
-[ExpectedMaxVerticalOrientationInDegrees](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.expectedmaxverticalorientationindegrees) 属性指示对象实例的向上方向与重力之间的预期最大角度（以度为单位）。
+[ExpectedMaxVerticalOrientationInDegrees](/dotnet/api/microsoft.azure.objectanchors.objectquery.expectedmaxverticalorientationindegrees) 属性指示对象实例的向上方向与重力之间的预期最大角度（以度为单位）。
 
 此参数为某个估计姿态的向上方向提供另一个约束。 例如，如果对象是直立的，则此参数可以为 0。 Object Anchors 不应该检测与模型不同的对象。 如果模型是直立的，则不会检测平放的实例。 将对平放布局使用新模型。 同一规则适用于接合处。
 
 #### <a name="maxscalechange"></a>MaxScaleChange
 
-[MaxScaleChange](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.maxscalechange) 属性表示涉及空间映射的最大对象比例变化（在 0 ~ 1 范围内）。 估计的比例应用于以原点为中心和轴对齐的转换后的对象顶点。 估计的比例可能不是 CAD 模型与其物理表示形式之间的实际比例，而是一些允许应用用来尽量按照物理对象上的空间映射来渲染对象模型的值。
+[MaxScaleChange](/dotnet/api/microsoft.azure.objectanchors.objectquery.maxscalechange) 属性表示涉及空间映射的最大对象比例变化（在 0 ~ 1 范围内）。 估计的比例应用于以原点为中心和轴对齐的转换后的对象顶点。 估计的比例可能不是 CAD 模型与其物理表示形式之间的实际比例，而是一些允许应用用来尽量按照物理对象上的空间映射来渲染对象模型的值。
 
 #### <a name="searchareas"></a>SearchAreas
 
-[SearchAreas](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.searchareas) 属性指示要在其中查找对象的空间边界数组。
+[SearchAreas](/dotnet/api/microsoft.azure.objectanchors.objectquery.searchareas) 属性指示要在其中查找对象的空间边界数组。
 
 观察器会在查询所指定的所有搜索区域的联合空间中查找对象。 在此版本中，我们将最多返回一个具有最高置信度的对象来降低延迟。
 
 ### <a name="objectinstance"></a>ObjectInstance
 
-[ObjectInstance](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectinstance) 表示给定模型的实例在 HoloLens 坐标系中可能会处于的假设位置。 每个实例都有一个 `SurfaceCoverage` 属性，用于指示估计的姿态有多准确。
+[ObjectInstance](/dotnet/api/microsoft.azure.objectanchors.objectinstance) 表示给定模型的实例在 HoloLens 坐标系中可能会处于的假设位置。 每个实例都有一个 `SurfaceCoverage` 属性，用于指示估计的姿态有多准确。
 
 实例通过调用 `ObjectObserver.DetectAsync` 方法创建，然后在活动时在后台自动进行更新。 应用程序可以侦听特定实例上的状态更改事件，或者更改跟踪模式以暂停/继续更新。 当跟踪丢失时，系统会自动将实例从观察器中删除。
 
 ### <a name="objectobserver"></a>ObjectObserver
 
-[ObjectObserver](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectobserver) 会加载对象模型，检测其实例，并在 HoloLens 坐标系统中报告每个实例的 6-DoF 姿态。
+[ObjectObserver](/dotnet/api/microsoft.azure.objectanchors.objectobserver) 会加载对象模型，检测其实例，并在 HoloLens 坐标系统中报告每个实例的 6-DoF 姿态。
 
 尽管任何对象模型或实例都是从观察器创建的，但其生存期是独立的。 应用程序可以处置观察器，然后继续使用对象模型或实例。
 
 ### <a name="objectdiagnosticssession"></a>ObjectDiagnosticsSession
 
-[ObjectDiagnosticSession](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.diagnostics.objectdiagnosticssession) 记录诊断，并将数据写入存档。
+[ObjectDiagnosticSession](/dotnet/api/microsoft.azure.objectanchors.diagnostics.objectdiagnosticssession) 记录诊断，并将数据写入存档。
 
 诊断存档包括场景点云、观察器的状态，以及有关模型的信息。 此信息可用于确定可能的运行时问题。 有关详细信息，请参阅[常见问题解答](../faq.md)。
 

@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 6a429c09b6f8082c95e29bcea62d27ec4fb46fd3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: 537254d7fb153e182be8ece13675a357a9a3e24e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017298"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "104674812"
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>如何保护对安全访问数据目录和数据资产的访问
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 > [!IMPORTANT]
 > 此功能仅在 Azure 数据目录标准版中可用。
@@ -26,7 +28,7 @@ ms.locfileid: "96017298"
 
 1. 在[数据目录主页](https://www.azuredatacatalog.com)的工具栏上，单击“设置”。
 
-   !["Azure 数据目录主页设置" 按钮](media/data-catalog-how-to-secure-catalog/data-catalog-settings.png)
+   ![Azure 数据目录主页设置按钮](media/data-catalog-how-to-secure-catalog/data-catalog-settings.png)
 
 2. 在设置页面中，展开“目录用户”部分。
 
@@ -36,13 +38,13 @@ ms.locfileid: "96017298"
 
 4. 在与目录关联的 Azure Active Directory (AAD) 中输入完全限定用户名或安全组名称。 若要添加多个用户或组，请使用逗号（“,”）作为分隔符。
 
-   ![Azure 数据目录用户-用户或组](media/data-catalog-how-to-secure-catalog/data-catalog-users-groups.png)
+   ![Azure 数据目录用户 - 用户或组](media/data-catalog-how-to-secure-catalog/data-catalog-users-groups.png)
 
 5. 在文本框外按 Enter 或 Tab。 
 
 6. 请确认默认情况下为用户或组分配了所有权限（“批注”、“注册”和“取得所有权”）。 即：用户或组可以[注册数据资产]( data-catalog-how-to-register.md)、[批注数据资产]( data-catalog-how-to-annotate.md)和[取得数据资产的所有权]( data-catalog-how-to-manage.md)。 
 
-   ![Azure 数据目录用户-默认权限](media/data-catalog-how-to-secure-catalog/data-catalog-default-permissions.png)
+   ![Azure 数据目录用户 - 默认权限](media/data-catalog-how-to-secure-catalog/data-catalog-default-permissions.png)
 
 7. 若仅向用户或组授予对目录的读取访问权限，请清除该用户或组对应的“批注”选项。 这样，用户或组无法对目录中的数据资产进行批注，但可以查看它们。 
 
@@ -52,7 +54,7 @@ ms.locfileid: "96017298"
 
 10. 若要从目录用户中删除用户/组，请在列表底部单击该用户/组对应的 x。 
 
-   ![Azure 数据目录目录用户-删除用户 X 图标](media/data-catalog-how-to-secure-catalog/data-catalog-delete-user.png)
+   ![Azure 数据目录目录用户 - 删除用户 X 图标](media/data-catalog-how-to-secure-catalog/data-catalog-delete-user.png)
 
    > [!IMPORTANT]
    > 建议向目录用户添加安全组，而不是直接添加用户和分配权限。 然后将用户添加到与其角色和所需目录访问权限匹配的安全组。

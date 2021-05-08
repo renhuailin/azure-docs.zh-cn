@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: 60f67ea618746c9f2b0cd65a9fbc7fb2b5fbfe86
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 51b04feffd887fd86157d029168bc53546adfeeb
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107519997"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208160"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虚拟机安全概述
 本文概述了可用于虚拟机的核心 Azure 安全功能。
@@ -55,7 +55,7 @@ Azure 虚拟机让你能够灵活地进行虚拟化，而无需购买和维护�
 * [如何在 Windows VM 上安装和配置 Symantec Endpoint Protection](../../virtual-machines/extensions/symantec.md)
 * [Azure 市场中的安全解决方案](https://azure.microsoft.com/marketplace/?term=security)
 
-若要实现更强大的保护，请考虑使用 [Windows Defender 高级威胁防护](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection)。 使用 Windows Defender ATP，可以实现：
+若要实现更强大的保护，请考虑使用 [Windows Defender 高级威胁防护](/mem/configmgr/protect/deploy-use/defender-advanced-threat-protection)。 使用 Windows Defender ATP，可以实现：
 
 * [攻击面减小](/windows/security/threat-protection/windows-defender-atp/overview-attack-surface-reduction)  
 * [下一代保护](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)  
@@ -69,7 +69,7 @@ Azure 虚拟机让你能够灵活地进行虚拟化，而无需购买和维护�
 了解详细信息：
 
 * [WDATP 入门](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)  
-* [WDATP 功能概述](/windows/security/threat-protection/windows-defender-atp/overview)  
+* [WDATP 功能概述](/microsoft-365/security/defender-endpoint/whats-new-in-microsoft-defender-atp)  
 
 ## <a name="hardware-security-module"></a>硬件安全模块
 

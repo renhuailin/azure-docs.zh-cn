@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/13/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bd45bb264f8e29a2aad870a7daff45fdd44e0d3c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: b22552147bec789c4b1d796cad2c52165d266334
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478805"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108207710"
 ---
 # <a name="create-an-app-registration-to-use-with-azure-digital-twins"></a>创建与 Azure 数字孪生配合使用的应用注册
 
@@ -94,7 +94,7 @@ ms.locfileid: "107478805"
 
 你的组织可能需要订阅所有者/管理员执行其他操作才能成功设置应用注册。 根据组织的特定设置，所需的步骤可能会有所不同。
 
-下面是订阅所有者/管理员可能需要执行的一些常见潜在活动。 可从 Azure 门户中的“[Azure AD 应用注册](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)”页执行这些操作和其他操作。
+下面是订阅所有者/管理员可能需要执行的一些常见潜在活动。 可从 Azure 门户中的“Azure AD 应用注册”页执行这些操作和其他操作。
 * 授予管理员同意进行应用注册。 你的组织可能已在 Azure AD 中对你的订阅中的所有应用注册全局启用了“需要管理员同意”。 如果是这样，则所有者/管理员需要在应用注册的“API 权限”页上为你的公司选择以下按钮，以使应用注册有效：
 
     :::image type="content" source="media/how-to-create-app-registration/grant-admin-consent.png" alt-text="“API 权限”下的“授予管理员同意”按钮的门户视图":::
@@ -105,7 +105,7 @@ ms.locfileid: "107478805"
 * 设置特定的回复 URL 用于进行 Web 和桌面访问
 * 允许隐式 OAuth2 身份验证流
 
-有关应用注册及其不同设置选项的详细信息，请参阅[将应用程序注册到 Microsoft 标识平台](/graph/auth-register-app-v2)。
+有关应用注册及其不同设置选项的详细信息，请参阅将应用程序注册到 Microsoft 标识平台。
 
 ## <a name="next-steps"></a>后续步骤
 

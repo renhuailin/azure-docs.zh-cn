@@ -4,12 +4,12 @@ description: 在 Azure HDInsight 中创建群集失败并出现 InvalidNetworkCo
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/12/2021
-ms.openlocfilehash: 83d4819ecb1da91bda5fb4f1cb445bbc34fd007f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1b8b5cba0e25e3be6b668054c9f3d2afaa87925d
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98927001"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108064172"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>在 Azure HDInsight 中创建群集失败并出现 InvalidNetworkConfigurationErrorCode
 
@@ -31,9 +31,9 @@ ms.locfileid: "98927001"
 
 1. 通过 SSH 连接到属于群集的 VM，并运行命令 `hostname -f`。 此命令将返回主机的完全限定域名（在以下说明中称为 `<host_fqdn>`）。
 
-1. 然后运行命令 `nslookup <host_fqdn>`（例如 `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`）。 如果此命令将名称解析为 IP 地址，则表示 DNS 服务器工作正常。 在这种情况下，请提交有关 HDInsight 的支持案例，我们将调查你的问题。 请在支持案例中包含执行的故障排除步骤。 这有助于我们更快解决问题。
+1. 然后运行命令 `nslookup <host_fqdn>`（例如 `nslookup hn*.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`）。 如果此命令将名称解析为 IP 地址，则表示 DNS 服务器工作正常。 在这种情况下，请提交有关 HDInsight 的支持案例，我们将调查你的问题。 请在支持案例中包含执行的故障排除步骤。 这有助于我们更快解决问题。
 
-1. 如果以上命令未返回 IP 地址，请运行 `nslookup <host_fqdn> 168.63.129.16`（例如 `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`）。 如果此命令能够解析 IP，则表示 DNS 服务器未将查询转发到 Azure 的 DNS，或者它不是与群集处于同一虚拟网络中的 VM。
+1. 如果以上命令未返回 IP 地址，请运行 `nslookup <host_fqdn> 168.63.129.16`（例如 `nslookup hn*.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`）。 如果此命令能够解析 IP，则表示 DNS 服务器未将查询转发到 Azure 的 DNS，或者它不是与群集处于同一虚拟网络中的 VM。
 
 1. 如果你没有任何可充当群集虚拟网络中的自定义 DNS 服务器的 Azure VM，则需要先添加此 VM。 在虚拟网络中创建一个要配置为 DNS 转发器的 VM。
 
@@ -141,8 +141,8 @@ ErrorDescription: Virtual Network configuration is not compatible with HDInsight
 
 ```bash
 hostname -f
-nslookup <headnode_fqdn> (e.g.nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net)
-dig @168.63.129.16 <headnode_fqdn> (e.g. dig @168.63.129.16 hn0-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net)
+nslookup <headnode_fqdn> (e.g.nslookup hn*.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net)
+dig @168.63.129.16 <headnode_fqdn> (e.g. dig @168.63.129.16 hn*.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net)
 ```
 ### <a name="cause"></a>原因
 

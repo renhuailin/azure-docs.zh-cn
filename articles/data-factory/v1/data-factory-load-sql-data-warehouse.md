@@ -1,6 +1,6 @@
 ---
-title: 将 tb 数据加载到 Azure Synapse Analytics
-description: 演示如何通过 Azure 数据工厂在15分钟内将 1 TB 的数据加载到 Azure Synapse 分析中
+title: 将数 TB 的数据加载到 Azure Synapse Analytics 中
+description: 演示如何在 15 分钟内通过 Azure 数据工厂将 1 TB 的数据加载到 Azure Synapse Analytics
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
@@ -8,34 +8,34 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 5acae7c90efbf178fad199177fa6e0886e497fdf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100371203"
 ---
-# <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>通过数据工厂将 1 TB 负载引入 Azure Synapse 分析
+# <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>在不到 15 分钟的时间里通过数据工厂将 1 TB 的数据加载到 Azure Synapse Analytics
 > [!NOTE]
-> 本文适用于数据工厂版本 1。 如果使用的是最新版本的数据工厂服务，请参阅 [使用数据工厂将数据复制到 Azure Synapse 分析或从中复制数据](../connector-azure-sql-data-warehouse.md)。
+> 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[使用 Azure 数据工厂将数据复制到 Azure Synapse Analytics 或从 Azure Synapse Analytics 复制数据](../connector-azure-sql-data-warehouse.md)。
 
 
-[Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 是一种基于云的向外扩展数据库，可以处理大量数据（关系数据和非关系数据）。  基于大规模并行处理 (MPP) 体系结构构建，Azure Synapse Analytics 针对企业数据仓库工作负荷进行了优化。  它通过灵活地缩放存储以及独立计算提供云灵活性。
+[Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 是一种基于云的横向扩展数据库，可以处理大量数据（关系数据和非关系数据）。  Azure Synapse Analytics 在大规模并行处理 (MPP) 体系结构的基础上构建，已针对企业数据仓库工作负荷进行优化。  它通过灵活地缩放存储以及独立计算提供云灵活性。
 
-Azure Synapse Analytics 入门现在比以往任何时候都容易使用 **Azure 数据工厂**。  Azure 数据工厂是一个完全托管的基于云的数据集成服务，它可用于使用现有系统中的数据填充 Azure Synapse 分析，并在评估 Azure Synapse 分析和构建分析解决方案时节省宝贵的时间。 下面是使用 Azure 数据工厂将数据加载到 Azure Synapse Analytics 的主要优点：
+如今通过使用 Azure 数据工厂，Azure Synapse Analytics 入门变得前所未有的简单。  Azure 数据工厂是一个完全托管的基于云的数据集成服务，可用于使用现有系统中的数据填充 Azure Synapse Analytics，而且在评估 Azure Synapse Analytics 并生成分析解决方案时为你节省了宝贵时间。 以下是使用 Azure 数据工厂将数据加载到 Azure Synapse Analytics 的主要优点：
 
 * **轻松设置**：无需脚本的 5 步直观的向导。
-* **丰富的数据存储支持**：内置支持一组丰富的本地和基于云的数据存储。
+* **丰富的数据存储支持**：对一组丰富的本地和基于云的数据存储的内置支持。
 * **安全且合规**：通过 HTTPS 或 ExpressRoute 传输数据，并且全局服务可确保数据不会离开地理边界
-* **使用 polybase 的无与伦比性能** –使用 polybase 是将数据移动到 Azure Synapse Analytics 的最有效方法。 使用临时 blob 功能，可以实现所有类型的数据存储（包括 Azure Blob 存储）的高加载速度，默认情况下，Polybase 支持此功能。
+* **通过使用 PolyBase 提供无与伦比的性能** - 使用 Polybase 能够最高效地将数据移到 Azure Synapse Analytics 中。 使用临时 blob 功能，可以实现所有类型的数据存储（包括 Azure Blob 存储）的高加载速度，默认情况下，Polybase 支持此功能。
 
-本文介绍如何使用数据工厂复制向导将数据从 Azure Blob 存储加载到 Azure Synapse 分析，时间为15分钟，超过 1.2 GBps 的吞吐量。
+本文介绍了如何使用数据工厂复制向导，在 15 分钟内以超过 1.2 GBps 的吞吐量将 1 TB 数据从 Azure Blob 存储加载到 Azure Synapse Analytics。
 
-本文提供了有关使用复制向导将数据移动到 Azure Synapse Analytics 的分步说明。
+本文提供了使用复制向导将数据迁移到 Azure Synapse Analytics 的分步说明。
 
 > [!NOTE]
->  有关将数据移入/移出 Azure Synapse 分析的数据工厂功能的一般信息，请参阅 [使用 Azure 数据工厂将数据移入和移出 Azure Synapse 分析](data-factory-azure-sql-data-warehouse-connector.md) 一文。
+>  有关数据工厂将数据移入/移出 Azure Synapse Analytics 功能的一般信息，请参阅[使用 Azure 数据工厂将数据移入和移出 Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md) 一文。
 >
-> 你还可以使用 Visual Studio、PowerShell 等生成管道。有关使用 Azure 数据工厂中的复制活动的分步说明，请参阅 [教程：将数据从 Azure Blob 复制到 AZURE SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 。  
+> 还可以使用 Visual Studio、PowerShell 等生成管道。有关在 Azure 数据工厂中使用复制活动的分步说明的快速演练，请参阅[教程：将数据从 Azure Blob 复制到 Azure SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。  
 >
 >
 
@@ -49,18 +49,18 @@ Azure Synapse Analytics 入门现在比以往任何时候都容易使用 **Azure
   * `Dbgen -s 1000 -S **10** -C 10 -T L -v`
 
     现在将生成的文件复制到 Azure Blob。  请参阅[使用 Azure 数据工厂将数据移入和移出本地文件系统](data-factory-onprem-file-system-connector.md)了解如何使用 ADF 复制执行此操作。    
-* Azure Synapse Analytics：此试验将数据加载到通过 6000 Dwu 创建的 Azure Synapse Analytics 中。
+* Azure Synapse Analytics：此试验将数据加载到通过 6,000 DWu 创建的 Azure Synapse Analytics 中
 
-    有关如何创建 Azure Synapse 分析数据库的详细说明，请参阅 [创建 Azure Synapse analytics](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) 。  若要使用 Polybase 将最佳负载性能提高到 Azure Synapse Analytics 中，请选择 "性能" 设置中允许的最大数据仓库单位数 (Dwu) ，即 6000 Dwu。
+    有关如何创建 Azure Synapse Analytics 数据库的详细说明，请参阅[创建 Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)。  若要使用 Polybase 获取到 Azure Synapse Analytics 的最佳加载性能，我们选择性能设置中允许的数据仓库单位 (DWU) 的最大数，即 6,000 DWU。
 
   > [!NOTE]
-  > 从 Azure Blob 加载数据时，数据加载性能与为 Azure Synapse Analytics 配置的 Dwu 数成正比：
+  > 从 Azure Blob 加载时，数据加载性能与在 Azure Synapse Analytics 中配置的 DWU 数直接成正比：
   >
-  > 将 1 TB 加载到 1000 DWU 中的 Azure Synapse 87 Analytics (~ 200 MBps 吞吐量) 将 1 TB 加载到 2000 DWU Azure Synapse Analytics 需 (~ 46 MBps 吞吐量) 将 1 TB 加载到 380 DWU Azure Synapse Analytics 需14分钟 (~ 6000 GBps 吞吐量) 
+  > 加载 1 TB 数据到 1,000 DWU Azure Synapse Analytics 花费 87 分钟（~200 MBps 吞吐量）加载 1 TB 数据到 2,000 DWU Azure Synaps e Analytics花费 46 分钟（~380 MBps 吞吐量）加载 1 TB 数据到 6,000 DWU Azure Synapse Analytics 花费 14 分钟（~1.2 GBps 吞吐量）
   >
   >
 
-    若要创建具有 6000 Dwu 的专用 SQL 池，请将性能滑块一直移动到右侧：
+    若要创建 6,000 DWU 的专用 SQL 池，可将性能滑块移动到最右侧：
 
     ![性能滑块](media/data-factory-load-sql-data-warehouse/performance-slider.png)
 
@@ -72,10 +72,10 @@ Azure Synapse Analytics 入门现在比以往任何时候都容易使用 **Azure
 
     ![“缩放”对话框](media/data-factory-load-sql-data-warehouse/scale-dialog.png)
 
-    此试验使用资源类将数据加载到 Azure Synapse Analytics 中 `xlargerc` 。
+    此试验使用 `xlargerc` 资源类将数据加载到 Azure Synapse Analytics。
 
-    若要实现最佳吞吐量，需要使用属于资源类的 Azure Synapse Analytics 用户执行复制 `xlargerc` 。  请参阅[更改用户资源类示例](../../synapse-analytics/sql-data-warehouse/resource-classes-for-workload-management.md)，了解如何执行该操作。  
-* 通过运行以下 DDL 语句，在 Azure Synapse Analytics 数据库中创建目标表架构：
+    若要获得可能的最佳吞吐量，需要使用属于 `xlargerc` 资源类的 Azure Synapse Analytics 用户来执行复制操作。  请参阅[更改用户资源类示例](../../synapse-analytics/sql-data-warehouse/resource-classes-for-workload-management.md)，了解如何执行该操作。  
+* 通过运行以下 DDL 语句在 Azure Synapse Analytics 数据库中创建目标表架构：
 
     ```SQL  
     CREATE TABLE [dbo].[lineitem]
@@ -111,7 +111,7 @@ Azure Synapse Analytics 入门现在比以往任何时候都容易使用 **Azure
 3. 在“新建数据工厂”窗格中：
 
    1. 输入 **LoadIntoSQLDWDataFactory** 作为 **名称**。
-       Azure 数据工厂的名称必须全局唯一。 如果收到错误： **数据工厂名称 "LoadIntoSQLDWDataFactory" 不可用**，请更改数据工厂的名称， (例如，yournameLoadIntoSQLDWDataFactory) 并再次尝试创建。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。  
+       Azure 数据工厂的名称必须全局唯一。 如果收到错误：“数据工厂名称“LoadIntoSQLDWDataFactory”不可用”，请更改该数据工厂名称（例如改为“yournameLoadIntoSQLDWDataFactory”），并尝试再次创建。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。  
    2. 选择 **Azure 订阅**。
    3. 对于资源组，请执行以下步骤之一：
       1. 选择“使用现有资源组”并选择一个现有的资源组。
@@ -136,7 +136,7 @@ Azure Synapse Analytics 入门现在比以往任何时候都容易使用 **Azure
 
 1. 输入 **CopyFromBlobToAzureSqlDataWarehouse** 作为 **任务名称**
 2. 选择“立即运行一次”选项。   
-3. 单击“下一步”  。  
+3. 单击“下一步”。  
 
     ![复制向导 - 属性页](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
@@ -155,14 +155,14 @@ Azure Synapse Analytics 入门现在比以往任何时候都容易使用 **Azure
 
     ![复制向导 - 选择输入文件夹](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
 
-4. 单击“下一步”时会自动检测文件格式设置。  检查以确保列分隔符为 "|"，而不是默认的逗号 "，"。  预览数据后，单击“下一步”。
+4. 单击“下一步”时会自动检测文件格式设置。  请检查以确保列分隔符为“|”而非默认的逗号“，”。  预览数据后，单击“下一步”。
 
     ![复制向导 - 文件格式设置](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
 ## <a name="step-3-configure-destination"></a>步骤 3：配置目标
-本部分介绍如何 `lineitem` 在 Azure Synapse Analytics 数据库中配置目标：表。
+本部分演示如何配置目标：Azure Synapse Analytics 数据库中的 `lineitem` 表。
 
-1. 选择 " **Azure Synapse Analytics** " 作为目标存储，然后单击 " **下一步**"。
+1. 选择“Azure Synapse Analytics”作为目标存储，并单击“下一步”。
 
     ![复制向导 - 选择目标数据存储](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 
@@ -178,34 +178,34 @@ Azure Synapse Analytics 入门现在比以往任何时候都容易使用 **Azure
 
 ## <a name="step-4-performance-settings"></a>步骤 4：性能设置
 
-默认选中“允许 polybase”。  单击“下一步”  。
+默认选中“允许 polybase”。  单击“下一步”。
 
 ![复制向导 - 架构映射页](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 
 ## <a name="step-5-deploy-and-monitor-load-results"></a>步骤 5：部署和监视加载结果
 1. 单击“完成”按钮以便部署。
 
-    ![复制向导-"摘要" 页1](media/data-factory-load-sql-data-warehouse/summary-page.png)
+    ![复制向导 - 摘要页 1](media/data-factory-load-sql-data-warehouse/summary-page.png)
 
 2. 部署完成后，单击 `Click here to monitor copy pipeline` 以监视副本运行进度。 选择在“活动窗口”列表中创建的副本管道。
 
-    ![复制向导-"摘要" 页2](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
+    ![复制向导 - 摘要页 2](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
 
     可以在右侧面板中的“活动窗口资源管理器”中查看副本运行的详细信息，包括从源中读取和写入到目标中的数据量、持续时间以及运行的平均吞吐量。
 
-    如以下屏幕截图所示，将 1 TB 从 Azure Blob 存储复制到 Azure Synapse Analytics 花费了14分钟，有效地实现了 1.22 GBps 吞吐量！
+    如以下屏幕截图所示，将 1 TB 数据从 Azure Blob 存储复制到 Azure Synapse Analytics 花费 14 分钟，从而有效地实现了 1.22 GBps 的吞吐量！
 
     ![复制向导 - “成功”对话框](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
 
-## <a name="best-practices"></a>最佳实践
-下面是运行 Azure Synapse 分析数据库的几个最佳做法：
+## <a name="best-practices"></a>最佳做法
+以下是运行 Azure Synapse Analytics 数据库的一些最佳做法：
 
 * 加载到聚集列存储索引时，请使用较大的资源类。
 * 若要提高联接效率，请考虑使用基于所选列的哈希分布而非默认的轮循机制分布。
 * 若要提高加载速度，请考虑对临时数据使用堆。
 * 完成加载到 Azure Synapse Analytics 后，创建统计信息。
 
-有关详细信息，请参阅 [Azure Synapse Analytics 的最佳实践](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md) 。
+请参阅[Azure Synapse Analytics 最佳实践](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md)，了解详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 * [数据工厂复制向导](data-factory-copy-wizard.md) - 此文章提供有关复制向导的详细信息。

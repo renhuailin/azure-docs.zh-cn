@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b38b4910773c433ed63fd2082c5cbefce81e0e9e
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 547081122b1bc6611200e2abc2042a111e4284e1
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480188"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208070"
 ---
 # <a name="extending-ontologies"></a>扩展 ontology 
 
@@ -30,7 +30,7 @@ ms.locfileid: "107480188"
 
 :::image type="content" source="media/concepts-ontologies-extend/real-estate-core-original.png" alt-text="此流程图演示了部分 RealEstateCore 空间层次结构。位于顶层的元素称为“空间”；它由一个“扩展”箭头连接到下一层“房间”；“房间”由“扩展”箭头连接到下一层“会议室”和“办公室”。"::: 
 
-有关 RealEstateCore 本体的详细信息，请参阅[概念：采用行业标准本体](concepts-ontologies-adopt.md#realestatecore-smart-building-ontology)。
+有关 RealEstateCore 本体的详细信息，请参阅概念：采用行业标准本体。
 
 ## <a name="extending-the-realestatecore-space-hierarchy"></a>扩展 RealEstateCore 空间层次结构 
 
@@ -162,4 +162,4 @@ ms.locfileid: "107480188"
 
 ## <a name="next-steps"></a>后续步骤
 
-继续了解基于本体的模型开发路径：[在模型开发路径中使用本体策略](concepts-ontologies.md#using-ontology-strategies-in-a-model-development-path)。
+继续了解基于本体的模型开发路径：在模型开发路径中使用本体策略。

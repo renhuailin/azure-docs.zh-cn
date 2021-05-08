@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 30cd0181ff2c5fbb8918921be3515818128a98d0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 270e7f748f0d7fda14d93ac753ba655117f7ad36
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048227"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044136"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>对使用 Azure Sentinel 有用的资源
 
@@ -28,7 +28,7 @@ ms.locfileid: "102048227"
 
 ## <a name="learn-more-about-creating-queries"></a>了解有关创建查询的详细信息
 
-Azure Sentinel 使用 Azure Monitor Log Analytics 的 Kusto 查询语言 (KQL) 来生成查询。 有关详细信息，请参见:
+Azure Sentinel 使用 Azure Monitor Log Analytics 的 Kusto 查询语言 (KQL) 来生成查询。 有关详细信息，请参阅：
 
 - [KQL 概念](/azure/data-explorer/kusto/concepts/)
 - [KQL 查询](/azure/data-explorer/kusto/query/)
@@ -39,7 +39,7 @@ Azure Sentinel 使用 Azure Monitor Log Analytics 的 Kusto 查询语言 (KQL) �
 
 使用 Azure 逻辑应用在 Azure Sentinel 中创建自动化，以应对不断扩大的内置 Playbook 库。 
 
-有关详细信息，请参阅 [Azure 逻辑应用连接器](https://docs.microsoft.com/connectors/)。
+有关详细信息，请参阅 [Azure 逻辑应用连接器](/connectors/)。
 
 ## <a name="comment-on-our-blogs-and-forums"></a>在博客和论坛上发表评论
 
@@ -67,4 +67,3 @@ Microsoft 安全分析师会不断创建和添加新的工作簿、Playbook、�
 
 > [!div class="nextstepaction"]
 > [阅读客户用例情景](https://customers.microsoft.com/en-us/search?sq=%22Azure%20Sentinel%20%22&ff=&p=0&so=story_publish_date%20desc)
-

@@ -1,6 +1,6 @@
 ---
-title: 将事件网格用于应用配置数据更改通知
-description: 了解如何使用 Azure 应用配置事件订阅将键值修改事件发送到 web 终结点
+title: 使用事件网格进行应用程序配置数据更改通知
+description: 了解如何设置 Azure 应用程序配置事件订阅，以将键值修改事件发送到 Web 终结点
 services: azure-app-configuration
 author: AlexandraKemperMS
 ms.assetid: ''
@@ -11,13 +11,13 @@ ms.date: 03/04/2020
 ms.author: alkemper
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: c188a4b7fe8e9223faa1cdeb52ae01ed83b94d84
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99549773"
 ---
-# <a name="use-event-grid-for-app-configuration-data-change-notifications"></a>将事件网格用于应用配置数据更改通知
+# <a name="use-event-grid-for-app-configuration-data-change-notifications"></a>使用事件网格进行应用程序配置数据更改通知
 
 本文介绍如何设置 Azure 应用程序配置事件订阅，以将键值修改事件发送到 Web 终结点。 Azure 应用程序配置用户可以订阅每当键值发生修改时发出的事件。 这些事件可以触发 Webhook、Azure Functions、Azure 存储队列，或 Azure 事件网格支持的任何其他事件处理程序。 通常，你会将事件发送到处理事件数据并执行操作的终结点。 但是，为了简化本文，你将事件发送到收集并显示消息的 Web 应用。
 

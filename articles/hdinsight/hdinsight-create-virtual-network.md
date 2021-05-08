@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/16/2020
 ms.openlocfilehash: 43d57eac94cabb5c648183911e0c0bf72889946d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98946068"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>为 Azure HDInsight 群集创建虚拟网络
@@ -24,8 +24,8 @@ ms.locfileid: "98946068"
 
 本文中的示例要求满足的其他先决条件包括：
 
-* 如果使用的是 PowerShell，则需要安装 [AZ 模块](/powershell/azure/)。
-* 如果要使用 Azure CLI 但尚未安装，请参阅 [安装 Azure CLI](/cli/azure/install-azure-cli)。
+* 如果使用的是 PowerShell，则需要安装 [Az 模块](/powershell/azure/)。
+* 若要使用 Azure CLI 但尚未安装它，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 > [!IMPORTANT]  
 > 如果正在查找有关如何使用 Azure 虚拟网络将 HDInsight 连接到本地网络的分步指南，请参阅[将 HDInsight 连接到本地网络](connect-on-premises-network.md)文档。
@@ -148,7 +148,7 @@ Set-AzVirtualNetworkSubnetConfig `
 $vnet | Set-AzVirtualNetwork
 ```
 
-此示例演示如何添加规则，以便在所需的 IP 地址上允许入站流量。 它不包含限制来自其他源的入站访问的规则。 以下代码演示如何允许来自 Internet 的 SSH 访问：
+此示例演示如何添加规则，以便在所需的 IP 地址上允许入站流量。 它不包含用于限制从其他源的入站访问的规则。 以下代码演示如何允许来自 Internet 的 SSH 访问：
 
 ```azurepowershell
 Get-AzNetworkSecurityGroup -Name hdisecure -ResourceGroupName RESOURCEGROUP |
@@ -361,7 +361,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 
    将 `10.0.0.0/16` 和 `10.1.0.0/16` 值替换为虚拟网络的 IP 地址范围。 此项允许每个网络中的资源发出 DNS 服务器的请求。
 
-    对于虚拟网络的 DNS 后缀不 (的任何请求例如，microsoft.com) 由 Azure 递归解析程序处理。
+    不是针对虚拟网络 DNS 后缀（例如，microsoft.com）的任何请求由 Azure 递归解析程序处理。
 
 4. 若要使用此配置，请重启 Bind。 例如，两个 DNS 服务器上的 `sudo service bind9 restart`。
 

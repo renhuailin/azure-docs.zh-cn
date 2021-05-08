@@ -1,16 +1,14 @@
 ---
 title: 使用 Azure Monitor 日志进行 Azure Service Fabric 事件分析
 description: 了解如何通过使用 Azure Monitor 日志可视化和分析事件来监视和诊断 Azure Service Fabric 群集。
-author: srrengar
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.author: srrengar
-ms.openlocfilehash: 678e96c9b5611cd6d72abd7c4582691b55ffe479
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f1e22213c857b400cc36c51cefb90e2379352893
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100581542"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628962"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>通过 Azure Monitor 日志进行事件分析和可视化
  Azure Monitor 日志收集并分析云中托管的应用程序和服务的遥测，并提供分析工具以帮助最大限度地提高其可用性和性能。 本文概述如何在 Azure Monitor 日志中运行查询，以获取见解并排查群集中发生的问题。 本文解决以下常见问题：

@@ -7,10 +7,10 @@ ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
 ms.openlocfilehash: 320668f9596376cf7aa12ed97872671404a07658
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98895911"
 ---
 # <a name="manage-role-permissions-and-security"></a>管理角色权限和安全性
@@ -72,7 +72,7 @@ Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 资源进行�
 自动化操作员能够针对某个自动化帐户中的所有 Runbook 创建和管理作业，以及读取 Runbook 名称和属性。
 
 >[!NOTE]
->如果要控制对各个 runbook 的操作员访问权限，请不要设置此角色。 请改为结合使用“自动化作业操作员”和“自动化 Runbook 操作员”角色 。
+>如果希望控制操作员对各个 runbook 的访问，请勿设置此角色。 请改为结合使用“自动化作业操作员”和“自动化 Runbook 操作员”角色 。
 
 下表显示了授予角色的权限：
 
@@ -191,7 +191,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 |Microsoft.Support/*|创建和管理支持票证。|
 |Microsoft.WorkloadMonitor/workloads/*|管理工作负荷。|
 
-### <a name="monitoring-reader"></a>监视读取者
+### <a name="monitoring-reader"></a>监视查阅者
 
 监视读取者可以读取所有监视数据。 下表显示了授予角色的权限：
 

@@ -10,15 +10,12 @@ ms.service: security
 ms.subservice: security-develop
 services: azure
 ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.openlocfilehash: 743412b7602e5781911cdf190e41a5ee15bfddd4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9e5246edd2d6490e823bacbdfff0f60ef553878b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96487671"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729127"
 ---
 # <a name="design-secure-applications-on-azure"></a>在 Azure 上设计安全的应用程序
 本文介绍了在为云设计应用程序时需要考虑的安全活动和控制措施。 介绍了在 Microsoft [安全开发生命周期 (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) 的要求和设计阶段需要考虑的培训资源以及安全问题和概念。 目标是帮助你定义可用于设计更安全应用程序的活动和 Azure 服务。
@@ -153,7 +150,7 @@ Azure 提供了可用来托管网站和 Web 应用程序的其他服务。 大�
 
 | 威胁 | 安全属性 | 潜在的 Azure 平台缓解措施 |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 欺骗               | 身份验证        | [要求使用 HTTPS 连接](/aspnet/core/security/enforcing-ssl?tabs=visual-studio&view=aspnetcore-2.1)。 |
+| 欺骗               | 身份验证        | [要求使用 HTTPS 连接](/aspnet/core/security/enforcing-ssl?tabs=visual-studio)。 |
 | 篡改              | 完整性             | 验证 SSL/TLS 证书。 使用 SSL/TLS 的应用程序必须全面验证它们连接到的实体的 X.509 证书。 使用 Azure Key Vault 证书来[管理 x509 证书](../../key-vault/general/about-keys-secrets-certificates.md)。 |
 | 否认性            | 不可否认性       | 启用 Azure [监视和诊断](/azure/architecture/best-practices/monitoring)。|
 | 信息泄露 | 机密性       | 加密[静态](../fundamentals/encryption-atrest.md)和[传输中的](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)敏感数据。 |
@@ -233,7 +230,7 @@ Azure 提供了可用来托管网站和 Web 应用程序的其他服务。 大�
 
 ### <a name="require-re-authentication-for-important-transactions"></a>要求对重要事务反复进行身份验证
 
-[跨站点伪造请求](/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1)（也称为 XSRF 或 CSRF ）是一种针对 Web 托管型应用的攻击。在此类攻击中，恶意 Web 应用会影响客户端浏览器与信任该浏览器的 Web 应用之间的交互。 可能出现跨站点伪造请求攻击是因为 Web 浏览器会随每个请求自动向网站发送某些类型的身份验证令牌。
+[跨站点伪造请求](/aspnet/core/security/anti-request-forgery)（也称为 XSRF 或 CSRF ）是一种针对 Web 托管型应用的攻击。在此类攻击中，恶意 Web 应用会影响客户端浏览器与信任该浏览器的 Web 应用之间的交互。 可能出现跨站点伪造请求攻击是因为 Web 浏览器会随每个请求自动向网站发送某些类型的身份验证令牌。
 这种形式的攻击也称为一键攻击或会话叠置，因为攻击利用了用户先前经过身份验证的会话。
 
 防御此类攻击的最佳方法是在每次执行重要事务（例如购买、帐户停用或密码更改）之前都向用户请求只有该用户才能提供的内容。 你可以要求用户重新输入密码、完成验证码，或者提交只有该用户才会有的机密令牌。 最常用的方法是机密令牌。
@@ -303,7 +300,7 @@ Key Vault 是一个机密存储：一个用于存储应用程序机密的集中�
 
 ### <a name="use-logging-and-alerting"></a>使用日志记录和警报
 
-[记录](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1)你的安全问题以便进行安全调查，并触发相关问题的警报，以确保人们及时了解问题。 在所有组件中启用审核与日志记录。 审核日志应该捕获用户上下文并标识所有重要事件。
+[记录](/aspnet/core/fundamentals/logging/)你的安全问题以便进行安全调查，并触发相关问题的警报，以确保人们及时了解问题。 在所有组件中启用审核与日志记录。 审核日志应该捕获用户上下文并标识所有重要事件。
 
 确保不会记录用户提交到站点的任何敏感数据。 敏感数据的示例包括：
 

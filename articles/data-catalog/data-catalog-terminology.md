@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 6e636a039302d2ea61c7135bff1fceb4763f25df
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: MT
+ms.openlocfilehash: 008d0f106b07d61f0989a479457b12398000b5d9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151447"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "104674559"
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure 数据目录术语
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 本文介绍 Azure 数据目录文档中使用的概念和术语。
 
@@ -23,7 +25,7 @@ Azure 数据目录是基于云的元数据存储库，可以在其中注册数�
 
 ## <a name="data-source"></a>数据源
 
-数据源是管理数据资产的系统或容器。 示例包括 SQL Server 数据库、Oracle 数据库、SQL Server Analysis Services 数据库 (表格或多维) 以及 SQL Server Reporting Services 服务器。
+数据源是管理数据资产的系统或容器。 例如 SQL Server 数据库、Oracle 数据库、SQL Server Analysis Services 数据库（表格或多维）以及 SQL Server Reporting Services 服务器。
 
 ## <a name="data-asset"></a>数据资产
 
@@ -65,17 +67,17 @@ Azure 数据目录中的数据配置文件是已注册数据资产相关的表�
 
 ## <a name="user-perspective"></a>用户视角
 
-在 Azure 数据目录中，任何用户都可以为已注册的数据资产提供描述性元数据。 每个用户对数据及其使用情况都有不同的透视。 例如，负责服务器的管理员可以提供该服务器的服务级别协议 (SLA) 或备份窗口的详细信息；数据专员可以提供数据支持的业务过程的文档链接；而分析员可以对其他分析师相关度最高的条款提供说明，这对需要发现和了解数据的用户非常有价值。
+在 Azure 数据目录中，任何用户都可以为已注册的数据资产提供描述性元数据。 每个用户对数据及其使用具有不同的看法。 例如，负责服务器的管理员可以提供该服务器的服务级别协议 (SLA) 或备份窗口的详细信息；数据专员可以提供数据支持的业务过程的文档链接；而分析员可以对其他分析师相关度最高的条款提供说明，这对需要发现和了解数据的用户非常有价值。
 
-其中每个透视都非常有用，使用 Azure 数据目录时，每个用户都可以提供有意义的信息，而所有用户都可以使用该信息来了解数据及其目的。
+每种观点都有继承价值，并且通过 Azure 数据目录，每个用户都可以对这些观点提供有意义的信息，同时所有用户都可以都使用这些信息来了解数据及其用途。
 
 ## <a name="expert"></a>专家
 
 专家是已被认定为对某数据资产具有广博的“专家”见解的用户。 任何用户可以将自身或另一用户添加为某资产的专家。 在 Azure 数据目录中，被列为专家并不代表具有任何其他特权；它允许用户在查看资产的描述性元数据时，可轻松找到最可能有用的那些观点。
 
-## <a name="owner"></a>所有者
+## <a name="owner"></a>“所有者”
 
-所有者是在 Azure 数据目录中对数据资产管理具有额外权限的用户。 用户可取得已注册的数据资产的所有权，而所有者可以将其他用户添加为共同所有者。 有关详细信息，请参阅 [如何管理数据资产](data-catalog-how-to-manage.md)  
+所有者是在 Azure 数据目录中对数据资产管理具有额外权限的用户。 用户可取得已注册的数据资产的所有权，而所有者可以将其他用户添加为共同所有者。 有关详细信息，请参阅[如何管理数据资产](data-catalog-how-to-manage.md)  
 
 > [!NOTE]
 > 所有权和管理仅在标准版的 Azure 数据目录中可用。

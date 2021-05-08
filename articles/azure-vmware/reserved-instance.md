@@ -1,143 +1,143 @@
 ---
-title: 利用 Azure VMware 解决方案预订实例节省成本
-description: 了解如何购买 Azure VMware 解决方案的预订实例。
+title: 利用 Azure VMware 解决方案预留实例节省成本
+description: 了解如何购买 Azure VMware 解决方案的预留实例。
 ms.topic: how-to
 ms.date: 02/03/2021
 ms.openlocfilehash: 227ea9274f70cc58468e7e0b3ddcf8239f5b7f5b
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99550969"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>利用 Azure VMware 解决方案节省成本
 
-当你提交到 [Azure VMware 解决方案](introduction.md)的保留实例时，可以节省资金。  预订折扣将自动应用于与预订范围和属性匹配的运行中的 Azure VMware 解决方案主机。 购买的预订实例仅涵盖使用情况的计算部分，并包括软件许可成本。 
+当你提交到 [Azure VMware 解决方案](introduction.md)的预留实例时，可以节省资金。  预留折扣会自动应用到与预留范围和属性相匹配的正在运行的 Azure VMware 解决方案主机。 购买的预留实例仅涵盖使用情况的计算部分，并包括软件许可成本。 
 
 ## <a name="purchase-restriction-considerations"></a>购买限制注意事项
 
-保留实例可用，但有一些例外情况。
+预留实例有一些例外情况。
 
--   **云** 预订仅在 " [按区域提供的产品](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware) " 页上列出的区域中可用。
+-   **云** - 预留仅在[按区域提供的产品](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware)页上列出的区域中可用。
 
--   **配额不足** -作用域为单个/共享订阅的保留必须在订阅中为新的保留实例提供主机配额。 你可以 [创建配额增加请求](enable-azure-vmware-solution.md) 以解决此问题。
+-   **配额不足** - 范围限定为单个/共享订阅的预留实例必须在订阅中具有可用于新预留实例的主机配额。 你可以[创建配额增加请求](enable-azure-vmware-solution.md)以解决此问题。
 
--   **提供资格**-你将需要 [AZURE 企业协议 (EA)](../cost-management-billing/manage/ea-portal-agreements.md) 与 Microsoft 配合使用。
+-   **产品/服务资格** - 你将需要 Microsoft 的 [Azure 企业协议 (EA)](../cost-management-billing/manage/ea-portal-agreements.md)。
 
--   **容量限制** -在极少数情况下，azure 会限制购买新保留的 Azure VMware 解决方案主机 sku，因为区域中的容量不足。
+-   **容量限制** - 在极少数情况下，Azure 限制购买的 Azure VMware 解决方案主机 SKU 的新预留实例，因为某个区域的容量不足。
 
 ## <a name="buy-a-reservation"></a>购买预留项
 
-可以在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)中购买 Azure VMware 解决方案主机实例的保留实例。
+可以在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)中购买 Azure VMware 解决方案主机实例的预留实例。
 
-您可以提前支付预订费用，也可以 [按月](../cost-management-billing/reservations/prepare-buy-reservation.md)支付。
+可通过[提前付款或按月付款](../cost-management-billing/reservations/prepare-buy-reservation.md)的方式为预留付款。
 
-这些要求适用于购买保留的专用主机实例：
+购买预留专用主机实例时需满足以下要求：
 
--   对于至少一个 EA 订阅或具有即用即付费率的订阅，必须是 *所有者* 角色。
+-   你必须具有至少一个 EA 订阅或采用即用即付费率的订阅的“所有者”角色。
 
--   对于 EA 订阅，必须在 [ea 门户](https://ea.azure.com/)中启用 "**添加保留实例**" 选项。 如果禁用，你必须是订阅的 EA 管理员才能启用它。
+-   对于 EA 订阅，必须在 [EA 门户](https://ea.azure.com/)中启用“添加预留实例”选项。 如果禁用了该选项，则你必须是订阅的 EA 管理员才能启用它。
 
--   对于云解决方案提供商提供的订阅 (CSP) Azure 计划，合作伙伴必须在 Azure 门户为客户购买保留实例。 
+-   对于云解决方案提供商 (CSP) Azure 计划下的订阅，合作伙伴必须在 Azure 门户为客户购买预留实例。 
 
-### <a name="buy-reserved-instances-for-an-ea-subscription"></a>为 EA 订阅购买保留实例
+### <a name="buy-reserved-instances-for-an-ea-subscription"></a>为 EA 订阅购买预留实例
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 
-2. 选择“所有服务”   > “预订”  。
+2. 选择“所有服务” > “预订”。
 
-3. 选择 " **立即购买** "，并选择 " **Azure VMware 解决方案**"。
+3. 选择“立即购买”，然后选择“Azure VMware 解决方案”。
 
-4. 输入必填字段。 与正在运行的 Azure VMware 解决方案相匹配的所选属性托管了预订折扣的资格。  属性包括 SKU、区域（如果适用）和范围。 预留范围选择预留节省的应用场合。
+4. 输入必填字段。 与正在运行的 Azure VMware 解决方案主机相匹配的所选属性可享受预留折扣。  属性包括 SKU、区域（如果适用）和范围。 预留范围选择预留节省的应用场合。
 
-   如果你有 EA 协议，则可以使用 " **添加更多" 选项** 快速添加实例。 选项不适用于其他订阅类型。
+   如果你有 EA 协议，则可使用“添加更多选项”来快速添加实例。 此选项不可用于其他订阅类型。
 
    | 字段        |  说明 |
    | ------------ | ------------ |
-   | 订阅 | 用于支付预订费用的订阅。 将向订阅的付款方式收取预留的费用。 订阅类型必须是 (产品/服务的企业协议： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p) 、Microsoft 客户协议，或者使用即用即付费率的单个订阅 (产品编号： MS-BC-OP-NT-AZR-Ms-azr-0003p 或 bc-op-nt-azr-0023P) 。 从 Azure 预付款（以前称为货币承诺）余额中扣除费用（如果可用）或按超额收取费用。 对于使用即用即付费率的订阅，会对订阅的信用卡或发票付款方式收取费用。 |
-   | 范围        | 预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择：<br><ul><li><b>单个资源组作用域</b> -仅将预订折扣应用于所选资源组中的匹配资源。</li><li><b>单个订阅范围</b> -将预订折扣应用于所选订阅中的匹配资源。</li><li><b>共享作用域</b> -将预订折扣应用于计费上下文中符合条件的订阅中的匹配资源。 对于 EA 客户，计费上下文为 "注册"。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。</li></ul>       |
-   | Region       | 预订涵盖的 Azure 区域。   |
+   | 订阅 | 用于支付预订费用的订阅。 将向订阅的付款方式收取预留的费用。 订阅类型必须为企业协议（产品/服务编号：MS-AZR-0017P 或 MS-AZR-0148P）、Microsoft 客户协议或采用即用即付费率的个人订阅（产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）。 从 Azure 预付款（以前称为货币承诺）余额中扣除费用（如果可用）或按超额收取费用。 对于采用即用即付费率的订阅，将向订阅的信用卡或发票付款方式收取费用。 |
+   | 范围        | 预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择：<br><ul><li><b>单个资源组范围</b> - 仅将预留折扣应用到所选资源组中匹配的资源。</li><li><b>单个订阅范围</b> - 将预留折扣应用到所选订阅中匹配的资源。</li><li><b>共享范围</b> - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于 EA 客户，计费上下文是“注册”。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。</li></ul>       |
+   | 区域       | 预订涵盖的 Azure 区域。   |
    | 主机大小    | AV36    |
    | 术语         | 一年或三年。  |
-   | 数量     | 要在保留中购买的实例数。 数量是可以获得计费折扣的正在运行的 Azure VMware 解决方案主机数。    |
+   | 数量     | 预留中购买的实例数。 数量是可以获得计费折扣的正在运行的 Azure VMware 解决方案主机数。    |
 
-### <a name="buy-reserved-instances-for-a-csp-subscription"></a>为 CSP 订阅购买保留实例
+### <a name="buy-reserved-instances-for-a-csp-subscription"></a>为 CSP 订阅购买预留实例
 
-需要为其客户购买预订实例的 Csp 必须从 [合作伙伴中心文档](/partner-center/azure-plan-manage)中代表 (AOBO) 过程使用 **管理员**。 有关详细信息，请 [) 视频上代表 (AOBO 查看管理员 ](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) 。
+需要为其客户购买预留实例的 CSP 必须使用[合作伙伴中心文档](/partner-center/azure-plan-manage)中的“管理员代表”(AOBO) 过程。 有关详细信息，请观看[管理员代表 (AOBO)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) 视频。
 
 1. 登录[合作伙伴中心](https://partner.microsoft.com)。
 
-2. 选择 " **CSP** " 以访问 " **客户** " 区域。
+2. 选择“CSP”以访问“客户”区域。
 
-3. 展开 "客户详细信息" 并选择 **Microsoft Azure 管理门户**。 
+3. 展开客户详细信息并选择“Microsoft Azure 管理门户”。 
 
    :::image type="content" source="media/reserved-instances/csp-partner-center-aobo.png" alt-text="Microsoft 合作伙伴中心客户区域" lightbox="media/reserved-instances/csp-partner-center-aobo.png":::
 
-4. 在 Azure 门户中，选择 "**所有服务**  >  **保留**"。
+4. 在 Azure 门户中，选择“所有服务” > “预留”。
 
-5. 选择 " **立即购买** "，并选择 " **Azure VMware 解决方案**"。
+5. 选择“立即购买”，然后选择“Azure VMware 解决方案”。
 
-   :::image type="content" source="media/reserved-instances/csp-buy-ri-azure-portal.png" alt-text="Microsoft Azure 门户预订" lightbox="media/reserved-instances/csp-buy-ri-azure-portal.png":::
+   :::image type="content" source="media/reserved-instances/csp-buy-ri-azure-portal.png" alt-text="Microsoft Azure 门户预留" lightbox="media/reserved-instances/csp-buy-ri-azure-portal.png":::
 
-6. 输入必填字段。 与正在运行的 Azure VMware 解决方案相匹配的所选属性托管了预订折扣的资格。  属性包括 SKU、区域（如果适用）和范围。 预留范围选择预留节省的应用场合。
+6. 输入必填字段。 与正在运行的 Azure VMware 解决方案主机相匹配的所选属性可享受预留折扣。  属性包括 SKU、区域（如果适用）和范围。 预留范围选择预留节省的应用场合。
 
    | 字段        |  说明 |
    | ------------ | ------------ |
    | 订阅 | 用于支付预订费用的订阅。 将向订阅的付款方式收取预留的费用。 订阅类型必须是符合条件的类型，在本例中为 CSP 订阅|
-   | 范围        | 预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择：<br><ul><li><b>单个资源组作用域</b> -仅将预订折扣应用于所选资源组中的匹配资源。</li><li><b>单个订阅范围</b> -将预订折扣应用于所选订阅中的匹配资源。</li><li><b>共享作用域</b> -将预订折扣应用于计费上下文中符合条件的订阅中的匹配资源。 对于 EA 客户，计费上下文为 "注册"。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。</li></ul>       |
-   | Region       | 预订涵盖的 Azure 区域。   |
+   | 范围        | 预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择：<br><ul><li><b>单个资源组范围</b> - 仅将预留折扣应用到所选资源组中匹配的资源。</li><li><b>单个订阅范围</b> - 将预留折扣应用到所选订阅中匹配的资源。</li><li><b>共享范围</b> - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于 EA 客户，计费上下文是“注册”。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。</li></ul>       |
+   | 区域       | 预订涵盖的 Azure 区域。   |
    | 主机大小    | AV36    |
    | 术语         | 一年或三年。  |
-   | 数量     | 要在保留中购买的实例数。 数量是可以获得计费折扣的正在运行的 Azure VMware 解决方案主机数。     |
+   | 数量     | 预留中购买的实例数。 数量是可以获得计费折扣的正在运行的 Azure VMware 解决方案主机数。     |
 
-若要了解有关如何查看客户购买的预订的详细信息，请参阅 [查看 Azure 预订作为云解决方案提供商 (CSP) ](../cost-management-billing/reservations/how-to-view-csp-reservations.md) 文章。
+要详细了解如何查看为客户购买的预留，请参阅[以云解决方案提供商 (CSP) 的身份查看 Azure 预留](../cost-management-billing/reservations/how-to-view-csp-reservations.md)一文。
 
-## <a name="usage-data-and-reservation-usage"></a>使用情况数据和预订使用情况
+## <a name="usage-data-and-reservation-usage"></a>使用情况数据和预留使用情况
 
-获取预订折扣的使用量的有效价格为零。 你可以看到哪个 Azure VMware 解决方案实例收到每个预订的预订折扣。
+对于获得预留折扣的使用情况，使用数据的有效价格为零。 可以看到哪个 Azure VMware 解决方案实例收到每个预留的预留折扣。
 
-有关如何在使用情况数据中显示预订折扣的详细信息：
+有关如何在使用情况数据中显示预留折扣的详细信息：
 
-- 对于 EA 客户，请参阅 [了解企业注册的 Azure 保留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
-- 对于单独的订阅，请参阅 [了解即用即付订阅的 Azure 保留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
+- 对于 EA 客户，请参阅[了解适用于企业注册的 Azure 预留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+- 对于个人订阅，请参阅[了解用于即用即付订阅的 Azure 预留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
 
-## <a name="change-a-reservation-after-purchase"></a>在购买后更改保留
+## <a name="change-a-reservation-after-purchase"></a>在购买后更改预留
 
-可以在购买后对保留进行以下更改：
+可以在购买后对预留进行以下更改：
 
 -   更新预留范围
 
--   实例大小灵活性 (（如果适用）) 
+-   实例大小灵活性（如果适用）
 
 -   所有权
 
-你还可以将预订拆分为较小的区块或合并保留。 任何更改都不会导致新的商业交易，也不会更改预订的结束日期。
+还可以将预留拆分为较小的区块或合并预留。 任何更改都不会导致新的商业行为，也不会更改预留的结束日期。
 
-有关 CSP 管理的预订的详细信息，请参阅 [使用合作伙伴中心、Azure 门户或 api 向客户销售 Microsoft Azure 预订](/partner-center/azure-reservations)。
+有关 CSP 托管的预留的详细信息，请参阅[使用合作伙伴中心、Azure 门户或 API 向客户销售 Microsoft Azure 预留](/partner-center/azure-reservations)。
 
 
 
 >[!NOTE]
->购买保留后，将无法直接进行这些类型的更改：
+>购买预留后，将无法直接进行以下类型的更改：
 >
-> - 现有预订的区域
+> - 现有预留的区域
 > - SKU
 > - 数量
 > - 持续时间
 >
->不过，如果想要进行更改，则可以 *交换* 预订。
+>但是，如果想要进行更改，可以交换预留。
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>对预留执行取消、交换或退款操作
 
 可以在一定的限制下对预留执行取消、交换或退款操作。 有关详细信息，请参阅 [Azure 预留的自助交换和退款](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)。
 
-Csp 可以取消、交换或退款，并为其客户购买某些限制。 有关详细信息，请参阅 [客户的管理、取消、交换或退款 Microsoft Azure 预订](/partner-center/azure-reservations-manage)。
+CSP 可以取消、交换为其客户购买的预留或退款，但有一些限制。 有关详细信息，请参阅[管理、取消、交换或退款客户的 Microsoft Azure 预留](/partner-center/azure-reservations-manage)。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已介绍了如何购买 Azure VMware 解决方案的保留实例，你可能想要了解：
+现在，你已了解如何购买 Azure VMware 解决方案的预留实例，接下来你可能想要了解以下内容：
 
 - [创建 Azure VMware 解决方案评估](../migrate/how-to-create-azure-vmware-solution-assessment.md)。
-- [管理 Azure VMware 解决方案的 DHCP](manage-dhcp.md)。
-- [Azure VMware 解决方案 vm 的生命周期管理](lifecycle-management-of-azure-vmware-solution-vms.md)。
+- [管理适用于 Azure VMware 解决方案的 DHCP](manage-dhcp.md)。
+- [Azure VMware 解决方案 VM 的生命周期管理](lifecycle-management-of-azure-vmware-solution-vms.md)。
  

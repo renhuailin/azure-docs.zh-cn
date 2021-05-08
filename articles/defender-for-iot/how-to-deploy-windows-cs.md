@@ -1,37 +1,25 @@
 ---
 title: 在 Windows 设备上安装 C# 代理
 description: 了解如何在 32 位或 64 位 Windows 设备上安装 Defender for IoT 代理。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
-ms.custom: devx-track-csharp
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: 4d99cdbb2f50d04eff790cdfe675d0f8031c48a9
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.openlocfilehash: b5efc9ce675fa068f378cdc2bdd5a077d3437a93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517172"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104778757"
 ---
-# <a name="deploy-a-defender-for-iot-c-based-security-agent-for-windows"></a>为 Windows 部署基于 IoT c # 的安全代理 Defender
+# <a name="deploy-a-defender-for-iot-c-based-security-agent-for-windows"></a>为 Windows 部署 Defender for IoT 基于 C# 的安全代理
 
 本指南介绍如何在 Windows 上安装 Defender for IoT 基于 C# 的安全代理。
 
 本指南介绍如何：
 
-> [!div class="checklist"]
-> * 安装
-> * 验证部署
-> * 卸载代理
-> * 疑难解答
+- 安装
+- 验证部署
+- 卸载代理
+- 疑难解答
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,7 +27,7 @@ ms.locfileid: "100517172"
 
 1. 要安装它的计算机上的本地管理员权限。
 
-1. 为设备[创建安全模块](quickstart-create-security-twin.md)。
+1. 为设备[创建 Defender-IoT-micro-agent](quickstart-create-security-twin.md)。
 
 ## <a name="installation"></a>安装
 
@@ -73,11 +61,11 @@ ms.locfileid: "100517172"
 此脚本执行以下操作：
 
 * 安装必备组件。
-* 添加已禁用交互式登录) 的服务用户 (。
+* 添加服务用户（在禁用交互式登录的情况下）。
 * 将代理作为 **系统服务** 安装。
 * 使用提供的身份验证参数配置代理。
 
-若要获得更多帮助，请在 PowerShell 中使用 Get-Help 命令。
+如需额外帮助，请在 PowerShell 中使用 Get-Help 命令。
 
 Get-Help 示例：```Get-Help .\InstallSecurityAgent.ps1```
 

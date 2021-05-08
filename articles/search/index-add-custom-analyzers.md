@@ -1,35 +1,29 @@
 ---
 title: 向字符串字段添加自定义分析器
 titleSuffix: Azure Cognitive Search
-description: 配置 Azure 认知搜索全文搜索查询中所用的文本 tokenizer 和字符筛选器。
+description: 配置文本 tokenizer 和字符筛选器以对索引和查询过程中的字符串执行文本分析。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/05/2020
-ms.openlocfilehash: fef73a9b98fef40aaceeacca43836d4b2f3c5de0
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
-ms.translationtype: MT
+ms.date: 03/17/2021
+ms.openlocfilehash: 831e57a68c79c245b96baec0fc3d062c4c9112c5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630201"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104604434"
 ---
 # <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>向 Azure 认知搜索索引中的字符串字段添加自定义分析器
 
-自定义分析器是[文本分析器](search-analyzers.md)的一种特定类型，包含现有 tokenizer 和可选筛选器的用户定义组合。 通过以新方式组合 tokenizer 和筛选器，可以在搜索引擎中自定义文本处理以得到特定结果。 例如，可以使用 *字符筛选器* 创建自定义分析器，以在标记文本输入之前删除 HTML 标记。
+*自定义分析器* 是 tokenizer、一个或多个标记筛选器的组合，以及在搜索索引中定义的一个或多个字符筛选器，然后引用需要自定义分析的字段定义。 Tokenizer 负责将文本分解成多个标记，标记筛选器负责修改 tokenizer 发出的标记。 字符筛选器在 tokenizer 处理输入文本之前准备输入文本。 
 
- 可以定义多个自定义分析器来改变筛选器组合，但每个字段只能使用一个分析器进行索引分析，一个分析器进行搜索分析。 有关自定义分析器外观的说明，请参见[自定义分析器示例](search-analyzers.md#Custom-analyzer-example)。
+自定义分析器可以使得允许通过选择要调用的分析或筛选类型以及它们出现的顺序来控制将文本转换为可索引和可搜索的标记的过程。 如果要使用具有自定义选项的内置分析器（如在标准上更改 maxTokenLength），则要创建一个具有用户定义名称的自定义分析器，以设置这些选项。
 
-## <a name="overview"></a>概述
+自定义分析器可为有用的情况包括：
 
- 简单来说，[全文搜索引擎](search-lucene-query-architecture.md)的作用是以能够进行有效查询和检索的方式处理和存储文档。 从较高层面来说，就是从文档中提取重要字词，将它们放入索引，然后使用索引查找与给定查询的字词匹配的文档。 从文档和搜索查询中提取字词的过程称为“词法分析”。 执行词法分析的组件称为“分析器”。
-
- 在 Azure 认知搜索中，可以从[分析器](#AnalyzerTable)表中的一组预定义语言不可知分析器或[语言分析器（Azure 认知搜索服务 REST API）](index-add-language-analyzers.md)中列出的语言特定分析器中进行选择。 也可以选择定义自己的自定义分析器。  
-
- 自定义分析器允许控制将文本转换为可索引且可搜索标记的过程。 它是一种用户定义的配置，由一个预定义的 tokenizer、一个或多个标记筛选器以及一个或多个字符筛选器组成。 Tokenizer 负责将文本分解成多个标记，标记筛选器负责修改 tokenizer 发出的标记。 在由 tokenizer 处理输入文本之前，可应用字符筛选器来准备输入文本。 例如，字符筛选器可以替换某些字符或符号。
-
- 自定义分析器支持的常见方案包括：  
+- 在文本输入被标记之前使用字符筛选器删除 HTML 标记，或者替换特定字符或符号。
 
 - 拼音搜索。 添加一个拼音筛选器，以便根据字词的发音方式而不是拼写方式进行搜索。  
 
@@ -41,21 +35,28 @@ ms.locfileid: "97630201"
 
 - ASCII 折叠。 添加标准 ASCII 折叠筛选器以规范化搜索词中的音调符号，如 ö 或 ê。  
 
-  本页面提供了受支持的分析器、tokenizer、标记筛选器和字符筛选器的列表。 你还可以找到索引定义更改的说明以及用法示例。 有关 Azure 认知搜索实现中使用的基础技术的更多背景信息，请参阅[分析包摘要 (Lucene)](https://lucene.apache.org/core/6_0_0/core/org/apache/lucene/codecs/lucene60/package-summary.html)。 有关分析器配置的示例，请参阅[在 Azure 认知搜索中添加分析器](search-analyzers.md#examples)。
+若要创建自定义分析器，请在设计时在索引的 "分析器" 部分中指定它，然后使用 "分析器" 属性或 "indexAnalyzer" 和 "searchAnalyzer" 对在可搜索的 Edm.String 字段上引用它。
 
-## <a name="validation-rules"></a>验证规则  
- 分析器、tokenizer、标记筛选器和字符筛选器的名称必须是唯一的，不能与任何预定义的分析器、tokenizer、标记筛选器或字符筛选器相​​同。 有关已使用的名称，请参阅[属性参考](#PropertyReference)。
+> [!NOTE]  
+> 你创建的自定义分析器不会在 Azure 门户中公开。 添加自定义分析器的唯一方法是通过定义索引的代码。 
 
-## <a name="create-custom-analyzers"></a>创建自定义分析器
- 可以在创建索引时定义自定义分析器。 本部分介绍用于指定自定义分析器的语法。 也可以通过查看[在 Azure 认知搜索中添加分析器](search-analyzers.md#examples)中的示例定义来熟悉该语法。  
+## <a name="create-a-custom-analyzer"></a>创建自定义分析器
 
- 分析器定义包括名称、类型、一个或多个字符筛选器、最多一个 tokenizer，以及一个或多个用于后期词汇切分处理的标记筛选器。 字符筛选器在词汇切分前应用。 标记筛选器和字符筛选器按从左到右的顺序应用。
+分析器定义包括名称、类型、一个或多个字符筛选器、最多一个 tokenizer，以及一个或多个用于后期词汇切分处理的标记筛选器。 字符筛选器在词汇切分前应用。 标记筛选器和字符筛选器按从左到右的顺序应用。
 
- `tokenizer_name` 是 tokenizer 的名称，`token_filter_name_1` 和 `token_filter_name_2` 是标记筛选器的名称，`char_filter_name_1` 和 `char_filter_name_2` 是字符筛选器的名称（请参阅 [Tokenizer](#Tokenizers)、[标记筛选器](#TokenFilters)和字符筛选器表来了解有效值）。
+- 自定义分析器中的名称必须是唯一的，并且不能与内置分析器、tokenizer、标记筛选器或字符筛选器中的任一者相同。 它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。 
 
-分析器定义是较大索引的一部分。 有关索引其余部分的信息，请参阅[创建索引 API](/rest/api/searchservice/create-index)。
+- 类型必须是 #Microsoft.Azure.Search.CustomAnalyzer。
 
-```
+- "charFilters" 可以是 [字符筛选器](#CharFilter)中的一个或多个筛选器，这些筛选器按照提供的顺序在词汇切分之前处理。 某些字符筛选器具有选项，这些选项可以在 "charFilter" 部分中进行设置。 字符筛选器是可选的。
+
+- "tokenizer" 正好是一个 [Tokenizer](#tokenizers)。 值是必选的。 如果需要多个 tokenizer，则可以创建多个自定义分析器，并在索引架构中逐个字段地分配它们。
+
+- "tokenFilters" 可以是 [标记筛选器](#TokenFilters)中的一个或多个筛选器，这些筛选器按照提供的顺序在词汇切分之后处理。 对于具有选项的标记筛选器，请添加 "tokenFilter" 部分以指定配置。 标记筛选器是可选的。
+
+分析器不得生成超过300个字符的标记，否则索引将失败。 若要剪裁或排除长标记，请分别使用 “TruncateTokenFilter” 和 “LengthTokenFilter”。  请参阅 [**标记筛选器**](#TokenFilters)进行参考。
+
+```json
 "analyzers":(optional)[
    {
       "name":"name of analyzer",
@@ -107,12 +108,9 @@ ms.locfileid: "97630201"
 ]
 ```
 
-> [!NOTE]  
->  你创建的自定义分析器不会在 Azure 门户中公开。 添加自定义分析器的唯一方法是在定义索引时通过使用调用 API 的代码。  
+在索引定义中，可以将此节放在创建索引请求正文中的任意位置，但通常将它放在末尾：  
 
- 在索引定义中，可以将此节放在创建索引请求正文中的任意位置，但通常将它放在末尾：  
-
-```
+```json
 {
   "name": "name_of_index",
   "fields": [ ],
@@ -127,18 +125,17 @@ ms.locfileid: "97630201"
 }
 ```
 
-只有在设置自定义选项时，才向索引添加字符筛选器、tokenizer 和标记筛选器的定义。 若要按原样使用现有筛选器或 tokenizer，请在分析器定义中按名称指定它。
-
-<a name="Testing custom analyzers"></a>
+分析器定义是较大索引的一部分。 只有在设置自定义选项时，才向索引添加字符筛选器、tokenizer 和标记筛选器的定义。 若要按原样使用现有筛选器或 tokenizer，请在分析器定义中按名称指定它。 有关详细信息，请参阅[创建索引 (REST)](/rest/api/searchservice/create-index)。 有关更多示例，请参阅 [在 Azure 认知搜索中添加分析器](search-analyzers.md#examples)。
 
 ## <a name="test-custom-analyzers"></a>测试自定义分析器
 
-可以使用 [REST API](/rest/api/searchservice/test-analyzer) 中的 **测试分析器操作** 来查看分析器如何将给定文本分解成多个标记。
+可以使用[测试分析器 (REST)](/rest/api/searchservice/test-analyzer) 来查看分析器如何将给定文本分解成多个标记。
 
 **请求**
-```
+
+```http
   POST https://[search service name].search.windows.net/indexes/[index name]/analyze?api-version=[api-version]
-  Content-Type: application/json
+    Content-Type: application/json
     api-key: [admin key]
 
   {
@@ -146,8 +143,10 @@ ms.locfileid: "97630201"
      "text": "Vis-à-vis means Opposite"
   }
 ```
+
 **响应**
-```
+
+```http
   {
     "tokens": [
       {
@@ -182,145 +181,75 @@ ms.locfileid: "97630201"
 
 定义分析器、tokenizer、标记筛选器或字符筛选器后，便无法修改它。 仅当 `allowIndexDowntime` 标志在索引更新请求中设置为 true 时，才可向现有索引添加新的上述内容：
 
-```
+```http
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true
 ```
 
 此操作将使索引离线至少几秒钟，从而导致索引和查询请求失败。 索引的性能和写入可用性可能会在更新索引后的几分钟内处于受损状态，对于非常大的索引，持续时间更长，但这些影响只是暂时的，最终将自行解除。
 
- <a name="ReferenceIndexAttributes"></a>
+<a name="built-in-analyzers"></a>
 
-## <a name="analyzer-reference"></a>分析器引用
+## <a name="built-in-analyzers"></a>内置分析器
 
-下表列出了索引定义的分析器、tokenizer、标记筛选器和字符筛选器节的配置属性。 索引中的分析器、tokenizer 或筛选器的结构均由这些属性组成。 有关赋值信息，请参阅[属性参考](#PropertyReference)。
-
-### <a name="analyzers"></a>分析器
-
-对于分析器，索引属性取决于你使用的是预定义分析器还是自定义分析器。
-
-#### <a name="predefined-analyzers"></a>预定义分析器
-
-| 类型 | 说明 |
-| ---- | ----------- |  
-|名称|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
-|类型|分析器类型来自受支持分析器列表。 请参阅下面 [分析器](#AnalyzerTable)表中的 **analyzer_type** 列。|  
-|选项|必须是下面[分析器](#AnalyzerTable)表中列出的预定义分析器的有效选项。|  
-
-#### <a name="custom-analyzers"></a>自定义分析器
-
-| 类型 | 说明 |
-| ---- | ----------- |  
-|名称|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
-|类型|必须是“#Microsoft.Azure.Search.CustomAnalyzer”。|  
-|CharFilters|设置为[字符筛选器](#char-filters-reference)表中列出的预定义字符筛选器之一或索引定义中指定的自定义字符筛选器。|  
-|分词器|必需。 设置为下面 [Tokenizer](#Tokenizers) 表中列出的预定义 tokenizer 之一或索引定义中指定的自定义 tokenizer。|  
-|TokenFilters|设置为[标记筛选器](#TokenFilters)表中列出的预定义标记筛选器之一或索引定义中指定的自定义标记筛选器。|  
-
-> [!NOTE]
-> 需要将自定义分析器配置为不生成超过 300 个字符的标记。 对包含此类标记的文档编制索引时会失败。 若要剪裁或忽略它们，请分别使用 **TruncateTokenFilter** 和 **LengthTokenFilter**。  请查看 [**令牌筛选器**](#TokenFilters)进行参考。
-
-<a name="CharFilter"></a>
-
-### <a name="char-filters"></a>字符筛选器
-
- 字符筛选器用于在 tokenizer 处理输入文本之前准备输入文本。 例如，它们可以替换某些字符或符号。 可以在自定义分析器中使用多个字符筛选器。 字符筛选器按列出的顺序运行。  
-
-| 类型 | 说明 |
-| ---- | ----------- | 
-|名称|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
-|类型|字符筛选器类型来自受支持字符筛选器列表。 请参阅下面 [字符筛选器](#char-filters-reference)表中的 **char_filter_type** 列。|  
-|选项|必须是给定[字符筛选器](#char-filters-reference)类型的有效选项。|  
-
-### <a name="tokenizers"></a>Tokenizer
-
- Tokenizer 将连续文本划分为一系列标记，例如将一个句子分解成多个字词。  
-
- 可以为每个自定义分析器指定一个 tokenizer。 如果需要多个 tokenizer，则可以创建多个自定义分析器，并在索引架构中逐个字段地分配它们。  
-自定义分析器可以使用带有默认或自定义选项的预定义 tokenizer。  
-
-| 类型 | 说明 |
-| ---- | ----------- | 
-|名称|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
-|类型|Tokenizer 名称来自受支持 tokenizer 列表。 请参阅下面 [Tokenizer](#Tokenizers) 表中的 **tokenizer_type** 列。|  
-|选项|必须是下面 [Tokenizer](#Tokenizers) 表中列出的给定 tokenizer 类型的有效选项。|  
-
-### <a name="token-filters"></a>标记筛选器
-
- 标记筛选器用于筛选出或修改由 tokenizer 生成的标记。 例如，可以指定将所有字符转换为小写的小写筛选器。   
-可以在自定义分析器中使用多个标记筛选器。 标记筛选器按列出的顺序运行。  
-
-| 类型 | 说明 |
-| ---- | ----------- |  
-|名称|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
-|类型|标记筛选器名称来自受支持标记筛选器列表。 请参阅下面 [标记筛选器](#TokenFilters)表中的 **token_filter_type** 列。|  
-|选项|必须是给定标记筛选器类型的[标记筛选器](#TokenFilters)。|  
-
-<a name="PropertyReference"></a>  
-
-## <a name="property-reference"></a>属性参考
-
-本部分提供索引中自定义分析器、tokenizer、字符筛选器或标记筛选器的定义中指定的属性的有效值。 使用 Apache Lucene 实现的分析器、tokenizer 和筛选器已链接到相应的 Lucene API 文档。
-
-<a name="AnalyzerTable"></a>
-
-###  <a name="predefined-analyzers-reference"></a>预定义分析器参考
+如果要使用具有自定义选项的内置分析器，则创建自定义分析器是用于指定这些选项的机制。 相反，若要按原样使用内置分析器，只需在字段定义中[按名称引用](search-analyzers.md#how-to-specify-analyzers)即可。
 
 |**analyzer_name**|**analyzer_type**  <sup>1</sup>|**说明和选项**|  
-|-|-|-|  
+|-----------------|-------------------------------|---------------------------|  
 |[keyword](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)| （仅当有可用的选项时，类型才适用） |将某个字段的整个内容视为单个标记。 此分析器可用于邮政编码、ID 和某些产品名称等数据。|  
-|[pattern](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/miscellaneous/PatternAnalyzer.html)|PatternAnalyzer|通过正则表达式模式将文本灵活地分解成多个词条。<br /><br /> **选项**<br /><br /> lowercase (type: bool) - 确定词条是否为小写。 默认值为 true。<br /><br /> [pattern](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html?is-external=true) (type: string) - 用于匹配标记分隔符的正则表达式模式。 默认值为 `\W+`，与非字词字符匹配。<br /><br /> [flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (type: string) - 正则表达式标志。 默认值为空字符串。 允许的值：CANON_EQ、CASE_INSENSITIVE、COMMENTS、DOTALL、LITERAL、MULTILINE、UNICODE_CASE、UNIX_LINES<br /><br /> stopwords (type: string array) - 非索引字列表。 默认为空列表。|  
+|[pattern](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/miscellaneous/PatternAnalyzer.html)|PatternAnalyzer|通过正则表达式模式将文本灵活地分解成多个词条。 </br></br>**选项** </br></br>lowercase (type: bool) - 确定词条是否为小写。 默认值为 true。 </br></br>[pattern](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html?is-external=true) (type: string) - 用于匹配标记分隔符的正则表达式模式。 默认值为 `\W+`，与非字词字符匹配。 </br></br>[flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (type: string) - 正则表达式标志。 默认值为空字符串。 允许的值：CANON_EQ、CASE_INSENSITIVE、COMMENTS、DOTALL、LITERAL、MULTILINE、UNICODE_CASE、UNIX_LINES </br></br>stopwords (type: string array) - 非索引字列表。 默认为空列表。|  
 |[simple](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/SimpleAnalyzer.html)|（仅当有可用的选项时，类型才适用） |在非字母处划分文本并将其转换为小写。 |  
-|[standard](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) <br />（也称为 standard.lucene）|StandardAnalyzer|标准 Lucene 分析器，由标准 tokenizer、小写筛选器和停止筛选器组成。<br /><br /> **选项**<br /><br /> maxTokenLength (type: int) - 最大标记长度。 默认值为 255。 超过最大长度的标记将被拆分。 可以使用的最大标记长度为 300 个字符。<br /><br /> stopwords (type: string array) - 非索引字列表。 默认为空列表。|  
+|[standard](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) </br>（也称为 standard.lucene）|StandardAnalyzer|标准 Lucene 分析器，由标准 tokenizer、小写筛选器和停止筛选器组成。 </br></br>**选项** </br></br>maxTokenLength (type: int) - 最大标记长度。 默认值为 255。 超过最大长度的标记将被拆分。 可以使用的最大标记长度为 300 个字符。 </br></br>stopwords (type: string array) - 非索引字列表。 默认为空列表。|  
 |standardasciifolding.lucene|（仅当有可用的选项时，类型才适用） |带 Ascii 折叠筛选器的标准分析器。 |  
-|[stop](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/StopAnalyzer.html)|StopAnalyzer|在非字母处划分文本，应用小写和非索引字标记筛选器。<br /><br /> **选项**<br /><br /> stopwords (type: string array) - 非索引字列表。 默认值为英语预定义列表。 |  
+|[stop](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/StopAnalyzer.html)|StopAnalyzer|在非字母处划分文本，应用小写和非索引字标记筛选器。 </br></br>**选项** </br></br>stopwords (type: string array) - 非索引字列表。 默认值为英语预定义列表。 |  
 |[whitespace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html)|（仅当有可用的选项时，类型才适用） |使用空格 tokenizer 的分析器。 超过 255 个字符的标记将被拆分。|  
 
- <sup>1</sup> 分析器类型在代码中始终带有前缀“#Microsoft.Azure.Search”，因此，“PatternAnalyzer”实际上会被指定为“#Microsoft.Azure.Search.PatternAnalyzer”。 为简洁起见，我们删除了该前缀，但在代码中需要使用该前缀。 
- 
-analyzer_type 仅适用于可自定义的分析器。 如果没有选项（比如 keyword 分析器），则没有关联的 #Microsoft.Azure.Search 类型。
+ <sup>1</sup> 分析器类型在代码中始终带有前缀“#Microsoft.Azure.Search”，因此，“PatternAnalyzer”实际上会被指定为“#Microsoft.Azure.Search.PatternAnalyzer”。 为简洁起见，我们删除了该前缀，但在代码中需要使用该前缀。
 
+analyzer_type 仅适用于可自定义的分析器。 如果没有选项（比如 keyword 分析器），则没有关联的 #Microsoft.Azure.Search 类型。
 
 <a name="CharFilter"></a>
 
-###  <a name="char-filters-reference"></a>字符筛选器参考
+## <a name="character-filters"></a>字符筛选器
 
 在下表中，使用 Apache Lucene 实现的字符筛选器已链接到相应的 Lucene API 文档。
 
 |**char_filter_name**|**char_filter_type** <sup>1</sup>|**说明和选项**|  
-|-|-|-|
+|--------------------|---------------------------------|---------------------------|
 |[html_strip](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/charfilter/HTMLStripCharFilter.html)|（仅当有可用的选项时，类型才适用）  |一个字符筛选器，它尝试去除 HTML 构造。|  
-|[mapping](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/charfilter/MappingCharFilter.html)|MappingCharFilter|一个字符筛选器，它应用使用 mappings 选项定义的映射。 匹配具有贪婪性（给定点的最长模式匹配获胜）。 允许替换为空字符串。<br /><br /> **选项**<br /><br /> mappings (type: string array) - 以下格式的映射列表：“a=>b”（出现的所有字符“a”均替换为字符“b”）。 必需。|  
-|[pattern_replace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/pattern/PatternReplaceCharFilter.html)|PatternReplaceCharFilter|一个字符筛选器，用于替换输入字符串中的字符。 它使用正则表达式来标识要保留的字符序列，并使用替换模式来标识要替换的字符。 例如，input text = "aa  bb aa bb", pattern="(aa)\\\s+(bb)" replacement="$1#$2", result = "aa#bb aa#bb"。<br /><br /> **选项**<br /><br /> pattern (type: string) - 必需。<br /><br /> replacement (type: string) - 必需。|  
+|[mapping](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/charfilter/MappingCharFilter.html)|MappingCharFilter|一个字符筛选器，它应用使用 mappings 选项定义的映射。 匹配具有贪婪性（给定点的最长模式匹配获胜）。 允许替换为空字符串。  </br></br>**选项**  </br></br> mappings (type: string array) - 以下格式的映射列表：“a=>b”（出现的所有字符“a”均替换为字符“b”）。 必需。|  
+|[pattern_replace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/pattern/PatternReplaceCharFilter.html)|PatternReplaceCharFilter|一个字符筛选器，用于替换输入字符串中的字符。 它使用正则表达式来标识要保留的字符序列，并使用替换模式来标识要替换的字符。 例如，input text = "aa  bb aa bb", pattern="(aa)\\\s+(bb)" replacement="$1#$2", result = "aa#bb aa#bb"。  </br></br>**选项**  </br></br>pattern (type: string) - 必需。  </br></br>replacement (type: string) - 必需。|  
 
  <sup>1</sup> 字符筛选器类型在代码中始终带有前缀“#Microsoft.Azure.Search”，因此，“MappingCharFilter”实际上会被指定为“#Microsoft.Azure.Search.MappingCharFilter”。 为缩小表的宽度，我们删除了该前缀，但请记住在代码中包含该前缀。 请注意，char_filter_type 仅适用于可自定义的筛选器。 如果没有选项（比如 html_strip），则没有关联的 #Microsoft.Azure.Search 类型。
 
-<a name="Tokenizers"></a>
+<a name="tokenizers"></a>
 
-###  <a name="tokenizers-reference"></a>Tokenizer 参考
+## <a name="tokenizers"></a>Tokenizer
 
-在下表中，使用 Apache Lucene 实现的 tokenizer 已链接到相应的 Lucene API 文档。
+Tokenizer 将连续文本划分为一系列标记，例如将一个句子分解成多个字词。 在下表中，使用 Apache Lucene 实现的 tokenizer 已链接到相应的 Lucene API 文档。
 
 |**tokenizer_name**|**tokenizer_type** <sup>1</sup>|**说明和选项**|  
-|-|-|-|  
-|[经典](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/ClassicTokenizer.html)|ClassicTokenizer|基于语法的 tokenizer，适合处理大多数欧洲语言文档。<br /><br /> **选项**<br /><br /> maxTokenLength (type: int) - 最大标记长度。 默认值：255，最大值：300。 超过最大长度的标记将被拆分。|  
-|[edgeNGram](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html)|EdgeNGramTokenizer|将来自 Edge 的输入标记为给定大小的 n 元语法。<br /><br /> **选项**<br /><br /> minGram (type: int) - 默认值：1，最大值：300。<br /><br /> maxGram (type: int) - 默认值：2，最大值：300。 必须大于 minGram。<br /><br /> tokenChars (type: string array) - 要保留在标记中的字符类。 允许的值： <br />“letter”、“digit”、“whitespace”、“punctuation”、“symbol”。 默认为空数组 - 保留所有字符。 |  
-|[keyword_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html)|KeywordTokenizerV2|将整个输入作为单个标记发出。<br /><br /> **选项**<br /><br /> maxTokenLength (type: int) - 最大标记长度。 默认值：256，最大值：300。 超过最大长度的标记将被拆分。|  
+|------------------|-------------------------------|---------------------------|  
+|[经典](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/ClassicTokenizer.html)|ClassicTokenizer|基于语法的 tokenizer，适合处理大多数欧洲语言文档。  </br></br>**选项**  </br></br>maxTokenLength (type: int) - 最大标记长度。 默认值：255，最大值：300。 超过最大长度的标记将被拆分。|  
+|[edgeNGram](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html)|EdgeNGramTokenizer|将来自 Edge 的输入标记为给定大小的 n 元语法。  </br></br> **选项**  </br></br>minGram (type: int) - 默认值：1，最大值：300。  </br></br>maxGram (type: int) - 默认值：2，最大值：300。 必须大于 minGram。  </br></br>tokenChars (type: string array) - 要保留在标记中的字符类。 允许的值： </br>“letter”、“digit”、“whitespace”、“punctuation”、“symbol”。 默认为空数组 - 保留所有字符。 |  
+|[keyword_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html)|KeywordTokenizerV2|将整个输入作为单个标记发出。  </br></br>**选项**  </br></br>maxTokenLength (type: int) - 最大标记长度。 默认值：256，最大值：300。 超过最大长度的标记将被拆分。|  
 |[letter](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LetterTokenizer.html)|（仅当有可用的选项时，类型才适用）  |在非字母处划分文本。 超过 255 个字符的标记将被拆分。|  
 |[lowercase](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseTokenizer.html)|（仅当有可用的选项时，类型才适用）  |在非字母处划分文本并将其转换为小写。 超过 255 个字符的标记将被拆分。|  
-| microsoft_language_tokenizer| MicrosoftLanguageTokenizer| 使用特定于语言的规则划分文本。<br /><br /> **选项**<br /><br /> maxTokenLength (type: int) - 最大标记长度，默认值：255，最大值：300。 超过最大长度的标记将被拆分。 首先将超过 300 个字符的标记拆分为长度为 300 的标记，然后根据设置的 maxTokenLength 逐一拆分这些标记。<br /><br />isSearchTokenizer (type: bool) - 如果用作搜索 tokenizer，则设置为 true；如果用作索引 tokenizer，则设置为 false。 <br /><br /> language (type: string) - 要使用的语言，默认值为“english”。 允许的值包括：<br />“bangla”、“bulgarian”、“catalan”、“chineseSimplified”、“chineseTraditional”、“croatian”、“czech”、“danish”、“dutch”、“english”、“french”、“german”、“greek”、“gujarati”、“hindi”、“icelandic”、“indonesian”、“italian”、“japanese”、“kannada”、“korean”、“malay”、“malayalam”、“marathi”、“norwegianBokmaal”、“polish”、“portuguese”、“portugueseBrazilian”、“punjabi”、“romanian”、“russian”、“serbianCyrillic”、“serbianLatin”、“slovenian”、“spanish”、“swedish”、“tamil”、“telugu”、“thai”、“ukrainian”、“urdu”、“vietnamese” |
-| microsoft_language_stemming_tokenizer | MicrosoftLanguageStemmingTokenizer| 使用特定于语言的规则划分文本，并将各字词缩减为其原形<br /><br /> **选项**<br /><br />maxTokenLength (type: int) - 最大标记长度，默认值：255，最大值：300。 超过最大长度的标记将被拆分。 首先将超过 300 个字符的标记拆分为长度为 300 的标记，然后根据设置的 maxTokenLength 逐一拆分这些标记。<br /><br /> isSearchTokenizer (type: bool) - 如果用作搜索 tokenizer，则设置为 true；如果用作索引 tokenizer，则设置为 false。<br /><br /> language (type: string) - 要使用的语言，默认值为“english”。 允许的值包括：<br />“arabic”、“bangla”、“bulgarian”、“catalan”、“croatian”、“czech”、“danish”、“dutch”、“english”、“estonian”、“finnish”、“french”、“german”、“greek”、“gujarati”、“hebrew”、“hindi”、“hungarian”、“icelandic”、“indonesian”、“italian”、“kannada”、“latvian”、“lithuanian”、“malay”、“malayalam”、“marathi”、“norwegianBokmaal”、“polish”、“portuguese”、“portugueseBrazilian”、“punjabi”、“romanian”、“russian”、“serbianCyrillic”、“serbianLatin”、“slovak”、“slovenian”、“spanish”、“swedish”、“tamil”、“telugu”、“turkish”、“ukrainian”、“urdu” |
-|[nGram](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/NGramTokenizer.html)|NGramTokenizer|将输入标记为给定大小的 n 元语法。<br /><br /> **选项**<br /><br /> minGram (type: int) - 默认值：1，最大值：300。<br /><br /> maxGram (type: int) - 默认值：2，最大值：300。 必须大于 minGram。 <br /><br /> tokenChars (type: string array) - 要保留在标记中的字符类。 允许的值：“letter”、“digit”、“whitespace”、“punctuation”、“symbol”。 默认为空数组 - 保留所有字符。 |  
-|[path_hierarchy_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/path/PathHierarchyTokenizer.html)|PathHierarchyTokenizerV2|用于路径式层次结构的 tokenizer。<br /><br /> **选项**<br /><br /> delimiter (type: string) - 默认值：'/。<br /><br /> replacement (type: string) - 如果设置该选项，则替换分隔符字符。 默认值与分隔符的值相同。<br /><br /> maxTokenLength (type: int) - 最大标记长度。 默认值：300，最大值：300。 长度超过 maxTokenLength 的路径将被忽略。<br /><br /> reverse (type: bool) - 如果为 true，则按相反顺序生成标记。 默认值：false。<br /><br /> skip (type: bool) - 要跳过的初始标记。 默认值为 0。|  
-|[pattern](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/pattern/PatternTokenizer.html)|PatternTokenizer|此 tokenizer 使用正则表达式模式匹配来构造不同的标记。<br /><br /> **选项**<br /><br /> [pattern](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html) (type: string) - 用于匹配标记分隔符的正则表达式模式。 默认值为 `\W+`，与非字词字符匹配。 <br /><br /> [flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (type: string) - 正则表达式标志。 默认值为空字符串。 允许的值：CANON_EQ、CASE_INSENSITIVE、COMMENTS、DOTALL、LITERAL、MULTILINE、UNICODE_CASE、UNIX_LINES<br /><br /> group (type: int) - 要提取到标记中的组。 默认值为 -1 (split)。|
-|[standard_v2](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardTokenizer.html)|StandardTokenizerV2|按照 [Unicode 文本分段规则](https://unicode.org/reports/tr29/)划分文本。<br /><br /> **选项**<br /><br /> maxTokenLength (type: int) - 最大标记长度。 默认值：255，最大值：300。 超过最大长度的标记将被拆分。|  
-|[uax_url_email](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/UAX29URLEmailTokenizer.html)|UaxUrlEmailTokenizer|将 URL 和电子邮件标记为一个标记。<br /><br /> **选项**<br /><br /> maxTokenLength (type: int) - 最大标记长度。 默认值：255，最大值：300。 超过最大长度的标记将被拆分。|  
+| microsoft_language_tokenizer| MicrosoftLanguageTokenizer| 使用特定于语言的规则划分文本。  </br></br>**选项**  </br></br>maxTokenLength (type: int) - 最大标记长度，默认值：255，最大值：300。 超过最大长度的标记将被拆分。 首先将超过 300 个字符的标记拆分为长度为 300 的标记，然后根据设置的 maxTokenLength 逐一拆分这些标记。  </br></br>isSearchTokenizer (type: bool) - 如果用作搜索 tokenizer，则设置为 true；如果用作索引 tokenizer，则设置为 false。 </br></br>language (type: string) - 要使用的语言，默认值为“english”。 允许的值包括： </br>“bangla”、“bulgarian”、“catalan”、“chineseSimplified”、“chineseTraditional”、“croatian”、“czech”、“danish”、“dutch”、“english”、“french”、“german”、“greek”、“gujarati”、“hindi”、“icelandic”、“indonesian”、“italian”、“japanese”、“kannada”、“korean”、“malay”、“malayalam”、“marathi”、“norwegianBokmaal”、“polish”、“portuguese”、“portugueseBrazilian”、“punjabi”、“romanian”、“russian”、“serbianCyrillic”、“serbianLatin”、“slovenian”、“spanish”、“swedish”、“tamil”、“telugu”、“thai”、“ukrainian”、“urdu”、“vietnamese” |
+| microsoft_language_stemming_tokenizer | MicrosoftLanguageStemmingTokenizer| 使用特定于语言的规则划分文本，并将各字词缩减为其原形 </br></br>**选项** </br></br>maxTokenLength (type: int) - 最大标记长度，默认值：255，最大值：300。 超过最大长度的标记将被拆分。 首先将超过 300 个字符的标记拆分为长度为 300 的标记，然后根据设置的 maxTokenLength 逐一拆分这些标记。 </br></br> isSearchTokenizer (type: bool) - 如果用作搜索 tokenizer，则设置为 true；如果用作索引 tokenizer，则设置为 false。 </br></br>language (type: string) - 要使用的语言，默认值为“english”。 允许的值包括： </br>“arabic”、“bangla”、“bulgarian”、“catalan”、“croatian”、“czech”、“danish”、“dutch”、“english”、“estonian”、“finnish”、“french”、“german”、“greek”、“gujarati”、“hebrew”、“hindi”、“hungarian”、“icelandic”、“indonesian”、“italian”、“kannada”、“latvian”、“lithuanian”、“malay”、“malayalam”、“marathi”、“norwegianBokmaal”、“polish”、“portuguese”、“portugueseBrazilian”、“punjabi”、“romanian”、“russian”、“serbianCyrillic”、“serbianLatin”、“slovak”、“slovenian”、“spanish”、“swedish”、“tamil”、“telugu”、“turkish”、“ukrainian”、“urdu” |
+|[nGram](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/NGramTokenizer.html)|NGramTokenizer|将输入标记为给定大小的 n 元语法。 </br></br>**选项** </br></br>minGram (type: int) - 默认值：1，最大值：300。 </br></br>maxGram (type: int) - 默认值：2，最大值：300。 必须大于 minGram。 </br></br>tokenChars (type: string array) - 要保留在标记中的字符类。 允许的值：“letter”、“digit”、“whitespace”、“punctuation”、“symbol”。 默认为空数组 - 保留所有字符。 |  
+|[path_hierarchy_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/path/PathHierarchyTokenizer.html)|PathHierarchyTokenizerV2|用于路径式层次结构的 tokenizer。 **选项** </br></br>delimiter (type: string) - 默认值：'/。 </br></br>replacement (type: string) - 如果设置该选项，则替换分隔符字符。 默认值与分隔符的值相同。 </br></br>maxTokenLength (type: int) - 最大标记长度。 默认值：300，最大值：300。 长度超过 maxTokenLength 的路径将被忽略。 </br></br>reverse (type: bool) - 如果为 true，则按相反顺序生成标记。 默认值：false。 </br></br>skip (type: bool) - 要跳过的初始标记。 默认值为 0。|  
+|[pattern](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/pattern/PatternTokenizer.html)|PatternTokenizer|此 tokenizer 使用正则表达式模式匹配来构造不同的标记。 </br></br>**选项** </br></br> [pattern](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html) (type: string) - 用于匹配标记分隔符的正则表达式模式。 默认值为 `\W+`，与非字词字符匹配。 </br></br>[flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (type: string) - 正则表达式标志。 默认值为空字符串。 允许的值：CANON_EQ、CASE_INSENSITIVE、COMMENTS、DOTALL、LITERAL、MULTILINE、UNICODE_CASE、UNIX_LINES </br></br>group (type: int) - 要提取到标记中的组。 默认值为 -1 (split)。|
+|[standard_v2](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardTokenizer.html)|StandardTokenizerV2|按照 [Unicode 文本分段规则](https://unicode.org/reports/tr29/)划分文本。 </br></br>**选项** </br></br>maxTokenLength (type: int) - 最大标记长度。 默认值：255，最大值：300。 超过最大长度的标记将被拆分。|  
+|[uax_url_email](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/UAX29URLEmailTokenizer.html)|UaxUrlEmailTokenizer|将 URL 和电子邮件标记为一个标记。 </br></br>**选项** </br></br> maxTokenLength (type: int) - 最大标记长度。 默认值：255，最大值：300。 超过最大长度的标记将被拆分。|  
 |[whitespace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceTokenizer.html)|（仅当有可用的选项时，类型才适用） |在空格处划分文本。 超过 255 个字符的标记将被拆分。|  
 
  <sup>1</sup> Tokenizer 类型在代码中始终带有前缀“#Microsoft.Azure.Search”，因此，“ClassicTokenizer”实际上会被指定为“#Microsoft.Azure.Search.ClassicTokenizer”。 为缩小表的宽度，我们删除了该前缀，但请记住在代码中包含该前缀。 请注意，tokenizer_type 仅适用于可自定义的 tokenizer。 如果没有选项（比如 letter tokenizer），则没有关联的 #Microsoft.Azure.Search 类型。
 
 <a name="TokenFilters"></a>
 
-###  <a name="token-filters-reference"></a>标记筛选器参考
+## <a name="token-filters"></a>标记筛选器
+
+标记筛选器用于筛选出或修改由 tokenizer 生成的标记。 例如，可以指定将所有字符转换为小写的小写筛选器。 可以在自定义分析器中使用多个标记筛选器。 标记筛选器按列出的顺序运行。 
 
 在下表中，使用 Apache Lucene 实现的标记筛选器已链接到相应的 Lucene API 文档。
 
@@ -370,8 +299,8 @@ analyzer_type 仅适用于可自定义的分析器。 如果没有选项（比�
 
  <sup>1</sup> 标记筛选器类型在代码中始终带有前缀“#Microsoft.Azure.Search”，因此，“ArabicNormalizationTokenFilter”实际上会被指定为“#Microsoft.Azure.Search.ArabicNormalizationTokenFilter”。  为缩小表的宽度，我们删除了该前缀，但请记住在代码中包含该前缀。  
 
+## <a name="see-also"></a>另请参阅
 
-## <a name="see-also"></a>另请参阅  
- [Azure 认知搜索 REST API](/rest/api/searchservice/)   
- [Azure 认知搜索中的分析器 > 示例](search-analyzers.md#examples)    
- [创建索引（Azure 认知搜索 REST API）](/rest/api/searchservice/create-index)
+- [Azure 认知搜索 REST API](/rest/api/searchservice/)
+- [Azure 认知搜索中的分析器（示例）](search-analyzers.md#examples)
+- [创建索引 (REST)](/rest/api/searchservice/create-index)

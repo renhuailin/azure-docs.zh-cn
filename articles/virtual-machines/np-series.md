@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: aa67a858d0396badc25a625b23dc2f2fdf1bdff9
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 61488b88b00206cb78beed4fe773bf9377848701
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551367"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861042"
 ---
 # <a name="np-series"></a>NP 系列 
 NP 系列虚拟机由 [Xilinx U250 ](https://www.xilinx.com/products/boards-and-kits/alveo/u250.html) FPGA 提供支持，以加速工作负载，包括机器学习推理、视频转码以及数据库搜索和分析。 NP 系列 VM 还由全核 Turbo 时钟频率为 3.2GHz 的 Intel Xeon 8171M (Skylake) CPU 提供支持。
@@ -135,6 +135,15 @@ VM 代系支持：第 1 代<br>
 问：如何查询 PLP 信息？ 
 
 答：需要运行 xbutil 查询并查看下半部分。 
+
+问： 如果我自行创建 VM 并手动部署 XRT，需要额外作出哪些更改？ 
+
+答：在 /opt/xilinx/xrt/setup.sh 中，添加指向 /opt/xilinx/xrt/xrt.ini 的 XRT_INI_PATH 条目
+
+ 
+/Opt/xilinx/xrt/xrt.ini 的内容应包含： <br>
+[Runtime]<br>
+ert=false <br>
 
 ## <a name="other-sizes"></a>其他大小
 

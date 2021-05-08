@@ -1,24 +1,25 @@
 ---
-title: Azure 云服务 (经典) 角色架构 |Microsoft Docs
-description: 服务配置文件的 Role 元素指定要为每个角色、配置值和证书指纹部署多少个角色实例。
+title: Azure 云服务（经典）角色架构 | Microsoft Docs
+description: 服务配置文件的 Role 元素指定要为每个角色部署的角色实例数、配置值和证书指纹。
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 2dc8e14a4e4d8855abb615632bb7d43b9034d360
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.openlocfilehash: dd46a37ada1fb96797faee6c8491359561e065d7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98743434"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934149"
 ---
-# <a name="azure-cloud-services-classic-config-role-schema"></a>Azure 云服务 (经典) Config 角色架构
+# <a name="azure-cloud-services-classic-config-role-schema"></a>Azure 云服务（经典）配置角色架构
 
 > [!IMPORTANT]
-> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
 配置文件的 `Role` 元素指定要为服务中的每个角色部署的角色实例数，任何配置设置的值，以及与角色关联的任何证书的缩略图。
 

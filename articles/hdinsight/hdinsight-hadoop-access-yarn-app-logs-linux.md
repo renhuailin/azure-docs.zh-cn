@@ -1,16 +1,16 @@
 ---
-title: 访问 Apache Hadoop YARN 应用程序日志-Azure HDInsight
+title: 访问 Apache Hadoop YARN 应用程序日志 - Azure HDInsight
 description: 了解如何使用命令行和 Web 浏览器在基于 Linux 的 HDInsight (Apache Hadoop) 群集上访问 YARN 应用程序日志。
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 882384b5e57db27cff981f80e790dfd41b624c93
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
-ms.translationtype: MT
+ms.openlocfilehash: 9558e6c5ddd58b1d5fd70da03187caef50d1275d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980688"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104865564"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上访问 Apache Hadoop YARN 应用程序日志
 
@@ -18,7 +18,7 @@ ms.locfileid: "99980688"
 
 ## <a name="what-is-apache-yarn"></a>什么是 Apache YARN？
 
-YARN 通过将资源管理与应用程序计划/监视相分离，支持多个编程模型 (Apache Hadoop MapReduce) 其中一种模型。 YARN 使用全局 *`ResourceManager`* (RM) 、按辅助节点 *NodeManagers* (NMs) 和按应用程序 *ApplicationMasters* (AMs) 。 按应用程序 AM 与 RM 协商用于运行应用程序的资源（CPU、内存、磁盘、网络）。 RM 与 NM 合作来授予这些资源（以容器的形式授予）。 AM 负责跟踪 RM 为其分配容器的进度。 根据应用程序性质，应用程序可能需要多个容器。
+YARN 通过将资源管理与应用程序计划/监视相分离来支持多种编程模型（Apache Hadoop MapReduce 就是其中之一）。 YARN 使用全局“`ResourceManager`”(RM)、按工作器节点的“NodeManagers”(NM)和按应用程序的“ApplicationMasters”(AM)。   按应用程序 AM 与 RM 协商用于运行应用程序的资源（CPU、内存、磁盘、网络）。 RM 与 NM 合作来授予这些资源（以容器的形式授予）。 AM 负责跟踪 RM 为其分配容器的进度。 根据应用程序性质，应用程序可能需要多个容器。
 
 每个应用程序可能包含多个 *应用程序尝试*。 如果应用程序失败，可能会重试进行新的尝试。 每次尝试都在容器中运行。 在某种意义上，容器提供了由 YARN 应用程序完成的基本工作单位的上下文。 在容器的上下文中完成的所有工作均在给定容器的单个工作器节点上执行。 请参阅 [Hadoop：编写 YARN 应用程序](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html)或 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) 以获取更多参考信息。
 
@@ -76,7 +76,7 @@ YARN Timeline Server 包括以下类型的数据：
 
 ## <a name="yarn-cli-tools"></a>YARN CLI 工具
 
-1. 使用 [ssh 命令](./hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令（将 CLUSTERNAME 替换为群集的名称），然后输入该命令：
+1. 使用 [ssh 命令](./hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令，将 CLUSTERNAME 替换为群集的名称，然后输入该命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -88,7 +88,7 @@ YARN Timeline Server 包括以下类型的数据：
     yarn top
     ```
 
-    记下 `APPLICATIONID` 要下载其日志的列中的应用程序 ID。
+    记下 `APPLICATIONID` 列中要下载其日志的应用程序 ID。
 
     ```output
     YARN top - 18:00:07, up 19d, 0:14, 0 active users, queue(s): root
@@ -152,13 +152,13 @@ YARN `ResourceManager` UI 在群集头节点上运行。 可通过 Ambari web UI
 
 2. 从左侧的服务列表中，选择“YARN” 。
 
-    ![选择的 Apache Ambari Yarn 服务](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
+    :::image type="content" source="./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png" alt-text="选择的 Apache Ambari Yarn 服务":::
 
-3. 从 " **快速链接** " 下拉列表中，选择其中一个群集头节点，然后选择 **`ResourceManager Log`** 。
+3. 在“快速链接”下拉列表中，选择其中一个群集头节点，并选择“`ResourceManager Log`”。 
 
-    ![Apache Ambari Yarn 快速链接](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
+    :::image type="content" source="./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png" alt-text="Apache Ambari Yarn 快速链接":::
 
-    将显示一个链接列表，其中包含指向 YARN 日志的链接。
+    此时将显示 YARN 日志的链接列表。
 
 ## <a name="next-steps"></a>后续步骤
 

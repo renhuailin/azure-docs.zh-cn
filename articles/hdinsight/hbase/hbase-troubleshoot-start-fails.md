@@ -5,17 +5,17 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
 ms.openlocfilehash: c30077d0d8f359e93745b53755f9dae998073d4d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98936904"
 ---
 # <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Apache HBase Master (HMaster) 无法在 Azure HDInsight 中启动
 
 本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方法。
 
-## <a name="scenario-atomic-renaming-failure"></a>方案：原子重命名失败
+## <a name="scenario-atomic-renaming-failure"></a>场景：原子重命名失败
 
 ### <a name="issue"></a>问题
 
@@ -37,7 +37,7 @@ HMaster 会对 WAL 文件夹执行一个基本的 list 命令。 在任何时候
 
 ---
 
-## <a name="scenario-no-server-address-listed"></a>方案：未列出服务器地址
+## <a name="scenario-no-server-address-listed"></a>场景：未列出服务器地址
 
 ### <a name="issue"></a>问题
 
@@ -58,7 +58,7 @@ HMaster 会对 WAL 文件夹执行一个基本的 list 命令。 在任何时候
 
 1. 删除 `hbase: namespace` 条目。 此条目可能是扫描 `hbase: namespace` 表时报告的相同错误。
 
-1. 从 Ambari UI 重启活动 HMaster，使 HBase 恢复运行状态。
+1. 从 Ambari UI 重启主动 HMaster 以使 HBase 恢复运行状态。
 
 1. 在 HBase shell 中，运行以下命令使所有脱机表联机：
 
@@ -68,7 +68,7 @@ HMaster 会对 WAL 文件夹执行一个基本的 list 命令。 在任何时候
 
 ---
 
-## <a name="scenario-javaioioexception-timedout"></a>场景：java.io.IOException:超时
+## <a name="scenario-javaioioexception-timedout"></a>场景：java.io.IOException：超时
 
 ### <a name="issue"></a>问题
 
@@ -80,7 +80,7 @@ HMaster 超时并出现如下所示的严重异常：`java.io.IOException: Timed
 
 ### <a name="resolution"></a>解决方法
 
-1. 在 Apache Ambari UI 中，转到“HBase” > “配置”   。 在自定义 `hbase-site.xml` 文件中添加以下设置：
+1. 在 Apache Ambari UI 中，转到“HBase” > “配置” 。 在自定义 `hbase-site.xml` 文件中添加以下设置：
 
     ```
     Key: hbase.master.namespace.init.timeout Value: 2400000  
@@ -90,7 +90,7 @@ HMaster 超时并出现如下所示的严重异常：`java.io.IOException: Timed
 
 ---
 
-## <a name="scenario-frequent-region-server-restarts"></a>方案：区域服务器频繁重启
+## <a name="scenario-frequent-region-server-restarts"></a>场景：区域服务器频繁重启
 
 ### <a name="issue"></a>问题
 
@@ -110,9 +110,9 @@ HMaster 超时并出现如下所示的严重异常：`java.io.IOException: Timed
 
 更改 Zookeeper 会话超时，同时，不仅需要更改 `hbase-site` 设置 `zookeeper.session.timeout`，而且还要更改 Zookeeper `zoo.cfg` 设置 `maxSessionTimeout`。
 
-1. 访问 Ambari UI，转到“HBase”->“配置”->“设置”，在“超时”部分，更改 Zookeeper 会话超时值。 
+1. 访问 Ambari UI，转到“HBase”->“配置”->“设置”，在“超时”部分，更改 Zookeeper 会话超时值。
 
-1. 访问 Ambari UI，转到“Zookeeper”->“配置”->“自定义”-> `zoo.cfg`，并添加/更改以下设置。  确保该值与 HBase `zookeeper.session.timeout` 相同。
+1. 访问 Ambari UI，转到“Zookeeper”->“配置”->“自定义” `zoo.cfg`，并添加/更改以下设置。 确保该值与 HBase `zookeeper.session.timeout` 相同。
 
     ```
     Key: maxSessionTimeout Value: 120000  
@@ -122,7 +122,7 @@ HMaster 超时并出现如下所示的严重异常：`java.io.IOException: Timed
 
 ---
 
-## <a name="scenario-log-splitting-failure"></a>方案：日志拆分失败
+## <a name="scenario-log-splitting-failure"></a>场景：日志拆分失败
 
 ### <a name="issue"></a>问题
 

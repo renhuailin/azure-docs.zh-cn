@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa2d910c017d3cc626f737bdab50315aef8d1e77
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99491379"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>在 Windows 登录屏幕上启用 Azure Active Directory 自助式密码重置
@@ -40,7 +40,7 @@ ms.locfileid: "99491379"
 - 已加入混合 Azure AD 的计算机必须能够通过网络连接到域控制器才能使用新密码以及更新缓存的凭据。 这意味着，设备必须位于组织的内部网络或 VPN 中，并且必须能够通过网络访问本地域控制器。
 - 如果使用映像，请确保在运行 sysprep 之前先为内置 Administrator 清除 Web 缓存，然后再执行 CopyProfile 步骤。 有关此步骤的详细信息，请参阅支持文章[使用自定义默认用户配置文件时性能较差](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)。
 - 已知以下设置会干扰在 Windows 10 设备上使用和重置密码的功能：
-    - 如果 Windows 10 中的策略需要按 Ctrl + Alt + Del，则 **重置密码** 将不起作用。
+    - 如果 Windows 10 中的策略要求使用 Ctrl+Alt+Del，则“重置密码”将无效。
     - 如果锁屏通知已关闭，则“重置密码”将无效。
     - HideFastUserSwitching 设置为“已启用”或 1
     - DontDisplayLastUserName 设置为“已启用”或 1
@@ -53,7 +53,7 @@ ms.locfileid: "99491379"
     - Windows SKU 不是家庭或专业版
 
 > [!NOTE]
-> 此限制也适用于从设备锁定屏幕重置 Windows Hello 企业版 PIN。
+> 这些限制也适用于从设备锁定屏幕重置的 Windows Hello 企业版 PIN 码。
 >
 
 ## <a name="windows-10-password-reset"></a>Windows 10 密码重置
@@ -74,31 +74,31 @@ ms.locfileid: "99491379"
 
 ### <a name="enable-for-windows-10-using-intune"></a>使用 Intune 为 Windows 10 启用
 
-使用 Intune 部署配置更改以从登录屏幕启用 SSPR 是最灵活的方法。 Intune 允许将配置更改部署到你定义的特定计算机组。 此方法要求在 Intune 中登记设备。
+可以使用 Intune 部署配置更改以启用从登录屏幕进行自助式密码重置的操作，这是最灵活的方法。 Intune 允许将配置更改部署到你定义的特定计算机组。 此方法要求在 Intune 中登记设备。
 
 #### <a name="create-a-device-configuration-policy-in-intune"></a>在 Intune 中创建设备配置策略
 
-1. 登录到 [Azure 门户](https://portal.azure.com) 并选择 **Intune**。
-1. 转到 "**设备配置**  >  " "**配置文件**"，然后选择 " **+ 创建配置** 文件"，创建新的设备配置文件
-   - 对于 **平台** ，请选择 *Windows 10 和更高版本*
-   - 对于 "**配置文件类型**"，选择 "*自定义*"
-1. 选择 " **创建**"，然后为配置文件提供一个有意义的名称，例如 *Windows 10 登录屏幕 SSPR*
+1. 登录到 [Azure 门户](https://portal.azure.com)并选择“Intune”。
+1. 转到“设备配置” > “配置文件”，然后选择“+ 创建配置文件”，以创建新的设备配置文件
+   - 对于“平台”，请选择“Windows 10 及更高版本”
+   - 对于“配置文件类型”，请选择“自定义”
+1. 选择“创建”，然后为配置文件提供有意义的名称，例如“Windows 10 sign-in screen SSPR”
 
-    （可选）提供配置文件的有意义的说明，然后选择 " **下一步**"。
-1. 在 " *配置设置*" 下，选择 " **添加** " 并提供以下 oma-uri 设置来启用 "重置密码" 链接：
-      - 提供一个有意义的名称来说明该设置的作用，如 *ADD SSPR link*。
-      - 根据需要提供对设置的有意义的说明。
+    （可选）提供对配置文件的有意义的说明，然后选择“下一步”。
+1. 在“配置设置”下，选择“添加”，并提供以下 OMA-URI 设置以启用“重置密码”链接：
+      - 提供一个有意义的名称，说明该设置执行的操作，例如“Add SSPR link”。
+      - （可选）提供对设置的有意义的说明。
       - **OMA-URI** 设置为 `./Vendor/MSFT/Policy/Config/Authentication/AllowAadPasswordReset`
       - **数据类型** 设置为 **整数**
       - **值** 设置为 **1**
 
-    依次选择 " **添加**"、" **下一步**"。
-1. 可以将策略分配给特定的用户、设备或组。 根据需要为环境分配配置文件，理想情况下为设备的测试组，然后选择 " **下一步**"。
+    依次选择“添加”、“下一步”。
+1. 可将此策略分配给特定的用户、设备或组。 根据需要为环境分配配置文件，最好是先将配置文件分配给一个设备测试组，然后选择“下一步”。
 
-    有关详细信息，请参阅 [在 Microsoft Intune 中分配用户和设备配置文件](/mem/intune/configuration/device-profile-assign)。
+    有关详细信息，请参阅[在 Microsoft Intune 中分配用户和设备配置文件](/mem/intune/configuration/device-profile-assign)。
 
-1. 根据需要为环境配置适用性规则，例如， *如果 OS 版本为 Windows 10 企业版，则分配配置文件*，然后选择 " **下一步**"。
-1. 查看配置文件，然后选择 " **创建**"。
+1. 根据需要为环境配置适用性规则（例如“如果 OS 版本是 Windows 10 企业版，则分配配置文件”），然后选择“下一步”。
+1. 查看配置文件，然后选择“创建”。
 
 ### <a name="enable-for-windows-10-using-the-registry"></a>为使用注册表的 Windows 10 启用此功能
 

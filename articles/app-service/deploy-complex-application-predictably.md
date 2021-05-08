@@ -5,12 +5,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 8742b590af89954cb8480e5282827bcd5228673b
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.openlocfilehash: aec23c28e075dd38fa65f1315f9abd9e21cdc9cb
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095832"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951464"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>按可预见的方式在 Azure 中设置和部署微服务
 本教程演示如何通过使用 JSON 资源组模板和 PowerShell 脚本以一种可预见的方式，在 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)中将由[微服务](https://en.wikipedia.org/wiki/Microservices)构成的应用程序设置并部署为单个单元。 
@@ -29,7 +29,7 @@ ms.locfileid: "101095832"
 在本教程中，将使用以下工具。 由于对工具的讨论并不全面，我将坚持使用端到端方案，并只提供每个方案的简要介绍及在哪里可找到它的详细信息。 
 
 ### <a name="azure-resource-manager-templates-json"></a>Azure 资源管理器模板 (JSON)
-例如，每次在 Azure 应用服务中创建应用时，Azure 资源管理器都将使用 JSON 模板来创建具有组件资源的整个资源组。 [Azure 市场](../marketplace/index.yml)中的复杂模板可以包含数据库、存储帐户、应用服务计划、应用本身、警报规则、应用设置、自动缩放设置等等，可以通过 PowerShell 使用所有这些模板。 有关 Azure 资源管理器模板的详细信息，请参阅 [创作 azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)
+例如，每次在 Azure 应用服务中创建应用时，Azure 资源管理器都将使用 JSON 模板来创建具有组件资源的整个资源组。 [Azure 市场](../marketplace/index.yml)中的复杂模板可以包含数据库、存储帐户、应用服务计划、应用本身、警报规则、应用设置、自动缩放设置等等，可以通过 PowerShell 使用所有这些模板。 有关 Azure 资源管理器模板的详细信息，请参阅[创作 Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)
 
 ### <a name="azure-sdk-26-for-visual-studio"></a>Azure SDK 2.6 for Visual Studio
 最新的 SDK 包含对 JSON 编辑器中 Resource Manager 模板支持的改进。 可以使用它快速从头开始创建资源组模板，或打开现有 JSON 模板（例如下载的库模板）以进行修改、填充参数文件，甚至直接从 Azure 资源组解决方案部署资源组。
@@ -42,10 +42,10 @@ ms.locfileid: "101095832"
 有关详细信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../azure-resource-manager/management/manage-resources-powershell.md)
 
 ### <a name="azure-resource-explorer"></a>Azure 资源浏览器
-使用此[预览工具](https://resources.azure.com)可以够浏览订阅中所有资源组的 JSON 定义和独立资源。 在工具中，可编辑资源的 JSON 定义、删除资源的整个层次结构及创建新资源。  此工具中随时可用的信息对模板创作非常有帮助，因为它会显示需要为特定类型的资源设置的属性、正确值等。甚至可以在 [Azure 门户](https://portal.azure.com/)中创建资源组，然后在资源管理器工具中检查其 JSON 定义以帮助模板化资源组。
+使用此[预览工具](https://resources.azure.com)可以够浏览订阅中所有资源组的 JSON 定义和独立资源。 在工具中，可编辑资源的 JSON 定义、删除资源的整个层次结构及创建新资源。  此工具中随时可用的信息对模板创作非常有帮助，因为它会显示需要为特定类型的资源设置的属性、正确值等。甚至可在 [Azure 门户](https://portal.azure.com/)中创建资源组，并在资源管理器工具中检查其 JSON 定义以帮助模板化资源组。
 
 ### <a name="deploy-to-azure-button"></a>“部署到 Azure”按钮
-如果将 GitHub 用于源代码管理，则可将一个[“部署到 Azure”按钮](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-to-azure-button)放入 README.MD，这会对 Azure 启用统包部署 UI。 可为任何简单的应用执行此操作，同时可扩展这一操作，通过将 azuredeploy.json 文件放入存储库根来实现对整个资源组的部署。 “部署到 Azure”按钮将使用此包含资源组模板的 JSON 文件来创建资源组。 有关示例，请参阅会在本教程中使用的 [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) 示例。
+如果将 GitHub 用于源代码管理，则可将一个[“部署到 Azure”按钮](../azure-resource-manager/templates/deploy-to-azure-button.md)放入 README.MD，这会对 Azure 启用统包部署 UI。 可为任何简单的应用执行此操作，同时可扩展这一操作，通过将 azuredeploy.json 文件放入存储库根来实现对整个资源组的部署。 “部署到 Azure”按钮将使用此包含资源组模板的 JSON 文件来创建资源组。 有关示例，请参阅会在本教程中使用的 [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) 示例。
 
 ## <a name="get-the-sample-resource-group-template"></a>获取示例资源组模板
 现在让我们开始吧。
@@ -145,10 +145,10 @@ ms.locfileid: "101095832"
 
 ![显示在 JSON 代码中连接字符串如何定义为嵌套资源。](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
 
-在 `config/connectionstrings` 的 `properties` 元素中，每个连接字符串也定义为具有特定的 `"<name>" : {"value": "…", "type": "…"}` 格式的 name:value 对。 对于 `type` 元素，可能的值为 `MySql`、`SQLServer`、`SQLAzure` 和 `Custom`。
+在 `config/connectionstrings` 的 `properties` 元素中，每个连接字符串也定义为具有特定的 `"<name>&quot; : {&quot;value&quot;: &quot;…&quot;, &quot;type&quot;: &quot;…&quot;}` 格式的 name:value 对。 对于 `type` 元素，可能的值为 `MySql`、`SQLServer`、`SQLAzure` 和 `Custom`。
 
 > [!TIP]
-> 若要获取连接字符串类型的最终列表，请在 Azure PowerShell 中运行以下命令：\[Enum]::GetNames("Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")
+> 若要获取连接字符串类型的最终列表，请在 Azure PowerShell 中运行以下命令：\[Enum]::GetNames(&quot;Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")
 > 
 > 
 
@@ -171,7 +171,7 @@ ms.locfileid: "101095832"
 
 例如，当我转到 [Azure 资源浏览器](https://resources.azure.com)工具并在浏览器中展开节点时，可以看到资源组和收集在其各自资源类型下的根级别资源。
 
-![在扩展的 Azure 资源浏览器工具中查看资源组和根级别资源。](./media/app-service-deploy-complex-application-predictably/ARM-1-treeview.png)
+![在展开的 Azure 资源浏览器工具中查看资源组和根级别资源。](./media/app-service-deploy-complex-application-predictably/ARM-1-treeview.png)
 
 如果向下钻取应用，应能够看到类似于以下屏幕快照的应用配置详细信息：
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: a8ea32d84da521c8a1af926c6cb5e26bc2738de2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a02be0938b1ab925fb0343351ce1c414cc59c615
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102054512"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044832"
 ---
 # <a name="audit-azure-sentinel-queries-and-activities"></a>审核 Azure Sentinel 查询和活动
 
@@ -132,7 +132,7 @@ Azure Sentinel 的审核日志在 [Azure 活动日志](../azure-monitor/essentia
 |更新设置    |Microsoft.SecurityInsights/settings|
 | | |
 
-有关详细信息，请参阅 [Azure 活动日志事件架构](/azure/azure-monitor/essentials/activity-log-schema)。
+有关详细信息，请参阅 [Azure 活动日志事件架构](../azure-monitor/essentials/activity-log-schema.md)。
 
 
 ## <a name="auditing-with-laquerylogs"></a>通过 LAQueryLogs 进行审核
@@ -157,7 +157,7 @@ LAQueryLogs 数据包含如下信息：
 
 1. 默认情况下，Log Analytics 工作区中未启用 LAQueryLogs 表。 在 Azure Sentinel 中进行审核时，若要使用 LAQueryLogs 数据，请先在 Log Analytics 工作区的“诊断设置”区域中启用 LAQueryLogs。
 
-    有关详细信息，请参阅[在 Azure Monitor 日志中审核查询](/azure/azure-monitor/logs/query-audit)。
+    有关详细信息，请参阅[在 Azure Monitor 日志中审核查询](../azure-monitor/logs/query-audit.md)。
 
 
 1. 然后，使用 KQL 查询数据，就像对任何其他表进行查询一样。

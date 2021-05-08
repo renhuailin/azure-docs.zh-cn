@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: df8841cb2dcac6335b09a5e7715f42c508c69e76
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99536809"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>升级到 Azure 认知搜索 .NET SDK 版本 11
 
-如果你使用的是版本10.0 或更低版本的 [.NET SDK](/dotnet/api/overview/azure/search)，本文将帮助你升级到版本11和 **Azure.Search.Documents** 客户端库。
+如果你使用的是 10.0 或更低版本的 [.NET SDK](/dotnet/api/overview/azure/search)，则本文可帮助你升级到版本 11 以及 Azure.Search.Documents客户端库。
 
 版本 11 是完全重新设计的客户端库，由 Azure SDK 开发团队发布（以前的版本由 Azure 认知搜索开发团队生成）。 已对该库进行了重新设计，使其与其他 Azure 客户端库更加一致，依赖于 [Azure.Core](/dotnet/api/azure.core) 和 [System.Text.Json](/dotnet/api/system.text.json)，并为常见任务实现了熟悉的方法。
 
@@ -169,7 +169,7 @@ Azure 认知搜索客户端库的每个版本都面向 REST API 的一个对应�
 版本 10 中的以下功能在版本 11 中尚不可用。 如果需要这些功能，请推迟迁移，直到这些功能受支持。
 
 + [知识存储](knowledge-store-concept-intro.md)
-+ 地理空间类型-"地理空间类型" 的第一类支持仍在进行中。 目前，可以使用 [Microsoft 空间](https://www.nuget.org/packages/Microsoft.Spatial/) 包来支持地理操作。 示例可用于 [System.Text.Js上](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial/README.md) 的和 [Newtonsoft.Js](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md)。
++ 地理空间类型 - 地理空间类型的第一类支持仍在进行中。 目前，可以使用 [Microsoft 空间](https://www.nuget.org/packages/Microsoft.Spatial/)包来支持地理操作。 示例可用于 [System.Text.Json](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial/README.md)和 [Newtonsoft.Json](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md)。
 
 <a name="UpgradeSteps"></a>
 

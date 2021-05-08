@@ -3,12 +3,12 @@ title: Azure 事件网格安全和身份验证
 description: 介绍 Azure 事件网格及其概念。
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.openlocfilehash: 326fa00645302eb4b9c9bc59f17c1ca153bdb0b7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: e9bcf00e832e4deaaf9c5f81ba5af51609a1c412
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371714"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104601034"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>授权访问事件网格资源
 借助 Azure 事件网格，可以控制授予不同用户用来执行各种管理操作的访问级别，例如列出事件订阅、创建新的事件订阅及生成密钥。 事件网格使用 Azure 基于角色的访问控制 (Azure RBAC)。
@@ -31,80 +31,23 @@ az provider operation show --namespace Microsoft.EventGrid
 
 
 ## <a name="built-in-roles"></a>内置角色
+事件网格提供以下三种内置角色。 
 
-事件网格提供了用于管理事件订阅的两个内置角色。 它们对于实施[事件域](event-domains.md)非常重要，因为它们为用户提供了订阅事件域中主题所需的权限。 这些角色专注于事件订阅，不授予对创建主题等操作的访问权限。
+事件网格订阅读者和事件网格订阅参与者角色用于管理事件订阅。 它们对于实施[事件域](event-domains.md)非常重要，因为它们为用户提供了订阅事件域中主题所需的权限。 这些角色专注于事件订阅，不授予对创建主题等操作的访问权限。
 
-你可以[将这些角色分配给用户或组](../role-based-access-control/quickstart-assign-role-user-portal.md)。
+事件网格参与者角色允许你创建和管理事件网格资源。 
 
-**EventGrid EventSubscription 参与者**：管理事件网格订阅操作
 
-```json
-[
-  {
-    "Description": "Lets you manage EventGrid event subscription operations.",
-    "IsBuiltIn": true,
-    "Id": "428e0ff05e574d9ca2212c70d0e0a443",
-    "Name": "EventGrid EventSubscription Contributor",
-    "IsServiceRole": false,
-    "Permissions": [
-      {
-        "Actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.EventGrid/eventSubscriptions/*",
-          "Microsoft.EventGrid/systemtopics/eventsubscriptions/*",
-          "Microsoft.EventGrid/partnertopics/eventsubscriptions/*",
-          "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
-          "Microsoft.Insights/alertRules/*",
-          "Microsoft.Resources/deployments/*",
-          "Microsoft.Resources/subscriptions/resourceGroups/read",
-          "Microsoft.Support/*"
-        ],
-        "NotActions": [],
-        "DataActions": [],
-        "NotDataActions": [],
-        "Condition": null
-      }
-    ],
-    "Scopes": [
-      "/"
-    ]
-  }
-]
-```
+| 角色 | 说明 |
+| ---- | ----------- | 
+| [事件网格订阅读者](../role-based-access-control/built-in-roles.md#eventgrid-eventsubscription-reader) | 可以管理事件网格事件订阅操作。 |
+| [事件网格订阅参与者](../role-based-access-control/built-in-roles.md#eventgrid-eventsubscription-contributor) | 可以读取事件网格事件订阅。 |
+| [事件网格参与者](../role-based-access-control/built-in-roles.md#eventgrid-contributor) | 允许你创建和管理事件网格资源。 |
 
-**EventGrid EventSubscription 读者**：读取事件网格订阅
 
-```json
-[
-  {
-    "Description": "Lets you read EventGrid event subscriptions.",
-    "IsBuiltIn": true,
-    "Id": "2414bbcf64974faf8c65045460748405",
-    "Name": "EventGrid EventSubscription Reader",
-    "IsServiceRole": false,
-    "Permissions": [
-      {
-        "Actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.EventGrid/eventSubscriptions/read",
-          "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
-          "Microsoft.Resources/subscriptions/resourceGroups/read"
-        ],
-        "NotActions": [],
-        "DataActions": [],
-        "NotDataActions": []
-       }
-    ],
-    "Scopes": [
-      "/"
-    ]
-  }
-]
-```
+> [!NOTE]
+> 选择第一列中的链接，以导航到介绍有关该角色的更多详细信息的文章。 有关如何向用户或组分配 RBAC 角色的说明，请参阅[本文](../role-based-access-control/quickstart-assign-role-user-portal.md)。
+
 
 ## <a name="custom-roles"></a>自定义角色
 

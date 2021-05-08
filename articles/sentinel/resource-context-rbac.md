@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: 26124f8f650e1006244b4871e26962d417d90fd4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fc1246d079760fd86513840aebbffa34d192f8ed
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102054528"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044169"
 ---
 # <a name="manage-access-to-azure-sentinel-data-by-resource"></a>按资源管理对 Azure Sentinel 数据的访问
 
@@ -36,7 +36,7 @@ ms.locfileid: "102054528"
 
 - **通过 Azure Monitor**。 若要创建跨多个资源和/或资源组的查询，请使用此方法。 导航到 Azure Monitor 中的日志和工作簿时，将范围定义为一个或多个特定资源组或资源。
 
-在 Azure Monitor 中启用资源上下文 RBAC。 有关详细信息，请参阅[在 Azure Monitor 中管理对日志数据和工作区的访问](/azure/azure-monitor/logs/manage-access)。
+在 Azure Monitor 中启用资源上下文 RBAC。 有关详细信息，请参阅[在 Azure Monitor 中管理对日志数据和工作区的访问](../azure-monitor/logs/manage-access.md)。
 
 > [!NOTE]
 > 如果你的数据不是 Azure 资源（例如 Syslog、CEF 或 AAD 数据，或自定义收集器收集的数据），则需要手动配置用于标识数据和启用访问权限的资源 ID。
@@ -64,9 +64,9 @@ ms.locfileid: "102054528"
 
 |方案  |解决方案  |
 |---------|---------|
-|**子公司的某个 SOC 团队需要完整体验 Azure Sentinel**。     |  在这种情况下，使用多工作区体系结构来分隔数据权限。 <br><br>有关详细信息，请参见: <br>- [跨工作区和租户扩展 Azure Sentinel](extend-sentinel-across-workspaces-tenants.md)<br>    - [同时处理许多工作区中的事件](multiple-workspace-view.md)          |
+|**子公司的某个 SOC 团队需要完整体验 Azure Sentinel**。     |  在这种情况下，使用多工作区体系结构来分隔数据权限。 <br><br>有关详细信息，请参阅： <br>- [跨工作区和租户扩展 Azure Sentinel](extend-sentinel-across-workspaces-tenants.md)<br>    - [同时处理许多工作区中的事件](multiple-workspace-view.md)          |
 |**您希望提供对特定事件类型的访问权限**。     |  例如，为 Windows 管理员提供对所有系统中的 Windows 安全事件的访问权限。 <br><br>在这种情况下，使用[表级别 RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) 来定义每个表的权限。       |
-| **更精细地限制访问权限，既不是基于资源，也不是仅限于事件中字段的子集**   |   例如，你可能想要基于用户的子公司限制对 Office 365 日志的访问权限。 <br><br>在这种情况下，使用与 [Power BI 仪表板和报表](/azure/azure-monitor/platform/powerbi)的内置集成来提供对数据的访问权限。      |
+| **更精细地限制访问权限，既不是基于资源，也不是仅限于事件中字段的子集**   |   例如，你可能想要基于用户的子公司限制对 Office 365 日志的访问权限。 <br><br>在这种情况下，使用与 [Power BI 仪表板和报表](../azure-monitor/visualize/powerbi.md)的内置集成来提供对数据的访问权限。      |
 | | |
 
 ## <a name="explicitly-configure-resource-context-rbac"></a>显式配置资源上下文 RBAC
@@ -77,11 +77,11 @@ ms.locfileid: "102054528"
 
 **若要显式配置资源上下文 RBAC**：
 
-1. 请确保已在 Azure Monitor 中[启用资源上下文 RBAC](/azure/azure-monitor/platform/manage-access)。 
+1. 请确保已在 Azure Monitor 中[启用资源上下文 RBAC](../azure-monitor/logs/manage-access.md)。 
 
-1. 为需要访问你的资源而非整个 Azure Sentinel 环境的每个用户团队[创建资源组](/azure/azure-resource-manager/management/manage-resource-groups-portal)。
+1. 为需要访问你的资源而非整个 Azure Sentinel 环境的每个用户团队[创建资源组](../azure-resource-manager/management/manage-resource-groups-portal.md)。
 
-    为团队每个成员分配[日志读取者权限](/azure/azure-monitor/platform/manage-access#resource-permissions)。
+    为团队每个成员分配[日志读取者权限](../azure-monitor/logs/manage-access.md#resource-permissions)。
 
 1. 将资源分配给创建的资源团队组，并使用相关资源 ID 标记事件。
 
@@ -110,7 +110,7 @@ ms.locfileid: "102054528"
 例如，分隔 VM 可确保使用收集器 VM A 收集属于团队 A 的 Syslog 事件。
 
 > [!TIP]
-> - 使用本地 VM 或其他云 VM （例如 AWS）作为日志转发器时，请通过实现 [Azure Arc](/azure/azure-arc/servers/overview)来确保其具有资源 ID。
+> - 使用本地 VM 或其他云 VM （例如 AWS）作为日志转发器时，请通过实现 [Azure Arc](../azure-arc/servers/overview.md)来确保其具有资源 ID。
 > - 若要扩展日志转发 VM 环境，请考虑创建 [VM 规模集](https://techcommunity.microsoft.com/t5/azure-sentinel/scaling-up-syslog-cef-collection/ba-p/1185854)来收集 CEF 和 Sylog 日志。
 
 
@@ -145,7 +145,7 @@ ms.locfileid: "102054528"
 >
 ### <a name="resource-ids-with-the-log-analytics-api-collection"></a>用于 Log Analytics API 收集的资源 ID
 
-使用 [Log Analytics 数据收集器 API](/azure/azure-monitor/platform/data-collector-api) 进行收集时，可以使用 HTTP [x-ms-AzureResourceId](/azure/azure-monitor/platform/data-collector-api#request-headers) 请求标头向事件分配资源 ID。
+使用 [Log Analytics 数据收集器 API](../azure-monitor/logs/data-collector-api.md) 进行收集时，可以使用 HTTP [x-ms-AzureResourceId](../azure-monitor/logs/data-collector-api.md#request-headers) 请求标头向事件分配资源 ID。
 
 如果使用的是资源上下文 RBAC，并且希望 API 收集的事件可供特定用户使用，则使用[为用户创建](#explicitly-configure-resource-context-rbac)的资源组的资源 ID。
 

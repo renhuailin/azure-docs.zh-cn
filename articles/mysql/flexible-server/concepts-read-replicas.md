@@ -1,17 +1,17 @@
 ---
 title: 只读副本 - Azure Database for MySQL - 灵活服务器
 description: 了解 Azure Database for MySQL 灵活服务器中的只读副本：创建副本、连接到副本、监视复制和停止复制。
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/14/2021
-ms.openlocfilehash: fa7cc9b9a09bfd2bc503640272b5e7ac3a0a7b58
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e51b9667e3bb20a6bd463d3286888085a927f2c0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98251295"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109652"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL 灵活服务器中的只读副本
 

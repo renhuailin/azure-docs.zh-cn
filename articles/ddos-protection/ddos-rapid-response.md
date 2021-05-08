@@ -3,7 +3,7 @@ title: Azure DDoS 快速响应
 description: 了解如何在主动攻击期间引入 DDoS 专家来获取专门的支持。
 services: ddos-protection
 documentationcenter: na
-author: aletheatoh
+author: yitoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: yitoh
-ms.openlocfilehash: f551f40a9bd70c4a3b54c1d2756cfb94caf79590
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 8e860bf47420f2b58c44df695da7761bcc2aa0ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103056"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100521775"
 ---
 # <a name="azure-ddos-rapid-response"></a>Azure DDoS 快速响应
 

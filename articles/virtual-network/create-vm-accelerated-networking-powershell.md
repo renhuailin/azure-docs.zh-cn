@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
 ms.openlocfilehash: b0ebb75530858a589c3166e21261e2f737fff50d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98919963"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>使用 Azure PowerShell 创建具有加速网络的 Windows VM
@@ -63,7 +63,7 @@ ms.locfileid: "98919963"
 
 大多数常规用途实例以及具有 2 个或更多 vCPU 的计算优化实例都支持加速网络。 在支持超线程的实例上，具有 4 个或更多 vCPU 的 VM 实例支持加速网络。 
 
-在单个 [虚拟机大小](../virtual-machines/sizes.md) 文档中可以找到对加速网络的支持。 
+可以在单个[虚拟机大小](../virtual-machines/sizes.md)文档中找到对加速网络的支持。 
 
 ### <a name="custom-images"></a>自定义映像
 
@@ -100,13 +100,13 @@ ms.locfileid: "98919963"
 
 ## <a name="vm-creation-using-powershell"></a>使用 PowerShell 创建 VM
 
-请先安装 [Azure PowerShell](/powershell/azure/install-az-ps) 1.0.0 版或更高版本。 要查找当前安装的版本，请运行 `Get-Module -ListAvailable Az`。 如果需要进行安装或升级，请从 [PowerShell 库](https://www.powershellgallery.com/packages/Az)安装最新版本的 Az 模块。 在 PowerShell 会话中，使用 [AzAccount](/powershell/module/az.accounts/connect-azaccount)登录到 Azure 帐户。
+请先安装 [Azure PowerShell](/powershell/azure/install-az-ps) 1.0.0 版或更高版本。 要查找当前安装的版本，请运行 `Get-Module -ListAvailable Az`。 如果需要进行安装或升级，请从 [PowerShell 库](https://www.powershellgallery.com/packages/Az)安装最新版本的 Az 模块。 在 PowerShell 会话中，使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 登录到 Azure 帐户。
 
 在以下示例中，请将示例参数名称替换成自己的值。 参数名称示例包括 myResourceGroup、myNic 和 myVM。  
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 
-1. 使用 [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) 创建资源组。 以下命令在 " *centralus* " 位置创建名为 " *myResourceGroup* " 的资源组：
+1. 使用 [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) 创建资源组。 以下命令在“centralus”位置创建名为“myResourceGroup”的资源组： 
 
     ```azurepowershell
     New-AzResourceGroup -Name "myResourceGroup" -Location "centralus"
@@ -208,7 +208,7 @@ ms.locfileid: "98919963"
 
     若要获取所有 VM 大小和特性列表，请参阅 [Windows VM 大小](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
-3. 通过 [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) 和 [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage) 创建 VM 配置的其余部分。 以下命令将创建 Windows Server 2016 VM：
+3. 通过 [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) 和 [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage) 创建 VM 配置的其余部分。 以下命令创建 Windows Server 2016 VM：
 
     ```azurepowershell
     $vmConfig = Set-AzVMOperatingSystem -VM $vmConfig `

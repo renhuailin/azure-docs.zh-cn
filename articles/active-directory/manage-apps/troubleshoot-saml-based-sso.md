@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Active Directory 中排查基于 SAML 的单一登录问题
-description: 排查为基于 SAML 的单一登录配置的 Azure AD 应用的问题。
+description: 排查为基于 SAML 的单一登录配置的 Azure AD 应用程序的问题。
 services: active-directory
 author: kenwith
 manager: daveba
@@ -11,10 +11,10 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.openlocfilehash: b169616042892c379196dd1d38c2343704aa1030
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99257520"
 ---
 # <a name="troubleshoot-saml-based-single-sign-on-in-azure-active-directory"></a>在 Azure Active Directory 中排查基于 SAML 的单一登录问题
@@ -31,7 +31,7 @@ ms.locfileid: "99257520"
 如果无法配置标识符或回复 URL，确认标识符和回复 URL 值是否与应用程序预配置的模式匹配。
 
 若要了解应用程序预配置的模式，请执行以下操作：
-1. 打开 [**Azure 门户**](https://portal.azure.com/) ，并以 " **全局管理员** " 或 " **共同管理员** " 身份登录。中转到步骤7。 如果已经位于 Azure AD 上的应用程序配置边栏选项卡中。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。 转到步骤 7。 如果已经位于 Azure AD 上的应用程序配置边栏选项卡中。
 2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
@@ -46,7 +46,7 @@ ms.locfileid: "99257520"
     * 如果此模式不受支持，当在文本框中试图输入值时会看到一个红色感叹号。 将鼠标悬停在红色感叹号上，就能看到受支持的模式。
     * 在应用程序的教程中，还可以获得受支持的模式的信息。 在“配置 Azure AD 单一登录”部分下。 转到该步骤下，在“域和 URL”部分下找到已配置的值。
 
-如果此值与 Azure AD 上预配置的模式不匹配。 可以执行以下操作：
+如果此值与 Azure AD 上预配置的模式不匹配。 你可以：
 -   与应用程序供应商沟通以获取与 Azure AD 上预配置的模式匹配的值
 -   或者，也可以通过 <aadapprequest@microsoft.com> 联系 Azure AD 团队或在教程中留言，请求更新为应用程序支持的模式
 

@@ -13,12 +13,12 @@ ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: da36ce0a956e0c3ed369a676960bdb9b5c5b1199
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4eb89c9c30915f72f45ebe9a26e063c8a44bce2
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98954828"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164410"
 ---
 # <a name="logging-in-msalnet"></a>在 MSAL.NET 中进行日志记录
 
@@ -35,7 +35,7 @@ ms.locfileid: "98954828"
 
 ```csharp
 class Program
- {
+{
   private static void Log(LogLevel level, string message, bool containsPii)
   {
      if (containsPii)
@@ -57,8 +57,8 @@ class Program
     AuthenticationResult result = application.AcquireTokenInteractive(scopes)
                                              .ExecuteAsync().Result;
   }
- }
- ```
+}
+```
 
 > [!TIP]
  > 有关 MSAL.NET 日志记录的示例和其他信息，请参阅 [MSAL.NET Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki)。

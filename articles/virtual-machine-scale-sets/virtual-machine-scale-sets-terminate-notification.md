@@ -5,19 +5,19 @@ author: avirishuv
 ms.author: avverma
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
-ms.subservice: management
+ms.subservice: terminate-notification
 ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: c4d6de1b3406e6d82bdac5ff9b5c72a2286da988
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
-ms.translationtype: MT
+ms.openlocfilehash: ed042afbcbb67a88e304c92302b14af56b26c8e1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747756"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933400"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>为 Azure 虚拟机规模集实例终止通知
-规模集实例可以选择接收实例终止通知，并为终止操作设置预定义的延迟超时。 终止通知通过 Azure Metadata Service 发送– [Scheduled Events](../virtual-machines/windows/scheduled-events.md)，它提供有影响力操作（如重新启动和重新部署）的通知。 解决方案将另一个事件（终止–）添加到 Scheduled Events 列表，而终止事件的关联延迟将取决于其规模集模型配置中用户指定的延迟限制。
+规模集实例可以选择接收实例终止通知，并为终止操作设置预定义的延迟超时。 终止通知通过 Azure 元数据服务 - [Scheduled Events](../virtual-machines/windows/scheduled-events.md) 发送，该服务为影响性操作（如重新启动和重新部署）提供通知和延迟。 解决方案将另一个事件“终止”添加到 Scheduled Events 列表中，终止事件的关联延迟将取决于用户在其规模集模型配置中指定的延迟限制。
 
 注册该功能后，规模集实例无需等待指定的超时过期就会被删除。 收到终止通知后，实例可以选择在终止超时到期之前随时删除。
 
@@ -137,7 +137,7 @@ az vmss update \
 对于启用了 VNET 的 VM，元数据服务可通过不可路由的静态 IP (169.254.169.254) 使用。
 
 最新版本的计划事件的完整终结点是：
-> 'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 '
+> 'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01'
 
 ### <a name="query-response"></a>查询响应
 响应包含计划事件的数组。 数组为空意味着目前没有计划事件。
@@ -181,12 +181,12 @@ DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查�
 还可以参阅示例脚本，来查询和响应事件 [Python ](../virtual-machines/linux/scheduled-events.md#python-sample)。
 
 ## <a name="tips-and-best-practices"></a>提示和最佳实践
--   仅在 "删除" 操作上终止通知–所有删除操作 (手动删除或自动缩放启动的) 如果规模集已启用 *scheduledEventsProfile* ，则将生成终止事件。 重新启动、重置映像、重新部署和停止/解除分配等其他操作不会生成终止事件。 无法为低优先级 VM 启用终止通知。
--   无强制等待超时–您可以在收到事件之后、事件的 *NotBefore* 时间到期之前随时开始终止操作。
--   在超时时必需删除–生成事件后，不能扩展超时值。 超时过期后，将处理挂起的终止事件，并删除 VM。
--   可修改超时值–可以在删除实例之前随时修改超时值，方法是修改规模集模型中的 *notBeforeTimeout* 属性，并将 VM 实例更新到最新模型。
--   批准所有挂起的删除-如果 VM_1 上有一个挂起的删除未批准，并且你已在 VM_2 上批准了另一个终止事件，则在 VM_1 的 "终止" 事件被批准或已过超时之前，不会删除 VM_2。 批准 VM_1 终止事件后，将删除 VM_1 和 VM_2。
--   批准所有同时删除–扩展上面的示例，如果 VM_1 和 VM_2 具有相同的 *NotBefore* 时间，则必须批准两个终止事件，否则在超时过期之前，都不会删除 VM。
+-   仅对“删除”操作提供终止通知 – 如果规模集中已启用 scheduledEventsProfile，则所有删除操作（手动删除或自动缩放启动的缩放）都将生成终止事件。 重新启动、重置映像、重新部署和停止/解除分配等其他操作不会生成终止事件。 无法为低优先级 VM 启用终止通知。
+-   无需强制等待超时 – 你可以在收到事件后和事件的 NotBefore 时间到期之前，随时启动终止操作。
+-   超时时强制删除 – 生成事件后，没有任何延长超时值的功能。 超时过期后，将处理挂起的终止事件，并删除 VM。
+-   可修改超时值 – 你可以在删除实例之前随时修改超时值，方法是修改规模集模型的 notBeforeTimeout 属性，并将 VM 实例更新为最新模型。
+-   批准所有挂起的删除 – 如果未批准的 VM_1 上有挂起的删除，并且你已批准 VM_2 上的另一个终止事件，则在批准 VM_1 的终止事件或其超时之前，不会删除 VM_2。 批准 VM_1 终止事件后，将删除 VM_1 和 VM_2。
+-   批准所有同时删除 – 扩展上述示例，如果 VM_1 和 VM_2 具有相同的 NotBefore 时间，则必须批准这两个终止事件，否则在超时到期之前，两个 VM 都不会被删除。
 
 ## <a name="troubleshoot"></a>故障排除
 ### <a name="failure-to-enable-scheduledeventsprofile"></a>无法启用 scheduledEventsProfile
@@ -194,7 +194,7 @@ DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查�
 
 ### <a name="failure-to-get-terminate-events"></a>未能获取终止事件
 如果无法通过 Scheduled Events 获取任何终止事件，请检查用于获取事件的 API 版本。 终止事件需要元数据服务 API 版本 2019-01-01 或更高版本。
->'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 '
+>'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01'
 
 ### <a name="getting-terminate-event-with-incorrect-notbefore-time"></a>通过不正确的 NotBefore 时间获取终止事件  
 对规模集模型启用 scheduledEventsProfile 并设置 notBeforeTimeout 后，将各个实例更新为[最新模型](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)以反映更改 。

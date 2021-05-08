@@ -3,13 +3,13 @@ title: 入站/出站 IP 地址
 description: 了解如何在 Azure 应用服务中使用入站和出站 IP 地址、这些地址何时更改以及如何查找应用的地址。
 ms.topic: article
 ms.date: 08/25/2020
-ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e5b271cc5cd8cb52267b6ee44bc3965d0e4b0aab
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 4237e51251a7ece05800aa7efa328a9c6cf65e76
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746153"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591361"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure 应用服务中的入站和出站 IP 地址
 
@@ -19,7 +19,7 @@ ms.locfileid: "92746153"
 
 ## <a name="how-ip-addresses-work-in-app-service"></a>IP 地址在应用服务中的工作原理
 
-应用服务应用在应用服务计划中运行，而应用服务计划部署到 Azure 基础结构中的一个部署单元（内部称为 Web 空间）。 为每个部署单元分配最多 5 个虚拟 IP 地址，其中包含 1 个公共入站 IP 地址和 4 个出站 IP 地址。 同一部署单元中的所有应用服务计划和在其中运行的应用实例共享同一组虚拟 IP 地址。 对于应用服务环境（[隔离层](https://azure.microsoft.com/pricing/details/app-service/)中的应用服务计划），应用服务计划是部署单元本身，因此虚拟 IP 地址专用的。
+应用服务应用在应用服务计划中运行，而应用服务计划部署到 Azure 基础结构中的一个部署单元（内部称为 Web 空间）。 为每个部署单元分配一组虚拟 IP 地址，其中包含 1 个公共入站 IP 地址和一组[出站 IP 地址](#find-outbound-ips)。 同一部署单元中的所有应用服务计划和在其中运行的应用实例共享同一组虚拟 IP 地址。 对于应用服务环境（[隔离层](https://azure.microsoft.com/pricing/details/app-service/)中的应用服务计划），应用服务计划是部署单元本身，因此虚拟 IP 地址专用的。
 
 由于不允许在部署单元之间移动应用服务计划，因此分配给应用的虚拟 IP 地址通常保持不变，但也有例外。
 

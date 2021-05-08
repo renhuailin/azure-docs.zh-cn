@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ea412b695c12f3ff7fdfa6250e2a474b618b8032
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 925eb2aee84b135663f80dedd713151ff70898ed
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102430915"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108207908"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>将事件路由到 Azure 数字孪生内部和外部
 
@@ -46,7 +46,7 @@ Azure 数字孪生使用事件路由向服务外的使用者发送数据。
 
 计算资源还需要单独建立安全和访问权限。
 
-若要演练如何设置用于处理数字孪生事件的 Azure 函数，请参阅[操作指南：设置用于处理数据的 Azure 函数](how-to-create-azure-function.md)。
+若要演练如何设置用于处理数字孪生事件的 Azure 函数，请参阅操作指南：设置用于处理数据的 Azure 函数。
 
 ## <a name="create-an-endpoint"></a>创建终结点
 
@@ -79,7 +79,7 @@ Azure 数字孪生使用事件路由向服务外的使用者发送数据。
 
 1. 首先创建一个 `DigitalTwinsEventRoute` 对象，构造函数将使用终结点的名称。 此 `endpointName` 字段标识一个终结点，如事件中心、事件网格或服务总线。 在进行此注册调用之前，必须在订阅中创建这些终结点，并使用控制平面 API 将这些终结点附加到 Azure 数字孪生。
 
-2. 事件路由对象还有一个 [Filter](how-to-manage-routes-apis-cli.md#filter-events) 字段，该字段可用于限制流经此路由的事件类型。 筛选器 `true` 启用无额外筛选的路由（筛选器 `false` 禁用路由）。 
+2. 事件路由对象还有一个 Filter 字段，该字段可用于限制流经此路由的事件类型。 筛选器 `true` 启用无额外筛选的路由（筛选器 `false` 禁用路由）。 
 
 3. 然后，此事件路由对象将与路由名称一起传递到 `CreateOrReplaceEventRouteAsync`。
 
@@ -97,9 +97,9 @@ Azure 数字孪生使用事件路由向服务外的使用者发送数据。
 
 在设置死信位置之前，必须有一个包含容器的存储帐户。 在创建终结点时，需要提供此容器的 URL。 死信作为带有 SAS 令牌的容器 URL 提供。 该令牌只需要存储帐户中目标容器的 `write` 权限。 完整格式的 URL 将为 `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
-若要详细了解 SAS 令牌，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../storage/common/storage-sas-overview.md)。
+若要详细了解 SAS 令牌，请参阅使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限。
 
-若要了解如何设置具有死信功能的终结点，请参阅[操作指南：管理 Azure 数字孪生中的终结点和路由（API 和 CLI）](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering)。
+若要了解如何设置具有死信功能的终结点，请参阅操作指南：管理 Azure 数字孪生中的终结点和路由（API 和 CLI）。
 
 ### <a name="types-of-event-messages"></a>事件消息的类型
 

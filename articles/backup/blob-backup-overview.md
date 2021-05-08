@@ -3,12 +3,12 @@ title: Azure Blob 操作备份概述
 description: 了解 Azure Blob 的操作备份（预览）。
 ms.topic: conceptual
 ms.date: 02/16/2021
-ms.openlocfilehash: b10191c8a01d3cc7a92dee8ca9bf59a506497a60
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1f6bc98b92a2af4b05cae766a2186f2970b7133c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101744195"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558748"
 ---
 # <a name="overview-of-operational-backup-for-azure-blobs-in-preview"></a>Azure Blob 操作备份概述（预览）
 
@@ -22,7 +22,7 @@ Blob 的操作备份是一种“本地备份”解决方案。 因此，不会�
 
 操作备份使用 Blob 平台功能来保护数据，并在需要时允许恢复：
 
-- **时间点还原**：[Blob 时间点还原](https://docs.microsoft.com/azure/storage/blobs/point-in-time-restore-overview)允许将 Blob 数据还原到以前的状态。 这进而使用“软删除”、“更改源”和“Blob 版本控制”在指定的持续时间内保留数据。 操作备份负责启用时间点还原，以及基础功能，以确保在指定的持续时间内保留数据。
+- **时间点还原**：[Blob 时间点还原](../storage/blobs/point-in-time-restore-overview.md)允许将 Blob 数据还原到以前的状态。 这进而使用“软删除”、“更改源”和“Blob 版本控制”在指定的持续时间内保留数据。 操作备份负责启用时间点还原，以及基础功能，以确保在指定的持续时间内保留数据。
 
 - **删除锁定**：删除锁定可防止存储帐户被意外删除或被未经授权的用户删除。 配置时的操作备份还会自动应用删除锁定，以减少由于删除存储帐户而导致的数据丢失的可能性。
 
@@ -63,9 +63,9 @@ Blob 的操作备份是一种“本地备份”解决方案。 因此，不会�
 
 使用 Blob 的操作备份时，不会产生任何管理费用或实例费用。 但是，会将产生以下费用：
 
-- 使用 Blob 时间点还原完成还原，并基于处理的数据量收取费用。 有关详细信息，请参阅[时间点还原定价](https://docs.microsoft.com/azure/storage/blobs/point-in-time-restore-overview#pricing-and-billing)。
+- 使用 Blob 时间点还原完成还原，并基于处理的数据量收取费用。 有关详细信息，请参阅[时间点还原定价](../storage/blobs/point-in-time-restore-overview.md#pricing-and-billing)。
 
-- 由于 [Blob 的软删除](https://docs.microsoft.com/azure/storage/blobs/soft-delete-blob-overview)、[Azure Blob 存储中的更改源支持](https://docs.microsoft.com/azure/storage/blobs/storage-blob-change-feed)和 [Blob 版本控制](https://docs.microsoft.com/azure/storage/blobs/versioning-overview)的数据保留期。
+- 由于 [Blob 的软删除](../storage/blobs/soft-delete-blob-overview.md)、[Azure Blob 存储中的更改源支持](../storage/blobs/storage-blob-change-feed.md)和 [Blob 版本控制](../storage/blobs/versioning-overview.md)的数据保留期。
 
 ## <a name="next-steps"></a>后续步骤
 
