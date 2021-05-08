@@ -13,10 +13,10 @@ ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
 ms.openlocfilehash: d3af0d360ec15ae793f9487693d8b94be686a783
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100516101"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Microsoft 标识平台视频
@@ -31,13 +31,13 @@ ___
 
 :::row:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=uDU1QTSw7Ps" target="_blank">什么是 Microsoft 标识平台？</a> (14:54) 
+        <a href="https://www.youtube.com/watch?v=uDU1QTSw7Ps" target="_blank">什么是 Microsoft 标识平台？</a>(14:54)
     :::column-end:::
     :::column:::
         > [!Video https://www.youtube.com/embed/uDU1QTSw7Ps] 
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=tkQJSHFsduY" target="_blank">新式身份验证的基础知识-Microsoft 标识平台</a> (12:28) 
+        <a href="https://www.youtube.com/watch?v=tkQJSHFsduY" target="_blank">新式身份验证的基础知识 - Microsoft 标识平台</a> (12:28)
     :::column-end:::
     :::column:::
         > [!Video https://www.youtube.com/embed/tkQJSHFsduY] 
@@ -45,13 +45,13 @@ ___
 :::row-end:::
 :::row:::
   :::column:::
-        <a href="https://www.youtube.com/watch?v=JpeMeTjQJ04" target="_blank">概述：在移动应用程序中实现单一登录-Microsoft 标识平台</a> (20:30) 
+        <a href="https://www.youtube.com/watch?v=JpeMeTjQJ04" target="_blank">概述：在移动应用程序中实现单一登录 - Microsoft 标识平台</a> (20:30)
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/JpeMeTjQJ04]
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=7_vxnHiUA1M" target="_blank">新式验证：我们的内容-Microsoft 标识平台</a> (15:47) 
+        <a href="https://www.youtube.com/watch?v=7_vxnHiUA1M" target="_blank">新式身份验证：如何到达操作页面 - Microsoft 标识平台</a> (15:47)
     :::column-end:::
     :::column:::
         > [!Video https://www.youtube.com/embed/7_vxnHiUA1M]
@@ -74,13 +74,13 @@ ___
 
 :::row:::
     :::column:::
-        1-面向 <a href="https://www.youtube.com/watch?v=zjezqZPPOfc&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=1" target="_blank">开发人员的 Microsoft 标识平台</a> (33:55) 的概述
+        1 - <a href="https://www.youtube.com/watch?v=zjezqZPPOfc&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=1" target="_blank">面向开发人员的 Microsoft 标识平台概述 </a>(33:55)
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/zjezqZPPOfc]
     :::column-end:::
      :::column:::
-        2- <a href="https://www.youtube.com/watch?v=Mtpx_lpfRLs&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=2" target="_blank">如何通过 Microsoft 标识平台对应用程序用户进行身份验证 </a> (29:09) 
+        2 - <a href="https://www.youtube.com/watch?v=Mtpx_lpfRLs&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=2" target="_blank">如何使用 Microsoft 标识平台对应用用户进行身份验证</a> (29:09)
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/Mtpx_lpfRLs]
@@ -88,13 +88,13 @@ ___
 :::row-end:::
 :::row:::
     :::column:::
-        3- <a href="https://www.youtube.com/watch?v=toAWRNqqDL4&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=3" target="_blank">Microsoft 标识平台的权限和许可框架</a> (45:08) 
+        3 - <a href="https://www.youtube.com/watch?v=toAWRNqqDL4&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=3" target="_blank">Microsoft 标识平台的权限和许可框架</a> (45:08)
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/toAWRNqqDL4]
     :::column-end:::
     :::column:::
-        4- <a href="https://www.youtube.com/watch?v=IIQ7QW4bYqA&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=4" target="_blank">如何使用 Microsoft 标识平台保护 api</a> (33:17) 
+        4 - <a href="https://www.youtube.com/watch?v=IIQ7QW4bYqA&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=4" target="_blank">如何使用 Microsoft 标识平台保护 API</a> (33:17)
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/IIQ7QW4bYqA]
@@ -102,7 +102,7 @@ ___
 :::row-end:::
 :::row:::
     :::column:::
-        5- <a href="https://www.youtube.com/watch?v=-BK2iBDrmNo&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=5" target="_blank">Microsoft 标识平台上的应用程序角色和安全组</a> (15:52) 
+        5 - <a href="https://www.youtube.com/watch?v=-BK2iBDrmNo&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=5" target="_blank">Microsoft 标识平台上的应用程序角色和安全组</a> (15:52)
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/-BK2iBDrmNo]
@@ -137,13 +137,13 @@ ___
 
 :::row:::
     :::column:::
-        1- <a href="https://www.youtube.com/watch?v=fbSVgC8nGz4&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=1" target="_blank">基础知识：新式身份验证的概念</a> (4:33) 
+        1 - <a href="https://www.youtube.com/watch?v=fbSVgC8nGz4&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=1" target="_blank">基本信息：新式身份验证的概念</a> (4:33)
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/fbSVgC8nGz4]
     :::column-end:::
      :::column:::
-        2- <a href="https://www.youtube.com/watch?v=tCNcG1lcCHY&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=2" target="_blank">web 应用程序的新式验证</a> (6:02) 
+        2 - <a href="https://www.youtube.com/watch?v=tCNcG1lcCHY&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=2" target="_blank">Web 应用程序的新式身份验证</a> (6:02)
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/tCNcG1lcCHY]
@@ -151,13 +151,13 @@ ___
 :::row-end:::
 :::row:::
     :::column:::
-        3- <a href="https://www.youtube.com/watch?v=51B-jSOBF8U&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=3" target="_blank">Web 单一登录</a> (4:13) 
+        3 - <a href="https://www.youtube.com/watch?v=51B-jSOBF8U&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=3" target="_blank">Web 单一登录</a> (4:13)
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/51B-jSOBF8U]
     :::column-end:::
     :::column:::
-        4- <a href="https://www.youtube.com/watch?v=CjarTgjKcX8&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=4" target="_blank">联合 web 身份验证</a> (6:19) 
+        4 - <a href="https://www.youtube.com/watch?v=CjarTgjKcX8&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=4" target="_blank">联合 Web 身份验证</a> (6:19)
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/CjarTgjKcX8]
@@ -165,13 +165,13 @@ ___
 :::row-end:::
 :::row:::
     :::column:::
-        5- <a href="https://www.youtube.com/watch?v=OGMDnuDrAcQ&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=5" target="_blank">Native client 应用程序-第 1 </a> (8:12) 
+        5 - <a href="https://www.youtube.com/watch?v=OGMDnuDrAcQ&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=5" target="_blank">本机客户端应用程序 - 第 1 部分</a> (8:12)
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/OGMDnuDrAcQ]
     :::column-end:::
     :::column:::
-        6- <a href="https://www.youtube.com/watch?v=2RE6IhXfmHY&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=6" target="_blank">Native client 应用程序-第2部分 </a> (5:33) 
+        6 - <a href="https://www.youtube.com/watch?v=2RE6IhXfmHY&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=6" target="_blank">本机客户端应用程序 - 第 2 部分</a> (5:33)
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/2RE6IhXfmHY]
@@ -202,13 +202,13 @@ ___
 
 :::row:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=bNlcFuIo3r8" target="_blank">Microsoft 标识平台概述 </a>
+        <a href="https://www.youtube.com/watch?v=bNlcFuIo3r8" target="_blank">Microsoft 标识平台概述</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/bNlcFuIo3r8]
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=apbbx2n4tnU" target="_blank">Microsoft Graph 和 Microsoft 身份验证库 (MSAL) </a>
+        <a href="https://www.youtube.com/watch?v=apbbx2n4tnU" target="_blank">Microsoft Graph 和 Microsoft 身份验证库 (MSAL)</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/apbbx2n4tnU]
@@ -216,13 +216,13 @@ ___
 :::row-end:::
 :::row:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=yLVEBU9Z96Q" target="_blank">什么是 MSAL 系列的库？</a>
+        <a href="https://www.youtube.com/watch?v=yLVEBU9Z96Q" target="_blank">什么是 MSAL 库系列？</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/yLVEBU9Z96Q]
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=eiPHOoLmGJs" target="_blank">范围说明 </a>
+        <a href="https://www.youtube.com/watch?v=eiPHOoLmGJs" target="_blank">范围说明</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/eiPHOoLmGJs]
@@ -230,7 +230,7 @@ ___
 :::row-end:::
 :::row:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=Zd_Uubnu0U0" target="_blank">什么是代理 </a>
+        <a href="https://www.youtube.com/watch?v=Zd_Uubnu0U0" target="_blank">什么是中转站</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/Zd_Uubnu0U0]
@@ -244,13 +244,13 @@ ___
 :::row-end:::
 :::row:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=mDhT4Zv1fZU" target="_blank">租户说明 </a>
+        <a href="https://www.youtube.com/watch?v=mDhT4Zv1fZU" target="_blank">租户说明</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/mDhT4Zv1fZU]
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=zDEC7A5ZS2Q" target="_blank">Azure AD 的角色 </a>
+        <a href="https://www.youtube.com/watch?v=zDEC7A5ZS2Q" target="_blank">Azure AD 角色</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/zDEC7A5ZS2Q]

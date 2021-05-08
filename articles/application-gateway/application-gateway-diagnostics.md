@@ -8,12 +8,13 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: e18267d5a810826e41e05eb3dde3cd82a8eb9197
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
-ms.translationtype: MT
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a2571706d3b1341d6eb3751e50b699043b376767
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065314"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108320648"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>应用程序网关的后端运行状况和诊断日志
 
@@ -222,7 +223,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |serverRouted| 应用程序网关将请求路由到的后端服务器。|
 |serverStatus| 后端服务器的 HTTP 状态代码。|
 |serverResponseLatency| 后端服务器的响应延迟。|
-|host| 请求的主机标头中列出的地址。 如果使用标头重写重写，则此字段包含更新的主机名|
+|host| 请求的主机标头中列出的地址。 如果使用标头重写进行重写，此字段将包含更新的主机名|
 |originalRequestUriWithArgs| 此字段包含原始请求 URL |
 |requestUri| 在应用程序网关上执行重写操作后，此字段将包含 URL |
 |originalHost| 此字段包含原始请求主机名
@@ -306,7 +307,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |ruleSetVersion     | 所使用的规则集版本。 可用值为 2.2.9 和 3.0。     |
 |ruleId     | 触发事件的规则 ID。        |
 |message     | 触发事件的用户友好消息。 详细信息部分提供了更多详细信息。        |
-|action     |  针对请求执行的操作。 可用值为 Matched 和 Blocked。      |
+|action     |  针对请求执行的操作。 可用值为“已阻止”或“已允许”（对于自定义规则），“匹配”（当规则匹配请求的一部分时）和“已检测”和“已阻止”（两者均用于强制规则，具体取决于 WAF 是处于检测模式还是防护模式）。      |
 |site     | 为其生成日志的站点。 目前仅列出 Global，因为规则是全局性的。|
 |详细信息     | 触发事件的详细信息。        |
 |details.message     | 规则的说明。        |

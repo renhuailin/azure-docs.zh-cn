@@ -2,19 +2,19 @@
 title: 提升私有云特权
 titleSuffix: Azure VMware Solution by CloudSimple
 description: 介绍如何提升私有云特权，以获得 vCenter 的管理功能
-author: Ajayan1008
+author: shortpatti
 ms.author: v-hborys
 ms.date: 06/05/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c2215bd9a60fdcf76077c3a1f2a91631dc0dbe88
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c72c13aa63908311d7a54015ef61165e7dde5917
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97895816"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108182383"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>从 CloudSimple 门户提升私有云 vCenter 特权
 

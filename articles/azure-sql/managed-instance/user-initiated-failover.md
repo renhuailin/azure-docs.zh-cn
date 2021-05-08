@@ -11,10 +11,10 @@ ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 02/27/2021
 ms.openlocfilehash: 3c969c1898e67361e37a825d7976b1c52d08dd24
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101691138"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL 托管实例上用户启动的手动故障转移
@@ -34,7 +34,7 @@ ms.locfileid: "101691138"
 - 在某些情况下，查询性能降低，手动故障转移可帮助减轻性能问题。
 
 > [!NOTE]
-> 在部署到生产环境之前，请确保应用程序的故障转移是可复原的，这有助于降低生产环境中出现应用程序故障的风险，且有助于向客户提供应用程序可用性。 若要详细了解如何通过 [测试应用云就绪情况来](https://youtu.be/FACWYLgYDL8) 测试应用程序的云就绪性，请参阅 SQL 托管实例视频编码。
+> 在部署到生产环境之前，请确保应用程序的故障转移是可复原的，这有助于降低生产环境中出现应用程序故障的风险，且有助于向客户提供应用程序可用性。 若要了解有关测试应用程序的云就绪情况的详细信息，请观看[测试应用云就绪情况了解使用 SQL 托管实例进行故障转移的复原能力](https://youtu.be/FACWYLgYDL8)录像。
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>在 SQL 托管实例上启动手动故障转移
 
@@ -43,13 +43,13 @@ ms.locfileid: "101691138"
 启动故障转移的用户需要具有下列 Azure 角色之一：
 
 - “订阅所有者”角色或
-- [托管实例参与者](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) 角色，或
+- [托管实例参与者](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)角色或
 - 具有以下权限的自定义角色：
   - `Microsoft.Sql/managedInstances/failover/action`
 
 ### <a name="using-powershell"></a>使用 PowerShell
 
-Az.Sql 的最低版本须为 [v2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0)。 请考虑使用始终具有最新 PowerShell 版本可用的 Azure 门户中的 [Azure Cloud Shell](../../cloud-shell/overview.md) 。 
+Az.Sql 的最低版本须为 [v2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0)。 请考虑使用 Azure 门户中的 [Azure Cloud Shell](../../cloud-shell/overview.md)，其中始终提供最新的 PowerShell 版本。 
 
 作为一项先决条件，请使用以下 PowerShell 脚本来安装所需的 Azure 模块。 此外，请选择要进行故障转移的托管实例所在的订阅。
 
@@ -126,7 +126,7 @@ API 响应将为以下两项之一：
 
 ## <a name="monitor-the-failover"></a>监视故障转移
 
-若要监视用户启动的 BC 实例故障转移的进度，请在喜欢的客户端中执行以下 T-sql 查询 (例如，在 SQL 托管实例上运行 SSMS) 。 它将读取系统视图 sys.dm_hadr_fabric_replica_states 并报告实例上可用的副本。 启动手动故障转移后刷新相同的查询。
+若要监视用户为你的 BC 实例启动的故障转移的进度，请在你喜欢的客户端（例如 SSMS）中对 SQL 托管实例执行以下 T-SQL 查询。 它将读取系统视图 sys.dm_hadr_fabric_replica_states 并报告实例上可用的副本。 启动手动故障转移后刷新相同的查询。
 
 ```T-SQL
 SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_hadr_fabric_replica_states
@@ -134,13 +134,13 @@ SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_h
 
 启动故障转移之前，你的输出将指示 BC 服务层上的当前主副本，其中包含 AlwaysOn 可用性组中的一个主副本和三个次要副本。 执行故障转移后，再次运行此查询将需要指示主节点的更改。
 
-在 GP 服务层中，你将无法看到与上面所示的 BC 的输出相同的输出。 这是因为 GP 服务层只基于单个节点。 可以使用其他 T-sql 查询，该查询显示在 GP 服务层实例的节点上启动 SQL 进程的时间：
+在 GP 服务层中，你将无法看到与上面所示的 BC 的输出相同的输出。 这是因为 GP 服务层只基于单个节点。 可以使用可选的 T-SQL 查询来显示在 GP 服务层实例的节点上启动 SQL 进程的时间：
 
 ```T-SQL
 SELECT sqlserver_start_time, sqlserver_start_time_ms_ticks FROM sys.dm_os_sys_info
 ```
 
-在故障转移过程中，客户端从客户端进行的短暂断开连接通常持续一分钟，而不考虑服务层。
+在故障转移期间，客户端短暂的连接中断（通常持续不到一分钟），将表明无论服务级别如何，都将执行故障转移。
 
 > [!NOTE]
 > 在高强度工作负载的情况下，完成故障转移过程（不是实际的短暂不可用性）可能需要几分钟的时间。 这是因为实例引擎在能够进行故障转移之前正在处理主节点上的所有当前事务，并跟进辅助节点。
@@ -150,10 +150,10 @@ SELECT sqlserver_start_time, sqlserver_start_time_ms_ticks FROM sys.dm_os_sys_in
 > - 每 15 分钟在同一托管实例上可能会启动一次 (1) 故障转移。
 > - 对于 BC 实例，若要使故障转移请求得到接受，必须存在仲裁副本。
 > - 对于 BC 实例，不能指定要在其上启动故障转移的可读辅助副本。
-> - 在自动备份系统完成新数据库的第一次完整备份之前，将不允许进行故障转移。
-> - 如果存在正在进行的数据库还原，则将不允许故障转移。
+> - 在自动备份系统完成对新数据库的第一次完全备份之前，将不允许进行故障转移。
+> - 如果正在进行数据库还原，将不允许进行故障转移。
 
 ## <a name="next-steps"></a>后续步骤
-- 若要详细了解如何通过 [测试应用云就绪情况来](https://youtu.be/FACWYLgYDL8) 测试应用程序的云就绪性，请参阅 SQL 托管实例视频编码。
+- 若要了解有关测试应用程序的云就绪情况的详细信息，请观看[测试应用云就绪情况了解使用 SQL 托管实例进行故障转移的复原能力](https://youtu.be/FACWYLgYDL8)录像。
 - 详细了解托管实例的高可用性 [Azure SQL 托管实例的高可用性](../database/high-availability-sla.md)。
 - 有关概述，请参阅[什么是 Azure SQL 托管实例？](sql-managed-instance-paas-overview.md)。

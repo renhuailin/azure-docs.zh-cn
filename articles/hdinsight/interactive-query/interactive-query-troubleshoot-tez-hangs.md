@@ -5,19 +5,19 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/09/2019
 ms.openlocfilehash: 56c68c26ae953034283031e2427b7a4afadee94e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98935929"
 ---
-# <a name="scenario-apache-tez-application-hangs-in-azure-hdinsight"></a>方案：Apache Tez 应用程序在 Azure HDInsight 中挂起
+# <a name="scenario-apache-tez-application-hangs-in-azure-hdinsight"></a>场景：Apache Tez 应用程序在 Azure HDInsight 中挂起
 
-本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方案。
+本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方法。
 
 ## <a name="issue"></a>问题
 
-提交 Apache Hive 作业后，"Tez" 视图中的作业状态为 "正在运行"，但未显示任何进度
+提交 Apache Hive 作业后，在 Tez 视图中作业状态为“正在运行”，但似乎没有任何进展
 
 ## <a name="cause"></a>原因
 

@@ -3,24 +3,25 @@ title: 在加密设备上配置 LVM 和 RAID - Azure 磁盘加密
 description: 本文介绍如何在适用于 Linux VM 的加密设备上配置 LVM 和 RAID。
 author: jofrance
 ms.service: virtual-machines
-ms.subservice: security
+ms.subservice: disks
+ms.collection: linux
 ms.topic: how-to
 ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3f90d5a95d153405f9257258fba6ab9cc1ce9a35
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.openlocfilehash: bdd897e76df941130e3acdf9c30ea8edd41147e9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681296"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104601918"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>在加密设备上配置 LVM 和 RAID
 
 本文分步介绍如何在加密设备上执行逻辑卷管理 (LVM) 和 RAID。 该过程适用于以下环境：
 
 - Linux 发行版
-    - RHEL 7.6 +
+    - RHEL 7.6+
     - Ubuntu 18.04+
     - SUSE 12+
 - Azure 磁盘加密单一传递扩展
@@ -260,7 +261,7 @@ lsblk
 在将用作 LVM 一部分的磁盘上卸载文件系统。
 
 ```bash
-for disk in c d e f; do unmount /tempdata${disk}; done
+for disk in c d e f; do umount /tempdata${disk}; done
 ```
 同时删除 /etc/fstab 条目：
 
@@ -422,6 +423,9 @@ mkfs.ext4 /dev/md10
 ```
 
 为文件系统创建新的装入点，将新的文件系统添加到 /etc/fstab 并装载该文件：
+
+>[!NOTE] 
+>在本特定示例中，此循环仅在一台设备上循环访问，采用这种构建方式以便在需要时用于多个 md 设备。
 
 ```bash
 for device in md10; do diskuuid="$(blkid -s UUID -o value /dev/${device})"; \

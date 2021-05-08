@@ -1,6 +1,6 @@
 ---
-title: '还原已删除的专用 SQL 池 (以前的 SQL DW) '
-description: 如何在 Azure Synapse Analytics 中还原已删除的专用 SQL 池的指南。
+title: 还原已删除的专用 SQL 池（以前称为 SQL DW）
+description: 有关在 Azure Synapse Analytics 中还原已删除的专用 SQL 池的操作指南。
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -12,34 +12,34 @@ ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 7264791654bf1b646338f0d429930b63f0cc3a06
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96449922"
 ---
-# <a name="restore-a-deleted-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>在 Azure Synapse 分析中还原已删除的专用 SQL 池 (以前的 SQL DW) 
+# <a name="restore-a-deleted-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中还原已删除的专用 SQL 池（以前称为 SQL DW）
 
-本文介绍如何使用 Azure 门户或 PowerShell 将专用 SQL 池 (以前的 SQL DW) 还原。
+本文介绍如何使用 Azure 门户或 PowerShell 还原专用 SQL 池（以前称为 SQL DW）。
 
 ## <a name="before-you-begin"></a>准备阶段
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**验证 DTU 容量。** 每个专用 SQL 仓库 (以前的 SQL DW) 由 [逻辑 sql server](../../azure-sql/database/logical-servers.md) 托管 (例如，具有默认 DTU 配额的 myserver.database.windows.net) 。  验证该服务器的剩余 DTU 配额是否足够进行数据库还原。 若要了解如何计算所需 DTU 或请求更多的 DTU，请参阅[请求 DTU 配额更改](sql-data-warehouse-get-started-create-support-ticket.md)。
+**验证 DTU 容量。** 每个专用 SQL 池（以前称为 SQL DW）都由一个具有默认 DTU 配额的[逻辑 SQL Server](../../azure-sql/database/logical-servers.md)（例如 myserver.database.windows.net）托管。  验证该服务器的剩余 DTU 配额是否足够进行数据库还原。 若要了解如何计算所需 DTU 或请求更多的 DTU，请参阅[请求 DTU 配额更改](sql-data-warehouse-get-started-create-support-ticket.md)。
 
 ## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>通过 PowerShell 还原已删除的数据仓库
 
-若要还原已删除的专用 SQL 池 (以前的 SQL DW) ，请使用 [AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) cmdlet。 如果相应的服务器也已被删除，则不能还原该数据仓库。
+若要还原已删除的专用 SQL 池（以前称为 SQL DW），请使用 [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) cmdlet。 如果相应的服务器也已被删除，则不能还原该数据仓库。
 
 1. 开始之前，请确保[安装 Azure PowerShell](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 2. 打开 PowerShell。
 3. 连接到 Azure 帐户，并列出与帐户关联的所有订阅。
-4. 选择包含已删除的专用 SQL 池 (以前要还原的 SQL DW) 的订阅。
+4. 选择包含要还原的已删除专用 SQL 池（以前称为 SQL DW）的订阅。
 5. 获取特定的已删除数据仓库。
-6. 还原已删除的专用 SQL 池 (以前的 SQL DW) 
-    1. 若要将已删除的专用 SQL 池 (以前的 SQL DW) 还原到其他服务器，请确保指定其他服务器名称。  该服务器也可以位于另一资源组和区域中。
-    1. 若要还原到其他订阅，请使用 " [移动](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#use-the-portal) " 按钮将服务器移到另一个订阅。
+6. 还原已删除的专用 SQL 池（以前称为 SQL DW）
+    1. 若要将已删除的专用 SQL 池（以前称为 SQL DW）还原到另一服务器，请确保指定其他服务器名称。  该服务器也可以位于另一资源组和区域中。
+    1. 若要还原到另一订阅，请使用 [移动](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#use-the-portal)按钮将服务器移动到另一个订阅。
 7. 验证已还原的数据仓库是否处于联机状态。
 8. 完成还原后，可以按[在恢复后配置数据库](../../azure-sql/database/disaster-recovery-guidance.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)中的说明配置恢复后的数据仓库。
 
@@ -87,5 +87,5 @@ $RestoredDatabase.status
 
 ## <a name="next-steps"></a>后续步骤
 
-- [还原现有的专用 SQL 池 (以前的 SQL DW) ](sql-data-warehouse-restore-active-paused-dw.md)
-- [从异地备份专用 SQL 池还原 (以前的 SQL DW) ](sql-data-warehouse-restore-from-geo-backup.md)
+- [还原现有专用 SQL 池（以前称为 SQL DW）](sql-data-warehouse-restore-active-paused-dw.md)
+- [从异地备份专用 SQL 池（以前称为 SQL DW）进行还原](sql-data-warehouse-restore-from-geo-backup.md)

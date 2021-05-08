@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: bdda89483661eb6f6d006c3d8ea42b46d162de05
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
-ms.translationtype: MT
+ms.openlocfilehash: 8eade7596e36389b1e345dc6f0aab1029dc100e0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201648"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589153"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Azure SignalR 服务常见问题故障排除指南
 
@@ -19,14 +19,14 @@ ms.locfileid: "98201648"
 
 ## <a name="access-token-too-long"></a>访问令牌太长
 
-### <a name="possible-errors"></a>可能的错误：
+### <a name="possible-errors"></a>可能出现的错误
 
 * 客户端 `ERR_CONNECTION_`
 * 414 URI 太长
 * 413 有效负载太大
 * 访问令牌不得长于 4 K。 413 请求实体太大
 
-### <a name="root-cause"></a>根本原因：
+### <a name="root-cause"></a>根本原因
 
 对于 HTTP/2，单个标头的最大长度为 4 K。因此，如果使用浏览器访问 Azure 服务，则会出现有关此限制的 `ERR_CONNECTION_` 错误。
 
@@ -34,7 +34,7 @@ ms.locfileid: "98201648"
 
 使用 SDK 1.0.6 或更高版本时，`/negotiate` 会在生成的访问令牌大于 4 K 时引发“`413 Payload Too Large`”错误。
 
-### <a name="solution"></a>解决方案：
+### <a name="solution"></a>解决方案
 
 默认情况下，在生成针对 ASRS（**A** zure **S** ignal **R** **S** ervice，即 Azure SignalR 服务）的 JWT 访问令牌时，会包括 `context.User.Claims` 中的声明，这样，这些声明会被保留，并可以在客户端连接到 `Hub` 时从 ASRS 传递到 `Hub`。
 
@@ -45,7 +45,8 @@ ms.locfileid: "98201648"
 可以通过 `ClaimsProvider` 在访问令牌中自定义传递给 ASRS 的声明。
 
 以下代码适用于 ASP.NET Core：
-```cs
+
+```csharp
 services.AddSignalR()
         .AddAzureSignalR(options =>
             {
@@ -55,7 +56,8 @@ services.AddSignalR()
 ```
 
 以下代码适用于 ASP.NET：
-```cs
+
+```csharp
 services.MapAzureSignalR(GetType().FullName, options =>
             {
                 // pick up necessary claims
@@ -63,17 +65,17 @@ services.MapAzureSignalR(GetType().FullName, options =>
             });
 ```
 
-[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+[有关于故障排除的问题或反馈？请告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="tls-12-required"></a>需要 TLS 1.2
 
-### <a name="possible-errors"></a>可能的错误：
+### <a name="possible-errors"></a>可能出现的错误
 
 * ASP.NET 的“无可用服务器”错误 [#279](https://github.com/Azure/azure-signalr/issues/279)
 * ASP.NET 的“连接未处于活动状态，无法将数据发送到服务。” 错误 [#324](https://github.com/Azure/azure-signalr/issues/324)
 * “向 https://<API endpoint> 发出 HTTP 请求时出错。 此错误可能是由于未在 HTTPS 用例中正确使用 HTTP.SYS 配置服务器证书所致。 此外，客户端与服务器之间的安全绑定不匹配也可能造成此错误。”
 
-### <a name="root-cause"></a>根本原因：
+### <a name="root-cause"></a>根本原因
 
 出于安全考虑，Azure 服务仅支持 TLS 1.2。 使用 .NET Framework 时，TLS 1.2 可能不是默认协议。 因此，无法成功建立与 ASRS 的服务器连接。
 
@@ -93,20 +95,22 @@ services.MapAzureSignalR(GetType().FullName, options =>
         :::image type="content" source="./media/signalr-howto-troubleshoot-guide/tls-throws.png" alt-text="引发异常":::
 
 2. 对于 ASP.NET 错误，还可以将以下代码添加到 `Startup.cs`，以便启用详细的跟踪并查看日志中的错误。
-```cs
-app.MapAzureSignalR(this.GetType().FullName);
-// Make sure this switch is called after MapAzureSignalR
-GlobalHost.TraceManager.Switch.Level = SourceLevels.Information;
-```
 
-### <a name="solution"></a>解决方案：
+    ```cs
+    app.MapAzureSignalR(this.GetType().FullName);
+    // Make sure this switch is called after MapAzureSignalR
+    GlobalHost.TraceManager.Switch.Level = SourceLevels.Information;
+    ```
+
+### <a name="solution"></a>解决方案
 
 将以下代码添加到 Startup.cs：
-```cs
+
+```csharp
 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 ```
 
-[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+[有关于故障排除的问题或反馈？请告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="400-bad-request-returned-for-client-requests"></a>针对客户端请求返回了“400 错误请求”
 
@@ -114,7 +118,7 @@ ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
 检查客户端请求是否有多个 `hub` 查询字符串。 `hub` 是保留的查询参数。如果服务检测到查询中有多个 `hub`，则会引发 400 错误。
 
-[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+[有关于故障排除的问题或反馈？请告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="401-unauthorized-returned-for-client-requests"></a>针对客户端请求返回“401 未授权”
 
@@ -134,7 +138,7 @@ JWT 令牌生存期的默认值目前为 1 小时。
 
 请查看[此文](#restart_connection)，了解如何重启客户端连接。
 
-[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+[有关于故障排除的问题或反馈？请告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="404-returned-for-client-requests"></a>针对客户端请求返回 404
 
@@ -146,31 +150,31 @@ JWT 令牌生存期的默认值目前为 1 小时。
 * 出现 404 时，请检查请求的 URL。 如果 URL 是针对你的 Web 应用，并且类似于 `{your_web_app}/hubs/{hubName}`，则请检查客户端 `SkipNegotiation` 是否为 `true`。 使用 Azure SignalR 时，客户端会在首次与应用服务器协商时接收重定向 URL。 使用 Azure SignalR 时，客户端不应跳过协商。
 * 如果在调用 `/negotiate` 后过了 5 秒以上才处理连接请求，则可能会发生另一 404 错误。 如果对服务请求的响应较慢，请检查客户端请求的时间戳，并向我们提出问题。
 
-[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+[有关于故障排除的问题或反馈？请告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="404-returned-for-aspnet-signalrs-reconnect-request"></a>针对 ASP.NET SignalR 的重新连接请求返回了 404
 
 对于 ASP.NET SignalR，当[客户端连接断开](#client_connection_drop)时，它会使用相同的 `connectionId` 重新连接三次，然后才停止连接。 如果连接断开是由于网络间歇性问题，则可以使用 `/reconnect`。`/reconnect` 可以成功地重新建立持久性连接。 在其他情况下，例如，在客户端连接断开是因为路由的服务器连接断开的情况下，或者在 SignalR 服务有一些内部错误（如实例重启/故障转移/部署错误）的情况下，连接不再存在，因此 `/reconnect` 会返回 `404`。 它是 `/reconnect` 的预期行为，三次重试后连接会停止。 建议在连接停止时使用[连接重启](#restart_connection)逻辑。
 
-[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+[有关于故障排除的问题或反馈？请告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="429-too-many-requests-returned-for-client-requests"></a>针对客户端请求返回“429 (请求过多)”
 
 存在两种情况。
 
-### <a name="concurrent-connection-count-exceeds-limit"></a>并发连接计数超出限制。
+### <a name="concurrent-connection-count-exceeds-limit"></a>**并发** 连接计数超出限制
 
 对于免费实例，并发连接计数限制为 20。对于标准实例，每个单位的并发连接计数限制为 1K，这意味着 100 个单位允许 100 K 个并发连接。    
 
 连接包括客户端连接和服务器连接。 请查看[此文](./signalr-concept-messages-and-connections.md#how-connections-are-counted)，了解如何进行连接计数。
 
-### <a name="too-many-negotiate-requests-at-the-same-time"></a>同一时间协商请求太多。
+### <a name="too-many-negotiate-requests-at-the-same-time"></a>同时的协商请求太多
 
-建议在重新连接之前有一个随机延迟，请 [在此处](#restart_connection) 查看重试示例。
+我们建议在重新连接之前进行随机延迟，查看[此处](#restart_connection)以获取重试示例。
 
-[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+[有关于故障排除的问题或反馈？请告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
-## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>协商时出现 500 错误：Azure SignalR 服务尚未连接，请稍后再试。
+## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>协商时出现 500 错误：Azure SignalR 服务尚未连接，请稍后再试
 
 ### <a name="root-cause"></a>根本原因
 
@@ -180,18 +184,21 @@ JWT 令牌生存期的默认值目前为 1 小时。
 
 启用服务器端跟踪，以便在服务器尝试连接到 Azure SignalR 服务时查明错误详情。
 
-#### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>为 ASP.NET Core SignalR 启用服务器端日志记录
+### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>为 ASP.NET Core SignalR 启用服务器端日志记录
 
-ASP.NET Core SignalR 的服务器端日志记录与在 ASP.NET Core Framework 中提供的基于 `ILogger` 的[日志记录](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1)集成。 你可以使用 `ConfigureLogging` 来启用服务器端日志记录，示例用法如下：
-```cs
+ASP.NET Core SignalR 的服务器端日志记录与在 ASP.NET Core Framework 中提供的基于 `ILogger` 的[日志记录](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1&preserve-view=true)集成。 你可以使用 `ConfigureLogging` 来启用服务器端日志记录，示例用法如下：
+
+```csharp
 .ConfigureLogging((hostingContext, logging) =>
         {
             logging.AddConsole();
             logging.AddDebug();
         })
 ```
+
 Azure SignalR 的记录器类别始终以 `Microsoft.Azure.SignalR` 开头。 若要从 Azure SignalR 启用详细日志，请在 appsettings.json 文件中将前面的前缀配置为 `Debug` 级别，如下所示：
-```JSON
+
+```json
 {
     "Logging": {
         "LogLevel": {
@@ -206,6 +213,7 @@ Azure SignalR 的记录器类别始终以 `Microsoft.Azure.SignalR` 开头。 �
 #### <a name="enable-server-side-traces-for-aspnet-signalr"></a>为 ASP.NET SignalR 启用服务器端跟踪
 
 使用 >= `1.0.0` 的 SDK 版本时，可以通过将以下内容添加到 `web.config` 来启用跟踪：（[详细信息](https://github.com/Azure/azure-signalr/issues/452#issuecomment-478858102)）
+
 ```xml
 <system.diagnostics>
     <sources>
@@ -229,20 +237,20 @@ Azure SignalR 的记录器类别始终以 `Microsoft.Azure.SignalR` 开头。 �
 
 <a name="client_connection_drop"></a>
 
-[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+[有关于故障排除的问题或反馈？请告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="client-connection-drops"></a>客户端连接断开
 
 当客户端连接到 Azure SignalR 时，客户端与 Azure SignalR 之间的持久性连接有时可能会因不同的原因而断开。 此部分介绍导致此类连接断开的几种可能性，并提供一些有关如何确定根本原因的指导。
 
-### <a name="possible-errors-seen-from-the-client-side"></a>客户端出现的可能的错误
+### <a name="possible-errors-seen-from-the-client-side"></a>客户端可能出现的错误
 
 * `The remote party closed the WebSocket connection without completing the close handshake`
 * `Service timeout. 30.00ms elapsed without receiving a message from service.`
 * `{"type":7,"error":"Connection closed with an error."}`
 * `{"type":7,"error":"Internal server error."}`
 
-### <a name="root-cause"></a>根本原因：
+### <a name="root-cause"></a>根本原因
 
 客户端连接可能会在各种情况下断开：
 * 当 `Hub` 引发传入请求的异常时。
@@ -256,7 +264,7 @@ Azure SignalR 的记录器类别始终以 `Microsoft.Azure.SignalR` 开头。 �
 2. 检查应用服务器端事件日志以查看应用服务器是否已重启
 3. 创建一个将提交给我们的问题，提供时间范围，并通过电子邮件向我们发送资源名称
 
-[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+[有关于故障排除的问题或反馈？请告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="client-connection-increases-constantly"></a>客户端连接计数不断增加
 
@@ -268,13 +276,13 @@ Azure SignalR 的记录器类别始终以 `Microsoft.Azure.SignalR` 开头。 �
 
 :::image type="content" source="./media/signalr-howto-troubleshoot-guide/client-connection-increasing-constantly.jpg" alt-text="客户端连接计数不断增加":::
 
-### <a name="root-cause"></a>根本原因：
+### <a name="root-cause"></a>根本原因
 
 从未调用 SignalR 客户端连接的 `DisposeAsync`，因此连接保持打开状态。
 
 ### <a name="troubleshooting-guide"></a>故障排除指南
 
-1. 检查 SignalR 客户端是否从未关闭。
+检查 SignalR 客户端是否“从未”关闭。
 
 ### <a name="solution"></a>解决方案
 
@@ -282,7 +290,7 @@ Azure SignalR 的记录器类别始终以 `Microsoft.Azure.SignalR` 开头。 �
 
 例如：
 
-```C#
+```csharp
 var connection = new HubConnectionBuilder()
     .WithUrl(...)
     .Build();
@@ -312,7 +320,7 @@ finally
 
 <a name="server_connection_drop"></a>
 
-[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+[有关于故障排除的问题或反馈？请告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="server-connection-drops"></a>服务器连接断开
 
@@ -324,23 +332,97 @@ finally
 
 此部分介绍导致服务器连接断开的几种可能性，并提供一些有关如何确定根本原因的指导。
 
-### <a name="possible-errors-seen-from-server-side"></a>服务器端出现的可能的错误：
+### <a name="possible-errors-seen-from-the-server-side"></a>服务器端可能出现的错误
 
 * `[Error]Connection "..." to the service was dropped`
 * `The remote party closed the WebSocket connection without completing the close handshake`
 * `Service timeout. 30.00ms elapsed without receiving a message from service.`
 
-### <a name="root-cause"></a>根本原因：
+### <a name="root-cause"></a>根本原因
 
 服务器-服务连接通过 ASRS（**A** zure **S** ignal **R** **S** ervice，Azure SignalR 服务）关闭。
 
+对于 ping 超时，可能是由于服务器端的 CPU 使用率较高或线程池不足引起的。
+
+对于 ASP.NET SignalR，已修复 SDK 1.6.0 中的已知问题。 将 SDK 升级到最新版本。
+
+## <a name="thread-pool-starvation"></a>线程池不足
+
+如果你的服务器资源不足，这意味着没有线程在进行消息处理。 所有线程都以特定方法挂起。
+
+通常，这种方案是由于异步中的同步或异步方法中的 `Task.Result`/`Task.Wait()` 导致的。
+
+请参阅 [ASP.NET Core 性能最佳做法](/aspnet/core/performance/performance-best-practices#avoid-blocking-calls)。
+
+请参阅更多有关[线程池不足](https://docs.microsoft.com/archive/blogs/vancem/diagnosing-net-core-threadpool-starvation-with-perfview-why-my-service-is-not-saturating-all-cores-or-seems-to-stall)的信息。
+
+### <a name="how-to-detect-thread-pool-starvation"></a>如何检测线程池不足
+
+检查线程计数。 如果此时没有峰值，请执行以下步骤：
+* 如果使用 Azure 应用服务，请检查指标中的线程计数。 检查 `Max` 聚合：
+    
+  :::image type="content" source="media/signalr-howto-troubleshoot-guide/metrics-thread-count.png" alt-text="Azure 应用服务中的最大线程数窗格的屏幕截图。":::
+
+* 如果使用的是 .NET Framework，则可以在服务器 VM 的性能监视器中找到[指标](https://docs.microsoft.com/dotnet/framework/debug-trace-profile/performance-counters#lock-and-thread-performance-counters)。
+* 如果使用的是容器中的 .NET Core，请参阅[在容器中收集诊断](https://docs.microsoft.com/dotnet/core/diagnostics/diagnostics-in-containers)。
+
+你还可以使用代码来检测线程池不足：
+
+```csharp
+public class ThreadPoolStarvationDetector : EventListener
+{
+    private const int EventIdForThreadPoolWorkerThreadAdjustmentAdjustment = 55;
+    private const uint ReasonForStarvation = 6;
+
+    private readonly ILogger<ThreadPoolStarvationDetector> _logger;
+
+    public ThreadPoolStarvationDetector(ILogger<ThreadPoolStarvationDetector> logger)
+    {
+        _logger = logger;
+    }
+
+    protected override void OnEventSourceCreated(EventSource eventSource)
+    {
+        if (eventSource.Name == "Microsoft-Windows-DotNETRuntime")
+        {
+            EnableEvents(eventSource, EventLevel.Informational, EventKeywords.All);
+        }
+    }
+
+    protected override void OnEventWritten(EventWrittenEventArgs eventData)
+    {
+        // See: https://docs.microsoft.com/en-us/dotnet/framework/performance/thread-pool-etw-events#threadpoolworkerthreadadjustmentadjustment
+        if (eventData.EventId == EventIdForThreadPoolWorkerThreadAdjustmentAdjustment &&
+            eventData.Payload[3] as uint? == ReasonForStarvation)
+        {
+            _logger.LogWarning("Thread pool starvation detected!");
+        }
+    }
+}
+```
+    
+把代码添加到你的服务中：
+    
+```csharp
+service.AddSingleton<ThreadPoolStarvationDetector>();
+```
+
+然后，在服务器连接由于 ping 超时断开时检查日志。
+
+### <a name="how-to-find-the-root-cause-of-thread-pool-starvation"></a>如何查找线程池不足的根本原因
+
+查找线程池不足的根本原因：
+
+* 转储内存，然后分析调用堆栈。 有关详细信息，请参阅[收集和分析内存转储](https://devblogs.microsoft.com/dotnet/collecting-and-analyzing-memory-dumps/)。
+* 如果检测到线程池不足，请使用 [clrmd](https://github.com/microsoft/clrmd) 转储内存。 然后，记录调用堆栈。
+
 ### <a name="troubleshooting-guide"></a>故障排除指南
 
-1. 打开应用服务器端日志以查看是否发生了异常
-2. 检查应用服务器端事件日志以查看应用服务器是否已重启
-3. 创建一个将提交给我们的问题，提供时间范围，并通过电子邮件向我们发送资源名称
+1. 打开应用服务器端日志以查看是否发生了异常。
+2. 检查应用服务器端事件日志以查看应用服务器是否已重启。
+3. 创建问题。 提供期限，并通过电子邮件向我们发送资源名称。
 
-[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+[有关于故障排除的问题或反馈？请告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="tips"></a>提示
 
@@ -374,7 +456,7 @@ finally
 
     * [ASP.NET JavaScript 客户端](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.JavaScriptClient/wwwroot/index.html#L71)
 
-[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+[有关于故障排除的问题或反馈？请告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ author: nabhishek
 ms.author: abnarain
 ms.custom: seo-lt-2019
 ms.date: 05/08/2019
-ms.openlocfilehash: de897f6350893f6188c9a97480c0a849fc142fb1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 7d312e4a00cdd2b62ee219df807f30c22f0c9790
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375861"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104773940"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hadoop Hive 活动转换数据
 
@@ -54,7 +54,7 @@ ms.locfileid: "100375861"
 }
 ```
 ## <a name="syntax-details"></a>语法详细信息
-| properties            | 说明                                                  | 必须 |
+| 属性            | 说明                                                  | 必需 |
 | ------------------- | ------------------------------------------------------------ | -------- |
 | name                | 活动名称                                         | 是      |
 | description         | 描述活动用途的文本                | 否       |
@@ -67,6 +67,9 @@ ms.locfileid: "100375861"
 | 定义             | 在 Hive 脚本中指定参数作为键/值对，以供引用。 | 否       |
 | queryTimeout        | 查询超时值（以分钟为单位）。 适用于 HDInsight 群集已启用企业安全性套餐的情况。 | 否       |
 
+>[!NOTE]
+>查询超时默认值为 120 分钟。 
+
 ## <a name="next-steps"></a>后续步骤
 参阅以下文章了解如何以其他方式转换数据： 
 
@@ -76,5 +79,5 @@ ms.locfileid: "100375861"
 * [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
 * [Spark 活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
-* [Azure 机器学习 Studio (经典) 批处理执行活动](transform-data-using-machine-learning.md)
+* [Azure 机器学习工作室（经典）批处理执行活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)

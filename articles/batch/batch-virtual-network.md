@@ -4,12 +4,12 @@ description: 如何在 Azure 虚拟网络中创建 Batch 池，以便计算节�
 ms.topic: how-to
 ms.date: 03/26/2021
 ms.custom: seodec18
-ms.openlocfilehash: 7213637e89cfccd1352861002c47a696d942d30f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f376c62a8fda4a84ec8385fb623fa304bb8c035e
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629302"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107947494"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>在虚拟网络中创建 Azure Batch 池
 
@@ -53,9 +53,11 @@ ms.locfileid: "105629302"
 
 若要确保池中的节点在启用了强制隧道的 VNet 中工作，必须为该子网添加以下[用户定义的路由](../virtual-network/virtual-networks-udr-overview.md) (UDR)：
 
-- Batch 服务需要与节点进行通信来计划任务。 若要启用此通信，请在你的 Batch 帐户所在的区域中为 Batch 服务使用的每个 IP 地址添加一个 UDR。 若要获取 Batch 服务的 IP 地址列表，请参阅[本地的服务标记](../virtual-network/service-tags-overview.md)。
+- Batch 服务需要与节点进行通信来计划任务。 若要启用此通信，请在你的 Batch 帐户所在的区域中为 Batch 服务使用的每个 IP 地址添加一个 UDR。 Batch 服务的 IP 地址位于 `BatchNodeManagement.<region>` 服务标记中。 若要获取 Batch 服务的 IP 地址列表，请参阅[本地服务标记](../virtual-network/service-tags-overview.md)。
 
-- 确保发送到 Azure 存储（具体而言是采用 `<account>.table.core.windows.net`、`<account>.queue.core.windows.net` 和 `<account>.blob.core.windows.net` 格式的 URL）的出站流量没有被本地网络阻止。
+- 确保目标端口 443 上的 Azure Batch 服务的出站 TCP 流量未遭到本地网络阻止。 这些 Azure Batch 服务目标 IP 地址与上述路由所用的 `BatchNodeManagement.<region>` 服务标记相同。
+
+- 确保发送到目标端口 443 上的 Azure 存储（具体而言，是采用 `*.table.core.windows.net`、`*.queue.core.windows.net` 和 `*.blob.core.windows.net` 格式的 URL）的出站 TCP 流量未遭到本地网络阻止。
 
 - 如果使用虚拟文件装载，请查看[网络要求](virtual-file-mount.md#networking-requirements)，并确保未阻止所需的流量。
 

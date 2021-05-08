@@ -3,18 +3,18 @@ title: Azure IoT 中心设备预配服务 - 对称密钥证明
 description: 本文以概念的方式概述了使用 IoT 设备预配服务 (DPS) 的对称密钥证明。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/04/2019
+ms.date: 04/23/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 994c2c3124d6822f047af942268ad7a401d5a976
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0455fe634b44465b4b16d48145fcf51f733f121d
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90531553"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107929356"
 ---
 # <a name="symmetric-key-attestation"></a>对称密钥证明
 
@@ -74,7 +74,73 @@ sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 
 [如何使用对称密钥预配旧设备](how-to-legacy-device-symm-key.md)一文中使用了该示例。
 
-为设备定义注册 ID 后，注册组的对称密钥用于计算注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) 哈希，以生成派生的设备密钥。 可使用以下 C# 代码执行注册 ID 的哈希处理：
+为设备定义注册 ID 后，注册组的对称密钥用于计算注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) 哈希，以生成派生的设备密钥。 下方选项卡中提供了计算派生设备密钥的一些示例方法。  
+
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLI 的 IoT 扩展提供了用于生成派生设备密钥的 [`compute-device-key`](/cli/azure/iot/dps?view=azure-cli-latest&preserve-view=true#az_iot_dps_compute_device_key) 命令。 此命令可从基于 Windows 或 Linux 的系统、PowerShell 或 Bash shell 中使用。
+
+将 `--key` 参数值替换为注册组中的主密钥。
+
+将 `--registration-id` 参数值替换为注册 ID。
+
+```azurecli
+az iot dps compute-device-key --key 8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw== --registration-id sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
+```
+
+示例结果：
+
+```azurecli
+"Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc="
+```
+
+# <a name="windows"></a>Windows
+
+如果使用的是基于 Windows 的工作站，可以使用 PowerShell 生成派生的设备密钥，如以下示例中所示。
+
+将密钥值替换为注册组中的主密钥。
+
+用注册 ID 替换 REG_ID 值。
+
+```powershell
+$KEY='8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw=='
+$REG_ID='sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6'
+
+$hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
+$hmacsha256.key = [Convert]::FromBase64String($KEY)
+$sig = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID))
+$derivedkey = [Convert]::ToBase64String($sig)
+echo "`n$derivedkey`n"
+```
+
+```powershell
+Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
+```
+
+# <a name="linux"></a>[Linux](#tab/linux)
+
+如果使用的是 Linux 工作站，可以使用 openssl 生成派生的设备密钥，如以下示例中所示。
+
+将密钥值替换为注册组中的主密钥。
+
+用注册 ID 替换 REG_ID 值。
+
+```bash
+KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
+REG_ID=sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
+
+keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
+echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64
+```
+
+```bash
+Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
+```
+
+# <a name="csharp"></a>[CSharp](#tab/csharp)
+
+可使用以下 C# 代码执行注册 ID 的哈希处理：
 
 ```csharp
 using System; 
@@ -96,6 +162,8 @@ public static class Utils
 ```csharp
 String deviceKey = Utils.ComputeDerivedSymmetricKey(Convert.FromBase64String(masterKey), registrationId);
 ```
+
+---
 
 然后使用生成的设备密钥来生成要用于证明的 SAS 令牌。 注册组中的每个设备都需要使用从唯一派生密钥中生成的安全令牌进行证明。 注册组对称密钥不能直接用于证明。
 

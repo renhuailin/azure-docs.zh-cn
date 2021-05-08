@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 04/16/2019
 ms.openlocfilehash: b7f2f060f32cf3bf92660a2e8b75a45b7ec76b82
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92779758"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Azure SQL 托管实例内容参考信息
@@ -57,7 +57,7 @@ ms.locfileid: "92779758"
 - [配置内存中 OLTP](../in-memory-oltp-configure.md)
 - [配置 Azure 自动化](../database/automation-manage.md)
 - 可以使用[事务复制](replication-between-two-instances-configure-tutorial.md)在托管实例之间复制数据，或者将数据从 SQL Server 本地复制到 SQL 托管实例，反之亦然。
-- [配置威胁检测](threat-detection-configure.md) - [威胁检测](../database/threat-detection-overview.md) 是一种内置的 Azure SQL 托管实例功能，可检测各种潜在攻击，例如 SQL 注入或从可疑位置访问。 
+- [配置威胁检测](threat-detection-configure.md) - [威胁检测](../database/threat-detection-overview.md)是一项内置的 Azure SQL 托管实例功能，用于检测各种潜在的攻击，例如 SQL 注入或者来自可疑位置的访问。 
 - 通过[创建警报](alerts-create.md)，你可以对 SQL 托管实例的监视指标（例如 CPU 使用率、存储空间消耗和 IOPS 等）设置警报。 
 
 ## <a name="monitoring-and-tuning"></a>监视和优化

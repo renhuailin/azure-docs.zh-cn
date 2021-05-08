@@ -7,10 +7,10 @@ ms.date: 08/26/2019
 ms.author: masnider
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 87ac89edc1c9996afc03e7c2bd6743202fdfcb52
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98786185"
 ---
 # <a name="scaling-in-service-fabric"></a>在 Service Fabric 中进行缩放
@@ -95,14 +95,14 @@ Service Fabric 支持分区。 分区可将服务拆分成若干逻辑和物理�
 
 <center>
 
-![包含三个节点的分区布局](./media/service-fabric-concepts-scalability/layout-three-nodes.png)
+![三节点式分区布局](./media/service-fabric-concepts-scalability/layout-three-nodes.png)
 </center>
 
 如果增加节点数目，Service Fabric 会移动其中的一些现有副本。 例如，假设节点数增加到 4，且已重新分发副本。 现在，服务在每个节点上有 3 个正在运行的副本，每个副本均属于不同的分区。 这可以实现更高的资源利用率，因为新节点不冷。 通常情况下，这还可提高性能，因为每项服务均有更多可用资源。
 
 <center>
 
-![包含四个节点的分区布局](./media/service-fabric-concepts-scalability/layout-four-nodes.png)
+![四节点式分区布局](./media/service-fabric-concepts-scalability/layout-four-nodes.png)
 </center>
 
 ## <a name="scaling-by-using-the-service-fabric-cluster-resource-manager-and-metrics"></a>使用 Service Fabric 群集资源管理器和指标进行缩放

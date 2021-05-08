@@ -1,37 +1,37 @@
 ---
 title: 使用虚拟节点
 titleSuffix: Azure Kubernetes Service
-description: '概述如何在 Azure Kubernetes 服务中使用虚拟节点 (AKS) '
+description: 概述如何将虚拟节点与 Azure Kubernetes 服务 (AKS) 配合使用
 services: container-service
 ms.topic: conceptual
 ms.date: 02/17/2021
 ms.custom: references_regions
 ms.openlocfilehash: 3bba1155ec57db67968aec95d1d3386fc6cda006
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100634441"
 ---
-# <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes"></a>创建和配置 Azure Kubernetes Services (AKS) 群集，以使用虚拟节点
+# <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes"></a>创建 Azure Kubernetes 服务 (AKS) 群集并将其配置为使用虚拟节点
 
-若要在 AKS 群集中快速缩放应用程序工作负载，可以使用虚拟节点。 使用虚拟节点可快速预配 Pod，并且只需对其执行时间按秒付费。 无需等待 Kubernetes 群集自动缩放程序部署 VM 计算节点来运行其他 Pod。 只有 Linux Pod 和节点支持虚拟节点。
+若要快速缩放 AKS 群集中的应用程序工作负荷，可以使用虚拟节点。 使用虚拟节点可快速预配 Pod，并且只需对其执行时间按秒付费。 无需等待 Kubernetes 群集自动缩放程序部署 VM 计算节点来运行其他 Pod。 只有 Linux Pod 和节点支持虚拟节点。
 
-AKS 的虚拟节点外接程序基于开源项目 [Virtual Kubelet][virtual-kubelet-repo]。
+AKS 的虚拟节点加载项基于开源项目[虚拟 Kubelet][virtual-kubelet-repo]。
 
 本文概述了使用虚拟节点的区域可用性和网络要求，以及已知限制。
 
 ## <a name="regional-availability"></a>区域可用性
 
-所有支持 VNET Sku 的区域都支持虚拟节点部署。
+ACI 支持 VNET SKU 的所有区域都支持虚拟节点部署。
 
-对于每个区域中可用的 CPU 和内存 Sku，请查看 azure [区域中 azure 容器实例的 Azure 容器实例资源可用性-Linux 容器组](../container-instances/container-instances-region-availability.md#linux-container-groups)
+有关每个区域中可用的 CPU 和内存 SKU，请查看 [Azure 容器实例在 Azure 区域的 Azure 容器实例资源可用性 - Linux 容器组](../container-instances/container-instances-region-availability.md#linux-container-groups)
 
 ## <a name="network-requirements"></a>网络要求
 
-Azure 容器实例 (ACI) 和 AKS 群集中运行的 Pod 可以借助虚拟节点进行网络通信。 若要提供此通信，应创建虚拟网络子网并分配委派的权限。 虚拟节点仅适用于使用 *高级* 网络 (Azure CNI) 创建的 AKS 群集。 默认情况下，使用 *基本* 网络 (kubenet) 创建 AKS 群集。
+Azure 容器实例 (ACI) 和 AKS 群集中运行的 Pod 可以借助虚拟节点进行网络通信。 若要提供此通信，应创建虚拟网络子网并分配委派的权限。 虚拟节点仅适用于使用高级网络 (Azure CNI) 创建的 AKS 群集。 默认情况下，AKS 群集是使用基本网络 (kubenet) 创建的。
 
-在 Azure 容器实例中运行的 pod (ACI) 需要访问 AKS API 服务器终结点，以便配置网络。
+在 Azure 容器实例 (ACI) 中运行的 Pod 需要访问 AKS API 服务器终结点才能配置网络。
 
 ## <a name="known-limitations"></a>已知的限制
 
@@ -42,11 +42,11 @@ Azure 容器实例 (ACI) 和 AKS 群集中运行的 Pod 可以借助虚拟节点
 * 初始化容器
 * [主机别名](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
 * ACI 中的 exec 的[参数](../container-instances/container-instances-exec.md#restrictions)
-* [Daemonset](concepts-clusters-workloads.md#statefulsets-and-daemonsets) 不会将 pod 部署到虚拟节点
+* [DaemonSet](concepts-clusters-workloads.md#statefulsets-and-daemonsets) 不会将 Pod 部署到虚拟节点
 * 虚拟节点支持计划 Linux Pod。 你可以手动安装开源 [Virtual Kubelet ACI](https://github.com/virtual-kubelet/azure-aci) 提供程序，以便将 Windows Server 容器调度到 ACI。
-* 虚拟节点需要具有 Azure CNI 网络的 AKS 群集。
-* 使用 api 服务器的授权 ip 范围 AKS。
-* 卷装载 Azure 文件共享支持 [常规用途 V1](../storage/common/storage-account-overview.md#types-of-storage-accounts)。 按照[使用 Azure 文件共享装入卷](azure-files-volume.md)的说明进行操作
+* 虚拟节点需要那些具有 Azure CNI 网络的 AKS 群集。
+* 对 AKS 使用 API 服务器授权的 IP 范围。
+* 卷装载 Azure 文件共享支持[常规用途 V1](../storage/common/storage-account-overview.md#types-of-storage-accounts)。 按照说明装载[带有 Azure 文件共享的卷](azure-files-volume.md)
 * 不支持使用 IPv6。
 
 ## <a name="next-steps"></a>后续步骤

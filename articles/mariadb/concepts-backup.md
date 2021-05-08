@@ -3,14 +3,14 @@ title: 备份和还原 - Azure Database for MariaDB
 description: 了解如何自动备份和还原 Azure Database for MariaDB 服务器。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: 1d5fc158d2e37223e048c4106206ddba4602fabb
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.openlocfilehash: 68605a22dd0d0b2b716b148399c8406a1ea8d89e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98659931"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中进行备份和还原
@@ -45,7 +45,7 @@ Azure Database for MariaDB 可以进行完整备份、差异备份和事务日�
 -   存储容量最大达 16 TB 的服务器将保留完整数据库快照、所有差异快照和过去 8 天的事务日志备份。
 
 #### <a name="long-term-retention-of-backups"></a>长期保留备份
-目前尚不支持长期保留35天的备份。 你可以选择使用 mysqldump 来执行备份并将其存储起来以供长期保留。 我们的支持团队针对发表介绍如何实现此 [目的的分步](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157) 指导。 
+此服务目前暂不对长期保留备份（超出 35 天）提供本机支持。 可以选择使用 mysqldump 来进行备份并存储备份，以便进行长期保留。 我们的支持团队已通过博客发布[分步指南文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157)来分享如何实现此操作。 
 
 ### <a name="backup-redundancy-options"></a>备份冗余选项
 

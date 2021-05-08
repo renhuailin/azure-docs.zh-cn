@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6ec05c4160c6502904644bf7035bda0bed66cc33
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94413184"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同步：与 Azure Active Directory 同步的属性
@@ -375,7 +375,7 @@ ms.locfileid: "94413184"
 * Yammer（只使用 User）
 * [SharePoint 等资源提供的混合企业到企业 (B2B) 跨组织协作方案](/sharepoint/create-b2b-extranet)
 
-如果不使用 Azure AD 目录来支持 Microsoft 365、Dynamics 或 Intune，则可以使用这一组属性。 它包含一小部分核心属性。 请注意，对于某些第三方应用程序的单一登录或预配，还需要配置属性的同步，而不是此处所述的属性。 每个应用程序的 [SaaS 应用教程](../saas-apps/tutorial-list.md) 介绍了应用程序要求。
+如果不使用 Azure AD 目录来支持 Microsoft 365、Dynamics 或 Intune，则可以使用这一组属性。 它包含一小部分核心属性。 请注意，对于某些第三方应用程序的单一登录或预配，除了此处所述的属性之外，还需要配置属性的同步。 每个应用程序的 [SaaS 应用教程](../saas-apps/tutorial-list.md)中介绍了应用程序要求。
 
 | 属性名称 | User | 联系人 | 组 | 注释 |
 | --- |:---:|:---:|:---:| --- |

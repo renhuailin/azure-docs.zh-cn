@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/11/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8a16ecd2ee6ed939b2afd0e51e9cf531e419c8af
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101656391"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>保护对 Azure Cosmos DB 中数据的访问
@@ -24,13 +24,13 @@ Azure Cosmos DB 提供了三种方法来控制对数据的访问。
 
 | 访问控制类型 | 特征 |
 |---|---|
-| [主键](#primary-keys) | 允许任何管理或数据操作的共享机密。 它同时提供读写和只读变量。 |
-| [基于角色的访问控制](#rbac) (预览)  | 使用 Azure Active Directory (AAD) 标识进行身份验证的细化、基于角色的权限模型。 |
+| [主键](#primary-keys) | 允许任何管理或数据操作的共享机密。 它包括读写变量和只读变量。 |
+| [基于角色的访问控制](#rbac)（预览） | 使用 Azure Active Directory (AAD) 标识进行身份验证的细化、基于角色的权限模型。 |
 | [资源令牌](#resource-tokens)| 基于本机 Azure Cosmos DB 用户和权限的细化权限模型。 |
 
 ## <a name="primary-keys"></a><a id="primary-keys"></a> 主键
 
-主密钥提供对数据库帐户的所有管理资源的访问权限。 每个帐户包括两个主密钥：主要密钥和辅助密钥。 双重密钥的用途是让你重新生成或滚动密钥，从而可以持续访问帐户和数据。 若要了解有关主密钥的详细信息，请参阅[数据库安全性](database-security.md#primary-keys)一文。
+主密钥提供对数据库帐户的所有管理资源的访问权限。 每个帐户包括两个主密钥：主要密钥和辅助密钥。 使用两个密钥的目的是为了能够重新生成或轮换密钥，从而可以持续访问帐户和数据。 若要了解有关主密钥的详细信息，请参阅[数据库安全性](database-security.md#primary-keys)一文。
 
 ### <a name="key-rotation"></a><a id="key-rotation"></a> 密钥轮换
 
@@ -63,21 +63,21 @@ CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 
 :::code language="python" source="~/cosmosdb-python-sdk/sdk/cosmos/azure-cosmos/samples/access_cosmos_with_resource_token.py" id="configureConnectivity":::
 
-## <a name="role-based-access-control-preview"></a><a id="rbac"></a> 基于角色的访问控制 (预览) 
+## <a name="role-based-access-control-preview"></a><a id="rbac"></a> 基于角色的访问控制（预览）
 
 Azure Cosmos DB 公开了一种内置的基于角色的访问控制 (RBAC) 系统，可让你：
 
-- 使用 Azure Active Directory (AAD) 标识对数据请求进行身份验证。
-- 使用细化的基于角色的权限模型来授权你的数据请求。
+- 使用 Azure Active Directory (AAD) 标识来验证数据请求。
+- 使用细粒度的、基于角色的权限模型来授权数据请求。
 
 Azure Cosmos DB RBAC 是在以下情况下的理想访问控制方法：
 
-- 您不希望使用共享机密（如主键），并且喜欢依赖基于令牌的身份验证机制。
-- 要使用 Azure AD 标识对请求进行身份验证，
-- 你需要细化的权限模型来严格限制允许身份执行的数据库操作，
-- 你希望将访问控制策略具体化为 "角色"，你可以将其分配给多个标识。
+- 你不希望使用共享机密（如主键），但希望依赖于基于令牌的身份验证机制，
+- 你希望使用 Azure AD 标识对请求进行身份验证，
+- 你需要细化权限模型来严格限制标识允许执行的数据库操作，
+- 你希望将访问控制策略具体化为可分配给多个标识的“角色”。
 
-有关 Azure Cosmos DB RBAC 的详细信息，请参阅 [为你的 Azure Cosmos DB 帐户配置基于角色的访问控制](how-to-setup-rbac.md) 。
+有关 Azure Cosmos DB RBAC 的详细信息，请参阅[为 Azure Cosmos DB 帐户配置基于角色的访问控制](how-to-setup-rbac.md)。
 
 ## <a name="resource-tokens"></a><a id="resource-tokens"></a> 资源令牌
 
@@ -168,14 +168,14 @@ PermissionProperties permissionProperties = await user.GetPermission("permission
 CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrResourceToken: permissionProperties.Token);
 ```
 
-## <a name="differences-between-rbac-and-resource-tokens"></a>RBAC 和资源标记之间的差异
+## <a name="differences-between-rbac-and-resource-tokens"></a>RBAC 和资源令牌之间的差异
 
 | 使用者 | RBAC | 资源令牌 |
 |--|--|--|
-| 身份验证  | Azure Active Directory (Azure AD) 。 | 基于本机 Azure Cosmos DB 用户<br>将资源令牌与 Azure AD 集成需要额外的工作，以 Azure AD 标识和 Azure Cosmos DB 用户。 |
+| 身份验证  | 与 Azure Active Directory (Azure AD) 集成。 | 基于本机 Azure Cosmos DB 用户<br>将资源令牌与 Azure AD 集成需要额外的工作才能将 Azure AD 标识桥接到 Azure Cosmos DB 用户。 |
 | 授权 | 基于角色：角色定义映射允许的操作，并且可以分配给多个标识。 | 基于权限：对于每个 Azure Cosmos DB 用户，需要分配数据访问权限。 |
-| 标记范围 | AAD 令牌携带请求者的标识。 此标识将与所有分配的角色定义进行匹配以执行授权。 | 资源令牌将授予对特定 Azure Cosmos DB 资源上的特定 Azure Cosmos DB 用户的权限。 不同资源的授权请求可能需要不同的令牌。 |
-| 令牌刷新 | AAD 令牌会在 Azure Cosmos DB Sdk 过期时自动刷新。 | 不支持资源令牌刷新。 当资源令牌过期时，需要发出一个新的令牌。 |
+| 令牌范围 | AAD 令牌带有请求者的标识。 此标识将与所有分配的角色定义匹配以执行授权。 | 资源令牌带有向特定 Azure Cosmos DB 资源上的特定 Azure Cosmos DB 用户授权的权限。 不同资源的授权请求可能需要不同的令牌。 |
+| 令牌刷新 | Azure Cosmos DB SDK 在过期时自动刷新 AAD 令牌。 | 不支持资源令牌刷新。 资源令牌过期时，需要发出一个新令牌。 |
 
 ## <a name="add-users-and-assign-roles"></a>添加用户和分配角色
 

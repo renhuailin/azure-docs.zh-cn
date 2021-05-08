@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: 7356b9bb814f8bca5465fe74d48409b9dbca6d3b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101731691"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor 数据平台
@@ -28,7 +28,7 @@ ms.locfileid: "101731691"
 ## <a name="observability-data-in-azure-monitor"></a>Azure Monitor 中的观测数据
 指标、日志和分布式跟踪通常称作观测功能的三大支柱。 监视工具必须收集并分析这些不同类型的数据，才能对受监视系统进行充分的观测。 若要实现观测功能，可以关联多个支柱提供的数据，并聚合整个受监视资源集中的数据。 由于 Azure Monitor 将多个源中的数据存储在一起，因此可以使用一组通用的工具来关联和分析这些数据。 它还将数据与多个 Azure 订阅和租户相关联，并为其他服务托管数据。Azure Monitor 还可关联多个 Azure 订阅和租户中的数据，并托管其他服务的数据。
 
-Azure 资源会生成大量的监视数据。 Azure Monitor 将这些数据连同其他源中的监视数据一起整合到指标或日志平台。 每个平台已针对特定的监视方案进行优化，各自支持 Azure Monitor 中的不同功能。 使用数据分析、可视化或警报等功能需要了解数据的差异，以便能够以最经济高效的方式实现所需的方案。 [Application Insights](app/app-insights-overview.md)或[VM insights](vm/vminsights-overview.md)等 Azure Monitor 中的见解具有分析工具，使你能够专注于特定的监视方案，而不必了解这两种数据类型之间的差异。 
+Azure 资源会生成大量的监视数据。 Azure Monitor 将这些数据连同其他源中的监视数据一起整合到指标或日志平台。 每个平台已针对特定的监视方案进行优化，各自支持 Azure Monitor 中的不同功能。 使用数据分析、可视化或警报等功能需要了解数据的差异，以便能够以最经济高效的方式实现所需的方案。 Azure Monitor 中的见解功能（例如 [Application Insights](app/app-insights-overview.md) 或 [VM Insights](vm/vminsights-overview.md)）提供分析工具让你专注于特定的监视方案，而无需了解这两种数据类型之间的差异。 
 
 
 ### <a name="metrics"></a>指标

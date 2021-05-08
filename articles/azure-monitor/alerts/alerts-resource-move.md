@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 02/14/2021
 ms.openlocfilehash: eb6dbb74fe0d345a157049e79f7a3642499d7cfa
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102037976"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>如何在警报规则或操作规则的目标资源移动到其他 Azure 区域时对这些规则进行更新
@@ -47,7 +47,7 @@ ms.locfileid: "102037976"
 
 - 活动日志警报规则
 - 操作规则
-- 指标警报-有关详细信息，请参阅下一节 [基于指标的警报规则](#alert-rules-based-on-metrics)。
+- 指标警报 - 有关详细信息，请参阅下一部分[基于指标的警报规则](#alert-rules-based-on-metrics)。
 
 > [!NOTE]
 > 日志搜索警报规则和智能检测器警报规则不受影响，因为它们的范围是工作区或 Application Insights。 这两种范围当前都不支持区域移动。

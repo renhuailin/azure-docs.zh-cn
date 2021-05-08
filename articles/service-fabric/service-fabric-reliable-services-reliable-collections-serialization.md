@@ -1,14 +1,14 @@
 ---
-title: 可靠集合对象序列化
-description: 了解 Azure Service Fabric 可靠集合对象序列化，包括默认策略和如何定义自定义序列化。
+title: Reliable Collection 对象序列化
+description: 了解 Azure Service Fabric Reliable Collections 对象序列化，包括默认策略和如何定义自定义序列化。
 ms.topic: conceptual
 ms.date: 5/8/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 29bb9a2dfb028d223d63559b35735e78d7e6bcf8
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98784353"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Service Fabric 中的 Reliable Collection 对象序列化
@@ -24,15 +24,15 @@ Reliable Collections 从可靠状态管理器获取与给定类型对应的串�
 内置串行化程序更高效，因为它们知道其类型无法更改，且它们无需包含类型名称等有关类型的信息。
 
 可靠状态管理器拥有针对以下类型的内置串行化程序： 
-- Guid
+- GUID
 - bool
 - 字节
 - sbyte
 - byte[]
 - char
-- 字符串
+- string
 - Decimal
-- double
+- Double
 - FLOAT
 - int
 - uint

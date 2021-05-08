@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 门户中查找用户活动报告 |Microsoft Docs
+title: 在 Azure 门户中查找用户活动报告 | Microsoft Docs
 description: 了解在 Azure 门户中何处查找 Azure Active Directory 用户活动报告。
 services: active-directory
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 42afa073da9197c12e4cbd316d311a7699d9a95f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96013015"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>在 Azure 门户中查找活动报告
@@ -48,7 +48,7 @@ ms.locfileid: "96013015"
 
 ### <a name="filtering-on-audit-logs"></a>根据审核日志进行筛选
 
-您可以使用审核报告中的高级筛选来访问特定类别的审核数据，方法是在 **类别** 筛选器中指定该类别。 例如，若要查看与用户相关的所有活动，请选择 " **UserManagement** " 类别。 
+可以通过在“类别”筛选器中指定类别，在审核报告中使用高级筛选来访问特定类别的审核数据。 例如，若要查看与用户相关的所有活动，请选择“UserManagement”类别。 
 
 类别包括：
 
@@ -69,7 +69,7 @@ ms.locfileid: "96013015"
 - RoleManagement
 - UserManagement
 
-你还可以使用 **服务** 下拉筛选器在特定服务上进行筛选。 例如，若要获取与自助服务密码管理相关的所有审核事件，请选择 " **自助服务密码管理** " 筛选器。
+还可以使用“服务”下拉筛选器按特定服务进行筛选。 例如，若要获取与自助服务密码管理相关的所有审核事件，请选择“自助服务密码管理”筛选器。
 
 服务包括：
 
@@ -99,22 +99,22 @@ ms.locfileid: "96013015"
 2. 从右上角选择你的目录，然后从左侧导航窗格中选择“Azure Active Directory”边栏选项卡。
 3. 从“Azure Active Directory”边栏选项卡的“活动”部分中选择“登录”。 
 
-    ![登录视图](./media/howto-find-activity-reports/483.png "登录视图")
+    ![“登录”视图](./media/howto-find-activity-reports/483.png "“登录”视图")
 
 
 ### <a name="filtering-on-application-name"></a>根据应用程序名称进行筛选
 
 可以使用登录报告查看有关应用程序使用情况的详细信息，可以根据用户名或应用程序名称进行筛选。
 
-!["筛选 Sign-In 事件" 页](./media/howto-find-activity-reports/07.png ""筛选 Sign-In 事件" 页")
+![“筛选登录事件”页](./media/howto-find-activity-reports/07.png "“筛选登录事件”页")
 
 ## <a name="security-reports"></a>安全报表
 
 ### <a name="anomalous-activity-reports"></a>异常活动报告
 
-异常活动报告提供 Azure AD 可以检测和报告的与安全相关的风险检测的相关信息。
+异常活动报告提供 Azure AD 可以检测和报告的与安全相关的风险检测的信息。
 
-下表列出了 Azure AD 异常活动安全报告和 Azure 门户中的相应风险检测类型。 有关详细信息，请参阅 [Azure Active Directory 风险检测](../identity-protection/overview-identity-protection.md)。  
+下表列出了 Azure 门户中“Azure AD 异常活动”安全报告和相应的风险检测类型。 有关详细信息，请参阅 [Azure Active Directory 风险检测](../identity-protection/overview-identity-protection.md)。  
 
 
 | Azure AD 异常活动报告 |  标识保护风险检测类型|
@@ -126,7 +126,7 @@ ms.locfileid: "96013015"
 | 从具有可疑活动的 IP 地址登录 | 从具有可疑活动的 IP 地址登录 |
 | - | 从不熟悉的位置登录 |
 
-以下 Azure AD 异常活动安全报告未作为 Azure 门户中的风险检测包括：
+以下 Azure AD 异常活动安全报告未作为风险检测包含在 Azure 门户中：
 
 * 多次失败后登录
 * 从多个地理区域登录
@@ -134,7 +134,7 @@ ms.locfileid: "96013015"
 
 ### <a name="detected-risk-detections"></a>检测到的风险检测
 
-可以在 [Azure 门户](https://portal.azure.com)中的 " **Azure Active Directory** " 边栏选项卡上的 "**安全**" 部分中访问有关检测到的风险检测的报告。 在以下报表中跟踪检测到的风险检测：   
+在 [Azure 门户](https://portal.azure.com)中，可以在“Azure Active Directory”边栏选项卡的“安全性”部分访问有关检测到的风险检测的报告。 可以在以下报告中跟踪检测到的风险检测：   
 
 - [有风险的用户](../identity-protection/overview-identity-protection.md)
 - [有风险的登录](../identity-protection/overview-identity-protection.md)
@@ -149,11 +149,11 @@ ms.locfileid: "96013015"
 
 我下载了活动日志（审核日志或登录日志），但发现所选时间范围内的记录不全。 为什么？ 
 
- ![屏幕截图在活动报表中显示 "下载" 按钮。](./media/troubleshoot-missing-data-download/01.png)
+ ![屏幕截图显示了活动报告中的“下载”按钮。](./media/troubleshoot-missing-data-download/01.png)
  
 #### <a name="cause"></a>原因
 
-下载 Azure 门户中的活动日志时，会将扩展限制为250000个记录，并按最新的顺序进行排序。 
+在 Azure 门户中下载活动日志时，我们将规模限制为 250000 条记录，最新的记录排在最前面。 
 
 #### <a name="resolution"></a>解决方法
 
@@ -165,7 +165,7 @@ ms.locfileid: "96013015"
 
 我在 Azure 门户中执行了一些操作，本应在`Activity logs > Audit Logs`边栏选项卡中看到这些操作的审核日志，但却找不到。
 
- ![屏幕截图显示活动报告。](./media/troubleshoot-missing-audit-data/01.png)
+ ![屏幕截图显示了活动报告。](./media/troubleshoot-missing-audit-data/01.png)
  
 #### <a name="cause"></a>原因
 
@@ -186,7 +186,7 @@ ms.locfileid: "96013015"
 
 我最近登录了 Azure 门户，本应在`Activity logs > Sign-ins`边栏选项卡中看到这些操作的登录日志，但却找不到。
 
- ![屏幕截图显示 Azure Active Directory 的登录。](./media/troubleshoot-missing-audit-data/02.png)
+ ![屏幕截图显示了 Azure Active Directory 的登录。](./media/troubleshoot-missing-audit-data/02.png)
  
 #### <a name="cause"></a>原因
 

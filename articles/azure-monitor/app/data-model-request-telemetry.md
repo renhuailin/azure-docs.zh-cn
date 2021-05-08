@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 7a352f4ce3528d395599a91b53031c74b0873152
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87320555"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>请求遥测：Application Insights 数据模型
@@ -21,7 +21,7 @@ ms.locfileid: "87320555"
 
 请求的名称表示用于处理该请求的代码路径。 较小的基数值对请求分组更有利。 对于 HTTP 请求，该名称表示 HTTP 方法和 URL 路径模板，例如，不带实际 `id` 值的 `GET /values/{id}`。
 
-在字母大小写方面，Application Insights Web SDK 会“按原样”发送请求名称。 UI 上的分组区分大小写，因此 `GET /Home/Index` 被视为不同于 `GET /home/INDEX`，即使两者通常生成相同的控制器和操作执行。 原因在于，URL 往往[区分大小写](https://www.w3.org/TR/WD-html40-970708/htmlweb.html)。 可能想要确定所有 `404` 是否发生在以大写形式键入的 URL 上。 可在该[博客文章](https://apmtips.com/posts/2015-02-23-request-name-and-url/)中详细了解 ASP.NET Web SDK 如何处理请求名称集合。
+在字母大小写方面，Application Insights Web SDK 会“按原样”发送请求名称。 UI 上的分组区分大小写，因此 `GET /Home/Index` 被视为不同于 `GET /home/INDEX`，即使两者通常生成相同的控制器和操作执行。 原因在于，URL 往往[区分大小写](https://www.w3.org/TR/WD-html40-970708/htmlweb.html)。 可能想要确定所有 `404` 是否发生在以大写形式键入的 URL 上。 可在该[博客文章](https://apmtips.com/posts/2015-02-23-request-name-and-url/)中详细了解 ASP.Net Web SDK 如何处理请求名称集合。
 
 最大长度：1024 个字符
 
@@ -43,7 +43,7 @@ ms.locfileid: "87320555"
 
 最大长度：1024 个字符
 
-## <a name="duration"></a>Duration
+## <a name="duration"></a>持续时间
 
 请求持续时间，格式为：`DD.HH:MM:SS.MMMMMM`。 必须是正数且小于 `1000` 天。 此字段是必填的，因为请求遥测表示具有开始和结束时间的操作。
 
@@ -53,9 +53,9 @@ ms.locfileid: "87320555"
 
 最大长度：1024 个字符
 
-## <a name="success"></a>Success
+## <a name="success"></a>成功
 
-指示调用成功还是失败。 此字段是必填的。 如果未显式设置为 `false` - 将请求视为成功。 如果操作被异常中断或者返回错误结果代码，请将此值设置为 `false`。
+指示调用成功还是失败。 此字段为必需字段。 如果未显式设置为 `false` - 将请求视为成功。 如果操作被异常中断或者返回错误结果代码，请将此值设置为 `false`。
 
 对于 Web 应用程序，如果响应代码小于 `400` 或等于 `401`，Application Insights 会将请求定义为成功。 但是，在某些情况下，此默认映射与应用程序的语义不匹配。 响应代码 `404` 可能指示“无记录”，这可能是常规流的一部分。 它也可能指示链接断开。 对于断开的链接，甚至可以实现更高级的逻辑。 仅当通过分析 URL 引用站点确定这些断开的链接位于同一站点时，才可以将这些链接标记为失败。 或者，在从公司的移动应用程序访问这些链接时，可将其标记为失败。 同样，在从不支持重定向的客户端访问这些链接时，`301` 和 `302` 将指示失败。
 

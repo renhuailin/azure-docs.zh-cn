@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alzam
 ms.openlocfilehash: 0983139d1c9af235eba4c9f99da7bc9dea3f231b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101726608"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>为 VPN 网关配置数据包捕获
@@ -322,7 +322,7 @@ VPN 网关数据包捕获可在网关上运行，也可在特定的连接上运�
 
 可以在 Azure 门户中设置数据包捕获。
 
-:::image type="content" source="./media/packet-capture/portal.jpg" alt-text="门户中的数据包捕获的屏幕截图。" lightbox="./media/packet-capture/portal.jpg":::
+:::image type="content" source="./media/packet-capture/portal.jpg" alt-text="门户中的数据包捕获屏幕截图。" lightbox="./media/packet-capture/portal.jpg":::
 
 ## <a name="packet-capture---powershell"></a>数据包捕获 - PowerShell
 

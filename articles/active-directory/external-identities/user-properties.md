@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 02/12/2021
+ms.date: 03/18/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e9189b6608b74be6a72dbdfe66276c5050f042f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 08ed02c65db201e18ce710633b421edb5ecb2db0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365457"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104655693"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B 协作用户的属性
 
@@ -28,13 +28,13 @@ ms.locfileid: "100365457"
 - 状态 1：驻留在 Azure AD 的外部实例中，代表邀请方组织中的来宾用户。 在这种情况下，B2B 用户需使用属于受邀方租户的 Azure AD 帐户进行登录。 如果合作伙伴组织不使用 Azure AD，仍会在 Azure AD 中创建来宾用户。 相应要求是，他们兑换自己的邀请，并由 Azure AD 验证其电子邮件地址。 此安排也称为实时 (JIT) 租户或“促销型”租户。
 
    > [!IMPORTANT]
-   > **从2021年10月开始**，Microsoft 将不再支持通过创建非托管 Azure AD 帐户和用于 B2B 协作方案的租户来兑换邀请。 在准备期间，我们鼓励客户选择参与[电子邮件一次性密码身份验证](one-time-passcode.md)。 我们欢迎你提供有关此公共预览版功能的反馈，并且很乐意创建更多的协作方式。
+   > 从 2021 年 10 月起，Microsoft 将不再支持兑换通过创建用于 B2B 协作方案的非托管 Azure AD 帐户和租户进行的邀请。 在准备期间，我们鼓励客户选择参与[电子邮件一次性密码身份验证](one-time-passcode.md)。 我们欢迎你提供有关此公共预览版功能的反馈，并且很乐意创建更多的协作方式。
 
-- 状态2：驻留在 Microsoft 或其他帐户中，并表示为主机组织中的来宾用户。 这种情况下，来宾用户使用 Microsoft 帐户或社交帐户（google.com 或类似账户）登录。 产品兑换期间，在邀请方组织目录中将受邀用户标识创建为 Microsoft 帐户。
+- 状态 2：驻留在 Microsoft 或其他帐户中，代表宿主组织中的来宾用户。 这种情况下，来宾用户使用 Microsoft 帐户或社交帐户（google.com 或类似账户）登录。 产品兑换期间，在邀请方组织目录中将受邀用户标识创建为 Microsoft 帐户。
 
 - 状态 3：驻留在组织的本地 Active Directory 中，并且与宿主组织的 Azure AD 同步。 可以使用 Azure AD Connect 将合作伙伴帐户作为 Azure AD B2B 用户（即 UserType = Guest 的用户）同步到云。 请参阅[向本地托管的合作伙伴帐户授予对云资源的访问权限](hybrid-on-premises-to-cloud.md)。
 
-- 状态4：托管在主机组织的 Azure AD 中，其中 UserType = Guest，主机组织管理的凭据。
+- 状态 4：使用 UserType = Guest 和宿主组织管理的凭据驻留在宿主组织的 Azure AD 中。
 
   ![描述四个用户状态的关系图](media/user-properties/redemption-diagram.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "100365457"
 ![屏幕截图，显示用户设置中的“外部用户”选项](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>能否在 Exchange 全局地址列表中显示来宾用户？
-是的。 默认情况下，来宾对象在组织的全局地址列表中不可见，但可使用 Azure Active Directory PowerShell 使其可见。 有关详细信息，请参阅 [在 Microsoft 365 组中管理来宾访问权限](/office365/admin/create-groups/manage-guest-access-in-groups)中的 **能否在全局地址列表中显示来宾对象？** 。
+是的。 默认情况下，来宾对象在组织的全局地址列表中不可见，但可使用 Azure Active Directory PowerShell 使其可见。 有关详细信息，请参阅 [Microsoft 365 每组来宾访问文章](/microsoft-365/solutions/per-group-guest-access)中的“将来宾添加到全局地址列表”。
 
 ## <a name="can-i-update-a-guest-users-email-address"></a>是否可以更新来宾用户的电子邮件地址？
 

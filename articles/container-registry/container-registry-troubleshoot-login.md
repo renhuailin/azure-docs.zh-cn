@@ -4,10 +4,10 @@ description: 登录到 Azure 容器注册表时的常见问题的症状、原因
 ms.topic: article
 ms.date: 08/11/2020
 ms.openlocfilehash: 5deb1717cf3886d8ea9c021d92afa358946b16dc
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99052072"
 ---
 # <a name="troubleshoot-registry-login"></a>注册表登录故障排除
@@ -40,7 +40,7 @@ ms.locfileid: "99052072"
 
 参阅[检查 Azure 容器注册表的运行状况](container-registry-check-health.md)以查看命令示例。 如果报告了错误，请查看[错误参考](container-registry-health-error-reference.md)和以下部分，以了解建议的解决方案。
 
-如果使用注册表同时 Azure Kubernetes 服务时遇到问题，请运行 [az aks check-acr](/cli/azure/aks#az_aks_check_acr) 命令，以验证是否可以从 aks 群集访问注册表。
+如果在将注册表与 Azure Kubernetes 服务配合使用时遇到问题，请运行 [az aks check-acr](/cli/azure/aks#az_aks_check_acr) 命令，以验证是否可以从 AKS 群集访问该注册表。
 
 > [!NOTE]
 > 如果存在阻止访问注册表的防火墙或网络配置，也会发生某些身份验证或授权错误。 请参阅[排查与注册表相关的网络问题](container-registry-troubleshoot-access.md)。
@@ -58,7 +58,7 @@ ms.locfileid: "99052072"
 
 ### <a name="specify-correct-registry-name"></a>指定正确的注册表名称
 
-使用时 `docker login` ，请提供注册表的完整登录服务器名称，例如 *myregistry.azurecr.io*。 请确保只使用小写字母。 示例：
+使用 `docker login` 时，请提供注册表的完整登录服务器名称，如 myregistry.azurecr.cn。 请确保只使用小写字母。 示例：
 
 ```console
 docker login myregistry.azurecr.io

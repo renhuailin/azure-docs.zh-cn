@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Cosmos DB API for MongoDB 中使用多文档事务
-description: 了解如何创建一个示例 Mongo shell 应用，该应用可在 Azure Cosmos DB API for MongoDB 4.0 中对固定集合执行多文档事务（“全有或全无”语义）。
+title: 在用于 MongoDB 的 Azure Cosmos DB API 中使用多文档事务
+description: 了解如何创建 Mongo shell 应用示例，以在用于 MongoDB 4.0 的 Azure Cosmos DB API 中对固定集合执行多文档事务（全语义或无语义）。
 author: gahl-levy
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -8,37 +8,37 @@ ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: gahllevy
 ms.openlocfilehash: f319db76c8aee5a2a35ff8ca9670c42089350ede
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101692464"
 ---
-# <a name="use-multi-document-transactions-in-azure-cosmos-db-api-for-mongodb"></a>在 Azure Cosmos DB API for MongoDB 中使用多文档事务
+# <a name="use-multi-document-transactions-in-azure-cosmos-db-api-for-mongodb"></a>在用于 MongoDB 的 Azure Cosmos DB API 中使用多文档事务
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
-在本文中，你将创建一个 Mongo shell 应用，该应用在 Azure Cosmos DB API for MongoDB 服务器版本 4.0 中对固定集合执行多文档事务。
+在本文中，你将创建 Mongo shell 应用，其可在用于服务器版本 4.0 的 MongoDB 的 Azure Cosmos DB API 中对固定集合执行多文档事务。
 
 ## <a name="what-are-multi-document-transactions"></a>什么是多文档事务？
 
-在 Azure Cosmos DB API for MongoDB 中，对单个文档的操作为原子性质。 多文档事务使应用程序可以在多个文档中执行原子操作。 它为操作提供“全有或全无”语义。 提交时，事务内部所做的更改将持久保存，如果事务失败，则会放弃事务中的所有更改。
+在用于 MongoDB 的 Azure Cosmos DB API 中，对单个文档执行的操作是原子操作。 多文档事务使应用程序可以跨多个文档执行原子操作。 它为操作提供“全或无”语义。 提交时，会保留事务内所做的更改，如果事务失败，则会放弃事务中的所有更改。
 
 多文档事务遵循 ACID 语义：
 
-* 原子性：所有操作都视为一个操作
+* 原子性：将所有操作视为一个操作
 * 一致性：提交的数据有效
 * 隔离：与其他操作隔离
-* 持久性：指示客户端保存事务数据时，将持久化数据
+* 持续性：客户端按指示保留事务数据
 
 ## <a name="requirements"></a>要求
 
-API 版本 4.0 中的未分片集合支持多文档事务。 4\.0 中的集合或分片集合不支持多文档事务。 事务超时固定为 5 秒。
+版本 4.0 的 API 中的未分片集合支持多文档事务。 版本 4.0 中的跨集合或分片集合不支持多文档事务。 事务超时固定为 5 秒。
 
-支持线路协议版本 4.0 或更高版本的所有驱动程序都将支持 Azure Cosmos DB API for MongoDB 多文档事务。
+支持线路协议版本 4.0 或更高版本的所有驱动程序都将支持用于 MongoDB 的 Azure Cosmos DB API 的多文档事务。
 
 ## <a name="run-multi-document-transactions-in-mongodb-shell"></a>在 MongoDB shell 中运行多文档事务
 > [!Note]
-> 此示例不适用于在 MongoDB Compass 中嵌入的 MongoSH beta (shell)。
+> 此示例不适用于 MongoDB 指南针中嵌入的 MongoSH beta (shell)。
 
 1. 打开命令提示符，转到安装了 Mongo shell 版本 4.0 和更高版本的目录：
 
@@ -71,7 +71,7 @@ API 版本 4.0 中的未分片集合支持多文档事务。 4\.0 中的集合�
 
     ```
 
-3. 运行以下命令来执行对文档事务。 可以在 Azure 门户中找到主机、端口、用户和密钥。
+3. 运行以下命令来执行多文档事务。 可以在 Azure 门户中找到主机、端口、用户和密钥。
 
    ```powershell
    mongo "<HOST>:<PORT>" -u "<USER>" -p "KEY" --ssl connect_friends.js
@@ -79,4 +79,4 @@ API 版本 4.0 中的未分片集合支持多文档事务。 4\.0 中的集合�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 [Azure Cosmos DB API for MongoDB 4.0](mongodb-feature-support-40.md) 中的新增功能
+探索[用于 MongoDB 4.0 的 Azure Cosmos DB API](mongodb-feature-support-40.md) 中的新增功能

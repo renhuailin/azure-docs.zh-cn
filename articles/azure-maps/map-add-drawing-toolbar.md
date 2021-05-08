@@ -1,6 +1,6 @@
 ---
-title: 将绘图工具工具栏添加到地图 |Microsoft Azure 映射
-description: 如何使用 Azure Maps Web SDK 将绘图工具栏添加到地图
+title: 在地图中添加绘图工具的工具栏 | Microsoft Azure Maps
+description: 如何使用 Azure Maps Web SDK 在地图中添加绘图工具栏
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/04/2019
@@ -10,19 +10,19 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: b00628ec5a9f41b027bf90b93421f3aa1404e97a
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92896389"
 ---
-# <a name="add-a-drawing-tools-toolbar-to-a-map"></a>将绘图工具工具栏添加到地图
+# <a name="add-a-drawing-tools-toolbar-to-a-map"></a>在地图中添加绘图工具的工具栏
 
-本文介绍如何使用 "绘图工具" 模块，并在地图上显示 "绘图" 工具栏。 [DrawingToolbar](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)控件将绘图工具栏添加到地图上。 您将了解如何创建仅包含一个和所有绘图工具的地图，以及如何在绘图管理器中自定义绘图形状的呈现。
+本文介绍如何使用“绘图工具”模块，并在地图上显示绘图工具栏。 [绘图工具栏](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)控件将绘图工具栏添加到地图上。 你将了解如何只用一种和所有的绘图工具来创建地图，以及如何在绘图管理器中定制绘图形状的渲染。
 
 ## <a name="add-drawing-toolbar"></a>添加绘图工具栏
 
-下面的代码创建一个绘图管理器实例，并在地图上显示该工具栏。
+下面的代码将创建一个绘图管理器实例，并在地图上显示该工具栏。
 
 ```javascript
 //Create an instance of the drawing manager and display the drawing toolbar.
@@ -39,13 +39,13 @@ drawingManager = new atlas.drawing.DrawingManager(map, {
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="添加绘图工具栏" src="//codepen.io/azuremaps/embed/ZEzLeRg/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 "<a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>添加绘图" 工具栏</a>Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) <a href='https://codepen.io'>CodePen</a>。
+请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>添加绘图工具栏</a>。
 </iframe>
 
 
 ## <a name="limit-displayed-toolbar-options"></a>限制显示的工具栏选项
 
-下面的代码创建一个绘图管理器实例，并在地图上只显示一个多边形绘图工具。 
+下面的代码将创建一个绘图管理器实例，并在地图上只显示一个多边形绘图工具的工具栏。 
 
 ```javascript
 //Create an instance of the drawing manager and display the drawing toolbar with polygon drawing tool.
@@ -63,15 +63,15 @@ drawingManager = new atlas.drawing.DrawingManager(map, {
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="添加多边形绘图工具" src="//codepen.io/azuremaps/embed/OJLWWMy/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
-请参阅在 CodePen 上 Azure Maps () 中<a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>添加多边形绘图工具</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>添加多边形绘图工具</a>。
 </iframe>
 
 
-## <a name="change-drawing-rendering-style"></a>更改绘制呈现样式
+## <a name="change-drawing-rendering-style"></a>更改绘图渲染样式
 
-通过使用 `drawingManager.getLayers()` 函数，然后设置各个层上的选项，可以自定义绘制的形状的样式，方法是检索绘图管理器的基础层。 编辑形状时，针对坐标显示的拖动控点为 HTML 标记。 可以通过将 HTML 标记选项传递给 `dragHandleStyle` 绘图管理器的和选项自定义拖动句柄的样式 `secondaryDragHandleStyle` 。  
+通过使用 `drawingManager.getLayers()` 函数检索绘图管理器的基础图层，然后在各个图层上设置选项，可以自定义绘制的形状样式。 编辑形状时，针对坐标显示的拖动手柄为 HTML 标记。 可以通过将 HTML 标记选项传递给绘图管理器的 `dragHandleStyle` 和 `secondaryDragHandleStyle` 选项来自定义拖动手柄的样式。  
 
-下面的代码从绘图管理器中获取呈现层，并修改它们的选项以更改绘图的呈现样式。 在这种情况下，将用蓝色标记图标呈现点。 线条将为红色，四像素宽。 多边形将具有绿色填充颜色和橙色轮廓。 然后将拖动句柄的样式更改为方形图标。 
+下面的代码从绘图管理器中获取渲染层，并修改它们的选项以更改绘图的渲染样式。 在这种情况下，将用蓝色标记图标渲染点。 线条将为红色，四像素宽。 多边形将具有绿色填充色和橙色勾边。 然后将拖动手柄的样式更改为方形图标。 
 
 ```javascript
 //Get rendering layers of drawing manager.
@@ -122,8 +122,8 @@ drawingManager.setOptions({
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="更改绘制呈现样式" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 () ，查看笔<a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>更改绘制呈现 Azure Maps 样式</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>。
+<iframe height="500" style="width: 100%;" scrolling="no" title="更改绘图渲染样式" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
+请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>Change drawing rendering style</a>。
 </iframe>
 
 

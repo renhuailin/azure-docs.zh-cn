@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
 ms.openlocfilehash: 8f193cface177e6be6343f28ef4dc27c2d6c6a7b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102030896"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics 数据安全
@@ -27,10 +27,10 @@ Log Analytics 服务使用以下方法安全地管理你基于云的数据：
 * 安全标准认证
 
 还可以使用 Azure Monitor 和 Log Analytics 中内置的附加安全功能。 这些功能需要更多的管理员管理工作。 
-* 客户管理的 (安全) 密钥
+* 客户管理的（安全）密钥
 * Azure 专用存储
 * 专用链接网络 
-* Azure 密码箱设置的 azure 支持访问限制
+* Azure 密码箱设置的 Azure 支持访问限制
 
 如有任何有关以下任何信息（包括 [Azure 支持选项](https://azure.microsoft.com/support/options/)的安全政策）的疑问、建议或问题，请与我们联系。
 
@@ -166,14 +166,14 @@ Azure Log Analytics 满足以下要求：
 
 Windows 或管理服务器代理缓存的数据受操作系统的凭据存储的保护。 如果服务在两小时后无法处理数据，代理会将该数据加入队列。 如果队列已满，代理会开始丢弃数据类型，从性能数据开始。 代理队列限制是一个注册表项，因此必要时可以对它进行修改。 向服务发送（绕过 Operations Manager 管理组数据库）已收集的数据时会先对数据进行压缩，因此不会向数据库添加任何负载。 已收集的数据完成发送后，会从缓存中删除它。
 
-如上所述，管理服务器或直接连接的代理中的数据通过 TLS 发送到 Microsoft Azure 数据中心。 可以选择使用 ExpressRoute 为数据提供额外的安全性。 借助 ExpressRoute，可以从网络服务提供商提供的现有 WAN 网络（例如多协议标签交换 (MPLS) VPN）直接连接到 Azure。 有关详细信息，请参阅 [ExpressRoute](https://azure.microsoft.com/services/expressroute/)。
+如上所述，来自管理服务器或直连代理的数据通过 TLS 发送到 Microsoft Azure 数据中心。 可以选择使用 ExpressRoute 为数据提供额外的安全性。 借助 ExpressRoute，可以从网络服务提供商提供的现有 WAN 网络（例如多协议标签交换 (MPLS) VPN）直接连接到 Azure。 有关详细信息，请参阅 [ExpressRoute](https://azure.microsoft.com/services/expressroute/)。
 
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3.Log Analytics 服务接收并处理数据
 Log Analytics 服务通过使用 Azure 身份验证对证书和数据完整性进行验证，来确保传入数据来自受信任的源。 然后，将未处理的原始数据存储在区域中的 Azure 事件中心，并最终存储静态数据。 存储的数据类型取决于导入的并用于收集数据的解决方案的类型。 然后，Log Analytics 服务处理原始数据并将其引入数据库。
 
 存储在数据库中的已收集数据的保留期取决于所选的定价计划。 对于“免费”层，收集的数据可以使用 7 天。 对于 *付费* 层，收集的数据默认情况下可以使用 31 天，但可以延长到 730 天。 数据在 Azure 存储中采用静态加密存储，以确保数据机密性，并且数据通过本地冗余存储 (LRS) 在本地区域内进行复制。 过去两周的数据也存储在基于 SSD 的缓存中，此缓存未加密。
 
-数据库存储中的数据在引入后将无法更改，但可以通过 [*清除* API 路径](personal-data-mgmt.md#delete)删除。 尽管不能更改数据，但某些证书要求数据是不可变的，并且不能在存储中更改或删除。 可以通过将 [数据导出](logs-data-export.md) 到配置为 [不可变存储](../../storage/blobs/storage-blob-immutability-policies-manage.md)的存储帐户来实现数据永久性。
+数据库存储中的数据在引入后将无法更改，但可以通过[“清除”API 路径](personal-data-mgmt.md#delete)将其删除。 尽管该数据无法更改，但某些认证要求数据保持不可变且不能在存储中更改或删除。 可以通过使用[数据导出](logs-data-export.md)将数据导出到配置为[不可变存储](../../storage/blobs/storage-blob-immutability-policies-manage.md)的存储帐户来实现数据不可变性。
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4.使用 Log Analytics 访问数据
 若要访问 Log Analytics 工作区，请使用组织帐户或先前设置的 Microsoft 帐户登录到 Azure 门户。 门户与 Log Analytics 服务之间的所有流量通过安全 HTTPS 通道发送。 使用门户时，会在用户客户端（Web 浏览器）上生成会话 ID，会将数据存储在本地缓存中，直到该会话终止。 终止后，会删除该缓存。 不会自动删除不包含个人身份信息的客户端 Cookie。 会话 Cookie 标记为 HTTPOnly，并且受到保护。 在预先确定的空闲期过后，会终止 Azure 门户会话。
@@ -182,9 +182,9 @@ Log Analytics 服务通过使用 Azure 身份验证对证书和数据完整性�
 ## <a name="additional-security-features"></a>附加安全功能
 可以使用这些附加安全功能来进一步保护 Azure Monitor/Log Analytics 环境。 这些功能需要更多的管理员管理工作。 
 - [客户管理的（安全）密钥](../logs/customer-managed-keys.md) - 可以使用客户管理的密钥来加密发送到 Log Analytics 工作区的数据。 它需要使用 Azure Key Vault。 
-- [专用/客户管理的存储](./private-storage.md) -管理个人加密的存储帐户，并告诉 Log Analytics 使用它来存储监视数据 
-- [专用链接网络](./private-link-security.md) -Azure 专用链接允许你安全地将 azure PaaS 服务链接 (包括使用专用终结点 Azure Monitor) 到你的虚拟网络。 
-- [Azure 客户密码箱](../../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-preview) -用于 Microsoft Azure 的客户密码箱提供了一个界面，供客户查看和批准或拒绝客户数据访问请求。 当 Microsoft 工程师需要在支持请求期间访问客户数据时，可以使用此功能。
+- [专用/客户管理的存储](./private-storage.md) - 管理个人加密存储帐户，并指示 Log Analytics 使用它来存储监视数据 
+- [专用链接网络](./private-link-security.md) - 通过 Azure 专用链接，可使用专用终结点将 Azure PaaS 服务（包括 Azure Monitor）安全地链接到你的虚拟网络。 
+- [Azure 客户密码箱](../../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-preview) - Microsoft Azure 客户密码箱提供了一个界面，供客户查看和批准/拒绝客户数据访问请求。 当 Microsoft 工程师需要在支持请求期间访问客户数据时，可以使用此功能。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -4,12 +4,12 @@ description: 了解如何在 Azure Functions 的 Durable Functions 扩展中处�
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: a7625a6fcd1000595c2c582935c839ba6d26b20d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c08306edcea02a9207ab5a15eb62b7fffc2ecb44
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728481"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "99576323"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>在 Durable Functions 中处理外部事件 (Azure Functions)
 
@@ -20,7 +20,7 @@ ms.locfileid: "105728481"
 
 ## <a name="wait-for-events"></a>等待事件
 
-借助[业务流程触发器绑定](durable-functions-bindings.md#orchestration-trigger)的 [WaitForExternalEvent](/dotnet/api/microsoft.azure.webjobs.durableorchestrationcontextbase.waitforexternalevent?view=azure-dotnet-legacy&preserve-view=true) (.NET)、`waitForExternalEvent` (JavaScript) 和 `wait_for_external_event` (Python) 方法，业务流程协调程序函数可异步等待和侦听外部事件。 侦听业务流程协调程序函数声明了事件的“名称”和它期望收到的“数据形态”。  
+借助[业务流程触发器绑定](durable-functions-bindings.md#orchestration-trigger)的 [WaitForExternalEvent](/dotnet/api/microsoft.azure.webjobs.durableorchestrationcontextbase.waitforexternalevent?view=azure-dotnet-legacy) (.NET)、`waitForExternalEvent` (JavaScript) 和 `wait_for_external_event` (Python) 方法，业务流程协调程序函数可异步等待和侦听外部事件。 侦听业务流程协调程序函数声明了事件的“名称”和它期望收到的“数据形态”。  
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -230,7 +230,7 @@ main = df.Orchestrator.create(orchestrator_function)
 
 ## <a name="send-events"></a>发送事件
 
-可以使用 [RaiseEventAsync](/dotnet/api/microsoft.azure.webjobs.durableorchestrationclientbase.raiseeventasync?view=azure-dotnet-legacy&preserve-view=true) (.NET) 或 `raiseEventAsync` (JavaScript) 方法将外部事件发送到业务流程。 这些方法由[业务流程客户端](durable-functions-bindings.md#orchestration-client)绑定公开。 还可以使用内置[引发事件 HTTP API](durable-functions-http-api.md#raise-event) 将外部事件发送到业务流程。
+可以使用 [RaiseEventAsync](/dotnet/api/microsoft.azure.webjobs.durableorchestrationclientbase.raiseeventasync?view=azure-dotnet-legacy) (.NET) 或 `raiseEventAsync` (JavaScript) 方法将外部事件发送到业务流程。 这些方法由[业务流程客户端](durable-functions-bindings.md#orchestration-client)绑定公开。 还可以使用内置[引发事件 HTTP API](durable-functions-http-api.md#raise-event) 将外部事件发送到业务流程。
 
 引发的事件包括实例 ID、eventName 和 eventData 等参数。 业务流程协调程序函数使用 `WaitForExternalEvent` (.NET) 或 `waitForExternalEvent` (JavaScript) API 处理这些事件。 在发送端和接收端，eventName 必须匹配才能处理事件。 事件数据还必须是 JSON 可序列化的。
 

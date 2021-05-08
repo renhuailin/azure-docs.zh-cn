@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: b16a2d9f779232e59eb883f6a254be22990f5c78
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: faaed05a52708ed1c2563e6476a1e86faa02dcf7
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107520014"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107946730"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Azure 上的 SAP BusinessObjects BI 平台部署指南
 
-本文介绍在适用于 Linux 的 Azure 上部署 SAP BOBI 平台的策略。 在此示例中，配置了两个以高级 SSD 托管磁盘作为安装目录的虚拟机。 Azure Database for MySQL 用于 CMS 数据库，文件存储库服务器的 Azure NetApp 文件在两个服务器之间共享。 默认 Tomcat Java Web 应用和 BI 平台应用程序一起安装在这两个虚拟机上。 为了对用户请求进行负载均衡，使用应用程序网关，该网关具有本机 TLS/SSL 卸载功能。
+本文将介绍在 Azure 上部署适用于 Linux 的 SAP BusinessObjects BI 平台的策略。 在此示例中，配置了两个以高级 SSD 托管磁盘作为安装目录的虚拟机。 Azure Database for MySQL 用于 CMS 数据库，文件存储库服务器的 Azure NetApp 文件在两个服务器之间共享。 默认 Tomcat Java Web 应用和 BI 平台应用程序一起安装在这两个虚拟机上。 为了对用户请求进行负载均衡，使用应用程序网关，该网关具有本机 TLS/SSL 卸载功能。
 
 这种体系结构适用于小型部署或非生产环境。 对于生产或大规模部署，可以为 Web 应用提供单独的主机，还可以有多个 BOBI 应用程序主机，使服务器能够处理更多信息。
 
@@ -288,17 +288,33 @@ Azure NetApp 文件在多个 [Azure 区域](https://azure.microsoft.com/global-i
 
 6. 默认情况下，Azure Database for MySQL 的备份是本地冗余的，因此，如果要在异地冗余存储中备份服务器，请从“备份冗余选项”中选择“异地冗余”。 
 
-> [!NOTE]
-> 不支持在创建服务器后更改[备份冗余选项](../../../mysql/concepts-backup.md#backup-redundancy-options)。
+>[!Important]
+>不支持在创建服务器后更改[备份冗余选项](../../../mysql/concepts-backup.md#backup-redundancy-options)。
 
-### <a name="configure-connection-security"></a>配置连接安全性
+>[!Note]
+>专用链接功能仅适用于“常规用途”或“内存优化”定价层中的 Azure Database for MySQL 服务器。 请确保数据库服务器位于其中一个定价层中。
 
-默认情况下，创建的服务器使用防火墙进行保护，无法公开访问。 若要提供对 SAP BI 平台应用程序服务器运行云的虚拟网络的访问权限，请遵循以下步骤：  
+### <a name="configure-private-link"></a>配置专用链接
 
-1. 转到 Azure 门户中的服务器资源，然后从左侧菜单中为服务器资源选择“连接安全性”。
-2. 对于“允许访问 Azure 服务”，选择“是”。 
-3. 在 VNET 规则下，选择“添加现有虚拟网络”。 选择 SAP BI 平台应用程序服务器的虚拟网络和子网。 此外，还需要提供对跳转框或其他服务器的访问权限，通过这些服务器可将 [MySQL 工作台](../../../mysql/connect-workbench.md) 连接到 Azure Database for MySQL。 将使用 MySQL Workbench 创建 CMS 和审核数据库
-4. 添加虚拟网络后，选择“保存”。
+在本节中，你将创建一个专用链接，该链接允许 SAP BOBI 虚拟机通过专用终结点连接到 Azure Database for MySQL 服务。 Azure 专用链接可将 Azure 服务引入到你的专用虚拟网络 (VNet) 中。
+
+1. 选择上一节中创建的 Azure Database for MySQL。
+2. 导航到“安全” > “专用终结点连接”。
+3. 在“专用终结点连接”部分，选择“专用终结点”。
+4. 选择“订阅”、“资源组”和“位置”  。
+5. 输入专用终结点的“名称”。
+6. 在“资源”部分中，执行以下选择：
+   - 资源类型 - Microsoft.DBforMySQL/服务器
+   - 资源 - 上一节中创建的 MySQL 数据库
+   - 目标子资源 - mysqlServer。
+7. 在“网络”部分中，选择将部署 SAP BusinessObjects BI 应用程序的“虚拟网络”和“子网”。
+   >[!NOTE]
+   >如果已为子网启用网络安全组 (NSG)，则系统将只对该子网上的专用终结点禁用 NSG。 子网中的其他资源仍将强制使用 NSG。
+8. 接受默认（是），以便与专用 DNS 区域集成。
+9.  从下拉列表中选择“专用 DNS 区域”。
+10. 选择“查看 + 创建”并创建专用终结点。
+
+有关详细信息，请参阅 [Azure Database for MySQL 的专用链接](../../../mysql/concepts-data-access-security-private-link.md)
 
 ### <a name="create-cms-and-audit-database"></a>创建 CMS 和审核数据库
 
@@ -317,7 +333,7 @@ Azure NetApp 文件在多个 [Azure 区域](https://azure.microsoft.com/global-i
    # auditbl1 is the database name of Audit database. You can provide the name you want for CMS database.
    CREATE SCHEMA `auditbl1` DEFAULT CHARACTER SET utf8;
    ```
-   
+
 4. 创建用于连接到架构的用户帐户
 
    ```sql
@@ -398,9 +414,9 @@ Azure NetApp 文件在多个 [Azure 区域](https://azure.microsoft.com/global-i
 
 **[A]** ：该步骤适用于所有主机。
 
-1. **[A]** 根据 LINUX 的风格 (SLES 或 RHEL)，需要设置内核参数并安装所需的库。 请参阅[适用于 Unix 的商业智能平台安装指南](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US)中的“系统要求”部分。
+1. **[A]** 根据 LINUX 的风格 (SLES 或 RHEL)，需要设置内核参数并安装所需的库。 请参阅[适用于 Unix 的商业智能平台安装指南](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3)中的“系统要求”部分。
 
-2. **[A]** 确保计算机上的时区设置正确。 请参阅安装指南中的[“其他 Unix 和 Linux 要求”部分](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US/46b143336e041014910aba7db0e91070.html)。
+2. **[A]** 确保计算机上的时区设置正确。 请参阅安装指南中的[“其他 Unix 和 Linux 要求”部分](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/46b143336e041014910aba7db0e91070.html)。
 
 3. **[A]**  创建软件的后台进程在其下运行的用户帐户 (bl1adm) 和组 (sapsys)。 使用此帐户执行安装并运行软件。 此帐户不需要 root 权限。
 
@@ -502,6 +518,24 @@ select version();
 
 ## <a name="post-installation"></a>安装后
 
+SAP BOBI 平台的多实例安装完成后，需要执行额外的后配置步骤来支持应用程序的高可用性。
+
+### <a name="configuring-cluster-name"></a>配置群集名称
+
+在 SAP BOBI 平台的多实例部署中，你想要在群集中同时运行多个 CMS 服务器。 一个群集由两个或更多 CMS 服务器组成，这些服务器在一个通用 CMS 系统数据库上协同工作。 如果在 CMS 上运行的某个节点出现故障，则另一个 CMS 上的节点将继续为 BI 平台请求提供服务。 默认情况下，在 SAP BOBI 平台中，群集名称反映的是你安装第一个 CMS 的主机名。
+
+若要在 Linux 上配置群集名称，请按照 [SAP 商业智能平台管理员指南](https://help.sap.com/viewer/2e167338c1b24da9b2a94e68efd79c42/4.3)中所述的说明进行操作。 配置群集名称后，请按照 SAP 说明 [1660440](https://launchpad.support.sap.com/#/notes/1660440) 在 CMC 或 BI 启动台登录页上设置默认的系统入口。
+
+### <a name="configure-input-and-output-filestore-location-to-azure-netapp-files"></a>将输入和输出文件存储位置配置到 Azure NetApp 文件
+
+文件存储是指实际的 SAP BusinessObjects 文件所在的磁盘目录。 SAP BOBI 平台的文件存储库服务器的默认位置位于本地安装目录中。 在多实例部署中，请务必在 Azure NetApp 文件等共享存储上设置文件存储，以便能够从所有存储层服务器实现访问。
+
+1. 如果未创建 NFS 卷，请按照上一节“预配 Azure NetApp 文件”中提供的说明在 Azure NetApp 文件中完成创建。
+
+2. 按照上一节“装载 Azure NetApp 文件卷”中的说明装载 NFS
+
+3. 遵循 SAP 说明 [2512660](https://launchpad.support.sap.com/#/notes/0002512660)，更改文件存储库（输入和输出）的路径。
+
 ### <a name="tomcat-clustering---session-replication"></a>Tomcat 群集 - 会话复制
 
 Tomcat 支持将两个或更多应用程序服务器组成群集，用于会话复制和故障转移。 SAP BOBI 平台会话将进行序列化，即使应用程序服务器发生故障，用户会话也可以无缝地故障转移到另一个 tomcat 实例。
@@ -514,31 +548,40 @@ Tomcat 支持将两个或更多应用程序服务器组成群集，用于会话�
 
 在 SAP BOBI 多实例部署中，Java Web 应用程序服务器（web 层）在两个或更多主机上运行。 若要在 Web 服务器之间均匀分配用户负载，可以在最终用户与 Web 服务器之间使用负载均衡器。 在 Azure 中，可以使用 Azure 负载均衡器或 Azure 应用程序网关来管理 web 应用程序服务器的流量。 下一节将介绍有关每个产品的详细信息。
 
-#### <a name="azure-load-balancer-network-based-load-balancer"></a>Azure 负载均衡器（基于网络的负载均衡器）
+1. [Azure 负载均衡器](../../../load-balancer/load-balancer-overview.md)是高性能、低延迟的第 4 层（TCP、UDP）负载均衡器，可在正常运行的虚拟机之间分配流量。 负载均衡器的运行状况探测监视每个 VM 上的给定端口，并仅将流量分发给正常运行的虚拟机。 可以根据是否允许从 Internet 访问 SAP BI 平台，选择公共负载均衡器或内部负载均衡器。 它是区域冗余的，确保跨可用性区域的高可用性。
 
-[Azure 负载均衡器](../../../load-balancer/load-balancer-overview.md)是高性能、低延迟的第 4 层（TCP、UDP）负载均衡器，可在正常运行的虚拟机之间分配流量。 负载均衡器的运行状况探测监视每个 VM 上的给定端口，并仅将流量分发给正常运行的虚拟机。 可以根据是否允许从 Internet 访问 SAP BI 平台，选择公共负载均衡器或内部负载均衡器。 它是区域冗余的，确保跨可用性区域的高可用性。
+   请参阅下图中的“内部负载均衡器”部分，其中 web 应用程序服务器在端口 8080 上运行，它是默认 Tomcat HTTP 端口，将由运行状况探测进行监视。 因此，来自最终用户的任何传入请求都将被重定向到后端池中的 web 应用程序服务器 (azusbosl1 或 azusbosl2)。 负载均衡器不支持 TLS/SSL 终止（也称为 TLS/SSL 卸载）。 如果使用 Azure 负载均衡器将流量分发到 web 服务器，建议使用标准负载均衡器。
 
-请参阅下图中的“内部负载均衡器”部分，其中 web 应用程序服务器在端口 8080 上运行，它是默认 Tomcat HTTP 端口，将由运行状况探测进行监视。 因此，来自最终用户的任何传入请求都将被重定向到后端池中的 web 应用程序服务器 (azusbosl1 或 azusbosl2)。 负载均衡器不支持 TLS/SSL 终止（也称为 TLS/SSL 卸载）。 如果使用 Azure 负载均衡器将流量分发到 web 服务器，建议使用标准负载均衡器。
+   > [!NOTE]
+   > 如果没有公共 IP 地址的 VM 被放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，就不会有出站 Internet 连接，除非执行额外的配置来允许路由到公共终结点。 有关如何实现出站连接的详细信息，请参阅 [SAP 高可用性方案中使用 Azure 标准负载均衡器的虚拟机的公共终结点连接](high-availability-guide-standard-load-balancer-outbound-connections.md)。
 
-> [!NOTE]
-> 如果没有公共 IP 地址的 VM 被放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，就不会有出站 Internet 连接，除非执行额外的配置来允许路由到公共终结点。 有关如何实现出站连接的详细信息，请参阅 [SAP 高可用性方案中使用 Azure 标准负载均衡器的虚拟机的公共终结点连接](high-availability-guide-standard-load-balancer-outbound-connections.md)。
+   ![用于跨 Web 服务器均衡流量的 Azure 负载均衡器](media/businessobjects-deployment-guide/businessobjects-deployment-load-balancer.png)
 
-![用于跨 Web 服务器均衡流量的 Azure 负载均衡器](media/businessobjects-deployment-guide/businessobjects-deployment-load-balancer.png)
+2. [Azure 应用程序网关 (AGW)](../../../application-gateway/overview.md) 以服务的形式提供应用程序传送控制器 (ADC)，用于帮助应用程序将用户流量定向到一个或多个 web 应用程序服务器。 它为应用程序提供各种第 7 层负载均衡功能，例如 TLS/SSL 卸载、Web 应用程序防火墙 (WAF)、基于 Cookie 的会话相关性和其他功能。
 
-#### <a name="azure-application-gateway-web-application-load-balancer"></a>Azure 应用程序网关（web 应用程序负载均衡器）
+   在 SAP BI 平台中，应用程序网关将应用程序 web 流量定向到后端池（azusbosl1 或 azusbos2）中的指定资源。 你将向端口分配侦听器，创建规则，并向后端池中添加资源。 在下图中，具有专用前端 IP 地址 (10.31.3.20) 的应用程序网关充当用户的入口点，处理传入的 TLS/SSL (HTTPS - TCP/443) 连接，对 TLS/SSL 进行解密，并将未加密的请求 (HTTP - TCP/8080) 传递到后端池中的服务器。 通过内置的 TLS/SSL 终止功能，只需在应用程序网关上维护一个 TLS/SSL 证书，这可以简化操作。
 
-[Azure 应用程序网关 (AGW)](../../../application-gateway/overview.md) 以服务的形式提供应用程序传送控制器 (ADC)，用于帮助应用程序将用户流量定向到一个或多个 web 应用程序服务器。 它为应用程序提供各种第 7 层负载均衡功能，例如 TLS/SSL 卸载、Web 应用程序防火墙 (WAF)、基于 Cookie 的会话相关性和其他功能。
+   ![用于跨 Web 服务器均衡流量的应用程序网关](media/businessobjects-deployment-guide/businessobjects-deployment-application-gateway.png)
 
-在 SAP BI 平台中，应用程序网关将应用程序 web 流量定向到后端池（azusbosl1 或 azusbos2）中的指定资源。 你将向端口分配侦听器，创建规则，并向后端池中添加资源。 在下图中，具有专用前端 IP 地址 (10.31.3.20) 的应用程序网关充当用户的入口点，处理传入的 TLS/SSL (HTTPS - TCP/443) 连接，对 TLS/SSL 进行解密，并将未加密的请求 (HTTP - TCP/8080) 传递到后端池中的服务器。 通过内置的 TLS/SSL 终止功能，只需在应用程序网关上维护一个 TLS/SSL 证书，这可以简化操作。
+   若要为 SAP BOBI Web 服务器配置应用程序网关，可以参阅 SAP 博客上的[使用 Azure 应用程序网关实现 SAP BOBI 的负载均衡](https://blogs.sap.com/2020/09/17/sap-on-azure-load-balancing-web-application-servers-for-sap-bobi-using-azure-application-gateway/)。
 
-![用于跨 Web 服务器均衡流量的应用程序网关](media/businessobjects-deployment-guide/businessobjects-deployment-application-gateway.png)
+   > [!NOTE]
+   > 建议使用 Azure 应用程序网关对流量进行负载均衡，因为它提供 SSL 卸载、集中 SSL 管理（用于降低服务器上的加密和解密开销）、轮询算法（用于分发流量）、Web 应用程序防火墙 (WAF) 功能、高可用性等功能。
 
-若要为 SAP BOBI Web 服务器配置应用程序网关，可以参阅 SAP 博客上的[使用 Azure 应用程序网关实现 SAP BOBI 的负载均衡](https://blogs.sap.com/2020/09/17/sap-on-azure-load-balancing-web-application-servers-for-sap-bobi-using-azure-application-gateway/)。
+## <a name="sap-businessobjects-bi-platform-reliability-on-azure"></a>Azure 上的 SAP BusinessObjects BI 平台可靠性
 
-> [!NOTE]
-> 建议使用 Azure 应用程序网关对流量进行负载均衡，因为它提供 SSL 卸载、集中 SSL 管理（用于降低服务器上的加密和解密开销）、轮询算法（用于分发流量）、Web 应用程序防火墙 (WAF) 功能、高可用性等功能。
+SAP BusinessObjects BI 平台包含不同的层，这些层针对特定任务和操作进行了优化。 当任何一层中的组件变为不可用时，SAP BOBI 应用程序将变得不可访问，或者应用程序的某些功能将无法正常工作。 因此，需要确保每个层的可靠性，使应用程序可以正常运行而不会出现任何业务中断。
 
-### <a name="sap-businessobjects-bi-platform---back-up-and-restore"></a>SAP BusinessObjects BI 平台 - 备份和还原
+本指南将探讨应如何将 Azure 的原生功能与 SAP BOBI 平台配置相结合，以改进 SAP 部署的可用性。 本节将重点介绍在 Azure 上实现 SAP BOBI 平台可靠性的以下选项：
+
+- 备份和还原：将数据和应用程序的副本定期创建到单独位置的过程。 这样，如果原始数据或应用程序丢失或损坏，可将其还原或恢复到以前的状态。
+
+- **高可用性：** 高可用平台的所有组件在 Azure 区域中都至少有两个实例，这样，即使其中一个服务器不可用，也能使应用程序保持正常运行。
+- **灾难恢复：** 这是在出现灾难性损失（例如由于某些自然灾害而导致整个 Azure 区域不可用）时还原应用程序功能的过程。
+
+此解决方案的实现因 Azure 中系统设置的性质而异。 因此，客户需要根据其业务需求定制他们的备份/还原、高可用性及灾难恢复解决方案。
+
+## <a name="back-up-and-restore"></a>备份和还原
 
 备份和还原是将数据和应用程序定期复制到单独位置的过程。 这样，如果原始数据或应用程序丢失或损坏，可将其还原或恢复到以前的状态。 它也是任何业务灾难恢复策略的基本组成部分。
 
@@ -550,7 +593,7 @@ Tomcat 支持将两个或更多应用程序服务器组成群集，用于会话�
 
 以下部分介绍如何为 SAP BOBI 平台上的每个组件实现备份和还原策略。
 
-#### <a name="backup--restore-for-sap-bobi-installation-directory"></a>SAP BOBI 安装目录的备份和还原
+### <a name="backup--restore-for-sap-bobi-installation-directory"></a>SAP BOBI 安装目录的备份和还原
 
 在 Azure 中，备份应用程序服务器和所有附加磁盘的最简单方法是使用 [Azure 备份](../../../backup/backup-overview.md)服务。 它提供独立且隔离的备份来防止 VM 上的数据被意外破坏。 备份存储在提供恢复点内置管理的恢复服务保管库中。 配置和缩放很简单，备份经过优化，可以在需要时轻松还原。
 
@@ -558,30 +601,21 @@ Tomcat 支持将两个或更多应用程序服务器组成群集，用于会话�
 
 #### <a name="backup--restore-for-file-repository-server"></a>文件存储库服务器的备份和还原
 
-对于 Azure NetApp 文件，可以创建按需快照，并使用快照策略计划自动拍摄快照。 快照副本提供 ANF 卷的时间点副本。 有关详细信息，请参阅[使用 Azure NetApp 文件管理快照](../../../azure-netapp-files/azure-netapp-files-manage-snapshots.md)。
+根据你在 Linux 上的 SAP BOBI 部署，SAP BOBI 平台的文件存储可以是 Azure NetApp 文件。 根据用于文件存储的存储点，从以下选项中选择备份和还原的方式。
 
-Azure 文件备份与本机 [Azure 备份](../../../backup/backup-overview.md)服务集成，该服务将备份和还原功能与 VM 备份集中在一起，从而简化操作。 有关详细信息，请参阅 [Azure 文件共享备份](../../../backup/azure-file-share-backup-overview.md)和[常见问题解答 - 备份 Azure 文件](../../../backup/backup-azure-files-faq.yml)。
+- 对于 Azure NetApp 文件，可以创建按需快照，并使用快照策略安排自动拍摄快照。 快照副本提供 ANF 卷的时间点副本。 有关详细信息，请参阅[使用 Azure NetApp 文件管理快照](../../../azure-netapp-files/azure-netapp-files-manage-snapshots.md)。
 
-#### <a name="backup--restore-for-cms-database"></a>CMS 数据库的备份和还原
+- 如果已创建单独的 NFS 服务器，请确保为其实施相同的备份和还原策略。
 
-Azure Database for MySQL 是 Azure 中的 DBaaS 产品，可自动创建服务器备份并将其存储在用户配置的本地冗余或异地冗余存储中。 Azure Database for MySQL 会创建数据文件和事务日志的备份。 根据支持的最大存储大小，将进行完整备份和差异备份（最大 4 TB 的存储服务器）或快照备份（最大 16 TB 的存储服务器）。 可以通过这些备份将服务器还原到所配置的备份保留期中的任意时间点。 默认备份保持期为七天，可以[选择将其配置](../../../mysql/howto-restore-server-portal.md#set-backup-configuration)为三天。 所有备份都使用 AES 256 位加密进行加密。
+#### <a name="backup--restore-for-cms-and-audit-database"></a>适用于 CMS 和审核数据库的备份和还原
 
-这些备份文件不公开给用户，因此无法导出。 这些备份只能用于 Azure Database for MySQL 中的还原操作。 可以使用 [mysqldump](../../../mysql/concepts-migrate-dump-restore.md) 复制数据库。 有关详细信息，请参阅[在 Azure Database for MySQL 中进行备份和还原](../../../mysql/concepts-backup.md)。
+对于在 Linux 虚拟机上运行的 SAP BOBI 平台，CMS 和审核数据库可以在任何支持的数据库上运行，如 Azure 上 SAP BusinessObjects BI 平台规划和实施指南的[支持矩阵](businessobjects-deployment-guide.md#support-matrix)中所述。 因此，请务必根据用于 CMS 和审核数据存储的数据库来采用备份和还原策略。
 
-对于在虚拟机上安装的数据库，可以对 HANA 数据库使用标准的备份工具或 [Azure 备份](../../../backup/sap-hana-db-about.md)。 此外，如果 Azure 服务和工具无法满足你的要求，可以使用其他备份工具或脚本来创建磁盘备份。
+1. Azure Database for MySQL 是 Azure 中的 DBaaS 产品，可自动创建服务器备份并将其存储在用户配置的本地冗余或异地冗余存储中。 Azure Database for MySQL 会创建数据文件和事务日志的备份。 根据支持的最大存储大小，将进行完整备份和差异备份（最大 4 TB 的存储服务器）或快照备份（最大 16 TB 的存储服务器）。 可以通过这些备份将服务器还原到所配置的备份保留期中的任意时间点。 默认备份保持期为七天，可以[选择将其配置](../../../mysql/howto-restore-server-portal.md#set-backup-configuration)为三天。 所有备份都使用 AES 256 位加密进行加密。 这些备份文件不公开给用户，因此无法导出。 这些备份只能用于 Azure Database for MySQL 中的还原操作。 可以使用 [mysqldump](../../../mysql/concepts-migrate-dump-restore.md) 复制数据库。 有关详细信息，请参阅[在 Azure Database for MySQL 中进行备份和还原](../../../mysql/concepts-backup.md)。
 
-## <a name="sap-businessobjects-bi-platform-reliability"></a>SAP BusinessObjects BI 平台可靠性
+2. 对于在 Azure 虚拟机上安装的数据库，可以为支持的数据库使用标准备份工具或 [Azure 备份](../../../backup/sap-hana-db-about.md)服务。 此外，如果 Azure 服务和工具无法满足你的要求，则可以使用支持的第三方备份工具，而该工具应可为所有 SAP BOBI 平台组件的备份和还原提供代理。
 
-SAP BusinessObjects BI 平台包含不同的层，这些层针对特定任务和操作进行了优化。 当任何一层中的组件变为不可用时，SAP BOBI 应用程序将变得不可访问，或者应用程序的某些功能将无法正常工作。 因此，需要确保每个层的可靠性，使应用程序可以正常运行而不会出现任何业务中断。
-
-本部分重点介绍 SAP BOBI 平台的以下选项：
-
-- **高可用性：** 高可用平台的所有组件在 Azure 区域中都至少有两个实例，这样，即使其中一个服务器不可用，也能使应用程序保持正常运行。
-- **灾难恢复：** 这是在出现灾难性损失（例如由于某些自然灾害而导致整个 Azure 区域不可用）时还原应用程序功能的过程。
-
-此解决方案的实现因 Azure 中系统设置的性质而异。 因此，客户需要根据其业务需求定制高可用性和灾难恢复解决方案。
-
-### <a name="high-availability"></a>高可用性
+## <a name="high-availability"></a>高可用性
 
 高可用性指的是一系列技术，这些技术可通过相同数据中心内受冗余、容错或故障转移保护的组件，为应用程序/服务提供业务连续性，以最大程度减少 IT 中断的情况。 在本例中，数据中心位于一个 Azure 区域内。 [适用于 SAP 的高可用性体系结构和方案](sap-high-availability-architecture-scenarios.md)一文为 Azure 上针对 SAP 应用程序提供的各种高可用性技术和建议提供了最初的见解，这将补充本部分中的说明。
 
@@ -592,7 +626,7 @@ SAP BusinessObjects BI 平台包含不同的层，这些层针对特定任务和
 
 下一部分介绍如何在 SAP BOBI 平台的每个组件上实现高可用性。
 
-#### <a name="high-availability-for-application-servers"></a>应用程序服务器的高可用性
+### <a name="high-availability-for-application-servers"></a>应用程序服务器的高可用性
 
 对于 BI 和 Web 应用程序服务器，无论它们是单独安装还是一起安装的，都不需要特定的高可用性解决方案。 可以通过冗余实现高可用性，即在不同的 Azure 虚拟机中配置 BI 和 Web 服务器的多个实例。
 
@@ -605,35 +639,38 @@ SAP BusinessObjects BI 平台包含不同的层，这些层针对特定任务和
 
 有关详细信息，请参阅[管理 Linux 虚拟机的可用性](../../availability.md)
 
-#### <a name="high-availability-for-cms-database"></a>CMS 数据库的高可用性
+>[!Important]
+>Azure 可用性区域和 Azure 可用性集的概念是互斥的。 这意味着，可以将一对或多个 VM 部署到特定的可用性区域或 Azure 可用性集中。 但不能同时部署到这两者中。
 
-如果将 Azure 数据库即服务 (DBaaS) 用于 CMS 数据库，则默认提供高可用性框架。 只需选择区域和服务固有的高可用性、冗余和复原能力，无需配置任何其他组件。 有关 Azure 上受支持的 DBaaS 服务的 SLA 的更多详细信息，请参阅 [Azure Database for MySQL 中的高可用性](../../../azure-sql/database/high-availability-sla.md)和 [Azure SQL 数据库的高可用性](../../../mysql/concepts-high-availability.md)
+### <a name="high-availability-for-cms-database"></a>CMS 数据库的高可用性
+
+如果在 CMS 和审核数据库中使用 Azure 数据库即服务 (DBaaS) 这项服务，则默认提供本地冗余的高可用性框架。 只需选择区域和服务固有的高可用性、冗余和复原能力，无需配置任何其他组件。 如果 SAP BOBI 平台的部署策略跨可用性区域，则需要确保为 CMS 和审核数据库实现区域冗余。 有关 Azure 上支持的 DBaaS 产品的高可用性提供情况的详细信息，请参阅 [Azure Database for MySQL 中的高可用性](../../../azure-sql/database/high-availability-sla.md)和 [Azure SQL 数据库的高可用性](../../../mysql/concepts-high-availability.md)
 
 对于 CMS 数据库的其他 DBMS 部署，请参阅 [适用于 SAP 工作负载的 DBMS 部署指南](dbms_guide_general.md)，其中提供了有关不同 DBMS 部署及其实现高可用性的方法的见解。
 
-#### <a name="high-availability-for-file-repository-server"></a>文件存储库服务器的高可用性
+### <a name="high-availability-for-filestore"></a>文件存储的高可用性
 
-文件存储库服务器 (FRS) 指存储报表、universe 和连接等内容的磁盘目录。 它在该系统的所有应用程序服务器之间共享。 因此必须确保其高度可用。
+文件存储指存储报表、universe 和连接等内容的磁盘目录。 它在该系统的所有应用程序服务器之间共享。 因此，你必须确保它与其他 SAP BOBI 平台组件都具有高可用性。
 
-在 Azure 上，可以为设计为高度可用且高度持久的文件共享选择 [Azure 高级文件](../../../storage/files/storage-files-introduction.md)或 [Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-introduction.md)。 有关详细信息，请参阅 Azure 文件存储的[冗余](../../../storage/files/storage-files-planning.md#redundancy)部分。
+对于在 Azure 上运行的 SAP BOBI 平台，可以选择适用于文件分享的[ Azure 高级文件](../../../storage/files/storage-files-introduction.md)或 [Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-introduction.md)，这些经专门设计的文件本质具有高可用性和高耐用性。 有关详细信息，请参阅 Azure 文件存储的[冗余](../../../storage/files/storage-files-planning.md#redundancy)部分。
 
-> [!NOTE]
-> Azure 文件存储的 SMB 协议已公开发布，但针对 Azure 文件存储的 NFS 协议支持目前为预览版。 有关详细信息，请参阅[对 Azure 文件存储的 NFS 4.1 支持现在为预览版](https://azure.microsoft.com/en-us/blog/nfs-41-support-for-azure-files-is-now-in-preview/)
+> [!Important]
+> Azure 文件存储的 SMB 协议已公开发布，但针对 Azure 文件存储的 NFS 协议支持目前为预览版。 有关详细信息，请参阅[对 Azure 文件存储的 NFS 4.1 支持现在为预览版](https://azure.microsoft.com/blog/nfs-41-support-for-azure-files-is-now-in-preview/)
 
-由于此文件共享服务仅在部分区域可用，因此请务必参考[各区域的可用产品](https://azure.microsoft.com/en-us/global-infrastructure/services/)站点以了解最新信息。 如果该服务在你的区域中不可用，可以创建 NFS 服务器，并从中将文件系统共享给 SAP BOBI 应用程序。 但你还需要考虑其高可用性。
+由于此文件共享服务仅在部分区域可用，因此请务必参考[各区域的可用产品](https://azure.microsoft.com/global-infrastructure/services/)站点以了解最新信息。 如果该服务在你的区域中不可用，可以创建 NFS 服务器，并从中将文件系统共享给 SAP BOBI 应用程序。 但你还需要考虑其高可用性。
 
-#### <a name="high-availability-for-load-balancer"></a>负载均衡器的高可用性
+### <a name="high-availability-for-load-balancer"></a>负载均衡器的高可用性
 
 若要在 web 服务器之间分配流量，可以使用 Azure 负载均衡器或 Azure 应用程序网关。 可根据你为部署选择的 SKU 来实现任一负载均衡器的冗余。
 
 - 对于 Azure 负载均衡器，可以通过将标准负载均衡器前端配置为区域冗余来实现冗余。 有关详细信息，请参阅[标准负载均衡器和可用性区域](../../../load-balancer/load-balancer-standard-availability-zones.md)
 - 对于应用程序网关，可以根据部署过程中选择的层类型来实现高可用性。
-  - 如果部署了两个或更多实例，v1 SKU 支持高可用性方案。 Azure 跨更新域和容错域分配这些实例，确保实例不会全部同时发生故障。 因此使用此 SKU 可在区域内实现冗余
-  - v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如果选择“区域冗余”，则最新实例还将分布到各个可用性区域中以提供区域性故障复原能力。 有关详细信息，请参阅[自动缩放和区域冗余应用程序网关 v2](../../../application-gateway/application-gateway-autoscaling-zone-redundant.md)
+   -  如果部署了两个或更多实例，v1 SKU 支持高可用性方案。 Azure 跨更新域和容错域分配这些实例，确保实例不会全部同时发生故障。 因此，使用此 SKU 可在区域内实现冗余。
+   -  v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如果选择“区域冗余”，则最新实例还将分布到各个可用性区域中以提供区域性故障复原能力。 有关详细信息，请参阅[自动缩放和区域冗余应用程序网关 v2](../../../application-gateway/application-gateway-autoscaling-zone-redundant.md)
 
-#### <a name="reference-high-availability-architecture-for-sap-businessobjects-bi-platform"></a>SAP BusinessObjects BI 平台的参考高可用性体系结构
+### <a name="reference-high-availability-architecture-for-sap-businessobjects-bi-platform"></a>SAP BusinessObjects BI 平台的参考高可用性体系结构
 
-以下参考体系结构介绍了如何使用可用性集设置 SAP BOBI 平台，可用性集提供了区域中的 VM 冗余和可用性。 该体系结构展示了如何使用不同的 Azure 服务，例如 Azure 应用程序网关、Azure NetApp 文件以及提供内置冗余的适用于 SAP BOBI 平台的 Azure Database for MySQL，这降低了管理不同高可用性解决方案的复杂性。
+以下引用体系结构介绍了如何使用在 Linux 服务器上运行的可用性集设置 SAP BOBI 平台。 该体系结构展示如何使用不同的 Azure 服务提供内置冗余，如 Azure 应用程序网关、Azure NetApp 文件 (Filestore) 以及适用于的 SAP BOBI 平台的 Azure Database for MySQL（CMS 和审核数据库），以降低管理不同高可用性解决方案的复杂性。
 
 在下图中，使用 Azure 应用程序网关 v1 SKU 对传入流量 (HTTPS - TCP/443) 进行了负载均衡，此 SKU 在两个或更多实例上部署时高度可用。 Web 服务器、管理服务器和处理服务器的多个实例部署在单独的虚拟机中以实现冗余，并且每个层部署在不同的可用性集中。 Azure NetApp 文件在数据中心内有内置冗余，因此文件存储库服务器的 ANF 卷将高度可用。 CMS 数据库预配于 Azure Database for MySQL (DBaaS) 上，该服务具有固有的高可用性。 有关详细信息，请参阅 [Azure Database for MySQL 中的高可用性](../../../mysql/concepts-high-availability.md)指南。
 
@@ -643,33 +680,50 @@ SAP BusinessObjects BI 平台包含不同的层，这些层针对特定任务和
 
 在一些 Azure 区域提供可用性区域，这意味着它具有独立的电源、冷却系统和网络。 它使客户能够跨两个或三个可用性区域部署应用程序。 对于希望跨 AZ 实现高可用性的客户，可以跨可用性区域部署 SAP BOBI 平台，从而确保应用程序中的每个组件都是区域冗余的。
 
-### <a name="disaster-recovery"></a>灾难恢复
+## <a name="disaster-recovery"></a>灾难恢复
 
-本部分中的说明介绍为 SAP BOBI 平台提供灾难恢复保护的策略。 它补充了 [SAP 的灾难恢复](../../../site-recovery/site-recovery-sap.md)文档，该文档代表总体 SAP 灾难恢复方法的主要资源。
+本节中的说明将解释为在 Linux 上运行的 SAP BOBI 平台提供灾难恢复保护的策略。 它补充了 [SAP 的灾难恢复](../../../site-recovery/site-recovery-sap.md)文档，该文档代表总体 SAP 灾难恢复方法的主要资源。 对于 SAP BusinessObjects BI 平台，请参阅 SAP 说明 [2056228](https://launchpad.support.sap.com/#/notes/2056228)，其中介绍了以下安全实现 DR 环境的方法。
 
-#### <a name="reference-disaster-recovery-architecture-for-sap-businessobjects-bi-platform"></a>SAP BusinessObjects BI 平台的参考灾难恢复体系结构
+- 完整或选择性使用生命周期管理 (LCM) 或联合，以提升/分发来自主系统的内容。
+- 定期复制 CMS 和 FRS 内容。
 
-此参考体系结构通过冗余的应用程序服务器运行 SAP BOBI 平台的多实例部署。 对于灾难恢复，应将所有层故障转移到次要区域。 每个层使用不同的策略提供灾难恢复保护。
+在本指南中，我们将讨论实现 DR 环境的第二个选项。 其中不包含所有可能的灾难恢复配置选项的详尽列表，但涵盖与 SAP BOBI 平台配置结合使用原生 Azure 服务的解决方案。
+
+>[!Important]
+>在 SAP BusinessObjects BI 平台中，每个组件的可用性都应在次要区域中纳入考虑范畴，并且整个灾难恢复策略必须经过全面测试。
+
+### <a name="reference-disaster-recovery-architecture-for-sap-businessobjects-bi-platform"></a>SAP BusinessObjects BI 平台的参考灾难恢复体系结构
+
+此参考体系结构通过冗余的应用程序服务器运行 SAP BOBI 平台的多实例部署。 对于灾难恢复，应将 SAP BOBI 平台的所有组件故障转移到次要区域。 在下图中，Azure NetApp 文件用作文件存储，Azure Database for MySQL 作为 CMS/审核存储库，而 Azure 应用程序网关用于对流量执行负载均衡。 为每个组件实现灾难恢复保护的策略各不相同，详见下一节中的详细介绍。
 
 ![SAP BusinessObjects BI 平台灾难恢复](media/businessobjects-deployment-guide/businessobjects-deployment-disaster-recovery.png)
 
-#### <a name="load-balancer"></a>负载均衡器
+### <a name="load-balancer"></a>负载均衡器
 
-负载均衡器用于在 SAP BOBI 平台的 Web 应用程序服务器之间分配流量。 若要为 Azure 应用程序网关实现 DR，请在次要区域中实现应用程序网关的并行安装。
+负载均衡器用于在 SAP BOBI 平台的 Web 应用程序服务器之间分配流量。 在 Azure 中，可以使用 Azure 负载均衡器或 Azure 应用程序网关来对整个 Web 服务器上的流量执行负载均衡。 若要为负载均衡器服务实现 DR，需要在次要区域中实现另一个 Azure 负载均衡器或 Azure 应用程序网关。 若要在完成 DR 故障转移后保留相同的 URL，需要更改 DNS 中的条目，并指向在次要区域中运行的负载均衡服务。
 
-#### <a name="virtual-machines-running-web-and-bi-application-servers"></a>运行 web 和 BI 应用程序服务器的虚拟机
+### <a name="virtual-machines-running-web-and-bi-application-servers"></a>运行 web 和 BI 应用程序服务器的虚拟机
 
-可使用 Azure Site Recovery 服务在次要区域中复制运行 Web 和 BI 应用程序服务器的虚拟机。 它会在次要区域中复制服务器，以便在发生灾难和中断时，可以轻松地故障转移到复制的环境并继续工作
+可使用 [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) 服务在次要区域中复制运行 Web 和 BI 应用程序服务器的虚拟机。 它会将服务器及其中附加的所有托管磁盘复制到次要区域，以便在发生灾难和停机时，你可以轻松地将故障转移到复制的环境中，并继续工作。 若要开始将所有 SAP 应用程序虚拟机复制到 Azure 灾难恢复数据中心，请遵循[将虚拟机复制到 Azure](../../../site-recovery/azure-to-azure-tutorial-enable-replication.md) 中的相关指导。
 
-#### <a name="file-repository-servers"></a>文件存储库服务器
+### <a name="file-repository-servers"></a>文件存储库服务器
+
+文件存储指磁盘目录，其中存储了报表、BI 文档等实际文件。 文件存储中的所有文件都必须同步到 DR 区域，这一点很重要。 根据针对在 Linux 上运行的 SAP BOBI 平台所使用的文件共享服务类型，需要采用必要的 DR 策略来同步内容。
 
 - **Azure NetApp 文件** 提供 NFS 和 SMB 卷，因此可使用任何基于文件的复制工具在 Azure 区域之间复制数据。 有关如何在另一个区域中复制 ANF 卷的详细信息，请参阅[关于 Azure NetApp 文件的常见问题解答](../../../azure-netapp-files/azure-netapp-files-faqs.md#how-do-i-create-a-copy-of-an-azure-netapp-files-volume-in-another-azure-region)
 
-  可以使用 Azure NetApp 文件跨区域复制，该功能当前提供[预览版](https://azure.microsoft.com/en-us/blog/azure-netapp-files-cross-region-replication-and-new-enhancements-in-preview/)，它使用 NetApp SnapMirror® 技术。 因此只会以经压缩的高效格式通过网络发送更改后的块。 这项专有技术最大程度地减少了跨区域复制所需的数据量，可以节省数据传输成本。 它还可以缩短复制时间，让你可以实现较小的还原点目标 (RPO)。 有关详细信息，请参阅[使用跨区域复制的要求和注意事项](../../../azure-netapp-files/cross-region-replication-requirements-considerations.md)。
+  可以使用 Azure NetApp 文件跨区域复制，该功能当前提供[预览版](https://azure.microsoft.com/blog/azure-netapp-files-cross-region-replication-and-new-enhancements-in-preview/)，它使用 NetApp SnapMirror® 技术。 因此只会以经压缩的高效格式通过网络发送更改后的块。 这项专有技术最大程度地减少了跨区域复制所需的数据量，可以节省数据传输成本。 它还可以缩短复制时间，让你可以实现较小的还原点目标 (RPO)。 有关详细信息，请参阅[使用跨区域复制的要求和注意事项](../../../azure-netapp-files/cross-region-replication-requirements-considerations.md)。
 
 - **Azure 高级文件** 仅支持本地冗余 (LRS) 和区域冗余存储 (ZRS)。 对于 Azure 高级文件 DR 策略，可以使用 [AzCopy](../../../storage/common/storage-use-azcopy-v10.md) 或 [Azure PowerShell](/powershell/module/az.storage/) 将文件复制到不同区域中的其他存储帐户。 有关详细信息，请参阅[灾难恢复和存储帐户故障转移](../../../storage/common/storage-disaster-recovery-guidance.md)
 
-#### <a name="cms-database"></a>CMS 数据库
+   > [!Important]
+   > Azure 文件存储的 SMB 协议已公开发布，但针对 Azure 文件存储的 NFS 协议支持目前为预览版。 有关详细信息，请参阅[对 Azure 文件存储的 NFS 4.1 支持现在为预览版](https://azure.microsoft.com/blog/nfs-41-support-for-azure-files-is-now-in-preview/)
+
+### <a name="cms-database"></a>CMS 数据库
+
+DR 区域中的 CMS 和审核数据库必须是在主要区域中运行的数据库的副本。 根据数据库类型，请务必按照业务要求的 RTO 和 RPO 将数据库复制到 DR 区域。
+
+#### <a name="azure-database-for-mysql"></a>Azure Database for MySQL
 
 Azure Database for MySQL 提供了多个选项，可在发生任何灾难时恢复数据库。 选择适用于你的业务的适当选项。
 

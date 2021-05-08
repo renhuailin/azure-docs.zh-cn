@@ -4,17 +4,17 @@ description: 了解如何使用 Azure 门户创建在高级计划中运行的函
 ms.topic: how-to
 ms.date: 10/30/2020
 ms.openlocfilehash: 9cab67f096665c9333fa40bcb790896fcbebd8d5
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98676580"
 ---
 # <a name="create-a-premium-plan-function-app-in-the-azure-portal"></a>在 Azure 门户中创建高级计划函数应用
 
-Azure Functions 提供了一个可缩放的高级计划，该计划提供虚拟网络连接、无冷启动和高级硬件。 若要了解详细信息，请参阅 [Azure Functions 高级计划](functions-premium-plan.md)。 
+Azure Functions 提供了可缩放的高级计划，该计划提供虚拟网络连接，无冷启动和高级硬件。 若要了解详细信息，请参阅 [Azure Functions 高级计划](functions-premium-plan.md)。 
 
-本文介绍如何使用 Azure 门户在高级计划中创建 function app。 
+在本文中，你将了解如何使用 Azure 门户在高级计划中创建函数应用。 
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -26,7 +26,7 @@ Azure Functions 提供了一个可缩放的高级计划，该计划提供虚拟�
 
 [!INCLUDE [functions-premium-create](../../includes/functions-premium-create.md)]
 
-此时，你可以在新的 function app 中创建函数。 这些函数可以利用 [高级计划](functions-premium-plan.md)的好处。
+此时，你可以在新的函数应用中创建函数。 这些函数可以利用[高级计划](functions-premium-plan.md)的好处。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -35,4 +35,4 @@ Azure Functions 提供了一个可缩放的高级计划，该计划提供虚拟�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [添加 HTTP 触发的函数] (./functions-get-started.md
+> [添加 HTTP 触发的函数](./functions-get-started.md

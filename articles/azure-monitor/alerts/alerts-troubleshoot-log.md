@@ -6,10 +6,10 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 6b495e8e700f146f5e6c117413456311ac0cdd5a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102037874"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>在 Azure Monitor 中排查日志警报问题  
@@ -51,7 +51,7 @@ Azure Monitor 处理来自世界各地的数 TB 的客户日志，这可能导�
 
 [指标度量](alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value)是一种基于汇总时序结果的日志警报类型。 这些规则允许按列分组[拆分警报](alerts-unified-log.md#split-by-alert-dimensions)。 如果你使用的是旧版 Log Analytics API，则拆分将无法按预期工作。 不支持在旧版 API 中选择分组。
 
-当前的 ScheduledQueryRules API 允许你在[指标度量](alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value)规则中设置“聚合依据”，这将按预期工作。 [详细了解如何切换到当前的 SCHEDULEDQUERYRULES API](../alerts/alerts-log-api-switch.md)。
+当前的 ScheduledQueryRules API 允许你在[指标度量](alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value)规则中设置“聚合依据”，这将按预期工作。 [了解有关切换到当前 ScheduledQueryRules API 的详细信息](../alerts/alerts-log-api-switch.md)。
 
 ## <a name="log-alert-fired-unnecessarily"></a>不必要地激发了日志警报
 

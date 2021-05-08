@@ -8,10 +8,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 025250f47bf0630be5ae988140a5feeecfd0eaf0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100377544"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Redshift 移动数据
@@ -38,7 +38,7 @@ ms.locfileid: "100377544"
 
 创建管道的最简单方法是使用 Azure 数据工厂复制向导。 有关使用复制数据向导创建管道的快速演练，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
 
-还可以使用 Visual Studio、Azure PowerShell 或其他工具创建管道。 也可以使用 Azure 资源管理器模板、.NET API 或 REST API 创建管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+也可以使用 Visual Studio、Azure PowerShell 或其他工具创建管道。 也可以使用 Azure 资源管理器模板、.NET API 或 REST API 创建管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -54,10 +54,10 @@ ms.locfileid: "100377544"
 
 下表提供了特定于 Amazon Redshift 链接服务的 JSON 元素的说明。
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | type |该属性必须设置为 **AmazonRedshift**。 |是 |
-| 服务器 |Amazon Redshift 服务器的 IP 地址或主机名。 |是 |
+| 服务器  |Amazon Redshift 服务器的 IP 地址或主机名。 |是 |
 | **port** |Amazon Redshift 服务器用于侦听客户端连接的 TCP 端口数。 |否（默认值为 5439） |
 | **database** |Amazon Redshift 数据库的名称。 |是 |
 | **username** |有权访问数据库的用户的名称。 |是 |
@@ -69,7 +69,7 @@ ms.locfileid: "100377544"
 
 每种数据集的 **typeProperties** 部分有所不同，该部分提供有关数据在存储区中的位置信息。 **RelationalTable** 类型数据集（包括 Amazon Redshift 数据集）的 **typeProperties** 部分具有以下属性：
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | **tableName** |Amazon Redshift 数据库中链接服务引用的表的名称。 |否（如果指定了 **RelationalSource** 类型复制活动的 **query** 属性） |
 
@@ -79,18 +79,18 @@ ms.locfileid: "100377544"
 
 对于复制活动，当源的类型为 **AmazonRedshiftSource** 时，则可在 **typeProperties** 部分中使用以下属性：
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
-| **查询** | 使用自定义查询读取数据。 |否（如果指定了数据集的 **tableName** 属性） |
+| **query** | 使用自定义查询读取数据。 |否（如果指定了数据集的 **tableName** 属性） |
 | **redshiftUnloadSettings** | 使用 Redshift **UNLOAD** 命令时包含属性组。 | 否 |
 | **s3LinkedServiceName** | 要用作临时存储的 Amazon S3。 使用 **AwsAccessKey** 的 Azure 数据工厂的名称类型指定链接服务。 | 使用 **redshiftUnloadSettings** 属性时需要该服务 |
 | **bucketName** | 指示存储临时数据所使用的 Amazon S3 存储桶。 如果未提供该属性，复制活动会自动生成存储桶。 | 使用 **redshiftUnloadSettings** 属性时需要该服务 |
 
 或者，也可将类型 **RelationalSource**（包括 Amazon Redshift）与 **typeProperties** 节中的以下属性配合使用。 请注意，此源类型不支持 Redshift **UNLOAD** 命令。
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
-| **查询** |使用自定义查询读取数据。 | 否（如果指定了数据集的 **tableName** 属性） |
+| **query** |使用自定义查询读取数据。 | 否（如果指定了数据集的 **tableName** 属性） |
 
 ## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>使用 UNLOAD 从Amazon Redshift 复制数据
 
@@ -98,7 +98,7 @@ Amazon Redshift [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UN
 
 **示例：将数据从 Amazon Redshift 复制到 Azure Synapse Analytics**
 
-此示例将数据从 Amazon Redshift 复制到 Azure Synapse Analytics。 该示例使用 Redshift **UNLOAD** 命令、临时复制数据和 Microsoft PolyBase。
+该示例将数据从 Amazon Redshift 复制到 Azure Synapse Analytics。 该示例使用 Redshift **UNLOAD** 命令、临时复制数据和 Microsoft PolyBase。
 
 对于该示例用例，复制活动首先将数据从 Amazon Redshift 卸载到 Amazon S3（如 **redshiftUnloadSettings** 选项中所配置）。 接下来，数据从 Amazon S3 复制到 Azure Blob 存储（如 **stagingSettings** 选项中所指定）。 最后，PolyBase 将数据加载到 Azure Synapse Analytics 中。 所有临时格式均由复制活动处理。
 
@@ -137,9 +137,9 @@ Amazon Redshift [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UN
 
 此示例具有以下数据工厂实体：
 
-* [AmazonRedshift](#linked-service-properties)类型的链接服务
-* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)类型的链接服务。
-* [RelationalTable](#dataset-properties)类型的输入[数据集](data-factory-create-datasets.md)
+* [AmazonRedshift](#linked-service-properties) 类型的链接服务
+* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
+* [RelationalTable](#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)
 * [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)
 * 包含复制活动的[管道](data-factory-create-pipelines.md)，该活动使用 [RelationalSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 属性
 
@@ -331,7 +331,7 @@ Amazon Redshift [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UN
 | real |Single |
 | DOUBLE PRECISION |Double |
 | BOOLEAN |String |
-| CHAR |String |
+| CHAR |字符串 |
 | VARCHAR |String |
 | DATE |DateTime |
 | TIMESTAMP |DateTime |

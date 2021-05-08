@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 01/02/2021
 ms.author: victorh
 ms.openlocfilehash: aadd4904ff218613c0dd24daff784ad5b8b90fbb
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97854904"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>使用应用程序网关配置应用服务
@@ -45,7 +45,7 @@ ms.locfileid: "97854904"
    :::image type="content" source="./media/configure-web-app-portal/backend-pool.png" alt-text="应用服务后端":::
    
    > [!NOTE]
-   > 下拉列表中只填充了与应用程序网关位于同一订阅中的应用服务。 若要使用与应用程序网关不同的订阅中的应用服务，请在“目标”下拉列表中选择“应用服务”，选择“IP 地址或主机名”选项，然后输入应用服务的主机名（例如   应用服务的 azurewebsites.net) 。
+   > 下拉列表中只填充了与应用程序网关位于同一订阅中的应用服务。 若要使用与应用程序网关不同的订阅中的应用服务，请在“目标”下拉列表中选择“应用服务”，选择“IP 地址或主机名”选项，然后输入应用服务的主机名（例如   应用服务的 azurewebsites.net)。
 1. 选择“保存”。 
 
 ## <a name="edit-http-settings-for-app-service"></a>编辑应用服务的 HTTP 设置

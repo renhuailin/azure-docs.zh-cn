@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: b73e7f8c13f621bc359a2ae79a725829420a3ecc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 23d95e02c74918de711b18c7580c3774b19c6227
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102455548"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229425"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>针对 Azure Cosmos DB 的高级威胁防护（预览版）
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -44,7 +44,7 @@ ms.locfileid: "102455548"
 
 可以通过多种方式来配置高级威胁防护，如以下部分中所述。
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 在 [https://portal.azure.com](https://portal.azure.com/) 中启动 Azure 门户。
 
@@ -57,14 +57,14 @@ ms.locfileid: "102455548"
     * 单击“高级威胁防护”选项，将其设置为“打开”。
     * 单击“保存”以保存新的或更新的高级威胁防护策略。   
 
-### <a name="rest-api"></a>[REST API](#tab/rest-api)
+# <a name="rest-api"></a>[REST API](#tab/rest-api)
 
 使用 Rest API 命令可创建、更新或获取特定 Azure Cosmos DB 帐户的高级威胁防护设置。
 
 * [高级威胁防护 - 创建](/rest/api/securitycenter/advancedthreatprotection/create)
 * [高级威胁防护 - 获取](/rest/api/securitycenter/advancedthreatprotection/get)
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用以下 PowerShell cmdlet：
 
@@ -72,12 +72,12 @@ ms.locfileid: "102455548"
 * [获取高级威胁防护](/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
 * [禁用高级威胁防护](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
-### <a name="arm-template"></a>[ARM 模板](#tab/arm-template)
+# <a name="arm-template"></a>[ARM 模板](#tab/arm-template)
 
 使用 Azure 资源管理器 (ARM) 模板可设置启用了高级威胁防护的 Cosmos DB。
 有关详细信息，请参阅[创建具有高级威胁防护的 CosmosDB 帐户](https://azure.microsoft.com/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/)。
 
-### <a name="azure-policy"></a>[Azure Policy](#tab/azure-policy)
+# <a name="azure-policy"></a>[Azure Policy](#tab/azure-policy)
 
 使用 Azure Policy 可启用针对 Cosmos DB 的高级威胁防护。
 

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: b664dd406a1ab90b4ea5e85005a69935f345c609
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: a7978410dbe28a5da5dae81cb380d118fe13a159
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034653"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104869372"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL 灵活服务器（预览版）中的服务器概念
 
@@ -55,7 +55,14 @@ Azure Database for MySQL 灵活服务器：
 
 ## <a name="how-do-i-manage-a-server"></a>如何管理服务器？
 
-可通过使用 [Azure 门户](./quickstart-create-server-portal.md)或 [Azure CLI](./quickstart-create-server-cli.md) 来管理 Azure Database for MySQL 灵活服务器。
+你可以通过使用 [Azure 门户](./quickstart-create-server-portal.md)或 [Azure CLI](./quickstart-create-server-cli.md) 来管理 Azure Database for MySQL 灵活服务器的创建、删除、服务器参数配置 (my.cnf)、缩放、网络、安全性、高可用性、备份与还原和监视活动。 此外，以下存储过程在 Azure Database for MySQL 中提供，用于执行某些所需的数据库管理任务，因为超级用户权限在服务器上不受支持。
+
+|**存储过程名称**|**输入参数**|**输出参数**|**用法说明**|
+|-----|-----|-----|-----|
+|*mysql.az_kill*|processlist_id|空值|等效于 [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) 命令。 在终止连接正在执行的任何语句之后，将终止与提供的 process list_id 关联的连接。|
+|*mysql.az_kill_query*|processlist_id|空值|等效于 [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) 命令。 将终止连接当前正在执行的语句。 使连接本身保持活动状态。|
+|*mysql.az_load_timezone*|空值|不可用|加载[时区表](../howto-server-parameters.md#working-with-the-time-zone-parameter)以允许将 `time_zone` 参数设置为命名值（例如， “US/Pacific”）。|
+
 
 ## <a name="next-steps"></a>后续步骤
 

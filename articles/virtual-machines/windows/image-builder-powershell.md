@@ -1,6 +1,6 @@
 ---
-title: 使用 PowerShell 通过 Azure 映像生成器创建 Windows VM
-description: 使用 Azure 映像生成器 PowerShell 模块创建 Windows VM。
+title: 使用 Azure 映像生成器的 PowerShell 创建 Windows VM
+description: 使用 Azure 映像生成器的 PowerShell 模块创建 Windows VM。
 author: cynthn
 ms.author: cynthn
 ms.date: 03/02/2021
@@ -10,13 +10,13 @@ ms.subervice: image-builder
 ms.colletion: windows
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 90d09763f2c9e167d6a0a34adbbc444ebad14c46
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101693452"
 ---
-# <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>预览：使用 Azure 映像生成器创建 Windows VM 使用 PowerShell
+# <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>预览版：使用 Azure 映像生成器的 PowerShell 创建 Windows VM
 
 本文演示如何使用 Azure VM 映像生成器 PowerShell 模块创建自定义的 Windows 映像。
 
@@ -30,7 +30,7 @@ ms.locfileid: "101693452"
 如果选择在本地使用 PowerShell，则本文要求安装 Az PowerShell 模块，并使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure 帐户。 有关安装 Az PowerShell 模块的详细信息，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。
 
 > [!IMPORTANT]
-> 尽管 **ImageBuilder** 和 **ManagedServiceIdentity** PowerShell 模块处于预览阶段，但你必须使用 `Install-Module` cmdlet 和参数分别安装这些模块。 `AllowPrerelease` 当这些 PowerShell 模块公开上市后，它们将成为未来 Az PowerShell 模块版本的一部分，并从 Azure Cloud Shell 中的本机提供。
+> 尽管 Az.ImageBuilder 和 Az.ManagedServiceIdentity PowerShell 模块为预览版，但是你必须使用 `Install-Module` cmdlet 和 `AllowPrerelease` 参数单独安装它们。  这些 PowerShell 模块正式发布后，会包含在将来的 Az PowerShell 模块发行版中，并在 Azure Cloud Shell 中原生提供。
 
 ```azurepowershell-interactive
 'Az.ImageBuilder', 'Az.ManagedServiceIdentity' | ForEach-Object {Install-Module -Name $_ -AllowPrerelease}
@@ -46,7 +46,7 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ### <a name="register-features"></a>注册功能
 
-如果这是你首次在预览期间使用 Azure 映像生成器，请注册新的 **VirtualMachineTemplatePreview** 功能。
+如果首次在预览期间使用 Azure 映像生成器，请注册新的 VirtualMachineTemplatePreview 功能。
 
 ```azurepowershell-interactive
 Register-AzProviderFeature -ProviderNamespace Microsoft.VirtualMachineImages -FeatureName VirtualMachineTemplatePreview
@@ -55,13 +55,13 @@ Register-AzProviderFeature -ProviderNamespace Microsoft.VirtualMachineImages -Fe
 检查功能注册的状态。
 
 > [!NOTE]
-> 在将更改为之前， **RegistrationState** 可能处于 `Registering` 状态几分钟 `Registered` 。 等到状态 **注册** 后再继续。
+> RegistrationState 可能处于 `Registering` 状态几分钟，之后再更改为 `Registered`。 请等到状态变为“已注册”后再继续。
 
 ```azurepowershell-interactive
 Get-AzProviderFeature -ProviderNamespace Microsoft.VirtualMachineImages -FeatureName VirtualMachineTemplatePreview
 ```
 
-如果 Azure 订阅尚未注册，请注册以下资源提供程序以供使用。
+请注册以下资源提供程序（如尚未注册）以与你的 Azure 订阅配合使用。
 
 - Microsoft.Compute
 - Microsoft.KeyVault
@@ -93,7 +93,7 @@ $imageTemplateName = 'myWinImage'
 $runOutputName = 'myDistResults'
 ```
 
-为你的 Azure 订阅 ID 创建一个变量。 若要确认 `subscriptionID` 变量是否包含您的订阅 ID，可以在下面的示例中运行第二行。
+为你的 Azure 订阅 ID 创建变量。 若要确认 `subscriptionID` 变量是否包含您的订阅 ID，可以在下面的示例中运行第二行。
 
 ```azurepowershell-interactive
 # Your Azure Subscription ID
@@ -111,11 +111,11 @@ Write-Output $subscriptionID
 New-AzResourceGroup -Name $imageResourceGroup -Location $location
 ```
 
-## <a name="create-user-identity-and-set-role-permissions"></a>创建用户标识和设置角色权限
+## <a name="create-user-identity-and-set-role-permissions"></a>创建用户身份并设置角色权限
 
-使用以下示例，授予 Azure 映像生成器在指定资源组中创建映像的权限。 如果没有此权限，则映像生成过程将不会成功完成。
+使用以下示例授予 Azure 映像生成器在指定资源组中创建映像的权限。 如果没有此权限，则映像生成过程将不会成功完成。
 
-为角色定义和标识名称创建变量。 这些值必须唯一。
+为角色定义和身份名称创建变量。 这些值必须唯一。
 
 ```azurepowershell-interactive
 [int]$timeInt = $(Get-Date -UFormat '%s')
@@ -129,7 +129,7 @@ $identityName = "myIdentity$timeInt"
 New-AzUserAssignedIdentity -ResourceGroupName $imageResourceGroup -Name $identityName
 ```
 
-将标识资源和主体 Id 存储在变量中。
+将身份资源和主体 ID 存储在变量中。
 
 ```azurepowershell-interactive
 $identityNameResourceId = (Get-AzUserAssignedIdentity -ResourceGroupName $imageResourceGroup -Name $identityName).Id
@@ -138,7 +138,7 @@ $identityNamePrincipalId = (Get-AzUserAssignedIdentity -ResourceGroupName $image
 
 ### <a name="assign-permissions-for-identity-to-distribute-images"></a>为标识分配权限以分发映像
 
-下载 json 配置文件，并根据本文中定义的设置对其进行修改。
+下载 .json 配置文件，并根据本文中定义的设置对其进行修改。
 
 ```azurepowershell-interactive
 $myRoleImageCreationUrl = 'https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json'
@@ -171,7 +171,7 @@ New-AzRoleAssignment @RoleAssignParams
 ```
 
 > [!NOTE]
-> 如果收到错误： "_AzRoleDefinition：已超出角色定义限制。无法创建更多的角色定义。 "的详细信息_，请参阅 [Azure RBAC 故障排除](../../role-based-access-control/troubleshooting.md)。
+> 如果收到此错误：“New-AzRoleDefinition: 已超出角色定义限制。无法创建更多的角色定义。”请参阅[排查 Azure RBAC 问题](../../role-based-access-control/troubleshooting.md)。
 
 ## <a name="create-a-shared-image-gallery"></a>创建共享映像库
 
@@ -203,7 +203,7 @@ New-AzGalleryImageDefinition @GalleryParams
 
 ## <a name="create-an-image"></a>创建映像
 
-创建 Azure 映像生成器源对象。 请参阅 [在 Azure Marketplace 中查找 WINDOWS VM 映像，并 Azure PowerShell](./cli-ps-findimage.md) 有效的参数值。
+创建 Azure 映像生成器源对象。 请参阅[使用 Azure PowerShell 在 Azure 市场中查找 Windows VM 映像](./cli-ps-findimage.md)，了解有效的参数值。
 
 ```azurepowershell-interactive
 $SrcObjParams = @{
@@ -242,7 +242,7 @@ $ImgCustomParams01 = @{
 $Customizer01 = New-AzImageBuilderCustomizerObject @ImgCustomParams01
 ```
 
-创建另一个 Azure 映像生成器自定义对象。
+创建第二个 Azure 映像生成器自定义对象。
 
 ```azurepowershell-interactive
 $ImgCustomParams02 = @{
@@ -269,7 +269,7 @@ $ImgTemplateParams = @{
 New-AzImageBuilderTemplate @ImgTemplateParams
 ```
 
-完成后，将返回一条消息，并在中创建一个图像生成器配置模板 `$imageResourceGroup` 。
+完成后，将返回一条消息，并在 `$imageResourceGroup` 中创建一个映像生成器配置模板。
 
 若要确定模板创建过程是否成功，可以使用以下示例。
 
@@ -278,14 +278,14 @@ Get-AzImageBuilderTemplate -ImageTemplateName $imageTemplateName -ResourceGroupN
   Select-Object -Property Name, LastRunStatusRunState, LastRunStatusMessage, ProvisioningState
 ```
 
-在后台，图像生成器还会在您的订阅中创建一个暂存资源组。 此资源组用于生成映像。 它采用以下格式： `IT_<DestinationResourceGroup>_<TemplateName>` 。
+在后台，映像生成器还会在您的订阅中创建一个暂存资源组。 此资源组用于生成映像。 其格式为：`IT_<DestinationResourceGroup>_<TemplateName>`。
 
 > [!WARNING]
-> 不要直接删除暂存资源组。 删除映像模板项目，这将导致删除暂存资源组。
+> 请勿直接删除暂存资源组。 删除映像模板项目会删除暂存资源组。
 
-如果服务在映像配置模板提交期间报告失败：
+如果在提交映像配置模板期间，服务报告失败：
 
-- 请参阅 [排查 AZURE VM 映像构建 (AIB) 故障](../linux/image-builder-troubleshoot.md)。
+- 请参阅[排查 Azure VM 映像生成 (AIB) 故障](../linux/image-builder-troubleshoot.md)。
 - 重试之前，请使用以下示例删除模板。
 
 ```azurepowershell-interactive
@@ -294,15 +294,15 @@ Remove-AzImageBuilderTemplate -ImageTemplateName $imageTemplateName -ResourceGro
 
 ## <a name="start-the-image-build"></a>启动映像生成
 
-将映像配置提交给 VM 映像生成器服务。
+将映像配置提交到 VM 映像生成器服务。
 
 ```azurepowershell-interactive
 Start-AzImageBuilderTemplate -ResourceGroupName $imageResourceGroup -Name $imageTemplateName
 ```
 
-等待映像生成过程完成。 此步骤最多需要一小时。
+等待映像生成过程完成。 此步骤最多需要一个小时。
 
-如果遇到错误，请查看 [疑难解答 AZURE VM 映像构建 (AIB) 故障](../linux/image-builder-troubleshoot.md)。
+如果遇到错误，请查看[排查 Azure VM 映像生成 (AIB) 故障](../linux/image-builder-troubleshoot.md)。
 
 ## <a name="create-a-vm"></a>创建 VM
 
@@ -312,7 +312,7 @@ Start-AzImageBuilderTemplate -ResourceGroupName $imageResourceGroup -Name $image
 $Cred = Get-Credential
 ```
 
-使用所创建的映像创建 VM。
+使用创建的映像创建 VM。
 
 ```azurepowershell-interactive
 $ArtifactId = (Get-AzImageBuilderRunOutput -ImageTemplateName $imageTemplateName -ResourceGroupName $imageResourceGroup).ArtifactId
@@ -320,21 +320,21 @@ $ArtifactId = (Get-AzImageBuilderRunOutput -ImageTemplateName $imageTemplateName
 New-AzVM -ResourceGroupName $imageResourceGroup -Image $ArtifactId -Name myWinVM01 -Credential $Cred
 ```
 
-## <a name="verify-the-customizations"></a>验证自定义
+## <a name="verify-the-customizations"></a>验证自定义项
 
-使用创建 VM 时设置的用户名和密码创建与 VM 的远程桌面连接。 在 VM 中，打开 PowerShell 并运行， `Get-Content` 如以下示例中所示：
+使用创建 VM 时设置的用户名和密码创建与 VM 的远程桌面连接。 在 VM 中，打开 PowerShell 并运行 `Get-Content`，如以下示例所示：
 
 ```azurepowershell-interactive
 Get-Content -Path C:\buildActions\buildActionsOutput.txt
 ```
 
-应会看到基于映像自定义过程中所创建文件的内容的输出。
+你应会看到基于映像自定义过程中所创建文件的内容的输出。
 
 ```Output
 Azure-Image-Builder-Was-Here
 ```
 
-在同一 PowerShell 会话中，通过检查是否存在文件来验证第二个自定义项是否已成功完成， `c:\buildArtifacts\index.html` 如以下示例中所示：
+在同一 PowerShell 会话中，验证第二个自定义项是否已成功完成，方法是检查是否存在文件 `c:\buildArtifacts\index.html`，如以下示例所示：
 
 ```azurepowershell-interactive
 Get-ChildItem c:\buildArtifacts\
@@ -355,7 +355,7 @@ Mode                 LastWriteTime         Length Name
 
 如果不再需要使用本文中创建的资源，可以运行以下示例将其删除。
 
-### <a name="delete-the-image-builder-template"></a>删除图像生成器模板
+### <a name="delete-the-image-builder-template"></a>删除映像生成器模板
 
 ```azurepowershell-interactive
 Remove-AzImageBuilderTemplate -ResourceGroupName $imageResourceGroup -Name $imageTemplateName
@@ -373,4 +373,4 @@ Remove-AzResourceGroup -Name $imageResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解本文中使用的 json 文件的组件，请参阅 [图像生成器模板参考](../linux/image-builder-json.md)。
+若要详细了解本文中使用的 .json 文件的组件，请参阅[映像生成器模板参考](../linux/image-builder-json.md)。

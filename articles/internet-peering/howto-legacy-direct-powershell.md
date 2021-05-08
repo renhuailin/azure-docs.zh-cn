@@ -1,7 +1,7 @@
 ---
-title: 使用 PowerShell 将旧直接对等互连转换为 Azure 资源
+title: 使用 PowerShell 将旧版直接对等互连转换为 Azure 资源
 titleSuffix: Azure
-description: 使用 PowerShell 将旧直接对等互连转换为 Azure 资源
+description: 使用 PowerShell 将旧版直接对等互连转换为 Azure 资源
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -10,17 +10,17 @@ ms.date: 11/27/2019
 ms.author: prmitiki
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: d3e7cdf11e1e1e033b4e72b9579d8c63b28e6c88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89071680"
 ---
-# <a name="convert-a-legacy-direct-peering-to-an-azure-resource-by-using-powershell"></a>使用 PowerShell 将旧直接对等互连转换为 Azure 资源
+# <a name="convert-a-legacy-direct-peering-to-an-azure-resource-by-using-powershell"></a>使用 PowerShell 将旧版直接对等互连转换为 Azure 资源
 
-本文介绍如何使用 PowerShell cmdlet 将现有的旧式直接对等互连转换为 Azure 资源。
+本文介绍如何使用 PowerShell cmdlet 将现有旧版直接对等互连转换为 Azure 资源。
 
-如果愿意，可以使用 Azure [门户](howto-legacy-direct-portal.md)完成本指南。
+如果需要，可以使用 Azure [门户](howto-legacy-direct-portal.md)完成本指南。
 
 ## <a name="before-you-begin"></a>开始之前
 * 在开始配置之前，请查看[先决条件](prerequisites.md)和[直接对等互连演练](walkthrough-direct-all.md)。
@@ -33,8 +33,8 @@ ms.locfileid: "89071680"
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>登录到 Azure 帐户，然后选择订阅
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
-### <a name="get-a-legacy-direct-peering-for-conversion"></a><a name= get></a>获取用于转换的旧直接对等互连
-此示例演示如何在西雅图对等互连位置获取旧式直接对等互连。
+### <a name="get-a-legacy-direct-peering-for-conversion"></a><a name= get></a>获取用于转换的旧版直接对等互连
+此示例演示如何在西雅图对等互连位置获取旧版直接对等互连。
 
 ```powershell
 $legacyPeering = Get-AzLegacyPeering `
@@ -84,9 +84,9 @@ ProvisioningState          : Succeeded
 
 &nbsp;
 > [!IMPORTANT]
-> 将旧式对等互连转换为 Azure 资源时，不支持修改。 &nbsp;
+> 将旧版直接对等互连转换为 Azure 资源时，不支持修改。 &nbsp;
 
-使用此命令可将旧直接对等互连转换为 Azure 资源：
+使用这条命令可将旧版直接对等互连转换为 Azure 资源：
 
 ```powershell
 $legacyPeering[0] | New-AzPeering `
@@ -113,7 +113,7 @@ Tags                 : {}
 ```
 
 ## <a name="additional-resources"></a>其他资源
-可以通过运行以下命令获取所有参数的详细说明：
+可以通过运行以下命令获取所有这些参数的详细说明：
 
 ```powershell
 Get-Help Get-AzPeering -detailed

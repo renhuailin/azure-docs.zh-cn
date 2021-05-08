@@ -3,21 +3,21 @@ title: 将资源移动到新的订阅或资源组
 description: 使用 Azure Resource Manager 将资源移到新的资源组或订阅。
 ms.topic: conceptual
 ms.date: 04/16/2021
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7a50ecc6081f8fa7c7600ddf1f98a95eceafa73b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: e899319460c4d9b144a580e0cb093488ea76683c
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784616"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108322160"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>将资源移到新的资源组或订阅
 
 本文说明了如何将 Azure 资源移动到另一 Azure 订阅，或移动到同一订阅下的另一资源组。 可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 移动资源。
 
-在移动操作过程中，源组和目标组都会锁定。 在完成移动之前，将阻止对资源组执行写入和删除操作。 此锁意味着将无法添加、更新或删除资源组中的资源。 这并不意味着资源已被冻结。 例如，如果将 Azure SQL 逻辑服务器及其数据库移到新的资源组或订阅，则使用这些数据库的应用程序不会遇到停机情况。 这些应用程序仍可读取数据库和写入到数据库。 锁定时间最长可达四小时，但大多数移动所需的完成时间要少得多。
+在移动操作过程中，源组和目标组都会锁定。 在完成移动之前，将阻止对资源组执行写入和删除操作。 此锁意味着将无法添加、更新或删除资源组中的资源。 这并不意味着资源已被冻结。 例如，如果将 Azure SQL 逻辑服务器及其数据库移到新的资源组或订阅，则使用这些数据库的应用程序不会受停机影响。 它们仍可读取和写入数据库。 锁定时间最长可达四小时，但大多数移动所需的完成时间要少得多。
 
-移动资源只会将其移到新的资源组或订阅。 但不会更改该资源的位置。
+移动资源只会将其移到新的资源组或订阅。 它不会更改资源的位置。
 
 ## <a name="changed-resource-id"></a>更改的资源 ID
 

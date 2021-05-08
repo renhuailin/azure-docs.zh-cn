@@ -1,7 +1,7 @@
 ---
 title: 客户端断言 (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: 了解适用于 .NET 的 Microsoft 身份验证库中的机密客户端应用程序的签名客户端断言支持 (MSAL.NET) 。
+description: 了解针对适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 中的机密客户端应用程序的签名客户端断言支持。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 9/30/2020
+ms.date: 03/18/2021
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: f1ff679bddf2afc355516f2a04b3307d4a260a5c
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
-ms.translationtype: MT
+ms.openlocfilehash: 000aeffa982c59f1efbb6ecae73f6b48e95f981e
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063614"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967313"
 ---
 # <a name="confidential-client-assertions"></a>机密客户端断言
 
@@ -48,11 +48,20 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-[Azure AD 预期的声明](active-directory-certificate-credentials.md)为：
+还可以使用委托形式，该形式能让你及时计算断言：
+
+```csharp
+string signedClientAssertion = ComputeAssertion();
+app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
+                                          .WithClientAssertion(() => { return GetSignedClientAssertion(); } )
+                                          .Build();
+```
+
+签名断言中 [Azure AD 预期的声明](active-directory-certificate-credentials.md)为：
 
 声明类型 | 值 | 说明
 ---------- | ---------- | ----------
-aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | “aud”（受众）声明标识 JWT 预期的收件人（在这里为 Azure AD）。请参阅 [RFC 7519 的 4.1.3 节](https://tools.ietf.org/html/rfc7519#section-4.1.3)。  在这种情况下，该收件人是 (login.microsoftonline.com) 的登录服务器。
+aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | “aud”（受众）声明标识 JWT 预期的收件人（在这里为 Azure AD）。请参阅 [RFC 7519 的 4.1.3 节](https://tools.ietf.org/html/rfc7519#section-4.1.3)。  在本例中，该收件人为登录服务器 (login.microsoftonline.com)。
 exp | 1601519414 | “exp”（过期时间）声明指定只能在哪个时间（含）之前接受 JWT 的处理。 请参阅 [RFC 7519 的 4.1.4 节](https://tools.ietf.org/html/rfc7519#section-4.1.4)。  这样就可以在这之前一直使用断言，所以时间要短 - 最多在 `nbf` 之后 5 - 10 分钟。  Azure AD 当前未对 `exp` 时间设置限制。 
 iss | {ClientID} | “iss”（颁发者）声明标识颁发了 JWT 的主体，在本例中是你的客户端应用程序。  使用 GUID 应用程序 ID。
 jti | （一个 GUID） | “jti”(JWT ID) 声明为 JWT 提供唯一标识符。 分配标识符值时，所用方式必须确保几乎不可能将同一值意外分配给不同的数据对象；如果应用程序使用多个颁发者，还必须防止在不同的颁发者生成的值之间发生冲突。 “jti”值是一个区分大小写的字符串。 [RFC 7519 的 4.1.7 节](https://tools.ietf.org/html/rfc7519#section-4.1.7)
@@ -121,11 +130,11 @@ string GetSignedClientAssertion()
     var header = new Dictionary<string, string>()
          {
               { "alg", "RS256"},
-              { "kid", Encode(Certificate.GetCertHash()) }
+              { "kid", Encode(certificate.GetCertHash()) }
          };
 
     //Please see the previous code snippet on how to craft claims for the GetClaims() method
-    string token = Encode(Encoding.UTF8.GetBytes(JObject.FromObject(header).ToString())) + "." + Encode(Encoding.UTF8.GetBytes(JObject.FromObject(GetClaims())));
+    string token = Encode(Encoding.UTF8.GetBytes(JObject.FromObject(header).ToString())) + "." + Encode(Encoding.UTF8.GetBytes(JObject.FromObject(GetClaims()).ToString()));
 
     string signature = Encode(rsa.SignData(Encoding.UTF8.GetBytes(token), new SHA256Cng()));
     string signedClientAssertion = string.Concat(token, ".", signature);

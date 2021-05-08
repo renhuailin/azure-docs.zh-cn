@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 01/22/2021
 ms.author: iangithinji
 ms.reviewer: ''
-ms.openlocfilehash: 8bdb8eb9cf176f8e190769e38c81d02ad2985196
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 4a880fadb91daa34688e3876ba665d97659db015
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376386"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108320846"
 ---
 # <a name="what-is-application-management"></a>什么是应用程序管理？
 
@@ -58,7 +58,7 @@ Azure AD 位于中间，它为云和本地应用提供标识管理。
 
 如果应用尚未在库中，你也可手动配置大多数应用的单一登录。 Azure AD 提供了多种 SSO 选项。 其中最常用的一些是基于 SAML 的 SSO 和基于 OIDC 的 SSO。 若要详细了解如何集成应用来启用 SSO，请参阅[单一登录选项](sso-options.md)。 
 
-你的组织使用的是本地应用吗？ 你可使用应用代理来集成它们。 若要了解详细信息，请参阅[通过 Azure AD 应用程序代理远程访问本地应用程序](application-proxy.md)。
+你的组织使用的是本地应用吗？ 你可使用应用代理来集成它们。 若要了解详细信息，请参阅[通过 Azure AD 应用程序代理远程访问本地应用程序](../app-proxy/application-proxy.md)。
 
 >[!TIP]
 >生成自己的业务线应用程序时，可将其与 Azure AD 集成来支持单一登录。 若要详细了解如何针对 Azure AD 开发应用，请参阅 [Microsoft 标识平台](..//develop/v2-overview.md)。

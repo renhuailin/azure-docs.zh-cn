@@ -5,12 +5,12 @@ description: 了解如何为 Azure Kubernetes 服务 (AKS) 群集更新或重置
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 0b750eb9af7dfd7bcbada7500b6ef71b015db11f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 08a52f68ffdaa3305fbbeefffeeac78a59f3903b
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767468"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107949139"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>更新或轮换 Azure Kubernetes 服务 (AKS) 的凭据
 
@@ -32,7 +32,7 @@ ms.locfileid: "107767468"
 * 创建新服务主体并更新群集以使用这些新凭据。 
 
 > [!WARNING]
-> 如果选择创建新服务主体，那么更新大型 AKS 群集以使用这些凭据可能需要很长时间才能完成。
+> 如果选择创建新的服务主体，请等待大约 30 分钟，让服务主体权限在所有区域中进行传播。 更新大型 AKS 群集以使用这些凭据可能需要很长时间才能完成。
 
 ### <a name="check-the-expiration-date-of-your-service-principal"></a>检查服务主体的到期日期
 

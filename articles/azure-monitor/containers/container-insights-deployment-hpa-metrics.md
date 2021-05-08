@@ -1,22 +1,22 @@
 ---
-title: 部署 & HPA 指标与容器见解 |Microsoft Docs
-description: 本文介绍了如何通过 Container insights 收集 & HPA (横向 pod 自动缩放程序) 指标的部署。
+title: 带有容器见解的部署和 HPA 指标| Microsoft Docs
+description: 本文介绍用容器见解收集的部署和 HPA（水平 pod 自动缩放器）指标。
 ms.topic: conceptual
 ms.date: 08/09/2020
 ms.openlocfilehash: c8bb100b756ea92d73e1c3a698f119b4f8157930
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101717700"
 ---
-# <a name="deployment--hpa-metrics-with-container-insights"></a>部署 & HPA 指标与容器见解
+# <a name="deployment--hpa-metrics-with-container-insights"></a>带有容器见解的部署和 HPA 指标
 
-从代理版本 *ciprod08072020* 开始，Container insights-集成代理现在为部署 & hpa 收集指标。
+从代理版本 ciprod08072020 开始，集成了容器见解的代理现在可以收集部署和 HPA 指标。
 
 ## <a name="deployment-metrics"></a>部署指标
 
-容器见解会自动启动监视部署，方法是收集以下指标，时间间隔为60秒，并将它们存储在 **InsightMetrics** 表中：
+通过以 60 秒的间隔收集以下指标并将其存储在 InsightMetric 表中，容器见解会自动开始监视部署：
 
 |指标名称 |指标维度（标记） |说明 |
 |------------|------------------------|------------|
@@ -24,7 +24,7 @@ ms.locfileid: "101717700"
 
 ## <a name="hpa-metrics"></a>HPA 指标
 
-容器见解会自动开始监视 Hpa，方法是收集以下指标60秒的时间间隔，并将其存储在 **InsightMetrics** 表中：
+通过以 60 秒的间隔收集以下指标并将其存储在 InsightMetric 表中，容器见解会自动开始监视 HPA：
 
 |指标名称 |指标维度（标记） |说明 |
 |------------|------------------------|------------|
@@ -32,7 +32,7 @@ ms.locfileid: "101717700"
 
 ## <a name="deployment--hpa-charts"></a>部署和 HPA 图表 
 
-容器见解包括表中前面列出的指标的预配置图表，作为每个分类的工作簿。 可以直接从 AKS 群集中找到部署和 HPA 工作簿“部署和 HPA”，方法是从左侧窗格中选择“工作簿”，然后从见解中的“查看工作簿”下拉列表中找到  。
+容器见解包含表中前面列出的指标的预配置图表，作为每个群集的工作簿。 可以直接从 AKS 群集中找到部署和 HPA 工作簿“部署和 HPA”，方法是从左侧窗格中选择“工作簿”，然后从见解中的“查看工作簿”下拉列表中找到  。
 
 ## <a name="next-steps"></a>后续步骤
 

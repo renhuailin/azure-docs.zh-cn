@@ -2,23 +2,23 @@
 title: 提高列存储索引性能
 description: 减少内存需求或增加可用内存，使列存储索引压缩到每个行组中的行数最大化。
 services: synapse-analytics
-author: kevinvngo
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: kevin
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 18350dc39fceaf6f4c50f8e1053a2972bbce7f44
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: a452808b1c349e2aec91759675e269e3680f0598
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101676626"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567955"
 ---
-# <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>最大化列存储索引性能的行组质量
+# <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>最大化行组质量，提高列存储索引性能
 
 行组质量由行组中的行数决定。 增加可用内存可以使列存储索引压缩到每个行组中的行数最大化。  使用这些方法来提高列存储索引的压缩率和请求性能。
 
@@ -34,7 +34,7 @@ ms.locfileid: "101676626"
 
 ## <a name="rowgroups-can-get-trimmed-during-compression"></a>在压缩过程中，可对行组进行修剪
 
-在大容量加载或列存储索引重新生成期间，有时没有足够的内存可用于压缩为每个行组指定的所有行。 如果出现内存压力，列存储索引将修剪行组大小，以便能成功将行组压缩到列存储中。
+大容量加载或重新生成列存储索引期间，有时可能因内存不足而无法压缩为每个行组指定的所有行。 如果出现内存压力，列存储索引将修剪行组大小，以便能成功将行组压缩到列存储中。
 
 如果内存不足，无法将至少 10,000 个行压缩到每个行组中，就会生成错误。
 
@@ -42,7 +42,7 @@ ms.locfileid: "101676626"
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>如何监视行组质量
 
-DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?view=azure-sqldw-latest&preserve-view=true) 包含用于公开有用信息（如行组中的行数）的视图) 定义，以及在有修整时修整的原因。 可创建下列视图来轻松查询此 DMV，以便获得关于行组修整的信息。
+DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats（[sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?view=azure-sqldw-latest&preserve-view=true) 包含与 SQL DB 匹配的视图定义），用于公开一些有用信息，例如行组中的行数，以及剪裁原因（如果有过剪裁）。 可创建下列视图来轻松查询此 DMV，以便获得关于行组修整的信息。
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -77,7 +77,7 @@ trim_reason_desc 指示行组是否已修整（trim_reason_desc = NO_TRIM 表示
 
 ## <a name="how-to-estimate-memory-requirements"></a>如何估算内存需求
 
-压缩一个行组所需的最大内存量大致为，如下所示：
+压缩单个行组大致需要的最大内存如下所示：
 
 - 72 MB +
 - \#rows \* \#columns \* 8 字节 +
@@ -85,11 +85,11 @@ trim_reason_desc 指示行组是否已修整（trim_reason_desc = NO_TRIM 表示
 - \#long-string-columns \* 16 MB 用于压缩字典
 
 > [!NOTE]
-> 其中，短字符串列使用字符串数据类型 <= 32 字节，长字符串列使用 > 32 字节的字符串数据类型。
+> 其中，short-string-columns 使用 <= 32 字节的字符串数据类型，long-string-columns 使用 > 32 字节的字符串数据类型。
 
 使用专为压缩文本设计的压缩方法来压缩长字符串。 此压缩方法使用 *词典* 来存储文本模式。 词典最大大小为 16 MB。 行组中每个长字符串列只能有一个词典。
 
-有关列存储内存需求的深入讨论，请参阅视频 [SYNAPSE SQL 缩放：配置和指南](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)。
+有关列存储内存需求的深入讨论，请观看视频 [Synapse SQL scaling: configuration and guidance](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)（Synapse SQL 缩放：配置和指南）。
 
 ## <a name="ways-to-reduce-memory-requirements"></a>减少内存需求的方法
 
@@ -110,7 +110,7 @@ trim_reason_desc 指示行组是否已修整（trim_reason_desc = NO_TRIM 表示
 
 ### <a name="avoid-over-partitioning"></a>避免过度分区
 
-列存储索引会为每个分区创建一个或多个行组。 对于 Azure Synapse 分析中的数据仓库，分区数量会迅速增长，因为数据会分布，并对每个分布进行分区。 如果表中分区过多，可能没有足够行来填充行组。 如果缺少行，在压缩过程中不会产生内存不足的情况，但是这会导致行组无法实现最佳列存储查询性能。
+列存储索引会为每个分区创建一个或多个行组。 对于 Azure Synapse Analytics 中的数据仓库，由于数据是分布式的并且每次分布都会进行分区，因此分区数会快速增加。 如果表中分区过多，可能没有足够行来填充行组。 如果缺少行，在压缩过程中不会产生内存不足的情况，但是这会导致行组无法实现最佳列存储查询性能。
 
 要避免过度分区的另一个原因是，在分区表上将行加载到列存储索引中会产生内存开销。 在加载期间，多数分区可能会收到传入行，它们会保存在内存中，直到每个分区都有足够行可进行压缩。 如果分区过多，可能产生额外的内存压力。
 
@@ -122,7 +122,7 @@ trim_reason_desc 指示行组是否已修整（trim_reason_desc = NO_TRIM 表示
 
 ### <a name="adjust-maxdop"></a>调整 MAXDOP
 
-每个分布都有多个可用的 CPU 内核时，每个分布都将行组同时压缩为列存储。 并行度需要额外的内存资源，这可能会造成内存压力和行组修剪。
+当每次分发有多个 CPU 内核可用时，每次分发都会将行组并行压缩到列存储中。 并行度需要额外的内存资源，这可能会造成内存压力和行组修剪。
 
 若要减少内存压力，可使用 MAXDOP 查询提示，在每次分发中强制加载操作以串行模式运行。
 
@@ -142,5 +142,5 @@ DWU 大小和用户资源类共同确定用户查询可用的内存量。 若要
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解更多提高 Synapse SQL 性能的方法，请参阅 [性能概述](../overview-terminology.md)。
+若要了解提升 Synapse SQL 性能的更多方法，请参阅[性能概述](../overview-terminology.md)。
 
