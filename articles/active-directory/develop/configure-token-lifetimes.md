@@ -14,14 +14,14 @@ ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
 ms.openlocfilehash: 3ec94543a53e3e5b7709801de8f4cf1dde3fc3d9
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99428109"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a>配置令牌生存期策略（预览版）
-你可以指定由 Microsoft 标识平台颁发的访问、SAML 或 ID 令牌的生存期。 可以针对组织中的所有应用、多租户（多组织）应用程序或者组织中的特定服务主体设置生存期。 有关详细信息，请参阅 [可配置的令牌生存期](active-directory-configurable-token-lifetimes.md)。
+你可以指定由 Microsoft 标识平台颁发的访问、SAML 或 ID 令牌的生存期。 可以针对组织中的所有应用、多租户（多组织）应用程序或者组织中的特定服务主体设置生存期。 有关详细信息，请阅读[可配置的令牌生存期](active-directory-configurable-token-lifetimes.md)。
 
 本部分逐步讲解常见的策略场景，帮助你针对令牌生存期实施新规则。 本示例介绍如何创建一个要求用户更频繁地在 Web 应用中进行身份验证的策略。
 
@@ -85,11 +85,11 @@ ms.locfileid: "99428109"
 
 ## <a name="create-token-lifetime-policies-for-refresh-and-session-tokens"></a>为刷新和会话令牌创建令牌生存期策略
 > [!IMPORTANT]
-> 从2021年1月30日起，你无法配置刷新和会话令牌生存期。 Azure Active Directory 不再接受现有策略中的刷新和会话令牌配置。  现有令牌过期后颁发的新令牌现已设置为 [默认配置](active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties-after-the-retirement)。 你仍可以在刷新和会话令牌配置停用后配置访问、SAML 和 ID 令牌的生存期。
+> 从 2021 年 1 月 30 日起，无法再配置刷新和会话令牌生存期。 Azure Active Directory 不再支持现有策略中的刷新和会话令牌配置。  现有令牌过期后颁发的新令牌现已设置为[默认配置](active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties-after-the-retirement)。 在刷新和会话令牌配置停用后，你仍可配置访问权限、SAML 和 ID 令牌生存期。
 >
-> 现有令牌的生存期将不会更改。 过期后，将基于默认值发出新令牌。
+> 现有令牌的生存期不会更改。 在它们过期后，会根据默认值颁发新令牌。
 >
-> 如果需要继续定义要求用户再次登录之前的时间段，请配置条件访问中的登录频率。 若要了解有关条件性访问的详细信息，请参阅 [使用条件访问配置身份验证会话管理](../conditional-access/howto-conditional-access-session-lifetime.md)。
+> 如果需要继续定义要求用户再次登录之前的时间段，请配置条件访问中的登录频率。 若要详细了解条件访问，请参阅[使用条件访问配置身份验证会话管理](../conditional-access/howto-conditional-access-session-lifetime.md)。
 
 ### <a name="manage-an-organizations-default-policy"></a>管理组织的默认策略
 本示例将创建一个策略，使用户以更低的频率在整个组织中登录。 为此，可以为单因素刷新令牌创建一个令牌生存期策略，该策略应用于整个组织。 此策略将应用到组织中的每个应用程序，以及尚未设置策略的每个服务主体。
@@ -211,4 +211,4 @@ ms.locfileid: "99428109"
     现在，已将原始策略链接到服务主体，已将新策略设置为组织默认策略。 请务必记住，应用到服务主体的策略优先级高于组织默认策略。
 
 ## <a name="next-steps"></a>后续步骤
-了解 Azure AD 条件访问中的 [身份验证会话管理功能](../conditional-access/howto-conditional-access-session-lifetime.md) 。
+了解 Azure AD 条件访问中的[身份验证会话管理功能](../conditional-access/howto-conditional-access-session-lifetime.md)。

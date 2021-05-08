@@ -1,5 +1,5 @@
 ---
-title: 包含文件
+title: include 文件
 description: 包含文件
 services: service-bus-messaging
 author: axisc
@@ -9,10 +9,10 @@ ms.date: 6/9/2020
 ms.author: aschhab
 ms.custom: include file
 ms.openlocfilehash: 574507fcc6a3c05919c441bd6d0ec9c573d4b6ae
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100652593"
 ---
 下表列出了 Azure 服务总线当前支持的 Java 消息服务 (JMS) 功能。 它还展示了不支持的功能。
@@ -34,5 +34,5 @@ ms.locfileid: "100652593"
 | 消息选择器 | 取决于创建的使用者 | **支持** |
 | 交付延迟（计划的消息） | <ul> <li> JMSProducer.setDeliveryDelay(long deliveryDelay) </li> </ul>|**支持**|
 | 创建的消息 |<ul> <li> JMSContext.createMessage() </li> <li> JMSContext.createBytesMessage() </li> <li> JMSContext.createMapMessage() </li> <li> JMSContext.createObjectMessage(Serializable object) </li> <li> JMSContext.createStreamMessage() </li> <li> JMSContext.createTextMessage() </li> <li> JMSContext.createTextMessage(String text) </li> </ul>| **支持** |
-| 跨实体事务 |<ul> <li> CreateSession (true，Session.SESSION_TRANSACTED)  </li> </ul> | **支持** |
+| 跨实体事务 |<ul> <li> Connection.createSession(true, Session.SESSION_TRANSACTED) </li> </ul> | **支持** |
 | 分布式事务 || 不支持 |

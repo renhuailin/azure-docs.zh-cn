@@ -8,10 +8,10 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
 ms.openlocfilehash: 0a3188d5dc2c34c9959ae488ad5a5f962a99f02f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98880264"
 ---
 # <a name="publish-an-integrated-solution"></a>发布集成解决方案
@@ -32,8 +32,8 @@ ms.locfileid: "98880264"
 ## <a name="eligibility-criteria"></a>资格条件
 
 * 参与合作伙伴必须具有 MPN ID。
-* 参与服务提供商应 [共同销售](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。
-* 参与的软件供应商应该是 [IP 联销售准备就绪](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。
+* 参与的服务提供商应[准备好进行联合销售](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。
+* 参与的软件供应商应[准备好进行 IP 联合销售](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。
 * 至少一个参与合作伙伴必须具有以下某个领域的黄金资格：
     - 应用程序开发
     - 应用程序集成
@@ -51,7 +51,7 @@ ms.locfileid: "98880264"
 
 ## <a name="submit-a-nomination"></a>提交提名
 
-希望参与计划的合作伙伴应确定他们要合作的其他合作伙伴。 他们应完成 " [集成解决方案提名" 窗体](https://aka.ms/AA5qicu)。 集成解决方案计划团队将评审提名，并在 10 个工作日内进行跟进。 该团队提供审批和后续步骤。
+希望参与计划的合作伙伴应确定他们要合作的其他合作伙伴。 他们应填写[集成解决方案提名表单](https://aka.ms/AA5qicu)。 集成解决方案计划团队将评审提名，并在 10 个工作日内进行跟进。 该团队提供审批和后续步骤。
 
 ## <a name="develop-an-integrated-solution"></a>部署集成解决方案
 

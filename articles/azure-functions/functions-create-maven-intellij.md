@@ -7,10 +7,10 @@ ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter, devx-track-java
 ms.openlocfilehash: 1edfbca2f2a16aeebc1244b298426dc46d72c6d5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101708809"
 ---
 # <a name="create-your-first-java-function-in-azure-using-intellij"></a>在 Azure 中使用 IntelliJ 创建你的第一个 Java 函数
@@ -56,7 +56,7 @@ ms.locfileid: "101708809"
 
    ![设备登录浏览器][intellij-azure-link-ms-account]
 
-6. 在 " **选择订阅** " 对话框中，选择要使用的订阅，然后单击 " **选择**"。
+6. 在“选择订阅”对话框中选择要使用的订阅，并单击“选择” 。
 
    ![“选择订阅”对话框][intellij-azure-login-select-subs]
    

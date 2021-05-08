@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 29aeca30e1fbdd28d3f69597d902a9b714056cd5
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99575917"
 ---
 # <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>使用 Azure AD B2B 协作向本地托管的合作伙伴帐户授予对云资源的访问权限
@@ -26,7 +26,7 @@ ms.locfileid: "99575917"
 如果在本地目录中创建外部合作伙伴的帐户（例如，在 partners.contoso.com 域中为名为 Wendy Moran 的外部用户创建登录名为“wmoran”的帐户），则现在可将这些帐户同步到云。 具体而言，可以使用 Azure AD Connect 将合作伙伴帐户同步到云，这将创建 UserType = Guest 的用户帐户。 这样，合作伙伴用户便可以使用与其本地帐户相同的凭据访问云资源，且不需要向他们授予超过需要的访问权限。
 
 > [!NOTE]
-> 另请参阅如何 [邀请内部用户参加 B2B 协作](invite-internal-users.md)。 使用此功能，无论是否已将帐户从本地目录同步到云，都可以邀请内部来宾用户使用 B2B 协作。 用户接受使用 B2B 协作的邀请后，他们将能够使用自己的标识和凭据登录到你想要访问的资源。 无需维护密码或管理帐户生命周期。
+> 另请参见如何[邀请内部用户参加 B2B 协作](invite-internal-users.md)。 使用此功能，无论是否已将帐户从本地目录同步到云，都可以邀请内部来宾用户使用 B2B 协作。 用户接受使用 B2B 协作的邀请后，将能够使用自己的身份和凭据登录到你想要让他们访问的资源。 无需维护密码或管理帐户生命周期。
 
 ## <a name="identify-unique-attributes-for-usertype"></a>识别 UserType 的唯一属性
 

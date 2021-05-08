@@ -9,10 +9,10 @@ ms.date: 11/13/2019
 ms.author: absha
 ms.custom: mvc
 ms.openlocfilehash: a77476086d6100cbaf49d54791972940cca0644f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101708928"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>重写 Azure 应用程序网关中的 HTTP 请求和响应标头 - Azure 门户
@@ -81,7 +81,7 @@ ms.locfileid: "101708928"
 
      ![添加重写规则名称](media/rewrite-http-headers-portal/rule-name.png)
 
-6. 在此示例中，仅当 location 标头包含对 azurewebsites.net 的引用时，才会重写该标头。 为此，请添加一个条件，用于评估响应中的 location 标头是否包含 azurewebsites.net：
+6. 在此示例中，只有在 location 标头包含对 azurewebsites.net 的引用时，我们才会重写该标头。 为此，请添加一个条件来评估响应中的 location 标头是否包含 azurewebsites.net：
 
    - 选择“添加条件”，  然后选择包含 **If** 指令的框将其展开。
 
@@ -99,7 +99,7 @@ ms.locfileid: "101708928"
 
    - 在“运算符”列表中选择“等于(=)”。  
 
-   - 输入正则表达式模式。 在此示例中，我们将使用模式 `(https?)://.*azurewebsites.net(.*)$` 。
+   - 输入正则表达式模式。 在此示例中，我们将使用 `(https?)://.*azurewebsites.net(.*)$` 模式。
 
    - 选择“确定”  。
 
@@ -115,7 +115,7 @@ ms.locfileid: "101708928"
 
    - 在“常用标头”列表中选择“Location”。  
 
-   - 输入标头值。 在此示例中，我们将使用 `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` 作为标头值。 此值将用 location 标头中的 *contoso.com* 替换 *azurewebsites.net* 。
+   - 输入标头值。 在此示例中，我们将使用 `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` 作为标头值。 此值会将 location 标头中的 azurewebsites.net 替换为 contoso.com 。
 
    - 选择“确定”  。
 

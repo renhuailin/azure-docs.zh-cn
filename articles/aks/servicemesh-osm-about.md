@@ -7,12 +7,12 @@ ms.date: 3/12/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: b0a37400d02ff324e7191bb0b04243d7f16090bd
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: e3bf6748157e53093cc848ffaff37df7c711e64c
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107877149"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209258"
 ---
 # <a name="open-service-mesh-aks-add-on-preview"></a>Open Service Mesh AKS 附加产品（预览版）
 
@@ -54,7 +54,7 @@ OSM 可在以下方案中为 AKS 部署提供帮助：
 
 ## <a name="osm-service-quotas-and-limits-preview"></a>OSM 服务配额和限制（预览版）
 
-可在 AKS [配额和区域限制页](https://docs.microsoft.com/azure/aks/quotas-skus-regions)中找到 OSM 预览版的服务配额和限制。
+可在 AKS [配额和区域限制页](./quotas-skus-regions.md)中找到 OSM 预览版的服务配额和限制。
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -118,7 +118,7 @@ az group create --name <myosmaksgroup> --location <eastus2>
 现在将部署启用了 OSM 附加产品的新 AKS 群集。
 
 > [!NOTE]
-> 请注意，以下 AKS 部署命令利用操作系统临时磁盘。 可在此处找到有关 [AKS 的临时 OS 磁盘](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os)的详细信息
+> 请注意，以下 AKS 部署命令利用操作系统临时磁盘。 可在此处找到有关 [AKS 的临时 OS 磁盘](./cluster-configuration.md#ephemeral-os)的详细信息
 
 ```azurecli-interactive
 az aks create -n osm-addon-cluster -g <myosmaksgroup> --kubernetes-version 1.19.6 --node-osdisk-type Ephemeral --node-osdisk-size 30 --network-plugin azure --enable-managed-identity -a open-service-mesh
@@ -1544,7 +1544,7 @@ Forwarding from [::1]:8080 -> 14001
 #### <a name="deploy-a-new-application-gateway"></a>部署新的应用程序网关
 
 > [!NOTE]
-> 我们将参考现有文档来为现有 AKS 群集启用应用程序网关入口控制器附加产品。 我们已根据 OSM 材料对现有文档进行了一些修改。 可在[此处](https://docs.microsoft.com/azure/application-gateway/tutorial-ingress-controller-add-on-existing)找到有关该主题的更详细文档。
+> 我们将参考现有文档来为现有 AKS 群集启用应用程序网关入口控制器附加产品。 我们已根据 OSM 材料对现有文档进行了一些修改。 可在[此处](../application-gateway/tutorial-ingress-controller-add-on-existing.md)找到有关该主题的更详细文档。
 
 现在，你将部署新的应用程序网关，以模拟你有一个现有的应用程序网关且需要使用它对发往 AKS 群集 _myCluster_ 的流量进行负载均衡的情况。 应用程序网关的名称将是 _myApplicationGateway_，但你需要首先创建一个名为 _myPublicIp_ 的公共 IP 资源、一个名为 _myVnet_ 且地址空间为 11.0.0.0/8 的新虚拟网络、一个名为 _mySubnet_ 且地址空间为 11.1.0.0/16 的子网，然后使用 _myPublicIp_ 在 _mySubnet_ 中部署你的应用程序网关。
 
@@ -1701,7 +1701,7 @@ curl -H 'Host: bookbuyer.contoso.com' http://$appGWPIP/
 
 ### <a name="troubleshooting"></a>疑难解答
 
-- [AGIC 故障排除文档](https://docs.microsoft.com/azure/application-gateway/ingress-controller-troubleshoot)
+- [AGIC 故障排除文档](../application-gateway/ingress-controller-troubleshoot.md)
 - [AGIC 的 GitHub 存储库中提供了其他故障排除工具](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/master/docs/troubleshootings/troubleshooting-installing-a-simple-application.md)
 
 ## <a name="open-service-mesh-osm-monitoring-and-observability-using-azure-monitor-and-applications-insights"></a>使用 Azure Monitor 和 Azure Application Insights 的 Open Service Mesh (OSM) 监视和可观测性

@@ -8,10 +8,10 @@ ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: bf230032afe80680dc392c2a74da2a5aef381983
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100586102"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>监视 Azure 应用服务中的应用
@@ -82,12 +82,12 @@ ms.locfileid: "100586102"
 | **当前程序集** | 此应用程序中的所有 AppDomain 中加载的程序集的当前数量。 |
 | **数据输入** | 应用消耗的传入带宽量，以 MiB 为单位。 |
 | **数据输出** | 应用消耗的传出带宽量，以 MiB 为单位。 |
-| **文件系统使用情况** | 存储共享的用量量（以字节为单位）。 |
+| **文件系统使用情况** | 按存储共享统计的使用量（以字节为单位）。 |
 | **第 0 代垃圾回收** | 自应用进程启动以来对第 0 代对象进行垃圾回收的次数。 较高代系的垃圾回收包括所有较低代系的垃圾回收。|
 | **第 1 代垃圾回收** | 自应用进程启动以来对第 1 代对象进行垃圾回收的次数。 较高代系的垃圾回收包括所有较低代系的垃圾回收。|
 | **第 2 代垃圾回收** | 自应用进程启动以来对第 2 代对象进行垃圾回收的次数。|
 | **句柄计数** | 应用进程当前打开的句柄总数。|
-| **运行状况检查状态** | 应用服务计划中应用程序实例的平均运行状况状态。|
+| **运行状况检查状态** | 应用服务计划中应用程序的实例间的平均运行状况。|
 | **Http 2xx** | 导致 HTTP 状态代码的请求计数大于等于 200，但小于 300。 |
 | **Http 3xx** | 导致 HTTP 状态代码的请求计数大于等于 300，但小于 400。 |
 | **Http 401** | 导致 HTTP 401 状态代码的请求计数。 |

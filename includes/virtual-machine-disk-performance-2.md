@@ -9,10 +9,10 @@ ms.date: 10/12/2020
 ms.author: albecker1
 ms.custom: include file
 ms.openlocfilehash: 82b4c127f983f3133326bf7fb538e40713ef9655
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100580397"
 ---
 ![图表中显示了 D s v 3 规范。](media/vm-disk-performance/dsv3-documentation.jpg)
@@ -71,7 +71,7 @@ ms.locfileid: "100580397"
 
 ![示意图中显示了读取/写入主机缓存写入。](media/vm-disk-performance/host-caching-read-write.jpg)
 
-接下来，我们 Standard_D8s_v3 的虚拟机。 但是，这次我们会在磁盘上启用主机缓存。 另外，现在 VM 的 IOPS 限制为 16,000 IOPS。 附加到 VM 的三个基础 P30 磁盘每个可处理 5,000 IOPS。
+接下来，让我们继续讨论 Standard_D8s_v3 虚拟机。 但是，这次我们会在磁盘上启用主机缓存。 另外，现在 VM 的 IOPS 限制为 16,000 IOPS。 附加到 VM 的三个基础 P30 磁盘每个可处理 5,000 IOPS。
 
 设置：
 

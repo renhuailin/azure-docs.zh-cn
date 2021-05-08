@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 8d99b4d1fbf227d850de387b7ca24dcd3fd40646
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98791149"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Azure Service Fabric 中的灾难恢复
@@ -29,7 +29,7 @@ Azure Service Fabric 的主要目标是帮助你针对环境和服务进行建�
 
 例如，如果服务仅在一台计算机上运行，则该计算机的故障是该服务的灾难。 避免此灾难的简单方法是，确保服务在多台计算机上运行。 另外，必须进行测试以确保一台计算机的故障不会中断正在运行的服务。 容量规划确保可以在其他位置创建替换实例，并且容量减少不会使剩余服务过载。 
 
-无论尝试避免哪种故障，都可以使用这一相同模式。 例如，如果你担心某一 SAN 发生故障，则可跨多个 SAN 运行。 如果担心服务器机架丢失，则可跨多个机架运行。 如果担心数据中心丢失，服务应跨多个 Azure 区域、跨多个 Azure 可用性区域或跨你自己的数据中心运行。 
+无论尝试避免哪种故障，都可以使用这一相同模式。 例如，如果你担心某一 SAN 发生故障，则可跨多个 SAN 运行。 如果担心服务器机架丢失，则可跨多个机架运行。 如果担心数据中心丢失，则应跨多个 Azure 区域、多个 Azure 可用性区域或你自己的数据中心运行服务。 
 
 当服务跨多个物理实例（计算机、机架、数据中心、区域）时，仍可能发生某些类型的同步故障。 但是，系统会自动处理特定类型的单个甚至多个故障（例如，单个虚拟机故障或网络链接故障），因此这些故障不再是“灾难”。 
 
@@ -172,7 +172,7 @@ Service Fabric 的目标是自动管理故障。 但是，若要处理某些类�
 >
 
 - 使用 `Repair-ServiceFabricPartition -PartitionId` 或 `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` API。 使用此 API 可以指定分区 ID，使其从仲裁丢失转为潜在的数据丢失。
-- 如果你的群集遇到导致服务进入仲裁丢失状态的频繁故障，而且可能会 _丢失数据，则_ 指定适当的 [QuorumLossWaitDuration](/powershell/module/servicefabric/update-servicefabricservice) 值可帮助你的服务自动恢复。 在执行恢复之前，Service Fabric 会等待提供的 `QuorumLossWaitDuration` 值（默认为 infinite）。 我们不建议使用此方法，因为它可能导致意外的数据丢失  。
+- 如果群集频繁出现故障，导致服务进入仲裁丢失状态，并且“可以接受潜在的数据丢失”，则指定适当的 [QuorumLossWaitDuration](/powershell/module/servicefabric/update-servicefabricservice) 值有助于服务自动恢复。 在执行恢复之前，Service Fabric 会等待提供的 `QuorumLossWaitDuration` 值（默认为 infinite）。 我们不建议使用此方法，因为它可能导致意外的数据丢失  。
 
 ## <a name="availability-of-the-service-fabric-cluster"></a>Service Fabric 群集的可用性
 一般情况下，Service Fabric 群集是一个分散程度很高的环境，没有任何单一故障点。 任何一个节点发生故障不会给群集造成可用性或可靠性问题，主要是因为 Service Fabric 系统服务遵循前面提供的准则。 即，默认情况下，它们始终运行三个或三个以上的副本，并且无状态系统服务在所有节点上运行。 

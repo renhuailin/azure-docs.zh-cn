@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 8be5ac75e2da3eaeae300fd36e152a24c9777e64
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99593733"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>如何安装使用新应用程序网关的应用程序网关入口控制器 (AGIC)
@@ -20,7 +20,7 @@ ms.locfileid: "99593733"
 
 ## <a name="required-command-line-tools"></a>所需的命令行工具
 
-建议将 [Azure Cloud Shell](https://shell.azure.com/) 用于以下所有命令行操作。 从 shell.azure.com 或单击链接启动 shell：
+建议使用 [Azure Cloud Shell](https://shell.azure.com/) 来执行以下所有的命令行操作。 从 shell.azure.com 或单击以下链接启动 shell：
 
 [![嵌入式启动](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
 
@@ -28,7 +28,7 @@ ms.locfileid: "99593733"
 
 ![门户启动](./media/application-gateway-ingress-controller-install-new/portal-launch-icon.png)
 
-你的 [Azure Cloud Shell](https://shell.azure.com/) 已有所有必需的工具。 如果你选择使用其他环境，请确保已安装以下命令行工具：
+你的 [Azure Cloud Shell](https://shell.azure.com/) 已具有所有必要的工具。 如果选择使用其他环境，请确保已安装以下命令行工具：
 
 * `az` - Azure CLI：[安装说明](/cli/azure/install-azure-cli)
 * `kubectl` - Kubernetes 命令行工具：[安装说明](https://kubernetes.io/docs/tasks/tools/install-kubectl)
@@ -109,7 +109,7 @@ ms.locfileid: "99593733"
 我们已根据上一部分中的说明创建并配置了新的 AKS 群集和应用程序网关。 现在，我们已准备好将一个示例应用和入口控制器部署到新的 Kubernetes 基础结构。
 
 ### <a name="setup-kubernetes-credentials"></a>设置 Kubernetes 凭据
-对于以下步骤，需要设置 [kubectl](https://kubectl.docs.kubernetes.io/) 命令用于连接到新的 Kubernetes 群集。 已安装[Cloud Shell](https://shell.azure.com/) `kubectl` 。 我们将使用 `az` CLI 获取 Kubernetes 的凭据。
+对于以下步骤，需要设置 [kubectl](https://kubectl.docs.kubernetes.io/) 命令用于连接到新的 Kubernetes 群集。 [Cloud Shell](https://shell.azure.com/) 已安装 `kubectl`。 我们将使用 `az` CLI 获取 Kubernetes 的凭据。
 
 获取新部署的 AKS 的凭据（[详细了解](../aks/kubernetes-walkthrough.md#connect-to-the-cluster)）：
 ```azurecli
@@ -277,7 +277,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
     ```
 
 ## <a name="install-a-sample-app"></a>安装示例应用
-现在，我们已安装了应用程序网关、AKS 和 AGIC，接下来可以通过 [Azure Cloud Shell](https://shell.azure.com/)安装示例应用：
+现在我们已经安装了应用程序网关、AKS 和 AGIC，接下来可以通过 [Azure Cloud Shell](https://shell.azure.com/) 安装示例应用：
 
 ```yaml
 cat <<EOF | kubectl apply -f -

@@ -5,10 +5,10 @@ services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: 336c0387ac9febcc517c2ce358d0b04c80d10678
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99576797"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>使用 Azure AD 向 Azure 进行身份验证
@@ -21,7 +21,7 @@ ms.locfileid: "99576797"
 
 * 用于 Graph 的 Azure Active Directory PowerShell（AzureRM 和 Az 模块）。 Azure 自动化随附了 AzureRM 模块及其最新的升级，Az 模块。 功能包括使用 Azure AD 用户 (OrgId) 基于凭据的身份验证向 Azure 进行非交互式身份验证。 请参阅 [Azure AD 2.0.2.76](https://www.powershellgallery.com/packages/AzureAD/2.0.2.76)。
 
-* 用于 Windows PowerShell 的 Microsoft Azure Active Directory（MSOnline 模块）。 此模块启用与 Microsoft Online 的交互，包括 Microsoft 365。
+* 用于 Windows PowerShell 的 Microsoft Azure Active Directory（MSOnline 模块）。 此模块可启用与 Microsoft Online（包括 Office 365）的交互。
 
 >[!NOTE]
 >PowerShell Core 不支持 MSOnline 模块。 若要使用模块 cmdlet，必须从 Windows PowerShell 运行这些 cmdlet。 建议使用较新的用于 Graph 的 Azure Active Directory PowerShell 模块，而不是使用 MSOnline 模块。 
@@ -46,7 +46,7 @@ ms.locfileid: "99576797"
 ### <a name="install-the-msonline-module"></a>安装 MSOnline 模块
 
 >[!NOTE]
->若要安装 MSOnline 模块，你必须是管理员角色的成员。 请参阅[关于管理员角色](/microsoft-365/admin/add-users/about-admin-roles)。
+>要安装 MSOnline 模块，必须是管理员角色的成员。 请参阅[关于管理员角色](/microsoft-365/admin/add-users/about-admin-roles)。
 
 1. 请确保已在计算机上启用 Microsoft .NET Framework 3.5.x 功能。 计算机可能已安装较新版本，但可启用或禁用较旧版本的 .NET Framework 的后向兼容性。 
 

@@ -13,14 +13,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/22/2020
+ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: 83e770cb7eb1aace49745253dac3c757cebb4047
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: eed971471ad8a91f09a812830eb83ac17bc59a01
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101668667"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307565"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>带有适用于 SAP 应用程序的 Azure NetApp 文件的 SUSE Linux Enterprise Server 上 Azure VM 上的 SAP NetWeaver 的高可用性
 
@@ -274,7 +274,6 @@ Azure NetApp 文件在多个 [Azure 区域](https://azure.microsoft.com/global-i
          1. 输入新负载均衡器规则的名称（例如，“lb.QAS.ASCS”）
          1. 选择先前创建的 ASCS 的前端 IP 地址、后端池和运行状况探测（例如，“frontend.QAS.ASCS”、“backend.QAS”和“health.QAS.ASCS”）
          1. 选择“HA 端口”
-         1. 将空闲超时增大到 30 分钟
          1. **确保启用浮动 IP**
          1. 单击“确定”
          * 重复上述步骤，为 ERS 创建负载均衡规则（例如，“lb.QAS.ERS”）
@@ -673,7 +672,7 @@ Azure NetApp 文件在多个 [Azure 区域](https://azure.microsoft.com/global-i
 
 6. [A] 配置 Keep Alive
 
-   SAP NetWeaver 应用程序服务器和 ASCS/SCS 之间的通信是通过软件负载均衡器进行路由的。 负载均衡器在可配置的超时之后将断开非活动连接。 要防止出现这种情况，需要在 SAP NetWeaver ASCS/SCS 配置文件中设置参数（如果使用 ENSA1），并在所有 SAP 服务器上为 ENSA1/ENSA2 更改 Linux 系统 `keepalive` 设置。 有关详细信息，请参阅 [SAP 说明 1410736][1410736]。
+   SAP NetWeaver 应用程序服务器和 ASCS/SCS 之间的通信是通过软件负载均衡器进行路由的。 负载均衡器在可配置的超时之后将断开非活动连接。 若要防止出现这种情况，需要在 SAP NetWeaver ASCS/SCS 配置文件中设置参数（如果使用 ENSA1），并在所有 SAP 服务器上为 ENSA1/ENSA2 更改 Linux 系统 `keepalive` 设置。 有关详细信息，请参阅 [SAP 说明 1410736][1410736]。
 
    <pre><code>
    # Change the Linux system configuration

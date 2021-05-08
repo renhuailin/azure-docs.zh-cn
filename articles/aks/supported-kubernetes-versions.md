@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/29/2021
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: a46d3e8362d48225e5fec11213bfbff370252d8e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c86166c2e38e3fec251707626f5cf9ebab938299
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107782668"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209204"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中支持的 Kubernetes 版本
 
@@ -108,7 +108,7 @@ New Supported Version List
 
 对于 Kubernetes 的新次要版本：
   * AKS 至少在删除前 30 天在 [AKS 发行说明](https://aka.ms/aks/releasenotes)中发布预告，其中包含新版本发布的计划日期以及相应的旧版本弃用。
-  * 如果新版本因 API 被弃用而导致群集出现问题，AKS 将使用 [Azure 顾问](https://docs.microsoft.com/azure/advisor/advisor-overview)向用户发出警报。 如果用户当前没有受到支持，也可以使用 Azure 顾问向用户发出警报。
+  * 如果新版本因 API 被弃用而导致群集出现问题，AKS 将使用 [Azure 顾问](../advisor/advisor-overview.md)向用户发出警报。 如果用户当前没有受到支持，也可以使用 Azure 顾问向用户发出警报。
   * AKS 会向具有 AKS 和门户访问权限的所有用户发布一个[服务运行状况通知](../service-health/service-health-overview.md)，并向订阅管理员发送一封电子邮件，其中包含计划的版本删除日期。
 
     > [!NOTE]
@@ -154,7 +154,7 @@ az aks get-versions --location eastus --output table
 
 **Microsoft 如何通知我关于新 Kubernetes 版本的发布？**
 
-在我们的文档、[GitHub](https://github.com/Azure/AKS/releases) 以及向拥有即将不受支持的群集的订阅管理员发送的电子邮件中，AKS 团队发布了包含新 Kubernetes 版本的计划发布日期的预先公告。  除了公告外，AKS 还使用 [Azure 顾问](https://docs.microsoft.com/azure/advisor/advisor-overview) 在 Azure 门户中通知客户，在用户不受支持时向用户发出警报，并就会影响其应用程序或开发过程的已弃用的 API 提醒他们。 
+在我们的文档、[GitHub](https://github.com/Azure/AKS/releases) 以及向拥有即将不受支持的群集的订阅管理员发送的电子邮件中，AKS 团队发布了包含新 Kubernetes 版本的计划发布日期的预先公告。  除了公告外，AKS 还使用 [Azure 顾问](../advisor/advisor-overview.md) 在 Azure 门户中通知客户，在用户不受支持时向用户发出警报，并就会影响其应用程序或开发过程的已弃用的 API 提醒他们。 
 
 **我应该多久升级一次 Kubernetes 版本才能始终获得支持？**
 
@@ -208,7 +208,7 @@ az aks get-versions --location eastus --output table
 
 不是。 版本弃用/删除后，将无法使用该版本创建群集。 随着更改版的推出，你将开始看到旧版本从版本列表中删除。 从公告开始，此过程可能需要长达两周的时间，按区域逐步进行。
 
-我使用的是刚弃用的版本，是否仍然可以添加新的节点池？或者必须升级？
+**我使用的是刚弃用的版本，是否仍然可以添加新的节点池？或者必须升级？**
 
 不是。 系统不允许你将已弃用版本的节点池添加到群集中。 你可以添加新版本的节点池。 但是，这可能需要先更新控制平面。 
 

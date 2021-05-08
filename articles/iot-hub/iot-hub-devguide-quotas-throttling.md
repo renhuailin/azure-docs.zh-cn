@@ -6,17 +6,17 @@ ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 03/18/2021
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 5a5b20efbf804c2ea1097f905da1cfd62727ff15
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
-ms.translationtype: MT
+ms.openlocfilehash: 4b65d42522f40eb7d0e65356223313a924de3039
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410685"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656985"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
 
@@ -59,7 +59,7 @@ IoT 即插即用设备会为每个接口（包括根）发送至少一条遥测�
 | 最大并发连接设备流数<sup>1</sup> | 50 | 50 | 50 |
 | 最大设备流数据传输<sup>1</sup>（每日聚合量） | 300 MB | 300 MB | 300 MB |
 
-<sup>1</sup>此功能在 IoT 中心的基本层内不可用。 有关详细信息，请参阅[如何选择正确的 IoT 中心](iot-hub-scaling.md)。 <br/><sup>2</sup>限制计量大小为 4 KB。 限制仅基于请求负载大小。
+<sup>1</sup>此功能在 IoT 中心的基本层内不可用。 有关详细信息，请参阅[如何选择正确的 IoT 中心](iot-hub-scaling.md)。 <br/><sup>2</sup>限制计量大小为 4 KB。 限制仅基于请求有效负载大小。
 
 ### <a name="throttling-details"></a>限制详细信息
 
@@ -69,7 +69,7 @@ IoT 即插即用设备会为每个接口（包括根）发送至少一条遥测�
 
    最后，如果有效负载为 156 KB 到 160 KB，则在中心只能每个单位每秒进行 1 次调用，然后就会达到 160 KB/秒/单位的限制。
 
-*  对于 *作业设备操作 (更新克隆，为第 S3 层调用直接方法)* ，50/秒/单位仅适用于使用作业调用方法的情况。 如果直接调用直接方法，则适用于 S3) 的原始阻止限制为 24 MB/秒/单位 (。
+*  就 S3 层级的作业设备操作（更新孪生、调用直接方法）来说，50/秒/单位仅适用于使用作业来调用方法的情况。 如果直接调用直接方法，则适用原始的 24 MB/秒/单位（针对 S3）限制。
 
 *  **配额** 是每天可以在中心发送的聚合消息数。  可以在 [IoT 中心定价页](https://azure.microsoft.com/pricing/details/iot-hub/)上的“消息总数/天”列下找到中心的配额限制。
 
@@ -81,11 +81,13 @@ IoT 即插即用设备会为每个接口（包括根）发送至少一条遥测�
 
 为了应对突发流量，IoT 中心可在有限的一段时间内接受超出限制的请求。 其中的前几个请求会立即得到处理。 但是，如果请求数持续违反限制，IoT 中心会开始将请求放入队列，并以限制速率对其进行处理。 此效应称为“流量整形”。  此外，此队列的大小受到限制。 如果违反限制的情况持续出现，队列最终将会填满，而 IoT 中心会开始拒绝请求并引发 `429 ThrottlingException`。
 
-例如，如果你使用模拟设备每秒将 200 条设备到云的消息发送到 S1 IoT 中心（它限制为每秒发送 100 条 D2C 消息）。 在前一两分钟，消息会立即得到处理。 但是，由于设备发送的消息数持续超过限制，IoT 中心随后将每秒处理 100 条消息，并将剩余的消息放入队列。 此时你会注意到延迟增大。 最终， `429 ThrottlingException` 当队列填满时， [IoT 中心指标的 "限制数"](monitor-iot-hub-reference.md#device-telemetry-metrics) 开始增加。 若要了解如何基于指标创建警报和图表，请参阅 [监视 IoT 中心](monitor-iot-hub.md)。
+例如，如果你使用模拟设备每秒将 200 条设备到云的消息发送到 S1 IoT 中心（它限制为每秒发送 100 条 D2C 消息）。 在前一两分钟，消息会立即得到处理。 但是，由于设备发送的消息数持续超过限制，IoT 中心随后将每秒处理 100 条消息，并将剩余的消息放入队列。 此时你会注意到延迟增大。 最终，在队列填满后，你会开始收到 `429 ThrottlingException`，并且[“限制错误数”IoT 中心指标](monitor-iot-hub-reference.md#device-telemetry-metrics)会开始增加。 若要了解如何基于指标创建警报和图表，请参阅[监视 IoT 中心](monitor-iot-hub.md)。
 
 ### <a name="identity-registry-operations-throttle"></a>标识注册表操作限制
 
 设备标识注册表操作用于设备管理与预配方案中的运行时使用。 通过[导入和导出作业](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)可以支持读取或更新大量的设备标识。
+
+当通过[批量注册表更新操作](https://docs.microsoft.com/rest/api/iothub/service/bulkregistry/updateregistry)启动标识操作时（“而不是”批量导入和导出作业），则会应用相同的限制。 例如，如果你想要提交批量操作来创建 50 个设备，并且有具有 1 个单元的 S1 IoT 中心，则每分钟仅接受其中两个批量请求。 这是因为对于具有 1 个单元的 S1 IoT 中心，标识操作限制为 100/分钟/单元。 在这种情况下，将拒绝同一分钟内第三个请求（以及更多），因为已达到该限制。 
 
 ### <a name="device-connections-throttle"></a>设备连接限制
 
@@ -111,7 +113,7 @@ IoT 中心强制实施其他操作限制：
 | 自动设备和模块配置<sup>1</sup> | 每个付费 SKU 中心 100 个配置。 每个免费 SKU 中心 20 个配置。 |
 | IoT Edge 自动部署<sup>1</sup> | 每个部署 50 个模块。 每个付费 SKU 中心 100 个部署（包括分层部署）。 每个免费 SKU 中心 10 个部署。 |
 | 孪生<sup>1</sup> | 所需属性和报告的属性部分的最大大小各为 32 KB。 标记部分的最大大小为 8 KB。 |
-| 共享访问策略 | 共享访问策略的最大数目为16。 |
+| 共享访问策略 | 共享访问策略的最大数目为 16。 |
 | x509 CA 证书 | 可在 IoT 中心注册的 x509 CA 证书的最大数目为 25。 |
 
 <sup>1</sup>此功能在 IoT 中心的基本层内不可用。 有关详细信息，请参阅[如何选择正确的 IoT 中心](iot-hub-scaling.md)。

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 2058e5362a65b6cd5f3e5b7cb9c20ce32d020d30
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 84e6f76bcae55ed905e11c46df66478908529970
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96928692"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258021"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>为 Azure Active Directory B2C 配置 Experian 的教程
 
@@ -42,7 +42,7 @@ ms.locfileid: "96928692"
 
 - 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 
-- 已链接到 Azure 订阅的 [Azure AD B2C 租户](./tutorial-create-tenant.md)。
+- 一个已链接到 Azure 订阅的 [Azure AD B2C 租户](./tutorial-create-tenant.md)。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -133,7 +133,7 @@ Experian API 调用受客户端证书的保护。 此客户端证书将由 Exper
 
 ### <a name="part-6---configure-the-azure-ad-b2c-policy"></a>第 6 部分 - 配置 Azure AD B2C 策略
 
-请参考此[文档](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack)，以了解有关如何设置 Azure AD B2C 租户和配置策略的说明。
+请参考此[文档](./tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack)，以了解有关如何设置 Azure AD B2C 租户和配置策略的说明。
 
 >[!NOTE]
 >此示例策略基于[本地帐户新手包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)。
@@ -169,4 +169,4 @@ Experian API 调用受客户端证书的保护。 此客户端证书将由 Exper
 
 - [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

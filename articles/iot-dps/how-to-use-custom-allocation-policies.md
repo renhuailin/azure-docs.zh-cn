@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 14a405dbab0460f841a5e9104dbfeff101568f44
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1432aee341509d8a5bdc9fffe89dd9bad33fc7de
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98919168"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766472"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>如何使用自定义分配策略
 
@@ -58,7 +58,7 @@ ms.locfileid: "98919168"
 > 本文中使用的命令将在“美国西部”位置创建预配服务和其他资源。 我们建议在与你最靠近的区域中创建支持设备预配服务的资源。 若要查看可用位置的列表，可以运行 `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` 命令，也可以转到[Azure 状态](https://azure.microsoft.com/status/)页，在其中搜索“设备预配服务”。 在命令中，可以使用一个单词或多个单词的格式来指定位置，例如：westus、West US、WEST US，等等。该值不区分大小写。 如果使用多个单词的格式来指定位置，请将值置于引号中，例如 `-- location "West US"`。
 >
 
-1. 在 Azure Cloud Shell 中，使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
+1. 在 Azure Cloud Shell 中，使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
     以下示例在“westus”区域中创建名为“contoso-us-resource-group”的资源组。  建议对本文中创建的所有资源使用该组。 此方法使你能够在完成后更为轻松地进行清理。
 
@@ -66,7 +66,7 @@ ms.locfileid: "98919168"
     az group create --name contoso-us-resource-group --location westus
     ```
 
-2. 使用 Azure Cloud Shell 通过 [az iot dps create](/cli/azure/iot/dps#az-iot-dps-create) 命令创建设备预配服务 (DPS)。 该预配服务将添加到 *contoso-us-resource-group*。
+2. 使用 Azure Cloud Shell 通过 [az iot dps create](/cli/azure/iot/dps#az_iot_dps_create) 命令创建设备预配服务 (DPS)。 该预配服务将添加到 *contoso-us-resource-group*。
 
     以下示例在“westus”位置中创建名为“contoso-provisioning-service-1098”的预配服务。  必须使用唯一的服务名称。 在服务名称中的 **1098** 位置构成你自己的后缀。
 
@@ -76,7 +76,7 @@ ms.locfileid: "98919168"
 
     此命令可能需要花费几分钟时间完成。
 
-3. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令创建 Contoso 烤箱分区 IoT 中心。 IoT 中心将被添加到 contoso-us-resource-group  。
+3. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) 命令创建 Contoso 烤箱分区 IoT 中心。 IoT 中心将被添加到 contoso-us-resource-group  。
 
     以下示例在“westus”位置中创建名为“contoso-toasters-hub-1098”的 IoT 中心。  必须使用唯一的中心名称。 在中心名称中的 1098  位置构成你自己的后缀。 
 
@@ -89,7 +89,7 @@ ms.locfileid: "98919168"
 
     此命令可能需要花费几分钟时间完成。
 
-4. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令创建 Contoso 热泵分区 IoT 中心。 此 IoT 中心也将被添加到 contoso-us-resource-group  。
+4. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) 命令创建 Contoso 热泵分区 IoT 中心。 此 IoT 中心也将被添加到 contoso-us-resource-group  。
 
     以下示例在“westus”位置中创建名为“contoso-heatpumps-hub-1098”的 IoT 中心。  必须使用唯一的中心名称。 在中心名称中的 1098  位置构成你自己的后缀。 
 
@@ -578,7 +578,7 @@ mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
 
 如果你打算继续使用本文中创建的资源，可以保留它们。 如果你不打算继续使用这些资源，请使用以下步骤删除本文创建的所有资源，以避免不必要的费用。
 
-此处的步骤假定你按照名为 contoso-us-resource-group  的同一资源组的指示创建了本文中的所有资源。
+此处的步骤假定你按照名为 contoso-us-resource-group 的同一资源组的指示创建了本文中的所有资源。
 
 > [!IMPORTANT]
 > 删除资源组的操作不可逆。 资源组以及包含在其中的所有资源将被永久删除。 请确保不要意外删除错误的资源组或资源。 如果在现有的包含要保留资源的资源组中创建了 IoT 中心，则只删除 IoT 中心资源本身，而不要删除资源组。
@@ -588,7 +588,7 @@ mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，然后选择“资源组”。 
 
-2. 在“按名称筛选...”  文本框中，键入包含资源的资源组名称“contoso-us-resource-group”  。 
+2. 在“按名称筛选...”文本框中，键入包含资源的资源组名称“contoso-us-resource-group”。 
 
 3. 在结果列表中的资源组右侧，选择“...”，然后选择“删除资源组”   。
 

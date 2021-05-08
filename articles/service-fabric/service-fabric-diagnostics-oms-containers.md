@@ -1,14 +1,16 @@
 ---
 title: 使用 Azure Monitor 日志监视容器
 description: 使用 Azure Monitor 日志监视 Azure Service Fabric 群集上运行的容器。
+author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: 6217569dc50517c88a5a8a7bc0f3752e7e327f4e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: srrengar
+ms.openlocfilehash: 6539815875b87a0d0f525d7e89464fa7d2505746
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626650"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100570190"
 ---
 # <a name="monitor-containers-with-azure-monitor-logs"></a>使用 Azure Monitor 日志监视容器
  

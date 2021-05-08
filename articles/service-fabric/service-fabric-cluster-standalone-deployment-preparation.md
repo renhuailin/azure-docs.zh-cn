@@ -4,10 +4,10 @@ description: 在部署专用于处理生产工作负荷的群集之前要考虑�
 ms.topic: conceptual
 ms.date: 9/11/2018
 ms.openlocfilehash: 18b8b0ce8c0e877bf9dd274596b19f85b1febe12
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98790946"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>规划和准备 Service Fabric 独立群集部署
@@ -101,9 +101,9 @@ ms.locfileid: "98790946"
 3. 群集节点计算机不应为域控制器。
 4. 如果要部署的群集是安全群集，需确保存在所需的安全先决条件，且已针对配置进行了正确配置。
 5. 如果群集计算机无法访问 Internet，请在群集配置中设置以下项：
-   * 禁用遥测：在 " *属性* " 下，设置 *"enableTelemetry"： false*
-   * 禁用自动构造版本下载 & 通知当前群集版本已接近支持：在 " *属性* " 下，设置 *"fabricClusterAutoupgradeEnabled"： false*
-   * 或者，如果网络 internet 访问仅限于 allowlisted 域，则需要使用以下域进行自动升级： go.microsoft.com download.microsoft.com
+   * 禁用遥测：在“属性”下，设置 *"enableTelemetry": false* 
+   * 禁用自动下载 Fabric 版本和禁用通知当前群集版本支持即将终止：在“属性”下，设置 *"fabricClusterAutoupgradeEnabled": false* 
+   * 或者，如果网络 Internet 访问仅限于允许列表中的域，则需要自动升级以下域：go.microsoft.com download.microsoft.com
 
 6. 设置适当的 Service Fabric 防病毒排除项：
 

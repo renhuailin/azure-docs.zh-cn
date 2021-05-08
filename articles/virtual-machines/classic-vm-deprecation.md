@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
 ms.openlocfilehash: 2fb710bab03d595d6e54bc8dd8fbda38c57123e7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101668206"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>请于 2023 年 3 月 1 日之前将 IaaS 资源迁移到 Azure 资源管理器 
@@ -31,7 +31,7 @@ ms.locfileid: "101668206"
 - 在 2023 年 3 月 1 日，尚未迁移到 Azure 资源管理器的订阅将收到通知，其中附有关于删除所有剩余 VM（经典）的时间安排。  
 
 本次停用不影响下列 Azure 服务和功能： 
-- [Azure 云服务 (经典) ](../cloud-services/cloud-services-choose-me.md)
+- [Azure 云服务（经典）](../cloud-services/cloud-services-choose-me.md)
 - VM（经典）未使用的存储帐户 
 - VM（经典）未使用的虚拟网络 
 - 其他经典资源
@@ -40,11 +40,11 @@ ms.locfileid: "101668206"
 
 - [Microsoft Q&A](/answers/topics/azure-virtual-machines-migration.html)：Microsoft 和社区对迁移的支持。
 
-- [Azure 迁移支持](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"1135e3d0-20e2-aec5-4ef0-55fd3dae2d58"})：在迁移过程中为技术协助提供专用支持团队。 没有技术支持的客户可以使用专门为此迁移提供的 [免费支持功能](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/%7B%0A%20%20%20%20%22pesId%22%3A%20%22f3dc5421-79ef-1efa-41a5-42bf3cbb52c6%22%2C%0A%20%20%20%20%22supportTopicId%22%3A%20%22794bb734-af1b-e2d5-a757-dac7438009ab%22%2C%0A%20%20%20%20%22contextInfo%22%3A%20%22Migrate%20IAAS%20resources%20from%20Classic%20%28ASM%29%20to%20Azure%20Resource%20Manager%20%28ARM%29%22%2C%0A%20%20%20%20%22caller%22%3A%20%22NoSupportPlanASM2ARM%22%2C%0A%20%20%20%20%22severity%22%3A%20%222%22%0A%7D) 。 
+- [Azure 迁移支持](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"1135e3d0-20e2-aec5-4ef0-55fd3dae2d58"})：迁移过程中的技术协助专门支持团队。 没有技术支持的客户可以使用专门为此迁移提供的[免费支持功能](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/%7B%0A%20%20%20%20%22pesId%22%3A%20%22f3dc5421-79ef-1efa-41a5-42bf3cbb52c6%22%2C%0A%20%20%20%20%22supportTopicId%22%3A%20%22794bb734-af1b-e2d5-a757-dac7438009ab%22%2C%0A%20%20%20%20%22contextInfo%22%3A%20%22Migrate%20IAAS%20resources%20from%20Classic%20%28ASM%29%20to%20Azure%20Resource%20Manager%20%28ARM%29%22%2C%0A%20%20%20%20%22caller%22%3A%20%22NoSupportPlanASM2ARM%22%2C%0A%20%20%20%20%22severity%22%3A%20%222%22%0A%7D)。 
 
-- [Microsoft 快速跟踪](https://www.microsoft.com/fasttrack)：快速跟踪可帮助符合要求的客户计划 & 执行此迁移。 为[您](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fprograms%2Fazure-fasttrack%2F%23nomination&data=02%7C01%7CTanmay.Gore%40microsoft.com%7C3e75bbf3617944ec663a08d85c058340%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637360526032558561&sdata=CxWTVQQPVWNwEqDZKktXzNV74pX91uyJ8dY8YecIgGc%3D&reserved=0)提供 DC 迁移计划。  
+- [Microsoft 快速跟踪](https://www.microsoft.com/fasttrack)：快速跟踪可帮助符合要求的客户计划并执行此迁移。 [提名自己](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fprograms%2Fazure-fasttrack%2F%23nomination&data=02%7C01%7CTanmay.Gore%40microsoft.com%7C3e75bbf3617944ec663a08d85c058340%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637360526032558561&sdata=CxWTVQQPVWNwEqDZKktXzNV74pX91uyJ8dY8YecIgGc%3D&reserved=0)参加 DC 迁移计划。  
 
-- 如果你的公司/组织已与 Microsoft 合作，或与 Microsoft 代表 (如云解决方案架构师 (Csa) 或技术客户经理 (Tam) ) ，请与他们合作以获取迁移的其他资源。
+- 如果你的公司/组织已与 Microsoft 合作，或者已与 Microsoft 代表（例如云解决方案架构师 (CSA) 或技术客户经理 (TAM)）合作，请联系他们以获取更多的迁移资源。
 
 ## <a name="what-actions-should-i-take"></a>我应该采取什么措施？ 
 
@@ -54,7 +54,7 @@ ms.locfileid: "101668206"
 
    - 在订阅中，只有 [Azure 门户的 VM 窗格](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ClassicCompute%2FVirtualMachines)上类型为“虚拟机（经典）”的 VM 才受到影响。 
    - 还可使用[门户](https://portal.azure.com/#blade/HubsExtension/ArgQueryBlade/query/resources%0A%7C%20where%20type%20%3D%3D%20%22microsoft.classiccompute%2Fvirtualmachines%22)或 [PowerShell](../governance/resource-graph/concepts/work-with-data.md) 查询 Azure Resource Graph，进而查看已选订阅的所有带标记的 VM（经典）及相关信息的列表。 
-   - 2020年2月8日和9月2日，我们将向订阅所有者发送电子邮件，主题为 "开始向 Azure 资源管理器规划 IaaS VM 迁移"。 该电子邮件提供了一个列表，其中列出了 (经典) Vm 的所有订阅和 Vm。 请使用它们来生成此列表。 
+   - 2020 年 2 月 8 日和 9 月 2 日，我们向订阅所有者发送了电子邮件，主题为“开始计划将 IaaS VM 迁移到 Azure 资源管理器”。 电子邮件中列出了所有订阅和其中的 VM（经典）。 请使用它们来生成此列表。 
 
 1. [详细了解](./migration-classic-resource-manager-overview.md)如何将 [Linux](./migration-classic-resource-manager-plan.md) 和 [Windows](./migration-classic-resource-manager-plan.md) VM（经典）迁移到 Azure 资源管理器。 若要了解详细信息，请参阅[有关从经典部署模型迁移到 Azure 资源管理器部署模型的常见问题](./migration-classic-resource-manager-faq.md)。
 

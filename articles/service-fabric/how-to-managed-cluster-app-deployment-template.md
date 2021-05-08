@@ -3,12 +3,12 @@ title: 使用 ARM 模板部署 Service Fabric 托管群集（预览版）应用�
 description: 使用 Azure 资源管理器模板将应用程序部署到 Azure Service Fabric 托管群集（预览版）。
 ms.topic: how-to
 ms.date: 02/15/2021
-ms.openlocfilehash: e860c77d77e3aabb70f70defdaa25de14e77e0e1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b2d73180de61f44850b9c52a7ac24b0c23c36db2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728005"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100642345"
 ---
 # <a name="deploy-a-service-fabric-managed-cluster-preview-application-using-arm-template"></a>使用 ARM 模板部署 Service Fabric 托管群集（预览版）应用程序
 
@@ -94,7 +94,7 @@ ms.locfileid: "105728005"
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | 要部署到的群集的名称 | sf-cluster123                                                |                                                              |
 | application            | 应用程序的名称                 | Voting                                                       |
-| 版本    | 该应用的资源 ID、应用程序类型和版本。       | /providers/Microsoft.ServiceFabric/managedClusters/sf-cluster-123/applicationTypes/VotingType/versions/1.0.0                                               | 必须匹配 ApplicationManifest.xml                 |
+| version    | 该应用的资源 ID、应用程序类型和版本。       | /providers/Microsoft.ServiceFabric/managedClusters/sf-cluster-123/applicationTypes/VotingType/versions/1.0.0                                               | 必须匹配 ApplicationManifest.xml                 |              |
 | serviceName            | 服务的名称         | VotingWeb                                             | 必须采用 ServiceType 格式            |
 | serviceTypeName        | 服务的类型名称                | VotingWebType                                                    | 必须匹配 ServiceManifest.xml                 |
 | appPackageUrl          | 应用程序的 Blob 存储 URL     | https:\//servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Blob 存储中应用程序包的 URL（设置该 URL 的过程在本文中的后面部分介绍） |

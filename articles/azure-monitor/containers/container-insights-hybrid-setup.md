@@ -3,16 +3,16 @@ title: 为混合 Kubernetes 群集配置容器见解 | Microsoft Docs
 description: 本文介绍如何配置容器见解以监视在 Azure Stack 或其他环境中托管的 Kubernetes 群集。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d2692b4a634d60ef62339f68277591d711260712
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 90a4c14397df8e70fc8f3d88bc339f826bb1ccc9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101711240"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767016"
 ---
-# <a name="configure-hybrid-kubernetes-clusters-with-container-insights"></a>为混合 Kubernetes 群集配置容器见解
+# <a name="configure-hybrid-kubernetes-clusters-with-container-insights"></a>使用容器见解配置混合 Kubernetes 群集
 
-容器见解针对 Azure Kubernetes 服务 (AKS) 和 [Azure 上的 AKS 引擎](https://github.com/Azure/aks-engine)（Azure 上托管的一个自托管 Kubernetes 群集）提供了丰富的监视体验。 本文介绍了如何对在 Azure 外部承载的 Kubernetes 群集启用监视，并实现类似的监视体验。
+容器见解为 Azure Kubernetes 服务 (AKS) 和 [Azure 上的 AKS 引擎](https://github.com/Azure/aks-engine)（在 Azure 上托管的自行管理的 Kubernetes 群集）提供丰富的监视体验。 本文介绍了如何对在 Azure 外部承载的 Kubernetes 群集启用监视，并实现类似的监视体验。
 
 ## <a name="supported-configurations"></a>支持的配置
 
@@ -71,7 +71,7 @@ ms.locfileid: "101711240"
 
 1. 为 Log Analytics 工作区配置容器见解解决方案。   
 
-2. 通过 Log Analytics 工作区启用容器见解 HELM chart。
+2. 为容器见解 HELM 图表启用 Log Analytics 工作区。
 
 有关 Azure Monitor 中监视解决方案的其他信息，请参阅[此文](../../azure-monitor/insights/solutions.md)。
 
@@ -202,7 +202,7 @@ ms.locfileid: "101711240"
     }
     ```
 
-7. 使用在第 3 步复制的值编辑 **workspaceResourceId** 的值。对于 **workspaceRegion**，请在运行 Azure CLI 命令 [az monitor log-analytics workspace show](/cli/azure/monitor/log-analytics/workspace#az-monitor-log-analytics-workspace-list&preserve-view=true) 后复制 **Region** 值。
+7. 使用在第 3 步复制的值编辑 **workspaceResourceId** 的值。对于 **workspaceRegion**，请在运行 Azure CLI 命令 [az monitor log-analytics workspace show](/cli/azure/monitor/log-analytics/workspace#az_monitor-log-analytics-workspace-list&preserve-view=true) 后复制 **Region** 值。
 
 8. 在一个本地文件夹中将该文件另存为 containerSolutionParams.json。
 
@@ -252,7 +252,7 @@ ms.locfileid: "101711240"
 
 ## <a name="install-the-helm-chart"></a>安装 HELM 图表
 
-本部分将为容器见解安装容器化代理。 在继续之前，需要先确定 `omsagent.secret.wsid` 参数所需的工作区 ID 和 `omsagent.secret.key` 参数所需的主密钥。 可以通过执行以下步骤来确定这些信息，然后运行命令来安装使用 HELM 图表的代理。
+本部分介绍如何为容器见解安装容器化代理。 在继续之前，需要先确定 `omsagent.secret.wsid` 参数所需的工作区 ID 和 `omsagent.secret.key` 参数所需的主密钥。 可以通过执行以下步骤来确定这些信息，然后运行命令来安装使用 HELM 图表的代理。
 
 1. 运行以下命令以确定工作区 ID：
 
@@ -325,7 +325,7 @@ ms.locfileid: "101711240"
 
 从图表版本 1.0.0 开始，可通过 ConfigMap 控制代理数据收集设置。 有关代理数据收集设置的文档，请参阅[此文](container-insights-agent-config.md)。
 
-成功部署 chart 后，可以在 Azure 门户中通过容器见解查看混合 Kubernetes 群集的数据。  
+在成功部署了图表后，可以从 Azure 门户通过容器见解查看混合 Kubernetes 群集的数据。  
 
 >[!NOTE]
 >从代理收集数据到在 Azure Log Analytics 工作区中提交数据，引入延迟大约为 5 到 10 分钟。 群集的状态将显示值“无数据”或“未知”，直到所有必需的监视数据在 Azure Monitor 中可用。
@@ -356,7 +356,7 @@ ms.locfileid: "101711240"
 如果尝试为混合 Kubernetes 群集启用监视功能时遇到错误，请复制 PowerShell 脚本 [TroubleshootError_nonAzureK8s.ps1](https://aka.ms/troubleshoot-non-azure-k8s)，并将其保存到计算机上的某个文件夹中。 提供此脚本是为了帮助你检测和解决遇到的问题。 它可检测和尝试更正的问题如下所述：
 
 - 指定的 Log Analytics 工作区有效
-- 为 Log Analytics 工作区配置了容器见解解决方案。 如果没有，请配置工作区。
+- Log Analytics 工作区配置了容器见解解决方案。 如果没有，请配置工作区。
 - OmsAgent replicaset Pod 正在运行
 - OmsAgent daemonset Pod 正在运行
 - OmsAgent 运行状况服务正在运行
@@ -372,4 +372,4 @@ ms.locfileid: "101711240"
 
 ## <a name="next-steps"></a>后续步骤
 
-启用监视功能以收集混合 Kubernetes 群集及其上运行的工作负荷的运行状况和资源利用率后，请了解[如何使用容器见解](container-insights-analyze.md)。
+在启用了监视功能来收集混合 Kubernetes 群集的运行状况和资源利用率以及这些群集上运行的工作负荷之后，请了解[如何使用](container-insights-analyze.md)容器见解。

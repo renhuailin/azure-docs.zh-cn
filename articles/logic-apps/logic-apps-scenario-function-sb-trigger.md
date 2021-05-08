@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 11/08/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a7df9ba1318f40de8af392cfaedbe51d7a5df755
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98784926"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>使用 Azure Functions 和 Azure 服务总线调用或触发逻辑应用
 
-当需要部署长时间运行的侦听器或任务时，可以使用 [Azure Functions](../azure-functions/functions-overview.md) 来触发逻辑应用。 例如，可以创建一个函数，用于侦听 [Azure 服务总线](../service-bus-messaging/service-bus-messaging-overview.md) 队列，并立即以推送触发器的形式触发逻辑应用。
+可使用 [Azure Functions](../azure-functions/functions-overview.md) 触发逻辑应用，以部署长时间运行的侦听器或任务。 例如，可以创建一个用于在 [Azure 服务总线](../service-bus-messaging/service-bus-messaging-overview.md)队列上侦听的函数，并且立即以推送触发器的形式触发逻辑应用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -24,7 +24,7 @@ ms.locfileid: "98784926"
 
 * Azure 服务总线命名空间。 若没有命名空间，请[先创建命名空间](../service-bus-messaging/service-bus-create-namespace-portal.md)。
 
-* 函数应用，它是函数的容器。 若没有函数应用，请[先创建函数应用](../azure-functions/functions-get-started.md)，并确保选择 .NET 作为运行时堆栈。
+* 函数应用，作为函数的容器。 若没有函数应用，请[先创建函数应用](../azure-functions/functions-get-started.md)，并确保选择 .NET 作为运行时堆栈。
 
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
@@ -50,7 +50,7 @@ ms.locfileid: "98784926"
 
    1. 在请求触发器中，选择“使用示例有效负载生成架构”。
 
-   1. 在 " **输入或粘贴示例 JSON 负载**" 下，输入示例负载，然后选择 " **完成**"。
+   1. 在“输入或粘贴示例 JSON 有效负载”下，输入你的示例有效负载，然后选择“完成”。
 
       ![输入示例有效负载](./media/logic-apps-scenario-function-sb-trigger/enter-sample-payload.png)
 

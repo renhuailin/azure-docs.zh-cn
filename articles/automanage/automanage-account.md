@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.author: alsin
-ms.openlocfilehash: b79e061ae00c42ed2ec2ac39f5653a868f09a15f
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 02c122486ad9ca702e518445761fef05675c9067
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107368469"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209690"
 ---
 # <a name="automanage-accounts"></a>Automanage 帐户
 
@@ -46,7 +46,7 @@ Automanage 帐户将获得订阅（包含加入 Automanage 的计算机）的“
 1. 创建 Automanage 帐户
 1. 向帐户授予足够的权限，使其能够为你执行操作
     1. 你将需要为此步骤创建的帐户的对象 ID。
-        1. [此处](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-view-managed-identity-service-principal-portal#view-the-service-principal)提供了查找帐户服务主体（包括对象 ID）详细信息的步骤。
+        1. [此处](../active-directory/managed-identities-azure-resources/how-to-view-managed-identity-service-principal-portal.md#view-the-service-principal)提供了查找帐户服务主体（包括对象 ID）详细信息的步骤。
     1. 找到服务主体后，复制对象 ID。 保存此 ID，供下面委托权限时使用。
 
 #### <a name="1-create-automanage-account-does-not-grant-permissions-to-it"></a>1. 创建 Automanage 帐户（不向其授予权限）

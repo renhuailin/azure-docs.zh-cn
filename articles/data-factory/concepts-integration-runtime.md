@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
 ms.openlocfilehash: 911674a80b531a50cfb429c5dc0ff41f1aaceb08
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100389937"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时 
@@ -22,7 +22,7 @@ ms.locfileid: "100389937"
 
 - **数据流**：在托管的 Azure 计算环境中执行 [数据流](concepts-data-flow-overview.md)。  
 - **数据移动**：跨公用网络中的数据存储和专用网络（本地或虚拟专用网络）中的数据存储复制数据。 它提供对内置连接器、格式转换、列映射以及性能和可扩展数据传输的支持。
-- **活动调度**：调度和监视在各种计算服务（例如 Azure Databricks、azure HDInsight、Azure 机器学习、Azure SQL 数据库、SQL Server 等）上运行的转换活动。
+- **活动分派**：分派和监视在各种计算服务（如 Azure Databricks、Azure HDInsight、Azure 机器学习、Azure SQL 数据库、SQL Server 等等）上运行的转换活动。
 - **SSIS 包执行**：在托管的 Azure 计算环境中本机执行 SQL Server 集成服务 (SSIS) 包。
 
 在数据工厂中，活动定义要执行的操作。 链接服务定义目标数据存储或计算服务。 集成运行时提供活动和链接服务之间的桥梁。  它被链接服务或活动引用，提供运行或分派活动的计算环境。 这样一来，可以在最接近目标数据存储的区域中执行活动，或者，以最优性能计算服务的同时满足安全和合规性需求。
@@ -52,7 +52,7 @@ Azure 集成运行时可以：
 
 - 在 Azure 中运行数据流 
 - 在云数据存储之间运行复制活动
-- 在公用网络中调度以下转换活动： Databricks 笔记本/Jar/Python 活动，HDInsight Hive 活动，HDInsight Pig 活动，HDInsight MapReduce 活动，HDInsight Spark 活动，HDInsight 流式处理活动，Azure 机器学习 Studio (经典) 批处理执行活动，Azure 机器学习 Studio (经典) 更新资源活动，存储过程活动，Data Lake Analytics U SQL 活动，.NET 自定义活动，Web 活动，查找活动，以及获取元数据活动。
+- 在公用网络中调度以下转换活动：Databricks Notebook/Jar/Python 活动、HDInsight Hive 活动、HDInsight Pig 活动、HDInsight MapReduce 活动、HDInsight Spark 活动、HDInsight Streaming 活动、Azure 机器学习工作室（经典）批处理执行活动、Azure 机器学习工作室（经典）更新资源活动、存储过程活动、 Data Lake Analytics U-SQL 活动、.NET 自定义活动、Web 活动、查找活动和获取元数据活动。
 
 ### <a name="azure-ir-network-environment"></a>Azure IR 网络环境
 
@@ -75,7 +75,7 @@ Azure 集成运行时提供了使用安全、可靠和高性能的方式在云�
 自承载 IR 能够：
 
 - 在专用网络中的云数据存储和数据存储之间运行复制活动。
-- 针对本地或 Azure 虚拟网络中的计算资源调度以下转换活动： HDInsight Hive 活动 (BYOC-自带群集) HDInsight Pig 活动 (BYOC) ，HDInsight MapReduce 活动 (BYOC) ，HDInsight Spark 活动 (BYOC) ，HDInsight 流式处理活动 (BYOC) ，Azure 机器学习 Studio (经典) "批处理执行" 活动，Azure 机器学习 Studio (经典) 更新资源活动，存储过程活动，Data Lake Analytics U-SQL 活动，自定义活动 (在 Azure Batch) 、查找活动和获取元数据活动中运行。
+- 对本地或 Azure 虚拟网络中的计算资源分派以下转换活动：HDInsight Hive 活动 (BYOC-Bring Your Own Cluster)、HDInsight Pig 活动 (BYOC)、HDInsight MapReduce 活动 (BYOC)、HDInsight Spark 活动 (BYOC)、HDInsight Streaming 活动 (BYOC)、Azure 机器学习工作室（经典）批处理执行活动、Azure 机器学习工作室（经典）更新资源活动、存储过程活动、Data Lake Analytics U-SQL 活动、自定义活动（在 Azure Batch 上运行）、查找活动和获取元数据活动。
 
 > [!NOTE] 
 > 使用自承载集成运行时支持需要自带驱动程序（如 SAP Hana、MySQL 等）的数据存储。有关详细信息，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
@@ -133,13 +133,13 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
 
 - 对于复制活动，ADF 会尽最大努力自动检测接收器数据存储的位置，然后使用同一区域中的 IR（如果可用）或者使用同一地理位置中最靠近的 IR；如果检测不到接收器数据存储的区域，则会改用数据工厂区域中的 IR。
 
-  例如，你的工厂是在美国东部创建的， 
+  例如，你的工厂在美国东部创建， 
   
-  - 将数据复制到美国西部的 Azure Blob 时，如果 ADF 成功检测到 Blob 在美国西部，则会在美国西部的 IR 上执行复制活动;如果区域检测失败，将在美国东部的 IR 上执行复制活动。
-  - 将数据复制到未检测到其区域的 Salesforce 时，将在美国东部的 IR 上执行复制活动。
+  - 将数据复制到美国西部的 Azure Blob 时，如果 ADF 成功检测到 Blob 在美国西部，则会在美国西部的 IR 上执行复制活动；如果区域检测失败，则将在美国东部的 IR 上执行复制活动。
+  - 将数据复制到未检测到其所在区域的 Salesforce 时，将在美国东部的 IR 上执行复制活动。
 
   >[!TIP] 
-  >如果有严格的数据符合性要求，并需确保数据不离开特定的地域，则可在特定区域显式创建一个 Azure IR，然后使用 ConnectVia 属性将链接服务指向该 IR。 例如，如果要将数据从英国南部中的 Blob 复制到英国南部中的 Azure Synapse Analytics，并希望确保数据不会保留为 UK，请在英国南部中创建 Azure IR，并将这两个链接服务链接到此 IR。
+  >如果有严格的数据符合性要求，并需确保数据不离开特定的地域，则可在特定区域显式创建一个 Azure IR，然后使用 ConnectVia 属性将链接服务指向该 IR。 例如，若需将数据从英国南部的 Blob 复制到英国南部的 Azure Synapse Analytics，并且需确保数据不离开英国，请在英国南部创建一个 Azure IR，然后将两个链接服务均链接到该 IR。
 
 - 对于查找/获取元数据/删除活动执行（也称为管道活动）、转换活动调度（也称为外部活动）和创作操作（测试连接、浏览文件夹列表和表列表、预览数据），ADF 会使用数据工厂区域中的 IR。
 

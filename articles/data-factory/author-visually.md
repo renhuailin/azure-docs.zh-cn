@@ -7,10 +7,10 @@ author: dcstwh
 ms.author: weetok
 ms.date: 09/08/2020
 ms.openlocfilehash: 704360ac37e016de9efe2248181f7db358f5a7cf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100371475"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure 数据工厂中的视觉对象创作
@@ -27,7 +27,7 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 
 ![创作画布](media/author-visually/authoring-canvas.png)
 
-在创作画布中，创作组成工厂的管道、活动、数据集、链接服务、数据流、触发器和集成运行时。 若要开始使用创作画布构建管道，请参阅[使用复制活动复制数据](tutorial-copy-data-portal.md)。 
+在创作画布中，创作组成工厂的管道、活动、数据集、链接服务、数据流、触发器和集成运行时。 若要开始使用创作画布来生成管道，请参阅[使用 Copy 活动复制数据](tutorial-copy-data-portal.md)。 
 
 默认的可视化创作体验是直接使用数据工厂服务。 还支持 Azure Repos Git 或 GitHub 集成，这样可以在生成数据工厂管道时进行源代码管理和协作。 若要详细了解这些创作体验的区别，请参阅 [Azure 数据工厂中的源代码管理](source-control.md)。
 
@@ -49,7 +49,7 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 
 ## <a name="management-hub"></a>管理中心
 
-通过 Azure 数据工厂 UX 中的“管理”选项卡访问的管理中心是一个门户，托管数据工厂的全局管理操作。 在此处，你可以管理到数据存储和外部计算、源控制配置和触发器设置的连接。 有关详细信息，请参阅[管理中心](author-management-hub.md)功能。
+通过 Azure 数据工厂 UX 中的“管理”选项卡访问的管理中心是一个门户，托管数据工厂的全局管理操作。 在这里，你可以管理与数据存储和外部计算的连接、源代码管理配置以及触发器设置。 有关详细信息，请参阅[管理中心](author-management-hub.md)功能。
 
 ![管理链接服务](media/author-management-hub/management-hub-linked-services.png)
 

@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: 87f52bef07644370c268168c984a452d5ae3f9bd
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: fd92eed127ec50a3d3a86f667d9aa764b79c190a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279453"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100585408"
 ---
 # <a name="trusted-storage-for-media-services"></a>受媒体服务信任的存储
 
@@ -29,7 +29,7 @@ ms.locfileid: "106279453"
 
 ## <a name="tutorial"></a>教程
 
-可以通过[媒体服务受信任存储](security-trusted-storage-rest-tutorial.md)教程来了解有关启用受信任存储的详细信息。
+可以通过[媒体服务受信任存储](tutorial-trusted-storage-rest.md)教程来了解有关启用受信任存储的详细信息。
 
 > [!NOTE]
 > 需要授予 AMS 托管标识存储 Blob 数据参与者访问权限，以便媒体服务能够读取和写入存储帐户。  授予通用参与者角色将不起作用，因为它不会针对数据平面启用正确的权限。

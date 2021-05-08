@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 1/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1211cd306f10fb349bd42568697443ff103a171c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b33658ff67c306085a36104679bcc855d0a3f58
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101703077"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208916"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-portal"></a>启用用于路由 Azure 数字孪生事件的托管标识（预览版）：Azure 门户
 
@@ -20,7 +20,7 @@ ms.locfileid: "101703077"
 
 本文介绍如何启用 [Azure 数字孪生实例的系统分配的标识](concepts-security.md#managed-identity-for-accessing-other-resources-preview)（目前为预览版），并在将事件转发到受支持的目标（例如[事件中心](../event-hubs/event-hubs-about.md)、[服务总线](../service-bus-messaging/service-bus-messaging-overview.md)目标）和 [Azure 存储容器](../storage/blobs/storage-blobs-introduction.md)时使用标识。
 
-本文将逐步介绍如何使用 [**Azure 门户**](https://portal.azure.com)完成此过程。
+本文将逐步介绍如何使用 [Azure 门户](https://portal.azure.com)完成此过程。
 
 本文中所涉及的步骤如下： 
 
@@ -38,7 +38,7 @@ ms.locfileid: "101703077"
 
 ### <a name="add-a-system-managed-identity-during-instance-creation"></a>在创建实例的过程中添加系统托管标识
 
-在本部分，你将了解如何在当前正在创建的 Azure 数字孪生实例上启用系统托管标识。 本部分重点介绍创建过程中的托管标识步骤；有关创建新的 Azure 数字孪生实例的完整演练，请参阅[操作指南：设置实例和身份验证](how-to-set-up-instance-portal.md)。
+在本部分，你将了解如何在当前正在创建的 Azure 数字孪生实例上启用系统托管标识。 本部分重点介绍创建过程中的托管标识步骤；有关创建新的 Azure 数字孪生实例的完整演练，请参阅操作指南：设置实例和身份验证。
 
 系统托管标识选项位于实例设置的“高级”选项卡中。
 
@@ -85,7 +85,7 @@ ms.locfileid: "101703077"
 | Azure 服务总线 | Azure 服务总线数据发送方 |
 | Azure 存储容器 | 存储 Blob 数据参与者 |
 
-有关 Azure 数字孪生中支持用于路由的终结点、路由和目标类型的详细信息，请参阅[概念：事件路由](concepts-route-events.md)。
+有关 Azure 数字孪生中支持用于路由的终结点、路由和目标类型的详细信息，请参阅概念：事件路由。
 
 ### <a name="assign-the-role"></a>分配角色
 
@@ -145,4 +145,4 @@ ms.locfileid: "101703077"
 ## <a name="next-steps"></a>后续步骤
 
 详细了解 Azure AD 中的托管标识： 
-* [*Azure 资源的托管标识*](../active-directory/managed-identities-azure-resources/overview.md)
+* [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)

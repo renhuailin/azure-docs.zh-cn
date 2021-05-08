@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 46c6eac80ddbff73d99e05c070e66aa1700da174
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1441210303984bf777c6b580f6f7ab0c67ce6f21
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96928624"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257851"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中配置 Onfido 的教程
 
@@ -30,7 +30,7 @@ ms.locfileid: "96928624"
 
 - 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 
-- 已链接到 Azure 订阅的 [Azure AD B2C 租户](./tutorial-create-tenant.md)。
+- 一个已链接到 Azure 订阅的 [Azure AD B2C 租户](./tutorial-create-tenant.md)。
 
 - Onfido [试用版帐户](https://onfido.com/signup/)。
 
@@ -142,7 +142,7 @@ Onfido 集成包括以下组件：
 
 ### <a name="part-4---configure-the-azure-ad-b2c-policy"></a>第 4 部分 - 配置 Azure AD B2C 策略
 
-请参考本[文档](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack)，以了解有关如何设置 Azure AD B2C 租户和配置策略的说明。
+请参考本[文档](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack)，以了解有关如何设置 Azure AD B2C 租户和配置策略的说明。
 
 >[!NOTE]
 > 作为最佳做法，我们会建议客户在属性收集页中添加许可通知。 通知用户：信息将会发送到第三方服务来进行身份验证。
@@ -167,8 +167,8 @@ Onfido 集成包括以下组件：
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多信息，请查看以下文章：
+有关更多信息，请参阅以下文章：
 
 - [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

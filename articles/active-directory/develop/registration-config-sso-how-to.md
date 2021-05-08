@@ -13,10 +13,10 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
 ms.openlocfilehash: 60a07145e38c19f577ad9864efb599e7b244aa83
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101653705"
 ---
 # <a name="how-to-configure-single-sign-on-for-an-application"></a>如何为应用程序配置单一登录
@@ -43,4 +43,4 @@ ms.locfileid: "101653705"
 
 [Microsoft 标识平台中的权限和许可](./v2-permissions-and-consent.md)<br>
 
-[AzureAD Microsoft Q&](/answers/topics/azure-active-directory.html)
+[AzureAD Microsoft Q&A](/answers/topics/azure-active-directory.html)

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/29/2021
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 9eabd64abc4c8fbbc187f45ceb59ea2f786558bc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8724434b4ff354a7fc9fc1ed979348ec3023af80
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937953"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209744"
 ---
 # <a name="migrate-to-azure-app-service"></a>迁移到 Azure 应用服务
 
@@ -26,4 +26,4 @@ ms.locfileid: "105937953"
 
 [观看如何将 Web 应用迁移到 Azure 应用服务](https://www.youtube.com/watch?v=9LBUmkUhmXU)。
 
-下一步：[将本地 Web 应用程序移动到 Azure 应用服务](https://docs.microsoft.com/learn/modules/migrate-app-service-migration-assistant/)
+下一步：[将本地 Web 应用程序移动到 Azure 应用服务](/learn/modules/migrate-app-service-migration-assistant/)

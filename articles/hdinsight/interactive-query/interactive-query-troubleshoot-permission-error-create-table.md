@@ -1,17 +1,17 @@
 ---
-title: Azure HDInsight 中 Apache Hive 表的权限拒绝错误
+title: Azure HDInsight 中的 Apache Hive 表出现“权限被拒绝”错误
 description: 尝试在 Azure HDInsight 中创建 Apache Hive 表时出现“权限被拒绝”错误
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/09/2019
 ms.openlocfilehash: 6d91ca747bb264b4c7262eec2bb0745b8a40b7a0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98930919"
 ---
-# <a name="scenario-permission-denied-error-when-trying-to-create-an-apache-hive-table-in-azure-hdinsight"></a>方案：尝试在 Azure HDInsight 中创建 Apache Hive 表时出现“权限被拒绝”错误
+# <a name="scenario-permission-denied-error-when-trying-to-create-an-apache-hive-table-in-azure-hdinsight"></a>情景：尝试在 Azure HDInsight 中创建 Apache Hive 表时出现“权限被拒绝”错误
 
 本文介绍在 Azure HDInsight 群集中使用交互式查询组件时出现的问题的故障排除步骤和可能的解决方案。
 

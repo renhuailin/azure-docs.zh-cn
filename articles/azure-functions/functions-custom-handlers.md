@@ -6,10 +6,10 @@ ms.author: antchu
 ms.date: 12/1/2020
 ms.topic: article
 ms.openlocfilehash: dd112c74ea9f013a0e14bddd735060ddbf73c14e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100578522"
 ---
 # <a name="azure-functions-custom-handlers"></a>Azure Functions 自定义处理程序
@@ -516,7 +516,7 @@ func main() {
 
 ## <a name="deploying"></a>正在部署
 
-可将自定义处理程序部署到每个 Azure Functions 托管选项。 如果处理程序需要操作系统或平台依赖项 (如语言运行时) ，则可能需要使用 [自定义容器](./functions-create-function-linux-custom-image.md)。
+可将自定义处理程序部署到每个 Azure Functions 托管选项。 如果处理程序需要操作系统或平台依赖项（如语言运行时），则可能需要使用[自定义容器](./functions-create-function-linux-custom-image.md)。
 
 在 Azure 中为自定义处理程序创建函数应用时，建议选择 .NET Core 作为堆栈。 未来将为自定义处理程序添加“自定义”堆栈。
 
@@ -575,7 +575,7 @@ Functions 主机输出额外的日志消息，包括与自定义处理程序进�
 
 ### <a name="execution-environment"></a>执行环境
 
-自定义处理程序与典型 Azure Functions 应用在同一环境中运行。 测试处理程序，以确保环境包含其运行所需的所有依赖项。 对于需要其他依赖项的应用程序，你可能需要使用托管在 Azure Functions[高级计划](functions-premium-plan.md)中的[自定义容器映像](functions-create-function-linux-custom-image.md)来运行它们。
+自定义处理程序与典型 Azure Functions 应用在同一环境中运行。 测试处理程序，以确保环境包含其运行所需的所有依赖项。 对于需要其他依赖项的应用，可能需要使用 Azure Functions [高级计划](functions-premium-plan.md)上托管的[自定义容器映像](functions-create-function-linux-custom-image.md)来运行它们。
 
 ### <a name="get-support"></a>获取支持
 

@@ -7,10 +7,10 @@ ms.date: 02/09/2020
 ms.author: jpalma
 author: palma21
 ms.openlocfilehash: eaf512915532b482c25e830cd9f2e01d61aa4524
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100572784"
 ---
 # <a name="configure-an-aks-cluster"></a>配置 AKS 群集
@@ -19,15 +19,15 @@ ms.locfileid: "100572784"
 
 ## <a name="os-configuration"></a>OS 配置
 
-AKS 现在支持将 Ubuntu 18.04 作为默认的节点操作系统 (OS) )  (在 kubernetes 版本1.18 低于1.18 的版本中，对于低于的群集的默认节点操作系统，AKS Ubuntu 16.04 仍是默认的基本映像。 从 kubernetes v 1.18 和更高版本中，默认基准是 AKS Ubuntu 18.04。
+AKS 现在支持 Ubuntu 18.04 的正式发布 (GA) 版作为 kubernetes 版本高于 1.18 的群集的默认节点操作系统 (OS)，对于低于 1.18 的版本，AKS Ubuntu 16.04 仍是默认的基础映像。 从 Kubernetes v1.18 及更高版本开始，默认基础映像是 AKS Ubuntu 18.04。
 
 > [!IMPORTANT]
-> 在 Kubernetes v1.18 或更高版本上创建的节点池默认使用 `AKS Ubuntu 18.04` 节点映像。 在支持的 Kubernetes 版本上，节点池小于1.18 的接收 `AKS Ubuntu 16.04` 节点映像，但在将 `AKS Ubuntu 18.04` 节点池 Kubernetes 版本更新为 v 1.18 或更高版本后，将更新为。
+> 在 Kubernetes v1.18 或更高版本上创建的节点池默认使用 `AKS Ubuntu 18.04` 节点映像。 低于 1.18 的受支持 Kubernetes 版本上的节点池会接收 `AKS Ubuntu 16.04` 作为节点映像，但在节点池 Kubernetes 版本更新到 v1.18 或更高版本后就会更新到 `AKS Ubuntu 18.04`。
 > 
 > 强烈建议在使用 1.18 或更高版本上创建的群集之前，在 AKS Ubuntu 18.04 节点池上测试工作负荷。
 
 
-### <a name="use-aks-ubuntu-1804-ga-on-new-clusters"></a>在新群集上使用 AKS Ubuntu 18.04 (GA) 
+### <a name="use-aks-ubuntu-1804-ga-on-new-clusters"></a>在新群集上使用 AKS Ubuntu 18.04 (GA)
 
 在 Kubernetes v1.18 或更高版本上创建的群集默认使用 `AKS Ubuntu 18.04` 节点映像。 低于 1.18 的受支持 Kubernetes 版本上创建的节点池仍会接收 `AKS Ubuntu 16.04` 作为节点映像，但在群集或节点池 Kubernetes 版本更新到 v1.18 或更高后就会更新到 `AKS Ubuntu 18.04`。
 
@@ -39,7 +39,7 @@ AKS 现在支持将 Ubuntu 18.04 作为默认的节点操作系统 (OS) )  (在 
 az aks create --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
 ```
 
-### <a name="use-aks-ubuntu-1804-ga-on-existing-clusters"></a>使用现有群集上的 AKS Ubuntu 18.04 (GA) 
+### <a name="use-aks-ubuntu-1804-ga-on-existing-clusters"></a>在现有的群集上使用 AKS Ubuntu 18.04 (GA)
 
 在 Kubernetes v1.18 或更高版本上创建的群集默认使用 `AKS Ubuntu 18.04` 节点映像。 低于 1.18 的受支持 Kubernetes 版本上创建的节点池仍会接收 `AKS Ubuntu 16.04` 作为节点映像，但在群集或节点池 Kubernetes 版本更新到 v1.18 或更高后就会更新到 `AKS Ubuntu 18.04`。
 
@@ -57,7 +57,7 @@ az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes
 az aks nodepool upgrade -name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
 ```
 
-### <a name="test-aks-ubuntu-1804-ga-on-existing-clusters"></a>在现有群集上测试 AKS Ubuntu 18.04 (GA) 
+### <a name="test-aks-ubuntu-1804-ga-on-existing-clusters"></a>在现有的群集上测试 AKS Ubuntu 18.04 (GA)
 
 在 Kubernetes v1.18 或更高版本上创建的节点池默认使用 `AKS Ubuntu 18.04` 节点映像。 低于 1.18 的受支持 Kubernetes 版本上创建的节点池仍会接收 `AKS Ubuntu 16.04` 作为节点映像，但在节点池 Kubernetes 版本更新到 v1.18 或更高后就会更新到 `AKS Ubuntu 18.04`。
 
@@ -100,20 +100,20 @@ az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-gro
 * 对于 `containerd`，建议使用 [`crictl`](https://kubernetes.io/docs/tasks/debug-application-cluster/crictl) 作为替代 CLI（而不是使用 Docker CLI），以便对 Kubernetes 节点上的 Pod、容器和容器映像进行故障排除（例如 `crictl ps`）。 
    * 它不提供 Docker CLI 的完整功能。 它仅用于故障排除目的。
    * `crictl` 提供更适合 Kubernetes 的容器视图，其中存在 Pod 等概念。
-* `Containerd` 使用标准化 `cri` 日志格式 (设置日志记录格式，这不同于从 docker 的 json 驱动程序) 获取的内容。 日志记录解决方案需要支持 `cri` 日志记录格式（例如，[用于容器的 Azure Monitor](../azure-monitor/containers/container-insights-enable-new-cluster.md)）
+* `Containerd` 使用标准化 `cri` 日志记录格式（不同于你当前从 Docker 的 JSON 驱动程序获取的内容）设置日志记录。 日志记录解决方案需要支持 `cri` 日志记录格式（例如，[用于容器的 Azure Monitor](../azure-monitor/containers/container-insights-enable-new-cluster.md)）
 * 你不能再访问 docker 引擎 `/var/run/docker.sock` 或使用 Docker-in-Docker (DinD)。
   * 如果目前从 Docker 引擎提取应用程序日志或监视数据，请改用其他工具，例如[用于容器的 Azure Monitor](../azure-monitor/containers/container-insights-enable-new-cluster.md)。 此外，AKS 不支持在可能导致不稳定的代理节点上运行任何带外命令。
   * 强烈建议不要通过上述方法构建映像并直接利用 docker 引擎，即使在使用 Moby/docker 的情况下也是如此。 Kubernetes 并不能完全感知这些已使用的资源，并且这些方法会导致许多问题，详见[此处](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/)和[此处](https://securityboulevard.com/2018/05/escaping-the-whale-things-you-probably-shouldnt-do-with-docker-part-1/)的示例。
-* 生成映像-您可以继续使用当前的 docker 生成工作流，除非要在 AKS 群集中构建映像。 在这种情况下，请考虑切换到建议的方法，以便使用 [ACR 任务](../container-registry/container-registry-quickstart-task-cli.md)或更安全的群集中选项（如 [docker buildx](https://github.com/docker/buildx)）来生成映像。
+* 生成映像 - 可以继续像往常一样使用当前的 docker 生成工作流，除非是在 AKS 群集中生成映像。 在这种情况下，请考虑切换到建议的方法，以便使用 [ACR 任务](../container-registry/container-registry-quickstart-task-cli.md)或更安全的群集中选项（如 [docker buildx](https://github.com/docker/buildx)）来生成映像。
 
 ## <a name="generation-2-virtual-machines"></a>第 2 代虚拟机
 
-Azure 支持 [第2代 (Gen2) 虚拟机 (vm) ](../virtual-machines/generation-2.md)。 第2代 Vm 支持第1代 Vm 不支持的关键功能 (Gen1) 。 这些特性包括更大的内存、Intel Software Guard Extensions (Intel SGX) 和虚拟化持久性内存 (vPMEM)。
+Azure 支持[第 2 代 (Gen2) 虚拟机 (VM)](../virtual-machines/generation-2.md)。 第 2 代 VM 支持第 1 代 VM (Gen1) 所不支持的某些关键特性。 这些特性包括更大的内存、Intel Software Guard Extensions (Intel SGX) 和虚拟化持久性内存 (vPMEM)。
 
 第 2 代 VM 使用新的基于 UEFI 的启动体系结构，而不是使用第 1 代 VM 所用的基于 BIOS 的体系结构。
-只有特定的 Sku 和大小支持 Gen2 Vm。 查看 [受支持的大小列表](../virtual-machines/generation-2.md#generation-2-vm-sizes)，查看你的 SKU 是否支持或需要 Gen2。
+只有特定的 SKU 和大小支持第 2 代 VM。 查看[受支持的大小列表](../virtual-machines/generation-2.md#generation-2-vm-sizes)，查看你的 SKU 是否支持或需要第 2 代。
 
-此外，并非所有 VM 映像都支持 Gen2，在 AKS Gen2 Vm 上，将使用新的 [AKS Ubuntu 18.04 映像](#os-configuration)。 此映像支持所有 Gen2 Sku 和大小。
+此外，并非所有 VM 映像都支持第 2 代，在 AKS 第 2 代 VM 上，将使用新的 [AKS Ubuntu 18.04 映像](#os-configuration)。 此映像支持所有第 2 代 SKU 和大小。
 
 ## <a name="ephemeral-os"></a>临时 OS
 

@@ -14,10 +14,10 @@ ms.date: 08/21/2020
 ms.author: sasarava
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ccfdffc4e488de7f3cecb150305596743b3a9e44
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101675403"
 ---
 # <a name="compatible-operating-systems-for-hana-large-instances"></a>适用于 HANA 大型实例的兼容操作系统

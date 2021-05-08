@@ -17,10 +17,10 @@ ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d689db4916758e13311ad181fb3b5d7ca9a85260
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101675326"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver 的高可用性体系结构和方案
@@ -355,12 +355,12 @@ _**图 1：** 高可用性 SAP 应用程序服务器_
 
 必须将所有托管 SAP 应用程序服务器实例的虚拟机放置在同一个 Azure 可用性集中。 Azure 可用性集确保：
 
-* 所有虚拟机都不属于同一更新域。  
+* 所有虚拟机不同属一个更新域。  
     更新域可确保虚拟机在计划的维护停机时间期间不会同时更新。
 
     [更新域][planning-guide-3.2.2]部分已介绍了在 Azure 缩放单元内的不同更新域和容错域上构建的基本功能。
 
-* 所有虚拟机都不属于同一容错域。  
+* 所有虚拟机不同属一个容错域。  
     容错域可确保将虚拟机部署为任何单一故障点都不会影响所有虚拟机的可用性。
 
 Azure 缩放单元内的 Azure 可用性集可使用不限数目的更新和容错域。 如果你不断将 VM 添加到单个可用性集，则会两个或多个 VM 最终将在同一个容错或更新域中。

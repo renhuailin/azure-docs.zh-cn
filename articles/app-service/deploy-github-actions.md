@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: aa4475ccedfb19ece540337f493bcc5ed64af035
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: c17b18f42a5b07252874aef812a50746e069c1a9
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832457"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209726"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>使用 GitHub Actions 部署到应用服务
 
@@ -24,7 +24,7 @@ ms.locfileid: "107832457"
 - 一个 GitHub 帐户。 如果没有该帐户，请注册[免费版](https://github.com/join)。  
 - 运行正常的 Azure 应用服务应用。 
     - .NET:[在 Azure 中创建 ASP.NET Core Web 应用](quickstart-dotnetcore.md)
-    - ASP.NET：[在 Azure 中创建 ASP.NET Framework Web 应用](quickstart-dotnet-framework.md)
+    - ASP.NET：[在 Azure 中创建 ASP.NET Framework Web 应用](./quickstart-dotnetcore.md?tabs=netframework48)
     - JavaScript：[在 Azure 应用服务中创建 Node.js Web 应用](quickstart-nodejs.md)  
     - Java:[在 Azure 应用服务中创建 Java 应用](quickstart-java.md)
     - Python:[在 Azure 应用服务中创建 Python 应用](quickstart-python.md)

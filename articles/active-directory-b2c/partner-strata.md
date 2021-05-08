@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 49def79c467aa8f2b3fda9688dc77fcb003a34a5
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 69355b58e36f435b5b5dbe94af72d55d9806b156
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256559"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100557169"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>本教程介绍如何使用 Strata 扩展 Azure AD B2C 以保护本地应用程序
 
@@ -107,7 +107,7 @@ Strata 的 Maverics 集成包括以下组件：
 
 - 端口：22 (SSH/SCP)、443、80
 
-- 安装/管理任务的根访问
+- 适用于安装/管理任务的根访问权限
 
 - Maverics 标识业务流程协调程序以 `systemd` 下用户 `maverics` 的身份运行
 
@@ -344,4 +344,4 @@ appgateways:
 
 - [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](tutorial-create-user-flows.md?pivots=b2c-custom-policy)
+- [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md?tabs=applications)

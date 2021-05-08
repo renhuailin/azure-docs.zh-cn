@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ca55b1df347b47a6eb82557658d59a3de666b703
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 07310a5b6f275d4a35a3649c22aeea68045dde8b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558391"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101661842"
 ---
 # <a name="azure-role-based-access-control-rbac-and-device-update"></a>Azure 基于角色的访问控制 (RBAC) 和设备更新
 
@@ -39,7 +39,7 @@ ms.locfileid: "105558391"
 
 ### <a name="create-client-azure-ad-app"></a>创建客户端 Azure AD 应用
 
-若要将某个应用程序或服务与 Azure AD 进行集成，请先将该应用程序[注册](../active-directory/develop/quickstart-register-app.md)到 Azure AD。 根据所使用的授权流，客户端应用程序的安装会有所不同。  下面是使用设备更新 REST API 时的配置指导。
+若要将某个应用程序或服务与 Azure AD 进行集成，请先将该应用程序[注册](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)到 Azure AD。 根据所使用的授权流，客户端应用程序的安装会有所不同。  下面是使用设备更新 REST API 时的配置指导。
 
 * 设置客户端身份验证：“用于本机或 Web 客户端的重定向 URI”。
 * 设置 API 权限 - IoT 中心设备更新公开：

@@ -1,14 +1,16 @@
 ---
 title: 监视 Azure Service Fabric 中的 Linux 群集事件
 description: 了解如何通过将 Service Fabric 平台事件写入 Syslog 来监视 Service Fabric Linux 群集事件。
+author: srrengar
 ms.topic: conceptual
 ms.date: 10/23/2018
-ms.openlocfilehash: 895ff340c1b649c1ba8a20bf95edcefb9a72e246
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: srrengar
+ms.openlocfilehash: 6a98a833baefa9b1c2d1ebd9ff8147206c2106bf
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626956"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100570199"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Syslog 中的 Service Fabric Linux 群集事件
 

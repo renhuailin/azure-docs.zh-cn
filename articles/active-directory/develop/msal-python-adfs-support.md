@@ -14,10 +14,10 @@ ms.author: abpati
 ms.reviewer: nacanuma
 ms.custom: aaddev, devx-track-python
 ms.openlocfilehash: d847e38a6114b0e5f8d56f6e994aa47dfbe929e7
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99583699"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>适用于 Python 的 MSAL 中的 Active Directory 联合身份验证服务支持
@@ -26,7 +26,7 @@ ms.locfileid: "99583699"
 
 通常，可以通过两种方式对 AD FS 进行身份验证：
 
-- MSAL Python 与 Azure Active Directory 通信，后者本身已与其他标识提供者联合。 联合是通过 AD FS 发生的。 MSAL Python 会连接到 Azure AD，后者可将在 Azure AD 中管理的用户（托管用户）或由其他标识提供者（例如 AD FS）管理的用户（联合用户）登录。 MSAL Python 不知道用户是联合的。 它只与 Azure AD 通信。 在本案例中使用的[机构](msal-client-application-configuration.md#authority)是普通的机构（机构主机名 + 租户、通用机构或组织）。
+- MSAL Python 与 Azure Active Directory 通信，后者本身已与其他标识提供者联合。 联合是通过 AD FS 发生的。 MSAL Python 会连接到 Azure AD，后者可将在 Azure AD 中管理的用户（托管用户）或由其他标识提供者（例如 AD FS）管理的用户（联合用户）登录。 MSAL Python 不知道用户是联合的。 它直接与 Azure AD 通信。 在本案例中使用的[机构](msal-client-application-configuration.md#authority)是普通的机构（机构主机名 + 租户、通用机构或组织）。
 - MSAL Python 直接与 AD FS 机构通信。 只有 AD FS 2019 和更高版本支持此功能。
 
 ## <a name="connect-to-active-directory-federated-with-ad-fs"></a>连接到与 AD FS 联合的 Active Directory
@@ -57,7 +57,7 @@ ms.locfileid: "99583699"
 
 MSAL Python 支持 ADFS 2019。
 
-它不支持直接与 ADFS 2016 或 ADFS v2 建立连接。 若要支持要求直接连接到 ADFS 2016 的方案，请使用最新版本的 ADAL Python。 将本地系统升级到 ADFS 2019 后，即可使用 MSAL Python。
+它不支持直接与 ADFS 2016 或 ADFS v2 建立连接。 若要支持需要直接连接到 ADFS 2016 的方案，请使用最新版本的 ADAL Python。 将本地系统升级到 ADFS 2019 后，即可使用 MSAL Python。
 
 ## <a name="next-steps"></a>后续步骤
 

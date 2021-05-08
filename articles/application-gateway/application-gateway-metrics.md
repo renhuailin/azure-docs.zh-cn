@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/06/2020
 ms.author: surmb
 ms.openlocfilehash: 9faa3a284aa7151880526c1ee70cfadc3dbf3089
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100576109"
 ---
 # <a name="metrics-for-application-gateway"></a>应用程序网关的指标
@@ -202,17 +202,17 @@ ms.locfileid: "100576109"
 
 若要查看当前的指标列表，请参阅 [Azure Monitor 支持的指标](../azure-monitor/essentials/metrics-supported.md)。
 
-### <a name="alert-rules-on-metrics"></a>有关指标的警报规则
+### <a name="alert-rules-on-metrics"></a>针对指标的警报规则
 
 可基于资源的指标启动警报规则。 例如，如果应用程序网关的吞吐量在指定时间段内高于、低于或等于阈值，警报即可调用 webhook 或给管理员发送电子邮件。
 
 以下示例指导创建警报规则，以在吞吐量违反阈值时给管理员发送电子邮件：
 
-1. 选择 " **添加指标警报** " 以打开 " **添加规则** " 页。 你还可以从 "指标" 页访问此页。
+1. 选择“添加指标警报”，以打开“添加规则”页面 。 也可从指标页面访问此页面。
 
    ![“添加指标警报”按钮][6]
 
-2. 在 " **添加规则** " 页上，填写 "名称"、"条件" 和 "通知" 部分，然后选择 **"确定"**。
+2. 在“添加规则”页面中，填写名称、条件和通知等部分，然后选择“确定” 。
 
    * 在“条件”选择器中，选择以下 4 个值之一：“大于”、“大于或等于”、“小于”或“小于或等于”。
 
@@ -232,7 +232,7 @@ ms.locfileid: "100576109"
 
 若要了解有关警报通知的详细信息，请参阅[接收警报通知](../azure-monitor/alerts/alerts-overview.md)。
 
-若要了解有关 webhook 的详细信息以及如何将其与警报一起使用的详细信息，请参阅 [针对 Azure 指标警报配置 webhook](../azure-monitor/alerts/alerts-webhooks.md)。
+若要深入了解 webhook 以及如何将其与警报搭配使用，请参阅[针对 Azure 指标警报配置 webhook](../azure-monitor/alerts/alerts-webhooks.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

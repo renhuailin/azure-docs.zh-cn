@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 01/26/2021
 ms.author: danlep
 ms.openlocfilehash: a9dbedd8516f3a3a592c7fd4f4f5563011d6c6db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99490999"
 ---
-#### <a name="requirements-for-key-vault-firewall"></a>Key Vault 防火墙的要求
+#### <a name="requirements-for-key-vault-firewall"></a>Key Vault 防火墙要求
 
 如果在密钥保管库上启用了 [Key Vault 防火墙](../articles/key-vault/general/network-security.md)，则具有以下附加要求：
 

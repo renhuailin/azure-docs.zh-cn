@@ -10,10 +10,10 @@ ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
 ms.openlocfilehash: 84fdca96f2ce42c608e7def98f6a3400964cfe46
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101691920"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL 连接设置
@@ -33,11 +33,11 @@ ms.locfileid: "101691920"
 
 ## <a name="deny-public-network-access"></a>拒绝公用网络访问
 
-当 " **拒绝公共网络访问** " 设置为 **"是"** 时，只允许通过专用终结点进行连接。 如果此设置为 " **否** " (默认值) ，客户可以通过使用基于 IP 的防火墙规则 (的公共终结点或基于虚拟网络的防火墙规则来连接，) 或使用 Azure private Link (使用 Azure 专用终结点) ，如 [网络访问概述](network-access-controls-overview.md)中所述。
+当将“拒绝公用网络访问”设置为“是”时，只允许通过专用终结点进行连接。 当该设置为“否”（默认值）时，客户可以使用公共终结点（使用基于 IP 的防火墙规则或基于虚拟网络的防火墙规则）或专用终结点（使用 Azure 专用链接）进行连接，如[网络访问概述](network-access-controls-overview.md)中所述。
 
- !["拒绝公共网络访问" 设置为 "是"，而 "拒绝公共网络访问" 设置为 "否" 时显示连接的关系图。][2]
+ ![显示当“拒绝公用网络访问”分别设置为“是”和“否”时连接的关系图。][2]
 
-任何在逻辑服务器上不具有任何现有专用终结点的情况下，将 " **拒绝公共网络访问** " 设置为 **"是"** 将失败，并出现如下错误消息：  
+如果逻辑服务器中没有任何现有的专用终结点，则尝试将“拒绝公用网络访问”设置为“是”时会失败，并显示如下类似错误消息：   
 
 ```output
 Error 42102
@@ -46,9 +46,9 @@ Please set up private endpoints and retry the operation.
 ```
 
 > [!NOTE]
-> 若要在已配置专用终结点的逻辑服务器上定义虚拟网络防火墙规则，请将 " **拒绝公共网络访问权限** " 设置为 " **否**"。
+> 若要在已配置了专用终结点的逻辑服务器中定义虚拟网络防火墙规则，请将“拒绝公用网络访问”设置为“否”。
 
-当 " **拒绝公共网络访问** " 设置为 **"是"** 时，只允许通过专用终结点进行连接。 将拒绝通过公共终结点进行的所有连接，其中包含类似于以下内容的错误消息：  
+当将“拒绝公用网络访问”设置为“是”时，只允许通过专用终结点进行连接。 将拒绝通过公共终结点进行的所有连接，并显示如下类似错误信息：  
 
 ```output
 Error 47073
@@ -57,7 +57,7 @@ The public network interface on this server is not accessible.
 To connect to this server, use the Private Endpoint from inside your virtual network.
 ```
 
-当 " **拒绝公共网络访问** " 设置为 **"是"** 时，将拒绝任何添加或更新防火墙规则的尝试，并会出现如下错误消息：
+当将“拒绝公用网络访问”设置为“是”时，将拒绝添加或更新防火墙规则的所有尝试，并显示如下类似错误信息：
 
 ```output
 Error 42101
@@ -104,7 +104,7 @@ az sql server update -n sql-server-name -g sql-server-group --set publicNetworkA
 
 借助[最低传输层安全性 (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) 版本设置，客户可以选择其 SQL 数据库使用哪个 TLS 版本。
 
-目前，我们支持 TLS 1.0、1.1 和 1.2。 设置最低 TLS 版本可确保支持更新的 TLS 版本。 例如，选择 TLS 版本1.1 意味着仅接受 TLS 1.1 和1.2 的连接，并拒绝与 TLS 1.0 的连接。 在测试以确认应用程序支持它后，建议将最低 TLS 版本设置为 1.2。 此版本包括对以前版本中漏洞的修复，以及 Azure SQL 数据库中支持的最高 TLS 版本。
+目前，我们支持 TLS 1.0、1.1 和 1.2。 设置最低 TLS 版本可确保支持更新的 TLS 版本。 例如，如果选择 TLS 版本 1.1，表示仅接受使用 TLS 1.1 和 1.2 的连接，并拒绝使用 TLS 1.0 的连接。 在测试以确认应用程序支持它后，建议将最低 TLS 版本设置为 1.2。 此版本包括对以前版本中漏洞的修复，以及 Azure SQL 数据库中支持的最高 TLS 版本。
 
 > [!IMPORTANT]
 > 最低 TLS 版本的默认设置为允许使用所有版本。 在设置为 TLS 的某个版本后，不能还原为默认值。
@@ -219,7 +219,7 @@ az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 Azure SQL 数据库中连接的工作原理的概述，请参阅 [连接体系结构](connectivity-architecture.md)。
+- 若要大致了解 Azure SQL 数据库中的连接工作原理，请参阅[连接体系结构](connectivity-architecture.md)。
 - 有关如何更改服务器的连接策略的信息，请参阅 [conn-policy](/cli/azure/sql/server/conn-policy)。
 
 <!--Image references-->

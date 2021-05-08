@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/26/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 85c66aa6a8f0cb0efa231acee44f8fa02169d27b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b19bf7faa454c812a5a83bc5a4d5349d32632094
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88602513"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108210970"
 ---
 | 资源 |  限制 |
 | --- | --- |
@@ -25,7 +25,7 @@ ms.locfileid: "88602513"
 | 每个中心的点到站点用户数| 10,000 |
 | 每个虚拟 WAN 用户 VPN（点到点）网关的总吞吐量 | 20 Gbps |
 | 每个虚拟 WAN ExpressRoute 网关的聚合吞吐量 | 20 Gbps |
-| 每个中心的 ExpressRoute 线路连接数 | 4 |
+| 每个中心的 ExpressRoute 线路连接数 | 8 |
 | 每个中心的 VNet 连接数  | 虚拟 WAN 中的中心总数将近 500 |
 | 每个虚拟 WAN 中心路由器的总吞吐量 | 50 Gbps，对于 VNet 到 VNet 传输 |
 | 连接到单个虚拟 WAN 中心的所有 VNet 中的 VM 工作负载 | 2000 

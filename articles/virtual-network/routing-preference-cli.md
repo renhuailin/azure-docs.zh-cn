@@ -1,7 +1,7 @@
 ---
 title: 使用 Azure CLI 配置公共 IP 地址的路由首选项
 titlesuffix: Azure Virtual Network
-description: 了解如何使用 Azure CLI 通过 Internet 流量路由首选项创建公共 IP。
+description: 了解如何通过使用 Azure CLI 创建具有 Internet 流量路由首选项的公共 IP。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2021
 ms.author: mnayak
 ms.openlocfilehash: 2291767c162953f8339fb8cc27e55b96290ef795
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101665961"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-azure-cli"></a>使用 Azure CLI 配置公共 IP 地址的路由首选项
@@ -47,7 +47,7 @@ ms.locfileid: "101665961"
 ```
 ## <a name="create-a-public-ip-address"></a>创建公共 IP 地址
 
-使用命令 [az network 公共 ip create](/cli/azure/network/public-ip#az-network-public-ip-create)创建包含 **Internet** 类型首选项的公共 IP 地址，格式如下所示。
+使用命令 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) 创建具有路由首选项“Internet”的公共 IP 地址，格式如下所示。
 
 以下命令在美国东部 Azure 区域创建具有“Internet”路由首选项的新公共 IP。
 

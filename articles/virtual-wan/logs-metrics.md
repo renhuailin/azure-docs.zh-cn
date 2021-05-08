@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
 ms.openlocfilehash: a5bbcc4c07826a5093da3f51c709f49ceb231753
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100596078"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Azure 虚拟 WAN 日志和指标
@@ -35,28 +35,28 @@ Azure Monitor 中的指标是数字值，用于描述系统某些方面在特定
 
 Azure 站点到站点 VPN 网关提供以下指标：
 
-* **网关带宽** –网关的平均站点到站点聚合带宽（以每秒字节数为单位）。
-* **隧道带宽** –隧道的平均带宽（以字节/秒为单位）。
-* **隧道传出字节** 数–隧道的传出字节数。 
-* **隧道传出数据包** –隧道的传出数据包计数。 
-* **隧道传出 TS 不匹配数据包丢弃** –隧道的流量选择器的传出数据包丢弃计数。 
-* **隧道入口字节** –隧道的传入字节数。 
-* **隧道入口包** –隧道的传入数据包计数。 
-* **隧道入口 TS 不匹配数据包丢弃** –来自隧道的流量选择器的传入数据包丢弃计数。 
+* **网关带宽** - 网关站点到站点的平均聚合带宽（字节/秒）。
+* **隧道带宽** - 隧道带宽平均值（字节/秒）。
+* **隧道流出字节数** - 隧道的传出字节数。 
+* **隧道流出数据包数** - 隧道的传出数据包数。 
+* **隧道流出 TS 不匹配数据包丢弃** - 来自隧道的因流量选择器不匹配而丢弃的传出数据包数。 
+* **隧道流入字节数** - 隧道的传入字节数。 
+* **隧道流入数据包数** - 隧道的传入数据包数。 
+* **隧道流入 TS 不匹配数据包丢弃** - 来自隧道的因流量选择器不匹配而丢弃的传入数据包数。 
 
 ### <a name="point-to-site-vpn-gateways"></a>点到站点 VPN 网关
 
 Azure 点到站点 VPN 网关提供以下指标：
 
-* **网关 P2S 带宽** –网关的平均点到站点聚合带宽（以字节/秒为单位）。
-* **P2S 连接计数** -网关的点到站点连接计数。
+* **网关 P2S 带宽** - 网关点到站点的平均聚合带宽（字节/秒）。
+* **P2S 连接计数** - 网关的点到站点连接计数。
 
 ### <a name="azure-expressroute-gateways"></a>Azure ExpressRoute 网关
 
 Azure ExpressRoute 网关提供以下指标：
 
-* **BitsInPerSecond** – Bits 引入 Azure per second。
-* **BitsOutPerSecond** – Bits 传出 Azure per second。
+* **BitsInPerSecond** - 每秒流入 Azure 的位数。
+* **BitsOutPerSecond** - 每秒流出 Azure 的位数。
 
 ### <a name="view-gateway-metrics"></a><a name="metrics-steps"></a>查看网关指标
 
@@ -80,18 +80,18 @@ Azure ExpressRoute 网关提供以下指标：
 
 Azure 站点到站点 VPN 网关提供以下诊断：
 
-* **网关诊断日志** -特定于网关的诊断，例如运行状况、配置、服务更新以及其他诊断。
-* **隧道诊断日志** –这些日志是与 ipsec 隧道相关的日志，例如站点到站点 IPsec 隧道、协商 SAs、断开连接原因以及其他诊断的连接和断开连接事件。
-* **路由诊断日志** –这些日志与静态路由、BGP、路由更新以及其他诊断事件相关。
-* **Ike 诊断日志** –适用于 IPsec 连接的特定于 ike 的诊断。
+* **网关诊断日志** - 特定于网关的诊断，例如健康状况、配置、服务更新以及其他诊断。
+* **隧道诊断日志** - 这是与 IPsec 隧道相关的日志，例如站点到站点 IPsec 隧道的连接和断开连接事件、协商的 SA、断开连接原因以及其他诊断。
+* **路由诊断日志** - 这是与静态路由、BGP、路由更新和其他诊断的事件相关的日志。
+* **IKE 诊断日志** - 用于 IPsec 连接的特定于 IKE 的诊断。
 
 ### <a name="point-to-site-vpn-gateways"></a>点到站点 VPN 网关
 
 Azure 点到站点 VPN 网关提供以下诊断：
 
-* **网关诊断日志** -特定于网关的诊断，例如运行状况、配置、服务更新以及其他诊断。
-* **Ike 诊断日志** –适用于 IPsec 连接的特定于 ike 的诊断。
-* **P2S 诊断日志** –这些是用户 VPN (点到站点) P2S 配置和客户端事件。 它们包括客户端连接/断开连接、VPN 客户端地址分配以及其他诊断。
+* **网关诊断日志** - 特定于网关的诊断，例如健康状况、配置、服务更新以及其他诊断。
+* **IKE 诊断日志** - 用于 IPsec 连接的特定于 IKE 的诊断。
+* **P2S 诊断日志** - 这是用户 VPN（点到站点）P2S 配置和客户端事件。 它们包括客户端连接/断开连接、VPN 客户端地址分配以及其他诊断。
 
 ### <a name="view-diagnostic-logs"></a><a name="diagnostic-steps"></a>查看诊断日志
 
@@ -119,7 +119,7 @@ Azure 点到站点 VPN 网关提供以下诊断：
 
 * "GatewayDiagnosticLog"
 * "IKEDiagnosticLog"
-* "P2SDiagnosticLog"
+* "P2SDiagnosticLog”
 * "TunnelDiagnosticLog"
 * "RouteDiagnosticLog"
 

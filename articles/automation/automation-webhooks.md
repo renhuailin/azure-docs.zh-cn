@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 03/18/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 338fb56c4af5c24b7b746ffd6508c2fe7d52b131
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: cd3d903aead4877fac9e5472f1ac9d579da979d2
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830189"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209564"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>从 Webhook 启动 Runbook
 
@@ -28,10 +28,10 @@ ms.locfileid: "107830189"
 
 下表介绍了必须为 webhook 配置的属性。
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--- |:--- |
 | 名称 |Webhook 的名称。 可以提供任何名称，因为该名称不会公开给客户端。 它只用来标识 Azure 自动化中的 Runbook。 最好是为 Webhook 提供一个名称，该名称需要与使用它的客户端相关。 |
-| 代码 |Webhook 的 URL。 这是客户端通过 HTTP POST 来调用的唯一地址，用于启动链接到 Webhook 的 Runbook。 它是在创建 Webhook 时自动生成的。 无法指定自定义 URL。 <br> <br> URL 包含一个允许第三方系统调用 Runbook 的安全令牌，不需要进一步进行身份验证。 因此，应该将 URL 视为密码。 出于安全原因，只能在创建 Webhook 时通过 Azure 门户查看该 URL。 请将保存在安全位置的 URL 记下来，供将来使用。 |
+| URL |Webhook 的 URL。 这是客户端通过 HTTP POST 来调用的唯一地址，用于启动链接到 Webhook 的 Runbook。 它是在创建 Webhook 时自动生成的。 无法指定自定义 URL。 <br> <br> URL 包含一个允许第三方系统调用 Runbook 的安全令牌，不需要进一步进行身份验证。 因此，应该将 URL 视为密码。 出于安全原因，只能在创建 Webhook 时通过 Azure 门户查看该 URL。 请将保存在安全位置的 URL 记下来，供将来使用。 |
 | 到期日期 | Webhook 的到期日期，该日期之后不能再使用它。 创建 Webhook 后，只要它没有到期，就可以修改到期日期。 |
 | 已启用 | 指示 Webhook 是否在创建后默认启用的设置。 如果将此属性设置为“禁用”，则任何客户端都无法使用 Webhook。 可以在创建 Webhook 或 Webhook 创建后的任何其他时间设置此属性。 |
 
@@ -138,7 +138,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 ### <a name="use-a-webhook-from-an-arm-template"></a>通过 ARM 模板使用 Webhook
 
-自动化 Webhook 还可以通过 [Azure 资源管理器 (ARM) 模板](/azure/azure-resource-manager/templates/overview)进行调用。 ARM 模板可发出 `POST` 请求，并接收返回代码，就像任何其他客户端一样。 请参阅[使用 Webhook](#use-a-webhook)。
+自动化 Webhook 还可以通过 [Azure 资源管理器 (ARM) 模板](../azure-resource-manager/templates/overview.md)进行调用。 ARM 模板可发出 `POST` 请求，并接收返回代码，就像任何其他客户端一样。 请参阅[使用 Webhook](#use-a-webhook)。
 
    > [!NOTE]
    > 出于安全原因，仅在首次部署模板时才返回 URI。
