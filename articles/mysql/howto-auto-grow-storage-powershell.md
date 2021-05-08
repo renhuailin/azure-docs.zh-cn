@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 4/28/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: e8c9f6f66e484fbd9ebe5c15934936d6e5c59073
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94542025"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mysql-server-using-powershell"></a>使用 PowerShell 实现 Azure Database for MySQL 服务器存储的自动增长
@@ -27,7 +27,7 @@ ms.locfileid: "94542025"
 
 若要完成本操作指南，需要：
 
-- 在本地安装[Az PowerShell 模块](/powershell/azure/install-az-ps)或在浏览器中[Azure Cloud Shell](https://shell.azure.com/)
+- 本地安装 [Az PowerShell 模块](/powershell/azure/install-az-ps)或浏览器中有 [Azure Cloud Shell](https://shell.azure.com/)
 - [Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]

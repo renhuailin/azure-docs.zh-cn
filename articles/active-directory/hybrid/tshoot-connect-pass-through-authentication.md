@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9a014bd5c8f1edbfb00019b8541cef552271d65b
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98762845"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>对 Azure Active Directory 直通身份验证进行故障排除
@@ -28,7 +28,7 @@ ms.locfileid: "98762845"
 本文可帮助你找到有关 Azure AD 直通身份验证常见问题的故障排除信息。
 
 >[!IMPORTANT]
->如果使用直通身份验证时遇到用户登录问题，请在回退仅限云的全局管理员帐户后，再禁用此功能或卸载直通身份验证代理。 了解如何 [添加仅限云的全局管理员帐户](../fundamentals/add-users-azure-active-directory.md)。 此步骤至关重要，可确保你不被锁定在租户外部。
+>如果使用直通身份验证时遇到用户登录问题，请在回退仅限云的全局管理员帐户后，再禁用此功能或卸载直通身份验证代理。 了解如何[添加仅限云的全局管理员帐户](../fundamentals/add-users-azure-active-directory.md)。 此步骤至关重要，可确保你不被锁定在租户外部。
 
 ## <a name="general-issues"></a>常规问题
 
@@ -56,7 +56,7 @@ ms.locfileid: "98762845"
 
 如果用户的本地 UserPrincipalName (UPN) 不同于用户的云 UPN，就会发生这种情况。
 
-若要确认这是否是问题，请首先测试直通身份验证代理是否正常工作：
+如要确认这种情况是否是一个问题，请首先测试直通身份验证代理是否正常工作：
 
 
 1. 创建测试帐户。  
@@ -65,17 +65,17 @@ ms.locfileid: "98762845"
  ```powershell
  Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
  ```
-3. 运行调用 PowerShell 命令： 
+3. 运行以下调用 PowerShell 命令： 
 
  ```powershell
  Invoke-PassthroughAuthOnPremLogonTroubleshooter 
  ``` 
-4. 当系统提示你输入凭据时，请输入用于登录 (的相同用户名和密码 https://login.microsoftonline.com) 。
+4. 当系统提示输入凭据时，请输入用于登录到 https://login.microsoftonline.com) 的相同用户名和密码。
 
-如果获得相同的用户名/密码错误，这意味着直通身份验证代理正常工作，问题可能是本地 UPN 不可路由。 若要了解详细信息，请参阅 [配置备用登录 ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)。
+如果获得相同的用户名/密码错误，意味着直通身份验证代理正常工作，问题可能是本地 UPN 不可路由。 有关详细信息，请参阅[配置备用登录 ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)。
 
 > [!IMPORTANT]
-> 如果 Azure AD Connect 服务器未加入域，则 [Azure AD Connect：先决条件](./how-to-connect-install-prerequisites.md#installation-prerequisites)中所述的要求会发生无效的用户名/密码问题。
+> 如果 Azure AD Connect 服务器未加入域，则 [Azure AD Connect：先决条件](./how-to-connect-install-prerequisites.md#installation-prerequisites)中所述的要求，会发生无效的用户名/密码问题。
 
 ### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Azure Active Directory 管理中心登录失败原因（需要 Premium 许可证）
 
@@ -83,7 +83,7 @@ ms.locfileid: "98762845"
 
 ![Azure Active Directory 管理中心 - 登录报表](./media/tshoot-connect-pass-through-authentication/pta4.png)
 
-导航到  ->  [Azure Active Directory 管理中心](https://aad.portal.azure.com/)Azure Active Directory **登录**，并单击特定用户的登录活动。 查找“登录错误代码”字段。 使用下表将该字段的值映射到某个失败原因和解决方法：
+导航到 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)的“Azure Active Directory” -> “登录”，然后单击特定用户的登录活动。 查找“登录错误代码”字段。 使用下表将该字段的值映射到某个失败原因和解决方法：
 
 |登录错误代码|登录失败原因|解决方法
 | --- | --- | ---
@@ -96,10 +96,10 @@ ms.locfileid: "98762845"
 | 80007 | 身份验证代理无法连接到 Active Directory。 | 检查是否可以从身份验证代理访问你的 Active Directory。
 | 80010 | 身份验证代理无法解密密码。 | 如果可始终重现该问题，请安装并注册新的身份验证代理。 并卸载当前的代理。 
 | 80011 | 身份验证代理无法检索到解密密钥。 | 如果可始终重现该问题，请安装并注册新的身份验证代理。 并卸载当前的代理。
-| 80014 | 验证请求在超过最长运行时间之后响应。 | 身份验证代理超时。使用错误代码、相关 ID 和时间戳打开支持票证以获取有关此错误的更多详细信息
+| 80014 | 验证请求在超过最长运行时间之后得到响应。 | 身份验证代理超时。开具支持票证并提供错误代码、相关性 ID 和日期时间，以获取有关此错误的更多详细信息
 
 >[!IMPORTANT]
->传递身份验证代理通过在 Active Directory 通过调用 [Win32 LOGONUSER API](/windows/win32/api/winbase/nf-winbase-logonusera)来验证其用户名和密码，对 Azure AD 用户进行身份验证。 因此，如果已将 Active Directory 中的 "登录到" 设置设置为限制工作站登录访问，则必须将承载直通身份验证代理的服务器添加到 "登录到" 服务器的列表。 否则，会阻止用户登录 Azure AD。
+>直通身份验证代理通过调用 [Win32 LogonUser API](/windows/win32/api/winbase/nf-winbase-logonusera)并对照 Active Directory 来验证其用户名和密码，从而对 Azure AD 用户进行身份验证。 因此，如果已将 Active Directory 中的“登录到”设置设为限制工作站登录访问，则必须将承载直通身份验证代理的服务器添加至“登录到”服务器的列表。 否则，会阻止用户登录 Azure AD。
 
 ## <a name="authentication-agent-installation-issues"></a>身份验证代理安装问题
 

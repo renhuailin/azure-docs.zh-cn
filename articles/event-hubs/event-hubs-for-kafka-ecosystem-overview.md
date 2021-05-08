@@ -3,12 +3,12 @@ title: 使用 Apache Kafka 应用中的事件中心 - Azure 事件中心 | Micro
 description: 本文介绍有关 Azure 事件中心提供的 Apache Kafka 支持的信息。
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: 1cd6d06b610ccccb8c80818d3bdec726ed94e875
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: b0f0da76bba68f8a66695700d530e871cbd35e3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505308"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "97861339"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>使用 Apache Kafka 应用程序中的 Azure 事件中心
 事件中心提供与 Apache Kafka® 生成者和使用者 API 兼容的终结点，大多数现有 Apache Kafka 客户端应用程序可以使用这些 API 作为运行你自己的 Apache Kafka 群集的替代方法。 事件中心 1.0 及更高版本支持 Apache Kafka 的生成者和使用者 API 客户端。
@@ -67,7 +67,7 @@ bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
 security.protocol=SASL_SSL
 sasl.mechanism=OAUTHBEARER
 sasl.jaas.config=org.apache.kafka.common.security.oauthbearer.OAuthBearerLoginModule required;
-sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler
+sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler;
 ```
 
 #### <a name="shared-access-signature-sas"></a>共享访问签名 (SAS)

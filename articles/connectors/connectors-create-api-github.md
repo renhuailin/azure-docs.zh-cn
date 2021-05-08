@@ -1,5 +1,5 @@
 ---
-title: 访问、监视和管理你的 GitHub 存储库
+title: 访问、监视和管理 GitHub 存储库
 description: 使用 Azure 逻辑应用创建自动化工作流，监视 GitHub 事件并管理 GitHub 存储库
 services: logic-apps
 ms.suite: integration
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 03/02/2018
 tags: connectors
 ms.openlocfilehash: b67d2e860e8c69f6f2f43441144ef2f60ed3a104
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95999531"
 ---
-# <a name="monitor-and-manage-your-github-repo-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用来监视和管理 GitHub 存储库
+# <a name="monitor-and-manage-your-github-repo-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 GitHub 存储库
 
 GitHub 是基于 Web 的 Git 存储库托管服务，它提供 Git 的所有分布式修订控制和源代码管理 (SCM) 功能以及其他功能。
 
@@ -24,7 +24,7 @@ GitHub 是基于 Web 的 Git 存储库托管服务，它提供 Git 的所有分�
 
 若要在逻辑应用中使用 GitHub 连接器，必须先创建 *连接*，然后提供以下属性的详细信息： 
 
-| 属性 | 必须 | 说明 | 
+| 属性 | 必选 | 说明 | 
 | -------- | -------- | ----------- | 
 | 令牌 | 是 | 提供 GitHub 凭据。 |
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 92d1e5b8ac6492b0b1d819431e4616d32a092cc8
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94836914"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 功能部署指南
@@ -47,7 +47,7 @@ ms.locfileid: "94836914"
 | [尽可能使用非全局管理角色](../roles/permissions-reference.md) | 只为管理员分配他们必须访问的区域的访问权限。 并非所有管理员都需要是全局管理员。 | Azure AD Free |
 | [启用 Privileged Identity Management 以跟踪管理员角色的用途](../privileged-identity-management/pim-getting-started.md) | 启用 Privileged Identity Management 以开始跟踪管理角色的用途。 | Azure AD Premium P2 |
 | [推广自助式密码重置](../authentication/howto-sspr-deployment.md) | 让员工使用管理员控制的策略重置自己的密码，减少支持台收到的密码重置呼叫次数。 | |
-| [创建特定于组织的自定义禁止密码列表](../authentication/tutorial-configure-custom-password-protection.md) | 防止用户创建包含你所在组织或区域中常用单词或短语的密码。 | |
+| [创建组织特定的自定义受禁密码列表](../authentication/tutorial-configure-custom-password-protection.md) | 防止用户创建包含你所在组织或区域中常用单词或短语的密码。 | |
 | [启用与 Azure AD 密码保护的本地集成](../authentication/concept-password-ban-bad-on-premises.md) | 将受禁密码列表扩展到本地目录，以确保本地设置的密码也符合全局和特定于租户的受禁密码列表。 | Azure AD Premium P1 |
 | [启用 Microsoft 的密码指导](https://www.microsoft.com/research/publication/password-guidance/) | 停止要求用户按照设置的计划更改其密码，禁用复杂性要求，用户更倾向于记住他们习惯的密码，并妥善保管其密码。 | Azure AD Free |
 | [对基于云的用户帐户禁用定期密码重置](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | 定期密码重置会促使用户增加其现有密码。 使用 Microsoft 密码指导文档中的指导原则，并将相同的本地策略运用到仅限云的用户。 | Azure AD Free |
@@ -56,8 +56,8 @@ ms.locfileid: "94836914"
 | [使用条件访问阻止向 Azure AD 进行旧身份验证](../conditional-access/block-legacy-authentication.md) | 阻止旧式身份验证协议（例如 POP、SMTP、IMAP 和 MAPI），这些协议不能强制实施多重身份验证，因此成为攻击者的首选入口点。 | Azure AD Premium P1 |
 | [使用条件访问策略部署 Azure AD 多重身份验证](../authentication/howto-mfa-getstarted.md) | 要求用户在使用条件访问策略访问敏感应用程序时执行双重验证。 | Azure AD Premium P1 |
 | [Azure Active Directory 标识保护](../identity-protection/overview-identity-protection.md) | 针对组织中的用户启用有风险登录和已泄密凭据的跟踪。 | Azure AD Premium P2 |
-| [使用风险检测来触发多重身份验证和密码更改](../authentication/tutorial-risk-based-sspr-mfa.md) | 启用可以触发多重身份验证、密码重置和基于风险阻止登录等事件的自动化功能。 | Azure AD Premium P2 |
-| [启用用于自助服务密码重置和 Azure AD 多重身份验证的组合注册](../authentication/concept-registration-mfa-sspr-combined.md) | 允许用户从一个常见体验注册 Azure AD 多重身份验证和自助密码重置。 | Azure AD Premium P1 |
+| [使用风险检测触发多重身份验证和密码更改](../authentication/tutorial-risk-based-sspr-mfa.md) | 启用可以触发多重身份验证、密码重置和基于风险阻止登录等事件的自动化功能。 | Azure AD Premium P2 |
+| [启用自助式密码重置和 Azure AD 多重身份验证的合并注册](../authentication/concept-registration-mfa-sspr-combined.md) | 允许用户根据 Azure AD 多重身份验证和自助式密码重置的一个常用体验进行注册。 | Azure AD Premium P1 |
 
 ## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>阶段 2：导入用户、启用同步和管理设备
 
@@ -72,10 +72,10 @@ ms.locfileid: "94836914"
 | [按 Azure Active Directory 中的组成员资格将许可证分配给用户](../enterprise-users/licensing-groups-assign.md) | 创建许可组来按组启用或禁用功能，而无需按用户进行设置，这样可以节省时间和精力。 | |
 | [针对来宾用户访问权限创建计划](../external-identities/what-is-b2b.md) | 让来宾用户使用其自己的工作、学校或社交标识登录到你的应用和服务，借此来与他们协作。 | [Azure AD 外部标识定价](../external-identities/external-identities-pricing.md) |
 | [决定设备管理策略](../devices/overview.md) | 决定组织允许在设备上执行哪些操作。 这包括在自带设备与公司提供的设备上执行注册与加入操作。 | |
-| [在组织中部署 Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | 使用 Windows Hello 准备无密码 authentication | |
+| [在组织中部署 Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | 使用 Windows Hello 准备无密码身份验证 | |
 | [为用户部署无密码身份验证方法](../authentication/concept-authentication-passwordless.md) | 为用户提供便利的无密码身份验证方法 | Azure AD Premium P1 |
 
-## <a name="phase-3-manage-applications"></a>阶段3：管理应用程序
+## <a name="phase-3-manage-applications"></a>阶段 3：管理应用程序
 
 在前几个阶段中持续构建环境的过程中，我们识别了适合迁移并与 Azure AD 集成的应用程序，并完成了这些应用程序的设置。
 
@@ -85,7 +85,7 @@ ms.locfileid: "94836914"
 | [集成库中的受支持 SaaS 应用程序](../manage-apps/add-application-portal.md) | Azure AD 的某个库包含数千个预先集成的应用程序。 组织使用的某些应用程序可能就在该库中。可通过 Azure 门户直接访问该库。 | Azure AD Free |
 | [使用应用程序代理集成本地应用程序](../manage-apps/application-proxy-add-on-premises-application.md) | 应用程序代理可让用户在使用其 Azure AD 帐户登录后访问本地应用程序。 | |
 
-## <a name="phase-4-audit-privileged-identities-complete-an-access-review-and-manage-user-lifecycle"></a>阶段4：审核特权标识、完成访问评审和管理用户生命周期
+## <a name="phase-4-audit-privileged-identities-complete-an-access-review-and-manage-user-lifecycle"></a>阶段 4：审核特权标识、完成访问评审和管理用户生命周期
 
 在第 4 阶段，管理员针对管理工作强制实施最低特权原则，完成首次访问评审，并启用常见用户生命周期任务的自动化。
 

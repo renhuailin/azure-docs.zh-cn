@@ -1,6 +1,6 @@
 ---
-title: 用于 Azure CDN 的标准规则引擎中的操作 |Microsoft Docs
-description: 适用于 Azure 内容传送网络的标准规则引擎中的操作的参考文档 (Azure CDN) 。
+title: Azure CDN 标准规则引擎的操作 | Microsoft Docs
+description: 有关 Azure 内容分发网络 (Azure CDN) 标准规则引擎的操作的参考文档。
 services: cdn
 author: asudbring
 ms.service: azure-cdn
@@ -8,33 +8,33 @@ ms.topic: article
 ms.date: 08/04/2020
 ms.author: allensu
 ms.openlocfilehash: 051737a9f5e0d4092cda26a3f7ce3df1d7f535ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87760118"
 ---
-# <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>标准规则引擎中用于 Azure CDN 的操作
+# <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN 标准规则引擎的操作
 
-在 Azure 内容分发网络 (Azure CDN) 的 [标准规则引擎](cdn-standard-rules-engine.md) 中，规则由一个或多个匹配条件和操作组成。 本文详细说明了可以在 Azure CDN 的标准规则引擎中使用的操作。
+在 Azure 内容分发网络 (Azure CDN) [标准规则引擎](cdn-standard-rules-engine.md)中，规则由一个或多个匹配条件和一个操作组成。 本文将详细介绍可在 Azure CDN 标准规则引擎中使用的操作。
 
-规则的第二部分是操作。 操作定义了要应用于某个匹配条件或匹配条件集所识别的请求类型的行为。
+规则的第二部分是一个操作。 操作定义了要应用于某个匹配条件或匹配条件集所识别的请求类型的行为。
 
-## <a name="actions"></a>操作
+## <a name="actions"></a>Actions
 
-以下操作可用于 Azure CDN 标准规则引擎。 
+可在 Azure CDN 标准规则引擎中使用以下操作。 
 
 ### <a name="cache-expiration"></a>缓存到期
 
-使用此操作来覆盖与规则匹配条件指定的请求的终结点的生存时间 (TTL) 值。
+根据规则匹配条件指定的请求，使用此操作来覆盖终结点的生存时间 (TTL) 值。
 
 #### <a name="required-fields"></a>Required fields
 
 缓存行为 |  说明              
 ---------------|----------------
-绕过缓存 | 如果选择此选项并且规则匹配，则不会缓存内容。
-替代 | 如果选择此选项并且规则匹配，则从你的来源返回的 TTL 值将被该操作中指定的值覆盖。 仅当响应可缓存时才会应用此行为。 对于包含值 "非缓存"、"private"、"非商店" 的缓存控制响应标头，操作将不适用。
-缺少时设置 | 如果选择此选项并且规则匹配，则规则会将 TTL 设置为在 "操作" 中指定的值。 仅当响应可缓存时才会应用此行为。 对于包含值 "非缓存"、"private"、"非商店" 的缓存控制响应标头，操作将不适用。
+绕过缓存 | 如果选择此选项并且规则匹配，则不对内容进行缓存。
+替代 | 如果选择此选项并且规则匹配，则从原点返回的 TTL 值会被该操作中指定的值覆盖。 仅当响应可缓存时才会应用此行为。 cache-control 响应头的值为“no-cache”、“private”、“no-store”时，操作将不适用。
+缺少时设置 | 如果选择此选项并且规则匹配，而没有 TTL 值从原点返回，那么规则会将 TTL 设置为被该操作中指定的值。 仅当响应可缓存时才会应用此行为。 cache-control 响应头的值为“no-cache”、“private”、“no-store”时，操作将不适用。
 
 #### <a name="additional-fields"></a>其他字段
 
@@ -44,15 +44,15 @@ int | int | int | int
 
 ### <a name="cache-key-query-string"></a>缓存键查询字符串
 
-使用此操作可以根据查询字符串修改缓存键。
+使用此操作来根据查询字符串修改缓存键。
 
 #### <a name="required-fields"></a>Required fields
 
 行为 | 说明
 ---------|------------
 包括 | 如果选择此选项并且规则匹配，则在生成缓存键时将包含参数中指定的查询字符串。 
-缓存每个唯一的 URL | 如果选择此选项并且规则匹配，则每个唯一 URL 都有其自己的缓存密钥。 
-Exclude | 如果选择此选项并且规则匹配，则在生成缓存键时将排除参数中指定的查询字符串。
+缓存每个唯一的 URL | 如果选择此选项并且规则匹配，则每个唯一 URL 都有其自己的缓存键。 
+Exclude | 如果选择此选项并且规则匹配，则在生成缓存键时将不包含参数中指定的查询字符串。
 忽略查询字符串 | 如果选择此选项并且规则匹配，则在生成缓存键时不考虑查询字符串。 
 
 ### <a name="modify-request-header"></a>修改请求标头
@@ -94,7 +94,7 @@ Overwrite | 如果选择此选项并且规则匹配，则会将“标头名称�
 查询字符串 | 定义重定向中使用的查询字符串。 留空会保留传入的查询字符串。 
 Fragment | 定义要在重定向中使用的片段。 留空会保留传入片段。 
 
-强烈建议使用绝对 URL。 使用相对 URL 可能将 Azure CDN Url 重定向到无效路径。 
+强烈建议使用绝对 URL。 使用相对 URL 可能会将 Azure CDN URL 重定向到无效的路径。 
 
 ### <a name="url-rewrite"></a>URL 重写
 
@@ -104,9 +104,9 @@ Fragment | 定义要在重定向中使用的片段。 留空会保留传入片�
 
 字段 | 说明 
 ------|------------
-源模式 | 在要替换的 URL 路径中定义源模式。 当前，源模式使用基于前缀的匹配项。 若要匹配所有 URL 路径，请使用正斜杠 (**/**) 为源模式值。
-目标 | 定义要在重写中使用的目标路径。 目标路径将覆盖源模式。
-保留不匹配的路径 | 如果设置为 **"是"**，则会将源模式后面的剩余路径追加到新的目标路径。 
+源模式 | 定义要替换的 URL 路径中的源模式。 当前，源模式使用基于前缀的匹配。 要匹配所有 URL 路径，可使用正斜杠（“/”）作为源模式值。
+目标 | 定义要在重写中使用的目标路径。 目标路径会覆盖源模式。
+暂留不匹配的路径 | 如果设置为“是”，则会将源模式后面的剩余路径追加到新的目标路径。 
 
 ## <a name="next-steps"></a>后续步骤
 

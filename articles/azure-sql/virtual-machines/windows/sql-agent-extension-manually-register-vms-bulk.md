@@ -1,6 +1,6 @@
 ---
-title: 将 Azure 中的多个 SQL Vm 注册到 SQL IaaS 代理扩展
-description: 大容量注册 SQL Server 具有 SQL IaaS 代理扩展的 Vm 以提高可管理性。
+title: 将 Azure 中的多个 SQL VM 注册到 SQL IaaS 代理扩展
+description: 将 SQL Server VM 批量注册到 SQL IaaS 代理扩展，可提高可管理性。
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -15,33 +15,33 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 558daede55f6563155d3f54e97d77c0a3ca4de59
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97357206"
 ---
-# <a name="register-multiple-sql-vms-in-azure-with-the-sql-iaas-agent-extension"></a>将 Azure 中的多个 SQL Vm 注册到 SQL IaaS 代理扩展
+# <a name="register-multiple-sql-vms-in-azure-with-the-sql-iaas-agent-extension"></a>将 Azure 中的多个 SQL VM 注册到 SQL IaaS 代理扩展
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-本文介绍如何在 Azure 中使用 Azure PowerShell cmdlet 将 SQL Server 虚拟机注册到使用 [SQL IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md) 在 Azure 中批量)  (vm `Register-SqlVMs` 。 
+本文介绍了如何使用 `Register-SqlVMs`Azure  PowerShell cmdle 将Azure 中的 SQL Server 虚拟机 (VM) 批量注册到 [SQL IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md)。 
 
 
-本文介绍如何批量手动注册 SQL Server Vm。 或者，可以手动注册 [所有 SQL Server vm](sql-agent-extension-automatic-registration-all-vms.md) ，也可以 [手动注册单个 SQL Server vm](sql-agent-extension-manually-register-single-vm.md)。 
+本文介绍如何批量手动注册 SQL Server VM。 或者，可以自动注册[所有 SQL Server VM](sql-agent-extension-automatic-registration-all-vms.md)，也可以[手动注册单个 SQL Server VM](sql-agent-extension-manually-register-single-vm.md)。 
 
 ## <a name="overview"></a>概述
 
-`Register-SqlVMs` cmdlet 可用于注册给定订阅、资源组或特定虚拟机列表中的所有虚拟机。 该 cmdlet 会在 [lightweight_ 管理模式下](sql-server-iaas-agent-extension-automate-management.md#management-modes)注册虚拟机，然后生成 [报告和日志文件](#output-description)。 
+`Register-SqlVMs` cmdlet 可用于注册给定订阅、资源组或特定虚拟机列表中的所有虚拟机。 Cmdlet 将在 [lightweight_ management 模式](sql-server-iaas-agent-extension-automate-management.md#management-modes)下注册虚拟机，然后生成[报告和日志文件](#output-description)。 
 
-注册过程不会带来任何风险，无需停机，也不会重新启动 SQL Server 服务或虚拟机。 
+注册过程没有风险，没有停机时间，也不会重启 SQL Server 服务或虚拟机。 
 
 ## <a name="prerequisites"></a>先决条件
 
-若要向扩展注册 SQL Server VM，需要以下各项： 
+若要将 SQL Server VM 注册到代理扩展，需要以下内容： 
 
-- 已 [向 **SqlVirtualMachine** 提供商注册](sql-agent-extension-manually-register-single-vm.md#register-subscription-with-rp)并包含未注册 SQL Server 虚拟机的 [Azure 订阅](https://azure.microsoft.com/free/)。 
-- 用于注册虚拟机的客户端凭据位于以下任何 Azure 角色中： " **虚拟机参与者**"、" **参与者**" 或 " **所有者**"。 
-- Az PowerShell 的最新版本 [ (5.0) 最小值 ](/powershell/azure/new-azureps-module-az)。 
+- 一个 [Azure 订阅](https://azure.microsoft.com/free/)，该订阅已 [注册 **Microsoft.SqlVirtualMachine** 提供程序](sql-agent-extension-manually-register-single-vm.md#register-subscription-with-rp)，并包含未注册的 SQL Server 虚拟机。 
+- 用于注册虚拟机的客户端凭据存在于以下任何 Azure 角色中：“虚拟机参与者”、“参与者”和“所有者”。 
+- [Az PowerShell（最低 5.0）](/powershell/azure/new-azureps-module-az)的最新版本。 
 
 
 ## <a name="get-started"></a>入门
@@ -71,7 +71,7 @@ Connect-AzAccount
 ```
 
 
-## <a name="all-vms-in-a-list-of-subscriptions"></a>订阅列表中的所有 Vm 
+## <a name="all-vms-in-a-list-of-subscriptions"></a>订阅列表中的所有 VM 
 
 使用以下 cmdlet 注册订阅列表中的所有 SQL Server 虚拟机：
 
@@ -95,7 +95,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="all-vms-in-a-single-subscription"></a>单个订阅中的所有 Vm
+## <a name="all-vms-in-a-single-subscription"></a>单个订阅中的所有 VM
 
 使用以下 cmdlet 在单个订阅中注册所有 SQL Server 虚拟机： 
 
@@ -117,7 +117,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="all-vms-in-multiple-resource-groups"></a>多个资源组中的所有 Vm
+## <a name="all-vms-in-multiple-resource-groups"></a>多个资源组中的所有 VM
 
 使用以下 cmdlet 在单个订阅中注册多个资源组中的所有 SQL Server 虚拟机：
 
@@ -138,7 +138,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="all-vms-in-a-resource-group"></a>资源组中的所有 Vm
+## <a name="all-vms-in-a-resource-group"></a>一个资源组中的所有 VM
 
 使用以下 cmdlet 在单个资源组中注册所有 SQL Server 虚拟机： 
 
@@ -159,7 +159,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="specific-vms-in-a-single-resource-group"></a>单个资源组中的特定 Vm
+## <a name="specific-vms-in-a-single-resource-group"></a>单个资源组中的特定 VM
 
 使用以下 cmdlet 在单个资源组中注册特定的 SQL Server 虚拟机：
 
@@ -210,9 +210,9 @@ Please find the detailed report in  file RegisterSqlVMScriptReport1571314821.txt
 | **输出值** | **说明** |
 | :--------------  | :-------------- | 
 | 由于你没有访问权限或凭据不正确而导致的订阅注册失败的次数 | 这提供了与提供的身份验证有问题的订阅的数量和列表。 通过搜索订阅 ID，可以在日志中找到详细的错误。 | 
-| 由于未向资源提供程序注册而无法尝试的订阅数 | 此部分包含尚未注册到 SQL IaaS 代理扩展的订阅的计数和列表。 |
+| 由于订阅未注册到资源提供程序而无法尝试的订阅数 | 本部分包含尚未注册到 SQL IaaS 代理扩展的订阅的计数和列表。 |
 | 找到的 VM 总数 | 在传递给 cmdlet 的参数范围内找到的虚拟机的计数。 | 
-| 已注册的 VM 数 | 已跳过的虚拟机计数，因为已在扩展中注册这些虚拟机。 |
+| 已注册的 VM 数 | 由于虚拟机已注册到代理扩展而跳过的虚拟机的计数。 |
 | 已成功注册的 VM 数 | 运行 cmdlet 后成功注册的虚拟机计数。 以 `SubscriptionID, Resource Group, Virtual Machine` 格式列出已注册的虚拟机。 | 
 | 由于错误而未能注册的 VM 数 | 由于某些错误而未能注册的虚拟机计数。 可在日志文件中查看错误的详细信息。 | 
 | 由于 VM 或 VM 上的来宾代理未运行而跳过的 VM 数 | 由于虚拟机或虚拟机上的来宾代理未运行而无法注册的虚拟机的计数和列表。 启动虚拟机或来宾代理后，可以重试这些程序。 可在日志文件中查看详细信息。 |
@@ -225,14 +225,14 @@ Please find the detailed report in  file RegisterSqlVMScriptReport1571314821.txt
 
 ## <a name="remarks"></a>备注
 
-使用提供的脚本向扩展注册 SQL Server Vm 时，请注意以下事项：
+使用提供的脚本将 SQL Server VM 注册到代理扩展时，请考虑以下事项：
 
-- 使用扩展注册需要在 SQL Server VM 上运行一个来宾代理。 Windows Server 2008 映像没有来宾代理，因此这些虚拟机将失败，并且必须使用 [NoAgent 管理模式](sql-server-iaas-agent-extension-automate-management.md#management-modes)手动注册。
+- 注册到代理扩展时需要在 SQL Server VM 上运行的来宾代理。 Windows Server 2008 映像没有来宾代理，因此这些虚拟机将失败，并且必须使用 [NoAgent 管理模式](sql-server-iaas-agent-extension-automate-management.md#management-modes)手动注册。
 - 可使用内置重试逻辑来克服透明错误。 如果虚拟机已成功注册，则它是一种快速操作。 但是，如果注册失败，则将重试每个虚拟机。  因此，虽然实际时间要求取决于错误的类型和数量，但你应留出大量时间来完成注册过程。 
 
 ## <a name="full-script"></a>完整脚本
 
-有关 GitHub 上的完整脚本，请参阅 [通过 Az PowerShell 批量注册 SQL Server vm](https://github.com/Azure/azure-docs-powershell-samples/blob/master/sql-virtual-machine/register-sql-vms/RegisterSqlVMs.psm1)。 
+有关 GitHub 上的完整脚本，请参阅[使用 Az PowerShell 批量注册 SQL Server VM](https://github.com/Azure/azure-docs-powershell-samples/blob/master/sql-virtual-machine/register-sql-vms/RegisterSqlVMs.psm1)。 
 
 复制完整脚本，并将其另存为 `RegisterSqLVMs.psm1`。
 

@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: helohr
-manager: femila
-ms.openlocfilehash: 69582f26544d954088fd5a57bfe5730750b7b5a8
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+manager: lizross
+ms.openlocfilehash: 35b692033cc16f276b48bc6d973b27d994c1082a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447907"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "88002597"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>使用文件共享为主机池创建配置文件容器
 
@@ -66,7 +66,7 @@ Windows 虚拟桌面服务提供 FSLogix 配置文件容器作为推荐的用户
 
 | 名称                | 类型               | 数据/值                        |
 |---------------------|--------------------|-----------------------------------|
-| 已启用             | DWORD              | 1                                 |
+| Enabled             | DWORD              | 1                                 |
 | VHDLocations        | 多字符串值 | “文件共享的网络路径”     |
 
 >[!IMPORTANT]

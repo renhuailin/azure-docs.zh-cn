@@ -11,12 +11,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 02/22/2021
-ms.openlocfilehash: 2aba44f6c2f10ead1827e1b1411f3824a0ec2d6c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: ce8d4bf36524e3e7e7b3b8c974aa189fa000d845
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658548"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773243"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>在 Azure SQL 数据库中缩放单一数据库资源
 
@@ -60,7 +60,7 @@ ms.locfileid: "101658548"
 > [!NOTE]
 > 此外，对于标准 (S2-S12) 和常规用途数据库，如果数据库使用高级文件共享 ([PFS](../../storage/files/storage-files-introduction.md)) 存储，则将数据库移入/移出弹性池或在弹性池之间移动数据库的延迟与数据库大小成正比。
 >
-> 若要确定数据库是否正在使用 PFS 存储，请在数据库的上下文中执行以下查询。 如果 AccountType 列中的值为 `PremiumFileStorage` 或 `PremiumFileStorage-ZRS` ，则该数据库使用的是 PFS 存储。
+> 若要确定数据库是否正在使用 PFS 存储，请在数据库的上下文中执行以下查询。 如果 AccountType 列中的值为 `PremiumFileStorage` 或 `PremiumFileStorage-ZRS`，则该数据库使用的是 PFS 存储。
  
 ```sql
 SELECT s.file_id,
@@ -112,7 +112,7 @@ else {
 - 在启用了[异地复制](active-geo-replication-configure-portal.md)的情况下降级数据库时，请先将其主数据库降级到所需的服务层级和计算大小，然后再降级辅助数据库（用于实现最佳性能的常规指南）。 降级到另一版本时，需要先降级主数据库。
 - 各服务层级的还原服务不同。 如果要降级到基本层，则备份保持期也将缩短。 请参阅 [Azure SQL 数据库备份](automated-backups-overview.md)。
 - 更改完成前不会应用数据库的新属性。
-- 如果需要进行数据复制以缩放数据库 (请参阅 [延迟](#latency) 时间) 更改服务层时，对缩放操作的高资源利用率可能会导致延长的时间。 使用 [加速数据库恢复 (ADR) ](/sql/relational-databases/accelerated-database-recovery-concepts.md)，长时间运行的事务的回滚并不是很重要的延迟源，但高并发资源使用率可能会降低计算、存储和网络带宽资源的规模，尤其是对于较小的计算大小。
+- 更改服务层时，如果需要复制数据以扩展数据库（请参阅[延迟](#latency)），那么随之发生的资源高利用率可能会让扩展所花的时间更长。 使用[加速数据库恢复 (ADR)](/sql/relational-databases/accelerated-database-recovery-concepts)，长时间运行的事务回滚并不是引起延迟的原因，但随之发生的资源高利用率可能会减少用于扩展的计算、存储和网络带宽资源，尤其是对于较小的计算规模来说影响更大。
 
 ## <a name="billing"></a>计费
 
@@ -144,15 +144,15 @@ else {
 
 若要更改复制的辅助数据库的数据库大小，请更改主数据库的大小。 然后，此更改也会在辅助数据库上复制并实现。
 
-## <a name="p11-and-p15-constraints-when-max-size-greater-than-1-tb"></a>当最大大小超过 1 TB 时，P11 和 P15 约束
+## <a name="p11-and-p15-constraints-when-max-size-greater-than-1-tb"></a>当最大存储大于 1 TB 时，P11 和 P15 的限制
 
-高级层中超过 1 TB 的存储目前在除：中国东部、中国北部、德国中部和德国东北部以外的所有区域中都可用。 在这些区域，高级层中的最大存储限制为 1 TB。 对于最大大小超过 1 TB 的 P11 和 P15 数据库，存在以下注意事项和限制：
+除了中国东部、中国北部、德国中部和德国东北部区域外，其他所有区域目前均可提供高级层超过 1 TB 的存储。 在这些区域，高级层中的最大存储限制为 1 TB。 对于最大大小超过 1 TB 的 P11 和 P15 数据库，存在以下注意事项和限制：
 
-- 如果 P11 或 P15 数据库的最大大小已设置为大于 1 TB 的值，则只能将其还原或复制到 P11 或 P15 数据库。  随后，如果重新缩放操作时分配的空间量不超过新计算大小的最大大小限制，则可以将数据库重新缩放到不同的计算大小。
+- 如果 P11 或 P15 数据库的最大大小已设置为大于 1 TB，则只能将其还原或复制到 P11 或 P15 数据库。  随后，如果重新缩放操作时分配的空间量不超过新计算大小的最大大小限制，则可以将数据库重新缩放到不同的计算大小。
 - 对于“活动异地复制”方案：
-  - 设置异地复制关系：如果主数据库是 P11 或 P15，则辅助 () 也必须是 P11 或 P15。 较小的计算大小被拒绝为辅助数据库，因为它们不能支持超过 1 TB。
+  - 设置异地复制关系：如果主数据库为 P11 或 P15，辅助数据库也应为 P11 或 P15。 较小的计算大小被拒绝为辅助数据库，因为它们不支持超过 1 TB 的大小。
   - 升级异地复制关系中的主数据库：在主数据库上将最大大小更改为超过 1 TB 将触发辅助数据库上的相同更改。 这两个升级都必须成功才能使主数据库上的更改生效。 超过 1 TB 选项的区域限制适用。 如果辅助数据库位于不支持超过 1 TB 的区域，则不会升级主数据库。
-- 不支持使用导入/导出服务加载超过 1 TB 的 P11/P15 数据库。 使用 SqlPackage.exe 可[导入](database-import.md)和[导出](database-export.md)数据。
+- 不支持将导入/导出服务用于加载超过 1 TB 的 P11/P15 数据库。 使用 SqlPackage.exe 可[导入](database-import.md)和[导出](database-export.md)数据。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,10 +12,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 430da23986fc36a0e94c049512ef716aff1fed5c
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98660244"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的新应用注册体验
@@ -54,7 +54,7 @@ Azure AD B2C 应用注册体验在适用于所有 Azure AD 租户的常规[应�
 
 在新体验中，从以下选项中选择支持帐户类型：
 - 仅此组织目录中的帐户
-- 任何组织目录中的帐户 (任何 Azure AD 目录–多租户) 
+- 任何组织目录（任何 Azure AD 目录 – 多租户）中的帐户
 - 任何标识提供者或组织目录中的帐户(用于通过用户流对用户进行身份验证)
 
 若要了解不同的帐户类型，请选择创建体验中的“帮我选择”。
@@ -99,7 +99,7 @@ iOS/macOS 和 Android 平台是公共客户端 。 它们提供了一种简单�
 以下 Azure AD 应用注册功能不适用或不可用于 Azure AD B2C 租户：
 - **角色和管理员** - 当前不可用于 Azure AD B2C。
 - **品牌** - UI/UX 自定义在“公司品牌”体验中配置或作为用户流的一部分进行配置。 了解如何[自定义 Azure Active Directory B2C 中的用户界面](customize-ui-with-html.md)。
-- **发布服务器域验证** -你的应用程序在 *onmicrosoft.com* 上注册，后者不是已验证的域。 此外，发布服务器域主要用于授予用户同意，这对于 Azure AD B2C 应用进行用户身份验证并不适用。 [详细了解发布服务器域](../active-directory/develop/howto-configure-publisher-domain.md)。
+- **发布服务器域验证** - 你的应用在.onmicrosoft.com上注册，该域未经过验证。 此外，发布服务器域主要用于授予用户同意，这对于 Azure AD B2C 应用进行用户身份验证并不适用。 [详细了解发布服务器域](../active-directory/develop/howto-configure-publisher-domain.md)。
 - **令牌配置** - 令牌配置为用户流而不是应用的一部分。
 - **快速入门** 体验目前不适用于 Azure AD B2C 租户。
 <!-- - The **Integration assistant** blade is currently not available for Azure AD B2C tenants. -->
@@ -117,5 +117,5 @@ iOS/macOS 和 Android 平台是公共客户端 。 它们提供了一种简单�
 * 了解[如何注册 Web API](add-web-api-application.md)。
 * 了解[如何注册本机客户端应用程序](add-native-application.md)。
 * 了解[如何注册 Microsoft Graph 应用程序来管理 Azure AD B2C 资源](microsoft-graph-get-started.md)。
-* 了解 [如何使用 Azure AD B2C 作为 SAML 服务提供程序。](identity-provider-adfs.md)
+* 了解[如何使用 Azure AD B2C 作为 SAML 服务提供程序。](identity-provider-adfs.md)
 * 了解[应用程序类型](application-types.md)。

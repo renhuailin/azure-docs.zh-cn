@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: lizross
 ms.openlocfilehash: a4c16347d1883e1522fda18c2382f2d67b8ace80
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99051103"
 ---
 # <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>如何使用对称密钥注册组预配设备
@@ -21,7 +21,7 @@ ms.locfileid: "99051103"
 
 有些设备可能没有证书、TPM 或可用于安全地识别设备的任何其他安全功能。 设备预配服务包括[对称密钥证明](concepts-symmetric-key-attestation.md)。 对称密钥证明可以用于根据 MAC 地址或序列号等唯一信息来标识设备。
 
-如果安装[硬件安全模块 (HSM)](concepts-service.md#hardware-security-module) 和证书比较轻松，这可能是标识和预配设备更好的方式。 使用 HSM 可以绕过更新部署到所有设备的代码，而不会在设备映像中嵌入机密密钥。 本文假定：HSM 或证书都是不可行的选择。 但你有一些更新设备代码的方法，可供使用设备预配服务来预配设备。 
+如果安装[硬件安全模块 (HSM)](concepts-service.md#hardware-security-module) 和证书比较轻松，这可能是标识和预配设备更好的方式。 使用 HSM，你可以避免更新部署到所有设备上的代码，并且不必在设备映像中嵌入密钥。 本文假定：HSM 或证书都是不可行的选择。 但你有一些更新设备代码的方法，可供使用设备预配服务来预配设备。 
 
 本文还假定，在安全的环境中进行设备更新，以防发生对组主密钥或派生的设备密钥未经授权的访问。
 
@@ -140,12 +140,12 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
 sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 ```
 
-创建每个设备的唯一注册 Id。 有效字符为小写字母数字和短划线（“-”）。
+为每个设备创建唯一的注册 ID。 有效字符为小写字母数字和短划线（“-”）。
 
 
 ## <a name="derive-a-device-key"></a>派生一个设备密钥 
 
-若要生成设备密钥，请使用注册组主密钥来计算每个设备的注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) 。 然后，将结果转换为每个设备的 Base64 格式。
+要生成设备密钥，请使用注册组主密钥计算每个设备的注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)。 然后，为每个设备将结果转换 Base64 格式。
 
 > [!WARNING]
 > 每个设备的设备代码应该只包含该设备的相应派生设备密钥。 不要在设备代码中包含你的组主键。 泄露的主密钥可能会危及所有使用该密钥进行身份验证的设备的安全。
@@ -196,7 +196,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 ---
 
-每个设备使用其派生的设备密钥和唯一注册 ID 在预配过程中通过注册组执行对称密钥证明。
+每个设备将使用其派生的设备密钥和唯一注册 ID，于预配期间在注册组中执行对称密钥证明。
 
 
 
@@ -204,7 +204,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 在本部分，你将更新你在较早前设置的位于 Azure IoT C SDK 中的名为 prov\_dev\_client\_sample 的预配示例。 
 
-此示例代码模拟将预配请求发送到你的设备预配服务实例的设备启动序列。 启动序列将会使设备被识别并分配到你在注册组上配置的 IoT 中心。 这将针对使用注册组进行预配的每个设备完成。
+此示例代码模拟将预配请求发送到你的设备预配服务实例的设备启动序列。 启动序列将会使设备被识别并分配到你在注册组上配置的 IoT 中心。 将针对使用注册组进行预配的每个设备完成此操作。
 
 1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值。  
 
@@ -278,7 +278,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 ## <a name="security-concerns"></a>安全注意事项
 
-请注意，这样做会使派生的设备密钥作为每个设备的映像的一部分包含在内，这不是推荐的最佳安全方案。 这是安全和易用性经常发生权衡的一个原因。 您必须根据自己的要求完全检查设备的安全性。
+请注意，这会使派生的设备密钥成为每个设备的映像的一部分，这不是推荐的安全最佳做法。 这是通常需要在安全性与易用性之间进行权衡的原因之一。 你必须根据自己的要求全面检查设备的安全性。
 
 
 ## <a name="next-steps"></a>后续步骤

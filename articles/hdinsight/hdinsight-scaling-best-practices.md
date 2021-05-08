@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 3524b5d2274c52aa94fa1c3420fb0d3245d9b730
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 6e6c692e8fc13d1703df44c99e9969ba4db5f119
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932061"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872092"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>缩放 Azure HDInsight 群集
 
@@ -36,12 +36,12 @@ Microsoft 提供以下实用程序来缩放群集：
 |[Azure 经典 CLI](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
 |[Azure 门户](https://portal.azure.com)|打开 HDInsight 群集的窗格，在左侧菜单中选择“群集大小”，然后在“群集大小”窗格中键入工作节点数并选择“保存”。|  
 
-![Azure 门户缩放群集选项](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
+:::image type="content" source="./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png" alt-text="Azure 门户缩放群集选项":::
 
 使用以下任一方法可在几分钟之内扩展或缩放 HDInsight 群集。
 
 > [!IMPORTANT]  
-> * Azure 经典 CLI 已弃用，只应与经典部署模型配合使用。 进行所有其他的部署时，请使用 [Azure CLI](/cli/azure/)。
+> * 此 Azure 经典 CLI 已弃用，只能与经典部署模型配合使用。 进行所有其他的部署时，请使用 [Azure CLI](/cli/azure/)。
 > * PowerShell AzureRM 模块已弃用。  请尽可能使用 [Az 模块](/powershell/azure/new-azureps-module-az)。
 
 ## <a name="impact-of-scaling-operations"></a>缩放操作的影响
@@ -82,7 +82,7 @@ Microsoft 提供以下实用程序来缩放群集：
 
     1. 选择要重新平衡的拓扑，并选择“重新平衡”按钮。 输入执行重新平衡操作前的延迟。
 
-        ![HDInsight Storm 缩放重新平衡](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+        :::image type="content" source="./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png" alt-text="HDInsight Storm 缩放重新平衡":::
 
   * 命令行界面 (CLI) 工具
 
@@ -123,20 +123,20 @@ Microsoft 提供以下实用程序来缩放群集：
 1. 手动结束作业。
 1. 在缩放操作完成后重新提交这些作业。
 
-若要查看挂起和正在运行的作业的列表，可以使用 YARN **资源管理器 UI**，操作步骤如下：
+若要查看挂起的和正在运行的作业列表，可以遵循以下步骤使用 YARN“资源管理器 UI”：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择群集。  群集会在新的门户页中打开。
+1. 从 [Azure 门户](https://portal.azure.com/)中，选择群集。  群集会在新的门户页中打开。
 2. 在主视图中，导航到“群集仪表板” > “Ambari 主页”。 输入群集凭据。
 3. 在 Ambari UI 的左侧菜单中的服务列表内选择“YARN”。  
-4. 从 "YARN" 页上，选择 " **快速链接** " 并将鼠标悬停在活动头节点上，然后选择 " **资源管理器 UI**"。
+4. 在“YARN”页中选择“快速链接”，将鼠标悬停在活动头节点上，然后选择“资源管理器 UI”。 
 
-    ![Apache Ambari 快速链接资源管理器 UI](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
+    :::image type="content" source="./media/hdinsight-scaling-best-practices/resource-manager-ui1.png" alt-text="Apache Ambari 快速链接资源管理器 UI":::
 
-您可以使用直接访问资源管理器 UI `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster` 。
+可以使用 `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster` 直接访问资源管理器 UI。
 
 可以看到作业的列表及其当前状态。 在屏幕截图中，当前有一个作业正在运行：
 
-![资源管理器 UI 应用程序](./media/hdinsight-scaling-best-practices/resourcemanager-ui-applications.png)
+:::image type="content" source="./media/hdinsight-scaling-best-practices/resourcemanager-ui-applications.png" alt-text="资源管理器 UI 应用程序":::
 
 若要手动终止正在运行的应用程序，请通过 SSH shell 执行以下命令：
 
@@ -222,7 +222,7 @@ org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.s
     -rw-r--r--   3 hive hdfs         26 2017-07-06 20:30 hdfs://mycluster/tmp/hive/hive/c108f1c2-453e-400f-ac3e-e3a9b0d22699/inuse.info
     ```
 
-1. 如果知道 Hive 已处理这些文件，则可以删除这些文件。 在 Yarn 资源管理器 UI 页中查看，确保配置单元没有任何正在运行的查询。
+1. 如果知道 Hive 已处理这些文件，则可以删除这些文件。 查看 Yarn 资源管理器 UI 页，确保 Hive 中没有任何正在运行的查询。
 
     用于从 HDFS 中删除文件的示例命令行：
 

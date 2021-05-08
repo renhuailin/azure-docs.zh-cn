@@ -15,10 +15,10 @@ ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 41add54ce767413982ab0503f7263c58aed4d4e2
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97359279"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>SQL Server 2014 虚拟机（资源管理器）的自动备份
@@ -51,7 +51,7 @@ ms.locfileid: "97359279"
 **数据库配置**：
 
 - 目标用户数据库必须使用完整恢复模式。 系统数据库不需要使用完整恢复模型。 但是，如果需要为模型或 MSDB 创建日志备份，则必须使用完整恢复模型。 有关对备份使用完整恢复模型产生的影响的详细信息，请参阅[使用完整恢复模型的备份](/previous-versions/sql/sql-server-2008-r2/ms190217(v=sql.105))。 
-- 已向 [完全管理模式下](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full)的 SQL IaaS 代理扩展注册 SQL Server VM。 
+- 已在[完全管理模式下](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full)将 SQL Server VM 注册到 SQL IaaS 代理扩展。 
 -  自动备份依赖于完整 [SQL Server IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md)。 因此，只有默认实例或单个命名实例的目标数据库支持自动备份。 如果没有默认实例，并且存在多个命名实例，则 SQL IaaS 扩展将失败，自动备份将无法工作。 
 
 ## <a name="settings"></a>设置

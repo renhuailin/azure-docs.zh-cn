@@ -4,16 +4,16 @@ description: 了解如何装载网络文件系统共享。
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/15/2021
+ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 4369619cd83dffe36cf156f523a951e1360438db
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 8a993d9c1de35132198de5e3becc4f16d6a2a437
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717058"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "96621291"
 ---
 # <a name="how-to-mount-an-nfs-file-share"></a>如何装载 NFS 文件共享
 
@@ -55,7 +55,7 @@ ms.locfileid: "107717058"
 1. 输入要使用的装载路径，然后复制该脚本。
 1. 连接到客户端，并使用所提供的装载脚本。
 
-    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/mount-nfs-file-share-script.png" alt-text="文件共享连接边栏选项卡的屏幕截图。":::
+    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/mount-nfs-file-share-script.png" alt-text="文件共享连接边栏选项卡的屏幕截图":::
 
 现已装载 NFS 共享。
 

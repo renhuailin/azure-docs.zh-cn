@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 在私有云上使用 Azure AD 作为标识源
 description: 介绍如何将 Azure AD 作为标识提供者添加到 CloudSimple 私有云上，以便对从 Azure 访问 CloudSimple 的用户进行身份验证
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f55a0f52f5e028f9cbf7a9fabbb3c24ad43c3800
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 20e854b38aa45e410c5f6ddae51ee4d1bf0b088e
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97898600"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108182563"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>使用 Azure AD 作为 CloudSimple 私有云上 vCenter 的标识提供者
 

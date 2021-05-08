@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4f082ec896bf0542b63c8c1d0257679681334050
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85358661"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>使用 SQL 委派的管理员权限安装 Azure AD Connect
@@ -41,7 +41,7 @@ Azure AD Connect 管理员|安装 Azure AD Connect 并在自定义安装过程�
 若要使用数据库所有者权限预配带外数据库并安装 Azure AD Connect，请使用以下步骤。
 
 >[!NOTE]
->**强烈建议**在创建数据库时选择 Latin1_General_CI_AS 排序规则，虽然这不是必需的。
+>**强烈建议** 在创建数据库时选择 Latin1_General_CI_AS 排序规则，虽然这不是必需的。
 
 
 1. 让 SQL 管理员使用不区分大小写的排序规则序列 **(Latin1_General_CI_AS)** 创建 ADSync 数据库。  数据库必须命名为 **ADSync**。  安装 Azure AD Connect 时，会将恢复模型、兼容性级别和包含类型更新为正确的值。  但是，必须由 SQL 管理员来正确设置排序规则序列，否则 Azure AD Connect 会阻止该安装。  若要进行恢复，SA 必须删除并重新创建数据库。

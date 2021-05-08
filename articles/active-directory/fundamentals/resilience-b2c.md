@@ -14,10 +14,10 @@ ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b40918db03c260f899c36d306c892b787cc6371c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98724885"
 ---
 # <a name="build-resilience-in-your-customer-identity-and-access-management-with-azure-active-directory-b2c"></a>在使用 Azure Active Directory B2C 的客户标识和访问管理中构建复原能力
@@ -50,5 +50,5 @@ ms.locfileid: "98724885"
 
 - [提高应用程序中身份验证和授权的复原能力](resilience-app-development-overview.md)
 
-观看此视频，了解如何使用 Azure AD B2C 构建可复原和可缩放的流。
+观看此视频，了解如何使用 Azure AD B2C 构建可复原且可缩放的流。
 >[!Video https://www.youtube.com/embed/8f_Ozpw9yTs]

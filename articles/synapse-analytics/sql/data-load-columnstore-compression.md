@@ -2,21 +2,21 @@
 title: 提高列存储索引性能
 description: 减少内存需求或增加可用内存，使列存储索引压缩到每个行组中的行数最大化。
 services: synapse-analytics
-author: julieMSFT
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: jrasnick
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: a452808b1c349e2aec91759675e269e3680f0598
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 2cbf38808f69ed2c1f76196fc7580a8ad3dae56a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567955"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602071"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>最大化行组质量，提高列存储索引性能
 

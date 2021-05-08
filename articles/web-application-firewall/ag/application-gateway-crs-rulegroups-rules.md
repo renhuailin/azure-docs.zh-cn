@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: e2c88091072921f1ca674868e401c34d354418de
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98746503"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web 应用程序防火墙 CRS 规则组和规则
@@ -259,7 +259,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |941150|XSS 筛选器 - 类别 5 = 不允许的 HTML 属性|
 |941160|NoScript XSS InjectionChecker：HTML 注入|
 |941170|NoScript XSS InjectionChecker：属性注入|
-|941180|Node-Validator 阻止列表关键字|
+|941180|节点验证器阻止列表关键字|
 |941190|使用样式表的 XSS|
 |941200|使用 VML 帧的 XSS|
 |941210|使用经过模糊处理的 Javascript 的 XSS|
@@ -487,7 +487,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |941130|XSS 筛选器 - 类别 3 = 属性向量|
 |941140|XSS 筛选器 - 类别 4 = Javascript URI 向量|
 |941150|XSS 筛选器 - 类别 5 = 不允许的 HTML 属性|
-|941180|Node-Validator 阻止列表关键字|
+|941180|节点验证器阻止列表关键字|
 |941190|使用样式表的 XSS|
 |941200|使用 VML 帧的 XSS|
 |941210|使用经过模糊处理的 Javascript 的 XSS|

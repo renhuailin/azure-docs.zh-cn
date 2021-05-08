@@ -5,7 +5,7 @@ description: 本文介绍如何在 Microsoft 安全代码分析扩展中自定�
 author: sukhans
 manager: sukhans
 ms.author: terrylan
-ms.date: 07/31/2019
+ms.date: 03/22/2021
 ms.topic: article
 ms.service: security
 services: azure
@@ -13,14 +13,17 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 4016e1dd055b45f9cd59a172d0e71ef95fec1c40
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: ad395e1b782edb28845bb7db0607d2bab5b5697c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008678"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104802006"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>配置和自定义生成任务
+
+> [!Note]
+> Microsoft 安全代码分析 (MSCA) 扩展将被停用，于2022年3月1日生效。 现有 MSCA 客户将在2022年3月1日保留其对 MSCA 的访问权限。 请参阅“[OWASP 源代码分析工具](https://owasp.org/www-community/Source_Code_Analysis_Tools)”，了解 Azure DevOps 中的替代选项。 对于计划迁移到 GitHub 的客户，可以查看“[Github 高级安全](https://docs.github.com/github/getting-started-with-github/about-github-advanced-security)”。
 
 本文详细介绍每个生成任务中可用的配置选项。 本文首先介绍了与安全代码分析工具相关的任务， 最后介绍了处理后任务。
 
@@ -131,7 +134,7 @@ Windows Defender 使用 Windows 更新客户端来下载和安装签名。 如�
 
 > [!NOTE]
 >
-> - Roslyn 分析器与编译器集成，只能作为 csc.exe 编译的一部分运行。 因此，此任务需要重新启用或再次运行生成中之前运行的编译器命令。 此重播或运行是通过查询 Azure DevOps (以前 Visual Studio Team Services MSBuild 生成任务日志的) 来完成的。
+> - Roslyn 分析器与编译器集成，只能作为 csc.exe 编译的一部分运行。 因此，此任务需要重新启用或再次运行生成中之前运行的编译器命令。 此重启或运行可通过查询 Azure DevOps（之前叫做 Visual Studio Team Services）的 MSBuild 生成任务日志来完成。
 >
 >   任务从生成定义可靠获取 MSBuild 编译命令行没有其他途径。 我们考虑了添加自由格式文本框，使用户能够输入其命令行。 但这样做很难使这些命令行保持最新并与主生成同步。
 >

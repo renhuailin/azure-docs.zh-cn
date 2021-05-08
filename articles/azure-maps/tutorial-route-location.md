@@ -3,18 +3,18 @@ title: 教程：查找到某个位置的路线 | Microsoft Azure Maps
 description: 本教程介绍如何查找一个到兴趣点的路线。 了解如何设置地址坐标和查询 Azure Maps 路线服务，以获取前往该点的方向。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 09/01/2020
+ms.date: 04/26/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 1f1647766eeae917f7a2266ebb8f00fdfab3452e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 222f54157732013309532a1ab38f3f2f8747908e
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102210571"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326518"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>教程：如何使用 Azure Maps 路线服务和地图控件显示路线走向
 

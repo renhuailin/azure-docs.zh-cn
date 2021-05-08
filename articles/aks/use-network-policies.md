@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Kubernetes 网络策略保护流入流出 Pod 的流量
 services: container-service
 ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 4b72c5551d6ed33deb4df40a60215aed8071141d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.date: 03/16/2021
+ms.openlocfilehash: 17e14859ecdfe11872d5b0526d755d01bc1b034a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178892"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577846"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用网络策略保护 Pod 之间的流量
 
@@ -18,7 +18,7 @@ ms.locfileid: "102178892"
 
 本文介绍如何安装网络策略引擎，并创建 Kubernetes 网络策略来控制 AKS 中 Pod 之间的流量流动方式。 应该只对 AKS 中基于 Linux 的节点和 Pod 使用网络策略。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 需要安装并配置 Azure CLI 2.0.61 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
@@ -52,8 +52,8 @@ Azure 提供两种方式来实现网络策略。 可以在创建 AKS 群集时�
 
 | 功能                               | Azure                      | Calico                      |
 |------------------------------------------|----------------------------|-----------------------------|
-| 支持的平台                      | Linux                      | Linux、Windows Server 2019 (预览版)   |
-| 支持的网络选项             | Azure CNI                  | Azure CNI (Windows Server 2019 和 Linux) 和 kubenet (Linux)   |
+| 支持的平台                      | Linux                      | Linux、Windows Server 2019（预览版）  |
+| 支持的网络选项             | Azure CNI                  | Azure CNI（Windows Server 2019 和 Linux）和 kubenet (Linux)  |
 | 符合 Kubernetes 规范 | 支持的所有策略类型 |  支持的所有策略类型 |
 | 其他功能                      | 无                       | 扩展的策略模型，包括全局网络策略、全局网络集和主机终结点。 有关使用 `calicoctl` CLI 管理这些扩展功能的详细信息，请参阅 [calicoctl 用户参考][calicoctl]。 |
 | 支持                                  | 由 Azure 支持部门和工程团队提供支持 | 由 Azure 社区提供支持。 有关其他付费支持的详细信息，请参阅 [Project Calico 支持选项][calico-support]。 |
@@ -124,7 +124,7 @@ SUBNET_ID=$(az network vnet subnet show --resource-group $RESOURCE_GROUP_NAME --
 
 ### <a name="create-an-aks-cluster-for-azure-network-policies"></a>为 Azure 网络策略创建 AKS 群集
 
-创建 AKS 群集，并为网络插件和网络策略指定虚拟网络、服务主体信息和 *azure* 。
+创建 AKS 群集，并为网络插件和网络策略指定虚拟网络、服务主体信息和 azure。
 
 ```azurecli
 az aks create \
@@ -150,11 +150,11 @@ az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAM
 
 ### <a name="create-an-aks-cluster-for-calico-network-policies"></a>为 Calico 网络策略创建 AKS 群集
 
-创建 AKS 群集并为网络插件指定虚拟网络、服务主体信息、 *azure* ，并为网络策略指定 *calico* 。 使用 *calico* 作为网络策略可在 Linux 和 Windows 节点池上启用 calico 网络。
+创建 AKS 群集，并为网络插件指定虚拟网络、服务主体信息和 azure，为网络策略指定calico。 使用 calico 作为网络策略可在 Linux 和 Windows 节点池上启用 calico 网络。
 
-如果你计划将 Windows 节点池添加到群集，请在中包括 `windows-admin-username` 和 `windows-admin-password` 参数，以满足 [Windows Server 密码要求][windows-server-password]。 若要将 Calico 与 Windows 节点池一起使用，还需要注册 `Microsoft.ContainerService/EnableAKSWindowsCalico` 。
+如果计划将 Windows 节点池添加到群集，请包括参数 `windows-admin-username` 和 `windows-admin-password` ，以满足[Windows Server 密码要求][windows-server-password]。 若要将 Calico 与 Windows 节点池一起使用，还需要注册 `Microsoft.ContainerService/EnableAKSWindowsCalico`。
 
-`EnableAKSWindowsCalico`使用[az feature register][az-feature-register]命令注册功能标志，如以下示例中所示：
+使用 [az feature register][az-feature-register] 命令注册 `EnableAKSWindowsCalico` 功能标志，如以下示例所示：
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAKSWindowsCalico"
@@ -173,17 +173,21 @@ az provider register --namespace Microsoft.ContainerService
 ```
 
 > [!IMPORTANT]
-> 目前，在使用 Kubernetes 版本1.20 或更高版本的版本或更高版本的新群集上，将 Calico 网络策略用于 Windows 节点，需要使用 Azure CNI 网络。 启用了 Calico 的 AKS 群集上的 Windows 节点还默认启用 [ (DSR) 的直接服务器返回 ][dsr] 。
+> 目前，在使用 Calico 3.17.2 的 Kubernetes 1.20 或更高版本的新集群上可以使用具备 Windows 节点的 Calico 网络策略，并且需要使用 Azure CNI 网络。 启用 Calico 的 AKS 群集上的 Windows 节点还默认启用 [直接服务器返回 (DSR)][dsr]。
 >
-> 对于只有 Linux 节点池运行 Kubernetes 1.20 和早期版本的 Calico 的群集，Calico 版本将自动升级到3.17.2。
+> 对于使用早期版本 Calico 的只用 Linux 节点池运行 Kubernetes 1.20 的群集，Calico 版本将自动升级到3.17.2。
 
-Windows 节点的 Calico 网络策略目前处于预览阶段。
+具备 Windows 节点的 Calico 网络策略目前处于预览阶段。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-```azurecli
-PASSWORD_WIN="P@ssw0rd1234"
+创建用户名，用作群集上 Windows Server 容器的管理员凭据。 以下命令提示你输入用户名，并将其设置为 WINDOWS_USERNAME 以供在之后的命令中使用（请记住，本文中的命令要输入到 BASH shell 中）。
 
+```azurecli-interactive
+echo "Please enter the username to use as administrator credentials for Windows Server containers on your cluster: " && read WINDOWS_USERNAME
+```
+
+```azurecli
 az aks create \
     --resource-group $RESOURCE_GROUP_NAME \
     --name $CLUSTER_NAME \
@@ -195,15 +199,14 @@ az aks create \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal $SP_ID \
     --client-secret $SP_PASSWORD \
-    --windows-admin-password $PASSWORD_WIN \
-    --windows-admin-username azureuser \
+    --windows-admin-username $WINDOWS_USERNAME \
     --vm-set-type VirtualMachineScaleSets \
     --kubernetes-version 1.20.2 \
     --network-plugin azure \
     --network-policy calico
 ```
 
-创建群集需要几分钟时间。 默认情况下，仅使用 Linux 节点池创建群集。 如果要使用 Windows 节点池，可以添加一个。 例如：
+创建群集需要几分钟时间。 默认情况下，仅使用 Linux 节点池创建群集。 如果要使用 Windows 节点池，可以进行添加。 例如：
 
 ```azurecli
 az aks nodepool add \
@@ -222,7 +225,7 @@ az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAM
 
 ## <a name="deny-all-inbound-traffic-to-a-pod"></a>拒绝流向 Pod 的所有入站流量
 
-定义规则以允许特定网络流量之前，请首先创建用于拒绝所有流量的网络策略。 使用此策略，可为你提供起始点，仅为所需的流量创建允许列表。 此外，还可清楚看到，应用网络策略后，相关流量被丢弃。
+定义规则以允许特定网络流量之前，请首先创建用于拒绝所有流量的网络策略。 使用此策略，可为你提供起始点，仅为所需的流量开始创建允许列表。 此外，还可清楚看到，应用网络策略后，相关流量被丢弃。
 
 对于示例应用程序环境和流量规则，让我们先创建名为 *development* 的命名空间，以运行示例 Pod：
 
@@ -234,13 +237,13 @@ kubectl label namespace/development purpose=development
 创建运行 NGINX 的示例后端 Pod。 此后端 Pod 可用于模拟基于 Web 的示例后端应用程序。 在 development 命名空间中创建此 Pod，并且打开端口 80，以提供 Web 流量 。 将 Pod 贴上标签：app=webapp,role=backend，以便我们可在下一节中使用网络策略定向到它：
 
 ```console
-kubectl run backend --image=nginx --labels app=webapp,role=backend --namespace development --expose --port 80
+kubectl run backend --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --labels app=webapp,role=backend --namespace development --expose --port 80
 ```
 
 创建另一个 Pod 并附加终端会话，以测试是否可以成功访问默认的 NGINX 网页：
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development
+kubectl run --rm -it --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 network-policy --namespace development
 ```
 
 在 shell 提示符下，使用 `wget` 确认是否可以访问默认的 NGINX 网页：
@@ -296,7 +299,7 @@ kubectl apply -f backend-policy.yaml
 让我们看看是否可以在后端 Pod 上再次使用 NGINX 网页。 创建另一个测试 Pod，并附加一个终端会话：
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development
+kubectl run --rm -it --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 network-policy --namespace development
 ```
 
 在 shell 提示符下，使用 `wget` 确认是否可以访问默认的 NGINX 网页。 这一次，将超时值设为 2 秒。 网络策略现在会阻止所有入站流量，因此无法加载页面，如以下示例中所示：
@@ -353,7 +356,7 @@ kubectl apply -f backend-policy.yaml
 计划带有 *app=webapp,role=frontend* 标签的 Pod，并附加终端会话：
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development
+kubectl run --rm -it frontend --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --labels app=webapp,role=frontend --namespace development
 ```
 
 在 shell 提示符下，使用 `wget` 确认是否可以访问默认的 NGINX 网页：
@@ -383,7 +386,7 @@ exit
 网络策略允许来自标记为 app: webapp,role: frontend 的 Pod 的流量，但应拒绝其他所有流量。 让我们看看不带这些标签的另一个 Pod 是否可以访问后端 NGINX Pod。 创建另一个测试 Pod，并附加一个终端会话：
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development
+kubectl run --rm -it --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 network-policy --namespace development
 ```
 
 在 shell 提示符下，使用 `wget` 确认是否可以访问默认的 NGINX 网页。 网络策略将阻止入站流量，因此无法加载页面，如以下示例所示：
@@ -416,7 +419,7 @@ kubectl label namespace/production purpose=production
 在具有标签 app=webapp,role=frontend 的 production 命名空间中计划测试 Pod 。 附加终端会话：
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production
+kubectl run --rm -it frontend --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --labels app=webapp,role=frontend --namespace production
 ```
 
 在 shell 提示符下，使用 `wget` 确认是否可以访问默认的 NGINX 网页：
@@ -480,7 +483,7 @@ kubectl apply -f backend-policy.yaml
 在 *production* 命名空间中计划另一个 Pod，并附加终端会话：
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production
+kubectl run --rm -it frontend --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --labels app=webapp,role=frontend --namespace production
 ```
 
 在 shell 提示符下，使用 `wget` 查看目前拒绝流量的网络策略：
@@ -502,7 +505,7 @@ exit
 拒绝来自 *production* 命名空间的流量后，在 *development* 命名空间中计划一个测试 Pod，并附加终端会话：
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development
+kubectl run --rm -it frontend --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --labels app=webapp,role=frontend --namespace development
 ```
 
 在 shell 提示符下，使用 `wget` 查看允许流量的网络策略：

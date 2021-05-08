@@ -1,25 +1,25 @@
 ---
 title: 修正不符合资源
 description: 本指南将指导你完成对 Azure Policy 中不符合策略的资源的修正。
-ms.date: 02/17/2021
+ms.date: 05/01/2021
 ms.topic: how-to
-ms.openlocfilehash: e567bedf48393a36215c1ac3f3d11f467ae7badd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 677e203b724f2046dfd7ba8d7a509965a36a8172
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742222"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326158"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>修正 Azure Policy 中的不符合资源
 
-可以通过修正将不符合 deployIfNotExists 或 modify 策略的资源置于符合状态。 更正是通过指示 Azure 策略对现有资源和订阅运行已分配策略的 **deployIfNotExists** 效果或 **修改操作** 来实现的，无论该分配是对管理组、订阅、资源组还是单个资源。 本文介绍了使用 Azure Policy 了解并完成修正所需执行的步骤。
+可以通过修正将不符合 deployIfNotExists 或 modify 策略的资源置于符合状态。 修正是通过指示 Azure Policy 在现有资源和订阅上运行所分配策略的 deployIfNotExists 效果或 Modify 操作来完成的，无论该策略是分配给管理组、订阅、资源组还是单个资源 。 本文介绍了使用 Azure Policy 了解并完成修正所需执行的步骤。
 
 ## <a name="how-remediation-security-works"></a>修正安全的工作原理
 
 当 Azure Policy 在 deployIfNotExists 策略定义中运行模板时，它使用[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)来执行此操作。
 Azure Policy 会为每个分配创建一个托管标识，但必须具有要向托管标识授予哪些角色的相关详细信息。 如果托管标识缺少角色，则在分配策略或计划期间会显示错误。 使用门户时，一旦启动分配，Azure Policy 将自动授予托管标识所列的角色。 使用 SDK 时，必须手动向托管标识授予角色。 托管标识的位置不会影响它对 Azure Policy 的操作。
 
-:::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="缺少对托管标识的定义权限的 deployIfNotExists 策略的屏幕截图。" border="false":::
+:::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="缺少对托管标识的已定义权限的 deployIfNotExists 策略的屏幕截图。" border="false":::
 
 > [!IMPORTANT]
 > 在以下情况下，必须向分配的托管标识[手动授予访问权限](#manually-configure-the-managed-identity)，否则修正部署将失败：
@@ -123,7 +123,7 @@ if ($roleDefinitionIds.Count -gt 0)
 
 ### <a name="create-a-remediation-task-through-portal"></a>通过门户创建修正任务
 
-在评估期间，具有 **deployIfNotExists** 或 **修改** 效果的策略分配将确定是否存在不合规的资源或订阅。 当找不到符合的资源或订阅时，" **更新** " 页上会提供详细信息。 与具有不符合标准的资源或订阅的策略列表一起使用时，可以选择触发 **补救任务**。
+在评估期间，带 deployIfNotExists 或 **modify** 效果的策略分配确定是否存在不兼容资源或订阅。 当发现不兼容资源或订阅时，将在“修正”页上提供详细信息。 具有不兼容资源或订阅的策略列表也可以用来触发修正任务。
 此选项用于基于 **deployIfNotExists** 模板或 modify 操作创建部署。
 
 若要创建修正任务，请执行以下步骤：

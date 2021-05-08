@@ -7,17 +7,17 @@ author: dcstwh
 ms.author: weetok
 ms.date: 02/01/2021
 ms.openlocfilehash: b4b9ecef84f8ffcc82107299ad6603466380d1c0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100371492"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Azure 数据工厂中的管理中心
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-通过 Azure 数据工厂 UX 中的“管理”选项卡访问的管理中心是一个门户，托管数据工厂的全局管理操作。 在此处，你可以管理到数据存储和外部计算、源控制配置和触发器设置的连接。
+通过 Azure 数据工厂 UX 中的“管理”选项卡访问的管理中心是一个门户，托管数据工厂的全局管理操作。 在这里，你可以管理与数据存储和外部计算的连接、源代码管理配置以及触发器设置。
 
 ## <a name="manage-connections"></a>管理连接
 
@@ -33,21 +33,21 @@ ms.locfileid: "100371492"
 
 ![管理集成运行时](media/author-management-hub/management-hub-integration-runtime.png)
 
-## <a name="manage-source-control"></a>管理源代码管理
+## <a name="manage-source-control"></a>控制源代码管理
 
 ### <a name="git-configuration"></a>Git 配置
 
 你可以在管理中心的 Git 配置设置下查看/编辑所有与 Git 相关的信息。 
 
-最后发布的提交信息也会列出，有助于了解在环境中最后发布/部署的精确提交。 在生产环境中执行热修复时，此操作也很有用。
+最后发布的提交信息也会列出，有助于了解在环境中最后发布/部署的精确提交。 在生产环境中执行热修补时，此操作也很有用。
 
 有关详细信息，请参阅 [Azure 数据工厂中的源代码管理](source-control.md)。
 
-![管理 git 存储库](media/author-management-hub/management-hub-git.png)
+![管理 Git 存储库](media/author-management-hub/management-hub-git.png)
 
 ### <a name="parameterization-template"></a>参数化模板
 
-若要在从协作分支发布时重写生成的资源管理器模板参数，可以生成或编辑自定义参数文件。 有关详细信息，请了解如何 [使用资源管理器模板中的自定义参数](continuous-integration-deployment.md#use-custom-parameters-with-the-resource-manager-template)。 参数化模板仅在 git 存储库中工作时可用。 如果工作分支中不存在文件的 *arm-template-parameters-definition.js* ，则编辑默认模板将生成该文件。
+若要在从协作分支发布时替代生成的资源管理器模板参数，可以生成或编辑自定义参数文件。 有关详细信息，请了解如何[使用资源管理器模板中的自定义参数](continuous-integration-deployment.md#use-custom-parameters-with-the-resource-manager-template)。 参数化模板只有在 Git 存储库中工作时才可用。 如果工作分支中不存在 *arm-template-parameters-definition.json* 文件，则编辑默认模板将生成该文件。
 
 ![管理自定义参数](media/author-management-hub/management-hub-custom-parameters.png)
 
@@ -67,6 +67,6 @@ ms.locfileid: "100371492"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何在 ADF 中[配置 git 存储库](source-control.md)
+了解如何将[ Git 存储库配置](source-control.md)到 ADF
 
 

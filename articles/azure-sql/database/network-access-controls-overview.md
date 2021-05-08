@@ -1,7 +1,7 @@
 ---
 title: 网络访问控件
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: 概述如何管理和控制 Azure SQL 数据库和 Azure Synapse Analytics 的网络访问。
+description: 概述如何管理和控制对 Azure SQL 数据库和 Azure Synapse Analytics 的网络访问。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -13,15 +13,15 @@ ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
 ms.openlocfilehash: 90bc57af3aaf0d11cd354bfe7163014f836a72e8
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96460006"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL 数据库和 Azure Synapse Analytics 网络访问控制
 
-如果从 Azure SQL 数据库和 Azure Synapse Analytics [Azure 门户](single-database-create-quickstart.md) 创建逻辑 SQL server，则结果为 *yourservername.database.windows.net* 格式的公共终结点。
+从 [Azure 门户](single-database-create-quickstart.md)为 Azure SQL 数据库和 Azure Synapse Analytics 创建逻辑 SQL Server 时，结果是格式为“yourservername.database.windows.net”的公共终结点。
 
 可以使用以下网络访问控制来选择性地允许通过公共终结点访问数据库：
 
@@ -36,7 +36,7 @@ ms.locfileid: "96460006"
 > [!IMPORTANT]
 > 本文不适用于“SQL 托管实例”。 有关网络配置的详细信息，请参阅[连接到 Azure SQL 托管实例](../managed-instance/connect-application-instance.md)。
 
-请参阅下面的视频，详细了解这些访问控制及其功能：
+请观看下方视频，详细了解这些访问控制及其功能：
 
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--SQL-Database-Connectivity-Explained/player?WT.mc_id=dataexposed-c9-niner]
 
@@ -63,7 +63,7 @@ ms.locfileid: "96460006"
 若要在“允许访问 Azure 服务”设置为“关闭”的情况下使用数据同步功能，需要创建单个防火墙规则条目，以便从托管中心数据库的区域的 SQL 服务标记[添加 IP 地址](firewall-create-server-level-portal-quickstart.md)。 
 将这些服务器级防火墙规则添加到托管“中心”和“成员”数据库的服务器（可能位于不同的区域） 
 
-使用以下 PowerShell 脚本生成对应于美国西部区域的 SQL 服务标记的 IP 地址
+使用以下 PowerShell 脚本生成与美国西部区域的 SQL 服务标记对应的 IP 地址
 
 ```powershell
 PS C:\>  $serviceTags = Get-AzNetworkServiceTag -Location eastus2
@@ -111,7 +111,7 @@ start          end
 ## <a name="virtual-network-firewall-rules"></a>虚拟网络防火墙规则
 
 除了 IP 规则外，服务器防火墙还允许定义虚拟网络规则。  
-若要了解详细信息，请参阅 [AZURE SQL 数据库的虚拟网络服务终结点和规则](vnet-service-endpoint-rule-overview.md) 或观看此视频：
+若要了解详细信息，请参阅[虚拟网络服务终结点和 Azure SQL 数据库规则](vnet-service-endpoint-rule-overview.md)或观看下方视频：
 
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--Demo--Vnet-Firewall-Rules-for-SQL-Database/player?WT.mc_id=dataexposed-c9-niner]
 

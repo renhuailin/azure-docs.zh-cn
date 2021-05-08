@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
 ms.openlocfilehash: 3adbd292d42fd6fd2a0e149e103c17968a6f084b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94950748"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>安全地安装和运行 StorSimple 设备
@@ -67,7 +67,7 @@ ms.locfileid: "94950748"
 若要降低电气连接温度过高或着火的可能性：
 
 * 使用带电气过载保护的合适电源，以满足技术规格中详述的要求。
-* 请勿使用分叉型电源线 ( "Y") 。
+* 请勿使用分叉型电源线（“Y”导线）。
 * 为了符合适用的安全、发射和热要求，不应移除任意盖子，并且所有托架中必须填充插件模块或驱动器挡板。
 * 确保以制造商指定的方式使用设备。 如果未以制造商指定的方式使用本设备，则该设备提供的保护可能会减弱。
 
@@ -96,14 +96,14 @@ ms.locfileid: "94950748"
 
 * 机架应具有安全的配电系统。 它必须为机箱提供过流保护，并且决不能过载安装机箱总数。 应遵循名牌上显示的额定功耗。
 * 配电系统必须在机架中为每个机箱提供可靠的接地。
-* 配电系统的设计必须考虑所有机箱中所有电源的总接地泄漏电流。 请注意，每个机箱中的每个电源在 264 伏，60 Hz 的情况下最大接地泄漏电流为 1.0 mA。 机架可能需要标有 "高泄漏电流"。 连接用品之前， (地球) 连接至关重要。 "
+* 配电系统的设计必须考虑所有机箱中所有电源的总接地泄漏电流。 请注意，每个机箱中的每个电源在 264 伏，60 Hz 的情况下最大接地泄漏电流为 1.0 mA。 机架可能需要标有“高泄漏电流。 在连接至电源前，接地连接至关重要。”
 * 当为机架配置机箱时，必须满足 UL 60950-1 和 IEC 60950-1/EN 60950-1 的安全要求。
 
 ![注意图标](./media/storsimple-safety/IC740881.png) **NOTICE:**
 
 机架系统的正确冷却：
 
-* 确保机架设计考虑到 35 摄氏度（95 华氏度）的最高机箱操作环境温度。 留出机架系统很冷的房间，并检查数据中心内 AC 通风管是否有充足的气流。
+* 确保机架设计考虑到 35 摄氏度（95 华氏度）的最高机箱操作环境温度。 保留让机架系统保持冷却的房间，并检查数据中心内 AC 通风管是否有充足的气流。
 * 系统采用低压后排气安装运行（机架门和障碍物生成的背压不能超过 5 帕斯卡 [0.5 毫米水位]）。
 
 ## <a name="power-cooling-module-pcm-precautions"></a>电源冷却模块 (PCM) 注意事项
@@ -148,7 +148,7 @@ ms.locfileid: "94950748"
 
 ![注意图标](./media/storsimple-safety/IC740881.png) **NOTICE:**
 
-当发运或以其他方式通过无线传输电池时，请遵循 IATA 锂电池指南文档，网址为： [https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
+当通过船运或空运对电池进行运输时，请遵循 [https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx) 中提供的 IATA 锂电池指南文档
 
 查看完这些安全注意事项之后，后续步骤是对设备进行解包、安装机架并连接电缆。
 

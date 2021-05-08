@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: 1217d3af855e96b6d6a0f403c2ff351a6b957d9a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c16764d1ce985755b6a3042873cc18b09b697bcf
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96459660"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551605"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>用于解决 Azure SQL 数据库和 Azure SQL 托管实例常见安全要求的 playbook
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,7 +91,7 @@ ms.locfileid: "96459660"
 - 通过组分配向 Azure AD 主体分配资源访问权限：创建 Azure AD 组，向组授予访问权限，并将各个成员添加到组中。 在数据库中，创建包含的数据库用户用于映射 Azure AD 组。 若要在数据库中分配权限，请将与 Azure AD 组关联的用户置于具有适当权限的数据库角色中。
   - 请参阅文章[通过 SQL 配置和管理 Azure Active Directory 身份验证](authentication-aad-configure.md)以及[通过 SQL 使用 Azure AD 进行身份验证](authentication-aad-overview.md)。
   > [!NOTE]
-  > 在 SQL 托管实例中，还可以创建映射到 master 数据库中的 Azure AD 主体的登录名。 请参阅 [CREATE LOGIN (Transact-SQL)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)。
+  > 在 SQL 托管实例中，还可以创建映射到 master 数据库中的 Azure AD 主体的登录名。 请参阅 [CREATE LOGIN (Transact-SQL)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)。
 
 - 使用 Azure AD 组可以简化权限管理，组所有者和资源所有者都可以在组中添加/删除成员。
 
@@ -136,7 +136,7 @@ Azure AD 多重身份验证要求完成多种形式的身份验证，因而有�
 
 - 对以交互方式请求密码的 Azure SQL 数据库和 Azure SQL 托管实例使用 Azure AD 交互式身份验证模式，然后启用多重身份验证：
   - 在 SSMS 中使用通用身份验证。 请参阅[在 Azure SQL 数据库、SQL 托管实例和 Azure Synapse Analytics 中使用多重 Azure AD 身份验证（SSMS 对多重身份验证的支持）](authentication-mfa-ssms-overview.md)一文。
-  - 使用 SQL Server Data Tools (SSDT) 中支持的交互式身份验证。 请参阅 [SQL Server Data Tools (SSDT) 中的 Azure Active Directory 支持](/sql/ssdt/azure-active-directory?view=azuresqldb-current)。
+  - 使用 SQL Server Data Tools (SSDT) 中支持的交互式身份验证。 请参阅 [SQL Server Data Tools (SSDT) 中的 Azure Active Directory 支持](/sql/ssdt/azure-active-directory?view=azuresqldb-current&preserve-view=true)。
   - 使用其他支持多重身份验证的 SQL 工具。
     - SSMS 向导对导出/提取/部署数据库操作的支持  
     - [sqlpackage.exe](/sql/tools/sqlpackage)：选项“/ua”
@@ -196,7 +196,7 @@ Azure AD 多重身份验证要求完成多种形式的身份验证，因而有�
 
 - 如果无法避免密码或机密的使用，请在 Azure Key Vault 中存储用户密码和应用程序机密，并通过 Key Vault 访问策略管理访问权限。
 
-- 各种应用开发框架还可能提供框架特定的机制来保护应用中的机密。 例如：[ASP.NET Core 应用](/aspnet/core/security/app-secrets?tabs=windows&view=aspnetcore-2.1)。
+- 各种应用开发框架还可能提供框架特定的机制来保护应用中的机密。 例如：[ASP.NET Core 应用](/aspnet/core/security/app-secrets?tabs=windows)。
 
 ### <a name="use-sql-authentication-for-legacy-applications"></a>对旧式应用程序使用 SQL 身份验证
 

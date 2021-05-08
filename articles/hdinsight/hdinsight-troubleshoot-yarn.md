@@ -4,12 +4,12 @@ description: 获取有关使用 Apache Hadoop YARN 和 Azure HDInsight 的常见
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: b5b8ccbfd3e39415416cfc8fabcf9614f5934042
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 0cd2571276992812327e286ba9b935fcbf6fbbaf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98931411"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104871803"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Hadoop YARN 进行故障排除
 
@@ -25,37 +25,37 @@ ms.locfileid: "98931411"
 
 | 队列 | 容量 | 最大容量 |
 | --- | --- | --- |
-| 默认值 | 25% | 50% |
+| default | 25% | 50% |
 | thrftsvr | 25% | 50% |
 | Spark | 50% | 50% |
 
 1. 依次选择“Abari 视图”图标和网格模式。 接下来，选择“YARN 队列管理器”。
 
-    ![Apache Ambari 仪表板 YARN 队列管理器](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png" alt-text="Apache Ambari 仪表板 YARN 队列管理器" border="false":::
 2. 选择 **default** 队列。
 
-    ![Apache Ambari YARN 选择默认队列](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png" alt-text="Apache Ambari YARN 选择默认队列" border="false":::
 3. 将 **default** 队列的 **容量** 从 50% 更改为 25%。 将 **thriftsvr** 队列的 **容量** 更改为 25%。
 
-    ![将 default 和 thriftsvr 队列的容量更改为 25%](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png" alt-text="将 default 和 thriftsvr 队列的容量更改为 25%" border="false":::
 4. 若要创建新队列，请选择“添加队列”。
 
-    ![Apache Ambari YARN 仪表板添加队列](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png" alt-text="Apache Ambari YARN 仪表板添加队列" border="false":::
 
 5. 为新队列命名
 
-    ![Apache Ambari YARN 仪表板名称队列](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png" alt-text="Apache Ambari YARN 仪表板名称队列" border="false":::  
 
 6. 将 **容量** 值保留为 50%，并选择“操作”按钮。
 
-    ![Apache Ambari YARN 选择操作](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png" alt-text="Apache Ambari YARN 选择操作" border="false":::  
 7. 选择“保存并刷新队列”。
 
-    ![选择“保存并刷新队列”](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png" alt-text="选择“保存并刷新队列”" border="false":::  
 
 YARN 计划程序 UI 中会立即显示这些更改。
 
-### <a name="additional-reading"></a>其他阅读材料
+### <a name="additional-reading"></a>附加阅读材料
 
 - [Apache Hadoop YARN CapacityScheduler](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
 
@@ -126,10 +126,10 @@ YARN 计划程序 UI 中会立即显示这些更改。
 
     此命令创建名为 containerlogs.txt 的日志文件。
 
-### <a name="additional-reading"></a><a name="additional-reading-2"></a>其他阅读材料
+### <a name="additional-reading"></a><a name="additional-reading-2"></a>附加阅读材料
 
 - [使用 SSH 连接到 HDInsight (Apache Hadoop)](./hdinsight-hadoop-linux-use-ssh-unix.md)
-- [Apache Hadoop YARN 的概念和应用程序](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
+- [Apache Hadoop YARN 的概念和应用](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
 
 ## <a name="next-steps"></a>后续步骤
 

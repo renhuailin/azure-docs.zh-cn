@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 5a646ffe1d306d7ea13da002715d5bd9b907107b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92793460"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>在扩大云数据库之间移动数据
@@ -53,7 +53,7 @@ ms.locfileid: "92793460"
 
 - **合并以实现缩减**
 
-  由于业务的季节性，需要缩减容量。 当业务减少时，使用该工具可减少到更少的缩放单元。 弹性缩放 Split-Merge 服务中的 "合并" 功能涵盖了这一要求。
+  由于业务的季节性，需要缩减容量。 当业务减少时，使用该工具可减少到更少的缩放单元。 弹性缩放拆分/合并服务的“合并”功能可以满足此要求。
 
 - **通过移动 Shardlet 管理热点**
 

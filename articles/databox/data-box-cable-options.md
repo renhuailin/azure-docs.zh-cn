@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box 布线选项 | Microsoft Docs
-description: 了解通过使用管理端口或数据端口连接 Azure Data Box 以便进行数据传输的不同方式。
+description: 了解通过使用管理端口或数据端口的用于数据传输的 Azure Data Box 布线的不同方式。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
 ms.openlocfilehash: a2c4cce492c48ebe6e09ad142f97bc6377a8a5e1
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94334591"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Azure Data Box 的布线选项
@@ -36,8 +36,8 @@ ms.locfileid: "94334591"
 
 2. 在服务器上，请完成以下设置：
 
-    - 将“IP 地址”设置为  192.168.100.5
-    - 将“子网”  设置为 255.255.255.0
+    - 将“IP 地址”设置为 192.168.100.5
+    - 将“子网”设置为 255.255.255.0
 
 3. 通过 192.168.100.10 访问设备的本地 Web UI。 在 Azure 门户中使用解锁密码登录并解锁 Data Box。
 
@@ -62,8 +62,8 @@ ms.locfileid: "94334591"
 2. 使用用于 DATA 3 的 RJ45 或 SFP+ 电缆将 DATA 1 或 DATA 2 连接到充当数据源的服务器。 建议使用 10-GbE DATA 1 或 DATA 2 端口以确保良好的性能。
 3. 在服务器上，请完成以下设置：
 
-   - 将“IP 地址”设置为  192.168.100.5
-   - 将“子网”  设置为 255.255.255.0
+   - 将“IP 地址”设置为 192.168.100.5
+   - 将“子网”设置为 255.255.255.0
 
      ![双端口设置](media/data-box-cable-options/cabling-2-port-setup.png)
 
@@ -81,7 +81,7 @@ ms.locfileid: "94334591"
    - **IP 地址** 192.168.100.5
    - **子网** 255.255.255.0。
   
-   ![使用交换机进行双端口设置](media/data-box-cable-options/cabling-with-static-ip.png)
+   ![通过交换机进行的双端口设置](media/data-box-cable-options/cabling-with-static-ip.png)
 
 3. 通过 192.168.100.10 访问设备的本地 Web UI。 在 Azure 门户中使用解锁密码登录并解锁 Data Box。
 4. 标识 DHCP 服务器分配的 IP 地址。
@@ -105,7 +105,7 @@ ms.locfileid: "94334591"
    - **IP 地址** 192.168.100.5
    - **子网** 255.255.255.0。
 
-     ![使用交换机2进行双端口设置](media/data-box-cable-options/cabling-with-switch-static-ip.png)
+     ![通过交换机 2 进行的双端口设置](media/data-box-cable-options/cabling-with-switch-static-ip.png)
 
 3. 通过 192.168.100.10 访问设备的本地 Web UI。 在 Azure 门户中使用解锁密码登录并解锁 Data Box。
 4. 为已配置的数据端口分配静态 IP。
@@ -125,7 +125,7 @@ ms.locfileid: "94334591"
 
 1. 使用 RJ45 或 SFP+ 电缆通过交换机（其中的 DHCP 服务器可供访问）连接到服务器。
 
-    ![使用交换机3进行两个端口设置](media/data-box-cable-options/cabling-dhcp-data-only.png)
+    ![通过交换机 3 进行的双端口设置](media/data-box-cable-options/cabling-dhcp-data-only.png)
 
 2. 使用 DHCP 服务器或 DNS 服务器标识 IP 地址。
 3. 在同一网络的服务器中，使用 DHCP 服务器分配的 IP 地址访问设备的本地 Web UI。 在 Azure 门户中使用解锁密码登录并解锁 Data Box。

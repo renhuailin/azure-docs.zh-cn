@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 02/04/2021
 ms.custom: template-concept
 ms.openlocfilehash: fcea2e962722773f59e73df898e0188c3f6454b6
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99551204"
 ---
 # <a name="azure-load-balancer-distribution-modes"></a>Azure 负载均衡器分发模式
 
-Azure 负载均衡器支持两种分发模式，用于路由到负载平衡应用程序的连接：
+Azure 负载均衡器支持两种分发模式，用于将连接路由到负载均衡的应用程序：
 
 * 基于哈希
 * 源 IP 关联
@@ -36,7 +36,7 @@ Azure 负载均衡器的默认分配模式是五元组哈希。
 
 ![基于五元组哈希的分配模式](./media/distribution-mode-concepts/load-balancer-distribution.png)
 
-基于哈希的模式有一个配置类型：
+基于哈希的模式提供一种配置类型：
 
 * **无(基于哈希)** - 指定任何虚拟机可能处理来自同一客户端的后续请求。
 
@@ -50,14 +50,14 @@ Azure 负载均衡器的默认分配模式是五元组哈希。
 
 ![二元组会话关联分配模式](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
 
-源 IP 关联模式有两种配置类型：
+源 IP 关联模式提供两种配置类型：
 
 * **客户端 IP (源 IP 关联 2 元组)** - 指定来自同一客户端 IP 地址的后续请求将由同一虚拟机处理。
 * **客户端 IP 和协议(源 IP 关联 3 元组)** - 指定来自同一客户端 IP 地址和协议组合的连续请求将由同一虚拟机处理。
 
 ## <a name="use-cases"></a>用例
 
-与客户端 IP 和协议 (源 IP 关联 3-元组) 的源 IP 关联解决了 Azure 负载均衡器与远程桌面网关 (RD 网关) 之间的不兼容性。 
+源 IP 关联模式中的客户端 IP 和协议（源 IP 关联 3 元组）类型解决了 Azure 负载均衡器与远程桌面网关（RD 网关）之间的不兼容性。 
 
 另一个用例方案是媒体上传。 数据上传通过 UDP 进行，但控制平面通过 TCP 实现：
 
@@ -70,5 +70,5 @@ Azure 负载均衡器的默认分配模式是五元组哈希。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解如何配置 Azure 负载均衡器的分发模式，请参阅 [配置 Azure 负载均衡器的分发模式](load-balancer-distribution-mode.md)。
+有关如何配置 Azure 负载均衡器的分发模式的详细信息，请参阅[配置 Azure 负载均衡器的分发模式](load-balancer-distribution-mode.md)。
 

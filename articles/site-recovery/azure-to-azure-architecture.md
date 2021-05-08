@@ -2,15 +2,18 @@
 title: 使用 Azure Site Recovery 执行 Azure 到 Azure 的灾难恢复体系结构
 description: 概述了使用 Azure Site Recovery 服务为 Azure VM 设置 Azure 区域之间的灾难恢复时使用的体系结构。
 services: site-recovery
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
-ms.openlocfilehash: 38bf9d41f81a76c4263952a94b5526984db0705f
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.author: raynew
+ms.openlocfilehash: 64d1084fd7025c74676977f065062e5e94dabf1d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580942"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "97652239"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 到 Azure 的灾难恢复体系结构
 

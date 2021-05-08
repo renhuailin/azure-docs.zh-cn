@@ -17,10 +17,10 @@ ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 783de636d4520f48f624f3380f811f1f18366330
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99259230"
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中对企业应用禁用用户登录
@@ -33,8 +33,8 @@ ms.locfileid: "99259230"
 1. 选择“所有服务”  ，在文本框中输入 **Azure Active Directory**，并选择“Enter”  。
 1. 在“Azure Active Directory -  directoryname”***窗格（即，正在管理的目录的 Azure AD 窗格）中，选择“企业应用程序”***。
 1. 在“企业应用程序 - 所有应用程序”  窗格上，你会看到你可以管理的应用的列表。 选择一个应用。
-1. 在“appname”***窗格（即标题中包含所选应用的名称的窗格）中，选择“属性”***。
-1. 在“appname ***- 属性”*** 窗格中，对“启用以让用户登录?”设置选择“否”。
+1. 在 *“appname”_ 窗格（即标题中包含所选应用的名称的窗格）上，选择 _*属性**。
+1. 在 *“appname_ - _属性” 窗格中，为“启用以让用户登录?”选择“否”。 
 1. 选择“保存”  命令。
 
 ## <a name="use-azure-ad-powershell-to-disable-an-unlisted-app"></a>使用 Azure AD PowerShell 禁用未列出的应用

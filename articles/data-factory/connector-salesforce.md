@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
 ms.openlocfilehash: 5b49e62330c789d6d5cbe2af2edb28a2c3e1238f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "104583082"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Salesforce 复制数据
@@ -139,7 +139,7 @@ Salesforce 链接服务支持以下属性。
 
 要从/向 Salesforce 复制数据，请将数据集的 type 属性设置为 **SalesforceObject**。 支持以下属性。
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **SalesforceObject**。  | 是 |
 | objectApiName | 要从中检索数据的 Salesforce 对象名称。 | 对于源为“No”，对于接收器为“Yes” |
@@ -184,7 +184,7 @@ Salesforce 链接服务支持以下属性。
 
 要从 Salesforce 复制数据，请将复制活动中的源类型设置为“SalesforceSource”。 复制活动的 **source** 节支持以下属性。
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **SalesforceSource**。 | 是 |
 | 查询 |使用自定义查询读取数据。 可以使用 [Salesforce 对象查询语言 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) 查询或 SQL-92 查询。 请在[查询提示](#query-tips)部分中查看更多提示。 如果未指定查询，将检索在数据集的“objectApiName”中指定的 Salesforce 对象的所有数据。 | 否（如果指定了数据集中的“objectApiName”） |
@@ -234,14 +234,14 @@ Salesforce 链接服务支持以下属性。
 
 要向 Salesforce 复制数据，请将复制活动中的接收器类型设置为“SalesforceSink”。 复制活动 **sink** 节支持以下属性。
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 **SalesforceSink**。 | 是 |
 | writeBehavior | 操作写入行为。<br/>允许的值为 **Insert** 和 **Upsert**。 | 否（默认值为 Insert） |
 | externalIdFieldName | 更新插入操作的外部的 ID 字段名称。 指定的字段必须在 Salesforce 对象中定义为“外部 ID 字段”。 它相应的输入数据中不能有 NULL 值。 | 对于“Upsert”是必需的 |
 | writeBatchSize | 每批中写入到 Salesforce 的数据行计数。 | 否（默认值为5,000） |
 | ignoreNullValues | 指示是否忽略 NULL 值从输入数据期间写入操作。<br/>允许的值为 **true** 和 **false**。<br>- **True**：执行更新插入或更新操作时，保持目标对象中的数据不变。 插入在执行插入操作时定义的默认值。<br/>- **False**：执行更新插入或更新操作时，将目标对象中的数据更新为 NULL。 执行插入操作时插入 NULL 值。 | 否（默认值为 false） |
-| maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的数目上限。 仅当要限制并发连接数目时指定一个值。| 否 |
+| maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的上限。 仅在要限制并发连接时指定一个值。| 否 |
 
 **示例：复制活动中的 Salesforce 接收器**
 

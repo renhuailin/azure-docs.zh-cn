@@ -9,10 +9,10 @@ ms.date: 02/03/2021
 ms.author: tisande
 ms.custom: query-reference
 ms.openlocfilehash: 12ce8beab082674cd7672713325d4b3f4322aeae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "104587298"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
@@ -49,7 +49,7 @@ GetCurrentDateTime ()
 GetCurrentDateTime() 是非确定性的函数。 返回的结果为 UTC。 精度为 7 位，准确度为 100 纳秒。
 
 > [!NOTE]
-> 此系统函数不会使用索引。 如果需要将值与当前时间进行比较，请在查询执行之前获取当前时间，并在 `WHERE` 子句中使用该常量字符串值。
+> 此系统函数不会使用索引。 如果需要将值与当前时间进行比较，请在执行查询之前获取当前时间，并在 `WHERE` 子句中使用该常量字符串值。
 
 ## <a name="examples"></a>示例
   

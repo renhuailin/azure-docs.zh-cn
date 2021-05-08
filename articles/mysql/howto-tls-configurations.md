@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/02/2020
-ms.openlocfilehash: 290752c0e577e6c2cd58d83f77fea8a5406388e4
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
-ms.translationtype: MT
+ms.openlocfilehash: 5ecf2992fa9ea56f73748a9f1f98c75f9076c68f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240624"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104656883"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-mysql-using-azure-portal"></a>使用 Azure 门户在 Azure Database for MySQL 中配置 TLS 设置
 
@@ -37,11 +37,11 @@ ms.locfileid: "93240624"
 
     :::image type="content" source="./media/howto-tls-configurations/setting-tls-value.png" alt-text="Azure Database for MySQL 的 TLS 配置":::
 
-1. 单击“保存”  以保存更改。
+1. 单击“保存”以保存更改。 
 
-1. 此时将显示一则通知，确认已成功启用了连接安全性设置。
+1. 此时将显示一则通知，确认已成功启用了连接安全性设置，即刻生效。 不需要 **重启** 服务器，也未执行该操作。 保存更改后，仅当 TLS 版本大于或等于门户上设置的最低 TLS 版本时，才接受到服务器的所有新连接。
 
-    :::image type="content" source="./media/howto-tls-configurations/setting-tls-value-success.png" alt-text="Azure Database for MySQL 的 TLS 配置":::
+    :::image type="content" source="./media/howto-tls-configurations/setting-tls-value-success.png" alt-text="Azure Database for MySQL 的 TLS 配置成功":::
 
 ## <a name="next-steps"></a>后续步骤
 

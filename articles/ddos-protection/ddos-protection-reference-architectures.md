@@ -1,6 +1,6 @@
 ---
-title: Azure DDoS 保护参考体系结构
-description: 了解 Azure DDoS 保护参考体系结构。
+title: Azure DDoS 防护参考体系结构
+description: 了解 Azure DDoS 防护参考体系结构。
 services: ddos-protection
 documentationcenter: na
 author: yitoh
@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
 ms.openlocfilehash: e5472620fe9b07d152a5325b0654044cb1505fd7
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94992431"
 ---
 # <a name="ddos-protection-reference-architectures"></a>DDoS 防护参考体系结构
@@ -43,7 +43,7 @@ ms.locfileid: "94992431"
 在此体系结构中，已在虚拟网络上启用标准 DDoS 防护。 虚拟网络中的所有公共 IP 将得到第 3 层和第 4 层 DDoS 防护。 要获得第 7 层防护，请部署 WAF SKU 中的应用程序网关。 有关此参考体系结构的详细信息，请参阅[此文](/azure/architecture/reference-architectures/virtual-machines-windows/n-tier)。
 
 > [!NOTE]
-> 不支持在公共 IP 后面运行单个 VM 的情况。
+> 不支持在公共 IP 后运行单个 VM 的情况。
 
 ### <a name="paas-web-application"></a>PaaS Web 应用程序
 
@@ -80,4 +80,4 @@ Azure 流量管理器将传入的请求路由到某个区域中的应用程序�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何 [创建 DDoS 保护计划](manage-ddos-protection.md)。
+- 了解如何[创建 DDoS 防护计划](manage-ddos-protection.md)。

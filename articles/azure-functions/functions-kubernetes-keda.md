@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
 ms.openlocfilehash: 525635ef40437fe308c52e2d5aba2c97ed8f20e7
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92927526"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Kubernetes 上使用 KEDA 的 Azure Functions
@@ -35,7 +35,7 @@ Azure Functions 服务由两个关键组件组成：运行时和缩放控制器�
 可以将任何函数应用部署到运行 KEDA 的 Kubernetes 群集。  由于函数在 Docker 容器中运行，因此项目需要 `Dockerfile`。  如果还没有 Dockerfile，则可以通过在 Functions 项目的根目录中运行以下命令来添加 Dockerfile：
 
 > [!NOTE]
-> 核心工具会自动为以 .NET、Node、Python 或 PowerShell 编写的 Azure Functions 创建 Dockerfile。 对于以 Java 编写的函数应用，必须手动创建 Dockerfile。 使用 "Azure Functions [图像" 列表](https://github.com/Azure/azure-functions-docker) 可查找 Azure 函数所基于的正确图像。
+> Core Tools 会自动创建用 .NET、Node、Python 或 PowerShell 编写的用于 Azure Functions 的 Dockerfile。 对于用 Java 编写的函数应用，必须手动创建 Dockerfile。 使用 Azure Functions [映像列表](https://github.com/Azure/azure-functions-docker)可查找 Azure 函数所基于的正确映像。
 
 ```cli
 func init --docker-only
@@ -52,10 +52,10 @@ func kubernetes deploy --name <name-of-function-deployment> --registry <containe
 
 > 将 `<name-of-function-deployment>` 替换为你的函数应用的名称。
 
-"部署" 命令执行一系列操作：
-1. 先前创建的 Dockerfile 用于生成 function app 的本地映像。
+“部署”命令执行一系列操作：
+1. 先前创建的 Dockerfile 用于生成适用于函数应用的本地映像。
 2. 本地映像被标记并推送到用户登录的容器注册表。
-3. 创建清单并将其应用于定义 Kubernetes `Deployment` 资源、 `ScaledObject` 资源和 `Secrets` （包括从文件导入的环境变量）的群集 `local.settings.json` 。
+3. 创建清单并将其应用于定义 Kubernetes `Deployment` 资源、`ScaledObject` 资源和 `Secrets`（包括从 `local.settings.json` 文件导入的环境变量）的群集。
 
 ### <a name="deploying-a-function-app-from-a-private-registry"></a>从专用注册表部署函数应用
 

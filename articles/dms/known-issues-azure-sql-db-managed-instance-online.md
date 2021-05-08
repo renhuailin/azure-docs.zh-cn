@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: 46c5f5995c7a1d4eb074f6c1b25ecaad7e2da37e
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98695521"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-managed-instance"></a>联机迁移到 Azure SQL 托管实例时存在的已知问题/迁移限制
@@ -31,7 +31,7 @@ ms.locfileid: "98695521"
 
     Azure 数据库迁移服务使用备份和还原方法将本地数据库迁移到 SQL 托管实例。 Azure 数据库迁移服务仅支持使用校验和创建的备份。
 
-    [在备份或还原期间启用或禁用备份校验和 (SQL Server) ](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server)。
+    [在备份或还原期间启用或禁用备份校验和 (SQL Server)](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server)。
 
     > [!NOTE]
     > 如果通过压缩进行数据库备份，则除非明确禁用，否则校验和是默认行为。
@@ -52,7 +52,7 @@ ms.locfileid: "98695521"
 
 - **FileStream/Filetable**
 
-    SQL 托管实例当前不支持 FileStream 和 Filetable。 对于依赖这些功能的工作负载，建议选择 Azure VM 上运行的 SQL Server 作为 Azure 目标。
+    SQL 托管实例当前不支持 FileStream 和 FileTable。 对于依赖这些功能的工作负载，建议选择 Azure VM 上运行的 SQL Server 作为 Azure 目标。
 
 - **内存中表**
 
@@ -64,16 +64,16 @@ ms.locfileid: "98695521"
 
     SQL 托管实例是一种具有自动修补和版本更新功能的 PaaS 服务。 迁移 SQL 托管实例期间，非关键更新最多保留 36 小时。 之后（对于关键更新），如果迁移中断，此过程将重置为完全还原状态。
 
-    仅在完整备份还原完成且与所有日志备份一致后才能调用迁移切换。 如果生产迁移交接受到影响，请联系 [AZURE DMS 反馈别名](mailto:dmsfeedback@microsoft.com)。
+    仅在完整备份还原完成且与所有日志备份一致后才能调用迁移切换。 如果生产迁移切换受到影响，请联系 [AZURE DMS 反馈别名](mailto:dmsfeedback@microsoft.com)。
 
 ## <a name="smb-file-share-connectivity"></a>SMB 文件共享连接
 
-连接到 SMB 文件共享的问题可能是由权限问题导致的。 
+连接到 SMB 文件共享时出现的问题可能是由权限问题导致的。 
 
 若要测试 SMB 文件共享连接，请执行以下步骤： 
 
 1. 将备份保存到 SMB 文件共享。 
-1. 验证 Azure 数据库迁移服务的子网和源 SQL Server 之间的网络连接。 执行此操作的最简单方法是将 SQL Server 虚拟机部署到 DMS 子网，并使用 SQL Server Management Studio 连接到源 SQL Server。 
+1. 验证 Azure 数据库迁移服务的子网与源 SQL Server 之间的网络连接。 执行此操作的最简单方法是将 SQL Server 虚拟机部署到 DMS 子网，并使用 SQL Server Management Studio 连接到源 SQL Server。 
 1. 从文件共享上的备份中还原源 SQL Server 上的标头： 
 
    ```sql
@@ -81,13 +81,13 @@ ms.locfileid: "98695521"
    FROM DISK = N'\\<SMB file share path>\full.bak'
    ```
 
-如果无法连接到文件共享，请按照以下步骤配置权限： 
+如果无法连接到该文件共享，请按照以下步骤配置权限： 
 
-1. 使用文件资源管理器导航到文件共享。 
-1. 右键单击文件共享，然后选择 "属性"。 
-1. 选择 " **共享** " 选项卡，然后选择 " **高级共享**"。 
-1. 添加用于迁移的 Windows 帐户，并为其分配完全控制访问权限。 
-1. 添加 SQL Server 服务帐户，并为其分配 "完全控制" 访问权限。 如果你不确定要使用哪个帐户，请检查 SQL Server 服务帐户的 **SQL Server 配置管理器** 。 
+1. 使用文件资源管理器导航到该文件共享。 
+1. 右键单击该文件共享并选择“属性”。 
+1. 选择“共享”选项卡，然后选择“高级共享”。  
+1. 添加用于迁移的 Windows 帐户，并为其分配“完全控制”访问权限。 
+1. 添加 SQL Server 服务帐户，并为其分配“完全控制”访问权限。 请在 SQL Server 配置管理器中查找 SQL Server 服务帐户（如果你不确定要使用哪个帐户）。 
 
-   :::image type="content" source="media/known-issues-azure-sql-db-managed-instance-online/assign-fileshare-permissions.png" alt-text="对用于迁移的 Windows 帐户和 SQL Server 服务帐户授予 &quot;完全控制&quot; 权限。 ":::
+   :::image type="content" source="media/known-issues-azure-sql-db-managed-instance-online/assign-fileshare-permissions.png" alt-text="对用于迁移的 Windows 帐户和 SQL Server 服务帐户授予“完全控制”权限。":::
 

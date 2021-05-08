@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: yushwang
 ms.openlocfilehash: 168bb9e06c73ec27ec1304813023889c9549b8e6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94660689"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>将站点到站点连接添加到包含现有 VPN 网关连接的 VNet（经典）
@@ -45,11 +45,11 @@ ms.locfileid: "94660689"
 
 ## <a name="points-to-consider"></a>考虑的要点
 
-**无法使用门户更改此虚拟网络。** 需更改网络配置文件，而不是使用门户。 如果在门户中进行更改，更改将覆盖此虚拟网络的多站点引用设置。
+不可通过门户更改此虚拟网络。 需更改网络配置文件，而不是使用门户。 若在门户中进行更改，更改将覆盖此虚拟网络的多站点引用设置。
 
 在完成多站点过程后，便可轻松自如地使用网络配置文件。 但是，如果有多个人在处理网络配置，需要确保每个人都知道这个限制。 这并不意味着完全不能使用门户。 除了无法对此特定虚拟网络进行配置更改以外，可以使用它来完成其他任何操作。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 在开始配置之前，请确认满足以下条件：
 
@@ -64,15 +64,15 @@ ms.locfileid: "94660689"
 [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ## <a name="1-create-a-site-to-site-vpn"></a>1.创建站点到站点 VPN
-如果已有使用动态路由网关的站点到站点 VPN，那太好了！ 可以转到 [导出虚拟网络配置设置](#export)。 否则，请执行以下操作：
+如果已有使用动态路由网关的站点到站点 VPN，那太好了！ 可以转到[导出虚拟网络配置设置](#export)。 否则，请执行以下操作：
 
-### <a name="if-you-already-have-a-site-to-site-virtual-network-but-it-has-a-static-policy-based-routing-gateway"></a>如果已有一个站点到站点虚拟网络，但该虚拟网络使用静态（基于策略）路由网关：
-1. 将网关类型更改为动态路由。 多站点 VPN 需要动态（也称为基于路由）路由网关。 如果要更改网关类型，首先需要删除现有网关，然后创建新网关。
+### <a name="if-you-already-have-a-site-to-site-virtual-network-but-it-has-a-static-policy-based-routing-gateway"></a>如果已有一个站点到站点虚拟网络，但该虚拟网络使用静态（基于策略的）路由网关：
+1. 将网关类型更改为动态路由。 多站点 VPN 需要动态（也称为基于路由的）路由网关。 要更改网关类型，首先需要删除现有网关，然后创建新网关。
 2. 配置新网关并创建 VPN 隧道。 有关说明，请参阅[指定 SKU 和 VPN 类型](vpn-gateway-howto-site-to-site-classic-portal.md#sku)。 请确保将“路由类型”指定为“动态”。
 
 ### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>如果没有站点到站点虚拟网络：
-1. 使用以下说明创建站点到站点虚拟网络：[创建具有站点到站点 VPN 连接的虚拟网络](./vpn-gateway-howto-site-to-site-classic-portal.md)。  
-2. 按照以下说明配置动态路由网关：[配置 VPN 网关](./vpn-gateway-howto-site-to-site-classic-portal.md)。 请务必为网关类型选择“动态路由”  。
+1. 按照以下说明创建站点到站点虚拟网络：[创建使用站点到站点 VPN 连接的虚拟网络](./vpn-gateway-howto-site-to-site-classic-portal.md)。  
+2. 按照以下说明配置动态路由网关：[配置 VPN 网关](./vpn-gateway-howto-site-to-site-classic-portal.md)。 请务必为网关类型选择“**动态路由**”。
 
 ## <a name="2-export-the-network-configuration-file"></a><a name="export"></a>2.导出网络配置文件
 
@@ -95,7 +95,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
 ## <a name="3-open-the-network-configuration-file"></a>3.打开网络配置文件
-打开你在执行上一步时下载的网络配置文件。 使用偏好的任何 xml 编辑器。 该文件的内容类似于：
+打开上一步骤中下载的网络配置文件。 使用偏好的任何 xml 编辑器。 该文件的内容类似于：
 
 ```xml
 <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">

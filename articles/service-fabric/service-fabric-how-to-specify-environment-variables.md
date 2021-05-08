@@ -1,13 +1,13 @@
 ---
-title: 为服务指定环境变量
+title: 指定此服务的环境变量
 description: 演示如何在 Service Fabric 中使用应用程序的环境变量
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: 610e44ac98b8b8a2ce5a91fdbcfda145ae36a94b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96576734"
 ---
 # <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>如何在 Service Fabric 中指定服务的环境变量

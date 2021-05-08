@@ -1,6 +1,6 @@
 ---
-title: 核心 IO 操作 |Microsoft Azure 映射
-description: 了解如何使用空间 IO 模块中的核心库有效地读取和写入 XML 数据和分隔数据。
+title: 核心 IO 操作 | Microsoft Azure Maps
+description: 了解如何使用空间 IO 模块中的核心库有效地读取和写入 XML 和带分隔符的数据。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 03/03/2020
@@ -10,26 +10,26 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: 08966549d2c4d2bf701ee0dbfc5ed24f202396fc
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92891370"
 ---
 # <a name="core-io-operations"></a>核心 IO 操作
 
-除了提供读取空间数据文件的工具外，空间 IO 模块还公开核心基础库，以便快速高效地读取和写入 XML 数据和分隔的数据。
+除了提供读取空间数据文件的工具外，空间 IO 模块还公开核心基础库，以便快速高效地读取和写入 XML 和带分隔符的数据。
 
-`atlas.io.core`命名空间包含两个可快速读取和写入 CSV 和 XML 数据的低级别类。 这些基类使空间数据读取器和编写器在空间 IO 模块中供电。 可随意使用它们为 CSV 或 XML 文件添加额外的读取和写入支持。
+`atlas.io.core` 命名空间包含两个可快速读取和写入 CSV 和 XML 数据的低级别类。 这些基类为空间 IO 模块中的空间数据读取器和编写器提供动力。 请随意使用它们为 CSV 或 XML 文件添加额外的读取和写入支持。
  
-## <a name="read-delimited-files"></a>读取分隔文件
+## <a name="read-delimited-files"></a>读取带分隔符的文件
 
-`atlas.io.core.CsvReader`类读取包含分隔数据集的字符串。 此类提供两种方法来读取数据：
+`atlas.io.core.CsvReader` 类读取包含带分隔符的数据集的字符串。 此类提供两种读取数据的方法：
 
-- `read`函数将读取完整的数据集，并返回表示分隔数据集的所有单元格的字符串的二维数组。
-- `getNextRow`函数读取分隔数据集中的每一行文本，并返回一个字符串数组，该数组表示该数据集行中的所有单元格。 在处理下一行之前，用户可以处理行并释放该行中的任何不需要的内存。 因此，函数的内存效率更高。
+- `read` 函数将读取完整的数据集，并返回一个二维字符串数组，该数组表示带分隔符的数据集的所有单元格。
+- `getNextRow` 函数读取带分隔符的数据集中的每一行文本，并返回一个字符串数组，该数组表示该数据集行中的所有单元格。 在处理下一行之前，用户可以处理该行并释放该行中的任何不需要的内存。 因此，函数的内存效率更高。
 
-默认情况下，读取器将使用逗号字符作为分隔符。 但是，分隔符可以更改为任意单个字符或设置为 `'auto'` 。 当设置为时 `'auto'` ，读取器将分析字符串中的第一行文本。 然后，它将从下表中选择最常见的字符作为分隔符。
+默认情况下，读取器将使用逗号字符作为分隔符。 但是，分隔符可以更改为任意单个字符或设置为 `'auto'`。 当设置为 `'auto'` 时，读取器将分析字符串中的第一行文本。 然后，它将从下表中选择最常见的字符作为分隔符。
 
 | 分隔符 | 字符 |
 | :-- | :-- |
@@ -39,25 +39,25 @@ ms.locfileid: "92891370"
 
 此读取器还支持用于处理包含分隔符字符的单元格的文本限定符。 引号 (`'"'`) 字符是默认文本限定符，但可以更改为任意单个字符。
 
-## <a name="write-delimited-files"></a>写入分隔文件
+## <a name="write-delimited-files"></a>写入带分隔符的文件
 
-`atlas.io.core.CsvWriter`以带分隔符的字符串形式写入对象数组。 任何单个字符均可用作分隔符或文本限定符。 默认分隔符为逗号 (`','`) ，默认文本限定符是 () 字符的引号 `'"'` 。
+`atlas.io.core.CsvWriter` 写入对象数组作为带分隔符的字符串。 任何单个字符均可用作分隔符或文本限定符。 默认分隔符是逗号 (`','`)，默认文本限定符是引号 (`'"'`) 字符。
 
-若要使用此类，请按照以下步骤操作：
+若要使用此类，请执行以下步骤：
 
 - 创建类的实例，并根据需要设置自定义分隔符或文本限定符。
-- 使用函数或函数将数据写入类 `write` `writeRow` 。 对于 `write` 函数，传递一个二维数组，其中的对象表示多个行和多个单元格。 若要使用 `writeRow` 函数，请传递对象数组，该数组表示包含多个列的数据行。
-- 调用 `toString` 函数以检索分隔的字符串。 
-- （可选）调用 `clear` 方法以使编写器可重用并减小其资源分配，或调用 `delete` 方法以释放写入器实例。
+- 使用 `write` 函数或 `writeRow` 函数将数据写入类。 对于 `write` 函数，传递一个二维对象数组，该数组表示多个行和单元格。 若要使用 `writeRow` 函数，请传递对象数组，该数组表示具有多个列的数据行。
+- 调用 `toString` 函数以检索带分隔符的字符串。 
+- （可选）调用 `clear` 方法以使编写器可重用并减少其资源分配，或调用 `delete` 方法以释放编写器实例。
 
 > [!Note]
-> 写入的列数将被限制为传递给写入器的数据的第一行中的单元格的数目。
+> 写入的列数将被限制为传递给编写器的第一行数据中的单元格的数目。
 
 ## <a name="read-xml-files"></a>读取 XML 文件
 
-在 `atlas.io.core.SimpleXmlReader` 分析 XML 文件时，类的速度要快于 `DOMParser` 。 但是， `atlas.io.core.SimpleXmlReader` 类要求 XML 文件的格式正确。 格式不正确的 XML 文件（如缺少结束标记）可能会导致错误。
+在分析 XML 文件时，`atlas.io.core.SimpleXmlReader` 类的速度要快于 `DOMParser`。 但是，`atlas.io.core.SimpleXmlReader` 类要求 XML 文件的格式正确。 格式不正确的 XML 文件（如缺少结束标记）可能会导致错误。
 
-下面的代码演示如何使用类将 `SimpleXmlReader` XML 字符串分析为 JSON 对象并将其序列化为所需的格式。
+下面的代码演示如何使用 `SimpleXmlReader` 类将 XML 字符串分析为 JSON 对象并将其串行化为所需的格式。
 
 ```javascript
 //Create an instance of the SimpleXmlReader and parse an XML string into a JSON object.
@@ -81,7 +81,7 @@ if (xmlDoc && xmlDoc.root && xmlDoc.root.tagName && xmlDoc.root.tagName === '<Yo
 
 ## <a name="write-xml-files"></a>写入 XML 文件
 
-`atlas.io.core.SimpleXmlWriter`类以内存有效的方式写入格式正确的 XML。
+`atlas.io.core.SimpleXmlWriter` 类以内存高效的方式写入格式正确的 XML。
 
 下面的代码演示如何使用 `SimpleXmlWriter` 类生成格式正确的 XML 字符串。
 

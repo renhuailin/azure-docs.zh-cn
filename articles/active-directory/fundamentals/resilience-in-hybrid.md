@@ -14,10 +14,10 @@ ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: de01788c01d4d6dedd9563faaaac07bff30bbd97
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98724753"
 ---
 # <a name="build-resilience-in-your-hybrid-architecture"></a>在混合体系结构中构建复原能力
@@ -35,7 +35,7 @@ Microsoft 提供三种混合身份验证机制。 这些选项按复原能力顺
 
 * [密码哈希同步](../hybrid/whatis-phs.md) (PHS) 使用 Azure AD Connect 将标识和密码哈希同步到 Azure AD，使用户能够使用本地管理的密码登录到基于云的资源。 PHS 具有本地依赖项，仅用于同步，不用于身份验证。
 
-* [传递身份验证](../hybrid/how-to-connect-pta.md) (PTA) 将用户重定向到 Azure AD 进行登录。 然后，通过部署在企业网络中的代理，根据本地 Active Directory 验证用户名和密码。 PTA 在本地占用了其 Azure AD PTA 驻留在本地服务器上的代理。
+* [直通份验证](../hybrid/how-to-connect-pta.md) (PTA) 可将用户重定向到 Azure AD 进行登录。 然后，通过部署在企业网络中的代理，根据本地 Active Directory 来验证用户名和密码。 PTA 在本地占用了驻留在本地服务器上的 Azure AD PTA 代理。
 
 * [联合身份验证](../hybrid/whatis-fed.md)客户部署联合身份验证服务（例如 AD FS），然后 Azure AD 验证联合身份验证服务生成的 SAML 断言。 联合身份验证对本地基础结构的依赖性最高，因此故障点更多。 
 
@@ -58,25 +58,25 @@ Azure AD 最简单、最易复原的混合身份验证选项是[密码哈希同�
 
 * [启用密码哈希同步](../hybrid/how-to-connect-password-hash-synchronization.md)
 
-如果你的要求不能使用 PHS，请使用传递身份验证。
+如果你的某些要求导致你不能使用 PHS，则可以使用直通身份验证。
 
 ## <a name="pass-through-authentication"></a>直通身份验证
 
-传递身份验证依赖于位于服务器上本地的身份验证代理。 持久性连接（或服务总线）存在于 Azure AD 与本地 PTA 代理之间。 承载身份验证代理的服务器以及本地 Windows Server Active Directory (或其他标识提供者) 都是潜在的故障点。 
+直通身份验证依赖于位于服务器上本地的身份验证代理。 持久性连接（或称为服务总线）存在于 Azure AD 与本地 PTA 代理之间。 防火墙、承载身份验证代理的服务器以及本地 Windows Server Active Directory（或其他标识提供者）都是潜在的故障点。 
 
-![PTA 的体系结构关系图](./media/resilience-in-hybrid/admin-resilience-pass-through-authentication.png)
+![PTA 体系结构图](./media/resilience-in-hybrid/admin-resilience-pass-through-authentication.png)
 
-### <a name="how-do-i-implement-pta"></a>如何实现实现 PTA？
+### <a name="how-do-i-implement-pta"></a>如何实现 PTA？
 
-若要实现直通身份验证，请参阅以下资源。
+为了实现直通身份验证，请参阅以下资源。
 
-* [直通身份验证的工作原理](../hybrid/how-to-connect-pta-how-it-works.md)
+* [直通身份验证工作原理](../hybrid/how-to-connect-pta-how-it-works.md)
 
 * [直通身份验证安全性深入研究](../hybrid/how-to-connect-pta-security-deep-dive.md)
 
-* [安装 Azure AD 传递身份验证](../hybrid/how-to-connect-pta-quick-start.md)
+* [安装 Azure AD 直通身份验证](../hybrid/how-to-connect-pta-quick-start.md)
 
-* 如果使用的是 PTA，请定义 [高度可用的拓扑](../hybrid/how-to-connect-pta-quick-start.md)。
+* 如果使用的是 PTA，请定义一个[高度可用的拓扑](../hybrid/how-to-connect-pta-quick-start.md)。
 
  ## <a name="federation"></a>联合
 
@@ -103,7 +103,7 @@ Azure AD 最简单、最易复原的混合身份验证选项是[密码哈希同�
 
 * [在 Azure IaaS 中部署 AD FS](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)
 
-* [启用 PHS](../hybrid/tutorial-phs-backup.md) 以及联合
+* 同时[启用 PHS](../hybrid/tutorial-phs-backup.md) 和联合
 
 ## <a name="next-steps"></a>后续步骤
 面向管理员和架构师的复原能力资源
@@ -114,9 +114,9 @@ Azure AD 最简单、最易复原的混合身份验证选项是[密码哈希同�
 
 * [使用连续访问评估 (CAE) 构建复原能力](resilience-with-continuous-access-evaluation.md)
 
-* [在外部用户身份验证中构建复原能力](resilience-b2b-authentication.md)
+* [打造外部用户身份验证的复原能力](resilience-b2b-authentication.md)
 
-* [使用应用程序代理通过应用程序访问生成恢复能力](resilience-on-premises-access.md)
+* [利用应用程序代理打造应用程序访问的恢复能力](resilience-on-premises-access.md)
 
 适用于开发人员的复原能力资源
 

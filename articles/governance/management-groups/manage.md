@@ -1,14 +1,14 @@
 ---
 title: 如何使用管理组 - Azure 治理
 description: 了解如何查看、维护、更新和删除管理组层次结构。
-ms.date: 01/15/2021
+ms.date: 05/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 09d11450ff63046ab458f930f64534d10863f451
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 7e0e4a2a58802895ac579015ac116373c03f0ead
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258344"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326392"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源
 

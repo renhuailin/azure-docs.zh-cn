@@ -15,10 +15,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 4c25adc16d14b4a5fb72ae0103ca05b193b40499
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97359160"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>使用 Azure 扩展对 SQL Server 2008 和 SQL Server 2008 R2 的支持
@@ -36,19 +36,19 @@ SQL Server 2008 和 SQL Server 2008 R2 均已到达[其支持生命周期的终�
 
 Azure 市场上提供了一个用于 Windows Server 2008 R2 映像的即用即付 SQL Server 2008 R2。
 
-SQL Server 2008 客户需要自行安装或升级到 SQL Server 2008 R2。 同样，Windows Server 2008 客户需要从自定义 VHD 部署其 VM，或升级到 Windows Server 2008 R2。
+使用 SQL Server 2008 的客户需要自行安装或升级到 SQL Server 2008 R2。 同样，Windows Server 2008 客户需要从自定义 VHD 部署其 VM，或升级到 Windows Server 2008 R2。
 
 通过 Azure 市场部署的映像已预装了 SQL IaaS 扩展。 具备 SQL IaaS 扩展才能拥有灵活的许可和自动修补功能。 部署自行安装的 VM 的客户需要手动安装 SQL IaaS 扩展。 Windows Server 2008 不支持 SQL IaaS 扩展。
 
 > [!NOTE]
-> 虽然 SQL Server 的“创建”和“管理”边栏选项卡可用于 Azure 门户中的 SQL Server 2008 R2 映像，但不支持以下功能 ：自动备份、Azure Key Vault 集成、R Services 和存储配置。
+> 虽然 SQL Server 的“创建”和“管理”边栏选项卡可用于 Azure 门户中的 SQL Server 2008 R2 映像，但不支持以下功能 ：自动备份、Azure Key Vault 集成、R 服务以及存储配置。
 
 ## <a name="licensing"></a>授权
 即用即付的 SQL Server 2008 R2 部署可以转换为 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)。
 
-若要将软件保障 (基于 SA) 的许可证转换为即用即付，客户应向 [SQL IaaS 代理扩展](sql-agent-extension-manually-register-single-vm.md)注册。 完成注册后，SQL 许可证类型可在 Azure 混合权益与即用即付之间互换。
+若要将基于软件保障 (SA) 的许可证转换为即用即付许可证，客户应注册 [SQL IaaS 代理扩展](sql-agent-extension-manually-register-single-vm.md)。 完成注册后，SQL 许可证类型可在 Azure 混合权益与即用即付之间互换。
 
-在 Azure VM 上自行安装的 SQL Server 2008 或 SQL Server 2008 R2 实例可以注册 SQL IaaS 代理扩展，并将其许可证类型转换为即用即付。
+可以向 SQL IaaS 代理扩展注册在 Azure VM 上自行安装的 SQL Server 2008 或 SQL Server 2008 R2 实例，并将它们的许可证类型转换为即用即付。
 
 ## <a name="migration"></a>迁移
 可以使用手动备份/还原方法将 EOS SQL Server 实例迁移到 Azure VM。 这是从本地迁移到 Azure VM 的最常用方法。
@@ -73,7 +73,7 @@ SQL Server 需要使用应用一致的 Azure Site Recovery 快照来保证成功
 
 ## <a name="security-patching"></a>安全修补
 
-在将 SQL Server VM 注册到 [SQL IaaS 代理扩展](sql-agent-extension-manually-register-single-vm.md)后，将通过 Microsoft 更新通道传递 SQL Server vm 的扩展安全更新。 可以手动或自动下载修补程序。
+将 SQL Server VM 注册到 [SQL IaaS 代理扩展](sql-agent-extension-manually-register-single-vm.md)后，将通过 Microsoft 更新通道传送 SQL Server VM 的扩展安全更新。 可以手动或自动下载修补程序。
 
 *自动修补* ：默认处于启用状态。 Azure 可以通过自动修补来自动修补 SQL Server 和操作系统。 如果已安装 SQL Server IaaS 扩展，可为维护时段指定星期日期、时间和持续时间。 Azure 会在维护时段进行修补。 维护时段计划使用 VM 的时间区域设置。 有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的自动修补](automated-patching.md)。
 

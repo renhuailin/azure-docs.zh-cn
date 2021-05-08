@@ -1,7 +1,7 @@
 ---
 title: 自定义策略的社交帐户声明转换示例
 titleSuffix: Azure AD B2C
-description: 标识体验框架 (IEF) 架构 Azure Active Directory B2C 的社交帐户声明转换示例。
+description: 针对 Azure Active Directory B2C 标识体验框架 (IEF) 架构的社交帐户声明转换示例。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,17 +12,17 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c60cecb9d6bfeeefc0569a1a57185d13f0c6442f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94953111"
 ---
 # <a name="social-accounts-claims-transformations"></a>社交帐户声明转换
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-在 Azure Active Directory B2C (Azure AD B2C) 中，社会帐户标识存储在 `userIdentities` **alternativeSecurityIdCollection** 声明类型的属性中。 **alternativeSecurityIdCollection** 中的每个项指定颁发者（标识提供者名称，例如 facebook.com）和 `issuerUserId`（颁发者的唯一用户标识符）。
+在Azure Active Directory B2C (Azure AD B2C) 中，社交帐户标识存储在 **alternativeSecurityIdCollection** 声明类型的 `userIdentities` 属性中。 **alternativeSecurityIdCollection** 中的每个项指定颁发者（标识提供者名称，例如 facebook.com）和 `issuerUserId`（颁发者的唯一用户标识符）。
 
 ```json
 "userIdentities": [{
@@ -65,7 +65,7 @@ ms.locfileid: "94953111"
 
 - 输入声明：
     - **key**: 12334
-    - **identityProvider**： Facebook.com
+    - **identityProvider**: Facebook.com
 - 输出声明：
     - **alternativeSecurityId**: { "issuer": "facebook.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}
 

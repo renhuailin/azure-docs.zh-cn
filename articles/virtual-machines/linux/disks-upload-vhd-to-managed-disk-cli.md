@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.openlocfilehash: 473e87904742395eca6b7eeba0875cd93789104d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91978979"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>将 VHD 上传到 Azure，或将托管磁盘复制到其他区域 - Azure CLI
@@ -44,7 +44,7 @@ ms.locfileid: "91978979"
 
 在创建要上传的空标准 HDD 之前，需要获取要上传的 VHD 的文件大小（以字节为单位）。 为此，可以使用 `wc -c <yourFileName>.vhd` 或 `ls -al <yourFileName>.vhd`。 指定 **--upload-size-bytes** 参数时将使用此值。
 
-通过在[disk create](/cli/azure/disk#az-disk-create) cmdlet 中指定 **--for 上传**参数和 **--上传大小-字节**参数，创建一个空的标准 HDD 以进行上传：
+在 [disk create](/cli/azure/disk#az-disk-create) cmdlet 中同时指定“-–for-upload”参数和“--upload-size-bytes”参数，创建要上传的空标准 HDD： 
 
 将 `<yourdiskname>`、`<yourresourcegroupname>`、`<yourregion>` 替换为所选值。 `--upload-size-bytes` 参数包含示例值 `34359738880`，请将其替换为适合你的值。
 
@@ -102,7 +102,7 @@ az disk revoke-access -n <yourdiskname> -g <yourresourcegroupname>
 > [!IMPORTANT]
 > 提供 Azure 中托管磁盘的磁盘大小（以字节为单位）时，需要添加 512 偏移量。 这是因为，Azure 在返回磁盘大小时会省略脚注。 如果不添加此偏移量，复制将会失败。 以下脚本中已添加此偏移量。
 
-替换 `<sourceResourceGroupHere>` 、 `<sourceDiskNameHere>` 、 `<targetDiskNameHere>` 、 `<targetResourceGroupHere>` 和 `<yourTargetLocationHere>` (位置值的示例将与值 uswest2) ，然后运行以下脚本，以便复制托管磁盘。
+请将 `<sourceResourceGroupHere>`、`<sourceDiskNameHere>`、`<targetDiskNameHere>`、`<targetResourceGroupHere>` 和 `<yourTargetLocationHere>`（例如，位置值为 uswest2）替换为自己的值，然后运行以下脚本来复制托管磁盘。
 
 > [!TIP]
 > 如果要创建 OS 磁盘，请将--hyper-v-generation <yourGeneration> 添加到 `az disk create`。

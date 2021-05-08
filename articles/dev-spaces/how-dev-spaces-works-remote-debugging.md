@@ -1,34 +1,34 @@
 ---
-title: 使用 Azure Dev Spaces 远程调试代码的方式
+title: 使用 Azure Dev Spaces 远程调试代码的工作原理
 services: azure-dev-spaces
 ms.date: 03/24/2020
 ms.topic: conceptual
-description: 介绍如何在 Azure Kubernetes Service 上进行远程调试的过程与 Azure Dev Spaces
+description: 介绍用 Azure Dev Spaces 在 Azure Kubernetes 服务上进行远程调试的流程
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 ms.openlocfilehash: 0487b80d23974a66bafe93ee1fbdf9b796d0ab53
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91975036"
 ---
-# <a name="how-remote-debugging-your-code-with-azure-dev-spaces-works"></a>使用 Azure Dev Spaces 远程调试代码的方式
+# <a name="how-remote-debugging-your-code-with-azure-dev-spaces-works"></a>使用 Azure Dev Spaces 远程调试代码的工作原理
 
 [!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
-Azure Dev Spaces 为你提供了多种方法来快速循环访问和调试 Kubernetes 应用程序，并在 Azure Kubernetes 服务 (AKS) 群集上与团队协作。 在开发环境中运行项目后，Azure Dev Spaces 提供一种附加到 AKS 中正在运行的应用程序并对其进行调试的方式。
+Azure Dev Spaces 为你提供了多种方法来快速循环访问和调试 Kubernetes 应用程序，并在 Azure Kubernetes 服务 (AKS) 群集上与团队协作。 在开发空间中运行项目后，Azure Dev Spaces 能提供一种在 AKS 中附加并调试运行中的应用程序的方法。
 
-本文介绍如何使用 Dev Spaces 进行远程调试。
+本文介绍使用 Dev Spaces 进行远程调试的工作原理。
 
 ## <a name="debug-your-code"></a>调试代码
 
-对于 Java、.NET Core 和 Node.js 应用程序，可以使用 Visual Studio Code 或 Visual Studio 直接调试在开发环境中运行的应用程序。 Visual Studio Code 和 Visual Studio 提供了用于连接到开发人员空间、启动应用程序并附加调试器的工具。 运行后 `azds prep` ，可以在 Visual Studio Code 或 Visual Studio 中打开项目。 Visual Studio Code 或 Visual Studio 将生成自己的配置文件用于连接，而该文件是独立于运行的 `azds prep` 。 在 Visual Studio Code 或 Visual Studio 中，你可以设置断点并启动应用程序到你的开发环境。
+对于 Java、.NET Core 和 Node.js 应用程序，可以使用 Visual Studio Code 或 Visual Studio 来调试在开发空间中直接运行的应用程序。 Visual Studio Code 和 Visual Studio 提供连接到开发空间、启动应用程序并附加调试程序的工具。 运行 `azds prep` 后，可以在 Visual Studio Code 或 Visual Studio 中打开项目。 Visual Studio Code 或 Visual Studio 将生成自己用于连接的配置文件，与运行 `azds prep` 独立开来。 在 Visual Studio Code 或 Visual Studio 中，可以设置断点并将应用程序启动至开发空间。
 
 ![调试代码](media/get-started-node/debug-configuration-nodejs2.png)
 
-使用 Visual Studio Code 或 Visual Studio 启动应用程序进行调试时，它们将以与运行相同的方式处理启动和连接到开发环境 `azds up` 。 此外，Visual Studio Code 和 Visual Studio 中的客户端工具均提供了一个附加参数，其中包含用于调试的特定信息。 参数包含调试器映像的名称、中调试器的位置、调试器的映像中的位置，以及用于装载调试器文件夹的应用程序容器中的目标位置。
+使用 Visual Studio Code 或 Visual Studio 启动应用程序以进行调试时，二者将以与运行 `azds up` 相同的方式进行启动并连接到开发环境。 此外，Visual Studio Code 和 Visual Studio 中的客户端工具均提供了一个附加参数，其中包含用于调试的特定信息。 该参数包含调试程序映像的名称、调试程序映像中调试程序的位置、以及应用程序的容器中装载调试程序文件夹的目标位置。
 
-调试器映像由客户端工具自动确定。 它使用类似于在 Dockerfile 期间使用的方法，并在运行时生成 Helm 图表 `azds prep` 。 在应用程序的映像中装入调试器后，将使用运行该调试器 `azds exec` 。
+调试程序映像由客户端工具自动确定。 其使用的方法类似于运行 `azds prep` 时生成 Dockerfile 和 Helm 图表所用的方法。 调试程序装载到应用程序的映像后，便使用 `azds exec` 来运行。
 
 ## <a name="next-steps"></a>后续步骤
 

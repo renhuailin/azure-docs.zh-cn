@@ -4,13 +4,13 @@ description: 本文包含有关语言理解 (LUIS) 的常见问题的解答。
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
-ms.date: 04/13/2021
-ms.openlocfilehash: 97b7c02a418a87a0700414e19bc939bda899d073
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.date: 04/16/2021
+ms.openlocfilehash: 593e02520d3e6ae87550257381dbc47aa068a242
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503806"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107951533"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
@@ -91,7 +91,7 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 
 当你使用了所有这些免费的 1000 个终结点查询或超出定价层的每月事务配额时，将收到 HTTP 403 错误状态代码。
 
-若要修复此错误，需要[将定价层更改](luis-how-to-azure-subscription.md#change-the-pricing-tier)为更高层，或者[创建新资源](get-started-portal-deploy-app.md#create-the-endpoint-resource)并[将其分配给应用](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)。
+若要修复此错误，需要将[定价层](luis-how-to-azure-subscription.md#change-the-pricing-tier)更改为更高层，或者[创建新资源](luis-get-started-create-app.md#sign-in-to-luis-portal)并将其分配给应用。
 
 此错误的解决方法包括：
 
@@ -262,7 +262,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 第一个问题是如果问题和 LUIS 有关或发生在 LUIS 中间件以外，则隔离。
 
 #### <a name="resolve-issue-in-luis"></a>在 LUIS 中解决问题
-从 [LUIS 终结点](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)传递相同的言语到 LUIS。 如果收到错误，请在 LUIS 中解决该问题直到不再返回错误。 常见错误包括：
+从 [LUIS 终结点](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)传递相同的言语到 LUIS。 如果收到错误，请在 LUIS 中解决该问题直到不再返回错误。 常见错误包括：
 
 * `Out of call volume quota. Quota will be replenished in <time>.` - 此问题表明需要从创作密钥更改为[终结点密钥](luis-how-to-azure-subscription.md)，或者需要更改[服务层级](luis-how-to-azure-subscription.md#change-the-pricing-tier)。
 

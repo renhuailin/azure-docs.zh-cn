@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 堡垒连接到 Windows 虚拟机规模集 |Microsoft Docs
+title: 使用 Azure Bastion 连接到 Windows 虚拟机规模集 | Microsoft Docs
 description: 在本文中，学习如何使用 Azure Bastion 连接到 Azure 虚拟机规模集。
 services: bastion
 author: charwen
@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: charwen
 ms.openlocfilehash: 001d2ff6789ec4cfcc391171f0859b67ab1ee0a5
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92077773"
 ---
 # <a name="connect-to-a-virtual-machine-scale-set-using-azure-bastion"></a>使用 Azure Bastion 连接到虚拟机规模集
@@ -30,7 +30,7 @@ ms.locfileid: "92077773"
 2. 导航到你想要连接到的虚拟机规模集实例，然后选择“连接”。 使用 RDP 连接时，虚拟机规模集应为 Windows 虚拟机规模集。
 
    ![虚拟机规模集](./media/bastion-connect-vm-scale-set/2.png)
-3. 选择 " **连接**" 后，将显示一条侧栏，其中包含三个选项卡-RDP、SSH 和堡垒。 从侧边栏中选择“Bastion”选项卡。 如果未为虚拟网络预配 Bastion，可选择链接来配置 Bastion。 有关配置说明，请参阅[配置 Bastion](./tutorial-create-host-portal.md)。
+3. 选择“连接”后，会出现一个侧边栏，上面有 3 个选项卡 – “RDP”、“SSH”和“Bastion”。 从侧边栏中选择“Bastion”选项卡。 如果未为虚拟网络预配 Bastion，可选择链接来配置 Bastion。 有关配置说明，请参阅[配置 Bastion](./tutorial-create-host-portal.md)。
 
    ![“Bastion”选项卡](./media/bastion-connect-vm-scale-set/3.png)
 4. 在“Bastion”选项卡上，输入虚拟机规模集的用户名和密码，然后选择“连接”。

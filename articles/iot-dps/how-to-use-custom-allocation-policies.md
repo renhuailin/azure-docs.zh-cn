@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp, devx-track-azurecli
 ms.openlocfilehash: 14a405dbab0460f841a5e9104dbfeff101568f44
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98919168"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>如何使用自定义分配策略
@@ -52,23 +52,23 @@ ms.locfileid: "98919168"
 
 ## <a name="create-the-provisioning-service-and-two-divisional-iot-hubs"></a>创建预配服务和两个部门 IoT 中心
 
-在本部分中，将使用 Azure Cloud Shell 创建预配服务，并使用两个 IoT 中心来表示 **Contoso 烤面包机分部** 和 **contoso 热度泵**。
+在本部分，使用 Azure Cloud Shell 创建预配服务和表示“Contoso 烤箱分区”和“Contoso 热泵分区”的两个 IoT 中心。 
 
 > [!TIP]
-> 本文中使用的命令在 "美国西部" 位置创建预配服务和其他资源。 我们建议在与你最靠近的区域中创建支持设备预配服务的资源。 若要查看可用位置的列表，可以运行 `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` 命令，也可以转到[Azure 状态](https://azure.microsoft.com/status/)页，在其中搜索“设备预配服务”。 在命令中，可以使用一个单词或多个单词的格式来指定位置，例如：westus、West US、WEST US，等等。该值不区分大小写。 如果使用多个单词的格式来指定位置，请将值置于引号中，例如 `-- location "West US"`。
+> 本文中使用的命令将在“美国西部”位置创建预配服务和其他资源。 我们建议在与你最靠近的区域中创建支持设备预配服务的资源。 若要查看可用位置的列表，可以运行 `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` 命令，也可以转到[Azure 状态](https://azure.microsoft.com/status/)页，在其中搜索“设备预配服务”。 在命令中，可以使用一个单词或多个单词的格式来指定位置，例如：westus、West US、WEST US，等等。该值不区分大小写。 如果使用多个单词的格式来指定位置，请将值置于引号中，例如 `-- location "West US"`。
 >
 
 1. 在 Azure Cloud Shell 中，使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-    以下示例在 *westus* 区域中创建名为 " *contoso-us-资源组*" 的资源组。 建议对本文中创建的所有资源使用该组。 此方法使你能够在完成后更为轻松地进行清理。
+    以下示例在“westus”区域中创建名为“contoso-us-resource-group”的资源组。  建议对本文中创建的所有资源使用该组。 此方法使你能够在完成后更为轻松地进行清理。
 
     ```azurecli-interactive 
     az group create --name contoso-us-resource-group --location westus
     ```
 
-2. 使用 Azure Cloud Shell 通过 [az iot DPS create](/cli/azure/iot/dps#az-iot-dps-create) 命令 (DPS) 创建设备预配服务。 该预配服务将添加到 *contoso-us-resource-group*。
+2. 使用 Azure Cloud Shell 通过 [az iot dps create](/cli/azure/iot/dps#az-iot-dps-create) 命令创建设备预配服务 (DPS)。 该预配服务将添加到 *contoso-us-resource-group*。
 
-    以下示例在 *westus* 位置创建名为 " *contoso-预配-1098* " 的预配服务。 必须使用唯一的服务名称。 在服务名称中的 **1098** 位置构成你自己的后缀。
+    以下示例在“westus”位置中创建名为“contoso-provisioning-service-1098”的预配服务。  必须使用唯一的服务名称。 在服务名称中的 **1098** 位置构成你自己的后缀。
 
     ```azurecli-interactive 
     az iot dps create --name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --location westus
@@ -78,10 +78,10 @@ ms.locfileid: "98919168"
 
 3. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令创建 Contoso 烤箱分区 IoT 中心。 IoT 中心将被添加到 contoso-us-resource-group  。
 
-    以下示例在 *westus* 位置创建名为 *1098 烤面包机* 的 IoT 中心。 必须使用唯一的中心名称。 在中心名称中的 1098  位置构成你自己的后缀。 
+    以下示例在“westus”位置中创建名为“contoso-toasters-hub-1098”的 IoT 中心。  必须使用唯一的中心名称。 在中心名称中的 1098  位置构成你自己的后缀。 
 
     > [!CAUTION]
-    > 自定义分配策略的示例 Azure 函数代码需要 `-toasters-` 中心名称中的子字符串。 请确保使用包含所需的烤面包机子字符串的名称。
+    > 自定义分配策略的示例 Azure 函数代码需要中心名称中的子字符串 `-toasters-`。 请确保使用包含必需的 toasters 子字符串的名称。
     
     ```azurecli-interactive 
     az iot hub create --name contoso-toasters-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
@@ -91,10 +91,10 @@ ms.locfileid: "98919168"
 
 4. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令创建 Contoso 热泵分区 IoT 中心。 此 IoT 中心也将被添加到 contoso-us-resource-group  。
 
-    以下示例在 *westus* 位置创建名为 *1098 heatpumps* 的 IoT 中心。 必须使用唯一的中心名称。 在中心名称中的 1098  位置构成你自己的后缀。 
+    以下示例在“westus”位置中创建名为“contoso-heatpumps-hub-1098”的 IoT 中心。  必须使用唯一的中心名称。 在中心名称中的 1098  位置构成你自己的后缀。 
 
     > [!CAUTION]
-    > 自定义分配策略的示例 Azure 函数代码需要 `-heatpumps-` 中心名称中的子字符串。 请确保使用包含所需的 heatpumps 子字符串的名称。
+    > 自定义分配策略的示例 Azure 函数代码需要中心名称中的子字符串 `-heatpumps-`。 请确保使用包含必需的 heatpumps 子字符串的名称。
 
     ```azurecli-interactive 
     az iot hub create --name contoso-heatpumps-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
@@ -104,14 +104,14 @@ ms.locfileid: "98919168"
 
 5. IoT 中心必须链接到 DPS 资源。 
 
-    运行以下两个命令，获取刚刚创建的中心的连接字符串。 将中心资源名称替换为在每个命令中选择的名称：
+    运行下面的两个命令来获取你刚才创建的中心的连接字符串。 在每个命令中，将中心资源名称替换为你选择的名称：
 
     ```azurecli-interactive 
     hubToastersConnectionString=$(az iot hub connection-string show --hub-name contoso-toasters-hub-1098 --key primary --query connectionString -o tsv)
     hubHeatpumpsConnectionString=$(az iot hub connection-string show --hub-name contoso-heatpumps-hub-1098 --key primary --query connectionString -o tsv)
     ```
 
-    运行以下命令，将集线器链接到 DPS 资源。 将 DPS 资源名称替换为在每个命令中选择的名称：
+    运行以下命令来将中心链接到 DPS 资源。 在每个命令中，将 DPS 资源名称替换为你选择的名称：
 
     ```azurecli-interactive 
     az iot dps linked-hub create --dps-name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --connection-string $hubToastersConnectionString --location westus
@@ -139,26 +139,26 @@ ms.locfileid: "98919168"
 
     **运行时堆栈**：从下拉列表中选择“.NET Core”。 
 
-    **版本**：从下拉的下拉菜单中选择 **3.1** 。
+    **版本**：从下拉列表中选择“3.1”。
 
-    **区域**：选择你的资源组所在的区域。 此示例使用“美国西部”。
+    **区域**：选择你的资源组所在的同一区域。 此示例使用“美国西部”。
 
     > [!NOTE]
     > 默认已启用 Application Insights。 本文不需要 Application Insights，但它可以帮助你了解和调查处理自定义分配时遇到的任何问题。 如果需要，可以禁用 Application Insights，方法是选择“监视”选项卡，然后对“启用 Application Insights”选择“否”。   
 
     ![创建用于托管自定义分配函数的 Azure 函数应用](./media/how-to-use-custom-allocation-policies/create-function-app.png)
 
-4. 在“摘要”页上，选择“创建”以创建函数应用。   部署可能需要花费几分钟时间。 完成后，选择“转到资源”。 
+4. 在“摘要”页上，选择“创建”以创建函数应用。   部署可能需要花费几分钟时间。 完成后，选择“转到资源”。
 
-5. 在函数应用程序 **概述** 页的左窗格中，单击 " **函数** "，然后单击 " **+ 添加** " 以添加新函数。
+5. 在函数应用“概述”页的左窗格中，单击“函数”，然后选择“+ 添加”以添加新函数。  
 
-6. 在 " **添加函数** " 页上，单击 " **HTTP 触发器**"，然后单击 " **添加** " 按钮。
+6. 在“添加函数”页上，单击“HTTP 触发器”，然后单击“添加”按钮。
 
-7. 在下一页上，单击 " **代码 + 测试**"。 这允许您编辑名为 **HttpTrigger1** 的函数的代码。 应打开 **run.csx** 代码文件进行编辑。
+7. 在下一页中，单击“代码 + 测试”。 这允许你编辑名为 **HttpTrigger1** 的函数的代码。 **run.csx** 代码文件应该会打开供编辑。
 
-8. 引用所需的 NuGet 包。 为了创建初始设备孪生，自定义分配函数将使用必须载入托管环境的两个 NuGet 包中定义的类。 使用 Azure Functions，将使用 *函数 proj* 文件引用 NuGet 包。 在此步骤中，保存并上传所需程序集的 *函数 proj* 文件。  有关详细信息，请参阅 [在 Azure Functions 中使用 NuGet 包](../azure-functions/functions-reference-csharp.md#using-nuget-packages)。
+8. 引用所需的 NuGet 包。 为了创建初始设备孪生，自定义分配函数将使用必须载入托管环境的两个 NuGet 包中定义的类。 在 Azure Functions 中，NuGet 包是使用 *function.proj* 文件引用的。 在此步骤中，你将保存并上传所需程序集的 function.proj 文件。  有关详细信息，请参阅[通过 Azure Functions 使用 NuGet 包](../azure-functions/functions-reference-csharp.md#using-nuget-packages)。
 
-    1. 将以下行复制到您喜爱的编辑器中，并将该文件保存在计算机上作为 *函数。*
+    1. 将以下行复制到你喜欢使用的编辑器中，并在你的计算机上将该文件保存为“function.proj”。
 
         ```xml
         <Project Sdk="Microsoft.NET.Sdk">  
@@ -172,9 +172,9 @@ ms.locfileid: "98919168"
         </Project>
         ```
 
-    2. 单击位于代码编辑器上方的 " **上传** " 按钮，上传 *函数 proj* 文件。 上传后，使用下拉框选择代码编辑器中的文件以验证内容。
+    2. 单击位于代码编辑器上方的“上传”按钮，以上传“function.proj”文件。 上传后，在代码编辑器中使用下拉框选择该文件来验证内容。
 
-9. 请确保在代码编辑器中选择了 *run.csx* for **HttpTrigger1** 。 将 **HttpTrigger1** 函数的代码替换为以下代码，然后选择“保存”： 
+9. 请确保在代码编辑器中为 **HttpTrigger1** 选择“run.csx”。 将 **HttpTrigger1** 函数的代码替换为以下代码，然后选择“保存”： 
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -331,21 +331,21 @@ ms.locfileid: "98919168"
 
     **选择要如何将设备分配到中心**：选择“自定义(使用 Azure Function)”。 
 
-    **订阅**：选择在其中创建 Azure 函数的订阅。
+    **订阅**：选择你在其中创建了 Azure 函数的订阅。
 
-    **Function App**：按名称选择函数应用。 **contoso-** -----1098 已在此示例中使用。
+    **函数应用**：通过名称选择你的函数应用。 此示例中使用了 **contoso-function-app-1098**。
 
     **函数**：选择 **HttpTrigger1** 函数。
 
     ![为对称密钥证明添加自定义分配注册组](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
-4. 保存注册后，重新打开它，并记录“主键”  。 必须先保存注册，才能生成密钥。 此密钥稍后将用于为模拟设备生成唯一设备密钥。
+4. 保存注册后，重新打开它，并记录“主键”。 必须先保存注册，才能生成密钥。 此密钥稍后将用于为模拟设备生成唯一设备密钥。
 
 ## <a name="derive-unique-device-keys"></a>派生唯一设备密钥
 
 在本部分，你将创建两个唯一的设备密钥。 一个密钥将用于模拟的烤箱设备。 另一个密钥将用于模拟的热泵设备。
 
-若要生成设备密钥，请使用前面记 **下的主密钥** 来计算每个设备的设备注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) ，并将结果转换为 Base64 格式。 有关使用注册组创建派生设备密钥的详细信息，请参阅[对称密钥证明](concepts-symmetric-key-attestation.md)的组注册部分。
+若要生成设备密钥，请使用前面记下的“主密钥”来计算每个设备的设备注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)，并将结果转换为 Base64 格式。 有关使用注册组创建派生设备密钥的详细信息，请参阅[对称密钥证明](concepts-symmetric-key-attestation.md)的组注册部分。
 
 对于本文中的示例，使用以下两个设备注册 ID 并计算这两个设备的设备密钥。 这两个注册 ID 都具有有效的后缀，以与自定义分配策略的示例代码结合使用：
 
@@ -514,7 +514,7 @@ mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
 
     保存文件。
 
-2. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   出现重新生成项目的提示时，请选择“是”，以便在运行项目之前重新生成项目  。
+2. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。  出现重新生成项目的提示时，请选择“是”，以便在运行项目之前重新生成项目  。
 
     以下输出是模拟烤箱设备成功启动并连接到预配服务实例以通过自定义分配策略分配到烤箱 IoT 中心的一个示例：
 
@@ -543,7 +543,7 @@ mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
 
     保存文件。
 
-2. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   出现重新生成项目的提示时，请选择“是”，以便在运行项目之前重新生成项目  。
+2. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。  出现重新生成项目的提示时，请选择“是”，以便在运行项目之前重新生成项目  。
 
     以下输出是模拟热泵设备成功启动并连接到预配服务实例以通过自定义分配策略分配到 Contoso 热泵 IoT 中心的一个示例：
 

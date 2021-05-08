@@ -12,10 +12,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: a54ed9dc6557d9b613485bf28e74af0c59fc9e5e
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99225202"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的计费模型
@@ -23,7 +23,7 @@ ms.locfileid: "99225202"
 Azure Active Directory B2C (Azure AD B2C) 定价基于月度活跃用户 (MAU)，这是对一个日历月内具有身份验证活动的独立用户的计数。 此计费模型同时适用于 Azure AD B2C 租户和 [Azure AD 来宾用户协作 (B2B)](../active-directory/external-identities/external-identities-pricing.md)。 MAU 计费提供免费层和灵活且可预测的定价，有助于降低成本。 在本文中，你将了解 MAU 计费、如何将 Azure AD B2C 租户链接到订阅，以及如何更改你的定价层。
 
 > [!IMPORTANT]
-> 本文不包含定价详细信息。 有关用量计费和定价的最新信息，请参阅 [Azure Active Directory B2C 定价](https://azure.microsoft.com/pricing/details/active-directory-b2c/)。 请参阅 [Azure AD B2C 区域可用性和数据驻留](data-residency.md) ，详细了解 Azure AD B2C 服务的可用位置以及用户数据的存储位置。
+> 本文不包含定价详细信息。 有关用量计费和定价的最新信息，请参阅 [Azure Active Directory B2C 定价](https://azure.microsoft.com/pricing/details/active-directory-b2c/)。 另外请参阅 [Azure AD B2C 区域可用性和数据驻留](data-residency.md)，详细了解 Azure AD B2C 服务的可用位置以及用户数据的存储位置。
 
 ## <a name="what-do-i-need-to-do"></a>我需要做些什么？
 

@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.openlocfilehash: 1bd3c1099344bd266d7e3bc153613daaecfb412a
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98020309"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure 流分析解决方案模式
@@ -19,7 +19,7 @@ ms.locfileid: "98020309"
 
 ## <a name="create-a-stream-analytics-job-to-power-real-time-dashboarding-experience"></a>创建流分析作业以驱动实时仪表板体验
 
-使用 Azure 流分析可以快速创建实时仪表板和警报。 一个简单的解决方案就能从事件中心或 IoT 中心引入事件，并[在 Power BI 仪表板中馈送流数据集](/power-bi/service-real-time-streaming)。 有关详细信息，请参阅详细教程 [利用流分析分析欺诈性呼叫数据和 Power BI 仪表板中的可视化效果](stream-analytics-real-time-fraud-detection.md)。
+使用 Azure 流分析可以快速创建实时仪表板和警报。 一个简单的解决方案就能从事件中心或 IoT 中心引入事件，并[在 Power BI 仪表板中馈送流数据集](/power-bi/service-real-time-streaming)。 有关详细信息，请参阅详细教程“[使用流分析分析欺诈性呼叫数据，并在 Power BI 仪表板中可视化结果](stream-analytics-real-time-fraud-detection.md)”。
 
 ![ASA Power BI 仪表板](media/stream-analytics-solution-patterns/power-bi-dashboard.png)
 
@@ -128,7 +128,7 @@ ETL 引擎通常需要数据扩充。 Azure 流分析支持使用 SQL 数据库�
 
     此指标反映处理管道滞后于挂钟时间的程度（秒）。 某些延迟归因于固有的处理逻辑。 因此，监视趋势的增长比监视绝对值重要得多。 应该通过应用程序设计而不是监视或警报来解决稳定态延迟。
 
-出现故障时，活动日志和 [诊断日志](stream-analytics-job-diagnostic-logs.md) 是开始查找错误的最佳位置。
+发生失败时，活动日志和[诊断日志](stream-analytics-job-diagnostic-logs.md)是开始查找错误的最佳位置。
 
 ## <a name="build-resilient-and-mission-critical-applications"></a>构建可复原的任务关键型应用程序
 

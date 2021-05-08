@@ -12,10 +12,10 @@ ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: d5e06d0a6f7693ca9cc69f05f6b2318d6b60b5e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89070796"
 ---
 # <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect：ADConnectivityTools PowerShell 参考
@@ -311,8 +311,8 @@ Accept wildcard characters: False
 #### <a name="-skipdnsport"></a>-SkipDnsPort
 
 如果用户未使用 AD 站点/登录 DC 提供的 DNS 服务，则他们可能需要跳过端口 53 的检查。
-用户仍必须能够解析 _.ldap._tcp。\<forestfqdn\>
-为了使 Active Directory 连接器配置成功。
+用户必须解决 _.ldap._tcp.\<forestfqdn\>
+以使 Active Directory 域服务连接器配置成功。
 
 ```yml
 Type: SwitchParameter

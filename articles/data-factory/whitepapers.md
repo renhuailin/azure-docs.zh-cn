@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.openlocfilehash: f3e631dafd7281b601230755514eab831ad1bb6e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100369486"
 ---
 # <a name="azure-data-factory-whitepapers"></a>Azure 数据工厂白皮书 
@@ -26,5 +26,5 @@ ms.locfileid: "100369486"
 |[使用 Azure 数据工厂实现 SAP 数据集成](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) | 本文总结了 Azure 数据工厂当前对 SAP 数据集成的支持，包括目标方案、SAP 连接器选项和针对不同要求的比较，以及对数据工厂中每个 SAP 连接器的介绍。 | 
 |[Azure 数据工厂：云中的 SSIS](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-ssis-in-the-cloud/Azure_Data_Factory_SSIS_in_the_Cloud.pdf)| 此白皮书介绍了为什么要将现有的 SSIS 工作负荷迁移到 Azure 数据工厂，并讨论了常见的注意事项和顾虑。 然后，我们将引导你了解创建 Azure-SSIS IR 的技术详细信息，然后将展示如何使用你可能熟悉的工具（例如 SQL Server Management Studio (SSMS)）通过 Azure 数据工厂上传、执行和监视你的程序包。 |
 |[Azure 数据工厂 - 传递参数](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf)| 本文逐步讲解如何在管道和活动之间以及活动之间传递参数。 |
-|[Azure 数据工厂– DevOps](https://azure.microsoft.com/mediahandler/files/resourcefiles/whitepaper-adf-on-azuredevops/Azure%20data%20Factory-Whitepaper-DevOps.pdf)| 本白皮书介绍了有关持续集成和部署 Azure 数据工厂的一些最佳实践。 |
+|[Azure 数据工厂 –DevOps](https://azure.microsoft.com/mediahandler/files/resourcefiles/whitepaper-adf-on-azuredevops/Azure%20data%20Factory-Whitepaper-DevOps.pdf)| 本白皮书介绍了有关持续集成和部署 Azure 数据工厂的一些最佳做法。 |
 

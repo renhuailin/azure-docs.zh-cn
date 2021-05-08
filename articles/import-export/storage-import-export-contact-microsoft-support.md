@@ -9,10 +9,10 @@ ms.date: 01/14/2021
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 03d953bd534595e47702642403626a05b7f67aba
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98706280"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>针对导入/导出作业开具支持票证
@@ -26,7 +26,7 @@ ms.locfileid: "98706280"
 
 可以执行以下步骤来创建支持请求：
 
-1. 转到导入/导出作业。 导航到 " **支持 + 故障排除** " 部分，然后选择 " **新建支持请求**"。
+1. 转到导入/导出作业。 导航到“支持 + 故障排除”部分，然后选择“新建支持请求”。
      
     ![基础](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
    
@@ -40,7 +40,7 @@ ms.locfileid: "98706280"
         - 如果选择了“Blob”，请选择“资源”、“容器名称”（可选）和“支持计划”。
             ![选择 Blob](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
         - 如果选择了“文件”，请选择“资源”、“文件共享名称”（可选）和“支持计划”。 ![选择文件](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
-    4. 选择“**下一页**”。
+    4. 选择“**下一步**”。
 
 3. 在“新建支持请求”中，选择“步骤 2: 问题”。  在“问题”中执行以下步骤：
     
@@ -51,11 +51,11 @@ ms.locfileid: "98706280"
     5. 提供问题的开始日期和时间。
     6. 在“文件上传”中选择文件夹图标，浏览要上传的任何其他文件。
     7. 选中“共享诊断信息”。
-    8. 选择“**下一页**”。
+    8. 选择“**下一步**”。
 
        ![问题](./media/storage-import-export-contact-microsoft-support/import-export-support5.png)
 
-4. 在 " **新建支持请求**" 中，选择 **步骤3联系信息**。 在“联系信息”中执行以下步骤：
+4. 在“新建支持请求”中，选择“步骤 3 联系信息”。 在“联系信息”中执行以下步骤：
 
    1. 在“联系人选项”中，提供首选的联系方式（电话或电子邮件）和语言。 系统会根据订阅计划自动选择响应时间。
    2. 在“联系人信息”中提供姓名、电子邮件、可选联系人和国家/地区。 选中“保存联系人更改以便在将来的支持请求中使用”复选框。
@@ -64,7 +64,7 @@ ms.locfileid: "98706280"
        ![联系信息](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
 
       Microsoft 支持将使用此信息与你联系，以获得进一步信息、诊断和解决方法。
-      提交请求后，支持工程师将与你联系以继续处理你的请求。
+      提交请求后，支持工程师会与你联系，以便继续处理请求。
 
 ## <a name="manage-a-support-request"></a>管理支持请求
 
@@ -74,17 +74,17 @@ ms.locfileid: "98706280"
 
 1. 若要访问“帮助和支持”页，请导航到“浏览”>“帮助 + 支持”。
 
-    ![屏幕截图显示 "帮助" 对话框。](./media/storage-import-export-contact-microsoft-support/manage-support-ticket2.png)   
+    ![屏幕截图显示“帮助”对话框。](./media/storage-import-export-contact-microsoft-support/manage-support-ticket2.png)   
 
 2. “帮助 + 支持”中会显示“最近的支持请求”表格。 
 
-    ![屏幕截图显示处于打开状态的支持请求的 "帮助 + 支持" 页。](./media/storage-import-export-contact-microsoft-support/manage-support-ticket1.png) 
+    ![屏幕截图显示处于打开状态的支持请求的“帮助 + 支持”页。](./media/storage-import-export-contact-microsoft-support/manage-support-ticket1.png) 
 
-3. 选择并单击某个支持请求。 可以查看此请求的状态和详细信息。 如果要跟进此请求，请选择 " **+ 新消息** "。
+3. 选择并单击某个支持请求。 可以查看此请求的状态和详细信息。 如果想要跟进此请求，请选择“+ 新建消息”。
 
     ![屏幕截图显示为此请求选择的新消息。](./media/storage-import-export-contact-microsoft-support/manage-support-ticket3.png) 
 
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何 [使用 Azure 导入/导出将数据传入和传出 Azure 存储](storage-import-export-service.md)。
+了解如何[使用 Azure 导入/导出将数据传入和传出 Azure 存储](storage-import-export-service.md)。

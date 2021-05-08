@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 16c3ac10af7d39ec35cde1cd9d279bced54fd8aa
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f421274513cc3d76f7e8c1119cf98e4e5d36b1f9
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106062499"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950257"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>什么是 Azure 机器学习中的计算目标?
 
@@ -38,23 +38,9 @@ Azure 机器学习为不同的计算目标提供不同的支持。 典型的模�
 
 ## <a name="compute-targets-for-inference"></a><a name="deploy"></a>用于推理的计算目标
 
-以下计算资源可用来托管模型部署。
+执行推理时，Azure 机器学习会创建托管模型和使用该模型所需的关联资源的 Docker 容器。 然后，系统将在计算目标中使用此容器。
 
-[!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
-
-执行推理时，Azure 机器学习会创建托管模型和使用该模型所需的关联资源的 Docker 容器。 然后，在以下任一部署场景中使用此容器：
-
-* 作为用于实时推理的 Web 服务。 Web 服务部署使用以下计算目标之一：
-
-    * [本地计算机](how-to-attach-compute-targets.md#local)
-    * [Azure 机器学习计算实例](how-to-create-manage-compute-instance.md)
-    * [Azure 容器实例](how-to-attach-compute-targets.md#aci)
-    * [Azure Kubernetes 服务](how-to-create-attach-kubernetes.md)
-    * Azure Functions（预览版）。 部署到 Functions 仅依赖 Azure 机器学习来生成 Docker 容器。 从该容器中，通过使用 Functions 来部署机器学习模型。 有关详细信息，请参阅[将机器学习模型部署到 Azure Functions（预览版）](how-to-deploy-functions.md)。
-
-* 作为用于定期处理批量数据的“批量推理”终结点。 批量推理使用 [Azure 机器学习计算群集](how-to-create-attach-compute-cluster.md)。
-
-* 转到 IoT 设备（预览版）。 IoT 设备的部署仅依赖 Azure 机器学习来生成 Docker 容器。 从该容器中，通过使用 Azure IoT Edge 来部署机器学习模型。 有关详细信息，请参阅[部署为 IoT Edge 模块（预览版）](../iot-edge/tutorial-deploy-machine-learning.md)。
+[!INCLUDE [aml-deploy-target](../../includes/aml-compute-target-deploy.md)]
 
 了解[在何处以及如何将模型部署到计算目标](how-to-deploy-and-where.md)。
 

@@ -1,5 +1,5 @@
 ---
-title: 最终用户身份验证-REST 与 Data Lake Storage Gen1-Azure
+title: 最终用户身份验证 - 采用 Azure Data Lake Storage Gen1 的 REST - Azure
 description: 了解如何通过 REST API 使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 最终用户身份验证
 author: twooley
 ms.service: data-lake-store
@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 462cd06c9da3b1f0a57c293d52c59181372b709b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92103741"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>通过 REST API 进行 Azure Data Lake Storage Gen1 最终用户身份验证
@@ -26,11 +26,11 @@ ms.locfileid: "92103741"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **创建 Azure Active Directory“本机”应用程序**。 必须已完成[使用 Azure Active Directory 进行 Data Lake Storage Gen1 最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)中的步骤。
 
-* **[弯曲](https://curl.haxx.se/)**。 本文使用 cURL 演示如何对 Data Lake Storage Gen1 帐户进行 REST API 调用。
+* **[cURL](https://curl.haxx.se/)** 。 本文使用 cURL 演示如何对 Data Lake Storage Gen1 帐户进行 REST API 调用。
 
 ## <a name="end-user-authentication"></a>最终用户身份验证
 如果希望用户使用 Azure AD 登录到应用程序，则最终用户身份验证是建议的方法。 应用程序可访问 Azure 资源，其访问权限级别与已登录用户相同。 用户需要定期提供凭据，以使应用程序可继续访问。
@@ -44,7 +44,7 @@ ms.locfileid: "92103741"
     `https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>`
 
    > [!NOTE]
-   > \<REDIRECT-URI> 需要经过编码才能在 URL 中使用。 因此，对于 https://localhost，请使用 `https%3A%2F%2Flocalhost`）
+   > \<REDIRECT-URI> 需要进行编码才能在 URL 中使用。 因此，对于 https://localhost，请使用 `https%3A%2F%2Flocalhost`）
 
     在本教程中，可以替换上述 URL 中的占位符值，并将此值粘贴到 Web 浏览器地址栏中。 随后用户将重定向，以便使用 Azure 登录名进行身份验证。 成功登录后，响应会显示在浏览器地址栏中。 响应格式如下：
 
@@ -62,7 +62,7 @@ ms.locfileid: "92103741"
     ```
 
    > [!NOTE]
-   > 在这种情况下， \<REDIRECT-URI> 无需对其进行编码。
+   > 在此情况下，\<REDIRECT-URI> 不需要进行编码。
    > 
    > 
 
@@ -87,5 +87,5 @@ ms.locfileid: "92103741"
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何通过 REST API 使用服务到服务身份验证进行 Azure Data Lake Storage Gen1 身份验证。 现可查看以下介绍如何使用 REST API 在 Azure Data Lake Storage Gen1 中执行操作的文章。
 
-* [使用 REST API Data Lake Storage Gen1 上的帐户管理操作](data-lake-store-get-started-rest-api.md)
+* [使用 REST API 对 Data Lake Storage Gen1 进行的帐户管理操作](data-lake-store-get-started-rest-api.md)
 * [使用 REST API 在 Data Lake Storage Gen1 中进行的数据操作](data-lake-store-data-operations-rest-api.md)

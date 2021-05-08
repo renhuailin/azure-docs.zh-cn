@@ -2,13 +2,13 @@
 title: 模板最佳实践
 description: 介绍创作 Azure 资源管理器模板（ARM 模板）的建议方法。 提供相关建议，避免在使用模板时出现常见问题。
 ms.topic: conceptual
-ms.date: 12/01/2020
-ms.openlocfilehash: ff2b9ecf0e4004aa6689294867f5ff93006211ec
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.date: 04/23/2021
+ms.openlocfilehash: a9b7530f7d9e3e86a3f2137cda5fcefa5e101c23
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219937"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950183"
 ---
 # <a name="arm-template-best-practices"></a>ARM 模板最佳做法
 
@@ -16,7 +16,7 @@ ms.locfileid: "106219937"
 
 ## <a name="template-limits"></a>模板限制
 
-将模板大小限制为 4 MB 以内，每个参数文件大小限制为 64 KB 以内。 4-MB 限制适用于模板使用迭代资源定义以及变量和参数值进行扩展后的最终状态。
+将模板大小限制为 4 MB。 4-MB 限制适用于模板使用迭代资源定义以及变量和参数值进行扩展后的最终状态。 将参数文件大小也限制为 4 MB。 如果请求的总大小太大，则可能会收到一则指示模板或参数文件应小于 4 MB 的错误消息。 有关如何简化模板以避免大型请求的详细信息，请参阅 [解决超出作业大小的错误](error-job-size-exceeded.md)。
 
 还将受限于：
 
@@ -277,7 +277,7 @@ ms.locfileid: "106219937"
    > [!NOTE]
    > 为了确保机密内容作为参数传递给 VM 和扩展时经过加密，请使用相关扩展的 `protectedSettings` 属性。
 
-* 为具有可能会随时间变化的默认值的属性指定显式值。 例如，如果要部署 AKS 群集，则可以指定或省略 `kubernetesVersion` 属性。 如果未指定该属性，则[该群集默认使用 N-1 次要版本和最新修补程序](../../aks/supported-kubernetes-versions.md#azure-portal-and-cli-versions)。 在使用 ARM 模板部署群集时，此默认行为可能并不是你预期的行为。 重新部署模板可能会导致群集意外升级到新的 Kubernetes 版本。 请改为考虑指定显式版本号，然后在准备好升级群集时手动更改版本号。
+* 为具有可能会随时间变化的默认值的属性指定显式值。 例如，如果要部署 AKS 群集，则可以指定或删除 `kubernetesVersion` 属性。 如果未指定该属性，则[该群集默认使用 N-1 次要版本和最新修补程序](../../aks/supported-kubernetes-versions.md#azure-portal-and-cli-versions)。 在使用 ARM 模板部署群集时，此默认行为可能并不是你预期的行为。 重新部署模板可能会导致群集意外升级到新的 Kubernetes 版本。 请改为考虑指定显式版本号，然后在准备升级群集时手动更改版本号。
 
 ## <a name="use-test-toolkit"></a>使用测试工具包
 

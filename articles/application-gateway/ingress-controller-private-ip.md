@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 8be37ed1da0da4da3db43ef4c1cd01ed962f24ed
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93397302"
 ---
 # <a name="use-private-ip-for-internal-routing-for-an-ingress-endpoint"></a>使用入口终结点的专用 IP 进行内部路由 
@@ -24,7 +24,7 @@ ms.locfileid: "93397302"
 可通过两种方法配置控制器以使用入口专用 IP
 
 ## <a name="assign-to-a-particular-ingress"></a>分配到特定入口
-若要通过专用 IP 公开特定的入口，请在入口中使用注释 [`appgw.ingress.kubernetes.io/use-private-ip`](./ingress-controller-annotations.md#use-private-ip)。
+若要通过专用 IP 公开特定入口，请在入口中使用注释 [`appgw.ingress.kubernetes.io/use-private-ip`](./ingress-controller-annotations.md#use-private-ip)。
 
 ### <a name="usage"></a>使用情况
 ```yaml
@@ -66,4 +66,4 @@ appgw:
 如果 `usePrivateIP: true` 且没有分配任何专用 IP，则 AGIC 会死机并崩溃。
 
 > [!NOTE]
-> 应用程序网关 v2 SKU 要求公共 IP。 如果要求应用程序网关专用，请附加一个 [`Network Security Group`](../virtual-network/network-security-groups-overview.md) 到应用程序网关的子网来限制流量。
+> 应用程序网关 v2 SKU 要求公共 IP。 如果要求应用程序网关为专用网关，请附加 [`Network Security Group`](../virtual-network/network-security-groups-overview.md) 到应用程序网关的子网来限制流量。
