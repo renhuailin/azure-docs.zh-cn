@@ -7,12 +7,12 @@ ms.date: 4/12/2021
 author: sakthi-vetrivel
 ms.author: suvetriv
 keywords: aro, openshift, az aro, red hat, cli, RACI, support
-ms.openlocfilehash: 4bb00cb533d0065a992831f09ed8280c96efcdee
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 477fe40dc565bf5e20627b4f4cd0d53273240ec3
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537003"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319604"
 ---
 # <a name="overview-of-responsibilities-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift 的责任概述
 
@@ -583,7 +583,7 @@ Microsoft 和 Red Hat 负责实现对客户将控制的群集基础结构和服�
 
 <li>如果客户使用操作员或外部映像向群集中添加 Red Hat、社区、第三方、自己的服务或其他服务，则客户将对这些服务负责，并负责使用相应的提供程序（包括 Red Hat）来解决出现的任何问题。
 
-<li>使用提供的工具和功能进行<a href="https://docs.openshift.com/aro/4/architecture/understanding-development.html#application-types">配置和部署</a>；<a href="https://docs.openshift.com/aro/4/applications/deployments/deployment-strategies.html">保持最新版本</a>；<a href="https://docs.openshift.com/aro/4/applications/working-with-quotas.html">设置资源请求和限制</a>；<a href="https://docs.openshift.com/aro/4/getting_started/scaling-your-cluster.html">调整群集的大小，使其具有足够的资源来运行应用</a>；<a href="https://docs.openshift.com/aro/4/administering_a_cluster/">设置权限</a>；与其他服务集成；<a href="https://docs.openshift.com/aro/4/openshift_images/images-understand.html">管理客户部署的任何映像流或模板</a>；<a href="https://docs.openshift.com/aro/4/cloud_infrastructure_access">外部服务</a>；保存、备份和还原数据；另外，还管理其高度可用且可复原的工作负载。
+<li>使用提供的工具和功能进行<a href="https://docs.openshift.com/aro/4/architecture/understanding-development.html#application-types">配置和部署</a>；<a href="https://docs.openshift.com/aro/4/applications/deployments/deployment-strategies.html">保持最新版本</a>；<a href="https://docs.openshift.com/dedicated/4/applications/working-with-quotas.html">设置资源请求和限制</a>；<a href="https://docs.openshift.com/dedicated/4/getting_started/scaling-your-cluster.html">调整群集的大小，使其具有足够的资源来运行应用</a>；<a href="https://docs.openshift.com/dedicated/4/administering_a_cluster/cluster-admin-role.html">设置权限</a>；与其他服务集成；<a href="https://docs.openshift.com/aro/4/openshift_images/images-understand.html">管理客户部署的任何映像流或模板</a>；<a href="https://docs.openshift.com/dedicated/4/cloud_infrastructure_access/dedicated-understanding-aws.html">外部服务</a>；保存、备份和还原数据；另外，还管理其高度可用且可复原的工作负载。
 
 <li>维护对 Azure Red Hat OpenShift 上运行的应用程序的监视责任；包括安装和操作软件以收集指标和创建警报。
 </li>

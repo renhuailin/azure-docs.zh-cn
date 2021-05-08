@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: d854b1e043509a8abddb361b17a350e7be1e628f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: fe61c0903a558a981ed10bf2a11fba82e5ee83b6
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2021
-ms.locfileid: "108148550"
+ms.locfileid: "108175075"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>使用 Azure AD 应用程序代理为远程用户发布本地应用
 
@@ -176,7 +176,7 @@ Azure AD 应用程序代理包括基于云的应用程序代理服务和本地�
 * 应用程序分段/隔离
 * 发布云中或本地运行的 Web 应用
 
-有关选择在何处安装连接器和优化网络的详细信息，请参阅[使用 Azure Active Directory 应用程序代理时的网络拓扑注意事项](../manage-apps/application-proxy-network-topology.md)。
+有关选择在何处安装连接器和优化网络的详细信息，请参阅[使用 Azure Active Directory 应用程序代理时的网络拓扑注意事项](application-proxy-network-topology.md)。
 
 ## <a name="other-use-cases"></a>其他用例
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Spring Cloud 的 Azure Policy 法规合规性控制措施
 description: 列出可用于 Azure Spring Cloud 的 Azure Policy 法规合规性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 04/21/2021
+ms.date: 04/28/2021
 ms.topic: sample
 author: bmitchell287
 ms.author: brendm
 ms.service: spring-cloud
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 9ae1071fe5c01b404dfac7aea6d7f49ab3e68cf8
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 5fe809b31f3f6a7378964ed6b522cf5a7767ddd9
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107870151"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108177093"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-spring-cloud"></a>Azure Spring Cloud 的 Azure Policy 法规合规性控制措施
 

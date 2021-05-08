@@ -5,12 +5,13 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: 5c1ef7d8de32564e2b1d3b1578fcd72cefde0327
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c050ae9eb67276ff873864b6ab49ed50afad210f
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047139"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319406"
 ---
 # <a name="resource-manager-template-samples-for-log-analytics-workspaces-in-azure-monitor"></a>用于 Azure Monitor 中的 Log Analytics 工作区的资源管理器模板示例
 本文包含用于在 Azure Monitor 中创建和配置 Log Analytics 工作区的 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)示例。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
@@ -681,7 +682,7 @@ ms.locfileid: "102047139"
                         ]
                     }
                     },
-                    "extractionType": "DateTime"
+                    "extractionType&quot;: &quot;DateTime"
                 }
                 ]
             }

@@ -4,35 +4,46 @@ description: 了解如何创建与 Azure Data Lake Storage Gen2 配合使用的�
 author: normesta
 ms.topic: how-to
 ms.author: normesta
-ms.date: 08/31/2020
+ms.date: 04/27/2021
 ms.service: storage
 ms.reviewer: stewu
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 712f1dc0679ee49791831e782fb68c39a757870a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30be4b09c5fc85a272734468d30f11e939ded48b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98624331"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125503"
 ---
 # <a name="create-a-storage-account-to-use-with-azure-data-lake-storage-gen2"></a>创建与 Azure Data Lake Storage Gen2 配合使用的存储帐户
 
 若要使用 Data Lake Storage Gen2 功能，请创建具有分层命名空间的存储帐户。
 
+有关分步指南，请参阅[创建存储帐户](../common/storage-account-create.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json)。 
+
+创建帐户时，请确保选择本文中所述的选项。
+
 ## <a name="choose-a-storage-account-type"></a>选择存储帐户类型
 
 以下类型的存储帐户支持 Data Lake Storage 功能：
 
-- 常规用途 v2
-- BlockBlobStorage
+- 标准常规用途 v2
+- 高级块 blob
 
-有关如何在它们之间进行选择的信息，请参阅[存储帐户概述](../common/storage-account-overview.md)。
+有关如何在它们之间进行选择的信息，请参阅[存储帐户概述](../common/storage-account-overview.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json)。
 
-## <a name="create-a-storage-account-with-a-hierarchical-namespace"></a>创建具有分层命名空间的存储帐户
+可以在“创建存储帐户”页面的“基本”选项卡中，选择这两种类型的帐户。 
 
-在启用“分层命名空间”设置的情况下创建[常规用途 V2 帐户](../common/storage-account-create.md)或 [BlockBlobStorage](storage-blob-create-account-block-blob.md) 帐户。
+若要创建标准的常规用途 v2 帐户，请选择“标准”。
 
-在创建帐户时解锁 Data Lake Storage 功能，方法如下：在“创建存储帐户”页面的“高级”选项卡中启用“分层命名空间”设置。   必须在创建帐户时启用此设置。 无法在以后启用它。
+若要创建高级块 blob 帐户，请选择“高级”。 然后，在“高级帐户类型”下拉列表中，选择“块 blob”。 
+
+> [!div class="mx-imgBorder"]
+> ![高级块 blob 选项](./media/create-data-lake-storage-account/premium-block-blob-option.png)
+
+## <a name="enable-the-hierarchical-namespace"></a>启用分层命名空间
+
+若要解锁 Data Lake Storage 功能，方法如下：在“创建存储帐户”页面的“高级”选项卡中启用“分层命名空间”设置  。 必须在创建帐户时启用此设置。 无法在以后启用它。
 
 下图显示了“创建存储帐户”页中的此设置。
 
@@ -42,7 +53,7 @@ ms.locfileid: "98624331"
 如果你有一个要与 Data Lake Storage 配合使用的现有存储帐户，并且已禁用了分层命名空间设置，则必须将数据迁移到启用了该设置的新存储帐户。
 
 > [!NOTE]
-> 无法同时启用数据保护和分层命名空间 。
+> 无法同时启用数据保护和分层命名空间。
 
 ## <a name="next-steps"></a>后续步骤
 

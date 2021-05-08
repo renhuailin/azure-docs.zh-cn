@@ -5,13 +5,13 @@ author: mumian
 ms.date: 04/12/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: ''
-ms.openlocfilehash: 0ffd8a97d797144d458e7ec5836042cc6d8d8193
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 953ca06c3f59f1b39b7b5a5d99ef38814b97c565
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107306666"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319316"
 ---
 # <a name="tutorial-create-and-deploy-first-azure-resource-manager-bicep-file"></a>教程：创建和部署第一个 Azure 资源管理器 Bicep 文件
 
@@ -198,7 +198,7 @@ az deployment group create \
 
 可以通过在 Azure 门户中浏览资源组来验证部署。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在左侧菜单中选择“资源组”。 
 

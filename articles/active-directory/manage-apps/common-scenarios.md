@@ -11,12 +11,12 @@ ms.date: 03/02/2019
 ms.author: iangithinji
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1acfff8a9152c767b61463bed0165d5ae390f649
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 9ad4cb5cdee3af68f7212b696dec10980ee89818
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374992"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318902"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>使用 Azure AD 集中应用程序管理
 
@@ -77,7 +77,7 @@ Identity Governance 有助于组织在以下需求之间实现平衡：工作效
 
 |Feature  |说明|建议 |
 |---------|---------|---------|
-|应用程序代理|现今的员工想要随时随地都能在任何设备上高效工作。 他们需要访问云中的 SaaS 应用和本地的公司应用。 Azure AD 应用程序代理支持这种强大的访问，而无需昂贵和复杂的虚拟专用网络 (VPN) 或外围子网 (DMZ)。|为本地应用设置[远程访问](./application-proxy.md)。 |
+|应用程序代理|现今的员工想要随时随地都能在任何设备上高效工作。 他们需要访问云中的 SaaS 应用和本地的公司应用。 Azure AD 应用程序代理支持这种强大的访问，而无需昂贵和复杂的虚拟专用网络 (VPN) 或外围子网 (DMZ)。|为本地应用设置[远程访问](../app-proxy/application-proxy.md)。 |
 |F5、Akamai、Zscaler|使用现有网络和交付控制器，可以轻松保护对业务流程仍然至关重要但以前无法使用 Azure AD 进行保护的旧版应用程序。 就像你已经有了开始保护这些应用程序所需的一切。| 应使用 Akamai、Citrix、F5 还是 Zscaler？ 请查看我们的[预建解决方案](./secure-hybrid-access.md)。 | 
 
 ## <a name="related-articles"></a>相关文章

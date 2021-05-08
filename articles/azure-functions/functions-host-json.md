@@ -3,12 +3,12 @@ title: Azure Functions 2.x 的 host.json 参考
 description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: cbedf2212c52d8f1996d3cce0d96d494313ea525
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9424162e847a9d92019efe907ce74f21c55cdb23
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102608812"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226239"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host.json 参考 
 
@@ -413,7 +413,7 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 
 ## <a name="servicebus"></a>serviceBus
 
-可在[服务总线触发器和绑定](functions-bindings-service-bus-output.md#host-json)中查找配置设置。
+可在[服务总线触发器和绑定](functions-bindings-service-bus.md#host-json)中查找配置设置。
 
 ## <a name="singleton"></a>singleton
 

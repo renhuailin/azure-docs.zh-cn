@@ -7,13 +7,13 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 03/08/2021
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: 8196267ff7a71fb3910848fd0fef11a40a3c1c32
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 7fe9e0237f9fbdd1f53f0cbf7b945aaecb6c84c0
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107869934"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319640"
 ---
 # <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>教程：创建可改进 Web 应用程序访问的应用程序网关
 

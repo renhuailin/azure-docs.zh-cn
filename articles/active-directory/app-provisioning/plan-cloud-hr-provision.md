@@ -1,5 +1,5 @@
 ---
-title: 规划云 HR 应用到 Azure Active Directory 的用户预配
+title: 计划云 HR 应用程序到 Azure Active Directory 的用户预配
 description: 本文介绍将云 HR 系统（如 Workday 和 SuccessFactors）与 Azure Active Directory 集成的部署过程。 将 Azure AD 与云 HR 系统集成会生成一个完整的标识生命周期管理系统。
 services: active-directory
 author: kenwith
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 9c896d4cccf898b8818b4c363c5bc891a8734ca5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d9171226de7c975e75139af92798ea78419428f0
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99256705"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175417"
 ---
-# <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>规划云 HR 应用到 Azure Active Directory 的用户预配
+# <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>计划云 HR 应用程序到 Azure Active Directory 的用户预配
 
 过去，IT 人员一直依靠手动方法来创建、更新和删除员工。 他们使用上传 CSV 文件或自定义脚本等方法来同步员工数据。 这些预配过程容易出错、不安全且难以管理。
 
@@ -204,7 +204,7 @@ Azure AD Connect 预配代理部署拓扑取决于你计划集成的云 HR 应�
 
 云 HR 应用到 Active Directory 用户预配解决方案要求在运行 Windows 2012 R2 或更高版本的服务器上部署一个或多个 Azure AD Connect 预配代理。 服务器必须至少具有 4-GB RAM 和 .NET 4.7.1 + 运行时。 确保主机服务器具有对目标 Active Directory 域的网络访问权限。
 
-为准备本地环境，Azure AD Connect 预配代理配置向导将代理注册到 Azure AD 租户， [打开端口](../manage-apps/application-proxy-add-on-premises-application.md#open-ports)，[允许访问 URL](../manage-apps/application-proxy-add-on-premises-application.md#allow-access-to-urls)，并支持[出站 HTTPS 代理配置](../saas-apps/workday-inbound-tutorial.md#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication)。
+为准备本地环境，Azure AD Connect 预配代理配置向导将代理注册到 Azure AD 租户， [打开端口](../app-proxy/application-proxy-add-on-premises-application.md#open-ports)，[允许访问 URL](../app-proxy/application-proxy-add-on-premises-application.md#allow-access-to-urls)，并支持[出站 HTTPS 代理配置](../saas-apps/workday-inbound-tutorial.md#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication)。
 
 预配代理使用服务帐户与 Active Directory 域通信。 在安装代理之前，请在满足以下要求的 Active Directory 用户和计算机中创建服务帐户：
 
@@ -398,7 +398,7 @@ Windows server 上安装的 Azure AD Connect 预配代理在 Windows 事件日�
 
 Azure AD 预配服务不会在超过30天后生成报表、执行分析，或提供见解，因为服务不会存储、处理或保留超过30天的任何数据。
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 若要解决在预配期间可能会出现的任何问题，请参阅以下文章：
 

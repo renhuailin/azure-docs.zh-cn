@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09f98e3d6c7997d9cae2737b25f4323021e29bfb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a289d39140b559636378184d10ac8b90557fc3a1
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98892433"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108176047"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用条件访问阻止向 Azure AD 进行旧身份验证   
 
 为了让用户轻松访问云应用程序，Azure Active Directory (Azure AD) 支持各种身份验证协议，包括旧身份验证。 但是，旧协议不支持多重身份验证 (MFA)。 许多环境通常都会要求使用 MFA，以解决身份盗用的情况。 
 
-Microsoft 身份安全主管 Alex Weinert 在其 2020 年 3 月 12 日的博客文章 [New tools to block legacy authentication in your organization](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/new-tools-to-block-legacy-authentication-in-your-organization/ba-p/1225302#)（阻止组织中旧式身份验证的新工具）中强调了为什么组织应该阻止旧式身份验证，以及 Microsoft 提供了哪些其他工具来完成此任务：
+Microsoft 身份安全总监 Alex Weinert 在其 2020 年 3 月 12 日的博客文章[阻止组织中旧式身份验证的新工具](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/new-tools-to-block-legacy-authentication-in-your-organization/ba-p/1225302#)中，强调了组织应阻止旧式身份验证的原因，以及 Microsoft 提供了哪些其他工具来完成此任务：
 
 > 要使 MFA 生效，还需要阻止旧式身份验证。 这是因为旧式身份验证协议（例如 POP、SMTP、IMAP 和 MAPI）不能强制实施 MFA，这使其成为攻击者对组织发起进攻的首选入口点。
 > 
@@ -33,11 +33,14 @@ Microsoft 身份安全主管 Alex Weinert 在其 2020 年 3 月 12 日的博客�
 > - 与启用了旧式身份验证的组织相比，在禁用了旧式统身份验证的组织中，Azure AD 帐户受到的危害降低了 67%
 >
 
-如果环境已准备好阻止旧式身份验证以提高对租户的保护，则可以使用条件访问来实现此目标。 本文介绍如何配置条件访问策略来阻止对租户的旧身份验证。
+如果环境已准备好阻止旧式身份验证以提高对租户的保护，则可以使用条件访问来实现此目标。 本文介绍如何配置条件访问策略来阻止对租户的旧身份验证。 没有包含条件访问的许可证的客户可以使用[安全默认值](../fundamentals/concept-fundamentals-security-defaults.md)来阻止旧式身份验证。
 
 ## <a name="prerequisites"></a>先决条件
 
 本文假设你熟悉 Azure AD 条件访问的[基本概念](overview.md)。
+
+> [!NOTE]
+> 完成第一因素身份验证后将强制执行条件访问策略。 在遇到拒绝服务 (DoS) 攻击等情景中，条件访问不应充当组织的第一道防线，但它可以使用这些事件的信号来确定访问权限。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -46,7 +49,7 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 - 旧版 Microsoft Office 应用
 - 使用邮件协议的应用，如 POP、IMAP 和 SMTP
 
-如今，使用单因素身份验证（例如，用户名和密码）还不够安全。 使用密码也不安全，因为它们很容易被猜测到，我们并不擅长选择好密码。 密码也容易受到各种攻击，如网络钓鱼和密码破解。 防范密码威胁的最简单措施之一是实现多重身份验证 (MFA)。 使用 MFA，即使攻击者拥有用户密码，仅凭密码也不足以成功验证和访问数据。
+如今，使用单因素身份验证（例如，用户名和密码）还不够安全。 使用密码也不安全，因为它们很容易被猜测到，我们并不擅长选择好密码。 密码也容易遭受各种攻击，如网络钓鱼和密码破解。 防范密码威胁的最简单措施之一是实现多重身份验证 (MFA)。 使用 MFA，即使攻击者拥有用户密码，仅凭密码也不足以成功验证和访问数据。
 
 如何阻止使用旧身份验证的应用访问租户的资源？ 建议只使用条件访问策略阻止它们。 如有必要，只允许某些用户和特定网络位置使用基于旧身份验证的应用程序。
 
@@ -85,7 +88,7 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 1. “添加筛选器” > “客户端应用”> 选择所有旧式身份验证协议 。 在筛选对话框外选择，以应用所选项并关闭该对话框。
 1. 如果你已激活[新登录活动报告预览](../reports-monitoring/concept-all-sign-ins.md)，请在“用户登录(非交互式)”选项卡上也重复上述步骤。
 
-筛选将仅显示通过旧式身份验证协议进行的登录尝试。 单击每个单独的登录尝试将显示其他详细信息。 “基本信息”选项卡下的“客户端应用”字段将指示使用了哪个旧式身份验证协议。
+筛选将仅显示通过旧式身份验证协议进行的登录尝试。 单击每个登录尝试会显示更多详细信息。 “基本信息”选项卡下的“客户端应用”字段将指示使用了哪个旧式身份验证协议。
 
 这些日志将指示哪些用户仍然依赖于旧身份验证，以及哪些应用程序使用旧协议发出身份验证请求。 对于未出现在这些日志中且已确认不使用旧身份验证的用户，请仅为这些用户实施条件访问策略。
 

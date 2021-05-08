@@ -3,12 +3,13 @@ title: 将资源部署到资源组
 description: 介绍如何在 Azure 资源管理器模板中部署资源。 它介绍如何将多个资源组作为目标。
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: c3401346f31d34d92da1f52ca79f691e94e7eb78
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
-ms.translationtype: MT
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8768b3a5c8cdd2ac552c03faefcb1a31d5ef5857
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491548"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319208"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>使用 ARM 模板进行资源组部署
 
@@ -86,7 +87,7 @@ New-AzResourceGroupDeployment `
 * 租户中的任何订阅
 * 资源组的租户
 
-[扩展资源](scope-extension-resources.md)的作用域可以是与部署目标不同的目标。
+可以将[扩展资源](scope-extension-resources.md)的范围设置为与部署目标不同的范围。
 
 部署模板的用户必须有权访问指定的作用域。
 
@@ -128,9 +129,9 @@ New-AzResourceGroupDeployment `
 
 ### <a name="scope-to-tenant"></a>将范围设定为租户
 
-若要在租户中创建资源，请将设置 `scope` 为 `/` 。 部署模板的用户必须具有[在租户中进行部署所需的访问权限](deploy-to-tenant.md#required-access)。
+若要在租户中创建资源，请将 `scope` 设置为 `/`。 部署模板的用户必须具有[在租户中进行部署所需的访问权限](deploy-to-tenant.md#required-access)。
 
-若要使用嵌套部署，请设置 `scope` 和 `location` 。
+若要使用嵌套部署，请设置 `scope` 和 `location`。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-to-tenant.json" highlight="9,10,14":::
 
@@ -138,11 +139,11 @@ New-AzResourceGroupDeployment `
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-create-mg.json" highlight="12,15":::
 
-有关详细信息，请参阅 [管理组](deploy-to-management-group.md#management-group)。
+有关详细信息，请参阅[管理组](deploy-to-management-group.md#management-group)。
 
 ## <a name="deploy-to-target-resource-group"></a>部署到目标资源组
 
-若要在目标资源组中部署资源，请在模板的部分中定义这些资源 `resources` 。 以下模板会在部署操作中指定的资源组中创建一个存储帐户。
+若要在目标资源组部署资源，请在模板的“资源”部分定义这些资源。 以下模板会在部署操作中指定的资源组中创建一个存储帐户。
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json":::
 
@@ -301,7 +302,7 @@ az deployment group create \
                     "resources": [
                         {
                             "type": "Microsoft.Resources/resourceGroups",
-                            "apiVersion": "2020-06-01",
+                            "apiVersion": "2020-10-01",
                             "name": "[parameters('newResourceGroupName')]",
                             "location": "[parameters('location')]",
                             "properties": {}
