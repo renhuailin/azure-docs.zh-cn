@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 461d7a82854ce62ee99eef1227c13c7a8f0371e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 80f3af135f32bcb8fefd2d786da767e32a2f9368
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100594871"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203660"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>排查 Azure 数字孪生的问题：警报
 
 Azure 数字孪生会收集服务实例的[指标](troubleshoot-metrics.md)，这些指标提供有关资源状态的信息。 可以使用这些指标来评估 Azure 数字孪生服务以及连接到它的资源的整体运行状况。
 
-警报会在监视数据中出现重要状况时主动通知你。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 可以在 [Microsoft Azure 中的警报概述](../azure-monitor/alerts/alerts-overview.md)中详细了解警报。
+警报会在监视数据中出现重要状况时主动通知你。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 可以在 Microsoft Azure 中的警报概述中详细了解警报。
 
 ## <a name="turn-on-alerts"></a>启用警报
 
@@ -38,7 +38,7 @@ Azure 数字孪生会收集服务实例的[指标](troubleshoot-metrics.md)，�
 
 :::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="显示“创建警报规则”页的屏幕截图，其中包含范围、条件、操作组和警报规则详细信息等部分" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
 
-有关填写这些字段的引导式演练，请参阅 [Microsoft Azure 中的警报概述](../azure-monitor/alerts/alerts-overview.md)。 下面是演示 Azure 数字孪生步骤的一些示例。
+有关填写这些字段的引导式演练，请参阅 Microsoft Azure 中的警报概述。 下面是演示 Azure 数字孪生步骤的一些示例。
 
 ### <a name="select-conditions"></a>选择条件
 
@@ -58,6 +58,6 @@ Azure 数字孪生会收集服务实例的[指标](troubleshoot-metrics.md)，�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解 Azure Monitor 中的警报，请参阅 [Microsoft Azure 中的警报概述](../azure-monitor/alerts/alerts-overview.md)。
-* 若要了解 Azure 数字孪生指标，请参阅[故障排除：使用 Azure Monitor 查看指标](troubleshoot-metrics.md)。
-* 若要了解如何启用指标的诊断日志记录，请参阅[故障排除：设置诊断](troubleshoot-diagnostics.md)。
+* 若要详细了解 Azure Monitor 中的警报，请参阅 Microsoft Azure 中的警报概述。
+* 若要了解 Azure 数字孪生指标，请参阅故障排除：使用 Azure Monitor 查看指标。
+* 若要了解如何启用指标的诊断日志记录，请参阅故障排除：设置诊断。

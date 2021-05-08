@@ -2,12 +2,12 @@
 author: sabbour
 ms.author: asabbour
 ms.date: 4/5/2020
-ms.openlocfilehash: 1fded0ad08af4b1e5d915e32e09087c1a78bd318
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: d888d4df3f578bf88f8f38cb979ed70f681c64e8
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107520506"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108157612"
 ---
 ### <a name="create-the-cluster"></a>创建群集
 
@@ -20,7 +20,7 @@ ms.locfileid: "107520506"
 > [!NOTE]
 > 建议在 [Azure Cloud Shell](https://shell.azure.com/) 上[安装 OpenShift 命令行](../tutorial-connect-cluster.md)，并使用它来执行以下所有命令行操作。 从 shell.azure.com 或单击以下链接启动 shell：
 >
-> [![嵌入式启动](https://docs.microsoft.com/azure/includes/media/cloud-shell-try-it/hdi-launch-cloud-shell.png "启动 Azure Cloud Shell")](https://shell.azure.com/bash)
+> [![嵌入式启动](/azure/includes/media/cloud-shell-try-it/hdi-launch-cloud-shell.png "启动 Azure Cloud Shell")](https://shell.azure.com/bash)
 
 按照教程操作，使用 Web 控制台和 OpenShift CLI 安装 CLI、检索群集凭据并[连接到群集](../tutorial-connect-cluster.md)。
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c22baf0a08718883f0c0c9844cc395f607b5b20d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5cd64a9372f8f987ae79ed6c2927d179d71d141c
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "77194273"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286575"
 ---
 # <a name="what-is-enterprise-state-roaming"></a>什么是企业状态漫游？
 
@@ -31,7 +31,7 @@ ms.locfileid: "77194273"
 | 项目 | 说明 |
 | --- | --- |
 | [在 Azure Active Directory 中启用企业状态漫游](enterprise-state-roaming-enable.md) |企业状态漫游可供任何拥有高级 Azure Active Directory (Azure AD) 订阅的组织使用。 有关如何获取 Azure AD 订阅的详细信息，请参阅 [Azure AD 产品页](https://azure.microsoft.com/services/active-directory)。 |
-| [设置和数据漫游的常见问题](enterprise-state-roaming-faqs.md) |本文将解答 IT 管理员可能会遇到的一些设置和应用数据同步问题。 |
+| [设置和数据漫游的常见问题](enterprise-state-roaming-faqs.yml) |本文将解答 IT 管理员可能会遇到的一些设置和应用数据同步问题。 |
 | [设置同步的组策略和 MDM 设置](enterprise-state-roaming-group-policy-settings.md) |Windows 10 提供了组策略和移动设备管理 (MDM) 策略设置以限制设置同步。 |
 | [Windows 10 漫游设置参考](enterprise-state-roaming-windows-settings-reference.md) |将在 Windows 10 中漫游和/或备份的设置的列表。 |
 | [疑难解答](enterprise-state-roaming-troubleshooting.md) |本文介绍故障排除的一些基本步骤，并包含已知问题列表。 |

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: eda711d6dce705cb64c1545a9c6ffe9b373ad442
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 61f0f2a71240c0ade13f7cd20b6c411f3df7f278
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140418"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279147"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>将托管标识与 Azure 机器学习结合使用（预览版）
 
@@ -255,7 +255,7 @@ ws = Workspace.create(name="workspace name",
     primary_user_assigned_identity="managed identity ARM ID")
 ```
 
-还可以使用 [ARM 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced)创建具有用户分配的托管标识的工作区。
+还可以使用 [ARM 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced)创建具有用户分配的托管标识的工作区。
 
 > [!IMPORTANT]
 > 若要引入自己的关联资源，需要为这些资源授予托管标识角色，而不是让 Azure 机器学习服务创建它们。 使用[角色分配 ARM 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment)进行分配。

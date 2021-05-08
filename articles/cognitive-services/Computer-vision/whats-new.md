@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: f2a8368a5473a3f3d2f679b2be696ca04bc6e5e4
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 2e0a04cef7952822931887f038410ff867cc2afe
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070760"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286719"
 ---
 # <a name="whats-new-in-computer-vision"></a>计算机视觉中的新增功能
 
@@ -26,8 +26,8 @@ ms.locfileid: "108070760"
 ### <a name="computer-vision-v32-ga"></a>计算机视觉 v3.2 GA
 
 计算机视觉 API v3.2 现已正式发布，进行了以下更新：
-* 改善了图像标记模型：根据图像中显示的对象、操作和内容分析视觉对象内容并生成相关标记。 此功能通过[标记图像 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f200) 提供。 有关详细信息，请参阅图像分析[操作指南](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi)和[概述](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis)。
-* 更新的内容审查模型：检测是否存在成人内容并提供标志来筛选包含成人、猥亵和血腥视觉内容的图像。 这可通过[分析 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) 获得。 有关详细信息，请参阅图像分析[操作指南](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi)和[概述](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis)。
+* 改善了图像标记模型：根据图像中显示的对象、操作和内容分析视觉对象内容并生成相关标记。 此功能通过[标记图像 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f200) 提供。 有关详细信息，请参阅图像分析[操作指南](./vision-api-how-to-topics/howtocallvisionapi.md)和[概述](./overview-image-analysis.md)。
+* 更新的内容审查模型：检测是否存在成人内容并提供标志来筛选包含成人、猥亵和血腥视觉内容的图像。 这可通过[分析 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) 获得。 有关详细信息，请参阅图像分析[操作指南](./vision-api-how-to-topics/howtocallvisionapi.md)和[概述](./overview-image-analysis.md)。
 * [用于 73 种语言的 OCR（读取）](./language-support.md#optical-character-recognition-ocr)，这些语言包括简体中文和繁体中文、日语、韩语和拉丁语言。
 * [OCR (读取) ](./overview-ocr.md) 还可作为本地部署的 [Distroless 容器](./computer-vision-how-to-install-containers.md?tabs=version-3-2)。
 

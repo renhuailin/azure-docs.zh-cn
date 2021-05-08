@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell 分配 Azure 角色-Azure RBAC
+title: 使用 Azure PowerShell 分配 Azure 角色 - Azure RBAC
 description: 了解如何使用 Azure PowerShell 和 Azure 基于角色的访问控制 (Azure RBAC) 为用户、组、服务主体或托管标识授予对 Azure 资源的访问权限。
 services: active-directory
 author: rolyon
@@ -10,10 +10,10 @@ ms.workload: identity
 ms.date: 02/15/2021
 ms.author: rolyon
 ms.openlocfilehash: 00f663b90f34f3b557329692f844bbbc1bf3207d
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100556808"
 ---
 # <a name="assign-azure-roles-using-azure-powershell"></a>使用 Azure PowerShell 分配 Azure 角色
@@ -24,19 +24,19 @@ ms.locfileid: "100556808"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要分配角色，您必须：
+若要分配角色，必须具有：
 
-- `Microsoft.Authorization/roleAssignments/write`权限，如 "[用户访问管理员](built-in-roles.md#user-access-administrator)" 或 "[所有者](built-in-roles.md#owner)"
-- Azure Cloud Shell 或[Azure PowerShell](/powershell/azure/install-az-ps) [中的 PowerShell](../cloud-shell/overview.md)
+- `Microsoft.Authorization/roleAssignments/write` 权限，例如[用户访问管理员](built-in-roles.md#user-access-administrator)或[所有者](built-in-roles.md#owner)
+- [Azure Cloud Shell 中的 PowerShell](../cloud-shell/overview.md) 或 [Azure PowerShell](/powershell/azure/install-az-ps)
 - 用于运行 PowerShell 命令的帐户必须具有 Microsoft Graph `Directory.Read.All` 权限。
 
 ## <a name="steps-to-assign-an-azure-role"></a>分配 Azure 角色的步骤
 
-分配角色由三个元素组成：安全主体、角色定义和作用域。
+角色分配包含三个要素：安全主体、角色订阅和范围。
 
 ### <a name="step-1-determine-who-needs-access"></a>步骤 1：确定谁需要访问权限
 
-可以将角色分配到用户、组、服务主体或托管标识。 若要分配角色，你可能需要指定对象的唯一 ID。 ID 的格式为：`11111111-1111-1111-1111-111111111111`。 可以使用 Azure 门户或 Azure PowerShell 获取 ID。
+可以将角色分配到用户、组、服务主体或托管标识。 若要分配角色，可能需要指定对象的唯一 ID。 ID 的格式为：`11111111-1111-1111-1111-111111111111`。 可以使用 Azure 门户或 Azure PowerShell 获取 ID。
 
 **User**
 
@@ -128,9 +128,9 @@ Get-AzSubscription
 Get-AzManagementGroup
 ```
     
-### <a name="step-4-assign-role"></a>步骤4：分配角色
+### <a name="step-4-assign-role"></a>步骤 4：分配角色
 
-若要分配角色，请使用 [AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) 命令。 根据范围，命令通常采用以下格式之一。
+若要分配角色，请使用 [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) 命令。 根据范围，命令通常采用以下格式之一。
 
 **资源范围**
 
@@ -233,7 +233,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-#### <a name="assign-a-role-for-a-group-in-a-specific-virtual-network-resource-scope"></a>为特定虚拟网络资源范围内的组分配角色
+#### <a name="assign-a-role-for-a-group-in-a-specific-virtual-network-resource-scope"></a>为特定虚拟网络资源范围内的某个组分配角色
 
 将[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色分配给名为 pharma-sales-project-network 的虚拟网络的资源范围内 ID 为“aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa”的“医药销售管理员”组。
 
@@ -258,7 +258,7 @@ ObjectType         : Group
 CanDelegate        : False
 ```
 
-#### <a name="assign-a-role-for-a-user-at-a-resource-group-scope"></a>为资源组范围内的用户分配角色
+#### <a name="assign-a-role-for-a-user-at-a-resource-group-scope"></a>在资源组范围内为某个用户分配角色
 
 在 *pharma-sales* 资源组范围内将 [虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色分配给 *patlong\@contoso.com* 用户。
 
@@ -297,7 +297,7 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-#### <a name="assign-a-role-for-a-user-using-the-unique-role-id-at-a-resource-group-scope"></a>在资源组作用域中使用唯一角色 ID 为用户分配角色
+#### <a name="assign-a-role-for-a-user-using-the-unique-role-id-at-a-resource-group-scope"></a>在资源组范围内使用唯一角色 ID 为某个用户分配角色
 
 很多时候角色名称可能会更改，例如：
 
@@ -324,7 +324,7 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-#### <a name="assign-a-role-for-an-application-at-a-resource-group-scope"></a>为资源组范围内的应用程序分配角色
+#### <a name="assign-a-role-for-an-application-at-a-resource-group-scope"></a>在资源组范围内为某个应用程序分配角色
 
 在 pharma-sales 资源组范围内将[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色分配给服务主体对象 ID 为“77777777-7777-7777-7777-777777777777”的应用程序。
 
@@ -344,7 +344,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-#### <a name="assign-a-role-for-a-user-at-a-subscription-scope"></a>为订阅范围内的用户分配角色
+#### <a name="assign-a-role-for-a-user-at-a-subscription-scope"></a>在订阅范围内为某个用户分配角色
 
 在订阅范围内将[读者](built-in-roles.md#reader)角色分配给 annm\@example.com 用户。
 
@@ -364,7 +364,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-#### <a name="assign-a-role-for-a-user-at-a-management-group-scope"></a>为管理组范围内的用户分配角色
+#### <a name="assign-a-role-for-a-user-at-a-management-group-scope"></a>在管理组范围内为某个用户分配角色
 
 在管理组范围内将[账单读者](built-in-roles.md#billing-reader)角色分配给 alain\@example.com 用户。
 

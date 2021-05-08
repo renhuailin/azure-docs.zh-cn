@@ -1,43 +1,43 @@
 ---
-title: Windows 虚拟桌面 .MSIX 应用附加预览 PowerShell-Azure
-description: 如何使用 PowerShell 为 Windows 虚拟桌面设置 .MSIX app attach。
+title: Windows 虚拟桌面 MSIX 应用附加预览版 PowerShell - Azure
+description: 如何使用 PowerShell 设置 Windows 虚拟桌面的 MSIX 应用附加。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 1196982fedc7321805e36cceed27c90e43a6e705
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99558335"
 ---
-# <a name="set-up-msix-app-attach-preview-using-powershell"></a>使用 PowerShell 设置 .MSIX 应用附加 (预览) 
+# <a name="set-up-msix-app-attach-preview-using-powershell"></a>使用 PowerShell 设置 MSIX 应用附加（预览版）
 
 > [!IMPORTANT]
-> .MSIX 应用附加当前为公共预览版。
+> MSIX 应用附加目前以公共预览版提供。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-除了 Azure 门户之外，还可以通过 PowerShell 手动设置 .MSIX 应用附加 (preview) 。 本文介绍如何使用 PowerShell 设置 .MSIX app attach。
+除 Azure 门户之外，还可以通过 PowerShell 手动设置 MSIX 应用附加（预览版）。 本文介绍如何使用 PowerShell 设置 MSIX 应用附加。
 
 ## <a name="requirements"></a>要求
 
 >[!IMPORTANT]
->在开始之前，请确保填写并提交 [此表单](https://aka.ms/enablemsixappattach) ，以便在你的订阅中启用 .msix 应用附件。 如果没有已批准的请求，.MSIX 应用附加将不起作用。 在工作日内批准请求可能需要长达24小时。 请求被接受并完成后，会收到一封电子邮件。
+>在开始之前，请确保填写并提交[此表单](https://aka.ms/enablemsixappattach)，以便在订阅中启用 MSIX 应用附加。 如果没有已批准的请求，MSIX 应用附加将无法正常工作。 在工作日审批请求需要长达 24 小时。 请求被接受并完成后，你会收到一封电子邮件。
 
-下面是配置 .MSIX app attach 所需的内容：
+配置 MSIX 应用附加需要以下各项：
 
-- 正常运行的 Windows 虚拟桌面部署。 若要了解如何部署 Windows 虚拟桌面 (经典) ，请参阅 [在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。 若要了解如何使用 Azure 资源管理器集成部署 Windows 虚拟桌面，请参阅 [使用 Azure 门户创建主机池](./create-host-pools-azure-marketplace.md)。
+- 正常运行的 Windows 虚拟桌面部署。 要了解如何部署 Windows 虚拟桌面（经典版），请参阅[在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。 要了解如何使用 Azure 资源管理器集成部署 Windows 虚拟桌面，请参阅[使用 Azure 门户创建主机池](./create-host-pools-azure-marketplace.md)。
 - 至少具有一个活动会话主机的 Windows 虚拟桌面主机池。
-- 此主机池必须在验证环境中。
+- 此主机池必须处于验证环境。
 - 桌面远程应用组。
-- .MSIX 打包工具。
-- 扩展到已上载到文件共享中的 .MSIX 映像的 .MSIX 封装应用程序。
-- Windows 虚拟桌面部署中将存储 .MSIX 包的文件共享。
-- 你上载 .MSIX 映像的文件共享还必须可供主机池中 (Vm) 的所有虚拟机访问。 用户将需要只读权限才能访问该映像。
+- MSIX 打包工具。
+- 展开到已上传到文件共享中的 MSIX 映像的 MSIX 打包应用程序。
+- Windows 虚拟桌面部署中将存储 MSIX 包的文件共享。
+- 上传了 MSIX 映像的文件共享还必须可由主机池中的所有虚拟机 (VM) 访问。 用户需要只读权限才能访问该映像。
 - 下载并安装 PowerShell Core。
-- 下载公共预览版 Azure PowerShell 模块，并将其扩展到本地文件夹。
+- 下载公共预览版 Azure PowerShell 模块，并将其展开到本地文件夹。
 - 通过运行以下 cmdlet 安装 Azure 模块：
 
     ```powershell
@@ -46,22 +46,22 @@ ms.locfileid: "99558335"
 
 ## <a name="sign-in-to-azure-and-import-the-module"></a>登录到 Azure 并导入模块
 
-准备好所有需求后，请在提升的命令提示符中打开 PowerShell core，并运行以下 cmdlet：
+满足所有需求后，在提升的命令提示符中打开 PowerShell core，并运行以下 cmdlet：
 
 ```powershell
 Connect-AzAccount
 ```
 
-运行后，使用你的凭据对你的帐户进行身份验证。 在这种情况下，系统可能会要求提供设备 URL 或令牌。
+运行后，使用凭据对帐户进行身份验证。 在这种情况下，系统可能会要求你提供设备 URL 或令牌。
 
-## <a name="import-the-azwindowsvirtualdesktop-module"></a>导入 WindowsVirtualDesktop 模块
+## <a name="import-the-azwindowsvirtualdesktop-module"></a>导入 Az.WindowsVirtualDesktop 模块
 
-需要 DesktopVirtualization 模块，才能按照本文中的说明进行操作。
+需要 Az.WindowsVirtualDesktop 模块，才能按照本文中的说明进行操作。
 
 >[!NOTE]
->对于公共预览版，我们将提供模块作为你必须手动导入的单独的 ZIP 文件。
+>对于公共预览版，我们将提供此模块作为必须手动导入的单独的 ZIP 文件。
 
-在开始之前，你可以运行以下 cmdlet 来查看你的会话或 VM 上是否已安装了 DesktopVirtualization 模块：
+在开始之前，可以运行以下 cmdlet 来查看你的会话或 VM 上是否已安装 Az.DesktopVirtualization 模块：
 
 ```powershell
 Get-Module | Where-Object { $_.Name -Like "desktopvirtualization" }
@@ -73,27 +73,27 @@ Get-Module | Where-Object { $_.Name -Like "desktopvirtualization" }
 Uninstall-Module Az.DesktopVirtualization
 ```
 
-如果在 VM 上阻止该模块，请运行此 cmdlet 对其取消阻止：
+如果 VM 上阻止了该模块，请运行此 cmdlet 对其取消阻止：
 
 ```powershell
 Unblock-File "<path>\Az.DesktopVirtualization.psm1"
 ```
 
-通过这种方式，可以导入模块。
+取消阻止后，可以导入模块。
 
-1. 运行以下 cmdlet，并在出现提示时按 **R** 键以同意运行自定义代码。
+1. 运行以下 cmdlet，并根据提示按 R 键以同意运行自定义代码。
 
    ```powershell
    Import-Module -Name "<path>\Az.DesktopVirtualization.psm1" -Verbose
    ```
 
-2. 运行 import cmdlet 后，请运行以下 cmdlet，查看它是否具有用于 .MSIX 的 cmdlet：
+2. 运行导入 cmdlet 后，请运行以下 cmdlet，查看它是否有用于 MSIX 的 cmdlet：
 
    ```powershell
    Get-Command -Module Az.DesktopVirtualization | Where-Object { $_.Name -match "MSIX" }
    ```
 
-   如果其中有 cmdlet，输出应如下所示：
+   如果有 cmdlet，输出应如下所示：
 
    ```powershell
    CommandType     Name                                               Version    Source
@@ -111,11 +111,11 @@ Unblock-File "<path>\Az.DesktopVirtualization.psm1"
    Function        Update-AzWvdMsixPackage                            0.0        Az.DesktopVirtualization
    ```
 
-   如果看不到此输出，请关闭所有 PowerShell 和 PowerShell Core 会话，然后重试。
+   如果没有此输出，请关闭所有 PowerShell 和 PowerShell Core 会话，然后重试。
 
-## <a name="set-up-helper-variables"></a>设置帮助器变量
+## <a name="set-up-helper-variables"></a>设置帮助程序变量
 
-导入模块后，需要设置帮助器变量。 下面的示例将演示如何执行每个操作。
+导入模块后，需要设置帮助程序变量。 下面的示例将演示如何执行每个操作。
 
 获取订阅 ID：
 
@@ -123,13 +123,13 @@ Unblock-File "<path>\Az.DesktopVirtualization.psm1"
 Get-AzContext -ListAvailable | fl
 ```
 
-选择名为的 Azure 租户和订阅的上下文：
+选择带名称的 Azure 租户和订阅的上下文：
 
 ```powershell
 $obj = Select-AzContext -Name "<Name>"
 ```
 
-若要设置订阅变量：
+设置订阅变量：
 
 ```powershell
 $subId = $obj.Subscription.Id
@@ -141,35 +141,35 @@ $subId = $obj.Subscription.Id
 $ws = "<WorksSpaceName>"
 ```
 
-若要设置主机池名称，请执行以下操作：
+设置主机池名称：
 
 ```powershell
 $hp = "<HostPoolName>"
 ```
 
-设置用于配置会话主机 Vm 的资源组：
+设置用于配置会话主机 VM 的资源组：
 
 ```powershell
 $rg = "<ResourceGroupName>"
 ```
 
-最后，确认正确设置了所有变量：
+最后，确认已正确设置所有变量：
 
 ```powershell
 Get-AzWvdWorkspace -Name $ws -ResourceGroupName $rg -SubscriptionId $subID
 ```
 
-## <a name="add-an-msix-package-to-a-host-pool"></a>将 .MSIX 包添加到主机池
+## <a name="add-an-msix-package-to-a-host-pool"></a>将 MSIX 包添加到主机池
 
-完成所有设置后，就可以将 .MSIX 包添加到主机池了。 为此，首先需要获取 .MSIX 映像的 UNC 路径。
+完成所有设置后，就可以将 MSIX 包添加到主机池了。 为此，首先需要获取 MSIX 映像的 UNC 路径。
 
-使用 UNC 路径，运行此 cmdlet 以展开 .MSIX 映像：
+使用 UNC 路径，运行此 cmdlet 以展开 MSIX 映像：
 
 ```powershell
 $obj = Expand-AzWvdMsixImage -HostPoolName $hp -ResourceGroupName $rg -SubscriptionId $subID -Uri <UNCPath>
 ```
 
-运行此 cmdlet 可将 .MSIX 包添加到所需的主机池：
+运行此 cmdlet 可将 MSIX 包添加到所需的主机池：
 
 ```powershell
 New-AzWvdMsixPackage -HostPoolName $hp -ResourceGroupName $rg -SubscriptionId $subId -PackageAlias $obj.PackageAlias -DisplayName <DisplayName> -ImagePath <UNCPath> -IsActive:$true
@@ -181,9 +181,9 @@ New-AzWvdMsixPackage -HostPoolName $hp -ResourceGroupName $rg -SubscriptionId $s
 Get-AzWvdMsixPackage -HostPoolName $hp -ResourceGroupName $rg -SubscriptionId $subId | Where-Object {$_.PackageFamilyName -eq $obj.PackageFamilyName}
 ```
 
-## <a name="remove-an-msix-package-from-a-host-pool"></a>从主机池中删除 .MSIX 包
+## <a name="remove-an-msix-package-from-a-host-pool"></a>从主机池中删除 MSIX 包
 
-从主机池删除包：
+从主机池中删除 MSIX 包：
 
 使用此 cmdlet 获取与主机池关联的所有包的列表，然后在输出中查找要删除的包的名称：
 
@@ -197,21 +197,21 @@ Get-AzWvdMsixPackage -HostPoolName $hp -ResourceGroupName $rg -SubscriptionId $s
 Get-AzWvdMsixPackage -HostPoolName $hp -ResourceGroupName $rg -SubscriptionId $subId | Where-Object { $_.Name -like "Power" }
 ```
 
-若要删除该包，请运行以下 cmdlet：
+要删除此包，请运行以下 cmdlet：
 
 ```powershell
 Remove-AzWvdMsixPackage -FullName $obj.PackageFullName -HostPoolName $hp -ResourceGroupName $rg
 ```
 
-## <a name="publish-msix-apps-to-an-app-group"></a>将 .MSIX 应用发布到应用组
+## <a name="publish-msix-apps-to-an-app-group"></a>将 MSIX 应用发布到应用组
 
-如果已按照前面几节中的说明进行操作，则只能按照此部分中的说明进行操作。 如果有一个具有活动会话主机的主机池，至少有一个桌面应用组，并已将 .MSIX 包添加到了主机池，则可以开始使用。
+如果已按照前面几节中的说明进行了操作，则只能按照本部分中的说明进行操作。 如果你有一个具有活动会话主机的主机池（至少一个桌面应用组），并已将 MSIX 包添加到了主机池，则可以开始操作。
 
-若要将应用从 .MSIX 包发布到应用组，你需要找到其名称，然后在发布 cmdlet 中使用该名称。
+要将应用从 MSIX 包发布到应用组，需要找到其名称，然后在发布 cmdlet 中使用该名称。
 
-若要发布应用：
+要发布应用，请执行以下操作：
 
-运行此 cmdlet 可列出所有可用的应用组：
+运行此 cmdlet 以列出所有可用的应用组：
 
 ```powershell
 Get-AzWvdApplicationGroup -ResourceGroupName $rg -SubscriptionId $subId
@@ -225,28 +225,28 @@ $grName = "<AppGroupName>"
 
 最后，需要发布该应用。
 
-- 若要将 .MSIX 应用程序发布到桌面应用组，请运行以下 cmdlet：
+- 要将 MSIX 应用程序发布到桌面应用组，请运行以下 cmdlet：
 
    ```powershell
    New-AzWvdApplication -ResourceGroupName $rg -SubscriptionId $subId -Name PowerBi -ApplicationType MsixApplication -ApplicationGroupName $grName -MsixPackageFamilyName $obj.PackageFamilyName -CommandLineSetting 0
    ```
 
-- 若要将应用发布到远程应用组，请改为运行此 cmdlet：
+- 要将应用发布到远程应用组，请改为运行以下 cmdlet：
 
    ```powershell
    New-AzWvdApplication -ResourceGroupName $rg -SubscriptionId $subId -Name PowerBi -ApplicationType MsixApplication -ApplicationGroupName $grName -MsixPackageFamilyName $obj.PackageFamilyName -CommandLineSetting 0 -MsixPackageApplicationId $obj.PackageApplication.AppId
    ```
 
 >[!NOTE]
->如果将用户分配到同一主机池中的远程应用组和桌面应用组，则当用户连接到其远程桌面时，他们将看到两个组中的 .MSIX 应用。
+>如果将某个用户同时分配到同一主机池中的远程应用组和桌面应用组，则当该用户连接到其远程桌面时，他们将看到两个组的 MSIX 应用。
 
 ## <a name="next-steps"></a>后续步骤
 
-请在 [Windows 虚拟桌面 TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)上咨询有关此功能的社区问题。
+请在 [Windows 虚拟桌面 TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 向社区咨询有关此功能的问题。
 
 还可以在 [Windows 虚拟桌面反馈中心](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)提供关于 Windows 虚拟桌面的反馈。
 
-下面是一些可能有用的其他文章：
+下面是其他一些有用的文章：
 
-- [.MSIX 应用附加术语表](app-attach-glossary.md)
-- [.MSIX 应用附加常见问题解答](app-attach-faq.md)
+- [MSIX 应用附加术语表](app-attach-glossary.md)
+- [MSIX 应用附加常见问题解答](app-attach-faq.md)

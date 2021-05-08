@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 29821733b73717634aa8f0ab72270f058ffd3ddc
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 0728b45a72f7d4fe67807be5c9c2b5290af11c51
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309384"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143460"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Azure 静态 Web 应用预览版的身份验证和授权
 
@@ -24,11 +24,11 @@ Azure 静态 Web 应用通过使用以下提供程序管理身份验证来简化
 - Google<sup>1</sup>
 - Twitter
 
-特定于提供程序的[邀请](#invitations)将用户与角色关联，并根据 staticwebapp.config.json 文件中定义的规则向授权用户授予对[路由](routes.md)的访问权限。
+特定于提供程序的[邀请](#invitations)将用户与角色关联，并根据 staticwebapp.config.json 文件中定义的规则向授权用户授予对[路由](configuration.md#routes)的访问权限。
 
 默认情况下，将启用所有身份验证提供程序。 若要限制身份验证提供程序，请使用自定义路由规则[阻止访问](#block-an-authorization-provider)。
 
-身份验证和授权的主题明显与路由概念重叠。 请务必阅读本文附带的[路由指南](routes.md)。
+身份验证和授权的主题明显与路由概念重叠。 请务必阅读本文附带的[配置指南](configuration.md#routes)。
 
 ## <a name="roles"></a>角色
 
@@ -123,7 +123,7 @@ https://<WEB_APP_DOMAIN_NAME>/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
 
 ## <a name="system-folder"></a>系统文件夹
 
-Azure 静态 Web 应用使用 `/.auth` 系统文件夹来提供对与授权相关的 API 的访问权限。 请考虑创建[路由规则](routes.md)来创建友好 URL，而不是直接向最终用户公开 `/.auth` 文件夹下的任何路由。
+Azure 静态 Web 应用使用 `/.auth` 系统文件夹来提供对与授权相关的 API 的访问权限。 请考虑创建[路由规则](configuration.md#routes)来创建友好 URL，而不是直接向最终用户公开 `/.auth` 文件夹下的任何路由。
 
 ## <a name="login"></a>登录
 
@@ -189,7 +189,7 @@ Azure 静态 Web 应用使用 `/.auth` 系统文件夹来提供对与授权相�
 
 你可能想要限制应用使用授权提供程序。 例如，你的应用可能想要仅对[公开电子邮件地址的提供程序](#provider-user-details)进行标准化。
 
-若要阻止提供程序，可以创建[路由规则](routes.md)，将请求的 404 返回到阻止的特定于提供程序的路由。 例如，若要将 Twitter 限制为提供程序，请添加以下路由规则。
+若要阻止提供程序，可以创建[路由规则](configuration.md#routes)，将请求的 404 返回到阻止的特定于提供程序的路由。 例如，若要将 Twitter 限制为提供程序，请添加以下路由规则。
 
 ```json
 {

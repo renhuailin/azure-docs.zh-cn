@@ -1,16 +1,14 @@
 ---
 title: 监视 Azure Service Fabric 中的 Linux 群集事件
 description: 了解如何通过将 Service Fabric 平台事件写入 Syslog 来监视 Service Fabric Linux 群集事件。
-author: srrengar
 ms.topic: conceptual
 ms.date: 10/23/2018
-ms.author: srrengar
-ms.openlocfilehash: 6a98a833baefa9b1c2d1ebd9ff8147206c2106bf
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 895ff340c1b649c1ba8a20bf95edcefb9a72e246
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570199"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626956"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Syslog 中的 Service Fabric Linux 群集事件
 
@@ -87,7 +85,7 @@ SyslogConsumer 使用 `Local0` 设施写入所有平台事件。 更改 config �
 ```
 
 ## <a name="azure-monitor-logs-integration"></a>Azure Monitor 日志集成
-可以使用 Azure Monitor 日志等监视工具来读取这些 Syslog 事件。 可以通过使用以下 [说明]，使用 Azure Marketplace 创建 Log Analytics 工作区。 (。/azure-monitor/logs/quick-create-workspace.md) 还需要将 Log Analytics 代理添加到群集，以便收集此数据并将其发送到工作区。 这正是用于收集性能计数器的同一个代理。 
+可以使用 Azure Monitor 日志等监视工具来读取这些 Syslog 事件。 可以按照这些 [说明].(../azure-monitor/logs/quick-create-workspace.md)，使用 Azure 市场创建一个 Log Analytics 工作区。还需向群集添加 Log Analytics 代理，以向该工作区收集和发送该数据。 这正是用于收集性能计数器的同一个代理。 
 
 1. 导航到`Advanced Settings`边栏选项卡
 

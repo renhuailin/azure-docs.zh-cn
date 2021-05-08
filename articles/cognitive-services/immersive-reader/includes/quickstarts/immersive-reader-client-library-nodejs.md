@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js
-ms.openlocfilehash: ffef03457f9d3faf385bd0a924474dfa6efc4121
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: b1899c9e5a441ff73fb4a27b4e02fd9cfe7e7d95
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102619191"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108157558"
 ---
 [沉浸式阅读器](https://www.onenote.com/learningtools)是一款经过广泛设计的工具，它实现了可靠的技术，旨在提高新的读者、语言学习者和有学习差异（如阅读障碍）的用户的阅读理解能力。 你可在应用程序中使用沉浸式阅读器来隔离文本，以改进焦点、显示常用词的图片、突出显示语音的各个部分、大声朗读所选文本、实时翻译字词和短语等等。
 
@@ -98,7 +98,7 @@ router.get('/GetTokenAndSubdomain', function(req, res) {
                 resource: 'https://cognitiveservices.azure.com/'
             }
         },
-        function(err, resp, tokenResult) {
+        function(err, res, tokenResult) {
             if (err) {
                 console.log(err);
                 return res.status(500).send('CogSvcs IssueToken error');

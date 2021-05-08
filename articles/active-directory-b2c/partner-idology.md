@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2b6001932b6f53a60eda76b6136611a10011391a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: df0fcaf7987e30f9c2599346aaef5fcabb4f04e9
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96928675"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256644"
 ---
 # <a name="tutorial-for-configuring-idology-with-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中配置 IDology 的教程 
 
@@ -27,7 +27,7 @@ ms.locfileid: "96928675"
 若要开始，需要：
 
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-* 已链接到 Azure 订阅的 [Azure AD B2C 租户](tutorial-create-tenant.md)。
+* 一个已链接到 Azure 订阅的 [Azure AD B2C 租户](tutorial-create-tenant.md)。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -93,7 +93,7 @@ IDology 集成包括以下组件：
 
 ### <a name="part-4---configure-the-azure-ad-b2c-policy"></a>第 4 部分 - 配置 Azure AD B2C 策略
 
-1. 请按照此[文档](custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack)的说明下载[本地帐户入门包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)，并为 Azure AD B2C 租户配置策略。 按照说明进行操作，直到完成“测试自定义策略”部分。
+1. 请按照此[文档](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack)的说明下载[本地帐户入门包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)，并为 Azure AD B2C 租户配置策略。 按照说明进行操作，直到完成“测试自定义策略”部分。
 
 2. 在[此处](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/IDology/policy)下载两个示例策略。
 
@@ -145,4 +145,4 @@ IDology 集成包括以下组件：
 
 - [Azure AD B2C 中的自定义策略](custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](custom-policy-get-started.md?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

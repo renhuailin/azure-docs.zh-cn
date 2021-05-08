@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Vm 故障排除中 SAP HANA 扩展 HSR-PacemakerMicrosoft Docs
+title: 在 Azure VM 上使用 SLES 进行 SAP HANA 横向扩展 HSR-Pacemaker 故障排除 | Microsoft Docs
 description: 本指南介绍如何检查和排查基于 Azure 虚拟机上运行的 SAP HANA 系统复制 (HSR) 和 Pacemaker on SLES 12 SP3 的复杂 SAP HANA 横向扩展高可用性配置
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: f4c1de484ce2659a7e84a1546a7c49c1d77a7d56
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: e64abc008433c895e21690ccab8cc532ec1b34b1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674483"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105543850"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>验证 SLES 12 SP3 上的 SAP HANA 横向扩展高可用性设置和排查其问题 
 
@@ -29,9 +29,9 @@ ms.locfileid: "101674483"
 [suse-cloud-netconfig]:https://www.suse.com/c/multi-nic-cloud-netconfig-ec2-azure/
 [sap-list-port-numbers]:https://help.sap.com/viewer/ports
 [sles-12-ha-paper]:https://www.suse.com/documentation/sle-ha-12/pdfdoc/book_sleha/book_sleha.pdf
-[sles-zero-downtime-paper]:https://www.suse.com/media/presentation/TUT90846_towards_zero_downtime%20_how_to_maintain_sap_hana_system_replication_clusters.pdf
+[sles-zero-downtime-paper]:https://www.youtube.com/embed/0FW3J6GbxOk
 [sap-nw-ha-guide-sles]:high-availability-guide-suse.md
-[sles-12-for-sap]:https://www.suse.com/media/white-paper/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf
+[sles-12-for-sap]:https://www.scribd.com/document/377847444/Suse-Linux-Enterprise-Server-for-Sap-Applications-12-Sp1
 
 
 本文旨在帮助用户检查 Azure 虚拟机 (VM) 上运行的 SAP HANA 横向扩展 Pacemaker 群集配置。 群集设置是结合 SAP HANA 系统复制 (HSR) 和 SUSE RPM 包 SAPHanaSR-ScaleOut 完成的。 仅在 SUSE SLES 12 SP3 上执行了所有测试。 本文各个部分介绍不同的方面，并提供了示例命令和配置文件的摘录。 建议使用这些示例来验证和检查整个群集设置。
@@ -46,7 +46,7 @@ SUSE 发布了[这项性能优化设置的详细说明][sles-hana-scale-out-ha-p
 有关 SAP HANA 横向扩展支持的虚拟机类型，请查看 [SAP HANA 认证的 IaaS 目录][sap-hana-iaas-list]。
 
 > [!NOTE]
-> 本文包含对 Microsoft 不再使用的术语 " *主要* " 和 " *从属*" 的引用。 从软件中删除这些字词后，我们会将其从本文中删除。
+> 本文包含对术语“主”和“从”的引用，Microsoft 不再使用该术语。  从软件中删除这些术语后，我们会将其从本文中删除。
 
 结合多个子网和 vNIC 的SAP HANA 横向扩展以及 HSR 的设置存在一个技术问题。 必须使用其中已修复此问题的最新 SAP HANA 2.0 修补程序。 支持以下 SAP HANA 版本： 
 
@@ -122,7 +122,7 @@ inet addr:10.0.2.42  Bcast:10.0.2.255  Mask:255.255.255.0
 select * from "SYS"."M_SYSTEM_OVERVIEW"
 </code></pre>
 
-若要查找正确的端口号，可以在 HANA Studio 中的 " **配置** " 下或通过 SQL 语句查找：
+例如，若要查找正确的端口号，可以查看 HANA Studio 中的“配置”，或使用 SQL 语句：
 
 <pre><code>
 select * from M_INIFILE_CONTENTS WHERE KEY LIKE 'listen%'
@@ -454,15 +454,15 @@ node.startup = automatic
 在测试和验证期间，重启 VM 后，SBD 设备在有些情况下不再可见。 启动设置与 YaST2 显示的信息之间有差异。 若要检查设置，请执行以下步骤：
 
 1. 启动 YaST2。
-2. 选择左侧的 " **网络服务** "。
-3. 向下滚动到 " **ISCSI 发起程序** "，然后选择它。
+2. 在左侧选择“网络服务”。
+3. 在右侧向下滚动到“iSCSI 发起程序”并将其选中。
 4. 在下一个屏幕中的“服务”选项卡上，会看到节点的唯一发起程序名称。
 5. 在发起程序名称的上面，确保“服务启动”值设置为“启动时”。
 6. 如果尚未进行此设置，请将它设置为“启动时”而不是“手动”。
-7. 接下来，将顶部的选项卡切换到 **已连接目标**。
-8. 在 " **已连接目标** " 屏幕上，应会看到 SBD 设备的条目，如以下示例所示： **10.0.0.19： 3260 iqn. dbhso： dbhso**。
+7. 接下来，将顶部选项卡切换到“连接的目标”。
+8. 在“连接的目标”屏幕中，应会看到如以下示例所示的 SBD 设备条目：10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso 。
 9. 检查“启动”值是否设置为“onboot”。
-10. 否则，请选择 " **编辑** 并更改"。
+10. 如果不是，请选择“编辑”并更改。
 11. 保存更改并退出 YaST2。
 
 
@@ -507,7 +507,7 @@ systemctl enable pacemaker
 crm status
 </code></pre>
 
-输出应如以下示例所示。 多数仲裁 VM (hso-hana-dm) 上的 cln 和 msl 资源显示为已停止，这是正常的。 多数仲裁节点上未安装 SAP HANA。 因此 cln 和 msl 资源显示为已停止。 它必须显示正确的 Vm 总数 **7**，这一点很重要。 群集中所有 VM 的列出状态必须是 Online。 必须正确识别当前的主要主节点。 本示例中为 hso-hana-vm-s1-0：
+输出应如以下示例所示。 多数仲裁 VM (hso-hana-dm) 上的 cln 和 msl 资源显示为已停止，这是正常的。 多数仲裁节点上未安装 SAP HANA。 因此 cln 和 msl 资源显示为已停止。 显示的 VM 总数 (7) 必须正确。 群集中所有 VM 的列出状态必须是 Online。 必须正确识别当前的主要主节点。 本示例中为 hso-hana-vm-s1-0：
 
 <pre><code>
 Stack: corosync
@@ -659,7 +659,7 @@ Waiting for 7 replies from the CRMd....... OK
 
 ## <a name="failover-or-takeover"></a>故障转移或接管
 
-如[重要说明](#important-notes)中所述，不应使用标准的正常关机来测试群集故障转移或 SAP HANA HSR 接管。 我们建议触发内核崩溃或强制资源迁移等操作，或者在 VM 的 OS 级别关闭所有网络。 另一种方法是 **crm \<node\> 备用** 命令。 请参阅 [SUSE 文档][sles-12-ha-paper]。 
+如[重要说明](#important-notes)中所述，不应使用标准的正常关机来测试群集故障转移或 SAP HANA HSR 接管。 我们建议触发内核崩溃或强制资源迁移等操作，或者在 VM 的 OS 级别关闭所有网络。 另一种方法是运行 crm \<node\> standby 命令。 请参阅 [SUSE 文档][sles-12-ha-paper]。 
 
 下面的三个示例命令可以强制群集故障转移：
 
@@ -685,7 +685,7 @@ watch SAPHanaSR-showAttr
 
 它会重试几次，以避免不必要的故障转移。 仅当状态从“正常”（返回值 4）更改为“错误”（返回值 1）时，群集才会做出反应。 因此，如果 SAPHanaSR showAttr 的输出显示了状态为 offline 的 VM，这便是正常状况。 但是，没有任何活动能够切换主要站点和辅助站点。 只要 SAP HANA 不返回错误，就不会触发群集活动。
 
-可以通过调用 SAP Python 脚本，按如下所示，将 SAP HANA 横向运行状况作为用户 **\<HANA SID\> adm** 来监视。 可能必须调整路径：
+可按如下所示调用 SAP Python 脚本，以用户  **adm 的身份监视 SAP HANA 布局运行状况。\<HANA SID\>** 可能必须调整路径：
 
 <pre><code>
 watch python /hana/shared/HSO/exe/linuxx86_64/HDB_2.00.032.00.1533114046_eeaf4723ec52ed3935ae0dc9769c9411ed73fec5/python_support/landscapeHostConfiguration.py
@@ -707,7 +707,7 @@ overall host status: ok
 </code></pre>
 
 
-还有另一个命令可以检查当前群集活动。 终止主站点的主节点后，请查看以下命令和输出尾部。 你可以看到转换操作列表，如将以前的辅助主节点（ **hso**）**升级** 为新的主节点。 如果一切正常并且所有活动已完成，则此“转换摘要”列表必须为空。
+还有另一个命令可以检查当前群集活动。 终止主站点的主节点后，请查看以下命令和输出尾部。 可以看到转换操作的列表，例如，将以前的辅助主节点 (hso-hana-vm-s2-0) 提升为新的主要主节点 。 如果一切正常并且所有活动已完成，则此“转换摘要”列表必须为空。
 
 <pre><code>
  crm_simulate -Ls
@@ -736,7 +736,7 @@ Transition Summary:
 
 - **在当前辅助站点上执行计划内维护**。 在这种情况下，只需将群集置于维护模式，并在辅助站点上执行工作，而不会影响群集。
 
-- **当前主站点上的计划内维护**。 要使用户可在维护期间继续工作，需要强制故障转移。 采用这种做法时，必须通过 Pacemaker 触发群集故障转移，而不能仅仅在 SAP HANA HSR 级别触发。 Pacemaker 设置会自动触发 SAP HANA 接管。 还需要在将群集置于维护模式之前完成故障转移。
+- **在当前主要站点上执行计划内维护**。 要使用户可在维护期间继续工作，需要强制故障转移。 采用这种做法时，必须通过 Pacemaker 触发群集故障转移，而不能仅仅在 SAP HANA HSR 级别触发。 Pacemaker 设置会自动触发 SAP HANA 接管。 还需要在将群集置于维护模式之前完成故障转移。
 
 当前辅助站点上的维护过程如下所示：
 
@@ -948,7 +948,7 @@ listeninterface = .internal
 ## <a name="hawk"></a>Hawk
 
 群集解决方案还提供浏览器界面，该界面为偏向于使用菜单和图形界面而不是 shell 级所有命令的用户提供 GUI。
-若要使用浏览器界面，请将替换 **\<node\>** 为以下 URL 中的实际 SAP HANA 节点。 然后输入群集（用户群集）的凭据：
+要使用浏览器界面，请将以下 URL 中的 **\<node\>** 节点替换为实际的 SAP HANA 节点。 然后输入群集（用户群集）的凭据：
 
 <pre><code>
 https://&ltnode&gt:7630

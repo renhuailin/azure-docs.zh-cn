@@ -10,16 +10,16 @@ ms.date: 02/05/2021
 ms.author: alsin
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 99371b8618756c196b75858288c5c4785272a7e8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101650459"
 ---
 # <a name="move-an-azure-automanage-virtual-machine-to-a-different-region"></a>将 Azure Automanage 虚拟机移动到另一区域
 本文介绍如何在将虚拟机 (VM) 移动到其他区域时保持 Automanage 在该虚拟机上处于启用状态。 由于多方面的原因，你可能需要将虚拟机移动到另一个区域。 例如，为了利用新的 Azure 区域，为了满足内部策略和监管要求，或者，为了应对容量规划要求。 你移动的那些 VM 目前可能是自动管理的，你可能希望它们在移动后仍保持自动管理。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 * 确保 [Automanage 支持](./automanage-virtual-machines.md#prerequisites)你的目标区域。
 * 确保 Log Analytics 工作区区域、自动化帐户区域和目标区域都是[此处](../automation/how-to/region-mappings.md)的区域映射支持的区域。
 

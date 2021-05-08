@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
 ms.openlocfilehash: a8a7e8954f3c9d5b54c2e1ed9caa330ef92d4512
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100099500"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Service Fabric 群集中的证书管理
@@ -23,7 +23,7 @@ ms.locfileid: "100099500"
 * 深入探讨一个示例
 * 故障排除和常见问题解答
 
-不过，首先是一个免责声明：本文尝试将理论与实践相结合，这就要求受众了解服务、技术等方面的细节。 由于就前往的一部分是 Microsoft 内部的，因此我们将介绍特定于 Microsoft Azure 的服务、技术和产品。 如果特定于 Microsoft 的细节不适用于你的情况，请在评论部分提问，以获得详细说明或相关指导。
+不过，首先是一个免责声明：本文尝试将理论与实践相结合，这就要求受众了解服务、技术等方面的细节。 由于受众中有很大一部分是 Microsoft 内部员工，因此我们将提到的服务、技术和产品是特定于 Microsoft Azure 的。 如果特定于 Microsoft 的细节不适用于你的情况，请在评论部分提问，以获得详细说明或相关指导。
 
 ## <a name="defining-certificate-management"></a>定义证书管理
 正如我们在[配套文章](cluster-security-certificates.md)中看到的那样，证书是一个加密对象，它本质上是将某个非对称密钥对与描述它所表示的实体的属性绑定在一起。 但它也是一个“易变质”对象，原因在于它的生存期有限，并且容易泄漏 - 不管是意外泄露还是被攻击者成功利用，都可能会使证书变得毫无用处（从安全角度来看）。 这意味着需要更改证书 - 定期更改或为了响应安全事件而更改。 管理的另一方面（其本身就是一整个主题）是保护证书私钥，或者保护相关机密，这些机密保护那些涉及证书获得和预配过程的实体的标识。 我们将用于获取证书并将其安全地传输到需要证书的位置的流程和过程称为“证书管理”。 某些管理操作（例如注册、策略设置和授权控制）超出了本文的范围。 还有其他一些功能（如预配、续订、重新生成密钥或吊销）只是偶尔与 Service Fabric 相关。尽管如此，我们仍会在此对其进行某种程度的阐述，因为了解这些操作有助于用户正确保护其群集。 
@@ -57,8 +57,8 @@ Service Fabric 自身将承担以下职责：
 让我们快速回顾一下在 Service Fabric 群集环境中证书从颁发到使用的整个过程：
 
   1. 域所有者向 PKI 的 RA 注册要与继而生成的证书关联的域或使用者，而这些证书则构成对上述域或使用者的所有权证明
-  2. 域所有者还在 RA 中指定了有权请求证书注册到指定域或使用者的授权请求方的标识;在 Microsoft Azure 中，默认标识提供者是 Azure Active Directory，授权的请求者由其相应的 AAD 标识 (或通过安全组指定) 
-  3. 然后，已获授权的请求者通过密钥管理服务注册到证书;在 Microsoft Azure 中，所选的短信是 Azure Key Vault (AKV) ，它安全地存储和允许经授权的实体检索机密/证书。 AKV 还会根据已关联证书策略中的配置对证书执行续订/重新生成密钥操作。 （AKV 使用 AAD 作为标识提供者。）
+  2. 域所有者还在 RA 中指定经授权的请求者的标识，这些请求者是有权请求将证书注册到指定域或主体的实体；在 Microsoft Azure 中，默认标识提供者是 Azure Active Directory，经授权的请求者是通过其相应的 AAD 标识（或通过安全组）指定的
+  3. 然后，经授权的请求者通过机密管理服务注册到证书中；在 Microsoft Azure 中，所选 SMS 为 Azure Key Vault (AKV)，它可以安全地存储机密/证书，并允许经授权的实体检索它们。 AKV 还会根据已关联证书策略中的配置对证书执行续订/重新生成密钥操作。 （AKV 使用 AAD 作为标识提供者。）
   4. 经授权的检索器（我们称之为“预配代理”）会从保管库检索证书（包括其私钥），并将其安装在用于托管群集的计算机上
   5. Service Fabric 服务（在每个节点上以提升的权限运行）将证书访问权限授予那些获得允许的 Service Fabric 实体；这些实体由本地组指定，在 ServiceFabricAdministrators 和 ServiceFabricAllowedUsers 之间进行拆分
   6. Service Fabric 运行时会访问并使用证书来建立联合身份验证，或者对经过授权的客户端发出的入站请求进行身份验证
@@ -432,20 +432,20 @@ Service Fabric 自身将承担以下职责：
 "linkOnRenewal": <Only Windows. This feature enables auto-rotation of SSL certificates, without necessitating a re-deployment or binding.  e.g.: false>,
 ```
 
-用于建立 TLS 连接的证书通常是通过 S 通道安全支持提供商 [获取的句柄](/windows/win32/api/sspi/nf-sspi-acquirecredentialshandlea) ，也就是说，客户端不会直接访问证书本身的私钥。 S 通道支持重定向 (以证书扩展的形式链接) 凭据 ([CERT_RENEWAL_PROP_ID](/windows/win32/api/wincrypt/nf-wincrypt-certsetcertificatecontextproperty#cert_renewal_prop_id)) ：如果设置此属性，则其值表示 "续订" 证书的指纹，因此，S 通道将改为尝试加载链接的证书。 事实上，它会遍历此链接的 (，并希望以非循环的方式) 列表，直到它最终成为 "最终" 证书（一个无续订标记）。 此功能在谨慎使用的情况下，对因证书过期（此处为举例）而导致的可用性损失是一项很好的缓解措施。 在其他情况下，它可能导致难以诊断和缓解的中断。 S 通道无条件地在其续订属性上执行证书遍历，而不考虑使用者、颁发者或其他任何特定属性，这些属性参与客户端生成的证书的验证。 实际上，可能是生成的证书没有关联的私钥，或者该密钥尚未被 ACL 到其预期使用者。 
+用于建立 TLS 连接的证书通常通过 S 通道安全支持提供程序[作为句柄获取](/windows/win32/api/sspi/nf-sspi-acquirecredentialshandlea)，即客户端不直接访问证书本身的私钥。 S 通道支持对证书扩展 ([CERT_RENEWAL_PROP_ID](/windows/win32/api/wincrypt/nf-wincrypt-certsetcertificatecontextproperty#cert_renewal_prop_id)) 形式的凭据进行重定向（链接）：如果设置此属性，则其值表示“续订”证书的指纹，因此 S 通道将改为尝试加载链接的证书。 事实上，它会遍历此链接的（希望是非循环的）列表，直到它最后出现“最终”证书（一个没有续订标记的证书）。 此功能在谨慎使用的情况下，对因证书过期（此处为举例）而导致的可用性损失是一项很好的缓解措施。 在其他情况下，它可能导致难以诊断和缓解的中断。 S 通道无条件地在其续订属性上执行证书遍历，而不考虑使用者、颁发者或其他任何特定属性，这些属性参与客户端生成的证书的验证。 实际上，可能是生成的证书没有关联的私钥，或者该密钥尚未被 ACL 到其预期使用者。 
  
 如果启用了链接，则在从保管库检索观测到的证书时，KeyVault VM 扩展会尝试查找匹配的现有证书，以便通过续订扩展属性来链接它们。 匹配完全基于使用者可选名称 (SAN)，其原理如下所示。
-假设有两个现有证书，如下所示： A： CN = "Alice 的附件"，SAN = {"alice.universalexports.com"}，续订 = "" B： CN = "Bob 的位"，SAN = {"bob.universalexports.com"，"bob.universalexports.net"}，续订 = ""
+假设有两个现有的证书，如下所示：A: CN = “Alice's accessories”, SAN = {“alice.universalexports.com”}, renewal = ‘’ B: CN = “Bob's bits”, SAN = {“bob.universalexports.com”, “bob.universalexports.net”}, renewal = ‘’
  
-假设证书 C 由 KVVM ext： CN = "Mallory"、SAN = {"alice.universalexports.com"、"bob.universalexports.com"、"mallory.universalexports.com"} 检索
+假设证书 C 通过 KVVM ext 检索：CN = “Mallory's malware”, SAN = {“alice.universalexports.com”, “bob.universalexports.com”, “mallory.universalexports.com”}
  
-A 的 SAN 列表已完全包含在 C 的中，因此续订 = c. 指纹;B 的 SAN 列表与 C 有一个共同的交集，但并不完全包含在其中，因此，b. 续订将保留为空。
+A 的 SAN 列表已完全包含在 C 的该列表中，因此 A.renewal = C.thumbprint；B 的 SAN 列表与 C 的列表有一个共同的交集，但并不完全包含在其中，因此 B.renewal 将保留为空。
  
-在证书 A 上，在此状态下调用 AcquireCredentialsHandle（S 通道）的任何尝试实际上最终都会将 C 发送到远程方。 在 Service Fabric 的情况下，群集的 [传输子系统](service-fabric-architecture.md#transport-subsystem) 使用 S 通道进行相互身份验证，因此上述行为直接影响群集的基本通信。 让我们继续上面的示例，假设 A 是群集证书，接下来发生的情况取决于：
-  - 如果 C 的私钥不已纳入 acl 结构正在运行的帐户，则 SEC_E_UNKNOWN_CREDENTIALS 或类似) 获取私钥 (会出现故障
-  - 如果 C 的私钥是可访问的，则会看到其他节点返回的授权失败 (CertificateNotMatched、未授权等 )  
+在证书 A 上，在此状态下调用 AcquireCredentialsHandle（S 通道）的任何尝试实际上最终都会将 C 发送到远程方。 在使用 Service Fabric 的情况下，群集的[传输子系统](service-fabric-architecture.md#transport-subsystem)使用 S 通道进行相互身份验证，因此上述行为直接影响群集的基本通信。 让我们继续上面的示例，假设 A 是群集证书，接下来发生的情况取决于：
+  - 如果 C 的私钥尚未 ACL 到 Fabric 运行时采用的帐户，会看到获取私钥失败（SEC_E_UNKNOWN_CREDENTIALS 或类似项）
+  - 如果 C 的私钥是可访问的，会看到其他节点返回的授权失败（CertificateNotMatched、未授权等等） 
  
-在任一情况下，传输都会失败，群集可能会关闭；症状各不相同。 为了使问题更糟，链接依赖于续订顺序–由 KVVM 扩展的观察证书列表的顺序决定，保管库中的续订计划甚至会改变检索顺序的暂时性错误。
+在任一情况下，传输都会失败，群集可能会关闭；症状各不相同。 使问题变得更糟的是，链接取决于续订顺序，而续订取决于 KVVM 扩展中已观察到的证书的列表顺序、保管库中的续订计划或甚至那些会改变检索顺序的暂时性错误。
 
 若要缓解此类事件，我们建议你采取以下措施：
   - 不要混合使用不同保管库证书的 SAN，每个保管库证书应具有不同的用途，且其使用者和 SAN 应通过特异性反映出相关情况
@@ -457,7 +457,7 @@ A 的 SAN 列表已完全包含在 C 的中，因此续订 = c. 指纹;B 的 SAN
 
 若要释放托管标识的创建操作或将其分配给其他资源，部署操作员必须具有订阅或资源组中的必需角色 (ManagedIdentityOperator)，以及管理模板中引用的其他资源所需的角色。 
 
-从安全角度来看，请记住， (规模集) 的虚拟机被视为与其 Azure 标识有关的安全边界。 这意味着，在 VM 上托管的任何应用程序原则上都可以获取一个表示 VM 的访问令牌 - 托管标识访问令牌是从未经身份验证的 IMDS 终结点获取的。 如果将 VM 视为共享的或多租户的环境，则可能不会指示此检索群集证书的方法。 不过，它是适用于证书自动滚动更新的唯一预配机制。
+从安全角度来看，回想一下，可以将虚拟机（规模集）视为与其 Azure 标识相关的安全边界。 这意味着，在 VM 上托管的任何应用程序原则上都可以获取一个表示 VM 的访问令牌 - 托管标识访问令牌是从未经身份验证的 IMDS 终结点获取的。 如果将 VM 视为共享的或多租户的环境，则可能不会指示此检索群集证书的方法。 不过，它是适用于证书自动滚动更新的唯一预配机制。
 
 ## <a name="troubleshooting-and-frequently-asked-questions"></a>故障排除和常见问题解答
 

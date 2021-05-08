@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/31/2021
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 15daeb0e6bf320a0727d8e6ea502063a30e67ad0
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: a1772179313a2465200fc1d6a2cccef836067dde
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106230898"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146592"
 ---
 # <a name="comparison-matrix"></a>比较矩阵
 
@@ -22,7 +22,7 @@ ms.locfileid: "106230898"
 
 |    | [Microsoft](https://www.microsoft.com/) | [Datadobi](https://www.datadobi.com) | [Data Dynamics](https://www.datadynamicsinc.com/) | [Komprise](https://www.komprise.com/) |
 |--- |-----------------------------------------|--------------------------------------|---------------------------------------------------|---------------------------------------|
-|  **解决方案名称**  | [Azure 文件同步](/azure/storage/files/storage-sync-files-deployment-guide) | [DobiMigrate](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview)              | [数据移动和迁移](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_4?tab=PlansAndPrice)      | [智能数据管理](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management?tab=Overview)    |
+|  **解决方案名称**  | [Azure 文件同步](../../../file-sync/file-sync-deployment-guide.md) | [DobiMigrate](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview)              | [数据移动和迁移](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_4?tab=PlansAndPrice)      | [智能数据管理](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management?tab=Overview)    |
 | Azure 文件支持（所有层级） | 是                          | 是                      | 是            | 是                            |
 | Azure NetApp 文件支持      | 否                           | 是                      | 是            | 是                            |
 | Azure Blob 热/冷支持   | 否                           | 是（通过 NFS 预览版）    | 是            | 是                            |
@@ -34,7 +34,7 @@ ms.locfileid: "106230898"
 
 |    | [Microsoft](https://www.microsoft.com/) | [Datadobi](https://www.datadobi.com) | [Data Dynamics](https://www.datadynamicsinc.com/) | [Komprise](https://www.komprise.com/) |
 |--- |-----------------------------------------|--------------------------------------|---------------------------------------------------|---------------------------------------|
-| **解决方案名称**   | [Azure 文件同步](/azure/storage/files/storage-sync-files-deployment-guide) | [DobiMigrate](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview )              | [数据移动和迁移](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_4?tab=PlansAndPrice)      | [智能数据管理](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management?tab=Overview)    |
+| **解决方案名称**   | [Azure 文件同步](../../../file-sync/file-sync-deployment-guide.md) | [DobiMigrate](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview )              | [数据移动和迁移](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_4?tab=PlansAndPrice)      | [智能数据管理](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management?tab=Overview)    |
 | **SMB 2.1**       | 是 | 是 | 是 | 是 |
 | **SMB 3.0**       | 是 | 是 | 是 | 是 |
 | SMB 3.1       | 是 | 是 | 是 | 是 |
@@ -47,7 +47,7 @@ ms.locfileid: "106230898"
 
 |    | [Microsoft](https://www.microsoft.com/) | [Datadobi](https://www.datadobi.com) | [Data Dynamics](https://www.datadynamicsinc.com/) | [Komprise](https://www.komprise.com/) |
 |--- |-----------------------------------------|--------------------------------------|---------------------------------------------------|---------------------------------------|
-|  **解决方案名称**  | [Azure 文件同步](/azure/storage/files/storage-sync-files-deployment-guide) | [DobiMigrate](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview )              | [数据移动和迁移](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_4?tab=PlansAndPrice)      | [智能数据管理](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management?tab=Overview)    |
+|  **解决方案名称**  | [Azure 文件同步](../../../file-sync/file-sync-deployment-guide.md) | [DobiMigrate](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview )              | [数据移动和迁移](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_4?tab=PlansAndPrice)      | [智能数据管理](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management?tab=Overview)    |
 | UID/SID 重新映射                   | 否  | 是                        | 是 | 否                             |
 | 协议 ACL 重新映射                | 否  | 否                         | 否  | 否                             |
 | DFS 支持                           | 是 | 是                        | 是 | 是                            |
@@ -73,26 +73,26 @@ ms.locfileid: "106230898"
 | 支持打开/锁定文件       | 是 | 是                        | 是 | 是                            |
 | **增量迁移**                 | 是 | 是                        | 是 | 是                            |
 | 切换支持                    | 否  | 是                        | 是 | 否（限手动）               |
-| **[其他功能](#other-features)**         | [链接](#azure-file-sync)| [链接](#dobimigrate) | [链接](#data-mobility-and-migration) | [链接](#intelligent-data-management)                |
+| **[其他功能](#other-features)**         | [链接](#azure-file-sync)| [链接](#datadobi-dobimigrate) | [链接](#data-dynamics-data-mobility-and-migration) | [链接](#komprise-intelligent-data-management)                |
 
 ## <a name="assessment-and-reporting"></a>评估和报告
 
 |    | [Microsoft](https://www.microsoft.com/) | [Datadobi](https://www.datadobi.com) | [Data Dynamics](https://www.datadynamicsinc.com/) | [Komprise](https://www.komprise.com/) |
 |--- |-----------------------------------------|--------------------------------------|---------------------------------------------------|---------------------------------------|
-| **解决方案名称**   | [Azure 文件同步](/azure/storage/files/storage-sync-files-deployment-guide) | [DobiMigrate](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview )              | [数据移动和迁移](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_4?tab=PlansAndPrice)      | [智能数据管理](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management?tab=Overview)    |
+| **解决方案名称**   | [Azure 文件同步](../../../file-sync/file-sync-deployment-guide.md) | [DobiMigrate](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview )              | [数据移动和迁移](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_4?tab=PlansAndPrice)      | [智能数据管理](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management?tab=Overview)    |
 | **容量**                        | 否      | 是 | 是 | 是            |
 | 文件/文件夹编号            | 否      | 是 | 是 | 是            |
 | 随时间推移的年龄分布      | 否      | 是 | 是 | 是            |
 | 访问时间                     | 否      | 是 | 是 | 是            |
 | 修改时间                   | 否      | 是 | 是 | 是            |
-| 创建时间                   | 否      | 是 | 是 | 是 （限 SMB） |
+| 创建时间                   | 否      | 是 | 是 | 是            |
 | 每个文件/对线报表状态 | 部分 | 是 | 是 | 是            |
 
 ## <a name="licensing"></a>许可
 
 |    | [Microsoft](https://www.microsoft.com/) | [Datadobi](https://www.datadobi.com) | [Data Dynamics](https://www.datadynamicsinc.com/) | [Komprise](https://www.komprise.com/) |
 |--- |-----------------------------------------|--------------------------------------|---------------------------------------------------|---------------------------------------|
-| **解决方案名称**   | [Azure 文件同步](/azure/storage/files/storage-sync-files-deployment-guide) | [DobiMigrate](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview )              | [数据移动和迁移](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_4?tab=PlansAndPrice)      | [智能数据管理](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management?tab=Overview)    |
+| **解决方案名称**   | [Azure 文件同步](../../../file-sync/file-sync-deployment-guide.md) | [DobiMigrate](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview )              | [数据移动和迁移](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_4?tab=PlansAndPrice)      | [智能数据管理](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management?tab=Overview)    |
 | **BYOL**             | 不适用 | 是 | 是 | 是 |
 | Azure 承诺 | 是   | 是 | 是 | 是 |
 
@@ -102,7 +102,7 @@ ms.locfileid: "106230898"
 
 - 内部哈希验证
 
-### <a name="dobimigrate"></a>DobiMigrate
+### <a name="datadobi-dobimigrate"></a>Datadobi DobiMigrate
 
 - 迁移预检查
 - 迁移规划
@@ -122,12 +122,13 @@ ms.locfileid: "106230898"
 - 替代 NFSv3 权限，并将新的模式位写入目标的功能
 - 将 NFSv3 POSIX 草稿 ACLS 转换为 NFSv4 ACLS 的功能
 - SMB 1 (CIFS)
+- 支持 24 x 7 x 365
 
-### <a name="data-mobility-and-migration"></a>数据移动和迁移
+### <a name="data-dynamics-data-mobility-and-migration"></a>数据 Dynamics 数据移动性和迁移
 
 - 哈希验证
 
-### <a name="intelligent-data-management"></a>智能数据管理
+### <a name="komprise-intelligent-data-management"></a>Komprise 智能数据管理
 
 - 基于项目/目录的迁移
 - 自动重试失败
@@ -141,11 +142,11 @@ ms.locfileid: "106230898"
 
 列表的上次验证时间为 2021 年 3 月 31 日。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [Azure 存储迁移概述](../../../common/storage-migration-overview.md)
-- [选择 Azure 数据传输解决方案](/azure/storage/common/storage-choose-data-transfer-solution?toc=/azure/storage/blobs/toc.json)
-- [迁移到 Azure 文件共享](/azure/storage/files/storage-files-migration-overview)
-- [使用 WANdisco LiveData Platform for Azure 迁移到 Data Lake Storage](/azure/storage/blobs/migrate-gen2-wandisco-live-data-platform)
-- [使用 AzCopy 将数据复制或移动到 Azure 存储](https://aka.ms/azcopy)
+- [选择 Azure 数据传输解决方案](../../../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [迁移到 Azure 文件共享](../../../files/storage-files-migration-overview.md)
+- [使用 WANdisco LiveData Platform for Azure 迁移到 Data Lake Storage](../../../blobs/migrate-gen2-wandisco-live-data-platform.md)
+- [使用 AzCopy 将数据复制或移动到 Azure 存储](../../../common/storage-use-azcopy-v10.md)
 - [使用 AzReplicate 将大型数据集迁移到 Azure Blob 存储（示例应用程序）](https://github.com/Azure/AzReplicate/tree/master/)

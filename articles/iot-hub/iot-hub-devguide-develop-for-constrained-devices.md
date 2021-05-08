@@ -1,5 +1,5 @@
 ---
-title: Azure IoT 中心使用 IoT 中心 C SDK 开发受约束的设备
+title: 使用 IoT 中心 C SDK 针对受限制设备进行 Azure IoT 中心开发
 description: 开发人员指南：指导如何使用 Azure IoT SDK 针对受限制设备进行开发。
 author: robinsh
 ms.service: iot-hub
@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 5a43eb2537ebc09ffcb524a4426d7a8c9bec560b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96499996"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>使用 Azure IoT C SDK 针对受限制设备进行开发
@@ -31,7 +31,7 @@ C SDK 可通过 apt-get、NuGet 和 MBED 以程序包的形式提供。 若要�
 针对受限制设备构建 C SDK。
 
 > [!NOTE]
-> Embedded C SDK 是受约束的设备的替代方法，它支持自带网络 (BYON) 方法。 IoT 开发人员可以自由地将 MQTT 客户端、TLS 和套接字用于创建设备解决方案。 [了解有关 Embedded C SDK 的详细信息](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot)。
+> 嵌入式 C SDK 是支持自带网络 (BYON) 方法的受限制设备的替代项。 IoT 开发人员可以自由选择使用 MQTT 客户端、TLS 和套接字来创建设备解决方案。 [详细了解嵌入式 C SDK](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot)。
 
 ### <a name="prerequisites"></a>先决条件
 
@@ -77,7 +77,7 @@ strip -s <Path_to_executable>
 
 ### <a name="avoid-using-the-serializer"></a>避免使用序列化程序
 
-C SDK 具有可选的 [C SDK 序列化程序](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer)，它允许使用声明式映射表来定义方法和设备孪生属性。 序列化程序旨在简化开发，但也会增加开销，因而对于受限制设备而言不是最优选择。 在这种情况下，请考虑使用基元客户端 Api 并使用轻型分析器（如 [parson](https://github.com/kgabis/parson)）分析 JSON。
+C SDK 具有可选的 [C SDK 序列化程序](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer)，它允许使用声明式映射表来定义方法和设备孪生属性。 序列化程序旨在简化开发，但也会增加开销，因而对于受限制设备而言不是最优选择。 在这种情况下，请考虑使用原始客户端 API，并使用轻量级分析程序（例如 [parson](https://github.com/kgabis/parson)）分析 JSON。
 
 ### <a name="use-the-lower-layer-_ll_"></a>使用较低层 (_LL_)
 

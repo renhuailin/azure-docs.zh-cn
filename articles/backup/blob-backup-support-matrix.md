@@ -4,12 +4,12 @@ description: 汇总了备份 Azure Blob（预览版）时的支持设置和限�
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.custom: references_regions
-ms.openlocfilehash: ade43350bbe3fa1bcf58f47e93b948db3a5b21bc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 12d289fdc3f84e7cbb3489a3ece283179e51772c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101744430"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561893"
 ---
 # <a name="support-matrix-for-azure-blobs-backup-in-preview"></a>Azure Blob 备份的支持矩阵（预览版）
 
@@ -27,9 +27,9 @@ Blob 的操作备份使用 blob 时点恢复、blob 版本控制、blob 的软�
 
 **其他限制：**
 
-- 如果在保持期内删除了某个容器，则该容器将无法使用时点恢复操作进行还原。 如果尝试还原的 blob 范围包含已删除的容器中的 blob，则时点恢复操作将失败。 要详细了解如何防止删除容器，请参阅[容器软删除（预览版）](https://docs.microsoft.com/azure/storage/blobs/soft-delete-container-overview)。
-- 如果在当前时间与还原点之间的时间段内，blob 已移动到热存储层和冷存储层之间，则会将 blob 还原到其以前的层。 不支持还原存档层中的块 blob。 例如，如果热存储层中的某一 blob 在两天前已移至存档存储层，而还原操作还原至三天前的某个时间点，则该 blob 不会被还原至热存储层。 要还原已存档的 blob，请先将其从存档存储层移开。 有关详细信息，请参阅[从存档层解冻 Blob 数据](https://docs.microsoft.com/azure/storage/blobs/storage-blob-rehydration)。
-- 通过 [Put Block](https://docs.microsoft.com/rest/api/storageservices/put-block) 或 [Put Block from URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) 上传、但未通过 [Put Block List](https://docs.microsoft.com/rest/api/storageservices/put-block-list) 提交的块不是 blob 的一部分，因此不会在还原操作过程中还原。
+- 如果在保持期内删除了某个容器，则该容器将无法使用时点恢复操作进行还原。 如果尝试还原的 blob 范围包含已删除的容器中的 blob，则时点恢复操作将失败。 要详细了解如何防止删除容器，请参阅[容器软删除（预览版）](../storage/blobs/soft-delete-container-overview.md)。
+- 如果在当前时间与还原点之间的时间段内，blob 已移动到热存储层和冷存储层之间，则会将 blob 还原到其以前的层。 不支持还原存档层中的块 blob。 例如，如果热存储层中的某一 blob 在两天前已移至存档存储层，而还原操作还原至三天前的某个时间点，则该 blob 不会被还原至热存储层。 要还原已存档的 blob，请先将其从存档存储层移开。 有关详细信息，请参阅[从存档层解冻 Blob 数据](../storage/blobs/storage-blob-rehydration.md)。
+- 通过 [Put Block](/rest/api/storageservices/put-block) 或 [Put Block from URL](/rest/api/storageservices/put-block-from-url) 上传、但未通过 [Put Block List](/rest/api/storageservices/put-block-list) 提交的块不是 blob 的一部分，因此不会在还原操作过程中还原。
 - 无法还原具有活动租约的 blob。 如果要还原的 blob 范围内包含具有活动租约的 blob，则还原操作将自动失败。 在开始还原操作之前中断任何活动租约。
 - 在还原操作过程中，不会创建或删除快照。 只可将基本 blob 还原到其以前的状态。
 

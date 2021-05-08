@@ -8,12 +8,12 @@ ms.author: surbhijain
 ms.reviewer: gachadw
 ms.date: 04/01/2021
 ms.custom: ''
-ms.openlocfilehash: f4892fe50c1832628181a11a5166c8cb705f79aa
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 9c6fdee8dbb28e86e5084c9c0cfca97f5ac5ea05
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107748914"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287151"
 ---
 # <a name="troubleshoot-azure-cloud-services-extended-support-roles-that-fail-to-start"></a>排查无法启动的 Azure 云服务（外延支持）角色的问题
 
@@ -142,4 +142,4 @@ DLL 或程序集缺失可能导致角色未响应以及角色在各种状态之�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[使用 Azure PaaS 计算机诊断数据排查云服务角色问题](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)。
+- 了解如何[使用 Azure PaaS 计算机诊断数据排查云服务角色问题](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)。

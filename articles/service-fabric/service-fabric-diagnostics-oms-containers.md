@@ -1,18 +1,16 @@
 ---
-title: 用 Azure Monitor 日志监视容器
+title: 使用 Azure Monitor 日志监视容器
 description: 使用 Azure Monitor 日志监视 Azure Service Fabric 群集上运行的容器。
-author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.author: srrengar
-ms.openlocfilehash: 6539815875b87a0d0f525d7e89464fa7d2505746
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 6217569dc50517c88a5a8a7bc0f3752e7e327f4e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570190"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626650"
 ---
-# <a name="monitor-containers-with-azure-monitor-logs"></a>用 Azure Monitor 日志监视容器
+# <a name="monitor-containers-with-azure-monitor-logs"></a>使用 Azure Monitor 日志监视容器
  
 本文介绍设置 Azure Monitor 日志容器监视解决方案以查看容器事件所需的步骤。 若要将群集设置为收集容器事件，请参阅此[分步教程](service-fabric-tutorial-monitoring-wincontainers.md)。 
 
@@ -23,9 +21,9 @@ ms.locfileid: "100570190"
 ## <a name="set-up-the-container-monitoring-solution"></a>设置容器监视解决方案
 
 > [!NOTE]
-> 需要为群集设置 Azure Monitor 日志，并在节点上部署 Log Analytics 代理。 如果不这样做，请按照 [设置 Azure Monitor 日志](service-fabric-diagnostics-oms-setup.md) 中的步骤操作，并首先 [将 Log Analytics 代理添加到群集](service-fabric-diagnostics-oms-agent.md) 。
+> 需要为群集设置 Azure Monitor 日志，并在节点上部署 Log Analytics 代理。 如果不如此操作，则请首先执行[设置 Azure Monitor 日志](service-fabric-diagnostics-oms-setup.md)和[将 Log Analytics 代理添加到群集](service-fabric-diagnostics-oms-agent.md)中的步骤。
 
-1. 设置群集并 Azure Monitor 日志和 Log Analytics 代理后，请部署容器。 待容器部署完毕后，再执行下一步。
+1. 在群集中完成 Azure Monitor 日志和 Log Analytics 代理设置后，请部署容器。 待容器部署完毕后，再执行下一步。
 
 2. 在 Azure 市场中搜索“容器监视解决方案”，并单击“监视 + 管理”类别下显示的“容器监视解决方案”资源。
 
@@ -35,7 +33,7 @@ ms.locfileid: "100570190"
 
     ![基本 Log Analytics 仪表板](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
 
-代理允许收集几个容器特定的日志，这些日志可在 Azure Monitor 日志中查询，或用于可视化性能指标。 收集的日志类型：
+代理可收集数个特定于容器的日志，这些日志可在 Azure Monitor 日志中查询，或者用于直观显示性能指示器。 收集的日志类型：
 
 * ContainerInventory：显示有关容器位置、名称和图像的信息
 * ContainerImageInventory：有关已部署映像的信息，包括 ID 或大小
@@ -46,7 +44,7 @@ ms.locfileid: "100570190"
 
 
 ## <a name="next-steps"></a>后续步骤
-* 了解有关 [Azure Monitor 日志容器解决方案](../azure-monitor/containers/containers.md)的详细信息。
+* 了解有关 [Azure Monitor 日志容器解决方案](../azure-monitor/containers/containers.md)的更多信息。
 * 深入了解 Service Fabric 上容器业务流程 - [Service Fabric 和容器](service-fabric-containers-overview.md)
 * 掌握 Azure Monitor 日志中提供的[日志搜索和查询](../azure-monitor/logs/log-query-overview.md)功能
-* 配置 Azure Monitor 日志以设置 [自动警报](../azure-monitor/alerts/alerts-overview.md) 规则，以帮助检测和诊断
+* 配置 Azure Monitor 日志，以便设置有助于检测和诊断的[自动警报](../azure-monitor/alerts/alerts-overview.md)规则

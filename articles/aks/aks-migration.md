@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 03/25/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 123f4e5c2442b913a53288602d1c56f199b131a6
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 53c6431f6f2d5ac6f5e7a6c28cb843d386c5206d
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107872778"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203066"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>迁移到 Azure Kubernetes 服务 (AKS)
 
@@ -52,7 +52,7 @@ ms.locfileid: "107872778"
 
 Azure Migrate 提供了一个统一平台来评估本地服务器、基础结构、应用程序和数据并将其迁移到 Azure。 对于 AKS，可以使用 Azure Migrate 进行以下任务：
 
-* [将 ASP.NET 应用程序容器化并迁移到 AKS](../migrate/tutorial-containerize-aspnet-kubernetes.md)
+* [将 ASP.NET 应用程序容器化并迁移到 AKS](/azure/aks/tutorial-app-containerization-aspnet-kubernetes)
 * [将Java Web 应用程序容器化并迁移到 AKS](../migrate/tutorial-containerize-java-kubernetes.md)
 
 ## <a name="aks-with-standard-load-balancer-and-virtual-machine-scale-sets"></a>包含标准负载均衡器和虚拟机规模集的 AKS
