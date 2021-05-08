@@ -13,25 +13,25 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 17b31e365e311b97e322828927827f40733313a6
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
-ms.translationtype: MT
+ms.openlocfilehash: ffb7d708921c96f57a617f82fc54d7f462fb4282
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588822"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168750"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>适用于 C 的 Azure IoT 设备 SDK
 
 **Azure IoT 设备 SDK** 是一个库集，旨在简化从 **Azure IoT 中心** 服务发送和接收消息的过程。 有各种不同的 SDK，每个 SDK 都以特定的平台为目标，而本文说明的是 **适用于 C 语言的 Azure IoT 设备 SDK**。
 
 > [!NOTE]
-> Embedded C SDK 是受约束的设备的替代方法，它支持自带网络 (BYON) 方法。 IoT 开发人员可以自由地将 MQTT 客户端、TLS 和套接字用于创建设备解决方案。 [了解有关 Embedded C SDK 的详细信息](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot)。
+> 嵌入式 C SDK 是支持自带网络 (BYON) 方法的受限制设备的替代项。 IoT 开发人员可以自由选择使用 MQTT 客户端、TLS 和套接字来创建设备解决方案。 [详细了解嵌入式 C SDK](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot)。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-适用于 C 语言的 Azure IoT 设备 SDK 以 ANSI C (C99) 编写，以获得最大可移植性。 此功能使库很适合在多个平台和设备上操作，尤其是在最大程度减少磁盘和内存占用空间的情况下。
+适用于 C 语言的 Azure IoT 设备 SDK 以 ANSI C (C99) 编写，以获得最大可移植性。 此功能使得这些库很适合在多个平台和设备上运行，尤其是在以将磁盘和内存占用量降到最低作为优先考虑的情况下。
 
-SDK 已在许多平台上进行了测试（有关详细信息，请参阅 [Azure IoT 认证设备目录](https://catalog.azureiotsolutions.com/)）。 尽管本文包含的是在 Windows 平台上运行的示例代码演示，但本文所述的代码在各种支持的平台上都完全相同。
+SDK 已在许多平台上进行了测试（有关详细信息，请参阅 [Azure IoT 认证设备目录](https://devicecatalog.azure.com/)）。 尽管本文包含的是在 Windows 平台上运行的示例代码演示，但本文所述的代码在各种支持的平台上都完全相同。
 
 下面的视频概述了适用于 C 语言的 Azure IoT SDK：
 
@@ -43,15 +43,15 @@ SDK 已在许多平台上进行了测试（有关详细信息，请参阅 [Azure
 
 可在 GitHub 存储库中找到 [**适用于 C 语言的 Azure IoT 设备 SDK**](https://github.com/Azure/azure-iot-sdk-c)，还可在 [C API 参考](/azure/iot-hub/iot-c-sdk-ref/)中查看 API 的详细信息。
 
-可在存储库的 **主** 分支中找到最新版本的库：
+在此存储库的主分支中可找到最新版本的库：
 
   ![存储库主分支的屏幕截图](./media/iot-hub-device-sdk-c-intro/RepoMasterBranch.png)
 
 * 此 SDK 的核心实现可在 **iothub\_client** 文件夹中找到，此文件夹包含 SDK 的最低 API 层的实现：**IoTHubClient** 库。 此 **IoTHubClient** 库包含实现原始消息传送的 API，即将消息发送到 IoT 中心以及从 IoT 中心接收消息。 使用此库时，需要负责实现消息序列化，但与 IoT 中心通信的其他细节则由系统处理。
 
-* **serializer** 文件夹包含帮助器函数和示例代码，演示了使用客户端库向 Azure IoT 中心发送消息之前如何序列化数据。 使用序列化程序不是必需的，仅为了提供便利。 如果使用 **序列化程序** 库，需要定义一个模型，用于指定要发送到 IoT 中心的数据以及预期要从 IoT 中心接收的消息。 定义模型后，SDK 将提供一个 API 图面，让你轻松处理设备到云和云到设备的消息，而无需担心序列化细节。 该库依赖于使用 MQTT 和 AMQP 等协议实现传输的其他开放源代码库。
+* **serializer** 文件夹包含帮助器函数和示例代码，演示了使用客户端库向 Azure IoT 中心发送消息之前如何序列化数据。 使用序列化程序不是必需的，仅为了提供便利。 如果使用 **序列化程序** 库，需要定义一个模型，用于指定要发送到 IoT 中心的数据以及预期要从 IoT 中心接收的消息。 定义模型后，SDK 将提供一个 API 图面，让你轻松处理设备到云和云到设备的消息，而无需担心序列化细节。 此库依赖于使用 MQTT 和 AMQP 等协议实现传输的其他开放源代码库。
 
-* **IoTHubClient** 库依赖于其他开放源代码库：
+* IoTHubClient 库依赖于其他开放源代码库：
 
   * [Azure C 共享实用程序](https://github.com/Azure/azure-c-shared-utility)库，其常用功能用于很多 Azure 相关的 C SDK 中所需的基本任务（如字符串、列表操作和 IO 等）。
 
@@ -72,7 +72,7 @@ SDK 已在许多平台上进行了测试（有关详细信息，请参阅 [Azure
 
 为常用平台提供了包（例如适用于 Windows 的 NuGet 包或者适用于 Debian 和 Ubuntu 的 apt_get），示例将使用这些包（如果适用）。 在某些情况下，需要为设备编译 SDK，或者在设备上编译 SDK。 如果需要编译 SDK，请参阅 GitHub 存储库中的[准备开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)。
 
-若要获取示例应用程序代码，请从 GitHub 下载 SDK 的副本。 从 [GitHub 存储库](https://github.com/Azure/azure-iot-sdk-c)的 **主** 分支获取源的副本。
+若要获取示例应用程序代码，请从 GitHub 下载 SDK 的副本。 从 [GitHub 存储库](https://github.com/Azure/azure-iot-sdk-c)的主分支获取源的副本。
 
 
 ### <a name="obtain-the-device-credentials"></a>获取设备凭据
@@ -253,7 +253,7 @@ else
 
 当设备接收消息时，将调用注册的回调函数。 此回调函数：
 
-* 消息中的消息 ID 和相关 ID。
+* 从消息中检索消息 ID 和相关 ID。
 * 检索消息内容。
 * 从消息中检索任何自定义属性。
 

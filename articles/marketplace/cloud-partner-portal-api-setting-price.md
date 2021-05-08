@@ -1,6 +1,6 @@
 ---
-title: 虚拟机产品/服务的定价-Azure Marketplace
-description: 介绍用于指定虚拟机产品/服务的定价的三种方法。
+title: 虚拟机产品/服务的定价 - Azure 市场
+description: 说明指定虚拟机产品/服务定价的三种方法。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
@@ -8,22 +8,22 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 09/02/2020
 ms.openlocfilehash: fe8024c60e204a4ec72002c878f7753ae35aa00d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89393813"
 ---
 # <a name="pricing-for-virtual-machine-offers"></a>虚拟机套餐的定价
 
 > [!NOTE]
-> 云合作伙伴门户 Api 与集成，并将在合作伙伴中心继续工作。 转换引入了少量更改。 查看 [云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md) 中列出的更改，确保你的代码在转换到合作伙伴中心后继续工作。 CPP Api 仅适用于过渡到合作伙伴中心之前已集成的现有产品;新产品应使用合作伙伴中心提交 Api。
+> 云合作伙伴门户 API 已与合作伙伴中心集成，并将继续在其中工作。 本次转换带来了少量更改。 查看[云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md)中列出的更改，确保转换到合作伙伴中心后代码继续正常工作。 CPP API 应仅用于在转换到合作伙伴中心之前已经集成的现有产品；新产品应使用合作伙伴中心提交 API。
 
 指定虚拟机套餐定价的方法有三种：自定义核心定价、按核心定价和电子表格定价。
 
 ## <a name="customized-core-pricing"></a>自定义核心定价
 
-定价针对每个区域和核心组合而定。 销售列表中的每个区域都必须在定义的**virtualMachinePricing** / **regionPrices**部分中指定。  在请求中对每个[区域](#regions)使用正确的货币代码。  以下示例演示了这些要求：
+定价针对每个区域和核心组合而定。 销售列表中的每个区域都必须在定义的 **virtualMachinePricing**/**regionPrices** 节中指定。  在请求中对每个[区域](#regions)使用正确的货币代码。  以下示例演示了这些要求：
 
 ``` json
     "virtualMachinePricing": 
@@ -96,15 +96,15 @@ ms.locfileid: "89393813"
      }
 ```
 
-## <a name="new-core-sizes-added-on-722019"></a>7/2/2019 上增加了新的核心大小
+## <a name="new-core-sizes-added-on-722019"></a>2019 年 7 月 2 日添加了新的核心大小
 
-VM 发布者已在2019年7月2日向添加新的 Azure 虚拟机大小增加了新价格， (基于) 的内核数。  新价格适用于核心大小10、44、48、60、120、208和416。  对于现有 VM，将根据当前价格自动计算这些核心大小的新价格。 发布者截至2019年8月1日，以查看其他价格并进行任何所需的更改。  在此日期之后，如果发布者尚未重新发布，则这些新的核心大小的自动计算价格将生效。
+VM 发布者于 2019 年 7 月 2 日收到通知，为新的 Azure 虚拟机大小添加了新的价格（基于核心数）。  新价格适用于以下核心大小：10、44、48、60、120、208 和 416。  对于现有 VM，已根据当前价格自动计算这些核心大小的新价格。 发布者必须已在 2019 年 8 月 1 日之前评审添加的价格并进行所需的更改。  在此日期之后，如果发布者尚未重新发布，则这些新核心大小的自动计算价格将生效。
 
 ## <a name="regions"></a>区域
 
 下表显示了可以为自定义核心定价指定的不同区域及其对应的货币代码。
 
-| **区域** | **Name**             | **货币代码** |
+| **区域** | **名称**             | **货币代码** |
 |------------|----------------------|-------------------|
 | DZ         | 阿尔及利亚              | DZD               |
 | AR         | 阿根廷            | ARS               |
@@ -190,7 +190,7 @@ VM 发布者已在2019年7月2日向添加新的 Azure 虚拟机大小增加了�
 | TR         | 土耳其               | TRY               |
 | UA         | 乌克兰              | UAH               |
 | AE         | 阿拉伯联合酋长国 | EUR               |
-| GB         | United Kingdom       | GBP               |
+| GB         | 英国       | GBP               |
 | 美国         | United States        | USD               |
 | UY         | 乌拉圭              | UYU               |
 | VE         | 委内瑞拉            | USD               |

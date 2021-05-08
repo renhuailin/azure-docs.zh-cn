@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
 ms.openlocfilehash: 1758cca902eb77ffc66824cb56b8add9446fabf9
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96749141"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>在 Visual Studio 中使用 Azure 逻辑应用和 Azure Functions 生成第一个无服务器应用
@@ -29,7 +29,7 @@ ms.locfileid: "96749141"
   本快速入门使用免费的 Visual Studio Community 2017。
 
     > [!IMPORTANT]
-    > 安装 Visual Studio 2019 或 2017 时，请务必选择“Azure 开发”工作负荷。 
+    > 安装 Visual Studio 2019 或 2017 时，请务必选择“Azure 开发”工作负荷。
 
   * [用于 .NET 的 Microsoft Azure SDK（2.9.1 或更高版本）](https://azure.microsoft.com/downloads/)。 
   详细了解[用于 .NET 的 Azure SDK](/dotnet/azure/intro)。
@@ -83,7 +83,7 @@ ms.locfileid: "96749141"
    > [!TIP]
    > 如果你不想要将解决方案预先部署到 Azure 资源组，可以使用空白的“逻辑应用”模板，该模板只会创建一个空的逻辑应用。 
 
-1. 从 " **显示此位置的模板** " 列表中，选择 " **Azure 快速入门 (github.com/Azure/azure-quickstart-templates)**"。
+1. 在“显示此位置的模板”列表中，选择“Azure 快速入门(github.com/Azure/azure-quickstart-templates)”。 
 
 1. 在搜索框中，输入“logic-app”作为筛选器。 从结果中选择 **101-logic-app-and-function-app** 模板。
 
@@ -100,7 +100,7 @@ ms.locfileid: "96749141"
 
 在 Visual Studio 的逻辑应用设计器中打开逻辑应用之前，必须已在 Azure 中部署了一个 Azure 资源组。 然后，设计器可与逻辑应用中的资源和服务建立连接。 对于此任务，请执行以下步骤，将解决方案从 Visual Studio 部署到 Azure 门户：
 
-1. 在解决方案资源管理器中，从资源项目的快捷菜单中选择“部署” > “新建”。
+1. 在解决方案资源管理器中，从资源项目的快捷菜单中选择“部署” > “新建”。 
 
    ![创建资源组的新部署](./media/logic-apps-serverless-get-started-vs/deploy.png)
 
@@ -119,7 +119,7 @@ ms.locfileid: "96749141"
 
 若要在部署后编辑逻辑应用，请在 Visual Studio 中使用逻辑应用设计器打开逻辑应用。
 
-1. 从解决方案资源管理器的 azuredeploy.json 文件的快捷菜单中选择“使用逻辑应用设计器打开”。 
+1. 从解决方案资源管理器的 azuredeploy.json 文件的快捷菜单中选择“使用逻辑应用设计器打开”。
 
    ![在逻辑应用设计器中打开 azuredeploy.json](./media/logic-apps-serverless-get-started-vs/open-logic-app-designer.png)
 
@@ -148,7 +148,7 @@ ms.locfileid: "96749141"
 
 1. 在 Visual Studio 的“视图”菜单中，选择“Cloud Explorer”。  
 
-1. 在“所有订阅”下面，选择与要管理的逻辑应用关联的 Azure 订阅，然后选择“应用”。  
+1. 在“所有订阅”下，选择与要管理的逻辑应用关联的 Azure 订阅，然后选择“应用”。 
 
 1. 在“逻辑应用”下面，选择自己的逻辑应用。  在该应用的快捷菜单中，选择“使用逻辑应用编辑器打开”  。
 

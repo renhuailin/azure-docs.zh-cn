@@ -1,7 +1,7 @@
 ---
-title: '交互式请求提示行为 ( # A0) |Microsoft'
+title: 交互式请求提示行为 (MSAL.js) | Azure
 titleSuffix: Microsoft identity platform
-description: '了解如何使用适用于 JavaScript ( # A0) 的 Microsoft 身份验证库在交互式调用中自定义提示行为。'
+description: 了解如何使用适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 自定义交互式调用中的提示行为。
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -14,10 +14,10 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 85f5269c3c2616070b826ecc38735c31617db537
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85477543"
 ---
 # <a name="prompt-behavior-in-msaljs-interactive-requests"></a>MSAL.js 交互式请求中的提示行为
@@ -40,13 +40,13 @@ userAgentApplication.loginRedirect(request);
 
 使用 Azure AD 进行身份验证时，可以传递以下提示值：
 
-**login:** 此值会强制用户在收到身份验证请求时输入凭据。
+“login”：此值会强制用户在收到身份验证请求时输入凭据。
 
-**select_account:** 此值会列出会话中的所有帐户，为用户提供帐户选择体验。
+“select_account”：此值会列出会话中的所有帐户，为用户提供帐户选择体验。
 
-**consent:** 此值会调用 OAuth 许可对话框，让用户授予对应用的权限。
+“consent”：此值会调用 OAuth 同意对话框，让用户授予对应用的权限。
 
-**none:** 此值会确保用户看不到任何交互式提示。 建议不要将此值传递给 MSAL.js 中的交互式方法，因为它可能导致意外的行为。 请改用 `acquireTokenSilent` 方法来实现无提示调用。
+“none”：此值将确保用户不会看到任何交互式提示。 建议不要将此值传递给 MSAL.js 中的交互式方法，因为它可能导致意外的行为。 请改用 `acquireTokenSilent` 方法来实现无提示调用。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,14 +1,14 @@
 ---
 title: 通过门户进行新策略分配
 description: 本快速入门介绍如何使用 Azure 门户创建 Azure Policy 分配以识别不合规的资源。
-ms.date: 01/29/2021
+ms.date: 05/01/2021
 ms.topic: quickstart
-ms.openlocfilehash: e5cbf31e897b5be404327efa254eb90ead990f5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: abceee512fc49922b69b80f0ac292b7fa044b2c7
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99220881"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326248"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>创建策略分配以识别不合规资源。
 
@@ -27,7 +27,7 @@ ms.locfileid: "99220881"
 
 1. 在 Azure 门户中选择“所有服务”，然后搜索并选择“策略”，以便启动 Azure Policy 服务。 
 
-   :::image type="content" source="./media/assign-policy-portal/search-policy.png" alt-text="在“所有服务”中搜索“策略”的屏幕截图。" border="false":::
+   :::image type="content" source="./media/assign-policy-portal/search-policy.png" alt-text="在“所有服务”中搜索“Policy”的屏幕截图。" border="false":::
 
 1. 选择“Azure Policy”页左侧的“分配”。 分配即为在特定范围内分配策略以供执行。
 

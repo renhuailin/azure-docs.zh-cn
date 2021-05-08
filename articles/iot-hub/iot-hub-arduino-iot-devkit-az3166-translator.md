@@ -1,5 +1,5 @@
 ---
-title: 创建带 Azure Functions，认知服务，IoT DevKit 的翻译人员
+title: 使用 Azure Functions、认知服务和 IoT DevKit 生成翻译
 description: 使用 IoT DevKit 上的麦克风接收语音消息，并使用 Azure 认知服务将其处理为英文翻译文本
 author: liydu
 ms.service: iot-hub
@@ -10,10 +10,10 @@ ms.date: 12/19/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
 ms.openlocfilehash: be26c6fe03dac9b9ff9dbff4a2bdce391ec0837e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96024157"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>将 IoT DevKit AZ3166 与 Azure Functions 和认知服务配合使用生成语言翻译
@@ -22,7 +22,7 @@ ms.locfileid: "96024157"
 
 [MXChip IoT DevKit](https://aka.ms/iot-devkit) 是具有多种外设和传感器的集成 Arduino 兼容板。 可以使用 Visual Studio Code 中的 [Azure IoT Device Workbench](https://aka.ms/iot-workbench)（Azure IoT 设备 Workbench）或 [Azure IoT 工具](https://aka.ms/azure-iot-tools)扩展包进行开发。 [项目目录](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/)包含有助于确定 IoT 解决方案原型的示例应用程序。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 若要完成本教程中的步骤，请先执行以下任务：
 
@@ -30,10 +30,10 @@ ms.locfileid: "96024157"
 
 ## <a name="create-azure-cognitive-service"></a>创建 Azure 认知服务
 
-1. 在 Azure 门户中，点击“创建资源”，然后搜索“语音”   。 填写窗体，创建语音服务。
+1. 在 Azure 门户中，点击“创建资源”，然后搜索“语音” 。 填写表单以创建语音服务。
   ![语音服务](media/iot-hub-arduino-iot-devkit-az3166-translator/speech-service.png)
 
-1. 转到刚才创建的语音服务，单击“Keys”部分进行复制，记下访问它的 DevKit 的 Key1   。
+1. 转到刚才创建的语音服务，单击“Keys”部分进行复制，记下访问它的 DevKit 的 Key1。
   ![复制密钥](media/iot-hub-arduino-iot-devkit-az3166-translator/copy-keys.png)
 
 ## <a name="open-sample-project"></a>打开示例项目
@@ -42,12 +42,12 @@ ms.locfileid: "96024157"
 
 1. 单击 `F1` 以打开命令面板，键入并选择“Azure IoT Device Workbench:  Open Examples...”。然后选择“IoT DevKit”作为开发板。 
 
-1. 在 IoT 工作台示例页中，找到 **DevKit Translator** ，并单击 " **打开示例**"。 然后选择用于下载示例代码的默认路径。
+1. 在 IoT Workbench 的“示例”页中，找到 DevKit Translator 并单击“打开示例” 。 然后选择用于下载示例代码的默认路径。
   ![打开示例](media/iot-hub-arduino-iot-devkit-az3166-translator/open-sample.png)
 
 ## <a name="use-speech-service-with-azure-functions"></a>配合使用语音服务和 Azure Functions
 
-1. 在 VS Code 中，单击 `F1` "输入"，并选择 " **Azure IoT 设备工作台：预配 azure 服务 ...** ![ "。预配 Azure 服务](media/iot-hub-arduino-iot-devkit-az3166-translator/provision.png)
+1. 在 VS Code 中，单击 `F1`，键入并选择“Azure IoT Device Workbench:预配 Azure 服务...”。![预配 Azure 服务](media/iot-hub-arduino-iot-devkit-az3166-translator/provision.png)
 
 1. 按照以下步骤完成 Azure IoT 中心和 Azure Functions 的预配。
    ![预配步骤](media/iot-hub-arduino-iot-devkit-az3166-translator/provision-steps.png)
@@ -66,7 +66,7 @@ ms.locfileid: "96024157"
    const string deviceName = "";
    ```
 
-1. 单击 `F1` "类型"，并选择 " **Azure IoT 设备工作台：部署到 azure ...**"。如果 VS Code 要求确认重新部署，则单击 **"是"**。
+1. 单击 `F1`，键入并选择“Azure IoT 设备 Workbench:部署到 Azure...”。如果 VS Code 要求对重新部署进行确认，请单击“是”。
    ![部署警告](media/iot-hub-arduino-iot-devkit-az3166-translator/deploy-warning.png)
 
 1. 确保部署成功。
@@ -91,7 +91,7 @@ ms.locfileid: "96024157"
 
    ![DevKit 配置模式](media/iot-hub-arduino-iot-devkit-az3166-translator/devkit-configuration-mode.png)
 
-1. 单击 `F1` "类型"，然后选择 " **Azure IoT 设备工作台：配置设备设置 ... > Config 设备连接字符串**"。 选择“选择 IoT 中心设备连接字符串”，将其配置到 DevKit。
+1. 单击 `F1`，键入并选择“Azure IoT Device Workbench:Configure Device Settings...”>“Config Device Connection String”。 选择“选择 IoT 中心设备连接字符串”，将其配置到 DevKit。
    ![配置连接字符串](media/iot-hub-arduino-iot-devkit-az3166-translator/configure-connection-string.png)
 
 1. 操作成功后，将看到通知。

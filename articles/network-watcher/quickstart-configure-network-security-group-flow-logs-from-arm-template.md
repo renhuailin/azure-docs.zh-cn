@@ -10,12 +10,12 @@ ms.service: network-watcher
 ms.custom:
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: df0ccb5bf5ecd60d80526085983e35abf58e9966
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 36a70cf01130e4156c21b01013cddcb706b32276
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532441"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108277707"
 ---
 # <a name="quickstart-configure-network-security-group-flow-logs-by-using-an-arm-template"></a>快速入门：使用 ARM 模板配置网络安全组流日志
 
@@ -27,7 +27,7 @@ ms.locfileid: "107532441"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 模板将在 Azure 门户中打开。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-networkwatcher-flowLogs-create%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fnetworkwatcher-flowLogs-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,7 +37,7 @@ ms.locfileid: "107532441"
 
 本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-networkwatcher-flowlogs-create)。
 
-:::code language="json" source="~/quickstart-templates/101-networkwatcher-flowlogs-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/networkwatcher-flowLogs-create/azuredeploy.json":::
 
 该模板中定义了以下资源：
 

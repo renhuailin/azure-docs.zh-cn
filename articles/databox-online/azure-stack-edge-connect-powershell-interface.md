@@ -1,6 +1,6 @@
 ---
-title: 通过 Windows PowerShell 界面连接和管理 Microsoft Azure Stack Edge Pro 设备 |Microsoft Docs
-description: 描述如何通过 Windows PowerShell 界面连接到 Azure Stack Edge Pro 并进行管理。
+title: 通过 Windows PowerShell 界面连接和管理 Microsoft Azure Stack Edge Pro 设备 | Microsoft Docs
+description: 介绍如何通过 Windows PowerShell 界面连接并管理 Azure Stack Edge Pro。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,19 +9,19 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: alkohli
 ms.openlocfilehash: c9c6247f021b7af4cfdd899ffd4b6bd178f2256c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96345587"
 ---
 # <a name="manage-an-azure-stack-edge-pro-fpga-device-via-windows-powershell"></a>通过 Windows PowerShell 管理 Azure Stack Edge Pro FPGA 设备
 
-Azure Stack Edge Pro 解决方案允许处理数据，并通过网络将数据发送到 Azure。 本文介绍 Azure Stack Edge Pro 设备的一些配置和管理任务。 你可以使用 Azure 门户、本地 web UI 或 Windows PowerShell 界面来管理你的设备。
+Azure Stack Edge Pro 解决方案可让你处理数据，并通过网络将数据发送到 Azure。 本文介绍了为 Azure Stack Edge Pro 设备执行的一些配置和管理任务。 可以使用 Azure 门户、本地 Web UI 或 Windows PowerShell 界面来管理设备。
 
 本文重点介绍使用 PowerShell 接口执行的任务。 
 
-本文包括以下过程：
+本文包括以下规程：
 
 - 连接到 PowerShell 接口
 - 创建支持包
@@ -43,20 +43,20 @@ Azure Stack Edge Pro 解决方案允许处理数据，并通过网络将数据�
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-还可上传 IoT Edge 证书，在 IoT Edge 设备和可能与其进行连接的下游设备之间启用安全连接。 需要安装以下三个文件 (*pem* 格式) ：
+还可上传 IoT Edge 证书，在 IoT Edge 设备和可能与其进行连接的下游设备之间启用安全连接。 有三个需要安装的文件（pem 格式）：
 
 - 根 CA 证书或所有者 CA
 - 设备 CA 证书
 - 设备私钥 
 
-下面的示例演示如何使用此 cmdlet 安装 IoT Edge 证书：
+以下示例演示如何使用此 cmdlet 来安装 IoT Edge 证书：
 
 ```
 Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-private-key.pem" -Credential "username"
 ```
-运行此 cmdlet 时，系统将提示你提供网络共享的密码。
+在运行此 cmdlet 时，系统将会提示你提供网络共享的密码。
 
-有关证书的详细信息，请参阅 [Azure IoT Edge 证书](../iot-edge/iot-edge-certs.md) "或 [" 在网关上安装证书 "](../iot-edge/how-to-create-transparent-gateway.md)。
+有关证书的详细信息，请转到 [Azure IoT Edge 证书](../iot-edge/iot-edge-certs.md)或[在网关上安装证书](../iot-edge/how-to-create-transparent-gateway.md)。
 
 ## <a name="view-device-information"></a>查看设备信息
  
@@ -79,10 +79,10 @@ Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cer
     Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username" -FullLogCollection
     ```
 
-    下面是用于 cmdlet 的参数的说明：
+    下面是用于该 cmdlet 的参数的说明：
     - `Path`：提供要在其中创建计算日志包的共享的网络路径。
     - `Credential`：提供网络共享的用户名。 运行此 cmdlet 时，需要提供共享密码。
-    - `FullLogCollection`：此参数可确保日志包将包含所有计算日志。 默认情况下，日志包仅包含一小部分的日志。
+    - `FullLogCollection`：此参数确保日志包中包含所有计算日志。 默认情况下，日志包仅包含一部分日志。
 
 ## <a name="monitor-and-troubleshoot-compute-modules"></a>计算模块的监视和故障排除
 

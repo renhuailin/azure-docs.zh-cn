@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
 ms.openlocfilehash: fd30c7ec15eadd3d7945349a8aae4ac824bfdc7f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94954080"
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>StorSimple 设备上支持的适用于 10 GbE 网络接口的硬件
@@ -37,7 +37,7 @@ Microsoft 已测试以下小型可插拔 (SFP) 收发器、电缆和交换机，
 | Cisco |SFP-10G-SR |
 
 ### <a name="cables"></a>电缆
-| S. 不是。 | 制造商 | 型号 |
+| S. 不知道。 | 制造商 | 型号 |
 | --- | --- | --- |
 | 1. |Cisco |SFP-H10GB-CU1M |
 | 2. |Cisco |SFP-H10GB-CU2M |
@@ -45,7 +45,7 @@ Microsoft 已测试以下小型可插拔 (SFP) 收发器、电缆和交换机，
 | 4. |Tripp-Lite |N820-05M (OM3) |
 
 ### <a name="switches"></a>交换机
-| S. 不是。 | 制造商 | 型号 |
+| S. 不知道。 | 制造商 | 型号 |
 | --- | --- | --- |
 | 1. |Cisco |N3K-C3172PQ-10GE |
 | 2. |Cisco |N3K-C3048-ZM-F |
@@ -63,7 +63,7 @@ Microsoft 已测试以下小型可插拔 (SFP) 收发器、电缆和交换机，
 | 收发器制造商 |Juniper |
 | 收发器型号 |端口号 740-021308 <br></br> 端口号 740-030658 |
 | 收发器固件版本 |修订版 01 版本 0.0（已报告） |
-| 电缆型号 |双工跳线 LC/LC 50/125μ、OM3、LSZH |
+| 电缆型号 |双工跳线 LC/LC 50/125μ、   OM3、LSZH |
 | StorSimple 型号 |8600 |
 | StorSimple 软件版本 |6.3.9600.17491 |
 
@@ -73,7 +73,7 @@ Mellanox 已测试以下小型可插拔 (SFP) 收发器、电缆和交换机，�
 ### <a name="cables-and-modules-supported-by-mellanox"></a>Mellanox 支持的电缆和模块
 下表列出了 Mellanox 支持的电缆和模块。 这些设备尚未经过 Microsoft 测试，但可能可以与 StorSimple 设备一起使用。
 
-| S. 不是。 | Speed | 型号 | 说明 | 制造商 |
+| S. 不知道。 | Speed | 型号 | 说明 | 品牌 |
 | --- | --- | --- | --- | --- |
 | 1. |10 GbE |CAB-SFP-SFP-1M |无源铜缆 SFP+ 10 Gb/s 1 米 |Arista |
 | 2. |10 GbE |CAB-SFP-SFP-2M |无源铜缆 SFP+ 10 Gb/s 2 米 |Arista |
@@ -114,7 +114,7 @@ Mellanox 已测试以下小型可插拔 (SFP) 收发器、电缆和交换机，�
 ### <a name="switches-supported-by-mellanox"></a>Mellanox 支持的交换机
 下表列出了 Mellanox 支持的交换机。 这些设备尚未经过 Microsoft 测试，但可能可以与 StorSimple 设备一起使用。
 
-| S. 不是。 | Speed | 型号 | 说明 | 制造商 |
+| S. 不知道。 | Speed | 型号 | 说明 | 品牌 |
 | --- | --- | --- | --- | --- |
 | 1. |10GbE |516733-B21 |HP ProCurve 6120XG 10GbE 以太网刀片式交换机 |HP |
 | 2. |10GbE |538113-B21 |HP 10GbE 直通模块 (PTM) |HP |
@@ -125,4 +125,4 @@ Mellanox 已测试以下小型可插拔 (SFP) 收发器、电缆和交换机，�
 | 7. |1GbE |6120G |HP ProCurve 6120G/XG 1GbE 刀片式交换机 |HP |
 
 ## <a name="next-steps"></a>后续步骤
-[了解有关 StorSimple 硬件组件和状态的详细信息](./storsimple-8000-monitor-hardware-status.md)。
+[详细了解 StorSimple 的硬件组件和状态](./storsimple-8000-monitor-hardware-status.md)。

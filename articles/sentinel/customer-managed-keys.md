@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2020
 ms.author: yelevin
-ms.openlocfilehash: a1c2754fcae5768c6b87d6280fc882acd46d9a0a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: f7c4905f3122bf5abd2dc955170113cac3039a5d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585335"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219036"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>设置 Azure Sentinel 客户托管密钥
 
 本文介绍了为 Azure Sentinel 配置客户托管密钥 (CMK) 的背景信息和步骤。 通过使用 CMK，可使用创建或拥有的 Azure Key Vault 密钥，在所有相关的存储资源中对所有保存或发送到 Azure Sentinel 的数据进行加密。
 
 > [!NOTE]
-> - Azure Sentinel CMK 功能仅提供给 **新客户**。
+> - Azure Sentinel CMK 功能只向新客户提供。
 >
-> - 此功能的访问权限由 Azure 功能注册控制。 你可以通过联系来请求访问权限 azuresentinelCMK@microsoft.com 。 将根据可用容量批准挂起的请求。
+> - 此功能的访问权限是通过 Azure 功能注册来控制的。 你可以通过联系 azuresentinelCMK@microsoft.com 来请求访问权限。 将根据可用容量来批准待处理的请求。
 >
 > - CMK 功能仅提供给每天发送 1TB 及以上的客户。 当向 Microsoft 申请在 Azure 订阅上预配 CMK 时，会收到有关其他定价的信息。 了解有关 [Log Analytics](../azure-monitor/logs/manage-cost-storage.md#log-analytics-dedicated-clusters) 定价的详细信息。
 
@@ -81,7 +81,7 @@ Azure Sentinel 使用 Cosmos DB 作为附加存储资源。 请确保注册到 C
 
 ### <a name="step-4-add-an-access-policy-to-your-azure-key-vault-instance"></a>第 4 步：将访问策略添加到 Azure Key Vault 实例
 
-请确保添加 Cosmos DB 到 Azure Key Vault 实例的访问权限。 按照 Cosmos DB 说明，使用 Azure Cosmos DB 主体[将访问策略添加到 Azure Key Vault 实例](../cosmos-db/how-to-setup-cmk.md#add-an-access-policy-to-your-azure-key-vault-instance)。
+请确保添加 Cosmos DB 到 Azure Key Vault 实例的访问权限。 按照 Cosmos DB 说明，使用 Azure Cosmos DB 主体[将访问策略添加到 Azure Key Vault 实例](../cosmos-db/how-to-setup-cmk.md#add-access-policy)。
 
 ### <a name="step-5-enable-cmk-in-azure-sentinel"></a>第 5 步：在 Azure Sentinel 中启用 CMK
 
@@ -91,7 +91,7 @@ Azure Sentinel 使用 Cosmos DB 作为附加存储资源。 请确保注册到 C
 
 -  要在其上启用 CMK 的工作区 ID
 
--  Key Vault URL：将密钥的 "密钥标识符" 复制到最后一个正斜杠：  
+-  Key Vault URL：复制密钥的“密钥标识符”（一直到最后一个正斜杠为止）：  
     
 
     ![密钥标识符](./media/customer-managed-keys/key-identifier.png)

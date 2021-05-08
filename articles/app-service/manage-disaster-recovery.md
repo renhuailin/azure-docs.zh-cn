@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/09/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 1388dc11254324f74efcbaa55c97cac2ccd0c026
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87073746"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>将应用服务应用移动到其他区域
@@ -27,7 +27,7 @@ ms.locfileid: "87073746"
 
 - 应用服务应用
 - [应用服务计划](overview-hosting-plans.md)
-- [部署槽](deploy-staging-slots.md)
+- [部署槽位](deploy-staging-slots.md)
 - [在 Azure 中购买的自定义域](manage-custom-dns-buy-domain.md)
 - [SSL 证书](configure-ssl-certificate.md)
 - [Azure 虚拟网络集成](web-sites-integrate-with-vnet.md)

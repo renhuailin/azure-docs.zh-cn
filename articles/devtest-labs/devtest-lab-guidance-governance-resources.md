@@ -1,14 +1,14 @@
 ---
-title: Azure 开发测试实验室基础结构-资源的管理
-description: 本文介绍了组织内 Azure 开发测试实验室的资源的对齐与管理。
+title: Azure 开发测试实验室基础结构的监管 - 资源
+description: 本文介绍了组织中开发测试实验室的资源调配和管理。
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 1e470da5cd317d49f0d0734caa11eed6630d3f32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85480909"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Azure 开发测试实验室基础结构的监管 - 资源
@@ -27,9 +27,9 @@ ms.locfileid: "85480909"
 - 是否需要通过分段来隔离开发环境和生产环境？ 
 - 针对长远的轻松管理、稳定性和发展引入了哪些控制措施？
 
-**第一项建议的做法**是评审组织中对生产订阅和开发订阅做了划分的 Azure 分类。 在下图中，建议的分类能够对开发/测试和生产环境进行逻辑分离。 使用此方法，组织可以引入计费代码来单独跟踪与每个环境关联的成本。 有关详细信息，请参阅[出于合规目的监管订阅](/azure/architecture/cloud-adoption/appendix/azure-scaffold)。 此外，可以使用 [Azure 标记](../azure-resource-manager/management/tag-resources.md)来组织资源，以便于跟踪和计费。
+**第一项建议的做法** 是评审组织中对生产订阅和开发订阅做了划分的 Azure 分类。 在下图中，建议的分类能够对开发/测试和生产环境进行逻辑分离。 使用此方法，组织可以引入计费代码来单独跟踪与每个环境关联的成本。 有关详细信息，请参阅[出于合规目的监管订阅](/azure/architecture/cloud-adoption/appendix/azure-scaffold)。 此外，可以使用 [Azure 标记](../azure-resource-manager/management/tag-resources.md)来组织资源，以便于跟踪和计费。
 
-**第二项建议的做法**是在 Azure 企业门户中启用开发测试订阅。 这样，组织便可以运行 Azure 企业订阅中通常不会提供的客户端操作系统。 然后，使用企业软件，只需为计算付费，而无需担心许可。 这可以确保只需根据消耗量支付指定服务的费用，包括 IaaS 中的库映像，例如 Microsoft SQL Server。 企业协议 (EA) 客户和即用即付客户可以分别在[此处](https://azure.microsoft.com/offers/ms-azr-0148p/)和[此处](https://azure.microsoft.com/offers/ms-azr-0023p/)找到有关 Azure 开发测试订阅的详细信息。
+**第二项建议的做法** 是在 Azure 企业门户中启用开发测试订阅。 这样，组织便可以运行 Azure 企业订阅中通常不会提供的客户端操作系统。 然后，使用仅支付计算机费用的企业软件，无需担心许可问题。 这可以确保只需根据消耗量支付指定服务的费用，包括 IaaS 中的库映像，例如 Microsoft SQL Server。 企业协议 (EA) 客户和即用即付客户可以分别在[此处](https://azure.microsoft.com/offers/ms-azr-0148p/)和[此处](https://azure.microsoft.com/offers/ms-azr-0023p/)找到有关 Azure 开发测试订阅的详细信息。
 
 ![资源与订阅相符](./media/devtest-lab-guidance-governance/resource-alignment-with-subscriptions.png)
 
@@ -75,7 +75,7 @@ ms.locfileid: "85480909"
 是否支持将实验室移到另一个资源组？
 
 ### <a name="answer"></a>答案
-是的。 从实验室的主页导航到“资源组”页。 然后，在工具栏中选择“移动”，并选择要移到其他资源组的实验室。**** 创建实验室时，会自动创建一个资源组。 但是，你可能需要将实验室移到遵循企业命名约定的其他资源组。 
+是的。 从实验室的主页导航到“资源组”页。 然后，在工具栏中选择“移动”，并选择要移到其他资源组的实验室。 创建实验室时，会自动创建一个资源组。 但是，你可能需要将实验室移到遵循企业命名约定的其他资源组。 
 
 ## <a name="next-steps"></a>后续步骤
 参阅[管理成本和所有权](devtest-lab-guidance-governance-cost-ownership.md)。

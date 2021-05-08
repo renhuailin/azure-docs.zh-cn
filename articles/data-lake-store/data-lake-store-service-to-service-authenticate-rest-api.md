@@ -1,16 +1,16 @@
 ---
-title: REST 服务到服务身份验证-Data Lake Storage Gen1-Azure
-description: 了解如何使用 REST API 实现 Azure Data Lake Storage Gen1 和 Azure Active Directory 的服务到服务身份验证。
+title: REST - 服务到服务身份验证 - Data Lake Storage Gen1 - Azure
+description: 了解如何使用 REST API 进行 Azure Data Lake Storage Gen1 和 Azure Active Directory 服务到服务身份验证。
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 4947bab58a6d23bcc3e3212a9e3e7dc0c4fa8578
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92106699"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>使用 REST API 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
@@ -22,11 +22,11 @@ ms.locfileid: "92106699"
 > 
 > 
 
-本文介绍如何使用 REST API 通过 Azure Data Lake Storage Gen1 执行服务到服务身份验证。 若要了解使用 REST API 的 Data Lake Storage Gen1 最终用户身份验证，请参阅[使用 REST API 通过 Data Lake Storage Gen1 进行最终用户身份验证](data-lake-store-end-user-authenticate-rest-api.md)。
+本文介绍如何使用 REST API 进行 Azure Data Lake Storage Gen1 服务到服务身份验证。 若要了解使用 REST API 的 Data Lake Storage Gen1 最终用户身份验证，请参阅[使用 REST API 通过 Data Lake Storage Gen1 进行最终用户身份验证](data-lake-store-end-user-authenticate-rest-api.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **创建 Azure Active Directory“Web”应用程序**。 必须已完成[使用 Azure Active Directory 进行 Data Lake Storage Gen1 服务到服务身份验证](data-lake-store-service-to-service-authenticate-using-active-directory.md)中的步骤。
 
@@ -54,5 +54,5 @@ curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
 
 本文介绍了如何通过 REST API 使用服务到服务身份验证进行 Data Lake Storage Gen1 身份验证。 现可查看以下介绍如何使用 REST API 在 Data Lake Storage Gen1 中执行操作的文章。
 
-* [使用 REST API Data Lake Storage Gen1 上的帐户管理操作](data-lake-store-get-started-rest-api.md)
+* [使用 REST API 对 Data Lake Storage Gen1 进行的帐户管理操作](data-lake-store-get-started-rest-api.md)
 * [使用 REST API 在 Data Lake Storage Gen1 中进行的数据操作](data-lake-store-data-operations-rest-api.md)

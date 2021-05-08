@@ -1,5 +1,5 @@
 ---
-title: API 注意事项-Azure Marketplace
+title: API 注意事项-Azure 市场
 description: 使用市场 API 时的版本控制、错误处理和授权问题。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 0920bec160874f27c8b1b6f2132951b57719b31c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88035274"
 ---
 # <a name="api-considerations"></a>API 注意事项
@@ -20,7 +20,7 @@ ms.locfileid: "88035274"
 --------------
 
 > [!NOTE]
-> 云合作伙伴门户 Api 与集成，并将在合作伙伴中心继续工作。 转换引入了少量更改。 查看 [云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md) 中列出的更改，确保你的代码在转换到合作伙伴中心后继续工作。 CPP Api 仅适用于过渡到合作伙伴中心之前已集成的现有产品;新产品应使用合作伙伴中心提交 Api。
+> 云合作伙伴门户 API 已与合作伙伴中心集成，并仍继续在其中工作。 本次转换带来了少量更改。 查看[云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md)中列出的更改，确保转换到合作伙伴中心后代码继续正常工作。 CPP API 应仅用于在转换到合作伙伴中心之前已经集成的现有产品；新产品应使用合作伙伴中心提交 API。
 
 可能有多个版本的 API 同时可用。 客户端必须通过提供 `api-version` 参数作为查询字符串的一部分来指明它们希望调用哪个版本。
 

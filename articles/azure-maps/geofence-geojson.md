@@ -1,6 +1,6 @@
 ---
-title: 地域隔离区内的 GeoJSON 数据格式 |Microsoft Azure 映射
-description: 了解 Azure Maps 地域隔离区内数据。 请参阅如何在检索相对于地域隔离区内的坐标位置时使用 GET 地域隔离区内和 POST 地域隔离区内 Api。
+title: 地理围栏的 GeoJSON 数据格式 | Microsoft Azure Maps
+description: 了解 Azure Maps 地理围栏数据。 请参阅如何在检索相对地理围栏的坐标位置时使用 GET Geofence 和 POST Geofence API。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 02/14/2019
@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: e880710b93a6764df50780e685c89b5f569b4ec0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92897188"
 ---
 # <a name="geofencing-geojson-data"></a>地理围栏 GeoJSON 数据
@@ -32,14 +32,14 @@ ms.locfileid: "92897188"
 
 | 名称 | 类型 | 必需  | 说明 |
 | :------------ |:------------: |:---------------:| :-----|
-| startTime | datetime  | 是 | 有效时段的开始日期时间。 |
-| endTime   | datetime  | 是 |  有效时段的结束日期时间。 |
+| startTime | datetime  | true | 有效时段的开始日期时间。 |
+| endTime   | datetime  | true |  有效时段的结束日期时间。 |
 | recurrenceType | 字符串 | false |   时段的重复类型。 值可为 `Daily`、`Weekly`、`Monthly` 或 `Yearly`。 默认值为 `Daily`。|
-| businessDayOnly | Boolean | false |  指示数据是否仅在工作日有效。 默认值为 `false`。|
+| businessDayOnly | 布尔值 | false |  指示数据是否仅在工作日有效。 默认值为 `false`。|
 
 
-* 所有坐标值都表示为中定义的 "经度，纬度" `WGS84` 。
-* 对于包含 `MultiPoint`、`MultiLineString`、`MultiPolygon` 或 `GeometryCollection` 的每个特征，属性将应用到所有元素。 例如：中的所有点 `MultiPoint` 都将使用相同的半径形成多个圆形地域隔离区内。
+* 所有坐标值以 `WGS84` 中定义的[纬度，经度]表示。
+* 对于包含 `MultiPoint`、`MultiLineString`、`MultiPolygon` 或 `GeometryCollection` 的每个特征，属性将应用到所有元素。 例如：`MultiPoint` 中的所有点将使用相同的半径来构成多个圆形地理围栏。
 * 在点圆方案中，可以使用具有[扩展 GeoJSON 几何图形](./extend-geojson.md)中所述属性的 `Point` 几何对象来表示圆几何图形。      
 
 以下地理围栏的示例请求正文表示为在 `GeoJSON` 中使用中心点和半径的圆形地理围栏几何图形。 该地理围栏数据的有效时段为从 2018年 10 月 22 日上午 9 点到下午 5 点，除周末外，每天都会重复。 `expiredTime` 指示如果请求中的 `userTime` 晚于 `2019-01-01`，则将此地理围栏数据视为过期。  

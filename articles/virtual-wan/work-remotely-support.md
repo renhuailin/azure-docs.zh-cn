@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: fc048f3da3156f5e17cfa32479b834b7320a60a2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96023478"
 ---
 # <a name="azure-virtual-wan-and-supporting-remote-work"></a>Azure 虚拟 WAN 和远程工作支持
 
 >[!NOTE]
->本文介绍了如何利用 Azure 虚拟 WAN、Azure、Microsoft 网络和 Azure 合作伙伴生态系统远程工作，并减少因 COVID-19 危机而面临的网络问题。
+>本文介绍如何利用 Azure 虚拟 WAN、Azure、Microsoft 网络和 Azure 合作伙伴生态系统进行远程工作，以及如何缓解因新冠肺炎危机而面临的网络问题。
 >
 
 你是否在忙不迭地为远程用户提供连接？

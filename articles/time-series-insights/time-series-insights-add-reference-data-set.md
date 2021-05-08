@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
 ms.openlocfilehash: d80d97a609aa3a464b9b114439fe7f4058e287c3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96001824"
 ---
 # <a name="create-a-reference-data-set-for-your-azure-time-series-insights-gen1-environment-using-the-azure-portal"></a>使用 Azure 门户为 Azure 时序见解 Gen1 环境创建引用数据集
@@ -31,7 +31,7 @@ ms.locfileid: "96001824"
 
 ## <a name="video"></a>视频
 
-### <a name="learn-about-time-series-insights-reference-data-modelbr"></a>了解时序见解的参考数据模型。</br>
+### <a name="learn-about-time-series-insights-reference-data-modelbr"></a>了解时序见解的引用数据模型。</br>
 
 > [!VIDEO <https://www.youtube.com/embed/Z0NuWQUMv1o>]
 

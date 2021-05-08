@@ -4,10 +4,10 @@ description: 本文概述了 IoT Edge 上的实时视频分析术语。
 ms.topic: conceptual
 ms.date: 05/30/2020
 ms.openlocfilehash: e3a77b69adf2241a4af2652db4edb6673a63b4f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88690606"
 ---
 # <a name="terminology"></a>术语
@@ -42,7 +42,7 @@ Azure 媒体服务是一种云媒体平台，可用于构建媒体解决方案�
 
 ## <a name="streaming"></a>流式处理
 
-如果你从 Netflix、YouTube 等服务观看了移动设备上的视频，应已体验到流式处理视频。 如果你有足够的带宽) ，则在点击 "播放" (后，播放会立即开始，你可以沿视频时间线来回搜索。 流式处理的思路是只传送正在观看的视频部分，并在数据仍从服务器传输到播放客户端时，让查看器开始播放视频。 在 Azure 媒体服务的环境中， [流式处理](https://en.wikipedia.org/wiki/Streaming_media) 是指将媒体从 [Azure 媒体服务](../azure-media-player/azure-media-player-overview.md) 传送到流式处理客户端的过程 (例如 Azure Media Player) 。 你可以使用 Azure 媒体服务通过行业标准的基于 HTTP 的媒体流式处理协议（例如 [HTTP Live Streaming (HLS)](https://developer.apple.com/streaming/) 和 [MPEG-DASH](https://dashif.org/about/)）将视频流式传输到客户端。 Azure Media Player 和 web 播放器（如 [JW Player](https://www.jwplayer.com/)、 [hls.js](https://github.com/video-dev/hls.js/)、 [VideoJS](https://videojs.com/)、 [Google Shaka Player](https://github.com/google/shaka-player)）支持 HLS，或者可以使用 Android 的 [Exoplayer](https://github.com/google/ExoPlayer) 和 iOS [AV 基础](https://developer.apple.com/av-foundation/)在移动应用中以本机方式呈现。 Azure Media Player 同样支持 MPEG-DASH，请参阅[查找此页面上的客户端列表](https://dashif.org/clients/)。 
+如果你从 Netflix、YouTube 等服务观看了移动设备上的视频，应已体验到流式处理视频。 点击“播放”后会很快就会开始播放（如果带宽足够），可以沿视频的时间线来回搜索。 流式处理的思路是只传送正在观看的视频部分，并在数据仍从服务器传输到播放客户端时，让查看器开始播放视频。 在 Azure 媒体服务的上下文中，[流式处理](https://en.wikipedia.org/wiki/Streaming_media)是指将媒体从 [Azure 媒体服务](../azure-media-player/azure-media-player-overview.md)传送到流式处理客户端（例如 Azure Media Player）的过程。 你可以使用 Azure 媒体服务通过行业标准的基于 HTTP 的媒体流式处理协议（例如 [HTTP Live Streaming (HLS)](https://developer.apple.com/streaming/) 和 [MPEG-DASH](https://dashif.org/about/)）将视频流式传输到客户端。 HLS 支持 Azure Media Player 和 Web 播放器，如 [JW Player](https://www.jwplayer.com/)、[hls.js](https://github.com/video-dev/hls.js/)、[VideoJS](https://videojs.com/)、[Google 的 Shaka Player](https://github.com/google/shaka-player)，或者可以使用 Android 的[Exoplayer](https://github.com/google/ExoPlayer) 和 iOS 的[AV Foundation](https://developer.apple.com/av-foundation/)在移动应用中进行本机呈现。 Azure Media Player 同样支持 MPEG-DASH，请参阅[查找此页面上的客户端列表](https://dashif.org/clients/)。 
 
 通过使用[媒体图](#media-graph)将视频录制到 Azure 媒体服务中的资产，可以使用媒体服务流式处理功能通过 HLS 和 DASH 传送视频流。 有关详细信息，请参阅[视频播放](video-playback-concept.md)一文。
 

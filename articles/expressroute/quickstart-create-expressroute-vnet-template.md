@@ -11,12 +11,12 @@ ms.service: expressroute
 ms.custom:
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: 3dc1d5f5ec3dfb004468deb2bec80927c7ec189d
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 6c31f55d5b208437170f9a69ff7bbe1d6b836201
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529883"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108277437"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>快速入门：使用 ARM 模板创建具有专用对等互连的 ExpressRoute 线路
 
@@ -26,7 +26,7 @@ ms.locfileid: "107529883"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-expressroute-private-peering-vnet%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fexpressroute-private-peering-vnet%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,7 +38,7 @@ ms.locfileid: "107529883"
 
 在本快速入门中，你将创建一个以 Equinix 为服务提供商的 ExpressRoute 线路。 该线路将使用高级 SKU，其带宽为 50 Mbps，对等互连位置为华盛顿特区  。 将使用主要子网 192.168.10.16/30 和辅助子网 192.168.10.20/30 来启用专用对等互连 。 还将创建虚拟网络以及 HighPerformance ExpressRoute 网关。
 
-:::code language="json" source="~/quickstart-templates/101-expressroute-private-peering-vnet/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/expressroute-private-peering-vnet/azuredeploy.json":::
 
 该模板中已定义了多个 Azure 资源：
 
@@ -58,7 +58,7 @@ ms.locfileid: "107529883"
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-expressroute-private-peering-vnet/azuredeploy.json"
+    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.network/expressroute-private-peering-vnet/azuredeploy.json"
 
     $resourceGroupName = "${projectName}rg"
 

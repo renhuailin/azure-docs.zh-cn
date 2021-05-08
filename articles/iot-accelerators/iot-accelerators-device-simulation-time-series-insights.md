@@ -8,12 +8,12 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 90a4b808daccc76e8cc9125973c69b13e8086fbf
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: e1409b43f0ce1fc0d8c622dda79e857ac6abdd33
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713959"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "96854557"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>使用时序见解可视化从设备模拟解决方案加速器发送的遥测数据
 
@@ -23,7 +23,7 @@ ms.locfileid: "107713959"
 
 若要执行本操作指南中的步骤，需要拥有一个有效的 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-本操作指南中的步骤假定你已向 Azure 订阅部署了设备模拟解决方案加速器。 如果尚未部署设备模拟，请参阅 GitHub 上的[设备模拟部署](https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md)。
+本操作指南中的步骤假定你已向 Azure 订阅部署了设备模拟解决方案加速器。 如果尚未部署设备模拟，请参阅 GitHub 上的[设备模拟部署](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)。
 
 本文假设解决方案加速器的名称为 contoso-simulatio。 在完成以下步骤时，将 contoso-simulatio 替换为解决方案加速器的名称。
 
@@ -55,7 +55,7 @@ ms.locfileid: "107713959"
 
 [Azure 时序见解](../../articles/time-series-insights/time-series-insights-overview.md)是一种完全托管的分析、存储和可视化服务，用于管理云中的 IoT 时序数据。 若要创建新的时序见解环境：
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 1. 选择“创建资源” > “物联网” > “时序见解”：
 

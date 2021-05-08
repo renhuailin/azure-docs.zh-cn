@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: seodec18
 ms.openlocfilehash: 84b973dfa016b069b18fda47a4336fe952f73b3c
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96780852"
 ---
 # <a name="grant-data-access-to-an-environment"></a>授予对环境的数据访问权限
@@ -124,4 +124,4 @@ ms.locfileid: "96780852"
 
 * 阅读[身份验证和授权](time-series-insights-authentication-and-authorization.md)以获取 Azure Active Directory 应用注册步骤。
 
-* [在 Azure 时序见解资源管理器中查看环境](./concepts-ux-panels.md)。
+* 在 [Azure 时序见解资源管理器](./concepts-ux-panels.md)中查看环境。

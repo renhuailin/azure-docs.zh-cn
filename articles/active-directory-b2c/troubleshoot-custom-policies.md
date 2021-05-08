@@ -11,10 +11,10 @@ ms.date: 08/13/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 87ea77540e5fcaac0c4231403473d25ebae46aac
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94840247"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Azure AD B2C 自定义策略和标识体验框架故障排除
@@ -29,7 +29,7 @@ ms.locfileid: "94840247"
 
 用户偏爱的两个编辑器是 [Visual Studio Code](https://code.visualstudio.com/) 和 [Notepad++](https://notepad-plus-plus.org/)。
 
-XML 架构验证在上传 XML 文件之前会识别错误。 在 [初学者包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)的根文件夹中，获取 XML 架构定义文件 *TrustFrameworkPolicy_0.3.0.0.xsd*。 若要了解如何在编辑器中使用 XSD 架构文件进行验证，请在编辑器文档中查找“XML 工具”和“XML 验证”或类似内容。  
+XML 架构验证在上传 XML 文件之前会识别错误。 在 [初学者包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)的根文件夹中，获取 XML 架构定义文件 *TrustFrameworkPolicy_0.3.0.0.xsd*。 若要了解如何在编辑器中使用 XSD 架构文件进行验证，请在编辑器文档中查找“XML 工具”和“XML 验证”或类似内容。
 
 用户可能会发现检查 XML 规则很有用。 Azure AD B2C 会拒绝检测到的任何 XML 格式错误。 格式不当的 XML 有时会导致出现误导性的错误消息。
 
@@ -43,7 +43,7 @@ XML 架构验证在上传 XML 文件之前会识别错误。 在 [初学者包](
 
 * ClaimType 值可能拼写错误，或者在架构中不存在。
 * 必须至少在策略中的一个文件内定义 ClaimType 值。
-    例如： `<ClaimType Id="issuerUserId">`
+    例如：`<ClaimType Id="issuerUserId">`
 * 如果 ClaimType 在扩展文件中定义，但同时用于基本文件中的 TechnicalProfile 值，则上传基本文件会导致错误。
 
 > 错误代码片段：`...makes a reference to a ClaimsTransformation with id...`
@@ -56,7 +56,7 @@ XML 架构验证在上传 XML 文件之前会识别错误。 在 [初学者包](
 
 ## <a name="troubleshoot-the-runtime"></a>运行时故障排除
 
-* 使用“立即运行”和 `https://jwt.ms` 独立于 Web 应用程序或移动应用程序测试策略。  此网站的作用类似于信赖方应用程序。 它显示 Azure AD B2C 策略生成的 JSON Web 令牌 (JWT) 的内容。
+* 使用“立即运行”和 `https://jwt.ms` 独立于 Web 应用程序或移动应用程序测试策略。 此网站的作用类似于信赖方应用程序。 它显示 Azure AD B2C 策略生成的 JSON Web 令牌 (JWT) 的内容。
 
     若要创建可重定向到 `https://jwt.ms` 进行令牌检查的测试应用程序，请执行以下操作：
 
@@ -64,11 +64,11 @@ XML 架构验证在上传 XML 文件之前会识别错误。 在 [初学者包](
 
 * 若要跟踪客户端浏览器与 Azure AD B2C 之间的消息交换，请使用 [Fiddler](https://www.telerik.com/fiddler)。 通过它可以了解用户旅程在业务流程步骤中的哪个环节失败。
 
-* 在“开发模式”下，使用 [Application Insights](troubleshoot-with-application-insights.md) 跟踪标识体验框架用户旅程的活动。 在 **开发模式** 下，你可以观察标识体验框架和技术配置文件定义的各种声明提供程序（例如标识提供者、基于 API 的服务、Azure AD B2C 用户目录和其他服务）之间的声明交换，如 Azure AD 多重身份验证。
+* 在“开发模式”下，使用 [Application Insights](troubleshoot-with-application-insights.md) 跟踪标识体验框架用户旅程的活动。 在“开发模式”下，可以观察标识体验框架与技术配置文件定义的各种声明提供程序（例如标识提供者、基于 API 的服务、Azure AD B2C 用户目录以及 Azure AD 多重身份验证等其他服务）之间的声明交换。
 
 ## <a name="recommended-practices"></a>建议的做法
 
-**保留方案的多个版本。使用你的应用程序将项目组合在一个项目中。** 基本文件、扩展文件和信赖方文件直接相互依赖。 将它们保存为一个组。 保留单独的工作版本，因为会向策略添加新功能。 使用与工作版本交互的应用程序代码，将这些版本暂存在用户自己的文件系统中。 应用程序可能调用一个租户中的多个不同信赖方策略。 它们可能会开始依赖预期从 Azure AD B2C 策略获得的声明。
+**保留方案的多个版本。将这些版本连同应用程序一起分组到某个项目中。** 基本文件、扩展文件和信赖方文件直接相互依赖。 将它们保存为一个组。 保留单独的工作版本，因为会向策略添加新功能。 使用与工作版本交互的应用程序代码，将这些版本暂存在用户自己的文件系统中。 应用程序可能调用一个租户中的多个不同信赖方策略。 它们可能会开始依赖预期从 Azure AD B2C 策略获得的声明。
 
 **使用已知的用户旅程开发并测试技术配置文件。** 使用经过测试的初学者包策略设置技术配置文件。 在合并到自己的用户旅程之前，单独对其进行测试。
 

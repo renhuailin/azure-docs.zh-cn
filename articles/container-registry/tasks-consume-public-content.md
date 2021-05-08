@@ -7,10 +7,10 @@ ms.author: stevelas
 ms.date: 10/29/2020
 ms.custom: ''
 ms.openlocfilehash: 4fba6290b4973e797c13943fc9be4fadb19f3274
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96349276"
 ---
 # <a name="how-to-consume-and-maintain-public-content-with-azure-container-registry-tasks"></a>如何使用 Azure 容器注册表任务消耗并维护公共内容
@@ -31,7 +31,7 @@ ms.locfileid: "96349276"
 
 若要了解依赖于公共内容所带来的风险的背景信息以及如何使用 Azure 容器注册表来缓解这些风险，请参阅[消耗公共内容的 OCI 博客文章][oci-consuming-public-content]和[使用 Azure 容器注册表管理公共内容](buffer-gate-public-content.md)。
 
-您可以使用 Azure CLI 的 Azure Cloud Shell 或本地安装完成此演练。 建议使用 Azure CLI 2.10 或更高版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-cli]。
+可以使用 Azure Cloud Shell 或 Azure CLI 的本地安装来完成本演练。 建议使用 Azure CLI 2.10 或更高版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-cli]。
 
 ## <a name="scenario-overview"></a>方案概述
 
@@ -54,11 +54,11 @@ ms.locfileid: "96349276"
 1. 一个用来保护所有机密的 **Azure 密钥保管库**
 1. 一个承载 `hello-world` 生成应用程序的 **Azure 容器实例**
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 以下步骤配置在演练中创建和使用的资源的值。
 
-### <a name="set-environment-variables"></a>设置环境变量。
+### <a name="set-environment-variables"></a>设置环境变量
 
 配置你的环境特有的变量。 我们会遵循最佳做法，将具有持久性内容的资源置于其自己的资源组中，以最大程度地减少意外删除情况。 不过，你可以根据需要将其放在单个资源组中。
 

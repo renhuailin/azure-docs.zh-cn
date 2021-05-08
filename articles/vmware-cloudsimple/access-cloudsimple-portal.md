@@ -1,25 +1,25 @@
 ---
 title: 访问 Azure VMware Solution by CloudSimple - 门户
 description: 介绍如何在 Azure 门户中访问 VMware Solution by CloudSimple
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 06/04/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0aa7a9a1f19a9d4fb2c555b08753e0b57c657974
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3f872259eee6d75ce2e3a4ed6c5c0e15286fcdb0
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97895149"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108182707"
 ---
 # <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>从 Azure 门户访问 VMware Solution by CloudSimple 门户
 
 支持单一登录访问 CloudSimple 门户。 登录到 Azure 门户后，便可以访问 CloudSimple 门户，而无需再次登录。 首次访问 CloudSimple 门户时，系统将提示用户授权 “[CloudSimple Service Authorization](#consent-to-cloudsimple-service-authorization-application)” 应用程序。  授权是一次性操作。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 用户如具有内置“**所有者**”和“**参与者**”角色，则可以访问 CloudSimple 门户。  必须在部署 CloudSimple 服务的资源组上配置角色。  还可以在 CloudSimple 服务对象上配置角色。  有关检查角色的详细信息，请参阅“[查看角色分配](../role-based-access-control/check-access.md)”一文。 用户只有具有内置“**所有者**”和“**参与者**”角色，才可以访问 CloudSimple 门户。  必须在订阅上配置角色。  有关检查角色的详细信息，请参阅“[查看角色分配](../role-based-access-control/check-access.md)”一文。
 
@@ -38,7 +38,7 @@ Microsoft.VMwareCloudSimple/dedicatedCloudServices/*/write
 
 ## <a name="access-the-cloudsimple-portal"></a>访问 CloudSimple 门户
 
-1. 选择“所有服务”  。
+1. 选择“所有服务”。
 
 2. 搜索 **CloudSimple Services**。
 

@@ -1,14 +1,14 @@
 ---
-title: 智能协定集成模式-Azure 区块链工作台
-description: Azure 区块链工作台预览版中的智能协定集成模式概述。
+title: 智能合约集成模式 - Azure Blockchain Workbench
+description: Azure Blockchain Workbench（预览版）中的智能合约集成模式概述。
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
 ms.openlocfilehash: dae63e16356e825d3be31380df1648749e59d8bd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96015496"
 ---
 # <a name="smart-contract-integration-patterns"></a>智能合约集成模式
@@ -31,7 +31,7 @@ Azure Blockchain Workbench 生成的 Web 应用程序中的功能是通过 REST 
 
 REST API 主要用于 Web、移动和 bot 应用程序等交互式客户端。
 
-本部分介绍 REST API 侧重于将事务发送到分布式分类帐的模式，以及从 Azure 区块链工作台的 " *关链* " 数据库查询有关事务的数据的模式。
+本节重点介绍将事务发送到分布式账本的 REST API 方面的模式，以及 Azure Blockchain Workbench 的链外数据库查询事务数据的模式。
 
 ### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>将事务从外部系统发送到分布式账本
 
@@ -134,7 +134,7 @@ Azure Blockchain Workbench REST API 将经过身份验证的请求发送到与�
 -   状态更改以事件的形式传递给下游使用者。
 -   下游使用者接收事件，并触发外部代码执行。
 
-![此关系图显示协定内的状态更改，导致事件转到分布式分类帐。 然后，区块链工作台选取事件并发布该事件。](./media/integration-patterns/transition-external-process.png)
+![此图显示协定内导致事件转到分布式账本的状态更改。 然后，Blockchain Workbench 会选取并发布该事件。](./media/integration-patterns/transition-external-process.png)
 
 #### <a name="return-of-control-from-the-smart-contract"></a>从智能合同返回控制权
 
@@ -142,7 +142,7 @@ Azure Blockchain Workbench REST API 将经过身份验证的请求发送到与�
 
 ##### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>以预期的格式在 Azure Blockchain Workbench 中直接传送
 
-![此图显示了通过服务总线由区块链工作台选取的外部系统中的 P I 消息。 然后，区块链工作台代表代理将消息作为事务发送到分布式分类帐。 它将被传递给协定，导致状态更改。](./media/integration-patterns/direct-delivery.png)
+![此图显示通过服务总线由 Blockchain Workbench 选取的外部系统中的 API 消息。 然后，Blockchain Workbench 代表该代理将消息作为事务发送到分布式分账本。 该消息会被传递给协定，从而导致状态更改。](./media/integration-patterns/direct-delivery.png)
 
 在此模型中，完成上述过程后，将与合同通信，并发生后续的状态更改，其中 -
 
@@ -174,7 +174,7 @@ Azure Blockchain Workbench REST API 将经过身份验证的请求发送到与�
 
 一种常见的集成方案是在智能合同中包含从传感器检索到的遥测数据。 根据传感器传送的数据，智能合同可以采取明智的措施，并可以更改状态。
 
-例如，如果运送药物的卡车温度飙升到 110 度，同时未在供应链中检测到并消除此问题，则可能会影响药物的效力，并可能造成公共安全问题。 如果驱动程序每小时将汽车的汽车加速为100英里，则生成的传感器信息可能会通过其保险提供商触发保险单的取消。 如果汽车是租赁过来的，GPS 数据可能会指示驾驶员超出了其租赁协议涵盖的地理区域，从而产生罚金。
+例如，如果运送药物的卡车温度飙升到 110 度，同时未在供应链中检测到并消除此问题，则可能会影响药物的效力，并可能造成公共安全问题。 如果驾驶员将其车辆加速到每小时 100 英里，生成的传感器信息可能会造成保险被保险公司取消。 如果汽车是租赁过来的，GPS 数据可能会指示驾驶员超出了其租赁协议涵盖的地理区域，从而产生罚金。
 
 难点在于，这些传感器可以持续传送数据，但不适合用于将所有这些数据发送到智能合同。 典型的方法是限制发送到区块链的消息数，同时将所有消息传送到辅助存储。 例如，仅当包含的值超出智能合同的议定范围时，才按固定的间隔传送收到的消息（如每小时传送一次）。 检查超出容限的值可以确保接收和执行与合同业务逻辑相关的数据。 按间隔检查值可以确认传感器仍在报告数据。 所有数据发送到辅助报告存储，以进行更广泛的报告、分析和机器学习。 例如，尽管不一定需要每隔一分钟就获取智能合同的 GPS 传感器读数一次，但这些读数能够在报告或地图路线中提供有用的数据。
 
@@ -204,7 +204,7 @@ Azure Blockchain Workbench REST API 将经过身份验证的请求发送到与�
 
 -   Azure Blockchain Workbench 在实施其正常的操作行为过程中存储有关应用程序、工作流、合同和事务的元数据。
 -   外部系统或工具提供一个或多个对话框用于简化有关数据库的信息（例如数据库服务器名称、数据库名称、身份验证类型、登录凭据，以及要使用的数据库视图）的收集。
--   查询是针对数据库视图编写的，有助于外部系统、服务、报告、开发人员工具和企业生产力工具的下游使用。
+-   针对数据库视图编写查询，以便于外部系统、服务、报告、开发人员工具和企业生产力工具在下游的使用。
 
 ## <a name="storage-integration"></a>存储集成
 

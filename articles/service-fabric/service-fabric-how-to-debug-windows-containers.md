@@ -5,13 +5,13 @@ ms.topic: article
 ms.date: 02/14/2019
 ms.author: mikhegn
 ms.openlocfilehash: 3e6e7785278b182cebb21115a70f35ade52303c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86247245"
 ---
-# <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>如何：使用 Visual Studio 2019 在 Azure Service Fabric 中调试 Windows 容器
+# <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>操作说明：使用 Visual Studio 2019 在 Azure Service Fabric 中调试 Windows 容器
 
 借助 Visual Studio 2019，可以将容器中的 .NET 应用程序作为 Service Fabric 服务进行调试。 本文介绍如何配置环境，然后调试在本地 Service Fabric 群集中运行的容器中的 .NET 应用程序。
 
@@ -65,7 +65,7 @@ ms.locfileid: "86247245"
 
 1. 打开现有的 .NET 应用程序或新建一个 .NET 应用程序。
 
-1. 右键单击项目并选择“添加”->“容器业务流程协调程序支持”->“Service Fabric” 
+1. 右键单击项目并选择“添加”->“容器业务流程协调程序支持”->“Service Fabric”
 
 1. 按 **F5** 开始调试应用程序。
 

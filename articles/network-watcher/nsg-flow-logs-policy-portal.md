@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.openlocfilehash: 8da1130809c1802f4db963f4b4b000a848e9abaa
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98011095"
 ---
 # <a name="quickstart-deploy-and-manage-nsg-flow-logs-using-azure-policy"></a>快速入门：使用 Azure Policy 部署和管理 NSG 流日志 
@@ -30,9 +30,9 @@ Azure Policy 可帮助实施组织标准并大规模评估合规性。 Azure Pol
 
 
 ## <a name="locate-the-policies"></a>查找策略
-1. 中转到 Azure 门户– [portal.azure.com](https://portal.azure.com) 
+1. 转到 Azure 门户 – [portal.azure.com](https://portal.azure.com) 
 
-在顶部搜索栏策略主页中搜索 "策略"，导航到 "Azure 策略" 页 ![](./media/network-watcher-builtin-policy/1_policy-search.png)
+通过在的顶部搜索栏中搜索“策略”，导航到 Azure Policy 页面![策略主页](./media/network-watcher-builtin-policy/1_policy-search.png)
 
 2. 转到左侧窗格中的“分配”选项卡
 
@@ -46,7 +46,7 @@ Azure Policy 可帮助实施组织标准并大规模评估合规性。 Azure Pol
 
 5. 使用“类型”筛选器并选择“内置”。 然后搜索“流日志”
 
-应该会看到 "流日志的两个内置策略" ![ 策略列表](./media/network-watcher-builtin-policy/4_filter-for-flow-log-policies.png)
+此时会看到两个用于流日志的内置策略![策略列表](./media/network-watcher-builtin-policy/4_filter-for-flow-log-policies.png)
 
 6. 选择要分配的策略
 
@@ -59,7 +59,7 @@ Azure Policy 可帮助实施组织标准并大规模评估合规性。 Azure Pol
 
 ### <a name="how-the-policy-works"></a>策略的工作原理
 
-此策略检查 "networkSecurityGroups" 类型的所有现有 ARM 对象，即查看给定范围内的所有 Nsg，并通过 NSG 的 "流日志" 属性检查是否存在链接流日志。 如果该属性不存在，则会对 NSG 进行标记。
+此策略检查“Microsoft.Network/networkSecurityGroups”类型的所有现有 ARM 对象（即查看给定范围内的所有 NSG），并通过 NSG 的“流日志”属性检查是否存在链接的流日志。 如果该属性不存在，则会对 NSG 进行标记。
 
 若要查看策略的完整定义，可访问[“定义”选项卡](https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/Definitions)，并搜索“流日志”来查找策略
 
@@ -88,7 +88,7 @@ Azure Policy 可帮助实施组织标准并大规模评估合规性。 Azure Pol
 
 ### <a name="policy-structure"></a>策略结构
 
-此策略检查 "networkSecurityGroups" 类型的所有现有 ARM 对象，即查看给定范围内的所有 Nsg，并通过 NSG 的 "流日志" 属性检查是否存在链接流日志。 如果该属性不存在，策略将部署流日志。 
+此策略检查“Microsoft.Network/networkSecurityGroups”类型的所有现有 ARM 对象（即查看给定范围内的所有 NSG），并通过 NSG 的“流日志”属性检查是否存在链接的流日志。 如果该属性不存在，策略将部署流日志。 
 
 若要查看策略的完整定义，可访问[“定义”选项卡](https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/Definitions)，并搜索“流日志”以查找该策略。 
 
@@ -106,7 +106,7 @@ Azure Policy 可帮助实施组织标准并大规模评估合规性。 Azure Pol
 - NSG 区域：策略的目标 Azure 区域
 - 存储 ID：存储帐户的完整资源 ID。 注意：此存储帐户应与 NSG 位于同一区域。 
 - 网络观察程序 RG：包含网络观察程序资源的资源组的名称。 如果尚未对其进行重命名，可输入默认值“NetworkWatcherRG”。
-- 网络观察程序名称：区域网络观察程序服务的名称。 格式：NetworkWatcher_RegionName。 示例： NetworkWatcher_centralus。 请查看完整列表。
+- 网络观察程序名称：区域网络观察程序服务的名称。 格式：NetworkWatcher_RegionName。 示例：NetworkWatcher_centralus。 请查看完整列表。
 
 ![DINE 策略参数](./media/network-watcher-builtin-policy/5_2_1_dine-policy-details-alt.png)
 
@@ -119,7 +119,7 @@ Azure Policy 可帮助实施组织标准并大规模评估合规性。 Azure Pol
 
 ![DINE 策略修正](./media/network-watcher-builtin-policy/5_2_2_dine-remediation.png) 
 
-4. 单击 "查看 + 创建" 查看分配，你应该会看到类似于以下屏幕截图的内容。
+4. 单击“查看 + 创建”以查看分配。显示的内容应该类似于以下屏幕截图。
 
 ![DINE 策略评审](./media/network-watcher-builtin-policy/5_2_3_dine-review.png) 
 

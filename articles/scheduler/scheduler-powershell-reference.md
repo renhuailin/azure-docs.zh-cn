@@ -1,5 +1,5 @@
 ---
-title: PowerShell cmdlet 参考
+title: PowerShell Cmdlet 参考
 description: 了解 Azure 计划程序 PowerShell cmdlet
 services: scheduler
 ms.service: scheduler
@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
 ms.openlocfilehash: ccc9f709348d961e49bced00946658a6997837c0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92368105"
 ---
 # <a name="powershell-cmdlets-reference-for-azure-scheduler"></a>Azure 计划程序 PowerShell cmdlet 参考

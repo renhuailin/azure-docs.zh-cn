@@ -1,5 +1,5 @@
 ---
-title: 使用堡垒远程工作： Azure 堡垒
+title: 使用 Bastion 进行远程工作：Azure Bastion
 description: 本页介绍在 COVID-19（新冠病毒）疫情期间如何利用 Azure Bastion 来实现远程工作。
 services: bastion
 author: mialdrid
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mialdrid
 ms.openlocfilehash: 515a6f7175aee23c6f720258b7fdaefe76b3b5d6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92077943"
 ---
 # <a name="working-remotely-using-azure-bastion"></a>使用 Azure Bastion 进行远程工作
@@ -19,7 +19,7 @@ ms.locfileid: "92077943"
 Azure Bastion 通过允许具有 Internet 连接的用户访问 Azure 虚拟机，在支持远程工作方案方面起着关键作用。 特别是，它使 IT 管理员能够在全球各地随时随地管理他们在 Azure 上运行的应用程序。
 
 >[!NOTE]
->本文介绍了如何利用 Azure 堡垒、Azure、Microsoft 网络和 Azure 合作伙伴生态系统远程工作，并减少因 COVID-19 危机而面临的网络问题。
+>本文介绍如何利用 Azure Bastion、Azure、Microsoft 网络和 Azure 合作伙伴生态系统进行远程工作，以及如何缓解因 COVID-19（新冠病毒）危机而面临的网络问题。
 >
 
 ## <a name="securely-access-virtual-machines"></a>安全地访问虚拟机

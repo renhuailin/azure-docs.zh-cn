@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d61962667953b20f4b542874e902411bb579b9c3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93122837"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
@@ -29,12 +29,12 @@ ms.locfileid: "93122837"
 Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成：
 
 - **活动** 
-    - **登录** –有关托管应用程序和用户登录活动的使用情况的信息。
+    - **登录** - 有关托管应用程序的使用情况和用户登录活动的信息。
     - **审核日志** - [审核日志](concept-audit-logs.md) - 有关用户和组管理、托管应用程序和目录活动的系统活动信息。
-    - **设置日志**  - [设置日志](./concept-provisioning-logs.md)允许客户通过预配服务监视活动，例如在 ServiceNow 中创建组或从 Workday 导入的用户。 
+    - **预配日志** - [预配日志](./concept-provisioning-logs.md)允许客户通过预配服务监视活动，例如在 ServiceNow 中创建组或从 Workday 导入用户。 
 - **安全性** 
-    - 有 **风险的登录** -有 [风险的登录](../identity-protection/overview-identity-protection.md)是指不是用户帐户合法所有者的登录尝试。
-    - **标记为存在风险的用户** -有 [风险的用户](../identity-protection/overview-identity-protection.md) 是可能已泄露的用户帐户的指示器。
+    - **风险登录** - [风险登录](../identity-protection/overview-identity-protection.md)指示由非用户帐户合法所有者的人进行的登录尝试。
+    - **已标记为存在风险的用户** - [风险用户](../identity-protection/overview-identity-protection.md)是指可能已泄露的用户帐户。
 
 本文概述了登录报告。
 
@@ -64,7 +64,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 在“监视”  下，选择“登录”  以打开[登录报告](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)。
 
-![屏幕截图显示从 "监视" 菜单选择的登录。](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "登录活动")
+![屏幕截图显示了从“监视”菜单选择的“登录”。](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "登录活动")
 
 某些登录记录最多可能需要两个小时才会显示在门户中。
 
@@ -80,19 +80,19 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 - 风险检测的状态
 - 多重身份验证 (MFA) 要求的状态
 
-![屏幕截图显示 Office 365 SharePoint Online 登录。](./media/concept-sign-ins/sign-in-activity.png "登录活动")
+![屏幕截图显示了 Office 365 SharePoint Online 登录。](./media/concept-sign-ins/sign-in-activity.png "登录活动")
 
 单击工具栏中的“列”即可自定义列表视图。 
 
-![屏幕截图显示 "登录" 页中的 "列" 选项。](./media/concept-sign-ins/19.png "登录活动")
+![屏幕截图显示了“登录”页中的“列”选项。](./media/concept-sign-ins/19.png "登录活动")
 
 通过“列”  对话框，可以访问可选属性。 在登录报告中，对于给定的登录请求，不能将具有多个值的字段作为列。 例如，“身份验证详细信息”、“条件访问数据”和“网络位置”就是这样的。   
 
-![屏幕截图显示 "列" 对话框，你可以在其中选择属性。](./media/concept-sign-ins/columns.png "登录活动")
+![屏幕截图显示了“列”对话框，你可以在其中选择属性。](./media/concept-sign-ins/columns.png "登录活动")
 
 选择列表视图中的某个项可获得更详细的信息。
 
-![屏幕截图显示详细的信息视图。](./media/concept-sign-ins/basic-sign-in.png "登录活动")
+![屏幕截图显示了详细的信息视图。](./media/concept-sign-ins/basic-sign-in.png "登录活动")
 
 > [!NOTE]
 > 客户现在可以通过所有登录报告对条件访问策略进行故障排除。 通过单击登录记录的“条件访问”  选项卡，客户可以查看条件访问状态，并深入了解应用于登录的策略的详细信息以及每个策略的结果。
@@ -104,7 +104,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 首先，将所报告数据的范围缩小到适当的级别。 接下来，使用充当默认筛选器的日期字段筛选登录数据。 Azure AD 提供了一系列可以设置的其他筛选器：
 
-![屏幕截图显示 "添加筛选器" 选项。](./media/concept-sign-ins/04.png "登录活动")
+![屏幕截图显示了“添加筛选器”选项。](./media/concept-sign-ins/04.png "登录活动")
 
 **请求 ID** - 所关注请求的 ID。
 
@@ -177,11 +177,11 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 **条件访问** - 已应用的条件访问规则的状态
 
-- **未应用** ：在登录过程中未对用户和应用程序应用任何策略。
+- **未应用**：在登录过程中未对用户和应用程序应用任何策略。
 
-- **成功** ：在登录过程中对用户和应用程序应用了一个或多个条件访问策略（但不一定是其他条件）。 
+- **成功**：在登录过程中对用户和应用程序应用了一个或多个条件访问策略（但不一定是其他条件）。 
 
-- **失败** ：登录满足了至少一个条件性访问策略的用户和应用程序条件，授权控件要么未满足，要么设置为阻止访问。
+- **失败**：登录满足了至少一个条件性访问策略的用户和应用程序条件，授权控件要么未满足，要么设置为阻止访问。
 
 
 
@@ -214,7 +214,7 @@ Azure AD 和 Azure 门户都提供登录数据的其他入口点：
 
 “标识安全保护”  概述页上的用户登录图显示了按周汇总的登录信息。默认时间为 30 天。
 
-![屏幕截图显示了一个月的登录图。](./media/concept-sign-ins/06.png "登录活动")
+![屏幕截图显示了一个月内的登录图。](./media/concept-sign-ins/06.png "登录活动")
 
 单击登录图中的某一天时，可以获得该天的登录活动的概览。
 
@@ -244,7 +244,7 @@ Azure AD 和 Azure 门户都提供登录数据的其他入口点：
 
 在“用户”页中单击“活动”部分的“登录”即可完全了解所有用户登录活动。   
 
-![屏幕截图显示了可在其中选择登录的活动部分。](./media/concept-sign-ins/08.png "登录活动")
+![屏幕截图显示了“活动”部分，可在其中选择“登录”。](./media/concept-sign-ins/08.png "登录活动")
 
 ## <a name="usage-of-managed-applications"></a>托管应用程序的使用情况
 
@@ -256,11 +256,11 @@ Azure AD 和 Azure 门户都提供登录数据的其他入口点：
 
 此数据的入口点是组织中最常用的三个应用程序。 数据包含在“企业应用程序”下“概览”部分过去 30 天的报告中   。
 
-![屏幕截图显示你可以选择 "概述"。](./media/concept-sign-ins/10.png "登录活动")
+![屏幕截图显示了你可以选择“概览”的位置。](./media/concept-sign-ins/10.png "登录活动")
 
 应用使用情况图显示指定时间内最常用的三个应用程序的按周汇总的登录信息。 默认时间为 30 天。
 
-![屏幕截图显示一个月内的应用使用情况。](./media/concept-sign-ins/graph-chart.png "登录活动")
+![屏幕截图显示了一个月内的应用使用情况。](./media/concept-sign-ins/graph-chart.png "登录活动")
 
 如果需要，可以将焦点设置在特定应用程序上。
 

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
 ms.openlocfilehash: 45501fee9ae6ff47643a1ed197a07c4ba598e981
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80047742"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Azure API 管理的 IP 地址
@@ -63,11 +63,11 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 
 公共 IP 地址用于端口 `3443` 上的内部通信 - 用于管理配置（例如，通过 Azure 资源管理器）。 在外部 VNet 配置中，它们也用于运行时 API 流量。 将请求从 API 管理发送到面向公众（面向 Internet）的后端时，公共 IP 地址将显示为请求来源。
 
-专用虚拟 IP (VIP) 地址 **仅** 在 [内部 VNet 模式下](api-management-using-with-internal-vnet.md)提供，用于从网络内部连接到 API 管理终结点-网关、开发人员门户和用于直接 API 访问的管理平面。 可以使用 VIP 在网络内部设置 DNS 记录。
+**仅** 在[内部 VNet 模式下](api-management-using-with-internal-vnet.md)提供专用虚拟 IP (VIP)地址，用于从网络内部连接到 API 管理终结点-网关、开发人员门户和用于直接 API 访问的管理平面。 可以使用 VIP 在网络内部设置 DNS 记录。
 
 Azure 门户和 API 调用响应中会显示两种类型的地址：
 
-![VNet IP 地址中的 API 管理](media/api-management-howto-ip-addresses/vnet-ip.png)
+![VNet 中 IP 地址的 API 管理](media/api-management-howto-ip-addresses/vnet-ip.png)
 
 
 ```json
@@ -89,7 +89,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 }
 ```
 
-API 管理对 VPN 外部的连接使用公共 IP 地址，对 VPN 内的连接使用专用 IP 地址。
+对于 VNet 外部的连接，API 管理会使用公共 IP 地址，而对于 VNet 内部的连接，则使用专用 IP 地址。
 
 ## <a name="ip-addresses-of-consumption-tier-api-management-service"></a>“消耗”层 API 管理服务的 IP 地址
 
@@ -104,6 +104,6 @@ API 管理对 VPN 外部的连接使用公共 IP 地址，对 VPN 内的连接�
 * 服务被删除，然后重新创建。
 * 服务订阅被[暂停](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)或[警告](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)（例如，由于未付款），然后恢复。
 * 在该服务中添加或删除 Azure 虚拟网络。
-* API 管理服务在外部和内部 VNet 部署模式间切换。
+* 切换 API 管理服务的“外部”和“内部” VNet 部署模式。
 
 在[多区域部署](api-management-howto-deploy-multi-region.md)中，如果某个区域搬迁然后重建，则区域 IP 地址将发生变化。

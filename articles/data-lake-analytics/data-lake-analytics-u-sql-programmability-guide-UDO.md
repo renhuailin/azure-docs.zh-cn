@@ -1,21 +1,21 @@
 ---
-title: 用于 Azure Data Lake 的 U SQL UDO 可编程性指南
-description: 了解有关 SCRIPT.USQL 的详细信息，请参阅 U-SQL UDO 可编程性 Azure Data Lake Analytics。
+title: 适用于 Azure Data Lake 的 U-SQL UDO 可编程性指南
+description: 了解 Azure Data Lake Analytics 的 U-SQL UDO 可编程性，以便能够创建优质的 USQL 脚本。
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/30/2017
 ms.openlocfilehash: 02360c68e5e830ceee69075fd5532b126d85bec2
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96512520"
 ---
-# <a name="u-sql-user-defined-objects-overview"></a>U-SQL 用户定义对象概述
+# <a name="u-sql-user-defined-objects-overview"></a>U-SQL 用户定义的对象概述
 
 
-## <a name="u-sql-user-defined-objects-udo"></a>U SQL：用户定义的对象： UDO
+## <a name="u-sql-user-defined-objects-udo"></a>U-SQL：用户定义的对象：UDO
 U-SQL 可让你定义自定义可编程性对象，此类对象称为用户定义的对象 (UDO)。
 
 下面是 U-SQL 中的 UDO 列表：
@@ -55,5 +55,5 @@ U-SQL 可让你定义自定义可编程性对象，此类对象称为用户定�
 > UDO 被限制使用至多 0.5 Gb 内存。  此内存限制对本地执行不适用。
 
 ## <a name="next-steps"></a>后续步骤
-* [U-SQL 可编程性指南-概述](data-lake-analytics-u-sql-programmability-guide.md)
-* [U-SQL 可编程性指南-UDT 和 UDAGG](data-lake-analytics-u-sql-programmability-guide-UDT-AGG.md)
+* [U-SQL 可编程性指南 - 概述](data-lake-analytics-u-sql-programmability-guide.md)
+* [U-SQL 可编程性指南 - UDT 和 UDAGG](data-lake-analytics-u-sql-programmability-guide-UDT-AGG.md)

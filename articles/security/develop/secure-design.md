@@ -14,10 +14,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 743412b7602e5781911cdf190e41a5ee15bfddd4
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96487671"
 ---
 # <a name="design-secure-applications-on-azure"></a>在 Azure 上设计安全的应用程序
@@ -34,14 +34,14 @@ ms.locfileid: "96487671"
 
 在培训阶段使用以下资源自行熟悉可供开发人员使用的 Azure 服务以及 Azure 上的安全最佳做法：
 
-  - [Azure 开发人员指南](https://azure.microsoft.com/campaigns/developer-guide/) 介绍了如何开始 azure。 本指南展示了你可使用哪些服务来运行应用程序、存储你的数据、引入智能、构建 IoT 应用，以及以更高效、更安全的方式部署解决方案。
+  - [Azure 开发人员指南](https://azure.microsoft.com/campaigns/developer-guide/)介绍了如何开始使用 Azure。 本指南展示了你可使用哪些服务来运行应用程序、存储你的数据、引入智能、构建 IoT 应用，以及以更高效、更安全的方式部署解决方案。
 
   - [Azure 开发人员入门指南](../../guides/developer/azure-developer-guide.md)为希望使用 Azure 平台进行开发的开发人员提供了基本信息。
 
   - [SDK 和工具](../../index.yml?pivot=sdkstools)介绍了 Azure 上提供的工具。
 
-  - [Azure DevOps Services](/azure/devops/) 提供开发协作工具。 这些工具包括高性能管道、免费的 Git 存储库、可配置的看板以及广泛的自动化和基于云的负载测试。
-    [DevOps 资源中心](/azure/devops/learn/)结合了我们的资源，以实现学习 DevOps 实践、Git 版本控制、敏捷方法、我们如何在 Microsoft 中使用 DevOps，以及如何评估你自己的 DevOps 进度。
+  - [Azure DevOps Services](/azure/devops/) 提供开发协作工具。 这些工具包括高性能管道、免费 Git 存储库、可配置看板，以及各种自动化和基于云的负载测试。
+    [DevOps 资源中心](/azure/devops/learn/)整合了我们的资源，用于了解 DevOps 实践、Git 版本控制、敏捷方法、我们如何在 Microsoft 使用 DevOps，以及你如何评估自己的 DevOps 进展。
 
   - [在推送到生产环境前要考虑的前 5 个安全事项](/learn/modules/top-5-security-items-to-consider/index?WT.mc_id=Learn-Blog-tajanca)介绍了如何在 Azure 上帮助保护你的 Web 应用程序，并保护你的应用免受最常见和最危险的 Web 应用程序攻击。
 
@@ -66,7 +66,7 @@ ms.locfileid: "96487671"
 
   - 我的应用程序是否包含敏感数据？
 
-  - 我的应用程序是收集还是存储需要遵守行业标准和合规性计划的数据（如 [联邦金融机构检查委员会） (FFIEC) ](/previous-versions/azure/security/blueprints/ffiec-analytics-overview) 还是 [支付卡行业数据安全标准 (PCI DSS) ](/previous-versions/azure/security/blueprints/pcidss-analytics-overview)？
+  - 我的应用程序是收集还是存储要求我遵守行业标准和合规性计划（如 [联邦金融机构检查委员会 [FFIEC]](/previous-versions/azure/security/blueprints/ffiec-analytics-overview) 或 [支付卡行业数据安全标准 [PCI DSS]](/previous-versions/azure/security/blueprints/pcidss-analytics-overview)）的数据？
 
   - 我的应用程序是否收集或包含敏感的个人或客户数据，这些数据是否可以用来（单独使用或与其他信息一起使用）识别、联系或定位个人？
 
@@ -89,7 +89,7 @@ ms.locfileid: "96487671"
 了解这些安全风险可以帮助你制定要求和设计决策，从而将应用程序中的这些风险降到最低。
 
 考虑采取安全控制措施来防止违规，这很重要。
-但是，您还需要 [假设发生了破坏](/azure/devops/learn/devops-at-microsoft/security-in-devops) 。 假设会存在违规，这有助于你提前应对一些重要的安全问题，不致于仓促上阵：
+但是，你还需要[假设会出现违规的情况](/azure/devops/learn/devops-at-microsoft/security-in-devops)。 假设会存在违规，这有助于你提前应对一些重要的安全问题，不致于仓促上阵：
 
   - 我将如何检测攻击？
 
@@ -131,11 +131,11 @@ Microsoft 提供了各种[语言、框架和工具](../../index.yml?panel=sdksto
 Azure 提供了各种可用来托管网站和 Web 应用程序的服务。 这些服务允许你使用自己喜欢的语言进行开发，无论该语言是 .NET、NET Core、Java、Ruby、Node.js、PHP 还是 Python。
 [Azure 应用服务 Web 应用](../../app-service/overview.md)（Web 应用）是其中的服务之一。
 
-Web 应用将 Microsoft Azure 的功能添加到了应用程序中。 它包括安全性、负载均衡、自动缩放和自动化管理。 你还可以利用 Web 应用中的 DevOps 功能，例如包管理、过渡环境、自定义域、SSL/TLS 证书，以及从 Azure DevOps、GitHub、Docker 中心和其他源进行的持续部署。
+Web 应用将 Microsoft Azure 的功能添加到了应用程序中。 它包括安全性、负载均衡、自动缩放和自动化管理。 你还可以利用 Web 应用中的 DevOps 功能，例如包管理、过渡环境、自定义域、SSL/TLS 证书，以及从 Azure DevOps、GitHub、Docker Hub 和其他源进行的持续部署。
 
 Azure 提供了可用来托管网站和 Web 应用程序的其他服务。 大多数情况下，Web 应用是最佳选择。 对于微服务体系结构，请考虑使用 [Azure Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric)。
 如果需要更好地控制运行代码的 VM，请考虑使用 [Azure 虚拟机](https://azure.microsoft.com/documentation/services/virtual-machines/)。
-有关如何在这些 Azure 服务之间进行选择的详细信息，请参阅 [Azure App Service、虚拟机、Service Fabric 和云服务的比较](/azure/architecture/guide/technology-choices/compute-decision-tree)。
+若要详细了解如何在这些 Azure 服务之间做出选择，请参阅 [Azure 应用服务、虚拟机、Service Fabric 和云服务的比较](/azure/architecture/guide/technology-choices/compute-decision-tree)。
 
 ### <a name="apply-updates-to-components"></a>为组件应用更新
 
@@ -149,7 +149,7 @@ Azure 提供了可用来托管网站和 Web 应用程序的其他服务。 大�
 
 考虑到非安全专家的情况，我们设计了 [SDL 威胁建模工具](threat-modeling-tool.md)来简化威胁建模过程。 此工具提供有关如何创建和分析威胁模型的明确指导，使所有开发人员更容易进行威胁建模。
 
-在所有信任边界之间对应用程序设计和枚举 [STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) 威胁进行建模，从而在所有信任边界中进行了一种有效的方法来捕获设计错误。 下表列出了 STRIDE 威胁，并给出了一些使用 Azure 提供的功能的示例缓解措施。 这些缓解措施并非在每种情况下都起作用。
+对应用程序设计进行建模并枚举所有信任边界中的 [STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) 威胁（欺骗、篡改、否认、信息泄漏、拒绝服务和权限提升），已被证明是一种在早期捕获设计错误的有效方法。 下表列出了 STRIDE 威胁，并给出了一些使用 Azure 提供的功能的示例缓解措施。 这些缓解措施并非在每种情况下都起作用。
 
 | 威胁 | 安全属性 | 潜在的 Azure 平台缓解措施 |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -157,8 +157,8 @@ Azure 提供了可用来托管网站和 Web 应用程序的其他服务。 大�
 | 篡改              | 完整性             | 验证 SSL/TLS 证书。 使用 SSL/TLS 的应用程序必须全面验证它们连接到的实体的 X.509 证书。 使用 Azure Key Vault 证书来[管理 x509 证书](../../key-vault/general/about-keys-secrets-certificates.md)。 |
 | 否认性            | 不可否认性       | 启用 Azure [监视和诊断](/azure/architecture/best-practices/monitoring)。|
 | 信息泄露 | 机密性       | 加密[静态](../fundamentals/encryption-atrest.md)和[传输中的](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)敏感数据。 |
-| 拒绝服务      | 可用性          | 监视性能指标，以了解潜在的拒绝服务情况。 实现连接筛选器。 [Azure DDoS 保护](../../ddos-protection/ddos-protection-overview.md#next-steps)与应用程序设计最佳做法相结合，提供对 DDoS 攻击的防御。|
-| 权限提升 | 授权         | 使用 Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)。|
+| 拒绝服务      | 可用性          | 监视潜在拒绝服务条件的性能指标。 实现连接筛选器。 [Azure DDoS 防护](../../ddos-protection/ddos-protection-overview.md#next-steps)与应用程序设计最佳做法相结合，可提供针对 DDoS 攻击的防御。|
+| 权限提升 | 授权         | 使用 Azure Active Directory <span class="underline"></span>[Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)。|
 
 ### <a name="reduce-your-attack-surface"></a>减少受攻击面
 
@@ -167,7 +167,7 @@ Azure 提供了可用来托管网站和 Web 应用程序的其他服务。 大�
 
 - 尚未发布的功能的代码。
 - 调试支持代码。
-- 未使用或已弃用的网络接口和协议。
+- 未使用的或已弃用的网络接口和协议。
 - 未使用的虚拟机和其他资源。
 
 定期清理资源并确保删除未使用的代码是很好的方法，可以确保减少恶意行动者发起攻击的机会。
@@ -192,7 +192,7 @@ Azure 提供了可用来托管网站和 Web 应用程序的其他服务。 大�
 
 ### <a name="adopt-a-policy-of-identity-as-the-primary-security-perimeter"></a>采用标识用作主要安全边界的策略
 
-设计云应用程序时，从以网络为中心的方式到以以身份为中心的方法，以以网络为中心的方式重点，这一点很重要。 过去，主要的本地安全外围是组织的网络。 大多数本地安全设计使用网络作为主要的安全枢纽。 对于云应用程序，可将标识视为主要安全外围，从而改善安全性。
+在设计云应用程序时，请将你的安全外围重心从以网络为中心的方法扩展到以标识为中心的方法，这很重要。 过去，主要的本地安全外围是组织的网络。 大多数本地安全设计使用网络作为主要的安全枢纽。 对于云应用程序，可将标识视为主要安全外围，从而改善安全性。
 
 若要制定以标识为中心的方法来开发 Web 应用程序，你可以执行的事项如下：
 
@@ -215,20 +215,20 @@ Azure 提供了可用来托管网站和 Web 应用程序的其他服务。 大�
 
 #### <a name="apply-the-principle-of-least-privilege"></a>应用最低权限原则
 
-[最小特权](https://en.wikipedia.org/wiki/Principle_of_least_privilege)的概念意味着向用户提供完成其工作所需的准确级别的访问和控制。
+[最小特权](https://en.wikipedia.org/wiki/Principle_of_least_privilege)概念的意思是给用户提供完成工作所需的精确的访问和控制权限，不提供任何额外的权限。
 
-软件开发人员是否需要域管理员权限？ 管理助理是否需要访问其个人电脑上的管理控制措施？ 评估对软件的访问没有什么不同。 如果使用 azure [基于角色的访问控制 (AZURE RBAC) ](../../role-based-access-control/overview.md) 为用户授予应用程序中的不同功能和颁发机构，则不会为每个人授予所有内容的访问权限。 通过将访问权限限定为每个角色必需的权限，可以限制出现安全问题的风险。
+软件开发人员是否需要域管理员权限？ 管理助理是否需要访问其个人电脑上的管理控制措施？ 评估对软件的访问没有什么不同。 如果在应用程序中使用 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 为用户提供不同的能力和授权，则不会让每个人都可以访问所有内容。 通过将访问权限限定为每个角色必需的权限，可以限制出现安全问题的风险。
 
 确保你的应用程序在其整个访问模式中强制实施[最低权限](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications)。
 
 > [!NOTE]
 > 最低权限规则需要应用于软件和创建软件的人员。 如果为软件开发人员提供过多的访问权限，他们可能会给 IT 安全带来巨大的风险。 如果开发人员有恶意或被授予了过多的访问权限，后果可能很严重。 建议在整个开发生命周期中对开发人员应用最低权限规则。
 
-#### <a name="implement-just-in-time-access"></a>实现实时访问
+#### <a name="implement-just-in-time-access"></a>实施实时访问
 
-实现 *实时* (JIT) 访问，进一步降低权限的暴露时间。 使用 [Azure AD Privileged Identity Management](../../active-directory/roles/security-planning.md#stage-3-take-control-of-admin-activity) 执行以下操作：
+实施实时 (JIT) 访问以进一步降低权限的暴露时间。 使用 [Azure AD Privileged Identity Management](../../active-directory/roles/security-planning.md#stage-3-take-control-of-admin-activity)，以进行以下操作：
 
-- 向用户授予仅 JIT 所需的权限。
+- 向用户授予所需的仅 JIT 权限。
 - 分配时限更短的角色，确信权限会自动撤消。
 
 ### <a name="require-re-authentication-for-important-transactions"></a>要求对重要事务反复进行身份验证

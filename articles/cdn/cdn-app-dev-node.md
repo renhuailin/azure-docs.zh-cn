@@ -16,10 +16,10 @@ ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: devx-track-js
 ms.openlocfilehash: f5d5c7a6e1f6993b19f38db2ae846b213a1d553e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95993357"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 开发入门
@@ -124,7 +124,7 @@ npm install --save azure-arm-cdn
     var cdnClient = new cdnManagementClient(credentials, subscriptionId);
     ```
    
-    请确保将 **&lt; 尖括号 &gt;** 中的项替换为正确的信息。  对于 `<redirect URI>`，请使用在 Azure AD 中注册应用程序时输入的重定向 URI。
+    请务必使用正确的信息替换 **&lt;尖括号&gt;** 中的项目。  对于 `<redirect URI>`，请使用在 Azure AD 中注册应用程序时输入的重定向 URI。
 4. 我们的 Node.js 控制台应用程序会采用一些命令行参数。  让我们验证是否至少传递了一个参数。
    
    ```javascript

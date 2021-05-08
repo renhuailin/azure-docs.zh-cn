@@ -1,5 +1,5 @@
 ---
-title: 为 Azure 应用程序网关迁移 WAF 策略
+title: 迁移 Azure 应用程序网关的 WAF 策略
 description: 了解如何使用 Azure PowerShell 迁移 Azure Web 应用程序防火墙策略。
 services: web-application-firewall
 ms.topic: conceptual
@@ -8,33 +8,33 @@ ms.service: web-application-firewall
 ms.date: 04/16/2020
 ms.author: ant
 ms.openlocfilehash: 9b60075eb861fe598a05ba014a7def96bc815d06
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97653004"
 ---
 # <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>使用 Azure PowerShell 迁移 Web 应用程序防火墙策略
 
-使用此脚本可以轻松地从 WAF config 或自定义规则-仅 WAF 策略转换为完整的 WAF 策略。 你可能会在门户中看到一条警告，其中显示了 " *迁移到 WAF 策略*"，或者你可能想要使用新的 WAF 功能，如 Geomatch 自定义规则 (预览) 、每个站点的 WAF 策略、基于 URI 的 WAF 策略 (预览版) 或 bot 缓解规则集 (预览版) 。 若要使用这些功能中的任何一种，需要有与应用程序网关关联的完整 WAF 策略。 
+通过使用此脚本，可以方便地将 WAF config 或仅包含自定义规则的 WAF 策略转换为完整的 WAF 策略。 门户中可能会出现一则警告，显示“迁移到 WAF 策略”，或者用户可能想要使用新的 WAF 功能，如 Geomatch 自定义规则（预览版）、每个站点的 WAF 策略、每个 URI 的 WAF 策略（预览版）或机器人缓解规则集（预览版）。 如需使用其中任意一种功能，需要有与应用程序网关关联的完整 WAF 策略。 
 
-有关创建新的 WAF 策略的详细信息，请参阅 [创建应用程序网关的 Web 应用程序防火墙策略](create-waf-policy-ag.md)。 有关迁移的信息，请参阅 [迁移到 WAF 策略](create-waf-policy-ag.md#migrate-to-waf-policy)。
+有关创建新的 WAF 策略的详细信息，请参阅[创建应用程序网关的 Web 应用程序防火墙策略](create-waf-policy-ag.md)。 有关迁移的信息，请参阅[迁移到 WAF 策略](create-waf-policy-ag.md#migrate-to-waf-policy)。
 
 ## <a name="to-migrate-to-waf-policy-using-the-migration-script"></a>使用迁移脚本迁移到 WAF 策略
 
-使用以下步骤来运行迁移脚本： 
+采用以下步骤运行迁移脚本： 
 
-1. 打开以下 cloud shell 窗口，或从门户中打开一个。
-2. 将脚本复制到 cloud shell 窗口并运行它。
-3. 该脚本要求提供订阅 ID、资源组名称、与 WAF config 关联的应用程序网关的名称，以及要创建的新 WAF 策略的名称。 输入这些输入后，脚本会运行并创建新的 WAF 策略
-4. 将新的 WAF 策略与应用程序网关相关联。 在门户中，单击 "WAF" 策略，并选择 " **关联的应用程序网关** " 选项卡。选择 " **关联应用程序网关** "，然后选择要将 WAF 策略关联到的应用程序网关。
+1. 打开以下 Cloud Shell 窗口，或者在门户中打开这个窗口。
+2. 将脚本复制到 Cloud Shell 窗口并运行该脚本。
+3. 该脚本要求提供订阅 ID、资源组名称、与 WAF config 关联的应用程序网关的名称，以及要创建的新 WAF 策略的名称。 输入这些信息后，脚本会运行并创建新的 WAF 策略
+4. 将新的 WAF 策略与应用程序网关相关联。 转到门户中的 WAF 策略，然后选择“应用程序关联的网关”选项卡。选择“关联应用程序网关”，然后选择要关联 WAF 策略的应用程序网关。
 
 > [!NOTE]
-> 如果满足以下条件，则该脚本不会完成迁移：
-> - 整个规则被禁用。 若要完成迁移，请确保未禁用整个 rulegroup。
-> - 与 *等于 any* 运算符)  (的排除项。 若要完成迁移，请确保不存在具有 *Equals Any* 运算符的排除条目。
+> 如果存在以下情况，则该脚本不会完成迁移：
+> - 整个规则被禁用。 如需完成迁移，请确保未禁用整个规则组。
+> - 带 Equals any 操作符的排除项。 如要完成迁移，请先确保不存在带有“Equals Any”操作符的排除项。
 >
-> 有关详细信息，请参阅脚本中的 *ValidateInput* 函数。
+> 有关详细信息，请参阅脚本中的 ValidateInput 函数。
 
 ```azurepowershell-interactive
 <#PSScriptInfo
@@ -219,4 +219,4 @@ Main
 ```
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [Web 应用程序防火墙 CRS 规则组和规则](application-gateway-crs-rulegroups-rules.md)的详细信息。
+详细了解[Web 应用程序防火墙 CRS 规则组和规则](application-gateway-crs-rulegroups-rules.md)。

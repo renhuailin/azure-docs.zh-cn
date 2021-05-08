@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Edge Pro R 技术规格和符合性 |Microsoft Docs
-description: 了解 Azure Stack Edge Pro R 设备的技术规格和符合性
+title: Microsoft Azure Stack Edge Pro R 技术规格和合规性 | Microsoft Docs
+description: 了解 Azure Stack Edge Pro R 设备的技术规格和合规性
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,60 +9,60 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: alkohli
 ms.openlocfilehash: 56d301762fde41f727b0b425d6c41a423f08103c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96466094"
 ---
-# <a name="azure-stack-edge-pro-r-technical-specifications"></a>Azure Stack Edge Pro R 技术规范
+# <a name="azure-stack-edge-pro-r-technical-specifications"></a>Azure Stack Edge Pro R 技术规格
 
-Azure Stack Edge Pro R 设备的硬件组件遵循本文中所述的技术规范。 该技术规格介绍了电源装置 (PSU)、存储容量、机箱和环境标准。
+Azure Stack Edge Pro R 设备的硬件组件遵循本文中概述的技术规格。 该技术规格介绍了电源装置 (PSU)、存储容量、机箱和环境标准。
 
 
 ## <a name="compute-memory-specifications"></a>计算和内存规格
 
-Azure Stack Edge Pro R 设备具有以下计算和内存规范：
+Azure Stack Edge Pro R 设备的计算和内存规格如下：
 
 | 规格       | 值                  |
 |---------------------|------------------------|
-| CPU    | 2 X 10 核心 CPU，Intel 至强银色4114 |
-| 内存              | 256 GB RAM (2666 MT/秒)      |
+| CPU    | 2 个 10 核 CPU，Intel Xeon Silver 4114 |
+| 内存              | 256 GB RAM（2666 MT/秒）     |
 
 
-## <a name="compute-acceleration-specifications"></a>计算加速规范
+## <a name="compute-acceleration-specifications"></a>计算加速规格
 
-每台设备上都包含一个图形处理单元 (GPU) ，可实现 Kubernetes、深度学习和机器学习方案。
+每台设备上都包含一个图形处理单元 (GPU)，可实现 Kubernetes、深度学习和机器学习方案。
 
 | 规格           | 值                  |
 |-------------------------|----------------------------|
-| GPU   | 一个 nVidia T4 GPU <br> 有关详细信息，请参阅 [NVIDIA T4](https://www.nvidia.com/en-us/data-center/tesla-t4/)。| 
+| GPU   | 一个 Nvidia T4 GPU <br> 有关详细信息，请参阅 [NVIDIA T4](https://www.nvidia.com/en-us/data-center/tesla-t4/)。| 
 
 ## <a name="power-supply-unit-specifications"></a>电源装置规格
 
-Azure Stack Edge Pro R 设备具有两个 100-240 V 电源单位， (通电 psu) 与高性能风扇一起提供。 这两个 PSU 提供了冗余电源配置。 如果 PSU 发生故障，设备将继续在另一个 PSU 上正常运行，直至发生故障的模块得到更换。 下表列出了 PSU 的技术规格。
+Azure Stack Edge Pro R 设备具有两个带有高性能风扇的 100-240 V 电源装置 (PSU)。 这两个 PSU 提供了冗余电源配置。 如果 PSU 发生故障，设备将继续在另一个 PSU 上正常运行，直至发生故障的模块得到更换。 下表列出了 PSU 的技术规格。
 
 | 规格           | 550 W PSU                  |
 |-------------------------|----------------------------|
 | 最大输出功率    | 550 W                      |
-| 热量散发 (最大)                    | 2891 BTU/小时                |
+| 散热量（最大）                   | 2891 BTU/小时                |
 | 频率               | 50/60 Hz                   |
-| 电压范围选择 | 自动范围： 115-230 V AC |
+| 电压范围选择 | 自动范围：115-230 V 交流 |
 | 可热插拔           | 是                        |
 
 ## <a name="network-specifications"></a>网络规格
 
-Azure Stack Edge Pro R 设备具有四个网络接口 PORT1-PORT4。 
+Azure Stack Edge Pro R 设备具有 4 个网络接口，端口 1 - 端口 4。 
 
 
 |规格  |说明                              |
 |----------------------|----------------------------------|
-|网络接口    |**2 x 1 Gbe RJ45** <br> 端口1用作初始设置的管理界面，默认情况下是静态的。 初始设置完成后，可以使用具有任何 IP 地址的数据的接口。 但是，在重置时，接口会恢复为静态 IP。 <br>其他接口端口2是用户可配置的，可用于数据传输，默认情况下为 DHCP。     |
-|网络接口    |**2 x 25 Gbe SFP28** <br> 可以将这些数据接口端口3和端口4配置为 DHCP (默认) 或静态。            |
+|网络接口    |**2 个 1 GbE RJ45** <br> 端口 1 用作初始设置的管理接口，默认为静态。 初始设置完成后，可以将其用作任何 IP 地址的数据接口。 但是，在重置后，此接口会还原为静态 IP。 <br>另一个接口端口 2 可由用户配置，可以用于数据传输，默认为 DHCP。     |
+|网络接口    |**2 个 25 GbE SFP28** <br> 端口 3 和端口 4 数据接口可以配置为 DHCP（默认）或静态。            |
 
 Azure Stack Edge Pro R 设备具有以下网络硬件：
 
-* **Mellanox 双重端口 25G ConnectX-4 通道网络适配器** -端口3和端口4。 
+* **Mellanox 双端口 25G ConnectX-4 通道网络适配器** - 端口 3 和端口 4。 
 
 <!--Here are the details for the Mellanox card: MCX4421A-ACAN
 
@@ -74,15 +74,15 @@ Azure Stack Edge Pro R 设备具有以下网络硬件：
 | PSID (R640)           | MT_2420110034                         |-->
 <!-- confirm w/ Ravi what is this-->
 
-若要查看这些网卡支持的电缆、交换机和收发器的完整列表，请转到： [Mellanox 双重端口 25G ConnectX-4 通道网络适配器兼容产品](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)。
+若要查看这些网卡支持的电缆、交换机和收发器的完整列表，请转到：[Mellanox 双端口 25G ConnectX-4 通道网络适配器兼容产品](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)。
 
 ## <a name="storage-specifications"></a>存储器规格
 
-Azure Stack Edge Pro R 设备有8个数据磁盘和2个为操作系统磁盘提供的2个 SATA 磁盘。 有关详细信息，请参阅 " [2. 2 SATA 磁盘](https://en.wikipedia.org/wiki/M.2)"。
+Azure Stack Edge Pro R 设备具有 8 个数据磁盘和 2 个用作操作系统磁盘的 M.2 SATA 磁盘。 有关详细信息，请转到 [M.2 SATA 磁盘](https://en.wikipedia.org/wiki/M.2)。
 
-#### <a name="storage-for-1-node-device"></a>1节点设备的存储
+#### <a name="storage-for-1-node-device"></a>单节点设备的存储
 
-下表提供了1节点设备的存储容量的详细信息。
+下表详细介绍了单节点设备的存储容量。
 
 |     规格                          |     值             |
 |--------------------------------------------|-----------------------|
@@ -113,7 +113,7 @@ The following table has the details for the storage capacity of the 4-node devic
 
 ### <a name="enclosure-dimensions"></a>机箱尺寸 
 
-下表列出了设备的维度，以及以毫米和英寸为单位的耐用大小的 UPS。
+下表列出了带加固型包装箱的设备和 UPS 的尺寸（以毫米和英寸为单位）。
 
 |     机箱     |     毫米     |     英寸     |
 |-------------------|---------------------|----------------|
@@ -148,7 +148,7 @@ The following table lists the dimensions of the 4U UPS case:
 
 |     机箱                                 |     重量          |
 |-----------------------------------------------|---------------------|
-|    1-节点设备的总重量和端帽的耐用情况     |    约114磅。          |
+|    单节点设备和带端盖的加固型包装箱的总重量     |    约 114 磅          |
 
 <!--#### For the 4-node system
 
@@ -160,17 +160,17 @@ The following table lists the dimensions of the 4U UPS case:
 
 ## <a name="enclosure-environment-specifications"></a>机箱环境规格
 
-本部分列出了与机箱环境有关的规格，如温度、振动、冲击和海拔。
+本部分列出了与机箱环境有关的规格，如温度、振动、撞击和海拔高度。
 
 
 |     规格              |     值    |
 |--------------------------------|-------------------------------------------------------------------|
-|     温度范围          |     0–43摄氏度 (操作)     |
-|     振动                  |     MIL-810 方法 514.7 *<br>过程 I CAT 4，20                  |
-|     撞击                      |     MIL-810 方法 516.7 *<br>步骤 IV，逻辑                 |
-|     海拔高度                   |     操作：10000英尺<br>不可操作：40000英尺          |
+|     温度范围          |     0 – 43° C（可操作）    |
+|     振动                  |     MIL-STD-810 方法 514.7*<br>过程 I CAT 4，20                  |
+|     撞击                      |     MIL-STD-810 方法 516.7*<br>过程 IV，逻辑                 |
+|     海拔高度                   |     可操作：10000 英尺<br>不可操作：40000 英尺          |
 
-**所有引用都将 MIL-810G Change 1 (2014)*
+**所有数据引自 MIL-STD-810G 第一次变更版 (2014)*
 
 ## <a name="next-steps"></a>后续步骤
 

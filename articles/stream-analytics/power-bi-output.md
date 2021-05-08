@@ -1,5 +1,5 @@
 ---
-title: 从 Azure 流分析 Power BI 输出
+title: 从 Azure 流分析输出的 Power BI
 description: 本文介绍如何将数据从 Azure 流分析输出到 Power BI。
 author: enkrumah
 ms.author: ebnkruma
@@ -7,13 +7,13 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.openlocfilehash: a94389a075fd62d80345a21e32f1bc977dfdee87
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98020054"
 ---
-# <a name="power-bi-output-from-azure-stream-analytics"></a>从 Azure 流分析 Power BI 输出
+# <a name="power-bi-output-from-azure-stream-analytics"></a>从 Azure 流分析输出的 Power BI
 
 [Power BI](https://powerbi.microsoft.com/) 可以用作流分析作业的输出，以便提供丰富的分析结果可视化体验。 此功能可用于操作仪表板、生成报告以及进行指标驱动型报告。
 
@@ -44,7 +44,7 @@ Azure 流分析会为用户创建一个 Power BI 数据集和表（如果不存�
 Power BI 使用先入先出 (FIFO) 保留策略。 数据将收集在表中，直到它达到 200,000 行。
 
 > [!NOTE]
-> 不建议使用多个输出写入同一数据集，因为这可能会导致多个问题。 每个输出尝试单独创建 Power BI 数据集，这可能会导致多个具有相同名称的数据集。 此外，如果输出没有一致的架构，则数据集会在每次写入时更改架构，从而导致架构更改请求过多。 即使避免这些问题，多个输出的性能也会低于单个合并输出。
+> 不建议使用多个输出写入同一数据集，因为这可能会导致多个问题。 每个输出尝试单独创建 Power BI 数据集，会导致多个具有相同名称的数据集。 此外，如果输出没有一致的架构，则数据集会在每次写入时更改架构，从而导致架构更改请求过多。 即使避免了这些问题，多个输出的性能也会低于单个合并输出。
 
 ### <a name="convert-a-data-type-from-stream-analytics-to-power-bi"></a>将数据类型从流分析转换到 Power BI
 
@@ -70,14 +70,14 @@ FLOAT | Double
 -----------------|-------|--------|----------|-------
 Int64 | Int64 | 字符串 | 字符串 | Double
 Double | Double | 字符串 | 字符串 | Double
-字符串 | 字符串 | 字符串 | 字符串 | 字符串 
+字符串 | String | String | String | 字符串 
 Datetime | 字符串 | 字符串 |  Datetime | 字符串
 
 ## <a name="output-batch-size"></a>输出批大小
 
-有关输出批大小，请参阅 [Power BI REST API 限制](/power-bi/developer/automation/api-rest-api-limitations)。
+有关输出批大小，请参阅 [Power BI Rest API 限制](/power-bi/developer/automation/api-rest-api-limitations)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用托管标识对 Azure 流分析作业进行身份验证，以 Power BI (预览版) ](powerbi-output-managed-identity.md)
+* [使用托管标识对 Azure 流分析作业的 Power BI 输出进行身份验证（预览）](powerbi-output-managed-identity.md)
 * [快速入门：使用 Azure 门户创建流分析作业](stream-analytics-quick-create-portal.md)

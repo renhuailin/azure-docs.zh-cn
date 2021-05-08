@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: c95524a5de6696bd0ffe7463451d152a9d3a19b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88205975"
 ---
 # <a name="azure-functions-trigger-and-binding-example"></a>Azure Functions 触发器和绑定示例
@@ -19,7 +19,7 @@ ms.locfileid: "88205975"
 
 假设希望在 Azure 队列存储中显示一条新消息时就将一个新行写入 Azure 表存储。 使用 Azure 队列存储触发器和 Azure 表存储输出绑定即可实现此方案。 
 
-下面是用于这种方案的 function.json  文件。 
+下面是用于这种方案的 function.json 文件。 
 
 ```json
 {
@@ -49,7 +49,7 @@ ms.locfileid: "88205975"
 若要在 Azure 门户中查看和编辑 *function.json* 的内容，请单击函数“集成”选项卡上的“高级编辑器”选项。
 
 > [!NOTE]
-> `connection` 的值是包含连接字符串的应用设置的名称，而不是连接字符串本身的名称。 绑定使用应用设置中存储的连接字符串，以强制执行 function.json  不包含服务密钥这一最佳做法。
+> `connection` 的值是包含连接字符串的应用设置的名称，而不是连接字符串本身的名称。 绑定使用应用设置中存储的连接字符串，以强制执行 function.json 不包含服务密钥这一最佳做法。
 
 ## <a name="c-script-example"></a>C# 脚本示例
 
@@ -83,7 +83,7 @@ public class Person
 
 ## <a name="javascript-example"></a>JavaScript 示例
 
-可将同一 *function.json* 文件用于 JavaScript 函数：
+可将同一“function.json”文件与 JavaScript 函数一起使用：
 
 ```javascript
 // From an incoming queue message that is a JSON object, add fields and write to Table Storage

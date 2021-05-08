@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: da6a2b97d2656d56fa2aa0e7259fba433bd7b81e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95998577"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>使用 CLI 创建和管理用于 Azure Database for MySQL 的专用链接
@@ -23,11 +23,11 @@ ms.locfileid: "95998577"
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- 本文要求 Azure CLI 版本2.0.28 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
+- 本文需要 Azure CLI 2.0.28 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-在创建任何资源之前，必须创建一个资源组以托管虚拟网络。 使用 [az group create](/cli/azure/group) 创建资源组。 此示例在 " *westeurope* " 位置创建名为 " *myResourceGroup* " 的资源组：
+在创建任何资源之前，必须创建一个资源组以托管虚拟网络。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在“westeurope”位置创建名为“myResourceGroup”的资源组：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
@@ -120,7 +120,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 ```
 
 > [!NOTE] 
-> 客户 DNS 设置中的 FQDN 未解析为已配置的专用 IP。 必须为配置的 FQDN 设置一个 DNS 区域，如[此处](../dns/dns-operations-recordsets-portal.md)所示。
+> 客户 DNS 设置中的 FQDN 未解析为已配置的专用 IP。 你必须为已配置的 FQDN 设置一个 DNS 区域，如[此处](../dns/dns-operations-recordsets-portal.md)所示。
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 
@@ -134,14 +134,14 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 1. 打开 downloaded.rdp 文件。
 
-    1. 出现提示时，选择“连接”  。
+    1. 出现提示时，选择“连接”。
 
     1. 输入在创建 VM 时指定的用户名和密码。
 
         > [!NOTE]
         > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据 。
 
-1. 选择“确定”。
+1. 选择“确定”  。
 
 1. 你可能会在登录过程中收到证书警告。 如果收到证书警告，请选择“确定”或“继续” 。
 
@@ -191,7 +191,7 @@ az group delete --name myResourceGroup --yes
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 了解[什么是 Azure 专用终结点的](../private-link/private-endpoint-overview.md)详细信息
+- 详细了解[什么是 Azure 专用终结点](../private-link/private-endpoint-overview.md)
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

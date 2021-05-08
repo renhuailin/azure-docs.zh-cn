@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
-manager: femila
-ms.openlocfilehash: eefd51fe0a629409ebb6ac0ca054e72ee92850ba
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+manager: lizross
+ms.openlocfilehash: 4fa281f6435013e9feb6808aab04ffa69c5f96c4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444490"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "88008604"
 ---
 # <a name="windows-virtual-desktop-classic-environment"></a>Windows 虚拟桌面（经典）环境
 
@@ -30,10 +30,10 @@ Windows 虚拟桌面租户是用于管理 Windows 虚拟桌面环境的主要界
 
 主机池可以是以下两种类型之一：
 
-- 个人主机池，其中每个会话主机分配给各个用户。
-- 共用主机池，其中会话主机可以接受来自主机池内某个应用组的任何授权用户的连接。
+- 个人，其中每个会话主机分配给单个用户。
+- 共用，其中会话主机可以接受来自主机池内某个应用组的任何授权用户的连接。
 
-可以在主机池上设置附加属性，以更改其负载平衡行为、每个会话主机可以使用的会话数，以及用户在登录到 Windows 虚拟桌面会话时可以对主机池中会话主机执行的操作。 可以通过应用组控制发布给用户的资源。
+可以在主机池上设置附加属性，以更改其负载平衡行为、每个会话主机可以使用的会话数，以及用户在登录到主机池中会话主机的 Windows 虚拟桌面会话时可以执行的操作。 可以通过应用组控制发布给用户的资源。
 
 ## <a name="app-groups"></a>应用组
 
@@ -44,7 +44,7 @@ Windows 虚拟桌面租户是用于管理 Windows 虚拟桌面环境的主要界
 
 默认情况下，在创建主机池时，将自动创建一个桌面应用组（名为“桌面应用程序组”）。 可以随时删除此应用组。 但是，如果存在桌面应用组，则无法在主机池中创建另一个桌面应用组。 若要发布 RemoteApp，必须创建 RemoteApp 应用组。 可以创建多个 RemoteApp 应用组来适应不同的辅助角色方案。 不同的 RemoteApp 应用组还可以包含重叠的 RemoteApp。
 
-若要将资源发布到用户，必须将用户分配给应用组。 将用户分配到应用组时，请注意以下事项：
+若要将资源发布到用户，必须将其分配给应用组。 将用户分配到应用组时，请注意以下事项：
 
 - 不可以将用户分配给同一主机池中的桌面应用组和 RemoteApp 应用组。
 - 可以将用户分配给同一主机池中的多个应用组，其源将是这两个应用组的累积。

@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory 身份验证
-description: 了解如何使用 Azure Active Directory 在 azure Synapse Analytics 中使用 Azure SQL 数据库、Azure SQL 托管实例和 Synapse SQL 进行身份验证
+description: 了解如何将 Azure Active Directory 身份验证与 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 中的 Synapse SQL 配合使用
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
@@ -12,17 +12,17 @@ ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 04/23/2020
 ms.openlocfilehash: a636c0e2a41b636f30ada14d4f16a022f2890b71
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96454298"
 ---
 # <a name="use-azure-active-directory-authentication"></a>使用 Azure Active Directory 身份验证
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Azure Active Directory (Azure AD) 身份验证是一种机制，用于在托管实例中使用标识，通过[Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)连接到[azure sql 数据库](sql-database-paas-overview.md)、 [AZURE sql Azure AD](../managed-instance/sql-managed-instance-paas-overview.md)和 Synapse SQL。
+Azure Active Directory (Azure AD) 身份验证是使用 Azure AD 中的标识连接到 [Azure SQL 数据库](sql-database-paas-overview.md)、[Azure SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)和 [Azure Synapse Analytics 中的 Synapse SQL](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 的一种机制。
 
 > [!NOTE]
 > 本文适用于 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics。
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) 身份验证是一种机制，用于在托管�
 - Azure AD 身份验证支持：
   - Azure AD 仅限云的标识。
   - Azure AD 混合标识，此类标识支持：
-    - 具有两个选项的云身份验证，结合无缝单一登录 (SSO) **直通** 身份验证和 **密码哈希** 身份验证。
+    - 具有两个选项的云身份验证，结合无缝单一登录 (SSO) 直通身份验证和密码哈希身份验证。 
     - 联合身份验证。
   - 有关 Azure AD 身份验证方法以及要选择哪种方法的详细信息，请参阅以下文章：
     - [为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法](../../active-directory/hybrid/choose-ad-authn.md)
@@ -61,18 +61,18 @@ Azure Active Directory (Azure AD) 身份验证是一种机制，用于在托管�
 6. 通过使用 Azure AD 标识连接到数据库。
 
 > [!NOTE]
-> 若要了解如何创建和填充 Azure AD，然后在 Azure Synapse Analytics 中配置 Azure SQL Database、SQL 托管实例和 Synapse SQL Azure AD，请参阅 [配置 AZURE Sql 数据库 Azure AD](authentication-aad-configure.md)。
+> 若要了解如何创建和填充 Azure AD，然后使用 Azure SQL 数据库、SQL 托管实例和 Azure Synapse 中的 Synapse SQL 配置 Azure AD，请参阅[使用 Azure SQL 数据库配置 Azure AD](authentication-aad-configure.md)。
 
 ## <a name="trust-architecture"></a>信任体系结构
 
 - 为了支持 Azure AD 本机用户密码，只考虑使用 Azure AD 云部分、SQL 数据库、SQL 托管实例和 Azure Synapse。
-- 若要支持 Windows 单一登录凭据 (或 Windows 凭据的用户/密码) ，请使用为传递和密码哈希身份验证配置为无缝单一登录的联合或托管域中的 Azure Active Directory 凭据。 有关详细信息，请参阅 [Azure Active Directory 无缝单一登录](../../active-directory/hybrid/how-to-connect-sso.md)。
+- 要支持 Windows 单一登录凭据（或 Windows 凭据的用户/密码），请使用来自联合域或托管域（配置为使用无缝单一登录以实现直通和密码哈希身份验证）的 Azure Active Directory 凭据。 有关详细信息，请参阅 [Azure Active Directory 无缝单一登录](../../active-directory/hybrid/how-to-connect-sso.md)。
 - 若要支持联合身份验证（或 Windows 凭据的用户/密码），需要与 ADFS 块进行通信。
 
 有关 Azure AD 混合标识、设置和同步的详细信息，请参阅以下文章：
 
 - 密码哈希身份验证 - [使用 Azure AD Connect 同步实现密码哈希同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)
-- 传递身份验证- [Azure Active Directory 传递身份验证](../../active-directory/hybrid/how-to-connect-pta-quick-start.md)
+- 直通身份验证 - [Azure Active Directory 直通身份验证](../../active-directory/hybrid/how-to-connect-pta-quick-start.md)
 - 联合身份验证 - [在 Azure 中部署 Active Directory 联合身份验证服务](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)和 [Azure AD Connect 和联合身份验证](../../active-directory/hybrid/how-to-connect-fed-whatis.md)
 
 有关使用 ADFS 基础结构（或 Windows 凭据的用户/密码）进行联合身份验证的示例，请参阅下图。 箭头表示通信路径。
@@ -100,7 +100,7 @@ Azure Active Directory (Azure AD) 身份验证是一种机制，用于在托管�
 - 可以为 Azure SQL 数据库预配以下 Azure AD 成员：
 
   - 本机成员：在托管域或客户域中的 Azure AD 中创建的成员。 有关详细信息，请参阅[将自己的域名添加到 Azure AD](../../active-directory/fundamentals/add-custom-domain.md)。
-  - 使用传递或密码哈希身份验证配置为无缝单一登录的托管域上与 Azure Active Directory 联合的 Active Directory 域的成员。 有关详细信息，请参阅 [Microsoft Azure 现在支持与 Windows Server 的联合 Active Directory](https://azure.microsoft.com/blog/windows-azure-now-supports-federation-with-windows-server-active-directory//) 和 [Azure Active Directory 无缝单一登录](../../active-directory/hybrid/how-to-connect-sso.md)。
+  - 在配置为使用无缝单一登录以实现直通或密码哈希身份验证的托管域上与 Azure Active Directory 联合的 Active Directory 域的成员。 有关详细信息，请参阅 [Microsoft Azure 现在支持与 Windows Server Active Directory 的联合](https://azure.microsoft.com/blog/windows-azure-now-supports-federation-with-windows-server-active-directory//)和 [Azure Active Directory 无缝单一登录](../../active-directory/hybrid/how-to-connect-sso.md)。
   - 作为本机或联合域成员从其他 Azure AD 导入的成员。
   - 以安全组形式创建的 Active Directory 组。
 

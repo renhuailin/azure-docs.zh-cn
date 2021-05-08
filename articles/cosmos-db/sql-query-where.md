@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: tisande
 ms.openlocfilehash: 5620a9fb95fb52a487095afd75d5f30c82a8bce1
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93341461"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 WHERE 子句
@@ -73,7 +73,7 @@ WHERE <filter_condition>
 
 |**运算符类型**  | **值** |
 |---------|---------|
-|算术 | +,-,*,/,% |
+|算术 | +、-、*、/、% |
 |位    | \|、&、^、<<、>>、>>>（补零右移） |
 |逻辑    | AND、OR、NOT      |
 |比较 | =、!=、&lt;、&gt;、&lt;=、&gt;=、<> |

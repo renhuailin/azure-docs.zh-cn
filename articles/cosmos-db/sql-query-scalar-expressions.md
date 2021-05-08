@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: 34df2d2f4a2209cca93c3f7ac12dcd203bf4a089
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93339625"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Azure Cosmos DB SQL 查询中的标量表达式
@@ -52,7 +52,7 @@ ms.locfileid: "93339625"
   
 - `<constant>`  
   
-   表示一个常数值。 有关详细信息，请参阅[常数](sql-query-constants.md)部分。  
+   表示一个常数值。 有关详细信息，请参阅[常量](sql-query-constants.md)部分。  
   
 - `input_alias`  
   
@@ -61,7 +61,7 @@ ms.locfileid: "93339625"
   
 - `<scalar_expression>.property_name`  
   
-   表示对象的属性值。 如果该属性不存在或在非对象的值上引用了该属性，则表达式的求值结果为“未定义”值  。  
+   表示对象的属性值。 如果属性不存在或对非对象的值引用属性，则表达式的求值结果为“未定义”值。  
   
 - `<scalar_expression>'['"property_name"|array_index']'`  
   
@@ -105,7 +105,7 @@ ms.locfileid: "93339625"
   
   创建对象时，将跳过任何已分配未定义值的属性，并且在创建的对象中不包含该属性。  
   
-  创建数组时，将跳过任何已分配“未定义”值  的元素值，并且在创建的对象中不包含该值。 这将导致下一个定义的元素取代该值时，创建的数组将不含跳过的索引。  
+  创建数组时，将跳过任何已分配“未定义”值的元素值，并且在创建的对象中不包含该值。 这将导致下一个定义的元素取代该值时，创建的数组将不含跳过的索引。  
 
 ## <a name="examples"></a>示例
 
@@ -144,5 +144,5 @@ ms.locfileid: "93339625"
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure Cosmos DB 简介](introduction.md)
-- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [子查询](sql-query-subquery.md)

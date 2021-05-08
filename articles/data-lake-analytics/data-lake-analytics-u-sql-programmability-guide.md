@@ -1,15 +1,15 @@
 ---
 title: 适用于 Azure Data Lake 的 U-SQL 可编程性指南
-description: 了解 Azure Data Lake Analytics 中的 "U-SQL 概述" 和 UDF 可编程性，使你能够创建良好的 SCRIPT.USQL 脚本。
+description: 了解 Azure Data Lake Analytics 中的 U-SQL 概述和 UDF 可编程性，以便能够创建优质 USQL 脚本。
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/30/2017
 ms.openlocfilehash: d263f2616607a96a8aa14f1ad1c06330b1b44644
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96510856"
 ---
 # <a name="u-sql-programmability-guide-overview"></a>U-SQL 可编程性指南概述
@@ -123,13 +123,13 @@ REFERENCE ASSEMBLY MyDB.[MyAssembly];
 
 
 ### <a name="use-assembly-versioning"></a>使用程序集版本控制
-目前，U SQL 使用 .NET Framework 版本4.7.2。 因此请确保自己的程序集与该版本的运行时兼容。
+目前，U-SQL 使用 .NET Framework 版本 4.7.2。 因此请确保自己的程序集与该版本的运行时兼容。
 
 如上所述，U-SQL 以 64 位 (x64) 格式运行代码。 因此请确保将代码编译为在 x64 上运行。 否则将收到上面所示的不正确格式错误。
 
 每个上传的程序集 DLL、资源文件（如不同的运行时、本机程序集或配置文件）最大可为 400 MB。 部署的资源（通过 DEPLOY RESOURCE 或引用程序集部署）的总大小及其附加文件不能超过 3 GB。
 
-最后请注意，每个 U-SQL 数据库仅可包含任何给定程序集的一个版本。 例如，如果需要 Newtonsoft.json Json.NET 库的版本7和版本8，则需要将它们注册到两个不同的数据库中。 此外，每个脚本仅可引用给定程序集 DLL 的一个版本。 在这一方面，U-SQL 遵循 C# 程序集管理和版本控制语义。
+最后请注意，每个 U-SQL 数据库仅可包含任何给定程序集的一个版本。 例如，如果需要 NewtonSoft Json.NET 库的 7 和 8 两个版本，则需要将它们注册到两个不同的数据库中。 此外，每个脚本仅可引用给定程序集 DLL 的一个版本。 在这一方面，U-SQL 遵循 C# 程序集管理和版本控制语义。
 
 ## <a name="use-user-defined-functions-udf"></a>使用用户定义的函数 (UDF)
 U-SQL 用户定义的函数或 UDF 是编程例程，可接受参数、执行操作（例如复杂计算）并将操作的结果以值的形式返回。 UDF 的返回值只能是单个标量。 与任何其他 C# 标量函数相似，U-SQL UDF可在 U-SQL 基本脚本中进行调用。
@@ -289,7 +289,7 @@ OUTPUT @rs1
 ### <a name="keep-state-between-udf-invocations"></a>保持 UDF 调用之间的状态
 在通过代码隐藏全局变量利用交互性时，U-SQL C# 可编程性对象会更加复杂。 来看看以下这个企业用例场景。
 
-在大型组织中，用户可在多种内部应用程序之间切换。 其中包括 Microsoft Dynamics CRM、Power BI 等。 客户希望对用户切换不同应用程序的方式、使用趋势等进行遥测分析。 企业的目标是优化应用程序的使用。 他们可能会合并不同的应用程序或特定的登录例程。
+在大型组织中，用户可在多种内部应用程序之间切换。 其中可能包括 Microsoft Dynamics CRM、Power BI 等。 客户希望对用户切换不同应用程序的方式、使用趋势等进行遥测分析。 企业的目标是优化应用程序的使用。 他们可能会合并不同的应用程序或特定的登录例程。
 
 要实现此目标，必须确定会话 ID 和上次发生的会话之间的延迟时间。
 
@@ -421,5 +421,5 @@ OUTPUT @rs2
 此示例演示一个更复杂的用例场景，其中将使用代码隐藏部分（应用于整个内存行集）内部的全局变量。
 
 ## <a name="next-steps"></a>后续步骤
-* [U-SQL 可编程性指南-UDT 和 UDAGG](data-lake-analytics-u-sql-programmability-guide-UDT-AGG.md)
-* [U-SQL 可编程性指南-UDO](data-lake-analytics-u-sql-programmability-guide-UDO.md)
+* [U-SQL 可编程性指南 - UDT 和 UDAGG](data-lake-analytics-u-sql-programmability-guide-UDT-AGG.md)
+* [U-SQL 可编程性指南 - UDO](data-lake-analytics-u-sql-programmability-guide-UDO.md)

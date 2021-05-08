@@ -1,6 +1,6 @@
 ---
 title: 为 EDIFACT 消息解码
-description: 验证 EDI，并为带有 Enterprise Integration Pack 的 Azure 逻辑应用的 EDIFACT 消息解码器生成确认
+description: 使用 EDIFACT 消息解码器为带有 Enterprise Integration Pack 的 Azure 逻辑应用验证 EDI 并生成确认
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -9,10 +9,10 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: b36641677dbf36402c7f578b9b1887c52f441afd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96000005"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用解码 EDIFACT 消息
@@ -83,14 +83,14 @@ ms.locfileid: "96000005"
   * 针对交换中的其他组控制编号检查组控制编号。 
   * 针对该组中的其他事务集控制编号检查事务集控制编号。
 * 将交换拆分为事务集，或保留整个交换：
-  * 将交换拆分为事务集 - 出错时暂停事务集：将交换拆分为事务集并分析每个事务集。 
-  EDIFACT 解码操作仅输出那些未通过验证的事务集 `badMessages` ，并将剩余的事务集输出到 `goodMessages` 。
-  * 将交换拆分为事务集 - 出错时暂停交换：将交换拆分为事务集并分析每个事务集。 
-  如果交换中的一个或多个事务集未能通过验证，则 EDIFACT 解码操作会将该交换中的所有事务集输出到 `badMessages` 。
-  * 保留交换 - 出错时暂停事务集：保留交换并处理整个批量交换。 
-  EDIFACT 解码操作仅输出那些未通过验证的事务集 `badMessages` ，并将剩余的事务集输出到 `goodMessages` 。
-  * 保留交换 - 出错时暂停交换：保留交换并处理整个批量交换。 
-  如果交换中的一个或多个事务集未能通过验证，则 EDIFACT 解码操作会将该交换中的所有事务集输出到 `badMessages` 。
+  * 将交换拆分为交易集 - 出错时暂停交易集：将交换拆分为交易集并分析每个交易集。 
+  EDIFACT 解码操作仅将未通过验证的交易集输出到 `badMessages`，并将剩余交易集输出到 `goodMessages`。
+  * 将交换拆分为交易集 - 出错时暂停交换：将交换拆分为交易集并分析每个交易集。 
+  如果交换中的一个或多个交易集未能通过验证，EDIFACT 解码操作会将该交换中的所有交易集输出到 `badMessages`。
+  * 保留交换 - 出错时暂停交易集：保留交换并处理整个批量交换。 
+  EDIFACT 解码操作仅将未通过验证的交易集输出到 `badMessages`，并将剩余交易集输出到 `goodMessages`。
+  * 保留交换 - 出错时暂停交易集：保留交换并处理整个批量交换。 
+  如果交换中的一个或多个交易集未能通过验证，EDIFACT 解码操作会将该交换中的所有交易集输出到 `badMessages`。
 * 生成技术（控制）和/或功能确认（如果已配置）。
   * 技术确认或 CONTRL ACK 报告收到的完整交换的语法检查结果。
   * 功能确认会确认接受或拒绝收到的交换或组

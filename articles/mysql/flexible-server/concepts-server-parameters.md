@@ -1,45 +1,45 @@
 ---
-title: 服务器参数-Azure Database for MySQL-灵活服务器
-description: 本主题提供有关在 Azure Database for MySQL 灵活的服务器中配置服务器参数的准则。
+title: 服务器参数 - Azure Database for MySQL 灵活服务器
+description: 本主题提供了在 Azure Database for MySQL 灵活服务器中配置服务器参数的准则。
 author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.openlocfilehash: 58978f120578afeca129b0d8928713835def8418
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94496533"
 ---
-# <a name="server-parameters-in-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL-灵活服务器中的服务器参数
+# <a name="server-parameters-in-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL 灵活服务器中的服务器参数
 
 > [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
 
-本文提供了有关在 Azure Database for MySQL 灵活的服务器中配置服务器参数的注意事项和指南。
+本文提供了在 Azure Database for MySQL 灵活服务器中配置服务器参数的注意事项和准则。
 
 ## <a name="what-are-server-variables"></a>什么是服务器变量？ 
 
-MySQL 引擎提供了许多不同的 [服务器变量/参数](https://dev.mysql.com/doc/refman/5.7/en/server-option-variable-reference.html) ，可用于配置和优化引擎行为。 某些参数可在运行时动态设置，另外一些参数则为“静态”参数，需要重启服务器才能应用。
+MySQL 引擎提供了可以用来配置和优化引擎行为的许多不同的[服务器变量/参数](https://dev.mysql.com/doc/refman/5.7/en/server-option-variable-reference.html)。 某些参数可在运行时动态设置，另外一些参数则为“静态”参数，需要重启服务器才能应用。
 
-Azure Database for MySQL 灵活的服务器提供了使用 [Azure 门户](./how-to-configure-server-parameters-portal.md) 更改各种 MySQL Server 参数的值的功能，并 [Azure CLI](./how-to-configure-server-parameters-cli.md) 以满足工作负荷的需求。
+Azure Database for MySQL 灵活服务器公开了通过 [Azure 门户](./how-to-configure-server-parameters-portal.md) 和 [Azure CLI](./how-to-configure-server-parameters-cli.md) 根据工作负载的需求更改各种 MySQL 服务器参数值的功能。
 
 ## <a name="configurable-server-parameters"></a>可配置的服务器参数
 
-你可以使用服务器参数管理 Azure Database for MySQL 灵活的服务器配置。 创建服务器时，将使用默认值和推荐值配置服务器参数。 Azure 门户上的 "服务器参数" 边栏选项卡显示可修改和不可修改的服务器参数。 不可修改的服务器参数灰显。
+你可以使用服务器参数管理 Azure Database for MySQL 灵活服务器配置。 创建服务器时，将使用默认值和推荐值配置服务器参数。 Azure 门户上的“服务器参数”边栏选项卡显示可修改和不可修改的服务器参数。 不可修改的服务器参数为灰显。
 
 受支持服务器参数的列表还在不断增加。 在 Azure 门户中使用服务器参数选项卡可查看完整列表并配置服务器参数值。
 
-请参阅以下各部分，详细了解多个经常更新的服务器参数的限制。 此限制取决于服务器 (Vcore) 的计算层和大小。
+请参阅以下各部分，详细了解多个经常更新的服务器参数的限制。 这些限制取决于服务器的计算层和大小 (vCore)。
 
 > [!NOTE]
-> 如果你想要修改无法修改的服务器参数，但想要将其视为适用于你的环境的可修改项，请打开 [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql) 项或投票是否已存在，这有助于我们确定优先级。
+> 如果想要修改无法修改的服务器参数，但想要将其视为适用于你的环境的可修改项，请打开 [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql) 项或投票是否反馈已存在，这有助于我们设置优先级。
 
 ### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
 
-在 Azure Database for MySQL 灵活的服务器中，始终启用二进制日志 (也就是说， `log_bin`) 设置为 ON。 如果你想使用触发器，则会收到如下错误：“你没有 SUPER 权限且二进制日志记录已启用(你可能需要使用安全性更低的 `log_bin_trust_function_creators` 变量)”。 
+在 Azure Database for MySQL 灵活服务器中，始终启用二进制日志（即 `log_bin` 设置为“开启”）。 如果你想使用触发器，则会收到如下错误：“你没有 SUPER 权限且二进制日志记录已启用(你可能需要使用安全性更低的 `log_bin_trust_function_creators` 变量)”。 
 
 二进制日志记录格式始终是“行”，所有与服务器的连接始终使用基于行的二进制日志记录。 使用基于行的二进制日志记录时，不存在安全问题并且二进制日志记录无法中断，因此可以安全地将 [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) 设置为 TRUE。
 
@@ -49,9 +49,9 @@ Azure Database for MySQL 灵活的服务器提供了使用 [Azure 门户](./how-
 
 |**定价层**|**vCore(s)**|**内存大小 (GiB)**|**默认值（字节）**|**最小值（字节）**|**最大值（字节）**|
 |---|---|---|---|---|---|
-|可突增 (B1s) |1|1|134217728|33554432|134217728|
-|可突增 (B1ms) |1|2|536870912|134217728|536870912|
-|可突增|2|4|2147483648|134217728|2147483648|
+|可突发 (B1s)|1|1|134217728|33554432|134217728|
+|可突发 (B1ms)|1|2|536870912|134217728|536870912|
+|可突发|2|4|2147483648|134217728|2147483648|
 |常规用途|2|8|6442450944|134217728|6442450944|
 |常规用途|4|16|12884901888|134217728|12884901888|
 |常规用途|8|32|25769803776|134217728|25769803776|
@@ -71,17 +71,17 @@ Azure Database for MySQL 灵活的服务器提供了使用 [Azure 门户](./how-
 
 MySQL 根据你在表创建期间提供的配置，将 InnoDB 表存储在不同的表空间中。 [系统表空间](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html)是 InnoDB 数据字典的存储区域。 [file-per-table 表空间](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html)包含单个 InnoDB 表的数据和索引，并存储在文件系统内它自己的数据文件中。 此行为由 `innodb_file_per_table` 服务器参数控制。 将 `innodb_file_per_table` 设置为 `OFF` 会导致 InnoDB 在系统表空间中创建表。 否则，InnoDB 在 file-per-table 表空间中创建表。
 
-在单个数据文件中，Azure Database for MySQL 灵活的服务器最大支持 **4 TB** 。 如果数据库大小大于 4 TB，则应在 [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) 表空间中创建表。 如果单个表的大小大于 4 TB，则应使用分区表。
+在单个数据文件中，Azure Database for MySQL 灵活服务器支持的最大大小为 4 TB。 如果数据库大小超过 4 TB，应在 [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) 表空间中创建表。 如果单个表的大小超过 4 TB，应使用分区表。
 
 ### <a name="max_connections"></a>max_connections
 
-Max_connection 的值取决于服务器的内存大小。 
+max_connection 的值取决于服务器的内存大小。 
 
 |**定价层**|**vCore(s)**|**内存大小 (GiB)**|**默认值**|**最小值**|**最大值**|
 |---|---|---|---|---|---|
-|可突增 (B1s) |1|1|85|10|171|
-|可突增 (B1ms) |1|2|171|10|341|
-|可突增|2|4|341|10|683|
+|可突发 (B1s)|1|1|85|10|171|
+|可突发 (B1ms)|1|2|171|10|341|
+|可突发|2|4|341|10|683|
 |常规用途|2|8|683|10|1365|
 |常规用途|4|16|1365|10|2731|
 |常规用途|8|32|2731|10|5461|
@@ -110,7 +110,7 @@ Max_connection 的值取决于服务器的内存大小。
 
 ### <a name="innodb_strict_mode"></a>innodb_strict_mode
 
-如果收到类似于 "行大小太大 ( # A0 8126) " 的错误，则可能需要关闭参数 **innodb_strict_mode** 。 不允许在服务器级别全局修改服务器参数 **innodb_strict_mode** ，因为如果行数据大小大于8k，则数据将被截断，且不会导致数据丢失。 建议修改架构以适应页面大小限制。 
+如果收到类似于“行大小太大(> 8126)”的错误，则可能需要禁用 innodb_strict_mode 参数。 不允许在服务器级别全局修改服务器参数 innodb_strict_mode，因为如果行数据大小大于 8k，该数据将会被截断，且不显示错误，这可能会导致数据丢失。 建议修改架构以适应页面大小限制。 
 
 可以使用 `init_connect` 在会话级别设置此参数。 若要在会话级别设置 innodb_strict_mode，请参阅[设置未列出的参数](./how-to-configure-server-parameters-portal.md#setting-non-modifiable-server-parameters)。
 
@@ -119,13 +119,13 @@ Max_connection 的值取决于服务器的内存大小。
 
 ### <a name="time_zone"></a>time_zone
 
-初次部署时，Azure for MySQL 灵活的服务器包括用于时区信息的系统表，但不会填充这些表。 可以通过从 MySQL 命令行或 MySQL Workbench 等工具调用 `mysql.az_load_timezone` 存储过程来填充时区表。 若要了解如何调用存储过程并设置全局时区或会话级时区，请参阅 [Azure 门户](./how-to-configure-server-parameters-portal.md#working-with-the-time-zone-parameter)或 [Azure CLI](./how-to-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) 一文。
+初始部署后，Azure for MySQL 灵活服务器包含用于时区信息的系统表，但这些表没有填充数据。 可以通过从 MySQL 命令行或 MySQL Workbench 等工具调用 `mysql.az_load_timezone` 存储过程来填充时区表。 若要了解如何调用存储过程并设置全局时区或会话级时区，请参阅 [Azure 门户](./how-to-configure-server-parameters-portal.md#working-with-the-time-zone-parameter)或 [Azure CLI](./how-to-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) 一文。
 
 ## <a name="non-modifiable-server-parameters"></a>不可修改的服务器参数
 
-Azure 门户上的 "服务器参数" 边栏选项卡显示可修改和不可修改的服务器参数。 不可修改的服务器参数灰显。如果要在会话级别配置不可修改的服务器参数，请参阅 [Azure 门户](./how-to-configure-server-parameters-portal.md#setting-non-modifiable-server-parameters) 或 [Azure CLI](./how-to-configure-server-parameters-cli.md#setting-non-modifiable-server-parameters) 一文，了解如何使用在连接级别设置参数 `init_connect` 。
+Azure 门户上的“服务器参数”边栏选项卡显示可修改和不可修改的服务器参数。 不可修改的服务器参数为灰显。如果要在会话级别配置不可修改的服务器参数，请参阅 [Azure 门户](./how-to-configure-server-parameters-portal.md#setting-non-modifiable-server-parameters) 或 [Azure CLI](./how-to-configure-server-parameters-cli.md#setting-non-modifiable-server-parameters) 文章，了解如何使用 `init_connect` 在连接级别设置参数。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 如何配置 [Azure 门户中的服务器参数](./how-to-configure-server-parameters-portal.md)
-- 如何 [在 Azure CLI 中配置服务器参数](./how-to-configure-server-parameters-cli.md)
+- 如何配置 [Azure CLI 中的服务器参数](./how-to-configure-server-parameters-cli.md)

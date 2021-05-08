@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 2f1edc14efdeaf70bf4c2acc0e31e1517753ed3e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92546341"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>管理配置服务器以便进行 VMware VM/物理服务器灾难恢复
@@ -29,7 +29,7 @@ ms.locfileid: "92546341"
 可以访问配置服务器，如下所示：
 
 * 登录到部署了配置服务器的 VM，然后从桌面快捷方式启动 Azure Site Recovery 配置管理器。
-* 或者，可以从 https:// *ConfigurationServerName* /:44315/ 远程访问配置服务器。 使用管理员凭据登录。
+* 或者，可以从 https://*ConfigurationServerName*/:44315/ 远程访问配置服务器。 使用管理员凭据登录。
 
 ## <a name="modify-vmware-server-settings"></a>修改 VMware 服务器设置
 
@@ -138,7 +138,7 @@ ms.locfileid: "92546341"
    ```
 
     >[!NOTE]
-    >若要从配置服务器向横向扩展进程服务器 **拉取最新证书** ，请执行命令 *" \<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe> "--registermt*
+    >若要从配置服务器“拉取最新的证书”来横向扩展进程服务器，请执行命令 "\<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe>"--registermt
 
 8. 最后，通过执行以下命令重启 obengine。
    ```
@@ -183,13 +183,13 @@ ms.locfileid: "92546341"
     ![更新](./media/vmware-azure-manage-configuration-server/update2.png)
 3. 将更新安装程序文件下载到配置服务器上。
 
-    ![显示在何处单击以下载更新安装程序文件的屏幕截图。](./media/vmware-azure-manage-configuration-server/update1.png)
+    ![屏幕截图显示了单击何处可下载更新安装程序文件。](./media/vmware-azure-manage-configuration-server/update1.png)
 
 4. 双击以运行安装程序。
 5. 安装程序检测计算机上运行的当前版本。 单击“是”开始升级。
 6. 升级完成时，验证服务器配置。
 
-    ![显示已完成的服务器验证配置的屏幕截图。](./media/vmware-azure-manage-configuration-server/update3.png)
+    ![屏幕截图显示了已完成的服务器验证配置。](./media/vmware-azure-manage-configuration-server/update3.png)
 
 7. 单击“完成”关闭安装程序。
 8. 若要升级其余的 Site Recovery 组件，请参阅我们的[升级指南](./service-updates-how-to.md#vmware-vmphysical-server-disaster-recovery-to-azure)。

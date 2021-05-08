@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 29457f2f5021fed9d8785f5764c4119de4be1fa9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95999206"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery 部署规划器成本估算报表 
@@ -56,7 +56,7 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 
 **网络**：符合 DR 需要的 ExpressRoute 和站点到站点 VPN 成本。 
 
-**Azure Site Recovery 许可证**：所有兼容 vm 的 Site Recovery 许可证成本。 如果在详细的成本分析表中手动输入了一个 VM，则还会包括该 VM 的 Site Recovery 许可证成本。
+**Azure Site Recovery 许可证**：所有兼容 VM 的 Site Recovery 许可证成本。 如果在详细的成本分析表中手动输入了一个 VM，则还会包括该 VM 的 Site Recovery 许可证成本。
 
 ### <a name="overall-dr-costs-by-states"></a>按状态估算的总体 DR 成本
 总 DR 成本按两种不同的状态（“复制”和“DR 演练”）分类。
@@ -94,7 +94,7 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 
 **货币**：生成报告时使用的货币。
 
-**成本持续时间**：可以查看每月或整年的所有成本。 
+**成本持续时间**：可以查看一个月或一整年的所有成本。 
 
 ## <a name="detailed-cost-analysis-table"></a>详细成本分析表
 ![详细成本分析](media/hyper-v-azure-deployment-planner-cost-estimation/detailed-cost-analysis-h2a.png)
@@ -107,17 +107,17 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 
 1. 根据与此配置相符的大致 VM 大小和 VM 数填充以下列： 
 
-    a. **Vm 数**
+    a. **VM 数量**
 
-    b. **你的选择 (IaaS 大小)**
+    b. **IaaS 大小(你的选择)**
 
-    c. **存储类型标准/高级**
+    c. **存储类型(标准/高级)**
 
     d. **VM 总存储大小(GB)**
 
-    e. **一年中的 DR-Drills 数**
+    e. **一年的 DR 演练次数**
 
-    f. **每个 DR-Drill 持续时间 (天)**
+    f. **每次 DR 演练的持续时间(天)**
 
     g. **OS 类型**
 
@@ -157,7 +157,7 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 
 **总 DR 演练成本(平均)**：DR 演练的计算和存储成本。
 
-**Azure Site Recovery 许可证成本**： Site Recovery 许可成本。
+**Azure Site Recovery 许可证成本**：Site Recovery 许可证成本。
 
 ## <a name="supported-target-regions"></a>支持的目标区域
 Site Recovery 部署规划器为以下 Azure 区域提供成本估算。 如果你的区域没有列在这下面，可以使用定价最接近你的区域的任何区域：

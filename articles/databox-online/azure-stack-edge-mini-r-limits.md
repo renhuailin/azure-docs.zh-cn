@@ -1,6 +1,6 @@
 ---
-title: Azure Stack 边缘迷你 R 限制 |Microsoft Docs
-description: 描述 Azure Stack 边缘迷你 R 的系统限制和建议大小。
+title: Azure Stack Edge Mini R 限制 | Microsoft Docs
+description: 介绍了Azure Stack Edge Mini R 的系统限制与建议的大小。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,31 +9,31 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: alkohli
 ms.openlocfilehash: 6f01d62d1d11f5ff90661482ffd2db112657eee5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96466389"
 ---
-# <a name="azure-stack-edge-mini-r-limits"></a>Azure Stack 边缘迷你 R 限制
+# <a name="azure-stack-edge-mini-r-limits"></a>Azure Stack Edge Mini R 限制
 
 
-部署和操作 Azure Stack Edge 迷你 R 解决方案时，请考虑这些限制。
+在部署和操作 Azure Stack Edge Mini R 解决方案时请考虑这些限制。
 
 ## <a name="azure-stack-edge-service-limits"></a>Azure Stack Edge 服务限制
 
 [!INCLUDE [azure-stack-edge-gateway-service-limits](../../includes/azure-stack-edge-gateway-service-limits.md)]
 
-## <a name="azure-stack-edge-mini-r-device-limits"></a>Azure Stack 边缘迷你 R 设备限制
+## <a name="azure-stack-edge-mini-r-device-limits"></a>Azure Stack Edge Mini R 设备限制
 
-下表描述了 Azure Stack Edge 迷你 R 设备的限制。
+下表介绍了 Azure Stack Edge Mini R 设备的限制。
 
 | 说明 | 限制|
 |---|---:|
-|不是。 设备的文件数 | 1 亿 <!--check with devs-->|
-|不是。 每个容器的共享数 | 1|
-|最大值 每个设备的共享终结点和 REST 终结点| 24 |
-|最大值 每台设备的分层存储帐户| 24|
+|不知道。 设备的文件数 | 1 亿 <!--check with devs-->|
+|不知道。 每个容器的共享数 | 1|
+|每个设备的最大 共享终结点和 REST 终结点数| 24 |
+|每个设备的最大 分层存储帐户数| 24|
 |写入到共享的最大文件大小| 500 GB|
 |每个设备的最大资源组数| 800|
 

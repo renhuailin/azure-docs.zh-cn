@@ -12,10 +12,10 @@ ms.author: moslake
 ms.reviewer: sstein
 ms.date: 09/16/2020
 ms.openlocfilehash: 947d842860452425f8b30fbdaf9558c2a94a89a2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92781203"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>在 Azure SQL 数据库中缩放弹性池资源
@@ -51,13 +51,13 @@ ms.locfileid: "92781203"
 |**基本单一数据库，</br>标准 (S0-S1)**|&bull; &nbsp;延迟时间较为恒定，与已用空间无关</br>&bull; &nbsp;通常小于 5 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|
 |**基本弹性池，</br>标准 (S2-S12)，</br>常规用途单一数据库或弹性池**|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;对于单一数据库，延迟时间是恒定的，与已用空间无关</br>&bull; &nbsp;对于单一数据库，通常不超过 5 分钟</br>&bull; &nbsp;对于弹性池，与数据库数量成正比|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|
 |**高级或业务关键型单一数据库或弹性池**|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|
-|**超大规模**|空值|空值|空值|&bull; &nbsp;延迟时间较为恒定，与已用空间无关</br>&bull; &nbsp;通常小于 2 分钟|
+|**超大规模**|空值|不适用|空值|&bull; &nbsp;延迟时间较为恒定，与已用空间无关</br>&bull; &nbsp;通常小于 2 分钟|
 
 > [!NOTE]
 >
 > - 如果更改服务层或者重新缩放弹性池的计算大小，则应使用池中所有数据库的已用空间之和来计算估计值。
 > - 如果向/从弹性池移动数据库，则只有数据库使用的空间会影响延迟，弹性池使用的空间不会影响延迟。
-> - 对于标准和常规用途弹性池，如果弹性池使用高级文件共享 ([PFS](../../storage/files/storage-files-introduction.md)) 存储，则将数据库移入/移出弹性池或在弹性池之间移动数据库的延迟与数据库大小成正比。 若要确定池是否正在使用 PFS 存储，请在任何池数据库上下文中执行以下查询。 如果 AccountType 列中的值为 `PremiumFileStorage` 或 `PremiumFileStorage-ZRS` ，则该池使用的是 PFS 存储。
+> - 对于标准和常规用途弹性池，如果弹性池使用高级文件共享 ([PFS](../../storage/files/storage-files-introduction.md)) 存储，则将数据库移入/移出弹性池或在弹性池之间移动数据库的延迟与数据库大小成正比。 若要确定池是否正在使用 PFS 存储，请在任何池数据库上下文中执行以下查询。 如果 AccountType 列中的值为 `PremiumFileStorage` 或 `PremiumFileStorage-ZRS`，则该池使用的是 PFS 存储。
 
 ```sql
 SELECT s.file_id,

@@ -1,5 +1,5 @@
 ---
-title: 创建、更改或删除 VNet 分流 Azure CLI
+title: 创建、更改或删除 VNet TAP - Azure CLI
 description: 了解如何使用 Azure CLI 创建、更改或删除虚拟网络 TAP。
 services: virtual-network
 documentationcenter: na
@@ -17,10 +17,10 @@ ms.date: 03/18/2018
 ms.author: kaanan
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 8e3a56e4a6eb1fb6eb633021178ef78f8ac7287d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96014782"
 ---
 # <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>通过 Azure CLI 使用虚拟网络 TAP

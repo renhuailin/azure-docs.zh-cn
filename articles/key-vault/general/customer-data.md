@@ -10,15 +10,15 @@ ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 8806ff41edabcd3c0875d3c02360dc9a275e3878
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96460820"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault 客户数据功能
 
-Azure Key Vault 在创建或更新保管库、托管 HSM 池、密钥、机密、证书和托管存储帐户期间接收客户数据。 此客户数据在 Azure 门户中以及通过 REST API 直接可见。 可以通过更新或删除包含客户数据的对象来编辑或删除此数据。
+Azure Key Vault 在创建或更新保管库、托管 HSM 池、密钥、机密、证书和托管的存储帐户期间接收客户数据。 此客户数据在 Azure 门户中以及通过 REST API 直接可见。 可以通过更新或删除包含客户数据的对象来编辑或删除此数据。
 
 系统访问日志是在用户或应用程序访问 Key Vault 时生成的。 使用 Azure 见解的客户可以获得详细的访问日志。
 

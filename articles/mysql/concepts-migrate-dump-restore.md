@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/30/2020
 ms.openlocfilehash: f21587fe6a48d042ed98c126beb2a7dcaa39b7d8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94537911"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>使用转储和还原将 MySQL 数据库迁移到 Azure Database for MySQL
@@ -21,9 +21,9 @@ ms.locfileid: "94537911"
 - 从命令行转储和还原（使用 mysqldump）
 - 使用 PHPMyAdmin 转储和还原
 
-有关将数据库迁移到 Azure Database for MySQL 的详细信息和用例，请参阅 [数据库迁移指南](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide) 。 本指南提供的指导旨在将 MySQL 迁移成功规划和执行到 Azure。
+还可参阅[数据库迁移指南](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide)，获取有关将数据库迁移到 Azure Database for MySQL 的详细信息和用例。 遵循本指南提供的指导，就可以成功地进行规划和执行到 Azure 的 MySQL 迁移。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 若要逐步执行本操作方法指南，需要具备以下条件：
 - [创建 Azure Database for MySQL 服务器 - Azure 门户](quickstart-create-mysql-server-database-using-azure-portal.md)
 - 已在计算机上安装 [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) 命令行实用程序。
@@ -37,10 +37,10 @@ ms.locfileid: "94537911"
 
 最常见的用例包括：
 
-- **从其他托管服务提供商移动** -大多数托管服务提供商可能由于安全原因无法提供对物理存储文件的访问权限，因此，逻辑备份和还原是迁移的唯一选择。
-- **从本地环境或虚拟机进行迁移** -Azure Database for MySQL 不支持还原物理备份，这会使逻辑备份和还原成为唯一的方法。
-- 将 **备份存储从本地冗余迁移到异地冗余存储** Azure Database for MySQL 允许在服务器创建过程中将本地冗余存储或异地冗余存储配置为仅允许进行备份。 预配服务器以后，不能更改备份存储冗余选项。 若要将备份存储从本地冗余存储移到异地冗余存储，只需要转储和还原选项。 
--  **从备用存储引擎迁移到 InnoDB** -Azure Database for MySQL 仅支持 InnoDB 存储引擎，因此不支持备用存储引擎。 如果表配置了其他存储引擎，请确保先将它们转换为 InnoDB 引擎格式，再迁移到 Azure Database for MySQL。
+- **从其他托管服务提供商转移** - 由于安全原因，大多数托管服务提供商可能不提供对物理存储文件的访问，因此逻辑备份和还原是迁移的唯一选项。
+- **从本地环境或虚拟机迁移** - Azure Database for MySQL 不支持还原物理备份，这使得逻辑备份和还原成为唯一方法。
+- **将备份存储从本地冗余存储迁移到异地冗余存储** - Azure Database for MySQL 允许为备份配置本地冗余存储或异地冗余存储，但只有在服务器创建期间才能这样做。 预配服务器以后，不能更改备份存储冗余选项。 若要将备份存储从本地冗余存储移到异地冗余存储，只能选择“转储和还原”选项。 
+-  **从备选存储引擎迁移到 InnoDB** - Azure Database for MySQL 仅支持 InnoDB 存储引擎，因此不支持备选存储引擎。 如果表配置了其他存储引擎，请确保先将它们转换为 InnoDB 引擎格式，再迁移到 Azure Database for MySQL。
 
     例如，如果有使用 MyISAM 表的 WordPress 或 WebApp，在将这些表还原到 Azure Database for MySQL 之前，首先通过将这些表迁移到 InnoDB 格式的方式转换格式。 使用子句 `ENGINE=InnoDB` 设置创建新表时所用的引擎，然后在还原之前将数据传输到兼容表中。
 
@@ -79,7 +79,7 @@ ms.locfileid: "94537911"
 若要准备目标 Azure Database for MySQL 服务器以实现快速数据加载，需要更改以下服务器参数和配置。
 - max_allowed_packet – 设置为 1073741824（即 1 GB），以防止由于长行而引起的溢出问题。
 - slow_query_log – 设置为“关闭”以关闭慢速查询日志。 这将消除数据加载过程中由慢速查询日志记录导致的开销。
-- query_store_capture_mode –设置为 "无" 以关闭查询存储。 这将消除由查询存储的采样活动导致的开销。
+- query_store_capture_mode - 设置为“无”以关闭查询存储。 这将消除由查询存储的采样活动导致的开销。
 - innodb_buffer_pool_size – 在迁移期间从门户的定价层纵向扩展服务器到 32 vCore 内存优化 SKU，以增大 innodb_buffer_pool_size。 只能通过纵向扩展 Azure Database for MySQL 服务器的计算来增大 innodb_buffer_pool_size。
 - innodb_io_capacity 和 innodb_io_capacity_max - 从 Azure 门户中的服务器参数更改为 9000，以提高 IO 利用率，从而优化迁移速度。
 - innodb_write_io_threads 和 innodb_write_io_threads - 从 Azure 门户中的服务器参数更改为 4 以加快迁移速度。
@@ -134,7 +134,7 @@ mysql -h [hostname] -u [uname] -p[pass] [db_to_restore] < [backupfile.sql]
 ```bash
 $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p testdb < testdb_backup.sql
 ```
-下面是有关如何使用此 **mysql** 实现 **灵活的服务器** 的示例：
+下面是一个示例，说明如何将此 mysql 用于灵活服务器  ：
 
 ```bash
 $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin -p testdb < testdb_backup.sql
@@ -145,7 +145,7 @@ $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin -p testdb < testdb_b
 按照以下步骤使用 PHPMyadmin 转储并还原数据库。
 
 > [!NOTE]
-> 对于单一服务器，用户名必须采用以下格式： ' '， username@servername 但对于灵活服务器，只需使用 "用户名"，如果使用 " username@servername " 灵活的服务器，连接将失败。
+> 对于单一服务器，用户名必须采用格式“username@servername”，但对于灵活服务器，只需使用“用户名”，如果灵活服务器使用“username@servername”，则连接将失败。
 
 ### <a name="export-with-phpmyadmin"></a>使用 PHPMyadmin 进行导出
 若要导出，可以使用可能已安装在本地环境中的常用工具 phpMyAdmin。 使用 PHPMyAdmin 导出 MySQL 数据库：

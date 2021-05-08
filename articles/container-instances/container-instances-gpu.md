@@ -4,10 +4,10 @@ description: 了解如何使用 GPU 资源部署 Azure 容器实例，以运行�
 ms.topic: article
 ms.date: 07/22/2020
 ms.openlocfilehash: 0d645d1fce24d1324e485d74e20bcf492d4444a7
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93127002"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>部署使用 GPU 资源的容器实例
@@ -27,18 +27,18 @@ ms.locfileid: "93127002"
 
 以后还会不断增添对其他区域的支持。
 
-**支持的 OS 类型** ：仅限 Linux
+**支持的 OS 类型**：仅限 Linux
 
-**其他限制** ：在将容器组部署到 [虚拟网络](container-instances-vnet.md)中时不能使用 GPU 资源。
+**其他限制**：将容器组部署到 [虚拟网络](container-instances-vnet.md)中时不能使用 GPU 资源。
 
 ## <a name="about-gpu-resources"></a>关于 GPU 资源
 
 ### <a name="count-and-sku"></a>计数和 SKU
 
-若要在容器实例中使用 GPU，请使用以下信息指定 GPU 资源  ：
+若要在容器实例中使用 GPU，请使用以下信息指定 GPU 资源：
 
 * **计数** - GPU 数量：1、2 或 4  。
-* **SKU** -GPU SKU： **K80** 、 **P100** 或 **V100** 。 每个 SKU 都映射到以下支持 Azure GPU 的 VM 系列中的 NVIDIA Tesla GPU：
+* **SKU** - GPU SKU: “K80”、“P100”或“V100”。   每个 SKU 都映射到以下支持 Azure GPU 的 VM 系列中的 NVIDIA Tesla GPU：
 
   | SKU | VM 系列 |
   | --- | --- |
@@ -55,9 +55,9 @@ ms.locfileid: "93127002"
 
 ### <a name="things-to-know"></a>使用须知
 
-*  。 这是因为需为预配和配置 Azure 中的 GPU VM 留出更多时间。 
+* **部署时间** - 创建包含 GPU 资源的容器组最多需要 8-10 分钟。 这是因为需为预配和配置 Azure 中的 GPU VM 留出更多时间。 
 
-*  。 持续时间自容器开始拉取第一个容器的映像起开始计算，至容器组终止为止。 它不包括部署容器组的时间。
+* **定价** - 类似于不含 GPU 资源的容器组，Azure 对具有 GPU 资源的容器组的持续时间内消耗的资源收费。 持续时间自容器开始拉取第一个容器的映像起开始计算，至容器组终止为止。 它不包括部署容器组的时间。
 
   请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/container-instances/)。
 
@@ -69,7 +69,7 @@ ms.locfileid: "93127002"
     
 ## <a name="yaml-example"></a>YAML 示例
 
-添加 GPU 资源的一种方式就是使用 [YAML 文件](container-instances-multi-container-yaml.md)部署容器组。 将以下 YAML 复制到名为 gpu-deploy-aci.yaml 的新文件中，然后保存该文件  。 此 YAML 创建名为 gpucontainergroup 的容器组并使用 K80 GPU 指定容器实例  。 该实例运行示例 CUDA 矢量添加应用程序。 请求的资源足以运行工作负载。
+添加 GPU 资源的一种方式就是使用 [YAML 文件](container-instances-multi-container-yaml.md)部署容器组。 将以下 YAML 复制到名为 gpu-deploy-aci.yaml 的新文件中，然后保存该文件。 此 YAML 创建名为 gpucontainergroup 的容器组并使用 K80 GPU 指定容器实例。 该实例运行示例 CUDA 矢量添加应用程序。 请求的资源足以运行工作负载。
 
 ```YAML
 additional_properties: {}
@@ -91,7 +91,7 @@ properties:
   restartPolicy: OnFailure
 ```
 
-使用 [az container create][az-container-create] 命令并在 `--file` 参数中指定 YAML 文件名，以部署容器组。 需要提供支持 GPU 资源的资源组名称和容器组位置（例如 eastus）  。  
+使用 [az container create][az-container-create] 命令并在 `--file` 参数中指定 YAML 文件名，以部署容器组。 需要提供支持 GPU 资源的资源组名称和容器组位置（例如 eastus）。  
 
 ```azurecli
 az container create --resource-group myResourceGroup --file gpu-deploy-aci.yaml --location eastus
@@ -168,7 +168,7 @@ Done
 }
 ```
 
-使用 [az deployment group create][az-deployment-group-create] 命令部署模板。 需要提供支持 GPU 资源的在区域（例如 eastus）中创建的资源组的名称  。
+使用 [az deployment group create][az-deployment-group-create] 命令部署模板。 需要提供支持 GPU 资源的在区域（例如 eastus）中创建的资源组的名称。
 
 ```azurecli-interactive
 az deployment group create --resource-group myResourceGroup --template-file gpudeploy.json

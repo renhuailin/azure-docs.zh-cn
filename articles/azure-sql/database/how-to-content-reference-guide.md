@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 01/14/2020
 ms.openlocfilehash: 19cec1deeef344ea5897061db0fec88066b90b05
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92791760"
 ---
 # <a name="configure-and-manage-content-reference---azure-sql-database"></a>配置和管理内容参考信息 - Azure SQL 数据库
@@ -128,7 +128,7 @@ ms.locfileid: "92791760"
 - [设计弹性池](disaster-recovery-strategies-for-applications-with-elastic-pool.md)
 - [设计应用升级](manage-application-rolling-upgrade.md)
 
-### <a name="design-multi-tenant-software-as-a-service-saas-applications"></a> (SaaS) 应用程序设计多租户软件即服务
+### <a name="design-multi-tenant-software-as-a-service-saas-applications"></a>设计多租户服务型软件 (SaaS) 应用程序
 
 - [SaaS 设计模式](saas-tenancy-app-design-patterns.md)
 - [SaaS 视频索引器](saas-tenancy-video-index-wingtip-brk3120-20171011.md)

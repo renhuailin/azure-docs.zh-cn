@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: eamono
 ms.openlocfilehash: 5e01ffd8e17fda9113c7ec0fdb2c7f436b39c810
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97936900"
 ---
 # <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>在 Azure Functions 和应用服务混合连接中使用 PowerShell 管理混合环境
@@ -61,7 +61,7 @@ cmd.exe /C $Cmd
     | **订阅** | 你的订阅 | 要在其下创建此新函数应用的订阅。 |
     | **[资源组](../azure-resource-manager/management/overview.md)** |  *myResourceGroup* | 要在其中创建 Function App 的新资源组的名称。 |
     | **函数应用名称** | 全局唯一名称 | 用于标识新 Function App 的名称。 有效字符为 `a-z`（不区分大小写）、`0-9` 和 `-`。  |
-    |<bpt id="p1">**</bpt>Publish<ept id="p1">**</ept>| 代码 | 用于发布代码文件或 Docker 容器的选项。 |
+    |**发布**| 代码 | 用于发布代码文件或 Docker 容器的选项。 |
     | **运行时堆栈** | 首选语言 | 选择 PowerShell Core。 |
     |**版本**| 版本号 | 选择已安装的运行时的版本。  |
     |**区域**| 首选区域 | 选择离你近或离函数访问的其他服务近的[区域](https://azure.microsoft.com/regions/)。 |
@@ -294,11 +294,11 @@ Invoke-Command -ComputerName $HybridEndpoint `
 * $HybridEndpoint
 * $RemoteServer
 
-在上面的两个方案中，可以在 Azure Functions 和混合连接中使用 PowerShell 连接和管理本地环境。 建议[在函数中](./functions-reference-powershell.md)详细了解[混合连接](../app-service/app-service-hybrid-connections.md)和 PowerShell。
+在上面的两个方案中，可以在 Azure Functions 和混合连接中使用 PowerShell 连接和管理本地环境。 建议你深入了解[混合连接](../app-service/app-service-hybrid-connections.md)和[函数中的 PowerShell](./functions-reference-powershell.md)。
 
-还可以通过 Azure Functions 使用 Azure [虚拟网络](./functions-create-vnet.md) 连接到本地环境。
+还可以通过 Azure Functions 使用 Azure [虚拟网络](./functions-create-vnet.md)连接到本地环境。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"] 
-> [了解有关使用 PowerShell 函数的详细信息](functions-reference-powershell.md)
+> [详细了解如何使用 PowerShell 函数](functions-reference-powershell.md)

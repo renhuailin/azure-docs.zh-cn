@@ -13,10 +13,10 @@ ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
 ms.openlocfilehash: b34ac24cb26bf5db4a49a5ad5b531deb252f4695
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96446115"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>云中的新 DBA - 在迁移后管理 Azure SQL 数据库
@@ -26,7 +26,7 @@ ms.locfileid: "96446115"
 
 - 正在评估向 Azure SQL 数据库迁移应用程序的人员 - 应用程序现代化。
 - 正在迁移应用程序的人员 - 正在进行的迁移方案。
-- 最近已完成到 Azure SQL 数据库的迁移-云中的新 DBA。
+- 最近已完成“到 Azure SQL 数据库的迁移 - 云中的新 DBA”的人员。
 
 本文讨论 Azure SQL 数据库的一些核心特性。作为一个平台，Azure SQL 数据库非常便于你在使用单一数据库和弹性池中的共用数据库时加以利用。 这些特征包括：
 
@@ -38,7 +38,7 @@ ms.locfileid: "96446115"
 
 ## <a name="monitor-databases-using-the-azure-portal"></a>使用 Azure 门户监视数据库
 
-在 [Azure 门户](https://portal.azure.com/)中，可以通过选择数据库并单击 " **监视** " 图表来监视单个数据库的使用情况。 这将显示“指标”窗口，可通过单击“编辑图表”按钮来对其进行更改。 添加以下指标：
+在 [Azure 门户](https://portal.azure.com/)中，可以通过选择数据库并单击“监视”图表来监视单个数据库的使用情况。 这将显示“指标”窗口，可通过单击“编辑图表”按钮来对其进行更改。 添加以下指标：
 
 - CPU 百分比
 - DTU 百分比
@@ -61,7 +61,7 @@ ms.locfileid: "96446115"
 
 ### <a name="how-do-i-create-and-manage-backups-on-sql-database"></a>如何在 SQL 数据库中创建和管理备份
 
-不需要在 Azure SQL 数据库上创建备份，这是因为你不必这样做。 SQL 数据库会自动备份数据库，因此我们不再需要考虑如何计划、执行和管理备份。 该平台每周创建完整备份，每隔几小时创建差异备份，每隔 5 分钟创建日志备份，以确保灾难恢复的有效性，并尽量减少数据丢失。 创建数据库后，首次完整备份会立即发生。 在称为“保留期”的某段时间内，这些备份均可用，可用情况因所选服务层级而有所不同。 在 SQL 数据库中，可以使用[时间点恢复 (PITR)](recovery-using-backups.md#point-in-time-restore) 还原到此保留期内的任意时间点。
+不要在 Azure SQL 数据库中创建备份，因为没有这个必要。 SQL 数据库会自动备份数据库，因此我们不再需要考虑如何计划、执行和管理备份。 该平台每周创建完整备份，每隔几小时创建差异备份，每隔 5 分钟创建日志备份，以确保灾难恢复的有效性，并尽量减少数据丢失。 创建数据库后，首次完整备份会立即发生。 在称为“保留期”的某段时间内，这些备份均可用，可用情况因所选服务层级而有所不同。 在 SQL 数据库中，可以使用[时间点恢复 (PITR)](recovery-using-backups.md#point-in-time-restore) 还原到此保留期内的任意时间点。
 
 |服务层|保留期（天）|
 |---|:---:|
@@ -106,13 +106,13 @@ SQL 数据库中提供了两种身份验证方法：
 
 不支持传统的 Windows 身份验证。 Azure Active Directory (Azure AD) 是集中式的标识和访问管理服务。 通过此服务可非常方便地为组织中的所有人员提供单一登录访问 (SSO)。 这意味着，为简化身份验证，凭据将在所有 Azure 服务之间共享。 
 
-Azure AD 支持 [Azure AD 多重身份验证](authentication-mfa-ssms-overview.md) ， [只需单击几下鼠标](../../active-directory/hybrid/how-to-connect-install-express.md) ，Azure AD 即可与 Windows Server Active Directory 集成。 SQL 身份验证的工作方式与之前完全相同。 只需提供用户名/密码，就能让用户在给定服务器上的任何数据库中进行身份验证。 这还允许 SQL 数据库和 Azure Synapse Analytics 在 Azure AD 域中提供多重身份验证和来宾用户帐户。 如果你已经有一个本地 Active Directory，则可以将该目录与 Azure Active Directory 联合在一起，以将目录扩展到 Azure。
+Azure AD 支持 [Azure AD 多重身份验证](authentication-mfa-ssms-overview.md)，只需[点击几下鼠标](../../active-directory/hybrid/how-to-connect-install-express.md)，Azure AD 就能与 Windows Server Active Directory 集成。 SQL 身份验证的工作方式与之前完全相同。 只需提供用户名/密码，就能让用户在给定服务器上的任何数据库中进行身份验证。 此外，还允许 SQL 数据库和 Azure Synapse Analytics 在 Azure AD 域中提供多重身份验证和来宾用户帐户。 如果你已经有一个本地 Active Directory，则可以将该目录与 Azure Active Directory 联合在一起，以将目录扩展到 Azure。
 
 |**如果你…**|**SQL 数据库/Azure Synapse Analytics**|
 |---|---|
 |不想在 Azure 中使用 Azure Active Directory (Azure AD)|使用 [SQL 身份验证](security-overview.md)|
 |在本地 SQL Server 上使用 AD|[将 AD 与 Azure AD 联合](../../active-directory/hybrid/whatis-hybrid-identity.md)，并使用 Azure AD 身份验证。 借此，你可以使用单一登录。|
-|需要强制实施多重身份验证|需要多重身份验证作为策略通过 [Microsoft 条件访问](conditional-access-configure.md)，并使用 [Azure AD 通用身份验证和多重身份验证支持](authentication-mfa-ssms-overview.md)。|
+|需要强制实施多重身份验证|需要多重身份验证作为 [Microsoft 条件性访问](conditional-access-configure.md)的策略，并使用[支持多重身份验证的 Azure AD 通用身份验证](authentication-mfa-ssms-overview.md)。|
 |有来自 Microsoft 帐户（live.com、outlook.com）或其他域 (gmail.com) 的来宾帐户|在利用 [Azure AD B2B 协作](../../active-directory/external-identities/what-is-b2b.md)的 SQL 数据库/数据仓库中使用 [Azure AD 通用身份验证](authentication-mfa-ssms-overview.md)。|
 |使用来自联合域的 Azure AD 凭据登录到 Windows|使用 [Azure AD 集成身份验证](authentication-aad-configure.md)。|
 |使用来自未与 Azure 联合的域的凭据登录到 Windows|使用 [Azure AD 集成身份验证](authentication-aad-configure.md)。|
@@ -135,7 +135,7 @@ Azure AD 支持 [Azure AD 多重身份验证](authentication-mfa-ssms-overview.m
 
 #### <a name="service-endpoints"></a>服务终结点
 
-默认情况下，数据库配置为 "允许 Azure 服务访问服务器"-这意味着 Azure 中的任何虚拟机可能会尝试连接到数据库。 这些尝试仍需经过身份验证。 但是，如果不想让任何 Azure IP 访问数据库，则可禁用“允许 Azure 服务访问服务器”。 此外，还可配置 [VNet 服务终结点](vnet-service-endpoint-rule-overview.md)。
+默认情况下，数据库配置为“允许 Azure 服务访问服务器”- 这表示 Azure 中的所有虚拟机都可尝试连接到你的数据库。 这些尝试仍需经过身份验证。 但是，如果不想让任何 Azure IP 访问数据库，则可禁用“允许 Azure 服务访问服务器”。 此外，还可配置 [VNet 服务终结点](vnet-service-endpoint-rule-overview.md)。
 
 通过服务终结点 (SE) 可以仅向自己在 Azure 中的专用虚拟网络公开关键 Azure 资源。 以此从根本上阻止了对资源的公共访问。 虚拟网络与 Azure 间的流量位于 Azure 主干网络上。 无 SE 时，可获得强制隧道数据包路由。 虚拟网络强制组织的 Internet 流量和 Azure 服务流量通过相同的路由。 借助服务终结点，可优化这进程，因为数据包直接从虚拟网络流向 Azure 主干网络上的服务。
 
@@ -180,7 +180,7 @@ Azure AD 支持 [Azure AD 多重身份验证](authentication-mfa-ssms-overview.m
 
 ### <a name="how-can-i-limit-access-to-sensitive-data-in-my-database"></a>如何限制对数据库中敏感数据的访问
 
-每个应用程序在数据库中都有一个特定的敏感数据位，需要防止向任何人透露该位。 组织内的某些人员需要查看此数据，但其他人员应无法查看此数据。 一个示例是员工工资。 经理需要访问其直接下属的工资信息，但各团队成员不应有权访问其对等方的工资信息。 另一种情况是数据开发人员在开发或测试阶段可能要与敏感数据（例如客户的 SSN）交互。 而此信息后来不再需要向开发人员公开。 在此情况下，敏感数据需要掩码，或者根本不公开。 SQL 数据库提供以下两种方案用于防止未经授权的用户查看敏感数据：
+每个应用程序在数据库中都有一个特定的敏感数据位，需要防止向任何人透露该位。 组织内的某些人员需要查看此数据，但其他人员应无法查看此数据。 一个示例是员工工资。 经理需要访问其直接下属的工资信息，但是，单个团队成员不应有权访问其同级的工资信息。 另一种情况是数据开发人员在开发或测试阶段可能要与敏感数据（例如客户的 SSN）交互。 而此信息后来不再需要向开发人员公开。 在此情况下，敏感数据需要掩码，或者根本不公开。 SQL 数据库提供以下两种方案用于防止未经授权的用户查看敏感数据：
 
 [动态数据掩码](dynamic-data-masking-overview.md)是一种数据掩码功能，它通过掩码应用层上的非特权用户来限制敏感数据的公开。 可以定义屏蔽规则来创建屏蔽模式（例如，只显示国家/地区 ID 号的最后 4 位数：XXX-XX-0000，并将大部分编号标记为 X），并确定哪些用户被排除在屏蔽规则之外。 掩码是即时发生的，对于不同的数据类别，可以使用不同的掩码功能。 动态数据掩码可以自动检测数据库中的敏感数据并对其应用掩码。
 
@@ -227,7 +227,7 @@ Always Encrypted 中还有[两个密钥层次结构](/sql/relational-databases/s
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>SQL 数据库是否符合任何规章要求，这对我组织的合规性有什么帮助
 
-SQL 数据库符合一系列合规要求。 若要查看 SQL 数据库已满足的最新 compliancies 集，请访问 [Microsoft 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) ，并向下钻取对你的组织很重要的 compliancies，以了解 sql 数据库是否包含在合规的 Azure 服务中。 需要注意的是，尽管 SQL 数据库可能被认证为符合的服务，它有助于确保组织服务的符合性，但不会自动保证这一点。
+SQL 数据库符合一系列合规要求。 若要查看 SQL 数据库已满足的最新一组合规要求，请访问 [Microsoft 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，并向下钻取到对你的组织至关重要的合规要求，以了解 SQL 数据库是否包含在合规的 Azure 服务下。 需要注意的是，尽管 SQL 数据库可能被认证为符合的服务，它有助于确保组织服务的符合性，但不会自动保证这一点。
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>迁移后的智能数据库监视和维护
 
@@ -281,15 +281,15 @@ Azure 门户通过选择数据库并单击“概述”窗格中的图表来显�
 
 ![Query Performance Insight](./media/manage-data-after-migrating-to-database/query-performance-insight.png)
 
-#### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure Monitor 日志中 Azure SQL Analytics (预览版) 
+#### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure Monitor 日志中的 Azure SQL Analytics（预览版）
 
-[Azure Monitor 日志](../../azure-monitor/insights/azure-sql.md) 使你可以收集和直观显示 Azure SQL 数据库的关键性能指标，每个工作区最多支持150000个数据库和5000个 SQL 弹性池。 你可以使用它监视并接收通知。 可以跨多个 Azure 订阅和弹性池监视 SQL 数据库和弹性池指标，并可用于识别应用程序堆栈每一层上的问题。
+[Azure Monitor 日志](../../azure-monitor/insights/azure-sql.md)允许收集和可视化关键的 Azure SQL 数据库性能指标，对于每个工作区，最多支持 150,000 个 数据库和 5,000 个 SQL 弹性池。 你可以使用它监视并接收通知。 可以跨多个 Azure 订阅和弹性池监视 SQL 数据库和弹性池指标，并可用于识别应用程序堆栈每一层上的问题。
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>我注意到了性能问题：我的 SQL 数据库故障排除方法与 SQL Server 有何不同
 
-诊断查询和数据库性能问题时所用的大多数故障排除方法是相同的。 毕竟云是由同一个数据库引擎驱动的。 不过，平台-Azure SQL 数据库内置了 "智能"。 它可以帮助你更轻松地排查和诊断性能问题。 此外，它还可以替你执行一些纠正措施；在某些情况下，会自动地主动修复问题。
+诊断查询和数据库性能问题时所用的大多数故障排除方法是相同的。 毕竟云是由同一个数据库引擎驱动的。 但是，Azure SQL 数据库平台具有内置的“智能”。 它可以帮助你更轻松地排查和诊断性能问题。 此外，它还可以替你执行一些纠正措施；在某些情况下，会自动地主动修复问题。
 
-解决性能问题的方法可通过使用 [Query Performance Insight (QPI) ](query-performance-insight-use.md) 和 [数据库顾问](database-advisor-implement-performance-recommendations.md) 的智能功能，使方法的不同之处很明显，因此，不同之处在于方法的不同之处在于，你不再需要完成必要的手动操作，以帮助你解决现有的问题。 平台能够自动解决棘手的工作。 一个例子就是 QPI。 使用 QPI 可以一路深化到查询级别，查看历史趋势并判断查询回归的确切时间。 数据库顾问可针对缺少索引、删除索引、参数化查询等方面提供建议，帮助提高总体性能。
+使用智能功能（如[查询性能见解 (QPI)](query-performance-insight-use.md) 加上[数据库顾问](database-advisor-implement-performance-recommendations.md)）非常有利于解决性能问题的方法，方法上的差异在这方面会有所不同，因为你不再需要手动找出可能有助于你排除手头问题的重要细节。 平台能够自动解决棘手的工作。 一个例子就是 QPI。 使用 QPI 可以一路深化到查询级别，查看历史趋势并判断查询回归的确切时间。 数据库顾问可针对缺少索引、删除索引、参数化查询等方面提供建议，帮助提高总体性能。
 
 进行性能故障排除时，请务必确定是应用程序，还是支持它的数据库影响了应用程序的性能。 通常，性能问题出现在应用程序层。 问题原因可能在于体系结构或数据访问模式。 例如，假设某个频繁通信的应用程序对网络延迟很敏感。 在这种情况下，由于有许多简短请求在应用程序与服务器之间来回传送（“琐碎 I/O”），因此应用程序的性能会受到影响；在拥塞的网络上，往返次数会快速增加。 若要在此情况下提高性能，可以使用[批处理查询](performance-guidance.md#batch-queries)。 使用批处理可以带来很大的帮助，因为现在请求会在批中处理；因此，可帮助减少往返延迟并提高应用程序的性能。
 
@@ -332,8 +332,8 @@ SQL 数据库使用某些智能技术来自动处理特定类型的数据损坏�
 
 可通过多种方法实现此目的：
 
-- **[数据同步](sql-data-sync-data-sql-server-sql-database.md)** –此功能可帮助你在多个 SQL Server 数据库与 SQL 数据库之间同步数据。 若要与 SQL Server 数据库同步，需要在本地计算机或虚拟机上安装和配置同步代理，并打开出站 TCP 端口 1433。
-- **[事务复制](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** -通过事务复制，可以将 SQL Server 数据库中的数据同步到 Azure sql 数据库，并将 SQL Server 实例作为发布服务器，将 Azure sql 数据库作为订阅服务器。 目前仅支持此设置。 要详细了解如何在保证停机时间最短的情况下将数据从 SQL Server 数据库迁移到 Azure SQL，请参阅：[使用事务复制](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication)
+- **[数据同步](sql-data-sync-data-sql-server-sql-database.md)** - 此功能可帮助你在多个 SQL Server 数据库和 SQL 数据库之间双向同步数据。 若要与 SQL Server 数据库同步，需要在本地计算机或虚拟机上安装和配置同步代理，并打开出站 TCP 端口 1433。
+- **[事务复制](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** - 使用事务复制可将数据从 SQL Server 数据库同步到 Azure SQL 数据库，SQL Server 实例作为发布服务器，Azure SQL 数据库作为订阅服务器。 目前仅支持此设置。 要详细了解如何在保证停机时间最短的情况下将数据从 SQL Server 数据库迁移到 Azure SQL，请参阅：[使用事务复制](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication)
 
 ## <a name="next-steps"></a>后续步骤
 

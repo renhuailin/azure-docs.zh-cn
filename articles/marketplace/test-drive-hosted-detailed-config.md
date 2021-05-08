@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: trkeya
 ms.author: trkeya
-ms.date: 04/20/2021
-ms.openlocfilehash: f11f1d5601a61bbd9b8729b478c278db8d3e73dc
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 11/06/2020
+ms.openlocfilehash: 88779f67a2fa9b18f0177a1459b32c672343bb57
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812402"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "96462947"
 ---
 # <a name="detailed-configuration-for-hosted-test-drives"></a>托管体验版的详细配置
 
@@ -20,7 +20,7 @@ ms.locfileid: "107812402"
 
 ## <a name="configure-for-dynamics-365-customer-engagement"></a>为 Dynamics 365 Customer Engagement 配置
 
-1. 登录到[合作伙伴中心](https://partner.microsoft.com/)。
+1. 登录[合作伙伴中心](https://partner.microsoft.com/)。
 2. 如果无法访问上述链接，则需要在[此处](https://appsource.microsoft.com/partners/list-an-app)提交请求以发布应用程序。 查看请求后，你将获得访问权限以开始发布过程。
 3. 查找现有的 Dynamics 365 for Customer Engagement 产品/服务，或创建一个新的。
 4. 选中“启用体验版”复选框并选择一种“体验版类型”（参阅下面的项目符号），然后选择“保存”。

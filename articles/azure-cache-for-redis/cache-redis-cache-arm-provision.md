@@ -6,13 +6,13 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs, devx-track-azurepowershell
-ms.date: 08/18/2020
-ms.openlocfilehash: 81940d23ebfcc017455974981649023351b6eeb3
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.date: 04/28/2021
+ms.openlocfilehash: 321dc2aed6ee507ad2ac4987d630b782052884b2
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107835049"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108277275"
 ---
 # <a name="quickstart-create-an-azure-cache-for-redis-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure Redis 缓存
 
@@ -22,7 +22,7 @@ ms.locfileid: "107835049"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.cache%2Fredis-cache%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,7 +33,7 @@ ms.locfileid: "107835049"
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-redis-cache/)。
 
-:::code language="json" source="~/quickstart-templates/101-redis-cache/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.cache/redis-cache/azuredeploy.json":::
 
 该模板中定义了以下资源：
 
@@ -52,7 +52,7 @@ ms.locfileid: "107835049"
 
 1. 选择下图登录到 Azure 并打开模板。
 
-    [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
+    [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.cache%2Fredis-cache%2Fazuredeploy.json)
 1. 选择或输入以下值：
 
     * 订阅：选择用于创建数据共享和其他资源的 Azure 订阅。

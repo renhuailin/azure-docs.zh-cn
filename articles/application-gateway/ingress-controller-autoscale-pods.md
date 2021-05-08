@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: a8f015085baa8fffa6f208e9d8dd749e397c76c3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93397427"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>根据应用程序网关指标 (Beta) 自动缩放 AKS Pod

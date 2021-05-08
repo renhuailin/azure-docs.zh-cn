@@ -12,10 +12,10 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: 89b04f86d41f8e4828580f70a9aec8acea3e0053
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96618444"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Azure Active Directory 域服务的常见错误和故障排除步骤
@@ -138,7 +138,7 @@ if ($sp -ne $null)
       * 是否已部署或更新到[建议使用的最新版本的 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)。
       * 是否已将 Azure AD Connect 配置为[执行完全同步][hybrid-phs]。
       * 根据目录的大小，可能需要一段时间之后才可在托管域中使用用户帐户和凭据哈希。 在尝试向托管域进行身份验证之前，请确保等待足够长的时间。
-      * 如果在验证上述步骤后问题仍然出现，请尝试重启“Microsoft Azure AD 同步服务”。 在 Azure AD Connect 服务器上，打开命令提示符，并运行以下命令：
+      * 如果在验证上述步骤后问题仍然出现，请尝试重启“Microsoft Azure AD 同步服务”。 从你的 Azure AD Connect 服务器中，打开一个命令提示符，然后运行以下命令：
     
         ```console
         net stop 'Microsoft Azure AD Sync'

@@ -7,15 +7,15 @@ ms.reviewer: apseth, divswa, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.openlocfilehash: 8c00d2e4f622bcfad7b2468013336f0d936e318c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87048667"
 ---
 # <a name="send-related-messages-in-order-by-using-a-sequential-convoy-in-azure-logic-apps-with-azure-service-bus"></a>通过 Azure 服务总线在 Azure 逻辑应用中使用顺序保护按顺序发送相关消息
 
-如果需要按特定顺序发送相关消息，可以[在使用 Azure](../logic-apps/logic-apps-overview.md) [服务总线连接器](../connectors/connectors-create-api-servicebus.md)时遵循[*顺序保护*模式](/azure/architecture/patterns/sequential-convoy)。 相关消息有一个用于定义这些消息之间的关系的属性，例如服务总线中的[会话](../service-bus-messaging/message-sessions.md)的 ID。
+如果需要按特定顺序发送相关消息，则可在通过 [Azure 服务总线连接器](../connectors/connectors-create-api-servicebus.md)使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)时按[“顺序保护”模式](/azure/architecture/patterns/sequential-convoy)操作。 相关消息有一个用于定义这些消息之间的关系的属性，例如服务总线中的[会话](../service-bus-messaging/message-sessions.md)的 ID。
 
 例如，假设你有 10 条消息用于名为“会话 1”的会话，有 5 条消息用于名为“会话 2”的会话，且所有这些消息都发送到同一[服务总线队列](../service-bus-messaging/service-bus-queues-topics-subscriptions.md)。 你可以创建一个逻辑应用，用于处理来自队列的消息，使来自“会话 1”的所有消息都由单个触发器运行处理，使来自“会话 2”的所有消息则都由下一个触发器运行处理。
 
@@ -29,7 +29,7 @@ ms.locfileid: "87048667"
 
 若要查看此模板的 JSON 文件，请参阅 [GitHub：service-bus-sessions.json](https://github.com/Azure/logicapps/blob/master/templates/service-bus-sessions.json)。
 
-有关详细信息，请参阅 [顺序保护模式-Azure 体系结构云设计模式](/azure/architecture/patterns/sequential-convoy)。
+有关详细信息，请参阅 [顺序保护模式 - Azure 体系结构云设计模式](/azure/architecture/patterns/sequential-convoy)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -62,7 +62,7 @@ ms.locfileid: "87048667"
       ![复制服务总线命名空间连接字符串](./media/send-related-messages-sequential-convoy/copy-service-bus-connection-string.png)
 
    > [!TIP]
-   > 若要确认连接字符串是与服务总线命名空间关联还是与消息传送实体（例如队列）关联，请在该连接字符串中搜索 `EntityPath`  参数。 如果找到了该参数，则表示连接字符串适用于特定的实体，不是适用于逻辑应用的正确字符串。
+   > 若要确认连接字符串是与服务总线命名空间关联还是与消息传送实体（例如队列）关联，请在该连接字符串中搜索 `EntityPath` 参数。 如果找到了该参数，则表示连接字符串适用于特定的实体，不是适用于逻辑应用的正确字符串。
 
 ## <a name="create-logic-app"></a>创建逻辑应用
 
@@ -120,16 +120,16 @@ ms.locfileid: "87048667"
 | 名称 | 说明 |
 |------|-------------|
 | **`When a message is received in a queue (peek-lock)`** | 此服务总线触发器会根据指定的重复周期检查指定的服务总线队列中是否有任何消息。 如果队列中存在消息，则触发器将触发，这将创建并运行一个工作流实例。 <p><p>“扫视锁定”这一术语是指触发器发送从队列中检索消息的请求。 如果有消息存在，则触发器会检索并锁定该消息，防止在锁定期限到期之前对该消息进行其他处理。 有关详细信息，请参阅[初始化会话](#initialize-session)。 |
-| **`Init isDone`** | 此[**初始化变量**操作](../logic-apps/logic-apps-create-variables-store-values.md#initialize-variable)创建一个设置为 `false` 的布尔变量，并指示何时满足以下条件： <p><p>- 会话中没有剩余可供读取的消息。 <br>- 不再需要续订会话锁，就能完成当前工作流实例。 <p><p>有关详细信息，请参阅[初始化会话](#initialize-session)。 |
-| **`Try`** | 此 [**作用域** 操作](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md) 包含用于处理消息的操作。 如果 `Try` 作用域中出现问题，则后续的 `Catch` **作用域**操作会处理该问题。 有关详细信息，请参阅[“Try”作用域](#try-scope)。 |
-| **`Catch`**| 此 [**作用域** 操作](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md) 包含上一个作用域中发生问题时运行的操作 `Try` 。 有关详细信息，请参阅[“Catch”作用域](#catch-scope)。 |
+| **`Init isDone`** | 此 [**初始化变量** 操作](../logic-apps/logic-apps-create-variables-store-values.md#initialize-variable)创建一个设置为 `false` 的布尔变量，并指示何时满足以下条件： <p><p>- 会话中没有剩余可供读取的消息。 <br>- 不再需要续订会话锁，就能完成当前工作流实例。 <p><p>有关详细信息，请参阅[初始化会话](#initialize-session)。 |
+| **`Try`** | 此[“作用域”操作](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)包含处理消息时要运行的操作。 如果 `Try` 作用域中出现问题，则后续的 `Catch` **作用域** 操作会处理该问题。 有关详细信息，请参阅[“Try”作用域](#try-scope)。 |
+| **`Catch`**| 此[“作用域”操作](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)包含在上述 `Try` 作用域中出现问题时将运行的操作。 有关详细信息，请参阅[“Catch”作用域](#catch-scope)。 |
 |||
 
 <a name="try-scope"></a>
 
 ### <a name="try-scope"></a>“Try”作用域
 
-下面是 `Try` 折叠详细信息时 [作用域操作](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md) 中的顶层流：
+下面是折叠详细信息后 `Try` [作用域操作](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)中的大致流：
 
 ![“Try”作用域操作工作流](./media/send-related-messages-sequential-convoy/try-scope-action.png)
 
@@ -162,7 +162,7 @@ ms.locfileid: "87048667"
 
 ### <a name="catch-scope"></a>“Catch”作用域
 
-如果 `Try` 作用域中的操作失败，则逻辑应用仍必须关闭会话。 作用 `Catch` [域操作](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md) 在 `Try` 作用域操作导致状态、、或时 `Failed` 运行 `Skipped` `TimedOut` 。 此作用域会返回一条错误消息（其中包含发生问题的会话 ID）并终止逻辑应用。
+如果 `Try` 作用域中的操作失败，则逻辑应用仍必须关闭会话。 当 `Try` 作用域操作导致 `Failed`、`Skipped` 或 `TimedOut` 状态时，`Catch` [作用域操作](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)会运行。 此作用域会返回一条错误消息（其中包含发生问题的会话 ID）并终止逻辑应用。
 
 下面是折叠详细信息后 `Catch` 作用域操作中的大致流：
 
@@ -197,7 +197,7 @@ ms.locfileid: "87048667"
   |----------|----------------------------|-------|-------------|
   | **队列名称** | 是 | <queue-name> | 之前创建的服务总线队列的名称。 此示例使用“Fabrikam-Service-Bus-Queue”。 |
   | **队列类型** | 是 | **主页** | 你的主服务总线队列 |
-  | **会话 ID** | 是 | **下一个可用** | 此选项会根据服务总线队列中消息的会话 ID 为每个触发器运行获取一个会话。 此会话也被锁定，以防止其他逻辑应用或其他客户端处理与此会话相关的消息。 工作流的后续操作将处理与该会话关联的所有消息，如本文稍后所述。 <p><p>下面是有关其他**会话 ID** 选项的详细信息： <p>- **无**：默认选项，会导致没有会话，不能用于实现顺序保护模式。 <p>- **输入自定义值**：如果你知道要使用的会话 ID，并且始终要为该会话 ID 运行触发器，请使用此选项。 <p>**注意**：服务总线连接器一次可以将 Azure 服务总线的有限数量的唯一会话保存到连接器缓存。 如果会话计数超过此限制，则将从缓存中删除旧会话。 有关详细信息，请参阅[使用 Azure 逻辑应用和 Azure 服务总线在云中交换消息](../connectors/connectors-create-api-servicebus.md#connector-reference)。 |
+  | **会话 ID** | 是 | **下一个可用** | 此选项会根据服务总线队列中消息的会话 ID 为每个触发器运行获取一个会话。 此会话也被锁定，以防止其他逻辑应用或其他客户端处理与此会话相关的消息。 工作流的后续操作将处理与该会话关联的所有消息，如本文稍后所述。 <p><p>下面是有关其他 **会话 ID** 选项的详细信息： <p>- **无**：默认选项，会导致没有会话，不能用于实现顺序保护模式。 <p>- **输入自定义值**：如果你知道要使用的会话 ID，并且始终要为该会话 ID 运行触发器，请使用此选项。 <p>**注意**：服务总线连接器一次可以将 Azure 服务总线的有限数量的唯一会话保存到连接器缓存。 如果会话计数超过此限制，则将从缓存中删除旧会话。 有关详细信息，请参阅[使用 Azure 逻辑应用和 Azure 服务总线在云中交换消息](../connectors/connectors-create-api-servicebus.md#connector-reference)。 |
   | **时间间隔** | 是 | <时间间隔数> | 在重复检查是否存在消息之前，在两个重复周期之间间隔的时间单位数。 |
   | **频率** | 是 | “秒”、“分钟”、“小时”、“天”、“周”或“月”      | 在检查是否存在消息时要使用的重复周期的时间单位。 <p>**提示**：若要添加“时区”或“开始时间”，请从“添加新参数”列表中选择这些属性。   |
   |||||
@@ -285,7 +285,7 @@ ms.locfileid: "87048667"
 
   * 如果 `isDone` 未设置为 `true`，则表明工作流仍在处理消息，因此工作流会续订队列中的会话锁，并再次检查循环条件。
 
-    你需要在服务总线操作[**续订队列中的会话锁**](#renew-lock-on-session)中提供你的服务总线队列的名称。
+    你需要在服务总线操作 [**续订队列中的会话锁**](#renew-lock-on-session)中提供你的服务总线队列的名称。
 
   * 如果 `isDone` 设置为 `true`，则工作流不会续订队列中的会话锁，而是退出循环。
 

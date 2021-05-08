@@ -11,10 +11,10 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
 ms.openlocfilehash: 15d62f40b50617fd1f6e543cb404a0d38361d3bd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94836489"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法
@@ -30,7 +30,7 @@ ms.locfileid: "94836489"
 标识是 IT 安全的新控制平面，因此身份验证是组织对新云世界的访问防护。 组织需要一个标识控制平面，以便增强其安全性并使其云应用免受入侵者攻击。
 
 > [!NOTE]
-> 更改身份验证方法需要进行规划、测试并可能会有停机时间。 [过渡推出](./how-to-connect-staged-rollout.md) 是测试从联合身份验证迁移到云身份验证的用户的绝佳方式。
+> 更改身份验证方法需要进行规划、测试并可能会有停机时间。 [分阶段推出](./how-to-connect-staged-rollout.md)是测试用户从联合身份验证迁移到云身份验证的一种好方法。
 
 ### <a name="out-of-scope"></a>超出范围
 没有现有本地目录占用的组织不是本文的重点。 通常，那些仅在云中创建标识的企业不需要混合标识解决方案。 “仅限云”标识单独存在于云中，不与相应本地标识相关联。
@@ -86,13 +86,13 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
 ### <a name="cloud-authentication-password-hash-synchronization"></a>云身份验证：密码哈希同步
 
-* **工作量**。 密码哈希同步所需的有关部署、维护和基础结构的工作量最少。  这种级别的工作量通常适用于仅需要其用户登录到 Microsoft 365、SaaS 应用和其他基于 Azure AD 的资源的组织。 启用后，密码哈希同步即是 Azure AD Connect 同步过程的一部分，并且每两分钟运行一次。
+* **工作量**。 密码哈希同步所需的有关部署、维护和基础结构的工作量最少。  此级别的工作量通常适用于只需用户登录到 Microsoft 365、SaaS 应用以及其他基于 Azure AD 的资源的组织。 启用后，密码哈希同步即是 Azure AD Connect 同步过程的一部分，并且每两分钟运行一次。
 
 * **用户体验**。 若要改善用户的登录体验，请将无缝 SSO 随密码哈希同步一起部署。 在用户登录时，无缝 SSO 将消除不必要的提示。
 
 * **高级方案**。 如果组织选择，可以将来自标识的见解与 Azure AD Premium P2 的“Azure AD 标识保护”报告配合使用。 例如已泄漏凭据报告。 Windows Hello for Business [在使用密码哈希同步时有特定要求](/windows/access-protection/hello-for-business/hello-identity-verification)。 [Azure AD 域服务](../../active-directory-domain-services/tutorial-create-instance.md)需要密码哈希同步才能在托管域中为用户预配公司凭据。
 
-    需要多重身份验证和密码哈希同步的组织必须使用 Azure AD 多重身份验证或 [条件访问自定义控件](../../active-directory/conditional-access/controls.md#custom-controls-preview)。 这些组织不能使用依赖于联合身份验证的第三方或本地多重身份验证方法。
+    需要多重身份验证以及密码哈希同步的组织必须使用 Azure AD 多重身份验证或[条件访问自定义控件](../../active-directory/conditional-access/controls.md#custom-controls-preview)。 这些组织不能使用依赖于联合身份验证的第三方或本地多重身份验证方法。
 
 > [!NOTE]
 > Azure AD 条件访问需要 [Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/) 许可证。
@@ -116,7 +116,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
 * **高级方案**。 直通身份验证在登录时强制实施本地帐户策略。 例如，如果本地用户的帐户状态为禁用、锁定，或其[密码过期](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication)，或者登录尝试不在用户被允许登录的时间段，则访问会被拒绝。
 
-    需要使用传递身份验证进行多重身份验证的组织必须使用 Azure AD 多重身份验证 (MFA) 或条件性 [访问自定义控件](../../active-directory/conditional-access/controls.md#custom-controls-preview)。 这些组织不能使用依赖于联合身份验证的第三方或本地多重身份验证方法。 高级功能都需要密码哈希同步已部署，无论你是否选择直通身份验证。 例如“标识保护”的已泄漏凭据报表。
+    需要多重身份验证以及直通身份验证的组织必须使用 Azure AD 多重身份验证 (MFA) 或[条件访问自定义控件](../../active-directory/conditional-access/controls.md#custom-controls-preview)。 这些组织不能使用依赖于联合身份验证的第三方或本地多重身份验证方法。 高级功能都需要密码哈希同步已部署，无论你是否选择直通身份验证。 例如“标识保护”的已泄漏凭据报表。
 
 * **业务连续性**。 我们建议部署两个额外的直通身份验证代理。 这些额外的代理是 Azure AD Connect 服务器上第一个代理之外的代理。 此额外部署将确保身份验证请求的高可用性。 如果部署了三个代理，关闭一个代理进行维护时另一个仍然可能失败。
 
@@ -203,7 +203,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
 2. **本地服务中断生存**。  网络攻击或灾难造成的本地服务中断可能导致从品牌信誉损失到瘫痪的组织无法处理攻击等一系列的严重后果。 最近，许多组织都受到恶意软件（包括有针对性的勒索软件）的攻击，导致其本地服务器停机。 Microsoft 在帮助客户处理这些类型的攻击时发现两种类型的组织：
 
-   * 先前在联合或直通身份验证之上已启用密码哈希同步的组织将其主要身份验证方法更改为使用密码哈希同步。 它们在数小时内即可重新联机。 通过使用通过 Microsoft 365 访问电子邮件，他们可以解决问题并访问其他基于云的工作负荷。
+   * 先前在联合或直通身份验证之上已启用密码哈希同步的组织将其主要身份验证方法更改为使用密码哈希同步。 它们在数小时内即可重新联机。 通过使用 Microsoft 365 访问电子邮件，他们致力于解决问题并访问其他基于云的工作负载。
 
    * 先前未启用密码哈希同步的组织必须依靠不受信任的外部使用者电子邮件系统进行通信来解决问题。 在这些情况下，他们花费了数周时间来还原其本地标识基础结构，然后用户才能再次登录到基于云的应用。
 
