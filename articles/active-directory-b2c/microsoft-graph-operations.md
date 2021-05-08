@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 04/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 41336d59d51685d5daf78a1809ce6c0df2cd6124
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: da70f06bf2789bad300a29bd7307f69af2945756
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104781307"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107895858"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C
 
@@ -37,7 +37,7 @@ ms.locfileid: "104781307"
 
 ## <a name="user-phone-number-management-beta"></a>用户电话号码管理（beta 版本）
 
-一种电话号码，用户可以使用它来通过[短信或语音呼叫](identity-provider-local.md#phone-sign-in-preview)或[多重身份验证](multi-factor-authentication.md)进行登录。 有关详细信息，请参阅 [Azure AD 身份验证方法 API](/graph/api/resources/phoneauthenticationmethod)。
+一种电话号码，用户可以使用它来通过[短信或语音呼叫](identity-provider-local.md#phone-sign-in)或[多重身份验证](multi-factor-authentication.md)进行登录。 有关详细信息，请参阅 [Azure AD 身份验证方法 API](/graph/api/resources/phoneauthenticationmethod)。
 
 - [添加](/graph/api/authentication-post-phonemethods)
 - [列表](/graph/api/authentication-list-phonemethods)
@@ -45,11 +45,14 @@ ms.locfileid: "104781307"
 - [更新](/graph/api/phoneauthenticationmethod-update)
 - [删除](/graph/api/phoneauthenticationmethod-delete)
 
-请注意，[列表](/graph/api/authentication-list-phonemethods)操作仅返回已启用的电话号码。 应启用下述用于列表操作的电话号码。 
+请注意，[列出](/graph/api/authentication-list-phonemethods)操作仅返回已启用的电话号码。 应启用以下电话号码来与列表操作一起使用。 
 
-![启用手机登录](./media/microsoft-graph-operations/enable-phone-sign-in.png)
+![启用电话登录](./media/microsoft-graph-operations/enable-phone-sign-in.png)
 
-## <a name="self-service-password-reset-email-address-beta"></a>自助式密码重置电子邮件地址（beta 版本）
+> [!NOTE]
+> 在当前 beta 版本中，此 API 仅在以下情况下运行：在国家/地区代码和电话号码之间加入空格的形式存储了电话号码。 默认情况下，Azure AD B2C 服务目前不添加此空间。
+
+## <a name="self-service-password-reset-email-address-beta"></a>自助服务密码重置电子邮件地址（beta 版本）
 
 一种电子邮件地址，[用户名登录帐户](identity-provider-local.md#username-sign-in)可以使用它来重置密码。 有关详细信息，请参阅 [Azure AD 身份验证方法 API](/graph/api/resources/emailauthenticationmethod)。
 
@@ -80,7 +83,7 @@ ms.locfileid: "104781307"
 
 ## <a name="user-flow-authentication-methods-beta"></a>用户流身份验证方法（beta 版本）
 
-选择一种让用户通过本地帐户进行注册的机制。 本地帐户是 Azure AD 进行标识断言的帐户。 有关详细信息，请参阅 [b2cAuthenticationMethodsPolicy 资源类型](/graph/api/resources/b2cauthenticationmethodspolicy)。
+选择允许用户通过本地帐户进行注册的机制。 本地帐户是 Azure AD 对其进行标识断言的帐户。 有关详细信息，请参阅 [b2cAuthenticationMethodsPolicy 资源类型](/graph/api/resources/b2cauthenticationmethodspolicy)。
 
 - [Get](/graph/api/b2cauthenticationmethodspolicy-get)
 - [更新](/graph/api/b2cauthenticationmethodspolicy-update)
@@ -140,7 +143,7 @@ Azure AD B2C 提供一个目录，其中可以保存每个用户的 100 个自�
 
 ## <a name="conditional-access"></a>条件性访问
 
-- [列出所有条件访问策略](/graph/api/conditionalaccessroot-list-policies?view=graph-rest-beta&tabs=http)
+- [列出所有条件访问策略](/graph/api/conditionalaccessroot-list-policies?tabs=http)
 - [读取条件访问策略的属性和关系](/graph/api/conditionalaccesspolicy-get)
 - [创建新的条件访问策略](/graph/api/resources/application)
 - [更新条件访问策略](/graph/api/conditionalaccesspolicy-update)

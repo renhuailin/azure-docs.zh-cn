@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
 ms.date: 08/12/2020
-ms.author: anfeldma
+ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: 77cde4fb580ebea14c09856b9ad2e7f093e20db3
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 470ae497acab4c75e83a13e485d1bcb118485ab9
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505046"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799507"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Python SDK：发行说明和资源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -38,17 +38,26 @@ ms.locfileid: "102505046"
 > * [批量执行工具 - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [批量执行程序 - Java](sql-api-sdk-bulk-executor-java.md)
 
-| |  |
+| 页| 链接 |
 |---|---|
 |**下载 SDK**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**API 文档**|[Python API 参考文档](/python/api/azure-cosmos/)|
+|**API 文档**|[Python API 参考文档](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos?view=azure-python&preserve-view=true)|
 |**SDK 安装说明**|[Python SDK 安装说明](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
 |**入门**|[Python SDK 入门](create-sql-api-python.md)|
-|**当前受支持的平台**|[Python 2.7](https://www.python.org/downloads/) 和 [Python 3.5.3+](https://www.python.org/downloads/)|
+|**当前受支持的平台**|[Python 2.7](https://www.python.org/downloads/) 和 [Python 3.6+](https://www.python.org/downloads/)|
 
 ## <a name="release-history"></a>版本历史记录
 
-### <a name="410-2020-08-10"></a>4.1.0 (2020-08-10)
+## <a name="420"></a>4.2.0
+
+**Bug 修复**
+- 修复了在使用 query_iterable 按页获取结果时延续令牌不起作用的 bug。
+- 修复了文档读取和删除时不遵守资源令牌的 bug。 
+
+**新功能**
+- 添加了对查询更改源时传递 `partitionKey` 的支持。
+
+## <a name="410"></a>4.1.0
 
 - 对“延迟”索引模式添加了弃用警告。 后端不再允许使用此模式创建容器，而是将它们设置为一致。
 
@@ -56,13 +65,14 @@ ms.locfileid: "102505046"
 - 添加了在创建新容器时设置分析存储 TTL 的功能。
 
 **Bug 修复**
-- 修复了对将字典作为 get_client API 的输入的支持。
+- 修复了对将 `dicts` 作为 get_client API 的输入的支持。
 - 修复了查询迭代器中的 Python 2/3 兼容性。
-- 修复了类型提示错误（问题 #12570）。
-- 修复了选项标头未添加到 upsert_item 函数的 bug。 问题 #11791 - 感谢 @aalapatirvbd。
-- 修复了在项中使用非字符串 ID 时引发的错误。 它现在引发 TypeError 而不是 AttributeError（问题 #11793）。
+- 修复了类型提示错误。
+- 修复了选项标头未添加到 upsert_item 函数的 bug。 
+- 修复了在项中使用非字符串 ID 时引发的错误。 它现在引发 TypeError 而不是 AttributeError。
 
-### <a name="400"></a>4.0.0
+
+## <a name="400"></a>4.0.0
 
 * 稳定版。
 * 将 HttpLoggingPolicy 添加到管道，以传入请求和响应标头的自定义记录器。
@@ -80,8 +90,8 @@ ms.locfileid: "102505046"
 * 添加了查询 Distinct、Offset 和 Limit 支持。
 * 默认文档查询执行上下文现在用于
 
-  * ChangeFeed 查询
-  * 单个分区查询（选项中显示了 partitionkey、partitionKeyRangeId）
+  * 更改源查询
+  * 单个分区查询（选项中显示了 `partitionkey`、`partitionKeyRangeId`）
   * 非文档查询
 
 * 多个分区上出现聚合错误，“启用跨分区查询”设置为 true，但无“value”关键字
@@ -324,6 +334,8 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [4.2.0](#420) |2020 年 10 月 9 日 |--- |
+| [4.1.0](#410) |2020 年 8 月 10 日 |--- |
 | [4.0.0](#400) |2020 年 5 月 20 日 |--- |
 | [3.0.2](#302) |2018 年 11 月 15 日 |--- |
 | [3.0.1](#301) |2018 年 10 月 4 日 |--- |

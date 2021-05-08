@@ -1,32 +1,22 @@
 ---
 title: 内置和自定义警报列表
-description: 使用用于 IoT 中心功能和服务的 Defender 了解安全警报和建议的补救措施。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
+description: 了解使用 Defender for IoT 中心的功能和服务的安全警报及建议的修正措施。
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/16/2021
-ms.author: shhazam
-ms.openlocfilehash: ef33851600c576494e4e0903c6ab8ffefc9a1a59
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
-ms.translationtype: MT
+ms.openlocfilehash: 73b3a1ca3e52f571ab7b531235650b6bda870691
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100636486"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104784554"
 ---
-# <a name="defender-for-iot-hub-security-alerts"></a>用于 IoT 中心安全警报的 Defender
+# <a name="defender-for-iot-hub-security-alerts"></a>Defender for IoT 中心安全警报
 
 Defender for IoT 使用高级分析和威胁智能来持续分析 IoT 解决方案，在存在恶意活动时发出警报。
 此外，你可以根据对预期设备行为的了解来创建自定义警报。
 该警报用作潜在危害指标，应进行调查和修正。
 
-在本文中，你将找到内置警报列表，可在 IoT 中心触发这些警报。
+本文提供了可在 IoT 中心上触发的内置警报的列表。
 除内置警报外，借助 Defender for IoT 还可以根据预期 IoT 中心和/或设备行为定义自定义警报。
 有关详细信息，请参阅[可自定义的警报](concept-customizable-security-alerts.md)。
 

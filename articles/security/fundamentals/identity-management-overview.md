@@ -14,13 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/05/2021
 ms.author: terrylan
-Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: d931d3923ff49dde2bea234278c995e79670429f
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
-ms.translationtype: MT
+ms.openlocfilehash: 988689a662839476a695646865c92870f35391ea
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627627"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175777"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 标识管理安全概述
 
@@ -53,7 +52,7 @@ ms.locfileid: "99627627"
 
 SSO 是指只需使用单个用户帐户登录一次，就能访问开展业务所需的全部应用程序和资源。 登录之后，用户可以访问全部所需的应用程序，而无需再次进行身份验证（例如键入密码）。
 
-许多组织依赖 SaaS 应用程序（例如 Microsoft 365、Box 和 Salesforce）来提高用户工作效率。 从历史上看，IT 人员需要在每个 SaaS 应用程序中单独创建和更新用户帐户，而用户需要记住每个 SaaS 应用程序的密码。
+许多组织依赖 SaaS 应用程序（如 Microsoft 365、Box 和 Salesforce）来提高用户生产力。 从历史上看，IT 人员需要在每个 SaaS 应用程序中单独创建和更新用户帐户，而用户需要记住每个 SaaS 应用程序的密码。
 
 Azure AD 将本地 Active Directory 环境扩展到云，让用户不仅能够使用主要组织帐户登录到已加入域的设备和公司资源，而且能够登录到完成作业所需的全部 Web 和 SaaS 应用程序。
 
@@ -62,7 +61,7 @@ Azure AD 将本地 Active Directory 环境扩展到云，让用户不仅能够�
 了解详细信息：
 
 * [SSO 概述](../../active-directory/manage-apps/what-is-single-sign-on.md)
-* [有关身份验证基础的视频](https://www.youtube.com/watch?v=fbSVgC8nGz4&feature=emb_title)
+* [身份验证基础知识视频](https://www.youtube.com/watch?v=fbSVgC8nGz4&feature=emb_title)
 * [应用程序管理的快速入门系列](../../active-directory/manage-apps/view-applications-portal.md)
 
 ## <a name="reverse-proxy"></a>反向代理
@@ -71,8 +70,8 @@ Azure AD 将本地 Active Directory 环境扩展到云，让用户不仅能够�
 
 了解详细信息：
 
-* [启用 Azure AD 应用程序代理](../../active-directory/manage-apps/application-proxy-add-on-premises-application.md)
-* [使用 Azure AD 应用程序代理发布应用程序](../../active-directory/manage-apps/application-proxy-add-on-premises-application.md)
+* [启用 Azure AD 应用程序代理](../../active-directory/app-proxy/application-proxy-add-on-premises-application.md)
+* [使用 Azure AD 应用程序代理发布应用程序](../../active-directory/app-proxy/application-proxy-add-on-premises-application.md)
 * [使用应用程序代理进行单一登录](../../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 * [使用条件性访问](../../active-directory/manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 
@@ -134,9 +133,9 @@ Azure AD B2C 是一项高度可用的全局性标识管理服务，适用于面�
 
 ## <a name="device-registration"></a>设备注册
 
-Azure AD 设备注册是基于设备的 [条件性访问](../../active-directory/devices/device-management-azure-portal.md) 方案的基础。 在注册设备时，Azure AD 设备注册会为设备提供一个标识，用于在用户登录时对设备进行身份验证。 然后，可以使用经过身份验证的设备和设备的属性，对云中和本地托管的应用程序实施条件性访问策略。
+Azure AD 设备注册是基于设备的[条件访问](../../active-directory/devices/device-management-azure-portal.md)方案的基础。 在注册设备时，Azure AD 设备注册会为设备提供一个标识，用于在用户登录时对设备进行身份验证。 然后，可以使用已经过身份验证的设备和设备的属性，对云中和本地托管的应用程序实施条件访问策略。
 
-当与 Intune 之类的移动设备管理解决方案结合使用时，Azure AD 中的设备属性将使用关于设备的更多信息进行更新。 然后，你可以创建条件性访问规则，以根据你的安全性和符合性标准强制从设备进行访问。
+当与 Intune 之类的移动设备管理解决方案结合使用时，Azure AD 中的设备属性将使用关于设备的更多信息进行更新。 然后即可根据安全性和符合性方面的标准来创建条件访问规则，强制从设备进行访问。
 
 了解详细信息：
 

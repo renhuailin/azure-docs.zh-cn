@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: b72d94c1cba3ea0476c6d44e68583f6668b167e2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 00573f01aab5e9aa86befaebb6b514c76a01b67d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702770"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871769"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>在基于 Linux 的 Azure HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流
 
@@ -34,13 +34,13 @@ ms.locfileid: "101702770"
 
 * **Azure SQL 数据库**。  请参阅[使用 Azure 门户在 Azure SQL 数据库中创建数据库](../azure-sql/database/single-database-create-quickstart.md)。  本文使用名为“oozietest”的数据库。
 
-* 群集主存储的 URI 方案。 `wasb://` 对于 Azure 存储空间， `abfs://` 适用于 Azure Data Lake Storage Gen2 或 `adl://` Azure Data Lake Storage Gen1。 如果为 Azure 存储启用安全传输，则 URI 将为 `wasbs://`。 另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
+* 群集主存储的 URI 方案。 对于 Azure 存储，此值为 `wasb://`；对于Azure Data Lake Storage Gen2，此值为 `abfs://`，对于 Azure Data Lake Storage Gen1，此值为 `adl://`。 如果为 Azure 存储启用安全传输，则 URI 将为 `wasbs://`。 另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
 
 ## <a name="example-workflow"></a>示例工作流
 
 本文档中使用的工作流包含两个操作。 操作是任务的定义，例如运行 Hive、Sqoop、MapReduce 或其他进程：
 
-![HDInsight Oozie 工作流关系图](./media/hdinsight-use-oozie-linux-mac/oozie-workflow-diagram.png)
+:::image type="content" source="./media/hdinsight-use-oozie-linux-mac/oozie-workflow-diagram.png" alt-text="HDInsight Oozie 工作流关系图" border="false":::
 
 1. Hive 操作运行 HiveQL 脚本，以从 HDInsight 随附的 `hivesampletable` 中提取记录。 每个数据行描述特定移动设备的访问。 显示的记录格式如下文所示：
 
@@ -102,7 +102,7 @@ hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc*.jar /tutorials/useoozi
 
 ## <a name="define-the-hive-query"></a>定义 Hive 查询
 
-使用以下步骤创建用于定义查询的 Hive 查询语言 (HiveQL) 脚本。 稍后将在本文档的 Oozie 工作流中使用该查询。
+使用以下步骤创建用于定义查询的 Hive 查询语言 (HiveQL) 脚本。 在本文档稍后的 Oozie 工作流中要使用此查询。
 
 1. 在 SSH 连接中，使用以下命令创建名为 `useooziewf.hql` 的文件：
 
@@ -208,7 +208,7 @@ Oozie 工作流定义以 Hadoop 过程定义语言（缩写为 hPDL，一种 XML
 
    * `RunSqoopExport`：此操作使用 Sqoop 将创建的数据从 Hive 脚本导出到 SQL 数据库。 仅当 `RunHiveScript` 操作成功时才运行此操作。
 
-     工作流包含多个条目，例如 `${jobTracker}`。 将这些条目替换为在作业定义中使用的值。 稍后将在本文档中创建作业定义。
+     工作流包含多个条目，例如 `${jobTracker}`。 将这些条目替换为在作业定义中使用的值。 本文档稍后会创建作业定义。
 
      另请注意 Sqoop 节中的 `<archive>mssql-jdbc-7.0.0.jre8.jar</archive>` 条目。 该条目指示在运行此操作时 Oozie 要将此存档提供给 Sqoop 使用。
 
@@ -258,7 +258,7 @@ Oozie 工作流定义以 Hadoop 过程定义语言（缩写为 hPDL，一种 XML
     GO
     ```
 
-    输入 `GO` 语句后，会评估前面的语句。 这些语句创建一个名为的表， `mobiledata` 由工作流使用。
+    输入 `GO` 语句后，会评估前面的语句。 这些语句创建一个名为 `mobiledata` 的表，供工作流使用。
 
     若要验证是否已创建该表，请使用以下命令：
 
@@ -302,7 +302,7 @@ Oozie 工作流定义以 Hadoop 过程定义语言（缩写为 hPDL，一种 XML
 
     |占位符值| 替换的值|
     |---|---|
-    |wasbs://mycontainer \@ mystorageaccount.blob.core.windows.net| 从步骤 1 获取的值。|
+    |wasbs://mycontainer\@mystorageaccount.blob.core.windows.net| 从步骤 1 获取的值。|
     |admin| HDInsight 群集的登录名（如果不是 admin）。|
     |serverName| Azure SQL 数据库服务器名称。|
     |sqlLogin| Azure SQL 数据库服务器登录名。|
@@ -369,7 +369,7 @@ Oozie 工作流定义以 Hadoop 过程定义语言（缩写为 hPDL，一种 XML
     </configuration>
     ```
 
-    此文件中的大多数信息用于填充 workflow.xml 或 ooziewf.hql 文件中使用的值（例如 `${nameNode}`）。  如果该路径是 `wasbs` 路径，则必须使用完整路径。 不要将其缩短为 `wasbs:///` 。 `oozie.wf.application.path` 条目定义查找 workflow.xml 文件的位置。 此文件包含此作业运行的工作流。
+    此文件中的大多数信息用于填充 workflow.xml 或 ooziewf.hql 文件中使用的值（例如 `${nameNode}`）。  如果该路径是 `wasbs` 路径，则必须使用完整路径。 不要将其缩短为 `wasbs:///`。 `oozie.wf.application.path` 条目定义查找 workflow.xml 文件的位置。 此文件包含此作业运行的工作流。
 
 3. 若要创建 Oozie 作业定义配置，请使用以下命令：
 
@@ -415,7 +415,7 @@ Oozie 工作流定义以 Hadoop 过程定义语言（缩写为 hPDL，一种 XML
     oozie job -config job.xml -submit
     ```
 
-    此命令从加载作业信息， `job.xml` 并将其提交到 Oozie，但不运行它。
+    此命令从 `job.xml` 加载作业信息，并将作业信息提交到 Oozie，但不运行该作业。
 
     命令完成后，应返回作业的 ID，例如 `0000005-150622124850154-oozie-oozi-W`。 此 ID 用于管理作业。
 
@@ -516,29 +516,29 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
 3. 在页面左侧，选择“Oozie” > “快速链接” > “Oozie Web UI”。  
 
-    ![Apache Ambari oozie web ui 步骤](./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png" alt-text="Apache Ambari Oozie Web UI 步骤" border="true":::
 
 4. Oozie Web UI 默认显示正在运行的工作流作业。 若要查看所有工作流作业，请选择“所有作业”。
 
-    ![Oozie web 控制台工作流作业](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png" alt-text="Oozie Web 控制台工作流作业" border="true":::
 
 5. 若要查看有关某个作业的详细信息，请选择该作业。
 
-    ![HDInsight Apache Oozie 作业信息](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png" alt-text="HDInsight Apache Oozie 作业信息" border="true":::
 
 6. 可以在“作业信息”选项卡中查看基本作业信息，以及作业中的各个操作。 可以使用顶部的选项卡查看“作业定义”和“作业配置”，访问“作业日志”，或者在“作业 DAG”下查看作业的有向无环图 (DAG)。   
 
    * **作业日志**：选择“获取日志”按钮获取作业的所有日志，或使用“输入搜索条件”字段来筛选日志。
 
-       ![HDInsight Apache Oozie 作业日志](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png)
+       :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png" alt-text="HDInsight Apache Oozie 作业日志" border="true":::
 
    * **作业 DAG**：DAG 是整个工作流中使用的数据路径的图形概览。
 
-       !["HDInsight Apache Oozie job dag"](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
+       :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png" alt-text="&quot;HDInsight Apache Oozie 作业 DAG&quot;" border="true":::
 
 7. 如果在“作业信息”选项卡中选择一个操作，会显示有关该操作的信息。 例如，选择 **RunSqoopExport** 操作。
 
-    ![HDInsight oozie 作业操作信息](./media/hdinsight-use-oozie-linux-mac/oozie-job-action-info.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/oozie-job-action-info.png" alt-text="HDInsight Oozie 作业操作信息" border="true":::
 
 8. 可以看到操作的详细信息，例如 **控制台 URL** 的链接。 使用此链接可查看作业的作业跟踪器信息。
 
@@ -638,18 +638,18 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
 7. 如果转到 Oozie Web UI 并选择“协调器作业”选项卡，会看到下图所示的信息：
 
-    ![Oozie web 控制台协调器作业选项卡](./media/hdinsight-use-oozie-linux-mac/coordinator-jobs-tab.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/coordinator-jobs-tab.png" alt-text="Oozie Web 控制台协调器作业选项卡" border="true":::
 
     “下一次具体化”条目包含下次运行作业的时间。
 
 8. 与前面的工作流作业一样，在 Web UI 中选择作业条目会显示有关该作业的信息：
 
-    ![Apache Oozie 协调器作业信息](./media/hdinsight-use-oozie-linux-mac/coordinator-job-info.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/coordinator-job-info.png" alt-text="Apache Oozie 协调器作业信息" border="true":::
 
     > [!NOTE]  
     > 此图像只显示了作业的成功运行结果，而未显示计划工作流中的单个操作。 若要查看单个操作，请选择某个“操作”条目。
 
-    ![OOzie web 控制台作业信息选项卡](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png" alt-text="OOzie Web 控制台作业信息选项卡" border="true":::
 
 ## <a name="next-steps"></a>后续步骤
 

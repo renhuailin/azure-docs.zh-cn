@@ -5,12 +5,13 @@ author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
 ms.date: 02/14/2021
-ms.openlocfilehash: bb9bad1668340182083101ad879ee13e0ca3ea77
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 55f255ddcff1928d3ea0778ff32a72c9312f9a39
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038248"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318308"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>在 Azure Monitor 中创建日志的指标警报
 
@@ -354,7 +355,7 @@ ms.locfileid: "102038248"
 
 假设上述参数文件保存为 metricfromLogsAlertStatic.parameters.json，则可以使用 [Azure 门户中用于创建警报的资源模板](../../azure-resource-manager/templates/deploy-portal.md)来创建日志的指标警报。
 
-另外，还可以使用以下 Azure PowerShell 命令：
+也可以使用以下 Azure PowerShell 命令：
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfromLogsAlertStatic.json TemplateParameterFile metricfromLogsAlertStatic.parameters.json
@@ -670,7 +671,7 @@ az deployment group create --resource-group myRG --template-file metricfromLogsA
 
 假设上述参数文件保存为 metricfromLogsAlertDynamic.parameters.json，则可以使用 [Azure 门户中用于创建警报的资源模板](../../azure-resource-manager/templates/deploy-portal.md)来创建日志的指标警报。
 
-另外，还可以使用以下 Azure PowerShell 命令：
+也可以使用以下 Azure PowerShell 命令：
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfromLogsAlertDynamic.json TemplateParameterFile metricfromLogsAlertDynamic.parameters.json

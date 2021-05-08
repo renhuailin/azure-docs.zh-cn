@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/21/2021
+ms.date: 03/23/2021
 ms.author: alkohli
-ms.openlocfilehash: 4590949f2feb86dc344dce87f3ff447e0e05e8ee
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 60c6d0b7c983aefbca3aec65a3f6562edb1d56ef
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102438108"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956173"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>更新 Azure Stack Edge Pro GPU 
 
@@ -24,13 +24,15 @@ ms.locfileid: "102438108"
 本文中所述的过程是使用不同版本的软件执行的，但对于当前软件版本，该过程保持不变。
 
 > [!IMPORTANT]
-> - 更新 2101 是当前更新且对应于：
->   - 设备软件版本 - 2.2.1473.2521
+> - 更新 2103 是当前更新且对应于：
+>   - 设备软件版本 - 2.2.1540.2890
 >   - Kubernetes 服务器版本 - v1.17.3
->   - IoT Edge 版本：0.1.0-beta10
+>   - IoT Edge 版本：0.1.0-beta13
+>   - GPU 驱动程序版本：460.32.03
+>   - CUDA 版本：11.2
 >    
->    有关此更新中新增功能的信息，请转到[发行说明](azure-stack-edge-gpu-2101-release-notes.md)。
-> - 若要应用 2101 更新，设备必须正在运行 2010。
+>    有关此更新中新增功能的信息，请转到[发行说明](azure-stack-edge-gpu-2103-release-notes.md)。
+> - 若要应用 2103 更新，设备必须正在运行 2010。 如果未运行支持的最低版本，则会看到此错误：“无法安装更新包，因为不满足其依赖项”。
 > - 请记住，安装更新或修补程序会重新启动设备。 此更新包含设备软件更新和 Kubernetes 更新。 假设 Azure Stack Edge Pro 是一个单节点设备，任何正在进行的 I/O 都会被中断，并且你的设备将经历长达 1.5 小时的更新停机时间。
 
 若要在设备上安装更新，首先需要配置更新服务器的位置。 配置更新服务器后，可以通过 Azure 门户 UI 或本地 Web UI 应用更新。
@@ -111,10 +113,7 @@ ms.locfileid: "102438108"
     
     ![更新 12 后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-11.png)
 
-
-7. 重新启动后，设备将再次置于维护模式，并显示信息警报进行指示。
-
-    如果从顶部命令栏中选择“更新设备”，则可以查看更新的进度。   
+7. 重启后，如果从顶部命令栏中选择“更新设备”，则可以查看更新的进度。   
 
 8. 安装更新后，设备状态将更新为“联机”。 
 
@@ -124,23 +123,6 @@ ms.locfileid: "102438108"
 
     ![更新 14 后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-15.png)
 
-<!--9. You will again see a notification that updates are available. These are the Kubernetes updates. Select the notification or select **Update device** from the top command bar.
-
-    ![Software version after update 15](./media/azure-stack-edge-gpu-install-update/portal-update-16.png)
-
-10. Download the Kubernetes updates. You can see that the package size is different when compared to the previous update package.
-
-    ![Software version after update 16](./media/azure-stack-edge-gpu-install-update/portal-update-17.png)
-
-    The process of installation is identical to that of device updates. First the updates are downloaded.
-
-    ![Software version after update 17](./media/azure-stack-edge-gpu-install-update/portal-update-18.png)    
-    
-11. Once the updates are downloaded, you can then install the updates. 
-
-    ![Software version after update 18](./media/azure-stack-edge-gpu-install-update/portal-update-19.png)
-
-    As the updates are installed, the device is put into maintenance mode. The device does not restart for the Kubernetes updates. -->
 
 成功安装设备软件和 Kubernetes 更新后，横幅通知就会消失。 你的设备现在具有最新版本的设备软件和 Kubernetes。
 
@@ -168,11 +150,11 @@ ms.locfileid: "102438108"
 
 2. 在 Microsoft 更新目录的搜索框中，输入要下载的更新的修补程序或条款的知识库 (KB) 编号。 例如，输入“Azure Stack Edge Pro”，然后单击“搜索”。
    
-    更新列表显示为“Azure Stack Edge 更新 2101”。
+    更新列表显示为“Azure Stack Edge 更新 2103”。
    
     <!--![Search catalog 2](./media/azure-stack-edge-gpu-install-update/download-update-2-b.png)-->
 
-4. 选择“下载”。 有两个文件可供下载，其中包含分别对应于设备软件更新和 Kubernetes 更新的 SoftwareUpdatePackage.exe 和 Kubernetes_Package.exe 后缀。 将文件下载到本地系统上的文件夹。 也可以将该文件夹复制到可通过设备访问的网络共享。
+4. 选择“下载”。 有两个包可供下载：KB 4613486 和 KB 46134867 ，它们分别对应于设备软件更新 (SoftwareUpdatePackage.exe)和 Kubernetes 更新 (Kubernetes_Package.exe)。 将包下载到本地系统的文件夹。 也可以将该文件夹复制到可通过设备访问的网络共享。
 
 ### <a name="install-the-update-or-the-hotfix"></a>安装更新或修补程序
 
@@ -203,7 +185,7 @@ ms.locfileid: "102438108"
 
 5. 更新开始。 成功更新设备后，该设备将重新启动。 本地 UI 在此期间不可访问。
    
-6. 重新启动完成后，会转到“登录”页。 若要验证设备软件是否已更新，请在本地 Web UI 中，转到“维护” > “软件更新”。 对于当前版本，显示的软件版本应为 Azure Stack Edge 2101。 
+6. 重新启动完成后，会转到“登录”页。 若要验证设备软件是否已更新，请在本地 Web UI 中，转到“维护” > “软件更新”。 对于当前版本，显示的软件版本应为 Azure Stack Edge 2103。 
 
    <!--![update device 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png)-->
 

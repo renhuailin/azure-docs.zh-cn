@@ -1,5 +1,5 @@
 ---
-title: 注册用于调用 web Api 的桌面应用 |Microsoft
+title: 注册调用 Web API 的桌面应用 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何构建调用 Web API 的桌面应用（应用注册）
 services: active-directory
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 155df45d975a30991edc80d587445d699a8d2695
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
-ms.translationtype: MT
+ms.openlocfilehash: 263397aa2cd09ba24fa750131b76047801869a65
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103220"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104798929"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>调用 Web API 的桌面应用：应用注册
 
@@ -40,14 +40,19 @@ ms.locfileid: "100103220"
 
 可以在桌面应用程序中使用的重定向 URI 取决于要使用的流。
 
-- 如果使用交互式身份验证或设备代码流，请使用 `https://login.microsoftonline.com/common/oauth2/nativeclient`。 若要实现此配置，请在应用程序的“身份验证”部分中选择相应的 URL。 
+通过在 Azure 门户中“应用注册”中为应用[配置平台设置](quickstart-register-app.md#add-a-redirect-uri)，来指定应用的重定向 URI。
+
+- 对于使用交互式身份验证的应用：
+  - 使用嵌入浏览器的应用：`https://login.microsoftonline.com/common/oauth2/nativeclient`
+  - 使用系统浏览器的应用：`http://localhost`
 
   > [!IMPORTANT]
-  > `https://login.microsoftonline.com/common/oauth2/nativeclient`建议使用作为重定向 URI 作为最佳安全方案。  如果未指定重定向 URI， `urn:ietf:wg:oauth:2.0:oob` 则默认情况下，MSAL.NET 将不会建议。  此默认值会在下一个主要版本中更新为重大更改。
+  > 作为安全最佳做法，我们建议显式设置 `https://login.microsoftonline.com/common/oauth2/nativeclient` 或 `http://localhost` 作为重定向 URI。 如果未指定任何其他重定向 URI（不建议这样做），某些身份验证库（如 MSAL.NET）将使用默认值 `urn:ietf:wg:oauth:2.0:oob`。 在下一个主要版本中，此默认值将作为中断性变更进行更新。
 
 - 如果针对 macOS 构建本机 Objective-C 或 Swift 应用，请基于应用程序的捆绑包标识符采用以下格式注册重定向 URI：`msauth.<your.app.bundle.id>://auth`。 将 `<your.app.bundle.id>` 替换为应用程序的捆绑包标识符。
+- 如果生成 Node.js Electron 应用，请使用自定义文件协议，而不是常规 web (https://) 重定向 URI，以便处理授权流的重定向步骤，例如 `msal://redirect`。 自定义文件协议名称不能太明显而容易被猜到，应遵循[适用于本机应用的 Oauth 2.0 规范](https://tools.ietf.org/html/rfc8252#section-7.1)中的建议。
 - 如果你的应用仅使用集成 Windows 身份验证或用户名和密码，则不需要为应用程序注册重定向 URI。 这些流前往 Microsoft 标识平台 v2.0 终结点并返回。 不会在任何特定 URI 上调用你的应用程序。
-- 若要使用[后台程序应用](scenario-daemon-overview.md)程序中使用的客户端凭据流来区分[设备代码流](scenario-desktop-acquire-token.md#device-code-flow)、[集成的 Windows 身份验证](scenario-desktop-acquire-token.md#integrated-windows-authentication)，以及机密客户端应用程序的[用户名和密码](scenario-desktop-acquire-token.md#username-and-password)，无需重定向 URI，请将其配置为公用客户端应用程序。 为了实现该配置：
+- 若要使用[守护程序应用程序](scenario-daemon-overview.md)中使用的客户端凭据流将[设备代码流](scenario-desktop-acquire-token.md#device-code-flow)、[集成 Windows 身份验证](scenario-desktop-acquire-token.md#integrated-windows-authentication)以及[用户名和密码](scenario-desktop-acquire-token.md#username-and-password)与机密的客户端应用程序（它们都不要求重定向 URI）区分开来，请将应用程序配置为公共客户端应用程序。 为了实现该配置：
 
     1. 在 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>中，选择“应用注册”中的应用，然后选择“身份验证” 。
     1. 在“高级设置” > “允许公共客户端流” > “启用以下移动和桌面流:”中，选择“是”。

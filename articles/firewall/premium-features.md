@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 04/07/2021
+ms.date: 04/22/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: fdf0113d73b0b2e82ec889caf2a82c77bb7a040c
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: fa7d17b208c4a950e82a8bdc4db243ebb44e4c41
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226695"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896272"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Azure 防火墙高级预览版功能
 
@@ -155,6 +155,7 @@ Azure 防火墙高级预览版存在以下已知问题：
 |IDPS 绕过|IDPS 绕过不适用于 TLS 终止流量，并且不支持源 IP 地址和源 IP 组。|为 GA 计划了修复。|
 |TLS 1.3 支持|TLS 1.3 部分受支持。 从客户端到防火墙的 TLS 隧道基于 TLS 1.2，从防火墙到外部 Web 服务器的 TLS 隧道基于 TLS 1.3。|正在调查更新。|
 |KeyVault 专用终结点|KeyVault 支持专用终结点访问以限制其网络曝光。 如果按照 [KeyVault 文档](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)中的说明配置了例外，则受信任的 Azure 服务可以绕过此限制。 Azure 防火墙当前未列为受信任服务，因此无法访问 Key Vault。|为 GA 计划了修复。|
+|IP 组支持|Azure 防火墙高级预览版不支持 IP 组。|为 GA 计划了修复。|
 
 
 ## <a name="next-steps"></a>后续步骤

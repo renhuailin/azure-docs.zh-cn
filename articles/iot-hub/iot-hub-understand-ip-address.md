@@ -6,13 +6,13 @@ ms.author: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: 1bfae8c7afbfdc6e73dd8bb17b94e6543361e9ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/21/2021
+ms.openlocfilehash: 7d807a15d358bd621baedbff253f0c731e43ed26
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83848222"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874164"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT 中心 IP 地址
 
@@ -45,7 +45,7 @@ IoT 中心公共终结点的 IP 地址前缀会定期发布在 _AzureIoTHub_ [�
 
 ## <a name="limitations-and-workarounds"></a>限制和解决方法
 
-* IoT 中心 IP 筛选功能限制为 10 个规则。 可以请求 Azure 客户支持人员提高此限制。 
+* IoT 中心 IP 筛选功能设有 100 条规则的限制。 可以请求 Azure 客户支持人员提高此限制。 
 
 * 配置的 [IP 筛选规则](iot-hub-ip-filtering.md)仅在 IoT 中心 IP 终结点上应用，而不会在 IoT 中心的内置事件中心终结点上应用。 如果还需要在存储消息的事件中心上应用 IP 筛选，可以提供自己的事件中心资源，在其中可以直接配置所需的 IP 筛选规则。 为此，需要预配自己的事件中心资源，并将[消息路由](./iot-hub-devguide-messages-d2c.md)设置为向该资源发送消息，而不是向 IoT 中心的内置事件中心发送消息。 最后，如上表中所述，若要启用消息路由功能，还需要允许从 IoT 中心的 IP 地址前缀连接到预配的事件中心资源。
 

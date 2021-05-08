@@ -6,16 +6,19 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 5c8c545f01eb0df53ce9677b7db6f931b4d21af9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: da3302ac25aaac6202f42cee400b307fc701fe50
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021922"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "104674965"
 ---
 # <a name="how-to-connect-to-data-sources"></a>如何连接到数据源
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
+
 ## <a name="introduction"></a>简介
-**Microsoft Azure 数据目录** 是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 换句话说， **Azure 数据目录** 就是帮助人们发现、了解和使用数据源，并帮助组织从其现有数据中获取更多价值。 此方案的一个重要方面在于使用数据 - 用户发现数据源并了解其用途后，下一步就是连接到数据源将其数据投入使用。
+**Microsoft Azure 数据目录** 是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 换而言之，**Azure 数据目录** 旨在帮助人们发现、了解和使用数据源，并帮助组织从其现有数据中获取更多价值。 此方案的一个重要方面在于使用数据 - 用户发现数据源并了解其用途后，下一步就是连接到数据源将其数据投入使用。
 
 ## <a name="data-source-locations"></a>数据源位置
 在数据源注册期间，**Azure 数据目录** 会接收有关数据源的元数据。 此元数据包括数据源位置的详细信息。 位置的详细信息因数据源而不同，但始终包含连接所需的信息。 例如，SQL Server 表的位置包括服务器名称、数据库名称、架构名称和表名，而 SQL Server Reporting Services 报表的位置包括服务器名称和报表的路径。 其他数据源类型的位置会反映源系统的结构和功能。
@@ -56,7 +59,7 @@ ms.locfileid: "96021922"
 
  ![包含提供的请求访问指令的连接信息](./media/data-catalog-how-to-connect/data-catalog-how-to-connect4.png)
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 使用 **Azure 数据目录** 注册数据源，将结构性元数据和描述性元数据从数据源复制到目录服务，使数据可被发现。 注册并发现数据源后，用户可以从“Azure 数据目录”门户使用“打开方式...”菜单， 或者使用用户自己选择的数据工具连接到数据源。
 
 ## <a name="see-also"></a>另请参阅

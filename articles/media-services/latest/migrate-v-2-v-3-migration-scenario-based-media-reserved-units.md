@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 5ca01bcea348b866c0f40f82ebe90dc31d032739
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 00e1fa623fc625a568f6580998443758c3916be8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98927065"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563066"
 ---
 # <a name="media-reserved-units-mrus-scenario-based-migration-guidance"></a>基于媒体保留单位 (MRU) 场景的迁移指南
 
@@ -48,7 +48,3 @@ ms.locfileid: "98927065"
 ## <a name="samples"></a>示例
 
 还可[将代码示例中的 V2 和 V3 代码进行比较](migrate-v-2-v-3-migration-samples.md)。
-
-## <a name="next-steps"></a>后续步骤
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: a550087f552238820ecff079ff1dc2523c4172d3
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 868fdd1bb31fbb8e3dd648f05409e80a2652e5c5
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776772"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108212316"
 ---
 可以通过 [Azure CLI](/cli/azure) 和 [Azure PowerShell](/powershell/azure/new-azureps-module-az) 启用和管理 Azure 磁盘加密。 为此，必须在本地安装工具并连接到 Azure 订阅。
 
@@ -56,7 +56,7 @@ Connect-AzAccount
 如果有多个订阅并要指定一个，请先运行 [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) cmdlet 列出订阅，再运行 [Set-AzContext](/powershell/module/az.accounts/set-azcontext) cmdlet：
 
 ```powershell
-Set-AzContext -Subscription -Subscription <SubscriptionId>
+Set-AzContext -Subscription <SubscriptionId>
 ```
 
 运行 [Get-AzContext](/powershell/module/Az.Accounts/Get-AzContext) cmdlet 将验证是否选择了正确的订阅。

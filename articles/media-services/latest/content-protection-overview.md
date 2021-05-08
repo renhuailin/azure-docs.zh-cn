@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 7402172473056f191c2c50fa8aa8bd99d4e948eb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 880185a33ec16ffc30d6412d3f27a69ce81a7880
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101095919"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642153"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>使用媒体服务动态加密保护内容
 
@@ -137,7 +137,7 @@ HLS 协议支持以下容器格式和加密方案：
 
 * iOS 11 或更高版本。
 * iPhone 8 或更高版本。
-* 装备 Intel 第 7 代 CPU 的 macOS High Sierra。
+* 配备了 Intel 第 7 代 CPU 的 macOS High Sierra。
 
 ### <a name="mpeg-dash"></a>MPEG-DASH
 
@@ -265,12 +265,3 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 
 查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
-
-## <a name="next-steps"></a>后续步骤
-
-* [使用 AES 加密进行保护](protect-with-aes128.md)
-* [使用 DRM 提供保护](protect-with-drm.md)
-* [设计带访问控制的多 DRM 内容保护系统](design-multi-drm-system-with-access-control.md)
-* [存储端加密](storage-account-concept.md#storage-side-encryption)
-* [常见问题解答](frequently-asked-questions.md)
-* [JSON Web 令牌处理程序](/dotnet/framework/security/json-web-token-handler)
