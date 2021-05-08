@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 982c33c5c55e32ce48131a4b2f0911e4f23dd408
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6358f5589e785cfadf243ee2017434aad5dd94a9
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98877282"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108176029"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>条件访问：阻止传统身份验证
 
@@ -33,7 +33,7 @@ ms.locfileid: "98877282"
 1. 在“分配”  下，选择“用户和组” 
    1. 在“包括”下，选择“所有用户”。  
    1. 在“排除”下，选择“用户和组”，然后选择必须保留使用旧式身份验证功能的任何帐户。 排除至少一个帐户以防止你被锁定。如果不排除任何帐户，将无法创建此策略。
-   1. 选择“完成”。
+   1. 选择“完成”  。
 1. 在“云应用或操作”下，选择“所有云应用”。
    1. 选择“完成”。
 1. 在“条件” > “客户端应用”下，将“配置”设置为“是”   。
@@ -43,6 +43,9 @@ ms.locfileid: "98877282"
    1. 选择“选择”。
 1. 确认设置，然后将“启用策略”设置为“仅限报告”。  
 1. 选择“创建”  ，以便创建启用策略所需的项目。
+
+> [!NOTE]
+> 完成第一因素身份验证后将强制执行条件访问策略。 在遇到拒绝服务 (DoS) 攻击等情景中，条件访问不应充当组织的第一道防线，但它可以使用这些事件的信号来确定访问权限。
 
 ## <a name="next-steps"></a>后续步骤
 

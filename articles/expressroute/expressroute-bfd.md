@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: 254f5909e7ed8db4dc18ade2677a3213b268cf41
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1ad91b00c14744ab1f0cbb414defeaffb85559fe
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97511257"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127779"
 ---
 # <a name="configure-bfd-over-expressroute"></a>配置基于 ExpressRoute 的 BFD
 
@@ -76,7 +76,7 @@ router bgp 65020
 - [创建和修改 ExpressRoute 线路的路由][CreatePeering]
 
 <!--Image References-->
-[1]: ./media/expressroute-bfd/BFD_Need.png "BFD 加快链路故障推测时间"
+[1]: ./media/expressroute-bfd/bfd-need.png "BFD 加快链路故障推测时间"
 
 <!--Link References-->
 [CreateCircuit]: ./expressroute-howto-circuit-portal-resource-manager.md

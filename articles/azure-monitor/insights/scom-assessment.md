@@ -1,15 +1,15 @@
 ---
-title: Azure Monitor System Center Operations Manager 评估
+title: 用 Azure Monitor 评估 System Center Operations Manager
 description: 可以使用 System Center Operations Manager 运行状况检查解决方案定期评估环境的风险和运行状况。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
 ms.openlocfilehash: 35ae1e09fd0a06014a747cef99631a7bfe2dee1c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101731402"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>使用 System Center Operations Manager 运行状况检查（预览版）解决方案优化环境
@@ -32,7 +32,7 @@ ms.locfileid: "101731402"
 
 ## <a name="installing-and-configuring-the-solution"></a>安装和配置解决方案
 
-此解决方案适用于 Microsoft System Center 2012 Operations Manager Service Pack 1、Microsoft System Center 2012 R2 Operations Manager、Microsoft System Center 2016 Operations Manager、Microsoft System Center 2016 Operations Manager 和 Microsoft System Center Operations Manager 1807。 必须在每个管理服务器上安装 .NET Framework 4.6.2 的受支持版本。
+解决方案适用于 Microsoft System Center 2012 Operations Manager Service Pack 1、Microsoft System Center 2012 R2 Operations Manager、Microsoft System Center 2016 Operations Manager、Microsoft System Center 2016 Operations Manager 以及 Microsoft System Center Operations Manager 1807。 必须在每个管理服务器上安装受支持的 .NET Framework 4.6.2 版本。
 
 使用以下信息安装和配置解决方案。
 
@@ -89,7 +89,7 @@ Log Analytics 基于工作负荷的管理包生成，提供增值服务。 每�
 2. 在“分发”选项卡上，单击“选定的计算机”框旁边的“添加”，添加要将该帐户分发到的管理服务器。  单击“确定”两次以保存更改。
 3. 在“运行方式配置”下，单击“配置文件”。
 4. 搜索“SCOM 评估配置文件”。
-5. 配置文件名称应为： *Microsoft System Center Operations Manager 运行状况检查运行方式配置文件*。
+5. 配置文件名应为：Microsoft System Center Operations Manager 运行状况检查运行方式配置文件。
 6. 右键单击该配置文件并更新其属性，添加最近创建的运行方式帐户。
 
 ### <a name="sql-script-to-grant-granular-permissions-to-the-run-as-account"></a>向运行方式帐户授予具体权限的 SQL 脚本
@@ -146,13 +146,13 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 System Center Operations Manager 运行状况检查解决方案的管理包中包含一个名为“Microsoft System Center Operations Manager 运行运行状况检查规则”的规则。 此规则负责执行运行状况检查。 若要启用该规则并配置频率，请使用以下过程。
 
-默认情况下，Microsoft System Center Operations Manager 运行运行状况检查规则已禁用。 若要执行运行状况检查，必须在管理服务器上启用该规则。 请使用以下步骤：
+Microsoft System Center Operations Manager 运行状况检查规则默认已禁用。 若要执行运行状况检查，必须在管理服务器上启用该规则。 请使用以下步骤：
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>为特定的管理服务器启用规则
 
 1. 在 Operations Manager Operations 控制台的“创作”工作区的“规则”窗格中，搜索规则“Microsoft System Center Operations Manager 运行运行状况检查规则”。
 2. 在搜索结果中，选择包含“类型: 管理服务器”字样的规则。
-3. 右键单击该规则，然后单击 "**替代**"  >  **作为类： Management Server 的特定对象**。
+3. 右键单击该规则，并单击“重写” > “对于类为管理服务器的特定对象”。 
 4.  在可用管理服务器列表中，选择要在其上运行该规则的管理服务器。  这应该是前面配置的，要与运行方式帐户关联的同一个管理服务器。
 5.  请务必将“已启用”参数值的重写值更改为 **True**。<br><br> ![重写参数](./media/scom-assessment/rule.png)
 
@@ -164,7 +164,7 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
 
 1. 在 Operations Manager 控制台的“创作”工作区的“规则”部分中，搜索规则“Microsoft System Center Operations Manager 运行运行状况检查规则”。
 2. 在搜索结果中，选择包含“类型: 管理服务器”字样的规则。
-3. 右键单击该规则，然后单击 "**替代**  >  **类的所有对象的规则：管理服务器**"。
+3. 右键单击该规则，并单击“重写规则” > “对于类为管理服务器的所有对象”。 
 4. 将“间隔”参数值更改为所需的间隔值。 在以下示例中，该值设置为 1440 分钟（一天）。<br><br> ![间隔参数](./media/scom-assessment/interval.png)<br>  
 
     如果设置的值小于 1440 分钟，该规则将按一天的间隔运行。 在本示例中，规则将忽略间隔值，按一天的频率运行。
@@ -190,7 +190,7 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
 
 **性能和可扩展性** - 该重点区域显示帮助组织实现 IT 基础结构扩展的建议，确保 IT 环境满足当前性能要求，并且能够应对不断变化的基础结构需求。
 
-**升级、迁移和部署** -该重点区域显示帮助你将 SQL Server 升级、迁移和部署到现有基础结构的建议。
+**升级、迁移和部署** - 该重点区域显示帮助升级、迁移并将 SQL Server 部署到现有基础结构的建议。
 
 **操作和监视** - 该重点关注领域显示帮助简化 IT 运营、实施预防性维护并使性能最大化的建议。
 
@@ -241,7 +241,7 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
 1. 创建一个名为 IgnoreRecommendations.txt 的文件。
 2. 在单独的行上粘贴或键入要 Log Analytics 忽略的每个建议的 RecommendationId，保存并关闭该文件。
 3. 将以下文件夹中的文件置于每台要让 Log Analytics 忽略建议的计算机上。
-4. 在 Operations Manager 管理服务器上- *SystemDrive*： \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server。
+4. 在 Operations Manager 管理服务器上 - *SystemDrive*:\Program Files\Microsoft System Center 2012 R2\Operations Manager\Server。
 
 ### <a name="to-verify-that-recommendations-are-ignored"></a>验证建议是否已被忽略
 
@@ -261,13 +261,13 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
 
 ## <a name="system-center-operations-manager-health-check-solution-faq"></a>System Center Operations Manager 运行状况检查解决方案常见问题解答
 
-*我向我的 Log Analytics 工作区添加了运行状况检查解决方案。但看不到建议。为什么不呢？* 添加解决方案后，使用以下步骤在 Log Analytics 仪表板上查看建议。  
+*我已将运行状况检查解决方案添加到了 Log Analytics 工作区。但没有看到建议。为什么看不到呢？* 添加解决方案后，使用以下步骤在 Log Analytics 仪表板上查看建议。  
 
 - [设置 System Center Operations Manager 运行状况检查的运行方式帐户](#operations-manager-run-as-accounts-for-log-analytics)  
 - [配置 System Center Operations Manager 运行状况检查规则](#configure-the-health-check-rule)
 
 
-是否有某种方法可配置检查的运行频率？ 是的。 请参阅[配置运行频率](#configure-the-run-frequency)。
+是否有某种方法可配置检查的运行频率？ 是。 请参阅[配置运行频率](#configure-the-run-frequency)。
 
 如果添加 System Center Operations Manager 运行状况检查解决方案后发现另一台服务器，那么是否会检查它？ 是的，发现之后，即会对它进行检查，默认情况下每隔七天检查一次。
 
@@ -281,7 +281,7 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
 
 如何知道是否存在不符合先决条件的情况？ 如果执行了运行状况检查但未看到结果，则有可能是检查不符合某些先决条件。 可以在日志搜索中执行查询 `Operation Solution=SCOMAssessment` 和 `SCOMAssessmentRecommendation FocusArea=Prerequisites`，确定不符合哪些先决条件。
 
-*`Failed to connect to the SQL Instance (….).`先决条件错误中会出现一条消息。问题是什么？* 收集数据的进程 AdvisorAssessment.exe 在管理服务器的 HealthService 进程下运行。 在运行状况检查过程中，该进程会尝试连接到 Operations Manager 数据库所在的 SQL Server。 如果防火墙规则阻止与 SQL Server 实例建立连接，则可能会出现此错误。
+*先决条件错误中包含一条 `Failed to connect to the SQL Instance (….).` 消息。问题出在哪里？* 收集数据的进程 AdvisorAssessment.exe 在管理服务器的 HealthService 进程下运行。 在运行状况检查过程中，该进程会尝试连接到 Operations Manager 数据库所在的 SQL Server。 如果防火墙规则阻止与 SQL Server 实例建立连接，则可能会出现此错误。
 
 *收集的数据类型是什么？* 通过 Windows PowerShell、SQL 查询和文件信息收集器收集以下类型的数据：- WMI 数据 - 注册表数据 - EventLog 数据 - Operations Manager 数据。
 

@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 11852046442901c70112b5e80fef371671546412
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 32757fef131c5e443350f032c0ac987d7f491396
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945940"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104864306"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>将其他存储帐户添加到 HDInsight
 
-了解如何使用脚本操作将其他 Azure 存储 *帐户* 添加到 HDInsight。 本文档中的步骤会将存储帐户添加到现有 HDInsight 群集。 本文适用于不 (默认群集存储帐户) 的存储 *帐户* ，而不适用于和等其他存储 [`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-storage-gen1.md) [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md) 。
+了解如何使用脚本操作，将其他 Azure 存储帐户添加到 HDInsight。 本文档中的步骤会将存储帐户添加到现有 HDInsight 群集。 本文适用于存储帐户（而不是默认的群集存储帐户），但不适用于额外的存储，例如 [`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-storage-gen1.md) 和 [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md)。
 
 > [!IMPORTANT]  
 > 本文档中的信息是关于在创建群集后将其他存储帐户添加到群集。 有关如何在创建群集期间添加存储帐户的信息，请参阅[使用 Apache Hadoop、Apache Spark、Apache Kafka 等设置 HDInsight 中的群集](hdinsight-hadoop-provision-linux-clusters.md)。
@@ -98,7 +98,7 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 1. 观察以 `fs.azure.account.key` 开头的密钥。 如此示例图像中所示，帐户名称将成为密钥的一部分：
 
-   ![通过 Apache Ambari 进行验证](./media/hdinsight-hadoop-add-storage/apache-ambari-verification.png)
+   :::image type="content" source="./media/hdinsight-hadoop-add-storage/apache-ambari-verification.png" alt-text="通过 Apache Ambari 进行验证":::
 
 ## <a name="remove-storage-account"></a>删除存储帐户
 
@@ -116,7 +116,7 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 ### <a name="storage-firewall"></a>存储防火墙
 
-如果选择使用 **所选网络** 上的 **防火墙和虚拟网络** 限制来保护存储帐户，请确保启用 "**允许受信任的 Microsoft 服务**" 例外，以便 HDInsight 可以访问你的存储帐户`.`
+如果选择在“选定网络”上通过“防火墙和虚拟网络”限制来保护存储帐户的安全， 请务必启用“允许受信任的 Microsoft 服务...”的例外情况，这样 HDInsight 就能访问存储帐户`.`
 
 ### <a name="unable-to-access-storage-after-changing-key"></a>更改密钥后，无法访问存储
 

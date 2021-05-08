@@ -1,16 +1,16 @@
 ---
 title: 用于 Azure HDInsight 上包含 Jupyter 的 Python 包的脚本操作
-description: 逐步说明如何使用脚本操作来配置 HDInsight Spark 群集可使用的 Jupyter 笔记本，以使用外部 python 包。
+description: 逐步说明如何使用脚本操作配置可在 HDInsight Spark 群集中使用的 Jupyter 笔记本，以使用外部 python 包。
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 8fbbe137ece7aac2dd2196c5ebec435e118297ad
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: c3f912b4f4c2e78c44425f489927cee185b3d312
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98929810"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104868709"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>使用脚本操作在 Azure HDInsight 上安全管理 Python 环境
 
@@ -42,7 +42,7 @@ HDInsight Spark 群集是通过 Anaconda 安装创建的。 群集中有两个 P
 
 |设置 |Python 2.7|Python 3.5|
 |----|----|----|
-|`Path`|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
+|路径|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
 |Spark 版本|默认设置为 2.7|可以将配置更改为 3.5|
 |Livy 版本|默认设置为 2.7|可以将配置更改为 3.5|
 |Jupyter|PySpark 内核|PySpark3 内核|
@@ -104,7 +104,7 @@ HDInsight 群集依赖于内置 Python 环境（Python 2.7 和 Python 3.5）。 
 
     1. 打开 Ambari UI，转到“Spark2”页中的“配置”选项卡。
 
-        ![通过 Ambari 更改 Spark 和 Livy 配置](./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png" alt-text="通过 Ambari 更改 Spark 和 Livy 配置" border="true":::
 
     2. 展开“高级 livy2-env”，在底部添加以下语句。 如果使用不同的前缀安装了虚拟环境，请相应地更改路径。
 
@@ -113,7 +113,7 @@ HDInsight 群集依赖于内置 Python 环境（Python 2.7 和 Python 3.5）。 
         export PYSPARK_DRIVER_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
         ```
 
-        ![通过 Ambari 更改 Livy 配置](./media/apache-spark-python-package-installation/ambari-livy-config.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-livy-config.png" alt-text="通过 Ambari 更改 Livy 配置" border="true":::
 
     3. 展开“高级 spark2-env”，替换底部的现有 export PYSPARK_PYTHON 语句。 如果使用不同的前缀安装了虚拟环境，请相应地更改路径。
 
@@ -121,11 +121,11 @@ HDInsight 群集依赖于内置 Python 环境（Python 2.7 和 Python 3.5）。 
         export PYSPARK_PYTHON=${PYSPARK_PYTHON:-/usr/bin/anaconda/envs/py35new/bin/python}
         ```
 
-        ![通过 Ambari 更改 Spark 配置](./media/apache-spark-python-package-installation/ambari-spark-config.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-spark-config.png" alt-text="通过 Ambari 更改 Spark 配置" border="true":::
 
     4. 保存更改并重启受影响的服务。 需要重启 Spark2 服务才能使这些更改生效。 Ambari UI 将提示需要重启。单击“重启”以重启所有受影响的服务。
 
-        ![重新启动服务](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-restart-services.png" alt-text="重新启动服务" border="true":::
 
     5. 为 Spark 会话设置两个属性，以确保作业指向更新的 spark 配置：`spark.yarn.appMasterEnv.PYSPARK_PYTHON` 和 `spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON`。 
 
@@ -153,7 +153,7 @@ HDInsight 群集依赖于内置 Python 环境（Python 2.7 和 Python 3.5）。 
 
     可以通过运行以下代码，在 Jupyter Notebook 中反复确认 Python 环境：
 
-    ![在 Jupyter Notebook 中检查 Python 版本](./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png)
+    :::image type="content" source="./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png" alt-text="在 Jupyter Notebook 中检查 Python 版本" border="true":::
 
 ## <a name="known-issue"></a>已知问题
 
@@ -164,5 +164,5 @@ Anaconda 版本 `4.7.11`、`4.7.12`、`4.8.0` 有一个已知的 bug。 如果�
 ## <a name="next-steps"></a>后续步骤
 
 * [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
-* [Apache Spark 中包含 Jupyter 笔记本的外部包](apache-spark-jupyter-notebook-use-external-packages.md)
+* [Apache Spark 中具有 Jupyter 笔记本的外部包](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）](apache-spark-job-debugging.md)

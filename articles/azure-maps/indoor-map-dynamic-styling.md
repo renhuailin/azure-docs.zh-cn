@@ -1,6 +1,6 @@
 ---
-title: 为 Azure Maps 创建者 (预览) 室内地图实现动态样式
-description: 了解如何为 Creator (预览) 室内地图实现动态样式
+title: 实现 Azure Maps Creator（预览版）室内地图的动态样式
+description: 了解如何实现 Creator（预览版）室内地图的动态样式
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 12/07/2020
@@ -9,13 +9,13 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: a23c492d4a81703c0dc6612928a56b5b31d52cae
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101726303"
 ---
-# <a name="implement-dynamic-styling-for-creator-preview-indoor-maps"></a>实现) 室内地图的 Creator (预览的动态样式
+# <a name="implement-dynamic-styling-for-creator-preview-indoor-maps"></a>实现 Creator（预览版）室内地图的动态样式
 
 > [!IMPORTANT]
 > Azure Maps Creator 服务目前处于公共预览状态。
@@ -78,7 +78,7 @@ map.events.add("click", function(e){
     https://atlas.microsoft.com/featureState/state?api-version=1.0&statesetID={statesetId}&featureID=UNIT26&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. 在 POST 请求的“头”中，将“`Content-Type`”设置为“`application/json`”。 在 **POST** 请求的 **正文** 中，用功能更新编写以下原始 JSON。 只有当 POST 请求的时间戳晚于同一特征 `ID` 的上一特征状态更新请求的时间戳时，才会保存更新。 传递“occupied”`keyName`来更新它的值。
+3. 在 POST 请求的“头”中，将“`Content-Type`”设置为“`application/json`”。 在 POST 请求的“正文”中，编写以下包含特征更新的原始 JSON。 只有当 POST 请求的时间戳晚于同一特征 `ID` 的上一特征状态更新请求的时间戳时，才会保存更新。 传递“occupied”`keyName`来更新它的值。
 
     ```json
     {
@@ -108,18 +108,18 @@ map.events.add("click", function(e){
 
 ### <a name="visualize-dynamic-styles-on-a-map"></a>可视化定位上的动态样式
 
-之前在浏览器中打开的 Web 应用现在应该会反映定位特征的更新后状态。 `UNIT27` (142) 应显示为绿色， `UNIT26` (143) 应显示为红色。
+之前在浏览器中打开的 Web 应用现在应该会反映定位特征的更新后状态。 `UNIT27`(142) 应显示为绿色，而 `UNIT26`(143) 应显示为红色。
 
 ![可用会议室显示为绿色，被占用的会议室显示为红色](./media/indoor-map-dynamic-styling/room-state.png)
 
-[查看现场演示](https://azuremapscodesamples.azurewebsites.net/?sample=Creator%20indoor%20maps)
+[观看实时演示](https://azuremapscodesamples.azurewebsites.net/?sample=Creator%20indoor%20maps)
 
 ## <a name="next-steps"></a>后续步骤
 
 若要了解详细信息，请阅读以下文章：
 
 > [!div class="nextstepaction"]
-> [室内地图的 Creator (预览) ](creator-indoor-maps.md)
+> [适用于室内地图的 Creator（预览版）](creator-indoor-maps.md)
 
 有关本文中提到的 API，请参阅以下参考资料：
 

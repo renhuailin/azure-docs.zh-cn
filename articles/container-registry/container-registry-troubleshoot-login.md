@@ -3,12 +3,12 @@ title: 注册表登录故障排除
 description: 登录到 Azure 容器注册表时的常见问题的症状、原因和解决方法
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 5deb1717cf3886d8ea9c021d92afa358946b16dc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 47186cc8256836e5367ecee520787b67662eb42f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99052072"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780724"
 ---
 # <a name="troubleshoot-registry-login"></a>注册表登录故障排除
 
@@ -36,7 +36,7 @@ ms.locfileid: "99052072"
 
 ## <a name="further-diagnosis"></a>进一步诊断 
 
-运行 [az acr check-health](/cli/azure/acr#az-acr-check-health) 命令可详细了解注册表环境的运行状况，以及对目标注册表的访问（可选）。 例如，诊断 Docker 配置错误或 Azure Active Directory 登录问题。 
+运行 [az acr check-health](/cli/azure/acr#az_acr_check_health) 命令可详细了解注册表环境的运行状况，以及对目标注册表的访问（可选）。 例如，诊断 Docker 配置错误或 Azure Active Directory 登录问题。 
 
 参阅[检查 Azure 容器注册表的运行状况](container-registry-check-health.md)以查看命令示例。 如果报告了错误，请查看[错误参考](container-registry-health-error-reference.md)和以下部分，以了解建议的解决方案。
 
@@ -64,7 +64,7 @@ ms.locfileid: "99052072"
 docker login myregistry.azurecr.io
 ```
 
-将 [az acr login](/cli/azure/acr#az-acr-login) 与 Azure Active Directory 标识配合使用时，请先[登录 Azure CLI](/cli/azure/authenticate-azure-cli)，然后指定注册表的 Azure 资源名称。 资源名称是在创建注册表时提供的名称，如 myregistry（没有域后缀）。 示例：
+将 [az acr login](/cli/azure/acr#az_acr_login) 与 Azure Active Directory 标识配合使用时，请先[登录 Azure CLI](/cli/azure/authenticate-azure-cli)，然后指定注册表的 Azure 资源名称。 资源名称是在创建注册表时提供的名称，如 myregistry（没有域后缀）。 示例：
 
 ```azurecli
 az acr login --name myregistry
@@ -72,7 +72,7 @@ az acr login --name myregistry
 
 相关链接：
 
-* [az acr login 成功，但 Docker 失败并出现错误：未授权: 需要身份验证](container-registry-faq.md#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required )
+* [az acr login 成功，但 Docker 失败并出现错误：未授权: 需要身份验证](container-registry-faq.md#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
 
 ### <a name="confirm-credentials-to-access-registry"></a>确认用于访问注册表的凭据
 
@@ -94,7 +94,7 @@ az acr login --name myregistry
 * [使用存储库范围内的令牌登录](container-registry-repository-scoped-permissions.md)
 * [使用管理员帐户登录](container-registry-authentication.md#admin-account)
 * [Azure AD 身份验证和授权错误代码](../active-directory/develop/reference-aadsts-error-codes.md)
-* [az acr login](/cli/azure/acr#az-acr-login) 参考
+* [az acr login](/cli/azure/acr#az_acr_login) 参考
 
 ### <a name="confirm-credentials-are-authorized-to-access-registry"></a>确认凭据已被授权访问注册表
 
@@ -125,7 +125,7 @@ az acr login --name myregistry
 
 相关链接：
 
-* [重置服务主体凭据](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset)
+* [重置服务主体凭据](/cli/azure/ad/sp/credential#az_ad_sp_credential_reset)
 * [重新生成令牌密码](container-registry-repository-scoped-permissions.md#regenerate-token-passwords)
 * [使用 Azure AD 进行单次登录](container-registry-authentication.md#individual-login-with-azure-ad)
 

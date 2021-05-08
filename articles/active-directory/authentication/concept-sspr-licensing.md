@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/02/2020
+ms.date: 03/08/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f8f270f740951b95b0d4c00cbcf9b08e20a8e0c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
-ms.translationtype: MT
+ms.openlocfilehash: 5d332c831cc764c61a4672ea5ad1db231b68e106
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743718"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104952365"
 ---
 # <a name="licensing-requirements-for-azure-active-directory-self-service-password-reset"></a>Azure Active Directory 自助式密码重置的许可要求
 
@@ -26,7 +26,7 @@ ms.locfileid: "96743718"
 
 ## <a name="compare-editions-and-features"></a>比较版本和功能
 
-SSPR 按用户许可。 为了保持合规性，组织需要为其用户分配相应的许可证。
+SSPR 仅要求租户使用许可证。 
 
 下表概述了需要进行密码更改、重置或本地写回的各种 SSPR 场景，以及哪些 SKU 提供此功能。
 
@@ -46,12 +46,6 @@ SSPR 按用户许可。 为了保持合规性，组织需要为其用户分配�
 * [企业移动性 + 安全性](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
 * [Microsoft 365 企业版](https://www.microsoft.com/microsoft-365/enterprise)
 * [Microsoft 365 商业版](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)
-
-## <a name="enable-group-or-user-based-licensing"></a>启用基于组或基于用户的许可
-
-Azure AD 支持基于组的许可。 管理员可以将许可证批量分配给一组用户，而不是一次一个用户地分配。 有关详细信息，请参阅[分配、验证许可证和解决许可证问题](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses)。
-
-某些 Microsoft 服务并非在所有位置都可以使用。 将许可证分配给用户之前，管理员必须为该用户指定“使用位置”属性。 可在 Azure 门户中的“用户” > “配置文件” > “设置”部分下完成分配许可证  。 *使用组许可证分配时，任何没有指定使用位置的用户将继承该目录的位置。*
 
 ## <a name="next-steps"></a>后续步骤
 

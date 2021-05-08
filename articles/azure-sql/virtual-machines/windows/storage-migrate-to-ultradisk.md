@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e8410b4e0997798eba5ee91f361c3a5f1ce47ef1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 43bafeee90b1995c363ca03d031abc7d648001cf
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104586295"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126338"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>将日志磁盘迁移到超级磁盘
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -162,7 +162,7 @@ VM 大小和区域的子集都支持超级磁盘。 在继续之前，请验证 
 
 ## <a name="next-steps"></a>后续步骤
 
-查看[性能最佳实践](performance-guidelines-best-practices.md)以了解提高性能的其他设置。 
+查看[性能最佳实践](./performance-guidelines-best-practices-checklist.md)以了解提高性能的其他设置。 
 
 有关 Azure 虚拟机上的 SQL Server 的概述，请参阅以下文章：
 

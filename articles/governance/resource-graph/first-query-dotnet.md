@@ -1,15 +1,15 @@
 ---
 title: 快速入门：第一个 .NET Core 查询
 description: 本快速入门介绍为 .NET Core 启用 Resource Graph NuGet 包并运行第一个查询的步骤。
-ms.date: 01/27/2021
+ms.date: 05/01/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0135dfd499af48b3c60314679f4c9b635a5ce15a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29ca540bee27690e3c2564c2f431ab6731a6f67d
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98917565"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108324232"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-net-core"></a>快速入门：使用 .NET Core 运行你的第一个 Resource Graph 查询
 

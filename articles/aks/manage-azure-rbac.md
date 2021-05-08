@@ -1,43 +1,43 @@
 ---
-title: 在 Kubernetes 中通过 Azure 管理 Azure RBAC
+title: 通过 Azure 管理 Kubernetes 中的 Azure RBAC
 titleSuffix: Azure Kubernetes Service
-description: 了解如何使用 azure RBAC 通过 Azure Kubernetes 服务 (AKS) 进行 Kubernetes 授权。
+description: 了解如何通过 Azure Kubernetes 服务 (AKS) 使用 Azure RBAC 进行 Kubernetes 授权。
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
 ms.openlocfilehash: 9ce8bc71139b52d690893734435e6bfee090062d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102184366"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>使用 Azure RBAC 进行 Kubernetes 授权（预览）
 
-现在，你可以在 [Azure Active Directory (Azure AD) 和 AKS 之间充分利用集成身份验证](managed-aad.md)。 启用后，此集成允许客户将 Azure AD 用户、组或服务主体用作 Kubernetes RBAC 中的主题，请参阅 [此处](azure-ad-rbac.md)的详细信息。
-此功能使你不必单独管理 Kubernetes 的用户标识和凭据。 但是，你仍需要单独设置和管理 Azure RBAC 和 Kubernetes RBAC。 有关 AKS 上的 RBAC 身份验证和授权的详细信息，请参阅 [此处](concepts-identity.md)。
+目前，你已经可以利用 [Azure Active Directory (Azure AD) 与 AKS 之间的集成身份验证](managed-aad.md)。 启用后，此集成允许客户将 Azure AD 用户、组或服务主体用作 Kubernetes RBAC 中的主题，详见[此文](azure-ad-rbac.md)。
+使用此功能，你无需分别管理 Kubernetes 的用户标识和凭据。 但是，你仍需分别设置和管理 Azure RBAC 和 Kubernetes RBAC。 若要详细了解如何在 AKS 上通过 RBAC 进行身份验证和授权，请参阅[此文](concepts-identity.md)。
 
-本文档介绍一种新的方法，允许跨 Azure 资源、AKS 和 Kubernetes 资源实现统一的管理和访问控制。
+本文档介绍了一种新方法，该方法允许你跨 Azure 资源、AKS 和 Kubernetes 资源实现统一的管理和访问控制。
 
 ## <a name="before-you-begin"></a>准备阶段
 
-通过 Azure 管理 Kubernetes 资源的 RBAC 功能，你可以选择使用 Azure 或本机 Kubernetes 机制管理群集资源的 RBAC。 启用后，将由 Azure RBAC 专门验证 Azure AD 主体，同时 Kubernetes RBAC 以独占方式验证常规 Kubernetes 用户和服务帐户。 有关 AKS 上的 RBAC 身份验证和授权的详细信息，请参阅 [此处](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview)。
+有了通过 Azure 管理 Kubernetes 资源的 RBAC 这一功能，你就可以选择使用 Azure 或原生 Kubernetes 机制管理群集资源的 RBAC。 启用后，将由 Azure RBAC 以独占方式验证 Azure AD 主体，由 Kubernetes RBAC 以独占方式验证常规 Kubernetes 用户和服务帐户。 若要详细了解如何在 AKS 上通过 RBAC 进行身份验证和授权，请参阅[此文](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview)。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="prerequisites"></a>先决条件 
-- 确保具有 Azure CLI 版本2.9.0 或更高版本
-- 确保已 `EnableAzureRBACPreview` 启用功能标志。
-- 确保已 `aks-preview` 安装 [CLI extension][az-extension-add] v 0.4.55 或更高版本
-- 请确保已安装 [kubectl v 1.18.3 +][az-aks-install-cli]。
+- 确保具有 Azure CLI 2.9.0 或更高版本。
+- 确保已启用 `EnableAzureRBACPreview` 功能标志。
+- 确保已安装 `aks-preview` [CLI 扩展][az-extension-add] v0.4.55 或更高版本。
+- 确保已安装 [kubectl v1.18.3+][az-aks-install-cli]。
 
 #### <a name="register-enableazurerbacpreview-preview-feature"></a>注册 `EnableAzureRBACPreview` 预览功能
 
-若要创建使用 Azure RBAC 进行 Kubernetes 授权的 AKS 群集，必须 `EnableAzureRBACPreview` 在订阅上启用功能标志。
+若要创建一个使用 Azure RBAC 进行 Kubernetes 授权的 AKS 群集，必须在订阅上启用 `EnableAzureRBACPreview` 功能标志。
 
-`EnableAzureRBACPreview`使用[az feature register][az-feature-register]命令注册功能标志，如以下示例中所示：
+使用 [az feature register][az-feature-register] 命令注册 `EnableAzureRBACPreview` 功能标志，如以下示例所示：
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureRBACPreview"
@@ -57,7 +57,7 @@ az provider register --namespace Microsoft.ContainerService
 
 #### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 
-若要创建使用 Azure RBAC 的 AKS 群集，需要 *AKS* CLI 扩展版本0.4.55 或更高版本。 使用 [az extension add][az-extension-add]命令安装 *aks-preview* Azure CLI 扩展，或使用 [az extension update][az-extension-update]命令安装任何可用更新：
+若要创建使用 Azure RBAC 的 AKS 群集，需要 aks-preview CLI 扩展版本 0.4.55 或更高版本。 使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展，或使用 [az extension update][az-extension-update] 命令安装任何可用的更新：
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -69,14 +69,14 @@ az extension update --name aks-preview
 
 ### <a name="limitations"></a>限制
 
-- 需要 [托管 Azure AD 集成](managed-aad.md)。
-- 预览期间，不能将用于 Kubernetes 授权的 Azure RBAC 集成到现有群集中，但你可以 (GA) 正式上市。
-- 使用 [kubectl v 1.18.3 +][az-aks-install-cli]。
-- 如果你有 CRDs 并且正在进行自定义角色定义，则现在涵盖 CRDs 的唯一方法是提供 `Microsoft.ContainerService/managedClusters/*/read` 。 AKS 正在努力为 CRDs 提供更精细的权限。 对于剩余的对象，可以使用特定的 API 组，例如： `Microsoft.ContainerService/apps/deployments/read` 。
-- 新角色分配最多可能需要就才能进行传播，并由授权服务器进行更新。
-- 要求配置为进行身份验证的 Azure AD 租户与保存 AKS 群集的订阅的租户相同。 
+- 需要[托管 Azure AD 集成](managed-aad.md)。
+- 在预览期间，你无法将用于 Kubernetes 授权的 Azure RBAC 集成到现有群集中，但在正式发布 (GA) 后，你将能够进行此集成。
+- 使用 [kubectl v1.18.3+][az-aks-install-cli]。
+- 目前，如果你有 CRD 并且要创建自定义角色定义，则涵盖 CRD 的唯一方法是提供 `Microsoft.ContainerService/managedClusters/*/read`。 AKS 将会为 CRD 提供更精细的权限。 对于剩余的对象，你可以使用特定的 API 组，例如 `Microsoft.ContainerService/apps/deployments/read`。
+- 授权服务器可能需要长达 5 分钟的时间来传播并更新新的角色分配。
+- 为身份验证配置的 Azure AD 租户需要与包含 AKS 群集的订阅的租户相同。 
 
-## <a name="create-a-new-cluster-using-azure-rbac-and-managed-azure-ad-integration"></a>使用 Azure RBAC 和 managed Azure AD 集成创建新群集
+## <a name="create-a-new-cluster-using-azure-rbac-and-managed-azure-ad-integration"></a>使用 Azure RBAC 和托管 Azure AD 集成创建新群集
 
 使用以下 CLI 命令创建 AKS 群集。
 
@@ -87,14 +87,14 @@ az extension update --name aks-preview
 az group create --name myResourceGroup --location westus2
 ```
 
-创建具有托管 Azure AD 集成的 AKS 群集和用于 Kubernetes 授权的 Azure RBAC。
+创建具有托管 Azure AD 集成并使用 Azure RBAC 进行 Kubernetes 授权的 AKS 群集。
 
 ```azurecli-interactive
 # Create an AKS-managed Azure AD cluster
 az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad --enable-azure-rbac
 ```
 
-成功创建具有 Azure AD 集成的群集和用于 Kubernetes 授权的 Azure RBAC 的响应正文中包含以下部分：
+成功创建具有 Azure AD 集成且使用 Azure RBAC 进行 Kubernetes 授权的群集后，响应正文中会出现以下部分：
 
 ```json
 "AADProfile": {
@@ -108,20 +108,20 @@ az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad --enable-azure
   }
 ```
 
-## <a name="create-role-assignments-for-users-to-access-cluster"></a>为用户创建用于访问群集的角色分配
+## <a name="create-role-assignments-for-users-to-access-cluster"></a>为用户创建角色分配以便访问群集
 
-AKS 提供下列四种内置角色：
+AKS 提供以下四个内置角色：
 
 
 | 角色                                | 说明  |
 |-------------------------------------|--------------|
-| Azure Kubernetes 服务 RBAC 读取器  | 允许进行只读访问并查看命名空间中的大多数对象。 不允许查看角色或角色绑定。 此角色不允许查看 `Secrets` ，因为读取机密内容可以访问命名空间中的 ServiceAccount 凭据，这将允许 API 访问命名空间中的任何 ServiceAccount (一种形式的权限提升)   |
+| Azure Kubernetes 服务 RBAC 读取者  | 允许进行只读访问并查看命名空间中的大多数对象。 不允许查看角色或角色绑定。 此角色不允许查看 `Secrets`，因为读取 Secrets（机密）的内容就可以访问命名空间中的 ServiceAccount 凭据，这样就会允许以命名空间中任何 ServiceAccount 的身份进行 API 访问（一种特权提升形式）  |
 | Azure Kubernetes 服务 RBAC 写入者 | 允许对命名空间中的大多数对象进行读/写访问。 此角色不允许查看或修改角色或角色绑定。 但是，此角色允许以命名空间中任何 ServiceAccount 的身份访问 `Secrets` 和运行 Pod，因此可用于获取命名空间中任何 ServiceAccount 的 API 访问级别。 |
 | Azure Kubernetes 服务 RBAC 管理员  | 允许要在命名空间内授予的管理员访问权限。 允许对命名空间（或群集范围）中的大多数资源进行读/写访问，包括在命名空间内创建角色和角色绑定。 此角色不允许对资源配额或命名空间本身进行写入访问。 |
 | Azure Kubernetes 服务 RBAC 群集管理员  | 允许超级用户访问权限（对任何资源执行任何操作）。 它提供对群集中每个资源和所有命名空间的完全控制。 |
 
 
-作用域为 **整个 AKS 群集** 的角色分配可以在 Azure 门户上群集资源 (IAM) 边栏选项卡上完成，也可以使用 Azure CLI 命令完成，如下所示：
+以整个 AKS 群集为作用域的角色分配可以在 Azure 门户中群集资源的“访问控制(IAM)”边栏选项卡上执行，也可以通过 Azure CLI 命令执行，如下所示：
 
 ```bash
 # Get your AKS Resource ID
@@ -132,25 +132,25 @@ AKS_ID=$(az aks show -g MyResourceGroup -n MyManagedCluster --query id -o tsv)
 az role assignment create --role "Azure Kubernetes Service RBAC Admin" --assignee <AAD-ENTITY-ID> --scope $AKS_ID
 ```
 
-其中 `<AAD-ENTITY-ID>` ，可以是用户名 (例如， user@contoso.com) 甚至是服务主体的 ClientID。
+其中，`<AAD-ENTITY-ID>` 可以是用户名（例如 user@contoso.com），甚至可以是服务主体的 ClientID。
 
-你还可以创建作用域为群集中特定 **命名空间** 的角色分配：
+你还可以创建以群集中的特定命名空间为作用域的角色分配：
 
 ```azurecli-interactive
 az role assignment create --role "Azure Kubernetes Service RBAC Viewer" --assignee <AAD-ENTITY-ID> --scope $AKS_ID/namespaces/<namespace-name>
 ```
 
-目前，需要通过 Azure CLI 配置作用域为命名空间的角色分配。
+目前，以命名空间为作用域的角色分配需要通过 Azure CLI 进行配置。
 
 
 ### <a name="create-custom-roles-definitions"></a>创建自定义角色定义
 
-或者，您可以选择创建自己的角色定义，并按上述方式分配。
+（可选）你可以选择创建自己的角色定义，然后进行分配，如上所述。
 
-下面是一个角色定义的示例，该角色允许用户仅读取部署，而无需读取其他内容。 你可以在 [此处](../role-based-access-control/resource-provider-operations.md#microsoftcontainerservice)查看可能的操作的完整列表。
+下面是一个角色定义示例，仅允许用户读取部署，不允许读取任何其他内容。 你可以在[此处](../role-based-access-control/resource-provider-operations.md#microsoftcontainerservice)查看可能的操作的完整列表。
 
 
-将下面的 json 复制到名为的文件中 `deploy-view.json` 。
+将下面的 json 复制到名为 `deploy-view.json` 的文件中。
 
 ```json
 {
@@ -168,36 +168,36 @@ az role assignment create --role "Azure Kubernetes Service RBAC Viewer" --assign
 }
 ```
 
-将 `<YOUR SUBSCRIPTION ID>` 你的订阅中的 ID 替换为你可以通过运行以下内容获取：
+将 `<YOUR SUBSCRIPTION ID>` 替换为你的订阅的 ID，此 ID 可以通过运行以下命令来获取：
 
 ```azurecli-interactive
 az account show --query id -o tsv
 ```
 
 
-现在，我们可以通过从你保存的文件夹运行以下命令来创建角色定义 `deploy-view.json` ：
+现在，我们可以通过从保存了 `deploy-view.json` 的文件夹运行以下命令来创建角色定义：
 
 ```azurecli-interactive
 az role definition create --role-definition @deploy-view.json 
 ```
 
-现在，你已拥有角色定义，可以通过运行以下内容将其分配给用户或其他标识：
+现在，你已有了角色定义，可以通过运行以下命令将其分配给用户或其他标识了：
 
 ```azurecli-interactive
 az role assignment create --role "AKS Deployment Viewer" --assignee <AAD-ENTITY-ID> --scope $AKS_ID
 ```
 
-## <a name="use-azure-rbac-for-kubernetes-authorization-with-kubectl"></a>使用 Azure RBAC 进行 Kubernetes 授权 `kubectl`
+## <a name="use-azure-rbac-for-kubernetes-authorization-with-kubectl"></a>通过 `kubectl` 使用 Azure RBAC 进行 Kubernetes 授权
 
 > [!NOTE]
-> 通过运行以下命令，确保具有最新的 kubectl：
+> 通过运行以下命令，确保你具有最新的 kubectl：
 >
 > ```azurecli-interactive
 > az aks install-cli
 > ```
-> 你可能需要以权限运行它 `sudo` 。 
+> 你可能需要通过 `sudo` 特权来运行它。 
 
-现在，已分配了所需的角色和权限。 例如，你可以开始调用 Kubernetes API `kubectl` 。
+现在，你已分配了所需的角色和权限。 你可以开始调用 Kubernetes API，例如，通过 `kubectl` 进行调用。
 
 为此，我们首先使用以下命令获取群集的 kubeconfig：
 
@@ -206,9 +206,9 @@ az aks get-credentials -g MyResourceGroup -n MyManagedCluster
 ```
 
 > [!IMPORTANT]
-> 需要 [Azure Kubernetes Service 群集用户](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role) 内置角色才能执行上述步骤。
+> 你需要具有 [Azure Kubernetes 服务群集用户](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role)内置角色才能执行上一步骤。
 
-现在，你可以使用 kubectl 来列出群集中的节点。 首次运行时，需要登录，并且后续命令将使用各自的访问令牌。
+现在，你可以使用 kubectl 来执行所需操作，例如列出群集中的节点。 首次运行它时，你需要登录。后续命令将使用相应的访问令牌。
 
 ```azurecli-interactive
 kubectl get nodes
@@ -221,18 +221,18 @@ aks-nodepool1-93451573-vmss000002   Ready    agent   3h6m   v1.15.11
 ```
 
 
-## <a name="use-azure-rbac-for-kubernetes-authorization-with-kubelogin"></a>使用 Azure RBAC 进行 Kubernetes 授权 `kubelogin`
+## <a name="use-azure-rbac-for-kubernetes-authorization-with-kubelogin"></a>通过 `kubelogin` 使用 Azure RBAC 进行 Kubernetes 授权
 
-若要取消阻止非交互式登录、较早 `kubectl` 版本或利用 SSO 跨多个群集的其他方案，而无需登录到新群集，AKS 创建了一个名为的 exec 插件 [`kubelogin`](https://github.com/Azure/kubelogin) 。
+为了取消阻止其他方案，例如非交互式登录、较旧的 `kubectl` 版本，或跨多个群集利用 SSO 而无需登录到新群集（假定你的令牌仍然有效），AKS 创建了一个名为 [`kubelogin`](https://github.com/Azure/kubelogin) 的 exec 插件。
 
-可以通过运行以下方法来使用它：
+你可以通过运行以下命令使用它：
 
 ```bash
 export KUBECONFIG=/path/to/kubeconfig
 kubelogin convert-kubeconfig
 ``` 
 
-首次使用时，你必须使用常规 kubectl 以交互方式登录，但此后你将不再需要，即使对于新 Azure AD 群集 (，只要你的令牌仍有效) 。
+第一次，你必须像使用普通 kubectl 那样以交互方式登录，但之后，只要你的令牌仍然有效，即使是新的 Azure AD 群集，你也不再需要登录。
 
 ```bash
 kubectl get nodes
@@ -245,14 +245,14 @@ aks-nodepool1-93451573-vmss000002   Ready    agent   3h6m   v1.15.11
 ```
 
 
-## <a name="clean-up"></a>清除
+## <a name="clean-up"></a>清理
 
 ### <a name="clean-role-assignment"></a>清理角色分配
 
 ```azurecli-interactive
 az role assignment list --scope $AKS_ID --query [].id -o tsv
 ```
-复制您执行的所有分配的 ID 或 id，然后复制。
+从你执行的所有分配中复制一个或多个 ID，然后执行以下命令。
 
 ```azurecli-interactive
 az role assignment delete --ids <LIST OF ASSIGNMENT IDS>
@@ -272,9 +272,9 @@ az group delete -n MyResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在此处](concepts-identity.md)了解有关 AKS Authentication、Authorization、Kubernetes RBAC 和 Azure rbac 的详细信息。
-- [在此处](../role-based-access-control/overview.md)阅读有关 Azure RBAC 的详细信息。
-- 在 [此处](../role-based-access-control/resource-provider-operations.md#microsoftcontainerservice)了解有关可用于以粒度定义 Kubernetes 授权的自定义 Azure 角色的所有操作的详细信息。
+- [在此处](concepts-identity.md)详细了解 AKS 身份验证、授权、Kubernetes RBAC 和 Azure RBAC。
+- [在此处](../role-based-access-control/overview.md)详细了解 Azure RBAC。
+- [在此处](../role-based-access-control/resource-provider-operations.md#microsoftcontainerservice)详细了解可用来精细定义自定义 Azure 角色（用于 Kubernetes 授权）的所有操作。
 
 
 <!-- LINKS - Internal -->

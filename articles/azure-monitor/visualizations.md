@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/25/2021
 ms.openlocfilehash: b90d628f0d24e43d7b9f2e3fa87e74d426648c6e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102048567"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>可视化 Azure Monitor 中的数据
@@ -40,14 +40,14 @@ ms.locfileid: "102048567"
 
 ![屏幕截图显示了包含可自定义信息的 Azure 仪表板的示例。](media/visualizations/dashboard.png)
 
-下面是有关创建仪表板的视频演练。
+下面是有关如何创建仪表板的视频演练。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AslH]
 
 ### <a name="advantages"></a>优点
-- 深度集成到 Azure 中。 可视化效果可以从多个 Azure 页面固定到仪表板，包括 [指标资源管理器](essentials/metrics-charts.md)、 [Log Analytics](logs/log-analytics-overview.md)和 [Application Insights](app/app-insights-overview.md)。
+- 深度集成到 Azure 中。 可视化效果可以固定到多个 Azure 页的仪表板，包括[指标资源管理器](essentials/metrics-charts.md)、[Log Analytics](logs/log-analytics-overview.md) 和 [Application Insights](app/app-insights-overview.md)。
 - 支持指标和日志。
-- 合并来自多个源的数据，包括来自[指标资源管理器](essentials/metrics-charts.md)的输出、[日志查询](logs/log-query-overview.md)以及[Application Insights](app/app-insights-overview.md)中的[映射](app/app-map.md)和可用性。
+- 合并来自多个源的数据，包括[指标资源管理器](essentials/metrics-charts.md)、[日志查询](logs/log-query-overview.md)以及 [Application Insights](app/app-insights-overview.md) 中的[映射](app/app-map.md)和可用性的输出。
 - 包含个人或共享仪表板的选项。 与 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 集成。
 - 自动刷新。 指标刷新的时间范围至少为 5 分钟。 日志每小时刷新一次，同时可根据需要使用手动刷新选项，方法是单击给定可视化效果上的“刷新”图标或刷新整个仪表板。
 - 带有时间戳和自定义参数的参数化指标仪表板。
@@ -56,7 +56,7 @@ ms.locfileid: "102048567"
 
 
 ### <a name="limitations"></a>限制
-- 对日志可视化效果具有有限控制，不支持数据表。 数据序列的总数限制为50，并在其他存储桶下对 _其他_ 数据序列进行分组。
+- 对日志可视化效果具有有限控制，不支持数据表。 数据系列总数限制为 50，其他数据系列在“其他” Bucket 下进行分组。
 - 对于日志图表，不支持自定义参数。
 - 日志图表仅限于过去 30 天。
 - 日志图表只能固定到共享仪表板。
@@ -87,7 +87,7 @@ ms.locfileid: "102048567"
 ## <a name="grafana"></a>Grafana
 [Grafana](https://grafana.com/) 是一个适用于操作仪表板的开放平台。 它尤其适用于检测、隔离和归类操作事件。 你可以将 [Grafana Azure Monitor 数据源插件](visualize/grafana-plugin.md)添加到 Azure 订阅中，使其可视化 Azure 指标数据。
 
-![屏幕截图显示 Grafana 的可视化效果。](media/visualizations/grafana.png)
+![显示 Grafana 可视化效果的屏幕截图。](media/visualizations/grafana.png)
 
 ### <a name="advantages"></a>优点
 - 丰富的可视化效果。
@@ -139,7 +139,7 @@ ms.locfileid: "102048567"
 ## <a name="next-steps"></a>后续步骤
 - 了解[由 Azure Monitor 收集的数据](data-platform.md)。
 - 了解 [Azure 仪表板](../azure-portal/azure-portal-dashboards.md)。
-- 了解 [指标资源管理器](essentials/metrics-getting-started.md)
+- 了解[指标资源管理器](essentials/metrics-getting-started.md)
 - 了解[工作簿](./visualize/workbooks-overview.md)。
 - 了解如何[将日志数据导入 Power BI](./visualize/powerbi.md)。
 - 了解 [Grafana Azure Monitor 数据源插件](./visualize/grafana-plugin.md)。

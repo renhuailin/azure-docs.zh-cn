@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 03/23/2021
 ms.custom: seodec18
-ms.openlocfilehash: c3f6f6a5ac1068f2eabca351e85376b8e16d1058
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-ms.translationtype: MT
+ms.openlocfilehash: 8aefa6efa5f10dae8a28e7126b91b7b5f6ac77a6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016745"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104950733"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>选择时序 ID 的最佳做法
 
@@ -24,6 +24,11 @@ ms.locfileid: "95016745"
 ## <a name="choose-a-time-series-id"></a>选择时间序列 ID
 
 选择适当的时序 ID 至关重要。 选择时序 ID 与为数据库选择分区键相同。 它在创建时序见解第 2 代环境时是必需的。
+
+有关时序 ID 的详细说明，请观看环境预配教程。 你将看到两个不同的 JSON 遥测负载示例以及为每一个示例选择正确的时序 ID。</br>
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWzk3P]
+
 
 > [!IMPORTANT]
 > 时序 ID 如下：
@@ -36,7 +41,7 @@ ms.locfileid: "95016745"
 
 要遵守的主要最佳做法包括：
 
-_ 选取具有许多（例如，几百甚至几千个）非重复值的分区键。 在许多情况下，该键可能是 JSON 中的设备 ID、传感器 ID 或标记 ID。
+* 选择具有许多（例如，几百甚至几千个）非重复值的分区键。 在许多情况下，该键可能是 JSON 中的设备 ID、传感器 ID 或标记 ID。
 * 在[时序模型](./concepts-model-overview.md)的叶节点级别，时序 ID 应是唯一的。
 * 时序 ID 属性名称字符串的字符数限制为 128 个。 时序 ID 属性值的字符数限制为 1024 个。
 * 如果时序 ID 的某个唯一属性值缺失，该值将被视为 null 值，并遵循相同的唯一性约束规则。

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 1de495253dacac5aeab7dcff95f74aeed11782a8
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 1bdc439bc281338fc3df95f7d82784a5eebf7a4a
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750727"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288537"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -440,7 +440,7 @@ __RSS 源__：通过将以下 URL 复制并粘贴到源阅读器中，可以在�
 
 数据标签中的图像实例分段（多边形注释）项目类型现在可用，因此用户可以围绕图像中的对象轮廓绘制多边形并进行标注。 用户将能够为图像中感兴趣的每个对象分配一个类和一个多边形。
 
-详细了解[图像实例分段标签](how-to-label-images.md)。
+详细了解[图像实例分段标签](how-to-label-data.md)。
 
 
 
