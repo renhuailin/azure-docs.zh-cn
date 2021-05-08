@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 02/10/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 873fdba1d24db55b3269cc2c13f0140da4a9b4e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a6fcb3b3fece367ab950426c29df2d1b39735957
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100393339"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228715"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory"></a>使用资产清单浏览和管理资源
 
@@ -128,8 +128,6 @@ ARG 用于提供高效资源探索，并具有大规模查询的功能。
 1. 若要在 Resource Graph Explorer 中以查询的形式查看当前选定的筛选器选项，请选择“打开查询”。
 
     ![ARG 中的库存查询](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
-
-1. 运行先前定义的逻辑应用 
 
 1. 如果已经定义了一些筛选器并使页面保持打开状态，则安全中心不会自动更新结果。 除非手动重新加载页面或选择“刷新”，否则对资源的任何更改都不会影响显示的结果。
 
