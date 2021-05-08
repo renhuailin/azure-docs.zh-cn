@@ -1,5 +1,5 @@
 ---
-title: JavaScript 单页应用方案
+title: JavaScript 单页应用程序方案
 titleSuffix: Microsoft identity platform
 description: 了解如何使用 Microsoft 标识平台构建单页应用程序（方案概述）。
 services: active-directory
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 47b8c8c074a5e0ce3ed73a2a9a4b06aa307cdff3
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
-ms.translationtype: MT
+ms.openlocfilehash: 64dfd35d387e5907792440ec40522d976706db22
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756419"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105966854"
 ---
 # <a name="scenario-single-page-application"></a>方案：单页应用程序
 
@@ -27,7 +27,7 @@ ms.locfileid: "98756419"
 
 如果尚未创建你的首个应用，请通过完成 Javascript SPA 快速入门创建：
 
-[快速入门：单页应用程序](./quickstart-v2-javascript.md)
+[快速入门：单页应用程序](./quickstart-v2-javascript-auth-code.md)
 
 ## <a name="overview"></a>概述
 
@@ -59,4 +59,4 @@ Microsoft 标识平台提供了 **两个** 选项来允许单页应用程序登�
 
 ## <a name="next-steps"></a>后续步骤
 
-转到此方案中的下一篇文章：[应用注册](scenario-spa-app-registration.md)。
+转到此方案中的下一篇文章，[应用注册](scenario-spa-app-registration.md)。

@@ -10,15 +10,15 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 4/14/2021
+ms.date: 4/23/2021
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 4a18e0f257ac8d7b7d981d53249cf29f2f8f38bd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 1b068fd00402fc281001e8572f9e03662c8ffd55
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790142"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107951785"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记
 <a name="network-service-tags"></a>
@@ -78,7 +78,7 @@ ms.locfileid: "107790142"
 | **AzureKeyVault** | Azure Key Vault。<br/><br/>*注意：* 此标记依赖于 **AzureActiveDirectory** 标记。 | 出站 | 是 | 是 |
 | **AzureLoadBalancer** | Azure 基础结构负载均衡器。 此标记将转换为[主机的虚拟 IP 地址](./network-security-groups-overview.md#azure-platform-considerations) (168.63.129.16)，Azure 的运行状况探测源于该 IP。 这只包括探测流量，而不包括到后端资源的实际流量。 如果不使用 Azure 负载均衡器，则可替代此规则。 | 推送、请求和匿名 | 否 | 否 |
 | **AzureMachineLearning** | Azure 机器学习。 | 推送、请求和匿名 | 否 | 是 |
-| **AzureMonitor** | Log Analytics、Application Insights、AzMon 和自定义指标（GiG 终结点）。<br/><br/>注意：对于 Log Analytics，还需要“存储”标记。 如果使用 Linux 代理，则还需要 GuestAndHybridManagement 标记。 | 出站 | 否 | 是 |
+| **AzureMonitor** | Log Analytics、Application Insights、AzMon 和自定义指标（GiG 终结点）。<br/><br/>注意：如果是日志分析，亦必须有“存储”标记。 如果使用了 Linux 代理，亦必须有“GuestAndHybridManagement”。 | 出站 | 否 | 是 |
 | **AzureOpenDatasets** | Azure 开放数据集。<br/><br/>*注意：* 此标记依赖于 AzureFrontDoor.Frontend 和 Storage 标记 。 | 出站 | 否 | 否 |
 | **AzurePlatformDNS** | 基本基础结构（默认）DNS 服务。<br/><br>可以使用此标记来禁用默认 DNS。 使用此标记时要格外小心。 建议你阅读 [Azure 平台注意事项](./network-security-groups-overview.md#azure-platform-considerations)。 我们还建议你在使用此标记之前执行测试。 | 出站 | 否 | 否 |
 | **AzurePlatformIMDS** | Azure 实例元数据服务 (IMDS)，它是一个基本基础结构服务。<br/><br/>可以使用此标记来禁用默认 IMDS。 使用此标记时要格外小心。 建议你阅读 [Azure 平台注意事项](./network-security-groups-overview.md#azure-platform-considerations)。 我们还建议你在使用此标记之前执行测试。 | 出站 | 否 | 否 |
@@ -92,6 +92,7 @@ ms.locfileid: "107790142"
 | **DataFactory**  | Azure 数据工厂 | 推送、请求和匿名 | 否 | 否 |
 | **DataFactoryManagement** | Azure 数据工厂的管理流量。 | 出站 | 否 | 否 |
 | **Dynamics365ForMarketingEmail** | Dynamics 365 的营销电子邮件服务的地址范围。 | 出站 | 是 | 否 |
+| EOPExternalPublishedIPs | 此标记表示用于安全与合规中心 Powershell 的 IP 地址。 请参阅[使用 EXO V2 模块连接到安全与合规中心 PowerShell，了解更多详情](https://docs.microsoft.com/powershell/exchange/connect-to-scc-powershell)。 <br/><br/> 注意：此标签当前无法通过 Azure 门户进行配置。 | 推送、请求和匿名 | 否 | 是 |
 | **EventHub** | Azure 事件中心。 | 出站 | 是 | 是 |
 | **GatewayManager** | Azure VPN 网关和应用程序网关专用部署的管理流量。 | 入站 | 否 | 否 |
 | **GuestAndHybridManagement** | Azure 自动化和来宾配置。 | 出站 | 否 | 是 |
@@ -146,7 +147,7 @@ ms.locfileid: "107790142"
 ### <a name="discover-service-tags-by-using-downloadable-json-files"></a>使用可下载的 JSON 文件发现服务标记 
 可以下载包含最新服务标记列表和 IP 地址范围详细信息的 JSON 文件。 这些列表每周更新和发布。 每个云的位置如下：
 
-- [Azure 公有云](https://www.microsoft.com/download/details.aspx?id=56519)
+- [Azure 公用](https://www.microsoft.com/download/details.aspx?id=56519)
 - [Azure 美国政府版](https://www.microsoft.com/download/details.aspx?id=57063)  
 - [Azure 中国](https://www.microsoft.com/download/details.aspx?id=57062) 
 - [Azure 德国](https://www.microsoft.com/download/details.aspx?id=57064)   

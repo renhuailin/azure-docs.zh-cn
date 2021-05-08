@@ -5,15 +5,15 @@ ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 826e475eb71563b52d687903aeac4ec936e267f6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96009494"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>如何以 WebJobs 的形式运行 Durable Functions
 
-默认情况下，Durable Functions 使用 Azure Functions 运行时来托管业务流程。 但是，在某些情况下，可能需要对侦听事件的代码进行更多的控制。 本文介绍如何使用 WebJobs SDK 来实现业务流程。 若要查看函数和 Web 作业之间更详细的比较，请参阅 [比较函数和 Web 作业](../functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs)。
+默认情况下，Durable Functions 使用 Azure Functions 运行时来托管业务流程。 但是，在某些情况下，可能需要对侦听事件的代码进行更多的控制。 本文介绍如何使用 WebJobs SDK 来实现业务流程。 要查看 Functions 和 WebJobs 之间更详细的比较，请参阅[比较 Functions 和 WebJobs](../functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs)。
 
 [Azure Functions](../functions-overview.md) 和 [Durable Functions](durable-functions-overview.md) 扩展构建在 [WebJobs SDK](../../app-service/webjobs-sdk-how-to.md) 基础之上。 WebJobs SDK 中的作业主机是 Azure Functions 中的运行时。 如果需要以 Azure Functions 中做不到的方式来控制行为，可以使用 WebJobs SDK 自行开发并运行 Durable Functions。
 

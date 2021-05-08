@@ -3,12 +3,12 @@ title: 将资源部署到订阅
 description: 介绍了如何在 Azure 资源管理器模板中创建资源组。 它还展示了如何在 Azure 订阅范围内部署资源。
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: b5c99e5dc21c2b93f1c9da3977302a2dd311277f
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
-ms.translationtype: MT
+ms.openlocfilehash: f557a3a15da33b7394d22784bcd2c1c914ad6201
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491497"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889427"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>使用 ARM 模板进行订阅部署
 
@@ -28,7 +28,7 @@ ms.locfileid: "99491497"
 * [项目](/azure/templates/microsoft.blueprint/blueprints/artifacts)
 * [蓝图](/azure/templates/microsoft.blueprint/blueprints)
 * [blueprintAssignments](/azure/templates/microsoft.blueprint/blueprintassignments)
-* [ (蓝图) 版本 ](/azure/templates/microsoft.blueprint/blueprints/versions)
+* [版本（蓝图）](/azure/templates/microsoft.blueprint/blueprints/versions)
 
 对于 Azure 策略，请使用：
 
@@ -104,7 +104,7 @@ az deployment sub create \
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-对于 PowerShell 部署命令，请使用 [AzDeployment](/powershell/module/az.resources/new-azdeployment) 或其别名 `New-AzSubscriptionDeployment` 。 以下示例会部署一个模板来创建资源组：
+对于 PowerShell 部署命令，请使用 [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) 或其别名 `New-AzSubscriptionDeployment`。 以下示例会部署一个模板来创建资源组：
 
 ```azurepowershell-interactive
 New-AzSubscriptionDeployment `
@@ -132,7 +132,7 @@ New-AzSubscriptionDeployment `
 
 可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 _azuredeploy.json_ 的模板将创建默认部署名称 **azuredeploy**。
 
-每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 例如，如果在 **centralus** 中创建名为 **deployment1** 的订阅部署，则以后无法使用 deployment1 的位置创建另一个名为的 **部署。** 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
+每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 例如，如果在 **centralus** 中创建名为 **“deployment1”** 的订阅部署，则以后不能创建另一个名为 **“deployment1”** 但位置为 **“westus”** 的部署。 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
 
 ## <a name="deployment-scopes"></a>部署范围
 
@@ -143,7 +143,7 @@ New-AzSubscriptionDeployment `
 * 该订阅或其他订阅中的资源组
 * 订阅的租户
 
-[扩展资源](scope-extension-resources.md)的作用域可以是与部署目标不同的目标。
+可以将[扩展资源](scope-extension-resources.md)的范围设置为与部署目标不同的范围。
 
 部署模板的用户必须有权访问指定的作用域。
 
@@ -173,9 +173,9 @@ New-AzSubscriptionDeployment `
 
 ### <a name="scope-to-tenant"></a>将范围设定为租户
 
-若要在租户中创建资源，请将设置 `scope` 为 `/` 。 部署模板的用户必须具有[在租户中进行部署所需的访问权限](deploy-to-tenant.md#required-access)。
+若要在租户中创建资源，请将 `scope` 设置为 `/`。 部署模板的用户必须具有[在租户中进行部署所需的访问权限](deploy-to-tenant.md#required-access)。
 
-若要使用嵌套部署，请设置 `scope` 和 `location` 。
+若要使用嵌套部署，请设置 `scope` 和 `location`。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/subscription-to-tenant.json" highlight="9,10,14":::
 
@@ -183,13 +183,13 @@ New-AzSubscriptionDeployment `
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/subscription-create-mg.json" highlight="12,15":::
 
-有关详细信息，请参阅 [管理组](deploy-to-management-group.md#management-group)。
+有关详细信息，请参阅[管理组](deploy-to-management-group.md#management-group)。
 
 ## <a name="resource-groups"></a>资源组
 
 ### <a name="create-resource-groups"></a>创建资源组
 
-若要在 ARM 模板中创建资源组，请使用资源组的名称和位置定义一个 [resourceGroups/](/azure/templates/microsoft.resources/allversions) 资源组。
+若要在 ARM 模板中创建资源组，请为该资源组定义包含名称和位置的 [Microsoft.Resources/resourceGroups ](/azure/templates/microsoft.resources/allversions)资源。
 
 以下模板创建空资源组。
 
@@ -209,7 +209,7 @@ New-AzSubscriptionDeployment `
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2020-06-01",
+      "apiVersion": "2020-10-01",
       "name": "[parameters('rgName')]",
       "location": "[parameters('rgLocation')]",
       "properties": {}
@@ -240,7 +240,7 @@ New-AzSubscriptionDeployment `
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2020-06-01",
+      "apiVersion": "2020-10-01",
       "location": "[parameters('rgLocation')]",
       "name": "[concat(parameters('rgNamePrefix'), copyIndex())]",
       "copy": {
@@ -254,7 +254,7 @@ New-AzSubscriptionDeployment `
 }
 ```
 
-有关资源迭代的信息，请参阅 [arm 模板中的资源迭代](./copy-resources.md)和 [教程：创建包含 arm 模板的多个资源实例](./template-tutorial-create-multiple-instances.md)。
+有关资源迭代的信息，请参阅 [ARM 模板中的资源迭代](./copy-resources.md)和[教程：使用 ARM 模板创建多个资源实例](./template-tutorial-create-multiple-instances.md)。
 
 ### <a name="create-resource-group-and-resources"></a>创建资源组和资源
 
@@ -284,14 +284,14 @@ New-AzSubscriptionDeployment `
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2020-06-01",
+      "apiVersion": "2020-10-01",
       "name": "[parameters('rgName')]",
       "location": "[parameters('rgLocation')]",
       "properties": {}
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-06-01",
+      "apiVersion": "2020-10-01",
       "name": "storageDeployment",
       "resourceGroup": "[parameters('rgName')]",
       "dependsOn": [

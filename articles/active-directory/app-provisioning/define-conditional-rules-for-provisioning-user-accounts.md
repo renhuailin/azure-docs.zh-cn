@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
 ms.openlocfilehash: 7fff456b7ad6e980fc3c9bda36cfcab02e2ed863
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99255825"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>使用范围筛选器进行基于属性的应用程序预配
@@ -64,7 +64,7 @@ ms.locfileid: "99255825"
 
 2. 选择已为其配置自动预配的应用程序，例如“ServiceNow”。
 
-3. 选择“预配”选项卡。
+3. 选择“预配”  选项卡。
 
 4. 在“映射”部分，选择要为其预配范围筛选器的映射，例如“将 Azure Active Directory 用户同步到 ServiceNow”。
 
@@ -74,57 +74,57 @@ ms.locfileid: "99255825"
 
 7. 选择要匹配的源“属性名称”、“运算符”和“属性值”来定义子句。 支持以下运算符：
 
-   a. **等于**。 如果评估的属性与输入字符串值完全匹配（区分大小写），则子句返回“true”。
+   a. **EQUALS**。 如果评估的属性与输入字符串值完全匹配（区分大小写），则子句返回“true”。
 
-   b. **不等于**。 如果评估的属性与输入字符串值不匹配（区分大小写），则子句返回“true”。
+   b. **NOT EQUALS**。 如果评估的属性与输入字符串值不匹配（区分大小写），则子句返回“true”。
 
-   c. **为 TRUE**。 如果评估的属性包含为 true 的布尔值，则子句返回“true”。
+   c. **IS TRUE**。 如果评估的属性包含为 true 的布尔值，则子句返回“true”。
 
-   d. **为 FALSE**。 如果评估的属性包含为 false 的布尔值，则子句返回“true”。
+   d. **IS FALSE**。 如果评估的属性包含为 false 的布尔值，则子句返回“true”。
 
-   e. **为 NULL**。 如果评估的属性为空，则子句返回“true”。
+   e. **IS NULL**。 如果评估的属性为空，则子句返回“true”。
 
-   f. **不为 NULL**。 如果评估的属性不为空，则子句返回“true”。
+   f. **IS NOT NULL**。 如果评估的属性不为空，则子句返回“true”。
 
-   如， **REGEX MATCH**。 如果评估的属性与正则表达式模式匹配，则子句返回“true”。 示例：([1-9][0-9]) 与介于 10 和 99 之间的任意数字匹配。
+   g. **REGEX MATCH**。 如果评估的属性与正则表达式模式匹配，则子句返回“true”。 示例：([1-9][0-9]) 与介于 10 和 99 之间的任意数字匹配。
 
    h. **NOT REGEX MATCH**。 如果评估的属性与正则表达式模式不匹配，则子句返回“true”。
    
-   i. **Greater_Than。** 如果计算的属性大于值，则子句返回 "true"。 作用域筛选器上指定的值必须为整数，并且用户上的属性必须是整数 [0，1，2,...]。 
+   i. **Greater_Than。** 如果评估的属性大于值，则子句返回“true”。 范围筛选器上指定的值必须为整数，并且用户上的属性必须是整数 [0，1，2,...]。 
    
-   j. **Greater_Than_OR_EQUALS。** 如果计算属性大于或等于值，则子句返回 "true"。 作用域筛选器上指定的值必须为整数，并且用户上的属性必须是整数 [0，1，2,...]。 
+   j. **Greater_Than_OR_EQUALS。** 如果评估的属性大于或等于值，则子句返回“true”。 范围筛选器上指定的值必须为整数，并且用户上的属性必须是整数 [0，1，2,...]。 
    
-   k. **涵盖.** 如果计算的属性包含的字符串值 (区分大小写) ，则该子句返回 "true"，如 [此处](/dotnet/api/system.string.contains)所述。 
+   k. **Includes。** 如果评估的属性包含如[此处](/dotnet/api/system.string.contains)所述的字符串值（区分大小写），则子句返回“true”。 
 
 
 >[!IMPORTANT] 
-> - 当前不支持 IsMemberOf 筛选器。
-> - 多值属性不支持等于和不等于
+> - 目前不支持 IsMemberOf 筛选器。
+> - 多值属性不支持 EQUALS 和 NOT EQUALS
 
 9. 可重复步骤 7-8 以添加其他范围子句。
 
 10. 在“范围筛选器标题”中，为范围筛选器添加名称。
 
-11. 选择“确定”  。
+11. 选择“确定”。
 
 12. 在“范围筛选器”屏幕上再次选择“确定”。 （可选）重复步骤 6-11 添加另一范围筛选器。
 
 13. 在“属性映射”屏幕上选择“保存”。 
 
 >[!IMPORTANT] 
-> 保存新的范围筛选器将触发新的应用程序完全同步，其中将针对新的范围筛选器再次对源系统中的所有用户进行评估。 如果应用程序中的用户以前在预配范围内，但现在不在范围内，则会在应用程序中禁用或取消预配其帐户。 若要替代此默认行为，请参阅 [跳过对超出范围的用户帐户的删除](../app-provisioning/skip-out-of-scope-deletions.md)。
+> 保存新的范围筛选器将触发新的应用程序完全同步，其中将针对新的范围筛选器再次对源系统中的所有用户进行评估。 如果应用程序中的用户以前在预配范围内，但现在不在范围内，则会在应用程序中禁用或取消预配其帐户。 若要替代此默认行为，请参阅[跳过删除超出范围的用户帐户](../app-provisioning/skip-out-of-scope-deletions.md)。
 
 
 ## <a name="common-scoping-filters"></a>常见范围筛选器
 | 目标属性| 运算符 | 值 | 说明|
 |----|----|----|----|
-|userPrincipalName|正则表达式匹配|.\*@domain.com |具有域的 userPrincipal 的所有用户 @domain.com 将处于预配范围内|
-|userPrincipalName|不匹配 REGEX|.\*@domain.com|具有域的 userPrincipal 的所有用户将不在 @domain.com 预配范围内|
-|department|EQUALS|销售额|销售部门的所有用户都处于预配范围内|
-|workerID|正则表达式匹配|(1[0-9][0-9][0-9][0-9][0-9][0-9])| 介于1000000和2000000之间的 workerIDs 的所有员工都处于预配的范围内。|
+|userPrincipalName|REGEX Match|.\*@domain.com |具有域 @domain.com 的 userPrincipal 的所有用户将在预配范围内|
+|userPrincipalName|NOT REGEX MATCH|.\*@domain.com|具有域 @domain.com 的 userPrincipal 的所有用户将不在预配范围内|
+|department|EQUALS|销售额|销售部门的所有用户都在预配范围内|
+|workerID|REGEX Match|(1[0-9][0-9][0-9][0-9][0-9][0-9])| workerID 介于 1000000 和 2000000 之间的的所有员工都在预配范围内。|
 
 ## <a name="related-articles"></a>相关文章
-* [自动执行用户预配和取消预配到 SaaS 应用程序](../app-provisioning/user-provisioning.md)
+* [在 SaaS 应用程序中自动预配和取消预配用户](../app-provisioning/user-provisioning.md)
 * [为用户预配自定义属性映射](../app-provisioning/customize-application-attributes.md)
 * [为属性映射编写表达式](functions-for-customizing-application-data.md)
 * [帐户预配通知](../app-provisioning/user-provisioning.md)

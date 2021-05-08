@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mksuni
 ms.author: sumuth
 ms.date: 09/21/2020
-ms.openlocfilehash: 413f5fc1f6579102b62042c1470816470c2e1449
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1506ce311fe443247050a36e1b9fa4600360ac6e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92546545"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105604135"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-postgresql--single-server"></a>Azure Database for PostgreSQL（单一服务器）连接和查询概述
 
@@ -44,7 +44,6 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 - [Postgres 11 扩展](./concepts-extensions.md#postgres-11-extensions)
 - [Postgres 10 扩展](./concepts-extensions.md#postgres-10-extensions)
 - [Postgres 9.6 扩展](./concepts-extensions.md#postgres-96-extensions)
-- [Postgres 9.5 扩展](./concepts-extensions.md#postgres-95-extensions)
 
 有关更多详细信息，请参阅[如何在单一服务器上使用 PostgreSQL 扩展](concepts-extensions.md)。
 

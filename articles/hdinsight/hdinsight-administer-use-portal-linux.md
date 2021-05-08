@@ -5,18 +5,18 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
-ms.openlocfilehash: e21361b6d491f53f41754831d2bdf896ef2719db
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.openlocfilehash: 33171527f03b0cc386f683f55f6cf9a70913abdb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091436"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104871208"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-使用 [Azure 门户](https://portal.azure.com)，你可以管理 Azure HDInsight 中的 [Apache Hadoop](https://hadoop.apache.org/) 群集。 使用上述选项卡选择器，可以了解如何使用其他工具在 HDInsight 中管理 Hadoop 群集。
+使用 [Azure门户](https://portal.azure.com)，可以管理 Azure HDInsight 中的 [Apache Hadoop](https://hadoop.apache.org/) 群集。 使用上述选项卡选择器，可以了解如何使用其他工具在 HDInsight 中管理 Hadoop 群集。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -34,9 +34,9 @@ HDInsight 中的现有 Apache Hadoop 群集。  请参阅[使用 Azure 门户在
 
 ## <a name="cluster-home-page"></a><a name="homePage"></a> 群集主页
 
-从 " [**HDInsight 群集**](#showClusters) " 页中选择群集名称。  此时会打开“概览”视图，该视图类似于下图：
+从[“HDInsight 群集”](#showClusters)页选择群集名称。  此时会打开“概览”视图，该视图类似于下图：
 
-![Azure 门户 HDInsight 群集概要](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials2.png)
+:::image type="content" source="./media/hdinsight-administer-use-portal-linux/hdinsight-essentials2.png" alt-text="Azure 门户 HDInsight 群集概要":::
 
 **顶部菜单：**  
 
@@ -54,7 +54,7 @@ HDInsight 中的现有 Apache Hadoop 群集。  请参阅[使用 Azure 门户在
     |---|---|
     |概述|提供群集的常规信息。|
     |活动日志|显示和查询活动日志。|
-    |访问控制 (IAM)|使用角色分配。  请参阅 [分配 azure 角色以管理对 Azure 订阅资源的访问权限](../role-based-access-control/role-assignments-portal.md)。|
+    |访问控制 (IAM)|使用角色分配。  请参阅[分配 Azure 角色以管理对 Azure 订阅资源的访问](../role-based-access-control/role-assignments-portal.md)。|
     |Tags|可让用户设置键/值对，以定义云服务的自定义分类。 例如，用户可以创建名为 **project** 的键，并对与特定项目关联的所有服务使用一个公用值。|
     |诊断并解决问题|显示故障排除信息。|
     |快速入门|显示可帮助你开始使用 HDInsight 的信息。|
@@ -99,8 +99,8 @@ HDInsight 中的现有 Apache Hadoop 群集。  请参阅[使用 Azure 门户在
 
 |项目 | 说明 |
 |---|---|
-|段|群集名称。|
-|群集 URL|Ambari Web 界面的 URL。|
+|HOSTNAME|群集名称。|
+|CLUSTER URL|Ambari Web 界面的 URL。|
 |专用终结点|群集的专用终结点。|
 |安全外壳 (SSH)|用于通过 SSH 访问群集的用户名和主机名。|
 |状态|下列其中一项：Aborted、Accepted、ClusterStorageProvisioned、AzureVMConfiguration、HDInsightConfiguration、Operational、Running、Error、Deleting、Deleted、Timedout、DeleteQueued、DeleteTimedout、DeleteError、PatchQueued、CertRolloverQueued、ResizeQueued 或 ClusterCustomization。|
@@ -149,7 +149,7 @@ HDInsight 中的现有 Apache Hadoop 群集。  请参阅[使用 Azure 门户在
 
 ## <a name="pauseshut-down-clusters"></a>暂停/关闭群集
 
-大多数 Hadoop 作业只是偶尔运行的批处理作业。 对于大多数 Hadoop 群集，群集不会用于处理的时间较长。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。
+大多数 Hadoop 作业只是偶尔运行的批处理作业。 大多数 Hadoop 群集都存在长时间不进行处理的情况。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。
 此外，还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。
 
 可以通过许多方式对此过程进行程序性处理：
@@ -173,7 +173,7 @@ Ambari 提供由其 RESTful API 提供支持的直观、易用的 Hadoop 管理 
 
 1. 选择“群集仪表板”。
 
-    ![HDInsight Apache Hadoop 群集菜单](./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu2.png)
+    :::image type="content" source="./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu2.png" alt-text="HDInsight Apache Hadoop 群集菜单":::
 
 1. 从新页面中选择“Ambari 主页”。
 1. 输入群集用户名和密码。  默认群集用户名为“admin”。
@@ -251,7 +251,7 @@ HDInsight 群集使用 Azure 存储帐户或 Azure Data Lake Storage 来存储�
 
 ## <a name="cluster-size"></a>群集大小
 
-[群集主页](#homePage)的 "**群集大小**" 磁贴显示分配给此群集的核心数，以及这些核心是如何分配给此群集中的节点的。
+[群集主页](#homePage)中的“群集大小”磁贴显示分配给此群集的核心数以及如何为此群集中的节点分配核心。
 
 > [!IMPORTANT]  
 > 若要监视 HDInsight 群集提供的服务，必须使用 Ambari Web 或 Ambari REST API。 有关如何使用 Ambari 的详细信息，请参阅[使用 Apache Ambari 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)

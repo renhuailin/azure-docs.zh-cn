@@ -8,10 +8,10 @@ ms.date: 02/11/2021
 ms.author: spelluru
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: 658107bb74396891c8e6e05a9e8074a9416a5f6f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100369656"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure 服务总线到事件网格的集成概述
@@ -20,17 +20,17 @@ ms.locfileid: "100369656"
 若要启用此功能，需要准备好以下各项：
 
 * 至少包含一个服务总线队列的服务总线高级命名空间，或者至少包含一个订阅的服务总线主题。
-* 对服务总线命名空间拥有“参与者”访问权限。 在 Azure 门户中导航到服务总线命名空间，然后选择 " **访问控制" (IAM ")**，然后选择" **角色分配** "选项卡。验证您有权访问命名空间。 
+* 对服务总线命名空间拥有“参与者”访问权限。 导航到 Azure 门户中的“服务总线”命名空间，选择“访问控制（标识和访问管理）”，并选择“角色分配”选项卡。验证你是否拥有该命名空间的参与者访问权限。 
 * 此外，需要服务总线命名空间的事件网格订阅。 存在可提取的消息时，此订阅将从事件网格接收通知。 典型的订阅方可能是 Azure 应用服务的逻辑应用功能、Azure Functions，或者与 Web 应用联系的 Webhook。 然后，订阅方会处理消息。 
 
 ![19][]
 
 [!INCLUDE [event-grid-service-bus.md](../../includes/event-grid-service-bus.md)]
 
-## <a name="event-grid-subscriptions-for-service-bus-namespaces"></a>服务总线命名空间的事件网格订阅
+## <a name="event-grid-subscriptions-for-service-bus-namespaces"></a>为服务总线命名空间创建事件网格订阅
 可以使用三种不同的方法，为服务总线命名空间创建事件网格订阅：
 
-- Azure 门户。 请参阅以下教程，了解如何使用 Azure 门户为包含 Azure 逻辑应用的服务总线事件和处理程序 Azure Functions 创建事件网格订阅。 
+- Azure 门户。 请参阅以下教程，了解如何使用 Azure 门户为服务总线事件创建事件网格订阅，并以 Azure 逻辑应用和 Azure Functions 作为处理程序。 
     - [Azure 逻辑应用](service-bus-to-event-grid-integration-example.md#receive-messages-by-using-logic-apps)
     - [Azure Functions](service-bus-to-event-grid-integration-function.md#connect-the-function-and-namespace-via-event-grid)
 * Azure CLI。 以下 CLI 示例演示如何为服务总线命名空间创建的 [系统主题](../event-grid/system-topics.md) 创建 Azure Functions 订阅。
@@ -59,7 +59,7 @@ ms.locfileid: "100369656"
 ## <a name="next-steps"></a>后续步骤
 参阅以下教程： 
 - [用于处理通过事件网格接收的服务总线消息的 Azure 逻辑应用](service-bus-to-event-grid-integration-example.md#receive-messages-by-using-logic-apps)
-- [Azure Functions 处理通过事件网格接收的服务总线消息](service-bus-to-event-grid-integration-function.md#connect-the-function-and-namespace-via-event-grid)
+- [用于处理通过事件网格接收的服务总线消息的 Azure Functions](service-bus-to-event-grid-integration-function.md#connect-the-function-and-namespace-via-event-grid)
 
 [1]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgrid1.png
 [19]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgriddiagram.png

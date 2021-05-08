@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
-manager: femila
-ms.openlocfilehash: 0ea095a8ed902b9636b0cb8026f86eb3a0882460
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+manager: lizross
+ms.openlocfilehash: c8a55e35ba89caefc362024fc871ac5eb800447b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445187"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "88008417"
 ---
 # <a name="connect-to-windows-virtual-desktop-classic-with-the-web-client"></a>使用 Web 客户端连接到 Windows 虚拟桌面（经典）
 

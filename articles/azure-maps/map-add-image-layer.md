@@ -1,6 +1,6 @@
 ---
-title: 向地图添加图像层 |Microsoft Azure 映射
-description: 了解如何将图像添加到地图中。 请参阅如何使用 Azure Maps Web SDK 自定义图像层并覆盖固定坐标集上的图像。
+title: 向地图添加图像层 | Microsoft Azure Maps
+description: 了解如何向地图添加图像。 了解如何使用 Azure Maps Web SDK 自定义图像层并将图像覆盖在固定坐标集上。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -10,35 +10,35 @@ services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: f0c24940e606020dc45e5a000cfcb030fd806d4b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102047479"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>将图像层添加到地图
 
-本文介绍如何将图像叠加到一组固定的坐标。 下面是可以在地图上重叠的不同图像类型的几个示例：
+本文介绍如何将图像覆盖到固定坐标集。 下面是可以在地图上覆盖的不同图像类型的几个示例：
 
-* 从无人机捕获的映像
-* 构建 floorplans
-* 历史或其他专用地图图像
-* 作业站点的蓝图
-* 天气雷达图
+* 从无人机捕获的图像
+* 建筑平面图
+* 历史或其他专门的地图图像
+* 工作地点蓝图
+* 天气雷达图像
 
 > [!TIP]
-> [ImageLayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer)是在地图上覆盖图像的一种简单方法。 请注意，浏览器在加载大图像时可能会遇到困难。 在这种情况下，请考虑将图像分解为磁贴，并将其作为 [TileLayer](/javascript/api/azure-maps-control/atlas.layer.tilelayer)加载到地图中。
+> 借助 [ImageLayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer)，可以轻松将图像覆盖在地图上。 请注意，浏览器可能难以加载大图像。 在这种情况下，请考虑将图像分解为图块并将其作为 [TileLayer](/javascript/api/azure-maps-control/atlas.layer.tilelayer) 加载到地图中。
 
 图像层支持以下图像格式：
 
 - JPEG
 - PNG
 - BMP
-- GIF 不 (动画) 
+- GIF（非动画）
 
 ## <a name="add-an-image-layer"></a>添加图像层
 
-下面的代码在地图上覆盖 [1922 的纽瓦克、New Jersey 的图](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) 的图像。 可以通过将 URL 传递到图像来创建 [ImageLayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer) ，并以格式表示四个角的坐标 `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` 。
+下面的代码在地图上覆盖 [1922 年新泽西州纽瓦克地图](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)的图像。 通过将 URL 传递给图像并以 `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` 格式设置四个角的坐标来创建 [ImageLayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer)。
 
 ```javascript
 //Create an image layer and add it to the map.
@@ -62,9 +62,9 @@ map.layers.add(new atlas.layer.ImageLayer({
 
 ## <a name="import-a-kml-file-as-ground-overlay"></a>导入 KML 文件作为地面覆盖
 
-此示例演示如何将 KML 地面叠加信息添加为地图上的图像层。 KML 地面叠加提供北方、南部、东和西坐标以及逆时针旋转。 但图像层需要图像每个角的坐标。 本示例中的 KML 地面覆盖适用于 Chartres cathedral，其来源为 [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)。
+此示例演示如何将 KML 地面覆盖信息覆盖为地图上的图像层。 KML 地面覆盖提供东、南、西、北坐标和逆时针旋转。 但图像层需要图像每个角的坐标。 此示例中的 KML 地面覆盖是来自[维基媒体](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)的 Chartres 大教堂。
 
-该代码使用 `getCoordinatesFromEdges` [ImageLayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer) 类中的静态函数。 它使用 "KML" 地面叠加的 "北部"、"东南"、"东部"、"西部" 和 "旋转" 信息来计算图像的四个角。
+此代码使用 [ImageLayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer) 类中的静态 `getCoordinatesFromEdges` 函数。 它使用 KML 地面覆盖的东、南、西、北和旋转信息来计算图像的四个角。
 
 <br/>
 
@@ -72,11 +72,11 @@ map.layers.add(new atlas.layer.ImageLayer({
 </iframe>
 
 > [!TIP]
-> 使用 `getPixels` `getPositions` 图像层类的和函数在定位图像层的地理坐标和本地图像像素坐标之间转换。
+> 使用图像层类的 `getPixels` 和 `getPositions` 函数在定位图像层的地理坐标和本地图像像素坐标之间转换。
 
 ## <a name="customize-an-image-layer"></a>自定义图像层
 
-图像层具有很多样式选项。 下面是一个用于试用的工具。
+图像层有许多样式选项。 以下工具可用来试用这些选项。
 
 <br/>
 

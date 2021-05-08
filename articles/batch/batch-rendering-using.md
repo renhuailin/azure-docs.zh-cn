@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/12/2020
 ms.topic: how-to
-ms.openlocfilehash: dc3d2cc53b478b1ec955d8f4b3717b0407772849
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: df82f51377ac1a585dbfab989ca5386d33d90297
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103496620"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988957"
 ---
 # <a name="using-azure-batch-rendering"></a>使用 Azure Batch 渲染
 

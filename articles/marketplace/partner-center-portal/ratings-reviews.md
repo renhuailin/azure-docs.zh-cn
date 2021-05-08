@@ -1,6 +1,6 @@
 ---
-title: 分级 & 查看合作伙伴中心的分析仪表板
-description: 了解如何在 Microsoft AppSource 和 Azure Marketplace 上访问针对你的产品/服务的客户反馈的合并视图。
+title: 合作伙伴中心的“评分和评价”分析仪表板
+description: 了解如何访问客户对 Microsoft AppSource 和 Azure 市场中产品/服务的反馈的综合视图。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
@@ -8,49 +8,49 @@ ms.date: 12/11/2019
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: d7b64ce907cd68d1d6850f90df49b347f3b0270d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96461003"
 ---
-# <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>分级 & 查看合作伙伴中心的分析仪表板
+# <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>合作伙伴中心的“评分和评价”分析仪表板
 
-本文提供了有关在合作伙伴中心 & 查看仪表板的分级信息。 此仪表板显示有关 Microsoft AppSource 和 Azure Marketplace 上的产品/服务的客户反馈的综合视图。 当客户在这两个市场中浏览、搜索和购买产品/服务时，他们可以对他们获得的产品/服务进行评级和审查。
+本文介绍合作伙伴中心的“评分和评价”仪表板。 此仪表板显示客户对 Microsoft AppSource 和 Azure 市场中产品/服务的反馈的综合视图。 当客户在这两个市场中浏览、搜索和购买产品/服务时，他们可以对他们获得的产品/服务进行评分和评价。
 
-- 客户可以提交新的评级，或查看并更新或删除现有评级或评审。 客户可以仅对他们所拥有的评级和评论做出更改。  
-- 评论发布在 Azure Marketplace 或 AppSource 产品/服务的 "产品" 显示页上的 "评论" 选项卡上。 客户可以包含它们的名称或以匿名方式发布。  
+- 客户可以提交新的评分或评价，并更新或删除已提交的现有评分或评价。 客户仅可对他们自己的评分和评价做出更改。  
+- 评价发布在 Azure 市场或 AppSource 产品/服务的产品显示页的“评价”选项卡中。 客户可以提供其姓名，也可以匿名发布。  
 
 >[!NOTE]
 > 有关分析术语的详细定义，请参阅[适用于商业市场分析的常见问题和术语](../analytics-faq.md)。
 
 ## <a name="access-the-dashboard"></a>访问仪表板
 
-在合作伙伴中心的 " [商用 Marketplace" 仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) 中，展开 " **[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** " 部分，然后选择 " **分级 & 审核**"。
+在合作伙伴中心的[“商业市场”仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)中，展开[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)部分，然后选择“评分和评价”。
 
-该仪表板显示以下客户活动的图形表示形式：
+该仪表板将显示以下客户活动的图形表示形式：
 
-- 评级 & 审核  
-- 查看注释
+- 评分和评价  
+- 评价注释
 
-使用 **Marketplace Insights** 选项卡，单独查看产品/服务 Microsoft AppSource 和 Azure Marketplace 指标。 若要查看特定的产品指标，请从 "产品/服务" 下拉列表中选择产品/服务。
+使用“市场见解”选项卡，可以单独查看在 Microsoft AppSource 和 Azure 市场中你的某个产品/服务的指标。 若要查看特定的产品/服务指标，请从“产品/服务”下拉列表中选择该产品/服务。
 
-### <a name="ratings--reviews-summary"></a>分级 & 审核摘要
+### <a name="ratings--reviews-summary"></a>评分和评价摘要
 
-"分级 & 查看摘要" 部分显示了下面所选日期范围内的指标：
+评分和评价摘要部分显示了所选日期范围内的指标：
 
-- **平均评分：** 客户为所选产品/服务提交的所有评级的加权平均星形评级。
-- **评级细目：** 按提交分级的客户计数对星级评级的细分。 条形图按实际和修订分级堆积 (更新的评级计数) 。
-- **总评分：** 已提交的评级总计。 此计数还包括具有和不含评论的分级。
-- **具有评审的评级：** 提交的评论计数。
+- **平均评分：** 客户为所选产品/服务提交的所有评分的加权平均星级评分。
+- **评分明细：** 按提交评分的客户计数划分的星级评分明细。 实际评分和修改评分（更新的评分计数）的堆积条形图。
+- **总评分：** 已提交的评分总计。 此计数还包括带和不带评价的评分。
+- **带评价的评分：** 已提交的评价计数。
 
-![合作伙伴中心分析评分和评论摘要](./media/analyze-ratings-summary.png)
+![合作伙伴中心分析评分和评价摘要](./media/analyze-ratings-summary.png)
 
-### <a name="review-comments"></a>查看注释
+### <a name="review-comments"></a>评价注释
 
-在发布时，将按时间顺序显示评审。 默认视图显示所有评审，你可以使用下拉菜单中的 " **分级" 筛选** 器通过星级进行筛选。 此外，还可以按查看中显示的关键字进行搜索。  
+评价按发布的时间顺序显示。 默认视图显示所有评价，你可以使用下拉菜单中的“评分筛选器”按星级评分来筛选评价。 此外，还可以按评价中显示的关键字进行搜索。  
 
-![合作伙伴中心分析评审评论](./media/analyze-reviews.png)
+![合作伙伴中心分析评价注释](./media/analyze-reviews.png)
 
 ## <a name="next-steps"></a>后续步骤
 

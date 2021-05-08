@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: 6a6f782768db12c2ce75f5cf1e66100222f24446
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101095209"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>为 Azure 应用服务配置 Node.js 应用
@@ -23,7 +23,7 @@ Node.js 应用必须与所有必需的 NPM 依赖项一起部署。 当你在启
 
 ::: zone pivot="platform-windows"  
 
-若要显示当前 Node.js 版本，请在 [Cloud Shell](https://shell.azure.com)中运行以下命令：
+若要显示当前的 Node.js 版本，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
 
 ```azurecli-interactive
 az webapp config appsettings list --name <app-name> --resource-group <resource-group-name> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION'].value"
@@ -39,7 +39,7 @@ az webapp list-runtimes | grep node
 
 ::: zone pivot="platform-linux"
 
-若要显示当前 Node.js 版本，请在 [Cloud Shell](https://shell.azure.com)中运行以下命令：
+若要显示当前的 Node.js 版本，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
 
 ```azurecli-interactive
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
@@ -57,7 +57,7 @@ az webapp list-runtimes --linux | grep NODE
 
 ::: zone pivot="platform-windows"  
 
-若要将应用设置为 [受支持的 Node.js 版本](#show-nodejs-version)，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令，以将设置 `WEBSITE_NODE_DEFAULT_VERSION` 为受支持的版本：
+若要将应用设置为某个[受支持的 Node.js 版本](#show-nodejs-version)，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令，以将 `WEBSITE_NODE_DEFAULT_VERSION` 设置为受支持的版本：
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_NODE_DEFAULT_VERSION="10.15"
@@ -72,7 +72,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ::: zone pivot="platform-linux"
 
-若要将应用设置为 [受支持的 Node.js 版本](#show-nodejs-version)，请在 [Cloud Shell](https://shell.azure.com)中运行以下命令：
+若要将应用设置为某个[受支持的 Node.js 版本](#show-nodejs-version)，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "NODE|10.14"
@@ -91,13 +91,13 @@ Node.js 应用需要侦听正确的端口才能接收传入的请求。
 
 ::: zone pivot="platform-windows"  
 
-在 Windows 上的应用服务中，Node.js 应用程序是 [IISNode](https://github.com/Azure/iisnode)托管的，你的 Node.js 应用程序应侦听变量中指定的端口 `process.env.PORT` 。 下面的示例演示如何在简单的快速应用程序中执行此操作：
+在 Windows 上的应用服务中，Node.js 应用是通过 [IISNode](https://github.com/Azure/iisnode)托管的，你的 Node.js 应用应侦听 `process.env.PORT` 变量中指定的端口。 以下示例演示如何在一个简单的快速应用中执行此操作：
 
 ::: zone-end
 
 ::: zone pivot="platform-linux"  
 
-应用服务 `PORT` 在 Node.js 容器中设置环境变量，并将传入请求转发到容器的该端口号。 若要接收请求，应用应使用侦听该端口 `process.env.PORT` 。 下面的示例演示如何在简单的快速应用程序中执行此操作：
+应用服务在 Node.js 容器中设置环境变量 `PORT`，并在该端口号将传入请求转发到你的容器。 若要接收请求，你的应用应该使用 `process.env.PORT` 侦听该端口。 以下示例演示如何在一个简单的快速应用中执行此操作：
 
 ::: zone-end
 
@@ -153,7 +153,7 @@ Node.js 容器附带了 [PM2](https://pm2.keymetrics.io/)（一个生产流程�
 
 ### <a name="run-custom-command"></a>运行自定义命令
 
-应用服务可以使用自定义命令（如 *run.sh* 等可执行文件）启动应用。例如，若要运行 `npm run start:prod` ，请在 [Cloud Shell](https://shell.azure.com)中运行以下命令：
+应用服务可以使用自定义命令（例如 run.sh 等可执行文件）来启动你的应用。例如，若要运行 `npm run start:prod`，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "npm run start:prod"
@@ -174,7 +174,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 }
 ```
 
-若要在项目中使用自定义 *package.js* ，请在 [Cloud Shell](https://shell.azure.com)中运行以下命令：
+若要在项目中使用自定义 package.json，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<filename>.json"
@@ -196,7 +196,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 - .js 文件
 - 扩展名为 *.json*、 *.config.js*、 *.yaml* 或 *.yml* 的 [PM2 文件](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)
 
-若要添加自定义起始文件，请在 [Cloud Shell](https://shell.azure.com)中运行以下命令：
+若要添加自定义启动文件，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<filname-with-extension>"
@@ -347,9 +347,9 @@ if (req.secure) {
 
 ## <a name="monitor-with-application-insights"></a>使用 Application Insights 进行监视
 
-Application Insights 允许你监视应用程序的性能、异常和使用情况，而无需进行任何代码更改。 若要附加 App Insights 代理，请转到门户中的 web 应用并选择 "**设置**" 下的 **Application Insights** ，然后选择 "**打开 Application Insights**"。 接下来，选择现有的 App Insights 资源，或创建一个新资源。 最后，选择底部的 " **应用** "。 若要使用 PowerShell 检测 web 应用，请参阅 [这些说明](../azure-monitor/app/azure-web-apps.md?tabs=netcore#enabling-through-powershell)
+利用 Application Insights，可以监视应用程序的性能、异常和使用情况，而无需进行任何代码更改。 若要附加 App Insights 代理，请转到门户中的 Web 应用并选择“设置”下的“Application Insights”，然后选择“打开 Application Insights”  。 接下来，请选择现有的或创建一个新的 App Insights 资源。 最后，选择底部的“应用”。 若要使用 PowerShell 来检测 Web 应用，请参阅[这些说明](../azure-monitor/app/azure-web-apps.md?tabs=netcore#enabling-through-powershell)
 
-此代理将监视服务器端 Node.js 应用程序。 若要监视客户端 JavaScript，请 [将 JAVASCRIPT SDK 添加到你的项目](../azure-monitor/app/javascript.md)。 
+此代理将会监视服务器端 Node.js 应用程序。 若要监视客户端 JavaScript，请[将 JavaScript SDK 添加到项目](../azure-monitor/app/javascript.md)。 
 
 有关详细信息，请参阅 [Application Insights 扩展发行说明](../azure-monitor/app/web-app-extension-release-notes.md)。
 

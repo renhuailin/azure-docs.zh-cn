@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.openlocfilehash: d0fd62c0173bec17c217ece5560119749d1a4fc6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101739328"
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
@@ -27,9 +27,9 @@ ms.locfileid: "101739328"
 
 使用数据工厂，可在基于 Azure 的云服务或自己的自承载计算环境（例如 SSIS、SQL Server 或 Oracle）中执行数据处理。 创建用于执行所需操作的管道后，可将它计划为定期运行（例如每小时、每天或每周）、按时间范围运行或者在发生某个事件时触发。 有关详细信息，请参阅 [Azure 数据工厂简介](introduction.md)。
 
-## <a name="compliance-and-security-considerations"></a>合规性和安全注意事项
+## <a name="compliance-and-security-considerations"></a>合规性和安全性注意事项
 
-Azure 数据工厂经过一系列符合性认证（包括 _SOC 1、2、3_、 _HIPAA BAA_ 和 _HITRUST_）的认证。 可在 [此处](data-movement-security-considerations.md)找到完整和不断增长的认证列表。 可在[服务信任中心](https://servicetrust.microsoft.com/)找到审核报告和符合性认证的数字副本
+Azure 数据工厂通过了一系列合规性认证，包括 SOC 1 、SOC 2、SOC 3、HIPAA BAA 以及 HITRUST  。 可在[此处](data-movement-security-considerations.md)查看完整且不断增长的认证列表。 审核报告和合规性认证的数字副本可在[服务信任中心](https://servicetrust.microsoft.com/)查看
 
 ### <a name="control-flows-and-scale"></a>控制流和缩放
 
@@ -48,7 +48,7 @@ Azure 数据工厂经过一系列符合性认证（包括 _SOC 1、2、3_、 _HI
     - 循环容器：
         * foreach 活动将在循环中迭代指定的活动集合。 
 - 基于触发器的流：
-    - 可以按需或按时钟时间触发管道，也可以按事件网格主题响应
+    - 触发管道可以根据时钟时间按需进行，或者可以作为对事件网格主题驱动的响应
 - 增量流：
     - 可以使用参数并定义用于增量复制的高水位标记，同时移动本地或云中的关系存储中的维度或引用表，以将数据载入 Lake。
 
@@ -236,7 +236,7 @@ Azure 数据工厂经过一系列符合性认证（包括 _SOC 1、2、3_、 _HI
 
 ### <a name="what-are-the-supported-regions-for-wrangling-data-flow"></a>整理数据流支持哪些区域？
 
-当前在以下区域中创建的数据工厂中支持整理数据流：
+目前，在以下区域中创建的数据工厂都支持整理数据流：
 
 * 澳大利亚东部
 * 加拿大中部
@@ -257,31 +257,31 @@ Azure 数据工厂经过一系列符合性认证（包括 _SOC 1、2、3_、 _HI
 
 数据集名称只能包含字母数字字符。 支持以下数据存储：
 
-* 使用帐户密钥身份验证 DelimitedText Azure Blob 存储中的数据集
-* 使用帐户密钥或服务主体身份验证 Azure Data Lake Storage gen2 中的 DelimitedText 数据集
-* 使用服务主体身份验证 Azure Data Lake Storage gen1 中的 DelimitedText 数据集
-* 使用 SQL 身份验证的 Azure SQL 数据库和数据仓库。 请参阅下面支持的 SQL 类型。 对于数据仓库，无 PolyBase 或过渡支持。
+* 使用帐户密钥身份验证的 Azure Blob 存储中的 DelimitedText 数据集
+* 使用帐户密钥或服务主体身份验证的 Azure Data Lake Storage gen2 中的 DelimitedText 数据集
+* 使用服务主体身份验证的 Azure Data Lake Storage gen1 中的 DelimitedText 数据集
+* 使用 SQL 身份验证的 Azure SQL 数据库和数据仓库。 请参阅以下受支持的 SQL 类型。 没有适用于数据仓库的 PolyBase 或过渡性支持。
 
-目前，整理数据流不支持链接服务 Key Vault 集成。
+目前，整理数据流不支持链接的服务 Key Vault 集成。
 
 ### <a name="what-is-the-difference-between-mapping-and-wrangling-data-flows"></a>映射和整理数据流之间的区别是什么？
 
-映射数据流提供了一种无需任何编码即可大规模转换数据的方法。 可以通过构造一系列转换在数据流画布中设计数据转换作业。 从任意数量的源转换开始，然后是数据转换步骤。 使用接收器完成数据流，以将结果置于目标位置。 映射数据流非常适合于在接收器和源中映射和转换已知和未知架构的数据。
+映射数据流提供了一种无需进行任何编码即可大规模转换数据的方法。 可以通过构造一系列转换在数据流画布中设计数据转换作业。 从任意数量的源转换开始，然后是数据转换步骤。 使用接收器来完成数据流，以将结果放在目标中。 映射数据流非常适合于在接收器和源中与已知和未知的架构映射和转换数据。
 
-通过整理数据流，可通过 spark 执行大规模执行敏捷数据准备和浏览（通过使用 Power Query Online 混合编辑器）。 随着数据 lake 的增长，有时你只需浏览数据集或在 lake 中创建数据集。 你不会映射到已知目标。 整理数据流用于不太正式和基于模型的分析方案。
+利用整理数据流，可以大规模使用 Power Query Online 糅合编辑器通过 spark 执行来完成敏捷数据准备和研究。 随着数据湖的增长，有时你只是需要浏览数据集或在湖中创建数据集。 你并不会映射到某个已知的目标。 整理数据流用于不太正式的和基于模型的分析方案。
 
 ### <a name="what-is-the-difference-between-power-platform-dataflows-and-wrangling-data-flows"></a>Power Platform 数据流和整理数据流之间的区别是什么？
 
-使用 Power Platform 数据流，用户可以将各种数据源中的数据导入和转换到 Common Data Service，并 Azure Data Lake 生成 PowerApps 应用程序、Power BI 报表或流自动化。 Power Platform 数据流使用已建立的 Power Query 数据准备体验，与 Power BI 和 Excel 类似。 使用 Power Platform 数据流，还可以轻松地在组织中重用，并自动处理业务流程 (例如，当) 中刷新前一数据流时，会自动刷新依赖于其他数据流的数据流。
+使用 Power Platform 数据流，用户可以将数据从各种数据源导入和转换到 Common Data Service 和 Azure Data Lake 中，以生成 PowerApps 应用程序、Power BI 报表或流自动化。 Power Platform 数据流使用已建立的 Power Query 数据准备体验，类似于 Power BI 和 Excel。 使用 Power Platform 数据流，还可以在组织中轻松实现重用，并自动处理业务流程（例如，在刷新某人数据流时，会自动刷新依赖于该数据流的数据流）。
 
-Azure 数据工厂 (ADF) 是一种托管的数据集成服务，它允许数据工程师和公民数据集成器创建复杂的混合提取-转换-加载 (ETL) ，并 (ELT) 工作流提取加载转换。 ADF 中的整理数据流为用户提供了一个无代码的无服务器环境，该环境可简化云中的数据准备并扩展到任何数据大小，无需基础结构管理。 它使用 Power Query 数据准备技术 (在 Power Platform 数据流、Excel、Power BI) 中使用该技术来准备和调整数据。 整理数据流允许用户通过 spark 执行以大规模方式快速准备数据，旨在处理大数据集成的所有复杂和规模挑战。 用户可以使用基于浏览器的界面在可访问的视觉对象环境中构建可复原的数据管道，并让 ADF 处理 Spark 执行的复杂性。 生成管道的计划，并从 ADF 监视门户监视数据流的执行情况。 使用 ADF 丰富的可用性监视和警报轻松管理数据可用性 Sla，并利用内置的持续集成和部署功能在托管环境中保存和管理流。 建立警报并查看执行计划，以验证你的逻辑在你调整数据流时是否按计划执行。
+Azure 数据工厂 (ADF) 是托管的数据集成服务，利用该服务，数据工程师和平民数据集成商可以创建复杂的混合式提取-转换-加载 (ETL) 和提取-加载-转换 (ELT) 工作流。 ADF 中的整理数据流为用户提供了无代码、无服务器的环境，该环境可以简化云中的数据准备，并缩放到任何数据大小，无需管理基础结构。 它使用 Power Query 数据准备技术（Power Platform 数据流、Excel、Power BI 中也使用该技术）来准备和塑造数据。 整理数据流是为了处理大数据集成的所有复杂性和规模方面的挑战而构建的，利用整理数据流，用户可以通过 spark 执行以大规模方式快速准备数据。 用户可以使用基于浏览器的界面在可访问的直观环境中构建可复原的数据管道，并让 ADF 来处理 Spark 执行的复杂性。 生成管道的计划，并从 ADF 监视门户监视数据流的执行情况。 使用 ADF 丰富的可用性监视和警报，可轻松管理数据可用性 SLA，并且可以综合利用内置的持续集成和部署功能，以在托管环境中保存和管理流。 建立警报并查看执行计划，以验证你的逻辑是否在你调整数据流时按计划执行。
 
 ### <a name="supported-sql-types"></a>支持的 SQL 类型
 
-整理数据流支持 SQL 中的以下数据类型。 使用不受支持的数据类型时，将会收到验证错误。
+整理数据流支持 SQL 中的以下数据类型。 在使用不受支持的数据类型时，将会出现验证错误。
 
 * short
-* double
+* Double
 * real
 * FLOAT
 * char
@@ -305,7 +305,7 @@ Azure 数据工厂 (ADF) 是一种托管的数据集成服务，它允许数据�
 * uniqueidentifier
 * xml
 
-以后将支持其他数据类型。
+将来会支持其他数据类型。
 
 ## <a name="next-steps"></a>后续步骤
 

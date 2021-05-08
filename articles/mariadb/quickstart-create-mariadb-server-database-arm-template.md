@@ -9,12 +9,12 @@ ms.service: mariadb
 ms.custom:
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: 6bf7f4d30f2ad4f9e0181aed332e3f6cb9265ca0
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: a125f1aeacda48fdf8acfeb443527d6e2bf70e5c
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531341"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108277779"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>快速入门：使用 ARM 模板创建 Azure Database for MariaDB 服务器
 
@@ -24,7 +24,7 @@ Azure Database for MariaDB 是一种托管服务，可用于在云中运行、�
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mariadb-with-vnet%2fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.dbformariadb%2Fmanaged-mariadb-with-vnet%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -50,7 +50,7 @@ Azure Database for MariaDB 是一种托管服务，可用于在云中运行、�
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-managed-mariadb-with-vnet/)。
 
-:::code language="json" source="~/quickstart-templates/101-managed-mariadb-with-vnet/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.dbformariadb/managed-mariadb-with-vnet/azuredeploy.json":::
 
 该模板定义了五个 Azure 资源：
 
@@ -68,7 +68,7 @@ Azure Database for MariaDB 是一种托管服务，可用于在云中运行、�
 
 选择以下链接以在 Azure 门户中部署 Azure DB for MariaDB 服务器模板：
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mariadb-with-vnet%2fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.dbformariadb%2Fmanaged-mariadb-with-vnet%2Fazuredeploy.json)
 
 在“部署具有 VNet 的 Azure DB for MariaDB”页上：
 
@@ -116,7 +116,7 @@ $adminPassword = Read-Host -Prompt "Enter the administrator password" -AsSecureS
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location # Use this command when you need to create a new resource group for your deployment
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
-    -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-managed-mariadb-with-vnet/azuredeploy.json `
+    -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.dbformariadb/managed-mariadb-with-vnet/azuredeploy.json `
     -serverName $serverName `
     -administratorLogin $adminUser `
     -administratorLoginPassword $adminPassword
@@ -138,7 +138,7 @@ read -p "Enter the Azure Database for MariaDB server's administrator account nam
 read -p "Enter the administrator password:" adminPassword &&
 params='serverName='$serverName' administratorLogin='$adminUser' administratorLoginPassword='$adminPassword &&
 az group create --name $resourceGroupName --location $location &&
-az deployment group create --resource-group $resourceGroupName --parameters $params --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-managed-mariadb-with-vnet/azuredeploy.json &&
+az deployment group create --resource-group $resourceGroupName --parameters $params --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.dbformariadb/managed-mariadb-with-vnet/azuredeploy.json &&
 read -p "Press [ENTER] to continue: "
 ```
 

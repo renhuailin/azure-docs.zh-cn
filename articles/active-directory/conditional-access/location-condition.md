@@ -13,10 +13,10 @@ ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
 ms.openlocfilehash: 777fc60f76692734ea34ff3cdf8f6bc6e5e8316b
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97615705"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>在条件访问策略中使用位置条件 
@@ -57,20 +57,20 @@ ms.locfileid: "97615705"
 
 ![Azure 门户中的受信任位置](./media/location-condition/new-trusted-location.png)
 
-在条件访问策略中可以考虑此选项，例如，你可以要求从受信任的网络位置注册多重身份验证。 它还会影响到 Azure AD Identity Protection 的风险计算，降低用户从标记为受信任的位置进入的登录风险。
+在条件访问策略中可以考虑此选项，例如，你可以要求从受信任的网络位置注册多重身份验证。 它还会影响到 Azure AD 标识保护的风险计算，降低用户从标记为受信任的位置进入的登录风险。
 
 ### <a name="countries-and-regions"></a>国家/地区和区域
 
 某些组织可能会选择将整个国家/地区或区域 IP 边界定义为条件访问策略的命名位置。 如果组织知道有效用户永远不会来自某个位置（例如朝鲜），则他们可以根据位置阻止不必要的流量。 IP 地址到国家/地区的这些映射会定期更新。 
 
 > [!NOTE]
-> 无法将 IPv6 地址范围映射到国家/地区。 仅 IPv4 地址映射到国家/地区。
+> 无法将 IPv6 地址范围映射到国家/地区。 仅可将 IPv4 地址映射到国家/地区。
 
 ![在 Azure 门户中创建新的基于国家/地区或区域的位置](./media/location-condition/new-named-location-country-region.png)
 
 #### <a name="include-unknown-areas"></a>包含未知区域
 
-某些 IP 地址不会映射到特定的国家或地区，包括所有 IPv6 地址。 若要捕获这些 IP 位置，请在定义位置时选中“包含未知区域”复选框。 使用此选项可以选择这些 IP 地址是否应包含在命名位置中。 如果使用命名位置的策略需要应用到未知位置，则使用此设置。
+某些 IP 地址（包括所有 IPv6 地址）未映射到特定的国家或地区。 若要捕获这些 IP 位置，请在定义位置时选中“包含未知区域”复选框。 使用此选项可以选择这些 IP 地址是否应包含在命名位置中。 如果使用命名位置的策略需要应用到未知位置，则使用此设置。
 
 ### <a name="configure-mfa-trusted-ips"></a>配置 MFA 受信任的 IP
 
@@ -114,7 +114,7 @@ ms.locfileid: "97615705"
 - **IP 范围位置**
 
 > [!NOTE]
-> 无法将 IPv6 地址范围映射到国家/地区。 仅 IPv4 地址映射到国家/地区。
+> 无法将 IPv6 地址范围映射到国家/地区。 仅可将 IPv4 地址映射到国家/地区。
 
 ![命名位置预览版界面](./media/location-condition/named-location-preview.png)
 
@@ -157,7 +157,7 @@ Azure Active Directory (Azure AD) 当前不支持使用 IPv6 的直接网络连�
 这些是可能需要在命名位置配置 IPv6 范围的最常见原因。 另外，如果使用的是 Azure VNet，会收到来自 IPv6 地址的流量。 如果有条件访问策略阻止了 VNet 流量，请检查 Azure AD 登录日志。 识别流量后，就可以获取正在使用的 IPv6 地址，并将其从策略中排除。 
 
 > [!NOTE]
-> 如果要为单个地址指定 IP CIDR 范围，请应用/128 位掩码。 如果你说 IPv6 地址2607： fb90： b27a：6f69： f8d5： dea0： fb39：74a，并且想要将该单一地址作为范围排除，则可以使用2607： fb90： b27a：6f69： f8d5： dea0： fb39： 74a/128。
+> 如果要为单个地址指定 IP CIDR 范围，请应用 /128 位掩码。 如果 IPv6 地址是 2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a，并想从地址范围中排除该单一地址，应使用 2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a/128。
 
 ### <a name="identifying-ipv6-traffic-in-the-azure-ad-sign-in-activity-reports"></a>在 Azure AD 登录活动报告中标识 IPv6 流量
 
@@ -197,7 +197,7 @@ Azure Active Directory (Azure AD) 当前不支持使用 IPv6 的直接网络连�
 命名位置的 Graph API 预览版本可用。有关详细信息，请参阅 [namedLocation API](/graph/api/resources/namedlocation?view=graph-rest-beta)。
 
 > [!NOTE]
-> 使用 PowerShell 创建的命名位置仅在命名位置 (预览) 中显示。 在旧视图中看不到已命名的位置。  
+> 使用 PowerShell 创建的命名位置仅在命名位置（预览版）中显示。 在旧视图中看不到命名位置。  
 
 ## <a name="next-steps"></a>后续步骤
 

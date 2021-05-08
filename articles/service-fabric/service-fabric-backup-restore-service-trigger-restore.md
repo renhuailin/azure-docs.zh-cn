@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: 8566d82ef0d91caff47ff17a9cb12fcdc8241884
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98928019"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>在 Azure Service Fabric 中还原备份
@@ -28,14 +28,14 @@ ms.locfileid: "98928019"
 - 若要触发还原，必须为群集启用故障分析服务 (FAS) 
 - 备份还原服务 (BRS) 已创建备份。 
 - 只能在分区触发还原。
-- 安装 ServiceFabric 模块 (预览) 进行配置调用。
+- 安装 Microsoft.ServiceFabric.Powershell.Http 模块（预览版）进行配置调用。
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
 > [!NOTE]
-> 如果 PowerShellGet 版本低于1.6.0，则需要更新以添加对 *-AllowPrerelease* 标志的支持：
+> 如果 PowerShellGet 版本低于 1.6.0，则需要进行更新以添加对“-AllowPrerelease”标志的支持：
 >
 > `Install-Module -Name PowerShellGet -Force`
 

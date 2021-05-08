@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
 ms.openlocfilehash: 1570bd9dfa62caa749d5a3983b93c2555be058ec
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93348723"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>使用 Azure PowerShell 为 Azure 虚拟机设置灾难恢复
@@ -59,7 +59,7 @@ Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
 ## <a name="get-details-of-the-virtual-machine-to-be-replicated"></a>获取要复制的虚拟机的详细信息
 
-在本文中，"美国东部" 区域中的虚拟机将复制到美国西部2区域并进行恢复。 要复制的虚拟机具有 OS 磁盘和单个数据磁盘。 本示例中使用的虚拟机名称为 `AzureDemoVM`。
+在本文中，会将“美国东部”区域中的某个虚拟机复制到“美国西部 2”区域并在其中进行恢复。 要复制的虚拟机具有 OS 磁盘和单个数据磁盘。 本示例中使用的虚拟机名称为 `AzureDemoVM`。
 
 ```azurepowershell
 # Get details of the virtual machine
@@ -100,7 +100,7 @@ $DataDisk1VhdURI = $VM.StorageProfile.DataDisks[0].Vhd
 > * 恢复服务保管库的资源组和要保护的虚拟机必须位于不同的 Azure 位置。
 > * 恢复服务保管库及其所属的资源组可以位于相同的 Azure 位置。
 
-在本文的示例中，要保护的虚拟机位于美国东部区域。 为灾难恢复选择的恢复区域为美国西部 2 区域。 恢复服务保管库和保管库的资源组均位于恢复区域，美国西部2。
+在本文的示例中，要保护的虚拟机位于美国东部区域。 为灾难恢复选择的恢复区域为美国西部 2 区域。 恢复服务保管库及其资源组都位于恢复区域“美国西部 2”。
 
 ```azurepowershell
 #Create a resource group for the recovery services vault in the recovery Azure region
@@ -115,7 +115,7 @@ Tags              :
 ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg
 ```
 
-创建恢复服务保管库。 在此示例中，在 `a2aDemoRecoveryVault` 美国西部2区域创建了一个名为的恢复服务保管库。
+创建恢复服务保管库。 本示例在“美国西部 2”区域创建名为 `a2aDemoRecoveryVault` 的恢复服务保管库。
 
 ```azurepowershell
 #Create a new Recovery services vault in the recovery region
@@ -249,9 +249,9 @@ Write-Output $TempASRJob.State
 $RecoveryProtContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $RecoveryFabric -Name "A2AWestUSProtectionContainer"
 ```
 
-#### <a name="fabric-and-container-creation-when-enabling-zone-to-zone-replication"></a>启用区域到区域复制时的构造和容器创建
+#### <a name="fabric-and-container-creation-when-enabling-zone-to-zone-replication"></a>启用区域到区域复制时的结构和容器创建
 
-启用区域到区域复制时，将只创建一个构造。 但会有两个容器。 假设区域是西欧的，请使用以下命令获取主要和保护容器-
+启用区域到区域复制时，将只创建一个结构。 但会有两个容器。 假设区域是“欧洲西部”，请使用以下命令获取主容器和保护容器 -
 
 ```azurepowershell
 $primaryProtectionContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric -Name "asr-a2a-default-westeurope-container"
@@ -296,9 +296,9 @@ Write-Output $TempASRJob.State
 $EusToWusPCMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $PrimaryProtContainer -Name "A2APrimaryToRecovery"
 ```
 
-#### <a name="protection-container-mapping-creation-when-enabling-zone-to-zone-replication"></a>启用区域到区域复制时保护容器映射创建
+#### <a name="protection-container-mapping-creation-when-enabling-zone-to-zone-replication"></a>启用区域到区域复制时创建保护容器映射
 
-启用区域到区域复制时，请使用以下命令创建保护容器映射。 假设区域是西欧的，则该命令将为-
+启用区域到区域复制时，请使用以下命令创建保护容器映射。 假设区域是“欧洲西部”，则该命令为 -
 
 ```azurepowershell
 $protContainerMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $PrimprotectionContainer -Name "westeurope-westeurope-24-hour-retention-policy-s"
@@ -633,7 +633,7 @@ Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $Repli
 -ProtectionContainerMapping $WusToEusPCMapping -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.ResourceId
 ```
 
-重新保护完成后，可以反向故障转移到美国东部，并故障回复到源区域。
+在重新保护完成后，可以反向进行故障转移（从“美国西部”到“美国东部”）并故障回复到源区域。
 
 ## <a name="disable-replication"></a>禁用复制
 

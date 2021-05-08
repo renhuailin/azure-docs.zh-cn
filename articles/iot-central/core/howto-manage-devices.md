@@ -10,15 +10,15 @@ services: iot-central
 manager: peterpr
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: 2f0b6feea5e586c87191b22f42e3ab86e85ba7b3
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97032518"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中管理设备
 
-本文介绍如何在 Azure IoT Central 应用程序中管理设备，作为操作员。 操作员可以：
+本文介绍如何以操作员的身份在 Azure IoT Central 应用程序中管理设备。 操作员可以：
 
 - 使用“设备”页查看、添加和删除与 Azure IoT Central 应用程序连接的设备。
 - 批量导入和导出设备。
@@ -26,7 +26,7 @@ ms.locfileid: "97032518"
 - 通过从视图中更改存储在设备属性中的值，使你的设备元数据保持最新。
 - 通过在视图中更新特定设备的设置，来控制设备的行为。
 
-若要了解如何管理自定义的设备组，请参阅 [教程：使用设备组分析设备遥测](tutorial-use-device-groups.md)。
+要了解如何管理自定义的设备组，请参阅[教程：使用设备组分析设备遥测](tutorial-use-device-groups.md)。
 
 ## <a name="view-your-devices"></a>查看设备
 
@@ -60,7 +60,7 @@ ms.locfileid: "97032518"
 
 若要将大量设备连接到应用程序，可从 CSV 文件批量导入设备。 该 CSV 文件应包含以下列和标头：
 
-* **IOTC_DeviceID** -设备 ID 可以包含字母、数字和 `-` 字符。
+* IOTC_DeviceID - 设备 ID 可以包含字母、数字和 `-` 字符。
 * **IOTC_DeviceName** - 此列是可选的。
 
 若要在应用程序中批量注册设备：
@@ -70,9 +70,9 @@ ms.locfileid: "97032518"
 1. 在左面板中，选择要为其批量创建设备的设备模板。
 
     > [!NOTE]
-    > 如果还没有设备模板，则可以在 " **所有设备** " 下导入设备，并在不使用模板的情况下注册设备。 导入设备后，可将其关联到某个模板。
+    > 如果还没有设备模板，可以在“所有设备”下导入设备，并在没有模板的情况下注册这些设备。 导入设备后，可将其关联到某个模板。
 
-1. 选择“导入”  。
+1. 选择“导入”。
 
     ![导入操作](./media/howto-manage-devices/bulkimport1a.png)
 
@@ -97,11 +97,11 @@ ms.locfileid: "97032518"
 
     ![未关联的设备](./media/howto-manage-devices/unassociateddevices1a.png)
 
-1. 使用网格上的筛选器来确定 **设备模板** 列 **中的值对于任何** 设备是否无关。
+1. 使用网格中的筛选器来确定任何设备的“设备模板”列中的值是否为“未关联”。 
 
 1. 选择想要与模板关联的设备：
 
-1. 选择 **迁移**：
+1. 选择“迁移”：
 
     ![关联设备](./media/howto-manage-devices/unassociateddevices2a.png)
 
@@ -152,11 +152,11 @@ ms.locfileid: "97032518"
 
 1. 使用筛选工具来筛选和搜索设备。 选中要删除的设备旁边的框。
 
-1. 选择 " **删除**"。 可以在“设备操作”面板中跟踪此删除操作的状态。
+1. 选择“删除”  。 可以在“设备操作”面板中跟踪此删除操作的状态。
 
 ## <a name="change-a-property"></a>更改属性
 
-云属性是与设备关联的设备元数据，例如城市和序列号。 云属性仅存在于 IoT Central 的应用程序中，不会同步到你的设备。 可写属性控制设备的行为，并允许你远程设置设备的状态，例如，设置恒温器设备的目标温度。  设备属性由设备设置，在 IoT Central 中是只读的。 可以在设备的“设备详细信息”视图中查看和更新属性。
+云属性是与设备关联的设备元数据，例如城市和序列号。 云属性仅存在于 IoT Central 应用程序中，不会同步到你的设备。 可写属性控制设备的行为，并允许你远程设置设备的状态，例如，设置恒温器设备的目标温度。  设备属性由设备设置，在 IoT Central 中是只读的。 可以在设备的“设备详细信息”视图中查看和更新属性。
 
 1. 在左侧窗格中选择“设备”。
 
@@ -170,4 +170,4 @@ ms.locfileid: "97032518"
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已了解如何在 Azure IoT Central 应用程序中管理设备，接下来要介绍如何为你的设备[配置规则](howto-configure-rules.md) 。
+现在，您已经学习了如何在 Azure IoT Central 应用程序中管理设备，建议的下一步是学习如何为设备[配置规则](howto-configure-rules.md)。

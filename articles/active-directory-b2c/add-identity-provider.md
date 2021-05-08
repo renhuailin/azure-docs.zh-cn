@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.author: mimart
-ms.date: 03/03/2021
+ms.date: 04/29/2021
 ms.custom: mvc
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 5495e84d23b6723cfc7d4fbdb99e7509e378087f
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 9c7eda8db68d4b9fba532d2f665f31d302a7822e
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257171"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108277203"
 ---
 # <a name="add-an-identity-provider-to-your-azure-active-directory-b2c-tenant"></a>向 Azure Active Directory B2C 租户添加标识提供者
 
@@ -39,6 +39,7 @@ ms.locfileid: "107257171"
 * [Azure AD（单租户）](identity-provider-azure-ad-single-tenant.md)
 * [Azure AD（多租户）](identity-provider-azure-ad-multi-tenant.md)
 * [Azure AD B2C](identity-provider-azure-ad-b2c.md)
+* [eBay](identity-provider-ebay.md)
 * [Facebook](identity-provider-facebook.md)
 * [一般标识提供者](identity-provider-generic-openid-connect.md)
 * [GitHub](identity-provider-github.md)

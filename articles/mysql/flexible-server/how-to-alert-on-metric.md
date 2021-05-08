@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: 632aae766e6fd1328dc6e0135a88a942d7ad0910
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100595779"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql---flexible-server"></a>使用 Azure 门户设置针对 Azure Database for MySQL 灵活服务器指标的警报 
@@ -51,7 +51,7 @@ ms.locfileid: "100595779"
 14. 为操作组配置“通知”。
     
     在“通知类型”中选择“向 Azure 资源管理器角色发送电子邮件”以选择订阅所有者、参与者和读者来接收通知。 选择 Azure 资源管理器角色来发送电子邮件。
-    你还可以选择 **电子邮件/短信/推送/语音** ，将通知发送给特定收件人。
+    还可选择“电子邮件/短信/推送/语音”将通知发送给特定收件人。
 
     提供通知类型的“名称”，并在完成后选择“查看 + 创建” 。
 

@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 04/05/2021
+ms.date: 04/23/2021
 ms.author: duau
-ms.openlocfilehash: 796e35be12939920f9392e6f3ce4cae660415f80
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 62f51922399a300b9ed803c3ee2d380dcab615b8
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504667"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987517"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>关于 ExpressRoute 虚拟网络网关
 
@@ -36,12 +36,18 @@ ms.locfileid: "106504667"
 ### <a name="estimated-performances-by-gateway-sku"></a><a name="aggthroughput"></a>预估性能（按网关 SKU）
 下表显示网关类型和估计性能。 此表适用于 Resource Manager 与经典部署模型。
 
+> [!IMPORTANT]
+> 应用程序性能取决于多种因素，例如端到端延迟和应用程序打开的流量数。 表中的数字表示应用程序在理想环境下理论上可达到的上限。
+>
+>
+
+> [!NOTE]
+> 所有网关可从同一对等互连位置连接到同一虚拟网络的 ExpressRoute 线路的最大数目为 4。
+>
+>
+
 [!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
 
-> [!IMPORTANT]
-> * 虚拟网络中的 VM 数还包括使用远程 ExpressRoute 网关的对等虚拟网络中的 VM。
-> * 应用程序性能取决于多种因素，例如端到端延迟和应用程序打开的流量数。 表中的数字表示应用程序在理想环境下理论上可达到的上限。
->
 
 ## <a name="gateway-subnet"></a><a name="gwsub"></a>网关子网
 

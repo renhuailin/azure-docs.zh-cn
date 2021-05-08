@@ -1,26 +1,27 @@
 ---
 title: 云服务（经典）的资源运行状况
-description: '本文介绍资源运行状况检查 (RHC) 支持 Microsoft Azure 云服务 (经典) '
+description: 本文介绍了对 Microsoft Azure 云服务（经典）的资源运行状况检查 (RHC) 支持
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: resource-health
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 37294e681066eb27ace69bcacee3a813b750b8eb
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.openlocfilehash: 46a27e42d6b3440914ca0d32e1ae2138b128021e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98743502"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935152"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>对 Azure 云服务（经典）的资源运行状况检查 (RHC) 支持
 
 > [!IMPORTANT]
-> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
-本文介绍资源运行状况检查 (RHC) 支持 [Microsoft Azure 云服务 (经典) ](https://azure.microsoft.com/services/cloud-services)
+本文介绍了对 [Microsoft Azure 云服务（经典）](https://azure.microsoft.com/services/cloud-services)的资源运行状况检查 (RHC) 支持
 
 云服务的 [Azure 资源运行状况](../service-health/resource-health-overview.md)可帮助你诊断影响云服务部署、角色和角色实例的服务问题，并获取相关支持。 它在部署、角色和角色实例级别报告云服务当前和过去的运行状况。
 

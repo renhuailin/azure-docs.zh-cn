@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 74343b2f05bb4a59e475449c87524ff66cdd605d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98919538"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>弹性数据库工具入门
@@ -85,11 +85,11 @@ ms.locfileid: "98919538"
 
 1. 下载 [Elastic DB Tools for Azure SQL - Getting Started sample](https://github.com/Azure/elastic-db-tools)（Azure SQL 弹性数据库工具 - 入门示例）。 将示例解压缩到所选位置。
 
-2. 若要创建项目，请从 *弹性-db-master* 目录打开 *ElasticDatabaseTools* 解决方案。 
+2. 若要创建项目，请从 elastic-db-tools-master 目录打开 ElasticDatabaseTools.sln 解决方案 。 
 
-3. 将 *elasticscalestarterkit.sln* 项目设置为启动项目。
+3. 将 ElasticScaleStarterKit 项目设置为“启动项目”。
 
-4. 在 *elasticscalestarterkit.sln* 项目中，打开 *App.config* 文件。 然后遵循该文件中的说明，添加服务器名称和登录信息（用户名和密码）。
+4. 在 ElasticScaleStarterKit 项目中，打开 App.config 文件 。 然后遵循该文件中的说明，添加服务器名称和登录信息（用户名和密码）。
 
 5. 生成并运行应用程序。 出现提示时，请允许 Visual Studio 还原该解决方案的 NuGet 包。 此操作从 NuGet 下载最新版本的弹性数据库客户端库。
 
@@ -136,7 +136,7 @@ ms.locfileid: "98919538"
   * [脚本中心上的分片弹性](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * 博客：[弹性缩放公告](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
 * 第 9 频道：[弹性缩放概述视频](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
-* 讨论论坛： [Microsoft Q&适用于 AZURE SQL 数据库的问题页面](/answers/topics/azure-sql-database.html)
+* 论坛：[Microsoft 关于 Azure SQL 数据库的问答页](/answers/topics/azure-sql-database.html)
 * 衡量性能：[分片映射管理器的性能计数器](elastic-database-client-library.md)
 
 <!--Anchors-->

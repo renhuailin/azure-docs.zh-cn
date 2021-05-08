@@ -1,5 +1,5 @@
 ---
-title: 配置 Azure 到 Azure 灾难恢复的移动服务代理设置 |Microsoft Docs
+title: 配置 Azure 到 Azure 灾难恢复的移动服务代理设置 | Microsoft Docs
 description: 详细介绍了当客户在其源环境中使用代理时如何配置移动服务。
 services: site-recovery
 author: sideeksh
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/18/2020
 ms.author: sideeksh
 ms.openlocfilehash: 429ffcab147142ae2e96de13b7c9e1e5ee1ac7ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86133222"
 ---
 # <a name="configure-mobility-service-proxy-settings-for-azure-to-azure-disaster-recovery"></a>配置 Azure 到 Azure 灾难恢复的移动服务代理设置
@@ -51,7 +51,7 @@ ms.locfileid: "86133222"
 在这种情况下，客户会在移动服务配置文件 ProxyInfo.conf 中提供自定义应用程序代理设置。 使用此方法时，客户可以只为移动服务提供代理，或者为 Azure Site Recovery 移动服务提供不同于计算机上其他应用程序的代理（或者根本不为其他应用程序提供代理）。
 
 ## <a name="proxy-template"></a>代理模板
-ProxyInfo 包含以下模板 [proxy] Address = http://1.2.3.4 Port = 5678 BypassList = hypervrecoverymanager. windowsazure.storage，，，.net. .net。 BypassList 不支持通配符，如 "*. windows.net"，但赋予 windows.net 的效果足以绕过。 
+ProxyInfo.conf 包含以下模板：[proxy] Address=http://1.2.3.4 Port=5678 BypassList=hypervrecoverymanager.windowsazure.com,login.microsoftonline.com,blob.core.windows.net。 BypassList 不支持通配符（例如“*.windows.net”），但提供 windows.net 就足以跳过了。 
 
 ## <a name="next-steps"></a>后续步骤：
 - 请参阅有关复制 Azure VM 复制的[网络指南](./azure-to-azure-about-networking.md)。

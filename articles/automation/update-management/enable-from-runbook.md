@@ -7,23 +7,23 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: mvc
 ms.openlocfilehash: 5377a3ff7ef7033b57f8785baa615a717ef7fa0f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100575879"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>从 runbook 启用“更新管理”
 
-本文介绍如何使用 runbook 为环境中的 VM 启用[更新管理](overview.md)功能。 若要大规模启用 Azure Vm，必须启用更新管理的现有 VM。
+本文介绍如何使用 runbook 为环境中的 VM 启用[更新管理](overview.md)功能。 若要大规模启用 Azure VM，必须通过更新管理启用现有的 VM。
 
 > [!NOTE]
 > 在启用更新管理时，只有某些区域支持链接 Log Analytics 工作区和自动化帐户。 有关支持的映射对的列表，请参阅[自动化帐户和 Log Analytics 工作区的区域映射](../how-to/region-mappings.md)。
 
 此方法使用两个 runbook：
 
-* **Enable-multiplesolution** -主要 runbook，用于提示输入配置信息，查询指定的 VM 并执行其他验证检查，然后调用 **AutomationSolution** runbook 为指定资源组中的每个 VM 配置更新管理。
-* **AutomationSolution** -为在目标资源组中指定的一个或多个 vm 启用更新管理。 它将验证是否满足先决条件，验证是否已安装并安装 Log Analytics VM 扩展（如果找不到），然后将 Vm 添加到链接到自动化帐户的指定 Log Analytics 工作区中的范围配置。
+* Enable-MultipleSolution -主要的 runbook，它提示输入配置信息，查询指定的 VM 并执行其他验证检查，然后调用 Enable-AutomationSolution runbook 为指定的资源组中的每个 VM 配置更新管理 。
+* Enable-AutomationSolution -为在目标资源组中指定的一个或多个 VM 启用更新管理。 它会验证是否满足先决条件，验证是否已安装 Log Analytics VM 扩展（如果找不到，则会安装），然后将 VM 添加到已链接到自动化帐户的指定的 Log Analytics 工作区中的范围配置。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,11 +31,11 @@ ms.locfileid: "100575879"
 * 用于管理计算机的[自动化帐户](../automation-security-overview.md)。
 * [Log Analytics 工作区](../../azure-monitor/logs/design-logs-deployment.md)
 * [虚拟机](../../virtual-machines/windows/quick-create-portal.md)。
-* **AutomationSolution** runbook 使用的两个自动化资产。 如果自动化帐户中尚不存在此 runbook，则此 runbook 会在其首次运行期间自动导入 **enable-multiplesolution** runbook。
-    * *LASolutionSubscriptionId*： Log Analytics 工作区所在位置的订阅 ID。
-    * *LASolutionWorkspaceId*：链接到自动化帐户的 Log Analytics 工作区的工作区 ID。
+* 两个自动化资产，由 **Enable-AutomationSolution** runbook 使用。 如果此 runbook 还不在你的自动化帐户中，它会在其首次运行期间由 Enable-MultipleSolution runbook 自动导入。
+    * LASolutionSubscriptionId：Log Analytics 工作区所在位置的订阅 ID。
+    * LASolutionWorkspaceId：链接到自动化帐户的 Log Analytics 工作区的工作区 ID。
 
-    这些变量用于配置载入 VM 的工作区，并且你需要手动创建它们。 如果未指定这些项，脚本将首先搜索要在其订阅中更新管理的任何 VM 载入，后跟自动化帐户所在的订阅，然后是用户帐户有权访问的所有其他订阅。 如果未正确配置，则可能会导致计算机载入到某些随机 Log Analytics 工作区。
+    这些变量用于配置加入的 VM 的工作区，并且你需要手动创建这些变量。 如果未指定这些变量，脚本会先在其订阅中搜索任何加入到更新管理的 VM，然后搜索自动化帐户所在的订阅，再接下来搜索你的用户帐户有访问权限的所有其他订阅。 如果未正确配置，则可能会导致计算机加入到某些随机的 Log Analytics 工作区。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -43,17 +43,17 @@ ms.locfileid: "100575879"
 
 ## <a name="enable-update-management"></a>启用更新管理
 
-1. 在 Azure 门户中，导航到 " **Automation 帐户**"。 在 " **自动化帐户** " 页上，从列表中选择你的帐户。
+1. 在 Azure 门户中，导航到“自动化账户”。 在“自动化帐户”页上，从列表中选择你的帐户。
 
 2. 在自动化帐户中，选择“更新管理”下的“更新管理”。
 
-3. 选择 Log Analytics 工作区，然后单击“启用”。 启用更新管理时，将显示标题。
+3. 选择 Log Analytics 工作区，然后单击“启用”。 在启用更新管理时，会显示横幅。
 
     ![启用更新管理](media/enable-from-runbook/enable-update-management.png)
 
 ## <a name="install-and-update-modules"></a>安装和更新模块
 
-需要将其更新到最新的 Azure 模块，并导入 [AzureRM](/powershell/module/azurerm.operationalinsights) 模块，才能使用 runbook 成功启用 vm 更新管理。
+必须更新到最新的 Azure 模块并导入 [AzureRM.OperationalInsights](/powershell/module/azurerm.operationalinsights) 模块才能成功使用该 runbook 为 VM 启用更新管理。
 
 1. 在你的自动化帐户中的“共享资源”下选择“模块” 。
 
@@ -75,11 +75,11 @@ ms.locfileid: "100575879"
 
 启用更新管理后，可以添加 Azure VM 以接收更新。
 
-1. 在自动化帐户中，选择 "**更新管理**" 部分下的 "**更新管理**"。
+1. 从自动化帐户中，在“更新管理”部分下选择“更新管理” 。
 
 2. 选择“添加 Azure VM”以添加你的 VM。
 
-3. 从列表中选择 VM，然后单击 " **启用** " 以配置要管理的 vm。
+3. 从列表中选择 VM，然后单击“启用”以配置该 VM 进行管理。
 
    ![为 VM 启用更新管理](media/enable-from-runbook/enable-update-management-vm.png)
 
@@ -92,21 +92,21 @@ ms.locfileid: "100575879"
 
 2. 选择“浏览库”。
 
-3. 搜索 **更新和更改跟踪**。
+3. 搜索更新和更改跟踪。
 
-4. 选择 runbook，然后单击 "**查看源**" 页上的 "**导入**"。
+4. 选择 runbook，然后在“查看源”页上单击“导入” 。
 
 5. 单击“确定”，将 Runbook 导入到自动化帐户中。
 
    ![导入 Runbook 进行设置](media/enable-from-runbook/import-from-gallery.png)
 
-6. 在 " **Runbook** " 页上，选择 " **enable-multiplesolution** " runbook，然后单击 " **编辑**"。 在文本编辑器中，选择 "  **发布**"。
+6. 在“Runbook”页上，选择“Enable-MultipleSolution”runbook，然后单击“编辑”  。 在文本编辑器中，选择“发布”。
 
-7. 出现确认提示时，单击 **"是"** 以发布 runbook。
+7. 在提示确认时，请单击“是”，以发布该 runbook。
 
 ## <a name="start-the-runbook"></a>启动 Runbook
 
-必须已为 Azure VM 启用了更新管理，才能启动此 runbook。 它需要一个已启用该功能的现有 VM 和资源组，以便在目标资源组中配置一个或多个 Vm。
+必须已为 Azure VM 启用了更新管理，才能启动此 runbook。 它需要已启用该功能的现有的 VM 和资源组，以便在目标资源组中配置一个或多个 VM。
 
 1. 打开“Enable-MultipleSolution”Runbook。
 
@@ -125,7 +125,7 @@ ms.locfileid: "100575879"
 
 3. 选择“确定”启动 Runbook 作业。
 
-4. 从 " **作业** " 页中监视 runbook 作业和任何错误的进度。
+4. 从“作业”页监视 runbook 作业和任何错误的进度。
 
 ## <a name="next-steps"></a>后续步骤
 

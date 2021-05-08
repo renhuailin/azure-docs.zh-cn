@@ -1,15 +1,15 @@
 ---
-title: 使用 Azure Site Recovery 和 Azure PowerShell 复制时排除 Azure VM 磁盘
+title: 使用 Azure Site Recovery 和 Azure PowerShell 将 Azure VM 磁盘排除在复制之外
 description: 了解如何使用 Azure PowerShell 在 Azure Site Recovery 过程中排除 Azure 虚拟机的磁盘。
 author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 02/18/2019
 ms.openlocfilehash: a21460279420c46b11c43615ae5ecc7bfa81de4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86135808"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>对 Azure VM 进行 PowerShell 复制时排除磁盘
@@ -27,20 +27,20 @@ ms.locfileid: "86135808"
 - 查看所有组件的[支持要求](azure-to-azure-support-matrix.md)。
 - 确保有 AzureRm PowerShell 的“Az”模块。 若要安装或更新 PowerShell，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
 - 确保已经创建恢复服务保管库并对虚拟机进行了至少一次保护。 如果尚未做这些事，请按[使用 Azure PowerShell 为 Azure 虚拟机设置灾难恢复](azure-to-azure-powershell.md)中介绍的过程操作。
-- 若要查找有关将磁盘添加到已启用复制的 Azure VM 的信息，请[查看此文](azure-to-azure-enable-replication-added-disk.md)。
+- 如果正在查找有关将磁盘添加到用于复制的 Azure VM 的信息，请 [查看本文](azure-to-azure-enable-replication-added-disk.md)。
 
 ## <a name="why-exclude-disks-from-replication"></a>为什么要从复制中排除磁盘
 需要从复制中排除磁盘可能是因为：
 
 - 虚拟机已达到 [Azure Site Recovery 对数据更改复制速率的限制](./azure-to-azure-support-matrix.md)。
 
-- 在排除的磁盘上改动的数据不重要或不需要复制。
+- 排除的磁盘上改动的数据不重要或不需要复制。
 
 - 需要节省存储和网络资源，因此不复制此数据。
 
 ## <a name="how-to-exclude-disks-from-replication"></a>如何从复制中排除磁盘
 
-在本示例中，我们将包含一个操作系统的虚拟机和美国东部地区的三个数据磁盘复制到美国西部2区域。 虚拟机的名称为“AzureDemoVM”  。 我们排除磁盘 1，保留磁盘 2 和 3。
+在示例中，我们将美国东部区域中拥有一个 OS 和三个数据磁盘的虚拟机复制到美国西部 2 区域。 虚拟机的名称为“AzureDemoVM”。 我们排除磁盘 1，保留磁盘 2 和 3。
 
 ## <a name="get-details-of-the-virtual-machines-to-replicate"></a>获取要复制的虚拟机的详细信息
 
@@ -78,7 +78,7 @@ $DataDisk1VhdURI = $VM.StorageProfile.DataDisks[0].Vhd
 
 对于以下示例，我们假设你已有缓存存储帐户、复制策略和映射。 如果没有这些项目，请按[使用 Azure PowerShell 为 Azure 虚拟机设置灾难恢复](azure-to-azure-powershell.md)中介绍的过程操作。
 
-复制包含*托管磁盘*的 Azure 虚拟机。
+复制包含 *托管磁盘* 的 Azure 虚拟机。
 
 ```azurepowershell
 
@@ -136,4 +136,4 @@ $TempASRJob = New-ASRReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -N
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[运行测试性故障转移](site-recovery-test-failover-to-azure.md)。
+了解[如何运行测试故障转移](site-recovery-test-failover-to-azure.md)。

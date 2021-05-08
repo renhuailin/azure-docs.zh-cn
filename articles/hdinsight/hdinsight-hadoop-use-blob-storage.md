@@ -6,20 +6,20 @@ ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: cedc0ff1b3c2aa64f32445eabc800748a753981d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98945420"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>将 Azure 存储与 Azure HDInsight 群集配合使用
 
-可以将数据存储在 [Azure Blob 存储](../storage/common/storage-introduction.md)、 [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md)或 [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)中。 或这些选项的组合。 使用这些存储选项，可安全地删除用于计算的 HDInsight 群集，而不会丢失用户数据。
+可以将数据存储在 [Azure Blob 存储](../storage/common/storage-introduction.md)、[Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) 或 [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) 中。 或这些选项的组合。 使用这些存储选项，可安全地删除用于计算的 HDInsight 群集，而不会丢失用户数据。
 
-Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默认方案和授权。 它还可用于解析相对路径。 在 HDInsight 群集创建过程中，可以指定 Azure 存储中的 blob 容器作为默认文件系统。 对于 HDInsight 3.6，你可以选择 "Azure Blob 存储"，也可以选择 "Azure Data Lake Storage Gen1/Azure Data Lake Storage Gen2 为默认文件系统，但有一些例外。 有关使用 Data Lake Storage Gen1 作为默认存储和链接存储的可支持性，请参阅 [HDInsight 群集的可用性](./hdinsight-hadoop-use-data-lake-storage-gen1.md#availability-for-hdinsight-clusters)。
+Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默认方案和授权。 它还可用于解析相对路径。 在 HDInsight 群集创建过程中，可以指定 Azure 存储中的 blob 容器作为默认文件系统。 或者在 HDInsight 3.6 中，可以选择 Azure Blob 存储或 Azure Data Lake Storage Gen1 / Azure Data Lake Storage Gen2 作为默认文件系统，但存在几种例外情况。 有关对将 Data Lake Storage Gen1 同时用作默认存储和链接存储的支持能力，请参阅 [HDInsight 群集的可用性](./hdinsight-hadoop-use-data-lake-storage-gen1.md#availability-for-hdinsight-clusters)。
 
 本文介绍 Azure 存储如何与 HDInsight 群集配合使用。 
-* 若要了解 Data Lake Storage Gen1 如何与 HDInsight 群集配合使用，请参阅 [将 Azure Data Lake Storage Gen1 与 Azure HDInsight 群集配合使用](./hdinsight-hadoop-use-data-lake-storage-gen1.md)。
+* 若要了解 Data Lake Storage Gen1 与 HDInsight 群集如何配合工作，请参阅[将 Azure Data Lake Storage Gen1 与 Azure HDInsight 群集配合使用](./hdinsight-hadoop-use-data-lake-storage-gen1.md)。
 * 若要了解 Data Lake Storage Gen2 与 HDInsight 群集如何配合工作，请参阅[将 Azure Data Lake Storage Gen2 与 Azure HDInsight 群集配合使用](./hdinsight-hadoop-use-data-lake-storage-gen2.md)。
 * 若要深入了解如何创建 HDInsight 群集，请参阅[在 HDInsight 中创建 Apache Hadoop 群集](./hdinsight-hadoop-provision-linux-clusters.md)。
 
@@ -28,9 +28,9 @@ Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默�
 
 | 存储帐户类型 | 支持的服务 | 支持的性能层 |不支持的性能层| 支持的访问层 |
 |----------------------|--------------------|-----------------------------|---|------------------------|
-| StorageV2（常规用途 v2）  | Blob     | 标准                    |高级| 热、冷、存档\*   |
-| 存储（常规用途 v1）   | Blob     | 标准                    |高级| 空值                    |
-| BlobStorage                    | Blob     | 标准                    |Premium| 热、冷、存档\*   |
+| StorageV2（常规用途 v2）  | Blob     | Standard                    |高级| 热、冷、存档\*   |
+| 存储（常规用途 v1）   | Blob     | Standard                    |高级| 空值                    |
+| BlobStorage                    | Blob     | Standard                    |高级| 热、冷、存档\*   |
 
 建议不要使用默认 blob 容器来存储业务数据。 最佳做法是每次使用之后删除默认 Blob 容器以降低存储成本。 默认容器包含应用程序日志和系统日志。 请确保在删除该容器之前检索日志。
 

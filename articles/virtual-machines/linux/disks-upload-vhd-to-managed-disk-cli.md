@@ -8,12 +8,12 @@ ms.date: 06/15/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 473e87904742395eca6b7eeba0875cd93789104d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0f48856f085737040ca16afcca1e56be1da4843e
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91978979"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816739"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>将 VHD 上传到 Azure，或将托管磁盘复制到其他区域 - Azure CLI
 
@@ -44,7 +44,7 @@ ms.locfileid: "91978979"
 
 在创建要上传的空标准 HDD 之前，需要获取要上传的 VHD 的文件大小（以字节为单位）。 为此，可以使用 `wc -c <yourFileName>.vhd` 或 `ls -al <yourFileName>.vhd`。 指定 **--upload-size-bytes** 参数时将使用此值。
 
-在 [disk create](/cli/azure/disk#az-disk-create) cmdlet 中同时指定“-–for-upload”参数和“--upload-size-bytes”参数，创建要上传的空标准 HDD： 
+在 [disk create](/cli/azure/disk#az_disk_create) cmdlet 中同时指定“-–for-upload”参数和“--upload-size-bytes”参数，创建要上传的空标准 HDD： 
 
 将 `<yourdiskname>`、`<yourresourcegroupname>`、`<yourregion>` 替换为所选值。 `--upload-size-bytes` 参数包含示例值 `34359738880`，请将其替换为适合你的值。
 
@@ -122,7 +122,7 @@ targetSASURI=$(az disk grant-access -n $targetDiskName -g $targetRG  --access-le
 
 sourceSASURI=$(az disk grant-access -n $sourceDiskName -g $sourceRG --duration-in-seconds 86400 --query [accessSas] -o tsv)
 
-.\azcopy copy $sourceSASURI $targetSASURI --blob-type PageBlob
+azcopy copy $sourceSASURI $targetSASURI --blob-type PageBlob
 
 az disk revoke-access -n $sourceDiskName -g $sourceRG
 

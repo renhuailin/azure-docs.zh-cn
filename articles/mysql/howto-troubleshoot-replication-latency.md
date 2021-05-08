@@ -8,10 +8,10 @@ ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 01/13/2021
 ms.openlocfilehash: 92513a8c24b5106e3a59c8cfa4d743e900b957bf
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98249765"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>排查 Azure Database for MySQL 中的复制延迟问题
@@ -32,7 +32,7 @@ ms.locfileid: "98249765"
 在本文中，你将了解如何排查 Azure Database for MySQL 中的复制延迟问题。 你还将了解副本服务器上复制延迟增加的一些常见原因。
 
 > [!NOTE]
-> 本文包含对字词 _从属_ 的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
+> 本文包含对术语“从属”的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 >
 
 ## <a name="replication-concepts"></a>复制概念
@@ -46,7 +46,7 @@ ms.locfileid: "98249765"
 
 Azure Database for MySQL 在 [Azure Monitor](concepts-monitoring.md) 中提供了以秒为单位的复制延迟指标。 此指标仅适用于只读副本服务器。 它由 MySQL 中提供的 seconds_behind_master 指标计算得出。 
 
-若要了解复制滞后时间增加的原因，请使用 [MySQL 工作台](connect-workbench.md) 或 [Azure Cloud Shell](https://shell.azure.com)连接到副本服务器。 然后运行以下命令。
+若要了解复制延迟增加的原因，请使用 [MySQL Workbench](connect-workbench.md) 或 [Azure Cloud Shell](https://shell.azure.com) 连接到副本服务器。 然后运行以下命令。
 
 >[!NOTE]
 > 在代码中，将示例值替换为你的副本服务器名称和管理员用户名。 对于 Azure Database for MySQL，管理员用户名需要包含 `@\<servername>`。
@@ -82,7 +82,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 mysql>
 ```
 
-在同一 Cloud Shell 终端中运行以下命令：
+在同一 Cloud Shell 终端中，运行以下命令：
 
 ```
 mysql> SHOW SLAVE STATUS;

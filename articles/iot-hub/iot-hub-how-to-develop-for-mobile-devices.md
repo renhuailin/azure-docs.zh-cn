@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: robinsh
 ms.openlocfilehash: 63fade17d10189cbe8e775b2a859902f1c2bb004
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92151641"
 ---
 # <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>使用 Azure IoT SDK 针对移动设备进行开发
@@ -36,9 +36,9 @@ Azure IoT 中心 C SDK 是以 C99 编写的，针对各种平台提供了最大�
 
 Azure IoT 中心 SDK 发布了一组用于 iOS 开发的 Objective-C CocoaPod 库。  若要查看 CocoaPod 库的最新列表，请参阅[用于 Microsoft Azure IoT 的 CocoaPod](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/samples/ios/CocoaPods.md)。  将相关库包含到 XCode 项目中之后，可以采用两种方式来编写 IoT 中心相关代码：
 
-* Objective C 函数：如果项目是采用 Objective-C 编写的，可以直接从 Azure IoT 中心 C SDK 调用 API。  如果项目是以 Swift 编写的，则可以在创建函数之前调用 `@objc func`，然后继续使用 C 或 Objective-C 代码编写与 Azure IoT 中心相关的所有逻辑。  可以在[示例存储库](https://github.com/Azure-Samples/azure-iot-samples-ios)中找到演示了上述两种方式的一组示例。  
+* Objective 函数：如果项目是以 Objective-C 编写的，则可以直接从 Azure IoT 中心 C SDK 调用 API。  如果项目是以 Swift 编写的，则可以在创建函数之前调用 `@objc func`，然后继续使用 C 或 Objective-C 代码编写与 Azure IoT 中心相关的所有逻辑。  可以在[示例存储库](https://github.com/Azure-Samples/azure-iot-samples-ios)中找到演示了上述两种方式的一组示例。  
 
-* 包含 C 示例：如果已编写了一个 C 设备应用程序，可以直接在 XCode 项目中引用它：
+* 包含 C 示例：如果已编写了一个 C 设备应用程序，则可以直接在 XCode 项目中引用该应用程序：
     * 通过 XCode 将 sample.c 文件添加到 XCode 项目中。  
     * 将头文件添加到依赖项。  [示例存储库](https://github.com/Azure-Samples/azure-iot-samples-ios)中提供了一个头文件示例。 有关详细信息，请访问 Apple 提供的关于 [Objective-C](https://developer.apple.com/documentation/objectivec) 的文档页。
 

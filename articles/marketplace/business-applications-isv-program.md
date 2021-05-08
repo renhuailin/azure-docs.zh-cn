@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 11/19/2020
-ms.openlocfilehash: e4cd22418c4f8a2f9504baf665c67a4a57f7f6f5
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: ce9927a66da64d64e83f10e3dfd906005635e5ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103379"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "99507530"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications 独立软件供应商 (ISV) Connect 计划加入指南
 
@@ -25,7 +25,7 @@ ms.locfileid: "107103379"
 
 ## <a name="set-up-your-microsoft-partner-center-account"></a>设置 Microsoft 合作伙伴中心帐户
 
-要为 ISV Connect 计划设置和管理帐户，请完成以下文章中的步骤：[在合作伙伴中心创建商业市场帐户](create-account.md)。 本文提供了创建新帐户的所有步骤，以及有关将新发布者添加到商业市场计划的信息。
+要为 ISV Connect 计划设置和管理帐户，请完成以下文章中的步骤：[在合作伙伴中心创建商业市场帐户](./partner-center-portal/create-account.md)。 本文提供了创建新帐户的所有步骤，以及有关将新发布者添加到商业市场计划的信息。
 
 > [!NOTE]
 > 此步骤需要合作伙伴中心的“所有者”或“管理员”角色。 
