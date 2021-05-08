@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 4f333c4bb66195e6c99bd45dcc7c29a0b9a2eaa9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: f6431328a0969ced0d98cbc7ff047cc0673ecb91
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591413"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074550"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics 中的专用 SQL 池（之前称为 SQL DW）发行说明
 
@@ -45,7 +45,7 @@ ms.locfileid: "100591413"
 | 服务改进 | 详细信息 |
 | --- | --- |
 |**列的存储过程 sp_rename（预览版）**|重命名没有 [CTAS](./sql-data-warehouse-develop-ctas.md) 的列变得更加简单。 Azure Synapse SQL 现已添加对系统存储过程 sp_rename（预览版）的支持，它用于重命名用户表中的非分布列。 此功能目前以预览版提供，正式发布时将受到工具支持。 有关详细信息，请参阅 [sp_rename](/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql?view=azure-sqldw-latest&preserve-view=true)。|
-|**T-sql 预测的其他参数**|在这个新版本中，将为现有 T-sql PREDICT 语句添加一个名为 "运行时" 的必需附加参数。 若要更新现有脚本，请参阅 [T-SQL 预测](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)中的示例。|
+|**T-SQL Predict 的附加参数**|在此新版本中，为现有 T-SQL PREDICT 语句添加一个名为“RUNTIME”的必需附加参数。 若要更新现有脚本，请参阅 [T-SQL PREDICT](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true) 中的示例。|
 
 ## <a name="oct-2020"></a>2020 年 10 月
 
@@ -67,7 +67,7 @@ ms.locfileid: "100591413"
 | --- | --- |
 |列级加密（公共预览版）|使用 Transact-SQL 对数据列应用对称加密，从而保护 Azure Synapse Analytics 中的敏感信息。 列级加密具有内置函数，可用于使用对称密钥（通过证书、密码、对称密钥或非对称密钥受到进一步保护）来加密数据。 有关详细信息，请访问[加密数据列](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest&preserve-view=true)。|
 |兼容性级别支持 (GA)|在此版本中，用户现在可以设置数据库的兼容性级别，以获取 Synapse SQL 引擎的特定版本的 Transact-SQL 语言和查询处理行为。 有关详细信息，请参阅 [sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 和[更改数据库范围的配置](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。|
-|**行级别安全性**|此版本包含对于在强制执行了 RLS 的行上进行的更新和删除操作的改进。 在此版本中，如果内部函数（如 "is_rolemember"）包含内部函数的更新和删除操作，则这些函数将成功。 在此次改进之前，这些操作会因基础 DML 操作中的限制而失败。|
+|**行级别安全性**|此版本包含对于在强制执行了 RLS 的行上进行的更新和删除操作的改进。 在此版本中，如果内部函数如“is_rolemember”不引用 DML 目标表中的任何列，则使用该内部函数的更新和删除操作将会成功。 在此次改进之前，这些操作会因基础 DML 操作中的限制而失败。|
 |DBCC SHRINKDATABASE (GA)|现在可以收缩指定数据库中的数据文件和日志文件的大小。 有关详细信息，请参阅[文档](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=azure-sqldw-latest&preserve-view=true)。|
 
 ## <a name="may-2020"></a>2020 年 5 月
@@ -77,9 +77,9 @@ ms.locfileid: "100591413"
 |**工作负荷隔离 (GA)**|[工作负荷隔离](./sql-data-warehouse-workload-isolation.md)现已正式发布。  通过[工作负荷组](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest&preserve-view=true)，可以保留和包含资源。  还可以配置查询超时来取消失控查询。|
 |**工作负荷管理门户体验（预览）**| 用户可以通过 Azure 门户来配置和管理自己的工作负荷管理设置。  可以配置[工作负荷组](./quickstart-create-a-workload-classifier-portal.md)和[工作负荷分类器](./quickstart-create-a-workload-classifier-portal.md)（含重要性）。|
 |**ALTER WORKLOAD GROUP**|现在可以使用 [ALTER WORKLOAD GROUP](/sql/t-sql/statements/alter-workload-group-transact-sql?view=azure-sqldw-latest&preserve-view=true) 命令。  使用 ALTER 命令可以更改现有[工作负荷组](./sql-data-warehouse-workload-isolation.md)的配置。|
-|**使用 COPY 命令（预览版）对 Parquet 文件执行自动架构检测**|[COPY 命令](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)现在支持在加载 Parquet 文件时执行自动架构检测。 此命令会在加载文件前先自动检测 Parquet 文件架构并创建表。 若要启用此功能，请访问以下电子邮件通讯组列表： sqldwcopypreview@service.microsoft.com 。 |
-|**使用 COPY 命令（预览版）加载复杂的 Parquet 数据类型**|[COPY 命令](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)现在支持加载复杂的 Parquet 类型。 可以将复杂类型（如 Maps 和 Lists）加载到字符串列中。  若要启用此功能，请访问以下电子邮件通讯组列表： sqldwcopypreview@service.microsoft.com 。 |
-|**使用 COPY 命令对 Parquet 文件执行自动压缩检测**|[COPY 命令](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)现在支持自动检测一个或多个 Parquet 文件的压缩方法。 若要启用此功能，请访问以下电子邮件通讯组列表： sqldwcopypreview@service.microsoft.com 。|
+|**使用 COPY 命令（预览版）对 Parquet 文件执行自动架构检测**|[COPY 命令](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)现在支持在加载 Parquet 文件时执行自动架构检测。 此命令会在加载文件前先自动检测 Parquet 文件架构并创建表。 访问以下电子邮件通讯组列表以获得该启用的功能： sqldwcopypreview@service.microsoft.com。 |
+|**使用 COPY 命令（预览版）加载复杂的 Parquet 数据类型**|[COPY 命令](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)现在支持加载复杂的 Parquet 类型。 可以将复杂类型（如 Maps 和 Lists）加载到字符串列中。  访问以下电子邮件通讯组列表以获得该启用的功能： sqldwcopypreview@service.microsoft.com。 |
+|**使用 COPY 命令对 Parquet 文件执行自动压缩检测**|[COPY 命令](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)现在支持自动检测一个或多个 Parquet 文件的压缩方法。 访问以下电子邮件通讯组列表以获得该启用的功能： sqldwcopypreview@service.microsoft.com。|
 |**其他加载建议**|[加载建议](./sql-data-warehouse-concept-recommendations.md)现在可用于 Synapse SQL。 在以下情况下收到主动通知：应拆分文件来最大限度地提高吞吐量、将存储帐户与专用 SQL 池（之前称为 SQL DW）归置在一起，或者在使用 SQLBulkCopy API 或 BCP 等加载实用工具时增加批大小|
 |**T-SQL 可更新的分布列 (GA)**|用户现在可以更新在分布列中存储的数据。 有关详细信息，请查看[关于在专用 SQL 池（之前称为 SQL DW）中设计分布式表的指南](./sql-data-warehouse-tables-distribute.md)。|
 |**T-SQL 根据联接结果进行更新/删除 (GA)**|现在可以根据与其他表联接的结果进行更新和删除。 有关详细信息，请参阅 [UPDATE](/sql/t-sql/queries/update-transact-sql?view=azure-sqldw-latest&preserve-view=true) 和 [DELETE](/sql/t-sql/statements/delete-transact-sql?view=azure-sqldw-latest&preserve-view=true) 文档。|
@@ -90,7 +90,9 @@ ms.locfileid: "100591413"
 | 服务改进 | 详细信息 |
 | --- | --- |
 |**数据库兼容性级别（预览版）**| 在此版本中，用户现在可以设置数据库的兼容性级别，以获取 Synapse SQL 引擎的特定版本的 Transact-SQL 语言和查询处理行为。 有关详细信息，请参阅 [sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 和[更改数据库范围的配置](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。|
-|**Sp_describe_undeclared_parameters**| 可让用户查看有关 Transact-SQL 批中未声明的参数的元数据。 有关详细信息，请参阅 [sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。| <br/><br/><br/>
+|**Sp_describe_undeclared_parameters**| 可让用户查看有关 Transact-SQL 批中未声明的参数的元数据。 有关详细信息，请参阅 [sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。| 
+
+<br/><br/><br/>
 
 | 工具改进                                         | 详细信息                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -127,7 +129,7 @@ ms.locfileid: "100591413"
 
 | 服务改进 | 详细信息 |
 | --- | --- |
-|**Azure 专用链接（预览）**|使用 [Azure 专用链接](https://azure.microsoft.com/blog/announcing-azure-private-link/)，你可以在虚拟网络中创建一个专用终结点， (VNet) 并将其映射到专用 SQL 池。 然后，可通过 VNet 中的专用 IP 地址访问这些资源，从而能够通过 Azure ExpressRoute 专用对等互连和/或 VPN 网关从本地连接。 总的来说，这简化了网络配置，因为不需要向公共 IP 地址开放它。 这还可以规避数据外泄风险。 如需了解更多详情，请参阅[概述](../../private-link/private-link-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)和 [SQL Analytics](../../azure-sql/database/private-endpoint-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 文档。|
+|**Azure 专用链接（预览）**|通过 [Azure 专用链接](https://azure.microsoft.com/blog/announcing-azure-private-link/)，可在虚拟网络 (VNet) 中创建专用终结点，并将它映射到专用 SQL 池。 然后，可通过 VNet 中的专用 IP 地址访问这些资源，从而能够通过 Azure ExpressRoute 专用对等互连和/或 VPN 网关从本地连接。 总的来说，这简化了网络配置，因为不需要向公共 IP 地址开放它。 这还可以规避数据外泄风险。 如需了解更多详情，请参阅[概述](../../private-link/private-link-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)和 [SQL Analytics](../../azure-sql/database/private-endpoint-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 文档。|
 |**数据发现和分类 (GA)**|[数据发现和分类](../../azure-sql/database/data-discovery-and-classification-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)功能现已推出正式版。 此功能提供高级功能用于 **发现、分类、标记和保护** 数据库中的敏感数据。|
 |**Azure 顾问一键式集成**|现在，Azure Synapse 中的 SQL Analytics 直接在概览边栏选项卡中与 Azure 顾问建议集成，并提供一键式体验。 现在可以在概述边栏选项卡中发现建议，而无需转到 Azure 顾问边栏选项卡。 在[此处](sql-data-warehouse-concept-recommendations.md)详细了解建议。|
 |**读取提交的快照隔离（预览）**|可以使用 ALTER DATABASE 为用户数据库启用或禁用快照隔离。  为了避免对当前工作负荷造成影响，不妨在数据库维护时段期间设置此选项，或等到数据库没有其他任何活动连接时设置此选项。 有关详细信息，请参阅 [ALTER DATABASE SET 选项](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。|

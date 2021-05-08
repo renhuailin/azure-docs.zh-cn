@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/09/2018
 ms.openlocfilehash: ab2e9c691f17b8f0891ecbc82ff42cd3529a1328
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031185"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>使用数据收集器 API 创建数据管道
@@ -129,18 +129,18 @@ ms.locfileid: "102031185"
 
 ![逻辑应用工作流完整示例](./media/create-pipeline-datacollector-api/logic-apps-workflow-example-02.png)
 
-## <a name="testing-the-pipeline"></a>测试管道
+## <a name="testing-the-pipeline&quot;></a>测试管道
 现在可以将一个新文件上传到此前配置的 Blob，让逻辑应用对其进行监视。 很快就会看到逻辑应用的新实例启动并调用 Azure Function，然后成功地将数据发送到 Azure Monitor。 
 
 >[!NOTE]
 >首次发送新数据类型时，数据显示在 Azure Monitor 中可能需要长达 30 分钟的时间。
 
 
-## <a name="correlating-with-other-data-in-log-analytics-and-application-insights"></a>与 Log Analytics 和 Application Insights 中的其他数据相关联
+## <a name=&quot;correlating-with-other-data-in-log-analytics-and-application-insights&quot;></a>与 Log Analytics 和 Application Insights 中的其他数据相关联
 若要完成将 Application Insights 页面视图数据与我们从自定义数据源引入的人口数据相关联的目标，请在 Application Insights Analytics 窗口或 Log Analytics 工作区中运行以下查询：
 
 ``` KQL
-app("fabrikamprod").pageViews
+app(&quot;fabrikamprod").pageViews
 | summarize numUsers = count() by client_CountryOrRegion
 | join kind=leftouter (
    workspace("customdatademo").Population_CL

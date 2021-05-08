@@ -3,12 +3,12 @@ title: 媒体蓝图示例控制措施
 description: 媒体蓝图示例的控制映射。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
 ms.date: 04/13/2021
 ms.topic: sample
-ms.openlocfilehash: 4c04c661d7dd8b2b07a05c20524258d6bb887e62
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: f2750f4733a3a815236778c846bde4e186f30512
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376692"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161314"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>媒体蓝图示例的控制映射
 
@@ -229,13 +229,13 @@ ms.locfileid: "107376692"
 - 审核虚拟机规模集上的 OS 漏洞，以保护其免受攻击。
 
 > [!NOTE]
-> 特定 Azure Policy 定义的可用性在 Azure 政府和其他国家云中可能会有所不同。 
+> 特定 Azure Policy 定义的可用性在 Azure 政府和其他国家云中可能会有所不同。
 
 ## <a name="next-steps"></a>后续步骤
 
 你已了解媒体蓝图示例的控制映射。 接下来，请访问以下文章，了解概述以及如何部署此示例：
 
-> [!div class="next step action"]
+> [!div class="nextstepaction"]
 > [介质蓝图 - 控制映射](./control-mapping.md)
 > [介质蓝图 - 部署步骤](./deploy.md)
 

@@ -4,12 +4,12 @@ description: 在设备、桌面应用、网页或服务中插入几行代码，�
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8e866dc30d83f1b1f080a1be385026dcfbc77320
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: c43ecced4c87deda3e3d92a470d6694dfd1813e2
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106122095"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331513"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -42,7 +42,7 @@ ms.locfileid: "106122095"
   * [ASP.NET Core 项目](./asp-net-core.md)
   * [Java 项目](./java-get-started.md)
   * [Node.js 项目](./nodejs.md)
-  * [每个网页中的 JavaScript](./javascript.md) 
+  * [每个网页中的 JavaScript](./javascript.md)
 * 在设备或 Web 服务器代码中包含以下内容：
 
     C#：`using Microsoft.ApplicationInsights;`
@@ -66,6 +66,7 @@ ms.locfileid: "106122095"
 ```csharp
 private TelemetryClient telemetry = new TelemetryClient();
 ```
+
 对于看到“此方法已过时”消息的任何人，请访问 [microsoft/ApplicationInsights-dotnet#1152](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1152) 了解更多详细信息。
 
 Visual Basic
@@ -78,7 +79,7 @@ Private Dim telemetry As New TelemetryClient
 
 ```java
 private TelemetryClient telemetry = new TelemetryClient();
-``` 
+```
 
 *Node.js*
 
@@ -148,8 +149,6 @@ telemetry.trackEvent({name: "WinGame"});
 
 [“Application Insights 日志”选项卡](../logs/log-query-overview.md)或[使用体验](usage-overview.md)中的 `customEvents` 表格提供了遥测。 事件可能来自 `trackEvent(..)` 或[单击“分析自动收集”插件](javascript-click-analytics-plugin.md)。
 
- 
-
 如果正在进行[采样](./sampling.md)，那么 itemCount 属性将显示大于 1 的值。 例如，itemCount==10 表明对 trackEvent() 调用了 10 次，采样进程只传输其中一次。 若要获取自定义事件的正确计数，应使用 `customEvents | summarize sum(itemCount)` 之类的代码。
 
 ## <a name="getmetric"></a>GetMetric
@@ -177,15 +176,15 @@ Application Insights 可绘制未附加到特定事件的指标。 例如，可�
 
 *JavaScript*
 
- ```javascript
+```javascript
 appInsights.trackMetric("queueLength", 42.0);
- ```
+```
 
 *C#*
 
 ```csharp
 var sample = new MetricTelemetry();
-sample.Name = "metric name";
+sample.Name = "queueLength";
 sample.Value = 42.3;
 telemetryClient.TrackMetric(sample);
 ```
@@ -198,9 +197,9 @@ telemetry.trackMetric("queueLength", 42.0);
 
 *Node.js*
 
- ```javascript
+```javascript
 telemetry.trackMetric({name: "queueLength", value: 42.0});
- ```
+```
 
 ### <a name="custom-metrics-in-analytics"></a>分析中的自定义指标
 
@@ -504,7 +503,7 @@ trackTrace({
 可以搜索消息内容，但是（不同于属性值）无法在其中进行筛选。
 
 `message` 上的大小限制比属性上的限制高得多。
-TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 例如，可在此处对 POST 数据进行编码。  
+TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 例如，可在此处对 POST 数据进行编码。
 
 此外，可向消息添加严重性级别。 并像其他遥测一样，可以添加属性值以帮助筛选或搜索不同跟踪集。 例如：
 
@@ -601,7 +600,7 @@ finally
 }
 ```
 
-请记住，服务器 SDK 包含[依赖项模块](./asp-net-dependencies.md)，用于自动发现和跟踪特定的依赖项调用（例如，数据库和 REST API）。 必须在服务器上安装一个代理才能让模块正常运行。 
+请记住，服务器 SDK 包含[依赖项模块](./asp-net-dependencies.md)，用于自动发现和跟踪特定的依赖项调用（例如，数据库和 REST API）。 必须在服务器上安装一个代理才能让模块正常运行。
 
 使用 Java 时，可以使用 [Java 代理](./java-agent.md)自动跟踪某些依赖项调用。
 
@@ -633,7 +632,7 @@ dependencies
 
 *C#*
 
- ```csharp
+```csharp
 telemetry.Flush();
 // Allow some time for flushing before shutdown.
 System.Threading.Thread.Sleep(5000);
@@ -798,8 +797,6 @@ telemetry.trackEvent("WinGame", properties, metrics);
 
 > [!NOTE]
 > 请注意不要在属性中记录个人身份信息。
->
->
 
 ### <a name="alternative-way-to-set-properties-and-metrics"></a>设置属性和指标的替代方法
 
@@ -820,8 +817,6 @@ telemetry.TrackEvent(event);
 
 > [!WARNING]
 > 请不要重复使用相同的遥测项实例（本示例中为 `event`）来调用 Track*() 多次。 这可能会导致使用不正确的配置发送遥测数据。
->
->
 
 ### <a name="custom-measurements-and-properties-in-analytics"></a>在 Analytics 中自定义度量值和属性
 
@@ -912,7 +907,6 @@ gameTelemetry.TrackEvent("WinGame")
 import com.microsoft.applicationinsights.TelemetryClient;
 import com.microsoft.applicationinsights.TelemetryContext;
 ...
-
 
 TelemetryClient gameTelemetry = new TelemetryClient();
 TelemetryContext context = gameTelemetry.getContext();

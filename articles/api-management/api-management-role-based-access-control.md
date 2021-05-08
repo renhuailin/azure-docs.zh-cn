@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: fc41d2904d5a6676f1e9e1e2d178985bef0a9aa3
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101095545"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>如何在 Azure API 管理中使用基于角色的访问控制
@@ -30,7 +30,7 @@ Azure API 管理依赖于 Azure 基于角色的访问控制 (Azure RBAC) 来为 
 
 API 管理目前提供了三个内置角色，不久之后会再添加两个角色。 可在不同的范围（包括订阅、资源组和单个 API 管理实例）分配这些角色。 例如，如果在资源组级别将“API 管理服务读者”角色分配给某个用户，则该用户将对该资源组中的所有 API 管理实例拥有读取访问权限。 
 
-下表提供内置角色的简短说明。 可以使用 Azure 门户或其他工具（包括 Azure [PowerShell](../role-based-access-control/role-assignments-powershell.md)、[Azure CLI](../role-based-access-control/role-assignments-cli.md) 和 [REST API](../role-based-access-control/role-assignments-rest.md)）分配这些角色。 有关如何分配内置角色的详细信息，请参阅 [分配 azure 角色以管理对 Azure 订阅资源的访问权限](../role-based-access-control/role-assignments-portal.md)。
+下表提供内置角色的简短说明。 可以使用 Azure 门户或其他工具（包括 Azure [PowerShell](../role-based-access-control/role-assignments-powershell.md)、[Azure CLI](../role-based-access-control/role-assignments-cli.md) 和 [REST API](../role-based-access-control/role-assignments-rest.md)）分配这些角色。 若要详细了解如何分配内置角色，请参阅[分配 Azure 角色以管理对 Azure 订阅资源的访问权限](../role-based-access-control/role-assignments-portal.md)。
 
 | 角色          | 读取访问权限<sup>[1]</sup> | 写入访问权限<sup>[2]</sup> | 服务创建、删除、缩放，VPN 和自定义域配置 | 对旧版发布者门户拥有访问权限 | 说明
 | ------------- | ---- | ---- | ---- | ---- | ---- 
@@ -81,6 +81,6 @@ New-AzRoleAssignment -ObjectId <object ID of the user account> -RoleDefinitionNa
 
 若要详细了解 Azure 中基于角色的访问控制，请参阅以下文章：
   * [Azure 门户中的访问管理入门](../role-based-access-control/overview.md)
-  * [分配 Azure 角色以管理对 Azure 订阅资源的访问权限](../role-based-access-control/role-assignments-portal.md)
+  * [分配 Azure 角色以管理对 Azure 订阅资源的访问](../role-based-access-control/role-assignments-portal.md)
   * [Azure RBAC 中的自定义角色](../role-based-access-control/custom-roles.md)
   * [Azure 资源管理器资源提供程序操作](../role-based-access-control/resource-provider-operations.md#microsoftapimanagement)

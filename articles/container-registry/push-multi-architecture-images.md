@@ -1,31 +1,31 @@
 ---
 title: 注册表中的多体系结构映像
-description: 使用 Azure 容器注册表生成、导入、存储和部署多体系结构 (多个) 映像
+description: 使用 Azure 容器注册表生成、导入、存储和部署多体系结构映像
 ms.topic: article
 ms.date: 02/07/2021
 ms.custom: ''
-ms.openlocfilehash: f8467cd3108ae4faea9ecb4c9d9ae339f476c311
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
-ms.translationtype: MT
+ms.openlocfilehash: 520518a275e0a9d191ae770e560a0e6e8278eae2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100012300"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104802448"
 ---
 # <a name="multi-architecture-images-in-your-azure-container-registry"></a>Azure 容器注册表中的多体系结构映像
 
-本文介绍 *多体系结构* (*多个*) 的映像，以及如何使用 Azure 容器注册表功能来帮助创建、存储和使用它们。 
+本文介绍了多体系结构 映像，以及如何使用 Azure 容器注册表功能来帮助创建、存储和使用它们。 
 
-多个形象的图像是一种容器映像，可将不同体系结构的变体和不同操作系统组合在一起。 当运行包含多体系结构支持的映像时，容器客户端将自动选择与您的操作系统和体系结构匹配的映像变体。
+多体系结构映像是一种容器映像，可以组合不同体系结构的变体，有时候还可以组合不同操作系统的变体。 当运行支持多体系结构的映像时，容器客户端会自动选择与你的操作系统和体系结构匹配的一个映像变体。
 
 ## <a name="manifests-and-manifest-lists"></a>清单和清单列表
 
-多个三维图像基于图像清单和清单列表。
+多体系结构映像基于映像清单和清单列表。
 
 ### <a name="manifest"></a>file:///
 
-每个容器映像都由一个 [清单](container-registry-concepts.md#manifest)表示。 清单是一个 JSON 文件，用于唯一标识该映像，并引用其层及其相应大小。 
+每个容器映像都由一个[清单](container-registry-concepts.md#manifest)来表示。 清单是一个 JSON 文件，用于唯一地标识映像，并引用它的层及各层的相应大小。 
 
-Linux 映像的基本清单 `hello-world` 类似于以下内容：
+Linux `hello-world` 映像的基本清单类似于以下内容：
 
   ```json
   {
@@ -46,18 +46,18 @@ Linux 映像的基本清单 `hello-world` 类似于以下内容：
   }
   ```
     
-你可以使用 Azure CLI 中的 Azure 门户或工具（如 [az acr 存储库 show-](/cli/azure/acr/repository#az_acr_repository_show_manifests) manifest 命令）查看 Azure 容器注册表中的清单。
+你可以使用 Azure 门户或其他工具（例如 Azure CLI 中的 [az acr repository show-manifests](/cli/azure/acr/repository#az_acr_repository_show_manifests) 命令）查看 Azure 容器注册表中的清单。
 
 ### <a name="manifest-list"></a>清单列表
 
-多形象映像的 *清单列表* (更常见的 OCI 图像的 [映像索引](https://github.com/opencontainers/image-spec/blob/master/image-index.md)) 是图像 (索引) 的集合，并通过指定一个或多个图像名称创建一个。 其中包含有关每个映像的详细信息，如支持的操作系统和体系结构、大小和清单摘要。 清单列表的使用方式与和命令中的映像名称相同 `docker pull` `docker run` 。 
+多体系结构映像的清单列表（通常称为 OCI 映像的[映像索引](https://github.com/opencontainers/image-spec/blob/master/image-index.md)）是映像的集合（索引），你可以通过指定一个或多个映像名称来创建清单列表。 它包含有关每个映像的详细信息，例如支持的操作系统和体系结构、大小和清单摘要。 请单列表的使用方式与 `docker pull` 和 `docker run` 命令中的映像名称相同。 
 
-`docker`CLI 使用[docker 清单](https://docs.docker.com/engine/reference/commandline/manifest/)命令管理清单和清单列表。
+`docker` CLI 使用 [docker manifest](https://docs.docker.com/engine/reference/commandline/manifest/) 命令管理清单和清单列表。
 
 > [!NOTE]
-> 当前， `docker manifest` 命令和子命令为试验性。 有关使用实验性命令的详细信息，请参阅 Docker 文档。
+> 当前，`docker manifest` 命令和子命令为试验性的。 有关使用试验性命令的详细信息，请参阅 Docker 文档。
 
-您可以使用命令查看清单列表 `docker manifest inspect` 。 下面是多形象映像的输出 `mcr.microsoft.com/mcr/hello-world:latest` ，其中包含三个清单：两个适用于 LINUX OS 体系结构，一个用于 Windows 体系结构。
+你可以使用 `docker manifest inspect` 命令查看清单列表。 下面是针对多体系结构映像 `mcr.microsoft.com/mcr/hello-world:latest` 的输出，该映像包含三个清单：两个用于 Linux OS 体系结构，一个用于 Windows 体系结构。
 ```json
 {
   "schemaVersion": 2,
@@ -95,19 +95,19 @@ Linux 映像的基本清单 `hello-world` 类似于以下内容：
 }
 ```
 
-在 Azure 容器注册表中存储多个 "清单" 清单时，还可以使用 "Azure 门户" 或 " [az acr repository show-清单](/cli/azure/acr/repository#az_acr_repository_how_manifests) " 命令等工具查看清单列表。
+当多体系结构清单列表存储在 Azure 容器注册表中时，还可以使用 Azure 门户或诸如 [az acr repository show-manifests](/cli/azure/acr/repository#az_acr_repository_how_manifests) 命令之类的工具查看清单列表。
 
-## <a name="import-a-multi-arch-image"></a>导入多个图像 
+## <a name="import-a-multi-arch-image"></a>导入多体系结构映像 
 
-可以使用 [az acr import](/cli/azure/acr#az_acr_import) 命令将现有的多形象图像导入到 Azure 容器注册表。 图像导入语法与单体系结构映像相同。 与导入单一体系结构映像类似，导入多个图像不使用 Docker 命令。 
+可以使用 [az acr import](/cli/azure/acr#az_acr_import) 命令将现有的多体系结构映像导入到 Azure 容器注册表中。 该映像导入语法与用于单体系结构映像的语法相同。 与导入单体系结构映像一样，导入多体系结构映像也不使用 Docker 命令。 
 
-有关详细信息，请参阅 [将容器映像导入到容器注册表](container-registry-import-images.md)。
+有关详细信息，请参阅[将容器映像导入容器注册表](container-registry-import-images.md)。
 
-## <a name="push-a-multi-arch-image"></a>推送多个三维图像
+## <a name="push-a-multi-arch-image"></a>推送多体系结构映像
 
-如果有生成工作流来为不同的体系结构创建容器映像，请按照以下步骤将多个用户的映像推送到 Azure 容器注册表。
+如果你有生成工作流为不同的体系结构创建容器映像，请按照以下步骤将多体系结构映像推送到 Azure 容器注册表。
 
-1. 标记每个特定于体系结构的映像并将其推送到容器注册表。 下面的示例假定两个 Linux 体系结构： arm64 和 amd64。 
+1. 标记特定于体系结构的每个映像并将其推送到容器注册表。 下面的示例假设有两个 Linux 体系结构：arm64 和 amd64。 
 
    ```console
    docker tag myimage:arm64 \
@@ -121,7 +121,7 @@ Linux 映像的基本清单 `hello-world` 类似于以下内容：
    docker push myregistry.azurecr.io/multi-arch-samples/myimage:amd64
    ``` 
 
-1. 运行 `docker manifest create` 创建清单列表，将前面的图像合并成多个图像。
+1. 运行 `docker manifest create` 来创建一个清单列表，将前面的映像合并到多体系结构映像中。
 
    ```console
    docker manifest create myregistry.azurecr.io/multi-arch-samples/myimage:multi \
@@ -129,21 +129,21 @@ Linux 映像的基本清单 `hello-world` 类似于以下内容：
     myregistry.azurecr.io/multi-arch-samples/myimage:amd64
    ```
 
-1. 使用以下内容将清单推送到容器注册表 `docker manifest push` ：
+1. 使用 `docker manifest push` 将清单推送到容器注册表：
 
    ```console
    docker manifest push myregistry.azurecr.io/multi-arch-samples/myimage:multi
    ```
 
-1. 使用 `docker manifest inspect` 命令查看清单列表。 命令输出的一个示例如前一节所示。
+1. 使用 `docker manifest inspect` 命令查看清单列表。 前面的部分中显示了一个命令输出示例。
 
-将多形象清单推送到注册表后，处理多个图像的方式与使用单体系结构映像的方式相同。 例如，使用提取映像 `docker pull` ，并使用 [az acr 存储库](/cli/azure/acr/repository#az_acr_repository) 命令查看图像的标记、清单和其他属性。
+将多体系结构清单推送到注册表后，使用与处理单体系结构映像相同的方式来处理多体系结构映像。 例如，使用 `docker pull` 拉取映像，使用 [az acr repository](/cli/azure/acr/repository#az_acr_repository) 命令查看映像的标记、清单和其他属性。
 
-## <a name="build-and-push-a-multi-arch-image"></a>构建并推送多个三维图像
+## <a name="build-and-push-a-multi-arch-image"></a>生成并推送多体系结构映像
 
-使用 [ACR 任务](container-registry-tasks-overview.md)的功能，可以生成多个三维图像并将其推送到 Azure 容器注册表。 例如，在 YAML 文件中定义一个 [多步骤任务](container-registry-tasks-multi-step.md) ，该任务将生成 Linux 多形象映像。
+使用 [ACR 任务](container-registry-tasks-overview.md)的功能，你可以生成多体系结构映像并将其推送到 Azure 容器注册表。 例如，在 YAML 文件中定义一个[多步骤任务](container-registry-tasks-multi-step.md)，用以生成 Linux 多体系结构映像。
 
-下面的示例假定你对两个体系结构（arm64 和 amd64）使用了单独的 Dockerfile。 它生成并推送特定于体系结构的映像，然后创建并推送包含标记的多个建筑清单 `latest` ：
+下面的示例假设你为两个体系结构（arm64 和 amd64）使用单独的 Dockerfile。 它生成并推送特定于体系结构的映像，然后创建并推送包含 `latest` 标记的多体系结构清单：
 
 ```yml
 version: v1.1.0
@@ -165,8 +165,8 @@ steps:
 
 ## <a name="next-steps"></a>后续步骤
 
-* 使用 [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines.md) 为不同的体系结构构建容器映像。
-* 了解如何使用试验性 Docker [buildx](https://docs.docker.com/buildx/working-with-buildx/) 插件构建多平台映像。
+* 使用 [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) 为不同的体系结构生成容器映像。
+* 了解如何使用试验性 Docker [buildx](https://docs.docker.com/buildx/working-with-buildx/) 插件生成多平台映像。
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

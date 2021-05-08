@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 机器学习 Studio (经典) IoT 中心数据的天气预报
-description: 使用 Azure 机器学习 Studio (经典) 根据 IoT 中心从传感器收集的温度和湿度数据来预测 rain 的几率。
+title: 使用 Azure 机器学习工作室（经典版）根据 IoT 中心数据预测天气
+description: 使用 Azure 机器学习工作室（经典版）基于 IoT 中心从传感器收集的温度和湿度数据来预测下雨的可能性。
 author: robinsh
 manager: philmea
 keywords: 天气预报机器学习
@@ -11,10 +11,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
 ms.openlocfilehash: ab9e122ba0b2b50203a2d66ae14f03f3b6300f96
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96452348"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典版）中使用 IoT 中心的传感器数据进行天气预测

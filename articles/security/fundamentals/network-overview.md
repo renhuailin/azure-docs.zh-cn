@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
 ms.openlocfilehash: 4fb4981925593a22ed65df9d3ed0da5f45062f23
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100578941"
 ---
 # <a name="azure-network-security-overview"></a>Azure 网络安全概述
@@ -322,10 +322,10 @@ Microsoft 提供“基本”DDoS 防护作为 Azure 平台的一部分。 此防
 * **始终可用的流量监控：** 应用程序流量模式将全天候受到监控，以寻找 DDoS 攻击的迹象。 将在超出保护策略范围时执行缓解措施。
 * **攻击缓解报表** 攻击缓解报表使用聚合的网络流数据提供有关针对你的资源的攻击的详细信息。
 * **攻击缓解流日志** 通过攻击缓解流日志，可在活动 DDoS 攻击期间近乎实时地查看丢弃的流量、转发的流量和其他攻击数据。
-* **自适应优化：** 智能流量分析了解应用程序在一段时间内的流量，并选择和更新最适合服务的配置文件。 当流量随时间变化时，配置文件将进行调整。 第 3 层到第 7 层保护：与 Web 应用程序防火墙配合使用时，提供完整的堆栈 DDoS 保护。
+* **自适应优化：** 智能流量分析了解一段时间的应用程序流量，并选择和更新最适合服务的配置文件。 当流量随时间变化时，配置文件将进行调整。 第 3 层到第 7 层保护：与 Web 应用程序防火墙配合使用时，提供完整的堆栈 DDoS 保护。
 * **广泛的缓解规模：** 可以使用全球容量缓解超过 60 种不同攻击类型，从而防止最大的已知 DDoS 攻击。
 * **攻击指标：** 可以通过 Azure Monitor 访问每个攻击的汇总指标。
-* **攻击警报：** 可以使用内置攻击指标在攻击开始和停止时以及攻击持续期间配置警报。 警报集成到操作软件，如 Microsoft Azure 监视日志、Splunk、Azure 存储、电子邮件和 Azure 门户。
+* **攻击警报：** 可以使用内置攻击指标在攻击开始和停止时以及攻击持续期间配置警报。 警报会集成到操作软件中，如 Microsoft Azure Monitor 日志、Splunk、Azure 存储、电子邮件和 Azure 门户。
 * **成本保证：** 记录的 DDoS 攻击的数据传输和应用程序横向扩展服务信用度。
 * **DDoS 快速响应** DDoS 防护标准版客户可以在攻击正在进行时联系“快速响应”团队。 DRR 可以帮助进行攻击调查，在攻击发生期间定制缓解措施以及进行攻击后分析。
 
@@ -336,7 +336,7 @@ Microsoft 提供“基本”DDoS 防护作为 Azure 平台的一部分。 此防
 
 ## <a name="azure-front-door"></a>Azure Front Door
 
-使用 Azure Front Door 服务，你可以定义、管理和监视 Web 流量的全局路由。 它可以优化流量的路由以实现最佳性能和高可用性。 Azure Front Door 允许编写自定义 Web 应用程序防火墙 (WAF) 规则进行访问控制，以基于客户端 IP 地址、国家/地区代码和 http 参数来防范 HTTP/HTTPS 工作负荷遭到恶意利用。 此外，前门还允许您创建速率限制规则来分担恶意 bot 流量，包括 TLS 卸载和每个 HTTP/HTTPS 请求、应用层处理。
+使用 Azure Front Door 服务，你可以定义、管理和监视 Web 流量的全局路由。 它可以优化流量的路由以实现最佳性能和高可用性。 Azure Front Door 允许编写自定义 Web 应用程序防火墙 (WAF) 规则进行访问控制，以基于客户端 IP 地址、国家/地区代码和 http 参数来防范 HTTP/HTTPS 工作负荷遭到恶意利用。 此外，使用 Front Door 还可以创建速率限制规则来对付恶意的机器人流量，它包括 TLS 卸载和每 HTTP/HTTPS 请求以及应用程序层处理。
 
 Front Door 平台本身由 Azure DDoS 防护基本版提供保护。 若要进一步提供保护，可在 VNET 中启用 Azure DDoS 防护标准版，并通过自动优化和缓解措施来防范资源遭到网络层 (TCP/UDP) 攻击。 Front Door 是第 7 层反向代理，它仅允许 Web 流量通过后端服务器，默认会阻止其他类型的流量。
 
@@ -389,7 +389,7 @@ Azure 安全中心帮助你预防、检测和响应威胁，同时提高 Azure �
 
 了解详细信息：
 
-* [虚拟网络点击](../../virtual-network/virtual-network-tap-overview.md)
+* [虚拟网络 TAP](../../virtual-network/virtual-network-tap-overview.md)
 
 ### <a name="logging"></a>日志记录
 

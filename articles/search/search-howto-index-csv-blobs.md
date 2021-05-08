@@ -1,7 +1,7 @@
 ---
 title: 搜索 CSV Blob
 titleSuffix: Azure Cognitive Search
-description: 使用 delimitedText 分析模式从 Azure Blob 存储提取和导入 CSV。
+description: 使用 delimitedText 分析模式通过 Azure Blob 存储提取和导入 CSV。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,15 +9,15 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.openlocfilehash: d9633031ca8358ab0498c2e806b22e6c4ddd3eab
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99430473"
 ---
 # <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>如何使用 Azure 认知搜索中的 delimitedText 分析模式和 Blob 索引器为 CSV blob 编制索引
 
-Azure 认知搜索 [blob 索引器](search-howto-indexing-azure-blob-storage.md) 为 `delimitedText` csv 文件提供分析模式，该模式将 csv 中的每行视为单独的搜索文档。 例如，给定以下以逗号分隔的文本， `delimitedText` 会在搜索索引中产生两个文档： 
+Azure 认知搜索 [Blob 索引器](search-howto-indexing-azure-blob-storage.md) 为 CSV 文件提供 `delimitedText` 分析模式，该模式将 CSV 中的每一行都视为一个单独的搜索文档。 例如，如果给定以下以逗号分隔的文本，`delimitedText` 就会在搜索索引中产生两个文档： 
 
 ```text
 id, datePublished, tags
@@ -25,9 +25,9 @@ id, datePublished, tags
 2, 2016-07-07, "cloud,mobile"
 ```
 
-如果不在 `delimitedText` 分析模式下，CSV 文件的全部内容将被视为一个搜索文档。
+如果不使用 `delimitedText` 分析模式，CSV 文件的全部内容都会被视为一个搜索文档。
 
-每次从单个 blob 创建多个搜索文档时，务必查看 [索引 blob 以生成多个搜索文档](search-howto-index-one-to-many-blobs.md) ，以了解文档键分配的工作方式。 Blob 索引器可以查找或生成唯一定义每个新文档的值。 具体而言，它可以创建一个 `AzureSearch_DocumentKey` 在将 blob 解析为更小的部分时生成的暂时性，其中值随后用作索引中的搜索文档的键。
+每次从一个 Blob 创建多个搜索文档时，请务必查看[为 Blob 编制索引以生成多个搜索文档](search-howto-index-one-to-many-blobs.md)，以了解文档键分配的工作方式。 Blob 索引器能够查找或生成独一无二地定义每个新文档的值。 具体而言，它可以创建一个在 Blob 解析为较小部分时生成的暂时性 `AzureSearch_DocumentKey`，其中的值随后会在索引中用作搜索文档的键。
 
 ## <a name="setting-up-csv-indexing"></a>设置 CSV 索引
 

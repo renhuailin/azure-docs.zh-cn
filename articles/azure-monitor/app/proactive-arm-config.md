@@ -7,10 +7,10 @@ ms.author: harelbr
 ms.date: 02/14/2021
 ms.reviewer: mbullwin
 ms.openlocfilehash: e3a7b71cd8975957754ba014ecc700484c27a6d7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101726115"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Application Insights 智能检测规则
@@ -155,7 +155,7 @@ ms.locfileid: "101726115"
 此 Azure 资源管理器模板演示如何配置严重性为 2 的故障异常警报规则。
 
 > [!NOTE]
-> 故障异常是全局服务，因此在全局位置上创建规则位置。
+> 失败异常是一项全局服务，因此在全局位置上创建规则位置。
 
 ```json
 {

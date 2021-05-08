@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: surmb
 ms.openlocfilehash: 81eaf95a4918590c6eaa2c17a45e6925a1a67992
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101726506"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>使用应用程序网关重写 HTTP 标头和 URL
@@ -160,9 +160,9 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 #### <a name="modify-a-redirection-url"></a>修改重定向 URL
 
-当后端应用程序发送重定向响应时，你可能希望将客户端重定向到不同的 URL，而不是后端应用程序指定的 URL。 例如，当应用服务托管在应用程序网关后面，并要求客户端重定向到其相对路径时，你可能希望这样做。  (例如，从 contoso.azurewebsites.net/path1 重定向到 contoso.azurewebsites.net/path2。 ) 
+当后端应用程序发送重定向响应时，你可能希望将客户端重定向到不同的 URL，而不是后端应用程序指定的 URL。 例如，当应用服务托管在应用程序网关后面，并要求客户端重定向到其相对路径时，你可能希望这样做。 （例如，从 contoso.azurewebsites.net/path1 重定向到 contoso.azurewebsites.net/path2。）
 
-由于应用服务是多租户服务，因此它会使用请求中的主机标头将请求路由到正确的终结点。 应用服务的默认域名为 *. azurewebsites.net (说 contoso.azurewebsites.net) 不同于应用程序网关的域名 (说 contoso.com) 。 由于客户端的原始请求具有应用程序网关的域名 (contoso.com) 作为主机名，因此应用程序网关会将主机名更改为 contoso.azurewebsites.net。 做出此更改的目的是使应用服务能够将请求路由到正确的终结点。
+由于应用服务是多租户服务，因此它会使用请求中的主机标头将请求路由到正确的终结点。 应用服务的默认域名为 *.azurewebsites.net（例如 contoso.azurewebsites.net），它不同于应用程序网关的域名（例如 contoso.com）。 由于来自客户端的原始请求使用应用程序网关的域名 (contoso.com) 作为主机名，因此，应用程序网关会将主机名更改为 contoso.azurewebsites.net。 做出此更改的目的是使应用服务能够将请求路由到正确的终结点。
 
 当应用服务发送重定向响应时，它会在其响应的位置标头中，使用它从应用程序网关收到的请求中的相同主机名。 因此，客户端将直接向 `contoso.azurewebsites.net/path2` 发出请求，而不是通过应用程序网关 (`contoso.com/path2`) 发出请求。 不应该绕过应用程序网关。
 
@@ -170,7 +170,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 下面是替换主机名的步骤：
 
-1. 创建一个包含条件的重写规则，该规则评估响应中的 location 标头是否包含 azurewebsites.net。 输入模式 `(https?):\/\/.*azurewebsites\.net(.*)$`。
+1. 创建一个重写规则，其中的某个条件可以评估响应中的 location 标头是否包含 azurewebsites.net。 输入模式 `(https?):\/\/.*azurewebsites\.net(.*)$`。
 2. 执行相应的操作来重写 location 标头，使其包含应用程序网关的主机名。 为此，请输入 `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` 作为标头值。 此外，也可使用服务器变量 `host` 将主机名设置为与原始请求匹配。
 
 ![修改 location 标头](./media/rewrite-http-headers-url/app-service-redirection.png)

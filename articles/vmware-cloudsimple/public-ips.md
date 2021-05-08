@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 分配公共 IP 地址
 description: 描述如何在私有云环境中为虚拟机分配公共 IP 地址
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: bb46ad726cd3b99324e9bb96b998ed1b4da885de
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 75378ba712a1e71dcd0e16af661672df76c6a9e3
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97899178"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108185299"
 ---
 # <a name="allocate-public-ip-addresses-for-private-cloud-environment"></a>为私有云环境分配公共 IP 地址
 

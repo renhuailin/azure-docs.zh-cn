@@ -4,10 +4,10 @@ description: 通过使用用户分配或系统分配的托管 Azure 标识，提
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: e6c0d21f7bdefa94241655225589a52c02110f70
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102041461"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>使用 Azure 托管标识向 Azure 容器注册表验证身份 
@@ -113,7 +113,7 @@ This message shows that your installation appears to be working correctly.
 az identity create --resource-group myResourceGroup --name myACRId
 ```
 
-若要在以下步骤中配置标识，请使用 [az identity show] [az_identity_show] 命令将标识的资源 ID 和服务主体 ID 存储在变量中。
+若要在以下步骤中配置标识，请使用 [az identity show][az_identity_show] 命令将标识的资源 ID 和服务主体 ID 存储在变量中。
 
 ```azurecli
 # Get resource ID of the user-assigned identity

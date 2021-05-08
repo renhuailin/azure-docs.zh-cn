@@ -3,12 +3,12 @@ title: 混合连接的诊断日志
 description: 本文概述了可用于 Azure 中继的所有活动和诊断日志。
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 9b459750ad1445da89a8e89a10a35b878bfb64e1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 7ca6dc95567a4867d3c58e0efad0fc74289e586c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590882"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106079091"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>为 Azure 中继混合连接启用诊断日志
 开始使用 Azure 中继混合连接时，你可能希望监视你的侦听器和发送方是如何以及何时打开和关闭的，以及你的混合连接是如何创建的，消息是如何发送的。 本文概述了 Azure 中继服务提供的活动和诊断日志。 
@@ -56,10 +56,10 @@ ms.locfileid: "100590882"
 | ------- | ------- |
 | ResourceId | Azure Resource Manager 资源 ID |
 | ActivityId | 内部 ID，用于标识指定的操作。 也称为“TrackingId” |
-| 终结点 | 中继资源的地址 |
-| OperationName | 正在记录的混合连接操作的类型 |
+| 端点 | 中继资源的地址 |
+| OperationName | 所记录的混合连接操作的类型 |
 | EventTimeString | 日志记录的 UTC 时间戳 |
-| Message | 事件的详细消息 |
+| 消息 | 事件的详细消息 |
 | 类别 | 事件的类别。 目前只有 `HybridConnectionsEvents`。 
 
 
@@ -80,29 +80,29 @@ ms.locfileid: "100590882"
 
 ## <a name="events-and-operations-captured-in-diagnostic-logs"></a>诊断日志中捕获的事件和操作
 
-| Operation | 说明 | 
-| --------- | ----------- | 
-| AuthorizationFailed | 授权失败。|
-| InvalidSasToken | 无效 SAS 令牌。 | 
-| ListenerAcceptingConnection | 侦听器正在接受连接。 |
-| ListenerAcceptingConnectionTimeout | 正在接受连接的侦听器已超时。 |
-| ListenerAcceptingHttpRequestFailed | 由于出现异常，正在接受 HTTP 请求的侦听器失败。 |
-| ListenerAcceptingRequestTimeout | 正在接受请求的侦听器已超时。 |  
-| ListenerClosingFromExpiredToken | 侦听器正在关闭，因为安全令牌已过期。 | 
-| ListenerRejectedConnection | 侦听器已拒绝了连接。 |
-| ListenerReturningHttpResponse | 侦听器正在返回 HTTP 响应。 |  
-| ListenerReturningHttpResponseFailed | 侦听器正在返回带有失败代码的 HTTP 响应。 | 
- ListenerSentHttpResponse | 中继服务已收到来自侦听器的 HTTP 响应。 | 
-| ListenerUnregistered | 侦听器被注销。 | 
-| ListenerUnresponsive | 侦听器在返回响应时无响应。 | 
-| MessageSendingToListener | 正在向侦听器发送消息。 |
-| MessageSentToListener | 消息已发送到侦听器。 | 
-| NewListenerRegistered | 注册了新的侦听器。 |
-| NewSenderRegistering | 正在注册新的发送方。 | 
-| ProcessingRequestFailed | 处理某个混合连接操作失败。 | 
-| SenderConnectionClosed | 发送方连接已关闭。 |
-| SenderListenerConnectionEstablished | 发送方和侦听器已成功建立连接。 |
-| SenderSentHttpRequest | 发送方发送了一个 HTTP 请求。 | 
+| 操作                           | 说明                                                     |
+|-------------------------------------|-----------------------------------------------------------------|
+| AuthorizationFailed                 | 授权失败。                                           |
+| InvalidSasToken                     | 无效 SAS 令牌。                                              |
+| ListenerAcceptingConnection         | 侦听器正在接受连接。                           |
+| ListenerAcceptingConnectionTimeout  | 正在接受连接的侦听器已超时。                |
+| ListenerAcceptingHttpRequestFailed  | 由于出现异常，正在接受 HTTP 请求的侦听器失败。 |
+| ListenerAcceptingRequestTimeout     | 正在接受请求的侦听器已超时。                   |
+| ListenerClosingFromExpiredToken     | 侦听器正在关闭，因为安全令牌已过期。 |
+| ListenerRejectedConnection          | 侦听器已拒绝了连接。                       |
+| ListenerReturningHttpResponse       | 侦听器正在返回 HTTP 响应。                     |
+| ListenerReturningHttpResponseFailed | 侦听器正在返回带有失败代码的 HTTP 响应。 |
+| ListenerSentHttpResponse            | 中继服务已收到来自侦听器的 HTTP 响应。  |
+| ListenerUnregistered                | 侦听器被注销。                                   |
+| ListenerUnresponsive                | 侦听器在返回响应时无响应。         |
+| MessageSendingToListener            | 正在向侦听器发送消息。                              |
+| MessageSentToListener               | 消息已发送到侦听器。                                    |
+| NewListenerRegistered               | 注册了新的侦听器。                                        |
+| NewSenderRegistering                | 正在注册新的发送方。                                      |
+| ProcessingRequestFailed             | 处理某个混合连接操作失败。     |
+| SenderConnectionClosed              | 发送方连接已关闭。                                |
+| SenderListenerConnectionEstablished | 发送方和侦听器已成功建立连接。    |
+| SenderSentHttpRequest               | 发送方发送了一个 HTTP 请求。                                |
 
 
 ## <a name="next-steps"></a>后续步骤

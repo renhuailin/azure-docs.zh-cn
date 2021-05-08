@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 1e6033f9a8f4cecd2429eca67a3d58e54d7ae1f6
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
-ms.translationtype: MT
+ms.openlocfilehash: 72220b33ea0d10b16ec5be94da6a26d91b9bfc1e
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221102"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161836"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>使用存储分析日志排查延迟问题
 
@@ -31,7 +31,7 @@ ms.locfileid: "99221102"
 
 2. 使用以下 PowerShell 脚本将原始格式的日志转换为表格格式：
 
-   ```Powershell
+   ```powershell
    $Columns = 
         (   "version-number",
             "request-start-time",
@@ -65,7 +65,7 @@ ms.locfileid: "99221102"
             "client-request-id"
         )
 
-   $logs = Import-Csv “REPLACE THIS WITH FILE PATH” -Delimiter ";" -Header $Columns
+   $logs = Import-Csv "REPLACE THIS WITH FILE PATH" -Delimiter ";" -Header $Columns
 
    $logs | Out-GridView -Title "Storage Analytic Log Parser"
    ```
@@ -73,8 +73,8 @@ ms.locfileid: "99221102"
 3. 该脚本将启动一个 GUI 窗口，你可以在其中按列筛选信息，如下所示。
 
    ![存储分析日志分析程序窗口](media/troubleshoot-latency-storage-analytics-logs/storage-analytic-log-parser-window.png)
- 
-4. 根据 "操作类型" 缩小日志条目的范围，并查找在问题时间范围内创建的日志条目。
+
+4. 根据“operation-type”缩小日志条目的范围，并查找在发生问题的时间范围内创建的日志条目。
 
    ![Operation-type 日志条目](media/troubleshoot-latency-storage-analytics-logs/operation-type.png)
 
@@ -119,7 +119,7 @@ ms.locfileid: "99221102"
 **建议：**
 
 * 在客户端中调查代码。
-* 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 调查客户端的网络连接问题。 
+* 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 调查客户端的网络连接问题。
 
 ### <a name="getblob-operation-requeststatus--sasnetworkerror"></a>GetBlob 操作：RequestStatus = (SAS)NetworkError
 
@@ -134,7 +134,7 @@ ms.locfileid: "99221102"
 **建议：**
 
 * 应调查客户端中的代码，以了解客户端断开与存储服务的连接的原因和时间。
-* 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 调查客户端的网络连接问题。 
+* 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 调查客户端的网络连接问题。
 
 ### <a name="put-operation-requeststatus--success"></a>Put 操作：RequestStatus = Success
 
@@ -149,7 +149,7 @@ ms.locfileid: "99221102"
 **建议：**
 
 * 在客户端中调查代码。
-* 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 调查客户端的网络连接问题。 
+* 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 调查客户端的网络连接问题。
 
 ### <a name="put-operation-requeststatus--sasnetworkerror"></a>Put 操作：RequestStatus = (SAS)NetworkError
 

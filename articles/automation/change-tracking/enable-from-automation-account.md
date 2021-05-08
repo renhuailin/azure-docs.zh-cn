@@ -6,15 +6,15 @@ ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.openlocfilehash: 32fb95c88d632cc2c51cd2390f0244e9c1927051
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100585885"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>从自动化帐户启用更改跟踪和清单
 
-本文介绍如何在你的环境中使用自动化帐户来启用 Vm 的 [更改跟踪和清单](overview.md) 。 若要大规模启用 Azure VM，必须使用更改跟踪和库存启用现有 VM。
+本文介绍如何使用自动化帐户为环境中的 VM 启用[更改跟踪和清单](overview.md)。 若要大规模启用 Azure VM，必须使用更改跟踪和库存启用现有 VM。
 
 > [!NOTE]
 > 在启用更改跟踪和库存时，只有某些区域支持链接 Log Analytics 工作区和自动化帐户。 有关支持的映射对的列表，请参阅[自动化帐户和 Log Analytics 工作区的区域映射](../how-to/region-mappings.md)。
@@ -43,13 +43,13 @@ ms.locfileid: "100585885"
 
 2. 单击“+ 添加 Azure VM”并从列表中选择一个或多个 VM。 无法启用的虚拟机将灰显，无法选择。 Azure VM 可以位于任何区域中，无论自动化帐户位于哪里。 
 
-3. 单击“启用”以将选定 VM 添加到计算机组为此功能保存的搜索结果。 有关详细信息，请参阅 [Limit 更改跟踪和清点部署范围](manage-scope-configurations.md)。
+3. 单击“启用”以将选定 VM 添加到计算机组为此功能保存的搜索结果。 有关详细信息，请参阅[限制“更改跟踪和清单”的部署范围](manage-scope-configurations.md)。
 
-      [![启用 Azure vm](./media/enable-from-automation-account/enable-azure-vms.png)](./media/enable-from-automation-account/enable-azure-vms-expanded.png#lightbox)
+      [ ![启用 Azure VM](./media/enable-from-automation-account/enable-azure-vms.png)](./media/enable-from-automation-account/enable-azure-vms-expanded.png#lightbox)
 
 ## <a name="enable-non-azure-vms"></a>启用非 Azure VM
 
-需要手动添加 Azure 中没有的计算机。 建议安装适用于 Windows 或 Linux 的 Log Analytics 代理，方法是先将计算机连接到 [已启用 Azure Arc 的服务器](../../azure-arc/servers/overview.md)，然后使用 Azure 策略将 [部署 Log Analytics 代理分配到 *Linux* 或 *Windows* Azure arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring) 内置策略。 如果还计划使用用于 VM 的 Azure Monitor 来监视计算机，请改用 [启用用于 VM 的 Azure Monitor](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划。
+需要手动添加 Azure 中没有的计算机。 建议通过首先将计算机连接到[启用了 Azure Arc 的服务器](../../azure-arc/servers/overview.md)来安装适用于 Windows 或 Linux 的 Log Analytics 代理，然后使用 Azure Policy 分配[将 Log Analytics 代理部署到 Linux 或 Windows Azure Arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring)内置策略 。 如果还计划使用用于 VM 的 Azure Monitor 来监视计算机，请改用[启用用于 VM 的 Azure Monitor](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划。
 
 1. 在你的自动化帐户中，在“配置管理”下选择“库存”或“更改跟踪”  。
 
@@ -61,23 +61,23 @@ ms.locfileid: "100585885"
 
 1. 在你的自动化帐户中，在“配置管理”下选择“库存”或“更改跟踪”  。
 
-2. 选择“管理计算机”。 如果以前在 **所有可用的和未来的计算机上** 选择了 "启用" 选项，则 "**管理计算机**" 选项可能灰显
+2. 选择“管理计算机”。 如果之前选择了“在所有可用的和将来的计算机上启用”选项，则“管理计算机”选项可能灰显 
 
     ![保存的搜索](media/enable-from-automation-account/manage-machines.png)
 
-3. 若要为所有可用的计算机启用更改跟踪和清单，请在 "**管理计算机**" 页上选择 "**在所有可用计算机上启用**"。 此操作禁止控件单独添加计算机，并将向工作区报告的所有计算机添加到计算机组保存的搜索查询。 选中此项后，此操作会禁用“管理计算机”选项。
+3. 若要为所有可用的计算机启用更改跟踪和清单，请在“管理计算机”页上选择“在所有可用的计算机上启用” 。 此操作禁止控件单独添加计算机，并会将所有向工作区报告的计算机都添加到计算机组保存的搜索查询。 选中此项后，此操作会禁用“管理计算机”选项。
 
-4. 若要为所有可用的计算机和将来的计算机启用该功能，请选择“在所有可用的和将来的计算机上启用”。 此选项从工作区中删除保存的搜索和作用域配置，并为向工作区报告的所有 Azure 和非 Azure 计算机打开该功能。 如果选择此选项，此操作将永久禁用 " **管理计算机** " 选项，因为没有剩余的作用域配置。
+4. 若要为所有可用的计算机和将来的计算机启用该功能，请选择“在所有可用的和将来的计算机上启用”。 此选项将从工作区中删除已保存的搜索和范围配置，并为所有向工作区报告的 Azure 和非 Azure 计算机都启用该功能。 选中此项后，此操作将永久禁用“管理计算机”选项，因为没有剩余的作用域配置。
 
     > [!NOTE]
     > 由于此选项会删除 Log Analytics 中保存的搜索和范围配置，因此在选择此选项之前，必须先删除 Log Analytics 工作区中的所有删除锁。 否则，该选项将无法删除配置，必须手动将其删除。
 
-5. 如有必要，可以通过重新添加初始保存的搜索来添加作用域配置。 有关详细信息，请参阅 [Limit 更改跟踪和清点部署范围](manage-scope-configurations.md)。
+5. 如果需要，可以通过重新添加初始的已保存搜索将范围配置添加回来。 有关详细信息，请参阅[限制“更改跟踪和清单”的部署范围](manage-scope-configurations.md)。
 
 6. 若要为一台或多台计算机启用该功能，请选择“在所选计算机上启用”并单击每台计算机旁边的“添加”以启用该功能。 此任务会将所选计算机名称添加到计算机组为此功能保存的搜索查询。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关使用此功能的详细信息，请参阅 [管理更改跟踪](manage-change-tracking.md) 和 [管理清单](manage-inventory-vms.md)。
+* 有关使用此功能的详细信息，请参阅[管理更改跟踪](manage-change-tracking.md)和[管理清单](manage-inventory-vms.md)。
 
 * 若要排查该功能的常见问题，请参阅[排查更改跟踪和清单问题](../troubleshoot/change-tracking.md)。

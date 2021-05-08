@@ -9,10 +9,10 @@ ms.date: 02/17/2021
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: f01f5faf68821fe9f85657c74111efdbb02bd204
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100559938"
 ---
 # <a name="st_distance-azure-cosmos-db"></a>ST_DISTANCE (Azure Cosmos DB)
@@ -55,7 +55,7 @@ WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 3
 
 ## <a name="remarks"></a>备注
 
-此系统函数将从[地理空间索引](index-policy.md#spatial-indexes)中获益（包含聚合的查询除外）。
+此系统函数将从[地理空间索引](index-policy.md#spatial-indexes)中受益，但包含聚合的查询除外。
 
 ## <a name="next-steps"></a>后续步骤
 

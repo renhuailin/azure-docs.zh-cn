@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 01/21/2021
 ms.author: rolyon
-ms.openlocfilehash: ba1df23b40de82a8ef901541884ef29ea0b504a1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 65b4ec369085e44cdffb0550e9eeaef0196cd35a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771868"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100556026"
 ---
 # <a name="assign-azure-roles-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板分配 Azure 角色
 
@@ -29,9 +29,9 @@ ms.locfileid: "107771868"
 
 若要分配角色，需要指定要为其分配角色的用户、组或应用程序的 ID。 ID 的格式为：`11111111-1111-1111-1111-111111111111`。 可以使用 Azure 门户、Azure PowerShell 或 Azure CLI 来获取 ID。
 
-### <a name="user"></a>用户
+### <a name="user"></a>User
 
-若要获取用户的 ID，可以使用 [Get-AzADUser](/powershell/module/az.resources/get-azaduser) 或 [az ad user show](/cli/azure/ad/user#az_ad_user_show) 命令。
+若要获取用户的 ID，可以使用 [Get-AzADUser](/powershell/module/az.resources/get-azaduser) 或 [az ad user show](/cli/azure/ad/user#az-ad-user-show) 命令。
 
 ```azurepowershell
 $objectid = (Get-AzADUser -DisplayName "{name}").id
@@ -43,7 +43,7 @@ objectid=$(az ad user show --id "{email}" --query objectId --output tsv)
 
 ### <a name="group"></a>组
 
-若要获取组的 ID，可以使用 [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) 或 [az ad group show](/cli/azure/ad/group#az_ad_group_show) 命令。
+若要获取组的 ID，可以使用 [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) 或 [az ad group show](/cli/azure/ad/group#az-ad-group-show) 命令。
 
 ```azurepowershell
 $objectid = (Get-AzADGroup -DisplayName "{name}").id
@@ -67,7 +67,7 @@ objectid=$(az ad sp list --display-name <Azure resource name> --query [].objectI
 
 ### <a name="application"></a>应用程序
 
-若要获取服务主体（应用程序使用的标识）的 ID，可以使用 [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) 或 [az ad sp list](/cli/azure/ad/sp#az_ad_sp_list) 命令。 对于服务主体，使用对象 ID，而不是应用程序 ID。
+若要获取服务主体（应用程序使用的标识）的 ID，可以使用 [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) 或 [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) 命令。 对于服务主体，使用对象 ID，而不是应用程序 ID。
 
 ```azurepowershell
 $objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id
@@ -83,7 +83,7 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 
 ### <a name="resource-group-scope-without-parameters"></a>资源组范围（不包含参数）
 
-以下模板显示了分配角色的基本方式。 某些值在模板中指定。 以下模板演示：
+以下模板演示了用于分配角色的基本方法。 某些值在模板中指定。 以下模板演示：
 
 -  如何将[读者](built-in-roles.md#reader)角色分配给资源组范围内的用户、组或应用程序
 

@@ -5,69 +5,88 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 59379dd9c3a41729466de269b52dfd3fb206eea9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.custom: template-how-to
+ms.openlocfilehash: 625662a6b67e7d30e6320fe7831e4fa7793b9c30
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97368709"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106447873"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>使用 Windows 桌面客户端进行连接
 
-> 适用于：Windows 10、Windows 10 IoT 企业版和 Windows 7
+你可以使用 Windows 桌面客户端访问装有 Windows 10、Windows 10 IoT Enterprise 和 Windows 7 的设备上的 Windows 虚拟桌面资源。 
 
->[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/connect-windows-7-10-2019.md)。
-
-你可以使用 Windows 桌面客户端访问装有 Windows 10、Windows 10 IoT Enterprise 和 Windows 7 的设备上的 Windows 虚拟桌面资源。 该客户端不支持 Window 8 或 Windows 8.1。
+> [!IMPORTANT]
+> 这不支持 Windows 8 或 Windows 8.1。
+> 
+> 这仅支持 Azure 资源管理器对象；若要在没有 Azure 资源管理器的情况下支持对象，请参阅[与 Windows 桌面（经典）客户端连接](./virtual-desktop-fall-2019/connect-windows-7-10-2019.md)。
+> 
+> 这不支持 RemoteApp 和桌面连接 (RADC) 客户端或远程桌面连接 (MSTSC) 客户端。
 
 ## <a name="install-the-windows-desktop-client"></a>安装 Windows 桌面客户端
 
-选择与你的 Windows 版本相匹配的客户端：
+根据 Windows 版本下载客户端：
 
 - [Windows 64 位](https://go.microsoft.com/fwlink/?linkid=2068602)
 - [Windows 32 位](https://go.microsoft.com/fwlink/?linkid=2098960)
 - [Windows ARM64](https://go.microsoft.com/fwlink/?linkid=2098961)
 
-你可以为当前用户安装客户端（这不需要管理员权限），或者你的管理员可以安装和配置客户端，以便设备上的所有用户都可以访问该客户端。
+在安装过程中，若要确定访问权限，请选择以下任一方法：
 
-安装后，可以通过搜索“远程桌面”，从“开始”菜单启动客户端。
+- 仅为个人安装
+- 为此计算机的所有用户安装（需要管理员权限）
 
-> [!IMPORTANT]
-> Windows 虚拟桌面不支持 RemoteApp 和桌面连接 (RADC) 客户端或远程桌面连接 (MSTSC) 客户端。
+若要在安装后启动客户端，请使用“开始”菜单并搜索“远程桌面” 。
 
 ## <a name="subscribe-to-a-workspace"></a>订阅工作区
 
-可通过两种方式订阅工作区。 客户端可尝试发现通过你的工作或学校帐户向你提供的资源，你也可直接指定当客户端无法找到你的资源时用来查找这些资源的 URL。 订阅工作区后，可通过下述方法之一启动资源：
+若要订阅工作区，请选择以下方法之一：
 
-- 访问“连接中心”，然后双击资源以启动它。
-- 还可以访问“开始”菜单并查找带有“工作区”名称的文件夹，或在搜索栏中输入资源名称。
+- 使用工作或学校帐户，并让客户端发现可用的资源
+- 使用资源的特定 URL
 
-### <a name="subscribe-with-a-user-account"></a>使用用户帐户进行订阅
+若要在订阅后启动资源，请转到“连接中心”并双击该资源。
 
-1. 在客户端的主页上，选择“订阅”。
-2. 出现提示时，请使用用户帐户登录。
-3. 资源会显示在连接中心，并按工作区分组。
+> [!TIP]
+> 若要从“开始”菜单启动一个资源，可找到具有相应工作区名称的文件夹或在搜索栏中输入资源名称。
 
->[!NOTE]
->Windows 客户端自动默认为 Windows 虚拟桌面（经典版）。 但是，如果客户端检测到用户还有 Azure 资源管理器资源，则会自动添加资源或通知用户这些资源可用。
+### <a name="use-a-user-account"></a>使用用户帐户
 
-### <a name="subscribe-with-a-url"></a>使用 URL 进行订阅
+1. 在主页上，选择“订阅”。
+1. 出现提示时，请使用用户帐户登录。
 
-1. 在客户端的主页上，选择“使用 URL 进行订阅”。
-2. 输入工作区 URL 或你的电子邮件地址：
-   - 如果使用工作区 URL，请输入管理员提供给你的 URL。 如果从 Windows 虚拟桌面访问资源，可使用下列 URL 之一：
-     - Windows 虚拟桌面（经典）：`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
-     - Windows 虚拟桌面：`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
-     - Windows 虚拟桌面 (US Gov)：`https://rdweb.wvd.azure.us/api/arm/feeddiscovery`
-   - 如果改用“电子邮件”字段，请输入你的电子邮件地址。 这会指示客户端搜索与你的电子邮件地址关联的 URL，前提是管理员已设置[电子邮件发现](/windows-server/remote/remote-desktop-services/rds-email-discovery)。
-3. 选择“下一步”。
-4. 出现提示时，请使用用户帐户登录。
-5. 资源应该会显示在连接中心，按工作区分组。
+按工作区分组的资源将显示在“连接中心”中。
+
+   > [!NOTE]
+   > Windows 客户端自动默认为 Windows 虚拟桌面（经典版）。 
+   > 
+   > 但是，如果客户端检测到其他 Azure 资源管理器资源，它会自动添加这些资源或通知用户这些资源可用。
+
+### <a name="use-a-specific-url"></a>使用特定 URL
+
+1. 在主页中，选择“使用 URL 进行订阅”。
+1. 输入工作区 URL 或一个电子邮件地址 ：
+   - 对于“工作区 URL”，使用管理员提供的 URL。
+
+   |可用资源|URL|
+   |-|-|
+   |Windows 虚拟桌面（经典）|`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`|
+   |Windows 虚拟桌面|`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`|
+   |Windows 虚拟桌面 (US Gov)|`https://rdweb.wvd.azure.us/api/arm/feeddiscovery`|
+   
+   - 对于“电子邮件”，使用你的电子邮件地址。 
+      
+   如果管理员已启用[电子邮件发现](/windows-server/remote/remote-desktop-services/rds-email-discovery)，客户端将查找与你的电子邮件关联的 URL。
+
+1. 选择“下一步”  。
+1. 出现提示时，请使用用户帐户登录。
+
+按工作区分组的资源将显示在“连接中心”中。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解如何使用 Windows 桌面客户端，请查看 [Windows 桌面客户端入门](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/)。
+若要详细了解如何使用客户端，请查看 [Windows 桌面客户端入门](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/)。
 
-如果你是想要深入了解如何使用 Windows 桌面的管理员，请查看[适用于管理员的 Windows 桌面客户端](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-admin)。
+如果你是一个管理员，有兴趣详细了解客户端的功能，请查看[适用于管理员的 Windows 桌面客户端](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-admin)。

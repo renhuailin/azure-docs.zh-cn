@@ -5,12 +5,12 @@ description: 了解有关使用 Azure Kubernetes 服务 (AKS) 中的高级计划
 services: container-service
 ms.topic: conceptual
 ms.date: 03/09/2021
-ms.openlocfilehash: 27b32d7d10b691ed806e4d7aa31a095630d2bfc9
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 971916c3fc903ff5d69db2e0f82fd884acf807b3
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103617"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831575"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的高级计划程序功能的最佳做法
 
@@ -44,11 +44,16 @@ Kubernetes 计划程序使用排斥和容许来限制可在节点上运行的工
 
 将 pod 部署到 AKS 群集时，Kubernetes 只会在排斥与容许相符的节点上计划 pod。 例如，假设你在 AKS 群集中为支持 GPU 的节点创建了一个节点池。 你定义了名称（例如 *gpu*），然后定义了计划值。 将此值设置为 NoSchedule 会限制 Kubernetes 计划程序在节点上计划具有未定义容许的 pod。
 
-```console
-kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name taintnp \
+    --node-taints sku=gpu:NoSchedule \
+    --no-wait
 ```
 
-将排斥应用于节点后，在 pod 规范中定义容许，以允许在节点上进行计划。 以下示例定义 `sku: gpu` 和 `effect: NoSchedule`，以容许在上一步骤中应用到节点的排斥：
+将排斥应用到节点池中的节点后，在 pod 规范中定义一个允许对节点进行调度的容忍度。 以下示例定义了 `sku: gpu` 和 `effect: NoSchedule`，以容许在上一步应用到节点的排斥：
 
 ```yaml
 kind: Pod
@@ -115,16 +120,22 @@ spec:
 > 
 > 使用节点选择器、节点关联或 pod 间关联来控制节点上的 pod 计划。 这些设置可让 Kubernetes 计划程序以逻辑方式（例如，按节点中的硬件）隔离工作负荷。
 
-排斥和容许使用硬截断，以逻辑方式隔离资源。 如果 pod 不容许节点的排斥，则不会在节点上进行计划。 
+排斥和容许使用硬截断，以逻辑方式隔离资源。 如果 pod 不容许节点的排斥，则不会在节点上进行计划。
 
-或者，可以使用节点选择器。 可标记节点来指示本地附加的 SSD 存储或大量内存，并在 pod 规范中定义节点选择器。 Kubernetes 会在匹配的节点上计划这些 pod。 
+或者，可以使用节点选择器。 可标记节点来指示本地附加的 SSD 存储或大量内存，并在 pod 规范中定义节点选择器。 Kubernetes 会在匹配的节点上计划这些 pod。
 
 与容许不同，没有匹配的节点选择器的 pod 仍可在标记的节点上计划。 通过这种行为可以使用节点上未用的资源，但会使定义匹配节点选择器的 pod 优先。
 
-让我们查看具有大量内存的节点示例。 这些节点会使请求大量内存的 pod 优先。 为确保资源不会闲置，它们还允许运行其他 pod。
+让我们查看具有大量内存的节点示例。 这些节点会使请求大量内存的 pod 优先。 为确保资源不会闲置，它们还允许运行其他 pod。 下方示例命令可将含有标签“hardware=highmem”的节点池添加到 myResourceGroup 的 myAKSCluster 中 。 该节点池中的所有节点都将含有此标签。
 
-```console
-kubectl label node aks-nodepool1 hardware=highmem
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name labelnp \
+    --node-count 1 \
+    --labels hardware=highmem \
+    --no-wait
 ```
 
 然后，pod 规范添加 `nodeSelector` 属性，以定义与节点上设置的标签匹配的节点选择器：

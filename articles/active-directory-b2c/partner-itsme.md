@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ba7875caa6a1db7638bfeafcfea1efa7b2462152
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2560c294b63d0554708eda1f804bf279d16d7d74
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87489509"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257953"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 配置 itsme OpenID Connect (OIDC)
 
@@ -80,13 +80,13 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 4. 使用以下信息填写窗体：
 
-   |Property | 值 |
+   |属性 | 值 |
    |------------ |------- |
    | 名称 | itsme |
    | 元数据 URL | `https://oidc.<environment>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration` <br>其中，`<environment>` 是 `e2e`（测试环境）或 `prd`（生产）  |
    | ClientID     | **客户端 ID**（也称为 **合作伙伴代码**）  |
    | 客户端机密 | **客户端密码** |
-   | 作用域  | openid 服务：YOURSERVICECODE 配置文件 电子邮件 [电话] [地址]  |
+   | 范围  | openid 服务：YOURSERVICECODE 配置文件 电子邮件 [电话] [地址]  |
    |响应类型 | code |
    |响应模式 | query |
    |域提示 | *可以将此项留空* |
@@ -110,7 +110,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 5. 在“**标识提供者**”部分中，选择“**itsme**”。
 
-6. 选择“创建”  。
+6. 选择“创建”。
 
 7. 选择用户流名称，打开新创建的用户流。
 
@@ -157,4 +157,4 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 * [Azure AD B2C 中的自定义策略](custom-policy-overview.md)
 
-* [Azure AD B2C 中的自定义策略入门](custom-policy-get-started.md?tabs=applications)
+* [Azure AD B2C 中的自定义策略入门](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

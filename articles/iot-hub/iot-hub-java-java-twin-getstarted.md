@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: mqtt, devx-track-java
 ms.openlocfilehash: 53a82ba545fa1709d1b79f3ff6b18f1817736bb7
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102217850"
 ---
 # <a name="get-started-with-device-twins-java"></a>设备孪生入门 (Java)
@@ -380,7 +380,7 @@ ms.locfileid: "102217850"
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![屏幕截图，显示命令的输出以运行 "添加标记" 查询服务应用。](./media/iot-hub-java-java-twin-getstarted/service-app-1.png)
+    ![屏幕截图，显示用于运行添加标记查询服务应用的命令的输出。](./media/iot-hub-java-java-twin-getstarted/service-app-1.png)
 
     可以看到，**plant** 和 **region** 标记已添加到设备孪生。 第一个查询返回设备，但第二个查询则不会。
 
@@ -390,7 +390,7 @@ ms.locfileid: "102217850"
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![设备客户端添加连接类型报告属性](./media/iot-hub-java-java-twin-getstarted/device-app-1.png)
+    ![设备客户端会添加 connectivity Type 报告的属性](./media/iot-hub-java-java-twin-getstarted/device-app-1.png)
 
 3. 在 add-tags-query 文件夹中的命令提示符下，再次运行以下命令以运行 add-tags-query 服务应用：
 

@@ -1,16 +1,16 @@
 ---
 title: 使用 Web 浏览器创建 Apache Hadoop 群集 - Azure HDInsight
-description: 了解如何在 HDInsight 上创建 Apache Hadoop、Apache HBase、Apache Storm 或 Apache Spark 群集。 使用 web 浏览器和 Azure 门户。
+description: 了解如何在 HDInsight 上创建 Apache Hadoop、Apache HBase、Apache Storm 或 Apache Spark 集群。 使用 Web 浏览器和 Azure 门户。
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/06/2020
-ms.openlocfilehash: c68d342cf21d69fa97ba3d5171ba596662fd845f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 98d18044693bc6f4d23e04e9403e71686df39451
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945812"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104872194"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集
 
@@ -32,17 +32,17 @@ Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模
 
 1. 在顶部菜单中，选择“+ 创建资源”  。
 
-    ![在 Azure 门户中创建新群集](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-create-resource.png "在 Azure 门户中创建新群集")
+    :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-create-resource.png" alt-text="在 Azure 门户中创建新群集":::
 
 1. 选择“分析”   >   “Azure HDInsight”，转到“创建 HDInsight 群集”  页。
 
 ## <a name="basics"></a>基础知识
 
-![HDInsight 创建群集基本信息](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png "在 Azure 门户中创建新群集")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png" alt-text="HDInsight 创建群集基本信息":::
 
 在“基本信息”选项卡中提供以下信息： 
 
-|properties |说明 |
+|属性 |说明 |
 |---|---|
 |订阅|从下拉列表中选择用于此群集的 Azure 订阅。|
 |资源组|从下拉列表中选择现有资源组，或选择“新建”  。|
@@ -63,7 +63,7 @@ Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模
 > [!WARNING] 
 > 从 2020 年 6 月 15 日开始，客户将无法使用 HDInsight 创建新的服务主体。 请参阅[使用 Azure Active Directory 创建服务主体和证书](../active-directory/develop/howto-create-service-principal-portal.md)。
 
-![HDInsight 创建群集存储](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png "在 Azure 门户中创建新群集 - 存储")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png" alt-text="HDInsight 创建群集存储":::
 
 ### <a name="primary-storage"></a>主存储
 
@@ -81,7 +81,7 @@ Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模
 
 ### <a name="metastore-settings"></a>元存储设置
 
-可选：指定现有的 SQL 数据库，以将 Apache Hive、Apache Oozie、或 Apache Ambari 元数据保存在群集之外。 用于元存储的 Azure SQL 数据库必须允许连接到其他 Azure 服务，包括 Azure HDInsight。 创建元存储时，请勿使用短划线或连字符来命名数据库。 这些字符可能导致群集创建过程失败。
+可选：指定现有的 SQL 数据库，将 Apache Hive、Apache Oozie 和/或 Apache Ambari 元数据保存在群集之外。 用于元存储的 Azure SQL 数据库必须允许连接到其他 Azure 服务，包括 Azure HDInsight。 创建元存储时，请勿使用短划线或连字符来命名数据库。 这些字符可能导致群集创建过程失败。
 
 > [!IMPORTANT]
 > 对于支持元存储的群集形状，默认元存储提供具有基本层 5 DTU 限制（不可升级）的 Azure SQL 数据库！ 适用于基本测试目的。 对于大型或生产工作负载，我们建议迁移到外部元存储。
@@ -90,7 +90,7 @@ Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模
 
 ## <a name="security--networking"></a>安全性 + 网络
 
-![HDInsight 创建群集安全网络](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-security-networking.png "HDInsight 创建群集安全网络")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-security-networking.png" alt-text="HDInsight 创建群集安全网络":::
 
 在“安全性 + 网络”选项卡中提供以下信息：
 
@@ -107,7 +107,7 @@ Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模
 
 ## <a name="configuration--pricing"></a>配置 + 定价
 
-![HDInsight 创建群集配置](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-configuration.png "“配置和定价”选项卡")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-configuration.png" alt-text="HDInsight 创建群集配置":::
 
 在“配置 + 定价”选项卡中提供以下信息：
 
@@ -123,7 +123,7 @@ Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模
 
 ## <a name="review--create"></a>查看 + 创建
 
-![HDInsight 创建群集摘要](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-review-create-hadoop.png "指定群集节点数")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-review-create-hadoop.png" alt-text="HDInsight 创建群集摘要":::
 
 查看设置。 选择“创建”可创建群集。
 
@@ -133,7 +133,7 @@ Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模
 
 创建进程完成后，选择“部署成功”通知中的“转到资源” 。 群集窗口提供以下信息。
 
-![HDI Azure 门户群集概述](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png "群集属性")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png" alt-text="HDI Azure 门户群集概述":::
 
 窗口中的某些图标解释如下：
 

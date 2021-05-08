@@ -4,15 +4,15 @@ description: 了解如何通过启用区域冗余来改善区域中 Azure API �
 author: dlepow
 ms.service: api-management
 ms.topic: how-to
-ms.date: 04/13/2021
+ms.date: 04/28/2021
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 817aebab6af8de59071b5d767b24d15cf46d59d9
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 0ec2c0a270c721d1d706b696f5b8ba5b2ccd7ece
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107558627"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278859"
 ---
 # <a name="availability-zone-support-for-azure-api-management"></a>适用于 Azure API 管理的可用性区域支持 
 
@@ -30,10 +30,12 @@ API 管理还支持[多区域部署](api-management-howto-deploy-multi-region.md
 * 巴西南部
 * 加拿大中部
 * 印度中部
+* 美国中部
 * 美国东部
 * 美国东部 2
 * 法国中部
 * 日本东部
+* 北欧
 * 美国中南部
 * 东南亚
 * 英国南部

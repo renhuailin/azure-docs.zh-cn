@@ -6,15 +6,15 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 02/09/2018
 ms.openlocfilehash: d04f108b45070b27c4ff9ed833e8fb77b74cd597
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96754606"
 ---
 # <a name="accessing-resources-with-azure-data-lake-tools"></a>通过 Azure Data Lake 工具访问资源
 
-你可以轻松地使用 Azure Data Tools 命令或 VS Code 中的操作访问 Azure Data Lake Analytics 资源。
+可以轻松地使用 Azure Data Tools 命令或 VS Code 中的操作访问 Azure Data Lake Analytics 资源。
 
 ## <a name="integrate-with-azure-data-lake-analytics-through-a-command"></a>通过命令与 Azure Data Lake Analytics 集成
 
@@ -105,7 +105,7 @@ ms.locfileid: "96754606"
 ### <a name="to-download-a-file-through-the-adl-download-file-advanced-command"></a>通过 ADL: Download File (Advanced) 命令下载文件
 
 1. 右键单击脚本编辑器，然后选择“下载文件(高级)”。
-2. VS Code 显示 JSON 文件。 可以输入文件路径，以便同时下载多个文件。 说明将显示在 " **输出** " 窗口中。 若要继续下载文件，请保存（按 Ctrl+S）JSON 文件。
+2. VS Code 显示 JSON 文件。 可以输入文件路径，以便同时下载多个文件。 指令会显示在“输出”窗口中。 若要继续下载文件，请保存（按 Ctrl+S）JSON 文件。
 
     ![附带文件下载路径的 JSON 文件](./media/data-lake-analytics-data-lake-tools-for-vscode/download-multi-files.png)
 
@@ -216,7 +216,7 @@ Data Lake 工具会在 Azure 门户中打开 Azure 存储路径。 可以从 Web
 
     ![IntelliSense 对象类型](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-auto-complete-objects.png)
 
-- **Data Lake Analytics 元数据上的 IntelliSense 自动完成**： Data Lake 工具在本地下载 Data Lake Analytics 元数据信息。 IntelliSense 功能自动填充 Data Lake Analytics 元数据的对象。 这些对象包括数据库、架构、表、视图、表值函数、过程和 C# 程序集。
+- **IntelliSense 自动完成 Data Lake Analytics 元数据**：Data Lake 工具在本地下载 Data Lake Analytics 元数据信息。 IntelliSense 功能自动填充 Data Lake Analytics 元数据的对象。 这些对象包括数据库、架构、表、视图、表值函数、过程和 C# 程序集。
 
   ![IntelliSense 元数据](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-auto-complete-metastore.png)
 
