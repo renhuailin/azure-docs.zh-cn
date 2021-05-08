@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 12/14/2020
-ms.openlocfilehash: 95e11e98be8a58611a435de533ffcc16ec5ce357
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d4053628247cc01851aa19b66514398da0660a81
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048550"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107883555"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL 数据库和 Azure SQL 托管实例服务层级
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -53,7 +53,7 @@ Azure SQL 数据库还有一个服务层级：
 | | SQL 托管实例  | [每个 vCore 24 GB](../managed-instance/resource-limits.md#service-tier-characteristics) | 空值 | 最大 4 TB - [受存储大小限制](../managed-instance/resource-limits.md#service-tier-characteristics) |
 | **日志写入吞吐量** | SQL 数据库 | [每个 vCore 1.875 MB/秒（最大 30 MB/秒）](resource-limits-vcore-single-databases.md#general-purpose---provisioned-compute---gen4) | 100 MB/秒 | [每个 vCore 6 MB/秒（最大 96 MB/秒）](resource-limits-vcore-single-databases.md#business-critical---provisioned-compute---gen4) |
 | | SQL 托管实例 | [每个 vCore 3 MB/秒（最大 22 MB/秒）](../managed-instance/resource-limits.md#service-tier-characteristics) | 空值 | [每个 vCore 4 MB/秒（最大 48 MB/秒）](../managed-instance/resource-limits.md#service-tier-characteristics) |
-|**可用性**|全部| 99.99% |  [99.95%（具有一个次要副本），99.99%（具有更多副本）](service-tier-hyperscale-frequently-asked-questions-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99.99% <br/> [99.995%（具有区域冗余单一数据库）](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
+|**可用性**|全部| 99.99% |  [99.95%（具有一个次要副本），99.99%（具有更多副本）](service-tier-hyperscale-frequently-asked-questions-faq.yml#what-slas-are-provided-for-a-hyperscale-database) | 99.99% <br/> [99.995%（具有区域冗余单一数据库）](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
 |**备份**|全部|RA-GRS，7-35 天（默认为 7 天）。 基本层的最大保留期为 7 天。 | RA-GRS，7 天，恒定的时间时点恢复 (PITR) | RA-GRS，7-35 天（默认为 7 天） |
 |**内存中 OLTP** | | 空值 | 空值 | 可用 |
 |**只读副本**| | 0 内置 <br> 0 - 4 使用[异地复制](active-geo-replication-overview.md) | 0 - 4 内置 | 1 内置，包含在价格中 <br> 0 - 4 使用[异地复制](active-geo-replication-overview.md) |

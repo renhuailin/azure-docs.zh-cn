@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 5ce9eb41755d7faa2ce00b38dfd971313443bfb7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 493ec8ccc46ea5c2763f3a0159891fe9cbea142c
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105572100"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209240"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-saba-cloud"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Saba Cloud 的集成
 
@@ -77,7 +77,7 @@ ms.locfileid: "105572100"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`<CUSTOMER_NAME>_SPLN_PRINCIPLE`
 
@@ -175,7 +175,7 @@ ms.locfileid: "105572100"
 
 * 在 Azure 门户中单击“测试此应用程序”，然后你应会自动登录到为其设置了 SSO 的 Saba Cloud。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“Saba Cloud”磁贴时，如果该应用程序是在 SP 模式下配置的，则你会重定向到应用程序登录页来启动登录流；如果它是在 IDP 模式下配置的，则你应会自动登录到为其设置了 SSO 的 Saba Cloud。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“Saba Cloud”磁贴时，如果该应用程序是在 SP 模式下配置的，则你会重定向到应用程序登录页来启动登录流；如果它是在 IDP 模式下配置的，则你应会自动登录到为其设置了 SSO 的 Saba Cloud。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 > [!NOTE]
 > 如果未在 Azure AD 中填充登录 URL，则会将应用程序视为 IDP 发起的模式；如果已填充登录 URL，则 Azure AD 始终会将用户重定向到 Saba Cloud 应用程序以执行服务提供商发起的流。
@@ -196,6 +196,4 @@ ms.locfileid: "105572100"
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Saba Cloud 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+配置 Saba Cloud 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

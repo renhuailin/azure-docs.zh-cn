@@ -41,6 +41,12 @@
       href: concepts-query-language.md
     - name: 查询单位
       href: concepts-query-units.md
+    - name: 开发人员接口
+      items:
+        - name: API 和 SDK
+          href: concepts-apis-sdks.md
+        - name: CLI 命令集
+          href: concepts-cli.md
     - name: 与其他服务集成
       href: concepts-integration.md
     - name: 事件通知
@@ -55,8 +61,6 @@
   items:
     - name: 部署
       items:
-        - name: 使用 Azure 数字孪生 CLI
-          href: how-to-use-cli.md
         - name: 设置实例和身份验证
           items:
             - name: 门户版本
@@ -99,8 +103,6 @@
           href: how-to-query-graph.md
     - name: 开发客户端应用
       items:
-        - name: 使用 API 和 SDK
-          href: how-to-use-apis-sdks.md
         - name: 通过 Postman 发出请求
           href: how-to-use-postman.md
         - name: 与 Azure SignalR 服务集成

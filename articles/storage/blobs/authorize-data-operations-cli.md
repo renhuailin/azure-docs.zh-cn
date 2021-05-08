@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 06b37e8b25d932115384124a45156c801fb9708f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 53ad6dd922c1ccebd79aebcd2966b23b38de00e7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100361666"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776890"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-with-azure-cli"></a>选择如何使用 Azure CLI 授权 Blob 数据访问
 
@@ -63,7 +63,7 @@ Azure 存储扩展支持针对 blob 数据的操作。 可调用的操作取决�
     > [!IMPORTANT]
     > 传播 Azure 角色分配可能需要几分钟的时间。
 
-1. 在将 `--auth-mode` 参数设置为 `login` 的情况下，调用 [az storage container create](/cli/azure/storage/container#az-storage-container-create) 命令以使用 Azure AD 凭据创建容器。 请务必将尖括号中的占位符值替换为你自己的值：
+1. 在将 `--auth-mode` 参数设置为 `login` 的情况下，调用 [az storage container create](/cli/azure/storage/container#az_storage_container_create) 命令以使用 Azure AD 凭据创建容器。 请务必将尖括号中的占位符值替换为你自己的值：
 
     ```azurecli
     az storage container create \

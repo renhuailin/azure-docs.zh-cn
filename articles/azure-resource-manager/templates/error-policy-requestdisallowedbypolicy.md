@@ -5,12 +5,13 @@ author: genlin
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 41581ba48da2f2e717c5abf2a749f8fd2b86ac06
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8ef38591fb47f7d7dcfce96551c756b11a42b2a9
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "75477663"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318812"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Azure 资源策略的 RequestDisallowedByPolicy 错误
 
@@ -56,7 +57,7 @@ az policy definition show --name regionPolicyAssignment
 为了安全性和符合性，订阅管理员可能会分配限制资源部署方式的策略。 例如，订阅可能具有阻止创建公共 IP 地址、网络安全组、用户定义的路由或路由表的策略。 “症状”部分中的错误消息显示策略的名称。
 要解决此问题，请查看资源策略，并确定如何部署符合这些策略的资源。
 
-有关详细信息，请参阅以下文章：
+有关详细信息，请参阅下列文章：
 
 - [什么是 Azure Policy？](../../governance/policy/overview.md)
 - [创建和管理策略以强制实施符合性](../../governance/policy/tutorials/create-and-manage.md)

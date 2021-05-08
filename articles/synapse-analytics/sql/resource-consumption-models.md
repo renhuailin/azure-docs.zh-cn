@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 03144d478be0053ac77709132b08cdf17b062fb0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ddd49f26194c52cf0218f21d915ff078aee70c6b
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101666291"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164662"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse SQL 资源消耗
 
@@ -72,7 +72,7 @@ CREATE DATABASE mySQLDW
 - 第 1 代数据仓库以数据仓库单位计量 (DWU)。
 - 第 2 代数据仓库以计算数据仓库单位 (cDWU) 计量。
 
-DWU 和 cDWU 都支持增加或减少计算，以及在无需使用数据仓库时暂停计算。 这些操作均可按需进行。 第 2 代还会在计算节点上使用基于本地磁盘的缓存以提高性能。 缩放或暂停系统时，缓存将失效，因此在达到最佳性能前，缓存需要预热一段时间。  
+DWU 和 cDWU 都支持增加或减少计算，以及在无需使用数据仓库时暂停计算。 这些操作均可按需进行。 第 2 代还会在计算节点上使用基于本地磁盘的缓存以提高性能。 缩放或暂停系统时，缓存将失效，因此在达到最佳性能前，缓存需要预热一段时间。
 
 增加数据仓库单位时，将以线性方式增加计算资源。 第 2 代提供最佳查询性能和最大规模。 第 2 代系统还可以最大限度利用缓存。
 
@@ -137,7 +137,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 若要更改 DWU，请使用 [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell cmdlet。 以下示例将托管在服务器 MyServer 上的数据库 MySQLDW 的服务级别目标设置为 DW1000。
 
-```Powershell
+```powershell
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
@@ -152,7 +152,7 @@ Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServi
 1. 连接到与服务器关联的 master 数据库。
 2. 使用 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest&preserve-view=true) TSQL 语句。 以下示例将数据库 MySQLDW 的服务级别目标设置为 DW1000c。
 
-```Sql
+```sql
 ALTER DATABASE MySQLDW
 MODIFY (SERVICE_OBJECTIVE = 'DW1000c')
 ;
@@ -208,7 +208,7 @@ AND       major_resource_id = 'MySQLDW'
 
 ### <a name="the-scaling-workflow"></a>缩放工作流
 
-启动缩放操作时，系统首先终止所有打开的会话，回退所有打开的事务以确保状态一致。 对于缩放操作，缩放仅在此事务回退完成后才会发生。  
+启动缩放操作时，系统首先终止所有打开的会话，回退所有打开的事务以确保状态一致。 对于缩放操作，缩放仅在此事务回退完成后才会发生。
 
 - 对于增加操作，系统会分离所有计算节点，预配额外计算节点，然后重新附加到存储层。
 - 对于减少操作，系统会分离所有计算节点，然后仅将所需节点重新附加到存储层。

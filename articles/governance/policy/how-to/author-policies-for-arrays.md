@@ -1,14 +1,14 @@
 ---
 title: 为资源上的数组属性创作策略
 description: 了解如何使用数组参数和数组语言表达式，如何计算 [*] 别名，以及如何使用 Azure Policy 定义规则追加元素。
-ms.date: 10/22/2020
+ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 650b2ec6bc1bbd12cd10abb1917ef5ea2d6029e9
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
-ms.translationtype: MT
+ms.openlocfilehash: 8953b67d0935ac81cffa20ee8fc48d6d9b091861
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220739"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165418"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>为 Azure 资源上的数组属性创作策略
 
@@ -16,8 +16,8 @@ Azure 资源管理器属性通常定义为字符串和布尔值。 存在一对�
 
 - [定义参数](../concepts/definition-structure.md#parameters)的类型，用于提供多个选项
 - 使用条件 in 或 notIn 的[策略规则](../concepts/definition-structure.md#policy-rule)的一部分 
-- 计算多个数组成员满足条件的策略规则的一部分
-- 用于更新现有数组的 [追加](../concepts/effects.md#append) 和 [修改](../concepts/effects.md#modify) 效果
+- 用作统计有多少数组成员符合条件的策略规则的一部分
+- 在 [append](../concepts/effects.md#append) 和 [modify](../concepts/effects.md#modify) 效果中，用于更新现有数组
 
 本文介绍 Azure Policy 对每种方式的使用情况，并提供了几个示例定义。
 
@@ -95,13 +95,13 @@ Azure 资源管理器属性通常定义为字符串和布尔值。 存在一对�
 
 - Azure CLI：带有参数 params 的命令 [az policy assignment create](/cli/azure/policy/assignment#az_policy_assignment_create)
 - Azure PowerShell：带有参数 PolicyParameter 的 Cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment)
-- REST API：在 PUT [create](/rest/api/resources/policyassignments/create) 操作中，作为请求正文（作为 properties.parameters 属性的值）的一部分
+- REST API：在 PUT [create](/rest/api/policy/policyassignments/create) 操作中，作为请求正文（作为 properties.parameters 属性的值）的一部分
 
 ## <a name="using-arrays-in-conditions"></a>在条件中使用数组
 
-### <a name="in-and-notin"></a>`In` 和 `notIn`
+### <a name="in-and-notin"></a>In 和 notIn
 
-`in`和 `notIn` 条件仅适用于数组值。 它们检查数组中是否存在某个值。 数组可以是文本 JSON 数组或对数组参数的引用。 例如：
+`in` 和 `notIn` 条件仅适用于数组值。 它们检查数组中是否存在某个值。 数组可以是文本 JSON 数组，也可以是对数组参数的引用。 例如：
 
 ```json
 {
@@ -119,7 +119,7 @@ Azure 资源管理器属性通常定义为字符串和布尔值。 存在一对�
 
 ### <a name="value-count"></a>值计数
 
-[值计数](../concepts/definition-structure.md#value-count)表达式计算有多少数组成员满足条件。 它提供一种方法，用于多次评估相同的条件，每次迭代都使用不同的值。 例如，以下条件会检查资源名称是否与模式数组中的任何模式匹配：
+[值计数](../concepts/definition-structure.md#value-count)表达式统计有多少数组成员满足条件。 它提供了一种方法来多次评估同一条件，每次迭代都使用不同的值。 例如，以下条件检查资源名称是否与模式数组中的任何模式匹配：
 
 ```json
 {
@@ -135,19 +135,19 @@ Azure 资源管理器属性通常定义为字符串和布尔值。 存在一对�
 }
 ```
 
-为计算表达式的值，Azure 策略将计算 `where` 条件3次，对的每个成员计算一次 `[ "test*", "dev*", "prod*" ]` ，计算计算结果的次数 `true` 。 在每次迭代时，当前数组成员的值都与定义的 `pattern` 索引名称配对 `count.name` 。 然后，可 `where` 通过调用特殊模板函数在条件内引用此值： `current('pattern')` 。
+为了对表达式求值，Azure Policy 将计算 `where` 条件三次（每个 `[ "test*", "dev*", "prod*" ]` 成员一次），统计其计算结果为 `true` 的次数。 每次迭代时，会将当前数组成员的值与 `count.name` 所定义的 `pattern` 索引名称进行配对。 然后，可通过调用特殊模板函数 `current('pattern')` 在 `where` 条件内引用此值。
 
-| 迭代 | `current('pattern')` 返回值 |
+| 迭代 | `current('pattern')` 返回的值 |
 |:---|:---|
 | 1 | `"test*"` |
 | 2 | `"dev*"` |
 | 3 | `"prod*"` |
 
-仅当生成的计数大于0时，条件才为 true。
+仅当得到的计数大于 0 时，条件才为 true。
 
-若要使条件更通用，请使用参数引用而不是文本数组：
+若要使上述条件更通用，请使用参数引用而非文本数组：
 
- ```json
+```json
 {
     "count": {
         "value": "[parameters('patterns')]",
@@ -161,7 +161,7 @@ Azure 资源管理器属性通常定义为字符串和布尔值。 存在一对�
 }
 ```
 
-如果 **值计数** 表达式不在任何其他 **计数** 表达式下， `count.name` 则是可选的，并且 `current()` 函数无需任何参数即可使用：
+如果值计数表达式不在任何其他 count 表达式下，则 `count.name` 是可选的，可以不带任何参数使用 `current()` 函数 ：
 
 ```json
 {
@@ -176,7 +176,7 @@ Azure 资源管理器属性通常定义为字符串和布尔值。 存在一对�
 }
 ```
 
-**值计数** 还支持复杂对象的数组，从而实现更复杂的条件。 例如，下面的条件定义了每个名称模式所需的标记值，并检查资源名称是否与模式匹配，但没有所需的标记值：
+“值计数”还支持复杂对象的数组，因而允许更复杂的条件。 例如，下面的条件定义了每个名称模式所需的标记值，并检查资源名称是否与模式匹配但没有所需的标记值：
 
 ```json
 {
@@ -204,7 +204,7 @@ Azure 资源管理器属性通常定义为字符串和布尔值。 存在一对�
 }
 ```
 
-有关有用的示例，请参阅 [值计数示例](../concepts/definition-structure.md#value-count-examples)。
+如需有用的示例，请参阅[值计数示例](../concepts/definition-structure.md#value-count-examples)。
 
 ## <a name="referencing-array-resource-properties"></a>引用数组资源属性
 
@@ -243,7 +243,7 @@ Azure Policy 可以使用[别名](../concepts/definition-structure.md#aliases)�
 
 #### <a name="referencing-the-array"></a>引用数组
 
-第一种别名表示单个值，即请求内容中 `stringArray` 属性的值。 由于该属性的值是一个数组，因此在策略条件中并非十分有用。 例如：
+第一种别名表示单个值，即请求内容中 `stringArray` 属性的值。 由于该属性的值是一个数组，因此在策略条件中并没有用。 例如：
 
 ```json
 {
@@ -290,9 +290,9 @@ Azure Policy 可以使用[别名](../concepts/definition-structure.md#aliases)�
 }
 ```
 
-如果 `objectArray` 中的所有 `property` 属性的值均等于 `"value"`，则此条件为 true。 有关更多示例，请参阅[其他 \[ \* \] 别名示例](#appendix--additional--alias-examples)。
+如果 `objectArray` 中的所有 `property` 属性的值均等于 `"value"`，则此条件为 true。 有关更多示例，请参阅[更多 \[\*\] 别名示例](#additional--alias-examples)。
 
-使用 `field()` 函数引用数组别名时，返回的值是全部所选值的数组。 此行为意味着 `field()` 函数的常见用例（将模板函数应用于资源属性值的功能）非常有限。 在这种情况下可使用的模板函数只能是接受数组参数的模板函数。 例如，可以通过 `[length(field('Microsoft.Test/resourceType/objectArray[*].property'))]` 获取数组的长度。 但是，更复杂的方案（例如，将模板函数应用于每个数组成员，并将其与所需的值进行比较）仅在使用 `count` 表达式时才可行。 有关详细信息，请参阅 [字段计数表达式](#field-count-expressions)。
+使用 `field()` 函数引用数组别名时，返回的值是全部所选值的数组。 此行为意味着 `field()` 函数的常见用例（将模板函数应用于资源属性值的功能）非常有限。 在这种情况下可使用的模板函数只能是接受数组参数的模板函数。 例如，可以通过 `[length(field('Microsoft.Test/resourceType/objectArray[*].property'))]` 获取数组的长度。 但是，更复杂的方案（例如，将模板函数应用于每个数组成员，并将其与所需的值进行比较）仅在使用 `count` 表达式时才可行。 有关详细信息，请参阅[字段计数表达式](#field-count-expressions)。
 
 概括而言，请参阅以下示例资源内容和通过各种别名返回的所选值：
 
@@ -348,7 +348,7 @@ Azure Policy 可以使用[别名](../concepts/definition-structure.md#aliases)�
 
 ### <a name="field-count-expressions"></a>字段计数表达式
 
-[字段计数](../concepts/definition-structure.md#field-count) 表达式计算满足某个条件的数组成员数量，并将该计数与目标值进行比较。 与 `field` 条件相比，`Count` 对于评估数组而言更直观、更通用。 语法为：
+[字段计数](../concepts/definition-structure.md#field-count)表达式统计有多少数组成员满足某个条件，并将计数与目标值进行比较。 与 `field` 条件相比，`Count` 对于评估数组而言更直观、更通用。 语法为：
 
 ```json
 {
@@ -360,7 +360,7 @@ Azure Policy 可以使用[别名](../concepts/definition-structure.md#aliases)�
 }
 ```
 
-如果在没有 `where` 条件的情况下使用， `count` 只需返回数组的长度。 在使用上一节中的示例资源内容的情况下，以下 `count` 表达式的求值结果为 `true`，因为 `stringArray` 包含三个成员：
+在未带 `where` 条件的情况下使用时，`count` 只返回数组的长度。 在使用上一节中的示例资源内容的情况下，以下 `count` 表达式的求值结果为 `true`，因为 `stringArray` 包含三个成员：
 
 ```json
 {
@@ -371,7 +371,7 @@ Azure Policy 可以使用[别名](../concepts/definition-structure.md#aliases)�
 }
 ```
 
-此行为也适用于嵌套数组。 例如，以下 `count` 表达式的求值结果为 `true`，因为在 `nestedArray` 数组中有四个数组成员：
+此行为也适用于嵌套数组。 例如，以下 `count` 表达式的计算结果为 `true`，因为在 `nestedArray` 数组中有四个数组成员：
 
 ```json
 {
@@ -382,7 +382,7 @@ Azure Policy 可以使用[别名](../concepts/definition-structure.md#aliases)�
 }
 ```
 
-`count` 是在 `where` 条件中发挥作用的。 如果指定了它，Azure Policy 将枚举数组成员，并根据条件评估每个成员，计算有多少个数组成员已评估为 `true`。 具体而言，在每次 `where` 条件评估的迭代中，Azure Policy 将选择单个数组成员 i，并根据 `where` 条件评估资源内容，就像 i 是该数组的唯一成员一样。 在每次迭代中仅有一个数组成员可用，这提供了将复杂条件应用于每一单个数组成员的方法。
+`count` 是在 `where` 条件中发挥作用的。 如果指定了它，Azure Policy 将枚举数组成员，并会根据条件计算每个成员，统计有多少个数组成员的计算结果为 `true`。 具体而言，在 `where` 条件计算的每次迭代中，Azure Policy 将选择单个数组成员 i，并根据 `where` 条件计算资源内容，就像 i 是该数组的唯一成员一样 。 在每次迭代中仅有一个数组成员可用，这提供了将复杂条件应用于每一单个数组成员的方法。
 
 示例：
 
@@ -398,7 +398,9 @@ Azure Policy 可以使用[别名](../concepts/definition-structure.md#aliases)�
   "equals": 1
 }
 ```
-为了对 `count` 表达式求值，Azure Policy 将评估 `where` 条件 3 次（每个 `stringArray` 成员一次），计算它被评估为 `true` 的次数。 当 `where` 条件引用 `Microsoft.Test/resourceType/stringArray[*]` 数组成员时， `stringArray` 它将只在每次都选择单个数组成员，而不是选择的所有成员：
+
+为了对 `count` 表达式求值，Azure Policy 将计算 `where` 条件 3 次（每个 `stringArray` 成员一次），统计其计算结果为 `true` 的次数。
+如果 `where` 条件引用 `Microsoft.Test/resourceType/stringArray[*]` 数组成员，而不是选择 `stringArray` 的所有成员，则它每次只选择单个数组成员：
 
 | 迭代 | 所选 `Microsoft.Test/resourceType/stringArray[*]` 值 | `where` 求值结果 |
 |:---|:---|:---|
@@ -406,7 +408,7 @@ Azure Policy 可以使用[别名](../concepts/definition-structure.md#aliases)�
 | 2 | `"b"` | `false` |
 | 3 | `"c"` | `false` |
 
-因此，`count` 将返回 `1`。
+`count` 返回 `1`。
 
 下面是一个更复杂的表达式：
 
@@ -436,7 +438,7 @@ Azure Policy 可以使用[别名](../concepts/definition-structure.md#aliases)�
 | 1 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value1"` </br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | `false` |
 | 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2"` </br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4`| `true` |
 
-因此，`count` 会返回 `1`。
+`count` 返回 `1`。
 
 根据整个请求内容（包含仅对当前枚举的数组成员进行的更改）对 `where` 表达式求值意味着，`where` 条件还可以引用数组之外的字段：
 
@@ -448,7 +450,8 @@ Azure Policy 可以使用[别名](../concepts/definition-structure.md#aliases)�
       "field": "tags.env",
       "equals": "prod"
     }
-  }
+  },
+  "equals": 0
 }
 ```
 
@@ -457,44 +460,64 @@ Azure Policy 可以使用[别名](../concepts/definition-structure.md#aliases)�
 | 1 | `tags.env` => `"prod"` | `true` |
 | 2 | `tags.env` => `"prod"` | `true` |
 
-还允许使用嵌套 count 表达式：
+嵌套 count 表达式可用于将条件应用于嵌套数组字段。 例如，下面的条件检查 `objectArray[*]` 数组是否恰好有两个成员，且 `nestedArray[*]` 包含一个或多个成员：
 
 ```json
 {
   "count": {
     "field": "Microsoft.Test/resourceType/objectArray[*]",
     "where": {
-      "allOf": [
-        {
-          "field": "Microsoft.Test/resourceType/objectArray[*].property",
-          "equals": "value2"
-        },
-        {
-          "count": {
-            "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
-            "where": {
-              "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
-              "equals": 3
-            },
-            "greater": 0
-          }
-        }
-      ]
+      "count": {
+        "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]"
+      },
+      "greaterOrEquals": 1
     }
-  }
+  },
+  "equals": 2
 }
 ```
- 
-| 外部循环迭代 | 所选值 | 内部循环迭代 | 所选值 |
-|:---|:---|:---|:---|
-| 1 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value1`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1` |
-| 1 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value1`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `2` |
-| 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3` |
-| 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `4` |
 
-#### <a name="accessing-current-array-member-with-template-functions"></a>用模板函数访问当前数组成员
+| 迭代 | 所选值 | 嵌套 count 计算结果 |
+|:---|:---|:---|
+| 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | `nestedArray[*]` 有两个成员 => `true` |
+| 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | `nestedArray[*]` 有两个成员 => `true` |
 
-使用模板函数时，可以使用 `current()` 函数访问当前数组成员的值或其任何属性的值。 若要访问当前数组成员的值，请将 `count.field` 或其任何子别名中定义的别名作为函数的参数进行传递 `current()` 。 例如：
+由于 `objectArray[*]` 的两个成员都有一个子数组 `nestedArray[*]`，而子数组有两个成员，因此外层 count 表达式返回 `2`。
+
+更复杂的示例：检查 `objectArray[*]` 数组是否正好有两个成员，而 `nestedArray[*]` 具有等于 `2` 或 `3` 的成员：
+
+```json
+{
+  "count": {
+    "field": "Microsoft.Test/resourceType/objectArray[*]",
+    "where": {
+      "count": {
+        "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
+        "where": {
+            "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
+            "in": [ 2, 3 ]
+        }
+      },
+      "greaterOrEquals": 1
+    }
+  },
+  "equals": 2
+}
+```
+
+| 迭代 | 所选值 | 嵌套 count 计算结果
+|:---|:---|:---|
+| 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | `nestedArray[*]` 包含 `2` => `true` |
+| 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | `nestedArray[*]` 包含 `3` => `true` |
+
+由于 `objectArray[*]` 的两个成员都有一个包含 `2` 或 `3` 的子数组 `nestedArray[*]`，因此外层 count 表达式将返回 `2`。
+
+> [!NOTE]
+> 嵌套字段计数表达式只能引用嵌套数组。 例如，引用 `Microsoft.Test/resourceType/objectArray[*]` 的 count 表达式可以具有以嵌套数组 `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` 为目标的嵌套 count，但它不能具有以 `Microsoft.Test/resourceType/stringArray[*]` 为目标的嵌套 count 表达式。
+
+#### <a name="accessing-current-array-member-with-template-functions"></a>使用模板函数访问当前数组成员
+
+使用模板函数时，请使用 `current()` 函数访问当前数组成员的值或其任何属性的值。 若要访问当前数组成员的值，请将 `count.field` 中定义的别名或其任何子级别名作为参数传递给 `current()` 函数。 例如：
 
 ```json
 {
@@ -510,20 +533,20 @@ Azure Policy 可以使用[别名](../concepts/definition-structure.md#aliases)�
 
 ```
 
-| 迭代 | `current()` 返回值 | `where` 求值结果 |
+| 迭代 | `current()` 返回的值 | `where` 求值结果 |
 |:---|:---|:---|
-| 1 | 的 `property` 第一个成员中的值 `objectArray[*]` ： `value1` | `true` |
-| 2 | 的 `property` 第一个成员中的值 `objectArray[*]` ： `value2` | `true` |
+| 1 | `objectArray[*]` 的第一个成员中的 `property` 的值：`value1` | `true` |
+| 2 | `objectArray[*]` 的第一个成员中的 `property` 的值：`value2` | `true` |
 
-#### <a name="the-field-function-inside-where-conditions"></a>Where 条件中的 field 函数
+#### <a name="the-field-function-inside-where-conditions"></a>where 条件中的 field 函数
 
-`field()`函数还可用于访问当前数组成员的值，只要 **计数** 表达式不在 **存在条件** 内 (`field()` 函数始终引用 **if** 条件) 中计算的资源。
-`field()`引用计算数组时的行为基于以下概念：
+还可以使用 `field()` 函数来访问当前数组成员的值，前提是 count 表达式不在某个存在条件中（`field()` 函数始终引用 if 条件中计算的资源）  。 引用评估的数组时 `field()` 的行为基于以下概念：
+
 1. 数组别名解析为从所有数组成员选择的值的集合。
 1. 引用数组别名的 `field()` 函数会返回具有所选值的数组。
 1. 在 `where` 条件内引用计数数组别名将返回一个集合，该集合中包含从当前迭代中评估的数组成员中选择的单个值。
 
-此行为意味着，当使用 `field()` 函数在 `where` 条件中引用计数数组成员时，它将返回一个具有单个成员的数组。 虽然这可能并不直观，但它与下面的理念一致：数组别名始终返回所选属性的集合。 下面是一个示例：
+此行为意味着，当使用 `field()` 函数在 `where` 条件中引用计数数组成员时，它将返回一个具有单个成员的数组。 虽然此行为可能并不直观，但它与下面的理念一致：数组别名始终返回所选属性的集合。 下面是一个示例：
 
 ```json
 {
@@ -564,7 +587,7 @@ Azure Policy 可以使用[别名](../concepts/definition-structure.md#aliases)�
 | 2 | `Microsoft.Test/resourceType/stringArray[*]` => `"b"` </br>  `[first(field('Microsoft.Test/resourceType/stringArray[*]'))]` => `"b"` | `true` |
 | 3 | `Microsoft.Test/resourceType/stringArray[*]` => `"c"` </br>  `[first(field('Microsoft.Test/resourceType/stringArray[*]'))]` => `"c"` | `true` |
 
-有关有用的示例，请参阅 [字段计数示例](../concepts/definition-structure.md#field-count-examples)。
+如需有用的示例，请参阅[字段计数示例](../concepts/definition-structure.md#field-count-examples)。
 
 ## <a name="modifying-arrays"></a>修改数组
 
@@ -587,9 +610,9 @@ Azure Policy 可以使用[别名](../concepts/definition-structure.md#aliases)�
 
 有关详细信息，请参阅[追加示例](../concepts/effects.md#append-examples)。
 
-## <a name="appendix--additional--alias-examples"></a>附录-其他 [*] 别名示例
+## <a name="additional--alias-examples"></a>其他 [*] 别名示例
 
-建议使用 [字段计数表达式](#field-count-expressions) 来检查请求内容中数组的 "所有" 或 "任何" 成员是否满足条件。 但对于一些简单的情况，可以通过将字段访问器与数组别名结合使用来实现相同的结果 (如 [引用数组成员集合](#referencing-the-array-members-collection)) 中所述。 这对于超出允许 **计数** 表达式限制的策略规则非常有用。 下面是用于常见用例的示例：
+建议使用[字段计数表达式](#field-count-expressions)来检查请求内容中某个数组的“所有”成员或“任何”成员是否符合条件。 但对于一些简单的情况，可以通过将字段访问器与数组别名结合使用来实现相同的结果，如[引用数组成员集合](#referencing-the-array-members-collection)中所述。 对于超出允许的 count 表达式限制的策略规则，此模式可能非常有用。 下面是常见用例的示例：
 
 方案表的示例策略规则如下：
 

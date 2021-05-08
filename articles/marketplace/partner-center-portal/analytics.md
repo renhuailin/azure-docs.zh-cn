@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: rajap
 ms.author: rajap
 ms.date: 12/11/2019
-ms.openlocfilehash: 379047532542fdb45a4378687a4c6b99f6cdcd77
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 73dc8430b6af09c849df28e23d27e4ec16e81962
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96444425"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318686"
 ---
-# <a name="access-analytic-reports-for-the-commercial-marketplace-in-partner-center"></a>访问合作伙伴中心的商业市场分析报表
+# <a name="access-analytic-reports-for-the-commercial-marketplace-in-partner-center"></a>访问合作伙伴中心内的商业市场分析报告
 
 了解如何访问 Microsoft 合作伙伴中心的分析报表，以监视销售，评估性能，并优化你的市场产品/服务。 作为合作伙伴，你可以使用合作伙伴中心支持的数据可视化和见解图来监视你的产品/服务列表，并寻找最大程度地提升销售量的方法。 使用经改进的分析工具可对绩效评估结果采取措施，并与客户和经销商保持更好的关系。
 

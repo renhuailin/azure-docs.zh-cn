@@ -2,20 +2,20 @@
 title: 查看使用 Azure Active Directory 租户进行标识管理的应用
 description: 了解如何查看使用 Azure Active Directory 租户进行标识管理的所有应用程序。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: reference
 ms.date: 01/07/2021
-ms.author: kenwith
-ms.openlocfilehash: 443e8c83ec29f9f0478e3881b9e6d6a8eb0bf403
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
-ms.translationtype: MT
+ms.author: iangithinji
+ms.openlocfilehash: b11f2dab97b3c45502c6050e06f0f39312f8c3c0
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259780"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378065"
 ---
 # <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>查看使用 Azure AD 租户进行标识管理的应用
 [应用程序管理快速入门系列](view-applications-portal.md)介绍了基础知识。 其中介绍了如何查看使用 Azure AD 租户进行标识管理的所有应用。 本文将更深入地介绍你会找到的应用类型。
@@ -23,8 +23,8 @@ ms.locfileid: "99259780"
 ## <a name="why-does-a-specific-application-appear-in-my-all-applications-list"></a>为什么在所有应用程序列表中出现某个特定应用程序？
 筛选为“所有应用程序”时，“所有应用程序列表” 会显示租户中的每个服务主体对象。 服务主体对象以多种方式出现在此列表中：
 - 添加应用程序库的任何应用程序时，包括：
-   - **Azure AD 企业应用程序** –使用 Azure AD 门户上的 " **企业应用程序** " 选项添加到租户的应用。 通常使用 SAML 标准集成的应用。
-   - **Azure AD 应用注册** –使用 Azure AD 门户上的 **应用注册** 选项添加到租户的应用。 通常，使用 Open ID Connect 和 OAuth 标准开发自定义开发的应用程序。
+   - “Azure AD 企业应用程序” – 使用 Azure AD 门户上的“企业应用程序”选项添加到租户的应用。  通常使用 SAML 标准集成的应用。
+   - “Azure AD - 应用注册” – 使用 Azure AD 门户上的“应用注册”选项添加到租户的应用。  通常，使用 Open ID Connect 和 OAuth 标准自定义开发的应用。
    - **应用程序代理应用程序** - 要从外部向其提供单一登录且在本地环境中运行的应用程序
 - 注册或登录与 Azure Active Directory 集成的第三方应用程序时。 [Smartsheet](https://app.smartsheet.com/b/home) 或 [DocuSign](https://www.docusign.net/member/MemberLogin.aspx) 就是一个示例。
 - Microsoft 应用，如 Microsoft 365。

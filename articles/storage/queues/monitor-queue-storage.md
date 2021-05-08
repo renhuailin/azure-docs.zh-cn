@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: queues
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: b65aff45cc304f59e45fc3bed925b93ee6c622fd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6b70bebc6f3aa809abf616b1d0ab2c68f85d9710
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788396"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164734"
 ---
 # <a name="monitoring-azure-queue-storage"></a>监视 Azure 队列存储
 
@@ -108,7 +108,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
    > ![“诊断设置”页的存档存储](media/monitor-queue-storage/diagnostic-logs-settings-pane-archive-storage.png)
 
 2. 在“存储帐户”下拉列表中，选择要将日志存档到的存储帐户，单击“确定”按钮，然后选择“保存”按钮。
- 
+
    [!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
 
    > [!NOTE]
@@ -553,7 +553,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/microsoft.azure.m
 
 - 列出最近三天内 10 个最常见的错误。
 
-    ```Kusto
+    ```kusto
     StorageQueueLogs
     | where TimeGenerated > ago(3d) and StatusText !contains "Success"
     | summarize count() by StatusText
@@ -562,7 +562,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/microsoft.azure.m
 
 - 列出最近三天内导致大部分错误的前 10 个操作。
 
-    ```Kusto
+    ```kusto
     StorageQueueLogs
     | where TimeGenerated > ago(3d) and StatusText !contains "Success"
     | summarize count() by OperationName
@@ -571,7 +571,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/microsoft.azure.m
 
 - 列出最近三天内端到端延迟最长的前 10 个操作。
 
-    ```Kusto
+    ```kusto
     StorageQueueLogs
     | where TimeGenerated > ago(3d)
     | top 10 by DurationMs desc
@@ -580,7 +580,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/microsoft.azure.m
 
 - 列出最近三天内导致服务器端限制错误的所有操作。
 
-    ```Kusto
+    ```kusto
     StorageQueueLogs
     | where TimeGenerated > ago(3d) and StatusText contains "ServerBusy"
     | project TimeGenerated, OperationName, StatusCode, StatusText
@@ -588,7 +588,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/microsoft.azure.m
 
 - 列出最近三天内使用匿名访问的所有请求。
 
-    ```Kusto
+    ```kusto
     StorageBlobLogs
     | where TimeGenerated > ago(3d) and AuthenticationType == "Anonymous"
     | project TimeGenerated, OperationName, AuthenticationType, Uri
@@ -596,7 +596,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/microsoft.azure.m
 
 - 创建最近三天内使用的操作的饼图。
 
-    ```Kusto
+    ```kusto
     StorageQueueLogs
     | where TimeGenerated > ago(3d)
     | summarize count() by OperationName

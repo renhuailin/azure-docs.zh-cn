@@ -4,12 +4,12 @@ description: 了解如何使用群集自动缩放程序自动缩放群集以满�
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 9caf56545efc6aefae525e28614d39705c00c21e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f02b91f73320786716e356639d8134280325dc19
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742562"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775990"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>自动缩放群集以满足 Azure Kubernetes 服务 (AKS) 中的应用程序需求
 
@@ -121,7 +121,7 @@ az aks update \
 
 还可以通过更改群集范围的自动缩放程序配置文件中的默认值，来配置群集自动缩放程序的更高粒度详细信息。 例如，在节点未充分利用 10 分钟后，将发生纵向缩减事件。 如果你的工作负荷每 15 分钟运行一次，则可能需要更改自动缩放程序配置文件，以便在 15 到 20 分钟后纵向缩减未充分利用的节点。 启用群集自动缩放程序后，除非指定不同的设置，否则将使用默认配置文件。 可以更新群集自动缩放程序配置文件中的以下设置：
 
-| 设置                          | 描述                                                                              | 默认值 |
+| 设置                          | 说明                                                                              | 默认值 |
 |----------------------------------|------------------------------------------------------------------------------------------|---------------|
 | scan-interval                    | 重新评估群集纵向扩展或缩减的频率                                    | 10 秒    |
 | scale-down-delay-after-add       | 纵向扩展后经过多长时间恢复评估纵向缩减                               | 10 分钟    |
@@ -291,15 +291,15 @@ az aks nodepool update \
 [aks-view-master-logs]: ./view-control-plane-logs.md#enable-resource-logs
 [autoscaler-profile-properties]: #using-the-autoscaler-profile
 [azure-cli-install]: /cli/azure/install-azure-cli
-[az-aks-show]: /cli/azure/aks#az-aks-show
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-update]: /cli/azure/aks#az-aks-update
-[az-aks-scale]: /cli/azure/aks#az-aks-scale
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-aks-show]: /cli/azure/aks#az_aks_show
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
+[az-aks-create]: /cli/azure/aks#az_aks_create
+[az-aks-update]: /cli/azure/aks#az_aks_update
+[az-aks-scale]: /cli/azure/aks#az_aks_scale
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register
 
 <!-- LINKS - external -->
 [az-aks-update-preview]: https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview
