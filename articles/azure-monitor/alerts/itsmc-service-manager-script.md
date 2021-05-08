@@ -1,15 +1,15 @@
 ---
-title: 为服务管理连接器创建 web 应用
+title: 为服务管理连接器创建 Web 应用
 description: 使用自动化脚本创建要与 Azure 中的 IT 服务管理连接器连接的 Service Manager Web 应用，集中监视和管理 ITSM 工作项。
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
 ms.openlocfilehash: 16b48ac213168eaa58de5b0603025b2d48bb5ed5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102041648"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>使用自动化脚本创建 Service Manager Web 应用
@@ -25,7 +25,7 @@ ms.locfileid: "102041648"
 - Web 应用的站点名称前缀
 - ServiceBus 命名空间。
 
-该脚本将使用指定的名称（以及使该名称保持唯一的其他几个字符串）创建 Web 应用。 它将生成 **Web 应用 URL**、 **客户端 ID** 和 **客户端密码**。
+该脚本将使用指定的名称（以及使该名称保持唯一的其他几个字符串）创建 Web 应用。 它将生成 **Web 应用 URL**、**客户端 ID** 和 **客户端密码**。
 
 请保存这些值，因为在使用 IT 服务管理连接器创建连接时将需要这些值。
 
@@ -316,11 +316,11 @@ if(!$err)
 }
 ```
 
-## <a name="troubleshoot-service-manager-web-app-deployment"></a>Web 应用部署 Service Manager 疑难解答
+## <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager Web 应用部署故障排除
 
--   如果你在使用 web 应用部署时遇到问题，请确保你有权在订阅中创建/部署资源。
--   如果在运行 [脚本](itsmc-service-manager-script.md)时，**未将对象引用设置为对象** 错误的实例，请确保在 "**用户配置**" 部分中输入了有效值。
--   如果无法创建服务总线中继命名空间，请确保在订阅中注册所需的资源提供程序。 如果未注册，请从 Azure 门户中手动创建 service bus 中继命名空间。 在 Azure 门户中 [创建混合连接](./itsmc-connections-scsm.md#configure-the-hybrid-connection) 时，还可以创建它。
+-   如果遇到 Web 应用部署问题，请确保在订阅中拥有创建/部署资源的权限。
+-   如果在运行[脚本](itsmc-service-manager-script.md)时出现“对象引用未设置为某个对象的实例”错误，请确保在“用户配置”部分中输入了有效的值。
+-   如果未能创建服务总线中继命名空间，请确保在订阅中注册所需的资源提供程序。 如果未注册，请手动从 Azure 门户创建服务总线中继命名空间。 在 Azure 门户中[创建混合连接](./itsmc-connections-scsm.md#configure-the-hybrid-connection)时，也可进行创建。
 
 ## <a name="next-steps"></a>后续步骤
 [配置混合连接](./itsmc-connections-scsm.md#configure-the-hybrid-connection)。

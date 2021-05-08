@@ -14,15 +14,15 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1a56685c830fc7aa717add3e826c68c04449e378
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99580840"
 ---
 # <a name="differences-between-msaljs-and-adaljs"></a>MSAL.js 与 ADAL.js 的差异
 
-适用于 javascript 的 Microsoft 身份验证库 ( # A0) 和适用于 JavaScript 的 Azure AD 身份验证库 ( # A1) 用于对 Azure AD 的实体进行身份验证并请求令牌。 截止目前，大多数开发人员都是通过 ADAL 来请求令牌，使用面向开发人员的 Azure AD (v1.0) 来对 Azure AD 标识（工作和学校帐户）进行身份验证。 现在，使用 MSAL.js，你可以通过 Microsoft 标识平台通过 Azure AD B2C) 对一组更广泛的 Microsoft 标识进行身份验证 (Azure AD 标识和 Microsoft 帐户，以及社交和本地帐户。
+适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 与适用于 JavaScript 的 Azure AD 身份验证库 (ADAL.js) 用于对 Azure AD 实体进行身份验证，以及从 Azure AD 请求令牌。 截止目前，大多数开发人员都是通过 ADAL 来请求令牌，使用面向开发人员的 Azure AD (v1.0) 来对 Azure AD 标识（工作和学校帐户）进行身份验证。 现在，使用 MSAL.js 可以通过 Microsoft 标识平台对更广泛的 Microsoft 标识（Azure AD 标识和 Microsoft 帐户，以及通过 Azure AD B2C 使用的社交和本地帐户）进行身份验证。
 
 本文介绍如何在适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 与适用于 JavaScript 的 Azure AD 身份验证库 (ADAL.js) 之间进行选择，并对这两个库做了比较。
 
@@ -48,7 +48,7 @@ ms.locfileid: "99580840"
 
 在 v1.0 中，使用 `https://login.microsoftonline.com/common` 颁发机构可让用户使用任何 Azure AD 帐户（适用于任何组织）登录。
 
-在 v2.0 中，使用 `https://login.microsoftonline.com/common` 颁发机构可让用户使用任何 Azure AD 组织帐户或 Microsoft 个人帐户 (MSA) 登录。 若要将登录限制为仅 Azure AD 帐户 (与 ADAL.js) 相同的行为，请使用 `https://login.microsoftonline.com/organizations` 。 有关详细信息，请参阅[使用 MSAL.js 初始化](msal-js-initializing-client-applications.md)中的 `authority` 配置选项。
+在 v2.0 中，使用 `https://login.microsoftonline.com/common` 颁发机构可让用户使用任何 Azure AD 组织帐户或 Microsoft 个人帐户 (MSA) 登录。 若要限制为只能登录到 Azure AD 帐户（与 ADAL.js 中的行为类似），请使用 `https://login.microsoftonline.com/organizations`。 有关详细信息，请参阅[使用 MSAL.js 初始化](msal-js-initializing-client-applications.md)中的 `authority` 配置选项。
 
 ### <a name="scopes-for-acquiring-tokens"></a>用于获取令牌的范围
 * 身份验证请求中用于获取令牌的范围而不是资源参数
@@ -61,7 +61,7 @@ ms.locfileid: "99580840"
 
     可以使用 API 的 URI 按“应用 ID URI/范围”格式请求任何资源 API 的范围。例如：https:\//mytenant.onmicrosoft.com/myapi/api.read
 
-    仅对于 MS 图形 API，范围值 `user.read` 映射到 https： \/ /graph.microsoft.com/User.Read，可互换使用。
+    仅对于 MS 图形 API 而言，范围值 `user.read` 映射到 https:\//graph.microsoft.com/User.Read，并且两者可以换用。
 
     ```javascript
     var request = {

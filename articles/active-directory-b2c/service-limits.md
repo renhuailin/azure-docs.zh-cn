@@ -1,7 +1,7 @@
 ---
 title: Azure AD B2C 服务限制和局限性
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C 服务的服务限制和局限性的参考。
+description: Azure Active Directory B2C 服务的服务限制和局限性参考。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,10 +12,10 @@ ms.date: 02/02/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 190d88e62069a34b61017a0079f75696d67f6c82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99979906"
 ---
 # <a name="azure-active-directory-b2c-service-limits-and-restrictions"></a>Azure Active Directory B2C 服务限制和局限性
@@ -28,10 +28,10 @@ ms.locfileid: "99979906"
 
 |类别 |限制    |
 |---------|---------|
-|每个 Azure AD B2C 租户每个 IP 地址的请求数       |6,000/5 分钟          |
-|每个 Azure AD B2C 租户的总请求数     |12,000/分钟          |
+|每个 Azure AD B2C 租户的每个 IP 地址的请求数       |6,000/5 分钟          |
+|每个 Azure AD B2C 租户的请求总数     |12,000/分钟          |
 
-请求数可能因在 Azure AD B2C 用户旅程期间发生的目录读取数和写入数而异。 例如，从目录中读取的简单登录旅程包含 1 个请求。 如果登录旅程还必须更新目录，则此操作将被计为其他请求。
+请求数可根据在 Azure AD B2C 用户旅程期间发生的目录读取和写入数而变化。 例如，从目录中读取的简单登录旅程包含 1 个请求。 如果登录旅程还必须更新目录，则此操作将被计为其他请求。
 
 ## <a name="azure-ad-b2c-configuration-limits"></a>Azure AD B2C 配置限制
 
@@ -39,8 +39,8 @@ ms.locfileid: "99979906"
 
 |类别  |限制  |
 |---------|---------|
-|每个应用程序的范围数        |1000          |
-|每个用户的[自定义属性](user-profile-attributes.md#extension-attributes) 数 <sup>1</sup>       |100         |
+|每个应用程序的作用域数        |1000          |
+| 每个用户的[自定义属性](user-profile-attributes.md#extension-attributes)数 <sup>1</sup>       |100         |
 |每个应用程序的重定向 URL 数       |100         |
 |每个应用程序的注销 URL 数        |1          |
 |每个属性的字符串限制      |250 个字符          |

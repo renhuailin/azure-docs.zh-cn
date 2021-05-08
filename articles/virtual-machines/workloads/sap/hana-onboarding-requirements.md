@@ -14,10 +14,10 @@ ms.date: 01/31/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 16608facab27fc18924cf3a5c6da7e35db048f76
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101675607"
 ---
 # <a name="onboarding-requirements"></a>加入要求
@@ -32,7 +32,7 @@ ms.locfileid: "101675607"
 
 **网络连接**
 
-- 本地到 Azure 之间的 ExpressRoute：若要将本地数据中心连接到 Azure，请确保从 ISP 订购至少 1 Gbps 的连接。 HANA 大型实例单元与 Azure 之间的连接也使用 ExpressRoute 技术。 HANA 大型实例单元与 Azure 之间的此 ExpressRoute 连接包含在 HANA 大型实例单元的价格中，其中包括此特定 ExpressRoute 线路的所有数据流入和流出费用。 因此，作为客户，在本地与 Azure 之间的 ExpressRoute 链接以外，不会产生额外的成本。
+- 本地到 Azure 之间的 ExpressRoute：若要将本地数据中心连接到 Azure，请确保从 ISP 订购至少 1 Gbps 的连接。 HANA 大型实例单元与 Azure 之间的连接也使用 ExpressRoute 技术。 HANA 大型实例单元与 Azure 之间的此 ExpressRoute 连接包含在 HANA 大型实例单元的价格中，其中包括此特定 ExpressRoute 线路的所有数据流入和流出费用。 因此，客户不会遇到超出本地与 Azure 之间的 ExpressRoute 链接的其他费用。
 
 **操作系统**
 

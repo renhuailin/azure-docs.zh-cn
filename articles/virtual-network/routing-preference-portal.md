@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2021
 ms.author: mnayak
 ms.openlocfilehash: f445eab65e8d2448e57bad19c52a4b72732016bb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101672932"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-the-azure-portal"></a>使用 Azure 门户配置公共 IP 地址的路由首选项
@@ -45,7 +45,7 @@ ms.locfileid: "101672932"
       ![创建公共 IP 地址](./media/routing-preference-portal/public-ip-new.png)
 1. 在“IPv4 IP 地址配置”部分中，输入或选择以下信息：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     | 订阅 | 选择订阅。|
     | 资源组 | 选择“新建”，输入 RoutingPreferenceResourceGroup，然后选择“确定”。 |

@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 11/17/2020
-ms.openlocfilehash: 59e6e73c99569b0a35c56d65c1a7ccdfcb394c0f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/07/2021
+ms.openlocfilehash: 905224119b9df4e4003b1736443406e9548a49e3
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95026414"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012523"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>缩放超大规模 (Citus) 服务器组
 
@@ -21,6 +21,11 @@ Azure Database for PostgreSQL - 超大规模 (Citus) 提供了自助服务扩展
 ## <a name="add-worker-nodes"></a>添加工作器节点
 
 若要添加节点，请转到超大规模 (Citus) 服务器组中的“计算 + 存储”选项卡。  拖动“工作器节点计数”的滑块可更改该值。
+
+> [!NOTE]
+>
+> 使用[基本层（预览版）](concepts-hyperscale-tiers.md)创建的超大规模 (Citus) 服务器组没有工作器。 增加工作器计数会自动将服务器组升级到标准层。
+> 在将服务器组升级到标准层之后，不能将其降级回基本层。
 
 :::image type="content" source="./media/howto-hyperscale-scaling/01-sliders-workers.png" alt-text="资源滑块":::
 

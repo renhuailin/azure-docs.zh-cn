@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric sfctl 网格服务-副本
-description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于获取应用程序资源的副本详细信息的命令的列表。
+title: Azure Service Fabric CLI- sfctl mesh service-replica
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于获取应用程序资源副本详细信息的命令列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: cbfdba30663e2aa531ab1db955b0e035a0588709
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86245715"
 ---
 # <a name="sfctl-mesh-service-replica"></a>sfctl mesh service-replica
@@ -17,7 +17,7 @@ ms.locfileid: "86245715"
 
 ## <a name="commands"></a>命令
 
-|Command|描述|
+|命令|说明|
 | --- | --- |
 | list | 列出某个服务的所有副本。 |
 | 显示 | 获取应用程序服务的给定副本。 |
@@ -29,7 +29,7 @@ ms.locfileid: "86245715"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --app-name --application-name [必需] | 应用程序的名称。 |
 | --service-name [必需] | 服务的名称。 |
@@ -51,7 +51,7 @@ ms.locfileid: "86245715"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --app-name --application-name [必需] | 应用程序的名称。 |
 | --name -n [必需] | 服务副本的名称。 |

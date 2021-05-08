@@ -3,18 +3,18 @@ title: Azure Batch 池创建事件
 description: 有关 Batch 池创建事件的参考，在池创建后会发出此事件。 日志内容将公开有关池的常规信息。
 ms.topic: reference
 ms.date: 10/08/2020
-ms.openlocfilehash: f8b020401443b2a9e80837599d6fd4b2a3001d27
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e75b56a6fd5de5fd17107c3960004e0edb1b799
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97608997"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988255"
 ---
 # <a name="pool-create-event"></a>池创建事件
 
  池创建后，会发出此事件。 日志内容将公开有关池的常规信息。 请注意，如果池的目标大小大于 0 个计算节点，则池调整大小启动事件会在此事件之后立即发生。
 
- 以下示例显示了使用 `CloudServiceConfiguration` 属性所创建池的池创建事件的正文。
+ 以下示例显示池创建事件的正文。
 
 ```
 {
@@ -69,6 +69,9 @@ ms.locfileid: "97608997"
 
 ###  <a name="cloudserviceconfiguration"></a><a name="bk_csconf"></a> cloudServiceConfiguration
 
+> [!WARNING]
+> 云服务配置池[已被弃用](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)。 请改用虚拟机配置池。
+
 |元素名称|类型|说明|
 |------------------|----------|-----------|
 |`osFamily`|字符串|要安装在池中虚拟机上的 Azure 来宾 OS 系列。<br /><br /> 可能的值包括：<br /><br /> **2** – OS 系列 2，等效于 Windows Server 2008 R2 SP1。<br /><br /> **3** – OS 系列 3，等效于Windows Server 2012。<br /><br /> **4** – OS 系列 4，等效于 Windows Server 2012 R2。<br /><br /> 有关详细信息，请参阅 [Azure 来宾 OS 版本](../cloud-services/cloud-services-guestos-update-matrix.md#releases)。|
@@ -95,7 +98,7 @@ ms.locfileid: "97608997"
 
 |元素名称|类型|说明|
 |------------------|----------|-----------|
-|`enableAutomaticUpdates`|布尔|指示是否对虚拟机启用自动更新。 如果未指定此属性，则默认值为 true。|
+|`enableAutomaticUpdates`|Boolean|指示是否对虚拟机启用自动更新。 如果未指定此属性，则默认值为 true。|
 
 ###  <a name="networkconfiguration"></a><a name="bk_netconf"></a> networkConfiguration
 

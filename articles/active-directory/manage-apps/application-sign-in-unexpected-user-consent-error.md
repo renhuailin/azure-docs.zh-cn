@@ -17,10 +17,10 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9f829672f88ea848e4611000b54d9cc200bc166d
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99259971"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>对应用程序执行许可时发生的意外错误
@@ -33,9 +33,9 @@ ms.locfileid: "99259971"
 
 ## <a name="requesting-not-authorized-permissions-error"></a>请求未授予的权限错误
 * **AADSTS90093：** &lt;clientAppDisplayName&gt; 正在请求一个或多个你无权授予的权限。 请与管理员联系，他/她可代表你对此应用程序进行许可。
-* AADSTS90094：  &lt;clientAppDisplayName&gt; 需要访问组织中资源的权限（只有管理员可以授予）。 请先让管理员授予对此应用的权限，然后你才能使用此应用。
+* AADSTS90094：  &lt;clientAppDisplayName&gt; 需要访问组织中资源的权限（只有管理员可以授予）。 使用应用前，请先向管理员请求授予此应用的权限。
 
-如果非全局管理员用户尝试使用的应用程序请求只有管理员才能授予的权限，则会发生此错误。 此错误可通过管理员代表其组织授予访问此应用程序的权限进行解决。
+当非全局管理员用户尝试使用的应用程序请求只有管理员才能授予的权限时，会发生此错误。 此错误可通过管理员代表其组织授予访问此应用程序的权限进行解决。
 
 如果 Microsoft 检测到权限请求存在风险而阻止用户许可应用程序，则也可能会发生此错误。 在这种情况下，还将记录一个审核事件，其“类别”为“ApplicationManagement”、“活动类型”为“许可应用程序”、“状态原因”为“检测到风险应用程序”。
 
@@ -44,7 +44,7 @@ ms.locfileid: "99259971"
 ## <a name="policy-prevents-granting-permissions-error"></a>策略阻止权限授予错误
 * **AADSTS90093：** &lt;tenantDisplayName&gt; 管理员设置的策略阻止授予 &lt;name of app&gt; 请求的权限。 请与 &lt;tenantDisplayName&gt; 管理员联系，他/她可代表你授予对此应用的权限。
 
-当全局管理员关闭用户同意应用程序的能力，而非管理员用户尝试使用要求同意的应用程序时，会发生此错误。 此错误可通过管理员代表其组织授予访问此应用程序的权限进行解决。
+当全局管理员关闭用户对应用程序进行许可的能力，非管理员用户尝试使用的应用程序需要许可时，会发生此错误。 此错误可通过管理员代表其组织授予访问此应用程序的权限进行解决。
 
 ## <a name="intermittent-problem-error"></a>不稳定问题错误
 * **AADSTS90090：** 登录过程似乎遇到了间歇性问题，它记录了尝试授予 &lt;clientAppDisplayName&gt; 的权限。 请稍后重试。
@@ -84,7 +84,7 @@ ms.locfileid: "99259971"
 * **AADSTS900981:** 有风险的应用收到一个管理员同意请求。 (AdminConsentRequestRiskyAppWarning)
 * 这个应用可能有风险。 仅当你信任此应用时继续。
 
-当 Microsoft 确定同意请求可能存在风险时，将显示这两条消息。 在许多其他因素中，如果已 [验证的发布者](../develop/publisher-verification-overview.md) 尚未添加到应用注册中，则可能会发生这种情况。 禁用 [管理员同意工作流](configure-admin-consent-workflow.md) 时，会向最终用户显示第一个错误代码和消息。 如果启用管理员同意工作流，则将向最终用户和管理员显示第二个代码和消息。 
+当 Microsoft 确定同意请求可能存在风险时，将显示这两条消息。 在许多其他因素中，如果未将[经过验证的发布者](../develop/publisher-verification-overview.md)添加到应用注册中，则可能会发生这种情况。 如果禁用[管理员同意工作流](configure-admin-consent-workflow.md)，则将向最终用户显示第一个错误代码和消息。 如果启用管理员同意工作流，则将向最终用户和管理员显示第二个代码和消息。 
 
 最终用户将无法对检测为有风险的应用授予许可。 管理员可以评估应用，但必须谨慎行事。 如果该应用在进一步审查后看起来可疑，可以从同意屏幕向 Microsoft 报告。 
 

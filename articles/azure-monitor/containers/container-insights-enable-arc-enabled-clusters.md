@@ -1,34 +1,34 @@
 ---
-title: 配置启用了 Azure Arc 的 Kubernetes 群集和容器 insights |Microsoft Docs
-description: 本文介绍如何在启用了 Azure Arc Kubernetes 群集的情况下配置与容器 insights 的监视。
+title: 使用容器见解配置启用了 Azure Arc 的 Kubernetes 群集 | Microsoft Docs
+description: 本文介绍如何在启用了 Azure Arc 的 Kubernetes 群集上配置通过容器见解进行监视的功能。
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 307f9d9928042410dc9b4443aba5c019c592980c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101711291"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>对已启用 Azure Arc 的 Kubernetes 群集启用监视
 
-容器见解提供丰富的监视体验，适用于 Azure Kubernetes 服务 (AKS) 和 AKS 引擎群集。 本文介绍如何使用 Azure Arc 启用对 Azure 外部托管的 Kubernetes 群集的监视，以实现类似的监视体验。
+容器见解针对 Azure Kubernetes 服务 (AKS) 和 AKS 引擎群集提供了丰富的监视体验。 本文介绍如何对承载在 Azure 外部且启用了 Azure Arc 的 Kubernetes 群集启用监视，以实现类似的监视体验。
 
-可以使用 PowerShell 或 Bash 脚本为 Kubernetes 的一个或多个现有部署启用容器见解。
+可以使用 PowerShell 或 Bash 脚本为一个或多个现有 Kubernetes 部署启用容器见解。
 
 ## <a name="supported-configurations"></a>支持的配置
 
-Container insights 支持监视 Azure Arc 启用的 Kubernetes (预览) ，如 [概述](container-insights-overview.md) 一文中所述，以下功能除外：
+容器见解支持对启用了 Azure Arc 的 Kubernetes（预览版）进行监视，如[概述](container-insights-overview.md)一文所述，但以下功能除外：
 
-- 实时数据 (预览) 
+- 实时数据（预览版）
 
-容器见解正式支持以下内容：
+容器见解正式支持以下功能：
 
 - Kubernetes 和支持策略的版本与 [AKS 支持](../../aks/supported-kubernetes-versions.md)的版本相同。
 
 - 支持以下容器运行时：Docker、Moby 和 CRI 兼容的运行时，例如 CRI-O 和 ContainerD。
 
-- 支持的主节点和辅助节点的 Linux OS 版本为： Ubuntu (18.04 LTS 和 16.04 LTS) 。
+- 支持的适用于主节点和工作器节点的 Linux OS 版本包括：Ubuntu（18.04 LTS 和 16.04 LTS）。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -36,15 +36,15 @@ Container insights 支持监视 Azure Arc 启用的 Kubernetes (预览) ，如 [
 
 - Log Analytics 工作区。
 
-    Container insights 支持 Azure [产品（按区域](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)）中列出的区域中的 Log Analytics 工作区。 若要创建你自己的工作区，可通过 [Azure 资源管理器](../logs/resource-manager-workspace.md)、[PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或 [Azure 门户](../logs/quick-create-workspace.md)进行创建。
+    容器见解支持在 Azure [产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)中列出的区域中的 Log Analytics 工作区。 若要创建你自己的工作区，可通过 [Azure 资源管理器](../logs/resource-manager-workspace.md)、[PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或 [Azure 门户](../logs/quick-create-workspace.md)进行创建。
 
-- 若要启用和访问 Container insights 中的功能，至少需要是 Azure 订阅中的 Azure *参与者* 角色的成员，并且是配置有容器见解 Log Analytics 工作区的 [*Log Analytics 参与者*](../logs/manage-access.md#manage-access-using-azure-permissions) 角色的成员。
+- 若要启用和访问容器见解中的功能，你至少需要是 Azure 订阅中的 Azure 参与者角色的成员，并且需要是配置了容器见解的 Log Analytics 工作区的 [Log Analytics 参与者](../logs/manage-access.md#manage-access-using-azure-permissions)角色的成员。
 
-- 你是 Azure Arc 群集资源中 " [参与者](../../role-based-access-control/built-in-roles.md#contributor) " 角色的成员。
+- 你是 Azure Arc 群集资源上的[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色的成员。
 
-- 若要查看监视数据，你是使用容器见解配置的 Log Analytics 工作区的 " [*Log Analytics 读取*](../logs/manage-access.md#manage-access-using-azure-permissions) 者角色" 权限的成员。
+- 若要查看监视数据，你需要是配置了容器见解的 Log Analytics 工作区中 [Log Analytics 读者](../logs/manage-access.md#manage-access-using-azure-permissions)角色的成员。
 
-- [HELM client](https://helm.sh/docs/using_helm/) ，为指定的 Kubernetes 群集加入容器见解图表。
+- [HELM 客户端](https://helm.sh/docs/using_helm/)，用于为指定的 Kubernetes 群集载入容器见解 chart。
 
 - 适用于 Linux 的 Log Analytics 代理的容器化版本与 Azure Monitor 进行通信需要以下代理和防火墙配置信息：
 
@@ -59,15 +59,15 @@ Container insights 支持监视 Azure Arc 启用的 Kubernetes (预览) ，如 [
 - 容器化代理要求在容器上指定以下环境变量，以便与群集中的 Kubernetes API 服务通信以收集清单数据 - `KUBERNETES_SERVICE_HOST` 和 `KUBERNETES_PORT_443_TCP_PORT`。
 
     >[!IMPORTANT]
-    >支持启用 Arc 的 Kubernetes 群集支持的最低代理版本为 ciprod04162020 或更高版本。
+    >监视启用了 Arc 的 Kubernetes 群集时支持使用的最低代理版本是 ciprod04162020 或更高版本。
 
-- 如果你使用 PowerShell 脚本方法启用监视，则需要[Powershell Core](/powershell/scripting/install/installing-powershell?view=powershell-6&preserve-view=true) 。
+- 如果你使用 PowerShell 脚本方法启用监视，则需要 [Powershell Core](/powershell/scripting/install/installing-powershell?view=powershell-6&preserve-view=true)。
 
-- 如果使用 Bash 脚本方法启用监视，则需要[bash 版本 4](https://www.gnu.org/software/bash/) 。
+- 如果你使用 Bash 脚本方法启用监视，则需要 [Bash 版本 4](https://www.gnu.org/software/bash/)。
 
-## <a name="identify-workspace-resource-id"></a>标识工作区资源 ID
+## <a name="identify-workspace-resource-id"></a>确定工作区资源 ID
 
-若要使用之前下载并与现有 Log Analytics 工作区集成的 PowerShell 或 bash 脚本来启用群集监视，请执行以下步骤以首先确定 Log Analytics 工作区的完整资源 ID。 `workspaceResourceId`当你运行命令对指定的工作区启用监视外接程序时，此参数是必需的。 如果没有要指定的工作区，则可以跳过包括 `workspaceResourceId` 参数，并让脚本为你创建新的工作区。
+若要使用之前下载的 PowerShell 或 bash 脚本来启用群集监视并与现有 Log Analytics 工作区集成，请执行以下步骤来首先确定 Log Analytics 工作区的完整资源 ID。 当你运行命令来对指定的工作区启用监视加载项时，这是 `workspaceResourceId` 参数所必需的。 如果你没有可指定的工作区，则可以跳过包括 `workspaceResourceId` 参数这一步，让脚本为你创建一个新的工作区。
 
 1. 使用以下命令列出你有权访问的所有订阅：
 
@@ -101,33 +101,33 @@ Container insights 支持监视 Azure Arc 启用的 Kubernetes (预览) ，如 [
 
 ## <a name="enable-monitoring-using-powershell"></a>使用 PowerShell 启用监视
 
-1. 使用以下命令将脚本下载并保存到使用监视外接程序配置群集的本地文件夹：
+1. 下载脚本并将其保存到本地文件夹中，该脚本使用以下命令为你的群集配置监视加载项：
 
     ```powershell
     Invoke-WebRequest https://aka.ms/enable-monitoring-powershell-script -OutFile enable-monitoring.ps1
     ```
 
-2. `$azureArcClusterResourceId`通过设置的相应值来配置变量 `subscriptionId` ， `resourceGroupName` 并 `clusterName` 表示启用了 Azure Arc 的 Kubernetes 群集资源的资源 ID。
+2. 通过设置 `subscriptionId`、`resourceGroupName` 和 `clusterName`（表示已启用 Azure Arc 的 Kubernetes 群集资源的资源 ID）的对应值来配置 `$azureArcClusterResourceId` 变量。
 
     ```powershell
     $azureArcClusterResourceId = "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
     ```
 
-3. `$kubeContext`通过运行命令，配置具有群集的 **kube 上下文** 的变量 `kubectl config get-contexts` 。 如果要使用当前上下文，请将值设置为 `""` 。
+3. 通过运行 `kubectl config get-contexts` 命令，使用群集的 kube-context 配置 `$kubeContext` 变量。 若要使用当前上下文，请将值设置为 `""`。
 
     ```powershell
     $kubeContext = "<kubeContext name of your k8s cluster>"
     ```
 
-4. 如果要使用现有 Azure Monitor Log Analytics 工作区，请 `$logAnalyticsWorkspaceResourceId` 使用表示工作区资源 ID 的相应值配置变量。 否则，将变量设置为， `""` 并且如果区域中尚不存在默认工作区，该脚本将在群集订阅的默认资源组中创建一个默认工作区。 创建的默认工作区类似于 *DefaultWorkspace-\<SubscriptionID>-\<Region>* 格式。
+4. 如果要使用现有的 Azure Monitor Log Analytics 工作区，请将变量 `$logAnalyticsWorkspaceResourceId` 配置为表示工作区资源 ID 的相应值。 否则，请将该变量设置为 `""`，脚本将在群集订阅的默认资源组中创建一个默认工作区（如果区域中尚不存在工作区）。 创建的默认工作区类似于 *DefaultWorkspace-\<SubscriptionID>-\<Region>* 格式。
 
     ```powershell
     $logAnalyticsWorkspaceResourceId = "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>"
     ```
 
-5. 如果启用了 Arc 的 Kubernetes 群集通过代理服务器通信，请 `$proxyEndpoint` 使用代理服务器的 URL 来配置该变量。 如果群集未通过代理服务器进行通信，则可以将值设置为 `""` 。  有关详细信息，请参阅本文稍后的[配置代理终结点](#configure-proxy-endpoint)。
+5. 如果启用了 Arc 的 Kubernetes 群集通过代理服务器进行通信，请将变量 `$proxyEndpoint` 配置为代理服务器的 URL。 如果群集不是通过代理服务器进行通信，则可以将该值设置为 `""`。  有关详细信息，请参阅本文稍后的[配置代理终结点](#configure-proxy-endpoint)。
 
-6. 运行以下命令以启用监视。
+6. 运行以下命令来启用监视。
 
     ```powershell
     .\enable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -kubeContext $kubeContext -workspaceResourceId $logAnalyticsWorkspaceResourceId -proxyEndpoint $proxyEndpoint
@@ -136,14 +136,14 @@ Container insights 支持监视 Azure Arc 启用的 Kubernetes (预览) ，如 [
 启用监视后，可能需要约 15 分钟才能查看群集的运行状况指标。
 
 ### <a name="using-service-principal"></a>使用服务主体
-脚本 *enable-monitoring.ps1* 使用交互式设备登录。 如果你更喜欢非交互式登录，则可以使用现有的服务主体，也可以创建一个具有所需权限的新服务主体，如 [先决条件](#prerequisites)中所述。 若要使用服务主体，你必须将 $servicePrincipalClientId、$servicePrincipalClientSecret 和 $tenantId 参数替换为你打算用于 *enable-monitoring.ps1* 脚本的服务主体的值。
+脚本 enable-monitoring.ps1 使用交互式设备登录。 如果你更喜欢非交互式登录，则可以使用现有服务主体，也可以创建一个具有所需权限的新服务主体，如[先决条件](#prerequisites)中所述。 若要使用服务主体，必须将 $servicePrincipalClientId、$servicePrincipalClientSecret 和 $tenantId 参数（包含要使用的服务主体的值）传递给 enable-monitoring.ps1 脚本。
 
 ```powershell
 $subscriptionId = "<subscription Id of the Azure Arc connected cluster resource>"
 $servicePrincipal = New-AzADServicePrincipal -Role Contributor -Scope "/subscriptions/$subscriptionId"
 ```
 
-下面的角色分配仅适用于使用与 K8s 连接的群集资源不同的 Azure 订阅中的现有 Log Analytics 工作区的情况。
+仅当使用与 Arc K8s 连接群集资源不同的 Azure 订阅中的现有 Log Analytics 工作区时，以下角色分配才适用。
 
 ```powershell
 $logAnalyticsWorkspaceResourceId = "<Azure Resource Id of the Log Analytics Workspace>" # format of the Azure Log Analytics workspace should be /subscriptions/<subId>/resourcegroups/<rgName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>
@@ -162,39 +162,39 @@ $tenantId = (Get-AzSubscription -SubscriptionId $subscriptionId).TenantId
 
 
 
-## <a name="enable-using-bash-script"></a>启用使用 bash 脚本
+## <a name="enable-using-bash-script"></a>使用 bash 脚本进行启用
 
-执行以下步骤以使用提供的 bash 脚本启用监视。
+使用提供的 bash 脚本执行以下步骤来启用监视。
 
-1. 使用以下命令将脚本下载并保存到使用监视外接程序配置群集的本地文件夹：
+1. 下载脚本并将其保存到本地文件夹中，该脚本使用以下命令为你的群集配置监视加载项：
 
     ```bash
     curl -o enable-monitoring.sh -L https://aka.ms/enable-monitoring-bash-script
     ```
 
-2. `azureArcClusterResourceId`通过设置的相应值来配置变量 `subscriptionId` ， `resourceGroupName` 并 `clusterName` 表示启用了 Azure Arc 的 Kubernetes 群集资源的资源 ID。
+2. 通过设置 `subscriptionId`、`resourceGroupName` 和 `clusterName`（表示已启用 Azure Arc 的 Kubernetes 群集资源的资源 ID）的对应值来配置 `azureArcClusterResourceId` 变量。
 
     ```bash
     export azureArcClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
     ```
 
-3. `kubeContext`通过运行命令，配置具有群集的 **kube 上下文** 的变量 `kubectl config get-contexts` 。 如果要使用当前上下文，请将值设置为 `""` 。
+3. 通过运行 `kubectl config get-contexts` 命令，使用群集的 kube-context 配置 `kubeContext` 变量。 若要使用当前上下文，请将值设置为 `""`。
 
     ```bash
     export kubeContext="<kubeContext name of your k8s cluster>"
     ```
 
-4. 如果要使用现有 Azure Monitor Log Analytics 工作区，请 `logAnalyticsWorkspaceResourceId` 使用表示工作区资源 ID 的相应值配置变量。 否则，将变量设置为， `""` 并且如果区域中尚不存在默认工作区，该脚本将在群集订阅的默认资源组中创建一个默认工作区。 创建的默认工作区类似于 *DefaultWorkspace-\<SubscriptionID>-\<Region>* 格式。
+4. 如果要使用现有的 Azure Monitor Log Analytics 工作区，请将变量 `logAnalyticsWorkspaceResourceId` 配置为表示工作区资源 ID 的相应值。 否则，请将该变量设置为 `""`，脚本将在群集订阅的默认资源组中创建一个默认工作区（如果区域中尚不存在工作区）。 创建的默认工作区类似于 *DefaultWorkspace-\<SubscriptionID>-\<Region>* 格式。
 
     ```bash
     export logAnalyticsWorkspaceResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>"
     ```
 
-5. 如果启用了 Arc 的 Kubernetes 群集通过代理服务器通信，请 `proxyEndpoint` 使用代理服务器的 URL 来配置该变量。 如果群集未通过代理服务器进行通信，则可以将值设置为 `""` 。 有关详细信息，请参阅本文稍后的[配置代理终结点](#configure-proxy-endpoint)。
+5. 如果启用了 Arc 的 Kubernetes 群集通过代理服务器进行通信，请将变量 `proxyEndpoint` 配置为代理服务器的 URL。 如果群集不是通过代理服务器进行通信，则可以将该值设置为 `""`。 有关详细信息，请参阅本文稍后的[配置代理终结点](#configure-proxy-endpoint)。
 
-6. 若要在群集上启用监视，可以根据部署方案提供不同的命令。
+6. 若要在群集上启用监视，可以使用根据你的部署方案提供的各种命令。
 
-    运行以下命令以使用默认选项启用监视，如使用当前 kube、创建默认 Log Analytics 工作区，而不指定代理服务器：
+    运行以下命令以使用默认选项（例如使用当前 kube-context）启用监视，创建默认 Log Analytics 工作区，而不指定代理服务器：
 
     ```bash
     bash enable-monitoring.sh --resource-id $azureArcClusterResourceId
@@ -221,7 +221,7 @@ $tenantId = (Get-AzSubscription -SubscriptionId $subscriptionId).TenantId
 启用监视后，可能需要约 15 分钟才能查看群集的运行状况指标。
 
 ### <a name="using-service-principal"></a>使用服务主体
-Bash 脚本 *enable-monitoring.sh* 使用交互式设备登录。 如果你更喜欢非交互式登录，则可以使用现有的服务主体，也可以创建一个具有所需权限的新服务主体，如 [先决条件](#prerequisites)中所述。 若要使用服务主体，你必须将你打算用于 *enable-monitoring.sh* bash 脚本的服务主体的客户端 id、--客户端密码和--租户 id 值传递给。
+bash 脚本 enable-monitoring.sh 使用交互式设备登录。 如果你更喜欢非交互式登录，则可以使用现有服务主体，也可以创建一个具有所需权限的新服务主体，如[先决条件](#prerequisites)中所述。 若要使用服务主体，你必须将要使用的服务主体的 --client-id、--client-secret 和 --tenant-id 值传递给 enable-monitoring.sh bash 脚本。
 
 ```bash
 subscriptionId="<subscription Id of the Azure Arc connected cluster resource>"
@@ -229,7 +229,7 @@ servicePrincipal=$(az ad sp create-for-rbac --role="Contributor" --scopes="/subs
 servicePrincipalClientId=$(echo $servicePrincipal | jq -r '.appId')
 ```
 
-下面的角色分配仅适用于使用与 K8s 连接的群集资源不同的 Azure 订阅中的现有 Log Analytics 工作区的情况。
+仅当使用与 Arc K8s 连接群集资源不同的 Azure 订阅中的现有 Log Analytics 工作区时，以下角色分配才适用。
 
 ```bash
 logAnalyticsWorkspaceResourceId="<Azure Resource Id of the Log Analytics Workspace>" # format of the Azure Log Analytics workspace should be /subscriptions/<subId>/resourcegroups/<rgName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>
@@ -247,7 +247,7 @@ bash enable-monitoring.sh --resource-id $azureArcClusterResourceId --client-id $
 
 ## <a name="configure-proxy-endpoint"></a>配置代理终结点
 
-借助容器见解的容器化代理，你可以配置代理终结点，使其能够通过代理服务器进行通信。 容器化代理和 Azure Monitor 之间的通信可以是 HTTP 或 HTTPS 代理服务器，并且支持匿名身份验证和基本身份验证 (用户名/密码) 。
+借助容器见解的容器化代理，你可以配置代理终结点，使其能够通过代理服务器进行通信。 容器化代理与 Azure Monitor 之间的通信可以通过 HTTP 或 HTTPS 代理服务器进行，并且支持匿名身份验证和基本身份验证（用户名/密码）。
 
 代理配置值具有以下语法：`[protocol://][user:password@]proxyhost[:port]`
 
@@ -268,7 +268,7 @@ bash enable-monitoring.sh --resource-id $azureArcClusterResourceId --client-id $
 
 ### <a name="configure-using-powershell"></a>使用 PowerShell 进行配置
 
-指定代理服务器的用户名和密码、IP 地址或 FQDN 以及端口号。 例如：
+指定代理服务器的用户名和密码、IP 地址或 FQDN，以及端口号。 例如：
 
 ```powershell
 $proxyEndpoint = https://<user>:<password>@<proxyhost>:<port>
@@ -276,7 +276,7 @@ $proxyEndpoint = https://<user>:<password>@<proxyhost>:<port>
 
 ### <a name="configure-using-bash"></a>使用 bash 进行配置
 
-指定代理服务器的用户名和密码、IP 地址或 FQDN 以及端口号。 例如：
+指定代理服务器的用户名和密码、IP 地址或 FQDN，以及端口号。 例如：
 
 ```bash
 export proxyEndpoint=https://<user>:<password>@<proxyhost>:<port>
@@ -284,10 +284,10 @@ export proxyEndpoint=https://<user>:<password>@<proxyhost>:<port>
 
 ## <a name="next-steps"></a>后续步骤
 
-- 启用监视功能以收集启用了 Arc 的 Kubernetes 群集的运行状况和资源使用情况，并了解 [如何使用](container-insights-analyze.md) 容器见解。
+- 启用监视功能以收集启用了 Arc 的 Kubernetes 群集及其上运行的工作负荷的运行状况和资源利用率后，请了解[如何使用容器见解](container-insights-analyze.md)。
 
-- 默认情况下，容器化代理收集所有命名空间（kube 除外）中运行的所有容器的 stdout/stderr 容器日志。 若要配置特定于特定命名空间或命名空间的容器日志集合，请查看 [Container Insights 代理配置](container-insights-agent-config.md) ，将所需的数据收集设置配置为 ConfigMap 配置文件。
+- 默认情况下，容器化代理会收集在所有命名空间（kube-system 除外）中运行的所有容器的 stdout/stderr 容器日志。 若要配置特定于某个或某些命名空间的容器日志收集，请参阅[容器见解代理配置](container-insights-agent-config.md)，为 ConfigMap 配置文件配置所需的数据收集设置。
 
-- 若要从群集中擦除和分析 Prometheus 指标，请查看 [配置 Prometheus 指标抓取](container-insights-prometheus-integration.md)
+- 若要从群集中抓取和分析 Prometheus 指标，请参阅[配置 Prometheus 指标抓取](container-insights-prometheus-integration.md)。
 
-- 若要了解如何停止监视启用了 Arc 的 Kubernetes 群集和容器 insights，请参阅 [如何停止监视混合群集](container-insights-optout-hybrid.md#how-to-stop-monitoring-on-arc-enabled-kubernetes)。
+- 若要了解如何停止使用容器见解监视启用了 Arc 的 Kubernetes 群集，请参阅[如何停止监视混合群集](container-insights-optout-hybrid.md#how-to-stop-monitoring-on-arc-enabled-kubernetes)。

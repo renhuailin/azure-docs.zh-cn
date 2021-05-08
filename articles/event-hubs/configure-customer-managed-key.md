@@ -3,15 +3,15 @@ title: 配置自己的密钥用于加密 Azure 事件中心静态数据
 description: 本文介绍如何配置自己的密钥以用于加密 Azure 事件中心静态数据。
 ms.topic: conceptual
 ms.date: 02/01/2021
-ms.openlocfilehash: c9d1ac1c3a3387600fed80939598baafe658054b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 33587812121051d93aa8b939c3df70530ba65c5e
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "100595997"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812437"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>使用 Azure 门户配置客户管理的密钥以用于加密 Azure 事件中心静态数据
-Azure 事件中心提供了通过 Azure 存储服务加密 (Azure SSE) 对静态数据进行加密的功能。 事件中心服务使用 Azure 存储来存储数据。 使用 Azure 存储存储的所有数据都使用 Microsoft 托管密钥进行加密。 如果你使用自己的密钥（也称为创建自己的密钥 (BYOK) 或客户管理的密钥），则仍使用 Microsoft 托管密钥对数据进行加密，但另外，将使用客户管理的密钥加密 Microsoft 托管密钥。 使用此功能可以创建、轮换、禁用用于加密 Microsoft 托管密钥的客户管理的密钥，以及撤销对这些密钥的访问权限。 启用 BYOK 功能是在命名空间中执行的一次性设置过程。
+Azure 事件中心提供了通过 Azure 存储服务加密 (Azure SSE) 对静态数据进行加密的功能。 事件中心服务使用 Azure 存储来存储数据。 使用 Azure 存储存储的所有数据都使用 Microsoft 托管密钥进行加密。 如果你使用自己的密钥（也称为创建自己的密钥 (BYOK) 或客户管理的密钥），则仍使用 Microsoft 托管密钥对数据进行加密，但另外，将使用客户管理的密钥对 Microsoft 托管密钥进行加密。 使用此功能可以创建、轮换、禁用用于加密 Microsoft 托管密钥的客户管理的密钥，以及撤销对这些密钥的访问权限。 启用 BYOK 功能是在命名空间中执行的一次性设置过程。
 
 > [!NOTE]
 > - BYOK 功能受[事件中心专用单租户](event-hubs-dedicated-overview.md)群集支持。 不能为标准事件中心命名空间启用此功能。
@@ -38,12 +38,12 @@ Azure 事件中心提供了通过 Azure 存储服务加密 (Azure SSE) 对静态
 启用客户管理的密钥后，需要将客户管理的密钥关联到 Azure 事件中心命名空间。 事件中心仅支持 Azure Key Vault。 如果启用了上一部分所述的“使用客户管理的密钥进行加密”选项，则需要将密钥导入 Azure Key Vault。 此外，必须为密钥配置“软删除”和“不清除”。 可以使用 [PowerShell](../key-vault/general/key-vault-recovery.md) 或 [CLI](../key-vault/general/key-vault-recovery.md) 配置这些设置。
 
 1. 若要创建新的密钥保管库，请遵循 Azure Key Vault [快速入门](../key-vault/general/overview.md)。 有关导入现有密钥的详细信息，请参阅[关于密钥、机密和证书](../key-vault/general/about-keys-secrets-certificates.md)。
-1. 若要在创建保管库时启用“软删除”和“清除保护”，请使用 [az keyvault create](/cli/azure/keyvault#az-keyvault-create) 命令。
+1. 若要在创建保管库时启用“软删除”和“清除保护”，请使用 [az keyvault create](/cli/azure/keyvault#az_keyvault_create) 命令。
 
     ```azurecli-interactive
     az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
     ```    
-1. 若要向现有保管库（已启用“软删除”）添加“清除保护”，请使用 [az keyvault update](/cli/azure/keyvault#az-keyvault-update) 命令。
+1. 若要向现有保管库（已启用“软删除”）添加“清除保护”，请使用 [az keyvault update](/cli/azure/keyvault#az_keyvault_update) 命令。
 
     ```azurecli-interactive
     az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
@@ -65,7 +65,7 @@ Azure 事件中心提供了通过 Azure 存储服务加密 (Azure SSE) 对静态
 可以使用 Azure Key Vault 轮换机制来轮换密钥保管库中的密钥。 还可以设置激活和过期日期以自动轮换密钥。 事件中心服务将检测新密钥版本，并自动开始使用新版本。
 
 ## <a name="revoke-access-to-keys"></a>撤销对密钥的访问权限
-撤销对加密密钥的访问权限不会从事件中心中清除数据。 但是，将无法从事件中心命名空间访问数据。 可以通过使用访问策略或删除密钥来撤销加密密钥。 在[保护对密钥保管库的访问](../key-vault/general/secure-your-key-vault.md)中详细了解访问策略以及如何保护密钥保管库。
+撤销对加密密钥的访问权限不会从事件中心中清除数据。 但是，将无法从事件中心命名空间访问数据。 可以通过使用访问策略或删除密钥来撤销加密密钥。 在[保护对密钥保管库的访问](../key-vault/general/security-features.md)中详细了解访问策略以及如何保护密钥保管库。
 
 撤销加密密钥后，已加密的命名空间中的事件中心服务将无法正常运行。 如果启用了对密钥的访问或者还原了已删除的密钥，则事件中心服务将选取密钥，使你能够从已加密的事件中心命名空间访问数据。
 
@@ -98,7 +98,7 @@ Azure 事件中心提供了通过 Azure 存储服务加密 (Azure SSE) 对静态
 | ResourceId | Azure Resource Manager 资源 ID |
 | keyVault | 密钥保管库的名称。 |
 | key | 用于加密事件中心命名空间的密钥名称。 |
-| version | 所使用的密钥的版本。 |
+| 版本 | 所使用的密钥的版本。 |
 | operation | 对密钥保管库中的密钥执行的操作。 例如，禁用/启用密钥、包装或展开 |
 | code | 与操作关联的代码。 示例：错误代码 404 表示找不到密钥。 |
 | message | 与操作关联的任何错误消息 |

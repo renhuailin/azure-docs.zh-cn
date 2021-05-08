@@ -1,6 +1,6 @@
 ---
 title: 从计算机连接到 VNet - P2S VPN 和本机 Azure 证书身份验证：PowerShell
-description: 使用 P2S 和自签名或 CA 颁发的证书将 Windows 和 macOS 客户端安全地连接到 Azure 虚拟网络。 本文使用 PowerShell。
+description: 使用 P2S 和自签名证书或 CA 颁发的证书将 Windows 和 macOS 客户端安全地连接到 Azure 虚拟网络。 本文使用 PowerShell。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -9,19 +9,19 @@ ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: cherylmc
 ms.openlocfilehash: ed0a60c88c33af70b7d780d6c4735c5f8e65b35b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94660400"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>使用本机 Azure 证书身份验证配置与 VNet 的点到站点 VPN 连接：PowerShell
 
-本文可帮助你将运行 Windows、Linux 或 macOS 的单个客户端安全地连接到 Azure VNet。 如果要从远程位置连接到 VNet，例如从家里或会议远程办公，点到站点 VPN 连接将非常有用。 如果只有一些客户端需要连接到 VNet，也可使用 P2S VPN 来代替站点到站点 VPN。 点到站点连接不需要 VPN 设备或面向公众的 IP 地址。 P2S 基于 SSTP（安全套接字隧道协议）或 IKEv2 创建 VPN 连接。
+本文介绍如何将运行 Windows、Linux 或 macOS 的单个客户端安全地连接到 Azure VNet。 若要从远程位置连接到 VNet，例如从家里或会议室进行远程通信，则可使用点到站点 VPN。 如果只有一些客户端需要连接到 VNet，也可使用 P2S VPN 来代替站点到站点 VPN。 点到站点连接不需要 VPN 设备或面向公众的 IP 地址。 P2S 基于 SSTP（安全套接字隧道协议）或 IKEv2 创建 VPN 连接。
 
-:::image type="content" source="./media/vpn-gateway-how-to-point-to-site-rm-ps/point-to-site-diagram.png" alt-text="从计算机连接到 Azure VNet-点到站点连接示意图":::
+:::image type="content" source="./media/vpn-gateway-how-to-point-to-site-rm-ps/point-to-site-diagram.png" alt-text="从计算机连接到 Azure VNet - 点到站点连接示意图":::
 
-有关点到站点 VPN 的详细信息，请参阅 [关于点到站点 vpn](point-to-site-about.md)。 若要使用 Azure 门户创建此配置，请参阅 [使用 Azure 门户配置点到站点 VPN](vpn-gateway-howto-point-to-site-resource-manager-portal.md)。
+有关点到站点 VPN 的详细信息，请参阅[关于点到站点 VPN](point-to-site-about.md)。 若要使用 Azure 门户创建此配置，请参阅[使用 Azure 门户配置点到站点 VPN](vpn-gateway-howto-point-to-site-resource-manager-portal.md)。
 
 [!INCLUDE [P2S basic architecture](../../includes/vpn-gateway-p2s-architecture.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "94660400"
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 >[!IMPORTANT]
-> 本文中的许多步骤均可使用 Azure Cloud Shell。 但是，不能使用 Cloud Shell 来生成证书。 此外，若要上传根证书公钥，您必须使用 Azure PowerShell 本地或 Azure 门户。
+> 本文中的多数步骤都可以使用 Azure Cloud Shell。 但是，不能使用 Cloud Shell 来生成证书。 另外，若要上传根证书公钥，必须使用本地 Azure PowerShell 或 Azure 门户。
 >
 
 [!INCLUDE [PowerShell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
@@ -41,9 +41,9 @@ ms.locfileid: "94660400"
 
 [!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
 
-## <a name="2-declare-variables"></a><a name="declare"></a>2. 声明变量
+## <a name="2-declare-variables"></a><a name="declare"></a>2.声明变量
 
-对于本文，我们将使用变量，以便您可以轻松地将值更改为应用于您自己的环境，而无需自行更改这些示例。 声明要使用的变量。 你可以使用以下示例，如有必要，请将值替换为自己的值。 如果在练习期间的任何时候关闭了 PowerShell/Cloud Shell 会话，只需再次复制和粘贴该值，重新声明变量。
+我们在本文中使用变量，以便你可以轻松地更改值以应用于自己的环境，而无需更改示例本身。 声明要使用的变量。 可以使用以下示例，根据需要将值替换为自己的值。 如果在练习期间的任何时候关闭了 PowerShell/Cloud Shell 会话，只需再次复制和粘贴该值，重新声明变量。
 
 ```azurepowershell-interactive
 $VNetName  = "VNet1"
@@ -61,7 +61,7 @@ $GWIPconfName = "gwipconf"
 $DNS = "10.2.1.4"
 ```
 
-## <a name="3-configure-a-vnet"></a><a name="ConfigureVNet"></a>3. 配置 VNet
+## <a name="3-configure-a-vnet"></a><a name="ConfigureVNet"></a>3.配置 VNet
 
 1. 创建资源组。
 
@@ -69,7 +69,7 @@ $DNS = "10.2.1.4"
    New-AzResourceGroup -Name $RG -Location $Location
    ```
 
-1. 为虚拟网络创建子网配置，并将其命名为 *前端* 和 *GatewaySubnet*。 这些前缀必须是已声明的 VNet 地址空间的一部分。
+1. 为虚拟网络创建子网配置，并将其命名为 FrontEnd 和 GatewaySubnet 。 这些前缀必须是已声明的 VNet 地址空间的一部分。
 
    ```azurepowershell-interactive
    $fesub = New-AzVirtualNetworkSubnetConfig -Name $FESubName -AddressPrefix $FESubPrefix
@@ -106,16 +106,16 @@ $DNS = "10.2.1.4"
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
    ```
 
-## <a name="4-create-the-vpn-gateway"></a><a name="creategateway"></a>4. 创建 VPN 网关
+## <a name="4-create-the-vpn-gateway"></a><a name="creategateway"></a>4.创建 VPN 网关
 
 在此步骤中，将为 VNet 配置和创建虚拟网络网关。
 
-* -GatewayType 必须是 **Vpn** ，且-VpnType 必须是 **RouteBased**。
-* -VpnClientProtocol 用来指定要启用的隧道的类型。 隧道选项为 **OpenVPN、SSTP** 和 **IKEv2**。 可以选择启用其中之一或任何受支持的组合。 如果要启用多个类型，请以逗号分隔的形式指定名称。 不能同时启用 OpenVPN 和 SSTP。 Android 和 Linux 上的 strongSwan 客户端以及 iOS 和 OSX 上的本机 IKEv2 VPN 客户端仅会使用 IKEv2 隧道进行连接。 Windows 客户端会首先尝试 IKEv2，如果不能连接，则会回退到 SSTP。 可以使用 OpenVPN 客户端连接到 OpenVPN 隧道类型。
+* -GatewayType 必须是 **Vpn**，-VpnType 必须是 **RouteBased**。
+* -VpnClientProtocol 用来指定要启用的隧道的类型。 隧道选项为 OpenVPN、SSTP 和 IKEv2 。 可以选择启用其中之一或任何受支持的组合。 如果要启用多个类型，请以逗号分隔的形式指定名称。 不能同时启用 OpenVPN 和 SSTP。 Android 和 Linux 上的 strongSwan 客户端以及 iOS 和 OSX 上的本机 IKEv2 VPN 客户端仅会使用 IKEv2 隧道进行连接。 Windows 客户端会首先尝试 IKEv2，如果不能连接，则会回退到 SSTP。 可以使用 OpenVPN 客户端连接到 OpenVPN 隧道类型。
 * 虚拟网关“基本”SKU 不支持 IKEv2、OpenVPN 或 RADIUS 身份验证。 如果计划让 Mac 客户端连接到虚拟网络，请不要使用基本 SKU。
 * VPN 网关可能需要长达 45 分钟的时间才能完成，具体取决于所选[网关 SKU](vpn-gateway-about-vpn-gateway-settings.md)。 本示例使用 IKEv2。
 
-1. 为 VNet 配置和创建虚拟网络网关。 创建网关大约需要45分钟。
+1. 为 VNet 配置和创建虚拟网络网关。 创建网关大约需要 45 分钟。
 
    ```azurepowershell-interactive
    New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
@@ -123,30 +123,30 @@ $DNS = "10.2.1.4"
    -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientProtocol "IKEv2"
    ```
 
-1. 创建网关后，可以使用以下示例查看它。 如果在创建网关时关闭了 PowerShell 或它超时，则可以再次 [声明变量](#declare) 。
+1. 创建网关后，可以使用以下示例进行查看。 如果在创建网关时关闭了 PowerShell 或 PowerShell 超时，则可以再次[声明变量](#declare)。
 
    ```azurepowershell-interactive
    Get-AzVirtualNetworkGateway -Name $GWName -ResourceGroup $RG
    ```
 
-## <a name="5-add-the-vpn-client-address-pool"></a><a name="addresspool"></a>5. 添加 VPN 客户端地址池
+## <a name="5-add-the-vpn-client-address-pool"></a><a name="addresspool"></a>5.添加 VPN 客户端地址池
 
 创建完 VPN 网关后即可添加 VPN 客户端地址池。 VPN 客户端地址池是 VPN 客户端在连接时要从中接收 IP 地址的范围。 使用专用 IP 地址范围时，该范围不得与要通过其进行连接的本地位置重叠，也不得与要连接到其中的 VNet 重叠。
 
-在此示例中，VPN 客户端地址池在前面的步骤中声明为 [变量](#declare) 。
+在此示例中，VPN 客户端地址池在之前的步骤中声明为[变量](#declare)。
 
 ```azurepowershell-interactive
 $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientAddressPool $VPNClientAddressPool
 ```
 
-## <a name="6-generate-certificates"></a><a name="Certificates"></a>6. 生成证书
+## <a name="6-generate-certificates"></a><a name="Certificates"></a>6.生成证书
 
 >[!IMPORTANT]
-> 不能使用 Azure Cloud Shell 生成证书。 必须使用本节中所述的方法之一。 如果要使用 PowerShell，则必须在本地安装它。
+> 不能使用 Azure Cloud Shell 生成证书。 必须使用本节中所述的方法之一。 如果要使用 PowerShell，则必须在本地安装。
 >
 
-Azure 使用证书对点到站点 Vpn 的 VPN 客户端进行身份验证。 请将根证书的公钥信息上传到 Azure， 然后即可将该公钥视为“可信”公钥。 必须根据可信根证书生成客户端证书，并将其安装在每个客户端计算机的 Certificates-Current User/个人证书存储中。 当客户端启动到 VNet 的连接时，使用证书进行身份验证。 
+Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 请将根证书的公钥信息上传到 Azure， 然后即可将该公钥视为“可信”公钥。 必须根据可信根证书生成客户端证书，并将其安装在每个客户端计算机的 Certificates-Current User/个人证书存储中。 当客户端启动到 VNet 的连接时，使用证书进行身份验证。 
 
 如果使用自签名证书，这些证书必须使用特定的参数创建。 可以按照 [PowerShell 和 Windows 10](vpn-gateway-certificates-point-to-site.md) 或 [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)（如果没有 Windows 10）的说明，创建自签名证书。 生成自签名根证书和客户端证书时，必须按说明中的步骤操作，这一点很重要。 否则，生成的证书将不兼容 P2S 连接，并且会出现连接错误。
 
@@ -154,20 +154,20 @@ Azure 使用证书对点到站点 Vpn 的 VPN 客户端进行身份验证。 请
 
 1. [!INCLUDE [Root certificate](../../includes/vpn-gateway-p2s-rootcert-include.md)]
 
-1. 创建根证书 [以后，请将公共](vpn-gateway-certificates-point-to-site.md#cer) 证书数据 (不是作为 Base64 编码的 x.509 文件的私钥) 。
+1. 创建根证书后，将公共证书数据（不是私钥）作为 Base64 编码的 X.509 .cer 文件[导出](vpn-gateway-certificates-point-to-site.md#cer)。
 
 ### <a name="client-certificate"></a><a name="generate"></a>客户端证书
 
 1. [!INCLUDE [Generate a client certificate](../../includes/vpn-gateway-p2s-clientcert-include.md)]
 
-1. 创建客户端证书后，将其 [导出](vpn-gateway-certificates-point-to-site.md#clientexport) 。 将向要连接的客户端计算机分发客户端证书。
+1. 生成客户端证书后，将其[导出](vpn-gateway-certificates-point-to-site.md#clientexport)。 客户端证书将分发到将要连接的客户端计算机。
 
-## <a name="7-upload-the-root-certificate-public-key-information"></a><a name="upload"></a>7. 上传根证书公钥信息
+## <a name="7-upload-the-root-certificate-public-key-information"></a><a name="upload"></a>7.上传根证书的公钥信息
 
 验证 VPN 网关是否已创建完毕。 创建完以后，即可为委托给 Azure 的根证书上传 .cer 文件（其中包含公钥信息）。 上传 .cer 文件后，Azure 可以使用该文件对已安装客户端证书（根据可信根证书生成）的客户端进行身份验证。 可在以后根据需要上传更多的可信根证书文件（最多 20 个）。
 
 >[!NOTE]
-> 不能使用 Azure Cloud Shell 上传 .cer 文件。 您可以在您的计算机上本地使用 PowerShell，也可以使用 [Azure 门户步骤](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)。
+> 不能使用 Azure Cloud Shell 上传 .cer 文件。 可以在本地计算机上使用 PowerShell，或者可以使用 [Azure 门户步骤](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)。
 >
 
 1. 为证书名称声明变量，将值替换为自己的值。
@@ -184,27 +184,27 @@ Azure 使用证书对点到站点 Vpn 的 VPN 客户端进行身份验证。 请
    $CertBase64 = [system.convert]::ToBase64String($cert.RawData)
    ```
 
-1. 将公钥信息上传到 Azure。 上传证书信息以后，Azure 就会将该证书视为受信任的根证书。 上传时，请确保在计算机上本地运行 PowerShell，或者可以使用 [Azure 门户步骤](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)。 无法使用 Azure Cloud Shell 上传。
+1. 将公钥信息上传到 Azure。 上传证书信息以后，Azure 就会将该证书视为受信任的根证书。 上传时，请确保在本地计算机上运行 PowerShell，或者可以使用 [Azure 门户步骤](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)。 不能使用 Azure Cloud Shell 上传。
 
    ```azurepowershell
    Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName -VirtualNetworkGatewayname "VNet1GW" -ResourceGroupName "TestRG1" -PublicCertData $CertBase64
    ```
 
-## <a name="8-install-an-exported-client-certificate"></a><a name="clientcertificate"></a>8. 安装导出的客户端证书
+## <a name="8-install-an-exported-client-certificate"></a><a name="clientcertificate"></a>8.安装已导出的客户端证书
 
-以下步骤可帮助你在 Windows 客户端上安装。 有关其他客户端和详细信息，请参阅 [安装客户端证书](point-to-site-how-to-vpn-client-install-azure-cert.md)。
+以下步骤有助于在 Windows 客户端上进行安装。 有关其他客户端和详细信息，请参阅[安装客户端证书](point-to-site-how-to-vpn-client-install-azure-cert.md)。
 
 [!INCLUDE [Install on Windows](../../includes/vpn-gateway-certificates-install-client-cert-include.md)]
 
 确保已将客户端证书与整个证书链（默认）一起作为 .pfx 导出。 否则，根证书信息就不会出现在客户端计算机上，客户端将无法进行正常的身份验证。
 
-## <a name="9-configure-the-vpn-client"></a><a name="clientconfig"></a>9. 配置 VPN 客户端
+## <a name="9-configure-the-vpn-client"></a><a name="clientconfig"></a>9.配置 VPN 客户端
 
-在本部分中，将配置计算机的 native client 以连接到虚拟网络网关。 例如，当你在 Windows 计算机上执行 "VPN 设置" 时，可以添加 VPN 连接。 点到站点连接需要特定的配置设置。 这些步骤可帮助你使用特定设置创建包，你的本机 VPN 客户端需要能够通过点到站点连接来连接到虚拟网络。
+在本部分中，你将为计算机配置本机客户端以连接到虚拟网络网关。 例如，当你在 Windows 计算机上转到 VPN 设置时，可以添加 VPN 连接。 点到站点连接需要特定的配置设置。 这些步骤可帮助你创建具有特定设置的包，你的本机 VPN 客户端需要这些特定设置才能通过点到站点连接来连接到虚拟网络。
 
-你可以使用以下快速示例生成和安装客户端配置包。 有关包内容的详细信息以及有关如何生成和安装 VPN 客户端配置文件的其他说明，请参阅 [创建和安装 vpn 客户端配置文件](point-to-site-vpn-client-configuration-azure-cert.md)。
+可以使用以下快速示例生成和安装客户端配置包。 有关包内容的详细信息以及有关生成和安装 VPN 客户端配置文件的其他说明，请参阅[创建和安装 VPN 客户端配置文件](point-to-site-vpn-client-configuration-azure-cert.md)。
 
-如果需要再次声明变量，可在 [此处](#declare)找到。
+如果需要再次声明变量，可以在[此处](#declare)找到它们。
 
 ### <a name="to-generate-configuration-files"></a>生成配置文件
 
@@ -218,7 +218,7 @@ $profile.VPNProfileSASUrl
 
 [!INCLUDE [Windows instructions](../../includes/vpn-gateway-p2s-client-configuration-windows.md)]
 
-## <a name="10-connect-to-azure"></a><a name="connect"></a>10. 连接到 Azure
+## <a name="10-connect-to-azure"></a><a name="connect"></a>10.连接到 Azure
 
 ### <a name="windows-vpn-client"></a>Windows VPN 客户端
 
@@ -265,11 +265,11 @@ $profile.VPNProfileSASUrl
 
 ## <a name="to-add-or-remove-a-root-certificate"></a><a name="addremovecert"></a>添加或删除根证书
 
-可以在 Azure 中添加和删除受信任的根证书。 删除根证书时，如果客户端的证书是从该根证书生成的，则客户端不能进行身份验证，因此无法进行连接。 如果希望客户端进行身份验证和连接，则需安装新客户端证书，该证书是从委托（上传）给 Azure 的根证书生成的。 这些步骤需要在计算机上本地安装 Azure PowerShell cmdlet (不 Azure Cloud Shell) 。 你还可以使用 Azure 门户添加根证书。
+可以在 Azure 中添加和删除受信任的根证书。 删除根证书时，如果客户端的证书是从该根证书生成的，则客户端不能进行身份验证，因此无法进行连接。 如果希望客户端进行身份验证和连接，则需安装新客户端证书，该证书是从委托（上传）给 Azure 的根证书生成的。 这些步骤需要 Azure PowerShell cmdlet 本地安装在计算机上（而不是 Azure Cloud Shell）。 还可以使用 Azure 门户来添加根证书。
 
-**若要添加：**
+**添加：**
 
-最多可以将 20 个根证书 .cer 文件添加到 Azure。 以下步骤可帮助你添加根证书。 
+最多可以将 20 个根证书 .cer 文件添加到 Azure。 以下步骤用于添加根证书。 
 
 1. 准备要上传的 .cer 文件：
 
@@ -316,15 +316,15 @@ $profile.VPNProfileSASUrl
    -VirtualNetworkGatewayName "VNet1GW"
    ```
 
-## <a name="to-revoke-or-reinstate-a-client-certificate"></a><a name="revoke"></a>撤消或恢复客户端证书
+## <a name="to-revoke-or-reinstate-a-client-certificate"></a><a name="revoke"></a>撤销或恢复客户端证书
 
-可以吊销客户端证书。 证书吊销列表允许你根据单个客户端证书有选择地拒绝点到站点连接。 这不同于删除受信任的根证书。 如果从 Azure 中删除受信任的根证书 .cer，它会吊销由吊销的根证书生成/签名的所有客户端证书的访问权限。 如果吊销客户端证书而非根证书，则可继续使用从根证书生成的其他证书进行身份验证。
+可以吊销客户端证书。 通过证书吊销列表，可以选择性地拒绝基于单个客户端证书的点到站点连接。 这不同于删除受信任的根证书。 如果从 Azure 中删除受信任的根证书 .cer，它会吊销由吊销的根证书生成/签名的所有客户端证书的访问权限。 如果吊销客户端证书而非根证书，则可继续使用从根证书生成的其他证书进行身份验证。
 
 常见的做法是使用根证书管理团队或组织级别的访问权限，并使用吊销的客户端证书针对单个用户进行精细的访问控制。
 
 **若要撤消：**
 
-1. 检索客户端证书指纹。 有关详细信息，请参阅 [如何检索证书的指纹](/dotnet/framework/wcf/feature-details/how-to-retrieve-the-thumbprint-of-a-certificate)。
+1. 检索客户端证书指纹。 有关详细信息，请参阅[如何检索证书的指纹](/dotnet/framework/wcf/feature-details/how-to-retrieve-the-thumbprint-of-a-certificate)。
 
 1. 将信息复制到一个文本编辑器，删除所有空格，使之成为一个连续的字符串。 该字符串在下一步声明为变量。
 
@@ -353,7 +353,7 @@ $profile.VPNProfileSASUrl
 
 1. 添加指纹后，不再可以使用证书来连接。 客户端在尝试使用此证书进行连接时，会收到一条消息，指出证书不再有效。
 
-**若要恢复：**
+**复原：**
 
 可以通过从吊销的客户端证书列表中删除指纹来恢复客户端证书。
 
@@ -381,7 +381,7 @@ $profile.VPNProfileSASUrl
 
 ## <a name="point-to-site-faq"></a><a name="faq"></a>点到站点常见问题解答
 
-有关其他点到站点的信息，请参阅 [VPN 网关点到站点常见问题解答](vpn-gateway-vpn-faq.md#P2S)
+有关点到站点的其他信息，请参阅 [VPN 网关点到站点常见问题解答](vpn-gateway-vpn-faq.md#P2S)
 
 ## <a name="next-steps"></a>后续步骤
 

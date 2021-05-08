@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c37c672f8784052424e058837d31bc1d22fcfc57
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 683367251c220abe36660d61463bce9e5a0c52f9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552608"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100577758"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>计划 Azure Active Directory 报告和监视部署
 
@@ -47,7 +47,7 @@ Azure AD 报表提供环境中 Azure AD 活动（包括登录事件、审核事�
 * Azure 事件中心，可以在其中与现有的 SIEM 工具（如 Splunk、Sumologic 或 QRadar）集成。
 
 > [!NOTE]
-> 我们最近开始使用术语“Azure Monitor 日志”，而不使用“Log Analytics”。 日志数据仍然存储在 Log Analytics 工作区中，并仍然由同一 Log Analytics 服务收集并分析。 我们正在更新术语，以便更好地反映 [Azure Monitor 中的日志](../../azure-monitor/data-platform.md)的角色。 有关详细信息，请参阅 [Azure Monitor 术语更改](../../azure-monitor/terminology.md)。
+我们最近开始使用术语“Azure Monitor 日志”，而不使用“Log Analytics”。 日志数据仍然存储在 Log Analytics 工作区中，并仍然由同一 Log Analytics 服务收集并分析。 我们正在更新术语，以便更好地反映 [Azure Monitor 中的日志](../../azure-monitor/data-platform.md)的角色。 有关详细信息，请参阅 [Azure Monitor 术语更改](../../azure-monitor/terminology.md)。
 
 [详细了解报告保留策略](./reference-reports-data-retention.md)。
 
@@ -102,7 +102,7 @@ Azure AD 报表提供环境中 Azure AD 活动（包括登录事件、审核事�
 |区域 |说明 |
 |-|-|
 |保留| 日志保留期超过 30 天。 ‎由于法律或业务方面的要求，需要将 Azure AD 的审核日志和登录日志存储 30 天以上。 |
-|分析| 需要能够搜索日志。 ‎需要能够使用分析工具搜索存储的日志。 |
+|Analytics| 需要能够搜索日志。 ‎需要能够使用分析工具搜索存储的日志。 |
 | 操作见解| 适用于各个不同团队的见解。 需要为不同用户提供访问权限，以获取操作见解，如应用程序使用情况、登录错误、自助服务使用情况、趋势，等等。 |
 | 安全见解| 适用于各个不同团队的见解。 需要为不同用户提供访问权限，以获取操作见解，如应用程序使用情况、登录错误、自助服务使用情况、趋势，等等。 |
 | SIEM 系统中的集成      | SIEM 集成。 ‎需要将 Azure AD 登录日志和审核日志集成并流式传输到现有的 SIEM 系统。 |

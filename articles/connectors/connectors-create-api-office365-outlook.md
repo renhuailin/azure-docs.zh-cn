@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/13/2020
 tags: connectors
 ms.openlocfilehash: 87a9c8a38ede7008d658068329c8c72e7e3c4117
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101095467"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Office 365 Outlook 中的电子邮件、联系人和日历
@@ -45,7 +45,7 @@ ms.locfileid: "101095467"
 1. 如果你没有连接到 Outlook 帐户的活动连接，系统将提示你登录并创建该连接。 若要使用其他用户帐户（例如服务帐户）连接到 Outlook，请参阅[使用其他帐户进行连接](#connect-using-other-accounts)。 否则，请提供触发器属性的相关信息。
 
    > [!NOTE]
-   > 即使更改了登录凭据，连接也不会在吊销之前过期。 有关详细信息，请参阅 [Azure Active Directory 中的可配置令牌生存期](../active-directory/develop/active-directory-configurable-token-lifetimes.md)。
+   > 即使你更改了登录凭据，你的连接也不会过期，直到撤销为止。 有关详细信息，请参阅 [Azure Active Directory 中的可配置令牌生存期](../active-directory/develop/active-directory-configurable-token-lifetimes.md)。
 
    此示例选择供触发器检查的日历，例如：
 
@@ -78,7 +78,7 @@ ms.locfileid: "101095467"
 1. 如果你没有连接到 Outlook 帐户的活动连接，系统将提示你登录并创建该连接。 若要使用其他用户帐户（例如服务帐户）连接到 Outlook，请参阅[使用其他帐户进行连接](#connect-using-other-accounts)。 否则，请提供操作属性的相关信息。
 
    > [!NOTE]
-   > 即使更改了登录凭据，连接也不会在吊销之前过期。 有关详细信息，请参阅 [Azure Active Directory 中的可配置令牌生存期](../active-directory/develop/active-directory-configurable-token-lifetimes.md)。
+   > 即使你更改了登录凭据，你的连接也不会过期，直到撤销为止。 有关详细信息，请参阅 [Azure Active Directory 中的可配置令牌生存期](../active-directory/develop/active-directory-configurable-token-lifetimes.md)。
 
    此示例选择可供操作在其中创建新联系人的联系人文件夹，例如：
 
@@ -92,19 +92,19 @@ ms.locfileid: "101095467"
 
 ## <a name="connect-using-other-accounts"></a>使用其他帐户进行连接
 
-如果尝试使用与当前登录到 Azure 的帐户不同的帐户连接到 Outlook，则可能会收到 [单一登录 (SSO) ](../active-directory/manage-apps/what-is-single-sign-on.md) 错误。 当使用一个帐户登录 Azure 门户，但使用其他帐户来创建连接时，会发生此问题。 设计器要求使用登录到 Azure 门户的帐户。 若要解决此问题，可采用以下选项：
+如果尝试使用与当前登录到 Azure 的帐户不同的帐户连接到 Outlook，则可能会出现[单一登录 (SSO)](../active-directory/manage-apps/what-is-single-sign-on.md) 错误。 当使用一个帐户登录 Azure 门户，但使用其他帐户来创建连接时，会发生此问题。 设计器预期你会使用登录到 Azure 门户的帐户。 若要解决此问题，可采用以下选项：
 
-* 在逻辑应用的资源组中设置具有 **参与者** 角色的其他帐户。
+* 在逻辑应用的资源组中，使用“参与者”角色设置另一个帐户。
 
   1. 在逻辑应用的资源组菜单中，选择“访问控制(IAM)”。 使用参与者角色设置其他帐户。 
   
-     有关详细信息，请参阅 [使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
+     有关详细信息，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 
-  1. 设置此角色后，请以现在具有参与者权限的帐户登录 Azure 门户。 你现在可以使用此帐户创建到 Outlook 的连接。
+  1. 设置此角色后，使用现在已有参与者权限的帐户登录到 Azure 门户。 现在可以使用此帐户创建与 Outlook 的连接。
 
 * 设置另一个帐户，使工作或学校帐户具有“发送方式”权限。
 
-   如果你具有管理员权限，请在服务帐户的邮箱上，使用 " **发送为** " 或 **"代表发送"** 权限设置你的工作或学校帐户。 有关详细信息，请参阅[向其他用户授予邮箱权限 - 管理帮助](/microsoft-365/admin/add-users/give-mailbox-permissions-to-another-user)。 然后，可使用工作或学校帐户创建连接。 现在，在可指定发送方的触发器或操作中，可使用服务帐户的电子邮件地址。
+   如果你具有管理员权限，请在服务帐户的邮箱上设置你的工作或学校帐户，该帐户具有“发送方式”或“代表发送”权限 。 有关详细信息，请参阅[向其他用户授予邮箱权限 - 管理帮助](/microsoft-365/admin/add-users/give-mailbox-permissions-to-another-user)。 然后，可使用工作或学校帐户创建连接。 现在，在可指定发送方的触发器或操作中，可使用服务帐户的电子邮件地址。
 
    例如，“发送电子邮件”操作有一个名为“发件人(发送方式)”的可选参数，你可将它添加到操作，并使用你的服务帐户的电子邮件地址作为发件人 。 若要添加此参数，请执行以下步骤：
 

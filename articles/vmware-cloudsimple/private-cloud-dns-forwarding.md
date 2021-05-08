@@ -1,6 +1,6 @@
 ---
-title: Azure VMware 解决方案-从私有云到本地的 DNS 转发
-description: 描述如何启用 CloudSimple 私有云 DNS 服务器来向前查找本地资源
+title: Azure VMware 解决方案 - 从私有云到本地的 DNS 转发
+description: 描述如何启用 CloudSimple 私有云 DNS 服务器来转发本地资源查找
 author: Ajayan1008
 ms.author: v-hborys
 ms.date: 02/29/2020
@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 3481e21a93fbf5f658c5ca00513ea179c8f95400
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97899195"
 ---
 # <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>启用 CloudSimple 私有云 DNS 服务器以将本地资源的 DNS 查找转发到 DNS 服务器
@@ -21,35 +21,35 @@ ms.locfileid: "97899195"
 
 ## <a name="scenarios"></a>方案 
 
-转发本地 DNS 服务器的 DNS 查找允许你在以下情况下使用私有云：
+转发本地 DNS 服务器的 DNS 查找支持在以下情况下使用私有云：
 
 * 使用私有云作为本地 VMware 解决方案的灾难恢复设置
-* 使用本地 Active Directory 作为私有云的标识源 vSphere
+* 使用本地 Active Directory 作为私有云 vSphere 的标识源
 * 使用 HCX 将虚拟机从本地迁移到私有云
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
-必须将私有云网络中的网络连接提供给本地网络，才能进行 DNS 转发。  你可以使用以下内容设置网络连接：
+必须存在从私有云网络到本地网络的网络连接，才能进行 DNS 转发。  用户可以使用以下内容设置网络连接：
 
 * [使用 ExpressRoute 从本地连接到 CloudSimple](on-premises-connection.md)
 * [设置站点到站点 VPN 网关](./vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)
 
-为了使 DNS 转发正常工作，必须在此连接上打开防火墙端口。  使用的端口为 TCP 端口53或 UDP 端口53。
+为了使 DNS 转发正常工作，必须在此连接上打开防火墙端口。  使用的端口为 TCP 端口 53 或 UDP 端口 53。
 
 > [!NOTE]
-> 如果使用的是站点到站点 VPN，则必须将本地 DNS 服务器子网作为本地前缀的一部分添加。
+> 如果使用的是站点到站点 VPN，则必须将本地 DNS 服务器子网添加为本地前缀的一部分。
 
 ## <a name="request-dns-forwarding-from-private-cloud-to-on-premises"></a>请求从私有云到本地的 DNS 转发
 
-若要允许从私有云到本地的 DNS 转发，请提交 [支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，并提供以下信息。
+若要允许从私有云到本地的 DNS 转发，请提交[支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，并提供以下信息。
 
-* 问题类型： **技术**
-* 订阅： **部署 CloudSimple 服务的订阅**
-* 服务： **VMware 解决方案（按 CloudSimple** ）
-* 问题类型： **通知或如何实现 ...**
-* 问题子类型： **需要有关 NW 的帮助**
-* 在详细信息窗格中提供本地域的域名。
-* 提供要在详细信息窗格中将查找从私有云转发到的本地 DNS 服务器的列表。
+* 问题类型：技术
+* 订阅：部署 CloudSimple 服务的订阅
+* 服务：VMware Solution by CloudSimple
+* 问题类型：公告或如何实现...
+* 问题子类型：需要有关 NW 的帮助
+* 在细节窗格中提供本地域的域名。
+* 在细节窗格中提供将查找从私有云转发到的本地 DNS 服务器的列表。
 
 ## <a name="next-steps"></a>后续步骤
 

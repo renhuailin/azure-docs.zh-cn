@@ -1,5 +1,5 @@
 ---
-title: SLES 上的 Azure Vm 上 SAP HANA 的高可用性 |Microsoft Docs
+title: SLES 上 Azure VM 中 SAP HANA 的高可用性 | Microsoft Docs
 description: SUSE Linux Enterprise Server 上 Azure VM 中 SAP HANA 的高可用性
 services: virtual-machines-linux
 documentationcenter: ''
@@ -10,14 +10,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/16/2020
+ms.date: 03/16/2021
 ms.author: radeltch
-ms.openlocfilehash: 817a17de240ee10966a6cd20d758def7c2ab9c87
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 42a4c4a41f6c8bdf9d4a8e78f634893722c8f389
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669673"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104576385"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 中 SAP HANA 的高可用性
 
@@ -60,8 +60,8 @@ ms.locfileid: "101669673"
   * 支持的 SAP 软件、操作系统 (OS) 和数据库组合。
   * Microsoft Azure 上 Windows 和 Linux 所需的 SAP 内核版本。
 * SAP 说明 [2015553] 列出了在 Azure 中 SAP 支持的 SAP 软件部署的先决条件。
-* SAP 说明 [2205917] 为 Sap 应用程序的 SUSE Linux Enterprise Server 建议的操作系统设置。
-* SAP 说明 [1944799] 具有适用于 Sap 应用程序的 SUSE Linux Enterprise Server SAP HANA 准则。
+* SAP 说明 [2205917] 包含适用于 SUSE Linux Enterprise Server for SAP Applications 的推荐 OS 设置。
+* SAP 说明 [1944799] 包含适用于 SUSE Linux Enterprise Server for SAP Applications 的 SAP HANA 准则。
 * SAP 说明 [2178632] 包含为 Azure 中的 SAP 报告的所有监控指标的详细信息。
 * SAP 说明 [2191498] 包含 Azure 中的 Linux 所需的 SAP 主机代理版本。
 * SAP 说明 [2243692] 包含 Azure 中的 Linux 上的 SAP 许可的相关信息。
@@ -71,7 +71,7 @@ ms.locfileid: "101669673"
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含适用于 Linux 的所有必需 SAP 说明。
 * [经 SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
 * [针对 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]指南。
-* [适用于 Linux 上的 SAP 的 Azure 虚拟机部署][deployment-guide] (本文) 。
+* [适用于 Linux 上的 SAP 的 Azure 虚拟机部署][deployment-guide]（本文）。
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]指南。
 * [SUSE Linux Enterprise Server for SAP Applications 12 SP3 最佳做法指南][sles-for-sap-bp]
   * 设置 SAP HANA SR 性能优化的基础结构 (SLES for SAP Applications 12 SP1)。 本指南包含为本地开发设置 SAP HANA 系统复制的所需的全部信息。 请使用本指南作为基准。
@@ -105,14 +105,14 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 1. 输入以下参数：
     - **SAP 系统 ID**：输入要安装的 SAP 系统的 SAP 系统 ID。 该 ID 将用作所要部署的资源的前缀。
-    - **Stack 类型**：仅当使用聚合模板时，此参数才适用 (。 ) 选择 "SAP NetWeaver" 堆栈类型。
-    - **OS 类型**：选择一个 Linux 发行版。 对于本示例，请选择 " **SLES 12**"。
+    - **堆栈类型**：（仅当使用聚合模板时此参数才适用。）选择 SAP NetWeaver 堆栈类型。
+    - **OS 类型**：选择一个 Linux 发行版。 对于本示例，请选择“SLES 12”。
     - **数据库类型**：选择“HANA”。
     - **SAP 系统大小**：输入新系统将提供的 SAPS 数量。 如果不确定系统需要多少 SAPS，请咨询 SAP 技术合作伙伴或系统集成商。
     - **系统可用性**：选择“HA”。
-    - **管理员用户名和管理员密码**：创建可用于登录计算机的新用户。
+    - **管理员用户名和管理员密码**：创建的可用于登录计算机的新用户。
     - **新子网或现有子网**：确定是要创建新的虚拟网络和子网，还是使用现有子网。 如果已有连接到本地网络的虚拟网络，请选择“现有”。
-    - **子网 ID**：如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示： **/Subscriptions/ \<subscription ID> /resourceGroups/ \<resource group name> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name> /subnets/ \<subnet name>**。
+    - **子网 ID**：如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常类似于“/subscriptions/\<subscription ID>/resourceGroups/\<resource group name>/providers/Microsoft.Network/virtualNetworks/\<virtual network name>/subnets/\<subnet name>”。
 
 ### <a name="manual-deployment"></a>手动部署
 
@@ -135,7 +135,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 1. 添加数据磁盘。
 
 > [!IMPORTANT]
-> 负载平衡方案中的 NIC 辅助 IP 配置不支持浮动 IP。 有关详细信息，请参阅 [Azure 负载均衡器限制](../../../load-balancer/load-balancer-multivip-overview.md#limitations)。 如果需要 VM 的其他 IP 地址，请部署第二个 NIC。   
+> 负载均衡方案中的 NIC 辅助 IP 配置不支持浮动 IP。 有关详细信息，请参阅 [Azure 负载均衡器限制](../../../load-balancer/load-balancer-multivip-overview.md#limitations)。 如果你需要为 VM 提供其他 IP 地址，请部署第二个 NIC。   
 
 > [!Note]
 > 如果没有公共 IP 地址的 VM 被放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，就不会有出站 Internet 连接，除非执行额外的配置来允许路由到公共终结点。 有关如何实现出站连接的详细信息，请参阅 [SAP 高可用性方案中使用 Azure 标准负载均衡器的虚拟机的公共终结点连接](./high-availability-guide-standard-load-balancer-outbound-connections.md)。  
@@ -153,7 +153,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    
       1. 打开负载均衡器，选择 **后端池**，然后选择“添加”。
       1. 输入新后端池的名称（例如 **hana-backend**）。
-      1. 选择 " **虚拟网络**"。
+      1. 选择“虚拟网络”。
       1. 选择“添加虚拟机”。
       1. 选择“虚拟机”。
       1. 选择 SAP HANA 群集的虚拟机及其 IP 地址。
@@ -411,14 +411,14 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
    如果使用的是 SAP HANA 2.0 或 MDC，请为 SAP NetWeaver 系统创建一个租户数据库。 将 **NW1** 替换为 SAP 系统的 SID。
 
-   执行以下命令 <hanasid \> adm：
+   以 <hanasid\>adm 身份执行以下命令：
 
    <pre><code>hdbsql -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> -d SYSTEMDB 'CREATE DATABASE <b>NW1</b> SYSTEM USER PASSWORD "<b>passwd</b>"'
    </code></pre>
 
 1. **[1]** 在第一个节点上配置系统复制：
 
-   将数据库备份为 <hanasid \> adm：
+   以 < hanasid\>adm 身份备份数据库：
 
    <pre><code>hdbsql -d SYSTEMDB -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupSYS</b>')"
    hdbsql -d <b>HN1</b> -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupHN1</b>')"
@@ -438,7 +438,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 1. **[2]** 在第二个节点上配置系统复制：
     
-   注册第二个节点以启动系统复制。 运行以下命令作为 <hanasid \> adm：
+   注册第二个节点以启动系统复制。 以 <hanasid\>adm 身份运行以下命令：
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b> 
@@ -485,7 +485,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 1. **[1]** 在第一个节点上配置系统复制。
 
-   创建主站点作为 <hanasid \> adm：
+   以 <hanasid\>adm 身份创建主站点：
 
    <pre><code>su - <b>hdb</b>adm
    hdbnsutil -sr_enable –-name=<b>SITE1</b>
@@ -531,7 +531,7 @@ sudo crm configure clone cln_SAPHanaTopology_<b>HN1</b>_HDB<b>03</b> rsc_SAPHana
 
 
 > [!NOTE]
-> 本文包含对 Microsoft 不再使用的术语 " *主要* " 和 " *从属*" 的引用。 从软件中删除这些字词后，我们会将其从本文中删除。
+> 本文包含对术语“主”和“从”的引用，Microsoft 不再使用这些术语 。 软件中删除这些术语后，我们会将其从本文中删除。
 
 <pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer. 
 
@@ -592,6 +592,115 @@ sudo crm configure rsc_defaults migration-threshold=5000
 #     rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
 #     rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
 </code></pre>
+
+## <a name="configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster"></a>在 Pacemaker 群集中配置启用 HANA 活动/读取的系统复制
+
+从 SAP HANA 2.0 SPS 01 开始，SAP 允许对 SAP HANA 系统复制设置活动/读取启用，在这种情况下，SAP HANA 系统复制的辅助系统可主动用于读取密集型工作负荷。 若要在群集中支持此类设置，需要提供第二个虚拟 IP 地址，以便客户端能够访问启用辅助启用读取的 SAP HANA 数据库。 若要确保辅助复制站点在接管后仍可以访问，群集需要将虚拟 IP 地址与 SAPHana 资源的辅助地址一起移动。
+
+本部分介绍使用第二个虚拟 IP 在 SUSE 高可用性群集中管理启用 HANA 活动/读取系统复制所需的其他步骤。    
+在继续下一步之前，请确保已完全配置 SUSE 高可用性群集管理 SAP HANA 数据库，如上文所述。  
+
+![具备启用读取辅助的 SAP HANA 高可用性](./media/sap-hana-high-availability/ha-hana-read-enabled-secondary.png)
+
+### <a name="additional-setup-in-azure-load-balancer-for-activeread-enabled-setup"></a>在 Azure 负载均衡器中进行其他设置，以实现启用活动/读取设置
+
+若要继续执行预配第二个虚拟 IP 的其他步骤，请确保已配置[手动部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability#manual-deployment)部分所述的 Azure 负载均衡器。
+
+1. 对于“标准”负载均衡器，请在前面部分中创建的同一负载平衡器上按照以下附加步骤进行操作。
+
+   a. 创建第二个前端 IP 池： 
+
+   - 打开负载均衡器，选择 **前端 IP 池**，然后选择“添加”。
+   - 输入第二个新前端 IP 池的名称（例如“hana-secondaryIP”）。
+   - 将“分配”设置为“静态”并输入 IP 地址（例如，“10.0.0.14”）  。
+   - 选择“确定”  。
+   - 创建新前端 IP 池后，请记下前端 IP 地址。
+
+   b. 接下来创建运行状况探测：
+
+   - 打开负载均衡器，选择 **运行状况探测**，然后选择“添加”。
+   - 输入新运行状况探测的名称（例如“hana-secondaryhp”）。
+   - 选择“TCP”作为协议，并选择端口“62603” 。 将“间隔”值保留设置为 5，将“不正常阈”值设置为 2。 
+   - 选择“确定”。
+
+   c. 接下来，创建负载均衡规则：
+
+   - 打开负载均衡器，选择 **负载均衡规则**，然后选择“添加”。
+   - 输入新负载均衡器规则的名称（例如“hana-secondarylb”）。
+   - 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如“hana-secondaryIP”、“hana-backend”和“hana-secondaryhp”）。
+   - 选择“HA 端口”。
+   - 将“空闲超时”增大到 30 分钟。
+   - 确保 **启用浮动 IP**。
+   - 选择“确定”。
+
+### <a name="configure-hana-activeread-enabled-system-replication"></a>配置启用 HANA 活动/读取的系统复制
+
+[配置 SAP HANA 2.0 系统复制](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability#configure-sap-hana-20-system-replication)部分介绍了配置 HANA 系统复制的步骤。 如果部署已启用读取的辅助方案，则在第二个节点上配置系统复制的同时，请以“hanasid”adm 身份执行以下命令：
+
+```
+sapcontrol -nr 03 -function StopWait 600 10 
+
+hdbnsutil -sr_register --remoteHost=hn1-db-0 --remoteInstance=03 --replicationMode=sync --name=SITE2 --operationMode=logreplay_readaccess 
+```
+
+### <a name="adding-a-secondary-virtual-ip-address-resource-for-an-activeread-enabled-setup"></a>为已启用活动/读取设置添加辅助虚拟 IP 地址资源
+
+可以通过以下命令配置第二个虚拟 IP 和适当的归置约束：
+
+```
+crm configure property maintenance-mode=true
+
+crm configure primitive rsc_secip_HN1_HDB03 ocf:heartbeat:IPaddr2 \
+ meta target-role="Started" \
+ operations \$id="rsc_secip_HN1_HDB03-operations" \
+ op monitor interval="10s" timeout="20s" \
+ params ip="10.0.0.14"
+
+crm configure primitive rsc_secnc_HN1_HDB03 azure-lb port=62603 \
+ meta resource-stickiness=0
+
+crm configure group g_secip_HN1_HDB03 rsc_secip_HN1_HDB03 rsc_secnc_HN1_HDB03
+
+crm configure colocation col_saphana_secip_HN1_HDB03 4000: g_secip_HN1_HDB03:Started \
+ msl_SAPHana_HN1_HDB03:Slave 
+
+crm configure property maintenance-mode=false
+```
+请确保群集状态正常，并且所有资源都已启动。 第二个虚拟 IP 将与 SAPHana 辅助资源一起在辅助站点上运行。
+
+```
+sudo crm_mon -r
+
+# Online: [ hn1-db-0 hn1-db-1 ]
+#
+# Full list of resources:
+#
+# stonith-sbd     (stonith:external/sbd): Started hn1-db-0
+# Clone Set: cln_SAPHanaTopology_HN1_HDB03 [rsc_SAPHanaTopology_HN1_HDB03]
+#     Started: [ hn1-db-0 hn1-db-1 ]
+# Master/Slave Set: msl_SAPHana_HN1_HDB03 [rsc_SAPHana_HN1_HDB03]
+#     Masters: [ hn1-db-0 ]
+#     Slaves: [ hn1-db-1 ]
+# Resource Group: g_ip_HN1_HDB03
+#     rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
+#     rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
+# Resource Group: g_secip_HN1_HDB03:
+#     rsc_secip_HN1_HDB03       (ocf::heartbeat:IPaddr2):        Started hn1-db-1
+#     rsc_secnc_HN1_HDB03       (ocf::heartbeat:azure-lb):       Started hn1-db-1
+
+```
+
+在下一部分中，可以找到要执行的典型故障转移测试组。
+
+请注意第二个虚拟 IP 的行为，同时测试使用已启用读取辅助配置的 HANA 群集：
+
+1. 将“SAPHana_HN1_HDB03”群集资源迁移到“hn1-db-1”时，第二个虚拟 IP 将移到另一个服务器“hn1-db-0”。 如果已配置 AUTOMATED_REGISTER = "false"，且未自动注册 HANA 系统复制，则第二个虚拟 IP 将在“hn1-db-0”上运行，因为服务器可用且群集服务处于联机状态。  
+
+2. 测试服务器故障时，第二个虚拟 IP 资源 (“rsc_secip_HN1_HDB03”) 和 Azure 负载均衡器端口资源 (“rsc_secnc_HN1_HDB03”) 将在主服务器上与主虚拟 IP 资源一起运行。 当辅助服务器关闭时，连接到启用读取的 HANA 数据库的应用程序将连接到主 HANA 数据库。 此行为是预期行为，因为当辅助服务器不可用时，不希望连接到已启用读取的 HANA 数据库的应用程序无法访问。
+  
+3. 当辅助服务器可用且群集服务处于联机状态时，第二个虚拟 IP 和端口资源会自动转移到辅助服务器，即使 HANA 系统复制可能无法注册为辅助服务器。 你需要确保在启动该服务器上的群集服务之前，将辅助 HANA 数据库注册为已启用读取。 可以通过设置参数 AUTOMATED_REGISTER = true 来将 HANA 实例群集资源配置为自动注册辅助副本。       
+
+4. 在故障转移和回退过程中，使用第二个虚拟 IP 连接到 HANA 数据库的应用程序的现有连接可能会中断。  
 
 ## <a name="test-the-cluster-setup"></a>测试群集设
 
@@ -767,7 +876,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   将以下命令作为 <hanasid \> adm 上的节点 hn1 上运行：
+   在节点 hn1-db-0 上，以 <hanasid\>adm 的身份运行以下命令：
 
    <pre><code>hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -808,7 +917,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
-   在节点 hn1 上将以下命令作为 <hanasid \> adm 运行：
+   在节点 hn1-db-1 上，以 <hanasid\>adm 的身份运行以下命令：
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -849,7 +958,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   将以下命令作为 <hanasid \> adm 上的节点 hn1 上运行：
+   在节点 hn1-db-0 上，以 <hanasid\>adm 的身份运行以下命令：
 
    <pre><code>hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
@@ -890,7 +999,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
-   在节点 hn1 上将以下命令作为 <hanasid \> adm 运行：
+   在节点 hn1-db-1 上，以 <hanasid\>adm 的身份运行以下命令：
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
@@ -1033,7 +1142,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   在节点 hn1 上将以下命令作为 <hanasid \> adm 运行：
+   在节点 hn1-db-1 上，以 <hanasid\>adm 的身份运行以下命令：
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -1070,7 +1179,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   在节点 hn1 上将以下命令作为 <hanasid \> adm 运行：
+   在节点 hn1-db-1 上，以 <hanasid\>adm 的身份运行以下命令：
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>

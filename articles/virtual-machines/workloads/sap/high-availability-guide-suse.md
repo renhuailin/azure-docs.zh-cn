@@ -13,14 +13,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/22/2020
+ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: e33b514f61aec69c566eae455d2e59b1a66813f6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0d125f258be45889c6c917d9d1fe170bb9502cf7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101673804"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307514"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>SUSE Linux Enterprise Server for SAP applications 上的 Azure VM 上 SAP NetWeaver 的高可用性
 
@@ -134,7 +134,7 @@ SAP NetWeaver 要求对传输和配置文件目录使用共享存储。 请阅�
 
 Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications 12 的映像，可以用于部署新的虚拟机。 市场映像包含适用于 SAP NetWeaver 的资源代理。
 
-可以使用 GitHub 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集，等等。请遵照以下步骤部署模板：
+可以使用 GitHub 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集等。按照以下步骤部署模板：
 
 1. 在 Azure 门户中打开 [ASCS/SCS 多 SID 模板][template-multisid-xscs]或[聚合模板][template-converged]。 
    ASCS/SCS 模板仅创建适用于 SAP NetWeaver ASCS/SCS 和 ERS（仅限 Linux）实例的负载均衡规则，而聚合模板还会创建适用于数据库（例如 Microsoft SQL Server 或 SAP HANA）的负载均衡规则。 如果打算安装基于 SAP NetWeaver 的系统，同时想要在同一台计算机上安装数据库，请使用[聚合模板][template-converged]。
@@ -206,7 +206,6 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
          1. 输入新的负载均衡器规则的名称（例如“nw1-lb-ascs”）
          1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 nw1-ascs-frontend、nw1-backend 和 nw1-ascs-hp）
          1. 选择“HA 端口”
-         1. 将空闲超时增大到 30 分钟
          1. **确保启用浮动 IP**
          1. 单击“确定”
          * 重复上述步骤，为 ERS 创建负载均衡规则（例如，“nw1-lb-ers”）

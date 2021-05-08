@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
 ms.openlocfilehash: aa19cf6b59b1efa4b14501fbf64e319da3e4c0b3
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102048635"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>使用存储空间直通创建 FCI（Azure VM 上的 SQL Server）
@@ -55,8 +55,8 @@ ms.locfileid: "102048635"
 
 在按本文中的说明操作之前，你应已具备以下条件：
 
-- Azure 订阅。 [免费试用](https://azure.microsoft.com/free/)。 
-- [可用性集中](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)的[两个或更多个已准备的 Windows Azure 虚拟机](failover-cluster-instance-prepare-vm.md)。
+- Azure 订阅。 [免费](https://azure.microsoft.com/free/)试用。 
+- [可用性集](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)中[两个或更多个已准备好的 Windows Azure 虚拟机](failover-cluster-instance-prepare-vm.md)。
 - 有权限在 Azure 虚拟机和 Active Directory 中创建对象的帐户。
 - 最新版本的 [PowerShell](/powershell/azure/install-az-ps)。 
 
@@ -109,7 +109,7 @@ ms.locfileid: "102048635"
 若要使用 PowerShell 验证群集，请在某个虚拟机上通过管理员 PowerShell 会话运行以下脚本：
 
    ```powershell
-   Test-Cluster –Node ("<node1>","<node2>") –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
+   Test-Cluster –Node ("<node1>&quot;,&quot;<node2>") –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
    ```
 
 验证群集后，创建故障转移群集。
@@ -216,9 +216,9 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
    >
 
 
-## <a name="register-with-the-sql-vm-rp"></a>向 SQL VM RP 注册
+## <a name="register-with-the-sql-vm-rp"></a>注册到 SQL VM RP
 
-若要从门户管理你的 SQL Server VM，请将其注册到 [轻型管理模式](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode)下的 SQL IaaS 代理扩展 (RP) ，这是目前在 Azure VM 上 FCI 和 SQL Server 支持的唯一模式。 
+若要从门户管理 SQL Server VM，请在[轻型管理模式](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode)下将其注册到 SQL IaaS 代理扩展 (RP)，目前，这是 Azure VM 上的 FCI 和 SQL Server 唯一支持的模式。 
 
 
 使用 PowerShell 在轻型模式下注册 SQL Server VM：  
@@ -242,7 +242,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 - Azure 虚拟机支持 Windows Server 2019 上的 Microsoft 分布式事务处理协调器 (MSDTC)，其中的存储位于 CSV 和[标准负载均衡器](../../../load-balancer/load-balancer-overview.md)上。
 - 如果将存储添加到群集，则仅当未选中或清除了磁盘资格选项时，已作为 NTFS 格式的磁盘附加的磁盘才能与存储空间直通一起使用。 
-- 仅支持在 [轻型管理模式下](sql-server-iaas-agent-extension-automate-management.md#management-modes) 注册 SQL IaaS 代理扩展。
+- 仅支持在[轻型管理模式](sql-server-iaas-agent-extension-automate-management.md#management-modes)下注册到 SQL IaaS 代理扩展。
 
 ## <a name="next-steps"></a>后续步骤
 

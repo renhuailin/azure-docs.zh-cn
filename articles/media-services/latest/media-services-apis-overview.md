@@ -1,8 +1,8 @@
 ---
 # <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>必填字段。 有关详细信息，请参阅 aka.ms/skyeye/meta。
-标题：使用 v3 Api 进行开发： Azure 媒体服务说明：了解在使用媒体服务 v3 进行开发时适用于实体和 Api 的规则。 服务：媒体服务 documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' '
+标题：使用 v3 API 进行开发：Azure 媒体服务说明：了解使用媒体服务 v3 进行开发时适用于实体和 API 的规则。 services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: ''
 
-ms. service： media services ms. 工作负荷：毫秒。主题：概念性毫秒。日期： 10/23/2020 ms. author： inhenkel： seodec18
+ms.service: media-services ms.workload: ms.topic: conceptual ms.date: 10/23/2020 ms.author: inhenkel ms.custom: seodec18
 
 ---
 
@@ -21,7 +21,7 @@ ms. service： media services ms. 工作负荷：毫秒。主题：概念性毫�
 * **服务主体身份验证**：用于对服务进行身份验证（例如 Web 应用、函数应用、逻辑应用、API 和微服务）。 常常使用这种身份验证方法的应用程序是运行守护程序服务、中间层服务或计划作业的应用程序。 例如，对于 Web 应用而言，应始终有一个使用服务主体连接到媒体服务的中间层。
 * **用户身份验证**：用于验证使用应用与媒体服务资源进行交互的用户。 交互式应用应先提示用户输入用户凭据。 例如，授权用户用来监视编码作业或实时传送视频流的管理控制台应用程序。
 
-媒体服务 API 有两个要求：发出 REST API 请求的用户或应用有权访问媒体服务帐户资源，这些用户或应用使用“参与者”或“所有者”角色 。 使用“读者”角色可访问 API，但该角色只能执行“获取”或“列出”操作  。有关详细信息，请参阅[媒体服务帐户的 Azure 基于角色的访问控制 (Azure RBAC)](rbac-overview.md)。
+媒体服务 API 有两个要求：发出 REST API 请求的用户或应用有权访问媒体服务帐户资源，这些用户或应用使用“参与者”或“所有者”角色 。 使用“读者”角色可访问 API，但该角色只能执行“获取”或“列出”操作  。有关详细信息，请参阅[媒体服务帐户的 Azure 基于角色的访问控制 (Azure RBAC)](security-rbac-concept.md)。
 
 请考虑使用托管标识（而不是创建服务主体），以便 Azure 资源通过 Azure 资源管理器访问媒体服务 API。 若要详细了解 Azure 资源托管标识，请参阅[什么是 Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
 
@@ -52,7 +52,7 @@ Azure AD 应用和服务主体应在同一个租户中。 创建应用后，向�
 
 查看演示如何连接 Azure AD 服务主体的以下示例：
 
-* [通过 REST 进行连接](media-rest-apis-with-postman.md)  
+* [通过 REST 进行连接](setup-postman-rest-how-to.md)  
 * [通过 Java 进行连接](configure-connect-java-howto.md)
 * [通过 .NET 进行连接](configure-connect-dotnet-howto.md)
 * [通过 Node.js 进行连接](configure-connect-nodejs-howto.md)
@@ -128,7 +128,7 @@ AMSE 是一个开源项目，由社区提供支持（可以将问题报告给 ht
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>媒体服务实体的筛选、排序和分页
 
-请参阅 [Azure 媒体服务实体的筛选、排序、分页](entities-overview.md)。
+请参阅 [Azure 媒体服务实体的筛选、排序、分页](filter-order-page-entitites-how-to.md)。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 

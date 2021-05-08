@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
 ms.openlocfilehash: 414445f90c3be4c55166f6a0ecead25074d6ed74
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98874107"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure 数据安全与加密最佳做法
@@ -121,7 +121,7 @@ Azure 存储和 Azure SQL 数据库默认对静态数据进行加密，并且许
 
 分类始终是可标识的，而无论数据的存储位置或数据的共享人员。 标签包括视觉标记，如页眉、页脚或水印。 元数据以明文形式添加到文件和电子邮件标题中。 明文形式确保其他服务（如防止数据丢失的解决方案）可以识别分类并采取相应的操作。
 
-保护技术使用 Azure Rights Management (Azure RMS)。 此技术与其他 Microsoft 云服务和应用程序（如 Microsoft 365 和 Azure Active Directory）相集成。 此保护技术使用加密、标识和授权策略。 通过 Azure RMS 应用的保护与文档和电子邮件保留在一起，不受位置影响，也无论是在组织、网络、文件服务器和应用程序内部还是外部。
+保护技术使用 Azure Rights Management (Azure RMS)。 此技术与其他 Microsoft 云服务和应用程序（如 Microsoft 365 和 Azure Active Directory）集成。 此保护技术使用加密、标识和授权策略。 通过 Azure RMS 应用的保护与文档和电子邮件保留在一起，不受位置影响，也无论是在组织、网络、文件服务器和应用程序内部还是外部。
 
 此信息保护解决方案可用于控制数据，即使是与他人共享的数据，也可控制。 还可以将 Azure RMS 用于自己的业务线应用程序和软件供应商提供的信息保护解决方案，而无论这些应用程序和解决方案是在本地还是在云中。
 

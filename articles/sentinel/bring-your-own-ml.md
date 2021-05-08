@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
-ms.openlocfilehash: 2164b8ac6e62b8826d5879da07384769c503bfb5
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: f8d795dcf64230140e1dd07e3f30ca3aa6825ab4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107598595"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "99806997"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>自带机器学习 (ML) 到 Azure Sentinel
 
@@ -137,7 +137,7 @@ az monitor log-analytics workspace data-export list --resource-group "RG_NAME" -
 
 ### <a name="export-custom-data"></a>导出自定义数据
 
-对于 Log Analytics 自动导出不支持的自定义数据，可以使用逻辑应用或其他解决方案来移动数据。 可以参考[将 Log Analytics 数据导出到 Blob 存储](https://techcommunity.microsoft.com/t5/azure-monitor/log-analytics-data-export-preview/ba-p/1783530)博客和脚本。
+对于 Log Analytics 自动导出不支持的自定义数据，可以使用逻辑应用或其他解决方案来移动数据。 可以参考[将 Log Analytics 数据导出到 Blob 存储](https://www.borninthecloud.com/exporting-log-analytics-data-to-blob-store/?preview=true)博客和脚本。
 
 ### <a name="correlate-with-data-outside-of-azure-sentinel"></a>与 Azure Sentinel 之外的数据关联
 

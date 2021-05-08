@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 00768f363d08bc476350e57a8eac69eafd9c3589
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99580932"
 ---
 # <a name="application-configuration-options"></a>应用程序配置选项
@@ -29,7 +29,7 @@ ms.locfileid: "99580932"
   - [客户端 ID](#client-id)
   - [重定向 URI](#redirect-uri)
   - [客户端机密](#client-secret)（用于机密客户端应用程序）
-- [日志记录选项](#logging)，包括日志级别、个人数据的控制以及使用库的组件名称
+- [日志记录选项](#logging)，包括日志级别、个人数据控制，以及使用该库的组件的名称
 
 ## <a name="authority"></a>颁发机构
 
@@ -40,9 +40,9 @@ ms.locfileid: "99580932"
 | 常见的颁发机构 URL | 何时使用 |
 |--|--|
 | `https://login.microsoftonline.com/<tenant>/` | 仅允许特定组织的用户登录。 URL 中的 `<tenant>` 是 Azure Active Directory (Azure AD) 租户 (GUID) 或其租户域的租户 ID。 |
-| `https://login.microsoftonline.com/common/` | 使用工作或学校帐户或个人 Microsoft 帐户登录用户。 |
-| `https://login.microsoftonline.com/organizations/` | 使用工作和学校帐户登录用户。 |
-| `https://login.microsoftonline.com/consumers/` | 仅 (MSA) 的个人 Microsoft 帐户登录用户。 |
+| `https://login.microsoftonline.com/common/` | 通过工作和学校帐户或个人 Microsoft 帐户登录用户。 |
+| `https://login.microsoftonline.com/organizations/` | 通过工作和学校帐户登录用户。 |
+| `https://login.microsoftonline.com/consumers/` | 仅通过个人 Microsoft 帐户 (MSA) 登录用户。 |
 
 在代码中指定的机构需要与在 Azure 门户中为“应用注册”中的应用指定的支持帐户类型一致 。
 
@@ -73,8 +73,8 @@ Azure AD 云颁发机构有两个组成部分：
 
 登录受众取决于应用的业务需求：
 
-- 业务线应用程序 (LOB) 开发人员也许会生成一个只在其组织中使用的单租户应用程序。 在这种情况下，请通过其租户 ID 指定组织 (Azure AD 实例的 ID) 或通过与 Azure AD 实例关联的域名来指定。
-- ISV 可能想要使用任一组织或某些组织（多租户应用）中的用户工作帐户和学校帐户将用户登录。 但你可能还希望让用户使用他们的个人 Microsoft 帐户登录。
+- 业务线应用程序 (LOB) 开发人员也许会生成一个只在其组织中使用的单租户应用程序。 在这种情况下，请按租户 ID（Azure AD 实例的 ID）或者与 Azure AD 实例关联的域名指定组织。
+- ISV 可能想要使用任一组织或某些组织（多租户应用）中的用户工作帐户和学校帐户将用户登录。 但你也可能想让用户使用其个人 Microsoft 帐户登录。
 
 ### <a name="how-to-specify-the-audience-in-your-codeconfiguration"></a>如何在代码/配置中指定受众
 
@@ -86,21 +86,21 @@ Azure AD 云颁发机构有两个组成部分：
   - 与 Azure AD 实例关联的域名（也适用于单租户应用程序）
 - 以下租户 ID 占位符之一代表 Azure AD 颁发机构受众枚举：
   - 多租户应用程序的 `organizations`
-  - `consumers` 仅登录用户的个人帐户（& a）
-  - `common` 使用他们的工作和学校帐户或个人 Microsoft 帐户登录用户
+  - 仅通过其个人帐户登录用户的 `consumers`
+  - 通过工作和学校帐户或其个人 Microsoft 帐户登录用户的 `common`
 
 如果你同时指定 Azure AD 颁发机构受众和租户 ID，MSAL 将引发有含义的异常。
 
-如果你没有指定受众，你的应用将以用户身份 Azure AD 和个人 Microsoft 帐户为目标。 （也就是说，它的行为与指定了 `common` 时一样。）
+如果你未指定受众，应用会将 Azure AD 和个人 Microsoft 帐户当作受众。 （也就是说，它的行为与指定了 `common` 时一样。）
 
 ### <a name="effective-audience"></a>有效的受众
 
 应用程序的有效受众是在应用中设置的受众与在应用注册中指定的受众之间的最小值（如果存在交集）。 实际上，可以在[应用注册](https://aka.ms/appregistrations)体验中指定应用的受众（支持的帐户类型）。 有关详细信息，请参阅[快速入门：将应用程序注册到 Microsoft 标识平台](quickstart-register-app.md)。
 
-目前，仅使用个人 Microsoft 帐户让应用登录用户的唯一方法是配置这两个设置：
+目前，让应用仅使用个人 Microsoft 帐户登录用户的唯一方法是配置这两个设置：
 
-- 将应用程序注册受众设置为 `Work and school accounts and personal accounts` 。
-- 将你的代码/配置中的受众设置为 `AadAuthorityAudience.PersonalMicrosoftAccount` (或 `TenantID` = "使用者" ) 。
+- 将应用注册受众设置为 `Work and school accounts and personal accounts`。
+- 将你的代码/配置中的受众设置为 `AadAuthorityAudience.PersonalMicrosoftAccount`（或 `TenantID` = "consumers"）。
 
 ## <a name="client-id"></a>客户端 ID
 
@@ -122,9 +122,9 @@ Azure AD 云颁发机构有两个组成部分：
   | UWP | `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()` 的值。 这可以通过浏览器启用 SSO，方法是：将值设置为需注册的 WebAuthenticationBroker.GetCurrentApplicationCallbackUri() 的结果 |
   | .NET Core | `https://localhost`. 这样用户就可以将系统浏览器用于交互式身份验证，因为 .NET Core 目前没有 UI 用于嵌入式 Web 视图。 |
 
-- 如果要构建的 Xamarin Android 和 iOS 应用程序不支持 broker 重定向 URI，则无需添加重定向 URI。 对于 Xamarin Android 和 iOS，它会自动设置为 `msal{ClientId}://auth` 。
+- 若要构建不支持代理重定向 URI 的 Xamarin Android 和 iOS 应用程序，则不需添加重定向 URI。 对于 Xamarin Android 和 iOS，重定向 URI 会自动设置为 `msal{ClientId}://auth`。
 
-- 在 [应用注册](https://aka.ms/appregistrations)中配置重定向 URI：
+- 请在[应用注册](https://aka.ms/appregistrations)中配置重定向 URI：
 
    ![应用注册中的重定向 URI](media/msal-client-application-configuration/redirect-uri.png)
 
@@ -138,16 +138,16 @@ Azure AD 云颁发机构有两个组成部分：
 
 ### <a name="redirect-uri-for-confidential-client-apps"></a>机密客户端应用的重定向 URI
 
-对于 web 应用，重定向 URI (或回复 URL) 是 Azure AD 用来将令牌发送回应用程序的 URI。 如果机密应用是 Web 应用/Web API，则此 URI 可以是其 URL。 重定向 URI 需在应用注册中注册。 部署一个最初已在本地测试的应用时，这种注册尤其重要。 然后，需要在应用程序注册门户中添加已部署的应用程序的回复 URL。
+对于 Web 应用，重定向 URI（或回复 URL）是 Azure AD 用来向应用程序发回令牌的 URI。 如果机密应用是 Web 应用/Web API，则此 URI 可以是其 URL。 重定向 URI 需在应用注册中注册。 部署一个最初已在本地测试的应用时，这种注册尤其重要。 然后，需要在应用程序注册门户中添加已部署应用的回复 URL。
 
 对于守护程序应用，不需要指定重定向 URI。
 
 ## <a name="client-secret"></a>客户端机密
 
-此选项指定机密客户端应用的客户端机密。 此机密 (应用程序密码) 由应用程序注册门户提供，或在应用程序注册过程中通过 PowerShell AzureAD、PowerShell AzureRM 或 Azure CLI 提供给 Azure AD。
+此选项指定机密客户端应用的客户端机密。 在使用 PowerShell AzureAD、PowerShell AzureRM 或 Azure CLI 注册应用期间，此机密（应用密码）由应用程序注册门户提供或提供给 Azure AD。
 
-## <a name="logging"></a>Logging
-为了帮助调试和身份验证故障排除方案，Microsoft 身份验证库提供了内置日志记录支持。 日志记录是以下文章中介绍的每个库：
+## <a name="logging"></a>日志记录
+为了帮助对调试和身份验证失败进行故障排除，Microsoft 身份验证库提供了内置的日志记录支持。 以下文章介绍了如何记录每个库：
 
 :::row:::
     :::column:::

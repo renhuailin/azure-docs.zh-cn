@@ -2,19 +2,19 @@
 title: 用于管理 Azure VMware Solution by CloudSimple 的主要概念
 titleSuffix: Azure VMware Solution by CloudSimple
 description: 介绍用于管理 Azure VMware Solution by CloudSimple 的主要概念
-author: shortpatti
-ms.author: v-patsho
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 04/24/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9e97abdd46e1c83d7883a51ddbd73ea0aa75b9f2
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: e5544ef7725855d28e20d39ff345db6bb07671a2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108184255"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "97895319"
 ---
 # <a name="key-concepts-for-administration-of-azure-vmware-solutions-by-cloudsimple"></a>用于管理 Azure VMware Solution by CloudSimple 的主要概念
 
@@ -58,7 +58,7 @@ CloudSimple 服务提供了每个部署了 CloudSimple 服务的区域的网络�
 
 借助 CloudSimple 服务，可以从 Azure 门户管理 VMware 虚拟机。 vSphere 环境中的一个或多个群集或资源池可映射到创建该服务的订阅。
 
-了解有关以下方面的详细信息：
+了解以下内容的详细信息：
 
 * [CloudSimple 虚拟机](cloudsimple-virtual-machines.md)
 * [Azure 订阅映射](./azure-subscription-mapping.md)

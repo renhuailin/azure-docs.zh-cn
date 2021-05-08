@@ -9,15 +9,15 @@ ms.date: 02/23/2021
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 8e9dd76b60d05b9fa5e3a4aaf7ccc6663f4a969b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101709030"
 ---
 # <a name="open-an-ssh-session-to-a-linux-container-in-azure-app-service"></a>在 Azure 应用服务中打开 Linux 容器的 SSH 会话
 
-[安全外壳 (SSH) ](https://wikipedia.org/wiki/Secure_Shell) 通常用于从命令行终端远程执行管理命令。 Linux 上的应用服务在应用容器中提供 SSH 支持。 
+[安全外壳 (SSH)](https://wikipedia.org/wiki/Secure_Shell) 通常用于通过命令行终端以远程方式执行管理命令。 Linux 上的应用服务在应用容器中提供 SSH 支持。 
 
 ![Linux 应用服务 SSH](./media/configure-linux-open-ssh-session/app-service-linux-ssh.png)
 
@@ -29,7 +29,7 @@ ms.locfileid: "101709030"
 
 ## <a name="use-ssh-support-with-custom-docker-images"></a>将 SSH 支持与自定义 Docker 映像配合使用
 
-请参阅 [在自定义容器中配置 SSH](configure-custom-container.md#enable-ssh)。
+请参阅[在自定义容器中配置 SSH](configure-custom-container.md#enable-ssh)。
 
 ## <a name="open-ssh-session-from-remote-shell"></a>从远程 shell 打开 SSH 会话
 
@@ -51,7 +51,7 @@ az webapp create-remote-connection --subscription <subscription-id> --resource-g
 > 命令末尾的 `&` 只是为了方便起见（如果你是使用 Cloud Shell）。 它在后台运行此进程，因此你可以在同一 shell 中运行下一命令。
 
 > [!NOTE]
-> 如果此命令失败，请确保已通过以下命令 *禁用*[远程调试](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0)：
+> 如果此命令失败，请确保通过以下命令禁用[远程调试](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0)：
 >
 > ```azurecli-interactive
 > az webapp config set --resource-group <resource-group-name> -n <app-name> --remote-debugging-enabled=false

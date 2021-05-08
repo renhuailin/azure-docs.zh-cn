@@ -1,5 +1,5 @@
 ---
-title: 注册一个用于调用 web Api 的 web 应用 |Microsoft
+title: 注册调用 Web API 的 Web 应用 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何注册调用 Web API 的 Web 应用
 services: active-directory
@@ -13,10 +13,10 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: bb9a1ca6c2c81e3b0d5dbeff06f4de012446cf79
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98756326"
 ---
 # <a name="a-web-app-that-calls-web-apis-app-registration"></a>调用 Web API 的 Web 应用：应用注册

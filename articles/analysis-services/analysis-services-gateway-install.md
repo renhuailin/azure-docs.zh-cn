@@ -4,20 +4,19 @@ description: 了解如何安装和配置本地数据网关，以从 Azure Analys
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/27/2021
+ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3128b9f7ae628a0a1974bb30cf87014e269ea466
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 64bd9e4a4cf78d2628e946af30c2d290ff002cf7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130324"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "93081138"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>安装并配置本地数据网关
 
-当同一区域中的一个或多个 Azure Analysis Services 服务器连接到本地数据源时，需要本地数据网关。 虽然你安装的网关与其他服务（例如 Power BI、Power Apps 和逻辑应用）使用的网关相同，但在针对 Azure Analysis Services 进行安装时，有一些需要完成的额外步骤。 本安装文章专门针对 **Azure Analysis Services**。 
+当同一区域中的一个或多个 Azure Analysis Services 服务器连接到本地数据源时，需要本地数据网关。  虽然你安装的网关与其他服务（例如 Power BI、Power Apps 和逻辑应用）使用的网关相同，但在针对 Azure Analysis Services 进行安装时，有一些需要完成的额外步骤。 本安装文章专门针对 **Azure Analysis Services**。 
 
 若要详细了解 Azure Analysis Services 如何使用网关，请参阅[连接到本地数据源](analysis-services-gateway.md)。 若要总体了解有关高级安装方案和网关的更多信息，请参阅[本地数据网关文档](/data-integration/gateway/service-gateway-onprem)。
 
@@ -55,7 +54,7 @@ ms.locfileid: "108130324"
 
 2. 选择“本地数据网关”。 
 
-   ![Select](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
+   ![选择](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
 
 2. 选择位置，接受条款，并单击“安装”。 
 
@@ -156,7 +155,6 @@ Set-AzAnalysisServicesServer -ResourceGroupName $RGName -Name $servername -Gatew
 
 ## <a name="next-steps"></a>后续步骤
 
-* [连接到本地数据源](analysis-services-gateway.md)   
-* [Azure Analysis Services 中支持的数据源](analysis-services-datasource.md)   
-* [对 Azure 虚拟网络上的数据源使用网关](analysis-services-vnet-gateway.md)   
-* [有关 Analysis Services 网络连接的常见问题解答](analysis-services-network-faq.md) 
+* [管理 Analysis Services](analysis-services-manage.md)   
+* [从 Azure Analysis Services 中获取数据](analysis-services-connect.md)   
+* [对 Azure 虚拟网络上的数据源使用网关](analysis-services-vnet-gateway.md)

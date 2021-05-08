@@ -1,6 +1,6 @@
 ---
 title: 在 StorSimple Virtual Array 上安装 Update 0.6 | Microsoft Docs
-description: 介绍如何使用 StorSimple Virtual Array web UI，使用 Azure 门户和修复方法来应用更新0.6。
+description: 介绍如何使用 StorSimple Virtual Array Web UI，通过 Azure 门户和修补程序方法应用更新。
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/18/2017
 ms.author: alkohli
 ms.openlocfilehash: 4b379bb76eaf7587c53ec55972ccee3f54a55f22
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94534239"
 ---
 # <a name="install-update-06-on-your-storsimple-virtual-array"></a>在 StorSimple Virtual Array 上安装Update 0.6
@@ -58,7 +58,7 @@ ms.locfileid: "94534239"
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>下载更新或修补程序
 
-1. 启动 Internet Explorer 并导航到 [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) 。
+1. 启动 Internet Explorer，并转到 [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)。
 
 2. 如果是首次在此计算机上使用 Microsoft 更新目录，请在系统提示是否安装 Microsoft 更新目录外接程序时单击“安装”。
 
@@ -95,28 +95,28 @@ ms.locfileid: "94534239"
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>安装更新或修补程序
 
-1. 在本地 web UI 中，请参阅 **维护**  >  **软件更新** 。 记下运行的软件版本。 如果正在运行 10.0.10290.0，则在步骤 6 中无需更新 MDS 代理。
+1. 在本地 Web UI 中，转到“维护” > “软件更新”。 记下运行的软件版本。 如果正在运行 10.0.10290.0，则在步骤 6 中无需更新 MDS 代理。
    
-    ![屏幕截图显示从 "维护" 菜单中选择的软件更新。](./media/storsimple-virtual-array-install-update-05/update1m.png)
+    ![该屏幕截图显示从“维护”菜单中选择了“软件更新”。](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
 2. 在“更新文件路径”中，输入更新或修补程序的文件名。 也可以浏览到网络共享上的更新或修补程序安装文件。 单击“应用”。
    
-    ![屏幕截图显示 "软件更新" 页中的 "更新文件路径" 文本框。](./media/storsimple-virtual-array-install-update-05/update2m.png)
+    ![该屏幕截图显示“软件更新”页中的“更新文件路径”文本框。](./media/storsimple-virtual-array-install-update-05/update2m.png)
 
 3. 显示一条警告。 假定 Virtual Array 为单节点设备，应用更新后，设备将重启并且会出现停机。 单击选中图标。
    
-   ![屏幕截图显示了一个对话框警告，出现停机时间。](./media/storsimple-virtual-array-install-update-05/update3m.png)
+   ![该屏幕截图显示一个关于停机时间警告的对话框。](./media/storsimple-virtual-array-install-update-05/update3m.png)
 
-4. 更新启动。 成功更新设备后，该设备将重新启动。 本地 UI 在此期间不可访问。
+4. 更新开始。 成功更新设备后，该设备将重新启动。 本地 UI 在此期间不可访问。
    
-    ![屏幕截图显示更新的成功消息。](./media/storsimple-virtual-array-install-update-05/update5m.png)
+    ![该屏幕截图显示更新的成功消息。](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
-5. 重新启动完成后，会转到“登录”页。 若要验证是否已更新设备软件，请在本地 web UI 中，请参阅 **维护**  >  **软件更新** 。 Update 0.6 显示的软件版本应为 10.0.0.0.0.10293。
+5. 重新启动完成后，会转到“登录”页。 若要验证设备软件是否已更新，请在本地 Web UI 中，转到“维护” > “软件更新”。 Update 0.6 显示的软件版本应为 10.0.0.0.0.10293。
    
    > [!NOTE]
    > 我们在本地 Web UI 和 Azure 门户中报告的软件版本稍有不同。 例如，针对同一版本，本地 Web UI 报告 10.0.0.0.0.10293，而 Azure 门户则报告 10.0.10293.0。
    
-    ![屏幕截图显示具有当前软件版本的软件更新页。](./media/storsimple-virtual-array-install-update-06/update6m.png)
+    ![该屏幕截图显示了具有当前软件版本的软件更新页。](./media/storsimple-virtual-array-install-update-06/update6m.png)
 
 6. 如果应用此更新之前运行的是 StorSimple Virtual Array Update 0.5 (10.0.10290.0)，请跳过此步骤。 开始更新前，请记下步骤 1 中的软件版本。 如果正在运行 Update 0.5，则表示 MDS 代理已经是最新的。
 

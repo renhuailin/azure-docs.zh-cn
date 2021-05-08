@@ -1,14 +1,14 @@
 ---
-title: Application Insights SDK 中的筛选和预处理 |Microsoft Docs
+title: Application Insights SDK 中的筛选和预处理 | Microsoft Docs
 description: 为 SDK 编写遥测处理器和遥测初始化表达式，以在将遥测发送到 Application Insights 门户之前筛选属性或将其添加到数据。
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: cb9159b98b219c6fb04beb7bbbaade64fc72a30b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98927750"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK 中的筛选和预处理遥测

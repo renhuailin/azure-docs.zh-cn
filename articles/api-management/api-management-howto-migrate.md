@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
 ms.openlocfilehash: 0eed2328aca78402c5f4691bb9b3d07d4f36472e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86250220"
 ---
 # <a name="how-to-migrate-azure-api-management-across-regions"></a>如何跨区域迁移 Azure API 管理
@@ -47,4 +47,4 @@ ms.locfileid: "86250220"
 ## <a name="next-steps"></a><a name="next-steps"> </a>后续步骤
 * 有关备份和还原功能的详细信息，请参阅[如何实现灾难恢复](api-management-howto-disaster-recovery-backup-restore.md)。
 * 若要了解如何迁移 Azure 资源，请参阅 [Azure 跨区域迁移指南](https://github.com/Azure/Azure-Migration-Guidance)。
-* [优化并节省云开支](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+* [优化并节省云支出](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。

@@ -1,6 +1,6 @@
 ---
 title: 使用 GitHub Actions 将静态站点部署到 Azure 存储
-description: 托管 GitHub 操作的 Azure 存储静态网站
+description: 采用 GitHub Actions 的 Azure 存储静态网站托管
 author: juliakm
 ms.service: storage
 ms.topic: how-to
@@ -10,42 +10,42 @@ ms.date: 01/11/2021
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure, devx-track-azurecli
 ms.openlocfilehash: 2192cdb3072edba2e5597a697feef99ba4d2070d
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102210251"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>在 Azure 存储中设置 GitHub Actions 工作流以部署静态网站
 
-通过使用工作流将静态站点部署到 Azure 存储帐户，开始使用 [GitHub 操作](https://docs.github.com/en/actions) 。 设置 GitHub 操作工作流后，可以在更改网站的代码时，从 GitHub 自动将网站部署到 Azure。
+使用工作流将静态站点部署到 Azure 存储帐户以开始使用 [GitHub Actions](https://docs.github.com/en/actions)。 设置 GitHub Actions 工作流后，当更改站点代码时，站点会从 GitHub 自动部署到 Azure。
 
 > [!NOTE]
-> 如果你使用的是 [Azure 静态 Web 应用](../../static-web-apps/index.yml)，则无需手动设置 GitHub 操作工作流。
-> Azure 静态 Web 应用会自动为你创建 GitHub 操作工作流。 
+> 如果你使用的是 [Azure Static Web Apps](../../static-web-apps/index.yml)，则无需手动设置 GitHub Actions 工作流。
+> Azure Static Web Apps 会自动为你创建 GitHub Actions 工作流。 
 
 ## <a name="prerequisites"></a>先决条件
 
 Azure 订阅和 GitHub 帐户。 
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- 具有静态网站代码的 GitHub 存储库。 如果没有 GitHub 帐户，可以[免费注册](https://github.com/join)。  
-- 托管在 Azure 存储中的工作静态网站。 了解如何 [在 Azure 存储中承载静态网站](storage-blob-static-website-how-to.md)。 若要遵循此示例，还应部署 [Azure CDN](static-website-content-delivery-network.md)。
+- 具有静态站点代码的 GitHub 存储库。 如果没有 GitHub 帐户，可以[免费注册](https://github.com/join)。  
+- 托管在 Azure 存储中的工作静态网站。 了解如何[在 Azure 存储中托管静态网站](storage-blob-static-website-how-to.md)。 若要遵循此示例，还应部署 [Azure CDN](static-website-content-delivery-network.md)。
 
 > [!NOTE]
-> 通常使用内容交付网络 (CDN) 来减少全球用户的延迟，并减少存储帐户的事务数。 将静态内容部署到基于云的存储服务可以降低需要昂贵的计算实例。 有关详细信息，请参阅 [静态内容托管模式](/azure/architecture/patterns/static-content-hosting)。
+> 通常使用内容分发网络 (CDN) 来降低全球用户的延迟，并减少存储帐户的事务数。 将静态内容部署到基于云的存储服务可以降低对可能非常昂贵的计算实例的需求。 有关详细信息，请参阅“[静态内容托管模式](/azure/architecture/patterns/static-content-hosting)”。
 
 ## <a name="generate-deployment-credentials"></a>生成部署凭据
 
 可以使用 [Azure CLI](/cli/azure/) 中的 [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) 命令创建[服务主体](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 请使用 Azure 门户中的 [Azure Cloud Shell](https://shell.azure.com/) 或选择“试用”按钮运行此命令。
 
-将占位符替换 `myStaticSite` 为 Azure 存储中托管的网站的名称。 
+将占位符 `myStaticSite` 替换为 Azure 存储中所托管站点的名称。 
 
 ```azurecli-interactive
    az ad sp create-for-rbac --name {myStaticSite} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} --sdk-auth
 ```
 
-在上面的示例中，请将占位符替换为你的订阅 ID 和资源组名称。 输出是一个具有角色分配凭据的 JSON 对象，该对象提供对你的存储帐户的访问权限，如下所示。 复制此 JSON 对象供以后使用。
+在上面的示例中，请将占位符替换为你的订阅 ID 和资源组名称。 输出是一个具有角色分配凭据的 JSON 对象，这些凭据提供对存储帐户的访问权限（类似于以下示例）。 复制此 JSON 对象供以后使用。
 
 ```output 
   {
@@ -66,7 +66,7 @@ Azure 订阅和 GitHub 帐户。
 
 1. 选择“设置”>“机密”>“新的机密”。
 
-1. 将 Azure CLI 命令的整个 JSON 输出粘贴到机密的值字段中。 为机密指定一个名称，如 `AZURE_CREDENTIALS` 。
+1. 将 Azure CLI 命令的整个 JSON 输出粘贴到机密的值字段中。 为机密指定名称，如 `AZURE_CREDENTIALS`。
 
     以后配置工作流文件时，请使用该机密作为 Azure 登录操作的输入 `creds`。 例如：
 
@@ -80,7 +80,7 @@ Azure 订阅和 GitHub 帐户。
 
 1. 转到 GitHub 存储库的“操作”。 
 
-    :::image type="content" source="media/storage-blob-static-website/storage-blob-github-actions-header.png" alt-text="GitHub 操作菜单项":::
+    :::image type="content" source="media/storage-blob-static-website/storage-blob-github-actions-header.png" alt-text="GitHub actions 菜单项":::
 
 1. 选择“自己设置工作流”。 
 
@@ -117,7 +117,7 @@ Azure 订阅和 GitHub 帐户。
               creds: ${{ secrets.AZURE_CREDENTIALS }}
     ```
 
-1. 使用 Azure CLI 操作将代码上传到 blob 存储，并清除 CDN 终结点。 对于 `az storage blob upload-batch` ，请将占位符替换为你的存储帐户名称。 脚本将上传到该 `$web` 容器。 对于 `az cdn endpoint purge` ，请将占位符替换为 cdn 配置文件名称、cdn 终结点名称和资源组。
+1. 利用 Azure CLI 操作将代码上传到 blob 存储，并清除 CDN 终结点。 对于 `az storage blob upload-batch`，将占位符替换为存储帐户的名称。 脚本将上传到 `$web` 容器。 对于 `az cdn endpoint purge`，将占位符替换为 CDN 配置文件名称、CDN 终结点名称和资源组。
 
     ```yaml
         - name: Upload to blob storage
@@ -183,9 +183,9 @@ Azure 订阅和 GitHub 帐户。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-当不再需要静态网站和 GitHub 存储库时，请通过删除资源组和 GitHub 存储库来清理部署的资源。 
+如果不再需要静态网站和 GitHub 存储库，请删除资源组和 GitHub 存储库，以清理部署的资源。 
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解 Azure 静态 Web 应用](../../static-web-apps/index.yml)
+> [了解 Azure Static Web Apps](../../static-web-apps/index.yml)

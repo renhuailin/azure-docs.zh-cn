@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 10/12/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 2c57ac10fbd318dd4bbb2dc86457e186dd824834
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: 0e742a046d43fef6e8263f73fc2ca8460848ad40
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91951649"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448111"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>配置 Windows 虚拟桌面负载均衡方法
 

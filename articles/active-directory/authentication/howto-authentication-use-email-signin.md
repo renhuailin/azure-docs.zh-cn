@@ -11,26 +11,26 @@ author: justinha
 manager: daveba
 ms.reviewer: calui
 ms.openlocfilehash: 4e39d7f15e3ca3c6e241c767a5f881d7170c6379
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99255961"
 ---
-# <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>使用电子邮件作为备用登录 ID (预览版登录到 Azure Active Directory) 
+# <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>使用电子邮件作为备用登录 ID 登录到 Azure Active Directory（预览版）
 
 > [!NOTE]
 > 使用电子邮件作为备用登录 ID 登录到 Azure AD 是 Azure Active Directory 的一项公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-许多组织希望让用户使用与其本地目录环境相同的凭据登录到 Azure Active Directory (Azure AD) 。 使用此方法（称为混合身份验证），用户只需记住一组凭据。
+许多组织希望让用户使用与其本地目录环境相同的凭据登录到 Azure Active Directory (Azure AD)。 使用此方法（称为混合身份验证），用户只需记住一组凭据。
 
 一些组织尚未转换为使用混合身份验证，原因如下：
 
 * 默认情况下，Azure AD 用户主体名称 (UPN) 设置为与本地目录相同的 UPN。
-* 更改 Azure AD UPN 将在本地和 Azure AD 环境之间创建错误匹配，这可能会导致某些应用程序和服务出现问题。
-* 由于业务或合规性原因，组织不希望使用本地 UPN 登录到 Azure AD。
+* 更改 Azure AD UPN 会在本地和 Azure AD 环境之间创建错误匹配，从而导致某些应用程序和服务出现问题。
+* 出于业务或合规性原因，组织不希望使用本地 UPN 登录到 Azure AD。
 
-若要帮助移动到混合身份验证，你现在可以将 Azure AD 配置为允许用户使用已验证域中的电子邮件作为备用登录 ID 进行登录。 例如，如果 Contoso 更名为 Fabrikam，现在就可以不再使用旧 `balas@contoso.com` UPN 登录，而是可以使用电子邮件作为备用登录 ID 。 若要访问应用程序或服务，用户可以使用分配的电子邮件（例如）登录到 Azure AD `balas@fabrikam.com` 。
+为帮助转换为混合身份验证，现在可以将 Azure AD 配置为允许用户使用已验证域中的电子邮件作为备用登录 ID 登录。 例如，如果 Contoso 更名为 Fabrikam，现在就可以不再使用旧 `balas@contoso.com` UPN 登录，而是可以使用电子邮件作为备用登录 ID 。 若要访问应用程序或服务，用户可以使用其分配的电子邮件（例如 `balas@fabrikam.com`）登录到 Azure AD。
 
 本文介绍如何启用电子邮件并将其用作备用登录 ID。 Azure AD Free 版和更高版本中提供此功能。
 
@@ -38,34 +38,34 @@ ms.locfileid: "99255961"
 > 此功能仅适用于通过云身份验证的 Azure AD 用户。
 
 > [!NOTE]
-> 目前，在通过云身份验证的租户 Azure AD 加入的 Windows 10 设备上不支持此功能。 此功能不适用于混合 Azure AD 联接的设备。
+> 目前，在通过云身份验证的租户的 Azure AD 联接的 Windows 10 设备上不支持此功能。 此功能不适用于混合 Azure AD 联接的设备。
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Azure AD 登录方法概述
 
-若要登录到 Azure AD，用户请输入唯一标识其帐户的名称。 以前，只能使用 Azure AD UPN 作为登录名。
+若要登录到 Azure AD，用户请输入唯一标识其帐户的名称。 以前只能使用 Azure AD UPN 作为登录名。
 
-对于本地 UPN 是用户首选登录电子邮件的组织而言，此方法非常有用。 这些组织会将 Azure AD UPN 设置为与本地 UPN 完全相同的值，并且用户具有一致的登录体验。
+对于本地 UPN 是用户首选登录电子邮件的组织而言，此方法非常有用。 这些组织会将 Azure AD UPN 设置为与本地 UPN 完全相同的值，并且用户将具有一致的登录体验。
 
-但是，在某些组织中，本地 UPN 不用作登录名。 在本地环境中，可以将本地 AD DS 配置为允许使用备用登录 ID 进行登录。 将 Azure AD UPN 设置为与本地 UPN 相同的值并不是一个选项，因为 Azure AD 会要求用户使用该值登录。
+但是，在某些组织中，本地 UPN 不用作登录名。 在本地环境中，可以将本地 AD DS 配置为允许使用备用登录 ID 进行登录。 将 Azure AD UPN 设置为与本地 UPN 相同的值并不是一个选择，因为 Azure AD 会要求用户使用该值登录。
 
-此问题的典型解决方法是将 Azure AD UPN 设置为用户希望登录时所用的电子邮件地址。 虽然这种方法有效，但在本地 AD 与 Azure AD 中的 Upn 不同，并且此配置与所有 Microsoft 365 工作负荷都不兼容。
+此问题的典型解决方法是将 Azure AD UPN 设置为用户希望使用其登录的电子邮件地址。 虽然这种方法有效，但在本地 AD 与 Azure AD 中的 UPN 不同，并且此配置与所有 Microsoft 365 工作负荷都不兼容。
 
-另一种方法是将 Azure AD 和本地 Upn 同步到相同的值，然后将 Azure AD 配置为允许用户使用已验证的电子邮件登录到 Azure AD。 若要提供此功能，请在本地目录中的用户 *ProxyAddresses* 属性中定义一个或多个电子邮件地址。 然后，将 *ProxyAddresses* 同步到使用 Azure AD Connect 自动 Azure AD。
+另一种方法是将 Azure AD 和本地 UPN 同步到相同的值，然后将 Azure AD 配置为允许用户使用已验证的电子邮件登录到 Azure AD。 若要提供此功能，请在本地目录中用户的“ProxyAddresses”属性中定义一个或多个电子邮件地址。 然后，使用 Azure AD Connect 自动将“ProxyAddresses”同步到 Azure AD。
 
 ## <a name="preview-limitations"></a>预览版限制
 
-如果 Azure AD Free 版本和更高版本中提供备用登录 ID，请使用电子邮件登录到 Azure AD。
+在 Azure AD Free 版本和更高版本中，可以使用电子邮件作为备用登录 ID 登录到 Azure AD。
 
 在当前预览状态下，当用户使用非 UPN 电子邮件作为备用登录 ID 登录时，会出现以下限制：
 
-* 用户可能会看到其 UPN，即使是通过其非 UPN 电子邮件登录的。 可能会出现以下示例行为：
-    * 当定向到 Azure AD 登录时，系统将提示用户登录 UPN `login_hint=<non-UPN email>` 。
-    * 当用户使用非 UPN 电子邮件登录并输入错误密码时， *"输入密码"* 页将更改以显示 UPN。
-    * 在某些 Microsoft 网站和应用（例如 [https://portal.azure.com](https://portal.azure.com) 和 Microsoft Office）上，通常显示在右上角的 " **帐户管理器** " 控件可能会显示用户的 UPN，而不是用于登录的非 UPN 电子邮件。
+* 即使通过非 UPN 电子邮件登录，用户也可能看到其UPN。 可能会出现以下示例行为：
+    * 当定向到使用 `login_hint=<non-UPN email>` 的 Azure AD 登录时，系统将提示用户使用 UPN 登录。
+    * 当用户使用非 UPN 电子邮件登录并输入错误密码时，“输入密码”页将改为显示 UPN。
+    * 在某些 Microsoft 网站和应用例如 [https://portal.azure.com](https://portal.azure.com) 和 Microsoft Office 上，通常显示在右上角的“帐户管理器”控件可能会显示用户的 UPN，而不是用于登录的非 UPN 电子邮件。
 
 * 某些流当前与非 UPN 电子邮件不兼容，如下所示：
-    * 标识保护当前不匹配电子邮件备用登录 Id，其中包含 *泄漏的凭据* 风险检测。 此风险检测使用 UPN 来匹配已泄漏的凭据。 有关详细信息，请参阅 [Azure AD Identity Protection 风险检测和修正][identity-protection]。
-    * 不完全支持将 B2B 邀请发送到备用登录 ID 的电子邮件。 接受作为备用登录 ID 发送到电子邮件的邀请后，使用备用电子邮件登录可能对租户终结点上的用户不起作用。
+    * 标识保护当前不使用 *泄漏的凭据* 风险检测来匹配电子邮件备用登录 ID。 此风险检测使用 UPN 来匹配已泄漏的凭据。 有关详细信息，请参阅 [Azure AD 标识保护风险检测和修正][identity-protection]。
+    * 不完全支持将 B2B 邀请发送到备用登录 ID 电子邮件。 接受发送到作为备用登录 ID 的电子邮件的邀请后，使用备用电子邮件登录可能对租户终结点上的用户不起作用。
 
 ## <a name="synchronize-sign-in-email-addresses-to-azure-ad"></a>将登录电子邮件地址同步到 Azure AD
 
@@ -201,14 +201,14 @@ Azure AD Connect 自动同步的用户属性之一是 ProxyAddresses。 如果�
 
 若要测试用户是否能够使用电子邮件登录，请浏览到 [https://myprofile.microsoft.com][my-profile] 并使用基于其电子邮件地址（例如 `balas@fabrikam.com` ）而不是其 UPN（例如 `balas@contoso.com` ）的用户帐户登录。 登录体验应类似于基于 UPN 的登录事件。
 
-## <a name="enable-staged-rollout-to-test-user-sign-in-with-an-email-address"></a>启用分步推出以测试使用电子邮件地址的用户登录  
+## <a name="enable-staged-rollout-to-test-user-sign-in-with-an-email-address"></a>启用分阶段推出以测试用户使用电子邮件地址进行登录  
 
-通过[分步推出][staged-rollout]，租户管理员可以启用特定组的功能。 建议租户管理员使用分阶段推出来测试用户使用电子邮件地址进行登录。 当管理员准备好将此功能部署到其整个租户时，它们应使用主领域发现策略。  
+通过[分阶段推出][staged-rollout]，租户管理员可以启用特定组的功能。 建议租户管理员使用分阶段推出来测试用户使用电子邮件地址进行登录。 当管理员准备好将此功能部署到其整个租户时，它们应使用主领域发现策略。  
 
 
 需要使用租户管理员权限完成以下步骤：
 
-1. 以管理员身份打开 PowerShell 会话，然后使用 [安装模块][Install-Module]Cmdlet 安装 *AzureADPreview* 模块：
+1. 以管理员身份打开 PowerShell 会话，然后使用 [Install-Module][Install-Module] cmdlet 安装“AzureADPreview”模块：
 
     ```powershell
     Install-Module AzureADPreview
@@ -224,13 +224,13 @@ Azure AD Connect 自动同步的用户属性之一是 ProxyAddresses。 如果�
 
     该命令将返回有关你的帐户、环境和租户 ID 的信息。
 
-3. 使用以下 cmdlet 列出所有现有的过渡推出策略：
+3. 使用以下 cmdlet 列出所有现有的分阶段推出策略：
    
    ```powershell
    Get-AzureADMSFeatureRolloutPolicy
    ``` 
 
-4. 如果没有针对此功能的现有暂存推出策略，请创建新的分步推出策略，并记下策略 ID：
+4. 如果没有针对此功能的现有分阶段推出策略，请创建新的分阶段推出策略，并记下策略 ID：
 
    ```powershell
    $AzureADMSFeatureRolloutPolicy = @{
@@ -241,13 +241,13 @@ Azure AD Connect 自动同步的用户属性之一是 ProxyAddresses。 如果�
    New-AzureADMSFeatureRolloutPolicy @AzureADMSFeatureRolloutPolicy
    ```
 
-5. 查找要添加到分阶段推出策略的组的 directoryObject ID。 请注意为 *Id* 参数返回的值，因为它将在下一步中使用。
+5. 查找要添加到分阶段推出策略的组的 directoryObject ID。 请注意为“Id”参数返回的值，因为它将在下一步中使用。
    
    ```powershell
    Get-AzureADMSGroup -SearchString "Name of group to be added to the staged rollout policy"
    ```
 
-6. 如以下示例中所示，将组添加到分步推出策略中。 将 *-Id* 参数中的值替换为步骤4中为策略 Id 返回的值，并将 *-RefObjectId* 参数中的值替换为步骤5中所述的 *id* 。 可能需要长达1小时的时间，组中的用户才能使用其代理地址登录。
+6. 将组添加至分阶段推出策略，如以下示例所示。 将“-Id”参数中的值替换为步骤 4 中为策略 ID 返回的值，并将“-RefObjectId”参数中的值替换为步骤 5 中所述的“Id”。   可能需要长达1小时的时间，组中的用户才能使用其代理地址登录。
 
    ```powershell
    Add-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID" -RefObjectId "GROUP_OBJECT_ID"
@@ -257,7 +257,7 @@ Azure AD Connect 自动同步的用户属性之一是 ProxyAddresses。 如果�
 
 ### <a name="removing-groups"></a>删除组
 
-若要从分步推出策略中删除组，请运行以下命令：
+若要从分阶段推出策略中删除组，请运行以下命令：
 
 ```powershell
 Remove-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID" -ObjectId "GROUP_OBJECT_ID" 
@@ -265,7 +265,7 @@ Remove-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID" -Obj
 
 ### <a name="removing-policies"></a>删除策略
 
-若要删除分步推出策略，请先禁用该策略，然后将其从系统中删除：
+若要删除分阶段推出策略，请先禁用该策略，然后将其从系统中删除：
 
 ```powershell
 Set-AzureADMSFeatureRolloutPolicy -Id "ROLLOUT_POLICY_ID" -IsEnabled $false 

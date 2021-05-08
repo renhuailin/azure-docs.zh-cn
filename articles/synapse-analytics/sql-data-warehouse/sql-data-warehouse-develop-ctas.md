@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
 ms.openlocfilehash: 68bab754142538fc6067cf2593ae6244a03a48d1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98734808"
 ---
 # <a name="create-table-as-select-ctas"></a>CREATE TABLE AS SELECT (CTAS)
@@ -130,7 +130,7 @@ DROP TABLE FactInternetSales_old;
 * MERGE 语句
 
 > [!TIP]
-> 请尝试考虑 "CTAS first"。 一般情况下，最好是使用 CTAS 来解决问题，即使因此要写入更多数据。
+> 尽量考虑“CTAS 优先”。 一般情况下，最好是使用 CTAS 来解决问题，即使因此要写入更多数据。
 
 ## <a name="ansi-join-replacement-for-update-statements"></a>替换 Update 语句的 ANSI Join
 

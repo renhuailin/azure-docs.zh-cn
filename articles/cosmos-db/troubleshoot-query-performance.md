@@ -9,10 +9,10 @@ ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
 ms.openlocfilehash: 6701a580cbe7790dcce2cbbcc46889f9dff00107
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100559988"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>排查使用 Azure Cosmos DB 时遇到的查询问题
@@ -201,42 +201,42 @@ RU 费用：2.98 RU
 大多数系统函数都使用索引。 下面列出了一些使用索引的常用字符串函数：
 
 - -StartsWith
-- Contains
+- 包含
 - RegexMatch
-- Left
-- Substring - 但前提是第一个 num_expr 为 0
+- 左
+- Substring - 但是仅当在第一个 num_expr 为 0 时
 
-下面是一些不使用索引且在 `WHERE` 子句中使用时必须加载每个文档的常用系统函数：
+下面是一些在 `WHERE` 子句中使用时不使用索引且必须加载每个文档的常用系统函数：
 
 | 系统函数                     | 优化意见             |
 | --------------------------------------- |------------------------------------------------------------ |
 | Upper/Lower                         | 不要使用系统函数来规范化数据以进行比较，而是在插入时规范化大小写。 诸如 ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` 的查询将变成 ```SELECT * FROM c WHERE c.name = 'BOB'```。 |
-| GetCurrentDateTime/GetCurrentTimestamp/GetCurrentTicks | 计算查询执行之前的当前时间，并在 `WHERE` 子句中使用该字符串值。 |
+| GetCurrentDateTime/GetCurrentTimestamp/GetCurrentTicks | 计算查询执行前的当前时间并在 `WHERE` 子句中使用该字符串值。 |
 | 数学函数（非聚合） | 如果需要频繁计算查询中的某个值，请考虑在 JSON 文档中将此值存储为属性。 |
 
-这些系统函数可以使用索引，但在包含聚合的查询中使用时不可以：
+这些系统函数可以使用索引，但在包含聚合的查询中使用时除外：
 
 | 系统函数                     | 优化意见             |
 | --------------------------------------- |------------------------------------------------------------ |
 | 空间系统函数                        | 将查询结果存储在实时具体化视图中 |
 
-在 `SELECT` 子句中使用时，低效的系统函数将不会影响查询使用索引的方式。
+在 `SELECT` 子句中使用时，低效的系统函数不会影响查询使用索引的方式。
 
 ### <a name="improve-string-system-function-execution"></a>改进字符串系统函数执行
 
-对于某些使用索引的系统函数，你可以通过向查询添加 `ORDER BY` 子句来改进查询执行。 
+对于某些使用索引的系统函数，可以通过将 `ORDER BY` 子句添加到查询来改进查询执行。 
 
-更具体地说，其 RU 费用随属性基数增加而增加的任何系统函数都可以受益于在查询中使用 `ORDER BY`。 这些查询进行索引扫描，因此对查询结果进行排序可以使查询更高效。
+更具体地说，在查询中添加 `ORDER BY` 时，RU 费用随属性的基数增加而增加的任何系统函数都可能从中受益。 这些查询进行索引扫描，因此，对查询结果进行排序可以提高查询的效率。
 
 此优化可改进以下系统函数的执行：
 
-- StartsWith (where case-insensitive = true)
-- StringEquals (where case-insensitive = true)
-- Contains
+- StartsWith（其中不区分大小写 = true）
+- StringEquals（其中不区分大小写 = true）
+- 包含
 - RegexMatch
 - EndsWith
 
-例如，考虑下面带有 `CONTAINS` 的查询。 `CONTAINS` 将使用索引，但有时即使添加相关索引，之后在运行以下查询时，仍然可能耗费非常高的 RU 费用。
+例如，考虑下面带有 `CONTAINS` 的查询。 `CONTAINS` 将使用索引，但是有时候，即使在添加相关索引后，在运行以下查询时，仍然会看到非常高的 RU 费用：
 
 原始查询：
 
@@ -255,7 +255,7 @@ WHERE CONTAINS(c.town, "Sea")
 ORDER BY c.town
 ```
 
-相同的优化可帮助改进具有其他筛选器的查询。 在这种情况下，最好也将具有等效筛选器的属性添加到 `ORDER BY` 子句中。
+相同的优化可帮助对其他筛选器进行查询。 在这种情况下，最好还向 `ORDER BY` 子句添加具有相等筛选器的属性。
 
 原始查询：
 
@@ -265,7 +265,7 @@ FROM c
 WHERE c.name = "Samer" AND CONTAINS(c.town, "Sea")
 ```
 
-可以通过为（c.name、c.town）添加 `ORDER BY` 和 [组合索引](index-policy.md#composite-indexes)来改进查询执行：
+可以通过添加 `ORDER BY` 和 (c.name, c.town) 的[组合索引](index-policy.md#composite-indexes)来改进查询执行：
 
 ```sql
 SELECT *

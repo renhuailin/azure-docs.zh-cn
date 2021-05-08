@@ -1,5 +1,5 @@
 ---
-title: 构建调用 web API 的单页应用
+title: 生成调用 Web API 的单页应用程序
 titleSuffix: Microsoft identity platform
 description: 了解如何生成调用 Web API 的单页应用程序
 services: active-directory
@@ -13,10 +13,10 @@ ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.openlocfilehash: 4dd4a40233fc1c030581fd1ae2827061435a0ab3
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98753542"
 ---
 # <a name="single-page-application-call-a-web-api"></a>单页应用程序：调用 Web API

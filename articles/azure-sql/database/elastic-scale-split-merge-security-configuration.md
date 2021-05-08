@@ -12,10 +12,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 235efc550fd47d4244a5bf081c75d5e824a8e4b4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92793426"
 ---
 # <a name="split-merge-security-configuration"></a>拆分/合并安全配置
@@ -34,7 +34,7 @@ ms.locfileid: "92793426"
 
 可从公共证书颁发机构 (CA) 或 [Windows 证书服务](/windows/win32/seccrypto/certificate-services)获取证书。 这些方法是获取证书的首选方法。
 
-如果这些选项不可用，可以生成 **自签名证书** 。
+如果这些选项不可用，可以生成 **自签名证书**。
 
 ## <a name="tools-to-generate-certificates"></a>用于生成证书的工具
 
@@ -442,9 +442,9 @@ MyID.pvk and MyID.cer with the filename for the encryption certificate
 1. 运行 mmc.exe。
 2. “文件”->“添加/删除管理单元...”
 3. 选择“证书” 。
-4. 单击“添加” 。
+4. 单击“添加”  。
 5. 选择证书存储位置。
-6. 单击“完成” 。
+6. 单击“完成”  。
 7. 单击 **“确定”** 。
 8. 展开“证书” 。
 9. 展开证书存储节点。
@@ -464,7 +464,7 @@ MyID.pvk and MyID.cer with the filename for the encryption certificate
 8. 单击“下一步”。
 9. 在证书的存储位置键入或浏览文件名（使用 .PFX 扩展名）。
 10. 单击“下一步”。
-11. 单击“完成” 。
+11. 单击“完成”  。
 12. 单击 **“确定”** 。
 
 ## <a name="import-certificate"></a>导入证书
@@ -482,7 +482,7 @@ MyID.pvk and MyID.cer with the filename for the encryption certificate
 5. 选择“将证书放入以下存储”
 6. 单击“浏览” 。
 7. 选择所需的存储。
-8. 单击“完成” 。
+8. 单击“完成”  。
    
    * 如果已选中“受信任的根证书颁发机构”存储，请单击“是” 。
 9. 在所有对话框窗口上单击“确定”  。
@@ -499,7 +499,7 @@ MyID.pvk and MyID.cer with the filename for the encryption certificate
 7. 完成操作后，从列表中的新条目复制证书指纹。
 
 ## <a name="other-security-considerations"></a>其他安全注意事项
-使用 HTTPS 终结点时，本文档中介绍的 TLS 设置对服务及其客户端之间的通信进行加密。 这一点很重要，因为该通信中包含了数据库访问凭据以及其他可能的敏感信息。 但请注意，该服务会将内部状态（包括凭据）保存在 Azure SQL 数据库中数据库的内部表中，该数据库在 Azure SQL 数据库中为你在 Microsoft Azure 订阅中提供了元数据存储。 在服务配置文件（.CSCFG 文件）中，该数据库已定义为以下设置的一部分： 
+使用 HTTPS 终结点时，本文档中介绍的 TLS 设置对服务及其客户端之间的通信进行加密。 这一点很重要，因为该通信中包含了数据库访问凭据以及其他可能的敏感信息。 但是，请注意，该服务会将内部状态（包括凭据）保存在其内部表中，该表位于在 Microsoft Azure 订阅中为元数据存储提供的 Azure SQL 数据库中的数据库。 在服务配置文件（.CSCFG 文件）中，该数据库已定义为以下设置的一部分： 
 
 ```xml
 <Setting name="ElasticScaleMetadata" value="Server=…" />

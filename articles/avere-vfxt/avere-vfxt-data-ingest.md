@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
 ms.openlocfilehash: 76bbe60397ebb01aed5694d933b3067f778a4c21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85505590"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>将数据移到 vFXT 群集 - 并行数据引入
 
-创建新的 vFXT 群集后，第一项任务可能是将数据移到 Azure 中的新存储卷上。 但是，如果你移动数据的常用方法从一台客户端发出简单的复制命令，则复制性能可能会变慢。 单线程复制并不是将数据复制到 Avere vFXT 群集的后端存储的好方法。
+创建新的 vFXT 群集后，第一项任务可能是将数据移到 Azure 中的新存储卷。 但是，如果你移动数据的常用方法从一台客户端发出简单的复制命令，则复制性能可能会变慢。 单线程复制并不是很适合用于将数据复制到 Avere vFXT 群集的后端存储。
 
-由于 Azure 群集的 Avere vFXT 是可伸缩的多客户端缓存，因此向其复制数据的最快且最有效的方法是使用多个客户端。 此方法可将文件和对象的引入并行化。
+由于 Avere vFXT for Azure 群集是一个可缩放的多客户端缓存，复制数据的最快、最有效方法是使用多个客户端。 此方法可将文件和对象的引入并行化。
 
 ![显示多客户端、多线程数据移动的示意图：在左上方，本地硬件存储对应的图标引出了多个箭头。 箭头指向四台客户端计算机。 每台客户端计算机引出了三个指向 Avere vFXT 的箭头。 Avere vFXT 引出了多个指向 Blob 存储的箭头。](media/avere-vfxt-parallel-ingest.png)
 
@@ -25,7 +25,7 @@ ms.locfileid: "85505590"
 
 本文将会介绍有关创建多客户端、多线程文件复制系统，以便将数据移到 Avere vFXT 群集的策略。 其中解释了文件传输的概念，以及可用于有效通过多个客户端和简单复制命令来复制数据的决策点。
 
-此外，本文还介绍了一些有用的实用工具。 ``msrsync``实用工具可用于部分自动执行将数据集划分为 bucket 并使用命令的过程 ``rsync`` 。 ``parallelcp`` 脚本是可以读取源目录和自动发出复制命令的另一个实用工具。 此外，还 ``rsync`` 可以在两个阶段中使用该工具，以提供更快的复制，但仍可提供数据一致性。
+此外，本文还介绍了一些有用的实用工具。 ``msrsync`` 实用工具可用于部分自动化将数据集分割成桶和使用 ``rsync`` 命令的过程。 ``parallelcp`` 脚本是可以读取源目录和自动发出复制命令的另一个实用工具。 此外，还可以在两个阶段中使用 ``rsync`` 工具，便于更快地复制，但仍可保持数据一致性。
 
 请单击链接跳转到相关部分：
 
@@ -44,12 +44,12 @@ GitHub 上提供了一个资源管理器模板，用于通过本文中所述的�
 
 ## <a name="strategic-planning"></a>策略规划
 
-设计并行复制数据的策略时，应了解文件大小、文件数和目录深度的折衷。
+在设计并行复制数据的策略时，应该知道如何在文件大小、文件计数和目录深度方面做出取舍。
 
 * 如果文件较小，应该关注的指标是每秒文件数。
 * 如果文件较大（10MiBi 或更大），则应该关注的指标是每秒字节数。
 
-每个复制进程都有相关的吞吐率和文件传输速率，可以通过计量复制命令的时长和分解文件大小与文件计数来测量这些参数。 说明如何衡量速度超出了本文档的讨论范围，但要了解是否需要处理小文件或大型文件，这一点很重要。
+每个复制进程都有相关的吞吐率和文件传输速率，可以通过计量复制命令的时长和分解文件大小与文件计数来测量这些参数。 说明如何测量速率是否超出了本文档的范畴，但重要的一点是了解要处理的是小型还是大型文件。
 
 ## <a name="manual-copy-example"></a>手动复制示例
 
@@ -113,7 +113,7 @@ cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 
 ### <a name="when-to-add-mount-points"></a>何时添加装入点
 
-针对单个目标文件系统装入点运行足够多的并行线程后，在某个时间点，添加更多的线程并不能提高吞吐量。  (吞吐量将按文件/秒或字节/秒来度量，具体取决于你的数据类型。 ) 或更糟的是，超线程可能会导致吞吐量下降。
+针对单个目标文件系统装入点运行足够多的并行线程后，在某个时间点，添加更多的线程并不能提高吞吐量。 （将会根据每秒文件数或每秒字节数来测量吞吐量，具体取决于数据类型。）更糟糕的是，过多的线程有时会导致吞吐量下降。
 
 如果发生这种情况，可以使用相同的远程文件系统装载路径，将客户端装入点添加到其他 vFXT 群集 IP 地址：
 
@@ -240,7 +240,7 @@ for i in 1 2 3 4 ; do sed -n ${i}~4p /tmp/foo > /tmp/client${i}; done
 for i in 1 2 3 4 5; do sed -n ${i}~5p /tmp/foo > /tmp/client${i}; done
 ```
 
-六 ...。根据需要推断。
+如果有六个...根据需要进行推断。
 
 ```bash
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
@@ -260,13 +260,13 @@ for i in 1 2 3 4 5 6; do for j in $(cat /tmp/client${i}); do echo "cp -p -R /mnt
 
 ## <a name="use-a-two-phase-rsync-process"></a>使用两阶段 rsync 过程
 
-标准 ``rsync`` 实用程序无法很好地通过 Avere vFXT For Azure 系统填充云存储，因为它会生成大量文件创建和重命名操作来保证数据的完整性。 但是， ``--inplace`` 如果您遵循检查文件完整性的第二个运行，则可以安全地将选项与结合使用 ``rsync`` 来跳过更小心的复制过程。
+标准 ``rsync`` 实用程序无法很好地通过 Avere vFXT for Azure 系统填充云存储，因为它会生成大量文件创建和重命名操作来保证数据的完整性。 但是，如果在第二次运行时检查文件完整性，则可以安全地将 ``--inplace`` 选项与 ``rsync`` 结合使用，跳过更谨慎的复制过程。
 
-标准 ``rsync`` 复制操作会创建一个临时文件并使用数据填充它。 如果数据传输成功完成，临时文件将重命名为原始文件名。 即使在复制过程中访问文件，此方法仍可保证一致性。 但此方法会生成更多的写入操作，从而减慢了文件在缓存中的移动。
+标准 ``rsync`` 复制操作会创建一个临时文件并使用数据填充它。 如果数据传输成功完成，临时文件将重命名为原始文件名。 即使在复制过程中访问该文件，此方法仍可保证一致性。 但此方法会产生更多的写入操作，从而减慢了文件在缓存中的移动。
 
-选项 ``--inplace`` 直接在其最终位置写入新文件。 在传输过程中不保证文件是一致的，但如果要在以后使用存储系统填充，这并不重要。
+选项 ``--inplace`` 直接在其最终位置写入新文件。 在传输过程中不能保证文件保持一致，但如果你为以后使用的存储系统做准备，则这一点就并不重要了。
 
-第二个 ``rsync`` 操作作为对第一次操作的一致性检查。 由于文件已被复制，因此第二个阶段是一次快速扫描，以确保目标上的文件与源上的文件相匹配。 如果任何文件不匹配，则会重新复制。
+第二个 ``rsync`` 操作用于检查第一次操作的一致性。 由于文件已复制，因此第二个阶段是一次快速扫描，确保目标上的文件与源上的文件相匹配。 如果发现有文件不匹配，则会重新复制。
 
 可以在一个命令中同时发出两个阶段：
 
@@ -274,28 +274,28 @@ for i in 1 2 3 4 5 6; do for j in $(cat /tmp/client${i}); do echo "cp -p -R /mnt
 rsync -azh --inplace <source> <destination> && rsync -azh <source> <destination>
 ```
 
-此方法是数据集的一种简单而有效的方法，最多可处理内部目录管理器可以处理的文件数。  (这通常是一个3节点群集的200000000文件、一个六节点群集的500000000个文件等等。 ) 
+对于具有内部目录管理器所能处理的最大文件数的数据集，这种方法既简单又省时。 （通常 3 节点群集最多文件数为 2 亿个文件，6 节点群集为 5 亿个文件，以此类推。）
 
 ## <a name="use-the-msrsync-utility"></a>使用 msrsync 实用工具
 
-该 ``msrsync`` 工具还可用于将数据移到 Avere 群集的后端核心文件服务器。 此工具旨在通过运行多个并行 ``rsync`` 进程来优化带宽的使用。 可从 GitHub 获取此工具：<https://github.com/jbd/msrsync>。
+此外，也可以使用 ``msrsync`` 工具将数据移到 Avere 群集的后端核心文件管理器。 此工具旨在通过运行多个并行 ``rsync`` 进程来优化带宽的使用。 可从 GitHub 获取此工具：<https://github.com/jbd/msrsync>。
 
 ``msrsync`` 将源目录分解成独立的“桶”，然后针对每个桶运行单个 ``rsync`` 进程。
 
 使用四核 VM 进行的初步测试表明，使用 64 个进程时效率最高。 使用 ``msrsync`` 选项 ``-p`` 将进程数设置为 64。
 
-还可以 ``--inplace`` 通过命令使用参数 ``msrsync`` 。 如果使用此选项，请考虑运行第二个命令 (如) 上面所述的 [rsync](#use-a-two-phase-rsync-process)），以确保数据完整性。
+还可以使用 ``msrsync`` 命令的 ``--inplace`` 参数。 如果使用此选项，则考虑运行第二个命令（如上面所述的 [rsync](#use-a-two-phase-rsync-process)），以确保数据完整性。
 
-``msrsync`` 只能写入和派生自本地卷。 必须可将源和目标作为群集虚拟网络中的本地装入点进行访问。
+``msrsync`` 只能与本地卷相互写入。 必须可将源和目标作为群集虚拟网络中的本地装入点进行访问。
 
-若要使用 ``msrsync`` Avere 群集填充 Azure 云卷，请遵循以下说明：
+若要使用 ``msrsync`` 在 Azure 云卷中填充 Avere 群集，请遵照以下说明操作：
 
-1. 安装及其 ``msrsync`` 必备 (rsync 和 Python 2.6 或更高版本) 
+1. 安装 ``msrsync`` 及其必备组件（rsync 和 Python 2.6 或更高版本）
 1. 确定要复制的文件和目录总数。
 
-   例如， ``prime.py`` 通过) 下载 url，使用带参数的 Avere 实用程序 ```prime.py --directory /path/to/some/directory``` (可用 <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py> 。
+   例如，结合参数 ```prime.py --directory /path/to/some/directory``` 使用 Avere 实用工具 ``prime.py``（可通过 URL <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py> 下载）。
 
-   如果不使用 ``prime.py`` ，则可以使用 GNU 工具计算项的数目， ``find`` 如下所示：
+   如果不使用 ``prime.py``，则可以使用 Gnu ``find`` 工具计算项数，如下所示：
 
    ```bash
    find <path> -type f |wc -l         # (counts files)
@@ -311,7 +311,7 @@ rsync -azh --inplace <source> <destination> && rsync -azh <source> <destination>
    msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv" <SOURCE_PATH> <DESTINATION_PATH>
    ```
 
-   如果使用 ``--inplace`` ，则在不使用选项检查是否已正确复制数据的情况下，添加第二次执行：
+   如果使用 ``--inplace``，添加第二次执行，但不提供选项用于检查数据是否正确复制：
 
    ```bash
    msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv --inplace" <SOURCE_PATH> <DESTINATION_PATH> && msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv" <SOURCE_PATH> <DESTINATION_PATH>
@@ -323,7 +323,7 @@ rsync -azh --inplace <source> <destination> && rsync -azh <source> <destination>
 
 ## <a name="use-the-parallel-copy-script"></a>使用并行复制脚本
 
-此 ``parallelcp`` 脚本还可用于将数据移到 vFXT 群集的后端存储。
+``parallelcp`` 脚本还可用于将数据移到 vFXT 群集的后端存储。
 
 以下脚本将添加可执行文件 `parallelcp`。 （此脚本适用于 Ubuntu；如果使用其他分发版，则必须单独安装 ``parallel``。）
 

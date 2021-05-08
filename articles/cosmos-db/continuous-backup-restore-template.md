@@ -8,25 +8,25 @@ ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: 4abfdd0209bd9f13fb7bd902b27a53f65156da2e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100381811"
 ---
-# <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板配置和管理连续备份和时间点还原 (预览) -
+# <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板配置和管理连续备份和时间点还原（预览版）
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 > [!IMPORTANT]
-> 时间点还原功能 (持续备份模式) 用于 Azure Cosmos DB 目前为公共预览版。
+> 适用于 Azure Cosmos DB 的时间点还原功能（持续备份模式）目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-Azure Cosmos DB 的时间点还原功能 (预览版) 可帮助你从容器内的意外更改中恢复，还原已删除的帐户、数据库或容器，或还原到任何备份存在) 的区域 (。 连续备份模式允许您在过去30天内还原到任何时间点。
+Azure Cosmos DB 的时间点还原功能（预览版）可帮助你从容器内的意外更改中恢复，还原已删除的帐户、数据库或容器，或者还原到任何区域（需存在备份）。 连续备份模式允许您在过去 30 天内还原到任何时间点。
 
 本文介绍如何使用 Azure 资源管理器模板为帐户预配连续备份和还原数据。
 
-## <a name="provision-an-account-with-continuous-backup"></a><a id="provision"></a>预配具有连续备份的帐户
+## <a name="provision-an-account-with-continuous-backup"></a><a id="provision"></a>为帐户预配连续备份
 
 可以使用 Azure 资源管理器模板来部署具有连续模式的 Azure Cosmos DB 帐户。 定义用于预配帐户的模板时，请包括 `backupPolicy` 参数，如以下示例中所示：
 
@@ -64,11 +64,11 @@ az group deployment create -g <ResourceGroup> --template-file <ProvisionTemplate
 
 ## <a name="restore-using-the-resource-manager-template"></a><a id="restore"></a>使用资源管理器模板进行还原
 
-你还可以使用资源管理器模板还原帐户。 定义模板时，请提供以下参数：
+还可以使用资源管理器模板还原帐户。 定义模板时，请包含以下参数：
 
-* 设置 `createMode` 参数以进行 *还原*
-* 定义 `restoreParameters` ，请注意，将 `restoreSource` 从源帐户的命令输出中提取值 `az cosmosdb restorable-database-account list` 。 帐户名称的实例 ID 属性用于执行还原。
-* 将 `restoreMode` 参数设置为 *PointInTime* 并配置 `restoreTimestampInUtc` 值。
+* 将 `createMode` 参数设置为 Restore
+* 定义 `restoreParameters`，请注意，`restoreSource` 值是提取自源账户的 `az cosmosdb restorable-database-account list` 命令的输出。 帐户名称的 Instance ID 属性用于执行还原。
+* 将 `restoreMode` 参数设置为 PointInTime 并配置 `restoreTimestampInUtc` 值。
 
 ```json
 {
@@ -107,6 +107,6 @@ az group deployment create -g <ResourceGroup> --template-file <RestoreTemplateFi
 
 ## <a name="next-steps"></a>后续步骤
 
-* 使用 [Azure CLI](continuous-backup-restore-command-line.md)、 [PowerShell](continuous-backup-restore-command-line.md)或 [Azure 门户](continuous-backup-restore-portal.md)配置和管理连续备份。
+* 使用 [Azure CLI](continuous-backup-restore-command-line.md)、[PowerShell](continuous-backup-restore-command-line.md) 或 [Azure 门户](continuous-backup-restore-portal.md)配置和管理连续备份。
 * [连续备份模式的资源模型](continuous-backup-restore-resource-model.md)
-* [管理](continuous-backup-restore-permissions.md) 以连续备份模式还原数据所需的权限。
+* [管理](continuous-backup-restore-permissions.md)以连续备份模式还原数据所需的权限。

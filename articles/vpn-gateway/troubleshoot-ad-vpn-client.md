@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.openlocfilehash: 56a8514fc2531ba0b18925427814e5bfef7d64bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84988103"
 ---
 # <a name="troubleshoot-an-azure-ad-authentication-vpn-client"></a>排查 Azure AD 身份验证 VPN 客户端问题
@@ -24,7 +24,7 @@ ms.locfileid: "84988103"
 
 ![日志](./media/troubleshoot-ad-vpn-client/1.png)
 
-1. 单击客户端窗口右下角的箭头图标以显示“状态日志”。 
+1. 单击客户端窗口右下角的箭头图标以显示“状态日志”。
 2. 在日志中检查可能指示出现了问题的错误。
 3. 错误消息以红色字体显示。
 
@@ -34,8 +34,8 @@ ms.locfileid: "84988103"
 
 ![登录](./media/troubleshoot-ad-vpn-client/2.png)
 
-1. 选择 要排查问题的配置文件旁边的“...”。 选择“配置”->“清除保存的帐户”。 
-2. 选择“保存”  。
+1. 选择 要排查问题的配置文件旁边的“...”。 选择“配置”->“清除保存的帐户”。
+2. 选择“保存”。
 3. 尝试连接。
 4. 如果连接仍然失败，请转到下一部分。
 
@@ -45,7 +45,7 @@ ms.locfileid: "84988103"
 
 ![诊断](./media/troubleshoot-ad-vpn-client/3.png)
 
-1. 在“架构”属性中  要对其运行诊断的配置文件旁边的“...”。 选择“诊断”->“运行诊断”。 
+1. 在“架构”属性中  要对其运行诊断的配置文件旁边的“...”。 选择“诊断”->“运行诊断”。
 2. 客户端将运行一系列测试并显示测试结果
 
    * Internet 访问 – 检查客户端是否已建立 Internet 连接
@@ -59,7 +59,7 @@ ms.locfileid: "84988103"
 
 收集 VPN 客户端日志文件。 可以通过所选的方法将日志文件发送给支持人员/管理员。 例如，通过电子邮件发送。
 
-1. 单击 要对其运行诊断的配置文件旁边的“...”。 选择“诊断”->“显示日志目录”。 
+1. 单击 要对其运行诊断的配置文件旁边的“...”。 选择“诊断”->“显示日志目录”。
 
    ![显示日志](./media/troubleshoot-ad-vpn-client/4.png)
 2. Windows 资源管理器中会打开包含日志文件的文件夹。

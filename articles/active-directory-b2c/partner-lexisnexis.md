@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5f408699cae9580188a3780fc8f8654eaa97c26b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 362704368958d2600d16cd907421917b824a59cb
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97108427"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256593"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>有关配置 LexisNexis 与 Azure Active Directory B2C 的教程
 
@@ -23,7 +23,7 @@ ms.locfileid: "97108427"
 
 此集成根据用户的某些信息进行分析，这些信息由用户在注册流期间提供。 ThreatMetrix 确定是否应该允许用户继续登录。 ThreatMetrix 的风险分析会考虑以下属性：
 
-- 电子邮件
+- Email
 - 电话号码
 - 从用户的计算机收集的分析信息
 
@@ -45,7 +45,7 @@ ThreatMetrix 集成包括以下组件：
 
 - 自定义 Rest API – 该 API 实现 Azure AD B2C 与 ThreatMetrix 服务之间的集成。
 
-以下体系结构图显示了实施。
+以下体系结构图体现了实施详情。
 
 ![lexisnexis 体系结构图的屏幕截图](media/partner-lexisnexis/lexisnexis-architecture-diagram.png)
 
@@ -122,7 +122,7 @@ UI 是基于[海蓝色模板](https://github.com/azure-ad-b2c/partner-integratio
 
 ### <a name="part-7---configure-the-azure-ad-b2c-policy"></a>第 7 部分 - 配置 Azure AD B2C 策略
 
-请参阅本[文档](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack)以了解如何下载[本地帐户入门包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)，并为 Azure AD B2C 租户配置[策略](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/policy)。
+请参阅本[文档](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack)以了解如何下载[本地帐户入门包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)，并为 Azure AD B2C 租户配置[策略](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/policy)。
 
 >[!NOTE]
 >更新提供的策略，使其与你的特定租户相关。
@@ -155,4 +155,4 @@ UI 是基于[海蓝色模板](https://github.com/azure-ad-b2c/partner-integratio
 
 - [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

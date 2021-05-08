@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
 ms.openlocfilehash: e8de7982e99e258f0a72bd507ac0d8de16a7227a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100383647"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Couchbase 复制数据
@@ -45,7 +45,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Couchbase 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Couchbase** | 是 |
 | connectionString | 用于连接到 Couchbase 的 ODBC 连接字符串。 <br/>还可以将凭据字符串放在 Azure 密钥保管库中，并从连接字符串中拉取 `credString` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
@@ -99,11 +99,11 @@ Couchbase 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Couchbase 数据集支持的属性列表。
 
-要从 Couchbase 复制数据，请将数据集的 type 属性设置为“CouchbaseTable”  。 支持以下属性：
+要从 Couchbase 复制数据，请将数据集的 type 属性设置为“CouchbaseTable”。 支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：**CouchbaseTable** | 是 |
+| type | 数据集的 type 属性必须设置为：CouchbaseTable | 是 |
 | tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
 
 
@@ -130,12 +130,12 @@ Couchbase 链接服务支持以下属性：
 
 ### <a name="couchbasesource-as-source"></a>以 CouchbaseSource 作为源
 
-要从 Couchbase 复制数据，请将复制活动中的源类型设置为“CouchbaseSource”  。 复制活动 **source** 部分支持以下属性：
+要从 Couchbase 复制数据，请将复制活动中的源类型设置为“CouchbaseSource”。 复制活动 **source** 部分支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
-| type | 复制活动 source 的 type 属性必须设置为：**CouchbaseSource** | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| type | 复制活动源的 type 属性必须设置为：CouchbaseSource | 是 |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 
@@ -169,7 +169,7 @@ Couchbase 链接服务支持以下属性：
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Lookup 活动属性
+## <a name="lookup-activity-properties"></a>查找活动属性
 
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 

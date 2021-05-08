@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
 ms.openlocfilehash: d5a013fc4e4ef931579da4fa13f400d5f4fcff0d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102030743"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何配置 Azure Database for MySQL 的数据传入复制
@@ -51,7 +51,7 @@ ms.locfileid: "102030743"
 
 2. 请确保源服务器允许端口 3306 上的入站和出站流量，并且源服务器具有公共 IP 地址，DNS 可供公开访问，或者 DNS 具有完全限定的域名 (FQDN)。
 
-   通过尝试从其他计算机上托管的 MySQL 命令行或 Azure 门户中提供的 [Azure Cloud Shell](../cloud-shell/overview.md) ，测试与源服务器的连接。
+   通过尝试从工具（例如其他计算机上托管的 MySQL 命令行）或 Azure 门户中提供的 [Azure Cloud Shell](../cloud-shell/overview.md) 连接，测试与源服务器的连接。
 
    如果你的组织有严格的安全策略，并且不允许源服务器上的所有 IP 地址都能进行从 Azure 到源服务器的通信，那么你可能可以使用以下命令来确定 MySQL 服务器的 IP 地址。
 
@@ -102,17 +102,17 @@ ms.locfileid: "102030743"
 
    如果返回了值为“ON”的变量 [`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin)，则表示已在服务器上启用了二进制日志记录。
    
-    如果 `log_bin` 返回的值为 "OFF"，并且源服务器在本地或虚拟机上运行，而您可以 (.cnf) 访问配置文件，则可以执行以下步骤：
-   1. 在源服务器中 (".cnf") 找到 MySQL 配置文件。 例如：/etc/my.cnf
-   2. 打开配置文件进行编辑，并在文件中找到 **mysqld** 节。
-   3.  在 mysqld 节中，添加以下行
+    如果返回了值为“OFF”的 `log_bin`，且源服务器在本地或虚拟机（在其中你可以访问配置文件 (my.cnf)）上运行，则可以执行以下步骤：
+   1. 在源服务器中找到 MySQL 配置文件 (my.cnf)。 例如：/etc/my.cnf
+   2. 打开配置文件进行编辑，并在其中找到 mysqld 部分。
+   3.  在 mysqld 部分中，添加以下行
    
        ```bash
        log-bin=mysql-bin.log
        ```
      
-   4. 重新启动 MySQL 源服务器以使更改生效。
-   5. 重新启动服务器后，通过运行与以前相同的查询来验证是否已启用二进制日志记录：
+   4. 重启 MySQL 源服务器以使更改生效。
+   5. 重启服务器后，运行与之前相同的查询来验证是否已启用二进制日志记录：
    
       ```sql
       SHOW VARIABLES LIKE 'log_bin';

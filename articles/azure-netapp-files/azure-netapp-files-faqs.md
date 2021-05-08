@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2021
+ms.date: 04/23/2021
 ms.author: b-juche
-ms.openlocfilehash: a8c06b25b923d663e982e940100be7b9a2a009e1
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: c77eac1521da3834e097893718dd5fd9fa9cbcc6
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726837"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107952577"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>有关 Azure NetApp 文件的常见问题解答
 
@@ -214,6 +214,11 @@ SMB 客户端报告的卷大小是 Azure NetApp 文件卷可以增长到的最�
 
 使用卷概述窗格中的“JSON 视图”链接，并查看“properties” -> “mountTargets”下的“startIp”标识符   。
 
+### <a name="can-an-azure-netapp-files-smb-share-act-as-an-dfs-namespace-dfs-n-root"></a>Azure NetApp 文件 SMB 共享是否可以充当 DFS 命名空间 (DFS-N) 根？
+
+否。 但是，Azure NetApp 文件 SMB 共享可以充当 DFS 命名空间 (DFS-N) 文件夹目标。   
+若要使用 Azure NetApp 文件 SMB 共享作为 DFS-N 文件夹目标，请使用 [DFS 添加文件夹目标](/windows-server/storage/dfs-namespaces/add-folder-targets#to-add-a-folder-target)过程提供 Azure NETAPP 文件 SMB 共享的通用命名约定 (UNC) 装载路径。  
+
 ### <a name="smb-encryption-faqs"></a>SMB 加密常见问题解答
 
 本部分解答有关 SMB 加密（SMB 3.0 和 SMB 3.1.1）的常见问题。
@@ -263,11 +268,13 @@ Azure NetApp 文件提供容量池和卷的使用指标。 你还可以使用 Az
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>如何确定目录是否即将达到限制大小？
 
-可以从客户端使用 `stat` 命令来查看目录是否即将达到目录元数据的最大大小限制 (320 MB)。   
+请参阅 [Azure NetApp 文件的资源限制](azure-netapp-files-resource-limits.md#directory-limit)，了解限制和计算。 
 
-对于 320-MB 的目录，块数为 655360，每个块的大小为 512 字节。  （即 320x1024x1024/512。）根据此数字，相当于一个 320-MB 的目录最多可包含大约 400 万个文件。 但是，实际的最大文件数目可能更小，具体取决于多种因素，例如，目录中包含非 ASCII 字符的文件数。 因此，应按如下所示使用 `stat` 命令来确定目录是否接近其限制。  
+<!-- You can use the `stat` command from a client to see whether a directory is approaching the maximum size limit for directory metadata (320 MB).   
 
-示例：
+For a 320-MB directory, the number of blocks is 655360, with each block size being 512 bytes.  (That is, 320x1024x1024/512.)  This number translates to approximately 4 million files maximum for a 320-MB directory. However, the actual number of maximum files might be lower, depending on factors such as the number of files containing non-ASCII characters in the directory. As such, you should use the `stat` command as follows to determine whether your directory is approaching its limit.  
+
+Examples:
 
 ```console
 [makam@cycrh6rtp07 ~]$ stat bin
@@ -282,7 +289,7 @@ Size: 12288           Blocks: 24         IO Block: 65536  directory
 File: 'tmp1'
 Size: 4096            Blocks: 8          IO Block: 65536  directory
 ```
-
+--> 
 
 ## <a name="data-migration-and-protection-faqs"></a>数据迁移和保护常见问题解答
 
@@ -331,6 +338,10 @@ NetApp 提供基于 SaaS 的解决方案，即 [NetApp 云同步](https://cloud.
 ### <a name="what-regions-are-supported-for-using-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>哪些区域支持将 Azure NetApp 文件 NFS 或 SMB 卷与 Azure VMware 解决方案 (AVS) 一起使用？
 
 以下区域（美国东部、美国西部、欧洲西部和澳大利亚东部）支持将 Azure NetApp 文件 NFS 或 SMB 卷与 AVS 一起使用。
+
+### <a name="does-azure-netapp-files-work-with-azure-policy"></a>Azure NetApp 文件是否适用于 Azure Policy？
+
+是的。 Azure NetApp 文件是第一方服务。 其完全遵循 Azure 资源提供程序标准。 因此，可以通过自定义策略定义将 Azure NetApp 文件集成到 Azure Policy 中。 有关如何为 Azure NetApp 文件实现自定义策略的信息，请参阅 Microsoft 技术社区中的 [Azure Netapp 文件现可使用的 Azure Policy](https://techcommunity.microsoft.com/t5/azure/azure-policy-now-available-for-azure-netapp-files/m-p/2282258)。 
 
 ## <a name="next-steps"></a>后续步骤  
 

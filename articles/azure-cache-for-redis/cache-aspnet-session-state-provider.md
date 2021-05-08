@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 05/01/2017
 ms.openlocfilehash: ce77f5074d707da5cfb251a103653b96e4644b5f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92544522"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure Redis 缓存的 ASP.NET 会话状态提供程序
@@ -22,7 +22,7 @@ Azure Redis 缓存提供了一个会话状态提供程序，可使用该提供�
 
 ## <a name="store-aspnet-session-state-in-the-cache"></a>在缓存中存储 ASP.NET 会话状态
 
-要使用 Azure Redis 缓存会话状态 NuGet 包在 Visual Studio 中配置客户端应用程序，请在“工具”菜单中依次单击“NuGet 包管理器”和“包管理器控制台”    。
+要使用 Azure Redis 缓存会话状态 NuGet 包在 Visual Studio 中配置客户端应用程序，请在“工具”菜单中依次单击“NuGet 包管理器”和“包管理器控制台”  。
 
 从 `Package Manager Console` 窗口运行以下命令。
     
@@ -82,17 +82,17 @@ NuGet 包会下载并添加所需的程序集引用，并将以下节添加到 w
 
 在 Microsoft Azure 门户中使用缓存边栏选项卡中的值配置属性，并根据需要配置其他值。 有关访问缓存属性的说明，请参阅[配置 Azure Redis 缓存设置](cache-configure.md#configure-azure-cache-for-redis-settings)。
 
-* **主机** –指定缓存终结点。
-* **端口** –使用非 TLS/ssl 端口或 TLS/ssl 端口，具体取决于 tls 设置。
-* **accessKey** –使用缓存的主密钥或辅助密钥。
-* **ssl** –如果要保护与 TLS 的缓存/客户端通信，则为 true;否则为 false。 请务必指定正确的端口。
+* **host** - 指定缓存终结点。
+* **port** - 使用非 TLS/SSL 端口或 TLS/SSL 端口，具体取决于 TLS 设置。
+* **accessKey** - 使用缓存的主密钥或辅助密钥。
+* **ssl** - 如果要使用 TLS 保护缓存/客户端通信，则为 true；否则为 false。 请务必指定正确的端口。
   * 默认情况下，将为新缓存禁用非 TLS 端口。 为此设置指定“true”可使用 TLS 端口。 有关启用非 TLS 端口的详细信息，请参阅[配置缓存](cache-configure.md)主题中的[访问端口](cache-configure.md#access-ports)部分。
-* **throwOnError** -如果希望在失败时引发异常，则为 true; 如果希望操作以静默方式失败，则为 false。 可以通过检查静态 Microsoft.Web.Redis.RedisSessionStateProvider.LastException 属性来检查失败。 默认值为 true。
-* **retryTimeoutInMilliseconds** -在此时间间隔内重试失败的操作，以毫秒为单位。 首次重试在 20 毫秒后进行，并重试每隔一秒进行，直到 retryTimeoutInMilliseconds 间隔到期。 在此时间间隔过后，立即重试操作最后一次。 如果操作仍失败，则会将异常返回给调用方，具体取决于 throwOnError 设置。 默认值为 0，这意味着不重试。
-* **databaseId** -指定要用于缓存输出数据的数据库。 如果未指定，则使用默认值 0。
-* **applicationName** –密钥以形式存储在 redis 中 `{<Application Name>_<Session ID>}_Data` 。 此命名方案使多个应用程序可以共享同一 Redis 实例。 此参数是可选的，如果未提供它，则使用默认值。
-* **connectionTimeoutInMilliseconds** –此设置允许替代 stackexchange.redis 客户端中的 connectTimeout 设置。 如果未指定，则使用默认 connectTimeout 设置 5000。 有关详细信息，请参阅 [StackExchange.Redis 配置模型](https://go.microsoft.com/fwlink/?LinkId=398705)。
-* **operationTimeoutInMilliseconds** –此设置允许替代 stackexchange.redis 客户端中的 syncTimeout 设置。 如果未指定，则使用默认 syncTimeout 设置 1000。 有关详细信息，请参阅 [StackExchange.Redis 配置模型](https://go.microsoft.com/fwlink/?LinkId=398705)。
+* **throwOnError** - 如果希望在失败时引发异常，则为 true；如果希望操作以静默方式失败，则为 false。 可以通过检查静态 Microsoft.Web.Redis.RedisSessionStateProvider.LastException 属性来检查失败。 默认值为 true。
+* **retryTimeoutInMilliseconds** - 会在此时间间隔内重试失败的操作，以毫秒为单位指定。 首次重试在 20 毫秒后进行，并重试每隔一秒进行，直到 retryTimeoutInMilliseconds 间隔到期。 在此时间间隔过后，立即重试操作最后一次。 如果操作仍失败，则会将异常返回给调用方，具体取决于 throwOnError 设置。 默认值为 0，这意味着不重试。
+* **databaseId** - 指定要用于缓存输出数据的数据库。 如果未指定，则使用默认值 0。
+* **applicationName** - 密钥存储在 redis 中作为 `{<Application Name>_<Session ID>}_Data`。 此命名方案使多个应用程序可以共享同一 Redis 实例。 此参数是可选的，如果未提供它，则使用默认值。
+* **connectionTimeoutInMilliseconds** - 此设置可替代 StackExchange.Redis 客户端中的 connectTimeout 设置。 如果未指定，则使用默认 connectTimeout 设置 5000。 有关详细信息，请参阅 [StackExchange.Redis 配置模型](https://go.microsoft.com/fwlink/?LinkId=398705)。
+* **operationTimeoutInMilliseconds** - 此设置可替代 StackExchange.Redis 客户端中的 syncTimeout 设置。 如果未指定，则使用默认 syncTimeout 设置 1000。 有关详细信息，请参阅 [StackExchange.Redis 配置模型](https://go.microsoft.com/fwlink/?LinkId=398705)。
 * **redisSerializerType** - 此设置允许你为发送到 Redis 的会话内容指定自定义序列化。 指定的类型必须实现 `Microsoft.Web.Redis.ISerializer` 并且必须声明公共无参数构造函数。 默认情况下使用 `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter`。
 
 有关这些属性的详细信息，请参阅 [宣布推出适用于 Redis 的 ASP.NET 会话状态提供程序](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/)中的原始博客文章公告。

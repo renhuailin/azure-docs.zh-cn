@@ -1,6 +1,6 @@
 ---
 title: Azure Application Insights 中的分布式跟踪 | Microsoft Docs
-description: 提供有关 Microsoft 通过我们的合作关系在 OpenCensus 项目中的分布式跟踪支持的信息
+description: 介绍 Microsoft 如何在 OpenCensus 项目中通过合作伙伴关系提供对分布式跟踪的支持
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 author: nikmd23
@@ -8,10 +8,10 @@ ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: a47b41a8b7f4e18be58c32c97cf279b9229f26da
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100579510"
 ---
 # <a name="what-is-distributed-tracing"></a>什么是分布式跟踪？

@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 服务
 description: 通过此概述了解 CloudSimple 服务。 通过创建服务，可以购买节点、预留节点并创建私有云。
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8f32197eda4fc7632e883fd21dd6e1caa0dbd24b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: acf5180e438d244f2eab791f4a2ebff77df6eaa4
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97898736"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108182275"
 ---
 # <a name="cloudsimple-service-overview"></a>CloudSimple 服务概述
 

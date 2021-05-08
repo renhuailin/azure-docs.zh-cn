@@ -4,17 +4,17 @@ description: 通过遵循这些最佳做法，了解如何有效使用 Azure 容
 ms.topic: article
 ms.date: 01/07/2021
 ms.openlocfilehash: 01c8c7f547be9dd225022fb3315a4bdecc48c2bf
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100578143"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure 容器注册表的最佳做法
 
-通过遵循这些最佳做法，你可以最大程度地利用 Azure 中的专用注册表存储和部署容器映像和其他项目的性能和经济高效的使用方法。
+通过遵循这些最佳做法，可帮助最大化性能并在 Azure 中经济、高效地利用专用注册表来存储和部署容器映像及其他项目。
 
-有关注册表概念的背景信息，请参阅 [关于注册表、存储库和映像](container-registry-concepts.md)。 另请参阅[对容器映像进行标记和版本控制的建议](container-registry-image-tag-version.md)，以获取对注册表中的映像进行标记和版本控制的策略。 
+有关注册表概念的背景信息，请参阅[关于注册表、存储库和映像](container-registry-concepts.md)。 另请参阅[对容器映像进行标记和版本控制的建议](container-registry-image-tag-version.md)，以获取对注册表中的映像进行标记和版本控制的策略。 
 
 ## <a name="network-close-deployment"></a>临近网络部署
 
@@ -25,24 +25,24 @@ ms.locfileid: "100578143"
 
 ## <a name="geo-replicate-multi-region-deployments"></a>异地复制多区域部署
 
-如果将容器部署到多个区域，请使用 Azure 容器注册表的[异地复制](container-registry-geo-replication.md)功能。 无论是为本地数据中心的全局客户提供服务还是开发团队处于不同位置，都可以通过异地复制注册表来简化注册表管理并最小化延迟。 你还可以将区域 [webhook](container-registry-webhook.md) 配置为通知你特定副本中的事件，例如当推送图像时。
+如果将容器部署到多个区域，请使用 Azure 容器注册表的[异地复制](container-registry-geo-replication.md)功能。 无论是为本地数据中心的全局客户提供服务还是开发团队处于不同位置，都可以通过异地复制注册表来简化注册表管理并最小化延迟。 还可以配置区域 [Webhook](container-registry-webhook.md) 来通知特定副本中的事件，例如推送映像。
 
-地域复制适用于 [高级](container-registry-skus.md) 注册表。 若要了解如何使用异地复制，请参阅 [Azure 容器注册表中的异地复制](container-registry-tutorial-prepare-registry.md)教程，该教程分为三部分。
+异地复制适用于[高级](container-registry-skus.md)注册表。 若要了解如何使用异地复制，请参阅 [Azure 容器注册表中的异地复制](container-registry-tutorial-prepare-registry.md)教程，该教程分为三部分。
 
 ## <a name="maximize-pull-performance"></a>最大化拉取性能
 
-除了将图像放置在部署附近以外，映像本身的特征也可能影响拉取性能。
+除了将映像置于部署附近，映像本身的特性也会影响拉取性能。
 
-* **图像大小** -通过删除不必要的 [层](container-registry-concepts.md#manifest) 或减小层大小来最大程度地减少映像大小。 减小图像大小的一种方法是使用 [多阶段 Docker 生成](https://docs.docker.com/develop/develop-images/multistage-build/) 方法，只包括必要的运行时组件。 
+* **映像大小** - 通过删除不必要的 [层级](container-registry-concepts.md#manifest)或减小层级大小来最大程度地减小映像大小。 减小映像大小的一种方法是，使用[多阶段 Docker 生成](https://docs.docker.com/develop/develop-images/multistage-build/)方法以仅添加必要的运行时组件。 
 
-  还应检查映像是否可以包含较轻的基础操作系统映像。 如果你使用的部署环境（如 Azure 容器实例）来缓存某些基本映像，请检查是否可以交换某个缓存图像的映像层。 
-* **层数** -平衡使用的层数。 如果你的数量太少，则在主机上进行层重复使用和缓存不会带来任何好处。 过多，部署环境会花费更多时间来提取和解压缩。 5到10层是最佳的。
+  还应检查映像是否可以包含较轻的基础 OS 映像。 如果使用缓存某些基础映像的部署环境（如 Azure 容器实例），请检查是否可以交换某个缓存映像的映像层。 
+* **层数** - 均衡使用的层数。 如果你的层数过少，则无法体验在主机上进行层重用和缓存的优点。 如果层数过多，则部署环境会花费更多时间来进行拉取和解压缩。 5 至 10 层为最佳层数。
 
-还应选择满足性能需求的 Azure 容器注册表 [服务层](container-registry-skus.md) 。 当你有大量部署时，"高级" 级别可提供最大带宽和并发读写操作的最高速率。
+此外，还应选择满足性能需求的 Azure 容器注册表[服务层级](container-registry-skus.md)。 存在大容量部署时，“高级”层可提供最大带宽和最高的并发读写操作速率。
 
 ## <a name="repository-namespaces"></a>存储库命名空间
 
-通过使用存储库命名空间，可以允许跨组织中的多个组共享单个注册表。 可在部署和团队之间共享注册表。 Azure 容器注册表支持嵌套的命名空间，可实现组隔离。 但是，注册表独立管理所有存储库，而不是将其作为层次结构进行管理。
+通过利用存储库命名空间，可以在组织中的多个组之间共享单个注册表。 可在部署和团队之间共享注册表。 Azure 容器注册表支持嵌套的命名空间，可实现组隔离。 但是，注册表独立管理所有存储库，而不是将其作为层次结构进行管理。
 
 例如，考虑以下容器映像标记。 在公司范围内使用的映像（如 `aspnetcore`）位于根命名空间中，而产品和营销组拥有的容器映像都使用其自己的命名空间。
 
@@ -55,7 +55,7 @@ ms.locfileid: "100578143"
 
 由于容器注册表是跨多个容器主机使用的资源，注册表应位于其自己的资源组中。
 
-尽管你可能会试验特定的主机类型（如 [Azure 容器实例](../container-instances/container-instances-overview.md)），但你可能想要在完成操作后删除容器实例。 但是，你可能还想保留推送到 Azure 容器注册表的映像集合。 通过将注册表置于其自己的资源组中，可以最小化删除容器实例资源组时在注册表中意外删除映像集合的风险。
+虽然可以试用特定的主机类型（如 [Azure 容器实例](../container-instances/container-instances-overview.md)），但建议在完成操作后删除容器实例。 但是，你可能还想保留推送到 Azure 容器注册表的映像集合。 通过将注册表置于其自己的资源组中，可以最小化删除容器实例资源组时在注册表中意外删除映像集合的风险。
 
 ## <a name="authentication-and-authorization"></a>身份验证和授权
 
@@ -66,13 +66,13 @@ Azure 容器注册表的身份验证有两种主要方案：单个身份验证�
 | 单个标识 | 开发者从/向其开发计算机推送映像。 | [az acr login](/cli/azure/acr#az-acr-login) |
 | 无外设/服务标识 | 用户未直接参与的生成和部署管道。 | [服务主体](container-registry-authentication.md#service-principal) |
 
-有关这些和其他 Azure 容器注册表身份验证方案的详细信息，请参阅 [使用 Azure 容器注册表进行身份验证](container-registry-authentication.md)。
+有关所有 Azure 容器注册表身份验证方案的详细信息，请参阅 [Azure 容器注册表的身份验证](container-registry-authentication.md)。
 
-Azure 容器注册表支持组织中的安全实践，以将职责和特权分配给不同的标识。 使用 [基于角色的访问控制](container-registry-roles.md)，为不同的用户、服务主体或执行不同注册表操作的其他标识分配适当的权限。 例如，为生成管道中使用的服务主体分配推送权限，并将拉取权限分配给用于部署的不同标识。 创建 [令牌](container-registry-repository-scoped-permissions.md) ，以便对特定存储库进行细化、限时的访问。
+Azure 容器注册表支持组织中的安全做法，以将职责和特权分配给不同的标识。 使用[基于角色的访问控制](container-registry-roles.md)，为不同用户、服务主体或执行不同注册表操作的其他标识分配适当的权限。 例如，为生成管道中使用的服务主体分配推送权限，并为用于部署的不同标识分配拉取权限。 创建[令牌](container-registry-repository-scoped-permissions.md)，以用于对特定存储库进行细粒度的限时访问。
 
 ## <a name="manage-registry-size"></a>管理注册表大小      
 
-每个 [容器注册表服务层][container-registry-skus]的存储约束旨在与典型方案保持一致：**基本** 为入门，适用于大多数生产应用程序的 **标准**，以及超大规模性能和 [异地复制][container-registry-geo-replication]的 **高级**。 在注册表的整个生命周期中，应定期删除未使用的内容，管理注册表大小。
+每个[容器注册表服务层级][container-registry-skus]的存储约束旨在与典型方案保持一致：基本层级适用于入门，标准层级适用于大部分生产应用程序，高级层级适用于超大规模性能和[异地复制][container-registry-geo-replication]  。 在注册表的整个生命周期中，应定期删除未使用的内容，管理注册表大小。
 
 使用 Azure CLI 命令 [az acr show-usage][az-acr-show-usage] 显示注册表的当前大小：
 
@@ -99,9 +99,9 @@ Azure 容器注册表支持多种从容器注册表中删除映像数据的方�
 
 ## <a name="next-steps"></a>后续步骤
 
-Azure 容器注册表在多个层中提供 (也称为 Sku) 提供不同的功能。 有关可用服务层级的详细信息，请参阅 [Azure 容器注册表服务层级](container-registry-skus.md)。
+Azure 容器注册表可用于多个层级（也称为 SKU），这些层级提供不同功能。 有关可用服务层级的详细信息，请参阅 [Azure 容器注册表服务层级](container-registry-skus.md)。
 
-有关改进容器注册表的安全状况的建议，请参阅 azure [容器注册表的 Azure 安全基线](security-baseline.md)。
+有关改进容器注册表的安全状况的建议，请参阅 [Azure 容器注册表的 Azure 安全基线](security-baseline.md)。
 
 <!-- IMAGES -->
 [delete-repository-portal]: ./media/container-registry-best-practices/delete-repository-portal.png

@@ -10,10 +10,10 @@ ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: d894ce71e0ffa5a0894a1f6b0035efe66271ded8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100591473"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>将 Azure 存储帐户移到另一个区域
@@ -35,7 +35,7 @@ ms.locfileid: "100591473"
 
 - 确保帐户使用的服务和功能在目标区域中受支持。
 
-- 对于预览功能，请确保订阅对于目标区域是 allowlisted 的。
+- 对于预览功能，请确保你的订阅已列入目标区域的允许列表。
 
 <a id="prepare"></a>
 
@@ -137,7 +137,7 @@ ms.locfileid: "100591473"
          "location": "centralus"
          }]          
     ```
-    若要获取地区位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国中部**  =  **centralus** 的区域名称。
+    若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不带空格的区域名称，“美国中部” = “centralus”。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

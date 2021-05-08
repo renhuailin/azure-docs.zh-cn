@@ -1,13 +1,13 @@
 ---
 title: 使用 Azure 门户接收有关 Azure 服务通知的活动日志警报
-description: 了解如何使用 Azure 门户通过使用 Azure 门户为服务运行状况通知设置活动日志警报。
+description: 了解如何使用 Azure 门户为服务运行状况通知设置活动日志警报。
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: 48126d923cb0baa33058c6fd55e48f31d793fade
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100570182"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications-using-the-azure-portal"></a>使用 Azure 门户创建有关服务通知的活动日志警报

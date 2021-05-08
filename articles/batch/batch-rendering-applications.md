@@ -3,12 +3,12 @@ title: 渲染应用程序
 description: 可以将任何渲染应用程序与 Azure Batch 配合使用。 不过，常见的预安装应用程序都提供了 Azure 市场 VM 映像。
 ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: c98e2e0a81051dad47c201de9eda9f89cc311cf2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7dee2806aafe34edee8dcb3dc3577def9c4c01da
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103496637"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987499"
 ---
 # <a name="pre-installed-applications-on-batch-rendering-vm-images"></a>在 Batch 渲染 VM 映像上预安装的应用程序
 

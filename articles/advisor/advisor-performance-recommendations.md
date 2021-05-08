@@ -4,10 +4,10 @@ description: 使用 Azure 顾问中的性能建议可提高业务关键型应用
 ms.topic: article
 ms.date: 07/29/2020
 ms.openlocfilehash: 69fd86226375073c71903af5704ef3a635eeaffb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100579925"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>使用 Azure 顾问提高 Azure 应用程序的性能
@@ -88,7 +88,7 @@ Azure 顾问可检测 Azure Synapse Analytics 表是否具有较高的缓存利�
 顾问可识别使用经典部署模型的任何独立存储帐户，并建议迁移到资源管理器部署模型。
 
 > [!NOTE]
-> Azure Monitor 中的经典警报已于 2019 年 8 月停用。 建议升级经典存储帐户以使用资源管理器在新平台中保留警报功能。 有关详细信息，请参阅 [经典警报停](../azure-monitor/alerts/monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)用。
+> Azure Monitor 中的经典警报已于 2019 年 8 月停用。 建议升级经典存储帐户以使用资源管理器在新平台中保留警报功能。 有关详细信息，请参阅[经典警报停用](../azure-monitor/alerts/monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)。
 
 ## <a name="design-your-storage-accounts-to-prevent-reaching-the-maximum-subscription-limit"></a>设计存储帐户，防止达到最大订阅数限制
 
@@ -168,18 +168,18 @@ Azure 顾问会分析过去 7 天内的系统日志，并识别群集是否遇�
 ## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>在服务器组中分布数据，以在节点间分布工作负载
 顾问可识别数据未进行分布，而是仍保留在协调器中的服务器组。 基于这一点，顾问建议在服务器组中的工作器节点上分布数据，以获得完整的超大规模 (Citus) 权益。 这将通过利用服务器组中每个节点的资源来提高查询性能。 [了解详细信息](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
-## <a name="improve-user-experience-and-connectivity-by-deploying-vms-closer-to-windows-virtual-desktop-deployment-location"></a>通过更近于 Windows 虚拟桌面部署位置的 Vm 部署来改善用户体验和连接
+## <a name="improve-user-experience-and-connectivity-by-deploying-vms-closer-to-windows-virtual-desktop-deployment-location"></a>通过将 VM 部署在靠近 Windows 虚拟桌面部署位置的位置来改进用户体验和连接性
 我们已使用 Windows 虚拟桌面 (WVD) 确定 VM 所在的区域与用户连接所在的区域不同或相距较远。 这可能会导致连接响应时间延长，并会影响 WVD 上的整体用户体验。 为主机池创建 VM 时，应尝试使用靠近用户的区域。 距离更近可确保 WVD 服务的持续满意度，并提供更好的整体体验质量。 [在此处了解有关连接延迟的详细信息](../virtual-desktop/connection-latency.md)。
 
 ## <a name="upgrade-to-the-latest-version-of-the-immersive-reader-sdk"></a>升级到沉浸式阅读器 SDK 的最新版本
 我们已使用沉浸式阅读器 SDK 的已过时版本识别了此订阅下的资源。 使用沉浸式阅读器 SDK 的最新版本，你可以获取更新的安全性、性能及扩展的一组功能，可用于自定义和增强集成体验。
-了解有关 [沉浸式读者 SDK](../cognitive-services/immersive-reader/index.yml)的详细信息。
+详细了解[沉浸式阅读器 SDK](../cognitive-services/immersive-reader/index.yml)。
 
 ## <a name="improve-vm-performance-by-changing-the-maximum-session-limit"></a>通过更改最大会话限制，提高 VM 性能
 
-顾问检测到有一个主机池，该池的深度首先设置为负载平衡算法，并且该主机池的最大会话限制大于或等于999999。 深度优先负载均衡使用最大会话限制来确定可以在单个会话主机上进行并发会话的用户数量上限。 如果最大会话限制太高，则所有用户会话将定向到相同的会话主机，这将导致性能和可靠性问题。 因此，在将主机池设置为具有深度优先负载平衡时，必须根据部署的配置和 Vm 容量设置适当的最大会话限制。 
+顾问检测到有一个主机池，该池的深度首先设置为负载均衡算法，并且该主机池的最大会话限制大于或等于 999999。 深度优先负载均衡使用最大会话限制来确定可以在单个会话主机上进行并发会话的用户数量上限。 如果最大会话限制太高，所有用户会话将被定向到同一会话主机，这可能会导致性能和可靠性问题。 因此，在将主机池设置为具有深度优先负载均衡时，还应根据部署的配置和 VM 的容量设置适当的最大会话限制。 
 
-若要了解有关 Windows 虚拟桌面中的负载平衡的详细信息，请参阅 [配置 Windows 虚拟桌面负载平衡方法](../virtual-desktop/troubleshoot-set-up-overview.md)。
+要了解有关 Windows 虚拟桌面中的负载均衡的详细信息，请参阅[配置 Windows 虚拟桌面负载均衡方法](../virtual-desktop/troubleshoot-set-up-overview.md)。
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>如何访问顾问中的性能建议
 

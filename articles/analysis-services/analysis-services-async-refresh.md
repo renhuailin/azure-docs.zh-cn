@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: e9fd20fd42e9fe1eb0e98766798e5c759c974c97
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92013893"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>使用 REST API 执行异步刷新
@@ -31,7 +31,7 @@ ms.locfileid: "92013893"
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-例如，在名为 " `myserver` 美国西部" Azure 区域的服务器上，请考虑名为 AdventureWorks 的模型。 此服务器名称为：
+例如，假设某个模型名为 AdventureWorks，位于美国西部 Azure 区域中名为 `myserver` 的服务器上。 此服务器名称为：
 
 ```
 asazure://westus.asazure.windows.net/myserver 
@@ -66,7 +66,7 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 - 用户或应用程序必须在服务器或模型中具有足够的权限才能发出请求的调用。 权限级别由模型或者服务器上的管理员组中的角色确定。
 
     > [!IMPORTANT]
-    > 目前，**服务器管理员**角色权限是必需的。
+    > 目前，**服务器管理员** 角色权限是必需的。
 
 ## <a name="post-refreshes"></a>POST /refreshes
 
@@ -102,7 +102,7 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 |------------------|-------|--------------|---------|
 | `Type`           | 枚举  | 要执行的处理类型。 类型与 TMSL [refresh 命令](/analysis-services/tmsl/refresh-command-tmsl)类型相符：full、clearValues、calculate、dataOnly、automatic 和 defragment。 Add 类型不受支持。      |   automatic      |
 | `CommitMode`     | 枚举  | 确定是要分批提交对象，还是只在完成时才提交。 模式包括：default、transactional、partialBatch。  |  transactional       |
-| `MaxParallelism` | int   | 此值确定用于并行运行处理命令的最大线程数。 此值与 MaxParallelism 属性（可以在 TMSL [Sequence 命令](/analysis-services/tmsl/sequence-command-tmsl)中或使用其他方法设置此属性）相符。       | 10 个        |
+| `MaxParallelism` | int   | 此值确定用于并行运行处理命令的最大线程数。 此值与 MaxParallelism 属性（可以在 TMSL [Sequence 命令](/analysis-services/tmsl/sequence-command-tmsl)中或使用其他方法设置此属性）相符。       | 10        |
 | `RetryCount`     | int   | 指示操作在失败之前要重试的次数。      |     0    |
 | `Objects`        | Array | 要处理的对象数组。 每个对象包含：“table”（处理整个表时），或者“table”和“partition”（处理分区时）。 如果未指定任何对象，则会刷新整个模型。 |   处理整个模型      |
 
@@ -218,7 +218,7 @@ CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个�
 
 有关如何在 Azure AS 中设置服务主体和分配必要权限的详细信息，请参阅[创建服务主体 - Azure 门户](../active-directory/develop/howto-create-service-principal-portal.md)和[将服务主体添加到服务器管理员角色](analysis-services-addservprinc-admins.md)。 完成上述步骤后，请完成以下附加步骤：
 
-1.    在代码示例中，找到 **字符串颁发机构 = ...**，将 **common** 替换为组织的租户 ID。
+1.    在代码示例中，找到“string authority = …”，将“common”替换为组织的租户 ID。 
 2.    注释/取消注释，以便使用 ClientCredential 类来实例化 cred 对象。 确保以安全的方式访问 \<App ID> 和 \<App Key> 值，或对服务主体使用基于证书的身份验证。
 3.    运行该示例。
 

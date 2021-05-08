@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: overview
-ms.date: 03/15/2021
+ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: af264ceb174b0370bc098f0e996ddf6eb9aec93f
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: 761488e91b98eced4c059b50efe4805cff1a0d31
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103466858"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330126"
 ---
 # <a name="language-support-for-form-recognizer"></a>表单识别器的语言支持
 
@@ -41,7 +41,7 @@ ms.locfileid: "103466858"
 |丹麦语 | `da` |  ✔ | |
 |荷兰语 | `nl` |✔ | ✔ |
 |英语（印刷体和手写体） | `en` |✔ | ✔ |
-|爱沙尼亚语  |`crh`|  ✔ | |
+|爱沙尼亚语  |`et`|  ✔ | |
 |斐济语 |`fj`|  ✔ | |
 |菲律宾语  |`fil`|  ✔ | |
 |芬兰语 | `fi` |  ✔ | |

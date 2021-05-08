@@ -17,10 +17,10 @@ ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
 ms.openlocfilehash: 643a52c9be04fb325b8e1d088faeb68e473aa673
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98919946"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>使用 Azure CLI 创建具有加速网络的 Linux 虚拟机
@@ -58,7 +58,7 @@ ms.locfileid: "98919946"
 ### <a name="supported-vm-instances"></a>支持的 VM 实例
 大多数常规用途实例以及具有 2 个或更多 vCPU 的计算优化实例都支持加速网络。 在支持超线程的实例上，具有 4 个或更多 vCPU 的 VM 实例支持加速网络。 
 
-在单个 [虚拟机大小](../virtual-machines/sizes.md) 文档中可以找到对加速网络的支持。 
+可以在单个[虚拟机大小](../virtual-machines/sizes.md)文档中找到对加速网络的支持。 
 
 ### <a name="custom-images"></a>自定义映像
 如果你使用的是自定义映像，并且映像支持加速网络，请确保在 Azure 上使用 Mellanox ConnectX-3 和 ConnectX-4 Lx NICs 所需的驱动程序。

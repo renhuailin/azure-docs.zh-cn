@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 53a3317f38cc22ffa3745f5f0e58cc01a54b825c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7dbb162749e0a2f84140b8e9394934198d096eac
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93096740"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589612"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>将一对多关系数据迁移到 Azure Cosmos DB SQL API 帐户中
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -126,7 +126,7 @@ SELECT [value] FROM OPENJSON(
 > 为清楚起见，以下代码片段显式包含了虚拟数据库密码，但用户应始终使用 Azure Databricks 的机密。
 >
 
-首先，创建所需的 [SQL 连接器](https://docs.databricks.com/data/data-sources/sql-databases-azure.html) 并将 [Azure Cosmos DB 连接器](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html)库并连接到 Azure Databricks 群集。 重启群集以确保加载库。
+首先，创建所需的 [SQL 连接器](/connectors/sql/) 并将 [Azure Cosmos DB 连接器](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html)库并连接到 Azure Databricks 群集。 重启群集以确保加载库。
 
 :::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks1.png" alt-text="屏幕截图，显示了在何处创建所需的 SQL 连接器并将 Azure Cosmos DB 连接器库连接到 Azure Databricks 群集。":::
 
@@ -136,7 +136,7 @@ SELECT [value] FROM OPENJSON(
 在这里，我们从数据帧中获取输出为“FOR JSON”的 SQL 查询结果：
 
 ```scala
-// Connect to Azure SQL https://docs.databricks.com/data/data-sources/sql-databases-azure.html
+// Connect to Azure SQL /connectors/sql/
 import com.microsoft.azure.sqldb.spark.config.Config
 import com.microsoft.azure.sqldb.spark.connect._
 val configSql = Config(Map(

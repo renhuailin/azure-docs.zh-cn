@@ -3,14 +3,19 @@ title: 备份 Azure 托管磁盘
 description: 了解如何从 Azure 门户备份 Azure 托管磁盘。
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: e234495eb483d6d0cc6ca556ca418138c61a99f5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ca86550c4dec4b51c60d9ecdef124e38783a3764
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105110621"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "98738146"
 ---
-# <a name="back-up-azure-managed-disks"></a>备份 Azure 托管磁盘
+# <a name="back-up-azure-managed-disks-in-preview"></a>备份 Azure 托管磁盘（预览版）
+
+>[!IMPORTANT]
+>此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负载。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 有关区域可用性，请参阅[支持矩阵](disk-backup-support-matrix.md)。
+>
+>[填写此表格](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u)以便注册预览版。
 
 本文介绍如何从 Azure 门户备份 [Azure 托管磁盘](../virtual-machines/managed-disks-overview.md)。
 
@@ -28,7 +33,7 @@ ms.locfileid: "105110621"
 
 ## <a name="create-a-backup-vault"></a>创建备份保管库
 
-备份保管库是 Azure 中的一个存储实体，用于保存 Azure 备份支持的各种新型工作负荷（例如 Azure Database for PostgreSQL 服务器和 Azure 磁盘）的备份数据。 备份保管库便于组织备份数据，并最大限度降低管理开销。 备份保管库基于 Azure 的 Azure 资源管理器型号，提供增强的功能来帮助保护备份数据。
+备份保管库是 Azure 中的一个存储实体，用于保存 Azure 备份支持的各种新型工作负荷（例如 Azure Database for PostgreSQL 服务器和 Azure 磁盘）的备份数据。 使用保管库可以方便地组织备份数据，并将管理开销降至最低。 备份保管库基于 Azure 的 Azure 资源管理器型号，提供增强的功能来帮助保护备份数据。
 
 1. 在 [https://portal.azure.com](https://portal.azure.com/) 中登录 Azure 门户。
 1. 在搜索框中键入“备份中心”。
@@ -62,7 +67,7 @@ ms.locfileid: "105110621"
 
    ![选择备份计划频率](./media/backup-managed-disks/backup-schedule-frequency.png)
 
-   Azure 磁盘备份每天提供多次备份。 如果需要更频繁地进行备份，请选择“每小时”备份频率，让你能够以每 4、6、8 或 12 小时的间隔进行备份。 根据所选的“时间”间隔安排备份。 例如，如果选择“每 4 小时”备份一次，则会按 4 小时的间隔执行备份，以便备份在一天中均匀分布。 如果每天备份一次即可满足需求，则选择“每日”备份频率。 可在每日备份频率中指定每日备份时间。 请注意，每日备份时间表示备份开始时间，而不是备份完成时间。 完成备份操作所需时间取决于各种因素，包括磁盘大小和连续备份的更改率。 但是，Azure 磁盘备份是使用[增量快照](../virtual-machines/disks-incremental-snapshots.md)的无代理备份，不会影响生产应用程序的性能。
+   Azure 磁盘备份每天提供多次备份。 如果需要更频繁地进行备份，请选择“每小时”备份频率，并以每隔4、6、8 或 12 小时的间隔进行备份。 根据所选的“时间”间隔，计划备份。 例如，如果选择“每隔 4 小时”备份一次，则会在 4 小时的时间间隔内执行备份，以便在一天中平均分布备份。 如果每天备份一次，则选择“每日”备份频率。 在每天的备份频率中，可以指定备份的时间。 请注意，这一天的时间指示备份开始时间，而不是备份完成的时间。 完成备份操作所需的时间取决于各种因素，包括磁盘大小和连续备份之间的变动率。 但是，Azure 磁盘备份是使用[增量快照](../virtual-machines/disks-incremental-snapshots.md)的无代理备份，不会影响生产应用程序的性能。
 
 1. 在“备份策略”选项卡中，选择满足恢复点目标 (RPO) 要求的保留设置。
 

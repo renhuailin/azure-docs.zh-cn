@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: b80b1a4b3f9bcde6cf01b0e0e59425c6783bd5d9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 357c8d79259986e211dd04580b1d8205c25824da
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94953757"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257970"
 ---
 # <a name="tutorial-for-configuring-hypr-with-azure-active-directory-b2c"></a>为 Azure Active Directory B2C 配置 HYPR 的教程
 
@@ -46,7 +46,7 @@ HYRP 集成包括以下组件：
 
 - HYPR REST Api - 可以使用 HYPR API 来执行用户设备注册和身份验证。 可在[此处](https://apidocs.hypr.com)找到这些 API。
 
-以下体系结构图显示了实现方式。
+以下体系结构图体现了实施详情。
 
 ![HYPR 体系结构图的屏幕截图](media/partner-hypr/hypr-architecture-diagram.png)
 
@@ -62,7 +62,7 @@ HYRP 集成包括以下组件：
 
 1. 请在策略文件夹中转到 [AZURE AD B2C HYPR 策略](https://github.com/HYPR-Corp-Public/Azure-AD-B2C-HYPR-Sample/tree/master/policy)。
 
-2. 按照该[文档](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack)的说明来下载 [LocalAccounts 入门包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)
+2. 按照该[文档](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack)的说明来下载 [LocalAccounts 入门包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)
 
 3. 为 Azure AD B2C 租户配置策略。
 
@@ -93,4 +93,4 @@ HYRP 集成包括以下组件：
 
 - [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

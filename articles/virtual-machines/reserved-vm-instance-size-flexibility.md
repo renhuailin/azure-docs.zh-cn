@@ -1,5 +1,5 @@
 ---
-title: 虚拟机大小灵活性-Azure 保留 VM 实例
+title: 虚拟机大小灵活性 - Azure 虚拟机预留实例
 description: 了解购买虚拟机预留实例时哪些大小系列有预留折扣。
 author: yashesvi
 ms.service: virtual-machines
@@ -9,26 +9,26 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2021
 ms.author: yashar
 ms.openlocfilehash: 9270b7fb135eddd78a7aeb30cf88af4d704e176e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102030693"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>虚拟机预留实例的虚拟机大小灵活性
 
-购买保留 VM 实例时，可以选择优化实例大小的灵活性或容量优先级。 有关设置或更改保留 VM 实例的优化设置的详细信息，请参阅 [更改保留 vm 实例的优化设置](../cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances)。
+购买虚拟机预留实例时，可以选择优化实例大小灵活性或容量优先级。 有关设置或更改虚拟机预留实例的优化设置的详细信息，请参阅[更改虚拟机预留实例的优化设置](../cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances)。
 
-使用为实例大小灵活性优化的保留虚拟机实例，你购买的预订可应用于虚拟机 (Vm) 大小在同一实例大小的灵活性组中。 例如，如果你购买 DSv2 系列中列出的 VM 大小的保留，如 Standard_DS3_v2，则预订折扣适用于同一实例大小灵活性组中列出的其他大小：
+使用已优化实例大小灵活性的虚拟机预留实例时，所购买的预留可以应用到同一实例大小灵活性组中的虚拟机 (VM) 大小。 例如，如果购买在 DSv2 系列中列出的某个 VM 大小（例如 Standard_DS3_v2）的预留，则预留折扣可以应用到同一实例大小灵活性组中列出的其他大小：
 
 - Standard_DS1_v2
 - Standard_DS2_v2
 - Standard_DS3_v2
 - Standard_DS4_v2
 
-但预订折扣不适用于不同实例大小灵活性组中列出的 Vm 大小，如 DSv2 系列中的 Sku 高内存： Standard_DS11_v2、Standard_DS12_v2 等。
+但是，该预留折扣不适用于在其他实例大小灵活性组中列出的 VM 大小，例如高内存 DSv2 系列中的 SKU：Standard_DS11_v2、Standard_DS12_v2 等。
 
-在 "实例大小" 灵活性组内，预订折扣适用的 Vm 数取决于你在购买预订时选择的 VM 大小。 也取决于运行的 VM 的大小。 比值列比较该实例大小灵活性组中每个 VM 大小的相对占用量。 请使用比率值来计算如何将预留折扣应用到运行的 VM。
+在实例大小灵活性组中，预留折扣适用于多少 VM 取决于在购买预留时选取的 VM 大小。 也取决于运行的 VM 的大小。 比率列将比较该实例大小灵活性组中每个 VM 大小的相对占用情况。 请使用比率值来计算如何将预留折扣应用到运行的 VM。
 
 ## <a name="examples"></a>示例
 
@@ -42,20 +42,20 @@ ms.locfileid: "102030693"
 
 以下部分介绍了在购买优化的可以灵活调整实例大小的虚拟机预留实例时，同一大小系列组中有哪些大小。
 
-## <a name="instance-size-flexibility-ratio-for-vms"></a>Vm 的实例大小灵活性比率 
+## <a name="instance-size-flexibility-ratio-for-vms"></a>虚拟机的实例大小灵活性比率 
 
-下面的 CSV 具有实例大小灵活性组、ArmSkuName 和比率。  
+下面的 CSV 包含实例大小灵活性组、ArmSkuName 和比率。  
 
 [实例大小灵活性比率](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv)
 
-Azure 会保持链接和架构的更新，以便你可以通过编程方式使用文件。
+Azure 保持更新链接和架构，以便你可以通过编程方式使用该文件。
 
-## <a name="view-vm-size-recommendations"></a>查看 VM 大小建议
+## <a name="view-vm-size-recommendations"></a>查看虚拟机大小建议
 
-Azure 会在购买体验中显示 VM 大小建议。 若要查看最小大小建议，请选择 " **按最小大小分组**"。
+Azure 会在你购买时显示虚假机大小推荐。 若要查看最小大小建议，请选择“按最小大小分组”。
 
-:::image type="content" source="./media/reserved-vm-instance-size-flexibility/select-product-recommended-quantity.png" alt-text="显示推荐数量的屏幕截图。" lightbox="./media/reserved-vm-instance-size-flexibility/select-product-recommended-quantity.png" :::
+:::image type="content" source="./media/reserved-vm-instance-size-flexibility/select-product-recommended-quantity.png" alt-text="显示建议数量的屏幕截图。" lightbox="./media/reserved-vm-instance-size-flexibility/select-product-recommended-quantity.png" :::
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅 [什么是 Azure 保留](../cost-management-billing/reservations/save-compute-costs-reservations.md)。
+有关详细信息，请参阅[什么是 Azure 预留](../cost-management-billing/reservations/save-compute-costs-reservations.md)。

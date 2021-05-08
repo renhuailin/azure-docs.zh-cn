@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: radeltch
-ms.openlocfilehash: ddee5edcf1d19af0fb088976c590b62866a1484e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: aa2006ecfad91e21ac13a1e63be23302b2a70399
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674425"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551027"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -34,9 +34,9 @@ ms.locfileid: "101674425"
 
 有两个选项可用来在 Azure 中设置 Pacemaker 群集。 可以使用隔离代理，它负责通过 Azure API 重新启动失败的节点；还可以使用 SBD 设备。
 
-SBD 设备至少需要一个额外的充当 iSCSI 目标服务器并提供 SBD 设备的虚拟机。 不过，也可以与其他 Pacemaker 群集共享这些 iSCSI 目标服务器。 使用 SBD 设备的优点是，如果你已经在本地使用 SBD 设备，则不需要对 pacemaker 群集的运行方式进行任何更改。 最多可对一个 Pacemaker 群集使用三个 SBD 设备，以允许某个 SBD 设备不可用，例如，在修补 iSCSI 目标服务器的 OS 期间。 若要对每个 Pacemaker 使用多个 SBD 设备，请务必部署多个 iSCSI 目标服务器并从每个 iSCSI 目标服务器连接一个 SBD。 我们建议使用一个或三个 SBD 设备。 如果只配置两个 SBD 设备，而其中一个不可用，则 Pacemaker 无法自动隔离群集节点。 如果希望能够在一个 iSCSI 目标服务器关闭时进行防护，则必须使用三个 SBD 设备，因此可以使用三个 iSCSI 目标服务器，这是使用 SBDs 时最具弹性的配置。
+SBD 设备至少需要一个额外的充当 iSCSI 目标服务器并提供 SBD 设备的虚拟机。 不过，也可以与其他 Pacemaker 群集共享这些 iSCSI 目标服务器。 使用 SBD 设备的优点是（如果已经在本地使用 SBD 设备）不需要对操作 pacemaker 群集的方式进行任何更改。 最多可对一个 Pacemaker 群集使用三个 SBD 设备，以允许某个 SBD 设备不可用，例如，在修补 iSCSI 目标服务器的 OS 期间。 若要对每个 Pacemaker 使用多个 SBD 设备，请务必部署多个 iSCSI 目标服务器并从每个 iSCSI 目标服务器连接一个 SBD。 我们建议使用一个或三个 SBD 设备。 如果只配置两个 SBD 设备，而其中一个不可用，则 Pacemaker 无法自动隔离群集节点。 当一个 iSCSI 目标服务器关闭时，若要进行隔离，必须使用三个 SBD 设备，因此需要使用三个 iSCSI 目标服务器，这是使用 SBD 时最具弹性的配置。
 
-Azure 隔离代理不需要部署)  (额外的虚拟机。   
+Azure 隔离代理不需要部署额外的虚拟机。   
 
 ![SLES 上的 Pacemaker 概述](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
@@ -413,16 +413,16 @@ o- / ...........................................................................
    sudo vi /root/.ssh/authorized_keys
    </code></pre>
 
-1. **[A]** 基于 Azure 隔离代理使用 STONITH 设备安装围栏代理包。  
+1. **[A]** 如果使用 STONITH 设备，基于 Azure 隔离代理安装隔离代理包。  
    
    <pre><code>sudo zypper install fence-agents
    </code></pre>
 
    >[!IMPORTANT]
-   > 安装的包防护版本 **-代理** 必须至少为 **4.4.0**  ，以便在群集节点需要隔离的情况下，使用 Azure 隔离代理更快地进行故障转移。 如果运行的版本较低，建议更新包。  
+   > 安装的 fence-agents 包版本必须至少为 4.4.0，以便在群集节点需要隔离的情况下，使用 Azure 隔离代理更快地进行故障转移。 如果运行的是较低版本的包，建议更新。  
 
 
-1. **[A]** 安装 AZURE Python SDK 
+1. **[A]** 安装 Azure Python SDK 
    - 在 SLES 12 SP4 或 SLES 12 SP5 上
    <pre><code>
     # You may need to activate the Public cloud extention first
@@ -438,11 +438,11 @@ o- / ...........................................................................
    </code></pre> 
  
    >[!IMPORTANT]
-   >根据您的版本和映像类型，您可能需要在安装 Azure Python SDK 之前激活操作系统版本的公有云扩展。
-   >可以通过运行 SUSEConnect---列表扩展来检查扩展。  
-   >若要通过 Azure 隔离代理获得更快的故障转移时间：
-   > - 在 SLES 12 SP4 或 SLES 12 SP5 上，安装版本 **4.6.2** 或更高版本的包 python-azure 管理-计算  
-   > - 在 SLES 15 上安装版本 **4.6.2** 或更高版本的包 python **3**-azure 管理-计算 
+   >根据你的版本和映像类型，可能需要在安装 Azure Python SDK 之前激活操作系统版本的公有云扩展。
+   >可以通过运行 SUSEConnect ---list-extensions 来检查扩展。  
+   >要加快使用 Azure 隔离代理进行故障转移，请执行以下操作：
+   > - 在 SLES 12 SP4 或 SLES 12 SP5 上，安装版本 4.6.2 或更高版本的包 python-azure-mgmt-compute  
+   > - 在 SLES 15 上，安装版本 4.6.2 或更高版本的包 python 3-azure-mgmt-compute 
 
 1. [A] 设置主机名称解析
 
@@ -450,7 +450,7 @@ o- / ...........................................................................
    请替换以下命令中的 IP 地址和主机名。
 
    >[!IMPORTANT]
-   > 如果在群集配置中使用主机名，则必须具有可靠的主机名解析。 如果名称不可用并且可能导致群集故障转移延迟，则群集通信将失败。
+   > 如果在群集配置中使用主机名，则必须具有可靠的主机名解析。 如果名称不可用，可能导致故障转移延迟，群集通信就会失败。
    > 使用 /etc/hosts 的好处是群集可以独立于 DNS（也可能会成为单一故障点）。  
      
    <pre><code>sudo vi /etc/hosts
@@ -466,7 +466,7 @@ o- / ...........................................................................
    </code></pre>
 
 1. [1] 安装群集
-- 如果使用 SBD 设备进行防护
+- 如果使用 SBD 设备进行隔离
    <pre><code>sudo ha-cluster-init -u
    
    # ! NTP is not configured to start at system boot.
@@ -478,7 +478,7 @@ o- / ...........................................................................
    # Do you wish to configure an administration IP (y/n)? <b>n</b>
    </code></pre>
 
-- 如果 *不使用* SBD 设备进行防护
+- 如果不使用 SBD 设备进行隔离
    <pre><code>sudo ha-cluster-init -u
    
    # ! NTP is not configured to start at system boot.
@@ -552,7 +552,7 @@ o- / ...........................................................................
 
 ## <a name="default-pacemaker-configuration-for-sbd"></a>SBD 的默认 Pacemaker 配置
 
-本部分中的配置仅适用于使用 SBD STONITH 的情况。  
+本部分中的配置仅在使用 SBD STONITH 的情况下适用。  
 
 1. **[1]** 启用 STONITH 设备并设置隔离延迟
 
@@ -570,7 +570,7 @@ sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
 
 ## <a name="create-azure-fence-agent-stonith-device"></a>创建 Azure 隔离代理 STONITH 设备
 
-本部分文档仅适用于使用 STONITH （基于 Azure 隔离代理）的情况。
+本部分文档仅在使用 STONITH（基于 Azure 隔离代理）的情况下适用。
 STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步骤创建服务主体。
 
 1. 转到 <https://portal.azure.com>
@@ -584,7 +584,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 1. 选择“证书和机密”，然后单击“新建客户端机密”
 1. 输入新密钥的说明，选择“永不过期”，并单击“添加”
 1. 记下值。 此值用作服务主体的 **密码**
-1. 选择“概述”。 记下应用程序 ID。 此 ID 用作服务主体的用户名（以下步骤中的“登录 ID”）
+1. 选择“概述”。 记下应用程序 ID。 此值用作服务主体的用户名
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** 为隔离代理创建自定义角色
 
@@ -637,14 +637,14 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 编辑虚拟机的权限后，可以在群集中配置 STONITH 设备。
 
 > [!NOTE]
-> 如果主机名和 Azure VM 名称不相同，则仅在命令中需要选项 "pcmk_host_map"。 以 **主机名： vm 名称** 格式指定映射。
+> 仅在主机名和 Azure VM 名称不相同的情况下，命令中才需要 'pcmk_host_map' 选项。 以 hostname:vm-name 格式指定映射。
 > 请参阅命令中的粗体部分。
 
 <pre><code>sudo crm configure property stonith-enabled=true
 crm configure property concurrent-fencing=true
-# replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
+# replace the bold string with your subscription ID, resource group of the VM, tenant ID, service principal application ID and password
 sudo crm configure primitive rsc_st_azure stonith:fence_azure_arm \
-  params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>" \
+  params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>application ID</b>" passwd="<b>password</b>" \
   pcmk_monitor_retries=4 pcmk_action_limit=3 power_timeout=240 pcmk_reboot_timeout=900 <b>pcmk_host_map="prod-cl1-0:prod-cl1-0-vm-name;prod-cl1-1:prod-cl1-1-vm-name"</b> \
   op monitor interval=3600 timeout=120
 
@@ -653,7 +653,7 @@ sudo crm configure property stonith-timeout=900
 </code></pre>
 
 > [!IMPORTANT]
-> 对监视和防护操作进行反序列化。 因此，如果存在运行时间较长的监视操作和同时发生的防护事件，则群集故障转移不会延迟，因为已在运行监视操作。
+> 对监视和隔离操作进行反序列化。 因此，如果存在运行时间较长的监视操作和同时发生的隔离事件，则群集故障转移不会延迟，因为监视操作已经在运行。
 
 > [!TIP]
 >Azure 隔离代理要求与[使用标准 ILB 的 VM 的公共终结点连接](./high-availability-guide-standard-load-balancer-outbound-connections.md)中所述的公共终结点建立出站连接并提供可能的解决方案。  

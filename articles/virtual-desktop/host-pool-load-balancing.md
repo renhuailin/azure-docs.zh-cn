@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: fd8f9e4a3ef63cd97f96af3d4f96a2bb65c3cd09
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: ed0cf568ca8d011beb7150f23c0187bbe262d5f0
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91951853"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106446768"
 ---
 # <a name="host-pool-load-balancing-methods"></a>主机池负载均衡方法
 
@@ -25,7 +25,7 @@ Windows 虚拟桌面提供以下负载均衡方法：
 - 广度优先负载均衡允许你在主机池中的会话主机之间均匀分布用户会话。
 - 深度优先负载均衡可使用主机池中的用户会话让会话主机饱和。 第一个会话达到其会话限制阈值后，负载均衡器会将任何新用户连接定向到主机池中的下一个会话，直至会话主机达到限制，以此类推。
 
-每个主机池只能配置一种特定的负载均衡。 但是，无论位于哪个主机池，这两种负载均衡方法均共享以下行为：
+每个主机池只能配置一种特定的负载均衡。 但是，无论它们位于哪个主机池，这两种负载均衡方法均具有以下行为：
 
 - 如果用户已在主机池中有会话，并重新连接到该会话，则负载均衡器会将其成功地重定向到其现有会话所在的会话主机。 即使会话主机的 AllowNewConnections 属性设置为 False，此行为依然适用。
 - 如果用户还没有在主机池中建立会话，则负载均衡器在负载均衡期间不会考虑 AllowNewConnections 属性设置为 False 的会话主机。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2020
 ms.author: yelevin
-ms.openlocfilehash: f7c4905f3122bf5abd2dc955170113cac3039a5d
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: a1c2754fcae5768c6b87d6280fc882acd46d9a0a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219036"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100585335"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>设置 Azure Sentinel 客户托管密钥
 
@@ -81,7 +81,7 @@ Azure Sentinel 使用 Cosmos DB 作为附加存储资源。 请确保注册到 C
 
 ### <a name="step-4-add-an-access-policy-to-your-azure-key-vault-instance"></a>第 4 步：将访问策略添加到 Azure Key Vault 实例
 
-请确保添加 Cosmos DB 到 Azure Key Vault 实例的访问权限。 按照 Cosmos DB 说明，使用 Azure Cosmos DB 主体[将访问策略添加到 Azure Key Vault 实例](../cosmos-db/how-to-setup-cmk.md#add-access-policy)。
+请确保添加 Cosmos DB 到 Azure Key Vault 实例的访问权限。 按照 Cosmos DB 说明，使用 Azure Cosmos DB 主体[将访问策略添加到 Azure Key Vault 实例](../cosmos-db/how-to-setup-cmk.md#add-an-access-policy-to-your-azure-key-vault-instance)。
 
 ### <a name="step-5-enable-cmk-in-azure-sentinel"></a>第 5 步：在 Azure Sentinel 中启用 CMK
 

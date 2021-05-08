@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Red Hat OpenShift 中管理安全上下文约束 |Microsoft Docs
-description: Azure Red Hat OpenShift 群集管理员的安全上下文约束
+title: 管理 Azure Red Hat OpenShift 中的安全性上下文约束 | Microsoft Docs
+description: 适用于 Azure Red Hat OpenShift 群集管理员的安全性上下文约束
 services: container-service
 author: troy0820
 ms.author: b-trconn
@@ -8,25 +8,25 @@ ms.service: azure-redhat-openshift
 ms.topic: article
 ms.date: 09/25/2019
 ms.openlocfilehash: 977504c1faec9bd8134646a8cbe31f9eea665edd
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100636197"
 ---
-# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>在 Azure Red Hat OpenShift 中管理安全上下文约束
+# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>管理 Azure Red Hat OpenShift 中的安全性上下文约束
 
 > [!IMPORTANT]
-> Azure Red Hat OpenShift 3.11 将在年6月 30 2022 日停用。 支持创建新的 Azure Red Hat OpenShift 3.11 群集持续到30年 11 2020 月30日。 停用后，剩余的 Azure Red Hat OpenShift 3.11 群集将关闭，以防出现安全漏洞。
+> Azure Red Hat OpenShift 3.11 将于 2022 年 6 月 30 日停用。 对新建 Azure Red Hat OpenShift 3.11 群集的支持会持续到 2020 年 11 月 30 日。 在停用之后，剩余的 Azure Red Hat OpenShift 3.11 群集将会关闭，以防出现安全漏洞。
 > 
-> 按照本指南 [创建 Azure Red Hat OpenShift 4 群集](tutorial-create-cluster.md)。
-> 如果有特定问题， [请](mailto:arofeedback@microsoft.com)联系我们。
+> 请按照本指南[创建 Azure Red Hat OpenShift 4 群集](tutorial-create-cluster.md)。
+> 如有具体问题，[请与我们联系](mailto:arofeedback@microsoft.com)。
 
- (Scc 的安全上下文约束) 允许群集管理员控制 pod 的权限。 若要了解有关此 API 类型的详细信息，请参阅 [scc 的体系结构文档](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html)。 你可以通过使用 CLI，将实例中的 Scc 作为常规 API 对象进行管理。
+安全上下文约束 (SCC) 允许群集管理员控制 Pod 的权限。 若要详细了解此 API 类型，请参阅 [SCC 的体系结构文档](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html)。 你可以通过使用 CLI，将实例中的 SCC 作为常规 API 对象进行管理。
 
-## <a name="list-security-context-constraints"></a>列出安全上下文约束
+## <a name="list-security-context-constraints"></a>列出安全性上下文约束
 
-若要获取 Scc 的当前列表，请使用此命令： 
+若要获取 SCC 的当前列表，请使用此命令： 
 
 ```bash
 $ oc get scc
@@ -41,9 +41,9 @@ privileged         true      [*]       RunAsAny    RunAsAny           RunAsAny  
 restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    <none>     false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
 ```
 
-## <a name="examine-an-object-for-security-context-constraints"></a>检查对象的安全上下文约束
+## <a name="examine-an-object-for-security-context-constraints"></a>检查对象的安全性上下文约束
 
-若要检查特定 SCC，请使用 `oc get` 、 `oc describe` 或 `oc edit` 。  例如，若要检查 **受限制** 的 SCC，请使用此命令：
+若要检查某个特定 SCC，请使用 `oc get`、`oc describe` 或 `oc edit`。  例如，若要检查“受限”SCC，请使用此命令：
 ```bash
 $ oc describe scc restricted
 Name:                    restricted

@@ -1,5 +1,5 @@
 ---
-title: '方案：通过网络虚拟设备路由流量 (NVA) '
+title: 方案：通过网络虚拟设备 (NVA) 路由流量
 titleSuffix: Azure Virtual WAN
 description: 通过 NVA 路由流量
 services: virtual-wan
@@ -10,92 +10,92 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 24671a34214864e253d96c356dc8b2853bf6d560
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100519790"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>场景：通过 NVA 路由流量
 
-使用虚拟 WAN 虚拟中心路由时，有很多可用方案。 在此 NVA 方案中，目标是将流量路由到分支到 VNet 的 NVA (网络虚拟) 设备，并将 VNet 路由到分支。 有关虚拟中心路由的信息，请参阅[关于虚拟中心路由](about-virtual-hub-routing.md)。
+使用虚拟 WAN 虚拟中心路由时，有很多可用方案。 在此 NVA 方案中，目标是要通过 NVA（网络虚拟设备）将分支的流量路由到 VNet 并将 VNet 的流量路由到分支。 有关虚拟中心路由的信息，请参阅[关于虚拟中心路由](about-virtual-hub-routing.md)。
 
 > [!NOTE]
-> 如果已设置了具有新功能的新功能之前的路由， [如何配置虚拟中心路由](how-to-virtual-hub-routing.md) ，请使用以下文章中的步骤：
+> 如果你已经具有在新功能[如何配置虚拟中心路由](how-to-virtual-hub-routing.md)变为可用之前设置的路由，请使用以下文章中关于这些版本的步骤：
 >* [Azure 门户文章](virtual-wan-route-table-nva-portal.md)
 >* [PowerShell 文章](virtual-wan-route-table-nva.md)
 >
 
 ## <a name="design"></a><a name="design"></a>设计
 
-在此方案中，我们将使用命名约定：
+在此方案中，我们将使用以下命名约定：
 
-* 对于用户已部署 NVA 并已将其他虚拟网络作为轮辐 (VNet 2 和 VNet 4 的虚拟网络的 "NVA Vnet" 在本文) 的文章 **2** 中进一步细分。
-* 用于连接到 NVA VNet 的虚拟网络的 "NVA 轮辐" (VNet 5、VNet 6、VNet 7 和 VNet 8，请查看本文) 中的 **第 2** 步。
-* 对于连接到未使用 NVA 或其他 Vnet 对等互连的虚拟 WAN 的虚拟网络，"NVA Vnet" 将 (VNet 1 和 VNet 3，这篇文章)  。
-* 适用于 Microsoft 托管的虚拟 WAN 中心的 "中心"，其中 NVA Vnet 连接到。 NVA 轮辐 Vnet 无需连接到虚拟 WAN 中心，只能连接到 NVA Vnet。
+* “NVA Vnet”，用于用户已在其中部署了 NVA 并且已将其他虚拟网络作为分支连接的虚拟网络（本文后面的图 2 中的 VNet 2 和 VNet 4）。
+* “NVA 分支”，用于连接到 NVA VNet的虚拟网络（本文后面图 2 中的 VNet 5、VNet 6、VNet 7 和 VNet 8）。
+* “非 NVA Vnet”，用于连接到没有 NVA 或其他与之对等互连的 VNet 的虚拟 WAN 的虚拟网络（本文后面图 2 中的 VNet 1 和 VNet 3）。
+* “中心”，用于 NVA Vnet 连接到的由 Microsoft 管理的虚拟 WAN 中心。 NVA 分支 Vnet 无需连接到虚拟 WAN 中心，只需要连接到 NVA Vnet。
 
 下面的连接矩阵汇总了此方案中支持的流：
 
 **连接矩阵**
 
-| 源             | 到:|   *NVA 轮辐*|*NVA Vnet*|*非 NVA Vnet*|*分支*|
+| 源             | 到:|   NVA 分支|NVA VNet|非 NVA VNet|*分支*|
 |---|---|---|---|---|---|
-| **NVA 轮辐**   | &#8594; | Over NVA VNet | 对等互连 | Over NVA VNet | Over NVA VNet |
-| **NVA Vnet**    | &#8594; | 对等互连 | 直接 | 直接 | 直接 |
-| **非 NVA Vnet**| &#8594; | Over NVA VNet | 直接 | 直接 | 直接 |
-| **分支**     | &#8594; | Over NVA VNet | 直接 | 直接 | 直接 |
+| NVA 分支   | &#8594; | 通过 NVA VNet | 对等互连 | 通过 NVA VNet | 通过 NVA VNet |
+| NVA VNet    | &#8594; | 对等互连 | 直接 | 直接 | 直接 |
+| 非 NVA VNet| &#8594; | 通过 NVA VNet | 直接 | 直接 | 直接 |
+| **分支**     | &#8594; | 通过 NVA VNet | 直接 | 直接 | 直接 |
 
-连接矩阵中的每个单元都说明了 VNet 或分支 (流的 "From" 端，表中的行标题) 与流的 "To" 端 (目标 VNet 或分支，表) 中的列标题以斜体形式进行通信。 "直接" 表示虚拟 WAN 在本机提供连接，"对等互连" 表示 VNet 中的 User-Defined 路由提供连接，"Over NVA VNet" 表示连接遍历 NVA VNet 中部署的 NVA。 考虑以下情况：
+该连接矩阵中的每个单元格都描述了 VNet 或分支（流的“从”端，表中的行标题）如何与目标 VNet 或分支（流的“到”端，表中的列标题）通信。 “直接”表示由虚拟 WAN 以本机方式提供连接，“对等互连”表示由 VNet 中的用户定义的路由来提供连接，“通过 NVA VNet”表示该连接会穿过 NVA VNet 中部署的 NVA。 考虑以下情况：
 
-* NVA 轮辐不受虚拟 WAN 的管理。 因此，用户将维护与其他 Vnet 或分支通信的机制。 与 NVA VNet 的连接是由 VNet 对等互连提供的，默认路由到 0.0.0.0/0，并将其作为下一个跃点指向 NVA
-* NVA Vnet 将知道自己的 NVA 轮辐，但不能了解连接到其他 NVA Vnet 的 NVA 轮辐。 例如，在本文的第2图中，VNet 2 知道 VNet 5 和 VNet 6，而不是关于 VNet 7 和 VNet 8 的其他分支。 需要使用静态路由将其他轮辐前缀注入到 NVA Vnet 中。
-* 同样，分支和非 NVA Vnet 将不知道任何 NVA 轮辐，因为 NVA 轮辐未连接到虚拟 WAN hub。 因此，此处还需要静态路由。
+* NVA 分支不由虚拟 WAN 来管理。 因此，这些分支与其他 Vnet 或分支通信时将采用的机制由用户来维护。 到 NVA VNet 的连接由 VNet 对等互连提供，并且指向 NVA 作为下一个跃点的到 0.0.0.0/0 的默认路由应该覆盖到 Internet 的、到其他轮幅的以及到分支的连接
+* NVA VNet 会知道它们自己的 NVA 分支，但不会知道连接到其他 NVA VNet 的 NVA 分支。 例如，在本文后面图 2 中，VNet 2 知道 VNet 5 和 VNet 6，但不知道 VNet 7 和 VNet 8 等其他分支。 需要使用静态路由将其他分支的前缀注入到 NVA VNet 中
+* 同样，分支和非 NVA VNet 不会知道任何 NVA 分支，因为 NVA 分支不会连接到虚拟 WAN 中心。 因此，这里还会需要静态路由。
 
-考虑到 NVA 轮辐不受虚拟 WAN 管理，所有其他行都显示相同的连接模式。 因此，单个路由表 (默认) 会执行以下操作：
+考虑到 NVA 分支不受虚拟 WAN 管理，所有其他行都会显示相同的连接模式。 因此，单一的路由表（默认的路由表）将会执行以下操作：
 
-* 虚拟网络 (非中心 Vnet 和用户中心 Vnet) ：
+* 虚拟网络（非中心 VNet 和用户中心 VNet）：
   * 关联的路由表：**默认**
   * 传播到路由表：**Default**
 * 分支：
   * 关联的路由表：**默认**
   * 传播到路由表：**默认**
 
-但是，在此方案中，我们需要考虑要配置哪些静态路由。 每个静态路由都将具有两个组件，一个部分位于虚拟 WAN 集线器中，用于指示虚拟 WAN 组件要用于每个辐射的连接，另一个部分位于该特定连接中，指向分配给 NVA (的具体 IP 地址，或指向多个 Nva) 前面的负载均衡器，如 **图 1** 所示：
+但是，在此方案中，我们需要考虑要配置哪些静态路由。 每个静态路由都会有两个组成部分，一个部分位于虚拟 WAN 中心，指示虚拟 WAN 组件为每个分支使用哪个连接，另一个部分位于该特定连接中，指向分配到 NVA 的具体 IP 地址（或指向多个 NVA 前方的负载均衡器），如图 1 所示：
 
 **图 1**
 
 :::image type="content" source="media/routing-scenarios/nva/nva-static-concept.png" alt-text="图 1":::
 
-这样，在默认表中要将流量发送到 NVA VNet 后面的 NVA 轮辐的静态路由如下：
+这样，在默认表中需要的用于将流量发送到 NVA VNet 后方 NVA 分支的静态路由如下：
 
 | 说明 | 路由表 | 静态路由              |
 | ----------- | ----------- | ------------------------- |
-| VNet 2       | 默认     | 10.2.0.0/16-> eastusconn |
-| VNet 4       | 默认     | 10.4.0.0/16-> weconn     |
+| VNet 2       | 默认     | 10.2.0.0/16 -> eastusconn |
+| VNet 4       | 默认     | 10.4.0.0/16 -> weconn     |
 
-现在，虚拟 WAN 知道要将数据包发送到的连接，但连接需要知道在接收这些数据包时要执行的操作：这是使用连接路由表的位置。 此处，我们将使用较短的前缀 (/24，而不是较长/16) ，以确保这些路由具有从 NVA Vnet (VNet 2 和 VNet 4) 中导入的路由的优先顺序：
+现在，虚拟 WAN 知道要将数据包发送到哪个连接，但连接需要知道在接收这些包时要执行什么操作：这就是使用连接路由表的场合。 在这里，我们将使用较短的前缀（/24，而不是较长的 /16），以确保这些路由比从 NVA VNet（VNet 2 和 VNet 4）导入的路由更优先：
 
 | 说明 | 连接 | 静态路由            |
 | ----------- | ---------- | ----------------------- |
-| VNet 5       | eastusconn | 10.2.1.0/24-> 10.2.0。5 |
-| VNet 6       | eastusconn | 10.2.2.0/24-> 10.2.0。5 |
-| VNet 7       | weconn     | 10.4.1.0/24-> 10.4.0。5 |
-| VNet 8       | weconn     | 10.4.2.0/24-> 10.4.0。5 |
+| VNet 5       | eastusconn | 10.2.1.0/24 -> 10.2.0.5 |
+| VNet 6       | eastusconn | 10.2.2.0/24 -> 10.2.0.5 |
+| VNet 7       | weconn     | 10.4.1.0/24 -> 10.4.0.5 |
+| VNet 8       | weconn     | 10.4.2.0/24 -> 10.4.0.5 |
 
-现在，NVA Vnet、非 NVA Vnet 和分支知道如何访问所有 NVA 轮辐。 有关虚拟中心路由的详细信息，请参阅[关于虚拟中心路由](about-virtual-hub-routing.md)。
+现在，NVA VNet、非 NVA Vnet 和分支就知道如何访问所有的 NVA 分支了。 有关虚拟中心路由的详细信息，请参阅[关于虚拟中心路由](about-virtual-hub-routing.md)。
 
 ## <a name="architecture"></a><a name="architecture"></a>体系结构
 
-在 **图 2** 中，有两个中心： **Hub1** 和 **Hub2**。
+在图 2中，有两个中心：Hub1 和 Hub2  。
 
-* **Hub1** 和 **Hub2** 直接连接到 NVA Vnet **VNet 2** 和 **vnet 4**。
+* Hub1 和 Hub2 直接连接到 NVA VNet（VNet 2 和 VNet 4）   。
 
-* **Vnet 5** 和 **Vnet 6** 与 **vnet 2** 对等互连。
+* VNet 5 和 VNet 6 与 VNet 2 对等互连  。
 
-* **Vnet 7** 和 **Vnet 8** 与 **vnet 4** 对等互连。
+* VNet 7 和 VNet 8 与 VNet 4 对等互连  。
 
-* **Vnet 5、6、7、8** 是间接轮辐，不直接连接到虚拟中心。
+* VNet 5、6、7、8 是间接分支，不直接连接到虚拟中心。
 
 **图 2**
 
@@ -103,33 +103,33 @@ ms.locfileid: "100519790"
 
 ## <a name="scenario-workflow"></a><a name="workflow"></a>方案工作流
 
-若要通过 NVA 设置路由，请执行以下步骤：
+若要通过 NVA 设置路由，请考虑执行以下步骤：
 
-1. 标识 NVA 辐射 VNet 连接。 在 **图 2** 中，它们是 **vnet 2 连接 (Eastusconn)** 和 **VNet 4 连接 (weconn)**。
+1. 标识 NVA 辐射 VNet 连接。 在图 2 中，它们是 VNet 2 连接 (eastusconn) 和 VNet 4 连接 (weconn)  。
 
-   确保已设置 Udr：
+   确保设置了 UDR：
    * 从 VNet 5 和 VNet 6 到 VNet 2 NVA IP
    * 从 VNet 7 和 VNet 8 到 VNet 4 NVA IP 
    
-   不需要将 Vnet 5、6、7和8直接连接到虚拟中心。 确保 Vnet 5、6、7、8中的 Nsg 允许分支 (VPN/ER/P2S) 或 Vnet 连接到其远程 Vnet 的流量。 例如，Vnet 5，6必须确保 Nsg 允许与连接到远程中心2的本地地址前缀和 Vnet 7、8的流量。
+   不需要将 VNet 5、6、7 和 8 直接连接到虚拟中心。 确保 VNet 5、6、7、8 中的 NSG 允许分支 (VPN/ER/P2S) 的流量，或者允许连接到它们的远程 VNet 的 VNet 的流量。 例如，VNet 5、6 必须确保 NSG 允许本地地址前缀的以及连接到远程中心 2 的 VNet 7、8 的流量。
 
-虚拟 WAN 不支持 Vnet 5、6连接到虚拟中心并通过 VNet 2 NVA IP 进行通信的方案;因此，需要将 Vnet 5、6到 VNet2 和类似的 VNet 7、8连接到 VNet 4。
+虚拟 WAN 不支持 VNet 5、6 连接到虚拟中心并通过 VNet 2 NVA IP 进行通信的方案；因此，需要将 VNet 5、6 连接到 VNet2，同样，将 VNet 7、8 连接到 VNet 4。
 
-2. 将 Vnet 2、5、6的聚合静态路由条目添加到中心1的默认路由表。
+2. 将 VNet 2、5、6 的聚合静态路由条目添加到中心 1 的默认路由表。
 
    :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="示例":::
 
-3. 为 VNet 2 的虚拟网络连接中的 Vnet 5、6配置静态路由。 若要为虚拟网络连接设置路由配置，请参阅 [虚拟中心路由](how-to-virtual-hub-routing.md#routing-configuration)。
+3. 在 VNet 2 的虚拟网络连接中为 VNet 5、6 配置静态路由。 若要为虚拟网络连接设置路由配置，请参阅[虚拟中心路由](how-to-virtual-hub-routing.md#routing-configuration)。
 
-4. 将 Vnet 4、7、8的聚合静态路由条目添加到中心1的默认路由表。
+4. 将 VNet 4、7、8 的聚合静态路由条目添加到中心 1 的默认路由表。
 
-5. 对于中心2的默认路由表，重复步骤2、3和4。
+5. 对于中心 2 的默认路由表，重复步骤 2、3 和 4。
 
-这将导致路由配置更改，如下面的 **图 3** 所示。
+这样将会导致路由配置更改，如图 3 所示。
 
-**图3**
+**图 3**
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="图3" lightbox="./media/routing-scenarios/nva/nva-result.png":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="图 3" lightbox="./media/routing-scenarios/nva/nva-result.png":::
 
 ## <a name="next-steps"></a>后续步骤
 

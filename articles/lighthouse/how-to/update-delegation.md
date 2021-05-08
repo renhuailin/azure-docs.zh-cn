@@ -1,69 +1,69 @@
 ---
 title: 更新委派
-description: 了解如何为以前载入到 Azure Lighthouse 的客户更新委派。
+description: 了解如何为以前加入到 Azure Lighthouse 的客户更新委托。
 ms.date: 02/16/2021
 ms.topic: how-to
 ms.openlocfilehash: f0ed5222cdbac3d0e4d193941c2a6f233d15938c
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100555758"
 ---
 # <a name="update-a-delegation"></a>更新委派
 
-在载入订阅 (或) 到 Azure Lighthouse 的资源组后，你可能需要进行更改。 例如，你的客户可能希望执行需要不同 Azure 内置角色的其他管理任务，或者可能需要更改向其委派客户订阅的租户。
+在将订阅（或资源组）加入到 Azure Lighthouse 后，可能会需要进行更改。 例如，你的客户可能希望执行其他需要不同 Azure 内置角色的管理任务，或者你可能需要更改将客户订阅委托到的租户。
 
 > [!TIP]
-> 尽管我们指的是本主题中的服务提供商和客户，但 [管理多个租户的企业](../concepts/enterprise.md) 可以使用相同的过程来设置 Azure Lighthouse 并合并其管理体验。
+> 虽然我们在本主题中提到的是服务提供商和客户，但[管理多个租户的企业](../concepts/enterprise.md)可以使用相同的过程来设置 Azure Lighthouse 并整合其管理体验。
 
-如果 [通过 Azure 资源管理器模板将客户载入 (ARM 模板) ](onboard-customer.md)，则必须为该客户执行新的部署。 根据你要更改的内容，你可能需要更新原始产品/服务，或者删除原始产品/服务并创建一个新产品/服务。
+如果[通过 Azure 资源管理器模板（ARM 模板）加入客户](onboard-customer.md)，则必须为该客户执行新部署。 根据你要更改的内容，你可能需要更新原始产品/服务，或者删除原始产品/服务并创建新产品/服务。
 
-- **如果只更改授权**：可以通过仅更改 ARM 模板的 " **授权** " 部分来更新委托。
-- **如果要更改管理租户**：必须使用与以前的产品/服务不同的 **mspOfferName** 创建新的 ARM 模板。
+- 如果只更改授权：可通过只更改 ARM 模板的“授权”部分来更新委托 。
+- 如果要更改管理租户：必须使用与以前的产品/服务不同的 mspOfferName 来创建新 ARM 模板 。
 
 ## <a name="update-your-arm-template"></a>更新 ARM 模板
 
-若要更新委派，你将需要部署包含要进行的更改的 ARM 模板。
+若要更新委托，你将需要部署包含要进行的更改的 ARM 模板。
 
-如果仅更新授权 (例如，添加具有以前未包含的角色的新用户组，或更改现有用户) 的角色，则可以使用 [ARM 模板](onboard-customer.md#create-an-azure-resource-manager-template)中的相同 **mspOfferName** ，用于上一次委派。 您可以使用以前的模板作为起点。 然后，进行所需的更改，如将一个 Azure 内置角色替换为其他角色，或者向该模板添加全新的授权。
+如果只更新授权（例如，添加具有以前未包含的角色的新用户组，或更改现有用户的角色），可使用与上次委托所用 [ARM 模板](onboard-customer.md#create-an-azure-resource-manager-template)相同的 mspOfferName。 可以使用上一个模板作为起始点。 然后，进行所需更改，例如，将一个 Azure 内置角色替换为其他角色，或者为该模板添加全新授权。
 
-如果更改了 **mspOfferName**，则会将其视为新的单独提议。 如果要更改管理租户，则需要进行此更改。
+如果更改 mspOfferName，则会将其视为新的单独产品/服务。 如果要更改管理租户，则需要进行此更改。
 
-如果管理租户保持不变，则不需要更改 **mspOfferName** 。 在大多数情况下，我们建议使用同一客户和管理租户只使用一个 **mspOfferName** 。 如果你选择继续进行更改，请确保在部署新委托之前删除客户的以前的委托。
+如果管理租户保持不变，则不必更改 mspOfferName。 在大多数情况下，建议对同一客户和管理租户只使用一个 mspOfferName。 如果选择仍继续进行更改，请确保在部署新委托之前先删除该客户的前一次委托。
 
 ## <a name="remove-the-previous-delegation"></a>删除以前的委托
 
-在执行新部署之前，您可能需要 [删除对以前委派的访问权限](remove-delegation.md)。 这可以确保删除所有以前的权限，从而使你能够使用应向前应用的确切用户/组和角色开始使用。
+在执行新部署之前，可能需要[删除对以一次委托的访问权限](remove-delegation.md)。 这样会确保删除所有以前的权限，使你能够准确地使用那些应该向前应用的用户/组和角色来干净地开始。
 
 > [!IMPORTANT]
-> 如果使用新的 **mspOfferName** 并保留任何相同的 **principalId** 值，则必须先删除对以前委派的访问权限，然后再部署新产品/服务。 如果不先删除该产品/服务，则以前授予了权限的用户可能会因为分配冲突而完全丢失访问权限。
+> 如果使用新 mspOfferName 并保留任何相同的 principalId 值，则必须先删除对前一委托的访问权限，然后再部署新产品/服务 。 如果不先删除该产品/服务，则以前的已授权用户可能会由于分配冲突而完全丢失访问权限。
 
-如果你要更改管理租户，并且你希望这两个租户继续具有访问权限，则可以保留以前的产品/服务。 如果只希望新的管理租户具有访问权限，则必须删除以前的产品/服务。 这可以在载入新产品/服务之前或之后执行。
+如果要更改管理租户，并希望两个租户都继续具有访问权限，则可保留前一产品/服务。 如果只希望新管理租户有访问权限，则必须删除以前的产品/服务。 此操作可以在加入新产品/服务之前或之后执行。
 
-如果要更新产品/服务以仅调整授权，并保持相同的 **mspOfferName**，则无需删除以前的委托。 新部署将替换以前的委托，并且仅应用最新模板中的授权。
+如果更新产品/服务只是为了调整授权，并且保持相同的 mspOfferName，则无需删除前一委托。 新部署将会替换前一委托，并且只有最新模板中的授权才会应用。
 
-:::image type="content" source="../media/update-delegation.jpg" alt-text="显示何时更改 mspOfferName 并删除以前的委托的关系图。":::
+:::image type="content" source="../media/update-delegation.jpg" alt-text="显示何时更改 mspOfferName 并删除前一委托的关系图。":::
 
-如果管理租户中的任何用户已向其授予 [托管服务注册分配 "删除" 角色](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) ，则可以对该委托执行删除访问权限。 如果管理租户中的任何用户都没有此角色，你可以要求客户 [删除 Azure 门户中的产品/服务的访问权限](view-manage-service-providers.md#add-or-remove-service-provider-offers)。
+如果管理租户中的任何用户在原委托中被授予了[托管服务注册分配删除角色](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)，则该用户可执行对该委托访问权限的删除。 如果管理租户中的任何用户都没有此角色，你可以要求客户[在 Azure 门户中删除产品/服务的访问权限](view-manage-service-providers.md#add-or-remove-service-provider-offers)。
 
 > [!TIP]
-> 如果已按照上述步骤删除了之前的委派，但仍无法部署新的 ARM 模板，则可能需要 [完全删除注册定义](/powershell/module/az.managedservices/remove-azmanagedservicesdefinition)。 此操作可由具有 `Microsoft.Authorization/roleAssignments/write` 在客户租户中具有权限的角色（如 " [所有者](../../role-based-access-control/built-in-roles.md#owner)"）的任何用户来完成。  
+> 如果已按上述步骤删除了前一委托，但仍无法部署新 ARM 模板，则可能需要[完全删除注册定义](/powershell/module/az.managedservices/remove-azmanagedservicesdefinition)。 此操作可由客户租户中任何具有 `Microsoft.Authorization/roleAssignments/write` 权限的角色（如[所有者](../../role-based-access-control/built-in-roles.md#owner)）的用户来完成。  
 
 ## <a name="deploy-the-arm-template"></a>部署 ARM 模板
 
-你的客户可以采用与之前相同的方式 [部署已更新的模板](onboard-customer.md#deploy-the-azure-resource-manager-templates) ：在 Azure 门户中，使用 PowerShell，或使用 Azure CLI。
+你的客户可以采用与他们以前所用方式相同的方式来[部署更新的模板](onboard-customer.md#deploy-the-azure-resource-manager-templates)：在 Azure 门户中、通过使用 PowerShell，或者通过使用 Azure CLI。
 
-部署完成后，请 [确认它已成功](onboard-customer.md#confirm-successful-onboarding)完成。 更新后的授权将对客户已委派的订阅或资源组 () 有效。
+在完成了部署之后，请[确认该部署已成功](onboard-customer.md#confirm-successful-onboarding)。 然后，更新后的授权将会对客户已委托的订阅或资源组生效。
 
-## <a name="updating-managed-service-offers"></a>正在更新托管服务产品
+## <a name="updating-managed-service-offers"></a>更新托管服务产品/服务
 
-如果你通过发布到 Azure Marketplace 的托管服务产品/服务载入客户，并且想要更新授权，则可以通过 [发布新版本的产品](../../marketplace/partner-center-portal/update-existing-offer.md) /服务，并在计划中为该客户使用已更新的 [授权](../../marketplace/plan-managed-service-offer.md) ，来更新委派。 然后，客户将能够更新到 Azure 门户中的最新版本。
+如果你通过发布到 Azure 市场的托管服务产品/服务加入了客户，并且需要更新授权，则可通过使用要在该客户的计划中使用的[授权](../../marketplace/plan-managed-service-offer.md)来[发布新版本的产品/服务](../../marketplace/partner-center-portal/update-existing-offer.md)，从而更新委托。 然后，客户将能够在 Azure 门户中更新到该最新版本。
 
-如果要更改管理租户，则需要 [创建并发布新的托管服务产品](../../marketplace/plan-managed-service-offer.md) 以供客户接受。
+如果要更改管理租户，则需要[创建并发布新的托管服务产品/服务](../../marketplace/plan-managed-service-offer.md)以供客户接受。
 
 > [!TIP]
-> 如前文所述，我们建议你不要在同一客户和管理租户之间使用多个不同的产品/服务。 如果为使用同一管理租户的同一客户发布新产品/服务，请确保在客户接受新的产品/服务之前删除以前的产品/服务。
+> 如前文所述，建议不在同一客户和管理租户之间使用多个不同的产品/服务。 如果为使用同一管理租户的同一客户发布新产品/服务，请确保在客户接受新的产品/服务之前先删除以前的产品/服务。
 
 ## <a name="next-steps"></a>后续步骤
 

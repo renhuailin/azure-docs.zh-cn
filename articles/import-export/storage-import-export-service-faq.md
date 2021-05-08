@@ -9,10 +9,10 @@ ms.date: 01/14/2021
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: be6c48efc77880addf814b1609d4a371c7c5c73b
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98706245"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure 导入/导出服务：常见问题解答
@@ -70,7 +70,7 @@ ms.locfileid: "98706245"
 ### <a name="if-i-want-to-import-or-export-more-than-10-drives-what-should-i-do"></a>如果我想要导入或导出 10 个以上驱动器，我应该怎样做？
 
 一个导入或导出作业在单个作业中只能引用 10 个驱动器。 若要寄送 10 个以上驱动器，应当创建多个作业。 与同一作业关联的驱动器必须放在同一个包裹中一起寄送。
-有关数据容量跨越多个磁盘导入作业的详细信息和指南，请联系 Microsoft 支持部门。
+当数据容量跨多个磁盘导入作业时，若需了解更多信息并获得指导，请联系 Microsoft 支持部门。
 
 ### <a name="the-uploaded-blob-shows-status-as-lease-expired-what-should-i-do"></a>上传的 blob 显示状态为“租用已过期”。 我该怎么办？
 
@@ -97,7 +97,7 @@ ms.locfileid: "98706245"
 - 在亚洲和澳大利亚区域的 DHL 帐户编号。
 
 > [!NOTE]
-> 印度中的数据中心需要 (传递 challan) 上的申报信才能返回驱动器。 若要安排所需的条目传递，还必须将所选的承运人预订并共享数据中心。
+> 印度的数据中心需要有你信头的声明信（发送凭证）才能回寄驱动器。 若要安排所需的出入许可证，还必须与选定的承运商预约取件并与数据中心分享详细信息。
 
 ### <a name="are-there-any-restrictions-with-shipping-and-returning-my-drive-internationally"></a>跨国寄送和返还驱动器是否存在限制？
 
@@ -105,12 +105,12 @@ ms.locfileid: "98706245"
 
 上传完成后，将驱动器返还到国际地址的过程需要的时间可能会长于本地寄送所需的时间（通常为 2-3 天）。 在 Azure 门户中列出的“打包”阶段，Data Box 团队将确保提供正确的文档，以确保寄送符合各种国际进出口要求。
 
-### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>将磁盘传送到数据中心是否有任何特殊要求？
+### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>将我的磁盘发送到数据中心是否有任何特殊要求？
 
 要求取决于特定的 Azure 数据中心限制。
 
-- 有一些站点（如澳大利亚、德国和英国南部）需要出于安全原因在包裹上写入 Microsoft datacenter Inbound ID 号。 将驱动器或磁盘寄送到数据中心之前，请联系 Azure DataBox 操作 (adbops@microsoft.com) 获取此号码。 如果没有此编号，将拒绝包。
-- 印度数据中心需要驱动程序的个人详细信息，例如政府 ID 卡或证明不需要。  (例如，PAN、AADHAR、DL) 、name、contact 和 car 盘子编号，以获取入口经历。 若要避免交付延迟，请向您的运营商通知这些要求。
+- 有一些站点（如澳大利亚、德国和英国南部）出于安全原因需要在包裹上写上 Microsoft 数据中心入站 ID 号。 将驱动器或磁盘寄送到数据中心之前，请联系 Azure DataBox 操作 (adbops@microsoft.com) 获取此号码。 如果没有此号码，包裹会被拒收。
+- 印度数据中心需要司机的个人详细信息，例如政府身份证或证明号码 （例如，PAN、AADHAR、DL）、姓名、联系方式和车牌号，以获取大门出入许可证。 若要避免发送延迟，请告知承运商这些要求。
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>创建作业时，寄送地址是一个不同于存储帐户位置的位置。 我该怎么办？
 

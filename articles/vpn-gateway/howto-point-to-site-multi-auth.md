@@ -1,7 +1,7 @@
 ---
-title: 使用 P2S VPN 连接到 VNet & 多个身份验证类型：门户
+title: 使用 P2S VPN 和多个身份验证类型连接到 VNet：门户
 titleSuffix: Azure VPN Gateway
-description: 在 Azure 门户中使用多种身份验证类型，通过 P2S 连接到 VNet。
+description: 在 Azure 门户中使用多个身份验证类型通过 P2S 连接到 VNet。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: cherylmc
 ms.openlocfilehash: d405f4b10808b7d39c0d116f2c9006c85532b4f9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101744470"
 ---
-# <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-multiple-authentication-types-azure-portal"></a>使用多种身份验证类型配置与 VNet 的点到站点 VPN 连接： Azure 门户
+# <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-multiple-authentication-types-azure-portal"></a>使用多个身份验证类型配置与 VNet 的点到站点 VPN 连接：Azure 门户
 
 本文介绍如何将运行 Windows、Linux 或 macOS 的单个客户端安全地连接到 Azure VNet。 若要从远程位置连接到 VNet，例如从家里或会议室进行远程通信，则可使用点到站点 VPN。 如果只有一些客户端需要连接到 VNet，也可使用 P2S VPN 来代替站点到站点 VPN。 点到站点连接不需要 VPN 设备或面向公众的 IP 地址。 P2S 基于 SSTP（安全套接字隧道协议）或 IKEv2 创建 VPN 连接。 有关点到站点 VPN 的详细信息，请参阅[关于点到站点 VPN](point-to-site-about.md)。
 
@@ -79,46 +79,46 @@ ms.locfileid: "101744470"
 
    :::image type="content" source="./media/howto-point-to-site-multi-auth/address.jpg" alt-text="地址池的屏幕截图。":::
 
-1. 转到下一节，配置身份验证和隧道类型。
+1. 转到下一部分以配置身份验证和隧道类型。
 
 ## <a name="authentication-and-tunnel-types"></a><a name="type"></a>身份验证和隧道类型
 
-在本部分中，将配置身份验证类型和隧道类型。 在 " **点到站点配置** " 页上，如果看不到 " **隧道类型** " 或 " **身份验证类型**"，则网关将使用基本 SKU。 基本 SKU 不支持 IKEv2 或 RADIUS 身份验证。 若要使用这些设置，需要使用另一网关 SKU 删除并重新创建网关。
+在本部分中，你将配置身份验证类型和隧道类型。 如果在“点到站点配置”页上未显示“隧道类型”或“身份验证类型”，则表示网关使用的是基本 SKU  。 基本 SKU 不支持 IKEv2 或 RADIUS 身份验证。 若要使用这些设置，需要使用另一网关 SKU 删除并重新创建网关。
 
    :::image type="content" source="./media/howto-point-to-site-multi-auth/multiauth.jpg" alt-text="身份验证类型的屏幕截图。":::
 
 ### <a name="tunnel-type"></a><a name="tunneltype"></a>隧道类型
 
-在 " **点到站点配置** " 页上，选择 " **OpenVPN (SSL)** 作为隧道类型。
+在“点到站点配置”页上，选择“OpenVPN (SSL)”作为隧道类型。
 
 ### <a name="authentication-type"></a><a name="authenticationtype"></a>身份验证类型
 
-对于 " **身份验证类型**"，请选择所需的类型。 选项包括：
+对于“身份验证类型”，请选择所需的类型。 选项包括：
 
 * Azure 证书
 * RADIUS
 * Azure Active Directory
 
-根据) 选择 (的身份验证类型，您将看到需要填写的不同配置设置字段。 填写所需信息，然后选择页面顶部的 " **保存** " 以保存所有配置设置。
+根据所选的身份验证类型，将看到需要填写的不同配置设置字段。 填写所需信息，然后选择页面顶部的“保存”以保存所有配置设置。
 
 有关身份验证类型的详细信息，请参阅：
 
 * [Azure 证书](vpn-gateway-howto-point-to-site-resource-manager-portal.md#type)
 * [RADIUS](point-to-site-how-to-radius-ps.md)
-* Azure Active Directory
+* [Azure Active Directory](openvpn-azure-ad-tenant.md)
 
 ## <a name="vpn-client-configuration-package"></a><a name="clientconfig"></a>VPN 客户端配置包
 
-必须用客户端配置设置来配置 VPN 客户端。 VPN 客户端配置包包含的文件具有用于配置 VPN 客户端的设置，以便通过 P2S 连接连接到 VNet。
+必须用客户端配置设置来配置 VPN 客户端。 VPN 客户端配置包包含的文件具有将 VPN 客户端配置为通过 P2S 连接连接到 VNet 的设置。
 
-有关生成和安装 VPN 客户端配置文件的说明，请使用与您的配置相关的文章：
+有关生成和安装 VPN 客户端配置文件的说明，请查看与配置相关的文章：
 
 * [为本机 Azure 证书身份验证 P2S 配置创建并安装 VPN 客户端配置文件](point-to-site-vpn-client-configuration-azure-cert.md)。
-* [Azure Active Directory 身份验证：配置 P2S OpenVPN 协议连接的 VPN 客户端](openvpn-azure-ad-client.md)。
+* [Azure Active Directory 身份验证：配置用于 P2S OpenVPN 协议连接的 VPN 客户端](openvpn-azure-ad-client.md)。
 
 ## <a name="point-to-site-faq"></a><a name="faq"></a>点到站点常见问题解答
 
-本部分包含有关点到站点配置的常见问题解答信息。 还可以查看 [Vpn 网关常见问题](vpn-gateway-vpn-faq.md) ，了解有关 Vpn 网关的其他信息。
+本部分包含有关点到站点配置的常见问题解答信息。 还可以查看 [VPN 网关常见问题解答](vpn-gateway-vpn-faq.md)，了解有关 VPN 网关的其他信息。
 
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 

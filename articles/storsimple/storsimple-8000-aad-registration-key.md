@@ -1,5 +1,5 @@
 ---
-title: Device Manager 中 StorSimple 8000 的 Azure AD 身份验证
+title: 设备管理器中 StorSimple 8000 的 Azure AD 身份验证
 description: 说明如何将基于 AAD 的身份验证用于服务、生成新注册密钥以及执行设备的手动注册。
 author: alkohli
 ms.service: storsimple
@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: b09d68e7859a787c05a2fc62294f081c4345ae08
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99805034"
 ---
-# <a name="use-azure-active-directory-ad-authentication-for-your-storsimple"></a>使用适用于 StorSimple 的 Azure Active Directory (AD) 身份验证
+# <a name="use-azure-active-directory-ad-authentication-for-your-storsimple"></a>为 StorSimple 使用 Azure Active Directory (AD) 身份验证
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
@@ -54,9 +54,9 @@ AAD 身份验证在运行 Update 5 或更高版本的 StorSimple 8000 系列设�
 
 | 如果设备在运行| 执行以下操作                                    |
 |--------------------------|------------------------|
-| Update 5 或更高版本并且设备处于脱机状态。 <br> 你会看到一个警报，指出 URL 未获得批准。|1. 修改防火墙规则以包括身份验证 URL。 请参阅[身份验证 URL](#url-changes-for-aad-authentication)。<br>2. [从服务获取 AAD 注册密钥](#aad-based-registration-keys)。<br>3. [连接到 StorSimple 8000 系列设备的 Windows PowerShell 接口](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)。<br>4. 使用 `Redo-DeviceRegistration` cmdlet 通过 Windows PowerShell 注册设备。 提供在上一步获取的密钥。|
-| Update 5 或更高版本并且设备处于联机状态。| 因此不需要执行任何操作。                                       |
-| Update 4 或较早版本并且设备处于脱机状态。 |1. 修改防火墙规则以包括身份验证 URL。<br>2. [通过目录服务器下载 Update 5](storsimple-8000-install-update-5.md#download-updates-for-your-device)。<br>3. [通过修补程序方法应用 Update 5](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix)。<br>4. [从服务获取 AAD 注册密钥](#aad-based-registration-keys)。<br>5. [连接到 StorSimple 8000 系列设备的 Windows PowerShell 接口](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)。 <br>6. 使用 `Redo-DeviceRegistration` cmdlet 通过 Windows PowerShell 注册设备。 提供在上一步获取的密钥。|
+| Update 5 或更高版本并且设备处于脱机状态。 <br> 会看到指出 URL 未获批准的警报。|1.修改防火墙规则，使之包含身份验证 URL。 请参阅[身份验证 URL](#url-changes-for-aad-authentication)。<br>2.[从服务获取 AAD 注册密钥](#aad-based-registration-keys)。<br>3.[连接到 StorSimple 8000 系列设备的 Windows PowerShell 界面](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)。<br>4.使用 `Redo-DeviceRegistration` cmdlet 通过 Windows PowerShell 注册设备。 提供在上一步获取的密钥。|
+| Update 5 或更高版本并且设备处于联机状态。| 不需要执行任何操作。                                       |
+| Update 4 或较早版本并且设备处于脱机状态。 |1.修改防火墙规则，使之包含身份验证 URL。<br>2.[通过目录服务器下载 Update 5](storsimple-8000-install-update-5.md#download-updates-for-your-device)。<br>3.[通过修补程序方法应用 Update 5](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix)。<br>4.[从服务获取 AAD 注册密钥](#aad-based-registration-keys)。<br>5.[连接到 StorSimple 8000 系列设备的 Windows PowerShell 界面](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)。 <br>6.使用 `Redo-DeviceRegistration` cmdlet 通过 Windows PowerShell 注册设备。 提供在上一步获取的密钥。|
 | Update 4 或较早版本并且设备处于联机状态。 |修改防火墙规则，使之包含身份验证 URL。<br> 通过 Azure 门户安装 Update 5。              |
 | 恢复出厂设置为 Update 5 之前的版本。      |在设备运行较早软件时，门户会显示基于 AAD 的注册密钥。 按照上面适用于设备运行 Update 4 或较早版本时的方案中的步骤执行。              |
 

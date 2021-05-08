@@ -1,22 +1,22 @@
 ---
 title: 重置 VPN 网关或连接以重新建立 IPsec 隧道
 titleSuffix: Azure VPN Gateway
-description: 重置连接或 VPN 网关以重建 IPsec 隧道。
+description: 重置连接或 VPN 网关以重新建立 IPsec 隧道。
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: cherylmc
 ms.openlocfilehash: adc2ffd63d73baaddce00324787df61061ea69dc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101726627"
 ---
 # <a name="reset-a-vpn-gateway-or-a-connection"></a>重置 VPN 网关或连接
 
-如果丢失了一个或多个站点到站点 VPN 隧道上的跨界 VPN 连接，重置 Azure VPN 网关或网关连接会很有帮助。 在此情况下，本地 VPN 设备都在正常工作，但却无法与 Azure VPN 网关建立 IPsec 隧道。 本文帮助你重置 VPN 网关或网关连接。
+如果丢失一个或多个站点到站点隧道上的跨界 VPN 连接，重置 Azure VPN 网关或网关连接可有效解决该情况。 在此情况下，本地 VPN 设备都在正常工作，但却无法与 Azure VPN 网关建立 IPsec 隧道。 本文将帮助你重置 VPN 网关或网关连接。
 
 ## <a name="what-happens-during-a-reset"></a>重置期间会发生什么情况
 
@@ -32,17 +32,17 @@ VPN 网关由在活动备用配置中运行的两个 VM 实例组成。 重置�
 
 ### <a name="connection-reset"></a>连接重置
 
-当你选择重置连接时，网关不会重新启动。 仅重置并还原所选的连接。
+选择重置连接时，网关不会重新启动。 仅重置和恢复所选的连接。
 
 ## <a name="reset-a-connection"></a>重置连接
 
-您可以使用 Azure 门户轻松地重置连接。
+使用 Azure 门户可以轻松重置连接。
 
-1. 导航到要重置的 **连接** 。 可以通过以下方式查找连接资源：在 **所有资源** 中查找该连接资源，或导航到 **"网关名称"-> 连接-> "连接名称"**
-1. 在 " **连接** " 页上，从左侧菜单中选择 " **重置** "。
-1. 在 " **重置** " 页上，单击 " **重置** " 以重置连接。
+1. 导航到要重置的“连接”。 通过在“所有资源”中查找或导航到“‘网关名称’-> 连接 ->‘连接名称’”，均可查找连接资源 
+1. 在“连接”页的左侧菜单中选择“重置”。
+1. 在“重置”页中，单击“重置”以重置连接。
 
-   :::image type="content" source="./media/reset-gateway/reset-connection.png" alt-text="显示 Reset 的屏幕截图。":::
+   :::image type="content" source="./media/reset-gateway/reset-connection.png" alt-text="显示“重置”的屏幕截图。":::
 
 ## <a name="reset-a-vpn-gateway"></a>重置 VPN 网关
 
@@ -79,7 +79,7 @@ Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gw
 
 #### <a name="classic-deployment-model"></a><a name="resetclassic"></a>经典部署模型
 
-用于重置网关的 cmdlet 是 Reset-AzureVNetGateway。 用于服务管理的 Azure PowerShell cmdlet 必须在桌面上本地安装。 不能使用 Azure Cloud Shell。 进行重置前，请确保拥有最新版本的 [Service Management (SM) PowerShell cmdlet](/powershell/azure/servicemanagement/install-azure-ps#azure-service-management-cmdlets)。 使用此命令时，请确保使用的是虚拟网络的全名。 使用门户创建的经典 VNet 具有 PowerShell 所需的长名称。 可以使用“Get-AzureVNetConfig -ExportToFile C:\Myfoldername\NetworkConfig.xml”查看长名称。
+用于重置网关的 cmdlet 是 Reset-AzureVNetGateway。 用于服务管理的 Azure PowerShell cmdlet 必须安装在本地桌面上。 不能使用 Azure Cloud Shell。 进行重置前，请确保拥有最新版本的 [Service Management (SM) PowerShell cmdlet](/powershell/azure/servicemanagement/install-azure-ps#azure-service-management-cmdlets)。 使用此命令时，请确保使用的是虚拟网络的全名。 使用门户创建的经典 VNet 具有 PowerShell 所需的长名称。 可以使用“Get-AzureVNetConfig -ExportToFile C:\Myfoldername\NetworkConfig.xml”查看长名称。
 
 以下示例重置名为“Group TestRG1 TestVNet1”的虚拟网络的网关（在门户中简单地显示为“TestVNet1”）：
 

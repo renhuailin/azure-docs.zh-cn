@@ -9,36 +9,36 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.openlocfilehash: 72243f896b2cf7dbab61a42514bee634da28d4c6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101676317"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Azure 认知搜索中的相似性和评分
 
-本文介绍 Azure 认知搜索中的两个相似性排名算法。 它还引入了两个相关功能： *计分配置文件* (用于调整搜索评分的条件) 和 *featuresMode* 参数 (解压缩搜索评分以显示更多详细信息) 。 
+本文介绍 Azure 认知搜索中的两个相似性排名算法。 它还引入了两个相关特性：计分概要文件（调整搜索分数的条件）和 featuresMode 参数（打开搜索分数以显示更多详细信息）。 
 
-第三种语义重新排名算法当前为公共预览版。 有关详细信息，请从 [语义搜索概述](semantic-search-overview.md)开始。
+第三种语义重新排名算法目前为公共预览版。 若要了解详细信息，请从[语义搜索概述](semantic-search-overview.md)开始。
 
 ## <a name="similarity-ranking-algorithms"></a>相似性排名算法
 
-Azure 认知搜索支持两个相似性排名算法。
+Azure 认知搜索支持两种相似性排名算法：
 
 | 算法 | Score | 可用性 |
 |-----------|-------|--------------|
-| ClassicSimilarity | @search.score | 在2020年7月15日之前由所有 search 服务使用。 |
-| BM25Similarity | @search.score | 由7月15日之后创建的所有搜索服务使用。 默认情况下，使用经典的旧版服务可以 [选择加入 BM25](index-ranking-similarity.md)。 |
+| ClassicSimilarity | @search.score | 在 2020 年 7 月 15 日之前被所有搜索服务使用。 |
+| BM25Similarity | @search.score | 由 7 月 15 日之后创建的所有搜索服务使用。 默认情况下，使用经典算法的旧服务可以[选择加入 BM25](index-ranking-similarity.md)。 |
 
-经典和 BM25 都是 TF-IDF 的检索函数，它们使用术语 frequency (TF) 和反向文档频率 (IDF) 为变量来计算每个文档查询对的相关性分数，在概念上类似于经典的情况下，BM25 会在概率信息检索中使用它的根来改进。 BM25 还提供高级自定义选项，例如，允许用户确定如何根据匹配字词的字词频率调整相关性评分。
+“经典”和“BM25”都是类似于 TF-IDF 的检索函数，它们使用词频 (TF) 和逆向文档频率 (IDF) 作为变量来计算每个文档查询对的相关性分数，然后将其用于排名。“BM25”虽然在概念上与“经典”相似，但它以概率信息检索为基础进行改进。 BM25 还提供高级自定义选项，例如，允许用户确定如何根据匹配字词的字词频率调整相关性评分。
 
-以下视频段快进到 Azure 认知搜索中使用的常用排名算法的说明。 你可以观看完整视频以了解更多背景知识。
+以下视频段快进到了 Azure 认知搜索中使用的正式版排名算法的说明。 你可以观看完整视频以了解更多背景知识。
 
 > [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=322&end=643]
 
 ## <a name="relevance-scoring"></a>相关性评分
 
-评分是指针对全文搜索查询的搜索结果中返回的每个项计算搜索评分。 分数是项在当前查询上下文中的相关性的指示器。 分数越高，项的相关度就越高。 在搜索结果中，根据为每项计算的搜索分数，按从高到低的顺序排列各项。 对于每个文档，分数在响应中返回为 " @search.score "。
+评分是指针对全文搜索查询的搜索结果中返回的每个项计算搜索评分。 分数指示某一项在当前查询上下文中的相关性。 分数越高，项的相关度就越高。 在搜索结果中，根据为每项计算的搜索分数，按从高到低的顺序排列各项。 对于每个文档，分数将在响应中以“@search.score”的形式返回。
 
 默认情况下会在响应中返回前 50 个结果，但你可以使用 $top 参数返回更少或更多的项（单个响应中最多可以包含 1000 个项），并可以使用 $skip 获取下一个结果集。
 
@@ -82,7 +82,7 @@ GET https://[service name].search.windows.net/indexes/[index name]/docs?sessionI
 
 ## <a name="scoring-profiles"></a>为配置文件评分
 
-通过定义 *计分配置文件*，可以自定义不同字段的排序方式。 借助计分概要文件，可以更好地控制搜索结果中的项排名。 例如，建议根据创收能力提升项、提升新项或提升库存时间太长的项。 
+可以通过定义“计分概要文件”来自定义不同字段的排名方式。 借助计分概要文件，可以更好地控制搜索结果中的项排名。 例如，建议根据创收能力提升项、提升新项或提升库存时间太长的项。 
 
 计分概要文件属于索引定义的一部分，由加权字段、函数和参数组成。 有关定义计分概要文件的详细信息，请参阅[计分概要文件](index-add-scoring-profiles.md)。
 

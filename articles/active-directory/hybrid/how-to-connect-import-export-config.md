@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d67460c654c854c5a855560dde1d67732fa818c7
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98681949"
 ---
 # <a name="import-and-export-azure-ad-connect-configuration-settings"></a>导入和导出 Azure AD Connect 配置设置 
@@ -73,14 +73,14 @@ Azure Active Directory (Azure AD) Connect 部署有多种变化，从单个林�
 
 1. 在新暂存服务器上启动 AzureADConnect.msi，然后转到 Azure AD Connect 的“欢迎”页 。
 
-1. 将 **MigrateSettings.ps1** 从 Microsoft Azure AD Connect\Tools 目录复制到现有服务器上的某个位置。 一个示例是 C:\setup，其中 setup 是在现有服务器上创建的目录。
+1. 将 MigrateSettings.ps1 从 Microsoft Azure AD Connect\Tools 目录复制到现有服务器上的某个位置。 一个示例是 C:\setup，其中 setup 是在现有服务器上创建的目录。
 
    ![显示 Azure AD Connect 目录的屏幕截图。](media/how-to-connect-import-export-config/migrate1.png)
 
-1. 运行如下所示的脚本，并保存整个下级服务器配置目录。 将该目录复制到新的暂存服务器。 必须将整个 **ServerConfiguration-** _ 文件夹复制到新服务器。
+1. 运行如下所示的脚本，并保存整个下级服务器配置目录。 将该目录复制到新的暂存服务器。 必须将整个 Exported-ServerConfiguration-* 文件夹复制到新服务器。
 
-   ![在 Windows PowerShell 中显示脚本的屏幕截图。 ](media/how-to-connect-import-export-config/migrate2.png)
-    ![显示复制 ServerConfiguration-_ 文件夹的屏幕截图。](media/how-to-connect-import-export-config/migrate3.png)
+   ![显示 Windows PowerShell 中的脚本的屏幕截图。](media/how-to-connect-import-export-config/migrate2.png)
+   ![显示如何复制 Exported-Exported-ServerConfiguration-* 文件夹的屏幕截图。](media/how-to-connect-import-export-config/migrate3.png)
 
 1. 通过双击桌面上的图标启动 Azure AD Connect。 接受 Microsoft 软件许可条款，然后在下一页上选择“自定义”。
 1. 选择“导入同步设置”复选框。 选择“浏览”以浏览复制的 Exported-ServerConfiguration-* 文件夹。 选择 MigratedPolicy.json 以导入迁移的设置。
@@ -91,11 +91,11 @@ Azure Active Directory (Azure AD) Connect 部署有多种变化，从单个林�
 
 将原始导入的设置文件与新部署的服务器的导出的设置文件进行比较，是了解预期部署与所得部署之间任何差异的必要步骤。 使用你喜欢的并排文本比较应用程序会产出可快速突出显示任何所需或意外的更改的即时可视化效果。
 
-尽管现在已经取消了许多先前的手动配置步骤，但你仍应遵循组织的认证过程，以确保无需进行其他配置。 如果你使用此版本的设置管理中当前未捕获的高级设置，则可能会发生此配置。
+尽管现在已经取消了许多先前的手动配置步骤，但你仍应遵循组织的认证过程，以确保无需进行其他配置。 如果你使用高级设置（当前在此版本的设置管理中尚未捕获），则可能会发生此配置。
 
 以下是已知限制：
 - **同步规则**：自定义规则的优先顺序必须在 0 到 99 的保留范围内，以避免与 Microsoft 的标准规则发生冲突。 将自定义规则置于保留范围之外可能会导致自定义规则发生偏移，因为标准规则被添加到了配置。 如果配置包含修改后的标准规则，则会出现类似问题。 不鼓励修改标准规则，且规则放置可能不正确。
-- **设备写回**：对这些设置进行了编录。 在配置过程中当前未应用这些设置。 如果为原始服务器启用了设备写回，则必须在新部署的服务器上手动配置该功能。
+- **设备写回**：这些设置将进行编录。 目前在配置过程中未应用这些设置。 如果为原始服务器启用了设备写回，则必须在新部署的服务器上手动配置该功能。
 - **同步的对象类型**：尽管可以使用 Synchronization Service Manager 约束同步对象类型（如用户、联系人和组）的列表，但当前不支持通过同步设置来实现此功能。 完成安装后，必须手动重新应用高级配置。
 - **自定义运行配置文件**：尽管可以使用 Synchronization Service Manager 修改默认的一组运行配置文件，但当前不支持通过同步设置来实现此功能。 完成安装后，必须手动重新应用高级配置。
 - **配置预配层次结构**：不支持通过同步设置来实现 Synchronization Service Manager 的这一高级功能。 完成初始部署后，必须手动重新配置它。

@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 446dae3c064f5f23d35cb12b2b24bdfea9e27012
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: 11fbbe4d816c9f50afc879d74991976a467a9013
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88007805"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448128"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>配置个人桌面主机池分配类型
 

@@ -6,10 +6,10 @@ author: rboucher
 ms.author: robb
 ms.date: 06/16/2020
 ms.openlocfilehash: e4f20032febe1c4afe9cb0964c1b448eaa018103
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102030845"
 ---
 # <a name="example-queries-in-azure-monitor-log-analytics"></a>Azure Monitor Log Analytics 中的示例查询
@@ -21,9 +21,9 @@ Log Analytics 提供了示例查询集，你可以运行这些查询本身，或
 
 新体验在上下文中筛选查询和提供查询建议。 换句话说，系统只会自动显示与所选作用域相关的查询。
 
-- 对于 **单个资源** –按资源类型筛选查询。
+- 对于 **单个资源** - 将根据资源类型筛选查询。
 - 对于 **资源组**，将根据特定资源组中的资源对查询进行筛选。
-- 对于 **工作区** –根据工作区中安装的解决方案筛选查询。
+- 对于 **工作区** - 将根据工作区中安装的解决方案对查询进行筛选。
 
 对于所有 Log Analytics 作用域，此行为都是一致的。 如果看不到所需资源类型的示例查询，则可能是由于在上下文中进行了筛选。 下文中的一个部分介绍了如何删除上下文中作用域界定，以便你可以查看所有可能的查询。
 
@@ -77,10 +77,10 @@ Log Analytics 提供了示例查询集，你可以运行这些查询本身，或
 
 此对话框支持以下分组依据：
 
-- **资源类型** -Azure 中定义的资源，例如虚拟机。 请参阅 [Azure Monitor 表参考](/azure/azure-monitor/reference/tables/tables-resourcetype)，以了解从 Azure Monitor 日志/Log Analytics 表到资源类型的完整映射。  
-- **类别** –一种类型的信息，如 *安全* 或 *审核*。 类别与在“表”边栏窗格中定义的类别完全相同。 有关类别的完整列表，请参阅 [Azure Monitor 表参考](/azure/azure-monitor/reference/tables/tables-category)。  
-- **解决方案** -与查询关联的 Azure Monitor 解决方案
-- **主题** –示例查询（例如 *活动日志* 或 *应用日志*）的主题。 对示例查询而言，主题属性具有唯一性，可能会因资源类型而异。
+- **资源类型** - Azure 中定义的资源，例如虚拟机。 请参阅 [Azure Monitor 表参考](/azure/azure-monitor/reference/tables/tables-resourcetype)，以了解从 Azure Monitor 日志/Log Analytics 表到资源类型的完整映射。  
+- **类别** - 某个信息类型，例如“安全性”或“审核”。  类别与在“表”边栏窗格中定义的类别完全相同。 有关类别的完整列表，请参阅 [Azure Monitor 表参考](/azure/azure-monitor/reference/tables/tables-category)。  
+- **解决方案** - 与查询关联的 Azure Monitor 解决方案
+- **主题** - 示例查询的主题，例如“活动日志”或“应用日志”。  对示例查询而言，主题属性具有唯一性，可能会因资源类型而异。
 
 分组值还用作活动目录。 单击屏幕左侧的某个值会将查询视图向右滚动到所单击的项。
 

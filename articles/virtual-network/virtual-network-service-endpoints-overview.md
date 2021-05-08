@@ -14,10 +14,10 @@ ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
 ms.openlocfilehash: 8926e99db926fc8182e98509c3deff0ccc3d1612
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99576661"
 ---
 # <a name="virtual-network-service-endpoints"></a>虚拟网络服务终结点
@@ -30,17 +30,17 @@ ms.locfileid: "99576661"
 
 - **[Azure 存储](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** (Microsoft.Storage)：在所有 Azure 区域已推出正式版。
 - **[Azure SQL 数据库](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft.Sql)：在所有 Azure 区域已推出正式版。
-- **[Azure Synapse Analytics](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft .sql*) ：在 (以前的 sql DW) 的专用 Sql 池的所有 Azure 区域中公开提供。
+- **[Azure Synapse Analytics](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** ( *Microsoft.Sql*)：通常适用于所有 Azure 区域中的专用 SQL 池（以前称为 SQL DW）。
 - **[Azure Database for PostgreSQL 服务器](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft.Sql)：在可以使用数据库服务的 Azure 区域中通常可用。
 - **[Azure Database for MySQL 服务器](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft.Sql)：在可以使用数据库服务的 Azure 区域中通常可用。
 - **[Azure Database for MariaDB](../mariadb/concepts-data-access-security-vnet.md)** (Microsoft.Sql)：在可以使用数据库服务的 Azure 区域中通常可用。
 - **[Azure Cosmos DB](../cosmos-db/how-to-configure-vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft.AzureCosmosDB)：在所有 Azure 区域已推出正式版。
 - **[Azure Key Vault](../key-vault/general/overview-vnet-service-endpoints.md)** (Microsoft.KeyVault)：在所有 Azure 区域已推出正式版。
 - **[Azure 服务总线](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft.ServiceBus)：在所有 Azure 区域已推出正式版。
-- **[Azure 事件中心](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*的*) ：在所有 azure 区域公开发布。
-- **[Azure Data Lake Store 第 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*AzureActiveDirectory*) ：在所有可用的 Azure ADLS Gen1 区域中公开提供。
+- **[Azure 事件中心](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft.EventHub)：在所有 Azure 区域已推出正式版。
+- **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft.AzureActiveDirectory)：在提供了 ADLS Gen1 的所有 Azure 区域已推出正式版。
 - [Azure 应用服务](../app-service/app-service-ip-restrictions.md) (*Microsoft.Web*)：通常可在应用服务可用的所有 Azure 区域中使用。
-- **[Azure 认知服务](../cognitive-services/cognitive-services-virtual-networks.md?tabs=portal)** (*cognitiveservices account*) ：在所有支持认知服务的 Azure 区域公开发布。
+- **[Azure 认知服务](../cognitive-services/cognitive-services-virtual-networks.md?tabs=portal)** (*Microsoft.CognitiveServices*)：通常适用于认知服务适用的所有 Azure 区域。
 
 **公共预览版**
 
@@ -63,7 +63,7 @@ ms.locfileid: "99576661"
 - 该功能仅适用于使用 Azure 资源管理器部署模型部署的虚拟网络。
 - 终结点在 Azure 虚拟网络中配置的子网上启用。 终结点不可用于从本地发往 Azure 服务的流量。 有关详细信息，请参阅[保护从本地进行的 Azure 服务访问](#secure-azure-services-to-virtual-networks)
 - 对于 Azure SQL，服务终结点仅适用于虚拟网络区域中的 Azure 服务流量。 对于 Azure 存储，为了支持读取访问异地冗余存储 (RA-GRS) 和异地冗余存储 (GRS) 流量，终结点还会扩展以包括虚拟网络所部署到的配对区域。 有关详细信息，请参阅 [Azure 配对区域](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions)。
-- 对于 Azure Data Lake Storage (ADLS) 第1代，VNet 集成功能仅适用于同一区域中的虚拟网络。 另请注意，ADLS Gen1 的虚拟网络集成使用虚拟网络的虚拟网络服务终结点安全，Azure Active Directory (Azure AD) 在访问令牌中生成附加的安全声明。 然后，系统会使用这些声明对 Data Lake Storage Gen1 帐户进行虚拟网络身份验证，然后允许访问。 服务支持服务终结点下列出的 *AzureActiveDirectory* 标记仅用于支持服务终结点到 ADLS 第1代。 Azure AD 不能以本机方式支持服务终结点。 有关 Azure Data Lake Store 第1代 VNet 集成的详细信息，请参阅 [Azure Data Lake Storage Gen1 中的网络安全](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+- 对于 Azure Data Lake Storage (ADLS) Gen 1，VNet 集成功能仅适用于同一区域中的虚拟网络。 另请注意，适用于 ADLS Gen1 的虚拟网络集成在虚拟网络和 Azure Active Directory (Azure AD) 之间使用虚拟网络服务终结点安全性在访问令牌中生成其他安全声明。 然后，系统会使用这些声明对 Data Lake Storage Gen1 帐户进行虚拟网络身份验证，然后允许访问。 支持服务终结点的服务下列出的“Microsoft.AzureActiveDirectory”标记仅用于支持 ADLS Gen1 的服务终结点。 Azure AD 不以本机方式支持服务终结点。 有关 Azure Data Lake Store Gen 1 VNet 集成的详细信息，请参阅 [Azure Data Lake Storage Gen1 中的网络安全性](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ## <a name="secure-azure-services-to-virtual-networks"></a>在虚拟网络中保护 Azure 服务
 
@@ -77,7 +77,7 @@ ms.locfileid: "99576661"
 
   默认情况下，无法从本地网络访问在虚拟网络中保护的 Azure 服务资源。 要允许来自本地的流量，还必须允许来自本地或 ExpressRoute 的公共（通常为 NAT）IP 地址。 可通过 Azure 服务资源的 IP 防火墙配置添加这些 IP 地址。
 
-  ExpressRoute：如果你要将 [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 用于公共对等互连或 Microsoft 对等互连，则需要识别你使用的 NAT IP 地址。 对于公共对等互连，默认情况下，每条 ExpressRoute 线路都使用两个 NAT IP 地址，当流量进入 Microsoft Azure 网络主干时，它们将应用于 Azure 服务流量。 对于 Microsoft 对等互连，NAT IP 地址为客户提供或由服务提供商提供。 若要允许访问服务资源，必须在资源 IP 防火墙设置中允许这些公共 IP 地址。 若要查找公共对等互连 ExpressRoute 线路 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。 有关适用于 ExpressRoute 公共和 Microsoft 对等互连的 NAT 的详细信息，请参阅 [EXPRESSROUTE NAT 要求](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering)。
+  ExpressRoute：如果在本地使用 [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 进行公共对等互连或 Microsoft 对等互连，则需标识所用的 NAT IP 地址。 进行公共对等互连时，每条 ExpressRoute 线路默认情况下会使用两个 NAT IP 地址。当流量进入 Microsoft Azure 网络主干时，会向 Azure 服务流量应用这些地址。 进行 Microsoft 对等互连时，NAT IP 地址由客户或服务提供商提供。 若要允许访问服务资源，必须在资源 IP 防火墙设置中允许这些公共 IP 地址。 若要查找公共对等互连 ExpressRoute 线路 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。 要详细了解 ExpressRoute 公共对等互连和 Microsoft 对等互连的 NAT，请参阅 [ExpressRoute NAT 要求](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering)。
 
 ![在虚拟网络中保护 Azure 服务](./media/virtual-network-service-endpoints-overview/VNet_Service_Endpoints_Overview.png)
 
@@ -126,7 +126,7 @@ ms.locfileid: "99576661"
 
 有关内置角色的详细信息，请参阅 [Azure 内置角色](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 有关将特定权限分配给自定义角色的详细信息，请参阅 [Azure 自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
-虚拟网络和 Azure 服务资源可以位于相同或不同的订阅中。 某些 Azure 服务 (不是所有) 例如 Azure 存储和 Azure Key Vault 也支持跨不同 Active Directory 的服务终结点 (AD) 租户，即虚拟网络和 Azure 服务资源可以位于不同 Active Directory (AD) 租户中。 有关更多详细信息，请查看各个服务文档。  
+虚拟网络和 Azure 服务资源可以位于相同或不同的订阅中。 Azure 存储和 Azure Key Vault 等某些 Azure 服务（并非全部）还支持跨不同 Active Directory (AD) 租户的服务终结点，即虚拟网络和 Azure 服务资源可以位于不同的 Active Directory (AD) 租户。 请查看各个服务文档，了解更多信息。  
 
 ## <a name="pricing-and-limits"></a>定价和限制
 

@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
 ms.openlocfilehash: d52bf87b74ae9b1770ed5092738fd05eb9f54fde
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99490990"
 ---
-# <a name="configure-a-custom-domain-name-for-a-self-hosted-gateway"></a>为自承载网关配置自定义域名
+# <a name="configure-a-custom-domain-name-for-a-self-hosted-gateway"></a>为自托管网关配置自定义域名
 
-预配 [AZURE API 管理网关](self-hosted-gateway-overview.md)时，没有为其分配主机名，必须由其 IP 地址引用。 本文介绍如何将现有的自定义 DNS 名称 (也称为主机名) 映射到自承载的网关。
+预配[自承载 Azure API 管理网关](self-hosted-gateway-overview.md)时，系统不会为其分配主机名，必须按其 IP 地址引用它。 本文介绍如何将现有的自定义 DNS 名称（也称为主机名）映射到自承载网关。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,13 +31,13 @@ ms.locfileid: "99490990"
 - 一个自承载网关。 有关详细信息，请参阅[如何预配自承载网关](api-management-howto-provision-self-hosted-gateway.md)
 -   由你或你的组织拥有的自定义域名。 本主题不会提供有关如何购买自定义域名的说明。
 -   DNS 服务器上承载的一条 DNS 记录，用于将自定义域名映射到自承载网关的 IP 地址。 本主题不会提供有关如何承载 DNS 记录的说明。
--   必须具有有效的带有公钥和私钥 (.PFX) 的证书。 SAN)  (使用者或使用者备用名称必须与域名匹配 (这使得 API 管理实例可以安全地通过 TLS 公开 Url) 。
+-   必须具有有效的带有公钥和私钥 (.PFX) 的证书。 使用者或使用者可选名称 (SAN) 必须与域名匹配（这使得 API 管理实例可以通过 TLS 安全地公开 URL）。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="add-custom-domain-certificate-to-your-api-management-service"></a>将自定义域证书添加到 API 管理服务
 
-添加自定义域证书 (。PFX) 文件保存到 API 管理实例，或引用存储在 Azure Key Vault 中的证书。 遵循 [在 AZURE API 管理中使用客户端证书身份验证的安全后端服务](api-management-howto-mutual-certificates.md)中的步骤。
+将自定义域证书 (.PFX) 文件添加到 API 管理实例，或引用存储在 Azure Key Vault 中的证书。 按照[使用 Azure API 管理中的客户端证书身份验证来确保后端服务安全](api-management-howto-mutual-certificates.md)中的步骤操作。
 
 > [!NOTE]
 > 建议为自承载网关域使用密钥保管库证书。

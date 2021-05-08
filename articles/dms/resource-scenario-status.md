@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: f06c1a055b2f08259bf5318afe3c969d763bbbd3
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 35ef2ea3f03ca86aea34f736de4317d75a44ae59
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107818613"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330505"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure 数据库迁移服务支持的迁移方案的状态
 
@@ -37,9 +37,6 @@ Azure 数据库迁移服务支持的迁移方案的状态随时间而变化。 �
 
 > [!NOTE]
 > 如果下面列出的支持方案未出现在用户界面中，请联系[咨询 Azure 数据库迁移](mailto:AskAzureDatabaseMigrations@service.microsoft.com)别名获取详细信息。
-
-> [!IMPORTANT]
-> 若要在个人预览版中查看 Azure 数据库迁移服务当前支持的所有方案，请参阅 [DMS 预览站点](https://aka.ms/dms-preview)。
 
 ### <a name="offline-one-time-migration-support"></a>脱机（一次性）迁移支持
 

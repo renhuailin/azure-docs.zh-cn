@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae575aa6544a174a70eb8ea4749566e8660280e2
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94873261"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect 和 Azure AD Connect Health 安装路线图
@@ -68,7 +68,7 @@ Azure AD Connect 随附了多个可以选择启用或已按默认启用的功能
 
 [密码写回](../authentication/tutorial-enable-sspr.md) 可让用户在云中更改和重置其密码，及应用本地密码策略。
 
-[设备写回](how-to-connect-device-writeback.md) 将允许在 Azure AD 中注册的设备写回到本地 Active Directory，因此它可用于条件性访问。
+[设备写回](how-to-connect-device-writeback.md)可将 Azure AD 中注册的设备写回到本地 Active Directory，以便可以使用该设备进行条件访问。
 
 [防止意外删除](how-to-connect-sync-feature-prevent-accidental-deletes.md)功能默认处于打开状态，它可以保护云目录，避免同时进行多次删除。 默认情况下，每运行一次可以进行 500 次删除。 可以根据组织大小更改此设置。
 
@@ -130,9 +130,9 @@ Azure AD Connect 提供多项功能，简化了使用 AD FS 通过 Azure AD 进�
 ## <a name="get-started-with-azure-ad-connect-health"></a>Azure AD Connect Health 入门
 若要开始使用 Azure AD Connect Health，请执行以下步骤：
 
-1. [获取 Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) 或 [开始试用](https://azure.microsoft.com/trial/get-started-active-directory/)。
+1. [获取 Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) 或[开始试用](https://azure.microsoft.com/trial/get-started-active-directory/)。
 2. 在标识服务器上[下载并安装 Azure AD Connect Health 代理](#download-and-install-azure-ad-connect-health-agent)。
-3. 查看 Azure AD Connect Health 的仪表板 [https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth) 。
+3. 查看 [https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth) 处的 Azure AD Connect Health 仪表板。
 
 > [!NOTE]
 > 请记住，在查看 Azure AD Connect Health 仪表板中的数据之前，需要在目标服务器上安装 Azure AD Connect Health 代理。
@@ -143,16 +143,16 @@ Azure AD Connect 提供多项功能，简化了使用 AD FS 通过 Azure AD 进�
 * 请务必[满足 Azure AD Connect Health 的要求](how-to-connect-health-agent-install.md#requirements)。
 * 适用于 AD FS 的 Azure AD Connect Health 使用入门
     * [下载适用于 AD FS 的 Azure AD Connect Health 代理。](https://go.microsoft.com/fwlink/?LinkID=518973)
-    * [请参阅安装说明](how-to-connect-health-agent-install.md#install-the-agent-for-ad-fs)。
+    * [查看安装说明](how-to-connect-health-agent-install.md#install-the-agent-for-ad-fs)。
 * 适用于同步的 Azure AD Connect Health 使用入门
     * [下载并安装最新版 Azure AD Connect](https://go.microsoft.com/fwlink/?linkid=615771)。 在安装 Azure AD Connect 的过程中，会安装适用于同步的 Health 代理（1.0.9125.0 或更高版本）。
 * 适用于 AD DS 的 Azure AD Connect Health 使用入门
-    * [下载 AD DS Azure AD Connect Health 代理](https://go.microsoft.com/fwlink/?LinkID=820540)。
-    * [请参阅安装说明](how-to-connect-health-agent-install.md#install-the-agent-for-azure-ad-ds)。
+    * [下载适用于 AD DS 的 Azure AD Connect Health 代理](https://go.microsoft.com/fwlink/?LinkID=820540)。
+    * [查看安装说明](how-to-connect-health-agent-install.md#install-the-agent-for-azure-ad-ds)。
 
 
 ## <a name="azure-ad-connect-health-portal"></a>Azure AD Connect Health 门户
-Azure AD Connect Health 门户显示警报、性能监视和使用情况分析的视图。 单击 https://aka.ms/aadconnecthealth URL 可转到 Azure AD Connect Health 的主边栏选项卡。 可以将边栏选项卡视为窗口。 在主边栏选项卡上，可以看到 **快速入门**、Azure AD Connect Health 中的服务和其他配置选项。 请参阅下面的屏幕截图及其后面的简要说明。 部署代理后，运行状况服务会自动标识 Azure AD Connect Health 正在监视的服务。
+Azure AD Connect Health 门户显示警报、性能监视和使用情况分析的视图。 单击 https://aka.ms/aadconnecthealth URL 可转到 Azure AD Connect Health 的主边栏选项卡。 可以将边栏选项卡视为窗口。 在主边栏选项卡上，可以看到“快速启动”、Azure AD Connect Health 中的服务和其他配置选项。 请参阅下面的屏幕截图及其后面的简要说明。 部署代理后，运行状况服务会自动标识 Azure AD Connect Health 正在监视的服务。
 
 > [!NOTE]
 > 有关许可信息，请参阅 [Azure AD Connect Health 常见问题解答](reference-connect-health-faq.md)或 [Azure AD 定价页](https://aka.ms/aadpricing)。
@@ -165,8 +165,8 @@ Azure AD Connect Health 门户显示警报、性能监视和使用情况分析�
 * **Active Directory 域服务**：此选项显示 Azure AD Connect Health 当前正在监视的所有 AD DS 林。 选择某个林时，打开的边栏选项卡会显示有关该林的信息。 这些信息包括基本信息、域控制器仪表板、复制状态仪表板、警报和监视的概述。 通过[在 AD DS 中使用 Azure AD Connect Health](how-to-connect-health-adds.md) 详细了解相关功能。
 * **配置**：此部分包含用于打开或关闭以下功能的选项：
 
-   - **自动更新** 到最新版本的 Azure AD Connect Health 代理：只要有新版本可用，就会自动更新 Azure AD Connect Health 代理。 默认情况下会启用此选项。
-   - 仅出于故障排除目的，从 Azure AD 目录的完整性 **访问数据**：如果启用此选项，则 Microsoft 可以访问用户查看的相同数据。 此信息可用于故障排除，并提供必要的帮助。 默认情况下禁用此选项
+   - Azure AD Connect Health 代理“自动更新”到最新版本：只要有新版本可用，就会自动更新 Azure AD Connect Health 代理。 默认情况下会启用此选项。
+   - 仅出于故障排除目的，由 Microsoft 从 Azure AD 目录完整性“访问数据”：如果启用此选项，则 Microsoft 可以访问用户查看的相同数据。 此信息可用于故障排除，并提供必要的帮助。 默认情况下该选项处于禁用状态
 * 在“基于角色的访问控制(IAM)”部分中，可以管理基于角色对 Connect Health 数据的访问。 
 
 ## <a name="next-steps"></a>后续步骤

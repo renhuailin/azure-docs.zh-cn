@@ -4,10 +4,10 @@ description: 介绍如何在 Azure 资源管理器模板中的租户范围内部
 ms.topic: conceptual
 ms.date: 01/13/2021
 ms.openlocfilehash: fd5a9ae60c578a3be7f70d82baae0a15e406b9db
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99491480"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>使用 ARM 模板进行租户部署
@@ -38,12 +38,12 @@ ms.locfileid: "99491480"
 
 若要创建订阅，请使用：
 
-* [别名](/azure/templates/microsoft.subscription/aliases)
+* [aliases](/azure/templates/microsoft.subscription/aliases)
 
 对于管理成本，请使用：
 
 * [billingProfiles](/azure/templates/microsoft.billing/billingaccounts/billingprofiles)
-* [说明](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/instructions)
+* [instructions](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/instructions)
 * [invoiceSections](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/invoicesections)
 
 若要配置门户，请使用：
@@ -135,7 +135,7 @@ New-AzTenantDeployment `
 
 可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 _azuredeploy.json_ 的模板将创建默认部署名称 **azuredeploy**。
 
-每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 例如，如果在 **centralus** 中创建名为 **deployment1** 的租户部署，则以后无法使用 deployment1 的位置创建另一个名为的 **部署。** 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
+每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 例如，如果在 centralus 中创建名为“deployment1”的租户部署，则以后不能创建另一个名为“deployment1”但位置为“westus”的部署   。 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
 
 ## <a name="deployment-scopes"></a>部署范围
 
@@ -146,7 +146,7 @@ New-AzTenantDeployment `
 * subscriptions
 * 资源组
 
-[扩展资源](scope-extension-resources.md)的作用域可以是与部署目标不同的目标。
+可以将[扩展资源](scope-extension-resources.md)的范围设置为与部署目标不同的范围。
 
 部署模板的用户必须有权访问指定的作用域。
 
@@ -186,7 +186,7 @@ New-AzTenantDeployment `
 
 :::code language="json" source="~/quickstart-templates/tenant-deployments/new-mg/azuredeploy.json":::
 
-如果你的帐户没有部署到租户的权限，你仍可以通过部署到其他作用域来创建管理组。 有关详细信息，请参阅 [管理组](deploy-to-management-group.md#management-group)。
+如果帐户没有部署到租户的权限，仍然可以通过部署到另一个范围来创建管理组。 有关详细信息，请参阅[管理组](deploy-to-management-group.md#management-group)。
 
 ## <a name="assign-role"></a>分配角色
 

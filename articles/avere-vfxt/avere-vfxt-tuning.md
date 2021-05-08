@@ -1,25 +1,25 @@
 ---
 title: Avere vFXT 群集优化 - Azure
-description: 了解 Avere vFXT for Azure 中的 vFXT 群集的一些自定义优化，可以使用支持代表。
+description: 了解 Avere vFXT for Azure 中的可通过与支持代表合作来进行的 vFXT 群集的一些自定义优化。
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.openlocfilehash: 5d9f81c9438cb992f81bd3e6319532d67db75552
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88272376"
 ---
 # <a name="cluster-tuning"></a>群集优化
 
 大多数 vFXT 群集都可以受益于自定义的性能设置。 这些设置有助于群集最充分地利用特定的工作流、数据集和工具。
 
-此自定义应通过支持代表提供帮助，因为它可能涉及到配置 Avere 控制面板中没有的功能。
+这项自定义操作应在支持代表的帮助下完成，因为它通常涉及到配置 Avere 控制面板中未提供的功能。
 
-本部分介绍一些可完成的自定义优化。
+本部分将介绍一些可以完成的自定义优化。
 
 ## <a name="general-optimizations"></a>常规优化
 
@@ -40,15 +40,15 @@ ms.locfileid: "88272376"
 
 ## <a name="cloud-bursting-or-hybrid-wan-optimizations"></a>云爆发或混合 WAN 优化
 
-在云暴冲方案或混合存储广域网优化方案中，vFXT 群集提供云和本地硬件存储之间的集成。 这些更改可能会有所帮助：
+在云爆发方案或混合存储 WAN 优化方案中，vFXT 群集在云与本地硬件存储之间提供集成。 这些更改可能会有所帮助：
 
 * 增加群集与核心文件管理器之间允许的 TCP 连接数
 * 为远程核心文件管理器启用 WAN 优化设置（此设置可用于远程本地文件管理器或不同 Azure 区域中的核心云文件管理器。）
-* 增大 TCP 套接字缓冲区大小<sup>*</sup>
-* 启用 "始终转发" 设置以减少冗余缓存文件<sup>*</sup>
+* 增大 TCP 套接字缓冲区大小 <sup>*</sup>
+* 启用“始终转发”设置以减少冗余缓存文件 <sup>*</sup>
 
-<sup>*</sup>根据工作负荷和性能需求的不同，这些调整可能不适用于所有系统。
+<sup>*</sup> 根据工作负荷和性能需求的不同，这些调整可能不适用于所有系统。
 
 ## <a name="help-optimizing-your-avere-vfxt-for-azure"></a>帮助优化 Avere vFXT for Azure
 
-若要与支持人员联系以了解这些优化，请使用在 [系统中获取帮助](avere-vfxt-open-ticket.md)中所述的过程。
+若要联系支持人员获取这些优化工作的帮助，请使用[获取系统帮助](avere-vfxt-open-ticket.md)中所述的过程来。

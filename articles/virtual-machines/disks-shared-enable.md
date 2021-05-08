@@ -9,17 +9,17 @@ ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
 ms.openlocfilehash: e8bb97196fcceea0c86f58fe4a63146e681c427e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96500727"
 ---
 # <a name="enable-shared-disk"></a>启用共享磁盘
 
 本文介绍了如何为 Azure 托管磁盘启用共享磁盘功能。 Azure 共享磁盘是 Azure 托管磁盘的一项新功能，可同时将托管磁盘附加到多个虚拟机 (VM)。 通过将托管磁盘附加到多个 VM，可以向 Azure 部署新的群集应用程序或迁移现有的群集应用程序。 
 
-如果正在查找有关已启用共享磁盘的托管磁盘的概念信息，请参阅 [Azure 共享磁盘](disks-shared.md)。
+如果你正在查找有关已启用共享磁盘的托管磁盘的概念信息，请参阅 [Azure 共享磁盘](disks-shared.md)。
 
 ## <a name="limitations"></a>限制
 
@@ -64,9 +64,9 @@ New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $
 
 ---
 
-### <a name="deploy-an-ultra-disk-as-a-shared-disk"></a>将超磁盘部署为共享磁盘
+### <a name="deploy-an-ultra-disk-as-a-shared-disk"></a>将超级磁盘部署为共享磁盘
 
-若要部署启用了共享磁盘功能的托管磁盘，请将 `maxShares` 参数更改为大于1的值。 这会使该磁盘可在多个 VM 之间共享。
+若要部署启用了共享磁盘功能的托管磁盘，请将 `maxShares` 参数更改为大于 1 的值。 这会使该磁盘可在多个 VM 之间共享。
 
 > [!IMPORTANT]
 > 仅当从所有 VM 中卸载了某个磁盘时，才能设置或更改 `maxShares` 的值。 有关 `maxShares` 的允许值，请参阅[磁盘大小](#disk-sizes)。
@@ -89,7 +89,7 @@ az disk show -g rg1 -n clidisk
 
 ##### <a name="zonal-disk-example"></a>区域性磁盘示例
 
-此示例与上一个示例基本相同，只不过它在可用性区域1中创建了一个磁盘。
+此示例与上一个示例基本相同，只不过它在可用性区域 1 中创建了一个磁盘。
 
 ```azurecli
 #Creating an Ultra shared Disk 
@@ -114,7 +114,7 @@ New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $
 
 ##### <a name="zonal-disk-example"></a>区域性磁盘示例
 
-此示例与上一个示例基本相同，只不过它在可用性区域1中创建了一个磁盘。
+此示例与上一个示例基本相同，只不过它在可用性区域 1 中创建了一个磁盘。
 
 ```azurepowershell-interactive
 $datadiskconfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType UltraSSD_LRS -CreateOption Empty -DiskIOPSReadWrite 2000 -DiskMBpsReadWrite 200 -DiskIOPSReadOnly 100 -DiskMBpsReadOnly 1 -MaxSharesCount 5 -Zone 1
@@ -126,15 +126,15 @@ New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $
 
 ##### <a name="regional-disk-example"></a>地区性磁盘示例
 
-使用以下模板之前，请将、、、、、、 `[parameters('dataDiskName')]` `[resourceGroup().location]` 和替换 `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]` `[parameters('diskIOPSReadWrite')]` `[parameters('diskMBpsReadWrite')]` `[parameters('diskIOPSReadOnly')]` `[parameters('diskMBpsReadOnly')]` 为自己的值。
+在使用以下模板之前，请先用你自己的值替换 `[parameters('dataDiskName')]`、`[resourceGroup().location]`、`[parameters('dataDiskSizeGB')]`、`[parameters('maxShares')]`、`[parameters('diskIOPSReadWrite')]`、`[parameters('diskMBpsReadWrite')]`、`[parameters('diskIOPSReadOnly')]` 和 `[parameters('diskMBpsReadOnly')]`。
 
-[区域共享的 ultra 磁盘模板](https://aka.ms/SharedUltraDiskARMtemplateRegional)
+[地区性共享超级磁盘模板](https://aka.ms/SharedUltraDiskARMtemplateRegional)
 
 ##### <a name="zonal-disk-example"></a>区域性磁盘示例
 
-使用以下模板之前，请将、、、、、、 `[parameters('dataDiskName')]` `[resourceGroup().location]` 和替换 `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]` `[parameters('diskIOPSReadWrite')]` `[parameters('diskMBpsReadWrite')]` `[parameters('diskIOPSReadOnly')]` `[parameters('diskMBpsReadOnly')]` 为自己的值。
+在使用以下模板之前，请先用你自己的值替换 `[parameters('dataDiskName')]`、`[resourceGroup().location]`、`[parameters('dataDiskSizeGB')]`、`[parameters('maxShares')]`、`[parameters('diskIOPSReadWrite')]`、`[parameters('diskMBpsReadWrite')]`、`[parameters('diskIOPSReadOnly')]` 和 `[parameters('diskMBpsReadOnly')]`。
 
-[区域性共享的 ultra 磁盘模板](https://aka.ms/SharedUltraDiskARMtemplateZonal)
+[区域性共享超级磁盘模板](https://aka.ms/SharedUltraDiskARMtemplateZonal)
 
 ---
 
@@ -143,7 +143,7 @@ New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $
 使用 `maxShares>1` 部署共享磁盘后，可以将该磁盘装载到一个或多个 VM。
 
 > [!NOTE]
-> 如果要部署的是 ultra 磁盘，请确保它符合必要的要求。 有关详细信息，请参阅 [使用 Azure ultra 磁盘](disks-enable-ultra-ssd.md) 。
+> 如果要部署超级磁盘，请确保它符合必要的要求。 有关详细信息，请参阅[使用 Azure 超级磁盘](disks-enable-ultra-ssd.md)。
 
 ```azurepowershell-interactive
 
@@ -206,5 +206,5 @@ PR_EXCLUSIVE_ACCESS_ALL_REGISTRANTS
 
 如果希望使用 Azure 资源管理器模板来部署磁盘，可使用以下示例模板：
 - [高级·SSD](https://aka.ms/SharedPremiumDiskARMtemplate)
-- [区域超磁盘](https://aka.ms/SharedUltraDiskARMtemplateRegional)
-- [区域性超磁盘](https://aka.ms/SharedUltraDiskARMtemplateZonal)
+- [地区性超级磁盘](https://aka.ms/SharedUltraDiskARMtemplateRegional)
+- [区域性超级磁盘](https://aka.ms/SharedUltraDiskARMtemplateZonal)

@@ -1,14 +1,14 @@
 ---
 title: Service Fabric Reliable Actors 概述
-description: 介绍基于虚拟执行组件模式的 Service Fabric Reliable Actors 编程模型。
+description: 基于虚拟执行组件模式的 Service Fabric Reliable Actors 编程模型简介。
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 1a8a7003a69deaf6b74d6fbb8a3cf84b0a78eecf
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96576377"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors 简介
@@ -29,7 +29,7 @@ Service Fabric Reliable Actors 是执行组件设计模式的实现。 与任何
 ## <a name="actors-in-service-fabric"></a>Service Fabric 中的执行组件
 在 Service Fabric 中，执行组件在 Reliable Actors 框架（在 [Service Fabric Reliable Services](service-fabric-reliable-services-introduction.md) 的基础上构建而成的基于执行组件模式的应用程序框架）中实现。 编写的每个 Reliable Actor 服务实际上都是一个已分区、有状态的 Reliable Service。
 
-每个执行组件都定义为执行组件类型的一个实例，类似于 .NET 对象是 .NET 类型的一个实例。 例如，可能有用于实现计算器功能的执行组件类型，并可能有很多在群集中各个节点分布的该类型的执行组件。 每个此类执行组件都通过执行组件 ID 进行唯一标识。
+每个执行组件定义为执行组件类型的一个实例，与 .NET 对象是 .NET 类型的一个实例类同。 例如，可能有用于实现计算器功能的执行组件类型，并可能有很多在群集中各个节点分布的该类型的执行组件。 每个此类执行组件都通过执行组件 ID 进行唯一标识。
 
 ## <a name="actor-lifetime"></a>执行组件生存期
 Service Fabric 执行组件是虚拟的，这表示其生存期不依赖于其内存中表示形式。 因此，它们不需要显式创建或销毁。 Reliable Actors 运行时会在它第一次接收到执行组件 ID 的请求时自动激活此执行组件。 如果一段时间未使用某个执行组件，则 Reliable Actors 运行时会回收此内存对象。 它还将掌握此执行组件的存在信息，以便将来重新激活。 如需了解更多详情，请参阅[执行组件生命周期和垃圾回收](service-fabric-reliable-actors-lifecycle.md)。
