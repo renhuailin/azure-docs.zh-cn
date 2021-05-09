@@ -8,12 +8,12 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: ea8d6b860e242eaa6b281c92552ed93926b92802
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 6fd070417cfa20c1a8f50c79915f4fcb2ec361f3
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070724"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279813"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板预配 Azure Database for MySQL 服务器
 
@@ -94,10 +94,10 @@ Azure 资源管理器利用基础 REST API 来声明并计划大规模部署所�
 +   `resources/properties/virtualNetworkSubnetId` - 指定 Azure MySQL 服务器应位于的 VNet 中的子网的 Azure 标识符。 
 +   `tags(optional)` - 指定可选标记为用于对资源进行分类，以便计费等的键值对。
 
-如果希望构建 Azure Resource Manager 模板以自动为组织执行 Azure Database for MySQL 部署，建议首先从 Azure 快速入门 GitHub 库中的示例 [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet)开始，然后在此基础上进行构建。 
+如果希望构建 Azure Resource Manager 模板以自动为组织执行 Azure Database for MySQL 部署，建议首先从 Azure 快速入门 GitHub 库中的示例 [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.dbformysql/managed-mysql-with-vnet/azuredeploy.json)开始，然后在此基础上进行构建。 
 
 如果不熟悉 Azure 资源管理器模板，但是想尝试一下，则可以按以下步骤进行操作：
-+   从 Azure 快速入门库中克隆或下载示例 [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet)。  
++   从 Azure 快速入门库中克隆或下载示例 [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.dbformysql/managed-mysql-with-vnet/azuredeploy.json)。  
 +   修改 azuredeploy.parameters.json 以基于引用更新参数值，并保存文件。 
 +   借助 Azure CLI，使用以下命令创建 Azure MySQL 服务器
 

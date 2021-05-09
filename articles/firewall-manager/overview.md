@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 03/29/2021
+ms.date: 04/29/2021
 ms.author: victorh
-ms.openlocfilehash: 6725bea562d3e7841b5ab82acc0a54f91f0488b4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a9f63b41afebc12566c8cc2e04664850203f1e5a
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732918"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279921"
 ---
 # <a name="what-is-azure-firewall-manager"></a>什么是 Azure 防火墙管理器？
 
@@ -88,7 +88,6 @@ Azure 防火墙管理器存在以下已知问题：
 |批量 IP 地址添加失败|如果添加多个公共 IP 地址，安全中心防火墙将进入失败状态。|添加较小的公共 IP 地址增量。 例如，一次添加 10 个。|
 |安全虚拟中心不支持 DDoS 防护标准|DDoS 防护标准未与 vWAN 集成。|正在调查|
 |不完全支持活动日志|防火墙策略当前不支持活动日志。|正在调查|
-|迁移防火墙以使用防火墙策略时，某些防火墙设置不会迁移|迁移到 Azure 防火墙策略时，不会迁移可用性区域和 SNAT 专用地址。|正在调查| 
 
 ## <a name="next-steps"></a>后续步骤
 
