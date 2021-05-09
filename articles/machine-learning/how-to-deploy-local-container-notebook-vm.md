@@ -5,22 +5,20 @@ description: 了解如何使用计算实例将 Azure 机器学习模型部署为
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, deploy
-ms.author: mnark
-author: MrudulaN
+ms.topic: how-to
+ms.custom: deploy
+ms.author: gopalv
+author: gvashishtha
 ms.reviewer: larryfr
-ms.date: 03/05/2020
-ms.openlocfilehash: d8b1c2a5384e479e39d169d368554f16c300a33e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/22/2021
+ms.openlocfilehash: 36a8ee83d2ff4b8673042d7764e83ab14ac2f016
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98954540"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107946216"
 ---
-# <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>将模型部署到 Azure 机器学习计算实例
-
-
+# <a name="deploy-a-model-locally"></a>在本地部署模型
 
 了解如何使用 Azure 机器学习将模型部署为 Azure 机器学习计算实例上的 Web 服务。 如果满足下列任一条件，请使用计算实例：
 

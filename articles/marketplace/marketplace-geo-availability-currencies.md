@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 03/08/2021
-ms.openlocfilehash: e583d39e2eed1b08dfeb17cafc1e12c583176d7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77ed41299d9b4d8bc0ba3c6d2b998cb63258fd5c
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103493027"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107887875"
 ---
 # <a name="geographic-availability-and-currency-support-for-the-commercial-marketplace"></a>商业市场的地理可用性和货币支持
 
@@ -197,10 +197,10 @@ Microsoft 以客户本地货币接收客户的付款，以在合作伙伴中心�
 有关如何输入特定产品/服务类型的价格的详细信息，请参阅以下文章：
 
 - [创建 Azure 应用程序产品/服务](create-new-azure-apps-offer.md)
-- [创建 Azure 容器产品/服务](./create-azure-container-offer.md)
+- [创建 Azure 容器产品/服务](azure-container-offer-setup.md)
 - [创建 Azure 虚拟机套餐](azure-vm-create.md)
 - [创建咨询服务套餐](./create-consulting-service-offer.md)
-- [创建 Dynamics 365 for Customer Engagement & PowerApps 套餐](partner-center-portal/create-new-customer-engagement-offer.md)
+- [创建 Dynamics 365 for Customer Engagement & PowerApps 产品/服务](dynamics-365-customer-engage-offer-setup.md)
 - [Dynamics 365 for Operations 产品/服务](partner-center-portal/create-new-operations-offer.md)
 - [Dynamics 365 Business Central 产品/服务](partner-center-portal/create-new-business-central-offer.md)
 - [创建 IoT Edge 模块产品/服务](partner-center-portal/azure-iot-edge-module-creation.md)
