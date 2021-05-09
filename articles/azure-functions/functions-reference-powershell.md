@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: a7951543d548696c8de403d7980e1a41b678c6cd
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 21546286d8ca9f8b455b84801d2f706466912165
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078662"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137592"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell 开发人员指南
 
@@ -122,7 +122,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 * 当输出绑定只接受单一实例值时，第二次调用 `Push-OutputBinding` 会引发错误。
 
-#### <a name="push-outputbinding-syntax"></a>`Push-OutputBinding` 语法
+#### <a name="push-outputbinding-syntax"></a>Push-OutputBinding 语法
 
 下面是用于调用 `Push-OutputBinding` 的有效参数：
 
@@ -196,7 +196,7 @@ PS >Push-OutputBinding -Name outQueue -Value @("output #3", "output #4")
 
 写入到队列时，消息包含这四个值：“output #1”、“output #2”、“output #3”和“output #4”。
 
-#### <a name="get-outputbinding-cmdlet"></a>`Get-OutputBinding` cmdlet
+#### <a name="get-outputbinding-cmdlet"></a>Get-OutputBinding cmdlet
 
 可以使用 `Get-OutputBinding` cmdlet 来检索当前为你的输出绑定设置的值。 此 cmdlet 会检索一个包含输出绑定名称及其各自值的哈希表。 
 
@@ -462,21 +462,47 @@ Functions 允许你利用 [PowerShell 库](https://www.powershellgallery.com)来
 
 更新 requirements.psd1 文件时，会在重启后安装更新的模块。
 
-> [!NOTE]
-> 托管依赖项需要访问 www.powershellgallery.com 来下载模块。 在本地运行时，请通过添加任何所需的防火墙规则来确保运行时可以访问此 URL。
+### <a name="target-specific-versions"></a>目标特定版本
 
-> [!NOTE]
-> 托管依赖项当前不支持要求用户接受许可证的模块，无论是通过交互方式接受许可证，还是通过在调用 `Install-Module` 时提供 `-AcceptLicense` 开关。
+你可能希望将特定版本的模块定位到 requirements.psd1 文件中。 例如，如果想要使用的 Az.Accounts 版本比包含的 Az 模块中的版本更旧，则需要以特定版本为目标，如下方示例中所示： 
 
-可以使用以下应用程序设置来更改下载和安装托管依赖项的方式。 你的应用升级在 `MDMaxBackgroundUpgradePeriod` 内启动，升级过程在大约 `MDNewSnapshotCheckPeriod` 内完成。
+```powershell
+@{
+    Az.Accounts = '1.9.5'
+}
+```
+
+在这种情况下，还需要将 import 语句添加到 profile.ps1 文件的顶层，下方下示例所示：
+
+```powershell
+Import-Module Az.Accounts -RequiredVersion '1.9.5'
+```
+
+通过这种方式，当函数启动时，系统将最先加载旧版 Az.Account 模块。
+
+### <a name="dependency-management-considerations"></a>依赖关系管理注意事项
+
+使用依赖关系管理时，需考虑以下注意事项：
+
++ 托管依赖关系需要访问 <https://www.powershellgallery.com> 以下载模块。 在本地运行时，请通过添加任何所需的防火墙规则来确保运行时可以访问此 URL。
+
++ 托管依赖项当前不支持要求用户接受许可证的模块，无论是通过交互方式接受许可证，还是通过在调用 `Install-Module` 时提供 `-AcceptLicense` 开关。
+
+### <a name="dependency-management-app-settings"></a>依赖关系管理应用设置
+
+可以使用以下应用程序设置来更改下载和安装托管依赖项的方式。 
 
 | 函数应用设置              | 默认值             | 说明                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
-| **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00`（7 天）     | 每个 PowerShell 工作进程都会在进程启动时检查 PowerShell 库上的模块升级，并在之后每 `MDMaxBackgroundUpgradePeriod` 检查一次。 当 PowerShell 库中有新的模块版本时，该版本会被安装到文件系统，并提供给 PowerShell 工作进程。 减小此值后，函数应用不但可以更快地获取较新的模块版本，而且可以增加应用资源使用率（网络 I/O、CPU、存储）。 增大此值会减少应用的资源使用率，但也可能会延迟将新的模块版本传递给你的应用。 | 
-| **`MDNewSnapshotCheckPeriod`**         | `01:00:00`（1 小时）       | 将新的模块版本安装到文件系统后，必须重启每个 PowerShell 工作进程。 重启 PowerShell 工作进程会影响应用可用性，因为它可能会中断当前的函数执行操作。 在所有 PowerShell 工作进程都重启之前，函数调用可能使用旧的模块版本，也可能使用新的模块版本。 重启所有 PowerShell 工作进程的操作会在 `MDNewSnapshotCheckPeriod` 内完成。 增大此值可降低中断频率，但也可能会延长不确定（即，不确定函数调用是使用旧模块版本还是使用新模块版本）的时段。 |
-| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00`（1 天）     | 为了避免在频繁重启工作进程时进行过多的模块升级，当任何工作进程在上一个 `MDMinBackgroundUpgradePeriod` 中启动了模块升级检查时，系统不会执行该检查。 |
+| MDMaxBackgroundUpgradePeriod      | `7.00:00:00`（七天）     | 控制 PowerShell 函数应用的后台更新时间段。 若要了解详细信息，请参阅 [MDMaxBackgroundUpgradePeriod](functions-app-settings.md#mdmaxbackgroundupgradeperiod)。 | 
+| MDNewSnapshotCheckPeriod         | `01:00:00`（一小时）       | 指定每个 PowerShell 辅助角色检查是否已安装托管依赖关系升级的频率。 若要了解详细信息，请参阅 [MDNewSnapshotCheckPeriod](functions-app-settings.md#mdnewsnapshotcheckperiod)。|
+| MDMinBackgroundUpgradePeriod      | `1.00:00:00`（一天）     | 在上一次升级检查结束后但下一次升级检查开始前的时间段。 若要了解详细信息，请参阅 [MDMinBackgroundUpgradePeriod](functions-app-settings.md#mdminbackgroundupgradeperiod)。|
 
-利用你自己的自定义模块的方式与通常的方式稍有不同。
+基本上，你的应用升级会在 `MDMaxBackgroundUpgradePeriod` 内启动，升级进程会在大约 `MDNewSnapshotCheckPeriod` 内完成。
+
+## <a name="custom-modules"></a>自定义模块
+
+在 Azure Functions 中利用你自己的自定义模块与你在 PowerShell 中通常使用的方法不同。
 
 在本地计算机上，该模块安装在 `$env:PSModulePath` 的全局可用文件夹之一中。 在 Azure 中运行时，你无法访问计算机上安装的模块。 这意味着 PowerShell 函数应用的 `$env:PSModulePath` 与常规 PowerShell 脚本中的 `$env:PSModulePath` 不同。
 
@@ -485,13 +511,12 @@ Functions 允许你利用 [PowerShell 库](https://www.powershellgallery.com)来
 * 位于你的函数应用根目录中的 `Modules` 文件夹。
 * 由 PowerShell 语言工作进程控制的 `Modules` 文件夹的路径。
 
-
-### <a name="function-app-level-modules-folder"></a>函数应用级 `Modules` 文件夹
+### <a name="function-app-level-modules-folder"></a>函数应用级模块文件夹
 
 若要使用自定义模块，可以将你的函数依赖的模块放置在 `Modules` 文件夹中。 在此文件夹中，模块可以自动用于函数运行时。 函数应用中的任何函数都可以使用这些模块。 
 
 > [!NOTE]
-> requirements.psd1 文件中指定的模块会自动下载并包含在路径中，因此不需要将它们包含在 modules 文件夹中。 它们存储在本地的 `$env:LOCALAPPDATA/AzureFunctions` 文件夹中；在云中运行时，它们存储在 `/data/ManagedDependencies` 文件夹中。
+> [requirements.psd1](#dependency-management) 文件中指定的模块会自动下载并包含在路径中，因此无需将其包含在模块文件夹中。 它们存储在本地的 `$env:LOCALAPPDATA/AzureFunctions` 文件夹中；在云中运行时，它们存储在 `/data/ManagedDependencies` 文件夹中。
 
 若要利用自定义模块功能，请在你的函数应用的根目录中创建一个 `Modules` 文件夹。 将需要在函数中使用的模块复制到此位置。
 
@@ -518,7 +543,7 @@ PSFunctionApp
 
 当你启动函数应用时，PowerShell 语言工作进程会将此 `Modules` 文件夹添加到 `$env:PSModulePath` 中，以便你可以像在常规 PowerShell 脚本中那样依赖于模块自动加载。
 
-### <a name="language-worker-level-modules-folder"></a>语言工作进程级 `Modules` 文件夹
+### <a name="language-worker-level-modules-folder"></a>语言辅助角色级模块文件夹
 
 PowerShell 语言工作进程通常使用几个模块。 这些模块在 `PSModulePath` 的最后一个位置中定义。 
 
@@ -573,7 +598,7 @@ Azure PowerShell 使用某些进程级上下文和状态，避免你进行过多
 
 Azure PowerShell 提供的并发性具有巨大的价值，因为某些操作可能需要相当长的时间。 但是，你必须谨慎操作。 如果怀疑出现争用情况，请将 PSWorkerInProcConcurrencyUpperBound 应用设置设为 `1`，并且为并发改用[语言工作进程级隔离](functions-app-settings.md#functions_worker_process_count)。
 
-## <a name="configure-function-scriptfile"></a>配置函数 `scriptFile`
+## <a name="configure-function-scriptfile"></a>配置函数 scriptFile
 
 默认情况下通过 `run.ps1`（一个文件，与对应的 `function.json` 共享相同父目录）执行 PowerShell 函数。
 
@@ -651,7 +676,7 @@ Export-ModuleMember -Function "Invoke-PSTestFunc"
 
 当在[无服务器托管模型](consumption-plan.md)中开发 Azure Functions 时，冷启动是存在的现实情况。 冷启动指的是函数应用开始运行以处理请求所经历的时间段。 在消耗计划中，冷启动的发生更频繁，因为函数应用在非活动期间会关闭。
 
-### <a name="bundle-modules-instead-of-using-install-module"></a>绑定模块，而不是使用 `Install-Module`
+### <a name="bundle-modules-instead-of-using-install-module"></a>绑定模块，而不是使用安装-模块
 
 脚本在每次调用时运行。 避免在脚本中使用 `Install-Module`。 在发布前改用 `Save-Module`，以便你的函数无需浪费时间来下载模块。 如果冷启动会影响你的函数，请考虑将函数应用部署到设置为“始终可用”或设置为[高级计划](functions-premium-plan.md)的[应用服务计划](dedicated-plan.md)。
 
