@@ -7,13 +7,13 @@ ms.date: 03/02/2021
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.custom: references_regions
-ms.openlocfilehash: 733d441705c7c77f0667f88151e96f76975ee0b2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 7be60cb8c9863878cc4ba2f57098556ccedde01d
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104596393"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107892051"
 ---
 # <a name="enable-on-demand-bursting"></a>启用按需突发
 
@@ -81,7 +81,7 @@ az vm disk attach --vm-name <yourVMName> --name <yourDiskName> --resource-group 
 az disk update --name <yourDiskName> --resource-group <yourResourceGroup> --enable-bursting true //Set the flag to false to disable on-demand bursting
 ```
 
-# <a name="azure-resource-manager"></a>[Azure 资源管理器](#tab/azure-resource-manager)
+# <a name="azure-resource-manager"></a>[Azure Resource Manager](#tab/azure-resource-manager)
 
 使用`2020-09-30`磁盘 API，可以在新创建或现有的高级 SSD 大于 512 GiB 时启用按需突发。 `2020-09-30`API 引入了新的属性`burstingEnabled` 。 默认情况下，该属性设置为 false。 下面的示例模板在 West Central US 中创建了 1TiB 高级 SSD，且启用了磁盘突发：
 
@@ -130,4 +130,4 @@ az disk update --name <yourDiskName> --resource-group <yourResourceGroup> --enab
  
 ## <a name="next-steps"></a>后续步骤
 
-如需了解如何深入了解突发资源，请参阅“[磁盘突发指标](disks-metrics.md)”。
+若要了解如何深入了解突发资源，请参阅[磁盘突发指标](disks-metrics.md)。
