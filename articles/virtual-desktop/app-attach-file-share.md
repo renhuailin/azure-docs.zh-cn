@@ -1,27 +1,23 @@
 ---
-title: Windows 虚拟桌面设置文件共享 MSIX 应用附加预览版 - Azure
+title: Windows 虚拟桌面设置文件共享 MSIX 应用附加 - Azure
 description: 如何为 Windows 虚拟桌面设置用于 MSIX 应用附加的文件共享。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/13/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 49a350b77958901aae5e54e82d856e4f3772702e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+manager: femila
+ms.openlocfilehash: a2d4ebee02d85d10d5db8ec2de0bb1be334770dc
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97930780"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717650"
 ---
-# <a name="set-up-a-file-share-for-msix-app-attach-preview"></a>为 MSIX 应用附加（预览版）设置文件共享
-
-> [!IMPORTANT]
-> MSIX 应用附加目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="set-up-a-file-share-for-msix-app-attach"></a>设置用于 MSIX 应用附加的文件共享
 
 所有 MSIX 映像都必须存储在主机池中具有只读权限的用户可以访问的网络共享上。
 
-MSIX 应用附加（预览版）不依赖于文件共享使用的存储构造的类型。 MSIX 应用附加共享的注意事项与 FSLogix 共享的注意事项相同。 若要详细了解存储要求，请参阅 [Windows 虚拟桌面中的 FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)。
+MSIX 应用附加不依赖于文件共享使用的存储构造的类型。 MSIX 应用附加共享的注意事项与 FSLogix 共享的注意事项相同。 若要详细了解存储要求，请参阅 [Windows 虚拟桌面中的 FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)。
 
 ## <a name="performance-requirements"></a>性能要求
 
@@ -81,7 +77,7 @@ MSIX 应用附加文件共享的设置过程在很大程度上与 [FSLogix 配�
 
 4. 创建存储帐户。
 
-5. 按照[创建 Azure 文件共享](../storage/files/storage-how-to-create-file-share.md#create-file-share)中的说明，在存储帐户下创建一个文件共享。
+5. 按照[创建 Azure 文件共享](../storage/files/storage-how-to-create-file-share.md#create-a-file-share)中的说明，在存储帐户下创建一个文件共享。
 
 6. 按照[第一部分：为 Azure 文件共享启用 AD DS 身份验证](../storage/files/storage-files-identity-ad-ds-enable.md#option-one-recommended-use-azfileshybrid-powershell-module)中的说明，将存储帐户加入到 AD DS。
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 8621dc8cfc10ab44ecb358a40fdae1a1b2081734
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 580c53f311bc8ee70e974df2bc4111e6361d06f6
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102566577"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818955"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Azure 虚拟机上的解决方案
 
@@ -66,7 +66,7 @@ az vm list-skus `
   
 - **调整大小** – 由于机密计算实例包含专用的硬件，你只能在同一大小系列内调整其大小。 例如，对于 DCsv2 系列 VM，只能将其从一种 DCsv2 系列大小调整为另一种 DCsv2 系列大小。 不支持从非机密计算大小调整为机密计算大小。  
 
-- **映像** – 若要在机密计算实例上提供 Intel Software Guard Extension (Intel SGX) 支持，所有部署需要在第 2 代映像上运行。 Azure 机密计算支持 Ubuntu 18.04 Gen 2、Ubuntu 16.04 Gen 2、Windows Server 2019 Gen 2 和 Windows Server 2016 Gen 2 上运行的工作负荷。 请阅读 [Azure 对第 2 代 VM 的支持](../virtual-machines/generation-2.md)以详细了解支持的方案和不支持的方案。 
+- **映像** – 若要在机密计算实例上提供 Intel Software Guard Extension (Intel SGX) 支持，所有部署需要在第 2 代映像上运行。 Azure 机密计算支持 Ubuntu 18.04 Gen 2、Ubuntu 20.04 Gen 2、Windows Server 2019 Gen 2 和 Windows Server 2016 Gen 2 上运行的工作负载。 请阅读 [Azure 对第 2 代 VM 的支持](../virtual-machines/generation-2.md)以详细了解支持的方案和不支持的方案。 
 
 - **存储** – Azure 机密计算虚拟机数据磁盘和临时 OS 磁盘位于 NVMe 磁盘上。 实例仅支持高级 SSD 和标准 SSD 磁盘，而不支持超级 SSD 或标准 HDD。 虚拟机大小 **DC8_v2** 不支持高级存储。 
 
@@ -122,10 +122,10 @@ Azure 资源管理器是 Azure 的部署和管理服务。 它提供一个管理
         "sku": "18_04-lts-gen2",
         "version": "latest"
       },
-      "16_04-lts-gen2": {
+      "20_04-lts-gen2": {
         "offer": "UbuntuServer",
         "publisher": "Canonical",
-        "sku": "16_04-lts-gen2",
+        "sku": "20_04-lts-gen2",
         "version": "latest"
       }
 ```

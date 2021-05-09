@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 21ca30b24c4824a2d303d02f3df712328885e199
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 05877c9a77eb45e4c02d750becae63c0d1fdab7b
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102435199"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163240"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>适用于 Azure Functions 2.x 及更高版本的 Azure Cosmos DB 输入绑定
 
@@ -45,10 +45,10 @@ namespace CosmosDBSamplesV2
     {
         [JsonProperty("id")]
         public string Id { get; set; }
-        
+
         [JsonProperty("partitionKey")]
         public string PartitionKey { get; set; }
-        
+
         public string Description { get; set; }
     }
 }
@@ -56,7 +56,7 @@ namespace CosmosDBSamplesV2
 
 <a id="queue-trigger-look-up-id-from-json-c"></a>
 
-### <a name="queue-trigger-look-up-id-from-json"></a>队列触发器，从 JSON 查找 ID 
+### <a name="queue-trigger-look-up-id-from-json"></a>队列触发器，从 JSON 查找 ID
 
 以下示例演示检索单个文档的 [C# 函数](functions-dotnet-class-library.md)。 该函数由包含 JSON 对象的队列消息触发。 队列触发器将 JSON 分析为 `ToDoItemLookup` 类型的对象，其中包含要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索 `ToDoItem` 文档。
 
@@ -113,8 +113,8 @@ namespace CosmosDBSamplesV2
 
 以下示例演示检索单个文档的 [C# 函数](functions-dotnet-class-library.md)。 此函数由 HTTP 请求触发，该请求使用的查询字符串用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索 `ToDoItem` 文档。
 
->[!NOTE]
->HTTP 查询字符串参数区分大小写。
+> [!NOTE]
+> HTTP 查询字符串参数区分大小写。
 >
 
 ```cs
@@ -290,7 +290,6 @@ namespace CosmosDBSamplesV2
         }
     }
 }
-
 ```
 
 <a id="http-trigger-get-multiple-docs-using-documentclient-c"></a>
@@ -402,6 +401,7 @@ namespace CosmosDBSamplesV2
     "direction": "in"
 }
 ```
+
 [配置](#configuration)部分解释了这些属性。
 
 C# 脚本代码如下所示：
@@ -798,7 +798,7 @@ public class DocByIdFromQueryString {
         }
     }
 }
- ```
+```
 
 在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自 Cosmos DB 的函数参数使用 `@CosmosDBInput` 注释。  可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
 
@@ -806,7 +806,7 @@ public class DocByIdFromQueryString {
 
 ### <a name="http-trigger-look-up-id-from-query-string---pojo-parameter"></a>HTTP 触发器，从查询字符串查找 ID - POJO 参数
 
-以下示例展示了检索单个文档的 Java 函数。 此函数由 HTTP 请求触发，该请求使用的查询字符串用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索文档。 然后将该文档转换为先前创建的 ```ToDoItem``` POJO 实例，并作为参数传递给该函数。
+以下示例展示了检索单个文档的 Java 函数。 此函数由 HTTP 请求触发，该请求使用的查询字符串用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索文档。 然后将该文档转换为先前创建的 `ToDoItem` POJO 实例，并作为参数传递给该函数。
 
 ```java
 public class DocByIdFromQueryStringPojo {
@@ -844,13 +844,13 @@ public class DocByIdFromQueryStringPojo {
         }
     }
 }
- ```
+```
 
 <a id="http-trigger-look-up-id-from-route-data-java"></a>
 
 ### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP 触发器，从路由数据查找 ID
 
-以下示例展示了检索单个文档的 Java 函数。 此函数由 HTTP 请求触发，该请求使用的路由参数用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索文档，将它作为 ```Optional<String>``` 返回。
+以下示例展示了检索单个文档的 Java 函数。 此函数由 HTTP 请求触发，该请求使用的路由参数用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索文档，将它作为 `Optional<String>` 返回。
 
 ```java
 public class DocByIdFromRoute {
@@ -891,13 +891,13 @@ public class DocByIdFromRoute {
         }
     }
 }
- ```
+```
 
  <a id="http-trigger-look-up-id-from-route-data-using-sqlquery-java"></a>
 
 ### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery"></a>HTTP 触发器，使用 SqlQuery 从路由数据查找 ID
 
-以下示例展示了检索单个文档的 Java 函数。 此函数由 HTTP 请求触发，该请求使用路由参数指定要查找的 ID。 该 ID 用于从指定的数据库和集合中检索文档，将结果集转换为 ```ToDoItem[]```，因为可能会返回许多文档，具体取决于查询条件。
+以下示例展示了检索单个文档的 Java 函数。 此函数由 HTTP 请求触发，该请求使用路由参数指定要查找的 ID。 该 ID 用于从指定的数据库和集合中检索文档，将结果集转换为 `ToDoItem[]`，因为可能会返回许多文档，具体取决于查询条件。
 
 > [!NOTE]
 > 如果需要只按 ID 进行查询，则建议使用查找（如[以前的示例](#http-trigger-look-up-id-from-query-string---pojo-parameter-java)所示），因为该查找消耗较少的[请求单位](../cosmos-db/request-units.md)。 点读取操作 (GET) 比按 ID 进行的查询[更高效](../cosmos-db/optimize-cost-reads-writes.md)。
@@ -939,13 +939,13 @@ public class DocByIdFromRouteSqlQuery {
         }
     }
 }
- ```
+```
 
  <a id="http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java"></a>
 
 ### <a name="http-trigger-get-multiple-docs-from-route-data-using-sqlquery"></a>HTTP 触发器，使用 SqlQuery 从路由数据获取多个文档
 
-以下示例演示了检索多个文档的 Java 函数。 该函数由 HTTP 请求触发，该请求使用路由参数 ```desc``` 指定要在 ```description``` 字段中搜索的字符串。 搜索项用于从指定的数据库和集合中检索文档集合，将结果集转换为 ```ToDoItem[]``` 并将其作为参数传递给函数。
+以下示例演示了检索多个文档的 Java 函数。 该函数由 HTTP 请求触发，该请求使用路由参数 `desc` 指定要在 `description` 字段中搜索的字符串。 搜索项用于从指定的数据库和集合中检索文档集合，将结果集转换为 `ToDoItem[]` 并将其作为参数传递给函数。
 
 ```java
 public class DocsFromRouteSqlQuery {
@@ -983,7 +983,7 @@ public class DocsFromRouteSqlQuery {
         }
     }
 }
- ```
+```
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -1235,12 +1235,12 @@ Cosmos DB 输入绑定在函数配置文件 (_function.json_) 中提供的绑定
 _run.ps1_ 文件包含 PowerShell 代码，该代码读取传入的文档并输出更改。
 
 ```powershell
-param($QueueItem, $InputDocumentIn, $TriggerMetadata) 
+param($QueueItem, $InputDocumentIn, $TriggerMetadata)
 
-$Document = $InputDocumentIn 
-$Document.text = 'This was updated!' 
+$Document = $InputDocumentIn 
+$Document.text = 'This was updated!'
 
-Push-OutputBinding -Name InputDocumentOut -Value $Document  
+Push-OutputBinding -Name InputDocumentOut -Value $Document  
 ```
 
 <a name="http-trigger-id-query-string-ps"></a>
@@ -1253,62 +1253,62 @@ Cosmos DB 输入绑定在函数配置文件 (_function.json_) 中提供的绑定
 
 ```json
 { 
-  "bindings": [ 
-    { 
-      "type": "cosmosDB", 
-      "name": "ToDoItem", 
-      "databaseName": "ToDoItems", 
-      "collectionName": "Items", 
-      "connectionStringSetting": "CosmosDBConnection", 
-      "direction": "in", 
-      "Id": "{Query.id}", 
-      "PartitionKey": "{Query.partitionKeyValue}" 
-    },
-    { 
-      "authLevel": "anonymous", 
-      "name": "Request", 
-      "type": "httpTrigger", 
-      "direction": "in", 
-      "methods": [ 
-        "get", 
-        "post" 
-      ] 
-    }, 
-    { 
-      "name": "Response", 
-      "type": "http", 
-      "direction": "out" 
-    },
-  ], 
-  "disabled": false 
+  "bindings": [ 
+    { 
+      "type": "cosmosDB", 
+      "name": "ToDoItem", 
+      "databaseName": "ToDoItems", 
+      "collectionName": "Items", 
+      "connectionStringSetting": "CosmosDBConnection", 
+      "direction": "in", 
+      "Id": "{Query.id}", 
+      "PartitionKey": "{Query.partitionKeyValue}" 
+    },
+    { 
+      "authLevel": "anonymous", 
+      "name": "Request", 
+      "type": "httpTrigger", 
+      "direction": "in", 
+      "methods": [ 
+        "get", 
+        "post" 
+      ] 
+    }, 
+    { 
+      "name": "Response", 
+      "type": "http", 
+      "direction": "out" 
+    },
+  ], 
+  "disabled": false 
 } 
 ```
-  
+
 _run.ps1_ 文件包含 PowerShell 代码，该代码读取传入的文档并输出更改。
 
 ```powershell
-using namespace System.Net 
+using namespace System.Net
 
-param($Request, $ToDoItem, $TriggerMetadata) 
+param($Request, $ToDoItem, $TriggerMetadata)
 
-Write-Host 'PowerShell HTTP trigger function processed a request' 
+Write-Host 'PowerShell HTTP trigger function processed a request'
 
-if (-not $ToDoItem) { 
-    Write-Host 'ToDo item not found' 
+if (-not $ToDoItem) { 
+    Write-Host 'ToDo item not found'
 
-    Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{ 
-        StatusCode = [HttpStatusCode]::NotFound 
-        Body = $ToDoItem.Description 
-    }) 
+    Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{ 
+        StatusCode = [HttpStatusCode]::NotFound 
+        Body = $ToDoItem.Description 
+    })
 
-} else { 
+} else {
 
-    Write-Host "Found ToDo item, Description=$($ToDoItem.Description)" 
- 
-    Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{ 
-        StatusCode = [HttpStatusCode]::OK 
-        Body = $ToDoItem.Description 
-    }) 
+    Write-Host "Found ToDo item, Description=$($ToDoItem.Description)"
+
+    Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{ 
+        StatusCode = [HttpStatusCode]::OK 
+        Body = $ToDoItem.Description 
+    }) 
 }
 ```
 
@@ -1322,62 +1322,62 @@ Cosmos DB 输入绑定在函数配置文件 (_function.json_) 中提供的绑定
 
 ```json
 { 
-  "bindings": [ 
-    { 
-      "type": "cosmosDB", 
-      "name": "ToDoItem", 
-      "databaseName": "ToDoItems", 
-      "collectionName": "Items", 
-      "connectionStringSetting": "CosmosDBConnection", 
-      "direction": "in", 
-      "Id": "{id}", 
-      "PartitionKey": "{partitionKeyValue}" 
-    },
-    { 
-      "authLevel": "anonymous", 
-      "name": "Request", 
-      "type": "httpTrigger", 
-      "direction": "in", 
-      "methods": [ 
-        "get", 
-        "post" 
-      ], 
-      "route": "todoitems/{partitionKeyValue}/{id}" 
-    }, 
-    { 
-      "name": "Response", 
-      "type": "http", 
-      "direction": "out" 
-    }
-  ], 
-  "disabled": false 
+  "bindings": [ 
+    { 
+      "type": "cosmosDB", 
+      "name": "ToDoItem", 
+      "databaseName": "ToDoItems", 
+      "collectionName": "Items", 
+      "connectionStringSetting": "CosmosDBConnection", 
+      "direction": "in", 
+      "Id": "{id}", 
+      "PartitionKey": "{partitionKeyValue}" 
+    },
+    { 
+      "authLevel": "anonymous", 
+      "name": "Request", 
+      "type": "httpTrigger", 
+      "direction": "in", 
+      "methods": [ 
+        "get", 
+        "post" 
+      ], 
+      "route": "todoitems/{partitionKeyValue}/{id}" 
+    }, 
+    { 
+      "name": "Response", 
+      "type": "http", 
+      "direction": "out" 
+    }
+  ], 
+  "disabled": false 
 } 
 ```
 
 _run.ps1_ 文件包含 PowerShell 代码，该代码读取传入的文档并输出更改。
 
 ```powershell
-using namespace System.Net 
+using namespace System.Net
 
-param($Request, $ToDoItem, $TriggerMetadata) 
+param($Request, $ToDoItem, $TriggerMetadata)
 
-Write-Host 'PowerShell HTTP trigger function processed a request' 
+Write-Host 'PowerShell HTTP trigger function processed a request'
 
-if (-not $ToDoItem) { 
-    Write-Host 'ToDo item not found' 
+if (-not $ToDoItem) { 
+    Write-Host 'ToDo item not found'
 
-    Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{ 
-        StatusCode = [HttpStatusCode]::NotFound 
-        Body = $ToDoItem.Description 
-    }) 
+    Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{ 
+        StatusCode = [HttpStatusCode]::NotFound 
+        Body = $ToDoItem.Description 
+    })
 
-} else { 
-    Write-Host "Found ToDo item, Description=$($ToDoItem.Description)" 
-  
-    Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{ 
-        StatusCode = [HttpStatusCode]::OK 
-        Body = $ToDoItem.Description 
-    }) 
+} else { 
+    Write-Host "Found ToDo item, Description=$($ToDoItem.Description)"
+
+    Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{ 
+        StatusCode = [HttpStatusCode]::OK 
+        Body = $ToDoItem.Description 
+    }) 
 } 
 ```
 
@@ -1389,23 +1389,23 @@ if (-not $ToDoItem) {
 
 ```json
 { 
-  "name": "Documents", 
-  "type": "cosmosDB", 
-  "direction": "in", 
-  "databaseName": "MyDb", 
-  "collectionName": "MyCollection", 
-  "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}", 
-  "connectionStringSetting": "CosmosDBConnection" 
+  "name": "Documents", 
+  "type": "cosmosDB", 
+  "direction": "in", 
+  "databaseName": "MyDb", 
+  "collectionName": "MyCollection", 
+  "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}", 
+  "connectionStringSetting": "CosmosDBConnection" 
 } 
 ```
 
 _run1.ps_ 文件包含 PowerShell 代码，该代码读取传入的文档。
 
 ```powershell
-param($QueueItem, $Documents, $TriggerMetadata) 
+param($QueueItem, $Documents, $TriggerMetadata)
 
-foreach ($Document in $Documents) { 
-    # operate on each document 
+foreach ($Document in $Documents) { 
+    # operate on each document 
 } 
 ```
 
@@ -1455,7 +1455,6 @@ foreach ($Document in $Documents) {
 
 ```python
 import azure.functions as func
-
 
 def main(queuemsg: func.QueueMessage, documents: func.DocumentList) -> func.Document:
     if documents:
@@ -1510,7 +1509,6 @@ function.json 文件如下所示：
 ```python
 import logging
 import azure.functions as func
-
 
 def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
     if not todoitems:
@@ -1570,7 +1568,6 @@ function.json 文件如下所示：
 ```python
 import logging
 import azure.functions as func
-
 
 def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
     if not todoitems:
@@ -1655,7 +1652,7 @@ Python 不支持特性。
 |---------|---------|----------------------|
 |type     | 不适用 | 必须设置为 `cosmosDB`。        |
 |**direction**     | 不适用 | 必须设置为 `in`。         |
-|name      | 不适用 | 表示函数中的文档的绑定参数的名称。  |
+|**name**     | 不适用 | 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** |**DatabaseName** |包含文档的数据库。        |
 |**collectionName** |**CollectionName** | 包含文档的集合的名称。 |
 |**id**    | Id | 要检索的文档的 ID。 此属性支持[绑定表达式](./functions-bindings-expressions-patterns.md)。 不要同时设置 `id` 和 **sqlQuery** 属性。 如果上述两个属性都未设置，则会检索整个集合。 |

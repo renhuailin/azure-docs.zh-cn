@@ -7,17 +7,28 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 04/19/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30348d7ca12ded2d1f4b0522a7cabeadf0553a07
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: a41717e9be0918dead9f77a5f5472494d734b38a
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94953349"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717524"
 ---
 # <a name="overview-of-policy-keys-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的策略密钥概述
+
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+::: zone pivot="b2c-user-flow"
+
+[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 Azure Active Directory B2C (Azure AD B2C) 以策略密钥的形式存储机密和证书，从而与它所集成的服务建立信任。 这些信任包括：
 
@@ -28,7 +39,7 @@ Azure Active Directory B2C (Azure AD B2C) 以策略密钥的形式存储机密�
  本文讨论了对于 Azure AD B2C 使用的策略密钥，你需要了解的内容。
 
 > [!NOTE]
-> 目前策略密钥的配置仅限于[自定义策略](./custom-policy-get-started.md)。
+> 目前策略密钥的配置仅限于[自定义策略](./user-flow-overview.md)。
 
 你可以在 Azure 门户中的“策略密钥”菜单下配置用于在服务之间建立信任的机密和证书。 密钥可以是对称的，也可以是非对称的。 在对称加密或私钥加密中，将使用共享机密来加密和解密数据。 非对称加密或公钥加密这种加密系统使用密钥对，其中包含与信赖方应用程序共享的公钥，以及只有 Azure AD B2C 知道的私钥。
 
@@ -89,3 +100,5 @@ Azure AD B2C 中的策略密钥的顶层资源是 **密钥集** 容器。 每个
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何使用 Microsoft Graph 自动执行[密钥集](microsoft-graph-operations.md#trust-framework-policy-keyset)和[策略密钥](microsoft-graph-operations.md#trust-framework-policy-key)部署。
+
+::: zone-end

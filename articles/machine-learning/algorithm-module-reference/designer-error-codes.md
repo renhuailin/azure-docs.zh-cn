@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
-ms.date: 11/25/2020
-ms.openlocfilehash: b917e3fc93c59de85c5236c18e31d7bbc9d891f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/25/2021
+ms.openlocfilehash: 1df93a987348ed54303f2d9118337dbc710bc3bc
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98065467"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001407"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>设计器的异常和错误代码
 
@@ -1236,7 +1236,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
  如果满足以下条件，则 Azure 机器学习中会产生此错误：(a) 输入数据集至少有一个稀疏列，(b) 请求的最终维数与输入维数相同。  
 
-**解决方法：** 考虑降低输出的维数，使其小于输入的维数。 这是 PCA 应用程序中的典型情况。   <!--For more information, see [Principal Component Analysis](principal-component-analysis.md).  -->
+**解决方法：** 考虑降低输出的维数，使其小于输入的维数。 这在 PCA 应用程序中很典型。   <!--For more information, see [Principal Component Analysis](principal-component-analysis.md).  -->
 
 |异常消息|
 |------------------------|
@@ -1307,7 +1307,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |------------------------|
 |无法创建 Hive 表。 对于 HDInsight 群集，请确保与群集关联的 Azure 存储帐户名称与通过模块参数传入的名称相同。|
 |无法创建 Hive 表“{table_name}”。 对于 HDInsight 群集，请确保与群集关联的 Azure 存储帐户名称与通过模块参数传入的名称相同。|
-|无法创建 Hive 表“{table_name}”。 对于 HDInsight 群集，请确保与群集关联的 Azure 存储帐户名称为“{cluster_name}”。|
+|无法创建 Hive 表“{table_name}”。 对于 HDInsight 群集，请确保与该群集关联的 Azure 存储帐户名称为“{cluster_name}”。|
 
 
 ## <a name="error-0102"></a>错误 0102  
@@ -1436,7 +1436,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
   <!--If you use the visualizations on datasets to check the cardinality of columns, only some rows are sampled. To get a full report, use [Summarize Data](summarize-data.md). You can also use the [Apply SQL Transformation](apply-sql-transformation.md) to check for the number of unique values in each column.  
 
- Sometimes transient loads can lead to this error. Machine support also changes over time. 
+ Sometimes transient loads can lead to such error. Machine support also changes over time. 
 
  Try using [Principal Component Analysis](principal-component-analysis.md) or one of the provided feature selection methods to reduce your dataset to a smaller set of more feature-rich columns: [Feature Selection](feature-selection-modules.md)  -->
 
@@ -1537,3 +1537,23 @@ For general information about how the Matchbox recommendation algorithm works, a
 ## <a name="execute-python-script-module"></a>执行 Python 脚本模块
 
 在“执行 Python 脚本模块”的 70_driver_logs 中搜索“in azureml_main”，可能会发现哪一行发生了错误。 例如，“File "/tmp/tmp01_ID/user_script.py", line 17, in azureml_main”表示错误发生在 python 脚本的第 17 行。
+
+## <a name="distributed-training"></a>分布式训练
+
+当前设计器支持对[训练 PyTorch 模型](train-pytorch-model.md)模块进行分布式训练。
+
+<!-- [Train Wide and Deep Recommender](train-wide-and-deep-recommender.md) module  -->
+
+如果启用分布式训练的模块发生故障且未生成任何 `70_driver` 日志，则可以查看 `70_mpi_log` 了解详细错误信息。
+
+  以下示例显示运行设置的节点计数大于计算群集的可用节点计数。
+  
+  [![显示节点计数错误的屏幕截图](./media/module/distributed-training-node-count-error.png)](./media/module/distributed-training-node-count-error.png#lightbox)
+
+  下方示例显示每个节点的进程计数大于计算的处理单位。
+
+  [ ![显示 mpi 日志的屏幕截图](./media/module/distributed-training-error-mpi-log.png) ](./media/module/distributed-training-error-mpi-log.png#lightbox)
+
+否则，可以检查每个进程的 `70_driver_log`。 `70_driver_log_0` 适用于主进程。
+
+  [ ![显示驱动程序日志的屏幕截图](./media/module/distributed-training-error-driver-log.png) ](./media/module/distributed-training-error-driver-log.png#lightbox)

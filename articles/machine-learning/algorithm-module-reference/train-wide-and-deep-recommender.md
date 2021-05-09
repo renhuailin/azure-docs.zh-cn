@@ -8,18 +8,20 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 06/12/2020
-ms.openlocfilehash: d7dd7105ddb0d6503faefb996b84c0e53a62ce49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/19/2021
+ms.openlocfilehash: 6c7f4b221b1b9a1eee9a0d4d376bb6707d6b2869
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104655370"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108000847"
 ---
 # <a name="train-wide--deep-recommender"></a>训练 Wide & Deep 推荐器
 本文介绍如何使用 Azure 机器学习设计器中的“训练 Wide & Deep 推荐器”模块来训练建议模型。 本模块基于由 Google 提出的 Wide & Deep 学习。
 
 “训练 Wide & Deep 推荐器”模块读取“用户-项-评分”三元组数据集，以及（可选）某些用户和项特征。 它返回训练后的 Wide & Deep 推荐器。  然后，可以通过[为 Wide and Deep 推荐器评分](score-wide-and-deep-recommender.md)模块使用训练后的模型来生成评分预测或建议。  
+
+<!-- Currently, **Train Wide & Deep Recommender** module supports both single node and distributed training. -->
 
 ## <a name="more-about-recommendation-models-and-the-wide--deep-recommender"></a>有关建议模型和 Wide & Deep 推荐器的详细信息  
 
@@ -34,7 +36,7 @@ Wide & Deep 推荐器将这些方法结合在一起，即结合使用协作筛�
 
 工作原理：如果用户对系统而言相对“较新”（系统尚未获取多少用户信息），可通过使用有关用户的特征信息来改进预测，从而解决众所周知的“冷启动”问题。 但是，一旦从特定用户收集了足够数量的评分，就可以根据特定评分而不是仅根据他们的特征对其进行完全个性化的预测。 因此，可从基于内容的建议平稳过渡到基于协同筛选的建议。 即使用户或项目特征不可用，Wide & Deep 推荐器仍会在协同筛选模式下运行。  
 
-有关 Wide & Deep 推荐器及其基础概率算法的更多详细信息，请参阅相关研究论文：[推荐器系统的 Wide & Deep 学习](https://arxiv.org/pdf/1606.07792.pdf)。  
+有关 Wide & Deep 推荐器及基础概率算法的更多详细信息，请参阅相关研究论文：[推荐器系统的 Wide & Deep 学习](https://arxiv.org/pdf/1606.07792.pdf)。  
 
 ## <a name="how-to-configure-train-wide--deep-recommender"></a>如何配置“训练 Wide & Deep 推荐器”  
 
@@ -43,7 +45,7 @@ Wide & Deep 推荐器将这些方法结合在一起，即结合使用协作筛�
 
 ### <a name="prepare-data"></a>准备数据
 
-在尝试使用该模块之前，数据必须已采用建议模型预期的格式。 需要“用户-项-评分”三元组的训练数据集，也可以在单独的数据集中分别包含用户特征和项目特征（如果可用）。
+尝试使用该模块之前，请确保你的数据为建议模型的预期格式。 需要“用户-项-评分”三元组的训练数据集，也可以在单独的数据集中分别包含用户特征和项目特征（如果可用）。
 
 #### <a name="required-dataset-of-user-item-ratings"></a>所需的用户-项-评分数据集
 
@@ -97,33 +99,33 @@ Wide & Deep 推荐器将这些方法结合在一起，即结合使用协作筛�
 
 4. **批处理大小**：键入一个训练步骤中使用的训练示例数。 
 
-     此超参数会影响训练速度。 批处理越大，时间成本时期越短，但可能会增加收敛时间。 如果批处理太大，无法适应 GPU/CPU，可能会引发内存错误。
+     此超参数会影响训练速度。 批处理越大，时间成本时期越短，但可能会增加收敛时间。 如果批太大，不适合 GPU/CPU，可能会引发内存错误。
 
 5.  **Wide 部分优化器**：选择一个优化器，对模型的 wide 部分应用梯度。
 
 6.  **Wide 优化器学习速率**：输入 0.0 和 2.0 之间的数字，该数字定义 wide 部分优化器的学习速率。
 
-    此超参数确定每个训练步骤的步骤大小，同时不断接近损失函数的最小值。 学习速率过高可能导致学习跳升超过最小值，而学习速率过小可能会导致收敛问题。
+    此超参数确定每个训练步骤的步骤大小，同时不断接近损失函数的最小值。 学习速过高可能导致学习跳升超过最小值，而学习率过小可能会导致收敛问题。
 
-7.  **交叉特征维度**：通过输入所需的用户 ID 和项目 ID 特征来键入此维度。 
+7.  交叉特征维度：通过输入所需的用户 ID 和项目 ID 特征来键入此维度。 
 
-    默认情况下，Wide & Deep 推荐器对用户 ID 和项目 ID 功能执行跨产品转换。 将根据此数字对交叉结果进行哈希处理，以确保维持该维度。
+    默认情况下，Wide & Deep 推荐器将对用户 ID 和项目 ID 功能执行跨产品转换。 将根据此数字对交叉结果进行哈希处理，以确保维持该维度。
 
 8.  **Deep 部分优化器**：选择一个优化器，对模型的 deep 部分应用梯度。
 
 9.  **Deep 优化器学习速率**：输入介于 0.0 和 2.0 之间的数字，该数字定义 deep 部分优化器的学习速率。
 
-10.  **用户嵌套维度**：键入整数以指定用户 ID 嵌套的维度。
+10.  用户嵌套维度：键入整数以指定用户 ID 嵌套的维度。
 
-     Wide & Deep 推荐器为 Wide 部分和 Deep 分创建共享的用户 ID 嵌套和项目 ID 嵌套。
+     Wide & Deep 推荐器将为 Wide 部分和 Deep 部分创建共享的用户 ID 嵌套和项目 ID 嵌套。
 
-11.  **嵌套维度**：键入整数以指定项目 ID 嵌套的维度。
+11.  嵌套维度：键入整数以指定项目 ID 嵌套的维度。
 
 12.  **分类特征嵌套维度**：输入整数以指定分类特征嵌套的维度。
 
-     在 Wide & Deep 推荐器的 deep 组件中，会为每个分类特征习得一个嵌套矢量。 这些嵌套矢量具有相同的维度。
+     在 Wide & Deep 推荐器的 deep 组件中，会针对每个分类特征习得一个嵌套矢量。 这些嵌套矢量具有相同的维度。
 
-13.  **隐藏单位**：键入 deep 组件的隐藏节点数。 每个层中的节点数用逗号分隔。 例如，按类型“1000,500,100”，指定 deep 组件有三个层，第一层到最后一层分别有 1000 个节点、500 个节点和 100 个节点。
+13.  **隐藏单位**：键入 deep 组件的隐藏节点数。 每个层中的节点数用逗号分隔。 例如，可以通过类型“1000,500,100”指定 deep 组件有三个层，第一层到最后一层分别有 1000 个节点、500 个节点和 100 个节点。
 
 14.  **激活函数**：选择一个应用于每个层的激活函数，默认值为 ReLU。
 
@@ -137,15 +139,56 @@ Wide & Deep 推荐器将这些方法结合在一起，即结合使用协作筛�
 
 17.  运行管道。
 
-## <a name="results"></a>结果
 
-管道运行完成后，若要使用模型进行评分，请将[训练 Wide and Deep 推荐器](train-wide-and-deep-recommender.md)连接到[为 Wide and Deep 推荐器评分](score-wide-and-deep-recommender.md)，以预测新输入示例的值。
+<!-- ## Distributed training
+
+In distributed training the workload to train a model is split up and shared among multiple mini processors, called worker nodes. These worker nodes work in parallel to speed up model training. Currently the designer support distributed training for **Train Wide & Deep Recommender** module.
+
+### How to enable distributed training
+
+To enable distributed training for **Train Wide & Deep Recommender** module, you can set in **Run settings** in the right pane of the module. Only **[AML Compute cluster](https://docs.microsoft.com/azure/machine-learning/how-to-create-attach-compute-cluster?tabs=python)** is supported for distributed training.
+
+1. Select the module and open the right panel. Expand the **Run settings** section.
+
+    [![Screenshot showing how to set distributed training in run setting](./media/module/distributed-training-run-setting.png)](./media/module/distributed-training-run-setting.png#lightbox)
+
+1. Make sure you have select AML compute for the compute target.
+
+1. In **Resource layout** section, you need to set the following values:
+
+    - **Node count**: Number of nodes in the compute target used for training. It should be **less than or equal to** the **Maximum number of nodes** your compute cluster. By default it is 1, which means single node job.
+
+    - **Process count per node**: Number of processes triggered per node. It should be **less than or equal to** the **Processing Unit** of your compute. By default it is 1, which means single node job.
+
+    You can check the **Maximum number of nodes** and **Processing Unit** of your compute by clicking the compute name into the compute detail page.
+
+    [![Screenshot showing how to check compute cluster](./media/module/compute-cluster-node.png)](./media/module/compute-cluster-node.png#lightbox)
+
+You can learn more about distributed training in Azure Machine Learning [here](https://docs.microsoft.com/azure/machine-learning/concept-distributed-training).
+
+
+### Troubleshooting for distributed training
+
+If you enable distributed training for this module, there will be driver logs for each process. `70_driver_log_0` is for master process. You can check driver logs for error details of each process under **Outputs+logs** tab in the right pane.
+
+[![Screenshot showing driver log](./media/module/distributed-training-error-driver-log.png)](./media/module/distributed-training-error-driver-log.png#lightbox) 
+
+If the module enabled distributed training fails without any `70_driver` logs, you can check `70_mpi_log` for error details.
+
+The following example shows a common error that is **Process count per node** is larger than **Processing Unit** of the compute.
+
+[![Screenshot showing mpi log](./media/module/distributed-training-error-mpi-log.png)](./media/module/distributed-training-error-mpi-log.png#lightbox)
+
+## Results
+
+After pipeline run is completed, to use the model for scoring, connect the [Train Wide and Deep Recommender](train-wide-and-deep-recommender.md) to [Score Wide and Deep Recommender](score-wide-and-deep-recommender.md), to predict values for new input examples.
+ -->
 
 ##  <a name="technical-notes"></a>技术说明
 
-Wide & Deep 联合训练广义线性模型和深度神经网络，结合了记忆和泛华的优点。 Wide 组件接受一组原始特征和特征转换来记忆特征交互。 通过弱化特征工程，深层组件通过低维密集特征嵌套，泛化到前所未见的特征组合。 
+Wide & Deep 联合训练广义线性模型和深度神经网络，结合了记忆和泛华的优点。 Wide 组件接受一组原始特征和特征转换来记忆特征交互。 使用弱化特征工程时，deep 组件通过低维密集特征嵌套，泛化为前所未见的特征组合。 
 
-在实现 Wide & Deep 推荐器时，模块使用默认模型结构。 Wide 组件将用户嵌套、项目嵌套以及用户 ID 和项目 ID 的跨产品转换作为输入使用。 对于模型的 deep 部分，将为每个分类特征习得一个嵌套矢量。 这些矢量随后与其他数值特征矢量一起，被馈入深层前馈神经网络。 通过汇总 wide 部分和 deep 部分的最终输出对数几率，并将其作为预测（最终将其转入常见损失函数用于联合训练）来合并这两个部分。
+在实现 Wide & Deep 推荐器时，模块使用默认模型结构。 Wide 组件将用户嵌套、项目嵌套以及用户 ID 和项目 ID 的跨产品转换作为输入使用。 对于模型的 Deep 部分，系统将为每个分类特征习得一个嵌套矢量。 这些矢量随后与其他数值特征矢量一起，被馈入深层前馈神经网络。 通过汇总 wide 部分和 deep 部分的最终输出对数几率，并将其作为预测（最终将其转入常见损失函数用于联合训练）来合并这两个部分。
 
 
 ## <a name="next-steps"></a>后续步骤

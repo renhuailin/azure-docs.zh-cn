@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/11/2021
+ms.date: 04/27/2021
 ms.author: jeedes
-ms.openlocfilehash: a1e62dfd89ccd23ef950767d883fde80f1a5ca26
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98e6290041573adb4dba0dced5268caacae47017
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104953232"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162791"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-truechoice"></a>教程：Azure Active Directory 单一登录 (SSO) 与 TrueChoice 的集成
 
@@ -90,19 +90,12 @@ ms.locfileid: "104953232"
 
 1. TrueChoice 应用程序需要特定格式的 SAML 断言，这需要将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表。
 
-    ![image](common/default-attributes.png)
+    ![image](./media/truechoice-tutorial/default-attributes.png)
 
-1. 除上述属性以外，TrueChoice 应用程序还要求在 SAML 响应中传回其他几个属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
-    
-    | 名称 |  源属性|
-    | ----------------- | --------- |
-    | country | user.country |
-    | name | user.displayname |
-    |
-
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
+1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。

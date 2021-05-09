@@ -3,15 +3,15 @@ title: 发布服务目录托管应用
 description: 演示如何创建适用于组织中成员的 Azure 托管应用程序。
 author: tfitzmac
 ms.topic: quickstart
-ms.custom: subject-armqs, devx-track-azurecli
+ms.custom: subject-armqs, devx-track-azurecli, devx-track-azurepowershell
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: b255cafb9040f87c902fe6c094c3e0db3d461e4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5306b40688974b17fb268a31c2d095de264df6d
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101093650"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108314690"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>快速入门：创建并发布托管应用程序定义
 

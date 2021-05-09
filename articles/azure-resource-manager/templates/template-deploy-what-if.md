@@ -5,12 +5,13 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: tomfitz
-ms.openlocfilehash: ff024ff97baa8a80ae6b1fcdafba010e482afd98
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4838838da7499c9d0af1dcb09844b50b17ef4b2b
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106074616"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108314942"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM 模板部署 What-if 操作
 
@@ -95,17 +96,17 @@ Resource changes: 1 to modify.
 
 若要在部署模板前预览更改，请使用：
 
-* [az deployment group what-if](/cli/azure/deployment/group#az-deployment-group-what-if)（适用于资源组部署）
-* [az deployment sub what-if](/cli/azure/deployment/sub#az-deployment-sub-what-if)（适用于订阅级别部署）
-* [az deployment mg what-if](/cli/azure/deployment/mg#az-deployment-mg-what-if)（适用于管理组部署）
-* [az deployment tenant what-if](/cli/azure/deployment/tenant#az-deployment-tenant-what-if)（适用于租户部署）
+* [az deployment group what-if](/cli/azure/deployment/group#az_deployment_group_what_if)（适用于资源组部署）
+* [az deployment sub what-if](/cli/azure/deployment/sub#az_deployment_sub_what_if)（适用于订阅级别部署）
+* [az deployment mg what-if](/cli/azure/deployment/mg#az_deployment_mg_what_if)（适用于管理组部署）
+* [az deployment tenant what-if](/cli/azure/deployment/tenant#az_deployment_tenant_what_if)（适用于租户部署）
 
 可以使用 `--confirm-with-what-if` 开关（或其缩写形式 `-c`）预览更改，并让系统显示是否继续部署的提示。 将此开关添加到：
 
-* [az 部署组创建](/cli/azure/deployment/group#az-deployment-group-create)
-* [az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create)。
-* [az deployment mg create](/cli/azure/deployment/mg#az-deployment-mg-create)
-* [az deployment tenant create](/cli/azure/deployment/tenant#az-deployment-tenant-create)
+* [az 部署组创建](/cli/azure/deployment/group#az_deployment_group_create)
+* [az deployment sub create](/cli/azure/deployment/sub#az_deployment_sub_create)。
+* [az deployment mg create](/cli/azure/deployment/mg#az_deployment_mg_create)
+* [az deployment tenant create](/cli/azure/deployment/tenant#az_deployment_tenant_create)
 
 例如，对于资源组部署，请使用 `az deployment group create --confirm-with-what-if` 或 `-c`。
 

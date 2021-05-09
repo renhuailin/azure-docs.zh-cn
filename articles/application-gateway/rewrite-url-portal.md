@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 4/05/2021
 ms.author: azhussai
-ms.openlocfilehash: b8ddc5e57b9ce56d6bce7e220bc840ba0fa43ae2
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: c0a99d2c2885de59ccc903b9f505b8049d922b43
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384751"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205190"
 ---
 # <a name="rewrite-url-with-azure-application-gateway---azure-portal"></a>使用 Azure 应用程序网关重写 URL - Azure 门户
 
@@ -120,4 +120,4 @@ ms.locfileid: "106384751"
 
 ##  <a name="next-steps"></a>后续步骤
 
-有关如何设置某些常见用例的重写的详细信息，请参阅[常见重写方案](rewrite-http-headers.md)。
+有关如何设置某些常见用例的重写的详细信息，请参阅[常见重写方案](./rewrite-http-headers-url.md)。

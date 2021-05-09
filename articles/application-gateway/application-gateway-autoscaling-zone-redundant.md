@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: fad6e27c4ee7e8c10237cb3face5cfab9329b2ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a487cba5026da827276f2e7681c0d362127a4e27
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98059715"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204830"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自动缩放和区域冗余应用程序网关 v2 
 
@@ -26,7 +26,7 @@ ms.locfileid: "98059715"
 
   仅当 Azure 区域可用时，区域冗余才可用。 在其他区域中，支持所有其他功能。 有关详细信息，请参阅 [Azure 中的区域和可用性区域](../availability-zones/az-overview.md)
 - **静态 VIP**：应用程序网关 v2 SKU 支持独占形式的静态 VIP 类型。 这可以确保与应用程序网关关联的 VIP 在部署的整个生命周期内不会更改，即使发生重启。  v1 中没有静态 VIP，因此必须使用应用程序网关 URL（而不是 IP 地址）通过应用程序网关将域名路由到应用服务。
-- **标头重写**：应用程序网关允许使用 v2 SKU 添加、删除或更新 HTTP 请求和响应标头。 有关详细信息，请参阅[使用应用程序网关重写 HTTP 标头](rewrite-http-headers.md)
+- **标头重写**：应用程序网关允许使用 v2 SKU 添加、删除或更新 HTTP 请求和响应标头。 有关详细信息，请参阅[使用应用程序网关重写 HTTP 标头](./rewrite-http-headers-url.md)
 - **Key Vault 集成**：应用程序网关 v2 支持与密钥保管库集成，以获取附加到支持 HTTPS 的侦听器的服务器证书。 有关详细信息，请参阅[使用 Key Vault 证书实现 TLS 终止](key-vault-certs.md)。
 - Azure Kubernetes 服务入口控制器：应用程序网关 v2 入口控制器允许将 Azure 应用程序网关用作 Azure Kubernetes 服务 (AKS) 的入口（称为 AKS 群集）。 有关详细信息，请参阅[什么是应用程序网关入口控制器？](ingress-controller-overview.md)。
 - **性能增强**：v2 SKU 提供的 TLS 卸载性能比 Standard/WAF SKU 高达 5 倍。

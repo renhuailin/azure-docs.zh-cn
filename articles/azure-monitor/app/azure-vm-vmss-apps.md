@@ -3,12 +3,13 @@ title: 监视 Azure VM 的性能 - Azure Application Insights
 description: 针对 Azure VM 和 Azure 虚拟机规模集进行应用程序性能监视 对加载和响应时间、依赖项信息绘制图表，并针对性能设置警报。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 0951d1d622f59de4780735fad78ac73649ea2369
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d60b06331f10f33fabfb7ef03365ee6ac8689bcf
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101711475"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315158"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>在 Azure 虚拟机和 Azure 虚拟机规模集上部署 Azure Monitor Application Insights 代理
 
@@ -42,7 +43,7 @@ ms.locfileid: "101711475"
   * Application Insights 代理自动收集与 .NET SDK 相同的、现成的依赖项信号。 若要了解详细信息，请参阅[依赖项自动收集](./auto-collect-dependencies.md#net)。
         
 #### <a name="java"></a>Java
-  * 对于 Java，建议使用的方法是 **[Application Insights Java 3.0 代理](./java-in-process-agent.md)** 。 最常用的库和框架，以及日志和依赖项是[自动收集](./java-in-process-agent.md#auto-collected-requests-dependencies-logs-and-metrics)的，并且采用许多[额外配置](./java-standalone-config.md)
+  * 对于 Java，建议使用的方法是 **[Application Insights Java 3.0 代理](./java-in-process-agent.md)** 。 最常用的库和框架，以及日志和依赖项是[自动收集](./java-in-process-agent.md#auto-collected-requests)的，并且采用许多[额外配置](./java-standalone-config.md)
 
 ### <a name="code-based-via-sdk"></a> 通过 SDK 执行的“基于代码”方法
     
