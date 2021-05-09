@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: f4477a09f151695b826d0becf28e92ceaf3f9e85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f9f6c18e75b0c8238583742a2a99d0e365edbd0
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102453200"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166354"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>适用于 Azure Functions 的 Azure 队列存储触发器
 
@@ -101,17 +101,17 @@ public static void Run(CloudQueueMessage myQueueItem,
 
 以下 Java 示例显示了一个存储队列触发器函数，该函数用于记录放入队列 `myqueuename` 的触发消息。
 
- ```java
- @FunctionName("queueprocessor")
- public void run(
+```java
+@FunctionName("queueprocessor")
+public void run(
     @QueueTrigger(name = "msg",
-                   queueName = "myqueuename",
-                   connection = "myconnvarname") String message,
-     final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
- ```
+                queueName = "myqueuename",
+                connection = "myconnvarname") String message,
+    final ExecutionContext context
+) {
+    context.getLogger().info(message);
+}
+```
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -166,32 +166,32 @@ module.exports = async function (context, message) {
 
 ```json
 {
-  "bindings": [
-    {
-      "name": "QueueItem",
-      "type": "queueTrigger",
-      "direction": "in",
-      "queueName": "messages",
-      "connection": "MyStorageConnectionAppSetting"
-    }
-  ]
+  "bindings": [
+    {
+      "name": "QueueItem",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "messages",
+      "connection": "MyStorageConnectionAppSetting"
+    }
+  ]
 }
 ```
 
 Run.ps1 文件中的代码将参数声明为 `$QueueItem`，以允许你在函数中读取队列消息。
 
 ```powershell
-# Input bindings are passed in via param block.
-param([string] $QueueItem, $TriggerMetadata)
+# Input bindings are passed in via param block.
+param([string] $QueueItem, $TriggerMetadata)
 
-# Write out the queue message and metadata to the information log.
-Write-Host "PowerShell queue trigger function processed work item: $QueueItem"
-Write-Host "Queue item expiration time: $($TriggerMetadata.ExpirationTime)"
-Write-Host "Queue item insertion time: $($TriggerMetadata.InsertionTime)"
-Write-Host "Queue item next visible time: $($TriggerMetadata.NextVisibleTime)"
-Write-Host "ID: $($TriggerMetadata.Id)"
-Write-Host "Pop receipt: $($TriggerMetadata.PopReceipt)"
-Write-Host "Dequeue count: $($TriggerMetadata.DequeueCount)"
+# Write out the queue message and metadata to the information log.
+Write-Host "PowerShell queue trigger function processed work item: $QueueItem"
+Write-Host "Queue item expiration time: $($TriggerMetadata.ExpirationTime)"
+Write-Host "Queue item insertion time: $($TriggerMetadata.InsertionTime)"
+Write-Host "Queue item next visible time: $($TriggerMetadata.NextVisibleTime)"
+Write-Host "ID: $($TriggerMetadata.Id)"
+Write-Host "Pop receipt: $($TriggerMetadata.PopReceipt)"
+Write-Host "Dequeue count: $($TriggerMetadata.DequeueCount)"
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -381,7 +381,7 @@ Python 不支持特性。
 应用如果使用 [5.0.0 版或更高版本的存储扩展](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)，还可以使用[用于 .NET 的 Azure SDK](/dotnet/api/overview/azure/storage.queues-readme) 中的类型。 此版本为了支持以下类型，删除了对旧的 `CloudQueueMessage` 类型的支持：
 
 - [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)
- 
+
 有关使用这些类型的示例，请参阅[扩展的 GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples)。
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
@@ -390,7 +390,7 @@ Python 不支持特性。
 
 使用 `string paramName` 等方法参数访问消息数据。 `paramName` 是在 *function.json* 的 `name` 属性中指定的值。 可以绑定到以下任何类型：
 
-* 对象 - Functions 运行时将 JSON 负载反序列化为代码中定义的任意类的实例。 
+* 对象 - Functions 运行时将 JSON 负载反序列化为代码中定义的任意类的实例。
 * `string`
 * `byte[]`
 * [CloudQueueMessage]
@@ -462,7 +462,7 @@ Python 不支持特性。
 
 当有多个队列消息在等待时，队列触发器会检索一批消息并以并发方式调用函数实例来处理它们。 默认情况下，批大小为 16。 当处理的数量下降到 8 时，运行时可获取另一个批，并开始处理这些消息。 因此，单个虚拟机 (VM) 上每个函数处理的最大并发消息数是 24。 此限制分别应用于每个 VM 上各个队列触发的函数。 如果你的函数应用横向扩展到多个 VM，则每个 VM 将等待触发器并尝试运行函数。 例如，如果某个函数应用横向扩展到 3 个 VM，则每个队列触发的函数的默认最大并发实例数是 72。
 
-可以在 [host.json 文件](functions-host-json.md#queues)中配置用于获取新批的批大小和阈值。 如果希望在函数应用中最大程度地降低查询触发的函数的并行执行，可以将批大小设置为 1。 只有当函数在单个虚拟机 (VM) 上运行时，此设置才可消除并发。 
+可以在 [host.json 文件](functions-host-json.md#queues)中配置用于获取新批的批大小和阈值。 如果希望在函数应用中最大程度地降低查询触发的函数的并行执行，可以将批大小设置为 1。 只有当函数在单个虚拟机 (VM) 上运行时，此设置才可消除并发。
 
 队列触发器会自动阻止函数同时多次处理队列消息。
 

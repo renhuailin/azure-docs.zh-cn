@@ -1,7 +1,7 @@
 ---
 title: 如何获取唇音同步的人脸姿态事件
 titleSuffix: Azure Cognitive Services
-description: 语音 SDK 支持语音合成中的视素事件，该事件用于表示观察到的语音中的关键姿态，例如，在产生特定音素时嘴唇、下巴和舌头的位置。
+description: 语音 SDK 支持语音合成中的视素事件，该事件表示观察到的语音中的关键姿态，例如，在产生特定音素时嘴唇、下巴和舌头的位置。
 services: cognitive-services
 author: yulin-li
 manager: nitinme
@@ -12,19 +12,19 @@ ms.date: 03/03/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: e97c48d4e42627d0fc2caaa4f66e81b9a0cafa86
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a7808b3b5db9d01d6a1a2cd352a912d44a4e7908
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643896"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904489"
 ---
 # <a name="get-facial-pose-events"></a>获取人脸姿态事件
 
 > [!NOTE]
-> 目前，视素仅适用于 `en-US-AriaNeural` 语音。
+> Viseme 事件现仅可用于 `en-US-AriaNeural` 语音。
 
-视素是口语中音素的视觉描述。
+_视素_ 是口语中音素的视觉描述。
 它定义了在说一个字词时人脸和嘴部的位置。
 每个视素都描绘与一组特定音素对应的关键人脸姿态。
 在视素和音素之间没有一对一的对应关系。
