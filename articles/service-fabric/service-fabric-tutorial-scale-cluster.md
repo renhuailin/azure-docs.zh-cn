@@ -3,19 +3,19 @@ title: 缩放 Azure 中的 Service Fabric 群集
 description: 本教程介绍如何横向扩展和缩小 Azure 中的 Service Fabric 群集，以及如何清理剩余资源。
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: cdc7ba8d6c83ae72ffb8f1afae3954b3a46dc6ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc
+ms.openlocfilehash: 3072caa1bacf31b1c02ab7ca8720d190736ad3ff
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98787988"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287259"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教程：缩放 Azure 中的 Service Fabric 群集
 
 本教程是系列教程的第三部分，介绍如何扩大和缩小现有群集。 完成时，将知道如何缩放群集以及如何清理剩余的资源。  有关缩放 Azure 中运行的群集的详细信息，请阅读[缩放 Service Fabric 群集](service-fabric-cluster-scaling.md)。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 添加和删除节点（横向扩展和横向缩减）

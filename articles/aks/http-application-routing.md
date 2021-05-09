@@ -4,14 +4,14 @@ description: 使用 HTTP 应用程序路由加载项访问部署在 Azure Kubern
 services: container-service
 author: lachie83
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 04/23/2021
 ms.author: laevenso
-ms.openlocfilehash: 25fc021a48e8936f242df35f7485fc59a93bba13
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9f02bcdd5fbe9a04d2cc35af6f0bc80e99711c14
+ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102172794"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108007477"
 ---
 # <a name="http-application-routing"></a>HTTP 应用程序路由
 
@@ -130,7 +130,7 @@ spec:
   selector:
     app: aks-helloworld
 ---
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: aks-helloworld
@@ -141,10 +141,13 @@ spec:
   - host: aks-helloworld.<CLUSTER_SPECIFIC_DNS_ZONE>
     http:
       paths:
-      - backend:
-          serviceName: aks-helloworld
-          servicePort: 80
-        path: /
+      - path: /
+        pathType: Prefix
+        backend:
+          service: 
+            name: aks-helloworld
+            port: 
+              number: 80
 ```
 
 使用 [kubectl apply][kubectl-apply] 命令创建资源。
@@ -280,12 +283,12 @@ ingress "aks-helloworld" deleted
 有关如何在 AKS 中安装受 HTTPS 保护的入口控制器的信息，请参阅 [Azure Kubernetes 服务 (AKS) 中的 HTTPS 入口][ingress-https]。
 
 <!-- LINKS - internal -->
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-show]: /cli/azure/aks#az-aks-show
+[az-aks-create]: /cli/azure/aks#az_aks_create
+[az-aks-show]: /cli/azure/aks#az_aks_show
 [ingress-https]: ./ingress-tls.md
-[az-aks-enable-addons]: /cli/azure/aks#az-aks-enable-addons
-[az aks install-cli]: /cli/azure/aks#az-aks-install-cli
-[az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-enable-addons]: /cli/azure/aks#az_aks_enable_addons
+[az aks install-cli]: /cli/azure/aks#az_aks_install_cli
+[az aks get-credentials]: /cli/azure/aks#az_aks_get_credentials
 
 <!-- LINKS - external -->
 [dns-pricing]: https://azure.microsoft.com/pricing/details/dns/

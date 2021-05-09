@@ -8,24 +8,24 @@ ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 155566a125485fda326f9f5e02d4aead0ffe30e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc6c6e4d97bb90cdf88c50b1d3fbc4e27b5a9a0a
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100560747"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208394"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>使用 DTDL 分析程序库分析和验证模型
 
 Azure 数字孪生中的[模型](concepts-models.md)是使用基于 JSON-LD 的数字孪生定义语言 (DTDL) 定义的。 **建议先离线验证你的模型，然后再将其上传到你的 Azure 数字孪生实例。**
 
-为帮助你执行此操作，NuGet 上提供了一个 .NET 客户端 DTDL 分析库：[**Microsoft.Azure.DigitalTwins.Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)。 
+为帮助你执行此操作，NuGet 上提供了一个 .NET 客户端 DTDL 分析库：[Microsoft.Azure.DigitalTwins.Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)。 
 
-你可以直接在 C# 代码中使用分析程序库，也可以使用基于分析程序库构建的与语言无关的代码示例项目：[**DTDL 验证程序示例**](/samples/azure-samples/dtdl-validator/dtdl-validator)。
+你可以直接在 C# 代码中使用分析程序库，也可以使用基于分析程序库构建的与语言无关的代码示例项目：[DTDL 验证程序示例](/samples/azure-samples/dtdl-validator/dtdl-validator)。
 
 ## <a name="use-the-dtdl-validator-sample"></a>使用 DTDL 验证程序示例
 
-[**DTDL 验证程序**](/samples/azure-samples/dtdl-validator/dtdl-validator)是一个示例项目，它可以对模型文档进行验证以确保 DTDL 有效。 它是基于 .NET 分析程序库构建的，与语言无关。 可以通过示例链接中的“下载 ZIP”按钮获取它。
+[DTDL 验证程序](/samples/azure-samples/dtdl-validator/dtdl-validator)是一个示例项目，它可以对模型文档进行验证以确保 DTDL 有效。 它是基于 .NET 分析程序库构建的，与语言无关。 可以通过示例链接中的“下载 ZIP”按钮获取它。
 
 源代码显示了有关如何使用分析程序库的示例。 可以将验证程序示例用作命令行实用工具来验证 DTDL 文件的目录树。 它还提供交互模式。
 
@@ -53,7 +53,7 @@ DTDLValidator -i
 
 ## <a name="use-the-net-parser-library"></a>使用 .NET 分析程序库 
 
-[**Microsoft.Azure.DigitalTwins.Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) 库提供对 DTDL 定义的模型访问权限，本质上相当于 DTDL 的 C# 反射。 此库可独立于任何 [Azure 数字孪生 SDK](how-to-use-apis-sdks.md) 使用，尤其适合在可视化编辑器或文本编辑器中进行 DTDL 验证。 使用它，可以在尝试将模型定义文件上传到服务之前确保这些文件有效。
+[Microsoft.Azure.DigitalTwins.Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) 库提供对 DTDL 定义的模型访问权限，本质上相当于 DTDL 的 C# 反射。 此库可独立于任何 [Azure 数字孪生 SDK](how-to-use-apis-sdks.md) 使用，尤其适合在可视化编辑器或文本编辑器中进行 DTDL 验证。 使用它，可以在尝试将模型定义文件上传到服务之前确保这些文件有效。
 
 若要使用分析程序库，请向其提供一组 DTDL 文档。 通常情况下，你将从服务中检索这些模型文档，但如果你的客户端从一开始就负责将它们上传到服务中，则也可在本地获取它们。 
 

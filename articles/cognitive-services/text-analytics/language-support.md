@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: aahi
-ms.openlocfilehash: c0d91f803822e018f4363bb78d9138e2efe16f8a
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 38fda578a2151d1d5cf306095b3be49cb916977b
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531431"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287421"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>文本分析 API v3 语言支持 
 
@@ -33,11 +33,11 @@ ms.locfileid: "107531431"
 | 意大利语               |     `it`      |     ✓      |         2019-10-01         |                    |
 | 日语              |     `ja`      |     ✓      |         2019-10-01         |                    |
 | 韩语                |     `ko`      |    ✓      |         2019-10-01         |                    |
-| 挪威语(博克马尔语)   |     `no`      |     ✓      |         2020-07-01         |                    |
+| 挪威语(博克马尔语)   |     `no`      |     ✓      |         2020-04-01         |                    |
 | 葡萄牙语（巴西）   |    `pt-BR`    |     ✓      |         2020-04-01         |                    |
 | 葡萄牙语(葡萄牙) |    `pt-PT`    |     ✓      |         2019-10-01         | `pt` 也接受 |
 | 西班牙语               |     `es`      |     ✓      |         2019-10-01         |                    |
-| 土耳其语               |     `tr`      |     ✓       |         2020-07-01        |                    |
+| 土耳其语               |     `tr`      |     ✓       |         2020-04-01        |                    |
 
 ### <a name="opinion-mining-v31-preview-only"></a>观点挖掘（仅限 v3.1-preview）
 

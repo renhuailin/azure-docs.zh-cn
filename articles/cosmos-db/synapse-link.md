@@ -7,12 +7,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 1b8c0c5bf533765e589e022233af14855b26d29c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.custom: synapse-cosmos-db
+ms.openlocfilehash: c9c751338db45a7d9df3f6e63e3d53e4e1ef4f74
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656935"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903229"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db"></a>什么是 Azure Synapse Link for Azure Cosmos DB？
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -54,7 +55,7 @@ Azure Cosmos DB 分析存储已经过优化，可为分析工作负荷提供可�
 Azure Cosmos DB 分析存储遵循基于消耗的定价模型，该模型基于数据存储和分析读/写操作以及已执行的查询。 这不会要求你预配任何吞吐量，因为目前如此操作是为了事务工作负荷。 通过 Azure Synapse Analytics 中极具弹性的计算引擎来访问你的数据，使运行存储和计算的总体成本非常高效。
 
 
-### <a name="analytics-for-locally-available-globally-distributed-multi-region-writes"></a>本地可用的分析、全球分布式多区域写入
+### <a name="analytics-for-locally-available-globally-distributed-multi-region-writes"></a>本地可用、全球分布、多区域写入的分析
 
 你可以高效地对 Azure Cosmos DB 中距离最近的区域的数据副本运行分析查询。 Azure Cosmos DB 提供了最先进的功能，可按主动-主动的方式运行全球分发的分析工作负荷和事务工作负荷。
 
@@ -72,7 +73,7 @@ Azure Cosmos DB 分析存储是 Azure Cosmos DB 中的操作数据的面向列�
 
 ### <a name="integration-with-azure-synapse-analytics"></a><a id="synapse-link-integration"></a>与 Azure Synapse Analytics 集成
 
-借助 Synapse Link，你现在可以直接从 Azure Synapse Analytics 连接到 Azure Cosmos DB 容器，并访问没有单独连接器的分析存储。 Azure Synapse Analytics 当前支持 Synapse 与 [Synapse Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md) 和 [无服务器 SQL 池](../synapse-analytics/sql/on-demand-workspace-overview.md)的链接。
+借助 Synapse Link，你现在可以直接从 Azure Synapse Analytics 连接到 Azure Cosmos DB 容器，并访问没有单独连接器的分析存储。 Azure Synapse Analytics 当前支持具有 [Synapse Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md) 和 [无服务器 SQL 池](../synapse-analytics/sql/on-demand-workspace-overview.md)的 Synapse Link。
 
 可以在 Azure Synapse Analytics 支持的不同分析运行时间内以互操作方式同时从 Azure Cosmos DB 分析存储查询数据。 不需要其他数据转换来分析操作数据。 可以使用以下对象来查询和分析分析存储数据：
 
@@ -98,20 +99,6 @@ Azure Cosmos DB 分析存储是 Azure Cosmos DB 中的操作数据的面向列�
 
 有关 Azure Cosmos DB 的 Azure Synapse Analytics 运行时支持的详细信息，请参阅 [Azure Synapse Analytics for Cosmos DB 支持](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md)。
 
-## <a name="security"></a>安全性
-
-Synapse 链接使你能够在 Azure Cosmos DB 中对关键任务数据运行近乎实时的分析。 务必确保关键业务数据安全地存储在事务和分析存储区中。 适用于 Azure Cosmos DB 的 Azure Synapse 链接旨在通过以下功能帮助满足这些安全要求：
-
-* **使用专用终结点的网络隔离** -可以单独控制对事务性和分析存储中的数据的网络访问。 使用 Azure Synapse 工作区中托管的虚拟网络内的每个存储的单独托管专用终结点实现网络隔离。 若要了解详细信息，请参阅如何为 [分析存储配置专用终结点](analytical-store-private-endpoints.md) 一文。
-
-* **使用客户管理的密钥对数据进行加密** -可以使用相同的客户托管密钥以自动且透明的方式跨事务和分析存储无缝地对数据进行加密。 若要了解详细信息，请参阅如何 [配置客户管理密钥](how-to-setup-cmk.md) 一文。
-
-* **安全密钥管理** -从 Synapse Spark 和 Synapse 无服务器 SQL 池中访问分析存储中的数据需要管理 Synapse Analytics 工作区中 Azure Cosmos DB 密钥。 Azure Synapse 链接提供更安全的功能，而不是在 Spark 作业或 SQL 脚本中以内联方式使用 Azure Cosmos DB 帐户密钥。
-
-  * 使用 Synapse 无服务器 SQL 池时，可以通过预先创建 SQL 凭据来查询 Azure Cosmos DB 分析存储，并在函数中引用它们 `OPENROWSET` 。 若要了解详细信息，请参阅 [在 Azure Synapse 中使用无服务器 SQL 池进行查询](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) 一文。
-
-  * 使用 Synapse Spark 时，可以将帐户密钥存储在指向 Azure Cosmos DB 数据库的链接服务对象中，并在运行时在 Spark 配置中引用此项。 若要了解详细信息，请参阅 [使用 Apache Spark 文章将数据复制到专用的 SQL 池中](../synapse-analytics/synapse-link/how-to-copy-to-sql-pool.md) 。
-
 ## <a name="when-to-use-azure-synapse-link-for-azure-cosmos-db"></a>何时使用 Azure Synapse Link for Azure Cosmos DB？
 
 建议在以下情况下使用 Synapse Link：
@@ -136,6 +123,21 @@ Synapse 链接使你能够在 Azure Cosmos DB 中对关键任务数据运行近�
 
 * 当前无法访问预配了 Synapse SQL 的 Azure Cosmos DB 分析存储。
 
+## <a name="security"></a>安全性
+
+Synapse Link 让你可以对 Azure Cosmos DB 中的关键任务型数据进行准实时分析。 务必确保关键业务数据安全地存储在事务存储和分析存储中。 适用于 Azure Cosmos DB 的 Azure Synapse Link 旨在通过以下功能帮助满足这些安全要求：
+
+* **使用专用终结点的网络隔离** - 可以单独控制对事务性和分析存储中的数据的网络访问。 在 Azure Synapse 工作区的托管虚拟网络内，为每个存储使用单独的托管专用终结点进行网络隔离。 如要了解详细信息，请参阅如何[为分析存储配置专用终结点](analytical-store-private-endpoints.md)一文。
+
+* 使用客户管理的密钥进行数据加密 - 可以采用自动且透明的方式使用相同的客户管理密钥无缝地跨事务存储和分析存储加密数据。 若要了解详细信息，请参阅[配置客户管理的密钥](how-to-setup-cmk.md)一文。
+
+* **安全密钥管理** - 从 Synapse Spark 和 Synapse 无服务器 SQL 池中访问分析存储中的数据，需要用户对 Synapse Analytics 工作区中 的 Azure Cosmos DB 密钥进行管理。 Azure Synapse Link 提供了更安全的功能，代替了在 Spark 作业或 SQL 脚本中以内联方式使用 Azure Cosmos DB 帐户密钥这种方式。
+
+  * 使用 Synapse 无服务器 SQL 池时，可以通过预先创建用于存储账户密钥的 SQL 凭据并在 `OPENROWSET` 函数中引用这些凭证来查询 Azure Cosmos DB 分析存储。 如要了解详细信息，请参阅[在 Azure Synapse Link 中使用无服务器 SQL 池进行查询](../synapse-analytics/sql/query-cosmos-db-analytical-store.md)一文。
+
+  * 使用 Synapse Spark 时，可以将帐户密钥存储在指向 Azure Cosmos DB 数据库的链接服务对象中，并在运行时在 Spark 配置中引用此项。 如要了解详细信息，请参阅[使用 Apache Spark 将数据复制到专用的 SQL 池中](../synapse-analytics/synapse-link/how-to-copy-to-sql-pool.md)一文。
+
+
 ## <a name="pricing"></a>定价
 
 Azure Synapse Link 的计费模型包括使用 Azure Cosmos DB 分析存储和 Synapse 运行时所产生的成本。 若要了解详细信息，请参阅 [Azure Cosmos DB 分析存储定价](analytical-store-introduction.md#analytical-store-pricing)和 [Azure Synapse Analytics 定价](https://azure.microsoft.com/pricing/details/synapse-analytics/)文章。
@@ -150,6 +152,6 @@ Azure Synapse Link 的计费模型包括使用 Azure Cosmos DB 分析存储和 S
  
 * [Azure Synapse Analytics 运行时支持的功能](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md)
 
-* [有关 Azure Synapse Link for Azure Cosmos DB 的常见问题](synapse-link-frequently-asked-questions.md)
+* [有关 Azure Synapse Link for Azure Cosmos DB 的常见问题](synapse-link-frequently-asked-questions.yml)
 
 * [Azure Synapse Link for Azure Cosmos DB 用例](synapse-link-use-cases.md)

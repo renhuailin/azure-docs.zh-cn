@@ -3,19 +3,19 @@ title: '快速入门：使用 Azure Maps 创建 Android 应用 | Microsoft Azure
 description: 快速入门：了解如何使用 Azure Maps Android SDK 创建 Android 应用。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/10/2020
+ms.date: 04/26/2021
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: mvc
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 3c0f95c1252b6895b4604d14e5565395beab8952
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2a67f432b126fb164b1b099b772646a679c28837
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102039642"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108323478"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-maps"></a>快速入门：使用 Azure Maps 创建 Android 应用
 
@@ -49,7 +49,7 @@ ms.locfileid: "102039642"
     * 阅读许可证和隐私声明，并选择复选框接受这些条款   。
     * 单击“创建”  按钮。
 
-    ![在门户中创建 Maps 帐户](media/quick-android-map/create-account.png)
+    :::image type="content" source="./media/quick-demo-map-app/create-account.png" alt-text="在门户中创建 Maps 帐户":::
 
 ## <a name="get-the-primary-key-for-your-account"></a>获取帐户的主密钥
 

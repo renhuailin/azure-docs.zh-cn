@@ -6,12 +6,12 @@ ms.subservice: ''
 ms.date: 01/27/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b497b0a8f34b4310e3f11beed982c4453fc79159
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 36f8b9d8fc890eb486ec59b972cc2fdf52ae0c80
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830819"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166048"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>排查共享资源问题
 
@@ -97,20 +97,20 @@ Azure modules are being updated
 
 如果更新过程暂停，请向 **Update-AzureModules.ps1** 脚本添加 `SimultaneousModuleImportJobCount` 参数，并提供小于默认值 10 的值。 如果实现此逻辑，请尝试从值 3 或 5 开始。 `SimultaneousModuleImportJobCount` 是用于更新 Azure 模块的 **Update-AutomationAzureModulesForAccount** 系统 Runbook 的一个参数。 如果进行此调整，更新过程的运行时间会变长，但会提高成功完成的可能性。 以下示例显示了该参数及其在 runbook 中的放置位置：
 
- ```powershell
-         $Body = @"
-            {
-               "properties":{
-               "runbook":{
-                   "name":"Update-AutomationAzureModulesForAccount"
-               },
-               "parameters":{
-                    ...
-                    "SimultaneousModuleImportJobCount":"3",
-                    ... 
-               }
-              }
-           }
+```powershell
+$Body = @"
+   {
+      "properties":{
+      "runbook":{
+            "name":"Update-AutomationAzureModulesForAccount"
+      },
+      "parameters":{
+            ...
+            "SimultaneousModuleImportJobCount":"3",
+            ... 
+      }
+      }
+   }
 "@
 ```
 

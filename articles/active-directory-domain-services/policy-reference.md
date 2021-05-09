@@ -1,19 +1,19 @@
 ---
 title: Azure Active Directory 域服务的内置策略定义
 description: 列出 Azure Active Directory 域服务的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 04/22/2021
+ms.date: 04/28/2021
 ms.service: active-directory
 ms.subservice: domain-services
 author: justinha
 ms.author: justinha
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 9f53cb14cbf86163f7208754b8c7274a1e3a5e94
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 18c3b20402e98f6239894d9e37c6395c903faebe
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107912459"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175347"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-active-directory-domain-services"></a>适用于 Azure Active Directory 域服务的 Azure Policy 内置定义
 

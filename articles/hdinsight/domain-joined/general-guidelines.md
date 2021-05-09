@@ -4,12 +4,12 @@ description: 一些应该可以简化企业安全性套餐的部署和管理的�
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 92ad8362f75cdf0613d4ee95f39c23aa6d4819bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57bf6d1773857b7627b8cea5b69d18e337e41427
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98933563"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292839"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>Azure HDInsight 中的企业安全性常规信息和准则
 
@@ -112,7 +112,7 @@ ms.locfileid: "98933563"
 [Azure Active Directory 域服务](../../active-directory-domain-services/overview.md) (Azure AD DS) 提供与 Windows Server Active Directory 完全兼容的托管域服务，例如域加入、组策略、轻型目录访问协议 (LDAP) 和 Kerberos/NTLM 身份验证。
 
 若要让安全群集加入域，Azure AD DS 是必需的。
-HDInsight 不能依赖于本地域控制器或自定义域控制器，因为它引入了太多的故障点、凭据共享、DNS 权限等。 有关详细信息，请参阅 [Azure AD DS 常见问题解答](../../active-directory-domain-services/faqs.md)。
+HDInsight 不能依赖于本地域控制器或自定义域控制器，因为它引入了太多的故障点、凭据共享、DNS 权限等。 有关详细信息，请参阅 [Azure AD DS 常见问题解答](../../active-directory-domain-services/faqs.yml)。
 
 ### <a name="azure-ad-ds-instance"></a>Azure AD DS 实例
 
