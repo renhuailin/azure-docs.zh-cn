@@ -3,12 +3,13 @@ title: 将资源部署到订阅
 description: 介绍了如何在 Azure 资源管理器模板中创建资源组。 它还展示了如何在 Azure 订阅范围内部署资源。
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: f557a3a15da33b7394d22784bcd2c1c914ad6201
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4514067a4f8601e7774c0bfbdf1f65d8ef3a3e09
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889427"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108314582"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>使用 ARM 模板进行订阅部署
 
@@ -92,7 +93,7 @@ ms.locfileid: "104889427"
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-对于 Azure CLI，请使用 [az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create)。 以下示例会部署一个模板来创建资源组：
+对于 Azure CLI，请使用 [az deployment sub create](/cli/azure/deployment/sub#az_deployment_sub_create)。 以下示例会部署一个模板来创建资源组：
 
 ```azurecli-interactive
 az deployment sub create \

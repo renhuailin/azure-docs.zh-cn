@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/05/2020
 ms.author: v-jawe
-ms.openlocfilehash: 8f968572a357bb3c98d9c3133a7ec0a0a94dbf93
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3873a15c6a56d6ee4944cc596f447c966c275950
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105958081"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108313698"
 ---
 ## <a name="quickstart-face-client-library-for-javascript"></a>快速入门：适用于 JavaScript 的人脸客户端库
 
@@ -163,27 +163,27 @@ endpoint = "<paste-your-face-endpoint-here>"
 
 [识别](/javascript/api/@azure/cognitiveservices-face/face#identify_string____FaceIdentifyOptionalParams__ServiceCallback_IdentifyResult____)操作采用一个人（或多个人）的图像，并在图像中查找每个人脸的标识（人脸识别搜索）。 它将每个检测到的人脸与某个 [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)（面部特征已知的不同 [Person](/javascript/api/@azure/cognitiveservices-face/person) 对象的数据库）进行比较。 为了执行“识别”操作，你首先需要创建并训练 [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)。
 
-### <a name="add-faces-to-persongroup"></a>将人脸添加到人员组
+### <a name="add-faces-to-persongroup"></a>将人脸添加到 PersonGroup
 
 创建以下函数以将人脸添加到 [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)。
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="add_faces":::
 
-### <a name="wait-for-training-of-persongroup"></a>等待人员组的培训
+### <a name="wait-for-training-of-persongroup"></a>等待 PersonGroup 训练
 
-创建以下帮助程序函数，静待人员组完成培训。
+创建以下帮助程序函数，静待 PersonGroup完成训练。
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="wait_for_training":::
 
 ### <a name="create-a-persongroup"></a>创建人员组
 
 以下代码：
-- 创建 [PersonGroup](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup)
-- 通过调用你以前定义的 `AddFacesToPersonGroup` 将人脸添加到人员组。
-- 训练人员组。
-- 识别该人员组中的人脸。
+- 创建 [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)
+- 通过调用你以前定义的 `AddFacesToPersonGroup`，将人脸添加到 PersonGroup。
+- 训练 PersonGroup。
+- 识别该 PersonGroup 中的人脸。
 
-现已准备好在“验证”、“识别”或“分组”操作中使用此人员组及其关联的人员对象。
+现已准备好在“验证”、“识别”或“分组”操作中使用此 PersonGroup 及其关联的 Person 对象 。
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="identify":::
 
@@ -208,7 +208,7 @@ node index.js
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>后续步骤

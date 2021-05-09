@@ -3,7 +3,7 @@ title: 使用访问评审管理来宾访问权限 - Azure AD
 description: 使用 Azure Active Directory 访问评审管理属于组的成员或已分配到应用程序的来宾用户
 services: active-directory
 documentationcenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 12/23/2020
-ms.author: barclayn
+ms.date: 4/16/2021
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76aeb63feb006e6962efeb3687363f18acb59904
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02d7e5fd6fdbb17b91d151875a48b7763d6b93c8
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97746688"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988273"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>使用 Azure AD 访问评审管理来宾访问权限
 
@@ -54,6 +54,10 @@ Azure AD 支持采用多种方案评审来宾用户。
 
  - Azure AD 中具有一个或多个来宾成员的组。
  - 连接到 Azure AD（已为其分配一个或多个来宾用户）的应用程序。 
+
+查看来宾用户对 Microsoft 365 组的访问权限时，可以单独为每个组创建一个评审，或打开所有 Microsoft 365 组的来宾用户的自动定期访问评审。 以下视频提供有关来宾用户的定期访问评审的详细信息： 
+
+> [!VIDEO https://www.youtube.com/watch?v=3D2_YW2DwQ8]
 
 然后可以决定是要求每个来宾评审其自己的访问权限还是要求一个或多个用户评审每个来宾的访问权限。
 

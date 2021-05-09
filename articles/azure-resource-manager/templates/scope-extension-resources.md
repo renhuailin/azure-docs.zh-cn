@@ -3,12 +3,13 @@ title: 扩展资源类型的范围
 description: 介绍如何在部署扩展资源类型时使用 scope 属性。
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: ce08ca951e24c1c0a5450052cf814a68888837c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 505caa23ceff25cc3fe693d40a3ec5e209a0563d
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99492155"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108314564"
 ---
 # <a name="setting-scope-for-extension-resources-in-arm-templates"></a>在 ARM 模板中设置扩展资源的范围
 

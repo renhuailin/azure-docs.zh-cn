@@ -10,15 +10,13 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: 287520f2964fba7c3c3804853e9356a8c77b2d06
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 84bb00b6ef5d0bf68a55b7eba70ccb8eb697a571
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106498810"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108313514"
 ---
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-android-ios.md)]
-
 适用于 iOS 的 Azure 通信服务群组通话主图示例演示了如何使用通信服务通话 iOS SDK 来创造一个包括语音和视频的群组通话体验。 在这篇示例快速入门中，你将了解如何设置和运行该示例。 针对上下文提供了此示例的概述。
 
 ## <a name="download-code"></a>下载代码
@@ -110,4 +108,4 @@ ms.locfileid: "106498810"
 
 - [Azure 通信 GitHub](https://github.com/Azure/communication) - 在官方 GitHub 页上查找更多示例和信息
 - [示例](./../overview.md) - 在示例概述页上查找更多示例。
-- [Azure 通信通话功能](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features)：如欲了解有关通话 iOS SDK 的详细信息，请参阅 [Azure 通信 iOS 通话 SDK](https://github.com/Azure/Communication/releases/)
+- [Azure 通信通话功能](../../concepts/voice-video-calling/calling-sdk-features.md)：如欲了解有关通话 iOS SDK 的详细信息，请参阅 [Azure 通信 iOS 通话 SDK](https://github.com/Azure/Communication/releases/)

@@ -3,12 +3,13 @@ title: 限定范围的部署中的模板函数
 description: 介绍如何在限定范围的部署中解析模板函数。 范围可以是租户、管理组、订阅和资源组。
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: f128448380612bc9b8d9114226e8a3036feeead8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c4a2caaa7b66e516a69cdb9d6c26baf7fd605e89
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99492087"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108314600"
 ---
 # <a name="arm-template-functions-in-deployment-scopes"></a>部署范围内的 ARM 模板函数
 
@@ -59,7 +60,7 @@ ms.locfileid: "99492087"
 
 下表显示了函数是解析为父资源组，还是解析为嵌入资源组和订阅。
 
-| 模板类型 | 范围 | 解决方法 |
+| 模板类型 | 作用域 | 解决方法 |
 | ------------- | ----- | ---------- |
 | 嵌套        | 外部（默认值） | 父资源组 |
 | 嵌套        | 内部 | 子资源组 |

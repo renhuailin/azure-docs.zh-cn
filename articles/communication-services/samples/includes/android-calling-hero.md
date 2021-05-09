@@ -10,16 +10,13 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: c6e8be5462e0caffec7a1c88dae54f3f818ec323
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 2a573a4df8abcdc2b32204faadbaa0df8c3dac15
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106498816"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108313683"
 ---
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-android-ios.md)]
-
-
 适用于 Android 的 Azure 通信服务群组通话主图示例演示了如何使用通信服务通话 Android SDK 来创造一个包括语音和视频的群组通话体验。 在这篇示例快速入门中，你将了解如何设置和运行该示例。 针对上下文提供了此示例的概述。
 
 ## <a name="download-code"></a>下载代码
@@ -141,4 +138,4 @@ ms.locfileid: "106498816"
 
 - [Azure 通信 GitHub](https://github.com/Azure/communication) - 在官方 GitHub 页上查找更多示例和信息
 - [示例](./../overview.md) - 在示例概述页上查找更多示例。
-- [Azure 通信通话功能](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features)：如欲了解有关通话 Android SDK 的详细信息，请参阅 [Azure 通信 Android 通话 SDK](https://search.maven.org/artifact/com.azure.android/azure-communication-calling)
+- [Azure 通信通话功能](../../concepts/voice-video-calling/calling-sdk-features.md)：如欲了解有关通话 Android SDK 的详细信息，请参阅 [Azure 通信 Android 通话 SDK](https://search.maven.org/artifact/com.azure.android/azure-communication-calling)

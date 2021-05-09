@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 0504467e387c0875a8e00bd1cf638ec437232092
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: a015ba06be6a10985a4771e842a6d910dd4cd9ab
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554162"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108157662"
 ---
 Azure 通信服务的群组通话主图示例演示了如何使用通信服务通话 Web SDK 构建群组通话体验。
 
@@ -48,7 +48,7 @@ Azure 通信服务的群组通话主图示例演示了如何使用通信服务�
 - **侧边栏**：使用标题上的控件进行切换时，会在此处显示参与者和设置信息。 可以使用右上角的“X”关闭该组件。 “参与者”侧边栏将显示参与者列表和邀请更多用户聊天的链接。 “设置”侧边栏可用于配置麦克风和摄像头设置。
 
 > [!NOTE]
-> 基于对 Web 通话 SDK 的限制，系统只呈现一个远程视频流。 有关更多详细信息，请参阅[通话 SDK 流支持](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features#calling-sdk-streaming-support)。
+> 基于对 Web 通话 SDK 的限制，系统只呈现一个远程视频流。 有关更多详细信息，请参阅[通话 SDK 流支持](../../concepts/voice-video-calling/calling-sdk-features.md#calling-sdk-streaming-support)。
 
 下面你将找到有关设置该示例的先决条件和步骤的详细信息。
 

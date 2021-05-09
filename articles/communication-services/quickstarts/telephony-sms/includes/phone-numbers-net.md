@@ -1,12 +1,12 @@
 ---
-ms.openlocfilehash: 0bfb23977f6553568da24df614621bdf1eb9d06d
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: f5f9f30103381a8e91cd38bb7fa3547e6ca4c97e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106113369"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108157577"
 ---
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 适用于你的操作系统的最新版本 [.NET Core 客户端库](https://dotnet.microsoft.com/download/dotnet-core)。
@@ -38,7 +38,7 @@ dotnet build
 如果仍在应用程序目录中，使用 `dotnet add package` 命令安装适用于 .NET 包的 Azure 通信电话号码客户端库。
 
 ```console
-dotnet add package Azure.Communication.PhoneNumbers --version 1.0.0-beta.6
+dotnet add package Azure.Communication.PhoneNumbers --version 1.0.0
 ```
 
 将 `using` 指令添加到 Program.cs 顶部以包括命名空间。

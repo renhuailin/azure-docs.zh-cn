@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 46f04c55b40d4f1bdbbf5fd55eb648d1d3294056
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d5317edcf7ef00c6d82c1799582ad2a92005b7cb
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97108410"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161620"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predicates 和 PredicateValidations
 
@@ -77,7 +77,6 @@ IsLengthRange 方法检查字符串声明值的长度是否在指定的最小和
 | ------- | ----------- | ----------- |
 | 最大值 | 是 | 可输入的最大字符数。 |
 | 最小值 | 是 | 必须输入的最小字符数。 |
-
 
 下面的示例说明 IsLengthRange 方法使用参数 `Minimum` 和 `Maximum` 指定字符串的长度范围：
 
@@ -224,7 +223,6 @@ PredicateReference 元素包含以下属性：
 | 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于谓词验证的标识符。  |
-
 
 ## <a name="configure-password-complexity"></a>配置密码复杂性
 
@@ -424,7 +422,7 @@ PredicateReference 元素包含以下属性：
   <UserInputType>DateTimeDropdown</UserInputType>
   <PredicateValidationReference Id="CustomDateRange" />
 </ClaimType>
- ```
+```
 
 ## <a name="next-steps"></a>后续步骤
 

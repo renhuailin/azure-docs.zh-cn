@@ -3,12 +3,12 @@ title: 启用重复消息检测 - Azure 服务总线
 description: 本文介绍如何通过使用 Azure 门户、PowerShell、CLI 和编程语言（C#、Java、Python 和 JavaScript）启用重复消息检测
 ms.topic: how-to
 ms.date: 04/19/2021
-ms.openlocfilehash: 708009fcf2479660316b38ac0b7d545d450de28c
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 1e299b86991a7785cc89f2e72227e7a8ced883d7
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107755037"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107989119"
 ---
 # <a name="enable-duplicate-message-detection-for-an-azure-service-bus-queue-or-a-topic"></a>为 Azure 服务总线队列或主题启用重复消息检测
 为队列或主题启用重复检测时，Azure 服务总线将保留在配置的时间内发送到队列或主题的所有消息的历史记录。 在此间隔期间，队列或主题将不会存储任何重复的消息。 启用此属性可保证在用户定义的时间段内准确地传递一次。 有关详细信息，请参阅[重复检测](duplicate-detection.md)。 本文介绍为服务总线队列或主题启用重复消息检测的不同方式。 
@@ -255,12 +255,12 @@ Set-AzServiceBusTopic -ResourceGroup myresourcegroup `
 ## <a name="next-steps"></a>后续步骤
 尝试采用所选语言的示例，了解 Azure 服务总线功能。 
 
-- [适用于 Java 的 Azure 服务总线客户端库示例](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [适用于 .NET（最新）的 Azure 服务总线客户端库示例](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/) 
+- [适用于 Java（最新）的 Azure 服务总线客户端库示例](/samples/azure/azure-sdk-for-java/servicebus-samples/)
 - [适用于 Python 的 Azure 服务总线客户端库示例](/samples/azure/azure-sdk-for-python/servicebus-samples/)
 - [适用于 JavaScript 的 Azure 服务总线客户端库示例](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
 - [适用于 TypeScript 的 Azure 服务总线客户端库示例](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
-- [适用于 .NET 的 Azure.Messaging.ServiceBus 示例](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)
 
 在下面查找早期 .NET 和 Java 客户端库示例：
-- [适用于 .NET 的 Microsoft.Azure.ServiceBus 示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
-- [适用于 Java 的 azure-servicebus 示例](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse)
+- [适用于 .NET（旧版）的 Azure 服务总线客户端库示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
+- [适用于 Java（旧版）的 Azure 服务总线客户端库示例](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus)

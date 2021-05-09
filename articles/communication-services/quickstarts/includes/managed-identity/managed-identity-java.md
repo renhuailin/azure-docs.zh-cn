@@ -1,14 +1,14 @@
 ---
-ms.openlocfilehash: b51f52e24ca843abd94a8511e86b3193a797edd5
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: b5516af5f33292e79cfb9dc7502dfffcd2e7767f
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107511504"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108313386"
 ---
 ## <a name="additional-prerequisites-for-java"></a>Java 的其他必备组件
 对于 Java，还需要：
-- [Java 开发工具包 (JDK)](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install) 8 或更高版本。
+- [Java 开发工具包 (JDK)](/azure/developer/java/fundamentals/java-jdk-install) 8 或更高版本。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
 
 ## <a name="setting-up"></a>设置
@@ -208,4 +208,3 @@ Sending SMS using Managed Identities
 Sms id: Outgoing_202104...33f8ae1f_noam
 Send Result Successful: true
 ```
-

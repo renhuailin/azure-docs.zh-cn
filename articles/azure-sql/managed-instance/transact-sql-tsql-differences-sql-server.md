@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 3/16/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 227b573d3771efd3fd36e6d3d6222696647849f7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f744b718919a6da75b2064efdc163ef4618b5a7c
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644910"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815893"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server 与 Azure SQL 托管实例之间的 T-SQL 差异
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -354,9 +354,9 @@ SQL 托管实例不支持 SQL Server 中启用的未记录 DBCC 语句。
 
 ### <a name="distributed-transactions"></a>分布式事务
 
-对[分布式事务](../database/elastic-transactions-overview.md)的部分支持目前为公共预览版。 支持的应用场景有：
-* 参与者只包含属于[服务器信任组](./server-trust-group-overview.md)的 Azure SQL 托管实例的事务。
-* 从 .NET（TransactionScope 类）和 Transact-SQL 启动的事务。
+对[分布式事务](../database/elastic-transactions-overview.md)的部分支持目前为公共预览版。 以下情况下支持分布式事务（必须满足所有情况）：
+* 所有事物参与者都是属于[服务器信任组](./server-trust-group-overview.md)的 Azure SQL 托管实例的事务。
+* 事务从 .NET（TransactionScope 类）或 Transact-SQL 启动。
 
 Azure SQL 托管实例当前不支持本地或 Azure 虚拟机中的 MSDTC 通常支持的其他应用场景。
 
@@ -468,13 +468,13 @@ SQL 托管实例中的链接服务器支持有限数量的目标：
 
 仅在 Azure SQL 托管实例之间支持跨实例 Service Broker 消息交换：
 
-- `CREATE ROUTE`：不能将 `CREATE ROUTE` 与另一个 SQL 托管实例的 `LOCAL` 或 DNS 名称之外的 `ADDRESS` 配合使用。
-- `ALTER ROUTE`：不能将 `ALTER ROUTE` 与另一个 SQL 托管实例的 `LOCAL` 或 DNS 名称之外的 `ADDRESS` 配合使用。
+- `CREATE ROUTE`：不能将 `CREATE ROUTE` 与 `LOCAL` 以外的 `ADDRESS` 或其他 SQL 托管实例的 DNS 名称一起使用。
+- `ALTER ROUTE`：不能将 `ALTER ROUTE` 与 `LOCAL` 以外的 `ADDRESS` 或其他 SQL 托管实例的 DNS 名称一起使用。
 
 支持传输安全性，不支持对话安全性：
 - 不支持 `CREATE REMOTE SERVICE BINDING`。
 
-Service Broker 默认处于启用状态，并且无法禁用。 不支持以下 ALTER DATABASE 选项：
+Service Broker 默认处于启用状态，无法禁用。 不支持以下 ALTER DATABASE 选项：
 - `ENABLE_BROKER`
 - `DISABLE_BROKER`
 

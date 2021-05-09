@@ -3,12 +3,12 @@ title: Azure 服务总线 - 消息浏览
 description: 通过浏览和速览服务总线消息，Azure 服务总线客户端可以枚举队列或订阅中的所有消息。
 ms.topic: article
 ms.date: 03/29/2021
-ms.openlocfilehash: deafe9e6ddeeebf233922aade36823ddaaede864
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 23ec2187ae58b1b4f83addb80573bdb130ff99bd
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107520116"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107989389"
 ---
 # <a name="message-browsing"></a>消息浏览
 通过消息浏览或速览，服务总线客户端可以枚举队列或订阅中的所有消息，以用于诊断和调试。
@@ -42,14 +42,15 @@ ms.locfileid: "107520116"
 还可以将 SequenceNumber 传递到速览操作。 它将用于确定从何处开始速览。 可以在不指定用于进一步枚举的参数的情况下，对速览操作进行后续调用。
 
 ## <a name="next-steps"></a>后续步骤
-尝试采用所选语言的示例，探索速览或消息浏览功能：
+尝试采用所选语言的示例，了解 Azure 服务总线功能。 
 
-- [适用于 Java 的 Azure 服务总线客户端库示例](/samples/azure/azure-sdk-for-java/servicebus-samples/) - “速览消息”示例
-- [适用于 Python 的 Azure 服务总线客户端库示例](/samples/azure/azure-sdk-for-python/servicebus-samples/) - “receive_peek.py”示例
-- [适用于 JavaScript 的 Azure 服务总线客户端库示例](/samples/azure/azure-sdk-for-js/service-bus-javascript/) - “browseMessages.js”示例
+- [适用于 .NET（最新）的 Azure 服务总线客户端库示例](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/) --“发送和接收消息”示例。
+- [适用于 Java（最新）的 Azure 服务总线客户端库示例](/samples/azure/azure-sdk-for-java/servicebus-samples/) - “速览消息”示例
+- [适用于 Python 的 Azure 服务总线客户端库示例](/samples/azure/azure-sdk-for-python/servicebus-samples/)  - “receive_peek.py”示例
+- [适用于 JavaScript 的 Azure 服务总线客户端库示例](/samples/azure/azure-sdk-for-js/service-bus-javascript/)  - “browseMessages.js”示例
 - [适用于 TypeScript 的 Azure 服务总线客户端库示例](/samples/azure/azure-sdk-for-js/service-bus-typescript/) - “browseMessages.ts”示例
-- [适用于 .NET 的 Azure.Messaging.ServiceBus 示例](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/) - 请参阅[参考文档](/dotnet/api/azure.messaging.servicebus)中针对接收器类的速览方法。
 
 在下面查找早期 .NET 和 Java 客户端库示例：
-- [适用于 .NET 的 Microsoft.Azure.ServiceBus 示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/) - “消息浏览（速览）”示例 
-- [适用于 Java 的 azure-servicebus 示例](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse) - “消息浏览”示例。 
+- [适用于 .NET（旧版）的 Azure 服务总线客户端库示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)  - “消息浏览（速览）”示例
+- [适用于 Java（旧版）的 Azure 服务总线客户端库示例](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus) - “速览消息”示例。 
+

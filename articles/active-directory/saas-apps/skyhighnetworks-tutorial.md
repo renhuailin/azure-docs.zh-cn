@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/31/2021
 ms.author: jeedes
-ms.openlocfilehash: eaf6b2526125b13eec67680c292ed1dbae6fcfee
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: c427353a68f06a31c214684e4e4bdd8021b68da8
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284390"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203732"
 ---
 # <a name="tutorial-integrate-mvision-cloud-azure-ad-sso-configuration-with-azure-active-directory"></a>教程：将 MVISION Cloud Azure AD SSO 配置与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "106284390"
 * 让用户使用其 Azure AD 帐户自动登录到 MVISION Cloud Azure AD SSO 配置。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -140,8 +140,8 @@ ms.locfileid: "106284390"
 
 * 在 Azure 门户中单击“测试此应用程序”后，应自动登录到为其设置 SSO 的 MVISION Cloud Azure AD SSO 配置。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“MVISION Cloud Azure AD SSO 配置”磁贴时，如果是在 SP 模式下进行配置，系统会重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下进行配置，则应会自动登录到为其设置 SSO 的 MVISION Cloud Azure AD SSO 配置。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“MVISION Cloud Azure AD SSO 配置”磁贴时，如果是在 SP 模式下进行配置，系统会重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下进行配置，则应会自动登录到为其设置 SSO 的 MVISION Cloud Azure AD SSO 配置。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-设置 MVISION Cloud Azure AD SSO 配置后，你可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+设置 MVISION Cloud Azure AD SSO 配置后，你可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

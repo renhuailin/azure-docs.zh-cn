@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 7ff53a700ab1b158d94af84907940f56afa74eb5
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: bf99f6bb41405df497b22dd220093815f4194f4d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99215081"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108157532"
 ---
 本快速入门介绍如何使用适用于 Windows 的语音设备 SDK 来生成支持语音的产品，或将其用作[对话听录](../conversation-transcription.md)设备。 对于对话听录，仅支持 [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)。 对于其他语音，支持使用提供麦克风阵列几何的线性麦克风阵列。
 
@@ -33,8 +33,6 @@ ms.locfileid: "99215081"
 * 下载用于 Java 的[语音设备 SDK](https://aka.ms/sdsdk-download-JRE) 的最新版本，并将 .zip 提取到工作目录。
    > [!NOTE]
    > 本快速入门假设应用已解压缩到 C:\SDSDK\JRE-Sample-Release
-
-对话听录目前在“centralus”和“eastasia”区域中仅提供“en-US”和“zh-CN”。 必须在这些区域中的一个区域中具有语音密钥，才能使用对话听录。
 
 如果计划使用意向，则将需要[语音理解服务 (LUIS)](../../luis/luis-how-to-azure-subscription.md) 订阅。 若要了解有关 LUIS 和意向识别的详细信息，请参阅[使用 LUIS、C# 识别语音意向](../how-to-recognize-intents-from-speech-csharp.md)。 [示例 LUIS 模型](https://aka.ms/sdsdk-luis)适用于此应用。
 

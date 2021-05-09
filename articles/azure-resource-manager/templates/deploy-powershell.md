@@ -2,13 +2,14 @@
 title: 使用 PowerShell 和模板部署资源
 description: 使用 Azure Resource Manager 和 Azure PowerShell 将资源部署到 Azure。 资源在资源管理器模板或 Bicep 文件中定义。
 ms.topic: conceptual
-ms.date: 03/04/2021
-ms.openlocfilehash: 784f17566ce4fb19a7ec5e3fd4a504d7c25f90fe
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.date: 03/25/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: db43613b1b359e6d6378e081f3f61ee1449bd641
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521622"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108314636"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>使用 ARM 模板和 Azure PowerShell 部署资源
 
@@ -115,9 +116,11 @@ New-AzResourceGroupDeployment `
 ## <a name="deploy-remote-template"></a>部署远程模板
 
 > [!NOTE]
-> 目前，Azure PowerShell 不支持部署远程 Bicep 文件。 若要部署远程 Bicep 文件，请先使用 CLI Bicep 将 Bicep 文件编译为 JSON 模板。
+> 目前，Azure PowerShell 不支持部署远程 Bicep 文件。 使用 [Bicep CLI](./bicep-install.md#development-environment) 将 Bicep 文件编译为 JSON 模板，然后将 JSON 文件加载到远程位置。
 
 你可能更愿意将 ARM 模板存储在外部位置，而不是存储在本地计算机上。 可以将模板存储在源控件存储库（例如 GitHub）中。 另外，还可以将其存储在 Azure 存储帐户中，以便在组织中共享访问。
+
+[!INCLUDE [Deploy templates in private GitHub repo](../../../includes/resource-manager-private-github-repo-templates.md)]
 
 如果要部署到不存在的资源组，请创建该资源组。 资源组名称只能包含字母数字字符、句点、下划线、连字符和括号。 它最多可以包含 90 个字符。 名称不能以句点结尾。
 

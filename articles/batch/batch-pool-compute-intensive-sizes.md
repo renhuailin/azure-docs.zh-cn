@@ -3,12 +3,12 @@ title: 在 Batch 中使用计算密集型 Azure VM
 description: 如何在 Azure Batch 池中利用 HPC 和 GPU 虚拟机大小 了解 OS 依赖关系并查看几个方案示例。
 ms.topic: how-to
 ms.date: 12/17/2018
-ms.openlocfilehash: 016da7669c9e6a6586a53d379f9665c9ea048b64
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f3156296e1ae1ec892be86fc41738fcb7f29090
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86147346"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988327"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>在 Batch 池中使用 RDMA 或 GPU 实例
 
@@ -53,13 +53,15 @@ Batch 中计算密集型大小的 RDMA 或 GPU 功能仅在某些操作系统中
 
 ### <a name="windows-pools---cloud-services-configuration"></a>Windows 池 - 云服务配置
 
-> [!NOTE]
-> 具有云服务配置的 Batch 池不支持 N 系列大小。
->
+> [!WARNING]
+> 云服务配置池[已被弃用](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)。 请改用虚拟机配置池。
 
 | 大小 | 功能 | 操作系统 | 所需软件 | 池设置 |
 | -------- | ------- | -------- | -------- | ----- |
 | [H16r、H16mr、A8、A9](../virtual-machines/sizes-hpc.md) | RDMA | Windows Server 2016、2012 R2、2012 或<br/>2008 R2（来宾 OS 系列） | Microsoft MPI 2012 R2 或更高版本，或<br/>Intel MPI 5<br/><br/>Windows RDMA 驱动程序 | 启用节点间通信，<br/> 禁用并发任务执行 |
+
+> [!NOTE]
+> 云服务配置池不支持 N 系列大小。
 
 ## <a name="pool-configuration-options"></a>池配置选项
 

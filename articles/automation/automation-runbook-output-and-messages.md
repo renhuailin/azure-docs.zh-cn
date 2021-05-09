@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 11/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 033900ddd0bd19332b4a9a996c68b3b187d631c4
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 0b41880bea25c1b833ab2a996a50edcf557f37b8
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833555"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161656"
 ---
 # <a name="configure-runbook-output-and-message-streams"></a>配置 runbook 输出和消息流
 
@@ -101,14 +101,14 @@ Workflow Test-Runbook
   $output = "This is some string output."
   Write-Output $output
 }
- ```
+```
 
 #### <a name="declare-output-data-type-in-a-graphical-runbook"></a>在图形 runbook 中声明输出数据类型
 
 若要在图形或图形 PowerShell 工作流 Runbook 中声明输出类型，可选择“输入和输出”菜单选项，并输入输出类型。 建议使用完整的 .NET 类名，以便父 runbook 引用该类型时可轻松识别它。 使用全名会向 Runbook 中的数据总线公开该类的所有属性，并在将这些属性用于条件逻辑、日志记录和作为其他 Runbook 活动的值引用时提高灵活性。<br> ![Runbook 输入和输出选项](media/automation-runbook-output-and-messages/runbook-menu-input-and-output-option.png)
 
->[!NOTE]
->在“输入和输出”属性窗格中的“输出类型”字段中输入值后，请务必在控件的外部单击，以使其能够识别你的输入。
+> [!NOTE]
+> 在“输入和输出”属性窗格中的“输出类型”字段中输入值后，请务必在控件的外部单击，以使其能够识别你的输入。
 
 以下示例展示两个图形 Runbook 来演示输入和输出功能。 如果应用模块式 Runbook 设计模型，则有一个 Runbook，它作为身份验证 Runbook 模板来管理使用运行方式帐户通过 Azure 进行的身份验证。 第二个 Runbook 通常执行核心逻辑来自动执行给定方案，在本例中，执行身份验证 Runbook 模板。 它会将结果显示在测试输出窗格中。 在正常情况下，会使用此 Runbook 针对利用子 Runbook 输出的资源执行某些操作。
 
@@ -208,8 +208,8 @@ Write-Verbose -Message "This is a verbose message."
 
 如果启用进度记录的日志记录，Runbook 会在每个活动运行前后向作业历史记录中写入一条记录。 测试 Runbook 不会显示进度消息，即使已将该 Runbook 配置为记录进度记录也不显示。
 
->[!NOTE]
->[Write-Progress](/powershell/module/microsoft.powershell.utility/write-progress) cmdlet 在 runbook 中无效，因为此 cmdlet 旨在供交互式用户使用。
+> [!NOTE]
+> [Write-Progress](/powershell/module/microsoft.powershell.utility/write-progress) cmdlet 在 runbook 中无效，因为此 cmdlet 旨在供交互式用户使用。
 
 ## <a name="work-with-preference-variables"></a>使用首选项变量
 
@@ -263,13 +263,13 @@ Get-AzAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
 
 ### <a name="retrieve-runbook-output-and-messages-in-graphical-runbooks"></a>检索图形 Runbook 中的 Runbook 输出和消息
 
-对于图形 Runbook，以活动级别跟踪形式提供了输出和消息的额外日志记录。 有两个级别的跟踪：基本和详细。 基本跟踪显示 runbook 中每个活动的开始和结束时间，以及与任何活动重试相关的信息。 一些示例是活动的尝试次数和开始时间。 详细跟踪包括基本跟踪功能以及每个活动的输入和输出数据日志记录。 
+对于图形 Runbook，以活动级别跟踪形式提供了输出和消息的额外日志记录。 有两个级别的跟踪：基本和详细。 基本跟踪显示 runbook 中每个活动的开始和结束时间，以及与任何活动重试相关的信息。 一些示例是活动的尝试次数和开始时间。 详细跟踪包括基本跟踪功能以及每个活动的输入和输出数据日志记录。
 
 当前活动级别跟踪使用详细流写入记录。 因此，当启用跟踪时，必须启用详细日志记录。 对于启用了跟踪的图形 runbook，无需记录进度记录。 基本跟踪起着相同的目的，并且提供更多信息。
 
 ![“图形创作作业流”视图](media/automation-runbook-output-and-messages/job-streams-view-blade.png)
 
-从图像中可以看出，为图形 Runbook 启用详细日志记录和跟踪时，在生产“作业流”视图中会提供更多信息。 此额外信息对于故障排除 Runbook 的生产问题可能至关重要。 
+从图像中可以看出，为图形 Runbook 启用详细日志记录和跟踪时，在生产“作业流”视图中会提供更多信息。 此额外信息对于故障排除 Runbook 的生产问题可能至关重要。
 
 但是，除非需要此信息来跟踪 Runbook 进度以进行故障排除，否则你可能想要按一般做法使跟踪保持关闭状态。 “跟踪”记录可以特别大量。 凭借图形 Runbook 跟踪，可获取与每个活动相关的二至四条记录，具体数量取决于配置的是基本跟踪还是详细跟踪。
 

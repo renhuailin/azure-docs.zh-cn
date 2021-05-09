@@ -3,21 +3,18 @@ title: 管理 NSG 流日志 - Azure CLI
 titleSuffix: Azure Network Watcher
 description: 此页说明如何在 Azure 网络观察程序中使用 Azure CLI 管理网络安全组流日志
 services: network-watcher
-documentationcenter: na
 author: damendo
 ms.service: network-watcher
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: a25d14660e5006aca2913053b17852c752c786d0
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: db928c18d3e7a9ed5eab941cca47b46ab476e02c
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535263"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162358"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>使用 Azure CLI 配置网络安全组流日志
 
@@ -29,7 +26,7 @@ ms.locfileid: "107535263"
 
 网络安全组流日志是网络观察程序的一项功能，用于查看通过网络安全组的入口和出口 IP 流量的信息。 这些流日志以 json 格式编写，并根据规则显示出站和入站流、流所适用的 NIC、有关流的 5 元组信息（源/目标 IP、源/目标端口、协议），以及是允许还是拒绝流量。
 
-若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (CLI)](/cli/azure/install-azure-cli)。 可在[此处](https://docs.microsoft.com/cli/azure/network/watcher/flow-log?view=azure-cli-latest)找到所有流日志命令的详细规范
+若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (CLI)](/cli/azure/install-azure-cli)。 可在[此处](/cli/azure/network/watcher/flow-log)找到所有流日志命令的详细规范
 
 ## <a name="register-insights-provider"></a>注册 Insights 提供程序
 

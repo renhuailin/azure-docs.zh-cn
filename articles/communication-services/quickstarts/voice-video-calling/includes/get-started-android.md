@@ -6,21 +6,16 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 38194ed7290d6cd9c4889d27ff458f950603c5be
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 84abd3d617c059c1bbc9565d0b8a23840f81f60d
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "106073563"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108313590"
 ---
 本快速入门将介绍如何使用适用于 Android 的 Azure 通信服务通话 SDK 开始通话。
 
-[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-android-ios.md)]
-
-> [!NOTE]
-> 本文档使用版本 1.0.0-beta.8 的通话 SDK。
-
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Android Studio](https://developer.android.com/studio)，用于创建 Android 应用程序。
@@ -268,7 +263,7 @@ private void getAllPermissions() {
 | ------------------------------------- | ------------------------------------------------------------ |
 | CallClient| CallClient 是通话 SDK 的主入口点。|
 | CallAgent | CallAgent 用于启动和管理呼叫。 |
-| CommunicationUserCredential | CommunicationUserCredential 用作实例化 CallAgent 的令牌凭据。|
+| CommunicationTokenCredential | CommunicationTokenCredential 用作实例化 CallAgent 的令牌凭据。|
 | CommunicationIdentifier | CommunicationIdentifier 用作可参与通话的不同类型的参与者。|
 
 ## <a name="create-an-agent-from-the-user-access-token"></a>从用户访问令牌创建代理

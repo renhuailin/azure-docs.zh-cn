@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 03/23/2021
 ms.author: apedward
-ms.openlocfilehash: 4283bccf543dc496342d64cc0e7b898a4f279866
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 259d430c79cccef3cd5c581c9a60fa00edf159ec
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2021
-ms.locfileid: "108141624"
+ms.locfileid: "108162268"
 ---
 # <a name="tutorial-publish-azure-static-web-apps-with-azure-devops"></a>教程：使用 Azure DevOps 发布 Azure Static Web Apps
 
@@ -87,20 +87,19 @@ ms.locfileid: "108141624"
 
     ```yaml
     trigger:
-      - main
-    
+    - main
+
     pool:
       vmImage: ubuntu-latest
-    
+
     steps:
       - checkout: self
         submodules: true
-
       - task: AzureStaticWebApp@0
         inputs:
-          app_location: "/" 
-          api_location: "api"
-          output_location: ""
+          app_location: '/'
+          api_location: 'api'
+          output_location: ''
         env:
           azure_static_web_apps_api_token: $(deployment_token)
     ```
@@ -112,33 +111,33 @@ ms.locfileid: "108141624"
 
     `azure_static_web_apps_api_token` 值是自我管理的，并且是手动配置的。
 
-1. 选择“变量”。
+2. 选择“变量”。
 
-1. 创建新变量。
+3. 创建新变量。
 
-1. 将该变量命名为 **deployment_token**（与工作流中的名称匹配）。
+4. 将该变量命名为 **deployment_token**（与工作流中的名称匹配）。
 
-1. 复制前面已粘贴到文本编辑器中的部署令牌。
+5. 复制前面已粘贴到文本编辑器中的部署令牌。
 
-1. 将该部署令牌粘贴到“值”框中。
+6. 将该部署令牌粘贴到“值”框中。
 
     :::image type="content" source="media/publish-devops/variable-token.png" alt-text="变量令牌":::
 
-1. 选择“将此值保密”。
+7. 选择“将此值保密”。
 
-1. 选择“确定”。
+8. 选择“确定”。
 
-1. 选择“保存”，返回到管道 YAML。
+9. 选择“保存”，返回到管道 YAML。
 
-1. 选择“保存并运行”打开“保存并运行”对话框。
+10. 选择“保存并运行”打开“保存并运行”对话框。
 
     管道
 
-1. 选择“保存并运行”以运行管道。
+11. 选择“保存并运行”以运行管道。
 
-1. 部署成功后，导航到 Azure Static Web Apps 的“概述”，其中包含了部署配置的链接。 请注意“源”链接现在如何指向 Azure DevOps 存储库的分支和位置。
+12. 部署成功后，导航到 Azure Static Web Apps 的“概述”，其中包含了部署配置的链接。 请注意“源”链接现在如何指向 Azure DevOps 存储库的分支和位置。
 
-1. 选择“URL”查看新部署的网站。
+13. 选择“URL”查看新部署的网站。
 
     :::image type="content" source="media/publish-devops/deployment-location.png" alt-text="部署位置":::
 

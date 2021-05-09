@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 98866a4f06df0380d52d1aee3eede8aa2f70aaed
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 49704de9eb4a392b552429180da98568cafa210f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588117"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108157660"
 ---
 Azure 实例元数据服务 (IMDS) 提供有关当前正在运行的虚拟机实例的信息。 可以使用它来管理和配置虚拟机。
 这些信息包括 SKU、存储、网络配置和即将发生的维护事件。 有关可用数据的完整列表，请参阅[终结点类别摘要](#endpoint-categories)。
@@ -1177,7 +1177,7 @@ openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -un
   - 如果在 2016 年 9 月之后创建了 VM，请添加[标记](../articles/azure-resource-manager/management/tag-resources.md)以开始查看计算元数据。 如果在 2016 年 9 月之前创建了 VM，请在 VM 实例中添加或删除扩展或数据磁盘以刷新元数据。
 
 - 用户数据与自定义数据是否相同？
-  - 用户数据提供了与自定义数据类似的功能，使你可以将自己的元数据传递给 VM 实例。 不同之处在于，用户数据是通过 IMDS 进行检索的，并且在 VM 实例的整个生存期内保持不变。 现有的自定义数据功能将继续按照[本文](https://docs.microsoft.com/azure/virtual-machines/custom-data)所述正常运行。 但是，只能通过本地系统文件夹获取自定义数据，而不能通过 IMDS 获取。
+  - 用户数据提供了与自定义数据类似的功能，使你可以将自己的元数据传递给 VM 实例。 不同之处在于，用户数据是通过 IMDS 进行检索的，并且在 VM 实例的整个生存期内保持不变。 现有的自定义数据功能将继续按照[本文](../articles/virtual-machines/custom-data.md)所述正常运行。 但是，只能通过本地系统文件夹获取自定义数据，而不能通过 IMDS 获取。
 
 - 为什么我看不到为新版本填充的任何数据？
   - 如果在 2016 年 9 月之后创建了 VM，请添加[标记](../articles/azure-resource-manager/management/tag-resources.md)以开始查看计算元数据。 如果在 2016 年 9 月之前创建了 VM，请在 VM 实例中添加或删除扩展或数据磁盘以刷新元数据。

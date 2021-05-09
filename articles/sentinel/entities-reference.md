@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 17a4df3037f9922d92fca924de0d246458cfa08e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: acae7a6121587a1a58c6f19b0b09287b3d93cc84
+ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102456150"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107992154"
 ---
 # <a name="azure-sentinel-entity-types-reference"></a>Azure Sentinel 实体类型引用
 
@@ -383,7 +383,7 @@ IoT 设备实体的弱标识符：
 *实体名称：MailCluster*
 
 > [!NOTE]
-> **MDO** = **Microsoft Defender For office 365**，以前称为 Office 365 高级威胁防护 (O365 ATP)。
+> Microsoft Defender for Office 365 之前被称为 Office 365 高级威胁防护 (O365 ATP)。
 
 | 字段 | 类型 | 说明 |
 | ----- | ---- | ----------- |
@@ -399,10 +399,10 @@ IoT 设备实体的弱标识符：
 | IsVolumeAnomaly | Bool? | 确定这是否为卷异常邮件群集。 |
 | 源 | 字符串 | 邮件群集的源（默认为“O365 ATP”）。 |
 | ClusterSourceIdentifier | 字符串 | 作为此邮件群集的源的邮件的网络消息 ID。 |
-| ClusterSourceType | 字符串 | 邮件群集的源类型。 这将映射到 MDO 中的 MailClusterSourceType 设置（请参阅上面）上的注释。 |
-| ClusterQueryStartTime | DateTime? | 群集开始时间 - 用作群集计数查询的开始时间。 通常可追溯到 MDO 的“结束时间”减去“DaysToLookBack”设置（请参见上面的注释）。 |
+| ClusterSourceType | 字符串 | 邮件群集的源类型。 这会映射到来自 Microsoft Defender for Office 365 的 MailClusterSourceType 设置（见上文注释）。 |
+| ClusterQueryStartTime | DateTime? | 群集开始时间 - 用作群集计数查询的开始时间。 通常可追溯到 Microsoft Defender for Office 365 的“结束时间”减去“DaysToLookBack”设置（见上文注释）。 |
 | ClusterQueryEndTime | DateTime? | 群集结束时间 - 用作群集计数查询的结束时间。 通常是邮件数据的接收时间。 |
-| ClusterGroup | 字符串 | 对应于 MDO 上使用的 Kusto 查询键（请参见上面的注释）。 |
+| ClusterGroup | 字符串 | 对应于 Microsoft Defender for Office 365 上使用的 Kusto 查询密钥（见上文注释）。 |
 |
 
 邮件群集实体的强标识符：

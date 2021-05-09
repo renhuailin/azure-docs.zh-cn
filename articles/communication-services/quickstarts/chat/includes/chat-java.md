@@ -10,17 +10,17 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: e5b5433be4a95a9df9d3b3527473c3004d24acac
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 21e3650b71eea858f776bc6c96a6c0bff9c10154
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107327202"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108313480"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [Java 开发工具包 (JDK)](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install) 8 或更高版本。
+- [Java 开发工具包 (JDK)](/azure/developer/java/fundamentals/java-jdk-install) 8 或更高版本。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
 - 已部署的通信服务资源和连接字符串。 [创建通信服务资源](../../create-communication-resource.md)。
 - [用户访问令牌](../../access-tokens.md)。 请确保将范围设置为“聊天”，并记下令牌字符串和 userId 字符串。

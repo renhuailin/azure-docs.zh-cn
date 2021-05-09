@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/12/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: a9146099951aba223a7b201c1613e1ec0ba617d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95e4474924d32eca848d4dcb0e7028f328cb59c1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96509188"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108157584"
 ---
 **上次文档更新时间**：太平洋标准时间 2019 年 11 月 12 日上午 10:00。
 
@@ -108,7 +108,7 @@ Windows OS support for TAA mitigation is enabled: True
 **步骤 3**：若要启用内核虚拟地址隐藏 (KVAS) 和分支目标注入 (BTI) OS 支持，请按照 [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) 中的说明，使用 `Session Manager` 注册表项启用保护。 必须重启。
 
 
-**步骤 4**：对于正在使用 [嵌套虚拟化](../articles/virtual-machines/windows/nested-virtualization.md)的部署（仅限 D3 和 E3）：这些说明适用于用作 HYPER-V 主机的 VM。
+**步骤 4**：对于正在使用 [嵌套虚拟化](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)的部署（仅限 D3 和 E3）：这些说明适用于用作 HYPER-V 主机的 VM。
 
 1.  按照 [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) 中的说明，使用 `MinVmVersionForCpuBasedMitigations` 注册表项启用保护。
 2.  可以按照[此处](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types)的说明将虚拟机监控程序计划程序类型设置为 `Core`。
