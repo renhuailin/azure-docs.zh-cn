@@ -8,12 +8,12 @@ ms.reviwer: mimckitt
 ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 4ff7d9aa2075b675a7ecd979c08d5621bbdd831a
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 4898c0ec17766d0bcbd89176194aec9dee7157ea
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286684"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108293037"
 ---
 # <a name="technical-details-of-migrating-to-azure-cloud-services-extended-support"></a>迁移到 Azure 云服务（外延支持）的技术详细信息   
 
@@ -36,7 +36,7 @@ ms.locfileid: "106286684"
 ### <a name="service-configuration-and-service-definition-files"></a>服务配置和服务定义文件
 - 需要为云服务（外延支持）更新 .cscfg 和 .csdef 文件，进行少量更改。 
 - 虚拟网络和 VM SKU 等资源的名称不相同。 请参阅[迁移后的资源转换和命名约定](#translation-of-resources-and-naming-convention-post-migration)
-- 客户可以通过 [PowerShell](https://docs.microsoft.com/powershell/module/az.cloudservice/?view=azps-5.4.0#cloudservice&preserve-view=true) 和 [Rest API](https://docs.microsoft.com/rest/api/compute/cloudservices/get) 检索其新部署。 
+- 客户可以通过 [PowerShell](/powershell/module/az.cloudservice/?preserve-view=true&view=azps-5.4.0#cloudservice) 和 [Rest API](/rest/api/compute/cloudservices/get) 检索其新部署。 
 
 ### <a name="cloud-service-and-deployments"></a>云服务和部署
 - 每个云服务（外延支持）部署都是独立的云服务。 部署不再使用槽分组到云服务中。
@@ -100,4 +100,4 @@ ms.locfileid: "106286684"
 - 客户可以使用 PowerShell 或 Rest API 来中止或提交。 
 
 ### <a name="how-much-time-can-the-operations-takebr"></a>操作可能会花费多长时间？<br>
-按照设计，执行验证的速度非常快。 运行准备的时间最长，需要一些时间，具体取决于所要迁移的角色实例总数。 中止和提交也需要一些时间，但与准备相比需要的时间较少。 所有操作都会在 24 小时后超时。 
+按照设计，执行验证的速度非常快。 运行准备的时间最长，需要一些时间，具体取决于所要迁移的角色实例总数。 中止和提交也需要一些时间，但与准备相比需要的时间较少。 所有操作都会在 24 小时后超时。

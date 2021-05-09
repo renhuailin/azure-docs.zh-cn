@@ -7,12 +7,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 5b7fd8e8cd5bd3ab0f15115365ed057fc67f1204
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ec48e23d2752d14b3bb77dab2625e81f8a6d0db7
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604424"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292731"
 ---
 # <a name="quickstart-add-11-video-calling-to-your-app-javascript"></a>快速入门：在应用中添加 1:1 视频呼叫 (JavaScript)
 
@@ -126,11 +126,11 @@ let rendererRemote;
 ```
 ## <a name="object-model"></a>对象模型
 
-以下类和接口处理 Azure 通信服务呼叫 SDK 的某些主要功能：
+以下类和接口用于处理 Azure 通信服务通话 SDK 的某些主要功能：
 
 | 名称      | 说明 | 
 | :---        |    :----   |
-| CallClient  | CallClient 是呼叫 SDK 的主入口点。      |
+| CallClient  | CallClient 是通话 SDK 的主入口点。      |
 | CallAgent  | CallAgent 用于启动和管理呼叫。        |
 | DeviceManager | DeviceManager 用于管理媒体设备。    |
 | AzureCommunicationTokenCredential | AzureCommunicationTokenCredential 类实现用于实例化 CallAgent 的 CommunicationTokenCredential 接口。        |
@@ -337,7 +337,6 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅以下文章：
 
-- 查看[网络呼叫示例](https://docs.microsoft.com/azure/communication-services/samples/web-calling-sample)
-- 了解如何[调用 SDK 功能](https://docs.microsoft.com/azure/communication-services/quickstarts/voice-video-calling/calling-client-samples?pivots=platform-web)
-- 了解有关[呼叫工作原理](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/about-call-types)的详细信息
-
+- 查看[网络呼叫示例](../../samples/web-calling-sample.md)
+- 了解如何[调用 SDK 功能](./calling-client-samples.md?pivots=platform-web)
+- 了解有关[呼叫工作原理](../../concepts/voice-video-calling/about-call-types.md)的详细信息

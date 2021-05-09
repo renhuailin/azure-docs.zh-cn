@@ -9,12 +9,12 @@ ms.author: tagore
 ms.reviewer: mimckitt
 ms.date: 2/08/2021
 ms.custom: ''
-ms.openlocfilehash: 79889b08baa80dc67b30ae445004e37d9f9fe295
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: b1a3d6f1c30cf6c52dde3f70f222d9cbb0fce556
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286653"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108293163"
 ---
 # <a name="migrate-to-cloud-services-extended-support-using-the-azure-portal"></a>使用 Azure 门户迁移到云服务（外延支持）
 
@@ -37,7 +37,7 @@ ms.locfileid: "106286653"
 
 **注册迁移资源提供程序**
 
-1. 使用 [Azure 门户](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider-1)在 Microsoft.Compute 命名空间下注册迁移资源提供程序 `Microsoft.ClassicInfrastructureMigrate` 和预览功能 `Cloud Services`。  
+1. 使用 [Azure 门户](../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider-1)在 Microsoft.Compute 命名空间下注册迁移资源提供程序 `Microsoft.ClassicInfrastructureMigrate` 和预览功能 `Cloud Services`。  
 1. 等待五分钟来完成注册，然后检查审批状态。 
 
 ## <a name="migrate-your-cloud-service-resources"></a>迁移云服务资源
@@ -94,4 +94,4 @@ ms.locfileid: "106286653"
     键入“是”确认并提交迁移。 迁移现已完成。 将解锁云服务（外延支持）部署，可对其执行所有操作。 
 
 ## <a name="next-steps"></a>后续步骤
-查看[迁移后的更改](in-place-migration-overview.md#post-migration-changes)部分，以查看新云服务（外延支持）部署的部署文件中的更改、自动化和其他特性。 
+查看[迁移后的更改](in-place-migration-overview.md#post-migration-changes)部分，以查看新云服务（外延支持）部署的部署文件中的更改、自动化和其他特性。

@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-azcli-net-ps
-ms.openlocfilehash: aabb8bdf4105702aa623c45bc291770b05b8279e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: aa5d24229bae0e459471dc40ca375d42ccc1405c
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726765"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108293219"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>快速入门：创建和管理通信服务资源
 
@@ -52,7 +52,7 @@ ms.locfileid: "105726765"
 
 还可以使用 Azure CLI 访问密钥信息（例如，资源组或特定资源的密钥）。 
 
-安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?tabs=azure-cli) 并使用以下命令登录。 需要提供凭据才能连接到 Azure 帐户。
+安装 [Azure CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli) 并使用以下命令登录。 需要提供凭据才能连接到 Azure 帐户。
 ```azurecli
 az login
 ```

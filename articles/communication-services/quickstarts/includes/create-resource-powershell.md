@@ -1,15 +1,15 @@
 ---
-ms.openlocfilehash: cc628b1f1fcae5e837f7f61db584c8747100f353
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 340635f273c20c9d8b42fde0c07a7aa97d9f348a
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644730"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108293220"
 ---
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/dotnet/)。
-- 安装 [Azure Az PowerShell 模块](https://docs.microsoft.com/powershell/azure/)
+- 安装 [Azure Az PowerShell 模块](/powershell/azure/)
 
 ## <a name="create-azure-communication-resource"></a>创建 Azure 通信资源
 

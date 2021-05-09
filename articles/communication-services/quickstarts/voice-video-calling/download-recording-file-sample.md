@@ -9,12 +9,12 @@ ms.author: joseys
 ms.date: 04/14/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 493a35a627f458fe649931d9fabc175b0affc3a6
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 486dbc4e3bafe34fad9f6eeb00460ee6b9bf5613
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107730242"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292803"
 ---
 # <a name="record-and-download-calls-with-event-grid"></a>使用事件网格录制和下载通话
 
@@ -64,7 +64,7 @@ public async Task<ActionResult> PostAsync([FromBody] object request)
 ```
 
 
-上述代码依赖于 `Microsoft.Azure.EventGrid` NuGet 包。 若要了解有关事件网格终结点验证的详细信息，请访问[终结点验证文档](https://docs.microsoft.com/azure/event-grid/receive-events#endpoint-validation)
+上述代码依赖于 `Microsoft.Azure.EventGrid` NuGet 包。 若要了解有关事件网格终结点验证的详细信息，请访问[终结点验证文档](../../../event-grid/receive-events.md#endpoint-validation)
 
 接下来，我们将此 webhook 订阅到 `recording`：
 
@@ -218,6 +218,6 @@ public static void AddHmacHeaders(HttpRequestMessage requestMessage, string cont
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅以下文章：
 
-- 查看[网络呼叫示例](https://docs.microsoft.com/azure/communication-services/samples/web-calling-sample)
-- 了解如何[调用 SDK 功能](https://docs.microsoft.com/azure/communication-services/quickstarts/voice-video-calling/calling-client-samples?pivots=platform-web)
-- 了解有关[呼叫工作原理](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/about-call-types)的详细信息
+- 查看[网络呼叫示例](../../samples/web-calling-sample.md)
+- 了解如何[调用 SDK 功能](./calling-client-samples.md?pivots=platform-web)
+- 了解有关[呼叫工作原理](../../concepts/voice-video-calling/about-call-types.md)的详细信息

@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/15/2021
 ms.author: sajaya
-ms.openlocfilehash: 5550c53289228f154fab485b4b7bbff17555aad7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 84567f9667619bb9208f066460b3c4483123b3fc
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045733"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331441"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>有关 Azure 容器注册表的常见问题解答
 
@@ -33,7 +33,7 @@ ms.locfileid: "105045733"
 
 ### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>是否可以使用资源管理器模板创建 Azure 容器注册表？
 
-是的。 这里提供了[模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry)，可以用来创建注册表。
+是的。 这里提供了[模板](https://azure.microsoft.com/resources/templates/101-container-registry/)，可以用来创建注册表。
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>ACR 中是否提供对映像的安全漏洞扫描？
 
@@ -262,7 +262,7 @@ ACR 支持提供不同权限级别的[自定义角色](container-registry-roles.
 
 对 Azure 容器注册表设置匿名（未经身份验证的）请求访问权限目前还是预览功能，适用于标准和高级[服务层](container-registry-skus.md)。 
 
-若要启用匿名请求访问，请使用 Azure CLI（2.21.0 或更高版本）更新注册表，并将 `--anonymous-pull-enabled` 参数传递到 [az acr 更新](/cli/azure/acr#az_acr_update)命令：
+若要启用匿名请求访问，请使用 Azure CLI（2.21.0 或更高版本）更新注册表，并将 `--anonymous-pull-enabled` 参数传递到 [az acr update](/cli/azure/acr#az_acr_update) 命令：
 
 ```azurecli
 az acr update --name myregistry --anonymous-pull-enabled
@@ -274,6 +274,7 @@ az acr update --name myregistry --anonymous-pull-enabled
 > * 尝试匿名拉取操作前，请运行 `docker logout` 以确保清除任何现有 Docker 凭据。
 > * 未经身份验证的客户端只能使用数据平面操作。
 > * 注册表可能会限制高频未经身份验证的请求。
+> * 目前，[异地复制](container-registry-geo-replication.md)的注册表区域不支持匿名请求访问。
 
 > [!WARNING]
 > 匿名请求访问当前适用于注册表中的所有存储库。 如果使用[存储库范围内的令牌](container-registry-repository-scoped-permissions.md)管理存储库访问权限，请注意，所有用户都可能拉取启用了匿名请求的注册表中的存储库。 建议在启用匿名请求访问时删除令牌。
@@ -484,7 +485,7 @@ curl $redirect_url
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>为什么拉取或推送请求失败，并出现不受允许的操作？
 
 以下是一些可能出现不允许进行操作的情况：
-* 不再支持经典注册表。 请使用 [az acr update](/cli/azure/acr#az-acr-update)或 Azure 门户升级到受支持的[服务层](./container-registry-skus.md)。
+* 不再支持经典注册表。 请使用 [az acr update](/cli/azure/acr#az_acr_update)或 Azure 门户升级到受支持的[服务层](./container-registry-skus.md)。
 * 映像或存储库可能已锁定，因此无法进行删除或更新。 可以使用 [az acr show repository](./container-registry-image-lock.md) 命令来查看当前属性。
 * 如果映像处于隔离状态，则会禁用某些操作。 详细了解[隔离](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)。
 * 注册表可能已达到其[存储限制](container-registry-skus.md#service-tier-features-and-limits)。

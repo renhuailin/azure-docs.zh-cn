@@ -136,6 +136,10 @@
           href: custom-translator/what-is-bleu-score.md
         - name: 客户管理的密钥
           href: encrypt-data-at-rest.md
+    - name: 参考
+      items:
+        - name: 发行说明
+          href: custom-translator/release-notes.md
 - name: 文档翻译
   items:
     - name: 什么是文档翻译？

@@ -2,15 +2,15 @@
 title: VMware 软件版本
 description: Azure VMware 解决方案支持的 VMware 软件版本。
 ms.topic: include
-ms.date: 03/31/2021
-ms.openlocfilehash: a6441b55bbc6a8f694c50bbf022a6a2ae52d60bf
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.date: 04/23/2021
+ms.openlocfilehash: 94ffa98c3e935af3319cfdcd6855eadf843fec7a
+ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106097607"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108026054"
 ---
-<!-- Used in faq.md and concepts-private-clouds-clusters.md -->
+<!-- Used in faq.md and concepts-private-clouds-clusters#host-maintenance-and-lifecycle-management -->
 
 
 新部署的 Azure VMware 解决方案私有云群集中使用的 VMware 软件版本包括：
@@ -20,10 +20,8 @@ ms.locfileid: "106097607"
 | VCSA / vSphere / ESXi |    6.7 U3l    | 
 | ESXi                  |    6.7 U3l    | 
 | vSAN                  |    6.7 U3l    |
-| NSX-T <br />注意：NSX-T 是唯一支持的 NSX 版本。               |      3.1.1     |
+| NSX-T <br />注意：NSX-T 是唯一支持的 NSX 版本。               |      2.5.2     |
 
 
-新群集已添加到现有私有云，应用当前运行的软件版本。 有关详细信息，请参阅 [VMware 软件版本要求](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html)。
-
-私有云软件捆绑包升级的目的是使软件与 VMware 最新发布的版软件捆绑包保持同一版本。 私有云软件版本可能不同于各个软件组件（ESXi、NSX-T、vCenter、vSAN）的最新版本。 你可以找到[私有云更新和升级](../concepts-upgrades.md)中所述的 Azure VMware 解决方案平台软件的常规升级策略和过程。
+当前运行的软件版本将应用到添加到现有私有云的新群集中。 有关详细信息，请参阅 [VMware 软件版本要求](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html)。
 

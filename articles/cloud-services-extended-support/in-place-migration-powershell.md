@@ -8,12 +8,12 @@ ms.reviwer: mimckitt
 ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: eea49a41e81e7e580becce815ff91aff6aa430d6
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: aab67914b1317bc0cc443f333932ecef924176b6
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286691"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108293019"
 ---
 # <a name="migrate-to-azure-cloud-services-extended-support-using-powershell"></a>使用 PowerShell 迁移到 Azure 云服务（外延支持）
 
@@ -28,7 +28,7 @@ ms.locfileid: "106286691"
 ## <a name="2-install-the-latest-version-of-powershell"></a>2) 安装最新版本的 PowerShell
 有两个主要选项可供安装 Azure PowerShell：[PowerShell 库](https://www.powershellgallery.com/profiles/azure-sdk/)或 [Web 平台安装程序 (WebPI)](https://aka.ms/webpi-azps)。 WebPI 接收每月的更新。 PowerShell 库会持续接收更新。 本文基于 Azure PowerShell 2.1.0 版。
 
-如需安装说明，请参阅 [How to install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0&preserve-view=true)（如何安装和配置 Azure PowerShell）。
+如需安装说明，请参阅 [How to install and configure Azure PowerShell](/powershell/azure/servicemanagement/install-azure-ps?preserve-view=true&view=azuresmps-4.0.0)（如何安装和配置 Azure PowerShell）。
 
 ## <a name="3-ensure-admin-permissions"></a>3) 确保拥有管理员权限
 若要执行此迁移，必须在 [Azure 门户](https://portal.azure.com)中将你添加为订阅的共同管理员。
@@ -193,4 +193,4 @@ Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 
 
 ## <a name="next-steps"></a>后续步骤
-查看[迁移后的更改](in-place-migration-overview.md#post-migration-changes)部分，以查看新云服务（外延支持）部署的部署文件中的更改、自动化和其他特性。 
+查看[迁移后的更改](in-place-migration-overview.md#post-migration-changes)部分，以查看新云服务（外延支持）部署的部署文件中的更改、自动化和其他特性。
