@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: kumud
-ms.openlocfilehash: f373afae03357ffb65eb459f806fe441e29b21b9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 890e02812fb06cf0b0ebe990b0175311d5c85ab5
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87047086"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312920"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-api"></a>使用视频索引器 API 自定义语言模型
 
@@ -27,7 +27,7 @@ ms.locfileid: "87047086"
 
 ## <a name="create-a-language-model"></a>创建语言模型
 
-[创建语言模型](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Language-Model?) API 在指定的帐户中创建新的自定义语言模型。 可以在此调用中上传语言模型的文件。 或者，可以在此处创建语言模型，稍后再通过更新语言模型上传模型的文件。
+[创建语言模型](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Create-Language-Model) API 在指定的帐户中创建新的自定义语言模型。 可以在此调用中上传语言模型的文件。 或者，可以在此处创建语言模型，稍后再通过更新语言模型上传模型的文件。
 
 > [!NOTE]
 > 仍必须使用模型的已启用文件来训练该模型，以学习其文件的内容。 下一部分提供了有关训练语言的指导。
@@ -70,7 +70,7 @@ ms.locfileid: "87047086"
 
 ## <a name="train-a-language-model"></a>训练语言模型
 
-[训练语言模型](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train) API 使用已在语言模型中上传并启用的文件中的内容，在指定的帐户中训练一个自定义的语言模型。
+[训练语言模型](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Train-Language-Model) API 使用已在语言模型中上传并启用的文件中的内容，在指定的帐户中训练一个自定义的语言模型。
 
 > [!NOTE]
 > 必须先创建语言模型并上传其文件。 可以在创建语言模型时或者通过更新语言模型来上传文件。
@@ -105,11 +105,11 @@ ms.locfileid: "87047086"
 }
 ```
 
-返回的 `id` 是用于区分语言模型的唯一 ID，而 `languageModelId` 用于[上传要编制索引的视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)和[为视频重新编制索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API（也称为视频索引器上传/重新编制索引 API 中的 `linguisticModelId`）。
+返回的 `id` 是用于区分语言模型的唯一 ID，而 `languageModelId` 用于[上传要编制索引的视频](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video)和[为视频重新编制索引](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video) API（也称为视频索引器上传/重新编制索引 API 中的 `linguisticModelId`）。
 
 ## <a name="delete-a-language-model"></a>删除语言模型
 
-[删除语言模型](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete) API 从指定的帐户中删除自定义语言模型。 使用已删除语言模型的任何视频会保留相同的索引，直到为该视频重新编制索引为止。 如果重新为视频编制索引，可为视频分配新的语言模型。 否则，视频索引器会使用其默认模型重新为视频编制索引。
+[删除语言模型](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Delete-Language-Model) API 从指定的帐户中删除自定义语言模型。 使用已删除语言模型的任何视频会保留相同的索引，直到为该视频重新编制索引为止。 如果重新为视频编制索引，可为视频分配新的语言模型。 否则，视频索引器会使用其默认模型重新为视频编制索引。
 
 ### <a name="response"></a>响应
 
@@ -117,7 +117,7 @@ ms.locfileid: "87047086"
 
 ## <a name="update-a-language-model"></a>更新语言模型
 
-[更新语言模型](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model?&pattern=update) API 在指定的帐户中更新自定义语言个人模型。
+[更新语言模型](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Language-Model) API 在指定的帐户中更新自定义语言个人模型。
 
 > [!NOTE]
 > 必须事先创建一个语言模型。 可以使用此调用来启用或禁用模型下的所有文件、更新语言模型的名称，以及上传要添加到语言模型的文件。
@@ -161,7 +161,7 @@ ms.locfileid: "87047086"
 
 ## <a name="update-a-file-from-a-language-model"></a>更新语言模型中的文件
 
-[更新文件](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update)用于更新指定帐户中某个自定义语言模型内的某个文件的名称和 `enable` 状态。
+[更新文件](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Language-Model-file)用于更新指定帐户中某个自定义语言模型内的某个文件的名称和 `enable` 状态。
 
 ### <a name="response"></a>响应
 
@@ -181,7 +181,7 @@ ms.locfileid: "87047086"
 
 ## <a name="get-a-specific-language-model"></a>获取特定的语言模型
 
-[获取](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get) API 返回有关指定帐户指定语言模型的信息，例如语言以及语言模型中的文件。
+[获取](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Language-Model) API 返回有关指定帐户指定语言模型的信息，例如语言以及语言模型中的文件。
 
 ### <a name="response"></a>响应
 
@@ -217,7 +217,7 @@ ms.locfileid: "87047086"
 
 ## <a name="get-all-the-language-models"></a>获取所有语言模型
 
-[获取全部](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get) API 在列表中返回指定帐户中的所有自定义语言模型。
+[获取全部](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Language-Models) API 在列表中返回指定帐户中的所有自定义语言模型。
 
 ### <a name="response"></a>响应
 
@@ -261,7 +261,7 @@ ms.locfileid: "87047086"
 
 ## <a name="delete-a-file-from-a-language-model"></a>从语言模型中删除文件
 
-[删除](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete) API 从指定帐户中的指定语言模型删除指定的文件。
+[删除](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Delete-Language-Model-File) API 从指定帐户中的指定语言模型删除指定的文件。
 
 ### <a name="response"></a>响应
 
@@ -269,7 +269,7 @@ ms.locfileid: "87047086"
 
 ## <a name="get-metadata-on-a-file-from-a-language-model"></a>获取有关语言模型中的文件的元数据
 
-[获取文件的元数据](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model) API 返回帐户中所选语言模型内的指定文件的内容及其相关元数据。
+[获取文件的元数据](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Language-Model-File-Data) API 返回帐户中所选语言模型内的指定文件的内容及其相关元数据。
 
 ### <a name="response"></a>响应
 
@@ -291,7 +291,7 @@ ms.locfileid: "87047086"
 
 ## <a name="download-a-file-from-a-language-model"></a>从语言模型下载文件
 
-[下载文件](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?) API 从指定帐户中的指定语言模型下载包含指定文件内容的文本文件。 此文本文件应与最初上传的文本文件的内容相匹配。
+[下载文件](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Download-Language-Model-File-Content) API 从指定帐户中的指定语言模型下载包含指定文件内容的文本文件。 此文本文件应与最初上传的文本文件的内容相匹配。
 
 ### <a name="response"></a>响应
 

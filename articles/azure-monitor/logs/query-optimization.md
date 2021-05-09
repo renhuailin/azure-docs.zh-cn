@@ -6,14 +6,14 @@ author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
 ms.openlocfilehash: 7b5412b2ca738f5d2099521062e37afcff90e938
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102047326"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>优化 Azure Monitor 中的日志查询
-Azure Monitor 日志使用 [Azure 数据资源管理器 (ADX)](/azure/data-explorer/) 来存储日志数据，并运行查询来分析这些数据。 它为你创建、管理和维护 ADX 群集，并针对你的日志分析工作负荷优化它们。 运行查询时，将对其进行优化，并将其路由到存储着工作区数据的相应 ADX 群集。 Azure Monitor 日志和 Azure 数据资源管理器都使用许多自动查询优化机制。 虽然自动优化可显著提高性能，但在某些情况下，你可以极大地提高查询性能。 本文介绍了性能注意事项和解决相关问题的几种方法。
+Azure Monitor 日志使用 [Azure 数据资源管理器 (ADX)](/azure/data-explorer/) 来存储日志数据，并运行查询来分析这些数据。 它为你创建、管理和维护 ADX 群集，并针对你的日志分析工作负荷优化它们。 运行查询时，将对其进行优化，并将其路由到存储着工作区数据的相应 ADX 群集。 Azure Monitor 日志和 Azure 数据资源管理器都使用许多自动查询优化机制。 虽然自动优化已提供了显著的性能提升，但在某些情况下，你还可以显著提高查询性能。 本文介绍了性能注意事项和解决相关问题的几种方法。
 
 大多数方法对于直接在 Azure 数据资源管理器和 Azure Monitor 日志上运行的查询是通用的，但我们在这里讨论的是几个独特的 Azure Monitor 日志注意事项。 如需更多的 Azure 数据资源管理器优化技巧，请参阅[查询最佳做法](/azure/kusto/query/best-practices)。
 
@@ -55,8 +55,8 @@ Azure Monitor 日志使用 [Azure 数据资源管理器 (ADX)](/azure/data-explo
 使用超过 100 秒 CPU 的查询被视为消耗过多资源的查询。 使用超过 1,000 秒 CPU 的查询被视为滥用查询，可能会受到限制。
 
 查询处理时间花费在：
-- 数据检索–旧数据的检索时间比检索最新数据所用时间更长。
-- 数据处理–数据的逻辑和计算。 
+- 数据检索 - 检索旧数据比检索近期数据所用时间更长。
+- 数据处理 - 数据的逻辑和计算。 
 
 除了在查询处理节点中所花费的时间以外，Azure Monitor 日志还需要花费额外的时间来执行以下操作：对用户进行身份验证，并验证是否允许他们访问此数据、查找数据存储、分析查询和分配查询处理节点。 此时间不包括在查询总 CPU 时间内。
 

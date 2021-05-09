@@ -1,24 +1,24 @@
 ---
-title: 更新逻辑应用 & 警报迁移 runbook
+title: 更新逻辑应用和 runbook 以进行警报迁移
 description: 了解如何修改 Webhook、逻辑应用和 Runbook，以准备自愿性迁移。
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/14/2021
 ms.openlocfilehash: ce61c3539a4ea29cbeb48c379ed143363500701e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102038010"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>准备逻辑应用和 Runbook 以迁移经典警报规则
 
 > [!NOTE]
-> 如前所述 [，对于](monitoring-classic-retirement.md)公有云用户，Azure Monitor 中的经典警报将会停用，但在31年 **5 月31日之前仍2021会** 受到限制。 Azure 政府云和 Azure 中国世纪互联的经典警报将于 **2024 年2月29日** 停用。
+> 如[以前公告](monitoring-classic-retirement.md)的那样，Azure Monitor 中的经典警报已对公有云用户停用，但在 2021 年 5 月 31 日之前仍可有限制地使用它。 针对 Azure 政府云和 Azure 中国世纪互联的经典警报将于 2024 年 2 月 29 日停用。
 >
 
-如果选择主动将经典警报规则迁移到新的警报规则，则这两个系统之间存在一些差异。 本文将会解释这些差异以及如何做好相应的准备。
+如果自愿选择将经典警报规则迁移到新的警报规则，这两个系统之间存在一些差异。 本文将会解释这些差异以及如何做好相应的准备。
 
 ## <a name="api-changes"></a>API 更改
 
@@ -35,26 +35,26 @@ ms.locfileid: "102038010"
 
 ## <a name="notification-payload-changes"></a>通知有效负载更改
 
-[经典警报规则](alerts-webhooks.md)和[新指标警报](alerts-metric-near-real-time.md#payload-schema)的通知有效负载格式略有不同。 如果具有使用 webhook、逻辑应用或 runbook 操作的经典警报规则，则必须更新目标以接受新的负载格式。
+[经典警报规则](alerts-webhooks.md)和[新指标警报](alerts-metric-near-real-time.md#payload-schema)的通知有效负载格式略有不同。 如果你的经典警报规则具有 Webhook、逻辑应用或 runbook 操作，则必须更新目标以接受新的有效负载格式。
 
 使用下表将经典格式中的 Webhook 有效负载字段映射到新格式：
 
 | 通知终结点类型 | 经典警报 | 新指标警报 |
 | -------------------------- | -------------- | ----------------- |
 |警报是否已激活或解决？    | **status**       | **data.status** |
-|有关警报的上下文信息     | **上下文**        | **数据。上下文**        |
+|有关警报的上下文信息     | **上下文**        | **data.context**        |
 |激活或解决警报时的时间戳     | **context.timestamp**       | **data.context.timestamp**        |
 | 警报规则 ID | **context.id** | **data.context.id** |
 | 预警规则名称 | **context.name** | **data.context.name** |
 | 警报规则的说明 | **context.description** | **data.context.description** |
 | 警报规则条件 | **context.condition** | **data.context.condition** |
 | 指标名称 | **context.condition.metricName** | **data.context.condition.allOf[0].metricName** |
-| 时间聚合（在评估期限内聚合指标的方式）| **timeAggregation** | **timeAggregation** |
+| 时间聚合（在评估期限内聚合指标的方式）| **context.condition.timeAggregation** | **context.condition.timeAggregation** |
 | 评估期 | **context.condition.windowSize** | **data.context.condition.windowSize** |
 | 运算符（如何将聚合指标值与阈值进行比较） | **context.condition.operator** | **data.context.condition.operator** |
 | 阈值 | **context.condition.threshold** | **data.context.condition.allOf[0].threshold** |
 | 指标值 | **context.condition.metricValue** | **data.context.condition.allOf[0].metricValue** |
-| 订阅 ID | **context.subname** | **data.context.subscriptionId** |
+| 订阅 ID | **context.subscriptionId** | **data.context.subscriptionId** |
 | 受影响资源的资源组 | **context.resourceGroup** | **data.context.resourceGroup** |
 | 受影响资源的名称 | **context.resourceName** | **data.context.resourceName** |
 | 受影响资源的类型 | **context.resourceType** | **data.context.resourceType** |
@@ -69,13 +69,13 @@ ms.locfileid: "102038010"
 
 ## <a name="modify-a-logic-app-to-receive-a-metric-alert-notification"></a>修改逻辑应用以接收指标警报通知
 
-如果将逻辑应用与经典警报配合使用，则必须修改逻辑应用代码，以分析新指标警报有效负载。 执行以下步骤：
+如果将逻辑应用与经典警报配合使用，则必须修改逻辑应用代码，以分析新指标警报有效负载。 执行以下步骤:
 
 1. 创建新的逻辑应用。
 
 1. 使用“Azure Monitor - 指标警报处理程序”模板。 此模板包含一个定义了相应架构的 **HTTP 请求** 触发器。
 
-    ![屏幕截图显示了两个按钮：空白逻辑应用和 Azure Monitor –指标警报处理程序。](media/alerts-prepare-migration/logic-app-template.png "指标警报模板")
+    ![屏幕截图显示两个按钮：“空白逻辑应用”和“Azure Monitor - 指标警报处理程序”。](media/alerts-prepare-migration/logic-app-template.png "指标警报模板")
 
 1. 添加用于托管处理逻辑的操作。
 
@@ -158,7 +158,7 @@ else {
 - [OpsGenie](https://docs.opsgenie.com/docs/microsoft-azure-integration)
 - [Signl4](https://www.signl4.com/blog/mobile-alert-notifications-azure-monitor/)
 
-如果你使用的是未在此处列出的合作伙伴集成，请向提供商确认他们处理的是新的指标警报。
+如果你使用的合作伙伴集成未在此处列出，请与提供商确认它们是否能够处理新的指标警报。
 
 ## <a name="next-steps"></a>后续步骤
 

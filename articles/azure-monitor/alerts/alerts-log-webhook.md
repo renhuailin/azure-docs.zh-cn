@@ -7,10 +7,10 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 228193066c45421c4dddee1802aba1feed59e9c8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102042668"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>用于日志警报规则的 Webhook 操作
@@ -83,7 +83,7 @@ ms.locfileid: "102042668"
 以下示例有效负载适用于基于 Log Analytics 的警报使用的标准 Webhook 操作：
 
 > [!NOTE]
-> 如果已从[旧的 Log Analytics 警报 api](./api-alerts.md)[切换到当前的 scheduledQueryRules api](../alerts/alerts-log-api-switch.md) ，则 "严重性" 字段值会发生更改。
+> 如果已从[旧的 Log Analytics 警报 API](./api-alerts.md) [切换到当前 scheduledQueryRules API](../alerts/alerts-log-api-switch.md)，则“严重性”字段值会发生更改。
 
 ```json
 {

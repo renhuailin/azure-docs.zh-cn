@@ -1,6 +1,6 @@
 ---
 title: 使用 REST API 进行 Azure NetApp 文件开发 | Microsoft Docs
-description: Azure NetApp 文件服务的 REST API 为资源（如 NetApp 帐户、容量池、卷和快照）定义 HTTP 操作。
+description: 适用于 Azure NetApp 文件服务的 REST API 定义了针对 NetApp 帐户、容量池、卷和快照等资源执行的 HTTP 操作。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,19 +15,19 @@ ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
 ms.openlocfilehash: c5993dc1dc645319e272ab310a97bc3ff8ac495d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102174234"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api"></a>使用 REST API 进行 Azure NetApp 文件开发 
 
 适用于 Azure NetApp 文件服务的 REST API 定义了针对 NetApp 帐户、容量池、卷和快照等资源执行的 HTTP 操作。 本文可帮助你开始使用 Azure NetApp 文件 REST API。
 
-## <a name="azure-netapp-files-rest-api-specification"></a>Azure NetApp 文件 REST API 规范
+## <a name="azure-netapp-files-rest-api-specification"></a>Azure NetApp 文件 REST API 规格
 
-Azure NetApp 文件的 REST API 规范通过 [GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager)发布：
+Azure NetApp 文件的 REST API 规范通过 [GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager) 发布：
 
 `https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager`
 
@@ -115,7 +115,7 @@ curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: applicati
 
 ### <a name="put-request-examples"></a>PUT 请求示例
 
-使用 PUT 请求在 Azure NetApp 文件中创建新对象，如以下示例所示。 PUT 请求的正文可以包含更改的 JSON 格式数据。 它必须作为文本或作为文件的引用包含在卷命令中。 若要以文件的形式引用正文，请将 json 示例保存到文件中，并将其添加 `-d @<filename>` 到卷命令。
+使用 PUT 请求在 Azure NetApp 文件中创建新对象，如以下示例所示。 PUT 请求的正文可以包含用于更改的 JSON 格式数据。 它必须作为文本或文件形式的引用包含在 curl 命令中。 若要以文件的形式引用正文，请将 json 示例保存到文件中，并将 `-d @<filename>` 添加到 curl 命令。
 
 ```azurecli
 #create a NetApp account  
@@ -167,7 +167,7 @@ curl -d @<filename> -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-
 }
 ```
 
-下面的示例演示如何创建新卷。  (卷的默认协议为 "NFSV3"。 )  
+以下示例演示如何创建新卷。 （卷的默认协议为 NFSV3。） 
 
 ```json
 {

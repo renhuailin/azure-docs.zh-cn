@@ -7,10 +7,10 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.openlocfilehash: 254d403adc687074eae772bcdcc55793bb25b336
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102048907"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>创建诊断设置以将平台日志和指标发送到不同的目标
@@ -26,7 +26,7 @@ Azure 中的[平台日志](./platform-logs-overview.md)（包括 Azure 活动日
 
 一个诊断设置只能为每个目标定义一种类型。 若要将数据发送到多个特定的目标类型（例如，两个不同的 Log Analytics 工作区），请创建多个设置。 每个资源最多可以有 5 个诊断设置。
 
-以下视频演示如何使用诊断设置来路由平台日志。
+以下视频演示如何通过诊断设置来路由平台日志。
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AvVO]
 
 > [!NOTE]
@@ -176,21 +176,21 @@ az monitor diagnostic-settings create  \
 由于需要为每个 Azure 资源创建诊断设置，因此在创建每个资源时，可以使用 Azure Policy 来自动创建诊断设置。 有关详细信息，请参阅[使用 Azure Policy 大规模部署 Azure Monitor](../deploy-scale.md)。
 
 ## <a name="metric-category-is-not-supported-error"></a>不支持指标类别错误
-部署诊断设置时，会收到以下错误消息：
+部署诊断设置时，将收到以下错误消息：
 
-   不支持度量值类别 "*xxxx*"
+   “不支持指标类别 ‘xxxx’”
 
 例如： 
 
-   "指标类别 ' ActionsFailed ' 不受支持"
+   “不支持指标类别 ‘ActionsFailed’”
 
-部署成功的位置。 
+之前部署成功的位置。 
 
-当使用资源管理器模板、诊断设置 REST API、Azure CLI 或 Azure PowerShell 时，会出现此问题。 通过 Azure 门户创建的诊断设置不受影响，因为仅显示支持的类别名称。
+在使用资源管理器模板、诊断设置 REST API、Azure CLI 或 Azure PowerShell 时，会出现此问题。 通过 Azure 门户创建的诊断设置不受影响，因为仅显示受支持的类别名称。
 
-此问题是由基础 API 的最新更改引起的。 除 "AllMetrics" 之外的指标类别不受支持，并且绝不会有少量特定的 Azure 服务。 过去，部署诊断设置时，将忽略其他类别名称。 Azure Monitor 后端直接将这些类别重定向到 "AllMetrics"。  从2021年2月开始，更新后端以明确确认提供的指标类别是否准确。 此更改导致某些部署失败。
+此问题由对基础 API 的最新更改引起。 除“AllMetrics”之外的指标类别不受支持，少量特定的 Azure 服务除外。 过去，部署诊断设置时，将忽略其他类别名称。 Azure Monitor 后端只是将这些类别重定向到“AllMetrics”。  从 2021 年 2 月开始，对后端进行了更新，以明确确认提供的指标类别是否准确。 此更改导致一些部署出现失败。
 
-如果收到此错误，请更新部署，将任何指标类别名称替换为 "AllMetrics" 以解决此问题。 如果部署之前添加了多个类别，则应该只保留一个具有 "AllMetrics" 引用的类别。 如果仍然遇到问题，请通过 Azure 门户联系 Azure 支持部门。 
+如果收到此错误，请更新部署，将任何指标类别名称替换为“AllMetrics”以解决此问题。 如果部署之前添加了多个类别，则应只保留具有“AllMetrics”引用的类别。 如果仍遇到问题，请通过 Azure 门户联系 Azure 支持。 
 
 
 

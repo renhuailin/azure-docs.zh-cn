@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/19/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: 1a76f79f31d1f4518c069afb7fccbad5bd22d4e2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 04aef540bc134e5ec307be6a232ce47f0923e528
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101744383"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046345"
 ---
 # <a name="manage-the-datadog-resource"></a>管理 Datadog 资源
 
@@ -61,7 +61,7 @@ ms.locfileid: "101744383"
 列“日志到 Datadog”指示资源是否正在将日志发送到 Datadog。 如果资源不发送日志，则此字段指示日志不发送到 Datadog 的原因。 原因可能包括：
 
 - 资源不支持发送日志。 只能将具有监视日志类别的资源类型配置为向 Datadog 发送日志。
-- 达到了五个诊断设置的限制。 每个 Azure 资源最多可以有五个诊断设置。 有关详细信息，请参阅[诊断设置](../../azure-monitor/platform/diagnostic-settings.md)。
+- 达到了五个诊断设置的限制。 每个 Azure 资源最多可以有五个诊断设置。 有关详细信息，请参阅[诊断设置](../../azure-monitor/essentials/diagnostic-settings.md)。
 - 错误。 资源配置为将日志发送到 Datadog，但被错误阻止。
 - 未配置日志。 只有具有相应资源标记的 Azure 资源配置为将日志发送到 Datadog。
 - 区域不受支持。 Azure 资源位于目前不支持将日志发送到 Datadog 的区域。

@@ -1,31 +1,31 @@
 ---
-title: 从 ITSM 产品同步到 LA 工作区的数据
-description: 本文概述了从 ITSM 产品同步到 LA 工作区的数据。
+title: 从 IT 服务管理产品同步到 LA 工作区的数据
+description: 本文概述了从 IT 服务管理产品同步到 LA 工作区的数据。
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/29/2020
 ms.custom: references_regions
 ms.openlocfilehash: 83994c1b6e150342a777a079d79d6a594d30c3ff
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102041597"
 ---
-# <a name="data-synced-from-your-itsm-product"></a>从 ITSM 产品同步的数据
+# <a name="data-synced-from-your-itsm-product"></a>从 IT 服务管理产品同步的数据
 
-事件和更改请求根据连接的配置 (使用 "同步数据" 字段) ，从 ITSM 工具同步到 Log Analytics 工作区：
+事件和更改请求根据连接配置（使用“同步数据”字段）从 IT 服务管理工具同步到 Log Analytics 工作区。
 * [ServiceNow](./itsmc-connections-servicenow.md)
 * [System Center Service Manager](./itsmc-connections-scsm.md)
 * [Cherwell](./itsmc-connections-cherwell.md)
 * [Provance](./itsmc-connections-provance.md)
 
-## <a name="synced-data"></a>同步的数据
+## <a name="synced-data"></a>已同步的数据
 
 本部分介绍 ITSMC 收集的数据的一些示例。
 
-**ServiceDesk_CL** 中的字段因导入到 Log Analytics 中的工作项类型而异。 下面是两个工作项类型的字段列表：
+ServiceDesk_CL 中的字段因导入到 Log Analytics 中的工作项类型而异。 下面是针对两种工作项类型的字段列表：
 
 **工作项：** **事件**  
 ServiceDeskWorkItemType_s="Incident"

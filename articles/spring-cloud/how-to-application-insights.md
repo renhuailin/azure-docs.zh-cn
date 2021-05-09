@@ -7,16 +7,16 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/04/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: c7083cb6669d7bc779a8e69babfef38988819f8c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: e9c0a2a6a6b40325e4bf87dc8cf52bc419b77621
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483767"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129056"
 ---
 # <a name="application-insights-java-in-process-agent-in-azure-spring-cloud-preview"></a>Azure Spring Cloud 中的 Application Insights Java 进程内代理（预览版）
 
-本文档介绍了如何使用 Azure Spring Cloud 中的 Application Insights Java 代理监视应用和微服务。 
+本文介绍如何使用 Azure Spring Cloud 中的 Application Insights Java 代理监视应用和微服务。 
 
 使用此功能，你可以：
 
@@ -88,6 +88,7 @@ Application Insights 提供了许多可观察的角度，包括：
   [ ![IPA 9](media/spring-cloud-application-insights/petclinic-microservices-availability.jpg)](media/spring-cloud-application-insights/petclinic-microservices-availability.jpg)
 
 ## <a name="arm-template"></a>ARM 模板
+
 若要使用 Azure 资源管理器模板，请将以下内容复制到 `azuredeploy.json`。
 
 ```json
@@ -121,6 +122,7 @@ Application Insights 提供了许多可观察的角度，包括：
 ```
 
 ## <a name="cli"></a>CLI
+
 使用 CLI 命令应用 ARM 模板：
 
 * 适用于现有的 Azure Spring Cloud 实例：
@@ -141,6 +143,6 @@ az spring-cloud app-insights update --disable â€“name "assignedName" â€�
 ```
 
 ## <a name="see-also"></a>另请参阅
-* [将分布式跟踪与 Azure Spring Cloud 配合使用](spring-cloud-howto-distributed-tracing.md)
+* [将分布式跟踪与 Azure Spring Cloud 配合使用](./how-to-distributed-tracing.md)
 * [分析日志和指标](diagnostic-services.md)
-* [实时流式传输日志](spring-cloud-howto-log-streaming.md)
+* [实时流式传输日志](./how-to-log-streaming.md)

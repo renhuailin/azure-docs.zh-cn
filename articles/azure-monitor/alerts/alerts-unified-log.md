@@ -6,10 +6,10 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 786e9b472d1f900e94e5d0cfa6a00e0f85547704
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102037687"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor 中的日志警报
@@ -31,7 +31,7 @@ ms.locfileid: "102037687"
 [Azure 监视参与者](../roles-permissions-security.md)是创建、修改和更新日志警报所需的常见角色。 还需要具有对资源日志的访问和查询执行权限。 对资源日志具有部分访问权限可能会导致查询失败或返回部分结果。 [详细了解如何在 Azure 中配置日志警报](./alerts-log.md)。
 
 > [!NOTE]
-> 过去使用旧版 [Log Analytics 警报 API](./api-alerts.md) 管理 Log Analytics 的日志警报。 [详细了解如何切换到当前的 SCHEDULEDQUERYRULES API](../alerts/alerts-log-api-switch.md)。
+> 过去使用旧版 [Log Analytics 警报 API](./api-alerts.md) 管理 Log Analytics 的日志警报。 [了解有关切换到当前 ScheduledQueryRules API 的详细信息](../alerts/alerts-log-api-switch.md)。
 
 ## <a name="query-evaluation-definition"></a>查询评估定义
 
@@ -53,7 +53,7 @@ ms.locfileid: "102037687"
 > 警报查询具有约束，可确保结果的最佳性能和相关性。 [在此处了解更多信息](./alerts-log-query.md)。
 
 > [!IMPORTANT]
-> 使用当前 scheduledQueryRules API 仅支持以资源为中心的查询和[跨资源查询](../logs/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights)。 如果使用旧版 [Log Analytics 警报 API](./api-alerts.md)，则需要切换。 [了解有关切换的详细信息](./alerts-log-api-switch.md)
+> 使用当前 scheduledQueryRules API 仅支持以资源为中心的查询和[跨资源查询](../logs/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights)。 如果使用旧的 [Log Analytics 警报 API](./api-alerts.md)，则需要进行切换。 [了解有关切换的详细信息](./alerts-log-api-switch.md)
 
 #### <a name="query-time-range"></a>查询时间范围
 
@@ -153,7 +153,7 @@ requests
 此规则监视在过去 15 分钟内是否有任何虚拟机出现错误事件。 每个虚拟机都会被单独监视，并且会分别触发操作。
 
 > [!NOTE]
-> 按警报维度拆分这一做法仅适用于当前的 scheduledQueryRules API。 如果使用旧版 [Log Analytics 警报 API](./api-alerts.md)，则需要切换。 [了解有关切换的详细信息](./alerts-log-api-switch.md)。 仅在 API `2020-05-01-preview` 及更高版本中支持大规模的以资源为中心的警报。
+> 按警报维度拆分这一做法仅适用于当前的 scheduledQueryRules API。 如果使用旧的 [Log Analytics 警报 API](./api-alerts.md)，则需要进行切换。 [了解有关切换的详细信息](./alerts-log-api-switch.md)。 仅在 API `2020-05-01-preview` 及更高版本中支持大规模的以资源为中心的警报。
 
 ## <a name="alert-logic-definition"></a>警报逻辑定义
 
@@ -202,7 +202,7 @@ requests
 > 在隐藏的资源名称中，不受支持的资源字符（例如 `<, >, %, &, \, ?, /`）将被替换为 `_`，这也会在计费信息中反映出来。
 
 > [!NOTE]
-> 过去使用旧式 [Log Analytics 警报 API](./api-alerts.md) 以及 [Log Analytics 保存的搜索和警报](../insights/solutions.md)的旧式模板管理 Log Analytics 的日志警报。 [详细了解如何切换到当前的 SCHEDULEDQUERYRULES API](../alerts/alerts-log-api-switch.md)。 任何警报规则管理都应该使用[旧式 Log Analytics API](./api-alerts.md) 执行，直到你决定切换并且在这种情况下无法使用隐藏的资源。
+> 过去使用旧式 [Log Analytics 警报 API](./api-alerts.md) 以及 [Log Analytics 保存的搜索和警报](../insights/solutions.md)的旧式模板管理 Log Analytics 的日志警报。 [了解有关切换到当前 ScheduledQueryRules API 的详细信息](../alerts/alerts-log-api-switch.md)。 任何警报规则管理都应该使用[旧式 Log Analytics API](./api-alerts.md) 执行，直到你决定切换并且在这种情况下无法使用隐藏的资源。
 
 ## <a name="next-steps"></a>后续步骤
 

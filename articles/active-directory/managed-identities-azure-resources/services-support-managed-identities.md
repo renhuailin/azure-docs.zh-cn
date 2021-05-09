@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: c4cd9140d03bba1f9d95ed64c3628da4fe32ecd9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ea3f5cb896bb023a38474be71aa1570d9f5b4806
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771472"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108176659"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -95,7 +95,20 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
 
 如果已将订阅移到新租户，请参阅以下文档以重新配置托管标识：
+
 * [修复损坏的 Automanage 帐户](../../automanage/repair-automanage-account.md)
+
+### <a name="azure-automation"></a>Azure 自动化
+
+| 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
+| --- | :-: | :-: | :-: | :-: |
+| 系统分配 | ![可用][check] | ![可用][check] | 不可用 | 不可用 |
+| 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
+
+若要通过[Azure 自动化](../../automation/automation-intro.md)托管标识，请参阅以下文档：
+
+* [自动化帐户身份验证概述 - 托管标识](../../automation/automation-security-overview.md#managed-identities-preview)
+* [启用和使用托管标识来实现自动化](../../automation/enable-managed-identity-for-automation.md)
 
 ### <a name="azure-blueprints"></a>Azure 蓝图
 
@@ -241,7 +254,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
 | 系统分配 | ![可用][check] | ![可用][check] | 不可用 | 不可用 |
-| 用户分配 | 预览 | 不可用 | 不可用 | 不可用 |
+| 用户分配 | 预览 | ![可用][check] | 不可用 | 不可用 |
 
 
 有关详细信息，请参阅[在 Azure Kubernetes 服务中使用托管标识](../../aks/use-managed-identity.md)。
@@ -314,7 +327,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
 
 
-有关详细信息，请参阅[如何为 Azure Spring Cloud 应用程序启用系统分配的托管标识](~/articles/spring-cloud/spring-cloud-howto-enable-system-assigned-managed-identity.md)。
+有关详细信息，请参阅[如何为 Azure Spring Cloud 应用程序启用系统分配的托管标识](../../spring-cloud/how-to-enable-system-assigned-managed-identity.md)。
 
 ### <a name="azure-stack-edge"></a>Azure Stack Edge
 

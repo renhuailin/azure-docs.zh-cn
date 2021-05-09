@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 85f17897c0e3089a2d2bc5b172e98fa24e8085ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fda56d987bd4866d5124973329a5db7c74872b3f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94920434"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123404"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 证书入门
 以下方案概述了 Key Vault 的证书管理服务的多种主要使用方式，包括在密钥保管库中创建第一个证书所需的其他步骤。
@@ -107,6 +107,10 @@ Azure Key Vault 支持 .pem 和 .pfx 证书文件（用于将证书导入到 Key
 -----BEGIN PRIVATE KEY----- -----END PRIVATE KEY-----
 
 导入证书时，需要确保该密钥包含在文件本身中。 如果让私钥单独采用另一格式，则需将私钥与证书组合在一起。 某些证书颁发机构提供不同格式的证书，因此在导入证书之前，请确保证书采用 .pem 或 .pfx 格式。 
+
+
+>[!Note]
+>请确保证书文件中不存在任何其他元数据，并且私钥不会显示为已加密。
 
 ### <a name="formats-of-merge-csr-we-support"></a>我们支持的合并 CSR 的格式
 AKV 支持 2 种基于 PEM 的格式。 可以合并单个 PKCS#8 编码的证书或 base64 编码的 P7B（由 CA 签名的证书链） 

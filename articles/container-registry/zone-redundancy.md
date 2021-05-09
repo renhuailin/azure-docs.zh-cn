@@ -3,13 +3,13 @@ title: 用于实现高可用性的区域冗余注册表
 description: 了解如何在 Azure 容器注册表中启用区域冗余。 在 Azure 可用性区域中创建容器注册表或副本。 区域冗余是高级服务层级的一项功能。
 ms.topic: article
 ms.date: 02/23/2021
-ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 731962437c4890c665513241e756dbbc2acfc5de
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.custom: references_regions
+ms.openlocfilehash: a190ea68f41196fb11c20259b9953f516d6f5370
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891583"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102203855"
 ---
 # <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>启用 Azure 容器注册表中的区域冗余以实现复原能力和高可用性
 
@@ -30,7 +30,7 @@ ms.locfileid: "107891583"
 
 使用 Azure [可用性区域](../availability-zones/az-overview.md)在 Azure 区域中创建可复原和高度可用的 Azure 容器注册表。 例如，组织可以使用其他[受支持的 Azure 资源](../availability-zones/az-region.md)来设置区域冗余 Azure 容器注册表，以满足数据驻留或其他合规性要求，同时在某个区域内提供高可用性。
 
-Azure 容器注册表还支持[异地复制](container-registry-geo-replication.md)，这种复制可跨多个区域复制服务，从而使冗余和区域能够计算其他位置的资源。 某个区域内用于冗余的可用性区域和跨多个区域的异地复制合并在一起，可增强注册表的可靠性和性能。
+Azure 容器注册表还支持[异地复制](container-registry-geo-replication.md)，这种复制可跨多个区域复制服务，从而使冗余和区域能够计算其他位置的资源。 区域内用于冗余的可用性区域和跨多个区域的异地复制结合在一起，可增强注册表的可靠性和性能。
 
 可用性区域是 Azure 区域中独特的物理位置。 为确保能够进行复原，所有已启用的地区中都必须至少有三个单独的区域。 每个区域有一个或多个数据中心，这些数据中心配置了独立电源以及散热和网络设备。 为区域冗余进行配置时，区域中的所有可用性区域都会复制注册表 （或注册表副本），使其在发生数据中心故障时可以使用。
 

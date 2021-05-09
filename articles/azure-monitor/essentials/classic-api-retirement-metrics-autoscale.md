@@ -1,13 +1,13 @@
 ---
-title: 停用 Azure Monitor 度量值和自动缩放的部署 Api
+title: 停用 Azure Monitor 指标和自动缩放的部署 API
 description: 指标和自动缩放经典 API（也称为 Azure 服务管理 (ASM) 或 RDFE 部署模型）即将停用
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.openlocfilehash: 0169de93b92de179c0ae9a36ff8dba3b7b1dc0fb
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102049026"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor 即将停用指标和自动缩放的经典部署模型 API
@@ -52,12 +52,12 @@ ms.locfileid: "102049026"
 
 自动缩放和指标的所有现有功能将继续通过新 API 工作。  
 
-迁移到新的 Api 附带了基于资源管理器的功能，如支持一致的 Azure 基于角色的访问控制 (Azure RBAC) 所有监视服务。 此外，还可以获得其他指标功能： 
+迁移到较新的 API 可获得基于资源管理器的功能，例如，在你所有的监视服务中支持一致的 Azure 基于角色的访问控制 (Azure RBAC)。 此外，还可以获得其他指标功能： 
 
 - 维度支持
 - 在所有服务中保持一致的 1 分钟指标粒度 
 - 更方便的查询
-- 更高的数据保留期 (93 天的指标与30天)  
+- 更长的数据保留期（保留指标 93 天，而不是30 天） 
 
 总体而言，与 Azure 中的其他所有服务一样，基于资源管理器的 Azure Monitor API 提供更好的性能、可伸缩性和可靠性。 
 
@@ -71,9 +71,9 @@ ms.locfileid: "102049026"
 
 对前面所列的经典 API 发出任何调用将会失败，并返回如下所示的错误消息：
 
-对于自动缩放： *此 API 已弃用。使用 Azure 门户、Azure Monitor SDK、PowerShell、CLI 或资源管理器模板来管理自动缩放设置*。  
+自动缩放：“此 API 已弃用。请使用 Azure 门户、Azure Monitor SDK、PowerShell、CLI 或资源管理器模板管理自动缩放设置。”  
 
-对于指标： *此 API 已弃用。使用 Azure 门户，Azure Monitor SDK、PowerShell、CLI 查询指标*。
+指标：“此 API 已弃用。请使用 Azure 门户、Azure Monitor SDK、PowerShell 或 CLI 查询指标。”
 
 ## <a name="email-notifications"></a>电子邮件通知
 
@@ -84,7 +84,7 @@ ms.locfileid: "102049026"
 
 如有任何疑问，请通过 MonitorClassicAPIhelp@microsoft.com 联系我们。  
 
-## <a name="references"></a>参考资料
+## <a name="references"></a>参考
 
 - [Azure Monitor 的新版 REST API](/rest/api/monitor/) 
 - [新版 Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)

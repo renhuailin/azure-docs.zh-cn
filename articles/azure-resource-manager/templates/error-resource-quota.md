@@ -3,12 +3,13 @@ title: 配额错误
 description: 说明在使用 Azure 资源管理器部署资源时如何解决资源配额错误。
 ms.topic: troubleshooting
 ms.date: 03/09/2018
-ms.openlocfilehash: 75e8abf31d035a1e3a106bc0c6561624762db5d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: df789ba83efe5d8a20d6c925b40adfb209f65dd4
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90530414"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318848"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>解决资源配额错误
 

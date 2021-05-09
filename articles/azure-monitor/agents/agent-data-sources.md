@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
 ms.openlocfilehash: 51cdee9c899feeb003a7d6301d2da0749fad65e9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102041922"
 ---
 # <a name="log-analytics-agent-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Log Analytics 代理数据源
@@ -39,7 +39,7 @@ Azure Monitor 通过 [Log Analytics](./log-analytics-agent.md) 代理从虚拟�
 
 
 ## <a name="configuring-data-sources"></a>配置数据源
-若要为 Log Analytics 代理配置数据源，请转到 Azure 门户中的“Log Analytics 工作区”菜单，然后选择一个工作区。 单击 " **代理配置**"。 选择要配置的数据源的选项卡。 可以打开上表中的链接来访问每个数据源的文档及其配置的详细信息。
+若要为 Log Analytics 代理配置数据源，请转到 Azure 门户中的“Log Analytics 工作区”菜单，然后选择一个工作区。 单击“代理配置”。 选择要配置的数据源所在的选项卡。 可以打开上表中的链接来访问每个数据源的文档及其配置的详细信息。
 
 任何配置都会传递到已连接到该工作区的所有代理。  不能从此配置中排除任何已连接的代理。
 

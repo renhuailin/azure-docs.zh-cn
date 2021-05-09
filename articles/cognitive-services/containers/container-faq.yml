@@ -10,12 +10,12 @@ metadata:
   ms.topic: conceptual
   ms.date: 03/02/2021
   ms.author: aahi
-  ms.openlocfilehash: 2adab9ab076a23260656f973e959bb14314ae8c1
-  ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+  ms.openlocfilehash: c8592674cdb6dd88e22f1089cedb935a65c8ad0a
+  ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/30/2021
-  ms.locfileid: "102234365"
+  ms.lasthandoff: 04/28/2021
+  ms.locfileid: "108128072"
 title: Azure 认知服务容器常见问题解答 (FAQ)
 summary: ''
 sections:
@@ -74,7 +74,7 @@ sections:
       我们不会通过 OpenShift 测试容器，但通常情况下，认知服务容器应可在支持 Docker 映像的任何平台上运行。 如果你使用 OpenShift，建议以 `root-user` 身份运行容器。
   - question: 如何提供产品反馈和功能建议？
     answer: >
-      我们鼓励客户公开[表达其关注的问题](https://cognitive.uservoice.com/)，并在可能有问题重叠时投票赞同其他人提出的相同问题。 用户语音工具可用于产品反馈和功能建议。
+      我们鼓励客户公开[表达其关注的问题](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395737)，并在可能有问题重叠时投票赞同其他人提出的相同问题。 反馈工具可用于提供产品反馈和功能建议。
   - question: 认知服务容器会返回哪些状态消息和错误？
     answer: >
       有关状态消息和错误的列表，请参阅下表。

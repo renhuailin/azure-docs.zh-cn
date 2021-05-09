@@ -1,16 +1,14 @@
 ---
 title: Service Fabric 中的运行状况监视
 description: 简要介绍 Azure Service Fabric 运行状况监视模型，使用该模型可监视群集及其应用程序和服务。
-author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.author: gwallace
-ms.openlocfilehash: f691eb6433907ed10737329de3edd78547f130f1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: 1fa000d46a6199fa23f07e5310eaca96b60a183f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008270"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311271"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric 运行状况监视简介
 Azure Service Fabric 引入了一个运行状况模型，该模型提供丰富、灵活且可扩展的运行状况评估和报告。 使用该模型，可对群集及其中所运行服务的状态进行准实时监视。 可以轻松获取运行状况信息，并在潜在问题级联并造成大规模停机之前予以更正。 在典型模型中，服务基于其本地视图发送报告，并聚合信息，以提供整体的群集级别视图。
@@ -79,6 +77,7 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 
 ### <a name="cluster-health-policy"></a>群集运行状况策略
 [群集运行状况策略](/dotnet/api/system.fabric.health.clusterhealthpolicy)用于评估群集运行状况状态和节点运行状况状态。 可以在群集清单中对它进行定义。 如果该策略不存在，则会使用默认策略（不容许失败）。
+
 群集运行状况策略包含：
 
 * [ConsiderWarningAsError](/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror)。 指定运行状况评估期间是否将警告性运行状况报告视为错误。 默认值：false。
@@ -87,18 +86,33 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 * [ApplicationTypeHealthPolicyMap](/dotnet/api/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap)。 群集运行状况评估期间，可使用应用程序类型运行状况策略，描述特殊应用程序类型。 默认情况下，所有应用程序都放入池中，并使用 MaxPercentUnhealthyApplications 进行评估。 如果某些应用程序类型应分别对待，可将其从全局池中提出。 根据与映射中应用程序类型名称关联的百分比来评估这些类型。 例如，群集中有数千个不同类型的应用程序，以及某个特殊应用程序类型的一些应用程序实例。 控制应用程序绝不应出错。 可以将全局 MaxPercentUnhealthyApplications 指定为 20%，以容许一些失败，但对于“ControlApplicationType”应用程序类型，请将 MaxPercentUnhealthyApplications 设为 0。 如此一来，如果众多应用程序中有一些运行不正常，但比例低于全局状况不良百分比，则将群集评估为“警告”。 “警告”健康状况不影响群集升级或“错误”健康状况将触发的其他监视。 但是，即使只有一个控制应用程序出错，也会造成群集运行不正常，根据升级配置，这会触发回滚或暂停群集升级。
   对于映射中定义的应用程序类型，所有应用程序实例都从应用程序的全局池中提出。 使用映射中的特定 MaxPercentUnhealthyApplications，根据该应用程序类型的应用程序总数对其进行评估。 所有其他应用程序都保留在全局池中，使用 MaxPercentUnhealthyApplications 进行评估。
 
-以下示例摘自某个群集清单。 若要定义应用程序类型映射中的条目，请在参数名称前面添加“ApplicationTypeMaxPercentUnhealthyApplications-”，后接应用程序类型名称。
+  以下示例摘自某个群集清单。 若要定义应用程序类型映射中的条目，请在参数名称前面添加“ApplicationTypeMaxPercentUnhealthyApplications-”，后接应用程序类型名称。
 
-```xml
-<FabricSettings>
-  <Section Name="HealthManager/ClusterHealthPolicy">
-    <Parameter Name="ConsiderWarningAsError" Value="False" />
-    <Parameter Name="MaxPercentUnhealthyApplications" Value="20" />
-    <Parameter Name="MaxPercentUnhealthyNodes" Value="20" />
-    <Parameter Name="ApplicationTypeMaxPercentUnhealthyApplications-ControlApplicationType" Value="0" />
-  </Section>
-</FabricSettings>
-```
+  ```xml
+  <FabricSettings>
+    <Section Name="HealthManager/ClusterHealthPolicy">
+      <Parameter Name="ConsiderWarningAsError" Value="False" />
+      <Parameter Name="MaxPercentUnhealthyApplications" Value="20" />
+      <Parameter Name="MaxPercentUnhealthyNodes" Value="20" />
+      <Parameter Name="ApplicationTypeMaxPercentUnhealthyApplications-ControlApplicationType" Value="0" />
+    </Section>
+  </FabricSettings>
+  ```
+
+* `NodeTypeHealthPolicyMap`. 节点类型运行状况策略映射可以在群集运行状况评估期间用于描述特殊的节点类型。 根据映射中的节点类型名称关联的百分比来评估节点类型。 设置此值不会影响用于 `MaxPercentUnhealthyNodes` 的节点的全局池。 例如，一个群集具有数百个不同类型的节点和一些托管重要工作的节点类型。 该类型的节点不应关闭。 可以将全局 `MaxPercentUnhealthyNodes` 指定为 20% 以容许所有节点的失败，但对于节点类型 `SpecialNodeType`，请将 `MaxPercentUnhealthyNodes`设为 0。 如此一来，如果其中许多节点运行不正常，但低于全局状况不正常的百分比，则将群集的运行状况评估为 Warning。 Warning 运行状况并不影响群集升级或由 Error 运行状况触发的其他监视。 但是，即使是一个处于 Error 运行状况的 `SpecialNodeType` 类型的节点也会使群集运行不正常，并根据具体升级配置触发回滚或暂停群集升级。 相反，如果 `SpecialNodeType` 类型的其中一个节点处于 error 状态，将全局 `MaxPercentUnhealthyNodes` 设置为 0 并将 `SpecialNodeType` 最大不正常运行节点的百分比设置为 100，则会让群集处于 error 状态，因为在这种情况下的全局限制更严格。 
+
+  以下示例摘自某个群集清单。 若要定义节点类型映射中的条目，请在参数名称前面添加“NodeTypeMaxPercentUnhealthyNodes-”，后接节点类型名称。
+
+  ```xml
+  <FabricSettings>
+    <Section Name="HealthManager/ClusterHealthPolicy">
+      <Parameter Name="ConsiderWarningAsError" Value="False" />
+      <Parameter Name="MaxPercentUnhealthyApplications" Value="20" />
+      <Parameter Name="MaxPercentUnhealthyNodes" Value="20" />
+      <Parameter Name="NodeTypeMaxPercentUnhealthyNodes-SpecialNodeType" Value="0" />
+    </Section>
+  </FabricSettings>
+  ```
 
 ### <a name="application-health-policy"></a>应用程序运行状况策略
 [应用程序运行状况策略](/dotnet/api/system.fabric.health.applicationhealthpolicy)说明如何对应用程序及其子项进行事件和子项状态聚合评估。 它可以在应用程序清单（应用程序包中的 **ApplicationManifest.xml**）中定义。 如果未指定任何策略，则当运行状况报告或子项处于“警告”或“错误”健康状况时，Service Fabric 会假设实体不正常运行。

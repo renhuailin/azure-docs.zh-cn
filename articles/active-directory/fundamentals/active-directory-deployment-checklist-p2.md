@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92d1e5b8ac6492b0b1d819431e4616d32a092cc8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a43388c2750c7f82d407d59b6923258046fa00c7
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94836914"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175867"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 功能部署指南
 
@@ -83,7 +83,7 @@ ms.locfileid: "94836914"
 | ---- | ------ | ---------------- |
 | 识别应用程序 | 识别组织中正在使用的应用程序：本地应用程序、云中的 SaaS 应用程序和其他业务线应用程序。 确定这些应用程序是否可以，以及是否应该由 Azure AD 进行管理。 | 无需许可证 |
 | [集成库中的受支持 SaaS 应用程序](../manage-apps/add-application-portal.md) | Azure AD 的某个库包含数千个预先集成的应用程序。 组织使用的某些应用程序可能就在该库中。可通过 Azure 门户直接访问该库。 | Azure AD Free |
-| [使用应用程序代理集成本地应用程序](../manage-apps/application-proxy-add-on-premises-application.md) | 应用程序代理可让用户在使用其 Azure AD 帐户登录后访问本地应用程序。 | |
+| [使用应用程序代理集成本地应用程序](../app-proxy/application-proxy-add-on-premises-application.md) | 应用程序代理可让用户在使用其 Azure AD 帐户登录后访问本地应用程序。 | |
 
 ## <a name="phase-4-audit-privileged-identities-complete-an-access-review-and-manage-user-lifecycle"></a>阶段 4：审核特权标识、完成访问评审和管理用户生命周期
 

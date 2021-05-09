@@ -2,13 +2,14 @@
 title: 找不到资源错误
 description: 介绍如何解决找不到资源时所发生的错误。 部署 Azure 资源管理器模板或执行管理操作时，可能会发生此错误。
 ms.topic: troubleshooting
-ms.date: 06/10/2020
-ms.openlocfilehash: 40f3c2ac61b6a6d5fdbcefdf62761668b013b1db
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
-ms.translationtype: MT
+ms.date: 03/23/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ffd1e5b2bd23c9a3f7ede4c3ee0067e12891d214
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526240"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318830"
 ---
 # <a name="resolve-resource-not-found-errors"></a>解决“找不到资源”错误
 
@@ -23,7 +24,7 @@ Code=NotFound;
 Message=Cannot find ServerFarm with name exampleplan.
 ```
 
-**ResourceNotFound** 错误返回类似于以下内容的结果：
+“ResourceNotFound”错误返回的结果类似于：
 
 ```
 Code=ResourceNotFound;
@@ -43,7 +44,7 @@ group {resource group name} was not found.
 * 资源组名称
 * 订阅
 
-如果使用的是 PowerShell 或 Azure CLI，请检查是否在包含该资源的订阅中运行了该命令。 可使用 [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) 或 [az account set](/cli/azure/account#az-account-set) 来更改订阅。 许多命令还提供了一个订阅参数，使用该参数可以指定与当前上下文不同的订阅。
+如果使用的是 PowerShell 或 Azure CLI，请检查是否在包含该资源的订阅中运行了该命令。 可使用 [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) 或 [az account set](/cli/azure/account#az_account_set) 来更改订阅。 许多命令还提供了一个订阅参数，使用该参数可以指定与当前上下文不同的订阅。
 
 如果在验证属性时遇到问题，可登录[门户](https://portal.azure.com)。 找到要尝试使用的资源，并检查资源名称、资源组和订阅。
 
@@ -133,3 +134,9 @@ resourceId 函数中的订阅和资源组参数是可选的。 如果不指定�
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
 ```
+
+## <a name="solution-6---after-deleting-resource"></a>解决方案 6 - 删除资源后
+
+删除资源时，可能会有一小段时间资源仍显示在门户中，但实际上不可用。 如果选择该资源，将显示一条错误消息，指出找不到该资源。 刷新门户以获取最新视图。
+
+如果在短时间后问题仍然存在，请[联系支持人员](https://azure.microsoft.com/support/options/)。

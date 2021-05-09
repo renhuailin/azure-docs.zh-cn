@@ -1,32 +1,32 @@
 ---
 title: Azure Kubernetes 服务 (AKS) 中的 HTTP 应用程序路由加载项
-description: 使用 HTTP 应用程序路由外接程序访问部署在 Azure Kubernetes Service (AKS) 上的应用程序。
+description: 使用 HTTP 应用程序路由加载项访问部署在 Azure Kubernetes 服务（AKS）上的应用程序。
 services: container-service
 author: lachie83
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: laevenso
 ms.openlocfilehash: 25fc021a48e8936f242df35f7485fc59a93bba13
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102172794"
 ---
 # <a name="http-application-routing"></a>HTTP 应用程序路由
 
-可以通过 HTTP 应用程序路由解决方案轻松地访问部署到 Azure Kubernetes 服务 (AKS) 群集的应用程序。 启用该解决方案后，它将在 AKS 群集中配置 [入口控制器](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) 。 在部署应用程序以后，此解决方案还可以为应用程序终结点创建可公开访问的 DNS 名称。
+可以通过 HTTP 应用程序路由解决方案轻松地访问部署到 Azure Kubernetes 服务 (AKS) 群集的应用程序。 启用后，此解决方案可以在 AKS 群集中配置[入口控制器](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)。 在部署应用程序以后，此解决方案还可以为应用程序终结点创建可公开访问的 DNS 名称。
 
 启用此加载项后，它会在订阅中创建 DNS 区域。 有关 DNS 成本的详细详细，请参阅 [DNS 定价][dns-pricing]。
 
 > [!CAUTION]
-> HTTP 应用程序路由加载项旨在可以快速创建入口控制器并访问应用程序。 此加载项当前不适用于生产环境，不建议用于生产环境。 对于包含多个副本和 TLS 支持的生产就绪入口部署，请参阅[创建 HTTPS 入口控制器](./ingress-tls.md)。
+> HTTP 应用程序路由加载项旨在可以快速创建入口控制器并访问应用程序。 此加载项当前不适用于生产环境，因此不建议将其用于生产。 对于包含多个副本和 TLS 支持的生产就绪入口部署，请参阅[创建 HTTPS 入口控制器](./ingress-tls.md)。
 
 ## <a name="http-routing-solution-overview"></a>HTTP 路由解决方案概述
 
-外接程序部署两个组件：一个 [Kubernetes 入口控制器][ingress] 和一个 [外部 DNS][external-dns] 控制器。
+此加载项可部署两个组件：[Kubernetes 入口控制器][ingress]和 [External-DNS][external-dns] 控制器。
 
-- **入口控制器**：入口控制器通过类型为 LoadBalancer 的 Kubernetes 服务公开给 Internet。 入口控制器监视并实现 [Kubernetes 入口资源][ingress-resource]，这些资源创建指向应用程序终结点的路由。
+- **入口控制器**：入口控制器通过类型为 LoadBalancer 的 Kubernetes 服务公开给 Internet。 入口控制器监视并实现 [Kubernetes 入口资源][ingress-resource]，后者创建到应用程序终结点的路由。
 - **External-DNS 控制器**：监视 Kubernetes 入口资源并在特定于群集的 DNS 区域中创建 DNS A 记录。
 
 ## <a name="deploy-http-routing-cli"></a>部署 HTTP 路由：CLI
@@ -52,7 +52,7 @@ az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addo
 az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
 ```
 
-此名称是将应用程序部署到 AKS 群集所必需的，并显示在下面的示例输出中：
+此名称是将应用程序部署到 AKS 群集所必需的，并将显示在下面的示例输出中：
 
 ```console
 9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
@@ -78,7 +78,7 @@ HTTP 应用程序路由加载项可以在部署 AKS 群集时通过 Azure 门户
 az aks install-cli
 ```
 
-若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][] 命令。 以下示例获取 *MyResourceGroup* 中名为 *MyAKSCluster* 的 AKS 群集的凭据：
+若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][] 命令。 以下示例获取 *MyResourceGroup* 中名为“*MyAKSCluster*”的 AKS 群集的凭据：
 
 ```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKSCluster
@@ -153,7 +153,7 @@ spec:
 kubectl apply -f samples-http-application-routing.yaml
 ```
 
-下面的示例显示了已创建的资源：
+以下示例显示了创建的资源：
 
 ```bash
 $ kubectl apply -f samples-http-application-routing.yaml
@@ -163,7 +163,7 @@ service/aks-helloworld created
 ingress.networking.k8s.io/aks-helloworld created
 ```
 
-打开 web 浏览器以 *aks-helloworld \<CLUSTER_SPECIFIC_DNS_ZONE\>*，例如 *aks-helloworld.9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io* 并验证你是否看到了演示应用程序。 应用程序可能需要几分钟时间才能显示。
+打开 web 浏览器输入 *aks-helloworld\<CLUSTER_SPECIFIC_DNS_ZONE\>* ，例如 *aks-helloworld.9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io*，并验证你是否看到了演示应用程序。 应用程序可能需要几分钟才会显示。
 
 ## <a name="remove-http-routing"></a>删除 HTTP 路由
 
@@ -203,7 +203,7 @@ kubectl delete configmaps addon-http-application-routing-nginx-configuration --n
 
 针对群集中剩余的所有 *addon-http-application-routing* 资源重复前面的 `kubectl delete` 步骤。
 
-## <a name="troubleshoot"></a>疑难解答
+## <a name="troubleshoot"></a>故障排除
 
 请使用 [kubectl logs][kubectl-logs] 命令查看 External-DNS 应用程序的应用程序日志。 这些日志应确认已成功创建 A 和 TXT DNS 记录。
 
@@ -257,15 +257,15 @@ I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully re
 167.220.24.46 - [167.220.24.46] - - [26/Apr/2018:21:53:20 +0000] "GET / HTTP/1.1" 200 234 "" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)" 197 0.001 [default-aks-helloworld-80] 10.244.0.13:8080 234 0.004 200
 ```
 
-## <a name="clean-up"></a>清除
+## <a name="clean-up"></a>清理
 
-使用删除在本文中创建的关联的 Kubernetes 对象 `kubectl delete` 。
+删除在本文中使用`kubectl delete`创建的相关 Kubernetes 对象。
 
 ```bash
 kubectl delete -f samples-http-application-routing.yaml
 ```
 
-示例输出显示已删除 Kubernetes 对象。
+输出示例显示已删除 Kubernetes 对象。
 
 ```bash
 $ kubectl delete -f samples-http-application-routing.yaml

@@ -4,10 +4,10 @@ description: 介绍可在 Azure 资源管理器模板（ARM 模板）中使用�
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.openlocfilehash: a9a073284c62efac4e77f8f9b35e8730c350e5f1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101722715"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM 模板的部署函数
@@ -33,9 +33,9 @@ ms.locfileid: "101722715"
 
 此函数返回部署期间传递的对象。 返回的对象中的属性因以下情况而异：
 
-* 部署模板或模板规范。
+* 部署模板或模板规格。
 * 你部署的模板是本地文件，还是通过 URI 访问的远程文件。
-* 部署到资源组或部署到 ([Azure 订阅](deploy-to-subscription.md)、 [管理组](deploy-to-management-group.md)或 [租户](deploy-to-tenant.md)) 的其他作用域之一。
+* 部署到资源组还是其他范围之一（[Azure 订阅](deploy-to-subscription.md)、[管理组](deploy-to-management-group.md)或[租户](deploy-to-tenant.md)）。
 
 将本地模板部署到资源组时，该函数返回以下格式：
 
@@ -84,7 +84,7 @@ ms.locfileid: "101722715"
 }
 ```
 
-将模板规范部署到资源组时：该函数返回以下格式：
+将模板规格部署到资源组时：该函数返回以下格式：
 
 ```json
 {
@@ -321,7 +321,7 @@ output environmentOutput object = environment()
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | parameterName |是 |字符串 |要返回的参数名称。 |
 
@@ -452,7 +452,7 @@ output crossOutput string = crossParameter
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | stringOutput | String | 选项 1 |
 | intOutput | int | 1 |
@@ -470,7 +470,7 @@ output crossOutput string = crossParameter
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | variableName |是 |String |要返回的变量名称。 |
 

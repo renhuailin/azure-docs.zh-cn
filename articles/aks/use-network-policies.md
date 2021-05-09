@@ -5,12 +5,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Kubernetes 
 services: container-service
 ms.topic: article
 ms.date: 03/16/2021
-ms.openlocfilehash: 17e14859ecdfe11872d5b0526d755d01bc1b034a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b05c4add0a62f07b187376d670f23179ba97f3a8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104577846"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767432"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用网络策略保护 Pod 之间的流量
 
@@ -18,7 +18,7 @@ ms.locfileid: "104577846"
 
 本文介绍如何安装网络策略引擎，并创建 Kubernetes 网络策略来控制 AKS 中 Pod 之间的流量流动方式。 应该只对 AKS 中基于 Linux 的节点和 Pod 使用网络策略。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 需要安装并配置 Azure CLI 2.0.61 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
@@ -124,7 +124,7 @@ SUBNET_ID=$(az network vnet subnet show --resource-group $RESOURCE_GROUP_NAME --
 
 ### <a name="create-an-aks-cluster-for-azure-network-policies"></a>为 Azure 网络策略创建 AKS 群集
 
-创建 AKS 群集，并为网络插件和网络策略指定虚拟网络、服务主体信息和 azure。
+创建 AKS 群集，并为网络插件和网络策略指定虚拟网络、服务主体信息和“azure”。
 
 ```azurecli
 az aks create \
@@ -181,7 +181,7 @@ az provider register --namespace Microsoft.ContainerService
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-创建用户名，用作群集上 Windows Server 容器的管理员凭据。 以下命令提示你输入用户名，并将其设置为 WINDOWS_USERNAME 以供在之后的命令中使用（请记住，本文中的命令要输入到 BASH shell 中）。
+创建一个用户名，用作群集上 Windows Server 容器的管理员凭据。 以下命令提示你输入一个用户名，并将其设置为 WINDOWS_USERNAME 以供在之后的命令中使用（请记住，本文中的命令输入到 BASH shell 中）。
 
 ```azurecli-interactive
 echo "Please enter the username to use as administrator credentials for Windows Server containers on your cluster: " && read WINDOWS_USERNAME
@@ -561,12 +561,12 @@ kubectl delete namespace development
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli
 [use-advanced-networking]: configure-azure-cni.md
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [concepts-network]: concepts-network.md
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register
 [windows-server-password]: /windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
 [dsr]: ../load-balancer/load-balancer-multivip-overview.md#rule-type-2-backend-port-reuse-by-using-floating-ip

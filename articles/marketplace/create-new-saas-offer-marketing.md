@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: e61d85b5f02cb73d078888badc2fa24c4506fe64
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fa207ca38c46f09e3660ea03e70d20e45c620845
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96620875"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127436"
 ---
 # <a name="how-to-sell-your-saas-offer"></a>如何销售 SaaS 产品/服务
 
@@ -23,7 +23,7 @@ ms.locfileid: "96620875"
 
 在“与 Microsoft 联合销售”页上提供信息是完全可选的。 但是它需要达到“联合销售就绪”和“IP 联合销售就绪”状态。 Microsoft 销售团队在评估你的解决方案是否满足客户需求时，会使用此信息来详细了解该解决方案。 在此选项卡上提供的信息不会直接向客户提供。
 
-有关配置“与 Microsoft 联合销售”选项卡的详细信息和说明，请参阅[商业市场中的“联合销售”选项](commercial-marketplace-co-sell.md)。
+有关配置“与 Microsoft 联合销售”选项卡的详细信息和说明，请参阅[商业市场中的“联合销售”选项](./co-sell-configure.md)。
 
 ## <a name="resell-through-csps"></a>通过 CSP 转售
 

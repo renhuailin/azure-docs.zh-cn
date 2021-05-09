@@ -6,10 +6,10 @@ author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
 ms.openlocfilehash: 5f1421da10c4748dd78e4c6790568285fa646979
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102047105"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>面向服务提供商的 Azure Monitor 日志
@@ -20,7 +20,7 @@ Azure Monitor 中的 Log Analytics 工作区可以帮助托管服务提供商 (M
 
 对于加入[云解决方案提供商 (CSP)](https://partner.microsoft.com/membership/cloud-solution-provider) 计划的合作伙伴和服务提供商，Azure Monitor 中的 Log Analytics 是 Azure CSP 订阅中可用的 Azure 服务之一。
 
-Log Analytics 在 Azure Monitor 中，服务提供商还可以通过 [Azure Lighthouse](../../lighthouse/overview.md)中的 azure 委托资源管理功能来管理客户资源。
+服务提供商也可以使用 Azure Monitor 中的 Log Analytics，通过 [Azure Lighthouse](../../lighthouse/overview.md)中的 Azure 委托资源管理功能来管理客户资源。
 
 ## <a name="architectures-for-service-providers"></a>适用于服务提供商的体系结构
 
@@ -35,11 +35,11 @@ Log Analytics 在 Azure Monitor 中，服务提供商还可以通过 [Azure Ligh
 服务提供商管理员可通过两种方式访问客户租户中的 Log Analytics 工作区：
 
 - 客户可将服务提供商的个人用户添加为 [Azure Active Directory 来宾用户 (B2B)](../../active-directory/external-identities/what-is-b2b.md)。 服务提供商管理员必须在 Azure 门户中登录到每个客户的目录才能访问这些工作区。 这还需要客户管理每个服务提供商管理员的个人访问权限。
-- 为了获得更好的可伸缩性和灵活性，服务提供商可以使用[Azure Lighthouse](../../lighthouse/overview.md)的[azure 委托资源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)功能来访问客户的租户。 使用此方法时，服务提供商管理员包含在服务提供商的租户中的 Azure AD 用户组中，此组在每个客户的载入过程中被授予访问权限。 然后，这些管理员可以从自己的服务提供商租户内访问每个客户的工作区，而无需单独登录到每个客户的租户。 以这种方式访问客户的 Log Analytics 工作区资源可以减少客户端所需的工作，并且可以更轻松地收集和分析通过 [Azure Monitor 工作簿](../visualize/workbooks-overview.md)等工具由同一服务提供商管理的多个客户的数据。 有关详细信息，请参阅 [按比例监视客户资源](../../lighthouse/how-to/monitor-at-scale.md)。
+- 为了获得更好的可伸缩性和灵活性，服务提供商可以使用 [Azure Lighthouse](../../lighthouse/overview.md) 的 [Azure 委托资源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)功能来访问客户的租户。 借助此方法，服务提供商租户的 Azure AD 用户组中将包含服务提供商管理员，且在载入期间将为此组授予对每个客户的访问权限。 然后，这些管理员可以从自己的服务提供商租户访问每个客户的工作区，而无需单独登录到每个客户的租户。 以这种方式访问客户的 Log Analytics 工作区资源可以减少客户所需的工作，并且可以通过 [Azure Monitor 工作簿](../visualize/workbooks-overview.md)等工具更轻松地收集和分析由同一服务提供商管理的多个客户的数据。 有关详细信息，请参阅[大规模监视客户资源](../../lighthouse/how-to/monitor-at-scale.md)。
 
 分布式体系结构的优势是：
 
-* 客户可以通过 [azure 委派的资源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)来确认特定级别的权限，或者可以使用 [azure RBAC)  (azure RBAC 的访问控制 ](../../role-based-access-control/overview.md)来管理对日志的访问权限。
+* 客户可以通过 [Azure 委派资源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)来确认特定级别的权限，也可以使用自己的 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 来管理对日志的访问权限。
 * 可从所有类型的资源中收集日志，而不仅仅是从基于代理的 VM 数据收集。 例如，Azure 审核日志。
 * 每个客户都可以为其工作区设置不同的设置，例如保留期和数据上限。
 * 在客户之间进行隔离以遵守监管和合规要求。
@@ -47,7 +47,7 @@ Log Analytics 在 Azure Monitor 中，服务提供商还可以通过 [Azure Ligh
 
 分布式体系结构的劣势是：
 
-* 利用 Azure Monitor 工作簿之类的工具集中可视化和分析 [客户租户](cross-workspace-query.md) 中的数据可能会导致较慢的体验，尤其是在跨超过50个工作区分析数据时。
+* 使用 Azure Monitor 工作簿之类的工具集中可视化和分析[客户租户中](cross-workspace-query.md)的数据可能会导致体验变慢，尤其是分析 50 个以上的工作区的数据时。
 * 如果未为客户完成 Azure 委托资源管理的加入，则必须在客户目录中预配服务提供商管理员，而服务提供商难以同时管理大量的客户租户。
 
 ### <a name="2-central---logs-are-stored-in-a-workspace-located-in-the-service-provider-tenant"></a>2.集中式 - 日志存储在位于服务提供商租户中的工作区内
@@ -88,4 +88,4 @@ Log Analytics 在 Azure Monitor 中，服务提供商还可以通过 [Azure Ligh
 
 * 使用 [Power BI](../visualize/powerbi.md) 生成摘要报告
 
-* 将客户加入 [Azure 委托的资源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)。
+* 将客户载入到 [Azure 委派资源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)。

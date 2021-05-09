@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
 ms.openlocfilehash: ce77021e74507ead6d225081debc7024cb89a15a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102042396"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>使用 Azure 共享磁盘创建 FCI（Azure VM 上的 SQL Server）
@@ -31,8 +31,8 @@ ms.locfileid: "102042396"
 
 在按本文中的说明操作之前，你应已具备以下条件：
 
-- Azure 订阅。 [免费试用](https://azure.microsoft.com/free/)。 
-- [两个或多个 Windows Azure 虚拟机](failover-cluster-instance-prepare-vm.md)。 对于超磁盘，支持高级 SSD 和[可用性区域](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) (PPGs) 支持的[可用性集](../../../virtual-machines/windows/tutorial-availability-sets.md)和[邻近位置组](../../../virtual-machines/co-location.md#proximity-placement-groups)。 所有节点必须位于同一 [邻近位置组](../../../virtual-machines/co-location.md#proximity-placement-groups)中。
+- Azure 订阅。 [免费](https://azure.microsoft.com/free/)试用。 
+- [两个或更多个 Windows Azure 虚拟机](failover-cluster-instance-prepare-vm.md)。 对于高级 SSD，支持[可用性集](../../../virtual-machines/windows/tutorial-availability-sets.md)和[邻近放置组](../../../virtual-machines/co-location.md#proximity-placement-groups) (PPG)，对于超级磁盘，支持[可用性区域](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)。 所有节点必须位于同一[邻近位置组](../../../virtual-machines/co-location.md#proximity-placement-groups)。
 - 有权限在 Azure 虚拟机和 Active Directory 中创建对象的帐户。
 - 最新版本的 [PowerShell](/powershell/azure/install-az-ps)。 
 
@@ -188,9 +188,9 @@ FCI 数据目录需位于 Azure 共享磁盘上。
    >如果使用了包含 SQL Server 的 Azure 市场库映像，该映像已随附 SQL Server 工具。 如果未使用其中的某个映像，请单独安装 SQL Server 工具。 有关详细信息，请参阅 [下载 SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)。
    >
 
-## <a name="register-with-the-sql-vm-rp"></a>向 SQL VM RP 注册
+## <a name="register-with-the-sql-vm-rp"></a>注册到 SQL VM RP
 
-若要从门户管理你的 SQL Server VM，请在 [轻型管理模式](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode)下将其注册到 SQL IaaS 代理扩展 (RP) ，目前，Azure vm 上的 FCI 和 SQL Server 仅支持唯一模式。 
+若要从门户管理 SQL Server VM，请在[轻型管理模式](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode)下将其注册到 SQL IaaS 代理扩展 (RP)，目前，这是 Azure VM 上的 FCI 和 SQL Server 唯一支持的模式。 
 
 使用 PowerShell 在轻型模式下注册 SQL Server VM：  
 
@@ -211,7 +211,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="limitations"></a>限制
 
-- 仅支持在 [轻型管理模式下](sql-server-iaas-agent-extension-automate-management.md#management-modes) 注册 SQL IaaS 代理扩展。
+- 仅支持在[轻型管理模式](sql-server-iaas-agent-extension-automate-management.md#management-modes)下注册到 SQL IaaS 代理扩展。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/08/2021
+ms.date: 04/26/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ecd33549536323658a7116d7d5c311eaaec98487
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: c76ffbbaf6bbbb2afb5d84e92b6fe9ce04dc4a30
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107302941"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128696"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>适用于 SAP 工作负载的 Azure 存储类型
 Azure 具有多种存储类型，它们在功能、吞吐量、延迟和价格上各不相同。 某些存储类型不可用于 SAP 方案，或者只能在此类方案中受限使用。 但是，有几种 Azure 存储类型非常适合特定的 SAP 工作负载方案或针对特定的 SAP 工作负载方案进行了优化。 尤其是对于 SAP HANA，某些 Azure 存储类型经认证可在 SAP HANA 中使用。 本文档将介绍不同类型的存储、其功能以及在 SAP 工作负载和 SAP 组件中的可用性。
@@ -35,6 +35,7 @@ Microsoft Azure 的标准 HDD 和标准 SSD 存储、Azure 高级存储和超级
 还有其他多种冗余方法，[Azure 存储复制](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)一文中介绍了所有这些方法，它们适用于 Azure 提供的某些不同存储类型。 
 
 另请注意，不同的 Azure 存储类型会影响[虚拟机 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines) 中发布的单一 VM 可用性 SLA。
+
 
 ### <a name="azure-managed-disks"></a>Azure 托管磁盘
 
@@ -69,6 +70,10 @@ Azure 中部署的各种堆栈组件中的 SAP 工作负载需要持久性存储
 
 介绍不同 Azure 存储类型的部分将提供有关使用 SAP 支持的存储时的限制和各种可行性的更多背景信息。 
 
+### <a name="storage-choices-when-using-dbms-replication"></a>使用 DBMS 复制时的存储选择
+我们的引用体系结构预见到了 DBMS 功能的使用，如 SQL Server Always On、HANA 系统复制、Db2 HADR 或 Oracle 数据防护。 如果在两个或多个 Azure 虚拟机之间使用这些技术，则为每个 VM 选择的存储类型都必须相同。 这意味着，如果为 DBMS 系统选择的重做日志卷的存储是某个 VM 上的 Azure 高级存储，则相同的卷需要基于 Azure 高级存储，并且所有其他 VM 都处于相同的高可用性同步配置。 对于用于数据库文件的数据卷也是如此。
+  
+
 ## <a name="storage-recommendations-for-sap-storage-scenarios"></a>SAP 存储方案的存储建议
 在深入到细节之前，我们先根据本文档开头部分的内容提供汇总和建议。 特定 Azure 存储类型的详细信息将在本文档部分结束后提供。 表格中汇总了适用于 SAP 存储方案的存储建议：
 
@@ -81,9 +86,9 @@ Azure 中部署的各种堆栈组件中的 SAP 工作负载需要持久性存储
 | DBMS 日志卷 SAP HANA M/Mv2 VM 系列 | 不支持 | 不支持 | 建议<sup>1</sup> | 建议 | 建议<sup>2</sup> | 
 | DBMS 数据卷 SAP HANA Esv3/Edsv4 VM 系列 | 不支持 | 不支持 | 建议 | 建议 | 建议<sup>2</sup> |
 | DBMS 日志卷 SAP HANA Esv3/Edsv4 VM 系列 | 不支持 | 不支持 | 不支持 | 建议 | 建议<sup>2</sup> | 
-| DBMS 数据卷非 HANA | 不支持 | 受限适用（非生产） | 建议 | 建议 | 不支持 |
-| DBMS 日志卷非 HANA M/Mv2 VM 系列 | 不支持 | 受限适用（非生产） | 建议<sup>1</sup> | 建议 | 不支持 |
-| DBMS 日志卷非 HANA 非 M/Mv2 VM 系列 | 不支持 | 受限适用（非生产） | 适用于最大为中型的工作负载 | 建议 | 不支持 |
+| DBMS 数据卷非 HANA | 不支持 | 受限适用（非生产） | 建议 | 建议 | 仅适用于 Oracle Linux 上的特定 Oracle 版本 |
+| DBMS 日志卷非 HANA M/Mv2 VM 系列 | 不支持 | 受限适用（非生产） | 建议<sup>1</sup> | 建议 | 仅适用于 Oracle Linux 上的特定 Oracle 版本 |
+| DBMS 日志卷非 HANA 非 M/Mv2 VM 系列 | 不支持 | 受限适用（非生产） | 适用于最大为中型的工作负载 | 建议 | 仅适用于 Oracle Linux 上的特定 Oracle 版本 |
 
 
 <sup>1</sup> 对 M/Mv2 VM 系列的日志/重做日志卷使用 [Azure 写入加速器](../../how-to-enable-write-accelerator.md)。<sup>2</sup> 使用 ANF 要求 /hana/data 和 /hana/log 位于 ANF 上 
