@@ -14,12 +14,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: ed8007c81479c73e4503d74af4c4043e503baf2b
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 9e74f35a99bb57fff6d7134fb1fb4b596306a21b
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120140"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108072416"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问开发人员指南
 
@@ -152,15 +152,14 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ## <a name="scenario-single-page-app-spa-using-msaljs"></a>方案：使用 MSAL.js 的单页应用 (SPA)
 
-在此方案中，我们将演示单页应用 (SPA) 使用 MSAL.js 调用由条件访问保护的 Web API 时的场景。 这是一个简单的体系结构，但围绕条件访问进行开发时需要注意其中的一些细微差异。
+在此方案中，我们将演示单页应用 (SPA) 使用 MSAL.js 调用由条件访问保护的 Web API 的场景。 这是一个简单的体系结构，但围绕条件访问进行开发时需要注意其中的一些细微差异。
 
-在 MSAL.js 中，有多个获取令牌的函数：`loginPopup()`、`acquireTokenSilent(...)`、`acquireTokenPopup(…)` 和 `acquireTokenRedirect(…)`。
+在 MSAL.js 中，有多个获取令牌的函数：`acquireTokenSilent()`、`acquireTokenPopup()` 和 `acquireTokenRedirect()`。
 
-* `loginPopup()` 通过交互式登录请求来获取 ID 令牌，但是无法获取任何服务的访问令牌（包括由条件访问保护的 Web API）。
-* 然后可以使用 `acquireTokenSilent(…)` 以无提示方式获取访问令牌，这意味着在任何情况下它都不会显示 UI。
-* `acquireTokenPopup(…)` 和 `acquireTokenRedirect(…)` 用于以交互方式请求资源的令牌，这意味着它们始终会显示登录 UI。
+* 可以使用 `acquireTokenSilent()` 以无提示方式获取访问令牌，这意味着在任何情况下它都不会显示 UI。
+* `acquireTokenPopup()` 和 `acquireTokenRedirect()` 用于以交互方式请求资源的令牌，这意味着它们始终会显示登录 UI。
 
-应用需要访问令牌来调用 Web API 时，它尝试 `acquireTokenSilent(…)`。 如果令牌会话过期或我们需要符合条件访问策略时，则 *acquireToken* 函数失败，应用将使用 `acquireTokenPopup()` 或 `acquireTokenRedirect()`。
+应用需要访问令牌来调用 Web API 时，它尝试 `acquireTokenSilent()`。 如果令牌过期或我们需要符合条件访问策略时，则 *acquireToken* 函数失败，应用将使用 `acquireTokenPopup()` 或 `acquireTokenRedirect()`。
 
 ![使用 MSAL 流的单页应用示意图](./media/v2-conditional-access-dev-guide/spa-using-msal-scenario.png)
 
@@ -176,7 +175,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 应用需要捕获 `error=interaction_required`。 然后应用程序可以在同一个资源上使用 `acquireTokenPopup()` 或 `acquireTokenRedirect()`。 用户被强制执行多重身份验证。 用户完成多重身份验证后，应用针对所请求资源签发一个新访问令牌。
 
-若要尝试此应用场景，请参阅 [JS SPA 代理代码示例](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/a2b257381b410c765ee01ecb611aa6f98c099eb1/2.%20Web%20API%20now%20calls%20Microsoft%20Graph/README.md)。 此代码示例使用之前通过 JS SPA 注册的条件访问策略和 Web API 演示此应用场景。 它演示了如何正确处理声明质询并获取可用于 Web API 的访问令牌。 或者，请查看常规的 [Angular.js 代码示例](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2)，获取 Angular SPA 方面的指南。
+若要试用此方案，请参阅我们的[JAVASCRIPT SPA 使用代理流调用 Node.js Web API](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/tree/main/4-AdvancedGrants/2-call-api-api-ca)的代码示例。 此代码示例使用之前通过 JS SPA 注册的条件访问策略和 Web API 来演示此方案。 它演示了如何正确处理声明质询并获取可用于 Web API 的访问令牌。
 
 ## <a name="see-also"></a>另请参阅
 

@@ -3,12 +3,13 @@ title: 按 Azure 服务列出的资源提供程序
 description: 列出 Azure 资源管理器的所有资源提供程序命名空间，并显示该命名空间的 Azure 服务。
 ms.topic: conceptual
 ms.date: 03/16/2021
-ms.openlocfilehash: f33017713d8154fb56472ad5f53b97b22d32e0e3
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2264883ed6b7b4d23a6030b93d1aef88816c1fd7
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167866"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330776"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服务的资源提供程序
 
@@ -158,7 +159,6 @@ ms.locfileid: "106167866"
 | Microsoft.SerialConsole - [已注册](#registration) | [适用于 Windows 的 Azure 串行控制台](/troubleshoot/azure/virtual-machines/serial-console-windows) |
 | Microsoft.ServiceBus | [服务总线](/azure/service-bus/) |
 | Microsoft.ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |
-| Microsoft.ServiceFabricMesh | [Service Fabric 网格](../../service-fabric-mesh/index.yml) |
 | Microsoft.Services | core |
 | Microsoft.SignalRService | [Azure SignalR 服务](../../azure-signalr/index.yml) |
 | Microsoft.SoftwarePlan | 许可证 |
@@ -195,7 +195,7 @@ ms.locfileid: "106167866"
 
 ## <a name="find-resource-provider"></a>查找资源提供程序
 
-如果你在 Azure 中已有基础结构，但不确定使用的是哪个资源提供程序，则可以使用 Azure CLI 或 PowerShell 来查找资源提供程序。 指定包含要查找的资源的资源组的名称。
+如果你在 Azure 中已有基础结构，但不确定使用的是哪个资源提供程序，则可使用 Azure CLI 或 PowerShell 来查找资源提供程序。 指定包含要查找的资源的资源组的名称。
 
 以下示例使用 Azure CLI：
 
@@ -203,7 +203,7 @@ ms.locfileid: "106167866"
 az resource list -g examplegroup
 ```
 
-结果包含资源类型。 资源提供程序命名空间是资源类型的第一部分。 以下示例显示了 Microsoft.KeyVault 资源提供程序。
+结果包含资源类型。 资源提供程序命名空间是资源类型的第一部分。 以下示例演示了 Microsoft.KeyVault 资源提供程序。
 
 ```json
 [
@@ -220,7 +220,7 @@ az resource list -g examplegroup
 Get-AzResource -ResourceGroupName examplegroup
 ```
 
-结果包含资源类型。 资源提供程序命名空间是资源类型的第一部分。 以下示例显示了 Microsoft.KeyVault 资源提供程序。
+结果包含资源类型。 资源提供程序命名空间是资源类型的第一部分。 以下示例演示了 Microsoft.KeyVault 资源提供程序。
 
 ```azurepowershell
 Name              : examplekey

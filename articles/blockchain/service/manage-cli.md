@@ -4,12 +4,12 @@ description: 如何使用 Azure CLI 管理 Azure 区块链服务
 ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 36b012c486c0c7d3303a81998e88f1605999c899
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 55df56274aa5baa946b60c27cf49723d59c928a1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87170864"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865920"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>使用 Azure CLI 管理 Azure 区块链服务
 
@@ -27,7 +27,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 1. 登录。
 
-    如果使用的是 CLI 的本地安装，请使用 [az login](/cli/azure/reference-index#az-login) 命令登录。
+    如果使用的是 CLI 的本地安装，请使用 [az login](/cli/azure/reference-index#az_login) 命令登录。
 
     ```azurecli
     az login
@@ -39,7 +39,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
     使用 Azure CLI 的扩展引用时，必须先安装该扩展。  借助 Azure CLI 扩展，可访问尚未在核心 CLI 中提供的试验性和预发布的命令。  若要详细了解包含更新和卸载的扩展，请参阅[使用 Azure CLI 的扩展](/cli/azure/azure-cli-extensions-overview)。
 
-    通过运行以下命令安装 [Azure 区块链服务扩展](/cli/azure/ext/blockchain/blockchain)：
+    通过运行以下命令安装 [Azure 区块链服务扩展](/cli/azure/blockchain)：
 
     ```azurecli-interactive
     az extension add --name blockchain
@@ -47,7 +47,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 ## <a name="create-blockchain-member"></a>创建区块链成员
 
-示例：在新联盟中运行 Quorum 账本协议的 Azure 区块链服务中[创建区块链成员](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-create)。
+示例：在新联盟中运行 Quorum 账本协议的 Azure 区块链服务中[创建区块链成员](/cli/azure/blockchain/member#az_blockchain_member_create)。
 
 ```azurecli
 az blockchain member create \
@@ -64,7 +64,7 @@ az blockchain member create \
 | 参数 | 说明 |
 |---------|-------------|
 | **resource-group** | 在其中创建 Azure 区块链服务资源的资源组名称。 |
-| name  | 用于标识 Azure 区块链服务区块链成员的唯一名称。 此名称用于公共终结点地址。 例如，`myblockchainmember.blockchain.azure.com`。 |
+| name | 用于标识 Azure 区块链服务区块链成员的唯一名称。 此名称用于公共终结点地址。 例如，`myblockchainmember.blockchain.azure.com` 。 |
 | **location** | 在其中创建区块链成员的 Azure 区域。 例如，`eastus` 。 选择最靠近用户或其他 Azure 应用程序的位置。 功能在某些地区可能不可用。 |
 | password | 成员的默认事务节点的密码。 连接到区块链成员的默认事务节点公共终结点时，请使用密码进行基本身份验证。 密码必须满足以下四个要求中的三个要求：长度需要介于 12 和 72 个字符之间、1 个小写字符、1 个大写字符、1 个数字和 1 个特殊字符，该特殊字符不是数字符号 (#)、百分号 (%)、逗号 (,)、星号 (*)、反引号 (\`)、双引号 (")、单引号 (')、破折号 (-) 和分号 (;)|
 | **protocol** | 区块链协议。 目前支持 Quorum 协议。 |
@@ -74,7 +74,7 @@ az blockchain member create \
 
 ## <a name="change-blockchain-member-passwords-or-firewall-rules"></a>更改区块链成员密码或防火墙规则
 
-示例[更新区块链成员](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-update)的密码、联盟管理密码和防火墙规则。
+示例[更新区块链成员](/cli/azure/blockchain/member#az_blockchain_member_update)的密码、联盟管理密码和防火墙规则。
 
 ```azurecli
 az blockchain member update \
@@ -95,7 +95,7 @@ az blockchain member update \
 
 ## <a name="create-transaction-node"></a>创建事务节点
 
-在现有的区块链成员中[创建事务节点](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-create)。 通过添加事务节点，可以增加安全隔离和分布负载。 例如，不同的客户端应用程序可以各有一个事务节点终结点。
+在现有的区块链成员中[创建事务节点](/cli/azure/blockchain/transaction-node#az_blockchain_transaction_node_create)。 通过添加事务节点，可以增加安全隔离和分布负载。 例如，不同的客户端应用程序可以各有一个事务节点终结点。
 
 ```azurecli
 az blockchain transaction-node create \
@@ -115,7 +115,7 @@ az blockchain transaction-node create \
 
 ## <a name="change-transaction-node-password"></a>更改事务节点密码
 
-示例[更新事务节点](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-update)密码。
+示例[更新事务节点](/cli/azure/blockchain/transaction-node#az_blockchain_transaction_node_update)密码。
 
 ```azurecli
 az blockchain transaction-node update \
@@ -134,7 +134,7 @@ az blockchain transaction-node update \
 
 ## <a name="list-api-keys"></a>列出 API 密钥
 
-API 密钥可用于节点访问，类似于用户名和密码。 提供两个 API 密钥来支持密钥轮换。 使用以下命令[列出 API 密钥](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-transaction-node-list-api-key)。
+API 密钥可用于节点访问，类似于用户名和密码。 提供两个 API 密钥来支持密钥轮换。 使用以下命令[列出 API 密钥](/cli/azure/blockchain/member#az_blockchain_transaction_node_list-api-key)。
 
 ```azurecli
 az blockchain member list-api-key \
@@ -149,7 +149,7 @@ az blockchain member list-api-key \
 
 ## <a name="regenerate-api-keys"></a>重新生成 API 密钥
 
-使用以下命令[重新生成 API 密钥](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-transaction-node-regenerate-api-key)。
+使用以下命令[重新生成 API 密钥](/cli/azure/blockchain/member#az_blockchain_transaction_node_regenerate-api-key)。
 
 ```azurecli
 az blockchain member regenerate-api-key \
@@ -166,7 +166,7 @@ az blockchain member regenerate-api-key \
 
 ## <a name="delete-a-transaction-node"></a>删除事务节点
 
-示例[删除区块链成员事务节点](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-delete)。
+示例[删除区块链成员事务节点](/cli/azure/blockchain/transaction-node#az_blockchain_transaction_node_delete)。
 
 ```azurecli
 az blockchain transaction-node delete \
@@ -183,7 +183,7 @@ az blockchain transaction-node delete \
 
 ## <a name="delete-a-blockchain-member"></a>删除区块链成员
 
-示例[删除区块链成员](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-delete)。
+示例[删除区块链成员](/cli/azure/blockchain/member#az_blockchain_member_delete)。
 
 ```azurecli
 az blockchain member delete \
@@ -211,7 +211,7 @@ az role assignment create \
 | 参数 | 说明 |
 |---------|-------------|
 | **role** | Azure AD 角色的名称。 |
-| **assignee** | Azure AD 用户 ID。 例如，`user@contoso.com` |
+| **assignee** | Azure AD 用户 ID。 例如： `user@contoso.com` |
 | **作用域** | 角色分配的范围。 可以是区块链成员或事务节点。 |
 
 **示例：**
@@ -273,7 +273,7 @@ az role assignment delete \
 | 参数 | 说明 |
 |---------|-------------|
 | **role** | Azure AD 角色的名称。 |
-| **assignee** | Azure AD 用户 ID。 例如，`user@contoso.com` |
+| **assignee** | Azure AD 用户 ID。 例如： `user@contoso.com` |
 | **作用域** | 角色分配的范围。 可以是区块链成员或事务节点。 |
 
 ## <a name="next-steps"></a>后续步骤

@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47d7d541ed7d9805641ffdfde381d482c8700006
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ee22ba3816e667bc58247fa81142e54587124fd6
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96858733"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865290"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码哈希同步
 本文提供将用户密码从本地 Active Directory 实例同步到基于云的 Azure Active Directory (Azure AD) 实例时所需的信息。
@@ -210,7 +210,7 @@ Azure AD 支持为每个已注册的域单独设置密码过期策略。
 
 **若要为密码哈希同步启用 MD5，请执行以下步骤：**
 
-1. 转到 %programfiles%\Azure AD Sync\Bin。
+1. 转到 %programfiles%\Microsoft Azure AD Sync\Bin。
 2. 打开 miiserver.exe.config。
 3. 转到文件末尾的 configuration/runtime 节点。
 4. 添加以下节点： `<enforceFIPSPolicy enabled="false"/>`

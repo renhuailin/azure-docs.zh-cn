@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d9845fad8c9013bd20499c45a8d1714e30e9dbf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: e0e6e42fc5b257cb0dfaf9d6a47bbac9811a23a5
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98927406"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107886846"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>使用系统分配的托管标识访问 Azure Cosmos DB 数据
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -93,10 +93,10 @@ az role assignment create --assignee $principalId --role "DocumentDB Account Con
 
 现在，我们已有一个函数应用，它具有系统分配的托管标识，该标识具有“DocumentDB 帐户参与者”角色和 Azure Cosmos DB 权限  。 以下函数应用代码将获取 Azure Cosmos DB 密钥，创建 CosmosClient 对象，获取水族箱温度，然后将此数据保存到 Azure Cosmos DB。
 
-此示例使用[“列出密钥”API](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listkeys) 来访问 Azure Cosmos DB 帐户密钥。
+此示例使用[“列出密钥”API](/rest/api/cosmos-db-resource-provider/2021-03-15/databaseaccounts/listkeys) 来访问 Azure Cosmos DB 帐户密钥。
 
 > [!IMPORTANT] 
-> 若要[分配 Cosmos DB 帐户读取者](#grant-access-to-your-azure-cosmos-account)角色，需要使用[列出只读密钥 API](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listreadonlykeys)。 这只会填充只读密钥。
+> 若要[分配 Cosmos DB 帐户读取者](#grant-access-to-your-azure-cosmos-account)角色，需要使用[列出只读密钥 API](/rest/api/cosmos-db-resource-provider/2021-03-15/databaseaccounts/listreadonlykeys)。 这只会填充只读密钥。
 
 “列出密钥”API 将返回 `DatabaseAccountListKeysResult` 对象。 C# 库中未定义此类型。 以下代码显示了此类的实现：  
 

@@ -2,25 +2,22 @@
 title: Azure Active Directory 中的 SAML 令牌加密
 description: 了解如何配置 Azure Active Directory SAML 令牌加密。
 services: active-directory
-documentationcenter: ''
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32a6034f407bd81e5d2d2ab8227d08a67f034d4c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5c06a499cccb03e6726ee19542d7eb79e0c99b43
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99258636"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375723"
 ---
 # <a name="how-to-configure-azure-ad-saml-token-encryption"></a>如何配置 Azure AD SAML 令牌加密
 
@@ -124,7 +121,7 @@ Azure AD 使用 AES-256 加密 SAML 断言数据。
 
 1. 使用最新的 Azure AD PowerShell 模块连接到你的租户。
 
-1. 使用“[Set-AzureApplication](/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)”命令设置令牌加密设置。
+1. 使用“[Set-AzureApplication](/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview&preserve-view=true)”命令设置令牌加密设置。
 
     ```
     Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials "<KeyCredentialsObject>"  -TokenEncryptionKeyId <keyID>

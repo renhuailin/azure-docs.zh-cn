@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1b6a138317d0cc2e10e893d1969f9d5452064d8f
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 8b0c977a2dd754c12e476c724afa591695b7f822
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813733"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330667"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常见问题解答
 了解有关 Azure API 管理的常见问题解答、模式和最佳做法。
@@ -93,7 +93,7 @@ ms.locfileid: "107813733"
 向多个地理位置进行部署时，API 管理使用[性能流量路由方法](../traffic-manager/traffic-manager-routing-methods.md#performance)。 传入流量将路由到最近的 API 网关。 如果一个区域处于脱机状态，则传入流量会自动路由到下一个最近的网关。 在[流量管理器路由方法](../traffic-manager/traffic-manager-routing-methods.md)中了解有关路由方法的详细信息。
 
 ### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>是否可以使用 Azure 资源管理器模板创建 API 管理服务实例？
-是的。 请参阅 [Azure API 管理服务](https://aka.ms/apimtemplate)快速入门模板。
+是的。 请参阅 [Azure API 管理服务](https://azure.microsoft.com/resources/templates/101-azure-api-management-create/)快速入门模板。
 
 ### <a name="can-i-use-a-self-signed-tlsssl-certificate-for-a-back-end"></a>能否为后端使用自签名的 TLS/SSL 证书？
 是的。 可以通过 PowerShell 或直接提交到 API 来完成此操作。 这将禁用证书链验证，并将允许在从 API 管理与后端服务进行通信时使用自签名或私人签名证书。

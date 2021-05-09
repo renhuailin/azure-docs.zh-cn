@@ -1,35 +1,35 @@
 ---
 title: Azure VMware Solution by CloudSimple - 创建 CloudSimple 服务
 description: 了解如何在 Azure 门户中创建 CloudSimple 服务。 在开始之前，请评价所需的配置。
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 53f2d0fc9f73985bd70792c8c3b7607eb4c560fa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c36ca8b1e776d95a8706b7786708058b4b9826a3
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97896288"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108177811"
 ---
 # <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>创建 Azure VMware Solution by CloudSimple 服务
 
 若要开始使用 Azure VMware Solution by CloudSimple，请在 Azure 门户中创建 Azure VMware Solution by CloudSimple 服务。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 为网关子网分配 /28 CIDR 块。 网关子网是每个 CloudSimple 服务所必需的，并且对其创建区域也是唯一的。 网关子网可用于边缘网络服务，需要 /28 CIDR 块。 网关子网地址空间必须是唯一的。 它不得与任何与 CloudSimple 环境通信的网络重叠。 与 CloudSimple 通信的网络包括本地网络和 Azure 虚拟网络。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="create-the-service"></a>创建服务
 
-1. 选择“所有服务”  。
+1. 选择“所有服务”。
 2. 搜索 **CloudSimple 服务**。
     ![搜索 CloudSimple 服务](media/create-cloudsimple-service-search.png)
 3. 选择 **CloudSimple 服务**。

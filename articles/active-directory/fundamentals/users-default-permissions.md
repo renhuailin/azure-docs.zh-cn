@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb01a3e0fc5bc11a4d3de62b16aafb7dd308e34a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 348f1b4e6182739b3afbc96597853a5b887877c1
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98724265"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107748765"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory 中的默认用户权限是什么？
 在 Azure Active Directory (Azure AD) 中，所有用户都被授予一组默认权限。 用户的访问权限由用户的类型、其[角色分配](active-directory-users-assign-role-azure-portal.md)及其对单个对象的所有权构成。 本文将会介绍这些默认权限，并将成员和来宾用户的默认权限进行比较。 只能在 Azure AD 的用户设置中更改默认用户权限。
@@ -32,7 +32,7 @@ ms.locfileid: "98724265"
 
 **区域** | **成员用户权限** | 默认来宾用户权限 | 受限来宾用户权限（预览）
 ------------ | --------- | ---------- | ----------
-用户和联系人 | <ul><li>枚举所有用户和联系人的列表<li>读取用户和联系人的所有公共属性</li><li>邀请来宾<li>更改自己的密码<li>管理自己的手机号码<li>管理自己的照片<li>使自己的刷新令牌失效</li></ul> | <ul><li>读取自己的属性<li>读取其他用户和联系人的显示名称、电子邮件、登录名、照片、用户主体名称和用户类型属性<li>更改自己的密码<li>按 ObjectId 搜索其他用户（如果允许）<li>读取其他用户的管理员信息和直接报表信息</li></ul> | <ul><li>读取自己的属性<li>更改自己的密码</li></ul>
+用户和联系人 | <ul><li>枚举所有用户和联系人的列表<li>读取用户和联系人的所有公共属性</li><li>邀请来宾<li>更改自己的密码<li>管理自己的手机号码<li>管理自己的照片<li>使自己的刷新令牌失效</li></ul> | <ul><li>读取自己的属性<li>读取其他用户和联系人的显示名称、电子邮件、登录名、照片、用户主体名称和用户类型属性<li>更改自己的密码<li>按 ObjectId 搜索其他用户（如果允许）<li>读取其他用户的管理员信息和直接报表信息</li></ul> | <ul><li>读取自己的属性<li>更改自己的密码</li><li>管理自己的手机号码</li></ul>
 组 | <ul><li>创建安全组<li>创建 Microsoft 365 组<li>枚举所有组的列表<li>读取组的所有属性<li>读取非隐藏的组成员身份<li>读取加入的组的隐藏 Microsoft 365 组成员身份<li>管理用户拥有的组的属性、所有权和成员身份<li>将来宾添加到拥有的组<li>管理动态成员身份设置<li>删除拥有的组<li>还原拥有的 Microsoft 365 组</li></ul> | <ul><li>读取非隐藏组的属性，包括成员身份和所有权（甚至是未加入的组）<li>读取加入的组的隐藏 Microsoft 365 组成员身份<li>按显示名称或 ObjectId（如果允许）搜索组</li></ul> | <ul><li>读取加入的组的对象 ID<li>在某些 Microsoft 365 应用中读取加入的组的成员身份和所有权（如果允许）</li></ul>
 应用程序 | <ul><li>注册（创建）新应用程序<li>枚举所有应用程序的列表<li>读取已注册的应用程序和企业应用程序的属性<li>管理拥有的应用程序的应用程序属性、分配和凭据<li>创建或删除用户的应用程序密码<li>删除拥有的应用程序<li>还原拥有的应用程序</li></ul> | <ul><li>读取已注册的应用程序和企业应用程序的属性</li></ul> | <ul><li>读取已注册的应用程序和企业应用程序的属性
 设备</li></ul> | <ul><li>枚举所有设备的列表<li>读取设备的所有属性<li>管理拥有的设备的所有属性</li></ul> | 无权限 | 无权限
@@ -134,7 +134,6 @@ Directory | <ul><li>读取所有公司信息<li>读取所有域<li>读取所有�
 | microsoft.directory/groups/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.appRoleAssignments 属性。 |
 | microsoft.directory/groups/basic/update | 更新 Azure Active Directory 中组的基本属性。 |
 | microsoft.directory/groups/delete | 删除 Azure Active Directory 中的组。 |
-| microsoft.directory/groups/dynamicMembershipRule/update | 更新 Azure Active Directory 中的 groups.dynamicMembershipRule 属性。 |
 | microsoft.directory/groups/members/update | 更新 Azure Active Directory 中的 groups.members 属性。 |
 | microsoft.directory/groups/owners/update | 更新 Azure Active Directory 中的 groups.owners 属性。 |
 | microsoft.directory/groups/restore | 还原 Azure Active Directory 中的组。 |

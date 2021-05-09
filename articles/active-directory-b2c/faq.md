@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d84c5fff41a7f00405c29ab4b4921ed2e28bdfde
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ac1daff6d7256bdb406cf07f4d5cb45414f9da86
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104580090"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127094"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常见问题 (FAQ)
 
@@ -103,7 +103,7 @@ Azure AD B2C 还支持[自定义策略](custom-policy-overview.md)。 自定义�
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>我的应用是否可在 iFrame 中打开 Azure AD B2C 页？
 
-此功能目前以公共预览版提供。 有关详细信息，请参阅[嵌入式登录体验](https://docs.microsoft.com/azure/active-directory-b2c/embedded-login)。
+此功能目前以公共预览版提供。 有关详细信息，请参阅[嵌入式登录体验](./embedded-login.md)。
 
 ### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Azure AD B2C 是否可以与 Microsoft Dynamics 之类的 CRM 系统一起使用？
 
@@ -131,7 +131,7 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>我可以在 Azure AD B2C 提供的注册和登录页面上使用自己的 URL 吗？ 例如，可以将 URL 从 contoso.b2clogin.com 更改为 login.contoso.com 吗？
 
-此功能目前以公共预览版提供。 有关详细信息，请参阅 [Azure AD B2C 自定义域](https://docs.microsoft.com/azure/active-directory-b2c/custom-domain?pivots=b2c-user-flow)。
+此功能目前以公共预览版提供。 有关详细信息，请参阅 [Azure AD B2C 自定义域](./custom-domain.md?pivots=b2c-user-flow)。
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>如何删除 Azure AD B2C 租户？
 

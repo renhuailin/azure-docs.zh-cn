@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 为 CloudSimple 私有云配置 DNS。
 description: 描述如何设置 DNS 名称解析，以便从本地工作站访问 CloudSimple 私有云上的 vCenter 服务器。
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 63822050512421895b0cfed08fb141f77da20b03
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1f7537790c22bf09da89cd02ba213b1573f19d9c
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97899246"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108177415"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>为从本地工作站访问私有云 vCenter 的名称解析，配置 DNS。
 

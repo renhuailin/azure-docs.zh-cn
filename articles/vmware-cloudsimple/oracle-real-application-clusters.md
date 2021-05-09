@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 为 Oracle RAC 优化 CloudSimple 私有云
 description: 介绍如何为 Oracle Real Application Cluster (RAC) 的安装和配置部署新群集并优化 VM
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/06/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3959aae5f490af10c6747cfa67d9960e0c4a203f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a563067c62f56905d88186db77cbe2e039cfa409
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97899263"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108177451"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>优化 CloudSimple 私有云以安装 Oracle RAC
 
@@ -44,7 +44,7 @@ Oracle RAC 虚拟机有多个用于特定功能的磁盘。  共享磁盘装载�
 
 以下示例使用下表中定义的磁盘。
 
-| 磁盘                                      | 用途                                       | 共享磁盘 |
+| 磁盘和分区                                      | 目的                                       | 共享磁盘 |
 |-------------------------------------------|-----------------------------------------------|-------------|
 | OS                                        | 操作系统磁盘                         | 否          |
 | GRID                                      | Oracle Grid 软件的安装位置     | 否          |
