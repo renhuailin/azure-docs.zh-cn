@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 890c4a8a5aec3b15b150908c64bb114bd85a61a1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9835ba2b6db2d71d0ff5825f2eb1996133e75537
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99256756"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530820"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>检查用户预配状态
 
@@ -30,7 +30,7 @@ Azure AD 预配服务针对源系统和目标系统运行初始预配周期，�
 - 当前正在运行或最后完成的预配周期的类型（初始或增量）。
 - 显示已完成预配周期百分比的进度条。 百分比反映预配页的计数。 请注意，每个页面可能包含多个用户或组，因此该百分比并不与预配的用户、组或角色的数目直接相关。
 - 可以使用“刷新”按钮来更新视图。
-- 连接器数据存储中的用户和组的数目。  只要向预配作用域中添加了某个对象，计数将立即增加。 如果用户被软删除或硬删除，则计数不会关闭，因为这样不会从连接器数据存储中删除对象。 在 CDS [重置](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)后的第一次同步时，将重新计算计数 
+- 连接器数据存储中的用户和组的数目。  只要向预配作用域中添加了某个对象，计数将立即增加。 如果用户被软删除或硬删除，则计数不会关闭，因为这样不会从连接器数据存储中删除对象。 在 CDS [重置](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta&preserve-view=true)后的第一次同步时，将重新计算计数 
 - “查看审核日志”链接将打开 Azure AD 设置日志，提供有关用户预配服务运行的所有操作的详细信息，包括括单个用户的预配状态（请参阅下面的[使用预配日志](#use-provisioning-logs-to-check-a-users-provisioning-status)部分）。
 
 预配周期完成后，“到目前为止的统计信息”部分显示到目前为止已经预配的用户和组的累计数量，以及最后一个周期的完成日期和持续时间。 活动 ID 可唯一标识最新的预配周期。 作业 ID 是预配作业的唯一标识符，特定于租户中的应用。

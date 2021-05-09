@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/07/2021
+ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: de5c5fbb6673d022517bba2486ed4aa1f739d19b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9e2dcace673a1c7215634434f9e89ddc6b953a63
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439572"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834563"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用自适应应用程序控制来减少计算机的攻击面
 
@@ -237,10 +237,17 @@ REST API 提供的一些函数：
 
 ## <a name="faq---adaptive-application-controls"></a>常见问题解答 - 自适应应用程序控制
 
+- [是否有任何强制执行应用程序控制的选项？](#are-there-any-options-to-enforce-the-application-controls)
+- [为什么我会在我的推荐应用程序中看到 Qualys 应用？](#why-do-i-see-a-qualys-app-in-my-recommendeded-applications)
+
 ### <a name="are-there-any-options-to-enforce-the-application-controls"></a>是否有任何强制执行应用程序控制的选项？
 目前无强制选项可用。 自适应应用程序控制旨在提供安全警报，前提是运行的任何应用程序不是你定义为安全的应用程序。 如本页所示，它具有一系列的优势（[自适应应用程序控制的优势是什么？](#what-are-the-benefits-of-adaptive-application-controls)）并且具有良好的可定制性。
 
- 
+### <a name="why-do-i-see-a-qualys-app-in-my-recommendeded-applications"></a>为什么我会在我的推荐应用程序中看到 Qualys 应用？
+[适用于服务器的 Azure Defender](defender-for-servers-introduction.md) 可为你的计算机提供漏洞扫描服务，无需额外付费。 你无需具备 Qualys 许可证，甚至还不需要 Qualys 帐户 - 所有操作都在安全中心内无缝执行。 有关此扫描器的详细信息以及如何部署它的说明，请参阅[Defender 的集成漏洞评估解决方案](deploy-vulnerability-assessment-vm.md)。
+
+若要确保安全中心部署扫描程序时不生成警报，自适应应用程序控制建议的允许列表应包括所有计算机的扫描程序。 
+
 
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何在 Azure 安全中心使用自适应应用程序控制来定义 Azure 和非 Azure 计算机中运行的应用程序允许列表。 要详细了解安全中心的一些其他云工作负载保护功能，请参阅：

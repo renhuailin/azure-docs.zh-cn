@@ -6,13 +6,13 @@ ms.author: hemin
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: d40675faeec8975cc78e39818477495139ebbf0d
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 04/28/2021
+ms.openlocfilehash: 275c77107faf8fd639d714b92828ab8efe623f26
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906361"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164896"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure 数据工厂中的表达式和函数
 
@@ -179,7 +179,7 @@ Corporation
 
 ### <a name="escaping-single-quote-character"></a>转义单引号字符
 
-表达式函数对字符串值参数使用单引号。 使用两个单引号对字符串函数中的 ' 字符进行转义。 例如，表达式 `@concat('Baba', ''' ', 'book store')` 将返回以下结果。
+表达式函数对字符串值参数使用单引号。 使用两个单引号对字符串函数中的 ' 字符进行转义。 例如，表达式 `@concat('Baba', '''s ', 'book store')` 将返回以下结果。
 
 ```
 Baba's book store
@@ -582,7 +582,7 @@ and(<expression1>, <expression2>)
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <expression1>, <expression2> | 是 | Boolean | 要检查的表达式 |
+| <expression1>, <expression2> | 是 | 布尔 | 要检查的表达式 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -791,12 +791,12 @@ bool(<value>)
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | 任意 | 要转换的值 |
+| <*value*> | 是 | Any | 要转换的值 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 指定的值的布尔版本 |
+| true 或 false | 布尔 | 指定的值的布尔版本 |
 ||||
 
 *示例*
@@ -831,7 +831,7 @@ coalesce(<object_1>, <object_2>, ...)
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*first-non-null-item*> | 任意 | 第一个不为 null 的项或值。 如果所有参数均为 null，则此函数返回 null。 |
+| <*first-non-null-item*> | Any | 第一个不为 null 的项或值。 如果所有参数均为 null，则此函数返回 null。 |
 ||||
 
 *示例*
@@ -907,7 +907,7 @@ contains([<collection>], '<value>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 当找到该项时返回 true。 找不到时返回 false。 |
+| true 或 false | 布尔 | 当找到该项时返回 true。 找不到时返回 false。 |
 ||||
 
 *示例 1*
@@ -1454,7 +1454,7 @@ empty([<collection>])
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 当集合为空时返回 true。 不为空时返回 false。 |
+| true 或 false | 布尔 | 当集合为空时返回 true。 不为空时返回 false。 |
 ||||
 
 *示例*
@@ -1491,7 +1491,7 @@ endsWith('<text>', '<searchText>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false  | Boolean | 当找到结尾子字符串时返回 true。 找不到时返回 false。 |
+| true 或 false  | 布尔 | 当找到结尾子字符串时返回 true。 找不到时返回 false。 |
 ||||
 
 *示例 1*
@@ -1532,7 +1532,7 @@ equals('<object1>', '<object2>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 当两者相等时返回 true。 不相等时返回 false。 |
+| true 或 false | 布尔 | 当两者相等时返回 true。 不相等时返回 false。 |
 ||||
 
 *示例*
@@ -1567,7 +1567,7 @@ first([<collection>])
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*first-collection-item*> | 任意 | 集合中的第一项 |
+| <*first-collection-item*> | Any | 集合中的第一项 |
 ||||
 
 *示例*
@@ -1753,7 +1753,7 @@ greater('<value>', '<compareTo>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 当第一个值大于第二个值时返回 true。 当第一个值等于或小于第二个值时返回 false。 |
+| true 或 false | 布尔 | 当第一个值大于第二个值时返回 true。 当第一个值等于或小于第二个值时返回 false。 |
 ||||
 
 *示例*
@@ -1790,7 +1790,7 @@ greaterOrEquals('<value>', '<compareTo>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 当第一个值大于或等于第二个值时返回 true。 当第一个值小于第二个值时返回 false。 |
+| true 或 false | 布尔 | 当第一个值大于或等于第二个值时返回 true。 当第一个值小于第二个值时返回 false。 |
 ||||
 
 *示例*
@@ -1809,7 +1809,7 @@ greaterOrEquals('apple', 'banana')
 
 <a name="guid"></a>
 
-### <a name="guid"></a>guid
+### <a name="guid"></a>GUID
 
 生成一个字符串形式的全局唯一标识符 (GUID)，例如“c2ecc88d-88c8-4096-912c-d6f2e2b138ce”：
 
@@ -1856,14 +1856,14 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression*> | 是 | Boolean | 要检查的表达式 |
-| <*valueIfTrue*> | 是 | 任意 | 当表达式为 true 时要返回的值 |
-| <*valueIfFalse*> | 是 | 任意 | 当表达式为 false 时要返回的值 |
+| <*expression*> | 是 | 布尔 | 要检查的表达式 |
+| <*valueIfTrue*> | 是 | Any | 当表达式为 true 时要返回的值 |
+| <*valueIfFalse*> | 是 | Any | 当表达式为 false 时要返回的值 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*specified-return-value*> | 任意 | 根据表达式为 true 或 false 返回的指定值 |
+| <*specified-return-value*> | Any | 根据表达式为 true 或 false 返回的指定值 |
 ||||
 
 *示例*
@@ -2189,7 +2189,7 @@ less('<value>', '<compareTo>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 当第一个值小于第二个值时返回 true。 当第一个值等于或大于第二个值时返回 false。 |
+| true 或 false | 布尔 | 当第一个值小于第二个值时返回 true。 当第一个值等于或大于第二个值时返回 false。 |
 ||||
 
 *示例*
@@ -2226,7 +2226,7 @@ lessOrEquals('<value>', '<compareTo>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false  | Boolean | 当第一个值小于或等于第二个值时返回 true。 当第一个值大于第二个值时返回 false。 |
+| true 或 false  | 布尔 | 当第一个值小于或等于第二个值时返回 true。 当第一个值大于第二个值时返回 false。 |
 ||||
 
 *示例*
@@ -2389,12 +2389,12 @@ not(<expression>)
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression*> | 是 | Boolean | 要检查的表达式 |
+| <*expression*> | 是 | 布尔 | 要检查的表达式 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 当表达式为 false 时返回 true。 当表达式为 true 时返回 false。 |
+| true 或 false | 布尔 | 当表达式为 false 时返回 true。 当表达式为 true 时返回 false。 |
 ||||
 
 *示例 1*
@@ -2438,12 +2438,12 @@ or(<expression1>, <expression2>)
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <expression1>, <expression2> | 是 | Boolean | 要检查的表达式 |
+| <expression1>, <expression2> | 是 | 布尔 | 要检查的表达式 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 当至少一个表达式为 true 时返回 true。 当两个表达式均为 false 时返回 false。 |
+| true 或 false | 布尔 | 当至少一个表达式为 true 时返回 true。 当两个表达式均为 false 时返回 false。 |
 ||||
 
 *示例 1*
@@ -2743,7 +2743,7 @@ startsWith('<text>', '<searchText>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false  | Boolean | 当找到起始子字符串时返回 true。 找不到时返回 false。 |
+| true 或 false  | 布尔 | 当找到起始子字符串时返回 true。 找不到时返回 false。 |
 ||||
 
 *示例 1*
@@ -2778,7 +2778,7 @@ string(<value>)
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | 任意 | 要转换的值 |
+| <*value*> | 是 | Any | 要转换的值 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -3304,14 +3304,14 @@ xpath('<xml>', '<xpath>')
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*xml*> | 是 | 任意 | 要在其中搜索与 XPath 表达式值匹配的节点或值的 XML 字符串 |
-| <*xpath*> | 是 | 任意 | 用来查找匹配的 XML 节点或值的 XPath 表达式 |
+| <*xml*> | 是 | Any | 要在其中搜索与 XPath 表达式值匹配的节点或值的 XML 字符串 |
+| <*xpath*> | 是 | Any | 用来查找匹配的 XML 节点或值的 XPath 表达式 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
 | <*xml-node*> | XML | 一个 XML 节点，当只有单个节点与指定的 XPath 表达式匹配时 |
-| <*value*> | 任意 | 来自一个 XML 节点的值，当只有单个值与指定的 XPath 表达式匹配时 |
+| <*value*> | Any | 来自一个 XML 节点的值，当只有单个值与指定的 XPath 表达式匹配时 |
 | [<*xml-node1*>, <*xml-node2*>, ...] </br>-或- </br>[<*value1*>, <*value2*>, ...] | Array | 一个数组，其中包含与指定的 XPath 表达式匹配的 XML 节点或值 |
 ||||
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 1d42843805f4fce24368dd07de3a73fec2545957
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 867387665796464ec80bcda94f7870315e55e0a1
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567519"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015602"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备的 Kubernetes 群集上启用 Azure Arc
 
@@ -74,7 +74,7 @@ ms.locfileid: "105567519"
     
     ![注册 Kubernetes 资源提供程序 3](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-4.png)
 
-还可以通过 `az cli` 注册资源提供程序。 有关详细信息，请参阅[为已启用 Azure Arc 的 Kubernetes 注册两个提供程序](../azure-arc/kubernetes/quickstart-connect-cluster.md#register-the-two-providers-for-azure-arc-enabled-kubernetes)
+还可以通过 `az cli` 注册资源提供程序。 有关详细信息，请参阅[为已启用 Azure Arc 的 Kubernetes 注册两个提供程序](../azure-arc/kubernetes/quickstart-connect-cluster.md#register-providers-for-azure-arc-enabled-kubernetes)。
 
 ## <a name="create-service-principal-assign-role"></a>创建服务主体并分配角色
 

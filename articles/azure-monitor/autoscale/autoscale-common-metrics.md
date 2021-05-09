@@ -4,12 +4,13 @@ description: 了解自动缩放云服务、虚拟机和 Web 应用时常用的�
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
-ms.openlocfilehash: 4b763f39d3b88a7884e89dddbc2c483c1bb84d31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8a3c8b06862c4a429d0e8974c8e3e00113ac5915
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101717768"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316850"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor 自动缩放常用指标
 
@@ -20,6 +21,7 @@ ms.locfileid: "101717768"
 Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](../../api-management/api-management-key-concepts.md)。 其他 Azure 服务使用不同的缩放方法。
 
 ## <a name="compute-metrics-for-resource-manager-based-vms"></a>基于 Resource Manager 的 VM 的计算指标
+
 默认情况下，基于 Resource Manager 的虚拟机和虚拟机规模集发出基本（主机级）指标。 此外，为 Azure VM 和 VMSS 配置诊断数据集合时，Azure 诊断扩展也会发出来宾 OS性能计数器（通常称为“来宾 OS 指标”）。  可在自动缩放规则中使用所有这些指标。
 
 可使用 `Get MetricDefinitions` API/PoSH/CLI 查看 VMSS 资源的可用指标。
@@ -31,12 +33,14 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 如果发生上述任一情况，请查看 [使用 PowerShell 在运行 Windows 的虚拟机中启用 Azure 诊断](../../virtual-machines/extensions/diagnostics-windows.md) ，将 Azure VM 诊断扩展配置和更新为启用该指标。 这篇文章还包含一个诊断配置文件示例。
 
 ### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>基于 Resource Manager 的 Windows 和 Linux VM 的主机指标
+
 默认情况下，将向 Windows 和 Linux 实例中的 Azure VM 和 VMSS 发出以下主机级指标。 这些指标可描述 Azure VM，但这些指标是从 Azure VM 主机而不是通过来宾 VM 上安装的代理收集的。 可在自动缩放规则中使用这些指标。
 
 - [基于 Resource Manager 的 Windows 和 Linux VM 的主机指标](../essentials/metrics-supported.md#microsoftcomputevirtualmachines)
 - [基于 Resource Manager 的 Windows 和 Linux VM 规模集的主机指标](../essentials/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
 ### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>基于资源管理器的 Windows VM 的来宾 OS 指标
+
 在 Azure 中创建 VM 时，使用诊断扩展会启用诊断。 诊断扩展会发出一组从 VM 内部获取的指标。 这意味着可以自动缩放不是默认发出的指标。
 
 可以在 PowerShell 中使用以下命令生成指标列表。
@@ -78,6 +82,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \LogicalDisk(_Total)\Free Megabytes |计数 |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Linux VM 的来宾 OS 指标
+
 在 Azure 中创建 VM 时，使用诊断扩展会默认启用诊断。
 
 可以在 PowerShell 中使用以下命令生成指标列表。
@@ -130,9 +135,11 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \NetworkInterface\TotalCollisions |计数 |
 
 ## <a name="commonly-used-app-service-server-farm-metrics"></a>常用的应用服务（服务器场）指标
+
 也可以根据常用的 Web 服务器指标（如 Http 队列长度）执行自动缩放。 其指标名称为 **HttpQueueLength**。  以下部分列出了可用的服务器场（应用服务）指标。
 
 ### <a name="web-apps-metrics"></a>Web 应用指标
+
 可以在 PowerShell 中使用以下命令生成 Web 应用指标列表。
 
 ```
@@ -151,6 +158,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | BytesSent |字节 |
 
 ## <a name="commonly-used-storage-metrics"></a>常用的存储指标
+
 可以将存储队列长度作为缩放依据，它是存储队列中的消息数目。 存储队列长度是一个特殊指标，阈值是每个实例的消息数。 例如，如果有两个实例并且阈值设置为 100，则当队列中的消息总数为 200 时会进行缩放。 这两个实例的消息数可能各为 100，或分别为 120 和 80，或者为其他相加大于等于 200 的数字组合。
 
 在 Azure 门户的“设置”  边栏选项卡中配置此配置。 若使用 VM 规模集，可以将 Resource Manager 模板中的“自动缩放”设置更新为将 metricName  用作 ApproximateMessageCount  ，并传递存储队列的 ID 作为 metricResourceUri  。
@@ -161,7 +169,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 "metricName": "ApproximateMessageCount",
 "metricNamespace": "",
 "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
- ```
+```
 
 对于（非经典）存储帐户，metricTrigger 将包括：
 
@@ -172,6 +180,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 ```
 
 ## <a name="commonly-used-service-bus-metrics"></a>常用的服务总线指标
+
 可以按服务总线队列的长度进行缩放，该长度是服务总线队列中的消息数量。 服务总线队列长度是一个特殊指标，阈值是每个实例的消息数。 例如，如果有两个实例并且阈值设置为 100，则当队列中的消息总数为 200 时会进行缩放。 这两个实例的消息数可能各为 100，或分别为 120 和 80，或者为其他相加大于等于 200 的数字组合。
 
 若使用 VM 规模集，可以将 Resource Manager 模板中的“自动缩放”设置更新为将 metricName  用作 ApproximateMessageCount  ，并传递存储队列的 ID 作为 metricResourceUri  。
@@ -184,5 +193,4 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 > [!NOTE]
 > 若使用服务总线，则不存在资源组这一概念，但 Azure Resource Manager 会为每个区域创建一个默认资源组。 此资源组通常采用“Default-ServiceBus-[region]”的格式。 例如，“Default-ServiceBus-EastUS”、“Default-ServiceBus-WestUS”、“Default-ServiceBus-AustraliaEast”等等。
->
->
+

@@ -7,13 +7,13 @@ ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
 ms.topic: article
 ms.date: 02/23/2021
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 8e9dd76b60d05b9fa5e3a4aaf7ccc6663f4a969b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 0220c16d7ea3673f55d57ec4c4e0d29b30672683
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101709030"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108017654"
 ---
 # <a name="open-an-ssh-session-to-a-linux-container-in-azure-app-service"></a>在 Azure 应用服务中打开 Linux 容器的 SSH 会话
 
@@ -41,7 +41,7 @@ ms.locfileid: "101709030"
 
 若要开始，需安装 [Azure CLI](/cli/azure/install-azure-cli)。 若要了解它在不安装 Azure CLI 的情况下的工作方式，请打开 [Azure Cloud Shell](../cloud-shell/overview.md)。 
 
-使用 [az webapp remote-connection create](/cli/azure/ext/webapp/webapp/remote-connection#ext-webapp-az-webapp-remote-connection-create) 命令打开到应用的远程连接。 为应用指定 \<subscription-id>、\<group-name> 和 \_\<app-name>_。
+使用 [az webapp remote-connection create](/cli/azure/webapp/remote-connection#az_webapp_remote_connection_create) 命令打开到应用的远程连接。 为应用指定 \<subscription-id>、\<group-name> 和 \_\<app-name>_。
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &

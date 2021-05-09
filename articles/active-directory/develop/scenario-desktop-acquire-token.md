@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 4a244c543aa83ae84891e3f942995dc340a7209d
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
-ms.translationtype: MT
+ms.openlocfilehash: 99a36eec959fc3f0c669f50b77d7707011e8dac0
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582649"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165094"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>用于调用 Web API 的桌面应用：获取令牌
 
@@ -55,7 +55,6 @@ catch(MsalUiRequiredException ex)
 # <a name="java"></a>[Java](#tab/java)
 
 ```java
-
 Set<IAccount> accountsInCache = pca.getAccounts().join();
 // Take first account in the cache. In a production application, you would filter
 // accountsInCache to get the right account for the user authenticating.
@@ -88,21 +87,6 @@ try {
     }
 }
 return result;
-
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-```Python
-result = None
-
-# Firstly, check the cache to see if this end user has signed in before
-accounts = app.get_accounts(username=config["username"])
-if accounts:
-    result = app.acquire_token_silent(config["scope"], account=accounts[0])
-
-if not result:
-    result = app.acquire_token_by_xxx(scopes=config["scope"])
 ```
 
 # <a name="macos"></a>[macOS](#tab/macOS)
@@ -124,6 +108,7 @@ MSALSilentTokenParameters *silentParams = [[MSALSilentTokenParameters alloc] ini
     }
 }];
 ```
+
 Swift：
 
 ```swift
@@ -145,6 +130,84 @@ application.acquireTokenSilent(with: silentParameters) { (result, error) in
     }
 }
 ```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+在 MSAL 节点中，可以使用代码交换证明密钥 (PKCE) 通过授权代码流获取令牌。 MSAL 节点使用内存中令牌缓存来查看缓存中是否有任何用户帐户。 如果有，则可以将帐户对象传递到 `acquireTokenSilent()` 方法以检索缓存的访问令牌。
+
+```javascript
+
+const msal = require("@azure/msal-node");
+
+const msalConfig = {
+    auth: {
+        clientId: "your_client_id_here",
+        authority: "your_authority_here",
+    }
+};
+
+const pca = new msal.PublicClientApplication(msalConfig);
+const msalTokenCache = pca.getTokenCache();
+
+let accounts = await msalTokenCache.getAllAccounts();
+
+    if (accounts.length > 0) {
+
+        const silentRequest = {
+            account: accounts[0], // Index must match the account that is trying to acquire token silently
+            scopes: ["user.read"],
+        };
+
+        pca.acquireTokenSilent(silentRequest).then((response) => {
+            console.log("\nSuccessful silent token acquisition");
+            console.log("\nResponse: \n:", response);
+            res.sendStatus(200);
+        }).catch((error) => console.log(error));
+    } else {
+        const {verifier, challenge} = await msal.cryptoProvider.generatePkceCodes();
+
+        const authCodeUrlParameters = {
+            scopes: ["User.Read"],
+            redirectUri: "your_redirect_uri",
+            codeChallenge: challenge, // PKCE Code Challenge
+            codeChallengeMethod: "S256" // PKCE Code Challenge Method 
+        };
+
+        // get url to sign user in and consent to scopes needed for application
+        pca.getAuthCodeUrl(authCodeUrlParameters).then((response) => {
+            console.log(response);
+
+            const tokenRequest = {
+                code: response["authorization_code"],
+                codeVerifier: verifier // PKCE Code Verifier 
+                redirectUri: "your_redirect_uri",
+                scopes: ["User.Read"],
+            };
+
+            // acquire a token by exchanging the code
+            pca.acquireTokenByCode(tokenRequest).then((response) => {
+                console.log("\nResponse: \n:", response);
+            }).catch((error) => {
+                console.log(error);
+            });
+        }).catch((error) => console.log(JSON.stringify(error)));
+    }
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+result = None
+
+# Firstly, check the cache to see if this end user has signed in before
+accounts = app.get_accounts(username=config["username"])
+if accounts:
+    result = app.acquire_token_silent(config["scope"], account=accounts[0])
+
+if not result:
+    result = app.acquire_token_by_xxx(scopes=config["scope"])
+```
+
 ---
 
 下面详细说明了在桌面应用程序中获取令牌的各种方法。
@@ -154,6 +217,7 @@ application.acquireTokenSilent(with: silentParameters) { (result, error) in
 下面的示例展示了以交互方式获取令牌，以便使用 Microsoft Graph 读取用户配置文件的最少代码。
 
 # <a name="net"></a>[.NET](#tab/dotnet)
+
 ### <a name="in-msalnet"></a>在 MSAL.NET 中
 
 ```csharp
@@ -193,13 +257,13 @@ WithParentActivityOrWindow(IWin32Window window)
 // Mac
 WithParentActivityOrWindow(NSWindow window)
 
-// .Net Standard (this will be on all platforms at runtime, but only on NetStandard at build time)
+// .NET Standard (this will be on all platforms at runtime, but only on NetStandard at build time)
 WithParentActivityOrWindow(object parent).
 ```
 
 备注：
 
-- 在 .NET Standard 中，预期的 `object` 是 `Activity`（在 Android 上）、`UIViewController`（在 iOS 上）、`NSWindow`（在 MAC 上）和 `IWin32Window` 或 `IntPr`（在 Windows 上）。
+- 在 .NET Standard 中，预期的 `object` 是 `Activity`（在 Android 上）、`UIViewController`（在 iOS 上）、`NSWindow`（在 Mac 上）和 `IWin32Window` 或 `IntPr`（在 Windows 上）。
 - 在 Windows 上，必须从 UI 线程调用 `AcquireTokenInteractive`，以便嵌入性浏览器获取正确的 UI 同步上下文。 不从 UI 线程调用可能会导致无法正常输送消息和 UI 出现死锁的情况。 在尚未进入 UI 线程的情况下，从 UI 线程调用 Microsoft 身份验证库 (MSAL) 的方法之一是使用 WPF 上的 `Dispatcher`。
 - 使用 WPF 时，若要从 WPF 控件获取一个窗口，可以使用 `WindowInteropHelper.Handle` 类。 然后从 WPF 控件 (`this`) 发出调用：
 
@@ -213,15 +277,26 @@ WithParentActivityOrWindow(object parent).
 
 `WithPrompt()` 用于通过指定提示来控制与用户的交互。
 
-![显示“提示”结构中的字段的图像。 这些常量值通过定义由 WithPrompt() 方法显示的提示的类型来控制与用户的交互。](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
+![显示“提示”结构中的字段的图像。 这些常量值通过定义由 WithPrompt() 方法显示的提示的类型来控制与用户的交互。](https://user-images.githubusercontent.com/34331512/112267137-3f1c3a00-8c32-11eb-97fb-33604311329a.png)
 
 类定义以下常量：
 
 - ``SelectAccount`` 强制 STS 显示帐户选择对话框，其中包含用户已建立会话的帐户。 当应用程序开发人员想要让用户在不同的标识之间选择时，此选项非常有用。 此选项驱动 MSAL 将 ``prompt=select_account`` 发送到标识提供者。 此选项为默认值。 它能够很好地根据可用的信息（例如帐户和用户会话的存在性）提供尽量最佳的体验。 不要对其进行更改，除非你有充分的理由。
 - 应用程序开发人员可以使用 ``Consent`` 强制要求向用户显示许可提示，即使以前已经授予了许可。 在这种情况下，MSAL 会将 `prompt=consent` 发送到标识提供者。 此选项可用于某些注重安全的应用程序，其中的组织监管机制要求每次使用该应用程序时，都要向用户显示许可对话框。
 - 应用程序开发人员可以使用 ``ForceLogin`` 来让服务向用户显示凭据提示，即使可能不需要这种用户提示。 如果获取令牌失败，可以使用此选项让用户重新登录。 在这种情况下，MSAL 会将 `prompt=login` 发送到标识提供者。 有时，此选项会在某些注重安全的应用程序中使用，其中的组织监管机制要求用户每次在访问应用程序的特定部分时重新登录。
+- ``Create`` 通过向标识提供程序发送 `prompt=create` 触发用于外部标识的注册体验。 不应为 Azure AD B2C 应用发送此提示。 有关详细信息，请参阅[向应用添加自助注册用户流](../external-identities/self-service-sign-up-user-flow.md)。
 - ``Never``（仅适用于 .NET 4.5 和 WinRT）不会提示用户，而是尝试使用隐藏的嵌入式 Web 视图中存储的 Cookie。 有关详细信息，请参阅“MSAL.NET 中的 Web 视图”。 使用此选项可能会失败。 在这种情况下，`AcquireTokenInteractive` 会引发异常来告知需要 UI 交互。 需要使用另一个 `Prompt` 参数。
 - ``NoPrompt`` 不会向标识提供者发送任何提示。 此选项仅适用于 Azure Active Directory (Azure AD) B2C 编辑配置文件策略。 有关详细信息，请参阅 [Azure AD B2C 细节](https://aka.ms/msal-net-b2c-specificities)。
+
+#### <a name="withuseembeddedwebview"></a>WithUseEmbeddedWebView
+
+通过此方法，可以指定是否要强制使用嵌入式 Web 视图或系统 Web 视图（可用时）。 有关详细信息，请参阅 [Web 浏览器的用法](msal-net-web-browsers.md)。
+
+```csharp
+var result = await app.AcquireTokenInteractive(scopes)
+                    .WithUseEmbeddedWebView(true)
+                    .ExecuteAsync();
+```
 
 #### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
@@ -355,25 +430,6 @@ private static IAuthenticationResult acquireTokenInteractive() throws Exception 
 }
 ```
 
-# <a name="python"></a>[Python](#tab/python)
-
-MSAL Python 不直接提供以交互方式获取令牌的方法。 它要求应用程序在其实现用户交互流时发送授权请求，以获取授权代码。 然后，可以将此代码传递到 `acquire_token_by_authorization_code` 方法以获取令牌。
-
-```Python
-result = None
-
-# Firstly, check the cache to see if this end user has signed in before
-accounts = app.get_accounts(username=config["username"])
-if accounts:
-    result = app.acquire_token_silent(config["scope"], account=accounts[0])
-
-if not result:
-    result = app.acquire_token_by_authorization_code(
-         request.args['code'],
-         scopes=config["scope"])
-
-```
-
 # <a name="macos"></a>[macOS](#tab/macOS)
 
 ### <a name="in-msal-for-ios-and-macos"></a>在适用于 iOS 和 macOS 的 MSAL 中
@@ -409,6 +465,70 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
     let accessToken = authResult.accessToken
 })
 ```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+在 MSAL 节点中，可以使用代码交换证明密钥 (PKCE) 通过授权代码流获取令牌。 该过程有两个步骤：首先，应用程序获取可用于生成授权代码的 URL。 此 URL 可在所选的浏览器中打开，用户可以在其中输入凭据，并使用授权代码将其重定向回 `redirectUri`（在应用注册期间注册）。 其次，应用程序将接收的授权代码传递到用于将其交换为访问令牌的 `acquireTokenByCode()` 方法。
+
+```javascript
+const msal = require("@azure/msal-node");
+
+const msalConfig = {
+    auth: {
+        clientId: "your_client_id_here",
+        authority: "your_authority_here",
+    }
+};
+
+const pca = new msal.PublicClientApplication(msalConfig);
+
+const {verifier, challenge} = await msal.cryptoProvider.generatePkceCodes();
+
+const authCodeUrlParameters = {
+    scopes: ["User.Read"],
+    redirectUri: "your_redirect_uri",
+    codeChallenge: challenge, // PKCE Code Challenge
+    codeChallengeMethod: "S256" // PKCE Code Challenge Method 
+};
+
+// get url to sign user in and consent to scopes needed for application
+pca.getAuthCodeUrl(authCodeUrlParameters).then((response) => {
+    console.log(response);
+
+    const tokenRequest = {
+        code: response["authorization_code"],
+        codeVerifier: verifier // PKCE Code Verifier 
+        redirectUri: "your_redirect_uri",
+        scopes: ["User.Read"],
+    };
+
+    // acquire a token by exchanging the code
+    pca.acquireTokenByCode(tokenRequest).then((response) => {
+        console.log("\nResponse: \n:", response);
+    }).catch((error) => {
+        console.log(error);
+    });
+}).catch((error) => console.log(JSON.stringify(error)));
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+MSAL Python 不直接提供以交互方式获取令牌的方法。 它要求应用程序在其实现用户交互流时发送授权请求，以获取授权代码。 然后，可以将此代码传递到 `acquire_token_by_authorization_code` 方法以获取令牌。
+
+```python
+result = None
+
+# Firstly, check the cache to see if this end user has signed in before
+accounts = app.get_accounts(username=config["username"])
+if accounts:
+    result = app.acquire_token_silent(config["scope"], account=accounts[0])
+
+if not result:
+    result = app.acquire_token_by_authorization_code(
+         request.args['code'],
+         scopes=config["scope"])
+```
+
 ---
 
 ## <a name="integrated-windows-authentication"></a>Windows 集成身份验证
@@ -420,7 +540,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 - Windows 集成身份验证仅适用于“联合+”用户，即，在 Active Directory 中创建的、由 Azure AD 支持的用户。 直接在 Azure AD 中创建的但不是由 Active Directory 支持的用户（称为“托管用户”）不能使用此身份验证流。 此项限制不影响用户名和密码流。
 - IWA 适用于针对 .NET Framework、.NET Core 和通用 Windows 平台 (UWP) 等平台编写的应用。
 - IWA 不会绕过[多重身份验证 (MFA)](../authentication/concept-mfa-howitworks.md)。 如果已配置 MFA，则在需要 MFA 质询的情况下，IWA 可能失败，因为 MFA 需要用户交互。
-  
+
     IWA 是非交互式的，但 MFA 需要用户交互。 标识提供者何时请求执行 MFA 并不由你控制，而是由租户管理员控制。 根据观察，在以下情况下需要 MFA：当你从不同国家/地区登录时；未通过 VPN 连接到公司网络时；有时甚至通过 VPN 连接也需要 MFA。 规则并不确定。 Azure AD 使用 AI 来持续判断是否需要执行 MFA。 如果 IWA 失败，则回退到用户提示，例如交互式身份验证或设备代码流。
 
 - 在 `PublicClientApplicationBuilder` 中传入的颁发机构需要：
@@ -439,13 +559,13 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 - 已针对 .NET Desktop、.NET Core 和 UWP 应用启用此流。
 
-有关许可的详细信息，请参阅 [Microsoft 标识平台权限和许可](./v2-permissions-and-consent.md)。
+有关许可的详细信息，请参阅 [Microsoft 标识平台的权限和许可](./v2-permissions-and-consent.md)。
 
 ### <a name="learn-how-to-use-it"></a>了解其用法
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-在 MSAL.NET 中，使用：
+在 MSAL.NET 中，请使用：
 
 ```csharp
 AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
@@ -527,7 +647,6 @@ static async Task GetATokenForGraph()
    }
  }
 
-
  Console.WriteLine(result.Account.Username);
 }
 ```
@@ -538,7 +657,7 @@ static async Task GetATokenForGraph()
 
 此代码摘录自 [MSAL Java 开发示例](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)。
 
-```Java
+```java
 private static IAuthenticationResult acquireTokenIwa() throws Exception {
 
     // Load token cache from file and initialize token cache aspect. The token cache will have
@@ -586,13 +705,17 @@ private static IAuthenticationResult acquireTokenIwa() throws Exception {
 }
 ```
 
-# <a name="python"></a>[Python](#tab/python)
-
-MSAL Python 中尚不支持此流。
-
 # <a name="macos"></a>[macOS](#tab/macOS)
 
 此流不适用于 macOS。
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+MSAL 节点尚不支持此流。
+
+# <a name="python"></a>[Python](#tab/python)
+
+MSAL Python 中尚不支持此流。
 
 ---
 
@@ -602,7 +725,7 @@ MSAL Python 中尚不支持此流。
 
 ### <a name="this-flow-isnt-recommended"></a>不建议使用此流
 
-*不建议使用* 用户名和密码流，因为应用程序要求用户提供其密码并不安全。 有关详细信息，请参阅 [不断增长的密码问题的解决方案是什么？](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/) 在已加入 Windows 域的计算机上以无提示方式获取令牌的首选流程是[集成 Windows 身份验证](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication)。 你还可以使用[设备代码流](https://aka.ms/msal-net-device-code-flow)。
+不建议使用用户名和密码流，因为要求用户提供其密码的应用程序是不安全的。 有关详细信息，请参阅[如何解决不断增多的密码问题？](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/) 在已加入 Windows 域的计算机上以无提示方式获取令牌的首选流程是[集成 Windows 身份验证](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication)。 你还可以使用[设备代码流](https://aka.ms/msal-net-device-code-flow)。
 
 在某些情况下，使用用户名和密码非常有用，例如 DevOps 方案。 但是，如果你想在自行提供 UI 的交互式方案中使用用户名和密码，建议打消这个念头。 使用用户名和密码意味着会丧失许多功能：
 
@@ -837,7 +960,7 @@ static async Task GetATokenForGraph()
 
 以下代码摘录自 [MSAL Java 开发示例](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)。
 
-```Java
+```java
 private static IAuthenticationResult acquireTokenUsernamePassword() throws Exception {
 
     // Load token cache from file and initialize token cache aspect. The token cache will have
@@ -882,11 +1005,46 @@ private static IAuthenticationResult acquireTokenUsernamePassword() throws Excep
 }
 ```
 
+# <a name="macos"></a>[macOS](#tab/macOS)
+
+适用于 macOS 的 MSAL 不支持此流。
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+此代码摘录自 [MSAL Node 开发示例](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-node-samples/username-password)。 在下面的代码片段中，用户名和密码经过硬编码，仅用于演示目的。 在生产环境中应避免这样做。 建议使用提示用户输入用户名/密码的基本 UI。
+
+```javascript
+const msal = require("@azure/msal-node");
+
+const msalConfig = {
+    auth: {
+        clientId: "your_client_id_here",
+        authority: "your_authority_here",
+    }
+};
+
+const pca = new msal.PublicClientApplication(msalConfig);
+
+// For testing, enter your username and password below.
+// In production, replace this with a UI prompt instead.
+const usernamePasswordRequest = {
+    scopes: ["user.read"],
+    username: "", // Add your username here
+    password: "", // Add your password here
+};
+
+pca.acquireTokenByUsernamePassword(usernamePasswordRequest).then((response) => {
+    console.log("acquired token by password grant");
+}).catch((error) => {
+    console.log(error);
+});
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 此代码摘录自 [MSAL Python 开发示例](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample/)。
 
-```Python
+```python
 # Create a preferably long-lived app instance which maintains a token cache.
 app = msal.PublicClientApplication(
     config["client_id"], authority=config["authority"],
@@ -912,17 +1070,13 @@ if not result:
         config["username"], config["password"], scopes=config["scope"])
 ```
 
-# <a name="macos"></a>[macOS](#tab/macOS)
-
-适用于 macOS 的 MSAL 不支持此流。
-
 ---
 
 ## <a name="command-line-tool-without-a-web-browser"></a>命令行工具（不使用 Web 浏览器）
 
 ### <a name="device-code-flow"></a>设备代码流
 
-如果你正在编写的命令行工具没有 web 控件，并且你不能或不想使用以前的流，请使用设备代码流。
+如果你正在编写一个不包含 Web 控件的命令行工具，并且无法或者不想要使用前面所述的流，请使用设备代码流。
 
 使用 Azure AD 的交互式身份验证需要 Web 浏览器。 有关详细信息，请参阅 [Web 浏览器的用法](https://aka.ms/msal-net-uses-web-browser)。 为了对不提供 Web 浏览器的设备或操作系统上的用户进行身份验证，设备代码流可让用户使用另一台设备（例如某台计算机或手机）以交互方式登录。 通过使用设备代码流，应用程序将通过专为这些设备或操作系统设计的两步过程获取令牌。 此类应用程序的例子包括 iOT 上运行的应用程序或命令行工具 (CLI)。 其思路是：
 
@@ -1094,11 +1248,44 @@ private static IAuthenticationResult acquireTokenDeviceCode() throws Exception {
 }
 ```
 
+# <a name="macos"></a>[macOS](#tab/macOS)
+
+此流不适用于 macOS。
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+此代码摘录自 [MSAL Node 开发示例](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-node-samples/device-code)。
+
+```javascript
+const msal = require('@azure/msal-node');
+
+const msalConfig = {
+    auth: {
+        clientId: "your_client_id_here",
+        authority: "your_authority_here",
+    }
+};
+
+const pca = new msal.PublicClientApplication(msalConfig);
+
+const deviceCodeRequest = {
+    deviceCodeCallback: (response) => (console.log(response.message)),
+    scopes: ["user.read"],
+    timeout: 20,
+};
+
+pca.acquireTokenByDeviceCode(deviceCodeRequest).then((response) => {
+    console.log(JSON.stringify(response));
+}).catch((error) => {
+    console.log(JSON.stringify(error));
+});
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 此代码摘录自 [MSAL Python 开发示例](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample/)。
 
-```Python
+```python
 # Create a preferably long-lived app instance which maintains a token cache.
 app = msal.PublicClientApplication(
     config["client_id"], authority=config["authority"],
@@ -1144,10 +1331,6 @@ if not result:
         # or you may even turn off the blocking behavior,
         # and then keep calling acquire_token_by_device_flow(flow) in your own customized loop
 ```
-
-# <a name="macos"></a>[macOS](#tab/macOS)
-
-此流不适用于 macOS。
 
 ---
 
@@ -1274,7 +1457,6 @@ app = PublicClientApplicationBuilder.Create(clientId)
 FilesBasedTokenCacheHelper.EnableSerialization(app.UserTokenCache,
                                                unifiedCacheFileName,
                                                adalV3cacheFileName);
-
 ```
 
 这一次，帮助程序类类似于以下代码：

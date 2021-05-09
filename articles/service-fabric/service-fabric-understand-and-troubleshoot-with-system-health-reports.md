@@ -3,27 +3,24 @@ title: 使用系统运行状况报告进行故障排除
 description: 介绍了 Azure Service Fabric 组件发送的运行状况报告，以及如何使用这些报告来排查群集或应用程序问题
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.openlocfilehash: 483483746b2cce66588e9481bca7e0de391070b8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c9819129509a76350394319e9968fc1e97f53c69
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625885"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165040"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>使用系统运行状况报告进行故障排除
+
 Azure Service Fabric 组件提供有关现成群集中所有实体的系统运行状况报告。 [运行状况存储](service-fabric-health-introduction.md#health-store)根据系统报告来创建和删除实体。 它还会将这些实体组织为层次结构以捕获实体交互。
 
 > [!NOTE]
 > 请阅读 [Service Fabric 运行状况模型](service-fabric-health-introduction.md)以了解与运行状况相关的概念。
-> 
-> 
 
 使用系统运行状况报告，不仅可以查看群集和应用程序功能，还能标记问题。 对于应用程序和服务，系统运行状况报告从 Service Fabric 的角度验证实体得到实现并且正常运行。 报告既不监视服务的业务逻辑运行状况，也不检测无响应的进程。 用户服务可以使用其逻辑的特有信息来丰富运行状况数据。
 
 > [!NOTE]
 > 用户监视程序发送的运行状况报告仅在系统组件创建实体后  才可见。 如果实体遭到删除，运行状况存储会自动删除与实体相关联的所有运行状况报告。 这同样适用于创建实体的新实例。 例如，创建新的有状态持久化服务副本实例时， 所有与旧实例关联的报告都会从存储中删除并清除。
-> 
-> 
 
 按来源标识系统组件报告，并以“**System**”。 前缀开头。 监视器不能与源使用相同的前缀，因为如果参数无效，报告会被拒绝。
 
@@ -31,13 +28,13 @@ Azure Service Fabric 组件提供有关现成群集中所有实体的系统运�
 
 > [!NOTE]
 > Service Fabric 会继续添加报告，让用户更清楚地了解群集和应用程序中的情况。 还可在现有报告中添加更多详细信息，以帮助用户更快地排查问题。
-> 
-> 
 
 ## <a name="cluster-system-health-reports"></a>群集系统运行状况报告
+
 群集运行状况实体在运行状况存储中自动创建。 如果一切运行正常，则不提供系统报告。
 
 ### <a name="neighborhood-loss"></a>邻居丢失
+
 **System.Federation** 在检测到邻居丢失时会报告一个错误。 报告来自于单个节点，并且在属性名称中包含节点 ID。 如果整个 Service Fabric 环缺少一个邻近区域，通常可以有两个事件，分别代表间隙报告的两端。 如果有多个邻居丢失，则会有更多事件。
 
 报告将全局租用超时指定为生存时间 (TTL)。 只要条件仍处于活动状态，就会在每半个 TTL 期间重新发送一次报告。 事件过期后会被自动删除。 过期后删除行为可以确保从运行状况存储中正常清理报告，即使在报告节点停止运行时，也不例外。
@@ -62,7 +59,8 @@ Azure Service Fabric 组件提供有关现成群集中所有实体的系统运�
 * **后续步骤**：调查节点之间的网络连接，以及在运行状况报告的说明中列出的任何特定节点的状态。
 
 ### <a name="seed-node-status"></a>发送节点状态
-**System.FM** 会在某些种子节点运行不正常的情况下报告群集级别的警告。 种子节点可以维护基础群集的可用性。 这些节点有助于通过在某些类型的网络故障期间，与其他节点建立租约并充当决胜属性来确保群集保持启动状态。 如果群集中的大部分种子节点故障并且无法将其恢复，则群集会自动关闭。 
+
+**System.FM** 会在某些种子节点运行不正常的情况下报告群集级别的警告。 种子节点可以维护基础群集的可用性。 这些节点有助于通过在某些类型的网络故障期间，与其他节点建立租约并充当决胜属性来确保群集保持启动状态。 如果群集中的大部分种子节点故障并且无法将其恢复，则群集会自动关闭。
 
 如果种子节点的状态为“停机”、“已删除”或“未知”，则表明该节点运行不正常。
 种子节点状态的警告报告会列出所有运行不正常的种子节点及详细信息。
@@ -80,18 +78,20 @@ Azure Service Fabric 组件提供有关现成群集中所有实体的系统运�
 
 ```powershell
 PS C:\> Send-ServiceFabricClusterHealthReport -SourceId "System.FM" -HealthProperty "SeedNodeStatus" -HealthState OK
+```
 
-## Node system health reports
-System.FM, which represents the Failover Manager service, is the authority that manages information about cluster nodes. Each node should have one report from System.FM showing its state. The node entities are removed when the node state is removed. For more information, see [RemoveNodeStateAsync](/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).
+## <a name="node-system-health-reports"></a>节点系统运行状况报告
 
-### Node up/down
-System.FM reports as OK when the node joins the ring (it's up and running). It reports an error when the node departs the ring (it's down, either for upgrading or simply because it has failed). The health hierarchy built by the health store acts on deployed entities in correlation with System.FM node reports. It considers the node a virtual parent of all deployed entities. The deployed entities on that node are exposed through queries if the node is reported as up by System.FM, with the same instance as the instance associated with the entities. When System.FM reports that the node is down or restarted, as a new instance, the health store automatically cleans up the deployed entities that can exist only on the down node or on the previous instance of the node.
+System.FM 表示“故障转移管理器”服务，是管理群集节点相关信息的主管服务。 每个节点应该都有一个来自 System.FM 的报告，显示其状态。 节点实体随节点状态一起删除。 有关详细信息，请参阅 [RemoveNodeStateAsync](/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync)。
 
-* **SourceId**: System.FM
-* **Property**: State.
-* **Next steps**: If the node is down for an upgrade, it should come back up after it's been upgraded. In this case, the health state should switch back to OK. If the node doesn't come back or it fails, the problem needs more investigation.
+### <a name="node-updown"></a>节点开启/节点关闭
+节点加入环时，System.FM 报告为正常（节点已启动且正在运行）。 节点离开环时，则报告错误（节点已关闭进行升级，或只是发生故障）。 运行状况存储生成的运行状况层次结构对与 System.FM 节点报告相关的已部署实体起作用。 它将节点视为所有已部署实体的虚拟父项。 如果 System.FM 报告节点已启动并且其实例与实体关联的实例相同，则可以通过查询公开该节点上已部署的实体。 如果 System.FM 报告节点停止运行或重启（作为新实例），运行状况存储会自动清理只能位于停止运行的节点或节点的上一实例上的已部署实体。
 
-The following example shows the System.FM event with a health state of OK for node up:
+* **SourceId**：System.FM
+* **属性**：State。
+* **后续步骤**：如果节点是因为升级而停止运行，应该会在升级后恢复运行。 在这种情况下，运行状况应切换回正常。 如果节点没有重新启动或发生故障，则需要进一步调查问题。
+
+以下示例显示 System.FM 事件，且节点正常运行时的运行状况状态为正常：
 
 ```powershell
 PS C:\> Get-ServiceFabricNodeHealth  _Node_0
@@ -112,8 +112,8 @@ HealthEvents          :
                         Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-
 ### <a name="certificate-expiration"></a>证书过期日期
+
 **System.FabricNode** 在节点使用的证书即将过期时报告警告。 每个节点有三个证书：**Certificate_cluster**、**Certificate_server** 和 **Certificate_default_client**。 如果过期时间至少超过两周，报告运行状况是正常。 如果过期时间在两周内，则报告类型为警告。 这些事件的 TTL 是无限的，节点离开群集时，它们会被删除。
 
 * **SourceId**：System.FabricNode
@@ -181,13 +181,12 @@ System.FM 表示故障转移管理器服务，是管理服务相关信息的主�
 ```powershell
 PS C:\> Get-ServiceFabricServiceHealth fabric:/WordCount/WordCountWebService -ExcludeHealthStatistics
 
-
 ServiceName           : fabric:/WordCount/WordCountWebService
 AggregatedHealthState : Ok
 PartitionHealthStates : 
                         PartitionId           : 8bbcd03a-3a53-47ec-a5f1-9b77f73c53b2
                         AggregatedHealthState : Ok
-                        
+
 HealthEvents          : 
                         SourceId              : System.FM
                         Property              : State
@@ -221,15 +220,15 @@ System.FM 表示故障转移管理器服务，是管理服务分区相关信息�
 
 * **SourceId**：System.FM
 * **属性**：State。
-* **后续步骤**：如果运行状况不正常，则有可能某些副本没有正确创建、打开或提升为主副本或次要副本。 
+* **后续步骤**：如果运行状况不正常，则有可能某些副本没有正确创建、打开或提升为主副本或次要副本。
 
 如果说明描述仲裁丢失，请检查并备份已停止运行副本的详细运行状况报告，这有助于让分区重新上线。
 
 如果说明描述分区无法运行[重新配置](service-fabric-concepts-reconfiguration.md)，主要副本的运行状况报告还提供其他信息。
 
-对于其他 System.FM 运行状况报告，还有其他系统组件中副本、分区或服务的相关报告。 
+对于其他 System.FM 运行状况报告，还有其他系统组件中副本、分区或服务的相关报告。
 
-下面的示例展示了其中一些报告。 
+下面的示例展示了其中一些报告。
 
 以下示例显示了一个运行状况良好的分区：
 
@@ -258,12 +257,11 @@ HealthEvents          :
 ```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricPartitionHealth -ReplicasFilter None -ExcludeHealthStatistics
 
-
 PartitionId           : af2e3e44-a8f8-45ac-9f31-4093eb897600
 AggregatedHealthState : Warning
 UnhealthyEvaluations  : 
                         Unhealthy event: SourceId='System.FM', Property='State', HealthState='Warning', ConsiderWarningAsError=false.
-                        
+
 ReplicaHealthStates   : None
 HealthEvents          : 
                         SourceId              : System.FM
@@ -281,11 +279,11 @@ HealthEvents          :
                           N/S Ready _Node_1 131444422293118720
                           N/P Ready _Node_0 131444422293118721
                           (Showing 5 out of 5 replicas. Total available replicas: 5)
-                        
+
                         RemoveWhenExpired     : False
                         IsExpired             : False
                         Transitions           : Error->Warning = 7/14/2017 4:55:44 PM, LastOk = 1/1/0001 12:00:00 AM
-                        
+
                         SourceId              : System.PLB
                         Property              : ServiceReplicaUnplacedHealth_Secondary_af2e3e44-a8f8-45ac-9f31-4093eb897600
                         HealthState           : Warning
@@ -298,25 +296,24 @@ HealthEvents          :
                         TargetReplicaSetSize: 7
                         Placement Constraint: N/A
                         Parent Service: N/A
-                        
+
                         Constraint Elimination Sequence:
                         Existing Secondary Replicas eliminated 4 possible node(s) for placement -- 1/5 node(s) remain.
                         Existing Primary Replica eliminated 1 possible node(s) for placement -- 0/5 node(s) remain.
-                        
+
                         Nodes Eliminated By Constraints:
-                        
+
                         Existing Secondary Replicas -- Nodes with Partition's Existing Secondary Replicas/Instances:
                         --
                         FaultDomain:fd:/4 NodeName:_Node_4 NodeType:NodeType4 UpgradeDomain:4 UpgradeDomain: ud:/4 Deactivation Intent/Status: None/None
                         FaultDomain:fd:/3 NodeName:_Node_3 NodeType:NodeType3 UpgradeDomain:3 UpgradeDomain: ud:/3 Deactivation Intent/Status: None/None
                         FaultDomain:fd:/2 NodeName:_Node_2 NodeType:NodeType2 UpgradeDomain:2 UpgradeDomain: ud:/2 Deactivation Intent/Status: None/None
                         FaultDomain:fd:/1 NodeName:_Node_1 NodeType:NodeType1 UpgradeDomain:1 UpgradeDomain: ud:/1 Deactivation Intent/Status: None/None
-                        
+
                         Existing Primary Replica -- Nodes with Partition's Existing Primary Replica or Secondary Replicas:
                         --
                         FaultDomain:fd:/0 NodeName:_Node_0 NodeType:NodeType0 UpgradeDomain:0 UpgradeDomain: ud:/0 Deactivation Intent/Status: None/None
-                        
-                        
+
                         RemoveWhenExpired     : True
                         IsExpired             : False
                         Transitions           : Error->Warning = 7/14/2017 4:56:14 PM, LastOk = 1/1/0001 12:00:00 AM
@@ -325,7 +322,7 @@ PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | select M
 
 MinReplicaSetSize TargetReplicaSetSize
 ----------------- --------------------
-                2                    7                        
+                2                    7
 
 PS C:\> @(Get-ServiceFabricNode).Count
 5
@@ -334,15 +331,14 @@ PS C:\> @(Get-ServiceFabricNode).Count
 下面的示例展示了无法运行重新配置（原因是用户不履行 RunAsync  方法中的取消令牌）的分区运行状况。 调查标记为主要 (P) 的任何副本的运行状况报告有助于深入了解问题。
 
 ```powershell
-PS C:\utilities\ServiceFabricExplorer\ClientPackage\lib> Get-ServiceFabricPartitionHealth 0e40fd81-284d-4be4-a665-13bc5a6607ec -ExcludeHealthStatistics 
-
+PS C:\utilities\ServiceFabricExplorer\ClientPackage\lib> Get-ServiceFabricPartitionHealth 0e40fd81-284d-4be4-a665-13bc5a6607ec -ExcludeHealthStatistics
 
 PartitionId           : 0e40fd81-284d-4be4-a665-13bc5a6607ec
 AggregatedHealthState : Warning
 UnhealthyEvaluations  : 
                         Unhealthy event: SourceId='System.FM', Property='State', HealthState='Warning', 
                         ConsiderWarningAsError=false.
-                                               
+
 HealthEvents          : 
                         SourceId              : System.FM
                         Property              : State
@@ -356,14 +352,15 @@ HealthEvents          :
                           P/S Ready Node1 131482789658160654
                           S/P Ready Node2 131482789688598467
                           S/S Ready Node3 131482789688598468
-                          (Showing 3 out of 3 replicas. Total available replicas: 3)                        
-                        
+                          (Showing 3 out of 3 replicas. Total available replicas: 3)
+
                         For more information see: https://aka.ms/sfhealth
                         RemoveWhenExpired     : False
                         IsExpired             : False
                         Transitions           : Ok->Warning = 8/27/2017 3:43:32 AM, LastError = 1/1/0001 12:00:00 AM
 ```
-此运行状况报告显示正在执行重新配置的分区的副本状态： 
+
+此运行状况报告显示正在执行重新配置的分区的副本状态：
 
 ```
   P/S Ready Node1 131482789658160654
@@ -420,7 +417,7 @@ HealthEvents          :
 ### <a name="replicaopenstatus-replicaclosestatus-replicachangerolestatus"></a>ReplicaOpenStatus, ReplicaCloseStatus, ReplicaChangeRoleStatus
 此属性用于在用户尝试打开副本、关闭副本或将副本从一个角色转换为另一个角色时，指示警告或故障。 有关详细信息，请参阅[副本生命周期](service-fabric-concepts-replica-lifecycle.md)。 这些故障可能是 API 调用抛出的异常，也可能是在这段时间内服务主机进程发生的故障。 对于因 C# 代码中的 API 调用而发生的故障，Service Fabric 会在运行状况报告中添加异常和堆栈跟踪。
 
-这些运行状况警告是在本地重试操作数次（具体取决于策略）后发出的。 Service Fabric 重试操作的次数不得超过最大阈值。 达到最大阈值后，它可能会尝试采取措施来纠正这种情况。 这样的尝试可能会导致这些警告遭到清除，因为它放弃对此节点执行操作。 例如，如果副本无法在节点上打开，Service Fabric 会发出运行状况警告。 如果副本仍无法打开，Service Fabric 会进行自我修复。 此操作可能会涉及在另一个节点上尝试同一操作。 该尝试会导致针对此副本发出的警告遭到清除。 
+这些运行状况警告是在本地重试操作数次（具体取决于策略）后发出的。 Service Fabric 重试操作的次数不得超过最大阈值。 达到最大阈值后，它可能会尝试采取措施来纠正这种情况。 这样的尝试可能会导致这些警告遭到清除，因为它放弃对此节点执行操作。 例如，如果副本无法在节点上打开，Service Fabric 会发出运行状况警告。 如果副本仍无法打开，Service Fabric 会进行自我修复。 此操作可能会涉及在另一个节点上尝试同一操作。 该尝试会导致针对此副本发出的警告遭到清除。
 
 * **SourceId**：System.RA
 * **属性**：**ReplicaOpenStatus**、**ReplicaCloseStatus** 和 **ReplicaChangeRoleStatus**。
@@ -431,14 +428,13 @@ HealthEvents          :
 ```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 337cf1df-6cab-4825-99a9-7595090c0b1b -ReplicaOrInstanceId 131483509874784794
 
-
 PartitionId           : 337cf1df-6cab-4825-99a9-7595090c0b1b
 ReplicaId             : 131483509874784794
 AggregatedHealthState : Warning
 UnhealthyEvaluations  : 
                         Unhealthy event: SourceId='System.RA', Property='ReplicaOpenStatus', HealthState='Warning', 
                         ConsiderWarningAsError=false.
-                        
+
 HealthEvents          : 
                         SourceId              : System.RA
                         Property              : ReplicaOpenStatus
@@ -474,7 +470,7 @@ Exception has been thrown by the target of an invocation.
     For more information see: https://aka.ms/sfhealth
                         RemoveWhenExpired     : False
                         IsExpired             : False
-                        Transitions           : Error->Warning = 8/27/2017 11:43:21 PM, LastOk = 1/1/0001 12:00:00 AM                        
+                        Transitions           : Error->Warning = 8/27/2017 11:43:21 PM, LastOk = 1/1/0001 12:00:00 AM
 ```
 
 下面的示例展示了在关闭期间不断发生故障的副本：
@@ -482,14 +478,13 @@ Exception has been thrown by the target of an invocation.
 ```powershell
 C:>Get-ServiceFabricReplicaHealth -PartitionId dcafb6b7-9446-425c-8b90-b3fdf3859e64 -ReplicaOrInstanceId 131483565548493142
 
-
 PartitionId           : dcafb6b7-9446-425c-8b90-b3fdf3859e64
 ReplicaId             : 131483565548493142
 AggregatedHealthState : Warning
 UnhealthyEvaluations  : 
                         Unhealthy event: SourceId='System.RA', Property='ReplicaCloseStatus', HealthState='Warning', 
                         ConsiderWarningAsError=false.
-                        
+
 HealthEvents          : 
                         SourceId              : System.RA
                         Property              : ReplicaCloseStatus
@@ -500,7 +495,7 @@ HealthEvents          :
                         TTL                   : Infinite
                         Description           : Replica had multiple failures during close on _Node_1. The application 
                         host has crashed.
-                        
+
                         For more information see: https://aka.ms/sfhealth
                         RemoveWhenExpired     : False
                         IsExpired             : False
@@ -508,6 +503,7 @@ HealthEvents          :
 ```
 
 ### <a name="reconfiguration"></a>重新配置
+
 此属性用于指示执行[重新配置](service-fabric-concepts-reconfiguration.md)的副本何时检测到重新配置已停止或受阻。 此运行状况报告可能针对的是当前角色为主要的副本，交换主要重新配置的情况除外，在这种情况下，此报告可能针对的是从主要降级为活动次要的副本。
 
 重新配置可能会因以下原因之一而无法运行：
@@ -527,14 +523,13 @@ HealthEvents          :
 ```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 9a0cedee-464c-4603-abbc-1cf57c4454f3 -ReplicaOrInstanceId 131483600074836703
 
-
 PartitionId           : 9a0cedee-464c-4603-abbc-1cf57c4454f3
 ReplicaId             : 131483600074836703
 AggregatedHealthState : Warning
 UnhealthyEvaluations  : 
                         Unhealthy event: SourceId='System.RA', Property='Reconfiguration', HealthState='Warning', 
                         ConsiderWarningAsError=false.
-                        
+
 HealthEvents          : 
                         SourceId              : System.RA
                         Property              : Reconfiguration
@@ -544,25 +539,24 @@ HealthEvents          :
                         ReceivedAt            : 8/28/2017 2:13:57 AM
                         TTL                   : Infinite
                         Description           : Reconfiguration is stuck. Waiting for response from the local replica
-                        
+
                         For more information see: https://aka.ms/sfhealth
                         RemoveWhenExpired     : False
                         IsExpired             : False
                         Transitions           : Error->Warning = 8/28/2017 2:13:57 AM, LastOk = 1/1/0001 12:00:00 AM
 ```
 
-下面的示例展示了重新配置因等待两个远程副本的响应而无法运行的运行状况报告。 在此示例中，分区中有三个副本，包括当前的主要副本。 
+下面的示例展示了重新配置因等待两个远程副本的响应而无法运行的运行状况报告。 在此示例中，分区中有三个副本，包括当前的主要副本。
 
-```Powershell
+```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId  579d50c6-d670-4d25-af70-d706e4bc19a2 -ReplicaOrInstanceId 131483956274977415
-
 
 PartitionId           : 579d50c6-d670-4d25-af70-d706e4bc19a2
 ReplicaId             : 131483956274977415
 AggregatedHealthState : Warning
 UnhealthyEvaluations  : 
                         Unhealthy event: SourceId='System.RA', Property='Reconfiguration', HealthState='Warning', ConsiderWarningAsError=false.
-                        
+
 HealthEvents          : 
                         SourceId              : System.RA
                         Property              : Reconfiguration
@@ -572,18 +566,18 @@ HealthEvents          :
                         ReceivedAt            : 8/28/2017 12:14:07 PM
                         TTL                   : Infinite
                         Description           : Reconfiguration is stuck. Waiting for response from 2 replicas
-                        
+
                         Pending Replicas: 
                         P/I Down 40 131483956244554282
                         S/S Down 20 131483956274972403
-                        
+
                         For more information see: https://aka.ms/sfhealth
                         RemoveWhenExpired     : False
                         IsExpired             : False
                         Transitions           : Error->Warning = 8/28/2017 12:07:37 PM, LastOk = 1/1/0001 12:00:00 AM
 ```
 
-此运行状况报告显示重新配置因等待两个副本的响应而无法运行： 
+此运行状况报告显示重新配置因等待两个副本的响应而无法运行：
 
 ```
     P/I Down 40 131483956244554282
@@ -598,7 +592,7 @@ HealthEvents          :
 - 副本 ID
 
 若要取消阻止重新配置：
-- 应启动 down  副本。 
+- 应启动 down  副本。
 - inbuild  副本应完成生成，并切换到就绪状态。
 
 ### <a name="slow-service-api-call"></a>服务 API 调用缓慢
@@ -613,13 +607,12 @@ HealthEvents          :
 ```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 5f6060fb-096f-45e4-8c3d-c26444d8dd10 -ReplicaOrInstanceId 131483966141404693
 
-
 PartitionId           : 5f6060fb-096f-45e4-8c3d-c26444d8dd10
 ReplicaId             : 131483966141404693
 AggregatedHealthState : Warning
 UnhealthyEvaluations  : 
                         Unhealthy event: SourceId='System.RA', Property='Reconfiguration', HealthState='Warning', ConsiderWarningAsError=false.
-                        
+
 HealthEvents          :                         
                         SourceId              : System.RAP
                         Property              : IStatefulServiceReplica.ChangeRole(S)Duration
@@ -632,7 +625,6 @@ HealthEvents          :
                         RemoveWhenExpired     : False
                         IsExpired             : False
                         Transitions           : Error->Warning = 8/28/2017 12:24:56 PM, LastOk = 1/1/0001 12:00:00 AM
-                        
 ```
 
 属性和文本指明了哪些 API 无法运行。 对不同卡滞 API 采取的后续步骤是不同的。 IStatefulServiceReplica  或 IStatelessServiceInstance  上的任何 API 通常都是服务代码中的 bug。 下面的部分介绍了如何将上述内容转换为 [Reliable Services 模型](service-fabric-reliable-services-lifecycle.md)：
@@ -677,8 +669,6 @@ System.Replicator  报告警告。 在主要副本上，由于一个或多个次
 
 > [!NOTE]
 > 命名服务会将服务名称解析为群集中的某个位置。 用户可以使用它来管理服务名称和属性。 它是 Service Fabric 分区持久化服务。 其中一个分区代表“颁发机构所有者”  ，内含与所有 Service Fabric 名称和服务相关的元数据。 Service Fabric 名称映射到不同的分区，这些分区称为“名称所有者”  分区，因此服务是可扩展的。 有关详细信息，请参阅[命名服务](service-fabric-architecture.md)。
-> 
-> 
 
 如果命名操作耗时超出预期，则会在为操作提供服务的命名服务分区的主要副本上使用警告报告对操作进行标记。 如果操作成功完成，将会清除警告。 如果操作在完成时出现错误，则运行状况报告中会包括有关该错误的详细信息。
 
@@ -756,7 +746,7 @@ DeployedServicePackageHealthStates :
                                      ServicePackageActivationId : 
                                      NodeName              : _Node_1
                                      AggregatedHealthState : Ok
-                                     
+
 HealthEvents                       : 
                                      SourceId              : System.Hosting
                                      Property              : Activation
@@ -805,7 +795,6 @@ HealthEvents                       :
 ```powershell
 PS C:\> Get-ServiceFabricDeployedServicePackageHealth -NodeName _Node_1 -ApplicationName fabric:/WordCount -ServiceManifestName WordCountServicePkg
 
-
 ApplicationName            : fabric:/WordCount
 ServiceManifestName        : WordCountServicePkg
 ServicePackageActivationId : 
@@ -823,7 +812,7 @@ HealthEvents               :
                              RemoveWhenExpired     : False
                              IsExpired             : False
                              Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
-                             
+
                              SourceId              : System.Hosting
                              Property              : CodePackageActivation:Code:EntryPoint
                              HealthState           : Ok
@@ -835,7 +824,7 @@ HealthEvents               :
                              RemoveWhenExpired     : False
                              IsExpired             : False
                              Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
-                             
+
                              SourceId              : System.Hosting
                              Property              : ServiceTypeRegistration:WordCountServiceType
                              HealthState           : Ok
@@ -850,6 +839,7 @@ HealthEvents               :
 ```
 
 ### <a name="download"></a>下载
+
 如果服务包下载失败，System.Hosting 报告错误。
 
 * **SourceId**：System.Hosting
@@ -857,6 +847,7 @@ HealthEvents               :
 * **后续步骤**：调查在节点上下载失败的原因。
 
 ### <a name="upgrade-validation"></a>升级验证
+
 如果升级期间验证失败或节点上的升级失败，System.Hosting 报告错误。
 
 * **SourceId**：System.Hosting
@@ -864,6 +855,7 @@ HealthEvents               :
 * **说明**：指向遇到的错误。
 
 ### <a name="undefined-node-capacity-for-resource-governance-metrics"></a>资源调控指标的节点容量未定义
+
 如果未在群集清单中定义节点容量，且自动检测被配置为已关闭，则 System.Hosting 将报告一个警告。 只要使用[资源调控](service-fabric-resource-governance.md)的服务包在指定节点上注册，Service Fabric 就会引发一个运行状况警报。
 
 * **SourceId**：System.Hosting
@@ -871,6 +863,7 @@ HealthEvents               :
 * **后续步骤**：要解决此问题，首选方法是更改群集清单以启用可用资源的自动检测功能。 另一种方法是使用为这些指标正确指定的节点容量来更新群集清单。
 
 ## <a name="next-steps"></a>后续步骤
+
 * [查看 Service Fabric 运行状况报告](service-fabric-view-entities-aggregated-health.md)
 
 * [如何报告和检查服务运行状况](service-fabric-diagnostics-how-to-report-and-check-service-health.md)

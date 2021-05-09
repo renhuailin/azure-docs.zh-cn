@@ -3,12 +3,13 @@ title: 将资源部署到管理组
 description: 介绍如何通过 Azure 资源管理器模板在管理组范围部署资源。
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 74e00921a1170a7750f4a2d239bb778150ac2cae
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b228d44d13b5647c60af7383be7fa265d87534f3
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781930"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319226"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>使用 ARM 模板进行管理组部署
 

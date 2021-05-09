@@ -6,15 +6,15 @@ ms.author: mimckitt
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: maintenance-control
-ms.date: 11/12/2020
+ms.date: 04/26/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: ec8d211bd25eb04f9e000af950cea9a28a0d1874
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 076c007bd0a2fb2e70ad84dfd6a825030a22b15a
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762832"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015224"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>虚拟机规模集的计划内维护通知
 
@@ -112,12 +112,12 @@ Azure 通过向订阅所有者和共有者组发送电子邮件来传达计划�
  
 ## <a name="check-maintenance-status-by-using-powershell"></a>使用 PowerShell 查看维护状态
 
-可以使用 Azure PowerShell 查看虚拟机规模集中的 VM 计划何时维护。 使用 `-InstanceView` 参数时可通过使用 [Get-AzVmss](/powershell/module/az.compute/get-azvmss) cmdlet 获得计划内维护信息。
+可以使用 Azure PowerShell 查看虚拟机规模集中的 VM 计划何时维护。 使用 `-InstanceView` 参数时，可通过使用[Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) cmdlet 获得计划内维护信息。
  
 仅当有计划内维护时，才会返回维护信息。 如果未计划影响 VM 实例的维护，则 cmdlet 不会返回任何维护信息。 
 
 ```powershell
-Get-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -InstanceView
+Get-AzVmssVm -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -InstanceView
 ```
 
 在 MaintenanceRedeployStatus 下返回以下属性  ： 
@@ -135,10 +135,10 @@ Get-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -In
 
 ### <a name="start-maintenance-on-your-vm-instance-by-using-powershell"></a>使用 PowerShell 在 VM 实例上启动维护
 
-如果 IsCustomerInitiatedMaintenanceAllowed 设置为 true，则可以在 VM 上启动维护   。 使用含 `-PerformMaintenance` 参数的 [Set-AzVmss](/powershell/module/az.compute/set-azvmss) cmdlet。
+如果 IsCustomerInitiatedMaintenanceAllowed 设置为 true，则可以在 VM 上启动维护   。 使用含 `-PerformMaintenance` 参数的 [Set-AzVmssVM](/powershell/module/az.compute/set-azvmssvm) cmdlet。
 
 ```powershell
-Set-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -PerformMaintenance 
+Set-AzVmssVM -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -PerformMaintenance 
 ```
 
 ## <a name="check-maintenance-status-by-using-the-cli"></a>使用 CLI 查看维护状态

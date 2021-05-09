@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b294a56a523adaa2629a5d1e72a7ccef532956e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b81e94fddd428da97429fb280f09a16a77229235
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98753285"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165076"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>调用 Web API 的 Web 应用：调用 Web API
 
@@ -39,7 +39,7 @@ ms.locfileid: "98753285"
 
 你要调用 Microsoft Graph。 在此方案中，你已按[代码配置](scenario-web-app-call-api-app-configuration.md#option-1-call-microsoft-graph)中的指定将 `AddMicrosoftGraph` 添加到 Startup.cs 中，现可直接将 `GraphServiceClient` 注入控制器或页构造函数中，以便在操作中使用。 以下示例 Razor 页面显示已登录用户的照片。
 
-```CSharp
+```csharp
 [Authorize]
 [AuthorizeForScopes(Scopes = new[] { "user.read" })]
 public class IndexModel : PageModel
@@ -75,7 +75,7 @@ public class IndexModel : PageModel
 
 你想要调用 Microsoft Graph 以外的 Web API。 在这种情况下，你已按[代码配置](scenario-web-app-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph)中的指定将 `AddDownstreamWebApi` 添加到 Startup.cs 中，现可直接将 `IDownstreamWebApi` 服务注入控制器或页构造函数中并在操作中使用它：
 
-```CSharp
+```csharp
 [Authorize]
 [AuthorizeForScopes(ScopeKeySection = "TodoList:Scopes")]
 public class TodoListController : Controller
@@ -103,7 +103,7 @@ public class TodoListController : Controller
 
 `CallWebApiForUserAsync` 还具有强类型的泛型重写，使你能够直接接收对象。 例如，下面的方法收到一个 `Todo` 实例，该实例是 Web API 返回的 JSON 的强类型表示形式。
 
-```CSharp
+```csharp
     // GET: TodoList/Details/5
     public async Task<ActionResult> Details(int id)
     {
@@ -125,30 +125,31 @@ public class TodoListController : Controller
 
 获取令牌后，将其用作持有者令牌以调用下游 API（在本例中为 Microsoft Graph）。
 
- ```csharp
+```csharp
 public async Task<IActionResult> Profile()
 {
- // Acquire the access token.
- string[] scopes = new string[]{"user.read"};
- string accessToken = await tokenAcquisition.GetAccessTokenForUserAsync(scopes);
+  // Acquire the access token.
+  string[] scopes = new string[]{"user.read"};
+  string accessToken = await tokenAcquisition.GetAccessTokenForUserAsync(scopes);
 
- // Use the access token to call a protected web API.
- HttpClient client = new HttpClient();
- client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+  // Use the access token to call a protected web API.
+  HttpClient client = new HttpClient();
+  client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
   var response = await httpClient.GetAsync($"{webOptions.GraphApiUrl}/beta/me");
 
   if (response.StatusCode == HttpStatusCode.OK)
   {
-   var content = await response.Content.ReadAsStringAsync();
+    var content = await response.Content.ReadAsStringAsync();
 
-   dynamic me = JsonConvert.DeserializeObject(content);
-   ViewData["Me"] = me;
+    dynamic me = JsonConvert.DeserializeObject(content);
+    ViewData["Me"] = me;
   }
 
   return View();
 }
 ```
+
 > [!NOTE]
 > 可以使用相同的原则来调用任何 Web API。
 >
@@ -156,7 +157,7 @@ public async Task<IActionResult> Profile()
 
 # <a name="java"></a>[Java](#tab/java)
 
-```Java
+```java
 private String getUserInfoFromGraph(String accessToken) throws Exception {
     // Microsoft Graph user endpoint
     URL url = new URL("https://graph.microsoft.com/v1.0/me");
@@ -177,12 +178,11 @@ private String getUserInfoFromGraph(String accessToken) throws Exception {
     JSONObject responseObject = HttpClientHelper.processResponse(responseCode, response);
     return responseObject.toString();
 }
-
 ```
 
 # <a name="python"></a>[Python](#tab/python)
 
-```Python
+```python
 @app.route("/graphcall")
 def graphcall():
     token = _get_token_from_cache(app_config.SCOPE)

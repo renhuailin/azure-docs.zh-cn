@@ -9,18 +9,18 @@ ms.date: 3/8/2021
 ms.author: mimckitt
 ms.reviewer: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 178a29ea37195ddd2013ca5220663a75132beb24
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b6ca281733a68b02c4fcfa6429da58e36661923
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555901"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164590"
 ---
 # <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-powershell"></a>使用 Azure PowerShell 在可用性集中创建和部署虚拟机
 
 本教程介绍如何使用可用性集提高虚拟机 (VM) 的可用性和可靠性。 可用性集确保在 Azure 上部署的 VM 能够跨群集中多个隔离的硬件节点分布。 
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建可用性集
@@ -96,6 +96,12 @@ for ($i=1; $i -le 2; $i++)
 如果转到“资源组” > “myResourceGroupAvailability” > “myAvailabilitySet”在门户中查看可用性集，应会看到 VM 在两个容错域和更新域之间的分布方式。
 
 ![门户中的可用性集](./media/tutorial-availability-sets/fd-ud.png)
+
+> [!NOTE]
+> 在某些情况下，同一可用性集中的 2 个 VM 可能共享同一个容错域。 可以通过进入您的可用性集并检查容错域列来确认这一点。 这可能是由于部署 VM 时采用了以下顺序而导致的：
+> 1. 部署第一个 VM
+> 1. 停止/解除分配第一个 VM
+> 1. 在这种情况下部署第二个 VM，可能会在与第一个 VM 相同的容错域中创建第二个 VM 的 OS 磁盘，因此第二个 VM 也将位于同一容错域中。 若要避免此问题，建议不要在两次部署之间停止/解除分配 VM。
 
 ## <a name="check-for-available-vm-sizes"></a>检查可用的 VM 大小 
 

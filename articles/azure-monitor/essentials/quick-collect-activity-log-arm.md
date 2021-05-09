@@ -2,16 +2,16 @@
 title: 使用 Azure 资源管理器模板将 Azure 活动日志发送到 Log Analytics 工作区
 description: 使用 ARM 模板创建 Log Analytics 工作区和诊断设置，以将活动日志发送到 Azure Monitor 日志。
 ms.topic: quickstart
-ms.custom: subject-armqs, devx-track-azurecli
+ms.custom: subject-armqs, devx-track-azurecli, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 56810cffcb9665810c452276be34e6924fd992b2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2e780ba2fea490a70b2f1c2ae2d2495bd9edff95
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033259"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108320108"
 ---
 # <a name="quickstart-send-azure-activity-log-to-log-analytics-workspace-using-an-arm-template"></a>快速入门：使用 ARM 模板将 Azure 活动日志发送到 Log Analytics 工作区
 

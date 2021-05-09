@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: how-to
 ms.date: 11/13/2020
 ms.author: juliako
-ms.openlocfilehash: b955c0f494b757fd29c400194ef8b11314a89a03
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f941d81df670f017d24a7c5011c55fcc4f082605
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96483604"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531573"
 ---
 # <a name="things-to-consider-when-using-video-indexer-at-scale"></a>大规模使用视频索引器时的注意事项
 
@@ -45,7 +45,7 @@ ms.locfileid: "96483604"
 
 :::image type="content" source="./media/considerations-when-use-at-scale/first-consideration.png" alt-text="大规模使用视频索引器的第一个注意事项":::
 
-使用 URL 上传视频时，只需提供媒体文件位置的路径，其余由视频索引器负责（查看[上传视频](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?&pattern=upload) API 中的 `videoUrl` 字段）。
+使用 URL 上传视频时，只需提供媒体文件位置的路径，其余由视频索引器负责（查看[上传视频](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video) API 中的 `videoUrl` 字段）。
 
 > [!TIP]
 > 使用上传视频 API 的 `videoUrl` 可选参数。
@@ -58,7 +58,7 @@ ms.locfileid: "96483604"
 
 在 Azure 媒体服务中，当你想要增加计算能力和并行度时，需要注意媒体[保留单位](../latest/concept-media-reserved-units.md) (RU)。 RU 是确定媒体处理任务的参数的计算单位。 RU 的数量会影响每个帐户中可并发处理的媒体任务的数量，其类型决定了处理速度，而一个视频的索引如何很复杂，则可能需要多个 RU。 如果你的 RU 处于繁忙状态，则新任务将保留在队列中，直到另一个资源可用。
 
-为了有效地操作并避免资源在某些时候处于空闲状态，视频索引器提供了一个自动缩放系统，该系统在需要较少处理时减少 RU，在高峰时间增加 RU（直到充分利用所有 RU）。 通过在帐户设置中[打开自动缩放](manage-account-connected-to-azure.md#autoscale-reserved-units)，或使用 [Update-Paid-Account-Azure-Media-Services API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Paid-Account-Azure-Media-Services?&pattern=update)，可启用此功能。
+为了有效地操作并避免资源在某些时候处于空闲状态，视频索引器提供了一个自动缩放系统，该系统在需要较少处理时减少 RU，在高峰时间增加 RU（直到充分利用所有 RU）。 通过在帐户设置中[打开自动缩放](manage-account-connected-to-azure.md#autoscale-reserved-units)，或使用 [Update-Paid-Account-Azure-Media-Services API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Paid-Account-Azure-Media-Services)，可启用此功能。
 
 :::image type="content" source="./media/considerations-when-use-at-scale/second-consideration.jpg" alt-text="大规模使用视频索引器的第二个注意事项":::
 
@@ -76,7 +76,7 @@ ms.locfileid: "96483604"
 
 建议不要从发送上传请求的那一刻起就一直轮询请求的状态，你可以添加一个[回叫 URL](upload-index-videos.md#callbackurl)，等待视频索引器更新。 一旦上传请求中存在任何状态更改，就会收到你指定的 URL 的 POST 通知。
 
-可以添加一个回叫 URL 作为[上传视频 API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?&pattern=upload) 的参数之一。 在 [GitHub 存储库](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/)上查看代码示例。 
+可以添加一个回叫 URL 作为[上传视频 API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video) 的参数之一。 在 [GitHub 存储库](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/)上查看代码示例。 
 
 对于回叫 URL，还可以使用 Azure Functions，这是一个可通过 HTTP 触发并实现后流的无服务器事件驱动平台。
 

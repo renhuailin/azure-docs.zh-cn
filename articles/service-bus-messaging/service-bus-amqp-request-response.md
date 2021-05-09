@@ -2,13 +2,13 @@
 title: Azure 服务总线中的 AMQP 1.0 请求/响应操作
 description: 本文定义了 Microsoft Azure 服务总线中基于 AMQP 请求/响应的操作列表。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: b845f4086ee1ac4fe868571c1754caf6d29b9021
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/26/2020
+ms.openlocfilehash: 2fd72e30d609d789d6513e666866878dfb4732d5
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88064408"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108016862"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Microsoft Azure 服务总线：基于请求-响应的操作中的 AMQP 1.0
 
@@ -17,11 +17,7 @@ ms.locfileid: "88064408"
 有关详细的线级 AMQP 1.0 协议指南（其中介绍了如何基于 OASIS AMQP 技术规范实现和建立服务总线），请参阅 [Azure 服务总线和事件中心的 AMQP 1.0 协议指南][AMQP 1.0 协议指南]。  
   
 ## <a name="concepts"></a>概念  
-  
-### <a name="entity-description"></a>实体描述  
-
-实体说明是指服务总线的 [QueueDescription 类](/dotnet/api/microsoft.servicebus.messaging.queuedescription)、[TopicDescription 类](/dotnet/api/microsoft.servicebus.messaging.topicdescription)或 [SubscriptionDescription 类](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription)对象。  
-  
+    
 ### <a name="brokered-message"></a>中转消息  
 
 表示映射到 AMQP 消息的服务总线中的消息。 [服务总线 AMQP 协议指南](service-bus-amqp-protocol-guide.md)中定义了映射。  
@@ -115,7 +111,7 @@ properties: {
   
 ### <a name="message-renew-lock"></a>消息续订锁  
 
-按实体描述中指定的时间延长消息锁。  
+根据在队列或订阅上设置的锁定持续时间延长消息的锁定时间。  
   
 #### <a name="request"></a>请求  
 
@@ -133,7 +129,7 @@ properties: {
 |`lock-tokens`|uuid 的数组|是|要续订的消息锁令牌。|  
 
 > [!NOTE]
-> 锁定标记是收到消息的 `DeliveryTag` 属性。 请参阅以下使用 [.NET SDK](https://github.com/Azure/azure-service-bus-dotnet/blob/6f144e91310dcc7bd37aba4e8aebd535d13fa31a/src/Microsoft.Azure.ServiceBus/Amqp/AmqpMessageConverter.cs#L336) 检索这些标记的示例。 该标记也可能以“x-opt-lock-token”的形式出现在“DeliveryAnnotations”中，但这不能得到保证，`DeliveryTag` 应该是首选。 
+> 此处的锁定令牌指收到的 AMQP 消息中的 `delivery-tag` 属性。 如果收到延迟消息且想要更新消息锁定，请使用消息上的 `lock-token` 属性而不是 `delivery-tag`。 
 > 
   
 #### <a name="response"></a>响应  
@@ -268,7 +264,7 @@ properties: {
   
 ### <a name="session-renew-lock"></a>会话续订锁  
 
-按实体描述中指定的时间延长消息锁。  
+根据在队列或订阅上设置的锁定持续时间延长消息的锁定时间。  
   
 #### <a name="request"></a>请求  
 
