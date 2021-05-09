@@ -7,12 +7,12 @@ ms.topic: article
 author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 8e0b94a46e96dd8ba16040e16b421520eb67de19
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 907b3020091de1be9a037d149de737c14de125ad
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102583466"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108207332"
 ---
 # <a name="programmatic-access-paradigm"></a>编程式访问范例
 
@@ -350,4 +350,4 @@ ms.locfileid: "102583466"
 
 ## <a name="next-steps"></a>后续步骤
 - 可以通过 [Swagger API URL](https://api.partnercenter.microsoft.com/insights/v1/cmp/swagger/index.html) 试用 API
-- 开始以编程方式访问分析数据
+- [开始以编程方式访问分析数据](analytics-get-started.md)

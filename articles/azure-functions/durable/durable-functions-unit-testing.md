@@ -3,12 +3,12 @@ title: Azure Durable Functions 单元测试
 description: 了解如何进行 Durable Functions 单元测试。
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: fe5a25e0296eb183ef2426e12f7bdee35633ec78
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 3d3b89337d4643b59d37ebe0aaeaf6f207bf053e
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076626"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165436"
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions 单元测试
 
@@ -38,10 +38,10 @@ ms.locfileid: "106076626"
 * [IDurableOrchestrationContext](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext)
 
 * [IDurableActivityContext](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableactivitycontext)
-  
+
 * [IDurableEntityContext](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableentitycontext)
 
-这些接口可用于 Durable Functions 支持的各种触发器和绑定。 执行 Azure Functions 时，函数运行时将运行包含这些接口的具体实现的函数代码。 对于单元测试，可以传递这些接口的模拟版本来测试业务逻辑。
+这些接口可以与 Durable Functions 支持的各种触发器和绑定配合使用。 执行 Azure Functions 时，函数运行时会运行包含这些接口的具体实现的函数代码。 对于单元测试，可以传递这些接口的模拟版本来测试业务逻辑。
 
 ## <a name="unit-testing-trigger-functions"></a>对触发器函数进行单元测试
 
@@ -51,7 +51,7 @@ ms.locfileid: "106076626"
 
 单元测试任务是验证响应有效负载中提供的 `Retry-After` 标头的值。 因此，单元测试将模拟某些 `IDurableClient` 方法，以确保行为可预测。
 
-首先，使用模拟框架（在此示例中即为 [moq](https://github.com/moq/moq4)）来模拟 `IDurableClient`：
+首先，使用模拟框架（在此示例中为 [moq](https://github.com/moq/moq4)）来模拟 `IDurableClient`：
 
 ```csharp
 // Mock IDurableClient
@@ -95,7 +95,7 @@ durableClientMock
 ```csharp
 // Mock ILogger
 var loggerMock = new Mock<ILogger>();
-```  
+```
 
 现在，从单元测试调用 `Run` 方法：
 
@@ -110,7 +110,7 @@ var result = await HttpStart.Run(
     durableClientMock.Object,
     functionName,
     loggerMock.Object);
- ```
+```
 
  最后一步是将输出与预期值进行比较：
 
@@ -183,5 +183,5 @@ Assert.Equal("Hello London!", result[2]);
 
 > [!div class="nextstepaction"]
 > [详细了解 xUnit](https://xunit.net/docs/getting-started/netcore/cmdline)
-> 
+>
 > [详细了解 moq](https://github.com/Moq/moq4/wiki/Quickstart)

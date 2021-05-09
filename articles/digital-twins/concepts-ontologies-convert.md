@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 22b41fce59bf7dbe9db1186036c5ed44f07a4aad
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 6d15df406399e49bff3d95cb90f5d8b908d09631
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107484467"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208016"
 ---
 # <a name="convert-industry-standard-ontologies-to-dtdl-for-azure-digital-twins"></a>将行业标准本体转换为适用于 Azure 数字孪生的 DTDL
 
@@ -20,7 +20,7 @@ ms.locfileid: "107484467"
 
 若要将模型用于 Azure 数字孪生，则其必须采用 DTDL 格式。 本文通过转换模式介绍了将基于 RDF 的模型转换为 DTDL 以使其用于 Azure 数字孪生的通用设计指南。 
 
-本文还包含用于 RDF 和 OWL 转换器的[示例转换器代码](#converter-samples)，可将其扩展以用于建筑行业中的其他架构。
+本文还包含用于 RDF 和 OWL 转换器的示例转换器代码，可将其扩展以用于建筑行业中的其他架构。
 
 ## <a name="conversion-pattern"></a>转换模式
 
@@ -35,7 +35,7 @@ ms.locfileid: "107484467"
 | DataType 属性 | `owl:DatatypeProperty`<br>`rdfs:label` 或 `INode`<br>`rdfs:label`<br>`rdfs:range` | 接口属性 | `@type:Property`<br>`name`<br>`displayName`<br>`schema` 
 | 对象属性 | `owl:ObjectProperty`<br>`rdfs:label` 或 `INode`<br>`rdfs:range`<br>`rdfs:comment`<br>`rdfs:label` | 关系 | `type:Relationship`<br>`name`<br>`target`（如果没有 `rdfs:range` 则省略）<br>`comment`<br>`displayName`<br>
 
-下面的 C# 代码段演示如何使用 [dotNetRDF](https://www.dotnetrdf.org/) 库将 RDF 模型文件加载到图形并转换为 DTDL。 
+下面的 C# 代码段演示如何使用 dotNetRDF 库将 RDF 模型文件加载到图形并转换为 DTDL。 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/convertRDF.cs":::
 
@@ -47,7 +47,7 @@ ms.locfileid: "107484467"
 
 该示例是一个名为 RdfToDtdlConverter 的 .NET Core 命令行应用程序。
 
-可在此处获取该示例：[RdfToDtdlConverter](/samples/azure-samples/rdftodtdlconverter/digital-twins-model-conversion-samples/)。 
+可在此处获取该示例：RdfToDtdlConverter。 
 
 若要将代码下载到计算机，请在示例页上的标题下选择“浏览代码”按钮，转到该示例的 GitHub 存储库。   选择“代码”按钮，然后选择“下载 ZIP”将示例下载为名为 RdfToDtdlConverter-main.zip 的 .ZIP 文件。 然后可以对该文件进行解压并浏览代码。
 
@@ -57,12 +57,12 @@ ms.locfileid: "107484467"
 
 ### <a name="owl2dtdl-converter"></a>OWL2DTDL 转换器 
 
-[OWL2DTDL 转换器](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/OWL2DTDL)是一个可将 OWL 本体转换为一组 DTDL 接口声明以用于 Azure 数字孪生服务的示例。 它还适用于由一个根本体构成且通过 `owl:imports` 声明重用其他本体的本体网络。
+OWL2DTDL 转换器是一个可将 OWL 本体转换为一组 DTDL 接口声明以用于 Azure 数字孪生服务的示例。 它还适用于由一个根本体构成且通过 `owl:imports` 声明重用其他本体的本体网络。
 
 此转换器用于将[房地产核心本体](https://doc.realestatecore.io/3.1/full.html)转换为 DTDL，并且它可用于任何基于 OWL 的本体。
 
 ## <a name="next-steps"></a>后续步骤 
 
-* 了解有关扩展行业标准本体以满足要求的详细信息：[概念：扩展行业本体](concepts-ontologies-extend.md)。
+* 了解有关扩展行业标准本体以满足要求的详细信息：概念：扩展行业本体。
 
-* 或者，继续开发基于本体的模型：[在模型开发路径中使用本体策略](concepts-ontologies.md#using-ontology-strategies-in-a-model-development-path)。
+* 或者，继续开发基于本体的模型：在模型开发路径中使用本体策略。

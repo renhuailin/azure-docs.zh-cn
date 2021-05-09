@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - mode-portal
-ms.openlocfilehash: 3333097b4bd55173725aa33bc4bfbae318510cf1
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: a01400e494d673fc59737007d4461b3e2a3ded25
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538549"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165670"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>快速入门：在 Azure 门户中运行第一个 Batch 作业
 
@@ -60,7 +60,7 @@ ms.locfileid: "107538549"
   
    |设置  |Value  |
    |---------|---------|
-   |**节点定价层**     |标准 A1|
+   |**节点定价层**     |Standard_A1_v2|
    |**目标专用节点**     |2|
 
 1. 让其余设置保留默认值，然后选择“确定”以创建该池。

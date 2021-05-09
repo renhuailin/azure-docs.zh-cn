@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 958b0de97b79b447f2570dd9c57c87f380bcd551
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: f153544d27621e4978b496d74f8d79e4e0bf2024
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107589314"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108207782"
 ---
 # <a name="write-client-app-authentication-code"></a>编写客户端应用验证码
 
@@ -20,11 +20,11 @@ ms.locfileid: "107589314"
 
 Azure 数字孪生使用[基于 OAUTH 2.0 的 Azure AD 安全令牌](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims)执行身份验证。 若要对 SDK 进行身份验证，需要获取具有 Azure 数字孪生正确权限的持有者令牌，并将其与 API 调用一起传递。 
 
-本文介绍如何使用 `Azure.Identity` 客户端库获取凭据。 尽管本文介绍的是 C# 代码示例（如你为 [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) 编写的内容），但无论你使用的是何种 SDK，都可使用 `Azure.Identity` 版本（有关可用于 Azure 数字孪生的 SDK 的详细信息，请参阅[操作指南：使用 Azure 数字孪生 API 和 SDK](how-to-use-apis-sdks.md)。
+本文介绍如何使用 `Azure.Identity` 客户端库获取凭据。 尽管本文介绍的是 C# 代码示例（如你为 [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) 编写的内容），但无论你使用的是何种 SDK，都可使用 `Azure.Identity` 版本（有关可用于 Azure 数字孪生的 SDK 的详细信息，请参阅操作指南：使用 Azure 数字孪生 API 和 SDK。
 
 ## <a name="prerequisites"></a>先决条件
 
-首先，请完成[操作指南：设置实例和身份验证](how-to-set-up-instance-portal.md)中的设置步骤。 这将确保你拥有 Azure 数字孪生实例，并且你的用户具有访问权限。 完成此设置后，便可编写客户端应用代码。
+首先，请完成操作指南：设置实例和身份验证中的设置步骤。 这将确保你拥有 Azure 数字孪生实例，并且你的用户具有访问权限。 完成此设置后，便可编写客户端应用代码。
 
 若要继续，你需要一个可在其中编写代码的客户端应用项目。 如果尚未设置客户端应用项目，请使用你选择的语言创建一个基本项目，以在本教程中使用。
 
@@ -87,7 +87,7 @@ Azure 数字孪生使用[基于 OAUTH 2.0 的 Azure AD 安全令牌](../active-d
 
 [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential) 方法适用于交互式应用程序，并将打开一个 Web 浏览器进行身份验证。 如果需要交互式身份验证，可使用此方法而不是 `DefaultAzureCredential`。
 
-若要使用交互式浏览器凭据，你将需要具有 Azure 数字孪生 API 权限的应用注册。 有关如何设置此应用注册的步骤，请参阅[操作指南：创建应用注册](how-to-create-app-registration.md)。 设置应用注册后，需要以下内容：
+若要使用交互式浏览器凭据，你将需要具有 Azure 数字孪生 API 权限的应用注册。 有关如何设置此应用注册的步骤，请参阅操作指南：创建应用注册。 设置应用注册后，需要以下内容：
 * 应用注册的应用程序（客户端）ID（[查找说明](how-to-create-app-registration.md#collect-client-id-and-tenant-id)）
 * 应用注册的目录（租户）ID（[查找说明](how-to-create-app-registration.md#collect-client-id-and-tenant-id)）
 * Azure 数字孪生实例的 URL（[查找说明](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)）
@@ -101,12 +101,12 @@ Azure 数字孪生使用[基于 OAUTH 2.0 的 Azure AD 安全令牌](../active-d
 
 #### <a name="other-notes-about-authenticating-azure-functions"></a>有关 Azure Functions 身份验证的其他说明
 
-请参阅[操作指南：设置用于处理数据的 Azure 函数](how-to-create-azure-function.md)以获取更完整的示例，该示例介绍函数上下文中的一些重要配置选项。
+请参阅操作指南：设置用于处理数据的 Azure 函数以获取更完整的示例，该示例介绍函数上下文中的一些重要配置选项。
 
 此外，若要在函数中使用身份验证，请记得：
 * [启用托管标识](../app-service/overview-managed-identity.md?tabs=dotnet)
 * 使用[环境变量](/sandbox/functions-recipes/environment-variables?tabs=csharp)（视情况而定）
-* 向函数应用分配权限，使其能够访问数字孪生 API。 有关 Azure Functions 过程的详细信息，请参阅[操作指南：设置用于处理数据的 Azure 函数](how-to-create-azure-function.md)。
+* 向函数应用分配权限，使其能够访问数字孪生 API。 有关 Azure Functions 过程的详细信息，请参阅操作指南：设置用于处理数据的 Azure 函数。
 
 ## <a name="authenticate-across-tenants"></a>跨租户进行身份验证
 
@@ -124,7 +124,7 @@ Azure 数字孪生是一项仅支持一个 [Azure Active Directory (Azure AD) �
 
 ## <a name="other-credential-methods"></a>其他凭据方法
 
-如果上面突出显示的身份验证方案不能满足你的应用需求，可浏览 [Microsoft 标识平台](../active-directory/develop/v2-overview.md#getting-started)中提供的其他类型的身份验证。 此平台的文档介绍了按应用程序类型组织的更多身份验证方案。
+如果上面突出显示的身份验证方案不能满足你的应用需求，可浏览 Microsoft 标识平台中提供的其他类型的身份验证。 此平台的文档介绍了按应用程序类型组织的更多身份验证方案。
 
 ## <a name="next-steps"></a>后续步骤
 
