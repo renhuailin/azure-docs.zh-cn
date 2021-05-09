@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/16/2021
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 108c716708936aa5e0e5a563bdb8787466ad06ef
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: c6b83a25816c29f1642625618e66624aa3e0a6de
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076844"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289797"
 ---
 # <a name="what-are-azure-cognitive-services"></a>什么是 Azure 认知服务？
 
@@ -43,7 +43,7 @@ Azure 认知服务是具有 REST API 和客户端库 SDK 的基于云的服务�
 |[自定义视觉服务](./custom-vision-service/index.yml "自定义影像服务")|自定义视觉可用于生成、部署和改进您自己的图像分类器。 图像分类器是一种 AI 服务，它可以根据图像的视觉特征为图像应用标签。 |
 |[人脸](./face/index.yml "人脸")| 使用人脸服务可访问高级人脸算法，从而实现人脸属性检测和识别。 请参阅[人脸快速入门](./face/quickstarts/client-libraries.md)，了解如何开始服务。|
 |[表单识别器](./form-recognizer/index.yml "表单识别器")|表单识别器从表单文档中识别并提取键值对和表数据；然后输出结构化数据，包括原始文件中的关系。 请参阅[表单识别器快速入门](./form-recognizer/quickstarts/client-library.md)开始操作。|
-|[视频索引器](../media-services/video-indexer/video-indexer-overview.md "视频索引器")|使用视频索引器从视频中提取见解。 请参阅[视频索引器快速入门](/azure/media-services/video-indexer/video-indexer-get-started)开始操作。|
+|[视频索引器](../media-services/video-indexer/video-indexer-overview.md "视频索引器")|使用视频索引器从视频中提取见解。 请参阅[视频索引器快速入门](../media-services/video-indexer/video-indexer-get-started.md)开始操作。|
 
 ## <a name="speech-apis"></a>语音 API
 

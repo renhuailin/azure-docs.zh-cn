@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: a34881901fd8642fff9ac37512cd2ef260ad9d1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb6f3c6a1463e2a3b71057145a6df770ea880b9d
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98954204"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108181159"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：针对自动用户预配来配置 Workday
 
@@ -137,8 +137,8 @@ ms.locfileid: "98954204"
    * 请咨询 Workday 集成合作伙伴，从而为集成选择适当的安全组类型。
    * 在知道组类型之后，请从“租户安全组类型”的下拉列表中选择“集成系统安全组(不受约束)”或“集成系统安全组(受约束)”  。
 
-     > [!div class="mx-imgBorder"]
-     >![创建安全组](./media/workday-inbound-tutorial/wd_isu_04.png "创建安全组")
+     > [!div class="mx-imgBorder&quot;]
+     >![创建安全组](./media/workday-inbound-tutorial/wd_isu_04.png &quot;创建安全组")
 
 3. 安全组创建成功后，将显示可以为安全组分配成员的页面。 将在上一步中新建的集成系统用户添加到此安全组中。 如果要使用受约束的安全组，则还需要选择相应的组织范围。
 
@@ -183,7 +183,7 @@ ms.locfileid: "98954204"
 
 1. 在下一屏幕上单击“确定”和“完成”以完成配置 。 
 
-### <a name="configuring-business-process-security-policy-permissions"></a>配置业务流程安全策略权限
+### <a name="configuring-business-process-security-policy-permissions&quot;></a>配置业务流程安全策略权限
 
 此步骤将向安全组授予员工数据的“业务流程安全性”策略权限。 
 
@@ -194,8 +194,8 @@ ms.locfileid: "98954204"
 
 1. 在搜索框中输入“业务流程策略”，然后单击链接“编辑业务流程安全策略”任务 。  
 
-   >[!div class="mx-imgBorder"]
-   >![屏幕截图显示搜索框中的“业务流程策略”以及已选择“编辑业务流程安全策略 - 任务”。](./media/workday-inbound-tutorial/wd_isu_12.png "业务流程安全策略")  
+   >[!div class=&quot;mx-imgBorder&quot;]
+   >![屏幕截图显示搜索框中的“业务流程策略”以及已选择“编辑业务流程安全策略 - 任务”。](./media/workday-inbound-tutorial/wd_isu_12.png &quot;业务流程安全策略")  
 
 2. 在“业务流程类型”文本框中，搜索“联系人”并选择“工作联系人更改”业务流程，然后单击“确定” 。
 
@@ -557,7 +557,7 @@ Workday 预配应用配置完成后，并且你已使用[按需预配](../app-pr
 
 #### <a name="how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent"></a>如何确保预配代理能够与 Azure AD 租户进行通信且防火墙不阻止代理所需的端口？
 
-还可以检查所有[必需端口](../manage-apps/application-proxy-add-on-premises-application.md#open-ports)是否已打开。
+还可以检查所有[必需端口](../app-proxy/application-proxy-add-on-premises-application.md#open-ports)是否已打开。
 
 #### <a name="can-one-provisioning-agent-be-configured-to-provision-multiple-ad-domains"></a>能否将一个预配代理配置为预配多个 AD 域？
 

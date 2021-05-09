@@ -9,12 +9,12 @@ ms.author: tagore
 ms.reviewer: mimckitt
 ms.date: 2/08/2021
 ms.custom: ''
-ms.openlocfilehash: 58203730793202649c401d96182469fa1eac6ef1
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 2e56e3d6b5f29996d8fe9606ac9a1b3778201803
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286697"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288717"
 ---
 # <a name="common-errors-and-known-issues-when-migration-to-azure-cloud-services-extended-support"></a>迁移到 Azure 云服务（外延支持）时的常见错误和已知问题
 
@@ -42,8 +42,8 @@ ms.locfileid: "106286697"
 | 错误消息 | 详细信息 | 
 |---|---|
 | 命名空间 `Microsoft.Compute` 中未发现用于 API 版本“2020-10-01-preview”的资源类型。 | 为云服务功能标志[注册订阅](in-place-migration-overview.md#setup-access-for-migration)以访问公开预览版。 | 
-| 服务器遇到内部错误。 重试请求。 | 重试该操作，或者使用 [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-cloud-services-extended-support.html) 或联系支持人员。 | 
-| 服务器尝试为云服务分配网络资源时遇到意外错误。 重试请求。 | 重试该操作，或者使用 [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-cloud-services-extended-support.html) 或联系支持人员。 | 
+| 服务器遇到内部错误。 重试请求。 | 重试该操作，或者使用 [Microsoft Q&A](/answers/topics/azure-cloud-services-extended-support.html) 或联系支持人员。 | 
+| 服务器尝试为云服务分配网络资源时遇到意外错误。 重试请求。 | 重试该操作，或者使用 [Microsoft Q&A](/answers/topics/azure-cloud-services-extended-support.html) 或联系支持人员。 | 
 | 云服务 cloud-service-name 中的部署 deployment-name 必须位于要迁移的虚拟网络中。 | 部署不在虚拟网络中。 有关更多详细信息，请参阅[此文档](in-place-migration-technical-details.md#migration-of-deployments-not-in-a-virtual-network)。 | 
 | 不支持迁移云服务 cloud-service-name 中的部署 deployment-name，因为该部署位于区域 region-name。 允许的区域：[可用区域列表]。 | 尚不支持迁移区域。 | 
 | 无法迁移云服务 cloud-service-name 中的部署 deployment-name，因为没有子网与角色 role-name 关联。 将所有角色与子网相关联，然后重试迁移云服务。 | 在迁移之前，通过将云服务(经典)部署置于子网中来对其进行更新。 |  
@@ -62,11 +62,11 @@ ms.locfileid: "106286697"
 | 未实现“默认 VNet 目标”选项。 | REST 请求正文中的 DestinationVirtualNetwork 属性不支持值“Default”。 | 
 | 无法迁移部署 {0}，因为 CSPKG 不可用。 | 升级部署，然后重试。 | 
 | ID 为“{0}”的子网与托管服务“{2}”中的部署“{1}”位于不同的位置。 子网的位置是“{3}”，而托管服务的位置是“{4}”。  请指定与部署位于同一个位置的子网。 | 在迁移之前，更新云服务，使子网和云服务位于同一个位置。 | 
-| 正在中止托管服务 {1} 中的部署 {0} 的迁移，成功完成之前无法更改。 | 等待中止操作完成，或重试中止。 否则使用 [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-cloud-services-extended-support.html) 或联系支持人员。 | 
+| 正在中止托管服务 {1} 中的部署 {0} 的迁移，成功完成之前无法更改。 | 等待中止操作完成，或重试中止。 否则使用 [Microsoft Q&A](/answers/topics/azure-cloud-services-extended-support.html) 或联系支持人员。 | 
 | 托管服务 {1} 中的部署 {0} 尚未准备好进行迁移。 | 在运行提交操作之前，对云服务运行准备操作。 | 
-| UnknownExceptionInEndExecute: Contract.Assert 失败：rgName 为 NULL 或为空: EndExecute 出现异常，该异常不是 RdfeException。 |   使用 [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-cloud-services-extended-support.html) 或联系支持人员。 | 
-| UnknownExceptionInEndExecute: 任务已取消: EndExecute 出现异常，该异常不是 RdfeException。 | 使用 [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-cloud-services-extended-support.html) 或联系支持人员。 | 
-| XrpVirtualNetworkMigrationError: 虚拟网络迁移失败。 | 使用 [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-cloud-services-extended-support.html) 或联系支持人员。 | 
+| UnknownExceptionInEndExecute: Contract.Assert 失败：rgName 为 NULL 或为空: EndExecute 出现异常，该异常不是 RdfeException。 |   使用 [Microsoft Q&A](/answers/topics/azure-cloud-services-extended-support.html) 或联系支持人员。 | 
+| UnknownExceptionInEndExecute: 任务已取消: EndExecute 出现异常，该异常不是 RdfeException。 | 使用 [Microsoft Q&A](/answers/topics/azure-cloud-services-extended-support.html) 或联系支持人员。 | 
+| XrpVirtualNetworkMigrationError: 虚拟网络迁移失败。 | 使用 [Microsoft Q&A](/answers/topics/azure-cloud-services-extended-support.html) 或联系支持人员。 | 
 | 托管服务 {1} 中的部署 {0} 属于虚拟网络 {2}。 请迁移虚拟网络 {2} 以迁移托管服务 {1}。 | 请参阅[虚拟网络迁移](in-place-migration-technical-details.md#virtual-network-migration)。 | 
 | Azure 资源管理器中的资源 resource-name 的当前配额不足，无法完成迁移。 当前配额为 {0}，需要额外的配额为 {1}。 请提交支持请求以增加配额，然后在配额已增加后重试迁移。    | 通过相应的通道请求增加配额： <br>[为网络资源增加配额](../azure-portal/supportability/networking-quota-requests.md) <br>[为计算资源增加配额](../azure-portal/supportability/per-vm-quota-requests.md) | 
 

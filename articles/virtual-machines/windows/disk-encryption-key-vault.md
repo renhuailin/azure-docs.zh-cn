@@ -8,13 +8,13 @@ ms.topic: how-to
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: b9e61a72af1e2d07fc45a9265de6008fa4e509ef
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: a4cd97f838c454a1ea2fa2dba7be327cf157b081
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813769"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288987"
 ---
 # <a name="create-and-configure-a-key-vault-for-azure-disk-encryption-on-a-windows-vm"></a>在 Windows VM 上创建和配置用于 Azure 磁盘加密的密钥保管库
 

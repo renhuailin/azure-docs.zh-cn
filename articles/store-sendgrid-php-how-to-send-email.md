@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
-ms.openlocfilehash: b3a9fee09d1eac6fb4d716af83c348cb2c21f7a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed13dd922595a051db77426281f062efd5176f57
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96023782"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166721"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>如何通过 PHP 使用 SendGrid 电子邮件服务
 
@@ -28,6 +28,7 @@ ms.locfileid: "96023782"
 所涉及的任务包括 **创建电子邮件**、**发送电子邮件** 以及 **添加附件**。 有关 SendGrid 和发送电子邮件的详细信息，请参阅[后续步骤](#next-steps)部分。
 
 ## <a name="what-is-the-sendgrid-email-service"></a>什么是 SendGrid 电子邮件服务？
+
 SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的[事务电子邮件传递]、伸缩性、实时分析以及可用于简化自定义集成的灵活的 API。 常见 SendGrid 使用方案包括：
 
 * 自动向客户发送收据
@@ -118,6 +119,7 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
 ```
 
 ### <a name="web-api"></a>Web API
+
 使用 PHP 的 [curl 函数][curl function]来通过 SendGrid Web API 发送电子邮件。
 
 ```php
@@ -309,7 +311,7 @@ SendGrid 可通过使用筛选器提供其他电子邮件功能。 可将这些�
 php composer.phar require sendgrid/sendgrid 2.1.1
 ```
 
-### <a name="example"></a>示例  
+### <a name="example"></a>示例
 
 ```php
 <?php
@@ -404,7 +406,7 @@ php composer.phar require sendgrid/sendgrid 2.1.1
  $response = $sendgrid->send($email);
 
  print_r($response);
- ```
+```
 
 ## <a name="next-steps"></a>后续步骤
 

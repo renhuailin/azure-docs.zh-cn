@@ -11,16 +11,16 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 612ba18ba71a22ad6c346b26008e688195c1d1e4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 23b3ca919be030490cca06f31dac623d7f80be44
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92746581"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790376"
 ---
 # <a name="create-a-storage-account-with-infrastructure-encryption-enabled-for-double-encryption-of-data"></a>创建存储帐户，帐户启用基础结构加密用于双重加密数据
 
-Azure 存储使用 256 位 AES 加密（可用的最强大分组加密法之一），在服务级别自动加密存储帐户中的所有数据，并且符合 FIPS 140-2 规范。 如果客户要求更高级别的数据安全保证，则还可以在 Azure 存储基础结构级别启用 256 位 AES 加密。 启用基础结构加密后，将使用两种不同的加密算法和两个不同的密钥&mdash;分别在服务级别和基础架构级别&mdash;对存储帐户中的数据进行两次加密。 Azure 存储数据的双重加密可以在其中一种加密算法或密钥可能被泄露的情况下提供保护。 在此方案中，附加的加密层会继续保护你的数据。
+Azure 存储使用 256 位 AES 加密（可用的最强大分组加密法之一），在服务级别自动加密存储帐户中的所有数据，并且符合 FIPS 140-2 规范。 如果客户要求更高级别的数据安全保证，则还可以在 Azure 存储基础结构级别启用 256 位 AES 加密。 启用基础结构加密后，将使用两种不同的加密算法和两个不同的密钥&mdash;分别在服务级别和基础架构级别&mdash;对存储帐户中的数据进行两次加密。 Azure 存储数据的双重加密可以在其中一种加密算法或密钥可能泄露的情况下提供保护。 在此方案中，附加的加密层会继续保护你的数据。
 
 服务级别加密支持将 Microsoft 管理的密钥或客户管理的密钥与 Azure Key Vault 或 Key Vault 托管硬件安全模型 (HSM)（预览版）一起使用。 基础结构级别的加密依赖于 Microsoft 管理的密钥并始终使用单独的密钥。 有关 Azure 存储加密的密钥管理的详细信息，请参阅[关于加密密钥管理](storage-service-encryption.md#about-encryption-key-management)。
 
@@ -58,21 +58,21 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要使用 Azure CLI 注册，请调用 [az feature register](/cli/azure/feature#az-feature-register) 命令。
+若要使用 Azure CLI 注册，请调用 [az feature register](/cli/azure/feature#az_feature_register) 命令。
 
 ```azurecli
 az feature register --namespace Microsoft.Storage \
     --name AllowRequireInfraStructureEncryption
 ```
 
-若要使用 Azure CLI 查看注册状态，请调用 [az feature](/cli/azure/feature#az-feature-show) 命令。
+若要使用 Azure CLI 查看注册状态，请调用 [az feature](/cli/azure/feature#az_feature_show) 命令。
 
 ```azurecli
 az feature show --namespace Microsoft.Storage \
     --name AllowRequireInfraStructureEncryption
 ```
 
-注册得到批准后，必须重新注册 Azure 存储资源提供程序。 若要使用 Azure CLI 重新注册资源提供程序，请调用 [az provider register](/cli/azure/provider#az-provider-register) 命令。
+注册得到批准后，必须重新注册 Azure 存储资源提供程序。 若要使用 Azure CLI 重新注册资源提供程序，请调用 [az provider register](/cli/azure/provider#az_provider_register) 命令。
 
 ```azurecli
 az provider register --namespace 'Microsoft.Storage'
@@ -122,7 +122,7 @@ New-AzStorageAccount -ResourceGroupName <resource_group> `
 
 若要使用 Azure CLI 创建启用了基础结构加密的存储帐户，请确保已安装 Azure CLI 2.8.0 或更高版本。 有关详细信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-接下来，通过调用 [az storage account create](/cli/azure/storage/account#az-storage-account-create) 命令创建常规用途 v2 存储帐户，并包括 `--require-infrastructure-encryption option` 来启用基础结构加密。
+接下来，通过调用 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令创建常规用途 v2 存储帐户，并包括 `--require-infrastructure-encryption option` 来启用基础结构加密。
 
 下面的示例演示如何创建常规用途 v2 存储帐户，帐户配置用于读取访问异地冗余存储 (RA-GRS) ，并启用基础结构加密用于对数据进行两次加密。 请记得将括号中的占位符值替换为你自己的值：
 
@@ -197,7 +197,7 @@ $account.Encryption.RequireInfrastructureEncryption
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要验证是否通过 Azure CLI 为存储帐户启用了基础结构加密，请调用 [az storage account show](/cli/azure/storage/account#az-storage-account-show) 命令。 此命令返回一组存储帐户属性及其值。 在 `encryption` 属性内查找 `requireInfrastructureEncryption` 字段，并验证其是否设置为 `true`。
+若要验证是否通过 Azure CLI 为存储帐户启用了基础结构加密，请调用 [az storage account show](/cli/azure/storage/account#az_storage_account_show) 命令。 此命令返回一组存储帐户属性及其值。 在 `encryption` 属性内查找 `requireInfrastructureEncryption` 字段，并验证其是否设置为 `true`。
 
 下面的示例检索 `requireInfrastructureEncryption` 属性的值。 请务必将尖括号中的占位符值替换为你自己的值：
 

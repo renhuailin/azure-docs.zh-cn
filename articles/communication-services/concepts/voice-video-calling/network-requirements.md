@@ -9,12 +9,12 @@ ms.author: nmurav
 ms.date: 3/23/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 22bf8af89771e57621a0d8851ca31bb750b7cda2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c7ec360d961c0960dc941c48626c3aeb3f7367ec
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108343"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289005"
 ---
 # <a name="ensure-high-quality-media-in-azure-communication-services"></a>在 Azure 通信服务中确保媒体的高质量
 
@@ -78,13 +78,13 @@ ms.locfileid: "105108343"
 
 | 网络优化任务 | 详细信息 |
 | :-- | :-- |
-| 网络规划 | 在本文档中，你可以找到通话的最低网络要求。 请参阅[有关规划网络的 Teams 示例](https://docs.microsoft.com/microsoftteams/tutorial-network-planner-example) |
+| 网络规划 | 在本文档中，你可以找到通话的最低网络要求。 请参阅[有关规划网络的 Teams 示例](/microsoftteams/tutorial-network-planner-example) |
 | 外部名称解析 | 确保运行 Azure 通信服务 SDK 的所有计算机都可以解析外部 DNS 查询，以发现 Azure 通信服务提供的服务，并确保防火墙不会阻止访问。 请确保 SDK 可以解析以下地址：*.skype.com、*.microsoft.com、*.azure.net、*.azureedge.net、*.office.com、*.trouter.io  |
 | 维护会话持久性 | 确保防火墙不会为 UDP 更改映射网络地址转换 (NAT) 地址或端口
-验证 NAT 池大小 | 验证用户连接所需的网络地址转换 (NAT) 池大小。 当多个用户和设备使用[网络地址转换 (NAT) 或端口地址转换 (PAT)](https://docs.microsoft.com/office365/enterprise/nat-support-with-office-365) 访问 Azure 通信服务时，请确保在每个可公开路由的 IP 地址后面隐藏的设备不超过支持的数量。 请确保为 NAT 池分配足够的公共 IP 地址，以防止端口耗尽。 端口耗尽会导致内部用户和设备无法连接到 Azure 通信服务 |
-| 入侵检测和防护指南 | 如果你的环境为出站连接部署了[入侵检测](https://docs.microsoft.com/azure/network-watcher/network-watcher-intrusion-detection-open-source-tools)或预防系统 (IDS/IPS) 以实现额外的安全层，请允许所有 Azure 通信服务 URL |
-| 配置拆分隧道 VPN | 我们建议你为绕过虚拟专用网络 (VPN) 的 Teams 流量提供备用路径（通常称为[拆分隧道 VPN](https://docs.microsoft.com/windows/security/identity-protection/vpn/vpn-routing)）。 拆分隧道意味着 Azure 通信服务的流量不会通过 VPN，而是直接发往 Azure。 绕过 VPN 会对媒体质量产生积极影响，并减少来自 VPN 设备和组织网络的负载。 若要实现拆分隧道 VPN，请与你的 VPN 供应商合作。 建议绕过 VPN 的其他原因： <ul><li> VPN 的设计或配置通常不支持实时媒体。</li><li> VPN 可能也不支持 UDP（Azure 通信服务需要 UDP）</li><li>VPN 还在已经加密的媒体流量之上引入了额外的加密层。</li><li>由于存在流经 VPN 设备的发夹流量，与 Azure 通信服务的连接可能不够高效。</li></ul>|
-| 实施 QoS | [使用服务质量 (QoS)](https://docs.microsoft.com/microsoftteams/qos-in-teams) 配置数据包优先级。 这将提高通话质量，帮助你监视和排查通话质量问题。 应在托管网络的所有段上实施 QoS。 即使已经充分预配了网络来提供足够的带宽，QoS 也可以在发生意外的网络事件时缓解风险。 使用 QoS 时，语音流量优先，因此这些意外事件不会对质量产生负面影响。 | 
+验证 NAT 池大小 | 验证用户连接所需的网络地址转换 (NAT) 池大小。 当多个用户和设备使用[网络地址转换 (NAT) 或端口地址转换 (PAT)](/office365/enterprise/nat-support-with-office-365) 访问 Azure 通信服务时，请确保在每个可公开路由的 IP 地址后面隐藏的设备不超过支持的数量。 请确保为 NAT 池分配足够的公共 IP 地址，以防止端口耗尽。 端口耗尽会导致内部用户和设备无法连接到 Azure 通信服务 |
+| 入侵检测和防护指南 | 如果你的环境为出站连接部署了[入侵检测](../../../network-watcher/network-watcher-intrusion-detection-open-source-tools.md)或预防系统 (IDS/IPS) 以实现额外的安全层，请允许所有 Azure 通信服务 URL |
+| 配置拆分隧道 VPN | 我们建议你为绕过虚拟专用网络 (VPN) 的 Teams 流量提供备用路径（通常称为[拆分隧道 VPN](/windows/security/identity-protection/vpn/vpn-routing)）。 拆分隧道意味着 Azure 通信服务的流量不会通过 VPN，而是直接发往 Azure。 绕过 VPN 会对媒体质量产生积极影响，并减少来自 VPN 设备和组织网络的负载。 若要实现拆分隧道 VPN，请与你的 VPN 供应商合作。 建议绕过 VPN 的其他原因： <ul><li> VPN 的设计或配置通常不支持实时媒体。</li><li> VPN 可能也不支持 UDP（Azure 通信服务需要 UDP）</li><li>VPN 还在已经加密的媒体流量之上引入了额外的加密层。</li><li>由于存在流经 VPN 设备的发夹流量，与 Azure 通信服务的连接可能不够高效。</li></ul>|
+| 实施 QoS | [使用服务质量 (QoS)](/microsoftteams/qos-in-teams) 配置数据包优先级。 这将提高通话质量，帮助你监视和排查通话质量问题。 应在托管网络的所有段上实施 QoS。 即使已经充分预配了网络来提供足够的带宽，QoS 也可以在发生意外的网络事件时缓解风险。 使用 QoS 时，语音流量优先，因此这些意外事件不会对质量产生负面影响。 | 
 | 优化 WiFi | 与 VPN 类似，WiFi 网络并不一定设计或配置为支持实时媒体。 规划或优化 WiFi 网络以支持 Azure 通信服务是进行高质量部署的一个重要注意事项。 请考虑以下因素： <ul><li>实施 QoS 或 WiFi 多媒体 (WMM)，以确保通过 WiFi 网络正确地设置媒体流量的优先级。</li><li>规划并优化 WiFi 频段和接入点放置。 2\.4 GHz 范围可能会提供足够的体验，具体取决于接入点放置，但接入点通常受在该范围内运行的其他使用者设备的影响。 5 GHz 范围因其范围的密集性而更适合实时媒体，但它需要更多的接入点才能实现足够的覆盖。 端点还需要支持该范围，并相应地配置为利用这些频段。</li><li>如果你使用双频段 WiFi 网络，请考虑实施频段控制。 频段控制是 WiFi 供应商实施的一项技术，旨在促使双频段客户端使用 5GHz 范围。</li><li>当同一信道的接入点靠得太近时，它们可能会导致信号重叠和无意中竞争，使用户体验降级。 请确保相邻的接入点位于不重叠的信道上。</li></ul> 每个无线供应商都有其自己的无线解决方案部署建议。 请咨询你的 WiFi 供应商以获取具体指导。|
 
 
@@ -92,12 +92,12 @@ ms.locfileid: "105108343"
 ### <a name="operating-system-and-browsers-for-javascript-sdks"></a>操作系统和浏览器（适用于 JavaScript SDK）
 
 Azure 通信服务语音/视频 SDK 支持某些操作系统和浏览器。
-请在[通话概念文档](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features)中了解通话 SDK 支持的操作系统和浏览器。
+请在[通话概念文档](./calling-sdk-features.md)中了解通话 SDK 支持的操作系统和浏览器。
 
 ## <a name="next-steps"></a>后续步骤
 
 你可能会对下列文档感兴趣：
 
-- 详细了解[通话库](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features)
-- 了解[客户端-服务器体系结构](https://docs.microsoft.com/azure/communication-services/concepts/client-and-server-architecture)
-- 了解[呼叫流拓扑](https://docs.microsoft.com/azure/communication-services/concepts/call-flows)
+- 详细了解[通话库](./calling-sdk-features.md)
+- 了解[客户端-服务器体系结构](../client-and-server-architecture.md)
+- 了解[呼叫流拓扑](../call-flows.md)

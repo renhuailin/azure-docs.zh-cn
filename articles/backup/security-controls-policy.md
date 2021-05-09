@@ -1,18 +1,18 @@
 ---
 title: Azure 备份的 Azure Policy 法规遵从性控制措施
 description: 列出可用于 Azure 备份的 Azure Policy 法规遵从性控制措施。 这些内置的策略定义提供了管理 Azure 资源合规性的常用方法。
-ms.date: 04/21/2021
+ms.date: 04/28/2021
 ms.topic: sample
 author: v-amallick
 ms.author: v-amallick
 ms.service: backup
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 62a2fd3093770685edbde6de0519895b51778b7d
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: ae9d649f6a3f79c59f8fade86ee3dfbba77a98f0
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107877979"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108180135"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-backup"></a>Azure 备份的 Azure Policy 法规遵从性控制措施
 

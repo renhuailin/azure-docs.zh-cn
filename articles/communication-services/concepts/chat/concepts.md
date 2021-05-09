@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 292f430a1b08d59efdf05405437b3d1aa49ea2b7
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 05d20b8c07e618c7d8aef8bce7c437c1b3d392ac
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168581"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290067"
 ---
 # <a name="chat-concepts"></a>聊天概念 
 
@@ -84,7 +84,7 @@ Azure 通信服务聊天 SDK 可用于向应用程序添加实时文本聊天。
  - `participantsAdded` - 当已将某个用户添加为聊天线程参与者时。     
  - `participantsRemoved` - 从聊天线程中删除现有参与者时。
 
-实时通知可用于为用户提供实时聊天体验。 为了针对在用户离开时未看到的消息发送推送通知，通信服务与 Azure 事件网格集成，以发布聊天相关事件（POST 操作），这些事件可插入到自定义应用通知服务中。 有关更多详细信息，请参阅[服务器事件](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fcommunication-services%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json)。
+实时通知可用于为用户提供实时聊天体验。 为了针对在用户离开时未看到的消息发送推送通知，通信服务与 Azure 事件网格集成，以发布聊天相关事件（POST 操作），这些事件可插入到自定义应用通知服务中。 有关更多详细信息，请参阅[服务器事件](../../../event-grid/event-schema-communication-services.md?bc=https%3a%2f%2fdocs.microsoft.com%2fen-us%2fazure%2fbread%2ftoc.json&toc=https%3a%2f%2fdocs.microsoft.com%2fen-us%2fazure%2fcommunication-services%2ftoc.json)。
 
 
 ## <a name="build-intelligent-ai-powered-chat-experiences"></a>构建 AI 支持的智能聊天体验   

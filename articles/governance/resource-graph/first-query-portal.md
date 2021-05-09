@@ -1,16 +1,16 @@
 ---
 title: 快速入门：第一个门户查询
 description: 本快速入门介绍在 Azure 门户中使用 Azure Resource Graph 资源管理器运行第一个查询的步骤。
-ms.date: 01/27/2021
+ms.date: 05/01/2021
 ms.topic: quickstart
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 07e336121c6338b27c018acb5b2332653663e1b4
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: fddf208a51254d70fb8cc2aa1c9322a22506003a
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533083"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108324268"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>快速入门：使用 Azure Resource Graph Explorer 运行第一个 Resource Graph 查询
 

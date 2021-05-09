@@ -6,12 +6,12 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9ead123338a410daf53569ff577dfc8c728a8ddf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df6271f8c036d708b93d7312076f3eee585cfcba
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708486"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287277"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>什么是自动检测或无代码附加 - Azure Monitor Application Insights？
 
@@ -27,7 +27,6 @@ Application Insights 与各种资源提供程序集成，可在不同的环境�
 |---------------------------------------|-----------------|-----------------|-----------------|-----------------|-----------------|
 |Windows 上的 Azure 应用服务           | GA，OnBD*       | GA，选择加入      | 正在进行     | 正在进行     | 不支持   |
 |Linux 上的 Azure 应用服务             | 空值             | 不支持   | 正在学习     | 公共预览版  | 不支持   |
-|AKS 上的 Azure 应用服务               | 空值             | 设计中       | 设计中       | 设计中       | 不支持   |
 |Azure Functions - 基本                | GA，OnBD*       | GA，OnBD*       | GA，OnBD*       | GA，OnBD*       | GA，OnBD*       |
 |Azure Functions Windows - 依赖项 | 不支持   | 不支持   | 公共预览版  | 不支持   | 不支持   |
 |Azure Kubernetes 服务               | 空值             | 设计中       | 通过代理   | 设计中       | 不支持   |

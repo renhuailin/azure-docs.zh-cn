@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 75650d7ff0ac647aeb6dace76c270680b1b89347
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae9b749f62dc74a6cb0dfea3701fd4ebac11c188
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98954947"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107931649"
 ---
 ## <a name="enable-logging"></a>启用日志记录
 
@@ -48,3 +48,7 @@ ms.locfileid: "98954947"
 ## <a name="validate-your-integration"></a>验证你的集成
 
 按照 [Microsoft 标识平台集成清单](../articles/active-directory/develop/identity-platform-integration-checklist.md)测试你的集成。
+
+## <a name="build-for-resilience"></a>针对复原能力构建
+
+了解如何在应用中提高复原能力。 详情请参阅[提高你开发的身份验证和授权应用程序的复原能力](../articles/active-directory/fundamentals/resilience-app-development-overview.md)

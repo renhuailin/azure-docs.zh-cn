@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7a88d8a0065ca7f5cb054d23295e5cfbc23489ca
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fb46adc6de32befd554047eded18ca16ab76dde1
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728583"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286755"
 ---
 # <a name="quickstart-handle-sms-events-for-delivery-reports-and-inbound-messages"></a>快速入门：处理传递报告和入站消息的短信事件
 
@@ -65,7 +65,7 @@ ms.locfileid: "105728583"
 
 如果系统提示输入系统主题名称，请随意输入唯一的字符串。 此字段不会对体验造成影响，适用于内部遥测。
 
-查看 [Azure 通信服务支持的事件](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services)的完整列表。
+查看 [Azure 通信服务支持的事件](../../../event-grid/event-schema-communication-services.md)的完整列表。
 
 :::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="显示选择了“短信已收到”和“短信传递报告已收到”事件类型的屏幕截图。":::
 
@@ -90,7 +90,7 @@ ms.locfileid: "105728583"
 - 当通信服务电话号码收到短信时，会生成 `SMS Received` 事件。 若要触发事件，只需将消息从你的电话发送到附加到通信服务资源的电话号码。
 - 当使用通信服务电话号码向用户发送短信时，会生成 `SMS Delivery Report Received` 事件。 若要触发和事件，需要在[已发送短信](../telephony-sms/send.md)的选项中启用 `Delivery Report`。 尝试使用 `Delivery Report` 向你的电话发送消息。 完成此操作会从你的 Azure 帐户中扣取最多几美分的费用。
 
-查看 [Azure 通信服务支持的事件](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services)的完整列表。
+查看 [Azure 通信服务支持的事件](../../../event-grid/event-schema-communication-services.md)的完整列表。
 
 ### <a name="receiving-sms-events"></a>接收短信事件
 
@@ -100,7 +100,7 @@ ms.locfileid: "105728583"
 
 :::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="显示“短信传递报告”事件的事件网格架构的屏幕截图。":::
 
-详细了解[事件架构和其他事件处理概念](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services)。
+详细了解[事件架构和其他事件处理概念](../../../event-grid/event-schema-communication-services.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

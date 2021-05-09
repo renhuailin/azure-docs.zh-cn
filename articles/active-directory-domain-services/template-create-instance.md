@@ -10,12 +10,13 @@ ms.workload: identity
 ms.topic: sample
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: e18825da64d0d200f55ce72985ac843b93b1e612
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e1262b70bae92f7cbc511067f37687240fb2e602
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96618784"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108285909"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 Azure Active Directory 域服务托管域
 

@@ -9,16 +9,14 @@ ms.author: rifox
 ms.date: 03/12/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 185cd5d33b15c4c1976fa82ccc75dcd661a36449
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 3c6464ff23b269b738023b8f8e187d9123da70ca
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107737525"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290445"
 ---
 # <a name="samples"></a>示例
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include-android-ios.md)]
 
 Azure 通信服务提供了许多可用示例，你可以在创建自己的应用程序或用例之前使用这些示例测试 ACS 服务和功能。
 

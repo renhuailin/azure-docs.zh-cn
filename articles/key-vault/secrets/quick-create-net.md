@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6338b76e2f14e9f842b3395113badadcd37c8d32
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: ac06f05ebdf4fd71e3ab3ef8213f51bec42735b7
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107814165"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290859"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-net-sdk-v4"></a>快速入门：适用于 .NET 的 Azure Key Vault 机密客户端库 (SDK v4)
 
@@ -131,7 +131,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 本快速入门使用登录用户向 Key Vault 进行身份验证，这是本地开发的首选方法。 对于部署到 Azure 的应用程序，应将托管标识分配给应用服务或虚拟机。有关详细信息，请参阅[托管标识概述](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
 
-在下面的示例中，Key Vault 的名称将扩展为 Key Vault URI，格式为“https://\<your-key-vault-name\>.vault.azure.net”。 此示例使用 [Azure 标识库](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)的[“DefaultAzureCredential()”](/dotnet/api/azure.identity.defaultazurecredential)类，该类允许在具有不同选项的不同环境中使用相同代码提供标识。 有关向 Key Vault 进行身份验证的详细信息，请参阅[开发人员指南](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)。
+在下面的示例中，Key Vault 的名称将扩展为 Key Vault URI，格式为“https://\<your-key-vault-name\>.vault.azure.net”。 此示例使用 [Azure 标识库](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)的[“DefaultAzureCredential()”](/dotnet/api/azure.identity.defaultazurecredential)类，该类允许在具有不同选项的不同环境中使用相同代码提供标识。 有关向密钥保管库进行身份验证的详细信息，请参阅[开发人员指南](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)。
 
 [!code-csharp[](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=authenticate)]
 

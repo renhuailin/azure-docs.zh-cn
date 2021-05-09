@@ -1,14 +1,14 @@
 ---
 title: Azure 管理概述 - Azure 治理
 description: Azure 应用程序和资源管理领域概述及 Azure 管理工具上内容的链接。
-ms.date: 02/05/2021
+ms.date: 05/01/2021
 ms.topic: overview
-ms.openlocfilehash: 754fe496b790a7ee32eb840109a60a04ee66ef97
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 88611e7663599432dc0599e2840768d6746579d8
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99593919"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108323998"
 ---
 # <a name="what-are-the-azure-management-areas"></a>什么是 Azure 管理区域？
 

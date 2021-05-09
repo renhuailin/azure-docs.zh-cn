@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/05/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: d0470759a589927b65462f258b20446af608175c
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 69677ed419fa9bac2cbcb06c394c92f68d0b7777
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284018"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930922"
 ---
 # <a name="configure-azure-cosmos-db-account-with-periodic-backup"></a>为 Azure Cosmos DB 帐户配置定期备份
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -30,6 +30,9 @@ Azure Cosmos DB 会定期自动备份数据。 自动备份不会影响数据库
   :::image type="content" source="./media/configure-periodic-backup-restore/automatic-backup.png" alt-text="GRS Azure 存储中所有 Cosmos DB 实体的定期完整备份。" lightbox="./media/configure-periodic-backup-restore/automatic-backup.png" border="false":::
 
 * 备份不会影响应用程序的性能或可用性。 Azure Cosmos DB 在后台执行数据备份，不会消耗任何额外的预配吞吐量 (RU)，也不会影响数据库的性能和可用性。
+
+> [!Note]
+> 不支持已启用 Synapse Link 的帐户。
 
 ## <a name="backup-storage-redundancy"></a><a id="backup-storage-redundancy"></a>备份存储冗余
 

@@ -3,12 +3,12 @@ title: PCI-DSS v3.2.1 蓝图示例控件
 description: 控制支付卡行业数据安全标准 v3.2.1 蓝图示例到 Azure Policy 和 Azure RBAC 的映射。
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 028981e7c6fc6e3886781d33079dcdfa0aebcc39
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 7011f0b55e73f193fb85881ed18812de97876fda
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386069"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166660"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>PCI-DSS v3.2.1 蓝图示例的控制映射
 
@@ -65,7 +65,7 @@ ms.locfileid: "106386069"
 
 此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义用于审核拥有所有者、写入和/或读取权限的外部帐户，以及拥有所有者和/或写入权限、但未启用多重身份验证的员工帐户，来帮助你限制和控制特权访问权限。 Azure 基于角色的访问控制 (Azure RBAC) 可帮助管理谁有权访问 Azure 资源。 了解实施自定义 Azure RBAC 规则的位置有助于验证需求以及实施是否适当，因为自定义 Azure RBAC 规则容易出错。 此蓝图还分配 [Azure Policy](../../../policy/overview.md) 定义，用于审核 Azure Active Directory 身份验证在 SQL 服务器中的使用。 使用 Azure Active Directory 身份验证可以简化权限管理，以及集中化数据库用户和其他 Microsoft 服务的标识  
 管理。
- 
+
 - 应从订阅中删除拥有所有者权限的外部帐户
 - 应从订阅中删除具有写入权限的外部帐户
 - 应从订阅中删除拥有读取权限的外部帐户
