@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 03/01/2021
 ms.author: iangithinji
 ms.reviewer: baselden
-ms.openlocfilehash: b0fd3dae2ff9c6de39462d19dc41a32ba51171e0
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 4e9bedc63a3b1d53222c732b6611d132249b07c6
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534866"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108320792"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>将应用程序身份验证从 Active Directory 联合身份验证服务移动到 Azure Active Directory
 
@@ -48,7 +48,7 @@ ms.locfileid: "107534866"
 
 有关详细信息，请参阅：
 
-* [使用 Azure AD 应用程序代理为远程用户发布本地应用](what-is-application-proxy.md)。
+* [使用 Azure AD 应用程序代理为远程用户发布本地应用](../app-proxy/what-is-application-proxy.md)。
 * [什么是应用程序管理？](what-is-application-management.md)
 * [应用程序迁移到 Azure AD 的 AD FS 应用程序活动报告](migrate-adfs-application-activity.md)。
 * [使用 Azure AD Connect Health 监视 AD FS](../hybrid/how-to-connect-health-adfs.md)。
@@ -120,7 +120,7 @@ ms.locfileid: "107534866"
 
 大多数 SaaS 应用程序都可以在 Azure AD 中进行配置。 Microsoft 在 [Azure AD 应用库](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)中提供了许多预配置的 SaaS 应用连接，这使转换更容易。 SAML 2.0 应用程序可以通过 Azure AD 应用库与 Azure AD 集成，也可以作为[非库应用程序](add-application-portal.md)进行集成。
 
-类似地，使用 OAuth 2.0 或 OpenID Connect 的应用可作为[应用注册](../develop/quickstart-register-app.md)与 Azure AD 集成。 使用旧版协议的应用可使用 [Azure AD 应用程序代理](application-proxy.md)向 Azure AD 进行身份验证。
+类似地，使用 OAuth 2.0 或 OpenID Connect 的应用可作为[应用注册](../develop/quickstart-register-app.md)与 Azure AD 集成。 使用旧版协议的应用可使用 [Azure AD 应用程序代理](../app-proxy/application-proxy.md)向 Azure AD 进行身份验证。
 
 有关加入 SaaS 应用的任何问题，可联系 [SaaS 应用程序集成支持别名](mailto:SaaSApplicationIntegrations@service.microsoft.com)。
 
@@ -414,7 +414,7 @@ AD FS 2016 中的内置访问控制策略：
 | OAuth/OpenID Connect| 选择“企业应用程序”>“权限”，并确保你已在应用的用户设置中许可该应用程序。|
 | 基于 SAML 的 SSO | 使用“单一登录”下的[测试 SAML 设置](debug-saml-sso-issues.md)按钮。 |
 | 基于密码的 SSO |  下载并安装 [MyApps 安全](../user-help/my-apps-portal-end-user-access.md)[登录](../user-help/my-apps-portal-end-user-access.md)[扩展](../user-help/my-apps-portal-end-user-access.md)。 此扩展可帮助你启动组织中任何需要你使用 SSO 过程的云应用。 |
-| 应用程序代理 | 确保连接器正在运行并已分配给应用程序。 访问[应用程序代理故障排除指南](application-proxy-troubleshoot.md)以获取进一步的帮助。 |
+| 应用程序代理 | 确保连接器正在运行并已分配给应用程序。 访问[应用程序代理故障排除指南](../app-proxy/application-proxy-troubleshoot.md)以获取进一步的帮助。 |
 
 > [!NOTE]
 > 旧 AD FS 环境中的 Cookie 在用户计算机上保持不变。 这些 Cookie 可能会导致迁移出现问题，因为用户可能会定向到旧的 AD FS 登录环境，而不是新的 Azure AD 登录环境。 可能需要手动或使用脚本来清除用户浏览器 Cookie。 你还可以使用 System Center Configuration Manager 或类似平台。

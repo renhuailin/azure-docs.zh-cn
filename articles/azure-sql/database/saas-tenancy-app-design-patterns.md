@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 8a13c641d50a68d9661b4aa6caf8effb82d53dd7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b3d819cc87d653b2ef132539a77dbc57220ca5d1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92793222"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142326"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>多租户 SaaS 数据库租户模式
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -115,7 +115,7 @@ Azure SQL 数据库提供多种管理功能，用于大规模管理大量数据�
 
 #### <a name="automation"></a>自动化
 
-可以编写管理操作的脚本，并通过 [devops][http-visual-studio-devops-485m] 模型提供这些操作。  甚至可以在应用程序中自动化和公开操作。
+可以编写管理操作的脚本，并通过 [devops](/azure/devops/user-guide/what-is-azure-devops) 模型提供这些操作。  甚至可以在应用程序中自动化和公开操作。
 
 例如，可将单个租户自动恢复到以前的某个时间点。  恢复操作只需还原一个存储租户的单租户数据库。  此还原操作不会影响其他租户，确保以每个租户的粒度级完成管理操作。
 
@@ -185,7 +185,7 @@ SQL 数据库提供一个可与分片库和目录数据库结合使用的拆分/
 
 | 度量 | 独立应用 | 每个租户各有数据库 | 分片多租户 |
 | :---------- | :------------- | :------------------ | :------------------- |
-| 缩放 | 中型<br />1 到数百个 | 很高<br />1 到数十万个 | 无限制<br />1 到数百万个 |
+| 缩放 | 中<br />1 到数百个 | 很高<br />1 到数十万个 | 无限制<br />1 到数百万个 |
 | 租户隔离 | 很高 | 高 | 低；任何单租户（即独自在 MT 数据库中的租户）除外。 |
 | 每个租户的数据库成本 | 高；大小根据峰值而定。 | 低；使用池。 | 最低，适用于 MT 数据库中的小租户。 |
 | 性能监视和管理 | 仅限每租户 | 聚合 + 每租户 | 聚合；不过，对于单租户，将应用“仅限每租户”模式。 |

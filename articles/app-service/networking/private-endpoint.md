@@ -4,17 +4,17 @@ description: 使用 Azure 专用终结点以私密方式连接到 Web 应用
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 03/16/2021
+ms.date: 04/27/2021
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 4de405e07a9ae9d1efb33f2cee3630a1eefdef33
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c95c90e7860b0257f63802b321c35b38ec00bb23
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104655897"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140958"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>为 Azure Web 应用使用专用终结点
 
@@ -122,6 +122,8 @@ ms.locfileid: "104655897"
 
 FTP 访问是通过入站公共 IP 地址提供的。 专用终结点不支持对 Web 应用的 FTP 访问。
 
+有一个已知限制是，其会影响专用终结点，以及使用插槽路由的流量（亦称[通过生产功能执行测试）][TiP]。 从 2021 年 4 月起，槽之间的自动和手动请求路由将会导致“403 Access Denied”。 将来的版本会取消此限制。
+
 我们会定期改进专用链接功能和专用终结点。若要了解有关限制的最新信息，请查看[此文][pllimitations]。
 
 ## <a name="next-steps"></a>后续步骤
@@ -150,3 +152,4 @@ FTP 访问是通过入站公共 IP 地址提供的。 专用终结点不支持�
 [howtoguide4]: ../scripts/template-deploy-private-endpoint.md
 [howtoguide5]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-privateendpoint-vnet-injection
 [howtoguide6]: ../scripts/terraform-secure-backend-frontend.md
+[TiP]: https://docs.microsoft.com/azure/app-service/deploy-staging-slots#route-traffic

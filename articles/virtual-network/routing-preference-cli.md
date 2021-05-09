@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2021
 ms.author: mnayak
-ms.openlocfilehash: 2291767c162953f8339fb8cc27e55b96290ef795
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 58b91c105ed48617b64356904942f5ab6b461cda
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101665961"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776530"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-azure-cli"></a>使用 Azure CLI 配置公共 IP 地址的路由首选项
 
@@ -40,14 +40,14 @@ ms.locfileid: "101665961"
 - 本文要求使用 2.0.49 版或更高版本的 Azure CLI。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="create-a-resource-group"></a>创建资源组
-使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。 以下示例在美国东部 Azure 区域创建一个资源组：
+使用“[az group create](/cli/azure/group#az_group_create)”命令创建资源组。 以下示例在美国东部 Azure 区域创建一个资源组：
 
 ```azurecli
   az group create --name myResourceGroup --location eastus
 ```
 ## <a name="create-a-public-ip-address"></a>创建公共 IP 地址
 
-使用命令 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) 创建具有路由首选项“Internet”的公共 IP 地址，格式如下所示。
+使用命令 [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) 创建具有路由首选项“Internet”的公共 IP 地址，格式如下所示。
 
 以下命令在美国东部 Azure 区域创建具有“Internet”路由首选项的新公共 IP。
 
@@ -71,4 +71,3 @@ az network public-ip create \
 
 - 详细了解[公共 IP 地址中的路由首选项](routing-preference-overview.md)。 
 - [使用 Azure CLI 为 VM 配置路由首选项](configure-routing-preference-virtual-machine-cli.md)。
-

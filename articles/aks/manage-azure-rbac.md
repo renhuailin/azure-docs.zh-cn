@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 9ce8bc71139b52d690893734435e6bfee090062d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c708a577a1c2e4bb8f7ddff90f458afd0d9e566f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102184366"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782992"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>使用 Azure RBAC 进行 Kubernetes 授权（预览）
 
@@ -21,13 +21,13 @@ ms.locfileid: "102184366"
 
 本文档介绍了一种新方法，该方法允许你跨 Azure 资源、AKS 和 Kubernetes 资源实现统一的管理和访问控制。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 有了通过 Azure 管理 Kubernetes 资源的 RBAC 这一功能，你就可以选择使用 Azure 或原生 Kubernetes 机制管理群集资源的 RBAC。 启用后，将由 Azure RBAC 以独占方式验证 Azure AD 主体，由 Kubernetes RBAC 以独占方式验证常规 Kubernetes 用户和服务帐户。 若要详细了解如何在 AKS 上通过 RBAC 进行身份验证和授权，请参阅[此文](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview)。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-### <a name="prerequisites"></a>先决条件 
+### <a name="prerequisites"></a>必备条件 
 - 确保具有 Azure CLI 2.9.0 或更高版本。
 - 确保已启用 `EnableAzureRBACPreview` 功能标志。
 - 确保已安装 `aks-preview` [CLI 扩展][az-extension-add] v0.4.55 或更高版本。
@@ -280,9 +280,9 @@ az group delete -n MyResourceGroup
 <!-- LINKS - Internal -->
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-aks-install-cli]: /cli/azure/aks#az-aks-install-cli
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-aks-install-cli]: /cli/azure/aks#az_aks_install_cli
+[az-provider-register]: /cli/azure/provider#az_provider_register
