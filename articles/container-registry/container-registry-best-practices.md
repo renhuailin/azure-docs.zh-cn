@@ -3,12 +3,12 @@ title: 注册最佳做法
 description: 通过遵循这些最佳做法，了解如何有效使用 Azure 容器注册表。
 ms.topic: article
 ms.date: 01/07/2021
-ms.openlocfilehash: 01c8c7f547be9dd225022fb3315a4bdecc48c2bf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0811cc4a5bffc21ffba19e64a3887eab6bc36fbb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100578143"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784130"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure 容器注册表的最佳做法
 
@@ -63,7 +63,7 @@ Azure 容器注册表的身份验证有两种主要方案：单个身份验证�
 
 | 类型 | 示例方案 | 推荐的方法 |
 |---|---|---|
-| 单个标识 | 开发者从/向其开发计算机推送映像。 | [az acr login](/cli/azure/acr#az-acr-login) |
+| 单个标识 | 开发者从/向其开发计算机推送映像。 | [az acr login](/cli/azure/acr#az_acr_login) |
 | 无外设/服务标识 | 用户未直接参与的生成和部署管道。 | [服务主体](container-registry-authentication.md#service-principal) |
 
 有关所有 Azure 容器注册表身份验证方案的详细信息，请参阅 [Azure 容器注册表的身份验证](container-registry-authentication.md)。
@@ -108,8 +108,8 @@ Azure 容器注册表可用于多个层级（也称为 SKU），这些层级提�
 [registry-overview-quotas]: ./media/container-registry-best-practices/registry-overview-quotas.png
 
 <!-- LINKS - Internal -->
-[az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete
-[az-acr-show-usage]: /cli/azure/acr#az-acr-show-usage
+[az-acr-repository-delete]: /cli/azure/acr/repository#az_acr_repository_delete
+[az-acr-show-usage]: /cli/azure/acr#az_acr_show_usage
 [azure-cli]: /cli/azure
 [azure-portal]: https://portal.azure.com
 [container-registry-geo-replication]: container-registry-geo-replication.md

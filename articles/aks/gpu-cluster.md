@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: d7e312f049acc0b74aa0a253864bfce6100044bd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5e36465c307443c8e6f135c5937bddbbb079b60e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96929134"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783154"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 上将 GPU 用于计算密集型工作负荷
 
@@ -134,13 +134,13 @@ daemonset "nvidia-device-plugin" created
 az feature register --name GPUDedicatedVHDPreview --namespace Microsoft.ContainerService
 ```
 
-状态可能需要几分钟才显示为“已注册”。 可以使用 [az feature list](/cli/azure/feature#az-feature-list) 命令来检查注册状态：
+状态可能需要几分钟才显示为“已注册”。 可以使用 [az feature list](/cli/azure/feature#az_feature_list) 命令来检查注册状态：
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/GPUDedicatedVHDPreview')].{Name:name,State:properties.state}"
 ```
 
-当状态显示为“已注册”时，使用 [az provider register](/cli/azure/provider#az-provider-register) 命令来刷新 `Microsoft.ContainerService` 资源提供程序的注册：
+当状态显示为“已注册”时，使用 [az provider register](/cli/azure/provider#az_provider_register) 命令来刷新 `Microsoft.ContainerService` 资源提供程序的注册：
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -413,9 +413,9 @@ kubectl delete jobs samples-tf-mnist-demo
 [nvidia-github]: https://github.com/NVIDIA/k8s-device-plugin
 
 <!-- LINKS - internal -->
-[az-group-create]: /cli/azure/group#az-group-create
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-group-create]: /cli/azure/group#az_group_create
+[az-aks-create]: /cli/azure/aks#az_aks_create
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [aks-spark]: spark-job.md
 [gpu-skus]: ../virtual-machines/sizes-gpu.md
 [install-azure-cli]: /cli/azure/install-azure-cli

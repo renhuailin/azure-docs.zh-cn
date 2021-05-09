@@ -9,12 +9,12 @@ ms.author: prakulka
 ms.date: 03/26/2021
 ms.topic: reference
 ms.service: azure-communication-services
-ms.openlocfilehash: 1ba7c730542adb74356d71f2482cce57e633cb65
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cd35ccc7399580c0bc83d8668ea932c3a800f700
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645501"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290553"
 ---
 # <a name="sms-faq"></a>SMS 常见问题解答
 
@@ -43,7 +43,7 @@ SMS 的速率限制：
 
 ## <a name="how-can-i-receive-messages-using-azure-communication-services"></a>如何使用 Azure 通信服务接收短信？
 
-Azure 通信服务客户可以使用 Azure 事件网格来接收传入的短信。 按照此[快速入门](https://docs.microsoft.com/azure/communication-services/quickstarts/telephony-sms/handle-sms-events)中的操作设置事件网格以接收短信。
+Azure 通信服务客户可以使用 Azure 事件网格来接收传入的短信。 按照此[快速入门](../../quickstarts/telephony-sms/handle-sms-events.md)中的操作设置事件网格以接收短信。
 
 ## <a name="can-i-sendreceive-long-messages-2048-chars"></a>可以发送/接收长短信（>2048 字符）？
 
@@ -56,4 +56,4 @@ Azure 通信服务支持通过短信发送和接收长短信。 但是，某些�
 ## <a name="can-i-send-messages-to-multiple-recipients"></a>是否可以向多个收件人发送短信？
 
 
-是的，可以通过一个请求向多个收件人发送短信。 按照此[快速入门](https://docs.microsoft.com/azure/communication-services/quickstarts/telephony-sms/send?pivots=programming-language-csharp)中的操作将短信发送给多个收件人。
+是的，可以通过一个请求向多个收件人发送短信。 按照此[快速入门](../../quickstarts/telephony-sms/send.md?pivots=programming-language-csharp)中的操作将短信发送给多个收件人。
