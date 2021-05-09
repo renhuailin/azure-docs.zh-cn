@@ -3,12 +3,13 @@ title: 在 JSON 和 Bicep 之间转换模板
 description: 介绍用于将 Azure 资源管理器模板从 Bicep 转换为 JSON 并从 JSON 转换为 Bicep 的命令。
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: 6d242f5846996cd0f5b9510a1a2b9f2bf063a0c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 81cad004ef106bc3d9e5732dac9fbb7b4f0a60e1
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103422096"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316490"
 ---
 # <a name="converting-arm-templates-between-json-and-bicep"></a>在 JSON 和 Bicep 之间转换 ARM 模板
 
@@ -26,11 +27,11 @@ Bicep CLI 提供用于将任何现有 JSON 模板反向编译为 Bicep 文件的
 bicep decompile mainTemplate.json
 ```
 
-此命令提供 Bicep 创作的起点。 此命令不适用于所有模板。 目前，仅当嵌套模板使用“内部”表达式计算范围时，才能对其进行反向编译。 无法反向编译使用复制循环的模板。
+此命令提供 Bicep 创作的起点。 此命令不适用于所有模板。 当前，嵌套模板只有在使用了“inner”表达式评估作用域时才能进行反向编译。 无法反向编译使用复制循环的模板。
 
 ## <a name="convert-from-bicep-to-json"></a>从 Bicep 转换为 JSON
 
-Bicep CLI 还提供用于将 Bicep 转换为 JSON 的命令。 若要生成 JSON 文件，请使用：
+Bicep CLI 还提供了一个命令，用于将 Bicep 转换为 JSON。 若要生成 JSON 文件，请使用：
 
 ```azurecli
 bicep build mainTemplate.bicep
@@ -38,7 +39,7 @@ bicep build mainTemplate.bicep
 
 ## <a name="export-template-and-convert"></a>导出模板并进行转换
 
-可以导出资源组的模板，然后将其直接传递到反向编译命令。 以下示例演示如何反向编译已导出的模板。
+可以导出资源组的模板，然后将其直接传递到反向编译命令。 下面的示例展示了如何反向编译已导出的模板。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -62,9 +63,9 @@ bicep decompile main.json
 
 ---
 
-## <a name="side-by-side-view"></a>“并排显示”视图
+## <a name="side-by-side-view"></a>并排视图
 
-通过 [Bicep 操场](https://aka.ms/bicepdemo)可以并排显示等效的 JSON 和 Bicep 文件。 可以选择一个示例模板来查看这两个版本。 或者，选择 `Decompile` 以上传自己的 JSON 模板并查看等效的 Bicep 文件。
+使用 [Bicep 操场](https://aka.ms/bicepdemo)，你可以并排查看等效的 JSON 和 Bicep 文件。 你可以选择一个示例模板来查看这两种版本。 还可以选择 `Decompile` 以上传你自己的 JSON 模板并查看等效的 Bicep 文件。
 
 ## <a name="next-steps"></a>后续步骤
 

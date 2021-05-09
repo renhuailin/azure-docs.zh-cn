@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 04/08/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 651922837b2193f7a8387c4dec6a1e20b84a41a5
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: d61a87294fe5c5c8794c1b0d5f1eda5e81b88786
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728009"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205730"
 ---
 # <a name="azure-digital-twins-service-limits"></a>Azure 数字孪生服务限制
 
@@ -33,7 +33,7 @@ ms.locfileid: "107728009"
 
 若要对此进行管理，下面是一些用于处理限制的建议。
 * **使用重试逻辑。** [Azure 数字孪生 SDK](how-to-use-apis-sdks.md) 针对失败请求实现重试逻辑，因此如果你使用的是提供的 SDK，则此 SDK 已内置其中。 否则请考虑在自己的应用程序中实现重试逻辑。 服务在失败响应中发送回 `Retry-After` 标头，可用于确定重试之前要等待的时间。
-* **使用阈值和通知就接近限制发出警告。** Azure 数字孪生的一些服务限制具有相应的[指标](troubleshoot-metrics.md)，可用于跟踪这些领域的使用情况。 若要在达到阈值时配置阈值并针对任何指标设置警报，请参阅 [*故障排除：设置警报*](troubleshoot-alerts.md)中的说明。 若要为不提供指标的其他限制设置通知，请考虑在自己的应用程序代码中实现此逻辑。
+* **使用阈值和通知就接近限制发出警告。** Azure 数字孪生的一些服务限制具有相应的[指标](troubleshoot-metrics.md)，可用于跟踪这些领域的使用情况。 若要在达到阈值时配置阈值并针对任何指标设置警报，请参阅[故障排除：设置警报](troubleshoot-alerts.md)中的说明。 若要为不提供指标的其他限制设置通知，请考虑在自己的应用程序代码中实现此逻辑。
 
 ## <a name="next-steps"></a>后续步骤
 

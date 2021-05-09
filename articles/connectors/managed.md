@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 04/20/2021
-ms.openlocfilehash: d50cf1009fb674f2d3d5914715dcbd9699565489
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 857c0e41f52c99d83142b3db7471b51b55316b5e
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107795869"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316166"
 ---
 # <a name="managed-connectors-for-logic-apps"></a>适用于逻辑应用的托管连接器
 
@@ -514,7 +514,7 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [创建可从逻辑应用调用的自定义 API](/logic-apps/logic-apps-create-api-app)
+> [创建可从逻辑应用调用的自定义 API](../logic-apps/logic-apps-create-api-app.md)
 
 <!--Managed connector icons-->
 [appfigures-icon]: ./media/apis-list/appfigures.png

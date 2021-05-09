@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 4a22602dd9638b981cfe3d8bae9b5cdaacbf90dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7df6eabbecca9538de3c45bf1c9fc7ca6e4334bd
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91652034"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205370"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
@@ -311,7 +311,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 ### <a name="create-app-service-app-and-application-insights-instance"></a>创建应用服务应用和 Application Insights 实例
 
-1. 如果没有可用的应用服务应用，请[创建一个](quickstart-dotnet-framework.md)。 创建应用时，还可以创建已连接的 Application Insights 资源。 执行此操作时，系统会在应用中为你设置 `APPINSIGHTS_INSTRUMENTATIONKEY`。
+1. 如果没有可用的应用服务应用，请[创建一个](./quickstart-dotnetcore.md?tabs=netframework48)。 创建应用时，还可以创建已连接的 Application Insights 资源。 执行此操作时，系统会在应用中为你设置 `APPINSIGHTS_INSTRUMENTATIONKEY`。
 
 1. 如果没有可用的 Application Insights 资源，请[创建一个](../azure-monitor/app/create-new-resource.md )。 将“应用程序类型”设置为“常规”，并跳过“复制检测密钥”后面的部分。  
 
@@ -514,7 +514,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
    Executed 'Functions.ProcessQueueMessage' (Succeeded, Id=5a2ac479-de13-4f41-aae9-1361f291ff88)
    ```
 
-## <a name="add-an-output-binding"></a>添加输出绑定
+## <a name="add-an-output-binding&quot;></a>添加输出绑定
 
 输出绑定可以简化写入数据的代码。 本示例在前一个示例的基础上做了修改，它会写入 Blob 的副本，而不是记录其大小。 Blob 存储绑定包含在我们之前安装的 Azure 存储扩展包中。
 
@@ -522,7 +522,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
    ```cs
    public static void ProcessQueueMessage(
-       [QueueTrigger("queue")] string message,
+       [QueueTrigger(&quot;queue")] string message,
        [Blob("container/{queueTrigger}", FileAccess.Read)] Stream myBlob,
        [Blob("container/copy-{queueTrigger}", FileAccess.Write)] Stream outputBlob,
        ILogger logger)

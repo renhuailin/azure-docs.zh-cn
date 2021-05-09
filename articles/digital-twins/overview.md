@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: d03a4865c8db52f74f4130c458fec3028f5b95a4
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: a64564887fa2738fd3c0586d1040be3c95193927
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481661"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205784"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure 数字孪生是什么？
 
@@ -30,7 +30,7 @@ Azure 数字孪生是一个服务型平台 (PaaS)，可用于基于整个环境�
 
 ### <a name="open-modeling-language"></a>开放式建模语言
 
-在 Azure 数字孪生中，可以使用称为 [**模型**](concepts-models.md)的自定义孪生类型来定义表示物理环境中的人物、位置和事物的数字实体。 
+在 Azure 数字孪生中，可以使用称为[模型](concepts-models.md)的自定义孪生类型来定义表示物理环境中的人物、位置和事物的数字实体。 
 
 可以将这些模型定义视为描述业务的专门词汇。 例如，对于建筑物管理解决方案，可以定义诸如“建筑物”、“地板”和“电梯”之类的模型。 然后，可以根据这些模型创建 **数字孪生**，以表示你的特定环境。
 
@@ -46,7 +46,7 @@ DTDL 用于其他 Azure IoT 服务中的数据模型，包括 [IoT 即插即用 
 
 Azure 数字孪生中的数字模型是真实世界的实时最新表示。 使用自定义 DTDL 模型中的关系，可以将孪生连接到表示你环境的 **实时图形**。
 
-可借助示例应用程序 [Azure 数字孪生资源管理器](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)查看 Azure 数字孪生图的可视化效果。
+可借助示例应用程序 Azure 数字孪生资源管理器查看 Azure 数字孪生图的可视化效果。
 
 下面是示例可视化效果的视图：
 
@@ -102,6 +102,6 @@ Azure 数字孪生通常与其他 Azure 服务结合使用，作为较大 IoT �
 
 ## <a name="next-steps"></a>后续步骤
 
-* 在快速入门中深入研究如何使用 Azure 数字孪生：[*快速入门：浏览示例方案*](quickstart-azure-digital-twins-explorer.md)。
+* 在快速入门中深入研究如何使用 Azure 数字孪生：[快速入门：浏览示例方案](quickstart-azure-digital-twins-explorer.md)。
 
-* 或者，通过[概念：自定义模型](concepts-models.md)，开始了解有关 Azure 数字孪生概念的信息。
+* 或者，通过概念：自定义模型，开始了解有关 Azure 数字孪生概念的信息。

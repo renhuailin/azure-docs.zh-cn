@@ -3,12 +3,13 @@ title: 超出部署配额
 description: 介绍如何解决这样一个错误：在资源组历史记录中有 800 多个部署。
 ms.topic: troubleshooting
 ms.date: 08/07/2020
-ms.openlocfilehash: 8996d7817eea2f8daf44fbc9b4416c884b05940f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a59c4e3a4cfc4cea9ef30b08fa6ab220f2447efc
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87987046"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316400"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>解决部署计数超出 800 的错误
 

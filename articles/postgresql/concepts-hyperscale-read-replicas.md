@@ -4,14 +4,15 @@ description: 本文介绍 Azure Database for PostgreSQL - 超大规模 (Citus) �
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
+ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: cf8c64bf3858f0d3b7d633b94bc7302fbe563f87
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 08629ed8ce361f5d7ac4bb4d2e148ae5b20fff02
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107023795"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315554"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - 超大规模 (Citus) 中的只读副本
 

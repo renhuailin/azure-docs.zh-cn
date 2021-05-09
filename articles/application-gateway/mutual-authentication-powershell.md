@@ -7,25 +7,26 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: caya
-ms.openlocfilehash: 95534760c09ca9e1f7f09d6079886216127c7eb0
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: fdebc0cf22b317fa33b5d65383ef3bcc9b57e905
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106230820"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315968"
 ---
 # <a name="configure-mutual-authentication-with-application-gateway-through-powershell-preview"></a>使用应用程序网关通过 PowerShell（预览版）配置相互身份验证
-本文介绍如何使用 PowerShell 在应用程序网关上配置相互身份验证。 相互身份验证是指应用程序网关使用你上传到应用程序网关上的客户端证书，对发送请求的客户端进行身份验证。 
+本文介绍如何使用 PowerShell 在应用程序网关上配置相互身份验证。 相互身份验证是指应用程序网关使用你上传到应用程序网关的客户端证书，对发送请求的客户端进行身份验证。 
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 以创建与 Azure 的连接。
+本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 以创建与 Azure 的连接。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
-若要采用应用程序网关配置相互身份验证，你需要将客户端证书上传到网关。 此客户端证书将用于验证发送请求的客户端向应用程序网关提供的证书。 对于测试，可以使用自签名的证书。 不过，不建议对生产工作负荷使用自签名证书，因为这些证书难以管理，且不完全安全。
+若要在应用程序网关中配置相互身份验证，需要将客户端证书上传到网关。 该客户端证书将用于验证客户端向应用程序网关提供的证书。 对于测试，可以使用自签名的证书。 不过，不建议对生产工作负荷使用自签名证书，因为这些证书难以管理，且不完全安全。
 
 若要了解详细信息，尤其是可上传的客户端证书类型，请参阅[使用应用程序网关进行相互身份验证概述](./mutual-authentication-overview.md#certificates-supported-for-mutual-authentication)。
 

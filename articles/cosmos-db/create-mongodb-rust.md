@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: rust
 ms.topic: quickstart
 ms.date: 01/12/2021
-ms.openlocfilehash: 91e7bafe98b1aceaf8fe27b07029291a48a31351
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9a6c2b0a106b08d8aad880b0b5f18879ac5645b
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555646"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108206252"
 ---
 # <a name="quickstart-connect-a-rust-application-to-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：将 Rust 应用程序连接到 Azure Cosmos DB MongoDB API
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -22,13 +22,12 @@ ms.locfileid: "102555646"
 > * [.NET](create-mongodb-dotnet.md)
 > * [Java](create-mongodb-java.md)
 > * [Node.js](create-mongodb-nodejs.md)
-> * [Python](./mongodb-introduction.md)
 > * [Xamarin](create-mongodb-xamarin.md)
 > * [Golang](create-mongodb-go.md)
 > * [Rust](create-mongodb-rust.md)
 >
 
-Azure Cosmos DB 是一种多模型数据库服务，它通过全局分布和水平缩放功能让你快速创建和查询文档、表、键/值和图形数据库。 本文中展示的示例是一个简单的基于命令行的应用程序，它使用 [MongoDB Rust 驱动程序](https://github.com/mongodb/mongo-rust-driver)。 由于 Azure Cosmos DB MongoDB API [与 MongoDB Wire Protocol 兼容](./mongodb-introduction.md#wire-protocol-compatibility)，因此任何 MongoDB 客户端驱动程序都可以与其连接。
+Azure Cosmos DB 是一种多模型数据库服务，它通过全局分布和水平缩放功能让你快速创建和查询文档、表、键/值和图形数据库。 本文中展示的示例是一个简单的基于命令行的应用程序，它使用 [MongoDB Rust 驱动程序](https://github.com/mongodb/mongo-rust-driver)。 由于 Azure Cosmos DB MongoDB API [与 MongoDB Wire Protocol 兼容](./mongodb-introduction.md)，因此任何 MongoDB 客户端驱动程序都可以与其连接。
 
 你将了解如何通过探索示例代码中实现的 CRUD（创建、读取、更新、删除）操作来使用 MongoDB Rust 驱动程序与 Azure Cosmos DB MongoDB API 进行交互。 最后，你可以在本地运行应用程序，以查看实际运行效果。
 

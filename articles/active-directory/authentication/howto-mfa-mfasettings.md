@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 5a65480cbfa279614250ddeaf7d565b112333a05
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: c067dba3a8af87e354019154fad8304fe9edfbbc
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108285549"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829649"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>配置 Azure AD 多重身份验证设置
 
@@ -154,7 +154,7 @@ Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 * *+1 (877) 668 6536*
 
 > [!NOTE]
-> 通过公共电话网络拨打 Azure AD 多重身份验证电话时，有时会通过不支持来电显示的运营商路由电话。 因此，尽管 Azure AD 多重身份验证始终会发送呼叫号码，但并不保证会显示该号码。 这一点适用于电话呼叫以及 Azure AD 多重身份验证提供的短信。 如果需要验证短信是否来自 Azure AD 多重身份验证，请参阅[用于发送消息的短信短代码是什么？](multi-factor-authentication-faq.yml#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users-)
+> 通过公共电话网络拨打 Azure AD 多重身份验证电话时，有时会通过不支持来电显示的运营商路由电话。 因此，尽管 Azure AD 多重身份验证始终会发送呼叫号码，但并不保证会显示该号码。 这一点适用于电话呼叫以及 Azure AD 多重身份验证提供的短信。 如果需要验证短信是否来自 Azure AD 多重身份验证，请参阅[用于发送消息的短信短代码是什么？](multi-factor-authentication-faq.md#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users)
 
 若要配置自己的来电显示号码，请完成以下步骤：
 
