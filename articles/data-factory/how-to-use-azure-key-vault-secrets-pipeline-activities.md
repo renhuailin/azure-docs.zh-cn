@@ -1,17 +1,17 @@
 ---
 title: 在管道活动中使用 Azure Key Vault 机密
 description: 了解如何从 Azure Key Vault 提取存储的凭据，并在数据工厂管道运行期间使用这些凭据。
-author: ChrisLound
-ms.author: chlound
+author: nabhishek
+ms.author: abnarain
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: d7e1133b8f3880c4c1616ef5ca955ed014348935
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b6e3ac551c2660cef7437ee069d3c8e4846cbd00
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100383953"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906595"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>在管道活动中使用 Azure Key Vault 机密
 
@@ -45,10 +45,10 @@ ms.locfileid: "100383953"
 
 4. 在数据工厂管道中，添加新的 Web 活动，并按如下所示对其进行配置。  
 
-    |properties  |值  |
+    |属性  |值  |
     |---------|---------|
     |安全输出     |正确         |
-    |URL     |[Your secret URI value]?api-version=7.0         |
+    |代码     |[Your secret URI value]?api-version=7.0         |
     |方法     |GET         |
     |身份验证     |MSI         |
     |资源        |https://vault.azure.net       |

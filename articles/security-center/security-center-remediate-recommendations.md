@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: f382646c889d004738064cae2d09fd66d897b110
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: dc279ea48472ac86dd9502e37788e8b2aad4f37c
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102438261"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906779"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>在 Azure 安全中心修正建议
 
@@ -30,22 +30,22 @@ ms.locfileid: "102438261"
 
 1. 完成后，将显示一条通知，告知你问题是否已解决。
 
-## <a name="quick-fix-remediation"></a>快速修复修正
+## <a name="fix-button"></a>修复按钮
 
-为了简化修正并提高环境的安全性（并增加安全功能分数），许多建议都包括一个快速修复选项。
+为简化修正并提高环境的安全性（以及提高安全分数），许多建议中都包含“修复”选项。
 
-快速修复可帮助你针对多个资源快速修正某个建议。
+修复可帮助你针对多个资源快速修正某个建议。
 
 > [!TIP]
-> 快速修复解决方案仅可用于特定的建议。 若要查找具有可用快速修复的建议，请对建议列表使用“响应操作”筛选器：
+> “修复”功能仅可用于特定建议。 若要查找含可修复选项的建议，请对建议列表使用“响应操作”筛选器：
 > 
-> :::image type="content" source="media/security-center-remediate-recommendations/quick-fix-filter.png" alt-text="使用建议列表上方的筛选器查找具有快速修复选项的建议":::
+> :::image type="content" source="media/security-center-remediate-recommendations/quick-fix-filter.png" alt-text="使用建议列表上方的筛选器查找含修复选项的建议":::
 
-若要实现“快速修复”解决方案，请执行以下操作：
+若要实现“修复”：
 
-1. 在带有“快速修复!”标签的建议的列表中， 选择一条建议。
+1. 可从含“修复”操作图标 :::image type="icon" source="media/security-center-remediate-recommendations/fix-icon.png" border="false"::: 的建议列表中，选择一个建议。
 
-    [![选择“快速修复!”](media/security-center-remediate-recommendations/security-center-quick-fix-select.png)](media/security-center-remediate-recommendations/security-center-quick-fix-select.png#lightbox)
+    :::image type="content" source="./media/security-center-remediate-recommendations/security-center-recommendations-fix-action.png" alt-text="建议列表突出显示含修复操作的建议" lightbox="./media/security-center-remediate-recommendations/security-center-recommendations-fix-action.png#lightbox":::
 
 1. 从“不正常的资源”选项卡上，选择要对其实施建议的资源，然后选择“修正”。
 
@@ -57,7 +57,7 @@ ms.locfileid: "102438261"
     ![快速修复](./media/security-center-remediate-recommendations/security-center-quick-fix-view.png)
 
     > [!NOTE]
-    > 影响在单击“修正”后打开的“修正资源”窗口的灰色框中列出。 其中列出了在继续进行“快速修复”修正时会发生哪些更改。
+    > 影响在单击“修正”后打开的“修正资源”窗口的灰色框中列出。 其中列出了在继续执行“修复”时会发生的更改。
 
 1. 请插入相关参数（如有必要），并批准修正。
 
@@ -66,7 +66,7 @@ ms.locfileid: "102438261"
 
 1. 完成后，将显示一条通知，告知你修正是否成功。
 
-## <a name="quick-fix-remediation-logging-in-the-activity-log"></a>活动日志中的“快速修复”修正日志记录 <a name="activity-log"></a>
+## <a name="fix-actions-logged-to-the-activity-log"></a>修复操作将会记录到活动日志 <a name="activity-log"></a>
 
 修正操作使用模板部署或 REST PATCH API 调用，将配置应用于资源。 这些操作记录在 [Azure 活动日志](../azure-resource-manager/management/view-activity-logs.md)中。
 

@@ -6,12 +6,12 @@ ms.author: palatter
 ms.date: 24/02/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 0a1dd8f69cb79e42e56ab44981820e31abf204e1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b6b3a2b45c3013170e8341228dd7b78b46881015
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802992"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107925238"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,7 +27,7 @@ ms.locfileid: "104802992"
 ```swift
 class ViewController: UIViewController, MeetingUIClientDelegate {
 
-    private var meetingClient: MeetingUIClient?
+    private var meetingUIClient: MeetingUIClient?
 ```
 
 将 `meetingUIClientDelegate` 设置为 `self`。
@@ -36,14 +36,14 @@ class ViewController: UIViewController, MeetingUIClientDelegate {
 override func viewDidLoad() {
     super.viewDidLoad()
     
-    meetingClient?.meetingUIClientDelegate = self
+    meetingUIClient?.meetingUIClientDelegate = self
 }
 ```
 
 实现 `didUpdateCallState` 和 `didUpdateRemoteParticipantCount` 函数。
 
 ```swift
-    func meetingUIClient(didUpdateCallState callState: CallState) {
+    func meetingUIClient(didUpdateCallState callState: MeetingUIClientCallState) {
         switch callState {
         case .connecting:
             print("Call state has changed to 'Connecting'")
@@ -68,17 +68,17 @@ override func viewDidLoad() {
 ```swift
 class ViewController: UIViewController, MeetingUIClientIdentityProviderDelegate {
 
-    private var meetingClient: MeetingUIClient?
+    private var meetingUIClient: MeetingUIClient?
 ```
 
 在加入会议之前，将 `MeetingUIClientIdentityProviderDelegate` 设置为 `self`。
 
 ```swift
 private func joinMeeting() {
-    meetingClient?.meetingUIClientIdentityProviderDelegate = self
-    let meetingJoinOptions = MeetingJoinOptions(displayName: "John Smith")
-
-    meetingClient?.join(meetingUrl: "<MEETING_URL>", meetingJoinOptions: meetingJoinOptions, completionHandler: { (error: Error?) in
+    meetingUIClient?.meetingUIClientIdentityProviderDelegate = self
+    let meetingJoinOptions = MeetingUIClientMeetingJoinOptions(displayName: "John Smith", enablePhotoSharing: true, enableNamePlateOptionsClickDelegate: true)
+    let meetingLocator = MeetingUIClientTeamsMeetingLinkLocator(meetingLink: <MEETING_URL>)
+    meetingUIClient?.join(meetingLocator: meetingLocator, joinCallOptions: meetingJoinOptions, completionHandler: { (error: Error?) in
         if (error != nil) {
             print("Join meeting failed: \(error!)")
         }
@@ -86,7 +86,7 @@ private func joinMeeting() {
 }
 ```
 
-将每个 `userMri` 映射到相应的头像。
+添加并实现 `avatarFor`，并将每个 `userMri` 与相应的头像进行映射。
 
 ```swift
     func avatarFor(userIdentifier: String, completionHandler: @escaping (UIImage?) -> Void) {
@@ -109,4 +109,14 @@ private func joinMeeting() {
             completionHandler(nil)
         }
 }
+
+```
+
+将其他必需的 MeetingUIClientIdentityProviderDelegate 协议方法添加到该类，但其可能会保留空实现。
+```swift
+    func displayNameFor(userIdentifier: String, completionHandler: @escaping (String?) -> Void) {
+    }
+    
+    func subTitleFor(userIdentifier: String, completionHandler: @escaping (String?) -> Void) {
+    }
 ```

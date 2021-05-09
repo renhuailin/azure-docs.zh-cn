@@ -3,15 +3,15 @@ title: 视觉对象创作
 description: 了解如何在 Azure 数据工厂中使用视觉对象创作
 ms.service: data-factory
 ms.topic: conceptual
-author: dcstwh
-ms.author: weetok
+author: nabhishek
+ms.author: abnarain
 ms.date: 09/08/2020
-ms.openlocfilehash: 704360ac37e016de9efe2248181f7db358f5a7cf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3c5bbe128b03e1d4bfe562132656fee0df51423e
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100371475"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905366"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure 数据工厂中的视觉对象创作
 

@@ -7,13 +7,13 @@ ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 590a6d48d12555d0a857e60352c0e0d6f367c04a
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+zone_pivot_groups: programming-languages-set-twenty-seven
+ms.openlocfilehash: d0b589d1ce1a7603c61ced2be9fb47abeaa39e0a
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057331"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278123"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-running-on-linux-or-windows-to-iot-hub"></a>快速入门：将 Linux 或 Windows 上运行的示例 IoT 即插即用设备应用程序连接到 IoT 中心
 
@@ -21,11 +21,15 @@ ms.locfileid: "106057331"
 
 [!INCLUDE [iot-pnp-connect-device-c](../../includes/iot-pnp-connect-device-c.md)]
 
+[!INCLUDE [iot-pnp-clean-resources-short](../../includes/iot-pnp-clean-resources-short.md)]
+
 :::zone-end
 
 :::zone pivot="programming-language-csharp"
 
 [!INCLUDE [iot-pnp-connect-device-csharp](../../includes/iot-pnp-connect-device-csharp.md)]
+
+[!INCLUDE [iot-pnp-clean-resources-short](../../includes/iot-pnp-clean-resources-short.md)]
 
 :::zone-end
 
@@ -33,11 +37,15 @@ ms.locfileid: "106057331"
 
 [!INCLUDE [iot-pnp-connect-device-java](../../includes/iot-pnp-connect-device-java.md)]
 
+[!INCLUDE [iot-pnp-clean-resources-short](../../includes/iot-pnp-clean-resources-short.md)]
+
 :::zone-end
 
 :::zone pivot="programming-language-javascript"
 
 [!INCLUDE [iot-pnp-connect-device-node](../../includes/iot-pnp-connect-device-node.md)]
+
+[!INCLUDE [iot-pnp-clean-resources-short](../../includes/iot-pnp-clean-resources-short.md)]
 
 :::zone-end
 
@@ -45,11 +53,15 @@ ms.locfileid: "106057331"
 
 [!INCLUDE [iot-pnp-connect-device-python](../../includes/iot-pnp-connect-device-python.md)]
 
+[!INCLUDE [iot-pnp-clean-resources-short](../../includes/iot-pnp-clean-resources-short.md)]
+
 :::zone-end
 
-## <a name="clean-up-resources"></a>清理资源
+:::zone pivot="programming-language-embedded-c"
 
-如果已完成快速入门和教程，请参阅[清理资源](set-up-environment.md#clean-up-resources)。
+[!INCLUDE [iot-pnp-connect-device-embedded-c](../../includes/iot-pnp-connect-device-embedded-c.md)]
+
+:::zone-end
 
 ## <a name="next-steps"></a>后续步骤
 

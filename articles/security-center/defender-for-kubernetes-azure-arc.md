@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.author: memildin
-ms.openlocfilehash: 940cae8829a99ee7ffacdb41844237acc85b7761
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 80c3409a69b8605d0d8ba9902c2be68d88e825c3
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107029193"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905965"
 ---
 # <a name="defend-azure-arc-enabled-kubernetes-clusters-running-in-on-premises-and-multi-cloud-environments"></a>保护本地和多云环境中运行的已启用 Azure Arc 的 Kubernetes 群集
 
@@ -56,12 +56,12 @@ Azure Defender for Kubernetes 群集扩展使用为 Azure Kubernetes 服务群�
 
 ### <a name="azure-portal"></a>[**Azure 门户**](#tab/k8s-deploy-asc)
 
-### <a name="use-the-quick-fix-option-from-the-security-center-recommendation"></a>使用安全中心建议中的“快速修复”选项
+### <a name="use-the-fix-button-from-the-security-center-recommendation"></a>使用安全中心建议中的“修复”选项
 
 Azure 安全中心的专业建议提供：
 
 - 有关哪些群集上部署了 Defender for Kubernetes 扩展的直观信息
-- 一个“快速修复”选项，用于在没有扩展的情况下将此扩展部署到这些群集
+- “修复”选项，用于在没有扩展的情况下将此扩展部署到这些群集中
 
 1. 在 Azure 安全中心的“建议”页中，打开“启用 Azure Defender”安全控制。
 
@@ -70,7 +70,7 @@ Azure 安全中心的专业建议提供：
     :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="有关为已启用 Azure Arc 的 Kubernetes 群集部署 Azure Defender 扩展的 Azure 安全中心建议。" lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
 
     > [!TIP]
-    > 请注意“操作”列中的“快速修复”图标
+    > 请注意“操作”列中的“修复”图标
 
 1. 选择该扩展以查看正常和不正常资源的详细信息 - 具有和没有该扩展的群集。
 
@@ -78,7 +78,7 @@ Azure 安全中心的专业建议提供：
 
 1. 选择相关的 Log Analytics 工作区，然后选择“修正 x 资源”。
 
-    :::image type="content" source="media/defender-for-kubernetes-azure-arc/security-center-deploy-extension.gif" alt-text="使用安全中心的“快速修复”选项为 Azure Arc 部署 Azure Defender 扩展。":::
+    :::image type="content" source="media/defender-for-kubernetes-azure-arc/security-center-deploy-extension.gif" alt-text="使用安全中心的修复选项为 Azure Arc 部署 Azure Defender 扩展。":::
 
 
 ### <a name="azure-cli"></a>[**Azure CLI**](#tab/k8s-deploy-cli)
@@ -141,7 +141,7 @@ Azure 安全中心的专业建议提供：
 
     其中：
 
-    | 名称            | 在   | 必须 | 类型   | 描述                                  |
+    | 名称            | 在   | 必需 | 类型   | 描述                                  |
     |-----------------|------|----------|--------|----------------------------------------------|
     | 订阅 ID | path | True     | 字符串 | 已启用 Azure Arc 的 Kubernetes 资源的订阅 ID |
     | 资源组  | path | True     | 字符串 | 包含已启用 Azure Arc 的 Kubernetes 资源的资源组的名称 |
@@ -324,7 +324,7 @@ Azure 安全中心的专业建议提供：
 DELETE https://management.azure.com/subscriptions/{{Subscription Id}}/resourcegroups/{{Resource Group}}/providers/Microsoft.Kubernetes/connectedClusters/{{Cluster Name}}/providers/Microsoft.KubernetesConfiguration/extensions/microsoft.azuredefender.kubernetes?api-version=2020-07-01-preview
 ```
 
-| 名称            | 在   | 必须 | 类型   | 描述                                           |
+| 名称            | 在   | 必需 | 类型   | 描述                                           |
 |-----------------|------|----------|--------|-------------------------------------------------------|
 | 订阅 ID | path | True     | 字符串 | 已启用 Arc 的 Kubernetes 群集的订阅 ID |
 | 资源组  | path | True     | 字符串 | 已启用 Arc 的 Kubernetes 群集的资源组  |

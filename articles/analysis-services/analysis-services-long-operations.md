@@ -4,14 +4,14 @@ description: 本文介绍了长时间运行的操作的最佳做法。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 04/27/2021
 ms.author: owend
-ms.openlocfilehash: 4e069effae0cb7f834b2c3dac696d05304d841a7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e5b5f61900f3ca82509718e765f2a62ccd163ecf
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92014828"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108145872"
 ---
 # <a name="best-practices-for-long-running-operations"></a>长时间运行的操作的最佳做法
 

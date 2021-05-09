@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: a91329d3bd0247932614233ef5b1ec71bf4d2a6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a497e5bc9d04577f4b4f9d373aa68d07b5a08043
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103465457"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905047"
 ---
 # <a name="enable-azure-defender-for-sql-servers-on-machines"></a>启用计算机上的 Azure Defender for SQL 服务器 
 
@@ -47,7 +47,7 @@ ms.locfileid: "103465457"
 
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>步骤 1。 在 SQL 服务器的主机上预配 Log Analytics 代理：
 
-- **Azure VM 上的 SQL Server** - 如果 SQL 计算机托管在 Azure VM 上，则可以[启用 Log Analytics 代理的自动预配<a name="auto-provision-mma"></a>](security-center-enable-data-collection.md#auto-provision-mma)。 或者，可以按照手动过程来[加入 Azure Stack Hub VM](quickstart-onboard-machines.md?pivots=azure-portal#onboard-your-azure-stack-hub-vms)。
+- **Azure VM 上的 SQL Server** - 如果 SQL 计算机托管在 Azure VM 上，则可以 [启用 Log Analytics 代理的自动预配 <a name="auto-provision-mma"></a>](security-center-enable-data-collection.md#auto-provision-mma)。 或者，可以按照手动过程来[加入 Azure Stack Hub VM](quickstart-onboard-machines.md?pivots=azure-portal#onboard-your-azure-stack-hub-vms)。
 - **Azure Arc 上的 SQL Server** - 如果 SQL Server 由启用了 [Azure Arc](../azure-arc/index.yml) 的服务器管理，则可以使用安全中心建议“Log Analytics 代理应安装在基于 Windows 的 Azure Arc 计算机上（预览版）”部署 Log Analytics 代理。 或者，可以遵循 [Azure Arc 文档](../azure-arc/servers/manage-vm-extensions.md)中所述的安装方法进行操作。
 
 - **本地 SQL Server** - 如果 SQL Server 托管在不带 Azure Arc 的本地 Windows 计算机上，可使用两个选项将其连接到 Azure：
@@ -96,6 +96,20 @@ ms.locfileid: "103465457"
     * 若要改善安全状况，请采纳每个警报中针对主机的安全中心建议。 这将降低未来攻击的风险。 
 
     [了解有关管理和响应警报的详细信息](security-center-managing-and-responding-alerts.md)。
+
+
+## <a name="faq---azure-defender-for-sql-servers-on-machines"></a>常见问题解答 - 计算机上的 Azure Defender for SQL 服务器
+
+### <a name="if-i-enable-this-azure-defender-plan-on-my-subscription-are-all-sql-servers-on-the-subscription-protected"></a>如果在我的订阅上启用此 Azure Defender 计划，则订阅上的所有 SQL 服务器是否均受保护？ 
+
+否。 若要在 Azure 虚拟机上保护 SQL Server 部署，或在启用了 Azure Arc 的计算机上运行 SQL Server，Azure Defender 需要以下两项内容：
+
+- 计算机上的 Log Analytics 代理 
+- 相关的 Log Analytics 工作区，用于启用 Azure Defender for SQL 解决方案 
+
+订阅状态（显示在 Azure 门户的“SQL 服务器”页面）反映了默认工作区状态，并且适用于所有连接的计算机。 只有主机上 Log Analytics 代理报告到该工作区的 SQL 服务器会受到 Azure Defender 保护。 
+
+
 
 
 ## <a name="next-steps"></a>后续步骤

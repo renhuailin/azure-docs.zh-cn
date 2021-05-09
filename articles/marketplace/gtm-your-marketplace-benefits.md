@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/09/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 58e55527c84db0c368e676f2bf1314dca32e78db
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: dc156afa2c5b5143e1543ef58203d6dea5d046c3
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102631013"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144990"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商业市场权益
 
@@ -100,7 +100,7 @@ Rewards 团队成员将在产品/服务上线时联系你，具体取决于你�
 
 ### <a name="publisher-agreement"></a>发布者协议
 
-本页上描述的所有活动均涵盖在 Microsoft [发布商协议](https://go.microsoft.com/fwlink/?LinkID=699560)中，并受到商业权益计划附录的约束。
+本页上描述的所有活动均涵盖在 Microsoft [发布商协议](/legal/marketplace/msft-publisher-agreement)中，并受到商业权益计划附录的约束。
 
 ### <a name="cancellation-policy"></a>取消策略
 
