@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
-ms.openlocfilehash: 319bd408943c560622dc3208a6701417b8ca010c
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 657ccafa0e7b7f640122fd6b397b3fa2a7c5f0fc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532920"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "98015549"
 ---
 # <a name="automatically-identify-and-transcribe-multi-language-content"></a>自动识别和转录多语言内容
 
@@ -39,7 +39,7 @@ ms.locfileid: "107532920"
 
 ## <a name="choosing-multilingual-identification-on-indexing-with-api"></a>在使用 API 编制索引时选择多语言识别
 
-在使用 API 对视频编制索引或[重新编制索引](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video)时，请在 `sourceLanguage` 参数中选择“`multi-language detection`”选项。
+在使用 API 对视频编制索引或[重新编制索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?)时，请在 `sourceLanguage` 参数中选择“`multi-language detection`”选项。
 
 ### <a name="model-output"></a>模型输出
 

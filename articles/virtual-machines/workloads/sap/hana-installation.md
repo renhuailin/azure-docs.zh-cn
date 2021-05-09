@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 20a2639716048a8c549ec6d584e807cb209f83d9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f1c1397416943e3e25719204a5ccfd593559476e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101670949"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557592"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何安装和配置 Azure 上的 SAP HANA（大型实例）
 
@@ -90,7 +90,7 @@ HANA 大型实例单元可以连接到此 SMT 实例。 （有关详细信息，
 下面是与 SAP on SUSE 相关的其他有用链接：
 
 - [SAP HANA on SUSE Linux 站点](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE)
-- [Best practices for SAP: Enqueue replication – SAP NetWeaver on SUSE Linux Enterprise 12](https://www.suse.com/media/guide/SLES4SAP-NetWeaver-ha-guide-EnqRepl-12_color_en.pdf)（SAP 最佳做法：排队复制 - SAP NetWeaver on SUSE Linux Enterprise 12）
+- [Best practices for SAP: Enqueue replication – SAP NetWeaver on SUSE Linux Enterprise 12](https://www.scribd.com/document/351887168/SLES4SAP-NetWeaver-ha-guide-EnqRepl-12-color-en-pdf)（SAP 最佳做法：排队复制 - SAP NetWeaver on SUSE Linux Enterprise 12）
 - [ClamSAP – SLES virus protection for SAP](https://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap)（ClamSAP - 适用于 SAP 的 SLES 病毒防护）（包括 SLES 12 for SAP Applications）
 
 下面是适用于实施 SAP HANA on SLES 12 的 SAP 支持说明：
@@ -195,7 +195,7 @@ S72m HANA 大型实例单元上的命令 df -h 的输出如下所示：
 
 也可以在安装 SAP HANA 数据库之后使用 hdbparam 框架配置这些参数。 
 
-HANA 大型实例中使用的存储有文件大小限制。 每个文件的[大小限制为 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html)。 与 EXT3 文件系统中文件大小限制不同的是，HANA 不会隐式识别 HANA 大型实例存储强制执行的存储限制。 因此，在达到 16TB 的文件大小限制时，HANA 不会自动创建新数据文件。 当 HANA 尝试将文件增长到 16 TB 以上时，HANA 会报告错误，并且索引服务器最终会发生故障。
+HANA 大型实例中使用的存储有文件大小限制。 每个文件的[大小限制为 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html)。 不同于 EXT3 文件系统中的文件大小限制，HANA 不会隐式感知 HANA 大型实例存储所强制执行的存储限制。 因此，在达到 16TB 的文件大小限制时，HANA 不会自动创建新数据文件。 HANA 尝试将文件增大到 16 TB 以上时，它会报告错误，并且索引服务器最终将崩溃。
 
 > [!IMPORTANT]
 > 为了防止 HANA 尝试将数据文件增长到超出 HANA 大型实例存储的 16 TB 文件大小限制，需要在 SAP HANA global.ini 配置文件中设置以下参数
