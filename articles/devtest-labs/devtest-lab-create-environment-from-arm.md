@@ -3,12 +3,12 @@ title: 使用模板创建多 VM 环境和 PaaS 资源
 description: 了解如何在 Azure 开发测试实验室中通过 Azure 资源管理器模板创建多 VM 环境和 PaaS 资源
 ms.topic: article
 ms.date: 08/12/2020
-ms.openlocfilehash: 97659d4ab95fdbe75460161d0ceed71a1cb5cf82
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f285acffe642a85fa27792ee51ea67a57f6d35a5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88182402"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790106"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建多 VM 环境和 PaaS 资源
 
@@ -62,7 +62,7 @@ Azure 开发测试实验室包含 [Azure 资源管理器模板的公共存储库
 
 创建并配置存储库后，可以使用 Azure 门户将存储库添加到实验室：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 1. 从实验室列表，选择所需的实验室。
 1. 在实验室的“概览”窗格中，选择“配置和策略”。
@@ -109,7 +109,7 @@ Azure 开发测试实验室包含 [Azure 资源管理器模板的公共存储库
 
 向实验室添加 Azure 资源管理器模板后，实验室用户可以通过以下步骤在 Azure 门户中创建环境：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 
@@ -264,7 +264,7 @@ Azure 开发测试实验室包含 [Azure 资源管理器模板的公共存储库
 还可以使用 Azure CLI 通过资源管理器模板部署资源。 有关详细信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../azure-resource-manager/templates/deploy-cli.md)。
 
 > [!NOTE]
-> 只有具有实验室所有者权限的用户才能使用 Azure PowerShell 根据 Resource Manager 模板创建 VM。 如果要使用资源管理器模板自动创建 VM，并且只具有用户权限，则可以使用 CLI 命令 [az lab vm create](/cli/azure/lab/vm#az-lab-vm-create)。
+> 只有具有实验室所有者权限的用户才能使用 Azure PowerShell 根据 Resource Manager 模板创建 VM。 如果要使用资源管理器模板自动创建 VM，并且只具有用户权限，则可以使用 CLI 命令 [az lab vm create](/cli/azure/lab/vm#az_lab_vm_create)。
 
 ## <a name="resource-manager-template-limitations-in-devtest-labs"></a>资源管理器模板在开发测试实验室中的限制
 

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: efa9465adc13b50e6ae12628d21347152c3fc2c0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02742610f6febd832470307a5000526cadb3ecbd
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104578713"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166138"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>快速入门：实现用户登录并代表用户调用 Microsoft Graph 的 ASP.NET Core Web 应用
 
-在本快速入门中，你将下载并运行一个代码示例，该示例演示 ASP.NET Core Web 应用如何从任何 Azure Active Directory (Azure AD) 组织中实现用户登录，并调用 Microsoft Graph。  
+在本快速入门中，你将下载并运行一个代码示例，该示例演示 ASP.NET Core Web 应用如何从任何 Azure Active Directory (Azure AD) 组织中实现用户登录，并调用 Microsoft Graph。
 
 有关说明，请参阅[示例工作原理](#how-the-sample-works)。
 
@@ -108,7 +108,7 @@ ms.locfileid: "104578713"
 >       - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为`organizations`
 >       - 如果应用程序支持“所有 Microsoft 帐户用户”，请将该值保留为 `common`
 >    - 将 `Enter_the_Client_Secret_Here` 替换为在先前步骤中创建并记录的客户端机密。
-> 
+>
 > 在此快速入门中，请不要更改 appsettings.json 文件中的任何其他值。
 >
 > #### <a name="step-4-build-and-run-the-application"></a>步骤 4：生成并运行应用程序
@@ -128,6 +128,7 @@ ms.locfileid: "104578713"
 本部分概述了实现用户登录并代表用户调用 Microsoft Graph API 所需的代码。 阅读本概述对于了解代码的工作原理、主要参数非常有用，如果你想要将登录功能添加到现有 ASP.NET Core 应用程序并调用 Microsoft Graph，阅读本概述也非常有用。 它使用了 [Microsoft.Identity.Web](microsoft-identity-web.md)，这是 [MSAL.NET](msal-overview.md) 的包装器。
 
 ### <a name="how-the-sample-works"></a>示例工作原理
+
 ![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-aspnet-core-webapp-calls-graph/aspnetcorewebapp-intro.svg)
 
 ### <a name="startup-class"></a>Startup 类
@@ -200,7 +201,7 @@ app.UseEndpoints(endpoints =>
 
 可以通过将 `[Authorize]` 属性应用于控制器的类或其一个或多个方法来保护控制器或其方法。 此 `[Authorize]` 属性只允许通过身份验证的用户，从而限制了访问。 如果用户尚未通过身份验证，可以启动身份验证质询来访问控制器。 本快速入门从配置文件中读取范围：
 
-```CSharp
+```csharp
 [AuthorizeForScopes(ScopeKeySection = "DownstreamApi:Scopes")]
 public async Task<IActionResult> Index()
 {
@@ -209,7 +210,7 @@ public async Task<IActionResult> Index()
 
     return View();
 }
- ```
+```
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: 用于调用 web Api 的 web API |Microsoft
+title: 用于调用 Web API 的 Web API | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何构建调用 Web API 的 Web API。
 services: active-directory
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f4dfd2c7f9dbdd111f70a5dd5a648c11eacbf7b0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: d4526446b657b46f97306f51b2db325feefc8eff
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038537"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166480"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>调用 Web API 的 Web API：调用 API
 
@@ -37,7 +37,7 @@ ms.locfileid: "102038537"
 
 在此方案中，你已如[代码配置](scenario-web-api-call-api-app-configuration.md#option-1-call-microsoft-graph)中指定的那样将 `.AddMicrosoftGraph()` 添加到 Startup.cs 中，现可直接将 `GraphServiceClient` 注入控制器或页构造函数中，以便在操作中使用。 以下示例 Razor 页面显示已登录用户的照片。
 
-```CSharp
+```csharp
  [Authorize]
  [AuthorizeForScopes(Scopes = new[] { "user.read" })]
  public class IndexModel : PageModel
@@ -73,7 +73,7 @@ ms.locfileid: "102038537"
 
 在此方案中，你已如[代码配置](scenario-web-api-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph)中指定的那样将 `.AddDownstreamWebApi()` 添加到 Startup.cs 中，现可直接将 `IDownstreamWebApi` 服务注入控制器或页构造函数中并在操作中使用它：
 
-```CSharp
+```csharp
  [Authorize]
  [AuthorizeForScopes(ScopeKeySection = "TodoList:Scopes")]
  public class TodoListController : Controller
@@ -100,7 +100,7 @@ ms.locfileid: "102038537"
 
 `CallWebApiForUserAsync` 方法还具有强类型的泛型重写，使你能够直接接收对象。 例如，下面的方法收到一个 `Todo` 实例，该实例是 Web API 返回的 JSON 的强类型表示形式。
 
-```CSharp
+```csharp
  // GET: TodoList/Details/5
  public async Task<ActionResult> Details(int id)
  {
@@ -123,16 +123,16 @@ ms.locfileid: "102038537"
  获取令牌后，将其用作持有者令牌以调用下游 API。
 
 ```csharp
- private async Task CallTodoListService(string accessToken)
- {
+private async Task CallTodoListService(string accessToken)
+{
   // After the token has been returned by Microsoft.Identity.Web, add it to the HTTP authorization header before making the call to access the todolist service.
- _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
+  _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
 
- // Call the todolist service.
- HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + "/api/todolist");
- // ...
- }
- ```
+  // Call the todolist service.
+  HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + "/api/todolist");
+  // ...
+}
+```
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -140,7 +140,7 @@ ms.locfileid: "102038537"
 
 获取令牌后，将其用作持有者令牌以调用下游 API。
 
-```Java
+```java
 private String callMicrosoftGraphMeEndpoint(String accessToken){
     RestTemplate restTemplate = new RestTemplate();
 
@@ -159,7 +159,8 @@ private String callMicrosoftGraphMeEndpoint(String accessToken){
 ```
 
 # <a name="python"></a>[Python](#tab/python)
-此处提供了一个示例，演示了如何在 MSAL Python [中](https://github.com/Azure-Samples/ms-identity-python-on-behalf-of)提供此流。
+
+[ms-identity-python-on-behalf-of](https://github.com/Azure-Samples/ms-identity-python-on-behalf-of) 上提供了一个使用 MSAL Python 演示此流的示例。
 
 ---
 

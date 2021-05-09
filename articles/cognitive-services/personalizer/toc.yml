@@ -11,6 +11,9 @@
     - name: 新增功能
       href: whats-new.md
       displayName: 'release notes, service updates, videos'
+    - name: 个性化体验创建服务常见问题解答
+      href: frequently-asked-questions.md
+      displayName: 'frequently asked questions, troubleshooting, questions'
 - name: 快速入门
   href: ./quickstart-personalizer-sdk.md
 - name: 示例
@@ -123,7 +126,5 @@
       href: /learn/browse/?terms=personalizer
     - name: 支持和帮助选项
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/personalizer/context/context
-    - name: 疑难解答
-      href: troubleshooting.md
     - name: Azure 更新
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'

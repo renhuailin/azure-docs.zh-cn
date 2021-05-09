@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 03/31/2021
 ms.author: pafarley
-ms.openlocfilehash: 8e0ef789653181d744100ef6e179bcf328f6d704
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 195beaaae2925ce9cc6e7cc70bd0415ded49f155
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308619"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166696"
 ---
 # <a name="call-the-read-api"></a>调用读取 API
 
@@ -47,24 +47,24 @@ ms.locfileid: "107308619"
 [读取](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005) 调用包含可选语言请求参数。 “读取”支持自动语言识别和多语言文档，因此，如果你要强制将文档作为一种特定语言进行处理，只需提供该语言的代码即可。
 
 ### <a name="natural-reading-order-output-latin-languages-only"></a>自然读取顺序输出（仅限拉丁语）
+
 使用 `readingOrder` 查询参数指定文本行的输出顺序。 使用 `natural` 可提供更易于阅读的读取顺序输出，如以下示例中所示。 此功能仅支持拉丁语。
 
-:::image border type="content" source="../Images/ocr-reading-order-example.png" alt-text="OCR 读取顺序示例":::
-
-
+:::image type="content" source="../Images/ocr-reading-order-example.png" alt-text="OCR 读取顺序示例" border="true" :::
 
 ### <a name="select-pages-or-page-ranges-for-text-extraction"></a>选择页面或页面范围以进行文本提取
+
 对于较大的多页文档，请使用 `pages` 查询参数指定页码或页面范围，以便仅从这些页面提取文本。 以下示例演示了一个包含 10 个页面的文档，将按照所有页面 (1-10) 和选定页面 (3-6) 这两种条件提取文本。
 
-:::image border type="content" source="../Images/ocr-select-pages.png" alt-text="选定页面输出":::
+:::image type="content" source="../Images/ocr-select-pages.png" alt-text="选定页面输出" border="true" :::
 
 ## <a name="get-results-from-the-service"></a>获取服务结果
 
-第二个步骤是调用[获取读取结果](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d9869604be85dee480c8750)操作。 此操作采用读取操作创建的操作 ID 作为输入。 
+第二个步骤是调用[获取读取结果](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d9869604be85dee480c8750)操作。 此操作采用读取操作创建的操作 ID 作为输入。
 
 `https://{endpoint}/vision/v3.2/read/analyzeResults/{operationId}`
 
-此操作返回一个 JSON 响应，其中包含具有以下可能值的 **status** 字段。 
+此操作返回一个 JSON 响应，其中包含具有以下可能值的 **status** 字段。
 
 |值 | 含义 |
 |:-----|:----|
@@ -159,9 +159,10 @@ ms.locfileid: "107308619"
 ```
 
 ### <a name="handwritten-classification-for-text-lines-latin-languages-only"></a>文本行手写分类（仅限拉丁语）
+
 响应将分类说明每个文本行是否为手写体，同时包括置信度评分。 此功能仅支持拉丁语。 以下示例演示了图像中文本的手写分类。
 
-:::image border type="content" source="../Images/ocr-handwriting-classification.png" alt-text="OCR 手写分类示例":::
+:::image type="content" source="../Images/ocr-handwriting-classification.png" alt-text="OCR 手写分类示例" border="true" :::
 
 ## <a name="next-steps"></a>后续步骤
 

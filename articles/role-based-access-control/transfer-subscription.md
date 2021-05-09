@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: 72dc92ae211034e2a49bc77f60880f17ab15dec7
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 366692113872856852fd933ca32ab51ca608de14
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107868170"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291273"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>将 Azure 订阅转移到其他 Azure AD 目录
 
@@ -82,7 +82,7 @@ ms.locfileid: "107868170"
 | Azure 托管磁盘 | 是 | 是 |  |  如果使用磁盘加密集通过客户管理的密钥对托管磁盘进行加密，则必须先禁用再重新启用与磁盘加密集关联的系统分配标识。 你必须重新创建角色分配，即，向密钥保管库中的磁盘加密集再次授予所需权限。 |
 | Azure Kubernetes 服务 | 是 | 否 |  | 不能将 AKS 群集及其关联资源传输到不同的目录中。 有关详细信息，请查看 [Azure Kubernetes 服务 (AKS) 的常见问题解答](../aks/faq.md) |
 | Azure Policy | 是 | 否 | 所有 Azure Policy 对象，包括自定义定义、分配、豁免和符合性数据。 | 必须[导出](../governance/policy/how-to/export-resources.md)、导入和重新分配定义。 然后，创建新的策略分配以及任何必需的[策略豁免](../governance/policy/concepts/exemption-structure.md)。 |
-| Azure Active Directory 域服务 | 是 | 否 |  | 不能将 Azure AD 域服务托管域传输到不同的目录中。 有关详细信息，请查看 [Azure Active Directory (AD) 域服务的常见问题解答 (FAQ)](../active-directory-domain-services/faqs.md) |
+| Azure Active Directory 域服务 | 是 | 否 |  | 不能将 Azure AD 域服务托管域传输到不同的目录中。 有关详细信息，请查看 [Azure Active Directory (AD) 域服务的常见问题解答 (FAQ)](../active-directory-domain-services/faqs.yml) |
 | 应用注册 | “是” | 是 |  |  |
 
 > [!WARNING]

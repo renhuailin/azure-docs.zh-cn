@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: 33fa6420f52cae9c869cc75a04ea82de0ec48262
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 519105374a2c12807bdac92bfb2b60feaeeb89c2
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100596293"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108324790"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的审核日志记录
 
@@ -37,7 +37,7 @@ Azure Database for PostgreSQL（单一服务器）中数据库活动的审核日
 
 ## <a name="installing-pgaudit"></a>安装 pgAudit
 
-若要安装 pgAudit，需将其包括在服务器的共享预加载库中。 更改 Postgres 的 `shared_preload_libraries` 参数需要重启服务器才能生效。 可以使用 [Azure 门户](howto-configure-server-parameters-using-portal.md)、[Azure CLI](howto-configure-server-parameters-using-cli.md) 或 [REST API](/rest/api/postgresql/configurations/createorupdate) 更改参数。
+若要安装 pgAudit，需将其包括在服务器的共享预加载库中。 更改 Postgres 的 `shared_preload_libraries` 参数需要重启服务器才能生效。 可以使用 [Azure 门户](howto-configure-server-parameters-using-portal.md)、[Azure CLI](howto-configure-server-parameters-using-cli.md) 或 [REST API](/rest/api/postgresql/singleserver/configurations/createorupdate) 更改参数。
 
 使用 [Azure 门户](https://portal.azure.com)：
 
@@ -104,4 +104,4 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>后续步骤
 - [了解 Azure Database for PostgreSQL 中的日志记录](concepts-server-logs.md)
-- 了解如何使用 [Azure 门户](howto-configure-server-parameters-using-portal.md)、[Azure CLI](howto-configure-server-parameters-using-cli.md) 或 [REST API](/rest/api/postgresql/configurations/createorupdate) 设置参数。
+- 了解如何使用 [Azure 门户](howto-configure-server-parameters-using-portal.md)、[Azure CLI](howto-configure-server-parameters-using-cli.md) 或 [REST API](/rest/api/postgresql/singleserver/configurations/createorupdate) 设置参数。
