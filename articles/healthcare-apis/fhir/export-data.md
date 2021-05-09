@@ -7,19 +7,19 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 3/18/2021
 ms.author: cavoeg
-ms.openlocfilehash: a5b3daa499546f3a30b5a4d133d77786a1916b6a
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 7df88f1a425b563733310d69fc14d85f9251ae44
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105559190"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108794369"
 ---
 # <a name="how-to-export-fhir-data"></a>如何导出 FHIR 数据
 
 
 批量导出功能允许按照 [FHIR 规范](https://hl7.org/fhir/uv/bulkdata/export/index.html)从 FHIR 服务器导出数据。 
 
-使用 $export 之前，需确保将用于 FHIR 的 Azure API 配置为使用该 API。 有关配置导出设置和创建 Azure 存储帐户的信息，请参阅[配置导出数据页](configure-export-data.md)。
+在使用$export之前，需要确保将Azure API for FHIR配置为使用它。 有关配置导出设置和创建 Azure 存储帐户的信息，请参阅[配置导出数据页](configure-export-data.md)。
 
 ## <a name="using-export-command"></a>使用 $export 命令
 
@@ -28,14 +28,14 @@ ms.locfileid: "105559190"
 
 **作业停滞在错误状态**
 
-在某些情况下，作业可能会停滞为错误状态。 如果未正确设置存储帐户权限，则会发生这种情况。 验证导出是否成功的一种方法是检查存储帐户，以查看相应的容器 (也就是说，ndjson) 文件是否存在。 如果它们不存在，而且没有其他运行的导出作业，则当前作业可能会停滞在错误状态。 你应通过发送取消请求来取消导出作业，并再次尝试重新排队作业。 处于错误状态的导出的默认运行时间是10分钟后，它将停止并移动到新作业或重试导出。 
+在某些情况下，作业可能会停滞在错误状态。 如果存储帐户权限未正确设置，则可能会发生这种情况。 验证导出是否成功的一种方式是检查存储帐户，以查看相应的容器 (，即 ndjson) 文件。 如果它们不存在，并且没有其他导出作业正在运行，则当前作业有可能停滞在错误状态。 应发送取消请求来取消导出作业，并尝试再次重新排队作业。 以错误状态导出的默认运行时间为 10 分钟，然后它将停止并移动到新作业或重试导出。 
 
 Azure API For FHIR 在以下级别中支持 $export：
 * [系统](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---system-level-export)：`GET https://<<FHIR service base URL>>/$export>>`
 * [患者](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---all-patients)：`GET https://<<FHIR service base URL>>/Patient/$export>>`
-* [患者 * 的组](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---group-of-patients) -Azure API for FHIR 导出所有相关资源，但不导出组的特征： `GET https://<<FHIR service base URL>>/Group/[ID]/$export>>`
+* [患者组*](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---group-of-patients) - Azure API for FHIR导出所有相关资源，但不导出组的特征： `GET https://<<FHIR service base URL>>/Group/[ID]/$export>>`
 
-导出数据时，将为每种资源类型创建单独的文件。 确保导出的文件不会变得过大。 在一个导出文件的大小达到 64 MB 后，我们创建一个新文件。 结果是，每个资源类型都可能会有多个文件， (即患者-ndjson、ndjson) 。 
+导出数据时，将为每种资源类型创建单独的文件。 确保导出的文件不会变得太大。 在单个导出文件的大小大于 64 MB 后，我们将创建一个新文件。 结果是，你可能会获取每个资源类型的多个文件，这些文件将枚举 (，即 Patient-1.ndjson、Patient-2.ndjson) 。 
 
 
 > [!Note] 
@@ -47,7 +47,7 @@ Azure API For FHIR 在以下级别中支持 $export：
 
 目前，对于启用了 ADLS Gen2 的存储帐户，我们支持 $export，但有以下限制：
 
-- 用户无法利用 [分层命名空间](../../storage/blobs/data-lake-storage-namespace.md)，但无法将导出定向到容器中的特定子目录。 我们仅提供指向特定容器的功能（我们会在其中为每个导出新建文件夹）。
+- 用户无法利用 [分层命名空间](../../storage/blobs/data-lake-storage-namespace.md)，但无法将导出目标定向到容器中的特定子目录。 我们仅提供指向特定容器的功能（我们会在其中为每个导出新建文件夹）。
 - 导出完成后，我们不会再将任何内容导出到该文件夹，因为指向同一容器的后续导出将位于新创建的文件夹内。
 
 
@@ -70,7 +70,7 @@ Azure API for FHIR 支持以下查询参数。 所有参数都是可选的：
 | \_container | 否 |  指定配置的存储帐户中的容器，数据应导出到其中。 如果指定了容器，则数据将导出到该容器中的同名新文件夹。 如果未指定容器，则数据将导出到使用时间戳和作业 ID 的新容器。 |
 
 > [!Note]
-> 仅允许将与用于 FHIR 的 Azure API 相同的订阅中的存储帐户注册为 $export 操作的目标。
+> 仅允许将同一订阅中的存储帐户注册为Azure API for FHIR存储操作的目标$export帐户。
 
 ## <a name="secure-export-to-azure-storage"></a>安全导出到 Azure 存储
 
@@ -78,11 +78,11 @@ Azure API for FHIR 支持安全导出操作。 运行安全导出的一种方法
 
 ### <a name="when-the-azure-storage-account-is-in-a-different-region"></a>Azure 存储帐户位于不同区域时
 
-从门户中选择 Azure 存储帐户的 **网络** 。 
+从 **门户** 中选择"Azure 存储帐户的网络"。 
 
    :::image type="content" source="media/export-data/storage-networking.png" alt-text="Azure 存储网络设置。" lightbox="media/export-data/storage-networking.png":::
    
-选择“所选网络”。 在 "防火墙" 部分下的 " **地址范围** " 框中指定 IP 地址。 添加 IP 范围以允许从 internet 或本地网络进行访问。 可以在下表中找到用于预配 Azure API for FHIR 服务的 Azure 区域的 IP 地址。
+选择“所选网络”。 在"防火墙"部分下，在"地址范围"框中 **指定 IP** 地址。 添加 IP 范围以允许从 Internet 或本地网络访问。 可以在下表中查找预配了托管服务的 Azure Azure API for FHIR IP 地址。
 
 |**Azure 区域**         |**公共 IP 地址** |
 |:----------------------|:-------------------|
@@ -107,6 +107,9 @@ Azure API for FHIR 支持安全导出操作。 运行安全导出的一种方法
 | 美国中西部      | 52.150.156.44     |
 | 西欧          | 20.61.98.66       |
 | 美国西部 2            | 40.64.135.77      |
+
+> [!NOTE]
+> 以上步骤类似于文档如何将数据转换为 FHIR (预览) 中所述的配置步骤。 有关详细信息，请参阅 [宿主和使用模板](https://docs.microsoft.com/azure/healthcare-apis/fhir/convert-data#host-and-use-templates)
 
 ### <a name="when-the-azure-storage-account-is-in-the-same-region"></a>Azure 存储帐户位于同一区域时
 

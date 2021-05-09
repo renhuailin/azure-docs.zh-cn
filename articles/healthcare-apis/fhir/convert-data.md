@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 01/19/2021
 ms.author: ranku
-ms.openlocfilehash: 2a34cfee57ecc1870c420c4c0f3c9261aa02f192
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: c796b72da15cb6278c355ed86fdf9eaaf54ca2be
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103490919"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108794478"
 ---
 # <a name="how-to-convert-data-to-fhir-preview"></a>如何将数据转换为 FHIR（预览版）
 
@@ -95,12 +95,13 @@ $convert-data 采用请求正文中的[参数](http://hl7.org/fhir/parameters.ht
 
 ## <a name="host-and-use-templates"></a>托管并使用模板
 
-强烈建议在 ACR 上托管自己的模板副本。 托管自己的模板副本和在 $convert-data 操作中使用这些模板涉及 4 个步骤：
+强烈建议在 ACR 上托管自己的模板副本。 托管自己的模板副本以及使用 $convert 操作中涉及四个步骤：
 
 1. 向 Azure 容器注册表推送模板。
 1. 在 Azure API for FHIR 实例上启用托管标识。
 1. 提供 ACR 对 Azure API for FHIR 托管标识的访问权限。
 1. 在 Azure API for FHIR 中注册 ACR 服务器。
+1. （可选）配置 ACR 防火墙以确保安全访问。
 
 ### <a name="push-templates-to-azure-container-registry"></a>向 Azure 容器注册表推送模板
 
@@ -125,13 +126,13 @@ $convert-data 采用请求正文中的[参数](http://hl7.org/fhir/parameters.ht
 
 ### <a name="register-the-acr-servers-in-azure-api-for-fhir"></a>在 Azure API for FHIR 中注册 ACR 服务器
 
-您可以使用 Azure 门户或使用 CLI 注册 ACR 服务器。
+可以使用 Azure 门户 或 CLI 注册 ACR 服务器。
 
-#### <a name="registering-the-acr-server-using-azure-portal"></a>使用 Azure 门户注册 ACR 服务器
-在 Azure API for FHIR 实例中，导航到 "_数据转换_" 下的 "_项目_" 边栏选项卡。 你将看到当前注册的 ACR 服务器的列表。 单击 " _添加_ "，然后从下拉列表中选择你的注册表服务器。 要使注册生效，需要单击 " _保存_ "。 应用更改并重新启动实例可能需要几分钟时间。
+#### <a name="registering-the-acr-server-using-azure-portal"></a>使用 Azure 门户 注册 ACR 服务器
+导航到实例 _中_ "数据 _转换"_ 下的"项目Azure API for FHIR边栏选项卡。 你将看到当前注册的 ACR 服务器的列表。 选择 _"_ 添加"，然后从下拉列表中选择注册表服务器。 需要选择"保存 _"，_ 注册生效。 应用更改并重启实例可能需要几分钟时间。
 
 #### <a name="registering-the-acr-server-using-cli"></a>使用 CLI 注册 ACR 服务器
-最多可在 Azure API for FHIR 中注册 20 个 ACR 服务器。
+可以在客户端中注册最多 20 个 ACR Azure API for FHIR。
 
 如果需要，请从 Azure PowerShell 安装 healthcareapis CLI：
 
@@ -152,6 +153,46 @@ az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io" --resource-gr
 ```powershell
 az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io fhiracr2020.azurecr.io" --resource-group fhir-test --resource-name fhirtest2021
 ```
+### <a name="configure-acr-firewall"></a>配置 ACR 防火墙
+
+从 **门户** 中选择"Azure 存储帐户的网络"。
+
+   :::image type="content" source="media/convert-data/networking-container-registry.png" alt-text="容器注册表。":::
+
+
+选择“所选网络”。 
+
+在" **防火墙"** 部分下，在"地址范围"框中 **指定 IP** 地址。 添加 IP 范围以允许从 Internet 或本地网络访问。 
+
+在下表中，你将找到预配托管服务的 Azure Azure API for FHIR IP 地址。
+
+|**Azure 区域**         |**公共 IP 地址** |
+|:----------------------|:-------------------|
+| 澳大利亚东部       | 20.53.44.80       |
+| 加拿大中部       | 20.48.192.84      |
+| 美国中部           | 52.182.208.31     |
+| 美国东部              | 20.62.128.148     |
+| 美国东部 2            | 20.49.102.228     |
+| 美国东部 2 EUAP       | 20.39.26.254      |
+| 德国北部        | 51.116.51.33      |
+| 德国中西部 | 51.116.146.216    |
+| Japan East           | 20.191.160.26     |
+| 韩国中部        | 20.41.69.51       |
+| 美国中北部     | 20.49.114.188     |
+| 北欧         | 52.146.131.52     |
+| 南非北部   | 102.133.220.197   |
+| 美国中南部     | 13.73.254.220     |
+| 东南亚       | 23.98.108.42      |
+| 瑞士北部    | 51.107.60.95      |
+| 英国南部             | 51.104.30.170     |
+| 英国西部              | 51.137.164.94     |
+| 美国中西部      | 52.150.156.44     |
+| 西欧          | 20.61.98.66       |
+| 美国西部 2            | 40.64.135.77      |
+
+
+> [!NOTE]
+> 上述步骤类似于如何导出 FHIR 数据文档中所述的配置步骤。  有关详细信息，请参阅安全 [导出到Azure 存储](https://docs.microsoft.com/azure/healthcare-apis/fhir/export-data#secure-export-to-azure-storage)
 
 ### <a name="verify"></a>Verify
 
