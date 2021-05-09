@@ -1,18 +1,18 @@
 ---
 title: Azure 文件共享性能故障排除指南
 description: 排查 Azure 文件共享的已知性能问题。 遇到这些问题时，找出潜在的原因和相关解决方法。
-author: gunjanj
+author: roygara
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 11/16/2020
-ms.author: gunjanj
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9f858549f36d196c6412aec549d0ab2e2d864145
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b303dbc20cf0caf4bb0d75f28a2983bc0f27064d
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103417665"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108065018"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>排查 Azure 文件共享性能问题
 
@@ -65,7 +65,7 @@ ms.locfileid: "103417665"
 
 ### <a name="cause-2-metadata-or-namespace-heavy-workload"></a>原因 2：元数据或命名空间工作负载繁重
 
-如果大多数请求以元数据为中心（例如 createfile、openfile、closefile、queryinfo 或 querydirectory），则与读/写操作相比，延迟将会更严重。
+如果大多数请求是以元数据为中心（如 `createfile`、`openfile`、`closefile`、`queryinfo` 或 `querydirectory`），那么延迟情况将会比读取/写入操作更加严重。
 
 若要确定你的大多数请求是否以元数据为中心，请先按照先前“原因 1”中概述的步骤 1-4 进行操作。 对于步骤 5，请不要添加“响应类型”筛选器，而是添加“API 名称”属性筛选器 。
 
@@ -74,7 +74,7 @@ ms.locfileid: "103417665"
 ### <a name="workaround"></a>解决方法
 
 - 检查是否可以修改应用程序以减少元数据操作的数量。
-- 在文件共享上添加虚拟硬盘 (VHD)，并从客户端通过 SMB 装载 VHD，以便对数据执行文件操作。 此方法适用于单个写入器和多个读取器的情况，并允许元数据操作在本地进行。 安装程序提供的性能与本地直连的存储的性能类似。
+- 在文件共享上添加虚拟硬盘 (VHD)，并从客户端通过 SMB 装载 VHD，以便对数据执行文件操作。 此方法适用于单个编写器/读取器方案或包含多个读取器且无编写器的方案。 由于文件系统由客户端而不是 Azure 文件存储拥有，因此元数据操作可在本地执行。 安装程序提供的性能与本地直连的存储的性能类似。
 
 ### <a name="cause-3-single-threaded-application"></a>原因 3：单线程应用程序
 
@@ -117,8 +117,8 @@ ms.locfileid: "103417665"
 ### <a name="workaround"></a>解决方法
 
 - 跨多个 VM 分散负载。
-- 在同一 VM 上，通过 nosharesock 选项使用多个装入点，并将负载分散到这些装入点。
-- 在 Linux 上，尝试使用 nostrictsync 选项进行装载，以避免每次调用 fsync 时都强制执行 SMB 刷新 。 对于 Azure 文件存储，此选项不会影响数据一致性，但可能会导致目录列表（ls -l 命令）中出现过时的文件元数据。 使用 stat 命令直接查询文件元数据将返回最新的文件元数据。
+- 在同一 VM 上，通过 `nosharesock` 选项使用多个装入点，并将负载分散到这些装入点上。
+- 在 Linux 上，尝试使用 `nostrictsync` 选项进行装载，以避免每次调用 `fsync` 时都强制执行 SMB 刷新。 对于 Azure 文件存储，此选项不会影响数据一致性，但可能会导致目录列表（`ls -l` 命令）中出现过时的文件元数据。 使用 `stat` 命令直接查询文件元数据将会返回最新的文件元数据。
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>涉及大量打开/关闭操作的元数据密集型工作负载的延迟较高
 
@@ -129,7 +129,7 @@ ms.locfileid: "103417665"
 ### <a name="workaround"></a>解决方法
 
 - 如果可能，请避免短时间内在同一目录中使用过多的打开/关闭句柄。
-- 对于 Linux VM，请指定“actimeo=\<sec>”作为装载选项，以增大目录条目缓存超时。 默认情况下，超时值为 1 秒，因此较大的值（例如 3 或 5 秒）可能会有所帮助。
+- 对于 Linux VM，请指定“`actimeo=<sec>`”作为装载选项，以延长目录条目缓存超时。 默认情况下，超时值为 1 秒，因此较大的值（例如 3 或 5 秒）可能会有所帮助。
 - 对于 CentOS Linux 或 Red Hat Enterprise Linux (RHEL) VM，请将系统升级到 CentOS Linux 8.2 或 RHEL 8.2。 对于其他 Linux VM，请将内核升级到 5.0 或更高版本。
 
 ## <a name="low-iops-on-centos-linux-or-rhel"></a>CentOS Linux 或 RHEL 上的 IOPS 较低
@@ -292,7 +292,7 @@ CentOS Linux 或 RHEL 不支持大于 1 的 I/O 深度。
 7. 在“维度值”下拉列表中，选择要对其发出警报的文件共享。
 8. 通过选择“运算符”、“阈值”、“聚合粒度”和“评估频率”下拉列表中的值来定义警报参数，然后选择“完成”    。
 
-   流出量、流入量和事务指标以每分钟表示，但预配的流出量、流入量和 I/O 以每秒表示。 因此，例如，如果预配的流出量为每秒 90&nbsp;兆字节 (MiB/s)，并且你希望阈值为预配流出量的&nbsp;80%，请选择以下警报参数： 
+   流出量、流入量和事务指标以每分钟表示，但预配的流出量、流入量和 I/O 以每秒表示。 因此，举例来说，如果预配的流出量为每秒 90&nbsp;兆字节 (MiB/s)，并且你希望阈值达到预配流出量的&nbsp;80%，请选择以下警报参数： 
    - 阈值：75497472 
    - 运算符：大于或等于
    - 聚合类型：平均

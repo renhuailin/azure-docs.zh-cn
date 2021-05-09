@@ -7,12 +7,12 @@ ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5446f8481439dabffe67f9b00b5f65b1da495746
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 28eedc02adad479a20bc54fb8b342035f3d5cb15
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742647"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325762"
 ---
 # <a name="quickstart-set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>快速入门：针对 IoT 即插即用快速入门和教程设置环境
 
@@ -22,9 +22,7 @@ ms.locfileid: "101742647"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-为了绕开在本地安装 Azure CLI 的要求，可使用 Azure Cloud Shell 设置云服务。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-h3](../../includes/azure-cli-prepare-your-environment-h3.md)]
 
 ## <a name="create-the-resources"></a>创建资源
 

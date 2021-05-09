@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 08/12/2020
+ms.date: 04/06/2021
 ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: 470ae497acab4c75e83a13e485d1bcb118485ab9
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 6a10d29daaade5c588fc966190cbb81551170fd8
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799507"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139428"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Python SDK：发行说明和资源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -30,7 +30,8 @@ ms.locfileid: "104799507"
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
 > * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
-> * [Spark 连接器](sql-api-sdk-java-spark.md)
+> * [Spark 3 OLTP 连接器](sql-api-sdk-java-spark-v3.md)
+> * [Spark 2 OLTP 连接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST 资源提供程序](/rest/api/cosmos-db-resource-provider/)
@@ -41,7 +42,7 @@ ms.locfileid: "104799507"
 | 页| 链接 |
 |---|---|
 |**下载 SDK**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**API 文档**|[Python API 参考文档](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos?view=azure-python&preserve-view=true)|
+|**API 文档**|[Python API 参考文档](/python/api/azure-cosmos/azure.cosmos?preserve-view=true&view=azure-python)|
 |**SDK 安装说明**|[Python SDK 安装说明](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
 |**入门**|[Python SDK 入门](create-sql-api-python.md)|
 |**当前受支持的平台**|[Python 2.7](https://www.python.org/downloads/) 和 [Python 3.6+](https://www.python.org/downloads/)|
@@ -51,11 +52,11 @@ ms.locfileid: "104799507"
 ## <a name="420"></a>4.2.0
 
 **Bug 修复**
-- 修复了在使用 query_iterable 按页获取结果时延续令牌不起作用的 bug。
-- 修复了文档读取和删除时不遵守资源令牌的 bug。 
+- 修复了在使用 query_iterable 按页获取结果时未遵守延续令牌的 bug。
+- 修复了未遵守资源令牌以进行文档读取和删除的 bug。 
 
 **新功能**
-- 添加了对查询更改源时传递 `partitionKey` 的支持。
+- 添加了对在查询更改源时传递 `partitionKey` 的支持。
 
 ## <a name="410"></a>4.1.0
 
@@ -248,7 +249,7 @@ ms.locfileid: "104799507"
 ### <a name="220"></a>2.2.0
 
 * 添加了对每分钟请求单位数 (RU/m) 功能的支持。
-* 添加了对称为“ConsistentPrefix”的新一致性级别的支持。
+* 添加了对名为 ConsistentPrefix 的新一致性级别的支持。
 
 ### <a name="210"></a>2.1.0
 
@@ -366,7 +367,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 | 0.9.1-prelease |2014 年 9 月 23 日 |2016 年 2 月 29 日 |
 | 0.9.0-prelease |2014 年 8 月 21 日 |2016 年 2 月 29 日 |
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

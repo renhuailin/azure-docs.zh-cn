@@ -1,18 +1,18 @@
 ---
 title: Azure Data Box 的 Azure Policy 法规合规性控制措施
 description: 列出可用于 Azure Data Box 的 Azure Policy 法规合规性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 04/21/2021
+ms.date: 04/28/2021
 ms.topic: sample
 author: alkohli
 ms.author: alkohli
 ms.service: databox
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 23da0226c2f762c5c08a06d488120723ae619ef6
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: abdc0a7ecfce6084b0e332462ecd9e55a44741a6
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107865940"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108179397"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-data-box"></a>Azure Data Box 的 Azure Policy 法规合规性控制措施
 

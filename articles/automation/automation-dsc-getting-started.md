@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 95072970004ae53663f130a78af36a84a6fab685
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce6a33b569a86cd539de99264dd8e7f583559a6f
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99051492"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108018324"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Azure Automation State Configuration 入门
 
@@ -71,7 +71,7 @@ ms.locfileid: "99051492"
 
    ![**导入配置**边栏选项卡的屏幕截图](./media/automation-dsc-getting-started/AddConfig.png)
 
-1. 单击 **“确定”** 。
+1. 单击“确定”。
 
 ## <a name="view-a-configuration-in-azure-automation"></a>查看 Azure 自动化中的配置
 
@@ -216,16 +216,7 @@ Azure 将启动启用 VM 的过程。 完成后，VM 会显示在自动化帐户
 
 ## <a name="unregister-a-node"></a>注销节点
 
-如果不想让某个节点继续受 State Configuration 管理，可以注销该节点。
-
-1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在左侧，单击“所有资源”，并单击自动化帐户的名称。
-1. 在“自动化帐户”页的“配置管理”下，单击“State configuration (DSC)” 。
-1. 在“State configuration (DSC)”页中，单击“节点”选项卡。
-1. 在“节点”选项卡上，单击要注销的节点的名称。
-1. 在该节点的窗格中，单击“注销”。
-
-    ![“节点详细信息”页的屏幕截图，其中突出显示了“注销”按钮](./media/automation-dsc-getting-started/UnregisterNode.png)
+如果不想让某个节点继续受 State Configuration 管理，可以注销该节点。 请参阅[如何从自动化 State Configuration 中删除配置和节点](./how-to/remove-desired-state-configuration-package.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

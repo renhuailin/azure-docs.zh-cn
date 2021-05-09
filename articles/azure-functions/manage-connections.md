@@ -4,12 +4,12 @@ description: 了解如何通过使用静态连接客户端来避免 Azure Functi
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: ec16ce3e7f9793be2a012a029bcca31c9a7ea4cf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6b27639ef8cccefbdec9538d0536db9b297e4039
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97936696"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107946360"
 ---
 # <a name="manage-connections-in-azure-functions"></a>管理 Azure Functions 中的连接
 
@@ -70,7 +70,7 @@ http.globalAgent.maxSockets = 200;
 var http = require('http');
 var httpAgent = new http.Agent();
 httpAgent.maxSockets = 200;
-options.agent = httpAgent;
+const options = { agent: httpAgent };
 http.request(options, onResponseCallback);
 ```
 

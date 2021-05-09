@@ -1,19 +1,19 @@
 ---
 title: 块 Blob 存储性能层 — Azure 存储
 description: 介绍 Azure 块 Blob 存储的高级与标准性能层之间的差异。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 11/12/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: cf0b5d29e0dc375a07fe024ef0763c8200275055
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 93e6fcc11703fc24d97bc19ab9cc0d2129ff666f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98880702"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143316"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>块 Blob 存储的性能层
 
@@ -63,7 +63,7 @@ Azure 块 Blob 存储提供两个不同的性能层：
 
 ## <a name="migrate-from-standard-to-premium"></a>从标准层迁移到高级层
 
-无法将现有的标准性能存储帐户转换为使用高级性能层的块 Blob 存储帐户。 若要迁移到高级性能存储帐户，必须创建一个块 Blob 存储帐户，并将数据迁移到新帐户。 有关详细信息，请参阅[创建块 Blob 存储帐户](storage-blob-create-account-block-blob.md)。
+无法将现有的标准性能存储帐户转换为使用高级性能层的块 Blob 存储帐户。 若要迁移到高级性能存储帐户，必须创建一个块 Blob 存储帐户，并将数据迁移到新帐户。 有关详细信息，请参阅[创建块 Blob 存储帐户](../common/storage-account-create.md)。
 
 若要在存储帐户之间复制 Blob，可以使用最新版本的 [AzCopy](../common/storage-use-azcopy-v10.md#transfer-data) 命令行工具。 Azure 数据工厂等其他工具也可用于数据移动和转换。
 

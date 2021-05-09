@@ -6,19 +6,14 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: e1eed3f9449843e6c2dd8c77719402e709fdeb23
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 60d25c0567bec06311cd391c3181c2ab21742839
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107327092"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108313567"
 ---
 本快速入门介绍如何使用适用于 iOS 的 Azure 通信服务通话 SDK 开始通话。
-
-[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-android-ios.md)]
-
-> [!NOTE]
-> 本文档使用版本 1.0.0-beta.9 的通话 SDK。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -47,9 +42,7 @@ ms.locfileid: "107327092"
    use_frameworks!
 
    target 'AzureCommunicationCallingSample' do
-     pod 'AzureCommunicationCalling', '~> 1.0.0-beta.9'
-     pod 'AzureCommunication', '~> 1.0.0-beta.9'
-     pod 'AzureCore', '~> 1.0.0-beta.9'
+     pod 'AzureCommunicationCalling', '~> 1.0.0'
    end
    ```
 
@@ -146,13 +139,12 @@ do {
 self.callClient = CallClient()
 
 // Creates the call agent
-self.callClient?.createCallAgent(userCredential: userCredential) { (agent, error) in
+self.callClient?.createCallAgent(userCredential: userCredential!) { (agent, error) in
     if error != nil {
         print("ERROR: It was not possible to create a call agent.")
         return
     }
-
-    if let agent = agent {
+    else {
         self.callAgent = agent
         print("Call agent successfully created.")
     }
@@ -173,7 +165,13 @@ func startCall()
         if granted {
             // start call logic
             let callees:[CommunicationIdentifier] = [CommunicationUserIdentifier(identifier: self.callee)]
-            self.call = self.callAgent?.startCall(participants: callees, options: StartCallOptions())
+            self.call = self.callAgent?.startCall(participants: callees, options: StartCallOptions()) { (call, error) in
+                if (error == nil) {
+                    self.call = call
+                } else {
+                    print("Failed to get call object")
+                }
+            }
         }
     }
 }

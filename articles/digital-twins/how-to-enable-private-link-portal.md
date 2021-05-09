@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 1/25/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2545915edf9e39b63100a2bb16bd34fa6777675c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff1589eb496cbc4482aaf93dfd4f0faeeda5e9cd
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100417136"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208862"
 ---
 # <a name="enable-private-access-with-private-link-preview-azure-portal"></a>使用专用链接启用专用访问(预览)：Azure 门户
 
@@ -20,7 +20,7 @@ ms.locfileid: "100417136"
 
 本文介绍多种方式[为 Azure 数字孪生实例启用包含专用终结点的专用链接](concepts-security.md#private-network-access-with-azure-private-link-preview)（当前为预览版）。 通过为 Azure 数字孪生实例配置专用终结点，可以保护 Azure 数字孪生实例，消除曝光危险，以及避免 [Azure 虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 数据外泄。
 
-本文介绍如何使用 [Azure 门户](https://portal.azure.com)完成此过程。
+本文介绍如何使用 Azure 门户完成此过程。
 
 本文介绍了以下步骤： 
 1. 打开专用链接，并为 Azure 数字孪生实例配置专用终结点。
@@ -28,7 +28,7 @@ ms.locfileid: "100417136"
 
 ## <a name="prerequisites"></a>先决条件
 
-在设置专用终结点之前，需要一个可在其中部署终结点的 [**Azure 虚拟网络 (VNet)** ](../virtual-network/virtual-networks-overview.md)。 如果尚无 VNet，可以按照 Azure 虚拟网络[快速入门](../virtual-network/quick-create-portal.md)中的一种方式进行设置。
+在设置专用终结点之前，需要一个可在其中部署终结点的 [Azure 虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 。 如果尚无 VNet，可以按照 Azure 虚拟网络[快速入门](../virtual-network/quick-create-portal.md)中的一种方式进行设置。
 
 ## <a name="add-a-private-endpoint-for-an-azure-digital-twins-instance"></a>为 Azure 数字孪生实例添加专用终结点 
 
@@ -43,7 +43,7 @@ ms.locfileid: "100417136"
 
 ### <a name="add-a-private-endpoint-during-instance-creation"></a>在实例创建过程中添加专用终结点
 
-在本部分中，将在当前正在创建的 Azure 数字孪生实例上启用包含专用终结点的专用链接。 本部分重点介绍创建过程中的网络步骤；有关创建新的 Azure 数字孪生实例的完整演练，请参阅[操作说明：设置实例和身份验证](how-to-set-up-instance-portal.md)。
+在本部分中，将在当前正在创建的 Azure 数字孪生实例上启用包含专用终结点的专用链接。 本部分重点介绍创建过程中的网络步骤；有关创建新的 Azure 数字孪生实例的完整演练，请参阅操作说明：设置实例和身份验证。
 
 “专用链接”选项位于实例设置的“网络”选项卡中。
 
@@ -148,4 +148,4 @@ ms.locfileid: "100417136"
 ## <a name="next-steps"></a>后续步骤
 
 详细了解 Azure 专用链接： 
-* [*什么是 Azure 专用链接服务？* ](../private-link/private-link-service-overview.md)
+* [什么是 Azure 专用链接服务？](../private-link/private-link-service-overview.md)

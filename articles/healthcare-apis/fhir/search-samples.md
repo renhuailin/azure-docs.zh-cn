@@ -1,29 +1,26 @@
 ---
-title: 用于 FHIR 的 Azure API 的搜索示例
+title: 搜索 Azure API for FHIR 的示例
 description: 如何使用不同的搜索参数、修饰符和其他 FHIR 搜索工具进行搜索
 author: ginalee-dotcom
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 04/20/2021
-ms.author: ginle
-ms.openlocfilehash: edbbfe81b4926689e0a431a28ac91e9f07e8e944
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.date: 05/03/2021
+ms.author: cavoeg
+ms.openlocfilehash: 33dcd9ace7af6d4ff820654fef20aa0a5aa3ff9d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108322509"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108756784"
 ---
 # <a name="fhir-search-examples"></a>FHIR 搜索示例
 
-下面是使用 FHIR 搜索操作的一些示例，包括搜索参数和修饰符、链和反向链搜索、复合搜索、查看搜索结果的下一项集以及使用 POST 请求搜索。 有关搜索的详细信息，请参阅 [FHIR 搜索概述](overview-of-search.md)。
+下面是使用 FHIR 搜索操作的一些示例，包括搜索参数和修饰符、链和反向链搜索、复合搜索、查看搜索结果的下一项集以及使用 `POST` 请求搜索。 有关搜索的详细信息，请参阅 [FHIR 搜索概述](overview-of-search.md)。
    
 ## <a name="search-result-parameters"></a>搜索结果参数
 
 ### <a name="_include"></a>_include
-
-> [!NOTE]
-> **_include** 和 **_revinclude** 限制为100项。
 
 `_include` 跨资源搜索包含资源的指定参数的资源。 例如，你可以跨 `MedicationRequest` 资源进行搜索，只查找包含特定患者处方的相关信息的 `reference` 参数 `patient` ：
 
@@ -31,6 +28,9 @@ ms.locfileid: "108322509"
  GET [your-fhir-server]/MedicationRequest?_include=MedicationRequest:patient
 
 ```
+
+> [!NOTE]
+> **_include** 和 **_revinclude** 限制为100项。
 
 ### <a name="_revinclude"></a>_revinclude
 

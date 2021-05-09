@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 41edef58910fe2b772831ef083e5aca8bb52a321
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: ee2bd4ab66b7a67be04c1a710caa12c57c705d19
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482262"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209960"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Azure 数字孪生高可用性和灾难恢复
 
@@ -24,7 +24,7 @@ Azure 数字孪生支持以下功能选项：
 * 区域内部 HA – 内置冗余，可实现服务运行时间
 * 跨区域灾难恢复 – 在数据中心出现意外故障时故障转移到异地配对的 Azure 区域
 
-还可以参阅[最佳做法](#best-practices)部分中有关设计以实现 HA/DR 的 Azure 常规指南。
+还可以参阅最佳做法部分中有关设计以实现 HA/DR 的 Azure 常规指南。
 
 ## <a name="intra-region-ha"></a>区域内部 HA
  
@@ -65,12 +65,12 @@ Azure 数字孪生通过在服务内实现冗余来提供区域内部 HA。 这�
 ## <a name="best-practices"></a>最佳做法
 
 有关 HA/DR 的最佳做法，请参阅以下关于本主题的 Azure 指南： 
-* [Azure 业务连续性技术指南](/azure/architecture/framework/resiliency/overview)一文介绍了一个常规框架来帮助你思考业务连续性和灾难恢复。 
+* Azure 业务连续性技术指南一文介绍了一个常规框架来帮助你思考业务连续性和灾难恢复。 
 * [Azure 应用程序的灾难恢复和高可用性](/azure/architecture/framework/resiliency/backup-and-recovery)一文针对 Azure 应用程序的高可用性 (HA) 和灾难恢复 (DR) 实现策略提供了体系结构指导。
 
 ## <a name="next-steps"></a>后续步骤 
 
 详细了解 Azure 数字孪生解决方案入门：
  
-* [*Azure 数字孪生是什么？*](overview.md)
+* [Azure 数字孪生是什么？](overview.md)
 * [快速入门：探索示例方案](quickstart-azure-digital-twins-explorer.md)
