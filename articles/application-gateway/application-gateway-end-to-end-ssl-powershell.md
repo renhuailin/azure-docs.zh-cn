@@ -7,12 +7,13 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: 47891dfa7fc0c9b30ccdbf2ed7710125eb36e4a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3536c074155b238bcbe29feafe5cbe9e5069380c
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93397801"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108320630"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>使用 PowerShell 通过应用程序网关配置端到端 TLS
 

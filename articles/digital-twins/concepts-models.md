@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b3f0dd599f982e19fee7febc3b85d46f91a55b35
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 713a829ee8c7a3d036bc82f6f509e5c79dfb71aa
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107589289"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205766"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>了解 Azure 数字孪生中的孪生模型
 
 Azure 数字孪生的一个重要特征是能够定义你自己的词汇，并以你自定义的业务字词生成孪生图。 此功能是通过用户提供的 **模型** 提供的。 你可以将模型视为有关你的世界的说明中的名词。 
 
-模型类似于面向对象的编程语言中的 **类**，用于定义真实工作环境中一个特定概念的数据形状。 模型具有名称（例如 *Room* 或 *TemperatureSensor*），并包含元素，例如属性、遥测/事件，以及用于描述此实体类型在你环境中的作用的命令。 稍后，你将使用这些模型来创建 [**数字孪生**](concepts-twins-graph.md)，这些孪生代表符合此类型说明的特定实体。
+模型类似于面向对象的编程语言中的 **类**，用于定义真实工作环境中一个特定概念的数据形状。 模型具有名称（例如 *Room* 或 *TemperatureSensor*），并包含元素，例如属性、遥测/事件，以及用于描述此实体类型在你环境中的作用的命令。 稍后，你将使用这些模型来创建[数字孪生](concepts-twins-graph.md)，这些孪生代表符合此类型说明的特定实体。
 
 Azure 数字孪生模型以基于 JSON-LD 的 **数字孪生定义语言 (DTDL)** 表示。  
 
@@ -26,7 +26,7 @@ Azure 数字孪生模型以基于 JSON-LD 的 **数字孪生定义语言 (DTDL)*
 
 Azure 数字孪生的模型是使用数字孪生定义语言 (DTDL) 定义的。 
 
-可以在 GitHub 中查看 DTDL 的完整语言规范：[**数字孪生定义语言 (DTDL) - 版本 2**](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
+可以在 GitHub 中查看 DTDL 的完整语言规范：[数字孪生定义语言 (DTDL) - 版本 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
 
 DTDL 基于 JSON-LD，独立于编程语言。 DTDL 并非专用于 Azure 数字孪生，它还可用于表示 [IoT 即插即用](../iot-pnp/overview-iot-plug-and-play.md)等其他 IoT 服务中的设备数据。 Azure 数字孪生使用 DTDL **版本 2**（现在不建议在 Azure 数字孪生中使用 DTDL 版本 1）。 
 
@@ -51,7 +51,7 @@ DTDL 基于 JSON-LD，独立于编程语言。 DTDL 并非专用于 Azure 数字
 
 一个 DTDL 模型接口可以包含以下每种字段的零个、一个或多个字段：
 * **属性** - 属性是表示实体状态的数据字段（类似于许多面向对象的编程语言中的属性）。 属性具有后备存储，随时可供读取。
-* **遥测** - 遥测字段表示度量结果或事件，通常用于描述设备传感器读数。 与属性不同，遥测数据不会存储在数字孪生上；它是一系列有时间限制的数据事件，在这些事件发生时就需要对其进行处理。 有关属性和遥测之间的差异的详细信息，请参阅下面的[属性与遥测](#properties-vs-telemetry)部分。
+* **遥测** - 遥测字段表示度量结果或事件，通常用于描述设备传感器读数。 与属性不同，遥测数据不会存储在数字孪生上；它是一系列有时间限制的数据事件，在这些事件发生时就需要对其进行处理。 有关属性和遥测之间的差异的详细信息，请参阅下面的属性与遥测部分。
 * **组件** - 如果需要，可以使用组件生成你的模型接口作为其他接口的程序集。 组件的一个示例是 *frontCamera* 接口（和另一个组件接口 *backCamera*），在定义 *phone* 的模型时可以使用这些接口。 必须先定义 *frontCamera* 的接口，就像它是其自己的模型一样，然后在定义 *Phone* 时可以引用该接口。
 
     使用组件可以描述这样的对象：它属于解决方案不可或缺的一部分，但不需要单独的标识，且不需要在孪生图中单独创建、删除或重新排列。 如果你希望实体在孪生图中独立存在，请将其表示为通过关系连接的不同模型的单独数字孪生（参阅下一条带项目符号的要点）。
@@ -153,21 +153,21 @@ DTDL 还允许关系具有其自己的属性。 在 DTDL 模型中定义关系�
 
 **用于将模型上传到 Azure 数字孪生**
 
-完成创建、扩展或选择模型后，可以将其上传到 Azure 数字孪生实例，使其可在解决方案中使用。 可以根据[操作指南：管理 DTDL 模型](how-to-manage-model.md#upload-models)中所述，使用 [Azure 数字孪生 API](how-to-use-apis-sdks.md) 来执行此操作。
+完成创建、扩展或选择模型后，可以将其上传到 Azure 数字孪生实例，使其可在解决方案中使用。 可以根据操作指南：管理 DTDL 模型中所述，使用 [Azure 数字孪生 API](how-to-use-apis-sdks.md) 来执行此操作。
 
-但是，如果你要上传很多模型，或者这些模型存在很多相互依赖关系，导致各个模型的上传顺序变得复杂，那么，你可以使用此示例一次上传很多模型：[**Azure 数字孪生模型上传程序**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader)。 按照示例附带的说明，配置并使用此项目将模型上传到你自己的实例中。
+但是，如果你要上传很多模型，或者这些模型存在很多相互依赖关系，导致各个模型的上传顺序变得复杂，那么，你可以使用此示例一次上传很多模型：[Azure 数字孪生模型上传程序](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader)。 按照示例附带的说明，配置并使用此项目将模型上传到你自己的实例中。
 
 ### <a name="model-visualizer"></a>模型可视化工具 
 
 **用于将模型可视化**
 
-将模型上传到 Azure 数字孪生实例后，可以使用 [**Azure 数字孪生模型可视化工具**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer)查看 Azure 数字孪生实例中的模型，包括任何继承和模型关系。 此示例当前处于草稿状态。 我们鼓励数字孪生开发社区扩展该示例并为其贡献内容。 
+将模型上传到 Azure 数字孪生实例后，可以使用 [Azure 数字孪生模型可视化工具](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer)查看 Azure 数字孪生实例中的模型，包括任何继承和模型关系。 此示例当前处于草稿状态。 我们鼓励数字孪生开发社区扩展该示例并为其贡献内容。 
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何基于行业标准本体创建模型：[概念：什么是本体？](concepts-ontologies.md)
+* 了解如何基于行业标准本体创建模型：概念：什么是本体？
 
-* 深入了解如何通过 API 操作管理模型：[*操作指南：管理 DTDL 模型*](how-to-manage-model.md)
+* 深入了解如何通过 API 操作管理模型：[操作指南：管理 DTDL 模型](how-to-manage-model.md)
 
-* 了解如何使用模型来创建数字孪生：[*概念：数字孪生和孪生图*](concepts-twins-graph.md)。
+* 了解如何使用模型来创建数字孪生：[概念：数字孪生和孪生图](concepts-twins-graph.md)。
 

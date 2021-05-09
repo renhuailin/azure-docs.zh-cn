@@ -4,12 +4,13 @@ description: 介绍如何通过门户、PowerShell、Azure CLI 和 REST API 查�
 tags: top-support-issue
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: e7ed2096a696efdc9a2654a8fd0c294c82cbd4f7
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 990e82beb3bce748e5c65b64132f1f2916e454ba
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781858"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108320252"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>使用 Azure 资源管理器查看部署历史记录
 

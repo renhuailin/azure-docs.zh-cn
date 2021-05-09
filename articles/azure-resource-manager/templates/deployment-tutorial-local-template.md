@@ -4,13 +4,13 @@ description: 了解如何从本地计算机部署 Azure 资源管理器模板（
 ms.date: 02/10/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: ''
-ms.openlocfilehash: d8d54acfa345994edcc401170e70495b3826bfdf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6737e2500b96d1c1872432c39761f8578de0ba02
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100384225"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319730"
 ---
 # <a name="tutorial-deploy-a-local-arm-template"></a>教程：部署本地 ARM 模板
 

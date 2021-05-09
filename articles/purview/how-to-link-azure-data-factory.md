@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 03/24/2021
-ms.openlocfilehash: c9f2a21a1183637ec4648868cccd6f343b003f0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d728160413d470383f3eee78fc430aed0125ed7
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026617"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905227"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>如何连接 Azure 数据工厂和 Azure Purview
 
@@ -34,7 +34,7 @@ ms.locfileid: "105026617"
     - **已断开连接**：数据工厂有权访问该目录，但它已连接到其他目录。 因此，不会自动将数据世系报告给该目录。
     - **CannotAccess**：当前用户无法访问数据工厂，因此连接状态未知。
  >[!Note]
- >若要查看数据工厂连接，你需要分配有以下任一 Purview 角色：
+ >若要查看数据工厂连接，你需要获分配以下任一 Purview 角色。 不支持从管理组继承角色：
  >- 参与者
  >- 所有者
  >- 读取器
@@ -43,7 +43,7 @@ ms.locfileid: "105026617"
 ## <a name="create-new-data-factory-connection"></a>创建新的数据工厂连接
 
 >[!Note]
->若要添加或删除数据工厂连接，你需要分配有以下任一 Purview 角色：
+>若要添加或删除数据工厂连接，你需要获分配以下任一 Purview 角色。 不支持从管理组继承角色：
 >- “所有者”
 >- 用户访问管理员
 >

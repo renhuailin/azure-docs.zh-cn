@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: article
-ms.date: 04/16/2021
+ms.date: 04/22/2021
 ms.author: duau
-ms.openlocfilehash: 0bbe16fb63a4546b4b4745df16074f6a4b0cb26b
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 77b9cd7590b381a29fc0dc19b2a80b72afceca0a
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599530"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930292"
 ---
 # <a name="azure-route-server-preview-faq"></a>Azure 路由服务器（预览版）常见问题解答
 
@@ -47,7 +47,7 @@ Azure 路由服务器仅支持边界网关协议 (BGP)。 NVA 需要支持多跃
 不是。 Azure 路由服务器仅与 NVA 交换 BGP 路由。 数据流量直接从 NVA 流入目标 VM，并直接从 VM 流入 NVA。
 
 ### <a name="does-azure-route-server-store-customer-data"></a>Azure 路由服务器是否存储客户数据？
-不是。 Azure 路由服务器仅与 NVA 交换 BGP 路由，然后将其传播到虚拟网络。
+不知道。 Azure 路由服务器仅与 NVA 交换 BGP 路由，然后将其传播到虚拟网络。
 
 ### <a name="if-azure-route-server-receives-the-same-route-from-more-than-one-nva-how-does-it-handle-them"></a>如果 Azure 路由服务器接收来自多个 NVA 的相同路由，它会如何处理这些路由？
 
@@ -81,6 +81,7 @@ Azure 路由服务器具有以下限制（对于每个部署）。
 | 支持的 BGP 对等节点数量 | 8 |
 | 每个 BGP 对等节点可以播发到 Azure 路由服务器的路由数 | 200 |
 | Azure 路由服务器可以播发到 ExpressRoute 或 VPN 网关的路由数 | 200 |
+| Azure 路由服务器可支持的虚拟网络（包括对等互连 Vnet）中的 VM 数量 | 6000 |
 
 如果 NVA 播发的路由数超出了限制，则会删除 BGP 会话。 如果网关和 Azure 路由服务器发生这种情况，你将丢失从本地网络到 Azure 的连接。 有关详细信息，请参阅[诊断 Azure 虚拟机路由问题](../virtual-network/diagnose-network-routing-problem.md)。
 

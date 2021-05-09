@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: e0fbd0e49b1ac80161d0447d2f75a9cc03844abb
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 011eb74158d9e004aca04c595e5cfe4b76d3cb51
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130118"
+ms.locfileid: "108163348"
 ---
 # <a name="migrate-sql-server-to-azure-arc-enabled-sql-managed-instance"></a>迁移：从 SQL Server 到已启用 Azure Arc 的 SQL 托管实例
 
@@ -22,7 +22,7 @@ ms.locfileid: "108130118"
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="use-azure-blob-storage"></a>使用 Azure Blob 存储 
+## <a name="use-azure-blob-storage"></a>使用 Azure Blob 存储
 
 使用 Azure Blob 存储迁移到已启用 Azure Arc 的 SQL 托管实例。
 
@@ -133,10 +133,10 @@ ms.locfileid: "108130118"
 
 就像在磁盘中进行任何典型的 SQL Server 备份一样，将 SQL Server 数据库备份到本地文件路径：
 
- ```sql
+```sql
 BACKUP DATABASE Test
 TO DISK = 'c:\tmp\test.bak'
-WITH FORMAT, MEDIANAME = 'Test’ ;
+WITH FORMAT, MEDIANAME = 'Test' ;
 GO
 ```
 
@@ -146,7 +146,7 @@ GO
 
 运行以下命令获取所有 Pod 的列表：
 
- ```console
+```console
 kubectl get pods -n <namespace of data controller>
 ```
 
@@ -154,7 +154,7 @@ kubectl get pods -n <namespace of data controller>
 
 将备份文件从本地存储复制到群集中的 SQL Pod。
 
- ```console
+```console
 kubectl cp <source file location> <pod name>:var/opt/mssql/data/<file name> -n <namespace name>
 
 #Example:
@@ -186,7 +186,6 @@ WITH MOVE 'test' to '/var/opt/mssql/data/test.mdf'
 ,STATS = 5;  
 GO
 ```
-
 
 ## <a name="next-steps"></a>后续步骤
 

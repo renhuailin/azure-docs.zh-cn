@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 50b09fd82461221ae6cd008f6918ac2f3a26fd94
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 87b29d7417bfcaff670282377b2fffc6d4713395
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877164"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135034"
 ---
 # <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>将 Azure Spring Cloud 与 Azure 负载均衡解决方案集成
 
@@ -28,7 +28,7 @@ Azure 已提供不同的负载均衡解决方案。 将 Azure Spring Cloud 与 A
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure Spring Cloud：[如何创建 Azure Spring Cloud 服务](./spring-cloud-quickstart.md)
+* Azure Spring Cloud：[如何创建 Azure Spring Cloud 服务](./quickstart.md)
 * Azure 流量管理器：[如何创建流量管理器](../traffic-manager/quickstart-create-traffic-manager-profile.md)
 * Azure 应用网关：[如何创建应用程序网关](../application-gateway/quick-create-portal.md)
 * Azure Front Door：[如何创建 Front Door](../frontdoor/quickstart-create-front-door.md)
@@ -48,7 +48,7 @@ Azure 已提供不同的负载均衡解决方案。 将 Azure Spring Cloud 与 A
 ### <a name="configure-custom-domain"></a>配置自定义域
 若要完成配置，请执行以下操作：
 1.  登录到域提供商的网站，创建从自定义域到流量管理器的 Azure 默认域名的 CNAME 记录映射。
-1.  按照[如何将自定义域添加到 Azure Spring Cloud](spring-cloud-tutorial-custom-domain.md) 中的说明操作。
+1.  按照[如何将自定义域添加到 Azure Spring Cloud](./tutorial-custom-domain.md) 中的说明操作。
 1. 将上面的自定义域绑定（绑定到流量管理器）添加到 Azure Spring Cloud 的相应应用服务，并在该处上传 SSL 证书。
 
     ![流量管理器 3](media/spring-cloud-load-balancers/traffic-manager-3.png)

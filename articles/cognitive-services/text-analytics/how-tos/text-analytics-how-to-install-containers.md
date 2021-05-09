@@ -5,19 +5,19 @@ description: 使用文本分析 API 的 Docker 容器在本地执行自然语言
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18, cog-serv-seo-aug-2020
+ms.custom: seodec18, cog-serv-seo-aug-2020, devx-track-azurecli
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: aahi
 keywords: 本地, Docker, 容器, 情绪分析, 自然语言处理
-ms.openlocfilehash: 012e725e31097af5af634a1aba7693048c4c6b3e
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 09d0da5aa811f694657ae6a0b8059bf55bcbf657
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277464"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290247"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 
@@ -50,7 +50,7 @@ ms.locfileid: "106277464"
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
 
-如果使用的是运行状况容器的文本分析，则[负责的 AI](https://docs.microsoft.com/legal/cognitive-services/text-analytics/transparency-note-health) (RAI) 确认的值也必须为 `accept`。
+如果使用的是运行状况容器的文本分析，则[负责的 AI](/legal/cognitive-services/text-analytics/transparency-note-health) (RAI) 确认的值也必须为 `accept`。
 
 ## <a name="the-host-computer"></a>主计算机
 

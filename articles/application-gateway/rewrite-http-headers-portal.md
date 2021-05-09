@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: a77476086d6100cbaf49d54791972940cca0644f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3427dfafe1918590f215793acbae3d5fd290e604
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101708928"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205226"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>重写 Azure 应用程序网关中的 HTTP 请求和响应标头 - Azure 门户
 
@@ -131,4 +131,4 @@ ms.locfileid: "101708928"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解如何设置某些常见用例，请参阅[常见标头重写方案](./rewrite-http-headers.md)。
+若要详细了解如何设置某些常见用例，请参阅[常见标头重写方案](./rewrite-http-headers-url.md)。

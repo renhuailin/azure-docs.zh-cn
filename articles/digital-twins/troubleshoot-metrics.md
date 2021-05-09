@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 63817c8a65678579ce535a3c2e667e4eb0971a63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4f0182c6214f500d10904760087be5c89a07acd
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102434060"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203552"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>排查 Azure 数字孪生指标问题
 
@@ -22,7 +22,7 @@ ms.locfileid: "102434060"
 
 ## <a name="how-to-view-azure-digital-twins-metrics"></a>如何查看 Azure 数字孪生指标
 
-1. 创建一个 Azure 数字孪生实例。 有关如何设置 Azure 数字孪生实例的说明，可查看[如何：设置实例和身份验证](how-to-set-up-instance-portal.md)。
+1. 创建一个 Azure 数字孪生实例。 有关如何设置 Azure 数字孪生实例的说明，可查看如何：设置实例和身份验证。
 
 2. 在 [Azure 门户](https://portal.azure.com)中找到你的 Azure 数字孪生实例（可将其名称输入门户搜索栏打开其页面）。 
 
@@ -36,12 +36,12 @@ ms.locfileid: "102434060"
 
     :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="显示诊断设置页面和“添加”按钮的屏幕截图":::
 
-    有关此过程的详细信息，请参阅[故障排除：设置诊断](troubleshoot-diagnostics.md)。
+    有关此过程的详细信息，请参阅故障排除：设置诊断。
 
 4. 可从菜单中选择“警报”，然后选择“+新建警报规则”，选择为指标数据设置警报 。
     :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="显示警报页面和“添加”按钮的屏幕截图":::
 
-    有关此过程的详细信息，请参阅[故障排除：设置警报](troubleshoot-alerts.md)。
+    有关此过程的详细信息，请参阅故障排除：设置警报。
 
 ## <a name="azure-digital-twins-metrics-and-how-to-use-them"></a>Azure 数字孪生指标及其使用方法
 
@@ -80,7 +80,7 @@ Azure 数字孪生提供了几项指标，便于你简要了解你的实例及�
 | BillingMessagesProcessed | 计费已处理的消息数 | 计数 | 总计 | 从 Azure 数字孪生发送到外部终结点的消息数量的计费指标。<br><br>若要在计费时将其看作一条消息，一个有效负载不得大于 1 KB。 大于此值的有效负载将按 1 KB 的增量计为附加消息（因此，1 到 2 KB 之间的消息将计为 2 条消息，2 到 3 KB 之间的消息将计为 3 条消息，依此类推）。<br>此限制也适用于响应；因此，例如，在响应正文中返回 1.5 KB 内容的调用将作为 2 个操作进行计费。 | Meter ID |
 | BillingQueryUnits | 计费查询单元 | 计数 | 总计 | 查询单元的数量，它是在内部计算的服务资源使用量度量值，用于执行查询。 还有一个可用于度量查询单元的帮助程序 API：[QueryChargeHelper 类](/dotnet/api/azure.digitaltwins.core.querychargehelper) | Meter ID |
 
-若要更详细地了解 Azure 数字孪生的计费方式，请参阅 [Azure 数字孪生定价](https://azure.microsoft.com/pricing/details/digital-twins/)。
+若要更详细地了解 Azure 数字孪生的计费方式，请参阅 Azure 数字孪生定价。
 
 #### <a name="ingress-metrics"></a>入口指标
 
@@ -119,4 +119,4 @@ Azure 数字孪生提供了几项指标，便于你简要了解你的实例及�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解如何管理为 Azure 数字孪生记录的指标，请参阅[排除故障：设置诊断](troubleshoot-diagnostics.md)。
+若要详细了解如何管理为 Azure 数字孪生记录的指标，请参阅排除故障：设置诊断。
