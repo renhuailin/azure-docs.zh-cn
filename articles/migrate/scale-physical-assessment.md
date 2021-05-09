@@ -1,85 +1,85 @@
 ---
-title: 通过 Azure Migrate 评估用于迁移到 Azure 的大量物理服务器 |Microsoft Docs
-description: 介绍如何使用 Azure Migrate 服务评估大量物理服务器以迁移到 Azure。
+title: 使用 Azure Migrate 为迁移到 Azure 评估大量物理服务器 | Microsoft Docs
+description: 介绍如何使用 Azure Migrate 服务为迁移到 Azure 评估大量物理服务器。
 author: rashi-ms
 ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 01/19/2020
-ms.openlocfilehash: 45954a42613fb1716e3b66305c0485a3966b8e37
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
-ms.translationtype: MT
+ms.openlocfilehash: 232475c50ab56fe6fb7a39a3497a8de3947fe851
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753682"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104780304"
 ---
-# <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>评估大量物理服务器以迁移到 Azure
+# <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>评估大量物理服务器以便迁移到 Azure
 
-本文介绍如何使用 Azure Migrate Server 评估工具评估大量用于迁移到 Azure 的本地物理服务器。
+本文介绍如何使用 Azure Migrate 发现和评估工具为迁移到 Azure 评估大量本地物理服务器。
 
 [Azure Migrate](migrate-services-overview.md) 在一个中心位置提供多种工具，帮助你发现、评估应用、基础结构和工作负荷并将其迁移到 Microsoft Azure。 该中心包含 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 的产品/服务。 
 
 
 在本文中，学习如何：
 > [!div class="checklist"]
-> * 大规模规划评估。
-> * 配置 Azure 权限，并准备物理服务器进行评估。
+> * 制定大规模评估计划。
+> * 配置 Azure 权限，并准备要进行评估的物理服务器。
 > * 创建 Azure Migrate 项目，并创建评估。
-> * 在规划迁移时，请查看评估。
+> * 在计划迁移时查看评估。
 
 
 > [!NOTE]
-> 如果要在评估规模之前尝试使用概念证明来评估一些服务器，请遵循我们的 [系列教程](./tutorial-discover-physical.md)。
+> 如果要在进行大规模评估之前先尝试使用概念证明来评估几台服务器，请按[教程系列](./tutorial-discover-physical.md)的要求进行操作。
 
-## <a name="plan-for-assessment"></a>规划评估
+## <a name="plan-for-assessment"></a>制定评估计划
 
-规划大量物理服务器的评估时，需要考虑几个问题：
+在计划大量物理服务器的评估时，需要考虑几个问题：
 
-- **规划 Azure Migrate 项目**：了解如何部署 Azure Migrate 项目。 例如，如果你的数据中心位于不同的地理位置，或者你需要在不同的地理位置存储发现、评估或与迁移相关的元数据，则可能需要多个项目。
-- **计划设备**： Azure Migrate 使用部署在 Windows 计算机上的本地 Azure Migrate 设备来持续发现服务器以进行评估和迁移。 设备会监视环境更改，如添加 Vm、磁盘或网络适配器。 它还会将有关它们的元数据和性能数据发送到 Azure。 需要确定要部署的设备的数量。
+- 计划 Azure Migrate 项目：了解如何部署 Azure Migrate 项目。 例如，如果数据中心位于不同的地理位置，或者需要在不同的地理位置存储发现、评估或与迁移相关的元数据，则可能需要多个项目。
+- 计划设备：Azure Migrate 使用部署在 Windows 服务器上的本地 Azure Migrate 设备来持续发现服务器以进行评估和迁移。 该设备会监视环境的变化，例如，添加了服务器、磁盘或网络适配器。 它还会将元数据和性能数据发送到 Azure。 需要了解要部署多少设备。
 
 
-## <a name="planning-limits"></a>规划限制
+## <a name="planning-limits"></a>计划限制
  
-使用此表中汇总的限制进行规划。
+请使用此表中汇总的限制来进行计划。
 
-规划 | **限制**
+**规划** | **限制**
 --- | --- 
-**Azure Migrate 项目** | 在项目中评估最多35000服务器。
-**Azure Migrate 设备** | 设备最多可以发现1000服务器。<br/> 设备只能与单个 Azure Migrate 项目相关联。<br/> 可以将任意数量的设备与单个 Azure Migrate 项目相关联。 <br/><br/> 
-**组** | 最多可以在一个组中添加35000服务器。
-**Azure Migrate 评估** | 在单个评估中，最多可以评估35000服务器。
+**Azure Migrate 项目** | 在一个项目中最多评估 35,000 台服务器。
+**Azure Migrate 设备** | 一个设备最多可发现 1000 台服务器。<br/> 一个设备只能与一个 Azure Migrate 项目关联。<br/> 一个 Azure Migrate 项目可以关联任意数量的设备。 <br/><br/> 
+**组** | 在一个组中最多可以添加 35,000 台服务器。
+Azure Migrate 评估 | 在一次评估中最多可以评估 35,000 台服务器。
 
 
-## <a name="other-planning-considerations"></a>其他规划注意事项
+## <a name="other-planning-considerations"></a>其他计划注意事项
 
-- 若要从设备启动发现，你必须选择每个物理服务器。 
+- 若要从设备启动发现，必须选择每一台物理服务器。 
 
 ## <a name="prepare-for-assessment"></a>准备进行评估
 
-为服务器评估准备 Azure 和物理服务器。 
+为发现和评估工具准备 Azure 和物理服务器：  
 
-1. 验证 [物理服务器支持的要求和限制](migrate-support-matrix-physical.md)。
-2. 设置你的 Azure 帐户的权限以与 Azure Migrate 进行交互。
+1. 验证[物理服务器支持要求和限制](migrate-support-matrix-physical.md)。
+2. 为 Azure 帐户设置用来与 Azure Migrate 交互的权限。
 3. 准备物理服务器。
 
-按照 [本教程](./tutorial-discover-physical.md) 中的说明配置这些设置。
+请按照[此教程](./tutorial-discover-physical.md)中的说明来配置这些设置。
 
 ## <a name="create-a-project"></a>创建一个项目
 
-按照规划要求，执行以下操作：
+按照计划要求，执行以下操作：
 
 1. 创建 Azure Migrate 项目。
-2. 将 Azure Migrate 服务器评估工具添加到项目。
+2. 将 Azure Migrate 发现和评估工具添加到项目。
 
 [了解详细信息](./create-manage-projects.md)
 
 ## <a name="create-and-review-an-assessment"></a>创建和查看评估
 
 1. 为物理服务器创建评估。
-1. 查看评估以准备迁移规划。
+1. 在准备迁移计划时查看评估。
 
-[了解](tutorial-assess-physical.md) 有关创建和查看评估的详细信息。
+[详细了解](tutorial-assess-physical.md)如何创建和查看评估。
     
 
 ## <a name="next-steps"></a>后续步骤
@@ -87,9 +87,9 @@ ms.locfileid: "96753682"
 本文内容：
  
 > [!div class="checklist"] 
-> * 计划扩展物理服务器 Azure Migrate 评估。
-> * 已准备好 Azure 和物理服务器进行评估。
-> * 创建 Azure Migrate 项目并运行评估。
-> * 查看评估以准备迁移。
+> * 计划了对物理服务器的 Azure Migrate 评估进行缩放。
+> * 准备了 Azure 和物理服务器以进行评估。
+> * 创建了 Azure Migrate 项目并运行了评估。
+> * 在准备迁移时查看了评估。
 
-现在， [了解如何](concepts-assessment-calculation.md) 计算评估，以及如何 [修改评估](how-to-modify-assessment.md)。
+现在，请[了解如何](concepts-assessment-calculation.md)计算评估，以及如何[修改评估](how-to-modify-assessment.md)。

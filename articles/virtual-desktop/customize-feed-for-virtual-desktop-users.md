@@ -1,16 +1,16 @@
 ---
-title: 自定义 Windows 虚拟桌面用户的源-Azure
-description: 如何通过 PowerShell cmdlet 为 Windows 虚拟桌面用户自定义源。
+title: 为 Windows 虚拟桌面用户自定义源 - Azure
+description: 如何使用 PowerShell cmdlet 为 Windows 虚拟桌面用户自定义源。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 09/14/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: e47486f29537cb948aaae7cf17e97bae14b60700
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90084288"
 ---
 # <a name="customize-the-feed-for-windows-virtual-desktop-users"></a>为 Windows 虚拟桌面用户自定义源
@@ -18,35 +18,35 @@ ms.locfileid: "90084288"
 >[!IMPORTANT]
 >本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/customize-feed-virtual-desktop-users-2019.md)。
 
-你可以自定义该源，使 RemoteApp 和远程桌面资源以可识别的方式显示给用户。
+可以自定义源，以便 RemoteApp 和远程桌面资源以可识别的方式向用户显示。
 
 ## <a name="prerequisites"></a>必备条件
 
-本文假设已下载并安装 Windows 虚拟桌面 PowerShell 模块。 如果尚未安装，请按照 [设置 PowerShell 模块](powershell-module.md)中的说明进行操作。
+本文假设你已下载并安装 Windows 虚拟桌面 PowerShell 模块。 如果尚未安装，请按照[安装 PowerShell 模块](powershell-module.md)中的说明进行操作。
 
 ## <a name="customize-the-display-name-for-a-remoteapp"></a>自定义 RemoteApp 的显示名称
 
-可以通过设置友好名称来更改已发布的 RemoteApp 的显示名称。 默认情况下，友好名称与 RemoteApp 程序的名称相同。
+可以通过设置易记名称来更改已发布的 RemoteApp 的显示名称。 在默认情况下，易记名称与 RemoteApp 程序的名称相同。
 
-若要检索应用组的已发布 RemoteApps 的列表，请运行以下 PowerShell cmdlet：
+若要检索某个应用组的已发布 RemoteApps 的列表，请运行以下 PowerShell cmdlet：
 
 ```powershell
 Get-AzWvdApplication -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname>
 ```
 
-若要为 RemoteApp 分配一个友好名称，请使用所需的参数运行以下 cmdlet：
+若要为 RemoteApp 分配易记名称，请使用所需参数运行以下 cmdlet：
 
 ```powershell
 Update-AzWvdApplication -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname> -Name <applicationname> -FriendlyName <newfriendlyname>
 ```
 
-例如，假设您检索了当前应用程序并带有以下示例 cmdlet：
+例如，假定已使用以下示例 cmdlet 检索了当前应用程序：
 
 ```powershell
 Get-AzWvdApplication -ResourceGroupName 0301RG -ApplicationGroupName 0301RAG | format-list
 ```
 
-输出如下所示：
+输出会如下所示：
 
 ```powershell
 CommandLineArgument :
@@ -63,19 +63,19 @@ Name                : 0301RAG/Microsoft Word
 ShowInPortal        : False
 Type                : Microsoft.DesktopVirtualization/applicationgroups/applications
 ```
-若要更新友好名称，请运行以下 cmdlet：
+若要更新易记名称，请运行此 cmdlet：
 
 ```powershell
 Update-AzWvdApplication -GroupName 0301RAG -Name "Microsoft Word" -FriendlyName "WordUpdate" -ResourceGroupName 0301RG -IconIndex 0 -IconPath "C:\Program Files\Windows NT\Accessories\wordpad.exe" -ShowInPortal:$true -CommandLineSetting DoNotallow -FilePath "C:\Program Files\Windows NT\Accessories\wordpad.exe"
 ```
 
-若要确认已成功更新友好名称，请运行以下 cmdlet：
+若要确认你已成功更新易记名称，请运行此 cmdlet：
 
 ```powershell
 Get-AzWvdApplication -ResourceGroupName 0301RG -ApplicationGroupName 0301RAG | format-list FriendlyName
 ```
 
-Cmdlet 应为你生成以下输出：
+该 cmdlet 应该会生成以下输出：
 
 ```powershell
 FriendlyName        : WordUpdate
@@ -83,7 +83,7 @@ FriendlyName        : WordUpdate
 
 ## <a name="customize-the-display-name-for-a-remote-desktop"></a>自定义远程桌面的显示名称
 
-可以通过设置友好名称来更改已发布远程桌面的显示名称。 如果通过 PowerShell 手动创建了主机池和桌面应用组，则默认友好名称为 "会话桌面"。 如果通过 GitHub Azure 资源管理器模板或 Azure Marketplace 产品创建了主机池和桌面应用组，则默认的友好名称与主机池名称相同。
+可以通过设置易记名称来更改已发布的远程桌面的显示名称。 如果通过 PowerShell 手动创建了主机池和桌面应用组，则默认易记名称为“会话桌面”。 如果通过 GitHub Azure 资源管理器模板或 Azure 市场产品/服务创建了主机池和桌面应用组，则默认易记名称与主机池名称相同。
 
 若要检索远程桌面资源，请运行以下 PowerShell cmdlet：
 
@@ -91,7 +91,7 @@ FriendlyName        : WordUpdate
 Get-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname> -Name <applicationname>
 ```
 
-若要为远程桌面资源分配一个友好名称，请运行以下 PowerShell cmdlet：
+若要为远程桌面资源分配易记名称，请运行以下 PowerShell cmdlet：
 
 ```powershell
 Update-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname> -Name <applicationname> -FriendlyName <newfriendlyname>
@@ -99,27 +99,27 @@ Update-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName
 
 ## <a name="customize-a-display-name-in-azure-portal"></a>在 Azure 门户中自定义显示名称
 
-可以通过使用 Azure 门户设置友好名称来更改已发布远程桌面的显示名称。
+可以通过使用 Azure 门户设置易记名称来更改已发布的远程桌面的显示名称。
 
 1. 通过 <https://portal.azure.com> 登录到 Azure 门户。
 
-2. 搜索 **Windows 虚拟桌面**。
+2. 搜索“Windows 虚拟桌面”。
 
-3. 在 "服务" 下，选择 " **Windows 虚拟桌面**"。
+3. 在“服务”下，选择“Windows 虚拟桌面”。
 
-4. 在 Windows 虚拟桌面页面上，选择屏幕左侧的 " **应用程序组** "，然后选择要编辑的应用组的名称。  (例如，若要编辑桌面应用组的显示名称，请选择名为 " **desktop**" 的应用组 ) 
+4. 在 Windows 虚拟桌面页上，选择屏幕左侧的“应用程序组”，然后选择要编辑的应用组的名称。 （例如，如果要编辑桌面应用组的显示名称，请选择名为“桌面”的应用组。）
 
-5. 在屏幕左侧的菜单中选择 " **应用程序** "。
+5. 在屏幕左侧的菜单中选择“应用程序”。
 
-6. 选择要更新的应用程序，然后输入新的 **显示名称**。
+6. 选择要更新的应用程序，然后输入新的“显示名称”。
 
-7. 选择“保存”。 你编辑的应用程序现在应显示更新的名称。
+7. 选择“保存”。 你编辑的应用程序现在应该会显示更新后的名称。
 
 ## <a name="next-steps"></a>后续步骤
 
-自定义用户的源后，可以登录到 Windows 虚拟桌面客户端进行测试。为此，请继续阅读连接到 Windows 虚拟桌面的操作指南：
+你现在已经为用户自定义了源，可以登录到 Windows 虚拟桌面客户端对该源进行测试了。为此，请继续了解连接到 Windows 虚拟桌面的操作方法：
 
- * [与 Windows 10 或 Windows 7 连接](connect-windows-7-10.md)
+ * [使用 Windows 10 或 Windows 7 进行连接](connect-windows-7-10.md)
  * [使用 Web 客户端进行连接](connect-web.md)
  * [使用 Android 客户端进行连接](connect-android.md)
  * [使用 iOS 客户端进行连接](connect-ios.md)
