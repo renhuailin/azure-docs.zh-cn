@@ -9,25 +9,25 @@ ms.author: tagore
 ms.reviewer: mimckitt
 ms.date: 2/08/2021
 ms.custom: ''
-ms.openlocfilehash: 96315899f80d0bd02ac3d2108b7cd76876025218
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: f3b41bed481ff36ec1f2fef8e699e57f6138474c
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286687"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108285927"
 ---
 # <a name="migrate-azure-cloud-services-classic-to-azure-cloud-services-extended-support"></a>将 Azure 云服务（经典）迁移到 Azure 云服务（外延支持）
 
 本文概述了平台支持的迁移工具，以及如何使用此工具将 [Azure 云服务（经典）](../cloud-services/cloud-services-choose-me.md)迁移到 [Azure 云服务（外延支持）](overview.md)。
 
-迁移工具利用相同的 API，其体验与[虚拟机（经典）迁移](https://docs.microsoft.com/azure/virtual-machines/migration-classic-resource-manager-overview)相同。 
+迁移工具利用相同的 API，其体验与[虚拟机（经典）迁移](../virtual-machines/migration-classic-resource-manager-overview.md)相同。 
 
 > [!IMPORTANT]
 > 使用迁移工具从云服务（经典）迁移到云服务（外延支持）目前为公开预览版。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 在迁移过程中如需帮助，请参阅以下资源： 
 
-- [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-cloud-services-extended-support.html)：Microsoft 和社区对迁移的支持。
+- [Microsoft Q&A](/answers/topics/azure-cloud-services-extended-support.html)：Microsoft 和社区对迁移的支持。
 - [Azure 迁移支持](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/%7B%22pesId%22:%22e79dcabe-5f77-3326-2112-74487e1e5f78%22,%22supportTopicId%22:%22fca528d2-48bd-7c9f-5806-ce5d5b1d226f%22%7D)：迁移过程中的技术协助专门支持团队。 没有技术支持的客户可以使用专门为此迁移提供的[免费支持功能](https://aka.ms/cs-migration-errors)。
 - 如果你的公司/组织已与 Microsoft 合作，或者与 Microsoft 代表（例如云解决方案架构师或技术客户经理）合作，请联系他们以获取更多的迁移资源。
 - 请完成[此调查](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR--AgudUMwJKgRGMO84rHQtUQzZYNklWUk4xOTFXVFBPOFdGOE85RUIwVC4u)，以便向云服务（外延支持）产品团队提供反馈或提出问题。 
@@ -68,7 +68,7 @@ ms.locfileid: "106286687"
     ```
 
 ## <a name="how-is-migration-for-cloud-services-classic-different-from-virtual-machines-classic"></a>云服务（经典）迁移与虚拟机（经典）迁移有何差别？
-Azure Service Manager 支持两种不同的计算产品：[Azure 虚拟机（经典）](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/tutorial-classic)和 [Azure 云服务（经典）](../cloud-services/cloud-services-choose-me.md)或 Web/辅助角色。 这两种产品根据云服务中的部署类型而有差异。 Azure 云服务（经典）使用包含具有 Web/辅助角色的部署的云服务。 Azure 虚拟机（经典）使用包含具有 IaaS VM 的部署的云服务。
+Azure Service Manager 支持两种不同的计算产品：[Azure 虚拟机（经典）](/previous-versions/azure/virtual-machines/windows/classic/tutorial-classic)和 [Azure 云服务（经典）](../cloud-services/cloud-services-choose-me.md)或 Web/辅助角色。 这两种产品根据云服务中的部署类型而有差异。 Azure 云服务（经典）使用包含具有 Web/辅助角色的部署的云服务。 Azure 虚拟机（经典）使用包含具有 IaaS VM 的部署的云服务。
 
 由于部署类型的差异，云服务（经典）和虚拟机（经典）的支持方案列表也有差异。
 
@@ -113,7 +113,7 @@ Azure Service Manager 支持两种不同的计算产品：[Azure 虚拟机（经
 
 | 服务 | 配置 | 注释 | 
 |---|---|---|
-| [Azure AD 域服务](https://docs.microsoft.com/azure/active-directory-domain-services/migrate-from-classic-vnet) | 包含 Azure Active Directory 域服务的虚拟网络。 | 支持包含云服务部署和 Azure AD 域服务的虚拟网络。 客户首先需要单独迁移 Azure AD 域服务，然后迁移剩下的仅具有云服务部署的虚拟网络 |
+| [Azure AD 域服务](../active-directory-domain-services/migrate-from-classic-vnet.md) | 包含 Azure Active Directory 域服务的虚拟网络。 | 支持包含云服务部署和 Azure AD 域服务的虚拟网络。 客户首先需要单独迁移 Azure AD 域服务，然后迁移剩下的仅具有云服务部署的虚拟网络 |
 | 云服务 | 仅限在单个槽中具有部署的云服务。 | 可以迁移包含生产槽部署或过渡槽部署的云服务 |
 | 云服务 | 不在公开可见的虚拟网络中的部署（默认虚拟网络部署） | 云服务可以位于公开可见的虚拟网络或隐藏的虚拟网络中，也可以不在任何虚拟网络中。  支持迁移位于隐藏虚拟网络和公开可见虚拟网络中的云服务。 客户可以使用“验证”API 来判断部署是否位于默认虚拟网络中，因而可确定该部署是否可迁移。 |
 |云服务 | XML 扩展（BGInfo、Visual Studio 调试器、Web 部署和远程调试）。 | 支持迁移所有 XML 扩展 
@@ -127,13 +127,13 @@ Azure Service Manager 支持两种不同的计算产品：[Azure 虚拟机（经
 
 | 资源 | 后续步骤/解决方法 | 
 |---|---|
-| 自动缩放规则 | 迁移会继续，但规则将被删除。 迁移后在云服务（外延支持）上[重新创建规则](https://docs.microsoft.com/azure/cloud-services-extended-support/configure-scaling)。 | 
-| 警报 | 迁移会继续，但警报将被删除。 迁移后在云服务（外延支持）上[重新创建规则](https://docs.microsoft.com/azure/cloud-services-extended-support/enable-alerts)。 | 
+| 自动缩放规则 | 迁移会继续，但规则将被删除。 迁移后在云服务（外延支持）上[重新创建规则](./configure-scaling.md)。 | 
+| 警报 | 迁移会继续，但警报将被删除。 迁移后在云服务（外延支持）上[重新创建规则](./enable-alerts.md)。 | 
 | VPN 网关 | 开始迁移之前请删除 VPN 网关，并在迁移完成后重新创建 VPN 网关。 | 
 | Express Route 网关（仅限在虚拟网络所在的同一订阅中） | 开始迁移之前请删除 Express Route 网关，并在迁移完成后重新创建该网关。 | 
-| Quota  | 配额不会迁移。 迁移之前在 Azure 资源管理器上[请求新配额](https://docs.microsoft.com/azure/azure-resource-manager/templates/error-resource-quota#solution)，以便验证成功。 | 
+| Quota  | 配额不会迁移。 迁移之前在 Azure 资源管理器上[请求新配额](../azure-resource-manager/templates/error-resource-quota.md#solution)，以便验证成功。 | 
 | 地缘组 | 不支持。 在迁移之前删除任何地缘组。  | 
-| 使用[虚拟网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)的虚拟网络| 在迁移某个已对等互连到另一虚拟网络的虚拟网络之前，请删除对等互连，将该虚拟网络迁移到资源管理器，然后重新创建对等互连。 这可能会导致停机，具体取决于体系结构。 | 
+| 使用[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)的虚拟网络| 在迁移某个已对等互连到另一虚拟网络的虚拟网络之前，请删除对等互连，将该虚拟网络迁移到资源管理器，然后重新创建对等互连。 这可能会导致停机，具体取决于体系结构。 | 
 | 包含应用服务环境的虚拟网络 | 不支持 | 
 | 包含 HDInsight 服务的虚拟网络 | 不支持。 
 | 包含 Azure API 管理部署的虚拟网络 | 不支持。 <br><br> 若要迁移虚拟网络，请更改 API 管理部署的虚拟网络。 此操作不会造成停机。 | 
@@ -150,7 +150,7 @@ Azure Service Manager 支持两种不同的计算产品：[Azure 虚拟机（经
 | 迁移使用保留 IP 地址的、包含生产槽部署和过渡槽部署的部署 | 不支持。 | 
 | 迁移位于不同虚拟网络中的生产部署和过渡部署|迁移双槽云服务需要删除过渡槽。 删除过渡槽后，在 Azure 资源管理器中将生产槽作为独立的云服务（外延支持）迁移。 然后，可以在为新的云服务（外延支持）部署启用可交换属性后，将其链接到已迁移的部署。 可以重复使用旧过渡槽部署的部署文件来创建这个新的可交换部署。 | 
 | 迁移空云服务（无部署的云服务） | 不支持。 | 
-| 迁移包含远程桌面插件和远程桌面扩展的部署 | 选项 1：在迁移之前删除远程桌面插件。 这需要对部署文件进行更改。 然后，迁移将会继续。 <br><br> 选项 2：删除远程桌面扩展并迁移部署。 迁移后，删除插件并安装扩展。 这需要对部署文件进行更改。 <br><br> 在迁移之前删除插件和扩展。 [不建议将插件](https://docs.microsoft.com/azure/cloud-services-extended-support/deploy-prerequisite#required-service-definition-file-csdef-updates)用于云服务（外延支持）。| 
+| 迁移包含远程桌面插件和远程桌面扩展的部署 | 选项 1：在迁移之前删除远程桌面插件。 这需要对部署文件进行更改。 然后，迁移将会继续。 <br><br> 选项 2：删除远程桌面扩展并迁移部署。 迁移后，删除插件并安装扩展。 这需要对部署文件进行更改。 <br><br> 在迁移之前删除插件和扩展。 [不建议将插件](./deploy-prerequisite.md#required-service-definition-file-csdef-updates)用于云服务（外延支持）。| 
 | 具有 PaaS 和 IaaS 部署的虚拟网络 |不支持 <br><br> 将 PaaS 或 IaaS 部署移到不同的虚拟网络中。 这会造成停机。 | 
 使用旧式角色大小（例如“小”或“超大”）的云服务部署。 | 迁移将会完成，但角色大小将更新为使用新式角色大小。 成本或 SKU 属性不会有变化，并且进行此项更改后虚拟机不会重新启动。 更新所有部署项目以引用这些新式角色大小。 有关详细信息，请参阅[可用的 VM 大小](available-sizes.md)。|
 | 将云服务迁移到不同的虚拟网络 | 不支持 <br><br> 1. 迁移之前将部署移到不同的经典虚拟网络。 这会造成停机。 <br> 2. 将新虚拟网络迁移到 Azure 资源管理器。 <br><br> 或 <br><br> 1. 将虚拟网络迁移到 Azure 资源管理器 <br>2. 将云服务移到新虚拟网络。 这会造成停机。 | 
@@ -169,9 +169,9 @@ Azure Service Manager 支持两种不同的计算产品：[Azure 虚拟机（经
 - 经典大小（例如“小”、“大”、“超大”）将替换为其新的大小名称 Standard_A*。 需要在 .csdef 文件中将这些大小名称更改为其新名称。 有关详细信息，请参阅[云服务（外延支持）部署先决条件](deploy-prerequisite.md#required-service-definition-file-csdef-updates)
 
 - 使用“获取”API 获取部署文件的最新副本。 
-    - 使用[门户](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)、[PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-powershell#export-resource-groups-to-templates)、[CLI](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-cli#export-resource-groups-to-templates) 和 [REST API](https://docs.microsoft.com/rest/api/resources/resourcegroups/exporttemplate) 获取模板 
-    - 使用 [PowerShell](https://docs.microsoft.com/powershell/module/az.cloudservice/?view=azps-5.4.0#cloudservice&preserve-view=true) 或 [REST API](https://docs.microsoft.com/rest/api/compute/cloudservices/rest-get-package) 获取 .csdef 文件。 
-    - 使用 [PowerShell](https://docs.microsoft.com/powershell/module/az.cloudservice/?view=azps-5.4.0#cloudservice&preserve-view=true) 或 [REST API](https://docs.microsoft.com/rest/api/compute/cloudservices/rest-get-package) 获取 .cscfg 文件。 
+    - 使用[门户](../azure-resource-manager/templates/export-template-portal.md)、[PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)、[CLI](../azure-resource-manager/management/manage-resource-groups-cli.md#export-resource-groups-to-templates) 和 [REST API](/rest/api/resources/resourcegroups/exporttemplate) 获取模板 
+    - 使用 [PowerShell](/powershell/module/az.cloudservice/?preserve-view=true&view=azps-5.4.0#cloudservice) 或 [REST API](/rest/api/compute/cloudservices/rest-get-package) 获取 .csdef 文件。 
+    - 使用 [PowerShell](/powershell/module/az.cloudservice/?preserve-view=true&view=azps-5.4.0#cloudservice) 或 [REST API](/rest/api/compute/cloudservices/rest-get-package) 获取 .cscfg 文件。 
     
  
 

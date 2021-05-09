@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 03/08/2021
 ms.author: justinha
-ms.openlocfilehash: a89c898e150facc9860d86e18a7acc42f5e0f441
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
-ms.translationtype: MT
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ea087513cf628c42362a295c51913b0a31c6db3f
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618852"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108285693"
 ---
 # <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>禁用弱密码和密码哈希同步以保护 Azure Active Directory 域服务托管域
 
@@ -34,14 +35,25 @@ ms.locfileid: "96618852"
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
     * 如果需要，请[创建并配置 Azure Active Directory 域服务托管域][create-azure-ad-ds-instance]。
-* 安装和配置 Azure PowerShell。
-    * 如果需要，请按照说明[安装 Azure PowerShell 模块并连接到 Azure 订阅](/powershell/azure/install-az-ps)。
-    * 确保使用 [Connect-AzAccount][Connect-AzAccount] cmdlet 登录到 Azure 订阅。
-* 安装并配置 Azure AD PowerShell。
-    * 如果需要，请按照说明[安装 Azure AD PowerShell 模块并连接到 Azure AD](/powershell/azure/active-directory/install-adv2)。
-    * 确保使用 [Connect-AzureAD][Connect-AzureAD] cmdlet 登录到 Azure AD 租户。
 
-## <a name="disable-weak-ciphers-and-ntlm-password-hash-sync"></a>禁用弱密码和 NTLM 密码哈希同步
+## <a name="use-security-settings-to-disable-weak-ciphers-and-ntlm-password-hash-sync"></a>使用“安全设置”禁用弱密码和 NTLM 密码哈希同步
+
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 搜索并选择“Azure AD 域服务”。
+1. 选择你的托管域，例如 *aaddscontoso.com*。
+1. 在左侧，选择“安全设置”。
+1. 对于下列设置，请单击“禁用”：
+   - **仅限 TLS 1.2 模式**
+   - **NTLM 身份验证**
+   - **从本地进行 NTLM 密码同步**
+
+   ![禁用弱密码和 NTLM 密码哈希同步的安全设置的屏幕截图](media/secure-your-domain/security-settings.png)
+
+## <a name="use-powershell-to-disable-weak-ciphers-and-ntlm-password-hash-sync"></a>使用 PowerShell 禁用弱密码和 NTLM 密码哈希同步
+
+如果需要，请[安装并配置 Azure PowerShell](/powershell/azure/install-az-ps)。 确保使用 [Connect-AzAccount][Connect-AzAccount] cmdlet 登录到 Azure 订阅。 
+
+此外，如果需要，请[安装并配置 Azure AD PowerShell](/powershell/azure/active-directory/install-adv2)。 确保使用 [Connect-AzureAD][Connect-AzureAD] cmdlet 登录到 Azure AD 租户。
 
 若要禁用弱密码套件和 NTLM 凭据哈希同步，请登录 Azure 帐户，然后使用 [Get-AzResource][Get-AzResource] cmdlet 获取 Azure AD DS 资源：
 

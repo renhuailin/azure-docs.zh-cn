@@ -3,12 +3,12 @@ title: Azure 订阅限制和配额
 description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 本文包括有关如何增加限制以及最大值的信息。
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: 3ef3e6f3b67e8c92e0137f36e19c62cba79e1c14
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 8aad2f885c39d6f5ecd237a6167363b0efe8cef4
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030809"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290374"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -366,7 +366,7 @@ ms.locfileid: "107030809"
 
 ## <a name="azure-synapse-analytics-limits"></a>Azure Synapse Analytics 限制
 
-有关 Azure Synapse Analytics 限制，请参阅 [Azure Synapse 资源限制](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
+[!INCLUDE [synapse-analytics-limits](../../../includes/synapse-analytics-limits.md)]
 
 ## <a name="azure-files-and-azure-file-sync"></a>Azure 文件存储和 Azure 文件同步
 若要详细了解 Azure 文件存储和文件同步的限制，请参阅 [Azure 文件存储的可伸缩性和性能目标](../../storage/files/storage-files-scale-targets.md)。

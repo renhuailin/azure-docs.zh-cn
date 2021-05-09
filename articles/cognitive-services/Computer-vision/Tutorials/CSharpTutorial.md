@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 0a1878268beb135151a23b87d03839f3a51f4a96
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82e21f57a22da43f904ac9a12afb016c257e5055
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102432581"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289689"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>示例：使用 C# 探索图像处理应用
 
@@ -313,4 +313,4 @@ using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [人脸服务入门](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)
+> [人脸服务入门](../../face/quickstarts/client-libraries.md?pivots=programming-language-csharp)
