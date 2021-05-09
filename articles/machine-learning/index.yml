@@ -13,21 +13,19 @@ metadata:
   author: BlackMist
   ms.date: 09/21/2020
   ms.custom: contperf-fy21q1
-  ms.openlocfilehash: c128830ec7219fd5080c2c348542c736af4eef5a
-  ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+  ms.openlocfilehash: bbf934ef45f66a009c198a5ab0a47b871b419d85
+  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/25/2021
-  ms.locfileid: "107944974"
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "108740908"
 landingContent:
 - title: 入门：代码优先
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Python 脚本入门
-      url: tutorial-1st-experiment-sdk-setup-local.md
-    - text: Jupyter 笔记本 (Python) 入门
-      url: tutorial-1st-experiment-sdk-setup.md
+    - text: 开始使用 Azure 机器学习
+      url: quickstart-create-resources.md
     - text: 使用 ML 管道的批量推理 (Python)
       url: tutorial-pipeline-batch-scoring-classification.md
 - title: 入门：低代码或无代码
