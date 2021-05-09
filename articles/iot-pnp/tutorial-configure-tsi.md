@@ -8,12 +8,12 @@ ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 28cda9fb6997500f6cd7c4c4349635e7b7a36398
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 11679cde2bcd98cbc40b5f181eb0a460cd1889c7
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504271"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325690"
 ---
 # <a name="tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>Tutorial:创建和配置时序见解 Gen2 环境
 
@@ -38,10 +38,6 @@ ms.locfileid: "106504271"
 * Azure IoT 中心。
 * 连接到 IoT 中心的设备预配服务 (DPS) 实例。 DPS 实例应为 IoT 即插即用设备注册一个单独的设备。
 * 单组件设备或多组件设备与 IoT 中心之间的连接，用于流式传输模拟数据。
-
-为了绕开在本地安装 Azure CLI 的要求，可使用 Azure Cloud Shell 设置云服务。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prepare-your-event-source"></a>准备事件源
 

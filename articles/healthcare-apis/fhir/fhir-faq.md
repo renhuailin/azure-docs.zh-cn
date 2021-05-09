@@ -6,14 +6,14 @@ author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 1/21/2021
+ms.date: 04/30/2021
 ms.author: cavoeg
-ms.openlocfilehash: f571deaa0b67e9be7b8ce3f01d87f5c955f7140d
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 14328179a297ebcc3994bf627b1690195774b2b1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319064"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108741124"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>有关用于 FHIR 的 Azure API 的常见问题
 
@@ -49,10 +49,6 @@ Cosmos DB 作为永久性提供程序，为 FHIR 的 Azure API 提供支持。 �
 
 对于开发观点，每个不适用于托管服务的功能都首先部署到开源 Microsoft FHIR Server for Azure。 在开源中验证后，它将发布到 PaaS Azure API for FHIR 解决方案。 在开源和 PaaS 版本之间的时间取决于功能的复杂性以及其他路线图优先级。 对于我们的所有服务，此过程都是相同的，例如适用于 FHIR (preview) 的 Azure IoT 连接器。
 
-### <a name="where-can-i-see-what-is-releasing-into-the-azure-api-for-fhir"></a>在哪里可以看到哪些内容正在发布到 Azure API for FHIR？
-
-若要查看其中一些内容正在发布到用于 FHIR 的 Azure API，请参阅开源 FHIR 服务器的 [版本](https://github.com/microsoft/fhir-server/releases) 。 从2020年11月开始，如果开源项将发布到托管服务，则已使用 Azure API FHIR 标记项。 这些功能通常可在两周内提供，在开放源代码的发布页面上。 https://github.com/microsoft/fhir-server/blob/master/docs/Testing-Releases.md)如果要在自己的环境中进行测试，还包括如何测试生成 [此处] (的说明。 我们正在评估如何最好地与其他托管服务更新共享。
-
 ### <a name="in-which-regions-is-azure-api-for-fhir-available"></a>Azure API for FHIR 提供哪些区域？
 
 目前，我们在 [多个地理区域](https://azure.microsoft.com/global-infrastructure/services/?products=azure-api-for-fhir&regions=non-regional,us-east,us-east-2,us-central,us-north-central,us-south-central,us-west-central,us-west,us-west-2,canada-east,canada-central,usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia)提供公共和政府版的公开上市。 有关 Microsoft 的政府云服务的信息，请参阅 [FedRAMP 的 Azure 服务](../../azure-government/compliance/azure-services-in-fedramp-auditscope.md)。
@@ -82,7 +78,7 @@ Cosmos DB 作为永久性提供程序，为 FHIR 的 Azure API 提供支持。 �
 
 ### <a name="what-is-the-limit-on-_count"></a>_Count 的限制是多少？
 
-_Count 的当前限制为100。 如果将 _count 设置为超过100，则在捆绑包中将收到一条警告，只会显示100条记录。
+_Count 的当前限制为1000。 如果将 _count 设置为超过1000，则在捆绑包中将收到一条警告，只显示1000条记录。
 
 ### <a name="are-there-any-limitations-on-the-group-export-functionality"></a>组导出功能是否有任何限制？
 
@@ -108,7 +104,7 @@ _Count 的当前限制为100。 如果将 _count 设置为超过100，则在捆�
 
 ### <a name="does-the-azure-api-for-fhir-support-everything"></a>Azure API for FHIR 是否支持 $everything？ 
 
-不是。 目前，我们不支持 $everything。 不过，可以通过两个 API 调用来实现此目的。 例如，若要获取患者 $ 一切，你可以先使用/Patient/[ID] 抓取患者记录，然后使用/Patient/[ID]/* 再次调用来检索所有患者数据。
+不能。 目前，我们不支持 $everything。 不过，可以通过两个 API 调用来实现此目的。 例如，若要获取患者 $ 一切，你可以先使用/Patient/[ID] 抓取患者记录，然后使用/Patient/[ID]/* 再次调用来检索所有患者数据。
 
 可以在此 [社区文章](https://chat.fhir.org/#narrow/stream/179166-implementers/topic/.24everything.20with.20_type)中查看更多详细信息。 
 

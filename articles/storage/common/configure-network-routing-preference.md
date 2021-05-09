@@ -10,12 +10,12 @@ ms.date: 03/17/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 0738f7e427c2ff094c9b6df7539ba67dff80d095
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e9d1f7f520a7613abde520c35fbacc7355973021
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589848"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208214"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage"></a>为 Azure 存储配置网络路由首选项
 
@@ -27,7 +27,7 @@ ms.locfileid: "104589848"
 
 存储帐户的公共终结点的路由首选项在默认情况下设置为 Microsoft 全局网络。 可以在 Microsoft 全球网络和 Internet 路由之间进行选择，作为存储帐户公共终结点的默认路由首选项。 若要详细了解这两种类型路由之间的差异，请参阅 [Azure 存储的网络路由首选项](network-routing-preference.md)。 
 
-### <a name="portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[门户](#tab/azure-portal)
 
 将路由首选项更改为 Internet 路由：
 
@@ -42,7 +42,7 @@ ms.locfileid: "104589848"
 
 4.  在“防火墙和虚拟网络”选项卡的“网络路由”下，将“路由首选项”设置更改为“Internet 路由”。
 
-5.  单击“保存”  。
+5.  单击“保存” 。
 
     > [!div class="mx-imgBorder"]
     > ![internet 路由选项](./media/configure-network-routing-preference/internet-routing-option.png)
@@ -82,7 +82,7 @@ ms.locfileid: "104589848"
 
    - 若要启动 Azure Cloud Shell，请登录到 [Azure 门户](https://portal.azure.com)。
 
-   - 若要登录到本地安装的 CLI，请运行 [az login](/cli/azure/reference-index#az-login) 命令：
+   - 若要登录到本地安装的 CLI，请运行 [az login](/cli/azure/reference-index#az_login) 命令：
 
      ```azurecli
      az login
@@ -111,7 +111,7 @@ ms.locfileid: "104589848"
 
 此首选项只影响特定于路由的终结点。 此首选项不影响默认路由首选项。  
 
-### <a name="portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[门户](#tab/azure-portal)
 
 1.  在门户中导航到存储帐户。
 
@@ -146,11 +146,11 @@ ms.locfileid: "104589848"
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. 若要配置特定于路由的终结点，请使用 [az storage account update](/azure/storage/account#az-storage-account-update) 命令。 
+1. 若要配置特定于路由的终结点，请使用 [az storage account update](/cli/azure/storage/account#az_storage_account_update) 命令。 
 
    - 若要创建使用 Microsoft 网络路由首选项的特定于路由的终结点，请将 `--publish-microsoft-endpoints` 参数设置为 `true`。 
 
-   - 若要创建使用 Internet 路由首选项的特定于路由的终结点，请将 `--publish-internet-endpoints` 参数设置为 `true`。  
+   - 若要创建使用 Internet 网络路由首选项的特定于路由的终结点，请将 `--publish-internet-endpoints` 参数设置为 `true`。  
 
    以下实例创建了使用 Microsoft 网络路由首选项的特定于路由的终结点。
 
@@ -166,7 +166,7 @@ ms.locfileid: "104589848"
 
 如果配置了特定于路由的终结点，则可以在存储帐户的属性中找到终结点。
 
-### <a name="portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[门户](#tab/azure-portal)
 
 1.  在“设置”下面，选择“属性”。
 
