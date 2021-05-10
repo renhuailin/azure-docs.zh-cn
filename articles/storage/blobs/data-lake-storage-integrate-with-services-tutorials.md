@@ -1,6 +1,6 @@
 ---
-title: 教程：包含 Azure Data Lake Storage Gen2 的 Azure 服务
-description: 查找帮助你了解如何将 Azure 服务与 Azure Data Lake Storage Gen2 配合使用的教程。
+title: 教程：将 Azure 服务与 Azure Data Lake Storage Gen2 配合使用
+description: 查找有助于了解如何将 Azure 服务与 Azure Data Lake Storage Gen2 配合使用的教程。
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
@@ -8,19 +8,19 @@ ms.date: 02/17/2021
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: b67c3ccebefc178ddebc2b4a7fd49043bc0776b8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101735414"
 ---
-# <a name="tutorials-that-use-azure-services-with-azure-data-lake-storage-gen2"></a>使用 Azure 服务与 Azure Data Lake Storage Gen2 的教程
+# <a name="tutorials-that-use-azure-services-with-azure-data-lake-storage-gen2"></a>将 Azure 服务与 Azure Data Lake Storage Gen2 配合使用的教程
 
-本文包含一些链接，这些链接指向介绍如何将各种 Azure 服务与 Data Lake Storage Gen2 结合使用的教程。 
+本文包含一些教程链接，这些教程介绍如何将各种 Azure 服务与 Data Lake Storage Gen2 配合使用。 
 
 ## <a name="list-of-tutorials"></a>教程列表
 
-| Azure 服务 | 循序渐进指南 | 
+| Azure 服务 | 分步指南 | 
 |---------------|-------------------|
 | Azure Synapse Analytics | [Azure Synapse Analytics 入门](../../synapse-analytics/get-started.md) |
 | Azure 数据工厂 | [使用 Azure 数据工厂将数据加载到 Azure Data Lake Storage Gen2 中](../../data-factory/load-azure-data-lake-storage-gen2.md) |
@@ -37,8 +37,8 @@ ms.locfileid: "101735414"
 | Azure 认知搜索 | [为 Azure Data Lake Storage Gen2 文档编制索引及对其进行搜索（预览）](../../search/search-howto-index-azure-data-lake-storage.md) |
 
 > [!NOTE]
-> 此表不反映支持 Data Lake Storage Gen2 的 Azure 服务的完整列表。 若要查看受支持的 Azure 服务的列表、支持级别，请参阅 [支持 Azure Data Lake Storage Gen2 的 azure 服务](data-lake-storage-supported-azure-services.md)
+> 此表未反映支持 Data Lake Storage Gen2 的 Azure 服务的完整列表。 若要查看受支持的 Azure 服务的列表，请参阅[支持 Azure Data Lake Storage Gen2 的 Azure 服务](data-lake-storage-supported-azure-services.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何结合使用这些服务来构建引入、下载、处理和可视化数据的工作负载。 请参阅[使用 Azure Data Lake Storage Gen2 满足大数据需求](data-lake-storage-data-scenarios.md)。
+- 了解如何将这些服务协同使用以构建用于引入、下载、处理和可视化数据的工作负载。 请参阅[使用 Azure Data Lake Storage Gen2 满足大数据需求](data-lake-storage-data-scenarios.md)。

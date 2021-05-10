@@ -7,78 +7,50 @@ manager: femila
 ms.topic: reference
 ms.service: media-services
 ms.custom: subject-monitoring
-ms.date: 03/17/2021
-ms.openlocfilehash: 8908fd1acc64fb180121ac0b6a4dc38ce5a02572
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.date: 04/21/2021
+ms.openlocfilehash: 1fff4cdf24f9be245026757e18050aa121b4d62a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121160"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138852"
 ---
 # <a name="monitoring-media-services-data-reference"></a>监视媒体服务数据参考
 
 本文介绍对监视媒体服务有用的数据。 有关 Azure Monitor 支持的所有平台指标的详细信息，请查看 [Azure Monitor 支持的指标](../../../azure-monitor/essentials/metrics-supported.md)。
 
-## <a name="media-services-metrics"></a>媒体服务指标
+## <a name="metrics"></a>指标
 
 不管值是否变化，指标都按固定的时间间隔进行收集。 指标可用于警报，因为它们可以频繁采样，而警报则可以使用相对简单的逻辑快速触发。
 
+
 媒体服务支持监视以下资源的指标：
 
-* 帐户
-* 流式处理终结点
+|指标类型 | 资源提供程序/类型命名空间<br/> 和到各个指标的链接 |
+|-------|-----|
+| 常规媒体服务 | 常规 |
+| 直播活动 | [Microsoft.Media/mediaservices/liveEvents](../../../azure-monitor/essentials/metrics-supported.md#microsoftmediamediaservicesliveevents) 
+| 流式处理终结点 | 与[流式处理终结点 REST API](/rest/api/media/streamingendpoints) 相关的 [Microsoft.Media/mediaservices/streamingEndpoints](../../../azure-monitor/essentials/metrics-supported.md#microsoftmediamediaservicesstreamingendpoints)。 
 
-### <a name="account"></a>帐户
-
-可监视以下帐户指标。
-
-|指标名称|Display name|说明|
-|---|---|---|
-|AssetCount|资产计数|帐户中的资产。|
-|AssetQuota|资产配额|帐户中的资产配额。|
-|AssetQuotaUsedPercentage|资产配额已用百分比|已使用的资产配额百分比。|
-|ContentKeyPolicyCount|内容密钥策略计数|帐户中的内容密钥策略。|
-|ContentKeyPolicyQuota|内容密钥策略配额|帐户中的内容密钥策略配额。|
-|ContentKeyPolicyQuotaUsedPercentage|内容密钥策略配额已用百分比|已使用的内容密钥策略配额百分比。|
-|StreamingPolicyCount|流式处理策略计数|帐户中的流式处理策略。|
-|StreamingPolicyQuota|流式处理策略配额|帐户中的流式处理策略配额。|
-|StreamingPolicyQuotaUsedPercentage|流式处理策略配额已用百分比|已使用的流式处理策略配额百分比。|
 
 还应查看[帐户配额和限制](../limits-quotas-constraints-reference.md)。
 
-### <a name="streaming-endpoint"></a>流式处理终结点
-
-支持以下媒体服务[流式处理终结点](/rest/api/media/streamingendpoints)指标：
-
-|指标名称|Display name|说明|
-|---|---|---|
-|请求|请求|提供由流式处理终结点提供服务的 HTTP 请求总数。|
-|流出量|流出量|每个流式处理终结点每分钟流出的字节总数。|
-|SuccessE2ELatency|成功端到端延迟|从流式处理终结点收到请求，到发送最后一个响应字节的持续时间。|
-|CPU 使用率| | 高级流式处理终结点的 CPU 使用率。 此数据不可用于标准流式处理终结点。 |
-|出口带宽 | | 出口带宽（位/秒）。|
 
 ## <a name="metric-dimensions"></a>指标维度
 
 有关指标维度定义的详细信息，请参阅[多维指标](../../../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics)。
 
-<!--**PLACEHOLDER** for dimensions table.-->
+媒体服务具有以下指标维度。  根据其所支持的指标，非常易于理解它们。  请参阅上面的[指标链接](#metrics)了解详细信息。   
+- OutputFormat
+- HttpStatusCode 
+- ErrorCode 
+- TrackName 
 
 ## <a name="resource-logs"></a>资源日志
 
-## <a name="media-services-diagnostic-logs"></a>媒体服务诊断日志
+诊断日志提供有关 Azure 资源操作频繁生成的丰富数据。 有关详细信息，请参阅[如何从 Azure 资源收集和使用日志数据](../../../azure-monitor/essentials/platform-logs-overview.md)。
 
-诊断日志提供有关 Azure 资源操作的丰富、频繁的数据。 有关详细信息，请参阅[如何从 Azure 资源收集和使用日志数据](../../../azure-monitor/essentials/platform-logs-overview.md)。
-
-媒体服务支持以下诊断日志：
-
-* 密钥传送
-
-### <a name="key-delivery"></a>密钥传送
-
-|名称|说明|
-|---|---|
-|密钥传送服务请求|显示密钥传送服务请求信息的日志。 有关详细信息，请参阅[架构](monitor-media-services-data-reference.md)。|
+媒体服务支持以下资源日志：[Microsoft.Media/mediaservices](../../../azure-monitor/essentials/resource-logs-categories.md#microsoftmediamediaservices)
 
 ## <a name="schemas"></a>架构
 

@@ -1,26 +1,26 @@
 ---
-title: 部署 IoT Edge Defender-IoT-micro-agent
+title: 部署 IoT Edge 安全模块
 description: 了解如何在 IoT Edge 上部署 Defender for IoT 安全代理。
 ms.topic: conceptual
-ms.date: 1/30/2020
-ms.openlocfilehash: 38e2aa38ab07a4768e95d91ed0ebc866d7edf39f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/21/2021
+ms.openlocfilehash: 71efb0bb12d1e20f918481a086fd411d3a237e33
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104784214"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813589"
 ---
-# <a name="deploy-a-defender-iot-micro-agent-on-your-iot-edge-device"></a>在 IoT Edge 设备上部署 Defender-IoT-micro-agent
+# <a name="deploy-a-security-module-on-your-iot-edge-device"></a>在 IoT Edge 设备上部署安全模块
 
 Defender for IoT 模块为 IoT Edge 设备提供了一个全面的安全解决方案。
-Defender-IoT-micro-agent 会收集、聚合和分析来自你的操作系统和容器系统的原始安全数据，从而生成可操作的安全建议和警报。
-若要了解详细信息，请参阅[适用于 IoT Edge 的 Defender-IoT-micro-agent](security-edge-architecture.md)。
+此安全模块收集、聚合和分析来自你的操作系统和容器系统的原始安全数据，从而生成可操作的安全建议和警报。
+若要了解详细信息，请参阅[适用于 IoT Edge 的安全模块](security-edge-architecture.md)。
 
-本文介绍如何在 IoT Edge 设备上部署 Defender-IoT-micro-agent。
+本文介绍如何在 IoT Edge 设备上部署安全模块。
 
-## <a name="deploy-defender-iot-micro-agent"></a>部署 Defender-IoT-micro-agent
+## <a name="deploy-security-module"></a>部署安全模块
 
-按照以下步骤部署适用于 IoT Edge 的 Defender for IoT Defender-IoT-micro-agent。
+使用以下步骤部署适用于 IoT Edge 的 Defender for IoT 安全模块。
 
 ### <a name="prerequisites"></a>先决条件
 
@@ -159,7 +159,7 @@ Defender-IoT-micro-agent 会收集、聚合和分析来自你的操作系统和�
 
 ## <a name="diagnostic-steps"></a>诊断步骤
 
-如果遇到问题，容器日志是了解 IoT Edge Defender-IoT-micro-agent 设备状态的最佳方式。 可以使用本部分中的命令和工具来收集信息。
+如果遇到问题，容器日志是了解 IoT Edge 安全模块设备的状态的最佳方式。 可以使用本部分中的命令和工具来收集信息。
 
 ### <a name="verify-the-required-containers-are-installed-and-functioning-as-expected"></a>验证是否已安装所需的容器并且容器是否按预期运行
 

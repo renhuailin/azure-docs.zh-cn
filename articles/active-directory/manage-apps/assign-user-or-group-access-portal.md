@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Active Directory 中管理应用的用户分配
-description: 了解如何使用 Azure Active Directory 进行标识管理，为应用分配和取消分配用户和组。
+description: 了解如何为使用 Azure Active Directory 进行标识管理的应用分配和取消分配用户和组。
 services: active-directory
 author: kenwith
 manager: daveba
@@ -12,15 +12,15 @@ ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
 ms.openlocfilehash: 50dcde478b708cd53d8229d70a9ddf4b1ff271be
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99259728"
 ---
 # <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>在 Azure Active Directory 中管理应用的用户分配
 
-本文介绍如何将用户和组分配到 Azure Active Directory (Azure AD) 中的企业应用程序，可以从 Azure 门户中或使用 PowerShell。 将某个用户分配到某个应用程序时，该应用程序会显示在该用户的[我的应用](https://myapps.microsoft.com/)中以方便访问。 如果应用程序公开角色，则你还可以将特定的角色分配给用户。
+本文介绍如何通过 Azure 门户或 PowerShell，在 Azure Active Directory (Azure AD) 中将用户和组分配到企业应用程序。 将某个用户分配到某个应用程序时，该应用程序会显示在该用户的[我的应用](https://myapps.microsoft.com/)中以方便访问。 如果应用程序公开角色，则你还可以将特定的角色分配给用户。
 
 为了提高控制度，可将某些类型的企业应用程序配置为[需要进行用户分配](#configure-an-application-to-require-user-assignment)。 
 
@@ -55,12 +55,12 @@ ms.locfileid: "99259728"
 6. 选择屏幕顶部的“保存”按钮。
 
 ## <a name="assign-or-unassign-users-and-groups-for-an-app-using-the-azure-portal"></a>使用 Azure 门户为应用分配或取消分配用户和组
-若要了解如何使用 Azure 门户分配或取消分配用户或组，请参阅 [应用程序管理中的快速入门系列](add-application-portal-assign-users.md)。
+若要了解如何使用 Azure 门户分配或取消分配用户或组，请参阅[应用程序管理的快速入门系列](add-application-portal-assign-users.md)。
 
 ## <a name="assign-or-unassign-users-and-groups-for-an-app-using-the-graph-api"></a>使用图形 API 为应用分配或取消分配用户和组
 可以使用图形 API 为应用分配或取消分配用户和组。 若要了解详细信息，请参阅[应用角色分配](/graph/api/resources/approleassignment)。
 
-## <a name="assign-users-and-groups-to-an-app-using-powershell"></a>使用 PowerShell 将用户和组分配给应用
+## <a name="assign-users-and-groups-to-an-app-using-powershell"></a>使用 PowerShell 将用户和组分配到应用
 1. 以提升的权限打开 Windows PowerShell 命令提示符。
    > [!NOTE]
    > 需要安装 AzureAD 模块（使用命令 `Install-Module -Name AzureAD`）。 出现安装 NuGet 模块或新的 Azure Active Directory V2 PowerShell 模块的提示时，请键入 Y，然后按 ENTER。
@@ -148,7 +148,7 @@ ms.locfileid: "99259728"
 ## <a name="related-articles"></a>相关文章
 
 - [详细了解最终用户如何访问应用程序](end-user-experiences.md)
-- [规划应用程序部署 Azure AD](my-apps-deployment-plan.md)
+- [规划 Azure AD 我的应用部署](my-apps-deployment-plan.md)
 - [管理对应用的访问](what-is-access-management.md)
  
 ## <a name="next-steps"></a>后续步骤

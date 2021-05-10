@@ -2,14 +2,14 @@
 title: 在用户帐户下运行任务
 description: 了解用户帐户的类型以及如何配置它们。
 ms.topic: how-to
-ms.date: 03/25/2021
+ms.date: 04/13/2021
 ms.custom: seodec18
-ms.openlocfilehash: b19e0c10834b3c5215d14c6c5ae20caaacb4bc64
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5a071e03b27a2cb612118ad37e078ca8f8f86e08
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606600"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987967"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>在批处理中的用户帐户下运行任务
 
@@ -139,7 +139,7 @@ task.UserIdentity = new UserIdentity(new AutoUserSpecification(scope: AutoUserSc
 
 ### <a name="create-named-user-accounts"></a>创建命名用户帐户
 
-若要在批处理中创建命名用户帐户，请在池中添加一个用户帐户集合。 以下代码片段演示如何在 .NET、Java 和 Python 中创建命名用户帐户。 这些代码片段演示如何在池中创建管理员和非管理员命名帐户。 这些示例使用云服务配置创建池，但在使用虚拟机配置创建 Windows 或 Linux 池时，可以使用相同的方法。
+若要在批处理中创建命名用户帐户，请在池中添加一个用户帐户集合。 以下代码片段演示如何在 .NET、Java 和 Python 中创建命名用户帐户。 这些代码片段演示如何在池中创建管理员和非管理员命名帐户。
 
 #### <a name="batch-net-example-windows"></a>Batch .NET 示例 (Windows)
 
@@ -147,12 +147,18 @@ task.UserIdentity = new UserIdentity(new AutoUserSpecification(scope: AutoUserSc
 CloudPool pool = null;
 Console.WriteLine("Creating pool [{0}]...", poolId);
 
-// Create a pool using the cloud service configuration.
+// Create a pool using Virtual Machine Configuration.
 pool = batchClient.PoolOperations.CreatePool(
     poolId: poolId,
     targetDedicatedComputeNodes: 3,
     virtualMachineSize: "standard_d1_v2",
-    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));
+    VirtualMachineConfiguration: new VirtualMachineConfiguration(
+    imageReference: new ImageReference(
+                        publisher: "MicrosoftWindowsServer",
+                        offer: "WindowsServer",
+                        sku: "2019-datacenter-core",
+                        version: "latest"),
+    nodeAgentSkuId: "batch.node.windows amd64");
 
 // Add named user accounts.
 pool.UserAccounts = new List<UserAccount>
@@ -238,7 +244,7 @@ PoolAddParameter addParameter = new PoolAddParameter()
         .withId(poolId)
         .withTargetDedicatedNodes(POOL_VM_COUNT)
         .withVmSize(POOL_VM_SIZE)
-        .withCloudServiceConfiguration(configuration)
+        .withVirtualMachineConfiguration(configuration)
         .withUserAccounts(userList);
 batchClient.poolOperations().createPool(addParameter);
 ```

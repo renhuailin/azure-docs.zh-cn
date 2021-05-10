@@ -7,21 +7,21 @@ ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
 ms.openlocfilehash: 95b5cc191ac6857bf8e1b09e70b22d928473fe03
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92314845"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用作用域基于组状态运行操作
 
 若要仅在另一组操作成功或失败后运行操作，请在范围内对这些操作进行分组。 如果你希望将各个操作组织为逻辑组，评估该组的状态并执行基于作用域状态的操作，则此结构非常有用。 当某个作用域中的所有操作都完成运行后，该作用域也确定了其自己的状态。 例如，当希望实现[异常和错误处理](../logic-apps/logic-apps-exception-handling.md#scopes)时可以使用作用域。 
 
-若要检查作用域的状态，可以使用与用来确定逻辑应用运行状态（例如 " **成功**"、"已 **失败**"、"已 **取消**" 等）的条件相同的条件。 默认情况下，当作用域的所有操作都成功时，作用域的状态将标记为 " **成功**"。 但是，当作用域中的任何操作失败或被取消时，作用域的状态将标记为 " **失败**"。 有关作用域的限制，请参阅[限制和配置](../logic-apps/logic-apps-limits-and-config.md)。 
+若要检查作用域的状态，可以使用与用来确定逻辑应用运行状态（例如“已成功”、“已失败”、“已取消”，等等）的条件相同的条件。 默认情况下，当作用域的所有操作都成功时，作用域的状态将被标记为“已成功”。 但是，当作用域中有任何操作失败或被取消时，作用域的状态将被标记为“已失败”。 有关作用域的限制，请参阅[限制和配置](../logic-apps/logic-apps-limits-and-config.md)。 
 
-例如，下面是一个高级别逻辑应用，它使用作用域来运行特定操作并使用一个条件来检查作用域的状态。 如果范围中的任何操作失败或意外结束，则该范围分别标记为 "已 **失败** " 或 "已 **中止** "，逻辑应用将发送 "scope Failed" 消息。 如果作用域中的所有操作都成功，则逻辑应用会发送一条“作用域已成功”消息。
+例如，下面是一个高级别逻辑应用，它使用作用域来运行特定操作并使用一个条件来检查作用域的状态。 如果作用域中有任何操作失败或意外终止，则作用域将被相应地标记为“已失败”或“已中止”，并且逻辑应用将发送一条“作用域已失败”消息。 如果作用域中的所有操作都成功，则逻辑应用会发送一条“作用域已成功”消息。
 
-![关系图显示了逻辑应用范围流，其中包含 "作用域已失败" 和 "作用域已成功" 的示例。](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
+![关系图中显示了逻辑应用作用域流，其中包含“作用域已失败”和“作用域已成功”的示例。](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,8 +41,8 @@ ms.locfileid: "92314845"
 
 ![创建示例逻辑应用](./media/logic-apps-control-flow-run-steps-group-scopes/finished-sample-app.png)
 
-* 一个**计划 - 定期**触发器，用于按你指定的时间间隔检查必应地图服务
-* 一个**必应地图 - 获取路线**操作，用于检查两个位置之间的旅行时间
+* 一个 **计划 - 定期** 触发器，用于按你指定的时间间隔检查必应地图服务
+* 一个 **必应地图 - 获取路线** 操作，用于检查两个位置之间的旅行时间
 * 一个条件语句，用于检查旅行时间是否超出了你指定的旅行时间。
 * 一个在当前旅行时间超出指定时间时向你发送电子邮件的操作
 
@@ -67,7 +67,7 @@ ms.locfileid: "92314845"
       | **API 密钥** | <*your-Bing-Maps-key*> | 输入以前接收的必应地图密钥。 | 
       ||||  
 
-   1. 根据此图像下方的表中所示设置**获取路线**操作：
+   1. 根据此图像下方的表中所示设置 **获取路线** 操作：
 
       ![设置“必应地图 - 获取路线”操作](./media/logic-apps-control-flow-run-steps-group-scopes/get-route.png) 
 
@@ -130,7 +130,7 @@ ms.locfileid: "92314845"
 
       ![选择“旅行期间 - 交通”](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-2.png)
 
-   1. 在此字段解析为 JSON 格式后，添加一个**逗号** (```,```)，后跟数字 ```60```，以便将“旅行期间 - 交通”中的值从秒转换为分钟。 
+   1. 在此字段解析为 JSON 格式后，添加一个 **逗号** (```,```)，后跟数字 ```60```，以便将“旅行期间 - 交通”中的值从秒转换为分钟。 
    
       ```
       div(body('Get_route')?['travelDurationTraffic'],60)
@@ -192,7 +192,7 @@ ms.locfileid: "92314845"
    
       `result('Scope')[0]['status']`
 
-      ![显示结果表达式为突出显示的 "表达式" 框的屏幕截图。](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
+      ![屏幕截图显示了“表达式”框，其中突出显示结果表达式。](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
 
    1. 对于这两行，选择“等于”作为其运算符。 
    

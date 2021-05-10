@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 05c98102109d1925eb78d4558faf62b366801e77
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: aa78d6495eeffd0ea733451e029f07413602ce0d
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538981"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812725"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Azure 机密计算常见问题解答
 
@@ -32,7 +32,7 @@ ms.locfileid: "107538981"
 
 **是否所有 OS 映像均可与 Azure 机密计算配合工作？**
 
-不是。 只能在装有 Ubuntu Server 18.04、Ubuntu Server 16.04、Windows Server 2019 Datacenter 或 Windows Server 2016 Datacenter 的第 2 代操作计算机上部署虚拟机。 详细了解 [Linux](../virtual-machines/generation-2.md) 和 [Windows](../virtual-machines/generation-2.md) 上的第 2 代 VM
+不是。 只能在装有 Ubuntu Server 18.04、Ubuntu Server 20.04、Windows Server 2019 Datacenter 或 Windows Server 2016 Datacenter 的第 2 代操作计算机上部署虚拟机。 详细了解 [Linux](../virtual-machines/generation-2.md) 和 [Windows](../virtual-machines/generation-2.md) 上的第 2 代 VM
 
 **DCsv2 虚拟机在门户中灰显，我无法选择此类虚拟机**
 

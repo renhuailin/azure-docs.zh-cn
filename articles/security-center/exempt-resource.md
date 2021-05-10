@@ -3,16 +3,16 @@ title: 从资源、订阅、管理组和安全功能分数中免除 Azure 安全
 description: 了解如何创建规则以免除订阅或管理组中的安全建议并防止其影响安全功能分数
 author: memildin
 ms.author: memildin
-ms.date: 03/11/2021
+ms.date: 04/21/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 13abb35d0fa9ad3ee949b6edf5205de601a02956
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: f125b94725ba9d34aa0962ed38b16fb474dc5b2b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718550"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140238"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>从安全功能分数中免除资源和建议 
 
@@ -35,7 +35,7 @@ ms.locfileid: "107718550"
 | 发布状态：                  | 预览<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]                                                                                                                                                                                                                                             |
 | 定价：                        | 这是一项高级 Azure Policy 功能，Azure Defender 客户无需额外付费即可使用此功能。 对于其他用户，将来可能需要付费。                                                                                                                                                                 |
 | 所需角色和权限： | 要创建免除的所有者或资源策略参与者 <br>若要创建规则，你需要在 Azure Policy 中编辑策略的权限。<br>若要了解详细信息，请参阅 [Azure Policy 中的 Azure RBAC 权限](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)。                                            |
-| 的限制：                    | 只能为安全中心的默认计划、[Azure 安全基准](https://docs.microsoft.com/security/benchmark/azure/introduction)或提供的任意法规标准计划中包含的建议创建免除。 不能免除从自定义计划中生成的建议。 详细了解[策略、计划和建议](security-policy-concept.md)之间的关系。 |
+| 的限制：                    | 只能为安全中心的默认计划、[Azure 安全基准](/security/benchmark/azure/introduction)或提供的任意法规标准计划中包含的建议创建免除。 不能免除从自定义计划中生成的建议。 详细了解[策略、计划和建议](security-policy-concept.md)之间的关系。 |
 | 云：                         | ![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）                                                                                                                                                                                         |
 |                                 |                                                                                                                                                                                                                                                                                                                                    |
 
@@ -117,6 +117,14 @@ ms.locfileid: "107718550"
 - 若要详细了解 playbook，请参阅技术社区博客文章[如何在 Azure 安全中心中跟踪资源免除](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-keep-track-of-resource-exemptions-in-azure-security/ba-p/1770580)
 - 可在 [Azure 安全中心 GitHub 存储库](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation/Notify-ResourceExemption)中找到 ARM 模板
 - 若要部署所有必需的组件，请[使用此自动化过程](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Security-Center%2Fmaster%2FWorkflow%2520automation%2FNotify-ResourceExemption%2Fazuredeploy.json)
+
+## <a name="use-the-inventory-to-find-resources-that-have-exemptions-applied"></a>使用清单查找已应用豁免的资源
+
+Azure 安全中心的资产清单页提供了一个页面，用于查看已连接到安全中心的资源的安全状况。 有关详细信息，请参阅[利用资产清单浏览和管理资源](asset-inventory.md)。
+
+“清单”页包含多个筛选器，你可以使用它们将资源列表缩小为任何给定方案中最感兴趣的资源。 “包含豁免”就是此类筛选器的一个例子。 使用此筛选器可查找已从一条或多条建议中豁免的所有资源。
+
+:::image type="content" source="media/exempt-resource/inventory-filter-exemptions.png" alt-text="安全中心的“资产清单”页和用于查找包含豁免的资源的筛选器":::
 
 
 ## <a name="find-recommendations-with-exemptions-using-azure-resource-graph"></a>使用 Azure Resource Graph 查找具有免除的建议

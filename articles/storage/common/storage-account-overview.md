@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/19/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d4874ad6688fa85f0c511632498938817bb218f7
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: dedb8faf74ffba7b5846512b4c52eb5a58822f7e
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714193"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107895948"
 ---
 # <a name="storage-account-overview"></a>存储帐户概述
 
@@ -35,7 +35,7 @@ Azure 存储提供多种类型的存储帐户。 每种类型支持不同的功�
 | 高级文件共享<sup>4</sup> | 仅限文件共享 | LRS<br /><br />ZRS<sup>2</sup> | 资源管理器<sup>3</sup> | 仅支持文件的存储帐户，具有高级性能特征。 建议用于企业级应用程序或高性能级应用程序。<br />[了解详细信息...](../files/storage-files-planning.md#management-concepts) |
 | 高级页 blob<sup>4</sup> | 仅页 Blob | LRS | 资源管理器<sup>3</sup> | 仅适用于页 blob 的高级存储帐户类型。<br />[了解详细信息...](../blobs/storage-blob-pageblob-overview.md) |
 
-<sup>1</sup> Azure Data Lake Storage 是一组专用于大数据分析的功能，基于 Azure Blob 存储而构建。 只有启用了分层命名空间的常规用途 V2 存储帐户才支持 Data Lake Storage。 有关 Data Lake Storage Gen2 的详细信息，请参阅 [Data Lake Storage Gen2 简介](../blobs/data-lake-storage-introduction.md)。
+<sup>1</sup> Data Lake Storage 是一组专用于大数据分析的功能，基于 Azure Blob 存储而构建。 有关详细信息，请参阅 [Data Lake Storage Gen2 简介](../blobs/data-lake-storage-introduction.md)。
 
 <sup>2</sup> 区域冗余存储 (ZRS) 和异地区域冗余存储 (GZRS/RA-GZRS) 在某些区域中仅可用于标准常规用途 v2 帐户、高级块 blob 帐户和高级文件共享帐户。 有关 Azure 存储冗余选项的详细信息，请参阅 [Azure 存储冗余](storage-redundancy.md)。
 
@@ -113,7 +113,7 @@ Azure 存储根据存储帐户使用情况计费。 存储帐户中的所有对�
 | 旧存储帐户类型 | 支持的服务 | 冗余选项 | 部署模型 | 使用情况 |
 |--|--|--|--|--|
 | 标准常规用途 v1 | Blob、文件、队列、表和 Data Lake Storage | LRS/GRS/RA-GRS | 资源管理器、经典 | 常规用途 v1 帐户可能没有最新功能，其每 GB 定价也可能不是最低的。 可考虑在以下场景中使用：<br /><ul><li>应用程序要求使用 Azure 经典部署模型。</li><li>应用程序为事务密集型，或者使用很大的异地复制带宽，但不需要大的容量。 在这种情况下，常规用途 v1 可能是最经济的选择。</li><li>如果使用的 Azure 存储 REST API 版本早于 2014-02-14，或使用的客户端库版本低于 4.x，则无法升级应用程序。</li></ul> |
-| 标准 Blob 存储 | Blob（仅块 Blob 和追加 Blob） | LRS/GRS/RA-GRS | 资源管理器 | Microsoft 建议尽可能使用标准常规用途 v2 帐户。 |
+| 标准 Blob 存储 | Blob（仅块 Blob 和追加 Blob） | LRS/GRS/RA-GRS | Resource Manager | Microsoft 建议尽可能使用标准常规用途 v2 帐户。 |
 
 ## <a name="next-steps"></a>后续步骤
 

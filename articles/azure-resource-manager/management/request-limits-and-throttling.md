@@ -4,12 +4,12 @@ description: 介绍在达到订阅限制时，如何对 Azure 资源管理器请
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: c1fd707bf9f13ed88bf9acb5d2ad70d56c453a90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 677cd0fc047cbdbbe91a308600201087c36e050a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105024619"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129992"
 ---
 # <a name="throttling-resource-manager-requests"></a>限制 Resource Manager 请求
 
@@ -55,6 +55,10 @@ Microsoft.Network 资源提供程序应用以下限制：
 | --------- | ----- |
 | 写入/删除 (PUT) | 每 5 分钟 1000 次 |
 | 读取 (GET) | 每 5 分钟 10000 次 |
+
+> [!NOTE]
+> Azure 专用 DNS 的限制为每 5 分钟 500 次读取 (GET) 操作。
+>
 
 ### <a name="compute-throttling"></a>计算限制
 

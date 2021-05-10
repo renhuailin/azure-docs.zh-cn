@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: aaa690a4205951bd251a5230721e34fcb960a3b1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 193213c55a56f745c45eec829dfbe1e81ee0f363
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104782735"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107886975"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Azure 数据工厂中的链接服务
 
@@ -93,7 +93,7 @@ connectVia | 用于连接到数据存储的[集成运行时](concepts-integratio
 
 在 Azure 数据工厂 UX 中通过[管理中心](author-management-hub.md)以及引用链接服务的任何活动、数据集或数据流创建链接服务。
 
-可以使用以下任一工具或 SDK 创建链接服务：[.NET API](quickstart-create-data-factory-dot-net.md)、[PowerShell](quickstart-create-data-factory-powershell.md)、[REST API](quickstart-create-data-factory-rest-api.md)、Azure 资源管理器模板和 Azure 门户。
+你可以使用以下任一工具或 SDK 创建链接服务：[.NET API](quickstart-create-data-factory-dot-net.md)、[PowerShell](quickstart-create-data-factory-powershell.md)、[REST API](quickstart-create-data-factory-rest-api.md)、[Azure 资源管理器模板](quickstart-create-data-factory-resource-manager-template.md)和 [Azure 门户](quickstart-create-data-factory-portal.md)。
 
 
 ## <a name="data-store-linked-services"></a>数据存储链接的服务

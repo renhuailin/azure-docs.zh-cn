@@ -8,15 +8,14 @@ ms.author: osomorog
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to
+ms.topic: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 953b987e908736df703c354067ee27fc27d56073
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 0a95d95842d0b361a1a276566b01b7ea735c4670
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220702"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107952073"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>在工作区中运行 Jupyter Notebook
 
@@ -183,7 +182,7 @@ ms.locfileid: "106220702"
 
 “计算”下拉列表旁的指示器显示计算的状态。  在计算的下拉列表中也会显示状态。  
 
-|Color |计算状态 |
+|颜色 |计算状态 |
 |---------|---------| 
 | 绿色 | 正在运行计算 |
 | Red |计算失败 | 
@@ -193,7 +192,7 @@ ms.locfileid: "106220702"
 
 “内核”下拉列表旁的指示器显示内核的状态。
 
-|Color |内核状态 |
+|颜色 |内核状态 |
 |---------|---------|
 |  绿色 |内核已连接、空闲、繁忙|
 |  灰色 |内核未连接 |
@@ -288,8 +287,10 @@ ms.locfileid: "106220702"
 ## <a name="troubleshooting"></a>疑难解答
 
 * 如果无法连接到笔记本，请确保未禁用 Web 套接字通信。 为了让计算实例 Jupyter 功能可以正常运行，必须启用 Web 套接字通信。 确保网络允许与 *.instances.azureml.net 和 *.instances.azureml.ms 建立 websocket 连接。 
+
 * 在专用链接工作区中部署计算实例时，只能[从虚拟网络内部访问](./how-to-secure-training-vnet.md#compute-instance)。 如果使用自定义 DNS 或 hosts 文件，请为 < instance-name >.< region >.instances.azureml.ms 添加一个条目，让该条目包含工作区专用终结点的专用 IP 地址。 有关详细信息，请参阅[自定义 DNS](./how-to-custom-dns.md?tabs=azure-cli) 一文。
 
+* 如果内核崩溃并重启，你可运行以下命令查看 jupyter 日志并了解更多详细信息。 `sudo journalctl -u jupyter`. 如果内核问题仍然存在，请考虑使用具有更多内存的计算实例。
     
 ## <a name="next-steps"></a>后续步骤
 

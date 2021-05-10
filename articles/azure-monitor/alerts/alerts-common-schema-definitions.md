@@ -4,12 +4,12 @@ description: 了解 Azure Monitor 的常见警报架构定义
 author: ofirmanor
 ms.topic: conceptual
 ms.date: 04/12/2021
-ms.openlocfilehash: 6d835b6d2c3519bc47decf8256ab3f3380170df6
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: a026fa846901d4db7cb56196de50508f077e4fc6
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565111"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108018252"
 ---
 # <a name="common-alert-schema-definitions"></a>常见警报架构定义
 
@@ -179,7 +179,7 @@ ms.locfileid: "107565111"
 ### <a name="log-alerts"></a>日志警报
 
 > [!NOTE]
-> 对于定义了自定义电子邮件主题和/或 JSON 有效负载的日志警报，启用常见架构会将电子邮件主题和/或有效负载架构恢复为如下所述的架构。 对于启用了常见架构的警报，大小上限为 256KB/警报。 如果搜索结果导致警报大小超出此阈值，就不会被嵌入日志警报有效负载。 可以通过检查标志 `IncludeSearchResults` 来确定这一点。 在不包括搜索结果时，应使用 `LinkToFilteredSearchResultsAPI` 或 `LinkToSearchResultsAPI` 通过 [Log Analytics API](/rest/api/loganalytics/dataaccess/query/get) 访问查询结果。
+> 对于定义了自定义电子邮件主题和/或 JSON 有效负载的日志警报，启用常见架构会将电子邮件主题和/或有效负载架构恢复为如下所述的架构。 这意味着，如果要定义自定义 JSON 有效负载，则 Webhook 不能使用常见的警报架构。 对于启用了常见架构的警报，大小上限为 256KB/警报。 如果搜索结果导致警报大小超出此阈值，就不会被嵌入日志警报有效负载。 可以通过检查标志 `IncludeSearchResults` 来确定这一点。 在不包括搜索结果时，应使用 `LinkToFilteredSearchResultsAPI` 或 `LinkToSearchResultsAPI` 通过 [Log Analytics API](/rest/api/loganalytics/dataaccess/query/get) 访问查询结果。
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 

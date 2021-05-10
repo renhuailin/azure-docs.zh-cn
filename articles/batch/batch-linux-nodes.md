@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 01/21/2021
 ms.custom: H1Hack27Feb2017, devx-track-python, devx-track-csharp
 ms.openlocfilehash: c711ec0d035b9b59ec7628a51fe3cff26de358bc
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98683694"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>在 Batch 池中预配 Linux 计算节点
@@ -17,7 +17,7 @@ ms.locfileid: "98683694"
 
 ## <a name="virtual-machine-configuration"></a>虚拟机配置
 
-在 Batch 中创建计算节点池时，可以使用两个选项来选择节点大小和操作系统：“云服务配置”和“虚拟机配置”。 [虚拟机配置](nodes-and-pools.md#virtual-machine-configuration) 池由 Azure vm 构成，这些 vm 可以从 Linux 或 Windows 映像创建。 使用虚拟机配置创建池时，需要指定 [可用的计算节点大小](../virtual-machines/sizes.md)、要安装在节点上的虚拟机映像引用，以及 Batch 节点代理 SKU (在每个节点上运行的程序，并在节点与 Batch 服务) 之间提供接口。
+在 Batch 中创建计算节点池时，可以使用两个选项来选择节点大小和操作系统：“云服务配置”和“虚拟机配置”。 [虚拟机配置](nodes-and-pools.md#virtual-machine-configuration)池由 Azure VM 组成，这些 VM 可以从 Linux 或 Windows 映像中创建。 使用虚拟机配置创建池时，请指定[可用的计算节点大小](../virtual-machines/sizes.md)、要安装在节点上的虚拟机映像引用以及 Batch 节点代理 SKU（在每个节点上运行并提供节点和 Batch 服务之间接口的程序）。
 
 ### <a name="virtual-machine-image-reference"></a>虚拟机映像引用
 
@@ -33,7 +33,7 @@ Batch 服务使用[虚拟机规模集](../virtual-machine-scale-sets/overview.md
 | 版本 |最新 |
 
 > [!TIP]
-> 可以在[使用 Azure CLI 在 Azure 市场中查找 Linux VM 映像](../virtual-machines/linux/cli-ps-findimage.md)中详细了解这些属性以及如何指定市场映像。 请注意，某些 Marketplace 映像当前不与 Batch 兼容。
+> 可以在[使用 Azure CLI 在 Azure 市场中查找 Linux VM 映像](../virtual-machines/linux/cli-ps-findimage.md)中详细了解这些属性以及如何指定市场映像。 请注意，某些市场映像当前不与 Batch 兼容。
 
 ### <a name="list-of-virtual-machine-images"></a>虚拟机映像列表
 
@@ -47,7 +47,7 @@ Batch 服务使用[虚拟机规模集](../virtual-machine-scale-sets/overview.md
 - batch.node.centos 7
 - batch.node.windows amd64
 
-## <a name="create-a-linux-pool-batch-python"></a>创建 Linux 池：批处理 Python
+## <a name="create-a-linux-pool-batch-python"></a>创建 Linux 池：Batch Python
 
 下面的代码片段示范如何使用[用于 Python 的 Microsoft Azure Batch 客户端库](https://pypi.python.org/pypi/azure-batch)创建 Ubuntu Server 计算节点池。 有关 Batch Python 模块的更多详细信息，请查看[参考文档](/python/api/overview/azure/batch)。
 
@@ -274,4 +274,4 @@ Azure Batch 构建在 Azure 云服务和 Azure 虚拟机技术基础之上。 Ba
 ## <a name="next-steps"></a>后续步骤
 
 - 探索 [azure-batch-samples GitHub 存储库](https://github.com/Azure/azure-batch-samples)中的 [Python 代码示例](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)，以了解如何执行常见 Batch 操作，如创建池、作业和任务。 Python 示例随附的 [README](https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/README.md) 文件包含有关如何安装所需包的详细信息。
-- 了解如何使用 Batch 的 [低优先级 vm](batch-low-pri-vms.md) 。
+- 了解如何将[低优先级 VM](batch-low-pri-vms.md) 与 Batch 配合使用。

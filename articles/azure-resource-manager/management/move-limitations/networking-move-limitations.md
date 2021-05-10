@@ -3,12 +3,12 @@ title: 将 Azure 网络资源移到新订阅或资源组
 description: 使用 Azure 资源管理器将虚拟网络和其他网络资源移到新的资源组或订阅。
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: b7aaf01b696b13136a0f4077f315b137c8917906
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 0ac503a778b3de8945b074628242233f9bcd6a3b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120123"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129956"
 ---
 # <a name="move-guidance-for-networking-resources"></a>网络资源移动指南
 
@@ -17,7 +17,7 @@ ms.locfileid: "106120123"
 ## <a name="dependent-resources"></a>依赖资源
 
 > [!NOTE]
-> 请注意，与公共 IP 地址关联的 VPN 网关当前无法在资源组或订阅之间移动。
+> 请注意，与公共 IP 标准 SKU 地址关联的 VPN 网关当前无法在资源组或订阅之间移动。
 
 移动资源时，你还必须将其从属资源移出，例如公共 IP 地址、虚拟网络网关、所有关联的连接资源。 本地网络网关可以位于不同的资源组中。
 

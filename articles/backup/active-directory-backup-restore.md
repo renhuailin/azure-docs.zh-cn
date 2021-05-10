@@ -3,12 +3,12 @@ title: 备份和还原 Active Directory
 description: 了解如何备份和还原 Active Directory 域控制器。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 8db2dab605e90e4748b11a632d6651c23d631b6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8bc6458895965d4c37667e0cff3051a4e4e8288e
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98733547"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107898200"
 ---
 # <a name="back-up-and-restore-active-directory-domain-controllers"></a>备份和还原 Active Directory 域控制器
 
@@ -23,7 +23,13 @@ ms.locfileid: "98733547"
 
 - 请确保至少备份一个域控制器。 若要备份多个域控制器，请确保备份具有 [FSMO（灵活单主机操作）角色](/windows-server/identity/ad-ds/plan/planning-operations-master-role-placement)的所有域控制器。
 
-- 经常备份 Active Directory。 备份决不应超过逻辑删除生存期（默认为 60 天），因为超过逻辑删除生存期的对象将被“逻辑删除”，并且不再被视为有效。
+- 经常备份 Active Directory。 备份寿命不得超过逻辑删除生存期 (TSL)，因为超过 TSL 的对象将被“逻辑删除”，并且不再被视为有效。
+  - 对于在 Windows Server 2003 SP2 及更高版本上生成的域，默认 TSL 为 180 天。
+  - 你可以使用以下 PowerShell 脚本来验证配置的 TSL：
+
+    ```powershell
+    (Get-ADObject $('CN=Directory Service,CN=Windows NT,CN=Services,{0}' -f (Get-ADRootDSE).configurationNamingContext) -Properties tombstoneLifetime).tombstoneLifetime
+    ```
 
 - 有一个明确的灾难恢复计划，其中包含有关如何还原域控制器的说明。 若要准备还原 Active Directory 林，请阅读 [Active Directory 林恢复指南](/windows-server/identity/ad-ds/manage/ad-forest-recovery-guide)。
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 989bcbb7e509b9b7692f067af2989fcad94b6ad1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 64b9ce78f05e1c8d14317f33f21758a86baeabd6
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107795781"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869178"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 文件同步
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -88,7 +88,7 @@ ms.locfileid: "107795781"
 
     遵循终端中显示的步骤完成身份验证过程。
 
-1. 安装 [az filesync](/cli/azure/ext/storagesync/storagesync) Azure CLI 扩展。
+1. 安装 [az filesync](/cli/azure/storagesync) Azure CLI 扩展。
 
    ```azurecli
    az extension add --name storagesync
@@ -380,7 +380,7 @@ New-AzStorageSyncCloudEndpoint `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-使用 [az storagesync sync-group](/cli/azure/ext/storagesync/storagesync/sync-group#ext-storagesync-az-storagesync-sync-group-create) 命令创建新的同步组。  若要为所有 CLI 命令默认设置资源组，请使用 [az configure](/cli/azure/reference-index#az_configure)。
+使用 [az storagesync sync-group](/cli/azure/storagesync/sync-group#az_storagesync_sync_group_create) 命令创建新的同步组。  若要为所有 CLI 命令默认设置资源组，请使用 [az configure](/cli/azure/reference-index#az_configure)。
 
 ```azurecli
 az storagesync sync-group create --resource-group myResourceGroupName \
@@ -388,7 +388,7 @@ az storagesync sync-group create --resource-group myResourceGroupName \
                                  --storage-sync-service myStorageSyncServiceName \
 ```
 
-使用 [az storagesync sync-group cloud-endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/cloud-endpoint#ext-storagesync-az-storagesync-sync-group-cloud-endpoint-create) 命令创建新的云终结点。
+使用 [az storagesync sync-group cloud-endpoint](/cli/azure/storagesync/sync-group/cloud-endpoint#az_storagesync_sync_group_cloud_endpoint_create) 命令创建新的云终结点。
 
 ```azurecli
 az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup \
@@ -402,10 +402,12 @@ az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup
 ---
 
 ## <a name="create-a-server-endpoint"></a>创建服务器终结点
-服务器终结点代表已注册服务器上的特定位置，例如服务器卷中的文件夹。 服务器终结点必须是已注册的服务器（而不是装载的共享）上的路径；若要使用云分层，该路径必须在非系统卷上。 不支持网络附加存储 (NAS)。
+服务器终结点代表已注册服务器上的特定位置，例如服务器卷中的文件夹。 服务器终结点受以下条件约束：
 
-> [!NOTE]
-> 不支持在卷上创建服务器终结点后更改路径或驱动器号。 请确保在已注册的服务器上使用最终路径。
+- 服务器终结点必须是已注册的服务器（而不是装载式共享）上的路径。 不支持网络附加存储 (NAS)。
+- 尽管服务器终结点可以位于系统卷上，但系统卷上的服务器终结点可能不会使用云分层。
+- 不支持在卷上创建服务器终结点后更改路径或驱动器号。 请确保在已注册的服务器上使用最终路径。
+- 已注册的服务器可支持多个服务器终结点，但在任何给定时间，一个同步组中每个已注册的服务器只能有一个服务器终结点。 同步组中的其他服务器终结点必须位于不同的已注册的服务器上。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 要添加服务器终结点，请转到新创建的同步组，然后选择“添加服务器终结点”。
@@ -462,7 +464,7 @@ if ($cloudTieringDesired) {
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-使用 [az storagesync sync-group server-endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/server-endpoint#ext-storagesync-az-storagesync-sync-group-server-endpoint-create) 命令创建新的服务器终结点。
+使用 [az storagesync sync-group server-endpoint](/cli/azure/storagesync/sync-group/server-endpoint#az_storagesync_sync_group_server_endpoint_create) 命令创建新的服务器终结点。
 
 ```azurecli
 # Create a new sync group server endpoint 
@@ -581,7 +583,7 @@ Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
 
 对于代理版本 11，新模式在服务器终结点上可用。 这种模式使分布在全球的公司可在本地用户访问任何文件之前，就预先在远程地区的服务器缓存中进行填充。 在服务器终结点上启用后，此模式将导致该服务器召回在 Azure 文件共享中已创建或更改的文件。
 
-### <a name="scenario"></a>场景
+### <a name="scenario"></a>方案
 
 一家全球分布的公司在美国和印度都有分支机构。 早上（美国时间），信息工作者为一个全新项目创建新文件夹和新文件，并为其工作一整天。 Azure 文件同步会将文件夹和文件同步到 Azure 文件共享（云终结点）。 印度的信息工作者将在其时区继续处理该项目。 当印度团队早上到达时，印度本地启用 Azure 文件同步的服务器需要这些新文件在本地可用，这样他们就能够有效地在本地缓存中工作。 启用此模式可防止由于按需召回而使初始文件访问变慢，并使服务器能够在 Azure 文件共享中更改或创建文件后立即主动召回它们。
 

@@ -1,6 +1,6 @@
 ---
 title: Azure CDN 中的 HTTP/2 支持 | Microsoft Docs
-description: Azure 内容分发网络支持 HTTP/2，该网络具有超过 HTTP/1 的优点，例如多路复用 & 并发性、标头压缩和流依赖项。
+description: Azure 内容分发网络支持 HTTP/2，相比 HTTP/1，HTTP/2 具有诸多优势，例如多路复用和并发、标头压缩以及流依赖关系。
 services: cdn
 documentationcenter: ''
 author: lichard
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 5/04/2017
 ms.author: ril
 ms.openlocfilehash: d4ed04185da251d9042f6b54a192d0e49ef20ede
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92778534"
 ---
 # <a name="http2-support-in-azure-cdn"></a>Azure CDN 中的 HTTP/2 支持

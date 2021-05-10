@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: d1d412774dc68cba0c24709c7fc8a7999e0aeab8
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 121c22e3a25a95fa64f6f779ebc0827bb6c123c7
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106094755"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015944"
 ---
 # <a name="public-ip-addresses"></a>公共 IP 地址
 
@@ -147,6 +147,8 @@ ms.locfileid: "106094755"
 
 为公共 IP 地址选择“动态”或“静态” 。 详细了解如何[将 IP 地址分配到网络接口](virtual-network-network-interface-addresses.md)。
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 ## <a name="internet-facing-load-balancers"></a>面向 Internet 的负载均衡器
 
 可将通过任一 [SKU](#sku) 的公共 IP 地址与 [Azure 负载均衡器](../load-balancer/load-balancer-overview.md)相关联，只需将其分配给负载均衡器前端配置即可。 公共 IP 充当负载均衡 IP。 
@@ -154,6 +156,8 @@ ms.locfileid: "106094755"
 可以向负载均衡器前端分配动态或静态公共 IP 地址。 可将多个公共 IP 地址分配到负载均衡器前端。 此配置可实现[多 VIP](../load-balancer/load-balancer-multivip-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 方案，如包含基于 TLS 的网站的多租户环境。 
 
 有关 Azure 负载均衡器 SKU 的详细信息，请参阅 [Azure 负载均衡器标准 SKU](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="vpn-gateways"></a>VPN 网关
 
@@ -189,7 +193,7 @@ ms.locfileid: "106094755"
 | --- | --- | --- | --- |
 | 虚拟机 |Linux |是 |是 |
 | 面向 Internet 的负载均衡器 |前端配置 |是 |是 |
-| VPN 网关 |网关 IP 配置 |是 |否 |
+| VPN 网关 |网关 IP 配置 |是 |是（仅限 VPNGwAZ） |
 | 应用程序网关 |前端配置 |是（仅限 V1） |是（仅限 V2） |
 | Azure 防火墙 | 前端配置 | 否 | 是|
 

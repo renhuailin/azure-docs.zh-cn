@@ -10,24 +10,24 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 8b3bc99d4391e2079d1b0ecc39011f1b2afc4440
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 557c2591b0bd5406266e5f833ca8c5c4fb581e47
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106096030"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125348"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Microsoft Spark 实用工具简介
 
-Microsoft Spark 实用工具 (MSSparkUtils) 是内置的包，可帮助你轻松执行常见任务。 你可以使用 MSSparkUtils 来处理文件系统、获取环境变量以及处理机密。 MSSparkUtils 在 `PySpark (Python)`、`Scala` 和 `.NET Spark (C#)` 笔记本以及 Synapse 管道中可用。
+Microsoft Spark 实用工具 (MSSparkUtils) 是内置的包，可帮助你轻松执行常见任务。 可以使用 MSSparkUtils 来处理文件系统、获取环境变量、将笔记本链在一起以及处理机密。 MSSparkUtils 在 `PySpark (Python)`、`Scala` 和 `.NET Spark (C#)` 笔记本以及 Synapse 管道中可用。
 
 ## <a name="pre-requisites"></a>先决条件
 
 ### <a name="configure-access-to-azure-data-lake-storage-gen2"></a>配置对 Azure Data Lake Storage Gen2 的访问 
 
-Synapse 笔记本使用 Azure Active Directory (Azure AD) 直通来访问 ADLS Gen2 帐户。 你需要成为“存储 Blob 数据参与者”才能访问 ADLS Gen2 帐户（或文件夹）。 
+Synapse 笔记本使用 Azure Active Directory (AAD) 直通来访问 ADLS Gen2 帐户。 你需要成为“存储 Blob 数据参与者”才能访问 ADLS Gen2 帐户（或文件夹）。 
 
-Synapse 管道使用工作区标识 (MSI) 来访问存储帐户。 若要在管道活动中使用 MSSparkUtils，你的工作区标识需要为“存储 Blob 数据参与者”才能访问 ADLS Gen2 帐户（或文件夹）。
+Synapse 管道使用工作区的托管服务标识 (MSI) 访问存储帐户。 若要在管道活动中使用 MSSparkUtils，你的工作区标识需要为“存储 Blob 数据参与者”才能访问 ADLS Gen2 帐户（或文件夹）。
 
 请按照以下步骤操作，确保 Azure AD 和工作区 MSI 可以访问 ADLS Gen2 帐户：
 1. 打开 [Azure 门户](https://portal.azure.com/)和要访问的存储帐户。 可以导航到要访问的特定容器。
@@ -41,7 +41,7 @@ Synapse 管道使用工作区标识 (MSI) 来访问存储帐户。 若要在管�
 
 ### <a name="configure-access-to-azure-blob-storage"></a>配置对 Azure Blob 存储的访问  
 
-Synapse 利用共享访问签名 (SAS) 访问 Azure Blob 存储。 为了避免在代码中公开 SAS 密钥，建议在 Synapse 工作区中为要访问的 Azure Blob 存储帐户创建一个新的链接服务。
+Synapse 使用[共享访问签名 (SAS)](../../storage/common/storage-sas-overview.md) 访问 Azure Blob 存储。 为了避免在代码中公开 SAS 密钥，建议在 Synapse 工作区中为要访问的 Azure Blob 存储帐户创建一个新的链接服务。
 
 按照以下步骤为 Azure Blob 存储帐户添加新的链接服务：
 
@@ -392,7 +392,7 @@ FS.Put("file path", "content to write", true) // Set the last parameter as True 
 :::zone pivot = "programming-language-python"
 
 ```python
-mssparkutils.fs.append('file path','content to append',True) # Set the last parameter as True to create the file if it does not exist
+mssparkutils.fs.append("file path", "content to append", True) # Set the last parameter as True to create the file if it does not exist
 ```
 ::: zone-end
 
@@ -407,7 +407,7 @@ mssparkutils.fs.append("file path","content to append",true) // Set the last par
 :::zone pivot = "programming-language-csharp"
 
 ```csharp
-FS.Append("file path","content to append",true) // Set the last parameter as True to create the file if it does not exist
+FS.Append("file path", "content to append", true) // Set the last parameter as True to create the file if it does not exist
 ```
 
 ::: zone-end
@@ -437,6 +437,178 @@ mssparkutils.fs.rm("file path", true) // Set the last parameter as True to remov
 FS.Rm("file path", true) // Set the last parameter as True to remove all files and directories recursively 
 ```
 
+::: zone-end
+
+:::zone pivot = "programming-language-python"
+
+## <a name="notebook-utilities"></a>笔记本实用工具 
+
+可以使用 MSSparkUtils 笔记本实用工具运行笔记本或使用值退出笔记本。 运行以下命令以概要了解可用的方法：
+
+```python
+mssparkutils.notebook.help()
+```
+
+获取结果：
+```
+The notebook module.
+
+exit(value: String): void -> This method lets you exit a notebook with a value.
+run(path: String, timeoutSeconds: int, arguments: Map): String -> This method runs a notebook and returns its exit value.
+
+```
+
+### <a name="run-a-notebook"></a>运行笔记本
+运行笔记本并返回其退出值。 可以在笔记本中以交互方式或在管道中运行嵌套函数调用。 所引用的笔记本将在其调用此函数的 Spark 池上运行。  
+
+```python
+
+mssparkutils.notebook.run("notebook path", <timeoutSeconds>, <parameterMap>)
+
+```
+
+例如：
+
+```python
+mssparkutils.notebook.run("folder/Sample1", 90, {"input": 20 })
+```
+
+### <a name="exit-a-notebook"></a>退出笔记本
+使用值退出笔记本。 可以在笔记本中以交互方式或在管道中运行嵌套函数调用。 
+
+- 在笔记本中以交互方式调用 `exit()` 函数时，Azure Synapse 将引发异常、跳过运行子序列单元格并使 Spark 会话保持活动状态。
+
+- 协调在 Synapse 管道中调用 `exit()` 函数的笔记本时，Azure Synapse 将返回退出值、完成管道运行并停止 Spark 会话。  
+
+- 在所引用的笔记本中调用 `exit()` 函数时，Azure Synapse 将在其中停止进一步的执行，并继续运行调用 `run()` 函数的笔记本中的下一个单元格。 例如：Notebook1 有三个单元格，调用第二个单元格中的 `exit()` 函数。 Notebook2 有五个单元格，调用第三个单元格中的 `run(notebook1)` 函数。 运行 Notebook2 时，如果命中 `exit()` 函数，Notebook1 将在第二个单元格停止。 Notebook2 将继续运行其第四和第五个单元格。 
+
+
+```python
+mssparkutils.notebook.exit("value string")
+```
+
+例如：
+
+Sample1 笔记本在 folder/ 下查找以下两个单元格 ： 
+- 单元格 1 定义 input 参数，默认值设为 10。
+- 单元格 2 退出笔记本，input 作为退出值。 
+
+![示例笔记本的屏幕截图](./media/microsoft-spark-utilities/spark-utilities-run-notebook-sample.png)
+
+可以使用默认值在另一笔记本中运行 Sample1：
+
+```python
+
+exitVal = mssparkutils.notebook.run("folder/Sample1")
+print (exitVal)
+
+```
+结果：
+
+```
+Sample1 run success with input is 10
+```
+
+可以在另一笔记本中运行 Sample1，并将 input 值设为 20 ：
+
+```python
+exitVal = mssparkutils.notebook.run("mssparkutils/folder/Sample1", 90, {"input": 20 })
+print (exitVal)
+```
+
+结果：
+
+```
+Sample1 run success with input is 20
+```
+::: zone-end
+
+
+:::zone pivot = "programming-language-scala"
+
+## <a name="notebook-utilities"></a>笔记本实用工具 
+
+可以使用 MSSparkUtils 笔记本实用工具运行笔记本或使用值退出笔记本。 运行以下命令以概要了解可用的方法：
+
+```scala
+mssparkutils.notebook.help()
+```
+
+获取结果：
+```
+The notebook module.
+
+exit(value: String): void -> This method lets you exit a notebook with a value.
+run(path: String, timeoutSeconds: int, arguments: Map): String -> This method runs a notebook and returns its exit value.
+
+```
+
+### <a name="run-a-notebook"></a>运行笔记本
+运行笔记本并返回其退出值。 可以在笔记本中以交互方式或在管道中运行嵌套函数调用。 所引用的笔记本将在其调用此函数的 Spark 池上运行。  
+
+```scala
+
+mssparkutils.notebook.run("notebook path", <timeoutSeconds>, <parameterMap>)
+
+```
+
+例如：
+
+```scala
+mssparkutils.notebook.run("folder/Sample1", 90, {"input": 20 })
+```
+
+### <a name="exit-a-notebook"></a>退出笔记本
+使用值退出笔记本。 可以在笔记本中以交互方式或在管道中运行嵌套函数调用。 
+
+- 在笔记本中以交互方式调用 `exit()` 函数时，Azure Synapse 将引发异常、跳过运行子序列单元格并使 Spark 会话保持活动状态。
+
+- 协调在 Synapse 管道中调用 `exit()` 函数的笔记本时，Azure Synapse 将返回退出值、完成管道运行并停止 Spark 会话。  
+
+- 在所引用的笔记本中调用 `exit()` 函数时，Azure Synapse 将在其中停止进一步的执行，并继续运行调用 `run()` 函数的笔记本中的下一个单元格。 例如：Notebook1 有三个单元格，调用第二个单元格中的 `exit()` 函数。 Notebook2 有五个单元格，调用第三个单元格中的 `run(notebook1)` 函数。 运行 Notebook2 时，如果命中 `exit()` 函数，Notebook1 将在第二个单元格停止。 Notebook2 将继续运行其第四和第五个单元格。 
+
+
+```python
+mssparkutils.notebook.exit("value string")
+```
+
+例如：
+
+Sample1 笔记本在 mssparkutils/folder/ 下查找以下两个单元格 ： 
+- 单元格 1 定义 input 参数，默认值设为 10。
+- 单元格 2 退出笔记本，input 作为退出值。 
+
+![示例笔记本的屏幕截图](./media/microsoft-spark-utilities/spark-utilities-run-notebook-sample.png)
+
+可以使用默认值在另一笔记本中运行 Sample1：
+
+```scala
+
+val exitVal = mssparkutils.notebook.run("mssparkutils/folder/Sample1")
+print(exitVal)
+
+```
+结果：
+
+```
+exitVal: String = Sample1 run success with input is 10
+Sample1 run success with input is 10
+```
+
+
+可以在另一笔记本中运行 Sample1，并将 input 值设为 20 ：
+
+```scala
+val exitVal = mssparkutils.notebook.run("mssparkutils/folder/Sample1", 90, {"input": 20 })
+print(exitVal)
+```
+
+结果：
+
+```
+exitVal: String = Sample1 run success with input is 20
+Sample1 run success with input is 20
+```
 ::: zone-end
 
 

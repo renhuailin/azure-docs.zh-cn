@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 3035b5d2803ff91e84bc6b47a99963185f9195d3
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 4162fe12ff54f16cd5f982f6a576905227c9a107
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102623258"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107820988"
 ---
 ## <a name="disk-level-bursting"></a>磁盘级突发
 
@@ -58,6 +58,9 @@ ms.locfileid: "102623258"
 突发事务按 IOPS 和 MBps 突发中的最大事务数来计算。 从 00:00:01 到 00:00:05，累积突发事务数最大为 ((10,000 - 5,000), (300 - 200) * 1024 / 256)) * 5 = 25,000 个事务。 从 00:00:06 到 00:00:10，累积突发事务数最大为 ((6,000 - 5,000), (600 - 200) * 1024 / 256)) * 5 = 8,000 个事务。 再加上固定的突发启用费用，便得到启用按需磁盘突发的总成本。 
 
 有关定价的详细信息，请参阅[托管磁盘定价页](https://azure.microsoft.com/pricing/details/managed-disks/)，并使用 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=storage)对工作负荷进行评估。 
+
+
+若要启用按需突发，请参阅[启用按需突发](../articles/virtual-machines/disks-enable-bursting.md)。
 
 ### <a name="credit-based-bursting"></a>基于额度的突发
 

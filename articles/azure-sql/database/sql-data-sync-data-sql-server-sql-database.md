@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 695409740348e78ae51b263b44d9ed1cbadc1054
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 660297beacb6594058a3d83fb622ddeb579c223b
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531925"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107951713"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>什么是 Azure SQL 数据同步？
 
@@ -201,7 +201,7 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 
 ### <a name="how-much-does-the-sql-data-sync-service-cost"></a>SQL 数据同步服务的价格是多少
 
-对 SQL 数据同步服务本身不收取任何费用。 但是，对于传入和传出 SQL 数据库实例的数据移动，你仍然收取数据传输费用。 有关价格，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。
+对 SQL 数据同步服务本身不收取任何费用。 但是，对于传入和传出 SQL 数据库实例的数据移动，你仍然收取数据传输费用。 有关详细信息，请参阅[数据传输费用](https://azure.microsoft.com/pricing/details/bandwidth/)。
 
 ### <a name="what-regions-support-data-sync"></a>哪些区域支持数据同步
 

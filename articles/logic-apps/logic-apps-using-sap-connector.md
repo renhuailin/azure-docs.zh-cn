@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 03/30/2021
+ms.date: 04/27/2021
 tags: connectors
-ms.openlocfilehash: ec5046e40b6fade0e4d56023c404cc736a46f105
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 0bdb19104d7773d63f583b4013ac9d80893500ae
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969098"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147258"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 SAP 系统
 
@@ -32,11 +32,11 @@ ms.locfileid: "105969098"
 
     * 如果你正在高级[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中运行逻辑应用，请参阅 [ISE 先决条件](#ise-prerequisites)。
 
-* 要从逻辑应用访问的 [SAP 应用程序服务器](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server)或 [SAP 消息服务器](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm)。 有关可与连接器一起使用的 SAP 服务器和 SAP 操作的信息，请参阅 [SAP 兼容性](#sap-compatibility)。
+* 要从逻辑应用访问的 [SAP 应用程序服务器](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server)或 [SAP 消息服务器](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm)。 有关可与连接器一起使用的 SAP 服务器的信息，请参阅 [SAP 兼容性](#sap-compatibility)。
 
     * 必须将 SAP 服务器配置为允许使用 RFC。 有关详细信息，请参阅以下 SAP 说明：[460089 - 适用于外部 RFC 计划的最低授权配置文件](https://launchpad.support.sap.com/#/notes/460089)。 
 
-* 要发送到 SAP 服务器的消息内容，例如示例 IDoc 文件。 此内容必须采用 XML 格式，并且包含要使用的 SAP 操作的命名空间。 你可以[通过将 IDoc 包装在 XML 信封中来发送带有平面文件架构的 IDoc](#send-flat-file-idocs)。
+* 要发送到 SAP 服务器的消息内容，例如示例 IDoc 文件。 此内容必须采用 XML 格式，并且包含要使用的 [SAP 操作](#actions)的命名空间。 你可以[通过将 IDoc 包装在 XML 信封中来发送带有平面文件架构的 IDoc](#send-flat-file-idocs)。
 
 * 如果想要使用“从 SAP 收到消息时”触发器，必须执行以下操作：
 
@@ -63,35 +63,9 @@ SAP 连接器支持基于 SAP NetWeaver 的系统中的以下消息和数据集�
 
 * 远程函数调用 (RFC) 和事务 RFC (tRFC)
 
-SAP 连接器使用 [SAP .NET 连接器 (NCo) 库](https://support.sap.com/en/product/connectors/msnet.html)。 你可以使用以下 SAP 操作并使用连接器触发：
+SAP 连接器使用 [SAP .NET 连接器 (NCo) 库](https://support.sap.com/en/product/connectors/msnet.html)。 
 
-* 可使用“将消息发送到 SAP”和[通过 tRFC 发送 IDoc](#send-idoc-action) 操作执行以下操作：
-
-    * [通过 RFC 调用 BAPI 函数](#call-bapi-action)
-
-    * 在 SAP 系统中调用 RFC/tRFC
-
-    * 创建或关闭监控会话
-
-    * 提交或回退 BAPI 事务
-
-    * 确认事务标识符
-
-    * 发送 IDoc，从其编号获取 IDoc 的状态，并获取事务的 IDoc 列表
-
-    * 读取 SAP 表
-
-* 可使用“从 SAP 收到消息时”触发器执行以下操作：
-
-    * 通过 tRFC 接收 IDoc
-
-    * 通过 tRFC 调用 BAPI 函数
-
-    * 在 SAP 系统中调用 RFC/tRFC
-
-* “生成架构”操作，可用于为 IDoc、BAPI 或 RFC 生成 SAP 项目的架构。
-
-若要使用这些 SAP 操作，需要首先使用用户名和密码对连接进行身份验证。 SAP 连接器还支持[安全网络通信 (SNC)](https://help.sap.com/doc/saphelp_nw70/7.0.31/e6/56f466e99a11d1a5b00000e835363f/content.htm?no_cache=true)。 可以将 SNC 用于 SAP NetWeaver 单一登录 (SSO)，或用于外部产品的附加安全功能。 如果你使用 SNC，请参阅 [SNC 先决条件](#snc-prerequisites)。
+若要使用可用的 [SAP 触发器](#triggers)和 [SAP 操作](#actions)，需要首先使用用户名和密码对连接进行身份验证。 SAP 连接器还支持[安全网络通信 (SNC)](https://help.sap.com/doc/saphelp_nw70/7.0.31/e6/56f466e99a11d1a5b00000e835363f/content.htm?no_cache=true)。 可以将 SNC 用于 SAP NetWeaver 单一登录 (SSO)，或用于外部产品的附加安全功能。 如果你使用 SNC，请参阅 [SNC 先决条件](#snc-prerequisites)。
 
 ### <a name="migrate-to-current-connector"></a>迁移到最新连接器
 
@@ -839,7 +813,7 @@ SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/pat
 
 1. 若要打开“IDOC 处理中的测试工具”设置，请在 SAP 接口中使用 we19 事务代码 (T-code)，前缀为 /n  。
 
-1. 在“测试模板”下，选择“通过消息类型”，然后输入消息类型，例如 CREMAS  。 选择“创建”。
+1. 在“测试模板”下，选择“通过消息类型”，然后输入消息类型，例如 CREMAS  。 选择“创建”  。
 
 1. 对于消息“哪个 IDoc 类型？”，通过选择“继续”进行确认 。
 
@@ -911,7 +885,7 @@ SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/pat
 
 * 响应消息的结构。 使用此信息分析响应。 
 
-若要发送请求消息，请使用通用 SAP 操作“将消息发送到 SAP”，或使用定向“调用 BAPI”操作 。
+若要发送请求消息，请使用通用 SAP 操作“将消息发送到 SAP”，或使用定向“\[BAPI] 调用 SAP 中的方法”操作 。
 
 ### <a name="sample-xml-schemas"></a>示例 XML 架构
 
@@ -1005,7 +979,7 @@ SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/pat
 
 #### <a name="xml-samples-for-bapi-requests"></a>BAPI 请求的 XML 示例
 
-以下 XML 示例是[调用 BAPI 方法](#call-bapi-action)的示例请求。
+以下 XML 示例是[调用 BAPI 方法](#actions)的示例请求。
 
 > [!NOTE]
 > SAP 通过描述业务对象以响应 RFC `RPY_BOR_TREE_INIT`，从而使业务对象可用于外部系统，而逻辑应用出现没有输入筛选器的问题。 逻辑应用检查输出表 `BOR_TREE`。 此 `SHORT_TEXT` 字段用于业务对象的名称。 逻辑应用无法访问输出表中 SAP 未返回的业务对象。
@@ -1379,7 +1353,7 @@ SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/pat
 
 ### <a name="confirm-transaction-explicitly"></a>显式确认事务
 
-将事务从逻辑应用发送到 SAP 时，此交换以两步方式完成，详见 SAP 文档：[Transactional RFC Server Programs](https://help.sap.com/doc/saphelp_nwpi71/7.1/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true)（事务性 RFC 服务器程序）。 默认情况下，“发送到 SAP”操作  在单个调用中处理函数传输步骤和事务确认步骤。 SAP 连接器提供将这两个步骤分离的选项。 可以发送 IDoc，并且可以使用显式的“确认事务 ID”操作，而不自动对事务进行确认。
+将事务从逻辑应用发送到 SAP 时，此交换以两步方式完成，详见 SAP 文档：[Transactional RFC Server Programs](https://help.sap.com/doc/saphelp_nwpi71/7.1/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true)（事务性 RFC 服务器程序）。 默认情况下，“发送到 SAP”操作  在单个调用中处理函数传输步骤和事务确认步骤。 SAP 连接器提供将这两个步骤分离的选项。 可以发送 IDoc，并且可以使用显式的“\[IDOC] 确认事务 ID”操作，而不自动对事务进行确认。
 
 不想在 SAP 中复制事务时（例如，在由于网络问题之类的原因而导致故障的情况下），可以使用这个分离事务 ID 确认的功能。 采用单独确认事务 ID 的方式，事务只在 SAP 系统中完成一次。
 
@@ -1387,13 +1361,13 @@ SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/pat
 
 1. 创建空的逻辑应用并添加 HTTP 触发器。
 
-1. 在 SAP 连接器中，添加“发送 IDOC”操作。  提供发送到 SAP 系统的 IDoc 的详细信息。
+1. 从 SAP 连接器中，添加“\[IDOC] 将文档发送到 SAP”操作。 提供发送到 SAP 系统的 IDoc 的详细信息。
 
 1. 若要在单独的步骤中显式确认事务 ID，请在“确认 TID”字段中选择“否”。   对于可选的“事务 ID GUID”字段，  可以手动指定值，也可以让连接器自动生成该 GUID 并在“发送 IDOC”操作的响应中将其返回。
 
    ![“发送 IDOC”操作的属性](./media/logic-apps-using-sap-connector/send-idoc-action-details.png)
 
-1. 若要显式确认事务 ID，请添加“确认事务 ID”操作，确保[避免将重复的 IDoc 发送到 SAP](#avoid-sending-duplicate-idocs)。 在“事务 ID”框中单击，以显示动态内容列表。  在该列表中选择从“发送 IDOC”操作返回的“事务 ID”值。  
+1. 若要显式确认事务 ID，请添加“\[IDOC] 确认事务 ID”操作，确保[避免将重复的 IDoc 发送到 SAP](#avoid-sending-duplicate-idocs)。 在“事务 ID”框中单击，以显示动态内容列表。  在该列表中，选择从“\[IDOC] 将文档发送到 SAP”操作中返回的“事务 ID”值 。
 
    ![“确认事务 ID”操作](./media/logic-apps-using-sap-connector/explicit-transaction-id.png)
 
@@ -1417,9 +1391,9 @@ SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/pat
 
     1. 对于“值”，请选择文本框“输入初始值”以打开动态内容菜单 。 选择“表达式”选项卡。在函数列表中，输入函数 `guid()`。 然后选择“确定”保存更改。 现在将“值”字段设置为 `guid()` 函数，该函数将生成 GUID。
 
-1. 在“初始化变量”操作之后，添加操作“发送 IDOC” 。
+1. 在“初始化变量”操作后，添加操作“\[IDOC] 将文档发送到 SAP” 。
 
-1. 在操作“发送 IDOC”的编辑器中，配置以下设置。 然后保存更改。
+1. 在操作“\[IDOC] 将文档发送到 SAP”的编辑器中，配置以下设置。 然后保存更改。
 
     1. 对于“IDOC 类型”，选择消息类型；对于“输入 IDOC 消息”，请指定消息 。
 
@@ -1431,15 +1405,15 @@ SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/pat
 
     1. 选择“添加新参数列表” > “事务ID GUID” 。 选择该文本框以打开动态内容菜单。 在“变量”选项卡下，选择创建的变量的名称。 例如，`IDOCtransferID`。
 
-1. 在操作“发送 IDOC”的标题栏上，选择“...” > “设置”  。 对于“重试策略”，建议选择“默认”&gt;“完成”  。 但是，你可以根据自己的特定需求配置自定义策略。 对于自定义策略，建议至少配置一次重试，以解决网络临时中断的问题。
+1. 在操作“\[IDOC] 将文档发送到 SAP”的标题栏上，选择“...” > “设置”  。 对于“重试策略”，建议选择“默认”&gt;“完成”  。 但是，你可以根据自己的特定需求配置自定义策略。 对于自定义策略，建议至少配置一次重试，以解决网络临时中断的问题。
 
-1. 在操作“发送 IDOC”之后，添加操作“确认事务 ID” 。
+1. 在操作“\[IDOC] 将文档发送到 SAP”后，添加操作“\[IDOC] 确认事务 ID” 。
 
-1. 在操作“确认事务 ID”的编辑器中，配置以下设置。 然后保存更改。
+1. 在操作“\[IDOC] 确认事务 ID”的编辑器中，配置以下设置。 然后保存更改。
 
     1. 对于“事务 ID”，请再次输入变量的名称。 例如，`IDOCtransferID`。
 
-1. （可选）在测试环境中验证重复数据删除。 使用与上一步相同的事务 ID GUID 重复执行“发送 IDOC”操作 。 当两次发送相同的 IDoc 时，可以验证 SAP 是否能够识别 tRFC 调用的重复项并将两个调用解析为一条入站 IDoc 消息。
+1. （可选）在测试环境中验证重复数据删除。 使用与上一步相同的事务 ID GUID 重复执行“\[IDOC] 将文档发送到 SAP”操作 。 当两次发送相同的 IDoc 时，可以验证 SAP 是否能够识别 tRFC 调用的重复项并将两个调用解析为一条入站 IDoc 消息。
 
 ## <a name="known-issues-and-limitations"></a>已知问题和限制
 
@@ -1449,59 +1423,205 @@ SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/pat
 
   * 对于“发送”方案，支持在故障转移模式下使用数据网关群集。 
 
-  * 监控状态 SAP 操作不支持在负载均衡模式下使用数据网关群集。 这些操作包括“创建监控状态会话”、“提交 BAPI 事务”、“回退 BAPI 事务”、“关闭监控状态会话”以及所有指定会话 ID 值的操作    。 监控状态通信必须保留在同一个数据网关群集节点上。 
+  * 监控状态 [SAP 操作](#actions)不支持在负载均衡模式下使用数据网关群集。 这些操作包括“\[BAPI - RFC] 创建监控状态会话”、“\[BAPI] 提交事务”、“\[BAPI] 回退事务”、“\[BAPI - RFC] 关闭监控状态会话”以及所有指定会话 ID 值的操作    。 监控状态通信必须保留在同一个数据网关群集节点上。 
 
   * 对于监控状态 SAP 操作，请在非群集模式或仅为故障转移设置的群集中使用数据网关。
 
 * SAP 连接器目前不支持 SAP 路由器字符串。 本地数据网关必须位于要连接的 SAP 系统所在的同一 LAN 中。
 
-## <a name="connector-reference"></a>连接器参考
+* 对于 [ISE 中的逻辑应用](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，此连接器的 ISE 标记版本改用 [ISE 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
-有关此连接器的更多技术详细信息，例如触发器、操作和限制（如此连接器的 Swagger 文件所述），请参阅[连接器的参考页](/connectors/sap/)。 为以下操作提供了适用于逻辑应用的其他文档：
+## <a name="connector-reference"></a>连接器参考 
 
-* [调用 BAPI](#call-bapi-action)
+有关 SAP 连接器的详细信息，请参阅[连接器参考](/connectors/sap/)。 你可以找到有关 SAP 连接器、触发器和操作的限制、参数和返回值的详细信息。
 
-* [发送 IDOC](#send-idoc-action)
+### <a name="triggers"></a>触发器
 
-> [!NOTE]
-> 对于[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中的逻辑应用，此连接器的 ISE 标记版本使用 [ISE 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
+:::row:::
+    :::column span="1":::
+        [从 SAP 收到消息时](/connectors/sap/#when-a-message-is-received)
+    :::column-end:::
+    :::column span="3":::
+        从 SAP 收到消息时，执行某些操作。 
+    :::column-end:::
+:::row-end:::
 
-### <a name="call-bapi-action"></a>调用 BAPI 操作
+### <a name="actions"></a>操作
 
-[调用 BAPI (`CallBapi`)](
-https://docs.microsoft.com/connectors/sap/#call-bapi-(preview)) 操作将在 SAP 服务器上调用 BAPI 方法。 
-
-调用时必须使用以下参数： 
-
-* 业务对象 (`businessObject`)，这是一个可搜索的下拉菜单。
-
-* 方法 (`method`)，它在你选择业务对象之后填充可用的方法 。 可用的方法因所选业务对象而异。
-
-* 输入 BAPI 参数 (`body`)，在其中调用包含 BAPI 方法输入参数值的 XML 文档，或者包含 BAPI 参数的存储 Blob 的 URI。
-
-有关如何使用“调用 BAPI”操作的详细示例，请参阅 [BAPI 请求的 XML 示例](#xml-samples-for-bapi-requests)。
-
-> [!TIP]
-> 如果使用逻辑应用设计器编辑 BAPI 请求，则可以使用以下搜索功能： 
-> 
-> * 在设计器中选择一个对象，以查看可用方法的下拉菜单。
-> * 使用 BAPI API 调用提供的可搜索列表，按关键字筛选业务对象类型。
-
-### <a name="send-idoc-action"></a>发送 IDoc 操作
-
-[发送 IDoc (`SendIDoc`)](/connectors/sap/) 操作会将 IDoc 消息发送到 SAP 服务器。
-
-调用时必须使用以下参数： 
-
-* 带有可选扩展的 IDOC 类型 (`idocType`)，这是一个可搜索的下拉菜单。
-
-    * 选择 IDoc 类型后，可选参数 SAP 发行版 (`releaseVersion`) 会填充值，具体取决于所选的 IDoc 类型。
-
-* 输入 IDOC消息 (`body`)，在其中调用包含 IDoc 有效负载的 XML 文档，或包含 IDoc XML 文档的存储 blob 的 URI。 根据 WE60 IDoc 文档，此文档必须符合 SAP IDOC XML 架构，或符合为匹配的 SAP IDoc 操作 URI 生成的架构。
-
-有关如何使用“发送 IDoc”操作的详细示例，请参阅[将 IDoc 消息发送到 SAP 服务器的演练](#send-idoc-messages-to-sap-server)。
-
-有关如何使用可选参数“确认 TID”(`confirmTid`)，请参阅[显式确认事务的演练](#confirm-transaction-explicitly)。
+:::row:::
+    :::column span="1":::
+        [[BAPI-RFC] 关闭监控状态会话](/connectors/sap/#[bapi---rfc]-close-stateful-session-(preview))
+    :::column-end:::
+    :::column span="3":::
+        关闭 SAP 系统的现有监控状态连接会话。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [[BAPI-RFC] 创建监控状态会话](/connectors/sap/#[bapi---rfc]-create-stateful-session-(preview))
+    :::column-end:::
+    :::column span="3":::
+        创建 SAP 系统的监控状态连接会话。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [[BAPI] 调用 SAP 中的方法](/connectors/sap/#[bapi]-call-method-in-sap-(preview))
+    :::column-end:::
+    :::column span="3":::
+        在 SAP 系统中调用 BAPI 方法。
+        \
+        \
+        调用时必须使用以下参数：    \
+        \
+        业务对象 (`businessObject`)，这是一个可搜索的下拉菜单。
+        \
+        \
+        方法 (`method`)，它在你选择业务对象之后填充可用的方法 。 可用的方法因所选业务对象而异。
+        \
+        \
+        输入 BAPI 参数 (`body`)，在其中调用包含 BAPI 方法输入参数值的 XML 文档，或者包含 BAPI 参数的存储 Blob 的 URI。
+        \
+        \
+        有关如何使用“[BAPI] 调用 SAP 中的方法”操作的详细示例，请参阅 [BAPI 请求的 XML 示例](#xml-samples-for-bapi-requests)。 
+        \
+        如果使用逻辑应用设计器编辑 BAPI 请求，则可以使用以下搜索功能：    \
+        \
+        在设计器中选择一个对象，以查看可用方法的下拉菜单。
+        \
+        \
+        使用 BAPI API 调用提供的可搜索列表，按关键字筛选业务对象类型。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [[BAPI] 提交事务](/connectors/sap/#[bapi]-commit-transaction-(preview))
+    :::column-end:::
+    :::column span="3":::
+        提交会话的 BAPI 事务。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [[BAPI] 回退事务](/connectors/sap/#[bapi]-roll-back-transaction-(preview))
+    :::column-end:::
+    :::column span="3":::
+        回退会话的 BAPI 事务。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [[IDOC-RFC] 确认事务 ID](/connectors/sap/#[idoc---rfc]-confirm-transaction-id-(preview))
+    :::column-end:::
+    :::column span="3":::
+        向 SAP 发送事务标识符确认。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [[IDOC] 获取事务的 IDOC 列表](/connectors/sap/#[idoc]-get-idoc-list-for-transaction-(preview))
+    :::column-end:::
+    :::column span="3":::
+        按会话标识符或事务标识符获取事务的 IDoc 列表。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [[IDOC] 获取 IDOC 状态](/connectors/sap/#[idoc]-get-idoc-status-(preview))
+    :::column-end:::
+    :::column span="3":::
+        获取 IDoc 的状态。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [[IDOC] 将文档发送到 SAP](/connectors/sap/#[idoc]-send-document-to-sap-(preview))
+    :::column-end:::
+    :::column span="3":::
+        将 IDoc 消息发送到 SAP 服务器。
+        \
+        \
+        调用时必须使用以下参数：    \
+        \
+        带有可选扩展的 IDOC 类型 (`idocType`)，这是一个可搜索的下拉菜单。
+        \
+        \
+        输入 IDOC消息 (`body`)，在其中调用包含 IDoc 有效负载的 XML 文档，或包含 IDoc XML 文档的存储 blob 的 URI。 根据 WE60 IDoc 文档，此文档必须符合 SAP IDOC XML 架构，或符合为匹配的 SAP IDoc 操作 URI 生成的架构。
+        \
+        \
+        选择 IDoc 类型后，可选参数 SAP 发行版 (`releaseVersion`) 会填充值，具体取决于所选的 IDoc 类型。
+        \
+        \
+        有关如何使用“发送 IDoc”操作的详细示例，请参阅[将 IDoc 消息发送到 SAP 服务器的演练](#send-idoc-messages-to-sap-server)。
+        \
+        \
+        有关如何使用可选参数“确认 TID”(`confirmTid`)，请参阅[显式确认事务的演练](#confirm-transaction-explicitly)。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [[RFC] 将 RFC 添加到事务](/connectors/sap/#[rfc]-add-rfc-to-transaction-(preview))
+    :::column-end:::
+    :::column span="3":::
+        添加对事务的 RFC 调用。 
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [[RFC] 调用 SAP 中的函数](/connectors/sap/#[rfc]-call-function-in-sap-(preview))
+    :::column-end:::
+    :::column span="3":::
+        在 SAP 系统上调用 RFC 操作（sRFC、tRFC 或 qRFC）。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [[RFC] 提交事务](/connectors/sap/#[rfc]-commit-transaction-(preview))
+    :::column-end:::
+    :::column span="3":::
+        提交会话和/或队列的 RFC 事务。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [[RFC] 创建事务](/connectors/sap/#[rfc]-create-transaction-(preview))
+    :::column-end:::
+    :::column span="3":::
+        按标识符和/或队列名称创建新事务。 如果事务存在，则获取详细信息。 
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [[RFC] 获取事务](/connectors/sap/#[rfc]-get-transaction-(preview))
+    :::column-end:::
+    :::column span="3":::
+        按标识符和/或队列名称获取事务的详细信息。 如果不存在，则创建新事务。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [**生成架构**](/connectors/sap/#generate-schemas)
+    :::column-end:::
+    :::column span="3":::
+        为 IDoc、BAPI 或 RFC 生成 SAP 项目的架构。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [读取 SAP 表](/connectors/sap/#read-sap-table-(preview))
+    :::column-end:::
+    :::column span="3":::
+        读取 SAP 表。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [**将消息发送到 SAP**](/connectors/sap/#send-message-to-sap)
+    :::column-end:::
+    :::column span="3":::
+        向 SAP 发送任意消息类型（RFC、BAPI、IDoc）。
+    :::column-end:::
+:::row-end:::
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ ms.collection: linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a674f4a2a31fd217307ff373cba2b883a4d129f8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 9032bfca30ead56c91d7904e18b76753cf3b6dfc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102557057"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104582164"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Key Vault 虚拟机扩展
 
@@ -25,15 +25,18 @@ ms.locfileid: "102557057"
 
 Key Vault VM 扩展支持以下 Linux 发行版：
 
-- Ubuntu-1604
 - Ubuntu-1804
-- Debian-9
 - Suse-15 
+
+> [!NOTE]
+> 若要获得扩展的安全功能，请准备升级 Ubuntu-1604 和 Debian-9 系统，因为这些版本的指定支持期将结束。
+> 
 
 ### <a name="supported-certificate-content-types"></a>支持的证书内容类型
 
 - PKCS #12
 - PEM
+
 
 ## <a name="prerequisities"></a>先决条件
   - 具有证书的 Key Vault 实例。 请参阅[创建 Key Vault](../../key-vault/general/quick-create-portal.md)
@@ -54,6 +57,20 @@ Key Vault VM 扩展支持以下 Linux 发行版：
                     "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
                   }
    `
+## <a name="key-vault-vm-extension-version"></a>密钥保管库 VM 扩展版本
+* Ubuntu-18.04 和 SUSE-15 用户可以选择将其密钥保管库 VM 扩展版本升级到 `V2.0` 来使用完整证书链下载功能。 证书颁发者颁发的证书（中间证书和根证书）将追加到 PEM 文件中的分支证书。
+
+* 如果想要升级到 `v2.0`，需要先删除 `v1.0`，然后安装 `v2.0`。
+```
+  az vm extension delete --name KeyVaultForLinux --resource-group ${resourceGroup} --vm-name ${vmName}
+  az vm extension set -n "KeyVaultForLinux" --publisher Microsoft.Azure.KeyVault --resource-group "${resourceGroup}" --vm-name "${vmName}" –settings .\akvvm.json –version 2.0
+```  
+  版本 2.0 标志是可选的，因为默认情况下将安装最新版本。   
+
+* 如果 VM 具有 v1.0 下载的证书，删除 v1.0 AKVVM 扩展将不会删除已下载的证书。  安装 v2.0 后，不会修改现有证书。  你需要删除证书文件或滚动更新证书，以获取 VM 上包含完整链的 PEM 文件。
+
+
+
 
 ## <a name="extension-schema"></a>扩展架构
 
@@ -70,7 +87,7 @@ Key Vault VM 扩展支持以下 Linux 发行版：
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForLinux",
-      "typeHandlerVersion": "1.0",
+      "typeHandlerVersion": "2.0",
       "autoUpgradeMinorVersion": true,
       "settings": {
         "secretsManagementSettings": {
@@ -107,7 +124,7 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 | apiVersion | 2019-07-01 | date |
 | publisher | Microsoft.Azure.KeyVault | 字符串 |
 | type | KeyVaultForLinux | 字符串 |
-| typeHandlerVersion | 1.0 | int |
+| typeHandlerVersion | 2.0 | int |
 | pollingIntervalInS | 3600 | 字符串 |
 | certificateStoreName | 它在 Linux 上被忽略 | string |
 | linkOnRenewal | false | boolean |
@@ -140,7 +157,7 @@ Key Vault VM 扩展支持以下 Linux 发行版：
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForLinux",
-      "typeHandlerVersion": "1.0",
+      "typeHandlerVersion": "2.0",
       "autoUpgradeMinorVersion": true,
       "settings": {
           "secretsManagementSettings": {
@@ -187,7 +204,7 @@ Key Vault VM 扩展支持扩展排序（如果已配置）。 默认情况下，
        
     
         # Start the deployment
-        Set-AzVmExtension -TypeHandlerVersion "1.0" -ResourceGroupName <ResourceGroupName> -Location <Location> -VMName <VMName> -Name $extName -Publisher $extPublisher -Type $extType -SettingString $settings
+        Set-AzVmExtension -TypeHandlerVersion "2.0" -ResourceGroupName <ResourceGroupName> -Location <Location> -VMName <VMName> -Name $extName -Publisher $extPublisher -Type $extType -SettingString $settings
     
     ```
 
@@ -207,7 +224,7 @@ Key Vault VM 扩展支持扩展排序（如果已配置）。 默认情况下，
         
         # Add Extension to VMSS
         $vmss = Get-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName>
-        Add-AzVmssExtension -VirtualMachineScaleSet $vmss  -Name $extName -Publisher $extPublisher -Type $extType -TypeHandlerVersion "1.0" -Setting $settings
+        Add-AzVmssExtension -VirtualMachineScaleSet $vmss  -Name $extName -Publisher $extPublisher -Type $extType -TypeHandlerVersion "2.0" -Setting $settings
 
         # Start the deployment
         Update-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName> -VirtualMachineScaleSet $vmss 
@@ -226,6 +243,7 @@ Key Vault VM 扩展支持扩展排序（如果已配置）。 默认情况下，
          --publisher Microsoft.Azure.KeyVault `
          -g "<resourcegroup>" `
          --vm-name "<vmName>" `
+         --version 2.0 `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 
@@ -237,6 +255,7 @@ Key Vault VM 扩展支持扩展排序（如果已配置）。 默认情况下，
         --publisher Microsoft.Azure.KeyVault `
         -g "<resourcegroup>" `
         --vmss-name "<vmssName>" `
+        --version 2.0 `
         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 请注意以下限制/要求：

@@ -4,12 +4,12 @@ description: 了解如何使用适用于 .NET 的 Azure Batch 文件约定库将
 ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: 1a45eed421dd8d734fcef0dd452df1d4a65fd053
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 376073dc82203c7248e9e09710d6658c5ed09245
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88936956"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988975"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>使用适用于 .NET 的 Batch 文件约定库将作业和任务数据保存到 Azure 存储
 
@@ -28,7 +28,7 @@ Azure Batch 提供多种方式来保存任务输出。 文件约定最适合以�
 
 - 可以轻松修改任务运行的应用程序的代码，以使用文件约定库来保存文件。
 - 希望在任务仍然运行时，将数据流式传输到 Azure 存储。
-- 希望保存使用云服务配置或虚拟机配置创建的池中的数据。
+- 你想要保留池中的数据。
 - 作业中的客户端应用程序或其他任务需要根据 ID 或用途定位并下载任务输出文件。
 - 想要在 Azure 门户中查看任务输出。
 

@@ -1,5 +1,5 @@
 ---
-title: VMware VM 多租户灾难恢复与 Azure Site Recovery
+title: 使用 Azure Site Recovery 进行 VMware VM 多租户灾难恢复
 description: 概述了在多租户环境 (CSP) 程序对从 VMWare 灾难恢复到 Azure 的 Azure Site Recovery 支持。
 author: mayurigupta13
 manager: rochakm
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 64e40341ec56a2e1c561b2bcbb5e584830c14015
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93145576"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>使用 CSP 从 VMware 灾难恢复到 Azure 的多租户支持概述
@@ -26,7 +26,7 @@ ms.locfileid: "93145576"
 
 * **共享托管服务提供程序 (HSP)** ：合作伙伴拥有物理基础结构，并使用共享资源（vCenter、数据中心、物理存储等）在同一基础结构上托管多个租户的 VM。 合作伙伴可以提供灾难恢复管理作为托管服务，租户也可以拥有灾难恢复作为自助解决方案。
 
-* **专用托管服务提供程序** ：合作伙伴拥有物理基础结构，但使用专用资源 (多个 vcenter、物理数据存储等，) 并在单独的基础结构上托管每个租户的 vm。 合作伙伴可以提供灾难恢复管理作为托管服务，租户也可以拥有它作为自助解决方案。
+* **专用托管服务提供程序**：合作伙伴拥有物理基础结构，但使用专用资源（多个 vCenter、物理数据存储等）在单独的基础结构上托管每个租户的 VM。 合作伙伴可以提供灾难恢复管理作为托管服务，租户也可以拥有它作为自助解决方案。
 
 * **托管服务提供程序 (MSP)** ：客户拥有托管 VM 的物理基础结构，合作伙伴提供灾难恢复启用和管理功能。
 
@@ -56,9 +56,9 @@ ms.locfileid: "93145576"
 
 在多租户方案中，每个配置服务器使用两个帐户：
 
-- **vCenter 访问帐户** ：此帐户用于发现租户 VM。 它分配有 vCenter 访问权限。 为了避免访问泄漏，建议合作伙伴在配置工具中自行输入这些凭据。
+- **vCenter 访问帐户**：此帐户用于发现租户 VM。 它分配有 vCenter 访问权限。 为了避免访问泄漏，建议合作伙伴在配置工具中自行输入这些凭据。
 
-- **虚拟机访问帐户** ：此帐户用于通过自动推送在租户 VM 上安装移动服务代理。 它通常为域帐户，可以由租户提供给合作伙伴，也可以是由合作伙伴直接管理的帐户。 如果不希望将详细信息直接与合作伙伴共享，租户可以通过在有限时间访问配置服务器时输入凭据。 或者，在合作伙伴的帮助下，手动安装移动服务代理。
+- **虚拟机访问帐户**：此帐户用于通过自动推送在租户 VM 上安装移动服务代理。 它通常为域帐户，可以由租户提供给合作伙伴，也可以是由合作伙伴直接管理的帐户。 如果不希望将详细信息直接与合作伙伴共享，租户可以通过在有限时间访问配置服务器时输入凭据。 或者，在合作伙伴的帮助下，手动安装移动服务代理。
 
 ## <a name="vcenter-account-requirements"></a>vCenter 帐户要求
 
@@ -75,15 +75,15 @@ ms.locfileid: "93145576"
 1. 通过克隆预定义的“只读”角色创建新角色，然后为其提供一个方便的名称（例如此示例中显示的 Azure_Site_Recovery）。 
 2. 将以下权限分配给该角色：
 
-   * **数据存储** ：分配空间、浏览数据存储、降低文件操作级别、删除文件、更新虚拟机文件
-   * **网络** ：网络分配
-   * **资源** ：将 VM 分配到资源池、迁移关闭的 VM、迁移打开的 VM
-   * **任务** ：创建任务、更新任务
-   * **VM - 配置** ：全部
-   * **VM - 交互** >回答问题、设备连接、配置 CD 介质、配置软盘介质、关机、开机、VMware 工具安装
-   * **VM - 清单** > 从现有项创建、新建、注册、注销
-   * **VM - 预配** >允许虚拟机下载、允许虚拟机文件上传
-   * **VM - 快照管理** >删除快照
+   * **数据存储**：分配空间、浏览数据存储、降低文件操作级别、删除文件、更新虚拟机文件
+   * **网络**：网络分配
+   * **资源**：将 VM 分配到资源池、迁移关闭的 VM、迁移打开的 VM
+   * **任务**：创建任务、更新任务
+   * **VM - 配置**：全部
+   * **VM - 交互**>回答问题、设备连接、配置 CD 介质、配置软盘介质、关机、开机、VMware 工具安装
+   * **VM - 清单**> 从现有项创建、新建、注册、注销
+   * **VM - 预配**>允许虚拟机下载、允许虚拟机文件上传
+   * **VM - 快照管理**>删除快照
 
        ![“编辑角色”对话框](./media/vmware-azure-multi-tenant-overview/edit-role-permissions.png)
 
@@ -120,13 +120,13 @@ vCenter 帐户访问现已完成。 此步骤可满足完成故障回复操作�
 
 1. 在 Azure 门户中，在之前创建的保管库中，使用你创建的 vCenter 帐户将 vCenter 服务器注册到配置服务器。
 2. 按照常规过程完成 Site Recovery 的“准备基础结构”过程。
-3. VM 现在可以进行复制了。 验证 " **复制** " "  >  **选择虚拟机** " 中仅显示租户的 vm。
+3. VM 现在可以进行复制了。 在“复制” > “选择虚拟机”中验证是否仅显示了该租户的 VM。 
 
 ## <a name="dedicated-hosting-solution"></a>专用托管解决方案
 
 如下图所示，专用托管解决方案中的体系结构差异在于，每个租户的基础结构是专为该租户设置的。
 
-![此图显示了专用托管解决方案中的体系结构差异是，每个租户的基础结构只是针对该租户设置的。](./media/vmware-azure-multi-tenant-overview/dedicated-hosting-scenario.png)  
+![此图表明，专用托管解决方案中的体系结构差异在于每个租户的基础结构是专为该租户设置的。](./media/vmware-azure-multi-tenant-overview/dedicated-hosting-scenario.png)  
 **多个 vCenter 的专用托管方案**
 
 ## <a name="managed-service-solution"></a>托管服务解决方案

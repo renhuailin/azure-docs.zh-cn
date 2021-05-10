@@ -3,12 +3,12 @@ title: 通过模板实现快速任务运行
 description: 将 ACR 任务运行排入队列，以使用 Azure 资源管理器模板生成映像
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: 6e8023c088ac328c2b6e95fccd0230c4d40325c1
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
-ms.translationtype: MT
+ms.openlocfilehash: af7bebc311f81bb489fcc8be419f167ff6f9460a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916059"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781228"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>使用资源管理器模板运行 ACR 任务
 
@@ -186,13 +186,13 @@ az role assignment create \
 |taskRunName     |用于指定映像标记的任务运行的名称 |
 |userAssignedIdentity |在任务中启用的用户分配标识的资源 ID|
 |customRegistryIdentity | 在任务中启用的用户分配标识的客户端 ID，用于向自定义注册表进行身份验证 |
-|customRegistry |在任务中访问的自定义注册表的登录服务器名称，例如， *mybaseregistry.azurecr.io*|
+|customRegistry |在任务中访问的自定义注册表的登录服务器名称，例如 mybaseregistry.azurecr.io|
 |sourceLocation     |生成任务的远程上下文，例如 https://github.com/\<your-GitHub-ID\> /acr-build-helloworld-node。 |
 |dockerFilePath | 远程上下文中 Dockerfile 的路径，用于生成映像。 |
 
 ### <a name="deploy-the-template"></a>部署模板
 
-使用 [az deployment group create][az-deployment-group-create] 命令部署模板。 本示例将生成 helloworld-node:testrun 映像，并将该映像推送到名为 mycontainerregistry 的注册表中 。 基本映像是从 *mybaseregistry.azurecr.io* 中提取的。
+使用 [az deployment group create][az-deployment-group-create] 命令部署模板。 本示例将生成 helloworld-node:testrun 映像，并将该映像推送到名为 mycontainerregistry 的注册表中 。 基础映像从 mybaseregistry.azurecr.io 中拉取。
 
 ```azurecli
 az deployment group create \
@@ -236,18 +236,18 @@ basetask
 ## <a name="next-steps"></a>后续步骤
 
  * 在 [ACR GitHub 存储库](https://github.com/Azure/acr/tree/master/docs/tasks/run-as-deployment)中查看更多模板示例。
- * 有关模板属性的详细信息，请参阅 [任务运行](/azure/templates/microsoft.containerregistry/2019-06-01-preview/registries/taskruns) 和 [任务](/azure/templates/microsoft.containerregistry/2019-06-01-preview/registries/tasks)的模板参考。
+ * 有关模板属性的详细信息，请参阅[任务运行](/azure/templates/microsoft.containerregistry/2019-06-01-preview/registries/taskruns)和[任务](/azure/templates/microsoft.containerregistry/2019-06-01-preview/registries/tasks)的模板参考。
 
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-build]: /cli/azure/acr#az-acr-build
-[az-acr-show]: /cli/azure/acr#az-acr-show
-[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
-[az-acr-task-logs]: /cli/azure/acr/task#az-acr-task-logs
-[az-acr-repository-show-tags]: /cli/azure/acr/repository#az-acr-repository-show-tags
-[az-acr-task-list-runs]: /cli/azure/acr/task#az-acr-task-list-runs
-[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
-[az-identity-create]: /cli/azure/identity#az-identity-create
-[az-identity-show]: /cli/azure/identity#az-identity-show
-[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
+[az-acr-build]: /cli/azure/acr#az_acr_build
+[az-acr-show]: /cli/azure/acr#az_acr_show
+[az-acr-task-run]: /cli/azure/acr/task#az_acr_task_run
+[az-acr-task-logs]: /cli/azure/acr/task#az_acr_task_logs
+[az-acr-repository-show-tags]: /cli/azure/acr/repository#az_acr_repository_show_tags
+[az-acr-task-list-runs]: /cli/azure/acr/task#az_acr_task_list_runs
+[az-deployment-group-create]: /cli/azure/deployment/group#az_deployment_group_create
+[az-identity-create]: /cli/azure/identity#az_identity_create
+[az-identity-show]: /cli/azure/identity#az_identity_show
+[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create

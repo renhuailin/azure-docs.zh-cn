@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: f18d9cb2a1bf76986a5c77477085f2f12ab728ae
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 92f9c3baaa8260bdc154f8752b56a63cf1444ebe
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771796"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140400"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -134,9 +134,9 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 
 
 ## <a name="next-steps"></a>后续步骤
-- [使用门户创建 SQL 数据库的专用终结点](create-private-endpoint-portal.md)
-- [使用 PowerShell 创建 SQL 数据库的专用终结点](create-private-endpoint-powershell.md)
-- [使用 CLI 创建 SQL 数据库的专用终结点](create-private-endpoint-cli.md)
+- [使用门户为 Azure Web 应用创建专用终结点](create-private-endpoint-portal.md)
+- [使用 PowerShell 为 Azure Web 应用创建专用终结点](create-private-endpoint-powershell.md)
+- [使用 CLI 为 Azure Web 应用创建专用终结点](create-private-endpoint-cli.md)
 - [使用门户创建存储帐户的专用终结点](./tutorial-private-endpoint-storage-portal.md)
 - [使用门户创建 Azure Cosmos 帐户的专用终结点](../cosmos-db/how-to-configure-private-endpoints.md)
 - [使用 Azure PowerShell 创建自己的专用链接服务](create-private-link-service-powershell.md)

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 12/9/2020
 ms.openlocfilehash: 3ce4f673657561e196520466b569d0cf83d75a8a
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98019340"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Azure 流分析的输出
@@ -24,7 +24,7 @@ Azure 流分析作业由输入、查询和输出构成。 可以将转换后的�
 
 | 输出类型 | 分区 | 安全 | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|是|Azure Active Directory 用户 </br> ，托管标识|
+|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|是|Azure Active Directory 用户 </br> 、托管标识|
 |[Azure SQL 数据库](sql-database-output.md)|是，可选。|SQL 用户身份验证， </br> 托管标识（预览版）|
 |[Azure Synapse Analytics](azure-synapse-analytics-output.md)|是|SQL 用户身份验证， </br> 托管标识（预览版）|
 |[Blob 存储和 Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|是|访问密钥， </br> 托管标识（预览版）|
@@ -38,7 +38,7 @@ Azure 流分析作业由输入、查询和输出构成。 可以将转换后的�
 
 ## <a name="partitioning"></a>分区
 
-流分析支持除 Power BI 之外的所有输出的分区。 有关分区键和输出编写器数目的详细信息，请参阅你感兴趣的特定输出类型的文章。 在上一节中链接了所有输出文章。  
+流分析支持对除 Power BI 之外的所有输出进行分区。 有关分区键和输出编写器数目的详细信息，请参阅你感兴趣的特定输出类型的文章。 在上一节中链接了所有输出文章。  
 
 另外，若要对分区进行更高级的优化，可以在查询中使用 `INTO <partition count>`（请参阅 [INTO](/stream-analytics-query/into-azure-stream-analytics#into-shard-count)）子句来控制输出写入器的数量，这可能有助于实现所需的作业拓扑。 如果输出适配器未分区，则一个输入分区中缺少数据将导致延迟最多可达延迟到达的时间量。 在这种情况下，输出将合并到单个写入器，这可能会导致管道中出现瓶颈。 若要了解有关延迟到达策略的详细信息，请参阅 [Azure 流分析事件顺序注意事项](./stream-analytics-time-handling.md)。
 

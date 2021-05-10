@@ -9,14 +9,14 @@ ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 12/09/2020
-ms.topic: conceptual
-ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: 2bed95385823a167c7a31eed11d752894984ea38
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.topic: how-to
+ms.custom: contperf-fy21q2, automl
+ms.openlocfilehash: d104ad879919b11152d56a2c9b6b6fd8652c3ddc
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791870"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903787"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>评估自动化机器学习试验结果
 
@@ -240,7 +240,15 @@ spearman_correlation| 斯皮尔曼相关是两个数据集之间的关系单一�
 有关代码优先的体验，请参阅如何[使用 Azure 机器学习 Python SDK 为自动 ML 试验设置模型说明](how-to-machine-learning-interpretability-automl.md)。
 
 > [!NOTE]
-> ForecastCN 模型目前不受自动化 ML 说明的支持，其他预测模型对可解释性工具的访问可能有限。
+> 可解释性（最佳模型解释）不适用于将以下算法推荐为最佳模型或系综的自动化 ML 预测试验： 
+> * TCNForecaster
+> * AutoArima
+> * ExponentialSmoothing
+> * Prophet
+> * 平均值 
+> * Naive
+> * Seasonal Average 
+> * Seasonal Naive
 
 ## <a name="next-steps"></a>后续步骤
 * 请参阅[自动化机器学习模型解释](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)示例笔记本。

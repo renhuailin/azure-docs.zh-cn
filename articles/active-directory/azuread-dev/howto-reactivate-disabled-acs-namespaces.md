@@ -1,6 +1,6 @@
 ---
-title: 重新激活禁用的 Azure 访问控制服务 (ACS) 命名空间
-description: 在2019年2月4日之前，查找并启用 Azure 访问控制服务 (ACS) 命名空间，并请求扩展以使其保持启用状态。
+title: 重新激活已禁用的 Azure 访问控制服务 (ACS) 命名空间
+description: 查找和启用 Azure 访问控制服务 (ACS) 命名空间，并请求延期启用到 2019 年 2 月 4 日为止。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,10 +14,10 @@ ms.reviewer: jlu
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 7bb572e9e22519491290e54417f5ca350d6c0b5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85383711"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>如何：重新激活已禁用的访问控制服务命名空间
@@ -26,7 +26,7 @@ ms.locfileid: "85383711"
 
 在 2017 年 11 月我们已宣布，Azure Active Directory (Azure AD) 服务 Microsoft Azure 访问控制服务 (ACS) 将在 2018 年 11 月 7 日停用。
 
-自那时起，我们已将有关 ACS 停用的管理员电子邮件的电子邮件发送到 ACS 订阅：12个月、9个月、6个月、3个月、1个月、2周、1周和2018年11月7日之前的1天。
+然后，我们在 2018 年 11 月 7 日停用日期之前的 12 个月、9 个月、6 个月、3 个月、1 个月、2 周、1 周和 1 天，向 ACS 订阅管理员发送了有关 ACS 停用的电子邮件。
 
 在 2018 年 10 月 3 日我们（通过电子邮件和[博客文章](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)）宣布，2018 年 11 月 7 日之前未完成迁移的客户可以请求延期。 公告还包含了有关请求延期的说明。
 
@@ -69,7 +69,7 @@ ms.locfileid: "85383711"
 1. 使用 **Get-AcsNamespace** cmdlet 列出 ACS 命名空间。
 1. 通过检查 `State` 是否为 `Disabled`，来确认命名空间是否已禁用。
 
-    [![确认已禁用命名空间](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png)](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png#lightbox)
+    [![确认命名空间是否已禁用](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png)](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png#lightbox)
 
     还可以使用 `nslookup {your-namespace}.accesscontrol.windows.net` 来确认域是否仍处于活动状态。
 
@@ -89,7 +89,7 @@ ms.locfileid: "85383711"
 
 ### <a name="to-request-an-extension"></a>若要请求延期
 
-1. 登录到 Azure 门户并创建 [新的支持请求](https://portal.azure.com/#create/Microsoft.Support)。
+1. 请登录到 Azure 门户，并创建[新的支持请求](https://portal.azure.com/#create/Microsoft.Support)。
 1. 如下面的示例所示，填写新的支持请求表单。
 
     | 支持请求字段 | 值 |

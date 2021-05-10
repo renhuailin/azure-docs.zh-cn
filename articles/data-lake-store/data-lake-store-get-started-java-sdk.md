@@ -1,6 +1,6 @@
 ---
-title: Java SDK-Data Lake Storage Gen1 上的 Filesystem 操作-Azure
-description: 使用 Java SDK 进行 Azure Data Lake Storage Gen1 来对 Data Lake Storage Gen1 执行文件系统操作，如创建文件夹、上传和下载数据文件。
+title: Java SDK - Data Lake Storage Gen1 上的文件系统操作 - Azure
+description: 使用 Azure Data Lake Storage Gen1 Java SDK 在 Data Lake Storage Gen1 上执行文件系统操作，例如创建文件夹、上传和下载数据文件。
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.custom: devx-track-java
 ms.author: twooley
 ms.openlocfilehash: a2c55a2d3277bbb6c3cf72f5ea703780d2a5e9bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87318838"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>使用 Java SDK 对 Azure Data Lake Storage Gen1 执行的文件系统操作
@@ -23,11 +23,11 @@ ms.locfileid: "87318838"
 >
 > 
 
-了解如何使用 Azure Data Lake Storage Gen1 Java SDK 执行基本操作，如创建文件夹、上传和下载数据文件等。有关 Data Lake Storage Gen1 的详细信息，请参阅 [Azure Data Lake Storage Gen1](data-lake-store-overview.md)。
+了解如何使用 Azure Data Lake Storage Gen1 Java SDK 执行基本操作，如创建文件夹、上传和下载数据文件等。若要详细了解 Data Lake Storage Gen1，请参阅 [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)。
 
 可以在 [Azure Data Lake Storage Gen1 Java API 文档](https://azure.github.io/azure-data-lake-store-java/javadoc/)中访问适用于 Data Lake Storage Gen1 的 Java SDK API 文档。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 * Java 开发工具包（JDK 7 或更高版本，使用 Java 1.7 或更高版本）。
 * Data Lake Storage Gen1 帐户。 请遵循[通过 Azure 门户开始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的说明进行操作。
 * [Maven](https://maven.apache.org/install.html)。 本教程使用 Maven 生成项目和项目依赖项。 尽管不使用 Maven 或 Gradle 等生成系统也能完成生成，但使用这些系统可以大大减化依赖项的管理。
@@ -38,7 +38,7 @@ ms.locfileid: "87318838"
 
 1. 在命令行使用 [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) 或通过 IDE 创建一个 Maven 项目。 有关如何使用 IntelliJ 创建 Java 项目的说明，请参阅[此文](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html)。 有关如何使用 Eclipse 创建项目的说明，请参阅[此文](https://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm)。 
 
-2. 将以下依赖项添加到 Maven pom.xml**** 文件。 在标记之前添加以下代码片段 **\</project>** ：
+2. 将以下依赖项添加到 Maven pom.xml 文件。 在 **\</project>** 标记前添加以下代码片段：
    
     ```xml
     <dependencies>
@@ -55,7 +55,7 @@ ms.locfileid: "87318838"
     </dependencies>
     ```
    
-    第一个依赖项从 maven 存储库使用 Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`)。 第二个依赖项指定此应用程序使用的日志记录框架 (`slf4j-nop`)。 Data Lake Storage Gen1 SDK 使用 [SLF4J](https://www.slf4j.org/) 日志记录外观，使你可以从多种常用的日志记录框架（如 Log4j、Java 日志记录、Logback 等）中进行选择，或者不使用日志记录。 本示例禁用日志记录，因此我们使用 slf4j-nop 绑定****。 若要在应用中使用其他日志记录选项，请参阅[此文](https://www.slf4j.org/manual.html#projectDep)。
+    第一个依赖项从 maven 存储库使用 Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`)。 第二个依赖项指定此应用程序使用的日志记录框架 (`slf4j-nop`)。 Data Lake Storage Gen1 SDK 使用 [SLF4J](https://www.slf4j.org/) 日志记录体系，允许用户从多种流行的记录框架（如 Log4j、Java 日志记录、Logback 等）中进行选择，或者不使用日志记录。 本示例禁用日志记录，因此我们使用 slf4j-nop 绑定。 若要在应用中使用其他日志记录选项，请参阅[此文](https://www.slf4j.org/manual.html#projectDep)。
 
 3. 将以下导入语句添加到应用程序。
 
@@ -78,14 +78,14 @@ ms.locfileid: "87318838"
 * 若要了解应用程序的服务到服务身份验证，请参阅[使用 Java 通过 Data Lake Storage Gen1 进行服务到服务身份验证](data-lake-store-service-to-service-authenticate-java.md)。
 
 ## <a name="create-a-data-lake-storage-gen1-client"></a>创建 Data Lake Storage Gen1 客户端
-创建 [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) 对象需要指定 Data Lake Storage Gen1 帐户名和令牌提供程序，这是在通过 Data Lake Storage Gen1 进行身份验证（参见[身份验证](#authentication)部分）时生成的。 Data Lake Storage Gen1 帐户名需是完全限定的域名。 例如，可将“FILL-IN-HERE”替换为类似于“mydatalakestoragegen1.azuredatalakestore.net”的内容********。
+创建 [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) 对象需要指定 Data Lake Storage Gen1 帐户名和令牌提供程序，这是在通过 Data Lake Storage Gen1 进行身份验证（参见[身份验证](#authentication)部分）时生成的。 Data Lake Storage Gen1 帐户名需是完全限定的域名。 例如，可将“FILL-IN-HERE”替换为类似于“mydatalakestoragegen1.azuredatalakestore.net”的内容。
 
 ```java
 private static String accountFQDN = "FILL-IN-HERE";  // full account FQDN, not just the account name
 ADLStoreClient client = ADLStoreClient.createClient(accountFQDN, provider);
 ```
 
-以下部分的代码片段包含某些常用文件系统操作的示例。 可以参阅 ADLStoreClient 对象的完整 [Data Lake Storage Gen1 Java SDK API 文档](https://azure.github.io/azure-data-lake-store-java/javadoc/)来查看其他操作的示例代码****。
+以下部分的代码片段包含某些常用文件系统操作的示例。 可以参阅 ADLStoreClient 对象的完整 [Data Lake Storage Gen1 Java SDK API 文档](https://azure.github.io/azure-data-lake-store-java/javadoc/)来查看其他操作的示例代码。
 
 ## <a name="create-a-directory"></a>创建目录
 
@@ -228,8 +228,8 @@ promptEnterKey();
 ```
 
 ## <a name="build-and-run-the-application"></a>生成并运行应用程序
-1. 若要从 IDE 内部运行，请找到并按下“运行”按钮。**** 若要从 Maven 运行，请使用 [exec:exec](https://www.mojohaus.org/exec-maven-plugin/exec-mojo.html)。
-2. 若要生成一个可从命令行运行的独立 jar，请使用 [Maven 程序集插件](https://maven.apache.org/plugins/maven-assembly-plugin/usage.html)生成包含所有依赖项的 jar。 [GitHub 上的示例源代码](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml)中的 pom.xml 有一个示例。
+1. 若要从 IDE 内部运行，请找到并按下“运行”按钮。 若要从 Maven 运行，请使用 [exec:exec](https://www.mojohaus.org/exec-maven-plugin/exec-mojo.html)。
+2. 若要生成一个可从命令行运行的独立 jar，请使用 [Maven 程序集插件](https://maven.apache.org/plugins/maven-assembly-plugin/usage.html)生成包含所有依赖项的 jar。 [GitHub 上的示例源代码](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml)中的 pom.xml 列举了相关示例。
 
 ## <a name="next-steps"></a>后续步骤
 * [探索用于 Java SDK 的 JavaDoc](https://azure.github.io/azure-data-lake-store-java/javadoc/)

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: f3c783c57b49b45943882703aec6d735d12bf830
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 180226741d77defb0a9f0d00165cf858cb65ecbb
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481950"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906505"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>使用 X.509 证书创建和预配 IoT Edge 设备
 
@@ -123,7 +123,7 @@ Windows:
       }
       ```
 
-1. 选择“保存”  。
+1. 选择“保存” 。
 
 既然此设备已存在注册，IoT Edge 运行时在安装期间可以自动预配设备。 转到[安装 IoT Edge 运行时](#install-the-iot-edge-runtime)部分来设置 IoT Edge 设备。
 
@@ -208,7 +208,7 @@ Windows:
       }
       ```
 
-1. 选择“保存”  。
+1. 选择“保存” 。
 
 既然此设备已存在注册，IoT Edge 运行时在安装期间可以自动预配设备。 转到下一部分来设置 IoT Edge 设备。
 
@@ -229,7 +229,6 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 * DPS 的“ID 范围”值。  可以从 Azure 门户中 DPS 实例的概述页检索此值。
 * 设备上的设备标识证书链文件。
 * 设备上的设备标识密钥文件。
-* 可选的注册 ID。 如果未提供，将从设备标识证书中的公用名拉取。
 
 ### <a name="linux-device"></a>Linux 设备
 
@@ -268,7 +267,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
    `file:///<path>/identity_certificate_chain.pem`
    `file:///<path>/identity_key.pem`
 
-1. （可选）为设备提供一个 `registration_id`。 否则，请将该行注释掉，以使用标识证书的 CN 名称注册设备。
+1. （可选）为设备提供 `registration_id`，它需要与标识证书的公用名称 (CN) 匹配。 如果将该行注释掉，将会自动应用 CN。
 
 1. （可选）使用 `always_reprovision_on_startup` 或 `dynamic_reprovisioning` 行来配置设备的重新预配行为。 如果设备设置为在启动时重新预配，它将始终尝试先使用 DPS 进行预配，如果失败，则回退到预配备份。 如果设备设置为动态重新预配自身，则 IoT Edge 将重启，并在检测到重新预配事件时重新预配。 有关详细信息，请参阅 [IoT 中心设备重新预配概念](../iot-dps/concepts-device-reprovision.md)。
 
@@ -309,22 +308,24 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
    
    [provisioning.attestation]
    method = "x509"
-   # registration_id = "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
+   registration_id = "<REGISTRATION ID>"
 
-   identity_cert = "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
+   identity_cert = "<DEVICE IDENTITY CERTIFICATE>"
 
-   identity_pk = "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
+   identity_pk = "<DEVICE IDENTITY PRIVATE KEY>"
    ```
 
-1. 将 `id_scope`、`identity_cert` 和 `identity_pk` 的值更新为你的 DPS 和设备信息。
+1. 将 `id_scope` 的值更新为你从 DPS 实例复制的范围 ID。
+
+1. 为设备提供 `registration_id`，它是设备在 IoT 中心具有的 ID。 注册 ID 必须与标识证书的公用名称 (CN) 匹配。
+
+1. 将 `identity_cert` 和 `identity_pk` 的值更新为你的证书和密钥信息。
 
    标识证书值可以作为文件 URI 提供，也可以通过 EST 或本地证书颁发机构进行动态颁发。 根据你选择使用的格式，仅取消注释一行。
 
    标识私钥值可以作为文件 URI 或 PKCS#11 URI 提供。 根据你选择使用的格式，仅取消注释一行。
 
    如果使用任何 PKCS#11 URI，请在配置文件中找到 PKCS#11 节，并提供有关 PKCS#11 配置的信息。
-
-1. （可选）为设备提供一个 `registration_id`。 否则，请将该行注释掉，以使用标识证书的公用名称注册设备。
 
 1. 保存并关闭该文件。
 

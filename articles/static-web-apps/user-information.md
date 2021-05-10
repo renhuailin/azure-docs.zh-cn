@@ -9,10 +9,10 @@ ms.date: 05/08/2020
 ms.author: cshoe
 ms.custom: devx-track-js
 ms.openlocfilehash: d5a1d810c357aa83b8069023b00d76352da124df
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94844789"
 ---
 # <a name="accessing-user-information-in-azure-static-web-apps-preview"></a>访问 Azure 静态 Web 应用预览版的用户信息
@@ -64,7 +64,7 @@ console.log(getUserInfo());
 
 ## <a name="api-functions"></a>API 函数
 
-静态 Web 应用中的 API 函数通过 Azure Functions 后端可以访问客户端应用程序的相同用户信息。 尽管 API 收到用户身份信息，但如果用户经过身份验证或符合所需角色，则不会执行其自己的检查。 访问控制规则是在文件中定义的 [`routes.json`](routes.md) 。
+静态 Web 应用中通过 Azure Functions 后端提供的 API 函数有权访问与客户端应用程序相同的用户信息。 尽管 API 接收到用户身份信息，但如果用户经过身份验证或符合所需角色，则不会执行其检查。 在 [`routes.json`](routes.md) 文件中定义访问控制规则。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -101,7 +101,7 @@ console.log(await getUser());
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-在 c # 函数中， `x-ms-client-principal` 可以从可以反序列化到对象中的标头 `ClaimsPrincipal` 或您自己的自定义类型中获取用户信息。 下面的代码演示如何将标头解包到中间类型， `ClientPrincipal` 然后将该类型转换为 `ClaimsPrincipal` 实例。
+在 C# 函数中，可以从能够反序列化到 `ClaimsPrincipal` 对象或你自己的自定义类型的标头 `x-ms-client-principal` 中获取用户信息。 下面的代码演示如何将标头解压缩到中间类型 `ClientPrincipal`，然后将该类型转换为 `ClaimsPrincipal` 实例。
 
 ```csharp
   public static class StaticWebAppsAuth

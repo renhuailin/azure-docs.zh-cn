@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 6859a2f8571c11e6ef93a5e5b1635cdbe39ad001
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 203ac7252f06b342e7f553bb1900cdf9ac959e0a
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107737652"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891369"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中创建、开发和维护 Synapse Studio 笔记本
 
@@ -36,10 +36,12 @@ Synapse 团队将新的笔记本组件引入 Synapse Studio，为 Microsoft 客�
 |功能|经典笔记本|预览笔记本|
 |--|--|--|
 |%run| 不支持 | &#9745;|
-|%history| 不支持 |&#9745;
+|%history| 不支持 |&#9745;|
 |%load| 不支持 |&#9745;|
 |%%html| 不支持 |&#9745;|
 |拖放移动单元格| 不支持 |&#9745;|
+|大纲（目录）| 不支持 |&#9745;|
+|变量资源管理器| 不支持 |&#9745;|
 |通过工具栏按钮设置文本单元格的格式|&#9745;| 不可用 |
 |撤消单元格操作| &#9745;| 不可用 |
 
@@ -259,6 +261,20 @@ Azure Synapse Studio 笔记本提供代码片段，可更轻松地输入常用�
 
 ---
 
+### <a name="notebook-outline"></a>笔记本大纲
+
+# <a name="classical-notebook"></a>[经典笔记本](#tab/classical)
+
+不支持。
+
+# <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
+
+大纲（目录）在边栏窗口中显示任何 markdown 单元的第一个 markdown 标题，用于快速导航。 大纲边栏可根据最适合屏幕的方式调整大小和折叠。 你可以选择笔记本命令栏上的“大纲”按钮，以打开或隐藏边栏
+
+<a name="azure-notebook-outline"></a>![azure-notebook-outline](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-outline.png)
+---
+
+
 ## <a name="run-notebooks"></a>运行笔记本
 
 你可以逐个或同时在笔记本中运行代码单元格。 每个单元格的状态和进度都在笔记本中表示。
@@ -331,6 +347,22 @@ Azure Synapse Studio 笔记本提供代码片段，可更轻松地输入常用�
 
 ---
 
+### <a name="variable-explorer"></a>变量资源管理器
+
+# <a name="classical-notebook"></a>[经典笔记本](#tab/classical)
+
+不支持。
+
+# <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
+
+Synapse 笔记本提供内置的变量资源管理器，让你可以在 PySpark (Python) 单元的当前 Spark 会话中查看变量名称、类型、长度和值的列表。 在代码单元中定义多个变量时，系统会自动显示它们。 单击每个列标题时，表中的变量会进行排序。
+
+你可以选择笔记本命令栏上的“变量”按钮，以打开或隐藏变量资源管理器。
+
+![azure-notebook-variable-explorer](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-variable-explorer.png)
+
+
+---
 
 ### <a name="cell-status-indicator"></a>单元格状态指示器
 

@@ -6,14 +6,14 @@ ms.date: 04/05/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
-ms.custom: references_regions
+ms.custom: references_regions, devx-track-azurecli
 description: 使用自定义位置在已启用 Azure Arc 的 Kubernetes 群集上部署 Azure PaaS 服务
-ms.openlocfilehash: b3a0d89f0c352b8344aea68a613653eae43a41e4
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: d8e1c11069a1097b0bfea3319eeb90fcee3eec82
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108147762"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287728"
 ---
 # <a name="custom-locations-on-azure-arc-enabled-kubernetes"></a>已启用 Azure Arc 的 Kubernetes 上的自定义位置
 
@@ -27,7 +27,7 @@ ms.locfileid: "108147762"
 
 ## <a name="prerequisites"></a>必备条件
 
-- [安装或升级 Azure CLI](/cli/azure/install-azure-cli)，使用 2.16.0 或更高版本。
+- [安装或升级 Azure CLI](/cli/azure/install-azure-cli)，确保其版本 >= 2.16.0。
 
 - `connectedk8s`（版本 >= 1.1.0）、`k8s-extension`（版本 >= 0.2.0）和 `customlocation`（版本 >= 0.1.0）Azure CLI 扩展。 运行以下命令安装这些 Azure CLI 扩展：
   
@@ -74,6 +74,7 @@ az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --featur
 > [!NOTE]
 > 1. 自定义位置功能依赖于群集连接功能。 因此必须启用这两项功能，才能使自定义位置正常工作。
 > 2. `az connectedk8s enable-features` 需在一台计算机上运行，该计算机中的 `kubeconfig` 文件指向要在其上启用这些功能的群集。
+> 3. 如果使用服务主体登录到 Azure CLI，则在启用自定义位置功能之前，必须向服务主体授予[其他权限](troubleshooting.md#enable-custom-locations-using-service-principal)。
 
 ## <a name="create-custom-location"></a>创建自定义位置
 

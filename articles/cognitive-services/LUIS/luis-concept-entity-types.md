@@ -4,13 +4,13 @@ description: 实体可以在预测运行时从用户言语中提取数据。 一
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/13/2021
-ms.openlocfilehash: 44cffecd653ec2ec748e73d01dc86a87cfcd7de9
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.date: 04/26/2021
+ms.openlocfilehash: a075a84322dc11be352470d50478979b975f0292
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107500322"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140886"
 ---
 # <a name="entities-in-luis"></a>LUIS 中的实体
 
@@ -33,7 +33,7 @@ ms.locfileid: "107500322"
 
 若要创建实体，必须为其提供名称和类型。 LUIS 中有多种类型的实体。 
 
-### <a name="list-entity"></a>列表实体
+## <a name="list-entity"></a>列表实体
 
 列表实体表示一组固定、封闭的相关字词及其同义词。 可以使用列表实体识别多个同义词或变体，并为它们提取规范化输出。 使用“建议”选项根据当前列表查看有关新词的建议。 
 
@@ -49,7 +49,7 @@ ms.locfileid: "107500322"
 
 有关详细信息，请参阅[列表实体参考文章](reference-entity-list.md)。
 
-### <a name="regex-entity"></a>正则表达式实体
+## <a name="regex-entity"></a>正则表达式实体
 
 正则表达式实体基于所提供的正则表达式模式提取实体。 不区分大小写，并忽略区域性变体。 正则表达式最适用于结构化文本或预计采用特定格式的预定义字母数字值序列。 例如：
 
@@ -60,7 +60,7 @@ ms.locfileid: "107500322"
 
 有关详细信息，请参阅[正则表达式实体参考文章](reference-entity-regular-expression.md)。
 
-### <a name="prebuilt-entity"></a>预生成实体
+## <a name="prebuilt-entity"></a>预生成实体
 
 LUIS 提供了一组预生成实体，用于识别名称、日期、数字和货币等常见类型的数据。  预生成实体的行为是固定的。 预生成实体支持因 LUIS 应用的区域性而异。 例如：
 
@@ -71,7 +71,7 @@ LUIS 提供了一组预生成实体，用于识别名称、日期、数字和货
 
 有关详细信息，请参阅[预生成实体参考文章](./luis-reference-prebuilt-entities.md)。
 
-### <a name="patternany-entity"></a>Pattern.Any 实体
+## <a name="patternany-entity"></a>Pattern.Any 实体
 
 pattern.Any 实体是一种长度可变的占位符，仅在模式的模板言语中使用，用于标记实体的起始和结束位置。 它遵循特定规则或模式，最适合用于具有固定词法结构的语句。 例如：
 
@@ -83,7 +83,7 @@ pattern.Any 实体是一种长度可变的占位符，仅在模式的模板言�
 
 有关详细信息，请参阅 [Pattern.Any 实体参考文章](./reference-entity-pattern-any.md)。
 
-### <a name="machine-learned-ml-entity"></a>机器学习 (ML) 实体
+## <a name="machine-learned-ml-entity"></a>机器学习 (ML) 实体
 
 机器学习实体使用上下文根据标记的示例提取实体。 它是用于生成 LUIS 应用程序的首选实体。 它依赖于机器学习算法，需要进行标记以对应用程序进行定制。 使用 ML 实体识别并非始终格式正确但具有相同意义的数据。 
 
@@ -109,7 +109,7 @@ ML 实体可以由较小子实体组成，每个子实体都可以具有自己�
     * 国家/地区：USA
 
 
-### <a name="building-effective-ml-entities"></a>生成有效 ML 实体
+## <a name="building-effective-ml-entities"></a>生成有效 ML 实体
 
 若要有效生机器学习实体，请遵循以下最佳做法：
 
@@ -123,7 +123,7 @@ ML 实体可以由较小子实体组成，每个子实体都可以具有自己�
 
 实体的另一种重要功能是将它们用作特征或区分其他意向或实体的特征，以便系统可以通过它们进行观察和学习。
 
-### <a name="entities-as-features-for-intents"></a>作为意向特征的实体
+## <a name="entities-as-features-for-intents"></a>作为意向特征的实体
 
 可以使用实体作为意向的信号。 例如，言语中特定实体的存在情况可以区分其所属的意向。
 
@@ -132,7 +132,7 @@ ML 实体可以由较小子实体组成，每个子实体都可以具有自己�
 |Book me a fight to New York.|城市|预定机票|
 |Book me the main conference room.|会议室|保留房间|
 
-### <a name="entities-as-feature-for-entities"></a>作为实体特征的实体
+## <a name="entities-as-feature-for-entities"></a>作为实体特征的实体
 
 还可以将实体用作其他实体存在情况的指示器。 这种情况的一个常见示例是使用预生成实体作为其他 ML 实体的功能。
 如果你在构建航班预定系统，而言语类似于“Book me a flight from Cairo to Seattle”，则会将“出发城市”和“目标城市”作为 ML 实体 。 一种良好做法是使用预生成 `GeographyV2` 实体作为这两个实体的特征。

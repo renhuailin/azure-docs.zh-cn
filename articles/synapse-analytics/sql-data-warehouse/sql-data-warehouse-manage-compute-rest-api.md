@@ -11,16 +11,19 @@ ms.date: 03/29/2019
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: c04f61aaef5f5072ce0fb39ff111ba07ee151700
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aab2897b4042657492d04494b589fbaa2605cc6d
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100375895"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107886777"
 ---
 # <a name="rest-apis-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池（以前称为 SQL DW）的 REST API
 
 用于管理 Azure Synapse Analytics 中专用 SQL 池（以前称为 SQL DW）的计算的 REST API。
+
+> [!NOTE]
+> 本文中所述的 REST API 不适用于在 Azure Synapse Analytics 工作区中创建的专用 SQL 池。 要了解专用于 Azure Synapse Analytics 工作区的 REST API 的信息，请参阅 [Azure Synapse Analytics 工作区 REST API](/rest/api/synapse/)。
 
 ## <a name="scale-compute"></a>缩放计算
 

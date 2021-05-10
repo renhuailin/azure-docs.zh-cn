@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/13/2019
 ms.openlocfilehash: f4c5a23b604334952730fcc4cf1fcb3fcbed6237
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98944400"
 ---
 # <a name="unable-to-access-data-lake-storage-files-in-azure-hdinsight"></a>无法访问 Azure HDInsight 中的 Data Lake 存储文件
@@ -29,7 +29,7 @@ LISTSTATUS failed with error 0x83090aa2 (Forbidden. ACL verification failed. Eit
 
 ### <a name="resolution"></a>解决方法
 
-1. 检查 SP 是否拥有遍历路径的“x”权限。 有关详细信息，请参阅[权限](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html)。 `dfs`用于检查 Data Lake 存储帐户中文件/文件夹的访问权限的示例命令：
+1. 检查 SP 是否拥有遍历路径的“x”权限。 有关详细信息，请参阅[权限](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html)。 用于检查对 Data Lake 存储帐户中文件/文件夹的访问权限的示例 `dfs` 命令：
 
     ```
     hdfs dfs -ls /<path to check access>
@@ -51,7 +51,7 @@ Token Refresh failed - Received invalid http response: 500
 
 为服务主体访问权限提供的证书可能已过期。
 
-1. 通过 SSH 连接到头节点。 使用以下命令检查存储帐户的访问权限 `dfs` ：
+1. 通过 SSH 连接到头节点。 使用以下 `dfs` 命令检查对存储帐户的访问权限：
 
     ```
     hdfs dfs -ls /

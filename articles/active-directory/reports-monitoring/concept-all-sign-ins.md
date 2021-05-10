@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory 登录活动报告 - 预览版 | Microsoft Docs
-description: Azure Active Directory 门户中的登录活动报告简介
+title: Azure Active Directory 中的登录日志 - 预览版 | Microsoft Docs
+description: Azure Active Directory 中的登录日志概述，包括处于预览状态的新功能。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,29 +13,29 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/19/2021
+ms.date: 04/25/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc9aa77b3fdc3cda94670545f847bb9de31e1160
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: e25fc61fe99a5c7df19b7c0ecb8265f4dcc681cc
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718946"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137014"
 ---
-# <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Azure Active Directory 登录活动报告 - 预览版
+# <a name="sign-ins-logs-in-azure-active-directory---preview"></a>Azure Active Directory 中的登录日志 - 预览版
 
 作为 IT 管理员，你想知道你的 IT 环境的运行状况。 你可通过有关系统运行状况的信息来评估是否需要响应潜在问题以及响应方式。 
 
 为了帮助你实现此目标，Azure Active Directory 门户为你提供了访问三个活动日志的权限：
 
-- **登录** - 有关登录以及用户如何使用资源的信息。
+- **[登录](concept-sign-ins.md)** - 有关登录以及用户如何使用资源的信息。
 - **[审核](concept-audit-logs.md)** - 有关应用于租户的更改（如用户和组管理）或应用于租户资源的更新的信息。
 - **[预配](concept-provisioning-logs.md)** - 由预配服务执行的活动（例如在 ServiceNow 中创建组，或从 Workday 导入用户）。
 
 
-Azure Active Directory 中的经典登录报告概述了交互式用户登录的情况。此外，你现在可以访问另外三个目前处于预览状态的登录报告：
+Azure Active Directory 中的经典登录报告概述了交互式用户登录的情况。此外，你现在可以访问另外三个目前处于预览状态的登录日志：
 
 - 非交互式用户登录
 
@@ -43,19 +43,22 @@ Azure Active Directory 中的经典登录报告概述了交互式用户登录的
 
 - Azure 资源托管标识登录
 
-本文概述了带有非交互式登录、应用程序登录和 Azure 资源托管标识登录的预览功能的登录活动报告。若要了解不带预览功能的登录报告，请参阅 [Azure Active Directory 门户中的登录活动报告](concept-sign-ins.md)。
+本文概述了带有非交互式登录、应用程序登录和 Azure 资源托管标识登录的预览功能的登录活动报告。若要了解不带预览功能的登录报告，请参阅 [Azure Active Directory 中的登录日志](concept-sign-ins.md)。
 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="what-can-you-do-with-it"></a>日志有哪些作用？
 
-在开始使用此功能之前，应了解以下问题的答案：
+登录报告提供了以下问题的答案：
 
-- 谁可以访问该数据？
+- 用户、应用程序或服务的登录模式是什么？
 
-- 访问登录活动需要什么 Azure AD 许可证？
+- 一周内有多少用户、应用或服务已登录？
 
-### <a name="who-can-access-the-data"></a>谁可以访问该数据？
+- 这些登录的状态怎样？
+
+
+## <a name="who-can-access-the-data"></a>谁可以访问该数据？
 
 - 具有“安全管理员”、“安全读取者”和“报告读取者”角色的用户
 
@@ -63,20 +66,20 @@ Azure Active Directory 中的经典登录报告概述了交互式用户登录的
 
 - 任何用户（非管理员）都可以访问自己的登录活动 
 
-### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>访问登录活动需要什么 Azure AD 许可证？
+## <a name="what-azure-ad-license-do-you-need"></a>需要什么 Azure AD 许可证？
 
-租户必须有与之关联的 Azure AD Premium 许可证才能查看登录活动。 请参阅 [Azure Active Directory Premium 入门](../fundamentals/active-directory-get-started-premium.md)来升级 Azure Active Directory 版本。 如果在升级之前没有数据活动，则在升级到高级版许可证后，数据需要经过几天才会显示在报表中。
+租户必须有与之关联的 Azure AD Premium 许可证才能查看登录活动。 请参阅 [Azure Active Directory Premium 入门](../fundamentals/active-directory-get-started-premium.md)来升级 Azure Active Directory 版本。 如果在升级之前没有数据活动，则在升级到高级许可证后，数据需要经过几天才会显示在日志中。
 
 
 
-## <a name="sign-ins-report"></a>登录报告
 
-登录报告提供了以下问题的答案：
+## <a name="where-can-you-find-it-in-the-azure-portal"></a>在 Azure 门户中的何处可以找到日志？
 
-- 用户、应用程序或服务的登录模式是什么？
-- 一周内有多少用户、应用或服务已登录？
-- 这些登录的状态怎样？
+Azure 门户提供了几种用于访问日志的选项。 例如，在 Azure Active Directory 菜单上，可以在“监视”部分打开日志。  
 
+![打开登录日志](./media/concept-sign-ins/sign-ins-logs-menu.png)
+
+此外，可以使用以下链接直接访问登录日志：[https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)
 
 在登录报告边栏选项卡中，可在以下项之间切换：
 
@@ -92,17 +95,6 @@ Azure Active Directory 中的经典登录报告概述了交互式用户登录的
 ![登录报告类型](./media/concept-all-sign-ins/sign-ins-report-types.png)
 
 
-
-
-
-
-
-
-
-
-
-
-## <a name="user-sign-ins&quot;></a>用户登录
 
 登录边栏选项卡中的每个选项卡都显示下面的默认列。 某些选项卡有其他列：
 
@@ -120,7 +112,7 @@ Azure Active Directory 中的经典登录报告概述了交互式用户登录的
 
 
 
-### <a name=&quot;interactive-user-sign-ins&quot;></a>交互式用户登录
+### <a name="interactive-user-sign-ins&quot;></a>交互式用户登录
 
 
 交互式用户登录是指这样一种登录：用户向 Azure AD 提供身份验证因素，或者直接与 Azure AD 或帮助程序应用（如 Microsoft Authenticator 应用）交互。 用户提供的因素包括：密码、对 MFA 质询的响应、生物因素，或者用户提供给 Azure AD 或帮助程序应用的 QR 码。
@@ -371,12 +363,12 @@ Azure 资源托管标识登录是资源执行的登录，这些资源的机密�
 
 
 
-## <a name="access-the-new-sign-in-activity-reports"></a>访问新的登录活动报告 
+## <a name="access-the-new-sign-in-activity-logs"></a>访问新的登录活动日志 
 
-Azure 门户中的登录活动报告提供了用于轻松打开和关闭“预览报告”的方法。 如果启用了“预览报告”，则会显示一个新菜单，用于访问所有登录活动报告类型。     
+Azure 门户中的登录活动报告提供了用于轻松打开和关闭“预览报告”的方法。 如果启用了预览日志，则会显示一个新菜单，用于访问所有登录活动报告类型。     
 
 
-若要访问新的登录报告（其中包含非交互式登录和应用程序登录），请执行以下操作： 
+若要访问新的登录日志（其中包含非交互式登录和应用程序登录），请执行以下操作： 
 
 1. 在“Azure 门户”中，选择“Azure Active Directory”。
 
@@ -400,7 +392,7 @@ Azure 门户中的登录活动报告提供了用于轻松打开和关闭“预�
 
 
 
-## <a name="download-sign-in-activity-reports"></a>下载登录活动报告
+## <a name="download-sign-in-activity-logs"></a>下载登录活动日志
 
 下载登录活动报告时，以下陈述成立：
 
@@ -413,7 +405,7 @@ Azure 门户中的登录活动报告提供了用于轻松打开和关闭“预�
 - 可以下载的记录数受 [Azure Active Directory 报告保留策略](reference-reports-data-retention.md)的限制。 
 
 
-![下载报告](./media/concept-all-sign-ins/download-reports.png "下载报告")
+![下载日志](./media/concept-all-sign-ins/download-reports.png "下载日志")
 
 
 每个 CSV 下载包含六个不同的文件：
@@ -447,6 +439,6 @@ Azure 门户中的登录活动报告提供了用于轻松打开和关闭“预�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [登录活动报告错误代码](reference-sign-ins-error-codes.md)
+* [登录活动报告错误代码](./concept-sign-ins.md)
 * [Azure AD 数据保留策略](reference-reports-data-retention.md)
 * [Azure AD 报告延迟](reference-reports-latencies.md)

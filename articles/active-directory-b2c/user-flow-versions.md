@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 07/30/2020
+ms.date: 04/22/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1c05ff1bf1956943230bf523584025787495d57f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b47a311513a1216555583b64095d4bc46e4b48e
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102517848"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107895894"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的用户流版本
 
@@ -24,29 +24,29 @@ Azure Active Directory B2C (Azure AD B2C) 中的用户流可帮助设置完全�
 > [!IMPORTANT]
 > 我们更改了引用用户流版本的方式。 之前，我们提供 V1（生产就绪）版本，还提供了 V1.1 和 V2（预览版）版本。 现在，我们已将用户流合并为两个版本：
 >
->- 建议的用户流是用户流的新预览版本。 它们经过全面测试，并结合了旧的 V2 和 V1.1 版本的所有功能 。 今后，将维护并更新新的建议用户流。 转到这些新的建议用户流后，就可以在新功能发布后对其进行访问。
->- 标准用户流（以前称为 V1）是正式发布的生产就绪用户流 。 如果用户流是任务关键型，并且依赖于高度稳定的版本，可以继续使用标准用户流，但请认识到我们不会维护和更新这些版本。
+>- 建议的用户流是具有最新功能的正式发布的新一代用户流。 它们合并了旧的 V1、V1.1 和 V2 版本的所有功能  。 今后，我们将维护并更新建议的用户流。 转到这些新的建议用户流后，就可以在新功能发布后对其进行访问。
+>- 标准（旧版）用户流（以前称为 V1）是旧版用户流 。 除非你有特定业务需求，否则不建议使用这些版本的用户流，因为我们不会再维护或更新这些用户流。
 >
->将在 2021 年 8 月 1 日之前逐渐弃用所有旧预览版用户流（V1.1 和 V2）。 强烈建议尽早[切换到新的建议版本](#how-to-switch-to-a-new-recommended-user-flow)，以便始终可以利用最新的功能和更新。 这些更改仅适用于 Azure 公有云。其他环境将继续使用[旧用户流版本控制](user-flow-versions-legacy.md)。
+>所有旧的预览版用户流（V1.1 和 V2）都将在 2021 年 8 月 1 日之前逐渐被弃用。 强烈建议尽早[切换到建议的版本](#how-to-switch-to-a-recommended-user-flow)，以便始终可以利用最新的功能和更新。 这些更改仅适用于 Azure 公有云。其他环境将继续使用[旧用户流版本控制](user-flow-versions-legacy.md)。
 
 ## <a name="recommended-user-flows"></a>建议的用户流
 
-建议的用户流是预览版本，它将新功能与旧的 V2 和 V1.1 功能组合在一起。 其后，我们将维护并更新建议的用户流。
+建议的用户流是具有最新功能的正式发布的新一代用户流。 其后，我们将维护并更新建议的用户流。
 
 | 用户流 | 描述 |
 | --------- | ----------- |
-| 密码重置（预览版） | 允许用户在验证电子邮件后选择新密码。 使用此用户流，可配置： <ul><li>[多重身份验证](multi-factor-authentication.md)</li><li>令牌兼容性设置</li><li>[年龄限制](age-gating.md)</li><li>[密码复杂性要求](password-complexity.md)</li></ul> |
-| 配置文件编辑（预览版） | 允许用户配置用户特性。 使用此用户流，可配置： <ul><li>[令牌生存期](tokens-overview.md)</li><li>令牌兼容性设置</li><li>会话行为</li></ul> |
-| 登录（预览版） | 允许用户登录帐户。 使用此用户流，可配置： <ul><li>[多重身份验证](multi-factor-authentication.md)</li><li>[令牌生存期](tokens-overview.md)</li><li>令牌兼容性设置</li><li>会话行为</li><li>[年龄限制](age-gating.md)</li><li>登录页自定义</li></ul> |
-| 注册（预览版） | 允许用户创建账户。 使用此用户流，可配置： <ul><li>[多重身份验证](multi-factor-authentication.md)</li><li>[令牌生存期](tokens-overview.md)</li><li>令牌兼容性设置</li><li>会话行为</li><li>[年龄限制](age-gating.md)</li><li>[密码复杂性要求](password-complexity.md)</li></ul> |
-| 注册和登录（预览版） | 允许用户创建帐户或登录帐户。 使用此用户流，可配置： <ul><li>[多重身份验证](multi-factor-authentication.md)</li><li>[年龄限制](age-gating.md)</li><li>[密码复杂性要求](password-complexity.md)</li></ul> |
+| 密码重置 | 允许用户在验证电子邮件后选择新密码。 使用此用户流，可配置： <ul><li>[多重身份验证](multi-factor-authentication.md)</li><li>令牌兼容性设置</li><li>[年龄限制](age-gating.md)</li><li>[密码复杂性要求](password-complexity.md)</li></ul> |
+| 配置文件编辑 | 允许用户配置用户特性。 使用此用户流，可配置： <ul><li>[令牌生存期](tokens-overview.md)</li><li>令牌兼容性设置</li><li>会话行为</li></ul> |
+| 登录 | 允许用户登录帐户。 使用此用户流，可配置： <ul><li>[多重身份验证](multi-factor-authentication.md)</li><li>[令牌生存期](tokens-overview.md)</li><li>令牌兼容性设置</li><li>会话行为</li><li>[年龄限制](age-gating.md)</li><li>登录页自定义</li></ul> |
+| 注册 | 允许用户创建账户。 使用此用户流，可配置： <ul><li>[多重身份验证](multi-factor-authentication.md)</li><li>[令牌生存期](tokens-overview.md)</li><li>令牌兼容性设置</li><li>会话行为</li><li>[年龄限制](age-gating.md)</li><li>[密码复杂性要求](password-complexity.md)</li></ul> |
+| 注册和登录 | 允许用户创建帐户或登录帐户。 使用此用户流，可配置： <ul><li>[多重身份验证](multi-factor-authentication.md)</li><li>[年龄限制](age-gating.md)</li><li>[密码复杂性要求](password-complexity.md)</li></ul> |
 
 ## <a name="standard-user-flows"></a>标准用户流
 
-标准用户流（以前称为 V1）是正式发布的生产就绪用户流。 标准用户流今后将不会更新。
+标准用户流（以前称为 V1）是旧版用户流。 除非你有特定业务需求，否则不建议使用这些版本的用户流，因为我们今后不会再更新这些用户流。
 
 | 用户流 | 描述 |
-| --------- | ----------- | ----------- |
+| --------- | ----------- |
 | 密码重置 | 允许用户在验证电子邮件后选择新密码。 使用此用户流，可配置： <ul><li>[多重身份验证](multi-factor-authentication.md)</li><li>令牌兼容性设置</li><li>[密码复杂性要求](password-complexity.md)</li></ul> |
 | 配置文件编辑 | 允许用户配置用户特性。 使用此用户流，可配置： <ul><li>[令牌生存期](tokens-overview.md)</li><li>令牌兼容性设置</li><li>会话行为</li></ul> |
 | 登录 | 允许用户登录帐户。 使用此用户流，可配置： <ul><li>[多重身份验证](multi-factor-authentication.md)</li><li>[令牌生存期](tokens-overview.md)</li><li>令牌兼容性设置</li><li>会话行为</li><li>阻止登录</li><li>强制执行密码重置</li><li>使我保持登录状态 (KMSI)</ul><br>无法使用此用户流自定义用户界面。 |
@@ -54,9 +54,9 @@ Azure Active Directory B2C (Azure AD B2C) 中的用户流可帮助设置完全�
 | 注册和登录 | 允许用户创建帐户或登录帐户。 使用此用户流，可配置： <ul><li>[多重身份验证](multi-factor-authentication.md)</li><li>[令牌生存期](tokens-overview.md)</li><li>令牌兼容性设置</li><li>会话行为</li><li>[密码复杂性要求](password-complexity.md)</li></ul>|
 
 
-## <a name="how-to-switch-to-a-new-recommended-user-flow"></a>如何切换到新的建议用户流
+## <a name="how-to-switch-to-a-recommended-user-flow"></a>如何切换到建议的用户流
 
-若要从旧版本的用户流切换到新的建议预览版本，请执行以下步骤：
+若要从旧版本的用户流切换到建议的版本，请执行以下步骤：
 
 1. 按照[教程：在 Azure Active Directory 中创建用户流](tutorial-create-user-flows.md)中的步骤创建新的用户流策略。 创建用户流时，请选择建议的版本。
 
@@ -77,12 +77,12 @@ Azure Active Directory B2C (Azure AD B2C) 中的用户流可帮助设置完全�
 
 ### <a name="is-there-any-reason-to-continue-using-legacy-v2-and-v11-user-flows"></a>是否有任何理由继续使用旧的 V2 和 V1.1 用户流？
 
-不完全是。 新的建议的预览版本包含与旧的 V2 和 V1.1 版本相同的功能。 没有删除任何内容，事实上它们现在包含其他功能。
+不完全是。 建议的版本包含与旧的 V2 和 V1.1 版本相同的功能。 没有删除任何内容，事实上它们现在包含其他功能。
 
 ### <a name="if-i-dont-switch-from-legacy-v2-and-v11-policies-how-will-it-impact-my-application"></a>如果不从旧的 V2 和 V1.1 策略进行切换，我的应用程序会受到什么影响？
 
-如果使用旧的 V2 或 V1.1 用户流，此版本更改将不会影响你的应用程序。 但是，若要访问新功能或后续策略更改，需要切换到新的建议的版本。
+如果使用旧的 V2 或 V1.1 用户流，此版本更改将不会影响你的应用程序。 但是，若要访问新功能或后续策略更改，需要切换到建议的版本。
 
 ### <a name="will-microsoft-still-support-my-legacy-v2-or-v11-user-flow-policy"></a>Microsoft 将继续支持旧的 V2 或 V1.1 用户流策略吗？
 
-旧 V2 和 V1.1 版本的用户流将继续完全受支持。
+在公有云中，所有旧的预览版用户流（V1.1 和 V2）都将在 2021 年 8 月 1 日之前逐渐弃用。 强烈建议尽早[切换到建议的版本](#how-to-switch-to-a-recommended-user-flow)，以便始终可以利用最新的功能和更新。 这些更改仅适用于 Azure 公有云。其他环境将继续使用[旧用户流版本控制](user-flow-versions-legacy.md)。

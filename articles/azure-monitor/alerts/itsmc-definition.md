@@ -6,12 +6,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 30be0343b7c3282e3ce4da165225ab8209d07f4a
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 98f53ec1b6506a6d47146377e837576254f445e2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102452401"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103601060"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-solution"></a>使用 IT 服务管理解决方案将 Azure 连接到 ITSM 工具
 
@@ -90,7 +90,7 @@ ms.locfileid: "102452401"
 
 ## <a name="define-a-template"></a>定义模板
 
-某些工作项类型可以使用 ITSM 工具中定义的模板。 使用模板可以定义根据操作组的固定值自动填充的字段。 可以定义要将哪个模板用作操作组定义的一部分。
+某些工作项类型可以使用 ITSM 工具中定义的模板。 使用模板可以定义根据操作组的固定值自动填充的字段。 可以定义要将哪个模板用作操作组定义的一部分。 可在 ServiceNow 文档中查找有关如何创建模板的信息 -（此处）[https://docs.servicenow.com/bundle/paris-platform-administration/page/administer/form-administration/task/t_CreateATemplateUsingTheTmplForm.html ]。
 
 若要创建操作组：
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 9656da8be086724482f129efab323e02b73e117e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5cefa1461691f384603f464e0d0a4ea8ceb8bc90
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98954948"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071714"
 ---
 # <a name="single-page-application-move-to-production"></a>单页应用程序：移到生产环境
 
@@ -36,10 +36,10 @@ ms.locfileid: "98954948"
 
 - [Node.js Web API (Azure AD)](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)：如何使用 passport-azure-ad 验证后端 Web API (Node.js) 的访问令牌。
 
-- [使用 Azure AD B2C 的 SPA](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)：如何使用 MSAL.js 在向 Azure Active Directory B2C (Azure AD B2C) 注册的应用中登录用户 。
+- [使用 Azure AD B2C 的 SPA](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa)：如何使用 MSAL.js 在向 Azure Active Directory B2C (Azure AD B2C) 注册的应用中登录用户 。
 
-- [Node.js Web API (Azure AD B2C)](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)：如何使用 passport-azure-ad 为向 Azure Active Directory B2C (Azure AD B2C) 注册的应用验证访问令牌 。
+- [Node.js web API (Azure AD B2C)](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)：如何使用 passport-azure-ad 为已向 Azure Active Directory B2C (Azure AD B2C) 注册的应用验证访问令牌 。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [JavaScript SPA 教程](./tutorial-v2-javascript-spa.md)：深入了解如何使用 MSAL.js 登录用户并获取访问令牌来调用 Microsoft Graph API 。
+- [JavaScript SPA 教程](./tutorial-v2-javascript-auth-code.md)：深入了解如何使用 MSAL.js 登录用户并获取访问令牌来调用 Microsoft Graph API 。

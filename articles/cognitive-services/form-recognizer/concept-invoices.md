@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: a47c4c5bdc90e148916900b1e72bc2a392d2e473
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 51a59c0daa8fb0c5e59007ac4474ca09cccf4ac5
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285325"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126140"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>表单识别器预生成的发票模型
 
@@ -41,6 +41,11 @@ Azure 表单识别器可以使用其预生成的发票模型分析和提取销�
 ### <a name="input-requirements"></a>输入要求
 
 [!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
+
+## <a name="supported-locales"></a>支持的区域设置 
+
+预生成的 Receipt v2.0（正式版）和预生成的 Receipt v2.1-preview.3（预览版）支持 EN-US 区域设置的发票 。
+
 
 ## <a name="the-analyze-invoice-operation"></a>分析发票操作
 
@@ -104,7 +109,7 @@ JSON 输出包含 3 个部分：
 
 下面是在 JSON 输出响应中从发票中提取的行项目（下面的输出使用此[示例发票](./media/sample-invoice.jpg)）  
 
-|名称| 类型 | 描述 | 文本（行项目 #1） | 值（标准化输出） |
+|名称| 类型 | 说明 | 文本（行项目 #1） | 值（标准化输出） |
 |:-----|:----|:----|:----| :----|
 | 项 | 字符串 | 行项目的完整字符串文本行 | 2021/3/4 A123 咨询服务 2 小时 30.00 美元 10% 60.00 美元 | |
 | 金额 | 数字 | 行项目的数量 | 60.00 美元 | 100 |

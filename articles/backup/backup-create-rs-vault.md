@@ -1,14 +1,14 @@
 ---
 title: 创建和配置恢复服务保管库
-description: 本文介绍如何创建和配置用于存储备份和恢复点的恢复服务保管库。 了解如何使用跨区域还原在次要区域中还原。
+description: 本文介绍如何创建和配置用于存储备份和恢复点的恢复服务保管库。 了解如何使用“跨区域还原”在次要区域中还原。
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
 ms.openlocfilehash: 1a20cd2b1245febea5fd18a9f6fe6e7a7bb6f04b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101716748"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>创建和配置恢复服务保管库
@@ -35,79 +35,79 @@ Azure 备份会自动处理保管库的存储。 需要指定如何复制该存�
    - 如果使用 Azure 作为主要备份存储终结点，则我们建议继续使用默认的“异地冗余”设置。
    - 如果不使用 Azure 作为主要的备份存储终结点，则请选择“本地冗余”，减少 Azure 存储费用。
    - 详细了解[异地冗余](../storage/common/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/common/storage-redundancy.md#locally-redundant-storage)。
-   - 如果需要在某个区域不停机的情况下使用数据，请确保数据驻留，然后选择 " [区域冗余存储](../storage/common/storage-redundancy.md#zone-redundant-storage)"。
+   - 如果需要在区域中无停机使用数据并确保数据驻留，请选择[区域冗余存储](../storage/common/storage-redundancy.md#zone-redundant-storage)。
 
 >[!NOTE]
->此保管库的存储复制设置与 Azure 文件共享备份无关，因为当前解决方案基于快照，并且没有数据传输到保管库。 快照存储在与备份文件共享相同的存储帐户中。
+>此保管库的存储复制设置与 Azure 文件共享备份无关，因为当前解决方案基于快照，且没有数据传输到保管库。 快照与备份文件共享存储在同一个存储帐户中。
 
 ## <a name="set-cross-region-restore"></a>设置跨区域还原
 
-还原选项 **跨区域还原 (CRR)** 使你可以在辅助、 [Azure 配对区域](../best-practices-availability-paired-regions.md)中还原数据。
+还原选项“跨区域还原(CRR)”允许你在次要的 [Azure 配对区域](../best-practices-availability-paired-regions.md)中还原数据。
 
 它支持以下数据源：
 
-- Azure Vm (公开上市) 
-- 在 Azure Vm 上托管的 SQL 数据库 (预览版) 
-- 在 Azure Vm 上托管的 SAP HANA 数据库 (预览版) 
+- Azure VM（正式版）
+- Azure VM 上承载的 SQL 数据库（预览版）
+- Azure VM 上承载的 SAP HANA 数据库（预览版）
 
-使用跨区域还原，可以：
+使用“跨区域还原”，可以：
 
 - 存在审核或合规性要求时开展演练
-- 如果主要区域发生灾难，则还原数据
+- 在主要区域中发生灾难时还原数据
 
-恢复 VM 时，可以还原 VM 或其磁盘。 如果要从 Azure Vm 上托管的 SQL/SAP HANA 数据库还原，可以还原数据库或其文件。
+还原 VM 时，可以还原 VM 或其磁盘。 如果是从 Azure VM 上承载的 SQL/SAP HANA 数据库进行还原，则可以还原数据库或其文件。
 
-若要选择此功能，请从 "**备份配置**" 窗格中选择 "**启用跨区域还原**"。
+若要选择此功能，请从“备份配置”窗格中选择“启用跨区域还原”。 
 
-由于此过程在存储级别，因此存在 [定价影响](https://azure.microsoft.com/pricing/details/backup/)。
+由于此过程是在存储级别执行的，因此会有[定价影响](https://azure.microsoft.com/pricing/details/backup/)。
 
 >[!NOTE]
 >开始之前：
 >
 >- 有关支持的托管类型和区域的列表，请查看[支持矩阵](backup-support-matrix.md#cross-region-restore)。
->- Azure Vm 的跨区域还原 (CRR) 功能现已在所有 Azure 公共区域公开上市。
->- 在所有 Azure 公共区域中，SQL 和 SAP HANA 数据库的跨区域还原处于预览阶段。
+>- Azure VM 的“跨区域还原”(CRR) 功能现已在所有 Azure 公共区域公开发布。
+>- SQL 和 SAP HANA 数据库的“跨区域还原”功能目前在所有 Azure 公共区域为预览版。
 >- CRR 是保管库级别的选用功能（默认已禁用），适用于任何 GRS 保管库。
 >- 选择启用后，备份项最长可能需要在 48 小时后才出现在次要区域中。
->- 目前仅支持 azure 资源管理器 Azure Vm 的 CRR。 不支持经典 Azure Vm。  如果其他管理类型支持 CRR，则会 **自动** 注册。
->- 首次启动保护后， **不能** 再将跨区域还原恢复为 GRS 或 LRS。
->- 目前，从主要区域开始，辅助区域 [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) 最多为12个小时，即使 [读取访问异地冗余存储 (GRS) ](../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) 复制为15分钟。
+>- 目前，对 Azure VM 进行 CRR 仅支持 Azure 资源管理器 Azure VM。 不支持经典 Azure VM。  当有更多管理类型支持 CRR 时，将会 **自动** 注册这些类型。
+>- 目前，在首次启用保护后，无法将跨区域还原恢复为 GRS 或 LRS。
+>- 目前，从主要区域到次要区域的 [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) 最多为 12 个小时，即使[读取访问异地冗余存储 (GRS)](../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) 复制为 15 分钟。
 
 ### <a name="configure-cross-region-restore"></a>配置跨区域还原
 
-使用 GRS 冗余创建的保管库提供用于配置跨区域还原功能的选项。 每个 GRS 保管库具有一个链接到文档的横幅。 若要为保管库配置 CRR，请前往 "备份配置" 窗格，其中包含启用此功能的选项。
+使用 GRS 冗余创建的保管库提供用于配置跨区域还原功能的选项。 每个 GRS 保管库具有一个链接到文档的横幅。 若要为保管库配置 CRR，请转到“备份配置”窗格，其中包含用于启用此功能的选项。
 
  ![“备份配置”横幅](./media/backup-azure-arm-restore-vms/banner.png)
 
-1. 在门户中，在 "**设置**") 下，中转到 "恢复服务保管库" >**属性**" (。
-1. 在 " **备份配置**" 下，选择 " **更新**"。
-1. 选择 " **在此保管库中启用跨区域还原** " 以启用该功能。
+1. 在门户中，转到你的恢复服务保管库 >“属性”（在“设置”下）。
+1. 在“备份配置”下，选择“更新”。
+1. 选择“在此保管库中启用跨区域还原”以启用该功能。
 
-   ![启用跨区域还原](./media/backup-azure-arm-restore-vms/backup-configuration.png)
+   ![启用“跨区域还原”](./media/backup-azure-arm-restore-vms/backup-configuration.png)
 
-请参阅以下文章，了解有关备份和还原与 CRR 的详细信息：
+请参阅以下文章，了解有关通过 CRR 进行备份和还原的详细信息：
 
-- [Azure Vm 的跨区域还原](backup-azure-arm-restore-vms.md#cross-region-restore)
-- [针对 SQL 数据库的跨区域还原](restore-sql-database-azure-vm.md#cross-region-restore)
-- [跨区域还原 SAP HANA 数据库](sap-hana-db-restore.md#cross-region-restore)
+- [Azure VM 的跨区域还原](backup-azure-arm-restore-vms.md#cross-region-restore)
+- [SQL 数据库的跨区域还原](restore-sql-database-azure-vm.md#cross-region-restore)
+- [SAP HANA 数据库的跨区域还原](sap-hana-db-restore.md#cross-region-restore)
 
 ## <a name="set-encryption-settings"></a>设置加密设置
 
-默认情况下，恢复服务保管库中的数据是使用平台托管密钥加密的。 不需要任何明确的操作即可启用此加密，并将其应用于要备份到恢复服务保管库的所有工作负荷。  你可以选择自带密钥对此保管库中的备份数据进行加密。 这称为客户管理的密钥。 如果要使用自己的密钥加密备份数据，则必须先指定加密密钥，然后才能在此保管库中保护任何项目。 启用密钥加密后，将无法还原。
+默认情况下，使用平台管理的密钥对恢复服务保管库中的数据进行加密。 你不需要执行任何显式操作即可启用这种加密，加密将应用于要备份到恢复服务保管库的所有工作负荷。  你可以选择自带密钥对此保管库中的备份数据进行加密。 这称为客户管理的密钥。 如果要使用自己的密钥加密备份数据，则必须先指定加密密钥，然后才能保护此保管库中的所有项。 启用你的密钥加密后，此过程不可逆。
 
-### <a name="configuring-a-vault-to-encrypt-using-customer-managed-keys"></a>将保管库配置为使用客户托管的密钥进行加密
+### <a name="configuring-a-vault-to-encrypt-using-customer-managed-keys"></a>将保管库配置为使用客户管理的密钥进行加密
 
-若要配置保管库以通过客户托管的密钥进行加密，必须按以下顺序执行这些步骤：
+若要配置保管库以使用客户管理的密钥进行加密，必须按以下顺序执行步骤：
 
 1. 为恢复服务保管库启用托管标识
 
-1. 将权限分配给保管库以访问 Azure Key Vault 中的加密密钥
+1. 为保管库分配访问 Azure 密钥保管库中加密密钥的权限
 
-1. 启用软删除和清除保护 Azure Key Vault
+1. 在 Azure 密钥保管库中启用软删除和清除保护
 
-1. 将加密密钥分配到恢复服务保管库
+1. 为恢复服务保管库分配加密密钥
 
-可 [在此文中](encryption-at-rest-with-cmk.md#configuring-a-vault-to-encrypt-using-customer-managed-keys)找到有关这些步骤的说明。
+可[在此文中](encryption-at-rest-with-cmk.md#configuring-a-vault-to-encrypt-using-customer-managed-keys)找到每一个步骤的说明。
 
 ## <a name="modifying-default-settings"></a>修改默认设置
 
@@ -139,7 +139,7 @@ Azure 备份会自动处理保管库的存储。 需要指定如何复制该存�
 
 1. 停止保护并删除现有 GRS 保管库中的备份。 在保管库仪表板菜单中，选择“备份项”。 此处列出的需要移动到 LRS 保管库的项必须连同其备份数据一起删除。 请参阅如何[删除云中受保护的项](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud)以及[删除本地受保护的项](backup-azure-delete-vault.md#delete-protected-items-on-premises)。
 
-1. 如果打算将 AFS (Azure 文件共享) 、SQL server 或 SAP HANA 服务器，则还需要对其进行撤消注册。 在保管库仪表板菜单中，选择“备份基础结构”。 请参阅如何 [取消注册 SQL server](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance)、 [注销与 Azure 文件共享相关联的存储帐户](manage-afs-backup.md#unregister-a-storage-account)和 [注销 SAP HANA 实例](sap-hana-db-manage.md#unregister-an-sap-hana-instance)。
+1. 如果计划迁移 AFS（Azure 文件共享）、SQL Server 或 SAP HANA 服务器，还需要将其注销。 在保管库仪表板菜单中，选择“备份基础结构”。 请参阅如何[注销 SQL Server](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance)、[注销与 Azure 文件共享相关联的存储帐户](manage-afs-backup.md#unregister-a-storage-account)和[注销 SAP HANA 实例](sap-hana-db-manage.md#unregister-an-sap-hana-instance)。
 
 1. 将其从 GRS 保管库中删除后，请继续在新的 LRS 保管库中配置工作负载的备份。
 

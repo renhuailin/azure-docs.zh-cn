@@ -4,10 +4,10 @@ description: 了解如何运行快速诊断命令，以便确定使用 Azure 容
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: f27a99818260553cbd7ba26158db0064c145a21f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88245377"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>检查 Azure 容器注册表的运行状况
@@ -16,7 +16,7 @@ ms.locfileid: "88245377"
 
 进行诊断时，首先请运行 [az acr check-health][az-acr-check-health] 命令，了解环境的运行状况，并可选择访问目标注册表。 此命令可在 Azure CLI 2.0.67 或更高版本中使用。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
-有关其他注册表疑难解答指南，请参阅：
+有关其他注册表故障排除指南，请参阅：
 * [注册表登录故障排除](container-registry-troubleshoot-login.md)
 * [排查与注册表相关的网络问题](container-registry-troubleshoot-access.md)
 * [注册表性能故障排除](container-registry-troubleshoot-performance.md)
@@ -26,7 +26,7 @@ ms.locfileid: "88245377"
 下述示例演示了如何通过不同方式运行 `az acr check-health` 命令。
 
 > [!NOTE]
-> 如果在 Azure Cloud Shell 中运行命令，则不会检查本地环境。 不过，您可以检查对目标注册表的访问权限。
+> 如果在 Azure Cloud Shell 中运行此命令，则不会检查本地环境。 但是，你可以检查对目标注册表的访问权限。
 
 ### <a name="check-the-environment-only"></a>仅检查环境
 

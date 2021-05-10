@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: dfc8fe0f1b4bc043feecd5c76340d48bc5421854
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: dbd4e9c6e8a58738ac0a8db6c64133301d1aebe5
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568533"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950579"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器故障排除指南
 
@@ -62,15 +62,15 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 
 1. 打开“连接”对话框。
 1. 选择要连接到的资源类型。
-1. 选择“使用 Azure Active Directory (Azure AD)登录”。 选择“下一步”。
-1. 选择与要连接到的资源关联的用户帐户和租户。 选择“下一步”。
+1. 选择“使用 Azure Active Directory (Azure AD)登录”。 选择“下一步”  。
+1. 选择与要连接到的资源关联的用户帐户和租户。 选择“下一步”  。
 1. 输入资源的 URL，并为连接输入唯一的显示名称。 选择“下一步”，然后选择“连接” 。
 
 对于其他资源类型，我们目前尚未制定与 Azure RBAC 相关的解决方案。 作为一种解决方法，你可以请求 SAS URL，然后通过以下步骤连接到你的资源：
 
 1. 打开“连接”对话框。
 1. 选择要连接到的资源类型。
-1. 选择“共享访问签名(SAS)”。 选择“下一步”。
+1. 选择“共享访问签名(SAS)”。 选择“下一步”  。
 1. 输入你收到的 SAS URL，并输入连接的唯一显示名称。 选择“下一步”，然后选择“连接” 。
  
 有关连接到资源的详细信息，请参阅[连接到单个资源](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#attach-to-an-individual-resource)。
@@ -137,11 +137,20 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 
 如果帐户需要满足条件访问策略，请确保将“默认 web 浏览器”值用于“登录方式”设置 。 有关此设置的信息，请参阅[更改登录的位置](./storage-explorer-sign-in.md#changing-where-sign-in-happens)。
 
+### <a name="browser-complains-about-http-redirect-during-sign-in"></a>浏览器在登录期间指出 HTTP 重定向问题
+
+当存储资源管理器在 Web 浏览器中执行登录时，将在登录过程结束时完成到 `localhost` 的重定向。 浏览器有时会发出警告或错误，指出重定向是通过 HTTP 而不是通过 HTTPS 执行的。 某些浏览器可能还会尝试通过 HTTPS 强制执行重定向。 如果发生上述任一情况，请根据浏览器选择以下不同选项：
+- 忽略此警告。
+- 添加 `localhost` 的异常。
+- 针对全局或仅针对 `localhost` 禁用强制 HTTPS。
+
+如果无法执行任何这些选择，也可以[更改登录的位置](./storage-explorer-sign-in.md#changing-where-sign-in-happens)。
+
 ### <a name="unable-to-acquire-token-tenant-is-filtered-out"></a>无法获取令牌，租户已被筛除
 
 如果你看到一条错误消息，指出由于租户被筛除而无法获取令牌，则意味着你正在尝试访问已被筛除的租户中的资源。若要取消筛选该租户，请转到“帐户面板”，并确保选中错误中指定租户的复选框。 有关在存储资源管理器中筛选租户的详细信息，请参阅[管理帐户](./storage-explorer-sign-in.md#managing-accounts)。
 
-## <a name="authentication-library-failed-to-start-properly"></a>身份验证库未能正确启动
+### <a name="authentication-library-failed-to-start-properly"></a>身份验证库未能正确启动
 
 如果在启动时看到一条错误消息，指出存储资源管理器的身份验证库未能正常启动，请确保安装环境满足所有[先决条件](../../vs-azure-tools-storage-manage-with-storage-explorer.md#prerequisites)。 未满足先决条件是导致该错误消息的最常见原因。
 
@@ -486,12 +495,12 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 通常可以按照以下步骤收集日志：
 
-1. 转到“设置”>“登录”> 选中“详细身份验证日志记录”。 如果存储资源管理器由于其身份验证库出现问题而未能启动，则系统会为你完成此操作。
+1. 转到“设置(左侧的齿轮图标)” > “应用程序” > “登录”> 检查“详细身份验证日志记录”   。 如果存储资源管理器由于其身份验证库出现问题而未能启动，则系统会为你完成此操作。
 2. 关闭存储资源管理器。
 1. 可选/建议：清除 `logs` 文件夹中的现有日志。 这样做会减少必须向我们发送的信息量。
 4. 打开存储资源管理器并重现问题
 5. 关闭存储资源管理器
-6. 压缩 `log` 文件夹的内容。
+6. 压缩 `logs` 文件夹的内容。
 
 ### <a name="azcopy-logs"></a>AzCopy 日志
 

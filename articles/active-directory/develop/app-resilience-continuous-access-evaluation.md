@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 10/06/2020
 ms.author: nichola
 ms.reviewer: ''
-ms.openlocfilehash: f6ce792b3db0100d7356884bbc6ee2696580df10
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b00cca584958f3e7d741a2a4f9e6669ff0d241e
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97652052"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904309"
 ---
 # <a name="how-to-use-continuous-access-evaluation-enabled-apis-in-your-applications"></a>如何在应用程序中使用启用了连续访问评估的 API
 
-[连续访问评估](../conditional-access/concept-continuous-access-evaluation.md) (CAE) 是一种新兴的行业标准，它允许根据[关键事件](../conditional-access/concept-continuous-access-evaluation.md#critical-event-evaluation)和[策略评估](../conditional-access/concept-continuous-access-evaluation.md#conditional-access-policy-evaluation-preview)撤销访问令牌，而不是依赖基于生存期的令牌过期。 对于某些资源 API，由于风险和策略是实时评估的，因此这可能会将令牌生存期提高到最多 28 小时。 Microsoft 身份验证库 (MSAL) 将主动刷新这些生存期较长的令牌，从而提高应用程序的复原能力。
+[连续访问评估](../conditional-access/concept-continuous-access-evaluation.md) (CAE) 是一项 Azure AD 功能，它可以根据[关键事件](../conditional-access/concept-continuous-access-evaluation.md#critical-event-evaluation)和[策略评估](../conditional-access/concept-continuous-access-evaluation.md#conditional-access-policy-evaluation-preview)撤销访问令牌，而不用依赖基于生存期的令牌过期。 对于某些资源 API，由于风险和策略是实时评估的，因此这可能会将令牌生存期提高到最多 28 小时。 Microsoft 身份验证库 (MSAL) 将主动刷新这些生存期较长的令牌，从而提高应用程序的复原能力。
 
 本文介绍如何在应用程序中使用启用了 CAE 的 API。
 

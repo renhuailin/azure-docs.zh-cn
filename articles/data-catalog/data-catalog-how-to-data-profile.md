@@ -6,18 +6,20 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: b27ff631ce13d70d15a6fd2b6dd5ad5bccaf5450
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: 473ba69fa30542dfa41dfc5f19002ac36b56b482
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021905"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "104674948"
 ---
-# <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>如何在 Azure 数据目录中进行数据配置文件数据源
+# <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>如何在 Azure 数据目录中对数据源进行数据分析
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 ## <a name="introduction"></a>简介
 
-**Microsoft Azure 数据目录** 是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 换句话说， **Azure 数据目录** 就是帮助人们发现、了解和使用数据源，并帮助组织从其现有数据中获取更多价值。 数据源向 **Azure 数据目录** 注册时，该服务将复制其元数据并为其建立索引，但并不仅仅只是这样。
+**Microsoft Azure 数据目录** 是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 换而言之，**Azure 数据目录** 旨在帮助人们发现、了解和使用数据源，并帮助组织从其现有数据中获取更多价值。 数据源向 **Azure 数据目录** 注册时，该服务将复制其元数据并为其建立索引，但并不仅仅只是这样。
 
 **Azure 数据目录** 的“数据分析”功能检查目录中受支持数据源的数据，并收集有关该数据的统计信息和信息。 想要包括数据资产的配置文件很简单。 注册数据资产时，在数据源注册工具中选择“包括数据配置文件”。
 
@@ -29,7 +31,7 @@ ms.locfileid: "96021905"
 
 以下数据源支持数据分析：
 
-* SQL Server (包括 Azure SQL DB 和 Azure Synapse Analytics) 表和视图
+* SQL Server（包括 Azure SQL DB 和 Azure Synapse Analytics）表和视图
 * Oracle 表和视图
 * Teradata 表和视图
 * Hive 表
@@ -51,7 +53,7 @@ ms.locfileid: "96021905"
 
 想要包括数据源的配置文件很简单。 注册数据资产时，在数据源注册工具的“要注册的对象”面板中选择“包括数据配置文件”。
 
-!["包括数据配置文件" 复选框](media/data-catalog-data-profile/data-catalog-register-profile.png)
+![“包括数据配置文件”复选框](media/data-catalog-data-profile/data-catalog-register-profile.png)
 
 若要了解有关如何注册数据源的详细信息，请参阅[如何注册数据源](data-catalog-how-to-register.md)和 [Azure 数据目录入门](data-catalog-get-started.md)。
 
@@ -67,7 +69,7 @@ ms.locfileid: "96021905"
 
 找到含有配置文件的合适数据源后，就可以查看数据配置文件详细信息。 要查看数据配置文件，请在数据目录门户窗口选择数据资产，并选择“数据配置文件”。
 
-![数据配置文件选项卡](media/data-catalog-data-profile/data-catalog-view.png)
+![“数据配置文件”选项卡](media/data-catalog-data-profile/data-catalog-view.png)
 
 “Azure 数据目录”中的数据配置文件显示表和列配置文件信息，包括：
 
@@ -84,7 +86,7 @@ ms.locfileid: "96021905"
 * 值为 NULL 的行数
 * 列值的最小值、最大值、平均值和标准偏差
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 数据分析提供有关已注册数据资产的统计信息和信息，帮助确定数据是否适用于解决业务问题。 连同批注和记录数据源一起，数据配置文件可以让用户深入了解数据。
 

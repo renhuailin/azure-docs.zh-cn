@@ -5,10 +5,10 @@ ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.openlocfilehash: 3ea470c2e732b7e0ef46e9e5fa78c744aa30c955
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98704357"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure 备份中的脱机备份工作流
@@ -35,7 +35,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../import
 >
 > * 使用 Microsoft Azure 恢复服务 (MARS) 代理（也称为 Azure 备份代理）备份文件和文件夹。
 > * 使用 System Center Data Protection Manager (DPM) 备份所有工作负荷和文件。
-> * Microsoft Azure 备份服务器备份所有工作负荷和文件。
+> * 使用 Microsoft Azure 备份服务器备份所有工作负荷和文件。
 
    > [!NOTE]
    > 使用 Azure 备份代理完成的系统状态备份不支持脱机备份。
@@ -124,7 +124,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../import
    * 已在副本计算机上启用 BitLocker。
    * Azure PowerShell 3.7.0 已安装。
    * 已安装最新的兼容浏览器（Microsoft Edge 或 Internet Explorer 11），并已启用 JavaScript。
-   * 副本计算机可以访问 Azure 门户。 如有必要，复制计算机可以与源计算机相同。
+   * 副本计算机可以访问 Azure 门户。 必要时，副本计算机可与源计算机相同。
 
      > [!IMPORTANT]
      > 如果源计算机是虚拟机，则复制计算机必须是与源计算机不同的物理服务器或客户端计算机。

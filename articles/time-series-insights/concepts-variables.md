@@ -6,12 +6,12 @@ ms.author: shresha
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/22/2021
-ms.openlocfilehash: fd08dc98fa47617bbc7c8d1fff895377837a7327
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01184a4eb2aac81bbcabcebf89ef10afeabddbe8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736728"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872958"
 ---
 # <a name="time-series-model-variables"></a>时序模型变量
 
@@ -32,7 +32,7 @@ ms.locfileid: "98736728"
 | 变量属性 | 说明 |
 | --- | ---|
 | 变量筛选器 | 筛选器是可选的条件子句，用于限制可在计算中考虑的行数。 |
-| 变量值 | 来自设备或传感器的，或使用时序表达式进行转换的用于计算的遥测值。 数字种类变量的类型必须为 *Double*。|
+| 变量值 | 来自设备或传感器的，或使用时序表达式进行转换的用于计算的遥测值。 数值类型变量必须是 `Double` 或 `Long` 才能与传入数据的数据类型匹配。|
 | 变量内插 | 内插指定如何使用现有数据重构信号。 *Step* 和 *Linear* 内插选项适用于数字变量。 |
 | 变量聚合 | 通过[“数字”变量种类支持的聚合函数](/rest/api/time-series-insights/reference-time-series-expression-syntax#numeric-variable-kind)执行计算。 |
 
@@ -62,7 +62,7 @@ ms.locfileid: "98736728"
 | 变量属性 | 说明 |
 | --- | ---|
 | 变量筛选器 | 筛选器是可选的条件子句，用于限制可在计算中考虑的行数。 |
-| 变量值 | 来自设备或传感器的用于计算的遥测值。 分类种类变量的类型必须是 *Long* 或 *String*。 |
+| 变量值 | 来自设备或传感器的用于计算的遥测值。 分类类型变量必须是 `Long` 或 `String` 才能与传入数据的数据类型匹配。 |
 | 变量内插 | 内插指定如何使用现有数据重构信号。 *Step* 内插选项适用于分类变量。 |
 | 变量类别 | 类别在来自设备或传感器的值与某个标签之间创建映射。 |
 | 变量的默认类别 | 默认类别适用于“categories”属性中未映射的所有值。 |

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/19/2021
+ms.date: 04/21/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d63e7916423038e53c375b2be4114582cf4d6152
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: a56f8339535c64c6eeac1b06c04aa7c89cd38356
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725757"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107886381"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>使用 SendGrid 进行自定义电子邮件验证
 
@@ -304,7 +304,7 @@ JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimT
 `GenerateOtp` 技术配置文件为电子邮件地址生成代码。 `VerifyOtp` 技术配置文件验证与电子邮件地址关联的代码。 你可以更改格式的配置以及一次性密码的有效期。 有关 OTP 技术配置文件的详细信息，请参阅[定义一次性密码技术配置文件](one-time-password-technical-profile.md)。
 
 > [!NOTE]
-> Web.TPEngine.Providers.OneTimePasswordProtocolProvider 协议生成的 OTP 代码绑定到浏览器会话。 这意味着用户可以在不同的浏览器会话中生成唯一的 OTP 代码，每个代码对其对应的会话有效。 相比之下，由内置用户流生成的 OTP 代码独立于浏览器会话，因此如果用户在新的浏览器会话中生成新的 OTP 代码，它将替换以前的 OTP 代码。
+> Web.TPEngine.Providers.OneTimePasswordProtocolProvider 协议生成的 OTP 代码绑定到浏览器会话。 这意味着用户可以在不同的浏览器会话中生成唯一的 OTP 代码，每个代码对其对应的会话有效。 相比之下，由内置电子邮件提供程序生成的 OTP 代码独立于浏览器会话，因此如果用户在新的浏览器会话中生成新的 OTP 代码，它将替换以前的 OTP 代码。
 
 将以下技术配置文件添加到 `<ClaimsProviders>` 元素。
 

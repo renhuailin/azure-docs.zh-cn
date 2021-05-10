@@ -1,17 +1,17 @@
 ---
 title: 停止/启动 - Azure 门户 - Azure Database for PostgreSQL 灵活服务器
 description: 本文介绍如何通过 Azure 门户在 Azure Database for PostgreSQL 中执行停止/启动操作。
-author: sunilagarwal
-ms.author: sunila
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: e28243f5919c355e6ad0d4998ff8388a56e3d0ca
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4c393e0048a0058ebe0fbf2b0ee65f6ae2e184c5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105607362"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "90934217"
 ---
 # <a name="stopstart-an-azure-database-for-postgresql---flexible-server-preview"></a>停止/启动 Azure Database for PostgreSQL 灵活服务器（预览版）
 

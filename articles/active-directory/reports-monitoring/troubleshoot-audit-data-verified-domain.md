@@ -16,10 +16,10 @@ ms.date: 07/22/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f3c9ec3b1e96e47dbf46c6acb2c81147b614d069
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87117423"
 ---
 # <a name="troubleshoot-audit-data-on-verified-domain-change"></a>疑难解答：针对已验证的域更改审核数据 
@@ -39,15 +39,15 @@ ms.locfileid: "87117423"
 
 #### <a name="what-does-userprincipalname-consistency-mean"></a>UserPrincipalName 一致性意味着什么？ 
 
-对于仅限云的用户，一致性意味“UserPrincipalName”设置为已验证的域后缀。 处理不一致的 **UserPrincipalName** 时， **ProxyCalc** 会将其转换为默认的 onmicrosoft.com 后缀，例如： username@Contoso.onmicrosoft.com 
+对于仅限云的用户，一致性意味“UserPrincipalName”设置为已验证的域后缀。 处理不一致的“UserPrincipalName”时，“ProxyCalc”会将其转换为默认的 onmicrosoft.com 后缀，例如：username@Contoso.onmicrosoft.com 
 
-对于同步的用户，一致性意味着“UserPrincipalName”设置为已验证的域后缀，并与本地“UserPrincipalName”值 (ShadowUserPrincipalName) 匹配 。 处理不一致的 **UserPrincipalName** 时， **ProxyCalc** 将恢复为与 **ShadowUserPrincipalName** 相同的值; 或者，如果已从租户中删除域后缀，则会将其转换为默认的 *. onmicrosoft.com 域后缀。 
+对于同步的用户，一致性意味着“UserPrincipalName”设置为已验证的域后缀，并与本地“UserPrincipalName”值 (ShadowUserPrincipalName) 匹配 。 处理不一致的“UserPrincipalName”时，“ProxyCalc”将还原为与“ShadowUserPrincipalName”相同的值，或者，如果已从租户中删除域后缀，则会将其转换为默认的 *.onmicrosoft.com 域后缀。 
 
   
 
 #### <a name="what-does-proxy-address-consistency-mean"></a>Proxy Address 一致性意味着什么？ 
 
-对于仅限云的用户，一致性意味着 Proxy Addresses 与已验证的域后缀相匹配。 当处理不一致的代理地址时， **ProxyCalc** 会将其转换为默认的 *. onmicrosoft.com 域后缀，例如： SMTP:username@Contoso.onmicrosoft.com 
+对于仅限云的用户，一致性意味着 Proxy Addresses 与已验证的域后缀相匹配。 处理不一致的 Proxy Addresse 时，“ProxyCalc”会将其转换为默认的 *.onmicrosoft.com 域后缀，例如：SMTP:username@Contoso.onmicrosoft.com 
 
 对于同步的用户，一致性意味着 Proxy Address 与（一个或多个）本地 Proxy Address 值相匹配（即 ShadowProxyAddresses）。 “ProxyAddresses”应与“ShadowProxyAddresses”同步 。 如果同步的用户分配了 Exchange 许可证，则代理地址必须与（一个或多个）本地代理地址值相匹配，并且还必须与已验证的域后缀相匹配。 在此方案中，“ProxyCalc”将使用未验证的域后缀净化不一致的代理地址，并从 Azure AD 中的对象中删除。 如果该未验证的域稍后进行了验证，则“ProxyCalc”将重新计算，并会将代理地址从“ShadowProxyAddresses”添加回 Azure AD 中的对象 。  
 
@@ -57,7 +57,7 @@ ms.locfileid: "87117423"
   
 有一个管理任务会在每当发生经过验证的域更改时，触发“ProxyCalc”。 每次从 Azure AD 租户中添加/删除一个已验证的域时，都会发生此任务，会在内部触发“ProxyCalc”。  
 
-例如，如果将已验证的域 Fabrikam.com 添加到 Contoso.onmicrosoft.com 租户，此操作将触发租户中所有对象的 ProxyCalc 操作。 Azure AD 审核日志中将此事件捕获为“更新用户”事件，其前面是“添加已验证的域”事件 。 另一方面，如果 Fabrikam.com 已从 Contoso.onmicrosoft.com 租户中删除，则所有 **更新用户** 事件的前面都将有 " **删除已验证的域** " 事件。   
+例如，如果将已验证的域 Fabrikam.com 添加到 Contoso.onmicrosoft.com 租户，则此操作将在租户中的所有对象上触发 ProxyCalc 操作。 Azure AD 审核日志中将此事件捕获为“更新用户”事件，其前面是“添加已验证的域”事件 。 另一方面，如果已从 Contoso.onmicrosoft.com 租户中删除 Fabrikam.com ，则所有“更新用户”事件前面都是“删除已验证的域”事件。   
 
 #### <a name="additional-notes"></a>其他说明：
 

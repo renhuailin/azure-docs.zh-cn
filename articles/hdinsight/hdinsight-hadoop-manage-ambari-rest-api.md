@@ -1,15 +1,15 @@
 ---
 title: 使用 Ambari REST API 监视和管理 Hadoop - Azure HDInsight
-description: 了解如何使用 Ambari 监视和管理 Azure HDInsight 中的 Hadoop 群集。 在本文档中，你将了解如何使用 HDInsight 群集随附的 Ambari REST API。
+description: 了解如何使用 Ambari 监视和管理 Azure HDInsight 中的 Hadoop 群集。 在本文档中，学习如何使用 HDInsight 群集随附的 Ambari REST API。
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
 ms.openlocfilehash: 1d4e6f0d6a0242cda919364965a61e4314927d87
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98945587"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>使用 Apache Ambari REST API 管理 HDInsight 群集
@@ -65,7 +65,7 @@ $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 
 群集名称的实际大小写可能不符合预期。  此处的步骤将显示实际大小写，然后将其存储在某个变量中，以便在后续示例中使用。
 
-编辑以下脚本，将 `CLUSTERNAME` 替换为群集名称。 然后输入该命令。  (FQDN 的群集名称不区分大小写。 ) 
+编辑以下脚本，将 `CLUSTERNAME` 替换为群集名称。 然后输入该命令。 （FQDN 的群集名称不区分大小写。）
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
@@ -160,7 +160,7 @@ $respObj.host_components.HostRoles.host_name
 
 ### <a name="get-the-internal-ip-address-of-cluster-nodes"></a>获取群集节点的内部 IP 地址
 
-本部分中的示例返回的 IP 地址不能通过 internet 直接访问。 只能在包含 HDInsight 群集的 Azure 虚拟网络中访问它们。
+本部分中的示例返回的 IP 地址不可直接通过 Internet 进行访问。 它们只可在包含 HDInsight 群集的 Azure 虚拟网络内访问。
 
 有关使用 HDInsight 和虚拟网络的详细信息，请参阅[为 HDInsight 规划虚拟网络](hdinsight-plan-virtual-network-deployment.md)。
 
@@ -285,7 +285,7 @@ $respObj.Content
 
 ### <a name="get-configuration-for-specific-component"></a>获取特定组件的配置
 
-获取你感兴趣的组件的配置。 在以下示例中，将 `INITIAL` 替换为从上一个请求返回的标记值。
+获取感兴趣的组件的配置。 在以下示例中，将 `INITIAL` 替换为从上一个请求返回的标记值。
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=livy2-conf&tag=INITIAL"
@@ -455,7 +455,7 @@ $resp.Content
     ```
 
     > [!IMPORTANT]  
-    > 值 `href` 值正在使用群集节点的内部 IP 地址。 若要从群集外部使用它，请将 `10.0.0.18:8080` 部分替换为群集的 FQDN。  
+    > 值 `href` 值正在使用群集节点的内部 IP 地址。 要从群集外部使用该地址，请将 `10.0.0.18:8080` 部分替换为群集的 FQDN。  
 
 4. 验证请求。  
     编辑以下命令，将 `29` 替换为上一步骤返回的 `id` 实际值。  以下命令检索请求的状态：

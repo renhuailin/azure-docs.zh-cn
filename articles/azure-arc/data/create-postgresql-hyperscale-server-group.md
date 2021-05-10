@@ -1,6 +1,6 @@
 ---
-title: 创建启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
-description: 创建启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
+title: 从 CLI 创建已启用 Azure Arc 的超大规模 PostgreSQL 服务器组
+description: 从 CLI 创建已启用 Azure Arc 的超大规模 PostgreSQL 服务器组
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 046f9d80c034e1ac1f2e7ffe144b4f389861b043
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ebc8405a2afe9a6e2d802b68c59142f6fbf01de5
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101687934"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288105"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>创建启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
 
@@ -234,6 +234,7 @@ psql postgresql://postgres:<EnterYourPassword>@10.0.0.4:30655
 
 ## <a name="next-steps"></a>后续步骤
 
+- 连接到已启用 Azure Arc 的超大规模 PostgreSQL：阅读[获取连接终结点和连接字符串](get-connection-endpoints-and-connection-strings-postgres-hyperscale.md)
 - 阅读 Azure Database for PostgreSQL 超大规模的概念和操作方法指南，以将数据分布到多个超大规模 PostgreSQL 节点并可能从更好的性能中获益：
     * [节点和表](../../postgresql/concepts-hyperscale-nodes.md)
     * [确定应用程序类型](../../postgresql/concepts-hyperscale-app-type.md)

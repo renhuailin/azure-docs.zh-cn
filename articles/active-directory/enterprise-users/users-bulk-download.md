@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57e3a059a5dd846250ba162513ef118e084c4b87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d27c95b0b16c36ca24709ec72c741dec633c5c81
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97861599"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108063956"
 ---
 # <a name="download-a-list-of-users-in-azure-active-directory-portal"></a>在 Azure Active Directory 门户中下载用户列表
 
@@ -75,7 +75,7 @@ Azure Active Directory (Azure AD) 支持批量用户导入（创建）操作。
 
 ## <a name="bulk-download-service-limits"></a>批量下载服务限制
 
-创建用户列表的每个批量活动最多可运行一小时。 这允许创建和下载至少包含 500,000 个用户的列表。
+创建用户列表的每个批量活动最多可运行一小时。 这样可创建并下载最多包含 500,000 名用户的列表。
 
 ## <a name="next-steps"></a>后续步骤
 

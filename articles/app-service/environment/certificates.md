@@ -8,10 +8,10 @@ ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 306445e26e5b236b49273b9ab8888ecc610bc075
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88962037"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>证书和应用服务环境 
@@ -22,7 +22,7 @@ ASE 是单租户系统。 由于它是单一租户，某些只能在 ASE 中使�
 
 ## <a name="ilb-ase-certificates"></a>ILB ASE 证书 
 
-如果使用外部 ASE，则可以通过 [应用名称].[ASE 名称].p.azurewebsites.net 访问应用。 默认情况下，所有 ASE 甚至 ILB ASE，都是使用遵循该格式的证书创建的。 创建 ILB ASE 后，可以基于创建 ILB ASE 时指定的域名来访问应用。 为了使应用程序支持 TLS，你需要上载证书。 可通过三种方式获取有效的 TLS/SSL 证书：使用内部证书颁发机构、向外部颁发者购买证书或使用自签名证书。 
+如果使用外部 ASE，则可以通过 [应用名称].[ASE 名称].p.azurewebsites.net 访问应用。 默认情况下，所有 ASE 甚至 ILB ASE，都是使用遵循该格式的证书创建的。 创建 ILB ASE 后，可以基于创建 ILB ASE 时指定的域名来访问应用。 为使应用支持 TLS，需要上传证书。 可通过三种方式获取有效的 TLS/SSL 证书：使用内部证书颁发机构、向外部颁发者购买证书或使用自签名证书。 
 
 可以使用两个选项配置 ILB ASE 的证书。  可为 ILB ASE 设置通配符默认证书，或者在 ASE 中的单个 Web 应用上设置证书。  无论做出哪种选择，都必须正确配置以下证书属性：
 

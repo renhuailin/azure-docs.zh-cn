@@ -2,14 +2,14 @@
 title: 自动转发 Azure 服务总线消息实体
 description: 本文介绍如何将 Azure 服务总线队列或订阅链接到另一个队列或主题。
 ms.topic: article
-ms.date: 01/20/2021
+ms.date: 04/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 80bef52d568130fa800a1da661f4867abb3df02c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78fb7478e0584d7c6dc79829d4bb242a448d43bd
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98678982"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988687"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>使用自动转发链接服务总线实体
 
@@ -18,22 +18,16 @@ ms.locfileid: "98678982"
 > [!NOTE]
 > 基本层的服务总线不支持自动转发功能。 标准层和高级层支持该功能。 有关这些层之间的差异，请参阅[服务总线定价](https://azure.microsoft.com/pricing/details/service-bus/)。
 
-## <a name="using-autoforwarding"></a>使用自动转发
-
-可通过在源的 [QueueDescription][QueueDescription] 或 [SubscriptionDescription][SubscriptionDescription] 对象上设置 [QueueDescription.ForwardTo][QueueDescription.ForwardTo] 或 [SubscriptionDescription.ForwardTo][SubscriptionDescription.ForwardTo] 属性来启用自动转发，如以下示例所示：
-
-```csharp
-SubscriptionDescription srcSubscription = new SubscriptionDescription (srcTopic, srcSubscriptionName);
-srcSubscription.ForwardTo = destTopic;
-namespaceManager.CreateSubscription(srcSubscription));
-```
-
 创建源实体时，目标实体必须存在。 如果目标实体不存在，则当创建源实体时，服务总线返回异常。
 
+## <a name="scenarios"></a>方案
+
+### <a name="scale-out-an-individual-topic"></a>横向扩展单个主题
 可使用自动转发扩大单个主题。 服务总线将[给定主题的订阅数](service-bus-quotas.md)限制为 2,000。 可以通过创建二级主题来容纳其他订阅。 即使订阅数并未受到服务总线限制，添加二级主题也可以提高主题的整体吞吐量。
 
 ![自动转发方案示意图，显示了通过订单主题处理的消息，该消息可分支到三个二级订单主题中的任意一个。][0]
 
+### <a name="decouple-message-senders-from-receivers"></a>分离消息发送方与接收方
 自动转发还可用于分离消息发送方与接收方。 例如，考虑一个由以下三个模块组成的 ERP 系统：订单处理、库存管理和客户关系管理。 每个模块都会生成消息，这些消息将被排入相应的主题队。 Alice 和 Bob 是两名销售代表，他们想了解与其客户相关的所有消息。 要接收这些消息，Alice 和 Bob 各自创建一个个人队列和一个针对 ERP 主题的订阅，该订阅将所有消息自动转发给该队列。
 
 ![自动转发方案示意图，显示了三个处理模块通过三个相应的主题将消息发送到两个单独的队列。][1]
@@ -59,22 +53,9 @@ namespaceManager.CreateSubscription(srcSubscription));
 请不要创建超过 4 个跃点的链。 超过 4 个跃点的消息将为死信。
 
 ## <a name="next-steps"></a>后续步骤
+若要了解如何通过不同方式（Azure 门户、PowerShell、CLI、Azure 资源管理模板等）设置启用或禁用自动转发，请参阅[为队列和订阅启用自动转发](enable-auto-forward.md)。
 
-有关自动转发的详细信息，请参阅以下参考主题：
 
-* [ForwardTo][QueueDescription.ForwardTo]
-* [QueueDescription][QueueDescription]
-* [SubscriptionDescription][SubscriptionDescription]
-
-若要深入了解服务总线性能提升，请参阅 
-
-* [使用服务总线消息传送改进性能的最佳做法](service-bus-performance-improvements.md)
-* [分区消息实体][Partitioned messaging entities]。
-
-[QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo
-[SubscriptionDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.forwardto#Microsoft_ServiceBus_Messaging_SubscriptionDescription_ForwardTo
-[QueueDescription]: /dotnet/api/microsoft.servicebus.messaging.queuedescription
-[SubscriptionDescription]: /dotnet/api/microsoft.servicebus.messaging.queuedescription
 [0]: ./media/service-bus-auto-forwarding/IC628631.gif
 [1]: ./media/service-bus-auto-forwarding/IC628632.gif
 [Partitioned messaging entities]: service-bus-partitioning.md

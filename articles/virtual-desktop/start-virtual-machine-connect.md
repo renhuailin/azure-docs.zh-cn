@@ -3,15 +3,15 @@ title: 连接时启动虚拟机 - Azure
 description: 如何配置连接时启动虚拟机功能。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/13/2021
+ms.date: 04/23/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: af95cf5d3e4112c717d653062f186797d48fb515
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 05500ded7512b54446d153e37233e4889b3107ff
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389802"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107949181"
 ---
 # <a name="start-virtual-machine-on-connect-preview"></a>连接时启动虚拟机（预览版）
 
@@ -19,7 +19,7 @@ ms.locfileid: "107389802"
 > 连接时启动 VM 功能目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-连接时启动虚拟机 (VM)（预览版）功能可让你解除分配未使用的 VM，从而可以节省成本。 如果你需要再次使用 VM，只需重新打开 VM 即可。
+通过“连接时启动虚拟机 (VM)”功能（预览版），你可以让最终用户只在需要 VM 时才将其打开，从而节省成本。 然后，你可以在不需要 VM 时将其关闭。
 
 >[!NOTE]
 >Windows 虚拟桌面（经典）不支持此功能。
@@ -28,10 +28,12 @@ ms.locfileid: "107389802"
 
 只能为个人主机池启用连接时启动 VM 功能。 若要详细了解个人主机池，请参阅 [Windows 虚拟桌面环境](environment-setup.md#host-pools)。
 
-以下远程桌面客户端支持连接时启动 VM 功能：
+以下远程桌面客户端支持“连接时启动 VM”功能：
 
 - [Web 客户端](connect-web.md)
 - [Windows 客户端（1.2748 或更高版本）](connect-windows-7-10.md)
+- [Android 客户端（版本 10.0.10 或更高版本）](connect-android.md)
+- [macOS 客户端（版本 10.6.4 或更高版本）](connect-macos.md)
 
 可以在[技术社区论坛](https://aka.ms/wvdtc)中查看有关更新和客户端支持的公告。
 

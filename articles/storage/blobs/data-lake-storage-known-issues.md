@@ -9,10 +9,10 @@ ms.date: 02/04/2021
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: db55a29e53c53e26fbb04d96ddf1864946bafbfd
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99581272"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
@@ -93,7 +93,7 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 
 ## <a name="diagnostic-logs"></a>诊断日志
 
-尚不支持保留天数设置，但你可以使用任何支持的工具（例如 Azure 存储资源管理器、REST 或 SDK）手动删除日志。
+尚不支持设置数据保留天数，但可以使用任何支持的工具（例如 Azure 存储资源管理器、REST 或 SDK）手动删除日志。
 
 ## <a name="lifecycle-management-policies-with-premium-tier-for-azure-data-lake-storage"></a>Azure Data Lake Storage 高级层的生命周期管理策略
 

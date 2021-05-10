@@ -1,26 +1,27 @@
 ---
-title: 使用 SCP 将文件移到 Azure Linux VM 和从 Azure Linux VM 移动文件
+title: 使用 SCP 将文件移入和移出 VM
 description: 使用 SCP 和 SSH 密钥对安全地将文件移到 Azure Linux VM 和从 Azure Linux VM 移动文件。
 author: cynthn
 ms.service: virtual-machines
 ms.collection: linux
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 07/12/2017
+ms.date: 04/20/2021
 ms.author: cynthn
-ms.subservice: disks
-ms.openlocfilehash: 83b57055ee7a3fedab014abeab96520c3877b843
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.subservice: ''
+ms.openlocfilehash: edfc44f79cff25486fde6326ac954fe5b575d846
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558434"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816433"
 ---
-# <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>使用 SCP 将文件移到 Linux VM 和从 Linux VM 移动文件
+# <a name="use-scp-to-move-files-to-and-from-a-linux-vm"></a>使用 SCP 将文件移入和移出 Linux VM 
 
 本文说明如何使用安全复制 (SCP) 将文件从工作站向上移到 Azure Linux VM，或从 Azure Linux VM 向下移到工作站。 在工作站和 Linux VM 之间快速安全地移动文件是管理 Azure 基础结构的关键。 
 
-对于本文，需要使用 [SSH 公钥和私钥文件](mac-create-ssh-keys.md)在 Azure 中部署的 Linux VM。 还需要用于本地计算机的 SCP 客户端。 它基于 SSH 生成，包括在大多数 Linux 和 Mac 计算机以及部分 Windows Shell 的默认 Bash Shell 中。
+对于本文，需要使用 [SSH 公钥和私钥文件](mac-create-ssh-keys.md)在 Azure 中部署的 Linux VM。 还需要用于本地计算机的 SCP 客户端。 它基于 SSH 生成，包含在大多数 Linux 和 Mac 计算机和 PowerShell 的默认 Bash shell 中。
+
 
 ## <a name="quick-commands"></a>快速命令
 
@@ -50,7 +51,7 @@ SCP 将 SSH 用于传输层。 SSH 处理目标主机上的身份验证，同时
 
 在第一个示例中，我们将 Azure 配置文件向上复制到用于部署自动化的 Linux VM。 由于此文件包含 Azure API 凭据，其中包括机密，因此安全性非常重要。 SSH 提供的加密隧道可保护文件的内容。
 
-以下命令通过 FQDN myserver.eastus.cloudapp.azure.com 将本地 .azure/config 文件复制到 Azure VM。 Azure VM 上的管理员用户名为 *azureuser*。 该文件指向 */home/azureuser/* 目录。 在此命令中替换自己的值。
+以下命令通过 FQDN myserver.eastus.cloudapp.azure.com 将本地 .azure/config 文件复制到 Azure VM。 如果未[设置 FQDN](../create-fqdn.md)，还可使用 VM 的 IP 地址。 Azure VM 上的管理员用户名为 *azureuser*。 该文件指向 */home/azureuser/* 目录。 在此命令中替换自己的值。
 
 ```bash
 scp ~/.azure/config azureuser@myserver.eastus.cloudapp.com:/home/azureuser/config

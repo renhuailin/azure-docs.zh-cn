@@ -9,18 +9,20 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: bf6b06ba7cc7f547f752ffa7877fca186ba4465e
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 1c71c6b55049d81d5c1ff3e26cba3436f0e2dd23
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713779"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107890737"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>使用网络文件系统 (NFS) 3.0 协议（预览版）装载 Blob 存储
 
 可以使用 NFS 3.0 协议从基于 Linux 的 Azure 虚拟机 (VM) 或在本地运行的 Linux 系统，在 Blob 存储中装载容器。 本文提供分步指南。 若要了解有关 Blob 存储中 NFS 3.0 协议支持的详细信息，请参阅 [Azure Blob 存储中的网络文件系统 (NFS) 3.0 协议支持（预览版）](network-file-system-protocol-support.md)。
 
 ## <a name="step-1-register-the-nfs-30-protocol-feature-with-your-subscription"></a>步骤 1：将 NFS 3.0 协议功能注册到你的订阅中
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. 打开 PowerShell 命令窗口。 
 
@@ -50,14 +52,54 @@ ms.locfileid: "107713779"
    ```powershell
    Register-AzResourceProvider -ProviderNamespace Microsoft.Storage   
    ```
+   
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. 打开终端窗口。
+
+2. 运行 `az login` 命令以登录 Azure 订阅，并按照屏幕上的说明操作。
+
+   ```azurecli-interactive
+   az login
+   ```
+   
+3. 使用以下命令注册 `AllowNFSV3` 功能。
+
+   ```azurecli-interactive
+   az feature register --namespace Microsoft.Storage --name AllowNFSV3 --subscription <subscription-id>
+   ```
+
+   将 `<subscription-id>` 占位符值替换为你的订阅 ID。
+
+4. 使用以下命令注册资源提供程序。
+    
+   ```azurecli-interactive
+   az provider register -n Microsoft.Storage --subscription <subscription-id>
+   ```
+
+   将 `<subscription-id>` 占位符值替换为你的订阅 ID。
+
+---
 
 ## <a name="step-2-verify-that-the-feature-is-registered"></a>步骤 2：验证是否已注册功能 
 
 注册审批可能需要一个小时。 若要验证注册是否完成，请使用以下命令。
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFSV3
 ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az feature show --namespace Microsoft.Storage --name AllowNFSV3 --subscription <subscription-id>
+```
+
+将 `<subscription-id>` 占位符值替换为你的订阅 ID。
+
+---
 
 ## <a name="step-3-create-an-azure-virtual-network-vnet"></a>步骤 3：创建 Azure 虚拟网络 (VNet)
 

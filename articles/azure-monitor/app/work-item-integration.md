@@ -1,23 +1,18 @@
 ---
-title: 工作项集成（预览版）- Application Insights
+title: 工作项集成 - Application Insights
 description: 了解如何在 GitHub 或 Azure DevOps 中创建工作项，并在其中嵌入 Application Insights 数据。
 ms.topic: conceptual
-ms.date: 02/9/2021
-ms.openlocfilehash: ba0a67bad3ba47191414d6b406ab6cb4e6b7da78
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/22/2021
+ms.openlocfilehash: 57eae6b0cda7a0f77a83ecbe453aca56eaf2504b
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101731912"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930369"
 ---
-# <a name="work-item-integration-preview"></a>工作项集成（预览版）
+# <a name="work-item-integration"></a>工作项集成 
 
 使用工作项集成功能，你可以轻松地在 GitHub 或 Azure DevOps 中创建工作项，并在其中嵌入相关的 Application Insights 数据。
-
-> [!IMPORTANT]
-> 工作项集成目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="create-and-configure-a-work-item-template"></a>创建和配置工作项模板
 
@@ -32,6 +27,8 @@ ms.locfileid: "101731912"
 2. 选择“创建新模板”后，你可以选择你的跟踪系统，为你的工作簿命名，链接到所选的跟踪系统，并选择用于存储该模板的区域（默认为你的 Application Insights 资源所在的区域）。 URL 参数是你的存储库的默认 URL，例如 `https://github.com/myusername/reponame` 或 `https://mydevops.visualstudio.com/myproject`。
 
     :::image type="content" source="./media/work-item-integration/create-workbook.png" alt-text="“新建工作项工作簿模板”的屏幕截图。":::
+
+    可以直接从模板本身设置特定工作项属性。 这包括被分派人、迭代路径、项目等等，具体取决于你的版本控制提供程序。
 
 ## <a name="create-a-work-item"></a>创建工作项
 

@@ -1,6 +1,6 @@
 ---
 title: 连接和查询 - 单一服务器 MySQL
-description: 指向快速入门的链接，其中显示了如何连接到 Azure SQL 数据库单一服务器并运行查询。
+description: 指向快速入门的链接，演示如何连接到 Azure MySQL 数据库单一服务器并运行查询。
 services: mysql
 ms.service: mysql
 ms.topic: how-to
@@ -8,10 +8,10 @@ author: mksuni
 ms.author: sumuth
 ms.date: 09/22/2020
 ms.openlocfilehash: 0414aaad5a1cf6edb9c2152eed70f8753946cca1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92546426"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-mysql--single-server"></a>Azure Database for MySQL（单一服务器）连接和查询概述
@@ -23,7 +23,7 @@ ms.locfileid: "92546426"
 | 快速入门 | 说明 |
 |---|---|
 |[MySQL Workbench](connect-workbench.md)|本快速入门演示如何使用 MySQL Workbench 客户端连接到数据库。 然后，可使用 MySQL 语句在数据库中查询、插入、更新和删除数据。|
-|[Azure Cloud Shell](./quickstart-create-mysql-server-database-using-azure-cli.md#connect-to-azure-database-for-mysql-server-using-mysql-command-line-client)|本文介绍如何在 [Azure Cloud Shell](../cloud-shell/overview.md)中运行 **mysql.exe** 以连接到服务器，然后运行语句以在数据库中查询、插入、更新和删除数据。|
+|[Azure Cloud Shell](./quickstart-create-mysql-server-database-using-azure-cli.md#connect-to-azure-database-for-mysql-server-using-mysql-command-line-client)|本文介绍如何在 [Azure Cloud Shell](../cloud-shell/overview.md) 中运行 mysql.exe 以连接到服务器，然后运行语句以在数据库中查询、插入、更新和删除数据。|
 |[将 MySQL 与 Visual Studio 配合使用](https://www.mysql.com/why-mysql/windows/visualstudio)|可以使用 MySQL for Visual Studio 连接到 MySQL 服务器。 MySQL for Visual Studio 直接集成到服务器资源管理器中，因而可以轻松设置新连接和使用数据库对象。|
 |[PHP](connect-php.md)|本快速入门演示如何使用 PHP 创建连接到数据库的程序，并使用 MySQL 语句来查询数据。|
 |[Java](connect-java.md)|本快速入门演示如何使用 Java 连接到数据库，然后使用 MySQL 语句来查询数据。|
@@ -36,7 +36,7 @@ ms.locfileid: "92546426"
 
 ## <a name="tls-considerations-for-database-connectivity"></a>数据库连接的 TLS 注意事项
 
-Microsoft 提供或支持的所有驱动程序使用传输层安全性 (TLS) 连接到 Azure Database for MySQL 中的数据库。 不需要特殊配置，但对于新创建的服务器，请强制实施 TLS 1.2。 如果你使用的是 TLS 1.0 和 1.1，则建议你更新服务器的 TLS 版本。 请参阅 [如何配置 TLS](howto-tls-configurations.md)
+Microsoft 提供或支持的所有驱动程序使用传输层安全性 (TLS) 连接到 Azure Database for MySQL 中的数据库。 不需要特殊配置，但对于新创建的服务器，请强制实施 TLS 1.2。 如果你使用的是 TLS 1.0 和 1.1，则建议你更新服务器的 TLS 版本。 请参阅[如何配置 TLS](howto-tls-configurations.md)
 
 ## <a name="libraries"></a>库
 

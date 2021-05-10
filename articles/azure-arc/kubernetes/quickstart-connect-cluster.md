@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 03/03/2021
 ms.custom: template-quickstart, references_regions, devx-track-azurecli
 keywords: Kubernetes, Arc, Azure, 群集
-ms.openlocfilehash: 8da5ba5c4408cb96008c3d9802ce3a5ccdc25f1f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: de701e79677f7e862d953eb5f03534b4eaefb367
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140166"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290715"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>快速入门：将现有 Kubernetes 群集连接到 Azure Arc 
 
@@ -27,7 +27,7 @@ ms.locfileid: "108140166"
     * [Docker 中的 Kubernetes (KIND)](https://kind.sigs.k8s.io/)
     * 使用 [Docker for Mac](https://docs.docker.com/docker-for-mac/#kubernetes) 或 [Docker for Windows](https://docs.docker.com/docker-for-windows/#kubernetes) 创建 Kubernetes 群集
     * 使用[群集 API](https://cluster-api.sigs.k8s.io/user/quick-start.html) 的自托管 Kubernetes 群集
-    * 如果要将 OpenShift 群集连接到 Azure Arc，只需在运行 `az connectedk8s connect` 之前在群集上执行一次以下命令：
+    * 如果要将 OpenShift 群集连接到 Azure Arc，只需在运行 `az connectedk8s connect` 之前在群集上执行以下命令：
         
         ```console
         oc adm policy add-scc-to-user privileged system:serviceaccount:azure-arc:azure-arc-kube-aad-proxy-sa
@@ -48,11 +48,8 @@ ms.locfileid: "108140166"
   az extension add --name connectedk8s
   ```
 
-
-
 >[!TIP]
 > 如果已安装 `connectedk8s` 扩展，则可以使用以下命令将其更新到最新版本：`az extension update --name connectedk8s`
-
 
 >[!NOTE]
 >你可单击[此处](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)找到启用 Azure Arc 的 Kubernetes 支持的区域列表。
@@ -148,6 +145,9 @@ eastus      AzureArcTest
 
 > [!TIP]
 > 上面未指定位置参数的命令会在资源组所在位置创建启用了 Azure Arc 的 Kubernetes 资源。 若要在其他位置创建启用了 Azure Arc 的 Kubernetes 资源，请在运行 `az connectedk8s connect` 命令时指定 `--location <region>` 或 `-l <region>`。
+
+> [!NOTE]
+> 如果使用服务主体登录到 Azure CLI，则在将群集连接到 Azure Arc 时，需要服务主体上的[其他权限](troubleshooting.md#enable-custom-locations-using-service-principal)才能启用自定义位置功能。
 
 ## <a name="verify-cluster-connection"></a>验证群集连接
 

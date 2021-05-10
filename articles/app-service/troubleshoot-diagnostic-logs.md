@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 03ef2110af2d9e642019c2b07b53fae3e32b1ea6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b12b3db9266284509e88cef85a33a1a43b500907
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104950172"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108075476"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -190,12 +190,14 @@ az webapp log tail --name appname --resource-group myResourceGroup --provider ht
 | AppServiceEnvironmentPlatformLogs | 是 | 空值 | 是 | 是 | 应用服务环境：缩放、配置更改和状态日志|
 | AppServiceAuditLogs | 是 | 是 | 是 | 是 | 通过 FTP 和 Kudu 进行的登录活动 |
 | AppServiceFileAuditLogs | 是 | 是 | TBA | TBA | 对站点内容所做的文件更改；仅适用于高级层和更高层级 |
-| AppServiceAppLogs | ASP .NET | ASP .NET | Java SE 和 Tomcat Blessed 图像 <sup>1</sup> | Java SE 和 Tomcat Blessed 图像 <sup>1</sup> | 应用程序日志 |
+| AppServiceAppLogs | ASP .NET 和 Tomcat <sup>1</sup> | ASP .NET 和 Tomcat <sup>1</sup> | Java SE 和 Tomcat Blessed 映像 <sup>2</sup> | Java SE 和 Tomcat Blessed 映像 <sup>2</sup> | 应用程序日志 |
 | AppServiceIPSecAuditLogs  | 是 | 是 | 是 | 是 | 来自 IP 规则的请求 |
 | AppServicePlatformLogs  | TBA | 是 | 是 | 是 | 容器操作日志 |
 | AppServiceAntivirusScanAuditLogs | 是 | 是 | 是 | 是 | 使用 Microsoft Defender 的[防病毒扫描日志](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html)；仅适用于高级层 | 
 
-<sup>1</sup> 对于 Java SE 应用，请将“$WEBSITE_AZMON_PREVIEW_ENABLED”添加到应用设置，并将其设置为“1”或“true”。
+<sup>1</sup> 对于 Tomcat 应用，请将“TOMCAT_USE_STARTUP_BAT”添加到应用设置，并将其设置为“false”或“0”。 需要使用最新的 Tomcat 版本，并使用 java.util.logging 。
+
+<sup>2</sup> 对于 Java SE 应用，请将“$WEBSITE_AZMON_PREVIEW_ENABLED”添加到应用设置，并将其设置为“true”或“1”。
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> 后续步骤
 * [使用 Azure Monitor 查询日志](../azure-monitor/logs/log-query-overview.md)

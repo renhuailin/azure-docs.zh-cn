@@ -2,14 +2,14 @@
 title: Azure VM 备份的支持矩阵
 description: 提供有关在使用 Azure 备份服务备份 Azure VM 时的支持设置和限制摘要。
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 04/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1f63d0c3ad448a8ab9b91764d4c369fefddea25d
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: c96c80721cd66f895c9c0dade590fc11d25de346
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516716"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107890755"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 
@@ -38,7 +38,7 @@ ms.locfileid: "107516716"
 **操作** | **支持**
 --- | ---
 备份已关闭/脱机的 VM | 支持。<br/><br/> 仅创建崩溃一致性快照，不会创建应用一致性快照。
-迁移到托管磁盘后备份磁盘 | 支持。<br/><br/> 备份将继续工作。 因此不需要执行任何操作。
+迁移到托管磁盘后备份磁盘 | 支持。<br/><br/> 备份将继续工作。 不需要执行任何操作。
 启用资源组锁定后备份托管磁盘 | 不支持。<br/><br/> Azure 备份无法删除旧的还原点；如果达到了还原点数目的上限，备份将开始失败。
 修改 VM 的备份策略 | 支持。<br/><br/> 将使用新策略中的计划和保留期设置备份 VM。 如果保留期设置已延长，则会标记并保留现有的恢复点。 如果保留期设置已缩短，则会在下一个清理作业中清理现有的恢复点，并最终将其删除。
 取消备份作业| 在快照过程中受支持。<br/><br/> 快照正在传输到保管库时不受支持。
@@ -69,7 +69,7 @@ Azure 备份不支持 32 位操作系统。
 
 **操作** | **支持**
 --- | ---
-使用 Linux Azure VM 代理备份 Linux Azure VM | 文件一致性备份。<br/><br/> 使用[自定义脚本](backup-azure-linux-app-consistent.md)的应用一致性备份。<br/><br/> 在还原过程中，可以创建新的 VM、还原某个磁盘并使用它来创建 VM，或者还原某个磁盘并使用它来替换现有 VM 上的磁盘。 还可以还原单个文件和文件夹。
+使用 Linux Azure VM 代理备份 Linux Azure VM | 文件一致性备份。<br/><br/> 使用[自定义脚本](backup-azure-linux-app-consistent.md)的应用一致性备份。<br/><br/> 在还原过程中，可以新建 VM、还原某个磁盘并用其创建 VM，或者还原某个磁盘并用其替换现有 VM 上的磁盘。 还可以还原单个文件和文件夹。
 使用 MARS 代理备份 Linux Azure VM | 不支持。<br/><br/> MARS 代理只能安装在 Windows 计算机上。
 使用 DPM/MABS 备份 Linux Azure VM | 不支持。
 利用 docker 装入点备份 Linux Azure VM | 目前，Azure 备份不支持排除 docker 装入点，因为它们每次都装载在不同路径上。
@@ -146,12 +146,12 @@ VM 大小 |至少有 2 个 CPU 核心和 1-GB RAM 的任意 Azure VM 大小。<b
 备份从自定义映像部署的 VM（第三方） |支持。<br/><br/> VM 必须运行受支持的操作系统。<br/><br/> 恢复 VM 上的文件时，可以仅还原到兼容的 OS（不是早期版本或更高版本的 OS）。
 备份已迁移到 Azure 的 VM| 支持。<br/><br/> 若要备份 VM，必须在迁移的计算机上安装 VM 代理。
 备份多 VM 一致性 | Azure 备份不提供跨多个 VM 的数据和应用程序一致性。
-备份包含[诊断设置](../azure-monitor/essentials/platform-logs-overview.md)的 VM  | 不支持。 <br/><br/> 如果使用[新建](backup-azure-arm-restore-vms.md#create-a-vm)选项触发包含诊断设置的 Azure VM 的还原，还原将会失败。
+备份包含[诊断设置](../azure-monitor/essentials/platform-logs-overview.md)的 VM  | 不支持。 <br/><br/> 如果使用[新建](backup-azure-arm-restore-vms.md#create-a-vm)选项触发具有诊断设置的 Azure VM 的还原，则还原将失败。
 还原区域固定 VM | 支持（适用于 2019 年 1 月以后备份且[可用性区域](https://azure.microsoft.com/global-infrastructure/availability-zones/)可用的 VM）。<br/><br/>目前支持还原到 VM 中固定的同一区域。 但是，如果由于故障而导致区域不可用，则还原将失败。
 Gen2 VM | 支持 <br> Azure 备份支持备份和还原 [Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)。 从恢复点还原这些 VM 时，它们作为 [Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) 还原。
 带锁的 Azure VM 的备份 | 非托管 VM 不支持。 <br><br> 托管 VM 支持。
 [点 VM](../virtual-machines/spot-vms.md) | 不支持。 Azure 备份会将现成 VM 还原为常规 Azure VM。
-[Azure 专用主机](../virtual-machines/dedicated-hosts.md) | 支持
+[Azure 专用主机](../virtual-machines/dedicated-hosts.md) | 支持<br></br>通过[新建](backup-azure-arm-restore-vms.md#create-a-vm)选项还原 Azure VM 时，尽管还原成功，但 Azure VM 无法在专用主机中还原。 为此，我们建议你还原为磁盘。 使用模板[还原为磁盘](backup-azure-arm-restore-vms.md#restore-disks)时，请在专用主机中创建一个 VM，然后附加磁盘。<br></br>执行[跨区域还原](backup-azure-arm-restore-vms.md#cross-region-restore)时，这也适用于次要区域。
 独立 Azure VM 的 Windows 存储空间配置 | 支持
 [Azure VM 规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md#scale-sets-with-flexible-orchestration) | 同时支持统一的和灵活的业务流程模型，以便备份和还原单个 Azure VM。
 

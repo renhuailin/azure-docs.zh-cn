@@ -1,18 +1,18 @@
 ---
 title: 排查常见错误
-description: 了解如何排查创建、分配和删除蓝图等问题，例如，策略违规和蓝图参数函数。
+description: 了解如何排查创建、分配和删除蓝图时遇到的问题，例如，策略冲突和蓝图参数函数。
 ms.date: 01/27/2021
 ms.topic: troubleshooting
 ms.openlocfilehash: 65cf8ef9a5dcba0165aad8522f91ff1eb2c963a8
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98918838"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>排查使用 Azure 蓝图时出现的错误
 
-创建、分配或删除蓝图时可能会遇到错误。 本文描述可能会发生的各种错误及其解决方法。
+创建、分配或删除蓝图时可能会出现问题。 本文描述可能会发生的各种错误及其解决方法。
 
 ## <a name="finding-error-details"></a>查找错误详细信息
 
@@ -20,11 +20,11 @@ ms.locfileid: "98918838"
 
 1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
-1. 从左侧页面中选择 " **分配的蓝图** "，然后使用 "搜索" 框筛选蓝图分配，查找失败的分配。 还可以按“预配状态”列对分配表进行排序，集中查看失败的分配项。
+1. 选择左侧页面上的“已分配蓝图”，然后使用搜索框筛选分配的蓝图以找到失败的分配项。 还可以按“预配状态”列对分配表进行排序，集中查看失败的分配项。
 
-1. 选择状态为 " _失败_ " 的蓝图，或右键单击并选择 " **查看分配详细信息**"。
+1. 选择状态为“失败”的蓝图，或者右键单击然后选择“查看分配详细信息”。
 
-1. 蓝图分配页面顶部有一个红色横幅警告，指出此分配已失败。 选择标题上的任何位置以获取更多详细信息。
+1. 蓝图分配页面顶部有一个红色横幅警告，指出此分配已失败。 选择横幅任意位置可获取更多详细信息。
 
 错误通常是由某个项目导致的，而不是由蓝图整体导致的。 如果某个项目创建密钥保管库但是 Azure Policy 阻止密钥保管库创建，则整个分配将失败。
 
@@ -59,23 +59,23 @@ ms.locfileid: "98918838"
 
 #### <a name="resolution"></a>解决方法
 
-若要将函数作为参数传递，请使用 `[` 转义整个字符串，使蓝图参数如 `[[resourceGroup().tags.myTag]`。 转义字符会导致蓝图在处理蓝图时将值视为字符串。 然后，蓝图服务将函数放置在项目上，使其能够按预期方式动态进行。 有关详细信息，请参阅 [Azure 资源管理器模板中的语法和表达式](../../../azure-resource-manager/templates/template-expressions.md)。
+若要将函数作为参数传递，请使用 `[` 转义整个字符串，使蓝图参数如 `[[resourceGroup().tags.myTag]`。 转义字符会导致蓝图在处理蓝图时将值视为字符串。 然后，蓝图服务将该函数放置在项目中，使其按预期动态化。 有关详细信息，请参阅 [Azure 资源管理器模板中的语法和表达式](../../../azure-resource-manager/templates/template-expressions.md)。
 
 ## <a name="delete-errors"></a>删除错误
 
-### <a name="scenario-assignment-deletion-timeout"></a><a name="assign-delete-timeout"></a>方案：分配删除超时
+### <a name="scenario-assignment-deletion-timeout"></a><a name="assign-delete-timeout"></a>方案：删除分配超时
 
 #### <a name="issue"></a>问题
 
-无法完成蓝图分配的删除。
+未完成蓝图分配删除。
 
 #### <a name="cause"></a>原因
 
-删除时，蓝图分配可能会停滞为非终止状态。 如果蓝图分配创建的资源仍处于挂起状态，或者不会将状态代码返回到 Azure 蓝图，则会导致此状态。
+删除蓝图分配时，其可能停滞为非终端状态。 如果蓝图分配创建的资源仍在等待删除，或者未向 Azure 蓝图返回状态代码，则会出现此状态。
 
 #### <a name="resolution"></a>解决方法
 
-处于非终端状态的蓝图分配在 _六小时_ 超时后会自动标记为 "**失败**"。 超时调整了蓝图分配的状态后，可以重试删除。
+对于非终端状态的蓝图分配，将在“六小时”超时后自动将其标记为“失败”。 因超时而调整了蓝图分配的状态后，可以重试删除。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,19 +6,19 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 04/20/2021
-ms.openlocfilehash: 045d7391c9c3c2870efddc0aed4ae7590db938d2
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: bfeaf070268dde315858c045bd1b941dc1bdb26a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107795872"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136150"
 ---
 # <a name="built-in-triggers-and-actions-for-logic-apps"></a>逻辑应用的内置触发器和操作
 
 
 通过[内置触发器和操作](apis-list.md)，你可以执行以下操作：[控制工作流的计划和结构](#control-workflow)、[运行自己代码](#run-code-from-workflows)、[管理或操作数据](#manage-or-manipulate-data)以及完成工作流中的其他任务。 不同于[托管连接器](managed.md)，许多内置操作没有与特定服务、系统或协议相关联。 例如，你可以使用“定期”触发器启动计划上的几乎任何工作流。 或者可以使用“请求”触发器，使工作流在被调用以前都保持等待状态。 所有内置操作都在逻辑应用服务中以本机方式运行，并且大多数都不要求你在使用以前创建连接。 
 
-逻辑应用还为 Azure 服务总线、Azure Functions、SQL 和 AS2 等少数服务、系统和协议提供内置操作。 数量和范围根据你创建的是多租户逻辑应用还是单租户逻辑应用而有所不同。 在少数情况下，内置版本和托管连接器版本都可用。 在大多数情况下，内置版本提供更好的性能、更全面的功能以及更实惠的价格。 例如，若要[使用 AS2 协议交换 B2B 消息](../logic-apps/logic-apps-enterprise-integration-as2.md)，请选择内置版本，除非你需要仅在托管连接器版本（已弃用）中提供的跟踪功能。
+逻辑应用还为 Azure Functions、Azure 应用服务、Azure API 管理、AS2 等少数服务、系统和协议提供内置操作。 这一选择范围因创建的是多租户逻辑应用还是单租户逻辑应用而异。 例如，如果创建单租户逻辑应用，则内置操作可用于 Azure 服务总线、Azure 事件中心、SQL Server 和 MQ。 在少数情况下，内置版本和托管连接器版本都可用。 在大多数情况下，内置版本提供更好的性能、更全面的功能以及更实惠的价格。 例如，若要[使用 AS2 协议交换 B2B 消息](../logic-apps/logic-apps-enterprise-integration-as2.md)，请选择内置版本，除非你需要仅在托管连接器版本（已弃用）中提供的跟踪功能。
 
 以下列表仅介绍了部分可通过[内置触发器和操作](#understand-triggers-and-actions)完成的任务：
 

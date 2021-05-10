@@ -4,22 +4,22 @@ description: 了解如何使用 Power BI 连接到 Azure Analysis Services 服�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 4/20/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ed0f3d379ca961c610958c073c27c6fc9583252b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c5a430c5bb24032a2665ad078311dcb5137d2bb9
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96500914"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816020"
 ---
 # <a name="connect-with-power-bi"></a>使用 Power BI 进行连接
 
 在 Azure 中创建服务器并向其部署表格模型后，组织中的用户便可以连接并开始浏览数据。 
 
-> [!TIP]
-> 请务必使用最新版本的 [Power BI Desktop](https://powerbi.microsoft.com/desktop/)。
+> [!NOTE]
+> 如果将 Power BI Desktop 模型发布到 Power BI 服务，则在 Azure Analysis Services 服务器上，请确保未选择区分大小写排序规则服务器属性（默认未选择此属性）。 可使用 SQL Server Management Studio 设置区分大小写服务器属性。
 > 
 > 
   

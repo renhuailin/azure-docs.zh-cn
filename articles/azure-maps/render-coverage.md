@@ -1,6 +1,6 @@
 ---
-title: 呈现覆盖率 |Microsoft Azure 映射
-description: 了解 Azure Maps 是否呈现具有详细数据或简化数据的不同区域。 请参阅在这些区域中，对于光栅磁贴和矢量磁贴地图，它使用的级别。
+title: 呈现覆盖区域 | Microsoft Azure Maps
+description: 了解 Azure Maps 是使用详细数据还是简化数据来呈现各个区域。 了解其针对这些区域中的光栅磁贴和矢量磁贴地图所使用的级别。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 03/22/2019
@@ -9,17 +9,17 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 69b122196cbeb7508cddf3a890768f83fdcd4727
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88030922"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps 呈现覆盖区域
 
-Azure Maps 使用光栅磁贴和矢量磁贴来创建地图。 在最低分辨率下，整个世界都适用于单个磁贴。 在最高分辨率下，单个磁贴表示38个平方米。 当你放大地图时，你将看到有关大陆、区域、城市和单独街道的更多详细信息。 有关图块的详细信息，请参阅 [缩放级别和磁贴网格](zoom-levels-and-tile-grid.md)。
+Azure Maps 使用光栅磁贴和矢量磁贴来创建地图。 采用最低分辨率时，整个世界可以容纳在单个磁贴中。 采用最高分辨率时，单个磁贴表示 38 平方米。 在地图中进行放大时，可以看到关于大洲、区域、城市和各条街道的更多详细信息。 有关磁贴的详细信息，请参阅[缩放级别和磁贴网格](zoom-levels-and-tile-grid.md)。
 
-但对于所有区域，地图没有相同级别的信息和准确性。 下表详细说明了可以为每个区域呈现的信息级别。
+但是，Maps 并非对所有区域都提供相同级别的信息和准确性。 下表详细说明了每个区域可以呈现的信息级别。
 
 ## <a name="legend"></a>图例
 

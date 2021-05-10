@@ -6,18 +6,18 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 04/07/2020
-ms.openlocfilehash: 97d4f0a387b75c9b23f64992a8ef39bc0bad17f0
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 02952ab57eeaaec8700ffa97101060558370dd64
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107715167"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147114"
 ---
 # <a name="using-azure-migrate-with-private-endpoints"></a>使用结合专用终结点的 Azure Migrate  
 
-本文介绍如何使用 Azure Migrate，通过 [Azure 专用链接](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)在专用网络上发现、评估和迁移服务器。 
+本文介绍如何使用 Azure Migrate，通过 [Azure 专用链接](../private-link/private-endpoint-overview.md)在专用网络上发现、评估和迁移服务器。 
 
-你可以使用 [Azure Migrate: 发现和评估](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-discovery-and-assessment-tool)和 [Azure Migrate: 服务器迁移](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-server-migration-tool)工具，通过 Azure 专用链接，经由 ExpressRoute 专用对等互连或站点到站点的 VPN 连接以私密且安全的方式连接到 Azure Migrate 服务。 
+你可以使用 [Azure Migrate: 发现和评估](./migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool)和 [Azure Migrate: 服务器迁移](./migrate-services-overview.md#azure-migrate-server-migration-tool)工具，通过 Azure 专用链接，经由 ExpressRoute 专用对等互连或站点到站点的 VPN 连接以私密且安全的方式连接到 Azure Migrate 服务。 
 
 如果组织需要在不遍历公用网络的情况下访问 Azure Migrate 服务和其他 Azure 资源，则建议使用专用终结点连接方法。 你还可以通过专用链接支持，使用现有的 ExpressRoute 专用对等互连线路来满足更高的带宽或延迟要求。 
 
@@ -31,18 +31,18 @@ ms.locfileid: "107715167"
 
 **部署** | **详细信息** | **工具** 
 --- | --- | ---
-发现和评估 | 对在任何平台上运行的服务器执行无代理的大规模发现和评估，这些平台包括 [VMware vSphere](https://docs.microsoft.com/azure/migrate/tutorial-discover-vmware) 或 [Microsoft Hyper-V](https://docs.microsoft.com/azure/migrate/tutorial-discover-hyper-v) 等虚拟机监控程序平台、[AWS](https://docs.microsoft.com/azure/migrate/tutorial-discover-aws) 或 [GCP](https://docs.microsoft.com/azure/migrate/tutorial-discover-gcp) 等公有云，或甚至是[裸机计算机服务器](https://docs.microsoft.com/azure/migrate/tutorial-discover-physical)。 | Azure Migrate: 发现和评估  <br/> 
+发现和评估 | 对在任何平台上运行的服务器执行无代理的大规模发现和评估，这些平台包括 [VMware vSphere](./tutorial-discover-vmware.md) 或 [Microsoft Hyper-V](./tutorial-discover-hyper-v.md) 等虚拟机监控程序平台、[AWS](./tutorial-discover-aws.md) 或 [GCP](./tutorial-discover-gcp.md) 等公有云，或甚至是[裸机计算机服务器](./tutorial-discover-physical.md)。 | Azure Migrate: 发现和评估  <br/> 
 **软件清单** | 发现在 VMware VM 上运行的应用、角色和功能。 | Azure Migrate: 发现和评估  
-依赖项可视化 | 使用依赖项分析功能识别和了解各服务器之间的依赖项。 <br/> Azure Migrate 专用链接支持在本机支持[无代理依赖项可视化](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies-agentless)。 <br/>[基于代理的依赖项可视化](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)需要 Internet 连接。 [了解如何](https://docs.microsoft.com/azure/azure-monitor/logs/private-link-security)将专用终结点用于基于代理的依赖项可视化。 | Azure Migrate: 发现和评估 |
-**迁移** | 执行[无代理 Hyper-V 迁移](https://docs.microsoft.com/azure/migrate/tutorial-migrate-hyper-v)，或使用基于代理的方法迁移 [VMware VM](./tutorial-migrate-vmware-agent.md)、[Hyper-V VM](./tutorial-migrate-physical-virtual-machines.md)、[物理服务器](./tutorial-migrate-physical-virtual-machines.md)、[在 AWS 上运行的 VM](./tutorial-migrate-aws-virtual-machines.md)、[在 GCP 上运行的 VM](https://docs.microsoft.com/azure/migrate/tutorial-migrate-gcp-virtual-machines) 或在其他虚拟化提供程序上运行的 VM。 | Azure Migrate:服务器迁移
+依赖项可视化 | 使用依赖项分析功能识别和了解各服务器之间的依赖项。 <br/> Azure Migrate 专用链接支持在本机支持[无代理依赖项可视化](./how-to-create-group-machine-dependencies-agentless.md)。 <br/>[基于代理的依赖项可视化](./how-to-create-group-machine-dependencies.md)需要 Internet 连接。 [了解如何](../azure-monitor/logs/private-link-security.md)将专用终结点用于基于代理的依赖项可视化。 | Azure Migrate: 发现和评估 |
+**迁移** | 执行[无代理 Hyper-V 迁移](./tutorial-migrate-hyper-v.md)，或使用基于代理的方法迁移 [VMware VM](./tutorial-migrate-vmware-agent.md)、[Hyper-V VM](./tutorial-migrate-physical-virtual-machines.md)、[物理服务器](./tutorial-migrate-physical-virtual-machines.md)、[在 AWS 上运行的 VM](./tutorial-migrate-aws-virtual-machines.md)、[在 GCP 上运行的 VM](./tutorial-migrate-gcp-virtual-machines.md) 或在其他虚拟化提供程序上运行的 VM。 | Azure Migrate:服务器迁移
  
 >[!Note]
 >
-> [无代理 VMware 迁移](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware)需要通过 ExperessRoute Microsoft 对等互连访问或连接 Internet。 <br/> [了解如何](https://docs.microsoft.com/azure/migrate/replicate-using-expressroute)使用专用终结点通过 ExpressRoute 专用对等互连或站点到站点 (S2S) VPN 连接来执行复制。  <br/><br/> 
+> [无代理 VMware 迁移](./tutorial-migrate-vmware.md)需要通过 ExperessRoute Microsoft 对等互连访问或连接 Internet。 <br/> [了解如何](./replicate-using-expressroute.md)使用专用终结点通过 ExpressRoute 专用对等互连或站点到站点 (S2S) VPN 连接来执行复制。  <br/><br/> 
    
 #### <a name="other-integrated-tools"></a>其他集成工具
 
-如果禁用公用网络访问，一些集成工具可能无法将使用情况数据上传到 Azure Migrate 项目。 应将 Azure Migrate 项目配置为允许来自所有网络的流量，以接收来自其他 Microsoft 或外部[独立软件供应商 (ISV)](https://docs.microsoft.com/azure/migrate/migrate-services-overview#isv-integration) 产品/服务的数据。 
+如果禁用公用网络访问，一些集成工具可能无法将使用情况数据上传到 Azure Migrate 项目。 应将 Azure Migrate 项目配置为允许来自所有网络的流量，以接收来自其他 Microsoft 或外部[独立软件供应商 (ISV)](./migrate-services-overview.md#isv-integration) 产品/服务的数据。 
 
 
 要为 Azure Migrate 项目启用公用网络访问，请转到 Azure 门户上的 Azure Migrate“属性页”，选择“否”，然后选择“保存”  。
@@ -58,7 +58,7 @@ ms.locfileid: "107715167"
 
 ## <a name="create-a-project-with-private-endpoint-connectivity"></a>创建一个具有专用终结点连接的项目
 
-使用[本文](https://docs.microsoft.com/azure/migrate/create-manage-projects#create-a-project-for-the-first-time)设置新的 Azure Migrate 项目。 
+使用[本文](./create-manage-projects.md#create-a-project-for-the-first-time)设置新的 Azure Migrate 项目。 
 
 > [!Note]
 > 你不能将现有 Azure Migrate 项目的连接方法更改为专用终结点连接。
@@ -89,35 +89,39 @@ ms.locfileid: "107715167"
     > 在创建资源期间，请不要关闭“发现计算机”页。  
     - 在此步骤，Azure Migrate 创建密钥保管库、存储帐户、恢复服务保管库（仅用于无代理 VMware 迁移）和一些内部资源，并向每种资源附加一个专用终结点。 专用终结点在创建项目期间选择的虚拟网络中创建。  
     - 创建专用终结点后，Azure Migrate 资源的 DNS CNAME 资源记录更新为前缀为 privatelink 的子域中的别名。 默认情况下，Azure Migrate 还创建一个与每种资源类型的 privatelink 子域相对应的专用 DNS 区域，并为相关专用终结点插入 DNS A 记录。 这使 Azure Migrate 设备和在源网络中驻留的其他软件组件能够访问专用 IP 地址上的 Azure Migrate 资源终结点。  
-    - Azure Migrate 还为 Migrate 项目启用[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)，并授予托管标识可以安全访问存储帐户的权限。  
+    - Azure Migrate 还为 Migrate 项目启用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)，并授予托管标识可以安全访问存储帐户的权限。  
 
 4. 成功生成密钥后，复制密钥的详细信息以配置和注册设备。   
 
-#### <a name="download-the-appliance-installer-file"></a>下载设备安装程序文件
+#### <a name="download-the-appliance-installer-file"></a>下载设备安装程序文件  
 
 “Azure Migrate：发现和评估”使用轻型 Azure Migrate 设备。 设备执行服务器发现并将服务器配置和性能元数据发送到 Azure Migrate。
 
-要设置设备，请从门户下载包含安装程序脚本的压缩文件。 将压缩文件复制到将要托管该设备的服务器上。
+要设置设备，请从门户下载包含安装程序脚本的压缩文件。 将压缩文件复制到将要托管该设备的服务器上。 下载压缩文件后，请验证文件安全性，并运行部署设备的安装程序脚本。 
 
-请确保服务器满足所选场景（VMware、Hyper-V 或物理等）的[硬件要求](https://docs.microsoft.com/azure/migrate/migrate-appliance)，并可以连接到所需的 Azure URL - [公有云](./migrate-appliance.md#public-cloud-urls-for-private-link-connectivity)和[政府云](./migrate-appliance.md#government-cloud-urls-for-private-link-connectivity)。
+下面是各个方案的下载链接及其哈希值：
 
-下载压缩文件后，请验证文件安全性，并运行部署设备的安装程序脚本。
+方案 | 下载链接 | 哈希值
+--- | --- | ---
+Hyper-V | [AzureMigrateInstaller-HyperV-Public-PrivateLink.zip](https://go.microsoft.com/fwlink/?linkid=2160557) | 17EFA01E3A7683F1CE2A08E3A9197A27D8BD2CC03C3AB5C6E00E4261A822BDB3
+物理 | [AzureMigrateInstaller-Physical-Public-PrivateLink.zip](https://go.microsoft.com/fwlink/?linkid=2160558) | 01028F92C2095452F2DDCB89986CDC1F177AAC58E150A5B219A69CF1B7DA3BE0
+VMware | [AzureMigrateInstaller-VMware-public-PrivateLink.zip](https://go.microsoft.com/fwlink/?linkid=2160648) | 66D3217AEC1DE51D84EC608B22BDDA605EC9C4FBAB06FC69FEC985886627C224
+VMware 横向扩展 | [AzureMigrateInstaller-VMware-Public-Scaleout-PrivateLink.zip](https://go.microsoft.com/fwlink/?linkid=2160811) | 42C1E8D5CF428E35E5B98E4E7465DD08439F0FD5C319340CE3E3ADC3DC1717A6
 
-#### <a name="verify-file-security"></a>验证文件安全性
+#### <a name="verify-security"></a>验证安全性
 
 在部署压缩文件之前检查其安全性。
 
-1. 在下载文件的服务器上，打开管理员命令窗口。 
+1. 在下载文件的服务器上，打开管理员命令窗口。
 2. 运行以下命令以生成 zip 文件的哈希
-    - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 示例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMware-PrivateEndPoint.zip SHA256```
-3. 验证 Azure 公有云的最新设备版本和脚本：
 
-    **算法** | **下载** | **SHA256**
-    --- | --- | ---
-    VMware (85.8 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2116601) | 85b74d93dfcee43412386141808d82147916330e6669df94c7969fe1b3d0fe72
-    Hyper-V (85.8 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2116601) | 85b74d93dfcee43412386141808d82147916330e6669df94c7969fe1b3d0fe72
-    物理或其他 (85.8 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2116601) | 85b74d93dfcee43412386141808d82147916330e6669df94c7969fe1b3d0fe72
+    - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
+    - 公有云的示例用法：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMware-public-PrivateLink.zip SHA256 ```
+
+3.  比较上表中的哈希值，以验证设备的最新版本。
+
+请确保服务器满足所选场景（VMware、Hyper-V 或物理等）的[硬件要求](./migrate-appliance.md)，并可以连接到所需的 Azure URL - [公有云](./migrate-appliance.md#public-cloud-urls-for-private-link-connectivity)和[政府云](./migrate-appliance.md#government-cloud-urls-for-private-link-connectivity)。
+
 
 #### <a name="run-the-script"></a>运行脚本
 
@@ -126,7 +130,7 @@ ms.locfileid: "107715167"
 3. 将 PowerShell 目录更改为包含从下载的压缩文件中提取的内容的文件夹。
 4. 运行脚本 AzureMigrateInstaller.ps1，如下所示：
 
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1```
+    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-VMware-public-PrivateLink> .\AzureMigrateInstaller.ps1```
    
 5. 脚本会在成功运行后启动设备配置管理器，以便你可以配置设备。 如果遇见任何问题，请查看位于 C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log 的脚本日志。
 
@@ -142,39 +146,39 @@ ms.locfileid: "107715167"
    - 连接：设备会检查对所需 URL 的访问权限。 如果服务器使用代理：
      - 选择“设置代理”，指定代理地址 `http://ProxyIPAddress` 或 `http://ProxyFQDN` 以及侦听端口。
      - 如果代理需要身份验证，请指定凭据。 仅支持 HTTP 代理。
-     - 如果需要，可以添加应绕过代理服务器的 URL/IP 地址的列表。 如果要使用 ExpressRoute 专用对等互连，请确保绕过这些 [URL](https://docs.microsoft.com/azure/migrate/replicate-using-expressroute#configure-proxy-bypass-rules-on-the-azure-migrate-appliance-for-vmware-agentless-migrations)。
+     - 如果需要，可以添加应绕过代理服务器的 URL/IP 地址的列表。 如果要使用 ExpressRoute 专用对等互连，请确保绕过这些 [URL](./replicate-using-expressroute.md#configure-proxy-bypass-rules-on-the-azure-migrate-appliance-for-vmware-agentless-migrations)。
      - 如果已更新代理服务器详细信息，或已添加 URL/IP 地址用于绕过代理，则需要选择“保存”以注册配置。
      
         > [!Note]
-        > 如果在连接性检查的过程中遇到了 aka.ms/* 链接错误，并且不希望设备通过 Internet 访问此 URL，则需要按照 [**此处**](https://docs.microsoft.com/azure/migrate/migrate-appliance#turn-off-auto-update)的步骤在设备上禁用自动更新服务。 禁用自动更新后，将跳过 aka.ms/* URL 连接性检查。 
+        > 如果在连接性检查的过程中遇到了 aka.ms/* 链接错误，并且不希望设备通过 Internet 访问此 URL，则需要按照 [**此处**](./migrate-appliance.md#turn-off-auto-update)的步骤在设备上禁用自动更新服务。 禁用自动更新后，将跳过 aka.ms/* URL 连接性检查。 
 
    - **时间同步**：设备上的时间应与 Internet 时间同步，这样才能正常进行发现。
    - **安装更新**：设备可确保安装最新的更新。 检查完成后，可以选择“查看设备服务”查看设备服务器上运行的服务的状态和版本。
         > [!Note]
-        > 如果已选择在设备上禁用自动更新服务，则可以按照[此处](https://docs.microsoft.com/azure/migrate/migrate-appliance#manually-update-an-older-version)的步骤手动更新设备服务以获取最新版本的服务。
+        > 如果已选择在设备上禁用自动更新服务，则可以按照[此处](./migrate-appliance.md#manually-update-an-older-version)的步骤手动更新设备服务以获取最新版本的服务。
    - 安装 VDDK：（仅 VMware 设备需要）设备将检查是否已安装 VMware vSphere 虚拟磁盘开发工具包 (VDDK)。 从 VMware 下载 VDDK 6.7（如果尚未安装它），并按照“安装说明”中提供的信息将下载的 zip 内容解压缩到设备上的指定位置。
 
 #### <a name="register-the-appliance-and-start-continuous-discovery"></a>注册设备并启动持续发现
 
-完成先决条件检查后，按照以下步骤注册设备并启动针对各自场景的连续发现：[VMware VM](https://docs.microsoft.com/azure/migrate/tutorial-discover-vmware#register-the-appliance-with-azure-migrate)、[Hyper-V VM](https://docs.microsoft.com/azure/migrate/tutorial-discover-hyper-v#register-the-appliance-with-azure-migrate)、[物理服务器](https://docs.microsoft.com/azure/migrate/tutorial-discover-physical#register-the-appliance-with-azure-migrate)、[AWS VM](https://docs.microsoft.com/azure/migrate/tutorial-discover-aws#register-the-appliance-with-azure-migrate)、[GCP VM](https://docs.microsoft.com/azure/migrate/tutorial-discover-gcp#register-the-appliance-with-azure-migrate)。
+完成先决条件检查后，按照以下步骤注册设备并启动针对各自场景的连续发现：[VMware VM](./tutorial-discover-vmware.md#register-the-appliance-with-azure-migrate)、[Hyper-V VM](./tutorial-discover-hyper-v.md#register-the-appliance-with-azure-migrate)、[物理服务器](./tutorial-discover-physical.md#register-the-appliance-with-azure-migrate)、[AWS VM](./tutorial-discover-aws.md#register-the-appliance-with-azure-migrate)、[GCP VM](./tutorial-discover-gcp.md#register-the-appliance-with-azure-migrate)。
 
 
 >[!Note]
 > 如果在注册设备期间或启动发现时遇到了 DNS 解析问题，请确保可从托管 Azure Migrate 设备的本地服务器访问在门户上执行“生成密钥”步骤期间创建的 Azure Migrate 资源。 [详细了解如何验证网络连接性](#troubleshoot-network-connectivity)。
 
 ### <a name="assess-your-servers-for-migration-to-azure"></a>评估服务器以迁移到 Azure
-完成发现后，使用“Azure Migrate: 发现和评估”工具评估服务器（[VMware VM](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware-azure-vm)、[Hyper-V VM](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v)、[物理服务器](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware-azure-vm)、[AWS VM](https://docs.microsoft.com/azure/migrate/tutorial-assess-aws) 和 [GCP VM](https://docs.microsoft.com/azure/migrate/tutorial-assess-gcp)）以迁移到 Azure VM 或 Azure VMware 解决方案 (AVS)。 
+完成发现后，使用“Azure Migrate: 发现和评估”工具评估服务器（[VMware VM](./tutorial-assess-vmware-azure-vm.md)、[Hyper-V VM](./tutorial-assess-hyper-v.md)、[物理服务器](./tutorial-assess-vmware-azure-vm.md)、[AWS VM](./tutorial-assess-aws.md) 和 [GCP VM](./tutorial-assess-gcp.md)）以迁移到 Azure VM 或 Azure VMware 解决方案 (AVS)。 
 
-还可使用导入的逗号分隔值 (CSV) 文件，通过“Azure Migrate: 发现和评估”工具[评估本地计算机](https://docs.microsoft.com/azure/migrate/tutorial-discover-import#prepare-the-csv)。   
+还可使用导入的逗号分隔值 (CSV) 文件，通过“Azure Migrate: 发现和评估”工具[评估本地计算机](./tutorial-discover-import.md#prepare-the-csv)。   
 
 ## <a name="migrate-servers-to-azure-using-azure-private-link"></a>使用 Azure 专用链接将服务器迁移到 Azure
 
-以下部分介绍通过 ExpressRoute 专用对等互连或 VPN 连接，使用结合[专用终结点](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)的 Azure Migrate 进行迁移所需的步骤。  
+以下部分介绍通过 ExpressRoute 专用对等互连或 VPN 连接，使用结合[专用终结点](../private-link/private-endpoint-overview.md)的 Azure Migrate 进行迁移所需的步骤。  
 
-本文介绍了基于代理的复制的概念证明部署路径，以使用 Azure 专用终结点迁移 [VMware VM](./tutorial-migrate-vmware-agent.md)、[Hyper-V VM](./tutorial-migrate-physical-virtual-machines.md)、[物理服务器](./tutorial-migrate-physical-virtual-machines.md)、[在 AWS 上运行的 VM](./tutorial-migrate-aws-virtual-machines.md)、[在 GCP 上运行的 VM](https://docs.microsoft.com/azure/migrate/tutorial-migrate-gcp-virtual-machines) 或在其他虚拟化提供程序上运行的 VM。 可使用类似的方法通过专用链接执行[无代理 Hyper-V 迁移](https://docs.microsoft.com/azure/migrate/tutorial-migrate-hyper-v)。
+本文介绍了基于代理的复制的概念证明部署路径，以使用 Azure 专用终结点迁移 [VMware VM](./tutorial-migrate-vmware-agent.md)、[Hyper-V VM](./tutorial-migrate-physical-virtual-machines.md)、[物理服务器](./tutorial-migrate-physical-virtual-machines.md)、[在 AWS 上运行的 VM](./tutorial-migrate-aws-virtual-machines.md)、[在 GCP 上运行的 VM](./tutorial-migrate-gcp-virtual-machines.md) 或在其他虚拟化提供程序上运行的 VM。 可使用类似的方法通过专用链接执行[无代理 Hyper-V 迁移](./tutorial-migrate-hyper-v.md)。
 
 >[!Note]
->[无代理 VMware 迁移](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical)需要通过 ExperessRoute Microsoft 对等互连访问或连接 Internet。 
+>[无代理 VMware 迁移](./tutorial-assess-physical.md)需要通过 ExperessRoute Microsoft 对等互连访问或连接 Internet。 
 
 ### <a name="set-up-a-replication-appliance-for-migration"></a>设置复制设备以进行迁移 
 
@@ -182,7 +186,7 @@ ms.locfileid: "107715167"
 
 ![复制体系结构](./media/how-to-use-azure-migrate-with-private-endpoints/replication-architecture.png)
 
-该工具使用复制设备将服务器复制到 Azure。 使用本文[为复制设备准备和设置计算机](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines#prepare-a-machine-for-the-replication-appliance)。
+该工具使用复制设备将服务器复制到 Azure。 使用本文[为复制设备准备和设置计算机](./tutorial-migrate-physical-virtual-machines.md#prepare-a-machine-for-the-replication-appliance)。
 
 设置复制设备后，使用以下说明创建执行迁移所需的资源。 
 
@@ -196,11 +200,11 @@ ms.locfileid: "107715167"
 
 4. 在注册复制设备之前，请确保可从托管复制设备的计算机访问保管库的专用链接 FQDN。 [详细了解如何验证网络连接性。](#troubleshoot-network-connectivity) 
 
-5. 验证连接性后，下载设备安装和密钥文件，运行安装过程，并将设备注册到 Azure Migrate。 请在[此处](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines#set-up-the-replication-appliance)查看详细步骤。 设置复制设备后，按照这些说明在要迁移到的计算机上[安装移动服务](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines#install-the-mobility-service)。 
+5. 验证连接性后，下载设备安装和密钥文件，运行安装过程，并将设备注册到 Azure Migrate。 请在[此处](./tutorial-migrate-physical-virtual-machines.md#set-up-the-replication-appliance)查看详细步骤。 设置复制设备后，按照这些说明在要迁移到的计算机上[安装移动服务](./tutorial-migrate-physical-virtual-machines.md#install-the-mobility-service)。 
 
 ### <a name="replicate-servers-to-azure-using-azure-private-link"></a>使用 Azure 专用链接将服务器复制到 Azure 
 
-现在，按照[这些步骤](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines#replicate-machines)选择要复制的服务器。  
+现在，按照[这些步骤](./tutorial-migrate-physical-virtual-machines.md#replicate-machines)选择要复制的服务器。  
 
 在“复制” > “目标设置” > “缓存/复制存储帐户”中，使用下拉菜单选择要通过专用链接复制的存储帐户  。  
 
@@ -260,7 +264,7 @@ ms.locfileid: "107715167"
 
 ### <a name="create-a-private-endpoint-for-the-storage-account-optional"></a>创建存储帐户的专用终结点（可选）
 
-若要使用结合专用对等互连的 ExpressRoute 进行复制，请为缓存/复制存储帐户（目标子资源：blob）[创建一个专用终结点](https://docs.microsoft.com/azure/private-link/tutorial-private-endpoint-storage-portal#create-storage-account-with-a-private-endpoint)。 
+若要使用结合专用对等互连的 ExpressRoute 进行复制，请为缓存/复制存储帐户（目标子资源：blob）[创建一个专用终结点](../private-link/tutorial-private-endpoint-storage-portal.md#create-storage-account-with-a-private-endpoint)。 
 
 >[!Note]
 >
@@ -268,7 +272,7 @@ ms.locfileid: "107715167"
 
 存储帐户的专用终结点应在与 Azure Migrate 项目专用终结点相同的虚拟网络或与此网络相连接的其他虚拟网络中创建。 
 
-选择“是”，然后与专用 DNS 区域集成。 专用 DNS 区域有助于通过专用链接将虚拟网络的连接路由到存储帐户。 选择“是”，自动将 DNS 区域链接到虚拟网络，并添加 DNS 记录，用于新创建的 IP 和完全限定的域名的解析。 详细了解[专用 DNS 区域](https://docs.microsoft.com/azure/dns/private-dns-overview)。
+选择“是”，然后与专用 DNS 区域集成。 专用 DNS 区域有助于通过专用链接将虚拟网络的连接路由到存储帐户。 选择“是”，自动将 DNS 区域链接到虚拟网络，并添加 DNS 记录，用于新创建的 IP 和完全限定的域名的解析。 详细了解[专用 DNS 区域](../dns/private-dns-overview.md)。
 
 如果创建专用终结点的用户也是存储帐户的所有者，则将自动批准专用终结点。 否则，存储帐户的所有者必须批准专用终结点才能使用。 要批准或拒绝请求的专用终结点连接，请转到存储帐户页中“网络”下的“专用终结点连接” 。
 
@@ -284,7 +288,7 @@ ms.locfileid: "107715167"
 >
 > - 若要在复制存储帐户的类型为“高级”的情况下将 Hyper-V VM 迁移到 Azure，则必须为缓存存储帐户选择另一个类型为“标准”的存储帐户 。 在这种情况下，必须为复制和缓存存储帐户创建专用终结点。  
 
-接下来，按照这些说明[查看和启动复制](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines#replicate-machines)并[执行迁移](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines#run-a-test-migration)。  
+接下来，按照这些说明[查看和启动复制](./tutorial-migrate-physical-virtual-machines.md#replicate-machines)并[执行迁移](./tutorial-migrate-physical-virtual-machines.md#run-a-test-migration)。  
 
 ## <a name="troubleshoot-network-connectivity"></a>排查网络连接问题 
 
@@ -304,7 +308,7 @@ ms.locfileid: "107715167"
 
 ### <a name="verify-dns-resolution"></a>验证 DNS 解析 
 
-本地设备（或复制提供程序）将使用其完全限定的专用链接域名 (FQDN) 访问 Azure Migrate 资源。 可能需要其他 DNS 设置，以便从源环境解析专用终结点的专用 IP 地址。 [通过本文](https://docs.microsoft.com/azure/private-link/private-endpoint-dns#on-premises-workloads-using-a-dns-forwarder)了解有助于排查任何网络连接问题的 DNS 配置场景。  
+本地设备（或复制提供程序）将使用其完全限定的专用链接域名 (FQDN) 访问 Azure Migrate 资源。 可能需要其他 DNS 设置，以便从源环境解析专用终结点的专用 IP 地址。 [通过本文](../private-link/private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder)了解有助于排查任何网络连接问题的 DNS 配置场景。  
 
 要验证专用链接的连接，请从托管 Migrate 设备的本地服务器执行 Azure Migrate 资源终结点（专用链接资源 FQDN）的 DNS 解析，并确保其解析为专用 IP 地址。 专用终结点的详细信息和专用链接资源 FQDN 的信息在“发现和评估”以及“服务器迁移”属性页中提供。 选择“下载 DNS 设置”查看列表。   
 
@@ -326,7 +330,7 @@ ms.locfileid: "107715167"
 
 如果 DNS 解析不正确，请执行以下步骤：  
 
-- 如果使用自定义 DNS，请查看自定义 DNS 设置，并验证 DNS 配置是否正确。 有关指南，请参阅[专用终结点概述：DNS 配置](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)。
+- 如果使用自定义 DNS，请查看自定义 DNS 设置，并验证 DNS 配置是否正确。 有关指南，请参阅[专用终结点概述：DNS 配置](../private-link/private-endpoint-overview.md#dns-configuration)。
 - 如果使用 Azure 提供的 DNS 服务器，请参阅以下部分进一步排除故障。  
 
 > [!Tip]
@@ -347,7 +351,7 @@ ms.locfileid: "107715167"
 
 ![DNS 配置屏幕截图](./media/how-to-use-azure-migrate-with-private-endpoints/dns-configuration.png)  
 
-如果 DNS 区域不存在（如下所示），请[创建新的专用 DNS 区域资源。](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal)  
+如果 DNS 区域不存在（如下所示），请[创建新的专用 DNS 区域资源。](../dns/private-dns-getstarted-portal.md)  
 
 ![创建专用 DNS 区域](./media/how-to-use-azure-migrate-with-private-endpoints/create-dns-zone.png) 
 
@@ -358,7 +362,7 @@ ms.locfileid: "107715167"
 
 ![查看虚拟网络链接](./media/how-to-use-azure-migrate-with-private-endpoints/virtual-network-links.png) 
 
-此时会显示一个链接列表，每个链接都有一个订阅中的虚拟网络的名称。 包含专用终结点资源的虚拟网络必须在此处列出。 否则，[根据文本](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network)将专用 DNS 区域链接到虚拟网络。    
+此时会显示一个链接列表，每个链接都有一个订阅中的虚拟网络的名称。 包含专用终结点资源的虚拟网络必须在此处列出。 否则，[根据文本](../dns/private-dns-getstarted-portal.md#link-the-virtual-network)将专用 DNS 区域链接到虚拟网络。    
 
 专用 DNS 区域链接到虚拟网络后，源自虚拟网络的 DNS 请求将查找专用 DNS 区域中的 DNS 记录。 对于为在其中创建了专用终结点的虚拟网络进行正确的地址解析，此操作是必需的。   
 
@@ -385,7 +389,7 @@ ms.locfileid: "107715167"
 - 网络对等互连，这可能会对使用哪些 DNS 服务器以及如何路由流量造成影响。  
 - 自定义网关 (NAT) 解决方案，可能会影响流量（包括来自 DNS 查询的流量）的路由方式。
 
-有关详细信息，请参阅[专用终结点连接问题的排除指南。](https://docs.microsoft.com/azure/private-link/troubleshoot-private-endpoint-connectivity)  
+有关详细信息，请参阅[专用终结点连接问题的排除指南。](../private-link/troubleshoot-private-endpoint-connectivity.md)  
 
 ## <a name="next-steps"></a>后续步骤 
-- [完成迁移过程](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines#complete-the-migration)，并查看[迁移后的最佳做法](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines#post-migration-best-practices)。
+- [完成迁移过程](./tutorial-migrate-physical-virtual-machines.md#complete-the-migration)，并查看[迁移后的最佳做法](./tutorial-migrate-physical-virtual-machines.md#post-migration-best-practices)。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: cd5b709843ba2d98170aaa58eb5c3cc1ec8883af
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.openlocfilehash: aace45f78bab273b792d10754be431ed3949e4c6
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734675"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869808"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR 服务身份验证
 
@@ -47,8 +47,8 @@ ms.locfileid: "98734675"
 
 - 在 [GitHub](https://github.com/) 上创建的帐户
 - [Git](https://git-scm.com/)
-- [.NET Core SDK](https://www.microsoft.com/net/download/windows)
-- 为 bash 环境配置[Azure Cloud Shell](../cloud-shell/quickstart.md) 。
+- [.NET Core SDK](https://dotnet.microsoft.com/download)
+- 为 Bash 环境已配置 [Azure Cloud Shell](../cloud-shell/quickstart.md)。
 - 下载或克隆 [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) GitHub 存储库。
 
 ## <a name="create-an-oauth-app"></a>创建 OAuth 应用
@@ -390,7 +390,7 @@ ms.locfileid: "98734675"
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-在本部分中，将使用 Azure 命令行界面 (CLI) 在 [Azure App Service](../app-service/index.yml) 中创建新的 web 应用，以便在 Azure 中托管 ASP.NET 应用程序。 Web 应用将配置为使用本地 Git 部署。 还将使用 SignalR 连接字符串、GitHub OAuth 应用密码和部署用户配置 Web 应用。
+在本部分中，将使用 Azure 命令行接口 (CLI) 在 [Azure 应用服务](../app-service/index.yml)中创建新的 Web 应用，以便在 Azure 中托管 ASP.NET 应用程序。 Web 应用将配置为使用本地 Git 部署。 还将使用 SignalR 连接字符串、GitHub OAuth 应用密码和部署用户配置 Web 应用。
 
 创建以下资源时，请确保使用的资源组与 SignalR 服务资源驻留的资源组相同。 通过此方法，稍后若要删除所有资源，可更轻松地进行清理。 给定示例假定使用之前教程中建议的组名称 SignalRTestResources。
 

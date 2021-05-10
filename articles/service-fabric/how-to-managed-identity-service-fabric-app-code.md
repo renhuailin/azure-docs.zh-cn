@@ -4,17 +4,17 @@ description: 如何使用 Azure Service Fabric 应用程序代码中的托管标
 ms.topic: article
 ms.date: 10/09/2019
 ms.openlocfilehash: e26a29020f26583f7e4aa16434c7e8647ba9a5a3
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98871055"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>如何利用 Service Fabric 应用程序的托管标识访问 Azure 服务
 
 Service Fabric 应用程序可以利用托管标识来访问支持基于 Azure Active Directory 的身份验证的其他 Azure 资源。 应用程序可以获取代表其标识（由系统分配或用户分配）的[访问令牌](../active-directory/develop/developer-glossary.md#access-token)，并使用该令牌作为“持有者”令牌在其他服务（也称为[受保护的资源服务器](../active-directory/develop/developer-glossary.md#resource-server)）中验证自己的身份。 令牌表示分配给 Service Fabric 应用程序的标识，只会颁发给共享该标识的 Azure 资源（包括 SF 应用程序）。 有关托管标识的详细介绍以及系统分配的标识和用户分配的标识之间的区别，请参阅[托管标识概述](../active-directory/managed-identities-azure-resources/overview.md)文档。 在整篇文章中，我们将支持托管标识的 Service Fabric 应用程序称作[客户端应用程序](../active-directory/develop/developer-glossary.md#client-application)。
 
-请参阅示例应用程序，该应用程序演示如何对 Reliable Services 和容器使用系统分配的和用户分配的 [Service Fabric 应用程序托管标识](https://github.com/Azure-Samples/service-fabric-managed-identity) 。
+请参阅配套的示例应用程序，该应用程序演示如何将系统分配的和用户分配的 [Service Fabric 应用程序托管标识](https://github.com/Azure-Samples/service-fabric-managed-identity)与 Reliable Services 和容器配合使用。
 
 > [!IMPORTANT]
 > 托管标识表示 Azure 资源与相应 Azure AD 租户（该租户与包含该资源的订阅相关联）中的服务主体之间的关联。 因此，在 Service Fabric 的上下文中，只有部署为 Azure 资源的应用程序才支持托管标识。 
@@ -23,16 +23,16 @@ Service Fabric 应用程序可以利用托管标识来访问支持基于 Azure A
 > 在使用 Service Fabric 应用程序的托管标识之前，必须为客户端应用程序授予对受保护资源的访问权限。 请参阅[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)列表来了解支持情况，然后参阅相关服务的文档，以获取为标识授予对相关资源的访问权限的具体步骤。 
  
 
-## <a name="leverage-a-managed-identity-using-azureidentity"></a>使用 Azure 身份利用托管标识
+## <a name="leverage-a-managed-identity-using-azureidentity"></a>通过 Azure.Identity 利用托管标识
 
-Azure 标识 SDK 现在支持 Service Fabric。 使用 Azure。标识使得编写代码更容易使用 Service Fabric 应用托管标识，因为它处理提取令牌、缓存令牌和服务器身份验证。 访问大多数 Azure 资源时，将隐藏标记的概念。
+Azure 标识 SDK 现支持 Service Fabric。 通过 Azure.Identity 可以更轻松地编写代码以使用 Service Fabric 应用托管标识，因为它可以处理令牌提取、令牌缓存和服务器身份验证。 访问大多数 Azure 资源时，将隐藏令牌的概念。
 
-Service Fabric 支持可在以下语言版本中使用： 
-- [版本1.3.0 中的 c #](https://www.nuget.org/packages/Azure.Identity)。 请参阅 [c # 示例](https://github.com/Azure-Samples/service-fabric-managed-identity)。
-- [版本1.5.0 中的 Python](https://pypi.org/project/azure-identity/)。 请参阅 [Python 示例](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/identity/azure-identity/tests/managed-identity-live/service-fabric/service_fabric.md)。
-- [版本1.2.0 中的 Java](/java/api/overview/azure/identity-readme)。
+以下语言版本支持 Service Fabric： 
+- [C# 1.3.0 版本](https://www.nuget.org/packages/Azure.Identity)。 请参阅 [C# 示例](https://github.com/Azure-Samples/service-fabric-managed-identity)。
+- [Python 1.5.0 版本](https://pypi.org/project/azure-identity/)。 请参阅 [Python 示例](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/identity/azure-identity/tests/managed-identity-live/service-fabric/service_fabric.md)。
+- [Java 1.2.0 版本](/java/api/overview/azure/identity-readme)。
 
-C # 示例：初始化凭据并使用凭据从 Azure Key Vault 提取机密：
+初始化凭据并使用凭据从 Azure 密钥保管库提取机密的 C# 示例：
 
 ```csharp
 using Azure.Identity;
@@ -106,7 +106,7 @@ GET 'https://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-0
 | `GET` | HTTP 谓词，指示想要从终结点检索数据。 在本例中，该数据为 OAuth 访问令牌。 | 
 | `https://localhost:2377/metadata/identity/oauth2/token` | Service Fabric 应用程序的托管标识终结点，通过 IDENTITY_ENDPOINT 环境变量提供。 |
 | `api-version` | 一个查询字符串参数，指定托管标识令牌服务的 API 版本；目前唯一接受的值为 `2019-07-01-preview`，将来可能会有更改。 |
-| `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 此元素以已颁发令牌的 `aud`（受众）声明形式反映。 此示例请求一个令牌访问 Azure Key Vault，其应用 ID URI 为 https： \/ /vault.azure.net/。 |
+| `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 此元素以已颁发令牌的 `aud`（受众）声明形式反映。 此示例请求一个用于访问 Azure 密钥保管库（其应用 ID URI 为“https:\//vault.azure.net/”）的令牌。 |
 | `Secret` | 一个 HTTP 请求标头字段，Service Fabric 服务的 Service Fabric 托管标识令牌服务需使用该字段对调用方进行身份验证。 此值由 SF 运行时通过 IDENTITY_HEADER 环境变量提供。 |
 
 
@@ -430,4 +430,4 @@ HTTP 响应标头的“状态代码”字段指示请求的成功状态；“200
 * [使用系统分配的托管标识部署 Azure Service Fabric 应用程序](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [使用用户分配的托管标识部署 Azure Service Fabric 应用程序](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [为 Azure Service Fabric 应用程序授予对其他 Azure 资源的访问权限](./how-to-grant-access-other-resources.md)
-* [使用 Service Fabric 托管标识浏览示例应用程序](https://github.com/Azure-Samples/service-fabric-managed-identity)
+* [探索使用 Service Fabric 托管标识的示例应用程序](https://github.com/Azure-Samples/service-fabric-managed-identity)

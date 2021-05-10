@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/15/2021
+ms.date: 04/27/2021
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a51f874d09aebfcb2c0b73e0b484f68042d1bb6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9cde810bb9f612b0dc84fb4dd7593761b057e722
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103496195"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142848"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>使用 Azure 中的文件共享在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例
 
@@ -33,9 +33,23 @@ Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装
 故障转移群集是由 1+n 个独立服务器（节点）构成的组，这些服务器配合工作以提高应用程序和服务的可用性。 如果发生节点故障，Windows Server 故障转移群集会计算可能发生的故障数并保留正常运行的群集以提供应用程序和服务。 可从不同的仲裁模式中选择，以实现故障转移群集。
 
 ## <a name="prerequisites"></a>先决条件
-在开始本文所述的任务之前，请先查看此文：
+在开始本文所述的任务之前，请先查看以下文章和 SAP 说明：
 
 * [适用于 SAP NetWeaver 的 Azure 虚拟机高可用性体系结构和方案][sap-high-availability-architecture-scenarios]
+* SAP 说明 [1928533][1928533]，其中包含：  
+  * SAP 软件部署支持的 Azure VM 大小的列表
+  * Azure VM 大小的重要容量信息
+  * 支持的 SAP 软件、操作系统 (OS) 和数据库组合
+  * Microsoft Azure 上所需的适用于 Windows 的 SAP 内核版本
+* SAP 说明 [2015553][2015553] 列出了在 Azure 中 SAP 支持的 SAP 软件部署的先决条件。
+* SAP 说明 [2178632][2178632] 包含为 Azure 中的 SAP 报告的所有监控指标的详细信息。
+* SAP 说明 [1999351][1999351] 包含适用于 SAP 的 Azure 增强型监视扩展的其他故障排除信息。
+* SAP 说明 [2287140](https://launchpad.support.sap.com/#/notes/2287140) 列出了 SAP 支持的 SMB 3.x 协议 CA 功能的先决条件。
+* SAP 说明 [2802770](https://launchpad.support.sap.com/#/notes/2802770) 提供了针对 Windows 2012 和 2016 上 SAP transaction AL11 运行缓慢问题的故障排除信息。
+* SAP 说明 [1911507](https://launchpad.support.sap.com/#/notes/1911507) 提供了针对 Windows Server 上文件共享（使用 SMB 3.0 协议）的透明故障转移功能的相关信息。
+* SAP 说明 [662452](https://launchpad.support.sap.com/#/notes/662452) 提供了相关建议（停用 8.3 名称生成）来解决数据访问过程中出现的问题/处理文件系统性能不佳的情况。
+* [在 Windows 故障转移群集上安装 SAP NetWeaver 高可用性，在 Azure 上安装适用于 SAP ASCS/SCS 实例的文件共享](./sap-high-availability-installation-wsfc-file-share.md) 
+* [在故障转移群集上安装 (A)SCS 实例](https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html)
 
 > [!IMPORTANT]
 > 将 SAP NetWeaver 7.40（及更高版本）与 SAP 内核 7.49（及更高版本）配合使用时，即可通过文件共享来群集化 SAP ASCS/SCS 实例。

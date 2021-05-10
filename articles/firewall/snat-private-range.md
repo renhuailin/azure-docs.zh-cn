@@ -7,16 +7,16 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 04/14/2021
 ms.author: victorh
-ms.openlocfilehash: 91d4d631376c03b668128936f3840ce1119f9b6f
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 01707a99b1ff5d077daf3c095e1daf78ccddfeac
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482733"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107898182"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure 防火墙 SNAT 专用 IP 地址范围
 
-对于发往公共 IP 地址的所有出站流量，Azure 防火墙提供自动 SNAT。 默认情况下，当目标 IP 地址在符合 [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) 的专用 IP 地址范围内时，Azure 防火墙不使用网络规则执行 SNAT。 无论目标 IP 地址是什么，始终使用[透明代理](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy)来应用应用程序规则。
+对于发往公共 IP 地址的所有出站流量，Azure 防火墙提供自动 SNAT。 默认情况下，如果目标 IP 地址在符合 [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) 的专用 IP 地址范围内或符合 [IANA RFC 6598](https://tools.ietf.org/html/rfc6598) 的共享地址空间内，Azure 防火墙将不使用网络规则执行 SNAT。 无论目标 IP 地址是什么，始终使用[透明代理](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy)来应用应用程序规则。
 
 将流量直接路由到 Internet 时，此逻辑非常有效。 但是，如果已启用[强制隧道](forced-tunneling.md)，则会将 Internet 绑定的流量由 SNAT 转换为 AzureFirewallSubnet 中的某个防火墙专用 IP 地址，从而向本地防火墙隐藏源。
 

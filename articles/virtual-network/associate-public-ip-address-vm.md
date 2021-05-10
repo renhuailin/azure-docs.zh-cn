@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
 ms.openlocfilehash: 6ea16da3844b8098d87d65e1016f92c69ae34067
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98945153"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>将公共 IP 地址关联到虚拟机
@@ -133,7 +133,7 @@ ms.locfileid: "98945153"
    $nic | Set-AzNetworkInterface
    ```
 
-   - 如果没有现有的公共 IP 地址，请使用 [New-AzPublicIpAddress](/powershell/module/Az.Network/New-AzPublicIpAddress) 命令创建一个。 例如，以下命令在 *eastus* 区域中名为 *myResourceGroup* 的资源组中创建名为 *myVMPublicIP* 的 *动态* 公共 IP 地址。
+   - 如果没有现有的公共 IP 地址，请使用 [New-AzPublicIpAddress](/powershell/module/Az.Network/New-AzPublicIpAddress) 命令创建一个。 例如，以下命令在“eastus”区域的名为“myResourceGroup”的资源组中，创建名为“myVMPublicIP”的动态公共 IP 地址。
   
      ```azurepowershell-interactive
      New-AzPublicIpAddress -Name myVMPublicIP -ResourceGroupName myResourceGroup -AllocationMethod Dynamic -Location eastus

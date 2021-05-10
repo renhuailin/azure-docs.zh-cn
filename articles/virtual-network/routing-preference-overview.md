@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2021
 ms.author: mnayak
-ms.openlocfilehash: 44edd9273730ff7ba81a3ad5af2408ff6b7b7a5c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 588af3ff739d82029260909d23a7639bc2cbcb8d
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060629"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108069932"
 ---
 # <a name="what-is-routing-preference"></a>什么是路由首选项？
 
@@ -76,5 +76,6 @@ Azure 路由首选项允许你选择流量在 Azure 和 Internet 之间的路由
 
 ## <a name="next-steps"></a>后续步骤
 
+* [详细了解如何优化通过 Internet 与 Microsoft Azure 服务建立的连接 - 视频](https://www.youtube.com/watch?v=j6A_Mbpuh6s&list=PLLasX02E8BPA5V-waZPcelhg9l3IkeUQo&index=12) 
 * [使用 Azure PowerShell 为 VM 配置路由首选项](configure-routing-preference-virtual-machine-powershell.md)
 * [使用 Azure CLI 为 VM 配置路由首选项](configure-routing-preference-virtual-machine-cli.md)

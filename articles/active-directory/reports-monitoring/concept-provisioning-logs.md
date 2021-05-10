@@ -1,10 +1,10 @@
 ---
-title: 有关在 Azure 门户中预配日志的概述（预览版）| Microsoft Docs
-description: 获取有关通过 Azure 门户在 Azure Active Directory 中预配日志报告的简介。
+title: 在 Azure Active Directory 中预配日志（预览版）| Microsoft Docs
+description: 在 Azure Active Directory 中预配日志的概述。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -13,62 +13,99 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 1/29/2021
+ms.date: 4/25/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 468e885bab6aab4becb5aaaec7b4d52ce5ef5e07
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 42a1ea52c9de3332c2b73b5c03e203f6d6694c49
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535998"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108017384"
 ---
-# <a name="overview-of-provisioning-logs-in-the-azure-portal-preview"></a>有关在 Azure 门户中预配日志的概述（预览版）
+# <a name="provisioning-logs-in-azure-active-directory-preview"></a>在 Azure Active Directory 中预配日志（预览版）
 
-Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成：
+作为 IT 管理员，你想知道你的 IT 环境的运行状况。 你可通过有关系统运行状况的信息来评估是否需要响应潜在问题以及响应方式。 
 
-- 活动： 
-    - **登录**：有关托管应用程序的使用情况和用户登录活动的信息。
-    - [审核日志](concept-audit-logs.md)：有关用户和组管理、托管应用程序和目录活动的系统活动信息。
-    - **预配日志**：有关 Azure AD 预配服务预配的用户、组和角色的系统活动。 
+为了帮助你实现此目标，Azure Active Directory 门户为你提供了访问三个活动日志的权限：
 
-- 安全性： 
-    - **风险登录**：[风险登录](../identity-protection/overview-identity-protection.md)指示可能由非用户帐户合法所有者进行的登录尝试。
-    - **已标记为存在风险的用户**：[风险用户](../identity-protection/overview-identity-protection.md)指示可能已泄密的用户帐户。
+- **[登录](concept-sign-ins.md)** - 有关登录以及用户如何使用资源的信息。
+- **[审核](concept-audit-logs.md)** - 有关应用于租户的更改（如用户和组管理）或应用于租户资源的更新的信息。
+- **[预配](concept-provisioning-logs.md)** - 由预配服务执行的活动（例如在 ServiceNow 中创建组，或从 Workday 导入用户）。
 
-本主题提供预配日志的概述。 日志提供如下所述问题的解答： 
 
-* 在 ServiceNow 中成功创建了哪些组？
-* 从 Adobe 中成功删除了哪些用户？
-* 在 Active Directory 中成功创建了哪些 Workday 用户？ 
+本文提供预配日志的概述。 
 
-## <a name="prerequisites"></a>先决条件
+
+## <a name="what-can-you-do-with-it"></a>日志有哪些作用？
+
+你可以使用预配日志找到以下问题的答案：
+
+-  在 ServiceNow 中成功创建了哪些组？
+
+-  从 Adobe 中成功删除了哪些用户？
+
+-  在 Active Directory 中成功创建了哪些 Workday 用户？ 
+
+
+## <a name="who-can-access-it"></a>谁可以访问它们？
 
 以下用户可以访问预配日志中的数据：
 
-* 应用程序所有者（其自己的应用程序的日志）
-* 充当“安全管理员”、“安全读取者”、“报告读取者”、“安全操作员”、“应用程序管理员”和“云应用程序管理员”角色的用户
-* 拥有 [provisioningLogs 权限](../roles/custom-enterprise-app-permissions.md#full-list-of-permissions)并充当自定义角色的用户
-* 全局管理员
+- 应用程序所有者（其自己的应用程序的日志）
 
+- 充当“安全管理员”、“安全读取者”、“报告读取者”、“安全操作员”、“应用程序管理员”和“云应用程序管理员”角色的用户
+
+- 拥有 [provisioningLogs 权限](../roles/custom-enterprise-app-permissions.md#full-list-of-permissions)并充当自定义角色的用户
+
+- 全局管理员
+
+## <a name="what-azure-ad-license-do-you-need"></a>需要什么 Azure AD 许可证？
 
 要查看预配活动报告，租户必须具有与之关联的 Azure AD Premium 许可证。 若要升级 Azure AD 版本，请参阅 [Azure Active Directory Premium 入门](../fundamentals/active-directory-get-started-premium.md)。 
 
 
-## <a name="ways-of-interacting-with-the-provisioning-logs"></a>与预配日志交互的方式 
-客户可通过四种方法来与预配日志交互：
+## <a name="how-can-you-access-it"></a>如何访问日志？ 
 
-- 按照下一部分所述从 Azure 门户访问日志。
+若要访问日志数据，可以使用以下选项：
+
+- Azure 门户
+
 - 将预配日志流式传输到 [Azure Monitor](../app-provisioning/application-provisioning-log-analytics.md)。 此方法可以延长数据保留期，并可生成自定义仪表板、警报和查询。
+
 - 查询 [Microsoft Graph API](/graph/api/resources/provisioningobjectsummary) 以获取预配日志。
+
 - 将预配日志下载为 CSV 或 JSON 文件。
 
-## <a name="access-the-logs-from-the-azure-portal"></a>从 Azure 门户访问日志
+
+
+## <a name="where-can-you-find-it-in-the-azure-portal"></a>在 Azure 门户中的何处可以找到日志？
+
+Azure 门户提供了几种用于访问日志的选项。 例如，在 Azure Active Directory 菜单上，可以在“监视”部分打开日志。  
+
+![打开预配日志](./media/concept-sign-ins/sign-ins-logs-menu.png)
+
+此外，可以使用以下链接直接访问登录日志：[https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)
+
+
+
+
+
+
+
+
+
+
+
+
 可以在 [Azure 门户](https://portal.azure.com)的“Azure Active Directory”窗格的“监视”部分选择“预配日志”来访问预配日志。   某些预配记录可能需要在长达两小时后才出现在门户中。
 
 ![显示用于访问预配日志的选项的屏幕截图。](./media/concept-provisioning-logs/access-provisioning-logs.png "“预配”日志")
 
+
+
+## <a name="what-is-the-default-view"></a>什么是默认视图？
 
 预配日志有一个默认的列表视图，其中显示：
 

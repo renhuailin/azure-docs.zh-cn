@@ -5,18 +5,18 @@ description: 了解如何在使用 Azure 机器学习训练期间使用数据存
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
-ms.custom: how-to, contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: 78b7bab204a08b474ea3c5cf5c2f7735c019a9c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: contperf-fy21q1, devx-track-python, data4ml
+ms.openlocfilehash: 35a60291017668755f3b98e63d6a15bda59f2b8e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519922"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143640"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>连接到 Azure 上的存储服务
 
@@ -91,18 +91,21 @@ ms.locfileid: "102519922"
 
 为了确保安全连接到 Azure 存储服务，Azure 机器学习会要求你具有相应数据存储容器的访问权限。 此访问权限依赖用于注册数据存储的身份验证凭据。 
 
-### <a name="virtual-network"></a>虚拟网络 
-
-默认情况下，Azure 机器学习无法与防火墙后面或虚拟网络中的存储帐户通信。 如果你的数据存储帐户在虚拟网络中，则需要执行其他配置步骤来确保 Azure 机器学习能够访问你的数据。 
-
 > [!NOTE]
 > 本指南也适用于[使用基于标识的数据访问创建的数据存储（预览版）](how-to-identity-based-data-access.md)。 
 
-**对于 Python SDK 用户**，若要通过计算目标上的训练脚本访问数据，计算目标需要位于存储的同一虚拟网络和子网中。  
+### <a name="virtual-network"></a>虚拟网络 
+
+Azure 机器学习需要额外的配置步骤才能与受防火墙保护或虚拟网络中的存储帐户通信。 如果你的存储帐户受防火墙保护，则可[允许通过 Azure 门户列出 IP 地址](../storage/common/storage-network-security.md#managing-ip-network-rules)。
+
+Azure 机器学习可以从虚拟网络外部的客户端接收请求。 若要确保服务中的实体请求数据的安全，[请为工作区设置 Azure 专用链接](how-to-configure-private-link.md)。
+
+**对于 Python SDK 用户**，若要通过计算目标上的训练脚本访问数据，计算目标需要位于存储的同一虚拟网络和子网中。 
 
 **对于 Azure 机器学习工作室用户**，有几个功能依赖于从数据集读取数据的能力；例如数据集预览、概要文件和自动化机器学习。 若要使这些功能与虚拟网络后面的存储一起工作，请使用[工作室中的工作区托管标识](how-to-enable-studio-virtual-network.md)，以允许 Azure 机器学习从虚拟网络外部访问存储帐户。 
 
-Azure 机器学习可以从虚拟网络外部的客户端接收请求。 若要确保服务中的实体请求数据的安全，[请为工作区设置 Azure 专用链接](how-to-configure-private-link.md)。
+> [!NOTE]
+> 如果数据存储是虚拟网络后面的 Azure SQL 数据库，请确保通过 [Azure 门户](https://ms.portal.azure.com/)将“拒绝公共访问”设置为“否”，以允许 Azure 机器学习访问存储帐户。
 
 ### <a name="access-validation"></a>访问验证
 

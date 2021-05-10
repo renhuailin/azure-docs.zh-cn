@@ -9,18 +9,18 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 04/06/2021
 ms.topic: overview
-ms.openlocfilehash: 220618f167237d5937766eb5e28b9b6569cef76a
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 91bf9674bfc49458dd2e8b1824b521a37b446a0a
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031291"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289275"
 ---
 #  <a name="deploy-azure-arc-data-controller--direct-connect-mode"></a>部署 Azure Arc 数据控制器 | 直接连接模式
 
 本文介绍如何在此功能的当前预览版中，在直接连接模式下部署 Azure Arc 数据控制器。 
 
-目前，可从 Azure 门户创建 Azure Arc 数据控制器。 其他用于已启用 Azure Arc 的数据服务的工具不支持在直接连接模式下创建数据控制器。 有关详细信息，请参阅[已知问题 - 已启用 Azure Arc 的数据服务（预览版）](known-issues.md)。
+目前，可从 Azure 门户创建 Azure Arc 数据控制器。 其他用于已启用 Azure Arc 的数据服务的工具不支持在直接连接模式下创建数据控制器。 有关详细信息，请参阅[发行说明](release-notes.md)。
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 

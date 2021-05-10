@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 796ac876537aa06253ad6eeec99adaf48de61c79
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ab4e623e91987e7fa415b94ff8278a1de4c03700
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167254"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107945964"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色中运行 Runbook
 
@@ -246,6 +247,9 @@ Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
 ```
 
 对 Runbook 签名后，必须将其导入自动化帐户并与签名块一起发布。 若要了解如何导入 Runbook，请参阅[导入 Runbook](manage-runbooks.md#import-a-runbook)。
+
+>[!NOTE]
+>在 runbook 代码（包括注释）中，只能使用明文字符。 使用 á 或 ñ 等带音调符号的字符将导致错误。 Azure 自动化下载代码时，字符将被替换为问号，签名将失败并显示“签名哈希验证失败”消息。
 
 ## <a name="work-with-signed-runbooks-on-a-linux-hybrid-runbook-worker"></a>在 Linux 混合 Runbook 辅助角色上使用已签名 Runbook
 

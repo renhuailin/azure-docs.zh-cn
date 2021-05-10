@@ -10,16 +10,21 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: f9215469b1436ce9dc95c140e6969366d80d1ced
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5214d914c104fdf6df302c7879230bba2b3d2928
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105607127"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891835"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>发行说明：语音设备 SDK
 
 以下部分列出了最新版本中的更改。
+
+## <a name="speech-devices-sdk-1160"></a>语音设备 SDK 1.16.0：
+
+- 修复了 [Github 问题 #22](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues/22)。
+- 将[语音 SDK](./speech-sdk.md) 组件更新到了 1.16.0 版。 有关详细信息，请参阅其[发行说明](./releasenotes.md)。
 
 ## <a name="speech-devices-sdk-1150"></a>语音设备 SDK 1.15.0：
 

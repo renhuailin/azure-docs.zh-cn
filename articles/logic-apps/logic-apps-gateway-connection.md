@@ -1,26 +1,26 @@
 ---
 title: 访问本地数据源
-description: 通过在 Azure 中创建数据网关资源从 Azure 逻辑应用连接到本地数据源
+description: 通过在 Azure 中创建数据网关资源，从 Azure 逻辑应用连接到本地数据源
 services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 01/20/2021
 ms.openlocfilehash: 356e63bb0a749ad0f41d886e75971e9b05c7f9dc
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99218988"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到本地数据源
 
-在 [本地计算机上安装本地 *数据网关*](../logic-apps/logic-apps-gateway-install.md)并在从逻辑应用访问本地数据源之前，必须在 Azure 中创建网关资源，以便安装网关。 然后，你可以在要用于 Azure 逻辑应用中可用的 [本地连接器](../connectors/apis-list.md#on-premises-connectors) 的触发器和操作中选择此网关资源。 Azure 逻辑应用支持通过数据网关进行读取和写入操作。 但是，这些操作存在[有效负载大小限制](/data-integration/gateway/service-gateway-onprem#considerations)。
+[在本地计算机上安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)后，必须在 Azure 中为网关安装创建网关资源，之后才能从逻辑应用访问本地数据源。 可以在[本地连接器](../connectors/apis-list.md#on-premises-connectors)（在 Azure 逻辑应用中可以找到）要使用的触发器和操作中选择此网关资源。 Azure 逻辑应用支持通过数据网关进行读取和写入操作。 但是，这些操作存在[有效负载大小限制](/data-integration/gateway/service-gateway-onprem#considerations)。
 
 本文介绍如何为以前[安装在本地计算机上的网关](../logic-apps/logic-apps-gateway-install.md)创建 Azure 网关资源。 有关网关的详细信息，请参阅[网关的工作原理](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)。
 
 > [!TIP]
-> 若要在不使用网关的情况下直接访问 Azure 虚拟网络中的本地资源，请考虑改为创建 [*集成服务环境*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 。 
+> 若要在不使用网关的情况下直接访问 Azure 虚拟网络中的本地资源，请考虑改为创建[集成服务环境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)。 
 
 有关如何将网关用于其他服务的信息，请参阅以下文章：
 
@@ -48,17 +48,17 @@ ms.locfileid: "99218988"
 * SQL Server
 * Teradata
 
-还可以通过使用 REST 或 SOAP 创建通过 HTTP 或 HTTPS 连接到数据源的 [自定义连接器](../logic-apps/custom-connector-overview.md) 。 虽然网关本身不会产生额外成本，但 [逻辑应用定价模型](../logic-apps/logic-apps-pricing.md) 适用于这些连接器以及 Azure 逻辑应用中的其他操作。
+也可以创建[自定义连接器](../logic-apps/custom-connector-overview.md)，以便使用 REST 或 SOAP 通过 HTTP 或 HTTPS 连接到数据源。 虽然网关本身不额外收费，但[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md)适用于这些连接器以及 Azure 逻辑应用中的其他操作。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 已经[在本地计算机上安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)。 此网关安装必须存在，然后才能创建链接到此安装的网关资源。
+* 已经[在本地计算机上安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)。 必须先进行网关安装，才能创建链接到此安装的网关资源。
 
-* 你具有与用于网关安装 [相同的 Azure 帐户和订阅](../logic-apps/logic-apps-gateway-install.md#requirements) 。 此 Azure 帐户必须仅属于单个 [Azure Active Directory (Azure AD) 租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)。 必须使用相同的 Azure 帐户和订阅在 Azure 中创建网关资源，因为只有网关管理员才能在 Azure 中创建网关资源。 当前不支持服务主体。
+* 使用用于网关安装的[同一 Azure 帐户和订阅](../logic-apps/logic-apps-gateway-install.md#requirements)。 此 Azure 帐户必须只属于单个 [Azure Active Directory (Azure AD) 租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)。 必须使用同一 Azure 帐户和订阅在 Azure 中创建网关资源，因为只有网关管理员才能在 Azure 中创建网关资源。 当前不支持服务主体。
 
-  * 当你在 Azure 中创建网关资源时，你可以选择网关安装，以链接到你的网关资源和仅该网关资源。 每个网关资源只能链接到一个网关安装。 不能选择已与另一网关资源关联的网关安装。
+  * 在 Azure 中创建某个网关资源时，选择的网关安装要与此网关资源链接，且只能与此网关资源链接。 每个网关资源只能链接到一个网关安装。 不能选择已与另一个网关资源关联的网关安装。
 
-  * 逻辑应用和网关资源不必存在于同一 Azure 订阅中。 在可使用网关资源的 "触发器和操作" 中，可以选择具有网关资源的其他 Azure 订阅，但前提是该订阅存在于与逻辑应用相同的 Azure AD 租户或目录中。 您还必须拥有网关的管理员权限，而另一个管理员可以为您设置该权限。 有关详细信息，请参阅 [Data gateway：使用 PowerShell 的自动化-第1部分](https://community.powerbi.com/t5/Community-Blog/Data-Gateway-Automation-using-PowerShell-Part-1/ba-p/1117330) 和 [PowerShell：数据网关-DataGatewayClusterUser](/powershell/module/datagateway/add-datagatewayclusteruser)。
+  * 逻辑应用和网关资源不必存在于同一 Azure 订阅中。 在可使用网关资源的触发器和操作中，可以选择具有网关资源的其他 Azure 订阅，但前提是该订阅存在于与逻辑应用相同的 Azure AD 租户或目录中。 此外，你还必须拥有对网关的管理员权限，其他管理员可以为你设置该权限。 有关详细信息，请参阅[数据网关：使用 PowerShell 自动化操作 - 第 1 部分](https://community.powerbi.com/t5/Community-Blog/Data-Gateway-Automation-using-PowerShell-Part-1/ba-p/1117330)和 [PowerShell：数据网关 - Add-DataGatewayClusterUser](/powershell/module/datagateway/add-datagatewayclusteruser)。
 
     > [!NOTE]
     > 目前，不能在多个订阅之间共享网关资源或安装。 若要提交产品反馈，请参阅 [Microsoft Azure 反馈论坛](https://feedback.azure.com/forums/34192--general-feedback)。
@@ -87,7 +87,7 @@ ms.locfileid: "99218988"
    | **订阅** | 选择曾用于网关安装的 Azure 帐户的 Azure 订阅。 默认订阅取决于用来登录的 Azure 帐户。 |
    | **资源组** | 要使用的 [Azure 资源组](../azure-resource-manager/management/overview.md) |
    | **位置** | 在[网关安装](../logic-apps/logic-apps-gateway-install.md)期间为网关云服务选择的区域或位置。 否则，网关安装不会显示在“安装名称”列表中。 逻辑应用位置可能不同于网关资源位置。 |
-   | **安装名称** | 选择一个网关安装，该安装仅在以下条件满足的情况下显示在列表中： <p><p>- 网关安装使用的区域与要创建的网关资源所在的区域相同。 <br>- 网关安装未关联到另一 Azure 网关资源。 <br>- 网关安装关联到要用来创建网关资源的 Azure 帐户。 <br>-你的 Azure 帐户属于单个 [Azure Active Directory (Azure AD) 租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology) ，并且是用于网关安装的同一帐户。 <p><p>有关详细信息，请参阅[常见问题解答](#faq)部分。 |
+   | **安装名称** | 选择一个网关安装，该安装仅在以下条件满足的情况下显示在列表中： <p><p>- 网关安装使用的区域与要创建的网关资源所在的区域相同。 <br>- 网关安装未关联到另一 Azure 网关资源。 <br>- 网关安装关联到要用来创建网关资源的 Azure 帐户。 <br>- 你的 Azure 帐户属于单个 [Azure Active Directory (Azure AD) 租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)，是用于网关安装的帐户。 <p><p>有关详细信息，请参阅[常见问题解答](#faq)部分。 |
    |||
 
    以下示例演示的网关安装位于你的网关资源所在的区域，并关联到同一 Azure 帐户：
@@ -106,9 +106,9 @@ ms.locfileid: "99218988"
 
 1. 选择“通过本地数据网关连接”。
 
-1. 在 " **网关**" 下，从 " **订阅** " 列表中选择具有所需网关资源的 Azure 订阅。
+1. 在“网关”下，从“订阅”列表中选择你的 Azure 订阅，该订阅有你需要的网关资源。 
 
-   逻辑应用和网关资源不必存在于同一 Azure 订阅中。 你可以从其他 Azure 订阅中进行选择，每个订阅都有一个网关资源，但仅当这些订阅存在于你的逻辑应用相同的 Azure AD 租户或目录中时，你在网关上具有管理员权限，而另一个管理员可以为你设置。 有关详细信息，请参阅 [Data gateway：使用 PowerShell 的自动化-第1部分](https://community.powerbi.com/t5/Community-Blog/Data-Gateway-Automation-using-PowerShell-Part-1/ba-p/1117330) 和 [PowerShell：数据网关-DataGatewayClusterUser](/powershell/module/datagateway/add-datagatewayclusteruser)。
+   逻辑应用和网关资源不必存在于同一 Azure 订阅中。 你可以从其他具有网关资源的 Azure 订阅中进行选择，但前提是这些订阅存在于与逻辑应用相同的 Azure AD 租户或目录中，且你对网关具有管理员权限，其他管理员可以为你设置此权限。 有关详细信息，请参阅[数据网关：使用 PowerShell 自动化操作 - 第 1 部分](https://community.powerbi.com/t5/Community-Blog/Data-Gateway-Automation-using-PowerShell-Part-1/ba-p/1117330)和 [PowerShell：数据网关 - Add-DataGatewayClusterUser](/powershell/module/datagateway/add-datagatewayclusteruser)。
   
 1. 从“连接网关”列表中选择所需网关资源，该列表会显示所选订阅中的可用网关资源。 每个网关资源关联到单个网关安装。
 
@@ -166,15 +166,15 @@ ms.locfileid: "99218988"
 **问**：在 Azure 中创建我的网关资源时，为何不显示我的网关安装？ <br/>
 **答**：此问题的可能原因如下：
 
-* 你的 Azure 帐户不同于在本地计算机上安装网关所用的帐户。 检查是否已使用用于网关安装的相同标识登录到 Azure 门户。 仅网关管理员可以在 Azure 中创建网关资源。 当前不支持服务主体。
+* 你的 Azure 帐户不是在本地计算机上进行网关安装所使用的帐户。 请检查是否使用了网关安装所使用的身份登录到 Azure 门户。 只有网关管理员才能在 Azure 中创建网关资源。 当前不支持服务主体。
 
-* 你的 Azure 帐户不只属于单个 [Azure AD 租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)。 检查是否使用的是在网关安装过程中使用的 Azure AD 租户或目录。
+* 你的 Azure 帐户不属于唯一单个 [Azure Active Directory (Azure AD) 租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)。 检查是否正在使用网关安装期间所使用的 Azure AD 租户或目录。
 
-* 你的网关资源和网关安装在同一区域中不存在。 但是，逻辑应用的位置可能与网关资源位置不同。
+* 网关资源和网关安装不在同一区域中。 但是，逻辑应用的位置可以不同于网关资源的位置。
 
-* 你的网关安装已与另一网关资源关联。 每个网关资源只能链接到一个网关安装，只能链接到一个 Azure 帐户和订阅。 因此，不能选择已与另一网关资源关联的网关安装。 这些安装不会显示在“安装名称”列表中。
+* 网关安装已关联到其他网关资源。 每个网关资源只能链接到一个网关安装，且后者只能链接到一个 Azure 帐户和订阅。 因此，不能选择已与另一个网关资源关联的网关安装。 这些安装不会显示在“安装名称”列表中。
 
-  若要查看 Azure 门户中的网关注册，请在 *所有* azure 订阅中查找具有 **本地数据网关** 资源类型的所有 azure 资源。 若要取消关联其他网关资源中的网关安装，请参阅[删除网关资源](#change-delete-gateway-resource)。
+  若要在 Azure 门户中查看网关注册，请找到所有 Azure 订阅的“本地数据网关”资源类型的所有 Azure 资源。 若要取消关联其他网关资源中的网关安装，请参阅[删除网关资源](#change-delete-gateway-resource)。
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 

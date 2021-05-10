@@ -12,10 +12,10 @@ ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
 ms.openlocfilehash: a7b8f893026bb96c8d768d2e6d07d0240ecb81fa
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98724835"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-daemon-applications-you-develop"></a>提高你开发的守护程序应用程序中身份验证和授权的复原能力
@@ -26,11 +26,11 @@ ms.locfileid: "98724835"
 
 ## <a name="use-managed-identities-for-azure-resources"></a>使用 Azure 资源的托管标识
 
-在 Microsoft Azure 上构建后台应用程序的开发人员可以使用 [Azure 资源的托管标识](../managed-identities-azure-resources/overview.md)。 托管标识使开发人员无需管理机密和凭据。 通过避免在证书过期、轮换或信任方面出现错误，此功能提高了复原能力。 它还具有一些专门用于提高复原能力的内置功能。
+在 Microsoft Azure 上构建守护程序应用的开发人员可以使用 [Azure 资源的托管标识](../managed-identities-azure-resources/overview.md)。 托管标识使开发人员无需管理机密和凭据。 通过避免在证书过期、轮换或信任方面出现错误，此功能提高了复原能力。 它还具有一些专门用于提高复原能力的内置功能。
 
 托管标识使用生存期较长的访问令牌和 Microsoft 标识中的信息，在现有令牌过期之前的较大时间范围内主动获取新令牌。 尝试获取新令牌时，应用可以继续运行。
 
-托管标识还使用区域终结点来针对区域外故障提高性能和复原能力。 使用区域终结点有助于使所有流量都处于某个地理区域内。 例如，如果你的 Azure 资源处于 WestUS2 中，则所有流量（包括 Microsoft 标识生成的流量）都应保留在 WestUS2 中。 这样，通过整合服务的依赖项，便消除了可能的故障点。
+托管标识还使用区域终结点来针对区域外故障提高性能和复原能力。 使用区域终结点有助于使所有流量都处于某个地理区域内。 例如，如果你的 Azure 资源在 WestUS2 中，则所有流量（包括 Microsoft 标识生成的流量）都应存在于 WestUS2 中。 这样，通过整合服务的依赖项，便消除了可能的故障点。
 
 ## <a name="use-the-microsoft-authentication-library"></a>使用 Microsoft 身份验证库
 

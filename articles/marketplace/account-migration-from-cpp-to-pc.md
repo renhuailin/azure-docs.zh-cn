@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 09/23/2019
-ms.openlocfilehash: f43bdd0ec6654ba2fc8a04dbb62d2d658e06ce0f
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 189966c468fe5a39fbd44f7961e9512b7b054882
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107886"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107811775"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>如何将帐户从云合作伙伴门户迁移到合作伙伴中心
 
@@ -72,7 +72,7 @@ ms.locfileid: "107107886"
 
 1. 如果你的 MPN 成员资格帐户最初是在 Partner Membership Center (PMC) 中创建的，请登录到[合作伙伴中心](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile)，确认你的帐户已迁移。 如果看到显示了 MPN ID 的配置文件屏幕，即可继续操作。 否则，需要按照 [Partner Membership Center](https://partners.microsoft.com/partnerprogram/Welcome.aspx) 中的提示开始帐户迁移。 如需帮助，请访问[支持](https://partner.microsoft.com/support?issueid=100-0077)。
 2. 转到[合作伙伴中心内的商业市场概述页](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)。 如果在左侧导航窗格中看到“商业市场”，则表示已经注册，并应继续执行下一步。 否则，请立即[注册加入商业市场](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)。
-3. 通过[搜索产品/服务](https://appsource.microsoft.com/)，确认产品/服务位于 AppSource 中。 如果你的产品/服务已经在 AppSource 中，请继续执行下一步。 对于任何不在 AppSource 中的产品/服务，创建[新的 Dynamics 365 Customer Engagement 产品/服务](.\partner-center-portal\create-new-customer-engagement-offer.md)或[新的 Dynamics 365 Operations 产品/服务](.\partner-center-portal\create-new-operations-offer.md)。
+3. 通过[搜索产品/服务](https://appsource.microsoft.com/)，确认产品/服务位于 AppSource 中。 如果你的产品/服务已经在 AppSource 中，请继续执行下一步。 对于任何不在 AppSource 中的产品/服务，请参阅[计划 Dynamics 365 Customer Engagement 产品/服务](dynamics-365-customer-engage-offer-setup.md)或[创建 Dynamics 365 Operations 产品/服务](.\partner-center-portal\create-new-operations-offer.md)。
 4. 在合作伙伴中心的[协议页](https://partner.microsoft.com/dashboard/account/agreements)上，确保已查看并接受业务应用程序 ISV 附录。
 5. 在合作伙伴中心的[帐户设置](https://partner.microsoft.com/dashboard/account/v3/accountsettings/billingprofile)中，确保你的账单信息是完整的。
 6. 即使你的产品/服务之前已经过认证，也请提交每个新的和现有的产品/服务以进行认证和发布。

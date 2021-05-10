@@ -9,12 +9,12 @@ ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-js
-ms.openlocfilehash: eae6f1ec8cb6917d0d51deca8c9e88725c9b01a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 496a1225d5e9554fc661e0c93ce82a13f6aa11d5
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200636"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904021"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio Code 开发和调试 Azure IoT Edge 模块
 
@@ -47,7 +47,7 @@ ms.locfileid: "103200636"
 
 此外还需要安装一些其他特定于语言的工具来开发模块：
 
-- C#，包括 Azure Functions：[.NET Core 2.1 SDK](https://www.microsoft.com/net/download)
+- C#，包括 Azure Functions：[.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1)
 
 - Python:[Python](https://www.python.org/downloads/) 和 [Pip](https://pip.pypa.io/en/stable/installing/#installation)用于安装 Python 包（通常包含在 Python 安装中）。
 
@@ -143,7 +143,7 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
 在开发计算机上，可以启动 IoT Edge 模拟器（而不是安装 IoT Edge 安全守护程序）以运行 IoT Edge 解决方案。
 
-1. 在左侧的设备资源管理器中，右键单击 IoT Edge 设备 ID，然后选择“设置 IoT Edge 模拟器”以使用设备连接字符串启动模拟器  。
+1. 在左侧的“资源管理器”选项卡中，展开“Azure IoT 中心”部分 。 右键单击 IoT Edge 设备 ID，然后选择“设置 IoT Edge 模拟器”以使用设备连接字符串启动模拟器。
 1. 通过读取集成终端中的进度详细信息，可以看到 IoT Edge 模拟器已成功设置。
 
 ### <a name="set-up-iot-edge-simulator-for-single-module-app"></a>为单个模块应用设置 IoT Edge 模拟器
@@ -224,7 +224,7 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
 在开发计算机中，可以启动 IoT Edge 模拟器（而不是安装 IoT Edge 安全守护程序）以运行 IoT Edge 解决方案。
 
-1. 在左侧的设备资源管理器中，右键单击 IoT Edge 设备 ID，然后选择“设置 IoT Edge 模拟器”以使用设备连接字符串启动模拟器  。
+1. 在左侧的“资源管理器”选项卡中，展开“Azure IoT 中心”部分 。 右键单击 IoT Edge 设备 ID，然后选择“设置 IoT Edge 模拟器”以使用设备连接字符串启动模拟器。
 
 1. 通过读取集成终端中的进度详细信息，可以看到 IoT Edge 模拟器已成功设置。
 

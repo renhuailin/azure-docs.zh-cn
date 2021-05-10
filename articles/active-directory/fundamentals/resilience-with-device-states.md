@@ -14,10 +14,10 @@ ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6d476be7a417cfc31cca76d3409074aaaa281a56
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98724604"
 ---
 # <a name="build-resilience-with-device-states"></a>使用设备状态构建复原能力
@@ -40,9 +40,9 @@ ms.locfileid: "98724604"
 
   如果组织中有设备使用较早版本的 Windows，请将这些设备升级为使用 Windows 10。
 
-* 将用户浏览器访问的功能标准化，以将 [Microsoft Edge](/deployedge/microsoft-edge-security-identity) 或 Google Chrome 与 [支持](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)的 [扩展](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb) 结合使用，从而使使用 PRT 的 WEB 应用程序实现无缝 SSO。
+* 将用户访问网页的浏览器统一为 [Microsoft Edge](/deployedge/microsoft-edge-security-identity) 或 Google Chrome，这些浏览器带有[支持](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)的[扩展](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb)，可以让用户使用 PRT 无缝单一登录到 Web 应用程序。
 
-* 对于个人或公司拥有的 iOS 和 Android 设备，请部署 [Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md)。 除了多重身份验证和无密码的登录功能外，Microsoft Authenticator 应用还可通过对最终用户进行更少身份验证的 [中转身份验证](../develop/msal-android-single-sign-on.md) 来跨本机应用程序进行单一登录。
+* 对于个人或公司拥有的 iOS 和 Android 设备，请部署 [Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md)。 除多重身份验证和无密码登录功能外，Microsoft Authenticator 应用还可以通过[中介身份验证](../develop/msal-android-single-sign-on.md)实现各本机应用程序的单一登录，同时减少最终用户收到身份验证提示的次数。
 
 * 对于个人或公司拥有的 iOS 和 Android 设备，请使用[移动应用管理](/mem/intune/apps/app-management)来安全访问公司资源，该方法可以减少身份验证请求次数。 
 
@@ -55,11 +55,11 @@ ms.locfileid: "98724604"
 
 * [使用连续访问评估 (CAE) 构建复原能力](resilience-with-continuous-access-evaluation.md)
 
-* [在外部用户身份验证中构建复原能力](resilience-b2b-authentication.md)
+* [构建外部用户身份验证的复原能力](resilience-b2b-authentication.md)
 
 * [在混合身份验证中构建复原能力](resilience-in-hybrid.md)
 
-* [使用应用程序代理通过应用程序访问生成恢复能力](resilience-on-premises-access.md)
+* [利用应用程序代理构建应用程序访问的复原能力](resilience-on-premises-access.md)
 
 
 适用于开发人员的复原能力资源

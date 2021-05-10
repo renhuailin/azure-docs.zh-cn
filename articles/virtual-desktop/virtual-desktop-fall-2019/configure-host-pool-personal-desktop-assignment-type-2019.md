@@ -1,19 +1,19 @@
 ---
-title: Windows 虚拟桌面 (经典) 个人桌面分配类型-Azure
-description: 如何为 Windows 虚拟桌面 (经典) 个人桌面主机池配置分配类型。
+title: Windows 虚拟桌面（经典）个人桌面分配类型 - Azure
+description: 如何为 Windows 虚拟桌面（经典）个人桌面主机池配置分配类型。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 669010d2de90498c98fc685fe931b084a11cd104
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88008502"
 ---
-# <a name="configure-the-personal-desktop-host-pool-assignment-type-for-windows-virtual-desktop-classic"></a>为 Windows 虚拟桌面 (经典) 配置个人桌面主机池分配类型
+# <a name="configure-the-personal-desktop-host-pool-assignment-type-for-windows-virtual-desktop-classic"></a>为 Windows 虚拟桌面（经典）的个人桌面主机池配置分配类型
 
 >[!IMPORTANT]
 >本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../configure-host-pool-personal-desktop-assignment-type.md)。

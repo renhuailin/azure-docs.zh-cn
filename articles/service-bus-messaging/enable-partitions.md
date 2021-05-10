@@ -3,12 +3,12 @@ title: 在 Azure 服务总线队列和主题中启用分区
 description: 本文介绍如何在 Azure 服务总线队列和主题中通过使用 Azure 门户、PowerShell、CLI 和编程语言（C#、Java、Python 和 JavaScript）启用分区
 ms.topic: how-to
 ms.date: 04/19/2021
-ms.openlocfilehash: fb704f784d490cb73c14fc73b1a6c4368d16acbc
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: ac77dfc2e72d1d83c4424c05da40c5adba1e8e9d
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107755034"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076682"
 ---
 # <a name="enable-partitioning-for-an-azure-service-bus-queue-or-a-topic"></a>为 Azure 服务总线队列或主题启用分区
 服务总线分区允许跨多个消息中转站和消息存储对队列和主题或消息实体进行分区。 分区意味着分区实体的总吞吐量不再受单个消息中转站或消息存储的性能所限制。 此外，消息传送存储的临时中断不会导致分区的队列或主题不可用。 分区队列和主题可以包含所有先进的服务总线功能，如事务和会话支持。 有关详细信息，请参阅[分区队列和主题](service-bus-partitioning.md)。 本文介绍为服务总线队列或主题启用重复消息检测的不同方式。 
@@ -16,6 +16,9 @@ ms.locfileid: "107755034"
 > [!IMPORTANT]
 > - 分区在为基本或标准 SKU 中的所有队列和主题创建实体时可用。 它不可用于高级消息传送 SKU，但高级命名空间中任何先前已存在的分区实体将继续按预期方式工作。
 > - 不能更改任何现有队列或主题中的分区选项。 只能在创建队列或主题时设置选项。 
+> - 在标准层命名空间中，可创建 1、2、3、4 或 5 GB 大小的服务总线队列和主题（默认值为 1 GB）。 启用分区后，服务总线将创建实体的 16 个副本（16 个分区），每个副本具有指定的相同大小。 因此，如果创建了一个大小为 5 GB 的队列，共有 16 个分区，最大队列大小为 (5 \* 16) = 80 GB。 
+> - 在高级层命名空间中，不支持分区实体。 但是，仍然可以创建 1、2、3、4、5、10、20、40 或 80 GB 大小的服务总线队列和主题（默认值为 1 GB）。 你可在 [Azure 门户](https://portal.azure.com)的“概述”页中查看分区队列或主题的最大大小。
+
 
 ## <a name="using-azure-portal"></a>使用 Azure 门户
 在 Azure 门户中创建“队列”时，请选择“启用分区”，如下图所示。 
@@ -179,15 +182,16 @@ New-AzServiceBusTopic -ResourceGroup myresourcegroup `
 ```
 
 
+
 ## <a name="next-steps"></a>后续步骤
 尝试采用所选语言的示例，了解 Azure 服务总线功能。 
 
-- [适用于 Java 的 Azure 服务总线客户端库示例](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [适用于 .NET（最新）的 Azure 服务总线客户端库示例](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/) 
+- [适用于 Java（最新）的 Azure 服务总线客户端库示例](/samples/azure/azure-sdk-for-java/servicebus-samples/)
 - [适用于 Python 的 Azure 服务总线客户端库示例](/samples/azure/azure-sdk-for-python/servicebus-samples/)
 - [适用于 JavaScript 的 Azure 服务总线客户端库示例](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
 - [适用于 TypeScript 的 Azure 服务总线客户端库示例](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
-- [适用于 .NET 的 Azure.Messaging.ServiceBus 示例](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)
 
 在下面查找早期 .NET 和 Java 客户端库示例：
-- [适用于 .NET 的 Microsoft.Azure.ServiceBus 示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
-- [适用于 Java 的 azure-servicebus 示例](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse)
+- [适用于 .NET（旧版）的 Azure 服务总线客户端库示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
+- [适用于 Java（旧版）的 Azure 服务总线客户端库示例](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus)

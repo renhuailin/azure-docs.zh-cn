@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 1e57ae537c271e61f0b2d37f5320cb177b04802b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad498575b029f918538909a9b5b2d52c71c1389c
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98164866"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816361"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知识库限制和边界
 
@@ -108,6 +108,26 @@ ms.locfileid: "98164866"
 * 添加或删除的元数据字段的最大数量：10
 * 可以刷新的 URL 的最大数量：5
 * 每个调用允许的 QnA 最大数量：1000
+
+## <a name="add-unstructured-file-limits"></a>添加非结构化文件限制
+
+> [!NOTE]
+> * 如果需要使用的文档的大小超出允许的限制，可将文件拆分成多个较小的文件，然后再将其发送到 API。 
+
+下面是使用非结构化文件创建 KB 或调用 CreateKnowledgeBase API 时的限制：
+* 文件的长度：我们将提取前 32000 个字符
+* 每个文件最多 3 个响应。
+
+## <a name="prebuilt-question-answering-limits"></a>预生成的问答限制
+
+> [!NOTE]
+> * 如果需要使用的文档的大小超出允许的限制，可将文本拆分成较小的文本块，然后再将其发送到 API。 
+> * 文档是由文本字符构成的单个字符串。  
+
+下面是将预生成的 API 用于生成响应或调用 GenerateAnswer API 时的限制：
+* 文档数：5
+* 单个文档的最大大小：5,120 个字符
+* 每个文档最多 3 个响应。
 
 ## <a name="next-steps"></a>后续步骤
 

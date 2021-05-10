@@ -1,6 +1,6 @@
 ---
-title: Azure 云服务 (扩展支持) 型号和包
-description: 介绍 Azure 中的云服务 (扩展支持) 型号 (. .cscfg) 和包 (
+title: 什么是 Azure 云服务（外延支持）模型和包
+description: 描述 Azure 中的云服务（外延支持）模型（.csdef、.cscfg）和包 (.cspkg)
 ms.topic: article
 ms.service: cloud-services-extended-support
 author: gachandw
@@ -9,10 +9,10 @@ ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
 ms.openlocfilehash: 3baea92d78cf15c35d2fb36692dab1edfd950699
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98744237"
 ---
 # <a name="what-is-the-azure-cloud-service-model-and-how-do-i-package-it"></a>什么是 Azure 云服务模型以及如何将其打包？
@@ -29,7 +29,7 @@ ms.locfileid: "98744237"
   * [创建云服务][vs_create]
   * [重新配置现有云服务][vs_reconfigure]
   * [部署云服务项目][vs_deploy]
-  * [远程桌面登录到云服务实例]remotedesktop
+  * [通过远程桌面连接到云服务实例][remotedesktop]
 
 <a name="csdef"></a>
 
@@ -85,7 +85,7 @@ ms.locfileid: "98744237"
 </ServiceDefinition>
 ```
 
-为了更好地了解此处使用的 XML 架构，你可以参阅 [服务定义架构](schema-csdef-file.md)) ，但以下是一些元素的快速说明：
+可以参阅[服务定义架构](schema-csdef-file.md)以更好地了解此处使用的 XML 架构，而以下是某些元素的快速说明：
 
 **站点**  
 包含 IIS7 中承载的网站或 Web 应用程序的定义。
@@ -275,7 +275,7 @@ cspack [DirectoryName]\[ServiceDefinition]
 | \[RoleAssemblyName\] |角色的二进制文件的名称。 |
 
 ## <a name="next-steps"></a>后续步骤 
-- 查看云服务的 [部署先决条件](deploy-prerequisite.md) (扩展支持) 。
-- ) 使用 [Azure 门户](deploy-portal.md)、 [PowerShell](deploy-powershell.md)、 [模板](deploy-template.md) 或 [Visual Studio](deploy-visual-studio.md)部署云服务 (扩展支持。
-- 查看 [云服务的常见问题 (](faq.md) 扩展支持) 。
+- 查看云服务（外延支持）的[部署先决条件](deploy-prerequisite.md)。
+- 使用 [Azure 门户](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[模板](deploy-template.md)或 [Visual Studio](deploy-visual-studio.md) 部署云服务（外延支持）。
+- 请参阅云服务（外延支持）的[常见问题解答](faq.md)。
 

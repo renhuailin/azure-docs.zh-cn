@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: yexu
-ms.openlocfilehash: 7cb00d62556babbd8e43e2fac2faa815a63943ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f979ca04a276f52e5f76a8e4327f9ff8ef390fe6
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100385262"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143694"
 ---
 #  <a name="session-log-in-copy-activity"></a>复制活动中的会话日志
 
@@ -77,7 +77,7 @@ path | 日志文件的路径。 | 指定用于存储日志文件的路径。 如
 ## <a name="monitoring"></a>监视
 
 ### <a name="output-from-copy-activity"></a>复制活动的输出
-在复制活动完全运行后，可以从每个复制活动运行的输出中看到日志文件的路径。 可以从以下路径中找到日志文件：`https://[your-blob-account].blob.core.windows.net/[logFilePath]/copyactivity-logs/[copy-activity-name]/[copy-activity-run-id]/[auto-generated-GUID].csv`。  日志文件将是 csv 文件。 
+在复制活动完全运行后，可以从每个复制活动运行的输出中看到日志文件的路径。 可以从以下路径中找到日志文件：`https://[your-blob-account].blob.core.windows.net/[logFilePath]/copyactivity-logs/[copy-activity-name]/[copy-activity-run-id]/[auto-generated-GUID].txt`。  生成的日志文件具有 .txt 扩展名，其数据采用 CSV 格式。
 
 ```json
 "output": {

@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 排查已启用 Arc 的 Kubernetes 群集的常见问题。
 keywords: Kubernetes, Arc, Azure, 容器
-ms.openlocfilehash: 992ea75c48b2630032e1314610986fbc610eec7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f0b02e5b4e58cda246751b16542a0a2ac587e7b6
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025775"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289617"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting"></a>已启用 Azure Arc 的 Kubernetes 故障排除
 
@@ -192,3 +192,20 @@ metadata:
 ```console
 juju config kubernetes-worker allow-privileged=true
 ```
+
+## <a name="enable-custom-locations-using-service-principal"></a>使用服务主体启用自定义位置
+
+将群集连接到 Azure Arc 或在现有群集上启用自定义位置功能时，可能会看到以下警告：
+
+```console
+Unable to fetch oid of 'custom-locations' app. Proceeding without enabling the feature. Insufficient privileges to complete the operation.
+```
+
+使用服务主体登录到 Azure 并且此服务主体没有权限获取 Azure Arc 服务所使用应用程序的信息时，将看到上述警告。 运行以下命令以授予所需的权限：
+
+```console
+az ad app permission add --id <service-principal-app-id> --api 00000002-0000-0000-c000-000000000000 --api-permissions 3afa6a7d-9b1a-42eb-948e-1650a849e176=Role
+az ad app permission admin-consent --id <service-principal-app-id>
+```
+
+授予上述权限后，现在可以继续在群集上[启用自定义位置功能](custom-locations.md#enable-custom-locations-on-cluster)。

@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box Disk 排查磁盘解锁问题 | Microsoft Docs
-description: 了解用于排查 Azure Data Box Disk 的解锁工具问题的工作流。 请参阅 Data Box Disk 解锁工具错误。
+description: 了解用于排查 Azure Data Box Disk 解锁工具问题的工作流。 请参阅 Data Box Disk 解锁工具错误。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,22 +9,22 @@ ms.topic: troubleshooting
 ms.date: 08/05/2020
 ms.author: alkohli
 ms.openlocfilehash: 866cf01243983863292ada0b086f8f5b2f94e412
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87925555"
 ---
 # <a name="troubleshoot-disk-unlocking-issues-in-azure-data-box-disk"></a>排查 Azure Data Box Disk 中的磁盘解锁问题
 
-本文适用于 Microsoft Azure Data Box Disk，并介绍使用解锁工具时用于排查任何问题的工作流。 
+本文适用于 Microsoft Azure Data Box Disk，并介绍用于排查使用解锁工具时遇到的任何问题的工作流。 
 
 
 <!--## Query activity logs
 
 Use the activity logs to find who unlocked and accessed the disks. Your Data Box Disk arrive on your premises in a locked state. You can use the device credentials available in the Azure portal for your order to unlock them.  
 
-To figure out who accessed the **Device credentials** blade, you can query the Activity logs.  Any action that involves accessing **Device details > Credentials** blade is logged into the activity logs as `ListCredentials` action.
+To figure out who accessed the **Device credentials** blade, you can query the Activity logs.  Any action that involves accessing **Device details > Credentials** blade is logged into the activity logs as `ListCredentials` action.
 
 ![Query Activity logs](media/data-box-logs/query-activity-log-1.png)-->
 
@@ -37,7 +37,7 @@ To figure out who accessed the **Device credentials** blade, you can query the A
 | 当前的 .NET Framework 不受支持。 支持的版本为 4.5 和以上。<br><br>工具退出并显示一条消息。  | 未安装 .NET 4.5。 在运行 Data Box 磁盘解锁工具的主机上安装 .NET 4.5 或更高版本。                                                                            |
 | 无法解锁或验证任何卷。 请联系 Microsoft 支持。  <br><br>工具无法解锁或验证任何已锁定的驱动器。 | 工具无法解锁任何已使用提供的支持密钥锁定的驱动器。 联系 Microsoft 支持部门了解后续步骤。                                                |
 | 已解锁并验证以下卷。 <br>卷驱动器号:E：<br>无法使用以下支持密钥解锁任何卷: werwerqomnf、qwerwerqwdfda <br><br>工具解锁了一些驱动器，并列出了成功和失败的驱动器号。| 部分成功。 使用提供的支持密钥无法解锁某些驱动器。 联系 Microsoft 支持部门了解后续步骤。 |
-| 找不到锁定的卷。 验证从 Microsoft 收到的磁盘是否已正确连接并处于锁定状态。          | 工具找不到任何已锁定的驱动器。 驱动器已解锁，或检测不到。 确保驱动器已连接并已锁定。 <br> <br>如果格式化了磁盘，则也可能会看到此错误。 如果已格式化磁盘，则这些磁盘现在不可用。 联系 Microsoft 支持部门了解后续步骤。                                                          |
+| 找不到锁定的卷。 验证从 Microsoft 收到的磁盘是否已正确连接并处于锁定状态。          | 工具找不到任何已锁定的驱动器。 驱动器已解锁，或检测不到。 确保驱动器已连接并已锁定。 <br> <br>如果已格式化磁盘，则也可能会看到此错误。 如果已格式化磁盘，则这些磁盘现在不可用。 联系 Microsoft 支持部门了解后续步骤。                                                          |
 | 严重错误:参数无效<br>参数名称: invalid_arg<br>用法:<br>DataBoxDiskUnlock /PassKeys:<passkey_list_separated_by_semicolon><br><br>示例：DataBoxDiskUnlock /PassKeys:passkey1;passkey2;passkey3<br>示例：DataBoxDiskUnlock /SystemCheck<br>示例：DataBoxDiskUnlock /Help<br><br>/PassKeys:     从 Azure Data Box Disk 顺序中获取此支持密钥。 该支持密钥用于解锁磁盘。<br>/Help:         此选项提供有关 cmdlet 使用情况和示例的帮助。<br>/SystemCheck:  此选项检查你的系统是否满足运行该工具的要求。<br><br>按任意键退出。 | 输入了无效的参数。 只允许参数 /SystemCheck、/PassKey 和 /Help。|
 
 

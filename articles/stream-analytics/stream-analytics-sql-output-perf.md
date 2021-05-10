@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.openlocfilehash: 8baa33c8d9622ff76db04345f5c6c465f026e261
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98020224"
 ---
 # <a name="increase-throughput-performance-to-azure-sql-database-from-azure-stream-analytics"></a>通过 Azure 流分析提高 Azure SQL 数据库的吞吐量性能
@@ -23,24 +23,24 @@ Azure 流分析中的 SQL 输出支持使用并行写入作为一个选项。 �
 
 ## <a name="azure-stream-analytics"></a>Azure 流分析
 
-- **继承分区** –此 SQL 输出配置选项允许继承上一个查询步骤或输入的分区方案。 启用此选项后，写入到基于磁盘的表以及对作业使用[完全并行](stream-analytics-parallelization.md#embarrassingly-parallel-jobs)拓扑时，吞吐量预期会提高。 其他许多[输出](stream-analytics-parallelization.md#partitions-in-inputs-and-outputs)已自动采用此分区。 使用此选项执行批量插入时，还会禁用表锁定 (TABLOCK)。
+- **继承分区** – 使用此 SQL 输出配置选项可以继承先前查询步骤或输入的分区方案。 启用此选项后，写入到基于磁盘的表以及对作业使用[完全并行](stream-analytics-parallelization.md#embarrassingly-parallel-jobs)拓扑时，吞吐量预期会提高。 其他许多[输出](stream-analytics-parallelization.md#partitions-in-inputs-and-outputs)已自动采用此分区。 使用此选项执行批量插入时，还会禁用表锁定 (TABLOCK)。
 
 > [!NOTE] 
 > 如果输入分区超过 8 个，则继承输入分区方案可能不是适当的选择。 包含单个标识列和聚集索引的表曾经达到过此上限。 在这种情况下，请考虑在查询中使用 [INTO](/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 8 来显式指定输出写入器的数量。 根据架构和选择的索引，观察结果可能有所不同。
 
 - **批大小** - 使用 SQL 输出配置可以根据目标表/工作负荷的性质，在 Azure 流分析 SQL 输出中指定最大批大小。 批大小是随每个批量插入事务一起发送的最大记录数。 在聚集列存储索引中，批大小约为 [100K](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance)，这可以实现并行化、极简的日志记录和锁定优化。 在基于磁盘的表中，10K（默认值）或更小的值可能最适合解决方案，因为较大的批大小可能在批量插入期间触发锁升级。
 
-- **输入消息优化** –如果已使用继承分区和批大小进行了优化，则增加每个分区每条消息的输入事件数有助于进一步提高写入吞吐量。 通过输入消息优化，可将 Azure 流分析中的批大小最大提高到指定的批大小，从而提高吞吐量。 这可以通过使用[压缩](stream-analytics-define-inputs.md)或在 EventHub 或 Blob 中增加输入消息大小来实现。
+- **输入消息优化** – 如果已使用继承分区和批大小进行优化，则增大每个分区的每个消息的输入事件数有助于进一步提高写入吞吐量。 通过输入消息优化，可将 Azure 流分析中的批大小最大提高到指定的批大小，从而提高吞吐量。 这可以通过使用[压缩](stream-analytics-define-inputs.md)或在 EventHub 或 Blob 中增加输入消息大小来实现。
 
 ## <a name="sql-azure"></a>SQL Azure
 
-- 已 **分区的表和索引**–在表中使用已 [分区](/sql/relational-databases/partitions/partitioned-tables-and-indexes)的 SQL 表和已分区索引（与分区键相同的列） (例如，PartitionId) 可以显著减少写入过程中分区之间的争用。 对于分区表，需要在 PRIMARY 文件组中创建[分区函数](/sql/t-sql/statements/create-partition-function-transact-sql)和[分区方案](/sql/t-sql/statements/create-partition-scheme-transact-sql)。 这也可以在加载新数据时提高现有数据的可用性。 根据分区的数量，可能会达到日志 IO 限制；升级 SKU 可以提高限制。
+- **分区表和索引** – 在包含与分区键（例如 PartitionId）相同的列的表中使用[分区](/sql/relational-databases/partitions/partitioned-tables-and-indexes) SQL 表和分区索引可以在写入期间明显减少分区之间的争用。 对于分区表，需要在 PRIMARY 文件组中创建[分区函数](/sql/t-sql/statements/create-partition-function-transact-sql)和[分区方案](/sql/t-sql/statements/create-partition-scheme-transact-sql)。 这也可以在加载新数据时提高现有数据的可用性。 根据分区的数量，可能会达到日志 IO 限制；升级 SKU 可以提高限制。
 
-- **避免唯一键冲突** –如果你在 Azure 流分析活动日志中收到 [多个键冲突警告消息](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) ，请确保你的作业不受在恢复案例中可能会发生的唯一约束冲突的影响。 可以通过在索引中设置 [IGNORE\_DUP\_KEY](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) 选项来避免此问题。
+- **避免唯一键冲突** – 如果 Azure 流分析活动日志中出现[多个键冲突警告消息](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output)，请确保作业不受唯一约束冲突（在恢复期间可能会发生）的影响。 可以通过在索引中设置 [IGNORE\_DUP\_KEY](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) 选项来避免此问题。
 
 ## <a name="azure-data-factory-and-in-memory-tables"></a>Azure 数据工厂和内存中表
 
-- **作为临时表的内存中表** - [内存中表](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) 允许实现非常高速的数据加载，但需要在内存中容纳数据。 基准测试表明，从内存中表批量加载到基于磁盘的表，比使用单个写入器直接批量插入到包含标识列和聚集索引的基于磁盘的表的速度大约要快 10 倍。 若要利用这种批量插入性能，请设置一个[使用 Azure 数据工厂的复制作业](../data-factory/connector-azure-sql-database.md)，用于将数据从内存中表复制到基于磁盘的表。
+- **用作临时表的内存中表** – 使用[内存中表](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)可以大大提高数据加载速度，但内存必须能够装得下这些数据。 基准测试表明，从内存中表批量加载到基于磁盘的表，比使用单个写入器直接批量插入到包含标识列和聚集索引的基于磁盘的表的速度大约要快 10 倍。 若要利用这种批量插入性能，请设置一个[使用 Azure 数据工厂的复制作业](../data-factory/connector-azure-sql-database.md)，用于将数据从内存中表复制到基于磁盘的表。
 
 ## <a name="avoiding-performance-pitfalls"></a>避免性能陷阱
 批量插入数据比通过单次插入加载数据的速度要快得多，因为避免了传输数据、分析 insert 语句、运行该语句以及发出事务记录的重复开销。 因而在存储引擎中使用更高效的路径流式传输数据。 但是，此路径的设置成本比基于磁盘的表中的单个 insert 语句的成本要高得多。 保本点通常约为 100 行，如果超过此数量，批量加载几乎总是更高效。 

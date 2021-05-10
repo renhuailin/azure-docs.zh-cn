@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 03/30/2017
 ms.openlocfilehash: 470857883144f4bf8c21a1921afacb7ba3f5ca00
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98788089"
 ---
 # <a name="azure-serverless-overview-for-building-cloud-based-apps-and-solutions-with-azure-logic-apps-and-azure-functions"></a>Azure 无服务器产品/服务：概述如何使用 Azure 逻辑应用和 Azure Functions 构建基于云的应用和解决方案
@@ -45,4 +45,4 @@ Azure 提供丰富的工具，用于开发、部署和管理无服务器应用�
 
 * [在 Visual Studio 中构建无服务器应用](logic-apps-serverless-get-started-vs.md)
 * [使用无服务器产品/服务创建 Customer Insights 仪表板](logic-apps-scenario-social-serverless.md)
-* [自动完成逻辑应用部署](logic-apps-azure-resource-manager-templates-overview.md)
+* [自动执行逻辑应用部署](logic-apps-azure-resource-manager-templates-overview.md)

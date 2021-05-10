@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 3bd0621d607b121f19bc47c717343b8e2e39b04f
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98752721"
 ---
 # <a name="microsoft-identity-platform-userinfo-endpoint"></a>Microsoft 标识平台的 UserInfo 终结点
@@ -26,9 +26,9 @@ UserInfo 终结点是 [OpenID Connect 标准](https://openid.net/specs/openid-co
 
 ## <a name="find-the-well-known-configuration-endpoint"></a>查找 .well-known 配置终结点
 
-你可以使用 `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` 上的 OpenID Connect 发现文档以编程方式发现 UserInfo 终结点。 它在 `userinfo_endpoint` 字段中列出，该模式可以在各个云中用来指向正确的终结点。  我们不建议在应用中对用户信息终结点进行硬编码–使用 OIDC 发现文档可在运行时查找此终结点。
+你可以使用 `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` 上的 OpenID Connect 发现文档以编程方式发现 UserInfo 终结点。 它在 `userinfo_endpoint` 字段中列出，该模式可以在各个云中用来指向正确的终结点。  不建议在应用中对 UserInfo 终结点进行硬编码，请改用 OIDC 发现文档在运行时查找此终结点。
 
-根据 OpenID Connect 规范，[符合 OIDC 规范的库](https://openid.net/developers/certified/)通常会自动调用 UserInfo 终结点以获取用户的信息。  如果不托管此类终结点，Microsoft 标识平台将不符合标准，并且某些库将会失败。  我们根据 [OIDC 标准中标识的声明的列表](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims)生成名称声明、主题声明和电子邮件（如果这些项可用并已获得许可）。  
+根据 OpenID Connect 规范，[符合 OIDC 规范的库](https://openid.net/developers/certified/)通常会自动调用 UserInfo 终结点以获取用户的信息。  如果不承载此类终结点，Microsoft 标识平台就不符合标准，某些库会失败。  我们根据 [OIDC 标准中标识的声明的列表](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims)生成名称声明、主题声明和电子邮件（如果这些项可用并已获得许可）。  
 
 ## <a name="consider-use-an-id-token-instead"></a>请考虑：改用 ID 令牌
 
@@ -47,7 +47,7 @@ UserInfo 是一个标准的 OAuth 持有者令牌 API，与任何其他 Microsof
 |权限类型      | 权限    |
 |:--------------------|:---------------------------------------------------------|
 |委托的（工作或学校帐户） | openid（必需）、profile、email |
-|委托 (个人 Microsoft 帐户)  | openid（必需）、profile、email |
+|委托的（个人 Microsoft 帐户） | openid（必需）、profile、email |
 |应用程序 | 不适用 |
 
 > [!TIP]
@@ -85,7 +85,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6Il…
 
 ## <a name="notes-and-caveats-on-the-userinfo-endpoint"></a>有关 UserInfo 终结点的说明和注意事项
 
-* 如果要调用此 UserInfo 终结点，则必须使用 v2.0 终结点。  如果你使用 v1.0 终结点，你将获得一个在 login.microsoftonline.com 上托管的1.0 用户信息终结点令牌。  建议符合 OIDC 的所有应用和库都使用 v2.0 终结点，以确保兼容性。
+* 如果要调用此 UserInfo 终结点，则必须使用 v2.0 终结点。  如果使用 v1.0 终结点，你将获得在 login.microsoftonline.com 上承载的 v1.0 UserInfo 终结点的令牌。  建议符合 OIDC 的所有应用和库都使用 v2.0 终结点，以确保兼容性。
 * 无法自定义来自 UserInfo 终结点的响应。  如果要自定义声明，请使用[声明映射]( active-directory-claims-mapping.md)编辑令牌中返回的信息。
 * 无法添加来自 UserInfo 终结点的响应。  若要获取有关用户的其他声明，请使用[可选声明]( active-directory-optional-claims.md)将新声明添加到令牌中。
 

@@ -7,17 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/18/2020
+ms.date: 04/21/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 62bfc528886767bc09159ca2a2696c8c9264b307
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: adea0e63c9e285a751a1a0508e84c5b83a10e994
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96349933"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074684"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect： 配置 AD DS 连接器帐户权限 
 
@@ -52,7 +52,7 @@ Install-WindowsFeature RSAT-AD-Tools
 ![配置](media/how-to-connect-configure-ad-ds-connector-account/configure2.png)
 
 >[!NOTE]
->也可以将文件 **C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncConfig\ADSyncConfig.psm1** 复制到已安装了“适用于 AD DS 的 RSAT”的域控制器，并从该控制器使用此 PowerShell 模块。
+>也可以将文件 **C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncConfig\ADSyncConfig.psm1** 复制到已安装了“适用于 AD DS 的 RSAT”的域控制器，并从该控制器使用此 PowerShell 模块。  注意，某些 cmdlet 只能在托管 Azure AD Connect 的计算机上运行。
 
 若要开始使用 ADSyncConfig，则需要在 Windows PowerShell 窗口中加载该模块： 
 

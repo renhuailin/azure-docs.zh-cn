@@ -15,10 +15,10 @@ ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 6e53a6a4875b3dde55d1822daa342d6cde536d1c
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100096423"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>为 Azure 虚拟机中的 SQL Server Always On 可用性组配置负载均衡器
@@ -72,7 +72,7 @@ ms.locfileid: "100096423"
    | --- | --- |
    | **名称** |表示负载均衡器的文本名称。 例如 **sqlLB**。 |
    | 类型 |**内部**：大多数实施方案使用内部负载均衡器，它可让同一虚拟网络中的应用程序连接到可用性组。  </br> **外部**：可让应用程序通过公共 Internet 连接连接到可用性组。 |
-   | SKU |**基本**：默认选项。 仅当 SQL Server 实例位于同一可用性集中时有效。 </br> **标准**：首选。 当 SQL Server 实例位于同一可用性集中时有效。 如果 SQL Server 实例位于不同的可用性区域中，则是必需的。 |
+   | SKU |**基本**：默认选项。 仅当 SQL Server 实例位于同一可用性集中时有效。 </br> **标准**：首选。 当 SQL Server 实例位于同一可用性集中时有效。 当 SQL Server 实例位于不同可用性区域中时必需。 |
    | **虚拟网络** |选择 SQL Server 实例所在的虚拟网络。 |
    | **子网** |选择 SQL Server 实例所在的子网。 |
    | IP 地址分配 |**静态** |

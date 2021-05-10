@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 4f570f9f18f9c9d484a9bc9c1a5c64d42dbdc714
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93397444"
 ---
 # <a name="annotations-for-application-gateway-ingress-controller"></a>应用程序网关入口控制器的批注 
@@ -22,7 +22,7 @@ ms.locfileid: "93397444"
 
 ## <a name="list-of-supported-annotations"></a>支持的批注列表
 
-对于 AGIC 要观察的入口资源， **必须** 使用 `kubernetes.io/ingress.class: azure/application-gateway` 对其进行批注。 只有在批注之后，AGIC 才能使用相关的入口资源。
+对于 AGIC 要观察的入口资源，**必须** 使用 `kubernetes.io/ingress.class: azure/application-gateway` 对其进行批注。 只有在批注之后，AGIC 才能使用相关的入口资源。
 
 | 批注键 | 值类型 | 默认值 | 允许的值
 | -- | -- | -- | -- |
@@ -107,8 +107,8 @@ spec:
 
 ## <a name="connection-draining"></a>连接清空
 
-`connection-draining`：此批注可让用户指定是否启用连接清空。
-`connection-draining-timeout`：此批注可让用户指定超时，在此超时过后，应用程序网关将终止对清空后端终结点的请求。
+`connection-draining`：此注释允许用户指定是否启用连接排出。
+`connection-draining-timeout`：此注释允许用户指定超时时间，在此时间后，应用程序网关将终止对排出后端终结点的请求。
 
 ### <a name="usage"></a>使用情况
 

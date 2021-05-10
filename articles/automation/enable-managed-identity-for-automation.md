@@ -3,14 +3,14 @@ title: 为 Azure 自动化帐户禁用托管标识（预览版）
 description: 本文介绍如何为 Azure 自动化帐户设置托管标识。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/14/2021
+ms.date: 04/20/2021
 ms.topic: conceptual
-ms.openlocfilehash: 93c55c21bf740f2851cac1926bc673cebcd914b0
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 1f06fb89111236c7465cf5237acc2d187f72fe98
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107514795"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896488"
 ---
 # <a name="enable-a-managed-identity-for-your-azure-automation-account-preview"></a>为 Azure 自动化帐户禁用托管标识（预览版）
 
@@ -20,7 +20,7 @@ ms.locfileid: "107514795"
 
 - Azure 帐户和订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 托管标识和以及 runbook 使用该标识管理的目标 Azure 资源必须在同一 Azure 订阅中。
 
-- Azure 自动化帐户模块的最新版本。 目前这是 1.6.0。 （有关此版本的详细信息，请参阅 [Az.Automation 1.6.0](https://www.powershellgallery.com/packages/Az.Automation/1.6.0)。）
+- Azure 帐户模块的最新版本。 当前版本为 2.2.8。 （请参阅 [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/)，了解此版本的相关详情。）
 
 - 要从自动化 runbook 访问的 Azure 资源。 此资源需要为托管标识定义角色，这可帮助自动化 runbook 对资源访问进行身份验证。 若要添加角色，需要成为相应 Azure AD 租户中资源的所有者。
 
@@ -150,6 +150,10 @@ Write-Output $accessToken.access_token
 
 ### <a name="sample-runbook-to-access-a-sql-database-without-using-azure-cmdlets"></a>在不使用 Azure cmdlet 的情况下访问 SQL 数据库的示例 runbook
 
+尝试此脚本之前，请确保已启用标识。 请参阅[启用系统分配的标识](#enable-system-assigned-identity)。
+
+要了解如何预配 Azure SQL 数据库访问权限，请参阅[预配 Azure AD 管理员（SQL 数据库）](/azure/azure-sql/database/authentication-aad-configure#provision-azure-ad-admin-sql-database)。
+
 ```powershell
 $queryParameter = "?resource=https://database.windows.net/" 
 $url = $env:IDENTITY_ENDPOINT + $queryParameter
@@ -179,6 +183,10 @@ $conn.Close()
 
 ### <a name="sample-runbook-to-access-a-key-vault-using-azure-cmdlets"></a>使用 Azure cmdlet 访问密钥保管库的示例 runbook
 
+尝试此脚本之前，请确保已启用标识。 请参阅[启用系统分配的标识](#enable-system-assigned-identity)。
+
+有关详细信息，请参阅 [Get-AzKeyVaultSecret](/powershell/module/az.keyvault/get-azkeyvaultsecret)。
+
 ```powershell
 Write-Output "Connecting to azure via  Connect-AzAccount -Identity" 
 Connect-AzAccount -Identity 
@@ -196,7 +204,9 @@ try {
 ```
 
 ### <a name="sample-python-runbook-to-get-a-token"></a>获取令牌的示例 Python runbook
- 
+
+尝试此 runbook 之前，请确保已启用标识。 请参阅[启用系统分配的标识](#enable-system-assigned-identity)。
+
 ```python
 #!/usr/bin/env python3 
 import os 

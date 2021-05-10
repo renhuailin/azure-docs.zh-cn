@@ -13,12 +13,12 @@ ms.date: 03/29/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: caa8f4efa60f8a42856f7cd8e78edf32fce956c6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d2f4fca7f6b5fe7c6a894f4be3b27788799b422e
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937135"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108063984"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 标识平台和 OAuth 2.0 授权代码流
 
@@ -183,7 +183,11 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 | `id_token` | 用户的 ID 令牌，通过隐式授权颁发。 包含一个特殊的 `c_hash` 声明，该声明是同一请求中 `code` 的哈希。 |
 | `state` | 如果请求中包含 state 参数，响应中就应该出现相同的值。 应用应验证请求和响应中的状态值是否相同。 |
 
-## <a name="request-an-access-token"></a>请求访问令牌
+## <a name="redeem-a-code-for-an-access-token"></a>兑换访问令牌的代码
+
+所有机密客户端都可以选择使用客户端机密（由 Microsoft 标识平台生成的对称共享机密）和[证书凭据](active-directory-certificate-credentials.md)（开发人员上传的非对称密钥）。  为了获得最佳安全性，我们建议使用证书凭据。 兑换授权代码时，公共客户端（本机应用程序和单页应用）不得使用机密或证书。请始终确保重定向 URI 正确指示应用程序的类型，并且[是唯一的](reply-url.md#localhost-exceptions)。 
+
+### <a name="request-an-access-token-with-a-client_secret"></a>使用 client_secret 请求访问令牌
 
 现在已获取 authorization_code 并获得用户授权，可兑换 `code` 以获取所需资源的 `access_token`。 通过向 `/token` 终结点发送 `POST` 请求来完成此操作：
 
@@ -204,18 +208,49 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> 尝试在 Postman 中执行此请求！ （请不要忘记替换 `code`）[![尝试在 Postman 中运行此请求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> 尝试在 Postman 中执行此请求！ （请不要忘记替换 `code`）[![尝试在 Postman 中运行此请求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://www.getpostman.com/collections/dba7e9c2e0870702dfc6)
 
 | 参数  | 必需/可选 | 说明     |
 |------------|-------------------|----------------|
 | `tenant`   | 必需   | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
 | `client_id` | 必填  | [Azure 门户 – 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给你的应用的应用程序（客户端）ID。 |
-| `grant_type` | 必填   | 必须是授权代码流的 `authorization_code` 。   |
 | `scope`      | 可选   | 范围的空格分隔列表。 范围必须全部来自单个资源，以及 OIDC范围（`profile`、`openid`、`email`）。 有关范围更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 这是授权代码流的 Microsoft 扩展，旨在允许应用在令牌兑换期间声明其需要令牌的资源。|
 | `code`          | 必填  | 在流的第一个阶段中获取的 authorization_code。 |
 | `redirect_uri`  | 必需  | 用于获取 authorization_code 的相同 redirect_uri 值。 |
-| `client_secret` | 机密 Web 应用所需 | 在应用注册门户中为应用创建的应用程序机密。 不应在本机应用或单页应用中使用应用程序密钥，因为 client_secrets 无法可靠地存储在设备或网页上。 Web 应用和 Web API 都需要应用程序密钥，它能够将 client_secret 安全地存储在服务器端。  与此处讨论的所有参数一样，客户端机密在发送之前必须进行 URL 编码，这通常是由 SDK 执行的步骤。 有关 URI 编码的详细信息，请参阅 [URI 常规语法规范](https://tools.ietf.org/html/rfc3986#page-12)。 |
+| `grant_type` | 必需   | 必须是授权代码流的 `authorization_code` 。   |
 | `code_verifier` | 建议  | 即用于获取 authorization_code 的 code_verifier。 如果在授权码授权请求中使用 PKCE，则需要。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
+| `client_secret` | 机密 Web 应用所需 | 在应用注册门户中为应用创建的应用程序机密。 不应在本机应用或单页应用中使用应用程序密钥，因为 client_secrets 无法可靠地存储在设备或网页上。 Web 应用和 Web API 都需要应用程序密钥，它能够将 client_secret 安全地存储在服务器端。  与此处讨论的所有参数一样，客户端机密在发送之前必须进行 URL 编码，这通常是由 SDK 执行的步骤。 有关 URI 编码的详细信息，请参阅 [URI 常规语法规范](https://tools.ietf.org/html/rfc3986#page-12)。 |
+
+### <a name="request-an-access-token-with-a-certificate-credential"></a>使用证书凭据请求访问令牌
+
+```HTTP
+POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity
+Host: login.microsoftonline.com
+Content-Type: application/x-www-form-urlencoded
+
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
+&code=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq3n8b2JRLk4OxVXr...
+&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
+&grant_type=authorization_code
+&code_verifier=ThisIsntRandomButItNeedsToBe43CharactersLong
+&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer
+&client_assertion=eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJ{a lot of characters here}M8U3bSUKKJDEg
+```
+
+| 参数  | 必需/可选 | 说明     |
+|------------|-------------------|----------------|
+| `tenant`   | 必需   | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
+| `client_id` | 必填  | [Azure 门户 – 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给你的应用的应用程序（客户端）ID。 |
+| `scope`      | 可选   | 范围的空格分隔列表。 范围必须全部来自单个资源，以及 OIDC范围（`profile`、`openid`、`email`）。 有关范围更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 这是授权代码流的 Microsoft 扩展，旨在允许应用在令牌兑换期间声明其需要令牌的资源。|
+| `code`          | 必填  | 在流的第一个阶段中获取的 authorization_code。 |
+| `redirect_uri`  | 必需  | 用于获取 authorization_code 的相同 redirect_uri 值。 |
+| `grant_type` | 必需   | 必须是授权代码流的 `authorization_code` 。   |
+| `code_verifier` | 建议  | 即用于获取 authorization_code 的 code_verifier。 如果在授权码授权请求中使用 PKCE，则需要。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
+| `client_assertion_type` | 机密 Web 应用所需 | 必须将值设置为 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` 才能使用证书凭据。 |
+| `client_assertion` | 机密 Web 应用所需  | 断言（JSON Web 令牌），需使用作为凭据向应用程序注册的证书进行创建和签名。 有关如何注册证书以及断言的格式，请阅读[证书凭据](active-directory-certificate-credentials.md)的相关信息。|
+
+请注意，这些参数与共享机密请求的参数相同，只不过 `client_secret` 参数替换为以下两个参数：`client_assertion_type` 和 `client_assertion`。  
 
 ### <a name="successful-response"></a>成功的响应
 
@@ -277,7 +312,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `invalid_client` | 客户端身份验证失败。  | 客户端凭据无效。 若要修复，应用程序管理员应更新凭据。   |
 | `unsupported_grant_type` | 授权服务器不支持权限授予类型。 | 更改请求中的授权类型。 这种类型的错误应该只在开发过程中发生，并且应该在初始测试过程中检测到。 |
 | `invalid_resource` | 目标资源无效，原因是它不存在，Azure AD 找不到它，或者未正确配置。 | 这表示未在租户中配置该资源（如果存在）。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。  |
-| `interaction_required` | 非标准，因为 OIDC 规范仅在 `/authorize` 终结点上调用它。请求需要用户交互。 例如，需要额外的身份验证步骤。 | 使用同一范围重试 `/authorize` 请求。 |
+| `interaction_required` | 非标准，因为 OIDC 规范仅在 `/authorize` 终结点上调用它。 请求需要用户交互。 例如，需要额外的身份验证步骤。 | 使用同一范围重试 `/authorize` 请求。 |
 | `temporarily_unavailable` | 服务器暂时繁忙，无法处理请求。 | 请在短暂延迟后重试该请求。 客户端应用程序可能向用户说明，其响应由于临时状况而延迟。 |
 |`consent_required` | 请求需要用户同意。 此错误是非标准错误，因为根据 OIDC 规范，它通常仅在 `/authorize` 终结点上返回。 在客户端应用无权请求的代码兑换流上使用 `scope` 参数时返回。  | 客户端应将用户发送回具有正确范围的 `/authorize` 终结点，以便触发同意。 |
 |`invalid_scope` | 应用请求的范围无效。  | 将身份验证请求中的 scope 参数值更新为有效值。 |
@@ -302,7 +337,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 Access_token 生存期很短，必须在其过期后刷新，才能继续访问资源。 为此，可以向 `/token` 终结点提交另一个 `POST` 请求，但这次要提供 `refresh_token` 而不是 `code`。  刷新令牌对客户端已获得同意的所有权限有效 - 因此，对 `scope=mail.read` 请求发出的刷新令牌可用于请求 `scope=api://contoso.com/api/UseResource` 的新访问令牌。
 
-Web 应用和本机应用的刷新令牌没有指定的生存期。 通常，刷新令牌的生存期相对较长。 但是，在某些情况下，刷新令牌会过期、被吊销，或缺少执行所需操作的足够权限。 应用程序需要正确预期和处理[令牌颁发终结点返回的错误](#error-codes-for-token-endpoint-errors)。 但是，单页应用会获得一个生存期为 24 小时的令牌，每天需要新的身份验证。  当第三方 cookie 处于启用状态时，可以在 iframe 中静默完成此操作，但必须在没有第三方 cookie 的浏览器（如 Safari）的顶级框架中完成。
+Web 应用和本机应用的刷新令牌没有指定的生存期。 通常，刷新令牌的生存期相对较长。 但是，在某些情况下，刷新令牌会过期、被吊销，或缺少执行所需操作的足够权限。 应用程序需要正确预期和处理[令牌颁发终结点返回的错误](#error-codes-for-token-endpoint-errors)。 但是，单页应用会获得一个生存期为 24 小时的令牌，并且每天需要新的身份验证。  当第三方 cookie 处于启用状态时，可以在 iframe 中静默完成此操作，但必须在没有第三方 cookie 的浏览器（如 Safari）的顶级框架中完成。
 
 尽管刷新令牌在用于获取新的访问令牌时不会被撤销，但应放弃旧的刷新令牌。 [OAuth 2.0 规范](https://tools.ietf.org/html/rfc6749#section-6)指出：“授权服务器可能会发出新的刷新令牌，在这种情况下，客户端必须丢弃旧的刷新令牌，并将其替换为新的刷新令牌。 向客户端颁发新的刷新令牌后，授权服务器可能会撤销旧的刷新令牌。”
 

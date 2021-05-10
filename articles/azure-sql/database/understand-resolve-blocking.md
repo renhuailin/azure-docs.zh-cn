@@ -14,12 +14,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 3/02/2021
-ms.openlocfilehash: e176c0399b191c7a511ea1d26388219b2cef1df8
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 3d64336184450514d52095097343a4588213f111
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107140"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102034891"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>了解并解决 Azure SQL 数据库阻塞问题
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "106107140"
 在本文中，术语“连接”指的是数据库的单一登录会话。 在许多 DMV 中，每个连接都显示为会话 ID (SPID) 或 session_id。 其中每个 SPID 通常称为一个进程，尽管它不是常规意义上的单独进程上下文。 而每个 SPID 都由服务器资源和数据结构组成，这些资源和数据结构是为来自给定客户端的单一连接请求提供服务所必需的。 单个客户端应用程序可能有一个或多个连接。 从 Azure SQL 数据库的角度来看，来自单个客户端计算机上的单个客户端应用程序的多个连接与来自多个客户端应用程序或多个客户端计算机的多个连接之间没有区别；它们是原子的。 不考虑源客户端，一个连接可以阻塞另一个连接。
 
 > [!NOTE]
-> 此内容重点介绍了 Azure SQL 数据库。 Azure SQL 数据库基于最新稳定版本的 Microsoft SQL Server 数据库引擎，因此很多内容是相似的，尽管故障排除选项和工具可能有所不同。 有关 SQL Server 中阻塞的详细信息，请参阅[了解并解决 SQL Server 阻塞问题](/troubleshoot/sql/performance/understand-resolve-blocking)。
+> 本内容主要介绍 Azure SQL 数据库。 Azure SQL 数据库基于最新稳定版本的 Microsoft SQL Server 数据库引擎，因此很多内容是相似的，尽管故障排除选项和工具可能有所不同。 有关 SQL Server 中阻塞的详细信息，请参阅[了解并解决 SQL Server 阻塞问题](/troubleshoot/sql/performance/understand-resolve-blocking)。
 
 ## <a name="understand-blocking"></a>了解阻塞 
  
@@ -105,7 +105,7 @@ SELECT * FROM sys.dm_exec_input_buffer (66,0);
 
 * 请参阅 sys.dm_exec_requests 并引用 blocking_session_id 列。 当 blocking_session_id = 0 时，将不会阻塞会话。 虽然 sys.dm_exec_requests 只列出当前正在执行的请求，但任何连接（活动或不活动）都将列在 sys.dm_exec_sessions 中。 在下一个查询中，在 sys.dm_exec_requests 和 sys.dm_exec_sessions 之间建立此公共联接。
 
-* 使用 [sys.dm_exec_sql_text](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql) 或 [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) DMV 运行此示例查询以查找活动执行的查询及其当前 SQL 批处理文本或输入缓冲区文本。 如果 sys.dm_exec_sql_text 的 `text` 字段返回的数据为 NULL，则当前不执行查询。 在这种情况下，sys.dm_exec_input_buffer 的 `event_info` 字段将包含传递给 SQL 引擎的最后一个命令字符串。 此查询还可以用于标识阻止其他会话的会话，包括每个 session_id 阻止的 session_id 列表。 
+* 使用 [sys.dm_exec_sql_text](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql) 或 [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) DMV 运行此示例查询以查找活动执行的查询及其当前 SQL 批处理文本或输入缓冲区文本。 如果 sys.dm_exec_sql_text 的 `text` 字段返回的数据为 NULL，则当前不执行查询。 在这种情况下，sys.dm_exec_input_buffer 的 `event_info` 字段将包含传递给 SQL 引擎的最后一个命令字符串。 此查询还可用于标识阻止其他会话的会话（包括按 session_id 阻止的 session_id 的列表）。 
 
 ```sql
 WITH cteBL (session_id, blocking_these) AS 
@@ -127,7 +127,7 @@ WHERE blocking_these is not null or r.blocking_session_id > 0
 ORDER BY len(bl.blocking_these) desc, r.blocking_session_id desc, r.session_id;
 ```
 
-* 运行 Microsoft 支持部门提供的更详细的示例查询，以确定多个会话阻塞链头，包括阻塞链中涉及的会话的查询文本。
+* 运行这个由 Microsoft 支持部门提供的更详细的示例查询，以标识多会话阻塞链的头（包括阻塞链中涉及的会话的查询文本）。
 
 ```sql
 WITH cteHead ( session_id,request_id,wait_type,wait_resource,last_wait_type,is_user_process,request_cpu_time
@@ -208,7 +208,7 @@ AND object_name(p.object_id) = '<table_name>';
 
 ## <a name="gather-information-from-extended-events"></a>从扩展事件中收集信息
 
-除了上述信息，通常还需要捕获服务器上活动的跟踪，以彻底调查 Azure SQL 数据库上的阻塞问题。 例如，如果一个会话在一个事务中执行多条语句，则只表示提交的最后一条语句。 但是，前面的语句之一可能是仍保留锁的原因。 跟踪将使你能够查看当前事务中会话执行的所有命令。
+除了上述信息，通常还需要捕获服务器上的活动的跟踪，以彻底调查 Azure SQL 数据库上的阻塞问题。 例如，如果一个会话在一个事务中执行多条语句，则只表示提交的最后一条语句。 但是，前面的语句之一可能是仍保留锁的原因。 跟踪将使你能够查看当前事务中会话执行的所有命令。
 
 在 SQL Server 中捕获跟踪有两种方法：扩展事件 (XEvent) 和探查器跟踪。 但是，[SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) 是已被弃用的跟踪技术，Azure SQL 数据库不支持这种技术。 [扩展事件](/sql/relational-databases/extended-events/extended-events)是一种较新的跟踪技术，它支持更多的通用性，对观察到的系统的影响较小，并且它的接口集成到 SQL Server Management Studio (SSMS) 中。 
 
@@ -334,7 +334,7 @@ AND object_name(p.object_id) = '<table_name>';
 | 5 | Null | \>0 | 回滚 | 是的。 | 在此 SPID 的扩展事件会话中可能会看到一个注意信号，表示已发生了查询超时或已取消，或者只是发出了一个回滚语句。 |  
 | 6 | Null | \>0 | 正在睡眠 | 最终， 当 Windows NT 确定会话不再处于活动状态时，Azure SQL 数据库连接将断开。 | sys.dm_exec_sessions 中的 `last_request_start_time` 值比当前时间早得多。 |
 
-## <a name="detailed-blocking-scenarios"></a>详细的阻塞场景
+## <a name="detailed-blocking-scenarios"></a>详细的阻塞方案
 
 1.  由执行时间长的正常运行查询引起的阻塞
 
@@ -366,7 +366,7 @@ AND object_name(p.object_id) = '<table_name>';
 
     第二个查询的输出指示事务嵌套级别为 1。 在提交或回滚事务之前，事务中获取的所有锁仍将保留。 如果应用程序显式打开并提交事务，则通信或其他错误可能会使会话及其事务处于打开状态。 
 
-    使用本文前面示例中的脚本，根据 sys.dm_tran_active_transactions 来确定当前在实例中未提交的事务。
+    使用本文前面部分的脚本，根据 sys.dm_tran_active_transactions 来标识实例中当前未提交的事务。
 
     **解决方法**：
 
@@ -386,14 +386,14 @@ AND object_name(p.object_id) = '<table_name>';
 
 1.  由 SPID 引起的阻塞，其对应的客户端应用程序没有将所有结果行提取到完成位置
 
-    向服务器发送查询后，所有应用程序必须立即将所有结果行提取到完成。 如果应用程序没有提取所有结果行，则表上可能会留下锁，从而阻塞其他用户。 如果你使用的应用程序透明地向服务器提交 SQL 语句，则应用程序必须提取所有结果行。 如果没有（如果无法配置为这样做），则可能无法解决阻塞问题。 若要避免此问题，你可以将性能不佳的应用程序限制在报表或决策支持数据库中，与主 OLTP 数据库分离。
+    向服务器发送查询后，所有应用程序必须立即将所有结果行提取到完成。 如果应用程序没有提取所有结果行，则表上可能会留下锁，从而阻塞其他用户。 如果你使用的应用程序透明地向服务器提交 SQL 语句，则应用程序必须提取所有结果行。 如果没有（如果无法配置为这样做），则可能无法解决阻塞问题。 若要避免此问题，你可以将表现不佳的应用程序限制在报表或决策支持数据库中，与主 OLTP 数据库分开。
     
     > [!NOTE]
     > 有关连接到 Azure SQL 数据库的应用程序，请参阅[重试逻辑指南](./troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)。 
     
     **解决方法**：必须重写应用程序才能将结果的所有行提取到完成。 这并不排除使用查询的 [ORDER BY 子句中的 OFFSET 和 FETCH](/sql/t-sql/queries/select-order-by-clause-transact-sql#using-offset-and-fetch-to-limit-the-rows-returned) 来执行服务器端分页。
 
-1.  由处于回滚状态的会话导致的阻塞
+1.  由处于回退状态的会话导致的阻塞
 
     在用户定义事务之外终止或取消的数据修改查询将回滚。 这也可能是客户端网络会话断开连接的副作用，或者请求被选为死锁牺牲品。 这种情况通常可以通过观察 sys.dm_exec_requests 的输出来识别，这可能表示 ROLLBACK 命令，percent_complete 列可能会显示进度 。 
 
@@ -429,4 +429,3 @@ AND object_name(p.object_id) = '<table_name>';
 * [使用 Azure SQL 提供一致的性能](/learn/modules/azure-sql-performance/)
 * [排查 Azure SQL 数据库和 Azure SQL 托管实例的连接问题和其他问题](troubleshoot-common-errors-issues.md)
 * [Transient Fault Handling](/aspnet/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling)
-* [在 Azure SQL 数据库中配置最大并行度 (MAXDOP)](configure-max-degree-of-parallelism.md)

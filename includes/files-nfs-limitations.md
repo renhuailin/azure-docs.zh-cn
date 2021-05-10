@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 12/04/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4b708e80bf335ba8bdce074285857a6f8b77b972
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e819e1078ac90ef16070702e7961122b06c1d6f
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103439156"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107880442"
 ---
 在预览版阶段，NFS 具有以下限制：
 
 - NFS 4.1 目前只支持[协议规范](https://tools.ietf.org/html/rfc5661)中的大部分功能。 有些功能（如所有类型的委托和回叫、锁定升级和降级、Kerberos 身份验证和加密）不受支持。
 - 如果大多数请求是以元数据为中心的，那么，与读取/写入/更新操作相比，延迟将会更加严重。
-- 必须创建新的存储帐户才能创建 NFS 共享。
+- 只能在新存储帐户（而不是现有存储帐户）中启用/创建 NFS 共享
 - 只支持管理平面 REST API。 数据平面 REST API 不可用，这意味着存储资源管理器之类的工具将无法用于 NFS 共享，你也无法在 Azure 门户中浏览 NFS 共享数据。
 - 目前不支持 AzCopy。
 - 只适用于高级层。

@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/01/2021
 ms.author: chuye
-ms.openlocfilehash: ef02842d189746a1801d97f91b92f249947c832d
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 26ce15bfe474f96aaef17f186f56e36ce42b7239
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568628"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950525"
 ---
 # <a name="sign-in-to-storage-explorer"></a>登录到存储资源管理器
 
@@ -48,7 +48,7 @@ ms.locfileid: "107568628"
 
 默认情况下，登录会在操作系统的默认 Web 浏览器中进行。 使用默认 Web 浏览器登录可简化对通过 CA 策略（如 MFA）保护的资源进行访问的方式。 如果由于某种原因，使用操作系统的默认 Web 浏览器登录不起作用，则可以更改存储资源管理器执行登录的位置或方式。
 
-在“设置” > “应用程序” > “登录”下，查找“登录方式”设置。 有三个选项：
+在“设置”（左侧的齿轮图标） > “应用程序” > “登录”下，查找“登录方式”设置   。 有三个选项：
 - 默认 Web 浏览器：登录会在操作系统的默认 Web 浏览器中进行。 建议使用此选项。
 - 集成登录：登录会在存储资源管理器窗口中进行。 如果尝试同时使用多个 Microsoft 帐户登录 (MSA)，则此选项可能会很有用。 如果选择此选项，则可能会遇到与某些 CA 策略有关的问题。
 - 设备代码流：存储资源管理器会向你提供用于进入浏览器窗口的代码。 不建议使用此选项。 设备代码流与许多 CA 策略不兼容。
@@ -56,3 +56,8 @@ ms.locfileid: "107568628"
 ## <a name="troubleshooting-sign-in-issues"></a>排查登录问题
 
 如果登录时遇到问题，或在登录后遇到 Azure 帐户问题，请参阅[存储资源管理器故障排除指南中的登录部分](./storage-explorer-troubleshooting.md#sign-in-issues)。
+
+## <a name="next-steps"></a>后续步骤
+
+* [使用存储资源管理器管理 Azure Blob 存储资源](../../vs-azure-tools-storage-explorer-blobs.md)
+* [排查登录问题](./storage-explorer-troubleshooting.md#sign-in-issues)

@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 997a4e115f8632544b2f73aef498d40dceb0d459
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 8457d64b541bd012dc85cf9964f09e69b10e962c
+ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449964"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108006685"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>配置选项 - 适用于 Java 的 Azure Monitor Application Insights
 
@@ -256,13 +256,13 @@ ms.locfileid: "106449964"
 }
 ```
 
-## <a name="auto-collected-azure-sdk-telemetry"></a>自动收集的 Azure SDK 遥测数据
+## <a name="auto-collected-azure-sdk-telemetry-preview"></a>自动收集的 Azure SDK 遥测数据（预览版）
 
-此功能为预览版。
+许多最新的 Azure SDK 库都会发出遥测数据（请参阅[完整列表](./java-in-process-agent.md#azure-sdks-preview)）。
 
-许多最新的 Azure SDK 库会发出遥测数据。
+从 Application Insights Java 3.0.3 开始，可启用对此遥测数据的捕获。
 
-从 3.0.3 版本开始，可以启用对此遥测数据的收集：
+如果要启用此功能：
 
 ```json
 {
@@ -276,8 +276,7 @@ ms.locfileid: "106449964"
 }
 ```
 
-你还可以使用环境变量 `APPLICATIONINSIGHTS_PREVIEW_INSTRUMENTATION_AZURE_SDK_ENABLED` 启用此功能
-（优先级将高于 json 配置中指定的已启用功能）。
+还可通过将环境变量 `APPLICATIONINSIGHTS_PREVIEW_INSTRUMENTATION_AZURE_SDK_ENABLED` 设置为 `true`（优先级将高于 json 配置中指定的已启用项）来启用此功能。
 
 ## <a name="suppressing-specific-auto-collected-telemetry"></a>取消特定的自动收集遥测
 
@@ -314,7 +313,7 @@ ms.locfileid: "106449964"
 }
 ```
 
-还可以使用以下环境变量取消这些检测：
+还可将以下环境变量设置为 `false`，以取消这些检测：
 
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_CASSANDRA_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_JDBC_ENABLED`
@@ -357,7 +356,7 @@ ms.locfileid: "106449964"
 }
 ```
 
-Application Insights Java 3.0 还沿用全局 `-Dhttps.proxyHost` 和 `-Dhttps.proxyPort`（如果已设置）。
+Application Insights Java 3.0 还沿用全局 `https.proxyHost` 和 `https.proxyPort` 系统属性（如果已设置），需要时还可沿用 `http.nonProxyHosts`。
 
 ## <a name="metric-interval"></a>指标间隔
 

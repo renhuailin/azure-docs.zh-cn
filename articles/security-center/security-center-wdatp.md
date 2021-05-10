@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/19/2021
 ms.author: memildin
-ms.openlocfilehash: e12578fa6da679587d41fb25b17b00eb1645299a
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: a9997fac66dd49af04f4ed78737118d605e27072
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718406"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829865"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>通过安全中心的集成式 EDR 解决方案 Microsoft Defender for Endpoint 来保护终结点
 
@@ -62,22 +62,26 @@ Microsoft Defender for Endpoint 提供：
 
     :::image type="content" source="./media/security-center-wdatp/microsoft-defender-security-center.png" alt-text="Microsoft Defender for Endpoint 自带安全中心" lightbox="./media/security-center-wdatp/microsoft-defender-security-center.png":::
 
-## <a name="microsoft-defender-for-endpoint-tenant-location"></a>Microsoft Defender for Endpoint 租户位置
+## <a name="what-are-the-requirements-for-the-microsoft-defender-for-endpoint-tenant"></a>对 Microsoft Defender for Endpoint 租户有哪些要求？
 
-使用 Azure 安全中心监视服务器时，系统会自动创建 Microsoft Defender for Endpoint 租户。 Defender for Endpoint 收集的数据存储在租户所在的地理位置（在预配期间标识）。 客户数据（采用假名）也可能存储在美国的中央存储和处理系统中。 
+使用 Azure 安全中心监视服务器时，系统会自动创建 Microsoft Defender for Endpoint 租户。 
 
-配置位置后，无法对其进行更改。 如果自己有 Microsoft Defender for Endpoint 许可，并且需要将数据移动到其他位置，请联系 Microsoft 支持部门重置租户。
+- **位置：** Defender for Endpoint 收集的数据存储在租户所在的地理位置（在预配期间确定）。 客户数据（采用假名）也可能存储在美国的中央存储和处理系统中。 配置位置后，无法对其进行更改。 如果自己有 Microsoft Defender for Endpoint 许可，并且需要将数据移动到其他位置，请联系 Microsoft 支持部门重置租户。
+- **移动订阅：** 如果在 Azure 租户之间移动了 Azure 订阅，还需要执行一些手动预备步骤，然后安全中心才会部署 Defender for Endpoint。 有关完整的详细信息，请[联系 Microsoft 支持人员](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
 
 
 ## <a name="enable-the-microsoft-defender-for-endpoint-integration"></a>启用 Microsoft Defender for Endpoint 集成
 
-### <a name="prerequisites"></a>必备知识
+### <a name="prerequisites"></a>先决条件
 
 确认计算机满足 Defender for Endpoint 的必需要求：
 
-1. 配置[配置设备代理和 Internet 连接设置](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)中所述的网络设置
-1. 如果要将 Defender to Endpoint 部署到本地计算机，请将其连接到 Azure Arc，如[将混合计算机连接到已启用 Azure Arc 的服务器](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)中所述
-1. 仅针对 Windows Server 2019 计算机确认计算机正在运行有效代理，并且具有 MicrosoftMonitoringAgent 扩展
+1. 确保已根据需要将计算机连接到 Azure：
+
+    - 对于 Windows 服务器，请按照[配置设备代理和 Internet 连接设置](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)中所述配置网络设置
+    - 对于本地计算机，请将其连接到 Azure Arc，如[将混合计算机连接到已启用 Azure Arc 的服务器](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)中所述
+    - 对于 Windows Server 2019 和 [Windows 虚拟桌面 (WVD)](../virtual-desktop/overview.md) 计算机，请确认计算机正在运行 Log Analytics 代理，并且具有 MicrosoftMonitoringAgent 扩展。
+    
 1. 启用适用于服务器的 Azure Defender。 请参阅[快速入门：启用 Azure Defender](enable-azure-defender.md)。
 1. 如果已在服务器上许可并部署了 Microsoft Defender for Endpoint，请使用[脱离 Windows 服务器](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers)中所述的过程将其删除。
 1. 如果已在 Azure 租户之间移动订阅，还需要执行一些手动预备步骤。 有关完整的详细信息，请[联系 Microsoft 支持人员](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。

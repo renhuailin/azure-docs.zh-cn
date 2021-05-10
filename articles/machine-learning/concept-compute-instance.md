@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 309cf3882ade99de3f2e29a037d20ca50e35f490
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 8bc3c3dfba8414381c4bc26508e96d12925df7ab
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066664"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135772"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什么是 Azure 机器学习计算实例？
 
@@ -34,7 +34,7 @@ Azure 机器学习计算实例是面向数据科学家的基于云的托管式�
 
 |主要优点|描述|
 |----|----|
-|工作效率|可以在 Azure 机器学习工作室中使用集成的笔记本及以下工具来构建和部署模型：<br/>-  Jupyter<br/>-  JupyterLab<br/>-  RStudio（预览版）<br/>计算实例与 Azure 机器学习工作区和工作室完全集成。 你可以与工作区中的其他数据科学家共享笔记本和数据。<br/> 你还可以在计算实例中使用 [VS Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630)。
+|工作效率|可以在 Azure 机器学习工作室中使用集成的笔记本及以下工具来构建和部署模型：<br/>-  Jupyter<br/>-  JupyterLab<br/>- VS Code（预览版）<br/>-  RStudio（预览版）<br/>计算实例与 Azure 机器学习工作区和工作室完全集成。 你可以与工作区中的其他数据科学家共享笔记本和数据。<br/> 你还可以在计算实例中使用 [VS Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630)。
 |无需自行管理且安全|减少安全保护工作，增强企业的安全要求合规性。 计算实例提供可靠的管理策略和安全网络配置，例如：<br/><br/>- 通过资源管理器模板或 Azure 机器学习 SDK 自动预配<br/>- [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)<br/>- [虚拟网络支持](./how-to-secure-training-vnet.md#compute-instance)<br/>- 用于启用/禁用 SSH 访问的 SSH 策略<br/>已启用 TLS 1.2 |
 |已针对 ML 进行了预配置|使用预配置的最新 ML 包、深度学习框架和 GPU 驱动程序完成设置任务，可节省时间。|
 |完全可自定义|支持多种 Azure VM 类型，包括 GPU 和持久性低级自定义，例如，安装相应的包和驱动程序可以轻而易举地实现高级方案。 |
@@ -148,6 +148,8 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 
 对于每个区域每个虚拟机 (VM) 系列配额和创建计算实例时应用的区域总配额，专用内核数一致，且该数量与 Azure 机器学习训练计算群集配额共享。 停止计算实例不会释放配额，因此无法确保你能够重启计算实例。
 
+计算实例附带 P10 OS 磁盘。 临时磁盘类型取决于所选的 VM 大小。 目前无法更改 OS 磁盘类型。
+
 
 ### <a name="create-on-behalf-of-preview"></a>代表他人创建（预览版）
 
@@ -180,17 +182,7 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 可以使用计算实例作为测试/调试方案的本地推理部署目标。
 
 > [!TIP]
-> 计算实例具有 120GB 的 OS 磁盘。 如果磁盘空间不足，则在[停止或重启](how-to-create-manage-compute-instance.md#manage)计算实例之前，[使用终端](how-to-access-terminal.md)清除至少 1-2 GB。
-
-
-## <a name="what-happened-to-notebook-vm"></a><a name="notebookvm"></a>Notebook VM 发生了什么情况？
-
-计算实例即将取代 Notebook VM。  
-
-任何存储在工作区文件共享中的笔记本文件和工作区数据存储中的数据都可以从计算实例访问。 但是，以前安装在 Notebook VM 上的任何自定义包都需要在计算实例上重新安装。 创建计算群集时适用的配额限制在创建计算实例时同样适用。
-
-不能创建新的 Notebook VM。 但你仍然可以访问和使用已创建的 Notebook VM 及其完整功能。 可以在现有 Notebook VM 所在的同一工作区中创建计算实例。
-
+> 计算实例具有 120GB 的 OS 磁盘。 如果磁盘空间不足并进入不可用状态，请通过 JupyterLab 终端删除文件，为 OS 磁盘（/ 上装载的 /dev/sda1/ 文件系统）清除至少 5 GB 的磁盘空间，然后执行 sudo 重启。 若要访问 JupyterLab 终端，请转到 https://ComputeInstanceName.AzureRegion.instances.azureml.ms/lab 替换计算实例和 Azure 区域的名称，然后单击“文件”->“新建”->“终端”。 [停止或重启](how-to-create-manage-compute-instance.md#manage)计算实例之前，请至少先清除 5 GB 的空间。 你可在终端上运行 df -h，检查可用磁盘空间。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,10 +7,10 @@ ms.date: 3/23/2020
 ms.topic: how-to
 ms.service: notification-hubs
 ms.openlocfilehash: c99af881b8f93b75633741c2352dc5df17dd2963
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80146883"
 ---
 # <a name="use-apns-voip-through-notification-hubs-not-officially-supported"></a>通过通知中心使用 APNS VOIP（不受官方支持）
@@ -33,7 +33,7 @@ ms.locfileid: "80146883"
 
    若要发送 VOIP 通知，必须指定 `apns-push-type` 标头的显式值。
 
-- 通知中心根据 Apple 文档中的规定，将 APNS 有效负载限制为 4 KB。 对于 VOIP 通知，Apple 允许最大 5 KB 的有效负载。 通知中心不区分标准通知和 VOIP 通知;因此，所有通知的大小限制为 4 KB。
+- 通知中心根据 Apple 文档中的规定，将 APNS 有效负载限制为 4 KB。 对于 VOIP 通知，Apple 允许最大 5 KB 的有效负载。 通知中心不区分标准通知和 VOIP 通知；因此，所有通知均限制为 4 KB。
 
    若要发送 VOIP 通知，则不得超过 4 KB 有效负载大小的限制。
 

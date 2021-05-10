@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 1d83a828829d27d85749b3fa7b283cad9683bffc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4624a33b12afc5eff033fe2d57bf25f812c9e667
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102455903"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891295"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>适用于 Azure Functions 的 Azure Blob 存储触发器
 
@@ -35,6 +35,9 @@ Azure Blob 存储触发器需要使用常规用途存储帐户。 还支持具�
 
 ### <a name="event-grid-trigger"></a>事件网格触发器
 
+> [!NOTE]
+> 使用 Storage Extension 5.x 及更高版本时，Blob 触发器提供对基于事件网格的 Blob 触发器的内置支持。 有关详细信息，请参阅下面的[存储扩展 5.x 及更高版本](#storage-extension-5x-and-higher)部分。
+
 [事件网格触发器](functions-bindings-event-grid.md)还为 [blob 事件](../storage/blobs/storage-blob-event-overview.md)提供内置支持。 以下方案请使用事件网格而不是 Blob 存储触发器：
 
 - **仅限 Blob 的存储帐户**：[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)适用于 Blob 输入和输出绑定，但不适用于 Blob 触发器。
@@ -44,6 +47,12 @@ Azure Blob 存储触发器需要使用常规用途存储帐户。 还支持具�
 - **最大程度地降低延迟**：如果函数应用基于消耗计划，则当函数应用处于空闲状态时，处理新 Blob 会出现长达 10 分钟的延迟。 若要避免此延迟，可以切换到启用了 Always On 的应用服务计划。 还可以为 Blob 存储帐户使用[事件网格触发器](functions-bindings-event-grid.md)。 有关示例，请参阅[事件网格教程](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json)。
 
 请参阅事件网格示例的[使用事件网格重试图像大小](../event-grid/resize-images-on-storage-blob-upload-event.md)教程。
+
+#### <a name="storage-extension-5x-and-higher"></a>存储扩展 5.x 及更高版本
+
+使用预览版存储扩展时，Blob 触发器中提供对事件网格的内置支持，需要你在现有 Blob 触发器中将 `source` 参数设置为事件网格。 
+
+要详细了解如何使用基于事件网格的 Blob 触发器，请参阅[事件网格 Blob 触发器指南](./functions-event-grid-blob-trigger.md)。
 
 ### <a name="queue-storage-trigger"></a>队列存储触发器
 

@@ -4,18 +4,73 @@ description: 介绍如何使用服务总线在交换中转消息时优化性能�
 ms.topic: article
 ms.date: 03/09/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d4093d93da11e992ed9e6558a5386eb88f417ef9
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 19c365a233a2dafc98fb91e340717ba998616891
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967755"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904687"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>使用服务总线消息传递改进性能的最佳实践
 
 本文介绍如何使用 Azure 服务总线在交换中转消息时优化性能。 本文的第一部分介绍提高性能的不同机制。 第二部分指导用户针对给定的场景以能够提供最佳性能的方式使用服务总线。
 
 在本文中，术语“客户端”是指任何访问服务总线的实体。 客户端可以充当发送方或接收方的角色。 术语“发送方”用于向服务总线队列或主题发送消息的服务总线队列客户端或主题客户端。 术语“接收方”是指从服务总线队列或订阅接收消息的服务总线队列客户端或订阅客户端。
+
+## <a name="resource-planning-and-considerations"></a>资源计划和注意事项
+
+与任何技术资源一样，谨慎的计划是确保 Azure 服务总线提供应用程序所需性能的关键所在。 服务总线命名空间的正确配置或拓扑取决于涉及应用程序体系结构的各种因素，以及如何使用每种服务总线功能。
+
+### <a name="pricing-tier"></a>定价层
+
+服务总线提供各种定价层。 建议根据应用程序要求选取相应的层。
+
+   * **标准层** - 适用于开发人员/测试环境或低吞吐量场景，其中应用程序对限制不敏感。
+
+   * **高级层** - 适用于具有各种吞吐量要求的生产环境，其中需要可预测的延迟和吞吐量。 此外，可以启用能够[自动缩放](automate-update-messaging-units.md)的服务总线高级命名空间，以适应吞吐量高峰。
+
+> [!NOTE]
+> 如果未选择相应的层，则服务总线命名空间可能会产生巨大的风险，从而导致[限制](service-bus-throttling.md)。
+>
+> 限制不会导致数据丢失。 利用服务总线 SDK 的应用程序可以利用默认的重试策略，以确保服务总线最终接受数据。
+>
+
+### <a name="calculating-throughput-for-premium"></a>计算高级版的吞吐量
+
+发送到服务总线的数据串行化为二进制，然后在接收方收到时反序列化。 因此，当应用程序将消息视为原子工作单元时，服务总线会以字节（或兆字节）为单位来度量吞吐量。
+
+计算吞吐量要求时，请考虑发送到服务总线的数据（流入量）以及从服务总线接收的数据（流出量）。
+
+与预期一样，可一起批处理的较小消息有效负载的吞吐量会更高。
+
+#### <a name="benchmarks"></a>基准
+
+下面是一个 [GitHub 示例](https://github.com/Azure-Samples/service-bus-dotnet-messaging-performance)，可以运行该示例来查看 SB 命名空间接收的预期吞吐量。 在[基准测试](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Premium-Messaging-How-fast-is-it/ba-p/370722)中，我们观察到每个消息传送单元 (MU) 的流入量和流出量大约为 4 MB/秒。
+
+基准测试示例不使用任何高级功能，因此，应用程序观察到的吞吐量会因场景而有所不同。
+
+#### <a name="compute-considerations"></a>计算注意事项
+
+使用某些服务总线功能可能需要计算利用率，这可能会降低预期吞吐量。 其中一些功能是：
+
+1. 会话。
+2. 在单个主题上展开多个订阅。
+3. 在单个订阅上运行多个筛选器。
+4. 计划的消息。
+5. 延迟消息。
+6. 事务。
+7. 重复数据删除和回溯时间范围。
+8. 转发到（从一个实体转发到另一个）。
+
+如果应用程序利用了上述任何功能，但没有收到预期的吞吐量，可以查看 CPU 使用量指标，并考虑纵向扩展服务总线高级命名空间。
+
+还可以利用 Azure Monitor [自动缩放服务总线命名空间](automate-update-messaging-units.md)。
+
+### <a name="sharding-across-namespaces"></a>跨命名空间分片
+
+虽然纵向扩展分配到命名空间的计算（消息传送单元）是更简单的解决方案，但这可能不会使吞吐量线性增长。 这是因为服务总线内部（存储、网络等）可能会限制吞吐量。
+
+在这种情况下，清理解决方案是在不同服务总线高级命名空间中分片实体（队列和主题）。 还可以考虑在不同 Azure 区域中跨不同命名空间分片。
 
 ## <a name="protocols"></a>协议
 服务总线支持客户端通过以下三种协议之一发送和接收消息：

@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 08/16/2020
 ms.author: cshoe
 ms.openlocfilehash: 942ca3229808b57894598c3477e9dc97e40e8c80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88689539"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>注册 Azure Functions 绑定扩展
@@ -31,7 +31,7 @@ ms.locfileid: "88689539"
 
 ## <a name="access-extensions-in-non-net-languages"></a>非 .NET 语言中的访问扩展
 
-对于 Java、JavaScript、PowerShell、Python 和自定义处理程序函数应用，我们建议使用扩展捆绑来访问绑定。 如果无法使用扩展捆绑，则可以显式安装绑定扩展。
+对于 Java、JavaScript、PowerShell、Python 和自定义处理程序函数应用，建议使用扩展捆绑来访问绑定。 如果无法使用扩展捆绑，则可以显式安装绑定扩展。
 
 ### <a name="extension-bundles"></a><a name="extension-bundles"></a>扩展捆绑包
 

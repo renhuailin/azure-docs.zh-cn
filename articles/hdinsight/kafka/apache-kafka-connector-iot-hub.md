@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/26/2019
-ms.openlocfilehash: 7980003dd63e5e51d87f85542029a1f25e7223df
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: feada70c7a461bb4a9cd621c76b5606a7f0e19d5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932874"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104865275"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>将 Apache Kafka on HDInsight 与 Azure IoT 中心配合使用
 
@@ -22,7 +22,7 @@ ms.locfileid: "98932874"
 
 下图显示了在使用连接器时，Azure IoT 中心与 Kafka on HDInsight 之间的数据流。
 
-![显示通过连接器将数据从 IoT 中心传送到 Kafka 的图像](./media/apache-kafka-connector-iot-hub/iot-hub-kafka-connector-hdinsight.png)
+:::image type="content" source="./media/apache-kafka-connector-iot-hub/iot-hub-kafka-connector-hdinsight.png" alt-text="显示通过连接器将数据从 IoT 中心传送到 Kafka 的图像" border="false":::
 
 有关 Connect API 的详细信息，请参阅 [https://kafka.apache.org/documentation/#connect](https://kafka.apache.org/documentation/#connect)。
 
@@ -228,7 +228,7 @@ ms.locfileid: "98932874"
     |`IotHub.StartTime=PLACEHOLDER`|将 `PLACEHOLDER` 替换为 UTC 日期。 此日期是连接器开始检查消息的时间。 日期格式为 `yyyy-mm-ddThh:mm:ssZ`。|
     |`BatchSize=100`|将 `100` 替换为 `5`。 做出此项更改后，如果 IoT 中心出现五条新消息，则连接器会将消息读入 Kafka。|
 
-    有关示例配置，请参阅 [Azure IoT 中心的 Kafka 连接源连接器](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md)。
+    有关示例配置，请参阅[用于 Azure IoT 中心的 Kafka Connect 源连接器](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md)。
 
 1. 若要保存更改，请依次按 __Ctrl + X__、__Y__、__Enter__。
 
@@ -328,7 +328,7 @@ IotHubSinkTask:47)
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $KAFKABROKERS --topic iotout
     ```
 
-    此命令不会将你返回到正常的 Bash 提示符。 而是将键盘输入发送到 `iotout` 主题。
+    此命令不会将你返回到正常的 Bash 提示符， 而是将键盘输入发送到 `iotout` 主题。
 
 1. 若要将消息发送到设备，请将一个 JSON 文档粘贴到 `kafka-console-producer` 的 SSH 会话中。
 
