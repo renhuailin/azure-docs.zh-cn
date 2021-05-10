@@ -1,5 +1,5 @@
 ---
-title: 查看 Web 作业的日志历史记录
+title: 查看 WebJobs 的日志历史记录
 description: 查看失败和成功作业的日志历史记录。
 author: ggailey777
 ms.topic: conceptual
@@ -7,10 +7,10 @@ ms.date: 10/16/2018
 ms.author: glenga
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 4b4e421458438aecc7c08e397f1fc919a8cc2225
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101744467"
 ---
 # <a name="view-webjob-history-in-the-azure-portal"></a>查看 Azure 门户中的 Web 作业历史记录
@@ -39,6 +39,6 @@ ms.locfileid: "101744467"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 使用 [Web 作业 SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 简化许多编程任务
+* 使用 [WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 简化许多编程任务
 
-* 了解如何 [通过 Visual Studio 开发和部署 Web 作业](webjobs-dotnet-deploy-vs.md)
+* 了解如何[使用 Visual Studio 开发和部署 WebJobs](webjobs-dotnet-deploy-vs.md)

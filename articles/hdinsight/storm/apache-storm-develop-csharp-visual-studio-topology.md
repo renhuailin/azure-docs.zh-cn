@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/31/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a81f2b21545a5362168482f3f0a65fbbbf381c10
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 5360057ec2dfbd2b40c6f086f5e910103c544b62
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98929150"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865445"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具开发 Apache Storm 的 C# 拓扑
 
@@ -47,7 +47,7 @@ HDInsight 上的 Apache Storm 群集。 请参阅 [使用 Azure 门户创建 Apa
 
 2. 将 `JAVA_HOME` 环境变量设置为包含 Java 的目录。
 
-3. 设置 `PATH` 环境变量以包含 `%JAVA_HOME%\bin` 目录。
+3. 将 `PATH` 环境变量设置为包含 `%JAVA_HOME%\bin` 目录。
 
 可以生成并运行以下 C# 控制台应用程序来验证 Java 和 JDK 是否已正确安装：
 
@@ -128,7 +128,7 @@ HBase 读取器和写入器模板使用 HBase REST API（而不是 HBase Java AP
 
 1. 在“配置新项目”窗口中，输入 *WordCount* 作为 **项目名称**，转到或创建该项目的 **位置** 目录路径，然后选择“创建”。  
 
-    ![Storm 应用程序，“配置新项目”对话框，Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png" alt-text="Storm 应用程序，“配置新项目”对话框，Visual Studio" border="true":::
 
 创建项目后，应有以下文件：
 
@@ -333,7 +333,7 @@ HBase 读取器和写入器模板使用 HBase REST API（而不是 HBase Java AP
 
 Spout 和 Bolt 以图形方式排列，用于定义数据在组件之间的流动方式。 此拓扑的图形如下：
 
-![Spout 和 Bolt 组件排列图，Storm 拓扑](./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png)
+:::image type="content" source="./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png" alt-text="Spout 和 Bolt 组件排列图，Storm 拓扑" border="false":::
 
 Spout 发出句子，这些句子将分布到 Splitter Bolt 的实例。 Splitter Bolt 将句子分割成多个单词，并将这些单词分布到 Counter Bolt。
 
@@ -401,7 +401,7 @@ return topologyBuilder;
 
 ## <a name="submit-the-topology"></a>提交拓扑
 
-你现在已准备好将拓扑提交到 HDInsight 群集。
+现已准备好将拓扑提交到 HDInsight 群集。
 
 1. 导航到“视图” > “服务器资源管理器”。  
 
@@ -413,7 +413,7 @@ return topologyBuilder;
 
     成功提交拓扑后，应会出现群集的“Storm 拓扑视图”窗口。  从列表中选择“WordCount”拓扑，查看正在运行的拓扑的信息。 
 
-    ![Storm 拓扑视图窗口，HDInsight 群集，Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/storm-topology-view.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-visual-studio-topology/storm-topology-view.png" alt-text="Storm 拓扑视图窗口，HDInsight 群集，Visual Studio" border="true":::
 
     > [!NOTE]  
     > 也可在“服务器资源管理器”中查看“Storm 拓扑”。   展开“Azure” > “HDInsight”，右键单击 Storm on HDInsight 群集，然后选择“查看 Storm 拓扑”。   
@@ -441,7 +441,7 @@ return topologyBuilder;
 
   `this.ctx.Emit(Constants.DEFAULT_STREAM_ID, new Values(sentence), lastSeqId);`
 
-  此代码使用中包含的序列 ID 值向默认流发出包含句子的元组 `lastSeqId` 。 在此示例中，为 `lastSeqId` 发出的每个元组递增。
+  此代码会将包含语句的元组以及 `lastSeqId`中所含的序列 ID 值发出到默认流。 在此示例中，会递增每个发出的元组的 `lastSeqId` 。
 
 如“Storm 示例”  项目所示，在运行时，可以根据配置来设置组件是否为事务性。
 
@@ -536,15 +536,15 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 > 如果项目是通过未使用 NuGet 的旧版 SCP.NET 创建的，则必须执行以下步骤以更新到新版本：
 >
 > 1. 在“解决方案资源管理器”  中，右键单击项目，然后选择“管理 NuGet 包”  。
-> 2. 使用 **搜索** 字段，搜索并添加 `Microsoft.SCP.Net.SDK` 到项目。
+> 2. 使用“搜索”  字段搜索  Microsoft.SCP.Net.SDK，然后将其添加到项目中。
 
 ## <a name="troubleshoot-common-issues-with-topologies"></a>排查拓扑常见问题
 
 ### <a name="null-pointer-exceptions"></a>空指针异常
 
-在将 c # 拓扑与基于 Linux 的 HDInsight 群集配合使用时，使用 **ConfigurationManager** 在运行时读取配置设置的 spout 组件可能会返回空指针异常。
+在基于 Linux 的 HDInsight 群集中使用 C# 拓扑时，使用“ConfigurationManager”在运行时读取配置设置的 Bolt 和 Spout 组件可能会返回空指针异常。
 
-项目的配置将作为拓扑上下文中的键值对传递到 Storm 拓扑中。 它可以从在初始化时传递给组件的字典对象中进行检索。
+项目的配置将作为拓扑上下文中的键值对传递到 Storm 拓扑中。 初始化组件时，可以从传递到组件的字典对象检索该配置。
 
 有关详细信息，请参阅本文档的[使用 ConfigurationManager](#use-configurationmanager) 部分。
 
@@ -560,14 +560,14 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 
 ### <a name="test-a-topology-locally"></a>在本地测试拓扑
 
-尽管可以轻松地将拓扑部署到群集，但在某些情况下，可能需要在本地测试拓扑。 使用以下步骤，在开发环境上本地运行和测试本文中的示例拓扑。
+虽然很容易就可以将拓扑部署到群集，但是，在某些情况下，可能需要在本地测试拓扑。 使用以下步骤，在开发环境上本地运行和测试本文中的示例拓扑。
 
 > [!WARNING]  
 > 本地测试只适用于仅限 C# 的基本拓扑。 不能将本地测试用于混合拓扑或用于使用多个流的拓扑。
 
 1. 在“解决方案资源管理器”  中，右键单击项目，然后选择“属性”  。 在项目属性中， 将“输出类型”更改为“控制台应用程序”。  
 
-   ![HDInsight Storm 应用程序，项目属性，输出类型](./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png)
+   :::image type="content" source="./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png" alt-text="HDInsight Storm 应用程序，项目属性，输出类型" border="true":::
 
    > [!NOTE]
    > 将拓扑部署到群集之前，请记得将“输出类型”  改回“类库”  。

@@ -1,5 +1,5 @@
 ---
-title: SLES 上 Azure Vm 中的 NFS 的高可用性 |Microsoft Docs
+title: SLES 上 Azure VM 中的 NFS 的高可用性 | Microsoft Docs
 description: SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
 ms.openlocfilehash: 993baa521530ffa6a702f8324a1691850687c366
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101668684"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性
@@ -55,7 +55,7 @@ ms.locfileid: "101668684"
 
 
 > [!NOTE]
-> 本文包含对 Microsoft 不再使用术语 " *从属* " 和 " *主* 术语" 的引用。 从软件中删除字词后，我们会将其从本文中删除。
+> 本文包含对术语“主”和“从”的引用，Microsoft 不再使用该术语。  从软件中删除这些术语后，我们会将其从本文中删除。
 
 请先阅读以下 SAP 说明和文档
 
@@ -98,7 +98,7 @@ NFS 服务器为使用此 NFS 服务器的每个 SAP 系统使用专用的虚拟
 * 探测端口
   * NW1 的端口 61000
   * NW2 的端口 61001
-* 负载均衡规则 (如果使用基本负载均衡器) 
+* 负载均衡规则（如果使用基本负载均衡器）
   * NW1 的 2049 TCP
   * NW1 的 2049 UDP
   * NW2 的 2049 TCP
@@ -111,7 +111,7 @@ NFS 服务器为使用此 NFS 服务器的每个 SAP 系统使用专用的虚拟
 ### <a name="deploy-linux-via-azure-template"></a>通过 Azure 模板部署 Linux
 
 Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications 12 的映像，可以用于部署新的虚拟机。
-可以使用 GitHub 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集等。按照以下步骤部署模板：
+可以使用 GitHub 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集，等等。请遵照以下步骤部署模板：
 
 1. 在 Azure 门户中打开 [SAP 文件服务器模板][template-file-server]   
 1. 输入以下参数
@@ -124,7 +124,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    4. 管理员用户名和管理员密码  
       创建可用于登录计算机的新用户。
    5. 子网 ID  
-      如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常类似于/subscriptions/**&lt; 订阅 ID &gt;**/ResourceGroups/**&lt; 资源组名称 &gt;**/providers/Microsoft.Network/virtualNetworks/**&lt; 虚拟网络名称 &gt;**/subnets/**&lt; 子网名称 &gt;**
+      如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/&lt;订阅 ID&gt;/resourceGroups/&lt;资源组名称&gt;/providers/Microsoft.Network/virtualNetworks/&lt;虚拟网络名称&gt;/subnets/&lt;子网名称&gt;   
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>通过 Azure 门户手动部署 Linux
 
@@ -140,7 +140,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    SLES For SAP Applications 12 SP3 (BYOS)  
    选择前面创建的可用性集  
 1. 向两台虚拟机中为每个 SAP 系统添加一个数据磁盘。
-1.  (内部) 创建负载均衡器。 建议使用[标准负载均衡器](../../../load-balancer/load-balancer-overview.md)。  
+1. 创建负载均衡器（内部）。 建议使用[标准负载均衡器](../../../load-balancer/load-balancer-overview.md)。  
    1. 按照以下说明创建标准负载均衡器：
       1. 创建前端 IP 地址
          1. NW1 的 IP 地址 10.0.0.4
@@ -153,8 +153,8 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
       1. 创建后端池
          1. 连接到所有虚拟机（这些虚拟机应为 NFS 群集的一部分）的主网络接口
             1. 打开负载均衡器，单击后端池，并单击“添加”
-            1. 输入新后端池的名称， (例如 **nw-后端**) 
-            1. 选择虚拟网络
+            1. 输入新后端池的名称（例如 **nw-backend**）
+            1. 选择“虚拟网络”
             1. 单击“添加虚拟机”
             1. 选择 NFS 群集的虚拟机及其 IP 地址。
             1. 单击“添加”。
@@ -167,15 +167,15 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
          1. NW2 的端口 61001
             * 重复上述步骤来为 NW2 创建运行状况探测
       1. 负载均衡规则
-         1. 打开负载均衡器，选择 "负载均衡规则"，并单击 "添加"
-         1. 输入新负载均衡器规则的名称 (例如 **nw1-lb**) 
-         1. 选择前面创建的前端 IP 地址、后端池和运行状况探测 (例如 **nw1-前端**。 **nw-后端** 和 **nw1-hp**) 
+         1. 打开负载均衡器，选择负载均衡规则，然后单击“添加”
+         1. 输入新负载均衡器规则的名称（例如 nw1-lb）
+         1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 nw1-frontend、 nw-backend 和 nw1-hp）
          1. 选择“HA 端口”。
          1. 将空闲超时增大到 30 分钟
          1. **确保启用浮动 IP**
          1. 单击“确定”
          * 重复上述步骤来为 NW2 创建负载均衡规则
-   1. 或者，如果方案需要基本的负载均衡器，请按照以下说明进行操作：
+   1. 或者，如果你的方案需要基本负载均衡器，请按照以下说明操作：
       1. 创建前端 IP 地址
          1. NW1 的 IP 地址 10.0.0.4
             1. 打开负载均衡器，选择前端 IP 池，并单击“添加”
@@ -187,7 +187,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
       1. 创建后端池
          1. 连接到所有虚拟机（这些虚拟机应为 NFS 群集的一部分）的主网络接口
             1. 打开负载均衡器，单击后端池，并单击“添加”
-            1. 输入新后端池的名称， (例如 **nw-后端**) 
+            1. 输入新后端池的名称（例如 **nw-backend**）
             1. 单击“添加虚拟机”
             1. 选择前面创建的可用性集
             1. 选择 NFS 群集的虚拟机
@@ -217,7 +217,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
             * 为 NW2 针对端口 2049 和 UDP 重复上述步骤
 
 > [!IMPORTANT]
-> 负载平衡方案中的 NIC 辅助 IP 配置不支持浮动 IP。 有关详细信息，请参阅 [Azure 负载均衡器限制](../../../load-balancer/load-balancer-multivip-overview.md#limitations)。 如果需要 VM 的其他 IP 地址，请部署第二个 NIC。  
+> 负载均衡方案中的 NIC 辅助 IP 配置不支持浮动 IP。 有关详细信息，请参阅 [Azure 负载均衡器限制](../../../load-balancer/load-balancer-multivip-overview.md#limitations)。 如果你需要为 VM 提供其他 IP 地址，请部署第二个 NIC。  
 
 > [!Note]
 > 如果没有公共 IP 地址的 VM 被放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，就不会有出站 Internet 连接，除非执行额外的配置来允许路由到公共终结点。 有关如何实现出站连接的详细信息，请参阅 [SAP 高可用性方案中使用 Azure 标准负载均衡器的虚拟机的公共终结点连接](./high-availability-guide-standard-load-balancer-outbound-connections.md)。  
@@ -469,7 +469,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 1. **[A]** 设置 drbd 裂脑检测
 
-   当使用 drbd 将数据从一台主机同步到另一台主机时，可能会发生所谓的裂脑。 裂脑是这样一种方案：两个群集节点都将 drbd 设备升级为主设备，并使其失去同步。这可能是一种罕见的情况，但仍需要尽快处理和解决拆分大脑。 因此，在发生裂脑时收到通知非常重要。
+   当使用 drbd 将数据从一台主机同步到另一台主机时，可能会发生所谓的裂脑。 裂脑是指两个群集节点都将 drbd 设备提升为主设备并且失去同步的一种情况。虽然它可能很少见，但你仍然希望尽快处理并解决裂脑情况。 因此，在发生裂脑时收到通知非常重要。
 
    请阅读[正式的 drbd 文档](https://www.linbit.com/drbd-user-guide/users-guide-drbd-8-4/#s-split-brain-notification)来了解如何设置裂脑通知。
 
@@ -578,7 +578,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
      g-<b>NW2</b>_nfs ms-drbd_<b>NW2</b>_nfs:Master
    </code></pre>
 
-   `crossmnt`群集资源中的选项在 `exportfs` 文档中提供，以便与较旧的 SLES 版本向后兼容。  
+   文档中提供了 `exportfs` 群集资源中的 `crossmnt` 选项，以便与较旧的 SLES 版本向后兼容。  
 
 1. **[1]** 禁用维护模式
    

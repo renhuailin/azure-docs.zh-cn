@@ -1,16 +1,14 @@
 ---
 title: 使用 Azure Monitor 日志设置监视
 description: 了解如何设置 Azure Monitor 来可视化和分析事件，以监视 Azure Service Fabric 群集。
-author: srrengar
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: srrengar
-ms.openlocfilehash: ba62ac80b2f8d318d0d13e81e88cc63a8d893a2b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 79dbc38f9d177bc3decf11673a68ce434f9a83bc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570350"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105625953"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>为群集设置 Azure Monitor 日志
 
@@ -32,7 +30,7 @@ ms.locfileid: "100570350"
 
 2. 搜索“Service Fabric 分析”。 选择显示的资源。
 
-3. 选择“创建”。
+3. 选择“创建”  。
 
     ![市场中的 Service Fabric 分析](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
@@ -43,17 +41,17 @@ ms.locfileid: "100570350"
 如果使用的是 Windows，请继续执行以下步骤，将 Azure Monitor 日志连接到存储群集事件的存储帐户。 
 
 >[!NOTE]
->只有 Windows 群集支持 Service Fabric 分析解决方案。 对于 Linux 群集，请查看有关如何为 [linux 群集设置 Azure Monitor 日志](service-fabric-diagnostics-oms-syslog.md)的文章。  
+>只有 Windows 群集支持 Service Fabric 分析解决方案。 对于 Linux 群集，请查看有关[如何为 Linux 群集设置 Azure Monitor 日志](service-fabric-diagnostics-oms-syslog.md)的文章。  
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>将 Log Analytics 工作区连接到群集 
 
-1. 需要将工作区连接到来自群集的诊断数据。 转到在其中创建 Service Fabric 分析解决方案的资源组。 选择 **ServiceFabric \<nameOfWorkspace\>** 并中转到其 "概述" 页。 可在此处更改解决方案设置和工作区设置，还可访问 Log Analytics 工作区。
+1. 需要将工作区连接到来自群集的诊断数据。 转到在其中创建 Service Fabric 分析解决方案的资源组。 选择 **ServiceFabric\<nameOfWorkspace\>** 并转到其概述页。 可在此处更改解决方案设置和工作区设置，还可访问 Log Analytics 工作区。
 
 2. 在左侧导航菜单的“工作区数据源”下，选择“存储帐户日志”。
 
 3. 在“存储帐户日志”页面顶部选择“添加”，将群集的日志添加到工作区。
 
-4. 选择“存储帐户”，添加在群集中创建的相应帐户。 如果使用了默认名称，则存储帐户为 **sfdg \<resourceGroupName\>**。 还可检查 applicationDiagnosticsStorageAccountName 所使用的值，进而通过部署群集时所用的 Azure 资源管理器模板确认此名称。 如果不显示名称，请向下滚动并选择“加载更多”。 选择存储帐户名称。
+4. 选择“存储帐户”，添加在群集中创建的相应帐户。 如果使用的是默认名称，则存储帐户为 **sfdg\<resourceGroupName\>** 。 还可检查 applicationDiagnosticsStorageAccountName 所使用的值，进而通过部署群集时所用的 Azure 资源管理器模板确认此名称。 如果不显示名称，请向下滚动并选择“加载更多”。 选择存储帐户名称。
 
 5. 指定数据类型。 将其设置为“Service Fabric 事件”。
 
