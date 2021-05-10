@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 在 Azure 中使用 VM 模板创建虚拟机
 description: 介绍如何使用 VMware 基础结构上的 VM 模板在 Azure 中为 CloudSimple 私有云创建虚拟机
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b01afe60a78a746eb0dc5f03cc7b45989f8cf81e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ad998c1def91a0e2a6ff74c25e4e1cc972df1474
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97898753"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108182653"
 ---
 # <a name="create-a-virtual-machine-in-azure-using-vm-templates-on-the-vmware-infrastructure"></a>使用 VMware 基础结构中上的 VM 模板在 Azure 中创建虚拟机
 
@@ -21,15 +21,15 @@ ms.locfileid: "97898753"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="create-cloudsimple-virtual-machine"></a>创建 CloudSimple 虚拟机
 
-1. 选择“所有服务”  。
+1. 选择“所有服务”。
 
 2. 搜索“CloudSimple 虚拟机”。
 
-3. 单击“添加” 。
+3. 单击“添加”。
 
     ![创建 CloudSimple 虚拟机](media/create-cloudsimple-virtual-machine.png)
 
@@ -40,7 +40,7 @@ ms.locfileid: "97898753"
 
     ![创建 CloudSimple 虚拟机 - 基本信息](media/create-cloudsimple-virtual-machine-basic-info.png)
 
-    | 字段 | 说明 |
+    | 字段 | 描述 |
     | ------------ | ------------- |
     | 订阅 | 与私有云关联的 Azure 订阅。  |
     | 资源组 | VM 要分配到的资源组。 可以选择现有的组，或创建新组。 |
@@ -62,7 +62,7 @@ ms.locfileid: "97898753"
 
     对于网络接口，请单击“添加网络接口”，然后配置以下设置。
 
-    | 控制 | 说明 |
+    | 控件 | 描述 |
     | ------------ | ------------- |
     | 名称 | 输入一个名称用于标识接口。  |
     | 网络 | 从私有云 vSphere 中已配置的分布式端口组列表中进行选择。  |
@@ -71,7 +71,7 @@ ms.locfileid: "97898753"
 
     对于磁盘，单击“添加磁盘”，并配置以下设置。
 
-    | 项 | 说明 |
+    | 项 | 描述 |
     | ------------ | ------------- |
     | 名称 | 输入一个名称用于标识磁盘。  |
     | 大小 | 选择一种可用大小。  |
@@ -84,7 +84,7 @@ ms.locfileid: "97898753"
 
 ## <a name="view-list-of-cloudsimple-virtual-machines"></a>查看 CloudSimple 虚拟机列表
 
-1. 选择“所有服务”  。
+1. 选择“所有服务”。
 
 2. 搜索“CloudSimple 虚拟机”。
 

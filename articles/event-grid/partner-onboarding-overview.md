@@ -3,12 +3,12 @@ title: 合作伙伴加入概述（Azure 事件网格）
 description: 概述如何作为事件网格合作伙伴加入。
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 2a2e33395cabd368d5d5d870dd0461e4cbd37e0d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9af80efc1ba342768f9bb6d504f921b52494d955
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93081189"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107890701"
 ---
 # <a name="partner-onboarding-overview-azure-event-grid"></a>合作伙伴加入概述（Azure 事件网格）
 
@@ -147,13 +147,13 @@ ms.locfileid: "93081189"
 | 终结点不正确                 | 404 未找到         |
 | 数组或事件超出大小限制 | 413 有效负载太大 |
 
-## <a name="references"></a>参考
+## <a name="references"></a>参考资料
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [ARM 模板](/azure/templates/microsoft.eventgrid/allversions)
   * [ARM 模板架构](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2020-04-01-preview/Microsoft.EventGrid.json)
-  * [REST API](/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
-  * [CLI 扩展](/cli/azure/ext/eventgrid/)
+  * [REST API](/azure/templates/microsoft.eventgrid/2020-04-01-preview/partnernamespaces)
+  * [CLI 扩展](/cli/azure/eventgrid)
 
 ### <a name="sdks"></a>SDK
   * [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/5.3.1-preview)

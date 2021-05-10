@@ -10,28 +10,29 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: e247e372237572586e5a4647d24d9ed6067ea823
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba92ca8a959fae389dbdb30c295e6592f76100eb
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104949781"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288519"
 ---
 # <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>在已启用 Azure Arc 的超大规模 PostgreSQL 服务器组中使用 PostgreSQL 扩展
 
 如果将其用于扩展，PostgreSQL 的效果最佳。 事实上，我们自己的超大规模功能的一个关键元素是默认安装的 Microsoft 提供的 `citus` 扩展，它允许 Postgres 以透明方式在多个节点间对数据进行分片。
 
-
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="supported-extensions"></a>支持的扩展
 标准 [`contrib`](https://www.postgresql.org/docs/12/contrib.html) 扩展和以下扩展已经部署到已启用 Azure Arc 的 PostgreSQL 超大规模服务器组的容器中：
-- [`citus`](https://github.com/citusdata/citus)，版本：9.4。 默认情况下，会加载 [Citus Data](https://www.citusdata.com/) 提供的 Citus 扩展，因为它会将超大规模功能引入到 PostgreSQL 引擎。 不支持从 Azure Arc PostgreSQL 超大规模服务器组中删除 Citus 扩展。
-- [`pg_cron`](https://github.com/citusdata/pg_cron)，版本：1.2
+- [`citus`](https://github.com/citusdata/citus)，版本：10.0。 默认情况下，会加载 [Citus Data](https://www.citusdata.com/) 提供的 Citus 扩展，因为它会将超大规模功能引入到 PostgreSQL 引擎。 不支持从 Azure Arc PostgreSQL 超大规模服务器组中删除 Citus 扩展。
+- [`pg_cron`](https://github.com/citusdata/pg_cron)，版本：1.3
 - [`pgaudit`](https://www.pgaudit.org/)，版本：1.4
 - plpgsql，版本：1.0
 - [`postgis`](https://postgis.net)，版本：3.0.2
 - [`plv8`](https://plv8.github.io/)，版本：2.3.14
+- [`pg_partman`](https://github.com/pgpartman/pg_partman)，版本：4.4.1
+- [`tdigest`](https://github.com/tvondra/tdigest)，版本：1.0.1
 
 对此列表进行的更新将随着时间的推移而公布。
 
@@ -44,7 +45,7 @@ ms.locfileid: "104949781"
 
 ## <a name="which-extensions-need-to-be-added-to-the-shared_preload_libraries-and-created"></a>哪些扩展需要添加到 shared_preload_libraries，哪些扩展需要创建？
 
-|Extensions   |需要添加到 shared_preload_libraries  |需要创建 |
+|扩展   |需要添加到 shared_preload_libraries  |需要创建 |
 |-------------|--------------------------------------------------|---------------------- |
 |`pg_cron`      |否       |是        |
 |`pg_audit`     |是       |是        |
@@ -52,10 +53,10 @@ ms.locfileid: "104949781"
 |`postgis`      |否       |是        |
 |`plv8`      |否       |是        |
 
-## <a name="add-extensions-to-the-shared_preload_libraries"></a>将扩展添加到 shared_preload_libraries
-有关 shared_preload_libraries 的详细信息，请阅读[此处](https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-SHARED-PRELOAD-LIBRARIES)的 PostgreSQL 文档：
+## <a name="add-extensions-to-the-shared_preload_libraries"></a>添加扩展到 `shared_preload_libraries`
+有关什么是 `shared_preload_libraries` 的详细信息，请阅读[此处](https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-SHARED-PRELOAD-LIBRARIES)的 PostgreSQL 文档：
 - 对于作为 `contrib` 的一部分的扩展，不需要此步骤
-- 对于 shared_preload_libraries 不需要预加载的扩展，不需要此步骤。 对于这些扩展，可以跳到下一个段落[创建扩展](#create-extensions)。
+- 对于 shared_preload_libraries 不需要预加载的扩展，不需要此步骤。 如需了解这些扩展，可以跳到下一个段：[创建扩展](#create-extensions)。
 
 ### <a name="add-an-extension-at-the-creation-time-of-a-server-group"></a>在创建服务器组时添加扩展
 ```console

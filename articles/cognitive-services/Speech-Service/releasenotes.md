@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/20/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 99385bbb5783f6dd4cfd87f6586983e1d784e387
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: f901dde7501823a6bf54599d10f0f47abe27273b
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108287746"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905803"
 ---
 # <a name="speech-service-release-notes"></a>语音服务发行说明
 
@@ -55,18 +55,18 @@ ms.locfileid: "108287746"
 
 #### <a name="new-features"></a>新增功能
 
-- C++/C#/Java/Python：已迁移到最新版本的 GStreamer (1.18.3)，支持在 Windows、Linux 和 Android 上转录任何媒体格式。 参阅[此处](how-to-use-codec-compressed-audio-input-streams.md)的文档。
-- **C++/C#/Java/Objective-C/Python**：为 SDK 新增了以下支持：解码压缩的 TTS/合成音频。 如果将输出音频格式设置为 PCM，并且系统上有 GStreamer，则 SDK 会自动从服务请求压缩的音频以节省带宽，然后在客户端对音频进行解码。 可以将 `SpeechServiceConnection_SynthEnableCompressedAudioTransmission` 设置为 `false` 以禁用此功能。 有关 [C++](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#propertyid)、[C#](/dotnet/api/microsoft.cognitiveservices.speech.propertyid)、[Java](/java/api/com.microsoft.cognitiveservices.speech.propertyid)、[Objective-C](/objectivec/cognitive-services/speech/spxpropertyid)、[Python](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.propertyid) 的详细信息。
-- JavaScript：Node.js 用户现在可以使用 [`AudioConfig.fromWavFileInput` API](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig#fromWavFileInput_File_)。 这解决了 [GitHub 问题 #252](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/252)。
-- C++/C#/Java/Objective-C/Python：添加了用于 TTS 的 `GetVoicesAsync()` 方法，用于返回所有可用的合成语音。 有关 [C++](/cpp/cognitive-services/speech/speechsynthesizer#getvoicesasync)、[C#](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer#methods)、[Java](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer#methods)、[Objective-C](/objectivec/cognitive-services/speech/spxspeechsynthesizer#getvoiceasync) 和 [Python](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer#methods) 的详细信息。
-- **C++/C#/Java/JavaScript/Objective-C/Python**：为 TTS/语音合成添加了 `VisemeReceived` 事件，用于返回同步的视素动画。 参阅[此处](/azure/cognitive-services/speech-service/how-to-speech-synthesis-viseme)的文档。
-- **C++/C#/Java/JavaScript/Objective-C/Python**：为 TTS 添加了 `BookmarkReached` 事件。 你可以在输入 SSML 中设置书签，并获取每个书签的音频偏移量。 参阅[此处](/azure/cognitive-services/speech-service/speech-synthesis-markup#bookmark-element)的文档。
-- Java：添加了对说话人辨识 API 的支持。 有关详细信息，请参阅[此文](/java/api/com.microsoft.cognitiveservices.speech.speakerrecognizer)。
-- **C++/C#/Java/JavaScript/Objective-C/Python**：通过 WebM 容器为 TTS 添加了两种新的输出音频格式（Webm16Khz16BitMonoOpus 和 Webm24Khz16BitMonoOpus）。 这些格式是用于通过 Opus 编解码器流式传输音频的更好格式。 有关 [C++](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#speechsynthesisoutputformat)、[C#](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat)、[Java](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisoutputformat)、[JavaScript](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat)、[Objective-C](/objectivec/cognitive-services/speech/spxspeechsynthesisoutputformat)、[Python](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesisoutputformat) 的详细信息。
-- C++/C#/Java：添加了为说话人辨识方案检索语音配置文件的支持。 有关 [C++](/cpp/cognitive-services/speech/speakerrecognizer)、[C#](/dotnet/api/microsoft.cognitiveservices.speech.speakerrecognizer) 和 [Java](/java/api/com.microsoft.cognitiveservices.speech.speakerrecognizer) 的详细信息。
+- C++/C#/Java/Python：已迁移到最新版本的 GStreamer (1.18.3)，支持在 Windows、Linux 和 Android 上转录任何媒体格式。 参阅[此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams)的文档。
+- **C++/C#/Java/Objective-C/Python**：为 SDK 新增了以下支持：解码压缩的 TTS/合成音频。 如果将输出音频格式设置为 PCM，并且系统上有 GStreamer，则 SDK 会自动从服务请求压缩的音频以节省带宽，然后在客户端对音频进行解码。 可以将 `SpeechServiceConnection_SynthEnableCompressedAudioTransmission` 设置为 `false` 以禁用此功能。 有关 [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#propertyid)、[C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.propertyid?view=azure-dotnet)、[Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.propertyid?view=azure-java-stable)、[Objective-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxpropertyid)、[Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.propertyid?view=azure-python) 的详细信息。
+- JavaScript：Node.js 用户现在可以使用 [`AudioConfig.fromWavFileInput` API](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest#fromWavFileInput_File_)。 这解决了 [GitHub 问题 #252](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/252)。
+- C++/C#/Java/Objective-C/Python：添加了用于 TTS 的 `GetVoicesAsync()` 方法，用于返回所有可用的合成语音。 有关 [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#getvoicesasync)、[C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer?view=azure-dotnet#methods)、[Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer?view=azure-java-stable#methods)、[Objective-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechsynthesizer#getvoiceasync) 和 [Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer?view=azure-python#methods) 的详细信息。
+- **C++/C#/Java/JavaScript/Objective-C/Python**：为 TTS/语音合成添加了 `VisemeReceived` 事件，用于返回同步的视素动画。 参阅[此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-speech-synthesis-viseme)的文档。
+- **C++/C#/Java/JavaScript/Objective-C/Python**：为 TTS 添加了 `BookmarkReached` 事件。 你可以在输入 SSML 中设置书签，并获取每个书签的音频偏移量。 参阅[此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup#bookmark-element)的文档。
+- Java：添加了对说话人辨识 API 的支持。 有关详细信息，请参阅[此文](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speakerrecognizer?view=azure-java-stable)。
+- **C++/C#/Java/JavaScript/Objective-C/Python**：通过 WebM 容器为 TTS 添加了两种新的输出音频格式（Webm16Khz16BitMonoOpus 和 Webm24Khz16BitMonoOpus）。 这些格式是用于通过 Opus 编解码器流式传输音频的更好格式。 有关 [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#speechsynthesisoutputformat)、[C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-dotnet)、[Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-java-stable)、[JavaScript](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat?view=azure-node-latest)、[Objective-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechsynthesisoutputformat)、[Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-python) 的详细信息。
+- C++/C#/Java：添加了为说话人辨识方案检索语音配置文件的支持。 有关 [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/speakerrecognizer)、[C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speakerrecognizer?view=azure-dotnet) 和 [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speakerrecognizer?view=azure-java-stable) 的详细信息。
 - C++/C#/Java/Objective-C/Python：添加了对用于控制音频麦克风和扬声器的单独共享库的支持。 这样就可以在没有所需音频库依赖项的环境中使用 SDK。
 - **Objective-C/Swift**：添加了对具有伞式标头的模块框架的支持。 这允许在 iOS/Mac Objective-C/Swift 应用中将语音 SDK 作为模块导入。 这解决了 [GitHub 问题 #452](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/452)。
-- **Python**：添加了对 [Python 3.9](/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-python) 的支持，根据 Python 的 [3.5 生命周期终止](https://devguide.python.org/devcycle/#end-of-life-branches)删除了对 Python 3.5 的支持。
+- **Python**：添加了对 [Python 3.9](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-python) 的支持，根据 Python 的 [3.5 生命周期终止](https://devguide.python.org/devcycle/#end-of-life-branches)删除了对 Python 3.5 的支持。
 
 **已知问题**
 
@@ -75,7 +75,7 @@ ms.locfileid: "108287746"
 #### <a name="improvements"></a>改进
 
 - 为了降低语音 SDK 的内存使用量和磁盘占用量，Android 二进制文件现在缩小了 3% 到 5%，这是我们的多版本工作的一部分。
-- 改进了[此处](/dotnet/api/microsoft.cognitiveservices.speech)的 C# 参考文档的准确度、可读性和“另请参阅”部分。
+- 改进了[此处](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet)的 C# 参考文档的准确度、可读性和“另请参阅”部分。
 
 #### <a name="bug-fixes"></a>Bug 修复
 
@@ -95,7 +95,7 @@ ms.locfileid: "108287746"
 ## <a name="speech-cli-also-known-as-spx-2021-march-release"></a>语音 CLI（也称为 SPX）：2021-March 版本
 
 > [!NOTE]
-> 请参阅[此处](spx-basics.md)的 Azure 语音服务命令行界面 (CLI) 入门。 有了 CLI，你无需编写任何代码便可使用 Azure 语音服务。
+> 请参阅[此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-basics)的 Azure 语音服务命令行界面 (CLI) 入门。 有了 CLI，你无需编写任何代码便可使用 Azure 语音服务。
 
 #### <a name="new-features"></a>新增功能
 
@@ -114,7 +114,7 @@ ms.locfileid: "108287746"
 
 **自定义神经语音正式发布**
 
-2 月份以 13 种语言正式发布了自定义神经语音：中文(普通话，简体)、英语(澳大利亚)、英语(印度)、英语(英国)、英语(美国)、法语(加拿大)、法语(法国)、德语(德国)、意大利语(意大利)、日语(日本)、韩语(韩国)、葡萄牙语(巴西)、西班牙语(墨西哥)、西班牙语(西班牙)。 详细了解[什么是自定义神经语音](custom-neural-voice.md)以及[如何负责任地使用它](concepts-guidelines-responsible-deployment-synthetic.md)。 自定义神经语音功能需要注册。Microsoft 可能会根据 Microsoft 的资格条件限制访问权限。 详细了解[受限访问](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context)。  
+2 月份以 13 种语言正式发布了自定义神经语音：中文(普通话，简体)、英语(澳大利亚)、英语(印度)、英语(英国)、英语(美国)、法语(加拿大)、法语(法国)、德语(德国)、意大利语(意大利)、日语(日本)、韩语(韩国)、葡萄牙语(巴西)、西班牙语(墨西哥)、西班牙语(西班牙)。 详细了解[什么是自定义神经语音](custom-neural-voice.md)以及[如何负责任地使用它](concepts-guidelines-responsible-deployment-synthetic.md)。 自定义神经语音功能需要注册。Microsoft 可能会根据 Microsoft 的资格条件限制访问权限。 详细了解[受限访问](https://docs.microsoft.com/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context)。  
 
 ## <a name="speech-sdk-1150-2021-january-release"></a>语音 SDK 1.15.0：2021 年 1 月发行版
 

@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 669010d2de90498c98fc685fe931b084a11cd104
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: 5710fc8be66f2126f6bf665ad1808aa11e4db2c4
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88008502"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445306"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type-for-windows-virtual-desktop-classic"></a>为 Windows 虚拟桌面（经典）的个人桌面主机池配置分配类型
 

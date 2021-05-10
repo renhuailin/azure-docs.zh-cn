@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 872a67d8d9f41c0c809df54304352b2a5f58e011
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+manager: femila
+ms.openlocfilehash: 183b956c0ec38101f7875fe01dd7c6ef9c8c8c8f
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98251754"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891673"
 ---
 # <a name="required-url-list"></a>所需的 URL 列表
 
@@ -19,6 +19,52 @@ ms.locfileid: "98251754"
 
 >[!IMPORTANT]
 >Windows 虚拟桌面不支持那些会阻止本文所列 URL 的部署。
+
+## <a name="required-url-check-tool"></a>所需 URL 检查工具
+
+所需 URL 检查工具将验证 URL，并显示虚拟机运行时所需的 URL 是否可以访问。 如果不可以，则该工具将列出不可访问的 URL，以便在需要时取消阻止。
+
+请务必记住以下内容：
+
+- 只能将所需 URL 检查工具用于商业云中的部署。
+- 所需 URL 检查工具无法检查带通配符的 URL，因此请确保先取消阻止这些 URL。
+
+### <a name="requirements"></a>要求
+
+需要具备以下条件才能使用所需 URL 检查工具：
+
+- VM 必须具有 .NET 4.6.2 framework
+- RDAgent 的版本为 1.0.2944.400 或更高版本
+- WVDAgentUrlTool.exe 文件必须与 WVDAgentUrlTool.config 文件位于同一文件夹中
+
+### <a name="how-to-use-the-required-url-check-tool"></a>如何使用所需 URL 检查工具
+
+要使用所需 URL 检查工具，请执行以下操作：
+
+1. 在 VM 上以管理员身份打开命令提示符。
+2. 运行以下命令，将目录更改为与生成代理相同的文件夹：
+
+    ```console
+    cd C:\Program Files\Microsoft RDInfra\RDAgent_1.0.2944.1200
+    ```
+
+3. 运行以下命令：
+
+    ```console
+    WVDAgentUrlTool.exe
+    ```
+ 
+4. 运行该文件后，你将看到可访问和不可访问 URL 的列表。
+
+    例如，以下屏幕截图显示了需要取消阻止两个所需非通配符 URL 的场景：
+
+    > [!div class="mx-imgBorder"]
+    > ![不可访问的 URL 输出的屏幕截图。](media/noaccess.png)
+    
+    下面是取消阻止所有所需非通配符 URL 后，输出的显示内容：
+
+    > [!div class="mx-imgBorder"]
+    > ![可访问的 URL 输出的屏幕截图。](media/access.png)
 
 ## <a name="virtual-machines"></a>虚拟机
 
@@ -49,7 +95,7 @@ ms.locfileid: "98251754"
 
 |地址|出站 TCP 端口|目的|服务标记|
 |---|---|---|---|
-|*.wvd.microsoft.us|443|服务流量|WindowsVirtualDesktop|
+|*.wvd.azure.us|443|服务流量|WindowsVirtualDesktop|
 |gcs.monitoring.core.usgovcloudapi.net|443|代理流量|AzureCloud|
 |monitoring.core.usgovcloudapi.net|443|代理流量|AzureCloud|
 |fairfax.warmpath.usgovcloudapi.net|443|代理流量|AzureCloud|

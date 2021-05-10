@@ -6,12 +6,12 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
-ms.openlocfilehash: 2abd5882e310b17c633a82009f44624fad156f14
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4faa48a9edb5ea157fde67e4a4f3008864342075
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92221122"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639769"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>了解适用于 U-SQL 开发人员的 Apache Spark 代码
 
@@ -126,12 +126,12 @@ Spark 提供自己的 Python 和 R 集成（分别为 pySpark 和 SparkR），�
 |`SQL.MAP<K,V>`   |`MapType(keyType, valueType, valueContainsNull)` |`scala.collection.Map` | `MapType(keyType, valueType, valueContainsNull=True)`|
 |`SQL.ARRAY<T>`   |`ArrayType(elementType, containsNull)` |`scala.collection.Seq` | `ArrayType(elementType, containsNull=True)`|
 
-有关详细信息，请参见:
+有关详细信息，请参阅：
 
 - [org.apache.spark.sql.types](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.types.package)
 - [Spark SQL 和 DataFrames 类型](https://spark.apache.org/docs/latest/sql-ref-datatypes.html)
 - [Scala 值类型](https://www.scala-lang.org/api/current/scala/AnyVal.html)
-- [pyspark.sql.types](https://spark.apache.org/docs/latest/api/python/pyspark.sql.html#module-pyspark.sql.types)
+- [pyspark.sql.types](https://spark.apache.org/docs/2.3.1/api/python/_modules/pyspark/sql/types.html#module-pyspark.sql.types)
 
 ### <a name="treatment-of-null"></a>NULL 处理方式
 

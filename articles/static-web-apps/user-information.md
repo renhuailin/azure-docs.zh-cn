@@ -5,15 +5,15 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 04/09/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: d5a1d810c357aa83b8069023b00d76352da124df
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ff9760e72c8ba3f652310c96ef09cfcc9ad41198
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94844789"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141456"
 ---
 # <a name="accessing-user-information-in-azure-static-web-apps-preview"></a>访问 Azure 静态 Web 应用预览版的用户信息
 
@@ -25,12 +25,12 @@ Azure 静态 Web 应用通过[直接访问终结点](#direct-access-endpoint)向
 
 客户端主体数据对象向应用公开用户可识别的信息。 以下是客户端主体对象的特有属性：
 
-| properties  | 说明 |
-|-----------|---------|
-| `identityProvider` | [标识提供程序](authentication-authorization.md)的名称。 |
-| `userId` | 用户的特定于 Azure 静态 Web 应用的唯一标识符。 <ul><li>该值在每个应用中都是唯一的。 例如，同一用户在不同的静态 Web 应用资源上返回不同的 `userId` 值。<li>该值在用户的生存期内保持不变。 如果删除同一用户并将其重新添加到应用，则会生成一个新的 `userId`。</ul>|
-| `userDetails` | 用户的用户名或电子邮件地址。 一些提供程序返回[用户的电子邮件地址](authentication-authorization.md)，而其他提供程序则发送[用户句柄](authentication-authorization.md)。 |
-| `userRoles`     | [用户的已分配角色](authentication-authorization.md)的数组。 |
+| properties           | 说明                                                                                                                                                                                                                                                                                                                                                        |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `identityProvider` | [标识提供程序](authentication-authorization.md)的名称。                                                                                                                                                                                                                                                                                              |
+| `userId`           | 用户的特定于 Azure 静态 Web 应用的唯一标识符。 <ul><li>该值在每个应用中都是唯一的。 例如，同一用户在不同的静态 Web 应用资源上返回不同的 `userId` 值。<li>该值在用户的生存期内保持不变。 如果删除同一用户并将其重新添加到应用，则会生成一个新的 `userId`。</ul> |
+| `userDetails`      | 用户的用户名或电子邮件地址。 一些提供程序返回[用户的电子邮件地址](authentication-authorization.md)，而其他提供程序则发送[用户句柄](authentication-authorization.md)。                                                                                                                                                                    |
+| `userRoles`        | [用户的已分配角色](authentication-authorization.md)的数组。                                                                                                                                                                                                                                                                                          |
 
 以下示例是示例客户端主体对象：
 
@@ -39,7 +39,7 @@ Azure 静态 Web 应用通过[直接访问终结点](#direct-access-endpoint)向
   "identityProvider": "facebook",
   "userId": "d75b260a64504067bfc5b2905e3b8182",
   "userDetails": "user@example.com",
-  "userRoles": [ "anonymous", "authenticated" ]
+  "userRoles": ["anonymous", "authenticated"]
 }
 ```
 
@@ -53,7 +53,7 @@ Azure 静态 Web 应用通过[直接访问终结点](#direct-access-endpoint)向
 
 ```javascript
 async function getUserInfo() {
-  const response = await fetch("/.auth/me");
+  const response = await fetch('/.auth/me');
   const payload = await response.json();
   const { clientPrincipal } = payload;
   return clientPrincipal;
@@ -64,7 +64,7 @@ console.log(getUserInfo());
 
 ## <a name="api-functions"></a>API 函数
 
-静态 Web 应用中通过 Azure Functions 后端提供的 API 函数有权访问与客户端应用程序相同的用户信息。 尽管 API 接收到用户身份信息，但如果用户经过身份验证或符合所需角色，则不会执行其检查。 在 [`routes.json`](routes.md) 文件中定义访问控制规则。
+静态 Web 应用中通过 Azure Functions 后端提供的 API 函数有权访问与客户端应用程序相同的用户信息。 尽管 API 接收到用户身份信息，但如果用户经过身份验证或符合所需角色，则不会执行其检查。 在 [`staticwebapp.config.json`](configuration.md#routes) 文件中定义访问控制规则。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -74,14 +74,14 @@ console.log(getUserInfo());
 
 ```javascript
 module.exports = async function (context, req) {
-  const header = req.headers["x-ms-client-principal"];
-  const encoded = Buffer.from(header, "base64");
-  const decoded = encoded.toString("ascii");
+  const header = req.headers['x-ms-client-principal'];
+  const encoded = Buffer.from(header, 'base64');
+  const decoded = encoded.toString('ascii');
 
   context.res = {
     body: {
-      clientPrincipal: JSON.parse(decoded)
-    }
+      clientPrincipal: JSON.parse(decoded),
+    },
   };
 };
 ```
@@ -90,7 +90,7 @@ module.exports = async function (context, req) {
 
 ```javascript
 async function getUser() {
-  const response = await fetch("/api/user");
+  const response = await fetch('/api/user');
   const payload = await response.json();
   const { clientPrincipal } = payload;
   return clientPrincipal;

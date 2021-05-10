@@ -3,7 +3,7 @@ title: 使用 Azure CLI 创建和配置 Azure DDoS 防护计划
 description: 了解如何使用 Azure CLI 创建 DDoS 防护计划
 services: ddos-protection
 documentationcenter: na
-author: aletheatoh
+author: yitoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 8a8da50dc703d59dc16b5cb6253d39aeb33fd76d
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 59c5ca9ce9e95319b36e002da0b5d1438ef3fdd1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777628"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102203770"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>快速入门：使用 Azure CLI 创建和配置 Azure DDoS 防护标准
 
@@ -26,7 +26,7 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 
 在本快速入门中，你将创建一个 DDoS 防护计划，并将其链接到虚拟网络。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 本地安装的 Azure CLI 或 Azure Cloud Shell
@@ -39,7 +39,7 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 
 在 Azure 中，可将相关的资源分配到资源组。 可以使用现有资源组，也可以创建新组。
 
-若要创建资源组，请使用 [az group create](/cli/azure/group#az_group_create)。 在此示例中，我们将资源组命名为“MyResourceGroup”，并使用“美国东部”位置：
+若要创建资源组，请使用 [az group create](/cli/azure/group#az-group-create)。 在此示例中，我们将资源组命名为“MyResourceGroup”，并使用“美国东部”位置：
 
 ```azurecli-interactive
 az group create \

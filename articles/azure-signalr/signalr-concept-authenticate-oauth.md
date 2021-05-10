@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: aace45f78bab273b792d10754be431ed3949e4c6
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: cd5b709843ba2d98170aaa58eb5c3cc1ec8883af
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107869808"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "98734675"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR 服务身份验证
 
@@ -47,7 +47,7 @@ ms.locfileid: "107869808"
 
 - 在 [GitHub](https://github.com/) 上创建的帐户
 - [Git](https://git-scm.com/)
-- [.NET Core SDK](https://dotnet.microsoft.com/download)
+- [.NET Core SDK](https://www.microsoft.com/net/download/windows)
 - 为 Bash 环境已配置 [Azure Cloud Shell](../cloud-shell/quickstart.md)。
 - 下载或克隆 [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) GitHub 存储库。
 

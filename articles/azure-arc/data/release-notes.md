@@ -7,14 +7,14 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 04/09/2021
+ms.date: 04/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5931b28553b7a6030dc8c7b0adb2c42111ce6751
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: f062782ec2b28ca155b49c9d6ecd5c169c0430eb
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107989407"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286827"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>发行说明 - 已启用 Azure Arc 的数据服务（预览版）
 
@@ -22,11 +22,75 @@ ms.locfileid: "107989407"
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
+## <a name="april-2021"></a>2021 年 4 月
+
+此预览版发布于 2021 年 4 月 29 日。
+
+### <a name="whats-new"></a>新变化
+
+本节介绍此版本中引入或启用的新功能。 
+
+#### <a name="platform"></a>平台
+
+- 直接连接的群集自动将遥测数据信息自动上传到 Azure。 
+
+####    <a name="azure-arc-enabled-postgresql-hyperscale"></a>已启用 Azure Arc 的超大规模 PostgreSQL
+
+- 现支持直接连接模式下的已启用 Azure Arc 的超大规模 PostgreSQL。 你现可从 Azure 门户中的 Azure 市场部署已启用 Azure Arc 的超大规模 PostgreSQL。 
+- 已启用 Azure Arc 的超大规模 PostgreSQL 随附 Citus 10.0 扩展，其中包含列式表格存储
+- 已启用 Azure Arc 的超大规模 PostgreSQL 现支持完全用户/角色管理。
+- 已启用 Azure Arc 的超大规模 PostgreSQL 现支持具有 `Tdigest` 和 `pg_partman` 的其他扩展。
+- 已启用 Azure Arc 的超大规模 PostgreSQL 现支持在服务器组中按 PostgreSQL 实例的每个角色配置 vCore 和内容设置。
+- 已启用 Azure Arc 的超大规模 PostgreSQL 现支持在服务器组中按 PostgreSQL 实例的每个角色配置数据库引擎/服务器设置。
+
+#### <a name="azure-arc-enabled-sql-managed-instance"></a>已启用 Azure Arc 的 SQL 托管实例
+
+- 你在可将数据库还原为包含 3 个副本的 SQL 托管实例，它将自动添加到可用性组。 
+- 连接到部署有 3 个副本的 SQL 托管实例上的只读辅助终结点。 使用 `azdata arc sql endpoint list` 查看只读辅助连接终结点。
+
+### <a name="known-issues"></a>已知问题
+
+- 你可以使用 Azure 门户在直接连接模式下创建数据控制器。 不支持通过其他已启用 Azure Arc 的数据服务工具进行部署。 具体而言，在此版本中，你不能使用以下任何工具在直接连接模式下部署数据控制器。
+   - Azure Data Studio
+   - Azure Data CLI (`azdata`)
+   - Kubernetes 本机工具 (`kubectl`)
+
+   [部署 Azure Arc 数据控制器 | 直接连接模式](deploy-data-controller-direct-mode.md)说明了如何在门户中创建数据控制器。 
+
+- 在直接连接模式下，使用 `azdata arc dc upload` 上传使用量、指标和日志当前已被阻止。 使用量会自动上传。 在间接连接模式下创建的数据控制器的上传应继续工作。
+- 如果通过 `–proxy-cert <path-t-cert-file>` 使用代理，则在直接连接模式下自动上传使用量数据将失败。
+- 已启用 Azure Arc 的 SQL 托管实例和已启用 Azure Arc 的超大规模 PostgreSQL 均未通过 GB18030 认证。
+
+#### <a name="azure-arc-enabled-sql-managed-instance"></a>已启用 Azure Arc 的 SQL 托管实例
+
+- 直接模式下的已启用 Azure Arc 的 SQL 托管实例的部署只能通过 Azure 门户完成，而不能通过 azdata、Azure Data Studio 或 kubectl 等工具进行。
+
+#### <a name="azure-arc-enabled-postgresql-hyperscale"></a>已启用 Azure Arc 的超大规模 PostgreSQL
+
+- 目前不支持在 NFS 存储进行时间点还原。
+- 不能同时启用和配置 `pg_cron` 扩展。 为此，你需要使用两个命令，分别是 启用命令和配置命令。 例如：
+
+   1. 启用扩展：
+   
+      ```console
+      azdata arc postgres server edit -n myservergroup --extensions pg_cron 
+      ```
+
+   1. 重启服务器组。
+
+   1. 配置扩展：
+   
+      ```console
+      azdata arc postgres server edit -n myservergroup --engine-settings cron.database_name='postgres'
+      ```
+
+   如果在重启之前执行第二个命令，该命令将失败。 如果命令失败，只需等待一段时间，然后再次执行第二个命令。
+
+- 在编辑服务器组的配置以启用其他扩展时，向 `--extensions` 参数传递无效值会错误地将启用的扩展列表重置为创建服务器组时的列表，并阻止用户创建其他扩展。 如发生该情况，唯一的解决方法是删除服务器组，然后重新部署。
+
 ## <a name="march-2021"></a>2021 年 3 月
 
 2021 年 3 月版最初于 2021 年 4 月 5 日推出，发布的最后阶段于 2021 年 4 月 9 日完成。
-
-在[已知问题 - 已启用 Azure Arc 的数据服务（预览版）](known-issues.md)中可查看此版本的限制。
 
 Azure Data CLI (`azdata`) 版本号：20.3.2。 可以从[安装 Azure 数据 CLI (`azdata`)](/sql/azdata/install/deploy-install-azdata) 中安装 `azdata`。
 
@@ -49,18 +113,9 @@ PostgreSQL 的两个自定义资源定义 (CRD) 已经合并到一个 CRD 中。
 
 - 你现在可以在 Azure 门户中以接连接模式创建一个 SQL 托管实例。
 
-- 你现在可以将数据库还原为包含 3 个副本的 SQL 托管实例，它将自动添加到可用性组中。 
+- 你现可将数据库还原为包含 3 个副本的 SQL 托管实例，它将自动添加到可用性组中。 
 
-- 你现在可以连接到部署有 3 个副本的 SQL 托管实例上的只读辅助终结点。 使用 `azdata arc sql endpoint list` 查看只读辅助连接终结点。
-
-### <a name="known-issues"></a>已知问题
-
-- 在直接连接模式下，使用 `azdata arc dc upload` 上传使用量、指标和日志当前已被阻止。 使用量会自动上传。 在间接连接模式下创建的数据控制器的上传应继续工作。
-- 直接模式下的数据控制器部署只能通过 Azure 门户完成，而不能通过 azdata、Azure Data Studio 或 kubectl 等客户端工具进行。
-- 直接模式下的已启用 Azure Arc 的 SQL 托管实例的部署只能通过 Azure 门户完成，而不能通过 azdata、Azure Data Studio 或 kubectl 等工具进行。
-- 目前尚无法在直接模式下部署已启用 Azure Arc 的超大规模 PostgreSQL。
-- 如果通过 `–proxy-cert <path-t-cert-file>` 使用代理，则在直接连接模式下自动上传使用量数据将失败。
-- 已启用 Azure Arc 的 SQL 托管实例和已启用 Azure Arc 的超大规模 PostgreSQL 均未通过 GB18030 认证。
+- 你现可连接到部署有 3 个副本的 SQL 托管实例上的只读辅助终结点。 使用 `azdata arc sql endpoint list` 查看只读辅助连接终结点。
 
 ## <a name="february-2021"></a>2021 年 2 月
 
@@ -74,11 +129,9 @@ Azure 数据 CLI (`azdata`) 版本号：20.3.1。 可以从[安装 Azure 数据 
    - 使用 Always On 可用性组实现高可用性
 
 - 已启用 Azure Arc 的超大规模 PostgreSQL Azure Data Studio： 
-   - 概述页现在显示按节点分项的服务器组的状态
-   - 现在可以使用新的属性页显示有关服务器组的更多详细信息
+   - 概述页面显示按节点分项的服务器组状态
+   - 新的属性页显示有关服务器组的更多详细信息
    - 从“节点参数”页配置 Postgres 引擎参数
-
-有关与此版本相关的问题，请参阅[已知问题 - 已启用 Azure Arc 的数据服务（预览版）](known-issues.md)
 
 ## <a name="january-2021"></a>2021 年 1 月
 
@@ -97,8 +150,8 @@ Azure 数据 CLI (`azdata`) 版本号：20.3.0。 可以从[安装 Azure 数据 
 
    在早期版本中，状态在服务器组级别聚合，而不是在 PostgreSQL 节点级别逐项列出。
 
-- PostgreSQL 部署现在采用 create 命令中指定的卷大小参数
-- 现在，在编辑服务器组时采用引擎版本参数
+- PostgreSQL 部署采用 create 命令中指定的卷大小参数
+- 在编辑服务器组时，系统现会采用引擎版本参数
 - 已启用 Azure Arc 的超大规模 PostgreSQL 的 pod 的命名约定已更改
 
     它现在采用以下形式：`ServergroupName{c, w}-n`。 例如，一个具有三个节点（一个协调器节点和两个工作器节点）的服务器组表示为：
@@ -149,23 +202,6 @@ Azure 数据 CLI (`azdata`) 版本号：20.2.5。 可以从[安装 Azure 数据 
 ```console
 azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc --subscription <subscription id> --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
-
-### <a name="known-issues"></a>已知问题
-
-- 在 Azure Kubernetes 服务 (AKS) 上，不支持 Kubernetes 版本 1.19.x。
-- 在 Kubernetes 1.19 上，不支持 `containerd`。
-- Azure 中的数据控制器资源当前为 Azure 资源。 任何更新（例如删除）都不会传回 Kubernetes 群集。
-- 实例名称不能超出 13 个字符
-- Azure Arc 数据控制器或数据库实例不支持就地升级。
-- 启用了 Arc 的数据服务容器映像未签名。  你可能需要将 Kubernetes 节点配置为允许拉取未签名的容器映像。  例如，如果使用 Docker 作为容器运行时，则可以设置 DOCKER_CONTENT_TRUST=0 环境变量，然后重启。  其他容器运行时具有类似的选项，例如在 [OpenShift](https://docs.openshift.com/container-platform/4.5/openshift_images/image-configuration.html#images-configuration-file_image-configuration) 中就是如此。
-- 无法从 Azure 门户创建已启用 Azure Arc 的 SQL 托管实例或超大规模 PostgreSQL 服务器组。
-- 现阶段，如果使用的是 NFS，则需要在创建 Azure Arc 数据控制器之前，先在部署配置文件中将 `allowRunAsRoot` 设置为 `true`。
-- 仅限 SQL 和 PostgreSQL 登录身份验证。  不支持 Azure Active Directory 或 Active Directory。
-- 在 OpenShift 上创建数据控制器时，需要放宽安全性约束。  有关详细信息，请参阅文档。
-- 如果在 Azure Stack Hub 上使用的 Azure Kubernetes 服务 (AKS) 引擎中包含 Azure Arc 数据控制器和数据库实例，则不支持升级到较新的 Kubernetes 版本。 请先卸载 Azure Arc 数据控制器和所有数据库实例，然后再升级 Kubernetes 群集。
-- 已启用 Azure Arc 的数据服务目前不支持跨[多个可用性区域](../../aks/availability-zones.md)的 AKS 群集。 为了避免此问题，在 Azure 门户中创建 AKS 群集时，如果选择多个区域可用的区域，请从选择控件中清除所有区域。 参看下图：
-
-   :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="取消选中每个区域对应的复选框，以指定为“无”。":::
 
 ## <a name="october-2020"></a>2020 年 10 月 
 

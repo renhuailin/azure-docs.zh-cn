@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: alsin
-ms.openlocfilehash: 3c9f1b76bb707a296da00ac503482efe6a22385b
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 1625c4a73252f202a45dbdefba1576776ea843a0
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278331"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209529"
 ---
 # <a name="troubleshoot-common-automanage-onboarding-errors"></a>排查常见的 Automanage 加入错误
 Automanage 可能无法将计算机加入服务中。 本文档介绍如何排查部署失败的问题，分享部署失败的一些常见原因，并描述可能的后续缓解步骤。
@@ -38,14 +38,13 @@ Automanage 可能无法将计算机加入服务中。 本文档介绍如何排�
 :-----|:-------------|
 Automanage 帐户权限不足错误 | 如果你最近将包含新 Automanage 帐户的订阅移动到新租户中，则可能会出现此错误。 [此处](./repair-automanage-account.md)提供了解决此错误的步骤。
 工作区区域不符合区域映射要求 | Automanage 无法加入你的计算机，原因是该计算机当前链接到的 Log Analytics 工作区未映射到受支持的自动化区域。 请确保现有 Log Analytics 工作区和自动化帐户位于[受支持的区域映射](../automation/how-to/region-mappings.md)。
-“因为拒绝分配的名称为‘系统拒绝由托管应用程序创建的分配’，访问被拒绝” | 在资源上创建了 [denyAssignment](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments)，它阻止了 Automanage 访问你的资源。 此 denyAssignment 可能是由[蓝图](https://docs.microsoft.com/azure/governance/blueprints/concepts/resource-locking)或[托管应用程序](https://docs.microsoft.com/azure/azure-resource-manager/managed-applications/overview)创建的。
-“OS 信息: 名称='(null)'，版本='(null)'，代理状态=‘未准备就绪’。” | 确保运行[最低受支持的代理版本](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/support-extensions-agent-version)、代理正在运行（[linux](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/linux-azure-guest-agent) 和 [Windows](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/windows-azure-guest-agent)），并且代理是最新的（[Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) 和 [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)）。
-“无法确定 VM 的 OS。OS 名称: ...，版本: ...。 请检查 VM 代理是否正在运行，当前状态是否为‘准备就绪’。” | 确保运行[最低受支持的代理版本](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/support-extensions-agent-version)、代理正在运行（[linux](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/linux-azure-guest-agent) 和 [Windows](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/windows-azure-guest-agent)），并且代理是最新的（[Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) 和 [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)）。
-
-“VM 在处理扩展 'IaaSAntimalware' 时报告了失败”| 确保尚未在 VM 上安装其他反恶意软件/防病毒产品/服务。 如果仍然失败，请联系支持人员。
+“因为拒绝分配的名称为‘系统拒绝由托管应用程序创建的分配’，访问被拒绝” | 在资源上创建了 [denyAssignment](../role-based-access-control/deny-assignments.md)，它阻止了 Automanage 访问你的资源。 此 denyAssignment 可能是由[蓝图](../governance/blueprints/concepts/resource-locking.md)或[托管应用程序](../azure-resource-manager/managed-applications/overview.md)创建的。
+“OS 信息: 名称='(null)'，版本='(null)'，代理状态=‘未准备就绪’。” | 确保运行[最低受支持的代理版本](/troubleshoot/azure/virtual-machines/support-extensions-agent-version)、代理正在运行（[linux](/troubleshoot/azure/virtual-machines/linux-azure-guest-agent) 和 [Windows](/troubleshoot/azure/virtual-machines/windows-azure-guest-agent)），并且代理是最新的（[Linux](../virtual-machines/extensions/update-linux-agent.md) 和 [Windows](../virtual-machines/extensions/agent-windows.md)）。
+“无法确定 VM 的 OS。OS 名称: ...，版本: ...。 请检查 VM 代理是否正在运行，当前状态是否为‘准备就绪’。” | 确保运行[最低受支持的代理版本](/troubleshoot/azure/virtual-machines/support-extensions-agent-version)、代理正在运行（[linux](/troubleshoot/azure/virtual-machines/linux-azure-guest-agent) 和 [Windows](/troubleshoot/azure/virtual-machines/windows-azure-guest-agent)），并且代理是最新的（[Linux](../virtual-machines/extensions/update-linux-agent.md) 和 [Windows](../virtual-machines/extensions/agent-windows.md)）。
+“VM 在处理扩展 'IaaSAntimalware' 时报告失败” | 确保尚未在 VM 上安装其他反恶意软件/防病毒产品/服务。 如果仍然失败，请联系支持人员。
 ASC 工作区: Automanage 目前不支持 <位置> 中的 Log Analytics 服务。 | 检查你的 VM 是否位于[受支持的区域](./automanage-virtual-machines.md#supported-regions)。
-由于策略冲突而导致模板部署失败。 请查看详细信息了解更多信息。 | 某个策略阻止了 Automanage 加入你的 VM。 请检查应用于包含你要加入 Automanage 的 VM 的订阅或资源组的策略。
-“分配失败：没有其他可用信息”| 请向 Microsoft Azure 支持人员提交案例。
+由于策略冲突而导致模板部署失败。 请查看详细信息了解更多信息。 | 某个策略阻止 Automanage 加入你的 VM。 请检查应用于包含你要加入 Automanage 的 VM 的订阅或资源组的策略。
+“分配失败；没有其他可用信息” | 请向 Microsoft Azure 支持人员提交支持案例。
 
 ## <a name="next-steps"></a>后续步骤
 

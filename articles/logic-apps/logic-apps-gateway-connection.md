@@ -4,18 +4,18 @@ description: 通过在 Azure 中创建数据网关资源，从 Azure 逻辑应�
 services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
-ms.topic: article
-ms.date: 01/20/2021
-ms.openlocfilehash: 356e63bb0a749ad0f41d886e75971e9b05c7f9dc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.topic: conceptual
+ms.date: 03/24/2021
+ms.openlocfilehash: 49da5d7f045ed06ba16696ebd16ad212b9d140d8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99218988"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763302"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到本地数据源
 
-[在本地计算机上安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)后，必须在 Azure 中为网关安装创建网关资源，之后才能从逻辑应用访问本地数据源。 可以在[本地连接器](../connectors/apis-list.md#on-premises-connectors)（在 Azure 逻辑应用中可以找到）要使用的触发器和操作中选择此网关资源。 Azure 逻辑应用支持通过数据网关进行读取和写入操作。 但是，这些操作存在[有效负载大小限制](/data-integration/gateway/service-gateway-onprem#considerations)。
+[在本地计算机上安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)后，必须在 Azure 中为网关安装创建网关资源，之后才能从逻辑应用访问本地数据源。 可以在[本地连接器](../connectors/managed.md#on-premises-connectors)（在 Azure 逻辑应用中可以找到）要使用的触发器和操作中选择此网关资源。 Azure 逻辑应用支持通过数据网关进行读取和写入操作。 但是，这些操作存在[有效负载大小限制](/data-integration/gateway/service-gateway-onprem#considerations)。
 
 本文介绍如何为以前[安装在本地计算机上的网关](../logic-apps/logic-apps-gateway-install.md)创建 Azure 网关资源。 有关网关的详细信息，请参阅[网关的工作原理](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)。
 
@@ -33,7 +33,7 @@ ms.locfileid: "99218988"
 
 ## <a name="supported-data-sources"></a>支持的数据源
 
-在 Azure 逻辑应用中，本地数据网关支持以下数据源的[本地连接器](../connectors/apis-list.md#on-premises-connectors)：
+在 Azure 逻辑应用中，本地数据网关支持以下数据源的[本地连接器](../connectors/managed.md#on-premises-connectors)：
 
 * BizTalk Server 2016
 * 文件系统

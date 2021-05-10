@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: ffc5bafca305086b0c524c76eb91b8aec2e2655d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e795431a0a3e42b7aa91ac7dcb95c7bcb9c9990b
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98602448"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107892069"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>保护标识基础结构的五个步骤
 
@@ -75,14 +75,14 @@ Microsoft 建议根据 [NIST 指导](https://pages.nist.gov/800-63-3/sp800-63b.h
 2. 禁用过期规则，因为这种规则会促使用户选择容易猜出的密码，例如“Spring2019!”
 3. 禁用字符组合要求，并防止用户选择经常受到攻击的密码，因为这些规则会导致用户在密码中选择容易预测的替代字符。
 
-如果直接在 Azure AD 中创建标识，可以[使用 PowerShell 防止用户的密码过期](../../active-directory/authentication/concept-sspr-policy.md)。 混合型组织应该使用[域组策略设置](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10))或 [Windows PowerShell](/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy) 实施这些策略。
+如果直接在 Azure AD 中创建标识，可以[使用 PowerShell 防止用户的密码过期](../../active-directory/authentication/concept-sspr-policy.md)。 混合型组织应该使用[域组策略设置](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10))或 [Windows PowerShell](/powershell/module/activedirectory/set-addefaultdomainpasswordpolicy) 实施这些策略。
 
 ### <a name="protect-against-leaked-credentials-and-add-resilience-against-outages"></a>防止凭据泄漏，并针对服务中断添加复原功能
 
 如果组织使用实施直通身份验证或联合身份验证的混合标识解决方案，应该启用密码哈希同步，原因包括以下两点：
 
 * Azure AD 管理系统中的[凭据已泄漏的用户](../../active-directory/identity-protection/overview-identity-protection.md)报告会警告用户名和密码对已在“黑暗网络”中透露。 日后遭到攻击的第三方站点上出现的网络钓鱼、恶意软件和密码重用，导致大量的密码泄漏。 Microsoft 会发现其中许多泄漏的凭据，并将在本报告中告诉你这些凭据是否与你所在组织中的凭据匹配 - 但前提是你[启用密码哈希同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)或使用仅限云的标识！
-* 如果发生本地服务中断（例如，在勒索软件攻击中），可以切换到[使用密码哈希同步的云身份验证](../../active-directory/hybrid/choose-ad-authn.md)。使用此备用身份验证方法，可以继续访问配置为使用 Azure Active Directory 进行身份验证的应用，包括 Microsoft 365。 在这种情况下，解决本地服务中断之前，IT 人员无需采用个人电子邮件帐户来共享数据。
+* 如果发生本地服务中断（例如，在勒索软件攻击中），可以改用[使用密码哈希同步的云身份验证](../../active-directory/hybrid/choose-ad-authn.md)。通过此备用身份验证方法，可以继续访问配置为使用 Azure Active Directory 进行身份验证的应用，包括 Microsoft 365。 在这种情况下，解决本地服务中断之前，IT 人员无需采用个人电子邮件帐户来共享数据。
 
 详细了解[密码哈希同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)的工作原理。
 

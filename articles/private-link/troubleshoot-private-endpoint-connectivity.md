@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 90831c0e8d5ab73f65dc801319a357d59799cbc6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2a4f86d9fae7b78a57cf8da7ab42d2d4a4cd7be5
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97807546"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835391"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>排查 Azure 专用终结点连接问题
 
@@ -59,7 +59,7 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 1. 使用 [Azure Monitor](../azure-monitor/overview.md) 查看是否有数据在流动。
 
     a. 在“专用终结点”资源中，选择“监视”。
-     - 选择“传入数据”或“传出数据” 。 
+     - 选择“传入字节”或“传出字节” 。 
      - 查看在尝试连接到专用终结点时是否有数据在流动。 预计延迟大约为 10 分钟。
     
        ![验证专用终结点遥测](./media/private-endpoint-tsg/private-endpoint-monitor.png)

@@ -3,12 +3,12 @@ title: 使用 MARS 还原卷中的所有文件
 description: 了解如何使用 MARS 代理还原卷中的所有文件。
 ms.topic: conceptual
 ms.date: 01/17/2021
-ms.openlocfilehash: 1d04e9f77b9f92594def9381f973c999e96b2cb2
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 44c12809fc94f78721ab1788cb352076dfebabe4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516495"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "98613214"
 ---
 # <a name="restore-all-the-files-in-a-volume-using-the-mars-agent"></a>使用 MARS 代理还原卷中的所有文件
 
@@ -92,7 +92,7 @@ ms.locfileid: "107516495"
 
 1. 提供对应于示例保管库的保管库凭据文件，并选择“下一步”。
 
-    如果保管库凭据文件无效（或已过期），请在 Azure 门户中[从示例保管库下载新的保管库凭据文件](backup-azure-file-folder-backup-faq.yml#where-can-i-download-the-vault-credentials-file-)。 提供有效的保管库凭据后，会显示相应备份保管库的名称。
+    如果保管库凭据文件无效（或已过期），请在 Azure 门户中[从示例保管库下载新的保管库凭据文件](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file)。 提供有效的保管库凭据后，会显示相应备份保管库的名称。
 
 1. 在“选择备份服务器”窗格中，从显示的计算机列表中选择源计算机并提供通行短语。 然后，选择“下一步”。
 
@@ -130,4 +130,4 @@ ms.locfileid: "107516495"
 ## <a name="next-steps"></a>后续步骤
 
 - 恢复文件和文件夹后，可 [管理备份](backup-azure-manage-windows-server.md)。
-- 查找[有关备份文件和文件夹的常见问题](backup-azure-file-folder-backup-faq.yml)。
+- 查找[有关备份文件和文件夹的常见问题](backup-azure-file-folder-backup-faq.md)。

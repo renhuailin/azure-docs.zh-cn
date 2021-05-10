@@ -13,18 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: 6ea16da3844b8098d87d65e1016f92c69ae34067
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6e8fe92f88a5934c55febf42a0768274211ed76f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945153"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767702"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>将公共 IP 地址关联到虚拟机
 
 本文介绍如何将公共 IP 地址关联到现有的虚拟机 (VM)。 若要从 Internet 连接到某个 VM，该 VM 必须有关联的公共 IP 地址。 若要使用公共 IP 地址创建新的 VM，可以使用 [Azure 门户](virtual-network-deploy-static-pip-arm-portal.md)、[Azure 命令行接口 (CLI)](virtual-network-deploy-static-pip-arm-cli.md) 或 [PowerShell](virtual-network-deploy-static-pip-arm-ps.md) 来完成此操作。 公共 IP 地址会产生少许费用。 有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/ip-addresses/)。 可为每个订阅使用的公共 IP 地址数有限制。 有关详细信息，请参阅[限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#publicip-address)。
 
 可以使用 [Azure 门户](#azure-portal)、Azure [命令行接口](#azure-cli) (CLI) 或 [PowerShell](#powershell) 将公共 IP 地址关联到 VM。
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="azure-portal"></a>Azure 门户
 
@@ -65,7 +67,7 @@ ms.locfileid: "98945153"
 安装 [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)，或使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置为与帐户一起使用。 在随后的 CLI 命令中选择“试用”按钮。 选择“试用”会调用可用于登录到 Azure 帐户的 Cloud Shell。
 
 1. 如果在 Bash 本地使用 CLI，请使用 `az login` 登录到 Azure。
-2. 公共 IP 地址将关联到 VM 上附加的网络接口的 IP 配置。 使用 [az network nic-ip-config update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update) 命令将公共 IP 地址关联到 IP 配置。 以下示例将现有公共 IP 地址 *myVMPublicIP* 关联到资源组 *myResourceGroup* 中现有网络接口 *myVMVMNic* 的 IP 配置 *ipconfigmyVM*。
+2. 公共 IP 地址将关联到 VM 上附加的网络接口的 IP 配置。 使用 [az network nic-ip-config update](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_update) 命令将公共 IP 地址关联到 IP 配置。 以下示例将现有公共 IP 地址 *myVMPublicIP* 关联到资源组 *myResourceGroup* 中现有网络接口 *myVMVMNic* 的 IP 配置 *ipconfigmyVM*。
   
    ```azurecli-interactive
    az network nic ip-config update \
@@ -75,7 +77,7 @@ ms.locfileid: "98945153"
      --public-ip-address myVMPublicIP
    ```
 
-   - 如果没有现有的公共 IP 地址，请使用 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) 命令创建一个。 例如，以下命令在名为 *myResourceGroup* 的资源组中创建名为 *myVMPublicIP* 的公共 IP 地址。
+   - 如果没有现有的公共 IP 地址，请使用 [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) 命令创建一个。 例如，以下命令在名为 *myResourceGroup* 的资源组中创建名为 *myVMPublicIP* 的公共 IP 地址。
   
      ```azurecli-interactive
      az network public-ip create --name myVMPublicIP --resource-group myResourceGroup
@@ -84,7 +86,7 @@ ms.locfileid: "98945153"
      > [!NOTE]
      > 以上命令使用你可能想要自定义的多个设置的默认值创建一个公共 IP 地址。 若要详细了解所有的公共 IP 地址设置，请参阅[创建公共 IP 地址](virtual-network-public-ip-address.md#create-a-public-ip-address)。 地址是从每个 Azure 区域使用的公共 IP 地址池分配的。 若要查看每个区域中使用的地址池列表，请参阅 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
 
-   - 如果你不知道附加到 VM 的网络接口的名称，请使用 [az vm nic list](/cli/azure/vm/nic#az-vm-nic-list) 命令查看名称。 例如，以下命令会列出附加到资源组 *myResourceGroup* 中 VM *myVM* 的网络接口的名称：
+   - 如果你不知道附加到 VM 的网络接口的名称，请使用 [az vm nic list](/cli/azure/vm/nic#az_vm_nic_list) 命令查看名称。 例如，以下命令会列出附加到资源组 *myResourceGroup* 中 VM *myVM* 的网络接口的名称：
 
      ```azurecli-interactive
      az vm nic list --vm-name myVM --resource-group myResourceGroup
@@ -98,13 +100,13 @@ ms.locfileid: "98945153"
 
      在以上示例中，*myVMVMNic* 是网络接口的名称。
 
-   - 如果你不知道网络接口的 IP 配置的名称，请使用 [az network nic ip-config list](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-list) 命令检索名称。 例如，以下命令会列出资源组 *myResourceGroup* 中网络接口 *myVMVMNic* 的 IP 配置的名称：
+   - 如果你不知道网络接口的 IP 配置的名称，请使用 [az network nic ip-config list](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_list) 命令检索名称。 例如，以下命令会列出资源组 *myResourceGroup* 中网络接口 *myVMVMNic* 的 IP 配置的名称：
 
      ```azurecli-interactive
      az network nic ip-config list --nic-name myVMVMNic --resource-group myResourceGroup --out table
      ```
 
-3. 使用 [az vm list-ip-addresses](/cli/azure/vm#az-vm-list-ip-addresses) 命令查看分配到 IP 配置的公共 IP 地址。 以下示例显示分配到资源组 *myResourceGroup* 中现有 VM *myVM* 的 IP 地址。
+3. 使用 [az vm list-ip-addresses](/cli/azure/vm#az_vm_list_ip_addresses) 命令查看分配到 IP 配置的公共 IP 地址。 以下示例显示分配到资源组 *myResourceGroup* 中现有 VM *myVM* 的 IP 地址。
 
    ```azurecli-interactive
    az vm list-ip-addresses --name myVM --resource-group myResourceGroup --out table

@@ -1,20 +1,20 @@
 ---
 title: 如何通过 Node.js 使用 Azure 队列存储 - Azure 存储
 description: 了解如何使用 Azure 队列存储创建和删除队列。 学习使用 Node.js 插入、获取和删除消息。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.reviewer: dineshm
 ms.date: 12/21/2020
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: seo-javascript-september2019, devx-track-js
-ms.openlocfilehash: 12ae05e10cdf0fa9a5f0725acaa1784eedc3612c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 161000f2860a1153424a628a2b303f3717f828da
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97803674"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275934"
 ---
 # <a name="how-to-use-azure-queue-storage-from-nodejs"></a>如何通过 Node.js 使用 Azure 队列存储
 

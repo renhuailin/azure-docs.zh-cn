@@ -3,12 +3,12 @@ title: 检查注册表运行状况
 description: 了解如何运行快速诊断命令，以便确定使用 Azure 容器注册表时常见的问题，包括本地 Docker 配置和连接到注册表的问题
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: f27a99818260553cbd7ba26158db0064c145a21f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fec05efe67f5c502f36ee90eec57ba283b15a4a0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88245377"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107761738"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>检查 Azure 容器注册表的运行状况
 
@@ -89,4 +89,4 @@ Fetch access token for registry 'myregistry.azurecr.io' : OK
 
 <!-- LINKS - internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-check-health]: /cli/azure/acr#az-acr-check-health
+[az-acr-check-health]: /cli/azure/acr#az_acr_check_health

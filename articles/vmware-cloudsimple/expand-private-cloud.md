@@ -1,19 +1,19 @@
 ---
 title: 扩展 Azure VMware Solution by CloudSimple 私有云
 description: 介绍如何扩展现有的 CloudSimple 私有云，以增加现有群集或新群集的容量
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 06/06/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c469ea3f104e71eb80010d4a5cd421eab6184fcf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 550d1958d3260956809b464a07653e90a7c632f6
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97895849"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108177757"
 ---
 # <a name="expand-a-cloudsimple-private-cloud"></a>扩展 CloudSimple 私有云
 

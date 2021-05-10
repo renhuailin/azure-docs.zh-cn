@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 0c9102f8ca724e431bb478945c5f4ba0369643d6
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: cb0ac41d469ad9a7670ce4b1bae23b315a17dc38
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714824"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871044"
 ---
 # <a name="create-and-manage-projects"></a>创建和管理项目
 
@@ -46,13 +46,9 @@ Azure Migrate 经典版将于 2024 年 2 月停用。 2024 年 2 月之后，Azu
 5. 在“创建项目”中，选择 Azure 订阅和资源组。 如果没有资源组，请创建一个资源组。
 6. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的地理位置。
     - 地理位置仅用于存储从本地服务器中收集的元数据。 可为迁移选择任一目标区域。 
-    - 查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。 
+    - 查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
 
-
-    > [!Note]
-    > 使用“高级”配置部分，创建具有专用终结点连接的 Azure Migrate 项目。 [了解详细信息](how-to-use-azure-migrate-with-private-endpoints.md#create-a-project-with-private-endpoint-connectivity) 
-
-7. 选择“创建”。
+8. 选择“创建”  。
 
      :::image type="content" source="./media/create-manage-projects/project-details.png" alt-text="输入项目设置的页面":::
 

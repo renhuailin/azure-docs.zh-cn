@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/28/2021
+ms.date: 04/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 8ddc02075d2cdeba4a4fa83a2475ec20c3f18d6e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e5f7db6b360769b7a3c2e3ffdafe66f94c2582aa
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103418073"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108178297"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>有关 Microsoft Authenticator 应用的常见问题解答 (FAQ)
 
@@ -26,6 +26,30 @@ ms.locfileid: "103418073"
 Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使用 Azure AD 多重身份验证时使用该应用。 Microsoft Authenticator 应用可用于 [Android](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator) 和 [iOS](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458)。
 
 ## <a name="frequently-asked-questions"></a>常见问题
+
+### <a name="permission-to-access-your-location"></a>位置访问权限
+
+问：我收到一个提示，要求我授予该应用程序访问我所在位置的权限。 为何会看到此信息？
+
+答：如果你的 IT 管理员创建了一个策略，该策略要求你在允许访问特定资源之前共享你的 GPS 位置，你将会看到 Microsoft Authenticator 要求访问你所在位置的提示。 你需要每小时共享你的位置一次，以确保仍处于允许访问资源的国家/地区。
+
+在 iOS 上，Microsoft 建议允许应用程序始终访问位置。 按照 iOS 提示授予该权限。 下面是每个权限级别所代表的含义：
+
+- 使用应用程序时允许：如果选择此选项，系统将提示你选择其他两个选项。
+- 始终允许（推荐）：如果你仍在访问受保护的资源，在接下来的 24 小时内，设备将每小时自动共享一次你的位置，因此你无需拿出手机并批准每小时的共享请求。
+- 仅在使用时保留：如果你仍在访问受保护的资源，则每隔一小时需要拿出手机手动批准改请求。
+- 允许一次：一小时内，如果你仍在访问资源，或下次尝试访问资源时，需要再次授予权限。 你将需要转到“设置”并手动启用权限。 
+- 不允许：如果选择此选项，系统会阻止你访问该资源。 如果改变主意，你需要转到“设置”并手动启用权限。
+
+在 Android 上，Microsoft 建议允许应用程序始终访问位置。 按照 Android 提示授予该权限。 下面是每个权限级别所代表的含义：
+
+- 始终允许（推荐）：如果你仍在访问受保护的资源，在接下来的 24 小时内，设备将每小时自动共享一次你的位置，因此你无需拿出手机并批准每小时的共享请求。
+- 仅在使用应用程序时允许：如果你仍在访问受保护的资源，则每隔一小时需要拿出手机手动批准改请求。
+- 拒绝且不再询问：如果选择此选项，系统会阻止你访问该资源。
+
+问：如何使用和存储我的位置信息？
+
+答：Authenticator 应用程序将收集你的 GPS 信息以确定你所在的国家/地区。 国家/地区名称和位置坐标会发送回系统，以确定是否允许你访问受保护的资源。 系统会存储并将国家/地区名称报告给你的 IT 管理员，但 Microsoft 服务器从不保存或存储你的实际坐标。
 
 ### <a name="registering-a-device"></a>注册设备
 

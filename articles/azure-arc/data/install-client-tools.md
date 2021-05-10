@@ -9,17 +9,17 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6f42f712ecca77c00020304b63f5a1b0dbd77ad0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9dcfb037c946394a157a9f81d5c09303e31cbefe
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102172314"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108323602"
 ---
 # <a name="install-client-tools-for-deploying-and-managing-azure-arc-enabled-data-services"></a>安装用于部署和管理已启用 Azure Arc 的数据服务的客户端工具
 
 > [!IMPORTANT]
-> 如果要更新到每月发布的新版本，请务必更新到最新版本的 Azure Data Studio、[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 工具、[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 以及 Azure Data Studio 的 Azure Arc 扩展。
+> 如果要更新到每月发布的新版本，请务必更新到最新版本的 Azure Data Studio、[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 工具以及适用于 Azure Data Studio 的 Azure Arc 扩展。
 
 本文档可指导你完成在客户端计算机上安装 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]、Azure Data Studio、Azure CLI (az) 和 Kubernetes CLI 工具 (kubectl) 的步骤。
 
