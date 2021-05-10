@@ -1,29 +1,29 @@
 ---
-title: 在 Azure 事件中心集成 Apache Kafka 连接，并将 Debezium 用于变更数据捕获
+title: 将 Azure 事件中心上的 Apache Kafka Connect 与 Debezium 集成以进行变更数据捕获
 description: 本文介绍如何将 Debezium 与适用于 Kafka 的 Azure 事件中心配合使用。
 ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
 ms.date: 01/06/2021
 ms.openlocfilehash: 0ad1df23e71e652f7d380ffbabb542b81954e038
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97935166"
 ---
-# <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-with-debezium-for-change-data-capture"></a>在 Azure 事件中心集成 Apache Kafka 连接支持，并将 Debezium 用于变更数据捕获
+# <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-with-debezium-for-change-data-capture"></a>将 Azure 事件中心上的 Apache Kafka Connect 支持与 Debezium 集成以进行变更数据捕获
 
 **变更数据捕获 (CDC)** 是一项技术，用来跟踪为响应创建、更新和删除操作而在数据库表中进行的行级更改。 [Debezium](https://debezium.io/) 是一个基于不同数据库中提供的变更数据捕获功能（例如，[PostgreSQL 中的逻辑解码](https://www.postgresql.org/docs/current/static/logicaldecoding-explanation.html)）构建的分布式平台。 它提供了一组 [Kafka Connect 连接器](https://debezium.io/documentation/reference/1.2/connectors/index.html)，这些连接器会深入探索数据库表中的行级更改，然后将它们转换为事件流，这些事件流随后会发送到 [Apache Kafka](https://kafka.apache.org/)。
 
 > [!WARNING]
-> 使用 Apache Kafka 连接框架以及 Debezium 平台及其连接器 **不能通过 Microsoft Azure 提供产品支持**。
+> 使用 Apache Kafka Connect 框架和 Debezium 平台及其连接器不符合通过 Microsoft Azure 获得产品支持的条件。
 >
-> Apache Kafka Connect 假设将其动态配置保存在压缩的主题中，并以其他无限制保留。 Azure 事件中心不 [会将压缩作为 broker 功能实现](event-hubs-federation-overview.md#log-projections) ，并且始终会对保留事件施加基于时间的保留限制，从 Azure 事件中心是实时事件流引擎而不是长期数据或配置存储的原则进行定位。
+> Apache Kafka Connect 假定其动态配置保存在压缩主题中，否则会对其进行无限期保留。 Azure 事件中心[不会将压缩作为中转站功能来实现](event-hubs-federation-overview.md#log-projections)，始终会对保留的事件施加基于时间的保留限制，这源于“Azure 事件中心是实时事件流式处理引擎，而不是长期数据存储或配置存储”准则。
 >
-> 尽管 Apache Kafka 项目在混合这些角色时可能很熟悉，但 Azure 相信此类信息最好在适当的数据库或配置存储中进行管理。
+> 虽然 Apache Kafka 项目可以将这些角色混合起来，但 Azure 认为，此类信息最好是在适当的数据库或配置存储中进行管理。
 >
-> 许多 Apache Kafka 连接方案都可以正常工作，但 Apache Kafka 的和 Azure 事件中心的保留模型之间的这些概念差异可能会导致某些配置无法按预期方式工作。 
+> 许多 Apache Kafka Connect 方案都可以使用，但是 Apache Kafka 和 Azure 事件中心的保留模型之间的这些概念差异可能会导致某些配置无法按预期工作。 
 
 本教程介绍了如何使用 [Azure 事件中心](./event-hubs-about.md?WT.mc_id=devto-blog-abhishgu)（适用于 Kafka）、[Azure DB for PostgreSQL](../postgresql/overview.md) 和 Debezium 在 Azure 上设置基于变更数据捕获的系统。 它将使用 [Debezium PostgreSQL 连接器](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html)将数据库修改从 PostgreSQL 流式传输到 Azure 事件中心内的 Kafka 主题。
 

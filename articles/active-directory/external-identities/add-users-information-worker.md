@@ -1,5 +1,5 @@
 ---
-title: 将 B2B 协作用户添加为信息工作者-Azure AD
+title: 将 B2B 协作用户添加为信息工作者 - Azure AD
 description: B2B 协作可让信息工作者和应用所有者将来宾用户添加到 Azure AD 以进行访问 | Microsoft Docs
 services: active-directory
 ms.service: active-directory
@@ -13,23 +13,23 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 345cbe2efb644fe2b84d4a6021ff962337e29285
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98219906"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>组织中的用户如何邀请来宾用户访问应用
 
-将来宾用户添加到 Azure AD 中的目录后，应用程序所有者可向该来宾用户发送他们想要共享的应用的直接链接。 Azure AD 管理员还可以为其 Azure AD 租户中基于库或 SAML 的应用设置自助服务管理。 这样，即使尚未将自己的来宾用户添加到目录中，应用程序所有者也可以管理这些来宾用户。 为应用配置自助服务后，应用程序所有者可以使用访问面板邀请来宾用户访问应用，或将来宾用户添加到有权访问该应用的组中。 适用于库和基于 SAML 的应用的自助服务应用管理需要管理员进行一些初始设置。下面是安装步骤的摘要 (详细说明，请参阅本页后面的 [先决条件](#prerequisites)) ：
+将来宾用户添加到 Azure AD 中的目录后，应用程序所有者可向该来宾用户发送他们想要共享的应用的直接链接。 Azure AD 管理员还可以为其 Azure AD 租户中基于库或 SAML 的应用设置自助服务管理。 这样，即使尚未将自己的来宾用户添加到目录中，应用程序所有者也可以管理这些来宾用户。 为应用配置自助服务后，应用程序所有者可以使用访问面板邀请来宾用户访问应用，或将来宾用户添加到有权访问该应用的组中。 基于库和 SAML 的应用的自助服务应用管理要求管理员完成一些初始设置。下面是设置步骤的摘要（有关更详细的说明，请参阅本页稍后提供的[先决条件](#prerequisites)）：
 
  - 为租户启用自助服务组管理
  - 创建要分配到应用的组，并将相应用户设为所有者
  - 为应用配置自助服务，并将该组分配到该应用
 
 > [!NOTE]
-> * 本文介绍如何为已添加到 Azure AD 租户中的基于库和 SAML 的应用设置自助服务管理。 您还可以 [设置自助服务 Microsoft 365 组](../enterprise-users/groups-self-service-management.md) ，以便您的用户可以管理其自己的 Microsoft 365 组的访问权限。 有关用户可以与来宾用户共享 Office 文件和应用的更多方式，请参阅 [Microsoft 365 组中的来宾访问权限](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) 以及 [共享 SharePoint 文件或文件夹](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c)。
-> * 如果用户具有 **来宾邀请者** 角色，则他们只能邀请来宾。
+> * 本文介绍如何为已添加到 Azure AD 租户中的基于库和 SAML 的应用设置自助服务管理。 你还可以[设置自助服务 Microsoft 365 组](../enterprise-users/groups-self-service-management.md)，让用户可以管理对自己的 Microsoft 365 组的访问权限。 若要了解用户与来宾用户共享 Office 文件和应用的更多方式，请参阅 [Microsoft 365 组中的来宾访问](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6)和[共享 SharePoint 文件或文件夹](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c)。
+> * 如果用户具有“来宾邀请者”角色，则他们只能邀请来宾。
 ## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>通过访问面板邀请来宾用户访问应用
 
 为应用配置自助服务后，应用程序所有者可以使用自己的访问面板邀请来宾用户访问他们想要共享的应用。 不一定需要事先将来宾用户添加到 Azure AD。 
@@ -37,15 +37,15 @@ ms.locfileid: "98219906"
 1. 转到 `https://myapps.microsoft.com`，打开访问面板。
 2. 指向该应用，选择省略号 (**...**)，然后选择“管理应用”。
  
-   ![显示 Salesforce 应用的 "管理应用程序" 子菜单的屏幕截图](media/add-users-iw/access-panel-manage-app.png)
+   ![显示 Salesforce 应用的“管理应用”子菜单的屏幕截图](media/add-users-iw/access-panel-manage-app.png)
  
-3. 在 "用户" 列表的顶部，选择 "" **+** 。
+3. 在用户列表的顶部，选择 **+** 。
    
-   ![显示用于将成员添加到应用的加号的屏幕截图](media/add-users-iw/access-panel-manage-app-add-user.png)
+   ![此屏幕截图显示了用于将成员添加到应用的加号](media/add-users-iw/access-panel-manage-app-add-user.png)
    
 4. 在“添加成员”搜索框中，键入来宾用户的电子邮件地址。 （可选）包含一条欢迎消息。
    
-   ![显示添加来宾的 "添加成员" 窗口的屏幕截图](media/add-users-iw/access-panel-invitation.png)
+   ![此屏幕截图显示了用于添加来宾的“添加成员”窗口](media/add-users-iw/access-panel-invitation.png)
    
 5. 选择“添加”，将邀请发送给来宾用户。 发送邀请后，该用户帐户将以来宾的形式自动添加到目录。
 
@@ -56,19 +56,19 @@ ms.locfileid: "98219906"
 2. 转到 `https://myapps.microsoft.com`，打开访问面板。
 3. 选择“组”应用。
    
-   ![显示访问面板中的组应用的屏幕截图](media/add-users-iw/access-panel-groups.png)
+   ![此屏幕截图显示了访问面板中的“组”应用](media/add-users-iw/access-panel-groups.png)
    
 4. 在“我拥有的组”下，选择有权访问想要共享的应用的组。
    
-   ![显示在 "我拥有的组" 下选择组的位置的屏幕截图](media/add-users-iw/access-panel-groups-i-own.png)
+   ![此屏幕截图显示了在“我拥有的组”下选择组的位置](media/add-users-iw/access-panel-groups-i-own.png)
    
-5. 在 "组成员" 列表的顶部，选择 "" **+** 。
+5. 在组成员列表的顶部，选择 **+** 。
    
-   ![显示用于将成员添加到组的加号的屏幕截图](media/add-users-iw/access-panel-groups-add-member.png)
+   ![此屏幕截图显示了用于将成员添加到组的加号](media/add-users-iw/access-panel-groups-add-member.png)
    
 6. 在“添加成员”搜索框中，键入来宾用户的电子邮件地址。 （可选）包含一条欢迎消息。
    
-   ![显示添加来宾的 "添加成员" 窗口的屏幕截图](media/add-users-iw/access-panel-invitation.png)
+   ![此屏幕截图显示了用于添加来宾的“添加成员”窗口](media/add-users-iw/access-panel-invitation.png)
    
 7. 选择“添加”，以自动向来宾用户发送邀请。 发送邀请后，该用户帐户将以来宾的形式自动添加到目录。
 
@@ -111,7 +111,7 @@ ms.locfileid: "98219906"
     > [!NOTE]
     > 对于“应将已分配的用户添加到哪个组?”设置，请选择在上一部分创建的组。
 7. 在“管理”下，选择“用户和组”，并检查创建的自助服务组是否显示在列表中。
-8. 若要将应用添加到组所有者的访问面板，请选择 "**添加用户**  >  **用户和组**"。 搜索组所有者并选择用户，单击“选择”，然后单击“分配”将该用户添加到应用。
+8. 若要将应用添加到组所有者的访问面板，请选择“添加用户” > “用户和组”。  搜索组所有者并选择用户，单击“选择”，然后单击“分配”将该用户添加到应用。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,12 +3,12 @@ title: Azure Functions 的应用设置参考
 description: 有关 Azure Functions 应用设置或环境变量的参考文档。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 6fa8e2d9fb2270d53d8c0419ac7b4d88d79f30fd
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 327f120d387a3a08f0de9db2da718d530346e545
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102425696"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773073"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
@@ -46,7 +46,7 @@ Application Insights 的连接字符串。 在以下情况下使用 `APPLICATION
 
 默认情况下，[Functions 代理](functions-proxies.md)使用快捷方式从代理直接将 API 调用发送到同一函数应用中的函数。 使用此快捷方式取代创建新的 HTTP 请求。 此设置让你能够禁用该快捷方式行为。
 
-|键|“值”|说明|
+|键|值|说明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|是|具有指向本地函数应用中函数的后端 URL 的调用不会直接发送到函数， 相反，请求会定向回函数应用的 HTTP 前端。|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|具有指向本地函数应用中函数的后端 URL 的调用会直接转发到函数。 这是默认值。 |
@@ -55,7 +55,7 @@ Application Insights 的连接字符串。 在以下情况下使用 `APPLICATION
 
 此设置控制字符 `%2F` 在路由参数插入后端 URL 时是否在路由参数中解码为斜杠。 
 
-|键|“值”|说明|
+|键|值|说明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|是|包含编码斜杠的路由参数已解码。 |
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|所有路由参数均原样传递，这是默认行为。 |
@@ -186,22 +186,24 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 |---|------------|
 |FUNCTIONS\_WORKER\_PROCESS\_COUNT|2|
 
-## <a name="python_threadpool_thread_count"></a>PYTHON\_THREADPOOL\_THREAD\_COUNT
-
-指定 Python 语言辅助角色将用于执行函数调用的最大线程数，对于 Python 版本 `3.8` 及更低版本，默认值为 `1`。 对于 Python 版本 `3.9` 及更高版本，该值设置为 `None`。 请注意，此设置不能保证在执行过程中设置的线程数。 此设置允许 Python 将线程数扩展到指定的值。 此设置仅适用于 Python 函数应用。 此外，此设置还适用于同步函数调用，而不适用于协同例程。
-
-|键|示例值|最大值|
-|---|------------|---------|
-|PYTHON\_THREADPOOL\_THREAD\_COUNT|2|32|
-
-
 ## <a name="functions_worker_runtime"></a>FUNCTIONS\_WORKER\_RUNTIME
 
-要在函数应用中加载的语言辅助角色运行时。  这将对应于应用程序中使用的语言（例如，“dotnet”）。 对于使用多种语言的函数，需要将这些函数发布到多个应用（每个应用程序都有相应的辅助角色运行时值）。  有效值为 `dotnet` (C#/F#)、`node` (JavaScript/TypeScript)、`java` (Java)、`powershell` (PowerShell) 和 `python` (Python)。
+要在函数应用中加载的语言辅助角色运行时。  此项对应于应用程序中正在使用的语言（例如，“`dotnet`”）。 从 Azure Functions 运行时版本 2.x 开始，给定函数应用只能支持一种语言。   
 
 |键|示例值|
 |---|------------|
-|FUNCTIONS\_WORKER\_RUNTIME|dotnet|
+|FUNCTIONS\_WORKER\_RUNTIME|节点|
+
+有效值：
+
+| 值 | 语言 |
+|---|---|
+| `dotnet` | [C#（类库）](functions-dotnet-class-library.md)<br/>[C#（脚本）](functions-reference-csharp.md) |
+| `dotnet-isolated` | [C#（隔离进程）](dotnet-isolated-process-guide.md) |
+| `java` | [Java](functions-reference-java.md) |
+| `node` | [JavaScript](functions-reference-node.md)<br/>[TypeScript](functions-reference-node.md#typescript) |
+| `powershell` | [PowerShell](functions-reference-powershell.md) |
+| `python` | [Python](functions-reference-python.md) |
 
 ## <a name="pip_extra_index_url"></a>PIP\_EXTRA\_INDEX\_URL
 
@@ -212,6 +214,14 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 |PIP\_EXTRA\_INDEX\_URL|http://my.custom.package.repo/simple |
 
 若要了解详细信息，请参阅 Python 开发人员参考中的[自定义依赖项](functions-reference-python.md#remote-build-with-extra-index-url)。
+
+## <a name="python_threadpool_thread_count"></a>PYTHON\_THREADPOOL\_THREAD\_COUNT
+
+指定 Python 语言辅助角色将用于执行函数调用的最大线程数，对于 Python 版本 `3.8` 及更低版本，默认值为 `1`。 对于 Python 版本 `3.9` 及更高版本，该值设置为 `None`。 请注意，此设置不能保证在执行过程中设置的线程数。 此设置允许 Python 将线程数扩展到指定的值。 此设置仅适用于 Python 函数应用。 此外，此设置还适用于同步函数调用，而不适用于协同例程。
+
+|键|示例值|最大值|
+|---|------------|---------|
+|PYTHON\_THREADPOOL\_THREAD\_COUNT|2|32|
 
 ## <a name="scale_controller_logging_enabled"></a>SCALE\_CONTROLLER\_LOGGING\_ENABLED
 
@@ -257,9 +267,17 @@ Windows 上事件驱动的缩放计划中函数应用代码和配置的文件路
 
 在部署期间使用 Azure 资源管理器创建函数应用时，请不要在模板中包括 WEBSITE_CONTENTSHARE。 此应用程序设置是在部署过程中生成的。 若要了解详细信息，请参阅[为函数应用自动执行资源部署](functions-infrastructure-as-code.md#windows)。   
 
+## <a name="website_dns_server"></a>WEBSITE\_DNS\_SERVER
+
+设置应用在解析 IP 地址时使用的 DNS 服务器。 使用某些网络功能（如 [Azure DNS 专用区域](functions-networking-options.md#azure-dns-private-zones)和[专用终结点](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network)）时，通常需要此设置。   
+
+|键|示例值|
+|---|------------|
+|WEBSITE\_DNS\_SERVER|168.63.129.16|
+
 ## <a name="website_max_dynamic_application_scale_out"></a>WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT
 
-函数应用可以横向扩展到的最大实例数。 默认值为无限制。
+应用可以横向扩展到的最大实例数。 默认值为无限制。
 
 > [!IMPORTANT]
 > 此设置处于预览状态。  添加了一个[函数应用横向扩展上限属性](./event-driven-scaling.md#limit-scale-out)，建议使用此方法限制横向扩展。
@@ -297,6 +315,14 @@ _仅限 Windows_。
 |WEBSITE\_TIME\_ZONE|Linux|America/New_York|
 
 [!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
+
+## <a name="website_vnet_route_all"></a>WEBSITE\_VNET\_ROUTE\_ALL
+
+指示是否通过虚拟网络路由应用的所有出站流量。 设置值 `1` 指示所有流量都通过虚拟网络进行路由。 使用[区域虚拟网络集成](functions-networking-options.md#regional-virtual-network-integration)功能时，需要使用此设置。 [使用虚拟网络 NAT 网关定义静态出站 IP 地址](functions-how-to-use-nat-gateway.md)时，也可以使用此设置。 
+
+|键|示例值|
+|---|------------|
+|WEBSITE\_VNET\_ROUTE\_ALL|1|
 
 ## <a name="next-steps"></a>后续步骤
 

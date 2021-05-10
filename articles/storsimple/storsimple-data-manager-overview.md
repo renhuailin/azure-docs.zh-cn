@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure StorSimple Data Manager 概述 | Microsoft 文档
-description: 了解 StorSimple 数据管理器解决方案以及如何使用此服务编写使用 StorSimple 数据和其他 Azure 服务的应用程序。
+description: 了解 StorSimple 数据管理器解决方案，以及如何使用此服务编写使用 StorSimple 数据和其他 Azure 服务的应用程序。
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/21/2018
 ms.author: alkohli
 ms.openlocfilehash: d683f49cadb384ef59d3bae819156733691813cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88183490"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>StorSimple 数据管理器解决方案概述
@@ -47,7 +47,7 @@ StorSimple 数据管理器服务从 StorSimple 8000 系列本地设备标识云�
 
 StorSimple 数据管理器在以下 7 个区域中提供：
 
- - Southeast Asia
+ - 东南亚
  - 美国东部
  - 美国西部
  - 美国西部 2
@@ -68,9 +68,9 @@ StorSimple 数据管理器在以下 7 个区域中提供：
  - 源存储帐户（与 StorSimple 设备关联的帐户）和目标存储帐户（希望其中的数据采用本机格式）位于同一 Azure 区域中。
  - 在包含 StorSimple 存储帐户的区域中使用数据管理器和作业定义。 如果不可行，请在最近的 Azure 区域中使用数据管理器，然后在 StorSimple 存储帐户所在的同一区域中创建作业定义。 
 
-    如果你的 StorSimple 存储帐户不在支持创建作业定义的26个区域，则建议你在看到长时间延迟和潜在出口费用的情况下不要运行 StorSimple 数据管理器。
+    如果 StorSimple 存储帐户不在支持创建作业定义的 26 个区域中，建议不要运行 StorSimple 数据管理器，因为这样可能会产生较长的延迟和潜在的流出费用。
     
-Microsoft 努力确保 Azure 服务在所有区域始终可用。 但是，在特定区域中的短时间内可能会发生计划外服务中断。 在这种情况下，可以在不受中断影响的区域中引入数据管理器和作业定义，并运行转换作业。 在这种情况下，你可能会遇到一些额外的延迟，但这可能是在发生区域性服务中断的罕见情况下的恢复策略。
+Microsoft 致力于确保 Azure 服务在所有区域始终可用。 但是，某些区域可能会在短时间内发生计划外服务中断。 在这种情况下，可以在不受中断影响的区域中调出数据管理器和作业定义，然后运行转换作业。 在这种情况下，你可能会遇到一些额外的延迟，但这是在罕见的区域服务中断事件中的恢复策略。
 
 ## <a name="security-considerations"></a>安全注意事项
 
@@ -98,4 +98,4 @@ StorSimple 数据管理器不收集，也不显示任何个人信息。 有关�
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 STORSIMPLE 数据管理器 UI 转换数据](storsimple-data-manager-ui.md)。
+[使用 StorSimple Data Manager UI 转换数据](storsimple-data-manager-ui.md)。

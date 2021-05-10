@@ -8,10 +8,10 @@ ms.date: 07/15/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 383b5bb5c7295fe54efda883e47b9b2338286de5
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98624719"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>应用服务环境的可用性区域支持
@@ -34,7 +34,7 @@ ms.locfileid: "98624719"
 - 美国中部
 - 美国东部
 - 美国东部 2
-- 美国东部 2 (EUAP) 
+- 美国东部 2 (EUAP)
 - 法国中部 
 - 日本东部
 - 北欧
@@ -49,9 +49,9 @@ ms.locfileid: "98624719"
 
 必须使用 ARM 模板创建区域性 ILB ASE。 通过 ARM 模板创建区域性 ILB ASE 后，可以通过 Azure 门户和 CLI 查看它以及与它进行交互。  仅在初次创建区域性 ILB ASE 时才需要使用 ARM 模板。
 
-ARM 模板中所需的唯一更改是指定一个区域性 ILB ASE。 " _*_区域_*_ " 属性应设置为 "1"、"2" 或 "3" 的值，具体取决于 ILB ASE 应固定到的逻辑可用性区域。
+在 ARM 模板中指定区域性 ILB ASE 时需要进行的唯一更改是新的 zones 属性。 zones 属性应当设置为值“1”、“2”或“3”，具体取决于应将 ILB ASE 固定到其中的逻辑可用性区域。
 
-下面的示例 ARM 模板代码段显示了新 _*_区域_*_ 属性，该属性指定应将 ILB ASE 固定到区域2。
+下面的示例 ARM 模板代码片段显示了新的 zones 属性，该属性指定应将 ILB ASE 固定到区域 2。
 
 ```
    "resources": [
@@ -87,8 +87,8 @@ ARM 模板中所需的唯一更改是指定一个区域性 ILB ASE。 " _*_区�
 
 客户可执行此前在“如何在可用性区域中部署应用服务环境”部分所述的步骤，确保单一的区域数据驻留。 根据这些步骤配置应用服务环境后，在可用性区域中部署的应用服务环境将满足区域数据驻留要求，包括在 [Azure 信任中心](https://azuredatacentermap.azurewebsites.net/)指定的那些要求。
 
-客户可以通过执行以下步骤来验证是否已正确配置应用服务环境将数据存储在单个区域中： 
+客户可以通过以下步骤验证应用服务环境是否已正确配置为在单个区域中存储数据： 
 
-1. 使用 [资源浏览器](https://resources.azure.com)，导航到应用服务环境的 ARM 资源。  Ase 在 "_providers/Microsoft.Web/hostingEnvironments *" 下列出。
-2. 如果 ARM JSON 语法的视图中存在 *区域* 属性，并且该属性包含一个值为 "1"、"2" 或 "3" 的单值 JSON 数组，则 ASE 将 zonally 部署，客户数据将保留在同一区域中。
-2. 如果 " *区域* " 属性不存在，或者属性没有前面指定的有效区域值，则不会对 ASE 进行 zonally 部署，并且不会以独占方式将客户数据存储在同一区域中。
+1. 使用[资源管理器](https://resources.azure.com)，导航到应用服务环境的 ARM 资源。  ASE 将在“providers/Microsoft.Web/hostingEnvironments”下列出。
+2. 如果 ARM JSON 语法视图中存在 zones 属性，并且它包含一个值为“1”、“2”或“3”的单值 JSON 数组，则 ASE 会按区域部署，客户数据将保留在同一区域中。
+2. 如果 zones 属性不存在，或者该属性没有前面指定的有效区域值，则 ASE 不会按区域部署，客户数据也不会以独占方式存储在同一区域中。

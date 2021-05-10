@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.author: bwren
-ms.openlocfilehash: 1ec8c65a1babe707175eb891592694dd0524711b
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
-ms.translationtype: MT
+ms.openlocfilehash: 89264bc17180aaf47611aef73c9fd20427bce104
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123592"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772274"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure Monitor 日志管理使用情况和成本    
 
@@ -39,7 +39,7 @@ Log Analytics 的默认定价是基于引入的数据量的即用即付模型，
   
 除了即用即付模型外，Log Analytics 还具有产能预留层，与即用即付价格相比，使你能够节省多达 25% 的成本。 产能预留定价使你可以购买起价为 100 GB/天的保留。 将按即用即付费率对超出预留级别的任何使用量进行计费。 产能预留层具有 31 天的承诺期。 在承诺期内，你可以更改为更高级别的产能预留层（这将重启 31 天的承诺期），但你不能返回到即用即付或较低的产能预留层，直到承诺期结束。 产能预留层按天计费。 [详细了解](https://azure.microsoft.com/pricing/details/monitor/)有关 Log Analytics 即用即付和产能预留定价。 
 
-在所有定价层中，事件的数据大小都是根据存储在此事件 Log Analytics 中的属性的字符串表示形式进行计算（无论是从代理发送数据还是在引入过程中添加数据）。 这包括在收集数据并随后将数据存储在 Log Analytics 中时添加的任何[自定义字段](custom-fields.md)。 一些对于所有数据类型都通用的属性（包括一些 [Log Analytics 标准属性](./log-standard-columns.md)）均未包括在事件大小的计算中。 这包括 `_ResourceId` 、 `_SubscriptionId` 、 `_ItemId` 、 `_IsBillable` `_BilledSize` 和 `Type` 。 存储在 Log Analytics 中的所有其他属性均包括在事件大小的计算中。 某些数据类型完全免收数据引入费用，例如 AzureActivity、检测信号和使用情况类型。 若要确定事件是否被排除在数据引入计费之外，可使用 `_IsBillable` 属性，[如下所示](#data-volume-for-specific-events)。 使用情况以 GB（1.0E9 字节）为单位进行报告。 
+在所有定价层中，事件的数据大小都是根据存储在此事件 Log Analytics 中的属性的字符串表示形式进行计算（无论是从代理发送数据还是在引入过程中添加数据）。 这包括在收集数据并随后将数据存储在 Log Analytics 中时添加的任何[自定义字段](custom-fields.md)。 一些对于所有数据类型都通用的属性（包括一些 [Log Analytics 标准属性](./log-standard-columns.md)）均未包括在事件大小的计算中。 这包括 `_ResourceId`、`_SubscriptionId`、`_ItemId`、`_IsBillable`、`_BilledSize` 和 `Type`。 存储在 Log Analytics 中的所有其他属性均包括在事件大小的计算中。 某些数据类型完全免收数据引入费用，例如 AzureActivity、检测信号和使用情况类型。 若要确定事件是否被排除在数据引入计费之外，可使用 `_IsBillable` 属性，[如下所示](#data-volume-for-specific-events)。 使用情况以 GB（1.0E9 字节）为单位进行报告。 
 
 另请注意，某些解决方案（如 [Azure 安全中心](https://azure.microsoft.com/pricing/details/security-center/)、[Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/) 和[配置管理](https://azure.microsoft.com/pricing/details/automation/)）具有其自己的定价模型。 
 
@@ -77,9 +77,9 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
 
 ## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>查看 Azure 账单上的 Log Analytics 使用情况 
 
-Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json)中心提供了大量实用功能。 例如，使用“成本分析”功能可以查看 Azure 资源的开支。 首先，将 "资源类型" (的筛选器添加到 Log Analytics 的 microsoft.operationalinsights/工作区，并将 Log Analytics 群集的 microsoft.operationalinsights/群集添加到群集) 将允许你跟踪 Log Analytics 支出。 然后，对于“分组依据”，选择“计量类别”或“计量”。  请注意，其他服务（例如 Azure 安全中心和 Azure Sentinel）还会根据 Log Analytics 工作区资源对其使用情况进行计费。 若要查看服务名称映射，可以选择表视图而不是图表。 
+Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json)中心提供了大量实用功能。 例如，使用“成本分析”功能可以查看 Azure 资源的开支。 首先，按“资源类型”添加筛选器（对于 Log Analytics，将其添加到 microsoft.operationalinsights/workspace；对于Log Analytics 群集，将其添加到 microsoft.operationalinsights/cluster），你可以跟踪自己的 Log Analytics 支出。 然后，对于“分组依据”，选择“计量类别”或“计量”。  请注意，其他服务（例如 Azure 安全中心和 Azure Sentinel）还会根据 Log Analytics 工作区资源对其使用情况进行计费。 若要查看服务名称映射，可以选择表视图而不是图表。 
 
-通过[在 Azure 门户中下载使用情况信息](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)，可以更好地了解你的使用情况。 在下载的电子表格中，你可以查看每天每个 Azure 资源（例如 Log Analytics 工作区）的使用情况。 在此 Excel 电子表格中，可以通过 "计量类别" 列中的第一个筛选来找到 Log Analytics 工作区的使用情况，以便显示 "Log Analytics"、"Insight and Analytics" (由某些旧的定价层) 和 "Azure Monitor" (使用的 "") ，然后在 "实例 ID" 列（它是 "包含工作区" 或 "包含群集"）中添加筛选器，该筛选器包含 (群集使用 Log Analytics。 使用情况显示在“使用的数量”列中，每个条目的单位显示在“度量单位”列中。  还有更多详细信息可帮助你[了解 Microsoft Azure 账单](../../cost-management-billing/understand/review-individual-bill.md)。 
+通过[在 Azure 门户中下载使用情况信息](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)，可以更好地了解你的使用情况。 在下载的电子表格中，你可以查看每天每个 Azure 资源（例如 Log Analytics 工作区）的使用情况。 在此 Excel 电子表格中，可以首先基于“计量类别”列进行筛选以显示“Log Analytics”、“Insight and Analytics”（由某些旧定价层使用）和“Azure Monitor”（由“产能预留”定价层使用），借此查找 Log Analytics 工作区中的使用情况，然后在“实例 ID”列上添加一个筛选器：“包含工作区”或“包含群集”（后者包括 Log Analytics 群集的使用情况）。 使用情况显示在“使用的数量”列中，每个条目的单位显示在“度量单位”列中。  还有更多详细信息可帮助你[了解 Microsoft Azure 账单](../../cost-management-billing/understand/review-individual-bill.md)。 
 
 ## <a name="changing-pricing-tier"></a>更改定价层
 
@@ -127,11 +127,11 @@ Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quic
 
 ## <a name="log-analytics-and-security-center"></a>Log Analytics 和安全中心
 
-[Azure 安全中心](../../security-center/index.yml)计费与 Log Analytics 计费密切相关。 安全中心根据以下 [安全数据 (类型](/azure/azure-monitor/reference/tables/tables-category#security) 子集提供 500 MB/WindowsEvent、SecurityAlert、SecurityBaseline、SecurityBaselineSummary、SecurityDetection、SecurityEvent、windows 防火墙、MaliciousIPCommunication、) LinuxAuditLog、SysmonEvent、ProtectionStatus、UpdateSummary、、、、、、和数据更新管理类型。 如果工作区位于旧版按节点定价层中，则将合并安全中心和 Log Analytics 分配，并将其共同应用于所有可计费的引入数据。  
+[Azure 安全中心](../../security-center/index.yml)计费与 Log Analytics 计费密切相关。 当未在工作区上运行更新管理解决方案或启用解决方案目标设定时，安全中心会针对[安全数据类型](/azure/azure-monitor/reference/tables/tables-category#security)（WindowsEvent、SecurityAlert、SecurityBaseline、SecurityBaselineSummary、SecurityDetection、SecurityEvent、WindowsFirewall、MaliciousIPCommunication、LinuxAuditLog、SysmonEvent、ProtectionStatus）的一部分以及 Update 和 UpdateSummary 数据类型提供 500 MB/节点/天的分配。 如果工作区位于旧版按节点定价层中，则将合并安全中心和 Log Analytics 分配，并将其共同应用于所有可计费的引入数据。  
 
 ## <a name="change-the-data-retention-period"></a>更改数据保留期
 
-以下步骤说明如何配置日志数据在工作区中的保留期限。 工作区级别的数据保留期可以配置为30到730天 (2 年内所有工作区) ，除非他们使用旧版免费定价层。 单个数据类型的保留期可以设置为低至 4 天。 [详细了解](https://azure.microsoft.com/pricing/details/monitor/)针对更长数据保留期的定价。  若要保留超过730天的数据，请考虑使用 [Log Analytics 工作区数据导出](logs-data-export.md)。
+以下步骤说明如何配置日志数据在工作区中的保留期限。 对于所有工作区，工作区级别的数据保留期可配置为 30 到 730 天（2 年），除非其使用的是旧版免费定价层。 单个数据类型的保留期可以设置为低至 4 天。 [详细了解](https://azure.microsoft.com/pricing/details/monitor/)针对更长数据保留期的定价。  若要将数据保留 730 天以上，请考虑使用 [Log Analytics 工作区数据导出](logs-data-export.md)。
 
 ### <a name="workspace-level-default-retention"></a>工作区级别的默认保留期
 
@@ -145,7 +145,7 @@ Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quic
 
 如果保留期缩短，则在旧数据（早于新保留期设置的数据）删除之前会有几天宽限期。 
 
-**数据保留期** 页允许30、31、60、90、120、180、270、365、550和730天的保留设置。 如果需要其他设置，可以使用参数通过 [Azure 资源管理器](../samples/resource-manager-workspace.md) 进行配置 `retentionInDays` 。 如果将数据保留期设置为 30 天，则可以使用 `immediatePurgeDataOn30Days` 参数对旧数据触发“立即清除”操作（消除几天的宽限期）。 这对于合规性相关场景可能很有用，在此类场景中，必须立即删除数据。 此立即清除功能仅通过 Azure 资源管理器公开。 
+“数据保留期”页允许将保留期设置为 30、31、60、90、120、180、270、365、550 和 730 天。 如果需要其他设置，可以使用 `retentionInDays` 参数通过 [Azure 资源管理器](../samples/resource-manager-workspace.md)进行配置。 如果将数据保留期设置为 30 天，则可以使用 `immediatePurgeDataOn30Days` 参数对旧数据触发“立即清除”操作（消除几天的宽限期）。 这对于合规性相关场景可能很有用，在此类场景中，必须立即删除数据。 此立即清除功能仅通过 Azure 资源管理器公开。 
 
 保留期为 30 天的工作区实际上可能会保留 31 天的数据。 如果要求只保留 30 天的数据，请使用 Azure 资源管理器将保留期设置为 30 天，并使用 `immediatePurgeDataOn30Days` 参数。  
 
@@ -215,7 +215,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 > 每日上限无法以精确到指定的每日上限的级别停止数据收集，且可能出现某些多余的数据，尤其是在工作区接收大量数据的情况下。 请参阅[下文](#view-the-effect-of-the-daily-cap)，了解有助于研究每日上限行为的查询。 
 
 > [!WARNING]
-> 每日上限不会停止收集数据类型 WindowsEvent、SecurityAlert、SecurityBaseline、SecurityBaselineSummary、SecurityDetection、SecurityEvent、windows 防火墙、MaliciousIPCommunication、LinuxAuditLog、SysmonEvent、ProtectionStatus、Update 和 UpdateSummary，但 Azure 安全中心在2017年6月19日之前安装的工作区除外。 
+> 每日上限不会停止收集数据类型 WindowsEvent、SecurityAlert、SecurityBaseline、SecurityBaselineSummary、SecurityDetection、SecurityEvent、WindowsFirewall、MaliciousIPCommunication、LinuxAuditLog、SysmonEvent、ProtectionStatus、Update 和 UpdateSummary，但 2017 年 6 月 19 日之前已安装 Azure 安全中心的工作区除外。 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>确定要定义的每日数据限制
 
@@ -247,7 +247,7 @@ Usage
 | summarize IngestedGbBetweenDailyCapResets=sum(Quantity)/1000. by day=bin(TimeGenerated, 1d) | render areachart  
 ```
 
- (使用情况数据类型，单位为 `Quantity` MB。 ) 
+（在使用情况数据类型中，`Quantity` 的单位为 MB。）
 
 ### <a name="alert-when-daily-cap-reached"></a>达到每日上限时发出警报
 
@@ -377,7 +377,7 @@ Usage
 | where TimeGenerated > ago(32d)
 | where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
 | where IsBillable == true
-| summarize BillableDataGB = sum(Quantity) by Solution, DataType
+| summarize BillableDataGB = sum(Quantity) / 1000 by Solution, DataType
 | sort by Solution asc, DataType asc
 ```
 
@@ -486,9 +486,9 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 | Syslog                     | 更改 [syslog 配置](../agents/data-sources-syslog.md)如下： <br> - 减少收集的设施数 <br> - 仅收集必需的事件级别。 例如，不收集“信息”和“调试”级别事件  |
 | AzureDiagnostics           | 更改[资源日志集合](../essentials/diagnostic-settings.md#create-in-azure-portal)，以便： <br> - 减少向 Log Analytics 发送日志的资源数目 <br> - 仅收集必需的日志 |
 | 不需解决方案的计算机中的解决方案数据 | 使用[解决方案目标](../insights/solution-targeting.md)，只从必需的计算机组收集数据。 |
-| Application Insights | 查看选项 [https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume](managing Application Insights data volume) |
-| [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | 使用 [AzSqlServerAudit](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit) 优化审核设置。 |
-| Azure Sentinel | 查看最近启用为其他数据卷的源的所有 [Sentinel 数据源](https://docs.microsoft.com/azure/sentinel/connect-data-sources) 。 |
+| Application Insights | 查看 [https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume](managing Application Insights data volume) 的选项 |
+| [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | 使用 [Set-AzSqlServerAudit](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit) 优化审核设置。 |
+| Azure Sentinel | 查看你最近启用的作为附加数据卷源的 [Sentinel 数据源](https://docs.microsoft.com/azure/sentinel/connect-data-sources)。 |
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>获取按节点定价层中的计费节点
 
@@ -641,7 +641,7 @@ union *
 
 - **定义警报条件** 将 Log Analytics 工作区指定为资源目标。
 - **警报条件** 指定下列项：
-   - **信号名称** 选择“自定义日志搜索”。
+   - **信号名称** 选择“自定义日志搜索”
    - 搜索对 `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` 的查询。 如果需要不同的内容 
    - 警报逻辑基于结果数，条件大于阈值 0 
    - “时间段”为 1440 分钟，并将“警报频率”设为每 1440 分钟，以便每天运行一次。
@@ -655,7 +655,7 @@ union *
 
 ## <a name="data-transfer-charges-using-log-analytics"></a>使用 Log Analytics 的数据传输费用
 
-将数据发送到 Log Analytics 可能会导致数据带宽收费，但其限制为 Log Analytics 在使用诊断设置时或与 Azure Sentinel 内置的其他连接器一起使用的虚拟机。 如 [Azure 带宽定价页](https://azure.microsoft.com/pricing/details/bandwidth/)中所述，位于两个区域内的 Azure 服务之间的数据传输按出站数据传输以正常费率计费。 入站数据传输是免费的。 但是，与 Log Analytics 数据引入的成本相比，这项费用微不足道（几个百分点）。 因此，控制 Log Analytics 的成本需要专注于[引入的数据量](#understanding-ingested-data-volume)。 
+向 Log Analytics 发送数据可能会产生数据带宽费用，但是这仅限于安装了 Log Analytics 代理的虚拟机，且在使用诊断设置或使用 Azure Sentinel 中内置的其他连接器时不适用。 如 [Azure 带宽定价页](https://azure.microsoft.com/pricing/details/bandwidth/)中所述，位于两个区域内的 Azure 服务之间的数据传输按出站数据传输以正常费率计费。 入站数据传输是免费的。 但是，与 Log Analytics 数据引入的成本相比，这项费用微不足道（几个百分点）。 因此，控制 Log Analytics 的成本需要专注于[引入的数据量](#understanding-ingested-data-volume)。 
 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>排查 Log Analytics 不再收集数据的原因

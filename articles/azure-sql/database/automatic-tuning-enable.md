@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 03/03/2021
-ms.openlocfilehash: d60810c291984e0f57df1968f69678de8179273c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 1362d8c1f15b64b9d76b28fd354cdae8919504b0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042515"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558272"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>在 Azure 门户中启用自动优化以监视查询并提高工作负载性能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -112,22 +112,22 @@ ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_I
 
 ## <a name="troubleshooting"></a>疑难解答
 
-### <a name="automated-recommendation-management-is-disabled"></a>已禁用自动建议管理
+### <a name="automated-recommendation-management-is-disabled"></a>自动建议管理已禁用
 
-如果错误消息已禁用自动建议管理，或只是由系统禁用，最常见的原因如下：
+如果出现自动建议管理已禁用或只是由系统禁用的错误消息，最常见的原因如下：
 - 查询存储未启用或
 - 对于指定的数据库，查询存储处于只读模式，或
 - 查询存储停止运行，因为它使用了分配的存储空间。
 
 可以考虑以下步骤来纠正此问题：
-- 清理查询存储，或使用 T-sql 将数据保持期修改为 "自动"。 请参阅如何为 [查询存储配置建议的保留和捕获策略](/azure/azure-sql/database/query-performance-insight-use#recommended-retention-and-capture-policy)。
-- 使用 SQL Server Management Studio (SSMS) ，然后执行以下步骤：
+- 清理查询存储，或使用 T-SQL 将数据保留期修改为“自动”。 请参阅如何[为查询存储配置建议的保留和捕获策略](./query-performance-insight-use.md#recommended-retention-and-capture-policy)。
+- 使用 SQL Server Management Studio (SSMS)，然后执行以下步骤：
   - 连接到 Azure SQL 数据库
   - 右键单击数据库
-  - 中转到 "属性"，然后单击查询存储
-  - 将操作模式更改为 Read-Write
-  - 将存储捕获模式更改为自动
-  - 将基于大小的清理模式更改为自动
+  - 转到“属性”，然后单击“查询存储”
+  - 将操作模式更改为“读写”
+  - 将存储捕获模式更改为“自动”
+  - 将基于大小的清理模式更改为“自动”
 
 ### <a name="permissions"></a>权限
 
@@ -137,7 +137,7 @@ ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_I
 
 ## <a name="configure-automatic-tuning-e-mail-notifications"></a>配置自动优化电子邮件通知
 
-若要接收有关自动优化建议的自动电子邮件通知，请参阅 [自动优化电子邮件通知](automatic-tuning-email-notifications-configure.md) 指南。
+若要接收有关自动优化建议的自动电子邮件通知，请参阅[自动优化电子邮件通知](automatic-tuning-email-notifications-configure.md)指南。
 
 ## <a name="next-steps"></a>后续步骤
 

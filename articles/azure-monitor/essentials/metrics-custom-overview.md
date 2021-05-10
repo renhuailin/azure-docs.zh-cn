@@ -7,10 +7,10 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/25/2021
 ms.openlocfilehash: c6e946d5aedb06899a44851b79581dbc518f41b0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102052307"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Monitor 中的自定义指标（预览版）
@@ -25,14 +25,14 @@ Azure Monitor 自定义指标目前为公开预览版。
 
 可以通过多种方法将自定义指标发送到 Azure Monitor：
 - 使用 Azure Application Insights SDK 检测应用程序并将自定义遥测数据发送到 Azure Monitor。 
-- 在 [Windows 或 Linux AZURE VM](../agents/azure-monitor-agent-overview.md) 上安装 Azure Monitor 代理 (预览版) ，并使用 [数据收集规则](../agents/data-collection-rule-azure-monitor-agent.md) 将性能计数器发送到 Azure Monitor 度量值。
+- 在 [Windows 或 Linux Azure VM](../agents/azure-monitor-agent-overview.md) 上安装 Azure Monitor 代理（预览版），并使用[数据收集规则](../agents/data-collection-rule-azure-monitor-agent.md)将性能计数器发送到 Azure Monitor 指标。
 - 在 [Azure VM](../essentials/collect-custom-metrics-guestos-resource-manager-vm.md)、[虚拟机规模集](../essentials/collect-custom-metrics-guestos-resource-manager-vmss.md)、[经典 VM](../essentials/collect-custom-metrics-guestos-vm-classic.md) 或[经典云服务](../essentials/collect-custom-metrics-guestos-vm-cloud-service-classic.md)上安装 Windows Azure 诊断 (WAD) 扩展，并将性能计数器发送到 Azure Monitor。 
 - 在 Azure Linux VM 上安装 [InfluxData Telegraf 代理](../essentials/collect-custom-metrics-linux-telegraf.md)，并使用 Azure Monitor 输出插件发送指标。
 - 将自定义指标[直接发送到 Azure Monitor REST API](./metrics-store-custom-rest-api.md)：`https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`。
 
 ## <a name="pricing-model-and-retention"></a>定价模型和保留期
 
-查看 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)，了解何时为自定义指标和指标查询启用计费的详细信息。 本页提供所有指标的特定价格详细信息，包括自定义指标和指标查询。 总而言之，将标准指标 (平台指标) 引入 Azure Monitor 指标存储不会产生成本，但自定义指标在输入正式上市后会产生成本。 指标 API 查询会产生成本。
+查看 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)，了解何时为自定义指标和指标查询启用计费的详细信息。 本页提供所有指标的特定价格详细信息，包括自定义指标和指标查询。 总之，将标准指标（平台指标）引入 Azure Monitor 指标存储不会产生费用，但是自定义指标在正式发布后会产生费用。 指标 API 查询会产生费用。
 
 自定义指标的保留时间[与平台指标的保留时间相同](../essentials/data-platform-metrics.md#retention-of-metrics)。 
 
@@ -78,7 +78,7 @@ Azure Monitor 自定义指标目前为公开预览版。
 “名称”是正在报告的指标的名称。 通常，该名称具有足够的自述性，可帮助识别所要测量的指标。 以测量给定 VM 上所用内存字节数的指标为例， 该指标可以使用类似于“已使用内存字节数”的名称。
 
 ### <a name="dimension-keys"></a>维度键
-维度是一个键/值对，帮助描述有关收集的指标的附加特征。 使用附加特征可以收集用于提供更深入见解的指标的详细信息。 例如，“已使用内存字节数”指标可以包含名为“进程”的维度键，用于捕获 VM 上的每个进程消耗的内存字节数。  通过使用此键，可以筛选度量值，以查看内存使用情况的最大内存量，或按内存使用情况确定前五个进程。
+维度是一个键/值对，帮助描述有关收集的指标的附加特征。 使用附加特征可以收集用于提供更深入见解的指标的详细信息。 例如，“已使用内存字节数”指标可以包含名为“进程”的维度键，用于捕获 VM 上的每个进程消耗的内存字节数。  使用此键可以筛选指标，以查看特定的进程使用了多少内存，或者识别内存用量最高的 5 个进程。
 维度是可选的，并非所有指标都可能包含维度。 一个自定义指标最多可以包含 10 个维度。
 
 ### <a name="dimension-values"></a>维度值
@@ -173,7 +173,7 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 将自定义指标提交到 Azure Monitor 之后，可以通过 Azure 门户浏览它们，以及通过 Azure Monitor REST API 查询它们。 还可以对其创建警报，以便在满足特定的条件时收到通知。
 
 > [!NOTE]
-> 你需要具有“读者”或“参与者”角色才能查看自定义指标。 请参阅 [监视读取器](../../role-based-access-control/built-in-roles.md#monitoring-reader)。 
+> 你需要具有“读者”或“参与者”角色才能查看自定义指标。 请参阅[监视读取者](../../role-based-access-control/built-in-roles.md#monitoring-reader)。 
 
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>通过 Azure 门户浏览自定义指标
 1.    转到 [Azure 门户](https://portal.azure.com)。
@@ -184,22 +184,22 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 6.    选择自定义指标。
 
 > [!NOTE]
-> 有关在 Azure 门户中查看指标的详细信息，请参阅 [Azure 指标资源管理器](./metrics-getting-started.md) 入门。
+> 有关在 Azure 门户中查看指标的详细信息，请参阅 [Azure 指标资源管理器入门](./metrics-getting-started.md)。
 
 ## <a name="supported-regions"></a>支持的区域
-在公共预览期，发布自定义指标的功能只在一部分 Azure 区域中可用。 此限制意味着，只能发布某个受支持区域中的资源的指标。 有关 Azure 区域的详细信息，请参阅 [azure 地理](https://azure.microsoft.com/global-infrastructure/geographies/) 位置。 以下终结点中使用的 Azure 区域代码只是带有空格的区域的名称，下表列出了用于自定义指标的一组受支持的 Azure 区域。 另外还列出了这些区域中的资源的指标应发布到的相应终结点：
+在公共预览期，发布自定义指标的功能只在一部分 Azure 区域中可用。 此限制意味着，只能发布某个受支持区域中的资源的指标。 有关 Azure 区域的详细信息，请参阅 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)。 以下终结点中使用的 Azure 区域代码只是去除了空格的区域名称。下表列出了自定义指标支持的 Azure 区域集。 另外还列出了这些区域中的资源的指标应发布到的相应终结点：
 
 |Azure 区域 |区域终结点前缀|
 |---|---|
-| 所有公有云区域 | https://<azure_region_code>。 monitoring.azure.com |
+| 所有公有云区域 | https://<azure_region_code>.monitoring.azure.com |
 | **Azure Government** | |
-| US Gov 亚利桑那州 | https： \/ /usgovarizona.monitoring.azure.us |
+| US Gov 亚利桑那州 | https:\//usgovarizona.monitoring.azure.us |
 | **中国** | |
-| 中国东部 2 | https： \/ /chinaeast2.monitoring.azure.cn |
+| 中国东部 2 | https:\//chinaeast2.monitoring.azure.cn |
 
 ## <a name="latency-and-storage-retention"></a>延迟和存储保留期
 
-添加全新指标或向指标添加新维度后，可能需要 2 到 3 分钟才能显示。 进入系统后，数据将在99% 的时间内显示不到30秒。 
+添加全新指标或向指标添加新维度后，可能需要 2 到 3 分钟才能显示。 在系统中，99% 的情况下数据应在 30 秒内显示。 
 
 如果删除指标或维度，则从系统中删除更改可能需要一周到一个月的时间。
 

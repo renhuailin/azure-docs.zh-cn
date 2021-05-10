@@ -9,15 +9,15 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
 ms.openlocfilehash: b5ae38a3dc4a9324a4141314106d67c96c06c8e6
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98955031"
 ---
 # <a name="java-code-samples-for-azure-cognitive-search"></a>Azure 认知搜索的 Java 代码示例
 
-了解演示 Azure 认知搜索解决方案的功能和工作流的 Java 代码示例。 这些示例使用 azure [**SDK For Java**](/azure/developer/java/sdk)的 [**azure 认知搜索客户端库**](/java/api/overview/azure/search-documents-readme)，你可以浏览以下链接。
+了解演示 Azure 认知搜索解决方案的功能和工作流的 Java 代码示例。 这些示例将 [Azure 认知搜索客户端库](/java/api/overview/azure/search-documents-readme)用于 [Azure SDK for Java](/azure/developer/java/sdk)，你可以通过以下链接浏览它们。
 
 | 目标 | 链接 |
 |--------|------|
@@ -28,7 +28,7 @@ ms.locfileid: "98955031"
 
 ## <a name="sdk-samples"></a>SDK 示例
 
-Azure SDK 开发团队中的代码示例演示了 API 使用。 可在 GitHub 上 [**的 azure/azure-sdk/tree/master/sdk/搜索/Azure 搜索-文档/src/示例**](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/search/azure-search-documents/src/samples) 中找到这些示例。
+Azure SDK 开发团队中的代码示例演示 API 用法。 可在 GitHub 上的 [Azure/azure-sdk-for-java/tree/master/sdk/search/azure-search-documents/src/samples](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/search/azure-search-documents/src/samples) 中找到这些示例。
 
 | 示例 | 说明 |
 |---------|-------------|
@@ -42,20 +42,20 @@ Azure SDK 开发团队中的代码示例演示了 API 使用。 可在 GitHub �
 
 ## <a name="doc-samples"></a>文档示例
 
-认知搜索团队中的代码示例演示了功能和工作流。 其中的许多示例在教程、快速入门和操作指南文章中进行了引用。 可在 GitHub 上的 [**Azure 示例/azure-**](https://github.com/Azure-Samples/azure-search-java-samples) 示例中找到这些示例。
+认知搜索团队中的代码示例演示功能和工作流。 其中许多示例引自教程、快速入门和操作指南文章。 可在 GitHub 上的 [Azure-Samples/azure-search-java-samples](https://github.com/Azure-Samples/azure-search-java-samples) 中找到这些示例。
 
-| 示例 | 文章 | 
+| 示例 | 项目 | 
 |---------|-------------|
-| [快速入门](https://github.com/Azure-Samples/azure-search-java-samples/tree/java-rest-api/quickstart) | [快速入门的源代码：在 Java 和 REST 中创建搜索索引](search-get-started-java.md)。 此示例尚未更新 Java SDK。 它调用 REST Api。 |
+| [快速入门](https://github.com/Azure-Samples/azure-search-java-samples/tree/java-rest-api/quickstart) | 用于[快速入门：使用 Java 和 REST 创建搜索索引](search-get-started-java.md)的源代码。 此示例尚未针对 Java SDK 进行更新。 它调用 REST API。 |
 
 > [!Tip]
 > 请尝试使用[示例浏览器](/samples/browse/?languages=java&products=azure-cognitive-search)来搜索 Github 中的 Microsoft 代码示例，搜索时可按产品、服务和语言进行筛选。
 
 ## <a name="other-samples"></a>其他示例
 
-以下示例也由认知搜索团队发布，但在文档中未被引用。 相关的自述文件提供了使用说明。
+以下示例也由认知搜索团队发布，但没有在文档中引用。 相关的自述文件提供了使用说明。
 
 | 示例 | 说明 |
 |---------|-------------|
-| [搜索-java-入门](https://github.com/Azure-Samples/azure-search-java-samples/tree/master/search-java-getting-started) | 使用 Java SDK 客户端库创建、加载和查询搜索索引。 此示例当前是独立的。 |
-| [search-java-indexer-demo](https://github.com/Azure-Samples/azure-search-java-samples/tree/java-rest-api/search-java-indexer-demo) | 演示使用 Java 编写的 Azure Cosmos DB 索引器。 此示例尚未更新 Java SDK。 它调用 REST Api。|
+| [search-java-getting-started](https://github.com/Azure-Samples/azure-search-java-samples/tree/master/search-java-getting-started) | 使用 Java SDK 客户端库创建、加载和查询搜索索引。 此示例目前是独立的。 |
+| [search-java-indexer-demo](https://github.com/Azure-Samples/azure-search-java-samples/tree/java-rest-api/search-java-indexer-demo) | 演示使用 Java 编写的 Azure Cosmos DB 索引器。 此示例尚未针对 Java SDK 进行更新。 它调用 REST API。|

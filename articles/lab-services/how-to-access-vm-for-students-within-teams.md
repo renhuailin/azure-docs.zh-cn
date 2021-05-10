@@ -1,20 +1,20 @@
 ---
-title: 从团队) 在 Azure 实验室中访问 VM (学生视图
-description: 了解如何通过团队在 Azure 实验室中访问 VM (学生视图) 。
+title: 从 Teams 访问 Azure 实验室中的 VM（学生视图）
+description: 了解如何从 Teams 访问 Azure 实验室中的 VM（学生视图）。
 ms.topic: article
 ms.date: 10/07/2020
 ms.openlocfilehash: 31195cc7c8b4bc0e579f8aeb9107b14229dd8877
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92218266"
 ---
-# <a name="access-a-vm-student-view-in-azure-lab-from-teams"></a>从团队) 在 Azure 实验室中访问 VM (学生视图
+# <a name="access-a-vm-student-view-in-azure-lab-from-teams"></a>从 Teams 访问 Azure 实验室中的 VM（学生视图）
 
-当在团队内创建实验室时，用户可以查看和访问由团队所有者预配的所有 Vm。 发布实验室并创建 Vm 后，用户将自动注册到实验室，并在首次登录到 Azure 实验室服务时为其分配 VM。 用户可以通过选择包含 **Azure 实验室服务** 应用的选项卡来查看和访问分配给他们的虚拟机。
+在 Teams 中创建实验室时，用户可以查看和访问团队所有者预配的所有 VM。 发布实验室并创建 VM 后，系统会自动将用户注册到实验室，并在用户首次登录 Azure 实验室服务时为其分配一个 VM。 用户可以通过选择包含“Azure 实验室服务”应用的选项卡来查看和访问分配给他们的 VM。
 
-如果实验室尚未发布，或者尚未在将其添加到团队之后触发了同步，则学生将显示类似的消息。
+如果在将他们添加到团队后实验室尚未发布或尚未触发同步，系统会向学生显示类似的消息。
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/how-to-access-vm-for-students-within-teams/not-published-lab.png" alt-text="未发布 Azure 实验室服务实验室":::
@@ -23,8 +23,8 @@ ms.locfileid: "92218266"
 
 有关详细信息，请参阅以下文章：
 
-- [在团队内使用 Azure 实验室服务概述](lab-services-within-teams-overview.md)
-- [开始使用并在团队内创建实验室](how-to-get-started-create-lab-within-teams.md)
-- [管理团队中的实验室用户列表](how-to-manage-user-lists-within-teams.md)
-- [管理团队中实验室的 VM 池](how-to-manage-vm-pool-within-teams.md)
-- [在团队内创建和管理实验室计划](how-to-create-schedules-within-teams.md)
+- [在 Teams 中使用 Azure 实验室服务概述](lab-services-within-teams-overview.md)
+- [开始在 Teams 中创建实验室](how-to-get-started-create-lab-within-teams.md)
+- [在 Teams 中管理实验室用户列表](how-to-manage-user-lists-within-teams.md)
+- [在 Teams 中管理实验室的 VM 池](how-to-manage-vm-pool-within-teams.md)
+- [在 Teams 中创建和管理实验室计划](how-to-create-schedules-within-teams.md)

@@ -1,16 +1,16 @@
 ---
-title: 性能优化-带有 Azure Data Lake Storage Gen1 的风暴
-description: 了解在优化 Azure 风暴拓扑的性能时应考虑的因素，包括排查常见问题。
+title: 性能优化 - Storm 与 Azure Data Lake Storage Gen1
+description: 了解在优化 Azure Storm 拓扑的性能时应该考虑的因素，包括常见问题的故障排除。
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: twooley
 ms.openlocfilehash: 95619c75d332ec1bf68af97fc3dddbc67b6706ed
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97725031"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Storm on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
@@ -36,7 +36,7 @@ ms.locfileid: "97725031"
 
 例如，在包含 4 个 VM 和 4 个工作进程、32 个 Spout 执行器和 32 个 Spout 任务、256 个 Bolt 执行器和 512 个 Bolt 任务的群集上，请考虑以下因素：
 
-每个监督器（一个辅助节点）有一个 Java 虚拟机 (JVM) 工作进程。 此 JVM 进程管理 4 个 Spout 线程和 64 个 Bolt 线程。 在每个线程中，任务按顺序运行。 对于前面的配置，每个 spout 线程都有一个任务，每个螺栓线程有两个任务。
+每个监督器（一个辅助节点）有一个 Java 虚拟机 (JVM) 工作进程。 此 JVM 进程管理 4 个 Spout 线程和 64 个 Bolt 线程。 在每个线程中，任务按顺序运行。 使用以上配置时，每个 Spout 线程有 1 个任务，每个 Bolt 线程有 2 个任务。
 
 在 Storm 中，这种配置涉及到多个组件，下面描述了这些组件对并行度的影响：
 * 头节点（在 Storm 中称为 Nimbus）用于提交和管理作业。 这些节点不会影响并行度。
@@ -53,9 +53,9 @@ ms.locfileid: "97725031"
 
 ### <a name="example-topology"></a>示例拓扑
 
-假设你有一个包含 D13v2 Azure VM 的8个工作节点群集。 此 VM 有8个核心，因此在八个辅助角色节点中，共有64个核心。
+假设某个群集包含 8 个工作器节点，其中有一个 D13v2 Azure VM。 此 VM 有 8 个核心，因此 8 个工作器节点总共有 64 个核心。
 
-假设我们每个内核都有8个螺栓线程。 由于有 64 个核心，总共可以配置 512 个 Bolt 执行器实例（即线程）。 在这种情况下，假设我们一开始在每个 VM 安装一个 JVM，主要使用 JVM 中的线程并发性来实现并发性。 这意味着，我们需要 (每个 Azure VM) 有八个工作线程任务，以及512个螺栓执行器。 根据此配置，风暴会尝试在辅助角色节点之间平均分配工作线程 (也称为监督器节点) ，为每个辅助角色节点提供一个 JVM。 现在，在监察员内，风暴尝试在监察员之间平均分配执行器，为每个监督器 (，每个监察员) 每个主管线程。
+假设每个核心有 8 个 Bolt 线程。 由于有 64 个核心，总共可以配置 512 个 Bolt 执行器实例（即线程）。 在这种情况下，假设我们一开始在每个 VM 安装一个 JVM，主要使用 JVM 中的线程并发性来实现并发性。 这意味着，我们需要 8 个工作线程任务（每个 Azure VM 一个）和 512 个 Bolt 执行程序。 在这种配置下，Storm 会尝试在工作器节点（也称为主管节点）之间均匀分配工作线程，为每个工作器节点提供 1 个 JVM。 现在，在监督器中，Storm 会尝试在监督器之间均匀分配执行器，为每个监督器（即 JVM）提供 8 个线程。
 
 ## <a name="tune-additional-parameters"></a>优化其他参数
 创建基本拓扑后，可以考虑是否要调整以下任何参数：
@@ -79,7 +79,7 @@ ms.locfileid: "97725031"
   一种不错的计算方式是评估每个元组的大小。 然后算出一个 Spout 线程具有的内存量。 将分配给线程的总内存量除以此值，即可得出最大 Spout 挂起时间参数的上限。
 
 ## <a name="tune-the-bolt"></a>优化 Bolt
-向 Data Lake Storage Gen1 写入数据时，请将大小同步策略（客户端的缓冲区）设置为 4 MB。 仅当缓冲区大小为此值时，才会执行刷新或 hsync ( # A1。 除非显式执行 hsync()，否则辅助角色 VM 上的 Data Lake Storage Gen1 驱动程序会自动执行这种缓冲。
+向 Data Lake Storage Gen1 写入数据时，请将大小同步策略（客户端的缓冲区）设置为 4 MB。 仅当缓冲区大小达到此值时，才执行刷新或 hsync()。 除非显式执行 hsync()，否则辅助角色 VM 上的 Data Lake Storage Gen1 驱动程序会自动执行这种缓冲。
 
 默认的 Data Lake Storage Gen1 Storm Bolt 提供了一个可用于优化此参数的大小同步策略参数 (fileBufferSize)。
 
@@ -89,7 +89,7 @@ ms.locfileid: "97725031"
 
 在 Storm 中，Spout 不断将数据保存到元组，直到该元组被 Bolt 显式确认。 如果元组已由 Bolt 读取但尚未确认，Spout 可能无法持久保存在 Data Lake Storage Gen1 后端。 确认元组后，可以保证 Spout 持久保存在 Bolt 中，随后可从 Bolt 读取的任何源中删除源数据。  
 
-若要在 Data Lake Storage Gen1 中获得最佳性能，可为元组数据提供 4 MB 的 Bolt 缓冲区。 然后写入到 Data Lake Storage Gen1 的后端为 1 4 MB。 成功将数据写入存储（通过调用 hflush()）后，Bolt 可以向 Spout 确认数据。 这就是此处提供的示例 Bolt 的作用。 在发出 hflush() 调用和确认元组之前，还接受保存更大数量的元组。 但是，这会增加 Spout 需要保存的进行中元组数量，因此也会增加每个 JVM 所需的内存量。
+若要在 Data Lake Storage Gen1 中获得最佳性能，可为元组数据提供 4 MB 的 Bolt 缓冲区。 然后以一个 4 MB 写入的方式将数据写入 Data Lake Storage Gen1 后端。 成功将数据写入存储（通过调用 hflush()）后，Bolt 可以向 Spout 确认数据。 这就是此处提供的示例 Bolt 的作用。 在发出 hflush() 调用和确认元组之前，还接受保存更大数量的元组。 但是，这会增加 Spout 需要保存的进行中元组数量，因此也会增加每个 JVM 所需的内存量。
 
 > [!NOTE]
 > 出于其他与性能无关的原因，应用程序可能要求更频繁地确认元组（以小于 4 MB 的数据大小）。 但是，这可能会影响存储后端的 I/O 吞吐量。 应该针对 Bolt 的 I/O 性能认真权衡这种利弊。
@@ -98,7 +98,7 @@ ms.locfileid: "97725031"
 * 减少 Bolt 数量，从而减少要填充的缓冲区。
 * 使用基于时间或基于计数的策略，每隔 x 次刷新或每隔 y 毫秒触发 hflush() 一次，并确认到目前为止累积的元组。
 
-在这种情况下，吞吐量较低，但事件速率较低，最大吞吐量并不是最大的目标。 采取上述这些缓解措施可以减少元组流过存储所花费的总时间。 如果即使事件速率较低也想要维持一个实时管道，这些做法可能会有作用。 另请注意，如果元组传入速率较低，应调整 topology.message.timeout_secs 参数，使元组在缓冲或处理期间不会超时。
+在这种情况下，吞吐量会降低，但在事件速率较慢的情况下，最大吞吐量不再是最主要的目标。 采取上述这些缓解措施可以减少元组流过存储所花费的总时间。 如果即使事件速率较低也想要维持一个实时管道，这些做法可能会有作用。 另请注意，如果元组传入速率较低，应调整 topology.message.timeout_secs 参数，使元组在缓冲或处理期间不会超时。
 
 ## <a name="monitor-your-topology-in-storm"></a>在 Storm 中监视拓扑  
 运行拓扑时，可在 Storm 用户界面中对它进行监视。 下面是要查看的主要参数：
@@ -126,10 +126,10 @@ ms.locfileid: "97725031"
 
 若要查看是否受到限制，请在客户端上启用调试日志记录：
 
-1. 在 **Ambari**  >  **风暴**  >  **Config**  >  **Advanced 风暴-log4j** 中，将 **&lt; root level = "info" &gt;** 改为 **&lt; root level = "debug" &gt;**。 重新启动所有节点/服务使配置生效。
+1. 在“Ambari” > “Storm” > “配置” > “高级 storm-worker-log4j”中，将 **&lt;root level="info"&gt;** 更改为 **&lt;root level=”debug”&gt;** 。    重新启动所有节点/服务使配置生效。
 2. 监视工作器节点上的 Storm 拓扑日志（在 /var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log 下面），确定是否发生 Data Lake Storage Gen1 限制异常。
 
 ## <a name="next-steps"></a>后续步骤
-有关风暴的其他性能调整，请参阅 [此博客](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)。
+有关 Storm 的其他性能优化方法，请参阅这篇[博客](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)。
 
 有关可运行的其他示例，请参阅 [GitHub 上的这篇文章](https://github.com/hdinsight/storm-performance-automation)。

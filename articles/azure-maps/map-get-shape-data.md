@@ -1,6 +1,6 @@
 ---
-title: 从地图上的形状获取数据 |Microsoft Azure 映射
-description: 本文介绍如何使用 Microsoft Azure map Web SDK 获取地图上绘制的形状数据。
+title: 从地图上的形状获取数据 | Microsoft Azure Maps
+description: 本文介如何使用 Microsoft Azure Maps Web SDK 获取在地图上绘制的形状数据。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/04/2019
@@ -10,20 +10,20 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: ddb8009e544ede82d1c56d112950ff247a87380c
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92890694"
 ---
 # <a name="get-shape-data"></a>获取形状数据
 
-本文介绍如何获取在地图上绘制的形状的数据。 我们在 " [绘图管理器](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#getsource--)" 中使用了 **drawingManager. GetSource ( # B1** 函数。 当您想要提取绘制形状的 geojson 数据并将其用于其他位置时，有多种方案。  
+本文介绍如何获取在地图上绘制的形状数据。 我们在[绘图管理器](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#getsource--)中使用 drawingManager.getSource() 函数。 当你想提取绘制形状的 geojson 数据并在其他地方使用时，可以使用多种方案。  
 
 
-## <a name="get-data-from-drawn-shape"></a>从绘制的形状获取数据
+## <a name="get-data-from-drawn-shape"></a>从绘制形状获取数据
 
-下面的函数获取绘制的形状的源数据，并将其输出到屏幕上。 
+以下函数获取绘制形状的源数据，并将其输出到屏幕上。 
 
 ```javascript
 function getDrawnShapes() {
@@ -33,11 +33,11 @@ function getDrawnShapes() {
 }
 ```
 
-下面是完整的运行代码示例，可在其中绘制用于测试功能的形状：
+下面是完整的运行代码示例，你可以在其中绘制形状以测试功能：
 
 <br/>
 
-<iframe height="686" title="获取形状数据" src="//codepen.io/azuremaps/embed/xxKgBVz/?height=265&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>请参阅 CodePen 上的 "通过 Azure Maps () <a href='https://codepen.io/azuremaps/pen/xxKgBVz/'>获取形状数据</a>" <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>。
+<iframe height="686" title="获取形状数据" src="//codepen.io/azuremaps/embed/xxKgBVz/?height=265&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/xxKgBVz/'>获取形状数据</a>。
 </iframe>
 
 

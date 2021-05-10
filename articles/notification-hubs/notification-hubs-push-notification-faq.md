@@ -16,10 +16,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 11/13/2019
 ms.openlocfilehash: 0f79402956148c566bc34faa88e10895657883c2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100591746"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题
@@ -50,7 +50,7 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 对于基本和标准通知中心层，正确配置的应用程序可在 99.9% 的时间发送推送通知或执行注册管理操作。 若要详细了解 SLA，请访问[通知中心 SLA](https://azure.microsoft.com/support/legal/sla/notification-hubs/) 页。
 
 > [!NOTE]
-> 由于推送通知依赖于第三方平台通知系统（如 Apple 的推送通知服务 (APNs) 和 Google 的 Firebase 云消息传送 (FCM) ），因此不会提供这些消息的 SLA 保证。 在通知中心将批处理发送到平台通知系统（有 SLA 保证）后，平台通知系统将负责执行推送（无 SLA 保证）。
+> 由于推送通知取决于第三方平台通知系统（例如 Apple Push Notification 服务 (APNs) 和 Google Firebase Cloud Messaging (FCM)），因此这些消息的传递没有 SLA 保证。 在通知中心将批处理发送到平台通知系统（有 SLA 保证）后，平台通知系统将负责执行推送（无 SLA 保证）。
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>如何将中心升级或降级到不同层的命名空间？
 
@@ -67,7 +67,7 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 
 ### <a name="which-client-platforms-do-you-support"></a>支持哪些客户端平台？
 
-[IOS](ios-sdk-get-started.md)、 [Android](notification-hubs-android-push-notification-google-fcm-get-started.md)、 [Windows 通用](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)、 [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)、 [Android China (通过百度) ](notification-hubs-baidu-china-android-notifications-get-started.md)、Xamarin [iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md)和[Android](xamarin-notification-hubs-push-notifications-android-gcm.md)和[Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari)支持推送通知。 有关详细信息，请参阅[通知中心入门教程](ios-sdk-get-started.md)页。
+[iOS](ios-sdk-get-started.md)、[Android](notification-hubs-android-push-notification-google-fcm-get-started.md)、[Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)、[Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)、[Android China（通过百度）](notification-hubs-baidu-china-android-notifications-get-started.md)、Xamarin [iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) 和 [Android](xamarin-notification-hubs-push-notifications-android-gcm.md) 以及 [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari) 支持推送通知。 有关详细信息，请参阅[通知中心入门教程](ios-sdk-get-started.md)页。
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>是否支持短信、电子邮件或 Web 通知？
 
@@ -105,7 +105,7 @@ PNS 对于传递通知不提供任何 SLA 保证。 但是，大多数推送通�
 
 ### <a name="where-does-azure-notification-hubs-store-data"></a>Azure 通知中心将数据存储在何处？
 
-Azure 通知中心将客户注册数据存储在客户选择的区域中。 通知中心提供了元数据灾难恢复覆盖率 (通知中心名称、连接字符串和其他重要信息) 。 对于除巴西南部和东南部以外的所有区域，元数据备份托管在不同的区域中 (通常是 Azure 配对区域) 。 对于巴西南部和东南亚区域，备份存储在同一区域中，以适应这些区域的数据驻留要求。
+Azure 通知中心将客户注册数据存储在客户选择的区域中。 通知中心提供元数据灾难恢复范围（通知中心名称、连接字符串和其他重要信息）。 对于除巴西南部和东南亚以外的所有区域，元数据备份将托管在不同的区域中（通常是 Azure 配对区域）。 对于巴西南部和东南亚区域，备份将存储在同一区域中，这是为了遵循这些区域的数据驻留要求。
 
 ### <a name="what-do-i-need-to-consider-when-designing-a-solution-with-namespaces-and-notification-hubs"></a>设计包含命名空间和通知中心的解决方案时需要考虑哪些因素？
 
@@ -129,7 +129,7 @@ Azure 通知中心将客户注册数据存储在客户选择的区域中。 通�
 
 #### <a name="geo-distribution"></a>地理分布
 
-在推送通知方案中，地理分布并非总是关键所在。 各种 Pns (例如，将推送通知传递到设备的 APNs 或 FCM) 不会均匀分布。
+在推送通知方案中，地理分布并非总是关键所在。 用于向设备传递推送通知的各个 PNS（例如 APNS 或 FCM）不会均匀分布。
 
 如果有一个在全球范围内使用的应用程序，可以在全球不同的 Azure 区域使用通知中心服务在命名空间中创建中心。
 
@@ -199,7 +199,7 @@ Azure 通知中心允许在 [Azure 门户]中查看遥测数据。 可以在[通
 - [Azure 监视 REST API 演练](../azure-monitor/essentials/rest-api-walkthrough.md)
 
 > [!NOTE]
-> 成功的通知仅意味着推送通知已传递到外部 PNS (例如，适用于 iOS 的 APNs 以及适用于 Android 设备的 macOS 或 FCM）) 。 PNS 负责将通知传递到目标设备。 PNS 通常不会向第三方公开传递指标。  
+> 通知成功仅意味着推送通知已传递到外部 PNS（例如，APNs（对于 iOS 和 macOS）或 FCM（对于 Android 设备））。 PNS 负责将通知传递到目标设备。 PNS 通常不会向第三方公开传递指标。  
 
 [Azure 门户]: https://portal.azure.com
 [通知中心定价]: https://azure.microsoft.com/pricing/details/notification-hubs/
