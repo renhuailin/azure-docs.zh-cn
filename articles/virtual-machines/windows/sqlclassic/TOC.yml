@@ -29,13 +29,13 @@
         - name: 使用 Azure 存储进行备份和还原
           href: ../../../azure-sql/virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md?toc=/azure/virtual-machines/windows/sqlclassic/toc.json
     - name: 性能最佳做法
-      href: ../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md?toc=/azure/virtual-machines/windows/sqlclassic/toc.json
+      href: ../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
     - name: 应用程序模式
       href: ../../../azure-sql/virtual-machines/windows/application-patterns-development-strategies.md?toc=/azure/virtual-machines/windows/sqlclassic/toc.json
 - name: 参考
   items:
     - name: Azure PowerShell
-      href: /powershell/azure/?view=azuresmps-3.7.0
+      href: /powershell/azure/
     - name: Azure CLI
       href: /cli/azure/
     - name: T-SQL

@@ -41,7 +41,7 @@
     - name: 安全性
       items:
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/front-door-security-baseline?toc=/azure/frontdoor/TOC.json
     - name: 后端和后端池
       href: front-door-backend-pool.md
     - name: 使用 Front Door 进行缓存
@@ -49,7 +49,7 @@
     - name: DDOS 保护
       href: front-door-ddos.md
     - name: Front Door 常见问题解答
-      href: front-door-faq.md
+      href: front-door-faq.yml
     - name: 地区筛选
       href: front-door-geo-filtering.md
     - name: 运行状况探测
@@ -99,7 +99,7 @@
 - name: 参考
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/front-door/
+      href: /cli/azure/afd/
     - name: Azure PowerShell
       href: /powershell/module/az.frontdoor
     - name: REST API

@@ -12,12 +12,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 02/03/2021
-  ms.openlocfilehash: 87584400894b97f0ef0522d8f7c421100a673cba
-  ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+  ms.openlocfilehash: e27705b9b4a8120861b605cdc9cf33a16f7ad577
+  ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/04/2021
-  ms.locfileid: "99550296"
+  ms.lasthandoff: 03/24/2021
+  ms.locfileid: "105045223"
 landingContent:
 - title: 关于 Azure 安全性
   linkLists:
@@ -40,7 +40,7 @@ landingContent:
     - text: 安全服务与技术
       url: services-technologies.md
     - text: 内置安全控件
-      url: security-controls.md
+      url: ../benchmarks/index.yml
 - title: 缓解威胁
   linkLists:
   - linkListType: overview
@@ -57,7 +57,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: 网络安全
+    - text: 网络安全性
       url: network-best-practices.md
     - text: IaaS 工作负荷
       url: iaas.md

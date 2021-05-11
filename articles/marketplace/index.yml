@@ -10,19 +10,19 @@ metadata:
   author: mingshen-ms
   ms.author: mingshen
   ms.date: 09/02/2020
-  ms.openlocfilehash: 95903c1068d64545ae025fb5899a80014b8f26f2
-  ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+  ms.openlocfilehash: 2610013e7f5c2ee856a6fb1cd10fe4aebcbeb4c5
+  ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/06/2020
-  ms.locfileid: "96746380"
+  ms.lasthandoff: 04/30/2021
+  ms.locfileid: "108318974"
 landingContent:
 - title: 使用商业市场
   linkLists:
   - linkListType: get-started
     links:
     - text: 创建新帐户
-      url: ./partner-center-portal/create-account.md
+      url: create-account.md
     - text: 确定发布选项
       url: ./determine-your-listing-type.md
     - text: 策略和条款
@@ -31,6 +31,8 @@ landingContent:
       url: ./marketplace-faq-publisher-guide.md
     - text: Microsoft Publisher 协议
       url: https://go.microsoft.com/fwlink/?LinkID=699560
+    - text: 新变化
+      url: what-is-new.md
 - title: 常见方案和任务
   linkLists:
   - linkListType: overview
@@ -46,9 +48,9 @@ landingContent:
     - text: 来自市场产品/服务的客户线索
       url: ./partner-center-portal/commercial-marketplace-get-customer-leads.md
     - text: 商业市场中的联合销售选项
-      url: commercial-marketplace-co-sell.md
+      url: ./co-sell-configure.md
     - text: 联合销售合作伙伴参与
-      url: ./marketplace-co-sell.md
+      url: ./co-sell-overview.md
     - text: 让解决方案在 Microsoft AppSource 和 Office 内可用
       url: /office/dev/store/submit-to-appsource-via-partner-center
     - text: 参与 Azure 市场和 AppSource 社区论坛
@@ -77,17 +79,17 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: SaaS 产品/服务
+    - text: SaaS
       url: plan-saas-offer.md
-    - text: 虚拟机产品/服务
+    - text: 虚拟机
       url: ./marketplace-virtual-machines.md
-    - text: Azure 应用程序产品/服务
+    - text: Azure 应用程序
       url: ./create-new-azure-apps-offer.md
-    - text: Dynamics 365 for Customer Engagement 和 PowerApps 产品/服务
-      url: ./partner-center-portal/create-new-customer-engagement-offer.md
-    - text: Dynamics 365 Business Central 产品/服务
+    - text: 适用于客户参与和 Power Apps 的 Dynamics 365
+      url: dynamics-365-customer-engage-offer-setup.md
+    - text: Dynamics 365 Business Central
       url: ./partner-center-portal/create-new-business-central-offer.md
-    - text: Dynamics 365 for Operations 产品/服务
+    - text: Dynamics 365 for Operations
       url: ./partner-center-portal/create-new-operations-offer.md
     - text: 更多产品/服务类型
       url: ./publisher-guide-by-offer-type.md

@@ -11,12 +11,12 @@ metadata:
   manager: eliotgra
   ms.date: 03/23/2020
   ms.custom: amqp
-  ms.openlocfilehash: 391d4372e71241854c3a9920c35ce0711fe6634e
-  ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+  ms.openlocfilehash: 06950bec1cdc7e5abc08f147417df6f1da8c502e
+  ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102030658"
+  ms.lasthandoff: 04/28/2021
+  ms.locfileid: "108133540"
 landingContent:
 - title: 入门
   linkLists:
@@ -139,7 +139,7 @@ landingContent:
     - text: 使用 X.509 CA 证书进行设备身份验证
       url: iot-hub-x509ca-overview.md
     - text: 在 IoT 中心设置 X.509 安全性
-      url: iot-hub-security-x509-get-started.md
+      url: ./tutorial-x509-scripts.md
     - text: X.509 CA 证书安全性概念
       url: iot-hub-x509ca-concept.md
 - title: 将 Azure CLI 用于 IoT 中心

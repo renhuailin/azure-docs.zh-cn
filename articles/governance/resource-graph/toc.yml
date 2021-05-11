@@ -23,6 +23,9 @@
     - name: 运行自己的第一个查询 - Go
       displayName: 'package, sdk, golang'
       href: ./first-query-go.md
+    - name: 运行你的第一个查询 - Java
+      displayName: 'maven, zulu, mvn'
+      href: ./first-query-java.md
     - name: 运行第一个查询 - JavaScript
       displayName: 'library, node, arm-resourcegraph'
       href: ./first-query-javascript.md
@@ -74,7 +77,7 @@
     - name: 安全性
       items:
         - name: Azure 安全基准的安全基线
-          href: ./concepts/azure-security-benchmark-baseline.md
+          href: /security/benchmark/azure/baselines/resource-graph-security-baseline?toc=/azure/governance/resource-graph/toc.json&bc=/azure/governance/resource-graph/breadcrumb/toc.json
 - name: 操作指南
   items:
     - name: 获取资源更改
@@ -90,7 +93,7 @@
     - name: CLI 和 SDK
       items:
         - name: Azure CLI
-          href: /cli/azure/ext/resource-graph/graph
+          href: /cli/azure/graph
         - name: Azure PowerShell
           href: /powershell/module/az.resourcegraph/#resourcegraph
         - name: 用于 .NET 的 Azure SDK
@@ -113,7 +116,7 @@
           href: /rest/api/azure-resourcegraph/
         - name: OpenAPI
           href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/stable/2019-04-01'
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: /azure/templates/microsoft.resourcegraph/allversions
     - name: Resource Graph 表和资源类型
       href: ./reference/supported-tables-resources.md

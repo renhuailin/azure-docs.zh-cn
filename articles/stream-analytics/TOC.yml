@@ -39,12 +39,12 @@
     - name: 创建自定义 .NET 反序列化程序
       href: custom-deserializer.md
     - name: 创建 IoT Edge 作业
-      href: ../iot-edge/tutorial-deploy-stream-analytics.md?view=iotedge-2018-06
+      href: ../iot-edge/tutorial-deploy-stream-analytics.md
       maintainContext: true
 - name: 示例
   items:
     - name: 代码示例
-      href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
+      href: /samples/browse/?products=azure-stream-analytics
 - name: 概念
   items:
     - name: 端到端解决方案模式
@@ -63,7 +63,7 @@
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/stream-analytics-security-baseline?toc=/azure/stream-analytics/TOC.json
     - name: 作业的输入类型
       items:
         - name: 输入概述
@@ -322,7 +322,7 @@
           href: stream-analytics-machine-learning-integration-tutorial.md
         - name: 异常检测
           href: stream-analytics-machine-learning-anomaly-detection.md
-        - name: 使用 REST API
+        - name: 使用 ML REST API
           href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
     - name: 使用作业关系图进行调试
       href: stream-analytics-job-diagram-with-metrics.md
@@ -677,7 +677,7 @@
     - name: 资源管理器模板
       href: /azure/templates/microsoft.streamanalytics/allversions
     - name: Azure CLI
-      href: /cli/azure/ext/stream-analytics/stream-analytics
+      href: /cli/azure/stream-analytics
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
@@ -688,7 +688,7 @@
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 博客
-      href: 'https://azure.microsoft.com/blog/tag/azure-stream-analytics/'
+      href: 'https://techcommunity.microsoft.com/t5/analytics-on-azure/bg-p/AnalyticsonAzure'
     - name: 反馈论坛
       href: 'https://feedback.azure.com/forums/270577-azure-stream-analytics'
     - name: Microsoft Q&A 问题页面
@@ -705,5 +705,3 @@
       href: 'https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest'
     - name: 客户案例研究
       href: 'https://azure.microsoft.com/case-studies/?service=stream-analytics'
-    - name: 白皮书 - 实时事件处理
-      href: stream-analytics-real-time-event-processing-reference-architecture.md

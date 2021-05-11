@@ -85,7 +85,7 @@
     - name: 安全性
       items:
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/signalr-security-baseline?toc=/azure/azure-signalr/TOC.json
         - name: Azure Policy 的安全控件
           href: ./security-controls-policy.md
 - name: 操作指南
@@ -129,7 +129,7 @@
 - name: 参考
   items:
     - name: Azure CLI
-      href: signalr-reference-cli.md
+      href: /cli/azure/signalr
     - name: REST API
       href: 'https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md'
     - name: ASP.NET Core SignalR
@@ -151,7 +151,7 @@
       href: 'https://azure.microsoft.com/updates/'
     - name: 上市区域
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=signalr-service'
-    - name: 常见问题解答
+    - name: 常见问题
       href: signalr-resource-faq.md
     - name: SignalR 服务订阅级别限制
       href: ../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits

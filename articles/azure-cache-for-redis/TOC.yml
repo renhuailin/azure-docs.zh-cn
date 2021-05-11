@@ -19,6 +19,8 @@
       items:
         - name: ASP.NET 应用
           href: cache-web-app-howto.md
+        - name: ASP.NET Core 应用
+          href: cache-web-app-aspnet-core-howto.md
         - name: .NET Core 应用
           href: cache-dotnet-core-quickstart.md
         - name: .NET 应用
@@ -67,7 +69,7 @@
       href: cache-high-availability.md
     - name: 故障转移和修补
       href: cache-failover.md
-    - name: 最佳实践
+    - name: 最佳做法
       href: cache-best-practices.md
     - name: 安全性
       items:
@@ -77,7 +79,7 @@
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/azure-cache-for-redis-security-baseline?toc=/azure/azure-cache-for-redis/TOC.json
     - name: 缓存体系结构
       href: /azure/architecture/best-practices/caching?toc=%2fazure%2fredis-cache%2ftoc.json
 - name: 操作指南
@@ -146,7 +148,7 @@
           href: cache-management-faq.md
     - name: 监视
       items:
-        - name: 在 Azure 门户中进行监视
+        - name: 在 Azure 门户中监视
           href: cache-how-to-monitor.md
         - name: 设置异常警报
           href: cache-how-to-monitor.md#operations-and-alerts

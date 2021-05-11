@@ -13,158 +13,152 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: 55495d690511c1ebfbd81b80ad9c99d76e708146
-  ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
-  ms.translationtype: HT
-  ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/10/2021
-  ms.locfileid: "102566397"
 highlightedContent:
   items:
-  - title: Azure Key Vault 简介
-    itemType: overview
-    url: ./general/overview.md
-  - title: 服务的重要更新
-    itemType: whats-new
-    url: ./general/whats-new.md
-  - title: 身份验证
-    itemType: overview
-    url: ./general/authentication.md
-  - title: 基本概念
-    itemType: overview
-    url: ./general/basic-concepts.md
-  - title: 日志记录
-    itemType: overview
-    url: ./general/logging.md
-  - title: 限制
-    itemType: overview
-    url: ./general/overview-throttling.md
+    - title: Azure Key Vault 简介
+      itemType: overview
+      url: ./general/overview.md
+    - title: 服务的重要更新
+      itemType: whats-new
+      url: ./general/whats-new.md
+    - title: 身份验证
+      itemType: overview
+      url: ./general/authentication.md
+    - title: 基本概念
+      itemType: overview
+      url: ./general/basic-concepts.md
+    - title: 日志记录
+      itemType: overview
+      url: ./general/logging.md
+    - title: 限制
+      itemType: overview
+      url: ./general/overview-throttling.md
 conceptualContent:
   items:
-  - title: 证书
-    links:
-    - url: ./certificates/about-certificates.md
-      itemType: overview
-      text: 关于证书
-    - url: ./certificates/quick-create-portal.md
-      itemType: quickstart
-      text: 使用 Azure 门户在 Azure Key Vault 中设置和检索证书
-    - url: ./certificates/certificate-scenarios.md
-      itemType: overview
-      text: Key Vault 证书入门
-    - url: ./certificates/create-certificate-scenarios.md
-      itemType: overview
-      text: 监视和管理证书创建
-    footerLink:
-      url: ./certificates/index.yml
-      text: 查看详细信息
-  - title: 键
-    links:
-    - url: ./keys/about-keys.md
-      itemType: overview
-      text: 关于密钥
-    - url: ../security/fundamentals/encryption-atrest.md
-      itemType: overview
-      text: 数据加密
-    - url: ./keys/quick-create-portal.md
-      itemType: quickstart
-      text: 使用 Azure 门户在 Azure Key Vault 中设置和检索密钥
-    - url: ./keys/hsm-protected-keys.md
-      itemType: overview
-      text: 导入受 HSM 保护的密钥（概述）
-    footerLink:
-      url: ./keys/index.yml
-      text: 查看详细信息
-  - title: 机密
-    links:
-    - url: ./secrets/about-secrets.md
-      itemType: overview
-      text: 关于机密
-    - url: ./secrets/quick-create-portal.md
-      itemType: quickstart
-      text: 使用 Azure 门户在 Azure Key Vault 中设置和检索机密
-    - url: ./secrets/tutorial-rotation.md
-      itemType: tutorial
-      text: 为单用户资源轮换机密
-    footerLink:
-      url: ./secrets/index.yml
-      text: 查看详细信息
-  - title: 托管 HSM（预览版）
-    links:
-    - url: ./managed-hsm/overview.md
-      itemType: overview
-      text: 什么是托管 HSM？
-    - url: ./managed-hsm/best-practices.md
-      itemType: overview
-      text: 最佳做法
-    - url: ./managed-hsm/quick-create-cli.md
-      itemType: quickstart
-      text: 预配和激活托管 HSM
-    footerLink:
-      text: 查看详细信息
-      url: ./managed-hsm/index.yml
-  - title: 客户端库
-    links:
-    - url: ./general/client-libraries.md
-      itemType: reference
-      text: Azure Key Vault 的客户端库
-    - url: /dotnet/api/overview/azure/key-vault
-      itemType: reference
-      text: .NET 客户端库
-    - url: /python/api/overview/azure/key-vault-index
-      itemType: reference
-      text: Python 客户端库
-    - url: https://azure.github.io/azure-sdk-for-java/keyvault.html
-      itemType: reference
-      text: Java 客户端库
-    - url: /javascript/api/overview/azure/key-vault-index
-      itemType: reference
-      text: Node.js 客户端库
-  - title: 将 Key Vault 与存储配合使用
-    links:
-    - url: ./secrets/overview-storage-keys.md
-      itemType: overview
-      text: 管理存储密钥 - CLI
-    - url: ./secrets/overview-storage-keys-powershell.md
-      itemType: overview
-      text: 管理存储密钥 - PowerShell
-    - url: ./secrets/storage-keys-sas-tokens-code.md
-      itemType: overview
-      text: 在代码中提取 SAS 令牌
-  - title: 将 Key Vault 与虚拟机配合使用
-    links:
-    - url: ../virtual-machines/extensions/key-vault-windows.md
-      itemType: overview
-      text: Key Vault VM 扩展 - Windows
-    - url: ../virtual-machines/extensions/key-vault-linux.md
-      itemType: overview
-      text: Key Vault VM 扩展 - Linux
-    - url: /azure/developer/ansible/key-vault-configure-vm-security
-      itemType: overview
-      text: 在 Ansible 中将 Key Vault 与 Linux VM 配合使用
-    - url: ../virtual-machines/windows/disk-encryption-key-vault.md
-      itemType: overview
-      text: 将 Key Vault 与 Azure 磁盘加密配合使用 - Windows
-    - url: ../virtual-machines/linux/disk-encryption-key-vault.md
-      itemType: overview
-      text: 将 Key Vault 与 Azure 磁盘加密配合使用 - Linux
-    - url: ../virtual-machine-scale-sets/disk-encryption-key-vault.md
-      itemType: overview
-      text: 将 Key Vault 与虚拟机规模集配合使用
-  - title: Key Vault 集成
-    links:
-    - url: /azure/devops/pipelines/library/variable-groups?tabs=yaml#link-secrets-from-an-azure-key-vault
-      itemType: overview
-      text: Azure Dev Ops - 在 Azure Pipelines 中引用 Key Vault 机密
-    - url: ../app-service/app-service-key-vault-references.md
-      itemType: overview
-      text: 应用服务 - 在应用服务中引用 Key Vault 机密
-    - url: ../app-service/configure-ssl-certificate.md#store-in-azure-key-vault
-      itemType: overview
-      text: 应用服务 - 在 Key Vault 中维护应用服务证书
-    - url: ../aks/developer-best-practices-pod-security.md#use-azure-key-vault-with-secrets-store-csi-driver
-      itemType: overview
-      text: Azure Kubernetes 服务 - 在 AKS 中使用 Key Vault 机密、证书和密钥
-    - url: /azure/databricks/security/secrets/secret-scopes
-      itemType: overview
-      text: Azure Databricks - 使用 Key Vault 实现机密管理
+    - title: 证书
+      links:
+        - url: ./certificates/about-certificates.md
+          itemType: overview
+          text: 关于证书
+        - url: ./certificates/quick-create-portal.md
+          itemType: quickstart
+          text: 使用 Azure 门户在 Azure Key Vault 中设置和检索证书
+        - url: ./certificates/certificate-scenarios.md
+          itemType: overview
+          text: Key Vault 证书入门
+        - url: ./certificates/create-certificate-scenarios.md
+          itemType: overview
+          text: 监视和管理证书创建
+      footerLink:
+        url: ./certificates/index.yml
+        text: 查看详细信息
+    - title: 键
+      links:
+        - url: ./keys/about-keys.md
+          itemType: overview
+          text: 关于密钥
+        - url: ../security/fundamentals/encryption-atrest.md
+          itemType: overview
+          text: 数据加密
+        - url: ./keys/quick-create-portal.md
+          itemType: quickstart
+          text: 使用 Azure 门户在 Azure Key Vault 中设置和检索密钥
+        - url: ./keys/hsm-protected-keys.md
+          itemType: overview
+          text: 导入受 HSM 保护的密钥（概述）
+      footerLink:
+        url: ./keys/index.yml
+        text: 查看详细信息
+    - title: 机密
+      links:
+        - url: ./secrets/about-secrets.md
+          itemType: overview
+          text: 关于机密
+        - url: ./secrets/quick-create-portal.md
+          itemType: quickstart
+          text: 使用 Azure 门户在 Azure Key Vault 中设置和检索机密
+        - url: ./secrets/tutorial-rotation.md
+          itemType: tutorial
+          text: 为单用户资源轮换机密
+      footerLink:
+        url: ./secrets/index.yml
+        text: 查看详细信息
+    - title: 托管的 HSM
+      links:
+        - url: ./managed-hsm/overview.md
+          itemType: overview
+          text: 什么是托管 HSM？
+        - url: ./managed-hsm/best-practices.md
+          itemType: overview
+          text: 最佳做法
+        - url: ./managed-hsm/quick-create-cli.md
+          itemType: quickstart
+          text: 预配和激活托管 HSM
+      footerLink:
+        text: 查看详细信息
+        url: ./managed-hsm/index.yml
+    - title: 客户端库
+      links:
+        - url: ./general/client-libraries.md
+          itemType: reference
+          text: Azure Key Vault 的客户端库
+        - url: /dotnet/api/overview/azure/key-vault
+          itemType: reference
+          text: .NET 客户端库
+        - url: /python/api/overview/azure/key-vault-index
+          itemType: reference
+          text: Python 客户端库
+        - url: 'https://azure.github.io/azure-sdk-for-java/keyvault.html'
+          itemType: reference
+          text: Java 客户端库
+        - url: /javascript/api/overview/azure/key-vault-index
+          itemType: reference
+          text: Node.js 客户端库
+    - title: 将 Key Vault 与存储配合使用
+      links:
+        - url: ./secrets/overview-storage-keys.md
+          itemType: overview
+          text: 管理存储密钥 - CLI
+        - url: ./secrets/overview-storage-keys-powershell.md
+          itemType: overview
+          text: 管理存储密钥 - PowerShell
+        - url: ./secrets/storage-keys-sas-tokens-code.md
+          itemType: overview
+          text: 在代码中提取 SAS 令牌
+    - title: 将 Key Vault 与虚拟机配合使用
+      links:
+        - url: ../virtual-machines/extensions/key-vault-windows.md
+          itemType: overview
+          text: Key Vault VM 扩展 - Windows
+        - url: ../virtual-machines/extensions/key-vault-linux.md
+          itemType: overview
+          text: Key Vault VM 扩展 - Linux
+        - url: /azure/developer/ansible/key-vault-configure-vm-security
+          itemType: overview
+          text: 在 Ansible 中将 Key Vault 与 Linux VM 配合使用
+        - url: ../virtual-machines/windows/disk-encryption-key-vault.md
+          itemType: overview
+          text: 将 Key Vault 与 Azure 磁盘加密配合使用 - Windows
+        - url: ../virtual-machines/linux/disk-encryption-key-vault.md
+          itemType: overview
+          text: 将 Key Vault 与 Azure 磁盘加密配合使用 - Linux
+        - url: ../virtual-machine-scale-sets/disk-encryption-key-vault.md
+          itemType: overview
+          text: 将 Key Vault 与虚拟机规模集配合使用
+    - title: Key Vault 集成
+      links:
+        - url: /azure/devops/pipelines/library/variable-groups?tabs=yaml#link-secrets-from-an-azure-key-vault
+          itemType: overview
+          text: Azure Dev Ops - 在 Azure Pipelines 中引用 Key Vault 机密
+        - url: ../app-service/app-service-key-vault-references.md
+          itemType: overview
+          text: 应用服务 - 在应用服务中引用 Key Vault 机密
+        - url: ../app-service/configure-ssl-certificate.md#store-in-azure-key-vault
+          itemType: overview
+          text: 应用服务 - 在 Key Vault 中维护应用服务证书
+        - url: ../aks/developer-best-practices-pod-security.md#use-azure-key-vault-with-secrets-store-csi-driver
+          itemType: overview
+          text: Azure Kubernetes 服务 - 在 AKS 中使用 Key Vault 机密、证书和密钥
+        - url: /azure/databricks/security/secrets/secret-scopes
+          itemType: overview
+          text: Azure Databricks - 使用 Key Vault 实现机密管理

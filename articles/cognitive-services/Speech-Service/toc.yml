@@ -43,8 +43,6 @@
           items:
             - name: 什么是自定义语音识别？
               href: custom-speech-overview.md
-            - name: 在 Speech Studio 中使用音频文件测试模型
-              href: quickstarts/speech-studio-test-model.md
             - name: 准备自定义语音的数据
               href: how-to-custom-speech-test-and-train.md
             - name: 检查自定义语音数据
@@ -586,9 +584,7 @@
     - name: Speech Studio
       items:
         - name: Speech Studio 概述
-          href: 'https://speech.microsoft.com'
-        - name: 使用 Speech Studio 创建自定义命令应用
-          href: ./quickstart-custom-commands-application.md
+          href: speech-studio-overview.md
     - name: 企业就绪情况
       items:
         - name: 区域支持
