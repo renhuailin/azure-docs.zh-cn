@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 7e14dbf5aab68f5ea2d96274606306378feedad2
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: a6d98f827c39f973714441e308dcc4f2bd061c9b
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445985"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835571"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>什么是 Windows 虚拟桌面？
 
@@ -91,7 +91,7 @@ Windows 虚拟桌面是在云中运行的桌面和应用虚拟化服务。
 >[!NOTE]
 >如需 Azure 订阅，可以[注册一个月免费试用版](https://azure.microsoft.com/free/)。 如果使用免费试用版的 Azure，则应使用 Azure AD 域服务来使 Windows Server Active Directory 与 Azure Active Directory 保持同步。
 
-有关应取消阻止以使 Windows 虚拟桌面部署按预期工作的 URL 列表，请参阅[安全 URL 列表](safe-url-list.md)。
+有关应取消阻止以使 Windows 虚拟桌面部署按预期工作的 URL 列表，请参阅[必需的 URL 列表](safe-url-list.md)。
 
 Windows 虚拟桌面包括交付给用户的 Windows 桌面和应用，以及由 Microsoft 作为服务托管在 Azure 上的管理解决方案。 桌面和应用可以部署在任何 Azure 区域中的虚拟机 (VM) 上，这些 VM 的管理解决方案和数据将驻留在美国。 这可能会导致将数据传输到美国。
 

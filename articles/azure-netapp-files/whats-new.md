@@ -12,20 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/19/2021
+ms.date: 04/21/2021
 ms.author: b-juche
-ms.openlocfilehash: 3c6da2137f2db43284ce7a533ff763e9ef157f35
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: fa028d8fffd2a4097b5bf7d7326d355ae56aebd7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726639"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862806"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp 文件中的新增功能
 
 Azure NetApp 文件会定期更新。 本文总结了最新的新功能和增强功能。 
 
 ## <a name="april-2021"></a>2021 年 4 月
+
+* [SMB 连续可用性 (CA) 共享支持 FSLogix 用户配置文件容器](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)（预览版）  
+
+    [FSLogix](/fslogix/overview) 是一组可优化、启用和简化非持久性 Windows 计算环境的解决方案。 FSLogix 解决方案适用于公有云和私有云中的虚拟环境。 使用物理设备时，FSLogix 解决方案还可用于创建更多的可移植计算会话。 FSLogix 可用于提供对存储在 SMB 共享网络存储（包括 Azure NetApp 文件）上的持久性用户配置文件容器的动态访问。 为了进一步增强 FSLogix 对存储服务维护事件的复原能力，Azure NetApp 文件通过适用于用户配置文件容器的 [Azure NetApp 文件上的 SMB 连续可用性 (CA) 共享](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)扩展了对 SMB 透明故障转移的支持。 有关其他信息，请参阅 Azure NetApp 文件 [Windows 虚拟桌面解决方案](azure-netapp-files-solution-architectures.md#windows-virtual-desktop)。  
 
 * [SMB3 协议加密](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)（预览版） 
 

@@ -3,18 +3,18 @@ title: Azure EA 门户管理
 description: 本文介绍管理员可在 Azure EA 门户中完成的常见任务。
 author: bandersmsft
 ms.author: banders
-ms.date: 11/13/2020
+ms.date: 03/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 3ce13a103b605ea7b6066e8b2868fa974f4e64e5
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 787f902311437e6ca8a679299ef7a28b34cee4ab
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050560"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728403"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA 门户管理
 
@@ -36,7 +36,9 @@ ms.locfileid: "99050560"
 
 ### <a name="create-another-enterprise-administrator"></a>创建另一个企业管理员
 
-若要添加另一个企业管理员：
+根据你的情况，使用以下选项之一。
+
+#### <a name="if-youre-already-an-enterprise-administrator"></a>如果你已经是一名企业管理员
 
 1. 登录到 [Azure Enterprise 门户](https://ea.azure.com)。
 1. 转到“管理” > “注册详细信息”。 
@@ -44,7 +46,11 @@ ms.locfileid: "99050560"
 
 确保已获取用户的电子邮件地址和首选的身份验证方法，例如工作、学校帐户或 Microsoft 帐户。
 
-如果你不是企业管理员，请联系企业管理员，让他们将你添加到注册。 被添加到注册后，你会收到一封激活电子邮件。
+#### <a name="if-youre-not-an-enterprise-administrator"></a>如果你不是企业管理员
+
+如果你不是企业管理员，请联系企业管理员，让他们将你添加到注册。 企业管理员使用上述步骤将你添加为企业管理员。 被添加到注册后，你会收到一封激活电子邮件。
+
+#### <a name="if-your-enterprise-administrator-cant-help-you"></a>如果企业管理员无法为你提供帮助
 
 如果企业管理员无法为你提供帮助，请创建 [Azure Enterprise 门户支持请求](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c)。 提供以下信息：
 
@@ -418,51 +424,6 @@ Azure Enterprise 用户的身份验证类型可以从 Microsoft 帐户（MSA 或
 1. 现在，Microsoft 帐户应该没有任何可用订阅了，可将其删除。
 1. 任何已删除的帐户仍然以停用状态显示在门户的视图中，以供查阅帐单历史记录。  勾选表示只显示有效帐户的复选框，将已删除的帐户从视图中筛选掉。
 
-## <a name="account-subscription-ownership-faq"></a>帐户订阅所有权常见问题解答
-
-本文档对与帐户订阅所有权相关的常见问题做出解答。
-
-### <a name="can-i-associate-my-existing-azure-account-to-azure-ea-enrollment"></a>是否可以将现有的 Azure 帐户关联到 Azure EA 注册？
-
-是的。 你是其帐户所有者的所有 Azure 订阅都将转换为企业协议。 这包括使用每月额度的订阅，例如 Visual Studio、AzurePass、MPN 和 BizSpark 等。 转换此类订阅时，会失去每月额度。
-
-### <a name="how-many-azure-account-owners-can-you-have-per-subscription"></a>每个订阅可以有多少个 Azure 帐户所有者？
-
-每个订阅只允许有一个帐户所有者。  可以使用 [Azure 门户](https://portal.azure.com)页面左上角的订阅选项卡中“基于角色的访问”或“访问控制 (IAM)”来添加其他角色。
-
-### <a name="is-it-possible-to-transfer-subscription-ownership-to-another-account"></a>能将订阅所有权转让给其他帐户吗？
-
-可以将订阅所有权转移到其他帐户。 例如，如果帐户 A 有三个订阅，企业管理员可以将其中一个订阅转移到帐户 B，一个转移到帐户 C，一个转移到帐户 D。或者，将所有订阅转移到帐户 E。
-
-若要转移订阅：
-
-1. 在 Azure Enterprise 门户中选择“管理” > “帐户”。 
-1. 将鼠标悬停在最右侧的“帐户”，就能看到“转移所有权”（人形图标）和“转移订阅”（列表图标）选项。   这些选项仅对活动的帐户可见。
-
-### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>可以在多个部门下列出同一个 Azure 帐户所有者吗？
-
-不可以，一个帐户所有者只能与一个部门关联。 该策略帮助确保在 Azure EA 门户的 EA 注册下精确地监控和分配与其所在部门关联的成本和支出。
-
-### <a name="can-an-azure-account-owner-be-listed-as-a-security-group"></a>能将 Azure 帐户所有者作为安全组列出吗？
-
-不能，订阅所有者必须使用唯一的 Microsoft 帐户 (MSA) 或 Azure Active Directory (Azure AD) 身份验证。 如果要考虑组织内的连续性，可以考虑创建通用帐户，并使用 Azure AD 来管理订阅的访问。
-
-### <a name="can-an-individual-user-own-multiple-subscriptions"></a>一个用户可以拥有多个订阅吗？
-
-Azure 帐户所有者可以创建和管理无限多的订阅。
-
-### <a name="how-can-i-accessview-all-my-organizations-subscriptions"></a>我如何访问/查看组织的所有订阅？
-
-如今必须通过策略完成此操作；也就是说，你需要要求对于创建的每个订阅，都使用基于角色的访问将帐户添加到某个订阅角色。
-
-### <a name="where-do-i-go-to-create-a-subscription"></a>去何处创建订阅？
-
-必须由 Azure EA 门户中 EA 注册的管理员将你的帐户添加为帐户所有者角色后，你才能创建 Enterprise Azure (EA) 套餐订阅。 然后，需要登录到 Azure EA 门户，以获得创建 EA 套餐类型的订阅的权利。 我们建议使用 EA 门户的订阅选项卡中的“+ 添加订阅”链接创建第一个 EA 订阅。  但如果帐户获得了授权，就能使用 portal.azure.com 中页面左上角的订阅选项卡更轻松地创建订阅，你可以在其中一步完成订阅的创建和重命名。
-
-### <a name="who-can-create-a-subscription"></a>谁可以创建订阅？
-
-要创建 Enterprise Azure 套餐类型的订阅，你必须在 [EA 门户](https://ea.azure.com)中获得帐户所有者角色。
-
 ## <a name="azure-ea-term-glossary"></a>Azure EA 术语表
 
 - **帐户**：Azure Enterprise 门户中的一个组织单位。 它用于管理订阅和报表。
@@ -504,3 +465,4 @@ Azure 帐户所有者可以创建和管理无限多的订阅。
 
 - 了解[虚拟机预留项](ea-portal-vm-reservations.md)如何帮助节省资金。
 - 在排查 Azure EA 门户问题时如需帮助，请参阅[排查 Azure EA 门户访问问题](ea-portal-troubleshoot.md)。
+- 阅读[成本管理 + 计费常见问题解答](../cost-management-billing-faq.yml)，了解关于 EA 订阅所有权的问题。

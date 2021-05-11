@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: 快速入门 - 使用 Azure Digital Twins Explorer 示例直观显示和探索预生成方案。
 author: baanders
 ms.author: baanders
-ms.date: 9/24/2020
+ms.date: 4/27/2021
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: adafbdb903c9ba827e8ccf56890c69ee2ce4eaf5
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: ca50c0221843b4e24a6287177f36608b86a0a1a9
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107491051"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108075607"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>快速入门 - 使用 Azure Digital Twins Explorer 探索示例 Azure 数字孪生方案
 
@@ -89,7 +89,7 @@ ms.locfileid: "107491051"
 
    几秒钟后，将打开一个浏览器窗口，应用将显示在浏览器中。
 
-   :::image type="content" source="media/quickstart-azure-digital-twins-explorer/explorer-blank.png" alt-text="显示在 localhost:3000 运行的应用的浏览器窗口。此应用名为 Azure Digital Twins Explorer，其中包含查询资源管理器、模型视图、图形视图和属性资源管理器所对应的框。屏幕上尚无数据。" lightbox="media/quickstart-azure-digital-twins-explorer/explorer-blank.png":::
+   :::image type="content" source="media/quickstart-azure-digital-twins-explorer/explorer-blank.png" alt-text="显示在 localhost:3000 运行的应用的浏览器窗口。此应用名为 Azure Digital Twins Explorer，其中包含查询资源管理器、模型、图形视图和属性所对应的面板。屏幕上尚无数据。" lightbox="media/quickstart-azure-digital-twins-explorer/explorer-blank.png":::
 
 1. 选择窗口右上角的“登录”按钮（如下图所示），以将 Azure Digital Twins Explorer 配置为使用已设置的实例。
 
@@ -132,23 +132,18 @@ Azure 数字孪生解决方案的第一步是为你的环境定义词汇。 你�
 
 按照以下步骤上传模型。
 
-1. 在“模型视图”框中，选择“上传模型”图标 。
+1. 在“模型”面板中，选择“上传模型”图标 。
 
-   :::image type="content" source="media/quickstart-azure-digital-twins-explorer/upload-model.png" alt-text="在“模型视图”框中，中间图标突出显示。它显示了一个指向云的箭头。" lightbox="media/quickstart-azure-digital-twins-explorer/upload-model.png":::
+   :::image type="content" source="media/quickstart-azure-digital-twins-explorer/upload-model.png" alt-text="在“模型”面板中，中间图标突出显示。它显示了一个指向云的箭头。" lightbox="media/quickstart-azure-digital-twins-explorer/upload-model.png":::
  
-1. 在出现的“文件选择器”框中，转到下载的存储库中的 digital-twins-explorer-main/client/examples 文件夹。
+1. 在出现的“文件选择器”窗口中，转到下载的存储库中的 digital-twins-explorer-main/client/examples 文件夹。
 1. 选择“Room.json”和“Floor.json”，然后选择“确定”  。 可根据需要上传其他模型，但在本快速入门中不会用到它们。
-1. 按照弹出对话框进行操作，该对话框要求你登录到 Azure 帐户。
 
->[!NOTE]
->如果出现下面的错误消息：:::image type="content" source="media/quickstart-azure-digital-twins-explorer/error-models-popup.png" alt-text="弹出框显示“错误”：提取模型时出错:ClientAuthError:打开弹出窗口时出错。如果你使用的是 IE 或浏览器中阻止了弹出窗口，则可能会发生这种情况。”，底部带有“关闭”按钮。" border="false"::: 
-> 请尝试禁用弹出窗口阻止程序或使用其他浏览器。
-
-现在，Azure Digital Twins Explorer 会将这些模型文件上传到 Azure 数字孪生实例。 它们应在“模型视图”框中显示，并显示其友好名称和完整模型 ID。 可选择“查看模型”信息图标，查看其后面的 DTDL 代码。
+现在，Azure Digital Twins Explorer 会将这些模型文件上传到 Azure 数字孪生实例。 它们应在“模型”面板中显示，并显示其易记名称和完整模型 ID。 可选择“查看模型”信息图标，查看其后面的 DTDL 代码。
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/model-info.png" alt-text="“模型视图”框的视图，其中列出了两个模型定义，分别是楼层 (dtmi:example:Floor;1) 和房间 (dtmi:example:Room;1)。“查看模型信息”图标，其中每个模型都突出显示了一个带圆圈的字母“i”。" lightbox="media/quickstart-azure-digital-twins-explorer/model-info.png":::
+        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/model-info.png" alt-text="“模型”面板的视图，其中列出了两个模型定义，分别是楼层 (dtmi:example:Floor;1) 和房间 (dtmi:example:Room;1)。“查看模型信息”图标，其中每个模型都突出显示了一个带圆圈的字母“i”。" lightbox="media/quickstart-azure-digital-twins-explorer/model-info.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -173,15 +168,15 @@ Azure 数字孪生解决方案的第一步是为你的环境定义词汇。 你�
 
 请按照以下步骤导入图形。
 
-1. 在“图形视图”框中，选择“导入图形”图标 。
+1. 在“孪生图”面板中，选择“导入图形”图标 。
 
-   :::image type="content" source="media/quickstart-azure-digital-twins-explorer/import-graph.png" alt-text="在“图形视图”框中，一个图标突出显示。它显示了一个指向云的箭头。" lightbox="media/quickstart-azure-digital-twins-explorer/import-graph.png":::
+   :::image type="content" source="media/quickstart-azure-digital-twins-explorer/import-graph.png" alt-text="在“图形视图”面板中，一个图标突出显示。它显示了一个指向云的箭头。" lightbox="media/quickstart-azure-digital-twins-explorer/import-graph.png":::
 
-2. 在“文件选择器”框中，转到 digital-twins-explorer-main/client/examples 文件夹，然后选择 buildingScenario.xlsx 电子表格文件 。 此文件包含示例图的说明。 选择“确定”。
+2. 在“文件选择器”窗口中，转到 digital-twins-explorer-main/client/examples 文件夹，然后选择 buildingScenario.xlsx 电子表格文件 。 此文件包含示例图的说明。 选择“确定”。
 
    几秒钟后，Azure Digital Twins Explorer 将打开“导入”视图，其中显示了要加载的图形的预览。
 
-3. 若要确认图形上传，请选择“图形视图”框右上角的“保存”图标 。
+3. 若要确认图形上传，请选择“孪生图”面板右上角的“保存”图标 。
 
    :::row:::
     :::column:::
@@ -199,21 +194,23 @@ Azure 数字孪生解决方案的第一步是为你的环境定义词汇。 你�
     :::column-end:::
     :::column:::
     :::column-end:::
-    :::column:::
-    :::column-end:::
    :::row-end:::
 
-5. 该图现在已上传到 Azure Digital Twins Explorer。 若要查看该图，请在 Azure Digital Twins Explorer 窗口顶部附近的“Graph 浏览器”框中选择“运行查询”按钮 。
+5. 该图现在已上传到 Azure Digital Twins Explorer。 切换回“孪生图”面板。
+ 
+   :::image type="content" source="media/quickstart-azure-digital-twins-explorer/twin-graph-tab.png" alt-text="突出显示了“孪生图”选项卡。" lightbox="media/quickstart-azure-digital-twins-explorer/twin-graph-tab.png":::
+
+6. 若要查看该图，请在 Azure Digital Twins Explorer 窗口顶部附近的“查询资源管理器”面板中选择“运行查询”按钮 。
 
    :::image type="content" source="media/quickstart-azure-digital-twins-explorer/run-query.png" alt-text="突出显示了窗口右上角的“运行查询”按钮。" lightbox="media/quickstart-azure-digital-twins-explorer/run-query.png":::
 
-该操作将运行默认查询以选择并显示所有数字孪生。 Azure Digital Twins Explorer 将从服务中检索所有孪生和关系。 它将在“图形视图”框中绘制它们定义的图形。
+该操作将运行默认查询以选择并显示所有数字孪生。 Azure Digital Twins Explorer 将从服务中检索所有孪生和关系。 它将在“孪生图”面板中绘制它们定义的图形。
 
 ## <a name="explore-the-graph"></a>浏览图
 
 现在，你可看到已上传的示例方案图形。
 
-:::image type="content" source="media/quickstart-azure-digital-twins-explorer/graph-view-full.png" alt-text="“图形视图”框的视图，其中包含孪生图。标记为“floor1”的圆通过一个标记为“contains”的箭头连接到一个标记为“room1”的圆。标记为“floor0”的圆通过一个标记为“contains”的箭头连接到一个标记为“room0”的圆。":::
+:::image type="content" source="media/quickstart-azure-digital-twins-explorer/graph-view-full.png" alt-text="“图形视图”面板的视图，其中包含孪生图。标记为“floor1”的圆通过一个标记为“contains”的箭头连接到一个标记为“room1”的圆。标记为“floor0”的圆通过一个标记为“contains”的箭头连接到一个标记为“room0”的圆。":::
 
 这些圆（图形“节点”）表示数字孪生。 这些线条表示关系。 Floor0 孪生包含 Room0，Floor1 孪生包含 Room1   。
 
@@ -221,13 +218,13 @@ Azure 数字孪生解决方案的第一步是为你的环境定义词汇。 你�
 
 ### <a name="view-twin-properties"></a>查看孪生属性
 
-可选择一个孪生，在“属性资源管理器”框中查看其属性及其值的列表。
+可选择一个孪生，在“属性”面板中查看其属性及其值的列表。
 
 下面是房间 0 的属性：
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/properties-room0.png" alt-text="显示 Room0 的属性的“属性资源管理器”框周围运用了突出显示，其中包括 Room0 的“$dtId”字段、“温度”字段 70 和“湿度”字段 30 等等。" lightbox="media/quickstart-azure-digital-twins-explorer/properties-room0.png":::
+        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/properties-room0.png" alt-text="显示 Room0 的属性的“属性”面板周围运用了突出显示，其中包括 Room0 的“$dtId”字段、“温度”字段 70 和“湿度”字段 30 等。" lightbox="media/quickstart-azure-digital-twins-explorer/properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -239,7 +236,7 @@ Room0 的温度为 70。
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/properties-room1.png" alt-text="显示 Room1 的属性的“属性资源管理器”框周围运用了突出显示，其中包括“Room1”的 $dtId 字段、“温度”字段 80 和“湿度”字段 60 等等。" lightbox="media/quickstart-azure-digital-twins-explorer/properties-room1.png":::
+        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/properties-room1.png" alt-text="显示 Room1 的属性的“属性”面板周围运用了突出显示，其中包括 Room1 的“$dtId”字段、“温度”字段 80 和“湿度”字段 60 等。" lightbox="media/quickstart-azure-digital-twins-explorer/properties-room1.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -255,9 +252,9 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 
 在本部分中，你将运行一个查询来回答你的环境中有多少孪生的温度高于 75。
 
-若要查看答案，请在“查询资源管理器”框中运行以下查询。
+若要查看答案，请在“查询资源管理器”面板中运行以下查询。
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="TemperatureQuery":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="TemperatureQuery":::
 
 回想一下之前查看过的孪生属性，Room0 的温度为 70，Room1 的温度为 80。 因此，此处的结果中仅显示 Room1。
     
@@ -270,13 +267,17 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 
 可使用 Azure Digital Twins Explorer 来编辑图中表示的孪生的属性。 在本部分中，我们将 Room0 的温度调高到 76。
 
-首先，请选择“Room0”，然后在“属性资源管理器”框中调出其属性列表 。
+首先，重新运行以下查询以选择所有数字孪生体。 这将在“孪生图”面板中再次显示完整的图。
+
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="GetAllTwins":::
+
+选择“Room0”，在“属性”面板中调出其属性列表 。
 
 此列表中的属性是可编辑的。 选择温度值 70 来输入新值。 输入 76，然后选择“保存”图标，将温度更新为 76  。
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/new-properties-room0.png" alt-text="显示 Room0 的属性的“属性资源管理器”框。温度值为一个显示 76 的可编辑框，“保存”图标周围突出显示。" lightbox="media/quickstart-azure-digital-twins-explorer/new-properties-room0.png":::
+        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/new-properties-room0.png" alt-text="显示 Room0 的属性的“属性”面板。温度值为一个显示 76 的可编辑框，“保存”图标周围突出显示。" lightbox="media/quickstart-azure-digital-twins-explorer/new-properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -288,7 +289,7 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 
 若要验证该图是否已成功将更新内容注册为 Room0 的温度，请重新运行先前进行的查询，获取环境中温度高于 75 的所有孪生。
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="TemperatureQuery":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="TemperatureQuery":::
 
 现在，房间 0 的温度已从 70 更改为 76，因此两个孪生都应出现在结果中 。
 

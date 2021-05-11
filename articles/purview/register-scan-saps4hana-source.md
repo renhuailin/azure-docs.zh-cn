@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 7e00332eca076b55a884682240ef26ea3a4546d1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e7030d1b692777b7497ffe464a70d3a80cab9647
+ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046056"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107992352"
 ---
 # <a name="register-and-scan-a-sap-s4hana-source-preview"></a>注册并扫描 SAP S/4HANA 源（预览版）
 
@@ -35,7 +35,7 @@ SAP S/4HANA 源支持完全扫描（用于从 SAP S/4HANA 实例中提取元数�
 
     :::image type="content" source="media/register-scan-saps4hana-source/requirement.png" alt-text="先决条件" border="true":::
 
-5.  连接器使用 Java Connector (JCo) 3.0 API 从 SAP 中读取元数据。 因此，请确保可在安装了自承载集成运行时的虚拟机上使用 Java Connector。
+5.  连接器使用 [SAP Java Connector (JCo)](https://support.sap.com/en/product/connectors/jco.html) 3.0 API 从 SAP 中读取元数据。 因此，请确保可在安装了自承载集成运行时的虚拟机上使用 Java Connector。
     请确保使用适合环境的正确的 JCo 发行版。 例如，在 Microsoft Windows 计算机上，请确保 sapjco3.jar 和 sapjco3.dll 文件可用。
 
     > [!Note] 

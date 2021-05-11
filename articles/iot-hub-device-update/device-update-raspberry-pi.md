@@ -1,17 +1,17 @@
 ---
 title: 使用 Raspberry Pi 3 B + Reference Yocto Image 的 Device Update for Azure IoT Hub 教程 | Microsoft Docs
 description: 通过 Raspberry Pi 3 B+ Reference Yocto Image 开始使用 Device Update for Azure IoT Hub。
-author: valls
+author: ValOlson
 ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 143a7c411bea6a451645c860b7b5d12d2aa8d9f5
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: c330cc4e5721fab9d7336fd5b111d8cef67e170c
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121330"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070220"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>使用 Raspberry Pi 3 B + Reference Image 的 Device Update for Azure IoT Hub 教程
 
@@ -19,7 +19,7 @@ Device Update for IoT Hub 支持两种形式的更新：基于映像的更新和
 
 映像更新在设备的最终状态中提供更高级别的置信度。 通常可以更轻松地在预生产环境和生产环境之间复制映像更新的结果，因为它不会带来与包及其依赖项相同的挑战。 由于其原子性质，还可以轻松采用 A/B 故障转移模型。
 
-本教程将逐步指导你使用 Device Update for IoT Hub 完成基于映像的端到端更新。 
+本教程将逐步指导你使用 Raspberry Pi 3 B+ 板上的 Device Update for IoT Hub 完成基于映像的端到端更新。 
 
 在本教程中，将了解如何：
 > [!div class="checklist"]
@@ -35,7 +35,7 @@ Device Update for IoT Hub 支持两种形式的更新：基于映像的更新和
 
 ## <a name="download-image"></a>下载映像
 
-有三个映像作为给定的 [Device Update GitHub 版本](https://github.com/Azure/iot-hub-device-update/releases)中“资产”的一部分提供。 提供了基础映像 (adu-base-image) 和一个更新映像 (adu-update-image)，因此你可以尝试推出到不同的版本，而无需刷写设备上的 SD 卡。 为此，需要将更新映像作为导入的一部分上传到 Device Update for IoT Hub Service。
+我们在[设备更新 GitHub 发布页面](https://github.com/Azure/iot-hub-device-update/releases)上的“资产”中提供了示例图像。 swUpdate 文件是可刷写到 Raspberry Pi B3+ 板上的基础映像，.gz 文件是要通过 Device Update for IoT Hub 导入的更新。 
 
 ## <a name="flash-sd-card-with-image"></a>使用映像刷写 SD 卡
 
@@ -77,17 +77,19 @@ Device Update for Azure IoT Hub 软件受以下许可条款的约束：
    
 使用代理之前，请阅读许可条款。 安装和使用即表示你接受这些条款。 如果不同意许可条款，请不要使用 Device Update for IoT Hub 代理。
 
-## <a name="create-device-in-iot-hub-and-get-connection-string"></a>在 IoT 中心创建设备并获取连接字符串
+## <a name="create-device-or-module-in-iot-hub-and-get-connection-string"></a>在 IoT 中心创建设备或模块并获取连接字符串
 
 现在，需要将设备添加到 Azure IoT 中心。  在 Azure IoT 中心内，将为设备生成一个连接字符串。
 
 1. 在 Azure 门户中，启动 Azure IoT 中心。
 2. 创建新设备。
-3. 在页面左侧，导航到“资源管理器”>“IoT 设备”> 选择“新建”。
+3. 在页面左侧，导航到“IoT 设备”，然后选择“新建”。
 4. 在“设备 ID”下提供设备的名称 - 确保选中“自动生成密钥”复选框。
 5. 选择“保存”。
-6. 现在，你将返回到“设备”页，你创建的设备应在列表中。 选择该设备。
-7. 在“设备”视图中，选择“主连接字符串”旁边的“复制”图标。
+6. 现在，你将返回到“设备”页，你创建的设备应在列表中。 
+7. 获取设备连接字符串：
+    - 选项 1：将设备更新代理用于模块标识：从相同的“设备”页上，单击顶部的“+ 添加模块标识”。 创建名为“IoTHubDeviceUpdate”的新设备更新模块，选择适用于你的用例的其他选项，然后单击“保存”。 单击新创建的“模块”，然后在模块视图中选择“主连接字符串”旁边的“复制”图标。
+    - 选项 2：将设备更新代理用于设备标识：在设备视图中，选择“主连接字符串”旁边的“复制”图标。
 8. 将复制的字符粘贴到某个位置，以便以后在下面的步骤中使用。
    此复制的字符串为设备连接字符串。
 
@@ -110,9 +112,9 @@ Device Update for Azure IoT Hub 软件受以下许可条款的约束：
 
 ## <a name="connect-the-device-in-device-update-iot-hub"></a>在 Device Update IoT 中心中连接设备
 
-1. 在页面左侧，选择“资源管理器”下的“IoT 设备”。
+1. 在页面左侧，选择“IoT 设备”。
 2. 选择包含设备名的链接。
-3. 在页面顶部选择“设备孪生”。
+3. 如果使用 IoT 设备标识直接连接到设备更新，请在页面顶部选择“设备孪生”。 否则，选择上面创建的模块，并单击其“模块孪生”。
 4. 在设备孪生属性的“已报告”部分下，查找 Linux 内核版本。
 对于未从 Device Update 收到更新的新设备，[DeviceManagement:DeviceInformation:1.swVersion](device-update-plug-and-play.md) 值将表示设备上正在运行的固件版本。  将更新应用到设备后，Device Update 将使用 [AzureDeviceUpdateCore:ClientMetadata:4.installedUpdateId](device-update-plug-and-play.md) 属性值来表示设备上正在运行的固件版本。
 5. 基础映像文件和更新映像文件的文件名中包含版本号。

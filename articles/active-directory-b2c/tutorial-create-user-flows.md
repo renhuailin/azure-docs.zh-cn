@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/08/2021
+ms.date: 04/26/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e41c1e74dbe428ee38d4480a1587050b7f96a55f
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: fa1250189c5ba11426ac993bed8fde398ae37ea2
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226220"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001458"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中创建用户流
 
@@ -39,7 +39,7 @@ ms.locfileid: "107226220"
 
 ::: zone pivot="b2c-user-flow"
 > [!IMPORTANT]
-> 我们更改了引用用户流版本的方式。 之前，我们提供 V1（生产就绪）版本，还提供了 V1.1 和 V2（预览版）版本。 而现在，我们将用户流整合到了“建议”（下一代预览版）和“标准”（正式发布版）版本中 。 所有 V1.1 和 V2 旧预览版用户流将在 2021 年 8 月 1 日之前逐渐被弃用。 有关详细信息，请参阅 [Azure AD B2C 中的用户流版本](user-flow-versions.md)。
+> 我们更改了引用用户流版本的方式。 之前，我们提供 V1（生产就绪）版本，还提供了 V1.1 和 V2（预览版）版本。 现在，我们已将用户流合并为两个版本：“建议”用户流（具有最新功能）和“标准(旧)”用户流 。 在公有云中，所有旧的预览版用户流（V1.1 和 V2）都将在 2021 年 8 月 1 日之前逐渐弃用。 有关详细信息，请参阅 [Azure AD B2C 中的用户流版本](user-flow-versions.md)。 这些更改仅适用于 Azure 公有云。其他环境将继续使用[旧用户流版本控制](user-flow-versions-legacy.md)。 
 ::: zone-end
 
 ## <a name="prerequisites"></a>先决条件
@@ -50,9 +50,11 @@ ms.locfileid: "107226220"
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
+
 - 如果没有租户，请[创建链接到 Azure 订阅的 Azure AD B2C 租户](tutorial-create-tenant.md)。
 - 在所创建的租户中[注册应用程序](tutorial-register-applications.md)，使其能够与 Azure AD B2C 通信。
-- 完成[使用 Facebook 帐户设置注册和登录](identity-provider-facebook.md)中的步骤来配置 Facebook 应用程序。 尽管使用自定义策略不需要 Facebook 应用程序，但在本演练中，将用它来演示如何在自定义策略中实现社交登录。
+- [创建 Facebook 应用程序](identity-provider-facebook.md#create-a-facebook-application)。 跳过[使用 Facebook 帐户设置注册和登录](identity-provider-facebook.md)一文中的先决条件和重置步骤。 尽管使用自定义策略不需要 Facebook 应用程序，但在本演练中，将用它来演示如何在自定义策略中实现社交登录。
+
 ::: zone-end
 
 ::: zone pivot="b2c-user-flow"

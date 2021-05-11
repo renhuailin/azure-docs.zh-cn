@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 03/25/2021
+ms.date: 04/21/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39eec4fb6e9907b36908a87c09aceabd0dd1a678
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 8c18dd231a708030e3a454ab8708e3f0f11dbecf
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075160"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861816"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>教程：使用户能够使用 Azure Active Directory 自助式密码重置来解锁其帐户或重置密码
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 使用户能够�
 
 你需有以下资源和特权才能完成本教程：
 
-* 一个至少启用了 Azure AD Free 或试用版许可证的有效 Azure AD 租户。 在免费层中，SSPR 仅适用于 Azure AD 中的云用户。
+* 一个至少启用了 Azure AD Free 或试用版许可证的有效 Azure AD 租户。 在免费层中，SSPR 仅适用于 Azure AD 中的云用户。 免费层支持密码更改，不支持密码重置。 
     * 对于本系列的后续教程，系统需要 Azure AD Premium P1 或试用版许可证才能将本地密码写回。
     * 如果需要，[免费创建一个 Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 一个拥有“全局管理员”特权的帐户。

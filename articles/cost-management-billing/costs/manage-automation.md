@@ -3,17 +3,17 @@ title: 通过自动化功能管理 Azure 成本
 description: 本文介绍如何通过自动化功能管理 Azure 成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/08/2021
+ms.date: 03/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: f5cebffeaba1ce198be347758004068e8c03133b
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 2a39f77e3e7409d23ab7506b525f65e01082e99e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102499673"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720111"
 ---
 # <a name="manage-costs-with-automation"></a>通过自动化功能管理成本
 
@@ -47,7 +47,7 @@ Power BI 用于引入和处理大量数据。 如果你是企业协议客户，�
 
 借助[使用情况详细信息 API](/rest/api/consumption/usageDetails)，可以轻松地获取与 Azure 帐单相对应的原始、未聚合的成本数据。 当你的组织需要编程数据检索解决方案时，API 非常有用。 如果要分析较小的成本数据集，请考虑使用 API。 但是，如果你有更大的数据集，则应使用以前确定的其他解决方案。 使用情况详细信息中的数据每天按计量提供。 计算每月帐单时使用此方法。 这些 API 的正式发布版 (GA) 是 `2019-10-01`。 使用 `2019-04-01-preview` 通过 API 访问预留和 Azure 市场购买的预览版本。
 
-如果要定期获取大量导出的数据，请参阅[通过导出定期获取大型成本数据集](ingest-azure-usage-at-scale.md)。
+如果要定期获取大量导出的数据，请参阅[使用导出功能定期检索大型成本数据集](ingest-azure-usage-at-scale.md)。
 
 ### <a name="usage-details-api-suggestions"></a>使用情况详细信息 API 建议
 
@@ -74,6 +74,10 @@ Power BI 用于引入和处理大量数据。 如果你是企业协议客户，�
   - 已包含数量 - 例如：前 100 个单元免费，之后的每个单元 10 美元。
   - 预留
   - 在计算过程中发生的舍入 - 舍入将考虑已耗用数量、分层/已包含数量定价和缩放单元价格。
+
+### <a name="a-single-resource-might-have-multiple-records-for-a-single-day"></a>单个资源一天内可能有多条记录
+
+Azure 资源提供程序向计费系统发出使用情况和费用，并填充使用情况记录的 `Additional Info` 字段。 有时，资源提供程序可能会发出给定的某一天的使用情况，并在使用情况记录的 `Additional Info` 字段中标记不同数据中心的记录。 这可能会导致一天内的使用情况文件中显示一个计量/资源的多条记录。 在此情况下，不会向你额外收取费用。 多条记录表示那一天资源的计量的全部费用。
 
 ## <a name="example-usage-details-api-requests"></a>示例使用情况详细信息 API 请求
 
@@ -182,9 +186,9 @@ GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDe
 | pl-pl | 波兰语（波兰） |
 | tr-tr | 土耳其语（土耳其） |
 | da-dk | 丹麦语（丹麦） |
-| dn-gb | 英语（英国） |
+| en-gb | 英语（英国） |
 | hu-hu | 匈牙利语(匈牙利) |
-| nb-bo | 挪威博克马尔语（挪威） |
+| nb-no | 挪威博克马尔语（挪威） |
 | nl-nl | 荷兰语（荷兰） |
 | pt-pt | 葡萄牙语(葡萄牙) |
 | sv-se | 瑞典语（瑞典） |

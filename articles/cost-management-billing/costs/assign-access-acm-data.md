@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: 660b5751e3b3cbc632331e99d797af3392a8aea4
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: cb54c5f7334120f6cd01ed1704939c5c1a55e7c6
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "91371960"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645284"
 ---
 # <a name="assign-access-to-cost-management-data"></a>分配对成本管理数据的访问权限
 
@@ -39,9 +39,9 @@ ms.locfileid: "91371960"
 | 计费帐户<sup>1</sup> | [https://ea.azure.com](https://ea.azure.com/) | 企业管理员 | 无 | 企业协议中的所有订阅 |
 | 部门 | [https://ea.azure.com](https://ea.azure.com/) | 部门管理员 | **DA 视图费用** 已启用 | 属于一个合约帐户的所有订阅，该帐户已关联到部门 |
 | 合约帐户<sup>2</sup> | [https://ea.azure.com](https://ea.azure.com/) | 帐户所有者 | **AO 视图费用** 已启用 | 注册帐户的所有订阅 |
-| 管理组 | [https://portal.azure.com](https://portal.azure.com/) | 成本管理读者（或读者） | **AO 视图费用** 已启用 | 管理组下的所有订阅 |
-| 订阅 | [https://portal.azure.com](https://portal.azure.com/) | 成本管理读者（或读者） | **AO 视图费用** 已启用 | 订阅中的所有资源/资源组 |
-| 资源组 | [https://portal.azure.com](https://portal.azure.com/) | 成本管理读者（或读者） | **AO 视图费用** 已启用 | 资源组中的所有资源 |
+| 管理组 | [https://portal.azure.com](https://portal.azure.com/) | 成本管理读取者（或参与者） | **AO 视图费用** 已启用 | 管理组下的所有订阅 |
+| 订阅 | [https://portal.azure.com](https://portal.azure.com/) | 成本管理读取者（或参与者） | **AO 视图费用** 已启用 | 订阅中的所有资源/资源组 |
+| 资源组 | [https://portal.azure.com](https://portal.azure.com/) | 成本管理读取者（或参与者） | **AO 视图费用** 已启用 | 资源组中的所有资源 |
 
 <sup>1</sup> 计费帐户还称为“企业协议”或“合约”。
 
@@ -52,8 +52,8 @@ ms.locfileid: "91371960"
 
 若要查看其他 Azure 订阅的成本数据，用户必须至少具有以下一个或多个范围的读取权限：
 
-- Azure 帐户
 - 管理组
+- 订阅
 - 资源组
 
 在合作伙伴将客户加入 Microsoft 客户协议后，将有各种范围可用。 在 CSP 合作伙伴为其 CSP 客户启用成本管理功能后，客户即可使用该功能。 有关详细信息，请参阅[面向合作伙伴的 Azure 成本管理入门](get-started-partners.md)。

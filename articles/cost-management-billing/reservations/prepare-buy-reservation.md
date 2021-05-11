@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 04/12/2021
 ms.author: banders
-ms.openlocfilehash: a70d434b06fd19071f3576f9333579e0bd2b85e7
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: b2cdb106ab1c77c23626258f7e0708a20ffd3c4e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574968"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772246"
 ---
 # <a name="buy-a-reservation"></a>购买预留项
 
@@ -35,8 +35,8 @@ Azure 预留项可帮助你节省资金，因为它可以承诺许多 Azure 资�
 
 可以根据需要使用三个选项来限定预留范围：
 
-- 单个资源组范围 — 仅将预留折扣应用到所选资源组中匹配的资源。
-- 单个订阅范围 — 将预留折扣应用到所选订阅中匹配的资源。
+- **单个资源组范围** - 仅将预留折扣应用到所选资源组中匹配的资源。
+- **单个订阅范围** - 将预留折扣应用到所选订阅中匹配的资源。
 - **共享范围** - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。
     - 对于企业协议客户，计费上下文为注册。 预留共享范围会在注册中包含多个 Active Directory 租户。
     - 对于 Microsoft 客户协议客户，计费范围为计费对象信息。
@@ -44,9 +44,9 @@ Azure 预留项可帮助你节省资金，因为它可以承诺许多 Azure 资�
 
 对用途应用预留折扣时，Azure 将按以下顺序处理预留：
 
-1. 范围限定为资源组的预留项
-2. 单一范围的预留项
-3. 共享范围的预留项
+1. 具有单个资源组范围的预留
+2. 具有单个订阅范围的预留
+3. 具有共享范围（多个订阅）的预留，如前所述
 
 始终可在购买预留项后更新范围。 为此，请转到该预留项，单击“配置”，然后重新设置预留范围。 重新设置预留范围不属于商业交易。 预留条款不会有变化。 有关更新范围的详细信息，请参阅[在购买预留项后更新范围](manage-reserved-vm-instance.md#change-the-reservation-scope)。
 
@@ -133,4 +133,8 @@ Azure 预留项可帮助你节省资金，因为它可以承诺许多 Azure 资�
 
 ## <a name="next-steps"></a>后续步骤
 
+- [详细了解预留权限](view-reservations.md)
 - [管理 Azure 资源的预留](manage-reserved-vm-instance.md)
+- [使用 REST API 自动完成](/rest/api/reserved-vm-instances/reservationorder)
+- [使用 Azure PowerShell 自动完成](/powershell/module/az.reservations)
+- [使用 CLI 自动完成](/cli/azure/reservations)

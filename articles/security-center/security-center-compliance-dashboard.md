@@ -1,24 +1,18 @@
 ---
 title: 教程：合规性检查 - Azure 安全中心
 description: 教程：了解如何使用 Azure 安全中心提高合规性。
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 5f50c4dc-ea42-418d-9ea8-158ffeb93706
 ms.service: security-center
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/10/2021
+ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: 284a7f532ed918397fe1cfcf3458bbc6fb0bdd32
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 06a42629df1f22eeb7a90ef5ce4da2ef53162391
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739001"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123152"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>教程：提高合规性
 
@@ -26,7 +20,7 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
 安全中心持续评估混合云环境，以根据适用于你的订阅的标准中的控制措施和最佳做法来分析风险因素。 仪表板反映了符合这些标准的状态。 
 
-在 Azure 订阅上启用安全中心后，系统会自动为该订阅分配 [Azure 安全基准](https://docs.microsoft.com/security/benchmark/azure/introduction)。 这一公认的基准建立在 [Internet 安全中心 (CIS)](https://www.cisecurity.org/benchmark/azure/) 和[国家标准与技术研究院 (NIST)](https://www.nist.gov/) 的控制基础上，重点关注以云为中心的安全性。
+在 Azure 订阅上启用安全中心后，系统会自动为该订阅分配 [Azure 安全基准](/security/benchmark/azure/introduction)。 这一公认的基准建立在 [Internet 安全中心 (CIS)](https://www.cisecurity.org/benchmark/azure/) 和[国家标准与技术研究院 (NIST)](https://www.nist.gov/) 的控制基础上，重点关注以云为中心的安全性。
 
 在法规合规性仪表板中，可以查看在所选标准和法规下，环境中所有评估的状态。 针对建议进行操作并减少环境中的风险因素以后，合规性情况得到了改善。
 
@@ -135,14 +129,15 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 - [可如何以非 PDF 的格式下载带有合规性数据的报表？](#how-can-i-download-a-report-with-compliance-data-in-a-format-other-than-pdf)
 - [可如何在法规合规性仪表板中为某些策略创建例外？](#how-can-i-create-exceptions-for-some-of-the-policies-in-the-regulatory-compliance-dashboard)
 - [需要具有哪些 Azure Defender 计划或许可证才能使用法规合规性仪表板？](#what-azure-defender-plans-or-licenses-do-i-need-to-use-the-regulatory-compliance-dashboard)
+- [如何知道要使用哪个基准或标准？](#how-do-i-know-which-benchmark-or-standard-to-use)
 
 ### <a name="what-standards-are-supported-in-the-compliance-dashboard"></a>合规性仪表板支持哪些标准？
 默认情况下，法规合规性仪表板显示的是 Azure 安全基准。 Azure 安全基准是 Microsoft 制定的 Azure 专属准则，适合基于常见合规框架的安全性与合规性最佳做法。 有关详细信息，请查看 [Azure 安全基准简介](../security/benchmarks/introduction.md)。
 
 若要按任何其他标准跟踪合规性，需要将这些标准显式添加到仪表板中。
  
-可添加的标准包括 Azure CIS 1.1.0（新）、NIST SP 800-53 R4、NIST SP 800-171 R2、SWIFT CSP CSCF-v2020、UK Official 和 UK NHS、HIPAA HITRUST、加拿大联邦 PBMM、ISO 27001、SOC2-TSP、PCI-DSS 3.2.1。  
- 
+可添加其他标准，例如 Azure CIS 1.3.0、NIST SP 800-53、NIST SP 800-171、SWIFT CSP CSCF-v2020、UK Official 和 UK NHS、HIPAA、Canada Federal PBMM、ISO 27001、SOC2-TSP、PCI-DSS 3.2.1。  
+
 更多标准将被添加仪表板中，可在[在法规合规性仪表板中自定义标准集](update-regulatory-compliance-packages.md)中查看详细信息。
 
 ### <a name="why-do-some-controls-appear-grayed-out"></a>一些控件为何灰显？
@@ -195,7 +190,12 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 如果你在你的任何 Azure 资源类型上启用了任何 Azure Defender 包，那么你有权在安全中心访问法规合规性仪表板及其所有数据。
 
 
+### <a name="how-do-i-know-which-benchmark-or-standard-to-use"></a>如何知道要使用哪个基准或标准？
+[Azure 安全基准](/security/benchmark/azure/introduction) (ASB) 是 Microsoft 定义的一组规范安全建议和最佳做法，与常见的合规性控制框架（包括 [CIS Microsoft Azure 基础基准](https://www.cisecurity.org/benchmark/azure/)和 [NIST SP 800-53](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final)）一致。 ASB 是一种非常全面的基准，旨在建议各种 Azure 服务的最新安全功能。 我们建议希望最大限度改进其安全态势，并且能够将其合规性状态与行业标准保持一致的客户使用 ASB。
 
+[CIS 基准](https://www.cisecurity.org/benchmark/azure/)由独立实体 Internet 安全中心 (CIS) 编写，其中包含有关部分核心 Azure 服务的建议。 我们使用 CIS 来尝试确保其建议与 Azure 中的最新增强功能保持同步，但是有时它们确实落伍了并且过时了。 尽管如此，一些客户还是喜欢将 CIS 的这一客观第三方评估用作其初始和主要安全基线。
+
+自我们发布 Azure 安全基准以来，许多客户选择改用该基准来替代 CIS 基准。
 
 
 ## <a name="next-steps"></a>后续步骤

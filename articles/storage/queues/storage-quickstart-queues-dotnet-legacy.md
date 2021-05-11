@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 10ab1c487095fe1587a3c665d8a06e0d5cbab7e0
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: df2f3593f904c5c6c6c9af0ae635a2e152f9eb82
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275883"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871067"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>快速入门：使用适用于 .NET 的 Azure 存储 SDK v11 来管理队列
 
@@ -31,19 +31,19 @@ ms.locfileid: "106275883"
 
 ### <a name="windows"></a>Windows
 
-- 安装 [.NET Core for Windows](https://www.microsoft.com/net/download/windows) 或 [.NET Framework](https://www.microsoft.com/net/download/windows)（Visual Studio for Windows 已随附）
+- 安装 [.NET Core SDK for Windows](https://dotnet.microsoft.com/download) 或 [.NET Framework](https://dotnet.microsoft.com/download/dotnet-framework)（Visual Studio for Windows 已随附）
 - 安装 [Visual Studio for Windows](https://www.visualstudio.com/)。 如果使用的是 .NET Core，则可以根据需要安装 Visual Studio。
 
 有关在 .NET Core 与 .NET Framework 之间做出选择的信息，请参阅[为服务器应用选择 .NET Core 或 .NET Framework](/dotnet/standard/choosing-core-framework-server)。
 
 ### <a name="linux"></a>Linux
 
-- 安装[用于 Linux 的 .NET Core](https://www.microsoft.com/net/download/linux)
+- 安装[用于 Linux 的 .NET Core SDK](/dotnet/core/install/linux)
 - （可选）安装 [Visual Studio Code](https://www.visualstudio.com/) 和 [C# 扩展](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 
 ### <a name="macos"></a>macOS
 
-- 安装[用于 macOS 的 .NET Core](https://www.microsoft.com/net/download/macos)。
+- 安装[用于 macOS 的 .NET Core SDK](https://dotnet.microsoft.com/download)。
 - （可选）安装[用于 Mac 的 Visual Studio](https://www.visualstudio.com/vs/visual-studio-mac/)
 
 ## <a name="download-the-sample-application"></a>下载示例应用程序
@@ -283,4 +283,4 @@ if (queue != null)
 > [!div class="nextstepaction"]
 > [在使用 Azure 队列存储的应用程序之间进行通信](/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
 
-- 若要详细了解 .NET Core，请参阅 [Get started with .NET in 10 minutes](https://www.microsoft.com/net/learn/get-started/)（.NET 10 分钟入门）。
+- 若要详细了解 .NET Core，请参阅 [Get started with .NET in 10 minutes](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/intro)（.NET 10 分钟入门）。

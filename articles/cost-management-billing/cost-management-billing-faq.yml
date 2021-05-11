@@ -1,0 +1,460 @@
+### YamlMime:FAQ
+metadata:
+  title: 成本管理 + 计费常见问题解答 (FAQ)
+  titleSuffix: Azure Cost Management + Billing
+  description: 常见问题及其解答。
+  author: bandersmsft
+  ms.reviewer: adwise
+  ms.service: cost-management-billing
+  ms.topic: conceptual
+  ms.date: 04/15/2021
+  ms.author: banders
+  ms.openlocfilehash: e96ba3c42ddce1ed12ad560b2d73b99a35c61f8b
+  ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 04/19/2021
+  ms.locfileid: "107730685"
+title: Azure 成本管理 + 计费常见问题解答 (FAQ)
+summary: ''
+sections:
+- name: 一般计费问题
+  questions:
+  - question: 如何联系 Azure 计费支持人员？
+    answer: >
+      在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)中创建支持请求。
+  - question: 如何支付帐单？
+    answer: >
+      请参阅[处理 Azure 订阅的逾期未付余款](manage/resolve-past-due-balance.md)。
+  - question: 如何查找发票？
+    answer: >
+      请参阅[查看和下载 Microsoft Azure 发票](understand/download-azure-invoice.md)。
+  - question: 我有免费的 Azure 帐户。 为何还会向我收费？
+    answer: >
+      免费服务是有限制的。 你很可能已经超出了免费限制。 请参阅[避免 Azure 免费帐户产生费用](manage/avoid-charges-free-account.md)。
+  - question: 如何理解账单？
+    answer: >
+      如果是通过 Azure 网站购买的 Azure 订阅，请参阅[查看单独的 Azure 订阅账单](understand/review-individual-bill.md)。
+  - question: 如何快速查看我的费用？
+    answer: >
+      请参阅[使用成本分析探究和分析成本](costs/quick-acm-cost-analysis.md)。
+  - question: 我有意外的费用。 如何理解这类费用？
+    answer: >
+      请参阅[分析意外费用](understand/analyze-unexpected-charges.md)。
+  - question: 如何取消 Azure 订阅？
+    answer: >
+      请参阅[取消 Azure 订阅](manage/cancel-azure-subscription.md)。
+- name: 成本管理问题
+  questions:
+  - question: 如何启用查看成本的访问权限？
+    answer: >
+      请参阅[分配对成本管理数据的访问权限](costs/assign-access-acm-data.md)。
+  - question: 成本管理支持哪些合作伙伴产品/服务？
+    answer: >
+      成本管理适用于其客户具有 Azure 计划的合作伙伴。 通过启用策略设置，合作伙伴可以允许其客户查看成本信息。 有关详细信息，请参阅[面向合作伙伴的 Azure 成本管理入门](costs/get-started-partners.md)。 成本管理不支持经典 CSP。
+  - question: 如何查看预测的成本？
+    answer: >
+      在 Azure 门户中，导航到“成本管理 + 计费” > “成本管理” > “成本分析”  。 在默认视图中，顶部图表包含实际/分摊的成本和预测成本部分。 该图表的纯色显示实际/分摊的成本。 着色颜色显示预测成本。
+  - question: 如何查看按 Azure 服务进行的成本细分？
+    answer: >
+      在 Azure 门户中，导航到“成本管理 + 计费” > “成本管理” > “成本分析”。 选择“按服务划分的成本”，然后按“服务层”分组。 将视图更改为“表”。
+  - question: 如何查看发票成本？
+    answer: >
+      在 Azure 门户中，导航到“成本分析”，查找与要分析的发票相关的范围。 选择“发票详细信息”视图。 发票详细信息会显示发票上的费用。
+  - question: 如何查看标记的成本？
+    answer: >
+      在 Azure 门户中，导航到“成本管理 + 计费” > “成本管理” > “成本分析”  。 针对标记选择“分组依据”。 标记不适用于：购买、不与订阅关联的租户资源、未部署到资源组的订阅资源、经典资源。 某些服务不在使用情况数据中包含标记。 有关详细信息，请参阅 [Azure 资源的标记支持](../azure-resource-manager/management/tag-support.md)。
+  - question: 如何查看 EA 注册的成本？
+    answer: >
+      在 Azure 门户中，导航到“成本管理 + 计费”>“概览”。 选择“明细”链接。
+  - question: 如何在成本管理中查看 AWS 成本？
+    answer: >
+      请参阅[设置并配置 AWS 成本和使用情况报表集成](costs/aws-integration-set-up-configure.md)。
+  - question: 如何创建预算？
+    answer: >
+      请参阅[创建并管理 Azure 预算](costs/tutorial-acm-create-budgets.md)教程。
+  - question: 如何为特定筛选器或标记创建预算？
+    answer: >
+      在“创建预算”窗口中，选择要创建的预算的范围。 选择“添加筛选器”以选择要为此预算添加的任何筛选器或标记。 有关详细信息，请参阅[创建和管理 Azure 预算](costs/tutorial-acm-create-budgets.md#create-a-budget-in-the-azure-portal)教程。
+  - question: 如何导出成本管理数据？
+    answer: >
+      请参阅[创建和管理导出的数据](costs/tutorial-export-acm-data.md)教程。
+  - question: 如果我的租户中没有 Azure 订阅，如何以合作伙伴身份导出成本管理数据？
+    answer: >
+      请参阅[使用 Azure 存储帐户 SAS 密钥导出成本数据](costs/export-cost-data-storage-account-sas-key.md)一文。
+  - question: 作为 CSP 合作伙伴，Azure 计划中的经典 CSP 产品/服务是否支持成本管理？
+    answer: "鉴于计划将经典 CSP 的客户转换到[新商务体验](https://www.microsoft.com/licensing/news/new-azure-experience-in-csp)上的 Azure 计划，Azure 成本管理将仅适用于使用 Azure 计划的客户的直接合作伙伴和间接提供商。 \n"
+  - question: 作为 CSP 合作伙伴（全局管理员），如何在 Azure 计划的最终客户和经销商的订阅范围内启用成本可见性策略？
+    answer: >
+      请参阅[为客户租户订阅启用成本管理](costs/get-started-partners.md#enable-cost-management-for-customer-tenant-subscriptions)，为订阅的 Azure RBAC 用户以零售价启用 Azure 所消耗服务的成本可见性策略。 作为直接合作伙伴或间接提供商的全局管理员，无论策略如何，你都可以查看客户租户的成本。
+  - question: 如何收回成本？
+    answer: >
+      可以在成本管理中分配成本，以通过成本分析查看分发给订阅、资源组或标记的成本。 有关详细信息，请参阅[创建和管理 Azure 成本分配规则](costs/allocate-costs.md)一文。
+  - question: 能否使用 Power BI 查看成本？
+    answer: >
+      是，可以使用 [Power BI Desktop 连接到成本管理数据](/power-bi/connect-data/desktop-connect-azure-cost-management)，或使用[适用于 EA 的成本管理 Power BI 应用](costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md)。
+  - question: 成本管理中支持的产品/服务类型有哪些？
+    answer: >
+      请参阅[支持的 Microsoft Azure 产品/服务](/costs/understand-cost-mgt-data.md#supported-microsoft-azure-offers)。
+  - question: 多久能在 Azure 成本管理中查看成本和使用情况数据？
+    answer: >
+      请参阅[成本和使用情况数据更新和保留](/costs/understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention)。
+  - question: 能否在 Azure 成本管理中找到所有与成本相关的信息？
+    answer: >
+      请参阅[成本管理中包括的成本](costs/understand-cost-mgt-data.md#costs-included-in-cost-management)。
+  - question: 分摊的成本是否已分解为预算和预测视图？
+    answer: >
+      <a name="budgets-forecast"></a>是的。 分摊的成本将分解为预算和预测，并受其支持。 预算和预测视图显示分摊给他们的成本（由成本分摊规则配置）。
+  - question: 如果删除成本分摊规则，会发生什么情况？
+    answer: >
+      <a name="delete-rule"></a>如果删除成本分摊规则，分摊给目标的所有未清和当前计费月份成本会一并删除。 如果成本分摊规则已存在几个月，则前几个月的分摊数据会保持分摊规则的最初设置。
+  - question: 为什么需要具有注册管理员或计费帐户管理员身份才能创建成本分摊规则？
+    answer: >
+      <a name="why-admin"></a>成本分摊规则是在注册范围（企业协议）或计费帐户范围（Microsoft 客户协议）创建的。 需要计费管理员权限才能有权在这些范围中进行更改。
+  - question: 为什么每个规则的成本分配源和目标限制为 25 个？
+    answer: >
+      <a name="source-target-rule-limit"></a>此限制是一个预览限制，为确保良好的成本分摊性能和可伸缩性。 当成本分摊正式发布 (GA) 后，此限制可能会增加或删除。
+  - question: 如果成本分摊规则（源/目标）重叠，会发生什么情况？
+    answer: >
+      <a name="rule-overlap"></a>不建议使用具有重叠源或重叠目标的规则。 成本分摊规则按其创建日期的先后顺序应用，因此，如果任何成本分摊规则重叠，会优先使用创建日期最早的分配规则。
+- name: 成本管理 + 计费 API 问题
+  questions:
+  - question: 何时弃用 EA 报告 API？
+    answer: >
+      成本管理 + 计费团队尚未公布 API 的弃用时间线。 API 不再处于积极开发状态。 建议规划迁离这些 API 所需的任何工作。
+  - question: 如何迁出 EA 报告 API？应调用哪些新 API？
+    answer: >
+      请参阅[从 EA 报告迁移到 Azure 资源管理器 API](costs/migrate-from-enterprise-reporting-to-azure-resource-manager-apis.md)。
+  - question: 为什么会收到使用情况详细信息 API 超时？
+    answer: >
+      “使用情况详细信息”数据集通常非常大（多个 GB 或更多）。 你请求的数据集越大，服务在将数据发送给你之前编译数据所花费的时间就越长。 由于延迟，同步 API 解决方案（如分页的 [JSON 使用情况详细信息 API](/rest/api/consumption/usagedetails/list)）可能会在提供数据之前超时。 如果遇到超时或具有经常需要提取大量使用情况详细信息的进程，请参阅[使用导出功能定期检索大型使用情况数据集](costs/ingest-azure-usage-at-scale.md)。
+  - question: 如何从 EA 报告 API 迁移到 Microsoft 客户协议 API？
+    answer: >
+      请参阅[从企业协议迁移到 Microsoft 客户协议 API](costs/migrate-cost-management-api.md)。
+- name: Azure 预留项问题
+  questions:
+  - question: 如何查看预留费用？
+    answer: >
+      在 Azure 门户中，导航到“成本管理 + 计费” > “成本管理” > “成本分析”  。 为“定价模型:预留”添加一个筛选器。 在“范围”下显示的成本旁边，单击向下箭头符号，并选择“实际成本”或“摊销成本”指标。
+  - question: 如何查看预留节省额？
+    answer: >
+      可以通过多种方式查看节省额。
+
+      -  如果你是 EA 客户，则可以使用适用于 EA 的 Azure 成本管理 Power BI 应用来查看 [RI 节省额报告](/costs/analyze-cost-data-azure-cost-management-power-bi-template-app#reports-available-with-the-app.md)。
+
+      -  使用“使用情况 + 费用”数据文件手动[确定预留节省额](reservations/understand-reserved-instance-usage-ea.md#determine-reservation-savings)。
+  - question: 如何查看预留使用不足情况？
+    answer: >
+      登录到 Azure 门户。 然后选择“所有服务”>“预留”，并记下预留的利用率 (%)。 选择一个预留。 查看一段时间的预留使用趋势。 有关详细信息，请参阅[在 Azure 门户中查看预留使用](reservations/manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/reservations/toc.json#view-reservation-use-in-the-azure-portal)。 还可以[在成本分析中查看未使用的预留成本](costs/cost-analysis-common-uses.md#view-unused-ri-costs-in-cost-analysis)。
+  - question: 如何找到要收回的预留成本？
+    answer: >
+      有关详细信息，请参阅[收回 Azure 预留成本](reservations/charge-back-usage.md?toc=/azure/cost-management-billing/reservations/toc.json)。
+  - question: 如何查看现成 VM 产生的费用？
+    answer: >
+      请参阅[查看现成 VM 费用](/costs/cost-analysis-common-uses.md#view-your-spot-vm-charges)。
+  - question: 如何获取预留详细信息报告？
+    answer: >
+      阅读 API 文档以[生成预留详细信息报告](/rest/api/cost-management/generatereservationdetailsreport)。
+- name: Azure 企业协议 (EA) 和 EA 门户问题
+  questions:
+  - question: 如何为自己的合约分配 SPN 权限？
+    answer: >
+      请参阅[向 EA SPN 分配角色](manage/assign-roles-azure-service-principals.md)。
+  - question: 为何我没有收到激活电子邮件？
+    answer: >
+      Azure EA 门户中的激活电子邮件从 *waep@microsoft.com* 发送。 如果没有收到激活电子邮件，请查看垃圾邮件文件夹中是否有该电子邮件。 该电子邮件发送时的 service_subject 为“邀请查看/管理 Microsoft Azure”。 它发送到每位新添加的 EA 管理员。
+
+
+      如果确定自己已被设置为 EA 管理员，则不需等着接收激活电子邮件来登录 Azure EA 门户。 可以访问 https://ea.azure.com ，然后使用电子邮件地址（工作帐户、学校帐户或 Microsoft 帐户）和密码登录。
+  - question: 如何向自己的合约添加新的 EA 管理员？
+    answer: >
+      现有的企业管理员可以添加新的企业管理员。 如果你是 EA 管理员，请登录 EA 门户 > 单击“管理”> 在右上角单击“+ 添加管理员”，以添加新的 EA 管理员 。 请确保拥有用户的电子邮件地址和首选登录方法（例如工作/学校身份验证或 Microsoft Live ID），以便添加用户。
+
+
+      如果你不是 EA 管理员，请联系公司的 EA 管理员，请求他们将你添加到合约中。 在他们将你添加到合约后，你会收到一封激活电子邮件。
+
+
+      但是，如果 EA 管理员无法提供帮助，我们可以代表他们进行添加，前提是你能向我们提供：
+
+      - 合约编号
+
+      - 要添加的电子邮件地址和身份验证类型（工作/学校/MS）
+
+      - 来自 EA 管理员的批准电子邮件
+
+
+      如果拥有所有必备信息，请在 [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) 提交请求。
+  - question: 如何更新合约上的第一个 EA 管理员？
+    answer: >
+      可以通过更新门户上的通知联系人和联机管理员的方式，在批量许可服务中心中更新第一个 EA 管理员。 EA 门户大约需要 24 小时才能完成此更新。 更新后，新的 EA 管理员将收到激活电子邮件。
+
+
+      如果你没有 VLSC 门户的访问权限，或者如果你的初始 EA 管理员无法再管理合约并且无权访问 EA 门户，请在 [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) 提交请求，请求更新并提供以下信息：
+
+      - 注册编号
+
+      - 要添加的电子邮件地址和身份验证类型（工作/学校/MS）
+
+      - 更改初始 EA 管理员的原因
+
+      - 来自初始 EA 管理员的批准电子邮件
+  - question: 我当前的 EA 管理员已不在公司任职。 应采取何种操作？
+    answer: >
+      一个 EA 合约可以有多个 EA 管理员，你可以与其他 EA 管理员联系，请他们添加新的 EA 管理员/帐户所有者/部门管理员。 但是，如果你不知道公司内 EA 管理员的身份或合约上没有其他可用的 EA 管理员，请与我们联系并提供以下信息：
+
+      - 注册编号
+
+      - 要添加的电子邮件地址和身份验证类型（工作/学校/MS）
+
+      - 提供信息表明当前的 EA 管理员已不在公司任职
+
+
+      请注意，如果合约中有其他 EA 管理员，我们将联系这些 EA 管理员，请其批准合约在管理方面的更改。
+  - question: 我的合约显示为挂起状态。 如何激活我的合约？
+    answer: >
+      如果初始 EA 管理员之前未登录过合约，则合约将处于挂起状态。 如果你是 EA 管理员，请登录 Azure EA 门户。 在含有所有合约编号的登陆页上，你可能看不到处于挂起状态的合约。 请取消选中 EA 门户右上角的“可用”框，这样就能显示挂起的合约。 请单击合约访问信息，在合约的“管理”页上，状态将从“挂起”更新为“可用”。
+  - question: 为什么我的帐户始终为挂起状态？
+    answer: >
+      首次向合约添加新的帐户所有者 (AO) 时，这些帐户所有者的状态将始终显示为“挂起”。 AO 收到激活欢迎电子邮件时，可以登录以激活其帐户。 登录会将帐户的状态从“挂起”更新为“可用”。
+  - question: 为什么在登录到 Azure EA 门户时出现错误？
+    answer: "可能有几个原因导致登录期间 Azure EA 门户上显示错误消息，请按以下故障排除步骤操作：\n\n 1. 请确保使用正确的 EA 门户 URL：[https://ea.azure.com](https://ea.azure.com)。\n 1. 确定添加你对 Azure EA 门户的访问权限的方式（是使用的工作或学校帐户，还是 Microsoft Live ID）。 如果使用的是工作帐户，请输入工作电子邮件地址和工作密码。 如果使用的是 Microsoft Live ID，请输入 Live ID 电子邮件地址和 Microsoft Live ID 密码。 如果忘记了 Microsoft Live ID 密码，请在 [https://account.live.com/password/reset](https://account.live.com/password/reset) 重置。\n 1. 建议使用专用浏览器进行登录，以便其不保留以前/现有的会话中的 Cookie 或缓存。 清除缓存，并使用隐私浏览模式/无痕窗口打开 [https://ea.azure.com](https://ea.azure.com)。\n 1. 如果你在使用 Microsoft 帐户时出现“用户无效”错误，可能是因为你拥有多个 Microsoft 帐户，而你尝试用于登录的帐户不是主别名。 如需查看主别名，请前往 account.live.com：\n     - 转到“你的信息”>“管理登录电子邮件帐户或电话号码”。\n     - 按照屏幕上的提示验证备用电子邮件地址，获取一个用于访问敏感信息的代码。\n     - 输入安全代码。\n     - 如果希望以后设置双重身份验证，请选择“稍后设置”。\n     - 你将在“管理帐户别名”页看到你拥有的帐户别名。 仔细检查主别名是否是用来登录 Azure EA 门户的别名。 如果不是，可以将其设置为主别名，也可以改为使用 EA 门户的主别名。\n \n 如果上述故障排除步骤失败，请在 [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) 提交请求并提供信息，例如以下信息：\n   - 使用的浏览器和版本。\n   - 错误消息的屏幕截图。\n   - 显示错误消息的页面的 URL。  \n   - 发生错误时的日期、时间和时区。\n\n- 此外，日志文件会有所帮助。 下面是使用以下信息捕获网络痕迹的步骤：\n\n1. 打开 Internet Explorer。\n1. 按 F12 在 IE 底部打开一个框。\n1. 选择“网络”选项卡。\n1. 单击“开始捕获”。\n1. 执行导致错误的操作。\n1. 出现错误后，单击“停止捕获”。\n1. 保存该文件，并在支持请求中包含该信息。\n1. 确保在支持请求中提供合约编号和电子邮件地址。\n"
+  - question: “工作/学校帐户”和“Microsoft 帐户”有什么不同？
+    answer: >
+      **Microsoft 帐户**：已与 [https://signup.live.com](https://signup.live.com) 上的 Live ID 关联的帐户。
+
+
+      **工作/学校帐户：** 仅适用于已设置与云联合的 Active Directory 且所有帐户都在一个租户上的公司。 如果公司的内部 Active Directory 与云联合，则可以使用工作或学校帐户授权类型添加用户。
+
+
+      从 2016 年 9 月起，Microsoft 不再允许将工作或学校电子邮件地址注册为 Microsoft 帐户。 有关更多详细信息，请参阅以下材料： [https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/](https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/)。
+
+
+      如果你的组织未与云联合，你就无法使用你的工作或学校电子邮件地址。 请注册或创建一个新的电子邮件地址，将其注册为 Microsoft 帐户。
+  - question: 我忘记了 Azure EA 门户的密码。 应采取何种操作？
+    answer: >
+      如果忘记了 Microsoft Live ID 密码，请在 [https://account.live.com/password/reset](https://account.live.com/password/reset) 重置。
+
+
+      如果你忘记了工作密码，请联系贵公司的 IT 管理员。
+  - question: 我有一个有效的工作或学校帐户。 为什么不能将其添加到 EA 门户？
+    answer: >
+      如果拥有的工作或学校帐户位于另一个租户下，请将合约详细信息页上的授权级别更改为“跨租户的工作或学校帐户”，这样就能添加帐户了。
+  - question: 我不小心将现有的 Azure 帐户与 Azure EA 注册关联起来了。 结果失去了月额度。 可以重新取回每月额度吗？
+    answer: >
+      如果你已经以 Azure EA 帐户所有者的身份使用与 Visual Studio 订阅相同的凭据登录，则可以通过执行以下操作之一来恢复 Visual Studio 个人订阅的 Azure 权益：
+
+
+      - 在删除或移动帐户所有者拥有的所有订阅后，从 Azure Enterprise 门户中删除你的帐户所有者。 然后，重新注册个人 Visual Studio Azure 权益。
+
+      - 从 VLSC 中的管理站点删除 Visual Studio 订阅者，并将订阅重新分配到某个帐户（这次请使用不同的凭据）。 然后，重新注册个人 Visual Studio Azure 权益。
+  - question: 我应该创建哪种类型的订阅？
+    answer: >
+      Azure Enterprise 门户为企业客户提供两种类型的订阅：
+
+
+      - Microsoft Azure Enterprise，非常适合用于：
+
+      - 所有生产使用情况
+
+      - 基于所用基础设施的最优价格
+
+
+      有关详细信息，请[联系 Azure 销售人员](https://azure.microsoft.com/pricing/enterprise-agreement/)。
+
+
+      - Enterprise 开发/测试，非常适合用于：
+
+      - 所有团队开发/测试工作负载
+
+      - 中到重量级单个开发/测试工作负载
+
+      - 访问特殊的 MSDN 映像和优惠服务费率
+
+
+      有关详细信息，请参阅 [Enterprise 开发/测试套餐](https://azure.microsoft.com/offers/ms-azr-0148p/)。
+  - question: 我的订阅名称与套餐名称相同。 我应该将订阅名称更改为对我的组织而言有意义的名称吗？
+    answer: >
+      创建订阅时，其名称默认为所选的套餐类型。 建议将订阅名更改为便于你跟踪订阅的名称。
+
+
+      若要更改名称：
+
+
+      1. 登录到 [https://account.windowsazure.com](https://account.windowsazure.com)。
+
+      1. 选择订阅列表。
+
+      1. 选择要编辑的订阅。
+
+      1. 选择“管理订阅”图标。
+
+      1. 编辑订阅详细信息。
+  - question: 如何跟踪成本中心产生的费用？
+    answer: >
+      若要跟踪成本中心产生的费用，需要在以下级别之一定义成本中心：
+
+
+      - 部门
+
+      - 帐户
+
+      - 订阅
+
+
+      可以根据需求使用同一个成本中心来跟踪与特定成本中心相关的使用情况和费用。
+
+
+      例如，为了跟踪涉及多个部分的某个特定项目的费用，你可能希望在订阅级别定义成本中心来跟踪使用情况和费用。
+
+
+      不能在服务级别定义成本中心。 若要在服务级别跟踪使用情况，可以使用在服务级别可用的“标记”功能。
+  - question: 如何跟踪组织中不同部门的使用情况和支出？
+    answer: >
+      在 Azure EA 注册下，可根据需要创建任意数量的部门。 若要正确跟踪使用情况，请确保不要在部门之间共享订阅。
+
+
+      创建部门和订阅后，可以在使用情况报表中看到数据。 这些信息有助于在部门级别跟踪使用情况和管理成本与支出。
+
+
+      还可以通过报告 API 访问使用情况数据。 有关详细信息和示例代码，请参阅 [Azure Enterprise REST API](manage/ea-portal-rest-apis.md)。
+  - question: 是否可以设置支出配额，并在即将达到限制时收到警报？
+    answer: >
+      可以在部门级别设置支出配额，系统会在支出限制达到定义的配额的 50%、75%、90% 和 100% 时自动通知你。
+
+
+      若要定义支出配额，请选择部门，然后选择编辑图标。 编辑支出限制详细信息后，选择“保存”。
+  - question: 我使用了资源组来实现 Azure RBAC 和跟踪使用。 如何查看相关的使用情况详细信息？
+    answer: >
+      如果你使用了资源组和标记，则会在服务级别跟踪此信息，可以在下载的详细使用情况 (CSV) 文件中访问此信息。  请参阅 Azure Enterprise 门户中的[下载使用情况报表](https://ea.azure.com/report/downloadusage)。
+
+
+      也可以通过 API 访问使用情况。 有关详细信息和示例代码，请参阅 [Azure Enterprise REST API](manage/ea-portal-rest-apis.md)。
+
+
+      > [!NOTE]
+
+      > 只能将标记应用到支持 Azure 资源管理器操作的资源。 如果是通过经典部署模型（如通过经典门户）创建的虚拟机、虚拟网络或存储，则无法向该资源应用标记。 必须通过资源管理器重新部署这些资源才支持标记。 所有其他资源均支持标记。
+  - question: 能否使用 Power BI 执行分析？
+    answer: >
+      是，可以使用[适用于 Power BI Desktop 的 Azure 成本管理连接器](/power-bi/connect-data/desktop-connect-azure-cost-management)来创建功能强大的自定义可视化效果和报表，帮助你更好地了解 Azure 支出。 如果你使用的是企业协议 (EA)，则还可以使用 [Azure 成本管理模板应用](costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md)。 Azure 成本管理模板应用附带有预制报表，可协助你监视成本、服务使用情况趋势，并确定成本优化选项以减少支出。               Power BI 报告适用于 Azure EA 直接合作伙伴以及能够查看帐单信息的间接客户。
+  - question: 是否可以将现有的 Azure 帐户关联到 Azure EA 注册？
+    answer: >
+      是的。 你是其帐户所有者的所有 Azure 订阅都将转换为企业协议。 这包括使用每月额度的订阅，例如 Visual Studio、AzurePass、MPN 和 BizSpark 等。 转换此类订阅时，会失去每月额度。
+  - question: 每个订阅可以有多少个 Azure 帐户所有者？
+    answer: >
+      每个订阅只允许有一个帐户所有者。  可以使用 [Azure 门户](https://portal.azure.com)页面左上角的订阅选项卡中“基于角色的访问”或“访问控制 (IAM)”来添加其他角色。
+  - question: 能将订阅所有权转让给其他帐户吗？
+    answer: "可以将订阅所有权转移到其他帐户。 例如，如果帐户 A 有三个订阅，企业管理员可以将其中一个订阅转移到帐户 B，一个转移到帐户 C，一个转移到帐户 D。或者，将所有订阅转移到帐户 E。\n\n若要转移订阅：\n\n1. 在 Azure Enterprise 门户中选择“管理” > “帐户”。 \n1. 将鼠标悬停在最右侧的“帐户”，就能看到“转移所有权”（人形图标）和“转移订阅”（列表图标）选项。   这些选项仅对活动的帐户可见。\n"
+  - question: 可以在多个部门下列出同一个 Azure 帐户所有者吗？
+    answer: >
+      不可以，一个帐户所有者只能与一个部门关联。 该策略帮助确保在 Azure EA 门户的 EA 注册下精确地监控和分配与其所在部门关联的成本和支出。
+  - question: 能将 Azure 帐户所有者作为安全组列出吗？
+    answer: >
+      不能，订阅所有者必须使用唯一的 Microsoft 帐户 (MSA) 或 Azure Active Directory (Azure AD) 身份验证。 如果要考虑组织内的连续性，可以考虑创建通用帐户，并使用 Azure AD 来管理订阅的访问。
+  - question: 一个用户可以拥有多个订阅吗？
+    answer: >
+      Azure 帐户所有者可以创建和管理无限多的订阅。
+  - question: 我如何访问/查看组织的所有订阅？
+    answer: >
+      如今必须通过策略完成此操作；也就是说，你需要要求对于创建的每个订阅，都使用基于角色的访问将帐户添加到某个订阅角色。
+  - question: 去何处创建订阅？
+    answer: >
+      必须由 Azure EA 门户中 EA 注册的管理员将你的帐户添加为帐户所有者角色后，你才能创建 Enterprise Azure (EA) 套餐订阅。 然后，需要登录到 Azure EA 门户，以获得创建 EA 套餐类型的订阅的权利。 我们建议使用 EA 门户的订阅选项卡中的“+ 添加订阅”链接创建第一个 EA 订阅。  但如果帐户获得了授权，就能使用 portal.azure.com 中页面左上角的订阅选项卡更轻松地创建订阅，你可以在其中一步完成订阅的创建和重命名。
+  - question: 谁可以创建订阅？
+    answer: >
+      要创建 Enterprise Azure 套餐类型的订阅，你必须在 [EA 门户](https://ea.azure.com)中获得帐户所有者角色。
+  - question: 我的成本为何显示为 $0？
+    answer: >
+      对于 **直接注册** 客户，企业管理员可以向帐户所有者和部门管理员提供对使用情况报表中费用/定价信息的访问权限。 执行以下步骤:
+
+
+      1. 在 Azure Enterprise 门户的左侧导航区域中，选择“管理”。
+
+      1. 选择 DA（部门管理员）查看费用旁边的蓝色铅笔图标。
+
+      1. 选择“启用”并保存。
+
+      1. 选择 AO（帐户所有者）查看费用旁边的蓝色铅笔图标。
+
+      1. 选择“启用”并保存。
+
+
+      > [!NOTE]
+
+      > 如果你是帐户所有者或部门管理员，请联系企业管理员启用定价功能。
+
+
+      对于 **间接注册** 客户，请联系合作伙伴来检查他们是否已为你启用了定价功能。 此操作只能由合作伙伴完成。 为你启用此功能后，你就能以企业管理员身份查看注册的费用和定价。
+
+
+      如果合作伙伴想要为帐户所有者和部门管理员启用“查看费用”的功能，请按照“直接注册”下的步骤操作。
+  - question: 为何使用情况详细信息报表中没有 SKU 信息？
+    answer: >
+      使用情况详细信息报表不包含 SKU 信息。 但是，该报表确实包含使用情况信息。你可以下载价目表报表来获取 SKU 信息。
+  - question: Azure 市场的总额为何与使用情况摘要和详细信息的报表不相符？
+    answer: >
+      Azure 市场费用报表仅显示基于用量的费用。 不显示一次性费用。 查看使用情况摘要页可以获取最新的基于用量的费用和一次性费用。
+  - question: 我的 API 报表中为何未显示任何信息？
+    answer: >
+      API 密钥每六个月过期。 如果你遇到问题，企业管理员应生成新的 API 密钥。 请记得按照“API 报表常见问题解答”中的步骤操作。
+  - question: 我的 Power BI 报表为何不正常工作？
+    answer: >
+      如果遇到 Power BI 的问题，请在 [Power BI 支持团队](https://support.powerbi.com)的配合下记录支持票证。
+  - question: 为什么我的报表中未显示我的资源标记？
+    answer: >
+      资源标记托管在 Azure 门户上。 可以在 [Azure 门户](https://portal.azure.com)中联系 Azure 订阅团队。 请按照[如何创建 Azure 支持请求](../azure-portal/supportability/how-to-create-azure-support-request.md)一文中的步骤操作。
+  - question: 为什么资源费率每天都在变化？
+    answer: >
+      详细使用情况报表中的资源费率是计算所得的值。 它表示对某项服务收取的月平均费率。 资源费率是根据一个服务单位的每月承诺和每月超额费用的平均值计算得出的。 在月结算日前按承诺和超额费率收费的这部分用量不断变化。 因此，列出的资源费率在当月内也会变化。 资源费率在月末之后的第五日锁定。
+  - question: Azure 市场服务和 Azure EA 预付款方面有哪些更改？
+    answer: >
+      从 2018 年 3 月 1 日起，某些第三方经销商服务会使用 Azure EA 预付款。 以前，除 Azure 虚拟机预留实例 (RI) 外，其他服务会在 Azure EA 预付款以外计费，并单独开票。
+
+
+      我们扩展了 Azure 预付款的使用范围，现在它包括了频繁购买的、由第三方发布的一些 Azure 市场服务。 Azure 市场中这些服务采用 Azure EA 预付款可帮助简化购买和支付管理过程。
+
+
+      之所以做出这样的更改，是因为客户希望以其他方式使用 Azure 预付款。 此项更改因应了客户的频繁请求，并影响了大部分 Azure 市场客户。
+  - question: 如何通过 EA 协议受益于用于 Azure 市场购买内容的 Azure 预付款？
+    answer: >
+      客户可获得更简单的计费体验，并且可以更好地使用 Azure EA 预付款。 由于这些服务包含在 Azure 预付款中，因此 Azure EA 预付款会变得更有价值。
+  - question: 如何知道哪些 Azure 市场服务使用了 Azure EA 预付款？
+    answer: >
+      当购买使用 Azure 预付款的服务时，Azure 市场会显示免责声明。 部分支持的服务由 Red Hat、SUSE、Autodesk 和 Oracle 发布。 目前，不会从 Azure 预付款中扣除由其他方发布的名称类似的服务费用。 有关参与此计划的产品的完整列表，请参阅[使用 Azure 预付款的第三方服务](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment)。
+  - question: 如果用于 Azure 市场购买内容的 Azure EA 预付款用完了怎么办？
+    answer: >
+      如果你使用了所有 Azure 预付款并处于超额状态，与这些服务相关的费用会连同所有其他消费服务一起显示在下一份超额发票上。 在实施 2018 年 3 月 1 日更改之前，这些费用会连同其他 Azure 市场服务一起开票。
+  - question: 为何并非所有 Azure 市场都使用 Azure EA 预付款？
+    answer: >
+      我们始终致力于在 Azure EA 预付款方面提供最佳客户体验。 Azure EA 预付款的最新更改满足了大量客户的需求，能应对 Azure 市场中总支出的很大一部分。 将来可能会添加其他服务。
+  - question: Azure 市场服务和 Azure EA 预付款的变化会对间接合约和合作伙伴产生什么影响？
+    answer: >
+      这不会对间接合约客户或合作伙伴产生任何影响。 这些服务与其他其他消费服务一样，受到相同的合作伙伴加价功能的约束。 唯一的变化是，费用将显示在不同的发票上，并在客户的 Azure EA 预付款以外支付费用。
+  - question: 在哪里可以看到使用 Azure EA 预付款的 Azure 市场服务？
+    answer: >
+      特定的 Azure 市场套餐可以使用 Azure 预付款资金。 有关参与此计划的产品的完整列表，请参阅[使用 Azure 预付款的第三方服务](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment)。
+- name: 合作伙伴问题
+  questions:
+  - question: 谁应链接合作伙伴 ID？
+    answer: >
+      合作伙伴组织中处理客户的 Power Apps 资源的任何用户都可将合作伙伴 ID 链接到帐户。 理想情况下，应在项目开始时完成 PAL 中的关联。 但其实只要你有权访问客户目录，就可以执行此操作。
+  - question: 链接合作伙伴 ID 后，是否可以更改？
+    answer: >
+      是的。 可以更改、添加或删除已链接的合作伙伴 ID。 例如，当公司有员工离开组织时便可以执行此类操作。 另一种情况可能是与客户的项目或合同结束时。
+  - question: 如果某个用户在多个客户租户中具有帐户怎么办？
+    answer: >
+      合作伙伴 ID 与帐户之间的链接是针对每个客户租户执行的。 链接每个客户租户中的合作伙伴 ID。
+  - question: 其他合作伙伴或客户是否可以编辑或删除合作伙伴 ID 的链接？
+    answer: >
+      该链接在用户帐户级别关联。 只有你可以编辑或删除合作伙伴 ID 的链接。 客户和其他合作伙伴无法更改合作伙伴 ID 的链接。
+  - question: 如果我的公司有多个 MPN ID，我应该使用哪个 MPN ID？
+    answer: >
+      请务必使用合作伙伴配置文件中显示的“关联 MPN ID”。 它通常是与组织相关联的本地帐户 ID。
+  - question: 如何向客户解释 PAL？
+    answer: >
+      通过 PAL，Microsoft 可以确定并识别在帮助客户实现业务目标并实现云中价值的合作伙伴。 客户必须先向合作伙伴提供对其 Power Apps 资源的访问权限。 授予访问权限后，合作伙伴的 Microsoft 合作伙伴网络 ID (MPN ID) 会进行关联。 此关联可帮助 Microsoft 了解服务提供商，并优化为客户提供最佳支持所需的工具和程序。
+  - question: PAL 收集哪些数据？
+    answer: >
+      与现有凭据的 PAL 关联不向 Microsoft 提供任何新的客户数据。 它向 Microsoft 提供了合作伙伴积极参与客户 Power Apps 环境的信息。 Microsoft 可以根据客户向合作伙伴提供的帐户权限（Power Apps 角色）和范围（租户、资源组、资源），将来自客户环境的使用情况和影响力归结于合作伙伴组织。
+  - question: PAL 关联是否会影响客户的 Power Apps 环境的安全性？
+    answer: PAL 关联仅将合作伙伴的 MPN ID 添加到已预配的凭据中。 它不会更改任何权限（Power Apps 角色），也不会向合作伙伴或 Microsoft 提供额外的 Power Apps 服务数据。

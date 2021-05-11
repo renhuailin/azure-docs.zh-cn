@@ -5,23 +5,25 @@ description: 使用此分步快速入门指南了解如何使用 Azure 门户创
 services: dns
 author: rohinkoul
 ms.author: rohink
-ms.date: 10/20/2020
+ms.date: 04/23/2021
 ms.topic: quickstart
 ms.service: dns
 ms.custom:
 - mode-portal
-ms.openlocfilehash: d08c5768c2c400ff3d842f58081a58708bfc28db
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: f72dd2be2277754100693c2ebb1ef8658ca6f39a
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537776"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107949393"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure DNS 区域和记录
 
 可以将 Azure DNS 配置为解析公共域中的主机名。 例如，如果从某个域名注册机构购买了 contoso.xyz 域名，则可配置 Azure DNS 以托管 contoso.xyz 域，并将 `www.contoso.xyz` 解析为 Web 服务器或 Web 应用的 IP 地址    。
 
 在本快速入门中，你将创建一个测试域，然后创建一个地址记录来将 *www* 解析为 IP 地址 *10.10.10.10*。
+
+:::image type="content" source="media/dns-getstarted-portal/environment-diagram.png" alt-text="使用 Azure 门户的 DNS 部署环境示意图。" border="false":::
 
 >[!IMPORTANT]
 >本快速入门中的所有名称和 IP 地址都是示例，不代表实际场景。

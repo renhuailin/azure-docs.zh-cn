@@ -12,12 +12,12 @@ ms.date: 08/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d2eaf1dce432821dcfc693dc69dcf975a3d8be8d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f79eee17a78bd5cfc9024a333142deaaa44b3e2
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92503855"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071129"
 ---
 # <a name="tutorial-register-a-single-page-application-spa-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中注册单页应用程序 (SPA)
 
@@ -34,12 +34,12 @@ Azure AD B2C 提供了两个选项，用于允许单页应用程序让用户登�
 
 这是 **建议的** 做法。 拥有使用期有限的刷新令牌可以帮助你的应用适应 Safari ITP 之类的[新式浏览器 cookie 隐私限制](../active-directory/develop/reference-third-party-cookies-spas.md)。
 
-若要利用此流，应用程序可以使用支持它的身份验证库，如 [MSAL.js 2.x](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa)。 
+若要利用此流，应用程序可以使用支持它的身份验证库，如 [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)。 
 
 ![单页应用程序 - 授权](./media/tutorial-single-page-app/spa-app-auth.svg)
 
 ### <a name="implicit-grant-flow"></a>隐式授予流
-- [OAuth 2.0 隐式流](implicit-flow-single-page-application.md)。 某些框架（如 [MSAL.js 1.x](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)）仅支持隐式授权流。 隐式授权流允许应用程序获取 **ID** 和 **访问** 令牌。 与授权代码流不同，隐式授权流不会返回 **刷新令牌**。 
+- [OAuth 2.0 隐式流](implicit-flow-single-page-application.md)。 某些库（如 [MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)）仅支持隐式授权流。 隐式授权流允许应用程序获取 **ID** 和 **访问** 令牌。 与授权代码流不同，隐式授权流不会返回 **刷新令牌**。 
 
 ![单页应用程序 - 隐式](./media/tutorial-single-page-app/spa-app.svg)
 

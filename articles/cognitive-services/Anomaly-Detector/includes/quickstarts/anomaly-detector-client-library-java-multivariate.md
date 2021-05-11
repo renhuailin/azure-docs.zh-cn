@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/06/2021
 ms.author: mbullwin
-ms.openlocfilehash: eae4d00cd7b1a0ff90648086320135505a0d900a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: f9ba38b6493ee3dcb246382407552091b97454f0
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107318755"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108121198"
 ---
 开始使用适用于 Java 的异常检测器多变量客户端库。 请按照以下步骤操作，以使用服务提供的算法安装软件包。 新的多变量异常情况检测 API 使开发人员能够轻松地集成高级 AI 来检测指标组中的异常，且无需机器学习知识或标记的数据。 不同信号之间的依赖关系和相互关联会自动计为关键因素。 这可以帮助你主动防范复杂系统发生故障。
 
@@ -22,6 +22,8 @@ ms.locfileid: "107318755"
 * 检测一组时序中的系统级异常。
 * 当任何单独的时序都不能告知太多信息时，而你不得不查看所有信号来检测问题。
 * 使用数十到数百种不同类型的传感器对昂贵的物理资产进行预测维护，以测量系统运行状况的各个方面。
+
+[库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/anomalydetector/azure-ai-anomalydetector) | [包 (Maven)](https://repo1.maven.org/maven2/com/azure/azure-ai-anomalydetector/3.0.0-beta.2/) | [示例代码](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/src/samples/java/com/azure/ai/anomalydetector/MultivariateSample.java)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -151,7 +153,7 @@ AnomalyDetectorClient anomalyDetectorClient = new AnomalyDetectorClientBuilder()
 
 首先，我们需要构造模型请求。 请确保开始时间和结束时间与数据源一致。
 
- 若要使用异常检测器多变量 API，我们需要在使用检测之前先训练自己的模型。 用于训练的数据是一批时序，每个时序应采用 CSV 格式，其中包含两列，即“时间戳”和“值”。 所有时序都应压缩为一个 zip 文件，并上传到 [Azure Blob 存储](../../../../storage/blobs/storage-blobs-introduction.md#blobs)。 默认情况下，文件名将用于表示时序的变量。 或者，如果你希望变量名称与 .zip 文件名不同，也可以在 zip 文件中包含一个额外的 meta.json 文件。 当我们生成 [blob SAS（共享访问签名）URL](../../../../storage/common/storage-sas-overview.md) 后，就可以使用 zip 文件的 URL 进行训练了。
+若要使用异常检测器多变量 API，我们需要在使用检测之前先训练自己的模型。 用于训练的数据是一批时序，每个时序应采用 CSV 文件格式，其中仅包含两列，即“时间戳”和“值”（列名应完全相同） 。 每个 CSV 文件都应该以时序的每个变量命名。 所有时序都应压缩为一个 zip 文件并上传到 [Azure Blob 存储](../../../../storage/blobs/storage-blobs-introduction.md#blobs)，但对于 zip 文件名没有要求。 或者，如果你希望变量名称与 .zip 文件名不同，也可以在 zip 文件中包含一个额外的 meta.json 文件。 当我们生成 [blob SAS（共享访问签名）URL](../../../../storage/common/storage-sas-overview.md) 后，就可以使用 zip 文件的 URL 进行训练了。
 
 ```java
 Path path = Paths.get("test-data.csv");
@@ -253,6 +255,8 @@ Response<Void> deleteMultivariateModelWithResponse = anomalyDetectorClient.delet
 gradle build
 ```
 ### <a name="run-the-application"></a>运行应用程序
+
+在运行它之前，请针对[完整的示例代码](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/src/samples/java/com/azure/ai/anomalydetector/MultivariateSample.java)检查你的代码，这会很有帮助。
 
 使用 `run` 目标运行应用程序：
 

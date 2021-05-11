@@ -3,18 +3,18 @@ title: 快速入门 - 通过成本分析了解 Azure 成本
 description: 本快速入门可帮助你通过成本分析了解和分析 Azure 组织成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 01/04/2021
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: 83f2d87e3f4a03ff17526ea5706e4f87b8f39487
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.custom: contperf-fy21q2, devx-track-azurecli
+ms.openlocfilehash: 9769b6ecb04ca513c4b48ec3d0ca32bdd3c64b5f
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882443"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107887096"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入门：通过成本分析了解和分析成本
 
@@ -68,11 +68,9 @@ ms.locfileid: "97882443"
 
 ### <a name="understand-forecast"></a>了解预测
 
-成本预测显示选定时间段的估计成本预测。 该模型基于时序回归模型。 它需要至少 10 天的最近成本和使用情况数据才能准确预测成本。 对于给定的时间段，预测模型需要使用与预测期间相同时长的训练数据。 例如，对三个月进行预测至少需要三个月的最近成本和使用情况数据。
+根据你最近的使用情况，成本预测会显示选定时间段的估计成本预测。 如果预算是在成本分析中设置的，你便可以查看预测的支出可能会在何时超出预算限额。 预测模型最多可预测未来一年的成本。 选择筛选器可查看所选维度的预测成本明细。
 
-该模型使用最多六个月的训练数据来预测一年的成本。 它至少需要 7 天的训练数据才会改变它的预测。 此预测基于成本和使用模式的巨大变化，例如剧增和剧减。 预测不会为“分组依据”属性中的每个项生成单独的预测。 它仅提供针对总累计成本的预测。 如果你使用多种货币，则模型仅以美元提供成本预测。
-
-由于模型依赖于数据低值与峰值，因此预留实例之类的大规模购买将导致预测变得人为夸大。 预测时间段和购买规模会影响预测受影响的时长。 当支出稳定时，预测将恢复正常。
+该预测模型基于时序回归模型。 它需要至少 10 天的最近成本和使用情况数据才能准确预测成本。 对于给定的时间段，预测模型需要使用与预测期间相同时长的训练数据。 例如，对三个月进行预测至少需要三个月的最近成本和使用情况数据。
 
 ## <a name="customize-cost-views"></a>自定义成本视图
 
@@ -171,7 +169,7 @@ ms.locfileid: "97882443"
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-登录后，请使用 [az costmanagement query](/cli/azure/ext/costmanagement/costmanagement#ext_costmanagement_az_costmanagement_query) 命令来查询订阅本月至今的使用情况信息：
+登录后，请使用 [az costmanagement query](/cli/azure/costmanagement#az_costmanagement_query) 命令来查询订阅本月至今的使用情况信息：
 
 ```azurecli
 az costmanagement query --timeframe MonthToDate --type Usage \
@@ -188,7 +186,7 @@ az costmanagement query --timeframe MonthToDate --type Usage \
 
 --dataset-filter 参数采用 JSON 字符串或 `@json-file`。
 
-还可以选择使用 [az costmanagement export](/cli/azure/ext/costmanagement/costmanagement/export) 命令将使用情况数据导出到 Azure 存储帐户。 可从此处下载数据。
+还可以选择使用 [az costmanagement export](/cli/azure/costmanagement/export) 命令将使用情况数据导出到 Azure 存储帐户。 可从此处下载数据。
 
 1. 创建一个资源组或使用现有资源组。 若要创建资源组，请运行 [az group create](/cli/azure/group#az_group_create) 命令：
 
@@ -202,7 +200,7 @@ az costmanagement query --timeframe MonthToDate --type Usage \
    az storage account create --resource-group TreyNetwork --name cmdemo
    ```
 
-1. 运行 [az costmanagement export create](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_create) 命令以创建导出：
+1. 运行 [az costmanagement export create](/cli/azure/costmanagement/export#az_costmanagement_export_create) 命令以创建导出：
 
    ```azurecli
    az costmanagement export create --name DemoExport --type Usage \

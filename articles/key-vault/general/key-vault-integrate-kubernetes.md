@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: 6cf76e980fab4e5be3f8c2c6d72baff05ab03815
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 5afa90e948a4153f2a27b97d619830586aecfa11
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106108381"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905245"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>教程：为 Kubernetes 上的机密存储 CSI 驱动程序配置并运行 Azure Key Vault 提供程序
 
@@ -296,11 +296,7 @@ kubectl exec nginx-secrets-store-inline -- cat /mnt/secrets-store/secret1
 请验证机密内容已显示。
 
 ## <a name="resources"></a>资源
-[关于 Azure Key Vault](overview.md)
-[Azure Key Vault 开发人员指南](developers-guide.md)
-[CSI 机密驱动程序](https://secrets-store-csi-driver.sigs.k8s.io/introduction.html)
+- [关于 Azure Key Vault](overview.md)
+- [Azure Key Vault 开发人员指南](developers-guide.md)
+- [CSI 机密驱动程序](https://azure.github.io/secrets-store-csi-driver-provider-azure/)
 
-
-为帮助确保密钥保管库可恢复，请参阅：
-> [!div class="nextstepaction"]
-> [启用软删除](./key-vault-recovery.md)

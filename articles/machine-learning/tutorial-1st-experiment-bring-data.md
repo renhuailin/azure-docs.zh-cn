@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: tracking-python, contperf-fy21q3
-ms.openlocfilehash: 503d1d1220cd4704a6e70d0b7e575a70275e5e4d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e664b08f7ca487236e5e2780d183c19d342a915b
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936829"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107888019"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>教程：使用你自己的数据（第 4 部分，共 4 部分）
 
@@ -235,7 +235,7 @@ python 06-run-pytorch-data.py
 
 ### <a name="inspect-the-log-file"></a><a name="inspect-log"></a> 检查日志文件
 
-在工作室中，转到试验运行（通过选择前面的 URL 输出），然后选择“输出 + 日志”。 选择 `70_driver_log.txt` 文件。 应会看到以下输出：
+在工作室中，转到试验运行（通过选择前面的 URL 输出），然后选择“输出 + 日志”。 选择 `70_driver_log.txt` 文件。 向下滚动日志文件，直到看到以下输出：
 
 ```txt
 Processing 'input'.

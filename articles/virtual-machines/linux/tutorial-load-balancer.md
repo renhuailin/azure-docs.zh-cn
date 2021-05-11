@@ -1,40 +1,34 @@
 ---
-title: 教程 - 在 Azure 中对 Linux 虚拟机进行负载均衡
+title: 教程 - 为实现高可用性对 VM 进行负载均衡
 description: 本教程介绍如何使用 Azure CLI 创建负载均衡器，以实现在三个 Linux 虚拟机上高度可用且安全的应用程序
-services: virtual-machines
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
 ms.subservice: networking
-ms.assetid: ''
 ms.service: virtual-machines
 ms.collection: linux
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/13/2017
+ms.date: 04/20/2021
 ms.author: cynthn
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 433bbd51618cfb5624c8ed2c549e1793488f0e81
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 191eb1338533cf1a5f81f4d04c5dfc6fd5cc569c
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553759"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818739"
 ---
-# <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>教程：在 Azure 中使用 Azure CLI 均衡 Linux 虚拟机负载以创建高可用性应用程序
+# <a name="tutorial-load-balance-vms-for-high-availability"></a>教程：为实现高可用性对 VM 进行负载均衡
 
 负载均衡通过将传入请求分布到多个虚拟机来提供更高级别的可用性。 本教程介绍了 Azure 负载均衡器的不同组件，这些组件用于分发流量和提供高可用性。 学习如何：
 
 > [!div class="checklist"]
-> * 创建 Azure 负载均衡器
-> * 创建负载均衡器运行状况探测
-> * 创建负载均衡器流量规则
-> * 使用 cloud-init 创建基本的 Node.js 应用
+> * 创建负载均衡器
+> * 创建运行状况探测器
+> * 创建流量规则
+> * 使用 cloud-init 安装基本的 Node.js 应用
 > * 创建虚拟机并将其附加到负载均衡器
-> * 查看运行中的负载均衡器
+> * 查看负载均衡器的运行情况
 > * 在负载均衡器中添加和删除 VM
 
 本教程在 [Azure Cloud Shell](../../cloud-shell/overview.md) 中使用 CLI，后者已不断更新到最新版本。 若要打开 Cloud Shell，请从任何代码块的顶部选择“试一试”  。
@@ -42,6 +36,7 @@ ms.locfileid: "102553759"
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="azure-load-balancer-overview"></a>Azure 负载均衡器概述
+
 Azure 负载均衡器是位于第 4 层（TCP、UDP）的负载均衡器，通过在正常运行的 VM 之间分发传入流量提供高可用性。 负载均衡器运行状况探测器监视每个 VM 上的给定端口，仅将流量分发给正常运行的 VM。
 
 定义包含一个或多个公共 IP 地址的前端 IP 配置。 利用此前端 IP 配置，可通过 Internet 访问负载均衡器和应用程序。 

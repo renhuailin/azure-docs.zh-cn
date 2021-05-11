@@ -12,20 +12,18 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 1e99e8ff25d895ba2248ddd1ba2520e9f14871a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ba36b80fc6a521b22dc812bdf67c3985a455ff4
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105022800"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071877"
 ---
-# <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow-with-pkce"></a>快速入门：使用具有 PKCE 的授权代码流在 JavaScript SPA 中登录用户并获取访问令牌 
+# <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow-with-pkce"></a>快速入门：使用具有 PKCE 的授权代码流在 JavaScript SPA 中登录用户并获取访问令牌
 
-在本快速入门中，你将下载并运行一个代码示例，该示例演示 JavaScript 单页应用程序 (SPA) 如何通过使用具有代码交换证明密钥 (PKCE) 的授权代码流让用户登录并调用 Microsoft Graph。 此代码示例演示如何获取访问令牌来调用 Microsoft Graph API 或任何 Web API。 
+在本快速入门中，你将下载并运行一个代码示例，该示例演示 JavaScript 单页应用程序 (SPA) 如何通过使用具有代码交换证明密钥 (PKCE) 的授权代码流让用户登录并调用 Microsoft Graph。 此代码示例演示如何获取访问令牌来调用 Microsoft Graph API 或任何 Web API。
 
 有关说明，请参阅[示例工作原理](#how-the-sample-works)。
-
-本快速入门将 MSAL.js v2 与授权代码流配合使用。 若要查看将 MSAL.js v1 与隐式流结合使用的类似快速入门，请参阅[快速入门：在 JavaScript 单页应用中登录用户](./quickstart-v2-javascript.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -51,7 +49,7 @@ ms.locfileid: "105022800"
 >
 > 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
-> 1. 搜索并选择“Azure Active Directory”  。
+> 1. 搜索并选择“Azure Active Directory”。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 > 1. 输入应用程序的 **名称**。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 > 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。 
@@ -84,10 +82,10 @@ ms.locfileid: "105022800"
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-javascript-app"></a>步骤 3：配置 JavaScript 应用
 >
-> 在“应用”文件夹中打开“authConfig.js”文件并更新 `msalConfig` 对象中的 `clientID``authority` 和 `redirectUri` 值 。
+> 在“应用”文件夹中打开“authConfig.js”文件，然后更新 `msalConfig` 对象中的 `clientID`、`authority` 和 `redirectUri` 值 。
 >
 > ```javascript
-> // Config object to be passed to Msal on creation
+> // Config object to be passed to MSAL on creation
 > const msalConfig = {
 >   auth: {
 >     clientId: "Enter_the_Application_Id_Here",
@@ -107,13 +105,13 @@ ms.locfileid: "105022800"
 
 > [!div renderon="docs"]
 >
-> 修改 `msalConfig` 部分中的值，如下所述：
+> 修改 `msalConfig` 部分中的值：
 >
 > - `Enter_the_Application_Id_Here` 是已注册应用程序的应用程序（客户端）ID。
 >
 >    若要查找“应用程序(客户端) ID”的值，请转到 Azure 门户中应用注册的“概览”页面 。
-> - `Enter_the_Cloud_Instance_Id_Here` 是 Azure 云的实例。 对于主要云或全球 Azure 云，请输入 `https://login.microsoftonline.com/`。 对于 **国家** 云（例如“中国”云），请参阅 [国家云](authentication-national-cloud.md)。
-> - `Enter_the_Tenant_info_here` 设置为以下选项之一：
+> - `Enter_the_Cloud_Instance_Id_Here` 是 Azure 云实例。 对于主要云或全球 Azure 云，请输入 `https://login.microsoftonline.com/`。 对于 **国家** 云（例如“中国”云），请参阅 [国家云](authentication-national-cloud.md)。
+> - `Enter_the_Tenant_info_here` 是下列值之一：
 >   - 如果应用程序支持“此组织目录中的帐户”，请将此值替换为“租户 ID”或“租户名称”。 例如，`contoso.microsoft.com`。
 >
 >    若要查找“目录(租户) ID”的值，请转到 Azure 门户中应用注册的“概述”页 。
@@ -133,11 +131,12 @@ ms.locfileid: "105022800"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行
+>
 > 我们已经为项目配置了应用属性的值。
 
 > [!div renderon="docs"]
 >
-> 然后，仍在同一文件夹中，编辑 graphConfig.js 文件并更新 `apiConfig` 对象中的 `graphMeEndpoint` 和 `graphMailEndpoint` 值。
+> 接下来，打开“graphConfig.js”文件，以更新 `apiConfig` 对象中的 `graphMeEndpoint` 和 `graphMailEndpoint` 值。
 >
 > ```javascript
 >   // Add here the endpoints for MS Graph API services you would like to use.
@@ -156,7 +155,7 @@ ms.locfileid: "105022800"
 >
 > `Enter_the_Graph_Endpoint_Here` 是将针对其进行 API 调用的终结点。 对于主要或全局 Microsoft Graph API 服务，请输入 `https://graph.microsoft.com/`（包括末尾的正斜杠）。 若要详细了解国家云上的 Microsoft Graph，请参阅[国家云部署](/graph/deployments)。
 >
-> 如果使用的是主要（全球）Microsoft Graph API 服务，则 graphConfig.js 中的 `graphMeEndpoint` 和`graphMailEndpoint` 值应该类似于：
+> 如果使用的是主要（全球）Microsoft Graph API 服务，则 graphConfig.js 文件中的 `graphMeEndpoint` 和 `graphMailEndpoint` 值应该与下方类似：
 >
 > ```javascript
 > graphMeEndpoint: "https://graph.microsoft.com/v1.0/me",
@@ -165,18 +164,20 @@ ms.locfileid: "105022800"
 >
 > #### <a name="step-4-run-the-project"></a>步骤 4：运行项目
 
-使用 Node.js 在 Web 服务器中运行项目：
+使用 Node.js 在 Web 服务器中运行项目。
 
 1. 若要启动服务器，请从项目目录中运行以下命令：
+
     ```console
     npm install
     npm start
     ```
-1. 浏览到 `http://localhost:3000/`。
+
+1. 转到 `http://localhost:3000/`。
 
 1. 选择“登录”以启动登录过程，然后调用该 Microsoft Graph API。
 
-    首次登录时，系统会提示你允许应用程序访问你的个人资料并将你登录。 成功登录后，你的用户个人资料信息应会显示在页面上。
+    首次登录时，系统会提示你允许应用程序访问你的个人资料并将你登录。 成功登录后，你的用户配置文件信息会显示在页面上。
 
 ## <a name="more-information"></a>详细信息
 
@@ -184,7 +185,7 @@ ms.locfileid: "105022800"
 
 ![展示单页应用程序的授权代码流的示意图。](media/quickstart-v2-javascript-auth-code/diagram-01-auth-code-flow.png)
 
-### <a name="msaljs"></a>msal.js
+### <a name="msaljs"></a>MSAL.js
 
 MSAL.js 库会登录用户并请求令牌，这些令牌用于访问受 Microsoft 标识平台保护的 API。 示例的 index.html 文件包含对库的引用：
 

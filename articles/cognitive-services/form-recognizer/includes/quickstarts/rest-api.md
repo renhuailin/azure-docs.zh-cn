@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 04/28/2021
+ms.date: 04/14/2021
 ms.author: lajanuar
-ms.openlocfilehash: dc537f76790a50c33cc7925633d4ce79692e5f66
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: cd9cf0e4a2abec1ad29d5b34f3d6f473ca5bf71d
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108284909"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564476"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -1097,6 +1097,8 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.3/prebuilt/invoic
 1. 将 `{endpoint}` 替换为从表单识别器订阅中获取的终结点。
 1. 将 `{your ID document URL}` 替换为回执图像的 URL 地址。
 1. 将 `{subscription key}` 替换为从上一步复制的订阅密钥。
+
+### <a name="v21-previewtabv2-1"></a>[v2.1 preview](#tab/v2-1
 
 ```bash
 curl -i -X POST "https://{endpoint}/formrecognizer/v2.1-preview.3/prebuilt/idDocument/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your  ID document URL}'}"

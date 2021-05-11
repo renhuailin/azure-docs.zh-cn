@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: pafarley
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7a05b04872b4f957e879d93972edc45e2932d059
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 3ff345131f6a589db8c758ea4346b77f49c1a9a3
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364084"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139410"
 ---
 # <a name="upgrade-from-read-v2x-to-read-v3x"></a>从 Read v2.x 升级到 Read v3.x
 
@@ -27,7 +27,7 @@ ms.locfileid: "107364084"
 
 |产品类型| 版本 | 3\.x API 路径中的版本字符串 |
 |:-----|:----|:----|
-|服务 | Read 3.0 或 3.1 | 分别为 v3.0 或 v3.1  |
+|服务 | Read 3.0、3.1 或 3.2 | 分别为 v3.0、v3.1 或 v3.2   |
 |服务 | Read 3.2 预览版 | v3.2-preview.1 |
 |容器 | Read 3.0 预览版或 Read 3.1 预览版 | 分别为 v3.0 或 v3.1-preview.2  |
 

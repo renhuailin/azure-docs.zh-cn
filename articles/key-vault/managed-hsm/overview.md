@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.date: 04/01/2021
 ms.author: mbaldwin
 author: msmbaldwin
-ms.openlocfilehash: b56031d131743a3dc8c97bcd3e85d4653cdd2833
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: a9df83535bf0ee7a6c484a7682392d2ad0ef59f7
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107484177"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815317"
 ---
 # <a name="what-is-azure-key-vault-managed-hsm"></a>什么是 Azure Key Vault 托管的 HSM？
 
-Azure Key Vault 托管 HSM 是一项完全托管、高度可用、单租户、符合标准的云服务，通过该服务，可以使用通过 FIPS 140-2 级别 3 验证的 HSM 来保护云应用程序的加密密钥。  
+Azure Key Vault 托管 HSM 是一项完全托管、高度可用、单租户、符合标准的云服务，通过该服务，可以使用通过 FIPS 140-2 级别 3 验证的 HSM 来保护云应用程序的加密密钥。 有关定价信息，请参阅 [Azure Key Vault 定价页](https://azure.microsoft.com/pricing/details/key-vault/)上的“托管的 HSM 池”部分。 
 
 ## <a name="why-use-managed-hsm"></a>为什么要使用托管 HSM？
 

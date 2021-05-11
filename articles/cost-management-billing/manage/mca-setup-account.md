@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/20/2020
+ms.date: 03/19/2021
 ms.author: banders
-ms.openlocfilehash: 7e930ca938b2531fb001c327132f79f703b2ea74
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 15aa3acab9fe98a4c2f5103ba211dde34220c54e
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316413"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107255661"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>设置 Microsoft 客户协议的计费帐户
 
@@ -49,31 +49,54 @@ ms.locfileid: "92316413"
 
 若要完成该设置，需要拥有以下访问权限：
 
-- 签署 Microsoft 客户协议时创建的计费配置文件的所有者。 若要详细了解计费配置文件，请参阅[了解计费配置文件](../understand/mca-overview.md#billing-profiles)。
-
+- 签署 Microsoft 客户协议时创建的计费配置文件的所有者。 若要详细了解计费配置文件，请参阅[了解计费配置文件](../understand/mca-overview.md#billing-profiles)。  
+&mdash; 和 &mdash;
 - 已续订的注册的企业管理员。
+
+### <a name="start-migration-and-get-permission-needed-to-complete-setup"></a>开始迁移并获取完成设置所需的权限
+
+可以使用以下选项启动 EA 注册到 Microsoft 客户协议的迁移体验。
+
+
+- 使用签署 Microsoft 客户协议时收到的电子邮件中的链接登录到 Azure 门户。
+
+- 如果没有电子邮件，请使用以下链接登录。 将 `enrollmentNumber` 替换为续订的企业协议的注册编号。
+
+  `https://portal.azure.com/#blade/Microsoft_Azure_EA/EATransitionToMCA/enrollmentId/<enrollmentNumber>`
+
+如果你同时具备企业管理员和计费帐户所有者角色或计费对象信息角色，则会在 Azure 门户中看到以下页面。 你可以继续设置 EA 注册和 Microsoft 客户协议计费帐户以供转换。
+
+:::image type="content" source="./media/mca-setup-account/setup-billing-account-page.png" alt-text="显示“设置计费帐户”页的屏幕截图" lightbox="./media/mca-setup-account/setup-billing-account-page.png" :::
+
+如果你没有企业协议的企业管理员角色或 Microsoft 客户协议的计费对象信息所有者角色，则可以使用以下信息获取完成设置所需的访问权限。
 
 ### <a name="if-youre-not-an-enterprise-administrator-on-the-enrollment"></a>如果你不是该注册的企业管理员
 
-可以请求该注册的企业管理员完成计费帐户的设置。
+如果你具备计费帐户或计费对象信息所有者角色，但不是企业管理员，则会在 Azure 门户中看到以下页面。
 
-1. 使用签署 Microsoft 客户协议时收到的电子邮件中的链接登录到 Azure 门户。
+:::image type="content" source="./media/mca-setup-account/setup-billing-account-page-not-ea-administrator.png" alt-text="显示“设置计费帐户 - 准备企业协议注册以供转换”页的屏幕截图。" lightbox="./media/mca-setup-account/setup-billing-account-page-not-ea-administrator.png" :::
 
-2. 如果没有电子邮件，请使用以下链接登录。 将 `<enrollmentNumber>` 替换为续订的企业协议的注册编号。
+可以使用两个选项：
 
-   `https://portal.azure.com/#blade/Microsoft_Azure_EA/EATransitionToMCA/enrollmentId/<enrollmentNumber>`
+- 让注册的企业管理员为你提供企业管理员角色。 有关更多信息，请参阅[创建另一个企业管理员](ea-portal-administration.md#create-another-enterprise-administrator)。
+-  你可以为企业管理员提供计费帐户所有者或计费对象信息所有者角色。 有关详细信息，请参阅[在 Azure 门户中管理计费角色](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)。
 
-3. 选择要向其发送请求的企业管理员。
-
-   ![显示邀请企业管理员的屏幕截图](./media/mca-setup-account/ea-mca-invite-admins.png)
-
-4. 选择“发送请求”。 
-
-   管理员将收到一封电子邮件，其中包含有关完成设置的说明。
+获得企业管理员角色后，复制“设置计费帐户”页上的链接。 在 Web 浏览器中打开该链接以继续设置 Microsoft 客户协议。 否则，请将其发送给企业管理员。
 
 ### <a name="if-youre-not-an-owner-of-the-billing-profile"></a>如果你不是计费配置文件的所有者
 
-组织中签署了 Microsoft 客户协议的用户将添加为计费配置文件的所有者。 请求该用户将你添加为所有者，使你能够完成设置。
+如果你是企业管理员，但不具备 Microsoft 客户协议的计费帐户或计费对象信息所有者角色，则会在 Azure 门户中看到以下页面。
+
+如果你认为你具有正确 Microsoft 客户协议的计费对象信息所有者访问权限，并且看到以下消息，请确保你位于组织的正确租户中。 你可能需要更改目录。
+
+:::image type="content" source="./media/mca-setup-account/setup-billing-account-page-not-billing-account-profile-owner.png" alt-text="显示“设置计费帐户 - Microsoft 客户协议计费帐户”页的屏幕截图。" lightbox="./media/mca-setup-account/setup-billing-account-page-not-billing-account-profile-owner.png" :::
+
+可以使用两个选项：
+
+- 让现有计费帐户所有者为你提供计费帐户所有者或计费对象信息所有者角色。 有关详细信息，请参阅[在 Azure 门户中管理计费角色](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
+- 为现有计费帐户所有者提供企业管理员角色。 有关更多信息，请参阅[创建另一个企业管理员](ea-portal-administration.md#create-another-enterprise-administrator)。
+
+获得计费帐户所有者或计费对象信息所有者角色后，复制“设置计费帐户”页上的链接。 在 Web 浏览器中打开该链接以继续设置 Microsoft 客户协议。 否则，请将该链接发送给计费帐户所有者。
 
 ## <a name="understand-changes-to-your-billing-hierarchy"></a>了解计费层次结构的变化
 
@@ -203,7 +226,7 @@ ms.locfileid: "92316413"
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/mca-setup-account/search-cmb.png)
 
-3. 选择计费帐户。 计费帐户的类型为 **Microsoft 客户协议** 。
+3. 选择计费帐户。 计费帐户的类型为 **Microsoft 客户协议**。
 
 4. 在左侧选择“Azure 订阅”。 
 

@@ -9,18 +9,18 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: lajanuar
 ms.topic: overview
-ms.openlocfilehash: 89ab25f45cd35a86d2ff4416ceb851ae6cd5e115
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 07bc3cd9fdda98e6eeb0d7fe4ebefd562aafc47b
+ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104657155"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107992282"
 ---
 # <a name="what-is-custom-translator"></a>什么是自定义翻译？
 
 [自定义翻译](https://portal.customtranslator.azure.ai)是 Microsoft Translator 服务的一项功能，允许翻译企业、应用开发人员和语言服务提供者生成自定义的神经机器翻译 (NMT) 系统。 自定义的翻译系统可无缝集成到现有的应用程序、工作流和网站中。
 
-使用[自定义翻译](https://portal.customtranslator.azure.ai)生成的翻译系统可以通过同一个基于云、[安全](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality)、高效且高度可缩放的 Microsoft 文本[翻译 API V3](../reference/v3-0-translate.md?tabs=curl) 来使用，该 API 版本每天为数十亿条翻译提供支持。
+使用[自定义翻译工具](https://portal.customtranslator.azure.ai)生成的翻译系统可以通过同一个基于云、安全、高性能且高度可缩放的 Microsoft 翻译工具[文本 API V3](../reference/v3-0-translate.md?tabs=curl)来使用，该 API 版本每天为数十亿条翻译提供支持。
 
 自定义翻译支持三十多种语言，可以直接映射到适用于 NMT 的语言。 如需完整的列表，请参阅 [Microsoft Translator 语言](../language-support.md#customization)。
 

@@ -4,21 +4,23 @@ description: 这篇快速入门文章介绍如何使用 Azure PowerShell 来创�
 services: route-server
 author: duongau
 ms.author: duau
-ms.date: 03/02/2021
+ms.date: 04/23/2021
 ms.topic: quickstart
 ms.service: route-server
 ms.custom:
 - mode-api
-ms.openlocfilehash: 608ec3755fcd231d5cc89bbc28a01ce172978144
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 7c28ad86b9194c8120b463581177f659a13d5c2b
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538717"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107949007"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建并配置路由服务器
 
 本文可帮助你使用 PowerShell 将 Azure 路由服务器配置为与虚拟网络中的网络虚拟设备 (NVA) 对等互连。 Azure 路由服务器将会从 NVA 获知路由，并将这些路由配置到虚拟网络中的虚拟机上。 Azure 路由服务器还会将虚拟网络路由播发到 NVA。 有关详细信息，请阅读 [Azure 路由服务器](overview.md)。
+
+:::image type="content" source="media/quickstart-configure-route-server-portal/environment-diagram.png" alt-text="使用 Azure PowerShell 的路由服务器部署环境示意图。" border="false":::
 
 > [!IMPORTANT]
 > Azure 路由服务器（预览版）目前为公共预览版状态。

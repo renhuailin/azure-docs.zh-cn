@@ -6,14 +6,14 @@ ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 02/11/2021
+ms.date: 04/15/2021
 ms.author: banders
-ms.openlocfilehash: 63fbf76b2211e530707f3598d176b646c317cc53
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 687db46ea2f6c9c4fae6e5355e3236cde3d7a401
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100363043"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567241"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>在订阅者与 CSP 之间转移 Azure 订阅
 
@@ -21,7 +21,7 @@ ms.locfileid: "100363043"
 
 在开始转移请求之前，应下载或导出所有要保留的成本和计费信息。 计费和使用情况信息不会随订阅一起转移。 若要详细了解如何导出成本管理数据，请参阅[创建和管理导出的数据](../costs/tutorial-export-acm-data.md)。 若要详细了解如何下载发票和使用情况数据，请参阅[下载或查看 Azure 帐单发票和每日使用数据](download-azure-invoice-daily-usage-date.md)。
 
-任何现有预留都会在转移订阅后停止应用。 在转移订阅之前，请务必[取消所有预留并完成退款](../reservations/exchange-and-refund-azure-reservations.md)。
+任何现有预留都会在转移订阅 90 天后停止应用。 在转移订阅之前，请务必[取消所有预留并完成退款](../reservations/exchange-and-refund-azure-reservations.md)，以避免在 90 天的宽限期后产生费用。
 
 ## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>将 EA 订阅转移到 CSP 合作伙伴
 
@@ -55,9 +55,9 @@ ms.locfileid: "100363043"
 
 ## <a name="transfer-csp-subscription-to-other-offer"></a>将 CSP 订阅转移到其他产品/服务
 
-若要将任何其他订阅从 CSP 合作伙伴转移到任何其他 Azure 套餐，订阅者需要在源 CSP 订阅与目标订阅之间移动资源。
+若要将任何其他订阅从 CSP 合作伙伴转移到任何其他 Azure 套餐，订阅者需要在源 CSP 订阅与目标订阅之间移动资源。 这是由合作伙伴和客户完成的工作 - Microsoft 代表不会完成。
 
-1. 创建目标 Azure 订阅。
+1. 客户创建目标 Azure 订阅。
 1. 请确保源订阅和目标订阅位于相同的 Azure Active Directory (Azure AD) 租户中。 有关更改 Azure AD 租户的详细信息，请参阅[将 Azure 订阅关联或添加到 Azure Active Directory 租户](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
     请注意，CSP 订阅不支持更改目录选项。 例如，你要从云解决方案提供商订阅转移到即用即付订阅。 你需要更改即用即付订阅的目录，使之与该目录匹配。
 
@@ -65,7 +65,7 @@ ms.locfileid: "100363043"
     >  - 将订阅关联到其他目录时，如果用户的角色是使用 [Azure RBAC](../../role-based-access-control/role-assignments-portal.md) 分配的，则用户将失去其访问权限。 经典订阅管理员（包括服务管理员和共同管理员）也会失去访问权限。
     >  - 将订阅与其他目录相关联时，还会从订阅中删除策略分配。
 
-1. 用来执行转移的用户帐户必须对这两个订阅都具有 [Azure RBAC](add-change-subscription-administrator.md) 所有者访问权限。
+1. 用来执行转移的客户用户帐户必须对这两个订阅都具有 [Azure RBAC](add-change-subscription-administrator.md) 所有者访问权限。
 1. 在开始之前，[验证](/rest/api/resources/resources/validatemoveresources)是否所有 Azure 资源都可以从源订阅移动到目标订阅。
     > [!IMPORTANT]
     >  - 某些 Azure 资源无法在订阅之间移动。 若要查看可移动的 Azure 资源的完整列表，请参阅[资源对移动操作的支持](../../azure-resource-manager/management/move-support-resources.md)。

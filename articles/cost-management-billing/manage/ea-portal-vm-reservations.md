@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 072377f98939d996547cb6ee9f9a535b4b32a3dc
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6303a94cec9efc01815b6dc6c697abdfe0f84227
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98597953"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220894"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA 虚拟机预留实例
 
@@ -96,7 +96,7 @@ ms.locfileid: "98597953"
 
 ### <a name="reserved-instance-expiration"></a>预留实例到期
 
-你将在预留前 30 天和到期时收到电子邮件通知。 预留到期时，所部署的 VM 会继续运行，并按即用即付费率计费。 有关详细信息，请参阅[虚拟机预留实例产品/服务](https://azure.microsoft.com/pricing/reserved-vm-instances/)。
+你将收到电子邮件通知，第一封是在预留到期前 30 天收到，另一封是在到期时收到。 预留到期时，所部署的 VM 会继续运行，并按即用即付费率计费。 有关详细信息，请参阅[虚拟机预留实例产品/服务](https://azure.microsoft.com/pricing/reserved-vm-instances/)。
 
 ## <a name="next-steps"></a>后续步骤
 

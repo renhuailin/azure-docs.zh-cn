@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 01/22/2021
-ms.openlocfilehash: d22975199eedae353f2dc12588671ae4b54c85ab
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 45ccced6f083e0d304651a0cea7df90c6396fd88
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109312"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143244"
 ---
 # <a name="tutorial-connect-and-monitor-azure-synapse-spark-application-level-metrics"></a>教程：连接和监视 Azure Synapse Spark 应用程序级指标
 
@@ -190,13 +190,13 @@ curl -X GET -H 'Content-Type: application/x-www-form-urlencoded' \
 GET https://{endpoint}/livyApi/versions/{livyApiVersion}/sparkpools/{sparkPoolName}/sessions/{sessionId}/applications/{sparkApplicationId}/metrics/executors/prometheus?format=html
 ```
 
-| 参数          | 必需 | 说明                                                                               |
-| ------------------ | -------- | ----------------------------------------------------------------------------------------- |
-| endpoint           | True     | 工作区开发终结点，例如 https://myworkspace.dev.azuresynapse.net 。 |
-| livyApiVersion     | True     | 请求的有效 api-version。 目前为 2019-11-01-preview                    |
-| sparkPoolName      | True     | Spark 池的名称。                                                                   |
-| sessionID          | True     | 会话的标识符。                                                               |
-| sparkApplicationId | True     | Spark 应用程序 ID                                                                      |
+| 参数          | 必需 | 说明                                                                                 |
+| ------------------ | -------- | --------------------------------------------------------------------------------------------|
+| endpoint           | True     | 工作区开发终结点，例如 `https://myworkspace.dev.azuresynapse.net.` |
+| livyApiVersion     | True     | 请求的有效 api-version。 目前为 2019-11-01-preview                      |
+| sparkPoolName      | True     | Spark 池的名称。                                                                     |
+| sessionID          | True     | 会话的标识符。                                                                 |
+| sparkApplicationId | True     | Spark 应用程序 ID                                                                        |
 
 示例请求： 
 
@@ -227,13 +227,13 @@ metrics_executor_completedTasks_total{application_id="application_1605509647837_
 GET https://{endpoint}/livyApi/versions/{livyApiVersion}/sparkpools/{sparkPoolName}/sessions/{sessionId}/applications/{sparkApplicationId}/executors
 ```
 
-| 参数          | 必需 | 说明                                                                               |
-| ------------------ | -------- | ----------------------------------------------------------------------------------------- |
-| endpoint           | True     | 工作区开发终结点，例如 https://myworkspace.dev.azuresynapse.net 。 |
-| livyApiVersion     | True     | 请求的有效 api-version。 目前为 2019-11-01-preview                    |
-| sparkPoolName      | True     | Spark 池的名称。                                                                   |
-| sessionID          | True     | 会话的标识符。                                                               |
-| sparkApplicationId | True     | Spark 应用程序 ID                                                                      |
+| 参数          | 必需 | 说明                                                                                 |
+| ------------------ | -------- | --------------------------------------------------------------------------------------------|
+| endpoint           | True     | 工作区开发终结点，例如 `https://myworkspace.dev.azuresynapse.net.` |
+| livyApiVersion     | True     | 请求的有效 api-version。 目前为 2019-11-01-preview                      |
+| sparkPoolName      | True     | Spark 池的名称。                                                                     |
+| sessionID          | True     | 会话的标识符。                                                                 |
+| sparkApplicationId | True     | Spark 应用程序 ID                                                                        |
 
 示例请求
 

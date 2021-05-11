@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 90e72bd12d9115e5ff95213428ae4ac37979dcf3
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 77bfab51cf7ccc9ec6ffe3b0018c0a488b601a0a
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120089"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070202"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-ubuntu-1804-x64-simulator-reference-agent"></a>使用 Ubuntu (18.04 x64) 模拟器引用代理的 Device Update for Azure IoT Hub 教程
 
@@ -112,7 +112,7 @@ Device Update 代理在 IoT 设备上运行后，需要将该设备添加到 Azu
 
 1. 在 Azure 门户中，启动 Device Update IoT 中心。
 2. 创建新设备。
-3. 在页面左侧，导航到“资源管理器”>“IoT 设备”> 选择“新建”。
+3. 在页面左侧，导航到“IoT 设备”> 选择“新建”。
 4. 在“设备 ID”下提供设备的名称 - 确保选中“自动生成密钥”复选框。
 5. 选择“保存”。
 6. 现在，你将返回到“设备”页，你创建的设备应在列表中。 选择该设备。

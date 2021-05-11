@@ -1,21 +1,21 @@
 ---
 title: 更改 Azure 计费帐户的联系人信息
 description: 介绍如何更改 Azure 计费帐户的联系人信息
-author: genlin
-ms.reviewer: dcscontentpm
+author: bandersmsft
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/26/2020
+ms.date: 04/08/2021
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 776c207387ee55b998615131baf77e6c13655b49
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: f394b6b44b2030253f7b78ec68459819c82c3c27
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033931"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480896"
 ---
 # <a name="change-contact-information-for-an-azure-billing-account"></a>更改 Azure 计费帐户的联系人信息
 
@@ -64,6 +64,21 @@ ms.locfileid: "97033931"
     ![显示在什么位置更新地址的屏幕截图](./media/change-azure-account-profile/update-bill-to-list-properties-mca.png)
 1. 输入新的地址，然后选择“保存”。  
     ![显示更新地址的屏幕截图](./media/change-azure-account-profile/update-bill-to-save-mca.png)
+
+## <a name="update-a-po-number"></a>更新 PO 编号
+
+默认情况下，计费对象信息的发票没有关联的 PO 编号。 为计费对象信息添加 PO 编号后，该编号将显示在计费对象信息的发票上。
+
+若要添加或更改计费对象信息的 PO 编号，请使用以下步骤。
+
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 搜索“成本管理 + 计费”，然后选择“计费范围” 。
+1. 选择计费范围。
+1. 在左侧菜单中的“计费”下，选择“计费对象信息” 。
+1. 选择相应的计费对象信息。
+1. 在左侧菜单中的“设置”下，选择“属性” 。
+1. 选择“更新 PO 编号”。
+1. 输入 PO 编号，然后选择“更新”。
 
 ## <a name="service-and-marketing-emails"></a>服务和营销电子邮件
 

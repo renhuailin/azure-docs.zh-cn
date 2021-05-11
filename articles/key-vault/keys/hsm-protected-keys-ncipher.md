@@ -10,29 +10,28 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 02/24/2021
 ms.author: ambapat
-ms.openlocfilehash: e8230404d71b0fe46e8a7cc536d2b5f3a4c5004f
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: f2faabd92a1ebdf9734119d12aea49042b03497a
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588388"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162430"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>导入 Key Vault 的受 HSM 保护的密钥 (nCipher)
 
 > [!WARNING]
-> 本文档中所述的 HSM 密钥导入方法已弃用，在 2021 年 6 月 30 日之后将不再受支持。 它只适用于固件为 12.40.2 或 12.50 且带有修补程序的 HSM 的 nCipher nShield 系列。 强烈建议使用[导入 HSM 密钥的新方法](hsm-protected-keys-byok.md)。
+> 本文档中所述的 HSM 密钥导入方法已弃用，在 2021 年 6 月 30 日之后将不再受支持。 它只适用于固件为 12.40.2 或更新版本的 HSM 的 nCipher nShield 系列。 强烈建议使用[导入 HSM 密钥的新方法](hsm-protected-keys-byok.md)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 为了提高可靠性，在使用 Azure 密钥保管库时，可以在硬件安全模块 (HSM) 中导入或生成永不离开 HSM 边界的密钥。 这种情况通常被称为自带密钥，简称 BYOK。 Azure Key Vault 使用 HSM 的 nCipher nShield 系列（FIPS 140-2 第 2 级验证）来保护密钥。
 
-
-使用本主题中的信息，可帮助规划、生成并传输自己的受 HSM 保护的密钥，以便与 Azure 密钥保管库一起使用。 
+使用本主题中的信息，可帮助规划、生成并传输自己的受 HSM 保护的密钥，以便与 Azure 密钥保管库一起使用。
 
 此功能不适用于 Azure 中国世纪互联。
 
 > [!NOTE]
-> 有关 Azure 密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](../general/overview.md)  
+> 有关 Azure 密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](../general/overview.md)
 > 如需包括为受 HSM 保护的密钥创建密钥保管库的入门教程，请参阅[什么是 Azure 密钥保管库？](../general/overview.md)。
 
 有关生成和通过 Internet 传输受 HSM 保护的密钥的详细信息：
@@ -87,14 +86,16 @@ Microsoft 已与 nCipher Security 联手增强 HSM 的技术开发水平。 这�
 
 使用以下命令启动 Azure PowerShell 会话，并登录 Azure 帐户：
 
-```Powershell
+```powershell
    Connect-AzAccount
 ```
+
 在弹出的浏览器窗口中，输入 Azure 帐户用户名和密码。 然后，使用 [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) 命令：
 
 ```powershell
    Get-AzSubscription
 ```
+
 从输出中，找到用于 Azure 密钥保管库的订阅的 ID。 稍后会用到该订阅 ID。
 
 不要关闭 Azure PowerShell 窗口。
@@ -231,7 +232,6 @@ KeyVault-BYOK-Tools-Switzerland.zip
 
 ---
 
-
 若要验证已下载的 BYOK 工具集的完整性，请从 Azure PowerShell 会话中使用 [Get-filehash](/powershell/module/microsoft.powershell.utility/get-filehash) cmdlet。
 
    ```powershell
@@ -274,7 +274,7 @@ KeyVault-BYOK-Tools-Switzerland.zip
 
 ## <a name="step-3-generate-your-key"></a>步骤 3：生成密钥
 
-在步骤 3 中，请对连接断开的工作站执行以下过程。 若要完成此步骤，HSM 必须处于初始化模式。 
+在步骤 3 中，请对连接断开的工作站执行以下过程。 若要完成此步骤，HSM 必须处于初始化模式。
 
 ### <a name="step-31-change-the-hsm-mode-to-i"></a>步骤 3.1：将 HSM 模式更改为“I”
 
@@ -292,7 +292,7 @@ KeyVault-BYOK-Tools-Switzerland.zip
 
 > [!NOTE]
 > 如果 HSM 不支持较新的密码套件 DLf3072s256mRijndael，则可以将 --cipher-suite=DLf3072s256mRijndael 替换为 --cipher-suite=DLf1024s160mRijndael
-> 
+>
 > 使用 nCipher 软件版本 12.50 附带的 new-world.exe 创建的安全体系与此 BYOK 过程不兼容。 可以使用两个选项：
 > 1) 将 nCipher 软件版本降级为 12.40.2，以创建新的安全体系。
 > 2) 请联系 nCipher 支持人员并请求他们提供 12.50 软件版本的修补程序，该修补程序使你能够使用 new-world.exe 的 12.40.2 版本，该版本与此 BYOK 过程兼容。
@@ -325,86 +325,103 @@ KeyVault-BYOK-Tools-Switzerland.zip
       ```azurepowershell
       "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-NA-1 -w BYOK-SecurityWorld-pkg-NA-1
       ```
+
    * 欧洲：
 
       ```azurepowershell
       "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-EU-1 -w BYOK-SecurityWorld-pkg-EU-1
       ```
+
    * 亚洲：
 
         ```azurepowershell
         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-AP-1 -w BYOK-SecurityWorld-pkg-AP-1
         ```
+
    * 拉丁美洲：
 
         ```azurepowershell
         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-LATAM-1 -w BYOK-SecurityWorld-pkg-LATAM-1
         ```
+
    * 日本：
 
         ```azurepowershell
         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-JPN-1 -w BYOK-SecurityWorld-pkg-JPN-1
         ```
+
    * 韩国：
 
         ```azurepowershell
         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-KOREA-1 -w BYOK-SecurityWorld-pkg-KOREA-1
         ```
+
    * 对于南非：
 
         ```azurepowershell
         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-SA-1 -w BYOK-SecurityWorld-pkg-SA-1
         ```
+
    * 对于阿拉伯联合酋长国：
 
         ```azurepowershell
         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-UAE-1 -w BYOK-SecurityWorld-pkg-UAE-1
         ```
+
    * 澳大利亚：
 
         ```azurepowershell
         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-AUS-1 -w BYOK-SecurityWorld-pkg-AUS-1
         ```
+
    * 对于 [Azure Government](https://azure.microsoft.com/features/gov/)，会使用美国政府的 Azure 实例：
 
         ```azurepowershell
         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-USGOV-1 -w BYOK-SecurityWorld-pkg-USGOV-1
         ```
+
    * 美国政府国防部：
 
         ```azurepowershell
         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-USDOD-1 -w BYOK-SecurityWorld-pkg-USDOD-1
         ```
+
    * 加拿大：
 
         ```azurepowershell
         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-CANADA-1 -w BYOK-SecurityWorld-pkg-CANADA-1
         ```
+
    * 德国：
 
         ```azurepowershell
         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-GERMANY-1 -w BYOK-SecurityWorld-pkg-GERMANY-1
         ```
+
    * 对于德国公共部门：
 
         ```azurepowershell
         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-GERMANY-1 -w BYOK-SecurityWorld-pkg-GERMANY-1
         ```
+
    * 印度：
 
       ```azurepowershell
       "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-INDIA-1 -w BYOK-SecurityWorld-pkg-INDIA-1
       ```
+
    * 对于法国：
 
         ```azurepowershell
         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-FRANCE-1 -w BYOK-SecurityWorld-pkg-FRANCE-1
         ```
+
    * 英国：
 
         ```azurepowershell
         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-UK-1 -w BYOK-SecurityWorld-pkg-UK-1
         ```
+
    * 对于瑞士：
 
         ```azurepowershell
@@ -445,7 +462,6 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
 > 稍后将自己的密钥传送到 Azure 密钥保管库时，Microsoft 就无法将此密钥导出返回给你，因此，请务必安全地备份密钥和安全体系。 请联系 [nCipher](https://www.ncipher.com/about-us/contact-us)，获取有关备份密钥的指导和最佳做法。
 >
 
-
 现在已准备好将密钥传输到 Azure 密钥保管库。
 
 ## <a name="step-4-prepare-your-key-for-transfer"></a>步骤 4：准备要传输的密钥
@@ -461,86 +477,103 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
    ```azurepowershell
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-NA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-NA-
    ```
+
 * 欧洲：
 
    ```azurepowershell
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-EU-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-EU-1
    ```
+
 * 亚洲：
 
    ```azurepowershell
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AP-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AP-1
    ```
+
 * 拉丁美洲：
 
    ```azurepowershell
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-LATAM-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-LATAM-1
    ```
+
 * 日本：
 
    ```azurepowershell
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-JPN-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-JPN-1
    ```
+
 * 韩国：
 
    ```azurepowershell
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-KOREA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-KOREA-1
    ```
+
 * 对于南非：
 
    ```azurepowershell
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SA-1
    ```
+
 * 对于阿拉伯联合酋长国：
 
    ```azurepowershell
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UAE-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UAE-1
    ```
+
 * 澳大利亚：
 
    ```azurepowershell
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AUS-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AUS-1
    ```
+
 * 对于 [Azure Government](https://azure.microsoft.com/features/gov/)，会使用美国政府的 Azure 实例：
 
    ```azurepowershell
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-USGOV-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-USGOV-1
    ```
+
 * 美国政府国防部：
 
    ```azurepowershell
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-USDOD-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-USDOD-1
    ```
+
 * 加拿大：
 
    ```azurepowershell
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-CANADA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-CANADA-1
    ```
+
 * 德国：
 
    ```azurepowershell
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1
    ```
+
 * 对于德国公共部门：
 
    ```azurepowershell
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1
    ```
+
 * 印度：
 
    ```azurepowershell
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-INDIA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-INDIA-1
    ```
+
 * 对于法国：
 
    ```azurepowershell
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-FRANCE-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-FRANCE-1
    ```
+
 * 英国：
 
    ```azurepowershell
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1
    ```
+
 * 对于瑞士：
 
    ```azurepowershell
@@ -560,11 +593,13 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
    ```cmd
    "%nfast_home%\bin\preload.exe" -m 1 -A xferacld -K contosokey "%nfast_home%\python\bin\python" "%nfast_home%\python\examples\aclprint.py"
    ```
+
 * kmfile-dump.exe:
 
    ```cmd
    "%nfast_home%\bin\kmfile-dump.exe" "%NFAST_KMDATA%\local\key_xferacld_contosokey"
    ```
+
   运行这些命令时，将 contosokey 替换为在[生成密钥](#step-3-generate-your-key)步骤的“步骤 3.5：新建密钥”中指定的相同值。
 
 ### <a name="step-42-encrypt-your-key-by-using-microsofts-key-exchange-key"></a>步骤 4.2：使用 Microsoft 的密钥交换密钥加密密钥
@@ -576,92 +611,108 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
    ```azurepowershell
    KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-NA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-NA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
    ```
+
 * 欧洲：
 
    ```azurepowershell
    KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-EU-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-EU-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
    ```
+
 * 亚洲：
 
    ```azurepowershell
    KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AP-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AP-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
    ```
+
 * 拉丁美洲：
 
    ```azurepowershell
    KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-LATAM-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-LATAM-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
    ```
+
 * 日本：
 
    ```azurepowershell
    KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-JPN-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-JPN-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
    ```
+
 * 韩国：
 
    ```azurepowershell
    KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-KOREA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-KOREA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
    ```
+
 * 对于南非：
 
    ```azurepowershell
    KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
    ```
+
 * 对于阿拉伯联合酋长国：
 
    ```azurepowershell
    KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UAE-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UAE-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
    ```
+
 * 澳大利亚：
 
    ```azurepowershell
    KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AUS-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AUS-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
    ```
+
 * 对于 [Azure Government](https://azure.microsoft.com/features/gov/)，会使用美国政府的 Azure 实例：
 
    ```azurepowershell
    KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-USGOV-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-USGOV-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
    ```
+
 * 美国政府国防部：
 
    ```azurepowershell
    KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-USDOD-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-USDOD-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
    ```
+
 * 加拿大：
 
    ```azurepowershell
    KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-CANADA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-CANADA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
    ```
+
 * 德国：
 
    ```azurepowershell
    KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
    ```
+
 * 对于德国公共部门：
 
    ```azurepowershell
    KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
    ```
+
 * 印度：
 
    ```azurepowershell
    KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-INDIA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-INDIA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
    ```
+
 * 对于法国：
 
    ```azurepowershell
    KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-France-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-France-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
    ```
+
 * 英国：
 
    ```azurepowershell
    KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
    ```
+
 * 对于瑞士：
 
   ```azurepowershell
   KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SUI-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SUI-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
   ```
-
 
 运行此命令时，请使用以下说明︰
 

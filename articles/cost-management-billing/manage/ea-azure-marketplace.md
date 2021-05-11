@@ -8,12 +8,12 @@ ms.subservice: enterprise
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: banders
-ms.openlocfilehash: 0f2d3c830f27eec9f521e6f79ac8dce3bce818e9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: ce9dff017a796e420586ad191a59c149bed07190
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442558"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726819"
 ---
 # <a name="azure-marketplace"></a>Azure 市场
 
@@ -74,45 +74,7 @@ LSP 可以从 Azure Enterprise 门户中的价目表页下载 Azure 市场价目
 
 企业协议客户根据其企业协议价格水平为 Azure RemoteApp 付费。 无需额外付费。 标准价格包括初始 40 小时。 无限制价格包括初始 80 小时。 RemoteApp 在 80 小时后停止发出用量。
 
-## <a name="azure-marketplace-faq"></a>Azure 市场常见问题解答
-
-本部分解释 Azure 预付款如何应用到 Azure 市场中的某些第三方经销商服务。
-
-### <a name="what-changed-with-azure-marketplace-services-and-azure-ea-prepayment"></a>Azure 市场服务和 Azure EA 预付款方面有哪些更改？
-
-从 2018 年 3 月 1 日起，某些第三方经销商服务会使用 Azure EA 预付款。 以前，除 Azure 虚拟机预留实例 (RI) 外，其他服务会在 Azure EA 预付款以外计费，并单独开票。
-
-我们扩展了 Azure 预付款的使用范围，现在它包括了频繁购买的、由第三方发布的一些 Azure 市场服务。 Azure 市场中这些服务采用 Azure EA 预付款可帮助简化购买和支付管理过程。
-
-### <a name="why-did-we-make-this-change"></a>为何做出这种更改？
-
-客户不断寻找更多的方法来利用 Azure 预付款提前付款。 此项更改因应了客户的频繁请求，并影响了大部分 Azure 市场客户。
-
-### <a name="how-do-you-benefit"></a>它为客户带来了哪些好处？
-
-客户可获得更简单的计费体验，并且可以更好地使用 Azure EA 预付款。 由于这些服务包含在 Azure 预付款中，因此 Azure EA 预付款会变得更有价值。
-
-### <a name="what-azure-marketplace-services-use-azure-ea-prepayment-and-how-do-i-know"></a>如何知道哪些 Azure 市场服务使用了 Azure EA 预付款？
-
-当购买使用 Azure 预付款的服务时，Azure 市场会显示免责声明。 支持 Red Hat、SUSE、Autodesk 和 Oracle 发布的某些服务。 目前，不会从 Azure 预付款中扣除由其他方发布的名称类似的服务费用。 本 FAQ 末尾提供完整的列表。
-
-### <a name="what-if-my-azure-ea-prepayment-runs-out"></a>如果我的 Azure EA 预付款用完了怎么办？
-
-如果你使用了所有 Azure 预付款并处于超额状态，与这些服务相关的费用会连同所有其他消费服务一起显示在下一份超额发票上。 在实施 2018 年 3 月 1 日更改之前，这些费用会连同其他 Azure 市场服务一起开票。
-
-### <a name="why-dont-all-azure-marketplaces-consume-azure-ea-prepayment"></a>为何并非所有 Azure 市场都使用 Azure EA 预付款？
-
-我们始终致力于在 Azure EA 预付款方面提供最佳客户体验。 此项更改满足了大量客户的需求，能应对 Azure 市场中总支出的很大一部分。 将来可能会添加其他服务。
-
-### <a name="how-does-this-impact-indirect-enrollment-and-partners"></a>这对间接合约和合作伙伴有何影响？
-
-这不会对间接合约客户或合作伙伴产生任何影响。 这些服务与其他其他消费服务一样，受到相同的合作伙伴加价功能的约束。 唯一的变化是，费用将显示在不同的发票上，并在客户的 Azure EA 预付款以外支付费用。
-
-### <a name="is-there-a-list-of-azure-marketplace-services-that-consume-azure-ea-prepayment"></a>是否提供了使用 Azure EA 预付款的 Azure 市场服务列表？
-
-特定的 Azure 市场套餐可以使用 Azure 预付款资金。 有关参与此计划的产品的完整列表，请参阅[使用 Azure 预付款的第三方服务](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment)。
-
-
 ## <a name="next-steps"></a>后续步骤
 
 - 获取有关[定价](ea-pricing-overview.md)的详细信息。
+- 阅读[成本管理 + 计费常见问题解答](../cost-management-billing-faq.yml)，查看有关 Azure 市场服务和 Azure EA 预付款的问题和解答列表。

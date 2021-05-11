@@ -4,23 +4,25 @@ description: 本快速入门介绍如何使用 Azure 门户创建、预配、验
 services: expressroute
 author: duongau
 ms.author: duau
-ms.date: 10/21/2020
+ms.date: 04/23/2021
 ms.topic: quickstart
 ms.service: expressroute
 ms.custom:
 - mode-portal
-ms.openlocfilehash: f62b60a9c33cd1b813b8f3307ec82d4242be168b
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 68c700067727895a69034c6a1e87ec2b1a01a532
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534809"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107946920"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit"></a>快速入门：创建和修改 ExpressRoute 线路
 
 本快速入门介绍如何使用 Azure 门户和 Azure 资源管理器部署模型创建 ExpressRoute 线路。 还可以检查线路状态、更新、删除或取消预配线路。
 
-## <a name="prerequisites"></a>必备条件
+:::image type="content" source="media/expressroute-howto-circuit-portal-resource-manager/environment-diagram.png" alt-text="使用 Azure 门户的 ExpressRoute 线路部署环境示意图。" border="false":::
+
+## <a name="prerequisites"></a>先决条件
 
 * 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 在开始配置之前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。

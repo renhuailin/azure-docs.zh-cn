@@ -3,18 +3,18 @@ title: 快速入门 - 通过 C# 使用对称密钥将设备预配到 Azure IoT �
 description: 本快速入门将使用用于设备预配服务 (DPS) 的 C# 设备 SDK 将对称密钥设备预配到 IoT 中心
 author: wesmc7777
 ms.author: wesmc
-ms.date: 10/21/2020
+ms.date: 04/23/2021
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc
-ms.openlocfilehash: f97840a05115bf5659a6f7579b72786e890051a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e67616c2c92676c3af79e3040bc09d3b1b87a11b
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92429222"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988291"
 ---
 # <a name="quickstart-provision-a-symmetric-key-device-using-c"></a>快速入门：使用 C# 预配对称密钥设备
 
@@ -34,7 +34,7 @@ ms.locfileid: "92429222"
 
 ## <a name="prerequisites"></a>必备条件
 
-* 确保在基于 Windows 的计算机上安装了 [.NET Core 2.1 SDK](https://www.microsoft.com/net/download/windows) 或更高版本。
+* 确保在基于 Windows 的计算机上安装了 [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download) 或更高版本。
 
 * 已安装最新版本的 [Git](https://git-scm.com/download/)。
 
@@ -61,7 +61,7 @@ ms.locfileid: "92429222"
 
 4. 保存注册后，将生成“主要密钥”和“辅助密钥”，并将其添加到注册条目   。 对称密钥设备注册会在“单个注册”选项卡的“注册 ID”列下显示为“symm-key-csharp-device-01” 。 
 
-5. 打开注册并复制生成的“主要密钥”和“辅助密钥”的值 。 稍后你将在添加用于设备预配示例代码的环境变量时使用此密钥值和“注册 ID”。
+5. 打开注册并复制生成的“主要密钥”  的值。 稍后你将在运行设备预配示例代码时使用此密钥值和注册 ID。
 
 
 
@@ -77,92 +77,62 @@ ms.locfileid: "92429222"
 
 <a id="firstbootsequence"></a>
 
-## <a name="prepare-the-device-provisioning-code"></a>准备设备预配代码
+## <a name="run-the-device-provisioning-code"></a>运行设备预配代码
 
-本部分将添加以下四个环境变量，这些变量将作为参数用于设备预配示例代码，以预配对称密钥设备。 
+在本部分，你将使用 3 个参数运行设备预配示例，这些参数将验证设备预配示例代码是在 DPS 资源中用于注册的对称密钥设备。 这三个参数是：
 
-* `DPS_IDSCOPE`
-* `PROVISIONING_REGISTRATION_ID`
-* `PRIMARY_SYMMETRIC_KEY`
-* `SECONDARY_SYMMETRIC_KEY`
+* ID 范围
+* 个人注册的注册 ID。
+* 个人注册的主要对称密钥。
 
-预配代码将根据这些变量联系 DPS 实例，以便对设备进行身份验证。 然后，会根据单个注册配置将设备分配到已链接到 DPS 实例的 IoT 中心。 预配后，示例代码会将一些测试遥测发送到 IoT 中心。
+预配代码将使用这些参数连接 DPS 资源来对设备进行身份验证。 然后，会根据单个注册配置将设备分配到已链接到 DPS 实例的 IoT 中心。 预配后，示例代码将向 IoT 中心发送一条测试遥测消息。
 
-1. 在 [Azure 门户](https://portal.azure.com)中的“设备预配服务”菜单上，选择“概述”，并复制“服务终结点”和“ID 范围” 。 你会将这些值用于 `PROVISIONING_HOST` 和 `DPS_IDSCOPE` 环境变量。
-
-    ![服务信息](./media/quick-create-device-symmetric-key-csharp/extract-dps-endpoints.png)
+1. 在 [Azure 门户](https://portal.azure.com)中的“设备预配服务”菜单上，选择“概述”，然后复制“ID 范围”值 。 在运行示例代码时，将对 `IdScope` 参数使用此值。
 
 2. 打开命令提示符，导航到克隆的示例存储库中的 SymmetricKeySample：
 
     ```cmd
-    cd provisioning\Samples\device\SymmetricKeySample
+    cd azure-iot-samples-csharp\provisioning\Samples\device\SymmetricKeySample
     ```
 
-3. 在“SymmetricKeySample”文件夹中，在文本编辑器中打开“Program.cs”并找到设置 `individualEnrollmentPrimaryKey` 和 `individualEnrollmentSecondaryKey` 字符串的代码行 。 按如下所示更新这些代码行，以使用环境变量，而不是对密钥进行硬编码。
+3. 在 SymmetricKeySample 文件夹中，在文本编辑器中打开 Parameters.cs 。 此文件显示该示例支持的参数。 运行示例时，本文中将仅使用前三个必需的参数。 查看此文件中的代码。 无需任何更改。
  
-    ```csharp
-        //These are the two keys that belong to your individual enrollment. 
-        // Leave them blank if you want to try this sample for an individual enrollment instead
-        //private const string individualEnrollmentPrimaryKey = "";
-        //private const string individualEnrollmentSecondaryKey = "";
-
-        private static string individualEnrollmentPrimaryKey = Environment.GetEnvironmentVariable("PRIMARY_SYMMETRIC_KEY");;
-        private static string individualEnrollmentSecondaryKey = Environment.GetEnvironmentVariable("SECONDARY_SYMMETRIC_KEY");;
-    ```
-
-    此外，找到设置 `registrationId` 字符串的代码行，并按如下所示将其更新为也使用环境变量：
-
-    ```csharp
-        //This field is mandatory to provide for this sample
-        //private static string registrationId = "";
-
-        private static string registrationId = Environment.GetEnvironmentVariable("PROVISIONING_REGISTRATION_ID");;
-    ```
-
-    保存对 Program.cs 所做的更改。
-
-3. 在命令提示符中，为上一部分从单个注册中复制的 ID 范围、注册 ID、主对称密钥和辅助对称密钥添加环境变量。  
-
-    以下命令是展示命令语法的示例。 确保使用正确的值。
-
+    | 参数                         | 必需 | 说明     |
+    | :-------------------------------- | :------- | :-------------- |
+    | `--s` 或 `--IdScope`              | 正确     | DPS 实例的 ID 范围 |
+    | `--i` 或 `--Id`                   | 正确     | 使用个人注册时的注册 ID，或者使用组注册时所需的设备 ID。 |
+    | `--p` 或 `--PrimaryKey`           | 正确     | 个人注册或组注册的主密钥。 |
+    | `--e` 或 `--EnrollmentType`       | 错误    | 注册类型：`Individual` 或 `Group`。 默认为 `Individual` |
+    | `--g` 或 `--GlobalDeviceEndpoint` | 错误    | 设备要连接到的全局终结点。 默认为 `global.azure-devices-provisioning.net` |
+    | `--t` 或 `--TransportType`        | 错误    | 用于与设备预配实例通信的传输。 默认为 `Mqtt`。 可能的值包括 `Mqtt`、`Mqtt_WebSocket_Only`、`Mqtt_Tcp_Only`、`Amqp`、`Amqp_WebSocket_Only`、`Amqp_Tcp_only` 和 `Http1`。|
+     
+4. 在 SymmetricKeySample 文件夹中，在文本编辑器中打开 ProvisioningDeviceClientSample.cs 。 此文件显示了如何结合使用 [SecurityProviderSymmetricKey](/dotnet/api/microsoft.azure.devices.shared.securityprovidersymmetrickey?view=azure-dotnet&preserve-view=true) 类和 [ProvisioningDeviceClient](/dotnet/api/microsoft.azure.devices.provisioning.client.provisioningdeviceclient?view=azure-dotnet&preserve-view=true) 类来预配对称密钥设备。 查看此文件中的代码。  无需任何更改。
+ 
+5. 替换 3 个示例参数后，使用以下命令生成并运行示例代码。 对 ID 范围、注册 ID 和注册主密钥使用正确的值。
+    
     ```console
-    set DPS_IDSCOPE=0ne00000A0A
-    ```
-
-    ```console
-    set PROVISIONING_REGISTRATION_ID=symm-key-csharp-device-01
-    ```
-
-    ```console
-    set PRIMARY_SYMMETRIC_KEY=sbDDeEzRuEuGKag+kQKV+T1QGakRtHpsERLP0yPjwR93TrpEgEh/Y07CXstfha6dhIPWvdD1nRxK5T0KGKA+nQ==
-    ```
-
-    ```console
-    set SECONDARY_SYMMETRIC_KEY=Zx8/eE7PUBmnouB1qlNQxI7fcQ2HbJX+y96F1uCVQvDj88jFL+q6L9YWLLi4jqTmkRPOulHlSbSv2uFgj4vKtw==
-    ```
+    dotnet run --s 0ne00000A0A --i symm-key-csharp-device-01 --p sbDDeEzRuEuGKag+kQKV+T1QGakRtHpsERLP0yPjwR93TrpEgEh/Y07CXstfha6dhIPWvdD1nRxK5T0KGKA+nQ==
+    ```    
 
 
-4. 使用以下命令生成并运行示例代码。
-
-    ```console
-    dotnet run
-    ```
-
-5. 预期输出应与以下内容类似，其中显示根据单个注册设置设备被分配到的已链接的 IoT 中心。 示例“TestMessage”字符串将作为测试发送到此中心：
+6. 预期输出应与以下输出类似，其中显示已根据个人注册设置将设备分配到的已关联的 IoT 中心。 示例“TestMessage”字符串将作为测试发送到此中心：
 
     ```output
-    D:\azure-iot-samples-csharp\provisioning\Samples\device\SymmetricKeySample>dotnet run
-    RegistrationID = symm-key-csharp-device-01
-    ProvisioningClient RegisterAsync . . . Assigned
-    ProvisioningClient AssignedHub: docs-test-iot-hub.azure-devices.net; DeviceID: csharp-device-01
-    Creating Symmetric Key DeviceClient authentication
-    DeviceClient OpenAsync.
-    DeviceClient SendEventAsync.
-    DeviceClient CloseAsync.
-    Enter any key to exit
+    D:\azure-iot-samples-csharp\provisioning\Samples\device\SymmetricKeySample>dotnet run --s 0ne00000A0A --i symm-key-csharp-device-01 --p sbDDeEzRuEuGKag+kQKV+T1QGakRtHpsERLP0yPjwR93TrpEgEh/Y07CXstfha6dhIPWvdD1nRxK5T0KGKA+nQ==
+
+    Initializing the device provisioning client...
+    Initialized for registration Id symm-key-csharp-device-01.
+    Registering with the device provisioning service...
+    Registration status: Assigned.
+    Device csharp-device-01 registered to ExampleIoTHub.azure-devices.net.
+    Creating symmetric key authentication for IoT Hub...
+    Testing the provisioned device with IoT Hub...
+    Sending a telemetry message...
+    Finished.
+    Enter any key to exit.
     ```
     
-6. 在 Azure 门户中，导航到已链接到预配服务的 IoT 中心，并打开“IoT 设备”边栏选项卡。 成功将对称密钥设备预配到中心后，设备 ID 的“状态”会显示为“已启用”。 如果在运行设备示例代码前已打开边栏选项卡，则可能需要按顶部的“刷新”按钮。 
+7. 在 Azure 门户中，导航到已链接到预配服务的 IoT 中心，并打开“IoT 设备”边栏选项卡。 成功将对称密钥设备预配到中心后，设备 ID 的“状态”会显示为“已启用”。 如果在运行设备示例代码前已打开边栏选项卡，则可能需要按顶部的“刷新”按钮。 
 
     ![设备注册到 IoT 中心](./media/quick-create-device-symmetric-key-csharp/hub-registration-csharp.png) 
 

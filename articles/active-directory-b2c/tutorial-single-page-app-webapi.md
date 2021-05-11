@@ -11,12 +11,12 @@ ms.custom: mvc, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 737810a7d07d0d97b2e42acffa17fdd32986c48b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4ed332e9aa0048c87329ce25d0a63b619d2a196
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93421084"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070563"
 ---
 # <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>教程：使用 Azure AD B2C 保护 Node.js Web API 并授予从单页应用程序访问该 API 的权限
 
@@ -112,7 +112,7 @@ app.use((req, res, next) => {
 
 若要更改 SPA 中的设置：
 
-1. 在学习上一篇教程时下载或克隆的 [active-directory-b2c-javascript-msal-singlepageapp][github-js-spa] 项目中，打开 JavaScriptSPA 文件夹中的 apiConfig.js 文件。  
+1. 在学习上一篇教程时下载或克隆的 [ms-identity-b2c-javascript-spa][github-js-spa] 项目中，打开“应用”文件夹中的 apiConfig.js 文件 。
 1. 使用前面创建的 *demo.read* 作用域的 URI 以及 Web API 的 URL 配置示例。
     1. 在 `apiConfig` 定义中，将 `b2cScopes` 值替换为 demo.read 作用域（前面记下的“作用域”值）的完整 URI。  
     1. 将 `webApi` 值中的域更改为在前面的步骤中注册 Web API 应用程序时所添加的重定向 URI。
@@ -202,4 +202,4 @@ app.use((req, res, next) => {
 > [可在 Azure Active Directory B2C 中使用的应用程序类型 >](application-types.md)
 
 <!-- Links - EXTERNAL -->
-[github-js-spa]: https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp
+[github-js-spa]: https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa

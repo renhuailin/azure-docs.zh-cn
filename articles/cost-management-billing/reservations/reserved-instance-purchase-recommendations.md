@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: 4f6187ccb143f065fed236495128add7a2ab1ee4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d70580a34e832d6465571adbc8f0524abeba609a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928530"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767918"
 ---
 # <a name="reservation-recommendations"></a>预留建议
 
@@ -65,5 +65,5 @@ Azure 顾问中提供了预留购买建议。 请注意以下几点：
 - 当使用七天的回溯期时，如果 VM 关闭超过一天，则可能无法获得建议。
 
 ## <a name="next-steps"></a>后续步骤
-
+- 获取[使用 REST API 的预留建议](/rest/api/consumption/reservationrecommendations/list)。
 - 了解 [Azure 预留折扣如何应用于虚拟机](../manage/understand-vm-reservation-charges.md)。

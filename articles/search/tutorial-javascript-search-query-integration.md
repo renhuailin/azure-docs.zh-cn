@@ -1,7 +1,7 @@
 ---
 title: JavaScript 教程：搜索集成亮点
 titleSuffix: Azure Cognitive Search
-description: 了解启用搜索的网站中使用的 JavaScript SDK 搜索查询
+description: 使用此速查表，了解在已启用搜索的网站中使用的 JavaScript SDK 搜索集成查询。
 manager: nitinme
 author: diberry
 ms.author: diberry
@@ -10,16 +10,20 @@ ms.topic: tutorial
 ms.date: 03/09/2021
 ms.custom: devx-track-js
 ms.devlang: javascript
-ms.openlocfilehash: cf4e1b1ecf209b587a45ca4c43607bfa95155aee
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: f6c23c7b0870fe8caed1f82e8ce102539aa2e950
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104723443"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950215"
 ---
-# <a name="4---search-integration-highlights"></a>4 - 搜索集成亮点
+# <a name="4---javascript-search-integration-cheat-sheet"></a>4 - JavaScript 搜索集成速查表
 
 在前面的课程中，您已将搜索添加到静态 Web 应用。 本课重点介绍了建立集成的必要步骤。 如果您正在寻找有关如何将搜索集成到 JavaScript 应用的备忘单，本文介绍您需要了解的内容。
+
+此应用程序可用： 
+* [示例](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/search-website)
+* [演示网站 - aka.ms/azs-good-books](https://aka.ms/azs-good-books)
 
 ## <a name="azure-sdk-azuresearch-documents"></a>Azure SDK @azure/search-documents 
 

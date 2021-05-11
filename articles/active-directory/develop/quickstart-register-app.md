@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 7b7adde8a6e60042bec7695e4553d6470e548316
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: df89335880802680e6074c467227ca49a841d5ca
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055666"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108016646"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>快速入门：将应用程序注册到 Microsoft 标识平台
 
@@ -129,6 +129,7 @@ Microsoft 标识平台在重定向 URI 处重定向用户客户端并在身份�
 1. 选择 **添加** 。
 1. 记录机密的值，以便在客户端应用程序代码中使用。 退出此页面后，此机密值永不再显示。
 
+出于安全原因，Microsoft 限制创建超过 24 个月的客户端密码，并强烈建议客户将其设置为低于 12 个月的值。
 
 ## <a name="next-steps"></a>后续步骤
 

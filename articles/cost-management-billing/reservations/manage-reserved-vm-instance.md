@@ -8,12 +8,12 @@ ms.reviewer: yashesvi
 ms.topic: how-to
 ms.date: 04/21/2021
 ms.author: banders
-ms.openlocfilehash: 64a6b3a313f5078368563af29ab97a871b4c3ae0
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: e8a5e6d40b745efb7fcd50919cd27664b3406b7d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288663"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862842"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 资源的预留
 
@@ -81,14 +81,8 @@ ms.locfileid: "108288663"
 
 ### <a name="how-billing-administrators-view-or-manage-reservations"></a>计费管理员如何查看或管理预留
 
-如果你是计费管理员，请使用以下步骤来查看和管理所有预留项与预留交易。
-
-1. 登录到 [Azure 门户](https://portal.azure.com)，导航到“成本管理 + 计费”。
-    - 如果你是 EA 管理员，请在左侧菜单中选择“计费范围”，然后在计费范围列表中选择一个范围。
-    - 如果你是 Microsoft 客户协议计费配置文件所有者，请在左侧菜单中选择“计费配置文件”。 在计费配置文件列表中选择一个计费配置文件。
-2. 在左侧菜单中，选择“产品 + 服务” > “预留项” 。
-3. 此时将显示 EA 注册或计费配置文件的完整预留项列表。
-4. 计费管理员可以通过选择预留项，然后在出现的窗口中选择“授予访问权限”，来取得预留项的所有权。
+1. 请转到“成本管理 + 计费”，然后在页面左侧选择“预留事务” 。
+2. 如果具有所需的计费权限，便可以查看和管理预留。 如果看不到任何预留，请确保使用创建预留的 Azure AD 租户登录。
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>将一个预订拆分为两个预订
 
@@ -188,3 +182,4 @@ ms.locfileid: "108288663"
  - [续订预留](reservation-renew.md)
  - [租户之间的传输](troubleshoot-reservation-transfers-between-tenants.md)
  - [从 Azure 日志中查找预留项购买者](find-reservation-purchaser-from-logs.md)
+ - [续订预留项](reservation-renew.md)

@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 12/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: ae5887657e7657e60348217c21aa0ed17f9f4b07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ff26289962aa06f9638644e28da23b646554281
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97606294"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865308"
 ---
 # <a name="what-is-azure-time-series-insights-gen2"></a>什么是 Azure 时序见解第 2 代
 
@@ -86,6 +86,21 @@ Azure 时序见解第 2 代为数据处理、存储（数据和元数据）以�
 | 近实时数据浏览 | [Azure 时序见解第 2 代资源管理器](./concepts-ux-panels.md)用户体验提供的可视化功能适用于通过引入管道流式传输的所有数据。 连接事件源后，便可查看、浏览和查询事件数据。 通过这种方式，可以验证设备是否按预期方式发出数据。 此外可以监视 IoT 资产的运行状况、生产效率和整体成效。 |
 | 扩展性和集成 | 通过“导出”选项，可直接在时序浏览器用户体验中使用 Power BI 连接器集成，从而允许客户将在用户体验中创建的时序查询直接导出到 Power BI 桌面并查看其时序图以及其他 BI 分析。 通过从 IoT 时序等各种数据源提供进行分析的单一玻璃窗格，这为投资 Power BI 的行业 IoT 企业提供了一种新的方案。 |
 | 在 Azure 时序见解第 2 代平台上构建的自定义应用程序 | Azure 时序见解第 2 代支持 [JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)。 SDK 提供了丰富的控件并且简化了对查询的访问。 使用 SDK 基于 Azure 时序见解第 2 代生成自定义 IoT 应用程序，以满足业务需求。 还可以直接使用 Azure 时序见解第 2 代[查询 API](./concepts-query-overview.md) 将数据推送到自定义 IoT 应用程序中。 |
+
+## <a name="region-availability"></a>上市区域
+
+请访问 [Azure 全球基础结构/产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=time-series-insights)页面，了解提供 Azure 时序见解的位置。
+
+Azure 时序见解位于单个区域中。 但是，它会在客户部署服务实例的区域之外存储/处理客户数据，但以下区域（不会在区域外复制数据）除外：
+
+* 东亚
+* 东南亚
+*   Australia Southeast
+*   西欧
+*   英国南部
+*   美国西部
+*   法国中部
+*   加拿大中部
 
 ## <a name="next-steps"></a>后续步骤
 

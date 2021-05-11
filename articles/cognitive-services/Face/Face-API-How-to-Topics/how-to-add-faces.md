@@ -11,18 +11,18 @@ ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3643fad1c9e821a78df6d78edeede2341ec79ea8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad669f700fdad6df7306403b3b487d86d6724d10
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91303755"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108016970"
 ---
 # <a name="add-faces-to-a-persongroup"></a>将人脸添加到 PersonGroup
 
 本指南演示了如何将大量人员和人脸添加到 PersonGroup 对象。 此同一策略还适用于 LargePersonGroup、FaceList 和 LargeFaceList 对象。 此示例是通过 C# 使用 Azure 认知服务人脸 .NET 客户端库编写的。
 
-## <a name="step-1-initialization"></a>步骤 1：初始化
+## <a name="step-1-initialization"></a>第 1 步：初始化
 
 下面的代码声明了多个变量并实现了一个帮助程序函数来调度人脸添加请求：
 
@@ -59,7 +59,7 @@ static async Task WaitCallLimitPerSecondAsync()
 }
 ```
 
-## <a name="step-2-authorize-the-api-call"></a>步骤 2：授权 API 调用
+## <a name="step-2-authorize-the-api-call"></a>第 2 步：授权 API 调用
 
 使用客户端库时，必须将订阅密钥传递给 **FaceClient** 类的构造函数。 例如：
 
@@ -71,7 +71,7 @@ private readonly IFaceClient faceClient = new FaceClient(
 
 若要获取订阅密钥，请从 Azure 门户转到 Azure 市场。 有关详细信息，请参阅[订阅](https://www.microsoft.com/cognitive-services/sign-up)。
 
-## <a name="step-3-create-the-persongroup"></a>步骤 3：创建 PersonGroup
+## <a name="step-3-create-the-persongroup"></a>第 3 步：创建 PersonGroup
 
 创建用于保存人员的 PersonGroup，命名为“MyPersonGroup”。
 为了确保整体验证，请求时间排入 `_timeStampQueue` 队列。
@@ -83,7 +83,7 @@ _timeStampQueue.Enqueue(DateTime.UtcNow);
 await faceClient.LargePersonGroup.CreateAsync(personGroupId, personGroupName);
 ```
 
-## <a name="step-4-create-the-persons-for-the-persongroup"></a>步骤 4：为 PersonGroup 创建人员
+## <a name="step-4-create-the-persons-for-the-persongroup"></a>第 4 步：为 PersonGroup 创建人员
 
 可同时创建所有人员，为避免超出调用限制，还会应用 `await WaitCallLimitPerSecondAsync()`。
 
@@ -98,7 +98,7 @@ Parallel.For(0, PersonCount, async i =>
 });
 ```
 
-## <a name="step-5-add-faces-to-the-persons"></a>步骤 5：向人员添加人脸
+## <a name="step-5-add-faces-to-the-persons"></a>第 5 步：向人员添加人脸
 
 添加到不同人员的人脸是并发处理的。 为单个特定人员添加的人脸是按顺序处理的。
 同样，为了确保请求频率在限制范围内，还会调用 `await WaitCallLimitPerSecondAsync()`。
@@ -136,7 +136,8 @@ Parallel.For(0, PersonCount, async i =>
 - 使用 [PersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) API 创建人员。
 - 使用 [PersonGroup 人员 - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API 向人员添加人脸。
 
-## <a name="related-topics"></a>相关主题
+## <a name="next-steps"></a>后续步骤
 
-- [检测图像中的人脸](HowtoDetectFacesinImage.md)
-- [使用大规模功能](how-to-use-large-scale.md)
+在本指南中，你学习了如何将人脸数据添加到 PersonGroup。 接下来，了解如何使用增强的数据结构 PersonDirectory 对人脸数据执行更多操作。
+
+- [使用 PersonDirectory 结构](use-persondirectory.md)

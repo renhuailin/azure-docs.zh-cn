@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 04/02/2021
 ms.author: aahi
-ms.openlocfilehash: e2148f56c216795c5022b86b6a1d90b476a4672e
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: d7f62082d860d8ec39a5937af5c1bae81b372caa
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277277"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906577"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>示例：通过文本分析检测语言
 
@@ -163,7 +163,7 @@ Azure 文本分析 REST API 的[语言检测](https://westus2.dev.cognitive.micr
 
 ### <a name="ambiguous-content"></a>不明确的内容
 
-在某些情况下，可能很难根据输入区分语言。 可以使用 `countryHint` 参数指定 2 个字母的国家/地区代码。 默认情况下，API 使用“US”作为默认的 countryHint，要删除此行为，可以通过将此值设置为空字符串 `countryHint = ""` 来重置此参数。
+在某些情况下，可能很难根据输入区分语言。 可以使用 `countryHint` 参数指定 [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) 国家/地区代码。 默认情况下，API 使用“US”作为默认的 countryHint，要删除此行为，可以通过将此值设置为空字符串 `countryHint = ""` 来重置此参数。
 
 例如，“Impossible”对于英语和法语都是通用的，如果在有限的背景下给出，则响应将基于“美国”国家/地区提示。 如果已知文本来源来自法国，可以将其作为提示给出。
 

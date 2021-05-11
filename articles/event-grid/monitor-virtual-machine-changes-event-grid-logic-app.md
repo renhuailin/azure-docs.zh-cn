@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: estfan, LADocs
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 1a5d8c36382433024efd1f1cc6ba9fd878d28ddc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a170b062127f55ece83dd717d8bd7a00e6531b9b
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92329519"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896993"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>教程：通过 Azure 事件网格和逻辑应用监视虚拟机更改
 
@@ -66,7 +66,7 @@ ms.locfileid: "92329519"
 
    ![逻辑应用创建菜单的屏幕截图，其中显示了名称、订阅、资源组和位置等详细信息。](./media/monitor-virtual-machine-changes-event-grid-logic-app/create-logic-app-for-event-grid.png)
 
-   | properties | 必选 | 值 | 说明 |
+   | properties | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **名称** | 是 | <*logic-app-name*> | 提供逻辑应用的唯一名称。 |
    | **订阅** | 是 | <*Azure-subscription-name*> | 在本教程中，选择同一 Azure 订阅用于所有服务。 |
@@ -101,7 +101,7 @@ ms.locfileid: "92329519"
 
    ![逻辑应用设计器的屏幕截图，其中显示了当资源事件发生时触发器的详细信息编辑器。](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger-details.png)
 
-   | properties | 必选 | 值 | 说明 |
+   | properties | 必须 | 值 | 说明 |
    | -------- | -------- | ----- | ----------- |
    | **订阅** | 是 | <*event-publisher-Azure-subscription-name*> | 选择与事件发布者关联的 Azure 订阅名称。 对于本教程，请选择用于虚拟机的 Azure 订阅名称。 |
    | **资源类型** | 是 | <*event-publisher-Azure-resource-type*> | 选择事件发布者的 Azure 资源类型。 有关 Azure 资源类型的详细信息，请参阅 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)。 对于本教程，请选择 `Microsoft.Resources.ResourceGroups` 值以监视 Azure 资源组。 |
@@ -199,7 +199,7 @@ ms.locfileid: "92329519"
    > [!TIP]
    > 若要选择工作流中的前述步骤的输出，请单击编辑框以显示动态内容列表，或选择“添加动态内容”。 对于多个结果，请选择列表中每个部分的“查看更多”。 若要关闭“动态内容”列表，请再次选择“添加动态内容”。
 
-   | 属性 | 必选 | 值 | 说明 |
+   | 属性 | 必须 | 值 | 说明 |
    | -------- | -------- | ----- | ----------- |
    | **To** | 是 | <*接收方\@域*> | 输入收件人的电子邮件地址。 为进行测试，可以使用自己的电子邮件地址。 |
    | **主题** | 是 | `Resource updated:` **主题** | 输入电子邮件的主题内容。 对于本教程，请输入指定的文本并选择该事件的“主题”字段。 此处，电子邮件主题包含更新资源（虚拟机）的名称。 |
@@ -264,3 +264,11 @@ ms.locfileid: "92329519"
 ## <a name="next-steps"></a>后续步骤
 
 * [使用事件网格创建和路由自定义事件](../event-grid/custom-event-quickstart.md)
+
+请查看以下示例，了解如何使用不同的编程语言将事件发布到事件网格以及如何从事件网格使用事件。 
+
+- [适用于 .NET 的 Azure 事件网格示例](/samples/azure/azure-sdk-for-net/azure-event-grid-sdk-samples/)
+- [适用于 Java 的 Azure 事件网格示例](/samples/azure/azure-sdk-for-java/eventgrid-samples/)
+- [适用于 Python 的 Azure 事件网格示例](/samples/azure/azure-sdk-for-python/eventgrid-samples/)
+- [适用于 JavaScript 的 Azure 事件网格示例](/samples/azure/azure-sdk-for-js/eventgrid-javascript/)
+- [适用于 TypeScript 的 Azure 事件网格示例](/samples/azure/azure-sdk-for-js/eventgrid-typescript/)

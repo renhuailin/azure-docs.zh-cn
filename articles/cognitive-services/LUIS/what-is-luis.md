@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 04/16/2021
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 3a7484269f16cc55fa16597e74b1d0671d16d980
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 3a83e6d62b030c436af31cc853ef0e5c109679a1
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290589"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107945136"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？
 
@@ -33,13 +33,13 @@ ms.locfileid: "108290589"
 
 * **简单**：LUIS 无需你具备任何内行 AI 专业知识或任何机器学习先验知识。 只需单击几下即可生成自己的对话式 AI 应用程序。 你可通过使用我们的[快速入门](luis-get-started-create-app.md)之一来生成你的自定义应用程序，也可使用我们的[预生成域](luis-get-started-create-app.md)应用之一。
 * **安全性、隐私保护和合规性**：由 Azure 基础结构提供支持，LUIS 提供企业级安全性、隐私保护和合规性。 你的数据仍为你所用；你可以随时删除你的数据。 你的数据在存储时进行了加密。 在[此处](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy)了解详细信息。
-* **集成**：可轻松将 LUIS 应用与其他 Microsoft 服务（如 [Microsoft Bot Framework](/composer/tutorial/tutorial-luis)、[QnA Maker](../QnAMaker/choose-natural-language-processing-service.md) 和 [语音服务](../speech-service/get-started-intent-recognition.md)）集成。
+* **集成**：可轻松将 LUIS 应用与其他 Microsoft 服务（如 [Microsoft Bot Framework](https://docs.microsoft.com/composer/tutorial/tutorial-luis)、[QnA Maker](../QnAMaker/choose-natural-language-processing-service.md) 和 [语音服务](../Speech-Service/quickstarts/intent-recognition.md)）集成。
 
 
 ## <a name="luis-scenarios"></a>LUIS 方案
-* [生成企业级聊天机器人](/azure/architecture/reference-architectures/ai/conversational-bot)：本参考体系结构介绍如何使用 Azure Bot Framework 生成企业级聊天机器人 (chatbot)。
-* [商务聊天机器人](/azure/architecture/solution-ideas/articles/commerce-chatbot)：使用 Azure 机器人服务和语言理解服务，开发人员可以为各种方案（例如银行、旅游和娱乐）创建聊天界面。
-* [使用语音助理控制 IoT 设备](/azure/architecture/solution-ideas/articles/iot-controlling-devices-with-voice-assistant)：使用可通过 Internet 访问的所有设备（从联网电视或冰箱到联网电厂中的设备，不一而足）创建无缝对话接口。
+* [生成企业级聊天机器人](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/conversational-bot)：本参考体系结构介绍如何使用 Azure Bot Framework 生成企业级聊天机器人 (chatbot)。
+* [商务聊天机器人](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/commerce-chatbot)：使用 Azure 机器人服务和语言理解服务，开发人员可以为各种方案（例如银行、旅游和娱乐）创建聊天界面。
+* [使用语音助理控制 IoT 设备](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/iot-controlling-devices-with-voice-assistant)：使用可通过 Internet 访问的所有设备（从联网电视或冰箱到联网电厂中的设备，不一而足）创建无缝对话接口。
 
 
 ## <a name="application-development-life-cycle"></a>应用程序开发生命周期
@@ -50,7 +50,7 @@ ms.locfileid: "108290589"
 -   **生成**：使用创作资源来开发应用。 首先定义[意向](luis-concept-intent.md)和[实体](luis-concept-entity-types.md)。 然后，为每个意向添加训练[言语](luis-concept-utterance.md)。 
 -   **测试和改进**：开始使用其他言语测试模型，以了解应用的行为方式，并决定是否需要任何改进。 可遵循以下[最佳做法](luis-concept-best-practices.md)来改进应用程序。 
 -   **发布**：部署应用以进行预测，并使用预测资源查询终结点。 如需详细了解如何创作和预测资源，请参阅[此处](luis-how-to-azure-subscription.md#luis-resources)。 
--   **连接**：连接其他服务，例如 [Microsoft Bot Framework](/composer/tutorial/tutorial-luis)、[QnA Maker](../QnAMaker/choose-natural-language-processing-service.md)和 [语音服务](../speech-service/get-started-intent-recognition.md)。 
+-   **连接**：连接其他服务，例如 [Microsoft Bot Framework](https://docs.microsoft.com/composer/tutorial/tutorial-luis)、[QnA Maker](../QnAMaker/choose-natural-language-processing-service.md)和 [语音服务](../Speech-Service/quickstarts/intent-recognition.md)。 
 -   **优化**：[检查终结点言语](luis-concept-review-endpoint-utterances.md)，以利用真实的示例改进应用程序
 
 如需详细了解如何规划和生成应用程序，请参阅[此处](luis-how-plan-your-app.md)。

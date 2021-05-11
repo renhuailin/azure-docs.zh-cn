@@ -2,17 +2,17 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 04/06/2021
+ms.date: 04/26/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 7098a6f31b78d8a37b4c6104f6027313df33ae7b
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: f2b7fac28d1da7f74091e78808eef7604e6c74f1
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504799"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001860"
 ---
-这一类别有 49 条相关建议。
+这一类别有 51 条相关建议。
 
 |建议 |说明 |严重性 |
 |---|---|---|
@@ -60,8 +60,10 @@ ms.locfileid: "106504799"
 |应将虚拟机迁移到新的 Azure 资源管理器资源 |不推荐使用虚拟机（经典），这些 VM 应迁移到 Azure 资源管理器。<br>由于 Azure 资源管理器现具有完整的 IaaS 功能和其他改进，因此我们在 2020 年 2 月 28 日弃用了通过 Azure Service Manager (ASM) 管理 IaaS 虚拟机 (VM) 的功能。 此功能将于 2023 年 3 月 1 日完全停用。<br><br>有关此工具和迁移的可用资源和信息：<br><a href='https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json'>概述虚拟机（经典）弃用、分步迁移过程和可用的 Microsoft 资源。</a><br><a href='https://docs.microsoft.com/azure/virtual-machines/migration-classic-resource-manager-deep-dive?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json'>有关迁移到 Azure 资源管理器迁移工具的详细信息。</a><br><a href='https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-ps'>使用 PowerShell 迁移到 Azure 资源管理器迁移工具。</a><br />（相关策略：[应将虚拟机迁移到新的 Azure 资源管理器资源](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1d84d5fb-01f6-4d12-ba4f-4a26081d403d)） |高 |
 |应使用系统分配的托管标识来部署虚拟机的来宾配置扩展 |来宾配置扩展需要系统分配的托管标识。 如果安装了来宾配置扩展，但没有系统分配的托管标识，则此策略作用域内的 Azure 虚拟机是不合规的。 <a href='https://aka.ms/gcpol'>了解详细信息</a><br />（相关策略：[来宾配置扩展应部署到具有系统分配的托管标识的 Azure 虚拟机](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fd26f7642-7545-4e18-9b75-8c9bbdee3a9a)） |中型 |
 |应该修复容器安全配置中的漏洞 |修复安装了 Docker 的计算机上安全配置中的漏洞，使它们免受攻击。<br />（相关策略：[应修正容器安全配置中的漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fe8cbc669-f12d-49eb-93e7-9273119e9933)） |高 |
+|应修正 Linux 虚拟机上的安全配置漏洞（由来宾配置提供支持） |修正 Linux 虚拟机上的安全配置漏洞，以保护它们免受攻击。<br />（相关策略：[Linux 虚拟机应符合 Azure 安全基线的要求](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ffc9b3da7-8347-4380-8e70-0a0361d8dedd)） |低 |
 |应该修复计算机上安全配置中的漏洞 |修复计算机上安全配置的漏洞，以保护其免受攻击。<br />（相关策略：[应修复计算机上安全配置中的漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fe1e5fd5d-3e4c-4ce1-8661-7d1873ae6b15)） |低 |
 |应该修复虚拟机规模集上安全配置中的漏洞 |修复虚拟机规模集上安全配置中的漏洞，使其免受攻击。<br />（相关策略：[应修复虚拟机规模集上安全配置中的漏洞](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f3c735d8a-a4ba-4a3a-b7cf-db7754cf57f4)） |高 |
+|应修正 Windows 虚拟机上的安全配置漏洞（由来宾配置提供支持） |修正 Windows 虚拟机上的安全配置漏洞，以保护它们免受攻击。<br />（无相关策略） |低 |
 |应修正虚拟机中的漏洞 |监视由 Azure 安全中心的内置漏洞评估解决方案(由 Qualys 提供支持)所发现的虚拟机上的漏洞发现。<br />（相关策略：[应在虚拟机上启用漏洞评估解决方案](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)） |低 |
 |应在计算机上启用 Windows Defender 攻击防护 |Windows Defender 攻击防护使用 Azure Policy 来宾配置代理。 攻击防护服务具有 4 个组件，旨在锁定设备来阻隔各种攻击途径，并阻止恶意软件攻击中常用的行为，同时让企业能够平衡其安全风险和生产力要求（仅限 Windows）。<br />（相关策略：[审核未启用 Windows Defender 攻击防护的 Windows 计算机](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2fbed48b13-6647-468e-aa2f-1af1d3f4dd40)） |中型 |
 |应将 Windows Web 服务器配置为使用安全通信协议 |为了保护通过 Internet 进行通信的信息的隐私，Web 服务器应使用最新版本的行业标准加密协议，即传输层安全性 (TLS)。 TLS 使用安全证书对计算机之间的连接进行加密来保护网络上的通信。 与早期版本 TLS 1.0-1.2 和 SSL 2-3 相比，TLS 1.3 更快、更安全，而这些早期版本都已视为旧版协议。<br />（相关策略：[审核未使用安全通信协议的 Windows Web 服务器](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f5752e6d6-1206-46d8-8ab1-ecc2f71a8112)） |高 |

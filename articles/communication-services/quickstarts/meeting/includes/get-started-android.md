@@ -6,16 +6,16 @@ ms.author: palatter
 ms.date: 01/25/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 331d8eb6ed74880a855934fad4d3e1afc9b29109
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 4f1f65da9f05b8bc623158bedd029f113d4f300c
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108313518"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903143"
 ---
 本快速入门介绍如何使用适用于 Android 的 Azure 通信服务 Teams 嵌入库加入 Microsoft Teams 会议。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Android Studio](https://developer.android.com/studio)，用于创建 Android 应用程序。
@@ -303,7 +303,7 @@ private void createMeetingClient() {
 
 ## <a name="setup-token-refreshing"></a>安装程序令牌刷新
 
-创建一个可调用的 `tokenRefresher` 方法。 然后创建一个 `fetchToken` 方法以获取用户令牌。 [请参阅此处，了解操作说明](../../access-tokens.md?pivots=programming-language-java)
+创建一个可调用的 `tokenRefresher` 方法。 然后创建一个 `fetchToken` 方法以获取用户令牌。 [请参阅此处，了解操作说明](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens?pivots=programming-language-java)
 
 ```java
 Callable<String> tokenRefresher = () -> {

@@ -10,12 +10,12 @@ ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: cd39f6c484ebe116918611bb1d543c1919a3cb0a
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: c289e69345b2fe537fd80f2cd8b59bc13ce8287b
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222939"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108017294"
 ---
 # <a name="tutorial---configure-your-azure-active-directory-to-issue-verifiable-credentials-preview"></a>教程 - 配置 Azure Active Directory，颁发可验证凭据（预览）
 
@@ -92,7 +92,7 @@ ms.locfileid: "106222939"
 
 ## <a name="create-a-modified-rules-and-display-file"></a>创建修改后的规则和显示文件
 
-在本部分中，我们将使用“示例颁发者”应用当中的规则和显示文件，并稍作修改以创建租户的第一个可验证凭据。
+在本部分中，我们将使用[示例颁发者](https://github.com/Azure-Samples/active-directory-verifiable-credentials/)应用当中的规则和显示文件，并稍作修改以创建租户的第一个可验证凭据。
 
 1. 将规则和 json 显示文件都复制到临时文件夹，并将它们分别重命名为 MyFirstVC-display.json 和 MyFirstVC-rules.json。  你可以在 issuer\issuer_config 下同时找到两个文件
 
@@ -100,7 +100,7 @@ ms.locfileid: "106222939"
 
    ![临时文件夹中的显示和规则文件](media/enable-your-tenant-verifiable-credentials/display-rules-files-temp.png)
 
-2. 在代码编辑器里打开 MyFirstVC-rules.json 文件 
+2. 在代码编辑器里打开 MyFirstVC-rules.json 文件。 
 
     ```json
          {
@@ -125,19 +125,19 @@ ms.locfileid: "106222939"
       
     ```
 
-现在，我们将类型字段更改为“MyFirstVC”。 
+   现在，我们将类型字段更改为“MyFirstVC”。 
 
-  ```json
-   "type": ["MyFirstVC"]
+   ```json
+    "type": ["MyFirstVC"]
   
-  ```
+   ```
 
-保存此更改。
+   保存此更改。
 
- >[!NOTE]
+   >[!NOTE]
    > 在本教程的这一点上，我们不会更改“配置”或“客户端_id”。  我们仍然使用在[入门](get-started-verifiable-credentials.md)中使用过的 Microsoft B2C 租户。 在下一教程中，我们将使用你的 Azure AD。
 
-3. 在代码编辑器里打开 MyFirstVC-display.json 文件
+3. 在代码编辑器里打开 MyFirstVC-display.json 文件。
 
    ```json
        {
@@ -172,17 +172,22 @@ ms.locfileid: "106222939"
       }
    ```
 
-我们来做一些修改，让该可验证凭据视觉上与示例代码的版本不同。 
-    
-```json
-     "card": {
-        "title": "My First VC",
-        "issuedBy": "Your Issuer Name",
-        "backgroundColor": "#ffffff",
-        "textColor": "#000000",
-```
+   我们来做一些修改，让该可验证凭据视觉上与示例代码的版本不同。 
 
-保存次更改。
+    ```json
+         "card": {
+            "title": "My First VC",
+            "issuedBy": "Your Issuer Name",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+          }
+    ```
+ 
+   >[!NOTE]
+   > 为了确保凭据可读且可访问，我们强烈建议你选择[对比度](https://www.w3.org/WAI/WCAG21/Techniques/general/G18)至少为 4.5:1 的文本和背景色。  
+
+   保存次更改。
+
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
 在创建我们的第一个可验证凭据之前，需要创建一个可保存配置和规则文件的“Blob 存储容器”。
@@ -296,7 +301,7 @@ ms.locfileid: "106222939"
     node app.js
     ```
 
-6. 使用其他命令提示符运行 ngrok，在8081上设置 URL
+6. 使用其他命令提示符运行 ngrok，在 8081 上设置 URL。 你可以使用 [ngrok npm 包](https://www.npmjs.com/package/ngrok/)全局安装 ngrok。
 
     ```terminal
     ngrok http 8081
@@ -312,7 +317,7 @@ ms.locfileid: "106222939"
 
 8. 选择“获取凭据”
 9. 在 Authenticator 中扫描 QR 代码。
-10. 在“此应用或网站可能会出现风险” 警告消息中选择“高级”。
+10. 在“此应用或网站可能会出现风险”警告消息中选择“高级”。 
 
   ![初始警告](media/enable-your-tenant-verifiable-credentials/site-warning.png)
 
@@ -321,7 +326,7 @@ ms.locfileid: "106222939"
   ![有关颁发者的第二条警告](media/enable-your-tenant-verifiable-credentials/site-warning-proceed.png)
 
 
-12. 在“添加凭据”页面，请注意以下几点： 
+12. 在“添加凭据”屏幕上，请注意以下几点： 
     1. 在页面顶部，可以看到红色的“未验证”消息
     1. 凭据根据我们对显示文件所做的更改自定义的。
     1. “登录帐户”选项指向 didplayground.b2clogin.com。 
@@ -331,11 +336,11 @@ ms.locfileid: "106222939"
 13. 选择“登录到你的帐户”，然后使用在[入门教程](get-started-verifiable-credentials.md)中提供的凭据信息进行身份验证。
 14. 身份验证成功后，“添加”按钮不再是灰色。选择“添加”。
 
-  ![进行身份验证后添加凭据屏幕](media/enable-your-tenant-verifiable-credentials/add-credential-not-verified-authenticated.png)
+  ![进行身份验证后的添加凭据屏幕](media/enable-your-tenant-verifiable-credentials/add-credential-not-verified-authenticated.png)
 
-现在，我们已使用我们的租户颁发了可验证凭据来生成 vc，同时仍然使用我们的 B2C 租户进行身份验证。
+现在，我们已使用我们的租户颁发了可验证凭据来生成 VC，同时仍然使用我们的 B2C 租户进行身份验证。
 
-  ![由 Azure AD 颁发并由 Azure B2C 实例进行身份验证的 vc](media/enable-your-tenant-verifiable-credentials/my-vc-b2c.png)
+  ![由 Azure AD 颁发并由 Azure B2C 实例进行身份验证的 VC](media/enable-your-tenant-verifiable-credentials/my-vc-b2c.png)
 
 
 ## <a name="test-verifying-the-vc-using-the-sample-app"></a>使用示例应用程序验证 VC

@@ -6,12 +6,12 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 0d70ed8b906c171c001c5bda81a79ca9b65febac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 083c7bf6edc7da1fd617487e91b0a3848fb401fe
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101658674"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107811800"
 ---
 # <a name="microsoft-connected-cache-preview-deployment-scenario-sample-microsoft-connected-cache-within-an-azure-iot-edge-for-industrial-iot-configuration"></a>Microsoft 联网缓存预览部署方案示例：适用于工业 IoT 配置的 Azure IoT Edge 中的 Microsoft 联网缓存
 
@@ -35,8 +35,8 @@ ms.locfileid: "101658674"
 
 3. OT 代理必须将 L4 MCC FQDN/IP 地址添加到允许列表。
 
-若要验证 Microsoft 联网缓存是否正常工作，请在托管模块的 IoT Edge 设备或网络上的任何设备的终端中执行以下命令。
+若要验证 Microsoft 联网缓存是否正常工作，请在托管模块的 IoT Edge 设备或网络上的任何设备的终端中执行以下命令。 将 \<Azure IoT Edge Gateway IP\> 替换为 IoT Edge 网关的 IP 地址或主机名。 （请参阅环境变量详细信息，了解此报表的可见性）。
 
 ```bash
-    wget "http://<L3 IoT Edge Gateway IP>/mscomtest/wuidt.gif?cacheHostOrigin=au.download.windowsupdate.com
+    wget http://<L3 IoT Edge Gateway IP>/mscomtest/wuidt.gif?cacheHostOrigin=au.download.windowsupdate.com
 ```

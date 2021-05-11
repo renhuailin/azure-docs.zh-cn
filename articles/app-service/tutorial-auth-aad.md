@@ -4,15 +4,15 @@ description: 了解如何使用应用服务身份验证和授权来确保应用�
 keywords: 应用服务, azure 应用服务, authN, authZ, 安全, 安全性, 多层, azure active directory, azure ad
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/29/2020
+ms.date: 04/26/2021
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: e35a4abbcaf0cd2298d55c06de0ecfbef0dff354
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c0a232dc0541ea8626cdb40a9b3497a686a5ee11
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765753"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074489"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>教程：在 Azure 应用服务中对用户进行端到端身份验证和授权
 
@@ -240,23 +240,21 @@ git push frontend master
 
 :::image type="content" source="./media/tutorial-auth-aad/portal-navigate-back-end.png" alt-text="“资源组”窗口的屏幕截图，其中显示了示例资源组的概述和选中的后端应用的管理页。":::
 
-在后端应用的左侧菜单中，选择“身份验证/授权”，然后选择“启用”以启用应用服务身份验证 。
+在后端应用的左侧菜单中，选择“身份验证”，然后单击“添加标识提供者”。
 
-在“请求未经身份验证时需执行的操作”中，选择“使用 Azure Active Directory 登录”。 
+在“添加标识提供者”页上，选择“Microsoft”作为“标识提供者”以登录 Microsoft 和 Azure AD 标识。
 
-在“身份验证提供程序”下，选择“Azure Active Directory”。
+对于“应用程序注册” > “应用程序注册类型”，请选择“新建应用程序注册”。
+
+对于“应用程序注册” > “支持的帐户类型”，请选择“当前租户-单租户”。
+
+在“应用服务身份验证设置”部分中，将“身份验证”设置为“要求身份验证”，并将“未验证请求”设置为“HTTP 302 Found 重定向：建议网站选用”。
+
+在“添加标识提供者”页的底部，单击“添加”为 Web 应用启用身份验证。
 
 :::image type="content" source="./media/tutorial-auth-aad/configure-auth-back-end.png" alt-text="后端应用左侧菜单的屏幕截图，其中显示了选中的身份验证/授权和在右菜单中选中的设置。":::
 
-选择“快速”，接受创建新 AD 应用所需的默认设置，然后选择“确定” 。
-
-在“身份验证/授权”页中，选择“保存” 。
-
-看到包含消息`Successfully saved the Auth Settings for <back-end-app-name> App`的通知后，刷新门户页。
-
-再次选择“Azure Active Directory”，然后选择“Azure AD 应用” 。
-
-将 Azure AD 应用程序的 **客户端 ID** 复制到记事本。 稍后需要用到此值。
+这时会显示“身份验证”页。 将 Azure AD 应用程序的 **客户端 ID** 复制到记事本。 稍后需要用到此值。
 
 :::image type="content" source="./media/tutorial-auth-aad/get-application-id-back-end.png" alt-text="显示 Azure AD 应用的“Azure Active Directory 设置”窗口和显示要复制的客户端 ID 的“Azure AD 应用程序”窗口的屏幕截图。":::
 

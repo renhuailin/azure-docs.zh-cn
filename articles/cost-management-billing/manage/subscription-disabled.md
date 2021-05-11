@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/19/2021
+ms.date: 03/30/2021
 ms.author: banders
-ms.openlocfilehash: d7b5f1ae6db633bd1af10b1a0de1392c2a1fbcef
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 37093900bf49e8a7613e2e3f4311548675791ceb
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685522"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220877"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>重新激活已禁用的 Azure 订阅
 
@@ -23,7 +23,7 @@ Azure 订阅被禁用可能是因为额度已过期、达到了支出限制、�
 
 ## <a name="your-credit-is-expired"></a>信用已过期
 
-注册 Azure 免费帐户时，将获得免费试用订阅，它提供为期 30 天、价值 $200 的 Azure 信用额度以及 12 个月的免费服务。 30 天结束后，Azure 会禁用订阅。 禁用订阅是为了防止你在意外情况下因使用量超出订阅的信用额度和免费服务而产生相应的费用。 若要继续使用 Azure 服务，则必须[升级订阅](upgrade-azure-subscription.md)。 升级之后，你的订阅仍可使用 12 个月的免费服务。 只需对超出免费服务用量限制的使用量付费即可。
+注册 Azure 免费帐户时，将获得免费试用版订阅，它提供为期 30 天、价值 200 美元的 Azure 额度（以计费货币表示）以及 12 个月的免费服务。 30 天结束后，Azure 会禁用订阅。 禁用订阅是为了防止你在意外情况下因使用量超出订阅的信用额度和免费服务而产生相应的费用。 若要继续使用 Azure 服务，则必须[升级订阅](upgrade-azure-subscription.md)。 升级之后，你的订阅仍可使用 12 个月的免费服务。 只需对超出免费服务用量限制的使用量付费即可。
 
 ## <a name="you-reached-your-spending-limit"></a>已达到支出限制
 

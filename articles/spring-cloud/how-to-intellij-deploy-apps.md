@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 64ff778f9735c690f4622402ef2e3124185fa3ea
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 45528c95fd4ce60e267870798585428e9b2bf44b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877072"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135016"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>使用 IntelliJ 部署 Azure Spring Cloud 应用程序
 
@@ -20,13 +20,13 @@ ms.locfileid: "104877072"
 
 适用于 Azure Spring Cloud 的 IntelliJ 插件支持从 IntelliJ IDEA 进行应用程序部署。  
 
-在运行此示例之前，可以尝试[基础知识快速入门](spring-cloud-quickstart.md)。
+在运行此示例之前，可以尝试[基础知识快速入门](./quickstart.md)。
 
 ## <a name="prerequisites"></a>先决条件
 * [IntelliJ IDEA 社区版/旗舰版，版本 2020.1/2020.2](https://www.jetbrains.com/idea/download/#section=windows)
 
 ## <a name="install-the-plug-in"></a>安装插件
-可以从 IntelliJ“插件”UI 添加 Azure Toolkit for IntelliJ IDEA 3.43.0。
+可以从 IntelliJ“插件”UI 添加 Azure Toolkit for IntelliJ IDEA 3.51.0。
 
 1. 启动 IntelliJ。  如果以前打开过某个项目，请关闭该项目以显示“欢迎”对话框。 从右下方的链接中选择“配置”，然后单击“插件”以打开插件配置对话框，然后选择“从磁盘安装插件”。  
 

@@ -7,15 +7,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 10/26/2020
+ms.date: 04/14/2021
 ms.author: lajanuar
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 52acb6d0e99d54491dc1ce30545629ba246acc77
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: feff8b003428fd61fba826d05f8212fa8d9788f9
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102445217"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107601926"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -23,7 +23,7 @@ ms.locfileid: "102445217"
 <!-- markdownlint-disable MD034 -->
 > [!IMPORTANT]
 >
-> * 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。 请参阅下面的参考文档。 
+> * 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。 请参阅下面的参考文档。
 
 [参考文档](../../index.yml) | [库源代码](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/formrecognizer/ai-form-recognizer/) | [包 (npm)](https://www.npmjs.com/package/@azure/ai-form-recognizer) | [示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples)
 
@@ -32,7 +32,7 @@ ms.locfileid: "102445217"
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
 * 最新版本的 [Node.js](https://nodejs.org/)
 * 包含一组训练数据的 Azure 存储 Blob。 有关整理训练数据集的提示和选项，请参阅[为自定义模型生成训练数据集](../../build-training-data-set.md)。 对于本快速入门，可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)（下载并提取 sample_data.zip）的“训练”文件夹下的文件。
-* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="创建表单识别器资源"  target="_blank">创建表单识别器资源 </a>，获取密钥和终结点。 部署后，单击“转到资源”。
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="创建表单识别器资源"  target="_blank">创建表单识别器资源 </a>，获取密钥和终结点。 部署后，选择”转到资源”。
   * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到表单识别器 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
   * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 
@@ -40,13 +40,13 @@ ms.locfileid: "102445217"
 
 ### <a name="create-a-new-nodejs-application"></a>创建新的 Node.js 应用程序
 
-在控制台窗口（例如 cmd、PowerShell 或 Bash）中，为应用创建一个新目录并导航到该目录。 
+在控制台窗口（例如 cmd、PowerShell 或 Bash）中，为应用创建一个新目录并导航到该目录。
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-运行 `npm init` 命令以使用 `package.json` 文件创建一个 node 应用程序。 
+运行 `npm init` 命令以使用 `package.json` 文件创建一个 node 应用程序。
 
 ```console
 npm init
@@ -69,18 +69,18 @@ npm install @azure/ai-form-recognizer
 > [!TIP]
 > 想要立即查看整个快速入门代码文件？ 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/FormRecognizer/FormRecognizerQuickstart.js) 上找到它，其中包含此快速入门中的代码示例。
 
-为资源的 Azure 终结点和密钥创建变量。 
+为资源的 Azure 终结点和密钥创建变量。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_creds)]
 
 > [!IMPORTANT]
-> 转到 Azure 门户。 如果在“先决条件”部分中创建的表单识别器资源已成功部署，请单击“后续步骤”下的“转到资源”按钮  。 在资源的“密钥和终结点”页的“资源管理”下可以找到密钥和终结点 。 
+> 转到 Azure 门户。 如果在“先决条件”部分中创建的表单识别器资源已成功部署，请单击“后续步骤”下的“转到资源”按钮  。 在资源的“密钥和终结点”页的“资源管理”下可以找到密钥和终结点 。
 >
 > 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 有关详细信息，请参阅认知服务[安全性](../../../cognitive-services-security.md)文章。
 
 ## <a name="object-model"></a>对象模型
 
-使用表单识别器，可以创建两种不同的客户端类型。 第一种是 `FormRecognizerClient`，用于查询服务以识别表单域和内容。 第二种是 `FormTrainingClient`，用于创建和管理可用于改进识别的自定义模型。 
+使用表单识别器，可以创建两种不同的客户端类型。 第一种是 `FormRecognizerClient`，用于查询服务以识别表单域和内容。 第二种是 `FormTrainingClient`，用于创建和管理可用于改进识别的自定义模型。
 
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
 
@@ -88,13 +88,13 @@ npm install @azure/ai-form-recognizer
 
 * 使用为了分析自定义表单而训练的自定义模型，来识别表单字段和内容。 这些值在 `RecognizedForm` 对象的集合中返回。
 * 无需训练模型即可识别表单内容，包括表格、行和单词。 表单内容在 `FormPage` 对象的集合中返回。
-* 使用表单识别器服务上预先训练的回执模型，识别回执中的常见字段。 这些字段和元数据在 `RecognizedReceipt` 的集合中返回。
+* 使用表单识别器服务上预先训练的模型，识别美国回执、名片、发票和标识文件中的常见字段。
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 
 `FormTrainingClient` 提供操作以实现以下目的：
 
-* 训练自定义模型，以分析在自定义表单中找到的所有字段和值。 将会返回一个 `CustomFormModel`，它指示模型将分析的表单类型，以及将为每种表单类型提取的字段。 有关创建定型数据集的更详细说明，请参阅[关于无标签模型训练的服务文档](#train-a-model-without-labels)。
+* 训练自定义模型，以分析在自定义表单中找到的所有字段和值。 将会返回一个 `CustomFormModel`，它指示模型将分析的表单类型，以及将为每种表单类型提取的字段。 有关更多详细信息，请参阅[关于无标签模型训练的服务文档](#train-a-model-without-labels)。
 * 训练自定义模型，以分析通过标记自定义表单指定的特定字段和值。 返回一个 `CustomFormModel`，它指示模型将提取的字段以，及每个字段的估计准确度。 有关将标签应用于定型数据集的更详细说明，请参阅[关于带标签的模型训练的服务文档](#train-a-model-with-labels)。
 * 管理在帐户中创建的模型。
 * 将自定义模型从一个表单识别器资源复制到另一个资源。
@@ -109,34 +109,33 @@ npm install @azure/ai-form-recognizer
 * [对客户端进行身份验证](#authenticate-the-client)
 * [分析布局](#analyze-layout)
 * [分析回执](#analyze-receipts)
+* [分析名片](#analyze-business-cards)
+* [分析发票](#analyze-invoices)
+* [分析标识文档](#analyze-identity-documents)
 * [训练自定义模型](#train-a-custom-model)
 * [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
 * [管理自定义模型](#manage-your-custom-models)
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
-
-
 使用定义的订阅变量对客户端对象进行身份验证。 你将使用 `AzureKeyCredential` 对象，因此，如果需要，你可以更新 API 密钥而无需创建新的客户端对象。 你还将创建训练客户端对象。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_auth)]
 
-
 ## <a name="get-assets-for-testing"></a>获取用于测试的资产
 
 还需要为训练和测试数据添加对 URL 的引用。
-* [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
-   
-   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL 检索":::
-* 使用以下示例中包含的示例和回执图像（也可以在 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/test-assets) 上获得），或使用上述步骤来获取 blob 存储中单个文档的 SAS URL。 
 
+* [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
+
+   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL 检索":::
+* 使用以下示例中包含的示例和回执图像（也可以在 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/assets) 上获得），或使用上述步骤来获取 blob 存储中单个文档的 SAS URL。
 
 ## <a name="analyze-layout"></a>分析布局
 
 可以使用表单识别器分析文档中的表格、线条和单词，而无需训练模型。 有关布局提取的详细信息，请参阅[布局概念指南](../../concept-layout.md)。 若要分析位于给定 URI 的文件的内容，请使用 `beginRecognizeContentFromUrl` 方法。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_getcontent)]
-
 
 > [!TIP]
 > 还可从本地文件中获取内容。 请参阅 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) 方法，例如 beginRecognizeContent。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上的示例代码，了解涉及本地图像的方案。
@@ -157,7 +156,61 @@ cell [1,3] has text $56,651.49
 cell [1,5] has text PT
 ```
 
+## <a name="analyze-receipts"></a>分析回执
 
+本部分演示如何使用预先训练的收据模型分析和提取美国收据中的常见字段。 有关收据分析的详细信息，请参阅[收据概念指南](../../concept-receipts.md)。
+
+若要分析位于某个 URI 的收据，请使用 `beginRecognizeReceiptsFromUrl` 方法。 下面的代码处理给定 URI 的回执，并将主字段和值输出到控制台。
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_receipts)]
+
+> [!TIP]
+> 你还可以分析本地收据图像。 请参阅 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) 方法，例如 beginRecognizeReceipts。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上的示例代码，了解涉及本地图像的方案。
+
+### <a name="output"></a>输出
+
+```console
+status: notStarted
+status: running
+status: succeeded
+First receipt:
+  Receipt Type: 'Itemized', with confidence of 0.659
+  Merchant Name: 'Contoso Contoso', with confidence of 0.516
+  Transaction Date: 'Sun Jun 09 2019 17:00:00 GMT-0700 (Pacific Daylight Time)', with confidence of 0.985
+    Item Name: '8GB RAM (Black)', with confidence of 0.916
+    Item Name: 'SurfacePen', with confidence of 0.858
+  Total: '1203.39', with confidence of 0.774
+```
+
+## <a name="analyze-business-cards"></a>分析名片
+
+本部分演示如何使用预先训练的模型分析和提取英文名片中的常见字段。 有关名片分析的详细信息，请参阅[名片概念指南](../../concept-business-cards.md)。
+
+若要分析位于某个 URL 的名片，请使用 `beginRecognizeBusinessCardsFromURL` 方法。
+
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js" id="snippet_bc":::
+
+> [!TIP]
+> 你还可以分析本地名片图像。 请参阅 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) 方法，例如 beginRecognizeBusinessCards。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上的示例代码，了解涉及本地图像的方案。
+
+## <a name="analyze-invoices"></a>分析发票
+
+本部分演示如何使用预先训练的模型分析和提取销售发票中的常见字段。 有关发票分析的详细信息，请参阅[发票概念指南](../../concept-invoices.md)。
+
+若要分析位于某个 URL 的发票，请使用 `beginRecognizeInvoicesFromUrl` 方法。
+
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js" id="snippet_invoice":::
+
+> [!TIP]
+> 你还可以分析本地名片图像。 请参阅 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) 方法，例如 beginRecognizeInvoices。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上的示例代码，了解涉及本地图像的方案。
+
+## <a name="analyze-identity-documents"></a>分析标识文档
+
+本部分演示如何使用表单识别器预生成的 ID 模型，分析和提取政府颁发的标识文档（全球护照和美国驾照）中的关键信息。 有关发票分析的详细信息，请参阅[预生成的标识模型概念指南](../../concept-identification-cards.md)。
+
+若要分析位于某个 URL 的标识文档，请使用 `beginRecognizeIdDocumentsFromUrl` 方法。
+
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js" id="snippet_id":::
 
 ## <a name="train-a-custom-model"></a>训练自定义模型
 
@@ -170,14 +223,13 @@ cell [1,5] has text PT
 
 训练自定义模型可分析在自定义表单中找到的所有字段和值，无需手动标记训练文档。
 
-下面的函数使用给定文档集训练模型，并将该模型的状态输出到控制台。 
+下面的函数使用给定文档集训练模型，并将该模型的状态输出到控制台。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_train)]
 
-
 ### <a name="output"></a>输出
 
-这是使用 [JavaScript SDK](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer) 中提供的训练数据进行训练的模型的输出。为了提高可读性，此示例输出已被截断。
+这是使用 [JavaScript SDK](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer) 中提供的训练数据进行训练的模型的输出。 为了提高可读性，此示例输出已截断。
 
 ```console
 training status: creating
@@ -199,15 +251,15 @@ The model found field 'field-7'
 Document name: Form_1.jpg
 Document status: succeeded
 Document page count: 1
-Document errors: 
+Document errors:
 Document name: Form_2.jpg
 Document status: succeeded
 Document page count: 1
-Document errors: 
+Document errors:
 Document name: Form_3.jpg
 Document status: succeeded
 Document page count: 1
-Document errors: 
+Document errors:
 ...
 ```
 
@@ -217,10 +269,9 @@ Document errors:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_trainlabels)]
 
+### <a name="output"></a>输出
 
-### <a name="output"></a>输出 
-
-这是使用 [JavaScript SDK](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 中提供的训练数据进行训练的模型的输出。为了提高可读性，此示例输出已被截断。
+这是使用 [JavaScript SDK](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 中提供的训练数据进行训练的模型的输出。 为了提高可读性，此示例输出已截断。
 
 ```console
 training status: creating
@@ -264,7 +315,6 @@ Document errors: undefined
 > [!TIP]
 > 还可以分析本地文件。 请参阅 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) 方法，例如 beginRecognizeCustomForms。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上的示例代码，了解涉及本地图像的方案。
 
-
 ### <a name="output"></a>输出
 
 ```console
@@ -301,32 +351,6 @@ Field Signature has value 'undefined' with a confidence score of undefined
 Field Subtotal has value 'undefined' with a confidence score of undefined
 Field Tax has value 'undefined' with a confidence score of undefined
 Field Total has value 'undefined' with a confidence score of undefined
-```
-
-## <a name="analyze-receipts"></a>分析回执
-
-本部分演示如何使用预先训练的收据模型分析和提取美国收据中的常见字段。 有关收据分析的详细信息，请参阅[收据概念指南](../../concept-receipts.md)。
-
-若要分析位于某个 URI 的收据，请使用 `beginRecognizeReceiptsFromUrl` 方法。 下面的代码处理给定 URI 的回执，并将主字段和值输出到控制台。
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_receipts)]
-
-> [!TIP]
-> 你还可以分析本地收据图像。 请参阅 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) 方法，例如 beginRecognizeReceipts。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上的示例代码，了解涉及本地图像的方案。
-
-### <a name="output"></a>输出
-
-```console
-status: notStarted
-status: running
-status: succeeded
-First receipt:
-  Receipt Type: 'Itemized', with confidence of 0.659
-  Merchant Name: 'Contoso Contoso', with confidence of 0.516
-  Transaction Date: 'Sun Jun 09 2019 17:00:00 GMT-0700 (Pacific Daylight Time)', with confidence of 0.985
-    Item Name: '8GB RAM (Black)', with confidence of 0.916
-    Item Name: 'SurfacePen', with confidence of 0.858
-  Total: '1203.39', with confidence of 0.774
 ```
 
 ## <a name="manage-your-custom-models"></a>管理自定义模型
@@ -422,7 +446,7 @@ node index.js
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="troubleshooting"></a>疑难解答

@@ -7,16 +7,16 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: quickstart
-ms.date: 12/02/2020
+ms.topic: include
+ms.date: 04/19/2021
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 01149eed5cc4195ca501507e7fe1d66fffecb84d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 2f01b1d222470c49505638be64180948b6f7e046
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107327524"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728242"
 ---
 使用光学字符识别 REST API 读取印刷体文本和手写文本。
 
@@ -37,6 +37,8 @@ ms.locfileid: "107327524"
 
 OCR 服务可以读取图像中的可见文本，并将其转换为字符流。 有关文本识别的详细信息，请参阅[光学字符识别 (OCR)](../overview-ocr.md) 概述。
 
+### <a name="call-the-read-api"></a>调用读取 API
+
 要创建和运行示例，请执行以下步骤：
 
 1. 将以下命令复制到文本编辑器中。
@@ -53,6 +55,8 @@ curl -v -X POST "https://westcentralus.api.cognitive.microsoft.com/vision/v3.2/r
 ```
 
 响应将包含一个 `Operation-Location` 标头，其值为唯一的 URL。 使用此 URL 可以查询读取操作的结果。 该 URL 在 48 小时后过期。
+
+### <a name="get-read-results"></a>获取读取结果
 
 1. 将以下命令复制到文本编辑器中。
 1. 将该 URL 替换为在上一步骤中复制的 `Operation-Location` 值。
@@ -131,7 +135,9 @@ curl -v -X GET "https://westcentralus.api.cognitive.microsoft.com/vision/v3.2/re
 
 ## <a name="next-steps"></a>后续步骤
 
-深入探索 OCR API。 要快速体验 API，请尝试使用[开放 API 测试控制台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005/console)。
+在本快速入门中，你学习了如何调用读取 REST API。 接下来，详细了解读取 API 功能。
 
 > [!div class="nextstepaction"]
-> [探索 OCR API](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)
+>[调用读取 API](../Vision-API-How-to-Topics/call-read-api.md)
+
+* [OCR 概述](../overview-ocr.md)

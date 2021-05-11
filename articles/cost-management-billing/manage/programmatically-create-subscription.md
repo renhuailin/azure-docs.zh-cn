@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 03/11/2021
 ms.reviewer: andalmia
 ms.author: banders
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 546ed24b5f9e7892f40c9d425b668f60ad705f8f
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ce08ebf473b11eecae327c7de050c791f5bc1b1a
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493882"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379003"
 ---
 # <a name="create-azure-subscriptions-programmatically"></a>以编程方式创建 Azure 订阅
 
@@ -36,9 +36,9 @@ ms.locfileid: "99493882"
 - [创建 MCA 订阅](programmatically-create-subscription-microsoft-customer-agreement.md)
 - [创建 MPA 订阅](programmatically-create-subscription-microsoft-partner-agreement.md)
 
-如果你仍在使用[预览 API](programmatically-create-subscription-preview.md)，可继续使用它们创建订阅。 
+这些文章还介绍了如何使用 Azure 资源管理器模板（ARM 模板）创建订阅。 可借助 ARM 模板自动执行订阅创建过程。
 
-此外，可[使用 ARM 模板创建订阅](create-subscription-template.md)。 可借助 ARM 模板使用 REST API 自动执行订阅创建过程。 
+如果你仍在使用[预览 API](programmatically-create-subscription-preview.md)，可继续使用它们创建订阅。 
 
 ## <a name="next-steps"></a>后续步骤
 

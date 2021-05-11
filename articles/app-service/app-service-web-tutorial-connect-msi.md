@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: 0012c3d208998786ef5aa34320f3bccc4e51ebe6
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: fb13e5015a589efc575d5a7bbb8b662fc23b72be
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107782776"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076376"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教程：使用托管标识确保从应用服务进行的 Azure SQL 数据库连接安全
 
@@ -249,6 +249,9 @@ az webapp config connection-string delete --resource-group myResourceGroup --nam
 ![从解决方案资源管理器发布](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
 在发布页中单击“发布”。 
+
+> [!IMPORTANT]
+> 确保应用服务的名称与任何现有的[应用注册](../active-directory/manage-apps/add-application-portal.md)都不匹配。 这会导致主体 ID 冲突。
 
 **如果你是在学完 [教程：在 Azure 应用服务中生成 ASP.NET Core 和 SQL 数据库应用](tutorial-dotnetcore-sqldb-app.md)** 后转到本教程，请运行以下命令使用 Git 发布更改：
 

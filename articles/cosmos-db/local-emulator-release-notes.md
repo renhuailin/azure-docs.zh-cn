@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 442fa1c76d4667a54f1c13b411b1c052c9a5b134
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 31b051c37d4fbf1c73c8711e3e9a330cacc1c26d
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566636"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904327"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB 模拟器 - 发行说明和下载信息
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,6 +26,10 @@ ms.locfileid: "105566636"
 |**入门**|[使用 Azure Cosmos DB 模拟器在本地开发](local-emulator.md)|
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="21113-21-april-2021"></a>2.11.13（2021 年 4 月 21 日）
+
+ - 此版本将本地数据资源管理器内容更新为 Azure 门户的最新版本，并新增了 MongoDB 终结点配置“4.0”。
 
 ### <a name="21111-22-february-2021"></a>2.11.11（2021 年 2 月 22 日）
 

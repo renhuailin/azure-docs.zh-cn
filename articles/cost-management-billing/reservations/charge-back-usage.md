@@ -5,14 +5,14 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 03/10/2021
 ms.author: banders
-ms.openlocfilehash: 4fb15a7e677d566454d5d487c1cf69767d7f3a30
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4059318e6b8052f3b0221c87e8a357cfc8679e44
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368738"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532768"
 ---
 # <a name="charge-back-azure-reservation-costs"></a>撤回 Azure 预留成本
 
@@ -33,7 +33,7 @@ ms.locfileid: "100368738"
 
 [![显示可用于退款的预留资源成本的示例](./media/charge-back-usage/amortized-reservation-costs.png)](./media/charge-back-usage/amortized-reservation-costs.png#lightbox)
 
-以下视频显示了如何在 Azure 门户中查看预留利用成本。
+以下视频显示了如何在 Azure 门户中查看订阅、资源组和资源级别的预留使用成本。
 
  > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4sQOw] 
 
