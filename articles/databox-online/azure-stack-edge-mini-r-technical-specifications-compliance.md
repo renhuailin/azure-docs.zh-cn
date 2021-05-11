@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 03/01/2021
+ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 3a0b87f04e60fd56d543c7c7a752cd788e087c78
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b0f3b81ac12d0ae96dde0397bc01a4570d992ea9
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101727475"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310166"
 ---
 # <a name="azure-stack-edge-mini-r-technical-specifications"></a>Azure Stack Edge Mini R 技术规格
 
@@ -24,31 +24,35 @@ Microsoft Azure Stack Edge Mini R 设备的硬件组件遵循本文中概述的�
 
 Azure Stack Edge Mini R 设备的计算和内存规格如下：
 
-| 规格           | 值                  |
-|-------------------------|------------------------|
-| CPU    | 16 核 CPU，Intel Xeon-D 1577 |
-| 内存              | 48 GB RAM（2400 MT/秒）                  |
+| 规格           | 值                           |
+|-------------------------|---------------------------------|
+| CPU 类型                | Intel Xeon-D 1577               |
+| CPU：原始                | 共 16 个核心，共 32 个 vCPU  |
+| CPU：可用             | 24 个 vCPU                        |
+| 内存类型             | 16 GB（2400 MT/秒）SODIMM          |
+| 内存：原始             | 48 GB RAM (3 x 16 GB)           |
+| 内存：可用          | 32 GB RAM                       |
 
 
-## <a name="compute-acceleration-specifications"></a>计算加速规范
+## <a name="compute-acceleration-specifications"></a>计算加速规格
 
 每个 Azure Stack Edge Mini R 设备上都包含一个视觉处理单元 (VPU)，支持 Kubernetes、深度神经网络和基于计算机视觉的应用程序。
 
-| 规格           | 值                  |
-|-------------------------|------------------------|
-| 计算加速卡         | Intel Movidius Myriad X VPU <br> 有关详细信息，请参阅 [Intel Movidius Myriad X VPU](https://www.movidius.com/MyriadX) |
+| 规格             | 值                  |
+|---------------------------|------------------------|
+| 计算加速卡 | Intel Movidius Myriad X VPU <br> 有关详细信息，请参阅 [Intel Movidius Myriad X VPU](https://www.movidius.com/MyriadX) |
 
 
 ## <a name="storage-specifications"></a>存储器规格
 
 Azure Stack Edge Mini R 设备包含 1 个数据磁盘和 1 个启动磁盘（用作操作系统存储）。 下表介绍了设备存储容量的详细信息。
 
-|     规格                          |     值             |
-|--------------------------------------------|-----------------------|
-|    固态硬盘 (SSD) 数量     |    2 个 1-TB 磁盘 <br> 一个数据磁盘和一个启动磁盘                  |
-|    单个 SSD 容量                     |    1 TB               |
-|    总容量（仅数据）              |    1 TB              |
-|    总可用容量*                  |    约 750 GB        |
+|     规格                          |     值                                              |
+|--------------------------------------------|--------------------------------------------------------|
+|    固态硬盘 (SSD) 数量     |    2 个 1-TB 磁盘 <br> 一个数据磁盘和一个启动磁盘 |
+|    单个 SSD 容量                     |    1 TB                                                |
+|    总容量（仅数据）              |    1 TB                                                |
+|    总可用容量*                  |    约 750 GB                                            |
 
 **已保留一些空间供内部使用。*
 
@@ -59,8 +63,8 @@ Azure Stack Edge Mini R 设备的网络规格如下：
 
 |规格  |值  |
 |---------|---------|
-|网络接口    |2 个 10 Gbe SFP+ <br> 在本地 UI 中显示为端口 3 和端口 4           |
-|网络接口    |2 个 1 Gbe RJ45 <br> 在本地 UI 中显示为端口 1 和端口 2          |
+|网络接口    |2 x 10 GbE SFP+ <br> 在本地 UI 中显示为端口 3 和端口 4           |
+|网络接口    |2 x 1 GbE RJ45 <br> 在本地 UI 中显示为端口 1 和端口 2          |
 |Wi-Fi   |802.11ac         |
 
 
@@ -85,9 +89,9 @@ Azure Stack Edge Mini R 设备还包含一个可充电的板载电池。
 该电池可以额外连接一个 [2590 电池](https://www.bren-tronics.com/bt-70791ck.html)，在两次充电之间延长设备使用时间。 此电池应符合所在国家/地区适用的所有安全、运输和环境法规。
 
 
-| 规格           | 值                      |
-|-------------------------|----------------------------|
-| 板载电池容量 | 73 WHr                    |
+| 规格            | 值                      |
+|--------------------------|----------------------------|
+| 板载电池容量 | 73 瓦时                     |
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>机箱尺寸和重量规格
 
@@ -99,18 +103,18 @@ Azure Stack Edge Mini R 设备还包含一个可充电的板载电池。
 
 |     机箱     |     毫米     |     英寸     |
 |-------------------|---------------------|----------------|
-|    高度         |    68            |    2.68          |
-|    宽度          |    208          |      8.19          |
-|    长度          |   259           |    10.20          |
+|    高度         |    68               |    2.68        |
+|    宽度          |    208              |      8.19      |
+|    Length          |   259              |    10.20       |
 
 
 ### <a name="enclosure-weight"></a>机箱重量
 
 下表列出了设备的重量（包含电池）。
 
-|     机箱                                 |     重量          |
-|-----------------------------------------------|---------------------|
-|    设备总重量     |    7 磅          |
+|     机箱                     |     重量          |
+|-----------------------------------|---------------------|
+|    设备总重量     |     7 磅           |
 
 ## <a name="enclosure-environment-specifications"></a>机箱环境规格
 

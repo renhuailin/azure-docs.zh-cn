@@ -4,13 +4,13 @@ description: 本文介绍了如何在订阅中跨多个工作区以及从特定�
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/22/2020
-ms.openlocfilehash: 57ed43b25c9031138a91f0870d316e1ae7a07a5b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/11/2021
+ms.openlocfilehash: 19cc85751fc5e4a165b646ac89d9d6b6e90c4408
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030960"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379547"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>在 Azure Monitor 中执行跨工作区和应用的日志查询
 
@@ -27,7 +27,7 @@ Azure Monitor 日志支持跨同一资源组、另一资源组或另一订阅中
 ## <a name="cross-resource-query-limits"></a>跨资源查询限制 
 
 * 可以在单个查询中包含的 Application Insights 资源和 Log Analytics 工作区的数量限制为 100。
-* 视图设计器不支持跨资源查询。 可以在 Log Analytics 中创作一个查询，将其固定到 Azure 仪表板，以[将日志查询可视化](../visualize/tutorial-logs-dashboards.md)。 
+* 视图设计器不支持跨资源查询。 可以在 Log Analytics 中创作查询，然后将它固定到 Azure 仪表板以[对日志查询进行可视化处理](../visualize/tutorial-logs-dashboards.md)，或包含在[工作簿](../visualize/workbooks-overview.md)中。
 * 仅当前 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 支持日志警报中的跨资源查询。 如果使用的是旧的 Log Analytics 警报 API，则需要[切换到当前 API](../alerts/alerts-log-api-switch.md)。
 
 
@@ -41,15 +41,17 @@ Azure Monitor 日志支持跨同一资源组、另一资源组或另一订阅中
 
 * 资源名称 - 用户可读的工作区名称，有时称为“组件名称”。 
 
+    >[!IMPORTANT]
+    >因为应用和工作区的名称不唯一，所以此标识符可能不明确。 建议按照限定名称、工作区 ID 或 Azure 资源 ID 进行引用。
+
     `workspace("contosoretail-it").Update | count`
 
-* 限定名称 - 工作区的“全名”，由订阅名称、资源组和组件名称组成，并采用以下格式：*subscriptionName/resourceGroup/componentName*。 
+* 限定名称（即工作区的“全名”）由订阅名称、资源组和组件名称组成，并采用以下格式：subscriptionName/resourceGroup/componentName。 
 
     `workspace('contoso/contosoretail/contosoretail-it').Update | count`
 
     >[!NOTE]
-    >因为 Azure 订阅名称不唯一，所以此标识符可能不明确。 
-    >
+    >因为 Azure 订阅名称不唯一，所以此标识符可能不明确。
 
 * 工作区 ID - 工作区 ID 是分配给每个工作区的唯一不可变标识符，表示为全局唯一标识符 (GUID)。
 

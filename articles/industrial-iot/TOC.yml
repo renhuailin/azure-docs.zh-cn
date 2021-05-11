@@ -1,0 +1,62 @@
+- name: Azure 工业 IoT 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是工业 IoT？
+      href: overview-what-is-industrial-iot.md
+    - name: 什么是 OPC 发布服务器？
+      href: overview-what-is-opc-publisher.md
+- name: 教程
+  items:
+    - name: OPC 发布服务器独立教程
+      items:
+        - name: 在独立模式下部署 OPC 发布服务器
+          href: tutorial-publisher-deploy-opc-publisher-standalone.md
+        - name: 配置 OPC 发布服务器
+          href: tutorial-publisher-configure-opc-publisher.md
+        - name: OPC 发布服务器的性能和内存优化
+          href: tutorial-publisher-performance-memory-tuning-opc-publisher.md
+    - name: IIoT 平台教程（协调模式）
+      items:
+        - name: 部署 IIoT 平台
+          href: tutorial-deploy-industrial-iot-platform.md
+        - name: 配置 IIoT 组件
+          href: tutorial-configure-industrial-iot-components.md
+        - name: 将 IIoT 数据拉取到 ADX
+          href: tutorial-industrial-iot-azure-data-explorer.md
+        - name: 使用时序见解可视化和分析数据
+          href: tutorial-visualize-data-time-series-insights.md
+- name: 参考
+  items:
+    - name: 命令行参数
+      href: reference-command-line-arguments.md
+    - name: OPC 发布服务器遥测配置文件格式
+      href: reference-opc-publisher-telemetry-format.md
+- name: 资源
+  items:
+    - name: OPC 发布服务器 GitHub 存储库
+      href: 'https://github.com/Azure/Industrial-IoT'
+    - name: IIoT 平台 GitHub 存储库
+      href: 'https://github.com/Azure/iot-edge-opc-publisher'
+    - name: 支持和帮助选项
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-accelerators/toc.json&bc=/azure/iot-accelerators/breadcrumb/toc.json
+    - name: IoT 术语表
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-accelerators/toc.json&bc=/azure/iot-accelerators/breadcrumb/toc.json
+    - name: Azure IoT 服务
+      items:
+        - name: IoT 中心
+          href: ../iot-hub/index.yml
+        - name: IoT 中心设备预配服务
+          href: ../iot-dps/index.yml
+        - name: IoT Central
+          href: /microsoft-iot-central/
+        - name: IoT Edge
+          href: ../iot-edge/index.yml
+        - name: IoT 解决方案加速器
+          href: ./index.yml
+        - name: IoT 即插即用
+          href: ../iot-pnp/index.yml
+        - name: Azure Maps
+          href: ../azure-maps/index.yml
+        - name: 时序见解
+          href: ../time-series-insights/index.yml

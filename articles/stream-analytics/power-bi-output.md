@@ -5,13 +5,13 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: a94389a075fd62d80345a21e32f1bc977dfdee87
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 4/7/2021
+ms.openlocfilehash: 07b7715935756293467f2a3004109df9bf679661
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98020054"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029992"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>从 Azure 流分析输出的 Power BI
 
@@ -73,9 +73,10 @@ Double | Double | 字符串 | 字符串 | Double
 字符串 | String | String | String | 字符串 
 Datetime | 字符串 | 字符串 |  Datetime | 字符串
 
-## <a name="output-batch-size"></a>输出批大小
+## <a name="limitations-and-best-practices"></a>限制和最佳实践
+目前，大约每秒可调用 Power BI 一次。 流视觉对象支持 15 KB 的数据包。 超过该大小的流视觉对象会失败（但推送将继续工作）。 由于这些限制，Power BI 最适合用于可通过 Azure 流分析来大幅减少数据加载的案例。 建议使用“翻转窗口”或“跳跃窗口”来确保数据推送速率最大为每秒推送一次，并且查询满足吞吐量要求。
 
-有关输出批大小，请参阅 [Power BI Rest API 限制](/power-bi/developer/automation/api-rest-api-limitations)。
+有关输出批大小的详细信息，请参阅 [Power BI Rest API 限制](/power-bi/developer/automation/api-rest-api-limitations)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 56d301762fde41f727b0b425d6c41a423f08103c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3b323bf920bd884e821d03bf2def37471775e720
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96466094"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312699"
 ---
 # <a name="azure-stack-edge-pro-r-technical-specifications"></a>Azure Stack Edge Pro R 技术规格
 
@@ -24,41 +24,44 @@ Azure Stack Edge Pro R 设备的硬件组件遵循本文中概述的技术规格
 
 Azure Stack Edge Pro R 设备的计算和内存规格如下：
 
-| 规格       | 值                  |
-|---------------------|------------------------|
-| CPU    | 2 个 10 核 CPU，Intel Xeon Silver 4114 |
-| 内存              | 256 GB RAM（2666 MT/秒）     |
-
+| 规格  | 值                                             |
+|----------------|---------------------------------------------------|
+| CPU 类型       | Dual Intel Xeon Silver 4114 CPU                   |
+| CPU：原始       | 共 20 个核心，共 40 个 vCPU                    |
+| CPU：可用    | 32 个 vCPU                                          |
+| 内存类型    | Dell 兼容 16 GB RDIMM，2666 MT/秒，双 Rank |
+| 内存：原始    | 256 GB RAM (16 x 16 GB)                           |
+| 内存：可用 | 230 GB RAM                                        |
 
 ## <a name="compute-acceleration-specifications"></a>计算加速规格
 
 每台设备上都包含一个图形处理单元 (GPU)，可实现 Kubernetes、深度学习和机器学习方案。
 
-| 规格           | 值                  |
+| 规格           | 值                      |
 |-------------------------|----------------------------|
-| GPU   | 一个 Nvidia T4 GPU <br> 有关详细信息，请参阅 [NVIDIA T4](https://www.nvidia.com/en-us/data-center/tesla-t4/)。| 
+| GPU   | 一个 Nvidia T4 GPU <br> 有关详细信息，请参阅 [NVIDIA T4](https://www.nvidia.com/en-us/data-center/tesla-t4/)。 | 
 
 ## <a name="power-supply-unit-specifications"></a>电源装置规格
 
 Azure Stack Edge Pro R 设备具有两个带有高性能风扇的 100-240 V 电源装置 (PSU)。 这两个 PSU 提供了冗余电源配置。 如果 PSU 发生故障，设备将继续在另一个 PSU 上正常运行，直至发生故障的模块得到更换。 下表列出了 PSU 的技术规格。
 
-| 规格           | 550 W PSU                  |
-|-------------------------|----------------------------|
-| 最大输出功率    | 550 W                      |
-| 散热量（最大）                   | 2891 BTU/小时                |
-| 频率               | 50/60 Hz                   |
-| 电压范围选择 | 自动范围：115-230 V 交流 |
-| 可热插拔           | 是                        |
+| 规格              | 550 W PSU                  |
+|----------------------------|----------------------------|
+| 最大输出功率       | 550 W                      |
+| 散热量（最大） | 2891 BTU/小时                |
+| 频率                  | 50/60 Hz                   |
+| 电压范围选择    | 自动范围：115-230 V 交流 |
+| 可热插拔              | 是                        |
 
 ## <a name="network-specifications"></a>网络规格
 
-Azure Stack Edge Pro R 设备具有 4 个网络接口，端口 1 - 端口 4。 
+Azure Stack Edge Pro R 设备具有 4 个网络接口，端口 1 - 端口 4。
 
 
-|规格  |说明                              |
+|规格         |说明                       |
 |----------------------|----------------------------------|
-|网络接口    |**2 个 1 GbE RJ45** <br> 端口 1 用作初始设置的管理接口，默认为静态。 初始设置完成后，可以将其用作任何 IP 地址的数据接口。 但是，在重置后，此接口会还原为静态 IP。 <br>另一个接口端口 2 可由用户配置，可以用于数据传输，默认为 DHCP。     |
-|网络接口    |**2 个 25 GbE SFP28** <br> 端口 3 和端口 4 数据接口可以配置为 DHCP（默认）或静态。            |
+|网络接口    |2 x 1 GbE RJ45 <br> 端口 1 用作初始设置的管理接口，默认为静态。 初始设置完成后，可以将其用作任何 IP 地址的数据接口。 但是，在重置后，该接口会还原为静态 IP。 <br>另一个可由用户配置的接口（端口 2）可用于数据传输，在默认情况下为 DHCP。 |
+|网络接口    |2 x 25 GbE SFP28 <br> 端口 3 和端口 4 上的这些数据接口可配置为 DHCP（默认）或静态。 |
 
 Azure Stack Edge Pro R 设备具有以下网络硬件：
 
@@ -69,12 +72,12 @@ Azure Stack Edge Pro R 设备具有以下网络硬件：
 | Parameter           | Description                 |
 |-------------------------|----------------------------|
 | Model    | ConnectX®-4 Lx EN network interface card                      |
-| Model Description               | 25GbE dual-port SFP28; PCIe3.0 x8; ROHS R6                    |
+| Model Description               | 25 GbE dual-port SFP28; PCIe3.0 x8; ROHS R6                    |
 | Device Part Number (XR2) | MCX4421A-ACAN  |
 | PSID (R640)           | MT_2420110034                         |-->
 <!-- confirm w/ Ravi what is this-->
 
-若要查看这些网卡支持的电缆、交换机和收发器的完整列表，请转到：[Mellanox 双端口 25G ConnectX-4 通道网络适配器兼容产品](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)。
+若要查看这些网卡支持的电缆、交换机和收发器的完整列表，请转到 [Mellanox 双端口 25G ConnectX-4 通道网络适配器兼容产品](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)。
 
 ## <a name="storage-specifications"></a>存储器规格
 
@@ -89,7 +92,7 @@ Azure Stack Edge Pro R 设备具有 8 个数据磁盘和 2 个用作操作系统
 |    固态硬盘 (SSD) 数量     |    8                  |
 |    单个 SSD 容量                     |    8 TB               |
 |    总容量                          |    64 TB              |
-|    总可用容量*                  |    约 42 TB          |
+|    总可用容量*                  |    约 42 TB            |
 
 **已保留一些空间供内部使用。*
 

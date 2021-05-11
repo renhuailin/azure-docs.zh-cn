@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 04/07/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: d13629b4cb05995b9652e862f769a0ffcae30a8c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 268931715500631ac2d10feacebff1d5c65931bf
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99256892"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028785"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD 用户预配服务 SCIM 2.0 协议合规性的已知问题和解决方法
 
@@ -51,7 +51,7 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 :::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="用于更改行为的 SCIM 标志。":::
 
 * 使用以下 URL 更新 PATCH 行为，并确保 SCIM 合规性（例如，作为布尔值活动并适当删除组成员）。 目前此行为仅在使用标志时可用，但在未来几个月内将成为默认行为。 请注意，此预览标志目前不适用于按需预配。 
-  * URL（SCIM 合规）：AzureAdScimPatch062020
+  * URL（符合 SCIM）：aadOptscim062020
   * SCIM RFC 参考： 
     * https://tools.ietf.org/html/rfc7644#section-3.5.2
   * 行为：

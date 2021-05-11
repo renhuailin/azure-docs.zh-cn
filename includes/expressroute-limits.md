@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/12/2021
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 6f8ed3381f056238bdbb24fe52c5f859afef7d03
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1b72f4ee82150a7aad2edf2cbbb1fabaf942a90b
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98147461"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107925363"
 ---
 | 资源 | 限制 |
 | --- | --- |
@@ -25,7 +25,7 @@ ms.locfileid: "98147461"
 | 使用 ExpressRoute Standard 播发到 Microsoft 对等互连的最大路由数 |200 |
 | 使用 ExpressRoute Premium 附加产品播发到 Microsoft 专用对等互连的最大路由数 |200 |
 | 链接到相同对等互连位置中相同虚拟网络的最大 ExpressRoute 线路数 |4 |
-| 链接到不同对等互连位置中相同虚拟网络的最大 ExpressRoute 线路数 |4 |
+| 链接到不同对等互连位置中相同虚拟网络的最大 ExpressRoute 线路数 |16（有关详细信息，请查看[网关 SKU](../articles/expressroute/expressroute-about-virtual-network-gateways.md#aggthroughput)。） |
 | 每个 ExpressRoute 线路允许的虚拟网络链接数 |请参阅[每个 ExpressRoute 线路的虚拟网络数](#vnetpercircuit)表。  |
 
 #### <a name="number-of-virtual-networks-per-expressroute-circuit"></a><a name="vnetpercircuit"></a> 每个 ExpressRoute 线路的虚拟网络数

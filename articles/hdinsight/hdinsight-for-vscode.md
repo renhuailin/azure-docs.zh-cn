@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: d098af394906dc120a252bdcda65fb3af31e28c8
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: d7e2bd2987e7eaf7798093f3918f72b7e09a3cb0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104865785"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313450"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>使用适用于 Visual Studio Code 的 Spark 和 Hive 工具
 
@@ -265,7 +265,7 @@ ms.locfileid: "104865785"
 
 > [!NOTE]
 >
-> [“此扩展不支持 2020.5.78807 版及更高版本的 ms-python”](#issues-changed)问题已解决。 请立即将 mspython 更新到最新版本 。
+> [ms-toolsai.jupyter >2021.3.684299474 版本不受此扩展的支持](#known-issues)是一个已知问题。 请粘滞到 Microsoft Jupyter 2021.3.684299474 以使用 Synapse 内核。
 
 ## <a name="submit-pyspark-batch-job"></a>提交 PySpark 批处理作业
 
@@ -485,9 +485,19 @@ ms.locfileid: "104865785"
 
 在菜单栏中，转到“视图” > “命令面板”，然后输入“Azure:  注销”。
 
-## <a name="issues-changed"></a>改观的问题
+## <a name="known-issues"></a>已知问题 
 
-由于“此扩展不支持 2020.5.78807 版及更高版本的 ms-python”问题已解决，请立即将 ms-python 更新到最新版本 。
+ ms-toolsai.jupyter >2021.3.684299474 版本在此扩展上不受支持，请通过粘滞到 Microsoft Jupyter 2021.3.684299474 以使用 Synapse 内核。
+
+ 1. 禁用自动更新扩展。
+
+      ![禁用自动更新扩展](./media/hdinsight-for-vscode/disable-auto-updating-extension.png)
+
+2. 安装 Microsoft Jupyter 的选定版本。
+
+      ![Microsoft Jupyter 的选定版本](./media/hdinsight-for-vscode/selected-version-of-microsoft-jupyter.png)
+
+3. 安装 Microsoft Jupyter 版本2021.3.684299474
 
 
 ## <a name="next-steps"></a>后续步骤

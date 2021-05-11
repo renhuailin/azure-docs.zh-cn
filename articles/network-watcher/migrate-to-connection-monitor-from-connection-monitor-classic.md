@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: d4ab5361d245ad1ee10d43184cc0a2d65fed2054
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fc5bcc7f0cd11160b33bb6501526fce9f29d710b
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730025"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366379"
 ---
 # <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>从连接监视器（经典版）迁移到连接监视器
 
 > [!IMPORTANT]
-> 自 2021 年 7 月 1 日起，你将无法在连接监视器（经典版）中添加新的连接监视器，但可以继续使用在 2021 年 7 月 1 日之前创建的现有连接监视器。 为了最大程度地减少当前工作负荷的服务中断，请在 2024 年 2 月 29 日之前，在 Azure 网络观察程序中[从连接监视器（经典版）迁移到新连接监视器](migrate-to-connection-monitor-from-connection-monitor-classic.md)。
+> 自 2021 年 7 月 1 日起，你将无法在连接监视器（经典版）中添加新的连接监视器，但可以继续使用在 2021 年 7 月 1 日之前创建的现有连接监视器。 为了最大程度地减少当前工作负载的服务中断，请于 2024 年 2 月 29 日之前，在 Azure 网络观察程序中[从连接监视器（经典版）迁移到新连接监视器](migrate-to-connection-monitor-from-connection-monitor-classic.md)。
 
 只需点击几下鼠标，就能将现有连接监视器迁移到经过改进的新连接监视器，并且无需停机。 要了解有关这些优势的详细信息，请参阅[连接监视器](./connection-monitor-overview.md)。
 
@@ -32,14 +32,17 @@ ms.locfileid: "101730025"
 
 * 代理和防火墙设置按原样工作。 不需要进行任何更改。 
 * 现有的连接监视器已映射到“连接监视器”>“测试组”>“测试格式”。 通过选择“编辑”，可以查看和修改新连接监视器的属性，下载模板以对连接监视器进行更改，然后通过 Azure 资源管理器提交。 
-* 具有网络观察程序扩展的 Azure 虚拟机将数据发送到工作区和指标。 连接监视器通过新指标（ChecksFailedPercent 和 RoundTripTimeMs）而不是旧指标（ProbesFailedPercent 和 AverageRoundtripMs）提供数据。 旧指标将迁移到新度量值，如 ProbesFailedPercent -> ChecksFailedPercent 和 AverageRoundtripMs -> RoundTripTimeMs。
+* 具有网络观察程序扩展的 Azure 虚拟机将数据发送到工作区和指标。 连接监视器通过新指标（ChecksFailedPercent 和 RoundTripTimeMs）而不是旧指标（ProbesFailedPercent 和 AverageRoundtripMs）提供数据。 旧指标将迁移到新指标，如 > ProbesFailedPercent -> ChecksFailedPercent 和 AverageRoundtripMs -> RoundTripTimeMs。
 * 数据监视：
    * **警报**：自动迁移到新指标。
    * **仪表板和集成**：需要手动编辑指标集。 
     
 ## <a name="prerequisites"></a>先决条件
 
-如果使用自定义工作区，请确保在订阅中和 Log Analytics 工作区的区域中启用了网络观察程序。 
+1. 如果使用自定义工作区，请确保在订阅中和 Log Analytics 工作区的区域中启用了网络观察程序。 否则，可能会出现一个错误，指出“在尝试迁移之前，请在选择订阅和所选的 LA 工作区位置中启用网络观察程序扩展”。
+1. 如果在连接监视器（经典）中用作源的虚拟机不再启用网络观察程序扩展，将出现一条错误消息，指出“无法导入具有以下测试的连接监视器，因为一个或多个 Azure 虚拟机未安装网络观察程序扩展。 安装网络观察程序扩展，并单击‘刷新’以导入它们。”
+
+
 
 ## <a name="migrate-the-connection-monitors"></a>迁移连接监视器
 
@@ -49,7 +52,7 @@ ms.locfileid: "101730025"
     
 1. 选择你的订阅和要迁移的连接监视器，然后选择“迁移所选内容”。 
 
-只需点击几下，就可以将现有的连接监视器迁移到连接监视器。 从 CM（经典版）迁移到 CM 后，你将无法在 CM（经典版）下查看监视器
+只需点击几下，就可以将现有的连接监视器迁移到连接监视器。 一旦从 CM（经典）迁移到 CM，你将无法查看 CM（经典）下的监视器
 
 现在，可以自定义连接监视器属性、更改默认工作区、下载模板并检查迁移状态。 
 

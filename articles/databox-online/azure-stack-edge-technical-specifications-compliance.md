@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/02/2020
+ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 8b36bb34f4c9081d807998cb8287797443625a6b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 91bb558d47e56ebbcbdf25b0276c2a247ec81b47
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96460297"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312631"
 ---
 # <a name="azure-stack-edge-pro-technical-specifications"></a>Azure Stack Edge Pro 技术规格
 
@@ -23,16 +23,21 @@ Microsoft Azure Stack Edge Pro 设备的硬件组件遵循本文中概述的技�
 
 Azure Stack Edge Pro 设备的计算和内存规格如下：
 
-| 规格           | 值                  |
-|-------------------------|----------------------------|
-| CPU    | 2 个 10 核 CPU Intel Xeon Silver 4114 2.2G                    |
-| 内存              | 128 GB RAM（8 个 16GB RDIMM）                 |
+| 规格           | 值                             |
+|-------------------------|-----------------------------------|
+| CPU 类型                | Dual Intel Xeon Silver 4114 2.2 G |
+| CPU：原始                | 共 20 个核心，共 40 个 vCPU    |
+| CPU：可用             | 32 个 vCPU                          |
+| 内存类型             | 8 x 16 GB RDIMM                   |
+| 内存：原始             | 128 GB RAM (8 x 16 GB)           |
+| 内存：可用          | 102 GB RAM                        |
+
 
 ## <a name="fpga-specifications"></a>FPGA 规格
 
 每个启用了机器学习 (ML) 方案的 Azure Stack Edge Pro 设备上都包含一个现场可编程门阵列 (FPGA)。
 
-| 规格           | 值                  |
+| 规格           | 值                      |
 |-------------------------|----------------------------|
 | FPGA   | Intel Arria 10 <br> 可用的深度神经网络 (DNN) 模型与[云 FPGA 实例支持的](../machine-learning/how-to-deploy-fpga-web-service.md#fpga-support-in-azure)模型相同。|
 
@@ -42,7 +47,7 @@ Azure Stack Edge Pro 设备具有两个带有高性能风扇的 100-240 V 电源
 
 | 规格           | 750 W PSU                  |
 |-------------------------|----------------------------|
-| 最大输出功率    | 750 W                     |
+| 最大输出功率    | 750 W                      |
 | 频率               | 50/60 Hz                   |
 | 电压范围选择 | 自动范围：100-240 V 交流 |
 | 可热插拔           | 是                        |
@@ -64,7 +69,7 @@ Azure Stack Edge Pro 设备具有 6 个网络接口，PORT1 - PORT6。
 |-------------------------|----------------------------|
 |  网络接口    | 2 个 1 GbE 接口 - 1 个管理接口，用户不可配置，用于初始设置。 其他接口可由用户配置，可以用于数据传输，默认为 DHCP。 <br>2 个 25 GbE 接口 – 这些接口也可用作 10 GbE 接口。 用户可将这些数据接口配置为 DHCP（默认）或静态接口。 <br> 2 个 25 GbE 接口 - 用户可将这些数据接口配置为 DHCP（默认）或静态接口。                  |
 
-使用的网络适配器为： 
+使用的网络适配器为：
 
 | 规格           | 说明                 |
 |-------------------------|----------------------------|
@@ -82,7 +87,7 @@ Azure Stack Edge Pro 设备具有 9 个 2.5" NVMe SSD，每个 SSD 容量均为 
 |    固态硬盘 (SSD) 数量     |    8                  |
 |    单个 SSD 容量                     |    1.6 TB             |
 |    总容量                          |    12.8 TB            |
-|    总可用容量*                  |    约 12.5 TB            |
+|    总可用容量*                  |    约 12.5 TB          |
 
 **已保留一些空间供内部使用。*
 
@@ -94,19 +99,19 @@ Azure Stack Edge Pro 设备具有 9 个 2.5" NVMe SSD，每个 SSD 容量均为 
 
 下表列出了以毫米和英寸为单位的机箱尺寸。
 
-|     机箱     |     毫米     |     英寸     |
-|-------------------|---------------------|----------------|
-|    高度         |    44.45            |    1.75"          |
-|    宽度          |    434.1           |    17.09"          |
-|    长度          |    740.4           |    29.15"          |
+|     机箱     |     毫米    |     英寸     |
+|-------------------|--------------------|----------------|
+|    高度         |    44.45           |    1.75"       |
+|    宽度          |    434.1           |    17.09"      |
+|    长度         |    740.4           |    29.15"      |
 
 下表列出了以毫米和英寸为单位的发货包尺寸。
 
-|     程序包     |     毫米     |     英寸     |
+|     程序包       |     毫米     |     英寸     |
 |-------------------|---------------------|----------------|
-|    高度         |    311.2            |    12.25"          |
-|    宽度          |    642.8          |    25.31"          |
-|    长度          |   1,051.1          |    41.38"          |
+|    高度         |    311.2            |    12.25"      |
+|    宽度          |    642.8            |    25.31"      |
+|    长度         |   1,051.1           |    41.38"      |
 
 ### <a name="enclosure-weight"></a>机箱重量
 

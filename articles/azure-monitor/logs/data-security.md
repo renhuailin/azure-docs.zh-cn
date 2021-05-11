@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 8f193cface177e6be6343f28ef4dc27c2d6c6a7b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f8fa0344a6959025856f002e1de4eb8700c32da5
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030896"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311305"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics 数据安全
 本文档旨在提供特定于 Azure Log Analytics 的信息（Azure Monitor 的功能），用于补充有关 [Azure 信任中心](https://www.microsoft.com/en-us/trust-center?rtc=1)的信息。  
@@ -103,7 +103,7 @@ Log Analytics 具有所有 Microsoft 服务都遵循的事件管理过程。 总
   * 基于 Microsoft Azure 服务运作的运营商对于访问承载客户数据的敏感系统有额外的培训义务。
   * Microsoft 安全响应人员会接受针对其所担当角色的专门培训
 
-如果发生任何客户数据丢失情况，我们会在一天内通知每个客户。 不过，使用服务从未发生过客户数据丢失的情况。 
+在极少数情况下，如果任何客户数据出现了大量丢失，Microsoft 将在一天内通知每位客户。 
 
 有关 Microsoft 如何响应安全事件的详细信息，请参阅[在云中进行 Microsoft Azure 安全响应](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf)。
 
@@ -173,7 +173,7 @@ Log Analytics 服务通过使用 Azure 身份验证对证书和数据完整性�
 
 存储在数据库中的已收集数据的保留期取决于所选的定价计划。 对于“免费”层，收集的数据可以使用 7 天。 对于 *付费* 层，收集的数据默认情况下可以使用 31 天，但可以延长到 730 天。 数据在 Azure 存储中采用静态加密存储，以确保数据机密性，并且数据通过本地冗余存储 (LRS) 在本地区域内进行复制。 过去两周的数据也存储在基于 SSD 的缓存中，此缓存未加密。
 
-数据库存储中的数据在引入后将无法更改，但可以通过[“清除”API 路径](personal-data-mgmt.md#delete)将其删除。 尽管该数据无法更改，但某些认证要求数据保持不可变且不能在存储中更改或删除。 可以通过使用[数据导出](logs-data-export.md)将数据导出到配置为[不可变存储](../../storage/blobs/storage-blob-immutability-policies-manage.md)的存储帐户来实现数据不可变性。
+数据库存储中的数据在引入后将无法更改，但可以通过[清除 API 路径](personal-data-mgmt.md#delete)将其删除。 尽管该数据无法更改，但某些认证要求数据保持不可变且不能在存储中更改或删除。 可以通过使用[数据导出](logs-data-export.md)将数据导出到配置为[不可变存储](../../storage/blobs/storage-blob-immutability-policies-manage.md)的存储帐户来实现数据不可变性。
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4.使用 Log Analytics 访问数据
 若要访问 Log Analytics 工作区，请使用组织帐户或先前设置的 Microsoft 帐户登录到 Azure 门户。 门户与 Log Analytics 服务之间的所有流量通过安全 HTTPS 通道发送。 使用门户时，会在用户客户端（Web 浏览器）上生成会话 ID，会将数据存储在本地缓存中，直到该会话终止。 终止后，会删除该缓存。 不会自动删除不包含个人身份信息的客户端 Cookie。 会话 Cookie 标记为 HTTPOnly，并且受到保护。 在预先确定的空闲期过后，会终止 Azure 门户会话。

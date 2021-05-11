@@ -8,9 +8,9 @@ title: include file description: include file services: event-hubs author: spell
 ### <a name="common-limits-for-all-tiers"></a>所有层的通用限制
 以下限制在所有层中是通用的。 
 
-| 限制 |  注释 | 值 |
+| 限制 |  说明 | 值 |
 | --- |  --- | --- |
-| 每个订阅的事件中心命名空间数 |- |100 |
+| 每个订阅的事件中心命名空间数 | 此限制中包含服务总线命名空间。 |100 |
 | 每个命名空间的事件中心数 | 系统会拒绝创建新事件中心的后续请求。 |10 |
 | 事件中心名称的大小 |- | 256 个字符 |
 | 使用者组名称的大小 | Kafka 协议无需创建使用者组。 | <p>Kafka：256 个字符</p><p>AMQP：50 个字符 |
@@ -45,7 +45,7 @@ title: include file description: include file services: event-hubs author: spell
 | Feature | 标准 | 专用 |
 | --- |:---|:---|
 | 带宽 | 20 TU（最多 40 TU） | 20 CU |
-| 命名空间 |  1 | 每个 CU 50 |
+| 命名空间 |  每个订阅 100 个 | 每个 CU 50 个（每个订阅 100 个） |
 | 事件中心 |  每个命名空间 10 | 每个命名空间 1000 |
 | 入口事件 | 按每百万个事件支付 | 已含 |
 | 消息大小 | 1000000 字节 | 1000000 字节 |

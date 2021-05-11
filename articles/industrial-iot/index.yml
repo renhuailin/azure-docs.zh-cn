@@ -1,0 +1,47 @@
+### YamlMime:Landing
+title: Azure 工业 IoT 平台文档
+summary: Azure 工业 IoT 平台是在 Azure 上部署的 Microsoft 模块和服务套件。
+metadata:
+  description: 了解
+  ms.service: industrial-iot
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 3/22/2021
+  ms.openlocfilehash: bced3bdbb854af75e7b521f7c5c3f2e1022a161b
+  ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 04/21/2021
+  ms.locfileid: "107813823"
+landingContent:
+- title: Azure 工业 IoT 平台
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是工业 IoT (IIoT)？
+      url: overview-what-is-industrial-iot.md
+    - text: 什么是 OPC 发布服务器？
+      url: overview-what-is-opc-publisher.md
+- title: 开始使用工业 IoT 平台 (IIoT)
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 部署 Azure 工业 IoT 平台
+      url: tutorial-deploy-industrial-iot-platform.md
+    - text: 配置 Azure 工业 IoT 组件
+      url: tutorial-configure-industrial-iot-components.md
+    - text: 将 Azure 工业 IoT 数据拉取到 ADX
+      url: tutorial-industrial-iot-azure-data-explorer.md
+    - text: 使用时序见解可视化数据 (TSI)
+      url: tutorial-visualize-data-time-series-insights.md
+- title: 使用 OPC 发布服务器
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 部署 OPC 发布服务器
+      url: tutorial-publisher-deploy-opc-publisher-standalone.md
+    - text: 配置 OPC 发布服务器
+      url: tutorial-publisher-configure-opc-publisher.md
+    - text: 优化 OPC 发布服务器性能和内存
+      url: tutorial-publisher-performance-memory-tuning-opc-publisher.md

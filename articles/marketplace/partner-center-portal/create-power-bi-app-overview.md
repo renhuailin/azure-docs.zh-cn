@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 04/02/2020
-ms.openlocfilehash: b02c5bbf2e6accbea9c7a33dc26c4e89e46bb697
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 13c659592b7e0b45d0d58519e3620babb8cb3c6a
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97679142"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107561"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI 应用创建概述
 
@@ -42,7 +42,7 @@ ms.locfileid: "97679142"
 7. 经过认证后，请在其测试环境中评审应用并发布。 这会将其发布于 AppSource（应用“上线”）。
 8. 在 Power BI 中，将包发送到生产环境。 有关详细信息，请参阅[管理 Power BI 应用版本](/power-bi/service-template-apps-create#manage-the-template-app-release)。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>在开始之前
 
 查看下面的链接，这些链接提供了模板、提示和示例。
 
@@ -72,8 +72,8 @@ Power BI 应用产品/服务必须满足以下技术和业务要求，方可在�
 
 业务要求包括在规程、合同和法律方面的义务。 必须具备以下条件：
 
-- 是注册的商业市场发布者。 如果你尚未注册，请按照[在合作伙伴中心创建商业市场帐户](create-account.md)中的步骤进行操作。
-- 提供的内容必须满足在 AppSource 中发布产品/服务的标准。 有关详细信息，请参阅[有需要在 AppSource 上列出的应用？以下是操作方法](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how)。
+- 是注册的商业市场发布者。 如果你尚未注册，请按照[在合作伙伴中心创建商业市场帐户](../create-account.md)中的步骤进行操作。
+- 提供的内容必须满足在 AppSource 中发布产品/服务的标准。 有关详细信息，请参阅[有需要在 AppSource 上列出的应用？方法如下](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how)。
 - 同意并遵循 [Microsoft 隐私声明](https://privacy.microsoft.com/privacystatement)。
 
 ## <a name="next-step"></a>后续步骤

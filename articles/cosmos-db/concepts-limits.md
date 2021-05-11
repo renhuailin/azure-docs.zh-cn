@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/19/2021
-ms.openlocfilehash: 007bf845bab6f493fae91debefde27a4929d9f95
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
-ms.translationtype: MT
+ms.date: 04/07/2021
+ms.openlocfilehash: f6416a688c7f1c94d7d8a90b0531b1ccd684ee29
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611026"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031097"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
@@ -31,13 +31,13 @@ ms.locfileid: "98611026"
 | --- | --- |
 | 每个容器的最大 RU 数（[专用吞吐量预配模式](account-databases-containers-items.md#azure-cosmos-containers)） | 默认为 1,000,000。 可以通过[开具 Azure 支持票证](create-support-request-quota-increase.md)来提高此限制 |
 | 每个数据库的最大 RU 数（[共享吞吐量预配模式](account-databases-containers-items.md#azure-cosmos-containers)） | 默认为 1,000,000。 可以通过[开具 Azure 支持票证](create-support-request-quota-increase.md)来提高此限制 |
-| 每个（逻辑）分区的最大 RU 数 | 10,000 |
+| 每个分区（逻辑和物理分区）的最大 RU 数 | 10,000 |
 | 每个（逻辑）分区的所有项的最大存储 | 20 GB |
 | 不同（逻辑）分区键的最大数目 | 无限制 |
 | 每个容器的最大存储 | 无限制 |
 | 每个数据库的最大存储 | 无限制 |
 | 每个帐户的最大附件大小（附件功能即将弃用） | 2 GB |
-| 每 1 GB 需要的最小 RU 数 | 10 RU/秒<br>**注意：** 如果你的帐户符合我们的 ["高存储/低吞吐量" 计划](set-throughput.md#high-storage-low-throughput-program)，则此最小值可降低 |
+| 每 1 GB 需要的最小 RU 数 | 10 RU/秒<br>注意：如果你的帐户符合我们的[“高存储/低吞吐量”计划](set-throughput.md#high-storage-low-throughput-program)的条件，这个最小值可以降低 |
 
 > [!NOTE]
 > 若要了解有关管理其分区键需要更高存储或吞吐量限制的工作负荷的最佳做法，请参阅[创建合成分区键](synthetic-partition-keys.md)。
@@ -60,7 +60,7 @@ Cosmos 容器（或共享吞吐量数据库）的最小吞吐量必须为 400 RU
 
 示例：假设你有一个预配了 400 RU/s 和 0 GB 存储的容器。 你将吞吐量提高到 50,000 RU/s，并导入 20 GB 数据。 现在，最小 RU/s 为 `MAX(400, 20 * 10 RU/s per GB, 50,000 RU/s / 100)` = 500 RU/s。 随着时间的推移，存储会增长到 200 GB。 现在，最小 RU/s 为 `MAX(400, 200 * 10 RU/s per GB, 50,000 / 100)` = 2000 RU/s。 
 
-**注意：** 如果你的帐户符合我们的 ["高存储/低吞吐量" 计划](set-throughput.md#high-storage-low-throughput-program)，则每 GB 存储的最小吞吐量为 10 RU/秒。
+注意：如果你的帐户符合我们的[“高存储/低吞吐量”计划](set-throughput.md#high-storage-low-throughput-program)的条件，这个每 GB 存储每秒 10 RU 的最小吞吐量可以降低。
 
 #### <a name="minimum-throughput-on-shared-throughput-database"></a>共享吞吐量数据库的最小吞吐量 
 若要估算具有手动吞吐量的共享吞吐量数据库所需的最小吞吐量，请找到以下项的最大值：
@@ -72,7 +72,7 @@ Cosmos 容器（或共享吞吐量数据库）的最小吞吐量必须为 400 RU
 
 示例：假设你有一个预配了 400 RU/s、15 GB 存储和 10 个容器的数据库。 最小 RU/s 为 `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 RU/s。 如果数据库中有 30 个容器，则最小 RU/s 将为 `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 RU/s。 
 
-**注意：** 如果你的帐户符合我们的 ["高存储/低吞吐量" 计划](set-throughput.md#high-storage-low-throughput-program)，则每 GB 存储的最小吞吐量为 10 RU/秒。
+注意：如果你的帐户符合我们的[“高存储/低吞吐量”计划](set-throughput.md#high-storage-low-throughput-program)的条件，这个每 GB 存储每秒 10 RU 的最小吞吐量可以降低。
 
 总之，最小预配 RU 限制如下所示。 
 
@@ -137,7 +137,7 @@ Cosmos DB 会定期自动备份数据。 有关备份保留时间间隔和窗口
 | --- | --- |
 | 数据库或容器名称的最大长度 | 255 |
 | 每个容器的最大存储过程数 | 100 <sup>*</sup>|
-| 每个容器的最大 UDF 数 | 25 <sup>*</sup>|
+| 每个容器的最大 UDF 数 | 50 <sup>*</sup>|
 | 索引策略中的最大路径数| 100 <sup>*</sup>|
 | 每个容器的最大唯一键数|10 <sup>*</sup>|
 | 每个唯一键约束的最大路径数|16 <sup>*</sup>|
@@ -236,8 +236,8 @@ Cosmos DB 支持针为 MongoDB 编写的应用程序使用 MongoDB 线路协议�
 | 资源 | 默认限制 |
 | --- | --- |
 | 最大 MongoDB 查询内存大小（此限制仅适用于 3.2 服务器版本） | 40 MB |
-|3.2 服务器版本)  (MongoDB 操作的最长执行时间| 15 秒|
-|3.6 服务器版本)  (MongoDB 操作的最长执行时间| 60 秒|
+|MongoDB 操作的最长执行时间（适用于 3.2 服务器版本）| 15 秒|
+|MongoDB 操作的最长执行时间（适用于 3.6 服务器版本）| 60 秒|
 | 导致服务器端连接关闭的空闲连接超时值* | 30 分钟 |
 
 \* 我们建议客户端应用程序将驱动程序设置中的空闲连接超时值设为 2-3 分钟，因为 [Azure LoadBalancer 的默认超时值为 4 分钟](../load-balancer/load-balancer-tcp-idle-timeout.md)。  此超时将确保客户端计算机与 Azure Cosmos DB 之间的中间负载均衡器不会关闭空闲连接。
@@ -257,7 +257,7 @@ Cosmos DB 支持针为 MongoDB 编写的应用程序使用 MongoDB 线路协议�
 
 试用 Cosmos DB 仅支持美国中部、北欧和东南亚地区的全局分发。 无法为 Azure Cosmos DB 试用帐户创建 Azure 支持票证。 但是，为参与现有支持计划的订阅者提供了支持。
 
-## <a name="azure-cosmos-db-free-tier-account-limits"></a>Azure Cosmos DB 免费层帐户限制
+## <a name="azure-cosmos-db-free-tier-account-limits"></a>Azure Cosmos DB 免费层帐户的限制
 
 下表列出了 [Azure Cosmos DB 免费层帐户](optimize-dev-test.md#azure-cosmos-db-free-tier)的限制。
 
@@ -273,7 +273,7 @@ Cosmos DB 支持针为 MongoDB 编写的应用程序使用 MongoDB 线路协议�
 除上述限制外，[每个帐户的限制](#per-account-limits)也适用于免费层帐户。
 
 > [!NOTE]
-> Azure Cosmos DB 免费级别不同于 Azure 免费帐户。 在有限的时间里，Azure 免费帐户免费提供 Azure 信用额度和资源。 当使用 Azure Cosmos DB 作为此免费帐户的一部分时，将获得 10 GB 的存储和 400 RU/秒的预配吞吐量12个月。
+> Azure Cosmos DB 免费层不同于 Azure 免费账户。 Azure 免费账户在有限时间内免费提供 Azure 额度和资源。 Azure Cosmos DB 作为此免费账户的一部分，在你使用它时会提供 25 GB 的存储和 400 RU/秒的预配吞吐量，使用期限为 12个月。
 
 ## <a name="next-steps"></a>后续步骤
 

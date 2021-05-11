@@ -97,6 +97,8 @@
           href: how-to-run-a-reindex.md
         - name: 搜索 Azure API for FHIR 的示例
           href: search-samples.md
+    - name: 配置文件验证
+      href: validation-against-profiles.md
     - name: 导出数据
       expanded: false
       items:

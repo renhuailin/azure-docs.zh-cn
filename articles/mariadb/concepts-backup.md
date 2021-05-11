@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: 68605a22dd0d0b2b716b148399c8406a1ea8d89e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 08e75f9eb5ea111cc977d02f66b945de4eae5126
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98659931"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306160"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中进行备份和还原
 
@@ -19,33 +19,47 @@ Azure Database for MariaDB 可自动创建服务器备份并将其存储在用�
 
 ## <a name="backups"></a>备份
 
-Azure Database for MariaDB 可以进行完整备份、差异备份和事务日志备份。 可以通过这些备份将服务器还原到所配置的备份保留期中的任意时间点。 默认的备份保留期为七天。 可以选择将其配置为长达 35 天。 所有备份都使用 AES 256 位加密进行加密。
+Azure Database for MariaDB 会创建数据文件和事务日志的备份。 可以通过这些备份将服务器还原到所配置的备份保留期中的任意时间点。 默认的备份保留期为七天。 可以[选择将其配置](howto-restore-server-portal.md#set-backup-configuration)为长达 35 天。 所有备份都使用 AES 256 位加密进行加密。
 
-这些备份文件未公开给用户，因此无法导出。 这些备份只能用于 Azure Database for MariaDB 中的还原操作。 可以使用 [mysqldump](howto-migrate-dump-restore.md) 复制数据库。
+这些备份文件不公开给用户，因此无法导出。 这些备份只能用于 Azure Database for MySQL 中的还原操作。 可以使用 [mysqldump](howto-migrate-dump-restore.md) 复制数据库。
 
-### <a name="backup-frequency"></a>备份频率
+备份类型和频率取决于服务器的后端存储。
 
-#### <a name="servers-with-up-to-4-tb-storage"></a>存储容量最大 4 TB 的服务器
+### <a name="backup-type-and-frequency"></a>备份类型和频率
 
-对于支持最多 4 TB 存储容量的服务器，每周进行一次完整备份。 差异备份一天进行两次。 事务日志备份每五分钟进行一次。
+#### <a name="basic-storage-servers"></a>基本存储服务器
 
-#### <a name="servers-with-up-to-16-tb-storage"></a>存储容量最大 16 TB 的服务器
-在 [Azure 区域](concepts-pricing-tiers.md#storage)的子集中，所有新预配的服务器最多可以支持 16 TB 的存储容量。 这些大型存储服务器上的备份是基于快照的。 第一次完整快照备份在创建服务器后立即进行计划。 第一次完整快照备份将作为服务器的基准备份保留。 后续快照备份仅为差异备份。 
+基本存储是支持[基本层服务器](concepts-pricing-tiers.md)的后端存储。 基本存储服务器上的备份是基于快照的。 每天执行一次完整数据库快照。 不会对基本存储服务器执行任何差异备份，所有快照备份都仅为完整数据库备份。
 
-一天至少进行一次差异快照备份。 差异快照备份不按固定计划进行。 差异快照备份每 24 小时进行一次，除非自上次差异备份后事务日志（MariaDB 中的 binlog）超过 50 GB。 一天内，最多允许有 6 张差异快照。 
+事务日志备份每五分钟进行一次。
 
-事务日志备份每五分钟进行一次。 
+#### <a name="general-purpose-storage-servers-with-up-to-4-tb-storage"></a>存储容量最大达 4 TB 的常规用途存储服务器
+
+常规用途存储是支持[常规用途](concepts-pricing-tiers.md)和[内存优化层](concepts-pricing-tiers.md)服务器的后端存储。 对于常规用途存储容量最大达 4 TB 的服务器，完整备份每周进行一次。 差异备份一天进行两次。 事务日志备份每五分钟进行一次。 存储容量最大达 4 TB 的常规用途存储上的备份不是基于快照的，并且在备份时会消耗 IO 带宽。 对于 4 TB 存储上的大型数据库 (> 1 TB)，建议考虑：
+
+- 为备份 IO 预配更多 IOP
+- 或者，如果基础存储基础结构在你的首选 [Azure 区域](./concepts-pricing-tiers.md#storage)中可用，则可以迁移到支持存储容量最大达 16 TB 的常规用途存储。 支持最大 16 TB 存储的常规用途存储不产生额外的费用。 若要获得有关迁移到 16 TB 存储的帮助，请从 Azure 门户创建支持工单。
+
+#### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>存储容量最大达 16 TB 的常规用途存储服务器
+
+在 [Azure 区域](./concepts-pricing-tiers.md#storage)的一个子集中，所有新预配的服务器都可支持存储容量最大达 16 TB 的常规用途存储。 换句话说，对于支持该常规用途存储的所有[区域](concepts-pricing-tiers.md#storage)，常规用途存储容量默认最大为 16 TB。 16 TB 存储服务器上的备份是基于快照的。 第一次完整快照备份在创建服务器后立即进行计划。 第一次完整快照备份将作为服务器的基准备份保留。 后续快照备份仅为差异备份。
+
+一天至少进行一次差异快照备份。 差异快照备份不按固定计划进行。 差异快照备份每 24 小时进行一次，除非自上次差异备份后事务日志（MariaDB 中的二进制日志）超过 50 GB。 一天内，最多允许有 6 张差异快照。
+
+事务日志备份每五分钟进行一次。
+ 
 
 ### <a name="backup-retention"></a>备份保留
 
 根据服务器上的备份保持期设置来保留备份。 可以选择 7 到 35 天的保留期。 默认保持期为 7 天。 可以在服务器创建期间或以后通过使用 [Azure 门户](howto-restore-server-portal.md#set-backup-configuration)或 [Azure CLI](howto-restore-server-cli.md#set-backup-configuration) 更新备份配置来设置保留期。 
 
 备份保留期控制可以往回检索多长时间的时间点还原，因为它基于可用备份。 从恢复的角度来看，备份保留期也可以视为恢复时段。 在备份保留期间内执行时间点还原所需的所有备份都保留在备份存储中。 例如，如果备份保留期设置为 7 天，则可认为恢复时段是最近 7 天。 在这种情况下，将保留在过去 7 天内还原服务器所需的所有备份。 备份保留期为 7 天：
+
 - 存储容量最大达 4 TB 的服务器将保留最多 2 个完整数据库备份、所有差异备份和自最早的完整数据库备份以来执行的事务日志备份。
 -   存储容量最大达 16 TB 的服务器将保留完整数据库快照、所有差异快照和过去 8 天的事务日志备份。
 
 #### <a name="long-term-retention-of-backups"></a>长期保留备份
-此服务目前暂不对长期保留备份（超出 35 天）提供本机支持。 可以选择使用 mysqldump 来进行备份并存储备份，以便进行长期保留。 我们的支持团队已通过博客发布[分步指南文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157)来分享如何实现此操作。 
+此服务目前暂不对长期保留备份（超出 35 天）提供原生支持。 可以选择使用 mysqldump 来进行备份并存储备份，以便进行长期保留。 我们的支持团队已通过博客发布实现此操作的[分步指南文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157)来共享如何此目标。 
 
 ### <a name="backup-redundancy-options"></a>备份冗余选项
 
@@ -74,7 +88,7 @@ Azure Database for MariaDB 最高可以提供 100% 的已预配服务器存储�
 估计的恢复时间取决于若干因素，包括数据库大小、事务日志大小、网络带宽，以及在同一区域同时进行恢复的数据库总数。 恢复时间通常少于 12 小时。
 
 > [!IMPORTANT]
-> 已删除的服务器 **无法** 还原。 如果删除服务器，则属于该服务器的所有数据库也会被删除且不可恢复。为了防止服务器资源在部署后遭意外删除或意外更改，管理员可以利用[管理锁](../azure-resource-manager/management/lock-resources.md)。
+> 删除的服务器只能在删除备份后的五天内还原。 只能从托管服务器的 Azure 订阅访问和还原数据库备份。 若要还原已删除的服务器，请参阅[所述步骤](howto-restore-dropped-server.md)。 为了防止服务器资源在部署后遭意外删除或意外更改，管理员可以利用[管理锁](../azure-resource-manager/management/lock-resources.md)。
 
 ### <a name="point-in-time-restore"></a>时间点还原
 
