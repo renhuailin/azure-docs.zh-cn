@@ -1,14 +1,14 @@
 ---
 title: 部署 ISO 27001 ASE/SQL 工作负荷蓝图示例
 description: ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例的部署步骤，包括蓝图项目参数详细信息。
-ms.date: 02/05/2021
+ms.date: 04/23/2021
 ms.topic: sample
-ms.openlocfilehash: 5c329a9d7175772e80ea6d9d8da3baf85ce0d170
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a2bc0d0b206ae9fa484c73f1b67c14b115f20883
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104669638"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107949067"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>部署 ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例
 
@@ -93,7 +93,7 @@ ms.locfileid: "104669638"
      - **组织名称**：输入组织的短名称。 此属性主要用于为资源命名。
      - **共享服务订阅 ID**：[ISO 27001 共享服务](../iso27001-shared/index.md)蓝图示例所分配到的订阅 ID。
      - **默认子网地址前缀**：虚拟网络默认子网的 CIDR 表示法。
-       默认值为 _10.1.0.0/16_。
+       默认值为 10.1.0.0/24。
      - **工作负荷位置**：确定要将项目部署到的位置。 并非所有服务都可在所有位置使用。 部署此类服务的项目会针对该项目要部署到的位置提供一个参数选项。
 
    - 项目参数
@@ -120,21 +120,23 @@ ms.locfileid: "104669638"
 |网络资源组|资源组|位置|**已锁定** - 使用蓝图参数。|
 |网络安全组模板|资源管理器模板|日志保留期(以天为单位)|日志保留期（以天为单位）。 默认值为 _365_。|
 |虚拟网络和路由表模板|资源管理器模板|Azure 防火墙专用 IP|配置 [Azure 防火墙](../../../../firewall/overview.md)的专用 IP。 应是“ISO 27001:共享服务”项目参数“Azure 防火墙子网地址前缀”中定义的 CIDR 表示法的一部分。 默认值为 _10.0.4.4_。|
-|虚拟网络和路由表模板|资源管理器模板|共享服务订阅 ID|用于启用工作负荷与共享服务之间的 VNET 对等互连的值。|
 |虚拟网络和路由表模板|资源管理器模板|虚拟网络地址前缀|虚拟网络的 CIDR 表示法。 默认值为 _10.1.0.0/16_。|
-|虚拟网络和路由表模板|资源管理器模板|默认子网地址前缀|虚拟网络默认子网的 CIDR 表示法。 默认值为 _10.1.0.0/16_。|
 |虚拟网络和路由表模板|资源管理器模板|ADDS IP 地址|第一个 ADDS VM 的 IP 地址。 此值用作自定义 VNET DNS。|
+|虚拟网络和路由表模板|资源管理器模板|日志保留期(以天为单位)|日志保留期（以天为单位）。 默认值为 _365_。|
+|虚拟网络和路由表模板|资源管理器模板|虚拟网络对等互连名称|用于启用工作负荷与共享服务之间的 VNET 对等互连的值。|
 |密钥保管库资源组|资源组|名称|**已锁定** - 将 **组织名称** 与 `-workload-kv-rg` 相连接可使资源组名称保持唯一。|
 |密钥保管库资源组|资源组|位置|**已锁定** - 使用蓝图参数。|
 |Key Vault 模板|资源管理器模板|AAD 对象 ID|需要访问 Key Vault 实例的帐户的 AAD 对象标识符。 无默认值，且不能留空。 若要在 Azure 门户中查找此值，请在“服务”下搜索并选择“用户”。 使用“名称”框筛选帐户名，并选择该帐户。 在“用户配置文件”页上，选择“对象 ID”旁边的“单击以复制”图标。|
 |Key Vault 模板|资源管理器模板|日志保留期(以天为单位)|日志保留期（以天为单位）。 默认值为 _365_。|
 |Key Vault 模板|资源管理器模板|Key Vault SKU|指定创建的 Key Vault 的 SKU。 默认值为“高级”。|
 |Key Vault 模板|资源管理器模板|Azure SQL Server 管理员用户名|用于访问 Azure SQL Server 的用户名。 必须与 **Azure SQL 数据库模板** 中的相同属性值相匹配。 默认值为 _sql-admin-user_。|
+|Key Vault 模板|资源管理器模板|Azure SQL Server 管理员密码|Azure SQL Server 管理员用户名的密码|
 |Azure SQL 数据库资源组|资源组|名称|**已锁定** - 将 **组织名称** 与 `-workload-azsql-rg` 相连接可使资源组名称保持唯一。|
 |Azure SQL 数据库资源组|资源组|位置|**已锁定** - 使用蓝图参数。|
 |Azure SQL 数据库模板|资源管理器模板|Azure SQL Server 管理员用户名|Azure SQL 服务器的用户名。 必须与 **Key Vault 模板** 中的相同属性值相匹配。 默认值为 _sql-admin-user_。|
 |Azure SQL 数据库模板|资源管理器模板|Azure SQL Server 管理员密码(Key Vault 资源 ID)|Key Vault 的资源 ID。 请使用 "/subscriptions/{subscriptionId}/resourceGroups/{orgName}-workload-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv"，并将 `{subscriptionId}` 替换为您的订阅 ID，将 `{orgName}` 替换为 **组织名称** 蓝图参数。|
 |Azure SQL 数据库模板|资源管理器模板|Azure SQL Server 管理员密码(Key Vault 机密名称)|SQL Server 管理员的用户名。必须与 **Key Vault 模板** 中的“Azure SQL Server 管理员用户名”属性值相匹配。|
+|Azure SQL 数据库模板|资源管理器模板|Azure SQL Server 管理员密码(Key Vault 机密名称版本)|Key Vault 机密版本（对新部署保留为空）|
 |Azure SQL 数据库模板|资源管理器模板|日志保留期(以天为单位)|日志保留期（以天为单位）。 默认值为 _365_。|
 |Azure SQL 数据库模板|资源管理器模板|AAD 管理员对象 ID|分配为 Active Directory 管理员的用户的 AAD 对象 ID。无默认值，且不能留空。 若要在 Azure 门户中查找此值，请在“服务”下搜索并选择“用户”。 使用“名称”框筛选帐户名，并选择该帐户。 在“用户配置文件”页上，选择“对象 ID”旁边的“单击以复制”图标。|
 |Azure SQL 数据库模板|资源管理器模板|AAD 管理员登录名|目前，无法将 Microsoft 帐户（如 live.com 或 outlook.com）设置为管理员。只能将你组织中的用户和安全组设置为管理员。无默认值，且不能留空。 若要在 Azure 门户中查找此值，请在“服务”下搜索并选择“用户”。 使用“名称”框筛选帐户名，并选择该帐户。 在“用户配置文件”页上，复制“用户名”。 |

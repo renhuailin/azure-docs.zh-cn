@@ -4,12 +4,12 @@ description: 在本快速入门中，请使用 Service Fabric Reliable Services 
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 15e2180e44acaa5ebefb403b2da3755396a45ba4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 665376a7616e146dbbf86caf0b4a2b62de7e5506
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96575884"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136888"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>快速入门：将 .NET Reliable Services 应用程序部署到 Service Fabric
 
@@ -114,7 +114,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="debug-in-visual-studio"></a>在 Visual Studio 中进行调试
 
-此应用程序应该正常运行，不过，你可以使用调试程序来了解应用程序关键部分的运行情况。 在 Visual Studio 中调试应用程序时，使用的是本地 Service Fabric 开发群集。 可以根据自己的方案调整调试体验。 在此应用程序中，数据将使用可靠的字典存储到后端服务中。 停止调试程序时，Visual Studio 会默认删除应用程序。 删除应用程序后，后端服务中的数据也会随之一起删除。 若要跨调试会话保留数据，可以在 Visual Studio 中更改“应用程序调试模式” （“Voting” 项目属性）。  
+此应用程序应该正常运行，不过，你可以使用调试程序来了解应用程序关键部分的运行情况。 在 Visual Studio 中调试应用程序时，使用的是本地 Service Fabric 开发群集。 可以根据自己的方案调整调试体验。 在此应用程序中，数据将使用可靠的字典存储到后端服务中。 停止调试程序时，Visual Studio 会默认删除应用程序。 删除应用程序后，后端服务中的数据也会随之一起删除。 要跨调试会话保存数据，请打开“投票”项目的“属性”，将“[应用程序调试模式](service-fabric-manage-application-in-visual-studio.md#to-set-the-application-debug-mode-property)”更改为“自动升级” 。
 
 若要查看代码，请完成以下步骤：
 
@@ -159,7 +159,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
     ![“更改版本”对话框](./media/service-fabric-quickstart-dotnet/change-version.png)
 7. 在“发布 Service Fabric 应用程序”  对话框中，选中“升级应用程序”复选框  。
-8.  将“目标配置文件”  更改为 **PublishProfiles\Local.5Node.xml** 并确保将“连接终结点”  设置为“本地群集”  。 
+8.  将“目标配置文件”  更改为 **PublishProfiles\Local.5Node.xml** 并确保将“连接终结点”  设置为“本地群集”  。
 9. 选择“升级应用程序”。 
 
     ![“发布”对话框中的升级设置](./media/service-fabric-quickstart-dotnet/upgrade-app.png)

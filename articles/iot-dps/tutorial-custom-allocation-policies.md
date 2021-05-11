@@ -3,17 +3,17 @@ title: 有关通过 Azure IoT 中心设备预配服务 (DPS) 使用自定义分�
 description: 有关通过 Azure IoT 中心设备预配服务 (DPS) 使用自定义分配策略的教程
 author: wesmc7777
 ms.author: wesmc
-ms.date: 09/23/2020
+ms.date: 04/23/2021
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: f19f43b89cd2527a67827d7434f2e054ee40001e
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 823c154a07fed2bc3734993c25accb37aa33a228
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227375"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107929914"
 ---
 # <a name="tutorial-use-custom-allocation-policies-with-device-provisioning-service-dps"></a>教程：通过设备预配服务 (DPS) 使用自定义分配策略
 
@@ -207,11 +207,30 @@ ms.locfileid: "107227375"
 * **contoso-toaster-007**
 * **contoso-heatpump-088**
 
-将 **KEY** 变量的值替换为你之前在创建注册组后记下的 **主密钥**。 下面的代码显示的密钥值和输出只是一个示例。
 
-#### <a name="powershell"></a>[PowerShell](#tab/powershell)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLI 的 IoT 扩展提供了用于生成派生设备密钥的 [`compute-device-key`](/cli/azure/iot/dps?view=azure-cli-latest&preserve-view=true#az_iot_dps_compute_device_key) 命令。 可在基于 Windows 或 Linux 的系统上通过 PowerShell 或 Bash shell 使用此命令。
+
+将 `--key` 参数值替换为注册组中的主密钥。
+
+```azurecli
+az iot dps compute-device-key --key oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA== --registration-id contoso-toaster-007
+
+"JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs="
+```
+
+```azurecli
+az iot dps compute-device-key --key oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA== --registration-id contoso-heatpump-088
+
+"6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg="
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 如果使用的是基于 Windows 的工作站，可以使用 PowerShell 生成派生的设备密钥，如以下示例中所示。
+
+将 **KEY** 变量的值替换为你之前在创建注册组后记下的 **主密钥**。 下面的代码显示的密钥值和输出只是一个示例。
 
 ```powershell
 $KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
@@ -234,9 +253,12 @@ contoso-toaster-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
 contoso-heatpump-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
 ```
 
-#### <a name="bash"></a>[Bash](#tab/bash)
+# <a name="bash"></a>[Bash](#tab/bash)
 
 如果你使用的是 Linux 工作站，可以使用 openssl 生成派生的设备密钥，如以下 Bash 示例所示。
+
+将 **KEY** 变量的值替换为你之前在创建注册组后记下的 **主密钥**。 下面的代码显示的密钥值和输出只是一个示例。
+
 
 ```bash
 KEY=oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA==

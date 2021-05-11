@@ -6,14 +6,14 @@ ms.subservice: reservations
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: how-to
-ms.date: 02/09/2021
+ms.date: 04/21/2021
 ms.author: banders
-ms.openlocfilehash: 717cf5acb63ee04852ccbb9aae2f7aed2b3c179a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 64a6b3a313f5078368563af29ab97a871b4c3ae0
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392266"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288663"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 资源的预留
 
@@ -57,8 +57,8 @@ ms.locfileid: "100392266"
 
 默认情况下，以下用户可以查看和管理预留：
 
-- 预留订单中将添加购买预留的人员和用于购买预留的计费订阅的帐户管理员。
-- 企业协议和 Microsoft 客户协议计费管理员。
+- 购买预留的人员和计费订阅的帐户所有者可获得对预留订单的 Azure RBAC 访问权限。
+-  企业协议和 Microsoft 客户协议计费参与者可通过“成本管理 + 计费”>“预留交易”> 选择蓝色横幅来管理所有预留。
 
 若要允许其他人管理预留，可通过两种方式实现：
 
@@ -81,8 +81,14 @@ ms.locfileid: "100392266"
 
 ### <a name="how-billing-administrators-view-or-manage-reservations"></a>计费管理员如何查看或管理预留
 
-1. 请转到“成本管理 + 计费”，然后在页面左侧选择“预留事务” 。
-2. 如果具有所需的计费权限，便可以查看和管理预留。 如果看不到任何预留，请确保使用创建预留的 Azure AD 租户登录。
+如果你是计费管理员，请使用以下步骤来查看和管理所有预留项与预留交易。
+
+1. 登录到 [Azure 门户](https://portal.azure.com)，导航到“成本管理 + 计费”。
+    - 如果你是 EA 管理员，请在左侧菜单中选择“计费范围”，然后在计费范围列表中选择一个范围。
+    - 如果你是 Microsoft 客户协议计费配置文件所有者，请在左侧菜单中选择“计费配置文件”。 在计费配置文件列表中选择一个计费配置文件。
+2. 在左侧菜单中，选择“产品 + 服务” > “预留项” 。
+3. 此时将显示 EA 注册或计费配置文件的完整预留项列表。
+4. 计费管理员可以通过选择预留项，然后在出现的窗口中选择“授予访问权限”，来取得预留项的所有权。
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>将一个预订拆分为两个预订
 
@@ -177,23 +183,8 @@ ms.locfileid: "100392266"
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关 Azure 预订的详细信息，请参阅以下文章：
-
-- [什么是 Azure 预留？](save-compute-costs-reservations.md)
-
-购买服务计划：
-- [通过 Azure 虚拟机预留实例为虚拟机预付费](../../virtual-machines/prepay-reserved-vm-instances.md)
-- [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../../azure-sql/database/reserved-capacity-overview.md)
-- [通过 Azure Cosmos DB 保留容量预付 Azure Cosmos DB 资源费用](../../cosmos-db/cosmos-db-reserved-capacity.md)
-
-购买软件计划：
-- [通过 Azure 预留为 Red Hat 软件计划预付费](../../virtual-machines/linux/prepay-suse-software-charges.md)
-- [通过 Azure 预留为 SUSE 软件计划预付费](../../virtual-machines/linux/prepay-suse-software-charges.md)
-
-了解折扣和使用情况：
-- [了解 VM 预留折扣的应用方式](../manage/understand-vm-reservation-charges.md)
-- [了解 Red Hat Enterprise Linux 软件计划折扣是如何应用的](understand-rhel-reservation-charges.md)
-- [了解如何应用 SUSE Linux Enterprise 软件计划折扣](understand-suse-reservation-charges.md)
-- [了解如何应用其他预留折扣](understand-reservation-charges.md)
-- [了解即用即付订阅的预留使用情况](understand-reserved-instance-usage.md)
-- [了解企业合约的预留使用情况](understand-reserved-instance-usage-ea.md)
-- [预订未包含的 Windows 软件成本](reserved-instance-windows-software-costs.md)
+ - [查看预留利用率](reservation-utilization.md)
+ - [换货和退款](exchange-and-refund-azure-reservations.md)
+ - [续订预留](reservation-renew.md)
+ - [租户之间的传输](troubleshoot-reservation-transfers-between-tenants.md)
+ - [从 Azure 日志中查找预留项购买者](find-reservation-purchaser-from-logs.md)

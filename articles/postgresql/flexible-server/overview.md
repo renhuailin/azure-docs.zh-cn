@@ -6,15 +6,15 @@ ms.author: sunila
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 04/05/2021
-ms.openlocfilehash: 090d38a92da126cd4fd8423231f856d22ea9a64c
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 04/22/2021
+ms.openlocfilehash: efa5502c89a68be05ef8f7dc1d3d57c57e732caa
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106830"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987067"
 ---
-# <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器
+# <a name="overview---azure-database-for-postgresql---flexible-server"></a>概述 - Azure Database for PostgreSQL - 灵活服务器
 
 由 PostgreSQL 社区版提供支持的 [Azure Database for PostgreSQL](../overview.md) 提供三种部署模式：
 
@@ -85,6 +85,10 @@ Azure Database for PostgreSQL 灵活服务器是一种完全托管的数据库�
 ## <a name="monitoring-and-alerting"></a>监视和警报
 
 灵活服务器服务配备了内置的性能监视和警报功能。 所有 Azure 指标的频率都是一分钟，每个指标提供 30 天的历史记录。 可针对指标配置警报。 该服务公开主机服务器指标来监视资源利用率，并允许配置慢查询日志。 使用这些工具，可快速优化工作负载并配置服务器以获得最佳性能。
+
+## <a name="built-in-pgbouncer"></a>内置 PgBouncer
+
+灵活服务器附带一个内置的 PgBouncer，这是一个连接池程序。 你可以选择启用它，并通过使用相同的主机名和端口 6432 的 PgBouncer 将应用程序连接到数据库服务器。
 
 ## <a name="azure-regions"></a>Azure 区域
 

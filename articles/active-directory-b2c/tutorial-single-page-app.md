@@ -11,18 +11,16 @@ ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 6a9f3b864bd8aba2140c7d32d4b5474ff7b95f88
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb43415a6e5a32758dee976751436b140b4dfa03
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96171222"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071183"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>教程：使用 Azure AD B2C 在单页应用程序中启用身份验证
 
-本教程介绍如何使用 Azure Active Directory B2C (Azure AD B2C) 在单页应用程序 (SPA) 中通过以下任一方法进行用户登录和注册：
-* [OAuth 2.0 授权代码流](./authorization-code-flow.md)（使用 [MSAL.js 2.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)）
-* [OAuth 2.0 隐式授予流](./implicit-flow-single-page-application.md)（使用 [MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)）
+本教程介绍如何使用 Azure Active Directory B2C (Azure AD B2C) 在单页应用程序 (SPA) 中通过 [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) 使用 [OAuth 2.0 授权代码流](./authorization-code-flow.md)进行用户登录和注册
 
 本教程是由两个部分组成的教程系列的第一部分，将介绍以下操作：
 
@@ -55,9 +53,9 @@ ms.locfileid: "96171222"
 
 要更新 Azure AD B2C 租户中的应用程序，可以使用新的统一“应用注册”体验或旧版“应用程序(旧版)”体验 。 [详细了解此新体验](./app-registrations-training-guide.md)。
 
-#### <a name="app-registrations-auth-code-flow"></a>[应用注册（身份验证代码流）](#tab/app-reg-auth/)
+#### <a name="app-registrations"></a>[应用注册](#tab/app-reg-auth/)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 依次选择“应用注册”、“拥有的应用程序”选项卡，然后选择“spaapp1”应用程序 。
@@ -66,20 +64,9 @@ ms.locfileid: "96171222"
 1. 选择“概述”。
 1. 记录“应用程序(客户端) ID”，以便稍后在单页 Web 应用程序中更新代码时使用。
 
-#### <a name="app-registrations-implicit-flow"></a>[应用注册（隐式流）](#tab/app-reg-implicit/)
-
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
-1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
-1. 依次选择“应用注册”、“拥有的应用程序”选项卡，然后选择“spaapp1”应用程序 。
-1. 在“单页面应用程序”下，选择“添加 URI”链接，然后输入 `http://localhost:6420` 。
-1. 在“隐式授权”下，选中“访问令牌”和“ID 令牌”复选框（如果尚未选中），然后选择“保存”   。
-1. 选择“概述”。
-1. 记录“应用程序(客户端) ID”，以便稍后在单页 Web 应用程序中更新代码时使用。
-
 #### <a name="applications-legacy"></a>[应用程序（旧版）](#tab/applications-legacy/)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 选择“应用程序(旧版)”，然后选择“spaapp1”应用程序。
@@ -93,26 +80,15 @@ ms.locfileid: "96171222"
 
 在本教程中，你将配置从 GitHub 下载的代码示例，以其适用于你的 B2C 租户。 该示例演示了单页应用程序如何使用 Azure AD B2C 进行用户注册和登录，并调用受保护的 Web API（将在本系列教程的下一篇教程中启用该 Web API）。
 
-* MSAL.js 2.x 授权代码流示例：
+  从 GitHub [下载 zip 文件](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/archive/main.zip)或克隆该示例：
 
-    从 GitHub [下载 zip 文件](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/archive/main.zip)或克隆该示例：
-
-    ```
-    git clone https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa.git
-    ```
-* MSAL.js 1.x 隐式流示例：
-
-    从 GitHub [下载 zip 文件](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip)或克隆该示例：
-
-    ```
-    git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
-    ```
+  ```
+  git clone https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa.git
+  ```
 
 ## <a name="update-the-sample"></a>更新示例
 
 获得示例以后，即可使用在此前的步骤中记录的 Azure AD B2C 租户名称和应用程序 ID 来更新代码。
-
-#### <a name="auth-code-flow-sample"></a>[授权代码流示例](#tab/config-auth/)
 
 1. 打开 App 文件夹中的 authConfig.js 文件 。
 1. 在 `msalConfig` 对象中，找到 `clientId` 的分配，并将其替换为在上一步中记录的“应用程序(客户端) ID”。
@@ -124,22 +100,8 @@ ms.locfileid: "96171222"
 1. 找到 `b2cScopes` 的分配，并将 URL 替换为你为 Web API 创建的范围 URL，例如 `b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/helloapi/demo.read"]`。
 1. 找到 `webApi` 的分配，然后将当前 URL 替换为在步骤 4 中部署了 Web API 的 URL，例如 `webApi: http://localhost:5000/hello`。
 
-#### <a name="implicit-flow-sample"></a>[隐式流示例](#tab/config-implicit/)
-
-1. 打开 JavaScriptSPA 文件夹中的 authConfig.js 文件。 
-1. 在 `msalConfig` 对象中，找到 `clientId` 的分配，并将其替换为在上一步中记录的“应用程序(客户端) ID”。
-1. 打开 `policies.js` 文件。
-1. 在 `names` 下找到条目，并将其分配替换为在上一步中创建的用户流的名称，例如 `B2C_1_signupsignin1`。
-1. 在 `authorities` 下找到条目，并将其相应替换为在上一步中创建的用户流的名称，例如 `https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-sign-in-sign-up-policy>`。
-1. 打开 `apiConfig.js` 文件。
-1. 找到 `b2cScopes` 的分配，并将 URL 替换为你为 Web API 创建的范围 URL，例如 `b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/helloapi/demo.read"]`。
-1. 找到 `webApi` 的分配，然后将当前 URL 替换为在步骤 4 中部署了 Web API 的 URL，例如 `webApi: http://localhost:5000/hello`。
-
-* * *
 
 生成的代码应类似于以下内容：
-
-#### <a name="auth-code-flow-sample"></a>[授权代码流示例](#tab/review-auth/)
 
 authConfig.js：
 
@@ -198,81 +160,14 @@ const apiConfig = {
 };
 ```
 
-#### <a name="implicit-flow-sample"></a>[隐式流示例](#tab/review-implicit/)
-
-authConfig.js：
-
-```javascript
-const msalConfig = {
-  auth: {
-    clientId: "e760cab2-b9a1-4c0d-86fb-ff7084abd902",
-    authority: b2cPolicies.authorities.signUpSignIn.authority,
-    validateAuthority: false
-  },
-  cache: {
-    cacheLocation: "localStorage",
-    storeAuthStateInCookie: true
-  }
-};
-
-const loginRequest = {
-  scopes: ["openid", "profile"],
-};
-
-const tokenRequest = {
-  scopes: apiConfig.b2cScopes // i.e. ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"]
-};
-```
-
-policies.js：
-
-```javascript
-const b2cPolicies = {
-    names: {
-        signUpSignIn: "b2c_1_susi",
-        forgotPassword: "b2c_1_reset",
-        editProfile: "b2c_1_edit_profile"
-    },
-    authorities: {
-        signUpSignIn: {
-            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_susi",
-        },
-        forgotPassword: {
-            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_reset",
-        },
-        editProfile: {
-            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_edit_profile"
-        }
-    },
-}
-```
-
-apiConfig.js：
-
-```javascript
-const apiConfig = {
-  b2cScopes: ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"],
-  webApi: "https://fabrikamb2chello.azurewebsites.net/hello"
-};
-```
-
-* * *
-
 
 ## <a name="run-the-sample"></a>运行示例
 
-1. 打开控制台窗口，导航到包含此示例的目录。 
+1. 打开控制台窗口，导航到包含此示例的目录。
 
-    - 对于 MSAL.js 2.x 授权代码流示例：
-
-        ```console
-        cd ms-identity-b2c-javascript-spa
-        ```
-    - 对于 MSAL.js 1.x 隐式流示例： 
-
-        ```console
-        cd active-directory-b2c-javascript-msal-singlepageapp
-        ```
+    ```console
+    cd ms-identity-b2c-javascript-spa
+    ```
 
 1. 运行以下命令：
 

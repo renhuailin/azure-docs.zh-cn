@@ -6,14 +6,14 @@ ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: common
 ms.topic: reference
-ms.date: 11/19/2020
+ms.date: 03/10/2021
 ms.author: banders
-ms.openlocfilehash: 93dda4fc3a152b0a07a95ff327c9ea619f25787c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 24fbf52c8fd0338537862a54e15e8a249541a701
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96355808"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102635784"
 ---
 # <a name="migrate-from-enterprise-reporting-to-azure-resource-manager-apis"></a>从 Enterprise 报告迁移到 Azure 资源管理器 API
 
@@ -51,28 +51,7 @@ ms.locfileid: "96355808"
 
 ### <a name="azure-billing-hierarchy-access"></a>Azure 计费层次结构访问
 
-若要将服务主体权限分配给企业计费帐户、部门或注册帐户范围，请使用[计费权限](/rest/api/billing/2019-10-01-preview/billingpermissions)、[计费角色定义](/rest/api/billing/2019-10-01-preview/billingroledefinitions)和[计费角色分配](/rest/api/billing/2019-10-01-preview/billingroleassignments) API。
-
-- 使用计费权限 API 来确定服务主体在给定范围（例如计费帐户或部门）中已具有的权限。
-- 使用计费角色定义 API 来枚举可分配给服务主体的可用角色。
-  - 此时只能向服务主体分配只读 EA 管理员和只读部门管理员角色。
-- 使用计费角色分配 API 将角色分配给服务主体。
-
-以下示例演示如何调用角色分配 API 来授予服务主体对计费帐户的访问权限。 建议使用 [PostMan](https://postman.com) 执行这些一次性权限配置。
-
-```json
-POST https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/createBillingRoleAssignment?api-version=2019-10-01-preview
-```
-
-#### <a name="request-body"></a>请求正文
-
-```json
-{
-  "principalId": "00000000-0000-0000-0000-000000000000",
-  "billingRoleDefinitionId": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/providers/Microsoft.Billing/billingRoleDefinition/10000000-aaaa-bbbb-cccc-100000000000"
-}
-
-```
+若要将服务主体权限分配给企业计费帐户、部门或注册帐户范围，请参阅[将角色分配给 Azure 企业协议服务主体名称](../manage/assign-roles-azure-service-principals.md)。
 
 ### <a name="azure-role-based-access-control"></a>Azure 基于角色的访问控制
 

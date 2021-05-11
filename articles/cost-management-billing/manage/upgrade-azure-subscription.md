@@ -3,26 +3,28 @@ title: 升级 Azure 帐户
 description: 了解如何升级 Azure 免费帐户或面向学生的 Azure 入门版帐户。 请参阅有关 Azure 支持计划的其他信息。
 keywords: 即用即付升级
 author: bandersmsft
-ms.reviewer: sasrin
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 03/11/2021
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d348c6a26404f7adbf89cd107a1f0ad0a1cacd5
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 6066b5efc9bb004aab6b651f15d24b19672c3497
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590828"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220600"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>升级 Azure 免费帐户或面向学生的 Azure 入门版帐户
 
-可以在 Azure 门户中将 [Azure 免费帐户](https://azure.microsoft.com/free/)或[面向学生的 Azure 入门版帐户](https://azure.microsoft.com/offers/ms-azr-0144p/)升级到[即用即付费率](https://azure.microsoft.com/offers/ms-azr-0003p/)。
+可以在 Azure 门户中将 [Azure 免费帐户](https://azure.microsoft.com/free/)升级到[即用即付费率](https://azure.microsoft.com/offers/ms-azr-0003p/)。
 
-如果已注册了[面向学生的 Azure 入门版帐户](https://azure.microsoft.com/offers/ms-azr-0144p/)，并且有资格使用 [Azure 免费帐户](https://azure.microsoft.com/free/)，可以升级到免费帐户。 升级后，你将获得 200 美元的 Azure 额度和 12 个月的免费服务。
+如果有[面向学生的 Azure 入门版帐户](https://azure.microsoft.com/offers/ms-azr-0144p/)，并且有资格使用 [Azure 免费帐户](https://azure.microsoft.com/free/)，可以将其升级到 [Azure 免费帐户](https://azure.microsoft.com/free/)。 升级时，你将获得 200 美元的 Azure 额度（以计费货币表示）和 12 个月的免费升级服务。 如果你不具备获取免费帐户的资格，则可以使用[支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)升级到[即用即付费率](https://azure.microsoft.com/offers/ms-azr-0003p/)。
+
+如果有[面向学生的 Azure](https://azure.microsoft.com/offers/ms-azr-0170p/) 帐户，可以使用[支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)升级到[即用即付费率](https://azure.microsoft.com/offers/ms-azr-0003p/)
 
 <a id="freetrial"></a>
 
@@ -32,14 +34,14 @@ ms.locfileid: "97590828"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 搜索“订阅”。  
-    ![显示搜索的屏幕截图](./media/upgrade-azure-subscription/search-subscriptions-ibiza.png)
+    :::image type="content" source="./media/upgrade-azure-subscription/search-subscriptions.png" alt-text="显示搜索的屏幕截图。" lightbox="./media/upgrade-azure-subscription/search-subscriptions.png" :::
 1. 选择在注册 Azure 免费帐户时创建的订阅。
-1. 在订阅概述中，选择命令栏中的“升级订阅”。 如果没有看到升级订阅按钮，请选择页面顶部的升级横幅。  
-    ![显示“升级”按钮的屏幕截图](./media/upgrade-azure-subscription/free-upgrade-button.png)
-1. 如果帐户没有付款方法，系统将提示你添加一个。
+1. 在订阅概述中，选择命令栏中的“升级订阅”。 如果没有看到升级订阅选项，请选择页面顶部的升级横幅。  
+    :::image type="content" source="./media/upgrade-azure-subscription/free-upgrade-button.png" alt-text="显示“升级”选项的屏幕截图。" lightbox="./media/upgrade-azure-subscription/free-upgrade-button.png" :::
+1. 如果帐户没有付款方式，系统将提示你添加一个。
 1. 你可能需要输入电话号码来验证身份。
 1. 键入订阅的名称。  
-     ![显示名称的屏幕截图](./media/upgrade-azure-subscription/free-upgrade-name.png)
+     :::image type="content" source="./media/upgrade-azure-subscription/free-upgrade-name.png" alt-text="显示订阅名称的屏幕截图。" lightbox="./media/upgrade-azure-subscription/free-upgrade-name.png" :::
 1. 为订阅选择支持计划。 若要详细了解支持计划，请参阅 [Azure 支持计划](https://azure.microsoft.com/us/support/plans/)。
 1. 选择“升级”。
 
@@ -55,19 +57,11 @@ ms.locfileid: "97590828"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 搜索“订阅”。  
-    ![显示搜索的屏幕截图](./media/upgrade-azure-subscription/search-subscriptions-ibiza.png)
+    :::image type="content" source="./media/upgrade-azure-subscription/search-subscriptions.png" alt-text="显示搜索的屏幕截图。" lightbox="./media/upgrade-azure-subscription/search-subscriptions.png" :::
 1. 选择注册面向学生的 Azure 入门版帐户时创建的订阅。
-1. 在订阅概述中，选择命令栏中的“升级订阅”。  
-    ![对学生显示“升级”按钮的屏幕截图](./media/upgrade-azure-subscription/student-upgrade-ibiza.png)
-
-### <a name="upgrade-to-pay-as-you-go-rates"></a>升级到即用即付费率
-
-1. 如果要升级到即用即付费率，并且尚未设置订阅的付款方式，则系统会提示你添加付款方式。
-1. 你可能需要输入电话号码来验证身份。
-1. 键入订阅的名称。
-1. 为订阅选择支持计划。 若要详细了解支持计划，请参阅 [Azure 支持计划](https://azure.microsoft.com/us/support/plans/)。
-1. 选择“升级”。
+1. 在订阅概述中，选择命令栏中的“升级”。  
+    :::image type="content" source="./media/upgrade-azure-subscription/student-upgrade.png" alt-text="显示面向学生的“升级”选项的屏幕截图。" lightbox="./media/upgrade-azure-subscription/student-upgrade.png" :::
 
 ## <a name="next-steps"></a>后续步骤
 
-升级帐户后，请参阅[计划管理 Azure 成本](../understand/plan-manage-costs.md)。
+- 升级帐户后，请参阅[计划管理 Azure 成本](../understand/plan-manage-costs.md)。

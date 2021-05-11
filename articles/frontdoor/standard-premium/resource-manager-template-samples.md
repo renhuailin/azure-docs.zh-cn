@@ -7,12 +7,12 @@ ms.author: jodowns
 ms.service: frontdoor
 ms.topic: sample
 ms.date: 04/16/2021
-ms.openlocfilehash: e939aec8f1cf5fa615904bb81bad82ea3cf22c61
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 0da7da3748f9c1dc088d0cee615b429927a40f92
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587470"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107890683"
 ---
 # <a name="azure-resource-manager-templates-for-azure-front-door"></a>用于 Azure Front Door 的 Azure 资源管理器模板
 
@@ -27,6 +27,8 @@ ms.locfileid: "107587470"
 | [规则集](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-rule-set/) | 创建 Front Door 配置文件和规则集。  |
 | [具有托管规则集的 WAF 策略](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-waf-managed/) | 创建 Front Door 配置文件和具有托管规则集的 WAF。  |
 | [具有自定义规则的 WAF 策略](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-waf-custom/) | 创建 Front Door 配置文件和具有自定义规则的 WAF。  |
+| [具有速率限制的 WAF 策略](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-rate-limit/) | 创建 Front Door 配置文件和具有用于执行速率限制的自定义规则的 WAF。  |
+| [带地区筛选的 WAF 策略](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-geo-filtering/) | 创建 Front Door 配置文件和具有用于执行地区筛选的自定义规则的 WAF。  |
 |**应用服务源**| **说明** |
 | [应用服务](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-app-service-public) | 创建具有公共终结点的应用服务应用以及 Front Door 配置文件。  |
 | [具有专用链接的应用服务](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-app-service-private-link) | 创建具有专用终结点的应用服务应用以及 Front Door 配置文件。  |

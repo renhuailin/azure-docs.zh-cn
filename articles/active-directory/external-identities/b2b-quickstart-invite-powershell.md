@@ -15,12 +15,12 @@ ms.custom:
 - seo-update-azuread-jan
 - mode-api
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 765d8ea99167512e553cef9cc6f7fed583eff469
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: f3541698e4a02f82f54d84eabf1bf7bb285cda10
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529816"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987571"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>快速入门：使用 PowerShell 添加来宾用户
 
@@ -28,38 +28,10 @@ ms.locfileid: "107529816"
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-### <a name="install-the-latest-azureadpreview-module"></a>安装最新的 AzureADPreview 模块
-确保已安装最新版本的 Azure AD PowerShell for Graph 模块 (AzureADPreview)。 
-
-首先，检查已安装了哪些模块。 以已提升的用户身份打开 Windows PowerShell（以管理员身份运行），然后运行以下命令：
- 
-```powershell  
-Get-Module -ListAvailable AzureAD*
-```
-
-如果显示了 AzureADPreview 模块，但没有任何指示还有更高版本的消息，请进行设置。 否则，请根据输出，执行以下操作之一：
-
-- 如果未返回任何结果，请运行以下命令来安装 AzureADPreview 模块：
-  
-   ```powershell  
-   Install-Module AzureADPreview
-   ```
-- 如果结果中仅显示了 AzureAD 模块，请运行以下命令来安装 AzureADPreview 模块： 
-
-   ```powershell 
-   Uninstall-Module AzureAD 
-   Install-Module AzureADPreview 
-   ```
-- 如果结果中仅显示了 AzureADPreview 模块，但收到消息指出存在更新的版本，请运行以下命令来更新此模块： 
-
-   ```powershell 
-   Uninstall-Module AzureADPreview 
-   Install-Module AzureADPreview 
-  ```
-
-你可能会收到正在从不受信任的存储库安装模块的提示。 如果之前未将 PSGallery 存储库设置为受信任的存储库，则可能出现此情况。 按 Y 以安装模块。
+### <a name="powershell-module"></a>PowerShell 模块
+安装[适用于 Graph 的 AzureAD V2 PowerShell 模块](/powershell/azure/active-directory/install-adv2) (AzureAD) 或[适用于 Graph 的 AzureAD V2 PowerShell 模块预览版](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) (AzureADPreview)。
 
 ### <a name="get-a-test-email-account"></a>获取测试电子邮件帐户
 

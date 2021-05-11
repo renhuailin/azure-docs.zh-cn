@@ -2,13 +2,14 @@
 title: 教程 - 在 Azure 中为 VMware 私有云配置网络
 description: 了解如何在 Azure 中创建和配置在部署私有云时所需的网络
 ms.topic: tutorial
-ms.date: 03/13/2021
-ms.openlocfilehash: c609d191191cd9de111e83fe62761b149405cccc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: contperf-fy21q4
+ms.date: 04/23/2021
+ms.openlocfilehash: 13f74c6120bd78127a2989218b3d535989bb7861
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103494340"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107945661"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>教程：在 Azure 中为 VMware 私有云配置网络
 
@@ -20,10 +21,7 @@ Azure VMware 解决方案私有云需要一个 Azure 虚拟网络。 由于 Azur
 > * 创建虚拟网络
 > * 创建虚拟网络网关
 > * 将 ExpressRoute 线路连接到网关
-> * 查找 vCenter 和 NSX 管理器的 URL
 
-## <a name="prerequisites"></a>先决条件 
-一个已创建 [Azure VMware 解决方案私有云](tutorial-create-private-cloud.md)的虚拟网络。 
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
@@ -88,14 +86,6 @@ Azure VMware 解决方案私有云需要一个 Azure 虚拟网络。 由于 Azur
 [!INCLUDE [connect-expressroute-to-vnet](includes/connect-expressroute-vnet.md)]
 
 
-## <a name="locate-the-urls-for-vcenter-and-nsx-manager"></a>查找 vCenter 和 NSX 管理器的 URL
-
-若要登录到 vCenter 和 NSX 管理器，需要使用 vCenter Web 客户端和 NSX-T 管理器站点的 URL。 
-
-导航到 Azure VMware 解决方案私有云，在“管理”下选择“标识”，然后便可以找到所需的信息 。
-
-:::image type="content" source="./media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="vCenter 和 NSX-T 凭据以及 Web 客户端 URL 的屏幕截图。" border="true" lightbox="media/tutorial-access-private-cloud/ss4-display-identity.png":::
-
 ## <a name="next-steps"></a>后续步骤
 
 在本教程中，你了解了如何执行以下操作：
@@ -104,7 +94,7 @@ Azure VMware 解决方案私有云需要一个 Azure 虚拟网络。 由于 Azur
 > * 创建虚拟网络
 > * 创建虚拟网络网关
 > * 将 ExpressRoute 线路连接到网关
-> * 查找 vCenter 和 NSX 管理器的 URL
+
 
 继续学习下一教程，了解如何创建 vCenter 中用于 VM 的 NSX-T 网段。
 

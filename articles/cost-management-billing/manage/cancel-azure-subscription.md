@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 03/31/2021
 ms.author: banders
-ms.openlocfilehash: 0d0dd5342cfc57da776e38ddef3df3b9c2199ac2
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b20134cbfb85c2dcaef1227e6390c8c6047ad5be
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735769"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109384"
 ---
 # <a name="cancel-your-azure-subscription"></a>取消 Azure 订阅
 
@@ -77,6 +77,10 @@ Microsoft 建议你在取消订阅之前执行以下操作，虽然这不是必�
 1. 选择要删除的订阅。
 1. 选择“概述”，然后选择“删除订阅” 。
 
+## <a name="delete-other-subscriptions"></a>删除其他订阅
+
+唯一可以手动删除的订阅类型是免费试用订阅。 所有其他订阅类型（包括即用即付订阅）仅通过[订阅取消](#cancel-subscription-in-the-azure-portal)过程删除。 换句话说，除非是免费试用订阅，否则无法直接删除该订阅。 但是，取消订阅后，可以创建一个 [Azure 支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)，要求立即删除该订阅。
+
 ## <a name="reactivate-a-subscription"></a>重新激活订阅
 
 如果意外取消了采用即用即付费率的订阅，可[在 Azure 门户重新激活订阅](subscription-disabled.md)。
@@ -89,7 +93,7 @@ Microsoft 建议你在取消订阅之前执行以下操作，虽然这不是必�
 
 ## <a name="how-do-i-delete-my-azure-account"></a>如何删除 Azure 帐户？
 
-*我需要删除我的帐户，包括所有个人信息。我已经取消了有效的（免费试用版）订阅。我没有任何有效的订阅，并且想要完全删除我的帐户*。
+我需要删除我的帐户，包括所有个人信息。我已经取消了有效的（免费试用版）订阅。我没有任何有效的订阅，并且想要完全删除我的帐户。
 
 * 如果是通过组织获取的 Azure Active Directory 帐户，则 Azure AD 管理员可以删除该帐户。 在那之后，服务被禁用。 那意味着虚拟机已解除分配，临时 IP 地址已释放，并且存储是只读的。 总之，取消后，会立即停止计费。
 

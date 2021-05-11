@@ -1,19 +1,19 @@
 ---
-title: 快速入门 - 使用 Azure 通信服务将团队会议加入到 iOS 应用程序中
+title: 快速入门 - 使用 Azure 通信服务将 Microsoft Teams 会议加入到 iOS 应用
 description: 本快速入门将介绍如何使用适用于 iOS 的 Azure 通信服务 Teams 嵌入库。
 author: palatter
 ms.author: palatter
 ms.date: 01/25/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 4d28864d41d6540afc87126daf589ed2929f891d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 222ae284f77950c729a6a790e2ad29453a9ce34a
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104803005"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903142"
 ---
-本快速入门介绍如何使用适用于 iOS 的 Azure 通信服务 Teams 嵌入库加入 Teams 会议。
+本快速入门介绍如何使用适用于 iOS 的 Azure 通信服务 Teams 嵌入库加入 Microsoft Teams 会议。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -46,7 +46,7 @@ platform :ios, '12.0'
 use_frameworks!
 
 target 'TeamsEmbedGettingStarted' do
-    pod 'AzureCommunication', '~> 1.0.0-beta.8'
+    pod 'AzureCommunication', '~> 1.0.0-beta.11'
 end
 
 azure_libs = [
@@ -76,10 +76,6 @@ end
 右键单击项目树的 `Info.plist` 条目，然后选择“打开为” > “源代码” 。 将以下代码行添加到顶层 `<dict>` 节，然后保存文件。
 
 ```xml
-<key>NSBluetoothAlwaysUsageDescription</key>
-<string></string>
-<key>NSBluetoothPeripheralUsageDescription</key>
-<string></string>
 <key>NSCameraUsageDescription</key>
 <string></string>
 <key>NSContactsUsageDescription</key>
@@ -90,10 +86,10 @@ end
 
 ### <a name="add-the-teams-embed-framework"></a>添加 Teams 嵌入框架
 
-1. 下载框架。
-2. 在项目根目录中创建 `Frameworks` 文件夹。 例如： `\TeamsEmbedGettingStarted\Frameworks\`
-3. 将下载的 `TeamsAppSDK.framework` 和 `MeetingUIClient.framework` 框架复制到此文件夹。
-4. 在“常规”选项卡下将 `TeamsAppSDK.framework` 和 `MeetingUIClient.framework` 添加到项目目标中。使用 `Add Other`  ->  `Add Files...` 导航到框架文件并添加它们。
+1. 下载 [`MicrosoftTeamsSDK` iOS 包。](https://github.com/Azure/communication-teams-embed/releases)
+2. 在项目根中创建 `Frameworks` 文件夹。 例如： `\TeamsEmbedGettingStarted\Frameworks\`
+3. 将下载的 `TeamsAppSDK.framework` 和 `MeetingUIClient.framework` 以及发布捆绑包中提供的其他框架复制到此文件夹。
+4. 在“常规”选项卡下将框架添加到项目目标。使用 `Add Other` -> `Add Files...` 导航到框架文件并添加它们。
 
 :::image type="content" source="../media/ios/xcode-add-frameworks.png" alt-text="显示 Xcode 中所添加框架的屏幕截图。":::
 
@@ -103,33 +99,10 @@ end
 
 ### <a name="turn-off-bitcode"></a>关闭 Bitcode
 
-在项目编译设置中将 `Enable Bitcode` 选项设置为 `No`。 若要查找设置，则需要将筛选器从更改 `basic` 为 `all`，你还可以使用右侧的搜索栏。
+在 `Build Settings` 项目中，将 `Enable Bitcode` 选项设置为 `No`。 若要查找设置，则需要将筛选器从更改 `Basic` 为 `All`，也可以使用右侧的搜索栏。
 
 :::image type="content" source="../media/ios/xcode-bitcode-option.png" alt-text="显示 Xcode 中的 BitCode 选项的屏幕截图。":::
 
-### <a name="add-framework-signing-script"></a>添加框架签名脚本
-
-选择应用程序目标，然后选择 `Build Phases` 选项卡。然后依次单击 `+` 和 `New Run Script Phase`。 请确保此新阶段发生在 `Embed Frameworks` 阶段之后。
-
-
-
-:::image type="content" source="../media/ios/xcode-build-script.png" alt-text="显示在 Xcode 中添加编译脚本的屏幕截图。":::
-
-```bash
-#!/bin/sh
-if [ -d "${TARGET_BUILD_DIR}"/"${PRODUCT_NAME}".app/Frameworks/TeamsAppSDK.framework/Frameworks ]; then
-    pushd "${TARGET_BUILD_DIR}"/"${PRODUCT_NAME}".app/Frameworks/TeamsAppSDK.framework/Frameworks
-    for EACH in *.framework; do
-        echo "-- signing ${EACH}"
-        /usr/bin/codesign --force --deep --sign "${EXPANDED_CODE_SIGN_IDENTITY}" --entitlements "${TARGET_TEMP_DIR}/${PRODUCT_NAME}.app.xcent" --timestamp=none $EACH
-        echo "-- moving ${EACH}"
-        mv -nv ${EACH} ../../
-    done
-    rm -rf "${TARGET_BUILD_DIR}"/"${PRODUCT_NAME}".app/Frameworks/TeamsAppSDK.framework/Frameworks
-    popd
-    echo "BUILD DIR ${TARGET_BUILD_DIR}"
-fi
-```
 
 ### <a name="turn-on-voice-over-ip-background-mode"></a>启用“IP 语音”后台模式。
 
@@ -218,9 +191,14 @@ class ViewController: UIViewController {
 | 名称                                  | 说明                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | MeetingUIClient | MeetingUIClient 是 Teams 嵌入库的主要入口点。 |
+| MeetingUIClientMeetingJoinOptions | MeetingUIClientMeetingJoinOptions 用于可配置的选项，例如显示名称。 |
+| MeetingUIClientGroupCallJoinOptions | MeetingUIClientMeetingJoinOptions 用于可配置的选项，例如显示名称。 |
+| MeetingUIClientTeamsMeetingLinkLocator | MeetingUIClientTeamsMeetingLinkLocator 用于设置用于加入会议的会议 URL。 |
+| MeetingUIClientGroupCallLocator | MeetingUIClientGroupCallLocator 用于设置要加入的组 ID。 |
+| MeetingUIClientCallState | MeetingUIClientCallState 用于报告调用状态更改。 选项如下：`connecting`、`waitingInLobby`、`connected` 和 `ended`。 |
 | MeetingUIClientDelegate | MeetingUIClientDelegate 用于接收事件，例如调用状态的更改。 |
-| MeetingJoinOptions | MeetingJoinOptions 用于可配置的选项，例如显示名称。 | 
-| CallState | CallState 用于报告调用状态更改。 选项如下：connecting、waitingInLobby、connected 和 ended。 |
+| MeetingUIClientIdentityProviderDelegate | MeetingUIClientIdentityProviderDelegate 用于将用户详细信息映射到会议中的用户。 |
+| MeetingUIClientUserEventDelegate | MeetingUIClientUserEventDelegate 在 UI 中提供有关用户操作的信息。 |
 
 ## <a name="create-and-authenticate-the-client"></a>创建客户端并对其进行身份验证
 
@@ -229,7 +207,7 @@ class ViewController: UIViewController {
 ```swift
 do {
     let communicationTokenRefreshOptions = CommunicationTokenRefreshOptions(initialToken: "<USER_ACCESS_TOKEN>", refreshProactively: true, tokenRefresher: fetchTokenAsync(completionHandler:))
-    let credential = try CommunicationTokenCredential(with: communicationTokenRefreshOptions)
+    let credential = try CommunicationTokenCredential(withOptions: communicationTokenRefreshOptions)
     meetingUIClient = MeetingUIClient(with: credential)
 }
 catch {
@@ -244,7 +222,7 @@ catch {
 创建 `fetchTokenAsync` 方法。 然后添加 `fetchToken` 逻辑以获取用户令牌。
 
 ```swift
-private func fetchTokenAsync(completionHandler: @escaping TokenRefreshOnCompletion) {
+private func fetchTokenAsync(completionHandler: @escaping TokenRefreshHandler) {
     func getTokenFromServer(completionHandler: @escaping (String) -> Void) {
         completionHandler("<USER_ACCESS_TOKEN>")
     }
@@ -258,13 +236,13 @@ private func fetchTokenAsync(completionHandler: @escaping TokenRefreshOnCompleti
 
 ## <a name="join-a-meeting"></a>加入会议
 
-`joinMeeting` 方法设置为在点击“加入会议”按钮时执行的操作。 更新实现，以便通过 `MeetingUIClient` 加入会议：
+`join` 方法设置为在点击“加入会议”按钮时执行的操作。 更新实现，以便通过 `MeetingUIClient` 加入会议：
 
 ```swift
 private func joinMeeting() {
-    let meetingJoinOptions = MeetingJoinOptions(displayName: "John Smith")
-        
-    meetingUIClient?.join(meetingUrl: "<MEETING_URL>", meetingJoinOptions: meetingJoinOptions, completionHandler: { (error: Error?) in
+    let meetingJoinOptions = MeetingUIClientMeetingJoinOptions(displayName: "John Smith", enablePhotoSharing: true, enableNamePlateOptionsClickDelegate: true)
+    let meetingLocator = MeetingUIClientTeamsMeetingLinkLocator(meetingLink: "<MEETING_URL>")
+    meetingUIClient?.join(meetingLocator: meetingLocator, joinCallOptions: meetingJoinOptions, completionHandler: { (error: Error?) in
         if (error != nil) {
             print("Join meeting failed: \(error!)")
         }
@@ -272,12 +250,12 @@ private func joinMeeting() {
 }
 ```
 
-用 Teams 会议链接替换 `<MEETING URL>`。
+将 `<MEETING URL>` 替换为 Microsoft Teams 会议链接。
 
-### <a name="get-a-teams-meeting-link"></a>获取 Teams 会议链接
+### <a name="get-a-microsoft-teams-meeting-link"></a>获取 Microsoft Teams 会议链接
 
-可以使用图形 API 来检索 Teams 会议链接。 [Graph 文档](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)中对此进行了详细介绍。
-通信服务呼叫 SDK 接受完整的 Teams 会议链接。 此链接作为 `onlineMeeting` 资源的一部分返回，可在 [`joinWebUrl` 属性](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true)下方获取。你还可以从 Teams 会议邀请信息的“加入会议”URL 中获取所需的会议信息。
+可以使用图形 API 来检索 Microsoft Teams 会议链接。 [Graph 文档](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)中对此进行了详细介绍。
+通信服务呼叫 SDK 接受完整的 Microsoft Teams 会议链接。 此链接作为 `onlineMeeting` 资源的一部分返回，可在 [`joinWebUrl` 属性](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true)下方获取。你还可以从 Teams 会议邀请信息的“加入会议”URL 中获取所需的会议信息。
 
 ## <a name="run-the-code"></a>运行代码
 
@@ -300,48 +278,6 @@ Microsoft Teams SDK 支持超过 100 个字符串和资源。 框架捆绑包包
 2. 解压缩包附带的 Localizations.zip
 3. 根据应用程序支持的内容将本地化文件夹从解压缩的文件夹复制到 TeamsAppSDK.framework 的根文件夹
 
-## <a name="preparation-for-app-store-upload"></a>准备 App Store 上传
-
-在进行存档时，从框架中删除 i386 和 x86_64 体系结构。
-
-如果要存档应用程序，请将移除脚本的 `i386` 和 `x86_64` 体系结构添加到代码设计阶段之前的编译阶段。
-
-在“项目导航程序”中，选择你的项目。 在“编辑器”窗格中，前往“编译阶段”→ 单击“加号”→“创建新的运行脚本阶段”。
-
-```bash
-echo "Target architectures: $ARCHS"
-APP_PATH="${TARGET_BUILD_DIR}/${WRAPPER_NAME}"
-find "$APP_PATH" -name '*.framework' -type d | while read -r FRAMEWORK
-do
-FRAMEWORK_EXECUTABLE_NAME=$(defaults read "$FRAMEWORK/Info.plist" CFBundleExecutable)
-FRAMEWORK_EXECUTABLE_PATH="$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME"
-echo "Executable is $FRAMEWORK_EXECUTABLE_PATH"
-echo $(lipo -info "$FRAMEWORK_EXECUTABLE_PATH")
-FRAMEWORK_TMP_PATH="$FRAMEWORK_EXECUTABLE_PATH-tmp"
-# remove simulator's archs if location is not simulator's directory
-case "${TARGET_BUILD_DIR}" in
-*"iphonesimulator")
-    echo "No need to remove archs"
-    ;;
-*)
-    if $(lipo "$FRAMEWORK_EXECUTABLE_PATH" -verify_arch "i386") ; then
-    lipo -output "$FRAMEWORK_TMP_PATH" -remove "i386" "$FRAMEWORK_EXECUTABLE_PATH"
-    echo "i386 architecture removed"
-    rm "$FRAMEWORK_EXECUTABLE_PATH"
-    mv "$FRAMEWORK_TMP_PATH" "$FRAMEWORK_EXECUTABLE_PATH"
-    fi
-    if $(lipo "$FRAMEWORK_EXECUTABLE_PATH" -verify_arch "x86_64") ; then
-    lipo -output "$FRAMEWORK_TMP_PATH" -remove "x86_64" "$FRAMEWORK_EXECUTABLE_PATH"
-    echo "x86_64 architecture removed"
-    rm "$FRAMEWORK_EXECUTABLE_PATH"
-    mv "$FRAMEWORK_TMP_PATH" "$FRAMEWORK_EXECUTABLE_PATH"
-    fi
-    ;;
-esac
-echo "Completed for executable $FRAMEWORK_EXECUTABLE_PATH"
-echo $(lipo -info "$FRAMEWORK_EXECUTABLE_PATH")
-done
-```
 
 ## <a name="sample-code"></a>代码示例
 

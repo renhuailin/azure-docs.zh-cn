@@ -3,18 +3,18 @@ title: 教程 - 从 Azure 成本管理创建和管理导出的数据
 description: 本文介绍如何创建和管理导出的 Azure 成本管理数据，以便在外部系统中使用。
 author: bandersmsft
 ms.author: banders
-ms.date: 12/7/2020
+ms.date: 04/26/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: e3c1fa071cd23b871f754e89d6f17eb2cc44b394
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 37804be38918713cdfa7aea59763054e444daa7e
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400346"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015710"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教程：创建和管理导出的数据
 
@@ -33,11 +33,14 @@ ms.locfileid: "97400346"
 > * 验证收集的数据
 
 ## <a name="prerequisites"></a>先决条件
+
 数据导出适用于各种 Azure 帐户类型，包括[企业协议(EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 和 [Microsoft 客户协议](get-started-partners.md)客户。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 对于按用户和组导出的数据，每个订阅均支持以下 Azure 权限或作用域。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
 
 - 所有者 - 可以为订阅创建、修改或删除计划导出。
 - 参与者 - 可以创建、修改或删除自己的计划导出。 可以修改其他人创建的计划导出的名称。
 - 读者 - 可以计划他们有权访问的导出。
+
+有关范围的详细信息，包括为企业协议和 Microsoft 客户协议范围配置导出所需的访问权限，请参阅[了解和使用范围](understand-work-scopes.md)。
 
 对于 Azure 存储帐户：
 - 无论导出权限如何，更改配置的存储帐户都需要写入权限。
@@ -63,7 +66,7 @@ ms.locfileid: "97400346"
     - **实际成本（使用量和购买量）** - 选择此项可导出标准使用量和购买量
     - **摊销成本（使用量和购买量）** - 选择此项可针对购买量（如 Azure 预留）导出摊销成本
 1. 对于“导出类型”，请选择：
-    - **每日导出本月累计成本** - 每日提供一个新的本月累计成本的导出文件。 最新数据是根据以前的每日导出聚合的。
+    - **每日导出本月至今累计成本** - 每日提供一个新的本月至今累计成本的导出文件。 最新数据是根据以前的每日导出聚合的。
     - **每周导出过去七天的成本** - 创建自选定的导出开始日期起过去七天的每周成本导出文件。
     - **每月导出上个月的成本** - 提供上月成本的导出文件（与创建导出的当前月份进行比较）。 并且，计划在每月的第五天运行导出，其中包含以前的月份成本。
     - **一次性导出** - 允许你选择要导出到 Azure blob 存储的历史数据的日期范围。 你可以导出从所选的那一天起最多 90 天的历史成本。 此导出会立即运行，最多 2 小时后便可在存储帐户中获取它。
@@ -81,11 +84,13 @@ ms.locfileid: "97400346"
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
+以编程方式创建导出时，必须手动将 `Microsoft.CostManagementExports` 资源提供程序注册到存储帐户所在的订阅。 使用 Azure 门户创建导出时，会自动进行注册。 有关如何注册资源提供程序的详细信息，请参阅[注册资源提供程序](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)。
+
 首先为 Azure CLI 准备环境：
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-1. 登录后，若要查看当前导出，请使用 [az costmanagement export list](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_list) 命令：
+1. 登录后，若要查看当前导出，请使用 [az costmanagement export list](/cli/azure/costmanagement/export#az_costmanagement_export_list) 命令：
 
    ```azurecli
    az costmanagement export list --scope "subscriptions/00000000-0000-0000-0000-000000000000"
@@ -108,7 +113,7 @@ ms.locfileid: "97400346"
    az storage account create --resource-group TreyNetwork --name cmdemo
    ```
 
-1. 运行 [az costmanagement export create](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_create) 命令以创建导出：
+1. 运行 [az costmanagement export create](/cli/azure/costmanagement/export#az_costmanagement_export_create) 命令以创建导出：
 
    ```azurecli
    az costmanagement export create --name DemoExport --type ActualCost \
@@ -122,14 +127,14 @@ ms.locfileid: "97400346"
 
    本示例使用 `MonthToDate`。 导出会每天为你的本月至今成本创建一个导出文件。 最新数据是根据本月的以前每日导出聚合的。
 
-1. 若要查看导出操作的详细信息，请使用 [az costmanagement export show](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_show) 命令：
+1. 若要查看导出操作的详细信息，请使用 [az costmanagement export show](/cli/azure/costmanagement/export#az_costmanagement_export_show) 命令：
 
    ```azurecli
    az costmanagement export show --name DemoExport \
       --scope "subscriptions/00000000-0000-0000-0000-000000000000"
    ```
 
-1. 使用 [az costmanagement export update](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_update) 命令更新导出：
+1. 使用 [az costmanagement export update](/cli/azure/costmanagement/export#az_costmanagement_export_update) 命令更新导出：
 
    ```azurecli
    az costmanagement export update --name DemoExport
@@ -141,13 +146,15 @@ ms.locfileid: "97400346"
 >[!NOTE]
 >最初，在导出运行之前，可能需要 12 到 24 个小时。 但是，可能需要更长时间才能在导出的文件中显示数据。
 
-可以使用 [az costmanagement export delete](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_delete) 命令删除导出：
+可以使用 [az costmanagement export delete](/cli/azure/costmanagement/export#az_costmanagement_export_delete) 命令删除导出：
 
 ```azurecli
 az costmanagement export delete --name DemoExport --scope "subscriptions/00000000-0000-0000-0000-000000000000"
 ```
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+以编程方式创建导出时，必须手动将 `Microsoft.CostManagementExports` 资源提供程序注册到存储帐户所在的订阅。 使用 Azure 门户创建导出时，会自动进行注册。 有关如何注册资源提供程序的详细信息，请参阅[注册资源提供程序](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)。
 
 首先为 Azure PowerShell 准备环境：
 

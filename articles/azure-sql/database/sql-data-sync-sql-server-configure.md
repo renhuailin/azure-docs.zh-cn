@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 75de7b122bff75ea13e3b66bb0b79452142dc36c
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 77073d21f982e82e567e517b7d9eca061cb91859
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107500084"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812875"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>教程：设置 Azure SQL 数据库和 SQL Server 的数据库之间的 SQL 数据同步
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -49,9 +49,9 @@ ms.locfileid: "107500084"
 
     :::image type="content" source="./media/sql-data-sync-sql-server-configure/sync-to-other-databases.png" alt-text = "Sync to other databases, Microsoft Azure portal":::
 
-1. 在“同步到其他数据库”页中，选择“新建同步组” 。 “新建同步组”页随即打开，其中显示“创建同步组(步骤 1)” 。
+1. 在“同步到其他数据库”页中，选择“新建同步组” 。 “新建同步组”页随即打开，其中显示“创建同步组” 。
 
-   :::image type="content" source="./media/sql-data-sync-sql-server-configure/new-sync-group-private-link.png" alt-text = "Set up new sync group with private link":::
+   :::image type="content" source="./media/sql-data-sync-sql-server-configure/create-sync-group.png" alt-text = "Set up new sync group with private link":::
 
    在“创建数据同步组”页中，请更改以下设置：
 
@@ -70,19 +70,23 @@ ms.locfileid: "107500084"
    
 1. 在“新建同步组”页上，如果你选择了“使用专用链接”，则需要批准专用终结点连接 。 信息消息中的链接会将你转到专用终结点连接体验，你可以在那里批准连接。 
 
-   :::image type="content" source="./media/sql-data-sync-sql-server-configure/approve-private-link.png" alt-text = "Approve private link":::
+   :::image type="content" source="./media/sql-data-sync-sql-server-configure/approve-private-link-update.png" alt-text = "Approve private link":::
+   
+   > [!NOTE]
+   > 同步组和同步成员的专用链接需单独创建、批准和禁用。 
 
 ## <a name="add-sync-members"></a>添加同步成员
 
-创建并部署新的同步组后，“新建同步组”页中将突出显示“添加同步成员(步骤 2)” 。
+创建并部署新的同步组后，打开该同步组并访问“数据库”页，你将在其中选择同步成员。
 
-在“中心数据库”部分中，输入中心数据库所在的服务器的现有凭据。 请勿在此部分中输入新凭据。
-
-   :::image type="content" source="./media/sql-data-sync-sql-server-configure/steptwo.png" alt-text = "Enter existing credentials for the hub database server":::
+   :::image type="content" source="./media/sql-data-sync-sql-server-configure/add-sync-members.png" alt-text = "Select sync members":::
+   
+   > [!NOTE]
+   > 要将用户名和密码更新或插入到中心数据库中，请转到“选择同步成员”页中的“中心数据库”部分 。 
 
 ### <a name="to-add-a-database-in-azure-sql-database"></a>在 Azure SQL 数据库中添加数据库
 
-在“成员数据库”部分中，视需要通过选择“添加 Azure SQL 数据库”，将 Azure SQL 数据库中的数据库添加到同步组中。 此时，“配置 Azure SQL 数据库”页随即打开。
+在“选择同步成员”部分中，可视需要通过选择“添加 Azure 数据库”，将 Azure SQL 数据库中的数据库添加到同步组中 。 “配置 Azure 数据库”页随即打开。
   
    :::image type="content" source="./media/sql-data-sync-sql-server-configure/step-two-configure.png" alt-text = "Add a database to the sync group":::
    
@@ -163,11 +167,11 @@ ms.locfileid: "107500084"
 
 ## <a name="configure-sync-group"></a>配置同步组
 
-创建并部署新同步组成员后，“新建同步组”页中将突出显示“配置同步组(步骤 3)” 。
+创建并部署新的同步组成员后，转到“数据库同步组”页中“表”部分 。
 
-![步骤 3 设置](./media/sql-data-sync-sql-server-configure/stepthree.png)
+![步骤 3 设置](./media/sql-data-sync-sql-server-configure/configure-sync-group.png)
 
-1. 在“表”页中，依次选择同步组成员列表中的数据库和“刷新架构” 。
+1. 在“表”页中，依次选择同步组成员列表中的数据库和“刷新架构” 。 请注意，刷新架构预计会延迟几分钟，如果使用专用链接，则该延迟可能会再延长几分钟。
 
 1. 从列表中，选择要同步的表。默认情况下，所有列都处于选中状态，因此请禁用不想同步的列的复选框。请务必保持主键列的选中状态不变。
 
@@ -233,7 +237,7 @@ SQL 数据同步是否能完全创建表？
 
 有关客户端代理的常见问题解答，请参阅[代理常见问题解答](sql-data-sync-agent-overview.md#agent-faq)。
 
-**是否需要手动批准专用链接，然后才能开始使用它？**
+**是否需要手动批准该链接，然后才能开始使用它？**
 
 是的，你必须在同步组部署期间或通过使用 PowerShell 在 Azure 门户的专用终结点连接页中手动批准服务管理的专用终结点。
 

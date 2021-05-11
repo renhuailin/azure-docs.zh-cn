@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 77fdaf297fff0e145b1dd53908887bc14f9d3f14
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 26aefab9b4637c3f3f6b0f0d1195068e2cd770ab
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491026"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001803"
 ---
 <!-- All needs updating -->
 Azure IoT Central 应用程序中的操作员可以：
@@ -36,7 +36,7 @@ Azure IoT Central 应用程序中的操作员可以：
 
 1. 在“温度控制器”设备模板中，选择“云属性”。 
 
-1. 选择“添加云属性”。 输入自定义名称作为“显示名称”，并选择“字符串”作为“架构”。   再选择“保存”。
+1. 选择“添加云属性”。 输入自定义名称作为“显示名称”，展开项，并选择“字符串”作为“架构”  。 再选择“保存”。
 
 若要自定义“获取最高-最低温度报告”命令在 IoT Central 应用程序中的显示方式，请按照以下说明操作：
 
@@ -82,7 +82,7 @@ Azure IoT Central 应用程序中的操作员可以：
 
     :::image type="content" source="media/iot-central-monitor-thermostat/update-properties.png" alt-text="更新设备属性":::
 
-* 从“命令”页中调用命令： 
+* 从“命令”页中调用命令。 如果运行状态报告命令，请在运行该命令之前为参数“自”选择一个日期和时间：
 
     :::image type="content" source="media/iot-central-monitor-thermostat/call-command.png" alt-text="调用命令":::
 

@@ -5,12 +5,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: ed5f94bdc372e317e9e312db07665d233b1b4139
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 734b548953c4ede5e7d09feb0042509ae5528e82
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467252"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108026303"
 ---
 访问 Azure 门户并<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title="创建新的表单识别器资源" target="_blank">创建新的表单识别器资源</a>。 在“创建”窗格中提供以下信息：
 
@@ -23,6 +23,6 @@ ms.locfileid: "103467252"
 | **定价层** | 资源的费用取决于所选的定价层和使用情况。 有关详细信息，请参阅 API [定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/)。
 
 > [!NOTE]
-> 通常情况下，在 Azure 门户中创建认知服务资源时，可以选择创建多服务订阅密钥（跨多个认知服务使用）或单服务订阅密钥（仅与单个具体的认知服务配合使用）。 但是，多服务订阅中当前不包含表单识别器。
+> 在 Azure 门户中创建认知服务资源时，可以选择创建多服务订阅密钥（跨多个认知服务使用）或单服务订阅密钥（仅与某个特定的认知服务配合使用）。 多服务订阅中当前不包含表单识别器。
 
 表单识别器资源完成部署以后，请在门户的“所有资源”列表中找到并选中它。 你的密钥和终结点将位于资源的“密钥和终结点”页的“资源管理”下。 请先将它们保存到临时位置，然后继续。

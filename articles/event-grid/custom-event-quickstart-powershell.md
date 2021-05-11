@@ -1,15 +1,15 @@
 ---
 title: 快速入门：将自定义事件发送到 Web 终结点 - 事件网格、PowerShell
 description: 快速入门：使用 Azure 事件网格和 PowerShell 发布自定义主题，然后订阅该主题的事件。 事件由 Web 应用程序处理。
-ms.date: 07/07/2020
+ms.date: 04/22/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3bd389ff523fd32e73ac19f1131c8c2784e16db5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 72c121bab73f5006a52f63468a26f823274f0265
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89075607"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897948"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>快速入门：使用 PowerShell 和事件网格将自定义事件路由到 Web 终结点
 
@@ -166,3 +166,11 @@ Remove-AzResourceGroup -Name gridResourceGroup
 - [将 Blob 存储事件路由到自定义 Web 终结点](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 - [通过 Azure 事件网格和逻辑应用监视虚拟机的更改](monitor-virtual-machine-changes-event-grid-logic-app.md)
 - [将大数据流式传输到数据仓库](event-grid-event-hubs-integration.md)
+
+请查看以下示例，了解如何使用不同的编程语言将事件发布到事件网格以及如何从事件网格使用事件。 
+
+- [适用于 .NET 的 Azure 事件网格示例](/samples/azure/azure-sdk-for-net/azure-event-grid-sdk-samples/)
+- [适用于 Java 的 Azure 事件网格示例](/samples/azure/azure-sdk-for-java/eventgrid-samples/)
+- [适用于 Python 的 Azure 事件网格示例](/samples/azure/azure-sdk-for-python/eventgrid-samples/)
+- [适用于 JavaScript 的 Azure 事件网格示例](/samples/azure/azure-sdk-for-js/eventgrid-javascript/)
+- [适用于 TypeScript 的 Azure 事件网格示例](/samples/azure/azure-sdk-for-js/eventgrid-typescript/)

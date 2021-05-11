@@ -3,22 +3,22 @@ title: 教程 - 创建和管理 Azure 预算
 description: 本教程介绍如何对所使用的 Azure 服务进行成本计划和核算。
 author: bandersmsft
 ms.author: banders
-ms.date: 01/27/2021
+ms.date: 04/26/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 16c18d8f86890baaf1882c532c19ff32ab2017da
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 60b7cfa744de244015f99a2e42070eb3430878c7
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592651"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015656"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教程：创建和管理 Azure 预算
 
-可以通过成本管理中的预算来计划并推动组织责任制。 可以通过预算对特定时期使用或订阅的 Azure 服务进行核算。 可以通过预算将他人的支出通知给本人，方便他们对成本进行前摄性管理，并且可以监视一段时间的支出情况。 超出所创建的预算阈值时，只会触发通知， 不会影响资源，也不会停止你对资源的使用。 可以使用预算来比较和跟踪支出，就像分析成本一样。
+可以通过成本管理中的预算来计划并推动组织责任制。 可以通过预算将他人的支出通知给本人，方便他们对成本进行前摄性管理，并且可以监视一段时间的支出情况。 你可以根据实际成本或预测成本来配置警报，以确保你的支出在组织支出限制内。 超出所创建的预算阈值时，只会触发通知， 不会影响资源，也不会停止你对资源的使用。 可以使用预算来比较和跟踪支出，就像分析成本一样。
 
 成本和使用数据通常在 8-24 小时内可用，每 24 小时对照这些成本评估一次预算。 请务必熟悉[成本和使用情况数据更新](./understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention)的具体细节。 满足预算限额时，通常会在一小时评估范围内发送电子邮件通知。
 
@@ -59,20 +59,19 @@ ms.locfileid: "100592651"
     - 外部帐户
     - 外部订阅
 
-
 若要查看预算，你至少需要对 Azure 帐户具有读取访问权限。
 
 如果你有新订阅，则无法立即创建预算或使用其他成本管理功能。 最多可能需要 48 小时才能使用所有成本管理功能。
 
 对于 Azure EA 订阅，必须拥有读取访问权限才能查看预算。 若要创建和管理预算，必须具有参与者权限。
 
-每个订阅支持以下 Azure 权限或范围，以便按用户和组进行预算。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
+每个订阅支持以下 Azure 权限或范围，以便按用户和组进行预算。
 
 - 所有者 - 可以为订阅创建、修改或删除预算。
 - 参与者和成本管理参与者 - 可以创建、修改或删除自己的预算。 可以修改其他人创建的预算的预算金额。
 - 读者和成本管理读者 - 可以查看他们有权访问的预算。
 
-若要详细了解如何分配对成本管理数据的权限，请参阅[分配对成本管理数据的访问权限](./assign-access-acm-data.md)。
+有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。 若要详细了解如何分配对成本管理数据的权限，请参阅[分配对成本管理数据的访问权限](./assign-access-acm-data.md)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -82,27 +81,37 @@ ms.locfileid: "100592651"
 
 可以按月、按季或按年创建 Azure 订阅预算。
 
-若要创建或查看预算，请在 Azure 门户中打开所需的范围，然后在菜单中选择“预算”。 例如，导航到“订阅”，从列表中选择订阅，然后在菜单中选择“预算” 。 在“预算”中，请使用“范围”框切换到另一范围，如某个管理组。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
+若要创建或查看预算，请在 Azure 门户中打开范围，然后在菜单中选择“预算”。 例如，导航到“订阅”，从列表中选择订阅，然后在菜单中选择“预算” 。 在“预算”中，请使用“范围”框切换到另一范围，如某个管理组。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
 
 创建预算后，会显示一个简单的视图，其中说明了当前支出与预算的对比情况。
 
 选择 **添加** 。
 
-![示例，显示已创建的预算的列表](./media/tutorial-acm-create-budgets/budgets01.png)
+:::image type="content" source="./media/tutorial-acm-create-budgets/budgets-cost-management.png" alt-text="显示已创建的预算列表的屏幕截图。" lightbox="./media/tutorial-acm-create-budgets/budgets-cost-management.png" :::
 
-在“创建预算”窗口中，确保显示的范围正确。 选择想要添加的任何筛选器。 使用筛选器可以创建特定成本的预算，例如订阅中的资源组或虚拟机之类的服务。 可以在成本分析中使用的任何筛选器也可以应用于预算。
+在“创建预算”窗口中，确保显示的范围正确无误。 选择想要添加的任何筛选器。 使用筛选器可以创建特定成本的预算，例如订阅中的资源组或虚拟机之类的服务。 可以在成本分析中使用的任何筛选器也可以应用于预算。
 
-确定范围和筛选器后，请键入预算名称。 然后，选择月度、季度或年度预算重置周期。 此重置期限决定了按预算分析的时间范围。 在每个新期限开始时，按预算估算的成本从零开始。 创建季度预算时，其操作方式与每月预算相同。 不同之处在于，季度预算的预算金额是在该季度的三个月中平均分配的。 年度预算金额在日历年的所有 12 个月中平均分配。
+确定范围和筛选器后，请键入预算名称。 然后，选择月度、季度或年度预算重置周期。 重置周期决定了预算分析的时间窗口。 在每个新期限开始时，按预算估算的成本从零开始。 创建季度预算时，其操作方式与每月预算相同。 不同之处在于，季度预算的预算金额是在该季度的三个月中平均分配的。 年度预算金额在日历年的所有 12 个月中平均分配。
 
 如果有即用即付、MSDN 或 Visual Studio 订阅，则发票计费周期可能与日历月不一致。 对于这些订阅类型和资源组，可以创建与发票周期或日历月一致的预算。 若要创建与发票周期相符的预算，请选择“计费月”、“计费季”或“计费年”作为重置期限。 若要创建与日历月相符的预算，请选择“每月”、“每季”或“每年”作为重置期限。
 
 接下来，确定预算失效并停止成本估算的到期日期。
 
-系统会显示一个图表，方便你选择用于预算的阈值，具体取决于目前在预算中选择的字段。 建议的预算基于你将来可能会产生的最高预测成本。 可以更改预算金额。
+系统会显示一个图表，方便你选择用于预算的阈值，具体取决于目前在预算中选择的字段。 建议的预算基于你将来可能会产生的最高预测成本。 你可以更改预算金额。
 
-![示例，显示通过每月成本数据进行的预算创建操作 ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
+:::image type="content" source="./media/tutorial-acm-create-budgets/create-monthly-budget.png" alt-text="显示通过每月成本数据创建预算的屏幕截图。" lightbox="./media/tutorial-acm-create-budgets/create-monthly-budget.png" :::
 
-配置预算金额后，选择“下一步”来配置预算警报。 预算需要至少一个成本阈值（预算百分比）和相应的电子邮件地址。 可以选择在单个预算中包括多达五个阈值和五个电子邮件地址。 满足预算限额时，通常会在一小时评估范围内发送电子邮件通知。
+配置预算金额后，选择“下一步”以配置实际成本和预测预算警报的预算警报。
+
+## <a name="configure-actual-costs-budget-alerts"></a>配置实际成本预算警报
+
+预算需要至少一个成本阈值（预算百分比）和相应的电子邮件地址。 可以选择在单个预算中包括多达五个阈值和五个电子邮件地址。 满足预算限额时，通常会在一小时评估范围内发送电子邮件通知。 实际成本预算警报是根据与配置的预算限额相关的实际累计成本所生成。
+
+## <a name="configure-forecasted-budget-alerts"></a>配置预测的预算警报
+
+预测警报会预先通知支出趋势可能超出预算。 这些警报使用[预测的成本预测](quick-acm-cost-analysis.md#understand-forecast)。 预测的成本预测超出设定限额时，将生成警报。 你可以配置预测的限额（预算的 %）。 达到预测的预算限额时，通常在评估后一小时内发送通知。
+
+若要在配置实际与预测成本警报之间进行切换，请在配置警报时使用 `Type` 字段，如下图所示。
 
 如果要接收电子邮件，请将 azure-noreply@microsoft.com 添加到已批准的发件人列表，使电子邮件不会被发送到垃圾电子邮件文件夹。 有关通知的详细信息，请参阅[使用成本警报](./cost-mgt-alerts-monitor-usage-spending.md)。
 
@@ -110,11 +119,11 @@ ms.locfileid: "100592651"
 
 警报限制支持所提供的预算限额的 0.01% 到 1000% 范围。
 
-![显示警报条件的示例](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
+:::image type="content" source="./media/tutorial-acm-create-budgets/budget-set-alert.png" alt-text="显示警报条件的屏幕截图。" lightbox="./media/tutorial-acm-create-budgets/budget-set-alert.png" :::
 
-创建预算后，预算会显示在成本分析中。 开始[分析成本和支出](./quick-acm-cost-analysis.md)时，首先要执行的步骤之一是查看预算与对应的支出趋势。
+创建预算后，它会显示在成本分析中。 开始[分析成本和支出](./quick-acm-cost-analysis.md)时，首先要执行的步骤之一是查看预算与对应的支出趋势。
 
-![成本分析中显示的预算和支出示例](./media/tutorial-acm-create-budgets/cost-analysis.png)
+:::image type="content" source="./media/tutorial-acm-create-budgets/cost-analysis.png" alt-text="显示示例预算的屏幕截图，其中支出显示在成本分析中。" lightbox="./media/tutorial-acm-create-budgets/cost-analysis.png" :::
 
 在上面的示例中，你为订阅创建了一个预算。 还可以为资源组创建预算。 如需为资源组创建预算，请导航到“成本管理 + 计费”&gt;“订阅”，选择一个订阅，然后选择“资源组”，接着选择一个资源组，单击“预算”，然后单击“添加”以添加预算。
 
@@ -129,7 +138,7 @@ ms.locfileid: "100592651"
 
 ## <a name="costs-in-budget-evaluations"></a>预算估算中的成本
 
-预算成本估算现在包括预留实例和购买数据。 如果费用适用于你，则当费用合并到估算中时，你可能会收到警报。 若考虑到新的成本，建议你登录到 [Azure 门户](https://portal.azure.com)，验证是否正确配置了预算阈值。 你的 Azure 计费费用不变。 现在，预算会针对一组更完整的成本进行评估。 如果费用不适用于你，则你的预算行为保持不变。
+预算成本估算现在包括预留实例和购买数据。 如果费用适用于你，则当费用合并到估算中时，你可能会收到警报。 若考虑到新的成本，可登录到 [Azure 门户](https://portal.azure.com)以验证是否正确配置了预算限额。 你的 Azure 计费费用不变。 现在，预算会针对一组更完整的成本进行评估。 如果费用不适用于你，则你的预算行为保持不变。
 
 如果要筛选新成本，以便仅针对第一方 Azure 消耗费用来估算预算，请将以下筛选器添加到预算：
 
@@ -140,31 +149,23 @@ ms.locfileid: "100592651"
 
 ## <a name="trigger-an-action-group"></a>触发操作组
 
-在为订阅或资源组范围创建或编辑预算时，可以将其配置为调用操作组。 达到预算阈值时，操作组可以执行各种不同的操作。 目前只支持将操作组用于订阅和资源组范围。 有关操作组的详细信息，请参阅[在 Azure 门户中创建和管理操作组](../../azure-monitor/alerts/action-groups.md)。 若要详细了解如何将基于预算的自动化与操作组配合使用，请参阅[使用 Azure 预算管理成本](../manage/cost-management-budget-scenario.md)。
+在为订阅或资源组范围创建或编辑预算时，可以将其配置为调用操作组。 达到预算阈值时，操作组可以执行各种不同的操作。 
+
+目前只支持将操作组用于订阅和资源组范围。 有关创建操作组的详细信息，请参阅[配置基本操作组设置](../../azure-monitor/alerts/action-groups.md#configure-basic-action-group-settings)。 
+
+若要详细了解如何将基于预算的自动化与操作组配合使用，请参阅[使用 Azure 预算管理成本](../manage/cost-management-budget-scenario.md)。
 
 若要创建或更新操作组，请在创建或编辑预算时选择“管理操作组”。
 
-![示例，介绍如何创建预算以显示“管理操作组”](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
+:::image type="content" source="./media/tutorial-acm-create-budgets/trigger-action-group.png" alt-text="显示了创建预算以显示“管理操作组”的示例的屏幕截图。" lightbox="./media/tutorial-acm-create-budgets/trigger-action-group.png" :::
 
 接下来，选择“添加操作组”并创建操作组。
-
-![“添加操作组”框的图像](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
-
-创建操作组之后，请关闭该框以返回到预算。
-
-将预算配置为在达到单个阈值时使用操作组。 支持最多五个不同的阈值。
-
-![示例，显示某个警报条件的操作组选项](./media/tutorial-acm-create-budgets/manage-action-groups03.png)
-
-以下示例显示设置为 50%、75% 和 100% 的预算阈值。 每个都配置为在指定的操作组中触发指定的操作。
-
-![示例，显示配置有各种操作组和操作类型的警报条件](./media/tutorial-acm-create-budgets/manage-action-groups04.png)
 
 预算与操作组的集成仅适用于禁用常见警报架构的操作组。 若要详细了解如何禁用该架构，请参阅[如何启用常见警报架构？](../../azure-monitor/alerts/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)
 
 ## <a name="create-and-edit-budgets-with-powershell"></a>通过 PowerShell 创建和编辑预算
 
-EA 客户可以使用 Azure PowerShell 模块以编程方式创建和编辑预算。  若要下载最新版本的 Azure PowerShell，请运行以下命令：
+如果你是 EA 客户，则可以使用 Azure PowerShell 模块以编程方式创建和编辑预算。 若要下载最新版本的 Azure PowerShell，请运行以下命令：
 
 ```azurepowershell-interactive
 install-module -name Az

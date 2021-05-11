@@ -7,12 +7,12 @@ ms.reviewer: jasonwhowell
 ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
-ms.openlocfilehash: f2916b45c04aac3e36e8dfb82a6bb9b332f55286
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4932bf500de38a59a72d7a052529af1d9790ab30
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102449146"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107929410"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>什么是 Azure Data Lake Analytics？
 
@@ -47,7 +47,10 @@ Data Lake Analytics 是用于运行大数据工作负荷的经济高效的解决
 
 ## <a name="works-with-all-your-azure-data"></a>可用于所有 Azure 数据
   
-Data Lake Analytics 适用于 Azure Data Lake Storage，可以最大程度地提高性能、吞吐量和并行化；同时还适用于 Azure 存储 Blob、Azure SQL 数据库和 Azure Synapse Analytics。
+Data Lake Analytics 适用于 Azure Data Lake Storage Gen1，可以最大程度地提高性能、吞吐量和并行化；同时还适用于 Azure 存储 Blob、Azure SQL 数据库和 Azure Synapse Analytics。
+
+   > [!NOTE]
+   > Data Lake Analytics 不适用于 Azure Data Lake Storage Gen2，直到另有通知。
 
 ## <a name="in-region-data-residency"></a>区域内数据驻留
   

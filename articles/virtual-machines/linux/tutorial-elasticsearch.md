@@ -1,27 +1,24 @@
 ---
 title: 在 Azure 中的开发虚拟机上部署 Elasticsearch
-description: 教程 - 在 Azure 中的开发 Linux VM 上安装 Elastic Stack
+description: 在 Azure 中的开发 Linux VM 上安装 Elastic Stack (ELK)
 services: virtual-machines
-documentationcenter: virtual-machines
 author: rloutlaw
 manager: justhe
-tags: azure-resource-manager
 ms.service: virtual-machines
 ms.collection: linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: b3213d7de9aee88486fa1db1388c51948fbde430
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ce28efa30b04a2a762c39f47dac739633eac209
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557805"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818451"
 ---
-# <a name="install-the-elastic-stack-on-an-azure-vm"></a>在 Azure VM 上安装 Elastic Stack
+# <a name="install-the-elastic-stack-elk-on-an-azure-vm"></a>在 Azure VM 上安装 Elastic Stack (ELK)
 
 本文逐步讲解如何在 Azure 中的 Ubuntu VM 上部署 [Elasticsearch](https://www.elastic.co/products/elasticsearch)、[Logstash](https://www.elastic.co/products/logstash) 和 [Kibana](https://www.elastic.co/products/kibana)。 要查看实际操作中的 Elastic Stack，可选择连接到 Kibana 并处理某些示例日志记录数据。 
 
@@ -165,7 +162,7 @@ sudo systemctl start logstash.service
 sudo /usr/share/logstash/bin/logstash -e 'input { stdin { } } output { stdout {} }'
 ```
 
-这是基本 logstash [管道](https://www.elastic.co/guide/en/logstash/5.6/pipeline.html)，它将标准输入回响到标准输出。 
+这是基本 Logstash [管道](https://www.elastic.co/guide/en/logstash/5.6/pipeline.html)，它将标准输入回响到标准输出。 
 
 ```output
 The stdin plugin is now waiting for input:

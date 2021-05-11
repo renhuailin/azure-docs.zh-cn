@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 28c54865ab9c2876d998896f5f536a11088962f8
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 90ff0a42a9d82fc0bf4f9235e235c774a2d0e75d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566420"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146556"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>如何在 Azure Synapse Analytics 中通过无服务器 SQL 池使用 OPENROWSET
 
@@ -227,6 +227,7 @@ CSV 分析器版本 2.0 详细信息：
 - 最大行大小限制为 8 MB。
 - 不支持以下选项：DATA_COMPRESSION。
 - 带引号的空字符串 ("") 被解释为空字符串。
+- 不支持 DATEFORMAT SET 选项。
 - DATE 数据类型支持的格式：YYYY-MM-DD
 - TIME 数据类型支持的格式：HH:MM:SS[.fractional seconds]
 - DATETIME2 数据类型支持的格式：YYYY-MM-DD HH:MM:SS[.fractional seconds]
@@ -256,7 +257,7 @@ Parquet 文件包含要读取的列元数据，可在 [Parquet 的类型映射](
 对于 CSV 文件，可以从标题行读取列名称。 可以使用 HEADER_ROW 参数指定是否存在标题行。 如果 HEADER_ROW = FALSE，将使用通用列名称：C1, C2, ...Cn，其中 n 是文件中的列数。 将从前 100 个数据行推断数据类型。 有关示例，请查看[在不指定架构的情况下读取 CSV 文件](#read-csv-files-without-specifying-schema)。
 
 > [!IMPORTANT]
-> 在有些情况下，由于缺少信息而无法推断出适当的数据类型，将改用较大的数据类型。 这会造成性能开销，并且对于将推断为 varchar(8000) 的字符列尤其重要。 为了获得最佳性能，请[查看推断的数据类型](best-practices-sql-on-demand.md#check-inferred-data-types)并[使用适当的数据类型](best-practices-sql-on-demand.md#use-appropriate-data-types)。
+> 在有些情况下，由于缺少信息而无法推断出适当的数据类型，将改用较大的数据类型。 这会造成性能开销，并且对于将推断为 varchar(8000) 的字符列尤其重要。 为了获得最佳性能，请[查看推断的数据类型](./best-practices-serverless-sql-pool.md#check-inferred-data-types)并[使用适当的数据类型](./best-practices-serverless-sql-pool.md#use-appropriate-data-types)。
 
 ### <a name="type-mapping-for-parquet"></a>Parquet 的类型映射
 
@@ -403,4 +404,4 @@ AS [r]
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多示例，请参阅[查询数据存储快速入门](query-data-storage.md)，了解如何使用 `OPENROWSET` 来读取 [CSV](query-single-csv-file.md)、[PARQUET](query-parquet-files.md) 和 [JSON](query-json-files.md) 文件格式。 查看[最佳做法](best-practices-sql-on-demand.md)以获得最佳性能。 你还可以了解如何使用 [CETAS](develop-tables-cetas.md) 将查询结果保存到 Azure 存储。
+有关更多示例，请参阅[查询数据存储快速入门](query-data-storage.md)，了解如何使用 `OPENROWSET` 来读取 [CSV](query-single-csv-file.md)、[PARQUET](query-parquet-files.md) 和 [JSON](query-json-files.md) 文件格式。 查看[最佳做法](./best-practices-serverless-sql-pool.md)以获得最佳性能。 你还可以了解如何使用 [CETAS](develop-tables-cetas.md) 将查询结果保存到 Azure 存储。

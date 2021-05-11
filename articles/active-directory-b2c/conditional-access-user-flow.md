@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 03/03/2021
+ms.date: 04/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celested
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6325a890ea297a3aa2bdad76a1d95c10448a7b61
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cc163f02873cf1827af515791e254261149fc4f9
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033892"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124430"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>向 Azure Active Directory B2C 中的用户流添加条件访问
 
@@ -161,9 +161,78 @@ Azure AD B2C 会评估每个登录事件，并确保在满足所有策略要求�
 
 随时可能都会有多个条件访问策略应用于单个用户的情况。 在这种情况下，将优先使用最严格的访问控制策略。 例如，如果一个策略要求执行多重身份验证 (MFA)，而另一个策略阻止访问，则用户将被阻止。
 
+## <a name="conditional-access-template-1-sign-in-risk-based-conditional-access"></a>条件访问模板 1：基于登录风险的条件访问
+
+大多数用户的正常行为是可以跟踪的，如果其行为超出规范，则允许他们登录可能很危险。 可能需要阻止该用户，或者直接要求他们执行多重身份验证，证明自己真的是所宣称的用户。
+
+登录风险表示给定身份验证请求未经标识所有者授权的概率。 拥有 P2 许可证的组织可创建纳入 [Azure AD 标识保护登录风险检测](../active-directory/identity-protection/concept-identity-protection-risks.md#sign-in-risk)的条件访问策略。 请注意[针对 B2C 的标识保护检测的限制](./identity-protection-investigate-risk.md?pivots=b2c-user-flow#service-limitations-and-considerations)。
+
+如果检测到风险，用户可以执行多重身份验证以进行自我修正，并关闭有风险的登录事件，以避免为管理员带来不必要的干扰。
+
+组织应选择下列选项之一来启用基于登录风险的条件访问策略，该策略要求在登录风险为“中等”或“高”时进行多重身份验证 (MFA)。
+
+### <a name="enable-with-conditional-access-policy"></a>通过条件访问策略进行启用
+
+1. 登录 **Azure 门户**。
+2. 浏览到“Azure AD B2C” > “安全性” > “条件访问”  。
+3. 选择“新策略”  。
+4. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
+5. 在“分配”  下，选择“用户和组”  。
+   1. 在“包括”下，选择“所有用户”。  
+   2. 在“排除”下选择“用户和组”，然后选择组织的紧急访问帐户或不受限帐户。 
+   3. 选择“完成”  。
+6. 在“云应用或操作”   >   “包括”下，选择“所有云应用”。 
+7. 在“条件” > “登录风险”下，将“配置”设置为“是”   。 在“选择适用于此策略的登录风险级别”下 
+   1. 选“高”和“中等” 。
+   2. 选择“完成”。
+8. 在“访问控制” > “授予”下，依次选择“授予访问权限”、“需要多重身份验证”、“选择”。  
+9. 确认设置，然后将“启用策略”设置为“打开”。  
+10. 选择“创建”  ，以便创建启用策略所需的项目。
+
+### <a name="enable-with-conditional-access-apis"></a>通过条件访问 API 进行启用
+
+若要通过条件访问 API 创建基于登录风险的条件访问策略，请查看[条件访问 API](../active-directory/conditional-access/howto-conditional-access-apis.md#graph-api) 文档。
+
+可使用以下模板在仅限报表模式下创建显示名称为“CA002：中等及以上登录风险时需要使用 MFA”的条件访问策略。
+
+```json
+{
+    "displayName": "Template 1: Require MFA for medium+ sign-in risk",
+    "state": "enabledForReportingButNotEnforced",
+    "conditions": {
+        "signInRiskLevels": [ "high" ,
+            "medium"
+        ],
+        "applications": {
+            "includeApplications": [
+                "All"
+            ]
+        },
+        "users": {
+            "includeUsers": [
+                "All"
+            ],
+            "excludeUsers": [
+                "f753047e-de31-4c74-a6fb-c38589047723"
+            ]
+        }
+    },
+    "grantControls": {
+        "operator": "OR",
+        "builtInControls": [
+            "mfa"
+        ]
+    }
+}
+```
+
 ## <a name="enable-multi-factor-authentication-optional"></a>启用多重身份验证（可选）
 
-向用户流添加条件访问时，请考虑使用 **多重身份验证 (MFA)** 。 用户可以通过短信或语音使用一次性代码，或者通过电子邮件使用一次性密码来进行多重身份验证。 MFA 设置独立于条件访问设置。 可以将 MFA 设置为“始终启用”，这样无论你的条件访问设置如何，都始终需要 MFA。 或者，可以将 MFA 设置为“条件性”，使得仅在活动条件访问策略要求 MFA 时才进行 MFA。
+向用户流添加条件访问时，请考虑使用 **多重身份验证 (MFA)** 。 用户可以通过短信或语音使用一次性代码，或者通过电子邮件使用一次性密码来进行多重身份验证。 MFA 设置独立于条件访问设置。 可从下列 MFA 选项中进行选择：
+
+   - **关** - 决不在登录期间强制执行 MFA，也不在注册和登录期间提示用户注册 MFA。
+   - **始终启用** - 无论条件访问设置如何，始终需要 MFA。 如果用户尚未注册 MFA，系统会在登录时提示他们注册。 在注册期间，系统会提示用户注册 MFA。
+   - **条件性(预览)** - 仅在有效条件访问策略要求 MFA 时才进行 MFA。 如果条件访问评估的结果是没有风险的 MFA 质询，则在登录期间强制执行 MFA。 如果结果是因风险导致的 MFA 质询，而且用户未注册 MFA，则会阻止登录。 在注册期间，不会提示用户注册 MFA。
 
 > [!IMPORTANT]
 > 如果条件访问策略通过 MFA 授予访问权限，但用户尚未注册电话号码，则用户可能被阻止。
@@ -184,9 +253,9 @@ Azure AD B2C 会评估每个登录事件，并确保在满足所有策略要求�
  
    ![在“属性”中配置 MFA 和条件访问](media/conditional-access-user-flow/add-conditional-access.png)
 
-1. 在“多重身份验证”部分中，选择所需的“MFA 方法”，然后在“MFA 强制执行”下选择“条件访问策略(建议)”   。
+1. 在“多重身份验证”部分，选择所需的方法类型，然后在“MFA 强制执行”下选择“条件性(预览)”   。
  
-1. 在“条件访问”部分中，选择“强制实施条件访问策略”复选框 。
+1. 在“条件访问(预览)”部分，选择“强制实施条件访问策略”复选框 。
 
 1. 选择“保存”。
 

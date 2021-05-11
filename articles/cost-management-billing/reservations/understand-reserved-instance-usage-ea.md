@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 01/19/2020
+ms.date: 04/20/2021
 ms.author: banders
-ms.openlocfilehash: 0c69e9533130d6ca70c57422c7cdd5fc75adff72
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: edc1a80687f768723a3a218ecaa1f6459cd484ed
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683711"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763552"
 ---
 # <a name="get-enterprise-agreement-and-microsoft-customer-agreement-reservation-costs-and-usage"></a>获取企业协议和 Microsoft 客户协议预留成本和使用情况
 
@@ -95,7 +95,6 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 ![该示例显示可在 Azure 门户中的哪个位置下载 CSV 使用情况数据文件](./media/understand-reserved-instance-usage-ea/portal-download-csv.png)
 4. 在“下载使用情况 + 费用”中的“使用情况详细信息版本 2”下，选择“所有费用(使用情况和购买项目)”，然后单击“下载”。    针对“摊销费用(使用情况和购买项目)”重复上述步骤。 
 
-下载的 CSV 文件包含实际成本和摊销成本。
 
 ## <a name="common-cost-and-usage-tasks"></a>常见成本和用法任务
 
@@ -158,8 +157,7 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 
 - [什么是 Azure 预订？](save-compute-costs-reservations.md)
 - [通过 Azure 虚拟机预留实例为虚拟机预付费](../../virtual-machines/prepay-reserved-vm-instances.md)
-- [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../../azure-sql/database/reserved-capacity-overview.md)
-- [管理 Azure 预留项](manage-reserved-vm-instance.md)
 - [了解预留折扣的应用方式](../manage/understand-vm-reservation-charges.md)
-- [了解即用即付订阅的预留使用情况](understand-reserved-instance-usage.md)
 - [预订未包含的 Windows 软件成本](reserved-instance-windows-software-costs.md)
+- [使用服务主体获取成本数据](../manage/assign-roles-azure-service-principals.md)
+- [使用成本管理导出](../costs/tutorial-export-acm-data.md)

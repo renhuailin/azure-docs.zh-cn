@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/02/2021
+ms.date: 04/25/2021
 ms.author: jeedes
-ms.openlocfilehash: ba6eb0a1b607fc05c4d0c660dd3d7016f81ef4b3
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 28e77ecafc32f5b71ff2141aadb00ab484e0067a
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449471"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001945"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-single-sign-on"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cornerstone Single Sign-On 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "106449471"
 * 让用户使用其 Azure AD 帐户自动登录到 Cornerstone Single Sign-On。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -42,7 +42,17 @@ ms.locfileid: "106449471"
 
 * Cornerstone Single Sign-On 支持 **SP** 发起的 SSO。
 * Cornerstone Single Sign-On 支持[自动用户预配](cornerstone-ondemand-provisioning-tutorial.md)。
+* 如果要集成这个特定的列表中的一个或多个产品，应使用库中的此 Cornerstone OnDemand 单一登录应用。
 
+    我们提供了以下几个方面的解决方案：
+
+    1. 学习管理 (LMS)
+    2. 性能管理 (EPM)
+    3. 继任计划
+    4. 招聘 (ATS)
+    5. 扩展企业
+    6. 人力资源
+    7. 员工内容
 
 ## <a name="adding-cornerstone-single-sign-on-from-the-gallery"></a>从库中添加 Cornerstone Single Sign-On
 

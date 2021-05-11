@@ -4,12 +4,12 @@ ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 12/09/2020
 ms.topic: include
-ms.openlocfilehash: 269cae85c0f007c487f063b1f7ca7ea4dca15376
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: cc022470bf9ff799d6396f871f4a6c224d01a295
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104167"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107931721"
 ---
 自定义视觉 REST API 入门。 请按照以下步骤调用 API 和创建图像分类模型。 你将创建一个项目，添加标记，训练该项目，并使用该项目的预测终结点 URL 以编程方式对其进行测试。 使用此示例作为模板来构建你自己的图像识别应用。
 
@@ -175,7 +175,7 @@ JSON 响应包含你训练的项目的相关信息，包括迭代 ID（`"id"`）
 * 将 `{projectId}` 替换为你自己的项目 ID。
 * 将 `{iterationId}` 替换为上一步骤返回的 ID。
 * 将 `{publishedName}` 替换为你要分配给预测模型的名称。
-* 将 `{predictionId}` 替换为你自己的预测资源 ID。 可在 Azure 门户中资源的“概述”选项卡上找到列为“订阅 ID”的预测资源 ID 。
+* 将 `{predictionId}` 替换为你自己的预测资源 ID。 可以在 Azure 门户中资源的“属性”选项卡上找到列为“资源 ID”的预测资源 ID 。
 * （可选）使用其他 URL 参数。 请参阅[发布迭代](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc7548b571998fdded5) API。
 
 ## <a name="test-the-prediction-endpoint"></a>测试预测终结点

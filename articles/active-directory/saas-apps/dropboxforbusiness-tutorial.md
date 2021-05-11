@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 41f6db8cf2454c224addac525e9d039954a95712
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30c3ecb64b8fdb2ff1bf3569803b07d9f0646347
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104601493"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137988"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>教程：将 Dropbox Business 与 Azure Active Directory 集成
 
@@ -85,6 +85,7 @@ ms.locfileid: "104601493"
     
      b. 在“标识符(实体 ID)”文本框中，键入值：`Dropbox`
     
+    c. 在“回复 URL”字段中，输入 `https://www.dropbox.com/saml_login`
     > [!NOTE]
     > Dropbox Sign SSO ID 可在 Dropbox 站点找到：“Dropbox”>“管理控制台”>“设置”>“单一登录”>“SSO 登录 URL”。
 

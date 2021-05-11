@@ -6,14 +6,14 @@ ms.reviewer: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 01/11/2021
+ms.date: 03/31/2021
 ms.author: banders
-ms.openlocfilehash: 887b7013eb3060020a39d2df0082768b8185bdde
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 4f7179a5ad35b4d3ca9a92119fb7b492e2aff779
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575460"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122490"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>开始使用更新的 Azure 计费帐户
 
@@ -26,11 +26,11 @@ ms.locfileid: "99575460"
 
 下图比较了新旧计费帐户：
 
-![该图显示了新旧帐户中计费层次结构之间的比较](./media/mosp-new-customer-experience/comparison-old-new-account.png)
+:::image type="content" source="./media/mosp-new-customer-experience/comparison-old-new-account.png" alt-text="该图显示了新旧帐户中计费层次结构之间的比较。" border="false" lightbox="./media/mosp-new-customer-experience/comparison-old-new-account.png":::
 
 新的计费帐户包含一个或多个计费对象信息，可用于管理发票和付款方式。 每个计费配置文件包含一个或多个发票科目，用于在计费配置文件的发票上组织成本。
 
-![该图显示了新的计费层次结构](./media/mosp-new-customer-experience/new-billing-account-hierarchy.png)
+:::image type="content" source="./media/mosp-new-customer-experience/new-billing-account-hierarchy.png" alt-text="该图显示了新的计费层次结构。" border="false" lightbox="./media/mosp-new-customer-experience/new-billing-account-hierarchy.png":::
 
 计费帐户上的角色具有最高级别的权限。 这些角色应分配给那些需要查看发票并跟踪整个帐户的成本的用户，例如组织中的财务或 IT 经理或注册帐户的个人。 有关详细信息，请参阅[计费帐户角色和任务](../manage/understand-mca-roles.md#billing-account-roles-and-tasks)。 帐户更新后，在旧计费帐户中具有帐户管理员角色的用户将在新帐户中被赋予所有者角色。
 
@@ -60,7 +60,21 @@ ms.locfileid: "99575460"
 
 **每月计费周期更容易预测** - 在新帐户中，无论你何时注册使用 Azure，计费周期都从该月的第一天开始，到该月的最后一天结束。 发票将在每月月初生成，其中包含上个月的所有费用。
 
-**为多个订阅获取单张月度发票** - 你可以灵活地为每个订阅获取一张月度发票，也可以为多个订阅获取单张发票。
+**为多个订阅获取一张月度账单** - 在现有帐户中，可为每个 Azure 订阅获取一张账单。 更新帐户时，将保留现有行为，但你可以灵活地将订阅的费用合并到一张账单中。 更新帐户后，请按照以下步骤将费用合并到一张账单上：
+
+1. 登录 [Azure 门户](https://portal.azure.com)。
+2. 搜索“成本管理 + 计费”。  
+   ![显示在 Azure 门户中搜索“成本管理 + 计费”的屏幕截图。](./media/mosp-new-customer-experience/billing-search-cost-management-billing.png)
+3. 在屏幕左侧选择“Azure 订阅”。 
+4. 该表列出了你要支付其费用的 Azure 订阅。 在“计费对象信息”列中，可找到计收订阅费用的计费对象信息。 订阅费用显示在计费对象信息的账单上。 若要将所有订阅的费用合并一张账单上，需要将所有订阅关联到一个计费对象信息项中。  
+    :::image type="content" source="./media/mosp-new-customer-experience/list-azure-subscriptions.png" alt-text="显示 Azure 订阅列表的屏幕截图。" lightbox="./media/mosp-new-customer-experience/list-azure-subscriptions.png" :::
+5. 选择要使用的计费对象信息。 
+6. 选择未关联到你在步骤 5 中选择的计费对象信息的订阅。 单击该订阅对应的省略号（三个点）。 选择“更改发票科目”。  
+    :::image type="content" source="./media/mosp-new-customer-experience/select-change-invoice-section.png" alt-text="屏幕截图显示了在何处可以找到更改账单科目的选项。" lightbox="./media/mosp-new-customer-experience/select-change-invoice-section-zoomed-in.png" :::
+7. 选择你在步骤 #5 中选择的计费对象信息。  
+    :::image type="content" source="./media/mosp-new-customer-experience/change-invoice-section.png" alt-text="屏幕截图显示了如何更改账单科目。" lightbox="./media/mosp-new-customer-experience/change-invoice-section-zoomed-in.png" :::
+8. 选择“更改”。
+9. 对于所有其他订阅，重复步骤 6-8。 
 
 **收到包含 Azure 订阅、支持计划和 Azure 市场产品的单张月度发票** - 你将获得一张包含所有费用（包括 Azure 订阅的使用费用、支持计划费用和 Azure 市场购买费用）的月度发票。
 
@@ -98,6 +112,12 @@ ms.locfileid: "99575460"
 
 在新体验中，发票将在每个月的第 9 天左右生成，其中包含上个月的所有费用。 此日期可能与在旧帐户中生成发票的日期不同。 如果你与其他人共享你的发票，请通知他们有关此日期更改的事宜。
 
+
+**迁移后首月的账单**
+
+在你更新帐户的那一天，将最终确定现有的未结费用，你将在平时收到账单的那一天收到这些费用的账单。 例如，John 有两个 Azure 订阅：Azure 订阅 1 的计费周期是从当月 5 日到下月 4 日，Azure 订阅 2 的计费周期是从当月 10 日到下月 9 日。 John 一般在每月 5 日收到这两个 Azure 订阅的账单。 现在，如果 John 的帐户在 4 月 4 日进行了更新，则 Azure 帐户 1 的费用将为 3 月 5 日至 4 月 4 日的费用，Azure 订阅 2 的费用将为 3 月 10 日到 4 月 4 日的费用。 John 将在每月 5 日收到两张账单，每个订阅各一张。 帐户更新后，John 的计费周期将基于日历月，并将包含从日历月开始到该日历月结束时产生的所有费用。  每月 9 日提供有关上一个日历月的费用账单。 因此，在上例中，John 还将收到一张计费周期为 5 月 5 日到 4 月 30 日的账单。 
+
+
 **新的计费和成本管理 API**
 
 如果你正使用成本管理或计费 API 来查询和更新计费或成本数据，则必须使用新 API。 下表列出了不能用于新计费帐户的 API，以及你需要在新计费帐户中进行的更改。
@@ -106,6 +126,7 @@ ms.locfileid: "99575460"
 |---------|---------|
 |[计费帐户 - 列表](/rest/api/billing/2019-10-01-preview/billingaccounts/list) | 在计费帐户 - 列表 API 中，你的旧计费帐户具有 agreementType“MicrosoftOnlineServiceProgram”，而你的新计费帐户具有 agreementType“MicrosoftCustomerAgreement” 。 如果你依赖于 agreementType，请进行更新。 |
 |[发票 - 按计费订阅列出](/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | 此 API 将仅返回在更新帐户之前生成的发票。 必须使用[发票 - 按计费订阅列出](/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount) API 才能获取在新计费帐户中生成的发票。 |
+
 
 ## <a name="cost-management-updates-after-account-update"></a>帐户更新后的成本管理更新
 
@@ -141,7 +162,7 @@ Azure 计费帐户提供以下更新的功能。
 
 例如，如果你的旧帐户的计费周期为 11 月 24 日至 12 月 23 日，则升级后的周期将变为 11 月 1 日至 11 月 30 日、12 月 1 日至 12 月 31 日，依此类推。
 
-:::image type="content" source="./media/mosp-new-customer-experience/billing-periods.png" alt-text="显示新旧计费周期比较的图像" lightbox="./media/mosp-new-customer-experience/billing-periods.png" :::
+:::image type="content" source="./media/mosp-new-customer-experience/billing-periods.png" alt-text="屏幕截图显示了新旧计费周期之间的比较。" lightbox="./media/mosp-new-customer-experience/billing-periods.png" :::
 
 #### <a name="budgets"></a>预算
 
@@ -156,7 +177,7 @@ Azure 计费帐户提供以下更新的功能。
 
 例如，对于从 12 月 23 日到 1 月 22 日的计费周期，导出的 CSV 文件将包含该周期的成本和使用情况数据。 更新后，导出将包含该日历月的数据。 例如，1 月 1 日至 1 月 31 日，以此类推。
 
-:::image type="content" source="./media/mosp-new-customer-experience/export-amortized-costs.png" alt-text="显示新旧导出详细信息比较的图像" lightbox="./media/mosp-new-customer-experience/export-amortized-costs.png" :::
+:::image type="content" source="./media/mosp-new-customer-experience/export-amortized-costs.png" alt-text="屏幕截图显示了新旧导出详细信息之间的比较。" lightbox="./media/mosp-new-customer-experience/export-amortized-costs.png" :::
 
 ## <a name="additional-information"></a>其他信息
 

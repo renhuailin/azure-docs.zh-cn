@@ -1,21 +1,21 @@
 ---
 title: 教程：设置 Gen2 环境 - Azure 时序见解 Gen2 | Microsoft Docs
 description: 教程：了解如何在 Azure 时序见解 Gen2 中设置环境。
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: riserrad
+ms.author: riserrad
+manager: edett
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 02/25/2021
+ms.date: 04/23/2021
 ms.custom: seodec18
-ms.openlocfilehash: 76a33bdb773645c9e8f97a47b1378d813b165631
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f3994802e82b126f426a75a26d399f6f86e21797
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103464130"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107951985"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>教程：设置 Azure 时序见解 Gen2 环境
 
@@ -113,19 +113,18 @@ ms.locfileid: "103464130"
    | **IoT 中心名称** | 选择为设备模拟器创建的 IoT 中心名称。 |
    | **Iot 中心访问策略** | 选择“iothubowner”。 |
    | **IoT 中心使用者组** | 选择“新建”，输入唯一名称，然后选择“+ 添加” 。 在 Azure 时序见解 Gen2 中，使用者组必须是唯一值。 |
+   | **启动选项** | 选择“立即开始”。 |
    | **时间戳属性** | 此值用于标识传入遥测数据中的 **时间戳** 属性。 在本教程中，请将此框留空。 此模拟器使用 IoT 中心的传入时间戳，Azure 时序见解 Gen2 默认使用该时间戳。 |
 
-1. 选择“查看 + 创建”。
-
-   [![将创建的 IoT 中心配置为事件源。](media/tutorial-set-up-environment/configure-event-source.png)](media/tutorial-set-up-environment/configure-event-source.png#lightbox)
+   :::image type="content" source="media/tutorial-set-up-environment/configure-event-source.png" alt-text="将创建的 IoT 中心配置为事件源" lightbox="media/tutorial-set-up-environment/configure-event-source.png":::
 
 1. 选择“查看 + 创建”  。
 
-    [![包含“创建”按钮的“查看 + 创建”页。](media/tutorial-set-up-environment/environment-confirmation.png)](media/tutorial-set-up-environment/environment-confirmation.png#lightbox)
+   :::image type="content" source="media/tutorial-set-up-environment/environment-confirmation.png" alt-text="包含“创建”按钮的“查看 + 创建”页" lightbox="media/tutorial-set-up-environment/environment-confirmation.png":::
 
-    你可以查看部署的状态：
+   你可以查看部署的状态：
 
-    [![指出部署已完成的通知。](media/tutorial-set-up-environment/deployment-notification.png)](media/tutorial-set-up-environment/deployment-notification.png#lightbox)
+   [![指出部署已完成的通知。](media/tutorial-set-up-environment/deployment-notification.png)](media/tutorial-set-up-environment/deployment-notification.png#lightbox)
 
 1. 展开部署详细信息。
 

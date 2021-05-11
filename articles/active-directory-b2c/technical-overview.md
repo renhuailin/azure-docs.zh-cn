@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 05/28/2020
+ms.date: 04/27/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 77dab865b2b023f59e6776349b4045107bdb3a29
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fa6bf4b59b8cc478115cfb69fea532b076141b38
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095487"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071273"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技术和功能概述
 
@@ -27,11 +27,11 @@ ms.locfileid: "102095487"
 
 在 Azure AD B2C 租户中使用的主要资源包括：
 
-* **目录** - 目录是 Azure AD B2C 将用户的凭据和配置文件数据以及应用程序注册存储到的位置。
+* **目录** - Azure AD B2C 在目录中存储用户的凭据、个人资料数据和应用程序注册。
 * **应用程序注册** - 将 Web、移动和本机应用程序注册到 Azure AD B2C 以启用标识管理。 此外，应用程序注册还包括要使用 Azure AD B2C 保护的 API。
 * **用户流** 和 **自定义策略** - 应用程序的内置标识体验（用户流）和完全可自定义的标识体验（自定义策略）。
   * 使用用户流可以快速配置和启用常见标识任务，例如注册、登录和配置文件编辑。
-  * 使用自定义策略不仅可为常见标识任务启用用户体验，而且还能为组织、客户、员工、合作伙伴和市民的独特复杂标识工作流构建支持。
+  * 对于组织、客户、员工、合作伙伴和公民独有的复杂标识工作流，请使用自定义策略。
 * **标识提供者** - 以下对象的联合设置：
   * 要在应用程序中支持的社交标识提供者，例如 Facebook、LinkedIn 或 Twitter。
   * 支持 OAuth 2.0、OpenID Connect 等标准标识协议的外部标识提供者。
@@ -46,7 +46,7 @@ Azure AD B2C 定义多种类型的用户帐户。 Azure Active Directory、Azure
 
 * **工作帐户** - 具有工作帐户的用户可以管理租户中的资源，而具有管理员角色的用户还可以管理租户。 具有工作帐户的用户可以创建新的使用者帐户、重置密码、阻止/解除阻止帐户，以及设置权限或将帐户分配到安全组。
 * **来宾帐户** - 邀请你作为来宾加入其租户的外部用户。 邀请来宾用户访问 Azure AD B2C 租户的典型方案是共享管理职责。
-* **使用者帐户** - 使用者帐户是当用户在你已注册到租户的应用程序中完成注册用户旅程后，在 Azure AD B2C 目录中创建的帐户。
+* **使用者帐户** - 通过 Azure AD B2C 用户流和自定义策略管理的帐户。
 
 ![Azure 门户中的 Azure AD B2C 用户管理页](media/technical-overview/portal-01-users.png)<br/>*图：Azure 门户中 Azure AD B2C 租户内的用户目录*
 
@@ -57,15 +57,15 @@ Azure AD B2C 定义多种类型的用户帐户。 Azure Active Directory、Azure
 可将使用者帐户关联到以下标识类型：
 
 * **本地** 标识：将用户名和密码存储在 Azure AD B2C 目录本地。 我们通常将此类标识称为“本地帐户”。
-* **社交** 或 **企业** 标识：用户的标识由 Facebook、Microsoft、ADFS 或 Salesforce 等联合标识提供者进行管理。
+* 社交或企业标识，其中用户的标识由联合标识提供者进行管理 。 例如 Facebook、Microsoft、ADFS 或 Salesforce。
 
-具有使用者帐户的用户可以通过多个标识（例如用户名、电子邮件、员工 ID、政府 ID 等）登录。 单个帐户可以有多个本地和社交标识。
+具有使用者帐户的用户可使用多个标识进行登录。 例如用户名、电子邮件、员工 ID 和政府 ID 等。 单个帐户可以有多个本地和社交标识。
 
 ![使用者帐户标识](media/technical-overview/identities.png)<br/>*图：在 Azure AD B2C 中具有多个标识的单个使用者帐户*
 
-在 Azure AD B2C 中可以管理使用者帐户配置文件的通用属性，例如显示名称、姓氏、名字、城市，等等。 还可以扩展 Azure AD 架构以存储有关用户的其他信息。 例如，用户所在的国家/地区或居住地、首选语言和偏好（例如，是否想要订阅新闻稿或启用多重身份验证）。
+通过 Azure AD B2C，可管理使用者帐户个人资料的通用属性。 例如显示名称、姓氏、名字、城市等信息。 还可以扩展 Azure AD 架构以存储有关用户的其他信息。 例如，用户居住国家/地区、首选语言和偏好（比如是否想要订阅新闻稿或启用多重身份验证）。
 
-在 [Azure Active Directory B2C 中的用户帐户概述](user-overview.md)中详细了解 Azure AD B2C 中的用户帐户类型。
+有关详细信息，请查看 [Azure Active Directory B2C 中的用户帐户概述](user-overview.md)。
 
 ## <a name="external-identity-providers"></a>外部标识提供者
 
@@ -107,15 +107,15 @@ Azure AD B2C 的核心优势在于它的可扩展策略框架。 策略描述用
 * 会话管理
 * 等等。
 
-使用用户流可以有效地定义和实现大多数移动、Web 和单页应用程序的最常见标识方案。 除非你的复杂用户旅程方案要求自定义策略具有完全灵活性，否则我们建议使用内置用户流。
+应用的大多数常见标识方案都可以通过用户流来有效定义和实施。 除非你的复杂用户旅程方案要求自定义策略具有完全灵活性，否则我们建议使用内置用户流。
 
 在 [Azure Active Directory B2C 中的用户流](user-flow-overview.md)中详细了解用户流。
 
 ### <a name="custom-policy"></a>自定义策略
 
-自定义策略可以解锁对 Identity Experience Framework (IEF) 业务流程引擎的全部功能的访问。 借助自定义策略，可以利用 IEF 来构建可以想象到的几乎任何身份验证、用户注册或配置文件编辑体验。
+自定义策略是完全可配置的，它由策略驱动。 它可以协调标准协议中实体之间的信任。 例如，OpenID Connect、OAuth、SAML 和一些非标准协议，如基于 REST API 的系统间声明交换。 该框架创建用户友好的白标体验。
 
-Identity Experience Framework 可让你使用步骤的任意组合来构造用户旅程。 例如：
+自定义策略可让你使用步骤的任意组合来构造用户旅程。 例如：
 
 * 与其他标识提供者联合
 * 第一方和第三方多重身份验证 (MFA) 质询
@@ -125,10 +125,6 @@ Identity Experience Framework 可让你使用步骤的任意组合来构造用�
 每个此类用户旅程都由策略定义，你可以根据需要构建任意数量的策略，以便为组织启用最佳用户体验。
 
 ![显示 IEF 启用的复杂用户旅程示例的图示](media/technical-overview/custom-policy.png)
-
-自定义策略由多个 XML 文件定义，这些文件在分层链中相互引用。 XML 元素定义声明架构、声明转换、内容定义、声明提供程序、技术配置文件、用户旅程业务流程步骤，以及标识体验的其他方面。
-
-需要构建复杂的标识方案时，自定义策略的极高灵活性可以发挥最大的作用。 配置自定义策略的开发人员必须严谨地定义信任关系，以包含元数据终结点和确切的声明交换定义，并配置每个标识提供者所需的机密、密钥和证书。
 
 在 [Azure Active Directory B2C 中的自定义策略](custom-policy-overview.md)中详细了解自定义策略。
 
@@ -148,7 +144,7 @@ Identity Experience Framework 可让你使用步骤的任意组合来构造用�
 
 ## <a name="application-integration"></a>应用程序集成
 
-当用户想要登录到你的应用程序时（无论是 Web、移动、桌面还是单页应用程序 (SPA)），该应用程序都会向用户流或自定义策略提供的终结点发起授权请求。 用户流或自定义策略定义并控制用户的体验。 当用户完成用户流（例如注册或登录流）后，Azure AD B2C 会生成一个令牌，然后将用户重定向回到应用程序。
+当用户想要登录你的应用程序时，应用程序就会向用户流或自定义策略提供的终结点发起授权请求。 用户流或自定义策略定义并控制用户的体验。 当用户完成用户流（例如注册或登录流）后，Azure AD B2C 会生成一个令牌，然后将用户重定向回到应用程序。
 
 ![移动应用，其中的箭头显示 Azure AD B2C 登录页之间的流](media/technical-overview/app-integration.png)
 
@@ -156,9 +152,9 @@ Identity Experience Framework 可让你使用步骤的任意组合来构造用�
 
 例如，若要登录到某个应用程序，该应用程序将使用注册或登录用户流。 用户登录后，他们可能想要编辑其配置文件，在这种情况下，应用程序将发起另一个授权请求（这一次使用的是配置文件编辑用户流）。
 
-## <a name="seamless-user-experiences"></a>无缝用户体验
+## <a name="user-experiences"></a>用户体验
 
-在 Azure AD B2C 中，可以创建用户的标识体验，使显示的页面能够与品牌形象无缝融合。 当用户完成应用程序的标识旅程时，你几乎可以获得向用户显示的 HTML 和 CSS 内容的完全控制权。 凭借这种灵活性，可以在应用程序与 Azure AD B2C 之间保持品牌和视觉一致性。
+在 Azure AD B2C 中，可创建用户的标识体验，使显示的页面能够与品牌形象无缝融合。 当用户完成应用程序的标识旅程时，你几乎可以获得向用户显示的 HTML 和 CSS 内容的完全控制权。 凭借这种灵活性，可以在应用程序与 Azure AD B2C 之间保持品牌和视觉一致性。
 
 ![按品牌自定义的注册/登录页的屏幕截图](media/technical-overview/seamless-ux.png)
 
@@ -181,7 +177,9 @@ Identity Experience Framework 可让你使用步骤的任意组合来构造用�
 * 通过进一步与企业业务线应用程序集成来扩充用户数据。
 * 使用 RESTful 调用可以发送推送通知、更新企业数据库、运行用户迁移过程、管理权限、审核数据库，以及执行其他操作。
 
-会员计划是 Azure AD B2C 为了支持调用 REST API 而实现的另一种方案。 例如，RESTful 服务可以接收用户的电子邮件地址、查询客户数据库，然后向 Azure AD B2C 返回用户的会员号。 返回数据可以存储在 Azure AD B2C 的用户目录帐户中，然后在策略的后续步骤中进一步评估，或包含在访问令牌中。
+会员计划是 Azure AD B2C 为了支持调用 REST API 而实现的另一种方案。 例如，RESTful 服务可以接收用户的电子邮件地址、查询客户数据库，然后向 Azure AD B2C 返回用户的会员号。 
+
+返回数据可存储在用户在 Azure AD B2C 中的目录帐户中。 随后，可在后续步骤中在策略中进一步评估此数据，或者将其包含在访问令牌中。
 
 ![移动应用程序中的业务线集成](media/technical-overview/lob-integration.png)
 
@@ -193,7 +191,7 @@ Identity Experience Framework 可让你使用步骤的任意组合来构造用�
 * Azure AD B2C 在目录中创建新帐户之后
 * Azure AD B2C 颁发访问令牌之前
 
-若要了解如何对 Azure AD B2C 中的 RESTful API 集成使用自定义策略，请参阅[在 Azure AD B2C 自定义策略中集成 REST API 声明交换](custom-policy-rest-api-intro.md)。
+若要了解如何对 Azure AD B2C 中的 RESTful API 集成使用自定义策略，请参阅[在 Azure AD B2C 自定义策略中集成 REST API 声明交换](api-connectors-overview.md)。
 
 ## <a name="protect-customer-identities"></a>保护客户标识
 
@@ -219,7 +217,9 @@ Azure AD B2C 租户与用于员工和合作伙伴的企业 Azure Active Director
 
 ### <a name="multi-factor-authentication-mfa"></a>多重身份验证 (MFA)
 
-Azure AD B2C 多重身份验证 (MFA) 有助于保护对数据和应用程序的访问，同时满足用户对简单性的需求。 它通过要求另一种形式的身份验证来提供额外的安全性，并通过提供一系列易于使用的身份验证方法来实现强式身份验证。 根据管理员做出的配置决策，用户可能会受到 MFA 的质询，也可能不会受到 MFA 的质询。
+Azure AD B2C 多重身份验证 (MFA) 有助于保护对数据和应用程序的访问，同时满足用户对简单性的需求。 它通过要求另一种形式的身份验证来提供额外的安全性，并通过提供一系列易于使用的身份验证方法来实现强式身份验证。 
+
+根据管理员做出的配置决策，用户可能会受到 MFA 的质询，也可能不会受到 MFA 的质询。
 
 有关如何在用户流中启用 MFA，请参阅[在 Azure Active Directory B2C 中启用多重身份验证](multi-factor-authentication.md)。
 
@@ -252,13 +252,15 @@ Azure AD B2C 发出审核日志，其中包含有关其资源、颁发的令牌�
 
 ![Azure 门户中显示的单个用户审核日志](media/technical-overview/audit-log.png)
 
-有关审核日志的更多详细信息，请参阅[访问 Azure AD B2C 审核日志](view-audit-logs.md)。
+有关审核日志的详细信息，请查看[访问 Azure AD B2C 审核日志](view-audit-logs.md)。
 
 ### <a name="usage-insights"></a>使用情况见解
 
-在 Azure AD B2C 中，可以发现用户何时注册或登录你的 Web 应用、用户所在的位置，以及他们使用的是哪种浏览器和操作系统。 通过使用自定义策略将 Azure Application Insights 集成到 Azure AD B2C，可以深入了解用户如何注册、登录、重置其密码或编辑其个人资料。 了解此类信息后，可以针对未来的开发周期做出数据驱动的决策。
+在 Azure AD B2C 中，可发现用户何时注册或登录你的应用、用户身在何处，还有他们在使用哪些浏览器和操作系统。 
 
-有关使用情况分析的详细信息，请参阅[使用 Application Insights 在 Azure Active Directory B2C 中跟踪用户行为](analytics-with-application-insights.md)。
+通过将 Azure Application Insights 集成到 Azure AD B2C 自定义策略，可深入了解用户如何注册、登录、重置其密码或编辑其个人资料。 了解此类信息后，可以针对未来的开发周期做出数据驱动的决策。
+
+有关详细信息，请查看[使用 Application Insights 在 Azure Active Directory B2C 中跟踪用户行为](analytics-with-application-insights.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

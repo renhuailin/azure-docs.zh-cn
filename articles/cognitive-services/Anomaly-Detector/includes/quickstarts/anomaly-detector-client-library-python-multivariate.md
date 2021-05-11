@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/25/2020
 ms.author: mbullwin
-ms.openlocfilehash: 9b848f6c86f2ff2e95fa5cc191b088b7175f2311
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 789f493640e9795c58fd278db6cc0b11902c1cfa
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107318751"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107925313"
 ---
 开始使用适用于 Python 的异常检测器多变量客户端库。 请按照以下步骤操作，以使用服务提供的算法安装软件包。 新的多变量异常情况检测 API 使开发人员能够轻松地集成高级 AI 来检测指标组中的异常，且无需机器学习知识或标记的数据。 不同信号之间的依赖关系和相互关联会自动计为关键因素。 这可以帮助你主动防范复杂系统发生故障。
 
@@ -22,6 +22,8 @@ ms.locfileid: "107318751"
 * 检测一组时序中的系统级异常。
 * 当任何单独的时序都不能告知太多信息时，而你不得不查看所有信号来检测问题。
 * 使用数十到数百种不同类型的传感器对昂贵的物理资产进行预测维护，以测量系统运行状况的各个方面。
+
+[库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/anomalydetector/azure-ai-anomalydetector) | [包 (PyPi) ](https://pypi.org/project/azure-ai-anomalydetector/3.0.0b3/) | [示例代码](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/samples/sample_multivariate_detect.py) | [Jupyter Notebook](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -124,8 +126,7 @@ def train(self, start_time, end_time, max_tryout=500):
     model_status = None
     tryout_count = 0
     while (tryout_count < max_tryout and model_status != "READY"):
-        model_status = self.ad_client.get_multivariate_model(trained_model_id).additional_properties["summary"][
-            "status"]
+        model_status = self.ad_client.get_multivariate_model(trained_model_id).model_info.status
         tryout_count += 1
         time.sleep(2)
     
@@ -234,6 +235,11 @@ if __name__ == '__main__':
 
 ```
 
+在运行之前，对照生成本快速入门的[完整示例代码](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb)检查项目，这会很有帮助。
+
+我们还提供了[详细的 Jupyter Notebook](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb) 来帮助你入门。
+
 使用 `python` 命令和文件名运行应用程序。
+
 
 [!INCLUDE [anomaly-detector-next-steps](../quickstart-cleanup-next-steps.md)]

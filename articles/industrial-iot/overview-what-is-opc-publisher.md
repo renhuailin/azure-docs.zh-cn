@@ -1,32 +1,30 @@
 ---
 title: Microsoft OPC 发布服务器
 description: 本文概述了 OPC 发布服务器边缘模块。
-author: jehona-m
+author: v-condav
 ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: conceptual
 ms.date: 3/22/2021
-ms.openlocfilehash: 3a44bdbadfe6ecd86a1b98fb7002f2d75c23bb6a
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 6df39c93e9bcfca522ac61a863c87269216cc592
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104800527"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816163"
 ---
 # <a name="what-is-the-opc-publisher"></a>什么是 OPC 发布服务器？
 
-OPC 发布服务器是一种完全受支持的 Microsoft 产品，以开放的方式开发，可弥补工业资产与 Microsoft Azure 云之间的差距。 OPC 发布服务器通过连接到启用了 OPC UA 的资产或工业连接软件来实现此目的，并以各种格式将遥测数据发布到 Azure IoT 中心，包括 IEC62541 OPC UA PubSub 标准格式（从版本 2.6 开始）。
-
-OPC 发布服务器在 Azure IoT Edge 上作为模块运行，在纯 Docker 上作为容器运行。 由于 OPC 发布服务器利用 .NET 跨平台运行时，因此在 Linux 和 Windows 10 上也会以本地方式运行。
+OPC 发布服务器是一种完全受支持的 Microsoft 产品，可弥补工业资产与 Microsoft Azure 云之间的差距。 它通过将启用了 OPC UA 的资产或工业连接软件连接到 Microsoft Azure 云来实现此目的。 它将收集到的遥测数据以各种格式发布到 Azure IoT 中心，包括 IEC62541 OPC UA PubSub 标准格式（从版本 2.6 开始）。 OPC 发布服务器在 Azure IoT Edge 上作为模块运行，在纯 Docker 上作为容器运行。 由于 OPC 发布服务器利用 .NET 跨平台运行时，因此在 Linux 和 Windows 10 上都会以本地方式运行。
 
 OPC 发布服务器是一种参考实现，演示了如何：
 
 - 连接到现有的 OPC UA 服务器。
 - 使用 JSON 有效负载将 OPC UA 服务器中采用 OPC UA Pub/Sub 格式的 JSON 编码遥测数据发布到 Azure IoT 中心。
 
-可以使用 Azure IoT 中心客户端 SDK 支持的任何传输协议：HTTPS、AMQP 和 MQTT。
+可以使用 Azure IoT 中心客户端 SDK 支持的任何传输协议，例如 HTTPS、AMQP 和 MQTT。
 
-参考实现包括：
+参考实现包括以下内容。
 
 - 用于连接到网络上现有 OPC UA 服务器的 OPC UA 客户端。
 - 端口 62222 上的 OPC UA *服务器*，你可以使用它来管理已发布的内容，并提供 IoT 中心直接方法来执行同样的操作。

@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 01/03/2021
 ms.author: memildin
-ms.openlocfilehash: dcbb4977e1bfd17f0cbed61abf9ba335615b7799
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fbd7b13e07a19c75c4f41ff4f3e2bdc66e585c9e
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443754"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903517"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure 安全中心的权限
 
@@ -39,7 +39,7 @@ Azure 安全中心使用 [Azure 基于角色的访问控制 (Azure RBAC)](../rol
 | 添加/分配计划（包括合规性标准）                                                                           | -                             | -              | -                                                      | -                        | ✔                 |
 | 启用/禁用 Azure Defender                                                                                                               | -                             | ✔             | -                                                      | -                        | ✔                 |
 | 启用/禁用自动预配                                                                                                            | -                             | ✔             | -                                                      | ✔                       | ✔                  |
-| 应用资源的安全建议</br> （并使用[快速修复！](security-center-remediate-recommendations.md#quick-fix-remediation)） | -                             | -              | ✔                                                     | ✔                        | ✔                 |
+| 应用资源的安全建议</br> （和使用[修补程序](security-center-remediate-recommendations.md#fix-button)） | -                             | -              | ✔                                                     | ✔                        | ✔                 |
 | 消除警报                                                                                                                                | -                             | ✔             | -                                                      | ✔                       | ✔                  |
 | 查看警报和建议                                                                                                               | ✔                            | ✔              | ✔                                                     | ✔                        | ✔                 |
 

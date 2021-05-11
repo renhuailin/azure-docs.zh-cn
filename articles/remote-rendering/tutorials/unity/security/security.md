@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6e595f7ff313ff85a12209e8c124b9aa376b20b6
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: d30ab051e58573daefd16f178feb4fc94f2ec83f
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739724"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835463"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>教程：保护 Azure 远程渲染和模型存储
 
@@ -405,8 +405,10 @@ return await Task.FromResult(new SessionConfiguration(AzureRemoteRenderingAccoun
     由于 AADAuthentication 组件有一个视图控制器，它将在会话授权模式面板后自动挂钩以显示提示。
 1. 请按照 AppMenu 右边面板中的说明操作。
     看到的内容应该如下所示：![显示在 AppMenu 右侧显示的“指令”面板的插图。](./media/device-flow-instructions.png)
+    
     在辅助设备（或同一设备上的浏览器）上输入提供的代码并使用凭据登录后，一个访问令牌会返回到发出请求的应用程序中（在本例中为 Unity 编辑器）。
-1. 此后，应用程序中的所有内容应会正常运行。 如果没有按照预期的方式完成各个阶段，请检查 Unity 控制台是否有任何错误。
+
+此后，应用程序中的所有内容应会正常运行。 如果没有按照预期的方式完成各个阶段，请检查 Unity 控制台是否有任何错误。
 
 ## <a name="build-to-device"></a>在设备上构建
 

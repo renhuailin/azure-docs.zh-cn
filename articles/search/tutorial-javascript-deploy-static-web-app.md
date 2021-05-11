@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 03/18/2021
 ms.custom: devx-track-js
 ms.devlang: javascript
-ms.openlocfilehash: a49ede283899cec42898672f5a376221265dea10
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c3f4d883dcc9b79ddab77bb8779e52e629226631
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104723468"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950317"
 ---
 # <a name="3---deploy-the-search-enabled-website"></a>3 - 部署启用搜索的网站
 
@@ -62,17 +62,20 @@ ms.locfileid: "104723468"
 
 1. 请保留此查询密钥，下一部分将需要使用它。 查询密钥能够查询您的索引。 
 
-## <a name="add-configuration-settings-in-visual-studio-code"></a>在 Visual Studio Code 中添加配置设置
+## <a name="add-configuration-settings-in-azure-portal"></a>在 Azure 门户中添加配置设置
 
 当搜索密码在设置中之前，Azure Function 应用不会返回搜索数据。 
 
-1. 从活动栏中选择 **Azure**，然后从侧边栏中选择 **静态 Web 应用**。 
-1. 展开新的静态 Web 应用，直到显示 **应用程序设置**。
-1. 右键单击 **应用程序设置**，然后选择 **添加新设置**。
+1. 在活动栏中选择“Azure”。 
+1. 右键单击你的静态 Web 应用资源，然后选择“在门户中打开”。
 
-    :::image type="content" source="media/tutorial-javascript-create-load-index/visual-studio-code-static-web-app-configure-settings.png" alt-text="右键单击 **应用程序设置**，然后选择 **添加新设置**。":::
+    :::image type="content" source="media/tutorial-javascript-static-web-app/open-static-web-app-in-azure-portal.png" alt-text="右键单击你的 JavaScript 静态 Web 应用资源，然后选择“在门户中打开”。":::
 
-1. 添加以下设置：
+1. 选择“配置”，然后选择“+ 添加” 。
+
+    :::image type="content" source="media/tutorial-javascript-static-web-app/add-new-application-setting-to-static-web-app-in-portal.png" alt-text="对于你的 JavaScript 应用，选择“配置”，然后选择“添加”。":::
+
+1. 添加以下每个设置：
 
     |设置|搜索资源值|
     |--|--|
@@ -80,6 +83,17 @@ ms.locfileid: "104723468"
     |SearchServiceName|搜索资源名称|
     |SearchIndexName|`good-books`|
     |SearchFacets|`authors*,language_code`|
+
+    对于筛选集合，Azure 认知搜索需要不同于筛选字符串所使用的语法。 在字段名后添加一个 `*`，表示该字段的类型为 `Collection(Edm.String)`。 这允许 Azure Function 向查询正确添加筛选器。
+
+1. 选择“保存”，保存这些设置。 
+
+    :::image type="content" source="media/tutorial-javascript-static-web-app/save-new-application-setting-to-static-web-app-in-portal.png" alt-text="选择“保存”以保存设置。":::
+
+1. 返回到 VS Code。 
+1. 刷新静态 Web 应用以查看静态 Web 应用的应用程序设置。 
+
+    :::image type="content" source="media/tutorial-javascript-static-web-app/visual-studio-code-extension-fresh-resource.png" alt-text="刷新静态 Web 应用以查看静态 Web 应用的应用程序设置。":::
 
 ## <a name="use-search-in-your-static-web-app"></a>在静态 Web 应用中使用搜索
 

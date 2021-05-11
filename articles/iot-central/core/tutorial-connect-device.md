@@ -11,12 +11,12 @@ ms.custom:
 - mqtt
 - device-developer
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: bbf94b6e000d5c082debd6a0d41a8d62b8b3f26e
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 479c12ca00614b2d34bd08f41e3451826a253035
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491023"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001802"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application"></a>教程：创建客户端应用程序并将其连接到 Azure IoT Central 应用程序
 
@@ -83,7 +83,7 @@ ms.locfileid: "106491023"
 > [!div class="nextstepaction"]
 > [创建网关设备模板](./tutorial-define-gateway-device-type.md)
 
-作为设备开发人员，现在你已了解了如何使用 Java 创建设备的基础知识，一些建议的后续步骤是：
+作为设备开发人员，现在你已了解了如何创建设备的基础知识，建议执行的一些后续步骤是：
 
 * 要详细了解在实现设备代码时设备模板的作用，请阅读[什么是设备模板？](./concepts-device-templates.md)。
 * 阅读[连接到 Azure IoT Central](./concepts-get-connected.md)，详细了解如何向 IoT Central 注册设备以及 IoT Central 如何保护设备连接。

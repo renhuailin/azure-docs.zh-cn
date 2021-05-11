@@ -3,12 +3,12 @@ title: 教程 - 访问私有云
 description: 了解如何访问 Azure VMware 解决方案私有云
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: f2af1cffda08bf4b9c62e63f32d36cc9bbd7024a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d2046acaf483022f977559fe74254ca58b8c42ea
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103494387"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107945640"
 ---
 # <a name="tutorial-access-an-azure-vmware-solution-private-cloud"></a>教程：访问 Azure VMware 解决方案私有云
 
@@ -24,7 +24,31 @@ Azure VMware 解决方案不允许使用本地 vCenter 管理私有云。 你需
 
 ## <a name="create-a-new-windows-virtual-machine"></a>创建新的 Windows 虚拟机
 
-[!INCLUDE [create-avs-jump-box-steps](includes/create-jump-box-steps.md)]
+1. 在资源组中选择“+ 添加”，搜索并选择“Microsoft Windows 10”，然后选择“创建”  。
+
+   :::image type="content" source="media/tutorial-access-private-cloud/ss8-azure-w10vm-create.png" alt-text="说明如何为跳转盒添加新的 Windows 10 VM 的屏幕截图。" border="true":::
+
+1. 在字段中输入所需信息，然后选择“查看 + 创建”。 
+
+   有关字段的详细信息，请参阅下表。
+
+   | 字段 | 值 |
+   | --- | --- |
+   | **订阅** | 为“值”预填充了属于资源组的订阅。 |
+   | **资源组** | 为当前资源组（在上一教程中创建）预填充了值。  |
+   | **虚拟机名称** | 输入 VM 的唯一名称。 |
+   | **区域** | 选择 VM 的地理位置。 |
+   | **可用性选项** | 保留选择的默认值。 |
+   | **图像** | 选择 VM 映像。 |
+   | **大小** | 保留默认大小值。 |
+   | **身份验证类型**  | 选择“密码”。 |
+   | **用户名** | 输入用于登录到 VM 的用户名。 |
+   | **密码** | 输入用于登录到 VM 的密码。 |
+   | **确认密码** | 输入用于登录到 VM 的密码。 |
+   | **公共入站端口** | 选择“无”。 如果选择“无”，可以使用 [JIT 访问](../security-center/security-center-just-in-time.md#jit-configure)，以便仅在需要访问 VM 时才控制对 VM 的访问。 或者，如果你想从 Internet 安全地访问跳转盒服务器而不公开任何网络端口，则可以使用 [Azure Bastion](../bastion/tutorial-create-host-portal.md)。  |
+
+
+1. 验证通过后，选择“创建”启动虚拟机创建过程。
 
 ## <a name="connect-to-the-local-vcenter-of-your-private-cloud"></a>连接到私有云的本地 vCenter
 

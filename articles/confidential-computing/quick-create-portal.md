@@ -10,12 +10,12 @@ ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.custom:
 - mode-portal
-ms.openlocfilehash: f43229570f6bab942cc57a2ea3be163d37f02f89
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 1ae6631c3f6ee71d7a09832956c7e687ceca22b6
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536177"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819045"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>快速入门：在 Azure 门户中部署 Azure 机密计算 VM
 
@@ -62,7 +62,7 @@ ms.locfileid: "107536177"
 
 1. 配置要用于虚拟机的操作系统映像。
 
-    * **选择映像**：对于本教程，请选择 Ubuntu 18.04 LTS。 还可以选择 Windows Server 2019、Windows Server 2016 或 Ubuntu 16.04 LTS。 如果选择这样做，则本教程会对你进行相应的重定向。
+    * **选择映像**：对于本教程，请选择 Ubuntu 18.04 LTS。 还可以选择 Windows Server 2019、Windows Server 2016 或 Ubuntu 20.04 LTS。 如果选择这样做，则本教程会对你进行相应的重定向。
     
     * **切换第 2 代的映像**：机密计算虚拟机仅在 [第 2 代](../virtual-machines/generation-2.md)映像上运行。 确保所选映像是第 2 代映像。 单击上方的“高级”选项卡，你将在其中配置虚拟机。 向下滚动，直至找到标签为“VM 代系”的部分。 选择“第 2 代”，然后返回到“基本信息”选项卡。
     
@@ -79,7 +79,7 @@ ms.locfileid: "107536177"
     ![DCsv2 系列 VM](media/quick-create-portal/dcsv2-virtual-machines.png)
 
     > [!TIP]
-    > 应当会看到以下大小：DC1s_v2、DC2s_v2、DC4s_V2 和 DC8_v2。 这是目前仅有的支持机密计算的虚拟机大小。 [了解详细信息](virtual-machine-solutions.md)。
+    > 应当会看到以下大小：DC1s_v2、DC2s_v2、DC4s_V2 和 DC8_v2。 这些是目前仅有的支持 Intel SGX 机密计算的虚拟机大小。 [了解详细信息](virtual-machine-solutions.md)。
 
 1. 填充以下信息：
 
@@ -166,11 +166,18 @@ wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add 
 ```
 
 #### <a name="2-install-the-intel-sgx-dcap-driver"></a>2.安装 Intel SGX DCAP 驱动程序
+某些版本的 Ubuntu 可能已安装了 Intel SGX 驱动程序。 使用以下命令检查： 
+
+```bash
+dmesg | grep -i sgx
+[  106.775199] sgx: intel_sgx: Intel SGX DCAP Driver {version}
+``` 
+如果输出为空白，则安装该驱动程序： 
 
 ```bash
 sudo apt update
 sudo apt -y install dkms
-wget https://download.01.org/intel-sgx/sgx-dcap/1.9/linux/distro/ubuntu18.04-server/sgx_linux_x64_driver_1.36.2.bin -O sgx_linux_x64_driver.bin
+wget https://download.01.org/intel-sgx/sgx-dcap/1.7/linux/distro/ubuntu18.04-server/sgx_linux_x64_driver_1.35.bin -O sgx_linux_x64_driver.bin
 chmod +x sgx_linux_x64_driver.bin
 sudo ./sgx_linux_x64_driver.bin
 ```
@@ -180,8 +187,9 @@ sudo ./sgx_linux_x64_driver.bin
 
 #### <a name="3-install-the-intel-and-open-enclave-packages-and-dependencies"></a>3.安装 Intel 和 Open Enclave 包与依赖项
 
+
 ```bash
-sudo apt -y install clang-7 libssl-dev gdb libsgx-enclave-common libsgx-enclave-common-dev libprotobuf10 libsgx-dcap-ql libsgx-dcap-ql-dev az-dcap-client open-enclave
+sudo apt -y install clang-8 libssl-dev gdb libsgx-enclave-common libprotobuf10 libsgx-dcap-ql libsgx-dcap-ql-dev az-dcap-client open-enclave
 ```
 
 > [!NOTE] 

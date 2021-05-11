@@ -3,12 +3,12 @@ title: 快速入门：使用 PowerShell 创建事件中心 - Azure 事件中心
 description: 本快速入门介绍如何使用 Azure PowerShell 创建事件中心，然后使用 .NET Standard SDK 发送和接收事件。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 1c81024a9195e463eeaaf384d5cbbd1e0054c485
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be2761bedd3198d25cb279e6a8ff188db6a51de2
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88933947"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873750"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建事件中心
 
@@ -24,7 +24,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 - Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户][]。
 - [Visual Studio 2019](https://www.visualstudio.com/vs)。
-- [.NET Standard SDK](https://www.microsoft.com/net/download/windows) 2.0 或更高版本。
+- [.NET Core SDK](https://dotnet.microsoft.com/download) 2.0 或更高版本。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

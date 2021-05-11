@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 03/02/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 99dc8cb2acf06faae16df6d3a48c4d38b1be46d8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1e05435f364cc30b351275439a04caff47c35512
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104577778"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871788"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 TLS/SSL 证书
 
@@ -217,7 +217,7 @@ ms.locfileid: "104577778"
 ![导入 Key Vault 证书已完成](./media/configure-ssl-certificate/import-app-service-cert-finished.png)
 
 > [!NOTE]
-> 如果使用新证书更新 Key Vault 中的证书，应用服务会在 48 小时内自动同步证书。
+> 如果使用新证书更新 Key Vault 中的证书，应用服务会在 24 小时内自动同步证书。
 
 > [!IMPORTANT] 
 > 若要使用此证书保护自定义域，仍需要创建证书绑定。 按照[创建绑定](configure-ssl-bindings.md#create-binding)中的步骤操作。
@@ -325,7 +325,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 重新生成密钥操作完成后，单击“同步”。同步操作会自动更新应用服务中证书的主机名绑定，而不会导致应用停机。
 
 > [!NOTE]
-> 如果未单击“同步”，应用服务会在 48 小时内自动同步证书。
+> 如果未单击“同步”，应用服务会在 24 小时内自动同步证书。
 
 ### <a name="renew-certificate"></a>续订证书
 
@@ -340,7 +340,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 续订操作完成后，单击“同步”。同步操作会自动更新应用服务中证书的主机名绑定，而不会导致应用停机。
 
 > [!NOTE]
-> 如果未单击“同步”，应用服务会在 48 小时内自动同步证书。
+> 如果未单击“同步”，应用服务会在 24 小时内自动同步证书。
 
 ### <a name="export-certificate"></a>导出证书
 

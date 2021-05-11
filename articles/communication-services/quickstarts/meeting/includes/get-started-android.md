@@ -6,16 +6,16 @@ ms.author: palatter
 ms.date: 01/25/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 5ac4c53550468d33e9ed533303749d29e772d766
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 331d8eb6ed74880a855934fad4d3e1afc9b29109
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108463"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108313518"
 ---
-本快速入门介绍如何使用适用于 Android 的 Azure 通信服务 Teams 嵌入库加入 Teams 会议。
+本快速入门介绍如何使用适用于 Android 的 Azure 通信服务 Teams 嵌入库加入 Microsoft Teams 会议。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Android Studio](https://developer.android.com/studio)，用于创建 Android 应用程序。
@@ -41,7 +41,7 @@ ms.locfileid: "105108463"
 
 ### <a name="install-the-azure-package"></a>安装 Azure 包
 
-在应用程序级别 build.gradle 中，将以下行添加到“依赖项”和 Android 部分
+在应用级别（应用文件夹）`build.gradle` 中，将以下行添加到“依赖项”和“Android”部分
 
 ```groovy
 android {
@@ -55,20 +55,34 @@ android {
 ```groovy
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-common:1.0.0-beta.6'
+    implementation 'com.azure.android:azure-communication-common:1.0.0-beta.8'
     ...
 }
 ```
 
+更新 `build.gradle` 文件中的值
+
+```groovy
+ buildTypes {
+        release {
+        ...
+            minifyEnabled true
+            shrinkResources true
+        ...
+    }
+}
+```
+
+
 ### <a name="install-the-teams-embed-package"></a>安装 Teams 嵌入包
 
-下载 `MicrosoftTeamsSDK` 包。
+下载 [`MicrosoftTeamsSDK` 包。](https://github.com/Azure/communication-teams-embed/releases)
 
-然后将 MicrosoftTeamsSDK 文件夹解压缩到项目应用程序文件夹。 例如： `TeamsEmbedAndroidGettingStarted/app/MicrosoftTeamsSDK`.
+然后将 `MicrosoftTeamsSDK` 文件夹解压缩到项目应用文件夹。 例如： `TeamsEmbedAndroidGettingStarted/app/MicrosoftTeamsSDK`.
 
 ### <a name="add-teams-embed-package-to-your-buildgradle"></a>向 build.gradle 添加 Teams 嵌入包。
 
-在应用程序级别中，在 `build.gradle` 文件末尾添加以下行：
+在应用级别 `build.gradle` 中，在文件末尾添加以下行：
 
 ```groovy
 apply from: 'MicrosoftTeamsSDK/MicrosoftTeamsSDK.gradle'
@@ -78,7 +92,7 @@ apply from: 'MicrosoftTeamsSDK/MicrosoftTeamsSDK.gradle'
 
 ### <a name="create-application-class"></a>创建应用程序类
 
-创建新的 Java 类文件 `TeamsEmbedAndroidGettingStarted`。 这将是必须扩展 `TeamsSDKApplication` 的应用程序类。 [Android 文档](https://developer.android.com/reference/android/app/Application)
+创建新的 Java 类文件 `TeamsEmbedAndroidGettingStarted`。 此类将是必须扩展 `TeamsSDKApplication` 的应用程序类。 [Android 文档](https://developer.android.com/reference/android/app/Application)
 
 :::image type="content" source="../media/android/application-class-location.png" alt-text="显示在 Android Studio 中创建应用程序类的位置的屏幕截图":::
 
@@ -144,7 +158,7 @@ public class TeamsEmbedAndroidGettingStarted extends TeamsSDKApplication {
 
 ### <a name="set-up-the-layout-for-the-app"></a>为应用设置布局
 
-创建 ID 为 `join_meeting` 的按钮。 导航到 (`app/src/main/res/layout/activity_main.xml`) 并将文件的内容替换为以下内容：
+创建 ID 为 `join_meeting` 的按钮。 导航到布局文件 (`app/src/main/res/layout/activity_main.xml`) 并将文件的内容替换为以下内容：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -171,7 +185,7 @@ public class TeamsEmbedAndroidGettingStarted extends TeamsSDKApplication {
 
 创建布局后，可以添加必要绑定以及活动的基本基架。 活动会处理请求运行时权限、创建会议客户端以及在按下按钮时加入会议。 每个操作都涵盖在自己的部分中。 
 
-`onCreate` 方法会进行重写，以调用 `getAllPermissions` 和 `createAgent`，以及为 `Join Meeting` 按钮添加绑定。 这仅在创建活动时发生一次。 有关 `onCreate` 的详细信息，请参阅指南[了解活动生命周期](https://developer.android.com/guide/components/activities/activity-lifecycle)。
+`onCreate` 方法会经过重写，以调用 `getAllPermissions` 和 `createAgent`，以及为 `Join Meeting` 按钮添加绑定。 这仅在创建活动时发生一次。 有关 `onCreate` 的详细信息，请参阅指南[了解活动生命周期](https://developer.android.com/guide/components/activities/activity-lifecycle)。
 
 导航到 MainActivity.java 并将内容替换为以下代码：
 
@@ -189,8 +203,9 @@ import android.widget.Toast;
 
 import com.azure.android.communication.common.CommunicationTokenCredential;
 import com.azure.android.communication.common.CommunicationTokenRefreshOptions;
-import com.azure.android.communication.ui.meetings.MeetingJoinOptions;
+import com.azure.android.communication.ui.meetings.MeetingUIClientJoinOptions;
 import com.azure.android.communication.ui.meetings.MeetingUIClient;
+import com.azure.android.communication.ui.meetings.MeetingUIClientTeamsMeetingLinkLocator;
 
 import java.util.ArrayList;
 import java.util.concurrent.Callable;
@@ -200,14 +215,14 @@ public class MainActivity extends AppCompatActivity {
     private final String displayName = "John Smith";
 
     private MeetingUIClient meetingUIClient;
-    private MeetingJoinOptions meetingJoinOptions;
+    private MeetingUIClientJoinOptions meetingJoinOptions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        meetingJoinOptions = new MeetingJoinOptions(displayName);
+        meetingJoinOptions = new MeetingUIClientJoinOptions(displayName, false);
         
         getAllPermissions();
         createMeetingClient();
@@ -257,20 +272,25 @@ private void getAllPermissions() {
 
 ## <a name="object-model"></a>对象模型
 
-以下类和接口用于处理 Azure 通信服务 Teams 嵌入库 SDK 的某些主要功能：
+以下类和接口会处理 Azure 通信服务 Teams 嵌入库的部分主要功能：
 
 | 名称                                  | 说明                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | MeetingUIClient| MeetingUIClient 是 Teams 嵌入库的主要入口点。 |
-| MeetingJoinOptions | MeetingJoinOptions 用于可配置选项，例如显示名称。 |
-| CallState | CallState 用于报告调用状态更改。 选项如下：`connecting`、`waitingInLobby`、`connected` 和 `ended`。 |
+| MeetingUIClientJoinOptions | MeetingUIClientJoinOptions 用于可配置的选项，例如显示名称。 |
+| MeetingUIClientTeamsMeetingLinkLocator | MeetingUIClientTeamsMeetingLinkLocator 用于设置用于加入会议的会议 URL。 |
+| MeetingUIClientGroupCallLocator | MeetingUIClientGroupCallLocator 用于设置要加入的组 ID。 |
+| MeetingUIClientCallState | MeetingUIClientCallState 用于报告调用状态更改。 选项如下：`connecting`、`waitingInLobby`、`connected` 和 `ended`。 |
+| MeetingUIClientEventListener | MeetingUIClientEventListener 用于接收事件，例如调用状态的更改。 |
+| MeetingUIClientIdentityProvider | MeetingUIClientIdentityProvider 用于将用户详细信息映射到会议中的用户。 |
+| MeetingUIClientUserEventListener | MeetingUIClientUserEventListener 用于在 UI 中提供有关用户操作的信息。 |
 
 ## <a name="create-a-meetingclient-from-the-user-access-token"></a>从用户访问令牌创建 MeetingClient
 
-经过身份验证的会议客户端可以使用用户访问令牌进行实例化。 此标记通常由具有特定应用程序的身份验证服务生成。 如要详细了解用户访问令牌的信息，请查看[用户访问令牌](../../access-tokens.md)指南。 对于快速入门，请使用为你的 Azure 通信服务资源生成的用户访问令牌替换 `<USER_ACCESS_TOKEN>`。
+经过身份验证的会议客户端可以使用用户访问令牌进行实例化。 此标记由具有特定于应用程序的身份验证的服务生成。 如要详细了解用户访问令牌的信息，请查看[用户访问令牌](../../access-tokens.md)指南。 对于快速入门，请使用为你的 Azure 通信服务资源生成的用户访问令牌替换 `<USER_ACCESS_TOKEN>`。
 
 ```java
-private void createMeetingClient() {
+private void createMeetingClient() { 
     try {
         CommunicationTokenRefreshOptions refreshOptions = new CommunicationTokenRefreshOptions(tokenRefresher, true, "<USER_ACCESS_TOKEN>");
         CommunicationTokenCredential credential = new CommunicationTokenCredential(refreshOptions);
@@ -283,7 +303,7 @@ private void createMeetingClient() {
 
 ## <a name="setup-token-refreshing"></a>安装程序令牌刷新
 
-创建一个可调用的 `tokenRefresher` 方法。 然后创建一个 `fetchToken` 方法以获取用户令牌。 [请参阅此处，了解操作说明](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens?pivots=programming-language-java)
+创建一个可调用的 `tokenRefresher` 方法。 然后创建一个 `fetchToken` 方法以获取用户令牌。 [请参阅此处，了解操作说明](../../access-tokens.md?pivots=programming-language-java)
 
 ```java
 Callable<String> tokenRefresher = () -> {
@@ -303,7 +323,7 @@ public String fetchToken() {
 
 ## <a name="start-a-meeting-using-the-meeting-client"></a>使用会议客户端启动会议
 
-通过 `MeetingClient` 即可加入会议，而且只需 `meetingURL` 和 `JoinOptions` 即可实现。 将 `<MEETING_URL>` 替换为 Teams 会议 URL。
+通过 `MeetingUIClient` 即可加入会议，而且只需 `MeetingUIClientTeamsMeetingLinkLocator` 和 `MeetingUIClientJoinOptions` 即可实现。 将 `<MEETING_URL>` 替换为 Teams 会议 URL。
 
 ```java
 /**
@@ -311,7 +331,8 @@ public String fetchToken() {
  */
 private void joinMeeting() {
     try {
-        meetingUIClient.join("<MEETING_URL>", meetingJoinOptions);
+        MeetingUIClientTeamsMeetingLinkLocator meetingUIClientTeamsMeetingLinkLocator = new MeetingUIClientTeamsMeetingLinkLocator(<MEETING_URL>);
+        meetingUIClient.join(meetingUIClientTeamsMeetingLinkLocator, meetingJoinOptions);
     } catch (Exception ex) {
         Toast.makeText(getApplicationContext(), "Failed to join meeting: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
     }
