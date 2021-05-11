@@ -27,6 +27,10 @@
       href: tutorial-connect-virtual-networks-portal.md
     - name: 创建并验证 NAT 网关
       href: tutorial-create-nat-gateway-portal.md
+    - name: 将 NAT 网关与公共负载均衡器集成
+      href: tutorial-nat-gateway-load-balancer-public-portal.md
+    - name: 将 NAT 网关与内部负载均衡器集成
+      href: tutorial-nat-gateway-load-balancer-internal-portal.md
 - name: 示例
   items:
     - name: Azure CLI
@@ -100,13 +104,13 @@
         - name: 不按流量计费的路由首选项
           href: routing-preference-unmetered.md
         - name: 公共 IP 安全基线
-          href: public-ip-security-baseline.md
+          href: /security/benchmark/azure/baselines/public-ip-security-baseline?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json
     - name: 安全性
       items:
         - name: 虚拟网络安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/virtual-network-security-baseline?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json
         - name: 虚拟网络 NAT 安全基线
-          href: nat-security-baseline.md
+          href: /security/benchmark/azure/baselines/virtual-network-nat-security-baseline?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json
         - name: Azure 服务的网络隔离
           href: vnet-integration-for-azure-services.md
         - name: 网络安全组
@@ -409,17 +413,13 @@
               href: move-across-regions-publicip-powershell.md
     - name: NAT
       items:
-        - name: 创建 NAT 网关 - PowerShell
-          href: quickstart-create-nat-gateway-powershell.md
-        - name: 创建 NAT 网关 - CLI
-          href: quickstart-create-nat-gateway-cli.md
+        - name: 创建并验证 NAT 网关 - PowerShell
+          href: tutorial-create-nat-gateway-powershell.md
+        - name: 创建并验证 NAT 网关 - CLI
+          href: tutorial-create-nat-gateway-cli.md
         - name: 创建 NAT 网关 - ARM 模板
           displayname: Resource Manager
           href: quickstart-create-nat-gateway-template.md
-        - name: 创建并验证 NAT 网关 - PowerShell
-          href: tutorial-create-validate-nat-gateway-powershell.md
-        - name: 创建并验证 NAT 网关 - CLI
-          href: tutorial-create-validate-nat-gateway-cli.md
     - name: 疑难解答
       items:
         - name: 排查虚拟网络对等互连问题
@@ -453,7 +453,7 @@
 - name: 参考
   items:
     - name: Azure CLI
-      href: /cli/azure/network
+      href: /cli/azure/azure-cli-reference-for-network
     - name: Azure PowerShell
       href: /powershell/module/az.network
     - name: .NET

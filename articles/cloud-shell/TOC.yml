@@ -25,7 +25,7 @@
     - name: 安全性
       items:
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/cloud-shell-security-baseline?toc=/azure/cloud-shell/TOC.json
 - name: 操作指南
   items:
     - name: 适用于 Windows 用户的 PowerShell Cloud Shell

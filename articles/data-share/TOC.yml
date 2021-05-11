@@ -30,7 +30,7 @@
         - name: 安全概述
           href: security.md
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/data-share-security-baseline?toc=/azure/data-share/TOC.json
     - name: Azure Data Share 术语
       href: terminology.md
     - name: 角色和要求

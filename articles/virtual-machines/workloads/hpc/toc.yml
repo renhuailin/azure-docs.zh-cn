@@ -28,6 +28,12 @@
               href: hbv2-series-overview.md
             - name: 性能
               href: hbv2-performance.md
+        - name: HBv3 系列
+          items:
+            - name: 概述
+              href: hbv3-series-overview.md
+            - name: 性能
+              href: hbv3-performance.md
         - name: HC 系列
           items:
             - name: 概述
