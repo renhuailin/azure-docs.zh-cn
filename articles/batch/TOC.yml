@@ -31,15 +31,6 @@
     - name: 并行文件处理 - Python
       displayName: 'tutorial, hpc, high-performance, large'
       href: tutorial-parallel-python.md
-    - name: 使用 Arnold 进行场景呈现
-      displayName: tutorial
-      href: tutorial-rendering-cli.md
-    - name: 使用 Batch Explorer 进行渲染
-      displayName: tutorial
-      href: tutorial-rendering-batchexplorer-blender.md
-    - name: 并行 R 模拟
-      displayName: 'tutorial, doAzureParallel, rstudio'
-      href: tutorial-r-doazureparallel.md
     - name: 将 OCR 与 Batch 和 Functions 配合使用
       displayName: 'trigger, optical'
       href: tutorial-batch-functions.md
@@ -76,7 +67,7 @@
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/batch-security-baseline?toc=/azure/batch/TOC.json
         - name: 安全最佳做法
           href: security-best-practices.md
     - name: Batch 服务工作流和资源
@@ -123,6 +114,8 @@
           href: private-connectivity.md
         - name: 配置客户管理的密钥
           href: batch-customer-managed-key.md
+        - name: 在区域之间移动
+          href: account-move.md
     - name: 使用 Azure AD 进行身份验证
       items:
         - name: 将 Azure AD 与 Batch 服务配合使用
@@ -172,6 +165,9 @@
         - name: 配置托管标识
           displayName: user-assigned
           href: managed-identity-pools.md
+        - name: 启用证书轮换
+          displayName: 'key vault, keyvault, automatic'
+          href: automatic-certificate-rotation.md
         - name: 装载虚拟文件系统
           href: virtual-file-mount.md
         - name: 装载 Azure 文件共享
@@ -238,11 +234,11 @@
           displayName: command line
           href: batch-cli-get-started.md
         - name: 使用 Batch CLI 模板
-          diplayName: extension
+          displayName: extension
           href: batch-cli-templates.md
-    - name: 使用 Batch Node.js SDK
+    - name: 使用 Batch JavaScript SDK
       displayName: json
-      href: batch-nodejs-get-started.md
+      href: batch-js-get-started.md
     - name: 运行工作负荷
       items:
         - name: MPI
@@ -280,7 +276,7 @@
       href: /dotnet/api/overview/azure/batch
     - name: Java
       href: /java/api/overview/azure/batch
-    - name: Node.js
+    - name: JavaScript
       href: /javascript/api/overview/azure/batch
     - name: Python
       href: /python/api/overview/azure/batch

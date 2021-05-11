@@ -60,6 +60,8 @@
       href: manage-cli.md
     - name: 使用 PowerShell 管理联盟
       href: manage-consortium-powershell.md
+    - name: 迁移指南
+      href: migration-guide.md
     - name: 使用逻辑应用
       href: ethereum-logic-app.md
     - name: 监视 Azure 区块链服务
@@ -67,7 +69,7 @@
 - name: 参考
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/blockchain/blockchain
+      href: /cli/azure/blockchain
 - name: 资源
   items:
     - name: Azure 区块链开发工具包

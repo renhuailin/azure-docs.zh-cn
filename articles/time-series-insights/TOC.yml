@@ -14,7 +14,7 @@
 - name: 教程
   items:
     - name: 设置时序见解第 2 代环境
-      href: tutorials-set-up-tsi-environment.md
+      href: tutorial-set-up-environment.md
     - name: Azure 数字孪生与时序见解第 2 代之间的模型同步
       href: tutorials-model-sync.md
 - name: 概念
@@ -95,9 +95,13 @@
           items:
             - name: 规划环境
               href: how-to-plan-your-environment.md
-        - name: 环境管理
+        - name: 管理
           items:
-            - name: 如何预配和管理
+            - name: 如何使用 Azure CLI 创建环境
+              href: how-to-create-environment-using-cli.md
+            - name: 如何使用 Azure 门户创建环境
+              href: how-to-create-environment-using-portal.md
+            - name: 如何管理环境
               href: how-to-provision-manage.md
             - name: 如何选择 TSID
               href: how-to-select-tsid.md
@@ -176,11 +180,11 @@
     - name: 监视数据参考
       href: how-to-monitor-tsi-reference.md
     - name: Azure CLI
-      href: /cli/azure/ext/timeseriesinsights/timeseriesinsights
+      href: /cli/azure/tsi
 - name: 资源
   items:
     - name: 支持和帮助选项
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/time-series-insights/toc.json&bc=/azure/time-series-insights/breadcrumb/toc.json
     - name: 客户数据请求
       href: time-series-insights-customer-data-requests.md
     - name: 开发人员资源

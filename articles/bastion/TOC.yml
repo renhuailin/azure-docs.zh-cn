@@ -21,10 +21,10 @@
       href: work-remotely-support.md
     - name: Bastion 和 VNet 对等互连
       href: vnet-peering.md
-    - name: 安全性
+    - name: 安全
       items:
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/bastion-security-baseline?toc=/azure/bastion/TOC.json
 - name: 操作指南
   items:
     - name: 创建主机
@@ -57,6 +57,8 @@
       href: diagnostic-logs.md
     - name: 监视和管理会话
       href: session-monitoring.md
+    - name: 指标、监视和警报
+      href: howto-metrics-monitor-alert.md
     - name: 疑难解答
       href: troubleshoot.md
 - name: 参考

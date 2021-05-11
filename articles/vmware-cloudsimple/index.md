@@ -1,7 +1,7 @@
 ---
 title: Azure VMware Solution by CloudSimple
 description: 了解 CloudSimple 提供的 Azure VMware 解决方案，包括概述、快速入门、概念、教程和操作指南。
-author: Ajayan1008
+author: shortpatti
 ms.author: v-hborys
 ms.date: 08/20/2019
 ms.topic: article
@@ -10,12 +10,12 @@ ms.reviewer: cynthn
 manager: dikamath
 ms.custom: seo-azure-migrate
 keywords: vms 支持, cloudsimple 的 azure vmware 解决方案, cloudsimple azure, vms 工具, vmware 文档
-ms.openlocfilehash: a3514a011f940b82702984737d0a93c5da402b55
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 26e9b825e50e0d2783404cf58ab553bd4b99f3b9
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108375"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175021"
 ---
 # <a name="azure-vmware-solution-by-cloudsimple"></a>Azure VMware Solution by CloudSimple
 

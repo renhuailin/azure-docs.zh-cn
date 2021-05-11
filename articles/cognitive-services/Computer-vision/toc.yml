@@ -1,203 +1,204 @@
-- name: 计算机视觉文档
-  href: index.yml
-- name: 概述
-  expanded: true
-  items:
-    - name: 什么是计算机视觉？
-      href: overview.md
-    - name: 语言支持
-      href: language-support.md
-    - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
-    - name: 新增功能
-      href: whats-new.md
-    - name: 计算机视觉常见问题解答
-      href: FAQ.md
-- name: 光学字符识别 (OCR)
-  items:
-    - name: OCR 概述
-      href: overview-ocr.md
-    - name: OCR 快速入门
-      href: quickstarts-sdk/client-library.md
-    - name: 示例
-      href: /samples/browse/?products=azure&terms=computer-vision
-    - name: 操作指南
-      items:
-        - name: 调用读取 API
-          href: Vision-API-How-to-Topics/call-read-api.md
-        - name: 从 Read 2.x 升级到 Read 3.x
-          href: upgrade-api-versions.md
-        - name: 使用读取容器
-          items:
-            - name: 安装和运行容器
-              href: computer-vision-how-to-install-containers.md
-              displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
-            - name: 配置容器
-              href: computer-vision-resource-container-config.md
-            - name: 迁移到读取 OCR 容器的 v3
-              href: read-container-migration-guide.md
-              displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
-            - name: 与 Kubernetes 和 Jenkins 配合使用
-              href: deploy-computer-vision-on-premises.md
-              displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
-            - name: 使用容器实例
-              maintainContext: true
-              href: ../containers/azure-container-instance-recipe.md
-              displayName: 'container instances, container, containers, images'
-            - name: 所有认知服务容器
-              href: ../containers/index.yml
-              maintainContext: true
-    - name: 参考
-      items:
-        - name: OCR REST API v3.2
-          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005'
-        - name: OCR REST API v3.1
-          href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005'
-        - name: OCR REST API v2.1
-          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641'
-        - name: .NET
-          href: /dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
-        - name: Node.js
-          href: /javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest
-        - name: Python
-          href: /python/api/overview/azure/cognitiveservices/computervision?view=azure-python
-        - name: Go
-          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision'
-        - name: Java
-          href: /java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable
-        - name: Azure CLI
-          href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
-        - name: Azure PowerShell
-          href: /powershell/module/azurerm.cognitiveservices/
-- name: 图像分析
-  items:
-    - name: 图像分析概述
-      href: overview-image-analysis.md
-    - name: 图像分析快速入门
-      href: quickstarts-sdk/image-analysis-client-library.md
-    - name: 示例
-      items:
-        - name: 探索图像处理应用
-          href: Tutorials/CSharpTutorial.md
-        - name: 其他示例
-          href: /samples/browse/?products=azure&terms=computer-vision
-    - name: 操作指南
-      items:
-        - name: 调用图像分析 API
-          href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
-        - name: 分析实时视频
-          href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
-    - name: 概念
-      items:
-        - name: 对象检测
-          href: concept-object-detection.md
-        - name: 品牌检测
-          href: concept-brand-detection.md
-        - name: 内容标记
-          href: concept-tagging-images.md
-        - name: 图像分类
-          href: concept-categorizing-images.md
-        - name: 类别分类
-          href: Category-Taxonomy.md
-        - name: 图像说明
-          href: concept-describing-images.md
-        - name: 人脸检测
-          href: concept-detecting-faces.md
-        - name: 图像类型检测
-          href: concept-detecting-image-types.md
-        - name: 特定于域的内容
-          href: concept-detecting-domain-content.md
-        - name: 配色方案检测
-          href: concept-detecting-color-schemes.md
-        - name: 智能裁剪的缩略图
-          href: concept-generating-thumbnails.md
-        - name: 成人内容检测
-          href: concept-detecting-adult-content.md
-    - name: 教程
-      items:
-        - name: 生成图像的元数据
-          href: Tutorials/storage-lab-tutorial.md
-    - name: 参考
-      items:
-        - name: 图像分析 REST API v3.2
-          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b'
-        - name: 图像分析 REST API v3.1
-          href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005'
-        - name: 图像分析 REST API v2.1
-          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641'
-        - name: .NET
-          href: /dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
-        - name: Node.js
-          href: /javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest
-        - name: Python
-          href: /python/api/overview/azure/cognitiveservices/computervision?view=azure-python
-        - name: Go
-          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision'
-        - name: Java
-          href: /java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable
-        - name: Azure CLI
-          href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
-        - name: Azure PowerShell
-          href: /powershell/module/azurerm.cognitiveservices/
-- name: 空间分析
-  items:
-    - name: 空间分析概述
-      href: intro-to-spatial-analysis-public-preview.md
-    - name: 负责使用 AI
-      items:
-        - name: 透明度说明
-          items:
-            - name: 空间分析用例
-              href: /legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=/azure/cognitive-services/computer-vision/context/context
-            - name: 特征和限制
-              href: /legal/cognitive-services/computer-vision/accuracy-and-limitations?context=/azure/cognitive-services/computer-vision/context/context
-        - name: 集成和负责使用
-          items:
-            - name: AI 部署中负责任的使用
-              href: /legal/cognitive-services/computer-vision/responsible-use-deployment?context=/azure/cognitive-services/computer-vision/context/context
-            - name: 披露设计准则
-              href: /legal/cognitive-services/computer-vision/disclosure-design?context=/azure/cognitive-services/computer-vision/context/context
-            - name: 研究见解
-              href: /legal/cognitive-services/computer-vision/research-insights?context=/azure/cognitive-services/computer-vision/context/context
-        - name: 数据、隐私和安全性
-          href: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=/azure/cognitive-services/computer-vision/context/context
-    - name: 操作指南
-      items:
-        - name: 使用空间分析容器
-          items:
-            - name: 设置主机并运行容器
-              href: spatial-analysis-container.md
-            - name: 配置操作
-              href: spatial-analysis-operations.md
-            - name: 部署人员计数 Web 应用
-              href: Spatial-analysis-web-app.md
-            - name: 日志记录和故障排除
-              href: spatial-analysis-logging.md
-            - name: 区域和线条放置
-              href: spatial-analysis-zone-line-placement.md
-            - name: 相机放置
-              href: spatial-analysis-camera-placement.md
-            - name: 所有认知服务容器
-              href: ../containers/index.yml?context=%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
-- name: 操作指南
-  items:
-    - name: 企业就绪情况
-      items:
-        - name: 设置虚拟网络
-          href: ../cognitive-services-virtual-networks.md?context=%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
-        - name: 使用 Azure AD 身份验证
-          href: ../authentication.md?tabs=powershell%3fcontext%3d%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
-- name: 资源
-  items:
-    - name: 企业就绪情况
-      items:
-        - name: 区域支持
-          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-        - name: 符合性和认证
-          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: 支持和帮助选项
-      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context
-    - name: Microsoft 学习模式
-      href: /learn/paths/explore-computer-vision-microsoft-azure/
-    - name: Azure 更新
-      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+items:
+  - name: 计算机视觉文档
+    href: index.yml
+  - name: 概述
+    expanded: true
+    items:
+      - name: 什么是计算机视觉？
+        href: overview.md
+      - name: 语言支持
+        href: language-support.md
+      - name: 定价
+        href: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
+      - name: 新增功能
+        href: whats-new.md
+      - name: 计算机视觉常见问题解答
+        href: FAQ.md
+  - name: 光学字符识别 (OCR)
+    items:
+      - name: OCR 概述
+        href: overview-ocr.md
+      - name: OCR 快速入门
+        href: quickstarts-sdk/client-library.md
+      - name: 示例
+        href: /samples/browse/?products=azure&terms=computer-vision
+      - name: 操作指南
+        items:
+          - name: 调用读取 API
+            href: Vision-API-How-to-Topics/call-read-api.md
+          - name: 从 Read 2.x 升级到 Read 3.x
+            href: upgrade-api-versions.md
+          - name: 使用读取容器
+            items:
+              - name: 安装和运行容器
+                href: computer-vision-how-to-install-containers.md
+                displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
+              - name: 配置容器
+                href: computer-vision-resource-container-config.md
+              - name: 迁移到读取 OCR 容器的 v3
+                href: read-container-migration-guide.md
+                displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
+              - name: 与 Kubernetes 和 Jenkins 配合使用
+                href: deploy-computer-vision-on-premises.md
+                displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
+              - name: 使用容器实例
+                maintainContext: true
+                href: ../containers/azure-container-instance-recipe.md
+                displayName: 'container instances, container, containers, images'
+              - name: 所有认知服务容器
+                href: ../containers/index.yml
+                maintainContext: true
+      - name: 参考
+        items:
+          - name: OCR REST API v3.2
+            href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005'
+          - name: OCR REST API v3.1
+            href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005'
+          - name: OCR REST API v2.1
+            href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641'
+          - name: .NET
+            href: /dotnet/api/overview/azure/cognitiveservices/client/computervision
+          - name: Node.js
+            href: /javascript/api/@azure/cognitiveservices-computervision/
+          - name: Python
+            href: /python/api/overview/azure/cognitiveservices/computervision
+          - name: Go
+            href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision'
+          - name: Java
+            href: /java/api/overview/azure/cognitiveservices/client/computervision
+          - name: Azure CLI
+            href: /cli/azure/cognitiveservices#az_cognitiveservices_list
+          - name: Azure PowerShell
+            href: /powershell/module/azurerm.cognitiveservices/
+  - name: 图像分析
+    items:
+      - name: 图像分析概述
+        href: overview-image-analysis.md
+      - name: 图像分析快速入门
+        href: quickstarts-sdk/image-analysis-client-library.md
+      - name: 示例
+        items:
+          - name: 探索图像处理应用
+            href: Tutorials/CSharpTutorial.md
+          - name: 其他示例
+            href: /samples/browse/?products=azure&terms=computer-vision
+      - name: 操作指南
+        items:
+          - name: 调用图像分析 API
+            href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
+          - name: 分析实时视频
+            href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
+      - name: 概念
+        items:
+          - name: 对象检测
+            href: concept-object-detection.md
+          - name: 品牌检测
+            href: concept-brand-detection.md
+          - name: 内容标记
+            href: concept-tagging-images.md
+          - name: 图像分类
+            href: concept-categorizing-images.md
+          - name: 类别分类
+            href: Category-Taxonomy.md
+          - name: 图像说明
+            href: concept-describing-images.md
+          - name: 人脸检测
+            href: concept-detecting-faces.md
+          - name: 图像类型检测
+            href: concept-detecting-image-types.md
+          - name: 特定于域的内容
+            href: concept-detecting-domain-content.md
+          - name: 配色方案检测
+            href: concept-detecting-color-schemes.md
+          - name: 智能裁剪的缩略图
+            href: concept-generating-thumbnails.md
+          - name: 成人内容检测
+            href: concept-detecting-adult-content.md
+      - name: 教程
+        items:
+          - name: 生成图像的元数据
+            href: Tutorials/storage-lab-tutorial.md
+      - name: 参考
+        items:
+          - name: 图像分析 REST API v3.2
+            href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b'
+          - name: 图像分析 REST API v3.1
+            href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005'
+          - name: 图像分析 REST API v2.1
+            href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641'
+          - name: .NET
+            href: /dotnet/api/overview/azure/cognitiveservices/client/computervision
+          - name: Node.js
+            href: /javascript/api/@azure/cognitiveservices-computervision
+          - name: Python
+            href: /python/api/overview/azure/cognitiveservices/computervision
+          - name: Go
+            href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision'
+          - name: Java
+            href: /java/api/overview/azure/cognitiveservices/client/computervision
+          - name: Azure CLI
+            href: /cli/azure/cognitiveservices#az_cognitiveservices_list
+          - name: Azure PowerShell
+            href: /powershell/module/azurerm.cognitiveservices/
+  - name: 空间分析
+    items:
+      - name: 空间分析概述
+        href: intro-to-spatial-analysis-public-preview.md
+      - name: 负责使用 AI
+        items:
+          - name: 透明度说明
+            items:
+              - name: 空间分析用例
+                href: /legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=/azure/cognitive-services/computer-vision/context/context
+              - name: 特征和限制
+                href: /legal/cognitive-services/computer-vision/accuracy-and-limitations?context=/azure/cognitive-services/computer-vision/context/context
+          - name: 集成和负责使用
+            items:
+              - name: AI 部署中负责任的使用
+                href: /legal/cognitive-services/computer-vision/responsible-use-deployment?context=/azure/cognitive-services/computer-vision/context/context
+              - name: 披露设计准则
+                href: /legal/cognitive-services/computer-vision/disclosure-design?context=/azure/cognitive-services/computer-vision/context/context
+              - name: 研究见解
+                href: /legal/cognitive-services/computer-vision/research-insights?context=/azure/cognitive-services/computer-vision/context/context
+          - name: 数据、隐私和安全性
+            href: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=/azure/cognitive-services/computer-vision/context/context
+      - name: 操作指南
+        items:
+          - name: 使用空间分析容器
+            items:
+              - name: 设置主机并运行容器
+                href: spatial-analysis-container.md
+              - name: 配置操作
+                href: spatial-analysis-operations.md
+              - name: 部署人员计数 Web 应用
+                href: Spatial-analysis-web-app.md
+              - name: 日志记录和故障排除
+                href: spatial-analysis-logging.md
+              - name: 区域和线条放置
+                href: spatial-analysis-zone-line-placement.md
+              - name: 相机放置
+                href: spatial-analysis-camera-placement.md
+              - name: 所有认知服务容器
+                href: ../containers/index.yml?context=%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
+  - name: 操作指南
+    items:
+      - name: 企业就绪情况
+        items:
+          - name: 设置虚拟网络
+            href: ../cognitive-services-virtual-networks.md?context=%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
+          - name: 使用 Azure AD 身份验证
+            href: ../authentication.md?tabs=powershell%3fcontext%3d%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
+  - name: 资源
+    items:
+      - name: 企业就绪情况
+        items:
+          - name: 区域支持
+            href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+          - name: 符合性和认证
+            href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+      - name: 支持和帮助选项
+        href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context
+      - name: Microsoft 学习模式
+        href: /learn/paths/explore-computer-vision-microsoft-azure/
+      - name: Azure 更新
+        href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

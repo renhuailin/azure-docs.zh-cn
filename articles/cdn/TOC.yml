@@ -13,7 +13,7 @@
     - name: 创建配置文件和终结点
       href: cdn-create-new-endpoint.md
     - name: 创建配置文件和终结点 - ARM 模板
-      displayName: Resource Manager
+      displayName: 'Resource Manager, az group, az deployment group, New-AzResourceGroup, New-AzResourceGroupDeployment, Remove-AzResourceGroup'
       href: create-profile-endpoint-template.md
 - name: 教程
   items:
@@ -31,12 +31,17 @@
   items:
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?service=cdn'
+    - name: Azure CLI
+      items:
+        - name: 创建配置文件和终结点
+          displayName: 'az cdn profile, az cdn endpoint, az cdn origin, az cdn custom-domain, cdn origin-group'
+          href: ./scripts/cli/cdn-azure-cli-create-endpoint.md
 - name: 概念
   items:
     - name: 安全性
       items:
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/content-delivery-network-security-baseline?toc=/azure/cdn/TOC.json
     - name: 缓存工作原理
       href: cdn-how-caching-works.md
     - name: 中国内容分发
@@ -172,6 +177,8 @@
           href: cdn-http-debug-headers.md
     - name: 特定于 Microsoft 的 HTTP 标头
       href: cdn-msft-http-debug-headers.md
+    - name: Azure CLI
+      href: /cli/azure/cdn
     - name: Azure PowerShell
       href: /powershell/module/az.cdn
     - name: .NET

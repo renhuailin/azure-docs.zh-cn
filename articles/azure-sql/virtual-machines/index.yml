@@ -12,12 +12,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: sstein
   ms.date: 05/27/2020
-  ms.openlocfilehash: f8be335fed98d404687002f8c826e881d93e3a10
-  ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+  ms.openlocfilehash: ef1f0d64d078d729d97bee3ad7e5fb63cbda095c
+  ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/12/2020
-  ms.locfileid: "94556482"
+  ms.lasthandoff: 04/28/2021
+  ms.locfileid: "108129866"
 landingContent:
 - title: Azure VM 上的 SQL Server
   linkLists:
@@ -46,7 +46,7 @@ landingContent:
     - text: 安全注意事项
       url: windows/security-considerations-best-practices.md
     - text: 性能准则
-      url: windows/performance-guidelines-best-practices.md
+      url: ./windows/performance-guidelines-best-practices-checklist.md
     - text: 定价指南
       url: windows/pricing-guidance.md
 - title: 管理

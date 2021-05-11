@@ -9,13 +9,14 @@ metadata:
   ms.topic: landing-page
   author: vhorne
   ms.author: victorh
-  ms.date: 02/24/2021
-  ms.openlocfilehash: dfc3513dd98a6dc1feecd1f66efe34bc61c6a5d5
-  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.date: 05/03/2021
+  ms.custom: e2e-hybrid
+  ms.openlocfilehash: 92b3d0f54da7a4abc6aa78a2b7189442544f0ad1
+  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/03/2021
-  ms.locfileid: "101741372"
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "108745006"
 landingContent:
 - title: 了解 Azure 防火墙
   linkLists:
@@ -52,11 +53,11 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: 使用 Azure 门户进行部署
-      url: tutorial-firewall-deploy-portal.md
+      url: tutorial-firewall-deploy-portal-policy.md
     - text: 在混合网络中部署
-      url: tutorial-hybrid-portal.md
+      url: tutorial-hybrid-portal-policy.md
     - text: 筛选入站流量
-      url: tutorial-firewall-dnat.md
+      url: tutorial-firewall-dnat-policy.md
 - title: 与负载均衡器集成
   linkLists:
   - linkListType: how-to-guide

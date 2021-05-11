@@ -238,6 +238,8 @@
               href: spatial-io-supported-data-format-details.md
         - name: Web SDK 支持的浏览器
           href: supported-browsers.md
+        - name: 最佳做法
+          href: web-sdk-best-practices.md
     - name: 使用 Android SDK 进行开发
       items:
         - name: Android 地图控件入门
@@ -369,7 +371,7 @@
 - name: 资源
   items:
     - name: 支持和帮助选项
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/azure-maps/toc.json&bc=/azure/azure-maps/breadcrumb/toc.json
     - name: Azure IoT 服务
       items:
         - name: IoT 中心
