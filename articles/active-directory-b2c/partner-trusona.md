@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 03ed6d53908b1daf8e027ee0143cc06d803a24cd
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 99368da8b4018e93ad537e4722ffefd476e61291
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257817"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "99573681"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>将 Trusona 与 Azure Active Directory B2C 集成
 
@@ -91,7 +91,7 @@ Trusona 是一个独立软件供应商 (ISV) 提供程序，可通过启用无�
 
 3. 选择“标识提供者”。
 
-4. 选择 **添加** 。
+4. 选择“添加”。
 
 ### <a name="configure-an-identity-provider"></a>配置标识提供者  
 
@@ -99,11 +99,11 @@ Trusona 是一个独立软件供应商 (ISV) 提供程序，可通过启用无�
 
 2. 填写用于设置标识提供者的表单：  
 
-   | 属性 | 值  |
+   | Property | 值  |
    | :--- | :--- |
    | 元数据 URL | `https://gateway.trusona.net/oidc/.well-known/openid-configuration`|
    | 客户端 ID | 将从 Trusona 以电子邮件的形式发送给你 |
-   | 范围 | OpenID 配置文件电子邮件 |
+   | 作用域 | OpenID 配置文件电子邮件 |
    | 响应类型 | Id_token |
    | 响应模式  | Form_post |
 
@@ -113,7 +113,7 @@ Trusona 是一个独立软件供应商 (ISV) 提供程序，可通过启用无�
 
 5. 填写用于映射标识提供者的表单：
 
-   | 属性 | 值  |
+   | Property | 值  |
    | :--- | :--- |
    | UserID | Sub  |
    | 显示名称 | nickname |
@@ -160,8 +160,8 @@ Trusona 是一个独立软件供应商 (ISV) 提供程序，可通过启用无�
 
 ## <a name="next-steps"></a>后续步骤  
 
-有关更多信息，请参阅以下文章：
+有关更多信息，请查看以下文章：
 
 - [Azure AD B2C 中的自定义策略](custom-policy-overview.md)
 
-- [AAD B2C 中的自定义策略入门](tutorial-create-user-flows.md?pivots=b2c-custom-policy)
+- [AAD B2C 中的自定义策略入门](custom-policy-get-started.md?tabs=applications)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/12/2021
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 1b72f4ee82150a7aad2edf2cbbb1fabaf942a90b
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 17d08d0ffbb33d1aef35374dd5ead518b27e9ba0
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107925363"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108284951"
 ---
 | 资源 | 限制 |
 | --- | --- |
@@ -21,7 +21,7 @@ ms.locfileid: "107925363"
 | Azure 资源管理器中每个订阅的每个区域的 ExpressRoute 线路数 |10 |
 | 使用 ExpressRoute Standard 播发到 Azure 专用对等互连的最大路由数 |4,000 |
 | 使用 ExpressRoute Premium 附加产品播发到 Azure 专用对等互连的最大路由数 |10,000 |
-| 从 ExpressRoute 连接的 VNet 地址空间通过 Azure 专用对等互连播发的最大路由数 |200 |
+| 从 ExpressRoute 连接的 VNet 地址空间通过 Azure 专用对等互连播发的最大路由数 | 1,000 |
 | 使用 ExpressRoute Standard 播发到 Microsoft 对等互连的最大路由数 |200 |
 | 使用 ExpressRoute Premium 附加产品播发到 Microsoft 专用对等互连的最大路由数 |200 |
 | 链接到相同对等互连位置中相同虚拟网络的最大 ExpressRoute 线路数 |4 |
