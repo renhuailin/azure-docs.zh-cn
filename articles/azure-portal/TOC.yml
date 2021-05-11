@@ -11,7 +11,7 @@
 - name: 快速入门
   items:
     - name: 在门户中创建 VM
-      href: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
+      href: ../virtual-machines/windows/quick-create-portal.md?context=/azure/azure-portal/context/context
     - name: 创建仪表板
       items:
         - name: Azure CLI
@@ -21,13 +21,6 @@
         - name: ARM 模板
           displayName: Resource Manager
           href: quick-create-template.md
-- name: 概念
-  items:
-    - name: 使用 Azure 基于角色的访问控制共享仪表板
-      href: azure-portal-dashboard-share-access.md
-    - name: 以编程方式创建 Azure 仪表板
-      href: azure-portal-dashboards-create-programmatically.md
-      displayName: 'Azure CLI, az portal dashboard, az portal'
 - name: 操作指南
   items:
     - name: 管理 Azure 门户设置和首选项
@@ -38,10 +31,15 @@
       href: manage-filter-resource-views.md
     - name: 创建 Azure 仪表板
       items:
-        - name: 创建并共享 Azure 仪表板
+        - name: 创建 Azure 仪表板
           href: azure-portal-dashboards.md
+        - name: 共享 Azure 仪表板
+          href: azure-portal-dashboard-share-access.md
         - name: 使用自定义 markdown 磁贴
           href: azure-portal-markdown-tile.md
+        - name: 以编程方式创建 Azure 仪表板
+          href: azure-portal-dashboards-create-programmatically.md
+          displayName: 'Azure CLI, az portal dashboard, az portal'
     - name: Azure 门户“操作说明”视频系列
       href: azure-portal-video-series.md
     - name: 创建和管理支持请求
@@ -81,13 +79,13 @@
     - name: Azure 仪表板结构
       href: azure-portal-dashboards-structure.md
     - name: Azure CLI
-      href: /cli/azure/ext/portal/portal
+      href: /cli/azure/portal
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
 - name: 资源
   items:
-    - name: Azure 路线图
+    - name: Azure 更新
       href: 'https://azure.microsoft.com/updates/'
     - name: 利用 Microsoft Learn 掌握技能
       href: /learn/browse/?products=azure-portal

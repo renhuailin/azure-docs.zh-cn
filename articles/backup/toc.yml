@@ -212,6 +212,8 @@
               href: backup-azure-system-state.md
         - name: 还原
           items:
+            - name: 概述
+              href: about-restore-microsoft-azure-recovery-services.md
             - name: 将文件从 Azure 恢复到 Windows Server
               href: backup-azure-restore-windows-server.md
             - name: 还原卷中的所有文件
@@ -240,10 +242,18 @@
       items:
         - name: 概述
           href: blob-backup-overview.md
-        - name: 配置和管理
-          href: blob-backup-configure-manage.md
-        - name: 还原
-          href: blob-restore.md
+        - name: 通过 Azure 门户
+          items:
+            - name: 配置和管理
+              href: blob-backup-configure-manage.md
+            - name: 还原
+              href: blob-restore.md
+        - name: 使用 PowerShell
+          items:
+            - name: 备份
+              href: backup-blobs-storage-account-ps.md
+            - name: 还原
+              href: restore-blobs-storage-account-ps.md
     - name: Azure 文件共享备份
       items:
         - name: 概述
@@ -428,7 +438,7 @@
               href: backup-azure-arm-userestapi-restoreazurevms.md
             - name: 管理 Azure 备份作业
               href: backup-azure-arm-userestapi-managejobs.md
-        - name: Resource Manager 模板
+        - name: 资源管理器模板
           href: backup-rm-template-samples.md
     - name: 安全性
       items:
@@ -460,7 +470,7 @@
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: 安全基线
-          href: /security/benchmark/azure/baselines/backup-security-baseline
+          href: /security/benchmark/azure/baselines/backup-security-baseline?toc=/azure/backup/toc.json
     - name: 访问层
       items:
         - name: 存档层

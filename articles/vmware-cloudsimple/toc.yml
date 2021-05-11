@@ -152,6 +152,8 @@
               href: configure-server-vrealize-automation-endpoint.md
             - name: 将工作负荷 VM 迁移到私有云
               href: migrate-workloads.md
+            - name: 使用 Azure Data Box 迁移
+              href: migration-using-azure-data-box.md
             - name: 确保应用程序在 Azure 上的 VMware 中的高可用性
               href: ensuring-high-availability.md
             - name: 选择负载均衡解决方案
@@ -178,6 +180,10 @@
               href: on-premises-connection.md
             - name: 通过 ExpressRoute 进行的 Azure 虚拟网络连接
               href: azure-expressroute-connection.md
+    - name: 参考
+      items:
+        - name: Azure CLI
+          href: /cli/azure/csvmware
     - name: 发行说明
       items:
         - name: CloudSimple 2020 年 9 月更新

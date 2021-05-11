@@ -58,8 +58,6 @@
           href: users-close-account.md
         - name: 添加来宾用户
           href: ../external-identities/what-is-b2b.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
-        - name: 向来宾用户分配角色
-          href: ../external-identities/add-guest-to-role.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: 限制来宾用户访问权限
           href: users-restrict-guest-permissions.md
         - name: 动态组和来宾

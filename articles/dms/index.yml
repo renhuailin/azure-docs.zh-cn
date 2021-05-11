@@ -10,12 +10,12 @@ metadata:
   ms.service: dms
   ms.topic: landing-page
   ms.custom: seo-azure-migrate
-  ms.openlocfilehash: a154a3a6579ff3414502b16dcfe6d60748840a6c
-  ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+  ms.openlocfilehash: 51fbcc1431b77aca794df3b7142e239f9f09ed8f
+  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/05/2021
-  ms.locfileid: "102183294"
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "108766396"
 landingContent:
 - title: 关于 Azure 数据库迁移服务
   linkLists:
@@ -120,23 +120,15 @@ landingContent:
     - text: 数据库迁移指南
       url: https://datamigration.microsoft.com/
     - text: 数据迁移助手
-      url: /sql/dma/dma-overview?view=sql-server-2017
+      url: /sql/dma/dma-overview
     - text: SQL Server Migration Assistant
-      url: /sql/ssma/sql-server-migration-assistant?view=sql-server-2017
+      url: /sql/ssma/sql-server-migration-assistant
     - text: 数据库实验助手
-      url: /sql/dea/database-experimentation-assistant-overview?view=sql-server-2017
+      url: /sql/dea/database-experimentation-assistant-overview
     - text: 数据访问迁移工具包
       url: https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit
 - title: 将 Oracle 迁移到 Azure
   linkLists:
-  - linkListType: tutorial
-    links:
-    - text: 迁移到 Azure Database for PostgreSQL - 单一服务器 - 联机
-      url: tutorial-oracle-azure-postgresql-online.md
-  - linkListType: reference
-    links:
-    - text: 已知问题 - 联机迁移到 Azure Database for PostgreSQL - 单一服务器
-      url: known-issues-oracle-azure-postgresql-online.md
   - linkListType: video
     links:
     - text: 迁移到 SQL 数据库单一数据库

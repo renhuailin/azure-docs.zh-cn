@@ -34,7 +34,7 @@
     - name: 安全性
       items:
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/managed-applications-security-baseline?toc=/azure/azure-resource-manager/managed-applications/toc.json
 - name: 操作指南
   items:
     - name: 发布服务器

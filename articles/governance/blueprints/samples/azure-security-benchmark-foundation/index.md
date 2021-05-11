@@ -1,14 +1,14 @@
 ---
 title: Azure 安全基准基础蓝图示例概述
 description: Azure 安全基准基础蓝图示例的概述和体系结构。
-ms.date: 02/17/2020
+ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: ed497eff85e07b6a51939907bc751f3b40c99b30
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a60f70b1f3e9d810ccded8bbeee726ea950524e9
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741865"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739252"
 ---
 # <a name="overview-of-the-azure-security-benchmark-foundation-blueprint-sample"></a>Azure 安全基准基础蓝图示例的概述
 
@@ -35,7 +35,7 @@ Azure 安全基准基础蓝图示例提供一套基线基础结构模式来帮�
 - [Azure Bastion](../../../../bastion/bastion-overview.md)，用于无缝并安全连接到虚拟机，不需要公共 IP 地址、代理或特殊客户端软件。
 - [Azure VPN 网关](../../../../vpn-gateway/vpn-gateway-about-vpngateways.md)，用于通过公共 Internet 在 Azure 虚拟网络和本地位置之间启用加密流量。
 
-> [!NOTE] 
+> [!NOTE]
 > Azure 安全基准基础布设了用于工作负载的基础体系结构。 上面的体系结构图包括几种名义上的资源，以便展示潜在的子网用途。 你仍需要部署此基础体系结构上的工作负载。
 
 ## <a name="next-steps"></a>后续步骤

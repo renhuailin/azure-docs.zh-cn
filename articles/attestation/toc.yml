@@ -5,6 +5,7 @@
     - name: 关于 Microsoft Azure 证明
       href: overview.md
 - name: 快速入门
+  expanded: true
   items:
     - name: ARM 模板
       displayName: Resource Manager
@@ -56,7 +57,7 @@
     - name: Azure PowerShell
       href: /powershell/module/az.attestation/#attestation
     - name: Azure CLI
-      href: /cli/azure/ext/attestation/attestation
+      href: /cli/azure/attestation
     - name: 用于 Windows 的 Azure DCAP 库
       href: 'https://www.nuget.org/packages/Microsoft.Azure.DCAP/'
     - name: 用于 Linux 的 Azure DCAP 库

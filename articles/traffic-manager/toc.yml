@@ -48,7 +48,7 @@
     - name: 安全性
       items:
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/traffic-manager-security-baseline?toc=/azure/traffic-manager/toc.json
     - name: 嵌套式流量管理器配置文件
       href: traffic-manager-nested-profiles.md
     - name: 终结点类型

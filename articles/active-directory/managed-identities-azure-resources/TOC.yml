@@ -94,8 +94,6 @@
           href: how-to-use-vm-sign-in.md
         - name: 与 Azure SDK 配合使用
           href: how-to-use-vm-sdk.md
-        - name: 停止使用 VM 扩展并开始使用 Azure IMDS
-          href: howto-migrate-vm-extension.md
     - name: 将托管标识访问权限分配给另一 Azure 资源
       items:
         - name: 门户
@@ -134,7 +132,7 @@
       href: /dotnet/api/overview/azure/identity-readme
     - name: Java
       href: /java/api/overview/azure/identity-readme
-    - name: Javascript
+    - name: JavaScript
       href: /javascript/api/overview/azure/identity-readme
     - name: Python
       href: /python/api/overview/azure/identity-readme
@@ -142,7 +140,9 @@
       href: 'https://golang.org/doc/'
 - name: 资源
   items:
-    - name: 反馈和已知问题
+    - name: 常见问题
+      href: managed-identities-faq.md
+    - name: 已知问题
       href: known-issues.md
     - name: 支持 Azure 资源托管标识的 Azure 服务
       href: services-support-managed-identities.md

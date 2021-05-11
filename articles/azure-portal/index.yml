@@ -7,13 +7,13 @@ metadata:
   services: Azure portal
   ms.topic: landing-page
   ms.collection: collection
-  ms.date: 08/05/2020
-  ms.openlocfilehash: c1617f295a101ae645743d60fdbe82a09d936ea2
-  ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+  ms.date: 03/15/2021
+  ms.openlocfilehash: 7b7727d1fdf550b3ab3341bd0dc852f343b00791
+  ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/07/2020
-  ms.locfileid: "96749005"
+  ms.lasthandoff: 03/16/2021
+  ms.locfileid: "103563906"
 landingContent:
 - title: 关于 Azure 门户
   linkLists:
@@ -21,18 +21,44 @@ landingContent:
     links:
     - text: 什么是 Azure 门户？
       url: azure-portal-overview.md
+    - text: 通过 Azure 快速入门中心上手使用
+      url: azure-portal-quickstart-center.md
     - text: 支持的浏览器和设备
       url: azure-portal-supported-browsers-devices.md
-- title: 自定义 Azure 门户
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 在门户中创建 VM
+      url: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
+    - text: 创建仪表板 - Azure CLI
+      url: quickstart-portal-dashboard-azure-cli.md
+    - text: 创建仪表板 - Azure PowerShell
+      url: quickstart-portal-dashboard-powershell.md
+    - text: 创建仪表板 - ARM 模板
+      url: quick-create-template.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure 门户“操作说明”视频系列
+      url: azure-portal-video-series.md
+- title: 创建和管理支持请求
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 设置门户首选项
-      url: set-preferences.md
-    - text: 创建并共享自定义仪表板
-      url: azure-portal-dashboards.md
-    - text: 管理收藏夹
-      url: azure-portal-add-remove-sort-favorites.md
+    - text: 创建 Azure 支持请求
+      url: supportability/how-to-create-azure-support-request.md
+    - text: 管理 Azure 支持请求
+      url: supportability/how-to-manage-azure-support-request.md
+- title: 使用辅助功能选项
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 键盘快捷键
+      url: azure-portal-keyboard-shortcuts.md
+  - linkListType: how-to-guide
+    links:
+    - text: 启用高对比度
+      url: set-preferences.md#choose-a-theme-or-enable-high-contrast
 - title: 管理对 Azure 门户的访问
   linkLists:
   - linkListType: reference
@@ -45,39 +71,17 @@ landingContent:
     links:
     - text: 在 Azure 中管理资源
       url: /learn/paths/manage-resources-in-azure/
-    - text: 使用 Azure 基于角色的访问控制 (Azure RBAC) 保护 Azure 资源
-      url: /learn//modules/secure-azure-resources-with-rbac/
-- title: 入门
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: 通过 Azure 快速入门中心上手使用
-      url: azure-portal-quickstart-center.md
-  - linkListType: how-to-guide
-    links:
-    - text: Azure 门户“操作说明”视频系列
-      url: azure-portal-video-series.md
-  - linkListType: learn
-    links:
-    - text: Azure 基础
-      url: /learn/paths/azure-fundamentals/
-    - text: 云概念 - 云计算的原则
-      url: /learn/modules/principles-cloud-computing/
-- title: 使用辅助功能选项
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: 键盘快捷键
-      url: azure-portal-keyboard-shortcuts.md
-  - linkListType: how-to-guide
-    links:
-    - text: 启用高对比度
-      url: set-preferences.md#choose-a-theme-or-enable-high-contrast
-- title: 创建和管理支持请求
+    - text: 使用 Azure 基于角色的访问控制 (Azure RBAC) 保护资源
+      url: /learn/modules/secure-azure-resources-with-rbac
+- title: 自定义 Azure 门户
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 创建 Azure 支持请求
-      url: ../azure-portal/supportability/how-to-create-azure-support-request.md
-    - text: 排查区域或 SKU 订阅问题
-      url: ../azure-portal/supportability/sku-series-unavailable.md
+    - text: 管理 Azure 门户设置和首选项
+      url: set-preferences.md
+    - text: 查看和筛选资源信息
+      url: manage-filter-resource-views.md
+    - text: 创建仪表板 - Azure 门户 UI
+      url: azure-portal-dashboards.md
+    - text: 对收藏夹执行添加、删除和排序操作
+      url: azure-portal-add-remove-sort-favorites.md

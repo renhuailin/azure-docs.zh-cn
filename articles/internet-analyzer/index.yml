@@ -10,12 +10,12 @@ metadata:
   author: megan-beatty
   ms.author: mebeatty
   ms.date: 10/16/2019
-  ms.openlocfilehash: 31e2ef7a9f3b41de18ce0989a096977b22bd9b26
-  ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+  ms.openlocfilehash: ac69e359187a7560960ed81a86a8ea53b050248a
+  ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/05/2021
-  ms.locfileid: "102200048"
+  ms.lasthandoff: 04/22/2021
+  ms.locfileid: "107870306"
 landingContent:
 - title: 关于 Internet 分析器
   linkLists:
@@ -48,4 +48,4 @@ landingContent:
     - text: Internet 分析器故障排除
       url: troubleshoot.md
     - text: Internet 分析器 CLI 参考
-      url: /cli/azure/ext/internet-analyzer/internet-analyzer
+      url: /cli/azure/internet-analyzer

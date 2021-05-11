@@ -10,12 +10,12 @@ metadata:
   author: rohinkoul
   ms.author: rohink
   ms.date: 09/20/2019
-  ms.openlocfilehash: 57d6dfe02a92da48525626719b31bab5b8d1ec22
-  ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+  ms.openlocfilehash: 7276b26944b7eeca90bdc74fa40507688d591c05
+  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/20/2020
-  ms.locfileid: "94968479"
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "108765267"
 landingContent:
 - title: 了解 Azure DNS
   linkLists:
@@ -46,7 +46,7 @@ landingContent:
     - text: Azure DNS 专用区域方案
       url: private-dns-scenarios.md
     - text: Azure 专用 DNS 常见问题解答
-      url: dns-faq-private.md
+      url: dns-faq-private.yml
   - linkListType: quickstart
     links:
     - text: 使用 Azure 门户创建 Azure DNS 专用区域
