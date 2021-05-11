@@ -9,12 +9,12 @@ ms.date: 03/29/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 868b0bc3e09768a26b895e35306de574e4bfc444
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: e57f385dce6446ebb3aa2df0ceb48f97a7e0c2f4
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108287583"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877870"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>通过最新的 API 以编程方式创建 Azure 企业协议订阅
 
@@ -32,7 +32,7 @@ ms.locfileid: "108287583"
 
 * 注册的企业管理员可以[将你设为帐户所有者](https://ea.azure.com/helpdocs/addNewAccount)（需要登录），这使得你成为注册帐户的所有者。
 * 注册帐户的现有所有者可以[向你授予访问权限](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)。 类似地，若要使用服务主体来创建 EA 订阅，则必须[向该服务主体授予创建订阅的权限](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)。  
-    如果使用 SPN 来创建订阅，则使用 [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0&preserve-view=true ) 或 [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true#az_ad_sp_list) 将 Azure AD 应用程序注册的 ObjectId 用作服务主体 ObjectId。
+    如果使用 SPN 来创建订阅，则使用 [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) 或 [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list) 将 Azure AD 应用程序注册的 ObjectId 用作服务主体 ObjectId。
   > [!NOTE]
   > 确保使用正确的 API 版本为注册帐户授予所有者权限。 对于本文以及其中所述的 API，请使用 [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) API。 如果要迁移到使用较新的 API，则必须使用 [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) 再次授予所有者权限。 以前使用 [2015-07-01 版本](grant-access-to-create-subscription.md)进行的配置不会自动转换为使用较新的 API。
 

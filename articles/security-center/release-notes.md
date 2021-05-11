@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 04/20/2021
+ms.date: 04/27/2021
 ms.author: memildin
-ms.openlocfilehash: 92138b0253d28c8bf2617ee7b17474f30ac5cafe
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 35873711753400132f47933f009365cc6383429b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751196"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123476"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -31,11 +31,14 @@ ms.locfileid: "107751196"
 - [最近拉取的容器注册表映像现在将每周重新扫描（正式发布）](#recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability)
 - [使用 Azure Defender for Kubernetes 保护混合和多云 Kubernetes 部署（预览版）](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview)
 - [关于启用适用于 DNS 和资源管理器的 Azure Defender 的建议（预览版）](#recommendations-to-enable-azure-defender-for-dns-and-resource-manager-preview)
+- [添加了三个监管合规性标准：Azure CIS 1.3.0、CMMC 级别 3 和限制性的新西兰 ISM](#three-regulatory-compliance-standards-added-azure-cis-130-cmmc-level-3-and-new-zealand-ism-restricted)
 - [与来宾配置相关的四个新建议（预览版）](#four-new-recommendations-related-to-guest-configuration-preview)
 - [CMK 建议移动到最佳做法安全控制](#cmk-recommendations-moved-to-best-practices-security-control)
 - [11 Azure Defender 警报已弃用](#11-azure-defender-alerts-deprecated)
 - [“应用系统更新”安全控制中的两个建议已弃用](#two-recommendations-from-apply-system-updates-security-control-were-deprecated)
 - [从 Azure Defender 仪表板中删除了适用于计算机上的 SQL 的 Azure Defender 磁贴](#azure-defender-for-sql-on-machine-tile-removed-from-azure-defender-dashboard)
+- [21 条建议在不同安全控件之间进行了调动](#21-recommendations-moved-between-security-controls)
+
 
 ### <a name="recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability"></a>最近拉取的容器注册表映像现在将每周重新扫描（正式发布）
 
@@ -80,6 +83,24 @@ Azure 安全中心、Azure Defender 和启用了 Azure Arc 的 Kubernetes 之间
 
 > [!TIP]
 > 预览版建议不会显示资源运行不正常，并且在计算安全功能分数时不会包含这些建议。 请尽量修正这些建议，以便在预览期结束之后，借助这些建议提高安全功能分数。 如需详细了解如何响应这些建议，请参阅[修正 Azure 安全中心的建议](security-center-remediate-recommendations.md)。
+
+
+### <a name="three-regulatory-compliance-standards-added-azure-cis-130-cmmc-level-3-and-new-zealand-ism-restricted"></a>添加了三个监管合规性标准：Azure CIS 1.3.0、CMMC 级别 3 和限制性的新西兰 ISM
+
+我们添加了适用于 Azure 安全中心的三个标准。 使用监管合规性仪表板，现在可以根据以下标准来跟踪合规性：
+
+- [CIS Microsoft Azure 基础基准检验 1.3.0](../governance/policy/samples/cis-azure-1-3-0.md)
+- [CMMC 级别 3](../governance/policy/samples/cmmc-l3.md)
+- [受限于新西兰 ISM](../governance/policy/samples/new-zealand-ism.md)
+
+可以按照[在监管合规性仪表板中自定义标准集](update-regulatory-compliance-packages.md)中所述，将这些标准分配给订阅。
+
+:::image type="content" source="media/release-notes/additional-regulatory-compliance-standards.png" alt-text="添加了三个标准，用于 Azure 安全中心的监管合规性仪表板。" lightbox="media/release-notes/additional-regulatory-compliance-standards.png":::
+
+了解详细信息，请参阅：
+- [在监管合规仪表板中自定义标准集](update-regulatory-compliance-packages.md)
+- [教程：提高合规性](security-center-compliance-dashboard.md)
+- [常见问题解答 - 法规合规性仪表板](security-center-compliance-dashboard.md#faq---regulatory-compliance-dashboard)
 
 ### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>与来宾配置相关的四个新建议（预览版）
 
@@ -160,6 +181,19 @@ Azure 安全中心的安全控制是相关安全建议的逻辑组，反映了�
 ### <a name="azure-defender-for-sql-on-machine-tile-removed-from-azure-defender-dashboard"></a>从 Azure Defender 仪表板中删除了适用于计算机上的 SQL 的 Azure Defender 磁贴
 
 Azure Defender 仪表板的覆盖区包括对应于环境相关 Azure Defender 计划的磁贴。 由于报告受保护和未受保护资源数量时出现问题，我们决定在解决此问题前暂时删除适用于计算机上的 SQL 的 Azure Defender 的资源覆盖状态。
+
+
+### <a name="21-recommendations-moved-between-security-controls"></a>21 条建议在不同安全控件之间进行了调动 
+
+以下建议已移动到其他的安全控件。 安全控件是相关安全建议的逻辑组，反映了你易受攻击的攻击面。 这一调动确保了每个建议都处于最适当的控制之下，以满足其目标。
+
+请在[安全控件及其建议](secure-score-security-controls.md#security-controls-and-their-recommendations)中了解每个安全控件中的建议。
+
+|建议 |更改和影响  |
+|---------|---------|
+|应对 SQL Server 启用漏洞评估<br>应对 SQL 托管实例启用漏洞评估<br>应立即修正 SQL 数据库的漏洞<br>应修正 VM 中的 SQL 数据库漏洞     |从“修正漏洞”（得 6 分）<br>变为“修正安全配置“（得 4 分）。<br>根据你的环境，这些建议会减少对评分的影响。|
+|应该为你的订阅分配了多个所有者<br>自动化帐户变量应进行加密<br> IoT 设备 - 经审核的进程已停止发送事件<br> IoT 设备 - 操作系统基线验证失败<br> IoT 设备 - 需要进行 TLS 加密套件升级<br> IoT 设备 - 打开设备上的端口<br> IoT 设备 - 在其中一个链中找到了宽容防火墙策略<br> IoT 设备 - 在输入链中找到了宽容防火墙规则<br> IoT 设备 - 在输出链中找到了宽容防火墙规则<br>应启用 IoT 中心的诊断日志<br> IoT 设备 - 代理正在发送未充分利用的消息<br>IoT 设备 - 默认 IP 筛选策略应为“拒绝”<br>IoT 设备 - IP 筛选器规则为“大范围 IP”<br>IoT 设备 - 应调整代理消息间隔和大小<br>IoT 设备 - 完全相同的身份验证凭据<br>IoT 设备 - 经审核的进程停止发送事件<br>IoT 设备 - 应修复操作系统 (OS) 基线配置|移到 **实施安全最佳做法**。<br>如果某条建议移到“实施安全最佳做法”控制（不得分），则这条建议不再影响安全分数。|
+|||
 
 
 ## <a name="march-2021"></a>2021 年 3 月
@@ -284,7 +318,7 @@ Azure Defender 仪表板的覆盖区包括对应于环境相关 Azure Defender �
 此页面现在显示：
 
 1. 每个安全控制措施的最高分数和当前分数。
-1. 图标（代替标记），如“快速修复”和“预览” 。
+1. 图标（代替标记），如“修复”和“预览” 。
 1. 一个新列，显示与每条建议相关的[策略计划](security-policy-concept.md)，在禁用“按控制措施分组”时显示。
 
 :::image type="content" source="media/release-notes/recommendations-grid-enhancements.png" alt-text="Azure 安全中心的建议页的功能增强 - 2021 年 3 月" lightbox="media/release-notes/recommendations-grid-enhancements.png":::
@@ -430,7 +464,7 @@ Azure 安全基准是由 Microsoft 创作的特定于 Azure 的一组准则，�
 
 若要了解详细信息，请参阅以下页面：
 
-- [详细了解 Azure 安全基准](https://docs.microsoft.com/security/benchmark/azure/introduction)
+- [详细了解 Azure 安全基准](/security/benchmark/azure/introduction)
 - [在监管合规仪表板中自定义标准集](update-regulatory-compliance-packages.md)
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga"></a>本地和多云计算机的漏洞评估已发布正式发布版 (GA)
@@ -545,7 +579,7 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 
 ### <a name="35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>添加了 35 条预览建议，以扩大 Azure 安全基准的覆盖范围
 
-[Azure 安全基准](https://docs.microsoft.com/security/benchmark/azure/introduction)是 Azure 安全中心的默认策略计划。 
+[Azure 安全基准](/security/benchmark/azure/introduction)是 Azure 安全中心的默认策略计划。 
 
 为扩大此基准的覆盖范围，安全中心已添加下列 35 条预览建议。
 
@@ -563,7 +597,7 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 
 相关链接：
 
-- [详细了解 Azure 安全基准](https://docs.microsoft.com/security/benchmark/azure/introduction)
+- [详细了解 Azure 安全基准](/security/benchmark/azure/introduction)
 - [详细了解 Azure Database for MariaDB](../mariadb/overview.md)
 - [详细了解 Azure Database for MySQL](../mysql/overview.md)
 - [详细了解 Azure Database for PostgreSQL](../postgresql/overview.md)
@@ -743,13 +777,13 @@ Azure 安全中心会监视所有已连接的资源并生成安全建议。 可�
 
 - 环境 - 查看有关 AWS、GCP 或 Azure 资源（或任何组合）的建议
 - 严重性 - 根据安全中心设置的严重性分类来查看建议
-- 响应操作 - 根据安全中心响应选项的可用性来查看建议：快速修复、拒绝和强制实施
+- **响应操作** - 根据安全中心响应选项的可用性来查看建议：修复、拒绝和强制实施
 
     > [!TIP]
     > “响应操作”筛选器替代了“可用的快速修复(是/否)”筛选器。 
     > 
     > 请详细了解每个响应选项：
-    > - [快速修复修正](security-center-remediate-recommendations.md#quick-fix-remediation)
+    > - [修复按钮](security-center-remediate-recommendations.md#fix-button)
     > - [使用“强制执行/拒绝”建议防止错误配置](prevent-misconfigurations.md)
 
 :::image type="content" source="./media/release-notes/added-recommendations-filters.png" alt-text="建议会按安全控制分组" lightbox="./media/release-notes/added-recommendations-filters.png":::
@@ -789,7 +823,7 @@ Azure 安全中心会监视所有已连接的资源并生成安全建议。 可�
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>添加了 29 条预览建议，以扩大 Azure 安全基准的覆盖范围
 
-Azure 安全基准是 Microsoft 制定的一组 Azure 专属准则，适合基于常见合规框架的安全性与合规性最佳做法。 [详细了解 Azure 安全基准](https://docs.microsoft.com/security/benchmark/azure/introduction)。
+Azure 安全基准是 Microsoft 制定的一组 Azure 专属准则，适合基于常见合规框架的安全性与合规性最佳做法。 [详细了解 Azure 安全基准](/security/benchmark/azure/introduction)。
 
 已在安全中心添加下列 29 条预览建议，以扩大此基准的覆盖范围。
 
@@ -806,7 +840,7 @@ Azure 安全基准是 Microsoft 制定的一组 Azure 专属准则，适合基�
 
 相关链接：
 
-- [详细了解 Azure 安全基准](https://docs.microsoft.com/security/benchmark/azure/introduction)
+- [详细了解 Azure 安全基准](/security/benchmark/azure/introduction)
 - [详细了解 Azure API 应用](../app-service/app-service-web-tutorial-rest-api.md)
 - [详细了解 Azure 函数应用](../azure-functions/functions-overview.md)
 - [详细了解 Azure Web 应用](../app-service/overview.md)

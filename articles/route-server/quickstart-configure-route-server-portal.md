@@ -7,16 +7,18 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/03/2021
 ms.author: duau
-ms.openlocfilehash: f76c48af4f5ebc8013daad457f9973cf7792c7c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e7572f5f39655cd6fae8a6528cacd2e074a002b
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102547980"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950399"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建并配置路由服务器
 
 本文可帮助你使用 Azure 门户将 Azure 路由服务器配置为与虚拟网络中的网络虚拟设备 (NVA) 对等互连。 Azure 路由服务器将会从 NVA 获知路由，并将这些路由配置到虚拟网络中的虚拟机上。 Azure 路由服务器还会将虚拟网络路由播发到 NVA。 有关详细信息，请阅读 [Azure 路由服务器](overview.md)。
+
+:::image type="content" source="media/quickstart-configure-route-server-portal/environment-diagram.png" alt-text="使用 Azure 门户的路由服务器部署环境示意图。" border="false":::
 
 > [!IMPORTANT]
 > Azure 路由服务器（预览版）目前为公共预览版状态。

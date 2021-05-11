@@ -5,12 +5,13 @@ author: mumian
 ms.date: 03/25/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8c7ab1038cbe62d6f15faf56796193df12b38546
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0149858e4e63e4110af2a18a31b9c66a99ff79c9
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568760"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318579"
 ---
 # <a name="tutorial-add-modules-to-azure-resource-manager-bicep-file"></a>教程：将模块添加到 Azure 资源管理器 Bicep 文件
 
@@ -111,8 +112,8 @@ az deployment group create \
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左侧菜单中选择“资源组”。 
-1. 可以看到在本教程中部署的两个新资源组。
-1. 选择任一资源组，查看部署的资源。 请注意，这些资源与我们在参数文件中为该环境指定的值匹配。
+1. 你会看到在本教程中部署的新资源组。
+1. 选择该资源组，查看部署的资源。 请注意，这些资源与我们在模板文件中指定的值匹配。
 
 ## <a name="clean-up-resources"></a>清理资源
 

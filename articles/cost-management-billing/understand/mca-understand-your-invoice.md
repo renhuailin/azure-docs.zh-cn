@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 04/08/2021
 ms.author: banders
-ms.openlocfilehash: 996c974473c53833dd26abae2fb61585999f33b4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ff53131f3078b33b7e7d853c1fca891b0b86d792
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050437"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484586"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Microsoft 客户协议发票中的术语
 
@@ -29,6 +29,18 @@ ms.locfileid: "102050437"
 ## <a name="billing-period"></a>计费周期
 
 每月开票一次。 若要了解你在每月的哪一天接收发票，可在 [Azure 门户](https://portal.azure.com/)的计费对象信息属性下查看“发票日期”。 在计费周期结束和发票日期之间产生的费用包括在下月的发票中，因为它们属于下一计费周期。 每个发票的计费周期开始日期和结束日期列在发票 PDF 中的“计费摘要”上方。
+
+如果要从 EA 迁移到 Microsoft 客户协议，请继续接收 EA 的发票，直到迁移日期到期。 迁移后，会在每月的第五天生成 Microsoft 客户协议的新发票。 第一张发票显示从迁移日期开始的部分费用。 之后每月生成一次发票，其中显示每个月的所有费用。
+
+### <a name="changes-for-pay-as-you-go-subscriptions"></a>即用即付订阅的更改
+
+在转换、转移或取消订阅时，最后生成的发票会包含上一个计费周期和新的不完整计费周期的费用。
+
+例如：
+
+假设即用即付订阅计费周期是从本月 8 号到次月 7 号。 此订阅已于 11 月 16 日转移到 Microsoft 客户协议。 则上一张即用即付发票包含 2020 年 10 月 8 日到 2020 年 11 月 7 日的费用。 它还包含 Microsoft 客户协议的新的部分计费周期（从 2020 年 11 月 8 日到 2020 年 11 月 16 日）的费用。 下面是一个示例插图。
+
+:::image type="content" source="./media/mca-understand-your-invoice/last-invoice-billing-cycle.png" alt-text="显示最后一个计费周期的发票图像示例。" lightbox="./media/mca-understand-your-invoice/last-invoice-billing-cycle.png" :::
 
 ## <a name="invoice-terms-and-descriptions"></a>发票的术语和说明
 

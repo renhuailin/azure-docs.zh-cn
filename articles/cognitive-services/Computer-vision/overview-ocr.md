@@ -11,18 +11,16 @@ ms.topic: overview
 ms.date: 03/29/2021
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: da4ada8b505c747d24738e175a1701b5ea73b4e4
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 9eb35c892db113807d3c401306485a836a1d970b
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536743"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107947422"
 ---
 # <a name="what-is-optical-character-recognition"></a>什么是光学字符识别？
 
-利用光学字符识别 (OCR) 服务可以从图像中提取印刷体文本或手写文本（如街道符号和产品的照片），还可以从发票、帐单、财务报表、文章等文档中提取。 它使用基于深度学习的模型，并处理各种表面和背景上的文本，
-
-这些 OCR API 支持提取[多种语言](./language-support.md)的印刷体文本。 按[快速入门](./quickstarts-sdk/client-library.md)的说明开始操作。
+利用光学字符识别 (OCR)，你可以从图像（如街道符号和产品的照片）和文档（发票、帐单、财务报表、文章等）中提取印刷体文本或手写文本。 Microsoft 的 OCR 技术支持提取[多种语言](./language-support.md)的印刷体文本。 按[快速入门](./quickstarts-sdk/client-library.md)的说明开始操作。
 
 ![OCR 演示](./Images/ocr-demo.gif)
 
@@ -32,8 +30,11 @@ ms.locfileid: "107536743"
 <!--* The [conceptual articles](Vision-API-How-to-Topics/call-read-api.md) provide in-depth explanations of the service's functionality and features.
 * The [tutorials](./tutorials/storage-lab-tutorial.md) are longer guides that show you how to use this service as a component in broader business solutions. -->
 
-## <a name="supported-languages"></a>支持的语言
-OCR API 总共支持 73 种语言的印刷体文本。 请参阅 [OCR 支持的语言](./language-support.md#optical-character-recognition-ocr)完整列表。 手写体 OCR 仅支持英语。
+## <a name="read-api"></a>读取 API 
+
+计算机视觉[读取 API](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005) 是 Azure 最新的 OCR 技术（[了解新功能](./whats-new.md)），可从图像和多页 PDF 文档中提取印刷文本（多种语言）、手写文本（仅英语）、数字和货币符号。 该技术经过优化，可以从多文本图像中提取文本，也可从包含混合语言的多页 PDF 文档中提取文本。 它支持检测同一图像或文档中的印刷文本和手写文本。
+
+![OCR 如何将图像和文档转换为带有提取文本的结构化输出](./Images/how-ocr-works.svg)
 
 ## <a name="input-requirements"></a>输入要求
 
@@ -43,13 +44,10 @@ OCR API 总共支持 73 种语言的印刷体文本。 请参阅 [OCR 支持的�
 * 对于 PDF 和 TIFF 文件，最多处理 2000 个页面（对于免费层，只处理前两个页面）。
 * 文件大小必须小于 50 MB（对于免费层，则为 4 MB），且尺寸介于 50 x 50 和 10000 x 10000 像素之间。 
 
-## <a name="read-api"></a>读取 API 
+## <a name="supported-languages"></a>支持的语言
+对于印刷体文本，读取 API 总共支持 73 种语言。 请参阅 [OCR 支持的语言](./language-support.md#optical-character-recognition-ocr)完整列表。 手写体 OCR 仅支持英语。
 
-计算机视觉[读取 API](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005) 是 Azure 最新的 OCR 技术（[了解新功能](./whats-new.md)），可从图像和多页 PDF 文档中提取印刷文本（多种语言）、手写文本（仅英语）、数字和货币符号。 该技术经过优化，可以从多文本图像中提取文本，也可从包含混合语言的多页 PDF 文档中提取文本。 它支持检测同一图像或文档中的印刷文本和手写文本。
-
-![OCR 如何将图像和文档转换为带有提取文本的结构化输出](./Images/how-ocr-works.svg)
-
-### <a name="key-features"></a>主要功能
+## <a name="key-features"></a>主要功能
 
 读取 API 包括以下功能。 
 

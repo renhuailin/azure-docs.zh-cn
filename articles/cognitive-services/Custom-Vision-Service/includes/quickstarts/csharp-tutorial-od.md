@@ -3,12 +3,12 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 09/15/2020
-ms.openlocfilehash: c28cfbbdff9e3fbf6cfe8d53ab7529c2ce9bd96e
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 5bd83dce0fa7154d14c22b1d1076e3bd1c7bcc76
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725116"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107931683"
 ---
 适用于 .NET 的自定义视觉客户端库入门。 请按照以下步骤安装包并试用用于生成对象检测模型的示例代码。 你将创建一个项目，添加标签，针对示例图像训练该项目，并使用该项目的预测终结点 URL 以编程方式对其进行测试。 使用此示例作为模板来构建你自己的图像识别应用。
 
@@ -172,7 +172,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.CustomVision.Predict
 
 ## <a name="publish-the-current-iteration"></a>发布当前迭代
 
-此方法使模型的当前迭代可用于查询。 可以将模型名称用作发送预测请求的引用。 需要为 `predictionResourceId` 输入自己的值。 可以在 Azure 门户中资源的“概述”选项卡上找到列为“订阅 ID”的预测资源 ID 。
+此方法使模型的当前迭代可用于查询。 可以将模型名称用作发送预测请求的引用。 需要为 `predictionResourceId` 输入自己的值。 可以在 Azure 门户中资源的“属性”选项卡上找到列为“资源 ID”的预测资源 ID 。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ObjectDetection/Program.cs?name=snippet_publish)]
 

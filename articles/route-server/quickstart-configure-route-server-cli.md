@@ -7,16 +7,18 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: e9c583db7493afc04b2c66553801f62d364b0a80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dce3dd10843bc6abf2878600ad1aba17a4318c80
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419602"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108017930"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-cli"></a>快速入门：使用 Azure CLI 创建并配置路由服务器 
 
 本文可帮助你使用 Azure CLI 将 Azure 路由服务器配置为与虚拟网络中的网络虚拟设备 (NVA) 对等互连。 Azure 路由服务器将会从 NVA 获知路由，并将这些路由配置到虚拟网络中的虚拟机上。 它还会将虚拟网络路由播发到 NVA。 有关详细信息，请阅读 [Azure 路由服务器](overview.md)。
+
+:::image type="content" source="media/quickstart-configure-route-server-portal/environment-diagram.png" alt-text="使用 Azure CLI 的路由服务器部署环境示意图。" border="false":::
 
 > [!IMPORTANT]
 > Azure 路由服务器（预览版）目前为公共预览版状态。
@@ -94,7 +96,7 @@ az network routeserver create -n "myRouteServer" -g "RouteServerRG" --hosted-sub
 
 ```azurecli-interactive 
 
-az network routeserver peering create --routeserver-name "myRouteServer" -g "RouteServerRG" --peer-ip "nva_ip" --peer-asn "nva_asn" -n "NVA1_name" 
+az network routeserver peering create --routeserver "myRouteServer" -g "RouteServerRG" --peer-ip "nva_ip" --peer-asn "nva_asn" -n "NVA1_name" 
 
 ``` 
 
@@ -104,7 +106,7 @@ az network routeserver peering create --routeserver-name "myRouteServer" -g "Rou
 
 ```azurecli-interactive 
 
-az network routeserver peering create --routeserver-name "myRouteServer" -g "RouteServerRG" --peer-ip "nva_ip" --peer-asn "nva_asn" -n "NVA2_name" 
+az network routeserver peering create --routeserver "myRouteServer" -g "RouteServerRG" --peer-ip "nva_ip" --peer-asn "nva_asn" -n "NVA2_name" 
 ``` 
 
 ## <a name="complete-the-configuration-on-the-nva"></a>在 NVA 上完成配置 
@@ -169,7 +171,7 @@ az network routeserver peering list-learned-routes -g RouteServerRG --vrouter-na
 1. 使用此命令删除 Azure 路由服务器与 NVA 之间的 BGP 对等互连：
 
 ```azurecli-interactive
-az network routeserver peering delete --routeserver-name "myRouteServer" -g "RouteServerRG" -n "NVA2_name" 
+az network routeserver peering delete --routeserver "myRouteServer" -g "RouteServerRG" -n "NVA2_name" 
 ``` 
 
 2. 使用此命令删除路由服务器： 

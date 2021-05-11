@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: fc92543f5954cda9db42e53cab18db1d8f3366c3
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 73971d4e7b7e05a03ed0490ff013977e57721b8d
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107284198"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896614"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>有关 Azure 空间定位点的常见问题解答
 
@@ -88,7 +88,7 @@ Azure 空间定位点遵守 [Azure 服务协议条款](https://go.microsoft.com/
 
 **问：Azure 空间定位点在哪些区域可用？**
 
-**答:** 目前，美国西部 2、美国东部、美国东部 2、美国中南部、西欧、北欧、英国南部和澳大利亚东部提供 Azure 空间定位点。 今后会在更多的区域中提供该服务。
+**答：** 目前，美国西部 2、美国东部、美国东部 2、美国中南部、西欧、北欧、英国南部、澳大利亚东部、东南亚和韩国中部提供 Azure 空间定位点。 今后会在更多的区域中提供该服务。
 
 这意味着为此服务提供支持的计算和存储处于这些区域中。 也就是说，对于客户端所处的位置没有限制。 
 

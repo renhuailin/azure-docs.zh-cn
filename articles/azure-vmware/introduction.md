@@ -3,12 +3,12 @@ title: 简介
 description: 了解使用 Azure VMware 解决方案在 Azure 中部署和管理基于 VMware 的工作负载的功能和优势。 Azure VMware 解决方案 SLA 保证 Azure VMware 管理工具（vCenter Server 和 NSX 管理器）将在至少 99.9% 的时间内可用。
 ms.topic: overview
 ms.date: 04/20/2021
-ms.openlocfilehash: 9471aa2e427d28e0b8211dc8b25b2e61a4bfa8c4
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 8a75038d9552e62b1bc67265ff2965fea9d8b8d6
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752635"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950867"
 ---
 # <a name="what-is-azure-vmware-solution"></a>什么是 Azure VMware 解决方案？
 
@@ -40,7 +40,7 @@ Azure VMware 解决方案私有云和群集是从裸机超融合 Azure 基础设
 
 ## <a name="host-and-software-lifecycle-maintenance"></a>主机和软件生命周期维护
 
-定期升级 Azure VMware 解决方案私有云和 VMware 软件可确保在私有云中运行的安全性、稳定性和功能集是最新的。 有关详细信息，请参阅[私有云更新和升级](concepts-upgrades.md)。
+定期升级 Azure VMware 解决方案私有云和 VMware 软件可确保在私有云中运行的安全性、稳定性和功能集是最新的。 有关详细信息，请参阅[主机维护和生命周期管理](concepts-private-clouds-clusters.md#host-maintenance-and-lifecycle-management)。
 
 ## <a name="monitoring-your-private-cloud"></a>监视私有云
 

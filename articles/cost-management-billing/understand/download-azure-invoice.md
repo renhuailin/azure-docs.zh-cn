@@ -1,20 +1,21 @@
 ---
 title: 查看和下载 Azure 发票
-description: 介绍如何查看和下载 Azure 发票。
+description: 了解如何查看和下载 Azure 发票。 可以在 Azure 门户中下载发票，或者让我们通过电子邮件发送发票。
 keywords: 帐单发票, 发票下载, azure 发票, azure 使用情况
 author: bandersmsft
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 4e77b167f00e2cfa3838439143c6074bd4122976
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 37ce1a292b6ff2efe0abecdb2ab934f096689f87
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191234"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "105560547"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>查看和下载 Microsoft Azure 发票
 
@@ -25,6 +26,20 @@ ms.locfileid: "84191234"
 发票是根据计费帐户类型生成的。 系统会为 Microsoft 在线服务计划 (MOSP)、Microsoft 客户协议 (MCA) 和 Microsoft 合作伙伴协议 (MPA) 计费帐户创建发票。 此外，还会为企业协议 (EA) 计费帐户生成发票。 但是，EA 计费帐户的发票不会在 Azure 门户中显示。
 
 若要详细了解计费帐户并确定自己的计费帐户类型，请参阅[在 Azure 门户中查看计费帐户](../manage/view-all-accounts.md)。
+
+### <a name="invoice-status"></a>发票状态
+
+在 Azure 门户中查看发票状态时，每张发票都具有以下某种状态符号。
+
+|  状态符号 | 说明  |
+|---|---|
+| ![“应付”状态符号](./media/download-azure-invoice/due.svg) | 当生成发票但尚未支付该发票时，将显示“应付”。 |
+| ![“过期未付”状态符号](./media/download-azure-invoice/past-due.svg)  | 当 Azure 尝试对你的付款方式收费，但付款被拒时，将显示“过期未付”。 |
+| ![“已付”状态符号](./media/download-azure-invoice/paid.svg)  | 当 Azure 成功对你的付款方式收费时，将显示“已付”状态。 |
+
+创建发票时，该发票会以“应付”状态显示在 Azure 门户中。 “应付”状态正常且符合预期。  
+
+当发票尚未支付时，其状态显示为“过期未付”。 如果未支付发票，过期未付订阅将被禁用。
 
 ## <a name="invoices-for-mosp-billing-accounts"></a>MOSP 计费帐户的发票
 
@@ -55,12 +70,12 @@ MOSP 计费帐户可获得以下发票：
 1. 在 Azure 门户上的[“订阅”页](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中选择你的订阅。
 1. 在计费部分选择“发票”。  
     ![显示用户选择订阅发票选项的屏幕截图](./media/download-azure-invoice/select-subscription-invoice.png)
-1. 选择“下载”以下载 PDF 版本的发票，然后在发票部分下选择“下载”。   
-    ![显示计费周期、下载选项以及每个计费周期的总费用的屏幕截图](./media/download-azure-invoice/downloadinvoice-subscription.png)
-1. 还可以通过在使用情况详细信息部分下选择“下载”，来下载使用数量和费用的每日细目。 准备 CSV 文件可能需要几分钟时间。  
+1. 选择要下载的发票，然后单击“下载发票”。  
+    ![MOSP 发票的下载选项的屏幕截图](./media/download-azure-invoice/downloadinvoice-subscription.png)
+1. 还可以通过单击“下载”图标，然后在“使用情况详细信息”部分下单击“准备 Azure 使用情况文件”按钮，来下载使用数量和费用的每日细目。 准备 CSV 文件可能需要几分钟时间。  
     ![显示“下载发票和使用情况”页的屏幕截图](./media/download-azure-invoice/usage-and-invoice-subscription.png)
 
-有关发票的详细信息，请参阅[了解 Microsoft Azure 帐单](../understand/review-individual-bill.md)。 如需有关管理成本的帮助，请参阅[通过 Azure 账单和成本管理来防止意外成本](../manage/getting-started.md)。
+有关发票的详细信息，请参阅[了解 Microsoft Azure 帐单](../understand/review-individual-bill.md)。 如需识别异常费用方面的帮助，请参阅[分析意外费用](analyze-unexpected-charges.md)。
 
 ## <a name="download-your-mosp-support-plan-invoice"></a>下载 MOSP 支持计划发票
 
@@ -72,12 +87,12 @@ MOSP 计费帐户可获得以下发票：
 1. 搜索“成本管理 + 计费”。  
     ![显示如何在门户中搜索“成本管理 + 计费”的屏幕截图](./media/download-azure-invoice/search-cmb.png)
 1. 在左侧选择“发票”。
-1. 选择你的支持计划订阅，然后选择“下载”。  
-    [![显示计费配置文件列表的屏幕截图](./media/download-azure-invoice/cmb-invoices.png)](./media/download-azure-invoice/cmb-invoices-zoomed-in.png#lightbox)
-1. 选择“下载”以下载 PDF 版本的发票。  
-    ![显示计费周期、下载选项以及每个计费周期的总费用的屏幕截图](./media/download-azure-invoice/download-invoice-support-plan.png)
+1. 选择自己的支持计划订阅。  
+    [![显示 MOSP 支持计划发票计费对象信息列表的屏幕截图](./media/download-azure-invoice/cmb-invoices.png)](./media/download-azure-invoice/cmb-invoices-zoomed-in.png#lightbox)
+1. 选择要下载的发票，然后单击“下载发票”。  
+    ![显示 MOSP 支持计划发票的下载选项的屏幕截图](./media/download-azure-invoice/download-invoice-support-plan.png)
 
-## <a name="allow-others-to-download-the-your-subscription-invoice"></a>允许其他人下载你的订阅发票
+## <a name="allow-others-to-download-your-subscription-invoice"></a>允许其他人下载你的订阅发票
 
 若要下载发票：
 
@@ -92,8 +107,12 @@ MOSP 计费帐户可获得以下发票：
 4.  选择 Azure 订阅，然后单击“允许其他人下载发票”。
 
     [![显示如何选择“访问发票”的屏幕截图](./media/download-azure-invoice/cmb-select-access-to-invoice.png)](./media/download-azure-invoice/cmb-select-access-to-invoice-zoomed-in.png#lightbox)
-1.  选择“打开”，然后在页面顶部选择“保存”。   
+
+5.  选择“打开”，然后在页面顶部选择“保存”。   
     ![显示如何对“访问发票”选择“开”的屏幕截图](./media/download-azure-invoice/cmb-access-to-invoice.png)
+    
+> [!NOTE]
+> Microsoft 不建议与第三方共享你的任何机密或个人身份信息。 此建议适用于与第三方共享你的 Azure 帐单或发票以实现成本优化的情况。 有关详细信息，请参阅 https://azure.microsoft.com/support/legal/ 和 https://www.microsoft.com/trust-center。
 
 ## <a name="get-mosp-subscription-invoice-in-email"></a>通过电子邮件获取 MOSP 订阅发票
 
@@ -103,18 +122,18 @@ MOSP 计费帐户可获得以下发票：
 2.  搜索“成本管理 + 计费”。  
 3.  在左侧选择“发票”。
 4.  选择你的 Azure 订阅或支持计划订阅，然后选择“通过电子邮件接收发票”。  
-    [![显示计费配置文件列表的屏幕截图](./media/download-azure-invoice/cmb-email-invoice.png)](./media/download-azure-invoice/cmb-email-invoice-zoomed-in.png#lightbox)
+    [![显示“通过电子邮件接收发票”选项的屏幕截图](./media/download-azure-invoice/cmb-email-invoice.png)](./media/download-azure-invoice/cmb-email-invoice-zoomed-in.png#lightbox)
 5. 单击“通过电子邮件发送发票”并接受条款。  
     ![显示“选择启用”流程步骤 2 的屏幕截图](./media/download-azure-invoice/invoicearticlestep02.png)
 6. 发票将发送到首选的通讯电子邮件。 选择“更新配置文件”以更新电子邮件。  
     ![显示“选择启用”流程步骤 3 的屏幕截图](./media/download-azure-invoice/invoicearticlestep03-verifyemail.png)
 
-## <a name="share-subscription-and-support-plan-invoices"></a>共享订阅和支持计划发票
+## <a name="share-subscription-and-support-plan-invoice"></a>共享订阅和支持计划发票
 
 你可能需要每月与会计团队共享订阅和支持计划的发票，或者需要将发票发送到其他某个电子邮件地址。
 
 1. 请按照[通过电子邮件获取订阅和支持计划的发票](#get-mosp-subscription-invoice-in-email)中的步骤操作，并选择“配置收件人”。  
-    ![显示用户选择“配置收件人”的屏幕截图](./media/download-azure-invoice/invoice-article-step03.png)
+    [![显示用户选择“配置收件人”的屏幕截图](./media/download-azure-invoice/invoice-article-step03.png)](./media/download-azure-invoice/invoice-article-step03-zoomed.png#lightbox)
 1. 输入电子邮件地址，然后选择“添加收件人”。 可以添加多个电子邮件地址。  
     ![显示用户添加更多收件人的屏幕截图](./media/download-azure-invoice/invoice-article-step04.png)
 1. 添加所有电子邮件地址后，在屏幕底部选择“完成”。
@@ -123,7 +142,7 @@ MOSP 计费帐户可获得以下发票：
 
 当组织与 Microsoft 代表一起签署 MCA 时，会创建一个 MCA 计费帐户。 特定区域中的某些客户（通过 Azure 网站注册[采用即用即付费率的帐户](https://azure.microsoft.com/offers/ms-azr-0003p/)或 [Azure 免费帐户](https://azure.microsoft.com/offers/ms-azr-0044p/)）也可以获得 MCA 的计费帐户。 有关详细信息，请参阅[开始使用 MCA 计费帐户](../understand/mca-overview.md)。
 
-MPA 计费帐户是为云解决方案提供商 (CSP) 合作伙伴创建的，用于在新的商务体验中管理其客户。 合作伙伴至少需要有一个客户拥有 [Azure 计划](https://docs.microsoft.com/partner-center/purchase-azure-plan)，才能在 Azure 门户中管理其计费帐户。 有关详细信息，请参阅[开始使用 MPA 计费帐户](../understand/mpa-overview.md)。
+MPA 计费帐户是为云解决方案提供商 (CSP) 合作伙伴创建的，用于在新的商务体验中管理其客户。 合作伙伴至少需要有一个客户拥有 [Azure 计划](/partner-center/purchase-azure-plan)，才能在 Azure 门户中管理其计费帐户。 有关详细信息，请参阅[开始使用 MPA 计费帐户](../understand/mpa-overview.md)。
 
 每月发票是在当月开始时针对帐户中的每项计费对象信息生成的。 发票包含上月的所有 Azure 订阅和其他购买项目的相应费用。 例如，John 在 3 月 5 日创建了“Azure 订阅 1”，在 3 月 10 日创建了“Azure 订阅 2”。  他在 3 月 28 日使用“计费配置文件 1”购买了“Azure 支持计划 1”订阅。  John 将在 4 月初收到一份发票，其中包含 Azure 订阅和支持计划的费用。
 
@@ -155,50 +174,37 @@ MPA 计费帐户是为云解决方案提供商 (CSP) 合作伙伴创建的，用
 
 1.  登录 [Azure 门户](https://portal.azure.com)。
 1.  搜索“成本管理 + 计费”。  
-1.  在左侧选择“发票”，然后在页面顶部选择“通过电子邮件发送发票”。   
-    [![显示 MCA 计费帐户的发票页的屏幕截图](./media/download-azure-invoice/mca-billing-profile-select-email-invoice.png)](./media/download-azure-invoice/mca-billing-profile-select-email-invoice-zoomed.png#lightbox)
-1.  如果你有多个计费配置文件，请选择其中的一个，然后选择“选择启用”。  
-    ![显示 MCA 计费帐户的发票页的屏幕截图](./media/download-azure-invoice/mca-billing-profile-email-invoice.png)
-1.  选择“更新”。
-
-2.  搜索“成本管理 + 计费”。
-
-    ![显示在门户中搜索“成本管理 + 计费”的屏幕截图](./media/download-azure-invoice/search-cmb.png)
-
-3.  在左侧选择“发票”，然后在页面顶部选择“通过电子邮件发送发票”。 
-
-    [![显示 MCA 计费帐户的发票页的屏幕截图](./media/download-azure-invoice/mca-billingprofile-select-emailinvoice.png)](./media/download-azure-invoice/mca-billingprofile-select-emailinvoice-zoomed-in.png)
-
-4.  如果你有多个计费配置文件，请选择其中的一个，然后选择“选择启用”。
+1.  在左侧选择“发票”，然后在页面顶部选择“发票电子邮件首选项” 。  
+    [![显示发票的“通过电子邮件发送发票”选项的屏幕截图](./media/download-azure-invoice/mca-billing-profile-select-email-invoice.png)](./media/download-azure-invoice/mca-billing-profile-select-email-invoice-zoomed.png#lightbox)
+1.  如果你有多项计费对象信息，请选择其中的一项，然后选择“是”。  
+    [![显示“选择启用”选项的屏幕截图](./media/download-azure-invoice/mca-billing-profile-email-invoice.png)](./media/download-azure-invoice/mca-billing-profile-select-email-invoice-zoomed.png#lightbox)
+1.  选择“保存”。
 
 若要使其他人有权查看、下载和支付发票，可为他们分配对 MCA 或 MPA 计费配置文件的发票管理者角色。 如果你已选择通过电子邮件获取发票，则这些用户也会通过电子邮件收到发票。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 搜索“成本管理 + 计费”。  
 1. 在左侧选择“计费对象信息”。 从计费配置文件列表中，选择要为其分配发票管理者角色的帐单配置文件。  
-   ![显示计费配置文件列表的屏幕截图](./media/download-azure-invoice/mca-select-profile-zoomed-in.png)
+   ![显示可选择计费对象信息的“计费对象信息”列表的屏幕截图](./media/download-azure-invoice/mca-select-profile-zoomed-in.png)
 1. 从左侧选择“访问控制(IAM)”，然后从页面顶部选择“添加”。  
     ![显示“访问控制”页的屏幕截图](./media/download-azure-invoice/mca-select-access-control-zoomed-in.png)
 1. 在“角色”下拉列表中，选择“发票管理者”。 输入要向其授予访问权限的用户的电子邮件地址。 选择“保存”以分配该角色。  
-   ![显示如何将用户添加为发票管理者的屏幕截图](./media/download-azure-invoice/mca-added-invoice-manager.png)
-
-1. 搜索“成本管理 + 计费”。
-
-   ![其中显示了在门户中搜索订阅的屏幕截图](./media/download-azure-invoice/search-cmb.png)
-
-1. 在左侧选择“计费对象信息”。 从计费配置文件列表中，选择要为其分配发票管理者角色的帐单配置文件。
-
-   ![显示计费对象信息列表的屏幕截图](./media/download-azure-invoice/mca-select-profile-zoomed-in.png)
-
-1. 从左侧选择“访问控制(IAM)”，然后从页面顶部选择“添加”。
-
-   [![显示“访问控制”页的屏幕截图](./media/download-azure-invoice/mca-select-access-control-zoomed-in.png)
-
-1. 在“角色”下拉列表中，选择“发票管理者”。 输入要向其授予访问权限的用户的电子邮件地址。 选择“保存”以分配该角色。
-
-   [![屏幕截图，显示了将用户添加为发票管理者](./media/download-azure-invoice/mca-added-invoice-manager.png)](./media/download-azure-invoice/mca-added-invoice-manager.png#lightbox)
+    [![屏幕截图，显示了将用户添加为发票管理者](./media/download-azure-invoice/mca-added-invoice-manager.png)](./media/download-azure-invoice/mca-added-invoice-manager.png#lightbox)
    
-   
+
+## <a name="share-your-billing-profiles-invoice"></a>共享计费对象信息的发票
+
+你可能需要每月与会计团队共享发票，或者需要将发票发送到其他某个电子邮件地址，而无需向会计团队或其他电子邮件授予对计费对象信息的权限。
+
+1.  登录 [Azure 门户](https://portal.azure.com)。
+1.  搜索“成本管理 + 计费”。  
+1.  在左侧选择“发票”，然后在页面顶部选择“发票电子邮件首选项” 。  
+    [![显示发票的“通过电子邮件发送发票”选项的屏幕截图](./media/download-azure-invoice/mca-billing-profile-select-email-invoice.png)](./media/download-azure-invoice/mca-billing-profile-select-email-invoice-zoomed.png#lightbox)
+1.  如果你有多项计费对象信息，请选择其中的一项。
+1.  在“其他收件人”部分中，添加要接收发票的电子邮件地址。
+    [![显示发票电子邮件的其他收件人的屏幕截图](./media/download-azure-invoice/mca-billing-profile-add-invoice-recipients.png)](./media/download-azure-invoice/mca-billing-profile-add-invoice-recipients-zoomed.png#lightbox)
+1.  选择“保存”。
+
 ##  <a name="why-you-might-not-see-an-invoice"></a>为何看不到发票
 
 <a name="noinvoice"></a>
@@ -231,9 +237,9 @@ MPA 计费帐户是为云解决方案提供商 (CSP) 合作伙伴创建的，用
 
     - 有些客户具有两个电子邮件地址相同的标识：工作帐户和 Microsoft 帐户。 通常，其中只有一个标识具有查看发票的权限。 如果他们使用无相应权限的标识登录，将无法看到发票。 确认是否使用了正确的身份进行登录。
 
-- 登录到了错误的 Azure Active Directory (AAD) 租户。 
+- 登录到了错误的 Azure Active Directory (Azure AD) 租户。 
 
-    - 计费帐户与 AAD 租户关联。 如果登录到不正确的租户，将无法在计费帐户中看到订阅的发票。 验证是否已登录到正确的 Azure Active Directory (AAD) 租户。 如果未登录到正确的租户，请使用以下命令在 Azure 门户中切换租户：
+    - 计费帐户与 Azure AD 租户关联。 如果登录到不正确的租户，将无法在计费帐户中看到订阅的发票。 验证是否已登录到正确的 Azure AD 租户。 如果未登录到正确的租户，请使用以下命令在 Azure 门户中切换租户：
 
         1. 通过页面右上方选择电子邮件。
 
