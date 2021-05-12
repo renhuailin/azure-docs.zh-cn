@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: f0731f0deaf46ec419cfe43037804e10f2b73fd4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d471991be570cd5242b5e163409e319e5af4094
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96448385"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790336"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-for-your-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>使用 Azure Functions 在 Azure Synapse Analytics 中管理专用 SQL 池（之前称为 SQL DW）的计算资源
 
@@ -42,7 +42,8 @@ ms.locfileid: "96448385"
 
 部署模板以后，应该可以找到三个新资源：一个免费的 Azure 应用服务计划、一个基于使用情况的 Function App 计划，以及一个将要用于处理日志记录和操作队列的存储帐户。 请继续阅读其他部分，了解如何根据需要修改部署的函数。
 
-## <a name="change-the-compute-level"></a>更改计算级别
+## <a name="change-the-time-of-the-scale-operation"></a>更改缩放操作的时间
+
 
 1. 导航到 Function App 服务。 如果使用默认值部署了模板，该服务的名称应该为 DWOperations。 打开 Function App 以后，会看到五个函数部署到 Function App 服务。
 
@@ -66,7 +67,7 @@ ms.locfileid: "96448385"
 
    例如，“0 30 9 * * 1-5”表示在每个工作日的上午 9:30 触发一次。 有关详细信息，请访问 Azure Functions [计划示例](../../azure-functions/functions-bindings-timer.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#example)。
 
-## <a name="change-the-time-of-the-scale-operation"></a>更改缩放操作的时间
+## <a name="change-the-compute-level"></a>更改计算级别
 
 1. 导航到 Function App 服务。 如果使用默认值部署了模板，该服务的名称应该为 DWOperations。 打开 Function App 以后，会看到五个函数部署到 Function App 服务。
 

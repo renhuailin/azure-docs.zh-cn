@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 12/23/2020
-ms.openlocfilehash: 9b5526af03bdbefeb54633c49bbd43743555f60b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a20571e411b2849c3487582a9c316f0f0b35c91d
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100383222"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790930"
 ---
 # <a name="how-to-create-plans-for-your-managed-service-offer"></a>如何为托管服务产品/服务创建计划
 
@@ -24,7 +24,7 @@ ms.locfileid: "100383222"
 1. 在合作伙伴中心中，在你的产品/服务的“计划概述”标签上，选择“+ 创建新计划”。
 2. 在出现的对话框的“计划 ID”下面，输入唯一计划 ID。 最大长度为 50，可以使用小写字母数字字符、短划线或下划线。 选择“创建”后，不能修改计划 ID。 你的客户可以看到该 ID。
 3. 在“计划名称”框中，输入此计划的名称。 最可以使用 50 个字符。 你的客户可以看到该名称。
-4. 选择“创建”。
+4. 选择“创建”  。
 
 ## <a name="define-the-plan-listing"></a>定义计划列表
 
@@ -79,7 +79,7 @@ ms.locfileid: "100383222"
 
 ## <a name="technical-configuration"></a>技术配置
 
-这一部分创建带有授权信息的清单，用于管理客户资源。 若要启用 [Azure 委派资源管理](../lighthouse/concepts/azure-delegated-resource-management.md)，必须使用此信息。
+这一部分创建带有授权信息的清单，用于管理客户资源。 若要启用 [Azure 委派资源管理](../lighthouse/concepts/architecture.md)，必须使用此信息。
 
 请查看 [Azure Lighthouse 方案中的租户、角色和用户](../lighthouse/concepts/tenants-users-roles.md#best-practices-for-defining-users-and-roles)，以了解支持的角色以及定义授权的最佳做法。
 

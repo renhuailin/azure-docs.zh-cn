@@ -1,18 +1,18 @@
 ---
 title: 使用专用终结点创建 Azure 数据工厂管道
 description: 本教程分步说明了如何使用 Azure 门户创建带管道的数据工厂。 该管道通过复制活动将数据从 Azure Blob 存储复制到 Azure SQL 数据库。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 04/14/2021
-ms.author: jingwang
-ms.openlocfilehash: 191ad61990e10fdb718eebf1a8f57d8edaadcf35
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.author: jianleishen
+ms.openlocfilehash: 555316ddf722e857914d5e99d7fadcd6539e1b8b
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515442"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482572"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>使用专用终结点将数据从 Azure Blob 存储安全复制到 SQL 数据库
 
@@ -73,7 +73,7 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 1. 在左侧菜单中，选择“创建资源” > “Analytics” > “数据工厂”。
 
-1. 在“新建数据工厂”  页的“名称”下输入 **ADFTutorialDataFactory**  。
+1. 在“新建数据工厂”页的“名称”下输入 **ADFTutorialDataFactory** 。
 
    Azure 数据工厂的名称必须 *全局唯一*。 如果收到有关名称值的错误消息，请为数据工厂输入其他名称（例如 yournameADFTutorialDataFactory）。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](./naming-rules.md)。
 

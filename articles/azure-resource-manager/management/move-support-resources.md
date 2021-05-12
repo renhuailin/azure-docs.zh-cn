@@ -3,12 +3,12 @@ title: 资源类型支持的移动操作
 description: 列出了可移动到新资源组、订阅或区域的 Azure 资源类型。
 ms.topic: conceptual
 ms.date: 04/23/2021
-ms.openlocfilehash: 90fd683a12dcc9f9d63003f1fd87332db5f2b9aa
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 5a347a9041423c7e466499cdd65fe27e6623ab98
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107945982"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108737398"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 
@@ -400,7 +400,7 @@ ms.locfileid: "107945982"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 | 区域移动 |
 > | ------------- | ----------- | ---------- | ----------- |
-> | batchaccounts | 是 | 是 | Batch 帐户不能直接从一个区域移到另一个区域，但你可以使用模板来导出模板，对其进行修改，然后将模板部署到新区域。 <br/><br/> 了解如何[跨区域移动 Batch 帐户](../../batch/best-practices.md#moving-batch-accounts-across-regions) |
+> | batchaccounts | 是 | 是 | Batch 帐户不能直接从一个区域移到另一个区域，但你可以使用模板来导出模板，对其进行修改，然后将模板部署到新区域。 <br/><br/> 了解如何[跨区域移动 Batch 帐户](../../batch/account-move.md) |
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
@@ -638,7 +638,7 @@ ms.locfileid: "107945982"
 > | charges | 否 | 否 | 否 |
 > | costtags | 否 | 否 | 否 |
 > | credits | 否 | 否 | 否 |
-> | events | 否 | 否 | 否 |
+> | 活动 | 否 | 否 | 否 |
 > | forecasts | 否 | 否 | 否 |
 > | lots | 否 | 否 | 否 |
 > | marketplaces | 否 | 否 | 否 |
@@ -1640,7 +1640,7 @@ ms.locfileid: "107945982"
 > | ------------- | ----------- | ---------- | ----------- |
 > | childresources | 否 | 否 | 否 |
 > | emergingissues | 否 | 否 | 否 |
-> | events | 否 | 否 | 否 |
+> | 活动 | 否 | 否 | 否 |
 > | metadata | 否 | 否 | 否 |
 > | 通知 | 否 | 否 | 否 |
 
@@ -1944,7 +1944,7 @@ ms.locfileid: "107945982"
 > | 资源类型 | 资源组 | 订阅 | 区域移动 |
 > | ------------- | ----------- | ---------- | ----------- |
 > | environments | 是 | 是 | 否 |
-> | environments/eventsources | 是 | 是 | 否 |
+> | environments / eventsources | 是 | 是 | 否 |
 > | environments/referencedatasets | 是 | 是 | 否 |
 
 ## <a name="microsofttoken"></a>Microsoft.Token

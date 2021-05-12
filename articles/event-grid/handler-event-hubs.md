@@ -3,12 +3,12 @@ title: 事件中心作为 Azure 事件网格事件的事件处理程序
 description: 介绍如何将时间中心用作 Azure 事件网格事件的事件处理程序。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 446fef6df65f59206519e282c74d59c2ed1bfa9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b69e06335b4461ad9ee72f32d38e7e7f7056febc
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96005617"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734803"
 ---
 # <a name="event-hub-as-an-event-handler-for-azure-event-grid-events"></a>事件中心作为 Azure 事件网格事件的事件处理程序
 事件处理程序是发送事件的位置。 处理程序将执行操作来处理事件。 几个 Azure 服务已自动配置为处理事件，Azure 事件中心是其中之一。 
@@ -21,7 +21,7 @@ ms.locfileid: "96005617"
 |标题  |说明  |
 |---------|---------|
 | [快速入门：使用 Azure CLI 将自定义事件路由到 Azure 事件中心](custom-event-to-eventhub.md) | 将自定义事件发送到事件中心以供应用程序处理。 |
-| [资源管理器模板：创建事件网格自定义主题，并将事件发送到事件中心](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| 用于创建自定义主题的订阅的资源管理器模板。 它将事件发送到 Azure 事件中心。 |
+| [资源管理器模板：创建事件网格自定义主题，并将事件发送到事件中心](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.eventgrid/event-grid-event-hubs-handler)| 用于创建自定义主题的订阅的资源管理器模板。 它将事件发送到 Azure 事件中心。 |
 
 [!INCLUDE [event-grid-message-headers](../../includes/event-grid-message-headers.md)]
 
@@ -33,18 +33,18 @@ ms.locfileid: "96005617"
 
 ```json
 {
-    "properties": 
+  "properties": 
+  {
+    "destination": 
     {
-        "destination": 
-        {
-            "endpointType": "EventHub",
-            "properties": 
-            {
-                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUBS NAMESPACE NAME>/eventhubs/<EVENT HUB NAME>"
-            }
-        },
-        "eventDeliverySchema": "EventGridSchema"
-    }
+      "endpointType": "EventHub",
+      "properties": 
+      {
+        "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUBS NAMESPACE NAME>/eventhubs/<EVENT HUB NAME>"
+      }
+    },
+    "eventDeliverySchema": "EventGridSchema"
+  }
 }
 ```
 
@@ -52,24 +52,24 @@ ms.locfileid: "96005617"
 
 ```json
 {
-    "properties": {
-        "deliveryWithResourceIdentity": 
+  "properties": {
+    "deliveryWithResourceIdentity": 
+    {
+      "identity": 
+      {
+        "type": "SystemAssigned"
+      },
+      "destination": 
+      {
+        "endpointType": "EventHub",
+        "properties": 
         {
-            "identity": 
-            {
-                "type": "SystemAssigned"
-            },
-            "destination": 
-            {
-                "endpointType": "EventHub",
-                "properties": 
-                {
-                    "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUBS NAMESPACE NAME>/eventhubs/<EVENT HUB NAME>"
-                }
-            }
-        },
-        "eventDeliverySchema": "EventGridSchema"
-    }
+          "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUBS NAMESPACE NAME>/eventhubs/<EVENT HUB NAME>"
+        }
+      }
+    },
+    "eventDeliverySchema": "EventGridSchema"
+  }
 }
 ```
 

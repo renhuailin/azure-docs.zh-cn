@@ -6,14 +6,14 @@ author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 08/28/2020
+ms.date: 05/10/2021
 ms.author: victorh
-ms.openlocfilehash: 478f3454a728871040cdbbf9f817394cffe6b82f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d2c3a1501c2489b5d747ac5a64bcaef0c725bad0
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94660247"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752708"
 ---
 # <a name="quickstart-deploy-azure-firewall-with-availability-zones---arm-template"></a>快速入门：部署具有可用性区域的 Azure 防火墙 - ARM 模板
 
@@ -31,7 +31,7 @@ ms.locfileid: "94660247"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-with-zones-sandbox%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fazurefirewall-with-zones-sandbox%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -43,7 +43,7 @@ ms.locfileid: "94660247"
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-azurefirewall-with-zones-sandbox)。
 
-:::code language="json" source="~/quickstart-templates/101-azurefirewall-with-zones-sandbox/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/azurefirewall-with-zones-sandbox/azuredeploy.json":::
 
 模板中定义了多个 Azure 资源：
 
@@ -62,10 +62,10 @@ ms.locfileid: "94660247"
 
 1. 选择“部署到 Azure”，登录到 Azure 并打开模板。 该模板将创建 Azure 防火墙、网络基础结构和两个虚拟机。
 
-   [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-with-zones-sandbox%2Fazuredeploy.json)
+   [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fazurefirewall-with-zones-sandbox%2Fazuredeploy.json)
 
 2. 在门户中的“创建具有区域的 Azure 防火墙的沙盒设置”页上，键入或选择以下值：
-   - 资源组：选择“新建”，键入资源组的名称，然后选择“确定”。 
+   - 资源组：选择“新建”，键入资源组的名称，然后选择“确定”。
    - **虚拟网络名称**：键入新 VNet 的名称。
    - **管理员用户名**：键入管理员用户帐户的用户名。
    - **管理员密码**：键入管理员密码。
@@ -86,7 +86,7 @@ ms.locfileid: "94660247"
 Remove-AzResourceGroup -Name MyResourceGroup
 ```
 
-如果计划继续学习防火墙监视教程，请不要删除资源组和防火墙。 
+如果计划继续学习防火墙监视教程，请不要删除资源组和防火墙。
 
 ## <a name="next-steps"></a>后续步骤
 

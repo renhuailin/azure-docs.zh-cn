@@ -1,17 +1,17 @@
 ---
 title: 在 Azure 数据工厂中加密凭据
 description: 了解如何在装有自承载集成运行时的计算机上加密和存储本地数据存储的凭据。
-author: nabhishek
+author: lrtoyou1223
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/15/2018
-ms.author: abnarain
-ms.openlocfilehash: 59d177aa3baf25f185201f1b6c4738cfce9c25a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: lle
+ms.openlocfilehash: 57b31c77943b41d76b265a8cea76c9882cf1fbf3
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392640"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486712"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>在 Azure 数据工厂中加密本地数据存储的凭据
 

@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: a6f24dea00a174aa0276a9b30add0854c3694056
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: 1652048da8084007bc86a6793f14f10b4a1f2e0f
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88008638"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106446037"
 ---
 # <a name="manage-app-groups-using-powershell"></a>使用 PowerShell 管理应用组
 
@@ -26,7 +26,7 @@ ms.locfileid: "88008638"
 > * 创建 RemoteApp 组。
 > * 授予对 RemoteApp 程序的访问权限。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本文假定你已按照[设置 PowerShell 模块](powershell-module.md)中的说明设置 PowerShell 模块并登录到 Azure 帐户。
 

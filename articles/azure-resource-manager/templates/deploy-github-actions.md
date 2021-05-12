@@ -4,12 +4,12 @@ description: 介绍如何使用 GitHub Actions 部署资源管理器模板（ARM
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 020e142788cf2bd31edeada8d051be74132310cf
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: fb14c6e452ea4923ece7561ca8af968626f4af77
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108075422"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108737020"
 ---
 # <a name="deploy-arm-templates-by-using-github-actions"></a>使用 GitHub Actions 部署 ARM 模板
 
@@ -88,7 +88,7 @@ ms.locfileid: "108075422"
 将资源管理器模板添加到 GitHub 存储库。 此模板可用于创建存储帐户。
 
 ```url
-https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
+https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json
 ```
 
 你可以将该文件放到存储库中的任何位置。 下一部分的工作流示例假定模板文件名为“azuredeploy.json”，它存储在存储库的根目录下。

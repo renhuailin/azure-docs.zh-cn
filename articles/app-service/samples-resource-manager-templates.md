@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 08/26/2020
 ms.author: tomfitz
 ms.custom: mvc, fasttrack-edit
-ms.openlocfilehash: 5129fccceb633991767cdd3b52bbb5b6af067270
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c3a832da7e58dd986c2a6e49801fe318cdd46f77
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88891039"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752348"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>应用服务的 Azure 资源管理器模板
 
@@ -22,10 +22,10 @@ ms.locfileid: "88891039"
 
 | 部署应用 | 说明 |
 |-|-|
-| [应用服务计划和基本的 Linux 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-basic-linux) | 部署为 Linux 配置的应用服务应用。 |
-| [应用服务计划和基本的 Windows 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-basic-windows) | 部署为 Windows 配置的应用服务应用。 |
-| [链接到 GitHub 存储库的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-github-deploy)| 部署从 GitHub 提取代码的应用服务应用。 |
-| [使用自定义部署槽位的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-custom-deployment-slots)| 使用自定义部署槽位/环境部署应用服务应用。 |
+| [应用服务计划和基本的 Linux 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/webapp-basic-linux) | 部署为 Linux 配置的应用服务应用。 |
+| [应用服务计划和基本的 Windows 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/webapp-basic-windows) | 部署为 Windows 配置的应用服务应用。 |
+| [链接到 GitHub 存储库的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-github-deploy)| 部署从 GitHub 提取代码的应用服务应用。 |
+| [使用自定义部署槽位的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/webapp-custom-deployment-slots)| 使用自定义部署槽位/环境部署应用服务应用。 |
 | [具有专用终结点的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-private-endpoint-webapp)| 使用专用终结点部署应用服务应用。 |
 |**配置应用**| **说明** |
 | [来自 Key Vault 的应用证书](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)| 部署来自 Azure Key Vault 机密的应用服务应用证书并将其用于 TLS/SSL 绑定。 |
@@ -36,17 +36,17 @@ ms.locfileid: "88891039"
 |**保护应用**| **说明** |
 | [与 Azure 应用程序网关集成的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-app-gateway-v2)| 部署应用服务应用和应用程序网关，并使用服务终结点和访问限制隔离流量。 |
 |**使用连接资源的 Linux 应用**| **说明** |
-| [Linux 上的使用 MySQL 的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-linux-managed-mysql) | 在 Linux 上部署使用 Azure Database for MySQL 的应用服务应用。 |
-| [Linux 上的使用 PostgreSQL 的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-linux-managed-postgresql) | 在 Linux 上部署使用 Azure Database for PostgreSQL 的应用服务应用。 |
+| [Linux 上的使用 MySQL 的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/webapp-linux-managed-mysql) | 在 Linux 上部署使用 Azure Database for MySQL 的应用服务应用。 |
+| [Linux 上的使用 PostgreSQL 的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/webapp-linux-managed-postgresql) | 在 Linux 上部署使用 Azure Database for PostgreSQL 的应用服务应用。 |
 |**使用连接资源的应用**| **说明** |
 | [使用 MySQL 的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-managed-mysql)| 在 Windows 上部署使用 Azure Database for MySQL 的应用服务应用。 |
-| [使用 PostgreSQL 的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-managed-postgresql)| 在 Windows 上部署使用 Azure Database for PostgreSQL 的应用服务应用。 |
-| [使用 Azure SQL 数据库中的数据库的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database)| 在“基本”服务级别部署应用服务应用和 Azure SQL 数据库中的数据库。 |
+| [使用 PostgreSQL 的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/webapp-managed-postgresql)| 在 Windows 上部署使用 Azure Database for PostgreSQL 的应用服务应用。 |
+| [使用 Azure SQL 数据库中的数据库的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-sql-database)| 在“基本”服务级别部署应用服务应用和 Azure SQL 数据库中的数据库。 |
 | [使用 Blob 存储连接的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-blob-connection)| 使用 Azure Blob 存储连接字符串部署应用服务应用。 然后，可以从该应用使用 Blob 存储。 |
 | [使用用于 Redis 的 Azure 缓存的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-redis-cache)| 使用用于 Redis 的 Azure 缓存部署应用服务应用。 |
 | [连接到后端 webapp 的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-privateendpoint-vnet-injection)| 将两个 Web 应用（前端和后端）与 VNet 注入和专用终结点安全地连接在一起。 |
 |**应用服务环境**| **说明** |
-| [创建应用服务环境 v2](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-create) | 在虚拟网络中创建应用服务环境 v2。 |
-| [使用 ILB 地址创建应用服务环境 v2](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-ilb-create/) | 使用专用的内部负载均衡器地址在虚拟网络中创建应用服务环境 v2。 |
+| [创建应用服务环境 v2](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-asev2-create) | 在虚拟网络中创建应用服务环境 v2。 |
+| [使用 ILB 地址创建应用服务环境 v2](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-asev2-ilb-create) | 使用专用的内部负载均衡器地址在虚拟网络中创建应用服务环境 v2。 |
 | [为 ILB 应用服务环境或 ILB 应用服务环境 v2 配置默认的 SSL 证书](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-ase-ilb-configure-default-ssl) | 为 ILB 应用服务环境或 ILB 应用服务环境 v2 配置默认的 TLS/SSL 证书。 |
 | | |

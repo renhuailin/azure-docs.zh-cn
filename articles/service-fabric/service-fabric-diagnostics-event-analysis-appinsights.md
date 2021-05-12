@@ -1,16 +1,14 @@
 ---
 title: 使用 Application Insights 进行 Azure Service Fabric 事件分析
 description: 了解通过使用 Application Insights 可视化和分析事件来监视和诊断 Azure Service Fabric 群集。
-author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.author: srrengar
-ms.openlocfilehash: f4d77cc3b2f2182b02d47f047070b819daa5f3c1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0e84c3c1ab542dc4541ebdcfbc49f45e02458d9c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100589020"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626208"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>使用 Application Insights 进行事件分析和可视化
 

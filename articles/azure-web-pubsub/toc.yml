@@ -1,0 +1,66 @@
+- name: Azure Web PubSub 服务文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于 Azure Web PubSub 服务
+      href: overview.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 尝试实时演示
+      href: quickstart-live-demo.md
+    - name: 从简单的聊天室无服务器应用程序开始
+      href: quickstart-serverless.md
+- name: 操作指南
+  expanded: true
+  items:
+    - name: 开发
+      items:
+        - name: 创建实例
+          href: howto-develop-create-instance.md
+        - name: 发布和订阅消息
+          href: 'https://azure.github.io/azure-webpubsub/getting-started/publish-messages/js-publish-message'
+        - name: 使用子协议
+          href: 'https://azure.github.io/azure-webpubsub/getting-started/using-pubsub-subprotocol/js-work-with-subprotocols'
+        - name: 身份验证和权限
+          href: 'https://azure.github.io/azure-webpubsub/getting-started/auth-and-permissions/js-auth-and-permissions'
+    - name: 安全
+      items:
+        - name: 保护访问密钥
+          href: howto-secure-rotate-access-key.md
+    - name: 疑难解答
+      items:
+        - name: 收集网络跟踪
+          href: howto-troubleshoot-network-trace.md
+        - name: 捕获诊断日志
+          href: howto-troubleshoot-diagnostic-logs.md
+- name: 概念
+  items:
+    - name: Azure Web PubSub 服务内部情况
+      href: 'https://azure.github.io/azure-webpubsub/concepts/service-internals'
+    - name: 计费模式
+      href: concept-billing-model.md
+- name: 参考
+  items:
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/webpubsub'
+    - name: PubSub WebSocket 子协议
+      href: 'https://azure.github.io/azure-webpubsub/references/pubsub-websocket-subprotocol'
+    - name: Web PubSub CloudEvent
+      href: 'https://azure.github.io/azure-webpubsub/references/protocol-cloudevents'
+    - name: 服务器 SDK
+      href: choose-server-sdks.md
+- name: 资源
+  items:
+    - name: 解决方案
+      href: /azure/architecture/
+    - name: 上市区域
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=web-pubsub'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/web-pubsub/'
+    - name: 常见问题
+      href: resource-faq.md
+    - name: Microsoft 问答
+      href: 'https://docs.microsoft.com/answers/topics/azure-web-pubsub.html'
+    - name: StackOverflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-web-pubsub'

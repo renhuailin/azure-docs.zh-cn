@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 资源管理器模板创建 Azure 门户�
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/15/2021
-ms.openlocfilehash: a3ab8767e09256ed8235dbd980ea3336a6f0fb1d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3cb6069b13246e561de85c7a392283a5c243f1a4
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104658313"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517777"
 ---
 # <a name="quickstart-create-a-dashboard-in-the-azure-portal-by-using-an-arm-template"></a>快速入门：使用 ARM 模板在 Azure 门户中创建仪表板
 
@@ -19,7 +19,7 @@ Azure 门户中的仪表板可以集中且有组织地呈现你的云资源。 �
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-portal-dashboard%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.portal%2Fazure-portal-dashboard%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -61,13 +61,13 @@ Azure 门户中的仪表板可以集中且有组织地呈现你的云资源。 �
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-azure-portal-dashboard/)。 本文的模板太长，无法在此处显示。 若要查看模板，请参阅 [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-azure-portal-dashboard/azuredeploy.json)。 模板 [Microsoft.Portal/dashboards](/azure/templates/microsoft.portal/dashboards) 中定义了一个 Azure 资源 - 在 Azure 门户中创建仪表板。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-azure-portal-dashboard/)。 本文的模板太长，无法在此处显示。 若要查看模板，请参阅 [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.portal/azure-portal-dashboard/azuredeploy.json)。 模板 [Microsoft.Portal/dashboards](/azure/templates/microsoft.portal/dashboards) 中定义了一个 Azure 资源 - 在 Azure 门户中创建仪表板。
 
 ## <a name="deploy-the-template"></a>部署模板
 
 1. 选择下图登录到 Azure 并打开一个模板。
 
-    [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-portal-dashboard%2Fazuredeploy.json)
+    [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.portal%2Fazure-portal-dashboard%2Fazuredeploy.json)
 
 1. 选择或输入以下值，然后选择“查看 + 创建”。
 
