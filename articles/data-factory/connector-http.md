@@ -1,17 +1,17 @@
 ---
 title: 使用 Azure 数据工厂从 HTTP 源复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从云或本地 HTTP 源复制到支持的接收器数据存储。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 12/10/2019
-ms.author: jingwang
-ms.openlocfilehash: f3184602bad8aabf654c8fa94d33372d08c11a66
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.date: 03/17/2021
+ms.author: jianleishen
+ms.openlocfilehash: c04bf94b26535ec7791bfd0c2354432aaa6fc98e
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573194"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109485020"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 HTTP 终结点复制数据
 
@@ -49,11 +49,11 @@ ms.locfileid: "103573194"
 
 ## <a name="prerequisites"></a>先决条件
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="get-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 HTTP 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -66,7 +66,8 @@ HTTP 链接的服务支持以下属性：
 | type | type 属性必须设置为 HttpServer   。 | 是 |
 | url | Web 服务器的基 URL。 | 是 |
 | enableServerCertificateValidation | 指定连接到 HTTP 终结点时，是否是启用服务器 TLS/SSL 证书验证。 HTTPS 服务器使用自签名证书时，将此属性设置为 false  。 | 否<br /> （默认值为 true）  |
-| authenticationType | 指定身份验证类型。 允许的值为：Anonymous、Basic、Digest、Windows 和 ClientCertificate      。 <br><br> 有关这些身份验证类型的更多属性和 JSON 示例，请参阅此表格下面的部分。 | 是 |
+| authenticationType | 指定身份验证类型。 允许的值为：Anonymous、Basic、Digest、Windows 和 ClientCertificate      。 不支持基于用户的 OAuth。 此外，还可以在 `authHeader` 属性中配置身份验证标头。 有关这些身份验证类型的更多属性和 JSON 示例，请参阅此表格下面的部分。 | 是 |
+| authHeaders | 附加的用于身份验证的 HTTP 请求标头。<br/> 例如，若要使用 API 密钥身份验证，可以将身份验证类型选为“匿名”，然后在标头中指定 API 密钥。 | 否 |
 | connectVia | 用于连接到数据存储的 [ Integration Runtime](concepts-integration-runtime.md)。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 ### <a name="using-basic-digest-or-windows-authentication"></a>使用基本、摘要或 Windows 身份验证
@@ -163,11 +164,40 @@ HTTP 链接的服务支持以下属性：
 }
 ```
 
+### <a name="using-authentication-headers"></a>使用身份验证标头
+
+此外，还可以配置身份验证请求标头，以及内置的身份验证类型。
+
+示例：使用 API 密钥身份验证
+
+```json
+{
+    "name": "HttpLinkedService",
+    "properties": {
+        "type": "HttpServer",
+        "typeProperties": {
+            "url": "<HTTP endpoint>",
+            "authenticationType": "Anonymous",
+            "authHeader": {
+                "x-api-key": {
+                    "type": "SecureString",
+                    "value": "<API key>"
+                }
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
 ## <a name="dataset-properties"></a>数据集属性
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 基于格式的数据集中 `location` 设置下的 HTTP 支持以下属性：
 
@@ -213,7 +243,7 @@ HTTP 链接的服务支持以下属性：
 
 ### <a name="http-as-source"></a>HTTP 作为源
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 基于格式的复制源中 `storeSettings` 设置下的 HTTP 支持以下属性：
 
@@ -224,7 +254,7 @@ HTTP 链接的服务支持以下属性：
 | additionalHeaders         | 附加的 HTTP 请求标头。                             | 否       |
 | requestBody              | HTTP 请求的正文。                               | 否       |
 | httpRequestTimeout           | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40  。 | 否       |
-| maxConcurrentConnections | 可以同时连接到存储库的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否       |
+| maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的上限。 仅在要限制并发连接时指定一个值。| 否       |
 
 **示例：**
 

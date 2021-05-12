@@ -1,17 +1,17 @@
 ---
 title: 使用 Azure 数据工厂从 OData 源复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 OData 源复制到支持的接收器数据存储。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.author: jingwang
-ms.openlocfilehash: 90cc4e3f9915db424cec89cfc764771b5be785e9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.date: 03/30/2021
+ms.author: jianleishen
+ms.openlocfilehash: 91d1206bcaf80d054c6adde1ee5a23456083b97b
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389716"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109485182"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 OData 源复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -38,11 +38,11 @@ ms.locfileid: "100389716"
 
 ## <a name="prerequisites"></a>先决条件
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="get-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 OData 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -50,12 +50,12 @@ ms.locfileid: "100389716"
 
 OData 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 OData   。 |是 |
 | url | OData 服务的根 URL。 |是 |
 | authenticationType | 用于连接 OData 源的身份验证类型。 允许的值为“Anonymous”  、“Basic”  、“Windows”  和“AadServicePrincipal”  。 不支持基于用户的 OAuth。 此外，还可以在 `authHeader` 属性中配置身份验证标头。| 是 |
-| authHeaders | 附加的用于身份验证的 HTTP 请求标头。<br/> 例如，若要使用 API 密钥身份验证，可以选择 "身份验证类型" 作为 "匿名"，并在标头中指定 API 密钥。 | 否 |
+| authHeaders | 附加的用于身份验证的 HTTP 请求标头。<br/> 例如，若要使用 API 密钥身份验证，可以将身份验证类型选为“匿名”，然后在标头中指定 API 密钥。 | 否 |
 | userName | 如果使用 Basic 或 Windows 身份验证，请指定用户名  。 | 否 |
 | password | 指定为 userName 指定的用户帐户的密码   。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中  。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 否 |
 | servicePrincipalId | 指定 Azure Active Directory 应用程序的客户端 ID。 | 否 |
@@ -226,7 +226,7 @@ OData 链接的服务支持以下属性：
 
 要从 OData 复制数据，请将数据集的 type 属性设置为“ODataResource”   。 支持以下属性：
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 ODataResource   。 | 是 |
 | path | OData 资源的路径。 | 是 |
@@ -262,10 +262,10 @@ OData 链接的服务支持以下属性：
 
 从 OData 复制数据时，复制活动的 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 ODataSource   。 | 是 |
-| query | 用于筛选数据的 OData 查询选项。 示例：`"$select=Name,Description&$top=5"`。<br/><br/>**注意**：OData 连接器会从以下组合 URL 复制数据：`[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`。 有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
+| 查询 | 用于筛选数据的 OData 查询选项。 示例：`"$select=Name,Description&$top=5"`。<br/><br/>**注意**：OData 连接器会从以下组合 URL 复制数据：`[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`。 有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
 | httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 该值是获取响应而不是读取响应数据的超时。 如果未指定，默认值为“00:30:00”（30 分钟）。 | 否 |
 
 **示例**
@@ -320,15 +320,57 @@ OData 链接的服务支持以下属性：
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | String |
+| Edm.String | 字符串 |
 | Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 > [!NOTE]
 > 不支持 OData 复杂数据类型，例如对象。
 
+## <a name="copy-data-from-project-online"></a>从 Project Online 复制数据
 
-## <a name="lookup-activity-properties"></a>Lookup 活动属性
+若要从 Project Online 复制数据，可以使用 OData 连接器以及从 Postman 之类的工具获取的访问令牌。
+
+> [!CAUTION]
+> 默认情况下，访问令牌将在 1 小时后过期，需要在过期后获取新的访问令牌。
+
+1. 使用 Postman 获取访问令牌：
+
+   1. 导航到 Postman 网站上的“授权”选项卡。
+   1.    在“类型”框中选择“OAuth 2.0”，并在“将授权数据添加到”框中选择“请求标头”。
+   1. 在“配置新令牌”页中填写以下信息以获取新的访问令牌： 
+      - **授权类型**：选择“授权代码”。
+      - **回调 URL**：输入 `https://www.localhost.com/`。 
+      - **身份验证 URL**：输入 `https://login.microsoftonline.com/common/oauth2/authorize?resource=https://<your tenant name>.sharepoint.com`。 将 `<your tenant name>` 替换为自己的租户名称。 
+      - **访问令牌 URL**：输入 `https://login.microsoftonline.com/common/oauth2/token`。
+      - **客户端 ID**：输入你的 AAD 服务主体 ID。
+      - **客户端密码**：输入服务主体机密。
+      - **客户端身份验证**：选择“作为‘基本身份验证标头’发送”。
+     
+   1. 系统会要求你用用户名和密码进行登录。
+   1. 获取访问令牌后，请复制并保存它以供下一步使用。
+   
+    [![使用 Postman 获取访问令牌](./media/connector-odata/odata-project-online-postman-access-token-inline.png)](./media/connector-odata/odata-project-online-postman-access-token-expanded.png#lightbox)
+
+1. 创建 OData 链接服务：
+    - **服务 URL**：输入 `https://<your tenant name>.sharepoint.com/sites/pwa/_api/Projectdata`。 将 `<your tenant name>` 替换为自己的租户名称。 
+    - **身份验证类型**：选择“匿名”。
+    - **身份验证头**：
+        - **属性名称**：选择“授权”。
+        - **值**：输入步骤 1 中复制的“访问令牌”。
+    - 测试链接服务。
+
+    ![创建 OData 链接服务](./media/connector-odata/odata-project-online-linked-service.png)
+
+1. 创建 OData 数据集：
+    1. 使用步骤 2 中创建的 OData 链接服务来创建数据集。
+    1. 预览数据。
+ 
+    ![预览数据](./media/connector-odata/odata-project-online-preview-data.png)
+ 
+
+
+## <a name="lookup-activity-properties"></a>查找活动属性
 
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 

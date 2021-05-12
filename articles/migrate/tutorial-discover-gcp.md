@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/13/2021
 ms.custom: mvc
-ms.openlocfilehash: c5d57705ca0d49db1fb1d67e20beb609f21b1d5b
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 5a581652bfd084118b47b5693a2b2ca9e92feda9
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771424"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751178"
 ---
 # <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-azure-migrate-discovery-and-assessment"></a>教程：使用 Azure Migrate：发现和评估发现 Google Cloud Platform（GCP）实例
 
@@ -111,7 +111,7 @@ ms.locfileid: "104771424"
    ![用于项目名称和区域的框](./media/tutorial-discover-gcp/new-project.png)
 
 6. 选择“创建”。
-7. 等待几分钟，让项目部署完成。 默认会将“Azure Migrate：发现和评估”工具添加到新项目。
+7. 等待几分钟，让项目完成部署。 默认会将“Azure Migrate：发现和评估”工具添加到新项目。
 
 ![显示默认情况下已添加的服务器评估工具的页面](./media/tutorial-discover-gcp/added-tool.png)
 
@@ -176,7 +176,7 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate：发现和评估�
 
 - 安装用于 GCP 服务器发现和评估的代理和 Web 应用程序。
 - 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
-- 下载并安装 IIS 可重写模块。 [了解详细信息](https://www.microsoft.com/download/details.aspx?id=7435)。
+- 下载并安装 IIS 可重写模块。
 - 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置详细信息。
 - 在路径下创建以下文件：
     - **配置文件**：%Programdata%\Microsoft Azure\Config

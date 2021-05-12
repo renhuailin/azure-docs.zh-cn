@@ -4,19 +4,21 @@ description: 本文提供 Azure Web 应用程序防火墙 (WAF) 的概述
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 03/18/2020
+ms.date: 05/11/2021
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 49024c86d09f5cdd9e8b04d5a49f60021660b0c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7bcaf46ef6860a9546179b86d6293d24c0064c0c
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "79475781"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751520"
 ---
 # <a name="what-is-azure-web-application-firewall"></a>什么是 Azure Web 应用程序防火墙？
 
 Web 应用程序防火墙 (WAF) 为 Web 应用程序提供集中保护，使其免受常见攻击和漏洞的侵害。 Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标。 SQL 注入和跨站点脚本是最常见的攻击。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWCwkM]
 
 ![WAF 概述](media/overview/wafoverview.png)
 

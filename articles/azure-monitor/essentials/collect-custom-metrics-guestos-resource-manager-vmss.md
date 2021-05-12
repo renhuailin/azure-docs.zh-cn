@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
-ms.openlocfilehash: c5f536295bce07e70606f1ff286b08f8465d59f9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c3a42de2ac948a583f9d2de130626f37658dfc9e
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048924"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109732247"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>使用 Windows 虚拟机规模集的 Azure 资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 
@@ -35,7 +35,7 @@ ms.locfileid: "102048924"
 Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志路由到不同位置。 以下步骤说明如何通过资源管理器模板和 PowerShell 来使用新的 Azure Monitor 数据接收器部署 VM。 
 
 ## <a name="author-a-resource-manager-template"></a>创作资源管理器模板 
-对于本示例，可以使用公开发布的[示例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-autoscale)：  
+对于本示例，可以使用公开发布的[示例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-windows-autoscale)：  
 
 - **Azuredeploy.json** 是用于部署虚拟机规模集的预配置资源管理器模板。
 

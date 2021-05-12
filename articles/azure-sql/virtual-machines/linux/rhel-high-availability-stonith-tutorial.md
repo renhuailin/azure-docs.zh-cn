@@ -7,12 +7,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: 889df16191104ca5b335d067abe0f3d1311c4603
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 095e746e3cb40767fe1afb9c6fbd75cd2c1450d4
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450100"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736788"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教程：在 Azure 中的 RHEL 虚拟机上为 SQL Server 配置可用性组 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -527,7 +527,7 @@ JSON 文件的内容类似于：
 - 请将 `<filename>` 替换为该文件的名称。
 - 如果执行该命令所在的路径不是该文件所保存到的文件夹，请在该命令中包含该文件的文件夹路径。
 
-```bash
+```azurecli-interactive
 az role definition create --role-definition "<filename>.json"
 ```
 

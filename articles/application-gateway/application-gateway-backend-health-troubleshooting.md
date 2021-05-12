@@ -8,18 +8,17 @@ ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 87c022ee7ccf3f1de2d9420ee799157ba96aa353
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 3bb3a89443cdefeedbe5df254d215dfcec770983
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108317642"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737840"
 ---
-<a name="troubleshoot-backend-health-issues-in-application-gateway"></a>排查应用程序网关中的后端运行状况问题
-==================================================
+# <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>排查应用程序网关中的后端运行状况问题
 
-<a name="overview"></a>概述
---------
+## <a name="overview"></a>概述
+
 
 默认情况下，Azure 应用程序网关会探测后端服务器，以检查其运行状态，以及它们是否已准备好为请求提供服务。 用户还可以创建自定义探测，并指定主机名、要探测的路径，以及表示正常的状态代码。 在每种情况下，如果后端服务器未成功响应，则应用程序网关会将该服务器标记为“不正常”，并停止向其转发请求。 服务器成功开始响应后，应用程序网关将继续转发请求。
 
@@ -37,8 +36,7 @@ ms.locfileid: "108317642"
 
 如果服务器的后端运行状态为“正常”，则表示应用程序网关会将请求转发到该服务器。 但是，如果后端池中所有服务器的后端运行状况为“不正常”或未知，则在尝试访问应用程序时，你可能会遇到问题。 本文将描述显示的每个错误的症状、原因和解决方法。
 
-<a name="backend-health-status-unhealthy"></a>后端运行状态：不正常
--------------------------------
+## <a name="backend-health-status-unhealthy"></a>后端运行状态：不正常
 
 如果后端运行状态为“不正常”，门户视图将如以下屏幕截图所示：
 
@@ -77,6 +75,7 @@ BackendAddressPoolsText : [
                             }
                         ]
 ```
+
 后端池中所有服务器的后端服务器状态都为“不正常”后，请求将不会转发到这些服务器，并且应用程序网关会向请求方客户端返回“502 错误的网关”错误。 若要排查此问题，请检查“后端运行状况”选项卡的“详细信息”列。 
 
 “详细信息”列中显示的消息提供有关问题的更详细见解，根据这些信息，可以着手排查问题。
@@ -84,9 +83,10 @@ BackendAddressPoolsText : [
 > [!NOTE]
 > 默认探测请求将以“\<protocol\>://127.0.0.1:\<port\>/”格式发送。 例如，对于端口 80 上的 HTTP 探测，格式为 http://127.0.0.1:80 。 只将 HTTP 状态代码 200 至 399 视为正常。 协议和目标端口继承自 HTTP 设置。 如果你希望应用程序网关探测不同的协议、主机名或路径，并识别其他状态代码为正常，请配置一个自定义探测，并将其关联到 HTTP 设置。
 
-<a name="error-messages"></a>错误消息
-------------------------
-#### <a name="backend-server-timeout"></a>后端服务器超时
+## <a name="error-messages"></a>Error messages
+
+
+### <a name="backend-server-timeout"></a>后端服务器超时
 
 **消息：** 后端响应应用程序网关运行状况探测所花费的时间超过了探测设置中的超时阈值。
 
@@ -104,7 +104,7 @@ BackendAddressPoolsText : [
 
 1.  保存自定义探测设置，检查后端运行状况现在是否显示为“正常”。
 
-#### <a name="dns-resolution-error"></a>DNS 解析错误
+### <a name="dns-resolution-error"></a>DNS 解析错误
 
 **消息：** 应用程序网关无法为此后端创建探测。 如果未正确输入后端的 FQDN，则往往会发生这种情况。 
 
@@ -122,7 +122,7 @@ BackendAddressPoolsText : [
 
 1.  如果域是专用或内部域，请尝试从同一虚拟网络中的 VM 解析它。 如果能够解析，请重启应用程序网关，然后再次检查。 若要重启应用程序网关，需要使用相关链接资源中所述的 PowerShell 命令[停止](/powershell/module/azurerm.network/stop-azurermapplicationgateway)再[启动](/powershell/module/azurerm.network/start-azurermapplicationgateway)它。
 
-#### <a name="tcp-connect-error"></a>TCP 连接错误
+### <a name="tcp-connect-error"></a>TCP 连接错误
 
 **消息：** 应用程序网关无法连接到后端。
 请检查后端是否在用于探测的端口上作出响应。
@@ -188,7 +188,7 @@ BackendAddressPoolsText : [
 
 若要创建自定义探测，请遵循[这些步骤](./application-gateway-create-probe-portal.md)。
 
-#### <a name="http-response-body-mismatch"></a>HTTP 响应正文不匹配
+### <a name="http-response-body-mismatch"></a>HTTP 响应正文不匹配
 
 **消息：** 后端 HTTP 响应的正文与探测设置不匹配。 收到的响应正文不包含 {string}。
 
@@ -208,7 +208,7 @@ BackendAddressPoolsText : [
 > 对于与 TLS 相关的所有错误消息，若要详细了解 SNI 行为以及 v1 与 v2 SKU 之间的差异，请参阅 [TLS 概述](ssl-overview.md)页。
 
 
-#### <a name="backend-server-certificate-invalid-ca"></a>后端服务器证书无效的 CA
+### <a name="backend-server-certificate-invalid-ca"></a>后端服务器证书无效的 CA
 
 **消息：** 后端使用的服务器证书未由已知的证书颁发机构 (CA) 签名。 通过上传后端使用的服务器证书的根证书，允许应用程序网关上的后端。
 
@@ -241,7 +241,7 @@ BackendAddressPoolsText : [
 
 有关在应用程序网关中提取和上传受信任的根证书的详细信息，请参阅[导出受信任的根证书（适用于 v2 SKU）](./certificates-for-backend-authentication.md#export-trusted-root-certificate-for-v2-sku)。
 
-#### <a name="trusted-root-certificate-mismatch"></a>受信任的根证书不匹配
+### <a name="trusted-root-certificate-mismatch"></a>受信任的根证书不匹配
 
 **消息：** 后端使用的服务器证书的根证书与添加到应用程序网关的受信任根证书不匹配。 请确保添加正确的根证书，以将后端列入允许列表。
 
@@ -255,6 +255,7 @@ BackendAddressPoolsText : [
 遵循上述方法中的步骤 1-11 将正确的受信任根证书上传到应用程序网关。
 
 有关在应用程序网关中提取和上传受信任的根证书的详细信息，请参阅[导出受信任的根证书（适用于 v2 SKU）](./certificates-for-backend-authentication.md#export-trusted-root-certificate-for-v2-sku)。
+
 > [!NOTE]
 > 如果后端服务器在 TLS 握手期间未交换完整的证书链（包括“根”->“中间”（如果适用）->“叶”），则也可能会出现此错误。 若要验证，可在任何客户端中使用 OpenSSL 命令，并使用应用程序网关探测中配置的设置连接到后端服务器。
 
@@ -262,6 +263,7 @@ BackendAddressPoolsText : [
 ```
 OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```
+
 如果输出未显示要返回的完整证书链，请使用完整链（包括根证书）再次导出证书。 在后端服务器中配置该证书。 
 
 ```
@@ -281,7 +283,7 @@ OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
   \-----END CERTIFICATE-----
 ```
 
-#### <a name="backend-certificate-invalid-common-name-cn"></a>后端证书的公用名 (CN) 无效
+### <a name="backend-certificate-invalid-common-name-cn"></a>后端证书的公用名 (CN) 无效
 
 **消息：** 后端证书的公用名 (CN) 与探测的主机标头不匹配。
 
@@ -322,7 +324,7 @@ OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 
 2.  在显示的属性中找到证书的 CN，并在 HTTP 设置的主机名字段中输入相同的 CN。 如果这不是网站所需的主机名，则必须获取该域的证书，或者在自定义探测或 HTTP 设置配置中输入正确的主机名。
 
-#### <a name="backend-certificate-is-invalid"></a>后端证书无效
+### <a name="backend-certificate-is-invalid"></a>后端证书无效
 
 **消息：** 后端证书无效。 当前日期不在证书上的“生效”和“失效”日期范围内。\"\"\"\"
 
@@ -336,7 +338,7 @@ OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 
 1.  使用证书旁边的“删除”图标删除旧证书，然后选择“保存”。 
 
-#### <a name="certificate-verification-failed"></a>证书验证失败
+### <a name="certificate-verification-failed"></a>证书验证失败
 
 **消息：** 无法验证后端证书的有效性。 若要找出原因，请在 OpenSSL 诊断信息中检查与错误代码 {errorCode} 相关的消息
 
@@ -344,8 +346,8 @@ OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 
 **解决方案：** 若要解决此问题，请验证是否正确创建了服务器上的证书。 例如，可以使用 [OpenSSL](https://www.openssl.org/docs/man1.0.2/man1/verify.html) 来验证证书及其属性，并尝试将证书重新上传到应用程序网关的 HTTP 设置。
 
-<a name="backend-health-status-unknown"></a>后端运行状态：未知
--------------------------------
+## <a name="backend-health-status-unknown"></a>后端运行状态：未知
+
 如果后端运行状况显示为“未知”，门户视图将如以下屏幕截图所示：
 
 ![应用程序网关后端运行状况 - 未知](./media/application-gateway-backend-health-troubleshooting/appgwunknown.png)
@@ -396,7 +398,6 @@ OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 
 1.  若要验证应用程序网关是否正常且正在运行，请在门户中转到“资源运行状况”选项，并验证状态是否为“正常”。  如果看到“不正常”或“降级”状态，请[联系支持人员](https://azure.microsoft.com/support/options/)。 
 
-<a name="next-steps"></a>后续步骤
-----------
+## <a name="next-steps"></a>后续步骤
 
 详细了解[应用程序网关诊断和日志记录](./application-gateway-diagnostics.md)。

@@ -3,16 +3,16 @@ title: 从 AWS Marketplace 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Amazon Marketplace Web 服务复制到支持的接收器数据存储。
 ms.service: data-factory
 ms.topic: conceptual
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
-ms.openlocfilehash: c25bdac0b52af425557464f17350fb8a46244f2f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6dae2f6e4f17149fcd543ad4c34ff6acf3d6f775
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100364335"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482392"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Marketplace Web 服务复制数据
 
@@ -33,7 +33,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 ## <a name="getting-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 Amazon Marketplace Web 服务连接器的数据工厂实体，以下部分提供了有关用于定义这些实体的属性的详细信息。
 
@@ -119,7 +119,7 @@ Amazon Marketplace Web 服务链接服务支持以下属性：
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：AmazonMWSSource  | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`。 | 否（如果指定了数据集中的“tableName”） |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

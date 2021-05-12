@@ -4,12 +4,12 @@ description: 介绍如何在 Azure 资源管理器模板中部署资源。 它�
 ms.topic: conceptual
 ms.date: 01/13/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8768b3a5c8cdd2ac552c03faefcb1a31d5ef5857
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 77985020324efde1b6df47bd10a70015cc0aa2a4
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319208"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754066"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>使用 ARM 模板进行资源组部署
 
@@ -51,7 +51,7 @@ ms.locfileid: "108319208"
 az deployment group create \
   --name demoRGDeployment \
   --resource-group ExampleGroup \
-  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json" \
   --parameters storageAccountType=Standard_GRS
 ```
 
@@ -63,7 +63,7 @@ az deployment group create \
 New-AzResourceGroupDeployment `
   -Name demoRGDeployment `
   -ResourceGroupName ExampleGroup `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json `
   -storageAccountType Standard_GRS `
 ```
 

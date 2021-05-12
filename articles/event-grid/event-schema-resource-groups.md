@@ -3,12 +3,12 @@ title: 充当事件网格源的 Azure 资源组
 description: 介绍针对 Azure 事件网格中的资源组事件提供的属性
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.openlocfilehash: 4c1990909dc555e9e2a6d09538b807ba7e07ce83
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7616999d820075524f6efadccd98e04c09732032
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363213"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109733500"
 ---
 # <a name="azure-resource-group-as-an-event-grid-source"></a>充当事件网格源的 Azure 资源组
 
@@ -467,7 +467,7 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 | [Azure CLI：订阅资源组的事件并筛选资源](./scripts/event-grid-cli-resource-group-filter.md) | 用于订阅资源组的事件并筛选一个资源的事件的示例脚本。 |
 | [PowerShell：订阅资源组的事件](./scripts/event-grid-powershell-resource-group.md) | 用于订阅资源组的事件的示例脚本。 它将事件发送到 WebHook。 |
 | [PowerShell：订阅资源组的事件并筛选资源](./scripts/event-grid-powershell-resource-group-filter.md) | 用于订阅资源组的事件并筛选一个资源的事件的示例脚本。 |
-| [资源管理器模板：资源订阅](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook) | 订阅 Azure 订阅的事件或资源组。 它将事件发送到 WebHook。 |
+| [资源管理器模板：资源订阅](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.eventgrid/event-grid-resource-events-to-webhook) | 订阅 Azure 订阅的事件或资源组。 它将事件发送到 WebHook。 |
 
 ## <a name="next-steps"></a>后续步骤
 

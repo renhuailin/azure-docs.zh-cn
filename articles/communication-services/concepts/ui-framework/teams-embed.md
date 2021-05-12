@@ -7,12 +7,12 @@ ms.author: chpalm
 ms.date: 11/16/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 8301f81b21db50814df1bc764cc1fae38b4f14de
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 816c088a47c2442e4147c91c40e39741e9dbc5ea
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307633"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109484390"
 ---
 # <a name="teams-embed"></a>Teams Embed
 
@@ -33,6 +33,6 @@ Teams Embed 提供了 Microsoft Teams 会议支持的大多数功能，其中包
 - 配置音频和视频设备的会议体验
 - [视频背景](https://support.microsoft.com/office/change-your-background-for-a-teams-meeting-f77a2381-443a-499d-825e-509a140f4780)：允许参与者模糊或替换其背景
 - [用于视频库的多个选项](https://support.microsoft.com/office/using-video-in-microsoft-teams-3647fc29-7b92-4c26-8c2d-8a596904cdae)：大图库、协同、焦点、单边锁定和聚光灯
-- [内容共享](https://support.microsoft.com/en-us/office/share-content-in-a-meeting-in-teams-fcc2bf59-aecd-4481-8f99-ce55dd836ce8)：允许参与者共享其屏幕
+- [内容共享](https://support.microsoft.com/office/share-content-in-a-meeting-in-teams-fcc2bf59-aecd-4481-8f99-ce55dd836ce8)：允许参与者共享其屏幕
 
 有关此 UI 与其他 Azure 通信 SDK 的比较信息，请参阅 [UI SDK 概念介绍](ui-sdk-overview.md)。 

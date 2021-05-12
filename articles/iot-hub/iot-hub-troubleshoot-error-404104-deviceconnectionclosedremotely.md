@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
-ms.openlocfilehash: f1acd7b309a31dfe437f1f82cb9bbf73f4a5cca5
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 9edbcf30b7108c34fedddba365c20922a211777d
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061071"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109485380"
 ---
 # <a name="404104-deviceconnectionclosedremotely"></a>404104 DeviceConnectionClosedRemotely
 
@@ -38,7 +38,7 @@ ms.locfileid: "106061071"
 
 ### <a name="cause-1"></a>原因 1
 
-[用来连接到 IoT 中心的 SAS 令牌](iot-hub-devguide-security.md#security-tokens)过期，这导致 IoT 中心将设备断开连接。 当设备刷新令牌时，将重新建立连接。 例如，[对于 C SDK，SAS 令牌默认情况下每小时过期](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-authentication)，这会导致定期断开连接。
+[用来连接到 IoT 中心的 SAS 令牌](iot-hub-dev-guide-sas.md#security-tokens)过期，这导致 IoT 中心将设备断开连接。 当设备刷新令牌时，将重新建立连接。 例如，[对于 C SDK，SAS 令牌默认情况下每小时过期](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-authentication)，这会导致定期断开连接。
 
 若要了解详细信息，请参阅 [401003 IoTHubUnauthorized 原因](iot-hub-troubleshoot-error-401003-iothubunauthorized.md#cause-1)。
 

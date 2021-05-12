@@ -4,17 +4,17 @@ description: 连接到已启用 Azure Arc 的 SQL 托管实例
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-author: vin-yu
-ms.author: vinsonyu
+author: rothja
+ms.author: jroth
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: abd27e15ccf5b421e69e78b2b726d192ffdecacb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4edf23b3c5f8dd2d683b90cde4dcb3d9be94ca3e
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92372355"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109733867"
 ---
 # <a name="connect-to-azure-arc-enabled-sql-managed-instance"></a>连接到已启用 Azure Arc 的 SQL 托管实例
 

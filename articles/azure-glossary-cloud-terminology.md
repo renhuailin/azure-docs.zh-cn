@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 785c87e8136430557af819cd8c7ab1db8f54c060
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4240e7ad53725494a2b9b04d827fef0395c1bd2
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102507715"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483166"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 词汇表：Azure 平台上的云术语字典
 
@@ -119,7 +119,7 @@ Resource Manager 中的容器，用于保存应用程序的相关资源。 资�
 请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/)
 
 ## <a name="shared-access-signature-sas"></a><a name="sas"></a>共享访问签名 (SAS)
-使用该签名能够在不公开帐户密钥的情况下，授予对资源的有限访问权限。 例如，[Azure 存储使用 SAS](./storage/common/storage-sas-overview.md) 授予客户端对 Blob 等对象的访问权限。 [IoT 中心使用 SAS](iot-hub/iot-hub-devguide-security.md#security-tokens) 授予设备发送遥测数据的权限。
+使用该签名能够在不公开帐户密钥的情况下，授予对资源的有限访问权限。 例如，[Azure 存储使用 SAS](./storage/common/storage-sas-overview.md) 授予客户端对 Blob 等对象的访问权限。 [IoT 中心使用 SAS](iot-hub/iot-hub-dev-guide-sas.md#security-tokens) 授予设备发送遥测数据的权限。
 
 ## <a name="storage-account"></a>存储帐户
 该帐户可授予对 Azure 存储中的 Azure Blob、队列、表和文件服务的访问权限。 存储帐户名称定义 Azure 存储数据对象的唯一命名空间。  

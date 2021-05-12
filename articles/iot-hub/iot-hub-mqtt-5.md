@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: jlian
-ms.openlocfilehash: fb2cc0b81083936a67bcd465e0408b9f4b53996b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fbe51d51da55d6708bfae96d0fec15eec9896602
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96603206"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109484840"
 ---
 # <a name="iot-hub-mqtt-5-support-overview-preview"></a>IoT 中心 MQTT 5 支持概述（预览）
 
@@ -111,7 +111,7 @@ IoT 中心在完成身份验证并获取为连接提供支持所需的数据后�
 
 #### <a name="sas"></a>SAS
 
-对于基于 SAS 的身份验证，客户端必须提供连接上下文的签名。 这用于证明 MQTT 连接的真实性。 签名必须基于客户端在 IoT 中心的配置中的两个身份验证密钥之一，或基于[共享访问策略](iot-hub-devguide-security.md)的两个共享访问密钥之一。
+对于基于 SAS 的身份验证，客户端必须提供连接上下文的签名。 这用于证明 MQTT 连接的真实性。 签名必须基于客户端在 IoT 中心的配置中的两个身份验证密钥之一，或基于[共享访问策略](iot-hub-dev-guide-sas.md)的两个共享访问密钥之一。
 
 要签名的字符串必须采用如下格式：
 

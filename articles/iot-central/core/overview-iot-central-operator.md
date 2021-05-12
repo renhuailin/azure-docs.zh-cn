@@ -8,16 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: b8692973f187743e282de6f8e54a55363cc3105b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b29c9ceb5ad8cd7adb38582d087e91c2fe6e8b1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104669928"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743464"
 ---
 # <a name="iot-central-operator-guide"></a>IoT Central 操作员指南
-
-*本文适用于操作员。*
 
 IoT Central 应用程序使你可以在设备整个生命周期内监视和管理数百万台设备。 本指南面向使用 IoT Central 应用程序管理 IoT 设备的操作员。
 

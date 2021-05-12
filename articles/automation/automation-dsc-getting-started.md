@@ -5,18 +5,18 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: ce6a33b569a86cd539de99264dd8e7f583559a6f
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 8ff365200828b786b4cf770508e5a811983abd58
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108018324"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109732733"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Azure Automation State Configuration 入门
 
 本文提供了关于使用 Azure Automation State Configuration 执行最常见任务的分步指南，例如创建、导入、编译配置、启用要管理的计算机和查看报告。 如需简要了解 State Configuration，请参阅 [State Configuration 概述](automation-dsc-overview.md)。 有关 Desired State Configuration (DSC) 文档，请参阅 [Windows PowerShell Desired State Configuration 概述](/powershell/scripting/dsc/overview/overview)。
 
-如果需要一个已经设置好的示例环境，而不想按照本文所述步骤进行操作，则可使用 [Azure 自动化托管节点模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration)。 此模板设置了一个完整的 State Configuration (DSC) 环境，包括一个由 State Configuration (DSC) 管理的 Azure VM。
+如果需要一个已经设置好的示例环境，而不想按照本文所述步骤进行操作，则可使用 [Azure 自动化托管节点模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.automation/automation-configuration)。 此模板设置了一个完整的 State Configuration (DSC) 环境，包括一个由 State Configuration (DSC) 管理的 Azure VM。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -71,7 +71,7 @@ ms.locfileid: "108018324"
 
    ![**导入配置**边栏选项卡的屏幕截图](./media/automation-dsc-getting-started/AddConfig.png)
 
-1. 单击“确定”。
+1. 单击 **“确定”** 。
 
 ## <a name="view-a-configuration-in-azure-automation"></a>查看 Azure 自动化中的配置
 
@@ -216,7 +216,7 @@ Azure 将启动启用 VM 的过程。 完成后，VM 会显示在自动化帐户
 
 ## <a name="unregister-a-node"></a>注销节点
 
-如果不想让某个节点继续受 State Configuration 管理，可以注销该节点。 请参阅[如何从自动化 State Configuration 中删除配置和节点](./how-to/remove-desired-state-configuration-package.md)。
+如果不想让某个节点继续受 State Configuration 管理，可以注销该节点。 请参阅[如何从自动化 State Configuration 中删除配置和节点](./state-configuration/remove-node-and-configuration-package.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

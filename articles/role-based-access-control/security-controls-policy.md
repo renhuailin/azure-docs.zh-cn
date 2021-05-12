@@ -1,18 +1,18 @@
 ---
 title: Azure RBAC 的 Azure Policy 法规遵从性控制措施
 description: 列出可用于 Azure 基于角色的访问控制 (Azure RBAC) 的 Azure Policy 法规遵从性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 04/28/2021
+ms.date: 05/04/2021
 ms.topic: sample
 author: rolyon
 ms.author: rolyon
 ms.service: role-based-access-control
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: bd5c7bf49937546fb06483c4e29a16168efe122d
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 11ddb62d53b7312911af87324d65f7c954c35b58
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108178155"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754806"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-rbac"></a>Azure RBAC 的 Azure Policy 法规遵从性控制措施
 

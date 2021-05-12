@@ -2,13 +2,13 @@
 title: 使用 Azure CLI 和模板部署资源
 description: 使用 Azure 资源管理器和 Azure CLI 将资源部署到 Azure。 资源在资源管理器模板或 Bicep 文件中定义。
 ms.topic: conceptual
-ms.date: 03/04/2021
-ms.openlocfilehash: d0c48a5cf05d6cec495a7a96e181910a0849a1ac
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.date: 03/25/2021
+ms.openlocfilehash: ddcb9adad545f27dfe29f3a9354520b0e141e933
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521690"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108737074"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>通过 ARM 模板和 Azure CLI 来部署资源
 
@@ -24,13 +24,13 @@ ms.locfileid: "102521690"
 
 可将部署目标设定为资源组、订阅、管理组或租户。 根据部署范围使用不同的命令。
 
-* 若要部署到资源组，请使用 [az deployment group create](/cli/azure/deployment/group#az-deployment-group-create)：
+* 若要部署到资源组，请使用 [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create)：
 
   ```azurecli-interactive
   az deployment group create --resource-group <resource-group-name> --template-file <path-to-template-or-bicep>
   ```
 
-* 若要部署到订阅，请使用 [az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create)：
+* 若要部署到订阅，请使用 [az deployment sub create](/cli/azure/deployment/sub#az_deployment_sub_create)：
 
   ```azurecli-interactive
   az deployment sub create --location <location> --template-file <path-to-template-or-bicep>
@@ -38,7 +38,7 @@ ms.locfileid: "102521690"
 
   有关订阅级部署的详细信息，请参阅[在订阅级别创建资源组和资源](deploy-to-subscription.md)。
 
-* 若要部署到管理组，请使用 [az deployment mg create](/cli/azure/deployment/mg#az-deployment-mg-create)：
+* 若要部署到管理组，请使用 [az deployment mg create](/cli/azure/deployment/mg#az_deployment_mg_create)：
 
   ```azurecli-interactive
   az deployment mg create --location <location> --template-file <path-to-template-or-bicep>
@@ -46,7 +46,7 @@ ms.locfileid: "102521690"
 
   有关管理组级部署的详细信息，请参阅[在管理组级别创建资源](deploy-to-management-group.md)。
 
-* 若要部署到租户，请使用 [az deployment tenant create](/cli/azure/deployment/tenant#az-deployment-tenant-create)：
+* 若要部署到租户，请使用 [az deployment tenant create](/cli/azure/deployment/tenant#az_deployment_tenant_create)：
 
   ```azurecli-interactive
   az deployment tenant create --location <location> --template-file <path-to-template-or-bicep>
@@ -85,9 +85,11 @@ az deployment group create \
 ## <a name="deploy-remote-template"></a>部署远程模板
 
 > [!NOTE]
-> 目前，Azure CLI 不支持部署远程 Bicep 文件。 若要部署远程 Bicep 文件，请先使用 CLI Bicep 将 Bicep 文件编译为 JSON 模板。
+> 目前，Azure CLI 不支持部署远程 Bicep 文件。 使用 [Bicep CLI](./bicep-install.md#development-environment) 将 Bicep 文件编译为 JSON 模板，然后将 JSON 文件加载到远程位置。
 
 你可能更愿意将 ARM 模板存储在外部位置，而不是存储在本地计算机上。 可以将模板存储在源控件存储库（例如 GitHub）中。 另外，还可以将其存储在 Azure 存储帐户中，以便在组织中共享访问。
+
+[!INCLUDE [Deploy templates in private GitHub repo](../../../includes/resource-manager-private-github-repo-templates.md)]
 
 如果要部署到不存在的资源组，请创建该资源组。 资源组名称只能包含字母数字字符、句点、下划线、连字符和括号。 它最多可以包含 90 个字符。 名称不能以句点结尾。
 
@@ -101,7 +103,7 @@ az group create --name ExampleGroup --location "Central US"
 az deployment group create \
   --name ExampleDeployment \
   --resource-group ExampleGroup \
-  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json" \
   --parameters storageAccountType=Standard_GRS
 ```
 

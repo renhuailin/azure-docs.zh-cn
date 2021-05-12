@@ -1,17 +1,17 @@
 ---
 title: 使用 Azure 数据工厂 UI 创建 Azure 数据工厂
 description: 创建包含管道的数据工厂。该管道可将数据从 Azure Blob 存储中的一个位置复制到另一个位置。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: quickstart
 ms.date: 12/14/2020
-ms.author: jingwang
-ms.openlocfilehash: 8b33005b7f0d08e6da963457813b012199d89f5f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.author: jianleishen
+ms.openlocfilehash: 888350dacd2437f585c6571b991ae06eed2d32ab
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104654993"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482158"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>快速入门：使用 Azure 数据工厂 UI 创建数据工厂 
 
@@ -26,7 +26,7 @@ ms.locfileid: "104654993"
 > [!NOTE]
 > 如果你对 Azure 数据工厂不太熟悉，请在学习本快速入门之前参阅 [Azure 数据工厂简介](introduction.md)。 
 
-[!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
+[!INCLUDE [data-factory-quickstart-prerequisites](includes/data-factory-quickstart-prerequisites.md)] 
 
 ### <a name="video"></a>视频 
 观看以下视频，了解数据工厂 UI： 
@@ -67,7 +67,7 @@ ms.locfileid: "104654993"
 
 1. 选择“创作和监视”磁贴，在单独的浏览器选项卡中启动 Azure 数据工厂用户界面 (UI) 应用程序。
    
-    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂的主页，其中包含创作和监视磁贴。":::
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂的主页，其中包含“创作和监视”磁贴。":::
    
    > [!NOTE]
    > 如果你看到 Web 浏览器停留在“正在授权”状态，请清除“阻止第三方 Cookie 和站点数据”复选框。 或者使其保持选中状态，为 **login.microsoftonline.com** 创建一个例外，然后再次尝试打开该应用。
@@ -215,7 +215,7 @@ ms.locfileid: "104654993"
 
 1. 在“新建触发器”页上选中“已激活”复选框，然后选择“确定”。   
 
-    :::image type="content" source="./media/quickstart-create-data-factory-portal/trigger-settings-next.png" alt-text="新建触发器设置。":::   
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/trigger-settings-next.png" alt-text="“新建触发器”设置。":::   
 1. 查看警告消息，然后选择“确定”。
 
 1. 选择“全部发布”，将所做的更改发布到数据工厂。 

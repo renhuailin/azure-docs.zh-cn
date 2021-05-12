@@ -2,20 +2,20 @@
 title: 启用了 Azure Arc 的托管实例高可用性
 titleSuffix: Deploy Azure Arc enabled Managed Instance with high availability
 description: 了解如何使用高可用性部署已启用 Azure Arc 的托管实例。
-author: vin-yu
-ms.author: vinsonyu
+author: rothja
+ms.author: jroth
 ms.reviewer: mikeray
 ms.date: 03/02/2021
 ms.topic: conceptual
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.openlocfilehash: 92f5c900238fc5d40e22870e2f00f8adeb5d335f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bd4541f8c8471c68ed539f407d9ff79684ccb3bf
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102032188"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109733492"
 ---
 # <a name="azure-arc-enabled-managed-instance-high-availability"></a>启用了 Azure Arc 的托管实例高可用性
 

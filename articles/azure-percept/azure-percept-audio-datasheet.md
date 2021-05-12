@@ -1,17 +1,17 @@
 ---
 title: Azure Percept 音频数据表
 description: 有关详细设备规格，请查看 Azure Percept 音频数据表
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: reference
 ms.date: 02/16/2021
-ms.openlocfilehash: 3e72aea657b82c2111bea1493b5654ec667c491b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b641691db8dab0c5d166edca90988cbaea279db0
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102425271"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108742420"
 ---
 # <a name="azure-percept-audio-datasheet"></a>Azure Percept 音频数据表
 

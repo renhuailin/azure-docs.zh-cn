@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/11/2021
+ms.date: 05/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 7c6f84ee3bb4920dbe57221b8b0bbf9f5880742b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da3e88706c4a7820920191df419a448a08b9f675
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101652982"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736585"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>教程：Azure Active Directory 单一登录 (SSO) 与 PureCloud by Genesys 集成
 
@@ -79,36 +79,39 @@ ms.locfileid: "101652982"
 1. 若要在 IDP 发起模式下配置应用程序，请在“基本 SAML 配置”部分输入以下字段的值：  
 
     a. 在“标识符”框中，输入与你所在区域对应的 URL：
-
-    ```http
-    https://login.mypurecloud.com/saml
-    https://login.mypurecloud.de/saml
-    https://login.mypurecloud.jp/saml
-    https://login.mypurecloud.ie/saml
-    https://login.mypurecloud.au/saml
-    ```
+    
+    | 标识符 URL |
+    |---|
+    | https://login.mypurecloud.com/saml |
+    | https://login.mypurecloud.de/saml |
+    | https://login.mypurecloud.jp/saml |
+    | https://login.mypurecloud.ie/saml |
+    | https://login.mypurecloud.com.au/saml |
+    |
 
     b. 在“回复 URL”框中，输入与你所在区域对应的 URL：
 
-    ```http
-    https://login.mypurecloud.com/saml
-    https://login.mypurecloud.de/saml
-    https://login.mypurecloud.jp/saml
-    https://login.mypurecloud.ie/saml
-    https://login.mypurecloud.com.au/saml
-    ```
+    | 回复 URL |
+    |---|
+    | https://login.mypurecloud.com/saml |
+    | https://login.mypurecloud.de/saml |
+    | https://login.mypurecloud.jp/saml |
+    | https://login.mypurecloud.ie/saml |
+    | https://login.mypurecloud.com.au/saml |
+    |
 
 1. 若要将应用程序配置为 SP 发起的模式，请选择“设置其他 URL”并执行以下步骤：  
 
     在“登录 URL”框中，输入与你所在区域对应的 URL：
     
-    ```http
-    https://login.mypurecloud.com
-    https://login.mypurecloud.de
-    https://login.mypurecloud.jp
-    https://login.mypurecloud.ie
-    https://login.mypurecloud.com.au
-    ```
+    |登录 URL |
+    |---|
+    | https://login.mypurecloud.com |
+    | https://login.mypurecloud.de |
+    | https://login.mypurecloud.jp |
+    | https://login.mypurecloud.ie |
+    | https://login.mypurecloud.com.au |
+    |
 
 1. PureCloud by Genesys 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表：
 
@@ -139,7 +142,7 @@ ms.locfileid: "101652982"
    1. 在“名称”  字段中，输入 `B.Simon`。  
    1. 在“用户名字段”中，按以下格式输入用户名：username@companydomain.extension  。 例如：`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值   。
-   1. 选择“创建”  。
+   1. 选择“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
