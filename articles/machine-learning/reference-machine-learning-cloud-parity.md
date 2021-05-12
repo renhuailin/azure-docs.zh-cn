@@ -11,12 +11,12 @@ ms.author: andzha
 author: Anurzeuii
 ms.date: 12/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: 88240f9b46997d11f1e7c2d93fa880b004615a11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0a720b1b51c2f1bafa581e75cb8ab00b15a4b2d
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97725014"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109750422"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure 机器学习主权云平等性
 
@@ -180,7 +180,7 @@ ms.locfileid: "97725014"
 | 虚拟网络 (VNet) 训练支持                                | GA               | YES       | 空值        |
 | 虚拟网络 (VNet) 推理支持                               | GA               | YES       | 空值        |
 | 对终结点身份验证评分                                            | 公共预览版   | YES       | 空值        |
-| 工作区专用链接                                                     | 公共预览版   | 是        | 空值        |
+| 工作区专用链接                                                     | GA               | 是        | 空值        |
 | VNet 后的 ACI                                                            | 公共预览版   | 是        | 空值        |
 | VNet 后的 ACR                                                            | 公共预览版   | 是        | 空值        |
 | AKS 群集的专用 IP                                                  | 公共预览版   | 是        | 空值        |

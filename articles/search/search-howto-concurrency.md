@@ -10,24 +10,24 @@ ms.topic: conceptual
 ms.date: 01/26/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 52260facc1a458a3ef18b067e6d52e189f5d329c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98881748"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>如何管理 Azure 认知搜索中的并发
 
-管理索引和数据源等 Azure 认知搜索资源时，务必安全地更新资源，尤其是应用程序的不同组件并发访问资源的情况下。 当两个客户端在没有协调的情况下并发更新资源时，可能出现争用条件。 为防止此情况，Azure 认知搜索提供“乐观并发模型”。  对资源没有任何锁定。 相反，每个资源都有一个 ETag 用于标识资源版本，以便您可以表述避免意外覆盖的请求。
+管理索引和数据源等 Azure 认知搜索资源时，务必安全地更新资源，尤其是应用程序的不同组件并发访问资源的情况下。 当两个客户端在没有协调的情况下并发更新资源时，可能出现争用条件。 为防止此情况，Azure 认知搜索提供“乐观并发模型”。  对资源没有任何锁定。 而每个资源均带有一个用于标识资源版本的 ETag，方便你表述那些避免意外覆盖的请求。
 
 > [!Tip]
-> [示例 C# 解决方案](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)中的概念代码阐释了并发控制如何在 Azure 认知搜索中工作。 该代码会创建调用并发控制的条件。 阅读 [下面的代码片段](#samplecode) 可能足以满足大多数开发人员的需求，但如果你想要运行它，请在上编辑 appsettings.js，以添加服务名称和管理 api 密钥。 假设服务 URL 为 `http://myservice.search.windows.net`，服务名称是 `myservice`。
+> [示例 C# 解决方案](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)中的概念代码阐释了并发控制如何在 Azure 认知搜索中工作。 该代码会创建调用并发控制的条件。 对大多数开发人员而言，读取[以下代码片段](#samplecode)可能就已足够，但若想运行它，请编辑 appsettings.json，以添加服务名称和管理员 API 密钥。 假设服务 URL 为 `http://myservice.search.windows.net`，服务名称是 `myservice`。
 
 ## <a name="how-it-works"></a>工作原理
 
-通过对索引、索引器、数据源、技能集和 synonymMap 资源的 API 调用中的访问条件检查来实现开放式并发。
+乐观并发通过写入索引、索引器、数据源、技能组和 synonymMap 资源的 API 调用中的访问条件检查来实现。
 
-所有资源都具有 [*实体标记 (ETag)*](https://en.wikipedia.org/wiki/HTTP_ETag) 提供对象版本信息。 通过先检查 ETag，确保资源的 ETag 与本地副本匹配，可避免典型工作流（获取、本地修改、更新）中的并发更新。
+所有资源均有一个[实体标记 (ETag)](https://en.wikipedia.org/wiki/HTTP_ETag)，它提供对象版本信息。 通过先检查 ETag，确保资源的 ETag 与本地副本匹配，可避免典型工作流（获取、本地修改、更新）中的并发更新。
 
 + REST API 在请求头使用 [ETag](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)。
 
@@ -210,14 +210,14 @@ private static Index AddSynonymMapsToFields(Index index)
 
 ## <a name="next-steps"></a>后续步骤
 
-尝试修改其他示例以执行 Etag 或 AccessCondition 对象。
+尝试修改其他示例来练习 ETags 或 AccessCondition 对象。
 
-+ [dotnet-在 GitHub 上入门](https://github.com/Azure-Samples/search-dotnet-getting-started)。 此存储库包括 "DotNetEtagsExplainer" 项目。
++ [GitHub 上的 search-dotnet-getting-started](https://github.com/Azure-Samples/search-dotnet-getting-started)。 此存储库包括“DotNetEtagsExplainer”项目。
 
-+ [dotnet-GitHub 上的示例](https://github.com/Azure-Samples/azure-search-dotnet-samples) 包含其他 c # 示例。
++ [GitHub 上的 azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) 包含其他 C# 示例。
 
 ## <a name="see-also"></a>另请参阅
 
 + [Common HTTP request and response headers](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)（常见 HTTP 请求和响应标头）
 + [HTTP 状态代码](/rest/api/searchservice/http-status-codes)
-+ [索引操作 (REST API) ](/rest/api/searchservice/index-operations)
++ [索引操作 (REST API)](/rest/api/searchservice/index-operations)

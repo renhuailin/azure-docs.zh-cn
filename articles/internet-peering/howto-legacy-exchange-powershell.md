@@ -1,7 +1,7 @@
 ---
-title: 使用 PowerShell 将旧版 Exchange 对等互连转换为 Azure 资源
+title: 使用 PowerShell 将旧的 Exchange 对等互连转换为 Azure 资源
 titleSuffix: Azure
-description: 使用 PowerShell 将旧版 Exchange 对等互连转换为 Azure 资源
+description: 使用 PowerShell 将旧的 Exchange 对等互连转换为 Azure 资源
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -10,17 +10,17 @@ ms.date: 12/15/2020
 ms.author: prmitiki
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: acc32f4916f5f7f8fe22eebdd1e72db297cac94c
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97590199"
 ---
-# <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-powershell"></a>使用 PowerShell 将旧版 Exchange 对等互连转换为 Azure 资源
+# <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-powershell"></a>使用 PowerShell 将旧的 Exchange 对等互连转换为 Azure 资源
 
-本文介绍如何使用 PowerShell cmdlet 将现有的旧式 Exchange 对等互连转换为 Azure 资源。
+本文介绍如何使用 PowerShell cmdlet 将现有旧的 Exchange 对等互连转换为 Azure 资源。
 
-如果愿意，可以使用 Azure [门户](howto-legacy-exchange-portal.md)完成本指南。
+如果需要，可以使用 Azure [门户](howto-legacy-exchange-portal.md)完成本指南。
 
 ## <a name="before-you-begin"></a>开始之前
 * 在开始配置之前，请查看[先决条件](prerequisites.md)和 [Exchange 对等互连演练](walkthrough-exchange-all.md)。
@@ -34,7 +34,7 @@ ms.locfileid: "97590199"
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
 ### <a name="get-legacy-exchange-peering-for-conversion"></a><a name= get></a>获取要转换的旧 Exchange 对等互连
-此示例演示如何在西雅图对等位置获取旧的 Exchange 对等互连：
+此示例演示如何在西雅图对等互连位置获取旧的 Exchange 对等互连：
 
 ```powershell
 $legacyPeering = Get-AzLegacyPeering -Kind Exchange -PeeringLocation "Seattle"
@@ -58,7 +58,7 @@ $legacyPeering
     ConnectionState          : Active
 ```
 
-### <a name="convert-legacy-peering"></a>转换旧对等互连
+### <a name="convert-legacy-peering"></a>转换旧的对等互连
 此命令可用于将旧的 Exchange 对等互连转换为 Azure 资源：
 
 ```powershell
@@ -70,10 +70,10 @@ $legacyPeering[0] | New-AzPeering `
 
 &nbsp;
 > [!IMPORTANT] 
-> 将旧对等互连转换为 Azure 资源时，不支持修改。
+> 将旧的对等互连转换为 Azure 资源时，不支持修改。
 &nbsp;
 
-此示例响应显示已成功完成端到端预配：
+此示例响应显示了成功完成端到端预配的时间：
 
 ```powershell
     Name                     : SeattleExchangePeering

@@ -1,18 +1,18 @@
 ---
-title: 用于 Azure Data Lake 的 U SQL UDT 和 UDAGG 可编程性指南
-description: 了解 Azure Data Lake Analytics 中的 U SQL UDT 和 UDAGG 可编程性，使你能够创建良好的 SCRIPT.USQL 脚本。
+title: 适用于 Azure Data Lake 的 U-SQL UDT 和 UDAGG 可编程性指南
+description: 了解 Azure Data Lake Analytics 中的 U-SQL UDT 和 UDAGG 可编程性，以便能够创建优质 USQL 脚本。
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/30/2017
 ms.openlocfilehash: 10fcce9a667d9a08318f5adab804f482387052ff
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97606651"
 ---
-# <a name="u-sql-programmability-guide---udt-and-udagg"></a>U-SQL 可编程性指南-UDT 和 UDAGG
+# <a name="u-sql-programmability-guide---udt-and-udagg"></a>U-SQL 可编程性指南 - UDT 和 UDAGG
 
 
 
@@ -115,9 +115,9 @@ public class MyTypeFormatter : IFormatter<MyType>
 }
 ```
 
-`IFormatter`接口使用根类型对对象图进行序列化和反序列化 \<typeparamref name="T"> 。
+`IFormatter` 接口可序列化和反序列化根类型为 \<typeparamref name="T"> 的对象图。
 
-\<typeparam name="T">要进行序列化和反序列化的对象图的根类型。
+\<typeparam name="T">要序列化和反序列化的对象图的根类型。
 
 * **反序列化**：对所提供的流上的数据进行反序列化，并重构对象的图形。
 
@@ -532,7 +532,7 @@ public abstract class IAggregate<T1, T2, TResult> : IAggregate
 ```
 
 * T1：Accumulate 的第一个参数
-* T2：要累积的第二个参数
+* T2：Accumulate 的第二个参数
 * TResult：Terminate 的返回类型
 
 例如：
@@ -612,5 +612,5 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 在此用例场景中，将串联特定用户的类 GUID。
 
 ## <a name="next-steps"></a>后续步骤
-* [U-SQL 可编程性指南-概述](data-lake-analytics-u-sql-programmability-guide.md)
-* [U-SQL 可编程性指南-UDO](data-lake-analytics-u-sql-programmability-guide-UDO.md)
+* [U-SQL 可编程性指南 - 概述](data-lake-analytics-u-sql-programmability-guide.md)
+* [U-SQL 可编程性指南 - UDO](data-lake-analytics-u-sql-programmability-guide-UDO.md)

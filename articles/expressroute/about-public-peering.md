@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: duau
 ms.openlocfilehash: 477145619e1b4d8b41c422389b57a46615597478
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92202542"
 ---
 # <a name="create-and-manage-expressroute-public-peering"></a>创建和管理 ExpressRoute 公共对等互连
@@ -22,10 +22,10 @@ ms.locfileid: "92202542"
 > * [文章 - Microsoft 对等互连](expressroute-circuit-peerings.md#microsoftpeering)
 >
 
-可以参照本文来创建和管理 ExpressRoute 线路的公共对等互连路由配置。 还可以检查状态，以及更新/删除和取消预配对等互连。 本文适用于已弃用公共对等互连之前创建的资源管理器线路。 如果先前存在 (在公共对等互连之前创建的线路) ，则可以使用 [Azure PowerShell](#powershell)、 [Azure CLI](#cli)和 [Azure 门户](#portal)管理/配置公共对等互连。
+可以参照本文来创建和管理 ExpressRoute 线路的公共对等互连路由配置。 还可以检查状态，以及更新/删除和取消预配对等互连。 本文适用于在弃用公共对等互连之前创建的资源管理器线路。 如果先前已有线路（在弃用公共对等互连之前创建），则可以使用 [Azure PowerShell](#powershell)、[Azure CLI](#cli) 和 [Azure 门户](#portal)来管理/配置公共对等互连。
 
 >[!NOTE]
->已弃用公共对等互连。 不能在新的 ExpressRoute 线路上创建公共对等互连。 如果你使用的是新的 ExpressRoute 线路，请将 [Microsoft 对等互连](expressroute-circuit-peerings.md#microsoftpeering) 用于 Azure 服务。
+>公共对等互连已弃用。 不能在新的 ExpressRoute 线路上创建公共对等互连。 如果使用的是新的 ExpressRoute 线路，请改为将 [Microsoft 对等互连](expressroute-circuit-peerings.md#microsoftpeering)用于 Azure 服务。
 >
 
 ## <a name="connectivity"></a>连接
@@ -40,7 +40,7 @@ ms.locfileid: "92202542"
 
 ## <a name="services"></a><a name="services"></a>服务
 
-本部分显示通过公共对等互连提供的服务。 由于不推荐使用公共对等互连，因此不会计划向公共对等互连添加新的或其他服务。 如果你使用公共对等互连，而你要使用的服务只能通过 Microsoft 对等互连获得支持，则必须切换到 Microsoft 对等互连。 有关受支持服务的列表，请参阅 [Microsoft 对等互连](expressroute-faqs.md#microsoft-peering)。
+本部分显示通过公共对等互连提供的服务。 由于公共对等互连已弃用，因此没有计划向公共对等互连添加新的或附加的服务。 如果你使用公共对等互连，而你要使用的服务只能通过 Microsoft 对等互连获得支持，则必须切换到 Microsoft 对等互连。 有关受支持服务的列表，请参阅 [Microsoft 对等互连](expressroute-faqs.md#microsoft-peering)。
 
 支持：
 
@@ -72,7 +72,7 @@ ms.locfileid: "92202542"
 
 [!INCLUDE [CloudShell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-由于不推荐使用公共对等互连，因此无法在新的 ExpressRoute 线路上配置公共对等互连。
+由于公共对等互连已弃用，因此不能在新的 ExpressRoute 线路上配置公共对等互连。
 
 1. 验证是否有已预配且已启用的 ExpressRoute 线路。 使用以下示例：
 

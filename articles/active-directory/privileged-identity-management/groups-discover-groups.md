@@ -15,10 +15,10 @@ ms.date: 08/03/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0c9e2580d2a88fbbab755f0c3df2f923bdc45548
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101688342"
 ---
 # <a name="bring-privileged-access-groups-preview-into-privileged-identity-management"></a>将特权访问组（预览）引入 Privileged Identity Management
@@ -27,7 +27,7 @@ ms.locfileid: "101688342"
 
 ## <a name="identify-groups-to-manage"></a>标识要管理的组
 
-可以在 Azure AD 中创建角色可分配的组，如 [Azure Active Directory 中的创建可分配角色的组](../roles/groups-create-eligible.md)中所述。 你已是组的所有者，以使用 Privileged Identity Management 管理它。
+你可以在 Azure AD 中创建可分配角色的组，如[在 Azure Active Directory 中创建可分配角色的组](../roles/groups-create-eligible.md)中所述。 你已是该组的所有者，可以通过 Privileged Identity Management 对其进行管理。
 
 1. 使用特权角色管理员角色权限[登录到 Azure AD](https://aad.portal.azure.com)。
 1. 选择“组”，然后选择要在 PIM 中管理的可分配角色的组。 可以搜索和筛选列表。
@@ -47,7 +47,7 @@ ms.locfileid: "101688342"
 >
 
 > [!IMPORTANT]
-> 如果从 Azure Active Directory 删除了特权访问组，则可能需要长达24小时的时间，才能从特权访问组 (预览版) 边栏选项卡中删除该组。 
+> 如果从 Azure Active Directory 中删除了特权访问组，则最多可能需要 24 小时才能从“特权访问组(预览)”边栏选项卡中删除该组。 
 >
 
 

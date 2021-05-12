@@ -8,23 +8,23 @@ ms.subservice: security
 ms.custom: seo-lt-2019 sqldbrb=3
 ms.devlang: ''
 ms.topic: conceptual
-author: jaszymas
-ms.author: jaszymas
+author: shohamMSFT
+ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 10/12/2020
-ms.openlocfilehash: 8fbbd7a2aabc9de417f1eefd2513edba3119bfc0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f93d65b4d10c1a8454a8e24b5cb081dae4d6943e
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92791386"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812779"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 的透明数据加密
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 [透明数据加密 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) 通过加密静态数据，帮助保护 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 免受恶意脱机活动的威胁。 它可执行静态数据库、关联备份和事务日志文件的实时加密和解密，无需更改应用程序。 对于所有新部署的 SQL 数据库，默认已启用 TDE；对于 Azure SQL 数据库、Azure SQL 托管实例的旧版数据库，需要手动启用 TDE。 对于 Azure Synapse Analytics，需要手动启用 TDE。
 
-TDE 对页面级数据执行实时 I/O 加密和解密。 将每个页面读入内存时会将其解密，在写入磁盘之前会将其加密。 TDE 使用称为数据库加密密钥 (DEK) 的对称密钥加密整个数据库的存储。 在数据库启动时，已加密的 DEK 被解密，然后用于解密和重新加密 SQL Server 数据库引擎进程中的数据库文件。 DEK 由 TDE 保护器保护。 TDE 保护器是服务托管的证书（服务托管的透明数据加密）或存储在 [Azure Key Vault](../../key-vault/general/secure-your-key-vault.md) 中的非对称密钥（客户管理的透明数据加密）。
+TDE 对页面级数据执行实时 I/O 加密和解密。 将每个页面读入内存时会将其解密，在写入磁盘之前会将其加密。 TDE 使用称为数据库加密密钥 (DEK) 的对称密钥加密整个数据库的存储。 在数据库启动时，已加密的 DEK 被解密，然后用于解密和重新加密 SQL Server 数据库引擎进程中的数据库文件。 DEK 由 TDE 保护器保护。 TDE 保护器是服务托管的证书（服务托管的透明数据加密）或存储在 [Azure Key Vault](../../key-vault/general/security-features.md) 中的非对称密钥（客户管理的透明数据加密）。
 
 对于 Azure SQL 数据库和 Azure Synapse，TDE 保护器在[服务器](logical-servers.md)级别设置，并由该服务器关联的所有数据库继承。 对于 Azure SQL 托管实例，TDE 保护器在实例级别设置，并由该实例上所有加密的数据库继承。 除非另有说明，否则术语“服务器”在整个文档中指的是服务器和实例。
 
@@ -156,4 +156,4 @@ Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还�
 - 有关 TDE 的一般介绍，请参阅[透明数据加密](/sql/relational-databases/security/encryption/transparent-data-encryption)。
 - 若要详细了解 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse 的支持 BYOK 的 TDE，请参阅[支持“创建自己的密钥”的透明数据加密](transparent-data-encryption-byok-overview.md)。
 - 若要开始使用支持“创建自己的密钥”的 TDE，请参阅操作指南[使用 Key Vault 中的自有密钥启用透明数据加密](transparent-data-encryption-byok-configure.md)。
-- 有关 Key Vault 的详细信息，请参阅[保护对密钥保管库的访问](../../key-vault/general/secure-your-key-vault.md)。
+- 有关 Key Vault 的详细信息，请参阅[保护对密钥保管库的访问](../../key-vault/general/security-features.md)。

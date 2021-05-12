@@ -1,0 +1,42 @@
+### YamlMime:Landing
+title: Azure Web PubSub 服务文档
+summary: Azure Web PubSub 服务是一项 Azure 托管服务，可帮助开发人员轻松构建具有实时功能和发布-订阅模式的 Web 应用程序。
+metadata:
+  title: Azure Web PubSub 服务文档
+  description: 根据支持各种语言和框架的 WebSocket 轻松构建和缩放实时 Web 应用。
+  ms.service: azure-web-pubsub
+  ms.topic: landing-page
+  author: yjin81
+  ms.author: yajin1
+  ms.date: 01/27/2021
+  ms.openlocfilehash: 468e003f209f4d1acd3f1f6cb80d8ca166495672
+  ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 04/28/2021
+  ms.locfileid: "108166778"
+landingContent:
+- title: 关于 Azure Web PubSub 服务
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Web PubSub 服务？
+      url: overview.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 通过实时演示入门
+      url: quickstart-live-demo.md
+    - text: 从简单的聊天室无服务器应用程序开始
+      url: quickstart-serverless.md
+  - linkListType: how-to-guide
+    links:
+    - text: 如何创建 Web PubSub 实例
+      url: howto-develop-create-instance.md
+    - text: 发布和订阅消息
+      url: https://azure.github.io/azure-webpubsub/getting-started/publish-messages/js-publish-message
+    - text: 使用子协议
+      url: https://azure.github.io/azure-webpubsub/getting-started/using-pubsub-subprotocol/js-work-with-subprotocols
+    - text: 身份验证和权限
+      url: https://azure.github.io/azure-webpubsub/getting-started/auth-and-permissions/js-auth-and-permissions

@@ -9,17 +9,17 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
 ms.openlocfilehash: 6c07ab4b18c017bd29723d2640129b8e67374e3c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96023646"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>将应用和解决方案从 BizTalk 服务迁移到 Azure 逻辑应用
 
 Microsoft Azure BizTalk 服务 (MABS) 即将停用。 若要将 MABS 集成解决方案移动到 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)，请使用本文中的指南。 
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 BizTalk 服务由两个子服务组成：
 
@@ -32,10 +32,10 @@ BizTalk 服务由两个子服务组成：
 
 此表将 BizTalk 服务功能映射到逻辑应用。
 
-| BizTalk 服务   | 逻辑应用            | 目的                      |
+| BizTalk 服务   | 逻辑应用            | 用途                      |
 | ------------------ | --------------------- | ---------------------------- |
 | 连接器          | 连接器             | 发送和接收数据   |
-| 网桥             | 逻辑应用             | 管道处理器           |
+| 桥接             | 逻辑应用             | 管道处理器           |
 | 验证阶段     | XML 验证操作 | 针对架构验证 XML 文档 | 
 | 扩充阶段       | 数据令牌           | 将属性升级为消息或升级属性供路由决策 |
 | 转换阶段    | 转换操作      | 将 XML 消息从一种格式转换为另一种格式 |
@@ -51,9 +51,9 @@ BizTalk 服务有几种类型的项目。
 
 ## <a name="connectors"></a>连接器
 
-BizTalk 服务连接器帮助网桥发送和接收数据，包括启用了基于 HTTP 的请求/响应交互的双向网桥。 逻辑应用使用相同的术语，并具有数百个连接器，这些连接器通过连接到各种技术和服务来达到相同的目的。 例如，连接器可用于云 SaaS 和 PaaS 服务（例如 OneDrive、Office365、Dynamics CRM 及其他服务）并可通过本地数据网关用于本地系统，本地数据网关替代了 BizTalk 服务的 BizTalk 适配器服务。 BizTalk 服务中的源仅限于 FTP、SFTP 和服务总线队列或主题订阅。
+BizTalk 服务连接器帮助网桥发送和接收数据，包括启用了基于 HTTP 的请求/响应交互的双向网桥。 逻辑应用使用相同的术语，并且有成百上千个连接器，这些连接器通过连接到广泛的技术和服务来实现相同的目的。 例如，连接器可用于云 SaaS 和 PaaS 服务（例如 OneDrive、Office365、Dynamics CRM 及其他服务）并可通过本地数据网关用于本地系统，本地数据网关替代了 BizTalk 服务的 BizTalk 适配器服务。 BizTalk 服务中的源仅限于 FTP、SFTP 和服务总线队列或主题订阅。
 
-![显示 BizTalk 服务流的关系图。](media/logic-apps-move-from-mabs/sources.png)
+![此图显示了 BizTalk 服务流。](media/logic-apps-move-from-mabs/sources.png)
 
 默认情况下，每个网桥都有一个 HTTP 终结点，这是通过网桥的“运行时地址”和“相对地址”属性配置的。 若要通过逻辑应用实现相同结果，请使用[请求和响应](../connectors/connectors-native-reqres.md)操作。
 
@@ -69,7 +69,7 @@ BizTalk 服务连接器帮助网桥发送和接收数据，包括启用了基于
 
 下图显示了处理在请求和答复之间的拆分情况，这允许分别对请求和答复路径进行控制，例如，通过为每个路径使用不同的映射：
 
-![显示处理在请求和答复之间的拆分方式的屏幕截图。](media/logic-apps-move-from-mabs/xml-request-reply.png)
+![此屏幕截图显示了如何在请求和答复之间对处理进行拆分。](media/logic-apps-move-from-mabs/xml-request-reply.png)
 
 另外，XML 单向网桥还在处理开头和末尾添加了解码和编码阶段。 直通网桥包含单个扩充阶段。
 
@@ -91,7 +91,7 @@ BizTalk 服务连接器帮助网桥发送和接收数据，包括启用了基于
 
 BizTalk 服务会做出路由决策，决定由哪个终结点或连接器来发送传入的消息或数据。 可以使用路由筛选器选项从预配置的终结点中进行选择：
 
-![显示路由筛选器选项的屏幕截图。](media/logic-apps-move-from-mabs/route-filter.png)
+![此屏幕截图显示了路由筛选器选项。](media/logic-apps-move-from-mabs/route-filter.png)
 
 在 BizTalk 服务中，如果只有两个选项，则使用“条件”是用于转换 BizTalk 服务中的路由筛选器的最佳方式。 如果不止两个选项，则使用“切换”。
 
@@ -125,7 +125,7 @@ BizTalk 服务和逻辑应用包括 EDI 和 B2B 处理，并支持 AS2（适用�
 
 ## <a name="manage-and-monitor"></a>管理和监视
 
-在 BizTalk 服务中，专用门户提供了跟踪功能来监视和解决问题。 逻辑应用提供了更丰富的跟踪和监视功能，用于 [监视 Azure 门户中的逻辑应用](../logic-apps/monitor-logic-apps.md)，并包含一个移动应用，用于在移动时保持注意力。
+在 BizTalk 服务中，专用门户提供了跟踪功能来监视和解决问题。 逻辑应用为[在 Azure门户中监视逻辑应用](../logic-apps/monitor-logic-apps.md)提供了更丰富的跟踪和监视功能，并包括一个移动应用，用于在你移动时监视项目。
 
 ## <a name="high-availability"></a>高可用性
 

@@ -3,12 +3,12 @@ title: DoD 影响级别 5 蓝图示例
 description: DoD 影响级别 5 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
 ms.date: 04/13/2021
 ms.topic: sample
-ms.openlocfilehash: b978b9fb30732c13785a6a425e5195daf67bae0f
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 158925ad12e55d365cbd4f751c2f78e99fcaa83d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107377397"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757486"
 ---
 # <a name="deploy-the-dod-impact-level-5-blueprint-sample"></a>部署 DoD 影响级别 5 蓝图示例
 
@@ -143,7 +143,7 @@ ms.locfileid: "107377397"
 |DoD 影响级别 5|策略分配|策略的效果：应在 API 应用中使用最新的 TLS 版本|此策略的 Azure Policy 效果；若要详细了解效果，请访问 https://aka.ms/policyeffects|
 |DoD 影响级别 5|策略分配|策略的效果：应对订阅中拥有写入权限的帐户启用 MFA|此策略的 Azure Policy 效果；若要详细了解效果，请访问 https://aka.ms/policyeffects|
 |DoD 影响级别 5|策略分配|策略的效果：SQL 服务器的“高级数据安全性”设置应包含用于接收安全警报的电子邮件地址|此策略的 Azure Policy 效果；若要详细了解效果，请访问 https://aka.ms/policyeffects|
-|DoD 影响级别 5|策略分配|策略的效果：确保用于运行 API 应用的“HTTP 版本”是最新的|此策略的 Azure Policy 效果；若要详细了解效果，请访问 https://aka.ms/policyeffects|
+|DoD 影响级别 5|策略分配|策略的效果: 确保用于运行 API 应用的“HTTP 版本”是最新的|此策略的 Azure Policy 效果；若要详细了解效果，请访问 https://aka.ms/policyeffects|
 |DoD 影响级别 5|策略分配|策略的效果：应在 Windows 服务器上部署 Microsoft IaaSAntimalware 扩展|此策略的 Azure Policy 效果；若要详细了解效果，请访问 https://aka.ms/policyeffects|
 |DoD 影响级别 5|策略分配|策略的效果：确保用作函数应用一部分的“Java 版本”是最新的|此策略的 Azure Policy 效果；若要详细了解效果，请访问 https://aka.ms/policyeffects|
 |DoD 影响级别 5|策略分配|策略的效果：应该限制通过面向 Internet 的终结点进行访问|此策略的 Azure Policy 效果；若要详细了解效果，请访问 https://aka.ms/policyeffects|

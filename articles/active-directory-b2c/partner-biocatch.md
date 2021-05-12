@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 2462b585bb37db769aafafbb0d224557c53ee81d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: f9518466aacddee9e31d8bc15f3b89c1f214ab58
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127076"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108737992"
 ---
 # <a name="tutorial-configure-biocatch-with-azure-active-directory-b2c"></a>教程：将 BioCatch 和 Azure Active Directory B2C 一起配置
 
@@ -74,7 +74,7 @@ BioCatch 集成包括以下组件：
 
 建议隐藏客户端会话 ID 字段。 使用 CSS、JavaScript 或任何其他方法隐藏字段。 出于测试目的，你可以取消隐藏字段。 例如，JavaScript 用于隐藏输入字段，如下所示：
 
-```
+```JavaScript
 document.getElementById("clientSessionId").style.display = 'none';
 ```
 
@@ -84,7 +84,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 2. 创建一个从扩展文件继承的新文件。
 
-    ```
+    ```XML
     <BasePolicy> 
 
         <TenantId>tenant.onmicrosoft.com</TenantId> 
@@ -96,7 +96,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 3. 在 BuildingBlocks 资源下创建对自定义 UI 的引用以隐藏输入框。
 
-    ```
+    ```XML
     <ContentDefinitions> 
 
         <ContentDefinition Id="api.selfasserted"> 
@@ -112,7 +112,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 4. 在 BuildingBlocks 资源下添加以下声明。
 
-    ```
+    ```XML
     <ClaimsSchema> 
 
           <ClaimType Id="riskLevel"> 
@@ -146,7 +146,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 5. 为客户端会话 ID 字段配置自断言声明提供程序。
 
-    ```
+    ```XML
     <ClaimsProvider> 
 
           <DisplayName>Client Session ID Claims Provider</DisplayName> 
@@ -190,7 +190,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 6. 为 BioCatch 配置 REST API 声明提供程序。 
 
-    ```
+    ```XML
     <TechnicalProfile Id="BioCatch-API-GETSCORE"> 
 
           <DisplayName>Technical profile for BioCatch API to return session information</DisplayName> 
@@ -247,7 +247,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
    1. 如果返回的声明风险较低，则跳过 MFA 的步骤，否则强制执行用户 MFA 
 
-    ```
+    ```XML
     <OrchestrationStep Order="8" Type="ClaimsExchange"> 
 
               <ClaimsExchanges> 
@@ -296,7 +296,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
     将 BioCatch 返回的信息（特别是 risklevel 和评分）作为令牌中的声明传递给应用程序非常有用 。
 
-    ```
+    ```XML
     <RelyingParty> 
 
         <DefaultUserJourney ReferenceId="SignUpOrSignInMfa" /> 
@@ -373,7 +373,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 4. 完成注册流程并创建帐户。 返回到 JWT.MS 的令牌应具有 2 倍数量的 riskLevel 和评分声明。 遵循该示例。  
 
-    ```
+    ```JavaScript
     { 
 
       "typ": "JWT", 

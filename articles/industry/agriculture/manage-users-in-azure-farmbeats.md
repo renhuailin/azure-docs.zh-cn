@@ -1,16 +1,16 @@
 ---
 title: 在 Azure FarmBeats 中管理用户
 description: 本文介绍如何在 Azure FarmBeats 中管理用户。
-author: uhabiba04
+author: RiyazPishori
 ms.topic: article
 ms.date: 12/02/2019
-ms.author: v-ummehabiba
-ms.openlocfilehash: de9a11cac9856417422bd72579cbca44233ab422
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: riyazp
+ms.openlocfilehash: cb9a46dcfe3a99717c78e2401b2d5b69702ffdaf
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179895"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108759718"
 ---
 # <a name="manage-users"></a>管理用户
 

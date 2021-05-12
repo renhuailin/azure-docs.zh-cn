@@ -3,17 +3,17 @@ title: 使用 cloud-init 时进行故障排除
 description: 使用 cloud-init 预配 Azure VM 时进行故障排除。
 author: danielsollondon
 ms.service: virtual-machines
-ms.subservice: imaging
 ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 842107245fe26155d53866bf95e11b08d7593ad1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.subservice: cloud-init
+ms.openlocfilehash: fa4381aa21b1565e29db026b43dbc70b457daf5d
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104582147"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783200"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>对使用 cloud-init 的 VM 预配进行故障排除
 

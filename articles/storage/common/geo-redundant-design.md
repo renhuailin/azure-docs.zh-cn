@@ -12,31 +12,31 @@ ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 1a07acedadfaf3d5158ba8e494d4527301655425
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102035095"
 ---
 # <a name="use-geo-redundancy-to-design-highly-available-applications"></a>使用异地冗余设计高度可用的应用程序
 
 基于云的基础结构（如 Azure 存储）的一个常见功能是提供用于托管数据和应用程序的高度可用且持久的平台。 基于云的应用程序的开发人员必须仔细考虑如何利用此平台为其用户最大限度地扩大这些优势。 Azure 存储提供异地冗余存储，以便在发生区域性服务中断时确保高可用性。 为异地冗余复制配置的存储帐户将以同步方式复制到主要区域，然后以异步方式复制到数百英里以外的次要区域。
 
-Azure 存储为异地冗余复制提供两个选项。 这两个选项之间的唯一差别在于如何在主要区域中复制数据：
+Azure 存储为异地冗余复制提供了两个选项。 这两个选项之间的唯一区别是在主要区域中复制数据的方式：
 
-* 区域 [冗余存储 (GZRS)](storage-redundancy.md)：使用 *区域冗余存储 (ZRS)* 以同步方式跨主要区域的三个 Azure 可用性区域复制数据，并将其异步复制到次要区域。 若要对次要区域进行读取访问，可启用读取访问异地区域冗余存储 (RA-GZRS)。
+* [异地区域冗余存储 (GZRS)](storage-redundancy.md)：使用“区域冗余存储(ZRS)”在主要区域的三个 Azure 可用性区域中同步复制数据，然后将数据异步复制到次要区域。 若要对次要区域进行读取访问，可启用读取访问异地区域冗余存储 (RA-GZRS)。
 
     对于需要最大可用性和持久性的方案，Microsoft 建议使用 GZRS/RA-GZRS。
 
 * [异地冗余存储 (GRS)](storage-redundancy.md)：数据将使用本地冗余存储 (LRS) 在主要区域中以同步方式复制三次，然后以异步方式复制到次要区域。 若要对次要区域中的数据进行读取访问，请启用读取访问异地冗余存储 (RA-GRS)。
 
-本文介绍如何设计应用程序以应对主要区域中发生的服务中断。 如果主要区域不可用，应用程序可以调整为对次要区域执行读取操作。 在开始之前，请确保已为 GRS 或 GZRS 配置存储帐户。
+本文介绍如何设计应用程序以应对主要区域中发生的服务中断。 如果主要区域不可用，应用程序可以调整为对次要区域执行读取操作。 在开始之前，请确保已为 RA-GRS 或 RA-GZRS 配置存储帐户。
 
 ## <a name="application-design-considerations-when-reading-from-the-secondary"></a>从次要区域读取数据时的应用程序设计注意事项
 
 本文旨在介绍：如何设计在主数据中心发生重大灾难时仍可继续使用（有限功能）的应用程序。 可以将应用程序设计为在出现问题无法从主要区域读取时，通过从次要区域读取来处理暂时性或长时间运行的问题。 当主要区域重新变为可用时，应用程序可恢复为从主要区域读取。
 
-设计适用于 GRS 或 GZRS 的应用程序时，请记住以下要点：
+针对 RA-GRS 或 RA-GZRS 设计应用程序时，请注意下面这些要点：
 
 * Azure 存储在次要区域中保留主要区域中存储的数据的只读副本。 如上所述，存储服务确定次要区域的位置。
 
@@ -150,7 +150,7 @@ Azure 存储客户端库可帮助你确定可重试的错误。 例如，不会�
 
     # <a name="net-v12"></a>[.NET v12](#tab/current)
 
-    我们当前正在创建的代码段反映了 Azure 存储客户端库的版本2.x。 有关详细信息，请参阅 [宣布 Azure 存储 V12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+    我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
     # <a name="net-v11"></a>[.NET v11](#tab/legacy)
 
@@ -168,7 +168,7 @@ Azure 存储客户端库可帮助你确定可重试的错误。 例如，不会�
 
     # <a name="net-v12"></a>[.NET v12](#tab/current)
 
-    我们当前正在创建的代码段反映了 Azure 存储客户端库的版本2.x。 有关详细信息，请参阅 [宣布 Azure 存储 V12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+    我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
     # <a name="net-v11"></a>[.NET v11](#tab/legacy)
 
@@ -236,7 +236,7 @@ Azure 存储客户端库可帮助你确定可重试的错误。 例如，不会�
 
 # <a name="java-v12"></a>[Java v12](#tab/current)
 
-我们当前正在创建的代码段反映了 Azure 存储客户端库的版本2.x。 有关详细信息，请参阅 [宣布 Azure 存储 V12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
 # <a name="java-v11"></a>[Java v11](#tab/legacy)
 

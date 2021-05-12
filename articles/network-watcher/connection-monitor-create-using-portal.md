@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
 ms.openlocfilehash: edf671c8005fa67f6161f383c503ca278dba3105
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101702158"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>使用 Azure 门户在连接监视器中创建监视器
 
 > [!IMPORTANT]
-> 自2021年7月1日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你还将无法在 (经典) 的连接监视器中添加新的连接监视器。 你可以继续使用在2021年7月1日之前创建的测试和连接监视器。 若要最大程度地减少对当前工作负荷的服务中断，请在2024年2月29日之前，将 [测试从网络性能监视器 ](migrate-to-connection-monitor-from-network-performance-monitor.md) 或  [从连接监视器迁移 (经典) ](migrate-to-connection-monitor-from-connection-monitor-classic.md) 升级到 Azure 网络观察程序中的新连接监视器。
+> 自 2021 年 7 月 1 日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你还将无法在连接监视器（经典）中添加新的连接监视器。 可以继续使用在 2021 年 7 月 1 日之前创建的测试和连接监示器。 为了最大程度地减少当前工作负荷的服务中断，请在 2024 年 2 月 29 日之前，在 Azure 网络观察程序中[将测试从网络性能监视器迁移](migrate-to-connection-monitor-from-network-performance-monitor.md)到新连接监视器，或[从连接监视器（经典）迁移](migrate-to-connection-monitor-from-connection-monitor-classic.md)到新连接监视器。
 
 了解如何使用连接监视器监视资源之间的通信。 本文介绍了如何使用 Azure 门户创建监视器。 连接监视器支持混合部署和 Azure 云部署。
 
@@ -119,7 +119,7 @@ ms.locfileid: "101702158"
 
       :::image type="content" source="./media/connection-monitor-2-preview/add-azure-sources.png" alt-text="屏幕截图显示了连接监视器中的“添加源”窗格和“Azure 终结点”选项卡。":::
 
-   * 若要选择本地代理，请选择 " **非 Azure 终结点** " 选项卡。默认情况下，代理按区域分组到工作区中。 所有这些工作区都配置了网络性能监视器。 
+   * 若要选择本地代理，请选择“非 Azure 终结点”选项卡。默认情况下，代理按区域分组到工作区中。 所有这些工作区都配置了网络性能监视器。 
    
        如果需要将网络性能监视器添加到工作区，请通过 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/solarwinds.solarwinds-orion-network-performance-monitor?tab=Overview)获取。 有关如何添加网络性能监视器的信息，请参阅 [Azure Monitor 中的监视解决方案](../azure-monitor/insights/solutions.md)。 
    

@@ -1,15 +1,15 @@
 ---
-title: 解决数据歪斜-针对 Visual Studio 的 Azure Data Lake 工具
+title: 解决数据倾斜问题 - 针对 Visual Studio 的 Azure Data Lake 工具
 description: 通过用于 Visual Studio 的 Azure Data Lake 工具排查潜在解决方案的数据倾斜问题。
 ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 12/16/2016
 ms.openlocfilehash: 0b82ce187c06afa69e54ea93931e1745f0d52674
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92219184"
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>通过用于 Visual Studio 的 Azure Data Lake 工具解决数据倾斜问题
@@ -33,7 +33,7 @@ ms.locfileid: "92219184"
 
 ### <a name="option-2-pick-a-different-partition-or-distribution-key"></a>选项 2：选择不同的分区或分布键
 
-在上述示例中，如果只想要检查整个国家/地区的税务审核工作负荷，则可以通过选择 ID 号作为密钥来改善数据分布。 有时，选择不同的分区或分布键可以更均衡地分配数据，但需确保该选择不会影响业务逻辑。 例如，若要计算每个州的税收总额，则可能需指定 _State_ 作为分区键。 如果仍遇到此问题，请尝试使用选项 3。
+在前面的示例中，如果只想检查整个国家/地区的税务/审计工作负荷，则可选择 ID 号作为键来改进数据分布。 有时，选择不同的分区或分布键可以更均衡地分配数据，但需确保该选择不会影响业务逻辑。 例如，若要计算每个州的税收总额，则可能需指定 _State_ 作为分区键。 如果仍遇到此问题，请尝试使用选项 3。
 
 ### <a name="option-3-add-more-partition-or-distribution-keys"></a>选项 3：添加更多的分区键或分布键
 
@@ -68,7 +68,7 @@ CREATE STATISTICS IF NOT EXISTS stats_SampleTable_date ON SampleDB.dbo.SampleTab
 SKEWFACTOR (columns) = x
 ```
 
-提供一个提示，指出给定列的偏差因子 x 从 0 (不) 到1之间的倾斜因子 (非常繁重的倾斜) 。
+提供一个提示，指出给定列具有从 0（无倾斜）到 1（非常严重的倾斜）的倾斜因子 x。
 
 代码示例：
 
@@ -105,7 +105,7 @@ SKEWFACTOR (columns) = x
 OPTION(ROWCOUNT = n)
 ```
 
-通过提供估计的整数行计数，在联接前标识一小行集。
+通过提供一个估计的整数行数，在 JOIN 之前标识一个小行集。
 
 代码示例：
 
@@ -172,7 +172,7 @@ public class TopNReducer : IReducer
 
 组合器模式的属性：
 
-- SqlUserDefinedCombiner (Mode = CombinerMode) ：每个输出行可能依赖于左侧和右侧具有相同密钥值的所有输入行。
+- SqlUserDefinedCombiner(Mode=CombinerMode.Full)：每个输出行可能依赖于左侧和右侧具有相同键值的所有输入行。
 
 - SqlUserDefinedCombiner(Mode=CombinerMode.Left)：每个输出行依赖于左侧的单个输入行（还可能依赖于右侧包含相同键值的所有行）。
 

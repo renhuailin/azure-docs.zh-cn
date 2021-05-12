@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 tags: connectors
 ms.openlocfilehash: 75c657236b6e06a7e0f6c717d746bcc8c034d423
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98013441"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用自动完成 SQL 数据库的工作流
@@ -44,11 +44,11 @@ ms.locfileid: "98013441"
 
 <a name="multi-tenant-or-ise"></a>
 
-* 根据逻辑应用是要在全局、多租户 Azure 还是 [integration service 环境中运行 (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，以下是连接到本地 SQL Server 的其他要求：
+* 下面是连接到本地 SQL Server 时的其他要求，具体取决于你的逻辑应用是要在全局多租户 Azure 中运行，还是要在[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中运行：
 
   * 对于全局多租户 Azure 中连接到本地 SQL Server 的逻辑应用，你需要在本地计算机上安装[本地数据网关](../logic-apps/logic-apps-gateway-install.md)，并且需要具有[已在 Azure 中创建的数据网关资源](../logic-apps/logic-apps-gateway-connection.md)。
 
-  * 对于连接到本地 SQL Server 并使用 Windows 身份验证的 ISE 中的逻辑应用，ISE 版本控制 SQL Server 连接器不支持 Windows 身份验证。 因此，你仍需要使用数据网关和非 ISE SQL Server 连接器。 对于其他身份验证类型，无需使用数据网关，而可以使用 ISE 版本控制连接器。
+  * 对于 ISE 中连接到本地 SQL Server 并使用 Windows 身份验证的逻辑应用，ISE 版本的 SQL Server 连接器不支持 Windows 身份验证。 因此，你仍需使用数据网关和非 ISE SQL Server 连接器。 对于其他身份验证类型，你无需使用数据网关，而可以使用 ISE 版本的连接器。
 
 * 需在其中访问 SQL 数据库的逻辑应用。 若要通过 SQL 触发器启动逻辑应用，需要一个[空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
@@ -88,7 +88,7 @@ ms.locfileid: "98013441"
 
 1. 为你的数据库选择以下值：
 
-   | 属性 | 必选 | 说明 |
+   | 属性 | 必须 | 说明 |
    |----------|----------|-------------|
    | **服务器名称** | 是 | 你的 SQL Server 的地址，例如 `Fabrikam-Azure-SQL.database.windows.net` |
    | **数据库名称** | 是 | 你的 SQL 数据库的名称，例如 `Fabrikam-Azure-SQL-DB` |
@@ -135,7 +135,7 @@ ms.locfileid: "98013441"
 
 1. 为你的 SQL 数据库选择或提供以下值：
 
-   | 属性 | 必选 | 说明 |
+   | 属性 | 必须 | 说明 |
    |----------|----------|-------------|
    | **SQL Server 名称** | 是 | 你的 SQL Server 的地址，例如 `Fabrikam-Azure-SQL.database.windows.net` |
    | **SQL 数据库名称** | 是 | 你的 SQL Server 数据库的名称，例如 `Fabrikam-Azure-SQL-DB` |
@@ -187,9 +187,9 @@ ms.locfileid: "98013441"
 
 <a name="trigger-recurrence-shift-drift"></a>
 
-### <a name="trigger-recurrence-shift-and-drift"></a>触发重复周期转换和偏移
+### <a name="trigger-recurrence-shift-and-drift"></a>触发器重复周期移动和偏移
 
-基于连接的触发器，需要首先创建连接，如 SQL 触发器，不同于在 Azure 逻辑应用中以本机方式运行的内置触发器，如 [重复触发器](../connectors/connectors-native-recurrence.md)。 在重复的基于连接的触发器中，重复计划不是控制执行的唯一驱动程序，时区只确定初始开始时间。 后续运行取决于重复执行计划、上一个触发器执行以及可能导致运行时间发生偏差或产生意外行为 *的其他因素* ，例如，在夏令时 (DST) 开始和结束时不保持指定的计划。 若要确保重复执行时间在 DST 生效时不会发生变化，请手动调整重复周期，使逻辑应用继续按预期时间运行。 否则，开始时间将在 DST 开始时向前移动1小时，在 DST 结束时向后移动一小时。 有关详细信息，请参阅 [基于连接的触发器的重复周期](../connectors/apis-list.md#recurrence-connection-based)。
+你需要首先为其创建连接的基于连接的触发器（例如 SQL 触发器）不同于在 Azure 逻辑应用中以原生方式运行的内置触发器，如[重复周期触发器](../connectors/connectors-native-recurrence.md)。 在基于连接的周期性触发器中，重复周期计划不是控制执行的唯一驱动因素，并且时区只确定初始开始时间。 后续运行取决于重复周期计划、上一次触发器执行以及其他可能导致运行时间发生偏差或产生意外行为的因素，例如，在夏令时 (DST) 开始和结束时未维护指定的计划。 若要确保重复周期时间在 DST 生效时不会移动，请手动调整重复周期，使逻辑应用继续按预期时间运行。 否则，开始时间将在 DST 开始时向前移动 1 小时，在 DST 结束时向后移动 1 小时。 有关详细信息，请参阅[基于连接的触发器的重复周期](../connectors/apis-list.md#recurrence-connection-based)。
 
 <a name="add-sql-action"></a>
 

@@ -4,15 +4,15 @@ description: 本文列出了 Azure 安全中心的安全建议，这些建议可
 author: memildin
 ms.service: security-center
 ms.topic: reference
-ms.date: 04/26/2021
+ms.date: 05/11/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 0457cba053e79907780b52aee00e25ea78987c6b
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: fb185ddf553009e92f0242d4e9b637551f790071
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001858"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784269"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>安全建议 - 参考指南
 

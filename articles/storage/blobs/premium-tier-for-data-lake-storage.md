@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 10/30/2020
 ms.author: normesta
-ms.openlocfilehash: be440407fb6f4d9715ba80c584af023a5f662394
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a9ed305dbd081486f0b892fcc38ada83e9666bd9
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93324223"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143334"
 ---
 # <a name="premium-tier-for-azure-data-lake-storage"></a>Azure Data Lake Storage 的高级层
 
@@ -57,7 +57,7 @@ AI/ML 可以解决不同数据类型（例如视觉对象、语音和文本）�
 
 ## <a name="enabling-the-premium-performance-tier"></a>启用高级性能层 
 
-通过在启用“分层命名空间”设置的情况下创建 BlockBlobStorage 帐户，可使用 Azure Data Lake Storage 的高级层 。 有关完整指南，请参阅[创建 BlockBlobStorage 帐户](storage-blob-create-account-block-blob.md)。
+通过在启用“分层命名空间”设置的情况下创建 BlockBlobStorage 帐户，可使用 Azure Data Lake Storage 的高级层 。 有关完整指南，请参阅[创建 BlockBlobStorage 帐户](../common/storage-account-create.md)。
 
 创建帐户时，请务必选择“高级”性能选项和“BlockBlobStorage”帐户类型 。
 
@@ -111,4 +111,3 @@ Azure Data Lake Storage 的高级层在以下区域可用。
 - [教程：Azure Data Lake Storage Gen2、Azure Databricks 和 Spark](data-lake-storage-use-databricks-spark.md) 
 - [将 Azure Data Lake Storage Gen2 与 Azure HDInsight 群集配合使用](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) HDInsight 当前支持使用高级性能层和启用了加速写入的 HBase 群集的帐户。
 - [快速入门：创建 Synapse 工作区](../../synapse-analytics/quickstart-create-workspace.md)
-

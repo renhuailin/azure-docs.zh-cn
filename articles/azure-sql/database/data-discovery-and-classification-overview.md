@@ -14,10 +14,10 @@ ms.reviewer: vanto
 ms.date: 02/17/2021
 tags: azure-synapse
 ms.openlocfilehash: f47303a953dbb06b4c9efdfbbae41715cad81d2a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101690798"
 ---
 # <a name="data-discovery--classification"></a>数据发现和分类
@@ -66,7 +66,7 @@ ms.locfileid: "101690798"
 
 在信息保护的策略管理过程中，可定义自定义标签、对其进行分级，并将其与选定的一组信息类型相关联。 还可以添加自己的自定义信息类型，并使用字符串模式对其进行配置。 这些模式已添加到用于识别数据库中的此类型数据的发现逻辑。
 
-有关详细信息，请参阅 [在 Azure 安全中心中自定义 SQL 信息保护策略 (预览) ](../../security-center/security-center-info-protection-policy.md)。
+有关详细信息，请参阅[在 Azure 安全中心（预览版）中自定义 SQL 信息保护策略](../../security-center/security-center-info-protection-policy.md)。
 
 定义组织范围的策略后，可以继续使用自定义策略对各个数据库进行分类。
 
@@ -77,7 +77,7 @@ ms.locfileid: "101690798"
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
 
-1. 转到“Azure SQL 数据库”窗格的“安全”标题下的“数据发现和分类” 。 “概述”选项卡中包含数据库当前分类状态的摘要。 该摘要包含所有分类列的详细列表，你还可以对其进行筛选，以便仅显示特定的架构部分、信息类型和标签。 如果尚未对任何列进行分类，请 [跳到步骤 4](#step-4)。
+1. 转到“Azure SQL 数据库”窗格的“安全”标题下的“数据发现和分类” 。 “概述”选项卡中包含数据库当前分类状态的摘要。 该摘要包含所有分类列的详细列表，你还可以对其进行筛选，以便仅显示特定的架构部分、信息类型和标签。 如果尚未对任何列进行分类，请[跳到步骤 4](#step-4)。
 
     ![概述](./media/data-discovery-and-classification-overview/data-discovery-and-classification.png)
 
@@ -185,14 +185,14 @@ ms.locfileid: "101690798"
 - [按数据库列出建议敏感度](/rest/api/sql/sensitivitylabels/listrecommendedbydatabase)：获取指定数据库的建议敏感度标签。
 
 
-## <a name="faq---advanced-classification-capabilities"></a>常见问题解答-高级分类功能
+## <a name="faq---advanced-classification-capabilities"></a>常见问题解答 - 高级分类功能
 
-**问**： [Azure 监控范围](../../purview/overview.md) 是否会将 sql 数据发现替换 & 分类，或是否会立即停用 & 分类的 sql 数据发现？
-**答**：我们将继续支持 & 分类的 SQL 数据发现，并鼓励你采用具有更丰富功能的 [Azure 监控范围](../../purview/overview.md) 来驱动高级分类功能和数据管理。 如果我们决定停用任何服务、功能、API 或 SKU，你将会收到包含迁移或转换路径的提前通知。 在此处了解有关 Microsoft 生命周期策略的详细信息。
+问：是 [Azure Purview](../../purview/overview.md) 会取代 SQL 数据发现和分类，还是 SQL 数据发现和分类即将停用？
+答：我们会继续支持 SQL 数据发现和分类，但鼓励你采用功能更丰富的 [Azure Purview](../../purview/overview.md) 来改善高级分类功能和数据治理。 如果我们决定停用任何服务、功能、API 或 SKU，将会向你提前发送包含迁移或转换路径的通知。 在此处详细了解 Microsoft 生命周期策略。
 
 
 ## <a name="next-steps"></a><a id="next-steps"></a>后续步骤
 
 - 请考虑配置 [Azure SQL 审核](../../azure-sql/database/auditing-overview.md)来监视和审核对已分类敏感数据的访问。
-- 对于包含数据发现 & 分类的演示文稿，请参阅 [查找、分类、标记 & 保护 SQL 数据 |公开的数据](https://www.youtube.com/watch?v=itVi9bkJUNc)。
-- 若要使用 T-sql 命令通过 Azure 监控范围标签对 Azure SQL 数据库和 Azure Synapse Analytics 进行分类，请参阅 [使用 Azure 监控范围标签对 AZURE sql 数据进行分类](../../sql-database/scripts/sql-database-import-purview-labels.md)。
+- 对于包含数据发现和分类的演示文稿，请参阅[发现 SQL 数据并对其进行分类、标记和保护 | 公开的数据](https://www.youtube.com/watch?v=itVi9bkJUNc)。
+- 若要通过 T-SQL 命令使用 Azure Purview 标签对 Azure SQL 数据库和 Azure Synapse Analytics 进行分类，请参阅[使用 Azure Purview 标签对 Azure SQL 数据进行分类](../../sql-database/scripts/sql-database-import-purview-labels.md)。

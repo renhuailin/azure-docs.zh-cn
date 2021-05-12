@@ -8,22 +8,22 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: 0dbf418d0a673dd0799f0f638e454c484f837fd7
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
-ms.translationtype: MT
+ms.openlocfilehash: fc3662d8198e6ab6ab215ac1e9e8eac585f4250b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516607"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104801581"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 Lucene 查询语法
 
-在创建查询时，可以选择用于专用查询窗体的 [Lucene 查询分析器](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) 语法：通配符、模糊搜索、邻近搜索、正则表达式。 很多 Lucene 查询分析器语法 [在 Azure 认知搜索中](search-lucene-query-architecture.md)都是完整的，但 *范围搜索* 例外，通过 **`$filter`** 表达式构造。 
+创建查询时，可以选择用于专用查询窗体的 [Lucene 查询分析](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)语法：通配符、模糊搜索、邻近搜索、正则表达式。 除了通过 `$filter` 表达式构造的“范围搜索”之外，大部分 Lucene 查询分析器语法都[在 Azure 认知搜索中完整实现](search-lucene-query-architecture.md)。 
 
-完整的 Lucene 语法用于在搜索文档的参数中传递的查询表达式 **`search`** [ (REST API)](/rest/api/searchservice/search-documents) 请求，而不会与同一请求中用于和表达式的 [OData 语法](query-odata-filter-orderby-syntax.md) 混淆 [**`$filter`**](search-filters.md) [**`$orderby`**](search-query-odata-orderby.md) 。 OData 参数具有不同的语法和规则，用于构造查询、转义字符串等。
+若要使用完整的 Lucene 语法，需要将“queryType”设置为“full”，并传入一个针对通配符、模糊搜索或完整语法支持的其他查询形式之一进行了模式化处理的查询表达式。 在 REST 中，查询表达式将在[搜索文档 (REST API)](/rest/api/searchservice/search-documents) 请求的 `search` 参数中提供。
 
-## <a name="example-full-syntax"></a>完整语法 (示例) 
+## <a name="example-full-syntax"></a>示例（完整语法）
 
-设置 **`queryType`** 参数以指定完整的 Lucene。 下面的示例调用现场搜索和字词提升。 此查询将查找 category 字段包含 "预算" 这一术语的酒店。 包含短语 "最近的翻新" 的所有文档都将作为术语提升值 (3) 的结果排名更高。  
+下面的示例是一个使用完整语法构造的搜索请求。 此特定示例演示了字段内搜索和字词提升。 它查找类别字段中包含“预算”这一字词的酒店。 由于字词提升值 (3)，任何包含短语“recently renovated”的文档排名都会更高。  
 
 ```http
 POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
@@ -34,9 +34,9 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 }
 ```
 
-**`searchMode`** 在此示例中，参数是相关的。 无论运算符何时出现在查询上，通常都应该设置 `searchMode=all` 以确保匹配所有条件  。  
+`searchMode` 参数虽然不特定于任何查询类型，但在本例中却是相关的。 无论运算符何时出现在查询上，通常都应该设置 `searchMode=all` 以确保匹配所有条件  。  
 
-有关其他示例，请参阅 [Lucene 查询语法示例](search-query-lucene-examples.md)。 有关查询请求和参数的详细信息，请参阅 [搜索文档 (REST API) ](/rest/api/searchservice/Search-Documents)。
+有关其他示例，请参阅 [Lucene 查询语法示例](search-query-lucene-examples.md)。 有关查询请求和参数（包括 searchMode）的详细信息，请参阅[搜索文档 (REST API)](/rest/api/searchservice/Search-Documents)。
 
 ## <a name="syntax-fundamentals"></a><a name="bkmk_syntax"></a> 语法基础  
 
@@ -70,13 +70,13 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 
 ## <a name="boolean-operators"></a><a name="bkmk_boolean"></a> 布尔运算符
 
-可以在查询字符串中嵌入布尔运算符以提高匹配的精度。 除了字符运算符之外，完整语法还支持文本运算符。 始终全部以大写字母指定文本布尔运算符 (AND、OR、NOT)。
+可以在查询字符串中嵌入布尔运算符以提高匹配的精准率。 除了字符运算符之外，完整语法还支持文本运算符。 始终全部以大写字母指定文本布尔运算符 (AND、OR、NOT)。
 
 |文本运算符 | 字符 | 示例 | 使用情况 |
 |--------------|----------- |--------|-------|
-| AND | `&`, `+` | `wifi + luxury` | 指定匹配项必须包含的字词。 在此示例中，查询引擎将查找同时包含和的 `wifi` 文档 `luxury` 。 加号字符 (`+`) 用于所需的字词。 例如，`+wifi +luxury` 规定两个术语必须出现在单个文档的某个字段中。|
-| OR | `|` | `wifi | luxury` | 找到任一字词时找到匹配项。 在此示例中，查询引擎将在包含 `wifi` 或两个文档的文档上返回 match `luxury` 。 由于 OR 是默认连接运算符，因此也可以省略，这样 `wifi luxury` 等同于 `wifi | luxury`。|
-| NOT | `!`, `-` | `wifi –luxury` | 返回排除字词的文档的匹配项。 例如， `wifi –luxury` 将搜索术语为但不是的文档 `wifi` `luxury` 。 <br/><br/>`searchMode`查询请求上的参数将控制具有 NOT 运算符的字词是 and 还是运算与查询中的其他字词一起使用 (假设 `+` `|` 其他术语) 。 有效值包括 `any` 或 `all`。  <br/><br/>`searchMode=any` 通过包含更多结果来提高查询的查全率，且默认情况下 `-` 会被解释为“OR NOT”。 例如，`wifi -luxury` 将匹配包含 `wifi` 词条或不包含 `luxury` 词条的文档。  <br/><br/>`searchMode=all` 通过包含更少结果来提高查询的查准率，且默认情况下“-”会被解释为“AND NOT”。 例如，`wifi -luxury` 将匹配包含 `wifi` 词条且不包含“luxury”词条的文档。 这对于 `-` 运算符来说可能是更直观的行为。 因此，如果想要优化搜索的查准率（而非查全率），且  用户在搜索中频繁使用 `-` 运算符，则应考虑使用 `searchMode=all` 而不是 `searchMode=any`。<br/><br/>在决定设置时 `searchMode` ，请考虑不同应用程序中的查询的用户交互模式。 搜索信息的用户更有可能在查询中包含运算符，相对而言，电子商务网站具有更多的内置导航结构。 |
+| AND | `&`, `+` | `wifi + luxury` | 指定匹配项必须包含的字词。 在此示例中，查询引擎将查找同时包含 `wifi` 和 `luxury` 的文档。 加号字符 (`+`) 用于所需字词。 例如，`+wifi +luxury` 规定两个术语必须出现在单个文档的某个字段中。|
+| OR | `|` | `wifi | luxury` | 找到任一字词就意味着找到匹配项。 在此示例中，查询引擎会返回包含 `wifi` 和/或 `luxury` 的文档的匹配项。 由于 OR 是默认连接运算符，因此也可以省略，这样 `wifi luxury` 等同于 `wifi | luxury`。|
+| NOT | `!`, `-` | `wifi –luxury` | 返回不包含该字词的文档的匹配项。 例如：`wifi –luxury` 将搜索包含字词 `wifi` 但不包含 `luxury` 的文档。 <br/><br/>查询请求中的 `+` 参数控制具有 NOT 运算符的字词是通过 AND 运算符还是通过 OR 运算符与查询中的其他字词组合到一起（假定其他字词没有 `searchMode` 或 `|` 运算符）。 有效值包括 `any` 或 `all`。  <br/><br/>`searchMode=any` 通过包含更多结果来提高查询的查全率，且默认情况下 `-` 会被解释为“OR NOT”。 例如，`wifi -luxury` 将匹配包含 `wifi` 词条或不包含 `luxury` 词条的文档。  <br/><br/>`searchMode=all` 通过包含更少结果来提高查询的查准率，且默认情况下“-”会被解释为“AND NOT”。 例如，`wifi -luxury` 将匹配包含 `wifi` 词条且不包含“luxury”词条的文档。 这对于 `-` 运算符来说可能是更直观的行为。 因此，如果想要优化搜索的查准率（而非查全率），且  用户在搜索中频繁使用 `-` 运算符，则应考虑使用 `searchMode=all` 而不是 `searchMode=any`。<br/><br/>在决定 `searchMode` 设置时，请考虑不同应用程序中的查询的用户交互模式。 搜索信息的用户更有可能在查询中包含运算符，相对而言，电子商务网站具有更多的内置导航结构。 |
 
 ##  <a name="fielded-search"></a><a name="bkmk_fields"></a> 字段化搜索
 
@@ -144,17 +144,17 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 
 ## <a name="scoring-wildcard-and-regex-queries"></a> 对通配符和正则表达式查询评分
 
-Azure 认知搜索使用基于频率的计分 ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) 进行文本查询。 但是，对于术语范围可能很广的通配符和正则表达式查询，则忽略频率因子，以防止排名偏向于比较少见的术语匹配。 通配符和正则表达式搜索对所有匹配项和正则表达式搜索进行相同处理。
+Azure 认知搜索使用基于频率的评分 ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) 进行文本查询。 但是，对于术语范围可能很广的通配符和正则表达式查询，则忽略频率因子，以防止排名偏向于比较少见的术语匹配。 通配符和正则表达式搜索对所有匹配项和正则表达式搜索进行相同处理。
 
 ## <a name="special-characters"></a>特殊字符
 
-在某些情况下，可能需要搜索特殊字符，如 "❤" 表情符号或 "€" 号。 在这种情况下，请确保使用的分析器不会过滤这些字符。标准分析器会跳过许多特殊字符，不包括索引。
+在某些情况下，可能需要搜索特殊字符，如“❤”表情符号或“€”符号。 在此类情况下，请确保所使用的分析器不会筛选掉这些字符。标准分析器会跳过许多特殊字符，将其从索引中排除。
 
-将标记特殊字符的分析器包含 "空白" 分析器，该分析器会将空格分隔的任何字符序列视为标记 (以便将 "❤" 字符串视为令牌) 。 此外，语言分析器（如 Microsoft 英语 analyzer ( "en-us" ) ）会将 "€" 字符串作为标记。 可以[测试分析器](/rest/api/searchservice/test-analyzer)，看它为给定的查询生成什么标记。
+将特殊字符标记化的分析器包括“空格”分析器，该分析器将由空格分隔的任何字符序列视为标记（因此，“❤”字符串会被视为标记）。 另外，诸如 Microsoft 英语分析器（“en.microsoft”）之类的语言分析器会将“€”字符串视为标记。 可以[测试分析器](/rest/api/searchservice/test-analyzer)，看它为给定的查询生成什么标记。
 
 使用 Unicode 字符时，请确保在查询 URL 中正确转义了符号（例如，对于“❤”，将使用转义序列 `%E2%9D%A4+`）。 Postman 会自动执行此转换。  
 
-## <a name="precedence-grouping"></a>优先 (分组) 
+## <a name="precedence-grouping"></a>优先级（分组）
 
 可以使用圆括号创建子查询，其包括附加说明语句中的运算符。 例如，`motel+(wifi|luxury)` 将搜索包含“motel”术语以及“wifi”或“luxury”（或两者）的文档。
 

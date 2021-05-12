@@ -1,33 +1,33 @@
 ---
-title: 高级威胁防护-Azure 门户-Azure Database for MariaDB
-description: Azure Database for MariaDB 的威胁防护可检测异常数据库活动，指示数据库存在潜在的安全威胁。
+title: 高级威胁防护 - Azure 门户 - Azure Database for MariaDB
+description: Azure Database for MariaDB 的威胁防护会检测异常的数据库活动，这些活动指示存在对数据库的潜在安全威胁。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 33bc93c62c32010e28cc8bb783bcef6f40700ca0
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.openlocfilehash: 7734feddabb1a4a86e7932da3ef4adc57352637e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98665100"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>Azure Database for MariaDB 的高级威胁防护
 
-适用于 Azure Database for MariaDB 的高级威胁防护可检测异常活动，这些活动表明访问或利用数据库的异常和潜在有害尝试。
+Azure Database for MariaDB 的高级威胁防护可检测异常活动，指出有人在访问或利用数据库时的异常行为和可能有害的尝试。
 
-高级威胁防护包含在高级数据安全产品/服务中，是一个针对高级安全功能的统一软件包。 高级威胁防护可通过 [Azure 门户](https://portal.azure.com)进行访问和管理。
+高级威胁防护包含在高级数据安全产品/服务中，是一个针对高级安全功能的统一软件包。 可通过 [Azure 门户](https://portal.azure.com)来访问和管理高级威胁防护。
 
 > [!IMPORTANT]
-> 高级威胁防护是公开预览版。 Azure 中的所有区域均提供此功能，其中 Azure Database for MariaDB 部署用于常规用途和内存优化服务器。
+> 高级威胁防护目前为公共预览版。 Azure 中的所有区域均提供此功能，其中 Azure Database for MariaDB 部署用于常规用途和内存优化服务器。
 
 > [!NOTE]
 > 高级威胁防护功能在以下 Azure 政府和主权云区域中不可用：US Gov 德克萨斯州、US Gov 亚利桑那州、US Gov 爱荷华州、US Gov 弗吉尼亚州、US DoD 东部、US DoD 中部、德国中部、德国北部、中国东部、中国东部 2。 请访问[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)，以了解常规产品可用性。
 
 ## <a name="set-up-threat-detection"></a>设置威胁检测
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中启动 Azure 门户。
-2. 导航到要保护的 Azure Database for MariaDB 服务器的 "配置" 页。 在安全设置中，选择“高级威胁防护(预览版)”。
+2. 导航到要保护的 Azure Database for MariaDB 服务器的配置页。 在安全设置中，选择“高级威胁防护(预览版)”。
 3. 在“高级威胁防护(预览版)”配置页上：
 
    - 在服务器上启用高级威胁防护。

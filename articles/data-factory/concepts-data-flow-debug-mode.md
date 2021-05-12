@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/19/2021
 ms.openlocfilehash: 0aa472aca40acbaf3f8c8a09469d08fe6b37187a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101699753"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>映射数据流调试模式
@@ -37,21 +37,21 @@ ms.locfileid: "101699753"
 > [!NOTE]
 > 用户从 ADF 浏览器 UI 启动的每个调试会话都是具有自己的 Spark 群集的新会话。 你可以使用上述调试会话的监视视图查看和管理每个工厂的调试会话。 每个调试会话执行的每一个小时（包括 TTL 时间）都会产生费用。
 
-## <a name="cluster-status"></a>群集状态
+## <a name="cluster-status&quot;></a>群集状态
 
-设计图面顶部的群集状态指示器在群集准备好进行调试时会变为绿色。 如果群集已热，那么绿色指示器几乎会立即出现。 如果在你进入调试模式时群集尚未运行，则 Spark 群集将执行冷启动。 该指示器将旋转，直到环境准备好进行交互式调试。
+设计图面顶部的群集状态指示器在群集准备好进行调试时会变为绿色。 如果群集已热，那么绿色指示器几乎会立即出现。 如果在你进入调试模式时 Spark 群集尚未运行，则该群集会执行冷启动。 指示器会旋转，直到环境准备好进行交互式调试为止。
 
-完成调试后，请关闭调试开关，使 Spark 群集可以终止，而不会再为调试活动付费。
+完成调试后，请关闭调试开关，这样 Spark 群集就可以终止，你不再需要为调试活动付费。
 
-## <a name="debug-settings"></a>调试设置
+## <a name=&quot;debug-settings&quot;></a>调试设置
 
 开启调试模式后，可以编辑数据流预览数据的方式。 可以通过单击“数据流”画布工具栏上的“调试设置”来编辑调试设置。 你可以在此处选择要用于每个“源”转换的行限制或文件源。 此设置中的行限制仅适用于当前调试会话。 还可以选择要用于 Azure Synapse Analytics 源的暂存链接服务。 
 
-![调试设置](media/data-flow/debug-settings.png "调试设置")
+![调试设置](media/data-flow/debug-settings.png &quot;调试设置")
 
 如果在数据流或任何其引用的数据集中具有参数，可以通过选择“参数”选项卡指定在调试期间要使用的值。
 
-使用此处的采样设置指向示例文件或示例表，这样就不必更改源数据集。 通过使用此处的示例文件或表，你可以在测试数据的子集时，在数据流中维护相同的逻辑和属性设置。
+使用此处的采样设置可以指向样本文件或数据样本表，这样就不必更改源数据集。 通过使用此处的样本文件或表，可以在针对数据的子集进行测试时，在数据流中维护相同的逻辑和属性设置。
 
 ![调试设置参数](media/data-flow/debug-settings2.png "调试设置参数")
 

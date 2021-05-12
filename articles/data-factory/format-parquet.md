@@ -1,17 +1,17 @@
 ---
 title: Azure 数据工厂中的 Parquet 格式
 description: 本主题介绍了如何处理 Azure 数据工厂中的 Parquet 格式。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/27/2020
-ms.author: jingwang
-ms.openlocfilehash: a10403b5f26b551458a9e20330bc817512f707de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: 279df09cddf2bb8b2bcb5a936666e302987cac27
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100386385"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486604"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Azure 数据工厂中的 Parquet 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -164,7 +164,7 @@ Parquet 复杂数据类型（如 MAP、LIST、STRUCT）目前仅在数据流中�
 
 - **若要使用 JRE**：64 位 IR 需要 64 位 JRE。 可在[此处](https://go.microsoft.com/fwlink/?LinkId=808605)找到它。
 - **若要使用 OpenJDK**：从 IR 版本 3.13 开始受支持。 将 jvm.dll 以及所有其他必需的 OpenJDK 程序集打包到自承载 IR 计算机中，并相应地设置系统环境变量 JAVA_HOME。
-- **若要安装 Visual C++ 2010 Redistributable Package**：安装自承载 IR 时未安装 Visual C++ 2010 Redistributable Package。 可在[此处](https://www.microsoft.com/download/details.aspx?id=14632)找到它。
+- **若要安装 Visual C++ 2010 Redistributable Package**：安装自承载 IR 时未安装 Visual C++ 2010 Redistributable Package。 可在[此处](https://www.microsoft.com/download/details.aspx?id=26999)找到它。
 
 > [!TIP]
 > 如果使用自承载集成运行时将数据复制为 Parquet 格式或从 Parquet 格式复制数据，并遇到“调用 java 时发生错误，消息: java.lang.OutOfMemoryError:Java 堆空间”的错误，则可以在托管自承载 IR 的计算机上添加环境变量 `_JAVA_OPTIONS`，以便调整 JVM 的最小/最大堆大小，以支持此类复制，然后重新运行管道  。

@@ -8,10 +8,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 09/14/2018
 ms.openlocfilehash: 95b638b85e0746d2995488f2a28a5fb2512b1063
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96015258"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>如何为 Azure Data Lake Analytics 设置 CI/CD 管道  
@@ -63,7 +63,7 @@ U-SQL 项目中的 U-SQL 脚本可能包含针对 U-SQL 数据库对象的查询
 详细了解 [U-SQL 数据库项目](data-lake-analytics-data-lake-tools-develop-usql-database.md)。
 
 >[!NOTE]
-> DROP 语句可能导致意外删除。 若要启用 DROP 语句，需要显式指定 MSBuild 参数。 **AllowDropStatement** 将启用与删除程序集和 drop table 值函数类似的非数据相关的删除操作。 **AllowDataDropStatement** 将启用数据相关的删除操作，如删除表和删除架构。 必须先启用 AllowDropStatement，然后才能使用 AllowDataDropStatement。
+> DROP 语句可能会导致意外删除。 若要启用 DROP 语句，需要显式指定 MSBuild 参数。 AllowDropStatement 将启用与数据无关的 DROP 操作，如删除程序集和删除表值函数。 AllowDataDropStatement 将启用与数据相关的 DROP 操作，如删除表和删除架构。 必须先启用 AllowDropStatement，然后才能使用 AllowDataDropStatement。
 >
 
 ### <a name="build-a-u-sql-project-with-the-msbuild-command-line"></a>使用 MSBuild 命令行生成 U-SQL 项目
@@ -76,10 +76,10 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 
 参数的定义和值如下：
 
-- **USQLSDKPath = \<U-SQL Nuget package> \build\runtime**。 此参数引用 U-SQL 语言服务的 NuGet 包的安装路径。
+- USQLSDKPath=\<U-SQL Nuget package>\build\runtime。 此参数引用 U-SQL 语言服务的 NuGet 包的安装路径。
 - **USQLTargetType=Merge 或 SyntaxCheck**：
 
-  - **合并**。 Merge 模式编译代码隐藏文件。 示例包括 **.cs**、**.py** 和 **.r** 文件。 它将生成的用户定义代码库内联到 U-SQL 脚本中。 示例包括 dll 库、Python 或 R 代码。
+  - **Merge**。 Merge 模式编译代码隐藏文件。 示例包括 **.cs**、**.py** 和 **.r** 文件。 它将生成的用户定义代码库内联到 U-SQL 脚本中。 示例包括 dll 库、Python 或 R 代码。
 
   - **SyntaxCheck**。 SyntaxCheck 模式首先将代码隐藏文件合并到 U-SQL 脚本中。 然后编译 U-SQL 脚本以验证代码。
 
@@ -93,7 +93,7 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 
 ![U-SQL 项目的 MSBuild 任务](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png)
 
-1. 添加 NuGet 还原任务以获取解决方案引用的包括 `Azure.DataLake.USQL.SDK` 的 NuGet 包，以便 MSBuild 可以找到 U-SQL 语言目标。 **Advanced**  >  **Destination directory** `$(Build.SourcesDirectory)/packages` 如果要直接在步骤2中使用 MSBuild 参数示例，请将 "高级目标目录" 设置为。
+1. 添加 NuGet 还原任务以获取解决方案引用的包括 `Azure.DataLake.USQL.SDK` 的 NuGet 包，以便 MSBuild 可以找到 U-SQL 语言目标。 若要在步骤 2 中直接使用 MSBuild 参数示例，请将“高级” > “目标目录” 设置为 `$(Build.SourcesDirectory)/packages`。
 
    ![U-SQL 项目的 NuGet 还原任务](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
@@ -110,13 +110,13 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 运行生成后，生成 U-SQL 项目中的所有脚本并输出到名为 `USQLProjectName.usqlpack` 的 zip 文件。 项目中的文件夹结构将保留在压缩的生成输出中。
 
 > [!NOTE]
-> 每个 U SQL 脚本的代码隐藏文件都将作为内联语句合并到脚本生成输出中。
+> 每个 U-SQL 脚本的代码隐藏文件将作为内联语句合并到脚本生成输出。
 
 ## <a name="test-u-sql-scripts"></a>测试 U-SQL 脚本
 
 Azure Data Lake 为 U-SQL 脚本和 C# UDO/UDAG/UDF 提供测试项目：
 
-- 了解如何 [添加适用于 U SQL 脚本的测试用例和扩展的 c # 代码](data-lake-analytics-cicd-test.md#test-u-sql-scripts)
+- 了解如何[为 U-SQL 脚本和扩展的 C# 代码添加测试用例](data-lake-analytics-cicd-test.md#test-u-sql-scripts)
 
 - 了解如何[在 Azure Pipelines 中运行测试用例](data-lake-analytics-cicd-test.md#run-test-cases-in-azure-devops)。
 
@@ -232,7 +232,7 @@ Main
 ```
 
 >[!NOTE]
-> 命令： `Submit-AzDataLakeAnalyticsJob` 和 `Wait-AzDataLakeAnalyticsJob` 是适用于 Azure 资源管理器 framework 中 Azure Data Lake Analytics 的 Azure PowerShell cmdlet。 需要安装有 Azure PowerShell 的工作站。 有关更多命令和示例，可以参阅 [命令列表](/powershell/module/Az.DataLakeAnalytics) 。
+> 命令 `Submit-AzDataLakeAnalyticsJob` 和 `Wait-AzDataLakeAnalyticsJob` 都是 Azure资源管理器框架中用于 Azure Data Lake Analytics 的 Azure PowerShell cmdlet。 你需要一个已安装 Azure PowerShell 的工作站。 有关更多命令和示例，可以参阅[命令列表](/powershell/module/Az.DataLakeAnalytics)。
 >
 
 ### <a name="deploy-u-sql-jobs-through-azure-data-factory"></a>通过 Azure 数据工厂部署 U-SQL 作业
@@ -332,7 +332,7 @@ msbuild DatabaseProject.usqldbproj /p:USQLSDKPath=packages\Microsoft.Azure.DataL
 
    ![U-SQL 项目的 CI/CD MSBuild 任务](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png)
 
-1. 添加 NuGet 还原任务以获取解决方案引用的包括 `Azure.DataLake.USQL.SDK` 的 NuGet 包，以便 MSBuild 可以找到 U-SQL 语言目标。 **Advanced**  >  **Destination directory** `$(Build.SourcesDirectory)/packages` 如果要直接在步骤2中使用 MSBuild 参数示例，请将 "高级目标目录" 设置为。
+1. 添加 NuGet 还原任务以获取解决方案引用的包括 `Azure.DataLake.USQL.SDK` 的 NuGet 包，以便 MSBuild 可以找到 U-SQL 语言目标。 若要在步骤 2 中直接使用 MSBuild 参数示例，请将“高级” > “目标目录” 设置为 `$(Build.SourcesDirectory)/packages`。
 
    ![U-SQL 项目的 CI/CD NuGet 任务](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
@@ -462,9 +462,9 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
 
 | 参数 | 说明 | 默认值 | 必需 |
 |---------|-----------|-------------|--------|
-|包|要部署的 U-SQL 数据库部署包的路径。|null|true|
+|程序包|要部署的 U-SQL 数据库部署包的路径。|null|true|
 |数据库|要部署到或创建的数据库名称。|主|false|
-|LogFile|日志记录文件的路径。 默认为标准输出（控制台）。|Null|false|
+|LogFile|日志记录文件的路径。 默认为标准输出（控制台）。|null|false|
 |LogLevel|日志级别：Verbose、Normal、Warning 或 Error|LogLevel.Normal|false|
 
 #### <a name="parameter-for-local-deployment"></a>本地部署的参数
@@ -478,19 +478,19 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
 |参数|说明|默认值|必需|
 |---------|-----------|-------------|--------|
 |帐户|按帐户名称指定部署到哪个 Azure Data Lake Analytics 帐户。|null|true|
-|resourceGroup|Azure Data Lake Analytics 帐户的 Azure 资源组名称。|null|true|
+|ResourceGroup|Azure Data Lake Analytics 帐户的 Azure 资源组名称。|null|true|
 |SubscriptionId|Azure Data Lake Analytics 帐户的 Azure 订阅 ID。|null|true|
 |租户|租户名称是 Azure Active Directory (Azure AD) 域名。 可在 Azure 门户的订阅管理页面中找到它。|null|true|
 |AzureSDKPath|要在 Azure SDK 中搜索依赖程序集的路径。|null|true|
 |交互|是否使用交互模式进行身份验证。|false|false|
-|ClientId|非交互式身份验证所需的 Azure AD 应用程序 ID。|Null|非交互式身份验证需要此参数。|
-|机密|用于非交互式身份验证的机密或密码。 仅应在受信任和安全的环境中使用。|Null|非交互式身份验证需要此参数，或使用 SecreteFile。|
-|SecreteFile|该文件保存用于非交互式身份验证的机密或密码。 请确保只有当前用户可以读取它。|Null|非交互式身份验证需要此参数，或使用机密。|
-|CertFile|该文件保存用于非交互式身份验证的 X.509 证书。 默认使用客户端机密身份验证。|Null|false|
+|ClientId|非交互式身份验证所需的 Azure AD 应用程序 ID。|null|非交互式身份验证需要此参数。|
+|机密|用于非交互式身份验证的机密或密码。 仅应在受信任和安全的环境中使用。|null|非交互式身份验证需要此参数，或使用 SecreteFile。|
+|SecreteFile|该文件保存用于非交互式身份验证的机密或密码。 请确保只有当前用户可以读取它。|null|非交互式身份验证需要此参数，或使用机密。|
+|CertFile|该文件保存用于非交互式身份验证的 X.509 证书。 默认使用客户端机密身份验证。|null|false|
 | JobPrefix | U-SQL DDL 作业的数据库部署前缀。 | Deploy_ + DateTime.Now | false |
 
 ## <a name="next-steps"></a>后续步骤
 
 - [如何测试 Azure Data Lake Analytics 代码](data-lake-analytics-cicd-test.md)。
-- [在本地计算机上运行 SQL 脚本](data-lake-analytics-data-lake-tools-local-run.md)。
+- [在本地计算机上运行 U-SQL 脚本](data-lake-analytics-data-lake-tools-local-run.md)。
 - [使用 U-SQL 数据库项目开发 U-SQL 数据库](data-lake-analytics-data-lake-tools-develop-usql-database.md)。

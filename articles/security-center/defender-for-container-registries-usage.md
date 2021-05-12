@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: ee4992e41e792b570d8937edfe31efb4c651d742
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102100723"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>使用适用于容器注册表的 Azure Defender 来扫描映像是否存在漏洞
@@ -100,7 +100,7 @@ ms.locfileid: "102100723"
     1. 确定更新的映像已推送、已扫描，且不再显示在建议中时，请从注册表中删除“旧”版本易受攻击的映像。
 
 
-## <a name="disable-specific-findings-preview"></a> (预览禁用特定发现) 
+## <a name="disable-specific-findings-preview"></a>禁用特定发现结果（预览版）
 
 > [!NOTE]
 > [!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]
@@ -109,39 +109,39 @@ ms.locfileid: "102100723"
 
 当发现结果与在禁用规则中定义的条件相匹配时，它不会显示在发现结果列表中。 典型方案包括：
 
-- 禁用严重性低于中型的发现结果
-- 禁用非可修补的结果
-- 禁用 CVSS 评分低于6.5 的发现结果
-- 禁用安全检查或类别 (中包含特定文本的结果，例如 "RedHat"、"CentOS Security Update for sudo" ) 
+- 禁用严重性低于中等的发现结果
+- 禁用不可修补的发现结果
+- 禁用 CVSS 分数低于 6.5 的发现结果
+- 禁用在安全检查或类别中带有特定文本的发现结果（例如，“RedHat”，“CentOS Security Update for sudo”）
 
 > [!IMPORTANT]
-> 若要创建规则，需要在 Azure 策略中编辑策略的权限。
+> 若要创建规则，需要有在 Azure Policy 中编辑策略的权限。
 >
-> 有关详细信息，请参阅 azure [策略中的 AZURE RBAC 权限](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)。
+> 若要了解详细信息，请参阅 [Azure Policy 中的 Azure RBAC 权限](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)。
 
-您可以使用下列任一条件： 
+可以使用以下任一条件： 
 
-- 查找 ID 
+- 发现结果 ID 
 - 类别
 - 安全检查 
-- CVSS v3 评分
+- CVSS v3 分数
 - 严重性 
 - 可修补状态 
 
 若要创建规则，请执行以下操作：
 
-1. 对于 **Azure 容器注册表中的漏洞**，若要获取建议详细信息页，请选择 " **禁用规则**"。
+1. 在“应修正 Azure 容器注册表映像中的漏洞”的“建议详细信息”页中，选择“禁用规则”。
 1. 选择相关范围。
-1. 定义条件。
-1. 选择 " **应用规则**"。
+1. 定义你的条件。
+1. 选择“应用规则”。
 
-    :::image type="content" source="./media/defender-for-container-registries-usage/new-disable-rule-for-registry-finding.png" alt-text="为注册表上的 VA 发现创建禁用规则":::
+    :::image type="content" source="./media/defender-for-container-registries-usage/new-disable-rule-for-registry-finding.png" alt-text="为注册表上的 VA 发现结果创建禁用规则":::
 
-1. 查看、替代或删除规则： 
-    1. 选择 " **禁用规则**"。
-    1. 在 "作用域" 列表中，具有活动规则的订阅显示为 "已 **应用规则**"。
+1. 若要查看、替代或删除规则，请执行以下操作： 
+    1. 选择“禁用规则”。
+    1. 在范围列表中，具有有效规则的订阅显示为“已应用规则”。
         :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="修改或删除现有规则":::
-    1. 若要查看或删除规则，请选择省略号菜单 ( "..." ) 。
+    1. 若要查看或删除规则，请选择省略号菜单（“...”）。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 04/22/2021
 ms.topic: how-to
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6271875c368f637140010401cf2ebe21039be9a9
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: a9afef0e2616664578e66be3735104c47bfcffa9
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897354"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108760744"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>创建和管理 Azure 机器学习工作区 
 
@@ -252,7 +252,7 @@ from azureml.core import Workspace
 
 ### <a name="download-a-configuration-file"></a>下载配置文件
 
-如果要创建[计算实例](tutorial-1st-experiment-sdk-setup.md#azure)，请跳过此步骤。  该计算实例已为你创建此文件的副本。
+如果要创建[计算实例](quickstart-create-resources.md)，请跳过此步骤。  该计算实例已为你创建此文件的副本。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -391,8 +391,7 @@ Azure 机器学习工作区使用 Azure 容器注册表 (ACR) 执行某些操作
 ## <a name="examples"></a>示例
 
 创建工作区的示例：
-* 使用 Azure 门户[创建工作区和计算实例](tutorial-1st-experiment-sdk-setup.md)
-* 使用 Python SDK [在自己的环境中创建工作区](tutorial-1st-experiment-sdk-setup-local.md)
+* 使用 Azure 门户[创建工作区和计算实例](quickstart-create-resources.md)
 
 ## <a name="next-steps"></a>后续步骤
 

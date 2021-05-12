@@ -1,17 +1,17 @@
 ---
 title: Azure 数据工厂连接器概述
 description: 了解数据工厂中支持的连接器。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/10/2021
-ms.author: jingwang
-ms.openlocfilehash: cfd3376174ec0f7789389988245f7377b9896a00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: 072abfacb4fc62dd381c53b2bfd38d4000828d81
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103015908"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109487144"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Azure 数据工厂连接器概述
 
@@ -21,7 +21,7 @@ Azure 数据工厂通过复制、数据流、查找、获取元数据和删除�
 
 ## <a name="supported-data-stores"></a>支持的数据存储
 
-[!INCLUDE [Connector overview](../../includes/data-factory-v2-connector-overview.md)]
+[!INCLUDE [Connector overview](includes/data-factory-v2-connector-overview.md)]
 
 ## <a name="integrate-with-more-data-stores"></a>与更多数据存储集成
 
