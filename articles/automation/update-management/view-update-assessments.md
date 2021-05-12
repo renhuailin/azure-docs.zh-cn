@@ -6,15 +6,15 @@ ms.subservice: update-management
 ms.date: 09/17/2020
 ms.topic: conceptual
 ms.openlocfilehash: 39df5888a330a92ae043e34c3043da5b1f566345
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92221979"
 ---
 # <a name="view-update-assessments-in-update-management"></a>查看更新管理中的更新评估
 
-在更新管理中，可以查看有关计算机、缺少的更新、更新部署和计划的更新部署的信息。 你可以从所选的启用 Arc 的服务器，或者在所有已配置的计算机和服务器上从自动化帐户查看作用域为所选的 Azure 虚拟机的评估信息。
+在更新管理中，可以查看有关计算机、缺少的更新、更新部署和计划的更新部署的信息。 可以从选定的已启用 Arc 的服务器或所有已配置的计算机和服务器上的自动化帐户查看范围为选定 Azure 虚拟机的评估信息。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -22,17 +22,17 @@ ms.locfileid: "92221979"
 
 ## <a name="view-update-assessment"></a>查看更新评估
 
-若要从 Azure VM 查看更新评估，请导航至“虚拟机”，然后从列表中选择你的虚拟机。 在左侧菜单中，选择 "**来宾 + 主机更新**"，然后选择 "**来宾 + 主机更新**" 页上的 "**前往更新管理**"。
+若要从 Azure VM 查看更新评估，请导航至“虚拟机”，然后从列表中选择你的虚拟机。 从左侧菜单中选择“来宾 + 主机更新”，然后在“来宾 + 主机更新”页上选择“转到更新管理”。
 
 在更新管理中，可以查看有关计算机、缺失的更新、更新部署和计划的更新部署的信息。
 
 [ ![Azure VM 的更新管理评估视图](./media/view-update-assessments/update-assessment-azure-vm.png)](./media/view-update-assessments/update-assessment-azure-vm-expanded.png#lightbox)
 
-若要从启用了 Arc 的服务器中查看更新评估，请导航到 " **服务器-Azure Arc** "，然后从列表中选择你的服务器。 从左侧菜单中，选择 " **来宾和主机更新**"。 在 " **来宾 + 主机更新** " 页上，选择 " **前往更新管理**"。
+若要从已启用 Arc 的服务器查看更新评估，请导航到“服务器 - Azure Arc”，然后从列表中选择服务器。 在左侧菜单中，选择“来宾和主机更新”。 在“来宾 + 主机更新”页上，选择“转到更新管理”。
 
-在更新管理中，可以查看有关启用了 Arc 的计算机、缺少更新、更新部署和计划的更新部署的信息。
+在更新管理中，可以查看有关已启用 Arc 的计算机、缺失的更新、更新部署和计划的更新部署的信息。
 
-[![支持 Arc 的服务器的更新管理评估视图](./media/view-update-assessments/update-assessment-arc-server.png)](./media/view-update-assessments/update-assessment-arc-server-expanded.png#lightbox)
+[ ![已启用 Arc 的服务器的更新管理评估视图](./media/view-update-assessments/update-assessment-arc-server.png)](./media/view-update-assessments/update-assessment-arc-server-expanded.png#lightbox)
 
 若要从自动化帐户查看所有计算机（包括启用了 Arc 的服务器）上的更新评估，请导航至“自动化帐户”，然后从列表中选择启用了“更新管理”的自动化帐户。 在自动化帐户中，从左侧菜单选择“更新管理”。
 

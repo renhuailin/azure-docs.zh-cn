@@ -16,14 +16,17 @@ ms.workload: infrastructure-services
 ms.date: 03/18/2018
 ms.author: kaanan
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8e3a56e4a6eb1fb6eb633021178ef78f8ac7287d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30b506b9577fd2dda3c75711d648b6f1b6d0a45c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96014782"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758872"
 ---
 # <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>通过 Azure CLI 使用虚拟网络 TAP
+
+> [!IMPORTANT]
+> 虚拟网络 TAP 预览版目前在所有 Azure 区域中均处于暂候状态。 可以通过电子邮件 <azurevnettap@microsoft.com> 向我们发送你的订阅 ID，我们会就未来的预览版更新通知你。 在此期间，可以使用基于代理的解决方案或 NVA 解决方案，这些解决方案通过 [Azure 市场产品/服务](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances%3Ball&search=Network%20Traffic&filters=partners)中提供的[数据包代理合作伙伴解决方案](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions)提供 TAP/网络可见性功能。
 
 通过 Azure 虚拟网络 TAP（终端接入点），可让你持续将虚拟机网络流量流式传输到网络数据包收集器或分析工具。 收集器或分析工具由[网络虚拟设备](https://azure.microsoft.com/solutions/network-appliances/)合作伙伴提供。 有关经验证可与虚拟网络 TAP 一起使用的合作伙伴解决方案列表，请参阅[合作伙伴解决方案](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions)。 
 

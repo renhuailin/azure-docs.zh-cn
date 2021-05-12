@@ -9,29 +9,29 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 11c1938c3c1ccba533f52336fad81ebeaae53b24
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92895471"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Azure Maps 搜索服务的最佳做法
 
-Azure Maps [搜索服务](/rest/api/maps/search) 包括提供各种功能的 api，可帮助开发人员按名称或类别搜索地址、位置、业务列表和其他地理信息。 例如，使用[模糊搜索 API](/rest/api/maps/search/getsearchfuzzy) ，用户可以在 POI) 搜索地址或 (兴趣点。
+Azure Maps [搜索服务](/rest/api/maps/search)包括 API，这些 API 提供了各种功能来帮助开发人员按名称或类别搜索地址、地点、商家列表以及其他地理信息。 例如，使用[模糊搜索 API](/rest/api/maps/search/getsearchfuzzy)，用户可以搜索地址或兴趣点 (POI)。
 
 本文介绍如何在调用 Azure Maps 搜索服务中的数据时应用最佳做法。 将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 生成查询以返回相关的匹配项
 > * 限定搜索结果
 > * 了解结果类型之间的差异
-> * 阅读地址搜索-响应结构
+> * 读取地址搜索-响应结构
 
 ## <a name="prerequisites"></a>先决条件
 
 1. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。
 
-本文使用 [Postman 应用](https://www.postman.com/downloads/) 来构建 REST 调用，但你可以选择任何 API 开发环境。
+本文使用 [Postman 应用](https://www.postman.com/downloads/)来生成 REST 调用，但你可以选择任何 API 开发环境。
 
 ## <a name="best-practices-to-geocode-addresses"></a>地理编码地址的最佳做法
 
@@ -59,7 +59,7 @@ Azure Maps [搜索服务](/rest/api/maps/search) 包括提供各种功能的 api
 
 #### <a name="fuzzy-search-parameters"></a>模糊搜索参数
 
-如果不知道某个搜索查询的用户输入，我们建议使用 Azure Maps [模糊搜索 API](/rest/api/maps/search/getsearchfuzzy)。 例如，用户的输入可以是地址，也可以是 (POI) 的兴趣点类型，如 *购物购物中心* 。 该 API 可将 POI 搜索和地理编码组合成规范的“单行搜索”。 
+如果不知道某个搜索查询的用户输入，我们建议使用 Azure Maps [模糊搜索 API](/rest/api/maps/search/getsearchfuzzy)。 例如，用户的输入可以是地址或兴趣点 (POI) 类型，如“购物中心”。 该 API 可将 POI 搜索和地理编码组合成规范的“单行搜索”。 
 
 * 即使查询参数与用户需要的信息不完全匹配，`minFuzzyLevel` 和 `maxFuzzyLevel` 参数也有助于返回相关的匹配项。 可以将搜索查询设定为默认值 `minFuzzyLevel=1` 和 `maxFuzzyLevel=2`，以提高性能并减少不正常的结果。 
 
@@ -67,12 +67,12 @@ Azure Maps [搜索服务](/rest/api/maps/search) 包括提供各种功能的 api
 
 * 使用 `idxSet` 参数为一组具体的结果类型设置优先级。 要为一组具体的结果设置优先级，可以提交以逗号分隔的索引列表。 在列表中，项顺序并不重要。 Azure Maps 支持以下索引：
 
-* `Addr` - **地址范围** ：从街道的开头和结尾处插入的地址点。 这些点表示为地址范围。
-* `Geo` - **地理区域** ：地理行政区域。 例如，地理位置可以是国家/地区、省/市/自治区或市县。
-* `PAD` - **点地址** ：包含街道名称和编号的地址。 可在索引中找到点地址。 例如，Soquel Dr 2501。 点地址提供了地址的最高准确性级别。  
-* `POI` - **兴趣点** ：地图上的点，值得注意或可能令人感兴趣。 [地址搜索 API](/rest/api/maps/search/getsearchaddress) 不返回 POI。  
-* `Str` - **街道** ：地图上的街道。
-* `XStr` - **十字路口或交叉口** ：两条道路相交的交叉口或位置。
+* `Addr` - **地址范围**：从街道的开头和结尾处插入的地址点。 这些点表示为地址范围。
+* `Geo` - **地理区域**：地理行政区域。 例如，地理位置可以是国家/地区、省/市/自治区或市县。
+* `PAD` - **点地址**：包含街道名称和编号的地址。 可在索引中找到点地址。 例如，Soquel Dr 2501。 点地址提供了地址的最高准确性级别。  
+* `POI` - **兴趣点**：地图上的点，值得注意或可能令人感兴趣。 [地址搜索 API](/rest/api/maps/search/getsearchaddress) 不返回 POI。  
+* `Str` - **街道**：地图上的街道。
+* `XStr` - **十字路口或交叉口**：两条道路相交的交叉口或位置。
 
 
 #### <a name="usage-examples"></a>用法示例
@@ -83,7 +83,7 @@ Azure Maps [搜索服务](/rest/api/maps/search) 包括提供各种功能的 api
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>地理实体类型的反向地理编码和筛选
 
-在[地址搜索反向 API](/rest/api/maps/search/getsearchaddressreverse) 中执行反向地理编码搜索时，该服务可以返回多边形来表示行政区域。 例如，您可能希望提取城市的区域多边形。  若要将搜索范围缩小到特定地理实体类型，请在请求中包含 `entityType` 参数。 
+在[地址搜索反向 API](/rest/api/maps/search/getsearchaddressreverse) 中执行反向地理编码搜索时，该服务可以返回多边形来表示行政区域。 例如，你可能想要提取城市的区域多边形。  若要将搜索范围缩小到特定地理实体类型，请在请求中包含 `entityType` 参数。 
 
 生成的响应包含地域 ID 和匹配的实体类型。 如果提供了多个实体，则终结点将返回可用的最小实体。 可使用返回的几何图形 ID 通过 [Polygon 搜索服务](/rest/api/maps/search/getsearchpolygon)来获取地理位置的几何图形。
 
@@ -763,17 +763,17 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 ### <a name="supported-types-of-results"></a>支持的结果类型
 
-* **点地址** ：地图上的点，包含特定地址并附有街道名称和编号。 点地址提供了地址的最高准确性级别。 
+* **点地址**：地图上的点，包含特定地址并附有街道名称和编号。 点地址提供了地址的最高准确性级别。 
 
-* **地址范围** ：从街道的开头和结尾处插入的地址点范围。  
+* **地址范围**：从街道的开头和结尾处插入的地址点范围。  
 
-* **Geography** ：地图上的区域，表示地理行政区域，例如国家/地区、州、省/市/自治区或市/县。 
+* **Geography**：地图上的区域，表示地理行政区域，例如国家/地区、州、省/市/自治区或市/县。 
 
-* **POI** ：地图上的点，值得注意或可能令人感兴趣。
+* **POI**：地图上的点，值得注意或可能令人感兴趣。
 
-* **街道** ：地图上的街道。 地址解析为包含地址的街道的纬度和经度坐标。 门牌号码可能不会处理。 
+* **街道**：地图上的街道。 地址解析为包含地址的街道的纬度和经度坐标。 门牌号码可能不会处理。 
 
-* **十字路口** ：交叉路口。 十字路口表示两条道路相交的交叉口。
+* **十字路口**：交叉路口。 十字路口表示两条道路相交的交叉口。
 
 ### <a name="response"></a>响应
 

@@ -1,17 +1,17 @@
 ---
 title: Azure 数据工厂（旧版）中支持的文件格式
 description: 本主题说明 Azure 数据工厂中基于文件的连接器支持的文件格式和压缩代码。
-author: linda33wj
-ms.author: jingwang
+author: jianleishen
+ms.author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: d95927a9ea7d3084387a9aedb0dcdd86f84b8e7f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 960c2a995a6e68b2f15e553121bc860f9ac29890
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100384820"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109488512"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Azure 数据工厂（旧版）中支持的文件格式和压缩编解码器
 

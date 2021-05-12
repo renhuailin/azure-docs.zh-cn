@@ -6,12 +6,12 @@ ms.author: rywinter
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 01/11/2021
-ms.openlocfilehash: dd4e53eebe6593db457798f009d3d05ddcbd77b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 38c21ff71971868f6597856c4048ec179faf4e01
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100654707"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108759427"
 ---
 # <a name="what-is-azure-iot-device-and-application-development"></a>Azure IoT 设备和应用程序开发指的是什么？
 
@@ -74,5 +74,5 @@ Azure IoT 设备开发人员可以借助各种不同的设备 SDK 和 Azure 服�
 
 ## <a name="next-steps"></a>后续步骤
 选择与你的开发角色最为相关的以下快速入门系列之一。 这些文章演示了有关创建用于托管设备的 Azure IoT 应用程序、使用 SDK、连接设备和发送遥测数据的基础知识。  
-- 有关设备应用程序开发：[快速入门：将来自设备的遥测数据发送到 Azure IoT Central](quickstart-send-telemetry-python.md)
+- 有关设备应用程序开发：[快速入门：将来自设备的遥测数据发送到 Azure IoT Central](quickstart-send-telemetry-central.md)
 - 有关嵌入式设备开发：[Azure IoT 嵌入式设备开发入门](quickstart-device-development.md)

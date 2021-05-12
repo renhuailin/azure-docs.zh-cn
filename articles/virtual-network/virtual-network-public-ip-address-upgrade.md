@@ -17,18 +17,18 @@ ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions
 ms.openlocfilehash: 33c767d847d9e70e95b3ee1648be7852aa5cec98
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100522880"
 ---
 # <a name="upgrade-public-ip-addresses"></a>升级公共 IP 地址
 
-使用 SKU （基本或标准）创建 Azure 公共 IP 地址，该地址可确定其功能的各个方面 (包括分配方法、功能支持以及可与) 关联的资源。 
+Azure 公共 IP 地址是采用某个 SKU 创建的，该 SKU 可以是基本的，也可以是标准的，它决定了公共 IP 地址的功能的各个方面（包括分配方法、功能支持以及它们可以与哪些资源关联）。 
 
 本文介绍了以下方案：
-* 如何使用 PowerShell 或 CLI) 将基本 SKU 公共 IP 升级到标准 SKU 公共 IP (
+* 如何将基本 SKU 公共 IP 升级到标准 SKU 公共 IP（使用 PowerShell 或 CLI）
 * 如何将经典 Azure 保留 IP 迁移到 Azure 资源管理器基本 SKU 公共 IP
 
 ## <a name="upgrade-public-ip-address-from-basic-to-standard-sku"></a>将公共 IP 地址从基本 SKU 升级到标准 SKU
@@ -36,7 +36,7 @@ ms.locfileid: "100522880"
 若要升级公共 IP，则它不得与任何资源相关联（有关如何将公共 IP 解除关联的详细信息，请查看[此页](./virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address)）。
 
 >[!IMPORTANT]
->从基本 SKU 升级到标准 SKU 的公共 Ip 将继续没有保证的 [可用性区域](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)。  选择要将 IP 地址关联到的资源时，请确保这一点。
+>从基本 SKU 升级到标准 SKU 的公共 IP 仍然没有保证的[可用性区域](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)。  请确保在选择与 IP 地址关联的资源时牢记这一点。
 
 ---
 # <a name="basic-to-standard---powershell"></a>[**从基本 SKU 升级到标准 SKU - PowerShell**](#tab/option-upgrade-powershell)
@@ -146,7 +146,7 @@ azure network reserved-ip commit-migration $name
 ## <a name="limitations"></a>限制
 
 * 若要升级基本的公共 IP，则它不能与任何 Azure 资源相关联。  请查看[此页](./virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address)来详细了解如何将公共 IP 解除关联。  类似地，若要迁移保留 IP，则它不能与任何云服务相关联。  请查看[此页](./remove-public-ip-address-vm.md)来详细了解如何将保留 IP 解除关联。  
-* 从基本 SKU 升级到标准 SKU 的公共 Ip 将继续没有 [可用性区域](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones) ，因此不能与区域冗余或区域性的 Azure 资源关联。  请注意，这仅适用于提供可用性区域的区域。
+* 从基本 SKU 升级到标准 SKU 的公共 IP 仍将没有[可用性区域](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)，因此不能与区域冗余或区域性 Azure 资源相关联。  请注意，这仅适用于提供可用性区域 (zone) 的区域 (region)。
 * 无法从标准 SKU 降级到基本 SKU。
 
 ## <a name="next-steps"></a>后续步骤

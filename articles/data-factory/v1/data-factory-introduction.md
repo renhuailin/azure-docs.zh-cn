@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 220c1969055ffaa5d1bea41ab547efd4596f8a20
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ea7c5a82a6219e673454d627a4350291c5b3f047
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786458"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108761644"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure 数据工厂简介 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -83,12 +83,12 @@ Azure 数据工厂中的管道（数据驱动型工作流）通常执行以下�
 ### <a name="data-movement-activities"></a>数据移动活动
 数据工厂中的复制活动可以将数据从源数据存储复制到接收器数据存储。 来自任何源的数据都可以写入到任何接收器。 选择某个数据存储即可了解如何将数据复制到该存储，以及如何从该存储复制数据。 数据工厂支持以下数据存储：
 
-[!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
+[!INCLUDE [data-factory-supported-data-stores](includes/data-factory-supported-data-stores.md)]
 
 有关详细信息，请参阅[使用复制活动移动数据](data-factory-data-movement-activities.md)。
 
 ### <a name="data-transformation-activities"></a>数据转换活动
-[!INCLUDE [data-factory-transformation-activities](../../../includes/data-factory-transformation-activities.md)]
+[!INCLUDE [data-factory-transformation-activities](includes/data-factory-transformation-activities.md)]
 
 有关详细信息，请参阅[使用复制活动移动数据](data-factory-data-transformation-activities.md)。
 

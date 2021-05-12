@@ -8,10 +8,10 @@ ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: d415ef165da18312a458d7d14fba18acd1bf44cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84235609"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure 文件的共享快照概述
@@ -30,7 +30,7 @@ Azure 文件提供了获取文件共享的共享快照的功能。 共享快照�
 
 ### <a name="general-backup-purposes"></a>常规备份目的
 
-创建文件共享后，可以定期创建文件共享的共享快照，以便使用它进行数据备份。 定期创建共享快照有助于维护之前版本的数据，以备未来审计之需或灾难恢复之用。 建议使用 [Azure 文件共享备份](../../backup/azure-file-share-backup-overview.md) 作为备份解决方案来制作和管理快照。 你还可以使用 CLI 或 PowerShell 自行执行和管理快照。
+创建文件共享后，可以定期创建文件共享的共享快照，以便使用它进行数据备份。 定期创建共享快照有助于维护之前版本的数据，以备未来审计之需或灾难恢复之用。 我们建议使用 [Azure 文件共享备份](../../backup/azure-file-share-backup-overview.md)作为备份解决方案来拍摄和管理快照。 还可以使用 CLI 或 PowerShell 自行拍摄和管理快照。
 
 ## <a name="capabilities"></a>功能
 
@@ -85,7 +85,7 @@ Azure 文件目前允许的共享快照的上限是 200 个。 在 200 个共享
 
 ## <a name="general-best-practices"></a>常规最佳做法
 
-我们建议使用 [Azure 文件共享备份](../../backup/azure-file-share-backup-overview.md) 作为备份解决方案，以自动执行快照和管理快照。 在 Azure 上运行基础结构时，尽可能自动备份数据恢复。 自动化操作比手动流程更可靠，有助于提高数据保护和可恢复性。 你可以使用 Azure 文件共享备份、REST API、客户端 SDK 或自动编写脚本。
+我们建议使用 [Azure 文件共享备份](../../backup/azure-file-share-backup-overview.md)作为备份解决方案来自动拍摄快照和管理快照。 在 Azure 上运行基础结构时，尽可能自动备份数据恢复。 自动化操作比手动流程更可靠，有助于提高数据保护和可恢复性。 可以使用 Azure文件共享备份、REST API、客户端 SDK 或脚本来实现自动化。
 
 在部署共享快照计划程序之前，仔细考虑共享快照频率和保留设置，以免产生不必要的费用。
 

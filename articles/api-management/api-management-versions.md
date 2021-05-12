@@ -10,10 +10,10 @@ ms.date: 02/10/2021
 ms.author: jodowns
 ms.custom: fasttrack-new
 ms.openlocfilehash: 55951f288314d92cf5057e7d5c1e988f65cb3e14
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102040373"
 ---
 # <a name="versions-in-azure-api-management"></a>Azure API 管理中的版本
@@ -42,7 +42,7 @@ ms.locfileid: "102040373"
 
 例如，`https://apis.contoso.com/products/v1` 和 `https://apis.contoso.com/products/v2` 可以引用相同的 `products` API，但需要分别引用版本 `v1` 和 `v2`。
 
-使用基于路径的版本控制时 API 请求 URL 的格式为： `https://{yourDomain}/{apiName}/{versionIdentifier}/{operationId}` 。
+使用基于路径的版本控制时，API 请求 URL 的格式为：`https://{yourDomain}/{apiName}/{versionIdentifier}/{operationId}`。
 
 ### <a name="header-based-versioning"></a>基于标头的版本控制
 
@@ -64,13 +64,13 @@ ms.locfileid: "102040373"
 
 ## <a name="how-versions-are-represented"></a>如何表示版本
 
-Azure API 管理会维护名为“版本集”的资源，该资源代表单个逻辑 API 的一组版本。 版本集包含受版本控制的 API 的显示名称，以及用于将请求定向到指定版本的 [版本控制方案](#versioning-schemes) 。
+Azure API 管理会维护名为“版本集”的资源，该资源代表单个逻辑 API 的一组版本。 版本集包含版本控制 API 的显示名称，以及用于将请求定向到指定版本的[版本控制方案](#versioning-schemes)。
 
-API 的每个版本都作为其自身的 API 资源进行维护，并将资源与版本集相关联。 版本集可能包含具有不同操作或策略的 Api。 你可能会在集中的各个版本之间进行重大更改。
+API 的每个版本都作为其自身的 API 资源进行维护，并将资源与版本集相关联。 版本集可能包含具有不同操作或策略的 API。 你可能会在某个集中的版本之间进行重大更改。
 
-Azure 门户为你创建版本集。 可以在 Azure 门户中修改版本集的名称和描述。
+Azure 门户可为你创建版本集。 你可以在 Azure 门户中修改版本集的名称和说明。
 
-你可以使用 [Azure CLI](/cli/azure/apim/api/versionset)、 [Azure PowerShell](/powershell/module/az.apimanagement/#api-management)、 [资源管理器模板](/azure/templates/microsoft.apimanagement/service/apiversionsets)或 [Azure 资源管理器 API](/rest/api/apimanagement/2020-06-01-preview/apiversionset)直接查看和管理版本集。
+你可以使用 [Azure CLI](/cli/azure/apim/api/versionset)、[Azure PowerShell](/powershell/module/az.apimanagement/#api-management)、[资源管理器模板](/azure/templates/microsoft.apimanagement/service/apiversionsets)或 [Azure 资源管理器 API](/rest/api/apimanagement/2020-06-01-preview/apiversionset) 直接查看和管理版本集。
 
 ### <a name="migrating-a-non-versioned-api-to-a-versioned-api"></a>将非版本控制 API 迁移到版本控制 API
 

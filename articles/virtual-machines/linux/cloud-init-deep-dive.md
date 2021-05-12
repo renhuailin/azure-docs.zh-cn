@@ -3,17 +3,17 @@ title: 了解 cloud-init
 description: 深入了解如何使用 cloud-init 来预配 Azure VM。
 author: danielsollondon
 ms.service: virtual-machines
-ms.subservice: imaging
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 94dd57310375febb4bc9a55efa704a5fbf4e80e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.subservice: cloud-init
+ms.openlocfilehash: 63bc821648348c2936d437fef7fdd89314fad3c5
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559437"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783218"
 ---
 # <a name="diving-deeper-into-cloud-init"></a>深入了解 cloud-init
 若要详细了解 [cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) 或在更深级别对其进行故障排除，你需要了解其工作原理。 本文档重点介绍了重要的部分，并介绍了 Azure 具体内容。

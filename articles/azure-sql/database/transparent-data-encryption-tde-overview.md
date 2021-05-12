@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 10/12/2020
 ms.openlocfilehash: 8fbbd7a2aabc9de417f1eefd2513edba3119bfc0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92791386"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 的透明数据加密
@@ -24,7 +24,7 @@ ms.locfileid: "92791386"
 
 [透明数据加密 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) 通过加密静态数据，帮助保护 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 免受恶意脱机活动的威胁。 它可执行静态数据库、关联备份和事务日志文件的实时加密和解密，无需更改应用程序。 对于所有新部署的 SQL 数据库，默认已启用 TDE；对于 Azure SQL 数据库、Azure SQL 托管实例的旧版数据库，需要手动启用 TDE。 对于 Azure Synapse Analytics，需要手动启用 TDE。
 
-TDE 对页面级数据执行实时 I/O 加密和解密。 将每个页面读入内存时会将其解密，在写入磁盘之前会将其加密。 TDE 使用称为数据库加密密钥 (DEK) 的对称密钥加密整个数据库的存储。 在数据库启动时，加密的 DEK 将被解密，然后用于解密和重新加密 SQL Server 数据库引擎进程中的数据库文件。 DEK 由 TDE 保护器保护。 TDE 保护器是服务托管的证书（服务托管的透明数据加密）或存储在 [Azure Key Vault](../../key-vault/general/secure-your-key-vault.md) 中的非对称密钥（客户管理的透明数据加密）。
+TDE 对页面级数据执行实时 I/O 加密和解密。 将每个页面读入内存时会将其解密，在写入磁盘之前会将其加密。 TDE 使用称为数据库加密密钥 (DEK) 的对称密钥加密整个数据库的存储。 在数据库启动时，已加密的 DEK 被解密，然后用于解密和重新加密 SQL Server 数据库引擎进程中的数据库文件。 DEK 由 TDE 保护器保护。 TDE 保护器是服务托管的证书（服务托管的透明数据加密）或存储在 [Azure Key Vault](../../key-vault/general/secure-your-key-vault.md) 中的非对称密钥（客户管理的透明数据加密）。
 
 对于 Azure SQL 数据库和 Azure Synapse，TDE 保护器在[服务器](logical-servers.md)级别设置，并由该服务器关联的所有数据库继承。 对于 Azure SQL 托管实例，TDE 保护器在实例级别设置，并由该实例上所有加密的数据库继承。 除非另有说明，否则术语“服务器”在整个文档中指的是服务器和实例。
 
@@ -32,19 +32,19 @@ TDE 对页面级数据执行实时 I/O 加密和解密。 将每个页面读入�
 > 默认情况下，将使用服务托管的透明数据加密对 SQL 数据库中所有新建的数据库进行加密。 默认情况下，2017 年 5 月之前创建的现有 SQL 数据库以及通过还原、异地复制和数据库副本创建的 SQL 数据库均不加密。 默认情况下，2019 年 2 月之前创建的现有 SQL 托管实例数据库不加密。 通过源提供的还原继承加密状态创建的 SQL 托管实例数据库。
 
 > [!NOTE]
-> TDE 不能用于对 Azure SQL 数据库和 Azure SQL 托管实例中的系统数据库（例如 **master** 数据库）进行加密。 **master** 数据库包含对用户数据库执行 TDE 操作时所需的对象。 建议不要将任何敏感数据存储在系统数据库中。 现在正在推出[基础结构加密](transparent-data-encryption-byok-overview.md#doubleencryption)，用于加密包括 master 的系统数据库。 
+> TDE 不能用于对 Azure SQL 数据库和 Azure SQL 托管实例中的系统数据库（如 master 数据库）进行加密。 **master** 数据库包含对用户数据库执行 TDE 操作时所需的对象。 建议不要将任何敏感数据存储在系统数据库中。 目前正在推出[基础结构加密](transparent-data-encryption-byok-overview.md#doubleencryption)，它可以对包括 master 数据库在内的系统数据库进行加密。 
 
 ## <a name="service-managed-transparent-data-encryption"></a>服务托管的透明数据加密
 
-在 Azure 中，TDE 的默认设置是 DEK 受内置服务器证书保护。 内置服务器证书对于每个服务器都是唯一的，使用的加密算法是 AES 256。 如果某个数据库存在异地复制关系，则主数据库和异地辅助数据库将受主数据库的父服务器密钥保护。 如果两个数据库连接到同一个服务器，则它们也共享相同的内置证书。 Microsoft 根据内部安全策略自动轮换这些证书，根密钥由 Microsoft 内部密码存储保护。 客户可在 [Microsoft 信任中心](https://servicetrust.microsoft.com/)上的独立第三方审核报告中验证 sql 数据库和 sql 托管实例符合内部安全策略。
+在 Azure 中，TDE 的默认设置是 DEK 受内置服务器证书保护。 内置服务器证书对于每个服务器都是唯一的，使用的加密算法是 AES 256。 如果某个数据库存在异地复制关系，则主数据库和异地辅助数据库将受主数据库的父服务器密钥保护。 如果两个数据库连接到同一个服务器，则它们也共享相同的内置证书。 Microsoft 根据内部安全策略自动轮换这些证书，根密钥由 Microsoft 内部密码存储保护。 客户可以在 [Microsoft 信任中心](https://servicetrust.microsoft.com/)提供的独立第三方审核报告中验证 SQL 数据库和 SQL 托管实例是否符合内部安全策略。
 
 Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还原。
 
 ## <a name="customer-managed-transparent-data-encryption---bring-your-own-key"></a>客户管理的透明数据加密 - 创建自己的密钥
 
-客户管理的 TDE 也称为 TDE 的“创建自己的密钥”(BYOK) 支持。 在此方案中，用于加密 DEK 的 TDE 保护器是客户管理的非对称密钥，该密钥存储在客户自有且自行管理的 Azure Key Vault（Azure 的基于云的外部密钥管理系统）中，并且永远不会离开该密钥保管库。 TDE 保护 [程序可由密钥保管库生成，或者](../../key-vault/keys/hsm-protected-keys.md) 从本地硬件安全模块 (HSM) 设备传输到密钥保管库。 需要向 SQL 数据库、SQL 托管实例和 Azure Synapse 授予对客户管理的密钥保管库的权限才能对 DEK 进行解密和加密。 如果吊销了到密钥保管库的服务器的权限，则数据库将无法访问，并对所有数据进行加密
+客户管理的 TDE 也称为 TDE 的“创建自己的密钥”(BYOK) 支持。 在此方案中，用于加密 DEK 的 TDE 保护器是客户管理的非对称密钥，该密钥存储在客户自有且自行管理的 Azure Key Vault（Azure 的基于云的外部密钥管理系统）中，并且永远不会离开该密钥保管库。 TDE 保护程序可以[是由密钥保管库生成的，也可以是从本地硬件安全模块 (HSM) 设备转移到密钥保管库的](../../key-vault/keys/hsm-protected-keys.md)。 需要向 SQL 数据库、SQL 托管实例和 Azure Synapse 授予对客户管理的密钥保管库的权限才能对 DEK 进行解密和加密。 如果撤销了服务器对该密钥保管库的权限，则数据库将无法访问，并且所有数据均已加密
 
-使用集成了 Azure Key Vault 的 TDE，用户可以控制密钥管理任务，包括密钥轮换、密钥保管库权限、密钥备份，以及使用 Azure Key Vault 功能对所有 TDE 保护器启用审核/报告。 Key Vault 提供了中心密钥管理，利用了严格监视的 Hsm，并允许在密钥和数据的管理之间分离职责，以帮助满足安全策略的符合性。
+使用集成了 Azure Key Vault 的 TDE，用户可以控制密钥管理任务，包括密钥轮换、密钥保管库权限、密钥备份，以及使用 Azure Key Vault 功能对所有 TDE 保护器启用审核/报告。 Key Vault 提供了集中化密钥管理功能，利用严格监控的 HSM，并可在密钥与数据管理之间实现职责分离，有助于满足安全策略的要求。
 若要详细了解 Azure SQL 数据库和 Azure Synapse 的 BYOK，请参阅[透明数据加密与 Azure Key Vault 的集成](transparent-data-encryption-byok-overview.md)。
 
 若要开始使用 TDE 与 Azure Key Vault 的集成，请参阅操作指南[使用 Key Vault 中的自有密钥启用透明数据加密](transparent-data-encryption-byok-configure.md)。

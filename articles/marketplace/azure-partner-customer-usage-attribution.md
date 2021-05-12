@@ -4,16 +4,14 @@ description: 大致了解如何在商业市场以及合作伙伴开发的其他�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: cpercy737
-ms.author: camper
 ms.date: 04/12/2021
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 7f09e744dfdd7be73c62c70bcfa91804f14aaa68
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: aadf1f4c9ab8fa20933256749bd8ce37a1258063
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313668"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738799"
 ---
 # <a name="azure-customer-usage-attribution"></a>Azure 客户使用情况归因
 
@@ -164,7 +162,7 @@ foreach ($deployment in $deployments){
 
 在某些情况下，你可能直接调用资源管理器 REST API 来部署 Azure 服务。 [Azure 支持使用多个 SDK](../index.yml?pivot=sdkstools) 来启用这些调用。 你可以使用其中一个 SDK，也可以直接调用 REST API 来部署资源。
 
-要启用客户使用情况归因，在设计 API 调用时，请在请求的用户代理标头中包含跟踪 ID。 将字符串的格式设置为采用 `pid-` 前缀。 示例:
+要启用客户使用情况归因，在设计 API 调用时，请在请求的用户代理标头中包含跟踪 ID。 将字符串的格式设置为采用 `pid-` 前缀。 示例：
 
 ```xml
 //Commercial Marketplace Azure app
@@ -262,7 +260,7 @@ Microsoft 合作伙伴技术顾问将电话联系你，确定你的需求。
 ## <a name="report"></a>报表
 通过客户使用情况归因跟踪的 Azure 使用情况的报告目前对 ISV 合作伙伴不可用。 将报告添加到合作伙伴中心内的商业市场计划以涵盖客户使用情况归因的功能计划在 2021 年下半年推出。
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 
 #### <a name="after-a-tracking-id-is-added-can-it-be-changed"></a>添加跟踪 ID 后是否可对其进行更改？
 
