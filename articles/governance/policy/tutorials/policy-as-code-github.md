@@ -3,12 +3,12 @@ title: 教程：通过 GitHub 实现 Azure Policy as Code
 description: 本教程介绍如何通过导出、GitHub 操作和 GitHub 工作流实现 Azure Policy as Code 工作流
 ms.date: 03/31/2021
 ms.topic: tutorial
-ms.openlocfilehash: 64957671597ad6df237f92176e10280dc45018c9
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: d7ad4d0487d8a6ead6c89834569e130c7b9945f5
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106092749"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752024"
 ---
 # <a name="tutorial-implement-azure-policy-as-code-with-github"></a>教程：通过 GitHub 实现 Azure Policy as Code
 
@@ -46,7 +46,7 @@ ms.locfileid: "106092749"
    - **目录**：要将 Azure Policy 资源导出到的根级别文件夹。 此目录下的子文件夹基于导出的资源而创建。
 
 1. 在“策略”选项卡上，选择省略号，然后选择管理组、订阅或资源组的组合，以设置搜索范围。
-   
+
 1. 使用“添加策略定义”按钮在相关范围中搜索要导出的对象。 在打开的侧窗口中，选择要导出的每个对象。 根据搜索框或类型筛选选定内容。 选择所有要导出的对象后，使用页面底部的“添加”按钮。
 
 1. 对于每个选定对象，为策略定义选择所需的导出选项，例如“仅定义”或“定义和分配” 。 然后选择“查看 + 导出”选项卡或页面底部的“下一步: 查看 + 导出”按钮。
@@ -98,29 +98,27 @@ ms.locfileid: "106092749"
 
 通过使用 [Azure Policy 符合性扫描操作](https://github.com/marketplace/actions/azure-policy-compliance-scan)，可以从 [GitHub 工作流](https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow#about-workflows)触发对一个或多个资源、资源组或订阅的按需符合性评估扫描，并基于这些资源的符合性状态更改工作流路径。 还可以将工作流配置为在计划的时间运行，以在方便时获取最新的符合性状态。 （可选）此 GitHub 操作还可以生成有关已扫描资源的符合性状态报告，以用于进一步分析或存档。
 
-以下示例对订阅运行符合性扫描。 
+以下示例对订阅运行符合性扫描。
 
 ```yaml
 
 on:
-  schedule:    
+  schedule:
     - cron:  '0 8 * * *'  # runs every morning 8am
 jobs:
-  assess-policy-compliance:    
+  assess-policy-compliance:
     runs-on: ubuntu-latest
-    steps:         
+    steps:
     - name: Login to Azure
       uses: azure/login@v1
       with:
-        creds: ${{secrets.AZURE_CREDENTIALS}} 
+        creds: ${{secrets.AZURE_CREDENTIALS}}
 
-    
     - name: Check for resource compliance
       uses: azure/policy-compliance-scan@v0
       with:
         scopes: |
           /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-
 ```
 
 ## <a name="review"></a>审阅

@@ -3,12 +3,12 @@ title: 部署 CAF 基础蓝图示例
 description: CAF Foundation 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
 ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: a8d41364451bf2ebf1e48b90fad74f4b24c804e1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 281bd0fdae5aa144799499d583b5673a569612b1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103470143"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757864"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>部署适用于 Azure 的 Microsoft 云采用框架基础蓝图示例
 
@@ -86,7 +86,7 @@ ms.locfileid: "103470143"
      - **组织**：输入组织名称（例如 Contoso），必须唯一。
      - **Azure 区域**：选择要部署的 Azure 区域。
      - **允许的位置**：你将允许哪些 Azure 区域内置资源？
-     
+
    - 项目参数
 
      在本部分定义的参数将应用到定义了这些参数的项目。 这些参数属于[动态参数](../../concepts/parameters.md#dynamic-parameters) ，因为它们是在分配蓝图期间定义的。 有关完整列表或项目参数及其说明，请参阅[项目参数表](#artifact-parameters-table) 。

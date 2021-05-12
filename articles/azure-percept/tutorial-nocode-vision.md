@@ -1,18 +1,18 @@
 ---
 title: 在 Azure Percept Studio 中创建无代码视觉解决方案
 description: 了解如何在 Azure Percept Studio 中创建无代码视觉解决方案并将其部署到 Azure Percept DK
-author: elqu20
-ms.author: v-elqu
+author: philmea
+ms.author: philmea
 ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 49e5db729dab7abaa440b1adf6a61e9e52a1efbc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35d39fabedb71e27e54d72fd8f5031bcd9510b7b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023123"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108746020"
 ---
 # <a name="create-a-no-code-vision-solution-in-azure-percept-studio"></a>在 Azure Percept Studio 中创建无代码视觉解决方案
 

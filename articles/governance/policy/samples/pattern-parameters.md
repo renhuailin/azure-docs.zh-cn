@@ -3,12 +3,12 @@ title: 模式：策略定义中的参数
 description: 此 Azure Policy 模式举例说明了如何在策略定义中使用字符串和数组参数，以及如何将效果参数化。
 ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: b742aaaf950e2b5670edbaa1f0134da144e675b6
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 07e5f05a556c30e6a9e464509006140a02a1dcc7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106092766"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752284"
 ---
 # <a name="azure-policy-pattern-parameters"></a>Azure Policy 模式：参数
 

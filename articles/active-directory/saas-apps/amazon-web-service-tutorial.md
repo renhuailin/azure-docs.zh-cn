@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/05/2021
 ms.author: jeedes
-ms.openlocfilehash: eb469c757e2898a9925dd7d3358cfe95734cb2e9
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: cb8ae273dbe9f7b26cafe6b291a0fd6b5e4ef093
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537729"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108802191"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-account-access"></a>教程：Azure Active Directory 单一登录 (SSO) 与 AWS Single-Account Access 的集成
 
@@ -140,7 +140,7 @@ ms.locfileid: "107537729"
     | SessionDuration | “提供介于 900 秒（15 分钟）到 43200 秒（12 小时）之间的值” |  `https://aws.amazon.com/SAML/Attributes` |
 
     > [!NOTE]
-    > AWS 需要分配给应用程序的用户的角色。 请在 Azure AD 中设置这些角色，以便可为用户分配相应的角色。 若要了解如何在 Azure AD 中配置角色，请参阅[此文](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)
+    > AWS 需要分配给应用程序的用户的角色。 请在 Azure AD 中设置这些角色，以便可为用户分配相应的角色。 若要了解如何在 Azure AD 中配置角色，请参阅[此文](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui)
 
 1. 在“设置 SAML 单一登录”页的“SAML 签名证书”（步骤 3）对话框中，选择“添加证书”  。
 
