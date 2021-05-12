@@ -18,18 +18,18 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 074c203a0a5688855d4f7607a877b25ce6ee6ad7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89660564"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的标识要求
 设计混合标识解决方案的第一个步骤是确定要利用此解决方案的企业组织有何要求。  混合标识最初是一个支持角色（通过提供身份验证来支持其他所有云解决方案），并提供一些新奇的功能，为用户解锁新的工作负荷。  要为用户采用的这些工作负荷或服务指明了混合标识设计的要求。  这些服务和工作负荷在本地和云中都需要利用混合标识。  
 
-我们需要通盘审视企业的各个主要层面，了解其当前要求，以及公司的将来规划。 如果不清楚混合标识设计的长期策略，解决方案将来有可能无法随着企业的成长和变化而缩放。 下图显示了混合标识体系结构的示例，以及要为用户解除锁定的工作负荷。 此示例只是说明可以通过健全的混合标识策略解锁和提供的各种新机会。 
+我们需要通盘审视企业的各个主要层面，了解其当前要求，以及公司的将来规划。 如果不清楚混合标识设计的长期策略，解决方案将来有可能无法随着企业的成长和变化而缩放。 下图中的示例演示了混合标识体系结构以及要为用户解锁的工作负荷。 此示例只是说明可以通过健全的混合标识策略解锁和提供的各种新机会。 
 
-属于混合标识体系结构 ![ 混合标识体系结构的一些组件](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
+属于混合标识体系结构 ![混合标识体系结构](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png) 的部分组件
 
 ## <a name="determine-business-needs"></a>确定业务需求
 每家公司都有不同的要求，即使这些公司属于相同的行业，实际的业务要求仍可能有所不同。 可以继续利用行业最佳实践，但最终引导定义混合标识设计要求的仍是公司的业务需求。 
@@ -73,9 +73,9 @@ ms.locfileid: "89660564"
   * 通过智能卡执行 MFA。 RSA SecurID 等等。
   * 可以解决以下问题的客户端访问规则：
     1. 是否可以根据客户端的 IP 地址阻止对 Microsoft 365 的所有外部访问？
-    2. 除了 Exchange ActiveSync 外，是否可以阻止对 Microsoft 365 的所有外部访问？
-    3. 我可以阻止对 Microsoft 365 的所有外部访问，但基于浏览器的应用 (OWA、SPO) 
-    4. 对于指定的 AD 组的成员，是否可以阻止对 Microsoft 365 的所有外部访问
+    2. 是否可以阻止对 Microsoft 365 的所有外部访问（Exchange ActiveSync 除外）？
+    3. 是否可以阻止对 Microsoft 365 的所有外部访问（基于浏览器的应用（OWA、SPO）除外）？
+    4. 是否可以阻止指定的 AD 组成员对 Microsoft 365 的所有外部访问？
 * 安全/审核考虑因素
 * 对联合身份验证的既有投资
 * 组织在云中的域将使用哪种名称？

@@ -3,12 +3,12 @@ title: 发现资源属性
 description: 描述如何搜索资源属性。
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: c8bbe0dcb1bc9dc9751a1dc0d0b98a6368473546
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aaa7bb13f49c1c742e44a255d4bbdbd2b1730939
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91327742"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736678"
 ---
 # <a name="discover-resource-properties"></a>发现资源属性
 
@@ -69,7 +69,7 @@ Azure 资源管理器模板参考是模板架构的最全面的资源。 你可�
 
 资源浏览器是嵌入在 Azure 门户中的。 在使用此方法之前，需要先有一个存储帐户。 如果还没有，请选择以下按钮来创建一个：
 
-[![“部署到 Azure”](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json)
+[![“部署到 Azure”](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.storage%2Fstorage-account-create%2Fazuredeploy.json)
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在搜索框中，输入“资源浏览器”，然后选择“资源浏览器”。
@@ -97,7 +97,7 @@ Resources.azure.com 是一个公共网站，可供具有 Azure 订阅的任何�
 
 若要演示如何通过使用此工具来检索架构信息，需要有一个存储帐户。 如果还没有，请选择以下按钮来创建一个：
 
-[![“部署到 Azure”](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json)
+[![“部署到 Azure”](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.storage%2Fstorage-account-create%2Fazuredeploy.json)
 
 1. 浏览到 [resources.azure.com](https://resources.azure.com/)。 该工具填充左侧窗格需要几分钟时间。
 1. 选择“订阅”。

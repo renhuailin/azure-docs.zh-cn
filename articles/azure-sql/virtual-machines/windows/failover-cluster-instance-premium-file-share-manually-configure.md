@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
 ms.openlocfilehash: 80fe9f03f2c57eab8527e553153f3e65315a54bf
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102034840"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>使用高级文件共享创建 FCI（Azure VM 上的 SQL Server）
@@ -36,7 +36,7 @@ ms.locfileid: "102034840"
 
 - Azure 订阅。
 - 有权限在 Azure 虚拟机和 Active Directory 中创建对象的帐户。
-- [可用性集中](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)的[两个或更多个已准备的 Windows Azure 虚拟机](failover-cluster-instance-prepare-vm.md)或不同的[可用性区域](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)。
+- 一个[可用性集](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)中的或不同的[可用性区域](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)中的[两个或更多个已准备好的 Windows Azure 虚拟机](failover-cluster-instance-prepare-vm.md)。
 - 要基于数据库中数据文件的存储配额，用作群集驱动器的[高级文件共享](../../../storage/files/storage-how-to-create-file-share.md)。
 - 最新版本的 [PowerShell](/powershell/azure/install-az-ps)。 
 
@@ -188,11 +188,11 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 在要添加到 SQL Server 故障转移群集实例的任何其他节点上重复这些步骤。 
 
-## <a name="register-with-the-sql-vm-rp"></a>向 SQL VM RP 注册
+## <a name="register-with-the-sql-vm-rp"></a>注册到 SQL VM RP
 
-若要从门户管理你的 SQL Server VM，请将其注册到 [轻型管理模式](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode)下的 SQL IaaS 代理扩展 (RP) ，这是目前在 Azure VM 上 FCI 和 SQL Server 支持的唯一模式。 
+若要从门户管理 SQL Server VM，请在[轻型管理模式](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode)下将其注册到 SQL IaaS 代理扩展 (RP)。目前，这是 Azure VM 上的 FCI 和 SQL Server 唯一支持的模式。 
 
-使用 PowerShell ( SQL Server VM 以轻型模式注册可以是 `PAYG` 或 `AHUB`) ：
+使用 PowerShell 在轻型模式下注册 SQL Server VM（-LicenseType 可以是 `PAYG` 或 `AHUB`）：
 
 ```powershell-interactive
 # Get the existing compute VM
@@ -213,7 +213,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 - Windows Server 2016 及更低版本不支持 Microsoft 分布式事务处理协调器 (MSDTC)。 
 - 使用高级文件共享的故障转移群集不支持文件流。 若要使用文件流，请改用[存储空间直通](failover-cluster-instance-storage-spaces-direct-manually-configure.md)或 [Azure 共享磁盘](failover-cluster-instance-azure-shared-disks-manually-configure.md)部署你的群集。
-- 仅支持在 [轻型管理模式下](sql-server-iaas-agent-extension-automate-management.md#management-modes) 注册 SQL IaaS 代理扩展。 
+- 仅支持在[轻型管理模式](sql-server-iaas-agent-extension-automate-management.md#management-modes)下注册到 SQL IaaS 代理扩展。 
 
 ## <a name="next-steps"></a>后续步骤
 

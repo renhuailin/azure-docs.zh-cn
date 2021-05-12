@@ -8,10 +8,10 @@ ms.custom: devx-track-csharp
 ms.date: 03/27/2019
 ms.author: zhshang
 ms.openlocfilehash: fd6ac8c4d4fc4c3fec4f549f8ef4f955e2b1c637
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89439208"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>如何使用多个实例扩展 SignalR 服务？
@@ -61,7 +61,7 @@ services.AddSignalR()
 #### <a name="default-behavior"></a>默认行为 
 1. 客户端请求路由
 
-    当客户端通过 `/negotiate` 与应用服务器协商时， SDK 默认会从可用服务终结点集内**随机选择**一个终结点。
+    当客户端通过 `/negotiate` 与应用服务器协商时， SDK 默认会从可用服务终结点集内 **随机选择** 一个终结点。
 
 2. 服务器消息路由
 
@@ -220,13 +220,13 @@ app.MapAzureSignalR(GetType().FullName, hub, options => {
 
 `primary` 终结点是接收客户端流量的首选终结点，我们认为其网络连接更可靠；`secondary` 终结点的网络连接被认为较不可靠，仅用于接收从服务器到客户端的流量（例如广播消息），而不用于接收客户端到服务器的流量。
 
-在跨区域案例中，网络可能不稳定。 对于 *美国东部*的一个应用服务器，位于同一 *美国东部* 区域的 SignalR 服务终结点可以配置为 `primary` ，其他区域中标记为的终结点 `secondary` 。 在此配置中，其他区域中的服务终结点可以从*美国东部*应用服务器**接收**消息，但将不会向此应用服务器路由**跨区域**的客户端。 下图显示了体系结构：
+在跨区域案例中，网络可能不稳定。 对于位于“美国东部”的一个应用服务器，位于同一“美国东部”区域的 SignalR 服务终结点可以配置为 `primary`，其他区域的终结点可以标记为 `secondary`。 在此配置中，其他区域的服务终结点可以从这个“美国东部”应用服务器接收消息，但不会有“跨区域”客户端路由到此应用服务器。 下图显示了体系结构：
 
 ![跨地域基础结构](./media/signalr-howto-scale-multi-instances/cross_geo_infra.png)
 
-当客户端尝试使用默认路由器通过 `/negotiate` 来与应用服务器协商时，SDK 会从可用的 `primary` 终结点集内**随机选择**一个终结点。 当主终结点不可用时，SDK 会从所有可用的 `secondary` 终结点中**随机选择**。 当服务器与服务终结点之间的连接处于活动状态时，终结点将标记为**可用**。
+当客户端尝试使用默认路由器通过 `/negotiate` 来与应用服务器协商时，SDK 会从可用的 `primary` 终结点集内 **随机选择** 一个终结点。 当主终结点不可用时，SDK 会从所有可用的 `secondary` 终结点中 **随机选择**。 当服务器与服务终结点之间的连接处于活动状态时，终结点将标记为 **可用**。
 
-在跨区域方案中，当客户端尝试 `/negotiate` 使用 *美国东部*托管的应用程序服务器时，默认情况下，它始终返回 `primary` 位于同一区域中的终结点。 当所有 " *美国东部* " 终结点都不可用时，客户端将重定向到其他区域中的终结点。 以下故障转移部分详细介绍了该方案。
+在跨区域方案中，如果客户端尝试通过 `/negotiate` 与托管在“美国东部”的应用服务器协商，则默认情况下，始终会返回位于同一区域中的 `primary` 终结点。 当所有“美国东部”终结点都不可用时，客户端会重定向到其他区域的终结点。 以下故障转移部分详细介绍了该方案。
 
 ![正常协商](./media/signalr-howto-scale-multi-instances/normal_negotiate.png)
 

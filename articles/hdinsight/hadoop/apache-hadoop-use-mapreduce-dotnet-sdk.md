@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/15/2020
 ms.openlocfilehash: 8fbcb66be11c7c77a9bfaf0e6ec790622dcbbda7
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98932180"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>使用 HDInsight .NET SDK 运行 MapReduce 作业
 
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-了解如何使用 HDInsight .NET SDK 提交 MapReduce 作业。 HDInsight 群集附带含有一些 MapReduce 示例的 jar 文件。 该 jar 文件是 `/example/jars/hadoop-mapreduce-examples.jar` 。  其中一个示例是 wordcount  。 开发 C# 控制台应用程序，提交 wordcount 作业。  作业读取 `/example/data/gutenberg/davinci.txt` 文件，并将结果输出到 `/example/data/davinciwordcount` 。  如果想要重新运行该应用程序，必须清理输出文件夹。
+了解如何使用 HDInsight .NET SDK 提交 MapReduce 作业。 HDInsight 群集附带含有一些 MapReduce 示例的 jar 文件。 该 jar 文件为 `/example/jars/hadoop-mapreduce-examples.jar`。  其中一个示例是 wordcount。 开发 C# 控制台应用程序，提交 wordcount 作业。  该作业读取 `/example/data/gutenberg/davinci.txt` 文件，并将结果输出到 `/example/data/davinciwordcount`。  如果想要重新运行该应用程序，必须清理输出文件夹。
 
 > [!NOTE]  
 > 必须从 Windows 客户端执行本文中的步骤。 有关使用 Linux、OS X 或 Unix 客户端来使用 Hive 的信息，请使用本文顶部显示的选项卡选择器。
@@ -33,13 +33,13 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 
 1. 启动 Visual Studio 并创建 C# 控制台应用程序。
 
-1. 导航到“工具” > “NuGet 包管理器” > “包管理器控制台”，然后输入以下命令：
+1. 导航到“工具” > “NuGet 包管理器” > “包管理器控制台”，然后输入以下命令  ：
 
     ```   
     Install-Package Microsoft.Azure.Management.HDInsight.Job
     ```
 
-1. 将以下代码复制到 **Program.cs** 中。 然后通过设置 `existingClusterName`、`existingClusterPassword`、`defaultStorageAccountName`、`defaultStorageAccountKey` 和 `defaultStorageContainerName` 的值来编辑代码。
+1. 将下面的代码复制到 Program.cs 中。 然后，通过设置以下项的值来编辑代码：`existingClusterName`、`existingClusterPassword`、`defaultStorageAccountName`、`defaultStorageAccountKey`、`defaultStorageContainerName`。
 
     ```csharp
     using System.Collections.Generic;
@@ -158,15 +158,15 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 
     ```
 
-1. 按 **F5** 运行应用程序。
+1. 按 **F5** 运行该应用程序。
 
-若要再次运行该作业，必须更改作业输出文件夹名称，其示例中为 `/example/data/davinciwordcount` 。
+若要重新运行该作业，必须更改作业输出文件夹的名称（在此示例中为 `/example/data/davinciwordcount`）。
 
-当作业成功完成时，应用程序将打印输出文件的内容 `part-r-00000` 。
+作业成功完成后，应用程序会输出输出文件 `part-r-00000` 的内容。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，已经学习了几种创建 HDInsight 群集的方法。 若要了解详细信息，请参阅以下文章：
+在本文中，已经学习了几种创建 HDInsight 群集的方法。 要了解更多信息，请参阅下列文章：
 
 * 有关如何提交 Hive 作业，请参阅[使用 HDInsight .NET SDK 运行 Apache Hive 查询](apache-hadoop-use-hive-dotnet-sdk.md)。
 * 有关如何创建 HDInsight 群集，请参阅[在 HDInsight 中创建基于 Linux 的 Apache Hadoop 群集](../hdinsight-hadoop-provision-linux-clusters.md)。

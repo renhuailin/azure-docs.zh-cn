@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2021
 ms.author: Zhchia
-ms.openlocfilehash: a2c4e151ba6acb4b9fc308459b7bcd8c063edba8
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 99857aab921d1c09de09db04dededef187094ae5
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124160"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108740008"
 ---
 # <a name="tutorial-configure-bentley---automatic-user-provisioning-for-automatic-user-provisioning"></a>教程：为 Bentley - Automatic User Provisioning 配置自动用户预配
 
@@ -149,10 +149,7 @@ ms.locfileid: "108124160"
 
 1. 通过[预配日志](../reports-monitoring/concept-provisioning-logs.md)来确定哪些用户已预配成功或失败
 2. 检查[进度栏](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)来查看预配周期的状态以及完成进度
-3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 有关隔离状态的详细信息，请访问[此处](../app-provisioning/application-provisioning-quarantine-status.md)。
-
-## <a name="connector-limitations"></a>连接器限制
-* 企业扩展属性“urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager”不受支持，会被删除。
+3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](../app-provisioning/application-provisioning-quarantine-status.md)了解有关隔离状态的详细信息。
 
 ## <a name="additional-resources"></a>其他资源
 

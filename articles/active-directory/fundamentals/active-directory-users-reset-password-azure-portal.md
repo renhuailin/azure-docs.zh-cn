@@ -15,10 +15,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8809f8c168e7095f05587c7a572e08287637dc5a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102034585"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>使用 Azure Active Directory 重置用户的密码
@@ -52,7 +52,7 @@ ms.locfileid: "102034585"
     >临时密码永不过期。 用户下次登录时，无论自生成临时密码以来已经过了多长时间，密码仍然有效。
 
 > [!IMPORTANT]
-> 如果管理员无法重置用户的密码，并且在 Azure AD Connect 服务器上的应用程序事件日志中出现以下错误代码 hr = 80231367，请查看 Active Directory 中的用户属性。  如果将 " **AdminCount** " 属性设置为1，则会阻止管理员重置用户的密码。  属性 **AdminCount** 必须设置为0，以便管理员能够重置用户的密码。
+> 如果管理员无法重置用户密码，并且在 Azure AD Connect 服务器上的应用程序事件日志中出现错误代码 hr=80231367，请在 Active Directory 中查看用户的属性。  如果将“AdminCount”属性设置为 1，则会阻止管理员重置用户的密码。  必须将属性“AdminCount”设置为 0，以便管理员重置用户的密码。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2021
-ms.openlocfilehash: 757d765f44f09eeb6f7a24644abeb1ce4577f664
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 9a633e9201c78bda0ff2c88abd6a5dd2e67acdf3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107508918"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108738856"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-cli"></a>使用 Azure CLI 配置和访问 Azure Database for MySQL 灵活服务器的审核日志
 
@@ -23,7 +23,7 @@ ms.locfileid: "107508918"
 ## <a name="prerequisites"></a>先决条件
 - 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 - 安装 Azure CLI 或将其升级到最新版本。 请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
--  使用 [az login](/cli/azure/reference-index#az-login) 命令登录到 Azure 帐户。 请注意 id 属性，该属性指的是 Azure 帐户的订阅 ID。
+-  使用 [az login](/cli/azure/reference-index#az_login) 命令登录到 Azure 帐户。 请注意 id 属性，该属性指的是 Azure 帐户的订阅 ID。
 
     ```azurecli-interactive
     az login

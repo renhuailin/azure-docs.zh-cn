@@ -8,10 +8,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: b5bf0c6d6996a67e8b0fec3ec51e31fef8eedf26
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100363910"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>数据管理网关的发行说明
@@ -35,18 +35,18 @@ ms.locfileid: "100363910"
 ## <a name="earlier-versions"></a>早期版本
 ## <a name="21063477"></a>2.10.6347.7
 ### <a name="enhancements-"></a>增强功能
-- 如果需要，可以添加 DNS 条目以允许服务总线，而不是允许来自防火墙 (的所有 Azure IP 地址) 。 可以在 Azure 门户 (数据工厂 > "创作和部署" > "网关"-> "serviceUrls" (在 JSON 中查找各自的 DNS 条目
-- HDFS 连接器现在支持自签名的公共证书，方法是允许你跳过 TLS 验证。
+- 你可以添加 DNS 条目以允许使用服务总线，而不是允许使用防火墙中的所有 Azure IP 地址（如果需要）。 可以在 Azure 门户中找到相应的 DNS 条目（“数据工厂”->“创作和部署”->“网关”->“serviceUrls”（采用 JSON））
+- HDFS 连接器现在允许跳过 TLS 验证，以支持自签名的公用证书。
 - 已修复：更新期间发生的网关脱机问题（由于时钟偏差）
 
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>增强功能
--    如果需要，可以添加 DNS 条目以允许服务总线，而不是允许来自防火墙 (的所有 Azure IP 地址) 。 在此处了解更多详情。
+-    你可以添加 DNS 条目以允许使用服务总线，而不是允许使用防火墙中的所有 Azure IP 地址（如果需要）。 在此处了解更多详情。
 -    现在可以向/从最大 4.75 TB（这是块 Blob 支持的最大大小）的单块 Blob 复制数据。 （早期的限制为 195 GB）。
 -    已修复：在复制活动期间解压缩多个小文件时出现的内存不足问题。
--    已修复：从 Document DB 复制到 SQL Server 时，索引超出范围问题。
--    已修复： SQL 清理脚本不适用于从复制向导 SQL Server。
+-    已修复：使用幂等性功能从 Document DB 复制到 SQL Server 时发生的索引超出范围问题。
+-    已修复：SQL 清理脚本对复制向导中的 SQL Server 不起作用。
 -    已修复：末尾有空格的列名称在复制活动中不起作用。
 
 ## <a name="28662833"></a>2.8.66283.3
@@ -60,7 +60,7 @@ ms.locfileid: "100363910"
 - 已修复：从 Oracle 作为源读取十进制 null 值不正确。
 
 ## <a name="2661922"></a>2.6.6192.2
-### <a name="whats-new"></a>新增功能
+### <a name="whats-new"></a>新变化
 - 客户可以提供有关网关注册体验的反馈。
 - 支持新的压缩格式：ZIP (Deflate)
 
@@ -77,7 +77,7 @@ ms.locfileid: "100363910"
 
 ## <a name="2461511"></a>2.4.6151.1
 
-### <a name="whats-new"></a>新增功能
+### <a name="whats-new"></a>新变化
 
 - 现可在本地存储数据源凭据。 这些凭据已加密。 使用可从现有网关导出的备份文件可在本地恢复和还原数据源凭据。
 
@@ -107,7 +107,7 @@ ms.locfileid: "100363910"
 *  DB2 现支持 z/OS、DB2 for i (AS/400) 以及已支持的平台（Linux、Unix 和 Windows）。
 *  支持使用 Azure Cosmos DB 作为本地数据存储的源或目标
 *  支持从/向冷/热 Blob 存储以及已支持的通用存储帐户复制数据。
-*  允许通过远程登录权限通过网关连接到 SQL Server。  
+*  允许通过具有远程登录权限的网关连接到 SQL Server。  
 
 ## <a name="2060131"></a>2.0.6013.1
 
@@ -122,7 +122,7 @@ ms.locfileid: "100363910"
     *  已重新组织和简化控件。
 
     *  可使用[无代码复制工具](data-factory-copy-data-wizard-tutorial.md)从存储中复制数据。 有关此功能的大体详细信息，请参阅[暂存复制](data-factory-copy-activity-performance.md#staged-copy)。
-*  您可以使用数据管理网关直接将数据从 SQL Server 数据库传入 Azure 机器学习中。
+*  可使用数据管理网关将数据从 SQL Server 数据库直接传入 Azure 机器学习。
 
 *  性能改进
 
@@ -156,7 +156,7 @@ ms.locfileid: "100363910"
 
 *  零触摸自动更新功能
 *  具有网关状态指示器的新托盘图标
-*  能够从客户端 "立即更新"
+*  从客户端“立即更新”的功能
 *  设置更新计划时间的功能
 *  用于切换开/关自动更新的 PowerShell 脚本
 *  支持 JSON 格式  
@@ -194,7 +194,7 @@ ms.locfileid: "100363910"
 
 *  支持 Configuration Manager 的诊断工具
 *  支持用于 Azure 数据工厂的表格数据源的表列
-*  支持 Azure 数据工厂的 Azure Synapse 分析
+*  支持将 Azure Synapse Analytics 用于 Azure 数据工厂
 *  支持用于 Azure 数据工厂的 BlobSource 和 FileSource 中的隐藏
 *  支持 CopyBehavior - Azure 数据工厂中包含二进制副本的 BlobSink 和 FileSink 的 MergeFiles、PreserveHierarchy 和 FlattenHierarchy
 *  支持用于 Azure 数据工厂的复制活动报告进程

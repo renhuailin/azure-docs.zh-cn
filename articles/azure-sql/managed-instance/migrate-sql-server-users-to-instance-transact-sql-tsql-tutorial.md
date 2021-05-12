@@ -9,19 +9,16 @@ ms.topic: tutorial
 author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 10/30/2019
-ms.openlocfilehash: f2dd34ab7c6ee5be26836e4abb86960605ee44ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/10/2021
+ms.openlocfilehash: e8b37dd0f4037f2d348a98f871706c4c67723f24
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84708633"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714973"
 ---
 # <a name="tutorial-migrate-windows-users-and-groups-in-a-sql-server-instance-to-azure-sql-managed-instance-using-t-sql-ddl-syntax"></a>教程：使用 T-SQL DDL 语法将 SQL Server 实例中的 Windows 用户和组迁移到 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
-
-> [!NOTE]
-> 本文中用于将用户和组迁移到 SQL 托管实例的语法目前为公共预览版。
 
 本文逐步讲解如何使用 T-SQL 语法将 SQL Server 中的本地 Windows 用户和组迁移到 Azure SQL 托管实例。
 

@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 484dd8313710332660bb20d55f3dac2aa21bbc61
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98232516"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>将现有网络策略服务器 (NPS) 基础结构与 Azure AD 多重身份验证集成
@@ -89,7 +89,7 @@ Windows Server 2012 或更高版本。
 - [Visual C++ Redistributable Packages for Visual Studio 2013 (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
 - [用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块版本 1.1.166.0](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
 
-还可以通过在安装过程中运行的配置脚本（如果尚未存在）来安装用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块。 如果尚未安装此模块，无需提前安装。
+还要通过你在安装过程中运行的一个配置脚本来安装用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块（如果尚不存在）。 如果尚未安装此模块，无需提前安装。
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
@@ -107,17 +107,17 @@ Windows Server 2012 或更高版本。
 
 NPS 服务器必须能够通过端口 80 和 443 与以下 URL 通信：
 
-* *https： \/ /adnotifications.windowsazure.com*
-* *https： \/ /login.microsoftonline.com*
+* https:\//adnotifications.windowsazure.com
+* https:\//login.microsoftonline.com
 * https:\//credentials.azure.com
 
 此外，还需要连接到以下 URL 才能[使用提供的 PowerShell 脚本完成适配器的设置](#run-the-powershell-script)：
 
-* *https： \/ /login.microsoftonline.com*
-* *https： \/ /provisioningapi.microsoftonline.com*
+* https:\//login.microsoftonline.com
+* https:\//provisioningapi.microsoftonline.com
 * https:\//aadcdn.msauth.net
-* *https： \/ /www.powershellgallery.com*
-* *https： \/ /aadcdn.msftauthimages.net*
+* https:\//www.powershellgallery.com
+* https:\//aadcdn.msftauthimages.net
 
 ## <a name="prepare-your-environment"></a>准备环境
 
@@ -227,12 +227,12 @@ NPS 服务器会连接到 Azure AD，并对 MFA 请求进行身份验证。 为�
 
 1. 运行安装程序创建的 PowerShell 脚本。
 
-   可能需要首先启用 TLS 1.2 for PowerShell 才能正确连接和下载包：
+   你可能需要首先启用 TLS 1.2，以便 PowerShell 能够正确连接和下载包：
    
    `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12`
 
    > [!IMPORTANT]
-   > 对于使用 Azure 政府版或 Azure 中国世纪互联云的客户，请先 `Connect-MsolService` 在 *AzureMfaNpsExtnConfigSetup.ps1* 脚本中编辑 cmdlet，使其包含所需云的 *AzureEnvironment* 参数。 例如，指定 *-AzureEnvironment USGovernment* 或 *-AzureEnvironment AzureChinaCloud*。
+   > 对于使用 Azure 政府云或 Azure 中国世纪互联云的客户，请先编辑 AzureMfaNpsExtnConfigSetup.ps1 脚本中的 `Connect-MsolService` cmdlet，使其包含所需云的 AzureEnvironment 参数。 例如，指定“-AzureEnvironment USGovernment”或“-AzureEnvironment AzureChinaCloud”。
    >
    > 有关详细信息，请参阅 [Connect-MsolService 参数参考](/powershell/module/msonline/connect-msolservice#parameters)。
 
@@ -251,14 +251,14 @@ NPS 服务器会连接到 Azure AD，并对 MFA 请求进行身份验证。 为�
 
 ### <a name="microsoft-azure-government-or-azure-china-21vianet-additional-steps"></a>Microsoft Azure 政府或 Azure 中国世纪互联的其他步骤
 
-对于使用 Azure 政府版或 Azure 中国世纪互联云的客户，需要在每个 NPS 服务器上执行以下其他配置步骤。
+对于使用 Azure 政府云或 Azure 中国世纪互联云的客户，需要在每个 NPS 服务器上执行以下额外的配置步骤。
 
 > [!IMPORTANT]
-> 仅当你是 Azure 政府版或 Azure 中国世纪互联客户时才配置这些注册表设置。
+> 只有 Azure 政府或 Azure 中国世纪互联客户才需配置这些注册表设置。
 
-1. 如果你是 Azure 政府版或 Azure 中国世纪互联客户，请在 NPS 服务器上打开 **注册表编辑器** 。
+1. 如果你是 Azure 政府或 Azure 中国世纪互联客户，请在 NPS 服务器上打开“注册表编辑器”。
 1. 导航到 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa`。
-1. 对于 Azure 政府版客户，请设置以下键值：
+1. 对于 Azure 政府客户，请设置以下项值：
 
     | 注册表项       | 值 |
     |--------------------|-----------------------------------|

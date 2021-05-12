@@ -1,16 +1,16 @@
 ---
-title: 管理 Windows 虚拟桌面 PowerShell 的应用组-Azure
-description: 如何通过 PowerShell 管理 Windows 虚拟桌面应用组。
+title: 使用 PowerShell 管理 Windows 虚拟桌面的应用组 - Azure
+description: 如何使用 PowerShell 管理 Windows 虚拟桌面应用组。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a6f24dea00a174aa0276a9b30add0854c3694056
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88008638"
 ---
 # <a name="manage-app-groups-using-powershell"></a>使用 PowerShell 管理应用组
@@ -26,13 +26,13 @@ ms.locfileid: "88008638"
 > * 创建 RemoteApp 组。
 > * 授予对 RemoteApp 程序的访问权限。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-本文假定你已按照 [设置 powershell 模块](powershell-module.md) 中的说明进行操作，并登录到 Azure 帐户。
+本文假定你已按照[设置 PowerShell 模块](powershell-module.md)中的说明设置 PowerShell 模块并登录到 Azure 帐户。
 
 ## <a name="create-a-remoteapp-group"></a>创建 RemoteApp 组
 
-使用 PowerShell 创建 RemoteApp 组：
+若要使用 PowerShell 创建 RemoteApp 组，请执行以下操作：
 
 1. 运行以下 PowerShell cmdlet 以创建新的空 RemoteApp 应用组。
 
@@ -52,7 +52,7 @@ ms.locfileid: "88008638"
    Get-AzWvdStartMenuItem -ApplicationGroupName <appgroupname> -ResourceGroupName <resourcegroupname> | Format-List | more
    ```
 
-   输出应以如下格式显示所有开始菜单项：
+   输出应以如下格式显示所有“开始”菜单项：
 
    ```powershell
    AppAlias            : access
@@ -103,4 +103,4 @@ ms.locfileid: "88008638"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你已了解本教程中的操作方法指南，请查看 [创建主机池来验证服务更新](create-validation-host-pool.md)。 在将服务更新部署到生产环境之前，可以使用验证主机池来监视服务更新。
+如果你通过我们的教程阅读了此操作指南，请查看[创建主机池以验证服务更新](create-validation-host-pool.md)。 在将服务更新部署到生产环境之前，可以使用验证主机池来监视服务更新。

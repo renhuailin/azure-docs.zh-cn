@@ -10,10 +10,10 @@ author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
 ms.openlocfilehash: 8d19a5dadffdfa26ccb2d84e6dab278ad272c7b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101658040"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>管理 Azure Cosmos DB 的用于 MongoDB 的 API 中的索引编制
@@ -21,9 +21,9 @@ ms.locfileid: "101658040"
 
 Azure Cosmos DB 的用于 MongoDB 的 API 利用 Azure Cosmos DB 的核心索引管理功能。 本文重点介绍如何使用 Azure Cosmos DB 的用于 MongoDB 的 API 添加索引。 你还可以阅读与所有 API 相关的 [Azure Cosmos DB 中的索引编制概述](index-overview.md)。
 
-## <a name="indexing-for-mongodb-server-version-36-and-higher"></a>适用于 MongoDB 服务器版本 3.6 及更高版本的索引编制功能
+## <a name="indexing-for-mongodb-server-version-36-and-higher"></a>适用于 MongoDB 服务器 3.6 及更高版本的索引编制功能
 
-Azure Cosmos DB 的用于 MongoDB 服务器版本 3.6+ 的 API 会自动为无法删除的 `_id` 字段编制索引。 它会自动强制确保每个分片密钥的 `_id` 字段的唯一性。 在 Azure Cosmos DB 的用于 MongoDB 的 API 中，分片和编制索引是不同的概念。 你无需为分片键编制索引。 但是，与文档中的任何其他属性一样，如果此属性是查询中的常用筛选器，则建议你为分片键编制索引。
+Azure Cosmos DB API for MongoDB 服务器版本 3.6+ 会自动为无法删除的 `_id` 字段编制索引。 它会自动强制确保每个分片密钥的 `_id` 字段的唯一性。 在 Azure Cosmos DB 的用于 MongoDB 的 API 中，分片和编制索引是不同的概念。 你无需为分片键编制索引。 但是，与文档中的任何其他属性一样，如果此属性是查询中的常用筛选器，则建议你为分片键编制索引。
 
 若要为其他字段编制索引，请应用 MongoDB 索引管理命令。 与在 MongoDB 中一样，Azure Cosmos DB 的用于 MongoDB 的 API 仅自动为 `_id` 字段编制索引。 此默认索引编制策略不同于 Azure Cosmos DB SQL API，后者在默认情况下会为所有字段编制索引。
 
@@ -55,7 +55,7 @@ Azure Cosmos DB 的用于 MongoDB 服务器版本 3.6+ 的 API 会自动为无�
 
 ### <a name="compound-indexes-mongodb-server-version-36"></a>复合索引（MongoDB 服务器版本 3.6+）
 
-Azure Cosmos DB 的用于 MongoDB 的 API 对使用版本 3.6 和 4.0 Wire Protocol 的帐户支持复合索引。 一个复合索引中最多可以包含 8 个字段。 与在 MongoDB 中不同，仅当查询需要一次对多个字段进行高效排序时，才应创建复合索引。 对于包含多个不需要排序的筛选器的查询，请创建多个单字段索引，而不是创建单个复合索引。 
+Azure Cosmos DB API for MongoDB 支持对使用 3.6 和 4.0 版线路协议的帐户使用复合索引。 一个复合索引中最多可以包含 8 个字段。 与在 MongoDB 中不同，仅当查询需要一次对多个字段进行高效排序时，才应创建复合索引。 对于包含多个不需要排序的筛选器的查询，请创建多个单字段索引，而不是创建单个复合索引。 
 
 > [!NOTE]
 > 不能基于嵌套属性或数组创建复合索引。
@@ -201,7 +201,7 @@ Azure Cosmos DB 的用于 MongoDB 的 API 目前支持文本索引。 要对字�
 
 ## <a name="index-properties"></a>索引属性
 
-以下操作是遵守 Wire Protocol 版本 4.0 的帐户和遵守更低版本的帐户常用的操作。 还可以详细了解[支持的索引和已编制索引的属性](mongodb-feature-support-40.md#indexes-and-index-properties)。
+对于处理线路协议版本 4.0 的帐户和处理更早版本的帐户，以下操作常用。 还可以详细了解[支持的索引和已编制索引的属性](mongodb-feature-support-40.md#indexes-and-index-properties)。
 
 ### <a name="unique-indexes"></a>唯一索引
 
@@ -265,7 +265,7 @@ globaldb:PRIMARY> db.coll.createIndex({"_ts":1}, {expireAfterSeconds: 10})
 
 ## <a name="track-index-progress"></a>跟踪索引进度
 
-Azure Cosmos DB 的用于 MongoDB 的 API 版本 3.6+ 支持使用 `currentOp()` 命令来跟踪数据库实例上的索引进度。 此命令返回一个文档，其中包含有关数据库实例上正在进行的操作的信息。 可使用 `currentOp` 命令跟踪本机 MongoDB 中所有正在进行的操作。 在 Azure Cosmos DB 的用于 MongoDB 的 API 中，此命令仅支持跟踪索引操作。
+Azure Cosmos DB API for MongoDB 版本 3.6+ 支持使用 `currentOp()` 命令来跟踪数据库实例上的索引进度。 此命令返回一个文档，其中包含有关数据库实例上正在进行的操作的信息。 可使用 `currentOp` 命令跟踪本机 MongoDB 中所有正在进行的操作。 在 Azure Cosmos DB 的用于 MongoDB 的 API 中，此命令仅支持跟踪索引操作。
 
 下面这些示例演示如何使用 `currentOp` 命令来跟踪索引进度：
 
@@ -412,11 +412,11 @@ Azure Cosmos DB 的用于 MongoDB 的 API 版本 3.6+ 支持使用 `currentOp()`
 
 对于与 MongoDB Wire Protocol 版本 3.2 兼容的 Azure Cosmos DB 帐户，可用的索引编制功能和默认值是不同的。 可以[检查帐户的版本](mongodb-feature-support-36.md#protocol-support)并[升级到版本 3.6](mongodb-version-upgrade.md)。
 
-如果使用的是版本 3.2，请阅读本部分，其中概述了版本 3.2 与版本 3.6+ 之间的重要差别。
+如果使用的是版本 3.2，请阅读此部分，其中概述了版本 3.2 与版本 3.6+ 之间的重要差别。
 
 ### <a name="dropping-default-indexes-version-32"></a>删除默认索引（版本 3.2）
 
-与 Azure Cosmos DB 的用于 MongoDB 的 API 版本 3.6+ 不同，版本 3.2 默认会为每个属性编制索引。 可以使用以下命令删除集合 (```coll```) 的这些默认索引：
+与 Azure Cosmos DB API for MongoDB 版本 3.6+ 不同，版本 3.2 默认会为每个属性编制索引。 可以使用以下命令删除集合 (```coll```) 的这些默认索引：
 
 ```JavaScript
 > db.coll.dropIndexes()

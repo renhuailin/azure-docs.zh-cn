@@ -3,17 +3,18 @@ title: 云服务（经典）角色配置 XPath 速查表 | Microsoft Docs
 description: 可在云服务角色配置中用来将设置公开为环境变量的各种 XPath 设置。
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 397bc6845dc8d2d8bc44c00c27f6c12037651337
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 243d66ee82dc49776f89c3753e39ae90dfd400ca
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98741377"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108735940"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>使用 XPath 将角色配置设置公共为环境变量
 

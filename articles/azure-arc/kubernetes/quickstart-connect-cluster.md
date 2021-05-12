@@ -1,19 +1,19 @@
 ---
 title: 快速入门：将现有 Kubernetes 群集连接到 Azure Arc
 description: 在本快速入门中，了解如何连接已启用 Azure Arc 的 Kubernetes 群集。
-author: mgoedtel
-ms.author: magoedte
+author: mlearned
+ms.author: mlearned
 ms.service: azure-arc
 ms.topic: quickstart
 ms.date: 03/03/2021
 ms.custom: template-quickstart, references_regions, devx-track-azurecli
 keywords: Kubernetes, Arc, Azure, 群集
-ms.openlocfilehash: de701e79677f7e862d953eb5f03534b4eaefb367
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 040f69adf318cb224a56e7838c8abf8e03a60286
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290715"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783650"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>快速入门：将现有 Kubernetes 群集连接到 Azure Arc 
 

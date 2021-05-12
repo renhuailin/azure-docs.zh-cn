@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: ff26318cafdf493579961fc718643f831ae9efeb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30a0269b5729516d8e8e378c700c493262e77f10
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564248"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "108756172"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>使用 Azure 文件同步从 Linux 迁移到混合云部署
 
@@ -48,9 +48,9 @@ Azure 文件同步在配备直接附加存储 (DAS) 的 Windows Server 实例上
 * 创建一个 Windows Server 2019 实例作为虚拟机或物理服务器。 最低要求为 Windows Server 2012 R2。 也支持 Windows Server 故障转移群集。
 * 预配或添加直接附加存储 (DAS)。 不支持网络附加存储 (NAS)。
 
-  如果使用 Azure 文件同步[云分层](storage-sync-cloud-tiering-overview.md)功能，则预配的存储量可以小于当前在 Linux Samba 服务器上使用的存储量。 
+  如果使用 Azure 文件同步[云分层](../file-sync/file-sync-cloud-tiering-overview.md)功能，则预配的存储量可以小于当前在 Linux Samba 服务器上使用的存储量。 
 
-预配的存储量可以小于当前在 Linux Samba 服务器上使用的存储量。 此配置选择还要求使用 Azure 文件同步[云分层](storage-sync-cloud-tiering-overview.md)功能。 但是，在后一阶段将文件从较大的 Linux Samba 服务器空间复制到较小的 Windows Server 卷时，需要分批操作：
+预配的存储量可以小于当前在 Linux Samba 服务器上使用的存储量。 此配置选择还要求使用 Azure 文件同步[云分层](../file-sync/file-sync-cloud-tiering-overview.md)功能。 但是，在后一阶段将文件从较大的 Linux Samba 服务器空间复制到较小的 Windows Server 卷时，需要分批操作：
 
   1. 移动一组可装入该磁盘的文件。
   2. 让文件同步和云分层参与进来。
@@ -60,7 +60,7 @@ Azure 文件同步在配备直接附加存储 (DAS) 的 Windows Server 实例上
 
 部署的 Windows Server 实例的资源配置（计算和 RAM）主要取决于要同步的项（文件和文件夹）数量。 如果有任何顾虑，建议使用性能较高的配置。
 
-[了解如何根据需要同步的项（文件和文件夹）数量来调整 Windows Server 实例的大小。](storage-sync-files-planning.md#recommended-system-resources)
+[了解如何根据需要同步的项（文件和文件夹）数量来调整 Windows Server 实例的大小。](../file-sync/file-sync-planning.md#recommended-system-resources)
 
 > [!NOTE]
 > 前面链接的文章提供了一个表，其中介绍了服务器内存 (RAM) 的范围。 可将服务器的内存调整为较小的数量，但预计初始同步可能会花费更长时间。
@@ -109,7 +109,7 @@ Azure 文件同步在配备直接附加存储 (DAS) 的 Windows Server 实例上
 
 以下 Robocopy 命令将文件从 Linux Samba 服务器的存储复制到 Windows Server 目标文件夹。 Windows Server 会将其同步到 Azure 文件共享。 
 
-如果在 Windows Server 实例上预配的存储量小于 Linux Samba 服务器上文件占用的存储量，则已配置云分层。 当本地 Windows Server 卷已满时，将启动[云分层](storage-sync-cloud-tiering-overview.md)，并对已成功同步的文件进行分层。 云分层将生成足够的空间，以便继续从 Linux Samba 服务器进行复制。 云分层每小时检查一次已同步哪些内容，并释放磁盘空间，以满足提供 99% 的卷可用空间这一策略。
+如果在 Windows Server 实例上预配的存储量小于 Linux Samba 服务器上文件占用的存储量，则已配置云分层。 当本地 Windows Server 卷已满时，将启动[云分层](../file-sync/file-sync-cloud-tiering-overview.md)，并对已成功同步的文件进行分层。 云分层将生成足够的空间，以便继续从 Linux Samba 服务器进行复制。 云分层每小时检查一次已同步哪些内容，并释放磁盘空间，以满足提供 99% 的卷可用空间这一策略。
 
 Robocopy 移动文件的速度可能比同步到云和本地分层的速度要快，导致耗尽本地磁盘空间。 Robocopy 随后将会失败。 我们建议以一种可以防止出现问题的顺序来处理共享。 例如，考虑不同时对所有共享启动 Robocopy 作业。 或者考虑移动 Windows Server 实例上当前可用空间量能够容纳得下的共享。 如果 Robocopy 作业确实失败，你始终可以重新运行命令，前提是使用以下镜像/清除选项：
 
@@ -161,6 +161,6 @@ Robocopy 移动文件的速度可能比同步到云和本地分层的速度要�
 
 对于 Azure 文件共享和 Azure 文件同步，有更多的内容有待探索。以下文章包含高级选项、最佳做法和故障排除帮助。 这些文章链接到相应的 [Azure 文件共享文档](storage-files-introduction.md)。
 
-* [Azure 文件同步概述](./storage-sync-files-planning.md)
-* [Azure 文件同步部署指南](./storage-how-to-create-file-share.md)
-* [Azure 文件同步故障排除](storage-sync-files-troubleshoot.md)
+* [Azure 文件同步概述](../file-sync/file-sync-planning.md)
+* [部署 Azure 文件同步](../file-sync/file-sync-deployment-guide.md)
+* [Azure 文件同步故障排除](../file-sync/file-sync-troubleshoot.md)

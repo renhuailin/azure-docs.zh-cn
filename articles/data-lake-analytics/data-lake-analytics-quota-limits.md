@@ -5,15 +5,15 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 03/15/2018
 ms.openlocfilehash: 416b77fd86316acb8098531257e12b591a0ff052
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101710169"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>调整 Azure Data Lake Analytics 中的配额和限制
 
-了解如何调整和增加 Azure Data Lake Analytics (ADLA) 帐户中的配额和限制。 了解这些限制将有助于了解你的 U SQL 作业行为。 所有配额限制都是软限制，因此随时可通过联系 Azure 支持增加最大限制。
+了解如何调整和增加 Azure Data Lake Analytics (ADLA) 帐户中的配额和限制。 了解这些限制将有助于理解 U-SQL 作业行为。 所有配额限制都是软限制，因此随时可通过联系 Azure 支持增加最大限制。
 
 ## <a name="azure-subscriptions-limits"></a>Azure 订阅限制
 
@@ -28,18 +28,18 @@ ms.locfileid: "101710169"
 
 ## <a name="default-adla-account-limits"></a>默认 ADLA 帐户限制
 
-**(澳大利亚) 每个帐户的最大分析单位数：** 250，默认32
+每个帐户的最大分析单位数(AU)：250，默认值为 32
 
 这是可在帐户中同时运行的最大 AU 数。 如果所有作业上正在运行的 AU 总数超出此限制，较新的作业将自动排队。 例如：
 
 - 如果只有一个作业正在以 32 AU 运行，当提交第二个作业时，该作业会在作业队列中等待，直到第一个作业完成。
 - 如果已有四个作业正在运行，每个作业使用 8 AU，提交需要 8 AU 的第五个作业时，该作业会在作业队列中等待，直到有 8 AU 可用。
 
-    ![Azure Data Lake Analytics 限制和配额页](./media/data-lake-analytics-quota-limits/adjust-quota-limits.png)
+    ![Azure Data Lake Analytics 的限制和配额页](./media/data-lake-analytics-quota-limits/adjust-quota-limits.png)
 
-**每个作业 (澳大利亚) 的分析单元的最大数目：** 250，默认32
+每个作业的最大分析单位数(AU)：250，默认值为 32
 
-这是可在帐户中分配的每个单独作业的最大 au 数。 除非提交者受到计算策略（作业提交限制）的影响，这会给每个作业提供更多 AU，否则分配超过此限制的作业将被拒绝。 此值的上限是帐户的 AU 限制。
+这是每个单独的作业可以在帐户中分配到的最大 AU 数。 除非提交者受到计算策略（作业提交限制）的影响，这会给每个作业提供更多 AU，否则分配超过此限制的作业将被拒绝。 此值的上限是帐户的 AU 限制。
 
 **每个帐户的最大并发 U-SQL 作业数：** 20
 
@@ -58,13 +58,13 @@ ms.locfileid: "101710169"
 
 1. 在 Azure 门户中提出支持请求。
 
-   ![Azure Data Lake Analytics 门户-帮助和支持](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-help-support.png)
+   ![Azure Data Lake Analytics 门户 - 帮助和支持](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-help-support.png)
 
-   ![Azure Data Lake Analytics 门户新支持请求](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request.png)
+   ![Azure Data Lake Analytics 门户的“新建支持请求”](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request.png)
 
 2. 对问题类型选择“配额”。
 
-3. 选择你的 **订阅** (确保它不是 "试用版" 订阅) 。
+3. 选择“订阅”（确保不是“试用版”订阅）。
 
 4. 对配额类型选择“Data Lake Analytics”。
 
@@ -82,4 +82,4 @@ Microsoft 会审核你的请求，并尽快满足你的业务需求。
 
 - [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
 - [使用 Azure PowerShell 管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-powershell.md)
-- [使用 Azure 门户监视 Azure Data Lake Analytics 作业并对其进行故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+- [使用 Azure 门户监视 Azure Data Lake Analytics 作业以及对其进行故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
