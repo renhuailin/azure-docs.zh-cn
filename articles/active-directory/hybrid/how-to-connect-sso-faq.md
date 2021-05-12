@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2dac4b461d4506015f0ef374eae37f67c445791d
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98107865"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory 无缝单一登录：常见问题
@@ -62,7 +62,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
 **问：无缝 SSO 是否支持将 `Alternate ID` 作为用户名（而不是 `userPrincipalName`）？**
 
-是的。 在 Azure AD Connect 中进行配置时，无缝 SSO 支持将 `Alternate ID` 作为用户名，如[此处](how-to-connect-install-custom.md)所示。 并非所有 Microsoft 365 的应用程序都支持 `Alternate ID` 。 有关支持声明，请参阅特定应用程序文档。
+是的。 在 Azure AD Connect 中进行配置时，无缝 SSO 支持将 `Alternate ID` 作为用户名，如[此处](how-to-connect-install-custom.md)所示。 并非所有 Microsoft 365 应用程序都支持 `Alternate ID`。 有关支持声明，请参阅特定应用程序文档。
 
 **问：[Azure AD 加入](../devices/overview.md)与无缝 SSO 提供的单一登录体验有何不同？**
 
@@ -84,8 +84,8 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 在运行 Azure AD Connect 的本地服务器上执行以下步骤：
 
    > [!NOTE]
-   >你将需要以下步骤的域管理员和全局管理员凭据。
-   >如果你不是域管理员，并且域管理员已为你分配了权限，则应该调用 `Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
+   >你需要域管理员和全局管理员凭据才能执行以下步骤。
+   >如果你不是域管理员，而是由域管理员分配了权限，则应调用 `Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
 
    **步骤 1。获取已在其中启用了无缝 SSO 的 AD 林列表**
 
@@ -110,7 +110,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
    3. 针对已设置了此功能的每个 AD 林重复上述步骤。
    
   >[!NOTE]
-   >如果要更新的林不是 Azure AD Connect，请确保与全局编录服务器的连接 (TCP 3268 和 TCP 3269) 可用。
+   >如果要更新 Azure AD Connect 林以外的林，请确保与全局编录服务器（TCP 3268 和 TCP 3269）的连接可用。
 
    >[!IMPORTANT]
    >确保运行 `Update-AzureADSSOForest` 命令 _没有_ 超过一次。 否则，在用户的 Kerberos 票证过期并由本地 Active Directory 再次发布之前，此功能将停止运行。
@@ -140,7 +140,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
    4. 以管理员身份运行 PowerShell。 在 PowerShell 中，调用 `New-AzureADSSOAuthenticationContext`。 此命令可提供一个弹出窗口，用以输入租户的全局管理员凭据。
    5. 调用 `Enable-AzureADSSO -Enable $false`。
    
-   此时，无缝 SSO 处于禁用状态，但是，如果你想要启用无缝 SSO，则域仍将保持配置状态。 如果要完全从无缝 SSO 配置中删除域，请在完成上述步骤5后调用以下 cmdlet： `Disable-AzureADSSOForest -DomainFqdn <fqdn>` 。
+   此时无缝 SSO 处于禁用状态，但域会保持已配置状态，这是考虑到你可能需要重新启用无缝 SSO。 如果要从无缝 SSO 配置中完全删除域，请在完成上面的步骤 5 之后调用以下 cmdlet：`Disable-AzureADSSOForest -DomainFqdn <fqdn>`。
 
    >[!IMPORTANT]
    >使用 PowerShell 禁用无缝 SSO 不会更改 Azure AD Connect 中的状态。 无缝 SSO 在“更改用户登录”页面中将显示为已启用。

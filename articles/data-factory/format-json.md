@@ -1,17 +1,17 @@
 ---
 title: Azure 数据工厂中的 JSON 格式
 description: 本主题介绍了如何处理 Azure 数据工厂中的 JSON 格式。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.author: jingwang
-ms.openlocfilehash: ebac108388071ed3dc0eb2b7bfc0494f2f7bb481
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: jianleishen
+ms.openlocfilehash: 3d8e19fd76a599e2107b47d9cb382aece0e532b0
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102181357"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109487594"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure 数据工厂中的 JSON 格式
 

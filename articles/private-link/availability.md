@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 3/15/2021
 ms.custom: template-concept,references_regions
-ms.openlocfilehash: 866eb9feb152c0094cd5281fe4820ccc4589386f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 17b3b74bc6879d54577492a13eb93e0e0ab58373
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778312"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486370"
 ---
 # <a name="azure-private-link-availability"></a>Azure 专用链接可用性
 
@@ -44,7 +44,7 @@ ms.locfileid: "107778312"
 
 |支持的服务  |可用区域 | 其他注意事项 | 状态  |
 |:-------------------|:-----------------|:----------------|:--------|
-|Azure 应用配置 | 所有公共区域      |  | 预览  </br> [了解如何为 Azure 应用程序配置服务创建专用终结点](../azure-app-configuration/concept-private-endpoint.md) |
+|Azure 应用配置 | 所有公共区域      |  | GA  </br> [了解如何为 Azure 应用程序配置服务创建专用终结点](../azure-app-configuration/concept-private-endpoint.md) |
 |Azure 托管磁盘 | 所有公共区域<br/> 所有政府区域<br/>所有中国区域    | [选择以了解已知限制](../virtual-machines/disks-enable-private-links-for-import-export-portal.md#limitations) | GA   <br/> [了解如何为 Azure 托管磁盘创建专用终结点。](../virtual-machines/disks-enable-private-links-for-import-export-portal.md)   |
 
 ### <a name="containers"></a>容器

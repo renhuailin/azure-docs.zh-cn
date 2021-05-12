@@ -3,12 +3,12 @@ title: 快速入门：通过 Terraform 进行新策略分配
 description: 本快速入门介绍如何使用 Terraform 和 HCL 语法创建策略分配以识别不合规的资源。
 ms.date: 03/31/2021
 ms.topic: quickstart
-ms.openlocfilehash: 6c1a43010c48f71872d935a8fb52f608b479da8a
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 7530ad1c4e87fb2df00e1fa81e324bb9bd0c4034
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106092330"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108763030"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-terraform"></a>快速入门：使用 Terraform 创建策略分配以识别不合规的资源
 
@@ -39,7 +39,7 @@ ms.locfileid: "106092330"
        version = "~>2.0"
        features {}
    }
-   
+
    resource "azurerm_policy_assignment" "auditvms" {
        name = "audit-vm-manageddisks"
        scope = var.cust_scope
@@ -48,6 +48,7 @@ ms.locfileid: "106092330"
        display_name = "Audit VMs without managed disks Assignment"
    }
    ```
+
 1. 使用以下代码创建 `variables.tf`：
 
    ```hcl

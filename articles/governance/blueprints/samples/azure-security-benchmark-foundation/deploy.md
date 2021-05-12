@@ -3,12 +3,12 @@ title: 部署 Azure 安全基准基础蓝图示例
 description: Azure 安全基准基础蓝图示例的部署步骤，包括蓝图项目参数详细信息。
 ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: af41dd50c976ac6c0570b8a089211fa310ef4ef1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6afdc94624d39ce60b96ad33639721f130a056ef
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103232607"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108765172"
 ---
 # <a name="deploy-the-azure-security-benchmark-foundation-blueprint-sample"></a>部署 Azure 安全基准基础蓝图示例
 
@@ -82,7 +82,7 @@ ms.locfileid: "103232607"
    - 蓝图参数
 
      蓝图定义中的许多项目使用本部分定义的参数来提供一致性。
-    
+
      - 资源和资源组的前缀：该字符串用作所有资源和资源组名称的前缀
      - **中心名称**：中心的名称
      - 日志保留（天数）：日志保留天数；输入“0”将无限期保留日志
@@ -92,9 +92,9 @@ ms.locfileid: "103232607"
      - 网络观察程序名称：网络观察程序资源的名称
      - 网络观察程序资源组名称：网络观察程序资源组的名称
      - 启用 DDoS 防护：输入“true”或“false”以指定是否在虚拟网络中启用 DDoS 防护
-     
-    > [!NOTE] 
-    > 如果已启用网络观察程序，则建议使用现有的网络观察程序资源组。 还必须为项目参数“网络观察程序资源组位置”提供现有网络观察程序资源组的位置。
+
+     > [!NOTE]
+     > 如果已启用网络观察程序，则建议使用现有的网络观察程序资源组。 还必须为项目参数“网络观察程序资源组位置”提供现有网络观察程序资源组的位置。
 
    - 项目参数
 
@@ -115,7 +115,7 @@ ms.locfileid: "103232607"
 |中心资源组|资源组|资源组位置|已锁定 - 使用中心位置|
 |Azure 防火墙模板|资源管理器模板|Azure 防火墙专用 IP 地址||
 |Azure Log Analytics 和诊断模板|资源管理器模板|Log Analytics 工作区位置|Log Analytics 工作区的创建位置；在 Azure PowersShell 中运行 `Get-AzLocation | Where-Object Providers -like 'Microsoft.OperationalInsights' | Select DisplayName` 以查看可用区域|
-|Azure Log Analytics 和诊断模板|资源管理器模板|Azure 自动化帐户 ID（可选）|自动化帐户资源 ID，用于在 Log Analytics 和自动化帐户之间创建链接服务|
+|Azure Log Analytics 和诊断模板|资源管理器模板|Azure 自动化帐户 ID（可选） |自动化帐户资源 ID，用于在 Log Analytics 和自动化帐户之间创建链接服务|
 |Azure 网络安全组模板|资源管理器模板|启用 NSG 流日志|输入“true”或“false”以启用或禁用 NSG 流日志|
 |Azure 虚拟网络中心模板|资源管理器模板|虚拟网络地址前缀|中心虚拟网络的虚拟网络地址前缀|
 |Azure 虚拟网络中心模板|资源管理器模板|防火墙子网地址前缀|中心虚拟网络的防火墙子网地址前缀|

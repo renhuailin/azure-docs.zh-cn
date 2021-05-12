@@ -4,12 +4,12 @@ description: 使用 Azure 存储帐户创建传输管道，将映像集合或其
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: ab6657ecd335a6de8c6c93e3c2ff392ac54c487c
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 4fe36366011fb790d25419ac46a54c4bf5ad94bf
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935348"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785812"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>将项目传输到另一个注册表
 
@@ -368,8 +368,9 @@ IMPORT_RUN_RES_ID=$(az deployment group show \
   --name importPipelineRun \
   --query 'properties.outputResources[0].id' \
   --output tsv)
+```
 
-When deployment completes successfully, verify artifact import by listing the repositories in the target container registry. For example, run [az acr repository list][az-acr-repository-list]:
+部署成功完成后，请在目标容器注册表中列出存储库，以验证项目导入。 例如，运行 [az acr repository list][az-acr-repository-list]：
 
 ```azurecli
 az acr repository list --name <target-registry-name>
@@ -426,7 +427,8 @@ az resource delete \
   * 并未传输所有项目或者根本未传输任何项目。 确认导出运行中的项目拼写，以及导出和导入运行中的 blob 名称。 确认最多传输 50 个项目。
   * 管道运行可能未完成。 导出或导入运行可能需要一些时间。 
   * 对于其他管道问题，请向 Azure 容器注册表团队提供导出运行或导入运行的部署[相关 ID](../azure-resource-manager/templates/deployment-history.md)。
-
+* **在物理隔离环境中拉取映像时出现问题**
+  * 如果在物理隔离环境中尝试拉取映像时看到有关外来层或尝试解析 mcr.microsoft.com 的错误，则映像清单可能具有不可分发的层。 由于物理隔离环境的性质，这些映像常常无法拉取。 可以通过检查映像清单中是否存在对外部注册表的任何引用来确认这种情况。 如果是这种情况，在为该映像部署导出管道运行之前，需要将不可分发的层推送到公有云 ACR。 有关如何执行此操作的指导，请参阅[如何向注册表推送不可分发的层？](./container-registry-faq.md#how-do-i-push-non-distributable-layers-to-a-registry)
 
 ## <a name="next-steps"></a>后续步骤
 

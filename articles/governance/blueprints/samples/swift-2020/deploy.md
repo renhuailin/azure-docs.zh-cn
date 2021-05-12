@@ -3,12 +3,12 @@ title: 部署 SWIFT CSP-CSCF v2020 蓝图示例
 description: SWIFT CSP-CSCF v2020 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 321ed1a50a5066838b83cc850b227725b6222e42
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 6af8495db98386bd2ce6dff90f57b5f3f0014616
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386153"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733942"
 ---
 # <a name="deploy-the-swift-csp-cscf-v2020-blueprint-sample"></a>部署 SWIFT CSP-CSCF v2020 蓝图示例
 
@@ -96,18 +96,18 @@ ms.locfileid: "106386153"
 |\[预览\]：审核 SWIFT CSP-CSCF v2020 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|应启用诊断日志的资源类型列表|用于审核是否未启用诊断日志设置的资源类型列表。 [Azure Monitor 资源日志类别](../../../../azure-monitor/essentials/resource-logs-categories.md#supported-log-categories-per-resource-type)中提供了可接受的值。|
 |\[预览\]：审核 SWIFT CSP-CSCF v2020 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|连接的工作区 ID|Log Analytics 代理应连接到的工作区 ID 的列表（以分号分隔）|
 |\[预览\]：审核 SWIFT CSP-CSCF v2020 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|应该包括在 Windows VM 管理员组中的用户的列表|以分号分隔的应包括在管理员本地组中的成员列表。 例如：管理员；myUser1；myUser2|
-|\[预览\]：审核 SWIFT CSP-CSCF v2020 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|域名 (FQDN)|Windows VM 应加入到的完全限定域名 (FQDN)|
+|\[预览\]：审核 SWIFT CSP-CSCF v2020 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|域名 (FQDN) |Windows VM 应加入到的完全限定域名 (FQDN)|
 |为 Linux VM 部署 Log Analytics 代理|策略分配|Linux VM 的 Log Analytics 工作区|如果此工作区超出分配范围，则必须手动将“Log Analytics 参与者”权限（或类似权限）授予策略分配的主体 ID。|
 |为 Linux VM 部署 Log Analytics 代理|策略分配|可选：支持将 Linux OS 添加到范围的 VM 映像列表|可以使用空数组来表示没有可选参数：\[\]|
 |为 Windows VM 规模集(VMSS)部署 Log Analytics 代理|策略分配|Windows VM 规模集 (VMSS) 的 Log Analytics 工作区|如果此工作区超出分配范围，则必须手动将“Log Analytics 参与者”权限（或类似权限）授予策略分配的主体 ID。|
 |为 Windows VM 规模集(VMSS)部署 Log Analytics 代理|策略分配|可选：支持将 Windows OS 添加到范围的 VM 映像列表|可以使用空数组来表示没有可选参数：\[\]|
 |为 Windows VM 部署 Log Analytics 代理|策略分配|Windows VM 的 Log Analytics 工作区|如果此工作区超出分配范围，则必须手动将“Log Analytics 参与者”权限（或类似权限）授予策略分配的主体 ID。|
 |为 Windows VM 部署 Log Analytics 代理|策略分配|可选：支持将 Windows OS 添加到范围的 VM 映像列表|可以使用空数组来表示没有可选参数：\[\]|
-|在存储帐户上部署高级威胁防护|策略分配|效果|有关策略效果的信息，可参阅[了解 Azure Policy 效果](../../../policy/concepts/effects.md)|
-|对 SQL 服务器部署审核|策略分配|保持期的值（天数，0 表示保持期无限制）|保留天数（可选，如果未指定，则为 180 天）|
+|在存储帐户上部署高级威胁防护|策略分配|效果|有关策略效果的信息，可参阅[了解 Azure Policy 效果](../../../policy/concepts/effects.md) |
+|对 SQL 服务器部署审核|策略分配|保持期的值（天数，0 表示保持期无限制） |保留天数（可选，如果未指定，则为 180 天） |
 |对 SQL 服务器部署审核|策略分配|要进行 SQL Server 审核的存储帐户的资源组名称|审核针对 Azure 存储帐户（将在 SQL Server 所在的每个区域中创建的存储帐户，由该区域中的所有服务器共享）中审核日志的写入数据库事件。 重要提示 - 为了正确地进行审核，请勿删除或重命名资源组或存储帐户。|
 |为网络安全组部署诊断设置|策略分配|适用于网络安全组诊断的存储帐户前缀|此前缀将与网络安全组位置结合使用，一起构成已创建的存储帐户的名称。|
-|为网络安全组部署诊断设置|策略分配|适用于网络安全组诊断的存储帐户的资源组名称（必须存在）|将在其中创建存储帐户的资源组。 此资源组必须已存在。|
+|为网络安全组部署诊断设置|策略分配|适用于网络安全组诊断的存储帐户的资源组名称（必须存在） |将在其中创建存储帐户的资源组。 此资源组必须已存在。|
 
 ## <a name="next-steps"></a>后续步骤
 

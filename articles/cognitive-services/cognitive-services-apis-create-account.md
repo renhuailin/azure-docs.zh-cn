@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: af957758918b99dcb44732eb536c0ca031231a7a
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: de855e53f6d54c9175963b34d8cd3da572e02790
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104868216"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736531"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建认知服务资源
 
@@ -42,7 +42,7 @@ Azure 认知服务是包含 REST API 和客户端库 SDK 的基于云的服务�
 * **视觉** - 计算机视觉、自定义视觉、表单识别器、人脸
 * **语音** - 语音
 * **语言** - 语言理解 (LUIS) 、文本分析、翻译器
-* **决策** - 个性化体验创建服务、内容审查器
+* **决策** - 内容审查器
 
 ### <a name="single-service-resource"></a>[单服务资源](#tab/singleservice)
 

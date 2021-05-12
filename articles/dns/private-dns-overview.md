@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 04/09/2021
 ms.author: rohink
-ms.openlocfilehash: 4c867ad3888544df93f8a6e5a6236a01197eefc2
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: eb66facb8d36884205bc9cd8e562ab97f92c3dd8
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127832"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108745030"
 ---
 # <a name="what-is-azure-private-dns"></a>什么是 Azure 专用 DNS？
 
@@ -74,7 +74,7 @@ Azure DNS 具有以下限制：
 
 * 了解可以通过 Azure DNS 中的专用区域实现的一些常见[专用区域方案](./private-dns-scenarios.md)。
 
-* 有关 Azure DNS 中专用区域的常见问题解答，请参阅[专用 DNS 常见问题解答](./dns-faq-private.md)。
+* 有关 Azure DNS 中专用区域的常见问题解答，请参阅[专用 DNS 常见问题解答](./dns-faq-private.yml)。
 
 * 访问 [DNS 区域和记录概述](dns-zones-records.md)，了解 DNS 区域和记录。
 

@@ -1,17 +1,17 @@
 ---
 title: 使用 Azure 数据工厂从 Google 云存储复制数据
 description: 了解如何使用 Azure 数据工厂将数据从 Google 云存储复制到受支持的接收器数据存储。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.author: jingwang
-ms.openlocfilehash: b8e518ba23c877ee80197ad94a6bc01b23b044a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: bb745a7b50a6bcb94367a82b37a4e4e0170b5939
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104588981"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482212"
 ---
 # <a name="copy-data-from-google-cloud-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Google 云存储复制数据
 
@@ -51,7 +51,7 @@ Google 云存储帐户需要进行以下设置：
 
 ## <a name="getting-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)] 
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)] 
 
 以下各部分详细介绍了定义特定于 Google 云存储的数据工厂实体时使用的属性。
 
@@ -92,7 +92,7 @@ Google 云存储链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 Google 云存储支持基于格式的数据集中 `location` 设置下的以下属性：
 
@@ -136,7 +136,7 @@ Google 云存储支持基于格式的数据集中 `location` 设置下的以下�
 
 ### <a name="google-cloud-storage-as-a-source-type"></a>Google 云存储作为源类型
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 Google 云存储支持基于格式的复制源中 `storeSettings` 设置下的以下属性：
 
@@ -156,7 +156,7 @@ Google 云存储支持基于格式的复制源中 `storeSettings` 设置下的�
 | modifiedDatetimeEnd      | 同上。                                               | 否                                                          |
 | enablePartitionDiscovery | 对于已分区的文件，请指定是否从文件路径分析分区，并将它们添加为附加的源列。<br/>允许的值为 false（默认）和 true 。 | 否                                            |
 | partitionRootPath | 启用分区发现时，请指定绝对根路径，以便将已分区文件夹读取为数据列。<br/><br/>如果未指定，默认情况下，<br/>- 在数据集或源的文件列表中使用文件路径时，分区根路径是在数据集中配置的路径。<br/>- 使用通配符文件夹筛选器时，分区根路径是第一个通配符前的子路径。<br/><br/>例如，假设你将数据集中的路径配置为“root/folder/year=2020/month=08/day=27”：<br/>- 如果将分区根路径指定为“root/folder/year=2020”，则除了文件内的列外，复制活动还将生成另外两个列 `month` 和 `day`，其值分别为“08”和“27”。<br/>- 如果未指定分区根路径，则不会生成额外的列。 | 否                                            |
-| maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的数目上限。 仅当要限制并发连接数目时指定一个值。| 否                                                          |
+| maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的上限。 仅在要限制并发连接时指定一个值。| 否                                                          |
 
 **示例：**
 

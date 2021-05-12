@@ -3,13 +3,13 @@ title: 设置 Bicep 开发和部署环境
 description: 如何配置 Bicep 开发和部署环境
 ms.topic: conceptual
 ms.date: 03/26/2021
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 08880e1f41ef3fdaacc119cd6c4c1ed191425285
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 39bac9d8494c9da94fe962dda9521bca4d071f1e
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316508"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752762"
 ---
 # <a name="install-bicep-preview"></a>安装 Bicep（预览版）
 
