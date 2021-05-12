@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/03/2021
+ms.date: 04/19/2021
 ms.author: alkohli
-ms.openlocfilehash: d733f2642df4ff9f74d8013d45d67159fbb032f8
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: cdb87e691828db23e8c441fe9933204556fb8417
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108139266"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734137"
 ---
 # <a name="what-is-the-azure-stack-edge-mini-r"></a>什么是 Azure Stack Edge Mini R？
 
@@ -68,6 +68,7 @@ Azure Stack Edge Mini R 解决方案包括 Azure Stack Edge 资源、Azure Stack
 
 * **Azure Stack Edge Mini R 本地 Web UI** - Azure Stack Edge Mini R 设备上基于浏览器的本地用户界面，主要用于设备的初始配置。 使用本地 Web UI 还可以运行诊断、关闭和重启 Azure Stack Edge Pro 设备、查看复制日志，并联系 Microsoft 支持部门以提出服务请求。
 
+    [!INCLUDE [azure-stack-edge-gateway-local-web-ui-languages](../../includes/azure-stack-edge-gateway-local-web-ui-languages.md)]
 
 ## <a name="region-availability"></a>上市区域
 

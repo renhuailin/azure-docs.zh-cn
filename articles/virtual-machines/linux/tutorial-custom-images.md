@@ -3,19 +3,19 @@ title: 教程 - 使用 Azure CLI 创建自定义 VM 映像
 description: 本教程介绍如何使用 Azure CLI 在 Azure 中创建自定义虚拟机映像
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.reviewer: akjosh
-ms.openlocfilehash: 81bbf0b49919db68407a85b9ea2f731c5f8e1d91
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.reviewer: mimckitt
+ms.openlocfilehash: 64c80ec32b0fe151daa24628a22c27fce4c5f21b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769870"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108768222"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>教程：使用 Azure CLI 创建 Azure VM 的自定义映像
 
@@ -43,7 +43,7 @@ ms.locfileid: "107769870"
 
 [!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 下列步骤详细说明如何将现有 VM 转换为可重用自定义映像，以便将其用于创建新 VM 实例。
 
@@ -132,7 +132,7 @@ az sig image-version create \
 ```
 
 > [!NOTE]
-> 需等待映像版本彻底生成并复制完毕，然后才能使用同一托管映像来创建另一映像版本。
+> 需要等待映像版本的生成和复制完全完成，然后才能使用同一个托管映像来创建另一个映像版本。
 >
 > 创建映像版本时，还可以通过添加 `--storage-account-type  premium_lrs` 在高级存储中存储映像，或者通过添加 `--storage-account-type  standard_zrs` 在[区域冗余存储](../../storage/common/storage-redundancy.md)中存储映像。
 >
@@ -184,7 +184,7 @@ Azure 还提供一个基于 Packer 的服务：[Azure VM 映像生成器](../ima
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已创建自定义 VM 映像。 你已了解如何：
+在本教程中，已创建自定义 VM 映像。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建共享映像库

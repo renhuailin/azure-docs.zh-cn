@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
-ms.date: 03/30/2020
-ms.openlocfilehash: 4204254754307f8310d5ccfda19400de57381075
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.date: 03/23/2021
+ms.openlocfilehash: 6bd8d6001fcd3bfa487259aa219ff771f26a8a94
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500863"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951277"
 ---
 # <a name="automatic-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL 数据库与 Azure SQL 托管实例中的自动优化
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -54,8 +54,8 @@ Azure SQL 数据库自动优化与数据库引擎中的 SQL Server 自动优化�
 
 ## <a name="enable-automatic-tuning"></a>启用自动优化
 
-- [在 Azure 门户中为 Azure SQL 数据库启用自动优化](automatic-tuning-enable.md)或使用 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) T-SQL 语句来启用。
-- 通过使用 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-mi-current) T-SQL 语句为 Azure SQL 托管实例启用自动优化。
+- [在 Azure 门户中为 Azure SQL 数据库启用自动优化](automatic-tuning-enable.md)或使用 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true) T-SQL 语句来启用。
+- 通过使用 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-mi-current&preserve-view=true) T-SQL 语句为 Azure SQL 托管实例启用自动优化。
 
 ## <a name="automatic-tuning-options"></a>自动优化选项
 
@@ -64,7 +64,7 @@ Azure SQL 数据库和 Azure SQL 托管实例中可用的自动优化选项包�
 | 自动优化选项 | 单一数据库和共用数据库支持 | 实例数据库支持 |
 | :----------------------------- | ----- | ----- |
 | **创建索引** - 标识可提高工作负载性能的索引，创建索引，并自动验证查询性能是否有所提高。 | 是 | 否 |
-| **删除索引** - 每日识别冗余和重复的索引，但不包括唯一索引和长时间（>90 天）未使用的索引。 请注意，此选项与使用分区切换和索引提示的应用程序不兼容。 高级和业务关键服务层不支持删除未使用的索引。 | 是 | 否 |
+| 删除索引 - 删除（过去 90 天内）未使用的索引和重复的索引。 唯一索引（包括支持主键和唯一约束的索引）永远不会被删除。 当工作负荷中存在带索引提示的查询时，或者当工作负荷执行分区切换时，此选项可能会被自动禁用。 在“高级”和“业务关键”服务层上，此选项永远不会删除未使用的索引，但会删除重复的索引（如果有）。 | 是 | 否 |
 | **强制执行上一卓越计划**（自动更正计划）- 标识使用执行计划的 Azure SQL 查询（该执行计划速度慢于上一卓越计划），并标识使用上一已知卓越计划的查询而不是回归计划。 | 是 | 是 |
 
 ### <a name="automatic-tuning-for-sql-database"></a>SQL 数据库的自动优化
@@ -86,11 +86,11 @@ Azure SQL 数据库的自动优化使用“创建索引”、“删除索引”�
 
 要配置自动优化，建议在服务器上配置自动优化选项并继承属于父级服务器的数据库设置，因为这会简化对大量数据库的自动优化选项的管理。
 
-若要了解有关生成自动优化建议的电子邮件通知，请参阅 [自动优化电子邮件通知](automatic-tuning-email-notifications-configure.md)。
+若要了解如何生成自动优化建议的电子邮件通知，请参阅[针对自动优化的电子邮件通知](automatic-tuning-email-notifications-configure.md)。
 
 ### <a name="automatic-tuning-for-azure-sql-managed-instance"></a>Azure SQL 托管实例的自动优化
 
-SQL 托管实例的自动优化仅支持“强制执行上一个卓越计划”。 有关通过 T-SQL 配置自动优化选项的详细信息，请参阅[自动优化引入了自动计划更正](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/)和[自动计划更正](/sql/relational-databases/automatic-tuning/automatic-tuning?view=sql-server-ver15#automatic-plan-correction)。
+SQL 托管实例的自动优化仅支持“强制执行上一个卓越计划”。 有关通过 T-SQL 配置自动优化选项的详细信息，请参阅[自动优化引入了自动计划更正](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/)和[自动计划更正](/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction)。
 
 ## <a name="next-steps"></a>后续步骤
 

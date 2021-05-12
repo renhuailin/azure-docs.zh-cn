@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 02/23/2021
 ms.author: alkemper
-ms.openlocfilehash: 7d343e07414dd1c3f9786c1684eb6f14d5f45e51
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: a3b3c8760c3bf7d6bf4bee444bef7ed77134fb5a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718176"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748242"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>使用 Azure Pipelines 将设置推送到应用配置
 
@@ -27,40 +27,26 @@ ms.locfileid: "101718176"
 
 ## <a name="create-a-service-connection"></a>创建服务连接
 
-通过[服务连接](/azure/devops/pipelines/library/service-endpoints)，可以从 Azure DevOps 项目访问 Azure 订阅中的资源。
-
-1. 在 Azure DevOps 中，访问包含目标管道的项目，并打开左下方的“项目设置”。
-1. 在“管道”下选择“服务连接”，并在右上方选择“新建服务连接”。
-1. 选择“Azure 资源管理器”。
-1. 选择“服务主体(自动)”。
-1. 填写你的订阅和资源。 为服务连接命名。
-
-创建服务连接后，请查找分配给它的服务主体的名称。 在下一步中，你将向此服务主体添加新的角色分配。
-
-1. 访问“项目设置” > “服务连接”。
-1. 选择在上一部分创建的服务连接。
-1. 选择“管理服务主体”。
-1. 请记下列出的显示名称。
+[!INCLUDE [azure-app-configuration-service-connection](../../includes/azure-app-configuration-service-connection.md)]
 
 ## <a name="add-role-assignment"></a>添加角色分配
 
-向任务中使用的凭据分配正确的应用配置角色分配，以便任务可以访问应用配置存储。
+[!INCLUDE [azure-app-configuration-role-assignment](../../includes/azure-app-configuration-role-assignment.md)]
 
-1. 导航到目标应用配置存储。 
-1. 在左侧，选择“访问控制(IAM)”。
-1. 在顶部，选择“+ 添加”，然后选取“添加角色分配” 。
-1. 在“角色”下，选择“应用配置数据所有者” 。 此角色允许任务在应用配置存储中进行读取和写入。 
-1. 选择与在上一部分创建的服务连接关联的服务主体。
-  
 ## <a name="use-in-builds"></a>在生成中使用
 
 本部分介绍如何在 Azure DevOps 生成管道中使用“Azure 应用配置推送”任务。
 
 1. 通过单击“管道” > “管道”，导航到“生成管道”页。 可在[此处](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2)找到有关生成管道的文档。
-      - 如果要创建新的生成管道，请在管道右侧选择“显示助手”，然后搜索“Azure 应用配置推送”任务。
-      - 如果要使用现有的生成管道，请在编辑管道时导航到“任务”选项卡，然后搜索“Azure 应用配置推送”任务。
-2. 配置任务的必要参数，以将配置文件中的键值推送到应用配置存储。 “配置文件路径”参数从文件存储库的根目录开始。
-3. 保存并将一个生成排入队列。 生成日志将显示在执行任务期间发生的任何故障。
+      - 如果要创建新的“生成管道”，则在该过程的最后一步，在“检查”选项卡上，选择管道右侧的“显示助手” 。
+      ![屏幕截图显示新管道的“显示辅助”按钮。](./media/new-pipeline-show-assistant.png)
+      - 如果使用的是现有的“生成管道”，请单击右上角的“编辑”按钮。
+      ![屏幕截图显示现有管道的“编辑”按钮。](./media/existing-pipeline-show-assistant.png)
+1. 搜索“Azure 应用程序配置推送”任务。
+![屏幕截图显示“添加任务”对话框，其中搜索框中显示“Azure 应用程序配置推送”。](./media/add-azure-app-configuration-push-task.png)
+1. 配置任务的必要参数，以将配置文件中的键值推送到应用配置存储。 参数的说明在下面的“参数”部分以及每个参数旁边的工具提示中提供。
+![屏幕截图显示应用程序配置推送任务参数。](./media/azure-app-configuration-push-parameters.png)
+1. 保存并将一个生成排入队列。 生成日志将显示在执行任务期间发生的任何故障。
 
 ## <a name="use-in-releases"></a>在发布中使用
 
@@ -69,8 +55,11 @@ ms.locfileid: "101718176"
 1. 通过选择“管道” > “发布”，导航到“发布管道”页。 可在[此处](/azure/devops/pipelines/release)找到有关发布管道的文档。
 1. 选择现有的发布管道。 如果没有现有的发布管道，请选择“+ 新建”创建一个新的发布管道。
 1. 选择右上角的“编辑”按钮以编辑发布管道。
-1. 选择“阶段”以添加任务。 可在[此处](/azure/devops/pipelines/release/environments)找到有关阶段的详细信息。
-1. 选择与该作业对应的 **+** ，然后在“部署”选项卡下添加“Azure 应用配置推送”任务。 
+1. 从“任务”下拉列表中，选择要向其添加任务的“阶段” 。 可在[此处](/azure/devops/pipelines/release/environments)找到有关阶段的详细信息。
+![屏幕截图显示“任务”下拉列表中选定的阶段。](./media/pipeline-stage-tasks.png)
+1. 单击要向其中添加新任务的作业旁的 +。
+![屏幕截图显示作业旁的加号按钮。](./media/add-task-to-job.png)
+1. 在“添加任务”对话框中，将“Azure 应用程序配置推送”键入到搜索框并选中它 。
 1. 配置任务内的必要参数，以将配置文件中的键值推送到应用配置存储。 参数的说明在下面的“参数”部分以及每个参数旁边的工具提示中提供。
 1. 保存并将一个发布排入队列。 发布日志将显示任务执行过程中遇到的任何故障。
 
@@ -80,7 +69,15 @@ ms.locfileid: "101718176"
 
 - **Azure 订阅**：包含可用 Azure 服务连接的下拉列表。 若要更新和刷新可用 Azure 服务连接的列表，请按文本框右侧的“刷新 Azure 订阅”按钮。
 - 应用配置名称：用于在所选订阅下加载可用配置存储的下拉列表。 若要更新和刷新可用配置存储的列表，请按文本框右侧的“刷新应用配置名称”按钮。
-- 配置文件路径：你的配置文件的路径。 可以浏览生成项目以选择一个配置文件。 （文本框右侧的 `...` 按钮）。 支持的文件格式为： yaml、json、properties。
+- 配置文件路径：你的配置文件的路径。 “配置文件路径”参数从文件存储库的根目录开始。 可以浏览生成项目以选择一个配置文件。 （文本框右侧的 `...` 按钮）。 支持的文件格式有：yaml、json 和 properties。 下面是格式为 json 的示例配置文件。
+    ```json
+    {
+        "TestApp:Settings:BackgroundColor":"#FFF",
+        "TestApp:Settings:FontColor":"#000",
+        "TestApp:Settings:FontSize":"24",
+        "TestApp:Settings:Message": "Message data"
+    }
+    ```
 - 分隔符：用于平展 .json 和 .yml 文件的分隔符。
 - **深度**：要将 .json 和 .yml 文件平展到的深度。
 - 前缀：一个字符串，它会追加到向应用配置存储推送的每个键的开头。
@@ -91,7 +88,7 @@ ms.locfileid: "101718176"
   - 已选中：推送配置文件中的新键值之前，在应用配置存储中删除所有与指定前缀和标签匹配的键值。
   - 未选中：将配置文件中的所有键值推送到应用配置存储，并将应用配置存储中的所有其他内容保持不变。
 
-填写所需参数后，运行管道。 指定的配置文件中的所有键值均将上传到“应用配置”。
+
 
 ## <a name="troubleshooting"></a>疑难解答
 

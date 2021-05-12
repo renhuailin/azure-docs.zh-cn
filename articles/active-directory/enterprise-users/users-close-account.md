@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/03/2020
+ms.date: 05/04/2021
 ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 252c993f5679d80cda97a6fade08f5f92489840d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9aadf4cb638c1b9c16df934a9ee3c0a992a3e8a7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96575578"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748666"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>关闭非托管 Azure AD 组织中的工作或学校帐户
 
@@ -43,7 +43,7 @@ ms.locfileid: "96575578"
 
 若要关闭非托管工作或学校帐户，请执行以下步骤：
 
-1. 使用要关闭的帐户登录以[关闭帐户](https://go.microsoft.com/fwlink/?linkid=873123)。
+1. 使用要关闭的帐户登录以[关闭帐户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/PrivacyDataRequests)。
 
 1. 在“我的数据请求”中，选择“关闭帐户”。
 

@@ -3,13 +3,13 @@ title: 部署历史记录删除
 description: 介绍 Azure 资源管理器如何从部署历史记录中自动删除部署。 当历史记录即将超过限制（800 条）时，将删除部署。
 ms.topic: conceptual
 ms.date: 03/23/2021
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7b82c4a5be256e75979cb26b11db9f679f10ce9a
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: e2920eb1daa626b6a817b2fe3b388e8c531f12e4
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108320306"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751611"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>从部署历史记录自动删除
 

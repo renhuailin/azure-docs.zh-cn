@@ -6,12 +6,12 @@ ms.author: yexu
 ms.service: data-factory
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: 78bc815aff195124d3e79a83445b8d12506fc70d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 034f90adc46b541377f62ac66ea721a30ed48637
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104613084"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108742042"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>快速入门：使用“复制数据”工具复制数据
 
@@ -26,7 +26,7 @@ ms.locfileid: "104613084"
 > [!NOTE]
 > 如果你对 Azure 数据工厂不太熟悉，请在学习本快速入门之前参阅 [Azure 数据工厂简介](introduction.md)。 
 
-[!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
+[!INCLUDE [data-factory-quickstart-prerequisites](includes/data-factory-quickstart-prerequisites.md)] 
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
@@ -68,7 +68,7 @@ ms.locfileid: "104613084"
 1. 在“复制数据”工具的“属性”页上，可以指定管道的名称及其说明，然后选择“下一步”。 
 
    ![“属性”页](./media/quickstart-create-data-factory-copy-data-tool/copy-data-tool-properties-page.png)
-1. 在“源数据存储”页上，完成以下步骤：
+1. 在“源数据存储”  页上，完成以下步骤：
 
     a. 单击“+ 创建新连接”，添加一个连接。
 

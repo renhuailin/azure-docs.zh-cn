@@ -1,16 +1,16 @@
 ---
 title: Azure 应用服务的 Azure Policy 法规遵从性控制措施
 description: 列出可用于 Azure 应用服务的 Azure Policy 法规遵从性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 04/28/2021
+ms.date: 05/04/2021
 ms.topic: sample
 ms.service: app-service
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 1eef0b1353df3c1b245e0cf5c9bda899f3767107
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 9613bf64f0e82170807b1099c873f0e0f3267a9c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108178046"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108746075"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-app-service"></a>Azure 应用服务的 Azure Policy 法规遵从性控制措施
 

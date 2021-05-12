@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 7b33beaad580e64a4760b0557f04f266ecfc1b4d
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: ef76b1283215da9ff08efb4d151d8e0e99a228f0
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718802"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108768744"
 ---
 # <a name="quickstart---create-an-azure-iot-central-application"></a>快速入门 - 创建 Azure IoT Central 应用程序
 
@@ -76,6 +76,3 @@ ms.locfileid: "107718802"
 > [!div class="nextstepaction"]
 > [将模拟设备添加到 IoT Central 应用程序](./quick-create-simulated-device.md)
 
-如果你是设备开发人员并且想要深入了解某种代码，接下来，建议执行以下步骤：
-> [!div class="nextstepaction"]
-> [创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](./tutorial-connect-device.md)

@@ -10,12 +10,12 @@ ms.workload: storage
 ms.date: 06/01/2017
 ms.author: jaboes
 ms.subservice: disks
-ms.openlocfilehash: 7c66a8b8483673a9d8fbdc9922b9cc377781bab3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af47182219441a373fd3e05585dbbb9484d06b37
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91976653"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753016"
 ---
 # <a name="using-disks-in-azure-resource-manager-templates"></a>在 Azure 资源管理器模板中使用磁盘
 
@@ -168,7 +168,7 @@ ms.locfileid: "91976653"
 }
 ```
 
-在 VM 对象中，引用要附加的磁盘对象。 指定在 `managedDisk` 属性中创建的托管磁盘的资源 ID 可以在创建 VM 时附加该磁盘。 该 VM 资源的 `apiVersion` 设置为 `2017-03-30`。 在磁盘资源中添加了一个依赖项，以确保在创建 VM 之前成功创建该磁盘资源。 
+在 VM 对象中，引用要附加的磁盘对象。 指定在 `managedDisk` 属性中创建的托管磁盘的资源 ID 可以在创建 VM 时附加该磁盘。 该 VM 资源的 `apiVersion` 设置为 `2017-03-30`。 在磁盘资源中添加了一个依赖项，以确保在创建 VM 之前成功创建该磁盘资源。
 
 ```json
 {
@@ -252,11 +252,11 @@ ms.locfileid: "91976653"
 }
 ```
 
-有关如何使用模板创建标准 SSD 盘的完整模板示例，请参阅[使用标准 SSD 数据磁盘从 Windows 映像创建 VM](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/)。
+有关如何使用模板创建标准 SSD 盘的完整模板示例，请参阅[使用标准 SSD 数据磁盘从 Windows 映像创建 VM](https://github.com/azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-with-standardssd-disk/)。
 
 ### <a name="additional-scenarios-and-customizations"></a>其他方案和自定义
 
-若要查找有关 REST API 规范的完整信息，请查看[有关创建托管磁盘 REST API 的文档](/rest/api/manageddisks/disks/disks-create-or-update)， 其中介绍了其他方案，以及可以通过模板部署提交到 API 的默认值和可接受值。 
+若要查找有关 REST API 规范的完整信息，请查看[有关创建托管磁盘 REST API 的文档](/rest/api/manageddisks/disks/disks-create-or-update)， 其中介绍了其他方案，以及可以通过模板部署提交到 API 的默认值和可接受值。
 
 ## <a name="next-steps"></a>后续步骤
 

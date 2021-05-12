@@ -4,14 +4,14 @@ description: 将第一个 Ruby 应用部署到应用服务中的 Linux 容器即
 keywords: azure 应用服务, linux, oss, ruby, rails
 ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.topic: quickstart
-ms.date: 07/11/2019
+ms.date: 04/27/2021
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
-ms.openlocfilehash: dc64dfa277e97fe7487ce91a140e73b9ec44e086
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 9cc8f3659633d7029729a006c0fdebd001f2fe46
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483501"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "109752909"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service"></a>在应用服务中创建 Ruby on Rails 应用
 

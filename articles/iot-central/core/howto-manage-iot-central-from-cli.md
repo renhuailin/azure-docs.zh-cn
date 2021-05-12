@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: philmea
 ms.openlocfilehash: d414b86ff81a33f9e818a0a28031e73d88cabec2
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102202257"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>从 Azure CLI 管理 IoT Central
@@ -26,7 +26,7 @@ ms.locfileid: "102202257"
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - 如果需要在不同的 Azure 订阅中运行 CLI 命令，请参阅 [更改活动订阅](/cli/azure/manage-azure-subscriptions-azure-cli#change-the-active-subscription)。
+ - 如果需要在另一个 Azure 订阅中运行 CLI 命令，请参阅[更改活动订阅](/cli/azure/manage-azure-subscriptions-azure-cli#change-the-active-subscription)。
 
 ## <a name="create-an-application"></a>创建应用程序
 
@@ -49,15 +49,15 @@ az iot central app create \
   --display-name "My Custom Display Name"
 ```
 
-这些命令首先在 "美国东部" 区域中为应用程序创建一个资源组。 下表介绍了 **az iot central app create** 命令使用的参数：
+这些命令首先在“美国东部”区域为应用程序创建一个资源组。 下表描述了与“az iot central app create”命令配合使用的参数：
 
 | 参数         | 说明 |
 | ----------------- | ----------- |
 | resource-group    | 包含该应用程序的资源组。 此资源组必须已存在于订阅中。 |
-| location          | 此命令默认使用资源组中的位置。 目前，可以在 **澳大利亚**、 **亚太**、 **欧洲**、 **美国**、 **英国** 和 **日本** 地区创建 IoT Central 应用程序。 |
+| location          | 此命令默认使用资源组中的位置。 目前，可以在澳大利亚、亚太、欧洲、美国、英国和日本创建 IoT Central 应用程序     。 |
 | name              | 应用程序在 Azure 门户中的名称。 |
 | subdomain         | 应用程序 URL 中的子域。 在该示例中，应用程序 URL 为 `https://mysubdomain.azureiotcentral.com`。 |
-| sku               | 目前，可以使用 **ST1** 或 **ST2**。 请参阅 [Azure IoT Central 定价](https://azure.microsoft.com/pricing/details/iot-central/)。 |
+| sku               | 目前，可以使用 ST1 或 ST2 。 请参阅 [Azure IoT Central 定价](https://azure.microsoft.com/pricing/details/iot-central/)。 |
 | template          | 要使用的应用程序模板。 有关详细信息，请参阅下表。 |
 | display-name      | UI 中显示的应用程序名称。 |
 
@@ -65,7 +65,7 @@ az iot central app create \
 
 ## <a name="view-your-applications"></a>查看应用程序
 
-使用 [az iot central app list](/cli/azure/iot/central/app#az-iot-central-app-list) 命令列出你的 IoT Central 应用程序并查看元数据。
+使用 [az iot central app list](/cli/azure/iot/central/app#az-iot-central-app-list) 命令列出 IoT Central 应用程序和查看元数据。
 
 ## <a name="modify-an-application"></a>修改应用程序
 
