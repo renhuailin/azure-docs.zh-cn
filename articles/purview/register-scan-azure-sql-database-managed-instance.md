@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: a30980ba61a1dfec918dce1a55e78f1be2a36dd7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aaca73d71731ee18eb8f12468ec26ece746f1b8f
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101677853"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288357"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>注册和扫描 Azure SQL 数据库托管实例
 
@@ -87,7 +87,7 @@ Purview 可以通过几个步骤使用服务主体扫描 Azure SQL 数据库托�
 服务主体或托管标识必须具有获取数据库、架构和表的元数据的权限。 它还必须能够查询表以进行采样分类。
 - [使用 Azure SQL 配置和管理 Azure AD 身份验证](../azure-sql/database/authentication-aad-configure.md)
 - 按照[创建映射到 Azure AD 标识的包含的用户](../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell#create-contained-users-mapped-to-azure-ad-identities)的先决条件和教程，在 Azure SQL 数据库托管实例中创建 Azure AD 用户
-- 为该标识分配 `db_owner`（推荐）权限
+- 向标识分配 `db_datareader` 权限
 
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>将服务主体添加到密钥保管库和 Purview 的凭据
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 3e55970b0603da9be9bf28a50d4c474e34a1cad3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c61e371cd22c305daaad6369d364b49d8db8e7d3
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103017233"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203426"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>教程：在 Azure IoT Central 中创建水质监测应用程序
 
@@ -54,7 +54,7 @@ ms.locfileid: "103017233"
 
     * **应用程序名称**：默认情况下，应用程序名称为“水质监测”，后跟 Azure IoT Central 生成的唯一 ID 字符串  。 如果需要，可以输入显示名称，也可以稍后更改应用程序名称。
     * **URL**：可以输入所需的任何 URL，也可以稍后更改 URL 值。
-    * 如果你有一个 Azure 订阅，请输入目录、Azure 订阅和区域的值    。 如果你没有订阅，则可以启用 7 天免费试用版并填写所需的联系人信息  。
+    * 如果你有一个 Azure 订阅，请输入目录、Azure 订阅和位置的值  。 如果你没有订阅，则可以启用 7 天免费试用版并填写所需的联系人信息  。
 
     有关目录和订阅的详细信息，请参阅[创建应用程序](../core/quick-deploy-iot-central.md)快速入门。
 
@@ -102,7 +102,7 @@ ms.locfileid: "103017233"
 
 * **化学制剂浓度条形图**：可在条形图中可视化设备遥测数据。
 
-* **操作按钮**：仪表板包含操作磁贴，操作员可以直接从监视仪表板启动这些操作。 此类操作的一个示例是重置设备属性。
+* **重置传感器参数磁贴**：仪表板包含操作磁贴，操作员可直接从监视仪表板启动这些操作。 此类操作的一个示例是重置设备属性。
 
 * **属性列表磁贴**：仪表板具有多个属性磁贴，它们表示阈值信息、设备运行状况信息以及维护信息。
 
@@ -125,7 +125,7 @@ Azure IoT Central 中的设备模板定义了设备的功能。 可用功能包�
 如需查看设备模板：
 
 1. 选择 Azure IoT Central 中应用程序最左侧窗格上的“设备模板”  。
-1. 在设备模板列表中，选择“水质监测器”  。 该设备模板将打开。
+1. 在设备模板列表中，选择“水质监测器”来打开该设备模板。
 
     ![设备模板](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devicetemplate.png)
 
@@ -141,8 +141,9 @@ Azure IoT Central 中的设备模板定义了设备的功能。 可用功能包�
 
 #### <a name="add-a-cloud-property"></a>添加云属性
 
-1. 从设备模板菜单中，选择“云属性”  。
+1. 从设备模板菜单中，选择“云属性”。
 1. 若要添加新的云属性，请选择“+ 添加云属性”  。 在 Azure IoT Central 中，可以添加与设备相关但不应由设备发送的属性。 此类属性的一个示例是特定于安装区域、资产信息或维护信息的警报阈值。
+1. 输入“安装区域”作为显示名称，并选择“字符串”作为架构   。
 1. 选择“保存”。 
 
 ### <a name="explore-views"></a>浏览视图
@@ -157,7 +158,7 @@ Azure IoT Central 中的设备模板定义了设备的功能。 可用功能包�
 
 ### <a name="create-a-new-device-template"></a>创建新设备模板
 
-1. 选择“+ 新建”以创建新的设备模板，然后执行创建过程  。
+1. 在“设备模板”页面上，选择“+新建”来创建新的设备模板，然后执行创建过程 。
 1. 创建自定义设备模板或从 Azure IoT 设备目录中选择设备模板。
 
 ## <a name="explore-simulated-devices"></a>浏览模拟设备
@@ -174,7 +175,7 @@ Azure IoT Central 中的设备模板定义了设备的功能。 可用功能包�
 
     ![选择设备 1](./media/tutorial-waterqualitymonitoring/waterqualitymonitor-device1.png)
 
-1. 在“云属性”选项卡上，将酸性 (pH) 阈值从 8 更改为 9     。
+1. 在“云属性”选项卡上，将酸性 (pH) 阈值从 8 更改为 9，然后选择“保存”    。
 1. 浏览“设备属性”选项卡和“设备仪表板”选项卡   。
 
 > [!NOTE]
@@ -182,7 +183,11 @@ Azure IoT Central 中的设备模板定义了设备的功能。 可用功能包�
 
 ### <a name="add-new-devices"></a>添加新设备
 
-在“设备”选项卡上，选择“+ 新建”以添加新设备   。
+1. 在“设备”选项卡上，选择“+ 新建”以添加新设备   。
+1. 使用建议的“设备 ID”或输入自己的设备 ID。 也可为新设备输入设备名称。
+1. 选择“水质监测器”作为设备模板 。 
+1. 如果要创建模拟设备，请确保“模拟此设备”设置为“是” 。 
+1. 选择“创建”  。  
 
 ## <a name="explore-and-configure-rules"></a>浏览并配置规则
 
@@ -209,7 +214,7 @@ Azure IoT Central 中的设备模板定义了设备的功能。 可用功能包�
 1. 在“收件人”框中，输入与你的 Azure IoT Central 帐户关联的电子邮件地址  。
 1. （可选）输入要包含在电子邮件文本中的注释。
 1. 选择“完成”  ，完成操作。
-1. 选择“保存”  以保存并激活新规则。
+1. 将规则设置为“已启用”，然后选择“保存” 。
 
 满足配置条件后，你应该能在几分钟内收到电子邮件。
 
@@ -223,32 +228,31 @@ Azure IoT Central 中的设备模板定义了设备的功能。 可用功能包�
 使用 Azure IoT Central 作业，可以在多台设备上触发对设备或云属性的更新。 还可以使用作业在多个设备上触发设备命令。 Azure IoT Central 将自动执行工作流。
 
 1. 在应用程序最左侧的窗格上选择“作业”  。
-1. 选择“+ 新建”并配置一个或多个作业  。
+1. 选择“+新建作业”，并配置一个或多个作业。
 
 ## <a name="customize-your-application"></a>自定义应用程序
 
 构建者可以更改多个设置来自定义应用程序中的用户体验。
 
 1. 选择“管理” > “自定义应用程序”   。
-1. 在“应用程序徽标”下，选择“更改”以选择作为徽标上传的图像   。
+1. 在“报头徽标”下选择“更改”，选择作为徽标上传的图像 。
 1. 在“浏览器图标”下，选择“更改”以选择在浏览器选项卡上显示的图像   。
 1. 在“浏览器颜色”下，可将默认值替换为 HTML 十六进制颜色代码  。
-1. 选择“设置”可以更改“主题”的值   。
 
    ![自定义应用程序](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-customize-your-application1.png)
 
 ### <a name="update-the-application-image"></a>更新应用程序图像
 
-1. 选择“管理” > “应用程序设置”   。
+1. 选择“管理” > “你的应用程序”。 
 
-1. 使用“选择图像”按钮选择要作为应用程序图像上传的图像  。
+1. 选择“更改”，来选择要上传用作应用程序图像的图像。
 
 ## <a name="clean-up-resources"></a>清理资源
 
 如果不打算继续使用应用程序，请删除应用程序，步骤如下：
 
 1. 打开应用程序最左侧窗格上的“管理”选项卡  。
-1. 选择“应用程序设置”，然后选择“删除”按钮   。
+1. 选择“你的应用程序”，然后选择“删除”按钮 。
 
     ![删除应用程序](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-application-settings-delete-app1.png)
 

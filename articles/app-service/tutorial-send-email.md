@@ -4,12 +4,12 @@ description: 了解如何从应用服务应用调用业务流程。 发送电子
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 6b15c09162146de7aef8abfcdba40627eb77621c
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 04bdab82c9d1efed6da3f533617f19b82cf0781e
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830927"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290697"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>教程：从应用服务发送电子邮件及调用其他业务流程
 
@@ -54,7 +54,7 @@ ms.locfileid: "107830927"
 
 ## <a name="create-the-logic-app"></a>创建逻辑应用
 
-1. 在 [Azure 门户](https://portal.azure.com)中，按照[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app)中的说明创建一个空逻辑应用。 看到“逻辑应用设计器”时，请返回本教程。
+1. 在 [Azure 门户](https://portal.azure.com)中，按照[创建你的第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)中的说明创建一个空的逻辑应用。 看到“逻辑应用设计器”时，请返回本教程。
 1. 在逻辑应用设计器的初始页面中，选择“首先使用常用触发器”下面的“收到 HTTP 请求时”。
 
     ![显示逻辑应用设计器的初始页面的屏幕截图，其中突出显示了“收到 HTTP 请求时”对话框。](./media/tutorial-send-email/receive-http-request.png)
@@ -81,7 +81,7 @@ ms.locfileid: "107830927"
 
     此 HTTP 请求定义是要在此逻辑应用中执行的任何操作（通过 Gmail 发送电子邮件或其他任何操作）的触发器。 稍后你将在应用服务应用中调用此 URL。 有关请求触发器的详细信息，请参阅 [HTTP 请求/响应参考](../connectors/connectors-native-reqres.md)。
 
-1. 在设计器的底部，单击“新建步骤”，在操作搜索框中键入 Gmail，然后找到并选择“发送电子邮件(V2)”。
+1. 在设计器的底部，单击“新建步骤”，再在操作搜索框中键入 Gmail 。 找到并选择“发送电子邮件(V2)”。
     
     > [!TIP]
     > 可以搜索其他类型的集成，例如 SendGrid、MailChimp、Microsoft 365 和 SalesForce。 有关详细信息，请参阅[逻辑应用文档](../logic-apps/index.yml)。

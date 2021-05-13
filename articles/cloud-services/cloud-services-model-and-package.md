@@ -3,17 +3,18 @@ title: 什么是云服务（经典）模型和包 | Microsoft Docs
 description: 描述 Azure 中的云服务模型（.csdef、.cscfg）和包 (.cspkg)
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 1cf8e966b80e005a0cb2cf7ea46f355e38cb0011
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09db85172b3b4e0c848c9763d1e37f32243aefef
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98741530"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108771606"
 ---
 # <a name="what-is-the-cloud-service-classic-model-and-how-do-i-package-it"></a>什么是云服务（经典）模型，如何将其打包？
 

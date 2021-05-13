@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: c18366fd4bc510f32ac0ef255b27709797a3b626
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 419e609c4b78007f215d67ab4a69671bc9cbb198
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103493692"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205622"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-a-sample-client-app"></a>教程：使用示例客户端应用创建 Azure 数字孪生图
 
 [!INCLUDE [digital-twins-tutorial-selector.md](../../includes/digital-twins-tutorial-selector.md)]
 
-在本教程中，你将使用模型、孪生和关系在 Azure 数字孪生中生成一个图。 本教程使用的工具是可与 Azure 数字孪生实例交互的一个 **示例命令行客户端应用程序**。 客户端应用与 [*教程：编写客户端应用*](tutorial-code.md)中编写的应用类似。
+在本教程中，你将使用模型、孪生和关系在 Azure 数字孪生中生成一个图。 本教程使用的工具是可与 Azure 数字孪生实例交互的一个 **示例命令行客户端应用程序**。 客户端应用与[教程：编写客户端应用](tutorial-code.md)中编写的应用类似。
 
 可以使用此示例执行基本的 Azure 数字孪生操作，例如上传模型、创建和修改孪生以及创建关系。 还可以查看[示例的代码](https://github.com/Azure-Samples/digital-twins-samples/tree/master/)来了解 Azure 数字孪生 API，并通过按你想要的方式修改示例项目来练习实现你自己的命令。
 
@@ -55,7 +55,7 @@ ms.locfileid: "103493692"
 
 设置 Azure 数字孪生实例和示例应用后，接下来可以开始生成方案图。 
 
-创建 Azure 数字孪生解决方案的第一步是为环境定义孪生[模型](concepts-models.md)。 
+创建 Azure 数字孪生解决方案的第一步是为环境定义孪生模型。 
 
 模型类似于面向对象的编程语言中的类；它们为[数字孪生](concepts-twins-graph.md)提供了日后可遵循并实例化的用户定义的模板。 它们用类似于 JSON 的语言（称为数字孪生定义语言 (DTDL)）编写，并且可以定义孪生的属性、遥测、关系和组件   。
 
@@ -95,7 +95,7 @@ CreateModels Room
 ```
 
 由于无法覆盖模型，此操作现在将返回服务错误。
-有关如何删除现有模型的详细信息，请参阅 [*操作说明：管理 DTDL 模型*](how-to-manage-model.md)。
+有关如何删除现有模型的详细信息，请参阅[操作说明：管理 DTDL 模型](how-to-manage-model.md)。
 ```cmd/sh
 Response 409: Service request failed.
 Status: 409 (Conflict)
@@ -112,7 +112,7 @@ Content-Type: application/json; charset=utf-8
 
 ## <a name="create-digital-twins"></a>创建数字孪生
 
-现在，一些模型已上传到 Azure 数字孪生实例，你可以根据模型定义创建[数字孪生](concepts-twins-graph.md)。 数字孪生表示业务环境中的实体，这类似于农场中的传感器、大楼中的房间或汽车上的灯。 
+现在，一些模型已上传到 Azure 数字孪生实例，你可以根据模型定义创建数字孪生。 数字孪生表示业务环境中的实体，这类似于农场中的传感器、大楼中的房间或汽车上的灯。 
 
 要创建数字孪生，请使用 `CreateDigitalTwin` 命令。 必须引用孪生所基于的模型，并且可以选择定义模型中任何属性的初始值。 在此阶段，无需传递任何关系信息。
 
@@ -157,9 +157,9 @@ Content-Type: application/json; charset=utf-8
 
 ## <a name="create-a-graph-by-adding-relationships"></a>通过添加关系来创建关系图
 
-接下来，你可以在这些孪生之间创建某种关系，以将它们连接到[孪生图](concepts-twins-graph.md) 。 孪生图用于表示整个环境。 
+接下来，你可以在这些孪生之间创建某种关系，以将它们连接到孪生图 。 孪生图用于表示整个环境。 
 
-可由你在两个不同孪生之间创建的关系的类型，是在前面上传的[模型](#model-a-physical-environment-with-dtdl)中定义的。 [*Floor* 的模型定义](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)指定楼层可以有一个名为 *contains* 的关系类型。 因此，可以创建从每个 *Floor* 孪生到它所包含的相应房间的 *contains* 类型的关系。
+可由你在两个不同孪生之间创建的关系的类型，是在前面上传的[模型](#model-a-physical-environment-with-dtdl)中定义的。 [Floor 的模型定义](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)指定楼层可有一个名为 contains 的关系类型。 因此，可以创建从每个 *Floor* 孪生到它所包含的相应房间的 *contains* 类型的关系。
 
 要添加关系，请使用 `CreateRelationship` 命令。 指定该关系的来源孪生、关系类型，以及该关系要连接到的孪生。 最后，为该关系指定唯一的 ID。
 
@@ -171,7 +171,7 @@ Content-Type: application/json; charset=utf-8
     ```
 
     >[!TIP]
-    >在 [*Floor* 模型](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)中定义的 *contains* 关系也有两个字符串属性：`ownershipUser` 和 `ownershipDepartment`，因此，在创建关系时，也可以为参数提供这些属性的初始值。
+    >在 [Floor 模型](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)中定义的 *contains* 关系也有两个字符串属性：`ownershipUser` 和 `ownershipDepartment`，因此，在创建关系时，也可以为参数提供这些属性的初始值。
     > 下面是上述命令的另一个版本，该版本将创建 *relationship0*，其中也会指定这些属性的初始值：
     > ```cmd/sh
     > CreateRelationship floor0 contains room0 relationship0 ownershipUser string MyUser ownershipDepartment string myDepartment
@@ -279,4 +279,4 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 
 请继续学习下一篇教程，将 Azure 数字孪生与其他 Azure 服务结合使用来实现数据驱动的端到端方案：
 > [!div class="nextstepaction"]
-> [*教程：连接端到端解决方案*](tutorial-end-to-end.md)
+> [教程：连接端到端解决方案](tutorial-end-to-end.md)

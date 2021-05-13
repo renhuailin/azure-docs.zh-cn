@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/12/2021
+ms.date: 04/28/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 3d53c96c4b0306911b0c8a0b8576f35a73419db0
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 9a39a1b0df364aeed970f3ed0e0d99d4d31585b2
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107498146"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175471"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Tutorial:开发 SCIM 终结点并计划其预配
 
@@ -213,10 +213,11 @@ SCIM RFC 中定义了多个终结点。 可以从 `/User` 终结点开始，然�
 * 不支持权利属性。
 * 在 SCIM 终结点上支持 HTTPS。
 * [架构发现](#schema-discovery)
-  * 自定义应用程序当前不支持架构发现，但某些库应用程序正在运行它。 日后，架构发现将用作向连接器添加其他属性的主要方法。 
+  * 自定义应用程序当前不支持架构发现，但某些库应用程序正在运行它。 日后，架构发现将用作向现有连接器添加其他属性的唯一方法。 
   * 如果值不存在，则不发送 NULL 值。
   * 属性值应采用大小写形式，例如，readWrite。
   * 必须返回列表响应。
+  * 每次用户在 Azure 门户中保存预配配置，或者每次用户登陆 Azure 门户中的“编辑预配”页面时，Azure AD SCIM 客户端都将发出 /schemas 请求。 在目标属性列表下的属性映射中，将向客户显示发现的任何其他属性。 架构发现仅会导致添加其他目标属性。 它不会导致删除属性。 
   
 ### <a name="user-provisioning-and-deprovisioning"></a>用户预配和取消预配
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6d06a46d2eaaad362890f1e3e44dbc746fa10898
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5fd0394feb8b58688bd163d62af30b031125b46
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98633371"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109663952"
 ---
 Azure 文件存储提供了四种不同的存储层（高级、事务优化、热和冷存储层），因此你能够根据方案的性能和价格要求定制共享：
 
@@ -22,7 +22,7 @@ Azure 文件存储提供了四种不同的存储层（高级、事务优化、�
 - **Hot**：热文件共享提供针对常规用途文件共享方案（如团队共享）优化的存储。 可在由 HDD 提供支持的标准存储硬件上使用热文件共享。
 - **Cool**：冷文件共享提供针对在线存档存储方案优化的经济高效的存储。 可在由 HDD 提供支持的标准存储硬件上使用冷文件共享。
 
-高级文件共享是在 FileStorage 存储帐户中部署的，仅可在预配账单模型中使用。 有关高级文件共享的预配计费模型的详细信息，请参阅[了解预配高级文件共享](../articles/storage/files/understanding-billing.md#provisioned-model)。 标准文件共享（包括事务优化、热和冷文件共享）部署在常规用途版本 2 (GPv2) 存储帐户类型中，以即用即付计费的形式提供。 热文件共享和冷文件共享在所有 Azure 公共区域和 Azure 政府区域中均可用。 事务优化文件共享在所有 Azure 区域中可用，包括 Azure 中国和 Azure 德国区域。
+高级文件共享是在 FileStorage 存储帐户中部署的，仅可在预配账单模型中使用。 有关高级文件共享的预配计费模型的详细信息，请参阅[了解预配高级文件共享](../articles/storage/files/understanding-billing.md#provisioned-model)。 标准文件共享（包括事务优化、热和冷文件共享）部署在常规用途版本 2 (GPv2) 存储帐户类型中，以即用即付计费的形式提供。 
 
 为工作负载选择存储层时，请考虑你的性能和使用要求。 如果工作负载要求延迟低至个位数，或者你正在使用本地 SSD 存储媒体，则可能最适合使用高级层。 如果低延迟不太重要，例如在使用从 Azure 本地装载或通过 Azure 文件同步本地缓存的团队共享时，则从成本的角度来看，标准存储可能更加适合。
 

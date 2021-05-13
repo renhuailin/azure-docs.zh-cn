@@ -4,12 +4,12 @@ description: 在本教程中，你将了解如何使用 Azure CLI 从 Azure 备�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a249ab63aa72c1d39ab1626e72ff3b2037f3f723
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c3fafdd3c9e635e828a2d2a82c5df63685683264
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768444"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279759"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教程：使用 Azure CLI 还原 Azure VM 中的 SAP HANA 数据库
 
@@ -280,7 +280,7 @@ az backup restore restore-azurewl --resource-group saphanaResourceGroup \
 >[!NOTE]
 >要在装载在目标注册的 VM 上的 Azure 文件共享上还原数据库备份文件，请确保根帐户对 Azure 文件共享具有读/写权限。
 
-根据所选的还原点类型（“时间点”或“完整和差异”），你将看到一个或多个在目标路径中创建的文件夹 。 名为 `Data_<date and time of restore>` 的文件夹之一包含完整备份和差异备份，名为 `Log` 的其他文件夹包含日志备份。
+根据所选的还原点类型（“时间点”或“完整和差异”），你将看到一个或多个在目标路径中创建的文件夹 。 一个名为 `Data_<date and time of restore>` 的文件夹包含完整备份和差异备份，另一个名为 `Log` 的文件夹包含日志备份和其他备份（例如差异备份和增量备份）。
 
 将这些已还原文件移动到要将其还原为数据库的 SAP HANA 服务器。 然后按照这些步骤还原数据库：
 
@@ -305,7 +305,7 @@ az backup restore restore-azurewl --resource-group saphanaResourceGroup \
     在上面的命令中：
 
     * `<DataFileDir>` - 包含完整备份的文件夹
-    * `<LogFilesDir>` - 包含日志备份的文件夹
+    * `<LogFilesDir>` - 包含日志备份、差异备份和增量备份（若有）的文件夹
     * `<PathToPlaceCatalogFile>` - 必须放置已生成的目录文件的文件夹
 
 1. 通过 HANA Studio 使用新生成的目录文件进行还原或使用此新生成的目录运行 HDBSQL 还原查询。 下面列出了 HDBSQL 查询：
@@ -325,7 +325,7 @@ az backup restore restore-azurewl --resource-group saphanaResourceGroup \
         * `<DatabaseName@HostName>` - 备份用于还原的数据库的名称，以及此数据库所在位置的“主机”/SAP HANA 服务器的名称。 `USING SOURCE <DatabaseName@HostName>` 选项指定数据备份（用于还原）是一个具有与目标 SAP HANA 计算机不同的 SID 或名称的数据库。 因此，不需要为采用备份的同一 HANA 服务器上的还原指定它。
         * `<PathToGeneratedCatalogInStep3>` - 在“步骤 3”中生成的指向目录文件的路径
         * `<DataFileDir>` - 包含完整备份的文件夹
-        * `<LogFilesDir>` - 包含日志备份的文件夹
+        * `<LogFilesDir>` - 包含日志备份、差异备份和增量备份（若有）的文件夹
         * `<BackupIdFromJsonFile>` - 在“步骤 3”中提取的“BackupId” 
 
     * 要还原到特定完整备份或差异备份：
@@ -341,7 +341,7 @@ az backup restore restore-azurewl --resource-group saphanaResourceGroup \
         * `<DatabaseName@HostName>` - 备份用于还原的数据库的名称，以及此数据库所在位置的“主机”/SAP HANA 服务器的名称。 `USING SOURCE <DatabaseName@HostName>` 选项指定数据备份（用于还原）是一个具有与目标 SAP HANA 计算机不同的 SID 或名称的数据库。 因此，不需要为采用备份的同一 HANA 服务器上的还原指定它。
         * `<PathToGeneratedCatalogInStep3>` - 在“步骤 3”中生成的指向目录文件的路径
         * `<DataFileDir>` - 包含完整备份的文件夹
-        * `<LogFilesDir>` - 包含日志备份的文件夹
+        * `<LogFilesDir>` - 包含日志备份、差异备份和增量备份（若有）的文件夹
         * `<BackupIdFromJsonFile>` - 在“步骤 3”中提取的“BackupId” 
 
 ## <a name="next-steps"></a>后续步骤

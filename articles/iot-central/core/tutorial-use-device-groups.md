@@ -7,12 +7,12 @@ ms.date: 11/16/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a7d26eebb24662a448d8ccb44d037e7706fe776b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0cc9c0825761099f7f5f665cd3a7f27c88f9cdbc
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99832838"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325312"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>教程：使用设备组分析设备遥测数据
 
@@ -37,15 +37,13 @@ ms.locfileid: "99832838"
 
 :::image type="content" source="media/tutorial-use-device-groups/simulated-devices.png" alt-text="显示 5 个模拟传感器控制器设备的屏幕截图":::
 
-对于其中四个模拟传感器设备，请使用“管理设备”  视图将客户名称设为“Contoso”  ：
+对于其中 4 台模拟传感器设备，请使用“管理设备”视图将客户名称设为“Contoso”，然后选择“保存”。
 
 :::image type="content" source="media/tutorial-use-device-groups/customer-name.png" alt-text="显示如何设置“客户名称”云属性的屏幕截图":::
 
 ## <a name="create-a-device-group"></a>创建设备组
 
-若要创建设备组：
-
-1. 在左侧窗格中选择“资源组”。 
+1. 选择左侧窗格中的“设备组”，导航到设备组页面。
 
 1. 选择“+ 新建”  。
 

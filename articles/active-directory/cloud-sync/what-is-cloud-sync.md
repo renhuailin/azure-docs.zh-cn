@@ -11,12 +11,12 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af4eaa5912cdf7463c81f501d71b69e934f8febb
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: df178b49e3f9853bd8561794e7e6444e73630edd
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107306001"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108323657"
 ---
 # <a name="what-is-azure-ad-connect-cloud-sync"></a>什么是 Azure AD Connect 云同步？
 Azure AD Connect 云同步是 Microsoft 提供的一个新产品/服务，旨在满足和实现在 Azure AD 中同步用户、组与联系人的混合标识目标。  它使用 Azure AD 云预配代理来实现此目标，而不是使用 Azure AD Connect 应用程序。  但是，它可以与 Azure AD Connect 同步一起使用，并具有以下优势：
@@ -73,7 +73,8 @@ Azure AD Connect 云同步是 Microsoft 提供的一个新产品/服务，旨在
 | Azure AD 域服务支持|● | |
 | [Exchange 混合写回](../hybrid/reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) |● | |
 | 支持对每个 AD 域配置多达 150,000 个对象 |● |● |
-| 支持大型组 - 具有多达 50,000 个成员的组 |● |● |
+| 成员数超过 50,000 的组 |● |● |
+| 成员数超过 250,000 的大型组 |● |  |
 | 跨域引用|● | |
 | 按需预配| |● |
 

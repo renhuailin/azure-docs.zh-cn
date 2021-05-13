@@ -1,25 +1,25 @@
 ---
-title: 教程：在门户中通过 Azure 防火墙 DNAT 筛选入站 Internet 流量
-description: 本教程介绍如何使用 Azure 门户部署和配置 Azure 防火墙 DNAT。
+title: 在门户中通过 Azure 防火墙 DNAT 筛选入站 Internet 流量
+description: 在本文中，你将学习如何使用 Azure 门户部署和配置 Azure 防火墙 DNAT。
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: tutorial
-ms.date: 03/01/2021
+ms.topic: how-to
+ms.date: 04/29/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a1d3bdae1e870b094472a63d4b808d9df95c129d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f31cffc6996ffe5b733ba322584cb400afcc5093
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101741899"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291849"
 ---
-# <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>教程：在 Azure 门户中通过 Azure 防火墙 DNAT 筛选入站 Internet 流量
+# <a name="filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>在 Azure 门户中通过 Azure 防火墙 DNAT 筛选入站 Internet 流量
 
 可以配置 Azure 防火墙目标网络地址转换 (DNAT)，以转换和筛选到子网的入站 Internet 流量。 配置 DNAT 时，NAT 规则收集操作设置为“Dnat”。  然后，可以使用 NAT 规则集合中的每个规则将防火墙公共 IP 地址和端口转换为专用 IP 地址和端口。 DNAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 出于安全原因，推荐的方法是添加特定的 Internet 源以允许 DNAT 访问网络，并避免使用通配符。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
 
-在本教程中，你将了解如何执行以下操作：
+在本文中，学习如何：
 
 > [!div class="checklist"]
 > * 设置测试网络环境
@@ -27,6 +27,9 @@ ms.locfileid: "101741899"
 > * 创建默认路由
 > * 配置 DNAT 规则
 > * 测试防火墙
+
+> [!NOTE]
+> 本文使用经典防火墙规则来管理防火墙。 首选方法是使用[防火墙策略](../firewall-manager/policy-overview.md)。 若要使用防火墙策略完成此过程，请查看[教程：在 Azure 门户中使用 Azure 防火墙策略 DNAT 筛选入站 Internet 流量](tutorial-firewall-dnat-policy.md)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,7 +49,7 @@ ms.locfileid: "101741899"
 
 ## <a name="set-up-the-network-environment"></a>设置网络环境
 
-请为本教程创建两个对等互连的 VNet：
+请为本文创建 2 个对等互连的 VNet：
 
 - **VN-Hub** - 防火墙在此 VNet 中。
 - **VN-Spoke** - 工作负荷服务器在此 VNet 中。
@@ -142,6 +145,8 @@ ms.locfileid: "101741899"
 
 部署完成后，请记下虚拟机的专用 IP 地址。 该地址会在稍后配置防火墙时使用。 选择虚拟机名称，然后在“设置”下选择“网络”，找到专用 IP 地址。  
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 ## <a name="deploy-the-firewall"></a>部署防火墙
 
 1. 在门户主页上，选择“创建资源”。 
@@ -217,20 +222,10 @@ ms.locfileid: "101741899"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-可以将防火墙资源保留到下一教程使用。不再需要时，请删除 **RG-DNAT-Test** 资源组，以删除与防火墙相关的所有资源。
+可保留防火墙资源供进一步测试。如果不再需要，请删除 RG-DNAT-Test 资源组，以删除与防火墙相关的所有资源。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你了解了如何执行以下操作：
-
-> [!div class="checklist"]
-> * 设置测试网络环境
-> * 部署防火墙
-> * 创建默认路由
-> * 配置 DNAT 规则
-> * 测试防火墙
-
 接下来，可以监视 Azure 防火墙日志。
 
-> [!div class="nextstepaction"]
-> [教程：监视 Azure 防火墙日志](./firewall-diagnostics.md)
+[教程：监视 Azure 防火墙日志](./firewall-diagnostics.md)

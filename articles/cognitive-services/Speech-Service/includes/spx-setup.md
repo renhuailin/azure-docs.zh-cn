@@ -3,14 +3,14 @@ author: v-demjoh
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/15/2020
+ms.date: 04/28/2021
 ms.author: v-demjoh
-ms.openlocfilehash: ec34ba7b2d3bc026376aeb1cb91847d8eac1cac5
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 3221712fcf74022f2899380b4573ab3a821dce4d
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107073331"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109627242"
 ---
 ## <a name="download-and-install"></a>下载并安装
 
@@ -28,8 +28,7 @@ ms.locfileid: "107073331"
 若要查看语音 CLI 的帮助，请键入 `spx`。
 
 > [!NOTE]
-> 作为 NuGet 的替代方法，你可以下载并解压缩语音 CLI [zip 存档](https://aka.ms/speech/spx-zips.zip)，从 `spx-zips` 目录中查找并解压缩你的平台，然后将 `spx` 路径添加到 PATH 系统变量。
-
+> 作为 NuGet 的替代，你可以 [zip 文件](https://aka.ms/speech/spx-windows)的形式下载和提取 Windows 的语音 CLI。
 
 ### <a name="font-limitations"></a>字体限制
 
@@ -60,10 +59,14 @@ ms.locfileid: "107073331"
 若要查看语音 CLI 的帮助，请键入 `spx`。
 
 > [!NOTE]
-> 作为 NuGet 的替代方法，你可以下载 [zip 存档](https://aka.ms/speech/spx-zips.zip)，将 `spx-netcore-30-linux-x64.zip` 解压缩到新的 `~/spx` 目录，在二进制文件上键入 `sudo chmod +r+x spx`，然后将 `~/spx` 路径添加到 PATH 系统变量。
+> 作为 NuGet 的替代，你可以 [zip 文件](https://aka.ms/speech/spx-linux)的形式下载 Linux 库。
+> 将 `spx-netcore-30-linux-x64.zip` 提取到新的 `~/spx` 目录，在二进制文件上键入 `sudo chmod +r+x spx`，并向 PATH 系统变量添加 `~/spx` 路径。
 
 
 #### <a name="docker-install-windows-linux-macos"></a>[Docker 安装（Windows、Linux、macOS）](#tab/dockerinstall)
+
+> [!WARNING]
+> 在 Docker 容器中运行语音 CLI 时，不能使用计算机的麦克风。 但你可以在本地装载的目录中读取和保存音频文件。 
 
 按照以下步骤在 Docker 容器中安装语音 CLI：
 
@@ -126,9 +129,6 @@ docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCR
 ```console
 docker run -it --entrypoint=/bin/bash -v c:\spx-data:/data --rm msftspeech/spx
 ```
-
-> [!WARNING]
-> 在 Docker 容器中运行语音 CLI 时，不能使用计算机的麦克风。 但你可以在本地装载的目录中读取和保存音频文件。 
 
 <!-- Need to troubleshoot issues with docker pull image
 

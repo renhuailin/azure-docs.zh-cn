@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/24/2021
-ms.openlocfilehash: 03cfb49dabd5039453f84ef0e636d3948af70d8d
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 04/23/2021
+ms.openlocfilehash: 0163b58017599ceb26f52f0e47cbc87e161f6ed2
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764830"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161226"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建和管理逻辑应用工作流定义
 
@@ -224,24 +224,6 @@ ms.locfileid: "107764830"
 
    ![Azure 门户中的新逻辑应用](./media/quickstart-create-logic-apps-visual-studio-code/published-logic-app-in-azure.png)
 
-<a name="disable-enable-logic-app"></a>
-
-## <a name="disable-or-enable-logic-app"></a>禁用或启用逻辑应用
-
-在 Visual Studio Code 中，如果对已发布的逻辑应用进行编辑并保存更改，则将覆盖已部署的应用。 为避免中断生产中的逻辑应用并最大程度地减少干扰，请先停用逻辑应用。 然后，在确认逻辑应用仍可正常工作后，可重新激活逻辑应用。
-
-1. 如果你尚未从 Visual Studio Code 内登录到 Azure 订阅，请按照[前面的步骤操作，以立即登录](#access-azure)。
-
-1. 在 Azure 窗口中的“逻辑应用”下，展开 Azure 订阅，以便查看该订阅中的所有逻辑应用。
-
-   1. 若要禁用希望禁用的逻辑应用，请打开逻辑应用菜单，并选择“禁用”。
-
-      ![禁用逻辑应用](./media/quickstart-create-logic-apps-visual-studio-code/disable-published-logic-app.png)
-
-   1. 如果已准备好重新激活逻辑应用，请打开逻辑应用菜单，并选择“启用”。
-
-      ![启用逻辑应用](./media/quickstart-create-logic-apps-visual-studio-code/enable-published-logic-app.png)
-
 <a name="edit-logic-app"></a>
 
 ## <a name="edit-deployed-logic-app"></a>编辑已部署的逻辑应用
@@ -249,13 +231,13 @@ ms.locfileid: "107764830"
 在 Visual Studio Code 中，可以打开和编辑 Azure 中已部署的逻辑应用的工作流定义。
 
 > [!IMPORTANT] 
-> 在编辑生产环境中正在运行的逻辑应用前，请[首先禁用逻辑应用](#disable-enable-logic-app)以避免使该逻辑应用中断的风险，并最大程度地减少干扰。
+> 在编辑生产环境中正在运行的逻辑应用前，请[首先禁用逻辑应用](#disable-enable-logic-apps)以避免使该逻辑应用中断的风险，并最大程度地减少干扰。
 
 1. 如果你尚未从 Visual Studio Code 内登录到 Azure 订阅，请按照[前面的步骤操作，以立即登录](#access-azure)。
 
 1. 在 Azure 窗口中的“逻辑应用”下，展开 Azure 订阅，然后选择想要使用的逻辑应用。
 
-1. 打开逻辑应用菜单，并选择“在编辑器中打开”。 或者，选择逻辑应用名称旁的编辑图标。
+1. 打开逻辑应用菜单，选择“在编辑器中打开”。 或者，选择逻辑应用名称旁的编辑图标。
 
    ![打开现有逻辑应用的编辑器](./media/quickstart-create-logic-apps-visual-studio-code/open-editor-existing-logic-app.png)
 
@@ -278,7 +260,7 @@ ms.locfileid: "107764830"
 在 Visual Studio Code 中，可以打开和查看早期版本的逻辑应用。 还可以将早期版本提升到当前版本。
 
 > [!IMPORTANT] 
-> 在更改生产环境中正在运行的逻辑应用前，请[首先禁用逻辑应用](#disable-enable-logic-app)以避免使该逻辑应用中断的风险，并最大程度地减少干扰。
+> 在更改生产环境中正在运行的逻辑应用前，请[首先禁用逻辑应用](#disable-enable-logic-apps)以避免使该逻辑应用中断的风险，并最大程度地减少干扰。
 
 1. 在 Azure 窗口中的“逻辑应用”下，展开 Azure 订阅，以便查看该订阅中的所有逻辑应用。
 
@@ -307,6 +289,61 @@ ms.locfileid: "107764830"
       ![确认提升早期版本](./media/quickstart-create-logic-apps-visual-studio-code/confirm-promote-version.png)
 
       Visual Studio Code 会将所选版本提升到当前版本，并为提升后的版本分配一个新编号。 原当前版本现在显示在提升后的版本之下。
+
+<a name="disable-enable-logic-apps"></a>
+
+## <a name="disable-or-enable-logic-apps"></a>禁用或启用逻辑应用
+
+在 Visual Studio Code 中，如果对已发布的逻辑应用进行编辑并保存更改，则将覆盖已部署的应用。 为避免中断生产中的逻辑应用并最大程度地减少干扰，请先禁用逻辑应用。 然后，在确认逻辑应用仍可正常工作后，可重新激活逻辑应用。
+
+> [!NOTE]
+> 禁用逻辑应用会以下列方式影响工作流实例：
+>
+> * 逻辑应用服务将继续所有正在进行和挂起的运行，直到它们完成。 根据卷或积压工作 (backlog)，此过程可能需要一些时间才能完成。
+>
+> * 逻辑应用服务不会创建或运行新的工作流实例。
+>
+> * 下一次满足触发器的条件时，触发器不会触发。 但是，触发器状态会记住逻辑应用的停止位置。 因此，如果重新激活逻辑应用，触发器将会针对自上次运行以来未处理的所有项触发。
+>
+>   若要阻止触发器针对自上次运行以来未处理的项触发，请在重新激活逻辑应用之前清除触发器的状态：
+>
+>   1. 在逻辑应用中，编辑工作流触发器的任何部分。
+>   1. 保存所做更改。 此步骤会重置触发器的当前状态。
+>   1. 重新激活逻辑应用。
+
+1. 如果你尚未从 Visual Studio Code 内登录到 Azure 订阅，请按照[前面的步骤操作，以立即登录](#access-azure)。
+
+1. 在 Azure 窗口中的“逻辑应用”下，展开 Azure 订阅，以便查看该订阅中的所有逻辑应用。
+
+   1. 若要禁用所需的逻辑应用，请打开逻辑应用菜单，并选择“禁用”。
+
+      ![禁用逻辑应用](./media/quickstart-create-logic-apps-visual-studio-code/disable-published-logic-app.png)
+
+   1. 如果已准备好重新激活逻辑应用，请打开逻辑应用菜单，并选择“启用”。
+
+      ![启用逻辑应用](./media/quickstart-create-logic-apps-visual-studio-code/enable-published-logic-app.png)
+
+<a name="delete-logic-apps"></a>
+
+## <a name="delete-logic-apps"></a>删除逻辑应用
+
+删除逻辑应用会以下列方式方式影响工作流实例：
+
+* 逻辑应用服务会可能取消任何正在进行和挂起的运行。
+
+  即使使用较大的卷或积压工作 (backlog)，大多数运行在完成或开始之前都将被取消。 但是，取消过程可能需要一些时间才能完成。 同时，在服务执行取消过程中，可能会选取某些运行来执行。
+
+* 逻辑应用服务不会创建或运行新的工作流实例。
+
+* 如果删除工作流，然后重新创建相同的工作流，则重新创建的工作流不会具有与删除的工作流相同的元数据。 必须重新保存任何调用删除工作流的工作流。 这样，调用方就可获取重新创建的工作流的正确信息。 否则，对重新创建的工作流的调用将失败并显示 `Unauthorized` 错误。 此行为也适用于在集成帐户中使用项目的工作流和调用 Azure 函数的工作流。
+
+1. 如果你尚未从 Visual Studio Code 内登录到 Azure 订阅，请按照[前面的步骤操作，以立即登录](#access-azure)。
+
+1. 在 Azure 窗口中的“逻辑应用”下，展开 Azure 订阅，以便查看该订阅中的所有逻辑应用。
+
+1. 找到要删除的逻辑应用，打开逻辑应用菜单，然后选择“删除”。
+
+   ![删除逻辑应用](./media/quickstart-create-logic-apps-visual-studio-code/delete-logic-app.png)
 
 ## <a name="next-steps"></a>后续步骤
 

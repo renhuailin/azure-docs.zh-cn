@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 998657c1e183d1b0dd0d533bb763ee7c13a3f474
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: a0584bea6fab1d49c552785d093e7e2df823b11b
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904183"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205820"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>教程：扩建端到端解决方案
 
@@ -72,9 +72,9 @@ ms.locfileid: "107904183"
 SetupBuildingScenario
 ```
 
-此命令的输出是一系列确认消息，因为 Azure 数字孪生实例中创建和连接了三个[数字孪生](concepts-twins-graph.md)：名为 floor1 的楼层、名为 room21 的房间和名为 thermostat67 的温度传感器  。 这些数字孪生表示真实环境中可能存在的实体。
+此命令的输出是一系列确认消息，因为 Azure 数字孪生实例中创建和连接了 3 个[数字孪生](concepts-twins-graph.md)：名为 floor1 的楼层、名为 room21 的房间和名为 thermostat67 的温度传感器  。 这些数字孪生表示真实环境中可能存在的实体。
 
-它们通过关系连接到以下[孪生图](concepts-twins-graph.md)。 孪生图表示整个环境，包括实体之间的交互和关联方式。
+它们通过关系连接到以下孪生图。 孪生图表示整个环境，包括实体之间的交互和关联方式。
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-graph.png" alt-text="该图显示 floor1 包含 room21 且 room21 包含 thermostat67" border="false":::
 
@@ -129,7 +129,7 @@ Query
 
 #### <a name="assign-access-role"></a>分配访问角色
 
-第一个设置为函数应用提供 Azure 数字孪生实例中的“Azure 数字孪生数据所有者”角色。 要对实例执行许多数据平面活动的任何用户或函数都需要此角色。 关于安全性和角色分配，可以在[概念：Azure 数字孪生解决方案的安全性](concepts-security.md)中了解详细信息。 
+第一个设置为函数应用提供 Azure 数字孪生实例中的“Azure 数字孪生数据所有者”角色。 要对实例执行许多数据平面活动的任何用户或函数都需要此角色。 关于安全性和角色分配，可以在概念：Azure 数字孪生解决方案的安全性中了解详细信息。 
 
 1. 使用以下命令查看函数的系统托管标识的详细信息。 记下输出中的 principalId 字段。
 
@@ -156,7 +156,7 @@ Query
 
 #### <a name="configure-application-settings"></a>配置应用程序设置
 
-第二个设置使用 Azure 数字孪生实例的 URL 为函数创建环境变量。 函数代码将使用此变量来引用你的实例。 有关环境变量的详细信息，请参阅[管理函数应用](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal)。 
+第二个设置使用 Azure 数字孪生实例的 URL 为函数创建环境变量。 函数代码将使用此变量来引用你的实例。 有关环境变量的详细信息，请参阅管理函数应用。 
 
 运行下面的命令，并在占位符中填入资源的详细信息。
 
@@ -171,7 +171,7 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 
 Azure 数字孪生图将由真实设备的遥测驱动。 
 
-在此步骤中，需要将在 [IoT 中心](../iot-hub/about-iot-hub.md)内注册的模拟温控设备连接到在 Azure 数字孪生中表示它的数字孪生。 当模拟设备发出遥测时，系统将通过可触发数字孪生中相应更新的 ProcessHubToDTEvents Azure 函数定向数据。 通过这种方式，数字孪生就可与真实设备的数据保持一致。 在 Azure 数字孪生中，将事件数据从一个位置定向到另一个位置的过程称为[路由事件](concepts-route-events.md)。
+在此步骤中，需要将在 [IoT 中心](../iot-hub/about-iot-hub.md)内注册的模拟温控设备连接到在 Azure 数字孪生中表示它的数字孪生。 当模拟设备发出遥测时，系统将通过可触发数字孪生中相应更新的 ProcessHubToDTEvents Azure 函数定向数据。 通过这种方式，数字孪生就可与真实设备的数据保持一致。 在 Azure 数字孪生中，将事件数据从一个位置定向到另一个位置的过程称为路由事件。
 
 该过程发生在端到端方案的这一部分（箭头 B）：
 
@@ -439,4 +439,4 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 接下来，请开始查看概念文档，详细了解本教程中所用的元素：
 
 > [!div class="nextstepaction"]
-> [*概念：自定义模型*](concepts-models.md)
+> [概念：自定义模型](concepts-models.md)

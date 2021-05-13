@@ -1,6 +1,6 @@
 ---
-title: SIP 接口基础结构要求 - Azure 通信服务
-description: 熟悉 Azure 通信服务 SIP 接口配置的基础结构要求
+title: Azure 直接路由基础结构要求 - Azure 通信服务
+description: 熟悉 Azure 通信服务直接路由配置的基础结构要求
 author: boris-bazilevskiy
 manager: nmurav
 services: azure-communication-services
@@ -8,34 +8,34 @@ ms.author: bobazile
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: ede650ae072ef53ed40a9372a292ab69fe8cc1af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6e5aceaa6824d4bb6fd1bf938973c79cb5847e1
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103492721"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108324580"
 ---
-# <a name="sip-interface-infrastructure-requirements"></a>SIP 接口基础结构要求 
+# <a name="azure-direct-routing-infrastructure-requirements"></a>Azure 直接路由基础结构要求 
 
 [!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
 
  
-本文介绍了基础结构、许可和会话边界控制器 (SBC) 连接详细信息，在计划 SIP 接口部署时需要牢记这些详细信息。
+本文介绍了基础结构、许可和会话边界控制器 (SBC) 连接详细信息，在计划 Azure 直接路由部署时需要牢记这些详细信息。
 
 
 ## <a name="infrastructure-requirements"></a>基础结构要求
-对于部署 SIP 接口，针对支持的 SBC、域的基础结构要求以及其他网络连接性要求如下表所示：  
+对于部署 Azure 直接路由，针对支持的 SBC、域的基础结构要求以及其他网络连接性要求如下表所示：  
 
 |基础结构要求|需要满足以下条件|
 |:--- |:--- |
 |会话边界控制器 (SBC)|受支持的 SBC。 有关详细信息，请参阅[受支持的 SBC](#supported-session-border-controllers-sbcs)。|
-|连接到 SBC 的电话服务中继|连接到 SBC 的一个或多个电话服务中继。 SBC 一端通过 SIP 接口连接 Azure 通信服务。 SBC 还可以连接到第三方电话实体，如 PBX、模拟电话适配器等。 连接到 SBC 的任何 PSTN 连接选项都将起作用。 （对于 SBC 的 PSTN 中继配置，请咨询 SBC 供应商或中继提供商。）|
+|连接到 SBC 的电话服务中继|连接到 SBC 的一个或多个电话服务中继。 SBC 一端通过直接路由连接 Azure 通信服务。 SBC 还可以连接到第三方电话实体，如 PBX、模拟电话适配器等。 连接到 SBC 的任何 PSTN 连接选项都将起作用。 （对于 SBC 的 PSTN 中继配置，请咨询 SBC 供应商或中继提供商。）|
 |Azure 订阅|用于创建 ACS 资源的 Azure 订阅以及面向 SBC 的配置和连接。|
 |通信服务访问令牌|若要进行调用，需要具有 `voip` 作用域的有效访问令牌。 请参阅[访问令牌](../identity-model.md#access-tokens)|
 |用于 SBC 的公共 IP 地址|可用于连接到 SBC 的公共 IP 地址。 基于 SBC 的类型，SBC 可以使用 NAT。|
 |用于 SBC 的完全限定的域名 (FQDN)|用于 SBC 的 FQDN，其中 FQDN 的域部分与 Microsoft 365 或 Office 365 组织中的注册域不匹配。 有关详细信息，请参阅 [SBC 域名](#sbc-domain-names)。|
 |SBC 的公共 DNS 条目 |将 SBC FQDN 映射到公共 IP 地址的公共 DNS 条目。 |
-|用于 SBC 的受信任公共证书 |用于 SBC 的证书，旨在用于与 SIP 接口进行所有通信。 有关详细信息，请参阅[用于 SBC 的受信任公共证书](#public-trusted-certificate-for-the-sbc)。|
+|用于 SBC 的受信任公共证书 |用于 SBC 的证书，旨在用于与 Azure 直接路由进行所有通信。 有关详细信息，请参阅[用于 SBC 的受信任公共证书](#public-trusted-certificate-for-the-sbc)。|
 |用于 SIP 信号和媒体的防火墙 IP 地址和端口 |SBC 与云中的以下服务进行通信：<br/><br/>SIP 代理，用于处理信号<br/>媒体处理器，用于处理媒体<br/><br/>这两个服务在 Microsoft 云中有单独的 IP 地址，本文档稍后将对此进行介绍。
 
 
@@ -68,7 +68,7 @@ Microsoft 建议通过生成证书签名请求 (CSR) 来请求 SBC 的证书。 
 
 证书必须将 SBC FQDN 作为公用名 (CN) 或使用者可选名称 (SAN) 字段。 应直接从证书颁发机构（而不是从中间提供程序）颁发证书。
 
-此外，通信服务 SIP 接口支持 CN 和/或 SAN 中的通配符，并且通配符需要符合标准的 [RFC HTTP over TLS](https://tools.ietf.org/html/rfc2818#section-3.1)。 
+此外，通信服务直接路由支持 CN 和/或 SAN 中的通配符，并且通配符需要符合标准的 [RFC HTTP Over TLS](https://tools.ietf.org/html/rfc2818#section-3.1)。 
 
 一个示例是使用 `\*.contoso.com`，它与 SBC FQDN `sbc.contoso.com` 匹配，但与 `sbc.test.contoso.com` 不匹配。
 
@@ -103,7 +103,7 @@ Microsoft 正致力于根据客户请求添加其他证书颁发机构。
 
 ## <a name="sip-signaling-fqdns"></a>SIP 信号：FQDN 
 
-通信服务 SIP 接口的连接点为以下三个 FQDN：
+通信服务直接路由的连接点为以下三个 FQDN：
 
 - **sip.pstnhub.microsoft.com** - 全局 FQDN - 必须首先尝试。 当 SBC 发送请求解析此名称时，Microsoft Azure DNS 服务器将返回一个 IP 地址，该 IP 地址指向分配给 SBC 的主要 Azure 数据中心。 该分配基于数据中心的性能指标以及与 SBC 的地理邻近度。 返回的 IP 地址对应于主要 FQDN。
 - **sip2.pstnhub.microsoft.com** - 次要 FQDN - 映射到第二优先区域（按地理位置）。
@@ -114,7 +114,7 @@ Microsoft 正致力于根据客户请求添加其他证书颁发机构。
 - 提供最佳体验（通过查询第一个 FQDN 来减少负载并且最接近分配的 SBC 数据中心）。
 - 当从 SBC 建立到遇到临时问题的数据中心的连接时，提供故障转移。 有关详细信息，请参阅下面的[故障转移机制](#failover-mechanism-for-sip-signaling)。  
 
-FQDN - sip.pstnhub.microsoft.com、sip2.pstnhub.microsoft.com 和 sip3.pstnhub.microsoft.com - 将解析为以下 IP 地址之一：
+FQDN（sip.pstnhub.microsoft.com、sip2.pstnhub.microsoft.com 和 sip3.pstnhub.microsoft.com）将解析为以下 IP 地址之一：
 
 - `52.114.148.0`
 - `52.114.132.46`
@@ -129,7 +129,7 @@ FQDN - sip.pstnhub.microsoft.com、sip2.pstnhub.microsoft.com 和 sip3.pstnhub.m
 
 ## <a name="sip-signaling-ports"></a>SIP 信号：端口
 
-将以下端口用于通信服务 SIP 接口：
+将以下端口用于通信服务 Azure 直接路由：
 
 |交通|从|功能|源端口|目标端口|
 |:--- |:--- |:--- |:--- |:--- |
@@ -175,7 +175,7 @@ SBC 发出 DNS 查询来解析 sip.pstnhub.microsoft.com。 系统将根据 SBC 
 ### <a name="leg-between-sbc-and-cloud-media-processor-or-microsoft-teams-client"></a>SBC 与云媒体处理器或 Microsoft Teams 客户端之间的分支。
 适用于媒体旁路情况和非旁路情况。
 
-会话边界控制器和云媒体处理器之间的分支上的直接路由接口可以使用以下编解码器：
+会话边界控制器和云媒体处理器之间的分支上的 Azure 直接路由接口可以使用以下编解码器：
 
 - SILK、G.711、G.722、G.729
 

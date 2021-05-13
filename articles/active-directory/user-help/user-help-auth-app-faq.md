@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 04/28/2021
+ms.date: 04/30/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: e5f7db6b360769b7a3c2e3ffdafe66f94c2582aa
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 6cc64c9b3ad3f177d50f3e659e8ea628ba485159
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108178297"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764164"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>有关 Microsoft Authenticator 应用的常见问题解答 (FAQ)
 
@@ -203,7 +203,13 @@ Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使�
 
 **问**：我在使用 Apple Watch watchOS 7 时为什么会遇到问题？
 
-**答**：watchOS 7 上的批准通知操作存在问题，我们正在与 Apple 合作解决此问题。 同时，应改为在你的手机上批准所有需要 Microsoft Authenticator watchOS 应用的通知。
+**答**：有时，无法批准也无法拒绝 watchOS 7 上的会话，并出现错误消息“未能与手机通信。 请确保在未来请求的过程中 Watch 屏幕保持唤醒状态。 有关详细信息，请查看常见问题解答。”。 启用应用锁或需要号码匹配时，通知出现已知问题，我们正在与 Apple 合作来解决此问题。 同时，应改为在你的手机上批准所有需要 Microsoft Authenticator watchOS 应用的通知。
+
+### <a name="signing-into-an-ios-app"></a>登录 iOS 应用
+
+**问**：我尝试登录应用 iOS，我需要在 Authenticator 应用上批准一则通知。 但当我返回 iOS 应用时，软件卡住了。 我该怎么办？
+
+**答**：这是 iOS 13 及更高版本中的一个已知问题。 请联系支持管理员寻求帮助，并提供以下详细信息：`Use Azure MFA, not MFA server.`
 
 ### <a name="apple-watch-doesnt-show-accounts"></a>Apple Watch 不显示帐户
 

@@ -3,18 +3,18 @@ title: 教程：从必应地图迁移 Web 服务 | Microsoft Azure Maps
 description: 有关如何将 Web 服务从必应地图迁移到 Microsoft Azure Maps 的教程
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/07/2020
+ms.date: 04/26/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 6024aae68183fbe02125ef4207e9fbce8abd6a2b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f108062c04292c322d07980155fea9c8808beb0a
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97679078"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326734"
 ---
 # <a name="tutorial-migrate-web-service-from-bing-maps"></a>教程：从必应地图迁移 Web 服务
 
@@ -281,8 +281,8 @@ Azure Maps 可以通过使用[路线方向](/rest/api/maps/route/postroutedirect
 |----------------------------|---------------------------------------------------------------------|
 | `points`                   | `supportingPoints` - 将这些点传递到 post 请求的正文中  |
 | `interpolate`              | 空值                                                                 |
-| `includeSpeedLimit`        | 不适用                                                                 |
-| `includeTruckSpeedLimit`   | 不适用                                                                 |
+| `includeSpeedLimit`        | 空值                                                                 |
+| `includeTruckSpeedLimit`   | 空值                                                                 |
 | `speedUnit`                | 空值                                                                 |
 | `travelMode`               | `travelMode`                                                        |
 | `key`                      | `subscription-key` – 另请参阅[使用 Azure Maps 进行身份验证](./azure-maps-authentication.md)文档。 |
@@ -343,7 +343,7 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 | `mapLayer` (`ml`)        | 空值                                            |
 | `mapSize` (`ms`)         | `width` 和 `height` – 最大大小可为 8192x8192。 |
 | `declutterPins` (`dcl`)  | 空值                                            |
-| `dpi`                    | 不适用                                            |
+| `dpi`                    | 空值                                            |
 | `drawCurve`              | `path`                                         |
 | `mapMetadata`            | 空值                                            |
 | `pitch`                  | N/A - 不支持街景。                |
@@ -615,9 +615,9 @@ Azure Maps 提供一个 API 用于检索坐标所在的时区。 Azure Maps 时�
 
 必应地图支持在单个批处理地理编码请求中传递多达 200,000 个地址。 此请求进入队列，通常在一段时间（从几分钟到几个小时不等）内被处理，具体取决于数据集的大小和服务的负载。 请求中的每个地址都生成了一个事务。
 
-Azure Maps 具有批处理地理编码服务，但它支持在单个请求中传递多达 10,000 个地址，并且根据数据集的大小和服务的负载，在几秒钟到几分钟内处理。 请求中的每个地址都生成了一个事务。 在 Azure Maps 中，批处理地理编码服务仅可用于 S1 层。
+Azure Maps 具有批处理地理编码服务，但它支持在单个请求中传递多达 10,000 个地址，并且根据数据集的大小和服务的负载，在几秒钟到几分钟内处理。 请求中的每个地址都生成了一个事务。 在 Azure Maps 中，批处理地理编码服务仅可用于第二代或 S1 定价层。 有关定价层的详细信息，请查看[在 Azure Maps 中选择正确的定价层](choose-pricing-tier.md)。
 
-使用 Azure Maps 对大量地址进行地理编码的另一个方式是向标准搜索 API 发出并行请求。 这些服务对于每个请求只接受一个地址，但可以与 S0 层一起使用，S0 层也提供免费使用限制。 S0 层支持从单个帐户每秒最多向 Azure Maps 平台发出 50 个请求。 因此，如果你处理限制以保持在该限制内，则每小时可以对多达 180,000 个地址进行地理编码。 S1 层对可以从帐户进行的每秒查询数没有记录的限制，因此在使用该定价层时可以更快地处理更多数据，但是使用批处理地理编码服务将有助于减少传输的数据总量，并大大减少网络流量。
+使用 Azure Maps 对大量地址进行地理编码的另一个方式是向标准搜索 API 发出并行请求。 这些服务对于每个请求只接受一个地址，但可以与 S0 层一起使用，S0 层也提供免费使用限制。 S0 层支持从单个帐户每秒最多向 Azure Maps 平台发出 50 个请求。 因此，如果你处理限制以保持在该限制内，则每小时可以对多达 180,000 个地址进行地理编码。 第二代或 S1 层对可从帐户进行的每秒查询数没有记录的限制，因此在使用该定价层时可更快地处理更多数据，但是使用批处理地理编码服务将有助于减少传输的数据总量，并大大减少网络流量。
 
 -   [自由格式的地址地理编码](/rest/api/maps/search/getsearchaddress)：指定单个地址字符串（如 `"1 Microsoft way, Redmond, WA"`）并立即处理请求。 如果需要快速对各个地址进行地理编码，我们建议使用此服务。
 -   [结构化地址地理编码](/rest/api/maps/search/getsearchaddressstructured)：指定单个地址的各个部分（例如街道名称、城市、国家/地区和邮政编码），并立即处理请求。 如果需要快速对单个地址进行地理编码，并且数据已分析成各个地址组成部分，则我们建议使用此服务。

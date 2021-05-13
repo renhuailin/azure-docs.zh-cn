@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: f65614de97e8ff6eed732e624ae30c3f2b70bd60
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 94dab0124a1f5e0144aab2e271fbf89e02111d3a
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107589000"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108206792"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>快速入门：在 Azure IoT Central 中配置用于设备的规则和操作
 
@@ -31,13 +31,13 @@ ms.locfileid: "107589000"
 
 1. 输入 Environmental humidity 作为规则名称。
 
-1. 在“目标设备”部分，选择“传感器控制器”作为设备模板 。 此选项根据设备模板类型筛选规则适用于的设备。 可以通过选择“+ 筛选器”  添加更多筛选条件。
+1. 在“目标设备”部分，选择“传感器控制器”作为设备模板  。 此选项根据设备模板类型筛选规则适用于的设备。 可以通过选择“+ 筛选器”  添加更多筛选条件。
 
 1. 在“条件”  部分，定义触发规则的条件。 使用以下信息定义基于温度遥测的条件：
 
     | 字段        | 值            |
     | ------------ | ---------------- |
-    | 度量  | SensorHumid      |
+    | 遥测技术    | SensorHumid      |
     | 操作员     | 大于  |
     | 值        | 55               |
 
@@ -60,14 +60,14 @@ ms.locfileid: "107589000"
 
     :::image type="content" source="media/quick-configure-rules/action.png" alt-text="显示添加到规则的电子邮件操作的屏幕截图":::
 
-1. 选择“保存”。  你的规则将列在“规则”  页上。
+1. 选择“保存”。  你的规则现在“规则”页面上列出。
 
 ## <a name="test-the-rule"></a>测试规则
 
 保存规则后不久，它将变为活动状态。 满足规则中定义的条件时，应用程序会将电子邮件发送到操作中指定的地址。
 
 > [!NOTE]
-> 测试完成后，关闭该规则以停止在收件箱中接收警报。
+> 测试完成后，禁用该规则以停止在收件箱中接收警报。
 
 ## <a name="next-steps"></a>后续步骤
 

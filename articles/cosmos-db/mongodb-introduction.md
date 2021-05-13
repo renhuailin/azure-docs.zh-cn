@@ -1,62 +1,74 @@
 ---
-title: Azure Cosmos DB 的用于 MongoDB 的 API 简介
+title: 用于 MongoDB 的 Azure Cosmos DB API 简介
 description: 了解如何使用 Azure Cosmos DB，通过 Azure Cosmos DB 的用于 MongoDB 的 API 来存储和查询大量数据。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 04/21/2021
-author: sivethe
-ms.author: sivethe
-adobe-target: true
-adobe-target-activity: DocsExp– 396298–A/B–Docs–IntroToCosmosDBAPIforMongoDB-Revamp–FY21Q4
-adobe-target-experience: Experience B
-adobe-target-content: ./mongodb-introduction-experiment
-ms.openlocfilehash: 518eaadf75a5ff2cabc541586fcdf029b0ca1c60
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.date: 04/22/2021
+author: gahl-levy
+ms.author: gahllevy
+ms.openlocfilehash: ead8bf6620bbe53af6c28870fa94b7a16490fcb1
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107887083"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202778"
 ---
-# <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB 的用于 MongoDB 的 API
+# <a name="azure-cosmos-db-api-for-mongodb"></a>用于 MongoDB 的 Azure Cosmos DB API
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
-[Azure Cosmos DB](introduction.md) 是 Microsoft 针对任务关键型应用程序提供的全球分布式多模型数据库服务。 Azure Cosmos DB 在全球范围内提供[统包全局分发](distribute-data-globally.md)、[吞吐量和存储的弹性扩展](partitioning-overview.md)、99% 的情况下低至个位数的毫秒级延迟以及得到保证的高可用性，所有这些均由[行业领先的 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) 提供支持。 Azure Cosmos DB [自动为数据编制索引](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)，无需客户管理架构和索引。 它是多模型的，支持文档、键-值、图和列式数据模型。 Azure Cosmos DB 服务对 Cassandra、MongoDB、Gremlin 和 Azure 表存储等常见 NoSQL API 实现网路协议。 这样，你便可以使用熟悉的 NoSQL 客户端驱动程序和工具来与 Cosmos 数据库交互。
+通过用于 MongoDB 的 Azure Cosmos DB API，可以轻松使用 Cosmos DB，就像它是 MongoDB 数据库一样。 可以利用 MongoDB 体验，并通过将应用程序指向用于 MongoDB 的 API 帐户的连接字符串，继续使用自己的常用 MongoDB 驱动程序、SDK 和工具。
+
+## <a name="why-choose-the-api-for-mongodb"></a>为什么选择用于 MongoDB 的 API
+
+与 MongoDB Atlas 等服务产品相比，用于 MongoDB 的 API 在 [Azure Cosmos DB](introduction.md) 的基础构建了许多附加的优点：
+
+* **即时可伸缩性**：通过启用[自动缩放](provision-throughput-autoscale.md)功能，数据库可以在无预热的情况下纵向扩展/缩减。
+* **自动且透明的分片**：用于 MongoDB 的 API 会为你管理所有基础结构。 这包括分片和分片数，而不同于 MongoDB Atlas 等其他 MongoDB 产品/服务，后者在水平缩放时需要指定并管理分片。 这使你有更多的时间来专注于为用户开发应用程序。
+* **“5 个 9”的可用性**：[99.999% 的可用性](high-availability.md)可以轻松配置，确保数据始终可供你查看。  
+* **经济高效、精细且无限制的可伸缩性**：与其他 MongoDB 服务产品不同，分片集合可以缩放到任何大小。 用于 MongoDB 的 API 的用户目前正在运行存储空间超过 600TB 的数据库。 缩放是以一种经济高效的方式完成的，因为与其他 MongoDB 服务产品不同，Cosmos DB 平台由于规模经济和资源治理，可以按小到 VM 的百分之一的增量进行缩放。
+* **无服务器部署**：不同于 MongoDB Atlas，用于 MongoDB 的 API 是提供[无服务器容量模式](serverless.md)的云本机数据库。 对于[无服务器](serverless.md)，只需按操作付费，而无需为不使用的数据库付费。
+* **免费层**：使用 Azure Cosmos DB 免费层，你可以在帐户中永久获得每秒前 400 RU 的免费吞吐量和 5 GB 的免费存储（适用于帐户级别）。
+* **升级只需几秒钟时间**：所有 API 版本都包含在一个代码库中，这使更改版本就像[拨动开关](mongodb-version-upgrade.md)一样简单，并且没有故障时间。
+* **任意规模的实时分析 (HTAP)** ：用于 MongoDB 的 API 能够为商业智能等用例针对数据库数据实时运行复杂的分析查询，而不会影响数据库。 因为使用云本机分析列式存储，并且没有 ETL 管道，所以查询既快速又便宜。 详细了解 [Azure Synapse Link](synapse-link.md)。
 
 > [!NOTE]
-> [无服务器容量模式](serverless.md)现在在 Azure Cosmos DB API for MongoDB 上可用。
+> [你可以免费使用用于 MongoDB 的 Azure Cosmos DB API 的免费层！](how-pricing-works.md)。 使用 Azure Cosmos DB 免费层，你将在帐户中获得前 400 RU/s 免费吞吐量和 5 GB 免费存储，并在帐户级别应用。
 
-## <a name="wire-protocol-compatibility"></a>网络协议兼容性
 
-Azure Cosmos DB 实现 MongoDB 的 Wire Protocol。 此实现允许与本机 MongoDB 客户端 SDK、驱动程序和工具进行透明兼容。 Azure Cosmos DB 不托管 MongoDB 数据库引擎。 可在此处找到受 MongoDB 支持的功能的详细信息： 
-- [Mongo DB 的 Azure Cosmos DB API 4.0 版](mongodb-feature-support-40.md)
-- [Mongo DB 的 Azure Cosmos DB API 3.6 版](mongodb-feature-support-36.md)
+## <a name="how-the-api-works"></a>API 的工作方式
 
-默认情况下，使用 Azure Cosmos DB 的 API for MongoDB 创建的新帐户与 MongoDB 线路协议 3.6 版兼容。 任何识别此协议版本的 MongoDB 客户端驱动程序应该可以本机连接到 Cosmos DB。
+用于 MongoDB 的 Azure Cosmos DB API 实现 MongoDB 线路协议。 此实现允许与本机 MongoDB 客户端 SDK、驱动程序和工具进行透明兼容。 Azure Cosmos DB 不托管 MongoDB 数据库引擎。 任何与所使用的 API 版本兼容的 MongoDB 客户端驱动程序都应能够进行连接，而无需特殊配置。
+
+MongoDB 的功能兼容性：
+
+用于 MongoDB 的 Azure Cosmos DB API 与以下 MongoDB 服务器版本兼容：
+- [4.0 版](mongodb-feature-support-40.md)
+- [版本 3.6](mongodb-feature-support-36.md)
+- [版本 3.2](mongodb-feature-support.md)
+
+用于 MongoDB 的 API 的所有版本都在同一代码库上运行，这使得升级可以在几秒钟内完成，而不会造成停机。 Azure Cosmos DB 只需轻击一些功能标志，即可从一个版本切换到另一个版本。  功能标志还继续支持 3.2 和 3.6 等旧版 API。 你可以选择最适合自己的服务器版本。
 
 :::image type="content" source="./media/mongodb-introduction/cosmosdb-mongodb.png" alt-text="Azure Cosmos DB 的 API for MongoDB" border="false":::
 
-## <a name="key-benefits"></a>主要优点
+## <a name="what-you-need-to-know-to-get-started"></a>开始使用时需了解的内容
 
-[此文](introduction.md)介绍了 Cosmos DB（完全托管的全局分布式数据库即服务）的主要优势。 此外，Cosmos DB 通过本机实现流行 NoSQL API 的网络协议来提供以下优势：
+* 无需为群集中的虚拟机付费。 [定价](how-pricing-works.md)基于在每个数据库或集合的基础上配置的吞吐量（以请求单位 (RU) 进行度量）。 每秒前 400 个 RU 在[免费层](how-pricing-works.md)是免费的。
 
-* 轻松将应用程序迁移到 Cosmos DB，同时保留应用程序逻辑的重要部分。
-* 使应用程序保持可移植性，并继续保持云供应商的不可知性。
-* 为 Cosmos DB 支持的常用 NoSQL API 获取行业领先的、有资金保障的 SLA。
-* 根据需求弹性缩放 Cosmos 数据库的预配吞吐量和存储，并且只需为使用的吞吐量和存储付费。 这可以大幅节省成本。
-* 通过多区域写入复制实现统包全局分布。
+* 部署用于 MongoDB 的 Azure Cosmos DB API 的方式有以下三种：
+     * [预配吞吐量](set-throughput.md)：设置每秒钟 RU 的数量，并手动对其进行更改。 此模型最适合一致的工作负载。
+     * [自动缩放](provision-throughput-autoscale.md)：设置所需吞吐量的上限。 吞吐量会即时缩放，以满足你的需求。 此模型最适合经常更改的工作负载，可以优化成本。
+     * [无服务器](serverless.md)（预览版）：仅为某一时间段使用的吞吐量付费。 此模型最适合开发/测试工作负载。 
 
-## <a name="cosmos-dbs-api-for-mongodb"></a>Cosmos DB 的用于 MongoDB 的 API
+* 分片群集的性能取决于创建集合时选择的分片键。 请谨慎选择分片键，确保数据在分片之间均匀分布。
 
-遵循快速入门创建 Azure Cosmos 帐户，并迁移现有 MongoDB 应用程序以使用 Azure Cosmos DB，或者生成一个新的应用程序：
+## <a name="quickstart"></a>快速入门
 
 * [迁移现有的 MongoDB Node.js Web 应用](create-mongodb-nodejs.md)。
 * [使用 Azure Cosmos DB 的用于 MongoDB 的 API 和 .NET SDK 生成 Web 应用](create-mongodb-dotnet.md)
 * [使用 Azure Cosmos DB 的用于 MongoDB 的 API 和 Java SDK 生成控制台应用](create-mongodb-java.md)
 
 ## <a name="next-steps"></a>后续步骤
-
-下面是一些可帮助你入门的指南：
 
 * 在[将 MongoDB 应用程序连接到 Azure Cosmos DB](connect-mongodb-account.md) 教程中了解如何获取帐户连接字符串信息。
 * 在[将 Studio 3T 与 Azure Cosmos DB 配合使用](mongodb-mongochef.md)教程中了解如何在 Studio 3T 中创建 Cosmos 数据库与 MongoDB 应用之间的连接。
