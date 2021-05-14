@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.custom: mvc
-ms.openlocfilehash: 295cd5a6831cb64d146bb92bca74b82ff7ab29df
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: f71a8f3a720fae540773019e0ba2a3eb582fd76e
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771475"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751160"
 ---
 # <a name="tutorial-discover-aws-instances-with-azure-migrate-discovery-and-assessment"></a>教程：使用 Azure Migrate：发现和评估发现 AWS 实例
 
@@ -108,7 +108,7 @@ ms.locfileid: "104771475"
    ![用于项目名称和区域的框](./media/tutorial-discover-aws/new-project.png)
 
 7. 选择“创建”。
-8. 等待几分钟，让项目部署完成。 默认会将“Azure Migrate：发现和评估”工具添加到新项目。
+8. 等待几分钟，让项目完成部署。 默认会将“Azure Migrate：发现和评估”工具添加到新项目。
 
 ![显示默认情况下已添加的服务器评估工具的页面](./media/tutorial-discover-aws/added-tool.png)
 
@@ -136,7 +136,7 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate：发现和评估�
 
 1. 在 **迁移目标**  >  **Windows、Linux 和 SQL server**  >  **Azure Migrate：发现和评估** 中，选择 **发现**。
 2. 在“发现服务器” > “服务器是否已虚拟化?”中，选择“物理或其他（AWS、GCP、Xen 等）”  。
-3. 在“1：生成项目密钥”中，提供将为发现物理或虚拟服务器而设置的 Azure Migrate 设备的名称。 该名称应是字母数字，长度为 14 个或更少的字符。
+3. 在“1: 生成项目密钥”中，提供将为发现物理或虚拟服务器而设置的 Azure Migrate 设备的名称。 该名称应是字母数字，长度为 14 个或更少的字符。
 1. 单击“生成密钥”，开始创建所需的 Azure 资源。 在创建资源期间，请不要关闭发现服务器页。
 1. 成功创建 Azure 资源后，会生成一个 **项目密钥**。
 1. 复制密钥，因为配置设备时需要输入该密钥才能完成设备注册。
@@ -173,7 +173,7 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate：发现和评估�
 
 - 安装用于物理服务器发现和评估的代理和 Web 应用程序。
 - 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
-- 下载并安装 IIS 可重写模块。 [了解详细信息](https://www.microsoft.com/download/details.aspx?id=7435)。
+- 下载并安装 IIS 可重写模块。
 - 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置详细信息。
 - 在路径下创建以下文件：
     - **配置文件**：%Programdata%\Microsoft Azure\Config

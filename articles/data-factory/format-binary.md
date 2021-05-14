@@ -1,17 +1,17 @@
 ---
 title: Azure 数据工厂中的二进制格式
 description: 本主题介绍了如何处理 Azure 数据工厂中的二进制格式。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.author: jingwang
-ms.openlocfilehash: cc5b54e99584b74b287fa66deba1694419b46b16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: 816251e7a27c1b7693ac5fc42ed912135e7a9460
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100393677"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486622"
 ---
 # <a name="binary-format-in-azure-data-factory"></a>Azure 数据工厂中的二进制格式
 

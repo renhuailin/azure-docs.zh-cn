@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: 4ab4e40e1dd4bbaf9ae73ab545285f5ae6261e27
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102201764"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>群集配置最佳做法（Azure VM 上的 SQL Server）
@@ -66,7 +66,7 @@ ms.locfileid: "102201764"
 
 ### <a name="cloud-witness"></a>云见证
 
-云见证是一种故障转移群集仲裁见证，使用 Microsoft Azure 在群集仲裁上提供投票。 默认大小约为 1 MB，仅包含时间戳。 云见证非常适合多个站点、多个区域和多个区域中的部署。
+云见证是一种故障转移群集仲裁见证，它使用 Microsoft Azure 提供对群集仲裁的投票。 默认大小约为 1 MB，仅包含时间戳。 云见证是在多个站点、多个区域和多个地区中进行部署的理想选择。
 
 若要开始，请参阅[配置云见证](/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp)。
 
@@ -76,7 +76,7 @@ ms.locfileid: "102201764"
 
 ### <a name="file-share-witness"></a>文件共享见证
 
-文件共享见证是一个 SMB 文件共享，通常在运行 Windows Server 的文件服务器上配置。 它在 witness.log 文件中维护群集信息，但不存储群集数据库的副本。 在 Azure 中，可以在单独的虚拟机上配置文件共享。
+文件共享见证是一个 SMB 文件共享，通常在运行 Windows Server 的文件服务器上配置。 它在 witness.log 文件中维护群集信息，但不存储群集数据库的副本。 在 Azure 中，你可以在单独的虚拟机上配置文件共享。
 
 若要开始，请参阅[配置文件共享见证](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)。
 
@@ -148,4 +148,4 @@ Azure 虚拟机支持 Windows Server 2019 上的 Microsoft 分布式事务处理
 
 ## <a name="next-steps"></a>后续步骤
 
-确定适用于解决方案的最佳做法后，请通过使用[Azure 门户](availability-group-azure-portal-configure.md)、 [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md)或[AZURE 快速入门模板](availability-group-quickstart-template-configure.md)[为 FCI 准备 SQL Server VM](failover-cluster-instance-prepare-vm.md)或创建可用性组来开始操作。
+在确定适合解决方案的最佳做法之后，请开始进行以下操作：[为 FCI 准备 SQL Server VM](failover-cluster-instance-prepare-vm.md)，或者使用 [Azure 门户](availability-group-azure-portal-configure.md)、[Azure CLI/PowerShell](./availability-group-az-commandline-configure.md) 或 [Azure 快速启动模板](availability-group-quickstart-template-configure.md)创建可用性组。

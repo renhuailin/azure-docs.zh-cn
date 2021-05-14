@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: 9c81a9b48ff9fa305385c45266d88deb4047f70f
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 2f1e610113b432fa1a62350308747ffb1d5c8fc8
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599462"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790912"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>教程：使用 Azure AD 进行端到端内容保护
 
@@ -134,7 +134,6 @@ SPA 播放器应用完成以下操作：
 用于通过 DRM/AES 和流式处理协议和容器格式的不同组合测试受保护内容的屏幕：
 
 ![屏幕截图显示使用 DRM 或 AES 和流式处理协议及容器格式的不同组合测试受保护内容：](media/aad-ams-content-protection/testing-protected-content.png)
--->
 
 <!-- You can see a hosted version of the sample at [https://aka.ms/ott](https://aka.ms/ott)-->
 

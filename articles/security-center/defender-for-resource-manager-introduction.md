@@ -7,12 +7,12 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 903853f9f37921a68c918d09a94087548b5c562c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 71209d9e20ec0f0cbc263e84d04bf8eba6e98b99
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100655"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279057"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>适用于资源管理器的 Azure Defender 简介
 
@@ -35,7 +35,7 @@ ms.locfileid: "102100655"
 
 适用于资源管理器的 Azure Defender 可以防止出现以下问题：
 
-- 可疑资源管理操作，例如来自可疑 IP 地址的操作、禁用在 VM 扩展中运行的反恶意软件和可疑脚本
+- 可疑资源管理操作，例如来自恶意 IP 地址的操作、禁用在 VM 扩展中运行的反恶意软件和可疑脚本
 - 使用开发工具包，例如 Microburst 或PowerZure
 - 从 Azure 管理层到 Azure 资源数据平面的横向移动
 

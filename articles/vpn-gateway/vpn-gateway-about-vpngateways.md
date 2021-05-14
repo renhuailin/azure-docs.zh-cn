@@ -1,21 +1,21 @@
 ---
 title: 关于 Azure VPN 网关
-description: 了解 VPN 网关的定义，以及如何使用 VPN 网关连接到 IPsec IKE 站点到站点、VNet 到 V-VNet 以及点到点 VPN 虚拟网络。
+description: 了解 VPN 网关的定义，学习如何使用 VPN 网关连接到 IPsec IKE 站点到站点、VNet 到 VNet 以及点到站点 VPN 虚拟网络。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 08/27/2020
+ms.date: 04/28/2021
 ms.author: cherylmc
 ms.custom:
 - contperf-fy21q1
 - e2e-hybrid
-ms.openlocfilehash: 9a73b3ab2a9ed939001350609a176dba3c2fc44d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: bdaa61aa45c357e95e35196a5be7774f0af95ec0
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2021
-ms.locfileid: "108141138"
+ms.locfileid: "108202328"
 ---
 # <a name="what-is-vpn-gateway"></a>什么是 VPN 网关？
 

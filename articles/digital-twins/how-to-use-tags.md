@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5972882a582a0e612ecbed3f6a4ab70be8ba393c
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: a99f5ebf0fd4f3c4684446a868e1c4e342f3785e
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207476"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783831"
 ---
 # <a name="add-tags-to-digital-twins"></a>向数字孪生体添加标记 
 
-你可以使用标记概念进一步识别你的数字孪生体并对其进行归类。 特别是，用户可能希望在其 Azure 数字孪生实例中复制现有系统中的标记，例如 [Haystack 标记](https://project-haystack.org/doc/TagModel)。 
+你可以使用标记概念进一步识别你的数字孪生体并对其进行归类。 特别是，用户可能希望在其 Azure 数字孪生实例中复制现有系统中的标记，例如 [Haystack 标记](https://project-haystack.org/doc/appendix/tags)。 
 
 本文档介绍了可用于在数字孪生体中实施标记的模式。
 

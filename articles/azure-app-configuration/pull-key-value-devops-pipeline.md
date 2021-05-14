@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 1c01984f6a359c0fd1f5d06d26d97d4a84973f57
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 623ed91f9fc9ed469403c6dea5f1247141e44a98
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056728"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764074"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>使用 Azure Pipelines 从应用程序配置中拉取设置
 
@@ -27,56 +27,28 @@ ms.locfileid: "106056728"
 
 ## <a name="create-a-service-connection"></a>创建服务连接
 
-通过[服务连接](/azure/devops/pipelines/library/service-endpoints)，可以从 Azure DevOps 项目访问 Azure 订阅中的资源。
-
-1. 在 Azure DevOps 中，访问包含目标管道的项目，并打开左下方的“项目设置”。
-1. 在“管道”下，选择“服务连接” 。
-1. 如果你没有任何现有的服务连接，请单击屏幕中间的“创建服务连接”按钮。 否则，请单击页面右上方的“新建服务连接”。
-1. 选择“Azure 资源管理器”。
-![屏幕截图为从新的服务连接下拉列表中挑选“Azure 资源管理器”](./media/new-service-connection.png)
-1. 在“身份验证方法”对话框中，选择“服务主体（自动）”。
-    > [!NOTE]
-    > “身份管理”验证现已不支持应用程序配置任务。
-1. 填写你的订阅和资源。 为服务连接命名。
-
-创建服务连接后，请查找分配给它的服务主体的名称。 在下一步中，你将向此服务主体添加新的角色分配。
-
-1. 访问“项目设置” > “服务连接”。
-1. 选择在上一部分创建的服务连接。
-1. 选择“管理服务主体”。
-1. 请记下列出的显示名称。
+[!INCLUDE [azure-app-configuration-service-connection](../../includes/azure-app-configuration-service-connection.md)]
 
 ## <a name="add-role-assignment"></a>添加角色分配
 
-向任务中使用的服务连接分配正确的应用程序配置角色，以便任务可以访问应用程序配置存储。
+[!INCLUDE [azure-app-configuration-role-assignment](../../includes/azure-app-configuration-role-assignment.md)]
 
-1. 导航到目标应用配置存储。 有关设置应用程序配置存储的演练，请参阅 Azure 应用程序配置快速入门之一中的[创建应用程序配置存储](./quickstart-dotnet-core-app.md#create-an-app-configuration-store)。
-1. 在左侧，选择“访问控制(IAM)”。
-1. 在右侧单击“添加角色分配”按钮。
-![屏幕截图为“添加角色分配”按钮。](./media/add-role-assignment-button.png)。
-1. 在“角色”下，选择“应用程序配置数据读取者” 。 此角色允许任务在应用程序配置存储中进行读取。 
-1. 选择与在上一部分创建的服务连接关联的服务主体。
-![屏幕截图为“添加角色分配对话”。](./media/add-role-assignment-reader.png)
-
-> [!NOTE]
-> 若要解析应用程序配置中的 Azure Key Vault 引用，还必须授予服务连接读取引用的 Azure Key Vault 中机密的权限。
-  
 ## <a name="use-in-builds"></a>在生成中使用
 
 本部分介绍如何在 Azure DevOps 生成管道中使用“Azure 应用程序配置”任务。
 
 1. 通过单击“管道” > “管道”，导航到“生成管道”页。 有关生成管道的文档，请参阅[创建你的第一个管道](/azure/devops/pipelines/create-first-pipeline?tabs=net%2Ctfs-2018-2%2Cbrowser)。
-      - 如果要创建新的“生成管道”，则在该过程的最后一步，在“检查”选项卡上，选择管道右侧的“显示助手”。
-      ![屏幕截图为新管道的“显示辅助”按钮。](./media/new-pipeline-show-assistant.png)
+      - 如果要创建新的“生成管道”，则在该过程的最后一步，在“检查”选项卡上，选择管道右侧的“显示助手” 。
+      ![屏幕截图显示新管道的“显示辅助”按钮。](./media/new-pipeline-show-assistant.png)
       - 如果使用的是现有的“生成管道”，请单击右上角的“编辑”按钮。
-      ![屏幕截图为现有管道的“编辑”按钮。](./media/existing-pipeline-show-assistant.png)
+      ![屏幕截图显示现有管道的“编辑”按钮。](./media/existing-pipeline-show-assistant.png)
 1. 搜索“Azure 应用程序配置”任务。
-![屏幕截图为在“添加任务”对话，搜索框中是 Azure 应用程序配置。](./media/add-azure-app-configuration-task.png)
+![屏幕截图显示添加任务对话框，其中搜索框中有“Azure 应用程序配置”。](./media/add-azure-app-configuration-task.png)
 1. 配置任务的必要参数，以便从应用程序配置存储中拉取键值。 参数说明在下面的“参数”部分以及每个参数旁边的工具提示中提供。
       - 将“Azure 订阅”参数设置为你在前面步骤中创建的服务连接的名称。
       - 将“应用程序配置名称”设置为应用程序配置存储的资源名称。
       - 保留其余参数的默认值。
-![屏幕截图为“应用程序配置”任务参数。](./media/azure-app-configuration-parameters.png)
+![屏幕截图显示“应用程序配置”任务参数。](./media/azure-app-configuration-parameters.png)
 1. 保存并将一个生成排入队列。 生成日志将显示在执行任务期间发生的任何故障。
 
 ## <a name="use-in-releases"></a>在发布中使用
@@ -86,12 +58,12 @@ ms.locfileid: "106056728"
 1. 通过选择“管道” > “发布”，导航到“发布管道”页。 有关发布管道的文档，请参阅[发布管道](/azure/devops/pipelines/release)。
 1. 选择现有的发布管道。 如果没有，请单击“新建管道”创建一个新的发布管道。
 1. 选择右上角的“编辑”按钮以编辑发布管道。
-1. 从“任务”下拉列表中，选择要向其添加任务的“阶段”。 可在[此处](/azure/devops/pipelines/release/environments)找到有关阶段的详细信息。
-![屏幕截图显示选中的“任务”下拉列表的“阶段”。](./media/pipeline-stage-tasks.png)
-1. 单击“作业”旁的 **+** ，添加新任务。
-![屏幕截图为“作业”旁的“+”按钮。](./media/add-task-to-job.png)
+1. 从“任务”下拉列表中，选择要向其添加任务的“阶段” 。 可在[此处](/azure/devops/pipelines/release/environments)找到有关阶段的详细信息。
+![屏幕截图显示“任务”下拉列表中选定的阶段。](./media/pipeline-stage-tasks.png)
+1. 单击要向其中添加新任务的作业旁的 +。
+![屏幕截图显示作业旁的“+”按钮。](./media/add-task-to-job.png)
 1. 搜索“Azure 应用程序配置”任务。
-![屏幕截图为在“添加任务”对话，搜索框中是 Azure 应用程序配置。](./media/add-azure-app-configuration-task.png)
+![屏幕截图显示添加任务对话框，其中搜索框中有“Azure 应用程序配置”。](./media/add-azure-app-configuration-task.png)
 1. 配置任务内的必要参数，以便从应用程序配置存储中拉取键值。 参数说明在下面的“参数”部分以及每个参数旁边的工具提示中提供。
       - 将“Azure 订阅”参数设置为你在前面步骤中创建的服务连接的名称。
       - 将“应用程序配置名称”设置为应用程序配置存储的资源名称。

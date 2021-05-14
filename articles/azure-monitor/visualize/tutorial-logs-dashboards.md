@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/28/2020
 ms.custom: mvc
-ms.openlocfilehash: 84c710e44fbbccdefd5bf811477e1fa4c3989114
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e4a76367b65556c0f6b030eba79355382e8db0c6
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043450"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109754508"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>创建和共享 Log Analytics 数据的仪表板
 
@@ -86,7 +86,7 @@ Perf
 ![已完成的示例仪表板配置](media/tutorial-logs-dashboards/log-analytics-modify-dashboard-02.png)
 
 ## <a name="next-steps"></a>后续步骤
-本教程介绍了如何在 Azure 门户中创建仪表板并向其中添加日志查询。  请继续学习下一教程以了解可根据日志查询结果实现的不同响应。  
+本教程介绍了如何在 Azure 门户中创建仪表板并向其中添加日志查询。  请访问以下链接，查看预生成的 Log Analytics 脚本示例。
 
 > [!div class="nextstepaction"]
-> [使用 Log Analytics 警报对事件做出响应](../alerts/tutorial-response.md)
+> [Log Analytics 脚本示例](../powershell-samples.md)

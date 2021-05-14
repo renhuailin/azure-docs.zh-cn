@@ -10,23 +10,23 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 11/23/2020
 ms.author: trbye
-ms.openlocfilehash: ddb61a79e6af402b06fe8c18df8c62f9287437a3
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: af76ba2a4ee8610a0f64265889c009416f477543
+ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107209708"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109665061"
 ---
 # <a name="what-is-the-speech-service"></a>什么是语音服务？
 
-语音服务在单个 Azure 订阅中统合了语音转文本、文本转语音以及语音翻译功能。 使用[语音 CLI](spx-overview.md)、[语音 SDK](./speech-sdk.md)、[语音设备 SDK](./speech-devices-sdk-quickstart.md?pivots=platform-android)、[Speech Studio](https://speech.microsoft.com/) 或 [REST API](#reference-docs) 可以轻松在应用程序、工具和设备中启用语音。
+语音服务在单个 Azure 订阅中统合了语音转文本、文本转语音以及语音翻译功能。 使用[语音 CLI](spx-overview.md)、[语音 SDK](./speech-sdk.md)、[语音设备 SDK](./speech-devices-sdk-quickstart.md?pivots=platform-android)、[Speech Studio](speech-studio-overview.md) 或 [REST API](#reference-docs) 可以轻松在应用程序、工具和设备中启用语音。
 
 > [!IMPORTANT]
 > 语音服务已替代必应语音 API 和语音翻译。 有关迁移说明，请参阅迁移部分。
 
 以下功能是语音服务的一部分。 请使用下表中的链接详细了解每项功能的常见用例或浏览 API 参考信息。
 
-| 服务 | 功能 | 说明 | SDK 中 IsInRole 中的声明 | REST |
+| 服务 | 功能 | 说明 | SDK | REST |
 |---------|---------|-------------|-----|------|
 | [语音转文本](speech-to-text.md) | 实时语音转文本 | 语音转文本可将音频流或本地文件实时转录或翻译为文本，应用程序、工具或设备可以使用或显示这些文本。 结合[语言理解 (LUIS)](../luis/index.yml) 使用语音转文本可以从听录的语音中派生用户意向，以及处理语音命令。 | [是](./speech-sdk.md) | [是](#reference-docs) |
 | | [批量语音转文本](batch-transcription.md) | 批量语音转文本支持对 Azure Blob 存储中存储的大量语音音频数据进行异步语音到文本转录。 除了将语音音频转换为文本，批量语音转文本还允许进行分割聚类和情感分析。 | 否 | [是](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
@@ -64,8 +64,8 @@ ms.locfileid: "107209708"
 1. 在“新建”窗口中的搜索框内键入“语音”，然后按 ENTER。 
 
 1. 在搜索结果中，选择“语音”。 
-
-   ![语音搜索结果](media/index/speech-search.png)
+   
+   :::image type="content" source="media/index/speech-search.png" alt-text="在 Azure 门户中创建语音资源。":::
 
 1. 选择“创建”，然后： 
 

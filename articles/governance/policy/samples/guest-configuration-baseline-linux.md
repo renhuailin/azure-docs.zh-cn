@@ -1,15 +1,15 @@
 ---
 title: 参考 - 适用于 Linux 的 Azure Policy 来宾配置基线
 description: Azure 上通过 Azure Policy 来宾配置实现的 Linux 基线的详细信息。
-ms.date: 04/05/2021
+ms.date: 05/11/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: adee82dd9802be47a777a9666a7c680d5b5c6204
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: b22f8f2d40470ed436f8502ea41351e59e7afc8b
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448715"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789042"
 ---
 # <a name="azure-policy-guest-configuration-baseline-for-linux"></a>适用于 Linux 的 Azure Policy 来宾配置基线
 
