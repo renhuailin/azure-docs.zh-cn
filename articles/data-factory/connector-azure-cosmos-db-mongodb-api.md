@@ -1,18 +1,18 @@
 ---
 title: 从 Azure Cosmos DB 的 API for MongoDB 复制数据
 description: 了解如何使用数据工厂将数据从受支持的源数据存储复制到受支持的接收器存储或从 Azure Cosmos DB 的用于 MongoDB 的 API 复制到受支持的接收器存储。
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
-ms.openlocfilehash: 6f1e865daf9ba42126c0f8a341a54d87ac7f374a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 965103c090c86311db1c2c5f796445f2b68c1671
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100393082"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109481222"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Cosmos DB 的用于 MongoDB 的 API 复制数据
 
@@ -35,7 +35,7 @@ ms.locfileid: "100393082"
 
 ## <a name="get-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 Azure Cosmos DB 的用于 MongoDB 的 API 的数据工厂实体，以下部分提供了有关可用于定义这些实体的属性的详细信息。
 

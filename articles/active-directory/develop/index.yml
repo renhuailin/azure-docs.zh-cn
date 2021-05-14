@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Microsoft 标识平台文档
-summary: Microsoft 标识平台是一项身份验证服务，也是开源库和应用程序管理工具。 在我们的快速入门、教程和代码示例中了解如何创建基于标准的新式身份验证解决方案。 构建这样的应用程序，你的用户和客户登录它们来使用其 Microsoft 身份或社交帐户，或者它们授权访问你的 API 或 Microsoft API（例如 Microsoft Graph）。
+summary: 面向开发人员的 Microsoft 标识平台是一项身份验证服务，也是开源库和应用程序管理工具。 在我们的快速入门、教程和代码示例中了解如何创建基于标准的新式身份验证解决方案。 构建这样的应用程序，你的用户和客户登录它们来使用其 Microsoft 身份或社交帐户，或者它们授权访问你的 API 或 Microsoft API（例如 Microsoft Graph）。
 metadata:
   ms.topic: landing-page
-  ms.date: 10/07/2020
+  ms.date: 05/11/2021
   author: mmacy
   ms.author: marsma
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: 86e1b4de21738ec584d7b5cae1346f166adfd595
-  ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+  ms.openlocfilehash: 607672d77a71dbcbe60042a2b6c6fd586aab8fe3
+  ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/27/2021
-  ms.locfileid: "108072488"
+  ms.lasthandoff: 05/11/2021
+  ms.locfileid: "109750513"
 landingContent:
 - title: 关于 Microsoft 标识平台
   linkLists:
@@ -51,9 +51,11 @@ landingContent:
   - linkListType: get-started
     links:
     - text: Angular
-      url: quickstart-v2-angular.md
+      url: tutorial-v2-angular-auth-code.md
     - text: JavaScript
-      url: quickstart-v2-javascript-auth-code.md
+      url: tutorial-v2-javascript-auth-code.md
+    - text: React
+      url: tutorial-v2-react.md
 - title: Web 应用
   linkLists:
   - linkListType: get-started
@@ -116,13 +118,9 @@ landingContent:
       url: ../managed-identities-azure-resources/overview.md
     - text: 托管标识和 Azure VM
       url: ../managed-identities-azure-resources/how-managed-identities-work-vm.md
-- title: Docs 中的新增内容
+- title: 标识平台文档中的新增内容
   linkLists:
   - linkListType: whats-new
     links:
     - text: Docs 中的新增内容
       url: whats-new-docs.md
-    - text: Microsoft 标识 Web 库概述
-      url: microsoft-identity-web.md
-    - text: 教程：Blazor Server
-      url: tutorial-blazor-server.md

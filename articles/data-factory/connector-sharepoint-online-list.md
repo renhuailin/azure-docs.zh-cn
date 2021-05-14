@@ -1,17 +1,17 @@
 ---
 title: 使用 Azure 数据工厂从 SharePoint Online 列表复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 SharePoint Online 列表中复制到受支持的接收器数据存储。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.author: jingwang
-ms.openlocfilehash: f8074b69b97a6ef96837e73a1082d2deb67084d9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: jianleishen
+ms.openlocfilehash: 44c60305519c2464df56c3b5a9228161548d4bd6
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102177855"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482878"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SharePoint Online 列表复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -66,7 +66,7 @@ SharePoint Online 列表连接器使用服务主体身份验证连接到 SharePo
 
 ## <a name="get-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 SharePoint Online 列表连接器的数据工厂实体，以下部分提供了有关用于定义这些实体的属性的详细信息。
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80ec5133ad12dda4a6883c663007b8b7fec2e81a
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 2f179ba02a47617a931906bb2b7575eb2bb3963d
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551928"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109750602"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>条件访问：云应用或操作
 
@@ -38,6 +38,8 @@ ms.locfileid: "106551928"
 - [Office 365](#office-365)
 - Azure Analysis Services
 - Azure DevOps
+- Azure 事件中心
+- Azure 服务总线
 - [Azure SQL 数据库和 Azure Synapse Analytics](../../azure-sql/database/conditional-access-configure.md)
 - Dynamics CRM Online
 - Microsoft Application Insights Analytics
@@ -133,7 +135,7 @@ Microsoft Azure 管理应用程序包括多个基础服务。
 
 - **注册安全信息**：使用此用户操作，可以在启用了组合注册的用户尝试注册其安全信息时强制实施条件访问策略。 在[组合安全信息注册](../authentication/concept-registration-mfa-sspr-combined.md)一文中可以找到详细信息。
 
-- **注册或加入设备（预览）** ：使用此用户操作，管理员可以在用户向 Azure AD [注册](../devices/concept-azure-ad-register.md)或[加入](../devices/concept-azure-ad-join.md)设备时强制实施条件访问策略。 使用此操作可以精细针对注册或加入设备的操作配置多重身份验证方面，而无需配置当前存在的租户范围的策略。 对于此用户操作，需要注意三个重要事项： 
+- **注册或加入设备（预览）** ：使用此用户操作，管理员可以在用户向 Azure AD [注册](../devices/concept-azure-ad-register.md)或 [加入](../devices/concept-azure-ad-join.md)设备时强制实施条件访问策略。 使用此操作可以精细针对注册或加入设备的操作配置多重身份验证方面，而无需配置当前存在的租户范围的策略。 对于此用户操作，需要注意三个重要事项： 
    - `Require multi-factor authentication` 是此用户操作唯一可用的访问控制，所有其他访问控制均处于禁用状态。 此限制可防止与依赖于 Azure AD 设备注册或不适用于 Azure AD 设备注册的访问控制发生冲突。 
    - `Client apps` 和 `Device state` 条件在此用户操作中不可用，因为它们依赖于使用 Azure AD 设备注册来强制实施条件访问策略。
    - 对此用户操作启用条件访问策略时，必须将“Azure Active Directory” > “设备” > “设备设置” - `Devices to be Azure AD joined or Azure AD registered require Multi-Factor Authentication` 设置为“否”   。 否则，将无法正确地强制实施此用户操作的条件访问策略。 有关此设备设置的详细信息，请参阅[配置设备设置](../devices/device-management-azure-portal.md#configure-device-settings)。 

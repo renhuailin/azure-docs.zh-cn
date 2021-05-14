@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
 ms.openlocfilehash: 04642e69adba82cf33b933829d72c51109ad2ee1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91578168"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>在 Azure 逻辑应用中处理内容类型
@@ -57,11 +57,11 @@ ms.locfileid: "91578168"
   
   如果没有架构，可以生成架构。 
   
-  1. 在请求触发器中，选择“使用示例有效负载生成架构”。   
+  1. 在请求触发器中，选择“使用示例有效负载生成架构”。  
   
-  2. 在“输入或粘贴示例 JSON 有效负载”下，提供示例有效负载并选择“完成”。   例如： 
+  2. 在“输入或粘贴示例 JSON 有效负载”下，提供示例有效负载并选择“完成”。 例如： 
 
-     ![显示 "收到 HTTP 请求时" 操作的屏幕截图，其中包含示例 JSON 有效负载。](./media/logic-apps-content-type/request-trigger.png)
+     ![显示“当收到 HTTP 请求时”操作的屏幕截图，其中包含示例 JSON 有效负载。](./media/logic-apps-content-type/request-trigger.png)
 
      此时，生成的架构会显示在触发器中。
 

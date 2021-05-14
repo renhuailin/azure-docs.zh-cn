@@ -2,13 +2,13 @@
 title: 模板函数 - 逻辑
 description: 介绍 Azure 资源管理器模板（ARM 模板）中用于确定逻辑值的函数。
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: 27d94f10374daf0b9a351469579a5eb659cf5445
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/05/2021
+ms.openlocfilehash: f37f43d8fcec63ee4ae3d8a1064d87b0ec3d68a7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96920478"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736876"
 ---
 # <a name="logical-functions-for-arm-templates"></a>ARM 模板的逻辑函数
 
@@ -328,8 +328,30 @@ output objectOutput object = 'a' == 'a' ? json('{"test": "value1"}') : json('nul
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
-> [!NOTE]
-> `Conditions` 尚未在 Bicep 中实现。 请参阅[条件](https://github.com/Azure/bicep/issues/186)。
+```bicep
+param vmName string
+param location string
+param logAnalytics string = ''
+
+resource vmName_omsOnboarding 'Microsoft.Compute/virtualMachines/extensions@2017-03-30' = if (!empty(logAnalytics)) {
+  name: '${vmName}/omsOnboarding'
+  location: location
+  properties: {
+    publisher: 'Microsoft.EnterpriseCloud.Monitoring'
+    type: 'MicrosoftMonitoringAgent'
+    typeHandlerVersion: '1.0'
+    autoUpgradeMinorVersion: true
+    settings: {
+      workspaceId: ((!empty(logAnalytics)) ? reference(logAnalytics, '2015-11-01-preview').customerId : json('null'))
+    }
+    protectedSettings: {
+      workspaceKey: ((!empty(logAnalytics)) ? listKeys(logAnalytics, '2015-11-01-preview').primarySharedKey : json('null'))
+    }
+  }
+}
+
+output mgmtStatus string = ((!empty(logAnalytics)) ? 'Enabled monitoring for VM!' : 'Nothing to enable')
+```
 
 ---
 

@@ -1,21 +1,19 @@
 ---
 title: 使用共享 VM 映像在 Azure CLI 中创建规模集
 description: 了解如何使用 Azure CLI 在 Azure 中创建用于部署虚拟机规模集的共享 VM 映像。
-author: axayjo
-tags: azure-resource-manager
+author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.subservice: shared-image-gallery
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.author: akjosh
-ms.reviewer: cynthn
-ms.custom: ''
-ms.openlocfilehash: b5e9d5995e8173950db483c5c26a11830a62862e
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.author: cynthn
+ms.reviewer: mimckitt
+ms.openlocfilehash: 84970a4c8ce7a583e2b6493686b88ab5b68e142c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443997"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108738190"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-cli-20"></a>通过 Azure CLI 2.0 创建和使用虚拟机规模集的共享映像
 

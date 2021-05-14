@@ -4,12 +4,12 @@ description: Azure Blockchain Workbench（预览版）中的智能合约集成�
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
-ms.openlocfilehash: dae63e16356e825d3be31380df1648749e59d8bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90f5f4d55519f912b6cbd586190576bfd88fa295
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96015496"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737755"
 ---
 # <a name="smart-contract-integration-patterns"></a>智能合约集成模式
 
@@ -153,8 +153,6 @@ Azure Blockchain Workbench REST API 将经过身份验证的请求发送到与�
 -   消息内容将被打包，并发送到智能合同中的特定函数。 该发送是代表与外部系统相关联的用户完成的。
 
 -   函数执行，并且通常会修改状态。 状态更改推动了智能合同中反映的业务工作流，使其他函数现在能够适当地执行。
-
-### 
 
 ### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>以未知的格式向 Azure Blockchain Workbench 传送消息
 

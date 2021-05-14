@@ -1,18 +1,18 @@
 ---
 title: 从 Oracle Responsys 复制数据（预览版）
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Oracle Responsys 复制到支持的接收器数据存储。
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: 334af18b068f247d9566d6be926632b9f9670e6e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2893e4d6cf86458d7016f4ad4276281c4f5a44a3
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100368415"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482105"
 ---
 # <a name="copy-data-from-oracle-responsys-using-azure-data-factory-preview"></a>使用 Azure 数据工厂从 Oracle Responsys 复制数据（预览版）
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -116,7 +116,7 @@ Oracle Responsys 链接服务支持以下属性：
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：ResponsysSource  | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

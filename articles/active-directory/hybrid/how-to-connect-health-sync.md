@@ -17,16 +17,16 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e803614a02e76d179579a2258abd563b5c58e63a
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98016977"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>使用 Azure AD Connect Health 监视 Azure AD Connect 同步
 以下文档专门介绍如何使用 Azure AD Connect Health 来监视 Azure AD Connect (Sync)。  有关使用 Azure AD Connect Health 监视 AD FS 的信息，请参阅 [在 AD FS 中使用 Azure AD Connect Health](how-to-connect-health-adfs.md)。 此外，有关使用 Azure AD Connect Health 监视 Active Directory 域服务的信息，请参阅 [在 AD DS 中使用 Azure AD Connect Health](how-to-connect-health-adds.md)。
 
-!["同步" 页的 Azure AD Connect Health 屏幕截图。](./media/how-to-connect-health-sync/syncsnapshot.png)
+![“用于同步的 Azure AD Connect Health”页的屏幕截图。](./media/how-to-connect-health-sync/syncsnapshot.png)
 
 ## <a name="alerts-for-azure-ad-connect-health-for-sync"></a>用于同步的 Azure AD Connect Health 的警报
 用于同步的 Azure AD Connect Health 警报部分将提供活动警报列表。 每个警报均包含相关信息、解决方法步骤和相关文档的链接。 选择活动或已解决的警报后，将看到一个新的边栏选项卡，其中会显示额外信息、可用于解决警报的方法步骤以及其他文档的链接。 还可以查看过去已解决警报的相关历史数据。
@@ -40,11 +40,11 @@ ms.locfileid: "98016977"
 
 这会限制服务对警报进行评估。 用户会在服务的 Azure 门户中看到一条指示这种状态的横幅消息。
 
-![警报标志的屏幕截图，显示警报评估限制。 更新您的设置以启用所有警报。](./media/how-to-connect-health-sync/banner.png)
+![警报横幅的屏幕截图，其中显示“警报评估受限”。 更新你的设置以启用所有警报。](./media/how-to-connect-health-sync/banner.png)
 
 可以通过单击“设置”并允许 Azure AD Connect Health 代理上传所有错误日志，来改变这种状态。
 
-![设置选项的屏幕截图，其中包含 Save 选项和 ON 选项称为 out 选项。](./media/how-to-connect-health-sync/banner2.png)
+![屏幕截图，其中标注了“设置”选项，并显示了已标注“保存”选项和“打开”选项的“设置”部分。](./media/how-to-connect-health-sync/banner2.png)
 
 ## <a name="sync-insight"></a>深入了解同步
 管理员往往想要了解将更改同步到 Azure AD 所花费的时间以及发生的更改量。 借助此功能，可以使用以下图形轻松可视化这些信息：   
@@ -55,14 +55,14 @@ ms.locfileid: "98016977"
 ### <a name="sync-latency"></a>同步延迟
 此功能提供连接器同步操作（导入、导出等）延迟的图形趋势。  这提供了一种快速方便的方式，使我们不仅可以了解操作延迟（发生大量更改时延迟较大），而且还可以检测导致延迟的、可能需要进一步调查的异常行为。
 
-![过去3天的运行配置文件延迟的屏幕截图。](./media/how-to-connect-health-sync/synclatency02.png)
+![“过去 3 天的运行配置文件延迟”图的屏幕截图。](./media/how-to-connect-health-sync/synclatency02.png)
 
 默认情况下只显示 Azure AD 连接器“导出”操作的延迟。  若要查看对连接器执行的其他操作或其他连接器执行的操作，请右键单击图表，选择“编辑图表”，或者单击“编辑延迟图表”并选择特定的操作和连接器。
 
 ### <a name="sync-object-changes"></a>同步对象更改
 此功能提供正在评估并导出到 Azure AD 的更改数的图形趋势。  目前，尝试从同步日志收集此信息并不容易。  图表不仅可让你以更简单的方式监视环境中发生的更改数，而且可以提供正在发生的失败的可视化视图。
 
-![从过去3天起 Azure AD 的出口统计信息的屏幕截图。](./media/how-to-connect-health-sync/syncobjectchanges02.png)
+![“将过去 3 天的统计信息导出到 Azure AD”图的屏幕截图。](./media/how-to-connect-health-sync/syncobjectchanges02.png)
 
 ## <a name="object-level-synchronization-error-report"></a>对象级同步错误报告
 此功能提供有关使用 Azure AD Connect 在 Windows Server AD 与 Azure AD 之间同步标识数据时可能发生的同步错误的报告。
@@ -70,7 +70,7 @@ ms.locfileid: "98016977"
 * 该报告涵盖同步客户端（Azure AD Connect 1.1.281.0 或更高版本）记录的错误
 * 其中包含上一次在同步引擎中执行同步操作时发生的错误。 （Azure AD 连接器中的“导出”。）
 * 为了在报告中包含最新的数据，用于同步的 Azure AD Connect Health 代理必须与所需的终结点建立出站连接。
-* **每隔30分钟更新一次** 报表，并使用 Azure AD Connect Health 代理上载的数据进行同步。它提供以下主要功能
+* 系统会使用用于同步的 Azure AD Connect Health 代理上传的数据每隔 30 分钟更新该报告。该报告提供以下重要功能
 
   * 错误分类
   * 按类别列出出错的对象

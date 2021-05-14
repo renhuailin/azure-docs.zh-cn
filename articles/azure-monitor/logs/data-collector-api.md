@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
-ms.openlocfilehash: e32bf95ef52fdd081eeaa476f44bf5dab99657d6
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 7a2af7a050ec0203c0be6f8919309d0c849e7214
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102452112"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752222"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>使用 HTTP 数据收集器 API（公共预览版）将日志数据发送到 Azure Monitor
 本文介绍如何使用 HTTP 数据收集器 API 从 REST API 客户端将日志数据发送到 Azure Monitor。  其中说明了对于脚本或应用程序收集的数据，如何设置其格式、将其包含在请求中，并由 Azure Monitor 授权该请求。  将针对 PowerShell、C# 和 Python 提供示例。
@@ -72,8 +72,8 @@ Authorization: SharedKey <WorkspaceID>:<Signature>
 ```
 StringToSign = VERB + "\n" +
                   Content-Length + "\n" +
-               Content-Type + "\n" +
-                  x-ms-date + "\n" +
+                  Content-Type + "\n" +
+                  "x-ms-date:" + x-ms-date + "\n" +
                   "/api/logs";
 ```
 

@@ -3,13 +3,13 @@ title: 使用 SAS 令牌安全部署模板
 description: 使用受 SAS 令牌保护的 Azure 资源管理器模板将资源部署到 Azure。 显示 Azure PowerShell 和 Azure CLI。
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 69462759eca08b409b1333b856fb9cd7c48a8914
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 1c3dd78d8c9c0819c69b12ccb9199acd7a4a626e
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316094"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752024"
 ---
 # <a name="deploy-private-arm-template-with-sas-token"></a>使用 SAS 令牌部署专用 ARM 模板
 

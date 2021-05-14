@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli, contperf-fy21q2
-ms.date: 11/23/2020
-ms.openlocfilehash: afc39673a30f5c99455696c7a075cb1a6a33ecd1
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.date: 04/23/2021
+ms.openlocfilehash: 48d71d3736737e88825bbae19e0a5274bacd21a1
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107875496"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161080"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建和管理逻辑应用
 
@@ -43,22 +43,18 @@ ms.locfileid: "107875496"
 如果还没有用于逻辑应用的资源组，请使用命令 `az group create` 创建该组。 例如，以下命令在位置 `westus` 创建名为 `testResourceGroup` 的资源组。
 
 ```azurecli-interactive
-
 az group create --name testResourceGroup --location westus
-
 ```
 
 已成功创建资源组时，输出会将 `provisioningState` 显示为 `Succeeded`：
 
 ```output
-
 <...>
   "name": "testResourceGroup",
   "properties": {
     "provisioningState": "Succeeded"
   },
 <...>
-
 ```
 
 ## <a name="workflow-definition"></a>工作流定义
@@ -72,7 +68,6 @@ az group create --name testResourceGroup --location westus
 可以使用命令 [`az logic workflow create`](/cli/azure/logic/workflow#az_logic_workflow_create) 以及定义的 JSON 文件，从 Azure CLI 创建逻辑应用工作流。
 
 ```azurecli
-
 az logic workflow create --definition
                          --location
                          --name
@@ -83,7 +78,6 @@ az logic workflow create --definition
                          [--integration-service-environment]
                          [--state {Completed, Deleted, Disabled, Enabled, NotSpecified, Suspended}]
                          [--tags]
-
 ```
 
 命令必须包含以下[必需参数](/cli/azure/logic/workflow#az_logic_workflow_create-required-parameters)：
@@ -94,6 +88,7 @@ az logic workflow create --definition
 | 位置 | `--location -l` | 逻辑应用所在的 Azure 区域。 |
 | 名称 | `--name -n` | 逻辑应用的名称。 名称只能包含字母、数字、连字符 (`-`)、下划线 (`_`)、括号 (`()`) 和句点 (`.`)。 该名称还必须在区域间唯一。 |
 | 资源组名称 | `--resource-group -g` | 要在其中创建逻辑应用的 [Azure 资源组](../azure-resource-manager/management/overview.md)。 如果还没有用于逻辑应用的资源组，请在开始之前[创建一个资源组](#example---create-resource-group)。 |
+||||
 
 还可以包含其他[可选参数](/cli/azure/logic/workflow#az_logic_workflow_create-optional-parameters)以配置逻辑应用的访问控制、终结点、集成帐户、集成服务环境、状态和资源标记。
 
@@ -102,9 +97,7 @@ az logic workflow create --definition
 在此示例中，在位置 `westus` 的资源组 `testResourceGroup` 中创建了名为 `testLogicApp` 的工作流。 JSON 文件 `testDefinition.json` 包含工作流定义。
 
 ```azurecli-interactive
-
 az logic workflow create --resource-group "testResourceGroup" --location "westus" --name "testLogicApp" --definition "testDefinition.json"
-
 ```
 
 成功创建工作流后，CLI 会显示新工作流定义的 JSON 代码。 如果工作流创建失败，请参阅[可能错误的列表](#errors)。
@@ -116,7 +109,6 @@ az logic workflow create --resource-group "testResourceGroup" --location "westus
 命令必须包含与[创建逻辑应用](#create-logic-apps-from-cli)时相同的[必需参数](/cli/azure/logic/workflow#az_logic_workflow_create-required-parameters)。 还可以添加与创建逻辑应用时相同的[可选参数](/cli/azure/logic/workflow#az_logic_workflow_create-optional-parameters)。
 
 ```azurecli
-
 az logic workflow create --definition
                          --location
                          --name
@@ -127,7 +119,6 @@ az logic workflow create --definition
                          [--integration-service-environment]
                          [--state {Completed, Deleted, Disabled, Enabled, NotSpecified, Suspended}]
                          [--tags]
-
 ```
 
 ### <a name="example---update-logic-app"></a>示例 - 更新逻辑应用
@@ -135,9 +126,7 @@ az logic workflow create --definition
 在此示例中，会更新[在上一节中创建的示例工作流](#example---create-logic-app)，以使用不同的 JSON 定义文件 `newTestDefinition.json`，并添加两个具有说明值的资源标记 `testTag1` 和 `testTag2`。
 
 ```azurecli-interactive
-
 az logic workflow create --resource-group "testResourceGroup" --location "westus" --name "testLogicApp" --definition "newTestDefinition.json" --tags "testTag1=testTagValue1" "testTag2=testTagValue"
-
 ```
 
 成功更新工作流后，CLI 会显示逻辑应用更新后的工作流定义。 如果更新失败，请参阅[可能错误的列表](#errors)。
@@ -152,23 +141,20 @@ az logic workflow create --resource-group "testResourceGroup" --location "westus
 | --------- | ----- | ----------- |
 | 名称 | `--name -n` | 逻辑应用的名称。 |
 | 资源组名称 | `-resource-group -g` | 逻辑应用所在的资源组。 |
+||||
 
 还可以包含一个[可选参数](/cli/azure/logic/workflow#az_logic_workflow_delete-optional-parameters)以跳过确认提示 `--yes -y`。
 
 ```azurecli
-
 az logic workflow delete --name
                          --resource-group
                          [--yes]
-
 ```
 
 CLI 随后会提示确认删除逻辑应用。 可以通过将可选参数 `--yes -y` 与命令一起使用来跳过确认提示。
 
-```azurecli
-
+```output
 Are you sure you want to perform this operation? (y/n):
-
 ```
 
 可以通过[在 CLI 中列出逻辑应用](#list-logic-apps-in-cli)，或者通过在 Azure 门户中查看逻辑应用，来确认逻辑应用的删除。
@@ -178,22 +164,30 @@ Are you sure you want to perform this operation? (y/n):
 在此示例中，会删除[在上一节中创建的示例工作流](#example---create-logic-app)。
 
 ```azurecli-interactive
-
 az logic workflow delete --resource-group "testResourceGroup" --name "testLogicApp"
-
 ```
 
 在使用 `y` 响应确认提示之后，会删除逻辑应用。
+
+### <a name="considerations---delete-logic-app"></a>注意事项 - 删除逻辑应用
+
+删除逻辑应用会以下列方式方式影响工作流实例：
+
+* 逻辑应用服务会可能取消任何正在进行和挂起的运行。
+
+  即使使用较大的卷或积压工作 (backlog)，大多数运行在完成或开始之前都将被取消。 但是，取消过程可能需要一些时间才能完成。 同时，在运行时执行取消过程中，可能会选取某些运行来执行。
+
+* 逻辑应用服务不会创建或运行新的工作流实例。
+
+* 如果删除工作流，然后重新创建相同的工作流，则重新创建的工作流不会具有与删除的工作流相同的元数据。 必须重新保存任何调用删除工作流的工作流。 这样，调用方就可获取重新创建的工作流的正确信息。 否则，对重新创建的工作流的调用将失败并显示 `Unauthorized` 错误。 此行为也适用于在集成帐户中使用项目的工作流和调用 Azure 函数的工作流。
 
 ## <a name="show-logic-apps-in-cli"></a>在 CLI 中显示逻辑应用
 
 可以使用命令 [`az logic workflow show`](/cli/azure/logic/workflow#az_logic_workflow_show) 获取特定逻辑应用工作流。
 
 ```azurecli
-
 az logic workflow show --name
                        --resource-group
-
 ```
 
 命令必须包含以下[必需参数](/cli/azure/logic/workflow#az_logic_workflow_show-required-parameters)
@@ -202,15 +196,14 @@ az logic workflow show --name
 | --------- | ----- | ----------- |
 | 名称 | `--name -n` | 逻辑应用的名称。 |
 | 资源组名称 | `--resource-group -g` | 逻辑应用所在的资源组的名称。 |
+||||
 
 ### <a name="example---get-logic-app"></a>示例 - 获取逻辑应用
 
 在此示例中，会返回资源组 `testResourceGroup` 中的逻辑应用 `testLogicApp` 以及用于调试的完整日志。
 
 ```azurecli-interactive
-
 az logic workflow show --resource-group "testResourceGroup" --name "testLogicApp" --debug
-
 ```
 
 ## <a name="list-logic-apps-in-cli"></a>在 CLI 中列出逻辑应用
@@ -224,13 +217,12 @@ az logic workflow show --resource-group "testResourceGroup" --name "testLogicApp
 | 资源组名称 | `--resource-group -g` | 要用于筛选结果的资源组的名称。 |
 | 项数 | `--top` | 结果中包含的项数。 |
 | 筛选器 | `--filter` | 要对列表使用的筛选器的类型。 可以按状态 (`State`)、触发器 (`Trigger`) 以及所引用资源的标识符 (`ReferencedResourceId`) 进行筛选。 |
+||||
 
 ```azurecli
-
 az logic workflow list [--filter]
                        [--resource-group]
                        [--top]
-
 ```
 
 ### <a name="example---list-logic-apps"></a>示例 - 列出逻辑应用
@@ -238,9 +230,7 @@ az logic workflow list [--filter]
 在此示例中，资源组 `testResourceGroup` 中所有启用的工作流都会以 ASCII 表格式返回。
 
 ```azurecli-interactive
-
 az logic workflow list --resource-group "testResourceGroup" --filter "(State eq 'Enabled')" --output "table"
-
 ```
 
 ## <a name="errors"></a>错误
@@ -248,17 +238,13 @@ az logic workflow list --resource-group "testResourceGroup" --filter "(State eq 
 以下错误指示未安装 Azure 逻辑应用 CLI 扩展。 按照先决条件中的步骤在计算机上[安装逻辑应用扩展](#prerequisites)。
 
 ```output
-
 az: 'logic' is not in the 'az' command group. See 'az --help'. If the command is from an extension, please make sure the corresponding extension is installed. To learn more about extensions, please visit https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview
-
 ```
 
 以下错误可能指示用于上传工作流定义的文件路径不正确。
 
 ```output
-
 Expecting value: line 1 column 1 (char 0)
-
 ```
 
 ## <a name="global-parameters"></a>全局参数
@@ -273,6 +259,7 @@ Expecting value: line 1 column 1 (char 0)
 | 调试 | `--debug` | 显示所有调试日志。 |
 | 帮助消息 | `--help -h` | 显示帮助对话框。 |
 | 查询 | `--query` | 为 JSON 输出设置 JMESPath 查询字符串。 |
+||||
 
 ## <a name="next-steps"></a>后续步骤
 

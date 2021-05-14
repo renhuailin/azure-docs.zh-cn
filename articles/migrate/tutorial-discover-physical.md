@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.custom: mvc
-ms.openlocfilehash: 17740763777372a5eaed6941974c120860839279
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 7ff8a7739c0018d415ad503e888d63d04e641153
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382703"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751196"
 ---
 # <a name="tutorial-discover-physical-servers-with-azure-migrate-discovery-and-assessment"></a>教程：使用 Azure Migrate：发现和评估发现物理服务器
 
@@ -166,7 +166,7 @@ Azure Migrate 设备执行服务器发现并将服务器配置和性能元数据
 
 - 安装用于物理服务器发现和评估的代理和 Web 应用程序。
 - 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
-- 下载并安装 IIS 可重写模块。 [了解详细信息](https://www.microsoft.com/download/details.aspx?id=7435)。
+- 下载并安装 IIS 可重写模块。
 - 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置详细信息。
 - 在路径下创建以下文件：
     - **配置文件**：%Programdata%\Microsoft Azure\Config
