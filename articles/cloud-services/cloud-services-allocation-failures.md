@@ -1,24 +1,24 @@
 ---
-title: 排查云服务 (经典) 分配失败 |Microsoft Docs
+title: 排除云服务（经典）分配故障 | Microsoft Docs
 description: 对部署 Azure 云服务时的分配失败进行故障排除。 了解分配的工作原理以及分配失败的原因。
-ms.topic: article
+ms.topic: troubleshooting
 ms.service: cloud-services
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 95fe4a8e1f6c6ee5f519311f8e756be89a09acf8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: b9cfb7e2d57d194e9f9317d0dcbff3e87318ac9f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738304"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736192"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-classic-in-azure"></a>对在 Azure 中部署云服务（经典）时的分配失败进行故障排除
 
 > [!IMPORTANT]
-> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
 
 ## <a name="summary"></a>总结
@@ -43,16 +43,16 @@ Azure 数据中心的服务器分区成群集。 会在多个群集中尝试新�
 
 ### <a name="error-message"></a>错误消息
 
-在 Azure 门户中，导航到云服务，并在侧栏中选择 " *操作日志 (经典")* 查看日志。
+在 Azure 门户中，导航到你的云服务，并在侧栏中选择“操作日志(经典)”来查看日志。
 
-请参阅以下例外的进一步解决方案：
+请参阅针对以下异常的进一步解决方案：
 
 |异常类型  |错误消息  |解决方案  |
 |---------|---------|---------|
-|FabricInternalServerError     |操作失败，错误代码为 "InternalError"，errorMessage 为 "服务器遇到内部错误。 请重试请求。 '。|[FabricInternalServerError 故障排除](cloud-services-troubleshoot-fabric-internal-server-error.md)|
-|ServiceAllocationFailure     |操作失败，错误代码为 "InternalError"，errorMessage 为 "服务器遇到内部错误。 请重试请求。 '。|[ServiceAllocationFailure 故障排除](cloud-services-troubleshoot-fabric-internal-server-error.md)|
-|LocationNotFoundForRoleSize     |操作 " `{Operation ID}` " 失败： "请求的 VM 层当前在此订阅的区域 () 中不可用 `{Region ID}` 。 请尝试另一层或部署到其他位置。 '。|[LocationNotFoundForRoleSize 故障排除](cloud-services-troubleshoot-location-not-found-for-role-size.md)|
-|ConstrainedAllocationFailed     |Azure 操作 " `{Operation ID}` " 失败，代码为 ConstrainedAllocationFailed。 详细信息：分配失败；无法满足请求中的约束。 请求的新服务部署绑定至地缘组，或以虚拟网络为目标，或此托管服务下已经有部署。 上述任一情况都会将新的部署局限于特定的 Azure 资源。 请稍后重试，或尝试减少 VM 大小或角色实例数目。 或者，可能的话，删除先前提到的约束，或尝试部署到不同的区域。|[ConstrainedAllocationFailed 故障排除](cloud-services-troubleshoot-constrained-allocation-failed.md)|
+|FabricInternalServerError     |操作失败，错误代码为“InternalError”，errorMessage 为“服务器遇到内部错误。 请重试该请求。”|[FabricInternalServerError 故障排除](cloud-services-troubleshoot-fabric-internal-server-error.md)|
+|ServiceAllocationFailure     |操作失败，错误代码为“InternalError”，errorMessage 为“服务器遇到内部错误。 请重试该请求。”|[ServiceAllocationFailure 故障排除](cloud-services-troubleshoot-fabric-internal-server-error.md)|
+|LocationNotFoundForRoleSize     |操作“`{Operation ID}`”失败：“请求的 VM 层当前在此订阅的区域 (`{Region ID}`) 中不可用。 请尝试另一层或部署到其他位置。”|[LocationNotFoundForRoleSize 故障排除](cloud-services-troubleshoot-location-not-found-for-role-size.md)|
+|ConstrainedAllocationFailed     |Azure 操作“`{Operation ID}`”失败，代码为 Compute.ConstrainedAllocationFailed。 详细信息：分配失败；无法满足请求中的约束。 请求的新服务部署绑定至地缘组，或以虚拟网络为目标，或此托管服务下已经有部署。 上述任一情况都会将新的部署局限于特定的 Azure 资源。 请稍后重试，或尝试减少 VM 大小或角色实例数目。 或者，可能的话，删除先前提到的约束，或尝试部署到不同的区域。|[ConstrainedAllocationFailed 故障排除](cloud-services-troubleshoot-constrained-allocation-failed.md)|
 |OverconstrainedAllocationRequest     |由于部署请求约束，无法预配此部署所需的 VM 大小（或 VM 大小的组合）。 可能的话，请尝试放宽约束（例如虚拟网络绑定）、部署到不具有其他部署的托管服务及不同的地缘组（或不具有地缘组的托管服务），或尝试部署到不同的区域。|[OverconstrainedAllocationRequest 故障排除](cloud-services-troubleshoot-overconstrained-allocation-request.md)|
 
 示例错误消息：
@@ -81,7 +81,7 @@ Azure 数据中心的服务器分区成群集。 会在多个群集中尝试新�
    * 在现有云服务中创建新部署。 这会在该区域的所有群集上重新尝试进行分配。 确保云服务未绑定到地缘组。
 3. 保留 IP - 此解决方案将保留现有 IP 地址，但会导致应用程序停机。  
 
-   * 使用 PowerShell 为现有部署创建 ReservedIP
+   * 请使用 PowerShell 为现有部署创建 ReservedIP
 
      ```azurepowershell
      New-AzureReservedIP -ReservedIPName {new reserved IP name} -Location {location} -ServiceName {existing service name}

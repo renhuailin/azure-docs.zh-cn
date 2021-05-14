@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f1343f900e12bff09c0436ca52d8b091fe48a181
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3d42c7cc6498adad251174db7caea11feec82784
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100393541"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108753546"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure Blob 存储中或从 Azure Blob 存储中复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -33,11 +33,11 @@ ms.locfileid: "100393541"
 ## <a name="supported-scenarios"></a>支持的方案
 可以将数据 **从 Azure Blob 存储** 复制到以下数据存储：
 
-[!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
+[!INCLUDE [data-factory-supported-sink](includes/data-factory-supported-sinks.md)]
 
 可以将数据从以下数据存储复制 **到 Azure Blob 存储**：
 
-[!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
+[!INCLUDE [data-factory-supported-sources](includes/data-factory-supported-sources.md)]
 
 > [!IMPORTANT]
 > 复制活动支持从常规用途的 Azure 存储帐户和冷/热 Blob 存储中复制数据，以及将数据复制到常规用途的 Azure 存储帐户和冷/热 Blob 存储。 活动支持 **从块 blob、追加 blob 或页 blob 进行读取**，但仅支持 **对块 blob 写入**。 不支持将 Azure 高级存储用作接收器，因为它由页 Blob 支持。
@@ -65,7 +65,7 @@ ms.locfileid: "100393541"
 ## <a name="linked-service-properties"></a>链接服务属性
 有两种类型的链接服务，可用于将 Azure 存储链接到 Azure 数据工厂。 它们是：**AzureStorage** 链接服务和 **AzureStorageSas** 链接服务。 Azure 存储链接服务为数据工厂提供 Azure 存储的全局访问权限。 而 Azure 存储 SAS（共享访问签名）链接服务为数据工厂提供 Azure 存储的受限/有时限的访问。 这两种链接服务之间没有其他区别。 请选择适合你需求的链接服务。 以下各部分提供了有关这两种链接服务的详细信息。
 
-[!INCLUDE [data-factory-azure-storage-linked-services](../../../includes/data-factory-azure-storage-linked-services.md)]
+[!INCLUDE [data-factory-azure-storage-linked-services](includes/data-factory-azure-storage-linked-services.md)]
 
 ## <a name="dataset-properties"></a>数据集属性
 要指定数据集来表示 Azure Blob 存储中的输入或输出数据，可以将数据集的类型属性设置为：**AzureBlob**。 将数据集的 **linkedServiceName** 属性设置为 Azure 存储或 Azure 存储 SAS 链接服务的名称。  数据集的 type 属性指定 Blob 存储中的 **Blob 容器** 和 **文件夹**。
@@ -122,7 +122,7 @@ ms.locfileid: "100393541"
 
 **BlobSource** 支持 **typeProperties** 部分的以下属性：
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
 | recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True（默认值）、False |否 |
 

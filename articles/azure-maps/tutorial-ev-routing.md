@@ -3,18 +3,18 @@ title: 教程：通过 Microsoft Azure Maps 使用 Azure Notebooks (Python) 规�
 description: 本教程介绍如何使用 Microsoft Azure Maps 路线规划 API 和 Azure Notebooks 规划电动车路线
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 04/26/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 7341d1f07e8814edcad7b84f6b3b46c7bece3159
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce6cb60754ed0afae27c5b5d316a7158961b55a3
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98680326"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108323368"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>教程：使用 Azure Notebooks 规划电动车路线 (Python)
 
@@ -34,16 +34,13 @@ Azure Maps 是原生与 Azure 集成的地理空间服务 API 组合。 开发�
 > * 在地图上呈现可抵达范围的边界和充电站。
 > * 基于驾驶时间查找并直观显示最近的电动车充电站的路线。
 
+## <a name="prerequisites"></a>先决条件
 
-## <a name="prerequisites"></a>先决条件 
+1. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)，并[选择第二代或 S1 定价层](choose-pricing-tier.md)。
+2. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。
 
-若要完成本教程，首先需要创建一个 Azure Maps 帐户并获取主密钥（订阅密钥）。 
+有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
 
-若要创建 Azure Maps 帐户订阅，请按照[创建帐户](quick-demo-map-app.md#create-an-azure-maps-account)中的说明操作。 需要一个使用 S1 价格层的 Azure Maps 帐户订阅。 
-
-若要获取帐户的主要订阅密钥，请遵循[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的说明。
-
-有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
 
 ## <a name="create-an-azure-notebooks-project"></a>创建 Azure Notebooks 项目
 

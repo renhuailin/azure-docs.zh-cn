@@ -1,198 +1,87 @@
 ---
-title: 启用和管理 blob 的软删除
+title: 为 blob 启用软删除
 titleSuffix: Azure Storage
-description: 为 blob 启用软删除，以便在错误地修改或删除数据时更轻松地恢复数据。
+description: 启用 blob 的软删除，防止意外删除或覆盖 blob 数据。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/15/2020
+ms.date: 03/27/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: a74860b7adf4dade5aedc71a4960595cbe55eaf0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a1698a56ad7e92a59b664ce8f8bca2355fb44fb1
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95995295"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074702"
 ---
-# <a name="enable-and-manage-soft-delete-for-blobs"></a>启用和管理 blob 的软删除
+# <a name="enable-soft-delete-for-blobs"></a>为 blob 启用软删除
 
-Blob 软删除可防止意外或错误地修改或删除数据。 为存储帐户启用 blob 软删除时，该存储帐户中的 blob、blob 版本和快照被删除后可以在指定的保留期内恢复。
+Blob 软删除会在系统中将已删除的数据保留指定的一段时间，可以在意外删除或覆盖单个 Blob 及其版本、快照和元数据时提供保护。 在保留期内，可以将 Blob 还原到它在删除时的状态。 在指定的保留期已过后，Blob 将永久被删除。 有关 Blob 软删除的详细信息，请参阅 [Blob 的软删除](soft-delete-blob-overview.md)。
 
-如果你的数据有可能被应用程序或其他存储帐户用户意外修改或删除，Microsoft 建议启用blob 软删除。 本文介绍如何为 blob 启用软删除。 有关 blob 软删除的更多详细信息，请参阅 [blob 的软删除](soft-delete-blob-overview.md)。
-
-若要了解如何同时为容器启用软删除，请参阅[启用和管理容器的软删除](soft-delete-container-enable.md)。
+Blob 软删除是针对 Blob 数据的综合性数据保护策略的一部分。 若要详细了解 Microsoft 的数据保护建议，请参阅[数据保护概述](data-protection-overview.md)。
 
 ## <a name="enable-blob-soft-delete"></a>启用 blob 软删除
 
+对于新存储帐户，默认情况下 blob 软删除处于禁用状态。 你随时都可使用 Azure 门户、PowerShell 或 Azure CLI 为存储帐户启用或禁用软删除。
+
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-使用 Azure 门户为存储帐户上的 blob 启用软删除：
+若要使用 Azure 门户为存储帐户启用 blob 软删除，请执行以下步骤：
 
 1. 在 [Azure 门户](https://portal.azure.com/)中导航到存储帐户。
 1. 在“Blob 服务”下，找到“数据保护”选项 。
-1. 将“Blob 软删除”属性设置为“已启用”。
-1. 在“保留策略”下，指定软删除的 blob 可由 Azure 存储保留多长时间。
+1. 在“恢复”部分中，选择“启用 blob 软删除” 。
+1. 指定 1 到 365 天的保持期。 Microsoft 建议使用 7 天的最短保持期。
 1. 保存所做更改。
 
-![选择了数据保护 blob 服务的 Azure 门户的屏幕截图。](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-configuration.png)
-
-若要查看软删除 blob，请选择“显示已删除 blob”复选框。
-
-![数据保护 blob 服务页的屏幕截图，其中突出显示了“显示已删除的 blob”选项。](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-view-soft-deleted.png)
-
-若要查看给定 blob 的软删除快照，请选择相应 blob 并单击“查看快照”。
-
-![数据保护 blob 服务页的屏幕截图，其中突出显示了“查看快照”选项。](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots.png)
-
-请确保已选择“显示已删除快照”复选框。
-
-![查看快照页的屏幕截图，其中突出显示了“显示已删除的 blob”选项。](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots-check.png)
-
-单击软删除 blob 或快照时，请注意新的 blob 属性。 这些属性指示删除对象的时间，以及 blob 或 blob 快照永久过期前的剩余天数。 如果软删除对象不是快照，还可选择撤销删除。
-
-![软删除对象的详细信息的屏幕截图。](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-properties.png)
-
-请记住，撤销删除 blob 还将撤销删除所有相关快照。 若要撤销删除活动 blob 的软删除快照，请单击相应 blob 并选择“撤销删除所有快照”。
-
-![软删除 blob 的详细信息的屏幕截图。](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-undelete-all-snapshots.png)
-
-撤销删除 blob 的快照后，可单击“提升”将快照复制到根 blob，从而将 blob 还原到快照。
-
-![查看快照页的屏幕截图，其中突出显示了“提升”选项。](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-promote-snapshot.png)
+:::image type="content" source="media/soft-delete-blob-enable/blob-soft-delete-configuration-portal.png" alt-text="显示如何在 Azure 门户中启用软删除的屏幕截图":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+若要使用 PowerShell 启用 blob 软删除，请调用 [Enable-AzStorageBlobDeleteRetentionPolicy](/powershell/module/az.storage/enable-azstorageblobdeleteretentionpolicy) 命令，并指定保持期（以天为单位）。
 
-若要启用软删除，请更新 blob 客户端的服务属性。 下面的示例为订阅中的帐户子集启用了软删除：
+下面的示例启用了 blob 软删除并将保持期设置为 7 天。 请记得将括号中的占位符值替换为你自己的值：
 
-```powershell
-Set-AzContext -Subscription "<subscription-name>"
-$MatchingAccounts = Get-AzStorageAccount | where-object{$_.StorageAccountName -match "<matching-regex>"}
-$MatchingAccounts | Enable-AzStorageDeleteRetentionPolicy -RetentionDays 7
+```azurepowershell
+Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName <resource-group> `
+    -StorageAccountName <storage-account> `
+    -RetentionDays 7
 ```
 
-可以使用以下命令验证是否启用了软删除：
+若要检查 blob 软删除的当前设置，请调用 [Get-AzStorageBlobServiceProperty](/powershell/module/az.storage/get-azstorageblobserviceproperty) 命令：
 
-```powershell
-$MatchingAccounts | $account = Get-AzStorageAccount -ResourceGroupName myresourcegroup -Name storageaccount
-   Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context | Select-Object -ExpandProperty DeleteRetentionPolicy
-```
-
-若要恢复意外删除的 blob，请对这些 blob 调用 Undelete Blob。 请记住，如果对活动和软删除 blob 调用撤销删除 Blob，则会将所有相关软删除快照还原为活动状态。 下面的示例对容器中的所有软删除和活动 blob 调用了撤销删除 Blob：
-
-```powershell
-# Create a context by specifying storage account name and key
-$ctx = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
-
-# Get the blobs in a given container and show their properties
-$Blobs = Get-AzStorageBlob -Container $StorageContainerName -Context $ctx -IncludeDeleted
-$Blobs.ICloudBlob.Properties
-
-# Undelete the blobs
-$Blobs.ICloudBlob.Undelete()
-```
-若要查找当前的软删除保留策略，请使用以下命令：
-
-```azurepowershell-interactive
-   $account = Get-AzStorageAccount -ResourceGroupName myresourcegroup -Name storageaccount
-   Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context
+```azurepowershell
+$properties = Get-AzStorageBlobServiceProperty -ResourceGroupName <resource-group> `
+    -StorageAccountName <storage-account>
+$properties.DeleteRetentionPolicy.Enabled
+$properties.DeleteRetentionPolicy.Days
 ```
 
 # <a name="cli"></a>[CLI](#tab/azure-CLI)
 
-若要启用软删除，请更新 blob 客户端的服务属性：
+若要使用 Azure CLI 启用 blob 软删除，请调用 [az storage account blob-service-properties update](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_update) 命令，并指定保持期（以天为单位）。
+
+下面的示例启用了 blob 软删除并将保持期设置为 7 天。 请记得将括号中的占位符值替换为你自己的值：
 
 ```azurecli-interactive
-az storage blob service-properties delete-policy update --days-retained 7  --account-name mystorageaccount --enable true
+az storage account blob-service-properties update --account-name <storage-account> \
+    --resource-group <resource-group> \
+    --enable-delete-retention true \
+    --delete-retention-days 7
 ```
 
-若要验证软删除是否已启用，请使用以下命令： 
+若要检查 blob 软删除的当前设置，请调用 [az storage account blob-service-properties show](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_show) 命令：
 
 ```azurecli-interactive
-az storage blob service-properties delete-policy show --account-name mystorageaccount 
+az storage account blob-service-properties show --account-name <storage-account> \
+    --resource-group <resource-group>
 ```
-
-# <a name="python"></a>[Python](#tab/python)
-
-若要启用软删除，请更新 blob 客户端的服务属性：
-
-```python
-# Make the requisite imports
-from azure.storage.blob import BlockBlobService
-from azure.storage.common.models import DeleteRetentionPolicy
-
-# Initialize a block blob service
-block_blob_service = BlockBlobService(
-    account_name='<enter your storage account name>', account_key='<enter your storage account key>')
-
-# Set the blob client's service property settings to enable soft delete
-block_blob_service.set_blob_service_properties(
-    delete_retention_policy=DeleteRetentionPolicy(enabled=True, days=7))
-```
-
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
-
-若要启用软删除，请更新 blob 客户端的服务属性：
-
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_EnableSoftDelete":::
-
-若要恢复意外删除的 blob，请对这些 blob 调用撤销删除。 请记住，如果对活动和软删除状态的 blob 调用撤销删除，则会将所有相关软删除快照还原为活动状态。 下面的示例对容器中的所有软删除和活动 blob 调用了撤销删除：
-
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverDeletedBlobs":::
-
-若要恢复到特定 blob 版本，请先对 blob 调用撤销删除，然后将所需快照复制到该 blob。 下面的示例将块 blob 恢复到其最新生成的快照：
-
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverSpecificBlobVersion":::
-
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
-
-若要启用软删除，请更新 blob 客户端的服务属性：
-
-```csharp
-// Get the blob client's service property settings
-ServiceProperties serviceProperties = blobClient.GetServiceProperties();
-
-// Configure soft delete
-serviceProperties.DeleteRetentionPolicy.Enabled = true;
-serviceProperties.DeleteRetentionPolicy.RetentionDays = RetentionDays;
-
-// Set the blob client's service property settings
-blobClient.SetServiceProperties(serviceProperties);
-```
-
-若要恢复意外删除的 blob，请对这些 blob 调用 Undelete Blob。 请记住，如果对活动和软删除 blob 调用撤销删除 Blob，则会将所有相关软删除快照还原为活动状态。 下面的示例对容器中的所有软删除和活动 blob 调用了撤销删除 Blob：
-
-```csharp
-// Recover all blobs in a container
-foreach (CloudBlob blob in container.ListBlobs(useFlatBlobListing: true, blobListingDetails: BlobListingDetails.Deleted))
-{
-       await blob.UndeleteAsync();
-}
-```
-
-若要恢复到特定 blob 版本，请先调用撤销删除 Blob 操作，然后将所需快照复制到该 blob。 下面的示例将块 blob 恢复到其最新生成的快照：
-
-```csharp
-// Undelete
-await blockBlob.UndeleteAsync();
-
-// List all blobs and snapshots in the container prefixed by the blob name
-IEnumerable<IListBlobItem> allBlobVersions = container.ListBlobs(
-    prefix: blockBlob.Name, useFlatBlobListing: true, blobListingDetails: BlobListingDetails.Snapshots);
-
-// Restore the most recently generated snapshot to the active blob
-CloudBlockBlob copySource = allBlobVersions.First(version => ((CloudBlockBlob)version).IsSnapshot &&
-    ((CloudBlockBlob)version).Name == blockBlob.Name) as CloudBlockBlob;
-blockBlob.StartCopy(copySource);
-```  
 
 ---
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Blob 存储的软删除](./soft-delete-blob-overview.md)
-- [Blob 版本控制](versioning-overview.md)
+- [blob 的软删除](soft-delete-blob-overview.md)
+- [管理和还原软删除的 Blob](soft-delete-blob-manage.md)

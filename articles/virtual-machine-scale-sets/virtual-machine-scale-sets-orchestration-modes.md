@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.date: 02/12/2021
 ms.reviewer: jushiman
-ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: d089708ead67891164aee074394e923d2a84a977
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: mimckitt, devx-track-azurecli, vmss-flex
+ms.openlocfilehash: 19d0486461366f77a09b9e6a395e60a51efea853
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774442"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109754364"
 ---
-# <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>预览：Azure 中虚拟机规模集的业务流程模式 
+# <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>预览：Azure 中虚拟机规模集的业务流程模式
 
-虚拟机规模集提供平台管理的虚拟机的逻辑分组。 使用规模集可以创建虚拟机配置模型，根据 CPU 或内存负载自动添加或删除其他实例，并自动升级到最新的 OS 版本。 在传统上，规模集允许使用在创建规模集时提供的 VM 配置模型来创建虚拟机，并且规模集只能管理基于配置模型隐式创建的虚拟机。 
+虚拟机规模集提供平台管理的虚拟机的逻辑分组。 使用规模集可以创建虚拟机配置模型，根据 CPU 或内存负载自动添加或删除其他实例，并自动升级到最新的 OS 版本。 在传统上，规模集允许使用在创建规模集时提供的 VM 配置模型来创建虚拟机，并且规模集只能管理基于配置模型隐式创建的虚拟机。
 
-规模集业务流程模式可让你更好地控制规模集管理虚拟机实例的方式。 
+规模集业务流程模式可让你更好地控制规模集管理虚拟机实例的方式。
 
 > [!IMPORTANT]
 > 业务流程模式是在创建规模集时定义的，以后无法更改或更新。
@@ -28,10 +28,10 @@ ms.locfileid: "107774442"
 ## <a name="scale-sets-with-uniform-orchestration"></a>使用统一业务流程的规模集
 已针对包含相同实例的大规模无状态工作负载进行优化。
 
-使用统一业务流程的虚拟机规模集利用虚拟机配置文件或模板纵向扩展到所需的容量。 统一模式使用相同的 VM 实例，不过，在一定程度上也能够管理或自定义单独的虚拟机实例。 单独的统一 VM 实例通过虚拟机规模集 VM API 命令公开。 单独的实例与标准的 Azure IaaS VM API 命令以及 Azure 资源管理器资源标记 RBAC 权限、Azure 备份或 Azure Site Recovery 等 Azure 管理功能不兼容。 当统一业务流程中配置的实例数少于 100 时，它可以提供容错域高可用性保证。 统一业务流程已推出正式版，支持全套规模集管理和业务流程，包括基于指标的自动缩放、实例保护和自动 OS 升级。 
+使用统一业务流程的虚拟机规模集利用虚拟机配置文件或模板纵向扩展到所需的容量。 统一模式使用相同的 VM 实例，不过，在一定程度上也能够管理或自定义单独的虚拟机实例。 单独的统一 VM 实例通过虚拟机规模集 VM API 命令公开。 单独的实例与标准的 Azure IaaS VM API 命令以及 Azure 资源管理器资源标记 RBAC 权限、Azure 备份或 Azure Site Recovery 等 Azure 管理功能不兼容。 当统一业务流程中配置的实例数少于 100 时，它可以提供容错域高可用性保证。 统一业务流程已推出正式版，支持全套规模集管理和业务流程，包括基于指标的自动缩放、实例保护和自动 OS 升级。
 
 
-## <a name="scale-sets-with-flexible-orchestration"></a>使用灵活业务流程的规模集 
+## <a name="scale-sets-with-flexible-orchestration"></a>使用灵活业务流程的规模集
 大规模实现相同或多个虚拟机类型的高可用性
 
 借助灵活业务流程，Azure 可在整个 Azure VM 生态系统中提供统一的体验。 灵活业务流程将 VM 分散到某个地理区域或可用性区域的多个容错域中，从而提供高可用性保证（最多支持 1000 个 VM）。 这样，你便可以横向扩展应用程序，同时保持对容错域的隔离，这对于运行基于仲裁的工作负载或有状态工作负载而言至关重要，包括：
@@ -40,7 +40,7 @@ ms.locfileid: "107774442"
 - 有状态应用程序
 - 需要高可用性和较大规模的服务
 - 需要混合虚拟机类型，或同时利用零星 VM（使用富余容量的 VM）和按需 VM 的服务
-- 现有的可用性集应用程序  
+- 现有的可用性集应用程序
 
 > [!IMPORTANT]
 > 采用灵活业务流程模式的虚拟机规模集目前以公共预览版提供。 需要执行一个选用过程才能使用下述公共预览版功能。
@@ -49,27 +49,27 @@ ms.locfileid: "107774442"
 
 
 ## <a name="what-has-changed-with-flexible-orchestration-mode"></a>灵活业务流程模式有哪些变化？
-灵活业务流程的一个主要优势是，它基于标准 Azure IaaS VM（而不是规模集子虚拟机）提供业务流程功能。 这意味着，可以在管理灵活业务流程实例时使用所有的标准 VM API，而无需像在统一业务流程中那样使用虚拟机规模集 VM API。 在预览期，在灵活业务流程与统一业务流程中管理实例存在几点差异。 一般情况下，我们建议尽量使用标准 Azure IaaS VM API。 本部分重点说明有关使用灵活业务流程管理 VM 实例的最佳做法示例。  
+灵活业务流程的一个主要优势是，它基于标准 Azure IaaS VM（而不是规模集子虚拟机）提供业务流程功能。 这意味着，可以在管理灵活业务流程实例时使用所有的标准 VM API，而无需像在统一业务流程中那样使用虚拟机规模集 VM API。 在预览期，在灵活业务流程与统一业务流程中管理实例存在几点差异。 一般情况下，我们建议尽量使用标准 Azure IaaS VM API。 本部分重点说明有关使用灵活业务流程管理 VM 实例的最佳做法示例。
 
 ### <a name="assign-fault-domain-during-vm-creation"></a>创建 VM 期间分配容错域
 可为灵活业务流程规模集选择容错域的数目。 默认情况下，将 VM 添加到灵活规模集时，Azure 会在多个容错域之间均匀分散实例。 尽管我们建议让 Azure 分配容错域，但对于高级或故障排除方案，你可以替代此默认行为，指定要将实例放入哪个容错域。
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create –vmss "myVMSS"  –-platform_fault_domain 1
 ```
 
-### <a name="instance-naming"></a>实例命名 
+### <a name="instance-naming"></a>实例命名
 创建 VM 并将其添加到灵活规模集时，可以在 Azure 命名约定规则中全面控制实例名称。 通过自动缩放将 VM 自动添加到规模集时，你可以提供一个前缀，而 Azure 会在名称的末尾追加唯一的编号。
 
 ### <a name="query-instances-for-power-state"></a>查询实例以获取电源状态
-首选方法是使用 Azure Resource Graph 查询虚拟机规模集中的所有 VM。 Azure Resource Graph 针对各个订阅中的 Azure 资源提供大规模有效查询功能。 
+首选方法是使用 Azure Resource Graph 查询虚拟机规模集中的所有 VM。 Azure Resource Graph 针对各个订阅中的 Azure 资源提供大规模有效查询功能。
 
-``` 
-| where type =~ 'Microsoft.Compute/virtualMachines' 
-| where properties.virtualMachineScaleSet contains "demo" 
-| extend powerState = properties.extended.instanceView.powerState.code 
-| project name, resourceGroup, location, powerState 
-| order by resourceGroup desc, name desc 
+```
+| where type =~ 'Microsoft.Compute/virtualMachines'
+| where properties.virtualMachineScaleSet contains "demo"
+| extend powerState = properties.extended.instanceView.powerState.code
+| project name, resourceGroup, location, powerState
+| order by resourceGroup desc, name desc
 ```
 
 使用 [Azure Resource Graph](../governance/resource-graph/overview.md) 查询资源是查询 Azure 资源的方便高效方式，并可以最大程度地减少对资源提供程序的 API 调用。 Azure Resource Graph 是最终一致性缓存，其中的新资源或已更新的资源可能在最长 60 秒内不会反映出来。 方法：
@@ -78,22 +78,22 @@ az vm create –vmss "myVMSS"  –-platform_fault_domain 1
 - 使用“获取 VM”API 和命令获取单个实例的模型与实例视图。
 
 ### <a name="scale-sets-vm-batch-operations"></a>规模集 VM 批处理操作
-使用标准 VM 命令来启动、停止、重启、删除实例，而无需使用虚拟机规模集 VM API。 虚拟机规模集 VM 批处理操作（全部启动、全部停止、全部重置映像等）不适合与灵活业务流程模式配合使用。 
+使用标准 VM 命令来启动、停止、重启、删除实例，而无需使用虚拟机规模集 VM API。 虚拟机规模集 VM 批处理操作（全部启动、全部停止、全部重置映像等）不适合与灵活业务流程模式配合使用。
 
-### <a name="monitor-application-health"></a>监视应用程序运行状况 
-应用程序运行状况监视可让应用程序为 Azure 提供检测信号，以确定应用程序是否正常。 Azure 可以自动替换不正常的 VM 实例。 对于灵活规模集实例，必须在虚拟机上安装并配置应用程序运行状况扩展。 对于统一规模集实例，可以使用应用程序运行状况扩展，或者使用 Azure 负载均衡器自定义运行状况探测来度量运行状况。 
+### <a name="monitor-application-health"></a>监视应用程序运行状况
+应用程序运行状况监视可让应用程序为 Azure 提供检测信号，以确定应用程序是否正常。 Azure 可以自动替换不正常的 VM 实例。 对于灵活规模集实例，必须在虚拟机上安装并配置应用程序运行状况扩展。 对于统一规模集实例，可以使用应用程序运行状况扩展，或者使用 Azure 负载均衡器自定义运行状况探测来度量运行状况。
 
-### <a name="list-scale-sets-vm-api-changes"></a>列出规模集 VM API 更改 
-虚拟机规模集允许列出属于该规模集的实例。 对于灵活业务流程，“列出虚拟机规模集 VM”命令将提供规模集 VM ID 的列表。 然后，可以调用“获取虚拟机规模集 VM”命令，以获取有关规模集如何使用 VM 实例的更多详细信息。 若要获取 VM 的完整详细信息，请使用标准的“获取 VM”命令或 [Azure Resource Graph](../governance/resource-graph/overview.md)。 
+### <a name="list-scale-sets-vm-api-changes"></a>列出规模集 VM API 更改
+虚拟机规模集允许列出属于该规模集的实例。 对于灵活业务流程，“列出虚拟机规模集 VM”命令将提供规模集 VM ID 的列表。 然后，可以调用“获取虚拟机规模集 VM”命令，以获取有关规模集如何使用 VM 实例的更多详细信息。 若要获取 VM 的完整详细信息，请使用标准的“获取 VM”命令或 [Azure Resource Graph](../governance/resource-graph/overview.md)。
 
-### <a name="retrieve-boot-diagnostics-data"></a>检索启动诊断数据 
+### <a name="retrieve-boot-diagnostics-data"></a>检索启动诊断数据
 使用标准 VM API 和命令检索实例启动诊断数据和屏幕截图。 虚拟机规模集 VM 启动诊断 API 和命令不适用于灵活业务流程模式实例。
 
-### <a name="vm-extensions"></a>VM 扩展 
+### <a name="vm-extensions"></a>VM 扩展
 使用面向标准虚拟机的扩展，而不是面向统一业务流程模式实例的扩展。
 
 
-## <a name="a-comparison-of-flexible-uniform-and-availability-sets"></a>灵活模式、统一模式和可用性集的比较 
+## <a name="a-comparison-of-flexible-uniform-and-availability-sets"></a>灵活模式、统一模式和可用性集的比较
 下表按功能对灵活业务流程模式、统一业务流程模式和可用性集做了比较。
 
 | 功能 | 受灵活业务流程（预览版）的支持 | 受统一业务流程（正式版）的支持 | 受 AvSets（正式版）的支持 |
@@ -128,7 +128,7 @@ az vm create –vmss "myVMSS"  –-platform_fault_domain 1
 |         VM Insights  |            否  |            是  |            是  |
 |         Azure 备份  |            是  |            是  |            是  |
 |         Azure Site Recovery  |     否  |            否  |            是  |
-|         在组中添加/删除现有 VM  |            否  |            否  |            否  | 
+|         在组中添加/删除现有 VM  |            否  |            否  |            否  |
 
 
 ## <a name="register-for-flexible-orchestration-mode"></a>注册灵活业务流程模式
@@ -144,44 +144,44 @@ az vm create –vmss "myVMSS"  –-platform_fault_domain 1
 ![重新注册](https://user-images.githubusercontent.com/157768/110362176-cd1ee080-7ff5-11eb-8cc8-36aa967e267a.png)
 
 
-### <a name="azure-powershell"></a>Azure PowerShell 
-使用 [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) cmdlet 为订阅启用预览版。 
+### <a name="azure-powershell"></a>Azure PowerShell
+使用 [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) cmdlet 为订阅启用预览版。
 
 ```azurepowershell-interactive
 Register-AzProviderFeature -FeatureName VMOrchestratorMultiFD -ProviderNamespace Microsoft.Compute `
-Register-AzProviderFeature -FeatureName VMOrchestratorSingleFD -ProviderNamespace Microsoft.Compute  
+Register-AzProviderFeature -FeatureName VMOrchestratorSingleFD -ProviderNamespace Microsoft.Compute
 ```
 
-功能注册最多可能需要 15 分钟。 若要检查注册状态，请使用以下命令： 
+功能注册最多可能需要 15 分钟。 若要检查注册状态，请使用以下命令：
 
 ```azurepowershell-interactive
-Get-AzProviderFeature -FeatureName VMOrchestratorMultiFD -ProviderNamespace Microsoft.Compute 
+Get-AzProviderFeature -FeatureName VMOrchestratorMultiFD -ProviderNamespace Microsoft.Compute
 ```
 
-为订阅注册该功能后，通过将更改传播到计算资源提供程序来完成选用过程。 
+为订阅注册该功能后，通过将更改传播到计算资源提供程序来完成选用过程。
 
 ```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute 
+Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
-### <a name="azure-cli-20"></a>Azure CLI 2.0 
-使用 [az feature register](/cli/azure/feature#az_feature_register) 为订阅启用预览版。 
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+使用 [az feature register](/cli/azure/feature#az_feature_register) 为订阅启用预览版。
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name VMOrchestratorMultiFD
-az feature register --namespace microsoft.compute --name VMOrchestratorSingleFD 
+az feature register --namespace microsoft.compute --name VMOrchestratorSingleFD
 ```
 
-功能注册最多可能需要 15 分钟。 若要检查注册状态，请使用以下命令： 
+功能注册最多可能需要 15 分钟。 若要检查注册状态，请使用以下命令：
 
 ```azurecli-interactive
-az feature show --namespace Microsoft.Compute --name VMOrchestratorMultiFD 
+az feature show --namespace Microsoft.Compute --name VMOrchestratorMultiFD
 ```
 
-为订阅注册该功能后，通过将更改传播到计算资源提供程序来完成选用过程。 
+为订阅注册该功能后，通过将更改传播到计算资源提供程序来完成选用过程。
 
 ```azurecli-interactive
-az provider register --namespace Microsoft.Compute 
+az provider register --namespace Microsoft.Compute
 ```
 
 
@@ -194,7 +194,7 @@ az provider register --namespace Microsoft.Compute
 通过 Azure 门户以灵活业务流程模式创建虚拟机规模集。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在搜索栏中，搜索并选择“虚拟机规模集”。 
+1. 在搜索栏中，搜索并选择“虚拟机规模集”。
 1. 在“虚拟机规模集”页上选择“创建”。 
 1. 在“创建虚拟机规模集”页上查看“业务流程”部分。 
 1. 对于“业务流程模式”，请选择“灵活”选项。 
@@ -209,22 +209,22 @@ az provider register --namespace Microsoft.Compute
 1. 在“虚拟机”页上选择“添加”。 
 1. 在“基本信息”选项卡中查看“实例详细信息”部分。 
 1. 通过在“可用性选项”中选择规模集，将 VM 添加到处于灵活业务流程模式的规模集。 可将虚拟机添加到同一地理区域、局部区域和资源组中的规模集。
-1. 完成虚拟机的创建。 
+1. 完成虚拟机的创建。
 
 :::image type="content" source="./media/virtual-machine-scale-sets-orchestration-modes/vm-portal-orchestration-mode-flexible.png" alt-text="将 VM 添加到灵活业务流程模式规模集":::
 
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-使用 Azure CLI 创建灵活虚拟机规模集。 以下示例演示如何创建一个容错域计数设置为 3 的灵活规模集，然后创建一个虚拟机并将其添加到该灵活规模集。 
+使用 Azure CLI 创建灵活虚拟机规模集。 以下示例演示如何创建一个容错域计数设置为 3 的灵活规模集，然后创建一个虚拟机并将其添加到该灵活规模集。
 
 ```azurecli-interactive
-vmssflexname="my-vmss-vmssflex"  
-vmname="myVM"  
-rg="my-resource-group"  
+vmssflexname="my-vmss-vmssflex"
+vmname="myVM"
+rg="my-resource-group"
 
-az group create -n "$rg" -l $location  
-az vmss create -n "$vmssflexname" -g "$rg" -l $location --orchestration-mode flexible --platform-fault-domain-count 3  
-az vm create -n "$vmname" -g "$rg" -l $location --vmss $vmssflexname --image UbuntuLTS 
+az group create -n "$rg" -l $location
+az vmss create -n "$vmssflexname" -g "$rg" -l $location --orchestration-mode flexible --platform-fault-domain-count 3
+az vm create -n "$vmname" -g "$rg" -l $location --vmss $vmssflexname --image UbuntuLTS
 ```
 
 ### <a name="terraform"></a>Terraform
@@ -249,7 +249,7 @@ zones = ["1"]
 ### <a name="rest-api"></a>REST API
 
 1. 创建空规模集。 下列参数必填：
-    - API 版本 2019-12-01（或更高） 
+    - API 版本 2019-12-01（或更高）
     - 创建灵活规模集时，单个放置组必须是 `false`
 
     ```json
@@ -267,8 +267,8 @@ zones = ["1"]
     ```
 
 2. 将虚拟机添加到规模集。
-    1. 将 `virtualMachineScaleSet` 属性分配到前面创建的规模集。 创建 VM 时需要指定 `virtualMachineScaleSet` 属性。 
-    1. 可以使用 **copy()** Azure 资源管理器模板函数同时创建多个 VM。 参阅 Azure 资源管理器模板中的[资源迭代](../azure-resource-manager/templates/copy-resources.md#iteration-for-a-child-resource)。 
+    1. 将 `virtualMachineScaleSet` 属性分配到前面创建的规模集。 创建 VM 时需要指定 `virtualMachineScaleSet` 属性。
+    1. 可以使用 **copy()** Azure 资源管理器模板函数同时创建多个 VM。 参阅 Azure 资源管理器模板中的[资源迭代](../azure-resource-manager/templates/copy-resources.md#iteration-for-a-child-resource)。
 
     ```json
     {
@@ -295,7 +295,7 @@ zones = ["1"]
     }
     ```
 
-参阅 [Azure 快速入门](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-vmss-flexible-orchestration-mode)获取完整示例。
+参阅 [Azure 快速入门](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-vmss-flexible-orchestration-mode)获取完整示例。
 
 
 ## <a name="frequently-asked-questions"></a>常见问题
@@ -315,38 +315,38 @@ zones = ["1"]
 
 
 ## <a name="troubleshoot-scale-sets-with-flexible-orchestration"></a>排查使用灵活业务流程的规模集的问题
-找到适合你的故障排除方案的解决方案。 
+找到适合你的故障排除方案的解决方案。
 
 ```
 InvalidParameter. The value 'False' of parameter 'singlePlacementGroup' is not allowed. Allowed values are: True
 ```
 
-**原因：** 未为订阅注册灵活业务流程模式公共预览版。 
+**原因：** 未为订阅注册灵活业务流程模式公共预览版。
 
-**解决方法：** 按照前面的说明注册灵活业务流程模式公共预览版。 
+**解决方法：** 按照前面的说明注册灵活业务流程模式公共预览版。
 
 ```
 InvalidParameter. The specified fault domain count 2 must fall in the range 1 to 1.
 ```
 
-**原因：** `platformFaultDomainCount` 参数对于所选的地理区域或局部区域无效。 
+**原因：** `platformFaultDomainCount` 参数对于所选的地理区域或局部区域无效。
 
-**解决方法：** 必须选择有效的 `platformFaultDomainCount` 值。 对于局部区域部署，`platformFaultDomainCount` 最大值为 1。 对于未指定局部区域的地理区域部署，`platformFaultDomainCount` 最大值因地理区域而异。 请参阅[管理用于脚本的 VM 的可用性](../virtual-machines/availability.md)，以确定每个区域的最大容错域数目。 
+**解决方法：** 必须选择有效的 `platformFaultDomainCount` 值。 对于局部区域部署，`platformFaultDomainCount` 最大值为 1。 对于未指定局部区域的地理区域部署，`platformFaultDomainCount` 最大值因地理区域而异。 请参阅[管理用于脚本的 VM 的可用性](../virtual-machines/availability.md)，以确定每个区域的最大容错域数目。
 
 ```
 OperationNotAllowed. Deletion of Virtual Machine Scale Set is not allowed as it contains one or more VMs. Please delete or detach the VM(s) before deleting the Virtual Machine Scale Set.
 ```
 
-**原因：** 尝试删除与一个或多个虚拟机关联的、处于灵活业务流程模式的规模集。 
+**原因：** 尝试删除与一个或多个虚拟机关联的、处于灵活业务流程模式的规模集。
 
 **解决方法：** 删除与处于灵活业务流程模式的规模集关联的所有虚拟机，然后即可删除该规模集。
 
 ```
 InvalidParameter. The value 'True' of parameter 'singlePlacementGroup' is not allowed. Allowed values are: False.
 ```
-**原因：** 为订阅注册了灵活业务流程模式预览版；但是，`singlePlacementGroup` 参数设置为 *True*。 
+**原因：** 为订阅注册了灵活业务流程模式预览版；但是，`singlePlacementGroup` 参数设置为 *True*。
 
-**解决方法：** 必须将 `singlePlacementGroup` 设置为 *False*。 
+**解决方法：** 必须将 `singlePlacementGroup` 设置为 *False*。
 
 
 ## <a name="next-steps"></a>后续步骤

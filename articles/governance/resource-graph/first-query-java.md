@@ -4,12 +4,12 @@ description: 本快速入门介绍为 Java 启用 Resource Graph Maven 包并运
 ms.date: 03/30/2021
 ms.topic: quickstart
 ms.custom: devx-track-java
-ms.openlocfilehash: 97c04cb8b8180034bdc5109446c79deb56e457c9
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 04e32a3e147ed68248f7fead488a1f630ffcdb4d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106223847"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751744"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-java"></a>快速入门：使用 Java 运行你的第一个 Resource Graph 查询
 
@@ -93,7 +93,7 @@ ms.locfileid: "106223847"
 
    ```java
    package com.Fabrikam;
-   
+
    import java.util.Arrays;
    import java.util.List;
    import com.azure.core.management.AzureEnvironment;
@@ -104,22 +104,22 @@ ms.locfileid: "106223847"
    import com.azure.resourcemanager.resourcegraph.models.QueryRequestOptions;
    import com.azure.resourcemanager.resourcegraph.models.QueryResponse;
    import com.azure.resourcemanager.resourcegraph.models.ResultFormat;
-   
+
    public class App
    {
        public static void main( String[] args )
        {
            List<String> listSubscriptionIds = Arrays.asList(args[0]);
            String strQuery = args[1];
-   
+
            ResourceGraphManager manager = ResourceGraphManager.authenticate(new DefaultAzureCredentialBuilder().build(), new AzureProfile(AzureEnvironment.AZURE));
-   
+
            QueryRequest queryRequest = new QueryRequest()
                .withSubscriptions(listSubscriptionIds)
                .withQuery(strQuery);
-           
+
            QueryResponse response = manager.resourceProviders().resources(queryRequest);
-   
+
            System.out.println("Records: " + response.totalRecords());
            System.out.println("Data:\n" + response.data());
        }
@@ -173,11 +173,11 @@ ms.locfileid: "106223847"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果要删除 Java 控制台应用程序和已安装的包，你可以通过删除 `argQuery` 项目文件夹来完成。
+如果要删除 Java 控制台应用程序和已安装的包，可以通过删除 `argQuery` 项目文件夹来完成。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已经创建了一个使用所需 Resource Graph 包的 Java 控制台应用程序，并运行了第一个查询。 若要详细了解 Resource Graph 语言，请继续阅读查询语言详细信息页。
+在本快速入门中，你创建了一个带有所需 Resource Graph 包的 Java 控制台应用程序，并运行了第一个查询。 若要详细了解 Resource Graph 语言，请继续阅读查询语言详细信息页。
 
 > [!div class="nextstepaction"]
 > [获取有关查询语言的详细信息](./concepts/query-language.md)

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 86e79302716fa502d8562dd563b0a5c5fb220a67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01289345ee6bebc0ab1a4608eb83cb8a2827e924
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102547539"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "108745354"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>使用 Azure 文件同步从网络连接存储 (NAS) 迁移到混合云部署
 
@@ -54,7 +54,7 @@ Azure 文件同步适用于直接连接存储 (DAS) 位置，它不支持同步�
 * 以虚拟机或物理服务器的形式创建 Windows Server 2019（最低为 2012R2）。 也支持 Windows Server 故障转移群集。
 * 预配或添加直接连接存储（DAS 与 NAS 相对，后者不受支持）。
 
-    预配的存储量可小于当前在 NAS 设备上使用的存储量。 此配置选择要求你同时使用 Azure 文件同步[云分层](storage-sync-cloud-tiering-overview.md)功能。
+    预配的存储量可小于当前在 NAS 设备上使用的存储量。 此配置选择要求你同时使用 Azure 文件同步[云分层](../file-sync/file-sync-cloud-tiering-overview.md)功能。
     但是，在后一阶段将文件从较大的 NAS 空间复制到较小的 Windows Server 卷时，需要分批操作：
 
     1. 移动一组可装入该磁盘的文件
@@ -65,7 +65,7 @@ Azure 文件同步适用于直接连接存储 (DAS) 位置，它不支持同步�
 
 你部署的 Windows Server 的资源配置（计算和 RAM）主要取决于你要同步的项（文件和文件夹）的数量。 如果有任何顾虑，建议使用性能较高的配置。
 
-[了解如何根据需要同步的项（文件和文件夹）的数量来调整 Windows Server 的大小。](storage-sync-files-planning.md#recommended-system-resources)
+[了解如何根据需要同步的项（文件和文件夹）的数量来调整 Windows Server 的大小。](../file-sync/file-sync-planning.md#recommended-system-resources)
 
 > [!NOTE]
 > 前面链接的文章提供了一个表，其中有服务器内存 (RAM) 的范围。 可将服务器的内存调整为较小的数量，但可以预料到，这样调整可能会导致初始同步花费的时间显著增加。
@@ -114,7 +114,7 @@ Azure 文件同步适用于直接连接存储 (DAS) 位置，它不支持同步�
 
 以下 RoboCopy 命令会将文件从 NAS 存储复制到 Windows Server 目标文件夹。 Windows Server 会将其同步到 Azure 文件共享。 
 
-如果在 Windows Server 上预配的存储量小于 NAS 设备上文件占用的存储量，则已配置云分层。 当本地 Windows Server 卷变满时，将启动[云分层](storage-sync-cloud-tiering-overview.md)，并对已成功同步的文件进行分层。 云分层将生成足够的空间，以便继续从 NAS 设备进行复制。 云分层每小时检查一次，以查看已同步的内容，并释放磁盘空间来使卷可用空间达到 99%。
+如果在 Windows Server 上预配的存储量小于 NAS 设备上文件占用的存储量，则已配置云分层。 当本地 Windows Server 卷变满时，将启动[云分层](../file-sync/file-sync-cloud-tiering-overview.md)，并对已成功同步的文件进行分层。 云分层将生成足够的空间，以便继续从 NAS 设备进行复制。 云分层每小时检查一次，以查看已同步的内容，并释放磁盘空间来使卷可用空间达到 99%。
 RoboCopy 移动文件的速度可能比同步到云和本地分层的速度快，从而耗尽本地磁盘空间。 因此，RoboCopy 将失败。 建议以一种可防止出现这种情况的顺序来处理共享。 例如，不要同时为所有共享启动 RoboCopy 作业，或者只移动其大小未超过 Windows Server 上当前可用空间量的共享，等等。
 
 [!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
@@ -166,6 +166,6 @@ RoboCopy 移动文件的速度可能比同步到云和本地分层的速度快�
 
 对于 Azure 文件共享和 Azure 文件同步，有更多的内容有待探索。以下文章可帮助了解高级选项和最佳做法，还包含疑难解答帮助。 这些文章链接到相应的 [Azure 文件共享文档](storage-files-introduction.md)。
 
-* [AFS 概述](./storage-sync-files-planning.md)
-* [AFS 部署指南](./storage-how-to-create-file-share.md)
-* [AFS 故障排除](storage-sync-files-troubleshoot.md)
+* [Azure 文件同步概述](../file-sync/file-sync-planning.md)
+* [部署 Azure 文件同步](../file-sync/file-sync-deployment-guide.md)
+* [Azure 文件同步故障排除](../file-sync/file-sync-troubleshoot.md)

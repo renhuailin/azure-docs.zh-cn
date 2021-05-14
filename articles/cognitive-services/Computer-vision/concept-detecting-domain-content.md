@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 530ca81cedad06c949323889cc02d2a233dd0c02
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b0a046441466efeef559544814f5471b5802b1d4
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778816"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714829"
 ---
 # <a name="detect-domain-specific-content"></a>检测特定于域的内容
 
@@ -26,7 +26,7 @@ ms.locfileid: "107778816"
 
 ### <a name="scoped-analysis"></a>作用域分析
 
-可通过调用 [Models/\<model\>/Analyze](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) API，仅使用所选的特定于域的模型来分析图像。
+可通过调用 [Models/\<model\>/Analyze](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) API，仅使用所选的特定于域的模型来分析图像。
 
 以下是 **models/celebrities/analyze** API 为给定图像返回的示例 JSON 响应：
 
@@ -57,7 +57,7 @@ ms.locfileid: "107778816"
 
 ### <a name="enhanced-categorization-analysis"></a>增强版分类分析
 
-特定于域的模型还可用于对常规图像分析进行补充。 可通过在 [Analyze](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) API 调用的 *details* 参数中指定特定于域的模型，作为 [高级分类](concept-categorizing-images.md)的一部分执行此操作。
+特定于域的模型还可用于对常规图像分析进行补充。 可通过在 [Analyze](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) API 调用的 *details* 参数中指定特定于域的模型，作为 [高级分类](concept-categorizing-images.md)的一部分执行此操作。
 
 在这种情况下，首先会调用 86 类别分类分类器。 如果检测到的任何类别具有匹配的特定于域的模型，图像也会通过该模型并会添加结果。
 
@@ -105,7 +105,7 @@ ms.locfileid: "107778816"
 | 名人 | 名人识别，支持属于 `people_` 类别的图像 |
 | 地标 | 地标识别，支持属于 `outdoor_` 或 `building_` 类别的图像 |
 
-调用 [Models](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f20e) API 将返回此信息，以及每个模型可应用于的类别：
+调用 [Models](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f20e) API 将返回此信息，以及每个模型可应用于的类别：
 
 ```json
 {

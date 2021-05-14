@@ -2,17 +2,17 @@
 title: 向/从 Azure 数据资源管理器复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动来向/从 Azure 数据资源管理器复制数据。
 ms.author: orspodek
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
-ms.openlocfilehash: f343cf820632c8b53f74a938a039820ea4f56eac
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 606d10694b6806b62871ddf24afd259d7bc224bc
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027391"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482968"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据
 
@@ -46,7 +46,7 @@ ms.locfileid: "105027391"
 >[!TIP]
 >有关 Azure 数据资源管理器连接器的演练，请参阅[使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据](/azure/data-explorer/data-factory-load-data)和[从数据库大容量复制到 Azure 数据资源管理器](/azure/data-explorer/data-factory-template)。
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 Azure 数据资源管理器连接器的数据工厂实体，以下部分提供了有关用于定义这些实体的属性的详细信息。
 
@@ -108,7 +108,7 @@ Azure 数据资源管理器链接服务支持以下属性：
 }
 ```
 
-### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> Azure 资源的托管标识身份验证
+### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> Azure 资源托管标识身份验证
 
 若要使用 Azure 资源托管标识身份验证，请按照以下步骤授予权限：
 

@@ -10,12 +10,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: avgupta
-ms.openlocfilehash: 2be560d16b133696c520b8872406ff6a36b0087b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 19de46bc87b72ada221c63e36e87d0545304d344
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137104"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102122147"
 ---
 # <a name="leverage-content-type-to-store-json-key-values-in-app-configuration"></a>利用内容类型在应用程序配置中存储 JSON 密钥值
 
@@ -170,7 +170,7 @@ az appconfig kv export -d file --format json --path "~/Export.json" --separator 
 ```
 
 > [!NOTE]
-> 如果你的应用程序配置存储具有没有 JSON 内容类型的某些键值，则这些值也将以字符串格式导出到相同的文件中。
+> 如果你的应用程序配置存储具有没有 JSON 内容类型的某些键值，则这些值也将以字符串格式导出到相同的文件中。 如果只想导出 JSON 键值，请为 JSON 键值分配唯一的标签或前缀，并在导出过程中使用标签或前缀筛选。
 
 
 ## <a name="consuming-json-key-values-in-applications"></a>在应用程序中使用 JSON 键值
@@ -185,7 +185,7 @@ az appconfig kv export -d file --format json --path "~/Export.json" --separator 
 
 .NET 应用程序配置将包含以下键/值：
 
-| 密钥 | 值 |
+| 密钥 | “值” |
 |---|---|
 | Settings:FontSize | 24 |
 | Settings:UseDefaultRouting | false |

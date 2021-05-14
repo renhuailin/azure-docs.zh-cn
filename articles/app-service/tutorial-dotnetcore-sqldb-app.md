@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 52a5b127312ef979791d17b27ca67b21a779e310
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: de37965ad092423b067d7f3e310a5a07e563c9d4
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765715"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204974"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 ASP.NET Core 和 Azure SQL 数据库应用
 
@@ -150,7 +150,7 @@ az sql server firewall-rule create --name AllowLocalClient --server <server-name
 az sql db create --resource-group myResourceGroup --server <server-name> --name coreDB --service-objective S0
 ```
 
-### <a name="create-connection-string"></a>创建连接字符串
+### <a name="retrieve-connection-string"></a>检索连接字符串
 
 使用 [`az sql db show-connection-string`](/cli/azure/sql/db#az_sql_db_show_connection_string) 命令获取连接字符串。
 
@@ -354,7 +354,7 @@ http://<app-name>.azurewebsites.net
 
 ![在应用服务中运行的应用](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-祝贺你！ 数据驱动的 .NET Core 应用已经在你的应用服务中运行了。
+**祝贺你！** 数据驱动的 .NET Core 应用已经在你的应用服务中运行了。
 
 ## <a name="update-locally-and-redeploy"></a>在本地更新并重新部署
 

@@ -1,18 +1,18 @@
 ---
 title: 将数据复制到 Azure Databricks Delta Lake 以及从中复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，向/从 Azure Databricks Delta Lake 复制数据。
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/29/2021
-ms.openlocfilehash: fcf533ad95e2567e62d44d6997752df6f3145ecb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b1aa174645288f5f3024779a0e5b9e8bdbb57452
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726781"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109480448"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从Azure Databricks Delta Lake 复制数据
 
@@ -67,7 +67,7 @@ Databricks 群集需要有权访问 Azure Blob 或 Azure Data Lake Storage Gen2 
 
 ## <a name="get-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 以下部分详细介绍了用来定义特定于 Azure Databricks Delta Lake 连接器的数据工厂实体的属性。
 

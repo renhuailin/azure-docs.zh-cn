@@ -1,18 +1,18 @@
 ---
 title: 使用 PowerShell 以增量方式加载数据
 description: 此 PowerShell 脚本演示如何使用 Azure 数据工厂以增量方式将数据从 Azure SQL 数据库复制到 Azure Blob 存储。
-ms.author: jingwang
-author: linda33wj
+ms.author: yexu
+author: dearandyxu
 ms.service: data-factory
 ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 736403696ec340e547547458cb62e243e6e660b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9160889bb66e872be044460dec9b3e39f505d551
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389835"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482050"
 ---
 # <a name="powershell-script---incrementally-load-data-by-using-azure-data-factory"></a>PowerShell 脚本 - 使用 Azure 数据工厂以增量方式加载数据
 

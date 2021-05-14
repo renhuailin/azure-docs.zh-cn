@@ -1,16 +1,16 @@
 ---
 title: Azure 逻辑应用的内置策略定义
 description: 列出 Azure 逻辑应用的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 04/28/2021
+ms.date: 05/04/2021
 ms.topic: reference
 ms.suite: integration
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 1365f7a69862ffb13d8926861687dd00ba7451e1
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: cb6ac84662310fe4b92f7fc7c7c3a2ae646e027d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108183500"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739056"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-logic-apps"></a>Azure 逻辑应用的 Azure Policy 内置定义
 

@@ -4,12 +4,12 @@ description: 使用 Azure 资源管理器模板创建包含一个事件中心的
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d17561fca32f272450748378a61c5c3ad77f9ec4
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 54dbe55448e905bab1893aac6c71baace0205be0
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108071372"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736675"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>使用模板通过事件中心创建一个命名空间并启用捕获
 
@@ -23,19 +23,19 @@ ms.locfileid: "108071372"
 
 如需完整的模板，请单击以下 GitHub 链接：
 
-- [事件中心和启用“捕获到存储”模板][Event Hub and enable Capture to Storage template] 
+- [事件中心和启用“捕获到存储”模板][Event Hub and enable Capture to Storage template]
 - [事件中心和允许捕获到 Azure Data Lake Store 的模板][Event Hub and enable Capture to Azure Data Lake Store template]
 
 > [!NOTE]
 > 若要查看最新模板，请访问 [Azure 快速入门模板][Azure Quickstart Templates]库并搜索事件中心。
-> 
-> 
+>
+>
 
 ## <a name="what-will-you-deploy"></a>将部署什么内容？
 
 借助此模板，可以部署包含事件中心的事件中心命名空间并启用[事件中心捕获](event-hubs-capture-overview.md)。 通过事件中心捕获，可以在所选的指定时间或大小间隔内，将事件中心的流式处理数据自动传送到 Azure Blob 存储或 Azure Data Lake Store。 单击以下按钮，允许事件中心捕获将事件捕获到 Azure 存储中：
 
-[![部署到 Azure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture%2Fazuredeploy.json)
+[![部署到 Azure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.eventhub%2Feventhubs-create-namespace-and-enable-capture%2Fazuredeploy.json)
 
 单击以下按钮，允许事件中心捕获将事件捕获到 Azure Data Lake Store 中：
 
@@ -52,9 +52,9 @@ ms.locfileid: "108071372"
 要创建的事件中心命名空间的名称。
 
 ```json
-"eventHubNamespaceName":{  
+"eventHubNamespaceName":{
      "type":"string",
-     "metadata":{  
+     "metadata":{
          "description":"Name of the EventHub namespace"
       }
 }
@@ -65,9 +65,9 @@ ms.locfileid: "108071372"
 在事件中心命名空间中创建的事件中心的名称。
 
 ```json
-"eventHubName":{  
+"eventHubName":{
     "type":"string",
-    "metadata":{  
+    "metadata":{
         "description":"Name of the event hub"
     }
 }
@@ -75,7 +75,7 @@ ms.locfileid: "108071372"
 
 ### <a name="messageretentionindays"></a>messageRetentionInDays
 
-事件中心内消息的保留天数。 
+事件中心内消息的保留天数。
 
 ```json
 "messageRetentionInDays":{
@@ -171,7 +171,7 @@ ms.locfileid: "108071372"
 ### <a name="capturenameformat"></a>captureNameFormat
 
 事件中心捕获用来编写 Avro 文件的名称格式。 注意，捕获名称格式必须包含 `{Namespace}`、`{EventHub}`、`{PartitionId}`、`{Year}`、`{Month}`、`{Day}`、`{Hour}`、`{Minute}`、`{Second}` 字段。 这些字段可以按任意顺序排列，可以带或不带分隔符。
- 
+
 ```json
 "captureNameFormat": {
       "type": "string",
@@ -180,7 +180,7 @@ ms.locfileid: "108071372"
         "description": "A Capture Name Format must contain {Namespace}, {EventHub}, {PartitionId}, {Year}, {Month}, {Day}, {Hour}, {Minute} and {Second} fields. These can be arranged in any order with or without delimeters. E.g.  Prod_{EventHub}/{Namespace}\\{PartitionId}_{Year}_{Month}/{Day}/{Hour}/{Minute}/{Second}"
       }
     }
-  
+
 ```
 
 ### <a name="apiversion"></a>apiVersion
@@ -188,10 +188,10 @@ ms.locfileid: "108071372"
 模板的 API 版本。
 
 ```json
- "apiVersion":{  
+ "apiVersion":{
     "type":"string",
     "defaultValue":"2017-04-01",
-    "metadata":{  
+    "metadata":{
         "description":"ApiVersion used by the template"
     }
  }
@@ -271,13 +271,13 @@ ms.locfileid: "108071372"
 创建包含一个事件中心的  EventHub 类型的命名空间，并启用“捕获到 Azure Blob 存储”。
 
 ```json
-"resources":[  
-      {  
+"resources":[
+      {
          "apiVersion":"[variables('ehVersion')]",
          "name":"[parameters('eventHubNamespaceName')]",
          "type":"Microsoft.EventHub/Namespaces",
          "location":"[variables('location')]",
-         "sku":{  
+         "sku":{
             "name":"Standard",
             "tier":"Standard"
          },
@@ -377,7 +377,7 @@ ms.locfileid: "108071372"
 ```
 
 > [!NOTE]
-> 可以使用 **skipEmptyArchives** 属性允许或禁止当捕获时间段内未发生任何事件时发出空文件。 
+> 可以使用 **skipEmptyArchives** 属性允许或禁止当捕获时间段内未发生任何事件时发出空文件。
 
 ## <a name="commands-to-run-deployment"></a>运行部署的命令
 
@@ -388,9 +388,9 @@ ms.locfileid: "108071372"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 部署模板，允许事件中心捕获将事件捕获到 Azure 存储中：
- 
+
 ```powershell
-New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture/azuredeploy.json
+New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.eventhub/eventhubs-create-namespace-and-enable-capture/azuredeploy.json
 ```
 
 部署模板，允许事件中心捕获将事件捕获到 Azure Data Lake Store 中：
@@ -404,7 +404,7 @@ New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -Templa
 Azure Blob 存储（作为目标）：
 
 ```azurecli
-az deployment group create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture/azuredeploy.json][]
+az deployment group create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.eventhub/eventhubs-create-namespace-and-enable-capture/azuredeploy.json][]
 ```
 
 Azure Data Lake Store（作为目标）：
@@ -426,5 +426,5 @@ az deployment group create \<my-resource-group\> \<my-deployment-name\> --templa
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
 [Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
 [Azure Resources naming conventions]: /azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging
-[Event hub and enable Capture to Storage template]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-capture
+[Event hub and enable Capture to Storage template]: https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.eventhub/eventhubs-create-namespace-and-enable-capture
 [Event hub and enable Capture to Azure Data Lake Store template]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-capture-for-adls

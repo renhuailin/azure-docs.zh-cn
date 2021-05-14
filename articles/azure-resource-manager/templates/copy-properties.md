@@ -3,12 +3,12 @@ title: 定义属性的多个实例
 description: 在资源上创建属性时，可以使用 Azure 资源管理器模板（ARM 模板）中的复制操作进行多次迭代。
 ms.topic: conceptual
 ms.date: 04/01/2021
-ms.openlocfilehash: 16c293f1c3aff64aeb8b6cae4b7f1aa14dcd0a77
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 3f6eeac8b32e0fb34b973e82557cc48bab532ffd
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479995"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736927"
 ---
 # <a name="property-iteration-in-arm-templates"></a>ARM 模板中的属性迭代
 
@@ -372,12 +372,12 @@ resource vnetname_resource 'Microsoft.Network/virtualNetworks@2018-04-01' = [for
 
 |模板  |说明  |
 |---------|---------|
-|[数据磁盘数可变的 VM 部署](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |通过虚拟机部署多个数据磁盘。 |
+|[数据磁盘数可变的 VM 部署](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-windows-copy-datadisks) |通过虚拟机部署多个数据磁盘。 |
 
 ## <a name="next-steps"></a>后续步骤
 
 - 若要完成教程，请参阅[教程：使用 ARM 模板创建多个资源实例](template-tutorial-create-multiple-instances.md)。
-- 有关复制循环的其他用法，请参阅：
+- 有关 copy 循环的其他用法，请参阅：
   - [ARM 模板中的资源迭代](copy-resources.md)
   - [ARM 模板中的变量迭代](copy-variables.md)
   - [ARM 模板中的输出迭代](copy-outputs.md)

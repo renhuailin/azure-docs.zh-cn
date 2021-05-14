@@ -1,17 +1,17 @@
 ---
 title: 复制活动中的架构和数据类型映射
 description: 了解 Azure 数据工厂中的复制活动如何将架构和数据类型从源数据映射到接收器数据。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.author: jingwang
-ms.openlocfilehash: 68d90fa56d5dce902a44a32b322e582a81e419d5
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.author: jianleishen
+ms.openlocfilehash: 2bd616ddec207d2aad47608c6f0200c7b629471e
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011631"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482518"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>复制活动中的架构和数据类型映射
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -42,7 +42,7 @@ ms.locfileid: "107011631"
 
 可在数据工厂创作 UI >“复制活动”->“映射”选项卡上配置映射，也可以采用编程方式在“复制活动”> `translator` 属性中指定映射。 以下属性在 `translator` -> `mappings` 数组 > 对象 -> `source` 和 `sink` 中受支持，后者指向用于映射数据的特定列/字段。
 
-| 属性 | 说明                                                  | 必须 |
+| 属性 | 说明                                                  | 必需 |
 | -------- | ------------------------------------------------------------ | -------- |
 | name     | 源或接收器列/字段的名称。 适用于表格源和接收器。 | 是      |
 | 序号  | 列索引。 从 1 开始。 <br>在使用带分隔符的文本但没有标头行时应用，为必填项。 | 否       |
@@ -450,7 +450,7 @@ ms.locfileid: "107011631"
 
 可以指定复制活动 -> `translator` -> `schemaMapping`，以便在分层数据和表格形式的数据之间进行映射（例如，将数据从 MongoDB/REST 复制到文本文件以及从 Oracle 复制到 Azure Cosmos DB API for MongoDB）。 复制活动 `translator` 部分支持以下属性：
 
-| 属性            | 说明                                                  | 必须 |
+| 属性            | 说明                                                  | 必需 |
 | :------------------ | :----------------------------------------------------------- | :------- |
 | type                | 复制活动转换器的 type 属性必须设置为：**TabularTranslator** | 是      |
 | schemaMapping       | 键值对的集合，代表 **从源端到接收器端** 的映射关系。<br/>- **键：** 代表源。 对于 **表格源**，指定数据集结构中定义的列名称；对于 **分层源**，指定要提取和映射的每个字段的 JSON 路径表达式。<br>- **值：** 代表接收器。 对于 **表格接收器**，指定数据集结构中定义的列名称；对于 **分层接收器**，指定要提取和映射的每个字段的 JSON 路径表达式。 <br>在使用分层数据时，对于根对象下的字段，JSON 路径以根 $ 开头；对于按 `collectionReference` 属性选择的数组中的字段，JSON 路径以数组元素开头。 | 是      |
