@@ -3,12 +3,12 @@ title: 模式：使用策略定义部署资源
 description: 此 Azure Policy 模式提供了有关如何使用 deployIfNotExists 策略定义部署资源的示例。
 ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: 1dda3d5f2d4bef57919931ec3c1635310723e0c8
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 2220a0c66cecac3dc9dfd342fe6b802df41c1f10
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106093394"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752447"
 ---
 # <a name="azure-policy-pattern-deploy-resources"></a>Azure Policy 模式：部署资源
 
@@ -43,7 +43,7 @@ ms.locfileid: "106093394"
 - **template** - 此属性包括了模板本身。 在此示例中，**location** 模板参数设置新的网络观察程序资源的位置。
 
   :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="30-44":::
-  
+
 - **parameters** - 此属性定义提供给 **template** 的参数。 参数名称必须与在 **template** 中定义的名称匹配。 在此示例中，将此参数命名为 **location** 以便匹配。 **location** 的值再次使用 `field()` 函数来获取所计算资源（即 **policyRule.if** 块中的虚拟网络）的值。
 
   :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="45-49":::

@@ -1,19 +1,19 @@
 ---
 title: 查看 BGP 状态和指标
 titleSuffix: Azure VPN Gateway
-description: 查看与 BGP 相关的重要信息以进行故障排除。
+description: 了解如何查看与 BGP 相关的重要信息来进行故障排除。
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: sample
 ms.date: 03/10/2021
 ms.author: alzam
-ms.openlocfilehash: f97bbccc980705699af822ba2730233239cdfd5f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0f7ef69494281684d7846e4490dfcc27ba08080e
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103148786"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108206720"
 ---
 # <a name="view-bgp-metrics-and-status"></a>查看 BGP 指标和状态
 

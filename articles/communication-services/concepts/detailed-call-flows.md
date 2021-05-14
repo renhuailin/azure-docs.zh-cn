@@ -8,12 +8,12 @@ ms.author: nmurav
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 526e3a1e4eeb6ef6a31a33498241d9a7443cca35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f25f7504c8962643176785f62e0d5d33928726bb
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103490630"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325438"
 ---
 # <a name="call-flow-topologies"></a>调用流拓扑
 本文介绍 Azure 通信服务呼叫流拓扑。 如果你是一名企业客户，且你将通信服务集成到你管理的某个网络中，那么请查看本文。 若要简要了解通信服务呼叫流，请访问[呼叫流概念文档](./call-flows.md)。
@@ -74,7 +74,7 @@ ms.locfileid: "103490630"
 
 ### <a name="communication-services-internet"></a>通信服务 (Internet)
 
-此拓扑供从云中使用通信服务的客户使用，无需进行任何本地部署（例如 SIP 接口）。 在此拓扑中，进出通信服务的流量会流经 Internet。
+此拓扑供从云中使用通信服务的客户使用，无需进行任何本地部署（例如 Azure 直接路由）。 在此拓扑中，进出通信服务的流量会流经 Internet。
 
 :::image type="content" source="./media/call-flows/detailed-flow-general.png" alt-text="Azure 通信服务拓扑。":::
 
@@ -172,7 +172,7 @@ VPN 用户与客户网络之间的信令使用流 2* 和流 4 流向 Azure。 �
 
 ### <a name="use-case-communication-services-client-to-pstn-through-communication-services-trunk"></a>用例：通过通信服务 Trunk 从通信服务客户端到 PSTN
 
-可通过通信服务从公用电话交换网 (PSTN) 发出和接收呼叫。 如果 PSTN Trunk 使用通信服务提供的电话号码进行连接，则没有任何针对此用例的特殊连接要求。 如果要将你自己的本地 PSTN Trunk 连接到 Azure 通信服务，可使用 SIP 接口（在 CY2021 中提供）。
+可通过通信服务从公用电话交换网 (PSTN) 发出和接收呼叫。 如果 PSTN Trunk 使用通信服务提供的电话号码进行连接，则没有任何针对此用例的特殊连接要求。 如果要将你自己的本地 PSTN Trunk 连接到 Azure 通信服务，可使用 Azure 直接路由（在 2021 年中提供）。
 
 :::image type="content" source="./media/call-flows/acs-to-pstn.png" alt-text="与 PSTN 参与者的一对一呼叫":::
 

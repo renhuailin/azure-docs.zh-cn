@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: tutorial
-ms.date: 06/08/2020
+ms.date: 04/28/2021
 ms.author: cshoe
-ms.openlocfilehash: 8c6764ad5b63aa2fde07326ab986404ea4312316
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f572d49867fe9149416664a405309253dd01af2
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99585171"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202923"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>教程：将 Jekyll 网站发布到 Azure 静态 Web 应用（预览）
 
@@ -23,7 +23,7 @@ ms.locfileid: "99585171"
 > [!div class="checklist"]
 >
 > - 创建 Jekyll 网站
-> - 设置 Azure 静态 Web 应用
+> - 设置 Azure 静态 Web 应用资源
 > - 将 Jekyll 应用部署到 Azure
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -111,7 +111,7 @@ Azure 静态 Web 应用使用 GitHub 来发布你的网站。 以下步骤展示
 
 1. 对于“SKU”，选择“免费”。
 
-    :::image type="content" source="./media/publish-jekyll/basic-app-details.png" alt-text="已填写的详细信息":::
+1. 在“部署详细信息”中，为“源”选择“GitHub”。
 
 1. 单击“使用 GitHub 登录”按钮。
 
@@ -119,21 +119,21 @@ Azure 静态 Web 应用使用 GitHub 来发布你的网站。 以下步骤展示
 
 1. 选择“jekyll-static-app”作为存储库。
 
-1. 对于“分支”，选择“主”。
-
-    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="已完成的 GitHub 信息":::
+1. 为“分支”选择“主”。
 
 ### <a name="build"></a>构建
 
 接下来，添加生成过程用于生成应用的配置设置。 以下设置配置 GitHub Actions 工作流文件。
 
-1. 单击“下一步:生成 >”按钮以编辑生成配置。
+1. 对于“生成预设”，选择“自定义”。
 
-1. 将“应用位置”设置为“/_site”。
+1. 将“应用位置”设置为 /。
 
-1. “应用项目位置”留空。
+1. 将“输出位置”设置为“_site”。
 
    “API 位置”的值不是必需的，因为目前不会部署 API。
+
+   :::image type="content" source="./media/publish-jekyll/github-actions-inputs.png" alt-text="GitHub Actions 输入":::
 
 ### <a name="review-and-create"></a>查看并创建
 
@@ -141,40 +141,35 @@ Azure 静态 Web 应用使用 GitHub 来发布你的网站。 以下步骤展示
 
 1. 单击“创建”以开始创建 Azure 静态 Web 应用并为部署预配 GitHub Action。
 
-1. 部署开始会失败，因为工作流文件需要一些特定于 Jekyll 的设置。 要添加这些设置，请导航到终端，并使用 GitHub 操作将提交内容拉取到你的计算机。
-
-   ```bash
-   git pull
-   ```
-
-1. 在文本编辑器中打开 Jekyll 应用，然后打开 .github/workflows/azure-pages-<WORKFLOW_NAME>.yml 文件。
-
-1. 在 `- name: Build And Deploy` 行前，添加以下配置块。
-
-    ```yml
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1.59.1
-      with:
-        ruby-version: 2.6
-    - name: Install dependencies
-      run: bundle install
-    - name: Jekyll build
-      run: jekyll build
-    ```
-
-1. 提交更新的工作流并推送到 GitHub。
-
-    ```bash
-    git add -A
-    git commit -m "Updating GitHub Actions workflow"
-    git push
-    ```
-
 1. 等待 GitHub Actions 完成。
 
-1. 在 Azure 门户的“概述”窗口中，单击 URL 链接，打开已部署的应用程序 。
+1. 在 Azure 门户的新建 Azure 静态 Web 应用资源的“概述”窗口中，单击“URL”链接以打开已部署的应用程序。
 
    :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="已部署的应用程序":::
+
+#### <a name="custom-jekyll-settings"></a>自定义 Jekyll 设置
+
+生成静态 Web 应用时，将生成一个[工作流文件](./github-actions-workflow.md)，其中包含应用程序的发布配置设置。
+
+若要配置环境变量（如 `JEKYLL_ENV`），请将 `env` 部分添加到工作流中的 Azure 静态 Web 应用 GitHub 操作。
+
+```yaml
+- name: Build And Deploy
+   id: builddeploy
+   uses: Azure/static-web-apps-deploy@v0.0.1-preview
+   with:
+      azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+      repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+      action: "upload"
+      ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
+      # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
+      app_location: "/" # App source code path
+      api_location: "" # Api source code path - optional
+      output_location: "_site_" # Built app content directory - optional
+      ###### End of Repository/Build Configurations ######
+   env:
+      JEKYLL_ENV: production
+```
 
 ## <a name="clean-up-resources"></a>清理资源
 

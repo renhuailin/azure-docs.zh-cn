@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: db55a29e53c53e26fbb04d96ddf1864946bafbfd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a7fb228763870792765c954589b347a18c560b5
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99581272"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758962"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
@@ -98,10 +98,6 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 ## <a name="lifecycle-management-policies-with-premium-tier-for-azure-data-lake-storage"></a>Azure Data Lake Storage 高级层的生命周期管理策略
 
 无法在热层、冷层和存档层之间移动高级层中存储的数据。 但可以将数据从高级层复制到其他帐户中的热访问层。
-
-## <a name="dremio-support-with-premium-performance-blockblobstorage-storage-accounts"></a>高性能 BlockBlobStorage 存储帐户的 Dremio 支持
-
-Dremio 尚且不能连接到其上启用了分层命名空间功能的 BlockBlobStorage 帐户。 
 
 ## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Windows Azure Storage Blob (WASB) 驱动程序（不支持用于 Data Lake Storage Gen2）
 

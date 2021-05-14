@@ -4,12 +4,12 @@ description: 列出 Azure 资源管理器的所有资源提供程序命名空间
 ms.topic: conceptual
 ms.date: 03/16/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2264883ed6b7b4d23a6030b93d1aef88816c1fd7
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 40c166a85da1ad5370b6e90096061790f1c77d49
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330776"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108745732"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服务的资源提供程序
 
@@ -81,7 +81,6 @@ ms.locfileid: "108330776"
 | Microsoft.DBforMariaDB | [Azure Database for MariaDB](../../mariadb/index.yml) |
 | Microsoft.DBforMySQL | [Azure Database for MySQL](../../mysql/index.yml) |
 | Microsoft.DBforPostgreSQL | [Azure Database for PostgreSQL](../../postgresql/index.yml) |
-| Microsoft.DeploymentManager | [Azure Deployment Manager](../templates/deployment-manager-overview.md) |
 | Microsoft.DesktopVirtualization | [Windows 虚拟桌面](../../virtual-desktop/index.yml) |
 | Microsoft.Devices | [Azure IoT 中心](../../iot-hub/index.yml)<br />[Azure IoT 中心设备预配服务](../../iot-dps/index.yml) |
 | Microsoft.DevOps | [Azure DevOps](/azure/devops/) |

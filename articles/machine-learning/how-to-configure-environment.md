@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 03/22/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 18b23dc8b7ed8b074ac3afbc7d44e5d132a2ee58
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 80ea49436e9bfec5203f3a0493d441cfdbd1dbde
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890071"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755110"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>为 Azure 机器学习设置 Python 开发环境
 
@@ -102,7 +102,7 @@ ms.locfileid: "107890071"
 1. 安装 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/install)。
 1. 若要将本地环境配置为使用你的 Azure 机器学习工作区，请[创建一个工作区配置文件](#workspace)或使用现有文件。
 
-设置本地环境后，便可以开始使用 Azure 机器学习。 若要开始，请参阅 [Azure 机器学习 Python 入门指南](tutorial-1st-experiment-sdk-setup-local.md)。
+设置本地环境后，便可以开始使用 Azure 机器学习。 若要开始，请参阅 [Azure 机器学习 Python 入门指南](tutorial-1st-experiment-hello-world.md)。
 
 ### <a name="jupyter-notebooks"></a><a id="jupyter"></a>Jupyter Notebook
 
@@ -147,7 +147,7 @@ Azure 机器学习[计算实例](concept-compute-instance.md)是一个安全的�
 
 无需为计算实例安装或配置任何组件。  
 
-随时可从 Azure 机器学习工作区内部创建组件。 只需提供名称并指定 Azure VM 类型即可。 请参考以下文章尝试操作计算实例：[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。
+随时可从 Azure 机器学习工作区内部创建组件。 只需提供名称并指定 Azure VM 类型即可。 请参考以下文章尝试操作计算实例：[教程：设置环境和工作区](quickstart-create-resources.md)。
 
 若要详细了解计算实例（包括如何安装包），请参阅[创建和管理 Azure 机器学习计算实例](how-to-create-manage-compute-instance.md)。
 

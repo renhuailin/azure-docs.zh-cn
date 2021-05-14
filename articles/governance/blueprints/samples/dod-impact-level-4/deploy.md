@@ -3,12 +3,12 @@ title: DoD 影响级别 4 蓝图示例
 description: DoD 影响级别 4 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
 ms.date: 04/13/2021
 ms.topic: sample
-ms.openlocfilehash: ce0d2d162bf77c147e0e4bc26e68964cd50f4372
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 48e352ff84ecd8f17a1aaa3e19e87638d3c0839c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378442"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757540"
 ---
 # <a name="deploy-the-dod-impact-level-4-blueprint-sample"></a>部署 DoD 影响级别 4 蓝图示例
 
@@ -95,10 +95,10 @@ ms.locfileid: "107378442"
 |-|-|-|-|
 |允许的位置|策略分配|允许的位置|通过此策略，可限制组织在部署资源时可指定的位置。 用于强制执行异地符合性要求。|
 |允许的资源组位置|策略分配 |允许的位置|通过此策略，可限制组织可以创建资源组的位置。 用于强制执行异地符合性要求。|
-|对 SQL 服务器部署审核|策略分配|保持期的值（天数，0 表示保持期无限制）|保留天数（可选，如果未指定，则为 180 天）|
+|对 SQL 服务器部署审核|策略分配|保持期的值（天数，0 表示保持期无限制） |保留天数（可选，如果未指定，则为 180 天） |
 |对 SQL 服务器部署审核|策略分配|要进行 SQL Server 审核的存储帐户的资源组名称|审核针对 Azure 存储帐户（将在 SQL Server 所在的每个区域中创建的存储帐户，由该区域中的所有服务器共享）中审核日志的写入数据库事件。 重要提示 - 为了正确地进行审核，请勿删除或重命名资源组或存储帐户。|
 |为网络安全组部署诊断设置|策略分配|适用于网络安全组诊断的存储帐户前缀|此前缀将与网络安全组位置结合使用，一起构成已创建的存储帐户的名称。|
-|为网络安全组部署诊断设置|策略分配|适用于网络安全组诊断的存储帐户的资源组名称（必须存在）|将在其中创建存储帐户的资源组。 此资源组必须已存在。|
+|为网络安全组部署诊断设置|策略分配|适用于网络安全组诊断的存储帐户的资源组名称（必须存在） |将在其中创建存储帐户的资源组。 此资源组必须已存在。|
 |为 Linux 虚拟机规模集部署 Log Analytics 代理|策略分配|Linux 虚拟机规模集的 Log Analytics 工作区|如果此工作区超出分配范围，则必须手动将“Log Analytics 参与者”权限（或类似权限）授予策略分配的主体 ID。|
 |为 Linux 虚拟机规模集部署 Log Analytics 代理|策略分配|可选：支持将 Linux OS 添加到范围的 VM 映像列表|可以使用空数组来表示没有可选参数：\[\]|
 |为 Linux VM 部署 Log Analytics 代理|策略分配|Linux VM 的 Log Analytics 工作区|如果此工作区超出分配范围，则必须手动将“Log Analytics 参与者”权限（或类似权限）授予策略分配的主体 ID。|

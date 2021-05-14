@@ -3,12 +3,12 @@ title: 媒体图概念 - Azure
 description: 通过使用媒体图，你可以定义应从何处捕获媒体、应如何处理媒体以及应将结果交付到何处。 本文提供了媒体图概念的详细说明。
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: ad23acbbbdd0c15e92e471ee22a229470a8a3a75
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 83c51bc87321633339f75ac57b480116d450bca7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557660"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108770598"
 ---
 # <a name="media-graph"></a>媒体图
 
@@ -112,7 +112,8 @@ IoT Edge 上的实时视频分析支持媒体图中以下类型的节点：
 
 通过文件接收器节点，你可以将媒体（视频和/或音频）数据写入 IoT Edge 设备本地文件系统上的位置。 媒体图中只能有一个文件接收器节点，并且它必须是信号门处理器节点的下游。 这会将输出文件的持续时间限制为信号门处理器节点属性中指定的值。 为确保边缘设备不会耗尽磁盘空间，还可以设置一个最大大小，供 IoT Edge 模块上的实时视频分析用来存储数据。  
 > [!NOTE]
-如果文件接收器已满，则 IoT Edge 模块上的实时视频分析就会开始删除最旧的数据，将其替换为新数据。
+> 如果文件接收器已满，则 IoT Edge 模块上的实时视频分析就会开始删除最旧的数据，将其替换为新数据。
+
 #### <a name="iot-hub-message-sink"></a>IoT 中心消息接收器  
 
 通过 IoT 中心消息接收器节点，你可以将事件发布到 IoT Edge 中心。 IoT Edge 中心随后可以将数据路由到其他模块或边缘设备上的应用，或路由到云中的 IoT 中心（根据部署清单中指定的路由）。 IoT 中心消息接收器节点可以接受来自上游处理器（例如运动检测处理器节点）的事件，或通过 HTTP 扩展处理器节点接受来自外部推理服务的事件。

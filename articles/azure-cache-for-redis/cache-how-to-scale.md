@@ -6,13 +6,13 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 43db8d4c094ec1b08a24c29fdaccf97f63ef29b9
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 8d66678ee963a89dcd6b469eaf2622b95a4a5ec4
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833961"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752366"
 ---
 # <a name="scale-an-azure-cache-for-redis-instance"></a>缩放 Azure Cache for Redis 实例
 Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能的选择更加灵活。 对于基本、标准或高级缓存，可以在创建后更改其大小和层级，以满足应用程序的需求。 本文演示如何使用 Azure 门户以及 Azure PowerShell 和 Azure CLI 等工具来缩放缓存。

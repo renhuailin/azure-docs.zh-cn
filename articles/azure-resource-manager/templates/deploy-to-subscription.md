@@ -3,13 +3,13 @@ title: 将资源部署到订阅
 description: 介绍了如何在 Azure 资源管理器模板中创建资源组。 它还展示了如何在 Azure 订阅范围内部署资源。
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4514067a4f8601e7774c0bfbdf1f65d8ef3a3e09
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: a2b9fedbd2916953b0ff2166bc7fddb5f877ee07
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108314582"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109754079"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>使用 ARM 模板进行订阅部署
 

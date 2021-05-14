@@ -4,20 +4,16 @@ description: 本教程介绍如何使用 API 管理 (APIM) 手动添加 API。
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 04/20/2020
+ms.date: 04/26/2021
 ms.author: apimpm
-ms.openlocfilehash: 39a3b9d7dd9efbda93de0b5d7c5f9938922d0012
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4419bca71e3523d4b1bf6c803a96fe8190bda780
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96183804"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108230741"
 ---
 # <a name="add-an-api-manually"></a>手动添加 API
 
@@ -55,7 +51,7 @@ ms.locfileid: "96183804"
 
 1. 选择上一步中创建的 API。
 2. 单击“+ 添加操作”。
-3. 在“URL”中，选择“GET”，并在资源中输入“/get”。 
+3. 在“URL”中，选择“GET”，并在资源中输入 `/get` 。
 4. 输入“FetchData”作为“显示名称”。
 5. 选择“保存” 。
 
@@ -77,8 +73,8 @@ ms.locfileid: "96183804"
 
 1. 选择上一步中创建的 API。
 2. 单击“+ 添加操作”。
-3. 在“URL”中，选择“GET”，并在资源中输入“/status/{code}”。  （可选）可以提供与此参数关联的某些信息。 例如，为“类型”输入“数字”，为“值”输入“200”（默认值）。
-4. 输入“GetStatus”作为“显示名称”。
+3. 在“URL”中，选择“GET”，并在资源中输入 `*/status/{code}` 。 （可选）可以提供与此参数关联的某些信息。 例如，为“类型”输入“数字”，为“值”输入“200”（默认值）。
+4. 为显示名称输入“WildcardGet”。
 5. 选择“保存” 。
 
 ### <a name="test-the-operation"></a>测试操作 
@@ -86,10 +82,34 @@ ms.locfileid: "96183804"
 在 Azure 门户中测试操作。  或者，可以在 **开发人员门户** 中测试操作。
 
 1. 选择“测试”选项卡。
-2. 选择“GetStatus”。 默认情况下，代码值设置为“200”。 可以更改默认值以测试其他值。 例如，键入“418”。
+2. 选择“WildcardGet”。 默认情况下，代码值设置为“200”。 可以更改默认值以测试其他值。 例如，键入“418”。
 3. 按“发送”。
 
     随后将显示“http://httpbin.org/status/200”操作生成的响应。 若要转换操作，请参阅[转换和保护 API](transform-api.md)。
+
+## <a name="add-and-test-a-wildcard-operation"></a>添加和测试通配符操作
+
+此部分显示如何添加通配符操作。 通过通配符操作可使用 HTTP 请求传递任意值。 可创建一个通配符 GET 操作，而不是像前述几部分所示创建单独的 GET 操作。
+
+### <a name="add-the-operation"></a>添加操作
+
+1. 选择上一步中创建的 API。
+2. 单击“+ 添加操作”。
+3. 在“URL”中，选择“GET”，并在资源中输入 `/*` 。
+4. 为显示名称输入“WildcardGet”。
+5. 选择“保存” 。
+
+### <a name="test-the-operation"></a>测试操作 
+
+在 Azure 门户中测试操作。  或者，可以在 **开发人员门户** 中测试操作。
+
+1. 选择“测试”选项卡。
+2. 选择“WildcardGet”。 尝试在前述部分中已经测试过的一个或多个 GET 操作，或者尝试其他受支持的 GET 操作。 
+
+    例如，在“模板参数”中，将通配符 (*) 名称旁边的值更新为 `headers`。 该操作会返回传入请求的 HTTP 标头。
+1. 按“发送”。
+
+    随后将显示“http://httpbin.org/headers”操作生成的响应。 若要转换操作，请参阅[转换和保护 API](transform-api.md)。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 
