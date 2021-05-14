@@ -1,24 +1,24 @@
 ---
 title: 复制和转换 Azure Database for MySQL 中的数据
-description: 了解如何使用 Azure 数据工厂复制和转换 Azure Database for MySQL 中的数据。
-ms.author: jingwang
-author: linda33wj
+description: 了解如何通过使用 Azure 数据工厂来复制和转换 Azure Database for MySQL 中的数据。
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/10/2021
-ms.openlocfilehash: 4d13f6f435a21b467cae1b8e14211a001792787f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 69ed45d50c98321c68e55aa15304e6d439fe58ad
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103012596"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109480250"
 ---
-# <a name="copy-and-transform-data-in-azure-database-for-mysql-by-using-azure-data-factory"></a>使用 Azure 数据工厂复制和转换 Azure Database for MySQL 中的数据
+# <a name="copy-and-transform-data-in-azure-database-for-mysql-by-using-azure-data-factory"></a>通过使用 Azure 数据工厂复制和转换 Azure Database for MySQL 中的数据
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从/向 Azure Database for MySQL 复制数据，以及如何使用数据流转换 Azure Database for MySQL 中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
+本文概述了如何使用 Azure 数据工厂中的复制活动从/向 Azure Database for MySQL 复制数据，以及如何使用数据流来转换 Azure Database for MySQL 中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 
 此连接器专用于 [Azure Database for MySQL 服务](../mysql/overview.md)。 若要从位于本地或云中的通用 MySQL 数据库复制数据，请使用 [MySQL 连接器](connector-mysql.md)。
 
@@ -32,7 +32,7 @@ ms.locfileid: "103012596"
 
 ## <a name="getting-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 Azure Database for MySQL 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -48,7 +48,7 @@ Azure Database for MySQL 链接服务支持以下属性：
 
 典型的连接字符串为 `Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`。 你可以根据自己的情况设置更多属性：
 
-| 属性 | 说明 | 选项 | 必选 |
+| 属性 | 说明 | 选项 | 必须 |
 |:--- |:--- |:--- |:--- |
 | SSLMode | 此选项指定驱动程序在连接到 MySQL 时是否使用 TLS 加密和验证。 例如 `SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERRED (1) **(Default)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | 否 |
 | UseSystemTrustStore | 此选项指定是使用系统信任存储中的 CA 证书还是使用指定 PEM 文件中的 CA 证书。 例如 `UseSystemTrustStore=<0/1>;`| Enabled (1) / Disabled (0) **(Default)** | 否 |
@@ -137,7 +137,7 @@ Azure Database for MySQL 链接服务支持以下属性：
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**AzureMySqlSource** | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 | queryCommandTimeout | 查询请求超时前的等待时间。默认值为 120 分钟 (02:00:00) | 否 |
 
 **示例：**
@@ -218,7 +218,7 @@ Azure Database for MySQL 链接服务支持以下属性：
 
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
-在映射数据流中转换数据时，可以从 Azure Database for MySQL 读取表以及将数据写入表。 有关详细信息，请参阅映射数据流中的[源转换](data-flow-source.md)和[接收器转换](data-flow-sink.md)。 你可以选择使用 Azure Database for MySQL 数据集或[内联数据集](data-flow-source.md#inline-datasets)作为源和接收器类型。
+在转换映射数据流中的数据时，可以从 Azure Database for MySQL 读取表，并且可以将数据写入表。 有关详细信息，请参阅映射数据流中的[源转换](data-flow-source.md)和[接收器转换](data-flow-sink.md)。 可以选择使用 Azure Database for MySQL 数据集或[内联数据集](data-flow-source.md#inline-datasets)作为源和接收器类型。
 
 ### <a name="source-transformation"></a>源转换
 
@@ -233,7 +233,7 @@ Azure Database for MySQL 链接服务支持以下属性：
 
 #### <a name="azure-database-for-mysql-source-script-example"></a>Azure Database for MySQL 源脚本示例
 
-使用 Azure Database for MySQL 作为源类型时，关联的数据流脚本为：
+在使用 Azure Database for MySQL 作为源类型时，关联的数据流脚本为：
 
 ```
 source(allowSchemaDrift: true,
@@ -258,7 +258,7 @@ source(allowSchemaDrift: true,
 
 #### <a name="azure-database-for-mysql-sink-script-example"></a>Azure Database for MySQL 接收器脚本示例
 
-使用 Azure Database for MySQL 作为接收器类型时，关联的数据流脚本为：
+在使用 Azure Database for MySQL 作为接收器类型时，关联的数据流脚本为：
 
 ```
 IncomingStream sink(allowSchemaDrift: true,

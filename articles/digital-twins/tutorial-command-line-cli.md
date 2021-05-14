@@ -7,20 +7,20 @@ ms.author: baanders
 ms.date: 2/26/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 578befe3e26ebb42fa2172976e07d0a5836e3743
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 45269c964c2114c31ca6bfeeb6a48cb0c1329937
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107124"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203534"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-the-azure-cli"></a>教程：使用 Azure CLI 创建 Azure 数字孪生图
 
 [!INCLUDE [digital-twins-tutorial-selector.md](../../includes/digital-twins-tutorial-selector.md)]
 
-在本教程中，你将使用模型、孪生和关系在 Azure 数字孪生中生成一个图。 本教程使用的工具为 [适用于 **Azure CLI** 的 Azure 数字孪生命令集](how-to-use-cli.md)。 
+在本教程中，你将使用模型、孪生和关系在 Azure 数字孪生中生成一个图。 本教程使用的工具是[适用于 Azure CLI 的 Azure 数字孪生命令集](how-to-use-cli.md)。 
 
-可以使用 CLI 命令执行基本的 Azure 数字孪生操作，例如上传模型、创建和修改孪生，以及创建关系。 还可以参阅 [*az dt* 命令集的参考文档](/cli/azure/dt)，以查看完整的 CLI 命令集。
+可以使用 CLI 命令执行基本的 Azure 数字孪生操作，例如上传模型、创建和修改孪生，以及创建关系。 还可查看 [az dt 命令集的参考文档](/cli/azure/dt)，查看完整的 CLI 命令集。
 
 在本教程中，你将...
 > [!div class="checklist"]
@@ -38,8 +38,8 @@ ms.locfileid: "107107124"
 ### <a name="download-the-sample-models"></a>下载示例模型
 
 本教程使用两个预先编写的模型，这些模型是适用于 Azure 数字孪生的 C# [端到端示例项目](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)的一部分。 模型文件位于以下位置： 
-* [*Room.json*](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json)
-* [*Floor.json*](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)
+* [Room.json](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json)
+* [Floor.json](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)
 
 若要将这些文件获取到你的计算机上，请使用上面的导航链接，并将文件正文复制到计算机上同名的本地文件（*Room.json* 和 *Floor.json*）中。
 
@@ -52,7 +52,7 @@ ms.locfileid: "107107124"
 
 若要在本文中使用 Azure 数字孪生，首先需要设置一个 Azure 数字孪生实例，还需具备使用它所必需的权限。 如果已有通过以前的工作设置的 Azure 数字孪生实例，则可以使用该实例。
 
-否则，请按照 [如何：*设置实例和身份验证*](how-to-set-up-instance-cli.md)中的说明设置实例和身份验证。 说明中还包含用于验证是否已成功完成每个步骤并准备好继续使用新实例的步骤。
+否则，请按照如何：[设置实例和身份验证](how-to-set-up-instance-cli.md)中的说明设置实例和身份验证。 说明中还包含用于验证是否已成功完成每个步骤并准备好继续使用新实例的步骤。
 
 设置 Azure 数字孪生实例后，请记下以下值，稍后需要这些值来连接到该实例：
 * 实例的 **主机名**。
@@ -70,7 +70,7 @@ az dt show -n <ADT_instance_name>
 
 设置 CLI 和 Azure 数字孪生实例后，接下来可以开始生成方案图。 
 
-创建 Azure 数字孪生解决方案的第一步是为环境定义孪生[模型](concepts-models.md)。 
+创建 Azure 数字孪生解决方案的第一步是为环境定义孪生模型。 
 
 模型类似于面向对象的编程语言中的类；它们为[数字孪生](concepts-twins-graph.md)提供了日后可遵循并实例化的用户定义的模板。 它们用类似于 JSON 的语言（称为数字孪生定义语言 (DTDL)）编写，并且可以定义孪生的属性、遥测、关系和组件   。
 
@@ -91,7 +91,7 @@ az dt show -n <ADT_instance_name>
     
     在计算机上导航到“Room.json”文件并选择“打开”。 然后针对 Floor.json 重复此步骤。
 
-1. 接下来，按如下所示使用 [**az dt model create**](/cli/azure/dt/model#az_dt_model_create) 命令将更新的 *Room* 模型上传到 Azure 数字孪生实例。 第二个命令上传另一个模型 *Floor*，在下一部分，还要使用该模型创建不同类型的孪生。
+1. 接下来，按如下所示使用 [az dt model create](/cli/azure/dt/model#az_dt_model_create) 命令将更新的 *Room* 模型上传到 Azure 数字孪生实例。 第二个命令上传另一个模型 *Floor*，在下一部分，还要使用该模型创建不同类型的孪生。
 
     ```azurecli-interactive
     az dt model create -n <ADT_instance_name> --models Room.json
@@ -101,9 +101,9 @@ az dt show -n <ADT_instance_name>
     每个命令的输出将显示有关已成功上传的模型的信息。
 
     >[!TIP]
-    >还可以使用 model create 命令的 `--from-directory` 选项，同时上传一个目录中的所有模型。 有关详细信息，请参阅 [*az dt model create* 的可选参数](/cli/azure/dt/model#az_dt_model_create-optional-parameters)。
+    >还可以使用 model create 命令的 `--from-directory` 选项，同时上传一个目录中的所有模型。 有关详细信息，请查看 [az dt model create 的可选参数](/cli/azure/dt/model#az_dt_model_create-optional-parameters)。
 
-1. 按如下所示使用 [**az dt model list**](/cli/azure/dt/model#az_dt_model_list) 命令验证是否已创建模型。 此命令将输出已上传到 Azure 数字孪生实例的所有模型的列表及其完整信息。 
+1. 按如下所示使用 [az dt model list](/cli/azure/dt/model#az_dt_model_list) 命令验证是否已创建模型。 此命令将输出已上传到 Azure 数字孪生实例的所有模型的列表及其完整信息。 
 
     ```azurecli-interactive
     az dt model list -n <ADT_instance_name> --definition
@@ -127,9 +127,9 @@ az dt model create -n <ADT_instance_name> --models Room.json
 
 ## <a name="create-digital-twins"></a>创建数字孪生
 
-现在，一些模型已上传到 Azure 数字孪生实例，你可以根据模型定义创建[数字孪生](concepts-twins-graph.md)。 数字孪生表示业务环境中的实体，这类似于农场中的传感器、大楼中的房间或汽车上的灯。 
+现在，一些模型已上传到 Azure 数字孪生实例，你可以根据模型定义创建数字孪生。 数字孪生表示业务环境中的实体，这类似于农场中的传感器、大楼中的房间或汽车上的灯。 
 
-若要创建数字孪生，请使用 [**az dt twin create**](/cli/azure/dt/twin#az_dt_twin_create) 命令。 必须引用孪生所基于的模型，并且可以选择定义模型中任何属性的初始值。 在此阶段，无需传递任何关系信息。
+若要创建数字孪生，请使用 [az dt twin create](/cli/azure/dt/twin#az_dt_twin_create) 命令。 必须引用孪生所基于的模型，并且可以选择定义模型中任何属性的初始值。 在此阶段，无需传递任何关系信息。
 
 1. 在 Cloud Shell 中运行此代码，以基于前面更新的 *Room* 模型以及另一个模型 *Floor* 创建多个孪生。 回想一下，Room 具有三个属性，因此可以为这些属性提供具有初始值的参数。 （初始化属性值在一般情况下是可选操作，但本教程需要此操作。）
 
@@ -151,7 +151,7 @@ az dt model create -n <ADT_instance_name> --models Room.json
     
     每个命令的输出将显示有关已成功创建的孪生的信息（包括随房间孪生一起初始化的房间孪生属性）。
 
-1. 可按如下所示使用 [**az dt twin query**](/cli/azure/dt/twin#az_dt_twin_query) 命令验证是否已创建孪生。 所示的查询将查找 Azure 数字孪生实例中的所有数字孪生。
+1. 可按如下所示使用 [az dt twin query](/cli/azure/dt/twin#az_dt_twin_query) 命令验证是否已创建孪生。 所示的查询将查找 Azure 数字孪生实例中的所有数字孪生。
     
     ```azurecli-interactive
     az dt twin query -n <ADT_instance_name> -q "SELECT * FROM DIGITALTWINS"
@@ -165,7 +165,7 @@ az dt model create -n <ADT_instance_name> --models Room.json
 
 你可以修改已创建的孪生的属性。 
 
-1. 运行以下 [**az dt twin update**](/cli/azure/dt/twin#az_dt_twin_update) 命令，将 *room0* 的 RoomName 从 *Room0* 更改为 *PresidentialSuite*：
+1. 运行以下 [az dt twin update](/cli/azure/dt/twin#az_dt_twin_update) 命令，将 *room0* 的 RoomName 从 *Room0* 更改为 *PresidentialSuite*：
 
     ```azurecli-interactive
     az dt twin update -n <ADT_instance_name> --twin-id room0 --json-patch '{"op":"add", "path":"/RoomName", "value": "PresidentialSuite"}'
@@ -183,7 +183,7 @@ az dt model create -n <ADT_instance_name> --models Room.json
 
     :::image type="content" source="media/tutorial-command-line/cli/output-update-twin.png" alt-text="Cloud Shell 屏幕截图，其中显示了 update 命令的结果，结果中包括 RoomName 的值 PresidentialSuite。" lightbox="media/tutorial-command-line/cli/output-update-twin.png":::
 
-1. 可以通过运行 [**az dt twin show**](/cli/azure/dt/twin#az_dt_twin_show) 命令查看 *room0* 的信息，来验证更新是否成功：
+1. 可以通过运行 [az dt twin show](/cli/azure/dt/twin#az_dt_twin_show) 命令查看 *room0* 的信息，来验证更新是否成功：
 
     ```azurecli-interactive
     az dt twin show -n <ADT_instance_name> --twin-id room0
@@ -193,11 +193,11 @@ az dt model create -n <ADT_instance_name> --models Room.json
 
 ## <a name="create-a-graph-by-adding-relationships"></a>通过添加关系来创建关系图
 
-接下来，你可以在这些孪生之间创建某种关系，以将它们连接到[孪生图](concepts-twins-graph.md) 。 孪生图用于表示整个环境。 
+接下来，你可以在这些孪生之间创建某种关系，以将它们连接到孪生图 。 孪生图用于表示整个环境。 
 
-可由你在两个不同孪生之间创建的关系的类型，是在前面上传的[模型](#model-a-physical-environment-with-dtdl)中定义的。 [*Floor* 的模型定义](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)指定楼层可以有一个名为 *contains* 的关系类型。 因此，可以创建从每个 *Floor* 孪生到它所包含的相应房间的 *contains* 类型的关系。
+可由你在两个不同孪生之间创建的关系的类型，是在前面上传的[模型](#model-a-physical-environment-with-dtdl)中定义的。 [Floor 的模型定义](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)指定楼层可有一个名为 contains 的关系类型。 因此，可以创建从每个 *Floor* 孪生到它所包含的相应房间的 *contains* 类型的关系。
 
-若要添加关系，请使用 [**az dt twin relationship create**](/cli/azure/dt/twin/relationship#az_dt_twin_relationship_create) 命令。 指定该关系的来源孪生、关系类型，以及该关系要连接到的孪生。 最后，为该关系指定唯一的 ID。 如果一个关系已定义为具有属性，则还可以在此命令中初始化关系属性。
+若要添加关系，请使用 [az dt twin relationship create](/cli/azure/dt/twin/relationship#az_dt_twin_relationship_create) 命令。 指定该关系的来源孪生、关系类型，以及该关系要连接到的孪生。 最后，为该关系指定唯一的 ID。 如果一个关系已定义为具有属性，则还可以在此命令中初始化关系属性。
 
 1. 运行以下代码，将来自前面创建的每个 *Floor* 孪生的 *contains* 类型的关系添加到相应的 *Room* 孪生。 关系的名称分别为 *relationship0* 和 *relationship1*。
 
@@ -207,7 +207,7 @@ az dt model create -n <ADT_instance_name> --models Room.json
     ```
     
     >[!TIP]
-    >在 [*Floor* 模型](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)中定义的 *contains* 关系也有两个属性：`ownershipUser` 和 `ownershipDepartment`，因此，在创建关系时，也可以为参数提供这些属性的初始值。
+    >在 [Floor 模型](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)中定义的 *contains* 关系也有两个属性：`ownershipUser` 和 `ownershipDepartment`，因此，在创建关系时，也可以为参数提供这些属性的初始值。
     > 若要在这些属性已初始化的情况下创建关系，请将 `--properties` 选项添加到上述任一命令，如下所示：
     > ```azurecli-interactive
     > ... --properties '{"ownershipUser":"MyUser", "ownershipDepartment":"MyDepartment"}'
@@ -240,7 +240,7 @@ az dt model create -n <ADT_instance_name> --models Room.json
 
 ## <a name="query-the-twin-graph-to-answer-environment-questions"></a>查询孪生图以回答环境问题
 
-Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query-language.md)孪生图，以解答有关环境的问题。 在 Azure CLI 中，这是使用 [**az dt twin query**](/cli/azure/dt/twin#az_dt_twin_query) 命令来实现的。
+Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query-language.md)孪生图，以解答有关环境的问题。 在 Azure CLI 中，这是使用 [az dt twin query](/cli/azure/dt/twin#az_dt_twin_query) 命令来实现的。
 
 在 Cloud Shell 中运行以下查询可以回答有关示例环境的一些问题。
 
@@ -255,7 +255,7 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
     :::image type="content" source="media/tutorial-command-line/cli/output-query-all.png" alt-text="Cloud Shell 的屏幕截图，其中显示了孪生查询的部分结果，结果中包括 room0 和 room1。" lightbox="media/tutorial-command-line/cli/output-query-all.png":::
 
     >[!TIP]
-    >你可能会认出，这是在前面的 [*创建数字孪生*](#create-digital-twins)部分中用来查找实例中的所有 Azure 数字孪生的同一命令。
+    >你可能会认出，这是在前面的[创建数字孪生](#create-digital-twins)部分中用来查找实例中的所有 Azure 数字孪生的同一命令。
 
 1. **我的环境中的所有房间都有哪些？** （按模型查询）
 
@@ -308,7 +308,7 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 
 * **如果你打算继续学习下一篇教程**，在此之前可以保留本教程中设置的资源而不要清除任何内容，并重复使用 Azure 数字孪生实例。
 
-* **如果你要继续使用 Azure 数字孪生实例，但同时想要清除其所有模型、孪生和关系**，可以分别使用 [**az dt twin relationship delete**](/cli/azure/dt/twin/relationship#az_dt_twin_relationship_delete)、[**az dt twin delete**](/cli/azure/dt/twin#az_dt_twin_delete) 和 [**az dt model delete**](/cli/azure/dt/model#az_dt_model_delete) 命令清除实例中的关系、孪生和模型。
+* **如果你要继续使用 Azure 数字孪生实例，但同时想要清除其所有模型、孪生和关系**，可以分别使用 [az dt twin relationship delete](/cli/azure/dt/twin/relationship#az_dt_twin_relationship_delete)、[az dt twin delete](/cli/azure/dt/twin#az_dt_twin_delete) 和 [az dt model delete](/cli/azure/dt/model#az_dt_model_delete) 命令清除实例中的关系、孪生和模型。
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
@@ -320,4 +320,4 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 
 请继续学习下一篇教程，将 Azure 数字孪生与其他 Azure 服务结合使用来实现数据驱动的端到端方案：
 > [!div class="nextstepaction"]
-> [*教程：连接端到端解决方案*](tutorial-end-to-end.md)
+> [教程：连接端到端解决方案](tutorial-end-to-end.md)

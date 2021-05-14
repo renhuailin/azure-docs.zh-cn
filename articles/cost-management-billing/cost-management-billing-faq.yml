@@ -9,12 +9,12 @@ metadata:
   ms.topic: conceptual
   ms.date: 04/15/2021
   ms.author: banders
-  ms.openlocfilehash: e96ba3c42ddce1ed12ad560b2d73b99a35c61f8b
-  ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+  ms.openlocfilehash: 4d56dcf2d6aed950723170f542a45f5ab5a9e405
+  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/19/2021
-  ms.locfileid: "107730685"
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "108765604"
 title: Azure 成本管理 + 计费常见问题解答 (FAQ)
 summary: ''
 sections:
@@ -95,10 +95,10 @@ sections:
       是，可以使用 [Power BI Desktop 连接到成本管理数据](/power-bi/connect-data/desktop-connect-azure-cost-management)，或使用[适用于 EA 的成本管理 Power BI 应用](costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md)。
   - question: 成本管理中支持的产品/服务类型有哪些？
     answer: >
-      请参阅[支持的 Microsoft Azure 产品/服务](/costs/understand-cost-mgt-data.md#supported-microsoft-azure-offers)。
+      请参阅[支持的 Microsoft Azure 产品/服务](/azure/cost-management-billing/costs/understand-cost-mgt-data#supported-microsoft-azure-offers)。
   - question: 多久能在 Azure 成本管理中查看成本和使用情况数据？
     answer: >
-      请参阅[成本和使用情况数据更新和保留](/costs/understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention)。
+      请参阅[成本和使用情况数据更新和保留](/azure/cost-management-billing/costs/understand-cost-mgt-data#cost-and-usage-data-updates-and-retention)。
   - question: 能否在 Azure 成本管理中找到所有与成本相关的信息？
     answer: >
       请参阅[成本管理中包括的成本](costs/understand-cost-mgt-data.md#costs-included-in-cost-management)。
@@ -140,7 +140,7 @@ sections:
     answer: >
       可以通过多种方式查看节省额。
 
-      -  如果你是 EA 客户，则可以使用适用于 EA 的 Azure 成本管理 Power BI 应用来查看 [RI 节省额报告](/costs/analyze-cost-data-azure-cost-management-power-bi-template-app#reports-available-with-the-app.md)。
+      -  如果你是 EA 客户，则可以使用适用于 EA 的 Azure 成本管理 Power BI 应用来查看 [RI 节省额报告](/azure/cost-management-billing/costs/analyze-cost-data-azure-cost-management-power-bi-template-app#reports-available-with-the-app.md)。
 
       -  使用“使用情况 + 费用”数据文件手动[确定预留节省额](reservations/understand-reserved-instance-usage-ea.md#determine-reservation-savings)。
   - question: 如何查看预留使用不足情况？
@@ -151,7 +151,7 @@ sections:
       有关详细信息，请参阅[收回 Azure 预留成本](reservations/charge-back-usage.md?toc=/azure/cost-management-billing/reservations/toc.json)。
   - question: 如何查看现成 VM 产生的费用？
     answer: >
-      请参阅[查看现成 VM 费用](/costs/cost-analysis-common-uses.md#view-your-spot-vm-charges)。
+      请参阅[查看现成 VM 费用](/azure/cost-management-billing/costs/cost-analysis-common-uses#view-your-spot-vm-charges)。
   - question: 如何获取预留详细信息报告？
     answer: >
       阅读 API 文档以[生成预留详细信息报告](/rest/api/cost-management/generatereservationdetailsreport)。

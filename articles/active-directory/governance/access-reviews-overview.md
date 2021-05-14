@@ -3,7 +3,7 @@ title: 什么是访问评审？ - Azure Active Directory | Microsoft Docs
 description: 使用 Azure Active Directory 访问评审可以控制组成员身份和应用程序访问权限，从而满足组织的监管、风险管理和符合性计划。
 services: active-directory
 documentationcenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
 ms.date: 10/29/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 22bfef17f68b2e83e4f7462d8e9af6fb8aacc284
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7e02cb82895940fca43a53c671aecd46e19ef497
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98246734"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786620"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Azure AD 访问评审是什么？
 

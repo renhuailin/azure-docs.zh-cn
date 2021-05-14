@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/03/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 1a0502568c1673bcd7f57d3e9bc9c95ed90bbefa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2df24a85b39d1a66a162a826dbc3985a3908d53
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80756913"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109508370"
 ---
 <!-- This tells how to create a custom shared access policy that has service connect and registry RW permissions for your IoT hub and get the connection string for it-->
 
@@ -35,4 +35,4 @@ ms.locfileid: "80756913"
 
     ![显示如何检索连接字符串](./media/iot-hub-include-find-service-regrw-connection-string/iot-hub-get-connection-string.png)
 
-有关 IoT 中心共享访问策略和权限的详细信息，请参阅[访问控制和权限](../articles/iot-hub/iot-hub-devguide-security.md#access-control-and-permissions)。
+有关 IoT 中心共享访问策略和权限的详细信息，请参阅[访问控制和权限](../articles/iot-hub/iot-hub-dev-guide-sas.md#access-control-and-permissions)。

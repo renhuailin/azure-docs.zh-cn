@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8a3fe99896ff244d2e35737919e6797141095acb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99190ccab6dc299fac970fce6fb0222096592357
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100364012"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108766890"
 ---
 # <a name="move-data-by-using-copy-activity"></a>使用复制活动移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -64,7 +64,7 @@ ms.locfileid: "100364012"
 > [!NOTE] 
 > 如需将数据移入/移出复制活动不支持的数据存储，可通过自己的逻辑使用数据工厂内的 **自定义活动** 来复制/移动数据。 有关创建和使用自定义活动的详细信息，请参阅[在 Azure数据工厂管道中使用自定义活动](data-factory-use-custom-activities.md)。
 
-[!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
+[!INCLUDE [data-factory-supported-data-stores](includes/data-factory-supported-data-stores.md)]
 
 > [!NOTE]
 > 带 * 的数据存储既可位于本地，也可位于 Azure IaaS 上，需要用户在本地/Azure IaaS 计算机上安装[数据管理网关](data-factory-data-management-gateway.md)。
@@ -91,7 +91,7 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 |:--- |:--- |:--- |
 | 美国 | 美国东部 | 美国东部 |
 | &nbsp; | 美国东部 2 | 美国东部 2 |
-| &nbsp; | Central US | Central US |
+| &nbsp; | 美国中部 | 美国中部 |
 | &nbsp; | 美国中北部 | 美国中北部 |
 | &nbsp; | 美国中南部 | 美国中南部 |
 | &nbsp; | 美国中西部 | 美国中西部 |
@@ -107,7 +107,7 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 | 亚太区 | 东南亚 | Southeast Asia |
 | &nbsp; | 东亚 | 东南亚 |
 | 澳大利亚 | 澳大利亚东部 | 澳大利亚东部 |
-| &nbsp; | 澳大利亚东南部 | 澳大利亚东南部 |
+| &nbsp; | 澳大利亚东南部 | Australia Southeast |
 | 印度 | 印度中部 | 印度中部 |
 | &nbsp; | 印度西部 | 印度中部 |
 | &nbsp; | 印度南部 | 印度中部 |

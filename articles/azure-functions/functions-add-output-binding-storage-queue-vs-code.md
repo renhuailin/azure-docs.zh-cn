@@ -5,12 +5,12 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-js
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 96384d2c50e7d5b4b5b6e652d01c4a89cd519573
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 785ed0ee38e27087750542c0719ab9e85ecd00ed
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99493360"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109516661"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>使用 Visual Studio Code 将 Azure Functions 连接到 Azure 存储
 
@@ -172,7 +172,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage
 
 如果已安装 Azure 存储资源管理器并已将其连接到 Azure 帐户，请跳过此部分。
 
-1. 运行 [Azure存储资源管理器] 工具，选择左侧的“连接”图标，然后选择“添加帐户”。
+1. 运行 [Azure 存储资源管理器](https://storageexplorer.com/)工具，选择左侧的连接图标，并选择“添加帐户”。
 
     ![将 Azure 帐户添加到 Microsoft Azure 存储资源管理器](./media/functions-add-output-binding-storage-queue-vs-code/storage-explorer-add-account.png)
 

@@ -1,18 +1,18 @@
 ---
 title: 复制活动性能优化功能
 description: 了解有助于优化 Azure 数据工厂中的复制活动性能的重要功能。
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/24/2020
-ms.openlocfilehash: ecb4550b218b069273cba2e3d70a9510c1cc74ca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e161ddbeaad0f9e366baa1265622bede93d5b567
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100387795"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482608"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>复制活动性能优化功能
 

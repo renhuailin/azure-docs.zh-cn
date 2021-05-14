@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: d2b9ea2e075ddcf20860ccb9ab1f2eff654993ad
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 3fe95c00c95898be1ddd6967fb9ab8ba1e3f0ddb
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107499370"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109484626"
 ---
 # <a name="reference---iot-hub-endpoints"></a>参考 - IoT 中心终结点
 
@@ -36,7 +36,7 @@ Azure IoT 中心属于多租户服务，向各种执行组件公开功能。 下
 
 以下列表对这些终结点进行了说明：
 
-* **资源提供程序**。 IoT 中心资源提供程序公开一个 [Azure 资源管理器](../azure-resource-manager/management/overview.md)接口。 此接口使 Azure 订阅所有者可以创建和删除 IoT 中心以及更新 IoT 中心属性。 IoT 中心属性可管理[中心级别安全策略](iot-hub-devguide-security.md#access-control-and-permissions)，而不是设备级别的访问控制以及云到设备和设备到云消息传送的功能选项。 IoT 中心资源提供程序还可让你[导出设备标识](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)。
+* **资源提供程序**。 IoT 中心资源提供程序公开一个 [Azure 资源管理器](../azure-resource-manager/management/overview.md)接口。 此接口使 Azure 订阅所有者可以创建和删除 IoT 中心以及更新 IoT 中心属性。 IoT 中心属性可管理[中心级别安全策略](iot-hub-dev-guide-sas.md#access-control-and-permissions)，而不是设备级别的访问控制以及云到设备和设备到云消息传送的功能选项。 IoT 中心资源提供程序还可让你[导出设备标识](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)。
 
 * **设备标识管理**。 每个 IoT 中心公开一组用于管理设备标识的 HTTPS REST 终结点（创建、检索、更新和删除）。 [设备标识](iot-hub-devguide-identity-registry.md)用于设备身份验证和访问控制。
 

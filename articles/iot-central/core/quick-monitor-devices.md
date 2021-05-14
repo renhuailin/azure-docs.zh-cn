@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 4c63a9833e6b9a9b243d289d79428ddef1468253
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c3aaeb5b3c01c9c940d49fd7022de653de0e48b
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99833875"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108206774"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices"></a>快速入门：使用 Azure IoT Central 监视设备
 
 *本文适用于操作员、构建者和管理员。*
 
-本快速入门介绍作为操作员如何使用 Microsoft Azure IoT Central 应用程序监视设备和更改设置。
+本快速入门介绍作为操作员如何使用 Azure IoT Central 应用程序监视设备和更改设置。
 
 ## <a name="prerequisites"></a>先决条件
 

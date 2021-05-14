@@ -4,12 +4,12 @@ description: 了解适用于 Oracle 工作负载的 BareMetal 实例上的以太
 ms.topic: reference
 ms.subservice: workloads
 ms.date: 04/14/2021
-ms.openlocfilehash: c57cbc86d17090d6960a334c2790d80b43420aca
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: c381d06c5f152ef1bfecfb76747bf26dbb24f06e
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588881"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109516950"
 ---
 # <a name="ethernet-configuration-of-baremetal-for-oracle"></a>适用于 Oracle 的 BareMetal 的以太网配置
 
@@ -58,7 +58,7 @@ ms.locfileid: "107588881"
 - 以太网“C”应具有一个用于与 NFS 存储通信的已分配 IP 地址。 此类型的地址不应在 etc/hosts 目录中进行维护。
 - 以太网“D”应专门用于 Global Reach 设置以便访问 DR 区域中的 BareMetal 实例。
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
 详细了解适用于 Oracle 的 BareMetal 基础结构体系结构。
 

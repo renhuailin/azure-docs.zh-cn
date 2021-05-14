@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 597bcf9d7654b88cb4a3f9b7df32ea1c7b770da2
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96010686"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109508436"
 ---
 本文提供保护基于 Azure IoT 的物联网 (IoT) 基础结构的进一步详细信息。 它链接到配置和部署每个组件的实现级别详细信息。 还提供多种竞争方式间的比较和选择。
 
@@ -43,13 +43,13 @@ IoT 中心使用安全令牌对设备和服务进行身份验证，以避免在�
 
 可在以下文章中找到有关安全令牌结构及其用法的详细信息：
 
-* [安全令牌结构](../articles/iot-hub/iot-hub-devguide-security.md#security-token-structure)
+* [安全令牌结构](../articles/iot-hub/iot-hub-dev-guide-sas.md#security-token-structure)
 
-* [将 SAS 令牌用作设备](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)
+* [将 SAS 令牌用作设备](../articles/iot-hub/iot-hub-dev-guide-sas.md#use-sas-tokens-as-a-device)
 
-每个 IoT 中心都有一个[标识注册表](../articles/iot-hub/iot-hub-devguide-identity-registry.md)，可用于在服务中创建各设备的资源（例如包含即时云到设备消息的队列），以及允许访问面向设备的终结点。 IoT 中心标识注册表针对解决方案为设备标识和安全密钥提供安全存储。 可将单个或一组设备标识添加到允许列表或方块列表，以便完全控制设备访问。 以下文章提供有关标识注册表的结构和受支持操作的详细信息。
+每个 IoT 中心都有一个[标识注册表](../articles/iot-hub/iot-hub-devguide-identity-registry.md)，可用于在服务中创建各设备的资源（例如包含即时云到设备消息的队列），以及允许访问面向设备的终结点。 IoT 中心标识注册表针对解决方案为设备标识和安全密钥提供安全存储。 可将单个或一组设备标识添加到允许列表或阻止列表，以便完全控制设备访问。 以下文章提供有关标识注册表的结构和受支持操作的详细信息。
 
-[IoT 中心支持 MQTT、AMQP 和 HTTP 等协议](../articles//iot-hub/iot-hub-devguide-security.md)。 每个协议使用 IoT 设备到 IoT 中心的安全令牌的方式不同：
+[IoT 中心支持 MQTT、AMQP 和 HTTP 等协议](../articles//iot-hub/iot-hub-dev-guide-sas.md)。 每个协议使用 IoT 设备到 IoT 中心的安全令牌的方式不同：
 
 * AMQP：基于 SASL PLAIN 和 AMQP 声明的安全性（若是 IoT 中心级别令牌，则为 `{policyName}@sas.root.{iothubName}`；若是设备范围令牌，则为 `{deviceId}`）。
 
@@ -57,11 +57,11 @@ IoT 中心使用安全令牌对设备和服务进行身份验证，以避免在�
 
 * HTTP：有效令牌位于授权请求标头中。
 
-IoT 中心标识注册表可用于配置每个设备的安全凭据和访问控制。 但是，如果 IoT 解决方案已大幅投资于[自定义设备标识注册表和/或身份验证方案](../articles/iot-hub/iot-hub-devguide-security.md#custom-device-and-module-authentication)，则可通过创建令牌服务，将该解决方案集成到具有 IoT 中心的现有基础结构中。
+IoT 中心标识注册表可用于配置每个设备的安全凭据和访问控制。 但是，如果 IoT 解决方案已大幅投资于[自定义设备标识注册表和/或身份验证方案](../articles/iot-hub/iot-hub-dev-guide-sas.md#create-a-token-service-to-integrate-existing-devices)，则可通过创建令牌服务，将该解决方案集成到具有 IoT 中心的现有基础结构中。
 
 ### <a name="x509-certificate-based-device-authentication"></a>基于 X.509 证书的设备身份验证
 
-使用[基于设备的 X.509 证书](../articles/iot-hub/iot-hub-devguide-security.md)及其关联的私钥和公钥允许在物理层进行其他身份验证。 私钥安全存储在设备中，无法在设备外发现。 X.509 证书包含有关设备的信息（例如设备 ID）以及其他组织详细信息。 使用公钥生成证书签名。
+使用[基于设备的 X.509 证书](../articles/iot-hub/iot-hub-dev-guide-sas.md)及其关联的私钥和公钥允许在物理层进行其他身份验证。 私钥安全存储在设备中，无法在设备外发现。 X.509 证书包含有关设备的信息（例如设备 ID）以及其他组织详细信息。 使用公钥生成证书签名。
 
 高级设备预配流：
 
@@ -81,7 +81,7 @@ IoT 中心标识注册表可用于配置每个设备的安全凭据和访问控�
 
 ## <a name="securing-the-cloud"></a>保护云的安全
 
-Azure IoT 中心允许为每个安全密钥定义[访问控制策略](../articles/iot-hub/iot-hub-devguide-security.md)。 它使用以下一组权限向每个 IoT 中心的终结点授予访问权限。 权限可根据功能限制对 IoT 中心的访问。
+Azure IoT 中心允许为每个安全密钥定义[访问控制策略](../articles/iot-hub/iot-hub-dev-guide-sas.md)。 它使用以下一组权限向每个 IoT 中心的终结点授予访问权限。 权限可根据功能限制对 IoT 中心的访问。
 
 * **RegistryRead**。 授予对标识注册表的读取访问权限。 有关详细信息，请参阅[标识注册表](../articles/iot-hub/iot-hub-devguide-identity-registry.md)。
 
@@ -91,9 +91,9 @@ Azure IoT 中心允许为每个安全密钥定义[访问控制策略](../article
 
 * **DeviceConnect**。 授予对面向设备的终结点的访问权限。 例如，它授予发送设备到云的消息和接收云到设备的消息的权限。 此权限由设备使用。
 
-有两种方法可以使用 [安全令牌](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)来获取 IoT 中心的 **DeviceConnect** 权限：使用设备标识密钥，或者使用共享访问密钥。 此外，必须注意的是，可从设备访问的所有功能都故意显示在前缀为 `/devices/{deviceId}` 的终结点上。
+有两种方法可以使用 [安全令牌](../articles/iot-hub/iot-hub-dev-guide-sas.md#use-sas-tokens-as-a-device)来获取 IoT 中心的 **DeviceConnect** 权限：使用设备标识密钥，或者使用共享访问密钥。 此外，必须注意的是，可从设备访问的所有功能都故意显示在前缀为 `/devices/{deviceId}` 的终结点上。
 
-[服务组件只能使用共享访问策略生成安全令牌](../articles/iot-hub/iot-hub-devguide-security.md#use-security-tokens-from-service-components)，授予适当权限。
+[服务组件只能使用共享访问策略生成安全令牌](../articles/iot-hub/iot-hub-dev-guide-sas.md#use-security-tokens-from-service-components)，授予适当权限。
 
 Azure IoT 中心和其他可能是解决方案的一部分的服务允许使用 Azure Active Directory 管理用户。
 

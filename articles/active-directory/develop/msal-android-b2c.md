@@ -14,10 +14,10 @@ ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
 ms.openlocfilehash: 1a9b9481d0b4086505bbfd3c2cd654ce228d1ae2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101688869"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>将适用于 Android 的 MSAL 与 B2C 配合使用
@@ -25,7 +25,7 @@ ms.locfileid: "101688869"
 借助 Microsoft 身份验证库 (MSAL)，应用程序开发人员可以使用 [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/index.yml) 通过社交和本地标识对用户进行身份验证。 Azure AD B2C 是一个标识管理服务。 使用该服务可以在客户使用你的应用程序时，自定义和控制他们的注册和登录方式以及管理其个人资料。
 
 ## <a name="choosing-a-compatible-authorization_user_agent"></a>选择兼容的 authorization_user_agent
-B2C 标识管理系统支持使用许多社交帐户提供程序（如 Google、Facebook、Twitter 和 Amazon）进行身份验证。 如果你计划在应用中支持此类帐户类型，则建议你将 MSAL 公共客户端应用程序配置为在 `DEFAULT` `BROWSER` 指定清单时使用或值， [`authorization_user_agent`](msal-configuration.md#authorization_user_agent) 因为限制禁止对某些外部标识提供程序使用基于 web 服务的身份验证。
+B2C 标识管理系统支持使用多个社交帐户提供程序（如 Google、Facebook、Twitter 和 Amazon）进行身份验证。 如果你计划在应用中支持此类帐户类型，建议你将 MSAL 公共客户端应用程序配置为在指定清单的 [`authorization_user_agent`](msal-configuration.md#authorization_user_agent) 时使用 `DEFAULT` 或 `BROWSER` 值，因为相关限制会禁止对某些外部标识提供者使用基于 Web 视图的身份验证。
 
 ## <a name="configure-known-authorities-and-redirect-uri"></a>配置已知的颁发机构和重定向 URI
 

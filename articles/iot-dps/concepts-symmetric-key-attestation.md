@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0455fe634b44465b4b16d48145fcf51f733f121d
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 32ad3bb4f9a845ded60694d42d0b2708a61aea6a
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107929356"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483292"
 ---
 # <a name="symmetric-key-attestation"></a>对称密钥证明
 
@@ -37,7 +37,7 @@ ms.locfileid: "107929356"
 
 ## <a name="detailed-attestation-process"></a>详细证明过程
 
-使用 IoT 中心支持的相同[安全令牌](../iot-hub/iot-hub-devguide-security.md#security-token-structure)来执行含设备预配服务的对称密钥证明，以标识设备。 这些安全令牌都是[共享访问签名 (SAS) 令牌](../service-bus-messaging/service-bus-sas.md)。 
+使用 IoT 中心支持的相同[安全令牌](../iot-hub/iot-hub-dev-guide-sas.md#security-token-structure)来执行含设备预配服务的对称密钥证明，以标识设备。 这些安全令牌都是[共享访问签名 (SAS) 令牌](../service-bus-messaging/service-bus-sas.md)。 
 
 SAS 令牌具有使用对称密钥创建的哈希签名  。 设备预配服务会重新创建该签名，以验证在证明期间显示的安全令牌是否可信。
 
@@ -57,7 +57,7 @@ SAS 令牌的格式如下：
 
 当设备使用单个注册进行证明时，设备将使用在单个注册条目中定义的对称密钥创建 SAS 令牌的哈希签名。
 
-有关创建 SAS 令牌的代码示例，请参阅[安全令牌](../iot-hub/iot-hub-devguide-security.md#security-token-structure)。
+有关创建 SAS 令牌的代码示例，请参阅[安全令牌](../iot-hub/iot-hub-dev-guide-sas.md#security-token-structure)。
 
 Azure IoT C SDK 支持创建对称密钥证明的安全令牌。 有关使用 Azure IoT C SDK 来证明单个注册的示例，请参阅[使用对称密钥预配模拟设备](quick-create-simulated-device-symm-key.md)。
 

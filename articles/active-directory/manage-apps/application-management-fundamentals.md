@@ -14,12 +14,12 @@ ms.date: 11/13/2019
 ms.subservice: app-mgmt
 ms.author: iangithinji
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c895d77b9c6ab48c60b7a337dd8c44414d8d9b5
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: e9f77ff371bfb53cff08d860be6cc0160debe491
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108318506"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108765982"
 ---
 # <a name="application-management-best-practices"></a>应用程序管理最佳做法
 
@@ -55,4 +55,3 @@ ms.locfileid: "108318506"
 | 找到距离应用程序服务器最近的连接器服务器，并确保它们位于同一个域中 | 为优化性能，请将连接器服务器搬到应用程序服务器附近（请参阅[网络拓扑注意事项](../app-proxy/application-proxy-network-topology.md)）。 此外，连接器服务器和 Web 应用程序服务器还应属于同一个 Active Directory 域，或者跨信任域。 要使用集成 Windows 身份验证 (IWA) 和 Kerberos 约束委派 (KCD) 执行 SSO，此配置是必需的。 如果服务器在不同的域中，则需要使用基于资源的委派进行 SSO（请参阅[使用 KCD 执行应用程序代理的单一登录](../app-proxy/application-proxy-configure-single-sign-on-with-kcd.md)）。 |
 | 为连接器启用自动更新 | 为连接器启用自动更新，以获取最新功能和 bug 修复。 Microsoft 为最新连接器版本和之前的一个版本提供直接支持。 （请参阅[应用程序代理发布版本历史记录](../app-proxy/application-proxy-release-version-history.md)。） |
 | 绕过本地代理 | 为了便于维护，请将连接器配置为绕过本地代理，使其直接连接到 Azure 服务。 （请参阅[应用程序代理连接器和代理服务器](../app-proxy/application-proxy-configure-connectors-with-proxy-servers.md)。） |
-| 在 Web 应用程序代理上使用 Azure AD 应用程序代理 | 对于大多数本地方案，请使用 Azure AD 应用程序代理。 仅在需要为 AD FS 提供代理服务器以及无法使用 Azure Active Directory 中的自定义域时，才优先考虑 Web 应用程序代理。 （请参阅[应用程序代理迁移](../app-proxy/application-proxy-migration.md)。） |

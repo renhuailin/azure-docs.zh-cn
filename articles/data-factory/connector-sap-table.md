@@ -1,18 +1,18 @@
 ---
 title: 从 SAP 表复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 SAP 表复制到支持的接收器数据存储。
-ms.author: jingwang
 author: linda33wj
+ms.author: jingwang
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/12/2021
-ms.openlocfilehash: 4026d2f987ca37834231ac4d7e827ff543af9d2e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5a455def13bbf65d01f2f22972c18d39c2b15f3c
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103232386"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788114"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP 表复制数据
 
@@ -70,7 +70,7 @@ ms.locfileid: "103232386"
 
 ## <a name="get-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 以下部分详细介绍了用于定义特定于 SAP 表连接器的数据工厂实体的属性。
 

@@ -1,18 +1,18 @@
 ---
 title: 从/向 Salesforce Service Cloud 复制数据
 description: 了解如何通过在数据工厂管道中使用复制活动，将数据从 Salesforce Service Cloud 复制到支持的接收器数据存储，或者从支持的源数据存储复制到 Salesforce Service Cloud。
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: 6a712ad1924fd73926ff0e62a7d1b9684eb5b1d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f61b5ab4a77372071658f18e81fce8ed2c3a7c51
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104583088"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486982"
 ---
 # <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Salesforce Service Cloud 复制数据
 
@@ -51,7 +51,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 
 ## <a name="get-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 Salesforce Service Cloud 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性详细信息。
 
@@ -231,7 +231,7 @@ Salesforce 链接服务支持以下属性。
 | externalIdFieldName | 更新插入操作的外部的 ID 字段名称。 指定的字段必须在 Salesforce Service Cloud 对象中定义为“外部 ID 字段”。 它相应的输入数据中不能有 NULL 值。 | 对于“Upsert”是必需的 |
 | writeBatchSize | 每批中写入到 Salesforce Service Cloud 的数据行计数。 | 否（默认值为5,000） |
 | ignoreNullValues | 指示是否忽略 NULL 值从输入数据期间写入操作。<br/>允许的值为 **true** 和 **false**。<br>- **True**：执行更新插入或更新操作时，保持目标对象中的数据不变。 插入在执行插入操作时定义的默认值。<br/>- **False**：执行更新插入或更新操作时，将目标对象中的数据更新为 NULL。 执行插入操作时插入 NULL 值。 | 否（默认值为 false） |
-| maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的数目上限。 仅当要限制并发连接数目时指定一个值。| 否 |
+| maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的上限。 仅在要限制并发连接时指定一个值。| 否 |
 
 **示例：**
 

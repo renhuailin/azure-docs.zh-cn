@@ -1,20 +1,19 @@
 ---
 title: Azure 虚拟机规模集概述
 description: 了解 Azure 虚拟机规模集和应用程序自动缩放方法。
-author: mimckitt
-ms.author: mimckitt
+author: ju-shim
+ms.author: jushiman
 ms.topic: overview
 ms.service: virtual-machine-scale-sets
 ms.subservice: ''
 ms.date: 06/30/2020
-ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: 76d3bc1e1736e648316bcd81bf8897d1d2f272a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: mimckitt
+ms.openlocfilehash: 519b5388497ee43420befa5eac4a07ffcee8085c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101672582"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108738226"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>什么是虚拟机规模集？
 使用 Azure 虚拟机规模集可以创建并管理一组负载均衡的 VM。 可以根据需求或定义的计划自动增减 VM 实例的数目。 规模集为应用程序提供高可用性，用于集中管理、配置和更新大量 VM。 可以使用虚拟机规模集为计算、大数据和容器工作负荷等领域构建大规模的服务。
@@ -46,7 +45,7 @@ Azure 虚拟机规模集为跨多个 VM 运行的应用程序提供管理功能�
 ## <a name="differences-between-virtual-machines-and-scale-sets"></a>虚拟机和规模集的差异
 规模集是使用虚拟机构建的。 使用规模集时，会提供管理层和自动层来运行和缩放应用程序。 可以改用手动方式来创建和管理单个 VM，也可以集成现有的工具，以便构建类似级别的自动化。 下表概述了规模集的优势（与手动管理多个 VM 实例相比）。
 
-| 场景                           | VM 的手动组                                                                    | 虚拟机规模集 |
+| 方案                           | VM 的手动组                                                                    | 虚拟机规模集 |
 |------------------------------------|----------------------------------------------------------------------------------------|---------------------------|
 | 添加额外的 VM 实例        | 用于创建、配置和确保符合性的手动过程                             | 自动根据中心配置进行创建 |
 | 流量均衡和分发 | 用于创建和配置 Azure 负载均衡器或应用程序网关的手动过程      | 可以自动创建 Azure 负载均衡器或应用程序网关以及与之集成 |

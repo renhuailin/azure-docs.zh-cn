@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: 3a70c11fd4f2a0549370933c300f431a03ffcf1d
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 93fd6528799b6a96aba226ac0841ec4d96eff717
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061292"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713155"
 ---
 # <a name="403006-devicemaximumactivefileuploadlimitexceeded"></a>403006 DeviceMaximumActiveFileUploadLimitExceeded
 
@@ -31,7 +31,7 @@ ms.locfileid: "106061292"
 
 ## <a name="solution"></a>解决方案
 
-请确保设备可以立即[通知 IoT 中心：文件上传完成](./iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload)。 然后，尝试[降低用于文件上传配置的 SAS 令牌 TTL](iot-hub-configure-file-upload.md)。
+请确保设备可以立即[通知 IoT 中心：文件上传完成](./iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload-rest)。 然后，尝试[降低用于文件上传配置的 SAS 令牌 TTL](iot-hub-configure-file-upload.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: 464e2450b4d4dea9fc650ad8869af4215d3db1a7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 24fd5cb0abbf36df74d6e2300c570e7e39b875ad
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561791"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108180565"
 ---
 # <a name="aspnet-app-containerization-and-migration-to-azure-kubernetes-service"></a>将 ASP.NET 应用容器化并迁移到 Azure Kubernetes 服务
 
@@ -110,7 +110,7 @@ Azure Migrate: 应用容器化工具可帮助你 -
 
 ## <a name="launch-the-app-containerization-tool"></a>启动应用容器化工具
 
-1. 在可连接到运行应用容器化工具的 Windows 计算机的任何计算机上打开浏览器，并打开工具 URL： https://计算机名称或 IP 地址: 44368。
+1. 在可连接到运行应用容器化工具的 Windows 计算机的任何计算机上打开浏览器，并打开工具 URL： https://计算机名称或 IP 地址: 44369。
 
    或者，可以在桌面上选择应用快捷方式打开该应用。
 

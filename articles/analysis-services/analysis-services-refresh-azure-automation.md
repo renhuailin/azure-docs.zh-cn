@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: chlound
 ms.openlocfilehash: 7c801511b6f24cf5ef04d55bb195e3a4c62d7b6d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96491241"
 ---
 # <a name="refresh-with-azure-automation"></a>使用 Azure 自动化进行刷新
@@ -21,12 +21,12 @@ ms.locfileid: "96491241"
 
 ## <a name="authentication"></a>身份验证
 
-所有调用都必须使用有效的 Azure Active Directory (OAuth 2) 令牌进行身份验证。  本文中的示例使用服务主体 (SPN) 对 Azure Analysis Services 进行身份验证。 有关详细信息，请参阅[使用 Azure 门户创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。
+所有调用必须使用有效的 Azure Active Directory (OAuth 2) 令牌进行身份验证。  本文中的示例将使用服务主体 (SPN) 向 Azure Analysis Services 进行身份验证。 有关详细信息，请参阅[使用 Azure 门户创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 > [!IMPORTANT]
-> 下面的示例假定 Azure Analysis Services 防火墙被禁用。 如果启用了防火墙，则必须在防火墙规则中包括请求发起程序的公共 IP 地址。
+> 下面的示例假定 Azure Analysis Services 防火墙被禁用。 如果启用了防火墙，则请求发起程序的公共 IP 地址必须包含在防火墙规则中。
 
 ### <a name="install-sqlserver-modules-from-powershell-gallery"></a>从 PowerShell 库中安装 SqlServer 模块。
 
@@ -48,26 +48,26 @@ ms.locfileid: "96491241"
 
 ### <a name="configure-permissions-in-azure-analysis-services"></a>在 Azure Analysis Services 中配置权限
  
-你创建的服务主体必须对服务器拥有服务器管理员权限。 有关详细信息，请参阅[将服务主体添加到服务器管理员角色](analysis-services-addservprinc-admins.md)。
+创建的服务主体必须对服务器拥有服务器管理员权限。 有关详细信息，请参阅[将服务主体添加到服务器管理员角色](analysis-services-addservprinc-admins.md)。
 
 ## <a name="design-the-azure-automation-runbook"></a>设计 Azure 自动化 Runbook
 
 1. 在自动化帐户中，创建一个 **凭据** 资源，该资源将用来安全地存储服务主体。
 
-    ![显示 "凭据" 页面并选择 "添加凭据" 操作的屏幕截图。](./media/analysis-services-refresh-azure-automation/6.png)
+    ![此屏幕截图显示了“凭据”页，其中已选择“添加凭据”操作。](./media/analysis-services-refresh-azure-automation/6.png)
 
-2. 输入凭据的详细信息。 在 " **用户名**" 中输入服务主体应用程序 ID (appid) ，然后在 " **密码**" 中输入服务主体机密。
+2. 输入凭据的详细信息。 在“用户名”中，输入服务主体应用程序 ID (appid)，然后在“密码”中输入服务主体机密。
 
     ![创建凭据](./media/analysis-services-refresh-azure-automation/7.png)
 
 3. 导入自动化 Runbook。
 
-    ![显示 "Runbook" 页面并选中 "导入 runbook" 操作的屏幕截图。](./media/analysis-services-refresh-azure-automation/8.png)
+    ![此屏幕截图显示了“Runbook”页，其中已选择“导入 runbook”操作。](./media/analysis-services-refresh-azure-automation/8.png)
 
 4. 以浏览方式找到“Refresh-Model.ps1”文件，提供“名称”和“说明”，然后单击“创建”。
 
     > [!NOTE]
-    > 使用本文档底部的 " [示例 Powershell Runbook](#sample-powershell-runbook) " 部分中的 "脚本" 创建名为 Refresh-Model.ps1 的文件，并将其保存到本地计算机以导入 Runbook。
+    > 使用本文档底部的[示例 Powershell Runbook](#sample-powershell-runbook) 部分的脚本来创建一个名为 Refresh-Model.ps1 的文件，并将其保存到本地计算机以导入到 Runbook 中。
 
     ![导入 Runbook](./media/analysis-services-refresh-azure-automation/9.png)
 
@@ -80,7 +80,7 @@ ms.locfileid: "96491241"
 
 6. 通过单击“启动”来测试 Runbook。
 
-    ![显示 "概述" 页的屏幕截图，其中已选择 "启动" 操作。](./media/analysis-services-refresh-azure-automation/11.png)
+    ![此屏幕截图显示了“概述”页，其中已选择“启动”操作。](./media/analysis-services-refresh-azure-automation/11.png)
 
 7. 填写“DATABASENAME”、“ANALYSISSERVER”和“REFRESHTYPE”参数，然后单击“确定”。 手动运行 Runbook 时，不需要“WEBHOOKDATA”参数。
 

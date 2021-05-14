@@ -10,13 +10,13 @@ ms.custom: devx-track-azurecli
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 02/09/2021
-ms.openlocfilehash: cb1a1cdf99e94bb4b4dc0cb6ef66da54a1b93ce8
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.date: 05/06/2021
+ms.openlocfilehash: 894e25d0ee44bd057c95efba3b6389ec116c8e07
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885787"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486244"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>为 Azure 机器学习工作区配置 Azure 专用链接
 
@@ -119,7 +119,7 @@ ws.add_private_endpoint(private_endpoint_config=pe, private_endpoint_auto_approv
 [用于机器学习的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)提供了 [az ml workspace private-endpoint add](/cli/azure/ml/workspace/private-endpoint#az_ml_workspace_private_endpoint_add) 命令。
 
 ```azurecli
-az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint --pe-auto-approval true --pe-vnet-name myvnet
+az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint --pe-auto-approval --pe-vnet-name myvnet
 ```
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
