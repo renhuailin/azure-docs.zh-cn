@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: c61e371cd22c305daaad6369d364b49d8db8e7d3
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: bdebe0d29f6ef781cc4b4747ff80010eeac9ff7e
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108203426"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684246"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>教程：在 Azure IoT Central 中创建水质监测应用程序
 
@@ -55,8 +55,6 @@ ms.locfileid: "108203426"
     * **应用程序名称**：默认情况下，应用程序名称为“水质监测”，后跟 Azure IoT Central 生成的唯一 ID 字符串  。 如果需要，可以输入显示名称，也可以稍后更改应用程序名称。
     * **URL**：可以输入所需的任何 URL，也可以稍后更改 URL 值。
     * 如果你有一个 Azure 订阅，请输入目录、Azure 订阅和位置的值  。 如果你没有订阅，则可以启用 7 天免费试用版并填写所需的联系人信息  。
-
-    有关目录和订阅的详细信息，请参阅[创建应用程序](../core/quick-deploy-iot-central.md)快速入门。
 
 1. 选择页面左下方的“创建”按钮  。
 
@@ -187,7 +185,7 @@ Azure IoT Central 中的设备模板定义了设备的功能。 可用功能包�
 1. 使用建议的“设备 ID”或输入自己的设备 ID。 也可为新设备输入设备名称。
 1. 选择“水质监测器”作为设备模板 。 
 1. 如果要创建模拟设备，请确保“模拟此设备”设置为“是” 。 
-1. 选择“创建”  。  
+1. 选择“创建”。  
 
 ## <a name="explore-and-configure-rules"></a>浏览并配置规则
 

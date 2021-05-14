@@ -13,18 +13,19 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 223d119786d99eac611ece597fc0e8de4fcaf6bd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c7901dd4a238b27a31f95f1e22ddf9dc1ae5327a
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98762402"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813054"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
 
 通过 Azure API 管理来发布和管理 API，即可充分利用容错和基础结构功能，否则需手动设计、实现和管理这些功能。 Azure 平台通过花费少量成本消除大量潜在故障。
 
-若要从影响托管着 API 管理服务的区域的可用性问题中恢复，应随时准备好在另一区域中重建服务。 根据恢复时间目标，你可能希望在一个或多个区域中保留备用服务。 你还可以根据自己的恢复点目标，尝试将其配置和内容与活动服务保持同步。 服务备份和还原功能为实现灾难恢复策略提供必要的构建基块。
+若要从影响托管着 API 管理服务的区域的可用性问题中恢复，应随时准备好在另一区域中重建服务。 根据恢复时间目标，你可能希望在一个或多个区域中保留备用服务。 你还可以根据自己的恢复点目标，尝试将其配置和内容与活动服务保持同步。 服务备份和还原功能为实现灾难恢复策略提供了必要的构建基块。
 
 备份和还原操作还可用于在操作环境（例如，开发环境和过渡环境）之间复制 API 管理服务配置。 请注意，运行时数据（如用户和订阅）也将被复制，这可能并不总是理想的。
 
@@ -78,11 +79,14 @@ ms.locfileid: "98762402"
 5. 选择“Azure 服务管理”  。
 6. 按“选择”  。
 
-    ![添加权限](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
+    :::image type="content" source="./media/api-management-howto-disaster-recovery-backup-restore/add-app-permission.png" alt-text="屏幕截图显示如何添加应用权限。"::: 
 
 7. 单击新添加的应用程序旁边的“委派的权限”  ，选中“访问 Azure 服务管理(预览版)”复选框。 
-8. 按“选择”  。
-9. 单击“授予权限”  。
+
+    :::image type="content" source="./media/api-management-howto-disaster-recovery-backup-restore/delegated-app-permission.png" alt-text="屏幕截图显示正在添加委托的应用权限。":::
+
+8. 按“选择”。
+9. 单击“添加权限”。
 
 ### <a name="configuring-your-app"></a>配置应用
 
@@ -227,7 +231,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   [托管的标识](api-management-howto-use-managed-service-identity.md)配置。
 -   [Azure Monitor 诊断](api-management-howto-use-azure-monitor.md)配置。
 -   [协议和密码](api-management-howto-manage-protocols-ciphers.md)设置。
--   [开发人员门户](api-management-howto-developer-portal.md#is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management)内容。
+-   [开发人员门户](developer-portal-faq.md#is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management)内容。
 
 执行服务备份的频率将影响恢复点目标。 为了最大程度减少它，建议实施定期备份，以及在对 API 管理服务进行更改后执行按需备份。
 

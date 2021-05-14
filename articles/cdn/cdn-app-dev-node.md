@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/23/2017
+ms.date: 04/02/2021
 ms.author: mazha
 ms.custom: devx-track-js
-ms.openlocfilehash: f5d5c7a6e1f6993b19f38db2ae846b213a1d553e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 607ba08f0d1d8ea08b30efa420bb2fde55da97b0
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95993357"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123746"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 开发入门
 > [!div class="op_single_selector"]
@@ -29,14 +29,10 @@ ms.locfileid: "95993357"
 > 
 > 
 
-可以使用[适用于 Node.js 的 Azure CDN SDK](https://www.npmjs.com/package/azure-arm-cdn) 来自动创建和管理 CDN 配置文件和终结点。  本教程介绍一个简单的 Node.js 控制台应用程序的创建示例，演示几个可用的操作。  本教程不打算详细描述适用于 Node.js 的 Azure CDN SDK 的所有方面。
+可以使用[适用于 JavaScript 的 Azure CDN SDK](https://www.npmjs.com/package/@azure/arm-cdn) 来自动创建和管理 CDN 配置文件和终结点。  本教程介绍一个简单的 Node.js 控制台应用程序的创建示例，演示几个可用的操作。  本教程不会详细介绍适用于 JavaScript 的 Azure CDN SDK 的所有方面。
 
-要完成本教程，应已安装并配置了 [Node.js](https://www.nodejs.org) **4.x.x** 或更高版本。  可以使用任何需要的文本编辑器创建 Node.js 应用程序。  为了编写本教程，我使用了 [Visual Studio Code](https://code.visualstudio.com)。  
+要完成本教程，应已安装并配置了 [Node.js](https://www.nodejs.org) 6.x.x 或更高版本。  可以使用任何需要的文本编辑器创建 Node.js 应用程序。  为了编写本教程，我使用了 [Visual Studio Code](https://code.visualstudio.com)。  
 
-> [!TIP]
-> 可在 MSDN 上下载[本教程中已完成的项目](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74)。
-> 
-> 
 
 [!INCLUDE [cdn-app-dev-prep](../../includes/cdn-app-dev-prep.md)]
 
@@ -53,11 +49,11 @@ npm init
 
 ![NPM init 输出](./media/cdn-app-dev-node/cdn-npm-init.png)
 
-我们的项目现在使用 *packages.json* 文件进行初始化。  我们的项目将使用 NPM 包中包含的部分 Azure 库。  我们将使用适用于 Node.js 的 Azure 客户端运行时 (ms-rest-azure) 和适用于 Node.js 的 Azure CDN 客户端库 (azure-arm-cd)。  让我们将它们作为依赖项添加到项目。
+我们的项目现在使用 *packages.json* 文件进行初始化。  我们的项目将使用 NPM 包中包含的部分 Azure 库。  我们将在 Node.js (@azure/ms-rest-nodeauth) 中使用适用于 Azure Active Directory 身份验证的库，以及使用适用于 JavaScript (@azure/arm-cdn) 的 Azure CDN 客户端库。  让我们将它们作为依赖项添加到项目。
 
 ```console
-npm install --save ms-rest-azure
-npm install --save azure-arm-cdn
+npm install --save @azure/ms-rest-nodeauth
+npm install --save @azure/arm-cdn
 ```
 
 当包安装完成后，*package.json* 文件应与此示例类似（版本号可能不同）：
@@ -74,8 +70,8 @@ npm install --save azure-arm-cdn
   "author": "Cam Soper",
   "license": "MIT",
   "dependencies": {
-    "azure-arm-cdn": "^0.2.1",
-    "ms-rest-azure": "^1.14.4"
+    "@azure/arm-cdn": "^5.2.0",
+    "@azure/ms-rest-nodeauth": "^3.0.0"
   }
 }
 ```
@@ -88,8 +84,8 @@ npm install --save azure-arm-cdn
 1. 在顶部用以下指令为我们的 NPM 包添加“require”：
    
     ``` javascript
-    var msRestAzure = require('ms-rest-azure');
-    var cdnManagementClient = require('azure-arm-cdn');
+    var msRestAzure = require('@azure/ms-rest-nodeauth');
+    const { CdnManagementClient } = require('@azure/arm-cdn');
     ```
 2. 我们需要定义我们的方法将使用的一些常量。  添加以下内容。  请务必根据需要使用值替换占位符，包括 **&lt;尖括号&gt;** 。
    
@@ -108,23 +104,9 @@ npm install --save azure-arm-cdn
    
     ``` javascript
     var credentials = new msRestAzure.ApplicationTokenCredentials(clientId, tenantId, clientSecret);
-    var cdnClient = new cdnManagementClient(credentials, subscriptionId);
+    var cdnClient = new CdnManagementClient(credentials, subscriptionId);
     ```
-   
-    如果使用的是个人用户身份验证，这两行看起来会稍有不同。
-   
-   > [!IMPORTANT]
-   > 仅选择个人用户身份验证而不是服务主体身份验证时，才使用此代码示例。  小心保护个人用户凭据并将其保密。
-   > 
-   > 
-   
-    ``` javascript
-    var credentials = new msRestAzure.UserTokenCredentials(clientId, 
-        tenantId, '<username>', '<password>', '<redirect URI>');
-    var cdnClient = new cdnManagementClient(credentials, subscriptionId);
-    ```
-   
-    请务必使用正确的信息替换 **&lt;尖括号&gt;** 中的项目。  对于 `<redirect URI>`，请使用在 Azure AD 中注册应用程序时输入的重定向 URI。
+
 4. 我们的 Node.js 控制台应用程序会采用一些命令行参数。  让我们验证是否至少传递了一个参数。
    
    ```javascript
@@ -237,7 +219,7 @@ function cdnList(){
         case "endpoints":
             requireParms(3);
             console.log("Listing endpoints...");
-            cdnClient.endpoints.listByProfile(parms[2], resourceGroupName, callback);
+            cdnClient.endpoints.listByProfile(resourceGroupName, parms[2], callback);
             break;
 
         default:
@@ -280,7 +262,7 @@ function cdnCreateProfile() {
         }
     };
 
-    cdnClient.profiles.create(parms[2], standardCreateParameters, resourceGroupName, callback);
+    cdnClient.profiles.create( resourceGroupName, parms[2], standardCreateParameters, callback);
 }
 
 // create endpoint <profile name> <endpoint name> <origin hostname>        
@@ -295,7 +277,7 @@ function cdnCreateEndpoint() {
         }]
     };
 
-    cdnClient.endpoints.create(parms[3], endpointProperties, parms[2], resourceGroupName, callback);
+    cdnClient.endpoints.create(resourceGroupName, parms[2], parms[3], endpointProperties, callback);
 }
 ```
 
@@ -308,7 +290,7 @@ function cdnPurge() {
     requireParms(4);
     console.log("Purging endpoint...");
     var purgeContentPaths = [ parms[3] ];
-    cdnClient.endpoints.purgeContent(parms[2], parms[1], resourceGroupName, purgeContentPaths, callback);
+    cdnClient.endpoints.purgeContent(resourceGroupName, parms[2], parms[3], purgeContentPaths, callback);
 }
 ```
 
@@ -324,14 +306,14 @@ function cdnDelete() {
         case "profile":
             requireParms(3);
             console.log("Deleting profile...");
-            cdnClient.profiles.deleteIfExists(parms[2], resourceGroupName, callback);
+            cdnClient.profiles.deleteMethod(resourceGroupName, parms[2], callback);
             break;
 
         // delete endpoint <profile name> <endpoint name>
         case "endpoint":
             requireParms(4);
             console.log("Deleting endpoint...");
-            cdnClient.endpoints.deleteIfExists(parms[3], parms[2], resourceGroupName, callback);
+            cdnClient.endpoints.deleteMethod(resourceGroupName, parms[2], parms[3], callback);
             break;
 
         default:
@@ -366,11 +348,9 @@ function cdnDelete() {
 ![删除配置文件](./media/cdn-app-dev-node/cdn-delete-profile.png)
 
 ## <a name="next-steps"></a>后续步骤
-要从本演练中查看完成的项目，请[下载示例](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74)。
 
-要查看有关适用于 Node.js 的 Azure CDN SDK 的参考，请查看[引用](https://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/)。
+要查看有关适用于 JavaScript 的 Azure CDN SDK 的参考，请查看[参考](/javascript/api/@azure/arm-cdn)。
 
-要查找有关适用于 Node.js 的 Azure CDN SDK 的其他文档，请查看[完整引用](https://azure.github.io/azure-sdk-for-node/)。
+要查找有关适用于 JavaScript 的 Azure SDK 的其他文档，请查看[完整参考](/javascript/api/?view=azure-node-latest)。
 
 使用 [PowerShell](cdn-manage-powershell.md) 管理 CDN 资源。
-

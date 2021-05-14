@@ -3,12 +3,12 @@ title: Azure 事件网格安全和身份验证
 description: 介绍 Azure 事件网格及其概念。
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.openlocfilehash: e9bcf00e832e4deaaf9c5f81ba5af51609a1c412
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9dda983bdb70f0723b87419ae96ca5bbadccd61a
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104601034"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109735757"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>授权访问事件网格资源
 借助 Azure 事件网格，可以控制授予不同用户用来执行各种管理操作的访问级别，例如列出事件订阅、创建新的事件订阅及生成密钥。 事件网格使用 Azure 基于角色的访问控制 (Azure RBAC)。
@@ -40,8 +40,8 @@ az provider operation show --namespace Microsoft.EventGrid
 
 | 角色 | 说明 |
 | ---- | ----------- | 
-| [事件网格订阅读者](../role-based-access-control/built-in-roles.md#eventgrid-eventsubscription-reader) | 可以管理事件网格事件订阅操作。 |
-| [事件网格订阅参与者](../role-based-access-control/built-in-roles.md#eventgrid-eventsubscription-contributor) | 可以读取事件网格事件订阅。 |
+| [事件网格订阅读者](../role-based-access-control/built-in-roles.md#eventgrid-eventsubscription-reader) | 可以读取事件网格事件订阅。 |
+| [事件网格订阅参与者](../role-based-access-control/built-in-roles.md#eventgrid-eventsubscription-contributor) | 可以管理事件网格事件订阅操作。 |
 | [事件网格参与者](../role-based-access-control/built-in-roles.md#eventgrid-contributor) | 允许你创建和管理事件网格资源。 |
 
 

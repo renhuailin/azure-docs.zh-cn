@@ -14,12 +14,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-java-uiex
-ms.openlocfilehash: ebd189e1cf6e053f5400b8217fc1c2fc385cdac9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 24a564d836405bf51aacf73af359e987e8c957e1
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101701716"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737107"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>快速入门：在 Azure 应用服务中创建 Java 应用
 
@@ -75,7 +75,7 @@ cd helloworld
 运行下面的 Maven 命令来配置部署。 此命令将帮助你设置应用服务操作系统、Java 版本和 Tomcat 版本。
 
 ```bash
-mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.14.0:config
 ```
 
 ::: zone pivot="platform-windows"
@@ -215,7 +215,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 如果需要，可以直接在 `pom.xml` 中修改应用服务的配置。 下面列出了一些常见配置：
 
-属性 | 必选 | 说明 | 版本
+属性 | 必须 | 说明 | 版本
 ---|---|---|---
 `<schemaVersion>` | false | 指定配置架构的版本。 支持的值是：`v1`、`v2`。 | 1.5.2
 `<subscriptionId>` | false | 指定订阅 ID。 | 0.1.0+

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 8eade7596e36389b1e345dc6f0aab1029dc100e0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ba75af247888a2404619ec0a3db3b0a5d3310502
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589153"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142416"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Azure SignalR 服务常见问题故障排除指南
 
@@ -19,7 +19,7 @@ ms.locfileid: "104589153"
 
 ## <a name="access-token-too-long"></a>访问令牌太长
 
-### <a name="possible-errors"></a>可能出现的错误
+### <a name="possible-errors"></a>可能的错误
 
 * 客户端 `ERR_CONNECTION_`
 * 414 URI 太长
@@ -38,7 +38,7 @@ ms.locfileid: "104589153"
 
 默认情况下，在生成针对 ASRS（**A** zure **S** ignal **R** **S** ervice，即 Azure SignalR 服务）的 JWT 访问令牌时，会包括 `context.User.Claims` 中的声明，这样，这些声明会被保留，并可以在客户端连接到 `Hub` 时从 ASRS 传递到 `Hub`。
 
-在某些情况下，会利用 `context.User.Claims` 来存储应用服务器的大量信息，其中的大多数信息不是供 `Hub` 使用，而是供其他组件使用。
+在某些情况下，会使用 `context.User.Claims` 来存储应用服务器的大量信息，其中的大多数信息不是供 `Hub` 使用，而是供其他组件使用。
 
 生成的访问令牌通过网络传递。对于 WebSocket/SSE 连接，访问令牌通过查询字符串传递。 因此，我们建议仅当 Hub 需要时才通过 ASRS 将必需的声明从客户端传递给应用服务器，这是最佳做法。 
 
@@ -69,11 +69,11 @@ services.MapAzureSignalR(GetType().FullName, options =>
 
 ## <a name="tls-12-required"></a>需要 TLS 1.2
 
-### <a name="possible-errors"></a>可能出现的错误
+### <a name="possible-errors"></a>可能的错误
 
 * ASP.NET 的“无可用服务器”错误 [#279](https://github.com/Azure/azure-signalr/issues/279)
 * ASP.NET 的“连接未处于活动状态，无法将数据发送到服务。” 错误 [#324](https://github.com/Azure/azure-signalr/issues/324)
-* “向 https://<API endpoint> 发出 HTTP 请求时出错。 此错误可能是由于未在 HTTPS 用例中正确使用 HTTP.SYS 配置服务器证书所致。 此外，客户端与服务器之间的安全绑定不匹配也可能造成此错误。”
+* “向 https://<API endpoint> 发出 HTTP 请求时出错。 此错误的原因可能是未在 HTTPS 用例中正确使用 HTTP.SYS 配置服务器证书。 此外，客户端与服务器之间的安全绑定不匹配也可能造成此错误。”
 
 ### <a name="root-cause"></a>根本原因
 
@@ -162,19 +162,19 @@ JWT 令牌生存期的默认值目前为 1 小时。
 
 存在两种情况。
 
-### <a name="concurrent-connection-count-exceeds-limit"></a>**并发** 连接计数超出限制
+### <a name="concurrent-connection-count-exceeds-limit"></a>**并发** 连接计数超出限制。
 
 对于免费实例，并发连接计数限制为 20。对于标准实例，每个单位的并发连接计数限制为 1K，这意味着 100 个单位允许 100 K 个并发连接。    
 
 连接包括客户端连接和服务器连接。 请查看[此文](./signalr-concept-messages-and-connections.md#how-connections-are-counted)，了解如何进行连接计数。
 
-### <a name="too-many-negotiate-requests-at-the-same-time"></a>同时的协商请求太多
+### <a name="too-many-negotiate-requests-at-the-same-time"></a>同时发出了过多的协商请求
 
-我们建议在重新连接之前进行随机延迟，查看[此处](#restart_connection)以获取重试示例。
+我们建议先经过一段随机的延迟再重新连接；有关重试示例，请查看[此文](#restart_connection)。
 
 [有关于故障排除的问题或反馈？请告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
-## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>协商时出现 500 错误：Azure SignalR 服务尚未连接，请稍后再试
+## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>协商时出现 500 错误：Azure SignalR 服务尚未连接，请稍后重试
 
 ### <a name="root-cause"></a>根本原因
 
@@ -243,7 +243,7 @@ Azure SignalR 的记录器类别始终以 `Microsoft.Azure.SignalR` 开头。 �
 
 当客户端连接到 Azure SignalR 时，客户端与 Azure SignalR 之间的持久性连接有时可能会因不同的原因而断开。 此部分介绍导致此类连接断开的几种可能性，并提供一些有关如何确定根本原因的指导。
 
-### <a name="possible-errors-seen-from-the-client-side"></a>客户端可能出现的错误
+### <a name="possible-errors-seen-from-the-client-side"></a>客户端出现的可能错误
 
 * `The remote party closed the WebSocket connection without completing the close handshake`
 * `Service timeout. 30.00ms elapsed without receiving a message from service.`
@@ -282,7 +282,7 @@ Azure SignalR 的记录器类别始终以 `Microsoft.Azure.SignalR` 开头。 �
 
 ### <a name="troubleshooting-guide"></a>故障排除指南
 
-检查 SignalR 客户端是否“从未”关闭。
+检查 SignalR 客户端是否 **从未** 关闭。
 
 ### <a name="solution"></a>解决方案
 
@@ -332,7 +332,7 @@ finally
 
 此部分介绍导致服务器连接断开的几种可能性，并提供一些有关如何确定根本原因的指导。
 
-### <a name="possible-errors-seen-from-the-server-side"></a>服务器端可能出现的错误
+### <a name="possible-errors-seen-from-the-server-side"></a>服务器端出现的可能错误
 
 * `[Error]Connection "..." to the service was dropped`
 * `The remote party closed the WebSocket connection without completing the close handshake`
@@ -342,31 +342,31 @@ finally
 
 服务器-服务连接通过 ASRS（**A** zure **S** ignal **R** **S** ervice，Azure SignalR 服务）关闭。
 
-对于 ping 超时，可能是由于服务器端的 CPU 使用率较高或线程池不足引起的。
+如果发生 ping 超时，原因可能是服务器端的 CPU 使用率较高或线程池资源枯竭。
 
-对于 ASP.NET SignalR，已修复 SDK 1.6.0 中的已知问题。 将 SDK 升级到最新版本。
+对于 ASP.NET SignalR，SDK 1.6.0 中已修复一个已知问题。 将 SDK 升级到最新版本。
 
-## <a name="thread-pool-starvation"></a>线程池不足
+## <a name="thread-pool-starvation"></a>线程池资源枯竭
 
-如果你的服务器资源不足，这意味着没有线程在进行消息处理。 所有线程都以特定方法挂起。
+如果服务器的资源枯竭，则意味着没有任何线程在处理消息。 所有线程在特定方法中均未响应。
 
-通常，这种方案是由于异步中的同步或异步方法中的 `Task.Result`/`Task.Wait()` 导致的。
+通常，这种情况是异步超同步或者异步方法中的 `Task.Result`/`Task.Wait()` 导致的。
 
 请参阅 [ASP.NET Core 性能最佳做法](/aspnet/core/performance/performance-best-practices#avoid-blocking-calls)。
 
-请参阅更多有关[线程池不足](https://docs.microsoft.com/archive/blogs/vancem/diagnosing-net-core-threadpool-starvation-with-perfview-why-my-service-is-not-saturating-all-cores-or-seems-to-stall)的信息。
+详细了解[线程池资源枯竭](/archive/blogs/vancem/diagnosing-net-core-threadpool-starvation-with-perfview-why-my-service-is-not-saturating-all-cores-or-seems-to-stall)。
 
-### <a name="how-to-detect-thread-pool-starvation"></a>如何检测线程池不足
+### <a name="how-to-detect-thread-pool-starvation"></a>如何检测线程池资源枯竭
 
-检查线程计数。 如果此时没有峰值，请执行以下步骤：
-* 如果使用 Azure 应用服务，请检查指标中的线程计数。 检查 `Max` 聚合：
+检查线程计数。 如果当时没有出现高峰，请执行以下步骤：
+* 如果使用的是 Azure 应用服务，请检查指标中的线程计数。 检查 `Max` 聚合：
     
-  :::image type="content" source="media/signalr-howto-troubleshoot-guide/metrics-thread-count.png" alt-text="Azure 应用服务中的最大线程数窗格的屏幕截图。":::
+  :::image type="content" source="media/signalr-howto-troubleshoot-guide/metrics-thread-count.png" alt-text="Azure 应用服务中“最大线程计数”窗格的屏幕截图。":::
 
-* 如果使用的是 .NET Framework，则可以在服务器 VM 的性能监视器中找到[指标](https://docs.microsoft.com/dotnet/framework/debug-trace-profile/performance-counters#lock-and-thread-performance-counters)。
-* 如果使用的是容器中的 .NET Core，请参阅[在容器中收集诊断](https://docs.microsoft.com/dotnet/core/diagnostics/diagnostics-in-containers)。
+* 如果使用的是 .NET Framework，可以在服务器 VM 的性能监视器中找到[指标](/dotnet/framework/debug-trace-profile/performance-counters#lock-and-thread-performance-counters)。
+* 如果在容器中使用 .NET Core，请参阅[在容器中收集诊断数据](/dotnet/core/diagnostics/diagnostics-in-containers)。
 
-你还可以使用代码来检测线程池不足：
+还可以使用代码来检测线程池资源枯竭：
 
 ```csharp
 public class ThreadPoolStarvationDetector : EventListener
@@ -401,26 +401,26 @@ public class ThreadPoolStarvationDetector : EventListener
 }
 ```
     
-把代码添加到你的服务中：
+将此代码添加到服务中：
     
 ```csharp
 service.AddSingleton<ThreadPoolStarvationDetector>();
 ```
 
-然后，在服务器连接由于 ping 超时断开时检查日志。
+然后，检查当服务器连接断开（根据 ping 超时来判断）时生成的日志。
 
-### <a name="how-to-find-the-root-cause-of-thread-pool-starvation"></a>如何查找线程池不足的根本原因
+### <a name="how-to-find-the-root-cause-of-thread-pool-starvation"></a>如何找到线程池资源枯竭的根本原因
 
-查找线程池不足的根本原因：
+若要找到线程池资源枯竭的根本原因，请执行以下操作：
 
 * 转储内存，然后分析调用堆栈。 有关详细信息，请参阅[收集和分析内存转储](https://devblogs.microsoft.com/dotnet/collecting-and-analyzing-memory-dumps/)。
-* 如果检测到线程池不足，请使用 [clrmd](https://github.com/microsoft/clrmd) 转储内存。 然后，记录调用堆栈。
+* 检测到线程池资源枯竭时，使用 [clrmd](https://github.com/microsoft/clrmd) 来转储内存。 然后记录调用堆栈。
 
 ### <a name="troubleshooting-guide"></a>故障排除指南
 
-1. 打开应用服务器端日志以查看是否发生了异常。
+1. 打开应用服务器端日志以查看是否有异常情况发生。
 2. 检查应用服务器端事件日志以查看应用服务器是否已重启。
-3. 创建问题。 提供期限，并通过电子邮件向我们发送资源名称。
+3. 创建问题。 提供时间范围，并通过电子邮件将资源名称告诉我们。
 
 [有关于故障排除的问题或反馈？请告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 

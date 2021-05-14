@@ -3,7 +3,7 @@ title: Azure DDoS 防护参考体系结构
 description: 了解 Azure DDoS 防护参考体系结构。
 services: ddos-protection
 documentationcenter: na
-author: yitoh
+author: aletheatoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: e5472620fe9b07d152a5325b0654044cb1505fd7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ddb42dde242bb9c3f33a6dc3f8f52a147367f295
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94992431"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139104"
 ---
 # <a name="ddos-protection-reference-architectures"></a>DDoS 防护参考体系结构
 
@@ -59,6 +59,20 @@ Azure 流量管理器将传入的请求路由到某个区域中的应用程序�
 我们建议配置应用程序网关 WAF SKU（预防模式）来帮助防范第 7 层（HTTP/HTTPS/Web 套接字）攻击。 此外，Web 应用配置为[仅接受来自应用程序网关 IP 地址的流量](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/)。
 
 有关此参考体系结构的详细信息，请参阅[此文](/azure/architecture/reference-architectures/app-service-web-app/multi-region)。
+
+## <a name="protecting-on-premises-resources"></a>保护本地资源
+
+可以通过在 Azure 中托管公共 IP 地址并将流量重定向到本地环境的后端源，利用 Azure DDoS 防护标准版的规模、容量和效率来保护本地资源。
+
+![保护本地资源](./media/reference-architectures/ddos-on-prem.png)
+
+如果你的 Web 应用程序从 Internet 接收流量，则可以将 Web 应用程序托管在应用程序网关之后，然后使用 WAF 为其防范第 7 层 Web 攻击（例如 SQL 注入和 Slowloris）。 应用程序的后端源将位于本地环境中，该环境通过 VPN 进行连接。 
+
+本地环境中的后端资源不会公开到公共 Internet。 只有 AppGW/WAF 公共 IP 会向 Internet 公开，而应用程序的 DNS 名称会映射到该公共 IP 地址。 
+
+在包含 AppGW/WAF 的虚拟网络上启用 DDoS 防护标准版后，DDoS 防护标准版将通过减少不良流量并将预期的清洁流量路由到应用程序来保护应用程序。 
+
+[本文](../azure-vmware/protect-azure-vmware-solution-with-application-gateway.md)介绍如何一起使用应用程序网关和 DDoS 防护标准版，以保护在 Azure VMware 解决方案上运行的 Web 应用。
 
 ## <a name="mitigation-for-non-web-paas-services"></a>针对非 Web PaaS 服务的缓解措施
 

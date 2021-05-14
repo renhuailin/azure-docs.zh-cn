@@ -12,21 +12,18 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 960d27e9f67099ca7a19610011a059c2eeb602ae
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 563f4bb3eeab6bc0329b4eb46ba06c1d4fedf259
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108071930"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109655239"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>快速入门：使用授权代码流在 React SPA 中登录并获取访问令牌
 
 在本快速入门中，你将下载并运行一个代码示例，该示例演示 JavaScript React 单页应用程序 (SPA) 如何使用授权代码流让用户登录并调用 Microsoft Graph。 此代码示例演示如何获取访问令牌来调用 Microsoft Graph API 或任何 Web API。 
 
 有关说明，请参阅[示例工作原理](#how-the-sample-works)。
-
-> [!IMPORTANT]
-> MSAL React [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -53,7 +50,7 @@ ms.locfileid: "108071930"
 >
 > 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
-> 1. 搜索并选择“Azure Active Directory”。
+> 1. 搜索并选择“Azure Active Directory”  。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 > 1. “注册应用程序”页显示后，请输入应用程序的名称。
 > 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。 

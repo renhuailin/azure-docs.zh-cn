@@ -3,16 +3,16 @@ title: Azure Service Fabric 应用程序资源模型
 description: 本文概述如何使用 Azure 资源管理器管理 Azure Service Fabric 应用程序。
 ms.topic: conceptual
 ms.date: 10/21/2019
-ms.openlocfilehash: 0019f154f301d2b688d4c16c9adb36ec386adef2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.openlocfilehash: ba030abbfed4908b9d98d70bf1dce259e0d06da3
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790717"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738763"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric 应用程序资源模型
 
-有多个选项可用于在 Service Fabric 群集上部署 Azure Service Fabric 应用程序。 建议使用 Azure 资源管理器。 如果使用资源管理器，可以采用 JSON 描述应用程序和服务，然后将其部署到群集所在的同一资源管理器模板中。 不同于使用 PowerShell 或 Azure CLI 来部署和管理应用程序，如果使用资源管理器，则不必等待群集准备就绪；应用程序注册、预配和部署都可以在一个步骤中进行。 使用资源管理器是在群集中管理应用程序生命周期的最佳方式。 有关详细信息，请参阅[最佳做法：基础结构即代码](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)。
+有多个选项可用于在 Service Fabric 群集上部署 Azure Service Fabric 应用程序。 建议使用 Azure 资源管理器。 如果使用资源管理器，可以采用 JSON 描述应用程序和服务，然后将其部署到群集所在的同一资源管理器模板中。 不同于使用 PowerShell 或 Azure CLI 来部署和管理应用程序，如果使用资源管理器，则不必等待群集准备就绪；应用程序注册、预配和部署都可以在一个步骤中进行。 使用资源管理器是在群集中管理应用程序生命周期的最佳方式。 有关详细信息，请参阅[最佳做法：基础结构即代码](service-fabric-best-practices-infrastructure-as-code.md#service-fabric-resources)。
 
 在资源管理器中将应用程序作为资源进行管理有助于在以下方面获得改进：
 
@@ -99,7 +99,7 @@ ms.locfileid: "98790717"
 | applicationTypeVersion | 应用程序类型的版本         | 1.0.0                                                        | 必须匹配 ApplicationManifest.xml                 |
 | serviceName            | 服务的名称         | Voting~VotingWeb                                             | 必须采用 ApplicationName~ServiceType 格式            |
 | serviceTypeName        | 服务的类型名称                | VotingWeb                                                    | 必须匹配 ServiceManifest.xml                 |
-| appPackageUrl          | 应用程序的 Blob 存储 URL     | https： \/ /servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Blob 存储中应用程序包的 URL（设置该 URL 的过程在本文中的后面部分介绍） |
+| appPackageUrl          | 应用程序的 Blob 存储 URL     | https:\//servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Blob 存储中应用程序包的 URL（设置该 URL 的过程在本文中的后面部分介绍） |
 
 ```json
 {
@@ -189,7 +189,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 
 * [在 Service Fabric 中对应用程序建模](service-fabric-application-model.md)
 * [Service Fabric 应用程序和服务清单](service-fabric-application-and-service-manifests.md)
-* [最佳做法：基础结构即代码](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)
+* [最佳做法：基础结构即代码](service-fabric-best-practices-infrastructure-as-code.md#service-fabric-resources)
 * [将应用程序和服务作为 Azure 资源进行管理](service-fabric-best-practices-infrastructure-as-code.md)
 
 

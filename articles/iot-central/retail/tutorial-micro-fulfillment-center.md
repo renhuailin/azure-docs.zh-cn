@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: ab4d609b1638b47ad73b6f1143adee2870577305
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78536867efa4894f1041a340b9d6347a4e030a69
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100390464"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685650"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>教程：部署和演练微型配送中心应用程序模板
 
@@ -52,8 +52,6 @@ ms.locfileid: "100390464"
     >如果使用易记的应用程序名称，仍必须对应用程序 URL 使用唯一的值。
 
 1. 如果你有一个 Azure 订阅，请输入目录、Azure 订阅和区域。 如果你没有订阅，可以启用 7 天免费试用版并填写所需的联系信息。  
-
-    有关目录和订阅的详细信息，请参阅[创建应用程序](../core/quick-deploy-iot-central.md)快速入门。
 
 1. 选择“创建”  。
 

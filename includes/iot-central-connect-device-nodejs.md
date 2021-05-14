@@ -4,20 +4,22 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 03/31/2021
-ms.openlocfilehash: 6c97ee01dd1ad5b669142d74a02bada010525e81
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: aa82809aaa793f1b36a31c7615dd718b9304aae5
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491025"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109719239"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 若要完成本文中的步骤，需要准备好以下资源：
 
-* 使用“自定义应用程序”模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](../articles/iot-central/core/quick-deploy-iot-central.md)。 应用程序必须在 2020 年 7 月 14 日或之后创建。
-* 安装了 [Node.js](https://nodejs.org/) 6 或更高版本的开发计算机。 若要检查版本，可以在命令行中运行 `node --version`。 本教程中的说明假设在 Windows 命令提示符下运行 **node** 命令。 但是，可以在许多其他的操作系统上使用 Node.js。
-* [适用于 Node.js 的 Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-node) GitHub 存储库（包含示例代码）的本地副本。 使用此链接下载存储库副本：[下载 ZIP](https://github.com/Azure/azure-iot-sdk-node/archive/master.zip)。 然后将该文件解压缩到本地计算机上的适当位置。
+[!INCLUDE [iot-central-prerequisites-basic](iot-central-prerequisites-basic.md)]
+
+- 安装了 [Node.js](https://nodejs.org/) 6 或更高版本的开发计算机。 若要检查版本，可以在命令行中运行 `node --version`。 本教程中的说明假设在 Windows 命令提示符下运行 **node** 命令。 但是，可以在许多其他的操作系统上使用 Node.js。
+
+- [适用于 Node.js 的 Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-node) GitHub 存储库（包含示例代码）的本地副本。 使用此链接下载存储库副本：[下载 ZIP](https://github.com/Azure/azure-iot-sdk-node/archive/master.zip)。 然后将该文件解压缩到本地计算机上的适当位置。
 
 ## <a name="review-the-code"></a>查看代码
 

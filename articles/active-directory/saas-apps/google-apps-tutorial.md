@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/11/2021
 ms.author: jeedes
-ms.openlocfilehash: a846899ba8f9b9e7c0d2e54744f5e5044ca7a2d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 04d93913711dc8f03e35ac811b46158dfd038c61
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98732027"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108750665"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Google Cloud (G Suite) Connector 的集成
 
@@ -171,6 +171,10 @@ ms.locfileid: "98732027"
 1. 在“设置 Google Cloud (G Suite) Connector”部分，根据要求复制相应的 URL。 
 
     ![复制配置 URL](common/copy-configuration-urls.png)
+
+    ```Logout URL
+    https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0
+    ```
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 

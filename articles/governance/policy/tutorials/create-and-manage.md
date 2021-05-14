@@ -1,14 +1,14 @@
 ---
 title: 教程：构建策略以强制实施符合性
 description: 本教程中将使用策略来强制执行标准、控制成本、维护安全性并施加企业范围的设计原则。
-ms.date: 01/29/2021
+ms.date: 05/01/2021
 ms.topic: tutorial
-ms.openlocfilehash: a643e7ccede4966719972694ea29eeb77789595e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68621ee5a4cdfcb3bdbdddb2baa423d443eba36a
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99221187"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325204"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>教程：创建和管理策略以强制实施符合性
 
@@ -499,13 +499,13 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 分配一项要求使用特定位置的策略计划之后，系统会拒绝在其他位置创建的任何资源。 本部分介绍如何通过创建单个资源组中的排除项，来解决拒绝创建资源的请求的问题。 该排除项可防止对该资源组实施策略（或计划）。 在以下示例中，允许在排除的资源组中使用任何位置。 可对订阅、资源组或单个资源应用排除。
 
 > [!NOTE]
-> 还可以使用[策略豁免](../concepts/exemption-structure.md)来跳过对资源的评估。 有关其他信息，请参阅 [Azure Policy 中的范围](../concepts/scope.md)。
+> 还可以使用[策略豁免](../concepts/exemption-structure.md)来跳过对资源的评估。 有关详细信息，请参阅 [Azure Policy 中的作用域](../concepts/scope.md)。
 
 可在部署所针对的资源组中查看被分配的策略或计划阻止的部署：选择页面左侧的“部署”，然后选择失败部署的“部署名称”。  随后将会列出带有“禁止”状态的被拒绝资源。 若要确定拒绝该资源的策略或计划和分配，请在“部署概述”页上选择“失败。单击此处了解详细信息 ->”。 页面右侧会打开一个窗口，其中显示了错误信息。 “错误详细信息”下显示了相关策略对象的 GUID。
 
 :::image type="content" source="../media/create-and-manage/rg-deployment-denied.png" alt-text="策略分配拒绝的失败部署的屏幕截图。" border="false":::
 
-在“Azure Policy”页上：选择页面左侧的“符合性”，然后选择“保证安全”策略计划。  在此页上，被阻止的资源的“拒绝”计数增加。 在“事件”选项卡下，详述了谁尝试创建或部署已按策略定义拒绝的资源。
+在“Azure Policy”页上：选择页面左侧的“符合性”，然后选择“保证安全”策略计划。  在此页面上，被阻止的资源的“拒绝”计数会增加。 在“事件”选项卡下，详述了谁尝试创建或部署已按策略定义拒绝的资源。
 
 :::image type="content" source="../media/create-and-manage/compliance-overview.png" alt-text="“计划合规性”页上的“事件”选项卡和策略事件详细信息的屏幕截图。" border="false":::
 

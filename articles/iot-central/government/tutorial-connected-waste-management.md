@@ -7,12 +7,12 @@ ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: ff7cfb8c7aa8469111d4531da17c7cd184920f9b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42a82a59483a582e0d395092558665b12e1cd5a3
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727560"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684354"
 ---
 # <a name="tutorial-create-a-connected-waste-management-app"></a>教程：创建连接的废弃物管理应用
 
@@ -53,8 +53,6 @@ ms.locfileid: "101727560"
     * **应用程序名称**。 默认情况下，应用程序使用“联网废弃物管理”，后跟 Azure IoT Central 生成的唯一 ID 字符串。 （可选）可选择一个易记的应用程序名称。 稍后也可以更改应用程序名称。
     * **URL**。 （可选）可选择所需的 URL。 稍后可更改该 URL。 
     * **定价计划**。 如果你有 Azure 订阅，请在“计费信息”对话框的相应字段输入目录、Azure 订阅和区域。 如果你没有订阅，请选择“免费”来启用 7 天试用版订阅，并填写所需的联系信息。  
-
-    有关目录和订阅的详细信息，请参阅[快速入门 - 创建 Azure IoT Central 应用程序](../core/quick-deploy-iot-central.md)。
 
 1. 在页面底部，选择“创建”。 
 

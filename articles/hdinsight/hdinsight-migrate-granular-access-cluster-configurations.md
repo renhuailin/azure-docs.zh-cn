@@ -1,17 +1,15 @@
 ---
 title: 精细的基于角色的访问 Azure HDInsight 群集配置
 description: 了解在迁移到 HDInsight 群集配置的基于角色的细化访问权限时，需要进行哪些更改。
-author: tylerfox
-ms.author: tyfox
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: afb30f4648f1649bf6cc6cc6a3bf02f433f49d45
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 1ab7e8e9a85ebbb822e1b1a1d53298a48a85cb85
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774924"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108770994"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>迁移到群集配置的基于角色的细化访问权限
 

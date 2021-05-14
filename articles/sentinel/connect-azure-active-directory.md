@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/20/2021
+ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: f8931fedb380cf81d72b7b5280a5795498daaa57
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cc499e54ebc700f87edbc904165000155211ca1b
+ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99251975"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108007117"
 ---
 # <a name="connect-azure-active-directory-azure-ad-data-to-azure-sentinel"></a>将 Azure Active Directory (Azure AD) 数据连接到 Azure Sentinel
 
-可以使用 Azure Sentinel 的内置连接器从 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) 收集数据，并将数据流式传输到 Azure Sentinel。 通过使用连接器，可以流式传输以下日志类型：
+可以使用 Azure Sentinel 的内置连接器从 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) 收集数据，并将其流式传输到 Azure Sentinel。 通过使用连接器，可以流式传输以下日志类型：
 
-- [**登录日志**](../active-directory/reports-monitoring/concept-all-sign-ins.md)，包含用户提供身份验证因子的[交互式用户登录](../active-directory/reports-monitoring/concept-all-sign-ins.md#user-sign-ins)信息。
+- [**登录日志**](../active-directory/reports-monitoring/concept-all-sign-ins.md)，包含用户提供身份验证因子的交互式用户登录信息。
 
     Azure AD 连接器包含以下三个其他类别的登录日志，当前为预览版：
     
@@ -44,11 +44,11 @@ ms.locfileid: "99251975"
 > 如上所述，某些可用的日志类型当前为预览版。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，了解适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
 ## <a name="prerequisites"></a>先决条件
 
-- 任何 Azure AD 许可证（免费/O365/P1/P2）足以将登录日志引入 Azure Sentinel。 对于 Azure Monitor (Log Analytics) 和 Azure Sentinel，可能会按每 GB 收取额外的费用。
+- 将登录日志引入 Azure Sentinel 需要 Azure Active Directory P1 或 P2 许可证。 任何 Azure AD 许可证（免费/O365/P1/P2）均足以引入其他日志类型。 对于 Azure Monitor (Log Analytics) 和 Azure Sentinel，可能会收取额外的每 GB 费用。
 
-- 必须在工作区中为你的用户分配 Azure Sentinel 参与者角色。
+- 必须在工作区中为用户分配 Azure Sentinel 参与者角色。
 
-- 必须为你的用户在你要从中流式传输日志的租户上分配全局管理员或安全管理员的角色。
+- 必须在要从中流式传输日志的租户上为用户分配全局管理员或安全管理员角色。
 
 - 用户必须具有对 Azure AD 诊断设置进行读取和写入的权限，才能查看连接状态。 
 

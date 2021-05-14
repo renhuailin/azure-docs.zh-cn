@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 0728b45a72f7d4fe67807be5c9c2b5290af11c51
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 8b8f42d75a0d214bdc504c8cc0adb6f234ea036e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143460"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751114"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Azure 静态 Web 应用预览版的身份验证和授权
 
@@ -20,8 +20,6 @@ Azure 静态 Web 应用通过使用以下提供程序管理身份验证来简化
 
 - Azure Active Directory
 - GitHub
-- Facebook
-- Google<sup>1</sup>
 - Twitter
 
 特定于提供程序的[邀请](#invitations)将用户与角色关联，并根据 staticwebapp.config.json 文件中定义的规则向授权用户授予对[路由](configuration.md#routes)的访问权限。
@@ -56,9 +54,7 @@ Azure 静态 Web 应用通过使用以下提供程序管理身份验证来简化
 | 授权提供程序 | 公开用户的 |
 | ---------------------- | ---------------- |
 | Azure Active Directory | 电子邮件地址    |
-| Facebook               | 电子邮件地址    |
 | GitHub                 | username         |
-| Google<sup>1</sup>     | 电子邮件地址    |
 | Twitter                | username         |
 
 1. 在 [Azure 门户](https://portal.azure.com)中导航到静态 Web 应用资源。
@@ -132,9 +128,7 @@ Azure 静态 Web 应用使用 `/.auth` 系统文件夹来提供对与授权相�
 | 授权提供程序 | 登录路由             |
 | ---------------------- | ----------------------- |
 | Azure Active Directory | `/.auth/login/aad`      |
-| Facebook               | `/.auth/login/facebook` |
 | GitHub                 | `/.auth/login/github`   |
-| Google<sup>1</sup>     | `/.auth/login/google`   |
 | Twitter                | `/.auth/login/twitter`  |
 
 例如，若要使用 GitHub 登录，可以包含类似于以下代码片段的登录链接：

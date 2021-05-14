@@ -5,16 +5,19 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: e9bcabc05f0a967c788c5811dce0d99dc5cf38c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b01e53161bce448400d2bf641fee76987b7b841e
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207680"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316778"
 ---
 # <a name="azure-remote-rendering-tutorials"></a>Azure 远程渲染教程
 
 欢迎使用 Azure 远程渲染教程。 除了了解 Azure 远程渲染的主要概念外，这些交互式课程还会引导你查看、操作和自定义远程渲染的模型，并重点介绍构建可以商用的安全应用程序的注意事项。
+
+> [!TIP]
+> 这些课程内容详尽，并会分几步构建一个示例应用。 如果你更想查看能快速部署到 HoloLens 2 的更紧凑示例，请查看我们的 [Unity 快速入门](../../quickstarts/render-model.md)。
 
 ### <a name="azure-remote-rendering-tutorials"></a>Azure 远程渲染教程
 

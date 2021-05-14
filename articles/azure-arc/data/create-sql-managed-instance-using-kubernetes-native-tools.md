@@ -4,17 +4,17 @@ description: 使用 Kubernetes 工具创建 SQL 托管实例
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-author: vin-yu
-ms.author: vinsonyu
+author: rothja
+ms.author: jroth
 ms.reviewer: mikeray
 ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: d23df80a3f80ed96779297bac12ef0ed8d2927d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ca8712f0cbb1c9180b4c84e682512c348abeac9
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101687917"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736333"
 ---
 # <a name="create-azure-sql-managed-instance-using-kubernetes-tools"></a>使用 Kubernetes 工具创建 Azure SQL 托管实例
 
@@ -154,7 +154,7 @@ kubectl get sqlmi/sql1 --namespace arc
 kubectl get pods --namespace arc
 ```
 
-还可以通过运行如下命令来检查任何特定 Pod 的创建状态。  这对于排查任何问题特别有用。
+还可以通过运行如下命令来检查任何特定 Pod 的创建状态。  这对于排查问题特别有用。
 
 ```console
 kubectl describe po/<pod name> --namespace arc
