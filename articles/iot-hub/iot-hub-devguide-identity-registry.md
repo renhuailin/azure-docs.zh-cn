@@ -2,23 +2,22 @@
 title: 了解 Azure IoT 中心标识注册表 | Microsoft Docs
 description: 开发人员指南 - 说明 IoT 中心标识注册表以及如何使用它来管理设备。 包括批量导入和导出设备标识的相关信息。
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 05/06/2021
 ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 42def04db63d81bdb3eff8098daa8c75924bffec
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 2590ffd15ec046d0fc81e73b98577fa9ad91ae41
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502073"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109712741"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>了解 IoT 中心的标识注册表
 
@@ -32,11 +31,6 @@ ms.locfileid: "107502073"
 
 * 设置连接到 IoT 中心的设备或模块。
 * 控制每个设备/每个模块对中心的面向设备或模块的终结点的访问。
-
-> [!NOTE]
-> * 标识注册表不包含任何应用程序特定的元数据。
-> * 模块标识和模块孪生为公共预览版。 下面的有关模块标识的功能在公开发布后会受支持。
->
 
 ## <a name="identity-registry-operations"></a>标识注册表操作
 
@@ -58,10 +52,6 @@ IoT 中心标识注册表公开以下操作：
 IoT 中心标识注册表：
 
 * 不包含任何应用程序元数据。
-* 可以将 **deviceId** 或 **moduleId** 作为键进行访问，就像字典一样。
-* 不支持表达性查询。
-
-IoT 解决方案通常具有不同的解决方案特定存储，其中包含应用程序特定的元数据。 例如，智能建筑物解决方案中的解决方案特定存储将记录部署温度感应器的房间信息。
 
 > [!IMPORTANT]
 > 只将标识注册表用于设备管理和预配操作。 运行时的高吞吐量操作不应依赖于在标识注册表中执行操作。 例如，在发送命令前先检查设备的连接状态就是不支持的模式。 请务必检查标识注册表的[限制速率](iot-hub-devguide-quotas-throttling.md)以及[设备检测信号](iot-hub-devguide-identity-registry.md#device-heartbeat)模式。

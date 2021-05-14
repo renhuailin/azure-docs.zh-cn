@@ -10,12 +10,12 @@ ms.date: 09/15/2020
 ms.author: rosouz
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: 4a8367ea41ea96d8a412af965346684737d190fe
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5e2458ebcdcc1b2dba598b5d443b8eab12312e7d
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627568"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788955"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link"></a>使用 Azure Synapse Link 中的 Apache Spark 与 Azure Cosmos DB 进行交互
 
@@ -128,7 +128,7 @@ df.write.format("cosmos.oltp").
 ## <a name="load-streaming-dataframe-from-container"></a>从容器加载流式处理数据帧
 在此笔势中，你将使用 Spark 流式处理功能将容器中的数据加载到数据帧中。 数据将存储在连接到工作区的主数据湖帐户（和文件系统）中。 
 > [!NOTE]
-> 如果想在 Synapse Apache Spark 中引用外部库，请访问[此处](#external-library-management)了解详细。 例如，如果想要将 Spark 数据帧引入到 Cosmos DB 的 API for Mongo DB 的容器中，可以在[此处](https://docs.mongodb.com/spark-connector/master/)使用用于 Spark 的 Mongo DB 连接器。
+> 如果想在 Synapse Apache Spark 中引用外部库，请访问[此处](../spark/apache-spark-azure-portal-add-libraries.md)了解详细。 例如，如果想要将 Spark 数据帧引入到 Cosmos DB 的 API for Mongo DB 的容器中，可以在[此处](https://docs.mongodb.com/spark-connector/master/)使用用于 Spark 的 Mongo DB 连接器。
 
 ## <a name="load-streaming-dataframe-from-azure-cosmos-db-container"></a>从 Azure Cosmos DB 容器加载流式处理数据帧
 在此示例中，将使用 Spark 的结构化流式处理功能，通过 Azure Cosmos DB 中的更改源功能，将 Azure Cosmos DB 容器中的数据加载到 Spark 流式处理数据帧中。 Spark 使用的检查点数据将存储在连接到工作区的主数据湖帐户（和文件系统）中。
@@ -207,19 +207,6 @@ val query = dfStream.
 query.awaitTermination()
 ```
 
-## <a name="external-library-management"></a>外部库管理
-
-本示例将介绍在 Synpase Apache Spark 工作区中使用 Spark 笔记本时，如何从 JAR 文件引用外部库。 可以将 JAR 文件放在连接到工作区的主数据湖帐户中的容器内，然后在 Spark 笔记本中添加以下 `%configure` 语句：
-
-```cmd
-%%configure -f
-{
-    "jars": [
-        "abfss://<storage container name>@<data lake account name>.dfs.core.windows.net/<path to jar>"
-    ]
-}
-```
-如果希望将远程 Spark 作业定义提交到无服务器 Apache Spark 池，则可以通过本[教程](../spark/apache-spark-job-definitions.md)来了解如何引用外部库。
 
 ## <a name="next-steps"></a>后续步骤
 

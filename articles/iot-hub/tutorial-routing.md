@@ -2,23 +2,22 @@
 title: 教程 - 使用 Azure CLI 为 Azure IoT 中心配置消息路由
 description: 教程 - 使用 Azure CLI 和 Azure 门户为 Azure IoT 中心配置消息路由
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 03/12/2019
+ms.date: 04/04/2021
 ms.author: robinsh
 ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: d7a10aac82286616273f7283bc3fba74f2c58f35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 965738a735052947940ec3763c664e5e90909ee1
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98625209"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278267"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>教程：使用 Azure CLI 和 Azure 门户配置 IoT 中心消息路由
 
@@ -159,7 +158,7 @@ az servicebus queue create --name $sbQueueName \
    >
    > 例如，使用默认 Blob 文件名格式时，如果中心名称为 ContosoTestHub，日期/时间为 2018 年 10 月 30 日上午 10:56，则 Blob 名称将类似于：`ContosoTestHub/0/2018/10/30/10/56`。
    > 
-   > Blob 以 Avro 格式写入。
+   > 默认情况下，Blob 以 AVRO 格式写入。
    >
 
 8. 选择“创建”以创建存储终结点，并将其添加到路由  。 随即返回到“添加路由”窗格  。

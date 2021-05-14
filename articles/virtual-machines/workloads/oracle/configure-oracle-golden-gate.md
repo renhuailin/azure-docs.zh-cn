@@ -9,23 +9,23 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.openlocfilehash: fee6770108cbcc2334b2d8fb3ccc3b1e923772d9
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101673247"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>在 Azure Linux VM 上实现 Oracle Golden Gate 
 
 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南详述了如何使用 Azure CLI 通过 Azure 市场库映像部署 Oracle 12c 数据库。 
 
-本文档逐步演示如何在 Azure VM 上创建、安装和配置 Oracle Golden Gate。 在本教程中，将在单个区域中的可用性集中设置两个虚拟机。 同一教程可用于为单个 Azure 区域中不同可用性区域的 Vm 或两个不同区域中的 Vm 设置 OracleGolden 入口。
+本文档逐步演示如何在 Azure VM 上创建、安装和配置 Oracle Golden Gate。 在本教程中，将在单个区域的可用性集中设置两个虚拟机。 同一教程可用于为单个 Azure 区域的不同可用性区域中的 VM 或两个不同区域中的 VM 设置 OracleGolden Gate。
 
 在开始之前，请确保已安装 Azure CLI。 有关详细信息，请参阅 [Azure CLI 安装指南](/cli/azure/install-azure-cli)。
 
 ## <a name="prepare-the-environment"></a>准备环境
 
-若要执行 Oracle Golden Gate 安装，需要在同一可用性集中创建两个 Azure VM。 用于创建 Vm 的 Marketplace 映像是 **oracle： oracle-数据库-Ee：12.1.0.2：最新版本**。
+若要执行 Oracle Golden Gate 安装，需要在同一可用性集中创建两个 Azure VM。 用于创建 VM 的市场映像是 **Oracle:Oracle-Database-Ee:12.1.0.2:latest**。
 
 还需要熟悉 Unix 编辑器 vi 并基本了解 x11 (X Windows)。
 
@@ -390,7 +390,7 @@ SQL> EXIT;
 3. 在 PuTTY 密钥生成器中：
 
    - 若要生成密钥，请选择“生成”按钮。
-   - 将密钥内容复制 (**Ctrl + C**) 。
+   - 复制密钥的内容 (**Ctrl+C**)。
    - 选择“保存私钥”按钮。
    - 忽略显示的警告，并选择“确定”。
 
@@ -404,13 +404,13 @@ SQL> EXIT;
    $ cd .ssh
    ```
 
-5. 创建一个名为 **authorized_keys** 的文件。 在此文件中粘贴密钥的内容，然后保存该文件。
+5. 创建名为 **authorized_keys** 的文件。 在此文件中粘贴密钥的内容，然后保存该文件。
 
    > [!NOTE]
    > 该密钥必须包含字符串 `ssh-rsa`。 此外，密钥的内容必须是单行文本。
    >  
 
-6. 启动 PuTTY。 在 "**类别**" 窗格中，选择 "**连接**  >  **SSH**  >  **身份验证**"。在 "**身份验证的私钥文件**" 框中，浏览到之前生成的密钥。
+6. 启动 PuTTY。 在“类别”窗格中，选择“连接” > “SSH” > “身份验证”。在“用于身份验证的私钥文件”框中，浏览到前面生成的密钥。
 
    ![“设置私钥”页屏幕截图](./media/oracle-golden-gate/setprivatekey.png)
 
@@ -426,36 +426,36 @@ SQL> EXIT;
 
 若要安装 Oracle Golden Gate，请完成以下步骤：
 
-1. 以 oracle 身份登录。  (你应该能够在不提示输入密码的情况下登录。 ) 确保在开始安装之前运行 Xming。
+1. 以 oracle 身份登录。 （应该可以直接登录，系统不会提示输入密码。）在开始安装之前，请确保 Xming 正在运行。
 
    ```bash
    $ cd /opt/fbo_ggs_Linux_x64_shiphome/Disk1
    $ ./runInstaller
    ```
 
-2. 选择“Oracle GoldenGate for Oracle Database 12c”。 然后选择 " **下一步** " 继续。
+2. 选择“Oracle GoldenGate for Oracle Database 12c”。 然后选择“下一步”继续。
 
    ![安装程序中的“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_01.png)
 
-3. 更改软件位置。 然后选中“启动管理器”框，并输入数据库位置。 选择“下一步”继续。
+3. 更改软件位置。 然后选中“启动管理器”框，并输入数据库位置。 选择“下一步”继续操作。
 
    ![“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_02.png)
 
 4. 更改清单目录，然后选择“下一步”继续。
 
-   ![显示安装目录的 "选择安装" 页的屏幕截图。](./media/oracle-golden-gate/golden_gate_install_03.png)
+   ![“选择安装”页的屏幕截图，其中显示了安装目录。](./media/oracle-golden-gate/golden_gate_install_03.png)
 
 5. 在“摘要”屏幕上，选择“安装”以继续。
 
-   ![显示 "选择安装" 页和 "安装" 按钮的屏幕截图。](./media/oracle-golden-gate/golden_gate_install_04.png)
+   ![此屏幕截图显示了“选择安装”页和“安装”按钮。](./media/oracle-golden-gate/golden_gate_install_04.png)
 
 6. 系统可能会提示以“root”身份运行脚本。 如果是这样，则打开单独的会话，通过 ssh 连接到 VM，执行 sudo 操作到 root，然后运行脚本。 选择“确定”继续。
 
-   ![显示脚本位置和如何执行配置脚本的屏幕截图。](./media/oracle-golden-gate/golden_gate_install_05.png)
+   ![此屏幕截图显示了脚本位置和执行配置脚本的方式。](./media/oracle-golden-gate/golden_gate_install_05.png)
 
 7. 完成安装后，选择“关闭”完成过程。
 
-   ![显示 "关闭" 按钮的 "选择安装" 页的屏幕截图。](./media/oracle-golden-gate/golden_gate_install_06.png)
+   ![“选择安装”页的屏幕截图，其中显示了“关闭”按钮。](./media/oracle-golden-gate/golden_gate_install_06.png)
 
 ### <a name="set-up-service-on-myvm1-primary"></a>在 myVM1（主）上设置服务
 
@@ -726,7 +726,7 @@ SQL> EXIT;
 
 ### <a name="set-up-the-replication-myvm1-and-myvm2"></a>设置复制（myVM1 和 myVM2）
 
-#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1. 在 myVM2 上设置复制 (复制) 
+#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1.在 myVM2（复制）上设置复制
 
   ```bash
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -749,7 +749,7 @@ SQL> EXIT;
   GGSCI> EXIT
   ```
 
-#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2. 在 myVM1 上设置复制 (主) 
+#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2.在 myVM1（主）上设置复制
 
 启动初始加载，并检查错误：
 
@@ -760,7 +760,7 @@ GGSCI> START EXTRACT INITEXT
 GGSCI> VIEW REPORT INITEXT
 ```
 
-#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3. 在 myVM2 上设置复制 (复制) 
+#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3.在 myVM2（复制）上设置复制
 
 使用之前获取的编号更改 SCN 编号：
 

@@ -2,14 +2,14 @@
 title: 事件中心中的 Azure 架构注册表（预览版）
 description: 本文概述了 Azure 事件中心（预览版）支持的架构注册表。
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 04/28/2021
 ms.custom: references_regions
-ms.openlocfilehash: a876651b76aa259754623854b8fc4a7c6c8a939e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 578bb082cf439d48b186461742ed51c39ce85e80
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92330489"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226437"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>事件中心中的 Azure 架构注册表（预览版）
 在许多事件流式处理和消息传送场景中，事件或消息有效负载都包含结构化数据，这些数据使用架构驱动格式（例如 Apache Avro）进行序列化或反序列化。 发送方和接收方可能都需要使用与 JSON 架构相同的架构文档来验证数据的完整性。 对于架构驱动格式，消息使用者必须能够使用该架构，才能反序列化数据。 
@@ -48,7 +48,7 @@ Azure 架构注册表是事件中心的一项功能，它为事件驱动的应�
 :::image type="content" source="./media/schema-registry-overview/flow-diagram.png" alt-text="流程图":::
 
 ## <a name="standard-vs-dedicated-limits"></a>标准限制与专用限制
-对于事件中心标准层和专用层的相同和不同限制（例如命名空间中的架构组的数目），请参阅[架构注册表限制](../azure-resource-manager/management/azure-subscription-service-limits.md#schema-registry-limitations)
+对于事件中心标准层和专用层的相同和不同限制（例如命名空间中的架构组的数目），请查看[事件中心配额和限制](event-hubs-quotas.md)
 
 ## <a name="azure-role-based-access-control"></a>Azure 基于角色的访问控制
 以编程方式访问架构注册表时，需要在 Azure Active Directory (Azure AD) 中注册应用程序，并将应用程序的安全主体添加到以下 Azure 基于角色的访问控制 (Azure RBAC) 角色之一：

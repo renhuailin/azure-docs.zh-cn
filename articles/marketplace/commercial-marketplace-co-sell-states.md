@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 09/02/2020
-ms.openlocfilehash: 0a29bb07eea979c66cf2d32c56850a27a0c1d73d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 9ec914e5fea0d54f4705e8f14f5a64fa80c1adfe
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133162"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102120022"
 ---
 # <a name="co-sell-state-and-province-codes-in-azure-marketplace"></a>Azure 市场中的联合销售州和省代码
 
-本文列出了在产品/服务的“联合销售”页上提供联系人信息时可用的州和省代码。 [在产品/服务的“联合销售”页上提供联系人信息](./co-sell-configure.md#enter-your-contacts)时，请使用以下代码提供州/省信息（如果适用）。
+本文列出了在产品/服务的“联合销售”页上提供联系人信息时可用的州和省代码。 [在产品/服务的“联合销售”页上提供联系人信息](commercial-marketplace-co-sell.md#enter-your-contacts)时，请使用以下代码提供州/省信息（如果适用）。
 
 ## <a name="us-states-and-territories"></a>美国各州和地区
 
@@ -115,4 +115,4 @@ ms.locfileid: "108133162"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[商业市场中的联合销售选项](./co-sell-configure.md)。
+- 了解[商业市场中的联合销售选项](./commercial-marketplace-co-sell.md)。

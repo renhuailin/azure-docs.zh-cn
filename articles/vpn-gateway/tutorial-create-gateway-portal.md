@@ -1,17 +1,18 @@
 ---
 title: 教程 - 创建和管理 VPN 网关：Azure 门户
-description: 按本教程进行操作，了解如何使用门户创建、部署和管理 Azure VPN 网关
+description: 在本教程中，学习如何使用门户创建、部署和管理 Azure VPN 网关。
+titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 12/01/2020
-ms.openlocfilehash: 820482a268af038737557c517ccda086cd65d943
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/28/2021
+ms.openlocfilehash: 29f479444679d1f76dc90eec4546539faea5337f
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880553"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202562"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-azure-portal"></a>教程：使用 Azure 门户创建和管理 VPN 网关
 
@@ -28,7 +29,7 @@ Azure VPN 网关在客户本地与 Azure 之间提供跨界连接。 本教程�
 
 下图展示了本教程中创建的虚拟网络和 VPN 网关。
 
-:::image type="content" source="./media/tutorial-create-gateway-portal/gateway-diagram.png" alt-text="VNet 和 VPN 网关关系图":::
+:::image type="content" source="./media/tutorial-create-gateway-portal/gateway-diagram.png" alt-text="VNet 和 VPN 网关图表。":::
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -74,7 +75,7 @@ Azure VPN 网关在客户本地与 Azure 之间提供跨界连接。 本教程�
 
 可以在网关的“概述”页面查看网关的公共 IP 地址。
 
-:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="概述页":::
+:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="概述页面屏幕截图。":::
 
 若要查看有关公共 IP 地址对象的其他信息，请单击“公共 IP 地址”旁边的名称/IP 地址链接。
 

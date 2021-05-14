@@ -8,12 +8,12 @@ ms.author: bobazile
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e94ac79bcce2e7489e881c9dcfb88aeffecf6a8d
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 3e698abbdad4b45a58f14e350e1f2b268a7de371
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108018630"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108324484"
 ---
 # <a name="telephony-concepts"></a>电话服务概念
 
@@ -22,37 +22,39 @@ ms.locfileid: "108018630"
 Azure 通信服务通话 SDK 可用于向应用程序添加电话服务和 PSTN。 此页汇总了重要的电话服务概念和功能。 若要详细了解特定 SDK 语言和功能，请参阅[通话库](../../quickstarts/voice-video-calling/calling-client-samples.md)。
 
 ## <a name="overview-of-telephony"></a>电话服务概述
-每当你的用户与传统电话号码交互时，将通过 PSTN（公用电话交换网）语音呼叫来辅助完成呼叫。 若要拨打和接收 PSTN 呼叫，需要向 Azure 通信服务资源添加电话功能。 在这种情况下，信令和媒体结合使用基于 IP 和基于 PSTN 的技术来连接用户。 通信服务提供两种不同的方式来连接 PSTN 网络：Azure 云通话和 SIP 接口。
+每当你的用户与传统电话号码交互时，将通过 PSTN（公用电话交换网）语音呼叫来辅助完成呼叫。 若要拨打和接收 PSTN 呼叫，需要向 Azure 通信服务资源添加电话功能。 在这种情况下，信令和媒体结合使用基于 IP 和基于 PSTN 的技术来连接用户。 通信服务提供两种不同的方式来连接 PSTN 网络：语音呼叫 (PSTN) 和 Azure 直接路由。
 
-### <a name="azure-cloud-calling"></a>Azure 云通话
+### <a name="voice-calling-pstn"></a>语音呼叫 (PSTN)
 
 这是向应用或服务添加 PSTN 连接的一种简单方法，在本例中，Microsoft 是你的电信提供商。 可以直接从 Microsoft 购买号码。 Azure 云通话是用于通信服务的完全通过云实现的电话服务解决方案。 这是将 ACS 连接到公用电话交换网 (PSTN) 以呼叫座机和移动电话的最简单选项。 使用此选项后，Microsoft 将充当你的 PSTN 运营商，如下图所示：
 
-![Azure 云通话关系图。](../media/telephony-concept/azure-calling-diagram.png)
+![语音呼叫 (PSTN) 图表。](../media/telephony-concept/azure-calling-diagram.png)
 
-如果你对以下问题的回答为“是”，那么 Azure 云通话就是适合你的解决方案：
-- Azure 云通话在你的区域中可用。
+如果你对以下问题的回答为“是”，那么语音呼叫 (PSTN) 解决方案适合你：
+- 可在你的区域中使用语音呼叫 (PSTN)。
 - 你不需要保留当前的 PSTN 运营商。
 - 你想对 PSTN 使用 Microsoft 管理的访问。
 
 使用此选项：
 - 你直接从 Microsoft 获得号码，且可拨打世界各地的电话。
-- 你不需要部署或维护本地部署，因为 Azure 云通话在 Azure 通信服务之外运行。
-- 注意：如有必要，可以选择通过 SIP 接口连接受支持的会话边界控制器 (SBC)，以与第三方 PBX、模拟设备和其他 SBC 支持的第三方电话服务设备进行互操作。
+- 你不需要部署或维护本地部署，因为语音呼叫 (PSTN) 在 Azure 通信服务之外运行。
+- 注意：如有必要，可选择通过 Azure 直接路由连接受支持的会话边界控制器 (SBC)，来与第三方 PBX、模拟设备和 SBC 支持的其他第三方电话服务设备进行互操作。
 
 此选项要求与 Azure 通信服务的连接不间断。
 
-### <a name="sip-interface"></a>SIP 接口
+### <a name="azure-direct-routing"></a>Azure 直接路由
 
-利用此选项，可将旧的本地电话服务和所选的运营商连接到 Azure 通信服务。 即使你所在国家/地区未提供 Azure 云通话，此选项也可提供对 ACS 应用程序的 PSTN 通话功能。 
+[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
 
-![SIP 接口关系图。](../media/telephony-concept/sip-interface-diagram.png)
+利用此选项，可将旧的本地电话服务和所选的运营商连接到 Azure 通信服务。 即使你所在国家/地区未提供语音呼叫 (PSTN)，此选项也可提供对 ACS 应用程序的 PSTN 通话功能。 
 
-如果你对以下问题的回答为“是”，那么 SIP 接口就是适合你的解决方案：
+![Azure 直接路由图表。](../media/telephony-concept/sip-interface-diagram.png)
+
+如果你对以下问题的回答为“是”，那么 Azure 直接路由解决方案适合你：
 
 - 你希望使用具有 PSTN 通话功能的 ACS。
 - 你需要保留当前的 PSTN 运营商。
-- 你需要混合路由，即一部分通话通过 Azure 云通话进行，一部分通过运营商进行。
+- 你需要混合路由，即一部分通话通过语音呼叫 (PSTN) 进行，一部分通过运营商进行。
 - 你需要与第三方 PBX 和/或设备（如空中寻呼机、模拟设备等）进行互操作。
 
 使用此选项：
@@ -73,7 +75,7 @@ Azure 通信服务通话 SDK 可用于向应用程序添加电话服务和 PSTN�
 ### <a name="conceptual-documentation"></a>概念文档
 
 - [Azure 通信服务中的电话号码类型](./plan-solution.md)
-- [计划 SIP 接口](./sip-interface-infrastructure.md)
+- [规划 Azure 直接路由](./sip-interface-infrastructure.md)
 - [定价](../pricing.md)
 
 ### <a name="quickstarts"></a>快速入门

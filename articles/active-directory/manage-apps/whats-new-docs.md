@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 应用程序管理中的新增内容
 description: 有关 Azure Active Directory 应用程序管理的新文档和更新文档。
-ms.date: 04/04/2021
+ms.date: 05/04/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -9,16 +9,38 @@ ms.workload: identity
 ms.author: iangithinji
 author: iantheninja
 manager: CelesteDG
-ms.openlocfilehash: 9def91dcdf3370a94443dcea33ddf05f0e01e827
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 19fbfbed3a86575eb38fd2651cab9fffeabb673f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108318448"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743860"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory 应用程序管理：新增内容
 
 欢迎查看 Azure Active Directory 应用程序管理文档中的新增内容。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解应用程序管理服务的新增内容，请查看 [Azure Active Directory 中的新增功能](../fundamentals/whats-new.md)。
+
+## <a name="april-2021"></a>2021 年 4 月
+
+### <a name="new-articles"></a>新文章
+
+- [Active Directory (Azure AD) 应用程序代理常见问题解答](application-proxy-faq.yml)
+
+### <a name="updated-articles"></a>更新的文章
+
+- [应用程序管理最佳做法](application-management-fundamentals.md)
+- [应用程序管理文档](index.yml)
+- [将应用程序身份验证从 Active Directory 联合身份验证服务移动到 Azure Active Directory](migrate-adfs-apps-to-azure.md)
+- [将应用程序身份验证迁移到 Azure Active Directory](migrate-application-authentication-to-azure-active-directory.md)
+- [计划 Azure Active Directory 我的应用配置](my-apps-deployment-plan.md)
+- [Azure AD 中的单一登录选项](sso-options.md)
+- [Azure Active Directory 应用程序管理：新增内容](whats-new-docs.md)
+- [使用应用程序代理和 PingAccess 通过基于标头的身份验证进行单一登录](../app-proxy/application-proxy-ping-access-publishing-guide.md)
+- [管理应用程序的许可和评估同意请求](manage-consent-requests.md)
+- [配置管理员同意工作流](configure-admin-consent-workflow.md)
+- [使用租户限制管理对 SaaS 云应用程序的访问](tenant-restrictions.md)
+- [将 Azure Active Directory 与应用程序集成入门指南](plan-an-application-integration.md)
+
 
 ## <a name="march-2021"></a>2021 年 3 月
 
@@ -63,29 +85,3 @@ ms.locfileid: "108318448"
 - [将应用程序身份验证从 Active Directory 联合身份验证服务移动到 Azure Active Directory](migrate-adfs-apps-to-azure.md)
 - [教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问](../app-proxy/application-proxy-add-on-premises-application.md)
 - [使用租户限制管理对 SaaS 云应用程序的访问](tenant-restrictions.md)
-
-## <a name="january-2021"></a>2021 年 1 月
-
-### <a name="new-articles"></a>新文章
-- [计划 Azure Active Directory 我的应用配置](my-apps-deployment-plan.md)
-
-### <a name="updated-articles"></a>更新的文章
-- [安装应用程序代理程序连接器时出现问题](../app-proxy/application-proxy-connector-installation-problem.md)
-- [在 Azure AD 中排查基于密码的单一登录问题](troubleshoot-password-based-sso.md)
-- [应用程序管理最佳做法](application-management-fundamentals.md)
-- [将 Azure Active Directory 与应用程序集成入门指南](plan-an-application-integration.md)
-- [什么是应用程序管理？](what-is-application-management.md)
-- [Active Directory (Azure AD) 应用程序代理常见问题解答](../app-proxy/application-proxy-faq.yml)
-- [教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问](../app-proxy/application-proxy-add-on-premises-application.md)
-- [使用现有的本地代理服务器](../app-proxy/application-proxy-configure-connectors-with-proxy-servers.md)
-- [为 Azure Active Directory 开发业务线应用](../develop/v2-overview.md)
-- [了解 Azure AD 应用程序代理连接器](../app-proxy/application-proxy-connectors.md)
-- [了解链接登录](configure-linked-sign-on.md)
-- [了解基于密码的单一登录](configure-password-single-sign-on-non-gallery-applications.md)
-- [了解基于 SAML 的单一登录](configure-saml-single-sign-on.md)
-- [排查在 Azure Active Directory 中添加或删除应用程序时遇到的常见问题](/troubleshoot/azure/active-directory/troubleshoot-adding-apps)
-- [查看使用 Azure AD 租户进行标识管理的应用](application-types.md)
-- [了解如何在 Azure Active Directory 中将用户分配到应用](ways-users-get-assigned-to-applications.md)
-- [快速入门：从 Azure Active Directory (Azure AD) 租户中删除应用程序](delete-application-portal.md)
-- [使用 Azure AD 应用程序代理发布远程桌面](../app-proxy/application-proxy-integrate-with-remote-desktop-services.md)
-- [对 Azure Active Directory 中拥有过度特权的或可疑的应用程序采取措施](manage-application-permissions.md)

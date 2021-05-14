@@ -9,12 +9,12 @@ ms.date: 09/06/2018
 ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: 0a54d0c85902915d2ee62acd8a1d38b8db8b221c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 801d073642114addeed87c4ee2073774f7888fa5
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92536039"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109487612"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>使用 Azure 门户创建 IoT 中心
 
@@ -60,7 +60,7 @@ ms.locfileid: "92536039"
 
 单击“创建”  将此新建策略添加到现有列表。
 
-有关特定权限授予的访问权限的详细信息，请参阅 [IoT 中心权限](./iot-hub-devguide-security.md#iot-hub-permissions)。
+有关特定权限授予的访问权限的详细信息，请参阅 [IoT 中心权限](./iot-hub-dev-guide-sas.md#access-control-and-permissions)。
 
 ## <a name="register-a-new-device-in-the-iot-hub"></a>在 IoT 中心内注册新设备
 

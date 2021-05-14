@@ -1,5 +1,5 @@
 ---
-title: 将数据从 Azure 存储 blob 复制到 Data Lake Storage Gen1
+title: 将数据从 Azure 存储 Blob 复制到 Data Lake Storage Gen1
 description: 使用 AdlCopy 工具将数据从 Azure 存储 Blob 复制到 Azure Data Lake Storage Gen1
 author: twooley
 ms.service: data-lake-store
@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 84ee65b05af4393f49696875bda41df39e283d5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85980083"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>将数据从 Azure 存储 Blob 复制到 Azure Data Lake Storage Gen1
@@ -21,10 +21,10 @@ ms.locfileid: "85980083"
 >
 >
 
-Data Lake Storage Gen1 提供了一个命令行工具 [AdlCopy](https://www.microsoft.com/download/details.aspx?id=50358)，用于从以下源复制数据：
+Data Lake Storage Gen1 提供的命令行工具 [AdlCopy](https://www.microsoft.com/download/details.aspx?id=50358) 从以下源复制数据：
 
-* 从 Azure 存储 blob 到 Data Lake Storage Gen1。 不能使用 AdlCopy 将数据从 Data Lake Storage Gen1 复制到 Azure 存储 blob。
-* 两个 Data Lake Storage Gen1 帐户之间。
+* 从 Azure 存储 Blob 复制到 Data Lake Storage Gen1。 无法使用 AdlCopy 将数据从 Data Lake Storage Gen1 复制到 Azure 存储 Blob。
+* 在两个 Data Lake Storage Gen1 帐户之间复制。
 
 此外，可在两个不同的模式下使用 AdlCopy 工具：
 
@@ -36,9 +36,9 @@ Data Lake Storage Gen1 提供了一个命令行工具 [AdlCopy](https://www.micr
 在开始阅读本文前，必须具有：
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* 包含某些数据的**Azure 存储 blob**容器。
-* **Data Lake Storage Gen1 帐户**。 有关如何创建一个的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
-* **Data Lake Analytics 帐户 (可选) ** -请参阅 [Azure Data Lake Analytics 入门](../data-lake-analytics/data-lake-analytics-get-started-portal.md) ，获取有关如何创建 Data Lake Analytics 帐户的说明。
+* 包含一些数据的 Azure 存储 Blob 容器。
+* **Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
+* Data Lake Analytics 帐户（可选） - 有关如何创建 Data Lake Analytics 帐户的说明，请参阅 [Azure Data Lake Analytics 入门](../data-lake-analytics/data-lake-analytics-get-started-portal.md)。
 * **AdlCopy 工具**。 安装 [AdlCopy 工具](https://www.microsoft.com/download/details.aspx?id=50358)。
 
 ## <a name="syntax-of-the-adlcopy-tool"></a>AdlCopy 工具语法
@@ -57,8 +57,8 @@ AdlCopy /Source <Blob or Data Lake Storage Gen1 source> /Dest <Data Lake Storage
 | 目标 |指定要复制到的 Data Lake Storage Gen1 目标。 |
 | SourceKey |指定 Azure 存储 blob 源的存储访问密钥。 仅在源是 blob 容器或 blob 时必选此项。 |
 | 帐户 |可选。 如要使用 Azure Data Lake Analytics 帐户运行复制作业，请使用此选项。 如果在语法中使用 /Account 选项但不指定 Data Lake Analytics 帐户，AdlCopy 会使用默认帐户来运行作业。 此外，如果使用此选项，必须添加源（Azure 存储 Blob）和目标 (Azure Data Lake Storage Gen1)，将其作为 Data Lake Analytics 帐户的数据源。 |
-| 单元 |指定要用于复制作业的 Data Lake Analytics 单位的数量。 如果使用“/Account”**** 选项指定 Data Lake Analytics 帐户，此选项为必选。 |
-| 模式 |指定 regex 模式，它指示要复制哪些 blob 或文件。 AdlCopy 使用区分大小写匹配。 如果未指定模式，则默认模式是复制所有项。 不支持指定多个文件模式。 |
+| 单元 |指定要用于复制作业的 Data Lake Analytics 单位的数量。 如果使用“/Account”选项指定 Data Lake Analytics 帐户，此选项为必选。 |
+| 模式 |指定 regex 模式，它指示要复制哪些 blob 或文件。 AdlCopy 使用区分大小写匹配。 未指定模式时的默认模式会复制所有项。 不支持指定多个文件模式。 |
 
 ## <a name="use-adlcopy-as-standalone-to-copy-data-from-an-azure-storage-blob"></a>使用 AdlCopy（以独立模式）从 Azure 存储 blob 复制数据
 
@@ -143,7 +143,7 @@ AdlCopy /Source <Blob or Data Lake Storage Gen1 source> /Dest <Data Lake Storage
 
 ### <a name="performance-considerations"></a>性能注意事项
 
-将 AdlCopy 作为独立工具使用时，将在 Azure 托管的共享资源上运行副本。 在此环境中得到的性能取决于系统负载和可用资源。 此模式最好用于临时的小传输。 将 AdlCopy 作为独立工具使用时，不需要调整任何参数。
+将 AdlCopy 作为独立工具使用时，副本在共享的 Azure 托管资源上运行。 在此环境中得到的性能取决于系统负载和可用资源。 此模式最好用于临时的小传输。 将 AdlCopy 作为独立工具使用时，不需要调整任何参数。
 
 ## <a name="use-adlcopy-with-data-lake-analytics-account-to-copy-data"></a>使用 AdlCopy（通过 Data Lake Analytics 帐户）复制数据
 
@@ -202,11 +202,11 @@ AdlCopy /Source adl://mysourcedatalakestorage.azuredatalakestore.net/mynewfolder
 
 ## <a name="considerations-for-using-adlcopy"></a>AdlCopy 使用注意事项
 
-* AdlCopy（版本 1.0.5）支持从具有总计数千的文件和文件夹的源中复制数据。 但是，如果在复制大型数据集时遇到问题，则可以将文件/文件夹分发到不同的子文件夹，并将这些子文件夹的路径改为源。
+* AdlCopy（版本 1.0.5）支持从具有总计数千的文件和文件夹的源中复制数据。 但是，如果复制大型数据集时遇到问题，可将文件/文件夹分发到不同的子文件夹中，改用这些子文件夹的路径作为源。
 
 ## <a name="performance-considerations-for-using-adlcopy"></a>使用 AdlCopy 的性能注意事项
 
-AdlCopy 支持复制包含上千个文件和文件夹的数据。 但是，如果在复制大型数据集时遇到问题，可以将文件/文件夹分发到较小的子文件夹。 AdlCopy 专用于临时副本。 如果要尝试定期复制数据，应考虑使用 [Azure 数据工厂](../data-factory/connector-azure-data-lake-store.md)，此工具提供与复制操作有关的完整管理功能。
+AdlCopy 支持复制包含上千个文件和文件夹的数据。 但是，如果在复制大型数据集时遇到问题，可将文件/文件夹分发到较小的子文件夹中。 AdlCopy 专用于临时副本。 如果要尝试定期复制数据，应考虑使用 [Azure 数据工厂](../data-factory/connector-azure-data-lake-store.md)，此工具提供与复制操作有关的完整管理功能。
 
 ## <a name="release-notes"></a>发行说明
 

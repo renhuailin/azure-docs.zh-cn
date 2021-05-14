@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 801c2fe1710952a12584bf10dd8e5c77de3b839c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc7e58dcf2ed9c8897ec5a425415451e1083ed44
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98625092"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326572"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>教程：使用 Azure Maps 创建店铺定位器
 
@@ -35,7 +35,7 @@ ms.locfileid: "98625092"
 
 ## <a name="prerequisites"></a>先决条件
 
-1. [创建使用 S1 定价层的 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
+1. [在第一代 (S1) 或第二代定价层中创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)。
 2. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。
 
 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。

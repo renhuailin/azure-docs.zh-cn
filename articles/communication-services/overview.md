@@ -8,12 +8,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8c2559315e3bfffc41c138be6826adae95dd7b07
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 6dae6e7ef5a442392972a39f75bbea8046b4beff
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588099"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108324718"
 ---
 # <a name="what-is-azure-communication-services"></a>什么是 Azure 通信服务？
 
@@ -42,6 +42,7 @@ ms.locfileid: "107588099"
 |---                                    |---                                   |
 |[创建第一个用户访问令牌](./quickstarts/access-tokens.md)|用户访问令牌用于针对 Azure 通信服务资源进行客户端身份验证。 这些令牌是使用通信服务 SDK 预配和重新颁发的。|
 |[语音和视频呼叫入门](./quickstarts/voice-video-calling/getting-started-with-calling.md)| 借助 Azure 通信服务，可以使用呼叫 SDK 将语音和视频呼叫添加到浏览器或本机应用。 |
+|**[向应用添加通话功能](./quickstarts/voice-video-calling/pstn-call.md)**|借助 Azure 通信服务，可向应用程序添加电话通话功能。|
 |**[在 Teams 会议中加入通话应用](./quickstarts/voice-video-calling/get-started-teams-interop.md)**|Azure 通信服务可用于构建与 Microsoft Teams 交互的自定义会议体验。 通信服务解决方案用户可以通过语音、视频、聊天和屏幕共享与 Teams 参与者进行交互。|
 |[聊天入门](./quickstarts/chat/get-started.md)|Azure 通信服务聊天 SDK 用于向应用程序添加实时富文本聊天。|
 
@@ -54,6 +55,7 @@ ms.locfileid: "107588099"
 |---                                    |---                                   |
 |[群呼英雄示例](./samples/calling-hero-sample.md)| 下载为浏览器、iOS 和 Android 设备进行群组通话设计的应用程序示例。 |
 |[群聊英雄示例](./samples/chat-hero-sample.md)| 下载为浏览器的组文本聊天设计的应用程序示例。 |
+|**[Web 呼叫示例](./samples/web-calling-sample.md)**| 下载专为音频、视频和 PSTN 呼叫设计的 Web 应用程序示例。 |
 
 
 ## <a name="platforms-and-sdk-libraries"></a>平台和 SDK 库

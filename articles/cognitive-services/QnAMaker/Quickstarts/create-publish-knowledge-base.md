@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: c59529db0981a1071b76714c48aacaf675e4b17a
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: eee4d23b17bf852946b31912eb81fd4f897e0f56
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987907"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108803865"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入门：创建、训练和发布 QnA Maker 知识库
 
@@ -47,7 +47,7 @@ ms.locfileid: "99987907"
     |设置|值|
     |--|--|
     |**允许从 URL、.pdf 或 .docx 文件进行多轮提取。**|已选中|
-    |**多回合默认文本**| 选择和选项|
+    |**多回合默认文本**| 选择选项|
     |**+ 添加 URL**|`https://www.microsoft.com/en-us/software-download/faq`|
     |**聊天内容**|选择“专业”|
 
@@ -82,7 +82,7 @@ ms.locfileid: "99987907"
     |设置|值|
     |--|--|
     |**允许从 URL、.pdf 或 .docx 文件进行多轮提取。**|已选中|
-    |**多回合默认文本**| 选择和选项|
+    |**多回合默认文本**| 选择选项|
     |**+ 添加文件**| 从“https://download.microsoft.com/download/7/B/1/7B10C82E-F520-4080-8516-5CF0D803EEE0/surface-book-user-guide-EN.pdf”下载 Surface 笔记本电脑手册 
     |**聊天内容**|选择“专业”|
 

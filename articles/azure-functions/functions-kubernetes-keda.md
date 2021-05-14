@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: 525635ef40437fe308c52e2d5aba2c97ed8f20e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1eac5a24ae577d712a7dccc7514eb4b18ade232a
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92927526"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109485254"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Kubernetes 上使用 KEDA 的 Azure Functions
 
@@ -28,7 +28,7 @@ Azure Functions 服务由两个关键组件组成：运行时和缩放控制器�
 
 ### <a name="installing-with-helm"></a>通过 Helm 安装
 
-可以通过多种方式在任何 Kubernetes 群集中安装 KEDA，包括 Helm。  [KEDA 站点](https://keda.sh/docs/1.4/deploy/)上提供了部署选项。
+可以通过多种方式在任何 Kubernetes 群集中安装 KEDA，包括 Helm。  [KEDA 站点](https://keda.sh/docs/deploy/)上提供了部署选项。
 
 ## <a name="deploying-a-function-app-to-kubernetes"></a>将函数应用部署到 Kubernetes
 
@@ -73,7 +73,7 @@ kubectl delete secret <name-of-function-deployment>
 
 ## <a name="uninstalling-keda-from-kubernetes"></a>从 Kubernetes 卸载 KEDA
 
-[KEDA 站点](https://keda.sh/docs/1.4/deploy/)上提供了用于卸载 KEDA 的步骤。
+[KEDA 站点](https://keda.sh/docs/deploy/)上提供了用于卸载 KEDA 的步骤。
 
 ## <a name="supported-triggers-in-keda"></a>KEDA 中支持的触发器
 

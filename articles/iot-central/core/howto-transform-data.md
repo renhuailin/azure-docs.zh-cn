@@ -7,16 +7,14 @@ ms.date: 04/09/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 6032300bd203db78e8cd147cf79300d6dcd9b1dc
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 87f188b414791636e147a19202b6fcf314d6f307
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751681"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109683636"
 ---
 # <a name="transform-data-for-iot-central"></a>转换 IoT Central 的数据
-
-本主题适用于解决方案构建人员。
 
 IoT 设备发送各种格式的数据。 要将设备数据用于 IoT Central 应用程序，可以能需要使用转换实现以下操作：
 
@@ -41,9 +39,9 @@ IoT 设备发送各种格式的数据。 要将设备数据用于 IoT Central �
 
 ## <a name="prerequisites"></a>必备条件
 
-需要有效的 Azure 订阅才能完成本文中的步骤。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+若要完成本操作指南中的步骤，需要：
 
-需要一个 IoT Central 应用程序才能设置解决方案。 要了解如何创建 IoT Central 应用程序，请参阅[创建 Azure IoT Central 应用程序](quick-deploy-iot-central.md)。
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
 
 ## <a name="data-transformation-at-ingress"></a>流入期间的数据转换
 
@@ -87,6 +85,8 @@ IoT 设备发送各种格式的数据。 要将设备数据用于 IoT Central �
   }
 }
 ```
+
+[![浏览代码](media/common/browse-code.svg)](https://github.com/iot-for-all/iot-central-transform-with-iot-edge)
 
 以下步骤介绍如何设置并配置此场景：
 

@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 09/03/2020
-ms.openlocfilehash: e5d335ee14709ec330405419f5be8ac5fbd6ce75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83d8d6498a5ec4906f7cdd7187ae88e4a2f45126
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943764"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318020"
 ---
 # <a name="tutorial-create-an-apache-spark-applications-with-vscode-using-a-synapse-workspace"></a>教程：使用 Synapse 工作区通过 VSCode 创建 Apache Spark 应用程序
 
@@ -84,7 +84,9 @@ ms.locfileid: "98943764"
 
 4. [连接](#connect-to-your-spark-pools)到 Azure 帐户（如果尚未这样做）。
 
-5. 选择一个 Spark 池作为当前脚本文件的默认 Spark 池。 工具将自动更新 **.VSCode\settings.json** 配置文件：
+5. 选择一个 Spark 池作为当前脚本文件的默认 Spark 池。 
+
+6. 使用“Synapse: PySpark Interactive”来提交文件。 工具会自动更新 .VSCode\settings.json 配置文件：
 
      ![设置默认群集配置](./media/vscode-tool-synapse/set-default-cluster-configuration.png)
 
