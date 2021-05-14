@@ -8,19 +8,16 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: d36bae57a9e1609e053326cf7288b5b1bc470cef
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: a91d26139fae80b38383e7f65f7ae2f58358e6f6
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166881"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795305"
 ---
 # <a name="deploy-cloud-services-extended-support-by-using-the-azure-sdk"></a>使用 Azure SDK 部署云服务（外延支持）
 
 本文介绍如何使用 [Azure SDK](https://azure.microsoft.com/downloads/) 部署具有多个角色（Web 角色与辅助角色）和远程桌面扩展的云服务（外延支持）实例。 云服务（外延支持）是基于 Azure 资源管理器的 Azure 云服务部署模型。
-
-> [!IMPORTANT]
-> 云服务（外延支持）目前为公共预览版。 此预览版在提供时没有附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="before-you-begin"></a>在开始之前
 
@@ -157,7 +154,7 @@ ms.locfileid: "106166881"
     ```
 
 7. 创建公共 IP 地址，并设置公共 IP 地址的 DNS 标签属性。 云服务（外延支持）仅支持[基本] (https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) SKU 公共 IP 地址。 标准 SKU 公共 IP 不适用于云服务。
-如果使用的是静态 IP，则需要在服务配置 (.cscfg) 文件中将其作为保留 IP 引用
+如果使用的是静态 IP，则需要在服务配置 (.cscfg) 文件中将其作为保留 IP 引用。
 
     ```csharp
     PublicIPAddress publicIPAddressParams = new PublicIPAddress(name: “ContosIp”) 

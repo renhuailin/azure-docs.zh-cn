@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 629b48a378dd029d9952270e3c71762a5bb7aa82
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 742bf5eb7e33f7121325216d8880f77dadc85155
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107306715"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108803973"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>将 Azure Blob 存储用于模型转换
 
@@ -73,7 +73,7 @@ Azure 远程渲染需要从存储帐户检索模型数据并将数据写入回�
 有关如何上传数据进行转换的示例，请参阅 [Powershell 示例脚本](../../samples/powershell-example-scripts.md#script-conversionps1)的 Conversion.ps1。
 
 > [!Note]
-> 上传输入模型时，请注意避免长文件名和/或文件夹结构，以避免服务上出现 [Windows 路径长度限制](https://docs.mxicrosoft.com/windows/win32/fileio/maximum-file-path-limitation)问题。 
+> 上传输入模型时，请注意避免长文件名和/或文件夹结构，以避免服务上出现 [Windows 路径长度限制](/windows/win32/fileio/maximum-file-path-limitation)问题。 
 
 ## <a name="get-a-sas-uri-for-the-converted-model"></a>获取已转换模型的 SAS URI
 
