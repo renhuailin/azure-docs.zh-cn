@@ -12,12 +12,12 @@ ms.date: 04/27/2021
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: 本地, OCR, Docker, 容器
-ms.openlocfilehash: 8b1e7a6cc31e141886e75f70ff7625e230df5b14
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 42f840c9237d22638236efb758c9b789501b0ce5
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108131776"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108773424"
 ---
 # <a name="install-read-ocr-docker-containers"></a>安装 Read OCR Docker 容器
 
@@ -471,6 +471,6 @@ JSON 响应对象具有与异步版本相同的对象图。 如果你是 JavaScr
 
 * 查看[配置容器](computer-vision-resource-container-config.md)了解配置设置
 * 查看 [OCR 概述](overview-ocr.md)，了解有关识别印刷文本和手写文本的详细信息
-* 如需详细了解该容器支持的方法，请参阅[读取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b)。
+* 如需详细了解该容器支持的方法，请参阅[读取 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)。
 * 参阅[常见问题解答 (FAQ)](FAQ.md)，以解决与计算机视觉功能相关的问题。
 * 使用更多[认知服务容器](../cognitive-services-container-support.md)

@@ -8,17 +8,14 @@ ms.topic: how-to
 ms.date: 03/10/2021
 ms.reviewer: banders
 ms.author: andalmia
-ms.openlocfilehash: 105e090655021ed4046f8880ef9816d7f7ff559f
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 4d0ebd73065c538a78c950ab48254cb06d113897
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105631725"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108804513"
 ---
 # <a name="manage-azure-subscription-policies"></a>管理 Azure 订阅策略
-
->[!NOTE]
->此功能目前以预览版提供，将会逐步推出，因此并非所有人都可在 Azure 门户中看到这种体验。
 
 本文可帮助你为订阅操作配置 Azure 订阅策略，以便在将 Azure 订阅移入和移出目录时进行控制。
 

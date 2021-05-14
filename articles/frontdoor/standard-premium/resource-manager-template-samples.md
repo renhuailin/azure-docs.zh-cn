@@ -7,12 +7,12 @@ ms.author: jodowns
 ms.service: frontdoor
 ms.topic: sample
 ms.date: 04/16/2021
-ms.openlocfilehash: 0da7da3748f9c1dc088d0cee615b429927a40f92
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 387ff5ef13892c11867e26cff63ec482c1cdc5ee
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890683"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795521"
 ---
 # <a name="azure-resource-manager-templates-for-azure-front-door"></a>用于 Azure Front Door 的 Azure 资源管理器模板
 
@@ -32,7 +32,6 @@ ms.locfileid: "107890683"
 |**应用服务源**| **说明** |
 | [应用服务](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-app-service-public) | 创建具有公共终结点的应用服务应用以及 Front Door 配置文件。  |
 | [具有专用链接的应用服务](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-app-service-private-link) | 创建具有专用终结点的应用服务应用以及 Front Door 配置文件。  |
-| [具有专用链接的应用服务环境](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-app-service-environment-internal-private-link) | 创建应用服务环境、具有专用终结点的应用以及 Front Door 配置文件。  |
 |**Azure Functions 源**| **说明** |
 | [Azure Functions](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-function-public/) | 创建具有公共终结点的 Azure Functions 应用以及 Front Door 配置文件。  |
 | [具有专用链接的 Azure Functions](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-function-private-link) | 创建具有专用终结点的 Azure Functions 应用以及 Front Door 配置文件。  |

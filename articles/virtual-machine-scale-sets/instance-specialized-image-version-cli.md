@@ -3,19 +3,19 @@ title: 使用 Azure CLI 从专用化映像版本创建规模集
 description: 使用 Azure CLI 从共享映像库中的专用化映像版本创建规模集。
 author: cynthn
 ms.service: virtual-machine-scale-sets
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
-ms.reviewer: akjosh
+ms.reviewer: mimckitt
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5fc88c00d548c0a034984976557d316fdac7620f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c65f8c3ffcf8e48153701c8d4d2b316c2b41f375
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107792338"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108768456"
 ---
 # <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>使用 Azure CLI 通过专用化映像版本创建规模集
 

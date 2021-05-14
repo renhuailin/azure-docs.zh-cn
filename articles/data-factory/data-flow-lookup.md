@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/19/2021
-ms.openlocfilehash: b8754742c572a8dbc1f55c64e47bec640d757d65
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 129b8460d22de6f03a136dcb30b8f686738a9bdd
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739362"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734191"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>映射数据流中的查找转换
 
@@ -98,8 +98,8 @@ SQLProducts, DimProd lookup(ProductID == ProductKey,
     asc(ProductKey, true),
     broadcast: 'auto')~> LookupKeys
 ```
-## 
-后续步骤
+
+## <a name="next-steps"></a>后续步骤
 
 * [联接](data-flow-join.md)和[存在](data-flow-exists.md)转换都采用多个流输入
 * 使用带有 ```isMatch()``` 的[有条件拆分转换](data-flow-conditional-split.md)来拆分匹配和不匹配值的行

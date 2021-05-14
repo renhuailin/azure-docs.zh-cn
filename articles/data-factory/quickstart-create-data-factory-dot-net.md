@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/27/2021
 ms.author: jingwang
-ms.openlocfilehash: 3c667fe20b392bfb52b8300ce4b8b59d15a13b9a
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 5b793e2316b11aa66038d16681c05056363ba4d7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385422"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108741862"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>快速入门：使用 .NET SDK 创建数据工厂和管道
 
@@ -27,7 +27,7 @@ ms.locfileid: "106385422"
 > [!NOTE]
 > 本文不提供数据工厂服务的详细介绍。 有关 Azure 数据工厂服务的介绍，请参阅 [Azure 数据工厂简介](introduction.md)。
 
-[!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
+[!INCLUDE [data-factory-quickstart-prerequisites](includes/data-factory-quickstart-prerequisites.md)] 
 
 ### <a name="visual-studio"></a>Visual Studio
 

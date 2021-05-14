@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 552a40be0c069d1002ebc7ea4dafe0d6f93a5755
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2d91e9405c17afe44a05deedc8bb0f0c40377d7
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85128154"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278269"
 ---
-[消息路由](../articles/iot-hub/iot-hub-devguide-messages-d2c.md)能够将遥测数据从 IoT 设备发送到内置的与事件中心兼容的终结点或自定义终结点，例如，Blob 存储、服务总线队列、服务总线主题和事件中心。 若要配置自定义消息路由，请创建[路由查询](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md)来自定义与特定条件匹配的路由。 设置完成后，引入的数据将通过 IoT 中心自动路由到终结点。 如果某个消息不匹配定义的任何路由查询，它将路由到默认终结点。
+[消息路由](../articles/iot-hub/iot-hub-devguide-messages-d2c.md)能够将遥测数据从 IoT 设备发送到内置的与事件中心兼容的终结点或自定义终结点，例如，Blob 存储、服务总线队列、服务总线主题和事件中心。 若要配置自定义消息路由，请创建[路由查询](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md)来自定义与特定条件匹配的路由。 设置完成后，引入的数据将通过 IoT 中心自动路由到终结点。 如果某条消息与任何定义的路由查询不匹配，它会被路由到默认终结点。
 
 本教程包括 2 个部分，介绍如何通过 IoT 中心设置和使用这些自定义路由查询。 将消息从 IoT 设备路由到多个终结点中的一个，包括 Blob 存储和服务总线队列。 路由到服务总线队列的消息将由逻辑应用拾取，并通过电子邮件发送。 未定义自定义消息路由的消息将发送到默认终结点，然后由 Azure 流分析拾取，可在 Power BI 中直观查看。
 

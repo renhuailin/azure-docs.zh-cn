@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: eliotga
-ms.openlocfilehash: b9fc37c6589cdd0bc6a5cdce7b7ebebe2c6e9a85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c9397351d1b6be5533f3a5eb9206dfd97311d9a1
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96019440"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483346"
 ---
 # <a name="iot-hub-device-provisioning-service-dps-terminology"></a>IoT 中心设备预配服务 (DPS) 术语
 
@@ -83,7 +83,7 @@ IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务�
 设备预配服务支持以下证明形式：
 * 基于标准 X.509 证书身份验证流的 X.509 证书。 有关详细信息，请参阅 [X.509 证明](concepts-x509-attestation.md)。
 * 基于 nonce 质询的受信任平台模块 (TPM)，使用密钥的 TPM 标准显示已签名的共享访问签名 (SAS) 令牌。 这不需要设备上的物理 TPM，但是服务要求按照 [TPM 规范](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)使用认可密钥来证明。有关详细信息，请参阅 [TPM 证明](concepts-tpm-attestation.md)。
-* 基于共享访问签名 (SAS) [安全令牌](../iot-hub/iot-hub-devguide-security.md#security-tokens)的“对称密钥”，包括哈希签名和嵌入的到期期限。 有关详细信息，请参阅[对称密钥证明](concepts-symmetric-key-attestation.md)。
+* 基于共享访问签名 (SAS) [安全令牌](../iot-hub/iot-hub-dev-guide-sas.md#security-tokens)的“对称密钥”，包括哈希签名和嵌入的到期期限。 有关详细信息，请参阅[对称密钥证明](concepts-symmetric-key-attestation.md)。
 
 
 ## <a name="hardware-security-module"></a>硬件安全模块

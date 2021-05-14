@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 374c4764689447b855476128ee31e2077211a794
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 504d66501cc041d6fec4671b6955723505910d0c
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208898"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788438"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-cli"></a>启用用于路由 Azure 数字孪生事件的托管标识（预览版）：Azure CLI
 
@@ -45,7 +45,7 @@ ms.locfileid: "108208898"
 若要创建具有系统托管标识的实例，请按如下所示添加 `--assign-identity` 参数：
 
 ```azurecli-interactive
-az dt create -n {new_instance_name} -g {resource_group} --assign-identity
+az dt create --dt-name {new_instance_name} --resource-group {resource_group} --assign-identity
 ```
 
 ### <a name="add-a-system-managed-identity-to-an-existing-instance"></a>将系统托管标识添加到现有实例
@@ -57,13 +57,13 @@ az dt create -n {new_instance_name} -g {resource_group} --assign-identity
 用于 **启用** 托管标识的命令与创建具有系统托管标识的实例的命令相同。 唯一的差别在于实例名称参数的值：
 
 ```azurecli-interactive
-az dt create -n {name_of_existing_instance} -g {resource_group} --assign-identity
+az dt create --dt-name {name_of_existing_instance} --resource-group {resource_group} --assign-identity
 ```
 
 若要在当前已启用托管标识的实例上 **禁用** 托管标识，请使用类似于下面的命令将 `--assign-identity` 设置为 `false`。
 
 ```azurecli-interactive
-az dt create -n {name_of_existing_instance} -g {resource_group} --assign-identity false
+az dt create --dt-name {name_of_existing_instance} --resource-group {resource_group} --assign-identity false
 ```
 
 ## <a name="assign-azure-roles-to-the-identity"></a>将 Azure 角色分配给标识 
@@ -94,7 +94,7 @@ az dt create -n {name_of_existing_instance} -g {resource_group} --assign-identit
 以下示例创建一个具有系统托管标识的实例，并在事件中心为该标识分配一个名为 `MyCustomRole` 的自定义角色。
 
 ```azurecli-interactive
-az dt create -n {instance_name} -g {resource_group} --assign-identity --scopes "/subscriptions/<subscription ID>/resourceGroups/<resource_group>/providers/Microsoft.EventHub/namespaces/<Event_Hubs_namespace>/eventhubs/<event_hub_name>" --role MyCustomRole
+az dt create --dt-name {instance_name} --resource-group {resource_group} --assign-identity --scopes "/subscriptions/<subscription ID>/resourceGroups/<resource_group>/providers/Microsoft.EventHub/namespaces/<Event_Hubs_namespace>/eventhubs/<event_hub_name>" --role MyCustomRole
 ```
 
 有关使用此命令进行角色分配的更多示例，请参阅 [az dt create 参考文档](/cli/azure/dt#az_dt_create)。
@@ -113,7 +113,7 @@ az dt create -n {instance_name} -g {resource_group} --assign-identity --scopes "
 若要创建使用基于标识的身份验证的终结点，请使用 `--auth-type` 参数指定 `IdentityBased` 身份验证类型。 以下示例演示了如何对事件中心终结点使用此参数。
 
 ```azurecli-interactive
-az dt endpoint create eventhub --endpoint-name {endpoint_name} --eventhub-resource-group {eventhub_resource_group} --eventhub-namespace {eventhub_namespace} --eventhub {eventhub_name} --auth-type IdentityBased -n {instance_name}
+az dt endpoint create eventhub --endpoint-name {endpoint_name} --eventhub-resource-group {eventhub_resource_group} --eventhub-namespace {eventhub_namespace} --eventhub {eventhub_name} --auth-type IdentityBased --dt-name {instance_name}
 ```
 
 ## <a name="considerations-for-disabling-system-managed-identities"></a>有关禁用系统托管标识的注意事项

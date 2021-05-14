@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 40d61de140cb0b3537c56af37eb18f004a72c148
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: bb331f8829252b69499944e5354c9343e96c78bd
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138888"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684714"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -62,7 +62,7 @@ ms.locfileid: "108138888"
 
 标准编码器现在支持 8 位 HEVC (H.265) 编码。 可以通过动态打包器使用“hev1”格式传送和打包 HEVC 内容。  
 
-[media-services-v3-dotnet GitHub 存储库](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset_HEVC)中提供了有关使用 HEVC 实现 .NET 自定义编码的新示例。
+[media-services-v3-dotnet GitHub 存储库](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_HEVC)中提供了有关使用 HEVC 实现 .NET 自定义编码的新示例。
 除了自定义编码以外，现在还可以使用以下新的内置 HEVC 编码预设：
 
 - H265ContentAwareEncoding
@@ -98,7 +98,7 @@ ms.locfileid: "108138888"
 除新增了对 HEVC (H.265) 编码的支持以外，现在 2020-05-01 版本的编码 API 中还提供了以下功能。
 
 - 现在支持使用新的 **JobInputClip** 支持来拼结多个输入文件。
-    - 我们已提供一个适用于 .NET 的示例来演示如何[将两个资产拼结到一起](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomStitchTwoAssets)。
+    - 我们已提供一个适用于 .NET 的示例来演示如何[将两个资产拼结到一起](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_StitchTwoAssets)。
 - 音频轨道选择可让客户选择并映射传入的音频轨道，并将其路由到输出以进行编码
     - 有关 **AudioTrackDescriptor** 和轨道选择的详细信息，请参阅 [REST API OpenAPI](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L385)
 - 选择轨道进行编码 – 可让客户从包含多比特率轨道的 ABR 源文件或实时存档中选择轨道。 此功能对于从实时事件存档文件生成 MP4 极其有用。

@@ -12,12 +12,12 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: b82c42d27d05cd84cf7fc59b711c24794a8e2f17
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 96b35e65f11e9f0c1dec6b75465454be962dce46
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107314008"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109735109"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell 和 Azure CLI：使用 Azure Key Vault 中由客户管理的密钥启用透明数据加密
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "107314008"
 本文逐步介绍如何使用 Azure Key Vault 中的密钥对 Azure SQL 数据库或 Azure Synapse Analytics 启用透明数据加密 (TDE)。 要了解更多关于 TDE 与 Azure Key Vault 集成（即自带密钥 (BYOK) 支持）的信息，请访问[使用 Azure Key Vault 中由客户管理的密钥进行 TDE](transparent-data-encryption-byok-overview.md)。
 
 > [!NOTE] 
-> Azure SQL 现在支持使用存储在托管 HSM 中的 RSA 密钥作为 TDE 保护程序。 此功能目前以公共预览版提供。 Azure Key Vault 托管 HSM 是一项完全托管、高度可用、单租户、符合标准的云服务，通过该服务，可以使用通过 FIPS 140-2 级别 3 验证的 HSM 来保护云应用程序的加密密钥。 详细了解[托管 HSM](../../key-vault/managed-hsm/index.yml)。
+> Azure SQL 现在支持使用存储在托管 HSM 中的 RSA 密钥作为 TDE 保护程序。 此功能目前以公共预览版提供。 Azure 密钥保管库托管 HSM 是一项完全托管、高度可用、单租户、符合标准的云服务，通过该服务，可以使用通过 FIPS 140-2 级别 3 验证的 HSM 来保护云应用程序的加密密钥。 详细了解[托管 HSM](../../key-vault/managed-hsm/index.yml)。
 
 ## <a name="prerequisites-for-powershell"></a>PowerShell 先决条件
 
@@ -242,7 +242,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
 
    # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-   ```powershell
+   ```azurecli
    az account show - s <SubscriptionId>
    ```
 

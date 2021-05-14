@@ -2,19 +2,19 @@
 title: Azure 通信服务 - Web 呼叫示例
 titleSuffix: An Azure Communication Services sample
 description: 了解通信服务 Web 呼叫示例
-author: chriswhilar
+author: mariusu-msft
 manager: mariusu-msft
 services: azure-communication-services
 ms.author: mariusu
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 35c3bd0213b6d895a81605f5858f924182e1e307
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: fb5d16e0aa73b889800d64be310176c5733633a6
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168852"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685722"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>开始了解 Web 呼叫示例
 
@@ -83,7 +83,7 @@ Web 呼叫示例是一个 Web 应用程序，其中分步演练了由通信服�
 
 有关详细信息，请参阅以下文章：
 
-- 自行熟悉如何[使用呼叫 SDK](../quickstarts/voice-video-calling/calling-client-samples.md)
+- 自行熟悉如何[使用通话 SDK](../quickstarts/voice-video-calling/calling-client-samples.md)
 - 了解有关[呼叫工作原理](../concepts/voice-video-calling/about-call-types.md)的详细信息
 - 查看 [API 参考文档](/javascript/api/azure-communication-services/@azure/communication-calling/)
 - 查看 [Contoso Med 应用](https://github.com/Azure-Samples/communication-services-contoso-med-app)示例

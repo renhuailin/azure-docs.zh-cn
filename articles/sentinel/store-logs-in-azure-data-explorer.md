@@ -14,19 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/25/2021
 ms.author: bagol
-ms.openlocfilehash: b0bffbba34e7816b62325db7999a7f5c6398b881
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 12a6ae76b1eb4dced661b811d8f6e9030f74b4f1
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124502"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795719"
 ---
 # <a name="integrate-azure-data-explorer-for-long-term-log-retention"></a>集成 Azure 数据资源管理器以实现长期日志保留
-
-<!--Info not included:>
-
-Script - can't xref out to a private github repo from docs
--->
 
 默认情况下，引入 Azure Sentinel 的日志存储在 Azure Monitor Log Analytics 中。 本文介绍如何通过将日志发送到 Azure 数据资源管理器进行长期保留来降低 Azure Sentinel 中的保留成本。
 
@@ -44,7 +39,7 @@ Azure Sentinel 提供完整的 SIEM 和 SOAR 功能、快速部署和配置，�
 
 如果你只需偶尔访问特定表（例如出于定期调查或审核目的），则可能考虑到将数据保留在 Azure Sentinel 中不再是经济高效的方案。 此时，我们建议将数据存储在 Azure 数据资源管理器中，这样做成本较低，但仍可使用在 Azure Sentinel 中运行的相同 KQL 查询进行浏览。
 
-使用 [Log Analytics Azure 数据资源管理器代理功能](//azure/azure-monitor/logs/azure-monitor-data-explorer-proxy)，可以直接从 Azure Sentinel 访问 Azure 数据资源管理器中的数据。 为此，请在日志搜索或工作簿中使用跨群集查询。
+使用 [Log Analytics Azure 数据资源管理器代理功能](/azure/azure-monitor/logs/azure-monitor-data-explorer-proxy)，可以直接从 Azure Sentinel 访问 Azure 数据资源管理器中的数据。 为此，请在日志搜索或工作簿中使用跨群集查询。
 
 > [!IMPORTANT]
 > 核心 SIEM 功能（包括分析规则、UEBA 和调查图）不支持 Azure 数据资源管理器中存储的数据。

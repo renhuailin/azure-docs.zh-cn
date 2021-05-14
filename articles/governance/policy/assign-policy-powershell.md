@@ -3,12 +3,12 @@ title: 快速入门：通过 PowerShell 进行新策略分配
 description: 在本快速入门中，你将使用 Azure PowerShell 创建 Azure Policy 分配以确定不符合的资源。
 ms.date: 03/31/2021
 ms.topic: quickstart
-ms.openlocfilehash: 1043bd53fa2c494d34b0007a851b95afd937d991
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 69455742082930fdb436fee1c33bbdd372c7e4e7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106091406"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108753094"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建策略分配以识别不符合的资源
 

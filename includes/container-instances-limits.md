@@ -4,12 +4,12 @@ ms.service: container-instances
 ms.topic: include
 ms.date: 07/22/2020
 ms.author: danlep
-ms.openlocfilehash: 6878180ffedfaa53f25d2bdc6db72dcd7dd8b38b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c232875715253b3601c7f9a5ecc289705e3dcf40
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87384815"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108212264"
 ---
 | 资源 | 限制 |
 | --- | :--- |
@@ -23,10 +23,10 @@ ms.locfileid: "87384815"
 | 每个 IP 的端口数 | 5 |
 | 容器实例日志大小 - 正在运行的实例 | 4 MB |
 | 容器实例日志大小 - 已停止的实例 | 16 KB 或 1,000 行 |
-| 每小时创建容器次数 |300<sup>1</sup> |
-| 每 5 分钟创建容器次数 | 100<sup>1</sup> |
-| 每小时删除容器次数 | 300<sup>1</sup> |
-| 每 5 分钟删除容器次数 | 100<sup>1</sup> |
+| 每小时容器组创建数目 |300<sup>1</sup> |
+| 每 5 分钟容器组创建数目 | 100<sup>1</sup> |
+| 每小时容器组删除数目 | 300<sup>1</sup> |
+| 每 5 分钟容器组删除数目 | 100<sup>1</sup> |
 
 
 <sup>1</sup>要请求提高上限，请创建一个 [Azure 支持请求][azure-support]。 包括 [Azure 免费帐户](https://azure.microsoft.com/offers/ms-azr-0044p/)和[面向学生的 Azure](https://azure.microsoft.com/offers/ms-azr-0170p/) 的免费订阅不符合提高上限或配额的条件。 如果有免费订阅，可将其[升级](../articles/cost-management-billing/manage/upgrade-azure-subscription.md)为即用即付订阅。<br />

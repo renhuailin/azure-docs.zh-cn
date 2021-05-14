@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 04/10/2019
 ms.author: wesmc
-ms.openlocfilehash: a9478948cd5232c863014631acb884cd637a2f7d
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 3aa82d36db7e7c31f956bef940a33d2898302dca
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107863985"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755506"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用后端应用程序读取该数据 (C)
 
@@ -51,7 +51,7 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
 对于以下环境，可以通过安装这些包和库来使用 SDK：
 
-* **Linux**：apt-get 包适用于使用以下 CPU 体系结构的 Ubuntu 16.04 和 18.04：amd64、arm64、armhf 和 i386。 有关详细信息，请参阅[使用 apt-get 在 Ubuntu 上创建 C 设备客户端项目](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/ubuntu_apt-get_sample_setup.md)。
+* **Linux**：apt-get 包适用于使用以下 CPU 体系结构的 Ubuntu 16.04 和 18.04：amd64、arm64、armhf 和 i386。  有关详细信息，请参阅[使用 apt-get 在 Ubuntu 上创建 C 设备客户端项目](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#set-up-a-linux-development-environment)。
 
 * **mbed**：对于在 mbed 平台上创建设备应用程序的开发人员，我们发布了可帮助在几分钟内学会使用 Azure IoT 中心的库和示例。 有关详细信息，请参阅[使用 mbed 库](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/readme.md#mbed)。
 

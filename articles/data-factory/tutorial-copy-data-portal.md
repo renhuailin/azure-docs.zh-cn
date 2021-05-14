@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure 门户创建数据工厂管道
 description: 本教程分步说明了如何使用 Azure 门户创建带管道的数据工厂。 该管道通过复制活动将数据从 Azure Blob 存储复制到 Azure SQL 数据库。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.author: jingwang
-ms.openlocfilehash: 08ab3c9181f4fdcfc9b55bf80c53f88ff26f90ce
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.author: jianleishen
+ms.openlocfilehash: aa8ccdde19dadeb1864037ed13082e42a27b8f59
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584376"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483310"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂，将数据从 Azure Blob 存储复制到 Azure SQL 数据库中的数据库
 
@@ -171,7 +171,7 @@ ms.locfileid: "104584376"
 
     ![保存新建链接服务](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
 
-1. 将自动导航到“设置属性”对话框。 在“表”中选择“[dbo].[emp]”。 然后选择“确定”。 
+1. 将自动导航到“设置属性”对话框。 在“表”中选择“[dbo].[emp]”。 然后选择“确定”。
 
 1. 转到包含管道的选项卡。在“接收器数据集”中，确认已选中“OutputSqlDataset”。 
 

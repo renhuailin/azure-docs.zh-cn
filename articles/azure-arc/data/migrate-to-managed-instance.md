@@ -4,17 +4,17 @@ description: 将数据库从 SQL Server 迁移到已启用 Azure Arc 的 SQL 托
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-author: vin-yu
-ms.author: vinsonyu
+author: rothja
+ms.author: jroth
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 011eb74158d9e004aca04c595e5cfe4b76d3cb51
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 1f588ca0762cf201bf532d7b9d97ea6c4e21c9b4
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108163348"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734947"
 ---
 # <a name="migrate-sql-server-to-azure-arc-enabled-sql-managed-instance"></a>迁移：从 SQL Server 到已启用 Azure Arc 的 SQL 托管实例
 
