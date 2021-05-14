@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.custom: designer
-ms.openlocfilehash: ec563371ab505113117707f56c31f506f7fdf377
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1846b5478c824caa954b85ea6346d773f46b279c
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659491"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315662"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>教程：使用设计器部署机器学习模型
 
@@ -81,7 +81,7 @@ ms.locfileid: "101659491"
     
 1. 对于“区域”，选择可用的邻近区域。
 
-1. 选择“创建”。
+1. 选择“创建”  。
 
     > [!NOTE]
     > 创建新的 AKS 服务大约需要 15 分钟。 可在“推理群集”页上查看预配状态。
@@ -140,6 +140,8 @@ ms.locfileid: "101659491"
 
 ## <a name="limitations"></a>限制
 
+### <a name="update-inference-pipeline"></a>更新推理管道
+
 如果在训练管道中进行了一些修改，则应重新提交训练管道，更新推理管道并再次运行推理管道。
 
 请注意，在推理管道中将只更新经过训练的模型，而不会更新数据转换。
@@ -153,6 +155,10 @@ ms.locfileid: "101659491"
 ![显示如何替换转换模块的屏幕截图](./media/tutorial-designer-automobile-price-deploy/replace-td-module.png)
 
 然后，可以提交具有已更新的模型和转换的推理管道，并部署。
+
+### <a name="deploy-real-time-endpoint"></a>部署实时终结点
+
+由于数据存储访问限制，如果你的推理管道包含“导入数据”或“导出数据”模块，它们将在部署到实时终结点时被自动删除 。
 
 ## <a name="clean-up-resources"></a>清理资源
 

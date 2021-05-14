@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 12/10/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 00aba5d169a05eab25dcc63ca813955e71d09598
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+manager: femila
+ms.openlocfilehash: 719b4579d97992cdfc3563ccb72b31809569182c
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97092374"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107898254"
 ---
 # <a name="enable-azure-multifactor-authentication-for-windows-virtual-desktop"></a>为 Windows 虚拟桌面启用 Azure 多重身份验证
 
@@ -67,7 +67,7 @@ ms.locfileid: "97092374"
    > 
    > 如果使用 Windows 虚拟桌面（经典），而此时条件访问策略阻止所有访问，仅排除 Windows 虚拟桌面应用 ID，则可以通过向策略中添加应用 ID 9cdead84-a844-4324-93f2-b2e6bb768d07 来解决此问题。 不添加此应用 ID 会导致无法发现 Windows 虚拟桌面（经典）资源的源。
 
-10. 前往“条件” > “客户端应用”，然后选择要将策略应用到的位置：
+10. 转到“条件” > “客户端应用” 。 在“配置”中选择“是” ，然后选择要应用策略的位置：
     
     - 如果要将策略应用到 Web 客户端，请选择“浏览器”。
     - 如果要将策略应用到其他客户端，请选择“移动应用和桌面客户端”。

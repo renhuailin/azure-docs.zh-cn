@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 5ca821cb4f85deb77595e4a9029cc10298dbb884
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b0f5bf01080d89e6dc6d6843312d96243b8526ba
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105611967"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109484534"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>缩放将 VMware 虚拟机迁移到 Azure 的无代理迁移过程
 
@@ -76,7 +76,7 @@ ms.locfileid: "105611967"
 
 - 安装网关代理和设备配置管理器以执行更多并发服务器复制。
 - 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
-- 下载并安装 IIS 可重写模块。 [了解详细信息](https://www.microsoft.com/download/details.aspx?id=7435)。
+- 下载并安装 IIS 可重写模块。
 - 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置详细信息。
 - 在路径下创建以下文件：
     - **配置文件**：%Programdata%\Microsoft Azure\Config

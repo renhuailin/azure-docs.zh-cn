@@ -9,12 +9,12 @@ ms.date: 03/27/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
 manager: philmea
-ms.openlocfilehash: a870b72d1dda04ab29dbb5f056873d47f888b837
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 932b2a5e09c335564273a1161c471182738e40b0
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501356"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685326"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>从 Azure PowerShell 管理 IoT Central
 
@@ -79,7 +79,11 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 |模板          | 要使用的应用程序模板。 有关详细信息，请参阅下表。 |
 |DisplayName       |UI 中显示的应用程序名称。 |
 
+### <a name="application-templates"></a>应用程序模板
+
 [!INCLUDE [iot-central-template-list](../../../includes/iot-central-template-list.md)]
+
+如果你创建了自己的应用程序模板，则可以用它来创建新的应用程序。 当系统提示你提供应用程序模板时，请在应用的[应用程序模板导出](howto-use-app-templates.md#create-an-application-template)部分下，输入导出应用的 URL 可共享链接中显示的应用 ID。
 
 ## <a name="view-your-iot-central-applications"></a>查看 IoT Central 应用程序
 

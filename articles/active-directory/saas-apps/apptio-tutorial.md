@@ -11,33 +11,33 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.author: jeedes
-ms.openlocfilehash: f12ab30d0c08c5efc064df73842bc3af4b47b017
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db6ce74234a8b7deec23f245d8b36edc22aa4827
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98735984"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108801885"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-apptio"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Apptio 集成
 
 在本教程中，你将了解如何将 Apptio 与 Azure Active Directory (Azure AD) 进行集成。 将 Apptio 与 Azure AD 集成后，可以：
 
-* 在 Azure AD 中控制谁有权访问 Apptio。
-* 让用户使用其 Azure AD 帐户自动登录到 Apptio。
-* 在一个中心位置（Azure 门户）管理帐户。
+- 在 Azure AD 中控制谁有权访问 Apptio。
+- 让用户使用其 Azure AD 帐户自动登录到 Apptio。
+- 在一个中心位置（Azure 门户）管理帐户。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-* 已启用单一登录 (SSO) 的 Apptio 订阅。
+- 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+- 已启用单一登录 (SSO) 的 Apptio 订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Apptio 支持 **IDP** 发起的 SSO
+- Apptio 支持 **IDP** 发起的 SSO
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -60,10 +60,10 @@ ms.locfileid: "98735984"
 若要配置并测试 Apptio 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+   1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+   1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 1. **[配置 Apptio SSO](#configure-apptio-sso)** - 在应用程序端配置单一登录设置。
-    1. **[创建 Apptio 测试用户](#create-apptio-test-user)** - 在 Apptio 中创建与 B.Simon 对应的用户，并将其链接到用户的 Azure AD 表示形式。
+   1. **[创建 Apptio 测试用户](#create-apptio-test-user)** - 在 Apptio 中创建与 B.Simon 对应的用户，并将其链接到用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -76,19 +76,19 @@ ms.locfileid: "98735984"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
+1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    在“标识符”  文本框中，键入一个 URL：`urn:federation:apptio`
+   在“标识符”文本框中键入 URL：`urn:federation:apptio`
 
-1. 角色声明已预先配置，因此不需配置它，但仍需按照此[文章](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)的说明在 Azure AD 中创建它。
+1. 角色声明已预先配置，因此不需配置它，但仍需按照此[文章](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui)的说明在 Azure AD 中创建它。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
-    ![证书下载链接](common/metadataxml.png)
+   ![证书下载链接](common/metadataxml.png)
 
 1. 在“设置 Apptio”部分中，根据要求复制相应 URL。
 
-    ![复制配置 URL](common/copy-configuration-urls.png)
+   ![复制配置 URL](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -97,7 +97,7 @@ ms.locfileid: "98735984"
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
-   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“名称”字段中，输入 `B.Simon`。
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
@@ -122,14 +122,13 @@ ms.locfileid: "98735984"
 
 在本部分中，将在 Apptio 中创建名为 B.Simon 的用户。 请与 [Apptio 支持团队](https://www.apptio.com/resources/customer-support/)协作，将用户添加到 Apptio 平台中。 使用单一登录前，必须先创建并激活用户。
 
-## <a name="test-sso"></a>测试 SSO 
+## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
-* 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 Apptio
+- 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 Apptio
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Apptio 磁贴时，应会自动登录到已为其设置了 SSO 的 Apptio。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
-
+- 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Apptio 磁贴时，应会自动登录到已为其设置了 SSO 的 Apptio。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

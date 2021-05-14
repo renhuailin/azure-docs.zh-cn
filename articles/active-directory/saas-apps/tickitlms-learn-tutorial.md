@@ -11,33 +11,33 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: b37a5332e7c8f21d4309102b6b111953c1765ea6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 55c0b8b36bc5aadcf135a596e93827c0b64edcca
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98729373"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108804297"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tickitlms-learn"></a>教程：Azure Active Directory 单一登录 (SSO) 与 TickitLMS Learn 的集成
 
 本教程介绍如何将 TickitLMS Learn 与 Azure Active Directory (Azure AD) 集成。 将 TickitLMS Learn 与 Azure AD 集成后，可以：
 
-* 在 Azure AD 中控制谁有权访问 TickitLMS Learn。
-* 让用户使用其 Azure AD 帐户自动登录到 TickitLMS Learn。
-* 在一个中心位置（Azure 门户）管理帐户。
+- 在 Azure AD 中控制谁有权访问 TickitLMS Learn。
+- 让用户使用其 Azure AD 帐户自动登录到 TickitLMS Learn。
+- 在一个中心位置（Azure 门户）管理帐户。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-* 启用了单一登录 (SSO) 的 TickitLMS Learn 订阅。
+- 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+- 启用了单一登录 (SSO) 的 TickitLMS Learn 订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* TickitLMS Learn 支持 SP 和 IDP 发起的 SSO 
+- TickitLMS Learn 支持 SP 和 IDP 发起的 SSO 
 
 ## <a name="adding-tickitlms-learn-from-the-gallery"></a>从库中添加 TickitLMS Learn
 
@@ -50,7 +50,6 @@ ms.locfileid: "98729373"
 1. 在“从库中添加”部分的搜索框中，键入 TickitLMS Learn。  
 1. 在结果面板中选择“TickitLMS Learn”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-tickitlms-learn"></a>配置并测试 TickitLMS Learn 的 Azure AD SSO
 
 使用名为 B.Simon 的测试用户配置并测试 TickitLMS Learn 的 Azure AD SSO。  若要使 SSO 有效，需要在 Azure AD 用户与 TickitLMS Learn 相关用户之间建立关联。
@@ -58,10 +57,10 @@ ms.locfileid: "98729373"
 若要配置并测试 TickitLMS Learn 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+   1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+   1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 1. **[配置 TickitLMS Learn SSO](#configure-tickitlms-learn-sso)** - 在应用程序端配置单一登录设置。
-    1. **[创建 TickitLMS Learn 测试用户](#create-tickitlms-learn-test-user)** - 在 TickitLMS Learn 中创建 B.Simon 的对应用户，并将其关联到用户的 Azure AD 表示形式。
+   1. **[创建 TickitLMS Learn 测试用户](#create-tickitlms-learn-test-user)** - 在 TickitLMS Learn 中创建 B.Simon 的对应用户，并将其关联到用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -78,30 +77,31 @@ ms.locfileid: "98729373"
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，键入 URL：`https:/learn.tickitlms.com/sso/login`
+   在“登录 URL”文本框中，键入 URL：`https:/learn.tickitlms.com/sso/login`
 
 1. 单击“ **保存**”。
 
 1. TickitLMS Learn 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
-    ![image](common/default-attributes.png)
+   ![image](common/default-attributes.png)
 
 1. 除上述属性以外，TickitLMS Learn 应用程序还要求在 SAML 响应中传回其他几个属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
-    
-    | 名称 | 源属性|
-    | ---- | --------------- |
-    | samlaccount | user.samlaccount |
-    | employeeid | user.employeeid |
-    | 角色 (role) | user.role |
-    | department | user.department |
-    | reportsto | user.reportsto |
 
-    > [!NOTE]
-    > TickitLMS Learn 需要分配给应用程序的用户的角色。 请在 Azure AD 中设置这些角色，以便可为用户分配相应的角色。 若要了解如何在 Azure AD 中配置角色，请参阅[此文](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)。
+   | 名称        | 源属性 |
+   | ----------- | ---------------- |
+   | samlaccount | user.samlaccount |
+   | employeeid  | user.employeeid  |
+   | 角色 (role)        | user.role        |
+   | department  | user.department  |
+   | reportsto   | user.reportsto   |
+
+   > [!NOTE]
+   > TickitLMS Learn 需要分配给应用程序的用户的角色。 请在 Azure AD 中设置这些角色，以便可为用户分配相应的角色。 若要了解如何在 Azure AD 中配置角色，请参阅[此文](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui)。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
-    ![证书下载链接](common/copy-metadataurl.png)
+   ![证书下载链接](common/copy-metadataurl.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
@@ -109,7 +109,7 @@ ms.locfileid: "98729373"
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
-   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“名称”字段中，输入 `B.Simon`。
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
@@ -134,22 +134,21 @@ ms.locfileid: "98729373"
 
 在本部分，你将在 TickitLMS Learn 中创建名为 Britta Simon 的用户。 请与 [TickitLMS Learn 支持团队](mailto:support@tickitlms.com)协作，将用户添加到 TickitLMS Learn 平台。 使用单一登录前，必须先创建并激活用户。
 
-## <a name="test-sso"></a>测试 SSO 
+## <a name="test-sso"></a>测试 SSO
 
-在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
 #### <a name="sp-initiated"></a>SP 启动的：
 
-* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 TickitLMS Learn 登录 URL，可以在其中启动登录流。  
+- 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 TickitLMS Learn 登录 URL，可以在其中启动登录流。
 
-* 直接转到 TickitLMS Learn 登录 URL，并从那里启动登录流。
+- 直接转到 TickitLMS Learn 登录 URL，并从那里启动登录流。
 
 #### <a name="idp-initiated"></a>IDP 启动的：
 
-* 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 TickitLMS Learn 
+- 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 TickitLMS Learn
 
 还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 TickitLMS Learn 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 TickitLMS Learn。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
-
 
 ## <a name="next-steps"></a>后续步骤
 

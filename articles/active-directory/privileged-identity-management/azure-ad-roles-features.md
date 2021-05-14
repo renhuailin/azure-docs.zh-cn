@@ -14,12 +14,12 @@ ms.date: 07/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4478c9c286c06d5d6c5593195a0e93abd286b8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4113c3cf8fd5942a2fb8f644c67b15066d85b41
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92371505"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517849"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management 中 Azure AD 角色的管理功能
 
@@ -56,7 +56,7 @@ Privileged Identity Management 中 Azure AD 角色的管理体验已更新，以
 
 ## <a name="api-changes"></a>API 更改
 
-当客户将更新的版本推广到其 Azure AD 组织中时，现有的图形 API 将停止工作。 必须转而使用 [Azure 资源角色的图形 API](/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta)。 若要使用该 API 管理 Azure AD 角色，请在签名中将 `/azureResources` 与 `/aadroles` 交换，并使用 `resourceId` 的目录 ID。
+当客户将更新的版本推广到其 Azure AD 组织中时，现有的图形 API 将停止工作。 必须转而使用 [Azure 资源角色的图形 API](/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta&preserve-view=true)。 若要使用该 API 管理 Azure AD 角色，请在签名中将 `/azureResources` 与 `/aadroles` 交换，并使用 `resourceId` 的目录 ID。
 
 我们已经尽最大努力与所有使用以前的 API 的客户取得联系，让他们提前知道这项更改。 如果你的 Azure AD 组织已移至新版本，但你仍依赖于旧的 API，请在 pim_preview@microsoft.com 与团队联系。
 

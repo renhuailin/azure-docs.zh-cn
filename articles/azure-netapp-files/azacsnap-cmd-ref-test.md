@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 12/14/2020
+ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 03ffa93a71ded40e033f2068ea23fc6b994a5bbb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 86a670602f448f59decbc64d8a12278697c43596
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97632575"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107929842"
 ---
-# <a name="test-azure-application-consistent-snapshot-tool-preview"></a>测试 Azure 应用程序一致性快照工具（预览版）
+# <a name="test-azure-application-consistent-snapshot-tool"></a>测试 Azure 应用程序一致性快照工具
 
 本文介绍如何运行可用于 Azure NetApp 文件的 Azure 应用程序一致性快照工具的测试命令。
 

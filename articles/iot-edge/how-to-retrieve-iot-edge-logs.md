@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: c06120d1a2e8aa6aa0c006c6f40fed6fab44c5b7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 19183da24a3652757626cb37fae96027ed01a8ea
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200698"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109633170"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>检索 IoT Edge 部署中的日志
 
@@ -83,8 +83,8 @@ ms.locfileid: "103200698"
 | ID | 字符串 | 提供模块名称的正则表达式。 它可以匹配边缘设备上的多个模块。 应为 [.NET 正则表达式](/dotnet/standard/base-types/regular-expressions)格式。 |
 | filter | JSON 部分 | 要应用于与元组中 `id` 正则表达式匹配的模块的日志筛选器。 |
 | tail | integer | 从最新日志行开始检索的过去的日志行数。 可选。 |
-| since | string | 只返回此时间之后的日志，作为持续时间（1 天、90 分钟、2 天 3 小时 2 分钟）、rfc3339 时间戳或 UNIX 时间戳。  如果同时指定 `tail` 和 `since`，将首先使用 `since` 值检索日志。 然后，将 `tail` 值应用于结果，并返回最终结果。 可选。 |
-| until | string | 仅返回指定时间之前的日志，作为 rfc3339 时间戳、UNIX 时间戳或持续时间（1 天、90 分钟、2 天 3 小时 2 分钟）。 可选。 |
+| since | 字符串 | 只返回此时间之后的日志，作为持续时间（1 天、90 分钟、2 天 3 小时 2 分钟）、rfc3339 时间戳或 UNIX 时间戳。  如果同时指定 `tail` 和 `since`，将首先使用 `since` 值检索日志。 然后，将 `tail` 值应用于结果，并返回最终结果。 可选。 |
+| until | 字符串 | 仅返回指定时间之前的日志，作为 rfc3339 时间戳、UNIX 时间戳或持续时间（1 天、90 分钟、2 天 3 小时 2 分钟）。 可选。 |
 | 日志级别 | integer | 筛选小于或等于指定日志级别的日志行。 日志行应遵循推荐的日志记录格式，并采用 [Syslog 严重性级别](https://en.wikipedia.org/wiki/Syslog#Severity_level)标准。 可选。 |
 | regex | 字符串 | 使用 [.NET 正则表达式](/dotnet/standard/base-types/regular-expressions)格式，筛选内容与指定正则表达式匹配的日志行。 可选。 |
 | encoding | 字符串 | `gzip` 或 `none`。 默认为 `none`。 |
@@ -201,7 +201,7 @@ az iot hub invoke-module-method \
 
 | 名称 | 类型 | 说明 |
 |-|-|-|
-| 状态 | 字符串 | `NotStarted`、`Running`、`Completed`、`Failed` 或 `Unknown` 中的一个。 |
+| status | 字符串 | `NotStarted`、`Running`、`Completed`、`Failed` 或 `Unknown` 中的一个。 |
 | message | 字符串 | 如果错误，则为消息；否则为空字符串。 |
 | correlationId | 字符串   | 用于查询上传请求状态的 ID。 |
 
@@ -210,7 +210,7 @@ az iot hub invoke-module-method \
 以下调用将以压缩的 JSON 格式从所有模块上传最后 100 个日志行：
 
 ```azurecli
-az iot hub invoke-module-method --method-name UploadModuleLogs -n <hub name> -d <device id> -m \$edgeAgent --method-payload \
+az iot hub invoke-module-method --method-name UploadModuleLogs -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
 '
     {
         "schemaVersion": "1.0",
@@ -232,7 +232,7 @@ az iot hub invoke-module-method --method-name UploadModuleLogs -n <hub name> -d 
 以下调用以未压缩的文本格式从 edgeAgent 和 edgeHub 上传最后 100 个日志行，从 tempSensor 模块上传最后 1000 个日志行：
 
 ```azurecli
-az iot hub invoke-module-method --method-name UploadModuleLogs -n <hub name> -d <device id> -m \$edgeAgent --method-payload \
+az iot hub invoke-module-method --method-name UploadModuleLogs -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
 '
     {
         "schemaVersion": "1.0",
@@ -306,8 +306,8 @@ az iot hub invoke-module-method --method-name UploadModuleLogs -n <hub name> -d 
 |-|-|-|
 | schemaVersion | 字符串 | 设置为 `1.0` |
 | sasURL | 字符串 (URI) | [对 Azure Blob 存储容器具有写入权限的共享访问签名 URL](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
-| since | string | 只返回此时间之后的日志，作为持续时间（1 天、90 分钟、2 天 3 小时 2 分钟）、rfc3339 时间戳或 UNIX 时间戳。 可选。 |
-| until | string | 仅返回指定时间之前的日志，作为 rfc3339 时间戳、UNIX 时间戳或持续时间（1 天、90 分钟、2 天 3 小时 2 分钟）。 可选。 |
+| since | 字符串 | 只返回此时间之后的日志，作为持续时间（1 天、90 分钟、2 天 3 小时 2 分钟）、rfc3339 时间戳或 UNIX 时间戳。 可选。 |
+| until | 字符串 | 仅返回指定时间之前的日志，作为 rfc3339 时间戳、UNIX 时间戳或持续时间（1 天、90 分钟、2 天 3 小时 2 分钟）。 可选。 |
 | edgeRuntimeOnly | boolean | 如果为 true，则仅从 Edge 代理、Edge 中心和 Edge 安全守护程序返回日志。 默认值：false。  可选。 |
 
 > [!IMPORTANT]
@@ -325,7 +325,7 @@ az iot hub invoke-module-method --method-name UploadModuleLogs -n <hub name> -d 
 
 | 名称 | 类型 | 说明 |
 |-|-|-|
-| 状态 | 字符串 | `NotStarted`、`Running`、`Completed`、`Failed` 或 `Unknown` 中的一个。 |
+| status | 字符串 | `NotStarted`、`Running`、`Completed`、`Failed` 或 `Unknown` 中的一个。 |
 | message | 字符串 | 如果错误，则为消息；否则为空字符串。 |
 | correlationId | 字符串   | 用于查询上传请求状态的 ID。 |
 
@@ -383,7 +383,7 @@ az iot hub invoke-module-method --method-name 'UploadSupportBundle' -n <hub name
 
 | 名称 | 类型 | 说明 |
 |-|-|-|
-| 状态 | 字符串 | `NotStarted`、`Running`、`Completed`、`Failed` 或 `Unknown` 中的一个。 |
+| status | 字符串 | `NotStarted`、`Running`、`Completed`、`Failed` 或 `Unknown` 中的一个。 |
 | message | 字符串 | 如果错误，则为消息；否则为空字符串。 |
 | correlationId | 字符串   | 用于查询上传请求状态的 ID。 |
 

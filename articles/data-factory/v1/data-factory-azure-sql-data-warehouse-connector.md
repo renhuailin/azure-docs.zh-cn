@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 35aa0110106f121adb9373f83ff29d299ce049fc
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e46d4c07f3de2441f53648b228ab7a9d2a41ab61
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135970"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108753348"
 ---
 # <a name="copy-data-to-and-from-azure-synapse-analytics-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Synapse Analytics 中复制/粘贴数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -30,11 +30,11 @@ ms.locfileid: "108135970"
 ## <a name="supported-scenarios"></a>支持的方案
 可以将数据从 Azure Synapse Analytics 复制到以下数据存储：
 
-[!INCLUDE [data-factory-supported-sinks](../../../includes/data-factory-supported-sinks.md)]
+[!INCLUDE [data-factory-supported-sinks](includes/data-factory-supported-sinks.md)]
 
 可以将数据从以下数据存储复制到 Azure Synapse Analytics：
 
-[!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
+[!INCLUDE [data-factory-supported-sources](includes/data-factory-supported-sources.md)]
 
 > [!TIP]
 > 将数据从 SQL Server 或 Azure SQL 数据库复制到 Azure Synapse Analytics 时，如果目标存储中不存在该表，数据工厂可以使用源数据存储中的表架构自动在 Azure Synapse Analytics 中创建该表。 有关详细信息，请参阅[自动表创建](#auto-table-creation)。
@@ -325,7 +325,7 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 | NVarChar | NVarChar（最多 4000） |
 | Xml | Varchar（最多 8000） |
 
-[!INCLUDE [data-factory-type-repeatability-for-sql-sources](../../../includes/data-factory-type-repeatability-for-sql-sources.md)]
+[!INCLUDE [data-factory-type-repeatability-for-sql-sources](includes/data-factory-type-repeatability-for-sql-sources.md)]
 
 ## <a name="type-mapping-for-azure-synapse-analytics"></a>Azure Synapse Analytics 的类型映射
 如[数据移动活动](data-factory-data-movement-activities.md)一文中所述，复制活动通过以下 2 步方法执行从源类型到接收器类型的自动类型转换：
@@ -341,10 +341,10 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 | --- | --- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |Boolean |
+| bit |布尔 |
 | char |String, Char[] |
 | date |DateTime |
-| datetime |DateTime |
+| Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
 | 小数 |小数 |
