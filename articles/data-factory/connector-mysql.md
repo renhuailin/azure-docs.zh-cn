@@ -1,17 +1,17 @@
 ---
 title: 使用 Azure 数据工厂从 MySQL 复制数据
 description: 了解 Azure 数据工厂中可用于将数据从 MySQL 数据库复制到支持用作接收器的数据存储的 MySQL 连接器。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.author: jingwang
-ms.openlocfilehash: b6a2253a4a124fe5e3725863c799f91714e66cab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: 628e30fe3e835becee78666fec2ec18d643c0bc6
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100375249"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109484516"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>使用 Azure 数据工厂从 MySQL 复制数据
 
@@ -38,13 +38,13 @@ ms.locfileid: "100375249"
 
 ## <a name="prerequisites"></a>先决条件
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 集成运行时提供内置 MySQL 驱动程序（从版本 3.7 开始），因此无需手动安装任何驱动程序。
 
 ## <a name="getting-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 MySQL 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -60,7 +60,7 @@ MySQL 链接的服务支持以下属性：
 
 典型的连接字符串为 `Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`。 你可以根据自己的情况设置更多属性：
 
-| 属性 | 说明 | 选项 | 必选 |
+| 属性 | 说明 | 选项 | 必须 |
 |:--- |:--- |:--- |:--- |
 | SSLMode | 此选项指定驱动程序在连接到 MySQL 时是否使用 TLS 加密和验证。 例如 `SSLMode=<0/1/2/3/4>`。| DISABLED (0) / PREFERRED (1) **(Default)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | 否 |
 | SSLCert | 包含用于证明客户端身份的 SSL 证书的 .pem 文件的完整路径和名称。 <br/> 若要在将此证书发送到服务器之前，指定私钥来加密此证书，请使用 `SSLKey` 属性。| | 是（如果使用双向 SSL 验证）。 |
@@ -179,7 +179,7 @@ MySQL 链接的服务支持以下属性：
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**MySqlSource** | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

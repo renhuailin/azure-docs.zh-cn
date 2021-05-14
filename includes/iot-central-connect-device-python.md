@@ -4,20 +4,22 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 03/31/2021
-ms.openlocfilehash: d878c7abf025b5c66790a96f9f921f669dcdf1ef
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 4085213c1eb06815d089d9a5cb3182bb1c27633c
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491024"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109719157"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 若要完成本文中的步骤，需要准备好以下资源：
 
-* 使用“自定义应用程序”模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](../articles/iot-central/core/quick-deploy-iot-central.md)。 应用程序必须在 2020 年 7 月 14 日或之后创建。
-* 装有 [Python](https://www.python.org/) 3.7 或更高版本的开发计算机。 若要检查版本，可以在命令行中运行 `python --version`。 Python 适用于各种操作系统。 本教程中的说明假设在 Windows 命令提示符下运行 python 命令。
-* [适用于 Python 的 Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-python) GitHub 存储库（包含示例代码）的本地副本。 使用此链接下载存储库副本：[下载 ZIP](https://github.com/Azure/azure-iot-sdk-python/archive/master.zip)。 然后将该文件解压缩到本地计算机上的适当位置。
+[!INCLUDE [iot-central-prerequisites-basic](iot-central-prerequisites-basic.md)]
+
+- 装有 [Python](https://www.python.org/) 3.7 或更高版本的开发计算机。 若要检查版本，可以在命令行中运行 `python --version`。 Python 适用于各种操作系统。 本教程中的说明假设在 Windows 命令提示符下运行 python 命令。
+
+- [适用于 Python 的 Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-python) GitHub 存储库（包含示例代码）的本地副本。 使用此链接下载存储库副本：[下载 ZIP](https://github.com/Azure/azure-iot-sdk-python/archive/master.zip)。 然后将该文件解压缩到本地计算机上的适当位置。
 
 ## <a name="review-the-code"></a>查看代码
 

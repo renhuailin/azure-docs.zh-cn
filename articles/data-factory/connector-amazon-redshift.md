@@ -1,17 +1,17 @@
 ---
 title: 从 Amazon Redshift 复制数据
 description: 了解如何使用 Azure 数据工厂将数据从 Amazon Redshift 复制到受支持的接收器数据存储。
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 12/09/2020
-ms.openlocfilehash: 9441885766dad97dfc237ab81a59710245bf13ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1dd0144395d1eed533300808d8d872742f0d710
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100364250"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482230"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Redshift 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -43,7 +43,7 @@ ms.locfileid: "100364250"
 
 ## <a name="getting-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 Amazon Redshift 连接器的数据工厂实体，以下部分提供了有关用于定义这些实体的属性的详细信息。
 

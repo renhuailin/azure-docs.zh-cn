@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 01/20/2021
+ms.date: 04/28/2021
 ms.author: justinha
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 194a5420f38e99d45f74241f67ae8cfbbaaee8f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5854d8cecd1de8121b6129d86a70c1f5ad9518f2
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98660989"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175381"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>什么是 Azure Active Directory 域服务？
 
@@ -50,9 +50,9 @@ Azure AD DS 从 Azure AD 中复制标识信息，因此，它适用于仅限云�
 * 如果有现有的本地 AD DS 环境，则可以同步用户帐户信息，为用户提供一致的标识。 若要了解详细信息，请参阅[如何在托管域中同步对象和凭据][synchronization]。
 * 对于仅限云的环境，则不需要传统的本地 AD DS 环境来使用 Azure AD DS 的集中标识服务。
 
-可以扩展托管域，使每个 Azure AD 租户具有多个副本集。 可以将副本集添加到任何支持 Azure AD DS 的 Azure 区域中的任何对等互连虚拟网络。 如果某个 Azure 区域处于离线状态，则不同 Azure 区域中的其他副本集可为旧版应用程序提供地理灾难恢复。 副本集目前处于预览状态。 有关详细信息，请参阅[托管域的副本集概念和功能][concepts-replica-sets]。
+可以扩展托管域，使每个 Azure AD 租户具有多个副本集。 可以将副本集添加到任何支持 Azure AD DS 的 Azure 区域中的任何对等互连虚拟网络。 如果某个 Azure 区域处于离线状态，则不同 Azure 区域中的其他副本集可为旧版应用程序提供地理灾难恢复。 有关详细信息，请参阅[托管域的副本集概念和功能][concepts-replica-sets]。
 
-以下视频概述了 Azure AD DS 如何与应用程序和工作负载集成以在云中提供标识服务：
+观看此视频，了解 Azure AD DS 如何与应用程序和工作负载集成以在云中提供标识服务：
 
 <br />
 

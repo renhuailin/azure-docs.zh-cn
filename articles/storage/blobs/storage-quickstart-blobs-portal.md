@@ -7,14 +7,14 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 10/19/2020
+ms.date: 04/29/2021
 ms.author: tamram
-ms.openlocfilehash: edadcc4025913052e048ea94d47cac253e4bcd1a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e181394a67cb6762965e600ada46ab48c753fbc
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95523325"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317445"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>快速入门：使用 Azure 门户上传、下载和列出 Blob
 
@@ -29,13 +29,13 @@ ms.locfileid: "95523325"
 若要在 Azure 门户中创建容器，请执行以下步骤：
 
 1. 导航到 Azure 门户中的新存储帐户。
-2. 在存储帐户的左侧菜单中滚动到“Blob 服务”部分，然后选择“容器”。  
-3. 选择“+ 容器”。 
-4. 键入新容器的名称。 容器名称必须小写，必须以字母或数字开头，并且只能包含字母、数字和短划线 (-) 字符。 有关容器名称和 Blob 名称的详细信息，请参阅 [Naming and referencing containers, blobs, and metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)（命名和引用容器、Blob 和元数据）。
-5. 设置容器的公共访问权限级别。 默认级别为“专用(禁止匿名访问)”。 
-6. 选择“确定”  创建容器。
+1. 在存储帐户的左侧菜单中，滚动到“数据存储”部分，然后选择“Blob 容器” 。
+1. 选择“+ 容器”。 
+1. 键入新容器的名称。 容器名称必须小写，必须以字母或数字开头，并且只能包含字母、数字和短划线 (-) 字符。 有关容器名称和 Blob 名称的详细信息，请参阅 [Naming and referencing containers, blobs, and metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)（命名和引用容器、Blob 和元数据）。
+1. 设置容器的公共访问权限级别。 默认级别为“专用(禁止匿名访问)”。 
+1. 选择“确定”  创建容器。
 
-    :::image type="content" source="media/storage-quickstart-blobs-portal/create-container.png" alt-text="显示如何在 Azure 门户中创建容器的屏幕截图":::
+    :::image type="content" source="media/storage-quickstart-blobs-portal/create-container.png" alt-text="显示如何在 Azure 门户中创建容器的屏幕截图" lightbox="media/storage-quickstart-blobs-portal/create-container.png":::
 
 ## <a name="upload-a-block-blob"></a>上传块 Blob
 

@@ -3,16 +3,16 @@ title: 使用 PowerShell 创建共享自承载集成运行时
 description: 了解如何在 Azure 数据工厂中创建共享自承载集成运行时，从而允许多个数据工厂访问集成运行时。
 ms.service: data-factory
 ms.topic: conceptual
-ms.author: abnarain
-author: nabhishek
+ms.author: lle
+author: lrtoyou1223
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 16feeb124859fa6199303d9d590fa0a286033ef9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f87f73c37f5809cb2f3911ba9883271aa514841e
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389427"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109481690"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建共享自承载集成运行时
 

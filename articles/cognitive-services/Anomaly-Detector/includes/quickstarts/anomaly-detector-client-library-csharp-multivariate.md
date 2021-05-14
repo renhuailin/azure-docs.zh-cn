@@ -6,14 +6,14 @@ author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/06/2021
+ms.date: 04/29/2021
 ms.author: mbullwin
-ms.openlocfilehash: a657b8f5bf967131a0168dbea5bb1db86b3b559e
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 632352e707927cccfb9ccc541ed4b9bd38e2c9c6
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107800223"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108333463"
 ---
 开始使用适用于 .NET 的异常检测器多变量客户端库。 请按照以下步骤安装软件包并开始使用服务提供的算法。 新的多变量异常情况检测 API 使开发人员能够轻松地集成高级 AI 来检测指标组中的异常，且无需机器学习知识或标记的数据。 不同信号之间的依赖关系和相互关联会自动计为关键因素。 这可以帮助你主动防范复杂系统发生故障。
 
@@ -94,7 +94,18 @@ string apiKey =  "YOUR_ENDPOINT";
 string datasource = "YOUR_SAMPLE_ZIP_FILE_LOCATED_IN_AZURE_BLOB_STORAGE_WITH_SAS";
 ```
 
- 若要使用异常检测器多变量 API，我们需要在使用检测之前先训练自己的模型。 用于训练的数据是一批时序，每个时序应采用 CSV 格式，其中包含两列，即“时间戳”和“值”。 所有时序都应压缩为一个 zip 文件，并上传到 [Azure Blob 存储](../../../../storage/blobs/storage-blobs-introduction.md#blobs)。 默认情况下，文件名将用于表示时序的变量。 或者，如果你希望变量名称与 .zip 文件名不同，也可以在 zip 文件中包含一个额外的 meta.json 文件。 当我们生成 [blob SAS（共享访问签名）URL](../../../../storage/common/storage-sas-overview.md) 后，就可以使用 zip 文件的 URL 进行训练了。
+若要使用异常检测器多变量 API，需要先训练你自己的模型。 训练数据是一组满足以下要求的多个时间序列：
+
+每个时间序列都应是一个 CSV 文件，该文件有 2 列（且仅有 2 列），“timestamp”和“value”（全部小写）作为标题行。 “timestamp”值应符合 ISO 8601 标准；“value”可为整数，也可为带有任意小数位的小数。 例如：
+
+|timestamp | 值|
+|-------|-------|
+|2019-04-01T00:00:00Z| 5|
+|2019-04-01T00:01:00Z| 3.6|
+|2019-04-01T00:02:00Z| 4|
+|`...`| `...` |
+
+每个 CSV 文件应根据要用于模型训练的不同变量进行命名。 例如，“temperature.csv”和“humidity.csv”。 所有 CSV 文件都应压缩到一个没有任何子文件夹的 zip 文件中。 zip 文件可采用任何所需名称。 zip 文件应上传到 Azure Blob 存储。 为 zip 文件生成 Blob SAS（共享访问签名）URL 后，可使用该 URL 进行训练。 请查看此文档，了解如何从 Azure Blob 存储生成 SAS URL。
 
 ## <a name="code-examples"></a>代码示例
 

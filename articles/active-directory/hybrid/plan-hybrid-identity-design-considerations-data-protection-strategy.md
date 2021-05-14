@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bac3f53def6db1038a6dd7e45d7933daa22df9f0
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98703846"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>为混合标识解决方案定义数据保护策略
@@ -63,7 +63,7 @@ ms.locfileid: "98703846"
 
 有数据隐私顾虑的组织通常需要对其解决方案进行数据分类。 如果其当前本地基础结构已使用数据分类，就能够使用 Azure AD 作为用户标识的主要存储库。 在 Windows Server 2012 R2 中，本地用于数据分类的常用工具称为[数据分类工具包](/previous-versions/tn-archive/hh204743(v=technet.10))。 借助此工具可以标识、分类和保护私有云中文件服务器上的数据。 还可以使用 Windows Server 2012 中的[自动文件分类](/windows-server/identity/solution-guides/deploy-automatic-file-classification--demonstration-steps-)来完成此任务。
 
-如果组织目前没有数据分类机制，但需要在本地不添加服务器的情况下保护敏感文件，可以使用 [Microsoft Azure Rights Management Service](/azure/information-protection/what-is-azure-rms)。  Azure RMS 使用加密、标识和授权策略帮助保护文件和电子邮件，并且可跨多个设备运行 - 手机、平板电脑和 PC。 Azure RMS 属于云服务，因此无需显式设置对其他组织的信任，即可与他们共享受保护的内容。 如果他们已有 Microsoft 365 或 Azure AD 目录，则会自动支持组织间的协作。 你还可以使用 Azure Active Directory 同步服务 (Azure AD Sync) 或 Azure AD Connect，只同步 Azure RMS 需要为本地 Active Directory 帐户支持公共标识的目录属性。
+如果组织目前没有数据分类机制，但需要在本地不添加服务器的情况下保护敏感文件，可以使用 [Microsoft Azure Rights Management Service](/azure/information-protection/what-is-azure-rms)。  Azure RMS 使用加密、标识和授权策略帮助保护文件和电子邮件，并且可跨多个设备运行 - 手机、平板电脑和 PC。 Azure RMS 属于云服务，因此无需显式设置对其他组织的信任，即可与他们共享受保护的内容。 如果其他组织已有 Microsoft 365 或 Azure AD 目录，则自然而然支持跨组织协作。 还可以使用 Azure Active Directory 同步服务（Azure AD 同步）或 Azure AD Connect 来只同步 Azure RMS 支持本地 Active Directory 帐户的通用标识所需的目录属性。
 
 了解谁正在访问哪个资源，是内容管理的重要一部分，因此强大的记录功能对于标识管理解决方案而言非常重要。 Azure AD 提供超过 30 天的日志，包括：
 
@@ -82,7 +82,7 @@ ms.locfileid: "98703846"
 
 | 内容管理选项 | 优点 | 缺点 |
 | --- | --- | --- |
-| 本地集中式 (Active Directory Rights Management Server) |完全控制负责分类数据的服务器基础结构 <br> Windows Server 的内置功能，无需购买额外的许可证或订阅 <br> 可与混合方案中的 Azure AD 集成 <br> 支持 (Microsoft Online services （例如 Exchange Online 和 SharePoint Online）中的 IRM) 功能的信息权限管理，以及 Microsoft 365 <br> 支持本地 Microsoft 服务器产品，例如 Exchange Server、SharePoint Server，以及运行 Windows Server 和文件分类基础结构 (FCI) 的文件服务器。 |需要较多的维护（随时进行更新、配置和潜在升级），因为 IT 拥有服务器 <br> 需要本地服务器基础结构<br> 在本机状态下不使用 Azure 功能 |
+| 本地集中式 (Active Directory Rights Management Server) |完全控制负责分类数据的服务器基础结构 <br> Windows Server 的内置功能，无需购买额外的许可证或订阅 <br> 可与混合方案中的 Azure AD 集成 <br> 支持 Microsoft Online Services（例如 Exchange Online 和 SharePoint Online 以及 Microsoft 365）中的信息权限管理 (IRM) 功能 <br> 支持本地 Microsoft 服务器产品，例如 Exchange Server、SharePoint Server，以及运行 Windows Server 和文件分类基础结构 (FCI) 的文件服务器。 |需要较多的维护（随时进行更新、配置和潜在升级），因为 IT 拥有服务器 <br> 需要本地服务器基础结构<br> 在本机状态下不使用 Azure 功能 |
 | 云中集中式 (Azure RMS) |比本地解决方案更容易管理 <br> 可与混合方案中的 AD DS 集成 <br>  完全与 Azure AD 集成 <br> 无需本地服务器即可部署服务 <br> 支持本地 Microsoft 服务器产品，例如 Exchange Server、SharePoint Server，以及运行 Windows Server 和文件分类基础结构 (FCI) 的文件服务器 <br> IT 可通过 BYOK 功能完全控制其租户的密钥。 |组织必须具有支持 RMS 的云订阅 <br> 组织必须有 Azure AD 目录才能支持 RMS 的用户身份验证 |
 | 混合（Azure RMS 与本地 Active Directory Rights Management Server 集成） |此方案结合了本地集中式和云中集成式的优点。 |组织必须具有支持 RMS 的云订阅 <br> 组织必须有 Azure AD 目录才能支持 RMS 的用户身份验证 <br> 需要在 Azure 云服务与本地基础结构之间建立连接 |
 
@@ -106,7 +106,7 @@ Azure Active Directory 为数千种 SaaS 应用程序与本地 Web 应用程序�
 >
 >
 
-通过 Azure AD 支持，移动业务应用程序可以使用相同的简单移动服务身份验证体验，让员工使用企业的 Active Directory 凭据登录到其移动应用程序。 通过此功能，Azure AD 可受到支持作为移动服务中的标识提供者，与支持的其他标识提供者（包括 Microsoft 帐户、Facebook ID、Google ID 和 Twitter ID）配合运行。 如果本地应用程序使用位于公司 AD DS 的用户凭据，则来自云的第三方和用户所做的访问应该是透明的。 你可以管理用户的条件性访问控制，以 (基于云的) web 应用程序、web API、Microsoft 云服务、第三方 SaaS 应用程序和本机 (移动) 客户端应用程序，并在同一位置获得安全性、审核和报告功能的优势。 但是，我们建议在非生产环境中或用户数量有限的环境中验证该实施项目。
+通过 Azure AD 支持，移动业务应用程序可以使用相同的简单移动服务身份验证体验，让员工使用企业的 Active Directory 凭据登录到其移动应用程序。 通过此功能，Azure AD 可受到支持作为移动服务中的标识提供者，与支持的其他标识提供者（包括 Microsoft 帐户、Facebook ID、Google ID 和 Twitter ID）配合运行。 如果本地应用程序使用位于公司 AD DS 的用户凭据，则来自云的第三方和用户所做的访问应该是透明的。 可以使用条件访问控制管理用户对（基于云）Web 应用程序、Web API、Microsoft 云服务、第三方 SaaS 应用程序和本机（移动）客户端应用程序的访问，并且可以在一个位置实现安全性、审核和报告功能。 但是，我们建议在非生产环境中或用户数量有限的环境中验证该实施项目。
 
 > [!TIP]
 > 必须提到的是，Azure AD 不像 AD DS 一样具有组策略。 若要为设备强制实施策略，需要使用移动设备管理解决方案，例如 [Microsoft Intune](/mem/intune/)。
@@ -121,7 +121,7 @@ Azure Active Directory 为数千种 SaaS 应用程序与本地 Web 应用程序�
 
 1. 对在本地托管的应用程序的条件访问：可以将已注册的设备与配置为将 AD FS 与 Windows Server 2012 R2 一起使用的应用程序的访问策略一起使用。
 
-2. 对 Azure 门户的访问控制： Azure 还允许使用 azure RBAC) # A2，通过 azure 基于角色的访问 (控制来控制对门户的访问。 公司可以使用此方法限制个人可以在 Azure 门户中执行的操作数量。 使用 Azure RBAC 控制对门户的访问时，IT 管理员可以使用以下访问管理方法委派访问权限：
+2. 对 Azure 门户的访问控制：Azure 还允许你通过使用 Azure 基于角色的访问控制 (Azure RBAC) 来控制对门户的访问。 公司可以使用此方法限制个人可以在 Azure 门户中执行的操作数量。 使用 Azure RBAC 控制对门户的访问时，IT 管理员可通过下列访问管理方式委托访问权限：
 
    - 基于组的角色分配：为可从本地 Active Directory 同步的 Azure AD 组分配访问权限。 这样，便可以充分利用组织在工具和组管理过程中已有的现有投资。 也可以使用 Azure AD 高级版中的委派组管理功能。
    - 使用 Azure 中的内置角色：可以使用三个角色 - 所有者、参与者和阅读人员，以确保用户和组仅具有完成工作所需任务的权限。
@@ -131,7 +131,7 @@ Azure Active Directory 为数千种 SaaS 应用程序与本地 Web 应用程序�
    > 如果要构建应用程序并且要自定义其访问控制，还可以使用 Azure AD 应用程序角色进行授权。 请参阅 [WebApp-RoleClaims-DotNet 示例](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet)，了解如何构建使用此功能的应用。
 
 
-3. 使用 Microsoft Intune 的 Microsoft 365 应用程序的条件性访问： IT 管理员可以设置条件性访问设备策略来保护公司资源，同时允许信息工作者在符合条件的设备上访问服务。 
+3. 使用 Microsoft Intune 的 Microsoft 365 应用程序的条件访问：IT 管理员可以预配条件访问设备策略来保护公司资源，同时允许信息工作者在符合条件的设备上访问服务。 
   
 4. 适用于 SaaS 应用的条件访问：使用[此功能](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/)可以配置基于应用程序的多重身份验证访问规则，并可以阻止不在受信任网络中的用户的访问。 可以将多重身份验证规则应用于已分配给该应用程序的所有用户，或者仅应用于指定安全组中的用户。 如果用户是从组织网络内部的 IP 地址访问应用程序，则可能不需要进行多重身份验证。
 

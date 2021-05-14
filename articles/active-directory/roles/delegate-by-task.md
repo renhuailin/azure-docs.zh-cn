@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d096bcd15254df4081a005b268934659e43037d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: c07e9604d0b95562f6c32b149b74d58fd4bf0932
+ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380298"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108007315"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中按管理员任务委托管理员角色
 
@@ -57,7 +57,7 @@ ms.locfileid: "100380298"
 读取 B2C 审核日志 | 全局读取者（[请参阅文档](../../active-directory-b2c/faq.md)） | 
 
 > [!NOTE]
-> Azure AD B2C 全局读取者的权限与 Azure AD 全局管理员的权限不同。 如果你拥有 Azure AD B2C 全局管理员权限，请确保你位于 Azure AD B2C 目录（而不是 Azure AD 目录）中。
+> Azure AD B2C 全局管理员的权限与 Azure AD 全局管理员的权限不同。 如果你拥有 Azure AD B2C 全局管理员权限，请确保你位于 Azure AD B2C 目录（而不是 Azure AD 目录）中。
 
 ## <a name="company-branding"></a>公司品牌
 
@@ -78,7 +78,7 @@ ms.locfileid: "100380298"
 ---- | --------------------- | ----------------
 直通身份验证 | 全局管理员角色  | 
 读取所有配置 | 全局读取者 | 全局管理员角色  |
-无缝单一登录 | 全局管理员  | 
+无缝单一登录 | 全局管理员角色  | 
 
 ## <a name="cloud-provisioning"></a>云预配
 
@@ -93,10 +93,10 @@ ms.locfileid: "100380298"
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
 添加或删除服务 | 所有者（[请参阅文档](../hybrid/how-to-connect-health-operations.md)） | 
-应用修复项来同步错误 | 参与者（[请参阅文档](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)） | 所有者
-配置通知 | 参与者（[请参阅文档](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)） | 所有者
+应用修复项来同步错误 | 参与者（[请参阅文档](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)） | “所有者”
+配置通知 | 参与者（[请参阅文档](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)） | “所有者”
 配置设置 | 所有者（[请参阅文档](../hybrid/how-to-connect-health-operations.md)） | 
-配置同步通知 | 参与者（[请参阅文档](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)） | 所有者
+配置同步通知 | 参与者（[请参阅文档](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)） | “所有者”
 读取 ADFS 安全报告 | 安全读取者 | 参与者、所有者
 读取所有配置 | 读者（[请参阅文档](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)） | 参与者、所有者
 读取同步错误 | 读者（[请参阅文档](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)） | 参与者、所有者
@@ -216,8 +216,8 @@ ms.locfileid: "100380298"
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
 删除选定用户生成的所有现有应用密码 | 全局管理员角色 | 
-禁用 MFA | 通过 PowerShell) 身份验证管理员 ( | 授权身份验证管理员 (通过 PowerShell) 
-启用 MFA | 通过 PowerShell) 身份验证管理员 ( | 授权身份验证管理员 (通过 PowerShell)  
+禁用 MFA | 身份验证管理员（通过 PowerShell） | 特权身份验证管理员（通过 PowerShell）
+启用 MFA | 身份验证管理员（通过 PowerShell） | 特权身份验证管理员（通过 PowerShell） 
 管理 MFA 服务设置 | 身份验证策略管理员 | 
 要求选定的用户再次提供联系方法 | 身份验证管理员 | 
 在所有记住的设备上还原多重身份验证  | 身份验证管理员 | 

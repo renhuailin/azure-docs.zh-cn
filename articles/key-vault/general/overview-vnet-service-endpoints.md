@@ -4,17 +4,16 @@ description: 了解如何使用 Azure Key Vault 的虚拟网络服务终结点�
 services: key-vault
 author: amitbapat
 ms.author: ambapat
-manager: rkarlin
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 148f67fb87072a8ffd25f0fe1dfdb444be052173
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 1bb2b8bc7e55dde7c6fa9098640109f85bebce23
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771611"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108065414"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虚拟网络服务终结点
 
@@ -27,7 +26,7 @@ ms.locfileid: "104771611"
 可以将 [Key Vault 防火墙和虚拟网络](network-security.md)配置为默认拒绝访问来自所有网络的流量（包括 Internet 流量）。 可以向来自特定 Azure 虚拟网络和公共 Internet IP 地址范围的流量授予访问权限，为应用程序构建安全的网络边界。
 
 > [!NOTE]
-> Key Vault 防火墙和虚拟网络规则仅适用于 Key Vault [数据平面](secure-your-key-vault.md#data-plane-access-control)。 Key Vault 控制平面操作（例如创建、删除和修改操作，设置访问策略，设置防火墙和虚拟网络规则，以及通过 ARM 模板部署机密或密钥）不受防火墙和虚拟网络规则的影响。
+> Key Vault 防火墙和虚拟网络规则仅适用于 Key Vault [数据平面](security-features.md#privileged-access)。 Key Vault 控制平面操作（例如创建、删除和修改操作，设置访问策略，设置防火墙和虚拟网络规则，以及通过 ARM 模板部署机密或密钥）不受防火墙和虚拟网络规则的影响。
 
 下面是此服务终结点的一些用法示例：
 
@@ -48,7 +47,7 @@ ms.locfileid: "104771611"
 |Exchange Online 和 SharePoint Online|允许使用[客户密钥](/microsoft-365/compliance/customer-key-overview)访问 Azure 存储服务加密的客户密钥。|
 |Azure 信息保护|允许访问 [Azure 信息保护](/azure/information-protection/what-is-information-protection)的租户密钥。|
 |Azure 应用服务|[通过 Key Vault 部署 Azure Web 应用证书](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html)。|
-|Azure SQL 数据库|[使用 Azure SQL 数据库和 Azure Synapse Analytics 的“创建自己的密钥”支持进行透明数据加密](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&preserve-view=true&viewFallbackFrom=azuresqldb-current)。|
+|Azure SQL 数据库|[使用 Azure SQL 数据库和 Azure Synapse Analytics 的“创建自己的密钥”支持进行透明数据加密](../../azure-sql/database/transparent-data-encryption-byok-overview.md)。|
 |Azure 存储|[在 Azure Key Vault 中使用客户托管密钥进行存储服务加密](../../storage/common/customer-managed-keys-configure-key-vault.md)。|
 |Azure Data Lake Store|[在 Azure Data Lake Store 中使用客户托管密钥进行数据加密](../../data-lake-store/data-lake-store-encryption.md)。|
 |Azure Synapse Analytics|[在 Azure Key Vault 中使用客户管理的密钥对数据进行加密](../../synapse-analytics/security/workspaces-encryption.md)|
@@ -59,7 +58,8 @@ ms.locfileid: "104771611"
 |Azure 服务总线|[允许访问客户管理的密钥方案的密钥保管库](../../service-bus-messaging/configure-customer-managed-key.md)|
 |Azure 导入/导出| [将 Azure Key Vault 中的客户管理的密钥用于导入/导出服务](../../import-export/storage-import-export-encryption-key-portal.md)
 |Azure 容器注册表|[使用客户管理的密钥进行注册表加密](../../container-registry/container-registry-customer-managed-keys.md)
-|Azure 应用程序网关 |[将密钥保管库证书用于启用了 HTTPS 的侦听器](../../application-gateway/key-vault-certs.md)
+|Azure 应用程序网关 |[对启用 HTTPS 的侦听器使用 Key Vault 证书](../../application-gateway/key-vault-certs.md)
+|Azure Front Door|[使用适用于 HTTPS 的 Key Vault 证书](../../frontdoor/front-door-custom-domain-https.md#prepare-your-azure-key-vault-account-and-certificate)
 
 > [!NOTE]
 > 必须设置相关 Key Vault 访问策略，才能允许相应的服务访问 Key Vault。
@@ -67,4 +67,4 @@ ms.locfileid: "104771611"
 ## <a name="next-steps"></a>后续步骤
 
 - 有关分步说明，请参阅[配置 Azure Key Vault 防火墙和虚拟网络](network-security.md)
-- 请参阅 [Azure Key Vault 安全性概述](security-overview.md)
+- 请参阅 [Azure Key Vault 安全性概述](security-features.md)

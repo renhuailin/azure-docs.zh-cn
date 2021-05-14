@@ -6,10 +6,10 @@ ms.suite: integration
 ms.topic: article
 ms.date: 12/18/2020
 ms.openlocfilehash: de4af34182fc1a95968e95d322a6ec35101a3dc9
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97695876"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用分块处理大型消息
@@ -39,7 +39,7 @@ ms.locfileid: "97695876"
 支持分块的连接器的基础分块协议对最终用户不可见。 但是，并非所有连接器都支持分块，因此当传入消息超出连接器的大小限制时，这些不支持分块的连接器就会生成运行时错误。
 
 
-对于支持和启用分块的操作，不能使用触发器主体、变量和表达式（例如）， `@triggerBody()?['Content']` 因为使用任意这些输入会阻止分块操作的发生。 改为使用 " [**撰写** " 操作](../logic-apps/logic-apps-perform-data-operations.md#compose-action)。 具体来说，您必须 `body` 使用 **撰写** 操作来创建一个字段，以存储触发器正文、变量、表达式等的数据输出，例如：
+对于支持并启用分块的操作，你不能使用触发器正文、变量和 `@triggerBody()?['Content']` 之类的表达式，因为使用这些输入中的任何一个都会阻止分块操作发生。 请改用 [Compose 操作](../logic-apps/logic-apps-perform-data-operations.md#compose-action)。 具体来说，必须使用“Compose”操作创建一个 `body` 字段，以存储触发器正文、变量、表达式等的数据输出，例如：
 
 ```json
 "Compose": {
@@ -54,7 +54,7 @@ ms.locfileid: "97695876"
     "type": "Compose"
 },
 ```
-然后，若要引用数据，请在分块操作中使用 `@body('Compose')` 。
+然后，若要引用数据，请在分块操作中使用 `@body('Compose')`。
 
 ```json
 "Create_file": {

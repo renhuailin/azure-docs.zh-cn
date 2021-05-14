@@ -3,17 +3,17 @@ title: 使用对称密钥预配设备 - Azure IoT 中心设备预配服务
 description: 如何使用对称密钥通过设备预配服务 (DPS) 实例预配设备
 author: wesmc7777
 ms.author: wesmc
-ms.date: 01/28/2021
+ms.date: 04/23/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: lizross
-ms.openlocfilehash: a4c16347d1883e1522fda18c2382f2d67b8ace80
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 754db21fa8e14045696f1af2bcfe375fb1161d94
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99051103"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930562"
 ---
 # <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>如何使用对称密钥注册组预配设备
 
@@ -30,6 +30,16 @@ ms.locfileid: "99051103"
 > [!NOTE]
 > 本文中使用的示例是用 C 编写的。还有一个可用的 [C# 设备预配对称密钥示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample)。 若要使用此示例，请下载或克隆 [azure-iot-samples-csharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) 存储库，并按照示例代码中的行说明进行操作。 可以按照本文中的说明使用门户创建对称密钥注册组，并查找运行示例所需的 ID 范围和注册组主密钥和辅助密钥。 还可以使用示例创建单个注册。
 
+## <a name="prerequisites"></a>先决条件
+
+* 完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)快速入门。
+
+以下先决条件适用于 Windows 开发环境。 对于 Linux 或 macOS，请参阅 SDK 文档的[准备开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的相应部分。
+
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作负载。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
+
+* 已安装最新版本的 [Git](https://git-scm.com/download/)。
+
 ## <a name="overview"></a>概述
 
 将基于标识每个设备的信息为该设备定义唯一注册 ID。 例如，MAC 地址或序列号。
@@ -40,16 +50,6 @@ ms.locfileid: "99051103"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-
-## <a name="prerequisites"></a>先决条件
-
-* 完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)快速入门。
-
-以下先决条件适用于 Windows 开发环境。 对于 Linux 或 macOS，请参阅 SDK 文档的[准备开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的相应部分。
-
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作负载。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
-
-* 已安装最新版本的 [Git](https://git-scm.com/download/)。
 
 ## <a name="prepare-an-azure-iot-c-sdk-development-environment"></a>准备 Azure IoT C SDK 开发环境
 
@@ -145,13 +145,29 @@ sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 
 ## <a name="derive-a-device-key"></a>派生一个设备密钥 
 
-要生成设备密钥，请使用注册组主密钥计算每个设备的注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)。 然后，为每个设备将结果转换 Base64 格式。
+若要生成设备密钥，请使用注册组主密钥计算每个设备的注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)。 然后，为每个设备将结果转换 Base64 格式。
 
 > [!WARNING]
 > 每个设备的设备代码应该只包含该设备的相应派生设备密钥。 不要在设备代码中包含你的组主键。 泄露的主密钥可能会危及所有使用该密钥进行身份验证的设备的安全。
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-# <a name="windows"></a>[Windows](#tab/windows)
+Azure CLI 的 IoT 扩展提供了用于生成派生设备密钥的 [`compute-device-key`](/cli/azure/iot/dps?view=azure-cli-latest&preserve-view=true#az_iot_dps_compute_device_key) 命令。 可从基于 Windows 或 Linux 的系统，在 PowerShell 或 Bash shell 中使用此命令。
+
+将 `--key` 参数值替换为注册组中的主密钥。
+
+将 `--registration-id` 参数值替换为注册 ID。
+
+```azurecli
+az iot dps compute-device-key --key 8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw== --registration-id sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
+```
+
+示例结果：
+
+```azurecli
+"Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc="
+```
+# <a name="windows"></a>Windows
 
 如果使用的是基于 Windows 的工作站，可以使用 PowerShell 生成派生的设备密钥，如以下示例中所示。
 
@@ -283,6 +299,15 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关重新预配的详细信息，请参阅 [IoT 中心设备重新预配概念](concepts-device-reprovision.md) 
-* [快速入门：使用对称密钥预配模拟设备](quick-create-simulated-device-symm-key.md)
-* 若要了解有关取消设置的详细信息，请参阅[如何取消设置以前自动预配的设备](how-to-unprovision-devices.md)
+* 要详细了解重新预配，请参阅
+
+> [!div class="nextstepaction"]
+> [IoT 中心设备重新预配概念](concepts-device-reprovision.md)
+
+> [!div class="nextstepaction"]
+> [快速入门：使用对称密钥预配模拟设备](quick-create-simulated-device-symm-key.md)
+
+* 要详细了解取消预配，请参阅
+
+> [!div class="nextstepaction"]
+> [如何取消预配以前自动预配的设备](how-to-unprovision-devices.md)

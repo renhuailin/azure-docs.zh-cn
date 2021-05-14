@@ -4,12 +4,12 @@ description: 本快速入门介绍如何使用 Python 创建 Azure Policy 分配
 ms.date: 03/02/2021
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 2c9a0d6bb00d82748505304264aeaefa409c4b06
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: f68e114571ea241f2051125862f89a7dc77dfce3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379390"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108747571"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-python"></a>快速入门：使用 Python 创建策略分配以识别不合规的资源
 
@@ -93,7 +93,7 @@ print(policyAssignment)
 
 分配详细信息:
 - **display_name** - 策略分配的显示名称。 本例使用了“审核未使用托管磁盘分配的虚拟机”  。
-- **policy_definition_id** - 策略定义路径，用作创建分配的依据。 在本例中，它为策略定义“审核未使用托管磁盘的 VM”的 ID  。 在此示例中，策略定义是内置的，路径不包括管理组或订阅信息。
+- policy_definition_id - 策略定义路径，用作创建分配的依据。 在本例中，它为策略定义“审核未使用托管磁盘的 VM”的 ID  。 在此示例中，策略定义是内置的，路径不包括管理组或订阅信息。
 - **作用域** - 作用域确定要对哪些资源或资源分组实施策略分配。 它的范围可以从管理组到单个资源。 请确保将 `{scope}` 替换为以下某个模式：
   - 管理组：`/providers/Microsoft.Management/managementGroups/{managementGroup}`
   - 订阅：`/subscriptions/{subscriptionId}`

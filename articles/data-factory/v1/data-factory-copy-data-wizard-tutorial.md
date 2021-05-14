@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 60a575fc211c512c8657bffd567c96f98cc3d69a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 16618276abc5e7933e5a434fd8537b09ad104d7b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100377000"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108753400"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>教程：使用数据工厂复制向导创建包含复制活动的管道
 > [!div class="op_single_selector"]
@@ -147,6 +147,6 @@ ms.locfileid: "100377000"
 ## <a name="next-steps"></a>后续步骤
 在本教程中，在复制操作中使用了 Azure Blob 存储作为源数据存储，使用了 Azure SQL 数据库作为目标数据存储。 下表列出了复制活动支持的充当源和目标的数据存储： 
 
-[!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
+[!INCLUDE [data-factory-supported-data-stores](includes/data-factory-supported-data-stores.md)]
 
 若要详细了解在复制向导中看到的数据存储的字段/属性，请单击表中数据存储的链接。 

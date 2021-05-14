@@ -9,15 +9,15 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 11302c301bee466f678d544d0c4838c39cec9c8e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc1637524acd484536cb79c68582e961ab3a5f59
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91818532"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108732772"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>疑难解答使用虚拟机规模集的自动缩放问题
-问题 - 已使用虚拟机规模集在 Azure 资源管理器中创建自动缩放基础结构（例如，通过部署一个与此类似的模板： https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale ）。已定义了缩放规则，其效果良好，但无论在 VM 中施放多少负载，它都不会自动缩放。
+问题 - 已使用虚拟机规模集在 Azure 资源管理器中创建自动缩放基础结构（例如，通过部署一个与此类似的模板： https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/python/vmss-bottle-autoscale/azuredeploy.json ）。已定义了缩放规则，其效果良好，但无论在 VM 中施放多少负载，它都不会自动缩放。
 
 ## <a name="troubleshooting-steps"></a>疑难解答步骤
 应考虑的一些事项包括：
@@ -46,7 +46,7 @@ ms.locfileid: "91818532"
     Azure 资源浏览器是一个不可或缺的疑难解答工具，它显示 Azure 资源管理器资源的状态。 单击订阅并查看要对其进行故障排除的资源组。 在计算资源提供程序下查看创建的虚拟机规模集，并检查显示部署状态的实例视图。 此外，还应检查 VM 规模集中虚拟机的实例视图。 然后，转到 Microsoft.Insights 资源提供程序并检查自动缩放规则是否一切正常。
 * 诊断扩展运行正常且可发出性能数据吗？
   
-    更新：已增强 Azure 自动缩放，以使用基于主机的指标管道，这将不再需要安装诊断扩展。 如果使用新管道创建自动缩放应用程序，则后续几个段落不再适用。 此处提供了一个已转换为使用主机管道的 Azure 模板的示例： https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale 。 
+    更新：已增强 Azure 自动缩放，以使用基于主机的指标管道，这将不再需要安装诊断扩展。 如果使用新管道创建自动缩放应用程序，则后续几个段落不再适用。 此处提供了一个已转换为使用主机管道的 Azure 模板的示例： https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/python/vmss-bottle-autoscale/azuredeploy.json 。 
   
     使用基于主机的指标进行自动缩放比较好的原因如下：
   

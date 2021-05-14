@@ -1,19 +1,19 @@
 ---
 title: 快速入门 - 通过日志、指标和跟踪来监视 Azure Spring Cloud 应用
-description: 使用日志流式处理、日志分析、指标和跟踪来监视 Azure Spring Cloud 上的 Piggymetrics 示例应用。
+description: 使用日志流式处理、Log Analytics、指标和跟踪来监视 Azure Spring Cloud 上的 PetClinic 示例应用。
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 08/04/2020
+ms.date: 04/23/2021
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: b3b94de0fe97bb812921b831a92de44887df4070
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 9275eb9d5f3206a5acd41fa970c4acd1f4663a37
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132964"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108321566"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>快速入门：通过日志、指标和跟踪来监视 Azure Spring Cloud 应用
 
@@ -109,7 +109,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-使用 Azure Spring Cloud 中的内置监视功能，可以调试和监视复杂问题。 Azure Spring Cloud 将 [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) 与 Azure 的 [Application Insights](../azure-monitor/app/app-insights-overview.md) 集成。 这种集成可以通过 Azure 门户提供强大的日志、指标和分布式跟踪功能。 以下过程说明如何通过已部署的 PiggyMetrics 应用使用日志流式处理、Log Analytics、指标和分布式跟踪。
+使用 Azure Spring Cloud 中的内置监视功能，可以调试和监视复杂问题。 Azure Spring Cloud 将 [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) 与 Azure 的 [Application Insights](../azure-monitor/app/app-insights-overview.md) 集成。 这种集成可以通过 Azure 门户提供强大的日志、指标和分布式跟踪功能。 以下过程说明如何通过已部署的 PetClinic 应用使用日志流式处理、Log Analytics、指标和分布式跟踪。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -140,6 +140,8 @@ az spring-cloud app logs -s <service instance name> -g <resource group name> -n 
 > [!TIP]
 > 使用 `az spring-cloud app logs -h` 浏览更多参数和日志流功能。
 
+若要详细了解 Log Analytics 中使用的查询语言，请参阅 [Azure Monitor 日志查询](/azure/data-explorer/kusto/query/)。 要从一个集中的客户端查询所有 Log Analytics 日志，请查看 [Azure 数据资源管理器](/azure/data-explorer/query-monitor-data)。
+
 #### <a name="intellij"></a>[IntelliJ](#tab/IntelliJ)
 
 使用 Azure Toolkit for IntelliJ 获取日志：
@@ -160,50 +162,58 @@ az spring-cloud app logs -s <service instance name> -g <resource group name> -n 
 
    ![流式处理日志输出](media/spring-cloud-intellij-howto/streaming-log-output.png)
 
+ 若要详细了解 Log Analytics 中使用的查询语言，请参阅 [Azure Monitor 日志查询](/azure/data-explorer/kusto/query/)。 要从一个集中的客户端查询所有 Log Analytics 日志，请查看 [Azure 数据资源管理器](/azure/data-explorer/query-monitor-data)。
+
 ---
+
 ### <a name="log-analytics"></a>Log Analytics
 
-1. 转到“服务 | 概述”页，然后在“监视”部分中选择“日志”  。 单击 Azure Spring Cloud 的一个示例查询上的“运行”。 
+1. 转到“服务 | 概述”页，然后在“监视”部分中选择“日志”  。 单击 Azure Spring Cloud 的一个示例查询上的“运行”。
 
-   [ ![Logs Analytics 条目](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
-    
+   [ ![Logs Analytics 门户入口](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/logs-entry.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/logs-entry.png#lightbox)
+
 1. 然后，将显示已筛选的日志。 有关编写查询的更多指导，请参阅 [Azure Logs Analytics 文档](../azure-monitor/logs/get-started-queries.md)。
 
-   [ ![Logs Analytics 查询](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png#lightbox)
-
-1. 若要详细了解 Log Analytics 中使用的查询语言，请参阅 [Azure Monitor 日志查询](/azure/data-explorer/kusto/query/)。 要从一个集中的客户端查询所有 Log Analytics 日志，请查看 [Azure 数据资源管理器](/azure/data-explorer/query-monitor-data)。
+   [ ![Logs Analytics 查询](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/logs-query.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/logs-query.png#lightbox)
 
 ## <a name="metrics"></a>指标
 
-1. 转到“服务 | 概述”页，然后在“监视”部分中选择“指标”  。 通过为“指标”选择 `system.cpu.usage` 并为“聚合”选择 `Avg` 来添加第一个指标，以查看总体 CPU 使用情况的时间线 。
+导航到“`Metrics`”边栏选项卡，可以看到由 Spring Boot 应用、Spring Cloud 模块和依赖项提供的指标。 下图显示 `gateway-requests`（Spring Cloud 网关）、`hikaricp_connections`（JDBC 连接）和 `http_client_requests`。
+ 
+[ ![“指标”边栏选项卡](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-metrics.jpg) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-metrics.jpg#lightbox)
 
-   [ ![指标条目](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu.png#lightbox)
-    
-1. 单击上面工具栏中的“添加筛选器”，选择 `App=Gateway`，以仅查看“网关”应用的 CPU 使用情况 。
+Spring Boot 注册了大量核心指标：JVM、CPU、Tomcat、Logback 等。Spring Boot 自动配置可用于检测由 Spring MVC 处理的请求。
+所有这三个 REST 控制器（`OwnerResource`、`PetResource` 和 `VisitResource`）已由类级别的 `@Timed` Micrometer 注释检测。
 
-   [ ![在指标中使用筛选器](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter.png#lightbox)
+* `customers-service` 应用程序启用了下列自定义指标：
+  * @Timed: `petclinic.owner`
+  * @Timed: `petclinic.pet`
+* `visits-service` 应用程序启用了下列自定义指标：
+  * @Timed: `petclinic.visit`
 
-1. 关闭上面创建的筛选器，单击“应用拆分”，然后为“值”选择 `App`，以查看不同应用的 CPU 使用情况 。
+可以在“`Metrics`”边栏选项卡中查看这些自定义指标：[ ![自定义指标](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-custom-metrics.jpg) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-custom-metrics.jpg#lightbox)
 
-   [ ![在指标中应用拆分](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-split.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-split.png#lightbox)
+可以使用 Application Insights 中的可用性测试功能并监视应用程序的可用性：
 
-## <a name="distributed-tracing"></a>分布式跟踪
+[ ![可用性测试](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-availability.jpg) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-availability.jpg#lightbox)
 
-1. 转到“服务 | 概述”页，然后在“监视”部分中选择“分布式跟踪”  。 然后单击右侧的“查看应用程序映射”选项卡。
+导航到“`Live Metrics`”边栏选项卡 - 可以在屏幕上看到低延迟小于 1 秒的实时指标：[ ![实时指标](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-live-metrics.jpg) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-live-metrics.jpg#lightbox)
 
-   [ ![分布式跟踪条目](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png#lightbox)
+## <a name="tracing"></a>跟踪
 
-1. 现在可以查看 Piggymetrics 应用间的调用状态。 
+打开 Azure Spring Cloud 创建的 Application Insights，并开始监视微服务应用程序。
 
-   [ ![分布式跟踪概述](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-overview.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-overview.png#lightbox)
-    
-1. 单击“网关”和“帐户-服务”之间的链接以查看更多详细信息，例如 HTTP 方法的最慢调用 。
+导航到“`Application Map`”边栏选项卡：[ ![应用程序映射](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/distributed-tracking-new-ai-agent.jpg) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/distributed-tracking-new-ai-agent.jpg#lightbox)
 
-   [ ![分布式跟踪](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-call.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-call.png#lightbox)
-    
-1. 最后，单击“调查性能”以探索更强大的内置性能分析。
+导航到“`Performance`”边栏选项卡：[ ![“性能”边栏选项卡](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-performance.jpg) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-performance.jpg#lightbox)
 
-   [ ![分布式跟踪性能](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance.png#lightbox)
+导航到“`Performance/Dependenices`”边栏选项卡 - 可以查看依赖项的性能数，尤其是 SQL 调用：[ ![“性能/依赖项”边栏选项卡](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-insights-on-dependencies.jpg) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-insights-on-dependencies.jpg#lightbox)
+
+单击 SQL 调用，查看上下文中的端到端事务：[ ![SQL 端到端事务](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-end-to-end-transaction-details.jpg) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-end-to-end-transaction-details.jpg#lightbox)
+
+导航到“`Failures/Exceptions`”边栏选项卡，可以看到异常的集合：[ ![失败/异常](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-failures-exceptions.jpg) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-failures-exceptions.jpg#lightbox)
+
+单击一个异常以查看上下文中的端到端事务和堆栈跟踪：[ ![堆栈跟踪端到端](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/end-to-end-transaction-details.jpg) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/end-to-end-transaction-details.jpg#lightbox)
 
 ::: zone-end
 

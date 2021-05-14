@@ -4,12 +4,12 @@ description: 本快速入门介绍如何使用 JavaScript 创建 Azure Policy �
 ms.date: 03/31/2021
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: d42156e68747b66778ea1cf2001d2b4bfc901bb0
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: c0ff6ec2457c0669d055ef2da50032a99b0029c6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090148"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108772560"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-javascript"></a>快速入门：使用 JavaScript 创建策略分配以识别不合规的资源
 
@@ -70,14 +70,14 @@ JavaScript 库用于从命令行或脚本管理 Azure 资源。 本指南介绍�
    const argv = require("yargs").argv;
    const authenticator = require("@azure/ms-rest-nodeauth");
    const policyObjects = require("@azure/arm-policy");
-   
+
    if (argv.subID && argv.name && argv.displayName && argv.policyDefID && argv.scope && argv.description) {
-   
+
        const createAssignment = async () => {
            const credentials = await authenticator.interactiveLogin();
            const client = new policyObjects.PolicyClient(credentials, argv.subID);
            const assignments = new policyObjects.PolicyAssignments(client);
-   
+
            const result = await assignments.create(
                argv.scope,
                argv.name,
@@ -89,7 +89,7 @@ JavaScript 库用于从命令行或脚本管理 Azure 资源。 本指南介绍�
            );
            console.log(result);
        };
-   
+
        createAssignment();
    }
    ```
@@ -131,11 +131,11 @@ JavaScript 库用于从命令行或脚本管理 Azure 资源。 本指南介绍�
    const argv = require("yargs").argv;
    const authenticator = require("@azure/ms-rest-nodeauth");
    const policyInsights = require("@azure/arm-policyinsights");
-   
+
    if (argv.subID && argv.name) {
-   
+
        const getStates = async () => {
-   
+
            const credentials = await authenticator.interactiveLogin();
            const client = new policyInsights.PolicyInsightsClient(credentials);
            const policyStates = new policyInsights.PolicyStates(client);
@@ -151,7 +151,7 @@ JavaScript 库用于从命令行或脚本管理 Azure 资源。 本指南介绍�
            );
            console.log(result);
        };
-   
+
        getStates();
    }
    ```

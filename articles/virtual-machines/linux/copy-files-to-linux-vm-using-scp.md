@@ -8,13 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 04/20/2021
 ms.author: cynthn
-ms.subservice: ''
-ms.openlocfilehash: edfc44f79cff25486fde6326ac954fe5b575d846
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 45616c5b5648153291c81c9ac17e3da3a2c66e3f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816433"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769968"
 ---
 # <a name="use-scp-to-move-files-to-and-from-a-linux-vm"></a>使用 SCP 将文件移入和移出 Linux VM 
 

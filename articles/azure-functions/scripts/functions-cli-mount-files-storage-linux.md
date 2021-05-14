@@ -4,12 +4,12 @@ description: 使用 Azure CLI 创建无服务器 Python 函数应用并装载现
 ms.topic: sample
 ms.date: 03/01/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d0037cea24b1989c4f7a4d2ddd6bf3f8f7e812b3
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: dd40b2c723e7aa6780db1c8ac96b2fc2bea20da4
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762274"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108277923"
 ---
 # <a name="mount-a-file-share-to-a-python-function-app-using-azure-cli"></a>使用 Azure CLI 将文件共享装载到 Python 函数应用
 
@@ -36,7 +36,7 @@ ms.locfileid: "107762274"
 
 表中的每条命令均链接到特定于命令的文档。 此脚本使用以下命令：
 
-| 命令 | 说明 |
+| Command | 注释 |
 |---|---|
 | [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
 | [az storage account create](/cli/azure/storage/account#az_storage_account_create) | 创建 Azure 存储帐户。 |

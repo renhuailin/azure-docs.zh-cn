@@ -1,29 +1,25 @@
 ---
 title: 使用 Azure 安全中心中的监管合规仪表板
 description: 了解如何在安全中心的监管合规仪表板中添加和删除法规标准
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: c42d02e4-201d-4a95-8527-253af903a5c6
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/04/2021
+ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: 768f686889663d9b1af4b88d84b361ac9460a5a0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f1fe1f15d2a2a2a3da7a7978b2d7645db65beae1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100381726"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146682"
 ---
 # <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>在监管合规仪表板中自定义标准集
 
 Azure 安全中心会不断将资源的配置与行业标准、法规和基准中的要求进行比较。 监管合规仪表板可根据用户如何满足特定的合规性要求来深入了解用户的合规情况。
 
+> [!TIP]
+> 在[常见问题解答](security-center-compliance-dashboard.md#faq---regulatory-compliance-dashboard)中详细了解安全中心的监管合规性仪表板。
 
 ## <a name="how-are-regulatory-compliance-standards-represented-in-security-center"></a>安全中心中如何体现监管合规标准？
 
@@ -38,15 +34,17 @@ Microsoft 会自行跟踪法规标准，一段时间后，自动提高这些标�
 
 ## <a name="what-regulatory-compliance-standards-are-available-in-security-center"></a>安全中心提供了哪些监管合规标准？
 
-默认情况下，将为每个订阅分配“Azure 安全基准”。 Azure 安全基准是 Microsoft 制定的 Azure 专属准则，适合基于常见合规框架的安全性与合规性最佳做法采用。 [详细了解 Azure 安全基准](../security/benchmarks/introduction.md)。
+默认情况下，将为每个订阅分配“Azure 安全基准”。 Azure 安全基准是 Microsoft 制定的 Azure 专属准则，适合基于常见合规框架的安全性与合规性最佳做法采用。 [详细了解 Azure 安全基准](/security/benchmark/azure/introduction)。
 
 现在，可添加如下标准：
 
-- NIST SP 800-53 R4
+- NIST SP 800-53
 - SWIFT CSP CSCF-v2020
 - UK Official 和 UK NHS
 - 加拿大联邦 PBMM
-- Azure CIS 1.1.0
+- Azure CIS 1.3.0
+- CMMC 级别 3
+- 限制性的新西兰 ISM
 
 标准将在仪表板可用时添加到仪表板。
 
@@ -71,13 +69,15 @@ Microsoft 会自行跟踪法规标准，一段时间后，自动提高这些标�
 
 1. 在“添加监管合规标准”页中，可以搜索任何可用标准，包括：
 
-    - **NIST SP 800-53 R4**
-    - **NIST SP 800 171 R2**
+    - **NIST SP 800-53**
+    - **NIST SP 800 171**
     - **SWIFT CSP CSCF v2020**
     - UKO and UK NHS
     - **加拿大联邦 PBMM**
     - **HIPAA HITRUST**
-    - **Azure CIS 1.1.0**
+    - **Azure CIS 1.3.0**
+    - **CMMC 级别 3**
+    - **受限于新西兰 ISM**
     
     ![将监管标准添加到 Azure 安全中心的监管合规仪表板](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
 
@@ -122,6 +122,6 @@ Microsoft 会自行跟踪法规标准，一段时间后，自动提高这些标�
 
 如需相关材料，请参阅以下页面内容：
 
-- [Azure 安全基准](../security/benchmarks/introduction.md)
+- [Azure 安全基准](/security/benchmark/azure/introduction)
 - [安全中心监管合规仪表板](security-center-compliance-dashboard.md) - 了解如何通过安全中心和外部工具跟踪和导出监管合规数据
 - [使用安全策略](tutorial-security-policy.md)

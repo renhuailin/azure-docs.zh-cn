@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: iangithinji
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: 202ccf6f540ec78c2bb30e0f0a0173609bba578c
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 820f27e770e3168277e12b85e7766cd16975ef7f
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751447"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108314996"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Azure AD 中的单一登录选项
 
@@ -76,7 +76,7 @@ ms.locfileid: "107751447"
 
 若要为 WS 联合身份验证配置应用程序，请遵循为基于 SAML 的单一登录配置应用程序的相同指导。 在配置应用程序以使用 Azure AD 的步骤中，需要为 WS 联合身份验证终结点 `https://login.microsoftonline.com/<tenant-ID>/wsfed` 替换 Azure AD 登录 URL。
 
-若要配置本地应用程序以进行基于 SAML 的单一登录，请参阅[本地应用程序通过应用程序代理进行基于 SAML 的单一登录](application-proxy-configure-single-sign-on-on-premises-apps.md)。
+若要配置本地应用程序以进行基于 SAML 的单一登录，请参阅[本地应用程序通过应用程序代理进行基于 SAML 的单一登录](../app-proxy/application-proxy-configure-single-sign-on-on-premises-apps.md)。
 
 有关 SAML 协议的详细信息，请参阅[单一登录 SAML 协议](../develop/single-sign-on-saml-protocol.md)。
 
@@ -86,7 +86,7 @@ ms.locfileid: "107751447"
 
 基于密码的单一登录使用应用程序提供的现有身份验证过程。 为应用程序启用密码单一登录时，Azure AD 会收集并安全地存储应用程序的用户名和密码。 用户凭据以加密状态存储在目录中。
 
-此外，管理员可以为基于密码的 SSO 启用 Azure AD 条件访问策略或多重身份验证。
+此外，管理员可为基于密码的 SSO 启用 Azure AD 条件访问策略或多重身份验证。
 
 在以下情况下选择基于密码的单一登录：
 
@@ -107,7 +107,7 @@ ms.locfileid: "107751447"
 
 要将云应用程序配置为基于密码的单一登录，请参阅[配置密码单一登录](configure-password-single-sign-on-non-gallery-applications.md)。
 
-要使用应用程序代理将本地应用程序配置为单一登录，请参阅[使用应用程序代理通过密码存储进行单一登录](application-proxy-configure-single-sign-on-password-vaulting.md)
+要使用应用程序代理将本地应用程序配置为单一登录，请参阅[使用应用程序代理通过密码存储进行单一登录](../app-proxy/application-proxy-configure-single-sign-on-password-vaulting.md)
 
 ### <a name="how-authentication-works-for-password-based-sso"></a>如何针对基于密码的 SSO 进行身份验证
 
@@ -157,16 +157,16 @@ Azure AD 管理员管理凭据时：
 
 ## <a name="integrated-windows-authentication-iwa-sso"></a>集成身份验证 (IWA) SSO
 
-[应用程序代理](application-proxy.md)针对使用[集成身份验证 (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication) 的应用程序或声明感知应用程序提供单一登录 (SSO)。 如果应用程序使用 IWA，则应用程序代理将使用 Kerberos 约束委派 (KCD) 对应用程序进行身份验证。 如果有信任 Azure Active Directory 的声明感知应用程序，则单一登录可用，因为用户已经通过使用 Azure AD 进行了身份验证。
+[应用程序代理](../app-proxy/application-proxy.md)针对使用[集成身份验证 (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication) 的应用程序或声明感知应用程序提供单一登录 (SSO)。 如果应用程序使用 IWA，则应用程序代理将使用 Kerberos 约束委派 (KCD) 对应用程序进行身份验证。 如果有信任 Azure Active Directory 的声明感知应用程序，则单一登录可用，因为用户已经通过使用 Azure AD 进行了身份验证。
 
 选择集成 Windows 身份验证单一登录模式，为使用 IWA 进行身份验证的本地应用提供单一登录。
 
-要为 IWA 配置本地应用，请参阅[针对具有应用程序代理的应用程序通过 Kerberos 约束委派进行单一登录](application-proxy-configure-single-sign-on-with-kcd.md)。
+要为 IWA 配置本地应用，请参阅[针对具有应用程序代理的应用程序通过 Kerberos 约束委派进行单一登录](../app-proxy/application-proxy-configure-single-sign-on-with-kcd.md)。
 
 ### <a name="how-single-sign-on-with-kcd-works"></a>使用 KCD 的单一登录的工作原理
 此示意图解释了用户访问使用 IWA 的本地应用程序时的流程。
 
-![Microsoft Azure AD 身份验证流程图](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
+![Microsoft Azure AD 身份验证流程图](../app-proxy/media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
 
 1. 用户输入 URL，通过应用程序代理访问本地应用程序。
 1. 应用程序代理将请求重定向到 Azure AD 身份验证服务，以进行预身份验证。 此时，Azure AD 将应用所有适用的身份验证和授权策略，例如多重身份验证。 如果用户通过验证，Azure AD 将创建令牌并将其发送给用户。
@@ -183,10 +183,10 @@ Azure AD 管理员管理凭据时：
 
 为本地应用程序配置应用程序代理时，选择基于标头的单一登录。
 
-若要详细了解基于标头的身份验证，请参阅[基于标头的 SSO](application-proxy-configure-single-sign-on-with-headers.md)。
+若要详细了解基于标头的身份验证，请参阅[基于标头的 SSO](../app-proxy/application-proxy-configure-single-sign-on-with-headers.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 * [应用程序管理的快速入门系列](view-applications-portal.md)
 * [计划单一登录部署](plan-sso-deployment.md)
-* [本地应用的单一登录](application-proxy-config-sso-how-to.md)
+* [本地应用的单一登录](../app-proxy/application-proxy-config-sso-how-to.md)

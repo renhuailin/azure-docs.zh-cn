@@ -4,12 +4,12 @@ description: Azure 中适用于 Web 应用、虚拟机规模集和云服务的�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 9aaf9525f2fedee67a86011e938b8e995ccfe9fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a49c9812848d9ef8cbe5a4499fb1430ca146855
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100608274"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738421"
 ---
 # <a name="best-practices-for-autoscale"></a>自动缩放最佳实践
 Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](../../api-management/api-management-key-concepts.md)。
@@ -66,7 +66,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 * 当 CPU% >= 80 时，按 1 计数增加实例
 * 当 CPU% <= 60 时，按 1 计数减少实例
 
-在这种情况下，  
+在这种情况下，
 
 1. 假定开始有 2 个实例。
 2. 如果实例间的平均 CPU% 达到 80，则自动缩放会通过添加第三个实例来进行扩大。
@@ -149,11 +149,10 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 * 自动缩放检测到摆动并中止缩放尝试。 在这种情况下，你会看到 `Flapping` 日志类型。 如果看到这种情况，请考虑阈值的范围是否太窄。
 * 自动缩放检测到摆动，但仍能成功缩放。 在这种情况下，你会看到 `FlappingOccurred` 日志类型。 如果看到这种情况，则表明自动缩放引擎已尝试缩放（例如从 4 个实例缩放到 2 个实例），但已确定这会导致摆动。 于是，自动缩放引擎改为缩放到不同数量的实例（例如，使用 3 个实例而不是 2 个实例），这不再导致摆动，因此它就缩放到了该数量的实例。
 
-还可以使用活动日志警报监视自动缩放引擎的运行状况。 下面举例说明如何[创建活动日志警报以监视订阅上的所有自动缩放引擎操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)或[创建活动日志警报以监视订阅上所有失败的自动缩放缩小/扩大操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)。
+还可以使用活动日志警报监视自动缩放引擎的运行状况。 下面举例说明如何[创建活动日志警报以监视订阅上的所有自动缩放引擎操作](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-alert)或[创建活动日志警报以监视订阅上所有失败的自动缩放缩小/扩大操作](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-failed-alert)。
 
 除了使用活动日志警报以外，还可以配置电子邮件或 Webhook 通知，以通过自动缩放设置上的通知选项卡获取有关成功缩放操作的通知。
 
 ## <a name="next-steps"></a>后续步骤
-- [创建活动日志警报以监视订阅上的所有自动缩放引擎操作。](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
-- [创建活动日志警报以监视订阅上所有失败的自动缩放缩小/扩大操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
-
+- [创建活动日志警报以监视订阅上的所有自动缩放引擎操作。](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-alert)
+- [创建活动日志警报以监视订阅上所有失败的自动缩放缩小/扩大操作](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-failed-alert)

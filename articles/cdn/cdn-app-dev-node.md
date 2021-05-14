@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: mazha
 ms.custom: devx-track-js
-ms.openlocfilehash: 607ba08f0d1d8ea08b30efa420bb2fde55da97b0
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 9c3487f321135641c8c9864e0e573c6c2c0f00bf
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108123746"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109516625"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 开发入门
 > [!div class="op_single_selector"]
@@ -351,6 +351,6 @@ function cdnDelete() {
 
 要查看有关适用于 JavaScript 的 Azure CDN SDK 的参考，请查看[参考](/javascript/api/@azure/arm-cdn)。
 
-要查找有关适用于 JavaScript 的 Azure SDK 的其他文档，请查看[完整参考](/javascript/api/?view=azure-node-latest)。
+要查找有关适用于 JavaScript 的 Azure SDK 的其他文档，请查看[完整参考](/javascript/api/)。
 
 使用 [PowerShell](cdn-manage-powershell.md) 管理 CDN 资源。

@@ -3,12 +3,12 @@ title: Azure Functions 的存储注意事项
 description: 了解 Azure Functions 的要求和存储数据加密。
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: c4ffb622482585e35337caf8e43b69e0f3b0385c
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.openlocfilehash: 8c7f5ef6e1e9c354806994e5116e40523d660e9e
+ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517257"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109627701"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions 的存储注意事项
 
@@ -19,7 +19,7 @@ ms.locfileid: "100517257"
 |---------|---------|
 | [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)     | 维护绑定状态和函数密钥。  <br/>还由 [Durable Functions 中的任务中心](durable/durable-functions-task-hubs.md)使用。 |
 | [Azure 文件](../storage/files/storage-files-introduction.md)  | 文件共享，用于存储和运行[消耗计划](consumption-plan.md)和[高级计划](functions-premium-plan.md)中的函数应用代码。 |
-| [Azure 队列存储](../storage/queues/storage-queues-introduction.md)     | 由 [Durable Functions 中的任务中心](durable/durable-functions-task-hubs.md)使用。   |
+| Azure 队列存储     | 由 [Durable Functions 中的任务中心](durable/durable-functions-task-hubs.md)使用。   |
 | [Azure 表存储](../storage/tables/table-storage-overview.md)  |  由 [Durable Functions 中的任务中心](durable/durable-functions-task-hubs.md)使用。       |
 
 > [!IMPORTANT]
@@ -27,7 +27,7 @@ ms.locfileid: "100517257"
 
 ## <a name="storage-account-requirements"></a>存储帐户要求
 
-创建函数应用时，必须创建或链接到支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。 这是因为 Functions 依赖于 Azure 存储，执行管理触发器和记录函数执行等操作。 某些存储帐户不支持队列和表。 这些帐户包括仅限 blob 的存储帐户和 Azure 高级存储。
+创建函数应用时，必须创建或链接到支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。 这是因为 Functions 依赖于 Azure 存储，执行管理触发器和记录函数执行等操作。 某些存储帐户不支持队列和表。 这些帐户包括仅 Blob 存储帐户和 Azure 高级存储。
 
 若要了解有关存储帐户类型的详细信息，请参阅 [Azure 存储服务简介](../storage/common/storage-introduction.md#core-storage-services)。 
 
@@ -69,9 +69,9 @@ ms.locfileid: "100517257"
 
 ## <a name="mount-file-shares"></a>装载文件共享
 
-_仅当在 Linux 上运行时，此功能才可用。_ 
+目前仅当在 Linux 上运行时，此功能才可用。 
 
-可以将现有 Azure 文件共享装载到 Linux 函数应用。 通过将共享装载到 Linux 函数应用，可以利用现有的机器学习模型或函数中的其他数据。 可以使用 [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) 命令将现有共享装载到 Linux 函数应用。 
+可以将现有 Azure 文件共享装载到 Linux 函数应用。 通过将共享装载到 Linux 函数应用，可以利用现有的机器学习模型或函数中的其他数据。 可以使用 [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az_webapp_config_storage_account_add) 命令将现有共享装载到 Linux 函数应用。 
 
 在此命令中，`share-name` 是现有 Azure 文件共享的名称，`custom-id` 可以是在装载到函数应用时唯一定义共享的任何字符串。 此外，`mount-path` 是在函数应用中用于访问共享的路径。 `mount-path` 必须采用 `/dir-name` 格式，不能以 `/home` 开头。
 

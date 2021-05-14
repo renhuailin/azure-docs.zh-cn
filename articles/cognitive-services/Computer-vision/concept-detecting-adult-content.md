@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ceef604fe07a11be89376e26c6fecc49298ebacf
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a3c8a5a0ee31b827c41c4a5a07af8c69c8a8cecd
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778852"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714876"
 ---
 # <a name="detect-adult-content"></a>检测成人内容
 
@@ -35,6 +35,6 @@ ms.locfileid: "107778852"
 
 ## <a name="use-the-api"></a>使用 API
 
-可以通过[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) API 来检测成人内容。 将值 `Adult` 添加到 visualFeatures 查询参数时，此 API 会在其 JSON 响应中返回三个布尔属性：`isAdultContent`、`isRacyContent` 和 `isGoryContent`。 该方法还返回相应的属性 `adultScore`、`racyScore` 和 `goreScore`，这些属性表示每个相应类别的介于 0 到 1 之间的置信度分数。
+可以通过[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) API 来检测成人内容。 将值 `Adult` 添加到 visualFeatures 查询参数时，此 API 会在其 JSON 响应中返回三个布尔属性：`isAdultContent`、`isRacyContent` 和 `isGoryContent`。 该方法还返回相应的属性 `adultScore`、`racyScore` 和 `goreScore`，这些属性表示每个相应类别的介于 0 到 1 之间的置信度分数。
 
 - [快速入门：计算机视觉 REST API 或客户端库](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)

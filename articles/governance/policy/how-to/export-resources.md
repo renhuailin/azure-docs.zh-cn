@@ -4,12 +4,12 @@ description: 了解如何将 Azure Policy 资源（例如策略定义和策略�
 ms.date: 03/31/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ca7e5de5238bab50e31b25d6a0bf5068aad397a8
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 36e3c28d8448bba94222a23581dda7bd6d3ffaeb
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108073640"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752662"
 ---
 # <a name="export-azure-policy-resources"></a>导出 Azure Policy 资源
 
@@ -35,7 +35,7 @@ ms.locfileid: "108073640"
    - **目录**：要将 Azure Policy 资源导出到的根级别文件夹。 此目录下的子文件夹基于导出的资源而创建。
 
 1. 在“策略”选项卡上，选择省略号，然后选择管理组、订阅或资源组的组合，以设置搜索范围。
-   
+
 1. 使用“添加策略定义”按钮在相关范围中搜索要导出的对象。 在打开的侧窗口中，选择要导出的每个对象。 根据搜索框或类型筛选选定内容。 选择所有要导出的对象后，使用页面底部的“添加”按钮。
 
 1. 对于每个选定对象，为策略定义选择所需的导出选项，例如“仅定义”或“定义和分配” 。 然后选择“查看 + 导出”选项卡或页面底部的“下一步: 查看 + 导出”按钮。
