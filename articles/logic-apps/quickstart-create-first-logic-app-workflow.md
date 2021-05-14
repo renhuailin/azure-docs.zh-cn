@@ -1,217 +1,251 @@
 ---
-title: 快速入门 - 创建第一个逻辑应用工作流 - Azure 门户
-description: 使用本快速入门指南在 Azure 门户中构建你的第一个自动化逻辑应用工作流。 了解逻辑应用中系统集成和企业应用程序集成 (EAI) 解决方案的基本知识。
+title: 快速入门 - 在 Azure 门户中创建集成工作流
+description: 在 Azure 门户中使用 Azure 逻辑应用创建第一个自动集成工作流。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 03/24/2021
-ms.openlocfilehash: d05566c0734f95e14335c6165de0b2104fa19bc6
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: contperf-fy21q4
+ms.date: 04/28/2021
+ms.openlocfilehash: ea115d42f84562e67adb7e6f45ce8d35be21d6b0
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764848"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292459"
 ---
-# <a name="quickstart-create-your-first-logic-apps-workflow---azure-portal"></a>快速入门：创建第一个逻辑应用工作流 - Azure 门户
+# <a name="quickstart-create-an-integration-workflow-using-azure-logic-apps-in-the-azure-portal"></a>快速入门：在 Azure 门户中使用 Azure 逻辑应用创建集成工作流
 
-本快速入门介绍了如何通过 [Azure 门户](https://portal.azure.com)，在 [Azure 逻辑应用](logic-apps-overview.md)中构建你的第一个工作流。 本介绍性指南还介绍了逻辑应用服务的基本概念，包括如何创建新的逻辑应用、如何向逻辑应用添加触发器和操作，以及如何测试逻辑应用。 按照此快速入门构建一个示例逻辑应用，该应用会定期检查 RSS 源并发送有关新项的电子邮件通知。 以下屏幕截图显示了此示例逻辑应用的概要工作流：
+本快速入门介绍如何使用 [Azure 逻辑应用](logic-apps-overview.md)创建集成两种服务（网站的 RSS 源和电子邮件帐户）的示例自动化工作流。 尽管此示例是基于云的，但逻辑应用支持跨云、本地和混合环境连接应用、数据、服务和系统的工作流。
 
-![逻辑应用设计器的屏幕截图，显示了示例逻辑应用，其中触发器是 RSS 源，操作是发送电子邮件。](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
+在此示例中，将创建一个使用 RSS 连接器和 Office 365 Outlook 连接器的工作流。 RSS 连接器有一个触发器，可根据计划检查 RSS 源。 通过 Office 365 Outlook 连接器，可以为每个新项发送电子邮件。 本示例中的连接器仅仅是在工作流中可以使用的[数百个连接器](/connectors/connector-reference/connector-reference-logicapps-connectors)中的两个。
+
+以下屏幕截图显示了基本示例工作流：
+
+![屏幕截图显示带有 RSS 触发器“发布源项时”的工作流和“发送电子邮件”的 Outlook 操作。](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
+
+完成本快速入门教程后，你将了解以下基本步骤：
+
+* 创建在多租户逻辑应用服务环境中运行的逻辑应用资源。
+* 选择空白逻辑应用模板。
+* 添加一个指定运行工作流的时间的触发器。
+* 添加一个在触发器触发后执行任务的操作。
+* 运行工作流。
+
+要使用其他工具创建并管理逻辑应用，请查看以下其他逻辑应用快速入门：
+
+* [在 Visual Studio Code 中创建和管理逻辑应用](quickstart-create-logic-apps-visual-studio-code.md)
+* [在 Visual Studio 中创建和管理逻辑应用](quickstart-create-logic-apps-with-visual-studio.md)
+* [使用 Azure 命令行接口 (Azure CLI) 创建和管理逻辑应用](quickstart-logic-apps-azure-cli.md)
 
 <a name="prerequisites"></a>
 
-如果想要了解如何通过其他接口和应用来创建和管理第一个逻辑应用，请参阅以下其他逻辑应用快速入门： 
-
-* [使用 Azure 命令行接口 (Azure CLI) 创建和管理逻辑应用](quickstart-logic-apps-azure-cli.md)
-* [在 Visual Studio Code 中创建和管理逻辑应用](quickstart-create-logic-apps-visual-studio-code.md)
-* [在 Visual Studio 中创建和管理逻辑应用](quickstart-create-logic-apps-with-visual-studio.md)
-
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 帐户和订阅。 如果没有 Azure 订阅，可以[注册免费的 Account 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* 如果还没有 Azure 订阅，可以在开始前[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 逻辑应用支持的服务（例如 Office 365 Outlook 或 Outlook.com）提供的电子邮件帐户。 如需其他受支持的电子邮件提供程序，请[查看连接器列表](/connectors/)。
+* 逻辑应用支持的服务（例如 Office 365 Outlook 或 Outlook.com）提供的电子邮件帐户。 对于其他受支持的电子邮件提供程序，请查看[逻辑应用的连接器](/connectors/connector-reference/connector-reference-logicapps-connectors)。
 
-    > [!IMPORTANT]
-    > 如果使用的是 [Gmail 连接器](/connectors/gmail/)，请注意，只有 G Suite 帐户才能在逻辑应用中不受限制地使用此连接器。 如果有 Gmail 用户帐户，则除非[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](/connectors/gmail/#authentication-and-bring-your-own-application)，否则只能将此连接器与 Google 批准的特定服务一起使用。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
+  > [!NOTE]
+  > 如果要使用 [Gmail 连接器](/connectors/gmail/)，则只有 G-Suite 帐户可以在 Azure 逻辑应用中不受限制地使用此连接器。 如果有 Gmail 用户帐户，则除非[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](/connectors/gmail/#authentication-and-bring-your-own-application)，否则只能将此连接器与 Google 批准的特定服务一起使用。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
 
-* 如果逻辑应用需要通过仅限流量流经特定 IP 地址的防火墙进行通信，则该防火墙需要允许访问该逻辑应用所在的 Azure 区域中的逻辑应用服务或运行时使用的[入站](logic-apps-limits-and-config.md#inbound)和[出站](logic-apps-limits-and-config.md#outbound) IP 地址。 如果逻辑应用还使用[托管连接器](../connectors/managed.md)（如 Office 365 Outlook 连接器或 SQL 连接器），或使用[自定义连接器](/connectors/custom-connectors/)，则防火墙还需要允许访问逻辑应用的 Azure 区域中的所有[托管连接器出站 IP 地址](logic-apps-limits-and-config.md#outbound)。
+* 如果具有仅限流量流经特定 IP 地址的防火墙，请将该防火墙设置为允许访问该逻辑应用所在的 Azure 区域中的逻辑应用服务或运行时使用的[入站](logic-apps-limits-and-config.md#inbound)和[出站](logic-apps-limits-and-config.md#outbound) IP 地址。
 
-<a name="create-logic-app"></a>
+  此示例还使用[由 Microsoft 管理的](/connectors/managed.md) RSS 和 Office 365 Outlook 连接器。 这些连接器要求将防火墙设置为允许对逻辑应用的 Azure 区域中的所有[托管连接器出站 IP 地址](logic-apps-limits-and-config.md#outbound)进行访问。
 
-## <a name="create-your-logic-app"></a>创建逻辑应用
+<a name="create-logic-app-resource"></a>
 
-1. 使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com)。
+## <a name="create-a-logic-app-resource"></a>创建逻辑应用资源
 
-1. 在 Azure 门户搜索框中，输入 `logic apps`，然后选择“逻辑应用”。
+1. 使用 Azure 帐户登录到 [Azure 门户](https://portal.azure.com)。
 
-   ![Azure 门户搜索框的屏幕截图，其中显示“逻辑应用”作为搜索词，“逻辑应用”作为所选搜索结果。](./media/quickstart-create-first-logic-app-workflow/find-select-logic-apps.png)
+1. 在 Azure 搜索框中，输入 `logic apps`，然后选择“逻辑应用”。
 
-1. 在“逻辑应用”页上，选择“添加”。
+   ![显示 Azure 门户搜索框的屏幕截图，其中包含搜索词“逻辑应用”，并且结果中的“逻辑应用”处于选中状态。](./media/quickstart-create-first-logic-app-workflow/find-select-logic-apps.png)
 
-   ![Azure 门户中“逻辑应用”服务页的屏幕截图，显示了逻辑应用列表和所选按钮“添加”。](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
+1. 在“逻辑应用”页上，选择“添加” > “使用量”  。
 
-1. 在“逻辑应用”窗格上，为逻辑应用提供基本的详细信息和设置。 为此，请为示例逻辑应用创建新的[资源组](../azure-resource-manager/management/overview.md#terminology)。
+   此步骤会创建一个在多租户逻辑应用服务环境中运行并使用[使用量定价模型](logic-apps-pricing.md)的逻辑应用资源。
+
+   ![显示 Azure 门户和包含逻辑应用列表的逻辑应用服务页，其中“添加”菜单处于打开状态，并已选中“使用量”。](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
+
+1. 在“逻辑应用”窗格上，为逻辑应用提供基本的详细信息和设置。 为此示例逻辑应用创建新的[资源组](../azure-resource-manager/management/overview.md#terminology)。
 
    | 属性 | 值 | 说明 |
    |----------|-------|-------------|
-   | **名称** | <*logic-app-name*> | 逻辑应用的名称，该名称必须在区域中是唯一的。 名称只能包含字母、数字、连字符 (`-`)、下划线 (`_`)、括号（`(`、`)`）和句点 (`.`)。 此示例使用“My-First-Logic-App”。 |
    | **订阅** | <*Azure-subscription-name*> | Azure 订阅的名称。 |
-   | **资源组** | <*Azure-resource-group-name*> | 要在其中创建逻辑应用的 [Azure 资源组](../azure-resource-manager/management/overview.md#terminology)的名称。 资源组的名称必须在区域中是唯一的。 此示例使用“My-First-LA-RG”。 |
-   | **位置** | <*Azure-region*> | 用于存储逻辑应用信息的 Azure 区域。 此示例使用“美国西部”。 |
-   | **Log Analytics** | 关 | 诊断日志记录的设置，默认情况下为“关闭”。 对于本示例，请保留“关闭”设置。 |
+   | **资源组** | <*Azure-resource-group-name*> | [Azure 资源组的名称](../azure-resource-manager/management/overview.md#terminology)必须在区域中是唯一的。 此示例使用“My-First-LA-RG”。 |
+   | **逻辑应用名称** | <*logic-app-name*> | 逻辑应用的名称，该名称必须在区域中是唯一的。 此示例使用“My-First-Logic-App”。 <p><p>**重要说明**：此名称只能包含字母、数字、连字符 (`-`)、下划线 (`_`)、括号 `(``)` 和句点 (`.`)。  |
+   | **区域** | <*Azure-region*> | 要在其中存储应用信息的 Azure 数据中心区域。 此示例使用“美国西部”。 |
+   | **与集成服务环境关联** | 关 | 仅当要将此逻辑应用部署到[集成服务环境](connect-virtual-network-vnet-isolated-environment-overview.md)时，才选择此选项。 对于本示例，请勿选择此选项。 |
+   | **启用日志分析** | 关 | 只在要启用诊断日志记录时，才选择此选项。 对于本示例，请勿选择此选项。 |
    ||||
 
-   ![逻辑应用“创建”页的屏幕截图，显示了带有新逻辑应用详细信息的窗格。](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
+   ![显示 Azure 门户和逻辑应用创建页的屏幕截图，其中包含新逻辑应用的详细信息。](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
-1. 准备就绪后，选择“查看 + 创建”。 确认所提供的详细信息，并选择“创建”。
+1. 准备就绪后，选择“查看 + 创建”。 在验证页上，确认所提供的详细信息，并选择“创建”。
 
-1. Azure 成功部署应用后，请选择“转到资源”。 或者，可以通过在搜索框中键入名称来查找和选择逻辑应用。
+## <a name="select-the-blank-template"></a>选择空白模板
 
-   ![“资源部署”页的屏幕截图，显示了所选按钮“转到资源”。](./media/quickstart-create-first-logic-app-workflow/go-to-new-logic-app-resource.png)
+1. Azure 成功部署应用后，请选择“转到资源”。 或者通过在搜索框中键入名称来查找并选择逻辑应用。
 
-   逻辑应用设计器打开并显示一个包含简介视频和常用触发器的页面。 在“模板”下选择“空白逻辑应用”。
+   ![显示资源部署页和选中的“转到资源”按钮的屏幕截图。](./media/quickstart-create-first-logic-app-workflow/go-to-new-logic-app-resource.png)
 
-   ![逻辑应用设计器的屏幕截图，显示了模板库和所选模板“空白逻辑应用”。](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
+   逻辑应用设计器打开并显示一个包含简介视频和常用触发器的页面。
 
-接下来，[将触发器添加到逻辑应用](#add-rss-trigger)。
+1. 在“模板”下选择“空白逻辑应用”。
+
+   ![显示逻辑应用设计器模板库和所选模板“空白逻辑应用”的屏幕截图。](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
+
+   选择模板后，设计器会显示一个空白的工作流图面。
 
 <a name="add-rss-trigger"></a>
 
-## <a name="add-the-rss-trigger"></a>添加 RSS 触发器
+## <a name="add-the-trigger"></a>添加触发器
 
-每个逻辑应用都必须从[触发器](../logic-apps/logic-apps-overview.md#how-do-logic-apps-work)开始，该触发器在发生特定事件或满足特定条件的情况下触发。 触发器每次发现新项时都会触发，并且逻辑应用引擎会创建一个逻辑应用实例来启动并运工作流。 如果触发器未发现新项，则不会触发，并且不会在执行此检查时创建实例或运行工作流。
+工作流始终以单个[触发器](../logic-apps/logic-apps-overview.md#how-do-logic-apps-work)开始，该触发器指定在工作流中运行任何操作之前要满足的条件。 每当触发器触发时，逻辑应用都会创建并运行工作流实例。 如果触发器没有触发，则不会创建或运行任何实例。 可以通过在不同的触发器中进行选择来启动工作流。
 
-在此快速入门示例中，在[创建逻辑应用](#create-your-logic-app)后，可以添加一个触发器，用于检查 RSS 源中的新项，并在有新项时触发。 还可以创建具有不同类型触发器的逻辑应用，如[创建基于自动批准的工作流](tutorial-process-mailing-list-subscriptions-workflow.md)教程中所述。
+此示例使用 RSS 触发器根据计划检查 RSS 源。 如果源中存在新项，触发器会触发，并且新工作流实例会开始运行。 如果在检查之间存在多个新项，则触发器会针对每个项触发，并为每个项运行一个单独的新工作流实例。
 
-1. 在“逻辑应用设计器”的搜索框下，选择“全部”。
+1. 在“逻辑应用设计器”的搜索框下，选择“全部” 。
 
-1. 要查找 RSS 连接器，请在搜索框中输入 `rss`。 从“触发器”列表中，选择 RSS 触发器“发布源项时” 。
+1. 要查找 RSS 触发器，请在搜索框中输入 `rss`。 从“触发器”列表中，选择 RSS 触发器“发布源项时” 。
 
    ![显示逻辑应用设计器的屏幕截图，其中包含搜索框中的“rss”和所选 RSS 触发器“发布源项时”。](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
-1. 为触发器提供 RSS 源 URL。 然后，通过设置时间间隔和频率来定义触发器的计划。
+1. 触发器详细信息包含以下信息：
 
-   | 属性 | 值 | 说明 |
-   | -------- | ----- | ----------- |
-   | **RSS 源 URL** | <*RSS-feed-URL*> | 要监视的 RSS 源的 URL。 本示例使用《华尔街日报》的 RSS 源 `https://feeds.a.dj.com/rss/RSSMarketsMain.xml`。 但对于本示例，可以使用不需要 HTTP 授权的任何 RSS 源。 选择经常发布的 RSS 源，以便以后可以轻松地测试逻辑应用。 |
-   | 间隔 | 1 | 在 RSS 源检查之间需等待的时间间隔数。 本示例使用 1 分钟间隔。 |
-   | **频率** | Minute | RSS 源检查的每个间隔的时间单位。 本示例使用 1 分钟间隔。 |
-   ||||
+   | 属性 | 必须 | 值 | 说明 |
+   |----------|----------|-------|-------------|
+   | **RSS 源 URL** | 是 | <*RSS-feed-URL*> | 要监视的 RSS 源 URL。 <p><p>本示例使用《华尔街日报》的 RSS 源 `https://feeds.a.dj.com/rss/RSSMarketsMain.xml`。 但可以使用不需要 HTTP 授权的任何 RSS 源。 选择经常发布的 RSS 源，以便可以轻松地测试工作流。 |
+   | **所选属性将用于确定** | 否 | PublishDate | 确定哪些项是新项的属性。 |
+   | **时间间隔** | 是 | 1 | 在源检查之间需等待的时间间隔数。 <p><p>此示例使用 `1` 作为间隔。 |
+   | **频率** | 是 | Minute | 用于每个间隔的频率单位。 <p><p>此示例使用 `Minute` 作为频率。 |
+   |||||
 
-   ![显示具有 RSS 触发器设置的逻辑应用设计器的屏幕截图，其中包括 RSS URL、频率和间隔。](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-settings.png)
+   ![显示 RSS 触发器设置的屏幕截图，其中包括 RSS URL、频率和间隔。](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-settings.png)
 
 1. 通过单击触发器的标题栏，暂时折叠触发器的详细信息。
 
-   ![显示带有折叠逻辑应用形状的逻辑应用设计器的屏幕截图。](./media/quickstart-create-first-logic-app-workflow/collapse-trigger-shape.png)
+   ![屏幕截图显示了折叠的触发器形状。](./media/quickstart-create-first-logic-app-workflow/collapse-trigger-shape.png)
 
-1. 通过选择设计器工具栏上的“保存”，保存逻辑应用。
+1. 完成后，请保存逻辑应用，它将立即在 Azure 门户中运行。 在设计器工具栏上选择“保存”。 
 
-逻辑应用现已生成，但除了检查 RSS 源，不能执行任何操作。 接下来，[添加操作](#add-email-action)以定义触发器触发时会发生的情况。
+   除了检查 RSS 源，触发器不会执行任何操作。 因此需要添加一个操作来定义触发器触发时会发生的情况。
 
 <a name="add-email-action"></a>
 
-## <a name="add-the-send-email-action"></a>添加“发送电子邮件”操作
+## <a name="add-an-action"></a>添加操作
 
-[为逻辑应用添加触发器](#add-rss-trigger)后，必须添加[操作](../logic-apps/logic-apps-overview.md#logic-app-concepts)以确定当逻辑应用检查 RSS 源并出现新项时的响应。 还可以创建具有更复杂的操作的逻辑应用，如[使用逻辑应用、Azure Functions 和 Azure 存储处理电子邮件](./tutorial-process-email-attachments-workflow.md)教程中所述。
+继触发器之后，[操作](../logic-apps/logic-apps-overview.md#logic-app-concepts)是在工作流中运行某个操作的后续步骤。 任何操作都可以使用上一步中的输出，该输出可以是触发器或其他操作。 可以在多个不同的操作中进行选择，添加多个操作，直至达到[每个工作流的上限](logic-apps-limits-and-config.md#definition-limits)，甚至创建不同的操作路径。
 
-> [!NOTE]
-> 此示例使用 Office 365 Outlook 作为电子邮件服务。 如果在逻辑应用中使用的是其他受支持的电子邮件服务，则用户界面可能会有所不同。 但是，用于连接到其他电子邮件服务的基本概念仍保持不变。
+此示例使用 Office 365 Outlook 操作，该操作在每次为新的 RSS 源项触发触发器时发送一封电子邮件。 如果在检查之间存在多个新项，则会收到多封电子邮件。
 
 1. 在“发布源项时”触发器下，选择“新建步骤”。
 
-   ![逻辑应用设计器的屏幕截图，显示选中了按钮“新建步骤”的工作流。](./media/quickstart-create-first-logic-app-workflow/add-new-step-under-trigger.png)
+   ![显示工作流触发器和所选按钮“新建步骤”的屏幕截图。](./media/quickstart-create-first-logic-app-workflow/add-new-step-under-trigger.png)
 
-1. 在“选择操作”和搜索框下，选择“全部”。
+1. 在“选择操作”和搜索框下，选择“全部” 。
 
-1. 在搜索框中，输入 `send an email` 以便查找提供此操作的连接器。 若要通过对操作列表进行筛选来查找特定的应用或服务，可以先选择应用或服务。
+1. 在搜索框中，输入 `send an email` 以便查找提供此操作的连接器。 要通过对“操作”列表进行筛选来查找特定的应用或服务，请先选择该应用或服务。
 
-   例如，如果你使用 Microsoft 工作或学校帐户，并且想要使用 Office 365 Outlook，请选择“Office 365 Outlook”。 或者，如果你使用的是个人 Microsoft 帐户，则可以选择“Outlook.com”。 本示例将继续使用 Office 365 Outlook：
+   例如，如果你具有 Microsoft 工作或学校帐户，并且想要使用 Office 365 Outlook，请选择“Office 365 Outlook”。 或者如果你具有个人 Microsoft 帐户，请选择“Outlook.com”。 本示例将继续使用 Office 365 Outlook。
 
-   ![逻辑应用设计器的屏幕截图，显示选中了电子邮件连接器“Office 365 Outlook”的操作步骤。](./media/quickstart-create-first-logic-app-workflow/select-connector.png)
+   > [!NOTE]
+   > 如果在工作流中使用其他受支持的电子邮件服务，用户界面可能会略有不同。 但是，用于连接到其他电子邮件服务的基本概念仍保持不变。
 
-   现在可以更轻松地找到并选择要使用的操作，例如 `send an email`：
+   ![显示“选择操作”列表和所选电子邮件服务“Office 365 Outlook”的屏幕截图。](./media/quickstart-create-first-logic-app-workflow/select-connector.png)
 
-   ![逻辑应用设计器的屏幕截图，显示了电子邮件连接器“Office 365 Outlook”的已筛选操作列表。](./media/quickstart-create-first-logic-app-workflow/filtered-actions-list.png)
+   现在可以更轻松地找到并选择要使用的操作，如“发送电子邮件”：
 
-1. 如果选择的电子邮件连接器提示你对标识进行身份验证，请立即完成该步骤。 若要使此示例正常工作，必须在逻辑应用和电子邮件服务之间创建连接。 
+   ![显示电子邮件服务“Office 365 Outlook”的已筛选操作的屏幕截图。](./media/quickstart-create-first-logic-app-workflow/filtered-actions-list.png)
 
-    > [!NOTE]
-    > 此示例演示如何对 Office 365 Outlook 连接器进行手动身份验证。 但是，其他连接器可能支持不同的身份验证类型。
-    > 还可以根据用例，以不同的方式处理逻辑应用的身份验证。 例如，如果使用 Azure 资源管理器模板进行部署，则可以对经常更改的输入（如连接详细信息）进行参数化以提高安全性。 有关详细信息，请参阅以下主题：
+1. 如果选择的电子邮件服务提示你登录标识并对其进行身份验证，请立即完成该步骤。
+
+   许多连接器要求在继续执行操作之前首先创建连接并对标识进行身份验证。
+
+   ![显示 Office 365 Outlook 登录提示的屏幕截图。](./media/quickstart-create-first-logic-app-workflow/email-service-authentication.png)
+
+   > [!NOTE]
+   > 此示例显示连接到 Office 365 Outlook 的手动身份验证。 但其他服务可能支持或使用不同的身份验证类型。 可以根据场景以各种方式处理连接身份验证。
+   > 
+   > 例如，如果使用 Azure 资源管理器模板进行部署，则可以通过将值（如连接详细信息）参数化来提高经常更改的输入的安全性。 有关详细信息，请查看以下主题：
+   >
    > * [部署的模板参数](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)
    > * [授权 OAuth 连接](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)
    > * [使用托管标识验证访问](../logic-apps/create-managed-service-identity.md)
    > * [为逻辑应用部署验证连接](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections)
 
-1. 在“发送电子邮件”操作中，指定要包含在电子邮件通知中的信息。
+1. 在“发送电子邮件”操作中，指定要包含在电子邮件中的信息。
 
-   1. 在“收件人”框中，输入收件人的电子邮件地址。 对于本示例，请使用你的电子邮件地址。
+   1. 在“收件人”框中，输入接收方的电子邮件地址。 对于本示例，请使用你的电子邮件地址。
 
-        > [!NOTE]
-        > 在逻辑应用设计器中的“收件人”框和某些其他输入框内单击时，会出现“添加动态内容”列表 。 此示例将在后续步骤中使用动态内容。 “添加动态内容”列表显示了上一步中的所有可用输出，你可以将其用作当前操作的输入。
+      > [!NOTE]
+      > 在“收件人”框和某些输入类型的其他框内单击时，会出现“添加动态内容”列表 。 此列表显示前面几个步骤的任何输出，你可以选择这些输出作为当前操作的输入。 可以暂时忽略此列表。 后续步骤会使用动态内容列表。
 
-   1. 在“主题”框中，输入电子邮件通知的主题。 对于此示例，请输入以下带有尾随空白的文本：`New RSS item: `
+   1. 在“主题”框中，输入电子邮件主题。 对于此示例，请输入以下带有尾随空白的文本：`New RSS item: `
 
-      ![逻辑应用设计器的屏幕截图，显示了“发送电子邮件”操作和“主题”属性框内的光标。](./media/quickstart-create-first-logic-app-workflow/send-email-subject.png)
+      ![显示“发送电子邮件”操作和“主题”属性框内的光标的屏幕截图。](./media/quickstart-create-first-logic-app-workflow/send-email-subject.png)
 
-   1. 从“添加动态内容”列表中，选择“源标题”，该标题为触发器“发布源项时”的输出  。 电子邮件通知使用此输出获取 RSS 项的标题。
+   1. 在“发布源项时”下的“添加动态内容”中，选择“源标题”  。
 
-      ![逻辑应用设计器的屏幕截图，显示了“发送电子邮件”操作和“主题”属性框内的光标，还有一个打开的动态内容列表和选中的输出“源标题”。](./media/quickstart-create-first-logic-app-workflow/send-email-subject-dynamic-content.png)
+      源标题是一个引用 RSS 项的标题的触发器输出。 电子邮件使用此输出显示 RSS 项的标题。
+
+      ![显示“发送电子邮件”操作和“主题”属性框内的光标的屏幕截图，其中包含打开的动态内容列表和选中的触发器输出“源标题”。](./media/quickstart-create-first-logic-app-workflow/send-email-subject-dynamic-content.png)
 
       > [!TIP]
       > 在动态内容列表中，如果没有从“发布源项时”触发器中显示任何输出，则请在操作的标头旁边选择“查看更多” 。
       > 
-      > ![逻辑应用设计器的屏幕截图，显示了打开的动态内容列表，以及为触发器选择的“查看更多”。](./media/quickstart-create-first-logic-app-workflow/dynamic-content-list-see-more-actions.png)
+      > ![显示打开的动态内容列表，以及为触发器选择的“查看更多”的屏幕截图。](./media/quickstart-create-first-logic-app-workflow/dynamic-content-list-see-more-actions.png)
 
       完成后，电子邮件主题如以下示例所示：
 
-      ![逻辑应用设计器的屏幕截图，显示了“发送电子邮件”操作和具有“源标题”属性的示例电子邮件主题。](./media/quickstart-create-first-logic-app-workflow/send-email-feed-title.png)
+      ![显示“发送电子邮件”操作和具有“源标题”属性的示例电子邮件主题。](./media/quickstart-create-first-logic-app-workflow/send-email-feed-title.png)
 
-      如果设计器上出现了“For each”循环，则表示你为数组选择了一个令牌。例如“categories-Item”令牌。 对于这些类型的令牌，设计器会自动围绕引用该令牌的操作添加此循环。 这样一来，逻辑应用会对每个数组项执行同一操作。 若要删除循环，请选择循环的标题栏上的省略号 (**...**)，然后选择“删除”。
+      > [!NOTE]
+      > 如果设计器上显示“For each”循环，则选择引用“categories-Item”属性等数组的输出 。 对于此输出类型，设计器会自动在引用输出的操作周围添加“For each”循环。 这样工作流就会对每个数组项执行同一操作。 
+      >
+      > 要删除循环，请选择循环的标题栏上的省略号 (...)，然后选择“删除” 。
 
-   1. 在“正文”框中，输入电子邮件正文内容。 在此示例中，内容包括三个属性，其中每个属性都具有描述性文本：“源标题”属性 `Title:`；“源发布日期”属性 `Date published:`；“主源链接”属性 `Link:`  。 若要在编辑框中添加空行，请按 Shift + Enter。
+   1. 在“正文”框中，输入电子邮件正文内容。
+   
+      在此示例中，正文包括以下属性，前面是每个属性的说明性文本。 若要在编辑框中添加空行，请按 Shift + Enter。
 
-      | 属性 | 说明 |
-      |----------|-------------|
-      | 源标题 | 项的标题 |
-      | 源发布日期 | 项的发布日期和时间 |
-      | 源主链接 | 项的 URL |
-      |||
+      | 说明性文本 | 属性 | 说明 |
+      |------------------|----------|-------------|
+      | `Title:` | 源标题 | 项的标题 |
+      | `Date published:` | 源发布日期 | 项的发布日期和时间 |
+      | `Link:` | 源主链接 | 项的 URL |
+      ||||
 
-      ![逻辑应用设计器的屏幕截图，显示了“发送电子邮件”操作和“正文”框中选定的属性。](./media/quickstart-create-first-logic-app-workflow/send-email-body.png)
+      ![显示逻辑应用设计器的屏幕截图，其中包含“发送电子邮件”操作和“正文”框中选定的属性。](./media/quickstart-create-first-logic-app-workflow/send-email-body.png)
 
-1. 保存逻辑应用。 在设计器菜单中选择“保存”。
+1. 保存逻辑应用。 在设计器工具栏上选择“保存”。 
 
-接下来，[测试逻辑应用是否正常运行](#test-logic-app)。
+<a name="run-workflow"></a>
 
-<a name="test-logic-app"></a>
+## <a name="run-your-workflow"></a>运行工作流
 
-## <a name="run-your-logic-app"></a>运行逻辑应用
+要检查工作流是否正常运行，可以等待触发器根据设置计划检查 RSS 源的操作完成。 或者通过选择逻辑应用设计器工具栏上的“运行”来手动运行工作流，如以下屏幕截图所示。 
 
-创建示例逻辑应用后，请确认已正确配置工作流。 可以等待逻辑应用根据指定的计划检查 RSS 源。 或者，可以通过选择逻辑应用设计器工具栏上的“运行”来手动运行逻辑应用，如以下屏幕截图中所示。 
+![显示逻辑应用设计器和在设计器工具栏上选中的“运行”按钮的屏幕截图。](./media/quickstart-create-first-logic-app-workflow/run-logic-app-test.png)
 
-如果 RSS 源有新项，逻辑应用会为每个新项发送一封电子邮件。 否则，逻辑应用会等到下一个间隔再次检查 RSS 源。 
+如果 RSS 源有新项，工作流会为每个新项发送一封电子邮件。 否则，工作流会等到下一个间隔再次检查 RSS 源。 
 
-![逻辑应用设计器的屏幕截图，显示在设计器工具栏上选择了“运行”按钮。](./media/quickstart-create-first-logic-app-workflow/run-logic-app-test.png)
+以下屏幕截图显示由示例工作流发送的示例电子邮件。 电子邮件包括所选的每个触发器输出的详细信息，以及每个项目所包含的说明性文本。
 
-以下屏幕截图显示了此示例逻辑应用的示例电子邮件通知。 电子邮件包含设计器中选定的每个 RSS 源项的详细信息，以及为每项添加的描述性文本。
+![显示 Outlook 和为新 RSS 源项接收的示例电子邮件的屏幕截图，其中包含项标题、发布日期和链接。](./media/quickstart-create-first-logic-app-workflow/monitor-rss-feed-email.png)
 
-![Outlook 的屏幕截图，显示出现新的 RSS 源项时收到的示例电子邮件，其中包含项标题、发布日期和链接。](./media/quickstart-create-first-logic-app-workflow/monitor-rss-feed-email.png)
+## <a name="troubleshoot-problems"></a>排查问题
 
-如果未按预期收到来自逻辑应用的通知电子邮件：
+如果未按预期接收到来自工作流的电子邮件：
 
 * 请检查电子邮件帐户的垃圾邮件文件夹，以防错误筛选了邮件。
 * 请确保正在使用的 RSS 源自上次计划或手动检查后已发布项目。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-测试完此示例逻辑应用后，请通过删除为本示例创建的资源组来清理逻辑应用和所有相关资源。
-
-> [!NOTE]
-> [删除逻辑应用](manage-logic-apps-with-azure-portal.md#delete-logic-apps)后，任何新运行都不会实例化。 所有正在进行和挂起的运行都将取消。 如果有成千上万个运行，取消操作可能需要很长时间才能完成。
+完成此快速入门后，请通过删除为此示例创建的资源组来清理逻辑应用和所有相关资源。
 
 1. 在 Azure 搜索框中，输入 `resource groups`，然后选择“资源组”。
 
@@ -227,9 +261,7 @@ ms.locfileid: "107764848"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你在 Azure 门户中创建了第一个逻辑应用程序，以检查 RSS 源是否按计划进行更新，并发送了有关每个新源项的电子邮件通知。 
-
-若要了解如何在逻辑应用中创建更高级的基于计划的工作流，请参阅以下教程：
+在本快速入门中，你在 Azure 门户中创建了第一个逻辑应用程序，以检查 RSS 源，并为每个新项发送了电子邮件。 要了解有关高级计划工作流的详细信息，请参阅以下教程：
 
 > [!div class="nextstepaction"]
 > [使用基于计划的逻辑应用检查流量](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)

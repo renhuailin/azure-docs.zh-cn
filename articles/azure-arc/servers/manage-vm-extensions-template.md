@@ -4,12 +4,12 @@ description: 本文介绍如何使用 Azure 资源管理器模板将虚拟机扩
 ms.date: 04/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d32be184a7e5bb713aee83cd3023f271299d3872
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 8ad2cd02393404b419bc7028e54571d2db285982
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832853"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108802443"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>使用 ARM 模板启用 Azure VM 扩展
 
@@ -327,7 +327,6 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
       "properties": {
         "publisher": "Microsoft.Azure.Monitoring.DependencyAgent",
         "type": "DependencyAgentLinux",
-        "typeHandlerVersion": "9.5",
         "autoUpgradeMinorVersion": true
       }
     }
@@ -365,7 +364,6 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
       "properties": {
         "publisher": "Microsoft.Azure.Monitoring.DependencyAgent",
         "type": "DependencyAgentWindows",
-        "typeHandlerVersion": "9.5",
         "autoUpgradeMinorVersion": true
       }
     }
@@ -431,7 +429,6 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForLinux",
-      "typeHandlerVersion": "1.0",
       "autoUpgradeMinorVersion": true,
       "settings": {
           "secretsManagementSettings": {
@@ -501,7 +498,6 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForWindows",
-      "typeHandlerVersion": "1.0",
       "autoUpgradeMinorVersion": true,
       "settings": {
         "secretsManagementSettings": {

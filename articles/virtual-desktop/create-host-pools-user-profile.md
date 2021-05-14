@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 35b692033cc16f276b48bc6d973b27d994c1082a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: 33e1b069221331aed8f8ca13bd088ba067a85ba7
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88002597"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752456"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>使用文件共享为主机池创建配置文件容器
 
@@ -28,7 +28,7 @@ Windows 虚拟桌面服务提供 FSLogix 配置文件容器作为推荐的用户
 
 - [从 Azure Gallery 映像创建虚拟机](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
 - [从托管映像创建虚拟机](../virtual-machines/windows/create-vm-generalized-managed.md)
-- [从非托管映像创建虚拟机](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
+- [从非托管映像创建虚拟机](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-from-user-image)
 
 创建虚拟机后，通过执行以下操作将其加入域：
 

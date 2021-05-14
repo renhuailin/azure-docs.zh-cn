@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: media-services
 ms.custom: subject-monitoring
 ms.date: 04/21/2021
-ms.openlocfilehash: 1fff4cdf24f9be245026757e18050aa121b4d62a
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a9bc17528e1314a033cf2e45fee4b112eb088cc3
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138852"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109715567"
 ---
 # <a name="monitoring-media-services-data-reference"></a>监视媒体服务数据参考
 
@@ -56,7 +56,7 @@ ms.locfileid: "108138852"
 
 有关顶级诊断日志架构的详细说明，请参阅 [Azure 诊断日志支持的服务、架构和类别](../../../azure-monitor/essentials/resource-logs-schema.md)。
 
-## <a name="key-delivery-log-schema-properties"></a>密钥传递日志架构属性
+### <a name="key-delivery"></a>密钥传送 
 
 这些属性特定于密钥传递日志架构。
 

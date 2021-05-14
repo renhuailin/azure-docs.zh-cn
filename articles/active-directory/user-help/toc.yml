@@ -16,6 +16,8 @@
       href: multi-factor-authentication-end-user-app-passwords.md
     - name: 登录方法
       href: user-help-sign-in.md?toc=./toc.json
+    - name: 工作或学校帐户登录
+      href: multi-factor-authentication-end-user-signin.md
     - name: 获取帮助
       href: multi-factor-authentication-end-user-troubleshoot.md
 - name: 密码重置帮助

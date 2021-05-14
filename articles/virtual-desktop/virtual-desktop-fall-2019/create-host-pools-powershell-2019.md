@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 9776d5f52bda56704c4839cb9edd420beec72a71
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 9835a736dfd1c2ccec41eb27472f76d53b07696e
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445221"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109754382"
 ---
 # <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-powershell"></a>使用 PowerShell 在 Windows 虚拟桌面（经典）中创建主机池
 
@@ -64,7 +64,7 @@ $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hos
 
 - [从 Azure Gallery 映像创建虚拟机](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
 - [从托管映像创建虚拟机](../../virtual-machines/windows/create-vm-generalized-managed.md)
-- [从非托管映像创建虚拟机](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
+- [从非托管映像创建虚拟机](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-from-user-image)
 
 >[!NOTE]
 >如果使用 Windows 7 作为主机操作系统来部署虚拟机，创建和部署过程会稍有不同。 有关详细信息，请参阅[在 Windows 虚拟桌面上部署 Windows 7 虚拟机](deploy-windows-7-virtual-machine.md)。

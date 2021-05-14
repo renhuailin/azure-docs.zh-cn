@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 04/27/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 562c90dcc4f802290b0ed8b4d544fce9d526fa10
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 374fa4db4441dc82f9d14eef9cdd7589a9a82fad
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99524662"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126842"
 ---
 # <a name="continuous-access-evaluation"></a>连续访问评估
 
 令牌过期和刷新是业界的一种标准机制。 当客户端应用程序（如 Outlook）连接到服务（如 Exchange Online）时，API 请求通过 OAuth 2.0 访问令牌得到授权。 默认情况下，这些访问令牌的有效期为一小时，超过此时间后，客户端会被重定向回 Azure AD 来刷新它们。 该刷新期间为重新评估用户访问策略提供了机会。 例如，我们可能会选择不刷新令牌，原因是存在条件访问策略，或是用户在目录中已被禁用。 
 
-用户的条件发生变化（例如网络位置变化或凭据被盗）后，系统需要过一段时间才会强制执行与该变化相关的策略，客户对这种时间延迟表示了担忧。 我们已经尝试了降低令牌寿命的生硬方法，但发现这种方法会降低用户体验和可靠性，而不会消除风险。
+用户的条件发生变化（例如网络位置变化或凭据被盗）后，系统需要过一段时间才会强制执行与该变化相关的策略，客户对这种时间延迟表示了担忧。 我们已经尝试了降低令牌寿命的“生硬”方法，但发现这种方法会降低用户体验和可靠性，而不会消除风险。
 
 对策略冲突或安全问题的及时响应实际上需要令牌颁发者（如 Azure AD）和依赖方（如 Exchange Online）之间进行“对话”。 这种双向对话提供了两项重要功能。 信赖方可以注意到事情的变化（比如客户端来自一个新的位置），并通知令牌颁发者。 通过此对话，令牌颁发者也可通知信赖方由于帐户泄露、禁用或其他问题而停止遵从给定用户的令牌。 此对话的机制是连续访问评估 (CAE)。 虽然我们的目标是近乎实时地作出响应，但在某些情况下，由于事件传播时间的原因，延迟可能会长达 15 分钟。
 
@@ -52,6 +52,9 @@ ms.locfileid: "99524662"
 
 此过程会导致用户在这些关键事件之一发生后的数分钟内失去对 Microsoft 365 客户端应用中的组织 SharePoint Online 文件、电子邮件、日历或任务和 Teams 的访问权限。 
 
+> [!NOTE] 
+> Teams 和 SharePoint Online 尚不支持用户风险事件。
+
 ### <a name="conditional-access-policy-evaluation-preview"></a>条件访问策略评估（预览版）
 
 Exchange 和 SharePoint 能够同步关键的条件访问策略，因此可以在服务本身中对它们进行评估。
@@ -59,11 +62,11 @@ Exchange 和 SharePoint 能够同步关键的条件访问策略，因此可以�
 此过程会导致用户在网络位置发生更改后立即失去对 Microsoft 365 客户端应用或 SharePoint Online 中的组织文件、电子邮件、日历或任务的访问权限。
 
 > [!NOTE]
-> 并非所有应用和资源提供程序组合都受支持。 请参阅下表。 Office 指的是 Word、Excel 和 PowerPoint
+> 并非所有应用和资源提供程序组合都受支持。 请参阅下表。 Office 指的是 Word、Excel 和 PowerPoint。
 
 | | Outlook Web | Outlook Win32 | Outlook iOS | Outlook Android | Outlook Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **SharePoint Online** | 支持 | 支持 | 不支持 | 不支持 | 支持 |
+| **SharePoint Online** | 支持 | 支持 | 支持 | 支持 | 支持 |
 | **Exchange Online** | 支持 | 支持 | 支持 | 支持 | 支持 |
 
 | | Office Web 应用 | Office Win32 应用 | Office for iOS | Office for Android | Office for Mac |
@@ -71,23 +74,20 @@ Exchange 和 SharePoint 能够同步关键的条件访问策略，因此可以�
 | **SharePoint Online** | 不支持 | 支持 | 支持 | 支持 | 支持 |
 | **Exchange Online** | 不支持 | 支持 | 支持 | 支持 | 支持 |
 
+| | OneDrive Web | OneDrive Win32 | OneDrive iOS | OneDrive Android | OneDrive Mac |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **SharePoint Online** | 支持 | 支持 | 支持 | 支持 | 支持 |
+
 ### <a name="client-side-claim-challenge"></a>客户端声明质询
 
 在进行连续访问评估之前，只要访问令牌未过期，客户端将始终试图从其缓存中重播访问令牌。 通过使用 CAE，我们引入了一种新的事例 - 即使令牌没有过期，资源提供程序也可以拒绝令牌。 为了在缓存的令牌尚未过期的情况下通知客户端绕过其缓存，我们引入了一种称为“声明质询”的机制，用来表明在令牌被拒绝的情况下需要由 Azure AD 颁发一个新的访问令牌。 CAE 要求客户端更新以理解声明质询。 以下应用程序的最新版本支持声明质询：
 
-- Outlook Windows
-- Outlook iOS
-- Outlook Android
-- Outlook Mac
-- Outlook Web App
-- Teams for Windows（仅适用于 Teams 资源）
-- Teams iOS（仅适用于 Teams 资源）
-- Teams Android（仅适用于 Teams 资源）
-- Teams Mac（仅适用于 Teams 资源）
-- Word/Excel/PowerPoint for Windows
-- Word/Excel/PowerPoint for iOS
-- Word/Excel/PowerPoint for Android
-- Word/Excel/PowerPoint for Mac
+| | Web | Win32 | iOS | Android | Mac |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Outlook** | 支持 | 支持 | 支持 | 支持 | 支持 |
+| **Teams** | 支持 | 支持 | 支持 | 支持 | 支持 |
+| **Office** | 不支持 | 支持 | 支持 | 支持 | 支持 |
+| **OneDrive** | 支持 | 支持 | 支持 | 支持 | 支持 |
 
 ### <a name="token-lifetime"></a>令牌生存期
 
@@ -130,8 +130,12 @@ Exchange 和 SharePoint 能够同步关键的条件访问策略，因此可以�
 1. 以条件访问管理员、安全管理员或全局管理员的身份登录到 **Azure 门户**
 1. 浏览到“Azure Active Directory” > “安全性” > “连续访问评估”  。
 1. 选择“启用预览版”。
+1. 选择“保存”。
 
 在此页上，你可以选择对将受预览版限制的用户和组进行限制。
+
+> [!WARNING]
+> 若要禁用连续访问评估，请选择“启用预览”，然后依次选择“禁用预览”和“保存”  。
 
 ![在 Azure 门户中启用 CAE 预览版](./media/concept-continuous-access-evaluation/enable-cae-preview.png)
 
@@ -142,7 +146,7 @@ Exchange 和 SharePoint 能够同步关键的条件访问策略，因此可以�
 对于 CAE，我们只了解基于命名 IP 的命名位置。 我们不了解其他位置设置，例如[受 MFA 信任的 IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) 或基于国家/地区的位置。 如果用户来自受 MFA 信任的 IP 或来自受信任的位置（其中包含受 MFA 信任的 IP 或国家/地区位置），则在用户移到其他位置之后，将不会强制执行 CAE。 在这些情况下，我们会颁发 1 小时 CAE 令牌，不进行即时 IP 强制检查。
 
 > [!IMPORTANT]
-> 在配置连续访问评估的位置时，请仅使用[基于 IP 的条件访问位置条件](../conditional-access/location-condition.md#preview-features)并配置所有 IP 地址（包括 IPv4 和 IPv6），这些地址可通过标识提供者和资源提供程序查看。 不要使用国家/地区位置条件，也不要使用 Azure AD 多重身份验证的服务设置页中提供的受信任的 IP 功能。
+> 在配置连续访问评估的位置时，请仅使用[基于 IP 的条件访问位置条件](../conditional-access/location-condition.md)并配置所有 IP 地址（包括 IPv4 和 IPv6），这些地址可通过标识提供者和资源提供程序查看。 不要使用国家/地区位置条件，也不要使用 Azure AD 多重身份验证的服务设置页中提供的受信任的 IP 功能。
 
 ### <a name="ip-address-configuration"></a>IP 地址配置
 
@@ -163,11 +167,11 @@ Exchange 和 SharePoint 能够同步关键的条件访问策略，因此可以�
 
 有关 Office 更新通道的说明，请参阅 [Microsoft 365 应用的更新通道概述](/deployoffice/overview-update-channels)。 建议组织不要禁用 Web 帐户管理器 (WAM)。
 
-### <a name="policy-change-timing"></a>策略更改计时
+### <a name="group-membership-and-policy-update-effective-time"></a>组成员身份和策略更新生效时间
 
-由于 Azure AD 与资源提供程序之间可能存在复制延迟，因此管理员所做的策略更改可能需要长达 2 小时的时间才能在 Exchange Online 上生效。
+管理员执行的组成员身份和策略更新可能需要一天时间才能生效。 已针对策略更新进行了一些优化，将延迟缩短到了两小时。 但是，这还未涵盖所有方案。 
 
-示例：管理员添加了一个策略，用于阻止某个 IP 地址范围在上午 11:00 访问电子邮件，在此之前来自该 IP 范围的用户可以继续访问电子邮件，直到下午 1:00。
+如果出现紧急情况，需要立即将更新的策略或组成员身份更改应用于某些用户，则应在用户配置文件页中使用此 [PowerShell 命令](/powershell/module/azuread/revoke-azureaduserallrefreshtoken)或“撤消会话”来撤消用户会话，这可确保立即应用更新后的策略。
 
 ### <a name="coauthoring-in-office-apps"></a>Office 应用中的共同创作
 

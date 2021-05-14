@@ -7,15 +7,15 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
 ms.openlocfilehash: 7f10654e1c96f1756e5864d20fa2a6817385e994
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98629787"
 ---
 # <a name="replicate-on-premises-machines-by-using-private-endpoints"></a>使用专用终结点复制本地计算机
 
-Azure Site Recovery 支持使用 [Azure 专用链接](../private-link/private-endpoint-overview.md)专用终结点将本地计算机复制到 Azure 中的虚拟网络。 所有 Azure 商业 & 政府地区都支持对恢复保管库的专用终结点访问。
+Azure Site Recovery 支持使用 [Azure 专用链接](../private-link/private-endpoint-overview.md)专用终结点将本地计算机复制到 Azure 中的虚拟网络。 所有 Azure 商业和政府区域均支持专用终结点访问恢复保管库。
 
 本文介绍如何完成以下步骤：
 
@@ -65,7 +65,7 @@ Azure Site Recovery 支持使用 [Azure 专用链接](../private-link/private-en
 
 ### <a name="create-private-endpoints-for-the-recovery-services-vault"></a>为恢复服务保管库创建专用终结点
 
-要保护本地源网络中的计算机，需要为旁路网络中的保管库提供一个专用终结点。 使用 Azure 门户中的专用链接中心或使用 [Azure PowerShell](../private-link/create-private-endpoint-powershell.md)创建专用终结点。
+要保护本地源网络中的计算机，需要为旁路网络中的保管库提供一个专用终结点。 使用 Azure 门户中的“专用链接中心”或使用 [Azure PowerShell](../private-link/create-private-endpoint-powershell.md) 创建专用终结点。
 
 1. 在 Azure 门户的搜索框中，搜索“专用链接”。 选择“专用链接”，转到专用链接中心：
 
@@ -94,7 +94,7 @@ Azure Site Recovery 支持使用 [Azure 专用链接](../private-link/private-en
 
       如果你的环境具有中心辐射模型，则整个安装过程只需要一个专用终结点和一个专用 DNS 区域。 这是因为所有虚拟网络之间都已启用了对等互连。 有关详细信息，请参阅[专用终结点 DNS 集成](../private-link/private-endpoint-dns.md#virtual-network-workloads-without-custom-dns-server)。
 
-      若要手动创建专用 DNS 区域，请按照创建专用 DNS 区域中的步骤操作， [并手动添加 DNS 记录](#create-private-dns-zones-and-add-dns-records-manually)。
+      若要手动创建专用 DNS 区域，请按照[创建专用 DNS 区域并手动添加 DNS 记录](#create-private-dns-zones-and-add-dns-records-manually)中的步骤操作。
 
       :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-configuration-tab.png" alt-text="显示用于配置专用终结点的“配置”选项卡的屏幕截图。":::
 
@@ -121,7 +121,7 @@ Azure Site Recovery 支持使用 [Azure 专用链接](../private-link/private-en
 可以使用 Azure 存储的专用终结点。 对于 Azure Site Recovery 复制，为存储访问创建专用终结点是可选的。 如果为存储创建专用终结点，则需要为旁路虚拟网络中的缓存/日志存储帐户提供专用终结点。
 
 > [!NOTE]
-> 如果未在存储帐户上启用专用终结点，则保护仍然会成功。 但是，复制流量将通过 internet 传输到 Azure Site Recovery 的公共终结点。 若要确保复制流量通过专用链接流动，必须通过专用终结点启用存储帐户。
+> 如果未在存储帐户上启用专用终结点，保护仍会成功。 但是，复制流量会通过 Internet 传输到 Azure Site Recovery 的公共终结点。 为了确保复制流量流经专用链接，存储帐户必须启用专用终结点。
 
 > [!NOTE]
 > 只能在常规用途 v2 存储帐户上为存储创建专用终结点。 有关定价信息，请参阅 [Azure 页 Blob 定价](https://azure.microsoft.com/pricing/details/storage/page-blobs/)。
@@ -156,7 +156,7 @@ Azure Site Recovery 支持使用 [Azure 专用链接](../private-link/private-en
 
    :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/storage-role-assignment-select-role.png" alt-text="显示“添加角色分配”页的屏幕截图。":::
 
-添加这些权限后，需要允许访问 Microsoft 受信任的服务。 转到“防火墙和虚拟网络”，在“例外”中选择“允许受信任的 Microsoft 服务访问此存储帐户”  。
+添加这些权限后，需要允许访问 Microsoft 信任的服务。 转到“防火墙和虚拟网络”，在“例外”中选择“允许受信任的 Microsoft 服务访问此存储帐户”  。
 
 ### <a name="protect-your-virtual-machines"></a>保护虚拟机
 
@@ -175,13 +175,13 @@ Azure Site Recovery 支持使用 [Azure 专用链接](../private-link/private-en
 
 1. 创建专用 DNS 区域。
 
-   1. 在 " **所有服务** " 搜索框中搜索 "专用 DNS 区域"，并在结果中选择 " **专用 DNS 区域** "：
+   1. 在“所有服务”搜索框中搜索“专用 DNS 区域”，然后在结果中选择“专用 DNS 区域”：
 
       :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/search-private-dns-zone.png" alt-text="显示在 Azure 门户的新建资源页上搜索专用 DNS 区域的屏幕截图。":::
 
-   1. 在 " **专用 DNS 区域** " 页上，选择 " **添加** " 按钮开始创建新区域。
+   1. 在“专用 DNS 区域”页上，选择“添加”按钮以开始创建新区域。
 
-   1. 在“创建专用 DNS 区域”页上，输入所需的详细信息。 输入 **privatelink.siterecovery.windowsazure.com** 作为专用 DNS 区域的名称。 可以选择任何资源组和任何订阅。
+   1. 在“创建专用 DNS 区域”页上，输入所需的详细信息。 输入“privatelink.siterecovery.windowsazure.com”作为专用 DNS 区域的名称。 可以选择任何资源组和任何订阅。
 
       :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-dns-zone.png" alt-text="显示“创建专用 DNS 区域”页的“基本信息”选项卡的屏幕截图。":::
 
@@ -199,18 +199,18 @@ Azure Site Recovery 支持使用 [Azure 专用链接](../private-link/private-en
 
 1. 添加 DNS 记录。
 
-   创建所需的专用 DNS 区域和专用终结点后，需要将 DNS 记录添加到 DNS 区域。
+   现已创建所需的专用 DNS 区域和专用终结点，接下来需要将 DNS 记录添加到 DNS 区域。
 
    > [!NOTE]
    > 如果使用的是自定义专用 DNS 区域，请确保使用类似的条目，如以下步骤所述。
 
-   在此步骤中，需要将专用终结点中每个 FQDN 的条目输入到专用 DNS 区域。
+   在此步骤中，需要将专用终结点中的每个 FQDN 条目添加到专用 DNS 区域。
 
    1. 转到专用 DNS 区域，然后转到左侧窗格中的“概述”部分。 选择“记录集”以开始添加记录。
 
    1. 在“添加记录集”页上，为每个完全限定的域名和专用 IP 添加一个条目，作为“A”类型的记录 。 可以在“概述”中的“专用终结点”页上获得完全限定的域名和 IP 列表 。 如以下屏幕截图中所示，来自专用终结点的第一个完全限定的域名会添加到专用 DNS 区域中的记录集。
 
-      这些完全限定的域名与此模式匹配： `{Vault-ID}-asr-pod01-{type}-.{target-geo-code}.siterecovery.windowsazure.com`
+      这些完全限定的域名采用以下格式：`{Vault-ID}-asr-pod01-{type}-.{target-geo-code}.siterecovery.windowsazure.com`
 
       :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/add-record-set.png" alt-text="显示“添加记录集”页的屏幕截图。":::
 

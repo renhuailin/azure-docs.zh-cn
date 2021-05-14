@@ -1,18 +1,18 @@
 ---
 title: 将 Azure Percept DK 组件拆箱并进行组装
 description: 了解如何打开、连接并开启 Azure Percept DK
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/16/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: efa255ba38f7e00785335bf458ecc0ed91da646b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: deaa0a3904eef33ebab8e73687d6864d389e2963
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608174"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748036"
 ---
 # <a name="quickstart-unbox-and-assemble-your-azure-percept-dk-components"></a>快速入门：将 Azure Percept DK 组件拆箱并进行组装
 

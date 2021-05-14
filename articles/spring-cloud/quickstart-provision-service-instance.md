@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 47ab010d5306d57a03687ca2fc11520e3fd6acb2
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 779f1bead820af99b7f0bba859518eaa5d0ea2fc
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132730"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286630"
 ---
-# <a name="quickstart-provision-azure-spring-cloud-service"></a>快速入门：预配 Azure Spring Cloud 服务
+# <a name="quickstart-provision-an-azure-spring-cloud-service"></a>快速入门：预配 Azure Spring Cloud 服务
 
 ::: zone pivot="programming-language-csharp"
 在本快速入门中，你将使用 Azure CLI 预配 Azure Spring Cloud 服务的实例。
@@ -118,6 +118,8 @@ az extension add --name spring-cloud
     - 资源组：最佳做法是为新资源创建新的资源组。 请注意，后面的步骤会将其用作 \<resource group name\>。
     - **服务详细信息/名称**：指定 \<service instance name\>。  该名称必须为 4 到 32 个字符，只能包含小写字母、数字及连字符。  服务名称的第一个字符必须是字母，最后一个字符必须是字母或数字。
     - 位置：选择服务实例的位置。
+    - 为“定价层”选项选择“标准”。
+    - 在“Application Insights”选项卡上，为“启用 Java 进程内代理”选择“是”。
 
     ![ASC 门户启动](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
@@ -130,6 +132,12 @@ az extension add --name spring-cloud
 
 以下过程使用 Azure CLI 扩展来预配 Azure Spring Cloud 的实例。
 
+1. 使用 Azure Spring Cloud 扩展更新 Azure CLI。
+
+    ```azurecli
+    az extension update --name spring-cloud
+    ```
+
 1. 登录到 Azure CLI 并选择你的有效订阅。
 
     ```azurecli
@@ -140,21 +148,20 @@ az extension add --name spring-cloud
 
 1. 准备 Azure Spring Cloud 服务的名称。  该名称必须为 4 到 32 个字符，只能包含小写字母、数字及连字符。  服务名称的第一个字符必须是字母，最后一个字符必须是字母或数字。
 
-1. 创建用于包含 Azure Spring Cloud 服务的资源组。
+1. 创建用于包含 Azure Spring Cloud 服务的资源组。  在 Azure Spring Cloud 服务的实例中进行创建。  
 
-    ```azurecli
-    az group create --location eastus --name <resource group name>
+    ```azurecli 
+    az group create --name <resource group name>
+    az spring-cloud create -n <service instance name> -g <resource group name> --enable-java-agent
     ```
 
     详细了解 [Azure 资源组](../azure-resource-manager/management/overview.md)。
 
-1. 打开 Azure CLI 窗口，运行以下命令预配 Azure Spring Cloud 的实例。
+1. 使用以下命令设置默认的资源组名称和 Spring Cloud 服务名称：
 
     ```azurecli
-    az spring-cloud create -n <service instance name> -g <resource group name>
+    az configure --defaults group=<resource group name> spring-cloud=<service name>
     ```
-
-    部署服务实例需要大约五分钟时间。
 ---
 ::: zone-end
 

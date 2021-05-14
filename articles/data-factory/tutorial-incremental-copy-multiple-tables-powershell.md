@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: 231f4033b90b152a5893cff93584d9c9bb794321
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8d10a7681765c8a3be010737aae9cfb3faf119d6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783177"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108771147"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>使用 PowerShell 以递增方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
 
@@ -282,7 +282,7 @@ END
 
 * 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、SQL 数据库、SQL 托管实例等）和计算资源（Azure HDInsight 等）可位于其他区域中。
 
-[!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
+[!INCLUDE [data-factory-create-install-integration-runtime](includes/data-factory-create-install-integration-runtime.md)]
 
 ## <a name="create-linked-services"></a>创建链接服务
 

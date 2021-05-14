@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 1d5fc097be188c820f9be15594f4bb382754b849
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e0e69dc643bd18d17c9405ae6d097b94926a1f2b
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103224922"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109632990"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-an-angular-spa-using-the-auth-code-flow"></a>快速入门：使用授权代码流在 Angular SPA 中登陆并获取访问令牌
 
@@ -26,9 +26,6 @@ ms.locfileid: "103224922"
 有关说明，请参阅[示例工作原理](#how-the-sample-works)。
 
 本快速入门将 MSAL Angular v2 与授权代码流配合使用。 若要查看将 MSAL Angular 1.x 与隐式流结合使用的类似快速入门，请参阅[快速入门：在 JavaScript 单页应用中登录用户](./quickstart-v2-angular.md)。
-
-> [!IMPORTANT]
-> MSAL Angular v2 [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -54,7 +51,7 @@ ms.locfileid: "103224922"
 >
 > 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
-> 1. 搜索并选择“Azure Active Directory”。
+> 1. 搜索并选择“Azure Active Directory”  。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 > 1. 输入应用程序的 **名称**。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 > 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 15caaad0539c9c8c61c8fef6c81761054c68f431
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: a266023bbf44ef0a3ad4a6f4951fa3995ad917c0
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108073244"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109785432"
 ---
 # <a name="computer-vision-api-frequently-asked-questions"></a>计算机视觉 API 常见问题解答
 
@@ -34,7 +34,7 @@ ms.locfileid: "108073244"
 
 **问**：我是否可以在本地部署 OCR（读取）功能？
 
-**答**：可以，OCR（读取）云 API 也可作为 Docker 容器用于本地部署。 了解[如何部署 OCR 容器](/computer-vision-how-to-install-containers)。
+**答**：可以，OCR（读取）云 API 也可作为 Docker 容器用于本地部署。 了解[如何部署 OCR 容器](/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers)。
 
 ---
 

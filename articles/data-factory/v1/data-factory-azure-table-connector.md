@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cc8e0272dc690ed541883ae943c118cbbe2f1854
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 282ee54515998658fdc4eee07a176126ac5f5bb2
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392113"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108767006"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入和移出 Azure 表
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -33,7 +33,7 @@ ms.locfileid: "100392113"
 
 创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-也可以使用以下工具创建管道：Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API    。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+也可以使用以下工具创建管道：“Visual Studio”、“Azure PowerShell”、“Azure 资源管理器模板”、“.NET API”和“REST API”    。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储： 
 
@@ -48,7 +48,7 @@ ms.locfileid: "100392113"
 ## <a name="linked-service-properties"></a>链接服务属性
 有两种类型的链接服务，可用于将 Azure Blob 存储链接到 Azure 数据工厂。 它们是：**AzureStorage** 链接服务和 **AzureStorageSas** 链接服务。 Azure 存储链接服务为数据工厂提供 Azure 存储的全局访问权限。 而 Azure 存储 SAS（共享访问签名）链接服务为数据工厂提供 Azure 存储的受限/有时限的访问。 这两种链接服务之间没有其他区别。 请选择适合你需求的链接服务。 以下各部分提供了有关这两种链接服务的详细信息。
 
-[!INCLUDE [data-factory-azure-storage-linked-services](../../../includes/data-factory-azure-storage-linked-services.md)]
+[!INCLUDE [data-factory-azure-storage-linked-services](includes/data-factory-azure-storage-linked-services.md)]
 
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。

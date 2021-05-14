@@ -3,16 +3,16 @@ title: 模式：在策略定义中使用标记
 description: 此 Azure Policy 模式提供有关如何在策略定义中添加参数化标记或从资源组继承标记的示例。
 ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: c748eb9b8ea795f9725082ec0aa0b8065ada8c65
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 30357632e92535368505fd72d2414292da0f5ca1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106093361"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752302"
 ---
 # <a name="azure-policy-pattern-tags"></a>Azure Policy 模式：标记
 
-[标记](../../..//azure-resource-manager/management/tag-resources.md)是管理、组织和控制 Azure 资源的重要组成部分。 利用 Azure Policy，可以通过[修改](../concepts/effects.md#modify)效果和[修正任务](../how-to/remediate-resources.md)在新资源和现有资源上大规模配置标记。
+[标记](../../../azure-resource-manager/management/tag-resources.md)是管理、组织和控制 Azure 资源的重要组成部分。 利用 Azure Policy，可以通过[修改](../concepts/effects.md#modify)效果和[修正任务](../how-to/remediate-resources.md)在新资源和现有资源上大规模配置标记。
 
 ## <a name="sample-1-parameterize-tags"></a>示例 1：参数化标记
 

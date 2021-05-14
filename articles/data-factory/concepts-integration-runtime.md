@@ -1,18 +1,18 @@
 ---
 title: 集成运行时
 description: 了解有关 Azure 数据工厂中的集成运行时的信息。
-ms.author: abnarain
-author: nabhishek
+ms.author: lle
+author: lrtoyou1223
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 911674a80b531a50cfb429c5dc0ff41f1aaceb08
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 455a9b2061dcf92297c99e9d8fa8cee677ca3891
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389937"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483130"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时 
 

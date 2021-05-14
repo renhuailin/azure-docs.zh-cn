@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: d99f1bd97c8199de1bda12f28f3fcb31b697946f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 27d3253d1bd2ec407968ff03e22c34222797ad81
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105031488"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656337"
 ---
 # <a name="what-are-durable-functions"></a>什么是 Durable Functions？
 
@@ -40,7 +40,7 @@ Durable Functions 的主要用例是简化无服务器应用程序中出现的�
 * [函数链](#chaining)
 * [扇出/扇入](#fan-in-out)
 * [异步 HTTP API](#async-http)
-* [Monitoring](#monitoring)
+* [监视](#monitoring)
 * [人机交互](#human)
 * [聚合器（有状态实体）](#aggregator)
 
@@ -685,7 +685,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> .NET 中也可以使用动态生成的代理以类型安全的方式发信号通知实体。 此外，除了发送信号外，客户端还可以对业务流程客户端绑定使用[类型安全方法](durable-functions-bindings.md#entity-client-usage)来查询实体函数的状态。
+> .NET 中也可以使用动态生成的代理以类型安全的方式发信号通知实体。 此外，除了发送信号外，客户端还可以对业务流程客户端绑定使用[类型安全方法](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces)来查询实体函数的状态。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 

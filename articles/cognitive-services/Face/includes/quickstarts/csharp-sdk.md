@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: ab99d574588989c84783e532fcf801dcaffdd54d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fc45296fe3541d5388505a52a7e3f0856b4b1825
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105958331"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108793090"
 ---
 开始使用适用于 .NET 的人脸客户端库进行人脸识别。 请按照以下步骤安装程序包并试用基本任务的示例代码。 通过人脸服务，可以访问用于检测和识别图像中的人脸的高级算法。
 
@@ -25,7 +25,7 @@ ms.locfileid: "105958331"
 * [创建人员组](#create-a-persongroup)
 * [识别人脸](#identify-a-face)
 
-[参考文档](/dotnet/api/overview/azure/cognitiveservices/client/faceapi) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1) | [示例](/samples/browse/?products=azure&term=face)
+[参考文档](/dotnet/api/overview/azure/cognitiveservices/client/faceapi) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.7.0-preview.1) | [示例](/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,7 +46,7 @@ ms.locfileid: "105958331"
 
 ### <a name="install-the-client-library"></a>安装客户端库 
 
-创建新项目后，右键单击“解决方案资源管理器”中的项目解决方案，然后选择“管理 NuGet 包”，以安装客户端库 。 在打开的包管理器中，选择“浏览”，选中“包括预发行版”并搜索 `Microsoft.Azure.CognitiveServices.Vision.Face`。 选择版本 `2.6.0-preview.1`，然后选择“安装”。 
+创建新项目后，右键单击“解决方案资源管理器”中的项目解决方案，然后选择“管理 NuGet 包”，以安装客户端库 。 在打开的包管理器中，选择“浏览”，选中“包括预发行版”并搜索 `Microsoft.Azure.CognitiveServices.Vision.Face`。 选择版本 `2.7.0-preview.1`，然后选择“安装”。 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
@@ -77,7 +77,7 @@ Build succeeded.
 在应用程序目录中，使用以下命令安装适用于 .NET 的人脸客户端库：
 
 ```console
-dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0-preview.1
+dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.7.0-preview.1
 ```
 
 ---
@@ -248,7 +248,7 @@ dotnet run
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 如果你在本快速入门中创建了 **PersonGroup** 并想要删除它，请在程序中运行以下代码：

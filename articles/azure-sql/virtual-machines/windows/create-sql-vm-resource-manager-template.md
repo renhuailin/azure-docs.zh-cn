@@ -8,12 +8,12 @@ ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
 ms.subservice: deployment
-ms.openlocfilehash: a20cb27ac91a0b01ed9cc3a5ac4c5c57f90ceda1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ba1966590b1b1af88366b8545136de8eff18ca1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359636"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755632"
 ---
 # <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 SQL Server VM
 
@@ -23,7 +23,7 @@ ms.locfileid: "97359636"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-sql-vm-new-storage%2fazuredeploy.json)
+[![部署到 Azure](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.sqlvirtualmachine%2Fsql-vm-new-storage%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,7 +38,7 @@ SQL Server VM ARM 模板需要以下内容：
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-sql-vm-new-storage/)。
 
-:::code language="json" source="~/quickstart-templates/101-sql-vm-new-storage/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.sqlvirtualmachine/sql-vm-new-storage/azuredeploy.json":::
 
 该模板中定义了五个 Azure 资源： 
 
@@ -55,7 +55,7 @@ SQL Server VM ARM 模板需要以下内容：
 
 1. 选择下图登录到 Azure 并打开一个模板。 使用该模板创建一个虚拟机，并在该虚拟机上安装目标 SQL Server 版本，然后向 SQL IaaS 代理扩展注册。 
 
-   [![部署到 Azure](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-sql-vm-new-storage%2fazuredeploy.json)
+   [![部署到 Azure](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.sqlvirtualmachine%2Fsql-vm-new-storage%2Fazuredeploy.json)
 
 2. 选择或输入以下值。
 

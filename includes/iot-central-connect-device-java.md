@@ -4,21 +4,24 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 03/31/2021
-ms.openlocfilehash: dfe7edaf1bac054c2e7f379617aa6276b9b3127e
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 0c0a9dc92eb4868226685443bdac1bb0c0942e3e
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491031"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109719083"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 若要完成本文中的步骤，需要准备好以下资源：
 
-* 使用“自定义应用程序”模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](../articles/iot-central/core/quick-deploy-iot-central.md)。 应用程序必须在 2020 年 7 月 14 日或之后创建。
-* 具有 Java SE 开发工具包 8 或更高版本的开发计算机。 你可以从[下载 OpenJDK 的 Zulu 版本](https://www.azul.com/downloads/zulu-community/)为多个平台下载 Java 8 (LTS) JDK。
-* [Apache Maven 3](https://maven.apache.org/download.cgi)。
-* [适用于 Java 的 Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-java) GitHub 存储库（包含示例代码）的本地副本。 使用此链接下载存储库副本：[下载 ZIP](https://github.com/Azure/azure-iot-sdk-java/archive/master.zip)。 然后将该文件解压缩到本地计算机上的适当位置。
+[!INCLUDE [iot-central-prerequisites-basic](iot-central-prerequisites-basic.md)]
+
+- 具有 Java SE 开发工具包 8 或更高版本的开发计算机。 你可以从[下载 OpenJDK 的 Zulu 版本](https://www.azul.com/downloads/zulu-community/)为多个平台下载 Java 8 (LTS) JDK。
+
+- [Apache Maven 3](https://maven.apache.org/download.cgi)。
+
+- [适用于 Java 的 Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-java) GitHub 存储库（包含示例代码）的本地副本。 使用此链接下载存储库副本：[下载 ZIP](https://github.com/Azure/azure-iot-sdk-java/archive/master.zip)。 然后将该文件解压缩到本地计算机上的适当位置。
 
 ## <a name="review-the-code"></a>查看代码
 
