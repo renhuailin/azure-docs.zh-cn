@@ -1,15 +1,15 @@
 ---
 title: 使用管理组来组织资源 - Azure 治理
 description: 了解管理组、其权限的工作方式以及如何使用它们。
-ms.date: 01/22/2021
+ms.date: 04/28/2021
 ms.topic: overview
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 9843b824c62e0f9919d7a71a717d9aad03dcbd9c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 777f052cfb726a1370a84b76a643fdaf539ce7b3
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100590837"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108176281"
 ---
 # <a name="what-are-azure-management-groups"></a>什么是 Azure 管理组？
 
@@ -85,8 +85,7 @@ ms.locfileid: "100590837"
   
 ## <a name="management-group-access"></a>访问管理组
 
-Azure 管理组支持使用 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 来访问所有资源和定义角色。
-层次结构中的子资源继承这些权限。 可将任何 Azure 角色分配到管理组，该角色将继承资源的层次结构。 例如，可以向管理组分配 Azure 角色 VM 参与者。 此角色不对管理组执行任何操作，但将继承该管理组下的所有 VM。
+Azure 管理组支持使用 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 来访问所有资源和定义角色。 层次结构中的子资源继承这些权限。 可将任何 Azure 角色分配到管理组，该角色将继承资源的层次结构。 例如，可以向管理组分配 Azure 角色 VM 参与者。 此角色不对管理组执行任何操作，但将继承该管理组下的所有 VM。
 
 下图列出了管理组的角色和支持的操作。
 
@@ -166,12 +165,12 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (Azure RBAC)](../
 
 ### <a name="limitations"></a>限制  
 
-在管理组上使用自定义角色时存在限制。 
+在管理组上使用自定义角色时存在限制。
 
- - 在新角色的可分配范围中，只能定义一个管理组。 设置此限制是为了减少出现角色定义和角色分配不关联的情况的次数。 将进行了角色分配的订阅或管理组移到另一个没有该角色定义的父项时，会出现此情况。  
- - 不能在管理组自定义角色中定义资源提供程序数据平面操作。 存在此限制是因为，在更新数据平面资源提供程序时存在延迟问题。 我们会解决此延迟问题，并会在角色定义中禁用这些操作以降低风险。
- - Azure 资源管理器不验证管理组是否存在于角色定义的可分配范围中。 即使存在拼写错误或者列出的管理组 ID 不正确，仍会创建角色定义。
- - 对于具有 dataActions 的角色，不支持进行角色分配。 请改为在订阅范围内创建角色分配。
+- 在新角色的可分配范围中，只能定义一个管理组。 设置此限制是为了减少出现角色定义和角色分配不关联的情况的次数。 将进行了角色分配的订阅或管理组移到另一个没有该角色定义的父项时，会出现此情况。  
+- 不能在管理组自定义角色中定义资源提供程序数据平面操作。 存在此限制是因为，在更新数据平面资源提供程序时存在延迟问题。 我们会解决此延迟问题，并会在角色定义中禁用这些操作以降低风险。
+- Azure 资源管理器不验证管理组是否存在于角色定义的可分配范围中。 即使存在拼写错误或者列出的管理组 ID 不正确，仍会创建角色定义。
+- 对于具有 dataActions 的角色，不支持进行角色分配。 请改为在订阅范围内创建角色分配。
 
 > [!IMPORTANT]
 > 将管理组添加到 `AssignableScopes` 的功能目前为预览版。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。

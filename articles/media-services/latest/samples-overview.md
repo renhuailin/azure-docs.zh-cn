@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 03/24/2021
 ms.author: inhenkel
-ms.openlocfilehash: 3707516818e54dd251bd470eb9231afc6e3fff67
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: cd82da805538abcddf2f76a20c28cb0a74b5c89b
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138672"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685596"
 ---
 # <a name="media-services-v3-samples"></a>媒体服务 v3 示例
 
@@ -33,11 +33,11 @@ ms.locfileid: "108138672"
 
 | 文件夹 | 说明 |
 |-------------|-------------|
-| [VideoEncoding/EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESPredefinedPreset)|如何使用内置预设和 HTTP URL 输入来提交作业，发布输出资产以进行流式处理，以及下载结果进行验证。|
-| [VideoEncoding/EncodingWithMESCustomPreset_H264](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset_H264)|如何使用自定义 H.264 编码预设和 HTTP URL 输入来提交作业，发布输出资产以进行流式处理，以及下载结果进行验证。|
-| [VideoEncoding/EncodingWithMESCustomPreset_HEVC](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset_HEVC)|如何使用自定义 HEVC 编码预设和 HTTP URL 输入来提交作业，发布输出资产以进行流式处理，以及下载结果进行验证。|
-| [VideoEncoding/EncodingWithMESCustomStitchTwoAssets](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomStitchTwoAssets)|如何使用 JobInputSequence 提交作业，以将两个或更多个可以按开始或结束时间剪辑的资产拼接在一起。 生成的编码文件是单个视频，其所有资产拼接在一起。  示例还将发布输出资产以进行流式传输，以及下载结果进行验证。|
-| [VideoEncoding/EncodingWithMESCustomPresetAndSprite](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPresetAndSprite)|如何使用带缩略图子画面的自定义预设和 HTTP URL 输入来提交作业，发布输出资产以进行流式传输，以及下载结果进行验证。|
+| [VideoEncoding/EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_PredefinedPreset)|如何使用内置预设和 HTTP URL 输入来提交作业，发布输出资产以进行流式处理，以及下载结果进行验证。|
+| [VideoEncoding/EncodingWithMESCustomPreset_H264](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_H264)|如何使用自定义 H.264 编码预设和 HTTP URL 输入来提交作业，发布输出资产以进行流式处理，以及下载结果进行验证。|
+| [VideoEncoding/EncodingWithMESCustomPreset_HEVC](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_HEVC)|如何使用自定义 HEVC 编码预设和 HTTP URL 输入来提交作业，发布输出资产以进行流式处理，以及下载结果进行验证。|
+| [VideoEncoding/EncodingWithMESCustomStitchTwoAssets](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_StitchTwoAssets)|如何使用 JobInputSequence 提交作业，以将两个或更多个可以按开始或结束时间剪辑的资产拼接在一起。 生成的编码文件是单个视频，其所有资产拼接在一起。  示例还将发布输出资产以进行流式传输，以及下载结果进行验证。|
+| [VideoEncoding/EncodingWithMESCustomPresetAndSprite](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_SpriteThumbnail)|如何使用带缩略图子画面的自定义预设和 HTTP URL 输入来提交作业，发布输出资产以进行流式传输，以及下载结果进行验证。|
 | [Live/LiveEventWithDVR](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Live/LiveEventWithDVR)|如何创建一个 LiveEvent，使其具有长达 25 小时的完整存档和一个在资产上的 DVR 时长为 5 分钟的筛选器。 如何使用筛选器创建用于流式传输的定位符。|
 | [VideoAnalytics/VideoAnalyzer](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoAnalytics/VideoAnalyzer)|如何创建视频分析器转换，将视频文件上传到输入资产，使用转换提交作业，以及下载结果进行验证。|
 | [AudioAnalytics/AudioAnalyzer](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/AudioAnalytics/AudioAnalyzer)|如何创建音频分析器转换，将媒体文件上传到输入资产，使用转换提交作业，以及下载结果进行验证。|

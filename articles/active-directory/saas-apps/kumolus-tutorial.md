@@ -11,34 +11,34 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 5e7f97afd2f3d6766f9d7401db749eeebb8c0236
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8823a186402c966a7d69109a237c29bd432eb23
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98727393"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108801795"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kumolus"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Kumolus 的集成
 
 在本教程中，你将学习如何将 Kumolus 与 Azure Active Directory (Azure AD) 集成。 将 Kumolus 与 Azure AD 集成后，你可以：
 
-* 在 Azure AD 中控制谁有权访问 Kumolus。
-* 让用户能够使用其 Azure AD 帐户自动登录到 Kumolus。
-* 在一个中心位置（Azure 门户）管理帐户。
+- 在 Azure AD 中控制谁有权访问 Kumolus。
+- 让用户能够使用其 Azure AD 帐户自动登录到 Kumolus。
+- 在一个中心位置（Azure 门户）管理帐户。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-* 启用了 Kumolus 单一登录 (SSO) 的订阅。
+- 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+- 启用了 Kumolus 单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Kumolus 支持 SP 和 IDP 发起的 SSO
-* Kumolus 支持实时用户预配
+- Kumolus 支持 SP 和 IDP 发起的 SSO
+- Kumolus 支持实时用户预配
 
 ## <a name="adding-kumolus-from-the-gallery"></a>从库中添加 Kumolus
 
@@ -51,7 +51,6 @@ ms.locfileid: "98727393"
 1. 在“从库中添加”部分的搜索框中，键入“Kumolus” 。
 1. 从结果面板中选择“Kumolus”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-kumolus"></a>配置并测试 Kumolus 的 Azure AD SSO
 
 使用名为 B.Simon 的测试用户配置和测试 Kronos 的 Azure AD SSO。 若要使 SSO 正常运行，需要在 Azure AD 用户与 Kumolus 相关用户之间建立关联。
@@ -59,10 +58,10 @@ ms.locfileid: "98727393"
 若要配置并测试 Kumolus 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+   1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+   1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 1. **[配置 Kumolus SSO](#configure-kumolus-sso)** - 在应用程序端配置单一登录设置。
-    1. **[创建 Kumolus 测试用户](#create-kumolus-test-user)** - 在 Kumolus 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+   1. **[创建 Kumolus 测试用户](#create-kumolus-test-user)** - 在 Kumolus 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -75,40 +74,40 @@ ms.locfileid: "98727393"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.kumolus.net/sso/metadata`
+   a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.kumolus.net/sso/metadata`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.kumolus.net/sso/acs`
+   b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.kumolus.net/sso/acs`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.kumolus.net/`
+   在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.kumolus.net/`。
 
-    > [!NOTE]
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 若要获取这些值，请联系 [Kumolus 客户端支持团队](mailto:kumoas@kumolus.com)。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+   > [!NOTE]
+   > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 若要获取这些值，请联系 [Kumolus 客户端支持团队](mailto:kumoas@kumolus.com)。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 1. Kumolus 应用程序需要特定格式的 SAML 断言，因此需要向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
-    ![图像](common/default-attributes.png)
+   ![图像](common/default-attributes.png)
 
 1. 除了上述属性，Kumolus 应用程序还要求在 SAML 响应中再传递回其他几个属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
-    
-    | 名称 |  源属性 |
-    | ---------|------------ |
-    | 电子邮件地址 | user.mail |
-    | 角色 (role) | user.assignedroles |
 
-    > [!NOTE]
-    > Kumolus 需要分配给应用程序的用户的角色。 请在 Azure AD 中设置这些角色，以便可为用户分配相应的角色。 若要了解如何在 Azure AD 中配置角色，请参阅[此文](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)。
+   | 名称           | 源属性   |
+   | -------------- | ------------------ |
+   | 电子邮件地址 | user.mail          |
+   | 角色 (role)           | user.assignedroles |
+
+   > [!NOTE]
+   > Kumolus 需要分配给应用程序的用户的角色。 请在 Azure AD 中设置这些角色，以便可为用户分配相应的角色。 若要了解如何在 Azure AD 中配置角色，请参阅[此文](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui)。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
-    ![证书下载链接](common/metadataxml.png)
+   ![证书下载链接](common/metadataxml.png)
 
 1. 在“设置 Kumolus”部分中，根据要求复制相应的 URL。
 
-    ![复制配置 URL](common/copy-configuration-urls.png)
+   ![复制配置 URL](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -117,7 +116,7 @@ ms.locfileid: "98727393"
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
-   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“名称”字段中，输入 `B.Simon`。
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
@@ -142,19 +141,19 @@ ms.locfileid: "98727393"
 
 在本部分中，将在 Kumolus 中创建一个名为 B.Simon 的用户。 Kumolus支持默认启用的实时预配。 此部分不存在任何操作项。 尝试访问 Kumolus 时，如果 Kumolus 中尚不存在用户，则系统会创建一个新用户。
 
-## <a name="test-sso"></a>测试 SSO 
+## <a name="test-sso"></a>测试 SSO
 
-在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
 #### <a name="sp-initiated"></a>SP 启动的：
 
-* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Kumolus 登录 URL，可在这里启动登录流。  
+- 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Kumolus 登录 URL，可在这里启动登录流。
 
-* 直接转到 Kumolus 登录 URL，从此处启动登录流。
+- 直接转到 Kumolus 登录 URL，从此处启动登录流。
 
 #### <a name="idp-initiated"></a>IDP 启动的：
 
-* 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Kumolus 
+- 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Kumolus
 
 还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在点击访问面板中的 Kumolus 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Kumolus。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 

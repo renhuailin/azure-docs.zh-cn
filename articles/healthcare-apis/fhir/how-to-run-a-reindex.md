@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 4/23/2021
 ms.author: cavoeg
-ms.openlocfilehash: 0332582f65ea59f43cc55064f9cdacefe4beefe4
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: ea679023b2b5bb620bb9684a0e841f6cc4fa310d
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108322505"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109846997"
 ---
 # <a name="running-a-reindex-job"></a>运行重建索引作业
 
@@ -21,7 +21,7 @@ ms.locfileid: "108322505"
 > [!Warning]
 > 在开始之前阅读本文，这一点很重要。 重建索引作业的性能可能非常高。 本文包含有关如何限制和控制重建索引作业的选项。
 
-## <a name="how-to-run-a-reindex-job"></a>如何运行索引编制作业 
+## <a name="how-to-run-a-reindex-job"></a>如何运行重新索引作业 
 
 若要启动重建索引作业，请使用下面的代码示例：
 
@@ -41,7 +41,7 @@ POST {{FHIR URL}}/$reindex
 
 ```json
 HTTP/1.1 201 Created 
-Content-Location: https://cv-cosmos1.azurewebsites.net/_operations/reindex/560c7c61-2c70-4c54-b86d-c53a9d29495e 
+Content-Location: https://{{FHIR URL}}/_operations/reindex/560c7c61-2c70-4c54-b86d-c53a9d29495e 
 
 {
   "resourceType": "Parameters",
@@ -91,9 +91,7 @@ Content-Location: https://cv-cosmos1.azurewebsites.net/_operations/reindex/560c7
 ```
 
 > [!NOTE]
-> 若要检查的状态或取消索引编制作业，需要重新编制索引的 ID。 这是 (上面显示的结果参数资源的 ID) ，还可以在内容位置字符串末尾找到 GUID：
-
-`https://{{FHIR URL}}/_operations/reindex/560c7c61-2c70-4c54-b86d-c53a9d29495e`
+> 若要检查的状态或取消索引编制作业，需要重新编制索引的 ID。 这是) 上方显示的结果参数资源的 ID (。 还可以在内容位置字符串的末尾找到重建索引 ID。 在上面的示例中，它会是 `560c7c61-2c70-4c54-b86d-c53a9d29495e`。
 
  ## <a name="how-to-check-the-status-of-a-reindex-job"></a>如何检查重建索引作业的状态
 
@@ -165,34 +163,34 @@ Content-Location: https://cv-cosmos1.azurewebsites.net/_operations/reindex/560c7
 
 重建索引作业结果中显示以下信息：
 
-* **totalResourcesToReindex**：包含作为作业的一部分而重新编制索引的资源总数。
+* **totalResourcesToReindex：** 包括作为作业的一部分重新索引的资源总数。
 
-* **resourcesSuccessfullyReindexed**：已成功重新编制索引的总计。
+* **resourcesSuccessfullyReindexed：** 已成功重新索引的总计。
 
-* **进度**：已完成重新索引作业百分比。 等于 resourcesSuccessfullyReindexed/totalResourcesToReindex x 100。
+* **progress：** 重新索引作业完成百分比。 等于 resourcesSuccessfullyReindexed/totalResourcesToReindex x 100。
 
-* **状态**：如果重建索引作业已排队、正在运行、已完成、失败或已取消，这将会出现。
+* **status：** 这将说明重新索引作业是排队、正在运行、完成、失败还是已取消。
 
-* **资源**：此列表列出了由重建索引作业影响的所有资源类型。
+* **resources：** 这会列出受重新索引作业影响的所有资源类型。
 
-## <a name="delete-a-reindex-job"></a>删除重建索引作业
+## <a name="delete-a-reindex-job"></a>删除重新索引作业
 
-如果需要取消重建索引作业，请使用 delete 调用并指定重新索引作业 ID：
+如果需要取消重新索引作业，请使用删除调用并指定重新索引作业 ID：
 
 `Delete {{FHIR URL}}/_operations/reindex/{{reindexJobId}`
 
 ## <a name="performance-considerations"></a>性能注意事项
 
-重建索引作业的性能可能会相当高。 我们实现了一些限制控制，以帮助你管理重新编制索引作业对数据库的运行的方式。
+重新索引作业可能会非常耗用性能。 我们实现了一些限制控件，以帮助你管理重新索引作业在数据库上的运行方式。
 
 > [!NOTE]
-> 在较大的数据集上，对于每日运行的索引编制作业，这种情况并不常见。 对于包含30000000万个资源的数据库，我们4-5 注意到，在10万个
+> 重新索引作业在大型数据集上运行数天的情况并不少见。 对于具有 30，000，000 万个资源的数据库，我们注意到，在 100K 个 US 中重新索引整个数据库需要 4-5 天。
 
-下表列出了可用参数、默认值和建议范围。 您可以使用这些参数来加速进程 (使用更多计算) 或减慢进程 (使用较少的计算) 。 例如，可以在较低的流量时间运行重新索引作业，并增加计算以使其更快完成。 相反，您可以使用这些设置来确保计算的使用率非常低，并使其在后台运行一天。 
+下表概述了可用参数、默认值和推荐的范围。 可以使用这些参数来加快进程， (使用更多的计算) 或降低进程 (使用更少的计算) 。 例如，可以在较低的流量时间运行重新索引作业，并增大计算速度以更快地完成该作业。 相反，可以使用设置来确保计算使用率非常低，并在后台运行数天。 
 
-| **参数**                     | **说明**              | **默认**        | **建议范围**           |
+| **参数**                     | **说明**              | **默认**        | **建议的范围**           |
 | --------------------------------- | ---------------------------- | ------------------ | ------------------------------- |
-| QueryDelayIntervalInMilliseconds  | 这是在重建索引作业期间要启动的每一批资源之间的延迟。 | 500 MS ( 5 秒)  | 50到5000：50将提高重建索引作业的速度，5000会使其从默认值降低。 |
+| QueryDelayIntervalInMilliseconds  | 这是在重新索引作业期间启动的每批资源之间的延迟。 | 500 MS (.5 秒)  | 50到5000：50将提高重建索引作业的速度，5000会使其从默认值降低。 |
 | MaximumResourcesPerQuery  | 这是要重新编制索引的资源批中包含的最大资源数。  | 100 | 1-500 |
 | MaximumConcurreny  | 这是一次完成的批处理数。  | 1 | 1-5 |
 | targetDataStoreUsagePercentrage | 这允许您指定要用于重新索引作业的数据存储的百分比。 例如，你可以指定50%，这将确保在 Cosmos DB 上，最多可确保索引编制作业使用50% 的可用 ru。  | 不存在，这意味着可以使用最多100%。 | 1-100 |

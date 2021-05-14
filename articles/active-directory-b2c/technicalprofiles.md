@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 05/10/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bcff1ffd574db910c3206d82e4da0e9428db788f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c555f86113b9a4557e3b5ebc356f63a5e5dc1eb1
+ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102631789"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109664359"
 ---
 # <a name="technical-profiles"></a>技术配置文件
 
@@ -52,16 +52,16 @@ ms.locfileid: "102631789"
 ![显示技术配置文件流的关系图。](./media/technical-profiles/technical-profile-flow.png)
 
 1. **单一登录 (SSO) 会话管理**：使用 [SSO 会话管理](custom-policy-reference-sso.md)还原技术配置文件的会话状态。
-1. **输入声明转换**：在启动技术配置文件之前，Azure AD B2C 运行输入[声明转换](claimstransformations.md)。
+1. **输入声明转换**：在启动技术配置文件之前，Azure AD B2C 运行输入 [声明转换](claimstransformations.md)。
 1. **输入声明**：从用于技术配置文件的声明包中提取声明。
 1. 技术配置文件执行：技术配置文件与已配置的参与方交换声明。 例如：
     - 将用户重定向到标识提供者以完成登录。 成功登录后，用户返回并继续执行技术配置文件。
     - 在将参数作为 InputClaims 发送并将信息作为 OutputClaims 返回时调用 REST API。
     - 创建或更新用户帐户。
     - 发送并验证多重身份验证短信。
-1. **验证技术配置文件**：[自断言技术配置文件](self-asserted-technical-profile.md)可以调用[验证技术配置文件](validation-technical-profile.md)来验证用户所描述的数据。
+1. **验证技术配置文件**：[自断言技术配置文件](self-asserted-technical-profile.md)可以调用 [验证技术配置文件](validation-technical-profile.md)来验证用户所描述的数据。
 1. **输出声明**：声明将返回到声明包中。 可以在下一个业务流程步骤或输出声明转换中使用这些声明。
-1. **输出声明转换**：技术配置文件完成后，Azure AD B2C 运行输出[声明转换](claimstransformations.md)。
+1. **输出声明转换**：技术配置文件完成后，Azure AD B2C 运行输出 [声明转换](claimstransformations.md)。
 1. **SSO 会话管理**：使用 [SSO 会话管理](custom-policy-reference-sso.md)将技术配置文件的数据持久保留在会话中。
 
 TechnicalProfiles 元素包含声明提供程序支持的一组技术配置文件。 每个声明提供程序都必须至少包含一个技术配置文件。 技术配置文件确定与声明提供程序通信所需的终结点和协议。 一个声明提供程序可以包含多个技术配置文件。
@@ -84,7 +84,7 @@ TechnicalProfiles 元素包含声明提供程序支持的一组技术配置文�
 
 **TechnicalProfile** 元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| Attribute | 必需 | 说明 |
 |---------|---------|---------|
 | ID | 是 | 技术配置文件的唯一标识符。 可以使用此标识符从策略文件中的其他元素引用技术配置文件。 例如，OrchestrationSteps 和 ValidationTechnicalProfile 。 |
 
@@ -249,7 +249,7 @@ InputClaims  元素包含以下元素：
 
 InputClaim  元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 声明类型的标识符。 声明已在策略文件或父策略文件的“策略架构”部分定义。 |
 | DefaultValue | 否 | 当 ClaimTypeReferenceId 指示的声明不存在时用来创建声明的默认值。技术配置文件可将生成的声明用作 InputClaim 元素。 |
@@ -354,7 +354,7 @@ OutputClaims 元素是在技术配置文件完成后返回到声明包的声明�
 
 OutputClaim 元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 已在策略文件或父策略文件的 ClaimsSchema 节中定义的声明类型的标识符。 |
 | DefaultValue | 否 | 当声明不存在时用于创建声明的默认值。 |
@@ -483,10 +483,10 @@ SubjectNamingInfo 元素定义[依赖方策略](relyingparty.md#subjectnaminginf
     </TechnicalProfile>
 
     <TechnicalProfile Id="REST-UpdateProfile">
-       <Metadata>
+      <DisplayName>Update the user profile</DisplayName>  
+      <Metadata>
         <Item Key="ServiceUrl">https://your-app-name.azurewebsites.NET/api/identity/update</Item>
       </Metadata>
-      <DisplayName>Update the user profile</DisplayName>
       <InputClaims>
         <InputClaim ClaimTypeReferenceId="objectId" />
         <InputClaim ClaimTypeReferenceId="email" />

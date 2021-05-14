@@ -9,12 +9,12 @@ ms.date: 03/27/2020
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: philmea
-ms.openlocfilehash: d414b86ff81a33f9e818a0a28031e73d88cabec2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3a5d37c546e57725b15c9ad42c7b422c8c34eed5
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202257"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685128"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>从 Azure CLI 管理 IoT Central
 
@@ -32,7 +32,7 @@ ms.locfileid: "102202257"
 
 [!INCLUDE [Warning About Access Required](../../../includes/iot-central-warning-contribitorrequireaccess.md)]
 
-使用 [az iot central app create](/cli/azure/iot/central/app#az-iot-central-app-create) 命令在 Azure 订阅中创建 IoT Central 应用程序。 例如：
+使用 [az iot central app create](/cli/azure/iot/central/app#az_iot_central_app_create) 命令在 Azure 订阅中创建 IoT Central 应用程序。 例如：
 
 ```azurecli-interactive
 # Create a resource group for the IoT Central application
@@ -61,15 +61,19 @@ az iot central app create \
 | template          | 要使用的应用程序模板。 有关详细信息，请参阅下表。 |
 | display-name      | UI 中显示的应用程序名称。 |
 
+### <a name="application-templates"></a>应用程序模板
+
 [!INCLUDE [iot-central-template-list](../../../includes/iot-central-template-list.md)]
+
+如果你创建了自己的应用程序模板，则可以用它来创建新的应用程序。 当系统提示你提供应用程序模板时，请在应用的[应用程序模板导出](howto-use-app-templates.md#create-an-application-template)部分下，输入导出应用的 URL 可共享链接中显示的应用 ID。
 
 ## <a name="view-your-applications"></a>查看应用程序
 
-使用 [az iot central app list](/cli/azure/iot/central/app#az-iot-central-app-list) 命令列出 IoT Central 应用程序和查看元数据。
+使用 [az iot central app list](/cli/azure/iot/central/app#az_iot_central_app_list) 命令列出 IoT Central 应用程序和查看元数据。
 
 ## <a name="modify-an-application"></a>修改应用程序
 
-使用 [az iot central app update](/cli/azure/iot/central/app#az-iot-central-app-update) 命令更新 IoT Central 应用程序的元数据。 例如，若要更改应用程序的显示名称：
+使用 [az iot central app update](/cli/azure/iot/central/app#az_iot_central_app_update) 命令更新 IoT Central 应用程序的元数据。 例如，若要更改应用程序的显示名称：
 
 ```azurecli-interactive
 az iot central app update --name myiotcentralapp \
@@ -79,7 +83,7 @@ az iot central app update --name myiotcentralapp \
 
 ## <a name="remove-an-application"></a>删除应用程序
 
-使用 [az iot central app delete](/cli/azure/iot/central/app#az-iot-central-app-delete) 命令删除 IoT Central 应用程序。 例如：
+使用 [az iot central app delete](/cli/azure/iot/central/app#az_iot_central_app_delete) 命令删除 IoT Central 应用程序。 例如：
 
 ```azurecli-interactive
 az iot central app delete --name myiotcentralapp \

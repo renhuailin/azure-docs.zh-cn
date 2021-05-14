@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: db6e4a9c6d2829c7980164d5b79bd33e4b3fb6eb
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: a2c14340dc1810b8bc1fd4bb2b3276120609f33a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106112778"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108791417"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -82,7 +82,7 @@ Azure 通信服务维护轻量级标识目录。 使用 `create_user` 方法可�
 
 ```python
 identity = client.create_user()
-print("\nCreated an identity with ID: " + identity.identifier)
+print("\nCreated an identity with ID: " + identity.properties['id'])
 ```
 
 ## <a name="issue-access-tokens"></a>颁发访问令牌
@@ -106,7 +106,7 @@ print(token_result.token)
 ```python
 # Issue an identity and an access token with the "voip" scope for the new identity
 identity_token_result = client.create_user_and_token(["voip"])
-identity = identity_token_result[0].identifier
+identity = identity_token_result[0].properties['id']
 token = identity_token_result[1].token
 expires_on = identity_token_result[1].expires_on.strftime("%d/%m/%y %I:%M %S %p")
 print("\nCreated an identity with ID: " + identity)
@@ -130,7 +130,7 @@ token_result = client.get_token( identity, ["voip"])
 
 ```python
 client.revoke_tokens(identity)
-print("\nSuccessfully revoked all access tokens for identity with ID: " + identity.identifier)
+print("\nSuccessfully revoked all access tokens for identity with ID: " + identity.properties['id'])
 ```
 
 ## <a name="delete-an-identity"></a>删除标识
@@ -139,7 +139,7 @@ print("\nSuccessfully revoked all access tokens for identity with ID: " + identi
 
 ```python
 client.delete_user(identity)
-print("\nDeleted the identity with ID: " + identity.identifier)
+print("\nDeleted the identity with ID: " + identity.properties['id'])
 ```
 
 ## <a name="run-the-code"></a>运行代码
