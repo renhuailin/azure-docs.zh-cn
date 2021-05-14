@@ -5,14 +5,14 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 10/22/2020
 ms.author: baanders
-ms.openlocfilehash: bec2681c33108417aab1a33932c4f5f4d2ed730f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 462098536ae4598c7875a1b8291e477f6b4a8d7d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102473635"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108778357"
 ---
 >[!NOTE]
 > 当你在本地计算机上运行示例时，此示例使用 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential)（属于 `Azure.Identity` 库的一部分）对用户进行 Azure 数字孪生实例验证。 借助此类型的身份验证，该示例将在本地环境中搜索凭据，例如 [Azure CLI](/cli/azure/install-azure-cli) 或 Visual Studio/Visual Studio Code 中的登录名。
 >
-> 若要详细了解如何使用 `DefaultAzureCredential` 和其他验证选项，请查看[如何：编写应用验证码](../articles/digital-twins/how-to-authenticate-client.md)。
+> 若要详细了解如何使用 `DefaultAzureCredential` 和其他验证选项，请查看如何：编写应用验证码。

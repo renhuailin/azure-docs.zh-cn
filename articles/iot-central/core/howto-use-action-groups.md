@@ -8,16 +8,14 @@ ms.date: 12/06/2019
 ms.topic: how-to
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: 84a723023bf8614b837ba9783bae987403921c06
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8e2497e0762c992c54ed9583d1db0ff8cbb74c8
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100585485"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108740998"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>将多个操作分组以从一个或多个规则运行
-
-*本文面向构建人员和管理员。*
 
 在 Azure IoT Central 中可以创建规则，以便在满足条件时运行操作。 规则基于设备遥测数据或事件。 例如，当设备温度超过阈值时，可以通知操作员。 本文介绍如何使用 [Azure Monitor 操作组将多个操作附加到 IoT Central 规则。](../../azure-monitor/overview.md)  可将一个操作组附加到多个规则。 [操作组](../../azure-monitor/alerts/action-groups.md)是由 Azure 订阅的所有者定义的通知首选项的集合。
 

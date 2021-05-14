@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 3f52dc502233cbab42ae5decff70b77c41c38e0e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc66e20023081caa85ec24956790472e21a3a2fb
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102609679"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108773298"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>LUIS 应用的企业策略
 查看企业应用的设计策略。
@@ -72,7 +72,7 @@ LUIS 基于 Azure 资源的定价层，具有每月配额和每秒配额。
 * [Bot Framework SDK](https://github.com/Microsoft/botframework)
 * [调度模型教程](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs)
 * [调度 CLI](https://github.com/Microsoft/botbuilder-tools)
-* 调度模型机器人示例 - [.NET](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch)、[Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)
+* 调度模型机器人示例 - [.NET](https://github.com/microsoft/BotBuilder-Samples/tree/main/samples/csharp_dotnetcore/14.nlp-with-orchestrator)、[Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/main/samples/javascript_nodejs/14.nlp-with-orchestrator)
 
 ## <a name="next-steps"></a>后续步骤
 

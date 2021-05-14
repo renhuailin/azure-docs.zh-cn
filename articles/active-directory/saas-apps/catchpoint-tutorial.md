@@ -11,34 +11,34 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: a8515920985c569df74b1e328d6bfe1c4ec97195
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 48b7bbb73b40431d609a473b7d33072ee705af97
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98735308"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108801867"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-catchpoint"></a>教程：Azure Active Directory 与 Catchpoint 的单一登录集成
 
 本教程介绍如何将 Catchpoint 与 Azure Active Directory (Azure AD) 相集成。 将 Catchpoint 与 Azure AD 集成后，可以：
 
-* 在 Azure AD 中控制用户对 Catchpoint 的访问权限。
-* 为具有 Azure AD 帐户的用户启用 Catchpoint 自动登录。
-* 在一个中心位置（Azure 门户）管理帐户。
+- 在 Azure AD 中控制用户对 Catchpoint 的访问权限。
+- 为具有 Azure AD 帐户的用户启用 Catchpoint 自动登录。
+- 在一个中心位置（Azure 门户）管理帐户。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-* 启用了单一登录 (SSO) 的 Catchpoint 订阅。
+- 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+- 启用了单一登录 (SSO) 的 Catchpoint 订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Catchpoint 支持 SP 和 IDP 发起的 SSO。
-* Catchpoint 支持实时 (JIT) 用户预配。
+- Catchpoint 支持 SP 和 IDP 发起的 SSO。
+- Catchpoint 支持实时 (JIT) 用户预配。
 
 ## <a name="add-catchpoint-from-the-gallery"></a>从库中添加 Catchpoint
 
@@ -53,15 +53,15 @@ ms.locfileid: "98735308"
 
 ## <a name="configure-and-test-azure-ad-sso-for-catchpoint"></a>配置并测试 Catchpoint 的 Azure AD SSO
 
-若要使 SSO 正常工作，需将某个 Azure AD 用户链接到 Catchpoint 中的用户。 对于本教程，我们将配置名为 B.Simon 的测试用户。  
+若要使 SSO 正常工作，需将某个 Azure AD 用户链接到 Catchpoint 中的用户。 对于本教程，我们将配置名为 B.Simon 的测试用户。 
 
 完成以下部分：
 
 1. [配置 Azure AD SSO](#configure-azure-ad-sso)，为用户启用此功能。
-    * [创建 Azure AD 测试用户](#create-an-azure-ad-test-user)，使用 B.Simon 测试 Azure AD 单一登录。
-    * [分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)，使 B.Simon 能够使用 Azure AD 单一登录。
+   - [创建 Azure AD 测试用户](#create-an-azure-ad-test-user)，使用 B.Simon 测试 Azure AD 单一登录。
+   - [分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)，使 B.Simon 能够使用 Azure AD 单一登录。
 1. [配置 Catchpoint SSO](#configure-catchpoint-sso)，在应用程序端配置单一登录设置。
-    * [创建 Catchpoint 测试用户](#create-a-catchpoint-test-user)，允许将 B.Simon Azure AD 测试帐户链接到 Catchpoint 中的类似用户帐户。
+   - [创建 Catchpoint 测试用户](#create-a-catchpoint-test-user)，允许将 B.Simon Azure AD 测试帐户链接到 Catchpoint 中的类似用户帐户。
 1. [测试 SSO](#test-sso)，验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -76,6 +76,7 @@ ms.locfileid: "98735308"
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
 1. 配置 Catchpoint 的发起模式：
+
    - 对于“IDP”发起的模式，请输入以下字段的值： 
      - **标识符**：`https://portal.catchpoint.com/SAML2`
      - **回复 URL**：`https://portal.catchpoint.com/ui/Entry/SingleSignOn.aspx`
@@ -84,32 +85,32 @@ ms.locfileid: "98735308"
 
 1. Catchpoint 应用程序需要特定格式的 SAML 断言。 请将自定义属性映射添加到 SAML 令牌属性的配置中。 下表包含默认属性的列表：
 
-    | 名称 | 源属性|
-    | ------------ | --------- |
-    | Givenname | user.givenneame |
-    | Surname | user.surname |
-    | Emailaddress | user.mail |
-    | 名称 | user.userprincipalname |
-    | Unique User Identifier | user.userprincipalname |
+   | 名称                   | 源属性       |
+   | ---------------------- | ---------------------- |
+   | Givenname              | user.givenneame        |
+   | Surname                | user.surname           |
+   | Emailaddress           | user.mail              |
+   | 名称                   | user.userprincipalname |
+   | Unique User Identifier | user.userprincipalname |
 
-    ![用户属性和声明列表的屏幕截图](common/default-attributes.png)
+   ![用户属性和声明列表的屏幕截图](common/default-attributes.png)
 
 1. 另外，Catchpoint 应用程序要求在 SAML 响应中传入另一个属性。 请参阅下表。 系统也会预先填充此属性，但你可以检查此属性，并根据要求进行更新。
 
-    | 名称 | 源属性|
-    | ------------ | --------- |
-    | namespace | user.assignedrole |
+   | 名称      | 源属性  |
+   | --------- | ----------------- |
+   | namespace | user.assignedrole |
 
-    > [!NOTE]
-    > `namespace` 声明需要通过帐户名称进行映射。 应当为此帐户名称设置 Azure AD 中的、要在 SAML 响应中传回的某个角色。 有关 Azure AD 中的角色的详细信息，请参阅[为企业应用程序配置 SAML 令牌中颁发的角色声明](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)。
+   > [!NOTE]
+   > `namespace` 声明需要通过帐户名称进行映射。 应当为此帐户名称设置 Azure AD 中的、要在 SAML 响应中传回的某个角色。 有关 Azure AD 中的角色的详细信息，请参阅[为企业应用程序配置 SAML 令牌中颁发的角色声明](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui)。
 
 1. 转到“设置 SAML 单一登录”页。  在“SAML 签名证书”部分中，找到“证书(Base64)”。   选择“下载”以将证书保存到计算机上。 
 
-    ![证书下载链接](common/certificatebase64.png)
+   ![证书下载链接](common/certificatebase64.png)
 
 1. 在“设置 Catchpoint”部分中，复制后续步骤中需要使用的 URL。 
 
-    ![复制配置 URL](common/copy-configuration-urls.png)
+   ![复制配置 URL](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -118,7 +119,7 @@ ms.locfileid: "98735308"
 1. 在 Azure 门户的左窗格中，选择“Azure Active Directory” > “用户” > “所有用户”。   
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
-   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“名称”字段中，输入 `B.Simon`。
    1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，输入 `B.Simon@contoso.com`。
    1. 选中“显示密码”复选框  。 记下显示的密码值。
    1. 选择“创建”  。
@@ -141,18 +142,18 @@ ms.locfileid: "98735308"
 
 1. 依次选择“设置”图标、“SSO 标识提供者”。  
 
-    ![Catchpoint 设置屏幕截图，其中已选择“SSO 标识提供者”](./media/catchpoint-tutorial/configuration1.png)
+   ![Catchpoint 设置屏幕截图，其中已选择“SSO 标识提供者”](./media/catchpoint-tutorial/configuration1.png)
 
 1. 在“单一登录”页上输入以下字段： 
 
    ![Catchpoint“单一登录”页的屏幕截图](./media/catchpoint-tutorial/configuration2.png)
 
-   字段 | 值
-   ----- | ----- 
-   **Namespace** | 有效的命名空间值。
-   **标识提供者颁发者** | Azure 门户中的 `Azure AD Identifier` 值。
-   **单一登录 URL** | Azure 门户中的 `Login URL` 值。
-   **证书** | 从 Azure 门户下载的 `Certificate (Base64)` 文件的内容。 请使用记事本查看并复制这些内容。
+   | 字段                        | 值                                                                                                           |
+   | ---------------------------- | --------------------------------------------------------------------------------------------------------------- |
+   | **Namespace**                | 有效的命名空间值。                                                                                        |
+   | **标识提供者颁发者** | Azure 门户中的 `Azure AD Identifier` 值。                                                          |
+   | **单一登录 URL**       | Azure 门户中的 `Login URL` 值。                                                                    |
+   | **证书**              | 从 Azure 门户下载的 `Certificate (Base64)` 文件的内容。 请使用记事本查看并复制这些内容。 |
 
    还可以选择“上传元数据”选项来上传“联合元数据 XML”。  
 
@@ -164,24 +165,23 @@ Catchpoint 支持默认已启用的实时用户预配。 本部分中没有操�
 
 ## <a name="test-sso"></a>测试 SSO
 
-在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
 #### <a name="sp-initiated"></a>SP 启动的：
 
-* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Catchpoint 登录 URL，可在其中启动登录流。  
+- 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Catchpoint 登录 URL，可在其中启动登录流。
 
-* 直接转到 Catchpoint 登录 URL，并从那里启动登录流。
+- 直接转到 Catchpoint 登录 URL，并从那里启动登录流。
 
 #### <a name="idp-initiated"></a>IDP 启动的：
 
-* 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 Catchpoint 
+- 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 Catchpoint
 
 还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Catchpoint 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Catchpoint。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
-
 > [!NOTE]
 > 通过登录页面登录到 Catchpoint 应用程序时，请在提供“Catchpoint 凭据”后，在“公司凭据(SSO)”字段中输入有效的“命名空间”值，然后选择“登录”。    
-> 
+>
 > ![Catchpoint 配置](./media/catchpoint-tutorial/loginimage.png)
 
 ## <a name="next-steps"></a>后续步骤

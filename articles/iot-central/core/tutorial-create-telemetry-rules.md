@@ -7,16 +7,14 @@ ms.date: 01/08/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: b0b5aafd85fe6d992afa9d879f73ef0ec43e00d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d59f50d6fa4f21676cef01ffe0dde8ed1fa4441
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99834368"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108768762"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>教程：在 Azure IoT Central 应用程序中创建规则并设置通知
-
-*本文适用于操作员、构建者和管理员。*
 
 可以使用 Azure IoT Central 对连接的设备进行远程监视。 使用 Azure IoT Central 规则，可以近乎实时地监视设备并自动调用操作（例如，发送电子邮件）。 本文介绍如何创建规则来监视设备发送的遥测数据。
 

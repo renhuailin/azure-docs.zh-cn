@@ -4,12 +4,12 @@ description: 介绍 Azure 服务总线中的死信队列。 服务总线队列�
 ms.topic: article
 ms.date: 04/08/2021
 ms.custom: fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 6293a3a9a760ece137644578d8ee7dccebc63d95
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 9a7eaf3cee7af4ba0f0049ee8b7a8dd0b271a94a
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812365"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108804459"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>服务总线死信队列概述
 
@@ -50,7 +50,7 @@ DLQ 不会自动执行清理操作。 消息将保留在 DLQ 中，直到从 DLQ
 ## <a name="time-to-live"></a>生存时间
 在队列或订阅上启用死信时，所有过期的消息都将移动到 DLQ。 死信原因代码设置为：TTLExpiredException。
 
-只有在主队列或订阅中至少有一个活动的接收器正在拉取时，才会清除过期的消息，并将它们移动到 DLQ。 延迟消息在过期后也不会被清除和移动到死信队列。 此行为是设计使然。
+延迟消息在过期后也不会被清除和移动到死信队列。 此行为是设计使然。
 
 ## <a name="errors-while-processing-subscription-rules"></a>处理订阅规则时的错误
 如果对筛选器评估异常启用死信，会在 DLQ 中捕获执行订阅的 SQL 筛选器规则时出现的任何错误以及有问题的消息。 请勿在部分消息类型没有订阅服务器的生产环境中使用此选项。

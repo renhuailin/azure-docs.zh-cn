@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 266a6c27261107b883fdc0c1cdd274e6345de6db
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 4419c9d64eac6eb468c5eb4414a3c9b844d7d8a7
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483446"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108181717"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中控制无服务器 SQL 池对存储帐户的访问
 
@@ -26,10 +26,12 @@ ms.locfileid: "107483446"
 
 ## <a name="storage-permissions"></a>存储权限
 
-Synapse Analytics 工作区中的无服务器 SQL 池可以读取 Azure Data Lake Storage 中存储的文件的内容。 需要配置存储的权限让执行 SQL 查询的用户能够读取文件。 有三种方法可用于启用文件的访问权限：
-- **[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md)** ：通过它能够将角色分配给存储所在的租户中的某些 Azure AD 用户。 RBAC 角色可分配给 Azure AD 用户。 读取者必须具有`Storage Blob Data Reader`、`Storage Blob Data Contributor`或`Storage Blob Data Owner`角色。 写入 Azure 存储中数据的用户必须具有`Storage Blob Data Writer`或`Storage Blob Data Owner`角色。 请注意`Storage Owner`角色并不意味着用户也是`Storage Data Owner`。
-- **访问控制列表 (ACL)** ：通过它能够为 Azure 存储中的文件和目录定义精细的权限模型。 ACL 可分配给 Azure AD 用户。 如果读取者要读取 Azure 存储中某个路径上的文件，则其必须具有文件路径中的每个文件夹的执行 (X) ACL 权限，以及文件夹的读取 (R) ACL 权限。 [详细了解如何设置存储层中的 ACL 权限](../../storage/blobs/data-lake-storage-access-control.md#how-to-set-acls)
+Synapse Analytics 工作区中的无服务器 SQL 池可以读取 Azure Data Lake Storage 中存储的文件的内容。 需要配置存储的权限让执行 SQL 查询的用户能够读取文件。 有 3 种方法来启用文件的访问权限：
+- **[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md)** ：通过它能够将角色分配给存储所在的租户中的某些 Azure AD 用户。 读取者必须对存储帐户具有 RBAC 角色 `Storage Blob Data Reader`、`Storage Blob Data Contributor` 或 `Storage Blob Data Owner`。 写入 Azure 存储中数据的用户必须具有`Storage Blob Data Writer`或`Storage Blob Data Owner`角色。 请注意`Storage Owner`角色并不意味着用户也是`Storage Data Owner`。
+- 通过访问控制列表 (ACL)，可对 Azure 存储中的文件和目录定义精细的[“读取(R)”、“写入(W)”和“执行(X)”权限](../../storage/blobs/data-lake-storage-access-control.md#levels-of-permission)。 ACL 可分配给 Azure AD 用户。 如果读取者要读取 Azure 存储中某个路径上的文件，必须对该文件路径中的每个文件夹具有“执行(X)”ACL 权限，对文件具有“读取(R)” ACL 权限。 [详细了解如何设置存储层中的 ACL 权限](../../storage/blobs/data-lake-storage-access-control.md#how-to-set-acls)。
 - **共享访问签名 (SAS)** ：使读取者能够使用限时令牌访问 Azure Data Lake Storage 上的文件。 读取者甚至无需进行 Azure AD 用户身份验证。 SAS 令牌包含授予读取者的权限以及令牌的有效期限。 SAS 令牌是任何不需要位于同一 Azure AD 租户中的用户进行时间限制的访问的好选择。 可以在存储帐户或特定目录上定义 SAS 令牌。 若要详细了解 SAS 令牌，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的受限访问权限](../../storage/common/storage-sas-overview.md)。
+
+替代方法是，可通过允许匿名访问来使你的文件公开可用。 如果你有非公共数据，则不得使用此方法。 
 
 ## <a name="supported-storage-authorization-types"></a>支持的存储授权类型
 

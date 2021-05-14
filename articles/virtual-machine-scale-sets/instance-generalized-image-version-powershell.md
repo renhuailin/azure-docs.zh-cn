@@ -3,18 +3,18 @@ title: 使用 Azure PowerShell 根据通用化映像创建规模集
 description: 借助 PowerShell 使用共享映像库中的通用化映像创建规模集。
 author: cynthn
 ms.service: virtual-machine-scale-sets
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
-ms.reviewer: akjosh
-ms.openlocfilehash: 9edade1aa54d6f4f8160a107f84e6da2e6cf316e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: mimckitt
+ms.openlocfilehash: e0f6bcf5e8683d7a5a25679b584199d98ceea128
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98878013"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108768510"
 ---
 # <a name="create-a-scale-set-from-a-generalized-image-using-powershell"></a>使用 PowerShell 根据通用化映像创建规模集 
 

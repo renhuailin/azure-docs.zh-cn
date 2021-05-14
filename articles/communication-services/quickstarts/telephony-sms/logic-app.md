@@ -9,16 +9,16 @@ ms.author: chpalm
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 11cce223a0802c20c5fc144eed681327f989a949
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cabf4ba9ea17c1ad2d8af9fd17e7d6f09838e745
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103488374"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108293145"
 ---
 # <a name="quickstart-send-sms-messages-in-azure-logic-apps-with-azure-communication-services"></a>快速入门：使用 Azure 通信服务在 Azure 逻辑应用中发送短信
 
-借助 [Azure 通信服务短信](../../overview.md)连接器和 [Azure 逻辑应用](../../../logic-apps/logic-apps-overview.md)，可以创建自动化工作流或逻辑应用来发送短信。 本快速入门介绍如何自动发送短信以响应触发器事件，这是逻辑应用工作流的第一步。 触发器事件可以是传入电子邮件、定期计划、[Azure 事件网格](../../../event-grid/overview.md)资源事件或 [Azure 逻辑应用支持的任何其他触发器](/connectors/connector-reference/connector-reference-logicapps-connectors)。
+借助 [Azure 通信服务短信](../../overview.md)连接器和 [Azure 逻辑应用](../../../logic-apps/logic-apps-overview.md)，可创建能发送短信的自动化工作流。 本快速入门介绍如何自动发送短信以响应触发器事件，这是逻辑应用工作流的第一步。 触发器事件可以是传入电子邮件、定期计划、[Azure 事件网格](../../../event-grid/overview.md)资源事件或 [Azure 逻辑应用支持的任何其他触发器](/connectors/connector-reference/connector-reference-logicapps-connectors)。
 
 :::image type="content" source="./media/logic-app/azure-communication-services-connector.png" alt-text="屏幕截图显示了打开至逻辑应用设计器的 Azure 门户，以及一个示例逻辑应用，该应用使用 Azure 通信服务连接器的“发送短信”操作。":::
 
@@ -73,11 +73,11 @@ ms.locfileid: "103488374"
 
 1. 完成后，请在设计器工具栏上选择“保存”。
 
-接下来，运行逻辑应用进行测试。
+接下来，运行逻辑应用工作流来进行测试。
 
 ## <a name="test-your-logic-app"></a>测试逻辑应用
 
-若要手动启动逻辑应用，请在设计器工具栏中选择“运行”。 或者，可以等待逻辑应用触发。 无论哪种情况，逻辑应用都应将短信发送到指定的目标电话号码。 有关运行逻辑应用的详细信息，请参阅[如何运行逻辑应用](../../../logic-apps/quickstart-create-first-logic-app-workflow.md#run-your-logic-app)
+若要手动启动工作流，请在设计器工具栏中选择“运行”。 或者，可等待触发器触发。 无论哪种情况，工作流都应将短信发送到指定的目标电话号码。 有关详细信息，请查看[如何运行工作流](../../../logic-apps/quickstart-create-first-logic-app-workflow.md#run-workflow)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

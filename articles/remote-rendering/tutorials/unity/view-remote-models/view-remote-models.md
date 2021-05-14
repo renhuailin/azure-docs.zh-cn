@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f43e5b77580b7071ce48b39190c26a53f99f8cf5
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: ae84d62f8f028158450b1127abc81c5dc4416502
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107740105"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315374"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>教程：查看远程渲染的模型
 
@@ -125,6 +125,9 @@ ms.locfileid: "107740105"
 1. 如果需要，请查看“ValidateProject”窗口是否存在错误并修复项目设置。
 
     ![Unity 编辑器项目验证](./media/remote-render-unity-validation.png)
+
+> [!NOTE]
+> 如果在项目中使用 MRTK 并启用相机子系统，MRTK 将替代你应用到相机的手动更改。 这包括来自 ValidateProject 工具的修补程序。
 
 ## <a name="create-a-script-to-coordinate-azure-remote-rendering-connection-and-state"></a>创建一个脚本用于协调 Azure 远程渲染连接和状态
 

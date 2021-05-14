@@ -1,21 +1,21 @@
 ---
-title: 教程：使用 Azure 门户部署和配置 Azure 防火墙
-description: 本教程介绍如何使用 Azure 门户部署和配置 Azure 防火墙。
+title: 使用 Azure 门户部署和配置 Azure 防火墙
+description: 在本文中，你将学习如何使用 Azure 门户部署和配置 Azure 防火墙。
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: tutorial
-ms.date: 02/19/2021
+ms.topic: how-to
+ms.date: 04/29/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 54900b7b9089d4a4c6cbc742ecf09aa19ff2a550
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 951e2406a387ed2aaedc4cec875c62a14cf5bb2e
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101741950"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291939"
 ---
-# <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>教程：使用 Azure 门户部署和配置 Azure 防火墙
+# <a name="deploy-and-configure-azure-firewall-using-the-azure-portal"></a>使用 Azure 门户部署和配置 Azure 防火墙
 
 控制出站网络访问是整个网络安全计划的重要组成部分。 例如，你可能想要限制对网站的访问， 或者限制可以访问的出站 IP 地址和端口。
 
@@ -26,16 +26,16 @@ ms.locfileid: "101741950"
 
 将网络流量路由到用作子网默认网关的防火墙时，网络流量受到配置的防火墙规则的控制。
 
-在本教程中，你将创建一个包含两个子网的单个简化 VNet，以便于部署。
+在本文中，你将创建一个包含两个子网的简化 VNet 便于轻松部署。
 
 对于生产部署，我们建议使用[中心辐射模型](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)，其中，防火墙在其自身的 VNet 中。 工作负荷服务器在包含一个或多个子网的同一区域中的对等 VNet 内。
 
 * **AzureFirewallSubnet** - 防火墙在此子网中。
 * **Workload-SN** - 工作负荷服务器在此子网中。 此子网的网络流量通过防火墙。
 
-![教程网络基础结构](media/tutorial-firewall-deploy-portal/tutorial-network.png)
+![网络基础结构](media/tutorial-firewall-deploy-portal/tutorial-network.png)
 
-在本教程中，你将了解如何执行以下操作：
+在本文中，学习如何：
 
 > [!div class="checklist"]
 > * 设置测试网络环境
@@ -46,7 +46,10 @@ ms.locfileid: "101741950"
 > * 将 NAT 规则配置为允许远程桌面连接到测试服务器
 > * 测试防火墙
 
-如果需要，可以使用 [Azure PowerShell](deploy-ps.md) 完成本教程中的步骤。
+> [!NOTE]
+> 本文使用经典防火墙规则来管理防火墙。 首选方法是使用[防火墙策略](../firewall-manager/policy-overview.md)。 若要使用防火墙策略完成此过程，请查看[教程：使用 Azure 门户部署和配置 Azure 防火墙和策略](tutorial-firewall-deploy-portal-policy.md)
+
+如果需要，可以使用 [Azure PowerShell](deploy-ps.md) 完成此过程。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -58,7 +61,7 @@ ms.locfileid: "101741950"
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-资源组包含本教程所需的所有资源。
+资源组包含此过程中使用的所有资源。
 
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 2. 在 Azure 门户菜单上，选择“资源组”或从任意页面搜索并选择“资源组”。 然后选择“添加”  。
@@ -111,7 +114,7 @@ ms.locfileid: "101741950"
    |资源组     |**Test-FW-RG**|
    |虚拟机名称     |**Srv-Work**|
    |区域     |与前面相同|
-   |映像|Windows Server 2019 Datacenter|
+   |映像|Windows Server 2016 Datacenter|
    |管理员用户名     |键入用户名|
    |密码     |键入密码|
 
@@ -123,6 +126,8 @@ ms.locfileid: "101741950"
 11. 接受其他默认值，然后选择“下一步:**管理”** 。
 12. 选择“禁用”以禁用启动诊断。 接受其他默认值，然后选择“查看 + 创建”。
 13. 检查摘要页上的设置，然后选择“创建”。
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="deploy-the-firewall"></a>部署防火墙
 
@@ -170,7 +175,7 @@ ms.locfileid: "101741950"
 1. 选择“虚拟网络” > “Test-FW-VN”。
 1. 对于“子网”，请选择“Workload-SN”。 请确保仅为此路由选择“Workload-SN” 子网，否则防火墙将无法正常工作
 
-13. 选择“确定”。
+13. 选择“确定”  。
 14. 依次选择“路由”、“添加” 。
 15. 对于“路由名称”，请键入 **fw-dg**。
 16. 对于“地址前缀”，请键入 **0.0.0.0/0**。 
@@ -178,7 +183,7 @@ ms.locfileid: "101741950"
 
     Azure 防火墙实际上是一个托管服务，但虚拟设备可在此场合下正常工作。
 18. 对于“下一跃点地址”，请键入前面记下的防火墙专用 IP 地址。 
-19. 选择“确定”。
+19. 选择“确定”  。
 
 ## <a name="configure-an-application-rule"></a>配置应用程序规则
 
@@ -241,7 +246,7 @@ Azure 防火墙包含默认情况下允许的基础结构 FQDN 的内置规则�
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>更改 **Srv-Work** 网络接口的主要和辅助 DNS 地址
 
-为了在本教程中进行测试，请配置服务器的主要和辅助 DNS 地址。 这并不是一项常规的 Azure 防火墙要求。
+为了进行测试，请配置服务器的主要和辅助 DNS 地址。 这并不是一项常规的 Azure 防火墙要求。
 
 1. 在 Azure 门户菜单上，选择“资源组”或从任意页面搜索并选择“资源组”。 选择“Test-FW-RG”资源组。
 2. 选择 **Srv-Work** 虚拟机的网络接口。
@@ -272,9 +277,8 @@ Azure 防火墙包含默认情况下允许的基础结构 FQDN 的内置规则�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-可以将防火墙资源保留到下一教程使用。不再需要时，请删除 **Test-FW-RG** 资源组，以删除与防火墙相关的所有资源。
+可保留防火墙资源来继续测试。如果不再需要，请删除 Test-FW-RG 资源组，以删除与防火墙相关的所有资源。
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [教程：监视 Azure 防火墙日志](./firewall-diagnostics.md)
+[教程：监视 Azure 防火墙日志](./firewall-diagnostics.md)

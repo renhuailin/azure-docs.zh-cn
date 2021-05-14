@@ -14,16 +14,16 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 7067d7d76815103541fa4654da2bf977ba03a4ef
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 4b1bdd1addec93647eaa631a89e6d419f7ecf477
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056226"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789130"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建公共负载均衡器，以对 VM 进行负载均衡
 
-负载均衡将传入请求分布到多个虚拟机 (VM)，从而提供更高级别的可用性和可伸缩性。 
+负载均衡将传入请求分布到多个虚拟机 (VM)，从而提供更高级别的可用性和可伸缩性。
 
 本快速入门演示如何部署标准负载均衡器，以对虚拟机进行负载均衡。
 
@@ -33,7 +33,7 @@ ms.locfileid: "106056226"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-load-balancer-standard-create%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fload-balancer-standard-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,7 +45,7 @@ ms.locfileid: "106056226"
 
 负载均衡器和公共 IP SKU 必须匹配。 创建标准负载均衡器时，还必须创建一个作为该标准负载均衡器的前端配置的新标准公共 IP 地址。 若要创建基本负载均衡器，请使用[此模板](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/)。 Microsoft 建议将标准 SKU 用于生产工作负载。
 
-:::code language="json" source="~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/load-balancer-standard-create/azuredeploy.json":::
 
 该模板中已定义了多个 Azure 资源：
 
@@ -71,7 +71,7 @@ ms.locfileid: "106056226"
    $adminPassword = Read-Host -Prompt "Enter the virtual machine administrator password" -AsSecureString
 
    $resourceGroupName = "${projectName}rg"
-   $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json"
+   $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.network/load-balancer-standard-create/azuredeploy.json"
 
    New-AzResourceGroup -Name $resourceGroupName -Location $location
    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -projectName $projectName -location $location -adminUsername $adminUsername -adminPassword $adminPassword
@@ -99,7 +99,7 @@ ms.locfileid: "106056226"
 
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 从左侧窗格中选择“资源组”。
 
@@ -119,7 +119,7 @@ ms.locfileid: "106056226"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要它们时，请删除： 
+不再需要它们时，请删除：
 
 * 资源组
 * 负载均衡器

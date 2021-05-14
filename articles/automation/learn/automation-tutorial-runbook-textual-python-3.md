@@ -1,16 +1,17 @@
 ---
 title: 在 Azure 自动化中创建 Python 3 runbook（预览版）
-description: 本文指导如何创建、测试和发布简单的 Python 3 runbook（预览版）。
+description: 本教程指导如何在 Azure 自动化帐户中创建、测试和发布简单的 Python 3 runbook（预览版）。
 services: automation
 ms.subservice: process-automation
-ms.date: 02/16/2021
+ms.date: 04/28/2021
 ms.topic: tutorial
-ms.openlocfilehash: c19f7e177d51a3de75e7d7ae2b83442e23efd243
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: has-adal-ref, devx-track-python
+ms.openlocfilehash: 4badf99bcae4fa6d32492960f3e5322ee3508f25
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100546136"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205046"
 ---
 # <a name="tutorial-create-a-python-3-runbook-preview"></a>教程：创建 Python 3 runbook（预览版）
 
@@ -28,19 +29,9 @@ ms.locfileid: "100546136"
 
 - Azure 订阅。 如果还没有帐户，可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-- [自动化帐户](../automation-security-overview.md) ，用来保存 Runbook 以及向 Azure 资源进行身份验证。 此帐户必须有权启动和停止虚拟机。
+- [自动化帐户](../automation-security-overview.md) ，用来保存 Runbook 以及向 Azure 资源进行身份验证。 此帐户必须有权启动和停止虚拟机。 学习本教程需要一个[运行方式帐户](../automation-security-overview.md#run-as-accounts)。 
 
 - Azure 虚拟机。 在本教程中，你将启动和停止此计算机，因此它不应为生产 VM。
-
-- 可以使用 Linux 或 Windows 混合 Runbook 辅助角色来运行 Python 3 runbook。 请按照说明安装  [Linux](../automation-linux-hrw-install.md)  或  [Windows](../automation-windows-hrw-install.md)  混合 Runbook 辅助角色。 Linux 混合辅助角色没有特定的先决条件。 但是，若要使用适用于 Python 3 runbook 的 Windows 混合辅助角色，请基于是否仅支持 Python 3 或是否 Python 2 和 3 共存的情况配置托管混合辅助角色的计算机。
-
-   * 如果只安装了 Python 2 或 Python 3，则需要将 python.exe 所在文件夹的路径追加到 PATH 环境变量上。 例如，如果 python.exe 位于安装路径 `C:\Python` 中，则需要将该路径追加到 PATH 环境变量中。
-
-   * 如果同时安装了 Python 2 和 Python 3，你想要运行两种类型的 runbook，则需要配置以下环境变量：
-
-     * Python 2 - 创建名为 `PYTHON_2_PATH` 的新环境变量，并指定安装文件夹。 例如，如果安装文件夹为 `C:\Python27`，则需要将此路径添加到该变量中。
-
-     * Python 3 - 创建名为 `PYTHON_3_PATH` 的新环境变量，并指定安装文件夹。 例如，如果安装文件夹为 `C:\Python3`，则需要将此路径添加到该变量中。
 
 ## <a name="create-a-new-runbook"></a>创建新的 Runbook
 
@@ -48,7 +39,7 @@ ms.locfileid: "100546136"
 
 1. 在 Azure 门户中，打开自动化帐户。
 
-    通过自动化帐户页面可快速查看此帐户中的资源。 应该已拥有某些资产。 大多数此类资产都是自动包括在新的自动化帐户中的模块。 还应具有在 [“先决条件”](#prerequisites)中提到的凭证资产。
+    通过自动化帐户页面可快速查看此帐户中的资源。 应该已拥有某些资产。 大多数此类资产都是自动包括在新的自动化帐户中的模块。 还应具有在[先决条件](#prerequisites)中提到的运行方式帐户凭证资产。
 
 2. 在“流程自动化”下选择“Runbook”，以打开 Runbook 的列表。 
 
@@ -118,43 +109,53 @@ print("Hello World!")
 ## <a name="add-authentication-to-manage-azure-resources"></a>添加身份验证来管理 Azure 资源
 
 已经测试并发布 Runbook，但到目前为止它不执行任何有用的操作。 需要让其管理 Azure 资源。
-因此，脚本必须使用你的自动化帐户的凭据进行身份验证。
+因此，脚本必须使用你的自动化帐户的运行方式帐户凭据进行身份验证。
 
 > [!NOTE]
-> 必须使用服务主体功能来创建自动化帐户，以便使用运行方式证书。
-> 如果你的自动化帐户不是使用服务主体创建的，则可根据[使用用于 Python 的 Azure 管理库进行身份验证](/azure/python/python-sdk-azure-authenticate)中的说明进行身份验证。
+> 必须使用运行方式帐户创建自动化帐户，来使用运行方式证书。
+> 如果你的自动化帐户不是使用运行方式帐户创建的，则可根据[使用用于 Python 的 Azure 管理库进行身份验证](/azure/python/python-sdk-azure-authenticate)或[创建运行方式帐户](../create-run-as-account.md)中的说明进行身份验证。
 
 1. 通过选择“MyFirstRunbook-Python3”窗格上的“编辑”打开文本编辑器 。
 
 2. 添加以下代码以对 Azure 进行身份验证：
 
     ```python
-    from OpenSSL import crypto 
-    import binascii 
-    from msrestazure import azure_active_directory 
-    import adal 
-
-    # Get the Azure Automation RunAs service principal certificate 
-    cert = automationassets.get_automation_certificate("AzureRunAsCertificate") 
-    pks12_cert = crypto.load_pkcs12(cert) 
-    pem_pkey = crypto.dump_privatekey(crypto.FILETYPE_PEM,pks12_cert.get_privatekey()) 
+    import os
+    from azure.mgmt.compute import ComputeManagementClient
+    import azure.mgmt.resource
+    import automationassets
     
-    # Get run as connection information for the Azure Automation service principal 
-    application_id = runas_connection["ApplicationId"] 
-    thumbprint = runas_connection["CertificateThumbprint"] 
-    tenant_id = runas_connection["TenantId"] 
+    def get_automation_runas_credential(runas_connection):
+        from OpenSSL import crypto
+        import binascii
+        from msrestazure import azure_active_directory
+        import adal
     
-    # Authenticate with service principal certificate 
-    resource ="https://management.core.windows.net/" 
-    authority_url = ("https://login.microsoftonline.com/"+tenant_id) 
-    context = adal.AuthenticationContext(authority_url) 
-    return azure_active_directory.AdalAuthentication( 
-      lambda: context.acquire_token_with_client_certificate( 
-          resource, 
-          application_id, 
-          pem_pkey, 
-          thumbprint) 
-    ) 
+        # Get the Azure Automation RunAs service principal certificate
+        cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
+        pks12_cert = crypto.load_pkcs12(cert)
+        pem_pkey = crypto.dump_privatekey(crypto.FILETYPE_PEM,pks12_cert.get_privatekey())
+    
+        # Get run as connection information for the Azure Automation service principal
+        application_id = runas_connection["ApplicationId"]
+        thumbprint = runas_connection["CertificateThumbprint"]
+        tenant_id = runas_connection["TenantId"]
+    
+        # Authenticate with service principal certificate
+        resource ="https://management.core.windows.net/"
+        authority_url = ("https://login.microsoftonline.com/"+tenant_id)
+        context = adal.AuthenticationContext(authority_url)
+        return azure_active_directory.AdalAuthentication(
+        lambda: context.acquire_token_with_client_certificate(
+                resource,
+                application_id,
+                pem_pkey,
+                thumbprint)
+        )
+    
+    # Authenticate to Azure using the Azure Automation RunAs service principal
+    runas_connection = automationassets.get_automation_connection("AzureRunAsConnection")
+    azure_credential = get_automation_runas_credential(runas_connection)
     ```
 
 ## <a name="add-code-to-create-python-compute-client-and-start-the-vm"></a>添加代码以创建 Python Compute 客户端并启动 VM
@@ -164,7 +165,7 @@ print("Hello World!")
 使用此计算客户端启动 VM。 将以下代码添加到 Runbook：
 
 ```python
-# Initialize the compute management client with the RunAs credential and specify the subscription to work against.
+# Initialize the compute management client with the Run As credential and specify the subscription to work against.
 compute_client = ComputeManagementClient(
     azure_credential,
     str(runas_connection["SubscriptionId"])
@@ -194,7 +195,7 @@ resource_group_name = str(sys.argv[1])
 vm_name = str(sys.argv[2])
 ```
 
-它将导入 `sys` 模块，并创建两个变量以用于保存资源组名称和 VM 名称。 请注意，参数列表的元素 `sys.argv[0]` 是脚本的名称，不是用户的输入。
+它将导入 `sys` 模块，并创建 2 个变量用于保存资源组名称和 VM 名称。 请注意，参数列表的元素 `sys.argv[0]` 是脚本的名称，不是用户的输入。
 
 现在可以修改 Runbook 的最后两行，以使用输入参数值，而不使用硬编码的值：
 
@@ -216,12 +217,12 @@ async_vm_start.wait()
 
 选择“确定”启动 runbook。 Runbook 运行，并启动指定的 VM。
 
-## <a name="error-handling-in-python"></a>Python 中的错误处理
+## <a name="error-handling-in-python&quot;></a>Python 中的错误处理
 
 还可以使用以下约定从 Python Runbook 中检索各种流，包括“警告”、“错误”和“调试”流。
 
 ```python
-print("Hello World output")
+print(&quot;Hello World output")
 print("ERROR: - Hello world error")
 print("WARNING: - Hello world warning")
 print("DEBUG: - Hello world debug")
@@ -239,8 +240,8 @@ except Exception as detail:
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解有关 Runbook 类型、其优点和限制的详细信息，请参阅 [Azure 自动化 Runbook 类型](../automation-runbook-types.md)。
+- 若要了解有关 runbook 类型、其优点和限制的详细信息，请查看 [Azure 自动化 runbook 类型](../automation-runbook-types.md)。
 
 - 若要了解如何使用 Python 进行 Azure 开发，请参阅[适用于 Python 开发人员的 Azure](/azure/python/)。
 
-- 若要查看 Python 3 runbook 示例，请参阅 [GitHub 上的 Azure 自动化](https://github.com/azureautomation/runbooks/tree/master/Utility/Python)。
+- 若要查看 Python 3 runbook 示例，请查看 [GitHub 上的 Azure 自动化](https://github.com/azureautomation/runbooks/tree/master/Utility/Python)存储库。

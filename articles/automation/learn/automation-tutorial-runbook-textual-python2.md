@@ -1,17 +1,17 @@
 ---
 title: 在 Azure 自动化中创建 Python Runbook
-description: 本文指导如何创建、测试和发布简单的 Python Runbook。
+description: 本教程指导如何在 Azure 自动化帐户中创建、测试和发布简单的 Python runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/19/2020
+ms.date: 04/28/2021
 ms.topic: tutorial
 ms.custom: has-adal-ref, devx-track-python
-ms.openlocfilehash: e12327651165606e6a9b571d410f547a09a8ec8e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84b448b6a31dc9bdbad1b604a0a385aeae742b53
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87847918"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205010"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>教程：创建 Python Runbook
 
@@ -31,8 +31,10 @@ ms.locfileid: "87847918"
 要完成本教程，需要以下各项：
 
 - Azure 订阅。 如果还没有帐户，可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [自动化帐户](../index.yml) ，用来保存 Runbook 以及向 Azure 资源进行身份验证。 此帐户必须有权启动和停止虚拟机。
-- Azure 虚拟机。 需停止和启动该虚拟机，因此其不应为生产用 VM。
+
+- [自动化帐户](../automation-security-overview.md) ，用来保存 Runbook 以及向 Azure 资源进行身份验证。 此帐户必须有权启动和停止虚拟机。 学习本教程需要一个[运行方式帐户](../automation-security-overview.md#run-as-accounts)。 
+
+- Azure 虚拟机。 在本教程中，你将启动和停止此计算机，因此它不应为生产 VM。
 
 ## <a name="create-a-new-runbook"></a>创建新的 Runbook
 
@@ -79,7 +81,7 @@ print("Hello World!")
 
 ## <a name="publish-and-start-the-runbook"></a>发布和启动 Runbook
 
-创建的 Runbook 仍处于“草稿”模式。 需要首先发布此 Runbook 才能在生产中运行它。 当发布 Runbook 时，可以用草稿版本覆盖现有的已发布版本。 在此示例中，因此才创建了 Runbook，因此还没有已发布版本。
+创建的 Runbook 仍处于草稿模式。 需要首先发布此 Runbook 才能在生产中运行它。 当发布 Runbook 时，可以用草稿版本覆盖现有的已发布版本。 在此示例中，因此才创建了 Runbook，因此还没有已发布版本。
 
 1. 单击“发布”以发布该 Runbook，并在出现提示时单击“是” 。
 
@@ -110,13 +112,13 @@ print("Hello World!")
 ## <a name="add-authentication-to-manage-azure-resources"></a>添加身份验证来管理 Azure 资源
 
 已经测试并发布 Runbook，但到目前为止它不执行任何有用的操作。 需要让其管理 Azure 资源。
-因此，脚本必须使用你的自动化帐户的凭据进行身份验证。 如需帮助，可以使用 [Azure 自动化实用工具包](https://github.com/azureautomation/azure_automation_utility)更轻松地进行身份验证以及与 Azure 资源交互。
+因此，脚本必须使用你的自动化帐户的运行方式帐户凭据进行身份验证。 如需帮助，可以使用 [Azure 自动化实用工具包](https://github.com/azureautomation/azure_automation_utility)更轻松地进行身份验证以及与 Azure 资源交互。
 
 > [!NOTE]
-> 必须使用服务主体功能来创建自动化帐户，以便使用运行方式证书。
-> 如果你的自动化帐户不是使用服务主体创建的，则可根据[使用用于 Python 的 Azure 管理库进行身份验证](/azure/python/python-sdk-azure-authenticate)中的说明进行身份验证。
+> 必须使用运行方式帐户创建自动化帐户，来使用运行方式证书。
+> 如果你的自动化帐户不是使用运行方式帐户创建的，则可根据[使用用于 Python 的 Azure 管理库进行身份验证](/azure/python/python-sdk-azure-authenticate)或[创建运行方式帐户](../create-run-as-account.md)中的说明进行身份验证。
 
-1. 通过单击 MyFirstRunbook-Python 窗格上的“编辑”打开文本编辑器。
+1. 单击 MyFirstRunbook-Python 窗格上的“编辑”，打开文本编辑器 。
 
 2. 添加以下代码以对 Azure 进行身份验证：
 
@@ -206,7 +208,7 @@ async_vm_start = compute_client.virtual_machines.start(
 async_vm_start.wait()
 ```
 
-启动 Python Runbook 时（无论是在“测试”窗格中启动，还是将其作为已发布的 Runbook 启动），可以在“启动 Runbook”页的“参数”下输入参数的值。
+启动 Python runbook 时（无论是从“测试”窗格中启动，还是将其作为已发布的 runbook 启动），可以在“启动 Runbook”页的“参数”下输入参数的值  。
 
 开始在第一个框中输入值时，会出现第二个框，依此类推，这样就可以根据需要输入任意数量的参数值。
 
@@ -218,12 +220,12 @@ async_vm_start.wait()
 
 单击“确定”启动 Runbook。 Runbook 运行，并启动指定的 VM。
 
-## <a name="error-handling-in-python"></a>Python 中的错误处理
+## <a name="error-handling-in-python&quot;></a>Python 中的错误处理
 
 还可以使用以下约定从 Python Runbook 中检索各种流，包括“警告”、“错误”和“调试”流。
 
 ```python
-print("Hello World output")
+print(&quot;Hello World output")
 print("ERROR: - Hello world error")
 print("WARNING: - Hello world warning")
 print("DEBUG: - Hello world debug")
@@ -244,9 +246,7 @@ except Exception as detail:
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要开始使用 PowerShell Runbook，请参阅[创建 PowerShell Runbook](automation-tutorial-runbook-textual-powershell.md)。
-- 若要开始使用图形 Runbook，请参阅[创建图形 Runbook](automation-tutorial-runbook-graphical.md)。
-- 若要开始使用 PowerShell 工作流 Runbook，请参阅[创建 PowerShell 工作流 Runbook](automation-tutorial-runbook-textual.md)。
 - 若要了解有关 Runbook 类型、其优点和限制的详细信息，请参阅 [Azure 自动化 Runbook 类型](../automation-runbook-types.md)。
 - 若要了解如何使用 Python 进行 Azure 开发，请参阅[适用于 Python 开发人员的 Azure](/azure/python/)。
-- 若要查看 Python 2 runbook 示例，请参阅 [Azure 自动化 GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python)。
+
+- 若要查看 Python 2 runbook 示例，请查看 [GitHub 上的 Azure 自动化](https://github.com/azureautomation/runbooks/tree/master/Utility/Python)存储库。

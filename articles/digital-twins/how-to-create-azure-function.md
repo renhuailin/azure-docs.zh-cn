@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5dddaabf47a261f741b3b1cb8d3319d589c4e474
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 03917b332d6ce204cda0ec072d213a0844690b94
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480715"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787826"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>在 Azure 中连接函数应用以处理数据
 
@@ -132,14 +132,14 @@ ms.locfileid: "107480715"
 1. 使用以下命令查看函数的系统托管标识的详细信息。 记下输出中的 `principalId` 字段。
 
     ```azurecli-interactive 
-    az functionapp identity show -g <your-resource-group> -n <your-App-Service-(function-app)-name> 
+    az functionapp identity show --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name>   
     ```
 
     >[!NOTE]
     > 如果结果为空而不是显示标识详细信息，请使用以下命令为函数创建新的系统托管标识：
     > 
     >```azurecli-interactive    
-    >az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>  
+    >az functionapp identity assign --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name>    
     >```
     >
     > 输出会显示标识的详细信息，包括下一步所需的 `principalId` 值。 
@@ -158,7 +158,7 @@ ms.locfileid: "107480715"
 > 通过将 https:// 添加到实例主机名的开头，创建 Azure 数字孪生实例的 URL。 若要查看主机名以及实例的所有属性，请运行 `az dt show --dt-name <your-Azure-Digital-Twins-instance>`。
 
 ```azurecli-interactive 
-az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-host-name>"
+az functionapp config appsettings set --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-host-name>"
 ```
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)

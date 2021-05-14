@@ -1,6 +1,6 @@
 ---
-title: 为具有 Azure Active Directory 的应用程序配置组声明 |Microsoft Docs
-description: 有关如何配置与 Azure AD 一起使用的组声明的信息。
+title: 在 Azure Active Directory 中为应用程序配置组声明 | Microsoft Docs
+description: 有关如何配置要在 Azure AD 中使用的组声明的信息。
 services: active-directory
 documentationcenter: ''
 ms.reviewer: paulgarn
@@ -13,140 +13,140 @@ ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
 ms.openlocfilehash: bef5942707c1ded22ba82bdb0d945b9fdb23fffa
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96349344"
 ---
-# <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>为应用程序配置组声明 Azure Active Directory
+# <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>在 Azure Active Directory 中为应用程序配置组声明
 
-Azure Active Directory 可以提供令牌中的用户组成员身份信息，以供在应用程序中使用。  支持以下两种主要模式：
+Azure Active Directory 可以在应用程序内使用的令牌中提供用户组成员身份信息。  支持两种主要模式：
 
-- 由其 Azure Active Directory 对象标识符标识的组 (OID) 特性
-- 由 sAMAccountName 或 GroupSID 属性标识的组 Active Directory (AD) 同步组和用户
+- 由组的 Azure Active Directory 对象标识符 (OID) 特性标识的组
+- 由 Active Directory (AD) 同步组和用户的 sAMAccountName 或 GroupSID 特性标识的组
 
 > [!IMPORTANT]
-> 此功能需要注意一些注意事项：
+> 对于此功能，需要注意几个事项：
 >
->- 支持使用从本地同步的 SID) 属性 (sAMAccountName 和安全标识符，旨在实现从 AD FS 和其他标识提供程序移动现有应用程序。 在 Azure AD 中管理的组不包含发出这些声明所需的属性。
->- 在较大的组织中，用户所属的组的数量可能会超出 Azure Active Directory 将添加到令牌中的限制。 150组适用于 SAML 令牌，200用于 JWT。 这可能导致不可预知的结果。 如果用户的组成员数量很大，我们建议使用选项将在声明中发出的组限制为应用程序的相关组。  
->- 对于新的应用程序开发，或在可以为应用程序配置应用程序的情况下，以及不需要嵌套组支持的情况下，我们建议在应用程序中授权基于应用程序角色而不是组。  这会限制需要传入令牌的信息量，更安全，并可将用户分配与应用配置分隔开来。
+>- 支持使用从本地同步的 sAMAccountName 和安全标识符 (SID) 特性的目的是为了能够从 AD FS 和其他标识提供者移动现有应用程序。 在 Azure AD 中管理的组不包含发出这些声明所需的特性。
+>- 在较大的组织中，某个用户所属的组的数量可能会超过 Azure Active Directory 可在令牌中添加的组数限制。 SAML 令牌限制为 150 个组，JWT 限制为 200 个组。 这可能会导致不可预知的结果。 如果你的用户是大量组的成员，我们建议使用相应的选项，将声明中发出的组限制为与应用程序相关的组。  
+>- 对于新的应用程序开发，或者在可以为应用程序配置嵌套组支持或不需要这种支持的情况下，我们建议使应用内授权基于应用程序角色，而不是基于组。  这种做法可以限制需要传入令牌的信息量，且更安全，而且还能将用户分配与应用配置分隔开来。
 
-## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-identity-providers"></a>从 AD FS 和其他标识提供程序迁移的应用程序的组声明
+## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-identity-providers"></a>从 AD FS 和其他标识提供者迁移的应用程序的组声明
 
-许多配置为用 AD FS 进行身份验证的应用程序依赖于 Windows AD 组属性形式的组成员身份信息。   这些属性是组 sAMAccountName，可由域名限定，或 Windows 组安全标识符 (GroupSID) 。  当应用程序与 AD FS 联合时，AD FS 使用 TokenGroups 函数来检索用户的组成员身份。
+许多已配置为使用 AD FS 进行身份验证的应用程序依赖于 Windows AD 组特性形式的组成员身份信息。   这些特性是可按域名限定的组 sAMAccountName，或者是 Windows 组安全标识符 (GroupSID)。  当应用程序与 AD FS 联合时，AD FS 将使用 TokenGroups 函数来检索用户的组成员身份。
 
-已从 AD FS 移动的应用需要采用相同格式的声明。 可以从包含域限定的 sAMAccountName 或从 Active Directory （而不是组的 Azure Active Directory objectID）同步的 Azure Active Directory 发出组和角色声明。
+已从 AD FS 移动的应用需要相同格式的声明。 可以从 Azure Active Directory 发出包含已从 Active Directory 同步的域限定 sAMAccountName 或 GroupSID（而不是组的 Azure Active Directory objectID）的组和角色声明。
 
 组声明支持的格式为：
 
-- **Azure Active Directory 组 ObjectId** (适用于所有组) 
-- **sAMAccountName** (可用于从 Active Directory 同步的组) 
-- **NetbiosDomain\sAMAccountName** (可用于从 Active Directory 同步的组) 
-- **DNSDomainName\sAMAccountName** (可用于从 Active Directory 同步的组) 
-- **本地组安全标识符** (可用于从 Active Directory 同步的组) 
+- Azure Active Directory 组 ObjectId（可用于所有组）
+- sAMAccountName（可用于从 Active Directory 同步的组）
+- NetbiosDomain\sAMAccountName（可用于从 Active Directory 同步的组）
+- DNSDomainName\sAMAccountName（可用于从 Active Directory 同步的组）
+- 本地组安全标识符（可用于从 Active Directory 同步的组）
 
 > [!NOTE]
-> sAMAccountName 和本地组 SID 属性仅适用于从 Active Directory 同步的组对象。   它们不可用于在 Azure Active Directory 或 Office365 中创建的组。   在 Azure Active Directory 中配置为同步本地组属性的应用程序仅为同步的组获取这些属性。
+> sAMAccountName 和本地组 SID 特性仅可用于从 Active Directory 同步的组对象。   它们不可用于在 Azure Active Directory 或 Office365 中创建的组。   在 Azure Active Directory 中配置为获取已同步本地组特性的应用程序只会获取已同步组的这些特性。
 
-## <a name="options-for-applications-to-consume-group-information"></a>应用程序使用组信息的选项
+## <a name="options-for-applications-to-consume-group-information"></a>供应用程序使用组信息的选项
 
-应用程序可以调用 MS Graph 组终结点，以获取经过身份验证的用户的组信息。 此调用可以确保用户所属的所有组在涉及大量组时仍可用。  组枚举随后独立于标记大小限制。
+应用程序可以调用 MS Graph 组终结点来获取经过身份验证的用户的组信息。 此调用确保即使涉及到大量的组，某个用户所属的所有组也仍可供使用。  然后，组枚举可以不考虑令牌大小限制。
 
-但是，如果现有应用程序需要通过声明使用组信息，则可以使用多种不同的声明格式来配置 Azure Active Directory。  请考虑以下选项：
+但是，如果现有应用程序预期通过声明使用组信息，你可以在 Azure Active Directory 中配置一些不同的声明格式。  请考虑以下选项：
 
-- 将组成员身份用于应用程序内授权时，最好使用组 ObjectID。 组 ObjectID 在 Azure Active Directory 中是不可变的，并且可用于所有组。
-- 如果使用本地组 sAMAccountName 进行授权，请使用域限定名称; 名称冲突的可能性较低。 sAMAccountName 在 Active Directory 域中可能是唯一的，但如果有多个 Active Directory 域与某个 Azure Active Directory 租户同步，则可能存在多个同名的组。
-- 请考虑使用 [应用程序角色](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) 提供组成员身份和应用程序之间的间接层。   然后，应用程序会根据令牌中的角色声明进行内部授权决定。
-- 如果将应用程序配置为获取从 Active Directory 同步的组属性，并且组不包含这些属性，则不会将其包含在声明中。
-- 标记中的组声明包括嵌套组，但使用选项将组声明限制为分配给应用程序的组时除外。  如果用户是 GroupB 的成员，并且 GroupB 为 GroupA 的成员，则该用户的组声明将同时包含 GroupA 和 GroupB。 当组织的用户具有大量组成员身份时，令牌中列出的组数可能会增长令牌大小。  Azure Active Directory 将在令牌中发出的组数限制为 SAML 断言为150，为 JWT 限制为200。  如果用户是较大组的成员，则会忽略这些组，而是改为包含用于获取组信息的图形端点的链接。
+- 将组成员身份用于应用程序内授权时，最好是使用组 ObjectID。 组 ObjectID 在 Azure Active Directory 中不可变且唯一，并可用于所有组。
+- 如果使用本地组 sAMAccountName 进行授权，请使用域限定的名称，这样可以减少名称冲突的可能性。 sAMAccountName 在 Active Directory 域中可能是唯一的，但如果有多个 Active Directory 域已与某个 Azure Active Directory 租户同步，则可能会出现多个组同名的情况。
+- 请考虑使用[应用程序角色](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md)在组成员身份与应用程序之间提供一个间接层。   然后，应用程序会根据令牌中的角色声明做出内部授权决策。
+- 如果将应用程序配置为获取已从 Active Directory 同步的组特性，而某个组并不包含这些特性，则不会将该组包含在声明中。
+- 令牌中的组声明包括嵌套组，但使用相应选项将组声明限制为已分配给应用程序的组时除外。  如果某个用户是组 B 的成员，而组 B 是组 A 的成员，则该用户的组声明将包含组 A 和组 B。 当组织中的用户是大量组的成员时，令牌中列出的组数可能会增大令牌大小。  对于 SAML 断言和 JWT，Azure Active Directory 将它在令牌中发出的组数分别限制为 150 个和 200 个。  如果某个用户是更多组的成员，则会忽略这些组，并改为在令牌中包含用于获取组信息的 Graph 终结点的链接。
 
-## <a name="prerequisites-for-using-group-attributes-synchronized-from-active-directory"></a>使用从 Active Directory 同步的组属性的先决条件
+## <a name="prerequisites-for-using-group-attributes-synchronized-from-active-directory"></a>使用从 Active Directory 同步的组特性的先决条件
 
-如果使用 ObjectId 格式，则可以在任何组的令牌中发出组成员资格声明。 若要使用组 ObjectId 以外的其他格式的组声明，必须使用 Azure AD Connect 从 Active Directory 同步组。
+如果使用 ObjectId 格式，则可以在任何组的令牌中发出组成员资格声明。 若要使用格式并非组 ObjectId 的组声明，必须使用 Azure AD Connect 从 Active Directory 同步组。
 
-配置 Azure Active Directory 以发出 Active Directory 组的组名的步骤有两个。
+可通过两个步骤将 Azure Active Directory 配置为发出 Active Directory 组的组名。
 
-1. **从 Active Directory 同步组名称** 在 Azure Active Directory 可以在组或角色声明中发出组名或本地组 SID 之前，需要从 Active Directory 同步所需的属性。  必须运行1.2.70 或更高版本的 Azure AD Connect。   早于1.2.70 的 Azure AD Connect 将从 Active Directory 同步组对象，但不包括所需的组名称属性。  升级到当前版本。
+1. 从 Active Directory 同步组名：在 Azure Active Directory 可以在组或角色声明中发出组名或本地组 SID 之前，需要从 Active Directory 同步所需的特性。  必须运行 Azure AD Connect 1.2.70 或更高版本。   低于 1.2.70 的 Azure AD Connect 版本将从 Active Directory 同步组对象，但不会包含所需的组名特性。  请升级到最新版本。
 
-2. **将 Azure Active Directory 中的应用程序注册配置为包括令牌中的组声明** 可以在门户的 "企业应用程序" 部分或使用应用程序注册部分中的应用程序清单来配置组声明。  若要配置应用程序清单中的组声明，请参阅下面的 "配置组属性的 Azure Active Directory 应用程序注册"。
+2. 将 Azure Active Directory 中的应用程序注册配置为在令牌中包含组声明：可以在门户的“企业应用程序”部分，或者使用“应用程序注册”部分的“应用程序清单”来配置组声明。  若要在应用程序清单中配置组声明，请参阅下面的“在 Azure Active Directory 应用程序注册中配置组特性”。
 
 ## <a name="add-group-claims-to-tokens-for-saml-applications-using-sso-configuration"></a>使用 SSO 配置将组声明添加到 SAML 应用程序的令牌
 
-若要为库或非库 SAML 应用程序配置组声明，请打开 " **企业应用程序**"，单击列表中的应用程序，选择 " **单一登录配置**"，然后选择 " **用户属性 & 声明**"。
+若要为库或非库 SAML 应用程序配置组声明，请打开“企业应用程序”，在列表中单击该应用程序，选择“单一登录配置”，然后选择“用户特性和声明”  。
 
-单击 "**添加组声明**"  
+单击“添加组声明”  
 
-![屏幕截图，显示 "用户属性 & 声明" 页，并选中 "添加组声明"。](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
+![显示“用户特性和声明”页的屏幕截图，其中选择了“添加组声明”。](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
 
-使用单选按钮来选择哪些组应包括在令牌中
+使用单选按钮选择要将哪些组包含在令牌中
 
-![显示 "组声明" 窗口并选择 "安全组" 的屏幕截图。](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
+![显示“组声明”窗口的屏幕截图，其中选择了“安全组”。](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
 
 | 选择 | 说明 |
 |----------|-------------|
-| **所有组** | 发出安全组和通讯组列表和角色。  |
+| **所有组** | 发出安全组、通讯组列表和角色。  |
 | **安全组** | 在组声明中发出用户所属的安全组 |
-| **目录角色** | 如果为用户分配了目录角色，则会将其作为 "wids" 声明发出 (不会发出组声明)  |
-| **分配给应用程序的组** | 仅发出显式分配给应用程序的组，并且该用户是其成员 |
+| **目录角色** | 如果为用户分配了目录角色，这些角色将作为“wids”声明发出（不会发出组声明） |
+| **分配给应用程序的组** | 仅发出已显式分配给应用程序并且用户是其成员的组 |
 
-例如，若要发出用户所属的所有安全组，请选择 "安全组"
+例如，若要发出用户是其成员的所有安全组，请选择“安全组”
 
-![屏幕截图，显示 "组声明" 窗口，其中选定了 "安全组"，并打开了 "源属性" 下拉菜单。](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
+![显示“组声明”窗口的屏幕截图，其中选择了“安全组”，并已打开“源特性”下拉菜单。](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
 
-若要使用从 Active Directory （而不是 Azure AD objectIDs）同步的 Active Directory 属性发出组，请从下拉端中选择所需的格式。 只有从 Active Directory 同步的组才会包含在声明中。
+若要使用已从 Active Directory 同步的 Active Directory 特性（而不是 Azure AD objectID）发出组，请从下拉菜单中选择所需的格式。 声明中只会包含已从 Active Directory 同步的组。
 
-![显示 "源属性" 下拉菜单打开的屏幕截图。](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
+![该屏幕截图显示“源特性”下拉菜单已打开。](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
 
-若要仅发出分配给应用程序的组，请选择 **"分配给应用程序的组"**
+若要仅发出已分配给应用程序的组，请选择“分配给应用程序的组”
 
-![屏幕截图，显示 "组声明" 窗口，其中选择了 "分配给应用程序的组"。](media/how-to-connect-fed-group-claims/group-claims-ui-4-1.png)
+![显示“组声明”窗口的屏幕截图，其中选择了“分配给应用程序的组”。](media/how-to-connect-fed-group-claims/group-claims-ui-4-1.png)
 
-分配给该应用程序的组将包含在令牌中。  用户所属的其他组将被忽略。  如果使用此选项，则不包括嵌套组，并且用户必须是分配给应用程序的组的直接成员。
+令牌中将包含已分配给应用程序的组。  将忽略用户所属的其他组。  使用此选项时，将不包含嵌套组，并且用户必须是已分配给应用程序的组的直属成员。
 
-若要更改分配给应用程序的组，请从 " **企业应用程序** " 列表中选择应用程序，然后在应用程序的左侧导航菜单中单击 " **用户和组** "。
+要更改分配给应用程序的组，请在“企业应用程序”列表中选择该应用程序，然后在该应用程序的左侧导航菜单中单击“用户和组” 。
 
-有关管理应用程序的组分配的详细信息，请参阅 [将用户或组分配到企业应用](../../active-directory/manage-apps/assign-user-or-group-access-portal.md) 。
+有关管理应用程序的组分配的详细信息，请参阅文档[向企业应用分配用户或组](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)。
 
 ### <a name="advanced-options"></a>高级选项
 
-发出组声明的方式可以通过 "高级选项" 下的设置进行修改
+可以通过“高级选项”下的设置修改组声明的发出方式
 
-自定义组声明的名称：如果选择此选项，则可以为组声明指定不同的声明类型。   在 "名称" 字段中输入声明类型，并在 "命名空间" 字段中输入声明的可选命名空间。
+自定义组声明的名称：如果选择此设置，则可为组声明指定不同的声明类型。   在“名称”字段中输入声明类型，并在“命名空间”字段中输入声明的可选命名空间。
 
-![屏幕截图显示 "高级选项" 部分，其中包含 "自定义组声明名称" 和输入的 "名称" 和 "命名空间" 值。](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
+![显示“高级选项”部分的屏幕截图，其中选择了“自定义组声明的名称”，并输入了“名称”和“命名空间”值。](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
 
-某些应用程序要求组成员身份信息显示在 "role" 声明中。 您可以选择将用户的组作为角色发出，方法是选中 "发出组角色声明" 框。
+某些应用程序要求在“role”声明中显示组成员身份信息。 可以选择性地选中“将组作为角色声明发出”框，以将用户的组作为角色发出。
 
-![屏幕截图显示 "高级选项" 部分，其中包含 "自定义组声明名称" 和 "作为角色声明发出组"。](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
+![显示“高级选项”部分的屏幕截图，其中选择了“自定义组声明的名称”和“将组作为角色声明发出”。](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
 
 > [!NOTE]
-> 如果使用作为角色发出组数据的选项，则角色声明中将只显示组。  分配给用户的任何应用程序角色将不会出现在角色声明中。
+> 如果使用了将组数据作为角色发出的选项，则角色声明中只会显示组。  分配给用户的任何应用程序角色都不会显示在角色声明中。
 
 ### <a name="edit-the-group-claims-configuration"></a>编辑组声明配置
 
-将组声明配置添加到 & 声明配置的用户属性后，添加组声明的选项将灰显。 若要更改组声明配置，请单击 " **其他声明** " 列表中的组声明。
+将组声明配置添加到“用户特性和声明”配置后，用于添加组声明的选项将灰显。若要更改组声明配置，请在“其他声明”列表中单击该组声明。
 
 ![声明 UI](media/how-to-connect-fed-group-claims/group-claims-ui-7.png)
 
-## <a name="configure-the-azure-ad-application-registration-for-group-attributes"></a>为组属性配置 Azure AD 应用程序注册
+## <a name="configure-the-azure-ad-application-registration-for-group-attributes"></a>在 Azure AD 应用程序注册中配置组特性
 
-还可在[应用程序清单](../../active-directory/develop/reference-app-manifest.md)的 "[可选声明](../../active-directory/develop/active-directory-optional-claims.md)" 部分中配置组声明。
+还可以在[应用程序清单](../../active-directory/develop/reference-app-manifest.md)的[可选声明](../../active-directory/develop/active-directory-optional-claims.md)部分配置组声明。
 
-1. 在门户中 >Azure Active Directory > 应用程序注册->选择 "应用程序 >清单"
+1. 门户 ->“Azure Active Directory”->“应用程序注册”->“选择应用程序”>“清单”
 
-2. 通过更改 groupMembershipClaim 启用组成员身份声明
+2. 通过更改 groupMembershipClaim 来启用组成员身份声明
 
-有效值是：
+有效值为：
 
 | 选择 | 说明 |
 |----------|-------------|
-| **一切** | 发出安全组、分发列表和角色 |
+| **"All"** | 发出安全组、通讯组列表和角色 |
 | **"SecurityGroup"** | 在组声明中发出用户所属的安全组 |
-| **"DirectoryRole"** | 如果为用户分配了目录角色，则会将其作为 "wids" 声明发出 (不会发出组声明)  |
-| **ApplicationGroup** | 仅发出显式分配给应用程序的组，并且该用户是其成员 |
-| **内容** | 不返回任何组。 (其不 sensetive，因此它也不会起作用，可以直接在应用程序清单中进行设置。 )  |
+| **"DirectoryRole"** | 如果为用户分配了目录角色，这些角色将作为“wids”声明发出（不会发出组声明） |
+| **"ApplicationGroup"** | 仅发出已显式分配给应用程序并且用户是其成员的组 |
+| **"None"** | 不返回任何组。（此值不区分大小写，因此也可以指定 none；可以直接在应用程序清单中设置。） |
 
    例如：
 
@@ -158,7 +158,7 @@ Azure Active Directory 可以提供令牌中的用户组成员身份信息，以
 
 3. 设置组名配置可选声明。
 
-   如果希望令牌中的组包含本地 AD 组属性，请在 "可选声明" 部分中指定要应用的标记类型可选声明。  可以列出多个令牌类型：
+   如果你希望令牌中的组包含本地 AD 组特性，请在“可选声明”部分指定要将可选声明应用到哪个令牌类型。  可以列出多个令牌类型：
 
    - OIDC ID 令牌的 idToken
    - OAuth/OIDC 访问令牌的 accessToken
@@ -205,7 +205,7 @@ Azure Active Directory 可以提供令牌中的用户组成员身份信息，以
 }
  ```
 
-若要发出以 netbiosDomain\samAccountName 格式返回的组名作为 SAML 和 OIDC ID 令牌中的角色声明：
+若要发出以 netbiosDomain\samAccountName 格式作为 SAML 和 OIDC ID 令牌中的角色声明返回的组名，请使用以下代码：
 
 ```json
 "optionalClaims": {
@@ -223,6 +223,6 @@ Azure Active Directory 可以提供令牌中的用户组成员身份信息，以
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用组 & 将声明添加到 ASP.NET Core web 应用 (代码示例的组) ](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/5-WebApp-AuthZ/5-2-Groups/README.md)
+- [使用组和组声明向 ASP.NET Core Web 应用添加授权（代码示例）](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/5-WebApp-AuthZ/5-2-Groups/README.md)
 - [向企业应用分配用户或组](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)
 - [配置角色声明](../../active-directory/develop/active-directory-enterprise-app-role-management.md)

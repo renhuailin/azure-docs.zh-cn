@@ -4,12 +4,12 @@ description: 在本教程中，你将配置事件网格以侦听策略状态更�
 ms.date: 03/29/2021
 ms.topic: tutorial
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1fe87e4fd3349df7d8f5d57b2b2d95f95ed3fba8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d2017b4e85c4d064fc206d9b908be126559032bd
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105734870"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752014"
 ---
 # <a name="tutorial-route-policy-state-change-events-to-event-grid-with-azure-cli"></a>教程：使用 Azure CLI 将策略状态更改事件路由到事件网格
 
@@ -39,7 +39,7 @@ ms.locfileid: "105734870"
 
 事件网格主题是 Azure 资源，必须放置在 Azure 资源组中。 该资源组是在其中部署和管理 Azure 资源的逻辑集合。
 
-使用“[az group create](/cli/azure/group)”命令创建资源组。 
+使用“[az group create](/cli/azure/group)”命令创建资源组。
 
 以下示例在 _westus_ 位置创建名为 `<resource_group_name>` 的资源组。 将 `<resource_group_name>` 替换为资源组的唯一名称。
 

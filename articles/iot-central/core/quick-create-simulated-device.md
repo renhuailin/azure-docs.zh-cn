@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 2eb0e3ce2ac20c89d9c0176ca3e7b33dc839c923
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: fca83b895596568fba7b9641956dba8e4843d2ca
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718820"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108206810"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>快速入门：将模拟设备添加到 IoT Central 应用程序
 
@@ -124,7 +124,7 @@ ms.locfileid: "107718820"
 
 ## <a name="add-a-simulated-device"></a>添加模拟设备
 
-若要将模拟设备添加到应用程序，请使用创建的“ESP32”设备模板。
+若要将模拟设备添加到应用程序，请使用创建的 ESP32 设备模板。
 
 1. 若要添加新设备，请在左侧窗格中选择“设备”。 “设备”选项卡显示“所有设备”和 ESP32 设备的“传感器控制器”设备模板  。 选择“传感器控制器”。
 

@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
-ms.openlocfilehash: b2b405e7f6babf84ef8297310a5a7a34c3f2dc11
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b11a6082a5c86526e04a8b78db30650c37d467fc
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102623206"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108793263"
 ---
 认知服务提供两个自然语言处理服务：[语言理解](../luis/what-is-luis.md)和 [QnA Maker](../qnamaker/overview/overview.md)，每个服务的用途不同。 本文介绍每个服务的使用时机，以及两者如何相辅相成。
 
@@ -73,7 +73,7 @@ ms.locfileid: "102623206"
 
 借助 Bot Framework **[Dispatch CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** 工具生成一个流程来处理这两个服务。 此工具将为意向生成一个顶层 LUIS 应用，用于调度充当子应用的 LUIS 和 QnA Maker。 [详细了解](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs)如何与 LUIS、QnA Maker 和 Bot Framework 集成。
 
-使用以 [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) 或 [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch) 编写的机器人生成器示例 **具有调度功能的 NLP** 可以实现此类聊天机器人。
+使用以 [C#](https://github.com/microsoft/BotBuilder-Samples/tree/main/samples/csharp_dotnetcore/14.nlp-with-orchestrator) 或 [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/main/samples/javascript_nodejs/14.nlp-with-orchestrator) 编写的机器人生成器示例 **具有调度功能的 NLP** 可以实现此类聊天机器人。
 
 ## <a name="best-practices"></a>最佳做法
 
