@@ -1,14 +1,14 @@
 ---
-title: 为 Linux 上的应用程序配置证书
+title: 在 Linux 上配置应用程序的证书
 description: 在 Linux 群集上使用 Service Fabric 运行时配置应用的证书
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: pepogors
 ms.openlocfilehash: 70f9cc38d84681f68c10882889214648a4dd2624
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98785560"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Linux 群集上的证书和安全性

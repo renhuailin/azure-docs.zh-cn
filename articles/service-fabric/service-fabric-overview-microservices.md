@@ -3,12 +3,12 @@ title: Azure 微服务简介
 description: 概述了为何使用微服务方法生成云应用程序对于开发现代应用程序非常重要，以及 Azure Service Fabric 如何提供一个平台来实现此目的。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: d20e04820c87a7390d9c20e511259ee9860c27f5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 46d4be7321057bd7a5ee19e0aca136c8c60d43bc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96575646"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044424"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>为何使用微服务方法构建应用程序？
 
@@ -194,7 +194,7 @@ Service Fabric 的目标是将构建微服务应用程序的复杂性降低，�
 
 * [微服务：由云支持的应用程序变革](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
 * [Azure 体系结构中心：在 Azure 上构建微服务](/azure/architecture/microservices/)
-* [Azure Service Fabric 应用程序和群集最佳做法](service-fabric-best-practices-overview.md)
+* [Azure Service Fabric 应用程序和群集最佳做法](./service-fabric-best-practices-security.md)
 * [Service Fabric 术语概述](service-fabric-technical-overview.md)
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png

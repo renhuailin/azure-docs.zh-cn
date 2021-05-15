@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 2/23/2018
 ms.author: atsenthi
 ms.openlocfilehash: e6174f35bd54b3ca0b2c5240a663369350b30ce8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86241890"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric 容器网络模式
 
-容器服务的 Azure Service Fabric 群集默认使用 nat 网络模式  。 使用 nat 模式时，如果多个容器服务在相同端口上进行侦听，则会发生部署错误。 为了支持在相同端口上进行多个容器服务侦听，Service Fabric 提供开放网络模式（版本 5.7 和更高版本）  。 在开放模式下，每个容器服务都具有动态分配的内部 IP 地址，支持在相同端口上同时侦听多个服务。  
+容器服务的 Azure Service Fabric 群集默认使用 nat 网络模式。 使用 nat 模式时，如果多个容器服务在相同端口上进行侦听，则会发生部署错误。 为了支持在相同端口上进行多个容器服务侦听，Service Fabric 提供开放网络模式（版本 5.7 和更高版本）。 在开放模式下，每个容器服务都具有动态分配的内部 IP 地址，支持在相同端口上同时侦听多个服务。  
 
 如果在服务清单中有一个带静态终结点的容器服务，则可以使用开放模式创建和删除新服务，这不会造成部署错误。 相同的 docker-compose.yml 文件还可结合使用静态端口映射，创建多个服务。
 
@@ -26,7 +26,7 @@ ms.locfileid: "86241890"
 
 ## <a name="set-up-open-networking-mode"></a>设置开放网络模式
 
-1. 设置 Azure 资源管理器模板。 在群集资源的 fabricSettings  部分中，启用 DNS 服务和 IP 提供程序： 
+1. 设置 Azure 资源管理器模板。 在群集资源的 fabricSettings 部分中，启用 DNS 服务和 IP 提供程序： 
 
     ```json
     "fabricSettings": [
@@ -193,14 +193,14 @@ ms.locfileid: "86241890"
 
    |设置 |值 |
    | --- | --- |
-   |优先度 |2000 |
+   |优先级 |2000 |
    |名称 |Custom_Dns  |
    |源 |VirtualNetwork |
-   |目标 | VirtualNetwork |
+   |目的地 | VirtualNetwork |
    |服务 | DNS (UDP/53) |
    |操作 | Allow  |
 
-4. 在应用程序清单中为每个服务指定网络模式 `<NetworkConfig NetworkType="Open">`。 开放网络模式使服务获得专用 IP 地址  。 如果未指定模式，服务默认使用 nat 模式  。 在以下清单示例中，`NodeContainerServicePackage1` 和 `NodeContainerServicePackage2` 服务均可在相同端口上进行侦听（这两个服务都在 `Endpoint1` 上进行侦听）。 如果指定了开放网络模式，便无法指定 `PortBinding` 配置。
+4. 在应用程序清单中为每个服务指定网络模式 `<NetworkConfig NetworkType="Open">`。 开放网络模式使服务获得专用 IP 地址。 如果未指定模式，服务默认使用 nat 模式。 在以下清单示例中，`NodeContainerServicePackage1` 和 `NodeContainerServicePackage2` 服务均可在相同端口上进行侦听（这两个服务都在 `Endpoint1` 上进行侦听）。 如果指定了开放网络模式，便无法指定 `PortBinding` 配置。
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -235,7 +235,7 @@ ms.locfileid: "86241890"
     >Linux 群集上不支持混合不同服务的网络模式。 
     >
 
-5. 选择“打开”  模式时，服务清单中的**终结点**定义应显式指向终结点所对应的代码包，即使服务包中只有一个代码包，也是如此。 
+5. 选择“打开”模式时，服务清单中的 **终结点** 定义应显式指向终结点所对应的代码包，即使服务包中只有一个代码包，也是如此。 
    
    ```xml
    <Resources>

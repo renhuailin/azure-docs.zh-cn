@@ -6,10 +6,10 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: c92b55d3ac7f4476b7b74d25b40150a74c6ea1cf
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98930162"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight 上的 Apache Spark 群集的已知问题
@@ -72,9 +72,9 @@ HDInsight Spark 群集不支持 Spark-Phoenix 连接器。
 
 必须改用 Spark-HBase 连接器。 相关说明请参阅[如何使用 Spark-HBase 连接器](https://web.archive.org/web/20190112153146/https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/)。
 
-## <a name="issues-related-to-jupyter-notebooks"></a>与 Jupyter 笔记本相关的问题
+## <a name="issues-related-to-jupyter-notebooks"></a>与 Jupyter Notebook 相关的问题
 
-下面是与 Jupyter 笔记本相关的一些已知问题。
+下面是与 Jupyter Notebook 相关的一些已知问题。
 
 ### <a name="notebooks-with-non-ascii-characters-in-filenames"></a>笔记本的文件名中包含非 ASCII 字符
 
@@ -92,12 +92,12 @@ HDInsight Spark 群集不支持 Spark-Phoenix 连接器。
 
 若要防止今后发生此错误，必须遵循一些最佳实践：
 
-* 必须保持较小的笔记本大小。 发回到 Jupyter 的所有 Spark 作业输出都将保存在笔记本中。  通常，最佳做法是使用 Jupyter，以避免 `.collect()` 在大型 RDD 或 dataframes 上运行; 而如果想要查看 RDD 的内容，请考虑运行 `.take()` 或， `.sample()` 这样您的输出将不会变得过大。
+* 必须保持较小的笔记本大小。 发回到 Jupyter 的所有 Spark 作业输出都将保存在笔记本中。  一般而言，Jupyter 的最佳用法是避免对大型 RDD 或数据帧运行 `.collect()`；相反，如果想要查看 RDD 的内容，请考虑运行 `.take()` 或 `.sample()`，以使输出不至于过大。
 * 此外，在保存笔记本时，请清除所有输出单元以减小大小。
 
 ### <a name="notebook-initial-startup-takes-longer-than-expected"></a>笔记本初次启动花费的时间比预期要长
 
-使用 Spark 幻数 Jupyter Notebook 中的第一个代码语句可能需要超过一分钟。  
+在使用 Spark magic 的 Jupyter Notebook 中，第一个代码语句可能需要花费一分钟以上。  
 
 **解释：**
 
@@ -105,7 +105,7 @@ HDInsight Spark 群集不支持 Spark-Phoenix 连接器。
 
 ### <a name="jupyter-notebook-timeout-in-creating-the-session"></a>创建会话时 Jupyter Notebook 超时
 
-当 Spark 群集资源不足时，Jupyter Notebook 中的 Spark 和 PySpark 内核将无法尝试创建会话。
+如果 Spark 群集的资源不足，Jupyter Notebook 中的 Spark 和 PySpark 内核在尝试创建会话时会超时。
 
 **缓解措施：**
 
@@ -124,7 +124,7 @@ HDInsight Spark 群集不支持 Spark-Phoenix 连接器。
 
 * [Apache Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](apache-spark-use-bi-tools.md)
 * [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 结合 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](apache-spark-machine-learning-mllib-ipython.md)
 * [使用 HDInsight 中的 Apache Spark 分析网站日志](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>创建和运行应用程序
@@ -137,8 +137,8 @@ HDInsight Spark 群集不支持 Spark-Phoenix 连接器。
 * [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](apache-spark-intellij-tool-plugin.md)
 * [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Apache Spark 应用程序](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [在 HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本](apache-spark-zeppelin-notebook.md)
-* [适用于 HDInsight 的 Apache Spark 群集中的 Jupyter Notebook 可用的内核](apache-spark-jupyter-notebook-kernels.md)
-* [将外部包与 Jupyter 笔记本配合使用](apache-spark-jupyter-notebook-use-external-packages.md)
+* [在 HDInsight 的 Apache Spark 群集中可用于 Jupyter Notebook 的内核](apache-spark-jupyter-notebook-kernels.md)
+* [将外部包与 Jupyter Notebook 配合使用](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>管理资源

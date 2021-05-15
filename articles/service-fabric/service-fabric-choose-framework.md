@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
 ms.openlocfilehash: 523c9e0064d8b78698f1a0dd3544bda58436800c
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96575714"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Service Fabric 编程模型概述
@@ -23,7 +23,7 @@ Service Fabric 提供了多种方法来编写和管理服务。 服务可以选�
 
 ## <a name="containers"></a>容器
 
-默认情况下，Service Fabric 以进程形式部署和激活这些服务。 Service Fabric 还可以在[容器](service-fabric-containers-overview.md)中部署服务。 Service Fabric 支持在 Windows Server 2016 及更高版本上部署 Linux 容器 和 Windows 容器。 可以从任何容器存储库中提取容器映像，并将其部署到计算机上。 可以在容器中将现有应用程序部署为来宾可执行文件、Service Fabric 无状态/有状态可靠服务或 Reliable Actors，并可以将进程中的服务和容器中的服务混用于同一应用程序。
+默认情况下，Service Fabric 以进程形式部署和激活服务。 Service Fabric 还可以在[容器](service-fabric-containers-overview.md)中部署服务。 Service Fabric 支持在 Windows Server 2016 及更高版本上部署 Linux 容器 和 Windows 容器。 可以从任何容器存储库中提取容器映像，并将其部署到计算机上。 可以在容器中将现有应用程序部署为来宾可执行文件、Service Fabric 无状态/有状态可靠服务或 Reliable Actors，并可以将进程中的服务和容器中的服务混用于同一应用程序。
 
 [了解有关在 Windows 或 Linux 中容器化服务的详细信息](./service-fabric-get-started-containers.md)
 
@@ -45,7 +45,7 @@ ASP.NET Core 是一种开源跨平台框架，用于构建现代基于云的连�
 
 ## <a name="reliable-actors"></a>Reliable Actors
 
-可靠执行组件框架是在 Reliable Services 的基础之上构建的，它是一种基于计算执行组件[模型](https://en.wikipedia.org/wiki/Actor_model)实现[虚拟](https://research.microsoft.com/en-us/projects/orleans/)执行组件模式的应用程序框架。 Reliable Actor 框架通过称为“执行组件”  的单线程执行使用独立的计算单元和状态单元。 Reliable Actor 为执行组件提供内置通信，以及提供预设的状态暂留和扩展配置。
+Reliable Actor 框架在 Reliable Services 的基础上生成，是基于计算性[执行组件](https://en.wikipedia.org/wiki/Actor_model)模型实现[虚拟执行组件](https://research.microsoft.com/en-us/projects/orleans/)模式的应用程序框架。 Reliable Actor 框架通过称为“执行组件”  的单线程执行使用独立的计算单元和状态单元。 Reliable Actor 为执行组件提供内置通信，以及提供预设的状态暂留和扩展配置。
 
 由于 Reliable Actors 是在 Reliable Services 基础上构建的应用程序框架，因此它完全与 Service Fabric 平台集成，并且受益于平台所提供的完整功能集。
 

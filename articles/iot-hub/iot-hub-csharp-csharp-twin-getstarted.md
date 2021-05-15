@@ -11,10 +11,10 @@ ms.date: 08/26/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
 ms.openlocfilehash: 267a69486dc91ef95c0de704346eeb1d1780ef48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89013752"
 ---
 # <a name="get-started-with-device-twins-net"></a>设备孪生入门 (.NET)
@@ -234,7 +234,7 @@ ms.locfileid: "89013752"
 
 1. 在“通用属性” > “启动项目”中，选择“多启动项目”。 对于“ReportConnectivity”，选择“启动”作为“操作”。 选择“确定”保存更改。  
 
-1. 右键单击 ReportConnectivity 项目并选择“调试”，然后选择“启动新实例”来运行此应用  。 应该显示应用正在获取孪生信息，然后将连接性作为报告属性发送。
+1. 右键单击 ReportConnectivity 项目并选择“调试”，然后选择“启动新实例”来运行此应用  。 应会看到应用将获取孪生信息，然后将连接信息作为报告属性发送。
 
     ![运行设备应用以报告连接性](./media/iot-hub-csharp-csharp-twin-getstarted/rundeviceapp.png)
 

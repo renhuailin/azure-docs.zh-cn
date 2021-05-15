@@ -1,5 +1,5 @@
 ---
-title: 管理紧急访问管理帐户-Azure AD
+title: 管理紧急访问管理员帐户 - Azure AD
 description: 本文介绍如何借助紧急访问帐户来防止意外地被锁在 Azure Active Directory (Azure AD) 组织之外的情况。
 services: active-directory
 author: markwahl-msft
@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6a1e4b3b44004ec6d03c293bbd10617b3d3af69
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98740816"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>在 Azure AD 中管理紧急访问帐户
@@ -60,7 +60,7 @@ ms.locfileid: "98740816"
 
 ## <a name="federation-guidance"></a>联合身份验证指南
 
-某些组织使用 AD 域服务和 ADFS 或类似的标识提供程序来联合 Azure AD。 [不应存在具有管理权限的本地帐户](../fundamentals/protect-m365-from-on-premises-attacks.md)。 在 Azure AD 外部对具有管理权限的帐户进行控制和或采购身份验证会在系统 () 出现中断或泄漏时增加不必要的风险。
+一些组织使用 AD 域服务和 ADFS 或类似的标识提供者与 Azure AD 进行联合。 [不应存在具有管理权限的本地帐户](../fundamentals/protect-m365-from-on-premises-attacks.md)。 在 Azure AD 外部掌控和/或执行对具有管理权限的帐户的身份验证会在这些系统出现服务中断或遭到入侵时增加不必要的风险。
 
 ## <a name="store-account-credentials-safely"></a>安全地存储帐户凭据
 

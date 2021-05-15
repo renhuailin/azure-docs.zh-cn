@@ -1,5 +1,5 @@
 ---
-title: 云服务 (经典) 和管理证书 |Microsoft Docs
+title: 云服务（经典）和管理证书 | Microsoft Docs
 description: 了解如何创建和部署证书以用于云服务以及在 Azure 中对管理 API 进行身份验证。
 ms.topic: article
 ms.service: cloud-services
@@ -9,16 +9,16 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: c73f9812f344eecf4e51f43405b48693ddfa191b
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98739728"
 ---
-# <a name="certificates-overview-for-azure-cloud-services-classic"></a> (经典) 的 Azure 云服务的证书概述
+# <a name="certificates-overview-for-azure-cloud-services-classic"></a>Azure 云服务（经典）证书概述
 
 > [!IMPORTANT]
-> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
 证书在 Azure 中用于云服务（[服务证书](#what-are-service-certificates)）以及用于通过管理 API 进行身份验证（[管理证书](#what-are-management-certificates)）。 本主题同时提供了有关这两种证书类型的一般概述，并说明了如何[创建](#create)并将其部署到 Azure。
 
@@ -59,7 +59,7 @@ Azure 使用的证书可以包含一个公钥。 证书具有指纹，它提供�
 * 为密钥交换（.pfx 文件）而创建。
 * 使用者名称必须与用于访问云服务的域匹配。
 
-    > 你无法获取 cloudapp.net (或任何 Azure 相关) 域的 TLS/SSL 证书;证书的使用者名称必须与用于访问应用程序的自定义域名匹配。 例如，**contoso.net**，而不是 **contoso.cloudapp.net**。
+    > 无法获取 cloudapp.net 域（或与 Azure 相关的任何域）的 TLS/SSL 证书；该证书的使用者名称必须与用于访问应用程序的自定义域名匹配。 例如，**contoso.net**，而不是 **contoso.cloudapp.net**。
 
 * 至少采用 2048 位加密。
 * **仅服务证书**：客户端证书必须驻留在“个人”证书存储中。

@@ -1,17 +1,17 @@
 ---
 title: 配置 Azure IoT Central 仪表板 | Microsoft Docs
 description: 作为构建者，了解如何用磁贴配置默认 Azure IoT Central 应用程序仪表板。
-author: TheJasonAndrew
-ms.author: v-anjaso
+author: philmea
+ms.author: philmea
 ms.date: 12/19/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 73c78f514f974b97eb178177f12dc4ceff7ede63
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8a8ba765a966409c06dbba636932f7777624f6d4
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97797003"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864246"
 ---
 # <a name="configure-the-application-dashboard"></a>配置应用程序仪表板
 
@@ -67,7 +67,7 @@ ms.locfileid: "97797003"
 | 热度地图         | 热度地图磁贴显示一个或多个设备的相关信息，并用不同颜色加以展示。|
 | 上一个已知值 | 上一个已知值磁贴显示一个或多个设备的最新遥测值。 例如，可以使用此磁贴显示一个或多个设备的最新温度、压力和湿度值。 |
 | 事件历史记录    | “事件历史记录”磁贴显示设备在一段时间内的事件。 例如，可以使用它来显示最近一小时内一个或多个设备的所有阀打开和关闭事件。|
-| Property         |  属性磁贴显示一个或多个设备的属性和云属性的当前值。 例如，可以使用此磁贴显示设备属性，如设备的制造商或固件版本。 |
+| 属性         |  属性磁贴显示一个或多个设备的属性和云属性的当前值。 例如，可以使用此磁贴显示设备属性，如设备的制造商或固件版本。 |
 
 目前，最多可以向支持多个设备的磁贴添加 10 个设备。
 
@@ -93,7 +93,7 @@ ms.locfileid: "97797003"
 
 添加条件格式规则：
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="显示平均流量的条件格式规则。有三个规则 - 小于 20 为绿色，小于 50 为黄色，超过 50 则为红色":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="显示平均流的条件格式规则的屏幕截图。有三条规则 - 小于 20 为绿色、小于 50 为黄色、超过 50 则为红色":::
    
 以下屏幕截图显示了条件格式规则的效果：
 

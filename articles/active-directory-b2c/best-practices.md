@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: 1c3c3d38ac0d8334f70f681d8ef86c0d6f86ecfa
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
-ms.translationtype: MT
+ms.openlocfilehash: 2c8a9121d0e36eb51cd02c2c884ddcaa0dd79a79
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750214"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226203"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>适用于 Azure Active Directory B2C 的建议和最佳做法
 
@@ -26,9 +26,9 @@ ms.locfileid: "96750214"
 
 | 最佳做法 | 说明 |
 |--|--|
-| 选择大多数方案的用户流 | Azure AD B2C 的 Identity Experience Framework 是该服务的核心优势。 策略充分描述了标识体验，例如注册、登录或配置文件编辑。 为了帮助你设置最常见的标识任务，Azure AD B2C 门户中提供了称作“用户流”的预定义可配置策略。 使用用户流，只需按几下鼠标就能快速创建极佳的用户体验。 [了解用户流与自定义策略的使用时机](custom-policy-overview.md#comparing-user-flows-and-custom-policies)。|
+| 选择大多数方案的用户流 | Azure AD B2C 的 Identity Experience Framework 是该服务的核心优势。 策略充分描述了标识体验，例如注册、登录或配置文件编辑。 为了帮助你设置最常见的标识任务，Azure AD B2C 门户中提供了称作“用户流”的预定义可配置策略。 使用用户流，只需按几下鼠标就能快速创建极佳的用户体验。 [了解用户流与自定义策略的使用时机](user-flow-overview.md#comparing-user-flows-and-custom-policies)。|
 | 应用注册 | 必须在 Azure AD B2C 中注册每个要保护的应用程序（Web、本机）和 API。 如果应用具有 iOS 和 Android 的 Web 版与本机版，则你可以使用相同的客户端 ID 在 Azure AD B2C 中将其注册为一个应用程序。 了解如何[注册 OIDC、SAML、Web 和本机应用](./tutorial-register-applications.md?tabs=applications)。 详细了解[可在 Azure AD B2C 中使用的应用程序类型](./application-types.md)。 |
-| 转移到月度活跃用户计费模式 | Azure AD B2C 已从月度活跃身份验证计费模式转移到月度活跃用户 (MAU) 计费模式。 大多数客户会发现这种模式更具性价比。 [详细了解月度活跃用户计费](https://azure.microsoft.com/updates/mau-billing/)。 [保存此链接](b2clogin.md) |
+| 转移到月度活跃用户计费模式 | Azure AD B2C 已从月度活跃身份验证计费模式转移到月度活跃用户 (MAU) 计费模式。 大多数客户会发现这种模式更具性价比。 [详细了解月度活跃用户计费](https://azure.microsoft.com/updates/mau-billing/)。 |
 
 ## <a name="planning-and-design"></a>规划和设计
 
@@ -43,7 +43,7 @@ ms.locfileid: "96750214"
 | 创建迁移计划 |提前规划能够使迁移更顺利地进行。 详细了解[用户迁移](user-migration.md)。|
 | 可用性与安全性 | 解决方案必须致力于在应用程序可用性与组织可接受的风险级别之间取得适当的平衡。 |
 | 将本地依赖项转移到云中 | 为了帮助确保解决方案具有复原能力，请考虑将现有的应用程序依赖项转移到云中。 |
-| 将现有应用迁移到 b2clogin.com | 弃用的 login.microsoftonline.com 将对2004年12月 2020 12 日的所有 Azure AD B2C 租户生效。 [了解详细信息](b2clogin.md)。 |
+| 将现有应用迁移到 b2clogin.com | 2020 年 12 月 4 日，适用于所有 Azure AD B2C 租户的 login.microsoftonline.com 将正式弃用。 [了解详细信息](b2clogin.md)。 |
 | 使用标识保护和条件访问 | 使用这些功能可以更好地控制有风险的身份验证和访问策略。 需要 Azure AD B2C Premium P2。 [了解详细信息](conditional-access-identity-protection-overview.md)。 |
 
 ## <a name="implementation"></a>实现
@@ -68,7 +68,7 @@ ms.locfileid: "96750214"
 | A/B 测试 | 先在外部让少量的随机用户体验你的新功能，然后再将其推出到整个用户群。 在 Azure AD B2C 中启用 JavaScript 后，可与 Optimizely、Clarity 等 A/B 测试工具相集成。 |
 | 负载测试 | Azure AD B2C 可以缩放，但应用程序仅在其所有依赖项均可缩放时才能缩放。 对 API 和 CDN 进行负载测试。 |
 | 限制 |  如果在短时间内从同一个源发送了过多的请求，Azure AD B2C 会限制流量。 执行负载测试时请使用多个流量源，并在应用程序中适当处理 `AADB2C90229` 错误代码。 |
-| 自动化 | 使用持续集成和交付 (CI/CD) 管道自动执行测试和部署，例如 [Azure DevOps](deploy-custom-policies-devops.md)。 |
+| 自动化 | 使用持续集成和交付 (CI/CD) 管道将测试和部署自动化，例如 [Azure DevOps](deploy-custom-policies-devops.md)。 |
 
 ## <a name="operations"></a>操作
 
@@ -80,11 +80,11 @@ ms.locfileid: "96750214"
 | 对自定义策略使用版本控制 | 考虑对 Azure AD B2C 自定义策略使用 GitHub、Azure Repos 或其他基于云的版本控制系统。 |
 | 使用 Microsoft Graph API 将 B2C 租户管理自动化 | Microsoft Graph API：<br/>管理 [Identity Experience Framework](/graph/api/resources/trustframeworkpolicy?preserve-view=true&view=graph-rest-beta)（自定义策略）<br/>[“键”](/graph/api/resources/trustframeworkkeyset?preserve-view=true&view=graph-rest-beta)<br/>[用户流](/graph/api/resources/identityuserflow?preserve-view=true&view=graph-rest-beta) |
 | 与 Azure DevOps 集成 | [CI/CD 管道](deploy-custom-policies-devops.md)可在不同环境之间轻松移动代码，并确保在所有时间都能实现生产就绪。   |
-| 与 Azure Monitor 集成 | [审核日志事件](view-audit-logs.md) 只保留7天。 [与 Azure Monitor 集成](azure-monitor.md)，以保留日志供长期使用，或者将其与第三方安全信息和事件管理 (SIEM) 工具相集成，以获取有关环境的见解。 |
-| 设置有效警报和监视 | 使用 Application Insights 跟踪 Azure AD B2C 中的[用户行为](./analytics-with-application-insights.md)。 |
+| 与 Azure Monitor 集成 | [审核日志事件](view-audit-logs.md)仅保留七天。 [与 Azure Monitor 集成](azure-monitor.md)，以保留日志供长期使用，或者将其与第三方安全信息和事件管理 (SIEM) 工具相集成，以获取有关环境的见解。 |
+| 设置有效警报和监视 | 使用 Application Insights 在 Azure AD B2C 中[跟踪用户行为](./analytics-with-application-insights.md)。 |
 
 ## <a name="support-and-status-updates"></a>支持和状态更新
-## <a name="todays-support-and-status-updates"></a>今天的支持和状态更新
+
 随时关注服务状态并查找支持选项。
 
 | 最佳做法 | 说明 |

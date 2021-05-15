@@ -1,5 +1,5 @@
 ---
-title: 流量覆盖率 |Microsoft Azure 映射
+title: 流量覆盖率 | Microsoft Azure Maps
 description: 了解 Azure Maps 中的流量覆盖率。 查看有关流量和事件的信息是否在世界各地的不同区域中可用。
 author: anastasia-ms
 ms.author: v-stharr
@@ -9,17 +9,17 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 11aa0eb07ed9cb3a1a785b3155b832f8b447708f
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92896865"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps 交通覆盖区域
 
 Azure Maps 以交通 **流** 和 **事件** 的形式提供丰富的交通信息。 此数据可以在地图上直观显示，或生成在实际驾驶条件下作为因素考虑的更智能路线。
 
-但对于所有国家或地区，地图没有相同级别的信息和准确性。 下表提供了可从每个国家或地区请求的通信信息类型的相关信息： 
+但是，Maps 并非对所有国家/地区或区域提供相同级别的信息和准确性。 下表提供了可从每个国家/地区或区域请求的流量信息类别的相关信息： 
 
 ## <a name="americas"></a>美洲
 
@@ -110,8 +110,8 @@ Azure Maps 以交通 **流** 和 **事件** 的形式提供丰富的交通信息
 |乌克兰     |✓         |✓         |
 |英国     |✓         |✓         |
 |+直布罗陀     |✓         |✓         |
-|+ 根西岛 & Jersey     |✓         |✓         |
-|+ Isle     |✓         |✓         |
+|+格恩西岛和泽西岛     |✓         |✓         |
+|+马恩岛     |✓         |✓         |
 |梵蒂冈   |✓         |✓         |
 
 
