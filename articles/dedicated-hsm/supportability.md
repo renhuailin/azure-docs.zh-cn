@@ -13,10 +13,10 @@ ms.custom: seodec18
 ms.date: 03/27/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d83d688707baf6098d63dfde9b4181eb04fb9729
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "70881017"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Azure 专用 HSM 的支持
@@ -26,19 +26,19 @@ Azure 专用 HSM 服务提供供单个客户使用的物理设备，由客户对
 
 ## <a name="getting-support"></a>获取支持
 
-客户对专用 HSM 的支持是 Microsoft 与 Gemalto 身份之间的共同努力。 Microsoft 将对任何硬件问题或网络路径问题进行处理，并使用实际 HSM （如配置、软件、固件和应用程序开发）进行的任何操作都将通过 Gemalto 身份进行寻址。 此支持模式可确保最快地路由到最有效的支持。 如果不确定具体的问题，请向 Microsoft 提出支持请求，我们将确保你得到适当的指导。 Microsoft 将继续参与所有支持方案，并尽力为客户提供最佳的支持体验。
+专用 HSM 的客户支持由 Microsoft 与 Gemalto 共同提供。 Microsoft 将负责解决任何硬件问题或网络路径问题，而有关配置、软件、固件和应用程序开发等实际 HSM 的任何问题，将由 Gemalto 负责解决。 这种支持模式可确保以最快的速度获得最有效的支持。 如果对特定问题存有疑问，请向 Microsoft 提出支持请求，我们将确保你得到适当的指导。 Microsoft 将继续参与所有支持方案，力求为客户提供最佳支持体验。
 
 ## <a name="gemalto-support"></a>Gemalto 支持
 
-使用专用 HSM 服务的客户根据其 Plus 支持计划提供 Gemalto 身份的支持。 这只需要使用 Gemalto 身份支持门户的注册过程。 为此，我们将提供客户 ID 和说明作为首次与 Microsoft 合作以获取对专用 HSM 服务的访问权限。 从 Gemalto 获得支持的机制是[客户支持门户](https://supportportal.gemalto.com/csm/)。
-重要的一点是，Gemalto 身份将提供使用 HSM (所需的所有软件和文档（例如，客户端访问软件和 Sdk) 通过下载在客户支持门户上）。
+使用专用 HSM 服务的客户有资格根据其 Plus 支持计划获取 Gemalto 支持。 只需按照 Gemalto 支持门户的流程进行注册即可。 为此，我们将在初次与 Microsoft 接洽过程中提供客户 ID 和说明，以获取对专用 HSM 服务的访问权限。 从 Gemalto 获得支持的机制是[客户支持门户](https://supportportal.gemalto.com/csm/)。
+重要的一点是，Gemalto 将通过从客户支持门户下载的方式提供使用 HSM 所需的所有软件和文档（例如，客户端访问软件和 SDK）。
 
 ### <a name="software-components"></a>软件组件
 
 HSM 设备的配置中使用各种软件组件：
 
 * 客户端软件
-* SDK
+* SDK 中 IsInRole 中的声明
 * 工具
 
 ### <a name="guidance"></a>指南
@@ -55,7 +55,7 @@ Gemalto 通过[客户支持门户](https://supportportal.gemalto.com/csm/)提供
 
 ## <a name="microsoft-support"></a>Microsoft 支持
 
-Microsoft 将确保物理 HSM 设备可通过网络访问，并处于可供单个客户独占使用的操作状态。 客户负责对设备进行配置、管理和管理。 Microsoft 的责任包括：
+Microsoft 将确保物理 HSM 设备可访问网络且处于正常运行状态，仅供单个客户使用。 设备的配置和管理由客户负责。 Microsoft 的责任包括：
 
 * 确保为设备提供电源和散热装置
 * 保持 HSM 的正常运行状态（例如，中断/修复方案）
@@ -76,7 +76,7 @@ Microsoft 可以通过监视角色（非管理角色）使用物理串行端口�
 
 ### <a name="hardware-issues"></a>硬件问题
 
-HSM 设备带有冗余且可更换的电源和风扇装置。  但是，风扇单元删除仍将导致篡改事件。 发生组件故障时，Microsoft 将采用最适当的过程来解决组件级问题，并尽最大努力减少对客户服务可用性造成中断和风险。
+HSM 设备带有冗余且可更换的电源和风扇装置。  但是，移除风扇装置仍会导致篡改事件。 发生组件故障时，Microsoft 将采用最适当的过程来解决组件级问题，并尽最大努力减少对客户服务可用性造成中断和风险。
 如果发生更严重的设备故障，Microsoft 将使用可用池中的全新设备来更换故障设备。 客户只需将新设备加入到现有的高可用性对中，即可让其同步并恢复完全正常运行状态。 将拆除故障设备上的数据保存装置，然后在数据中心现场粉碎该设备。 只会将机箱退回到 Gemalto 进行回收。
 
 

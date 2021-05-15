@@ -1,19 +1,21 @@
 ---
 title: 适用于 Azure 数据目录的键盘快捷方式
-description: 本文显示了可以在 Azure 数据目录中使用的键盘快捷方式的列表。
+description: 本文介绍可以在 Azure 数据目录中使用的键盘快捷方式列表。
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 72d1ce0ded61b1143f99769319892981f3cd1c10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: a3bd36d9e0654225b7678b7cd7a3b8ebdb381d1b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "69014455"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "104674591"
 ---
 # <a name="keyboard-shortcuts-for-azure-data-catalog"></a>适用于 Azure 数据目录的键盘快捷方式
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 ## <a name="keyboard-shortcuts-for-the-data-catalog-data-source-registration-tool"></a>适用于数据目录数据源注册工具的键盘快捷方式
 
@@ -51,7 +53,7 @@ ms.locfileid: "69014455"
 | 包括“数据配置文件”复选框（如果可用） |ALT+D |
 | 导航到每个列表项 |向上或向下箭头 |
 | 服务器层次结构，展开树视图的节点 |向右键 |
-| 为“可用对象”**** 或“要注册的对象”**** 移动所选项 |空格键 |
+| 为“可用对象” 或“要注册的对象”移动所选项 |空格键 |
 
 ### <a name="publish-progress-page"></a>发布进度页
 | 操作 | 请按 |
@@ -77,6 +79,6 @@ ms.locfileid: "69014455"
 | 在发现页上，当某项资产具有焦点时，选择资产 |空格键或 Enter 键 |
 | 从多选中添加/删除资产 |Ctrl+空格键或 Enter 键 |
 | 切换“搜索匹配项”菜单 |Alt+S |
-| 切换“打开方式”**** 菜单 |ALT+O |
+| 切换“打开方式”菜单 |ALT+O |
 | 浏览容器（如果资产为容器） |ALT+L |
 

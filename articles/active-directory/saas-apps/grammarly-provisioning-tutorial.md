@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2021
 ms.author: Zhchia
-ms.openlocfilehash: 39d1e9e439ad1b14b6f6517868c21c682c45a7a3
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: ca01289ce66afe642081e5be17373e640dd1e46d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130577"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864799"
 ---
 # <a name="tutorial-configure-grammarly-for-automatic-user-provisioning"></a>教程：为 Grammarly 配置自动用户预配
 
-本教程介绍了在 Grammarly 和 Azure Active Directory (Azure AD) 中配置自动用户预配需执行的步骤。 配置后，Azure AD 会使用 Azure AD 预配服务自动将用户和组预配到 [Grammarly](https://www.grammarly.com/) 和取消预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。 
+本教程介绍了在 Grammarly 和 Azure Active Directory (Azure AD) 中配置自动用户预配需执行的步骤。 配置后，Azure AD 会使用 Azure AD 预配服务自动将用户和组预配到 [Grammarly](https://www.grammarly.com/) 和取消预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
@@ -37,16 +37,16 @@ ms.locfileid: "108130577"
 
 本教程中概述的方案假定你已具有以下先决条件：
 
-* [Azure AD 租户](../develop/quickstart-create-new-tenant.md) 
-* 具有配置预配[权限](../roles/permissions-reference.md)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。 
+* [Azure AD 租户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* 具有配置预配[权限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。 
 * 具有管理员访问权限的 Grammarly 业务帐户。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 计划预配部署
-1. 了解[预配服务的工作原理](../app-provisioning/user-provisioning.md)。
-1. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
-1. 确定[在 Azure AD 与 Grammarly 之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
+1. 了解[预配服务的工作原理](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
+1. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)中。
+1. 确定[在 Azure AD 与 Grammarly 之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
 
-## <a name="step-2-configure-grammarly-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 Grammarly 以支持通过 Azure AD 进行预配
+## <a name="step-2-configure-grammarly-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 Grammarly 以支持通过 Azure AD 进行预配
 
 与你的 Grammarly 代表联系，或写信到 <support@grammarly.com> 请求预配令牌。
 
@@ -87,7 +87,7 @@ ms.locfileid: "108130577"
 
 1. 在“管理员凭据”部分的“租户 URL”字段中，输入 `https://sso.grammarly.com/scim/v2`，然后在“机密令牌”字段中输入 Grammarly 提供的令牌（参见上面的步骤 2）。 单击“测试连接”，确保 Azure AD 可连接到 Grammarly。 如果连接失败，请确保 Grammarly 帐户具有管理员权限，然后重试。
 
-    ![屏幕截图显示“租户 URL”和“机密令牌”框。](common/provisioning-testconnection-tenanturltoken.png)
+    ![显示“租户 URL”和“机密令牌”框的屏幕截图。](common/provisioning-testconnection-tenanturltoken.png)
 
 1. 在“通知电子邮件”框中输入应接收预配错误通知的人员或组的电子邮件地址。 选中“发生故障时发送电子邮件通知”复选框。
 

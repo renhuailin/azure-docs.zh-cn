@@ -1,19 +1,19 @@
 ---
 title: 删除 Azure VMware Solution by CloudSimple 私有云
 description: 了解如何删除 CloudSimple 私有云。 删除私有云时，所有群集都将被删除。
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/06/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7db967955dc86db39db4dcb2b3a2baf8906efb20
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8ff5d251daca97ab5f0557f016ef47c7d77c2b2e
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97896254"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108182365"
 ---
 # <a name="delete-a-cloudsimple-private-cloud"></a>删除 CloudSimple 私有云
 

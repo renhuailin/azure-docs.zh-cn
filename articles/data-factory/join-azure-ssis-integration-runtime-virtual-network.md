@@ -7,10 +7,10 @@ ms.date: 11/02/2020
 author: swinarko
 ms.author: sawinark
 ms.openlocfilehash: 9a82b305adec1385bf659987ea39df6bb953cd70
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100370965"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>将 Azure-SSIS 集成运行时加入虚拟网络
@@ -68,10 +68,10 @@ ms.locfileid: "100370965"
 
 ## <a name="access-to-data-sources-protected-by-ip-firewall-rule"></a>访问 IP 防火墙规则保护的数据源
 
-如果你的 SSIS 包访问的数据存储区/资源只允许特定的静态公共 IP 地址，并且你想要从 Azure-SSIS IR 保护对这些资源的访问，则可以将 [公共 IP 地址](../virtual-network/virtual-network-public-ip-address.md) 与 Azure-SSIS IR 相关联，同时将其加入虚拟网络，然后将 ip 防火墙规则添加到相关资源，以允许从这些 IP 地址进行访问。 可以通过两种方法执行此操作： 
+如果 SSIS 包访问仅允许特定静态公共 IP 地址的数据存储/资源，并且你想要从 Azure-SSIS IR 保护对这些资源的访问，则可以将[公共 IP 地址](../virtual-network/virtual-network-public-ip-address.md)与 Azure-SSIS IR 相关联，同时将其加入虚拟网络，然后将 IP 防火墙规则添加到相关的 Azure 资源，以允许来自这些 IP 地址的访问。 可通过两种替代方法来实现此目的： 
 
-- 创建 Azure-SSIS IR 时，可以引入自己的公共 IP 地址，并通过 [数据工厂 UI 或 SDK](#join-the-azure-ssis-ir-to-a-virtual-network)指定这些地址。 只有 Azure-SSIS IR 的出站 internet 连接将使用你提供的公共 IP 地址，并且子网中的其他设备将不会使用它们。
-- 你还可以为 Azure-SSIS IR 将加入的子网设置 [虚拟网络 NAT](../virtual-network/nat-overview.md) ，此子网中的所有出站连接将使用你指定的公共 IP 地址。
+- 创建 Azure-SSIS IR 时，可以自带公共 IP 地址，并通过[数据工厂 UI 或 SDK](#join-the-azure-ssis-ir-to-a-virtual-network) 指定。 只有 Azure-SSIS IR 的出站 Internet 连接将使用你提供的公共 IP 地址，子网中的其他设备将不使用它们。
+- 你还可以为 Azure-SSIS IR 将加入的子网设置[虚拟网络 NAT](../virtual-network/nat-overview.md)，并且该子网中的所有出站连接都将使用你指定的公共 IP 地址。
 
 在所有情况下，都只能通过 Azure 资源管理器部署模型部署虚拟网络。
 
@@ -123,7 +123,7 @@ ms.locfileid: "100370965"
 
 - 确保选择的子网具有足够的可用地址空间以供 Azure-SSIS IR 使用。 将可用 IP 地址数保持为 IR 节点数的至少两倍。 Azure 会保留每个子网中的某些 IP 地址。 不能使用这些地址。 子网的第一个和最后一个 IP 地址仅为协议一致性而保留，其他三个地址用于 Azure 服务。 有关详细信息，请参阅[使用这些子网中的 IP 地址是否有任何限制？](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets) 
 
-- 请勿使用由其他 Azure 服务独占的子网 (例如，SQL 数据库 SQL 托管实例、应用服务等) 。 
+- 不要使用其他 Azure 服务（例如，SQL 数据库 SQL 托管实例、应用服务等）以独占方式占用的子网。 
 
 ### <a name="select-the-static-public-ip-addresses"></a><a name="publicIP"></a>选择静态公共 IP 地址
 
@@ -140,7 +140,7 @@ ms.locfileid: "100370965"
 - 这些 IP 地址和虚拟网络应位于同一区域中的同一订阅下。
 
 ### <a name="set-up-the-dns-server"></a><a name="dns_server"></a> 设置 DNS 服务器 
-如果你需要在由 Azure-SSIS IR 联接的虚拟网络中使用你自己的 DNS 服务器来解析你的专用主机名，请确保它还可以解析全局 Azure 主机名 (例如，名为) 的 Azure 存储 blob `<your storage account>.blob.core.windows.net` 。 
+如果需要在 Azure-SSIS IR 加入的虚拟网络中使用自己的 DNS 服务器来解析专用主机名，请确保该服务器也可以解析 全局 Azure 主机名（例如，名为 `<your storage account>.blob.core.windows.net` 的 Azure 存储 Blob）。 
 
 下面是建议的一种方法： 
 
@@ -184,7 +184,7 @@ ms.locfileid: "100370965"
 
 不能将 Azure Batch 管理服务与 Azure-SSIS IR 之间的入站流量路由到防火墙设备，否则流量会由于非对称路由问题而中断。 必须为入站流量定义路由，使流量能够以其传入时的相同方式做出回复。 可以定义特定的 UDR，在 Azure Batch 管理服务与下一跃点类型为“Internet”的 Azure-SSIS IR 之间路由流量。
 
-例如，如果你的 Azure-SSIS IR 位于 `UK South` ，并且你想要通过 Azure 防火墙检查出站流量，则首先将 `BatchNodeManagement.UKSouth` 从 [服务标记 ip 范围下载链接](https://www.microsoft.com/download/details.aspx?id=56519) 或通过 [服务标记发现 API](../virtual-network/service-tags-overview.md#service-tags-on-premises)获取服务标记的 ip 范围列表。 然后，将以下 Udr 的相关 IP 范围路由的下一跃点类型作为 **Internet** ，并将下一跃点类型作为 **虚拟设备** 应用于 0.0.0.0/0 路由。
+例如，如果 Azure-SSIS IR 位于 `UK South`，并且你想要通过 Azure 防火墙检查出站流量，则需要先从[服务标记 IP 范围下载链接](https://www.microsoft.com/download/details.aspx?id=56519)或通过[服务标记发现 API](../virtual-network/service-tags-overview.md#service-tags-on-premises) 获取服务标记 `BatchNodeManagement.UKSouth` 的 IP 范围列表。 然后，将下一个跃点类型作为“Internet”应用相关 IP 范围路由的以下 UDR，以及将下一个跃点类型作为“虚拟设备”应用 0.0.0.0/0 路由。
 
 ![Azure Batch UDR 设置](media/join-azure-ssis-integration-runtime-virtual-network/azurebatch-udr-settings.png)
 
@@ -232,8 +232,8 @@ else
 
     | Azure 环境 | 终结点                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Azure Public      | <ul><li><b>Azure 数据工厂（管理）</b><ul><li>\*。 frontend.clouddatahub.net</li></ul></li><li><b>Azure 存储（管理）</b><ul><li>\*.blob.core.windows.net</li><li>\*。 table.core.windows.net</li></ul></li><li><b>Azure 容器注册表（自定义设置）</b><ul><li>\*.azurecr.io</li></ul></li><li><b>事件中心（日志记录）</b><ul><li>\*.servicebus.windows.net</li></ul></li><li><b>Microsoft 日志记录服务（内部使用）</b><ul><li>gcs.prod.monitoring.core.windows.net</li><li>prod.warmpath.msftcloudes.com</li><li>azurewatsonanalysis-prod.core.windows.net</li></ul></li></ul> |
-    | Azure Government  | <ul><li><b>Azure 数据工厂（管理）</b><ul><li>\*。 frontend.datamovement.azure.us</li></ul></li><li><b>Azure 存储（管理）</b><ul><li>\*.blob.core.usgovcloudapi.net</li><li>\*。 table.core.usgovcloudapi.net</li></ul></li><li><b>Azure 容器注册表（自定义设置）</b><ul><li>\*。 azurecr.us</li></ul></li><li><b>事件中心（日志记录）</b><ul><li>\*。 servicebus.usgovcloudapi.net</li></ul></li><li><b>Microsoft 日志记录服务（内部使用）</b><ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>azurewatsonanalysis.usgovcloudapp.net</li></ul></li></ul> |
+    | Azure Public      | <ul><li><b>Azure 数据工厂（管理）</b><ul><li>\*.frontend.clouddatahub.net</li></ul></li><li><b>Azure 存储（管理）</b><ul><li>\*.blob.core.windows.net</li><li>\*.table.core.windows.net</li></ul></li><li><b>Azure 容器注册表（自定义设置）</b><ul><li>\*.azurecr.io</li></ul></li><li><b>事件中心（日志记录）</b><ul><li>\*.servicebus.windows.net</li></ul></li><li><b>Microsoft 日志记录服务（内部使用）</b><ul><li>gcs.prod.monitoring.core.windows.net</li><li>prod.warmpath.msftcloudes.com</li><li>azurewatsonanalysis-prod.core.windows.net</li></ul></li></ul> |
+    | Azure Government  | <ul><li><b>Azure 数据工厂（管理）</b><ul><li>\*.frontend.datamovement.azure.us</li></ul></li><li><b>Azure 存储（管理）</b><ul><li>\*.blob.core.usgovcloudapi.net</li><li>\*.table.core.usgovcloudapi.net</li></ul></li><li><b>Azure 容器注册表（自定义设置）</b><ul><li>\*.azurecr.us</li></ul></li><li><b>事件中心（日志记录）</b><ul><li>\*.servicebus.usgovcloudapi.net</li></ul></li><li><b>Microsoft 日志记录服务（内部使用）</b><ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>azurewatsonanalysis.usgovcloudapp.net</li></ul></li></ul> |
     | Azure 中国世纪互联     | <ul><li><b>Azure 数据工厂（管理）</b><ul><li>\*.frontend.datamovement.azure.cn</li></ul></li><li><b>Azure 存储（管理）</b><ul><li>\*.blob.core.chinacloudapi.cn</li><li>\*.table.core.chinacloudapi.cn</li></ul></li><li><b>Azure 容器注册表（自定义设置）</b><ul><li>\*.azurecr.cn</li></ul></li><li><b>事件中心（日志记录）</b><ul><li>\*servicebus.chinacloudapi.cn</li></ul></li><li><b>Microsoft 日志记录服务（内部使用）</b><ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>azurewatsonanalysis.chinacloudapp.cn</li></ul></li></ul> |
 
     至于 Azure 存储、Azure 容器注册表和事件中心的 FQDN，还可以选择为虚拟网络启用以下服务终结点，使发往这些终结点的网络流量通过 Azure 主干网络而不是路由到防火墙设备：
@@ -265,7 +265,7 @@ else
     如果使用 Azure 防火墙，可以使用存储服务标记指定网络规则，否则，可以在防火墙设备中允许将特定的 Azure 文件存储 URL 用作目标。
 
 > [!NOTE]
-> 对于 Azure SQL 和存储，如果在子网上配置虚拟网络服务终结点，则同一区域或配对区域中 Azure-SSIS IR 与 Azure SQL 之间的流量将直接路由到 Microsoft Azure 主干网络，而不是直接路由到防火墙设备。
+> 对于 Azure SQL 和存储，如果在子网中配置虚拟网络服务终结点，则同一区域中 Azure-SSIS IR 和 Azure SQL 与同一区域或配对区域中 Azure 存储之间的流量将直接路由到 Microsoft Azure 主干网络，而不会路由到防火墙设备。
 
 如果你不需要检查 Azure-SSIS IR 出站流量的功能，则可以直接应用路由，以强制所有流量路由到下一跃点类型“Internet”：
 

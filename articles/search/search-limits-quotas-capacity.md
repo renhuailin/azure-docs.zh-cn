@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/02/2021
 ms.openlocfilehash: 994ed74750d159dfdb83259e9fe921f870ec2241
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99509361"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 认知搜索中的服务限制
@@ -103,18 +103,18 @@ ms.locfileid: "99509361"
 
 ## <a name="shared-private-link-resource-limits"></a>共享专用链接资源限制
 
-索引器可通过[共享专用链接资源 API](/rest/api/searchmanagement/sharedprivatelinkresources)来访问通过[专用终结点](search-indexer-howto-access-private.md)管理的其他 Azure 资源。 本部分介绍与此功能相关的限制。
+索引器可访问[专用终结点](search-indexer-howto-access-private.md)上通过[共享专用链接资源 API](/rest/api/searchmanagement/sharedprivatelinkresources) 管理的其他 Azure 资源。 本部分介绍与此功能相关的限制。
 
 | 资源 | 免费 | 基本 | S1 | S2 | S3 | S3 HD | L1 | L2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 私有终结点索引器支持 | 否 | 是 | 是 | 是 | 是 | 否 | 是 | 是 |
-| 使用技能组合<sup>1</sup>的索引器的专用终结点支持 | 否 | 否 | 否 | 是 | 是 | 否 | 是 | 是 |
-| 最大专用终结点 | 不适用 | 10或30 | 100 | 400 | 400 | 不适用 | 20 | 20 |
+| 专用终结点索引器支持 | 否 | 是 | 是 | 是 | 是 | 否 | 是 | 是 |
+| 使用技能组的索引器的专用终结点支持<sup>1</sup> | 否 | 否 | 否 | 是 | 是 | 否 | 是 | 是 |
+| 最大专用终结点 | 不适用 | 10 或 30 | 100 | 400 | 400 | 不适用 | 20 | 20 |
 | 最大不同资源类型<sup>2</sup> | 不适用 | 4 | 7 | 15 | 15 | 不适用 | 4 | 4 |
 
-<sup>1</sup> AI 扩充和图像分析计算密集型，消耗的可用处理能力不相称。 出于此原因，在较低层上禁用专用连接，以避免对搜索服务本身的性能和稳定性产生不利影响。
+<sup>1</sup> AI 扩充和图像分析属于计算密集型功能，会消耗过多的可用处理能力。 因此，在较低层上禁用专用连接，以避免对搜索服务本身的性能和稳定性产生不利影响。
 
-<sup>2</sup> 不同资源类型的数量计算为 `groupId` 在给定搜索服务的所有共享专用链接资源中使用的唯一值的数目，而不考虑资源的状态。
+<sup>2</sup> 不同资源类型的数量计算得出为在给定搜索服务的所有共享专用链接资源中使用的唯一 `groupId` 值的数目，不管资源的状态如何。
 
 ## <a name="synonym-limits"></a>同义词限制
 
@@ -131,7 +131,7 @@ ms.locfileid: "99509361"
 
 ## <a name="throttling-limits"></a>限制
 
-由于系统接近高峰容量，API 请求会受到限制。 对不同 API 的限制行为各不相同。 系统会根据服务的负载动态限制查询 API（搜索/建议/自动完成）和索引 API。 索引 Api 和服务操作 API 具有静态请求速率限制。 
+当系统接近峰值容量时，API 请求会受到限制。 对不同 API 的限制行为各不相同。 系统会根据服务的负载动态限制查询 API（搜索/建议/自动完成）和索引 API。 索引 API 和服务操作 API 具有静态请求速率限制。 
 
 索引相关操作的静态速率请求限制：
 
@@ -141,9 +141,9 @@ ms.locfileid: "99509361"
 + 创建或更新索引 (PUT /indexes/myindex)：每个搜索单位每秒限制为 6 个
 + 删除索引 (DELETE /indexes/myindex)：每个搜索单位每分钟限制为 12 个 
 
-与服务相关的操作的静态速率请求限制：
+服务相关操作的静态速率请求限制：
 
-+ 服务统计 (获取/servicestats) ：每个搜索单位每秒4次
++ 服务统计信息 (GET /servicestats)：每搜索单位每秒 4 个
 
 ## <a name="api-request-limits"></a>API 请求限制
 * 每个请求最大 16 MB <sup>1</sup>

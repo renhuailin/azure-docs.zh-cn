@@ -1,21 +1,21 @@
 ---
 title: 了解资源锁定
 description: 了解用于在分配蓝图时保护资源的 Azure 蓝图中的锁定选项。
-ms.date: 01/27/2021
+ms.date: 04/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: b2004ad294ae0eec1b4f2fc6f49308efd32d652e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3ad6bbc80818a1ba749607c44403e3efbdb064c9
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98920184"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897750"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 蓝图中的资源锁定
 
 仅当存在一个可以维护该一致性的机制时，大规模创建一致的环境才会真正有价值。 本文介绍 Azure 蓝图中的资源锁定的工作原理。 若要查看资源锁定的示例以及“拒绝分配”的应用，请参阅[保护新资源](../tutorials/protect-new-resources.md)教程。
 
 > [!NOTE]
-> Azure 蓝图所部署的资源锁定仅适用于蓝图分配所部署的资源。 现有资源（如资源组中已存在的资源）不会添加锁定。
+> 由 Azure 蓝图部署的资源锁仅适用于蓝图分配部署的[非扩展资源](../../../azure-resource-manager/templates/scope-extension-resources.md)。 现有资源（如资源组中已存在的资源）不会添加锁定。
 
 ## <a name="locking-modes-and-states"></a>锁定模式和状态
 
@@ -24,7 +24,7 @@ ms.locfileid: "98920184"
 
 由蓝图分配中的项目创建的资源有四种状态：“未锁定”、“只读”、“无法编辑/删除”或“无法删除”。 每种项目类型都可以处于“未锁定”状态。 下表可以用于确定资源的状态：
 
-|“模式”|项目资源类型|状态|说明|
+|Mode|项目资源类型|状态|说明|
 |-|-|-|-|
 |不锁定|*|未锁定|资源不受 Azure 蓝图保护。 此状态也用于从蓝图分配外部添加到“只读”或“不要删除”资源组项目的资源。|
 |只读|资源组|无法编辑/删除|资源组是只读的，资源组上的标记无法修改。 可以从此资源组添加、移动、更改或删除“未锁定”资源。|
@@ -107,7 +107,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 
 每个模式的[拒绝分配属性](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties)如下所示：
 
-|“模式” |Permissions.Actions |Permissions.NotActions |Principals[i].Type |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
+|Mode |Permissions.Actions |Permissions.NotActions |Principals[i].Type |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
 |只读 |**\** _ |_ *\*/read **<br />** Microsoft.Authorization/locks/delete **<br />** Microsoft.Network/virtualNetwork/subnets/join/action** |SystemDefined (Everyone) |“excludedPrincipals”中的蓝图分配和用户定义 |资源组 - “true”；资源 - “false”  |
 |不要删除 |**\*/delete** | **Microsoft.Authorization/locks/delete**<br />**Microsoft.Network/virtualNetwork/subnets/join/action** |SystemDefined (Everyone) |“excludedPrincipals”中的蓝图分配和用户定义 |资源组 - “true”；资源 - “false”  |

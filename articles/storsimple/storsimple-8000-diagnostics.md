@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: bf0570cd62a2c329407cfb6dd087020f53cdc991
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94954063"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>使用 StorSimple 诊断工具排查 8000 系列设备的问题
@@ -323,7 +323,7 @@ hcs_startup                                   Stopped hcs_startup
 
 ### <a name="network-test"></a>网络测试
 
-此测试验证网络接口的状态、端口、DNS 和 NTP 服务器连接、TLS/SSL 证书、存储帐户凭据、与更新服务器的连接以及 StorSimple 设备上的 web 代理连接。
+此项测试验证 StorSimple 设备上的网络接口、端口、DNS 和 NTP 服务器连接、TLS/SSL 证书、存储帐户凭据、与更新服务器的连接以及 Web 代理连接的状态。
 
 #### <a name="sample-output-of-network-test-when-only-data0-is-enabled"></a>仅启用 DATA0 时的网络测试示例输出
 

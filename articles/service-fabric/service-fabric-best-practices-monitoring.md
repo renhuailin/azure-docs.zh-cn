@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: a7b1c1b3fc3196557b862c488ee01af8b8e1f04f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 0eb9ce24f9ead44b7ba5a4d28d24177e62cb7757
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86529244"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104950512"
 ---
 # <a name="monitoring-and-diagnostic-best-practices-for-azure-service-fabric"></a>Azure Service Fabric 的监视和诊断最佳做法
 
@@ -34,7 +34,7 @@ Service Fabric 的目标之一是使应用程序能够灵活应对硬件故障�
 
 ## <a name="watchdogs"></a>监视器
 
-监视器通常是一个独立的服务，用于监视各个服务的运行状况和负载、ping 终结点，以及报告群集中的异常运行状况事件。 这有助于防止出现仅基于单个服务的性能所检测不到的错误。 监视器也是一个托管代码的好选择，无需用户交互即可执行补救措施，例如每隔特定时间就清理一次存储中的日志文件。 若要查看示例监视器服务实现，请参阅 [Syslog 中的 Service Fabric Linux 群集事件](https://github.com/Azure-Samples/service-fabric-watchdog-service)。
+监视器通常是一个独立的服务，用于监视各个服务的运行状况和负载、ping 终结点，以及报告群集中的异常运行状况事件。 这有助于防止出现仅基于单个服务的性能所检测不到的错误。 监视器也是一个托管代码的好选择，无需用户交互即可执行补救措施，例如每隔特定时间就清理一次存储中的日志文件。 如果需要完全实现的开源 SF 监视服务，其中包括易于使用的监视器可扩展性模型，同时在 Windows 和 Linux 群集中都能运行，请参阅 [FabricObserver](https://aka.ms/sf/FabricObserver) 项目。 FabricObserver 是生产就绪软件。 建议将 FabricObserver 部署到测试和生产群集，并通过其插件模型或者通过分支并编写自己的内置观察器对其扩展，以满足你的需求。 建议采用前一种（插件）方法。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -42,6 +42,6 @@ Service Fabric 的目标之一是使应用程序能够灵活应对硬件故障�
 * 通过[在 Service Fabric 上监视和诊断 ASP.NET Core 应用程序](service-fabric-tutorial-monitoring-aspnet.md)，完成为应用程序设置 Application Insights 的步骤。
 * 详细了解如何监视平台以及 Service Fabric 提供的事件：[平台级别事件和日志生成](service-fabric-diagnostics-event-generation-infra.md)。
 * 配置 Azure Monitor 日志与 Service Fabric 的集成：[为群集设置 Azure Monitor 日志](service-fabric-diagnostics-oms-setup.md)
-* 了解如何为监视容器设置 Azure Monitor 日志： [Azure 中 Windows 容器的监视和诊断 Service Fabric](service-fabric-tutorial-monitoring-wincontainers.md)。
+* 了解如何为监视容器设置 Azure Monitor 日志：[在 Azure Service Fabric 上监视和诊断 Windows 容器](service-fabric-tutorial-monitoring-wincontainers.md)。
 * 查看 Service Fabric 的示例诊断问题和解决方案：[诊断常见方案](service-fabric-diagnostics-common-scenarios.md)
-* 了解 Azure 资源的一般监视建议： [最佳做法-监视和诊断](/azure/architecture/best-practices/monitoring)。
+* 了解适用于 Azure 资源的一般性监视建议：[最佳做法 - 监视和诊断](/azure/architecture/best-practices/monitoring)。

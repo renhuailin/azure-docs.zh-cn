@@ -1,18 +1,18 @@
 ---
 title: 模板函数 - 数值
-description: 描述要在 Azure 资源管理器模板中使用的函数 (ARM 模板) 使用数字。
+description: 介绍了可在 Azure 资源管理器模板（ARM 模板）中用来处理数字的函数。
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: f3687581d94f80cc923614a0655da1813bd5c97b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97359704"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>ARM 模板的数值函数
 
-资源管理器提供了以下函数，用于在 Azure 资源管理器模板 (ARM 模板) 中处理整数：
+资源管理器提供了以下可用于在 Azure 资源管理器模板（ARM 模板）中处理整数的函数：
 
 * [add](#add)
 * [copyIndex](#copyindex)
@@ -31,7 +31,7 @@ ms.locfileid: "97359704"
 
 `add(operand1, operand2)`
 
-返回提供的两个整数的总和。 `add`Bicep 中不支持此函数。 请改用 `+` 运算符。
+返回提供的两个整数的总和。 Bicep 不支持 `add` 函数。 请改用 `+` 运算符。
 
 ### <a name="parameters"></a>parameters
 
@@ -164,7 +164,7 @@ output addResult int = first + second
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
 > [!NOTE]
-> 循环和 `copyIndex` 未在 Bicep 中实现。  请参阅 [循环](https://github.com/Azure/bicep/blob/main/docs/spec/loops.md)。
+> Bicep 中尚未实现循环和 `copyIndex`。  请参阅[循环](https://github.com/Azure/bicep/blob/main/docs/spec/loops.md)。
 
 ---
 
@@ -176,7 +176,7 @@ output addResult int = first + second
 
 `div(operand1, operand2)`
 
-返回提供的两个整数在整除后的商。 `div`Bicep 中不支持此函数。 请改用 `/` 运算符。
+返回提供的两个整数在整除后的商。 Bicep 不支持 `div` 函数。 请改用 `/` 运算符。
 
 ### <a name="parameters"></a>parameters
 
@@ -247,7 +247,7 @@ output addResult int = first / second
 
 `float(arg1)`
 
-将值转换为浮点数。 仅当将自定义参数传递给应用程序（例如，逻辑应用）时，才使用此函数。 `float`Bicep 中不支持此函数。  请参阅 [支持32位整数以外的数值类型](https://github.com/Azure/bicep/issues/486)。
+将值转换为浮点数。 仅当将自定义参数传递给应用程序（例如，逻辑应用）时，才使用此函数。 Bicep 不支持 `float` 函数。  请参阅[支持 32 位整数以外的数字类型](https://github.com/Azure/bicep/issues/486)。
 
 ### <a name="parameters"></a>parameters
 
@@ -282,7 +282,7 @@ output addResult int = first / second
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
 > [!NOTE]
-> `float`Bicep 中不支持此函数。  请参阅 [支持32位整数以外的数值类型](https://github.com/Azure/bicep/issues/486)。
+> Bicep 不支持 `float` 函数。  请参阅[支持 32 位整数以外的数字类型](https://github.com/Azure/bicep/issues/486)。
 
 ---
 
@@ -489,11 +489,11 @@ output intOutput int = min(0,3,2,5,4)
 
 `mod(operand1, operand2)`
 
-返回使用提供的两个整数整除后的余数。 `mod`Bicep 中不支持此函数。 请改用 `%` 运算符。
+返回使用提供的两个整数整除后的余数。 Bicep 不支持 `mod` 函数。 请改用 `%` 运算符。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被除数。 |
 | operand2 |是 |int |除数，不能为 0。 |
@@ -560,7 +560,7 @@ output modResult int = first % second
 
 `mul(operand1, operand2)`
 
-返回提供的两个整数的积。 `mul`Bicep 中不支持此函数。 请改用 `*` 运算符。
+返回提供的两个整数的积。 Bicep 不支持 `mul` 函数。 请改用 `*` 运算符。
 
 ### <a name="parameters"></a>parameters
 
@@ -631,7 +631,7 @@ output mulResult int = first * second
 
 `sub(operand1, operand2)`
 
-返回提供的两个整数在相减后的结果。 `sub`Bicep 中不支持此函数。 请改用 `-` 运算符。
+返回提供的两个整数在相减后的结果。 Bicep 不支持 `sub` 函数。 请改用 `-` 运算符。
 
 ### <a name="parameters"></a>parameters
 
@@ -700,5 +700,5 @@ output subResult int = first - second
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 ARM 模板中各部分的说明，请参阅 [了解 arm 模板的结构和语法](template-syntax.md)。
+* 有关 ARM 模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 * 若要在创建资源类型时迭代指定的次数，请参阅 [ARM 模板中的资源迭代](copy-resources.md)。

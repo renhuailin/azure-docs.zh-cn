@@ -1,15 +1,15 @@
 ---
 title: 使用共享访问签名限制访问 - Azure HDInsight
-description: 了解如何使用共享访问签名限制 HDInsight 访问 Azure Blob 存储中存储的数据。
+description: 了解如何使用共享访问签名限制对 Azure Blob 存储中存储的数据进行 HDInsight 访问。
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/28/2020
 ms.openlocfilehash: 647ac363dd81604f0a5a1d750d98a3349beb19c0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98931726"
 ---
 # <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure Blob 存储共享访问签名来限制访问 HDInsight 中的数据
@@ -36,7 +36,7 @@ HDInsight 对与群集关联的 Azure Blob 存储帐户中的数据拥有完全�
 
 * 如果使用 C#，Visual Studio 的版本必须是 2013 或更高。
 
-* 存储帐户的 URI 方案。 此方案 `wasb://` 适用于 Azure Blob 存储， `abfs://` 适用于 Azure Data Lake Storage Gen2 或 `adl://` Azure Data Lake Storage Gen1。 如果为 Azure Blob 存储启用安全传输，则 URI 将为 `wasbs://` 。
+* 存储帐户的 URI 方案。 对于 Azure Blob 存储，此架构为 `wasb://`；对于 Azure Data Lake Storage Gen2，此架构为 `abfs://`；对于 Azure Data Lake Storage Gen1，此架构为 `adl://`。 如果为 Azure Blob 存储启用了安全传输，则 URI 将为 `wasbs://`。
 
 * 共享访问签名要添加到的现有 HDInsight 群集。 如果没有，则可以使用 Azure PowerShell 创建群集，并在创建群集期间添加共享访问签名。
 
@@ -51,9 +51,9 @@ HDInsight 对与群集关联的 Azure Blob 存储帐户中的数据拥有完全�
 
 共享访问签名有两种形式：
 
-* `Ad hoc`： Sas 的开始时间、到期时间和权限都在 SAS URI 上指定。
+* `Ad hoc`：针对该 SAS 的开始时间、到期时间和权限全都在 SAS URI 上指定。
 
-* `Stored access policy`：存储访问策略在资源容器（例如 blob 容器）中定义。 可以使用策略来管理一个或多个共享访问签名的约束。 将某一 SAS 与一个存储访问策略相关联时，该 SAS 会继承对该存储访问策略定义的约束：开始时间、到期时间和权限。
+* `Stored access policy`：存储访问策略在资源容器（例如 Blob 容器）中定义。 可以使用策略来管理一个或多个共享访问签名的约束。 将某一 SAS 与一个存储访问策略相关联时，该 SAS 会继承对该存储访问策略定义的约束：开始时间、到期时间和权限。
 
 这两种形式之间的差异对于一个关键情形而言十分重要：吊销。 SAS 是一个 URL，因此获取 SAS 的任何人都可以使用它。 谁请求它开始并不重要。 如果 SAS 是公开发布的，则世界上的任何人都可以使用它。 在发生以下四种情况之一前分发的 SAS 有效：
 
@@ -64,7 +64,7 @@ HDInsight 对与群集关联的 Azure Blob 存储帐户中的数据拥有完全�
     * 时间间隔已过。
     * 将存储访问策略修改为具有过去的到期时间。 更改到期时间是撤销 SAS 的一种方法。
 
-3. 删除了该 SAS 引用的存储访问策略，这是用于吊销 SAS 的另一种方法。 如果重新创建同名的存储访问策略，则以前策略的所有 SAS 令牌都是有效的 (如果 SAS 上的过期时间尚未传递) 。 如果想要撤销 SAS，请确保使用不同名称（如果你使用将来的过期时间重新创建该访问策略）。
+3. 删除了该 SAS 引用的存储访问策略，这是用于吊销 SAS 的另一种方法。 如果重新创建同名的存储访问策略，以前策略的所有 SAS 令牌都将有效（如果 SAS 的到期时间尚未过）。 如果想要撤销 SAS，请确保使用不同名称（如果你使用将来的过期时间重新创建该访问策略）。
 
 4. 将重新生成用于创建 SAS 的帐户密钥。 重新生成密钥会导致使用前一密钥的所有应用程序无法通过身份验证。 将所有组件更新为使用新密钥。
 
@@ -432,7 +432,7 @@ Remove-AzResourceGroup `
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已了解如何向 HDInsight 群集添加有限访问存储，接下来了解如何通过其他方式在群集上处理数据：
+现在你已了解如何将访问受限的存储添加到 HDInsight 群集，接下来请了解在群集上处理数据的其他方法：
 
 * [将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
 * [授权用户访问 Apache Ambari 视图](hdinsight-authorize-users-to-ambari.md)

@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: f7edf790e526329dd285d03a31137a26220e52ee
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96018641"
 ---
 # <a name="using-azure-cdn-with-cors"></a>将 Azure CDN 与 CORS 一起使用
@@ -30,7 +30,7 @@ CORS 请求有两种类型：简单请求和复杂请求。
 
 ### <a name="for-simple-requests"></a>简单请求：
 
-1. 浏览器发送带有附加 **源** HTTP 请求标头的 CORS 请求。 此标头的值是为父页面提供服务的源，它被定义为协议 *、域* 和端口的组合。  当来自 https \: //www.contoso.com 的页面尝试访问 fabrikam.com 源中的用户数据时，以下请求标头将发送到 fabrikam.com：
+1. 浏览器发送带有附加 **源** HTTP 请求标头的 CORS 请求。 此标头的值是为父页面提供服务的源，它被定义为协议 *、域* 和端口的组合。  当来自 \://https://www.contoso.com 的页面尝试访问 fabrikam.com 源中的用户数据时，以下请求标头将发送到 fabrikam.com：
 
    `Origin: https://www.contoso.com`
 
@@ -64,20 +64,20 @@ CORS 请求有两种类型：简单请求和复杂请求。
 如果需要 CORS 允许一个特定的源列表，情况会稍微复杂一些。 当 CDN 缓存第一个 CORS 源的 **Access-Control-Allow-Origin** 标头时，会出现问题。  当不同的 CORS 源发出后续请求时，CDN 将为缓存的 **Access-Control-Allow-Origin** 标头提供服务，但不匹配。  有多种方法可纠正此问题。
 
 ### <a name="azure-cdn-standard-profiles"></a>Azure CDN 标准版配置文件
-在 Microsoft Azure CDN Standard 上，你可以在 [标准规则引擎](cdn-standard-rules-engine-reference.md) 中创建规则以检查请求的 **源** 标头。 如果是有效来源，则规则将使用所需值设置 **访问控制允许源** 标头。 在这种情况下，将忽略文件源服务器的 **访问控制允许源** 标头，CDN 的规则引擎会完全管理允许的 CORS 来源。
+在 Microsoft Azure CDN 标准版中，你可以在[标准规则引擎](cdn-standard-rules-engine-reference.md)中创建规则以检查请求的“Origin”标头。 如果是有效的源，规则将使用所需的值来设置 **Access-Control-Allow-Origin** 标头。 在这种情况下，来自文件的源服务器的 **Access-Control-Allow-Origin** 标头都会被忽略，并且 CDN 的规则引擎会完全管理允许的 CORS 源。
 
 ![标准规则引擎的规则示例](./media/cdn-cors/cdn-standard-cors.png)
 
 > [!TIP]
-> 你可以向规则添加其他操作，以修改其他响应标头，如 **访问控制-允许方法**。
+> 你可以向规则添加其他操作，以修改其他响应标头，如 **Access-Control-Allow-Methods**。
 > 
 
-在 **从 Akamai Azure CDN 标准** 中，允许多个源而不使用通配符源的唯一机制是使用 [查询字符串缓存](cdn-query-string.md)。 为 CDN 终结点启用查询字符串设置，并对每个允许的域的请求使用唯一的查询字符串。 这样做将导致 CDN 缓存每个唯一查询字符串的单独对象。 然而，这种方法并不理想，因为它将导致在 CDN 上缓存的同一文件出现多个副本。  
+在 Akamai 标准 **Azure CDN 中**，允许多个源但不使用通配符源的唯一[机制是使用查询字符串缓存](cdn-query-string.md)。 为 CDN 终结点启用查询字符串设置，并对每个允许的域的请求使用唯一的查询字符串。 这样做将导致 CDN 缓存每个唯一查询字符串的单独对象。 然而，这种方法并不理想，因为它将导致在 CDN 上缓存的同一文件出现多个副本。  
 
 ### <a name="azure-cdn-premium-from-verizon"></a>Verizon 提供的高级 Azure CDN
-使用 Verizon Premium 规则引擎，你将需要 [创建一个规则](./cdn-verizon-premium-rules-engine.md) 来检查请求的 **源** 标头。  如果是有效的源，规则将使用请求中提供的源设置 **Access-Control-Allow-Origin** 标头。  如果不允许在 **源** 标头中指定的源，规则应忽略 **访问控制允许源** 标头，这会导致浏览器拒绝请求。 
+使用 Verizon 高级规则引擎，你将需要 [创建一个规则](./cdn-verizon-premium-rules-engine.md)来检查请求的 **Origin** 标头。  如果是有效的源，规则将使用请求中提供的源设置 **Access-Control-Allow-Origin** 标头。  如果不允许使用在 **Origin** 标头中指定的源，规则应忽略 **Access-Control-Allow-Origin** 标头，这会导致浏览器拒绝请求。 
 
-可以通过两种方法来实现此目的。 在这两种情况下，来自文件的源服务器的 **Access-Control-Allow-Origin** 标头都会被忽略，并且 CDN 的规则引擎会完全管理允许的 CORS 源。
+有两种方法可以使用高级规则引擎来执行此操作。 在这两种情况下，来自文件的源服务器的 **Access-Control-Allow-Origin** 标头都会被忽略，并且 CDN 的规则引擎会完全管理允许的 CORS 源。
 
 #### <a name="one-regular-expression-with-all-valid-origins"></a>一个具有所有有效源的正则表达式
 在这种情况下，将创建一个正则表达式，其中包含要允许的所有源： 

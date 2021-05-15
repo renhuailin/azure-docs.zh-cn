@@ -8,23 +8,23 @@ ms.subservice: security
 ms.custom: seo-lt-2019, azure-synapse
 ms.devlang: ''
 ms.topic: conceptual
-author: jaszymas
-ms.author: jaszymas
+author: shohamMSFT
+ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 02/01/2021
-ms.openlocfilehash: e096e21e7d20c992e18634d684f663f149cc3c55
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b3403558cbc07d152bbae7e901464a8aa4a8e4d2
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101691240"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812761"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>使用客户管理的密钥进行 Azure SQL 透明数据加密
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Azure SQL [透明数据加密 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) 与客户管理的密钥共同实现了“创建自己的密钥”(BYOK) 方案，凭此可以实现静态数据保护，并使组织能够在密钥和数据管理方面实现职责分离。 使用客户管理的透明数据加密时，客户需要负责并可全面控制密钥生命周期管理（密钥创建、上传、轮换、删除）、密钥使用权限，以及密钥操作的审核。
 
-在此方案中，用于加密数据库加密密钥 (DEK) 的密钥（称作 TDE 保护器）是客户管理的非对称密钥，该密钥存储在客户自有的且由其管理的 [Azure Key Vault (AKV)](../../key-vault/general/secure-your-key-vault.md)（一个基于云的外部密钥管理系统）中。 Key Vault 是用于 RSA 加密密钥的高度可用且可缩放的安全存储，选择性地由 FIPS 140-2 二级验证硬件安全模块 (HSM) 提供支持。 它不允许直接访问存储的密钥，但会向已获授权的实体提供使用该密钥进行加密/解密的服务。 密钥可由 Key Vault 生成，可以进行导入，也可以[从本地 HSM 设备转移到 Key Vault](../../key-vault/keys/hsm-protected-keys.md)。
+在此方案中，用于加密数据库加密密钥 (DEK) 的密钥（称作 TDE 保护器）是客户管理的非对称密钥，该密钥存储在客户自有的且由其管理的 [Azure Key Vault (AKV)](../../key-vault/general/security-features.md)（一个基于云的外部密钥管理系统）中。 Key Vault 是用于 RSA 加密密钥的高度可用且可缩放的安全存储，选择性地由 FIPS 140-2 二级验证硬件安全模块 (HSM) 提供支持。 它不允许直接访问存储的密钥，但会向已获授权的实体提供使用该密钥进行加密/解密的服务。 密钥可由 Key Vault 生成，可以进行导入，也可以[从本地 HSM 设备转移到 Key Vault](../../key-vault/keys/hsm-protected-keys.md)。
 
 对于 Azure SQL 数据库和 Azure Synapse Analytics，TDE 保护器在服务器级别设置，并由该服务器关联的所有已加密数据库继承。 对于 Azure SQL 托管实例，TDE 保护器是在实例级别设置的，并由该实例上所有加密的数据库继承。 除非另有说明，否则术语“服务器”在整个文档中指的是 SQL 数据库和 Azure Synapse 中的服务器和 SQL 托管实例中的托管实例。
 
@@ -32,7 +32,7 @@ Azure SQL [透明数据加密 (TDE)](/sql/relational-databases/security/encrypti
 > 对于当前正在使用服务托管的 TDE 并想要开始使用客户管理的 TDE 的用户，在切换过程中数据将保持加密状态，且不会造成停机，也不需要重新加密数据库文件。 从服务托管的密钥切换到客户管理的密钥只需重新加密 DEK，此操作非常快捷且可在线完成。
 
 > [!NOTE]
-> <a id="doubleencryption"></a> 为了为 Azure SQL 客户提供两层静态数据加密，已推出使用平台托管密钥进行的基础结构加密（使用 AES-256 加密算法）。它使用客户托管的密钥额外添加一层与 TDE 配合使用的静态数据加密，该加密方式现已可用。 对于 Azure SQL 数据库和托管实例，当启动基础结构加密时，将对所有数据库（包括主数据库和其他系统数据库）进行加密。 目前，客户必须请求访问权限才能使用此功能。 如果你对此功能感兴趣，请联系 AzureSQLDoubleEncryptionAtRest@service.microsoft.com。
+> <a id="doubleencryption"></a> 为了向 Azure SQL 客户提供两层静态数据的加密，将推出使用平台托管密钥的基础结构加密（使用 AES-256 加密算法）。它使用客户托管的密钥额外添加一层与 TDE 配合使用的静态数据加密，该加密方式现已可用。 对于 Azure SQL 数据库和托管实例，当启动基础结构加密时，将对所有数据库（包括主数据库和其他系统数据库）进行加密。 目前，客户必须请求访问权限才能使用此功能。 如果你对此功能感兴趣，请联系 AzureSQLDoubleEncryptionAtRest@service.microsoft.com。
 
 ## <a name="benefits-of-the-customer-managed-tde"></a>客户管理的 TDE 的优势
 
@@ -86,16 +86,16 @@ Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](../..
 
 ### <a name="requirements-for-configuring-tde-protector"></a>配置 TDE 保护器的要求
 
-- TDE 保护程序只能为非对称的 RSA 或 RSA HSM 密钥。 支持的密钥长度为 2048 到 3072 个字节。
+- TDE 保护程序只能为非对称的 RSA 或 RSA HSM 密钥。 支持的密钥长度为 2048 个字节到 3072 个字节。
 
 - 密钥激活日期（如果已设置）必须是过去的日期和时间。 过期日期（如果已设置）必须是将来的日期和时间。
 
 - 密钥必须处于“已启用”状态。
 
-- 如果将现有的密钥导入 Key Vault，请确保以支持的文件格式（.pfx、.byok 或 .backup）提供该密钥。
+- 要将现有密钥导入密钥保管库，请确保以支持的文件格式（`.pfx`、`.byok`、`.backup`）提供该密钥。
 
 > [!NOTE]
-> Azure SQL 现在支持使用存储在托管 HSM 中的 RSA 密钥作为 TDE 保护程序。 此功能目前以公共预览版提供。 Azure 密钥保管库托管 HSM 是一项完全托管、高度可用、单租户、符合标准的云服务，通过该服务，可以使用通过 FIPS 140-2 级别 3 验证的 HSM 来保护云应用程序的加密密钥。 详细了解[托管 HSM](../../key-vault/managed-hsm/index.yml)。
+> Azure SQL 现在支持使用存储在托管 HSM 中的 RSA 密钥作为 TDE 保护程序。 此功能目前以公共预览版提供。 Azure Key Vault 托管 HSM 是一项完全托管、高度可用、单租户、符合标准的云服务，通过该服务，可以使用通过 FIPS 140-2 级别 3 验证的 HSM 来保护云应用程序的加密密钥。 详细了解[托管 HSM](../../key-vault/managed-hsm/index.yml)。
 
 
 ## <a name="recommendations-when-configuring-customer-managed-tde"></a>有关配置客户管理的 TDE 的建议
@@ -116,7 +116,7 @@ Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](../..
 
 - 如果密钥是在 Key Vault 中生成的，请在首次使用 AKV 中的密钥之前创建密钥备份。 备份只能还原到 Azure Key Vault。 详细了解 [Backup-AzKeyVaultKey](/powershell/module/az.keyvault/backup-azkeyvaultkey) 命令。
 
-- 每次对密钥进行了任何更改（例如，密钥属性、标记、ACL）后，都创建新的备份。
+- 每次对密钥（例如密钥属性、标记、ACL）做了任何更改后，请创建新的备份。
 
 - 轮换密钥时保留 Key Vault 中密钥的 **先前版本**，以便可以还原旧数据库备份。 更改数据库的 TDE 保护器后，数据库的旧备份 **不会更新** 为使用最新的 TDE 保护器。 在还原时，每个备份需要包含创建该备份时用于加密该备份的 TDE 保护器。 可以遵照[使用 PowerShell 轮换透明数据加密保护器](transparent-data-encryption-byok-key-rotation.md)中的说明执行密钥轮换。
 
@@ -131,11 +131,11 @@ Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](../..
 > [!NOTE]
 > 如果数据库由于间歇性网络中断而不可访问，则无需采取任何措施，数据库即可自动恢复联机状态。
 
-还原对密钥的访问权限后，使数据库重新联机需要额外的时间并执行其他步骤，具体取决于无法访问密钥的持续间和数据库中的数据大小：
+恢复对密钥的访问权限后，使数据库重新联机需要额外的时间和步骤，具体取决于无法访问密钥的持续时间和数据库中的数据大小：
 
 - 如果在 8 小时内恢复了密钥访问权限，数据库将在下一小时自动修复。
 
-- 如果超过 8 小时后还原了密钥访问权限，数据库将无法自动修复，并且要使数据库恢复正常运行，需要在门户上执行其他步骤，并且可能会花费大量时间，具体取决于数据库的大小。 数据库恢复联机后，先前配置的服务器级别设置（例如 [故障转移组](auto-failover-group-overview.md)配置、时间点还原历史记录和标记）**将丢失**。 因此，建议实现一个通知系统，以便在 8 小时内识别和解决基础密钥访问问题。
+- 如果密钥访问权限是超过 8 小时后恢复的，则无法进行自动修复，且若要使数据库恢复正常运行，需要在门户上执行其他步骤，这可能会花费大量时间，具体取决于数据库的大小。 数据库恢复联机后，先前配置的服务器级别设置（例如 [故障转移组](auto-failover-group-overview.md)配置、时间点还原历史记录和标记）**将丢失**。 因此，建议实现一个通知系统，以便在 8 小时内识别和解决基础密钥访问问题。
 
 下面介绍在门户上使不可访问的数据库重新联机所需的其他步骤。
 
@@ -164,7 +164,7 @@ Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](../..
 
 - [Azure 资源运行状况](../../service-health/resource-health-overview.md)。 首次与失去 TDE 保护器访问权限的不可访问的数据库建立连接遭到拒绝后，该数据库将显示为“不可用”。
 - [活动日志](../../service-health/alerts-activity-log-service-notifications-portal.md)。访问客户管理的 Key Vault 中的 TDE 保护器失败时，会将相应的条目添加到活动日志。  为这些事件创建警报可以尽快恢复访问权限。
-- [操作组](../../azure-monitor/alerts/action-groups.md)。可以定义操作组，根据你的偏好（如电子邮件/短信/推送/语音、逻辑应用、Webhook、ITSM 或自动化 Runbook）发送通知和警报。
+- 可根据你的偏好（例如电子邮件/短信/推送/语音、逻辑应用、Webhook、ITSM 或自动化 Runbook）来定义[操作组](../../azure-monitor/alerts/action-groups.md)，以发送通知和警报。
 
 ## <a name="database-backup-and-restore-with-customer-managed-tde"></a>使用客户管理的 TDE 进行数据库备份和还原
 
@@ -175,7 +175,7 @@ Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](../..
 > [!IMPORTANT]
 > 无论何时，为服务器设置的 TDE 保护器都不能超过一个。 此保护器在 Azure 门户边栏选项卡中标记为“使该密钥成为默认的 TDE 保护器”。 但是，可将其他多个密钥链接到服务器，而无需将其标记为 TDE 保护器。 这些密钥不是用于保护 DEK，而是在从备份还原期间使用（如果备份文件是使用具有相应指纹的密钥加密的）。
 
-如果还原备份所需的密钥不再可供目标服务器使用，则尝试还原时会返回以下错误消息：“目标服务器 `<Servername>` 无权访问在 \<Timestamp #1> 与 \<Timestamp #2> 之间创建的所有 AKV URI。 请在还原所有 AKV URI 之后重试操作。”
+如果还原备份所需的密钥不再可供目标服务器使用，则尝试还原时会返回以下错误消息：“目标服务器 `<Servername>` 无权访问在 \<Timestamp #1> 与 \<Timestamp #2> 之间创建的所有 AKV URI。 还原所有 AKV URI 后重试操作。”
 
 若要缓解此问题，请对目标服务器运行 [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) cmdlet，或对目标托管实例运行 [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey)，以返回可用密钥的列表并标识缺少的密钥。 为了确保可以还原所有备份，请确保要还原的目标服务器有权访问全部所需的密钥。 这些密钥无需标记为 TDE 保护器。
 
@@ -185,15 +185,15 @@ Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](../..
 
 ## <a name="high-availability-with-customer-managed-tde"></a>使用客户管理的 TDE 实现高可用性
 
-即使没有为服务器配置异地冗余，我们也强烈建议将服务器配置为使用两个不同区域中的包含相同密钥材料的两个不同 Key Vault。 不应将另一区域的辅助 Key Vault 中的密钥标记为 TDE 保护器，甚至不允许这样做。 如果发生了影响主要 Key Vault 的服务中断，只有在满足上述条件时，系统才会自动切换到辅助 Key Vault 中具有相同指纹的另一个已链接密钥（如果存在）。 请注意，如果由于撤销了访问权限或者由于删除了密钥或 Key Vault 而导致 TDE 保护程序无法访问，则不会发生这种切换，因为这可能意味着客户有意要限制服务器访问密钥。通过在密钥保管库外创建密钥，并将其导入到位于不同区域的两个密钥保管库中，可以在这两个密钥保管库中提供相同的密钥材料。 
+即使没有为服务器配置异地冗余，我们也强烈建议将服务器配置为使用两个不同区域中的包含相同密钥材料的两个不同 Key Vault。 不应将另一区域的辅助 Key Vault 中的密钥标记为 TDE 保护器，甚至不允许这样做。 如果发生了影响主要 Key Vault 的服务中断，只有在满足上述条件时，系统才会自动切换到辅助 Key Vault 中具有相同指纹的另一个已链接密钥（如果存在）。 请注意，如果由于撤销了访问权限或者由于删除了密钥或 Key Vault 而无法访问 TDE 保护器，则不会发生这种切换，因为这可能意味着客户有意地想要限制服务器访问密钥。 通过在密钥保管库外创建密钥，并将其导入到位于不同区域的两个密钥保管库中，可以在这两个密钥保管库中提供相同的密钥材料。 
 
-另外，还可以通过使用与服务器共置在同一区域中的主要密钥保管库来生成密钥，并将密钥克隆到位于不同 Azure 区域中的密钥保管库来实现此目的。 使用 [Backup-AzKeyVaultKey](/powershell/module/az.keyvault/Backup-AzKeyVaultKey) cmdlet 从主要密钥保管库检索加密格式的密钥，然后使用 [Restore-AzKeyVaultKey](/powershell/module/az.keyvault/restore-azkeyvaultkey) cmdlet 并指定第二个区域中的密钥保管库来克隆密钥。 或者，使用 Azure 门户来备份和还原密钥。 仅允许在同一 Azure 订阅和 [Azure 地理区域](https://azure.microsoft.com/global-infrastructure/geographies/)内的密钥保管库之间执行密钥备份/还原操作。  
+另外，还可以使用与服务器位于同一区域的主要密钥保管库来生成密钥，并将密钥克隆到不同 Azure 区域的密钥保管库中来实现此目的。 使用 [Backup-AzKeyVaultKey](/powershell/module/az.keyvault/Backup-AzKeyVaultKey) cmdlet 从主要密钥保管库检索加密格式的密钥，然后使用 [Restore-AzKeyVaultKey](/powershell/module/az.keyvault/restore-azkeyvaultkey) cmdlet 并指定第二个区域中的密钥保管库来克隆密钥。 或者，使用 Azure 门户来备份和还原密钥。 仅允许在同一 Azure 订阅和 [Azure 地理区域](https://azure.microsoft.com/global-infrastructure/geographies/)内的密钥保管库之间执行密钥备份/还原操作。  
 
 ![单服务器高可用性](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
 
 ## <a name="geo-dr-and-customer-managed-tde"></a>异地灾难恢复和客户管理的 TDE
 
-在[活动异地复制](active-geo-replication-overview.md)和[故障转移组](auto-failover-group-overview.md)方案中，涉及的每个服务器都需要一个单独的 Key Vault，该 Key Vault 必须与服务器共置在同一个 Azure 区域中。 客户负责使各个 Key Vault 中的密钥材料保持一致，使异地辅助节点保持同步，并在主要节点由于区域发生服务中断或者触发故障转移而不可访问时，辅助节点可以使用客户本地 Key Vault 中的同一密钥接管工作。 最多可以配置四个辅助节点，不支持链接（辅助节点的辅助节点）。
+在[活动异地复制](active-geo-replication-overview.md)和[故障转移组](auto-failover-group-overview.md)场景中，包含的每个服务器都需要一个单独的密钥保管库，该密钥保管库必须与服务器共置在同一个 Azure 区域中。 客户负责使各个 Key Vault 中的密钥材料保持一致，使异地辅助节点保持同步，并在主要节点由于区域发生服务中断或者触发故障转移而不可访问时，辅助节点可以使用客户本地 Key Vault 中的同一密钥接管工作。 最多可以配置四个辅助节点，不支持链接（辅助节点的辅助节点）。
 
 为了避免由于密钥材料不完整而在建立异地复制或者在异地复制期间出现问题，请务必在配置客户管理的 TDE 时遵循以下规则：
 

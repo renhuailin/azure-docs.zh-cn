@@ -1,5 +1,5 @@
 ---
-title: 使用 .NET SDK Microsoft Azure StorSimple 数据管理器作业
+title: 使用 .NET SDK 运行 Microsoft Azure StorSimple Data Manager 作业
 description: 了解如何在 StorSimple 数据管理器服务中使用 .NET SDK 来转换 StorSimple 设备数据。
 author: alkohli
 ms.service: storsimple
@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: b18627d2806662d6d966af95d51873d5623b2393
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96015530"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>使用 .NET SDK 启动数据转换
@@ -36,7 +36,7 @@ ms.locfileid: "96015530"
     - Azure Powershell。 [下载 Azure PowerShell](/powershell/azure/)。
 *   资源组中的 StorSimple 数据管理器中存在正确配置的作业定义。
 *   所有必需的 dll。 从 [GitHub 存储库](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls)下载这些 dll。
-*   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1) GitHub 存储库中的脚本。
+*   GitHub 存储库中的 [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1) 脚本。
 
 ## <a name="step-by-step-procedure"></a>分步过程
 
@@ -194,4 +194,4 @@ ms.locfileid: "96015530"
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 STORSIMPLE 数据管理器 UI 转换数据](storsimple-data-manager-ui.md)。
+[使用 StorSimple Data Manager UI 转换数据](storsimple-data-manager-ui.md)。

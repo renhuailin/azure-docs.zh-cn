@@ -1,5 +1,5 @@
 ---
-title: 安全最佳实践和模式-Microsoft Azure |Microsoft Docs
+title: 安全最佳实践和模式 - Microsoft Azure | Microsoft Docs
 description: 本文提供了不同 Azure 资源的安全最佳做法和模式的链接。
 services: azure-security
 documentationcenter: na
@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 5/03/2019
 ms.author: terrylan
 ms.openlocfilehash: f4a3b2afd8b1a5ffdbb1fe0db1c3e345a9c99154
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94412606"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Azure 安全最佳实践和模式
@@ -44,6 +44,6 @@ ms.locfileid: "94412606"
 * [使用 Azure 存储保护 PaaS Web 和移动应用程序](paas-applications-using-storage.md)
 * [Azure 中 IaaS 工作负荷的安全性最佳做法](iaas.md)
 
-[适用于 Azure 解决方案的白皮书安全最佳做法](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions)是在上面列出的文章中找到的安全最佳做法的集合。
+白皮书[适用于 Azure 解决方案的最佳做法](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions)是上面列出的文章中介绍的安全最佳做法的集合。
 
 [下载白皮书](https://azure.microsoft.com/mediahandler/files/resourcefiles/security-best-practices-for-azure-solutions/Azure%20Security%20Best%20Practices.pdf)

@@ -6,10 +6,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
 ms.openlocfilehash: 74f8bdd26e000b89bfae84102077c241f85abf7e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98933322"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Azure HDInsight 业务连续性
@@ -34,7 +34,7 @@ Azure HDInsight 群集依赖于许多 Azure 服务，例如存储、数据库、
 
 * 在群集部署过程中使用自动化，并确保尽可能将群集配置设置脚本化，以确保在发生灾难时快速进行完全自动化的部署。
 
-* 使用 HDInsight 上的 Azure 监视工具检测群集中的异常行为并设置相应的警报通知。 你可以部署预配置的、特定于 HDInsight 群集的管理解决方案，这些解决方案收集特定群集类型的重要性能指标。 有关详细信息，请参阅 [适用于 HDInsight 的 Azure 监视](./hdinsight-hadoop-oms-log-analytics-tutorial.md)。  
+* 使用 HDInsight 上的 Azure 监视工具检测群集中的异常行为并设置相应的警报通知。 你可以部署预配置的、特定于 HDInsight 群集的管理解决方案，这些解决方案收集特定群集类型的重要性能指标。 有关详细信息，请参阅 [Azure HDInsight 监视](./hdinsight-hadoop-oms-log-analytics-tutorial.md)。  
 
 * 订阅 Azure 运行状况警报，以获得有关订阅、服务或区域的服务问题、计划内维护、运行状况和安全建议的通知。 包含问题原因和解决方法 ETA 的运行状况通知可帮助你更好地执行故障转移和故障回复。 有关详细信息，请参阅 [Azure 服务运行状况文档](../service-health/index.yml)。
 

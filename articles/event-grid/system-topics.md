@@ -3,12 +3,12 @@ title: Azure 事件网格中的系统主题
 description: 介绍 Azure 事件网格中的系统主题。
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.openlocfilehash: b1fbecb1e372602f9c252d43d2a1f93524ef1846
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ca59dd6bb99b9b7d06f0622e8c0cb4e4234e21ff
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99052959"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105733037"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure 事件网格中的系统主题
 事件网格中的系统主题表示由 Azure 服务（如 Azure 存储和 Azure 事件中心）发布的一个或多个事件。 例如，一个系统主题可以表示已为特定存储帐户发布的所有 Blob 事件或仅“Blob 已创建”和“Blob 已删除”事件  。 在此示例中，当 Blob 上传到存储帐户时，Azure 存储服务会将“Blob 已创建”事件发布到事件网格中的系统主题，然后，事件网格会将该事件转发给接收和处理该事件的主题[订阅服务器](event-handlers.md)。 
@@ -26,10 +26,11 @@ ms.locfileid: "99052959"
 - [Azure 容器注册表](event-schema-container-registry.md)
 - [Azure 事件中心](event-schema-event-hubs.md)
 - [Azure IoT 中心](event-schema-iot-hub.md)
-- [Azure 密钥保管库](event-schema-key-vault.md)
+- [Azure Key Vault](event-schema-key-vault.md)
 - [Azure 机器学习](event-schema-machine-learning.md)
 - [Azure Maps](event-schema-azure-maps.md)
 - [Azure 媒体服务](event-schema-media-services.md)
+- [Azure Policy](./event-schema-policy.md)
 - [Azure 资源组](event-schema-resource-groups.md)
 - [Azure 服务总线](event-schema-service-bus.md)
 - [Azure SignalR](event-schema-azure-signalr.md)

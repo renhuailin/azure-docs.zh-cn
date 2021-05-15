@@ -9,10 +9,10 @@ ms.date: 02/03/2021
 ms.author: tisande
 ms.custom: query-reference
 ms.openlocfilehash: fa7d1ec2af12065fb7d761073cd982a561cf53c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99524255"
 ---
 # <a name="getcurrenttimestamp-azure-cosmos-db"></a>GetCurrentTimestamp (Azure Cosmos DB)
@@ -35,7 +35,7 @@ GetCurrentTimestamp ()
 GetCurrentTimestamp() 是非确定性的函数。 返回的结果采用 UTC（协调世界时）格式。
 
 > [!NOTE]
-> 此系统函数不会使用索引。 如果需要将值与当前时间进行比较，请在查询执行之前获取当前时间，并在 `WHERE` 子句中使用该常量字符串值。
+> 此系统函数不会使用索引。 如果需要将值与当前时间进行比较，请在执行查询之前获取当前时间，并在 `WHERE` 子句中使用该常量字符串值。
 
 ## <a name="examples"></a>示例
   

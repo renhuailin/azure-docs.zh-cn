@@ -18,10 +18,10 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
 ms.openlocfilehash: d9a4eabf37101622ac69ae05f3bec232fb8d2fe6
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94517523"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>安全框架：通信安全 | 缓解措施 
@@ -32,7 +32,7 @@ ms.locfileid: "94517523"
 | **Azure 数据工厂** | <ul><li>[将本地 SQL Server 连接到 Azure 数据工厂时使用数据管理网关](#sqlserver-factory)</li></ul> |
 | **标识服务器** | <ul><li>[确保发往标识服务器的所有流量都通过 HTTPS 连接传输](#identity-https)</li></ul> |
 | **Web 应用程序** | <ul><li>[验证用于对 SSL、TLS 和 DTLS 连接进行身份验证的 X.509 证书](#x509-ssltls)</li><li>[在 Azure 应用服务中为自定义域配置 TLS/SSL 证书](#ssl-appservice)</li><li>[强制要求发往 Azure 应用服务的所有流量都通过 HTTPS 连接传输](#appservice-https)</li><li>[启用 HTTP 严格传输安全性 (HSTS)](#http-hsts)</li></ul> |
-| **数据库** | <ul><li>[确保加密 SQL Server 连接并验证证书](#sqlserver-validation)</li><li>[强制以加密形式来与 SQL Server 通信](#encrypted-sqlserver)</li></ul> |
+| **Database** | <ul><li>[确保加密 SQL Server 连接并验证证书](#sqlserver-validation)</li><li>[强制以加密形式来与 SQL Server 通信](#encrypted-sqlserver)</li></ul> |
 | **Azure 存储** | <ul><li>[确保与 Azure 存储之间的通信通过 HTTPS 进行](#comm-storage)</li><li>[如果无法启用 HTTPS，请在下载 Blob 后验证 MD5 哈希](#md5-https)</li><li>[使用 SMB 3.0 兼容的客户端来确保传输到 Azure 文件共享的数据经过加密](#smb-shares)</li></ul> |
 | **移动客户端** | <ul><li>[实施证书绑定](#cert-pinning)</li></ul> |
 | **WCF** | <ul><li>[启用 HTTPS - 安全传输通道](#https-transport)</li><li>[WCF：将消息安全保护级别设置为 EncryptAndSign](#message-protection)</li><li>[WCF：使用最低特权帐户运行 WCF 服务](#least-account-wcf)</li></ul> |
@@ -70,8 +70,8 @@ ms.locfileid: "94517523"
 | **组件**               | Azure 数据工厂 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
-| **属性**              | 链接服务类型-Azure 和本地 |
-| **参考**              |[在本地和 Azure 数据工厂之间移动数据](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md#create-gateway)， [数据管理网关](../../data-factory/v1/data-factory-data-management-gateway.md) |
+| **属性**              | 链接服务类型 - Azure 和本地 |
+| **参考**              |[在本地与 Azure 数据工厂之间移动数据](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md#create-gateway)、[数据管理网关](../../data-factory/v1/data-factory-data-management-gateway.md) |
 | **步骤** | <p>需要使用数据管理网关 (DMG) 工具连接到受企业网络或防火墙保护的数据源。</p><ol><li>锁定计算机可以隔离 DMG 工具，防止不正常的程序损坏源计算机或者窥视其数据。 （例如， 必须安装最新的更新、启用所需的最少量端口、预配受控帐户、审核启用、启用磁盘加密，等等。）</li><li>必须经常或者每当 DMG 服务帐户密码续订时轮替数据网关密钥</li><li>通过链接服务传输的数据必须加密</li></ol> |
 
 ## <a name="ensure-that-all-traffic-to-identity-server-is-over-https-connection"></a><a id="identity-https"></a>确保发往标识服务器的所有流量都通过 HTTPS 连接传输

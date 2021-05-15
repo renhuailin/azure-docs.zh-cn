@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: alkohli
 ms.openlocfilehash: 624df1185f86004b48bcca921e76d55bfb14c48d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98900774"
 ---
-本部分介绍 Azure 存储服务的限制，以及适用于 Azure Stack Edge/Data Box Gateway 服务的 Azure 文件、Azure 块 blob 和 Azure 页 blob 的必要命名约定。 请仔细查看存储限制并遵循所有建议。
+本部分介绍了应用于 Azure Stack Edge/Data Box Gateway 服务的 Azure 存储服务限制，以及 Azure 文件存储、Azure 块 blob 和 Azure 页 blob 的必需命名约定。 请仔细查看存储限制并遵循所有建议。
 
 有关 Azure 存储服务限制的最新信息以及对共享、容器和文件进行命名的最佳做法，请转到：
 

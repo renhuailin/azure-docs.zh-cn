@@ -1,5 +1,5 @@
 ---
-title: 将 NPS 与用于 MFA 的 VPN 网关 RADIUS 身份验证集成
+title: 将 NPS 与 VPN 网关 RADIUS 身份验证集成以实现多重身份验证
 description: 介绍如何将 Azure 网关 RADIUS 身份验证与 NPS 服务器集成实现多重身份验证。
 services: vpn-gateway
 documentationcenter: na
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
 ms.openlocfilehash: 208e99f61694f5a81a98dbc649e2a6035f57891b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018267"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>将 Azure VPN 网关 RADIUS 身份验证与 NPS 服务器集成实现多重身份验证 
@@ -49,10 +49,10 @@ ms.locfileid: "96018267"
 
 
  
-### <a name="step-2-configure-the-nps-for-azure-ad-mfa"></a>步骤2为 Azure AD MFA 配置 NPS
+### <a name="step-2-configure-the-nps-for-azure-ad-mfa"></a>步骤 2：为 Azure AD MFA 配置 NPS
 
-1. 在 NPS 服务器上， [安装 AZURE AD MFA 的 nps 扩展](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension)。
-2. 打开 NPS 控制台，右键单击 " **RADIUS 客户端**"，然后选择 " **新建**"。 通过指定以下设置来创建 RADIUS 客户端：
+1. 在 NPS 服务器上，[安装适用于 Azure AD MFA 的 NPS 扩展](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension)。
+2. 打开 NPS 控制台，右键单击“RADIUS 客户端”，然后选择“新建”。 通过指定以下设置创建 RADIUS 客户端：
 
     - **友好名称**：键入任何名称。
     - **地址(IP 或 DNS)**：键入在步骤 1 中创建的网关子网。
@@ -65,13 +65,13 @@ ms.locfileid: "96018267"
 
     ![有关 RADIUS 客户端高级设置的图像](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
 
-4. 前往 "**策略**  >  " "**网络策略**"，双击 "**连接到 Microsoft 路由和远程访问服务器** 策略"，选择 "**授予访问权限**"，然后单击 **"确定"**。
+4. 转到“策略” > “网络策略”，双击“到 Microsoft 路由和远程访问服务器的连接”策略，选择“授予访问权限”，然后单击“确定”。
 
 ### <a name="step-3-configure-the-virtual-network-gateway"></a>步骤 3 配置虚拟网络网关
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 打开已创建的虚拟网络网关。 请确保网关类型设置为 **VPN** 并且 VPN 类型为“基于路由”。
-3. 单击 "**点到站点配置**  >  " "**立即配置**"，然后指定以下设置：
+3. 单击“点到站点配置” > “立即配置”，然后指定以下设置：
 
     - **地址池**：键入在步骤 1 中创建的网关子网。
     - **身份验证类型**：选择“RADIUS 身份验证”。

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 11/03/2019
 ms.topic: conceptual
-ms.openlocfilehash: d4fa7348df647cf699ebd55dd6415a79454ab5f1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cd44d3361e96a22ddb70fb5568926583ac3dbb67
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93397939"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107952685"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>常见问题：Azure 到 Azure 的灾难恢复
 
@@ -73,7 +73,7 @@ Site Recovery 团队和 Azure 容量管理团队规划了足够的基础结构�
 
 ### <a name="can-i-replicate-vms-in-an-availability-zone-to-another-region"></a>是否可以将可用性区域中的 Vm 复制到另一个区域？
 
-是的，可以将可用性区域中的 Vm 复制到另一个 Azure 区域。 可以将目标 VM 部署为单个实例，部署在可用性集中，也可以部署在可用性区域中（如果目标区域支持）。 
+是的，可以将可用性区域中的 Vm 复制到另一个 Azure 区域。 
 
 ### <a name="can-i-replicate-non-zone-vms-to-a-zone-within-the-same-region"></a>是否可以将非分区 Vm 复制到同一区域内的区域？ 
 
@@ -158,7 +158,7 @@ Site Recovery 可以创建应用一致性恢复点，其最小频率为一小时
 
 ### <a name="can-i-enable-app-consistent-replication-for-linux-vms"></a>是否可以为 Linux VM 启用应用一致性复制？
 
-是的。 适用于 Linux 的移动代理支持用于应用一致性的自定义脚本。 该代理使用带有前置和后置选项的自定义脚本。 [了解详细信息](site-recovery-faq.md#can-i-enable-replication-with-app-consistency-in-linux-servers)
+是的。 适用于 Linux 的移动代理支持用于应用一致性的自定义脚本。 该代理使用带有前置和后置选项的自定义脚本。 [了解详细信息](site-recovery-faq.yml)
 
 ### <a name="how-are-recovery-points-generated-and-saved"></a>如何生成和保存恢复点？
 

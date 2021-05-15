@@ -1,19 +1,19 @@
 ---
-title: Jupyter 404 错误-"阻止跨源 API"-Azure HDInsight
+title: Jupyter 404 错误 -“阻止跨源 API”- Azure HDInsight
 description: Azure HDInsight 中的“阻止跨源 API”导致 Jupyter 服务器 404“找不到”错误
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/29/2019
 ms.openlocfilehash: 27cd3aff859fd46679679ac12d3acc03fa6da158
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98929439"
 ---
-# <a name="scenario-jupyter-server-404-not-found-error-due-to-blocking-cross-origin-api-in-azure-hdinsight"></a>方案：Azure HDInsight 中的“阻止跨源 API”导致 Jupyter 服务器 404“找不到”错误
+# <a name="scenario-jupyter-server-404-not-found-error-due-to-blocking-cross-origin-api-in-azure-hdinsight"></a>案例：Azure HDInsight 中的“阻止跨源 API”导致 Jupyter 服务器 404“找不到”错误
 
-本文介绍在 Azure HDInsight 群集中使用 Apache Spark 组件时出现的问题的故障排除步骤和可能的解决方法。
+本文介绍在 Azure HDInsight 群集中使用 Apache Spark 组件时出现的问题的故障排除步骤和可能的解决方案。
 
 ## <a name="issue"></a>问题
 
@@ -44,7 +44,7 @@ Origin: https://xxx.xxx.xxx, Host: pnhr01.j101qxjrl4zebmhb0vmhg044xe.ax.internal
     /var/lib/ambari-agent/cache/common-services/JUPYTER/1.0.0/package/scripts/jupyter.py
     ```
 
-1. 找到显示了以下内容的行：`NotebookApp.allow_origin='\"https://{2}.{3}\"'` 将其更改为：`NotebookApp.allow_origin='\"*\"'`。
+1. 找到如下所示的行：`NotebookApp.allow_origin='\"https://{2}.{3}\"'`，并将其更改为：`NotebookApp.allow_origin='\"*\"'`。
 
 1. 从 Ambari 重启 Jupyter 服务。
 

@@ -1,6 +1,6 @@
 ---
-title: Windows 10 漫游设置参考-Azure Active Directory
-description: 将通过 ESR 在 Windows 10 中漫游或备份的设置
+title: Windows 10 漫游设置参考 - Azure Active Directory
+description: 将在具有 ESR 的 Windows 10 中漫游或备份的设置
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,21 +12,21 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85252961"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 漫游设置参考
 
-下面列出了将在 Windows 10 中漫游或备份的设置。 
+以下为将在 Windows 10 中漫游或备份的设置的列表。 
 
 ## <a name="devices-and-endpoints"></a>设备和终结点
 
 请参阅下表大概了解 Windows 10 中同步、备份和还原框架支持的设备和帐户类型。
 
-| 帐户类型和操作 | 台式机 | 移动型 |
+| 帐户类型和操作 | 桌面 | 移动型 |
 | --- | --- | --- |
 | Azure Active Directory：同步 |是 |否 |
 | Azure Active Directory：备份/还原 |否 |否 |
@@ -39,7 +39,7 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 
 ## <a name="windows-settings-overview"></a>Windows 设置概述
 
-以下设置组可供最终用户在 Windows 10 设备上启用/禁用设置同步。
+最终用户可使用以下设置组在 Windows 10 设备上启用/禁用设置同步。
 
 * 主题：桌面背景、用户磁贴、任务栏位置等。 
 * Internet Explorer 设置：浏览历史记录、键入的 URL、收藏夹等。 
@@ -47,12 +47,12 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 * 语言首选项：拼写字典、系统语言设置 
 * 轻松访问：讲述人、屏幕键盘、放大镜 
 * 其他 Windows 设置：请参阅 Windows 设置详细信息
-* Microsoft Edge 浏览器设置： Microsoft Edge 收藏夹、阅读列表和其他设置
+* Microsoft Edge 浏览器设置：Microsoft Edge 收藏夹、读取列表和其他设置
 
 ![同步设置](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
 > [!NOTE]
-> 本文适用于在7月2015中通过 Windows 10 启动的 Microsoft Edge 旧版 HTML 浏览器。 本文不适用于2020年1月15日发布的新的基于 Chromium 的 Microsoft Edge 浏览器。 有关新 Microsoft Edge 的同步行为的详细信息，请参阅 [Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)文章。
+> 本文适用于 2015 年 7 月与 Windows 10 一起推出的 Microsoft Edge 旧版 HTML 浏览器。 本文不适用于 2020 年 1 月 15 日发布的基于 Chromium 的新 Microsoft Edge 浏览器。 有关新 Microsoft Edge 的同步行为的详细信息，请参阅 [Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)文章。
 
 最终用户可通过 Microsoft Edge 浏览器的“设置”菜单选项来启用或禁用 Microsoft Edge 浏览器设置组（收藏夹、读取列表）同步。
 
@@ -64,16 +64,16 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 
 ## <a name="windows-settings-details"></a>Windows 设置详细信息
 
-在下表中，"设置" 组列中的其他条目引用可以通过转到 "设置" > 帐户来禁用的设置 > 将设置同步 > 其他 Windows 设置。 
+在下表中，“设置组”列中的“其他”项是指，可通过转到“设置”>“帐户”>“同步设置”>“其他 Windows 设置”来禁用的设置。 
 
 “设置组”列中的“内部”项是指设置和应用，它们只能通过应用本身内的同步进行禁用，或使用移动设备管理 (MDM) 或“组策略”设置来禁用整个设备的同步进行禁用。
 不漫游或同步的设置不属于某个组。
 
-| 设置 | 台式机 | 移动型 | 组 |
+| 设置 | 桌面 | 移动型 | 组 |
 | --- | --- | --- | --- |
 | **帐户**：帐户图片 |sync |X |主题 |
 | **帐户**：其他帐户设置 |X |X | |
-| **高级移动宽带**： Internet 连接共享网络名称 (允许通过蓝牙自动发现移动 Wi-Fi 热点)  |X |X |密码 |
+| **高级移动宽带**：Internet 连接共享网络名称（通过蓝牙启用自动发现移动 Wi-Fi 热点） |X |X |密码 |
 | **应用数据**：单个应用可同步数据 |同步备份 |同步备份 |内部 |
 | **应用列表**：已安装应用的列表 |X |备份 (backup) |其他 |
 | **蓝牙**：所有蓝牙设置 |X |X | |
@@ -186,4 +186,4 @@ Windows Creators 更新（内部版本 15063）受支持的最低 OS 版本。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关概述，请参阅 [企业状态漫游概述](enterprise-state-roaming-overview.md)。
+有关概述，请参阅[企业状态漫游概述](enterprise-state-roaming-overview.md)。

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/28/2021
 ms.custom: seodec18
 ms.openlocfilehash: 433272c76b9ff27d9cad542cf65a8ec0d8fc0378
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99052374"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
@@ -33,7 +33,7 @@ ms.locfileid: "99052374"
 
 ### <a name="cores-quotas-in-batch-service-mode"></a>Batch 服务模式下的核心配额
 
-Batch 支持的每个 VM 系列都存在核心配额，它们显示在门户中的“配额”页面上。 可以通过提交支持请求来更新 VM 系列的配额限制，详见下面的描述。 对于专用节点，Batch 对每个 VM 序列强制实施核心配额限制，同时对整个批处理帐户强制实施总核心配额限制。 对于低优先级节点，批处理仅强制实施批处理帐户的总核心配额，而不会在不同的 VM 系列之间进行任何区分。
+Batch 支持的每个 VM 系列都存在核心配额，它们显示在门户中的“配额”页面上。 可以通过提交支持请求来更新 VM 系列的配额限制，详见下面的描述。 对于专用节点，Batch 对每个 VM 序列强制实施核心配额限制，同时对整个 Batch 帐户强制实施总核心配额限制。 对于低优先级节点，Batch 仅强制实施 Batch 帐户的总核心配额，不同 VM 系列之间没有任何区别。
 
 ### <a name="cores-quotas-in-user-subscription-mode"></a>用户订阅模式中的核心配额
 

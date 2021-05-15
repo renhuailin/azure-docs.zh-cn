@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: d28a20a6afc78939491e56f46a32782b4c0844cc
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98878997"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
@@ -103,7 +103,7 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 --list-of-files 字符串：定义要删除的文件和目录列表所在文件的位置。 相对路径应由换行符分隔，路径不应进行 URL 编码。 
 
-**--版本列表** 字符串指定一个文件，其中每个版本 id 都在单独的行上列出。 确保源必须指向单个 blob，并且使用此标志在文件中指定的所有版本 id 必须仅属于源 blob。 给定 blob 的指定版本 id 将从 Azure 存储中删除。 
+**--list-of-versions** 字符串指定一个文件，其中每个版本 ID 都列在单独的一行中。 确保源必须指向单个 Blob，并且使用此标志在文件中指定的所有版本 ID 必须仅属于源 Blob。 给定 Blob 的指定版本 ID 将从 Azure 存储中删除。 
 
 --log-level 字符串：定义日志文件的日志详细程度。 可用级别包括：`INFO`（所有请求/响应）、`WARNING`（缓慢的响应）、`ERROR`（仅失败的请求）和 `NONE`（无输出日志）。 （默认值为 `INFO`）（默认值为 `INFO`）
 
@@ -115,7 +115,7 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 |---|---|
 |--cap-mbps float|以兆位/秒为单位限制传输速率。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。|
 |--output-type string|命令输出的格式。 选项包括：text、json。 默认值为“text”。|
-|--trusted-microsoft-suffixes 字符串   |指定可在其中发送 Azure Active Directory 登录令牌的其他域后缀。  默认值为“.core.windows.net;.core.chinacloudapi.cn;.core.cloudapi.de;.core.usgovcloudapi.net” 。 此处列出的任何内容都会添加到默认值。 为安全，你只应在此处放置 Microsoft Azure 域。 用分号分隔多个条目。|
+|--trusted-microsoft-suffixes 字符串   |指定可在其中发送 Azure Active Directory 登录令牌的其他域后缀。  默认值为“.core.windows.net;.core.chinacloudapi.cn;.core.cloudapi.de;.core.usgovcloudapi.net” 。 此处列出的任何内容都会添加到默认值。 为安全起见，应只在此处放置 Microsoft Azure 域。 用分号分隔多个条目。|
 
 ## <a name="see-also"></a>另请参阅
 

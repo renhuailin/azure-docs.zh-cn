@@ -1,18 +1,18 @@
 ---
-title: 作为事件网格源 Azure Maps
+title: 充当事件网格源的 Azure Maps
 description: 介绍针对 Azure 事件网格中的 Azure Maps 事件提供的属性和架构
 ms.topic: conceptual
 ms.date: 02/11/2021
 ms.openlocfilehash: 88cf0c8274d685a45862bc7b7884b5e4a686c22d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100363672"
 ---
-# <a name="azure-maps-as-an-event-grid-source"></a>作为事件网格源 Azure Maps
+# <a name="azure-maps-as-an-event-grid-source"></a>充当事件网格源的 Azure Maps
 
-本文提供 Azure Maps 事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](./event-schema.md)。 它还提供了一个快速入门和教程列表，以将 Azure Maps 用作事件源。
+本文提供 Azure Maps 事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](./event-schema.md)。 它还提供了一个快速入门和教程的列表，这些快速入门和教程介绍如何使用 Azure Maps 作为事件源。
 
 ## <a name="available-event-types"></a>可用事件类型
 
@@ -170,12 +170,12 @@ Azure Maps 帐户发出以下事件类型：
 
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| `topic` | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| `topic` | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | `subject` | string | 事件主题的发布者定义路径。 |
-| `eventType` | 字符串 | 此事件源的一个注册事件类型。 |
+| `eventType` | string | 此事件源的一个注册事件类型。 |
 | `eventTime` | string | 基于提供程序 UTC 时间的事件生成时间。 |
 | `id` | 字符串 | 事件的唯一标识符。 |
-| `data` | 对象 (object) | 地理围栏事件数据。 |
+| `data` | object | 地理围栏事件数据。 |
 | `dataVersion` | string | 数据对象的架构版本。 发布者定义架构版本。 |
 | `metadataVersion` | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
@@ -189,30 +189,30 @@ Azure Maps 帐户发出以下事件类型：
 | `type` | string | 此事件源的一个注册事件类型。 |
 | `time` | string | 基于提供程序 UTC 时间的事件生成时间。 |
 | `id` | 字符串 | 事件的唯一标识符。 |
-| `data` | 对象 (object) | 地理围栏事件数据。 |
+| `data` | object | 地理围栏事件数据。 |
 | `specversion` | 字符串 | CloudEvents 架构规范版本。 |
 
 ---
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `apiCategory` | 字符串 | 事件的 API 类别。 |
 | `apiName` | 字符串 | 事件的 API 名称。 |
-| `issues` | 对象 (object) | 列出在处理过程中发生的问题。 如果返回了任何问题，则不会随响应一起返回几何图形。 |
-| `responseCode` | number | HTTP 响应代码 |
-| `geometries` | 对象 (object) | 列出围栏几何图形，这些几何图形包含坐标位置，或者覆盖该位置周围的 searchBuffer。 |
+| `issues` | object | 列出处理过程中遇到的问题。 如果返回了任何问题，则不会随响应一起返回几何图形。 |
+| `responseCode` | 数字 | HTTP 响应代码 |
+| `geometries` | object | 列出围栏几何图形，这些几何图形包含坐标位置，或者覆盖该位置周围的 searchBuffer。 |
 
 当 Maps API 中发生错误时，将返回 error 对象。 error 对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `error` | ErrorDetails |当 Maps API 中发生错误时，将返回此对象  |
 
 当 Maps API 中发生错误时，将返回 ErrorDetails 对象。 ErrorDetails 对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `code` | 字符串 | HTTP 状态代码。 |
 | `message` | 字符串 | 在适用的情况下，将提供该错误的用户可读说明。 |
@@ -220,24 +220,24 @@ Azure Maps 帐户发出以下事件类型：
 
 InnerError 是包含有关该错误的特定于服务的信息的对象。 InnerError 对象具有以下属性： 
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `code` | 字符串 | 错误消息。 |
 
 几何图形对象，其中列出了相对于请求中用户时间已过期的地理围栏的几何图形 ID。 geometries 对象包含具有以下属性的几何图形项： 
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 |:-------- |:---- |:----------- |
 | `deviceid` | 字符串 | 设备的 ID。 |
 | `distance` | 字符串 | <p>从坐标到最近的地理围栏边界的距离。 正值表示坐标在地理围栏的外部。 如果坐标在地理围栏外部，但大于 searchBuffer 与最近地理围栏边界之间的距离值，则该值为 999。 负值表示坐标在地理围栏的内部。 如果坐标在多边形的内部，但大于 searchBuffer 与最近地理围栏边界之间的距离值，则该值为 -999。 值 999 表示坐标位于地理围栏外部的置信度很高。 值 -999 表示坐标位于地理围栏内部的置信度很高。<p> |
-| `geometryid` |字符串 | 唯一 ID 标识地域隔离区内几何。 |
-| `nearestlat` | number | 最近几何图形点的纬度。 |
-| `nearestlon` | number | 最近几何图形点的经度。 |
-| `udId` | 字符串 | 上传地域隔离区内时从用户上传服务返回的唯一 ID。 不会包含在地理围栏 post API 中。 |
+| `geometryid` |字符串 | 用于标识地理围栏几何图形的唯一 ID。 |
+| `nearestlat` | 数字 | 最近几何图形点的纬度。 |
+| `nearestlon` | 数字 | 最近几何图形点的经度。 |
+| `udId` | 字符串 | 上传地理围栏时由用户上传服务返回的唯一 ID。 不会包含在地理围栏 POST API 中。 |
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `expiredGeofenceGeometryId` | string[] | 相对于请求中用户时间已过期的地理围栏的几何图形 ID 列表。 |
 | `geometries` | geometries[] |列出围栏几何图形，这些几何图形包含坐标位置，或者覆盖该位置周围的 searchBuffer。 |
@@ -248,7 +248,7 @@ InnerError 是包含有关该错误的特定于服务的信息的对象。 Inner
 |标题  |说明  |
 |---------|---------|
 | [使用事件网格对 Azure Maps 事件做出响应](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 概述了 Azure Maps 与事件网格的集成。 |
-| [教程：设置地域隔离区内](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 本教程将引导你完成使用 Azure Maps 设置地理围栏的基本步骤。 你将使用 Azure 事件网格来流式传输地理围栏结果，并根据地理围栏结果设置通知。 |
+| [教程：设置地理围栏](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 本教程将引导你完成使用 Azure Maps 设置地理围栏的基本步骤。 你将使用 Azure 事件网格来流式传输地理围栏结果，并根据地理围栏结果设置通知。 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,18 +1,18 @@
 ---
 title: 排查 Azure 数据工厂连接器问题
 description: 了解如何排查 Azure 数据工厂中的连接器问题。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 02/08/2021
-ms.author: jingwang
+ms.date: 04/13/2021
+ms.author: jianleishen
 ms.custom: has-adal-ref
-ms.openlocfilehash: 9d8f940e3900c00b1c6f6623dfeff2d92ca85aa3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c08456b08b6b11745cced97fd92417f07af23dda
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042423"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109484822"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>排查 Azure 数据工厂连接器问题
 
@@ -555,7 +555,109 @@ ms.locfileid: "102042423"
 - **原因**：Dynamics 服务器不稳定或无法访问，或者网络出现问题。
 
 - **建议**：有关详细信息，请检查网络连接或查看 Dynamics 服务器日志。 如需更多帮助，请联系 Dynamics 支持部门。
+
+
+### <a name="error-code--dynamicsfailedtoconnect"></a>错误代码：DynamicsFailedToConnect 
+ 
+ - **消息**：`Failed to connect to Dynamics: %message;` 
+ 
+
+ - **原因**：如果在错误消息中看到 `Office 365 auth with OAuth failed`，则表明服务器可能有一些与 OAuth 不兼容的配置。 
+ 
+ - **建议**： 
+    1. 若要获取帮助，请联系 Dynamics 支持团队并提供详细的错误消息。  
+    1. 使用服务主体身份验证，你可以参考以下文章：[示例：使用 Azure AD 服务主体和证书身份验证的 Dynamics 联机](./connector-dynamics-crm-office-365.md#example-dynamics-online-using-azure-ad-service-principal-and-certificate-authentication)。 
+ 
+
+ - **原因**：如果在错误消息中看到 `Unable to retrieve authentication parameters from the serviceUri`，则表示你输入了错误的 Dynamics 服务 URL 或代理/防火墙来拦截流量。 
+ 
+ - **建议**：
+    1. 请确保已将正确的服务 URI 置于链接服务中。 
+    1. 如果使用自承载 IR，请确保防火墙/代理不会拦截对 Dynamics 服务器的请求。 
+   
+ 
+ - **原因**：如果在错误消息中看到 `An unsecured or incorrectly secured fault was received from the other party`，则表示从服务器端获得意外响应。 
+ 
+ - **建议**： 
+    1. 如果使用 Office 365 身份验证，请确保用户名和密码正确。 
+    1. 请确保已输入正确的服务 URI。 
+    1. 如果使用区域 CRM URL（URL 在“crm”后有一个数字），请确保使用正确的区域标识符。
+    1. 请联系 Dynamics 支持团队以获得帮助。 
+ 
+
+ - **原因**：如果在错误消息中看到 `No Organizations Found`，则表示你的组织名有误，或者你在服务 URL 中使用了错误的 CRM 区域标识符。 
+ 
+ - **建议**： 
+    1. 请确保已输入正确的服务 URI。
+    1. 如果使用区域 CRM URL（URL 在“crm”后有一个数字），请确保使用正确的区域标识符。 
+    1. 请联系 Dynamics 支持团队以获得帮助。 
+
+ 
+ - **原因**：如果看到 `401 Unauthorized` 和 AAD 相关的错误消息，则表示服务主体存在问题。 
+
+ - **建议**：按照错误消息中的指导解决服务主体问题。  
+ 
+ 
+ - **原因**：对于其他错误，问题通常出在服务器端。 
+
+ - **建议**：使用 [XrmToolBox](https://www.xrmtoolbox.com/) 建立连接。 如果错误仍然存在，请与 Dynamics 支持团队联系以获取帮助。 
+ 
+ 
+### <a name="error-code--dynamicsoperationfailed"></a>错误代码：DynamicsOperationFailed 
+ 
+- **消息**：`Dynamics operation failed with error code: %code;, error message: %message;.` 
+
+- **原因**：此操作在服务器端失败。 
+
+- **建议**：从错误消息 `Dynamics operation failed with error code: {code}` 中提取 Dynamics 操作的错误代码，并参阅 [Web 服务错误代码](/powerapps/developer/data-platform/org-service/web-service-error-codes)一文以了解更多详细信息。 如有必要，可联系 Dynamics 支持团队。 
+ 
+ 
+### <a name="error-code--dynamicsinvalidfetchxml"></a>错误代码：DynamicsInvalidFetchXml 
   
+- **消息**：`The Fetch Xml query specified is invalid.` 
+
+- **原因**：提取 XML 中存在错误。  
+
+- **建议**：修复提取 XML 中的错误。 
+ 
+ 
+### <a name="error-code--dynamicsmissingkeycolumns"></a>错误代码：DynamicsMissingKeyColumns 
+ 
+- **消息**：`Input DataSet must contain keycolumn(s) in Upsert/Update scenario. Missing key column(s): %column;`
+ 
+- **原因**：源数据不包含接收器实体的键列。 
+
+- **建议**：确认键列在源数据中或将源列映射到接收器实体上的键列。 
+ 
+ 
+### <a name="error-code--dynamicsprimarykeymustbeguid"></a>错误代码：DynamicsPrimaryKeyMustBeGuid 
+ 
+- **消息**：`The primary key attribute '%attribute;' must be of type guid.` 
+ 
+- **原因**：主键列的类型不是“Guid”。 
+ 
+- **建议**：请确保源数据中的主键列是“Guid”类型。 
+ 
+
+### <a name="error-code--dynamicsalternatekeynotfound"></a>错误代码：DynamicsAlternateKeyNotFound 
+ 
+- **消息**：`Cannot retrieve key information of alternate key '%key;' for entity '%entity;'.` 
+ 
+- **原因**：提供的备用键不存在，这可能是由错误的键名称或权限不足所引起。 
+ 
+- **建议**： <br/> 
+    1. 更正键名称中的拼写错误。<br/> 
+    1. 请确保对该实体具有足够的权限。 
+ 
+ 
+### <a name="error-code--dynamicsinvalidschemadefinition"></a>错误代码：DynamicsInvalidSchemaDefinition 
+ 
+- **消息**：`The valid structure information (column name and type) are required for Dynamics source.` 
+ 
+- **原因**：列映射中的接收器列缺少“type”属性。 
+ 
+- **建议**：使用门户上的 JSON 编辑器，可在列映射中将“type”属性添加到这些列。 
+
 
 ## <a name="ftp"></a>FTP
 
@@ -979,7 +1081,7 @@ ms.locfileid: "102042423"
 
 - **原因**：使用 Azure Blob 和 SFTP 等连接器复制数据时，可能会发生此错误。 美国联邦信息处理标准 (FIPS) 定义了允许使用的一组特定加密算法。 当计算机上启用了 FIPS 模式时，某些情况下会阻止复制活动所依赖的某些加密类。
 
-- **解决方案**：了解[为什么我们不再推荐“FIPS 模式”](https://techcommunity.microsoft.com/t5/microsoft-security-baselines/why-we-8217-re-not-recommending-8220-fips-mode-8221-anymore/ba-p/701037)，并评估你是否可在自承载 IR 计算机上禁用 FIPS。
+- **解决方案**：了解 [为什么我们不再推荐“FIPS 模式”](https://techcommunity.microsoft.com/t5/microsoft-security-baselines/why-we-8217-re-not-recommending-8220-fips-mode-8221-anymore/ba-p/701037)，并评估你是否可在自承载 IR 计算机上禁用 FIPS。
 
     如果只想让 Azure 数据工厂绕过 FIPS 并使活动运行成功，请执行以下操作：
 

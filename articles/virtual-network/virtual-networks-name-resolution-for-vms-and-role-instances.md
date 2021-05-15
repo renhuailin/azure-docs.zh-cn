@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bbaf2fb99f1268a752fab4322078b0566a054d30
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
-ms.translationtype: MT
+ms.openlocfilehash: 5af424ff79cb8dc919590db7e236323b2d16fc4e
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222847"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752888"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虚拟网络中资源的名称解析
 
-可能需要允许虚拟机 (VM) 以及部署在虚拟网络中的其他资源相互通信，具体取决于如何使用 Azure 托管 IaaS、PaaS 和混合解决方案。 尽管可以通过使用 IP 地址实现通信，但使用容易记住且不会更改的名称要简单得多。 
+可能需要允许虚拟机 (VM) 以及部署在虚拟网络中的其他资源相互通信，具体取决于如何使用 Azure 托管 IaaS、PaaS 和混合解决方案。 尽管可以通过使用 IP 地址实现通信，但使用容易记住且不会更改的名称要简单得多。
 
 当部署在虚拟网络中的资源需要将域名解析到内部 IP 地址时，它们可以使用三种方法之一：
 
@@ -36,7 +36,8 @@ ms.locfileid: "98222847"
 > Azure DNS 专用区域是首选的解决方案，可让你灵活管理 DNS 区域和记录。 有关详细信息，请参阅[在专用域中使用 Azure DNS](../dns/private-dns-overview.md)。
 
 > [!NOTE]
-> 如果使用 Azure 提供的 DNS，则相应的 DNS 后缀会自动应用到虚拟机。 对于所有其他选项，必须使用完全限定的域名 (FQDN)，或手动将相应的 DNS 后缀应用到虚拟机。
+> 如果使用 Azure 提供的 DNS，则相应的 DNS 后缀会自动应用到虚拟机。
+> 对于所有其他选项，必须使用完全限定的域名 (FQDN)，或手动将相应的 DNS 后缀应用到虚拟机。
 
 | **方案** | **解决方案** | **DNS 后缀** |
 | --- | --- | --- |
@@ -57,7 +58,7 @@ Azure 提供的名称解析仅提供基本的权威 DNS 功能。 如果使用�
 除公共 DNS 名称解析之外，Azure 还为驻留在相同虚拟网络或云服务中的 VM 和角色实例提供内部名称解析。 云服务中的 VM 和实例共享相同的 DNS 后缀，因此仅使用主机名便可。 但在使用经典部署模型部署的虚拟网络中，不同云服务具有不同的 DNS 后缀。 在这种情况下，需要使用 FQDN 解析不同云服务的名称。 在使用 Azure 资源管理器部署模型部署的虚拟网络中，某个虚拟网络中的所有虚拟机的 DNS 后缀是一致的，因此无需 FQDN。 DNS 名称可分配给 VM 和网络接口。 虽然 Azure 提供的名称解析不需要任何配置，但并不适合所有部署方案，参见上表详细说明。
 
 > [!NOTE]
-> 在使用云服务 Web 和辅助角色的情况下，还可以使用 Azure 服务管理 REST API 访问角色实例的内部 IP 地址。 有关详细信息，请参阅[服务管理 REST API 参考](/previous-versions/azure/ee460799(v=azure.100))。 地址基于角色名称和实例编号。 
+> 在使用云服务 Web 和辅助角色的情况下，还可以使用 Azure 服务管理 REST API 访问角色实例的内部 IP 地址。 有关详细信息，请参阅[服务管理 REST API 参考](/previous-versions/azure/ee460799(v=azure.100))。 地址基于角色名称和实例编号。
 >
 
 ### <a name="features"></a>功能
@@ -67,7 +68,7 @@ Azure 提供的名称解析包括以下功能：
 * 高可用性。 无需创建和管理你自己的 DNS 服务器的群集。
 * 可以结合自己的 DNS 服务器使用该服务，来解析本地主机名和 Azure 主机名。
 * 可以在同一云服务中的 VM 和角色实例之间使用名称解析，无需 FQDN。
-* 可以在使用 Azure 资源管理器部署模型的虚拟网络中的 VM 之间使用名称解析，无需 FQDN。 经典部署模型中的虚拟网络需要使用 FQDN 来解析不同云服务中的名称。 
+* 可以在使用 Azure 资源管理器部署模型的虚拟网络中的 VM 之间使用名称解析，无需 FQDN。 经典部署模型中的虚拟网络需要使用 FQDN 来解析不同云服务中的名称。
 * 可以使用最能描述部署的主机名，而不必使用自动生成的名称。
 
 ### <a name="considerations"></a>注意事项
@@ -84,9 +85,9 @@ Azure 提供的名称解析包括以下功能：
 
 ### <a name="reverse-dns-considerations"></a>反向 DNS 注意事项
 所有基于 ARM 的虚拟网络都支持反向 DNS。 可以发出反向 DNS 查询（PTR 查询），以将虚拟机的 IP 地址映射到虚拟机的 FQDN。
-* 虚拟机 IP 地址的所有 PTR 查询将返回 vmname 形式的 Fqdn \[ \] 。 internal.cloudapp.net
-* 在表单 vmname 的 Fqdn 上进行正向查找 \[ \] 将解析为分配给虚拟机的 IP 地址。
-* 如果虚拟网络已作为注册虚拟网络链接到 [Azure DNS 专用区域](../dns/private-dns-overview.md)，则反向 DNS 查询会返回两条记录。 一条记录的格式为 \[ vmname \] 。 [privatednszonename]，另一个将采用 \[ vmname 格式 \] 。 internal.cloudapp.net
+* 针对虚拟机 IP 地址的所有 PTR 查询都会返回 \[vmname\].internal.cloudapp.net 格式的 FQDN
+* 对 \[vmname\].internal.cloudapp.net 格式的 FQDN 执行正向查找会解析为分配给虚拟机的 IP 地址。
+* 如果虚拟网络已作为注册虚拟网络链接到 [Azure DNS 专用区域](../dns/private-dns-overview.md)，则反向 DNS 查询会返回两条记录。 一条记录的格式将为 \[vmname\].[privatednszonename]，另一条记录的格式将为 \[vmname\].internal.cloudapp.net
 * 反向 DNS 查找的范围限定为给定的虚拟网络，即使该虚拟网络已对等互连到其他虚拟网络。 对位于对等互连虚拟网络中的虚拟机的 IP 地址执行反向 DNS 查询（PTR 查询）会返回 NXDOMAIN。
 * 如果要在虚拟网络中关闭反向 DNS 功能，可以通过使用 [Azure DNS 专用区域](../dns/private-dns-overview.md)并将此区域链接到你的虚拟网络来执行此操作。 例如，如果虚拟网络的 IP 地址空间是 10.20.0.0/16，可以创建空的专用 DNS 区域 20.10.in-addr.arpa，并将其链接到该虚拟网络。 在将区域链接到虚拟网络时，应禁用链接上的自动注册。 此区域将替代虚拟网络的默认反向查找区域，因为此区域为空，反向 DNS 查询将获得 NXDOMAIN。 请参阅我们的[快速入门指南](../dns/private-dns-getstarted-portal.md)，详细了解如何创建专用 DNS 区域并将其链接到虚拟网络。
 
@@ -111,8 +112,8 @@ Azure 提供的名称解析包括以下功能：
   * 使用 `sudo apt-get install dnsmasq` 安装 dnsmasq 包。
 * **SUSE（使用 netconf）** ：
   * 使用 `sudo zypper install dnsmasq` 安装 dnsmasq 包。
-  * 使用 `systemctl enable dnsmasq.service` 启用 dnsmasq 服务。 
-  * 使用 `systemctl start dnsmasq.service` 启动 dnsmasq 服务。 
+  * 使用 `systemctl enable dnsmasq.service` 启用 dnsmasq 服务。
+  * 使用 `systemctl start dnsmasq.service` 启动 dnsmasq 服务。
   * 编辑 **/etc/sysconfig/network/config** 并将 *NETCONFIG_DNS_FORWARDER=""* 更改为 *dnsmasq*。
   * 使用 `netconfig update` 更新 resolv.con，将缓存设置为本地 DNS 解析程序。
 * **CentOS（使用 NetworkManager）** ：
@@ -125,12 +126,12 @@ Azure 提供的名称解析包括以下功能：
 > [!NOTE]
 > dnsmasq 包只是适用于 Linux 的众多 DNS 缓存中的一个。 在使用之前，请检查其是否适合特定需求，且没有安装其他缓存。
 
-    
+
 ### <a name="client-side-retries"></a>客户端重试
 
 DNS 主要是一个 UDP 协议。 因为 UDP 协议无法保证消息传递，所以重试逻辑在DNS 协议本身中处理。 每个 DNS 客户端（操作系统）可能会表现出不同的重试逻辑，具体取决于创建者的偏好：
 
-* Windows 操作系统在 1 秒后重试，然后再在 2 秒后、4 秒后和额外 4 秒后再次重试。 
+* Windows 操作系统在 1 秒后重试，然后再在 2 秒后、4 秒后和额外 4 秒后再次重试。
 * 默认 Linux 设置在 5 秒后重试。 我们建议将重试规范更改为 5 次，每隔 1 秒一次。
 
 使用 `cat /etc/resolv.conf` 检查 Linux VM 上的当前设置。 查看“options”行，例如：
@@ -161,7 +162,7 @@ Azure 提供的功能可能无法满足名称解析的需求。 例如，可能�
 
 虚拟网络中的 DNS 服务器可将 DNS 查询转发到 Azure 的递归解析程序。 这样，便可以解析该虚拟网络中的主机名。 例如，在 Azure 中运行的域控制器 (DC) 可以响应自身域的 DNS 查询，而将所有其他查询转发到 Azure。 转发查询，VM 就可以（通过 DC）查看本地资源以及（通过转发器）查看 Azure 提供的主机名。 可以通过虚拟 IP 168.63.129.16 访问 Azure 中的递归解析程序。
 
-DNS 转发还可用于在虚拟网络之间进行 DNS 解析，可以通过本地计算机来解析 Azure 提供的主机名。 若要解析 VM 的主机名，DNS 服务器 VM 必须驻留在同一虚拟网络中，并且必须配置为将主机名查询转发到 Azure。 由于 DNS 后缀在每个虚拟网络中是不同的，因此可使用条件性转发规则将 DNS 查询发送到正确的虚拟网络进行解析。 下图显示了两个虚拟网络和一个本地网络使用本方法在虚拟网络之间进行 DNS 解析。 DNS 转发器示例可在 [Azure 快速入门模板库](https://azure.microsoft.com/documentation/templates/301-dns-forwarder/)和 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder) 中获取。
+DNS 转发还可用于在虚拟网络之间进行 DNS 解析，可以通过本地计算机来解析 Azure 提供的主机名。 若要解析 VM 的主机名，DNS 服务器 VM 必须驻留在同一虚拟网络中，并且必须配置为将主机名查询转发到 Azure。 由于 DNS 后缀在每个虚拟网络中是不同的，因此可使用条件性转发规则将 DNS 查询发送到正确的虚拟网络进行解析。 下图显示了两个虚拟网络和一个本地网络使用本方法在虚拟网络之间进行 DNS 解析。 DNS 转发器示例可在 [Azure 快速入门模板库](https://azure.microsoft.com/documentation/templates/demos/dns-forwarder/)和 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/dns-forwarder) 中获取。
 
 > [!NOTE]
 > 角色实例可对同一虚拟网络中的 VM 执行名称解析， 方法是使用由 VM 主机名和 **internal.cloudapp.net** DNS 后缀组成的 FQDN。 但是，在这种情况下，仅当角色实例在[角色架构（.cscfg 文件）](/previous-versions/azure/reference/jj156212(v=azure.100))中定义了 VM 名称时，名称解析才会成功。
@@ -176,12 +177,12 @@ DNS 转发还可用于在虚拟网络之间进行 DNS 解析，可以通过本�
 
 如果需要，可以使用 PowerShell 或 API 确定内部 DNS 后缀：
 
-* 对于 Azure 资源管理器部署模型中的虚拟网络，可以通过[网络接口 REST API](/rest/api/virtualnetwork/networkinterfaces)、[Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) PowerShell cmdlet 和 [az network nic show](/cli/azure/network/nic#az-network-nic-show) Azure CLI 命令获取该后缀。
+* 对于 Azure 资源管理器部署模型中的虚拟网络，可以通过[网络接口 REST API](/rest/api/virtualnetwork/networkinterfaces)、[Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) PowerShell cmdlet 和 [az network nic show](/cli/azure/network/nic#az_network_nic_show) Azure CLI 命令获取该后缀。
 * 在经典部署模型中，可以通过 [Get Deployment API](/previous-versions/azure/reference/ee460804(v=azure.100)) 调用或 [Get-AzureVM -Debug](/powershell/module/servicemanagement/azure.service/get-azurevm) cmdlet 获取该后缀。
 
 如果不想将查询转发到 Azure，应提供自己的 DNS 解析。 DNS 解决方案需要：
 
-* 提供合适的主机名解析（例如，通过 [DDNS](virtual-networks-name-resolution-ddns.md)）。 如果使用 DDNS，则可能需要禁用 DNS 记录清理。 Azure DHCP 租约时间很长，进行清理可能会导致 DNS 记录过早删除。 
+* 提供合适的主机名解析（例如，通过 [DDNS](virtual-networks-name-resolution-ddns.md)）。 如果使用 DDNS，则可能需要禁用 DNS 记录清理。 Azure DHCP 租约时间很长，进行清理可能会导致 DNS 记录过早删除。
 * 提供适当的递归式解析来解析外部域名。
 * 可以从其所服务的客户端进行访问（端口 53 上的 TCP 和 UDP），并可访问 Internet。
 * 禁止从 Internet 进行访问，减少外部代理带来的威胁。
@@ -198,7 +199,7 @@ DNS 转发还可用于在虚拟网络之间进行 DNS 解析，可以通过本�
 
 如需从使用应用服务构建的链接到虚拟网络的 Web 应用对不同虚拟网络中的 VM 执行名称解析，需要同时在两个虚拟网络中使用自定义 DNS 服务器，如下所示：
 
-* 在某个也可向 Azure 中的递归解析程序（虚拟 IP 为 168.63.129.16）转发查询的 VM 上的目标虚拟网络中设置 DNS 服务器。 DNS 转发器示例可在 [Azure 快速入门模板库](https://azure.microsoft.com/documentation/templates/301-dns-forwarder)和 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder) 中获取。 
+* 在某个也可向 Azure 中的递归解析程序（虚拟 IP 为 168.63.129.16）转发查询的 VM 上的目标虚拟网络中设置 DNS 服务器。 DNS 转发器示例可在 [Azure 快速入门模板库](https://azure.microsoft.com/documentation/templates/demos/dns-forwarder)和 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/dns-forwarder) 中获取。
 * 在某个 VM 上的源虚拟网络中设置 DNS 转发程序。 将此 DNS 转发器配置为向目标虚拟网络中的 DNS 服务器转发查询。
 * 在源虚拟网络的设置中配置源 DNS 服务器。
 * 遵照[将应用与虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)中的说明，为 Web 应用启用虚拟网络集成以链接到源虚拟网络。

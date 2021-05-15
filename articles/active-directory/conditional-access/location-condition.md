@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 777fc60f76692734ea34ff3cdf8f6bc6e5e8316b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c17814b51f1ebd6640bc6f500fbedbd7874cdd94
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97615705"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107947782"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>在条件访问策略中使用位置条件 
 
@@ -32,39 +32,37 @@ ms.locfileid: "97615705"
 
 网络位置由客户端提供给 Azure Active Directory 的公共 IP 地址确定。 默认情况下，条件访问策略应用于所有 IPv4 和 IPv6 地址。 
 
-> [!TIP]
-> 只有 **[命名位置（预览版）](#preview-features)** 接口中支持 IPv6 范围。 
-
 ## <a name="named-locations"></a>命名位置
 
-位置在 Azure 门户中的“Azure Active Directory” > “安全性” > “条件访问” > “命名位置”下指定。 这些命名网络位置可能包括组织的总部网络范围、VPN 网络范围或你希望阻止的范围等位置。 
+位置在 Azure 门户中的“Azure Active Directory” > “安全性” > “条件访问” > “命名位置”下指定。 这些命名网络位置可能包括组织的总部网络范围、VPN 网络范围或你希望阻止的范围等位置。 命名位置可由 IPv4/IPv6 地址范围或国家/地区定义。 
 
 ![Azure 门户中的命名位置](./media/location-condition/new-named-location.png)
 
-若要配置位置，至少需要提供 **名称** 和 IP 范围。 
+### <a name="ip-address-ranges"></a>IP 地址范围
 
-可配置的已命名位置数受限于 Azure AD 中相关对象的大小。 可以根据以下限制来配置位置：
+若要按 IPv4/IPv6 地址范围定义命名位置，需要提供一个名称和 IP 范围。 
 
-- 一个命名位置最多可以有 1200 个 IPv4 范围。
-- 最多可有 90 个命名位置，其中每个都分配有一个 IP 范围。
-
-> [!TIP]
-> 只有 **[命名位置（预览版）](#preview-features)** 接口中支持 IPv6 范围。 
+IPv4/IPv6 地址范围定义的命名位置受以下限制的约束： 
+- 配置最多 195 个命名位置
+- 为每个命名位置配置最多 2000 个 IP 范围
+- 支持 IPv4 和 IPv6 范围
+- 无法配置专用 IP 范围
+- 包含在某范围内的 IP 地址的数量受限。 定义 IP 范围时只允许使用大于 /8 的 CIDR 掩码。 
 
 ### <a name="trusted-locations"></a>受信任位置
 
-创建网络位置时，管理员可以选择将某个位置标记为受信任位置。 
+管理员可以将 IP 地址范围定义的命名位置指定为受信任的命名位置。 
 
 ![Azure 门户中的受信任位置](./media/location-condition/new-trusted-location.png)
 
-在条件访问策略中可以考虑此选项，例如，你可以要求从受信任的网络位置注册多重身份验证。 它还会影响到 Azure AD 标识保护的风险计算，降低用户从标记为受信任的位置进入的登录风险。
+从受信任的命名位置登录可以提高 Azure AD 标识保护风险计算的准确性，从而在用户从标记为受信任的位置进行身份验证时降低用户的登录风险。 此外，受信任的命名位置可以作为条件访问策略中的目标。 例如，你可能需要仅将多重身份验证注册限制到受信任的命名位置。 
 
 ### <a name="countries-and-regions"></a>国家/地区和区域
 
-某些组织可能会选择将整个国家/地区或区域 IP 边界定义为条件访问策略的命名位置。 如果组织知道有效用户永远不会来自某个位置（例如朝鲜），则他们可以根据位置阻止不必要的流量。 IP 地址到国家/地区的这些映射会定期更新。 
+某些组织可能会选择使用条件访问限制对某些国家或地区的访问。 除了通过 IP 范围定义命名位置之外，管理员还可以按国家或地区定义命名位置。 当用户登录时，Azure AD 会将用户的 IPv4 地址解析为国家或地区，并且定期更新该映射。 组织可以使用由国家/地区定义的命名位置阻止来自他们未开展业务的国家/地区（如朝鲜）的流量。 
 
 > [!NOTE]
-> 无法将 IPv6 地址范围映射到国家/地区。 仅可将 IPv4 地址映射到国家/地区。
+> 来自 IPv6 地址的登录无法映射到国家或地区，被认为是未知区域。 只有 IPv4 地址才能映射到国家或地区。
 
 ![在 Azure 门户中创建新的基于国家/地区或区域的位置](./media/location-condition/new-named-location-country-region.png)
 
@@ -76,7 +74,7 @@ ms.locfileid: "97615705"
 
 还可以在[多重身份验证服务设置](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx)中配置 IP 地址范围，用于表示组织的本地 Intranet。 使用此功能最多可以配置 50 个 IP 地址范围。 IP 地址范围采用 CIDR 格式。 有关详细信息，请参阅[受信任的 IP](../authentication/howto-mfa-mfasettings.md#trusted-ips)。  
 
-如果已配置受信任的 IP，这些 IP 将作为“MFA 受信任的 IP”显示在位置条件的位置列表中。
+如果已配置“受信任的 IP”，这些 IP 将作为“MFA 受信任的 IP”显示在位置条件的位置列表中。
 
 ### <a name="skipping-multi-factor-authentication"></a>跳过多重身份验证
 
@@ -90,33 +88,6 @@ ms.locfileid: "97615705"
 1. 检查用户 IP 地址的前三个八位字节是否匹配初始身份验证 IP 地址的前三个八位字节。 当内部企业网络声明最初是初次颁发且用户位置已经过验证时，IP 地址将与初始身份验证进行比较。
 
 如果这两个步骤均失败，则将用户视为不再位于受信任的 IP 中。
-
-## <a name="preview-features"></a>预览功能
-
-除了正式发布的命名位置功能之外，还有一个命名位置（预览版）。 通过使用当前的命名位置边栏选项卡顶部的横幅，可以访问命名位置预览版。
-
-![试用命名位置预览版](./media/location-condition/preview-features.png)
-
-使用命名位置预览版，你可以：
-
-- 配置最多 195 个命名位置
-- 为每个命名位置配置最多 2000 个 IP 范围
-- 将 IPv6 地址与 IPv4 地址一起配置
-
-我们还添加了一些额外的检查，帮助你减少错误配置的更改。
-
-- 无法再配置专用 IP 范围
-- 范围中可以包含的 IP 地址数有限制。 配置 IP 范围时只允许使用大于 /8 的 CIDR 掩码。
-
-使用预览版，现在有两个创建选项： 
-
-- **国家/地区位置**
-- **IP 范围位置**
-
-> [!NOTE]
-> 无法将 IPv6 地址范围映射到国家/地区。 仅可将 IPv4 地址映射到国家/地区。
-
-![命名位置预览版界面](./media/location-condition/named-location-preview.png)
 
 ## <a name="location-condition-in-policy"></a>策略中的位置条件
 
@@ -135,7 +106,7 @@ ms.locfileid: "97615705"
 此选项将应用到：
 
 - 已标记为可信位置的所有位置
-- **MFA 受信任的 IP**（如果已配置）
+- MFA 受信任的 IP（如果已配置）
 
 ### <a name="selected-locations"></a>选定的位置
 
@@ -143,7 +114,7 @@ ms.locfileid: "97615705"
 
 ## <a name="ipv6-traffic"></a>IPv6 流量
 
-默认情况下，条件访问策略将应用于所有 IPv6 流量。 使用[命名位置预览](#preview-features)，可以从条件访问策略中排除特定的 IPv6 地址范围。 当不想针对特定 IPv6 范围强制执行策略时，此选项非常有用。 例如，如果不想强制执行针对企业网络使用的策略，且企业网络托管在公共 IPv6 范围内。  
+默认情况下，条件访问策略将应用于所有 IPv6 流量。 如果你不希望针对特定 IPv6 范围强制执行策略，则可以从条件访问策略中排除特定的 IPv6 地址范围。 例如，如果不想强制执行针对企业网络使用的策略，且企业网络托管在公共 IPv6 范围内。  
 
 ### <a name="when-will-my-tenant-have-ipv6-traffic"></a>我的租户什么时候会有 IPv6 流量？
 
@@ -157,7 +128,7 @@ Azure Active Directory (Azure AD) 当前不支持使用 IPv6 的直接网络连�
 这些是可能需要在命名位置配置 IPv6 范围的最常见原因。 另外，如果使用的是 Azure VNet，会收到来自 IPv6 地址的流量。 如果有条件访问策略阻止了 VNet 流量，请检查 Azure AD 登录日志。 识别流量后，就可以获取正在使用的 IPv6 地址，并将其从策略中排除。 
 
 > [!NOTE]
-> 如果要为单个地址指定 IP CIDR 范围，请应用 /128 位掩码。 如果 IPv6 地址是 2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a，并想从地址范围中排除该单一地址，应使用 2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a/128。
+> 如果要为单个地址指定 IP CIDR 范围，请应用 /128 位掩码。 如果 IPv6 地址为 2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a，并想从地址范围中排除该单一地址，应使用 2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a/128。
 
 ### <a name="identifying-ipv6-traffic-in-the-azure-ad-sign-in-activity-reports"></a>在 Azure AD 登录活动报告中标识 IPv6 流量
 
@@ -174,7 +145,7 @@ Azure Active Directory (Azure AD) 当前不支持使用 IPv6 的直接网络连�
 - 当用户最初登录到 Web 应用、移动应用或桌面应用程序时。
 - 当使用新式身份验证的移动应用或桌面应用程序使用刷新令牌来获取新的访问令牌时。 默认情况下此检查一小时进行一次。
 
-对于使用新式身份验证的移动应用和桌面应用程序，此检查意味着，在更改网络位置的一小时内会检测到位置更改。 对于不使用新式身份验证的移动应用和桌面应用程序，此策略将应用于每个令牌请求。 请求的频率可能会因应用程序而异。 同样，对于 Web 应用程序，此策略在初始登录时应用，并适合用于 Web 应用程序的会话生存期。 由于不同应用程序的会话生存期不同，因此策略评估间隔的时间也会有所不同。 每次应用程序请求新的登录令牌时，就会应用一次此策略。
+对于使用新式身份验证的移动应用和桌面应用程序，此检查意味着，在更改网络位置的一小时内会检测到位置更改。 对于不使用新式身份验证的移动应用和桌面应用程序，此策略将应用于每个令牌请求。 请求的频率可能会因应用程序而异。 同样，对于 Web 应用程序，此策略在初始登录时应用，并适合用于 Web 应用程序的会话生存期。 由于不同应用程序的会话生存期不同，因此策略评估间隔的时间也会有所不同。 每次应用程序请求新的登录令牌时，就会应用此策略。
 
 默认情况下，Azure AD 每小时颁发一个令牌。 在移出企业网络后的一小时内，将使用新式身份验证对应用程序实施该策略。
 
@@ -194,7 +165,7 @@ Azure Active Directory (Azure AD) 当前不支持使用 IPv6 的直接网络连�
 
 ### <a name="api-support-and-powershell"></a>API 支持和 PowerShell
 
-命名位置的 Graph API 预览版本可用。有关详细信息，请参阅 [namedLocation API](/graph/api/resources/namedlocation?view=graph-rest-beta)。
+命名位置的 Graph API 预览版本可用。有关详细信息，请参阅 [namedLocation API](/graph/api/resources/namedlocation)。
 
 > [!NOTE]
 > 使用 PowerShell 创建的命名位置仅在命名位置（预览版）中显示。 在旧视图中看不到命名位置。  

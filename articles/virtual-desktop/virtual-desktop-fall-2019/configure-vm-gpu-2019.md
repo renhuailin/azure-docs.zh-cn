@@ -1,18 +1,18 @@
 ---
-title: 为 Windows 虚拟桌面 (经典) 配置 GPU-Azure
-description: 如何在 Windows 虚拟桌面 (经典) 中启用 GPU 加速呈现和编码。
+title: 为 Windows 虚拟桌面（经典版）配置 GPU - Azure
+description: 如何在 Windows 虚拟桌面（经典版）中启用 GPU 加速的渲染和编码。
 author: gundarev
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: denisgun
 ms.openlocfilehash: fa7b80b021e00d25dea4f96432ae922c15474058
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95023048"
 ---
-# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop-classic"></a>为 Windows 虚拟桌面 (经典) 配置图形处理单元 (GPU) 加速
+# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop-classic"></a>为 Windows 虚拟桌面（经典版）配置图形处理单元 (GPU) 加速
 
 >[!IMPORTANT]
 >本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../configure-vm-gpu.md)。
@@ -27,7 +27,7 @@ Azure 提供了许多 [GPU 优化的虚拟机大小](../../virtual-machines/size
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>创建主机池、预配虚拟机并配置应用组
 
-使用你选择的大小的 VM 创建新的主机池。 有关说明，请参阅 [教程：使用 Azure Marketplace 创建主机池](../create-host-pools-azure-marketplace.md)。
+使用你选择的大小的 VM 创建新的主机池。 有关说明，请参阅[教程：使用 Azure 市场创建主机池](../create-host-pools-azure-marketplace.md)。
 
 Windows 虚拟桌面在以下操作系统中支持 GPU 加速的渲染和编码：
 
@@ -40,7 +40,7 @@ Windows 虚拟桌面在以下操作系统中支持 GPU 加速的渲染和编码�
 
 若要在 Windows 虚拟桌面中利用 Azure N 系列 VM 的 GPU 功能，必须安装相应的图形驱动程序。 按照[支持的操作系统和驱动程序](../../virtual-machines/sizes-gpu.md#supported-operating-systems-and-drivers)中的说明，以手动方式或使用 Azure VM 扩展安装来自相应显卡供应商的驱动程序。
 
-Windows 虚拟桌面仅支持 Azure 分发的驱动程序。 Additionaly，对于具有 NVIDIA Gpu 的 Azure Vm，Windows 虚拟桌面只支持 [NVIDIA 网格驱动程序](../../virtual-machines/windows/n-series-driver-setup.md#nvidia-grid-drivers) 。
+Windows 虚拟桌面仅支持 Azure 分发的驱动程序。 此外，对于具有 NVIDIA GPU 的 Azure VM，Windows 虚拟桌面仅支持 [NVIDIA GRID 驱动程序](../../virtual-machines/windows/n-series-driver-setup.md#nvidia-grid-drivers)。
 
 安装驱动程序后，需要重启 VM。 使用上述说明中的验证步骤确认图形驱动程序已成功安装。
 

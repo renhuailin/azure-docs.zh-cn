@@ -1,20 +1,20 @@
 ---
 title: Azure Service Fabric 映像存储区连接字符串
-description: 了解映像存储连接字符串，包括其用途和对 Service Fabric 群集的应用。
+description: 了解映像存储连接字符串，包括其对 Service Fabric 群集的使用和应用。
 author: alexwun
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: alexwun
 ms.openlocfilehash: 8fc0239dd18fc7071823a129a7dbc4f102023d66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86246190"
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>了解 ImageStoreConnectionString 设置
 
-在某些文档中，浅要提及了“ImageStoreConnectionString”参数的存在，但未阐述其真正的含义。 在阅读了[使用 PowerShell 部署和删除应用程序][10]之类的文章之后，你所要做的似乎就是复制/粘贴目标群集的群集清单中所示的值。 因此，每个群集的设置都必须是可配置的，但你通过 [Azure 门户][11]创建群集时，没有用于配置此设置的选项，它始终是“fabric:ImageStore”。 那么，此设置有何用途？
+在某些文档中，浅要提及了“ImageStoreConnectionString”参数的存在，但未阐述其真正的含义。 阅读诸如[使用 PowerShell 部署和删除应用程序][10]等文章后，貌似你只需在目标群集的群集清单中出现值时复制/粘贴该值。 因此设置必须可按群集进行配置，但在通过 [Azure 门户][11]创建群集时，无法配置此设置且其始终为“fabric:ImageStore”。 那么，此设置有何用途？
 
 ![群集清单][img_cm]
 

@@ -5,18 +5,18 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: f2f01e2b58c997db08ad4427de7eef1ee3760c4a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+manager: femila
+ms.openlocfilehash: fdd74a09e49a352d18cf4ceccf406a25bf6dffb3
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016805"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445833"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>设置适用于 Windows 虚拟桌面的 PowerShell 模块
 
 >[!IMPORTANT]
->此内容适用于 Azure 资源管理器集成的 Windows 虚拟桌面。
+>本内容适用于将 Windows 虚拟桌面与 Azure 资源管理器集成。
 
 Windows 虚拟桌面 PowerShell 模块已集成到 Azure PowerShell 模块中。 本文介绍如何设置 PowerShell 模块，以便针对 Windows 虚拟桌面运行 cmdlet。
 
@@ -42,7 +42,7 @@ Connect-AzAccount
 ```
 
 >[!IMPORTANT]
->如果正在连接到 US Gov 门户，请改为运行此 cmdlet：
+>如果正在连接到 US Gov 门户，请改为运行以下 cmdlet：
 > 
 > ```powershell
 > Connect-AzAccount -EnvironmentName AzureUSGovernment
@@ -68,7 +68,7 @@ Youradminupn subscriptionname AzureADTenantID AzureCloud
 Select-AzSubscription -Subscription <preferredsubscriptionname>
 ```
 
-你还可以使用 Out-GridView cmdlet 从列表中选择一个：
+还可以使用 Out-GridView cmdlet 从列表中选择一个订阅：
 
 ```powershell
 Get-AzSubscription | Out-GridView -PassThru | Select-AzSubscription

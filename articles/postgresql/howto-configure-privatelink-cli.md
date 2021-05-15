@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b8aaebdd37f835201ef549e3f97e0c0b657e4fe9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: 410da33b531524f4a6458df13a89807fedd739a2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020120"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773326"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>使用 CLI 创建和管理 Azure Database for PostgreSQL（单一服务器）的专用链接
 
@@ -33,7 +33,7 @@ ms.locfileid: "96020120"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-在创建任何资源之前，必须创建一个资源组以托管虚拟网络。 使用 [az group create](/cli/azure/group) 创建资源组。 此示例在 " *westeurope* " 位置创建名为 " *myResourceGroup* " 的资源组：
+在创建任何资源之前，必须创建一个资源组以托管虚拟网络。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在“westeurope”位置创建名为“myResourceGroup”的资源组：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
@@ -50,7 +50,7 @@ az network vnet create \
 ```
 
 ## <a name="disable-subnet-private-endpoint-policies"></a>禁用子网专用终结点策略 
-Azure 会将资源部署到虚拟网络中的子网，因此，你需要创建或更新子网，以禁用专用终结点[网络策略](../private-link/disable-private-endpoint-network-policy.md)。 使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) 更新名为 *mySubnet* 的子网配置：
+Azure 会将资源部署到虚拟网络中的子网，因此，你需要创建或更新子网，以禁用专用终结点[网络策略](../private-link/disable-private-endpoint-network-policy.md)。 使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) 更新名为 *mySubnet* 的子网配置：
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -71,7 +71,7 @@ az vm create \
  记下 VM 的公共 IP 地址。 在下一步中，此地址将用于从 Internet 连接到 VM。
 
 ## <a name="create-an-azure-database-for-postgresql---single-server"></a>创建 Azure Database for PostgreSQL（单一服务器） 
-使用 az postgres server create 命令创建 Azure Database for PostgreSQL。 请记住，PostgreSQL 服务器的名称必须在 Azure 中是唯一的，因此请将占位符值替换为你在上面使用的唯一值： 
+使用 az postgres server create 命令创建 Azure Database for PostgreSQL。 请记住，PostgreSQL 服务器名称必须在 Azure 中是唯一的，因此请将占位符值替换为你上面使用的唯一值： 
 
 ```azurecli-interactive
 # Create a server in the resource group 
@@ -128,7 +128,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 > [!NOTE]
 > 在某些情况下，Azure Database for PostgreSQL 和 VNet 子网位于不同的订阅中。 在这些情况下，必须确保以下配置：
-> - 请确保两个订阅都注册了 Microsoft.DBforPostgreSQL 资源提供程序。 有关详细信息，请参阅 [资源提供程序](../azure-resource-manager/management/resource-providers-and-types.md)。
+> - 请确保两个订阅都注册了 Microsoft.DBforPostgreSQL 资源提供程序。 有关详细信息，请参阅[资源提供程序](../azure-resource-manager/management/resource-providers-and-types.md)。
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 
@@ -142,14 +142,14 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 1. 打开 downloaded.rdp 文件。
 
-    1. 出现提示时，选择“连接”  。
+    1. 出现提示时，选择“连接”。
 
     1. 输入在创建 VM 时指定的用户名和密码。
 
         > [!NOTE]
         > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据 。
 
-1. 选择“确定” 。
+1. 选择“确定”。
 
 1. 你可能会在登录过程中收到证书警告。 如果收到证书警告，请选择“确定”或“继续” 。
 
@@ -171,7 +171,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
    Address:  10.1.3.4
    ```
 
-3. 使用任何可用的客户端测试 PostgreSQL 服务器的专用链接连接。 下面的示例使用 [Azure Data studio](/sql/azure-data-studio/download?view=sql-server-ver15&preserve-view=true) 执行此操作。
+3. 使用任何可用的客户端测试 PostgreSQL 服务器的专用链接连接。 以下示例使用 [Azure 数据工作室](/sql/azure-data-studio/download)来执行该操作。
 
 4. 在“新建连接”中，输入或选择以下信息：
 
@@ -200,4 +200,4 @@ az group delete --name myResourceGroup --yes
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 了解[什么是 Azure 专用终结点的](../private-link/private-endpoint-overview.md)详细信息
+- 详细了解[什么是 Azure 专用终结点](../private-link/private-endpoint-overview.md)

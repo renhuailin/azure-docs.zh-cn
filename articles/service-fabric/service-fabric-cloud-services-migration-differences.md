@@ -4,10 +4,10 @@ description: 有关将应用程序从云服务迁移到 Service Fabric 的概念
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.openlocfilehash: c7e7d346b5a39a262d1d55265becadb1c718cc04
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96575765"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>迁移应用程序之前了解云服务与 Service Fabric 之间的差异。
@@ -79,10 +79,10 @@ Service Fabric 提供服务发现机制（称为“命名服务”），用于�
 ![Service Fabric 直接通信][8]
 
 ## <a name="parity"></a>Parity
-[云服务在控制度和易用性方面与 Service Fabric 相似，但它现在是一种旧 Service Fabric 服务，建议用于新开发](/azure/architecture/guide/technology-choices/compute-decision-tree);下面是一个 API 比较：
+[云服务的控制和易用程度类似于 Service Fabric，但它现在是旧版服务，因此建议将 Service Fabric 用于新的开发](/azure/architecture/guide/technology-choices/compute-decision-tree)；下面是 API 的对比情况：
 
 
-| **云服务 API** | **Service Fabric API** | **说明** |
+| **云服务 API** | **Service Fabric API** | **备注** |
 | --- | --- | --- |
 | RoleInstance.GetID | FabricRuntime.GetNodeContext.NodeId 或 .NodeName | ID 是 NodeName 的属性 |
 | RoleInstance.GetFaultDomain | FabricClient.QueryManager.GetNodeList | 按 NodeName 筛选并使用 FD 属性 |

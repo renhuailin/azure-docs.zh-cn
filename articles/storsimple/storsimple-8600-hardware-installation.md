@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91871807"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>打开 StorSimple 8600 设备的包装并进行机架安装和布线
@@ -110,7 +110,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
    | --- | --- |
    |  1 |M 3x4 圆头螺丝 |
    |  2 |底架滑轨 |
-2. 将左右导轨组件连接到机架柜的垂直部件。 支架标有 **LH**、**RH** 和**此面朝上**，可帮助正确定向。
+2. 将左右导轨组件连接到机架柜的垂直部件。 支架标有 **LH**、**RH** 和 **此面朝上**，可帮助正确定向。
 3. 找到导轨组件前部和后部的导轨销。 延长导轨，使其适合机架立柱间距，并将销插入前后机架立柱的垂直部件孔中。 确保导轨组件保持水平。
 4. 使用提供的 2 个公制螺丝将导轨组件固定到机架垂直部件上。 前部和后部各使用 1 颗螺丝。
 5. 其他导轨组装请重复以上步骤。
@@ -231,7 +231,7 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
 对于高可用性和性能，请记住：
 
 * 如果可能，可在每个控制器上配置一对用于云访问的网络接口 (1 GbE) 和另一对用于 iSCSI 的网络接口（推荐 10 GbE）。
-* 如果可能，可将每个控制器的网络接口连接到两台不同的交换机上，确保其中一台发生故障时设备仍可用。 上图展示了连接到两台不同交换机的每个控制器上的两个 10 GbE 网络接口（DATA 2 和 DATA 3）。 有关详细信息，请参阅 [StorSimple 设备高可用性要求](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple)下的**网络接口**。
+* 如果可能，可将每个控制器的网络接口连接到两台不同的交换机上，确保其中一台发生故障时设备仍可用。 上图展示了连接到两台不同交换机的每个控制器上的两个 10 GbE 网络接口（DATA 2 和 DATA 3）。 有关详细信息，请参阅 [StorSimple 设备高可用性要求](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple)下的 **网络接口**。
 
 > [!NOTE]
 > 如果在 10 GbE 网络接口上使用 SFP+ 收发器，请使用提供的 QSFP-SFP+ 适配器。 有关详细信息，请转到 [StorSimple 设备上适用于 10 GbE 网络接口的支持硬件](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)。
@@ -252,7 +252,7 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
    * 8 数据位
    * 1 停止位
    * 无奇偶校验位
-   * 流控制设置为“无”****
+   * 流控制设置为“无”
 6. 在控制台中按 Enter 键确认连接是否正常。 将出现串行控制台菜单。
 
 > [!NOTE]
