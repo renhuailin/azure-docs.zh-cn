@@ -6,10 +6,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.openlocfilehash: f74309370f1489714013344116e7feb9551fbfd5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98933457"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Azure HDInsight 业务连续性体系结构
@@ -21,7 +21,7 @@ ms.locfileid: "98933457"
 
 ## <a name="apache-hive-and-interactive-query"></a>Apache Hive 和 Interactive Query
 
-为 HDInsight Hive 和交互式查询群集中的业务连续性建议使用[Hive 复制 V2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development#HiveReplicationv2Development-REPLSTATUS) 。 需要复制的独立 Hive 群集的永久部分是存储层和 Hive 元存储。 多用户方案中具有企业安全性套餐的 Hive 群集需要 Azure Active Directory 域服务和 Ranger 元存储。
+为了在 HDInsight Hive 和 Interactive Query 群集中实现业务连续性，建议使用 [Hive Replication V2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development#HiveReplicationv2Development-REPLSTATUS)。 需要复制的独立 Hive 群集的永久部分是存储层和 Hive 元存储。 多用户方案中具有企业安全性套餐的 Hive 群集需要 Azure Active Directory 域服务和 Ranger 元存储。
 
 :::image type="content" source="./media/hdinsight-business-continuity-architecture/hive-interactive-query.png" alt-text="Hive 和 Interactive Query 体系结构":::
 

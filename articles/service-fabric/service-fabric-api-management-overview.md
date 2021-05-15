@@ -4,10 +4,10 @@ description: 本文介绍了如何将 Azure API 管理用作 Service Fabric 应�
 ms.topic: conceptual
 ms.date: 06/22/2017
 ms.openlocfilehash: 32f47d62cc9dda7cc88421dbf616bf69ffe152fc
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96575680"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>有关 Azure Service Fabric 与 API 管理的概述
@@ -27,13 +27,13 @@ ms.locfileid: "96575680"
 
 在此方案中，无状态 Web 服务用作 Service Fabric 应用程序的网关。 使用这种方法，需要编写可以将 HTTP 请求代理到后端服务的 Web 服务，如下图所示：
 
-![此图显示无状态 web 服务如何作为 Service Fabric 应用程序的网关。][sf-web-app-stateless-gateway]
+![该关系图显示了无状态 Web 服务如何用作 Service Fabric 应用程序的网关。][sf-web-app-stateless-gateway]
 
 随着应用程序越来越复杂，必须向大量后端服务呈现 API 的网关亦是如此。 Azure API 管理旨在通过路由规则、访问控制、速率限制、监视、事件日志记录和响应缓存来处理复杂 API，最大限度地减少用户需要执行的操作。 Azure API 管理支持 Service Fabric 服务发现、分区解析和副本选择，从而智能地将请求直接路由到 Service Fabric 中的后端服务，用户无需编写自己的无状态 API 网关。 
 
 在此方案中，仍通过 Web 服务为 Web UI 提供服务，同时通过 Azure API 管理来托管和路由 HTTP API 调用，如下图所示：
 
-![此图显示了如何通过 web 服务来管理 web UI，同时通过 Azure API 管理来管理和路由 HTTP API 调用。][sf-apim-web-app]
+![该关系图显示了如何仍通过 Web 服务来提供 Web UI，同时通过 Azure API 管理来托管和路由 HTTP API 调用。][sf-apim-web-app]
 
 ## <a name="application-scenarios"></a>应用程序方案
 
@@ -49,11 +49,11 @@ Azure API 管理可与无状态服务、有状态服务和任何分区方案的�
 
 在以下方案中，Service Fabric 应用程序包含名为“`fabric:/app/fooservice`”的无状态服务，用于公开内部 HTTP API。 服务实例名称已知，并可直接在 API 管理入站处理策略中进行硬编码。 
 
-![显示 Service Fabric 应用程序的关系图包含公开内部 HTTP API 的无状态服务。][sf-apim-static-stateless]
+![该关系图显示了 Service Fabric 应用程序包含无状态服务，用于公开内部 HTTP API。][sf-apim-static-stateless]
 
 ## <a name="send-traffic-to-a-stateful-service"></a>将流量发送到有状态服务
 
-与无状态服务方案类似，流量可以转发到有状态服务实例。 在此示例中，API 管理操作包含使用 Service Fabric 后端的入站处理策略，用于将请求映射到特定有状态服务实例  的特定分区。 每个请求映射到的分区是通过 lambda 方法并根据传入 HTTP 请求中的一些输入（如 URL 路径中的值）计算得出。 可以将策略配置为仅将请求发送到主要副本，也可以配置为发送到读取操作的随机副本。
+与无状态服务方案类似，流量可以转发到有状态服务实例。 在此示例中，API 管理操作包含使用 Service Fabric 后端的入站处理策略，用于将请求映射到特定有状态服务实例的特定分区。 每个请求映射到的分区是通过 lambda 方法并根据传入 HTTP 请求中的一些输入（如 URL 路径中的值）计算得出。 可以将策略配置为仅将请求发送到主要副本，也可以配置为发送到读取操作的随机副本。
 
 **示例**
 
@@ -80,11 +80,11 @@ Azure API 管理可与无状态服务、有状态服务和任何分区方案的�
   - 对 `/api/users/foo` 发出的请求被路由到服务实例 `fabric:/app/users/foo`
   - 对 `/api/users/bar` 发出的请求被路由到服务实例 `fabric:/app/users/bar`
 
-![此图显示了一个示例，在该示例中，将为应用程序的每个用户使用动态生成的名称创建一个新的无状态服务实例。][sf-apim-dynamic-stateless]
+![该关系图显示了一个示例，其中使用动态生成的名称为应用程序的每个用户创建一个新的无状态服务实例。][sf-apim-dynamic-stateless]
 
 ## <a name="send-traffic-to-multiple-stateful-services"></a>将流量发送到多个有状态服务
 
-与无状态服务示例类似，API 管理操作可以将请求映射到多个有状态  服务实例。在此方案中，可能还需要对每个有状态服务实例执行分区解析。
+与无状态服务示例类似，API 管理操作可以将请求映射到多个有状态服务实例。在此方案中，可能还需要对每个有状态服务实例执行分区解析。
 
 为此，API 管理操作包含使用 Service Fabric 后端的入站处理策略，用于根据从传入 HTTP 请求中检索到的值，将请求映射到 Service Fabric 后端中的有状态服务实例。 除了可以映射到特定服务实例外，还可以将请求映射到服务实例中的特定分区，并视需要映射到分区内的主要副本或随机次要副本。
 
@@ -101,7 +101,7 @@ Azure API 管理可与无状态服务、有状态服务和任何分区方案的�
 
 每个服务实例同样通过 Int64 分区方案分为两个分区，键范围介于 `Int64.MinValue` 到 `Int64.MaxValue` 之间。 后端策略将 URL 请求路径中的 `id` 值转换为 64 位整数，在此范围内计算分区键，尽管可以使用任何算法来计算分区键。 
 
-![此图显示了每个服务实例也使用具有两个分区的 Int64 分区方案进行了分区，并将一个键范围跨越 MinValue 到 Int64。][sf-apim-dynamic-stateful]
+![该关系图显示了每个服务实例也都使用 Int64 分区方案进行了分区，该方案具有两个分区以及一个范围从 Int64.MinValue 到 Int64.MaxValue 的键范围。][sf-apim-dynamic-stateful]
 
 ## <a name="next-steps"></a>后续步骤
 

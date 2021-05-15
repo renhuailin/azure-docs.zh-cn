@@ -1,14 +1,14 @@
 ---
 title: 计划定义结构的详细信息
 description: 描述如何使用策略计划定义对策略定义进行分组，以便部署到组织中的 Azure 资源。
-ms.date: 10/07/2020
+ms.date: 03/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8f9c6146e1dde5b5a7f6595c61638319de60a82d
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
-ms.translationtype: MT
+ms.openlocfilehash: edd3f25dd528d1a718c9287c9f30988b87fb73e2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876169"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587213"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Azure Policy 计划定义结构
 
@@ -21,7 +21,7 @@ ms.locfileid: "91876169"
 - metadata
 - parameters
 - 策略定义
-- 此属性 (的策略组是合规 [性 (预览版) 功能](./regulatory-compliance.md) 的一部分) 
+- 策略组（此属性是[法规符合性（预览版）功能](./regulatory-compliance.md)的一部分）
 
 下面的示例演示如何创建用于处理 `costCenter` 和 `productName` 这两个标记的计划。 它使用两个内置策略来应用默认标记值。
 
@@ -113,7 +113,7 @@ Azure Policy 内置项和模式位于 [Azure Policy 示例](../samples/index.md)
 - `category`（字符串）：确定在 Azure 门户中的哪个类别下显示策略定义。
 
   > [!NOTE]
-  > 对于 [法规遵从性](./regulatory-compliance.md) 计划， `category` 必须 **符合法规要求**。
+  > 对于[法规符合性](./regulatory-compliance.md)计划，`category` 必须是“法规符合性”。
 
 - `preview`（布尔值）：如果策略计划定义为“预览版”，则为 true 或 false 标志。
 - `deprecated`（布尔值）：如果策略计划定义被标记为“已弃用”，则为 true 或 false 标志。
@@ -221,7 +221,7 @@ strongType 的非资源类型允许值有：
 - `policyDefinitionId`（字符串）：要包含的自定义或内置策略定义的 ID。
 - `policyDefinitionReferenceId`（字符串）：包含的策略定义的短名称。
 - `parameters`：（可选）用于将计划参数作为该策略定义中的属性传递到包含的策略定义的名称/值对。 有关详细信息，请参阅[参数](#parameters)。
-- `groupNames` (字符串数组) ： (可选) 策略定义是其成员的组。 有关详细信息，请参阅 [策略组](#policy-definition-groups)。
+- `groupNames`（字符串数组）：（可选）策略定义所属的组。 有关详细信息，请参阅[策略组](#policy-definition-groups)。
 
 下面是 `policyDefinitions` 的一个示例，，它有两个包含的策略定义，会向这两个策略定义分别传递相同的计划参数：
 
@@ -250,22 +250,22 @@ strongType 的非资源类型允许值有：
 
 ## <a name="policy-definition-groups"></a>策略定义组
 
-可对计划定义中的策略定义进行分组和分类。 Azure 策略的 [法规遵从性](./regulatory-compliance.md) (预览版) 功能使用此属性将定义分组到 **控件** 和 **符合性域**中。 此信息在 `policyDefinitionGroups` _array_ 属性中定义。 可以在 Microsoft 创建的 **policyMetadata** 对象中找到其他分组详细信息。 有关信息，请参阅 [元数据对象](#metadata-objects)。
+可对计划定义中的策略定义进行分组和分类。 Azure Policy 的[法规符合性](./regulatory-compliance.md)（预览版）功能使用此属性将定义分组到“控件”和“符合性域”中。 此信息在 `policyDefinitionGroups`“数组”属性中定义。 可以在 Microsoft 创建的“policyMetadata”对象中找到其他分组详细信息。 有关信息，请参阅[元数据对象](#metadata-objects)。
 
 ### <a name="policy-definition-groups-parameters"></a>策略定义组参数
 
-中的每个 _数组_ 元素 `policyDefinitionGroups` 必须具有以下两个属性：
+`policyDefinitionGroups` 中的每个“数组”元素必须具有以下两个属性：
 
-- `name` (字符串) \[ 必需 \] ： **组**的短名称。 在法规遵从性中， **控件**。 此属性的值由 `groupNames` 在中使用 `policyDefinitions` 。
-- `category` (字符串) ：该组所属的层次结构。 在法规遵从性中，是控件的 **符合性域** 。
-- `displayName` (字符串) ： **组** 或 **控件**的友好名称。 供门户使用。
-- `description` (字符串) ：有关 **组** 或 **控件** 所涵盖内容的说明。
-- `additionalMetadataId` (字符串) ：包含有关**控件**和**符合性域**的其他详细信息的[policyMetadata](#metadata-objects)对象的位置。
+- `name`（字符串）\[必填\]：“组”的短名称。 在“法规符合性”中，为“控件”的短名称。 此属性的值由 `policyDefinitions` 中的 `groupNames` 使用。
+- `category`（字符串）：组所属的层次结构。 在“法规符合性”中，为控件的“符合性域”。
+- `displayName`（字符串）：“组”或“控件”的易记名称。 由门户使用。
+- `description`（字符串）：“组”或“控件”所涵盖内容的说明。
+- `additionalMetadataId`（字符串）：包含有关“控件”和“符合性域”的其他详细信息的 [policyMetadata](#metadata-objects) 对象的位置。
 
   > [!NOTE]
-  > 客户可能会指向现有的 [policyMetadata](#metadata-objects) 对象。 但是，这些对象是 _只读_ 的，并且仅由 Microsoft 创建。
+  > 客户可能会指向现有的 [policyMetadata](#metadata-objects) 对象。 但是，这些对象为“只读”，且仅由 Microsoft 创建。
 
-`policyDefinitionGroups`NIST 内置计划定义的属性示例如下所示：
+NIST 内置计划定义中的 `policyDefinitionGroups` 属性示例如下所示：
 
 ```json
 "policyDefinitionGroups": [
@@ -278,27 +278,27 @@ strongType 的非资源类型允许值有：
 
 ### <a name="metadata-objects"></a>元数据对象
 
-Microsoft 创建的法规遵从性内置包含有关每个控件的其他信息。
-此信息为：
+Microsoft 创建的法规符合性内置项包含有关每个控件的其他信息。
+此信息：
 
-- 在 Azure 门户上显示的有关合规性计划 **控制** 的概述。
-- 通过 REST API 提供。 请参阅 `Microsoft.PolicyInsights` 资源提供程序和 [policyMetadata 操作组](/rest/api/policy-insights/policymetadata/getresource)。
+- 显示在 Azure 门户中“法规符合性”计划的“控件”概述中。
+- 通过 REST API 提供。 请参阅 `Microsoft.PolicyInsights` 资源提供程序和 [policyMetadata 操作组](/rest/api/policy/policymetadata/getresource)。
 - 通过 Azure CLI 提供。 请参阅 [az policy metadata](/cli/azure/policy/metadata) 命令。
 
 > [!IMPORTANT]
-> 合规性的元数据对象是 _只读_ 的，不能由客户创建。
+> “法规符合性”的元数据对象为“只读”，不能由客户创建。
 
-策略分组的元数据在节点中包含以下信息 `properties` ：
+策略分组的元数据在 `properties` 节点中包含以下信息：
 
-- `metadataId`：与分组相关的 **控件 ID** 。
-- `category` (必需) ：**控件**所属的**符合性域**。
-- `title` (必需) ： **控件 ID**的友好名称。
-- `owner` (所需) ：标识在 Azure 中负责控制的人员： _客户_、 _Microsoft_、 _共享_。
+- `metadataId`：与分组相关的“控件 ID”。
+- `category`（必填）：“控件”所属的“符合性域”。
+- `title`（必填）：“控件 ID”的易记名称。
+- `owner`（必填）：标识负责 Azure 中控件的人员：“客户”、“Microsoft”、“共享”。
 - `description`：有关控件的其他信息。
-- `requirements`：有关控件实现的责任的详细信息。
-- `additionalContentUrl`：指向有关控件的详细信息的链接。 此属性通常是指向文档的部分的链接，该文档涵盖符合性标准中的此控件。
+- `requirements`：有关实现控件责任的详细信息。
+- `additionalContentUrl`：有关控件的更多信息的链接。 此属性通常是在符合性标准中涵盖这个控件的文档部分的链接。
 
-下面是 **policyMetadata** 对象的示例。 此示例元数据属于 _NIST SP 800-53 R4_ 。
+下面是“policyMetadata”对象的示例。 此示例元数据属于“NIST SP 800-53 R4 AC-1”控件。
 
 ```json
 {

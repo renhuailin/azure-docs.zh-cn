@@ -8,16 +8,16 @@ ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
 ms.openlocfilehash: 6b8bc44f1ba5624c37620205aaa574e618ef395f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93340645"
 ---
 # <a name="create-a-synthetic-partition-key"></a>创建合成分区键
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-采用具有大量（例如，几百甚至几千个）非重复性值的分区键是最佳做法。 目标是在与这些分区键值关联的项之间均匀分配数据和工作负荷。 如果数据中不存在此类属性，则可以构造 *合成分区键* 。 本文档介绍为 Cosmos 容器生成合成分区键的几种基本方法。
+采用具有大量（例如，几百甚至几千个）非重复性值的分区键是最佳做法。 目标是在与这些分区键值关联的项之间均匀分配数据和工作负荷。 如果数据中不存在此类属性，可以构造一个合成分区键。 本文档介绍为 Cosmos 容器生成合成分区键的几种基本方法。
 
 ## <a name="concatenate-multiple-properties-of-an-item"></a>连接某个项的多个属性
 

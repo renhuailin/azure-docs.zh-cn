@@ -1,6 +1,6 @@
 ---
 title: 转换数据
-description: 使用 Hadoop、Azure 机器学习 Studio (经典) 或 Azure Data Lake Analytics 转换 Azure 数据工厂中的数据或处理数据。
+description: 在 Azure 数据工厂中利用 Hadoop、Azure 机器学习工作室（经典版）或 Azure Data Lake Analytics 转换或处理数据。
 ms.service: data-factory
 ms.topic: conceptual
 author: nabhishek
@@ -8,10 +8,10 @@ ms.author: abnarain
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
 ms.openlocfilehash: 0a1eb593e9f9f15f88aefb2fe06706153a4b74a4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100361394"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>在 Azure 数据工厂中转换数据
@@ -46,7 +46,7 @@ ms.locfileid: "100361394"
 
 ### <a name="data-wrangling"></a>数据整理
 
-Azure 数据工厂中的 Power Query 支持云规模的数据整理，使你能够以迭代方式进行云规模的无代码数据准备。 数据整理与 [Power Query Online](/power-query/) 集成，并通过 spark 执行将 Power Query M 功能提供给云规模的数据整理。 有关详细信息，请参阅 [整理中的数据](wrangling-overview.md)。
+Azure 数据工厂中的 Power Query 支持云规模数据整理，使你能够以迭代方式进行云规模的无代码数据准备。 数据整理与 [Power Query Online](/power-query/) 集成，并通过执行 spark，使 Power Query M 函数可用于云规模数据整理。 有关详细信息，请参阅 [ADF 中的数据整理](wrangling-overview.md)。
 
 ## <a name="external-transformations"></a>外部转换
 
@@ -67,12 +67,12 @@ Azure 数据工厂中的 Power Query 支持云规模的数据整理，使你能�
 ### <a name="hdinsight-spark-activity"></a>HDInsight Spark 活动
 数据工厂管道中的 HDInsight Spark 活动在自己的 HDInsight 群集上执行 Spark 程序。 有关详细信息，请参阅[从 Azure 数据工厂调用 Spark 程序](transform-data-using-spark.md)。 
 
-### <a name="azure-machine-learning-studio-classic-activities"></a>Azure 机器学习 Studio (经典) 活动
-使用 Azure 数据工厂，可轻松创建使用已发布的 Azure 机器学习 Studio (经典) web 服务进行预测分析的管道。 使用 Azure 数据工厂管道中的 [批处理执行活动](transform-data-using-machine-learning.md) ，可以调用 Studio (经典) web 服务对批处理中的数据进行预测。
+### <a name="azure-machine-learning-studio-classic-activities"></a>Azure 机器学习工作室（经典版）活动
+借助 Azure 数据工厂，可轻松创建相关管道，利用已发布的 Azure 机器学习工作室（经典版）Web 服务进行预测分析。 使用 Azure 数据工厂管道中的[批处理执行活动](transform-data-using-machine-learning.md)，可调用工作室（经典版）Web 服务来预测批处理中的数据。
 
-随着时间的推移，Studio 中的预测模型 (经典) 评分试验需要使用新的输入数据集重新训练。 完成重新训练后，需要用重新训练机器学习模型更新评分 web 服务。 您可以使用 " [更新资源" 活动](update-machine-learning-models.md) ，使用新训练的模型更新 web 服务。  
+随着时间推移，需要使用新的输入数据集重新定型工作室（经典版）评分实验中的预测模型。 完成重新定型后，可使用重新定型的机器学习模型更新评分 Web 服务。 可以使用[更新资源活动](update-machine-learning-models.md)，通过新的训练模型更新 Web 服务。  
 
-有关这些 Studio (经典) 活动的详细信息，请参阅 [使用 Azure 机器学习 studio (经典) 活动](transform-data-using-machine-learning.md) 。 
+有关这些工作室（经典版）活动的详细信息，请参阅[使用 Azure 机器学习工作室（经典版）活动](transform-data-using-machine-learning.md)。 
 
 ### <a name="stored-procedure-activity"></a>存储过程活动
 可使用数据工厂管道中的 SQL Server 存储过程活动调用以下数据存储之一中的存储过程：你的企业或 Azure VM 中的 Azure SQL 数据库、Azure Synapse Analytics、SQL Server 数据库。 有关详细信息，请参阅[存储过程活动](transform-data-using-stored-procedure.md)一文。  

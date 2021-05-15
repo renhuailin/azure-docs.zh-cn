@@ -1,19 +1,19 @@
 ---
 title: 监视新的 Azure Kubernetes 服务 (AKS) 群集 | Microsoft Docs
-description: 了解如何使用容器 insights 订阅为新的 Azure Kubernetes 服务 (AKS) 群集启用监视。
+description: 了解如何使用容器见解订阅启用对新的 Azure Kubernetes 服务 (AKS) 群集的监视。
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.custom: devx-track-terraform, devx-track-azurecli
-ms.openlocfilehash: 9b6c4f8a05b8e7a350ebd5afd677e8bb2ee6e9b4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.custom: devx-track-terraform
+ms.openlocfilehash: fd00c59b277bff05abe0c8bb4d95ca56364a8b10
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717564"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071498"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>启用对新的 Azure Kubernetes 服务 (AKS) 群集的监视
 
-本文介绍如何设置容器见解，以监视在你准备在订阅中部署的 [Azure Kubernetes 服务](../../aks/index.yml) 上托管的托管 Kubernetes 群集。
+本文介绍如何设置容器见解，以监视准备在订阅中部署的 [Azure Kubernetes 服务](../../aks/index.yml)上托管的托管 Kubernetes 群集。
 
 可以使用下述支持的方法之一，启用对 AKS 群集的监视：
 
@@ -25,7 +25,7 @@ ms.locfileid: "101717564"
 若要使用 Azure CLI 对新建的 AKS 群集启用监视，请遵循快速入门文章的[创建 AKS 群集](../../aks/kubernetes-walkthrough.md#create-aks-cluster)部分中所述的步骤。  
 
 >[!NOTE]
->如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 2.0.74 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果你安装了 aks-preview CLI 扩展版本0.4.12 或更高版本，请删除你为启用预览扩展所做的任何更改，因为它可以覆盖默认的 Azure CLI 行为，因为 AKS 预览版功能在 Azure US Governmnet cloud 中不可用。
+>如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 2.0.74 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果已安装 aks-preview CLI 扩展 0.4.12 或更高版本，请删除为启用预览扩展所做的任何更改，因为它们可能会替代默认的 Azure CLI 行为（因为 Azure 美国政府云不支持 AKS 预览功能）。
 
 ## <a name="enable-using-terraform"></a>使用 Terraform
 
@@ -34,7 +34,7 @@ ms.locfileid: "101717564"
 >[!NOTE]
 >如果选择使用 Terraform，则必须运行 Terraform Azure RM 提供程序 1.17.0 版或更高版本。
 
-若要将容器见解添加到工作区，请参阅 [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) ，并通过包含 [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) 并指定 **oms_agent** 来完成配置文件。 
+若要将容器见解添加到工作区，请参阅 [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html)，并通过纳入 [addon_profile](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) 并指定 oms_agent 来完成配置文件 。 
 
 启用监视并成功完成所有配置任务后，可通过两种方法监视群集性能：
 
@@ -117,5 +117,5 @@ az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
 
 * 如果在尝试载入解决方案时遇到问题，请查看[故障排除指南](container-insights-troubleshoot.md)
 
-* 启用监视功能以收集 AKS 群集的运行状况和资源利用率，并了解 [如何使用](container-insights-analyze.md) 容器见解。
+* 在启用了监视功能以收集 AKS 群集以及在其上运行的工作负荷的运行状况和资源利用率之后，请了解[如何使用](container-insights-analyze.md)容器见解。
 

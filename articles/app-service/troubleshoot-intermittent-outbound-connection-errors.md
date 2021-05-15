@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/19/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: 989f47c0ff60865a8e8be15e089cdcf96ab2550c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.openlocfilehash: 2b4719561ad94d54267410d0af28db6ee8d82b00
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968292"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104799099"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>排查 Azure 应用服务中的间歇性出站连接错误
 
@@ -29,29 +29,29 @@ ms.locfileid: "94968292"
 
 ## <a name="cause"></a>原因
 
-间歇性连接问题的主要原因是在建立新的出站连接时遇到限制。 可以命中的限制包括：
+出现间歇性连接问题的主要原因是在建立新的出站连接时遇到了限制。 可能遇到的限制包括：
 
-* TCP 连接数：可以建立的出站连接数有限制。 对出站连接的限制与使用的辅助角色的大小关联。
-* SNAT 端口： [Azure 中的出站连接](../load-balancer/load-balancer-outbound-connections.md) 介绍 SNAT 端口限制以及它们如何影响出站连接。 Azure 使用源网络地址转换 (SNAT) 和负载均衡器 (不向客户公开，) 与公共 IP 地址进行通信。 最初为 Azure 应用服务中的每个实例预分配了 128 个 SNAT 端口。  SNAT 端口限制会影响与相同地址和端口组合的打开连接。 如果应用与混合的地址/端口组合建立了连接，则不会用尽 SNAT 端口。 重复调用同一个地址/端口组合时，会用尽 SNAT 端口。 释放某个端口以后，即可根据需要重复使用该端口。 只有在等待 4 分钟后，Azure 网络负载均衡器才会从关闭的连接回收 SNAT 端口。
+* TCP 连接数：可以建立的出站连接数有限制。 对出站连接的限制与使用的工作器大小有关。
+* SNAT 端口数：[Azure 中的出站连接](../load-balancer/load-balancer-outbound-connections.md)介绍了 SNAT 端口限制以及它们对出站连接的影响。 Azure 使用源网络地址转换 (SNAT) 和负载均衡器（位向客户公开）与公共 IP 地址通信。 最初为 Azure 应用服务中的每个实例预分配了 128 个 SNAT 端口。  SNAT 端口限制会影响与同一个地址/端口组合打开的连接数。 如果应用与混合的地址/端口组合建立了连接，则不会用尽 SNAT 端口。 重复调用同一个地址/端口组合时，会用尽 SNAT 端口。 释放某个端口以后，即可根据需要重复使用该端口。 只有在等待 4 分钟后，Azure 网络负载均衡器才会从关闭的连接回收 SNAT 端口。
 
-当应用程序或功能快速打开新的连接时，它们可能很快就会耗尽预分配的配额（128 个端口）。 然后，应用程序或功能会一直受到阻止，直到通过动态分配额外的 SNAT 端口或者通过重复使用回收的 SNAT 端口提供了新的 SNAT 端口为止。 如果你的应用程序用完了 SNAT 端口，则会出现间歇性的出站连接问题。 
+当应用程序或功能快速打开新的连接时，它们可能很快就会耗尽预分配的配额（128 个端口）。 然后，应用程序或功能会一直受到阻止，直到通过动态分配额外的 SNAT 端口或者通过重复使用回收的 SNAT 端口提供了新的 SNAT 端口为止。 如果应用用完了 SNAT 端口，则会出现间歇性的出站连接问题。 
 
 ## <a name="avoiding-the-problem"></a>避免问题
 
-有一些解决方案可让你避免 SNAT 端口限制。 它们包括：
+有一些解决方案可以避免 SNAT 端口限制。 它们包括：
 
-* 连接池：通过将连接汇集在一起，你可以避免为对相同地址和端口的调用打开新的网络连接。
-* 服务终结点：对于使用服务终结点保护的服务，不具有 SNAT 端口限制。
-* 专用终结点：对于使用私有终结点保护的服务，不具有 SNAT 端口限制。
-* NAT 网关：使用 NAT 网关时，有64k 个出站 SNAT 端口可供通过它发送流量的资源使用。
+* 连接池：利用连接池，可以避免为对同一地址和端口的调用而打开新的网络连接。
+* 服务终结点：使用服务终结点保护的服务没有 SNAT 端口限制。
+* 专用终结点：使用专用终结点保护的服务没有 SNAT 端口限制。
+* NAT 网关：使用 NAT 网关时，你会得到 64,000 个出站 SNAT 端口，资源可以使用这些端口发送流量。
 
-避免 SNAT 端口问题意味着需要避免对同一主机和端口反复创建新连接。 连接池是解决该问题的更显而易见的方法之一。
+避免 SNAT 端口问题意味着需要避免对同一主机和端口反复创建新连接。 连接池是解决该问题更简单明了的方法之一。
 
 如果你的目标是一个支持服务终结点的 Azure 服务，则可通过使用[区域 VNet 集成](./web-sites-integrate-with-vnet.md)和服务终结点或专用终结点来避免 SNAT 端口耗尽问题。 使用区域 VNet 集成并将服务终结点置于集成子网中时，发往这些服务的应用出站流量不会有出站 SNAT 端口限制。 同样，如果使用区域 VNet 集成和专用终结点，则不会有将流量发往该目标的出站 SNAT 端口的问题。 
 
-如果目标是 Azure 外部的外部终结点，则使用 NAT 网关会提供64k 的出站 SNAT 端口。 它还提供了不与任何人共享的专用出站地址。 
+如果目标是 Azure 外部的外部终结点，则使用 NAT 网关可获得 64,000 个出站 SNAT 端口。 它还提供了一个专用出站地址，可以不与任何人共享。 
 
-如果可能，请改进代码以使用连接池，并避免整个情况。 并非始终能够足够快速地更改代码来缓解这种情况。 对于无法及时更改代码的情况，可以利用其他解决方案。 此问题的最佳解决方法是尽可能将所有解决方案组合在一起。 尝试将服务终结点和专用终结点用于 Azure 服务，并使用 NAT 网关进行 rest。 
+如果可能，请对代码进行改进，以使用连接池并避免整个情况。 但更改代理并不是总能那么快，以致于无法及时缓解这种情况。 如果无法及时更改代码，可以利用其他解决方案。 该问题的最佳解决方法是尽量结合使用所有解决方案。 尝试对 Azure 服务使用服务终结点和专用终结点，并对其他服务使用 NAT 网关。 
 
 “Azure 的出站连接”文档的[解决问题部分](../load-balancer/load-balancer-outbound-connections.md)介绍了缓解 SNAT 端口耗尽问题的一般策略。 这些策略中的以下策略适用于托管在 Azure 应用服务中的应用和功能。
 
@@ -88,8 +88,8 @@ HTTP 保持活动状态
 
 HTTP 连接池
 
-* [Apache 连接管理](https://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html)
-* [类 PoolingHttpClientConnectionManager](http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/impl/conn/PoolingHttpClientConnectionManager.html)
+* [Apache 连接管理](https://hc.apache.org/httpcomponents-client-5.0.x/)
+* [类 PoolingHttpClientConnectionManager](https://hc.apache.org/httpcomponents-client-5.0.x/)
 
 #### <a name="php"></a>PHP
 
@@ -110,7 +110,7 @@ HTTP 连接池
 
 ### <a name="modify-the-application-to-use-less-aggressive-retry-logic"></a>修改应用程序以使用主动性较低的重试逻辑
 
-* 有关其他指导和示例，请查看 [重试模式](/azure/architecture/patterns/retry)。
+* 有关其他指导和示例，请查看[重试模式](/azure/architecture/patterns/retry)。
 
 ### <a name="use-keepalives-to-reset-the-outbound-idle-timeout"></a>使用 keepalive 重置出站空闲超时
 
@@ -118,10 +118,10 @@ HTTP 连接池
 
 ### <a name="additional-guidance-specific-to-app-service"></a>特定于应用服务的其他指导：
 
-* [负载测试](/azure/devops/test/load-test/app-service-web-app-performance-test)应以稳定的供电速度模拟实际数据。 在真实环境中测试应用和功能可以提前识别和解决 SNAT 端口耗尽问题。
+* [负载测试](/azure/devops/test/load-test/app-service-web-app-performance-test)应以稳定的馈电速度模拟实际数据。 在真实压力下测试应用和功能可以提前识别并解决 SNAT 端口耗尽问题。
 * 确保后端服务可以快速返回响应。 若要排查 Azure SQL 数据库的性能问题，请查看[使用智能见解排查 Azure SQL 数据库性能问题](../azure-sql/database/intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow)。
 * 将应用服务计划横向扩展为更多实例。 有关缩放的详细信息，请参阅[缩放 Azure 应用服务中的应用](./manage-scale-up.md)。 应用服务计划中的每个辅助角色实例分配有多个 SNAT 端口。 如果将用量分散在多个实例之间，可能会使每个实例的 SNAT 端口用量不超过每个独特远程终结点的建议出站连接数限制（100 个）。
-* 考虑转移到[应用服务环境 (ASE)](./environment/using-an-ase.md)，其中分配了单个出站 IP 地址，且连接数和 SNAT 端口数限制要高得多。 在 ASE 中，每个实例的 SNAT 端口数基于 [Azure 负载平衡器预先分配表](../load-balancer/load-balancer-outbound-connections.md#snatporttable) （例如，具有1-50 个工作线程实例的 ase）每个实例有1024个预分配端口，而具有51-100 辅助角色实例的 ase 的每个实例都有512个预分配端口。
+* 考虑转移到[应用服务环境 (ASE)](./environment/using-an-ase.md)，其中分配了单个出站 IP 地址，且连接数和 SNAT 端口数限制要高得多。 在 ASE 中，每个实例的 SNAT 端口数基于 [Azure 负载均衡器预先分配表](../load-balancer/load-balancer-outbound-connections.md#snatporttable) - 例如，具有 1-50 个辅助角色实例的 ASE 的每个实例都有 1024 个预先分配的端口，而具有 51-100 个辅助角色实例的 ASE 的每个实例都有 512 个预先分配的端口。
 
 避免超过出站 TCP 限制要更容易一些，因为这些限制是按辅助角色的大小设置的。 可以在[沙盒跨 VM 数字限制 - TCP 连接](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)中查看限制
 
@@ -139,14 +139,14 @@ HTTP 连接池
 
 ### <a name="find-snat-port-allocation-information"></a>查找 SNAT 端口分配信息
 
-你可以使用 [应用服务诊断](./overview-diagnostics.md) 来查找 snat 端口分配信息，并观察应用服务站点的 snat 端口分配指标。 若要查找 SNAT 端口分配信息，请执行以下步骤：
+你可以使用[应用服务诊断](./overview-diagnostics.md)来查找 SNAT 端口分配信息，并观察应用服务站点的 SNAT 端口分配指标。 若要查找 SNAT 端口分配信息，请执行以下步骤：
 
 1. 若要访问应用服务诊断，请在 [Azure 门户](https://portal.azure.com/)中导航到你的应用服务 Web 应用或应用服务环境。 在左侧导航栏中，选择“诊断并解决问题”。
 2. 选择“可用性和性能”类别
 3. 在该类别下的可用磁贴列表中，选择“SNAT 端口耗尽”磁贴。 做法是将其保持在 128 以下。
 如果确实需要，仍可以开具支持票证，支持工程师会从后端为你提取指标。
 
-由于 SNAT 端口使用未作为指标提供，因此不能基于 SNAT 端口使用自动缩放，也不能基于 SNAT 端口分配指标配置自动缩放。
+由于 SNAT 端口用量不是以指标形式提供的，因此无法基于 SNAT 端口用量进行自动缩放，也无法基于 SNAT 端口分配指标配置自动缩放。
 
 ### <a name="tcp-connections-and-snat-ports"></a>TCP 连接和 SNAT 端口
 

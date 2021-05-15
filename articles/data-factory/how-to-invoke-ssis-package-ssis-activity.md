@@ -9,10 +9,10 @@ author: swinarko
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 07/20/2020
 ms.openlocfilehash: 40e7d5c11a2ebc62e59c3d5d20dfefe18a33f9a7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100391603"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用“执行 SSIS 包”活动运行 SSIS 包
@@ -716,4 +716,4 @@ while ($True) {
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下博客文章：
-- [通过 Azure 数据工厂管道中的 SSIS 活动实现对 ETL/ELT 工作流的现代化和扩展](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Modernize-and-Extend-Your-ETL-ELT-Workflows-with-SSIS-Activities/ba-p/388370)
+- [使用 Azure 数据工厂管道中的 SSIS 活动来实现 ETL/ELT 工作流的现代化并对其进行扩展](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Modernize-and-Extend-Your-ETL-ELT-Workflows-with-SSIS-Activities/ba-p/388370)

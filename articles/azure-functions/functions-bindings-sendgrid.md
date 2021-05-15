@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: b3d09ec4c4ab578a87f0d983c0f243bee2a84597
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94991224"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 绑定
@@ -107,7 +107,7 @@ public class OutgoingEmail
 
 以下示例演示 *function.json* 文件中的一个 SendGrid 输出绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。
 
-下面是 function.json  文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json 
 {
@@ -166,7 +166,7 @@ public class Message
 
 以下示例演示 *function.json* 文件中的一个 SendGrid 输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。
 
-下面是 function.json  文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json 
 {
@@ -206,7 +206,7 @@ module.exports = function (context, input) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下面的示例演示了一个使用 SendGrid 绑定发送电子邮件的 HTTP 触发的函数。 可以在绑定配置中提供默认值。 例如，中的 " *发件* 人" 电子邮件地址在 *function.js上* 配置。 
+下面的示例演示了一个使用 SendGrid 绑定发送电子邮件的 HTTP 触发的函数。 可以在绑定配置中提供默认值。 例如，“发件人”电子邮件地址在“function.json”中配置。 
 
 ```json
 {
@@ -333,7 +333,7 @@ public static void Run(
 }
 ```
 
-有关完整示例，请参阅 [c # 示例](#example)。
+有关完整示例，请参阅 [C# 示例](#example)。
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
@@ -357,15 +357,15 @@ Python 不支持特性。
 
 下表列出了在 function.json 文件和 `SendGrid` 特性/注释中可用的绑定配置属性。
 
-| 属性 *function.js* | 特性/注释属性 | 说明 | 可选 |
+| “function.json”属性 | 特性/注释属性 | 说明 | 可选 |
 |--------------------------|-------------------------------|-------------|----------|
-| 类型 |不适用| 必须设置为 `sendGrid`。| 否 |
+| type |不适用| 必须设置为 `sendGrid`。| 否 |
 | direction |不适用| 必须设置为 `out`。| 否 |
 | name |不适用| 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 `$return`。 | 否 |
-| apiKey | ApiKey | 包含 API 密钥的应用设置的名称。 如果未设置，则默认应用设置名称为 *AzureWebJobsSendGridApiKey*。| 否 |
-| to| 功能 | 收件人的电子邮件地址。 | 是 |
-| from| From | 发件人的电子邮件地址。 |  是 |
-| subject| 使用者 | 电子邮件主题。 | 是 |
+| apiKey | ApiKey | 包含 API 密钥的应用设置的名称。 如果未设置，默认应用设置名称为“AzureWebJobsSendGridApiKey”。| 否 |
+| to| 目标 | 收件人的电子邮件地址。 | 是 |
+| 从| 从 | 发件人的电子邮件地址。 |  是 |
+| subject| Subject | 电子邮件主题。 | 是 |
 | text| 文本 | 电子邮件内容。 | 是 |
 
 在绑定中可能会定义可选属性的默认值，并以编程方式添加或重写这些值。

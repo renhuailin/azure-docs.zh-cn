@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: b60a6e53e8fecd71885204690231776ff69fc08f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+manager: femila
+ms.openlocfilehash: f603a4b44b555382e4178d90522ae41fa2388663
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95018369"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107947710"
 ---
 # <a name="configure-device-redirections"></a>配置设备重定向
 
@@ -53,7 +53,7 @@ ms.locfileid: "95018369"
 >[!NOTE]
 >即使已禁用 `camerastoredirect:s:` 属性，也可以通过 `devicestoredirect:s:` 属性来重定向本地相机。 若要完全禁用相机重定向，请设置 `camerastoredirect:s:`，然后设置 `devicestoredirect:s:` 或者定义一部分不包括任何相机的即插即用设备。
 
-还可以使用以分号分隔的 KSCATEGORY_VIDEO_CAMERA 接口列表来重定向特定的相机，例如 `camerastoredirect:s:\?\usb#vid_0bda&pid_58b0&mi`。 
+还可以使用以分号分隔的 KSCATEGORY_VIDEO_CAMERA 接口列表来重定向特定的相机，例如 `camerastoredirect:s:\?\usb#vid_0bda&pid_58b0&mi`。
 
 ### <a name="clipboard-redirection"></a>剪贴板重定向
 
@@ -81,7 +81,7 @@ ms.locfileid: "95018369"
 - 导航到“计算机配置” > “策略”> “管理模板” > “Windows 组件” > “远程桌面服务” > “远程桌面连接客户端” > “RemoteFX USB 设备重定向”      。
 - 选择“允许此计算机中其他受支持的 RemoteFX USB 设备的 RDP 重定向”。
 - 选择“启用”选项，然后选择“在RemoteFX USB 重定向访问权限中的管理员和用户”框 。
-- 选择“确定”  。
+- 选择“确定”。
 
 ### <a name="plug-and-play-device-redirection"></a>即插即用设备重定向
 
@@ -100,6 +100,8 @@ ms.locfileid: "95018369"
 - `drivestoredirect:s:` 禁用本地驱动器重定向。
 
 还可以使用以分号分隔的列表来选择特定的驱动器，例如 `drivestoredirect:s:C:;E:;`。
+
+若要启用 Web 客户端文件传输，请设置 `drivestoredirect:s:*`。 如果为此 RDP 属性设置了任何其他值，则将禁用 Web 客户端文件传输。
 
 ### <a name="printer-redirection"></a>打印机重定向
 

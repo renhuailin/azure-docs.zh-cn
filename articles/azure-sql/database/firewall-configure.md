@@ -12,17 +12,17 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: bbad7dcaa1d92df4969c88e4ba86a62987509e39
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
-ms.translationtype: MT
+ms.openlocfilehash: 200df14e7d18c4bdfb903bef46c169f6f7bf5ca5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632793"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781768"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL 数据库和 Azure Synapse IP 防火墙规则
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-例如，在 Azure SQL 数据库或名为 *mysqlserver* 的 Azure Synapse Analytics 中创建新服务器时，服务器级防火墙会阻止对服务器 (的公共终结点的所有访问，可在 *mysqlserver.database.windows.net*) 访问。 为简单起见，在提到 SQL 数据库和 Azure Synapse Analytics 时，本文统称 SQL 数据库。
+例如，在 Azure SQL 数据库或 Azure Synapse Analytics 中创建名为 mysqlserver 的新服务器时，服务器级别的防火墙会阻止对该服务器的公共终结点进行任何访问（可通过 mysqlserver.database.chinacloudapi.cn 访问） 。 为简单起见，在提到 SQL 数据库和 Azure Synapse Analytics 时，本文统称 SQL 数据库。
 
 > [!IMPORTANT]
 > 本文不适用于 *Azure SQL 托管实例*。 有关网络配置的信息，请参阅[将应用程序连接到 Azure SQL 托管实例](../managed-instance/connect-application-instance.md)。
@@ -45,7 +45,7 @@ ms.locfileid: "98632793"
 - 若要使用 Transact-SQL，必须以服务器级别主体登录名或 Azure Active Directory 管理员的身份连接到 master 数据库。 （必须先由拥有 Azure 级权限的用户创建服务器级 IP 防火墙规则。）
 
 > [!NOTE]
-> 默认情况下，在从 Azure 门户创建新的逻辑 SQL server 的过程中，" **允许 Azure 服务和资源访问此服务器** " 设置设置为 " **否**"。
+> 默认情况下，在从 Azure 门户创建新的逻辑 SQL 服务器期间，“允许 Azure 服务和资源访问此服务器”设置将设置为“否” 。
 
 ### <a name="database-level-ip-firewall-rules"></a>数据库级 IP 防火墙规则
 
@@ -101,9 +101,9 @@ IP 地址用户是否需要访问所有数据库？
 
 ### <a name="connections-from-inside-azure"></a>从 Azure 内部连接
 
-若要允许 Azure 内部托管的应用程序连接到 SQL 服务器，必须启用 Azure 连接。 若要启用 Azure 连接，必须有一条防火墙规则，并将 "开始" 和 "结束" IP 地址设置为0.0.0.0。
+若要允许 Azure 内部托管的应用程序连接到 SQL 服务器，必须启用 Azure 连接。 若要启用 Azure 连接，必须有一条将起始和结束 IP 地址设置为 0.0.0.0 的防火墙规则。
 
-当 Azure 中的应用程序尝试连接到服务器时，防火墙将检查是否允许 Azure 连接，验证此防火墙规则是否存在。 可以通过在 "**防火墙和虚拟网络**"**设置中将**"**允许 Azure 服务和资源访问此服务器**" 设置为 "打开"，直接从 "Azure 门户" 边栏选项卡启用此选项。 在设置为 ON 时，将为 IP 0.0.0.0-0.0.0.0 创建一个名为 **AllowAllWindowsIP** 的入站防火墙规则。 如果使用的不是门户，请使用 PowerShell 或 Azure CLI 来创建一个 "开始" 和 "结束 IP 地址" 设置为0.0.0.0 的防火墙规则。 
+在应用程序尝试从 Azure 连接到服务器时，防火墙将通过验证此防火墙规则是否存在来检查是否允许 Azure 连接。 若要直接从 Azure 门户边栏选项卡中将其打开，可以在“防火墙和虚拟网络”设置中将“允许 Azure 服务和资源访问此服务器”切换为“启用”  。 设置为“启用”时，会创建一个名为 AllowAllWindowsIP 并将起始和结束 IP 地址均设置为 0.0.0.0 的入站防火墙规则。 如果不使用门户，可使用 PowerShell 或 Azure CLI 来创建防火墙规则，将起始和结束 IP 地址设置为 0.0.0.0。 
 
 > [!IMPORTANT]
 > 该选项将防火墙配置为允许来自 Azure 的所有连接，包括来自其他客户的订阅的连接。 如果选择此选项，请确保登录名和用户权限将访问权限限制为仅已授权用户使用。
@@ -149,7 +149,7 @@ IP 地址用户是否需要访问所有数据库？
 
 #### <a name="from-the-server-overview-page"></a>从服务器概述页
 
-此时会打开服务器的概述页。 它显示完全限定的服务器名称 (例如 *mynewserver20170403.database.windows.net*) ，并提供进一步配置的选项。
+此时会打开服务器的概述页。 其中显示完全限定的服务器名称（例如 mynewserver20170403.database.windows.net），并提供其他配置的选项。
 
 1. 若要在此页中设置服务器级规则，请在左侧的“设置”菜单中选择“防火墙”。 
 
@@ -207,7 +207,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 ```
 
 > [!TIP]
-> 对于 $servername 指定服务器名称而不是完全限定的 DNS 名称，例如，指定 **mysqldbserver** 而不是 **mysqldbserver.database.windows.net**
+> 对于 $servername，请指定服务器名称而不是完全限定的 DNS 名称，例如，指定 mysqldbserver 而不是 mysqldbserver.database.windows.net
 >
 > 若要查看快速入门上下文中的 PowerShell 示例，请参阅[创建 DB - PowerShell](powershell-script-content-guide.md)，以及[使用 PowerShell 创建单一数据库并配置服务器级别 IP 防火墙规则](scripts/create-and-configure-database-powershell.md)。
 
@@ -215,11 +215,11 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 
 | Cmdlet | Level | 说明 |
 | --- | --- | --- |
-|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|服务器|创建服务器 IP 防火墙规则|
-|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|服务器|列出服务器上的 IP 防火墙规则|
-|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|服务器|显示 IP 防火墙规则的详细信息|
-|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|服务器|更新 IP 防火墙规则|
-|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|服务器|删除 IP 防火墙规则|
+|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create)|服务器|创建服务器 IP 防火墙规则|
+|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_list)|服务器|列出服务器上的 IP 防火墙规则|
+|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_show)|服务器|显示 IP 防火墙规则的详细信息|
+|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_update)|服务器|更新 IP 防火墙规则|
+|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|服务器|删除 IP 防火墙规则|
 
 以下示例使用 CLI 设置服务器级 IP 防火墙规则：
 
@@ -229,7 +229,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 ```
 
 > [!TIP]
-> 对于 $servername 指定服务器名称而不是完全限定的 DNS 名称，例如，指定 **mysqldbserver** 而不是 **mysqldbserver.database.windows.net**
+> 对于 $servername，请指定服务器名称而不是完全限定的 DNS 名称，例如，指定 mysqldbserver 而不是 mysqldbserver.database.windows.net
 >
 > 若要查看快速入门上下文中的 CLI 示例，请参阅[创建 DB - Azure CLI](az-cli-script-samples-content-guide.md)，以及[使用 Azure CLI 创建单一数据库并配置服务器级别 IP 防火墙规则](scripts/create-and-configure-database-cli.md)。
 
@@ -275,7 +275,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 ## <a name="next-steps"></a>后续步骤
 
 - 确认公司网络环境允许来自 Azure 数据中心使用的计算 IP 地址范围（包括 SQL 范围）的入站通信。 可能需要将这些 IP 地址添加到允许列表。 请参阅 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。  
-- 请参阅快速入门，了解如何 [在 AZURE SQL 数据库中创建单个数据库](single-database-create-quickstart.md)。
+- 请参阅本教程，了解如何[在 Azure SQL 数据库中创建单一数据库](single-database-create-quickstart.md)。
 - 有关从开源或第三方应用程序连接到 Azure SQL 数据库时的帮助信息，请参阅 [Azure SQL 数据库的客户端快速入门代码示例](connect-query-content-reference-guide.md#libraries)。
 - 有关可能需要打开的其他端口的信息，请参阅[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](adonet-v12-develop-direct-route-ports.md)中的“SQL 数据库：外部与内部”部分
 - 有关 Azure SQL 数据库安全概述，请参阅[保护数据库](security-overview.md)。

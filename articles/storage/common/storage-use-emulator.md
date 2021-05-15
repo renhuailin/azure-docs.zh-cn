@@ -1,22 +1,22 @@
 ---
 title: 使用 Azure 存储模拟器进行开发和测试
 description: Azure 存储模拟器为开发和测试 Azure 存储应用程序提供了免费的本地开发环境。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: 6d9e0e63a3586be139620c154616acfcba2ab10f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.openlocfilehash: 909de4b6782a0cd03b7c7d7c72bfa50e5541b6d7
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498211"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277106"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>使用 Azure 存储模拟器进行开发和测试
 
-Microsoft Azure 存储模拟器是一种用于模拟 Azure Blob、队列和表服务以进行本地开发的工具。 可以在本地针对存储服务测试应用程序，而无需创建 Azure 订阅且不会产生任何费用。 如果对应用程序在模拟器中的工作情况感到满意，则可以切换到在云中使用 Azure 存储帐户。
+Microsoft Azure 存储模拟器工具可以针对本地开发目的模拟 Azure Blob、队列和表服务。 可以在本地针对存储服务测试应用程序，而无需创建 Azure 订阅且不会产生任何费用。 如果对应用程序在模拟器中的工作情况感到满意，则可以切换到在云中使用 Azure 存储帐户。
 
 > [!IMPORTANT]
 > 不再积极开发 Azure 存储模拟器。 [**Azurite**](storage-use-azurite.md) 是未来的存储模拟器平台。 Azurite 取代了 Azure 存储仿真器。 Azurite 将持续更新，以支持最新版本的 Azure 存储 API。 有关详细信息，请参阅[“使用 Azurite 模拟器进行本地 Azure 存储开发”](storage-use-azurite.md)。
@@ -170,7 +170,7 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 从版本 3.0 开始，启动存储模拟器时会显示控制台窗口。 使用控制台窗口中的命令行启动和停止模拟器。 还可以从命令行查询状态以及执行其他操作。
 
 > [!NOTE]
-> 如果已安装 Microsoft Azure 计算模拟器，则在启动存储模拟器时，将显示一个系统任务栏图标。 右键单击该图标可显示一个菜单，其中提供了启动和停止存储模拟器的图形化方式。
+> 如果已安装 Microsoft Azure 计算模拟器，则在启动存储模拟器时，会显示一个系统任务栏图标。 右键单击该图标可显示一个菜单，其中提供了启动和停止存储模拟器的图形化方式。
 >
 >
 
@@ -334,4 +334,4 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 ## <a name="see-also"></a>另请参阅
 
-* [通过 Azurite、Azure Sdk 和 Azure 存储资源管理器进行本地 Azure 存储开发](https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/)
+* [通过 Azurite、Azure SDK 和 Azure 存储资源管理器进行本地 Azure 存储开发](https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/)

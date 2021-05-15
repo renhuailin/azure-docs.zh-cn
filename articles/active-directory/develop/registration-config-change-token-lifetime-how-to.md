@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.custom: aaddev, seoapril2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: d39f378171443f028ef6b549b120b22f2a3405c4
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99582935"
 ---
 # <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>如何为自定义开发的应用程序更改令牌生存期默认设置
@@ -24,13 +24,13 @@ ms.locfileid: "99582935"
 本文介绍如何使用 Azure AD PowerShell 来设置访问令牌生存期策略。 Azure AD Premium 允许应用程序开发人员和租户管理员配置为非机密客户端颁发的令牌的生存期。 根据租户范围或要访问的资源设置令牌生存期策略。
 
 > [!IMPORTANT]
-> 在5月 2020 5 日后，租户将无法再配置刷新和会话令牌生存期。  Azure Active Directory 将在 2021 年 1 月 30 日之后停止执行策略中的现有刷新和会话令牌配置。 在弃用之后，你仍然可以配置访问令牌生存期。 有关详细信息，请参阅 [Azure AD 中的可配置令牌生存期](./active-directory-configurable-token-lifetimes.md)。
-> 已在 Azure AD 条件访问中实现 [身份验证会话管理功能](../conditional-access/howto-conditional-access-session-lifetime.md)   。 你可以使用此新功能，通过设置登录频率来配置刷新令牌生存期。  
+> 在 2020 年 5 月后，租户将无法再配置刷新和会话令牌生存期。  Azure Active Directory 将在 2021 年 1 月 30 日之后停止执行策略中的现有刷新和会话令牌配置。 在弃用之后，你仍然可以配置访问令牌生存期。 有关详细信息，请参阅 [Azure AD 中的可配置令牌生存期](./active-directory-configurable-token-lifetimes.md)。
+> 我们已在 Azure AD 条件访问中实现了 [身份验证会话管理功能](../conditional-access/howto-conditional-access-session-lifetime.md) 。 你可以使用此新功能，通过设置登录频率来配置刷新令牌生存期。  
 
-若要设置访问令牌生存期策略，请下载 [Azure AD PowerShell 模块](https://www.powershellgallery.com/packages/AzureADPreview)。
+若要设置访问令牌生存期策略，需要下载 [Azure AD PowerShell 模块](https://www.powershellgallery.com/packages/AzureADPreview)。
 运行 **Connect-AzureAD -Confirm** 命令。
 
-下面是一个示例策略，要求用户在 web 应用中更频繁地进行身份验证。 此策略设置对 web 应用的服务主体的访问生存期。 创建策略并将其分配给服务主体。 还需要获取服务主体的 ObjectId。
+下面是要求用户更频繁地在 Web 应用中进行身份验证的示例策略。 此策略设置对 Web 应用的服务主体的访问生存期 创建此策略并将其分配给服务主体。 还需要获取服务主体的 ObjectId。
 
 ```powershell
 $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
@@ -43,4 +43,4 @@ Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
 ## <a name="next-steps"></a>后续步骤
 
 * 请参阅 [Azure AD 中的可配置令牌生存期](./active-directory-configurable-token-lifetimes.md)，了解如何配置 Azure AD 颁发的令牌生存期，包括如何为组织中的所有应用、多租户应用或组织中的特定服务主体设置令牌生存期。 
-* [Azure AD 令牌引用](./id-tokens.md)
+* [Azure AD 令牌参考](./id-tokens.md)

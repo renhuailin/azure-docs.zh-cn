@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 10/16/2018
 ms.title: include
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ef0aa8ba1983ca30fd44c27fe570b6b5f51733a5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 5105df5793d37b166b017585a62c962933a0b019
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744466"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106081018"
 ---
 ## <a name="create-a-scheduled-webjob"></a><a name="CreateScheduledCRON"></a>创建计划的 Web 作业
 
 
-1. 进入 [Azure 门户](https://portal.azure.com)。
-1. 中转到你的 **应用服务** <abbr title="应用资源可以是 web 应用、API 应用或移动应用。">应用资源</abbr>.
+1. 转到 [Azure 门户](https://portal.azure.com)。
+1. 转到你的 **应用服务** <abbr title="应用资源可以是 Web 应用、API 应用或移动应用。">应用资源</abbr>.
 1. 选择“Web 作业”。
 
    ![选择“Web 作业”](../media/web-sites-create-web-jobs/select-webjobs.png)
@@ -31,16 +31,16 @@ ms.locfileid: "101744466"
     
     | 设置      | 示例值   |
     | ------------ | ----------------- | 
-    | <abbr title="在应用服务应用中唯一的名称。 必须以字母或数字开头，并且不能包含和以外的特殊 `-` 字符 `_` 。">路径名</a> | myScheduledWebJob |  |
+    | <abbr title="在应用服务应用中唯一的名称。 必须以字母或数字开头，且不能包含除 `-` 和 `_` 以外的特殊字符。">名称</a> | myScheduledWebJob | 
     | <abbr title="一个 *.zip* 文件，其中包含可执行文件或脚本文件，以及运行程序或脚本所需的所有支持文件。">文件上传</abbr> | ConsoleApp.zip |
-    | <abbr title="类型包括连续、触发。">类型</abbr> | 触发 |
-    | <abbr title="要使计划可靠运行，请启用 Always On 功能。 Always On 仅在基本、标准和高级定价层中提供。">导致</a> | 已计划 |
+    | <abbr title="类型包括“连续”、“触发”。">类型</abbr> | 触发 |
+    | <abbr title="要使计划可靠运行，请启用 Always On 功能。 Always On 仅在基本、标准和高级定价层中提供。">触发器</a> | 计划 |
     | CRON 表达式</a> | 0 0/20 * * * * | 
     
     <br>
     
     <details>
-     <summary>了解有关 CRON 表达式的详细信息</summary>
+     <summary>详细了解 CRON 表达式</summary>
      <a name="#ncrontab-expressions"></a>
     
      可以在门户中输入 [NCRONTAB 表达式](../../azure-functions/functions-bindings-timer.md#ncrontab-expressions)，或者在 Web 作业 .zip 文件的根目录中包含一个 `settings.job` 文件，如以下示例中所示：

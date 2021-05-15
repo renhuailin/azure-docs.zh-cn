@@ -1,6 +1,6 @@
 ---
-title: 安全问题身份验证方法-Azure Active Directory
-description: 了解如何在 Azure Active Directory 中使用安全问题，以帮助改进和保护登录事件
+title: 安全问题身份验证方法 - Azure Active Directory
+description: 了解如何在 Azure Active Directory 中使用安全问题来帮助改进和保护登录事件
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -10,14 +10,14 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7229dabd690e5932fbd297992e09782eda85a002
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
-ms.translationtype: MT
+ms.openlocfilehash: 841391778e0fb8c00f503aa0cc79b5562661e309
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744136"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530339"
 ---
-# <a name="authentication-methods-in-azure-active-directory---security-questions"></a>Azure Active Directory 安全问题中的身份验证方法
+# <a name="authentication-methods-in-azure-active-directory---security-questions"></a>Azure Active Directory 中的身份验证方法 - 安全问题
 
 在登录事件期间，不会使用安全问题作为身份验证方法。 而是在自助服务密码重置 (SSPR) 过程中，可以使用安全问题来确认用户身份。 管理员帐户不能使用安全问题作为 SSPR 的验证方法。
 
@@ -32,7 +32,7 @@ ms.locfileid: "96744136"
 
 ## <a name="predefined-questions"></a>预定义问题
 
-以下预定义的安全问题可作为 SSPR 的验证方法使用。 所有这些安全问题都已根据用户的浏览器区域设置翻译和本地化为一整套 Microsoft 365 语言：
+以下预定义的安全问题可作为 SSPR 的验证方法使用。 所有这些安全问题都已根据用户的浏览器区域设置翻译并本地化为 Microsoft 365 的完整语言集：
 
 * 在哪个城市遇到了第一任配偶/伴侣？
 * 父母在哪个城市相识？
@@ -89,11 +89,11 @@ ms.locfileid: "96744136"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始，请参阅 [自助服务密码重置教程 (SSPR) ][tutorial-sspr]。
+若要开始，请参阅[自助式密码重置 (SSPR) 的教程][tutorial-sspr]。
 
 要详细了解 SSPR 概念，请参阅[ Azure AD 自助式密码重置的工作原理][concept-sspr]。
 
-详细了解如何使用 [Microsoft Graph REST API beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)配置身份验证方法。
+详细了解如何使用 [Microsoft Graph REST API](/graph/api/resources/authenticationmethods-overview) 配置身份验证方法。
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

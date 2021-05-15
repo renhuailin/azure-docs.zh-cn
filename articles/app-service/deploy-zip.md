@@ -4,13 +4,13 @@ description: 了解如何使用 ZIP 文件（或者对于 Java 开发人员而�
 ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
-ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 150f6b57f1dec0b6d925ef53b4a7001ae9f23607
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
-ms.translationtype: MT
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: c4fdf78096f6f8b46c601440db6604cec6c61c99
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007902"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074360"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>使用 ZIP 或 WAR 文件将应用部署到 Azure 应用服务
 
@@ -26,7 +26,7 @@ ms.locfileid: "97007902"
 
 有关详细信息，请参阅 [Kudu 文档](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)。
 
-WAR 文件部署将 [war](https://wikipedia.org/wiki/WAR_(file_format)) 文件部署到应用服务以运行 Java web 应用。 请参阅[部署 WAR 文件](#deploy-war-file)。
+WAR 文件部署将 [WAR](https://wikipedia.org/wiki/WAR_(file_format)) 文件部署到应用服务，以运行 Java Web 应用。 请参阅[部署 WAR 文件](#deploy-war-file)。
 
 > [!NOTE]
 > 如果使用 `ZipDeploy`，则仅当文件时间戳与已部署的文件不匹配时，才会复制文件。 使用缓存输出的生成过程生成 zip 可以使部署速度更快。 有关详细信息，请参阅[从 zip 文件或 url 部署](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)。
@@ -44,7 +44,7 @@ WAR 文件部署将 [war](https://wikipedia.org/wiki/WAR_(file_format)) 文件�
 
 ## <a name="deploy-zip-file-with-azure-cli"></a>使用 Azure CLI 部署 ZIP 文件
 
-使用 [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-zip) 命令将上传的 zip 文件部署到 Web 应用。  
+使用 [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config_zip) 命令将上传的 zip 文件部署到 Web 应用。  
 
 下面的示例部署上传的 zip 文件。 使用 Azure CLI 的本地安装时，请为 `--src` 指定本地 zip 文件的路径。
 
@@ -54,7 +54,7 @@ az webapp deployment source config-zip --resource-group <group-name> --name <app
 
 此命令将 zip 文件中的文件和目录部署到默认的应用服务应用程序文件夹 (`\home\site\wwwroot`) 并重启应用。
 
-默认情况下，部署引擎假定 ZIP 文件已准备好按原样运行，并且不运行任何生成自动化。 若要启用与 [Git 部署](deploy-local-git.md)相同的生成自动化，请 `SCM_DO_BUILD_DURING_DEPLOYMENT` 在 [Cloud Shell](https://shell.azure.com)中运行以下命令，设置应用设置：
+默认情况下，部署引擎假定 ZIP 文件已准备好按原样运行，并且不运行任何生成自动化。 若要启用与 [Git 部署](deploy-local-git.md)中相同的生成自动化，请通过在 [Cloud Shell](https://shell.azure.com) 中运行以下命令来设置 `SCM_DO_BUILD_DURING_DEPLOYMENT` 应用设置：
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true

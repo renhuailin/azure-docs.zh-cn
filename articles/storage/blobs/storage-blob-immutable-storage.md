@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 03/16/2021
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: ad660ee69bb568e1a76d59344cf31fbf044aaae9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: d1d77e508e627520878dcc27b5a643473d11dd1d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581429"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104800714"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>使用不可变的存储来存储业务关键型 Blob 数据
 
@@ -30,7 +30,7 @@ Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次�
 
 典型的应用程序包含：
 
-- **法规遵从**：Azure Blob 存储的不可变存储可帮助组织达到 SEC 17a-4(f)、CFTC 1.31(d)、FINRA 和其他法规要求。 Cohasset 技术白皮书通过 [Microsoft 服务信任门户](https://aka.ms/AzureWormStorage)来关联不可变存储如何满足这些法规要求。 [Azure 信任中心](https://www.microsoft.com/trustcenter/compliance/compliance-overview)包含有关我们的合规认证的详细信息。
+- **法规遵从**：Azure Blob 存储的不可变存储可帮助组织达到 SEC 17a-4(f)、CFTC 1.31(d)、FINRA 和其他法规要求。 可以通过 [Microsoft 服务信任门户](https://aka.ms/AzureWormStorage)下载 Cohasset Associates 制定的技术白皮书，其中详述了不可变存储如何满足这些法规要求。 [Azure 信任中心](https://www.microsoft.com/trustcenter/compliance/compliance-overview)包含有关我们的合规认证的详细信息。
 
 - **安全的文档保留**：Azure Blob 存储的不可变存储确保用户（包括具有帐户管理特权的用户）无法修改或删除数据。
 
@@ -44,32 +44,34 @@ Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次�
 
 - **支持所有 Blob 层**：WORM 策略独立于 Azure Blob 存储层，将应用到所有层：热层、冷层和存档层。 用户可将工作负荷的数据转换为最具成本效益的层，同时保持数据的不可变性。
 
-- **容器级配置**：用户可在容器级别配置基于时间的保留策略和法定保留标记。 通过使用简单的容器级设置，用户可以创建并锁定基于时间的保留策略、扩展保留时间间隔、设置并清除法定保留，等等。 这些策略将应用到容器中的所有 Blob，不管是现有的还是新的 Blob。
+- **容器级配置**：用户可在容器级别配置基于时间的保留策略和法定保留标记。 通过使用简单的容器级设置，用户可以创建并锁定基于时间的保留策略、扩展保留时间间隔、设置并清除法定保留，等等。 这些策略将应用到容器中的所有 Blob，不管是现有的还是新的 Blob。 对于启用了 HNS 的帐户，这些策略也适用于容器中的所有目录。
 
 - **审核日志记录支持**：每个容器包含一个策略审核日志。 该日志显示针对锁定的基于时间的保留策略执行的最多七个基于时间的保留命令，并且包含用户 ID、命令类型、时间戳和保留时间间隔。 对于法定保留，日志包含用户 ID、命令类型、时间戳和法定保留标记。 根据 SEC 17a-4(f) 法规准则，此日志的保留时间就是策略的生存时间。 [Azure 活动日志](../../azure-monitor/essentials/platform-logs-overview.md)显示所有控制平面活动的更全面日志；同时，启用 [Azure 资源日志](../../azure-monitor/essentials/platform-logs-overview.md)可以保留和显示数据平面操作。 由用户负责根据法规要求或其他要求永久存储这些日志。
 
 ## <a name="how-it-works"></a>工作原理
 
-Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于时间的保留和法定保留。 在容器上应用基于时间的保留策略或法定保留时，所有现有的 Blob 会在 30 秒内转为不可变的 WORM 状态。 所有上传到受该策略保护的容器的新 Blob 也会转为不可变状态。 所有 Blob 转为不可变状态后，将确认不可变策略，并且不允许在不可变容器中执行任何覆盖或删除操作。
+Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于时间的保留和法定保留。 在容器上应用基于时间的保留策略或法定保留时，所有现有的 Blob 会在 30 秒内转为不可变的 WORM 状态。 所有上传到受该策略保护的容器的新 Blob 也会转为不可变状态。 所有 Blob 转为不可变状态后，将确认不可变策略，并且不允许在不可变容器中执行任何覆盖或删除操作。 对于启用了 HNS 的帐户，不能重命名 Blob 或将其移到其他目录。
 
 如果容器中的任何 Blob 受到法定保留策略或锁定的基于时间的策略的保护，则也不允许删除容器和存储帐户。 法定保留策略会防止删除 Blob、容器和存储帐户。 锁定的和未锁定的基于时间的策略会防止在指定的时间删除 Blob。 仅当容器中至少有一个 Blob 时，未锁定和锁定的基于时间的策略才会防止删除容器。 只有具有锁定的基于时间的策略的容器才能防止删除存储帐户；具有未锁定的基于时间的策略的容器不提供存储帐户删除保护与合规性。
 
-下图显示了基于时间的保留策略和合法保存的方式如何阻止写入和删除操作生效。
+下图显示了基于时间的保留策略和法定保留在有效时如何防止写入操作和删除操作。
 
-:::image type="content" source="media/storage-blob-immutable-storage/worm-diagram.png" alt-text="显示保留策略和合法保留如何阻止写入和删除操作的关系图":::
+:::image type="content" source="media/storage-blob-immutable-storage/worm-diagram.png" alt-text="此图显示了保留策略和法定保留如何防止写入操作和删除操作":::
 
 若要详细了解如何设置和锁定基于时间的保留策略，请参阅[为 Blob 存储设置和管理不可变性策略](storage-blob-immutability-policies-manage.md)。
 
 ## <a name="time-based-retention-policies"></a>基于时间的保留策略
 
 > [!IMPORTANT]
-> 根据 SEC 17a-4(f) 和其他法规符合性要求，基于时间的保留策略必须处于锁定状态才能确保 Blob 既兼容又不可变（不可写入和删除）。 我们建议将策略锁定合理的时间，通常不到 24 小时。 已应用的基于时间的保留策略的初始状态为“未锁定”，在此状态下可以先测试该功能，并在锁定之前对策略进行更改。 虽然“未锁定”状态提供不变性保护，但除非是短时功能试用，否则我们不建议使用未锁定状态。  
+> 根据 SEC 17a-4(f) 和其他法规符合性要求，基于时间的保留策略必须处于锁定状态才能确保 Blob 既兼容又不可变（不可写入和删除）。 Microsoft 建议将策略锁定合理的时间，通常不到 24 小时。 已应用的基于时间的保留策略的初始状态为“未锁定”，在此状态下可以先测试该功能，并在锁定之前对策略进行更改。 虽然“解锁”状态提供不变性保护，但除非是短期功能试用，否则不建议使用“解锁”状态。
+>
+> 一旦基于时间的保留策略处于锁定状态，就不能将该策略删除，但允许延长有效保留期限，最多延迟五次。 保持期不能减少。
 
 在容器上应用基于时间的保留策略时，容器中的所有 Blob 都会保持在不可变的状态，其持续时间就是有效保留期。 Blob 的有效保持期就是 Blob **创建时间** 和用户指定的保留时间间隔之间的差异。 由于用户可以延长保留时间间隔，因此不可变存储使用用户指定的保留时间间隔的最新值来计算有效保留期。
 
 例如，假设用户创建了一个基于时间的保留策略，将保留时间间隔设置为五年。 一年前，在该容器中创建了现有的 Blob _testblob1_；因此，_testblob1_ 的有效保留期为四年。 将新 Blob _testblob2_ 上传到容器后，_testblob2_ 的有效保留期为五年（从其创建时间开始算起）。
 
-根据 SEC 17a-4(f) 和其他法规符合性要求，基于时间的未锁定保留策略只建议用于功能测试，而通常情况下策略必须处于锁定状态。 一旦基于时间的保留策略处于锁定状态，就不能将该策略删除，但允许延长有效保留期限，最多延迟五次。
+根据 SEC 17a-4(f) 和其他法规符合性要求，基于时间的未锁定保留策略只建议用于功能测试，而通常情况下策略必须处于锁定状态。
 
 以下限制适用于保留策略：
 
@@ -130,7 +132,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 **你们是否可以提供有关 WORM 合规性的文档？**
 
-是的。 为了记录相容性，Microsoft 保留了一个领先的独立评估事务所，该公司专用于记录管理和信息管理、Cohasset 关联，以评估不可变的 Blob 存储及其与金融服务行业特定的要求。 经 Cohasset 验证，在用于保留 WORM 状态的基于时间的 Blob 时，不可变 Blob 存储符合 CFTC 规则 1.31(c)-(d)、FINRA 规则 4511 和 SEC 规则 17a-4 的相关存储要求。 Microsoft 以这组规则为目标，因为它们表示针对金融机构的记录保留内容的最具规范性指导。 [Microsoft 服务信任中心](https://aka.ms/AzureWormStorage)提供了 Cohasset 报告。 若要从 Microsoft 请求有关蠕虫不可变性符合性的证明，请联系 Azure 支持。
+是的。 为了表明我们的合规性，Microsoft 一直在与一家领先的独立评估机构 Cohasset Associates 保持合作。该机构专业从事记录管理和信息监管，可以评估不可变的 Blob 存储及其是否符合金融服务行业的相关要求。 经 Cohasset 验证，在用于保留 WORM 状态的基于时间的 Blob 时，不可变 Blob 存储符合 CFTC 规则 1.31(c)-(d)、FINRA 规则 4511 和 SEC 规则 17a-4 的相关存储要求。 Microsoft 以这一套规则为目标，因为这些规则代表了全球最规范的金融机构记录保留准则。 [Microsoft 服务信任中心](https://aka.ms/AzureWormStorage)已提供 Cohasset 的报告。 若要向 Microsoft 请求有关 WORM 不可变性合规性的证明信，请联系 Azure 支持。
 
 **此功能是只适用于块 Blob 和追加 Blob，还是也适用于页 Blob？**
 
@@ -166,7 +168,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 **如果我无法付款，但我的保留时间间隔尚未到期，会发生什么情况？**
 
-在未付款的情况下，会根据你与 Microsoft 签署的合同条款与条件应用常规的数据保留策略。 有关一般信息，请参阅 Microsoft 中的 [数据管理](https://www.microsoft.com/en-us/trust-center/privacy/data-management)。 
+在未付款的情况下，会根据你与 Microsoft 签署的合同条款与条件应用常规的数据保留策略。 有关一般信息，请参阅 [Microsoft 数据管理](https://www.microsoft.com/en-us/trust-center/privacy/data-management)。 
 
 **你们是否为只想试用此功能的用户提供试用期或宽限期？**
 
@@ -175,6 +177,9 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 **是否可以同时使用软删除和不可变的 Blob 策略？**
 
 是，前提是合规性要求允许启用软删除。 [Azure Blob 存储的软删除](./soft-delete-blob-overview.md)适用于存储帐户中的所有容器，无论使用的是法定保留还是基于时间的保留策略。 我们建议在应用并确认任何不可变 WORM 策略之前启用软删除，以提供额外的保护。
+
+**对于启用了 HNS 的帐户，是否可以在 Blob 处于不可变状态时重命名或移动 Blob？**
+不可以，名称和目录结构被视为重要的容器级数据，在不可变策略生效后不可对其进行修改。 一般情况下，只能对启用了 HNS 的帐户执行重命名和移动操作。
 
 ## <a name="next-steps"></a>后续步骤
 

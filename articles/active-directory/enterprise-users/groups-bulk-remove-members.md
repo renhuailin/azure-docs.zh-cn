@@ -8,15 +8,16 @@ manager: daveba
 ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 874d434e545555013812714df4d1bd23de9c8543
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
-ms.translationtype: MT
+ms.openlocfilehash: 83b905faa892cc338b5bdf4f998ad95f7b8a484e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95488940"
 ---
 # <a name="bulk-remove-group-members-in-azure-active-directory"></a>在 Azure Active Directory 中批量删除组成员
@@ -33,9 +34,9 @@ ms.locfileid: "95488940"
 
 下载的 CSV 模板中的行如下所示：
 
-- **版本号**：包含版本号的第一行必须包含在上传 CSV 中。
-- **列标题**：列标题的格式为：&lt;项名称&gt; [PropertyName] &lt;必需或空白&gt;。 例如，`Member object ID or user principal name [memberObjectIdOrUpn] Required` 。 模板的一些较旧版本可能略有不同。 对于组成员身份更改，你可选择要使用的标识符：成员对象 ID 还是用户主体名称。
-- **示例行**：我们已经在模板中包含了一行示例，展示了每个列的可接受值。 你必须删除示例行并将其替换为你自己的项。
+- **版本号**：包含版本号的第一行必须包含在上传的 CSV 中。
+- 列标题：列标题的格式为：&lt;项名称&gt; [PropertyName] &lt;必需或空白&gt;。 例如，`Member object ID or user principal name [memberObjectIdOrUpn] Required`。 模板的一些较旧版本可能略有不同。 对于组成员身份更改，你可选择要使用的标识符：成员对象 ID 还是用户主体名称。
+- **示例行**：我们已经在模板中包含了一行示例，展示了每个列的可接受值。 必须删除示例行并将其替换为你自己的项。
 
 ### <a name="additional-guidance"></a>其他指南
 
@@ -67,7 +68,7 @@ ms.locfileid: "95488940"
 
 可在“批量操作结果”页面中查看所有挂起的批量请求的状态。
 
-[![查看批量操作结果页中的状态](./media/groups-bulk-remove-members/bulk-center.png)](./media/groups-bulk-remove-members/bulk-center.png#lightbox)
+[![在“批量操作结果”页面中查看状态](./media/groups-bulk-remove-members/bulk-center.png)](./media/groups-bulk-remove-members/bulk-center.png#lightbox)
 
 要详细了解批量操作中每个行项，请选择“成功数”、“失败数”或“请求总数”列下的值  。 如果失败，则会列出失败原因。
 

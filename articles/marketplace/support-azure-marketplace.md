@@ -8,13 +8,13 @@ author: navits09
 ms.author: navits
 ms.date: 04/14/2020
 ms.openlocfilehash: 02e64c6c6e5ab2ef77f02959ada6f95d1042b76d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94488751"
 ---
-# <a name="support-for-the-microsoft-commercial-marketplace"></a>Microsoft 商用 marketplace 支持
+# <a name="support-for-the-microsoft-commercial-marketplace"></a>Microsoft 商业市场的支持
 
 你是否有关于 Microsoft 商业市场发布者入门的问题？ 以下是商业市场的支持选项。 除了以下资源，你还可以在 [C+AI 社区论坛的市场通道](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)中获得很多问题的答案。  
 

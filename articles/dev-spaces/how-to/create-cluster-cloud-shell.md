@@ -1,26 +1,26 @@
 ---
-title: 创建 Azure Dev Spaces 启用了 Azure Cloud Shell 的 Kubernetes 群集
+title: 创建已启用 Azure Dev Spaces 的 Kubernetes 群集 - Azure Cloud Shell
 services: azure-dev-spaces
 ms.date: 10/04/2018
 ms.topic: conceptual
 description: 了解如何直接从浏览器快速创建为 Azure Dev Spaces 启用的 Kubernetes 群集，而无需安装任何内容。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 ms.openlocfilehash: ce73f46a2451dfa87751d90f9cd6b31d5c80683f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91963544"
 ---
-# <a name="create-a-kubernetes-cluster-with-azure-dev-spaces-enabled-with-azure-cloud-shell"></a>使用 Azure Cloud Shell 启用 Azure Dev Spaces 创建 Kubernetes 群集
+# <a name="create-a-kubernetes-cluster-with-azure-dev-spaces-enabled-with-azure-cloud-shell"></a>通过 Azure Cloud Shell 创建已启用 Azure Dev Spaces 的 Kubernetes 群集
 
 [!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
-通过使用此页中的 "**试用**" 按钮，可以使用[Azure Cloud Shell](/azure/cloud-shell)创建 Azure Kubernetes Service 群集。 如果未登录，请按照提示使用 Azure 帐户登录，然后在出现 Azure Cloud Shell 提示符时在 Azure Cloud Shell 提示符下键入命令。
+使用本页的“试用”按钮，可以通过 [Azure Cloud Shell](/azure/cloud-shell) 来创建 Azure Kubernetes 服务。 如果未登录，请按照提示使用 Azure 帐户登录，然后在出现 Azure Cloud Shell 提示符时在 Azure Cloud Shell 提示符下键入命令。
 
 ## <a name="create-the-cluster"></a>创建群集
 
-首先，在 [支持 Azure Dev Spaces 的区域][supported-regions]中创建资源组。
+首先，在[支持 Azure Dev Spaces 的区域][supported-regions]创建资源组。
 
 ```azurecli-interactive
 az group create --name MyResourceGroup --location <region>

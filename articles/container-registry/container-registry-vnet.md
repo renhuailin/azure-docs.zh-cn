@@ -3,12 +3,12 @@ title: 使用服务终结点限制访问
 description: 使用 Azure 虚拟网络中的服务终结点限制对 Azure 容器注册表的访问。 服务终结点访问是高级服务层级的一项功能。
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 5f9bc7c9a6c8f2061765510a6396611502fd4a2a
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
-ms.translationtype: MT
+ms.openlocfilehash: 8a67a011c75a192df9ad3460458fd766b5ec1ec1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026218"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773453"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>使用 Azure 虚拟网络中的服务终结点限制对容器注册表的访问
 
@@ -26,8 +26,7 @@ ms.locfileid: "93026218"
 * 目前尚未打算在未来开发 Azure 容器注册表的服务终结点。 我们推荐改用[专用终结点](container-registry-private-link.md)。
 * 不能使用 Azure 门户在注册表上配置服务终结点。
 * 只有 [Azure Kubernetes 服务](../aks/intro-kubernetes.md)群集或 Azure [虚拟机](../virtual-machines/linux/overview.md)可以用作主机，以使用服务终结点访问容器注册表。 其他 Azure 服务（包括 Azure 容器实例）不受支持。
-* 每个注册表最多支持 100 条网络访问规则。
-* Azure 容器注册表的服务终结点在 Azure 美国政府云或 Azure 中国云中不受支持。
+* Azure 美国政府云或 Azure 中国云中不支持 Azure 容器注册表的服务终结点。
 
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
@@ -53,7 +52,7 @@ ms.locfileid: "93026218"
 
 ### <a name="add-a-service-endpoint-to-a-subnet"></a>将服务终结点添加到子网
 
-创建 VM 时，Azure 默认情况下会在同一个资源组中创建虚拟网络。 虚拟网络的名称基于虚拟机的名称。 例如，如果将虚拟机命名为 myDockerVM，则默认虚拟网络名称为 myDockerVMVNET，且子网名为 myDockerVMSubnet。 使用 [az network vnet list][az-network-vnet-list] 命令验证此内容：
+创建 VM 时，Azure 默认情况下会在同一个资源组中创建虚拟网络。 虚拟网络的名称基于虚拟机的名称。 例如，如果将虚拟机命名为 myDockerVM，则默认虚拟网络名称为 myDockerVMVNET，其中包含名为 myDockerVMSubnet 的子网。 使用 [az network vnet list][az-network-vnet-list] 命令对此进行验证：
 
 ```azurecli
 az network vnet list \
@@ -101,7 +100,7 @@ az network vnet subnet show \
 
 ### <a name="change-default-network-access-to-registry"></a>更改默认网络对注册表的访问权限
 
-默认情况下，Azure 容器注册表允许来自任何网络上的主机的连接。 要将访问权限仅授予所选网络，请将默认操作更改为拒绝访问。 请将以下 [az acr update][az-acr-update] 命令中的占位符替换为你的注册表名称：
+默认情况下，Azure 容器注册表允许来自任何网络上的主机的连接。 要将访问权限仅授予所选网络，请将默认操作更改为拒绝访问。 在以下 [az acr update][az-acr-update] 命令中，替换注册表的名称：
 
 ```azurecli
 az acr update --name myContainerRegistry --default-action Deny
@@ -200,24 +199,24 @@ az group delete --name myResourceGroup
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-create]: /cli/azure/acr#az-acr-create
-[az-acr-show]: /cli/azure/acr#az-acr-show
-[az-acr-repository-show]: /cli/azure/acr/repository#az-acr-repository-show
-[az-acr-repository-list]: /cli/azure/acr/repository#az-acr-repository-list
-[az-acr-login]: /cli/azure/acr#az-acr-login
-[az-acr-network-rule-add]: /cli/azure/acr/network-rule/#az-acr-network-rule-add
-[az-acr-network-rule-remove]: /cli/azure/acr/network-rule/#az-acr-network-rule-remove
-[az-acr-network-rule-list]: /cli/azure/acr/network-rule/#az-acr-network-rule-list
-[az-acr-run]: /cli/azure/acr#az-acr-run
-[az-acr-update]: /cli/azure/acr#az-acr-update
-[az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
+[az-acr-create]: /cli/azure/acr#az_acr_create
+[az-acr-show]: /cli/azure/acr#az_acr_show
+[az-acr-repository-show]: /cli/azure/acr/repository#az_acr_repository_show
+[az-acr-repository-list]: /cli/azure/acr/repository#az_acr_repository_list
+[az-acr-login]: /cli/azure/acr#az_acr_login
+[az-acr-network-rule-add]: /cli/azure/acr/network-rule/#az_acr_network_rule_add
+[az-acr-network-rule-remove]: /cli/azure/acr/network-rule/#az_acr_network_rule_remove
+[az-acr-network-rule-list]: /cli/azure/acr/network-rule/#az_acr_network_rule_list
+[az-acr-run]: /cli/azure/acr#az_acr_run
+[az-acr-update]: /cli/azure/acr#az_acr_update
+[az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az_ad_sp_create_for_rbac
 [az-group-create]: /cli/azure/group
-[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
-[az-vm-create]: /cli/azure/vm#az-vm-create
-[az-network-vnet-subnet-show]: /cli/azure/network/vnet/subnet/#az-network-vnet-subnet-show
-[az-network-vnet-subnet-update]: /cli/azure/network/vnet/subnet/#az-network-vnet-subnet-update
-[az-network-vnet-subnet-show]: /cli/azure/network/vnet/subnet/#az-network-vnet-subnet-show
-[az-network-vnet-list]: /cli/azure/network/vnet/#az-network-vnet-list
+[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
+[az-vm-create]: /cli/azure/vm#az_vm_create
+[az-network-vnet-subnet-show]: /cli/azure/network/vnet/subnet/#az_network_vnet_subnet_show
+[az-network-vnet-subnet-update]: /cli/azure/network/vnet/subnet/#az_network_vnet_subnet_update
+[az-network-vnet-subnet-show]: /cli/azure/network/vnet/subnet/#az_network_vnet_subnet_show
+[az-network-vnet-list]: /cli/azure/network/vnet/#az_network_vnet_list
 [quickstart-portal]: container-registry-get-started-portal.md
 [quickstart-cli]: container-registry-get-started-azure-cli.md
 [azure-portal]: https://portal.azure.com

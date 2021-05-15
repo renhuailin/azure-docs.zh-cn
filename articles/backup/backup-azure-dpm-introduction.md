@@ -4,10 +4,10 @@ description: 本文介绍如何使用 Azure 备份服务准备将 System Center 
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.openlocfilehash: 823b23d99959df5f2eed20cf4136254e1702fe89
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98985625"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>使用 System Center DPM 准备将工作负载备份到 Azure
@@ -48,7 +48,7 @@ VMware VM 上的 DPM | System Center 2012 R2 更新汇总 5 或更高版本。
 不受支持的文件类型 | <li>区分大小写的文件系统上的服务器<li> 硬链接（跳过）<li> 重分析点（跳过）<li> 加密和压缩（跳过）<li> 加密和稀疏（跳过）<li> 压缩流<li> 分析流
 本地存储 | 在每台要备份的计算机上，可用的本地存储必须至少是要备份的数据大小的 5%。 例如，如果要备份 100 GB 的数据，则暂存位置至少需要 5 GB 的可用空间。
 保管库存储 | 可以备份到 Azure 备份保管库的数据量没有限制，但数据源（例如虚拟机或数据库）的大小不应超过 54,400 GB。
-Azure ExpressRoute | 可以使用公共对等互连（适用于旧线路）和 Microsoft 对等互连通过 Azure ExpressRoute 备份数据。 不支持通过专用对等互连进行备份。<br/><br/> **使用公共对等互连**：确保访问以下域/地址：<br/><br/> URL：<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>`www.msftconnecttest.com`<br><br>IP 地址<br>  20.190.128.0/18 <br>  40.126.0.0/18<br> <br/>使用 Microsoft 对等互连，选择以下服务/区域和相关社区值：<br/><br/>- Azure Active Directory (12076:5060)<br/><br/>-根据恢复服务保管库的位置 (Microsoft Azure 区域) <br/><br/>- Azure 存储（取决于恢复服务保管库的位置）<br/><br/>有关详细信息，请参阅 [ExpressRoute 路由要求](../expressroute/expressroute-routing.md)。<br/><br/>**注意**：对于新线路，公共对等互连已弃用。
+Azure ExpressRoute | 可以使用公共对等互连（适用于旧线路）和 Microsoft 对等互连通过 Azure ExpressRoute 备份数据。 不支持通过专用对等互连进行备份。<br/><br/> **使用公共对等互连**：确保访问以下域/地址：<br/><br/> URL：<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>`www.msftconnecttest.com`<br><br>IP 地址<br>  20.190.128.0/18 <br>  40.126.0.0/18<br> <br/>使用 Microsoft 对等互连，选择以下服务/区域和相关社区值：<br/><br/>- Azure Active Directory (12076:5060)<br/><br/>- Microsoft Azure 区域（取决于恢复服务保管库的位置）<br/><br/>- Azure 存储（取决于恢复服务保管库的位置）<br/><br/>有关详细信息，请参阅 [ExpressRoute 路由要求](../expressroute/expressroute-routing.md)。<br/><br/>**注意**：对于新线路，公共对等互连已弃用。
 Azure 备份代理 | 如果 DPM 正在 System Center 2012 SP1 上运行，请安装 DPM SP1 汇总 2 或更高版本。 这是代理安装所必需的。<br/><br/> 本文介绍如何部署最新版本的 Azure 备份代理（也称为 Microsoft Azure 恢复服务 (MARS) 代理）。 如果已部署早期版本，请更新到最新版本以确保备份按预期运行。
 
 在开始之前，需要一个启用了 Azure 备份功能的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 阅读 [Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)的相关信息。
@@ -61,14 +61,14 @@ Azure 备份代理 | 如果 DPM 正在 System Center 2012 SP1 上运行，请安
 
 - 默认情况下，保管库具有异地冗余存储。
 - 如果保管库是主要备份，请将选项保持设置为异地冗余存储。 如果想要一个更便宜、但持久性不太高的选项，请使用以下过程配置本地冗余存储。
-- 了解 [Azure 存储空间](../storage/common/storage-redundancy.md)，以及 [异地冗余](../storage/common/storage-redundancy.md#geo-redundant-storage)的 [本地冗余](../storage/common/storage-redundancy.md#locally-redundant-storage) 存储和 [区域冗余](../storage/common/storage-redundancy.md#zone-redundant-storage) 存储选项。
+- 了解 [Azure 存储](../storage/common/storage-redundancy.md)，以及[异地冗余](../storage/common/storage-redundancy.md#geo-redundant-storage)、[本地冗余](../storage/common/storage-redundancy.md#locally-redundant-storage)和[区域冗余](../storage/common/storage-redundancy.md#zone-redundant-storage)存储选项。
 - 在初始备份之前修改存储设置。 如果已备份某个项，请先停止在保管库备份该项，再修改存储设置。
 
 若要编辑存储复制设置，请执行以下操作：
 
 1. 打开保管库仪表板。
 
-2. 在 " **管理**" 中，选择 " **备份基础结构**"。
+2. 在“管理”中，选择“备份基础结构”。
 
 3. 在“备份配置”菜单中，为保管库选择存储选项。
 
@@ -165,7 +165,7 @@ Azure 备份代理 | 如果 DPM 正在 System Center 2012 SP1 上运行，请安
 
 7. 选择“注册”，以将 DPM 服务器注册到保管库。
 
-将服务器成功注册到保管库后，便可以开始备份到 Microsoft Azure。 需要在 DPM 控制台中配置保护组，以将工作负荷备份到 Azure。 [了解如何](/system-center/dpm/create-dpm-protection-groups)部署保护组。
+服务器成功注册到保管库后，现在，可以开始备份到 Microsoft Azure。 需要在 DPM 控制台中配置保护组，以将工作负荷备份到 Azure。 [了解如何](/system-center/dpm/create-dpm-protection-groups)部署保护组。
 
 ## <a name="troubleshoot-vault-credentials"></a>对保管库凭据进行故障排除
 

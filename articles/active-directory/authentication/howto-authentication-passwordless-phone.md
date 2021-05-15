@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/11/2020
+ms.date: 04/21/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51e6cd7efcd0e851c15975aba5ff9b99c615eb7d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d586294f101c271f139867d0046576dc9a32f076
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101653467"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861780"
 ---
-# <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app"></a>启用使用 Microsoft Authenticator 应用进行无密码登录 
+# <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app"></a>启用使用 Microsoft Authenticator 应用的无密码登录 
 
 使用 Microsoft Authenticator 应用可以登录到任何 Azure AD 帐户，且无需输入密码。 Microsoft Authenticator 使用基于密钥的身份验证来启用与使用 PIN 或生物识别的设备绑定的用户凭据。 [Windows Hello 企业版](/windows/security/identity-protection/hello-for-business/hello-identity-verification)使用类似的技术。
 
@@ -32,12 +32,13 @@ ms.locfileid: "101653467"
 2. 选择“批准”。
 3. 提供 PIN 或生物识别。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要使用 Microsoft Authenticator 应用进行无密码手机登录，必须满足以下先决条件：
 
 - Azure AD 多重身份验证，允许将推送通知作为验证方法。
 - 已在运行 iOS 8.0 或更高版本或者 Android 6.0 或更高版本的设备上安装最新版本的 Microsoft Authenticator。
+- 必须在 Azure AD 租户内将安装 Microsoft Authenticator 应用的设备注册到单个用户。 
 
 > [!NOTE]
 > 如果已使用 Azure AD PowerShell 启用 Microsoft Authenticator 无密码登录，则会为整个目录启用此功能。 如果使用此新方法启用，则它会取代 PowerShell 策略。 建议通过新的“身份验证方法”菜单为租户中的所有用户启用，否则不在新策略中的用户将无法使用无密码登录。
@@ -59,8 +60,8 @@ ms.locfileid: "101653467"
 1. 使用“全局管理员”帐户登录 [Azure 门户](https://portal.azure.com)。
 1. 搜索并选择“Azure Active Directory”，然后浏览到“安全” > “身份验证方法” > “策略”。
 1. 在“Microsoft Authenticator”下，选择以下选项：
-   1. 启用 -“是”或“否”
-   1. 目标 -“所有用户”或“选择用户”
+   1. “启用”-“是”或“否”
+   1. “目标”-“所有用户”或“选择用户”
 1. 默认情况下，每个添加的组或用户都能在无密码和推送通知模式（“任何”模式）下使用 Microsoft Authenticator。 若要更改此设置，请为每行：
    1. 浏览到“...” > “配置”。
    1. 对于“身份验证模式”- 任何、无密码或推送
@@ -82,7 +83,7 @@ ms.locfileid: "101653467"
 > [!NOTE]
 > 策略不允许其使用手机登录的用户，无法再在 Microsoft Authenticator 应用内启用它。
 
-## <a name="sign-in-with-passwordless-credential"></a>使用无密码凭据登录
+## <a name="sign-in-with-passwordless-credential"></a>通过无密码凭据登录
 
 完成以下所有操作后，用户可以开始使用无密码登录：
 

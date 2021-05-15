@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.openlocfilehash: 4ec21086ee94610be1d9cf5da7b64c837b5311a9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100381522"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>适用于 Azure Functions 的 Azure Blob 存储绑定概述
@@ -31,15 +31,15 @@ Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与 
 | 语言                                        | 添加方式...                                   | 备注 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | 安装 [NuGet 包]版本 3.x | |
-| C # 脚本，Java，JavaScript，Python，PowerShell | 注册[扩展捆绑包]          | 建议将 [Azure Tools 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)用于 Visual Studio Code。 |
+| C# 脚本、Java、JavaScript、Python、PowerShell | 注册[扩展捆绑包]          | 建议将 [Azure Tools 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)用于 Visual Studio Code。 |
 | C# 脚本（Azure 门户中仅限联机）         | 添加绑定                            | 若要更新现有绑定扩展而不必重新发布函数应用，请参阅[更新扩展]。 |
 
-#### <a name="storage-extension-5x-and-higher"></a>Storage extension 1.x 和更高版本
+#### <a name="storage-extension-5x-and-higher"></a>存储扩展 5.x 和更高版本
 
-新版本的存储绑定扩展可用作 [预览 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/5.0.0-beta.2)。 此预览版引入了 [使用标识而不是机密进行连接](./functions-reference.md#configure-an-identity-based-connection)的功能。 对于 .NET 应用程序，它还会更改可以绑定到的类型，并将中的类型替换为从 `WindowsAzure.Storage` `Microsoft.Azure.Storage` [Azure](/dotnet/api/azure.storage.blobs)中更新的类型。
+新版本的存储绑定扩展可用作[预览 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/5.0.0-beta.2)。 此预览版引入了[使用标识而不是机密进行连接](./functions-reference.md#configure-an-identity-based-connection)的功能。 对于 .NET 应用程序，它还会更改可以绑定到的类型，并将 `WindowsAzure.Storage` 和 `Microsoft.Azure.Storage` 中的类型替换为 [Azure.Storage.Blobs](/dotnet/api/azure.storage.blobs) 中的新类型。
 
 > [!NOTE]
-> 预览包不包括在扩展捆绑包中，必须手动安装。 对于 .NET 应用，请添加对包的引用。 对于所有其他应用类型，请参阅 [更新扩展]。
+> 预览包不包括在扩展捆绑包中，必须手动安装。 对于 .NET 应用，请添加对包的引用。 对于所有其他应用类型，请参阅[更新扩展]。
 
 [core tools]: ./functions-run-local.md
 [扩展捆绑包]: ./functions-bindings-register.md#extension-bundles
@@ -56,9 +56,9 @@ Functions 1.x 应用会自动引用 [Microsoft.Azure.WebJobs](https://www.nuget.
 ## <a name="hostjson-settings"></a>host.json 设置
 
 > [!NOTE]
-> 本部分不适用于使用第5.0.0 之前的扩展版本。 对于这些版本，没有适用于 blob 的全局配置设置。
+> 本部分介绍的内容不适用于使用 5.0.0 之前的扩展版本的情况。 对于这些版本，没有适用于 blob 的全局配置设置。
 
-本部分介绍当使用 [扩展版本5.0.0 和更高版本](#storage-extension-5x-and-higher)时可用于此绑定的全局配置设置。 以下文件 *中* 的示例host.js仅包含此绑定的版本 2.x + 设置。 有关函数版本2.x 及更高版本中的全局配置设置的详细信息，请参阅 [ Azure Functionshost.js参考](functions-host-json.md)。
+当使用的[扩展版本不低于 5.0.0](#storage-extension-5x-and-higher) 时，本部分中介绍的全局配置设置才适用于此绑定。 下面的示例 host.json 文件仅包含此绑定的 2.x 版及更高版本设置。 若要详细了解 2.x 版及更高版本的 Azure Functions 中的全局配置设置，请参阅 [Azure Functions 的 host.json 参考](functions-host-json.md)。
 
 ```json
 {
@@ -71,9 +71,9 @@ Functions 1.x 应用会自动引用 [Microsoft.Azure.WebJobs](https://www.nuget.
 }
 ```
 
-|properties  |默认 | 说明 |
+|属性  |默认 | 说明 |
 |---------|---------|---------|
-|maxDegreeOfParallelism|8 * (可用核心数) |每个 blob 触发的函数允许的并发调用的整数。 允许的最小值为1。|
+|maxDegreeOfParallelism|8 *（可用核心数）|每个 blob 触发器函数允许使用的并发调用数（整数）。 允许的最小值为 1。|
 
 ## <a name="next-steps"></a>后续步骤
 

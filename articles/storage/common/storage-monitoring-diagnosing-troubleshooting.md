@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: d28cfd533caaef3fb80a63aea932e6418dff7e55
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 5943a65d61dee4fcf610b8cc45139674362995cb
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724245"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104600711"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>监视、诊断和排查 Microsoft Azure 存储问题
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -59,8 +59,8 @@ ms.locfileid: "101724245"
   * [问题是由于使用存储模拟器进行开发或测试而导致]
   * [安装用于 .NET 的 Azure SDK 时遇到问题]
   * [你遇到了其他存储服务问题]
-  * [Windows 虚拟机上的 VHD 故障排除](../../virtual-machines/troubleshooting/index.yml)   
-  * [Linux 虚拟机上的 VHD 故障排除](../../virtual-machines/troubleshooting/index.yml)
+  * [Windows 虚拟机上的 VHD 故障排除](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)   
+  * [Linux 虚拟机上的 VHD 故障排除](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)
   * [排查 Windows 的 Azure 文件问题](../files/storage-troubleshoot-windows-file-connection-problems.md)   
   * [排查 Linux 的 Azure 文件问题](../files/storage-troubleshoot-linux-file-connection-problems.md)
 * [附录]
@@ -510,7 +510,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 存储客户端库生成的以下客户端日志说明了客户端找不到它创建的 Blob 的容器时的问题。 此日志包含以下存储操作的详细信息：
 
-| 请求 ID | Operation |
+| 请求 ID | 操作 |
 | --- | --- |
 | 07b26a5d-... |**DeleteIfExists** 方法，用于删除 Blob 容器。 请注意，此操作包括 **HEAD** 请求以检查该容器是否存在。 |
 | e2d06d78-... |**CreateIfNotExists** 方法，用于创建 Blob 容器。 请注意，此操作包括 **HEAD** 请求，用于检查该容器是否存在。 **HEAD** 返回了 404 消息，但将继续执行。 |
@@ -566,7 +566,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 下表显示了存储日志记录日志文件中的示例服务器端日志消息：
 
-| 名称 | Value |
+| 名称 | 值 |
 | --- | --- |
 | 请求开始时间 | 2014-05-30T06:17:48.4473697Z |
 | 操作类型     | GetBlobProperties            |
@@ -639,7 +639,7 @@ client.SetServiceProperties(sp);
 ### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>客户端正在接收“HTTP 409 (冲突)”消息
 下表显示了服务器端日志中针对两个客户端操作的摘录：**DeleteIfExists** 后面紧接使用相同 Blob 容器名称的 **CreateIfNotExists**。 每个客户端操作会导致将两个请求发送到服务器，先是 **GetContainerProperties** 请求（用于检查容器是否存在），后跟 **DeleteContainer** 或 **CreateContainer** 请求。
 
-| 时间戳 | Operation | 结果 | 容器名称 | 客户端请求 ID |
+| 时间戳 | 操作 | 结果 | 容器名称 | 客户端请求 ID |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-... |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-... |
@@ -767,7 +767,7 @@ WireShark 会在 **packetlist** 窗口中突出显示存在的任何错误。 �
 >
 
 ### <a name="appendix-4-using-excel-to-view-metrics-and-log-data"></a><a name="appendix-4"></a>附录 4：使用 Excel 查看指标和日志数据
-使用许多工具可以从 Azure 表存储中下载带分隔符格式的存储指标数据，以便可以轻松地将这些数据加载到 Excel 中以供查看和分析。 来自 Azure Blob 存储的存储日志记录数据已采用可以加载到 Excel 中的带分隔符格式。 但是，需要基于[存储分析日志格式](/rest/api/storageservices/Storage-Analytics-Log-Format)和[存储分析度量表架构](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema)中的信息添加相应的列标题。
+使用许多工具可以从 Azure 表存储中下载带分隔符格式的存储指标数据，以便可以轻松地将这些数据加载到 Excel 中以供查看和分析。 Azure Blob 存储中的存储日志记录数据已是带分隔符的格式，可以加载到 Excel 中。 但是，需要基于[存储分析日志格式](/rest/api/storageservices/Storage-Analytics-Log-Format)和[存储分析度量表架构](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema)中的信息添加相应的列标题。
 
 要将存储日志记录数据导入 Excel（从 Blob 存储下载后），请执行以下操作：
 

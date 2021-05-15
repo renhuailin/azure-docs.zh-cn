@@ -5,7 +5,7 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: troubleshooting
-ms.date: 02/12/2021
+ms.date: 04/12/2021
 tags: active-directory
 ms.author: mimart
 author: msmimart
@@ -14,20 +14,20 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60cd944ecb144a30e872259f6e959a11c3ea6319
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: bc9424af07125977bc74a62a6bca97b8c10b8da3
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365423"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317390"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B 协作故障排除
 
 以下是 Azure Active Directory (Azure AD) B2B 协作的常见问题的一些补救措施。
 
    > [!IMPORTANT]
-   > - 从 2021 年 1 月 4 日开始，Google 将[弃用 WebView 登录支持](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)。 如果要通过 Gmail 使用 Google 联合身份验证或自助服务注册，则应[测试业务线本机应用程序的兼容性](google-federation.md#deprecation-of-webview-sign-in-support)。
-   > - **从2021年10月开始**，Microsoft 将不再支持通过创建非托管 Azure AD 帐户和用于 B2B 协作方案的租户来兑换邀请。 在准备期间，我们鼓励客户选择参与[电子邮件一次性密码身份验证](one-time-passcode.md)。 我们欢迎你提供有关此公共预览版功能的反馈，并且很乐意创建更多的协作方式。
+   > - 从 2021 年下半年开始，Google 将[弃用 Web 视图登录支持](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 如果正在对 B2B 邀请或 [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 使用 Google 联合身份验证，或者正在将自助注册与 Gmail 一起使用，那么当你的应用通过嵌入的 Web 视图对用户进行身份验证时，Google Gmail 用户将无法登录。 [了解详细信息](google-federation.md#deprecation-of-web-view-sign-in-support)。
+   > - 从 2021 年 10 月起，Microsoft 将不再支持兑换通过创建用于 B2B 协作方案的非托管 Azure AD 帐户和租户进行的邀请。 在准备期间，我们鼓励客户选择参与[电子邮件一次性密码身份验证](one-time-passcode.md)。 我们欢迎你提供有关此公共预览版功能的反馈，并且很乐意创建更多的协作方式。
 
 ## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>我已添加外部用户，但在全局通讯簿或人员选取器中看不到这些用户
 
@@ -75,6 +75,9 @@ ms.locfileid: "100365423"
 
 被邀请者应该向其 ISP 或垃圾邮件筛选器查询，以确保允许以下地址：Invites@microsoft.com
 
+> [!NOTE]
+> 对于中国世纪互联运营的 Azure 服务，发送方地址是 Invites@oe.21vianet.com。
+
 ## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>我发现邀请消息有时不包含自定义消息
 
 为遵守隐私法规，在以下情况下，API 不会在电子邮件邀请中包含自定义邮件：
@@ -94,33 +97,33 @@ ms.locfileid: "100365423"
 
 该用户具有 Azure 用户帐户，是已被放弃的或非托管的病毒性租户。 此外，租户中没有全局管理员。
 
-若要解决此问题，你必须接管被放弃的租户。 请参阅  [在 Azure Active Directory 中以管理员身份接管非托管目录](../enterprise-users/domains-admin-takeover.md)。 你还必须访问相关域后缀的面向 Internet 的 DNS，以便提供直接证据来证明你控制着该命名空间。 在租户返回到托管状态后，请与客户讨论保留用户和经验证的域名是否是其组织的最佳选择。
+若要解决此问题，你必须接管被放弃的租户。 请参阅[在 Azure Active Directory 中以管理员身份接管非管理的目录](../enterprise-users/domains-admin-takeover.md)。 你还必须访问相关域后缀的面向 Internet 的 DNS，以便提供直接证据来证明你控制着该命名空间。 在租户返回到托管状态后，请与客户讨论保留用户和经验证的域名是否是其组织的最佳选择。
 
 ## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>具有实时或“病毒性”租户的来宾用户无法重置其密码
 
-如果标识租户是实时 (JIT) 或病毒性租户（独立的不受管 Azure 租户），则只有来宾用户可以重置其密码。 有时，组织会接管在员工使用其工作电子邮件地址注册服务时创建 [的病毒租户的管理](../enterprise-users/domains-admin-takeover.md) 。 组织接管病毒性租户后，只有该组织中的管理员可以重置用户密码或启用 SSPR。 如果需要，作为邀请方组织，你可以从目录中删除来宾用户帐户并重新发送邀请。
+如果标识租户是实时 (JIT) 或病毒性租户（独立的不受管 Azure 租户），则只有来宾用户可以重置其密码。 有时，组织将[接管在员工使用其工作电子邮件地址注册服务时创建的病毒性租户的管理](../enterprise-users/domains-admin-takeover.md)。 组织接管病毒性租户后，只有该组织中的管理员可以重置用户密码或启用 SSPR。 如果需要，作为邀请方组织，你可以从目录中删除来宾用户帐户并重新发送邀请。
 
 ## <a name="a-guest-user-is-unable-to-use-the-azuread-powershell-v1-module"></a>来宾用户无法使用 AzureAD PowerShell V1 模块
 
 从 2019 年 11 月 18 日开始，你的目录中的来宾用户（所定义的其 userType  属性为 Guest  的用户帐户）被系统阻止使用 AzureAD PowerShell V1 模块。 之后，用户需要成为成员用户（userType  为 Member  ）或使用 AzureAD PowerShell V2 模块。
 
-## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>在 Azure 美国政府租户中，无法邀请 B2B 协作来宾用户
+## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>在 Azure 美国政府租户中，我无法邀请 B2B 协作来宾用户
 
-在 Azure 美国政府版云中，当前仅支持在 Azure 美国政府云中的租户之间进行 B2B 协作，并且两者都支持 B2B 协作。 如果你邀请不属于 Azure 美国政府云的租户中的用户，或者不支持 B2B 协作，则会出现错误。 有关详细信息和限制，请参阅 [Azure Active Directory Premium P1 和 P2 变体](../../azure-government/compare-azure-government-global-azure.md#azure-active-directory-premium-p1-and-p2)。
+在 Azure 美国政府云中，当前仅支持同时在 Azure 美国政府云中且同时支持 B2B 协作的租户之间进行 B2B 协作。 如果你邀请的用户不在属于 Azure 美国政府云的租户中，或者不支持 B2B 协作，则会出现错误。 有关详细信息和限制，请参阅 [Azure Active Directory Premium P1 和 P2 变体](../../azure-government/compare-azure-government-global-azure.md#azure-active-directory-premium-p1-and-p2)。
 
-## <a name="i-receive-the-error-that-azure-ad-cannot-find-the-aad-extensions-app-in-my-tenant"></a>我收到了一个错误，Azure AD 在我的租户中找不到 aad 扩展应用
+## <a name="i-receive-the-error-that-azure-ad-cannot-find-the-aad-extensions-app-in-my-tenant"></a>我收到 Azure AD 在我的租户中找不到 aad-extensions-app 的错误
 
-使用自助服务注册功能（如自定义用户属性或用户流）时， `aad-extensions-app. Do not modify. Used by AAD for storing user data.` 会自动创建一个名为的应用。 Azure AD 外部标识使用它来存储有关注册和收集的自定义属性的用户的信息。
+使用自助服务注册功能（如自定义用户属性或用户流）时，会自动创建一个名为 `aad-extensions-app. Do not modify. Used by AAD for storing user data.` 的应用。 Azure AD 外部标识使用它来存储有关注册的用户和收集的自定义属性的信息。
 
-如果将 `aad-extensions-app` 意外删除，则你有 30 天的时间可以恢复它。 你可以使用 Azure AD PowerShell 模块还原应用。
+如果将 `aad-extensions-app` 意外删除，则你有 30 天的时间可以恢复它。 你可以使用 Azure AD PowerShell 模块还原该应用。
 
-1. 启动 Azure AD PowerShell 模块并运行 `Connect-AzureAD` 。
-1. 以全局管理员身份登录要恢复已删除应用的 Azure AD 租户。
-1. 运行 PowerShell 命令 `Get-AzureADDeletedApplication` 。
-1. 在列表中查找显示名称以开头的应用程序 `aad-extensions-app` ，并复制其 `ObjectId` 属性值。
-1. 运行 PowerShell 命令 `Restore-AzureADDeletedApplication -ObjectId {id}` 。 将 `{id}` 命令的部分替换为 `ObjectId` 上一步中的。
+1. 启动 Azure AD PowerShell 模块并运行 `Connect-AzureAD`。
+1. 以要为其还原已删除应用的 Azure AD 租户的全局管理员身份登录。
+1. 运行 PowerShell 命令 `Get-AzureADDeletedApplication`。
+1. 在列表中找到显示名称以 `aad-extensions-app` 开头的应用程序，并复制其 `ObjectId` 属性值。
+1. 运行 PowerShell 命令 `Restore-AzureADDeletedApplication -ObjectId {id}`。 将此命令的 `{id}` 部分替换为之前步骤中的 `ObjectId`。
 
-现在，应会在 Azure 门户中看到已还原的应用程序。
+现在应该可以在 Azure 门户中查看还原的应用。
 
 ## <a name="next-steps"></a>后续步骤
 

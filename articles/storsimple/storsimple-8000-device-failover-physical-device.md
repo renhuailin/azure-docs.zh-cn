@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 67d6fb1f3cc359288ed942d915e186542a62b0fc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96017128"
 ---
 # <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>故障转移到 StorSimple 8000 系列物理设备
@@ -54,14 +54,14 @@ ms.locfileid: "96017128"
     
 7. 在“故障转移”边栏选项卡中执行以下步骤：
    
-   1. 单击 " **源**"。 此时会显示与云快照关联的卷所在的卷容器。 只会显示可故障转移的容器。 在卷容器列表中，选择要故障转移的卷容器。 **列表中只显示与云快照和脱机卷关联的卷容器。**
+   1. 单击“源”。 此时会显示与云快照关联的卷所在的卷容器。 只会显示可故障转移的容器。 在卷容器列表中，选择要故障转移的卷容器。 **列表中只显示与云快照和脱机卷关联的卷容器。**
 
        ![选择源](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev5.png)
    2. 单击“目标”。 对于在前一步骤中选择的卷容器，请从可用设备的下拉列表中选择目标设备。 列表中只会显示可提供足够的容量来容纳源卷容器的设备。
 
         ![选择目标](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev6.png)
 
-   3. 最后，查看“摘要”下面的所有故障转移设置。 查看设置后，请选中指示所选卷容器中的卷已脱机的复选框。 单击“确定”。
+   3. 最后，查看“摘要”下面的所有故障转移设置。 查看设置后，请选中指示所选卷容器中的卷已脱机的复选框。 单击 **“确定”** 。
 
        ![查看故障转移设置](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev8.png)
   
@@ -75,7 +75,7 @@ ms.locfileid: "96017128"
    
    1. 为故障转移过程选择用作目标设备的设备。
 
-       ![选择设备2](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
+       ![选择设备 2](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
 
    2. 转到“卷容器”边栏选项卡。 此时应列出所有卷容器以及旧设备中的卷。
 

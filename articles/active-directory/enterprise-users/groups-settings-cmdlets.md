@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8ad70aff7e1673681541a1b6b37a0bd50d822fed
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97954391"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>用于配置组设置的 Azure Active Directory cmdlet
@@ -163,7 +163,7 @@ Microsoft 365 组设置使用 Settings 对象和 SettingsTemplate 对象配置�
 |  <ul><li>GuestUsageGuidelinesUrl<li>键入：String<li>默认值："" | 指向来宾使用指南的链接的 URL。 |
 |  <ul><li>AllowToAddGuests<li>键入：布尔<li>默认值：True | 一个布尔值，该值指示是否允许将来宾添加到此目录。 <br>如果 *EnableMIPLabels* 设置为 *True* 且某个来宾策略与分配给组的敏感性标签相关联，则此设置可能会被重写，变成只读。<br>如果在组织级别将 AllowToAddGuests 设置设为 False，则会忽略组级别的任何 AllowToAddGuests 设置。 如果希望仅对几个组启用来宾访问，则必须在组织级别将 AllowToAddGuests 设为 true，然后针对特定组有选择地禁用它。 |
 |  <ul><li>ClassificationList<li>键入：String<li>默认值："" | 一个逗号分隔列表，用于列出可以应用于 Microsoft 365 组的有效分类值。 <br>当 EnableMIPLabels == True 时，此设置不适用。|
-|  <ul><li>EnableMIPLabels<li>键入：布尔<li>默认值：“False” |一个标记，表明在 Microsoft 365 合规中心发布的敏感性标签是否适用于 Microsoft 365 组。 有关详细信息，请参阅为 [Microsoft 365 组分配敏感度标签](groups-assign-sensitivity-labels.md)。 |
+|  <ul><li>EnableMIPLabels<li>键入：布尔<li>默认值：“False” |一个标记，表明在 Microsoft 365 合规中心发布的敏感性标签是否适用于 Microsoft 365 组。 有关详细信息，请参阅[为 Microsoft 365 组分配敏感度标签](groups-assign-sensitivity-labels.md)。 |
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>示例：在目录级别为组配置来宾策略
 1. 获取所有设置模板：

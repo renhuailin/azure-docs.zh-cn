@@ -4,15 +4,15 @@ description: 介绍可用于 Azure 蓝图定义和分配中的蓝图项目的函
 ms.date: 01/27/2021
 ms.topic: reference
 ms.openlocfilehash: 92cb906e87179073b7a69aa0bd4eab22c77087f9
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98919268"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>与 Azure 蓝图一起使用的函数
 
-Azure 蓝图提供了使蓝图定义更加动态的函数。 这些函数用于蓝图定义和蓝图项目。 除了通过蓝图参数获取动态值外，Azure 资源管理器模板 (ARM 模板) 项目支持完整使用资源管理器函数。
+Azure 蓝图提供了使蓝图定义更加动态的函数。 这些函数用于蓝图定义和蓝图项目。 除了通过蓝图参数获取动态值之外，Azure 资源管理器模板（ARM 模板）项目还支持充分利用资源管理器函数。
 
 支持以下函数：
 
@@ -30,11 +30,11 @@ Azure 蓝图提供了使蓝图定义更加动态的函数。 这些函数用于�
 返回由蓝图项目输出填充的属性对象。
 
 > [!NOTE]
-> `artifacts()`不能从 ARM 模板内使用该函数。 当使用 Azure PowerShell 或 REST API 作为 [Blueprints-as-code](https://github.com/Azure/azure-blueprints/blob/master/README.md) 的一部分来管理蓝图时，此函数只能在蓝图定义 JSON 或项目 JSON 中使用。
+> `artifacts()` 函数不能在 ARM 模板内部使用。 当使用 Azure PowerShell 或 REST API 作为 [Blueprints-as-code](https://github.com/Azure/azure-blueprints/blob/master/README.md) 的一部分来管理蓝图时，此函数只能在蓝图定义 JSON 或项目 JSON 中使用。
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | artifactName |是 |字符串 |蓝图项目的名称。 |
 
@@ -62,7 +62,7 @@ Azure 蓝图提供了使蓝图定义更加动态的函数。 这些函数用于�
 
 #### <a name="arm-template-artifact"></a>ARM 模板项目
 
-返回对象的 **输出** 属性是在 ARM 模板内定义的，由部署返回。
+返回对象的“输出”属性在 ARM 模板中定义，并由部署返回。
 
 #### <a name="role-assignment-artifact"></a>角色分配项目
 
@@ -78,7 +78,7 @@ Azure 蓝图提供了使蓝图定义更加动态的函数。 这些函数用于�
 
 ### <a name="example"></a>示例
 
-带有 ID _myTemplateArtifact_ 的 ARM 模板项目，其中包含以下示例输出属性：
+ID 为“myTemplateArtifact”的 ARM 模板项目，包含以下示例输出属性：
 
 ```json
 {
@@ -123,7 +123,7 @@ Azure 蓝图提供了使蓝图定义更加动态的函数。 这些函数用于�
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | string1 |是 |字符串 |串联的第一个值。 |
 | 其他参数 |否 |字符串 |按顺序排列的串联的其他值 |
@@ -134,7 +134,7 @@ Azure 蓝图提供了使蓝图定义更加动态的函数。 这些函数用于�
 
 ### <a name="remarks"></a>备注
 
-Azure 蓝图函数不同于 ARM 模板功能，因为它仅适用于字符串。
+Azure 蓝图函数与 ARM 模板函数的不同之处在于，它只处理字符串。
 
 ### <a name="example"></a>示例
 
@@ -148,7 +148,7 @@ Azure 蓝图函数不同于 ARM 模板功能，因为它仅适用于字符串。
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | parameterName |是 |字符串 |要返回的参数名称。 |
 
@@ -158,7 +158,7 @@ Azure 蓝图函数不同于 ARM 模板功能，因为它仅适用于字符串。
 
 ### <a name="remarks"></a>备注
 
-Azure 蓝图函数不同于 ARM 模板功能，因为它仅适用于蓝图参数。
+Azure 蓝图函数与 ARM 模板函数的不同之处在于，它只处理蓝图参数。
 
 ### <a name="example"></a>示例
 
@@ -218,7 +218,7 @@ Azure 蓝图函数不同于 ARM 模板功能，因为它仅适用于蓝图参数
 
 ### <a name="remarks"></a>备注
 
-Azure 蓝图函数不同于 ARM 模板功能。 `resourceGroup()` 函数不能在订阅级项目或蓝图定义中使用。 它只能在作为资源组项目一部分的蓝图项目中使用。
+Azure 蓝图函数与 ARM 模板函数不同。 `resourceGroup()` 函数不能在订阅级项目或蓝图定义中使用。 它只能在作为资源组项目一部分的蓝图项目中使用。
 
 `resourceGroup()` 函数的一个常见用途是在与资源组项目相同的位置中创建资源。
 
@@ -269,7 +269,7 @@ Azure 蓝图函数不同于 ARM 模板功能。 `resourceGroup()` 函数不能�
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | placeholderName |是 |字符串 |要返回的资源组项目的占位符名称。 |
 

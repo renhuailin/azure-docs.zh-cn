@@ -1,6 +1,6 @@
 ---
 title: 排查 Azure CDN 中的文件压缩问题 | Microsoft Docs
-description: 了解如何对 Azure 内容分发网络中的文件压缩问题进行故障排除。 本文介绍几种可能的原因。
+description: 了解如何排查 Azure 内容分发网络中的文件压缩问题。 本文介绍几种可能的原因。
 services: cdn
 documentationcenter: ''
 author: sohamnc
@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: f49af1488a0c044639a72fc2ea52ba0a47727a24
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95996145"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>排查 CDN 文件压缩问题
@@ -42,7 +42,7 @@ ms.locfileid: "95996145"
 * 所请求的内容不适合压缩。
 * 请求的文件类型未启用压缩。
 * HTTP 请求没有包含请求有效压缩类型的标头。
-* 源正在发送分块内容。
+* 源点正在发送分块内容。
 
 ## <a name="troubleshooting-steps"></a>疑难解答步骤
 > [!TIP]
@@ -111,7 +111,7 @@ ms.locfileid: "95996145"
 
 为了适合进行压缩，文件必须符合以下大小要求：
 
-* 大于128字节 (Content-Length： 128) 
+* 大于 128 字节（内容长度：128）
 * 小于 3 MB
 
 ### <a name="check-the-request-at-the-origin-server-for-a-via-header"></a>在源服务器上检查请求是否包含 **Via** 标头

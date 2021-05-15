@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
 ms.openlocfilehash: ff70df225b5ed27960c96889d409d7005f0fbcc4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94950718"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>从备份集中还原 StorSimple 卷
@@ -27,7 +27,7 @@ ms.locfileid: "94950718"
 
 在开始还原之前，请查看以下注意事项：
 
-* **必须使卷脱机** – 启动还原操作前，请在主机和设备上使卷脱机。 虽然还原操作会自动在设备上使卷联机，但必须在主机上手动使设备联机。 在设备上使卷联机后，便可以在主机上使卷联机。  (你无需等待还原操作完成 ) 。有关过程，请转到 [使卷脱机](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)。
+* **必须使卷脱机** – 启动还原操作前，请在主机和设备上使卷脱机。 虽然还原操作会自动在设备上使卷联机，但必须在主机上手动使设备联机。 在设备上使卷联机后，便可以在主机上使卷联机。 （无需等待还原操作完成即可进行此操作。）有关过程，请转到[使卷脱机](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)。
 
 * **还原后的卷类型** – 基于快照中的类型对已删除的卷进行还原；也就是说，已在本地固定的卷会还原为本地固定卷，已分层的卷会还原为分层卷。
 
@@ -75,7 +75,7 @@ ms.locfileid: "94950718"
 
 * **时间范围** – 创建备份集的日期和时间范围。
 * **设备** – 在其上创建备份集的设备。
-* **备份策略** 或 **卷** –与此备份集关联的备份策略或卷。
+* **备份策略** 或 **卷** – 与此备份集相关联的备份策略或卷。
 
 然后基于以下属性以表格方式列出所筛选的备份集：
 
@@ -115,7 +115,7 @@ ms.locfileid: "94950718"
    
 4. 导航回“备份目录”选项卡并选择备份集。 单击右键，从上下文菜单中选择“还原”。
 
-    ![备份集列表2](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
+    ![备份集列表 2](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
 
 5. 系统会提示进行确认。 查看还原信息，并选择“确认”复选框。
    
@@ -123,7 +123,7 @@ ms.locfileid: "94950718"
 
 7. 请单击“还原”。 这会启动可通过访问“作业”页面进行查看的还原作业。
 
-   ![确认页2](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
+   ![“确认”页 2](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
 8. 还原完成后，可验证卷的内容是否已由备份中的卷所替换。
 

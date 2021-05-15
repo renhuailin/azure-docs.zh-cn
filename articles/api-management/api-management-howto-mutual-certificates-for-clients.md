@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
 ms.openlocfilehash: 553b4527796db3e5d0f430afd6c5e614626187e5
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99988893"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>如何使用 API 管理中的客户端证书身份验证确保 API 安全
@@ -97,13 +97,13 @@ API 管理提供的功能可确保使用客户端证书安全地访问 API（即
 
 ## <a name="certificate-validation-in-self-hosted-gateway"></a>自承载网关上的证书验证
 
-默认 API 管理 [自承载网关](self-hosted-gateway-overview.md) 映像不支持使用上载到 API 管理实例的 [CA 根证书](api-management-howto-ca-certificates.md) 验证服务器和客户端证书。 向自承载网关呈现自定义证书的客户端可能会遇到较慢的响应，因为证书吊销列表 (CRL) 验证可能需要较长时间才能在网关上超时。 
+默认 API 管理[自承载网关](self-hosted-gateway-overview.md)映像不支持使用上传到 API 管理实例的 [CA 根证书](api-management-howto-ca-certificates.md)验证服务器和客户端证书。 向自承载网关提供自定义证书的客户端可能会遇到响应慢的问题，因为证书吊销列表 (CRL) 验证可能需要较长时间才会在网关上超时。 
 
-在运行网关时，可以将 PKI IP 地址配置为指向 localhost 地址 (127.0.0.1) 而不是 API 管理实例。 当网关尝试验证客户端证书时，这会导致 CRL 验证快速失败。 若要配置网关，请将 API 管理实例的 DNS 条目添加到容器中文件中的 localhost `/etc/hosts` 。 可以在网关部署过程中添加此条目：
+一种解决方法是，在运行网关时，可以将 PKI IP 地址配置为指向 localhost 地址 (127.0.0.1) 而不是 API 管理实例。 当网关尝试验证客户端证书时，这会导致 CRL 验证快速失败。 要配置网关，请添加 API 管理实例的 DNS 条目以解析到容器中 `/etc/hosts` 文件中的 localhost。 可以在网关部署过程中添加此条目：
  
-* 对于 Docker 部署-请将 `--add-host <hostname>:127.0.0.1` 参数添加到 `docker run` 命令中。 有关详细信息，请参阅 [将条目添加到容器主机文件](https://docs.docker.com/engine/reference/commandline/run/#add-entries-to-container-hosts-file---add-host)
+* 对于 Docker 部署 - 请将 `--add-host <hostname>:127.0.0.1` 参数添加到 `docker run` 命令中。 有关详细信息，请参阅[将条目添加到容器主机文件](https://docs.docker.com/engine/reference/commandline/run/#add-entries-to-container-hosts-file---add-host)
  
-* 对于 Kubernetes 部署-将 `hostAliases` 规范添加到 `myGateway.yaml` 配置文件。 有关详细信息，请参阅 [将条目添加到带有主机别名的 Pod/etc/hosts](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)。
+* 对于 Kubernetes 部署 - 将 `hostAliases` 规范添加到 `myGateway.yaml` 配置文件。 有关详细信息，请参阅[使用主机别名向 Pod/etc/hosts 添加条目](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)。
 
 
 

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/08/2020
 ms.openlocfilehash: c98ee8f747975d4237c2906be2060eddbc7b9990
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96000940"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL（单一服务器）中配置 TLS 连接
@@ -20,7 +20,7 @@ Azure Database for PostgreSQL 倾向于使用传输层安全性 (TLS)（以前�
 默认情况下，PostgreSQL 数据库服务配置为需要 TLS 连接。 如果客户端应用程序不支持 TLS 连接，则可以选择禁用 TLS。
 
 >[!NOTE]
-> 根据客户的反馈，我们已在2021年2月15日到 (02/15/2021) 扩展了现有巴尔的摩根 CA 的根证书弃用。
+> 根据客户的反馈，我们已将现有 Baltimore 根 CA 颁发的根证书的弃用时间延长至 2021 年 2 月 15 日 (02/15/2021)。
 
 > [!IMPORTANT] 
 > SSL 根证书设置为 2021 年 2 月 15 日 (2021/02/15) 到期。 请更新应用程序以使用[新证书](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)。 若要了解详细信息，请参阅[计划的证书更新](concepts-certificate-rotation.md)
@@ -60,7 +60,7 @@ az postgres server update --resource-group myresourcegroup --name mydemoserver -
 
 在某些情况下，应用程序需要具备从受信任的证书颁发机构 (CA) 证书文件生成的本地证书文件才能实现安全连接。 用于连接到 Azure Database for PostgreSQL 的证书位于 https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem 。 下载证书文件并将其保存到首选位置。 
 
-请参阅以下链接，了解主权云中服务器的证书： [Azure 政府](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)版、 [azure 中国](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)版和 [azure 德国](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt)版。
+请参阅以下链接以了解主权云中服务器的证书：[Azure 政府](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)、[Azure 中国](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)和 [Azure 德国](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt)。
 
 ### <a name="connect-using-psql"></a>使用 psql 进行连接
 

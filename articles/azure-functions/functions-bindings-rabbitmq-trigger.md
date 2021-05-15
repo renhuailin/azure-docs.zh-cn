@@ -8,10 +8,10 @@ ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
 ms.openlocfilehash: be3c5bc2d178171aaebd322e13b23b3a6f79c442
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100388985"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>Azure Functions 的 RabbitMQ 触发器概述
@@ -126,9 +126,9 @@ module.exports = async function (context, myQueueItem) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下面的示例演示如何通过触发器读取 RabbitMQ 队列消息。
+以下示例演示如何通过触发器读取 RabbitMQ 队列消息。
 
-在 *function.js上的 "* *类型* " 设置为时，将定义 RabbitMQ 绑定 `RabbitMQTrigger` 。
+RabbitMQ 绑定在 function.json 中定义，其中“类型”设置为 `RabbitMQTrigger`。
 
 ```json
 {
@@ -213,7 +213,7 @@ Python 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type  | 不适用 | 必须设置为“RabbitMQTrigger”。|
+|type | 不适用 | 必须设置为“RabbitMQTrigger”。|
 |**direction** | 不适用 | 必须设置为“in”。|
 |name | 不适用 | 表示函数代码中的队列的变量的名称。 |
 |**queueName**|**QueueName**| 从中接收消息的队列的名称。 |

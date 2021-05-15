@@ -6,22 +6,22 @@ ms.author: yalavi
 services: monitoring
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 228193066c45421c4dddee1802aba1feed59e9c8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8c35ea5ac34160554f5a9100595a00ded4ce397c
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042668"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108018666"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>用于日志警报规则的 Webhook 操作
 
 [日志警报](alerts-log.md)支持[配置 Webhook 操作组](./action-groups.md#webhook)。 本文介绍了哪些属性可用和如何配置自定义 JSON Webhook。
 
 > [!NOTE]
-> API 版本 `2020-05-01-preview` 当前不支持基于 JSON 的自定义 Webhook
+> API 版本 `2020-05-01-preview` 当前不支持基于 JSON 的自定义 Webhook。
 
 > [!NOTE]
-> 建议使用[通用警报架构](../alerts/alerts-common-schema.md)进行 Webhook 集成。 通用警报架构的优点是可以跨 Azure Monitor 中的所有警报服务提供单个可扩展且统一的警报有效负载。 对于定义了自定义 JSON 有效负载的日志预警规则，启用此通用架构会将有效负载架构恢复为[此处](../alerts/alerts-common-schema-definitions.md#log-alerts)所述架构。 启用通用架构的警报的大小上限为每个警报 256 KB，更大的警报不包含搜索结果。 在不包括搜索结果时，应使用 `LinkToFilteredSearchResultsAPI` 或 `LinkToSearchResultsAPI` 通过 Log Analytics API 访问查询结果。
+> 建议使用[通用警报架构](../alerts/alerts-common-schema.md)进行 Webhook 集成。 通用警报架构的优点是可以跨 Azure Monitor 中的所有警报服务提供单个可扩展且统一的警报有效负载。 对于定义了自定义 JSON 有效负载的日志预警规则，启用此通用警报架构会将有效负载架构还原为[此处](../alerts/alerts-common-schema-definitions.md#log-alerts)所述架构。 这意味着，如果要定义自定义 JSON 有效负载，则 Webhook 不能使用常见的警报架构。 启用通用架构的警报的大小上限为每个警报 256 KB，更大的警报不包含搜索结果。 在不包括搜索结果时，应使用 `LinkToFilteredSearchResultsAPI` 或 `LinkToSearchResultsAPI` 通过 Log Analytics API 访问查询结果。
 
 ## <a name="webhook-payload-properties"></a>Webhook 有效负载属性
 

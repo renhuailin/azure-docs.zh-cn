@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/16/2018
 ms.title: include
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5687fb99c27b8b2141e0a2a817327cfbb124951a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 40e9e2b0e7437566a132f2402d3bed01b284d11a
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102109047"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106081062"
 ---
 ## <a name="create-a-manually-triggered-webjob"></a><a name="CreateOnDemand"></a>创建手动触发的 Web 作业
 
-1. 进入 [Azure 门户](https://portal.azure.com)。
-1. 中转到你的 **应用服务** <abbr title="应用资源可以是 web 应用、API 应用或移动应用。">应用资源</abbr>.
+1. 转到 [Azure 门户](https://portal.azure.com)。
+1. 转到你的 **应用服务** <abbr title="应用资源可以是 Web 应用、API 应用或移动应用。">应用资源</abbr>.
 1. 选择“Web 作业”。
 
     ![选择“Web 作业”](../media/web-sites-create-web-jobs/select-webjobs.png)
@@ -30,10 +30,10 @@ ms.locfileid: "102109047"
     
     | 设置      | 示例值   | 
     | ------------ | ----------------- | 
-   | <abbr title="在应用服务应用中唯一的名称。 必须以字母或数字开头，并且不能包含和以外的特殊 `-` 字符 `_` 。">名称</abbr> | myTriggeredWebJob | 
+   | <abbr title="在应用服务应用中唯一的名称。 必须以字母或数字开头，且不能包含除 `-` 和 `_` 以外的特殊字符。">名称</abbr> | myTriggeredWebJob | 
     | <abbr title="一个 *.zip* 文件，其中包含可执行文件或脚本文件，以及运行程序或脚本所需的所有支持文件。">文件上传</abbr> | ConsoleApp.zip |
-    | <abbr title="类型包括连续、触发。">类型</abbr> | 触发 | 
-    | <abbr title="类型包括计划或手动">导致</a> | 手动 | |
+    | <abbr title="类型包括“连续”、“触发”。">类型</abbr> | 触发 | 
+    | <abbr title="类型包括“计划”或“手动”">触发器</a> | 手动 | 
 
 4. 单击 **“确定”** 。 
 
@@ -41,7 +41,7 @@ ms.locfileid: "102109047"
 
    ![Web 作业列表](../media/web-sites-create-web-jobs/listallwebjobs.png)
 
-7. **若要运行手动 WebJob**，请在列表中右键单击其名称，然后单击 " **运行**"。
+7. 要运行手动 WebJob，请在列表中右键单击其名称，并单击“运行” 。
    
     ![运行 Web 作业](../media/web-sites-create-web-jobs/runondemand.png)
 

@@ -9,40 +9,40 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a5c8f835d44896a452a945614332dcbc25ca8bb8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: ba538f4753c2365406bd88286b6d54cff1a9e9ea
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694421"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104800816"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Azure 认知搜索中的筛选器 
 
-*筛选器* 提供了基于值的条件，用于选择查询中使用的文档。 筛选器可以是单个值，也可以是 OData [筛选器表达式](search-query-odata-filter.md)。 与全文搜索不同，筛选器值或表达式仅返回严格匹配。
+“筛选器”提供基于值的条件，用于选择查询中使用的文档。 筛选器可以是单个值，也可以是 OData [筛选表达式](search-query-odata-filter.md)。 与全文搜索不同，筛选器值或表达式仅返回严格匹配。
 
-某些搜索体验（如分 [面导航](search-filters-facets.md)）依赖于筛选器作为实现的一部分，但你可以随时使用筛选器来将查询的范围限定为特定值。 如果你的目标是将查询的作用域限定为特定的字段，则可以使用下面所述的替代方法。
+某些搜索体验（如[分面导航](search-filters-facets.md)）依赖于筛选器作为实现的一部分，但你可以随时使用筛选器将查询的范围限定为特定值。 如果你的目标是将查询的范围限定为特定的字段，则可以使用下面所述的替代方法。
 
 ## <a name="when-to-use-a-filter"></a>使用筛选器的时机
 
 筛选器在多种搜索体验中不可或缺，包括“附近查找”、分面导航，以及仅显示允许用户查看的文档的安全筛选器。 如果实施其中任何一种体验，必须使用筛选器。 该筛选器会附加到提供地理位置坐标的搜索查询、用户选择的分面类别，或请求者的安全 ID。
 
-常见方案包括：
+常见方案包括下列内容：
 
-+ 基于索引中的内容切分搜索结果。 如果架构具有酒店位置、类别和 (标准，你可以创建一个筛选器，用于在 "西雅图"、"水") 的 " 
++ 基于索引中的内容的切分搜索结果。 如果某个架构具有酒店位置、类别和便利设施，则可以创建一个筛选器，以显式匹配条件（在西雅图，在水上，看风景）。 
 
-+ 实现搜索体验附带了筛选要求：
++ 实现附带筛选要求的搜索体验：
 
   + [分面导航](search-faceted-navigation.md)使用筛选器传回用户选择的分面类别。
   + 地理搜索使用筛选器在“附近查找”应用中传递当前位置的坐标。 
-  + [安全筛选器](search-security-trimming-for-azure-search.md) 将安全标识符作为筛选条件传递，其中，索引中的匹配项作为对文档访问权限的代理。
+  + [安全筛选器](search-security-trimming-for-azure-search.md)将安全标识符作为筛选条件进行传递，在索引中找到的匹配项充当代理，提供对文档的访问权限。
 
-+ 执行 "数字搜索"。 数值字段可以检索并且可以出现在搜索结果中，但它们不可搜索， (仅受全文搜索) 的限制。 如果需要基于数字数据施加选择条件，请使用筛选器。
++ 执行“数字搜索”。 数字字段可检索并可显示在搜索结果中，但不可单独搜索（受全文搜索的限制）。 如果需要基于数字数据施加选择条件，请使用筛选器。
 
 ### <a name="alternative-methods-for-reducing-scope"></a>缩小范围的替代方法
 
 如果想要缩小搜索结果的范围，筛选器并不是唯一的选择。 根据目标，以下替代方法可能更合适：
 
-+ `searchFields` 查询参数将搜索限制为特定字段。 例如，如果索引分别为英语和西班牙语说明提供了单独的字段，则可以使用 searchFields 来限定要用于全文搜索的字段。 
++ `searchFields` 查询参数将搜索范围限定为特定的字段。 例如，如果索引分别为英语和西班牙语说明提供了单独的字段，则可以使用 searchFields 来限定要用于全文搜索的字段。 
 
 + `$select` 参数用于指定要在结果集中包含哪些字段，在将响应发送到调用方应用程序之前能够有效地修剪响应。 此参数不会具体化查询或缩小文档集合，但如果目标是获取更小的响应，则可以考虑使用此参数。 
 
@@ -56,7 +56,7 @@ ms.locfileid: "101694421"
 
 ## <a name="defining-filters"></a>定义筛选器
 
-筛选器是 OData 表达式，认知搜索支持的 [筛选语法](search-query-odata-filter.md) 中有表述。
+筛选器是 OData 表达式，如认知搜索支持的[筛选语法](search-query-odata-filter.md)中所述。
 
 可为每个 **搜索** 操作指定一个筛选器，但筛选器本身可以包含多个字段和多个条件，如果使用 **ismatch** 函数，则还可以包含多个全文搜索表达式。 在多部分筛选表达式中，可按任意顺序指定谓词（受运算符优先顺序规则的约束）。 如果尝试按特定的顺序重新排列谓词，性能不会有明显的提升。
 
@@ -112,25 +112,24 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 + Compound queries, separated by "or", each with its own filter criteria (for example, 'beagles' in 'dog' or 'siamese' in 'cat'). Expressions combined with `or` are evaluated individually, with the union of documents matching each expression sent back in the response. This usage pattern is achieved through the `search.ismatchscoring` function. You can also use the non-scoring version, `search.ismatch`.
 
    ```
-   # <a name="match-on-hostels-rated-higher-than-4-or-5-star-motels"></a>与高于4或5星汽车旅馆的 hostels 分级。
-   $filter = ismatchscoring ( "招待所" ) 并分级 ge 4 或 ismatchscoring ( "motel" ) 和评分 eq 5
+   # <a name="match-on-hostels-rated-higher-than-4-or-5-star-motels"></a>Match on hostels rated higher than 4 OR 5-star motels.
+   $filter=search.ismatchscoring('hostel') and Rating ge 4 or search.ismatchscoring('motel') and Rating eq 5
 
-   # <a name="match-on-luxury-or-high-end-in-the-description-field-or-on-category-exactly-equal-to-luxury"></a>匹配 "说明" 字段中的 "高级" 或 "高端"，或完全等于 "高级" 的类别。
-   $filter = ismatchscoring ( "有条件 |高端 "，" 说明 ") 或类别 eq" 高级 "&$count = true
+   # <a name="match-on-luxury-or-high-end-in-the-description-field-or-on-category-exactly-equal-to-luxury"></a>Match on 'luxury' or 'high-end' in the description field OR on category exactly equal to 'Luxury'.
+   $filter=search.ismatchscoring('luxury | high-end', 'Description') or Category eq 'Luxury'&$count=true
    ```
 
   It is also possible to combine full-text search via `search.ismatchscoring` with filters using `and` instead of `or`, but this is functionally equivalent to using the `search` and `$filter` parameters in a search request. For example, the following two queries produce the same result:
 
   ```
-  $filter = ismatchscoring ( "池" ) 和分级 ge 4
+  $filter=search.ismatchscoring('pool') and Rating ge 4
 
-  search = pool&$filter = 分级 ge 4
+  search=pool&$filter=Rating ge 4
   ```
 
 Follow up with these articles for comprehensive guidance on specific use cases:
 
 + [Facet filters](search-filters-facets.md)
-+ [Language filters](search-filters-language.md)
 + [Security trimming](search-security-trimming-for-azure-search.md) 
 
 ## Field requirements for filtering
@@ -150,7 +149,7 @@ public double? BaseRate { get; set; }
 
 ## <a name="text-filter-fundamentals"></a>文本筛选器基础知识
 
-文本筛选器将字符串字段与您在筛选器中提供的文本字符串匹配： `$filter=Category eq 'Resort and Spa'`
+文本筛选器根据筛选器中提供的文本字符串匹配字符串字段：`$filter=Category eq 'Resort and Spa'`
 
 与全文搜索不同，对于文本筛选器，不会执行词法分析或分词，因此，比较操作仅用于精确匹配。 例如，假设字段 *f* 包含“sunny day”，则 `$filter=f eq 'Sunny'` 与条件不匹配，但 `$filter=f eq 'sunny day'` 匹配。 
 

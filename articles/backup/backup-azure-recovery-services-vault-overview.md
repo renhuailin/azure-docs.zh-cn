@@ -3,12 +3,12 @@ title: 恢复服务保管库概述
 description: 恢复服务保管库概述。
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 0ed37446e1ccf0780f924143c8f063964adf0004
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
-ms.translationtype: MT
+ms.openlocfilehash: 2f2018f0f3d3135d632418c2e591e6ad938d62d2
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755126"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517444"
 ---
 # <a name="recovery-services-vaults-overview"></a>恢复服务保管库概述
 
@@ -22,7 +22,7 @@ ms.locfileid: "98755126"
 
 - 软删除：在使用软删除的情况下，即使恶意行动者删除了备份（或用户意外删除了备份数据），备份数据也仍会保留 14 天，因此可以恢复该备份项，而不会丢失数据。 以“软删除”状态将备份数据额外保留 14 天不会向你收取任何费用。 [了解详细信息](backup-azure-security-feature-cloud.md)。
 
-- **跨区域还原**：跨区域还原 (CRR) 使你可以在辅助区域（即 Azure 配对区域）中还原 azure vm。 通过在 [保管库级别](backup-create-rs-vault.md#set-cross-region-restore)启用此功能，你可以在选择时随时还原次要区域中的复制数据。 这使你能够在不等待 Azure 声明灾难 (与保管库的 GRS 设置) 的情况下，还原辅助区域数据以实现审核合规性和中断方案。 [了解详细信息](backup-azure-arm-restore-vms.md#cross-region-restore)。
+- **跨区域还原**：跨区域还原 (CRR) 允许你在某个次要区域（Azure 配对区域）中还原 Azure VM。 通过在[保管库级别](backup-create-rs-vault.md#set-cross-region-restore)启用此功能，你可以随时选择还原次要区域中的复制数据。 这使你能够在出现中断时还原次要区域数据以实现审核合规性，而无需等待 Azure 声明出现灾难（与保险库的 GRS 设置不同）。 [了解详细信息](backup-azure-arm-restore-vms.md#cross-region-restore)。
 
 ## <a name="storage-settings-in-the-recovery-services-vault"></a>恢复服务保管库中的存储设置
 
@@ -30,7 +30,7 @@ ms.locfileid: "98755126"
 
 - Azure 备份会自动处理保管库的存储。 查看如何[更改存储设置](./backup-create-rs-vault.md#set-storage-redundancy)。
 
-- 若要了解有关[存储冗余的](../storage/common/storage-redundancy.md#zone-redundant-storage)详细信息，请参阅以下文章：[地域](../storage/common/storage-redundancy.md#geo-zone-redundant-storage)、[本地和区域](../storage/common/storage-redundancy.md#locally-redundant-storage)冗余。
+- 有关存储冗余的详细信息，请参阅以下有关[异地](../storage/common/storage-redundancy.md#geo-zone-redundant-storage)、[本地](../storage/common/storage-redundancy.md#locally-redundant-storage)和[分区](../storage/common/storage-redundancy.md#zone-redundant-storage)冗余的文章。
 
 ## <a name="encryption-settings-in-the-recovery-services-vault"></a>恢复服务保管库中的加密设置
 
@@ -42,9 +42,9 @@ ms.locfileid: "98755126"
 
 ### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客户托管密钥加密备份数据
 
-可以选择使用所拥有和管理的加密密钥来加密数据。 Azure 备份允许你使用存储在 Azure 密钥保管库中的 RSA 密钥对备份进行加密。 用于加密备份的加密密钥可能与用于源的加密密钥不同。 数据受到基于 AES 256 的数据加密密钥 (DEK) 的保护，而 DEK 又受到你的密钥的保护。 这使你可以完全控制数据和密钥。 若要允许加密，必须向恢复服务保管库授予对 Azure Key Vault 中的加密密钥的访问权限。 可以根据需要禁用密钥或撤销访问权限。 但是，在你尝试保护保管库中的任何项目之前，必须先使用你的密钥启用加密。
+可以选择使用自己管理的自有加密密钥对数据加密。 Azure 备份允许你使用存储在 Azure 密钥保管库中的 RSA 密钥对备份进行加密。 用于加密备份的加密密钥可能与用于源的加密密钥不同。 数据受到基于 AES 256 的数据加密密钥 (DEK) 的保护，而 DEK 又受到你的密钥的保护。 这使你可以完全控制数据和密钥。 要允许加密，必须向恢复服务保管库授予对 Azure Key Vault 中加密密钥的访问权限。 可以根据需要禁用密钥或撤销访问权限。 但是，在你尝试保护保管库中的任何项目之前，必须先使用你的密钥启用加密。
 
-阅读有关如何 [使用客户管理的密钥](encryption-at-rest-with-cmk.md)加密备份数据的详细信息。
+了解有关如何[使用客户管理的密钥](encryption-at-rest-with-cmk.md)加密备份数据的详细信息。
 
 ## <a name="azure-advisor"></a>Azure 顾问
 
@@ -57,7 +57,7 @@ Azure 顾问为未备份的 VM 提供每小时[建议](../advisor/advisor-high-a
 ## <a name="additional-resources"></a>其他资源
 
 - [支持和不支持保管库的方案](backup-support-matrix.md#vault-support)
-- [保管库常见问题解答](backup-azure-backup-faq.md)
+- [保管库常见问题解答](backup-azure-backup-faq.yml)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: ff141fc1bb681e2356a4471dfdc808d622fd76b5
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98986486"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>使用共享访问签名 (SAS) 对事件中心资源访问进行身份验证
@@ -59,7 +59,7 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 令牌包含非哈希值，使接收方可以使用相同的参数重新计算哈希，并验证颁发者是否拥有有效的签名密钥。
 
-资源 URI 是向其声明访问权限的服务总线资源的完整 URI。 例如，http:// <namespace> 或 servicebus.windows.net/。 <entityPath> `sb://<namespace>.servicebus.windows.net/<entityPath>;` `http://contoso.servicebus.windows.net/eventhubs/eh1`
+资源 URI 是向其声明访问权限的服务总线资源的完整 URI。 例如， http://<namespace>.servicebus.windows.net/<entityPath> 或 `sb://<namespace>.servicebus.windows.net/<entityPath>;`，即 `http://contoso.servicebus.windows.net/eventhubs/eh1`。
 
 URI 必须采用百分比编码格式。
 
@@ -203,7 +203,7 @@ private static string createToken(string resourceUri, string keyName, string key
 
 
 > [!NOTE]
-> 可为设备配置令牌，用于授予对事件中心或命名空间的访问权限，但不建议这样做。 持有此令牌的任何设备都可以直接将消息发送到该事件中心。 此外，设备无法列入阻止列表发送到该事件中心。
+> 可为设备配置令牌，用于授予对事件中心或命名空间的访问权限，但不建议这样做。 持有此令牌的任何设备都可以直接将消息发送到该事件中心。 此外，无法将设备列入阻止列表，使其无法向该事件中心发送消息。
 > 
 > 我们始终建议指定具体的精细范围。
 

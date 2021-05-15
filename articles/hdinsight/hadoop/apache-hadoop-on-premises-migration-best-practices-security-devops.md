@@ -1,5 +1,5 @@
 ---
-title: 安全性：将本地 Apache Hadoop 迁移到 Azure HDInsight
+title: 安全：将本地 Apache Hadoop 迁移到 Azure HDInsight
 description: 了解有关将本地 Hadoop 群集迁移到 Azure HDInsight 的安全性和 DevOps 最佳做法。
 ms.reviewer: ashishth
 ms.service: hdinsight
@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
 ms.openlocfilehash: fa6a4a8686fe5a33a6f240a8e972a687e872732a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98939741"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 安全性和 DevOps 最佳做法
@@ -67,7 +67,7 @@ ESP 适用于以下群集类型：Apache Hadoop、Apache Spark、Apache HBase、
 
 **数据访问的身份验证和授权**
     - 使用 Azure Active Directory 域服务创建已加入域的 HDInsight 群集。 （企业安全性套餐）。
-    - 使用 Ambari 为 AD 用户提供对群集资源的基于角色的访问。
+    - 使用 Ambari 为 AD 用户提供对群集资源基于角色的访问权限。
     - 使用 Apache Ranger 在表/列/行级别为 Hive 设置访问控制策略。
     - 此外，只有管理员能够通过 SSH 访问群集。
 
@@ -77,7 +77,7 @@ ESP 适用于以下群集类型：Apache Hadoop、Apache Spark、Apache HBase、
 
 **加密**
     - 使用 Microsoft 托管的密钥或客户管理的密钥进行透明的服务器端加密。
-    - 使用 Client-Side encryption、https 和 TLS 传输加密。
+    - 使用客户端加密的传输加密、https 和 TLS。
 
 有关详细信息，请参阅下列文章：
 
@@ -106,11 +106,11 @@ ESP 适用于以下群集类型：Apache Hadoop、Apache Spark、Apache HBase、
 1. 导入任何已备份的临时数据。
 1. 使用新群集启动作业/继续处理。
 
-有关详细信息，请参阅文章：将 [HDInsight 群集升级到新版本](../hdinsight-upgrade-cluster.md)。
+有关详细信息，请参阅文章：[将 HDInsight 群集升级到新版本](../hdinsight-upgrade-cluster.md)。
 
 ## <a name="patch-cluster-operating-systems"></a>修补群集操作系统
 
-有关详细信息，请参阅文章： [针对 HDInsight 的 OS 修补](../hdinsight-os-patching.md)。
+有关详细信息，请参阅文章：[适用于 HDInsight 的 OS 修补](../hdinsight-os-patching.md)。
 
 ## <a name="post-migration"></a>迁移后
 
@@ -120,4 +120,4 @@ ESP 适用于以下群集类型：Apache Hadoop、Apache Spark、Apache HBase、
 
 ## <a name="next-steps"></a>后续步骤
 
-阅读有关 [HDInsight 4.0](./apache-hadoop-introduction.md)的详细信息。
+了解有关 [HDInsight 4.0](./apache-hadoop-introduction.md) 的详细信息。

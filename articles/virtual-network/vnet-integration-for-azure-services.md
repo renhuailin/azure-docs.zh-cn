@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
 ms.openlocfilehash: 2c0c4bec93b8fa61275c376fbae2a3a063e72a6f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98785526"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>将 Azure 服务与虚拟网络集成以实现网络隔离
@@ -25,7 +25,7 @@ ms.locfileid: "98785526"
 
 VNet 集成可以为 Azure 服务提供网络隔离的优点，可通过以下一种或多种方法实现：
 - [将服务的专用实例部署到虚拟网络中](virtual-network-for-azure-services.md)。 随后即可在虚拟网络内以及从本地网络私密访问这些服务。
-- 使用 [私有终结点](../private-link/private-endpoint-overview.md) ，将你私下并安全地连接到由 [Azure 专用链接](../private-link/private-link-overview.md)提供支持的服务。 专用终结点使用 VNet 中的专用 IP 地址将服务有效地引入虚拟网络中。
+- 使用[专用终结点](../private-link/private-endpoint-overview.md)，它可以通过私密且安全的方式将你连接到由 [Azure 专用链接](../private-link/private-link-overview.md)提供支持的服务。 专用终结点使用 VNet 中的专用 IP 地址将服务有效地引入虚拟网络中。
 - 通过[服务终结点](virtual-network-service-endpoints-overview.md)将虚拟网络扩展到服务，使用公共终结点访问服务。 服务终结点可使服务资源在虚拟网络中得到保护。
 - 使用[服务标记](service-tags-overview.md)来允许或拒绝 Azure 资源进出公共 IP 终结点的流量。
 
@@ -41,7 +41,7 @@ VNet 集成可以为 Azure 服务提供网络隔离的优点，可通过以下�
 - 虚拟网络可使用专用 IP 地址进行对等互连，实现虚拟网络中资源之间的彼此通信。
 - 虚拟网络中的服务实例通常由 Azure 服务完全托管。 这包括监视资源的运行状况并根据负载进行缩放。
 - 服务实例部署在虚拟网络的子网中。 根据服务提供的指南，必须通过网络安全组对子网开放入站和出站网络访问。
-- 某些服务还会对它们能够部署到其中的子网施加限制，限制策略、路由的应用，或者要求将 VM 和服务资源组合到同一子网中。 请查看每项服务，了解这些具体限制，因为它们会随时间而变化。 此类服务的示例包括：Azure NetApp 文件、专用 HSM、Azure 容器实例、应用服务。
+- 某些服务还会对它们能够部署到其中的子网施加限制，限制策略、路由的应用，或者要求将 VM 和服务资源组合到同一子网中。 检查每个服务的特定限制，因为它们可能会随时间而改变。 此类服务的示例包括：Azure NetApp 文件、专用 HSM、Azure 容器实例、应用服务。
 - （可选）服务可能需要一个委派子网作为显式标识符，用于表示子网可承载特定服务。 服务可以通过委托获得显式权限，可以在委托的子网中创建服务专属资源。
 - 如需 REST API 响应的示例，请参阅包含委托子网的虚拟网络。 可以通过可用委托 API 获得一个内容广泛的列表，其中包含的服务使用委托子网模型。
 
@@ -55,7 +55,7 @@ VNet 集成可以为 Azure 服务提供网络隔离的优点，可通过以下�
 
 ![使用专用终结点进行的 SQL DB 资源私密访问](./media/network-isolation/architecture-diagram.png)
 
-有关私有链接和支持的 Azure 服务列表的详细信息，请参阅 [什么是私有链接？](../private-link/private-link-overview.md)
+有关专用链接和支持的 Azure 服务列表的详细信息，请参阅[什么是专用链接？](../private-link/private-link-overview.md)
 
 ## <a name="service-endpoints"></a>服务终结点
 VNet 服务终结点通过 Azure 主干网络的优化路由提供与 Azure 服务的安全的直接连接。 使用终结点可以保护关键的 Azure 服务资源，只允许在客户自己的虚拟网络中对其进行访问。 服务终结点使 VNet 中的专用 IP 地址能够到达 Azure 服务的终结点，且无需在 VNet 中使用公共 IP 地址。
@@ -76,6 +76,6 @@ VNet 服务终结点通过 Azure 主干网络的优化路由提供与 Azure 服�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何将 [你的应用与 Azure 网络集成](../app-service/web-sites-integrate-with-vnet.md)。
+- 了解如何[将应用与 Azure 网络集成](../app-service/web-sites-integrate-with-vnet.md)。
 - 了解如何[使用服务标记限制对资源的访问](tutorial-restrict-network-access-to-resources.md)。
-- 了解如何 [使用 Azure Private Link 将专用连接到 Azure Cosmos 帐户](../private-link/tutorial-private-endpoint-cosmosdb-portal.md)。
+- 了解如何[使用 Azure 专用链接以私密方式连接到 Azure Cosmos 帐户](../private-link/tutorial-private-endpoint-cosmosdb-portal.md)。

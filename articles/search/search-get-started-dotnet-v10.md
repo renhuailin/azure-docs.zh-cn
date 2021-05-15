@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8dc2eb898c12e374bc503c5a05f00eb20667443b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94701834"
 ---
-# <a name="quickstart-create-a-search-index-using-the-legacy-microsoftazuresearch-v10-client-library"></a>快速入门：使用旧的 v10 客户端库创建搜索索引
+# <a name="quickstart-create-a-search-index-using-the-legacy-microsoftazuresearch-v10-client-library"></a>快速入门：使用旧版 Microsoft.Azure.Search v10 客户端库创建搜索索引
 
-本文是适用 [**于旧版 (**](/dotnet/api/overview/azure/search/client10) 的 c # 快速入门版) 客户端库，现已由 [**Azure.Search.Documents**](/dotnet/api/overview/azure/search.documents-readme) (版本 11) 客户端库所取代。
+本文是用于旧版 [**Microsoft.Azure.Search**](/dotnet/api/overview/azure/search/client10)（版本 10）客户端库的 C# 快速入门，该旧版客户端库现已由 [**Azure.Search.Documents**](/dotnet/api/overview/azure/search.documents-readme)（版本 11）客户端库取代。
 
 > [!NOTE]
-> 如果现有或即时开发项目，则可以继续使用版本10。 但对于新项目，或若要使用新功能，您应该过渡到 [新库](/dotnet/api/overview/azure/search.documents-readme)。
+> 如果你有现有的或正在进行外部测试的开发项目，可以继续使用版本 10。 对于新项目或者是要使用新功能的情况，则应转换到[新库](/dotnet/api/overview/azure/search.documents-readme)。
 
 ## <a name="about-this-quickstart"></a>关于此快速入门
 
@@ -51,7 +51,7 @@ ms.locfileid: "94701834"
 
 1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。 示例终结点可能类似于 `https://mydemo.search.windows.net`。
 
-2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥 。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
+2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
    此外，获取查询密钥。 最好使用只读权限发出查询请求。
 

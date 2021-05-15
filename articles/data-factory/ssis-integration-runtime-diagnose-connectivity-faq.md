@@ -8,10 +8,10 @@ author: meiyl
 ms.reviewer: sawinark
 ms.date: 06/07/2020
 ms.openlocfilehash: 1fb9a0c77a7cdc286c7c206d6eb33e43917ee719
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100361847"
 ---
 # <a name="use-the-diagnose-connectivity-feature-in-the-ssis-integration-runtime"></a>使用 SSIS 集成运行时中的“诊断连接”功能
@@ -53,7 +53,7 @@ ms.locfileid: "100361847"
 
 ## <a name="error-code-misconfigureddnssettings"></a>错误代码：MisconfiguredDnsSettings
 
-- **错误消息**： "如果你在由 Azure-SSIS IR 联接的 VNet 中使用你自己的 DNS 服务器，请验证它是否可以解析你的主机名。"
+- **错误消息**：“若要在由 Azure-SSIS IR 联接的 VNet 中使用你自己的 DNS 服务器，请验证它能否解析你的主机名。”
 - **可能的原因：**
   -  你的自定义 DNS 存在问题。
   -  你没有为专用主机名使用完全限定的域名 (FQDN)。

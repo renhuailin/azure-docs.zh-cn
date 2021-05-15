@@ -4,10 +4,10 @@ description: 介绍 Azure 事件网格中的系统主题。
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.openlocfilehash: b1fbecb1e372602f9c252d43d2a1f93524ef1846
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99052959"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure 事件网格中的系统主题
@@ -26,7 +26,7 @@ ms.locfileid: "99052959"
 - [Azure 容器注册表](event-schema-container-registry.md)
 - [Azure 事件中心](event-schema-event-hubs.md)
 - [Azure IoT 中心](event-schema-iot-hub.md)
-- [Azure Key Vault](event-schema-key-vault.md)
+- [Azure 密钥保管库](event-schema-key-vault.md)
 - [Azure 机器学习](event-schema-machine-learning.md)
 - [Azure Maps](event-schema-azure-maps.md)
 - [Azure 媒体服务](event-schema-media-services.md)
@@ -57,9 +57,9 @@ ms.locfileid: "99052959"
 如果设置 Azure 策略的方式导致事件网格服务无法创建系统主题，则系统主题创建将失败。 例如，你的某个策略可能仅允许在订阅中创建特定类型的资源（例如：Azure 存储、Azure 事件中心等）。 
 
 ## <a name="location-and-resource-group-for-a-system-topic"></a>系统主题的位置和资源组
-对于位于特定区域/位置的 Azure 事件源，将在与 Azure 事件源相同的位置创建系统主题。 例如，如果在美国东部为 Azure blob 存储创建事件订阅，则系统主题将在美国东部创建。 对于 Azure 订阅、资源组或 Azure Maps 等全局 Azure 事件源，事件网格会在全局位置创建系统主题。 
+对于位于特定区域/位置的 Azure 事件源，将在与 Azure 事件源相同的位置创建系统主题。 例如，如果为美国东部的 Azure Blob 存储创建事件订阅，则会在美国东部创建系统主题。 对于 Azure 订阅、资源组或 Azure Maps 等全局 Azure 事件源，事件网格会在全局位置创建系统主题。 
 
-通常，系统主题在 Azure 事件源所在的资源组中创建。 对于在 Azure 订阅范围内创建的事件订阅，系统主题是在 **美国西部 2** 区域中的 **EventGrid** 资源组中创建的。 如果该资源组不存在，则 Azure 事件网格会在创建系统主题之前创建该资源组。 
+通常，系统主题在 Azure 事件源所在的资源组中创建。 对于在 Azure 订阅范围内创建的事件订阅，系统主题是在“美国西部 2”区域的资源组“Default-EventGrid”下创建的 。 如果该资源组不存在，则 Azure 事件网格会在创建系统主题之前创建该资源组。 
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章： 

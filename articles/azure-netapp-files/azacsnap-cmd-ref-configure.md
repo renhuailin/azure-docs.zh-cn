@@ -1,6 +1,6 @@
 ---
-title: 为 Azure NetApp 文件配置 Azure 应用程序一致性快照工具 |Microsoft Docs
-description: 提供有关运行可与 Azure NetApp 文件一起使用的 Azure 应用程序一致快照工具的 "配置" 命令的指南。
+title: 配置适用于 Azure NetApp 文件的 Azure 应用程序一致性快照工具 | Microsoft Docs
+description: 提供有关运行可与 Azure NetApp 文件一起使用的 Azure 应用程序一致性快照工具的配置命令的指南。
 services: azure-netapp-files
 documentationcenter: ''
 author: Phil-Jensen
@@ -15,33 +15,33 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: phjensen
 ms.openlocfilehash: 0875aae8bb9049fc96377c1c98efa7391211d08f
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97632642"
 ---
-# <a name="configure-azure-application-consistent-snapshot-tool-preview"></a> (预览版配置 Azure 应用程序一致性快照工具) 
+# <a name="configure-azure-application-consistent-snapshot-tool-preview"></a>配置 Azure 应用程序一致性快照工具（预览版）
 
-本文提供了有关运行可与 Azure NetApp 文件一起使用的 Azure 应用程序一致快照工具的 "配置" 命令的指南。
+本文提供有关运行可与 Azure NetApp 文件一起使用的 Azure 应用程序一致性快照工具的配置命令的指南。
 
 ## <a name="introduction"></a>简介
 
-可以使用命令创建或编辑配置文件 `azacsnap -c configure` 。
+可以使用 `azacsnap -c configure` 命令创建或编辑配置文件。
 
 ## <a name="command-options"></a>命令选项
 
-`-c configure`命令包含以下选项
+`-c configure` 命令具有以下选项
 
-- `--configuration new` 创建新的配置文件。
+- `--configuration new` 创建新配置文件。
 
 - `--configuration edit` 编辑现有配置文件。
 
-- `[--configfile <config filename>]` 是允许自定义配置文件名称的可选参数。
+- `[--configfile <config filename>]` 是一个可选参数，可用于自定义配置文件名称。
 
-## <a name="configuration-file-for-snapshot-tools"></a>快照工具的配置文件
+## <a name="configuration-file-for-snapshot-tools"></a>用于快照工具的配置文件
 
-可以通过运行来创建配置文件 `azacsnap -c configure --configuration new` 。  默认情况下，配置文件名为 `azacsnap.json` 。  自定义文件名可以与参数一起使用 `--configfile=` (例如， `--configfile=<customname>.json`) 以下示例适用于 Azure 大型实例配置：
+可以通过运行 `azacsnap -c configure --configuration new` 来创建配置文件。  默认情况下，配置文件名为 `azacsnap.json`。  自定义文件名可以与 `--configfile=` 参数一起使用（例如，`--configfile=<customname>.json`）以下示例适用于 Azure 大型实例配置：
 
 ```bash
 azacsnap -c configure --configuration new
@@ -75,26 +75,26 @@ Editing configuration complete, writing output to 'azacsnap.json'
 
 ### <a name="sap-hana-values"></a>SAP HANA 值
 
-将 *数据库* 添加到配置时，需要以下值：
+将“数据库”添加到配置时，需要以下值：
 
 - **HANA 服务器的地址** = SAP HANA 服务器主机名或 IP 地址。
 - **HANA SID** = SAP HANA 系统 ID。
 - **HANA 实例编号** = SAP HANA 实例编号。
-- **HANA HDB 用户存储项** = 配置有运行数据库备份权限的 SAP HANA 用户。
+- **HANA HDB 用户存储密钥** = 配置有运行数据库备份权限的 SAP HANA 用户。
 
 - 单个节点：节点的 IP 和主机名
-- 带有 STONITH 的 HSR： IP 和节点的主机名
-- 横向扩展 (N + N，N + M) ：当前主节点 IP 和主机名
-- 不带 STONITH 的 HSR： IP 和节点的主机名
-- 单个节点上的多个 SID：承载这些 Sid 的节点的主机名和 IP
+- 带有 STONITH 的 HSR：节点的 IP 和主机名
+- 横向扩展（N+N、N+M）：当前主节点 IP 和主机名
+- 不带 STONITH 的 HSR：节点的 IP 和主机名
+- 单个节点上的多 SID：承载这些 SID 的节点的主机名和 IP
 
-### <a name="azure-large-instance-hli-storage-values"></a>Azure 大型实例)  (
+### <a name="azure-large-instance-hli-storage-values"></a>Azure 大型实例 (HLI) 存储值
 
-向数据库部分添加 " *存储* " 部分时，需要以下值：
+向数据库部分添加“HLI 存储”时，需要以下值：
 
-- **存储用户名** = 此值是用于建立到存储区的 SSH 连接的用户名。
+- **存储用户名** = 此值是用于建立到存储的 SSH 连接的用户名。
 - **存储 IP 地址** = 存储系统的地址。
-- **存储卷名称** = 快照的卷名称。  可以通过多种方式确定此值，可能最简单的方法是尝试以下 shell 命令：
+- **存储卷名称** = 快照的卷名称。  可以通过多种方式确定此值，最简单的方式可能是尝试运行以下 shell 命令：
 
     ```bash
     grep nfs /etc/fstab | cut -f2 -d"/" | sort | uniq
@@ -107,19 +107,19 @@ Editing configuration complete, writing output to 'azacsnap.json'
     hana_shared_p40_soldub41_t020_vol
     ```
 
-### <a name="azure-netapp-files-anf-storage-values"></a>Azure NetApp 文件 (和) 存储值
+### <a name="azure-netapp-files-anf-storage-values"></a>Azure NetApp 文件 (ANF) 存储值
 
-将 *和存储* 添加到数据库部分时，需要以下值：
+向数据库部分添加“ANF 存储”时，需要以下值：
 
-- **服务主体身份验证文件名** = 这是 `authfile.json` 在配置与 Azure NetApp 文件存储的通信时在 Cloud Shell 中生成的文件。
-- **FULL 和存储卷资源 id** = 要进行快照的卷的完整资源 id。  可以从以下内容检索： Azure 门户– > 和– > 卷– > 设置/属性– > 资源 ID
+- **服务主体身份验证文件名** = 这是使用 Azure NetApp 文件存储配置通信时，在 Cloud Shell 中生成的 `authfile.json` 文件。
+- **完整 ANF 存储卷资源 ID** = 要创建快照的卷的完整资源 ID。  可从“Azure 门户”–> ANF –>“卷”–>“设置/属性”–>“资源 ID”中检索此 ID
 
-## <a name="configuration-file-overview-azacsnapjson"></a>配置文件概述 (`azacsnap.json`) 
+## <a name="configuration-file-overview-azacsnapjson"></a>配置文件概述 (`azacsnap.json`)
 
-在下面的示例中， `azacsnap.json` 配置了一个 SID。
+在下面的示例中，`azacsnap.json` 配置了一个 SID。
 
 参数值必须设置为客户特定的 SAP HANA 环境。
-对于 **Azure 大型实例** 系统，此信息由 Microsoft 服务管理在加入/切换呼叫期间提供，并在移交期间提供的 Excel 文件中可用。 如果需要再次提供此信息，请打开服务请求。
+对于“Azure 大型实例”系统，此信息由 Microsoft 服务管理在加入/移交调用期间提供，并在移交期间提供的 Excel 文件中可用。 如果你需要再次获取此信息，请打开服务请求。
 
 下面只是一个示例，相应地更新所有值。
 
@@ -172,10 +172,10 @@ cat azacsnap.json
 ```
 
 > [!NOTE]
-> 对于要在 DR 站点上运行备份的灾难恢复方案，在 dr 配置文件中配置的 HANA 服务器名称 (例如， `DR.json` dr 站点上的) 应与生产服务器名称相同。
+> 对于要在 DR 站点上运行备份的 DR 方案，在 DR 站点上在 DR 配置文件中配置的 HANA 服务器名称（例如，`DR.json`）应与生产服务器名称相同。
 
 > [!NOTE]
-> 对于 Azure 大型实例，存储 IP 地址必须与服务器池位于同一子网中。 例如，在这种情况下，我们的服务器池子网为172。 18. 18. 0/24，我们分配的存储 IP 是172.18.18.11。
+> 对于 Azure 大型实例，存储 IP 地址必须与服务器池位于同一子网中。 例如，在本例中，我们的服务器池子网为 172. 18. 18 .0/24，我们分配的存储 IP 为 172.18.18.11。
 
 ## <a name="next-steps"></a>后续步骤
 

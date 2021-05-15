@@ -4,10 +4,10 @@ description: 了解 Azure Batch 帐户以及如何从开发角度使用它们。
 ms.topic: conceptual
 ms.date: 01/26/2021
 ms.openlocfilehash: 83108a265f91c9feef2fab424f1819939c2d58c9
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98896742"
 ---
 # <a name="batch-accounts-and-azure-storage-accounts"></a>Batch 帐户和 Azure 存储帐户
@@ -42,5 +42,5 @@ Batch 支持以下类型的 Azure 存储帐户：
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[节点和池](nodes-and-pools.md)。
-- 了解如何使用 [Azure 门户](batch-account-create-portal.md) 或 [批处理管理 .net](batch-management-dotnet.md)创建和管理 batch 帐户。
-- 了解如何将 [专用终结点](private-connectivity.md) 用于 Azure Batch 帐户。
+- 了解如何使用 [Azure 门户](batch-account-create-portal.md)或 [Batch 管理 .NET](batch-management-dotnet.md) 创建和管理 Batch 帐户。
+- 了解如何对 Azure Batch 帐户使用[专用终结点](private-connectivity.md)。

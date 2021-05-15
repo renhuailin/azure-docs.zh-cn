@@ -12,10 +12,10 @@ ms.date: 01/07/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fcd194e2503610db314f6a975a4afb1d27962f8c
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98028165"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>教程：使用视频索引器 API
@@ -30,7 +30,7 @@ ms.locfileid: "98028165"
 
 1. 登录到[视频索引器开发人员门户](https://api-portal.videoindexer.ai/)。
 
-    查看有关 [登录信息](release-notes.md#october-2020)的发行说明。
+    查看有关[登录信息](release-notes.md#october-2020)的发行说明。
     
      ![登录到视频索引器开发人员门户](./media/video-indexer-use-apis/sign-in.png)
 
@@ -47,7 +47,7 @@ ms.locfileid: "98028165"
     > [!NOTE]
     > 新用户已自动订阅“授权”。
     
-    订阅后，可以在 "**产品** 授权" 下找到订阅  ->  。 在 "订阅" 页中，可以找到主密钥和辅助密钥。 密钥应受保护。 密钥应仅供服务器代码使用。 在客户端（js、.html 等）应该不可使用密钥。
+    订阅后，可以在“产品” -> “授权”下找到订阅。 在订阅页中，可以找到主密钥和辅助密钥。 密钥应受保护。 密钥应仅供服务器代码使用。 在客户端（js、.html 等）应该不可使用密钥。
 
     ![视频索引器开发人员门户中的订阅和密钥](./media/video-indexer-use-apis/subscriptions.png)
 
@@ -105,9 +105,9 @@ ms.locfileid: "98028165"
 
 本部分列出了有关使用视频索引器 API 的一些建议。
 
-- 如果打算上传视频，则建议将该文件放在某个公用网络位置 (例如，) Azure Blob 存储帐户。 获取视频的链接，并提供 URL 作为上传文件参数。
+- 若要上传视频，建议将文件放在某个公用网络位置（例如 Azure Blob 存储帐户）。 获取视频的链接，并提供 URL 作为上传文件参数。
 
-    提供给视频索引器的 URL 必须指向某个媒体（音频或视频）文件。 可以轻松验证 URL (或 SAS URL) 将其粘贴到浏览器中; 如果文件开始播放/下载，则很可能是正确的 URL。 如果浏览器中显示某种可视化效果，则该 URL 可能不是文件的链接，而是 HTML 页的链接。
+    提供给视频索引器的 URL 必须指向某个媒体（音频或视频）文件。 验证 URL（或 SAS URL）的一种简单方式是将其粘贴到浏览器中，如果文件开始播放/下载，则它可能是正常的 URL。 如果浏览器中显示某种可视化效果，则该 URL 可能不是文件的链接，而是 HTML 页的链接。
 
 - 调用获取指定视频的视频见解的 API 时，会获取详细的 JSON 输出（响应内容）。 [在此主题中查看有关返回的 JSON 的详细信息](video-indexer-output-json-v2.md)。
 
@@ -221,5 +221,5 @@ Debug.WriteLine(playerWidgetLink);
 ## <a name="next-steps"></a>后续步骤
 
 - [检查输出 JSON 的详细信息](video-indexer-output-json-v2.md)
-- 查看[示例代码](https://github.com/Azure-Samples/media-services-video-indexer)，其中展示了上传视频和为视频编制索引的重要方面。 下面的代码将帮助你了解如何将 API 用于基本功能。 请务必阅读内联注释并注意我们的最佳做法建议。
+- 查看[示例代码](https://github.com/Azure-Samples/media-services-video-indexer)，其中展示了上传视频和为视频编制索引的重要方面。 沿用这些代码可以让你更好地了解如何将 API 用于基本功能。 请务必阅读内联注释并注意我们的最佳做法建议。
 

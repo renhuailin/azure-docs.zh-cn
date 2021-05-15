@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 在 VMware Vm 和物理服务器的灾难恢复期间设置横向扩展进程服务器 |Microsoft Docs "
+title: 在使用 Azure Site Recovery 进行 VMware VM 和物理服务器的灾难恢复期间设置横向扩展进程服务器 | Microsoft Docs
 description: 本文介绍如何在 VMware VM 和物理服务器的灾难恢复期间设置横向扩展进程服务器。
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
 ms.openlocfilehash: 40f912122e6ffb9cccbd32a747f6f0d46fd6c330
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96019120"
 ---
 # <a name="scale-with-additional-process-servers"></a>使用额外的进程服务器进行扩展

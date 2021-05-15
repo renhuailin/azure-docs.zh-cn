@@ -1,21 +1,21 @@
 ---
-title: 在 Azure HDInsight 中使用 Apache Sqoop 导出数据
-description: 了解如何使用卷将 Apache Sqoop 作业远程提交到 Azure HDInsight。
+title: 在 Azure HDInsight 中使用 Curl 通过 Apache Sqoop 导出数据
+description: 了解如何使用 Curl 向 Azure HDInsight 远程提交 Apache Sqoop 作业。
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/06/2020
 ms.openlocfilehash: 4de42bf30824fd71228aa27cc478a54ec3741da9
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98928355"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>使用 Curl 在 HDInsight 中运行 Apache Sqoop 作业
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-了解如何使用 Curl 在 HDInsight 中的 Apache Hadoop 群集上运行 Apache Sqoop 作业。 本文介绍如何从 Azure 存储导出数据，并使用卷将数据导入到 SQL Server 数据库中。 本文是[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](./hdinsight-use-sqoop.md)的续篇。
+了解如何使用 Curl 在 HDInsight 中的 Apache Hadoop 群集上运行 Apache Sqoop 作业。 本文演示如何使用 Curl 从 Azure 存储导出数据并将其导入到 SQL Server 数据库中。 本文是[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](./hdinsight-use-sqoop.md)的续篇。
 
 本文档使用 Curl 演示如何使用原始 HTTP 请求来与 HDInsight 交互，以便运行、监视和检索 Sqoop 作业的结果。 若要执行这些操作，需要使用 HDInsight 群集提供的 WebHCat REST API（前称 Templeton）。
 
@@ -33,7 +33,7 @@ ms.locfileid: "98928355"
 
 ## <a name="submit-apache-sqoop-jobs-by-using-curl"></a>使用 Curl 提交 Apache Sqoop 作业
 
-使用 "卷" 将 Apache Sqoop 作业从 Azure 存储导出到 SQL Server。
+使用 Curl 通过 Apache Sqoop 作业从 Azure 存储向 SQL Server 导出数据。
 
 > [!NOTE]  
 > 使用 Curl 或者与 WebHCat 进行任何其他形式的 REST 通信时，必须提供 HDInsight 群集管理员用户名和密码对请求进行身份验证。 此外，还必须使用群集名称作为用来向服务器发送请求的统一资源标识符 (URI) 的一部分。
@@ -74,7 +74,7 @@ REST API 通过 [基本身份验证](https://en.wikipedia.org/wiki/Basic_access_
 
     此命令中使用的参数如下：
 
-   * **-d** -由于 `-G` 未使用，请求默认为 POST 方法。 `-d` 指定与请求一起发送的数据值。
+   * -d - 由于未使用 `-G`，所以请求默认采用 POST 方法。 `-d` 指定与请求一起发送的数据值。
 
        * **user.name** - 正在运行命令的用户。
 
@@ -114,7 +114,7 @@ REST API 通过 [基本身份验证](https://en.wikipedia.org/wiki/Basic_access_
 
 ## <a name="limitations"></a>限制
 
-* 大容量导出-对于基于 Linux 的 HDInsight，用于将数据导出到 Microsoft SQL Server 或 Azure SQL 数据库的 Sqoop 连接器目前不支持批量插入。
+* 批量导出 - 在基于 Linux 的 HDInsight 上，用于将数据导出到 Microsoft SQL Server 或 Azure SQL 数据库的 Sqoop 连接器目前不支持批量插入。
 * 批处理 - 在基于 Linux 的 HDInsight 上，如果执行插入时使用 `-batch` 开关，Sqoop 会执行多次插入而不是批处理插入操作。
 
 ## <a name="summary"></a>摘要

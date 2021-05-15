@@ -1,6 +1,6 @@
 ---
 title: 混合标识设计 - 采用策略 Azure | Microsoft Docs
-description: 使用条件性访问控制时，Azure AD 会检查在对用户进行身份验证时以及允许访问应用程序之前选取的特定条件。
+description: 借助条件访问控制，Azure AD 会在验证用户身份时先检查选取的特定条件，然后才允许访问应用程序。
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7f52e46ff9cab7d3d150af9fd7b4f1c432bec74b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94836183"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>定义混合标识采用策略
@@ -32,7 +32,7 @@ ms.locfileid: "94836183"
 * [确定多重身份验证要求](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
 ## <a name="define-business-needs-strategy"></a>定义业务需求策略
-第一项任务是确定组织的业务需求。  这可能非常广泛，一不小心就发生范围蔓延。  刚开始要保持简单，但要时常记住所规划的设计应该兼顾和推动将来的变革。  无论是简单设计还是极为复杂的设计，Azure Active Directory 都是支持 Microsoft 365、Microsoft Online Services 和云感知应用程序的 Microsoft 标识平台。
+第一项任务是确定组织的业务需求。  这可能非常广泛，一不小心就发生范围蔓延。  刚开始要保持简单，但要时常记住所规划的设计应该兼顾和推动将来的变革。  无论是简单的设计还是极为复杂的设计，Azure Active Directory 都是支持 Microsoft 365、Microsoft Online Services 和云感知应用程序的 Microsoft 标识平台。
 
 ## <a name="define-an-integration-strategy"></a>定义集成策略
 Microsoft 有三个主要集成方案，分别为云标识、同步标识和联合标识。  应该规划采用这些集成策略的其中一个。  选择的策略可能各异，决策因素可能包括要提供何种用户体验、是否已部署现有基础结构，以及哪种做法最经济高效。  
@@ -55,7 +55,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 | 策略 | 优点 | 缺点 |
 | --- | --- | --- |
 | **云标识** |在小型组织中易于管理。 <br> 没有要本地安装的内容。 无需其他任何硬件<br>用户离职时轻松禁用其帐户 |用户访问云中的工作负荷时需要登录 <br> 云和本地标识的密码可以相同，也可以不同 |
-| **已同步** |本地密码用于针对本地和云目录进行身份验证 <br>在小型、中型或大型组织中更易于管理 <br>用户可针对某些资源执行单一登录 (SSO) <br> 用于同步的 Microsoft 首选方法 <br> 更易于管理 |某些客户可能不愿意将其目录与云相关的特定公司政策同步 |
+| **已同步** |本地密码用于针对本地和云目录进行身份验证 <br>在小型、中型或大型组织中更易于管理 <br>用户可针对某些资源执行单一登录 (SSO) <br> 用于同步的 Microsoft 首选方法 <br> 更易于管理 |由于公司的特定策略，某些客户可能不愿意将目录与云同步 |
 | **联合** |用户可以执行单一登录 (SSO) <br>如果用户被辞退或离职，可以立即禁用其帐户并吊销其访问权限。<br> 支持同步所不能实现的高级方案 |设置和配置步骤较多 <br> 更多的维护工作 <br> 可能需要额外的硬件来部署 STS 服务器。 <br> 可能需要额外的硬件来安装联合服务器。 如果使用 AD FS，则需要额外的软件 <br> 需要进行大量的设置才能使用 SSO <br> 严重的缺点是，联合身份验证服务器关闭时用户无法进行身份验证 |
 
 ### <a name="client-experience"></a>客户端体验
@@ -111,7 +111,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 ### <a name="supported-topologies"></a>支持的拓扑
 定义同步策略时，必须确定使用的拓扑。 可以根据步骤 2 中已确定的信息，确定适合使用的拓扑。 单林单 Azure AD 拓扑最常见，它由单个 Active Directory 林和单个 Azure AD 实例组成。  这会用于大多数方案，也是在使用 Azure AD Connect Express 安装时预期的拓扑，如下图所示。
 
-![支持的拓扑 ](./media/plan-hybrid-identity-design-considerations/single-forest.png) 单林方案通常，大型组织甚至小型组织具有多个林，如图5所示。
+![支持的拓扑](./media/plan-hybrid-identity-design-considerations/single-forest.png) 单林方案。在大型组织甚至小型组织中，拥有多个林很常见，如图 5 所示。
 
 > [!NOTE]
 > 有关不同的本地和 Azure AD 拓扑与 Azure AD Connect 同步的详细信息，请参阅 [Azure AD Connect 的拓扑](plan-connect-topologies.md)一文。
@@ -140,7 +140,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 
 如果有多个活动帐户或多个邮箱，Azure AD Connect 将选择其中一个并忽略其他的帐户或邮箱。  如果有链接的邮箱但没有其他帐户，则这些帐户不会导出到 Azure AD，并且用户将不是任何组的成员。  这不同以往在 DirSync 中的情况，主要是为了更充分支持这些多林方案。 下图显示了多林方案。
 
-![多 Azure AD 租户](./media/plan-hybrid-identity-design-considerations/multiforest-multipleAzureAD.png) 
+![多个 Azure AD 租户](./media/plan-hybrid-identity-design-considerations/multiforest-multipleAzureAD.png) 
 
 **多林多 Azure AD 方案**
 
@@ -148,7 +148,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 
 可以且支持将一个 Active Directory 本地实例连接到多个 Azure AD 目录，如下图所示：
 
-![单个林筛选](./media/plan-hybrid-identity-design-considerations/single-forest-flitering.png) 
+![单林筛选](./media/plan-hybrid-identity-design-considerations/single-forest-flitering.png) 
 
 **单林筛选方案**
 
@@ -171,12 +171,12 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 * Azure AD 目录在设计上是隔离的。 它不支持将 Azure AD Connect 同步更改为从另一个 Azure AD 目录读取数据，以尝试在目录之间构建一般和统一的 GAL。 也不支持使用 Azure AD Connect 同步将用户导出为另一个本地 AD 的联系人。
 
 > [!NOTE]
-> 如果你的组织限制网络上的计算机连接到 Internet，本文会列出 (Fqdn、IPv4 和 IPv6 地址范围) 的终结点，你应将这些终结点包含在客户端计算机的出站允许列表和 Internet Explorer 受信任的站点区域中，以确保你的计算机可以成功使用 Microsoft 365。 有关详细信息，请阅读 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US)。
+> 如果组织禁止网络上的计算机连接到 Internet，本文列出了在客户端计算机的输出允许列表和 Internet Explorer 信任的网站区域中应该添加的终结点（FQDN、IPv4 和 IPv6 地址范围），确保计算机可以成功使用 Microsoft 365。 有关详细信息，请阅读 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US)。
 > 
 > 
 
 ## <a name="define-multi-factor-authentication-strategy"></a>定义多重身份验证策略
-此任务将定义要使用的多重身份验证策略。  Azure AD 多因素身份验证提供了两个不同的版本。  其中一个版本是基于云的身份验证，另一个版本是使用 Azure MFA 服务器进行本地身份验证。  根据上面所做的评估，可以确定哪一项是策略的正确解决方案。  使用下表确定哪个设计选项最符合公司的安全要求：
+此任务将定义要使用的多重身份验证策略。  Azure AD 多重身份验证有两个不同的版本。  其中一个版本是基于云的身份验证，另一个版本是使用 Azure MFA 服务器进行本地身份验证。  根据上面所做的评估，可以确定哪一项是策略的正确解决方案。  使用下表确定哪个设计选项最符合公司的安全要求：
 
 多重身份验证设计选项：
 
@@ -193,9 +193,9 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 | 用户位置 | 首选设计选项 |
 | --- | --- |
 | Azure Active Directory |云中的多重身份验证 |
-| Azure AD 和使用 AD FS 联合身份验证的本地 AD |两者 |
-| Azure AD 和使用 Azure AD Connect 的本地 AD - 没有密码同步 |两者 |
-| Azure AD 和使用 Azure AD Connect 的本地 AD - 有密码同步 |两者 |
+| Azure AD 和使用 AD FS 联合身份验证的本地 AD |推送、请求和匿名 |
+| Azure AD 和使用 Azure AD Connect 的本地 AD - 没有密码同步 |推送、请求和匿名 |
+| Azure AD 和使用 Azure AD Connect 的本地 AD - 有密码同步 |推送、请求和匿名 |
 | 本地 AD |多重身份验证服务器 |
 
 > [!NOTE]

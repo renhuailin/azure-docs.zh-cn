@@ -7,20 +7,20 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 08/27/2019
-ms.openlocfilehash: af110a66bc7ef5737f3d2d97a85ca07525b1d9e7
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
-ms.translationtype: MT
+ms.openlocfilehash: d480f400bfd5a8d1ad59c9e4bcf1e8425171cc4a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744697"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123314"
 ---
 # <a name="co-sell-country-and-region-codes"></a>联合销售国家和地区代码
 
-在 [产品/服务的共同销售页面上提供联系人信息](commercial-marketplace-co-sell.md)时，请使用这两个字母的国家/地区代码。
+[在产品/服务的共同销售页面上提供联系人信息时](./co-sell-configure.md)，请使用这两个字母的国家/地区代码。
 
-如果联系人涵盖了所有国家/地区，请使用三字母代码 "OOO"。
+如果联系人涵盖了所有国家/地区，请使用三字母代码“OOO”。
 
-如果联系人涵盖了多个国家/地区，请输入以逗号分隔的两个字母代码中的每个 (例如，输入 "US，CA，FR" 而不使用引号) 。
+如果联系人涵盖了多个国家/地区，请输入所有两个字母代码，并以逗号分隔（例如，输入“US, CA, FR”，不带引号）。
 
 ## <a name="countryregion-table"></a>国家/地区表
 
@@ -28,7 +28,7 @@ ms.locfileid: "96744697"
 |-------------------------------------|-----------|
 | 全局联系人                     | OOO       |
 | 阿富汗                         | AF        |
-| 奥兰岛                       | AX150        |
+| 奥兰岛                       | AX        |
 | 阿尔巴尼亚                             | AL        |
 | 阿尔及利亚                             | DZ        |
 | 美属萨摩亚                      | AS        |
@@ -273,8 +273,7 @@ ms.locfileid: "96744697"
 | 也门                               | YE        |
 | 赞比亚                              | ZM        |
 | 津巴布韦                            | ZW        |
-|   |   |   |
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解 [商用 marketplace 中的共同销售选项](./commercial-marketplace-co-sell.md)。
+- 了解[商业市场中的联合销售选项](./co-sell-configure.md)。

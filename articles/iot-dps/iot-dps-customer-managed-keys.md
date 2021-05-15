@@ -1,6 +1,6 @@
 ---
-title: Azure 设备预配服务通过客户托管的密钥进行静态数据加密 |Microsoft Docs
-description: 通过设备预配服务的客户托管密钥加密静态数据
+title: Azure 设备预配服务通过客户管理的密钥进行静态数据加密 | Microsoft Docs
+description: 通过设备预配服务的客户管理的密钥对静态数据进行加密
 author: chrissie926
 manager: nberdy
 ms.service: iot-dps
@@ -9,23 +9,23 @@ ms.topic: conceptual
 ms.date: 02/24/2020
 ms.author: menchi
 ms.openlocfilehash: d22a01bab81fc330484e7715a65c89a1cfd7802c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94967170"
 ---
-# <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-device-provisioning-service"></a>通过设备预配服务的客户托管密钥加密静态数据
+# <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-device-provisioning-service"></a>通过设备预配服务的客户管理的密钥对静态数据进行加密
 
 ## <a name="overview"></a>概述
 
-设备预配服务 (DPS) 支持静态数据与客户托管密钥 (CMK) ，也称为自带密钥 (BYOK) 。 DPS 提供静态数据和传输中的数据加密，因为它是在我们的数据中心编写的，并在您访问数据时对其进行解密。 默认情况下，DPS 使用 Microsoft 托管的密钥来加密静态数据。 使用 CMK，可以通过选择使用密钥加密密钥加密静态数据，并通过 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)进行管理，来在默认平台加密之上获取额外的加密层。 这使你可以灵活地创建、轮换、禁用和撤消密钥。 如果为你的 DPS 配置了 CMK，则意味着启用了双加密，并对数据进行了两层保护。 
+设备预配服务 (DPS) 支持使用客户管理的密钥 (CMK) 对静态数据加密，该密钥也称为创建自己的密钥 (BYOK)。 DPS 对写入数据中心的静态数据和传输中的数据进行加密，并在你访问数据时解密。 默认情况下，DPS 使用 Microsoft 托管密钥来加密静态数据。 使用 CMK，可以通过选择使用从 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 管理的 key-encryption-key 对静态数据加密，在默认平台加密之上再获得一层加密。 这使你能够灵活地创建、轮换、禁用和撤销密钥。 如果为 DPS 配置了 CMK，则意味着已启用双重加密，通过两层保护对数据进行积极地保护。 
 
 此功能需要创建新的 DPS。 若要试用此功能，请通过 [Microsoft 支持](https://azure.microsoft.com/support/create-ticket/)人员与我们联系。 联系 Microsoft 支持人员时，请提供你的公司名称和订阅 ID。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解有关设备预配服务的详细信息](./index.yml)
+* [详细了解设备预配服务](./index.yml)
 
 * [详细了解 Azure 密钥保管库](../key-vault/general/overview.md)

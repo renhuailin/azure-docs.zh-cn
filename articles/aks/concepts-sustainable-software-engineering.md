@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.openlocfilehash: e179b49879b78b2bab738407984c0f50d161114b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100572673"
 ---
 # <a name="sustainable-software-engineering-principles-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的可持续软件工程原则
@@ -28,7 +28,7 @@ ms.locfileid: "100572673"
 > [!IMPORTANT]
 > 考虑更改群集中的资源时，请验证你的[系统池][system-pools]是否有足够的资源来维持群集的核心系统组件的稳定性。 永远不要将群集的资源减少到群集可能会变得不稳定的程度。
 
-查看群集利用率之后，请考虑使用[多节点池][multiple-node-pools]提供的功能。 可以使用[节点大小调整][node-sizing]通过特定的 CPU 和内存配置文件定义节点池，以便根据工作负荷需求定制节点。 根据工作负荷需求调整节点大小可以让你在运行较少节点的情况下提高利用率。 你还可以配置群集的[缩放][scale]方式，并使用[横向 pod 自动缩放程序][scale-horizontal]和[群集自动缩放程序][scale-auto]基于配置自动缩放群集。 控制群集的缩放方式可以让你的所有节点保持以高利用率运行，同时跟上对群集工作负荷的更改。 在工作负荷可承受突然中断或终止的情况下，可以使用 [点池][spot-pools] 来利用 Azure 中的空闲容量。 例如，对于批处理作业或开发环境，点池可能会很好地运行。
+查看群集利用率之后，请考虑使用[多节点池][multiple-node-pools]提供的功能。 可以使用[节点大小调整][node-sizing]通过特定的 CPU 和内存配置文件定义节点池，以便根据工作负荷需求定制节点。 根据工作负荷需求调整节点大小可以让你在运行较少节点的情况下提高利用率。 你还可以配置群集的[缩放][scale]方式，并使用[横向 pod 自动缩放程序][scale-horizontal]和[群集自动缩放程序][scale-auto]基于配置自动缩放群集。 控制群集的缩放方式可以让你的所有节点保持以高利用率运行，同时跟上对群集工作负荷的更改。 在工作负荷可承受突然中断或终止的情况下，可以通过[现成池][spot-pools]来利用 Azure 中的空闲容量。 例如，现成池可能很适合用于批处理作业或开发环境。
 
 提高利用率还可以减少过多的节点，这可以减少[每个节点上的资源预留][resource-reservations]所消耗的能量。
 
@@ -39,11 +39,11 @@ ms.locfileid: "100572673"
 减少往返群集的请求和响应的距离通常可以减少联网设备的电力消耗并减少碳排放。 查看网络流量后，请考虑在更靠近你的网络流量来源的[区域中][regions]创建群集。 你还可以使用 [Azure 流量管理器][azure-traffic-manager]来帮助你将流量路由到最近的群集和[邻近放置组][proiximity-placement-groups]，以便缩短 Azure 资源之间的距离。
 
 > [!IMPORTANT]
-> 考虑对群集的网络进行更改时，切勿以必须满足的工作负荷要求为代价来减少网络行程。 例如，使用 [可用性区域][availability-zones] 会导致群集上的网络旅行越多，但可能需要使用该功能来处理工作负荷要求。
+> 考虑对群集的网络进行更改时，切勿以必须满足的工作负荷要求为代价来减少网络行程。 例如，使用[可用性区域][availability-zones]会导致群集上的网络行程增多，但处理工作负荷要求可能需要使用该功能。
 
 ## <a name="demand-shaping"></a>需求调整
 
-如果可能，请考虑将对群集资源的需求转移到可以使用过量容量的时间或区域。 例如，请考虑更改要运行的批处理作业的时间或区域，或使用 [点池][spot-pools]。 还应考虑重构你的应用程序，以使用队列来延迟运行不需要立即处理的工作负荷。
+如果可能，请考虑将对群集资源的需求转移到可以使用过量容量的时间或区域。 例如，考虑更改要运行的批处理作业的时间或区域，或使用[现成池][spot-pools]。 还应考虑重构你的应用程序，以使用队列来延迟运行不需要立即处理的工作负荷。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -54,7 +54,7 @@ ms.locfileid: "100572673"
 * [缩放群集][scale]
 * [水平 Pod 自动缩放程序][scale-horizontal]
 * [群集自动缩放程序][scale-auto]
-* [污点池][spot-pools]
+* [现成池][spot-pools]
 * [系统池][system-pools]
 * [资源预留][resource-reservations]
 * [邻近放置组][proiximity-placement-groups]

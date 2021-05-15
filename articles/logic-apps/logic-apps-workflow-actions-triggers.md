@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: ea4a4a47e91e88c00ca8a4e886d0372a24482907
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98784302"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>有关 Azure 逻辑应用中触发器和操作类型的架构参考指南
@@ -302,7 +302,7 @@ ms.locfileid: "98784302"
 
 *必需*
 
-| 属性 | Value | 类型 | 说明 |
+| 属性 | 值 | 类型 | 说明 |
 |----------|-------|------|-------------|
 | `method` | <method-type> | String | 用于发送传出请求的方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” |
 | `uri` | <HTTP-or-HTTPS-endpoint-URL> | String | 需在其中发送传出请求的 HTTP 或 HTTPS 终结点 URL。 最大字符串大小：2 KB <p>对于 Azure 服务或资源，此 URI 语法包括要访问的资源的资源 ID 和路径。 |
@@ -312,7 +312,7 @@ ms.locfileid: "98784302"
 
 *可选*
 
-| 属性 | Value | 类型 | 说明 |
+| 属性 | 值 | 类型 | 说明 |
 |----------|-------|------|-------------|
 | `headers` | <header-content> | JSON 对象 | 需包括在请求中的任何标头 <p>例如，设置语言和类型： <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | `queries` | <query-parameters> | JSON 对象 | 需在请求中使用的任何查询参数 <p>例如，`"queries": { "api-version": "2018-01-01" }` 对象将 `?api-version=2018-01-01` 添加到请求。 |
@@ -820,7 +820,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 | 操作类型 | 说明 | 
 |-------------|-------------| 
 | [Compose](#compose-action) | 从输入创建单个输出，可具有多种类型。 | 
-| [**执行 JavaScript 代码**](#run-javascript-code) | 运行符合特定条件的 JavaScript 代码片段。 有关代码要求和详细信息，请参阅 [通过内联代码添加和运行代码片段](../logic-apps/logic-apps-add-run-inline-code.md)。 |
+| [**执行 JavaScript 代码**](#run-javascript-code) | 运行符合特定条件的 JavaScript 代码片段。 有关代码要求和详细信息，请参阅[添加并运行包含内联代码的代码片段](../logic-apps/logic-apps-add-run-inline-code.md)。 |
 | [Function](#function-action) | 调用 Azure Function。 | 
 | [**HTTP**](#http-action) | 调用 HTTP 终结点。 | 
 | [Join](#join-action) | 基于数组中的所有项创建一个字符串，并使用指定的分隔符字符分隔这些项。 | 
@@ -1071,23 +1071,23 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 | Value | 类型 | 说明 |
 |-------|------|-------------|
-| <*JavaScript 代码段*> | 多种多样 | 要运行的 JavaScript 代码。 有关代码要求和详细信息，请参阅 [通过内联代码添加和运行代码片段](../logic-apps/logic-apps-add-run-inline-code.md)。 <p>在 `code` 特性中，代码片段可以使用只读的 `workflowContext` 对象作为输入。 此对象中的子属性可让代码访问触发器和工作流中先前操作提供的结果。 有关对象的详细信息 `workflowContext` ，请参阅 [代码中的引用触发器和操作结果](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext)。 |
+| <*JavaScript-code-snippet*> | 多种多样 | 要运行的 JavaScript 代码。 有关代码要求和详细信息，请参阅[添加并运行包含内联代码的代码片段](../logic-apps/logic-apps-add-run-inline-code.md)。 <p>在 `code` 特性中，代码片段可以使用只读的 `workflowContext` 对象作为输入。 此对象中的子属性可让代码访问触发器和工作流中先前操作提供的结果。 有关 `workflowContext` 对象的详细信息，请参阅[代码中的引用触发器和操作结果](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext)。 |
 ||||
 
 在某些情况下是必需的
 
-`explicitDependencies` 特性指定要将触发器和/或先前操作的结果显式包含为代码片段的依赖项。 有关添加这些依赖项的详细信息，请参阅为 [内联代码添加参数](../logic-apps/logic-apps-add-run-inline-code.md#add-parameters)。 
+`explicitDependencies` 特性指定要将触发器和/或先前操作的结果显式包含为代码片段的依赖项。 有关添加这些依赖项的详细信息，请参阅[为内联代码添加参数](../logic-apps/logic-apps-add-run-inline-code.md#add-parameters)。 
 
 对于 `includeTrigger` 特性，可以指定 `true` 或 `false` 值。
 
 | 值 | 类型 | 说明 |
 |-------|------|-------------|
-| <*以前的操作*> | 字符串数组 | 包含指定的操作名称的数组。 使用工作流定义中显示的操作名称，其中的操作名称使用下划线 (_) 而不是空格 ("")。 |
+| <*previous-actions*> | 字符串数组 | 包含指定的操作名称的数组。 使用工作流定义中显示的操作名称，其中的操作名称使用下划线 (_) 而不是空格 ("")。 |
 ||||
 
 *示例 1*
 
-此操作运行代码，该代码可获取逻辑应用的名称，并返回 "Hello world from \<logic-app-name> " 文本作为结果。 在此示例中，代码通过只读的 `workflowContext` 对象访问 `workflowContext.workflow.name` 属性，以此引用工作流的名称。 有关使用对象的详细信息 `workflowContext` ，请参阅 [代码中的引用触发器和操作结果](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext)。
+此操作运行的代码将获取逻辑应用的名称，并返回文本“Hello world from \<logic-app-name>”作为结果。 在此示例中，代码通过只读的 `workflowContext` 对象访问 `workflowContext.workflow.name` 属性，以此引用工作流的名称。 有关使用 `workflowContext` 对象的详细信息，请参阅[代码中的引用触发器和操作结果](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext)。
 
 ```json
 "Execute_JavaScript_Code": {
@@ -1101,7 +1101,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 *示例 2*
 
-此操作会在逻辑应用中运行代码，该代码在新电子邮件到达工作或学校帐户时触发。 该逻辑应用还使用发送审批电子邮件操作，连同审批请求一起转发已收到的电子邮件中的内容。
+此操作将在新电子邮件抵达工作或学校帐户时触发的逻辑应用中运行代码。 该逻辑应用还使用发送审批电子邮件操作，连同审批请求一起转发已收到的电子邮件中的内容。
 
 该代码从触发器的 `Body` 属性提取电子邮件地址，并连同审批操作中的 `SelectedOption` 属性值一起返回这些地址。 该操作在 `explicitDependencies` > `actions` 特性中显式包含发送审批电子邮件操作作为依赖项。
 

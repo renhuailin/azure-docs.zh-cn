@@ -8,10 +8,10 @@ ms.date: 05/21/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: b418a9cae6f6d58dbe82babcfe6fe1e1a5027d43
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97657067"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>市场计量服务身份验证策略
@@ -25,11 +25,11 @@ ms.locfileid: "97657067"
 
 ## <a name="using-the-azure-ad-security-token"></a>使用 Azure AD 安全令牌
 
-适用的产品/服务类型为事务 SaaS 和具有托管应用程序计划类型的 Azure 应用程序。  
+适用的产品/服务类型是采用托管应用程序计划类型的可交易 SaaS 和 Azure 应用程序。  
 
-使用预定义的固定 Azure AD 应用程序 ID 提交自定义计量器进行身份验证。
+使用预定义的固定 Azure AD 应用程序 ID 进行身份验证，从而提交自定义计量器。
 
-对于 SaaS 服务，这是唯一可用的选项。 如 [注册 saas 应用程序](./pc-saas-registration.md)中所述，发布任何 saas 产品/服务是必需的。
+对于 SaaS 产品/服务，这是唯一可用的选项。 要发布任何 SaaS 产品/服务，则必须执行此步骤，如[注册 SaaS 应用程序](./pc-saas-registration.md)中所述。
 
 对于采用托管应用程序计划的 Azure 应用程序，在以下情况下应考虑使用此策略：
 
@@ -68,15 +68,15 @@ ms.locfileid: "97657067"
 
 |  **属性名称**  |  **必需**  |  **说明**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Grant_type`       |   True         | 授权类型。 请使用 `client_credentials`。 |
+|  `Grant_type`       |   True         | 授权类型。 使用 `client_credentials`。 |
 |  `Client_id`        |   True         | 与 Azure AD 应用关联的客户端/应用标识符。|
-|  `client_secret`    |   True         | 与 Azure AD 应用相关联的机密。  |
-|  `Resource`         |   True         | 为其请求令牌的目标资源。 请使用 `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`。 |
+|  `client_secret`    |   True         | 与 Azure AD 应用关联的机密。  |
+|  `Resource`         |   True         | 为其请求令牌的目标资源。 使用 `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`。 |
 | | | |
 
 #### <a name="response"></a>*响应*
 
-|  **名称**    |  类型  |  **说明**          |
+|  **名称**    |  **类型**  |  **说明**          |
 |  ------------------ |--------------- | ----------------------  |
 |  `200 OK`     |   `TokenResponse`    | 请求成功。  |
 | | | |
@@ -106,7 +106,7 @@ ms.locfileid: "97657067"
 >[!Note]
 >发布者应确保发出使用情况的资源被锁定，以免使用情况数据遭到篡改。
 
-托管应用程序可以包含从虚拟机到 Azure Functions 在内的各种类型的资源。  有关如何使用不同服务的托管标识进行身份验证的详细信息，请参阅 [如何使用 Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md#how-can-i-use-managed-identities-for-azure-resources)) 。
+托管应用程序可以包含从虚拟机到 Azure Functions 在内的各种类型的资源。  有关如何使用各种服务的托管标识进行身份验证的详细信息，请参阅[如何使用 Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md#how-can-i-use-managed-identities-for-azure-resources)）。
 
 例如，按照以下步骤使用 Windows VM 进行身份验证：
 
@@ -115,7 +115,7 @@ ms.locfileid: "97657067"
     * [CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
     * [PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
     * [Azure 资源管理器模板](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
-    * [REST](../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md#system-assigned-managed-identity)) 
+    * [REST](../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md#system-assigned-managed-identity)）
     * [Azure SDK](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 1. 使用系统标识获取市场计量服务应用程序 ID (`20e940b3-4c77-4b0b-9a53-9e16a1b010a7`) 的访问令牌，通过 RDP 连接到 VM，打开 PowerShell 控制台，并运行以下命令

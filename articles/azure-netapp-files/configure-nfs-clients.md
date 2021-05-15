@@ -1,5 +1,5 @@
 ---
-title: 为 Azure NetApp 文件配置 NFS 客户端 |Microsoft Docs
+title: 为 Azure NetApp 文件配置 NFS 客户端 | Microsoft Docs
 description: 介绍如何配置 NFS 客户端以与 Azure NetApp 文件一起使用。
 services: azure-netapp-files
 documentationcenter: ''
@@ -12,39 +12,42 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/09/2020
+ms.date: 05/10/2021
 ms.author: b-juche
-ms.openlocfilehash: c1cdeaa41dda11f2ab520cf8d31ddb2116587082
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
-ms.translationtype: MT
+ms.openlocfilehash: 695dd379e0b9f02f5ec6a08f2a037d071259d2b7
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409563"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734508"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>为 Azure NetApp 文件配置 NFS 客户端
 
-本文中所述的 NFS 客户端配置是在 [配置 nfsv 4.1 Kerberos 加密](configure-kerberos-encryption.md) 或 [创建双协议卷](create-volumes-dual-protocol.md)时安装的一部分。 可在 Azure NetApp 文件中使用多种 Linux 分发版。 本文介绍两种更常用的环境配置： RHEL 8 和 Ubuntu 18.04。 
+本文中所述的 NFS 客户端配置属于[配置 NFSv4.1 Kerberos 加密](configure-kerberos-encryption.md)或[创建双协议卷](create-volumes-dual-protocol.md)的一部分设置。 有多种 Linux 分发版可与 Azure NetApp 文件一起使用。 本文介绍两种更常用的环境配置：RHEL 8 和 Ubuntu 18.04。 
+
+## <a name="requirements-and-considerations"></a>要求和注意事项  
 
 无论使用何种 Linux 风格，都需要以下配置：
+
 * 配置 NTP 客户端以避免出现时间偏差问题。
 * 配置 Linux 客户端的 DNS 条目以进行名称解析。  
-    此配置必须包含 "A" (前进) 记录和 PTR (反向) 记录。 
-* 对于 "域加入"，请在目标 Active Directory 中创建 Linux 客户端的计算机帐户， (该帐户是在领域加入命令) 创建的。 
+    此配置必须包含“A”（正向）记录和 PTR（反向）记录。 
+* 对于域加入，请在目标 Active Directory（在领域加入命令过程中创建）中创建 Linux 客户端的计算机帐户。 
     > [!NOTE] 
-    > `$SERVICEACCOUNT`下面的命令中使用的变量应该是具有在目标组织单位中创建计算机帐户的权限或委派的用户帐户。
+    > 下面命令中使用的 `$SERVICEACCOUNT` 变量应该是具有在目标组织单位中创建计算机帐户的权限或受委派创建该帐户的用户帐户。
 
 ## <a name="rhel-8-configuration"></a>RHEL 8 配置 
 
-本部分介绍 NFSv 4.1 Kerberos 加密和双重协议所需的 RHEL 配置。  
+本部分介绍 NFSv4.1 Kerberos 加密和双重协议所需的 RHEL 配置。  
 
 本部分中的示例使用以下域名和 IP 地址：  
 
-* 域名： `contoso.com`
-* 专用 IP： `10.6.1.4`
+* 域名：`contoso.com`
+* 专用 IP：`10.6.1.4`
 
-### <a name="rhel-8-configuration-if-you-are-using-nfsv41-kerberos-encryption"></a><a name="rhel8_nfsv41_kerberos"></a>RHEL 8 配置（如果使用的是 NFSv 4.1 Kerberos 加密）
+### <a name="rhel-8-configuration-if-you-are-using-nfsv41-kerberos-encryption"></a><a name="rhel8_nfsv41_kerberos"></a>RHEL 8 配置（如果使用的是 NFSv4.1 Kerberos 加密）
 
-1. 配置 `/etc/resolv.conf` 适当的 DNS 服务器。  
+1. 使用适当的 DNS 服务器配置 `/etc/resolv.conf`。  
 
     例如：  
 
@@ -52,9 +55,9 @@ ms.locfileid: "94409563"
     `search contoso.com`   
     `nameserver 10.6.1.4(private IP)`   
 
-2. 在 dns 服务器中为 DNS 正向和反向查找区域添加 NFS 客户端记录。
+2. 在 DNS 服务器中为 DNS 正向和反向查找区域添加 NFS 客户端记录。
 
-3. 若要验证 DNS，请从 NFS 客户端使用以下命令：   
+3. 若要验证 DNS，请从 NFS 客户端运行以下命令：   
 
     `# nslookup [hostname/FQDN of NFS client(s)]`   
     `# nslookup [IP address of NFS client(s)]`
@@ -66,7 +69,7 @@ ms.locfileid: "94409563"
 
 5.  配置 NTP 客户端。  
 
-    RHEL 8 默认情况下使用 chrony。 遵循 [使用 `Chrony` 套件配置 NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/using-chrony-to-configure-ntp)中的配置准则。
+    默认情况下，RHEL 8 使用 chrony。 遵循[使用 `Chrony` 套件配置 NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/using-chrony-to-configure-ntp)中的配置指南。
 
 6.  加入 Active Directory 域：  
 
@@ -76,18 +79,37 @@ ms.locfileid: "94409563"
 
     `sudo realm join CONTOSO.COM -U ad_admin --computer-ou="CN=Computers"`
     
-    确保将 `default_realm` 设置为中提供的领域 `/etc/krb5.conf` 。  否则，请将其添加到 `[libdefaults]` 文件中的节下，如以下示例所示：
+    确保将 `default_realm` 设置为 `/etc/krb5.conf` 中提供的领域。  否则，请将其添加到文件中的 `[libdefaults]` 部分下，如下例所示：
     
-    `default_realm = CONTOSO.COM`
+    ```
+    [libdefaults]
+        default_realm = CONTOSO.COM
+        default_tkt_enctypes = aes256-cts-hmac-sha1-96
+        default_tgs_enctypes = aes256-cts-hmac-sha1-96
+        permitted_enctypes = aes256-cts-hmac-sha1-96
+    [realms]
+        CONTOSO.COM = {
+            kdc = dc01.contoso.com
+            admin_server = dc01.contoso.com
+            master_kdc = dc01.contoso.com
+            default_domain = contoso.com
+        }
+    [domain_realm]
+        .contoso.com = CONTOSO.COM
+        contoso.com = CONTOSO.COM
+    [logging]
+        kdc = SYSLOG:INFO
+        admin_server = FILE=/var/kadm5.log
+    ```
 
-7. 重新启动所有 NFS 服务：  
+7. 重启所有 NFS 服务：  
  
     `systemctl start nfs-*`   
     `systemctl restart rpc-gssd.service`
 
-    Restart 会阻止在 `“mount.nfs: an incorrect mount option was specified”` Kerberos 装入期间出现错误。
+    重启会阻止在 Kerberos 装载期间出现错误条件 `“mount.nfs: an incorrect mount option was specified”`。
 
-8. `kinit`用用户帐户运行命令以获取票证： 
+8. 使用用户帐户运行 `kinit` 命令以获取票证： 
  
     `sudo kinit $SERVICEACCOUNT@DOMAIN`  
 
@@ -98,16 +120,16 @@ ms.locfileid: "94409563"
 
 ### <a name="rhel-8-configuration-if-you-are-using-dual-protocol"></a>RHEL 8 配置（如果使用的是双重协议）
 
-以下步骤是可选的。 仅当在 NFS 客户端上使用用户映射时，才需要执行这些步骤： 
+可选择执行以下步骤。 仅当在 NFS 客户端上使用用户映射时，才需要执行这些步骤： 
 
-1. [如果使用的是 nfsv 4.1 Kerberos 加密](#rhel8_nfsv41_kerberos)部分，请完成 RHEL 8 配置中所述的所有步骤。   
+1. 完成 [RHEL 8 配置（如果使用的是 NFSv4.1 Kerberos 加密）](#rhel8_nfsv41_kerberos)部分中所述的所有步骤。   
 
-2. 在/etc/hosts 文件中添加静态 DNS 记录，以对 AD 使用完全限定的域名 (FQDN) ，而不是使用 SSSD 配置文件中的 IP 地址：  
+2. 在 /etc/hosts 文件中添加静态 DNS 记录，以对 AD 使用完全限定的域名 (FQDN)，而不是使用 SSSD 配置文件中的 IP 地址：  
 
     `cat /etc/hosts`   
     `10.6.1.4 winad2016.contoso.com`
 
-3. 添加域的额外部分来解析 AD LDAP 服务器中的标识符：    
+3. 为域添加额外部分来解析 AD LDAP 服务器中的标识符：    
 
     `[root@reddoc cbs]# cat /etc/sssd/sssd.conf`   
     `[sssd]`   
@@ -149,14 +171,14 @@ ms.locfileid: "94409563"
     `fallback_homedir = /home/%u@%d`   
     `access_provider = ad`   
 
-4. 确保 `/etc/nsswitch.conf` 具有 `sss` 以下条目：   
+4. 确保 `/etc/nsswitch.conf` 具有 `sss` 条目：   
 
     `cat /etc/nsswitch.conf`   
     `passwd: sss files systemd`   
     `group: sss files systemd`   
     `netgroup: sss files`   
 
-5. 重新启动 `sssd` 服务并清除缓存：   
+5. 重启 `sssd` 服务并清除缓存：   
 
     `service sssd stop`   
     `rm -f /var/lib/sss/db/*`   
@@ -169,14 +191,14 @@ ms.locfileid: "94409563"
 
 ## <a name="ubuntu-configuration"></a>Ubuntu 配置   
 
-本部分介绍 NFSv 4.1 Kerberos 加密和双重协议所需的 Ubuntu 配置。 
+本部分介绍 NFSv4.1 Kerberos 加密和双重协议所需的 Ubuntu 配置。 
 
 本部分中的示例使用以下域名和 IP 地址：  
 
-* 域名： `contoso.com`
-* 专用 IP： `10.6.1.4`
+* 域名：`contoso.com`
+* 专用 IP：`10.6.1.4`
 
-1. 配置 `/etc/resolv.conf` 适当的 DNS 服务器：
+1. 使用适当的 DNS 服务器配置 `/etc/resolv.conf`：
 
     `root@ubuntu-rak:/home/cbs# cat /etc/resolv.conf`   
     `search contoso.com`   
@@ -184,7 +206,7 @@ ms.locfileid: "94409563"
 
 2. 在 DNS 服务器中为 DNS 正向和反向查找区域添加 NFS 客户端记录。
  
-    若要验证 DNS，请从 NFS 客户端使用以下命令：
+    若要验证 DNS，请从 NFS 客户端运行以下命令：
 
     `# nslookup [hostname/FQDN of NFS client(s)]`   
     `# nslookup [IP address of NFS client(s)]`   
@@ -194,13 +216,13 @@ ms.locfileid: "94409563"
     `apt-get update`   
     `apt-get install -y realmd packagekit sssd adcli samba-common chrony krb5-user nfs-common`
     
-    系统提示时， `$DOMAIN.NAME` 使用大写 (输入，例如 `CONTOSO.COM`) 默认的 Kerberos 领域。
+    根据提示，输入 `$DOMAIN.NAME`（使用大写，例如 `CONTOSO.COM`）作为默认的 Kerberos 领域。
 
-4. 重新启动该服务 `rpc-gssd.service` ： 
+4. 重启服务 `rpc-gssd.service`： 
 
     `sudo systemctl start rpc-gssd.service`
 
-5. Ubuntu 18.04 默认情况下使用 chrony。 按照 Ubuntu Bionic 中的配置准则 [进行操作：使用 chrony 配置 NTP](https://ubuntu.com/blog/ubuntu-bionic-using-chrony-to-configure-ntp)。
+5. 默认情况下，Ubuntu 18.04 使用 chrony。 按照 [Ubuntu Bionic：使用 chrony 配置 NTP](https://ubuntu.com/blog/ubuntu-bionic-using-chrony-to-configure-ntp) 中的配置指南操作。
 
 6. 加入 Active Directory 域：   
  
@@ -209,29 +231,29 @@ ms.locfileid: "94409563"
     例如：    
     `sudo realm join CONTOSO.COM -U ad_admin --computer-ou="CN=Computers"`
 
-7. 为 `kinit` 用户执行获取票证的操作： 
+7. 使用用户帐户执行 `kinit` 以获取票证： 
  
     `sudo kinit $SERVICEACCOUNT`   
  
     例如：    
     `sudo kinit ad_admin`  
 
-### <a name="ubuntu-configuration-if-you-are-using-dual-protocol"></a>如果使用的是双重协议，则使用 Ubuntu 配置  
+### <a name="ubuntu-configuration-if-you-are-using-dual-protocol"></a>Ubuntu 配置（如果使用的是双重协议）  
 
-以下步骤是可选的。  仅当要在 NFS 客户端上使用用户映射时，才需要执行这些步骤：  
+可选择执行以下步骤。  仅当在 NFS 客户端上使用用户映射时，才需要执行这些步骤：  
 
 1. 运行以下命令以升级已安装的包：   
     `sudo apt update && sudo apt install libnss-ldap libpam-ldap ldap-utils nscd`
 
-    下面的示例使用示例值。 当命令提示输入时，应根据环境提供输入。 
+    下面的示例使用示例值。 当命令提示你输入时，应根据环境提供输入。 
 
     `base dc=contoso,dc=com uri ldap://10.20.0.4:389/ ldap_version 3 rootbinddn cn=admin,cn=Users,dc=contoso,dc=com pam_password ad`   
 
-2. 运行以下命令以重新启动并启用该服务：
+2. 运行以下命令以重启并启用该服务：
 
     `sudo systemctl restart nscd && sudo systemctl enable nscd`   
 
-以下示例从 Ubuntu LDAP 客户端向 LDAP 用户查询 AD LDAP 服务器 `‘hari1’` ： 
+以下示例从 Ubuntu LDAP 客户端向 LDAP 用户 `‘hari1’` 查询 AD LDAP 服务器： 
 
 `root@cbs-k8s-varun4-04:/home/cbs# getent passwd hari1`   
 `hari1:*:1237:1237:hari1:/home/hari1:/bin/bash`   
@@ -240,5 +262,5 @@ ms.locfileid: "94409563"
 ## <a name="next-steps"></a>后续步骤  
 
 * [创建用于 Azure NetApp 文件的 NFS 卷](azure-netapp-files-create-volumes.md)
-* [为 Azure NetApp 文件创建双协议卷](create-volumes-dual-protocol.md)
+* [为 Azure NetApp 文件创建双重协议卷](create-volumes-dual-protocol.md)
 

@@ -17,16 +17,16 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abc8badf261e631dd6ceb7af9a6a0cb3676ae25d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: 445514297550210d80cd50895201d1129fac4f20
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017587"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533688"
 ---
 # <a name="troubleshoot-errors-in-azure-active-directory-reporting-api"></a>对 Azure Active Directory 报告 API 中的错误进行故障排除
 
-本文列出了使用 Microsoft Graph API 访问活动报告时可能会遇到的常见错误消息，以及解决方法的步骤。
+本文列出了使用 Microsoft Graph API 访问活动报告时可能遇到的常见错误消息及其解决步骤。
 
 ### <a name="500-http-internal-server-error-while-accessing-microsoft-graph-v2-endpoint"></a>访问 Microsoft Graph V2 终结点时出现 500 HTTP 内部服务器错误
 
@@ -50,5 +50,5 @@ ms.locfileid: "96017587"
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用审核 API 参考](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
-[使用登录活动报告 API 参考](/graph/api/resources/signin?view=graph-rest-beta)
+[使用审核 API 参考](/graph/api/resources/directoryaudit)
+[使用登录活动报告 API 参考](/graph/api/resources/signin)

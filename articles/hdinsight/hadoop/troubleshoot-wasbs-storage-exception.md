@@ -1,19 +1,19 @@
 ---
-title: 所访问的帐户不支持 Azure HDInsight 中的 http 错误
-description: 本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方案。
+title: 正在访问的帐户不支持 Azure HDInsight 中的 http 错误
+description: 本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方法。
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/06/2020
 ms.openlocfilehash: 46063d5f2d9ff4b85914ad7c4cd74a2400298db0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98943084"
 ---
-# <a name="the-account-being-accessed-does-not-support-http-error-in-azure-hdinsight"></a>所访问的帐户不支持 Azure HDInsight 中的 http 错误
+# <a name="the-account-being-accessed-does-not-support-http-error-in-azure-hdinsight"></a>正在访问的帐户不支持 Azure HDInsight 中的 http 错误
 
-本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方案。
+本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方法。
 
 ## <a name="issue"></a>问题
 
@@ -27,15 +27,15 @@ com.microsoft.azure.storage.StorageException: The account being accessed does no
 
 收到错误消息的原因有多种：
 
-* 存储帐户已启用[安全传输](../../storage/common/storage-require-secure-transfer.md)，但使用的 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)不正确。
+* 存储帐户已启用[安全传输](../../storage/common/storage-require-secure-transfer.md)，并使用了错误的 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。
 
-* 已使用禁用  安全传输的存储帐户创建了群集。 此后在存储帐户上启用了安全传输。
+* 创建群集使用的存储帐户已禁用安全传输。 之后，又在存储帐户上启用了安全传输。
 
 ## <a name="resolution"></a>解决方法
 
 如果为 Azure 存储或 Data Lake Storage Gen2 启用了安全传输，则 URI 分别是 `wasbs://` 或 `abfss://`。  另请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
 
-对于新群集，请使用已经有所需安全传输设置的存储帐户。 请勿更改现有群集所用存储帐户的安全传输设置。
+对于新群集，请使用已具有所需安全传输设置的存储帐户。 请勿更改现有群集正在使用的存储帐户的安全传输设置。
 
 ## <a name="next-steps"></a>后续步骤
 

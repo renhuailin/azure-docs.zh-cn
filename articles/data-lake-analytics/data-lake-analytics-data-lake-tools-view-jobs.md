@@ -1,14 +1,14 @@
 ---
-title: 使用作业浏览器 & 作业视图-Azure Data Lake Analytics
+title: 使用作业浏览器和作业视图 - Azure Data Lake Analytics
 description: 本文介绍如何对 Azure Data Lake Analytics 作业使用作业浏览器和作业视图。
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 08/02/2017
 ms.openlocfilehash: a1e9a9df4c2ec57dfeec8cf5ddd5348228b9cc3e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018556"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>对 Azure Data Lake Analytics 使用作业浏览器和作业视图
@@ -49,7 +49,7 @@ Azure Data Lake Analytics 服务将已提交作业存档在查询存储中。 �
     
       “作业摘要”窗格的下半部分会显示基本作业信息。
     
-      ![屏幕截图，其中显示了包含文本框中说明的作业摘要。](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-info.png)
+      ![显示包含文本框中说明的作业摘要的屏幕截图。](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-info.png)
     
     * 作业结果：成功或失败。 作业在任何阶段都可能失败。
     * 总持续时间：提交时间和结束时间之间的时钟时间（持续时间）。
@@ -59,10 +59,10 @@ Azure Data Lake Analytics 服务将已提交作业存档在查询存储中。 �
     * 帐户：用于运行作业的 Data Lake Analytics 帐户。
     * 作者：提交作业的用户，可以是真正的用户帐户，也可以是系统帐户。
     * 优先级：作业优先级。 编号越低，优先级越高。 仅影响作业在队列中的顺序。 设置更高优先级不能优先于正在运行的作业。
-    * 并行度：请求的最大并发 Azure Data Lake Analytics 单位数 (ADLAUs) ，也称为顶点。 目前，一个顶点等同于一台配有两个虚拟核心和 6 GB RAM 的 VM，但将来可在 Data Lake Analytics 更新中对此进行升级。
+    * 并行度：请求的 Azure Data Lake Analytics 单元 (ADLAUs) 最大并发数，又称顶点。 目前，一个顶点等同于一台配有两个虚拟核心和 6 GB RAM 的 VM，但将来可在 Data Lake Analytics 更新中对此进行升级。
     * 剩余字节数：作业完成前需处理的字节数。
     * 读取/写入字节数：自作业开始运行起，已读取/写入的字节数。
-    * 顶点总数：作业分成了多项工作，每项工作称为顶点。 此值说明作业包含的工作数。 可以将顶点视为基本进程单元（也称为 Azure Data Lake Analytics Unit (ADLAU) ），顶点可以并行运行。 
+    * 顶点总数：作业分成了多项工作，每项工作称为顶点。 此值说明作业包含的工作数。 可将一个顶点看作一个基本进程单元（也称 Azure Data Lake Analytics 单元 (ADLAU)），顶点可以并行运行。 
     * 已完成/正在运行/失败：已完成/正在运行/失败顶点的计数。 顶点可能因用户代码和系统故障而失败，但系统会自动重试几次失败的顶点。 如果重试后，顶点仍失败，则整个作业会失败。
 * 作业图
   
@@ -70,7 +70,7 @@ Azure Data Lake Analytics 服务将已提交作业存档在查询存储中。 �
   
     ![Azure Data Lake Analytics 作业阶段状态](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-logical-to-physical-plan.png)
   
-    作业分成了多项工作。 每项工作称为顶点。 顶点被分组为超级顶点 (也称为舞台) ，并作为作业图进行可视化。 作业图中的绿色阶段标牌显示各个阶段。
+    作业分成了多项工作。 每项工作称为顶点。 顶点分组为超级顶点（又称阶段），并可视化为作业图。 作业图中的绿色阶段标牌显示各个阶段。
   
     同一阶段内的每个顶点使用相同数据的不同片段执行相同类型的工作。 例如，如果有一个含 1 TB 数据的文件，有数百个顶点从中读取数据，则每个顶点各读取一个区块。 这些顶点在同一阶段内分组，并对同一输出文件的不同区块执行相同工作。
   
@@ -108,7 +108,7 @@ Azure Data Lake Analytics 服务将已提交作业存档在查询存储中。 �
   * 持续时间：阶段所用的时钟时间，需加载配置文件才能查看此值。
   * 作业播放
     
-      Data Lake Analytics 运行作业并存档作业的顶点，这些作业的状态为 "已启动"、"已停止"、"已失败" 和 "重试方式" 等。所有信息会自动记录在查询存储中并存储在其作业配置文件中。 可通过作业视图中的“加载配置文件”下载该作业配置文件，并可在下载后查看作业播放。
+      Data Lake Analytics 运行作业并存档该作业的顶点运行信息，例如顶点开始、结束、失败的时间，以及如何重试等。所有信息均自动记录在查询存储内，并存储在作业配置文件中。 可通过作业视图中的“加载配置文件”下载该作业配置文件，并可在下载后查看作业播放。
     
       作业播放是反映群集所发生情况的典型可视化效果。 它有助于观看作业执行进度，并在超短时间内（通常小于 30 秒）直观地检测出性能异常和瓶颈。
   * 作业热度地图显示 
@@ -128,7 +128,7 @@ Azure Data Lake Analytics 服务将已提交作业存档在查询存储中。 �
     * 输入/输出吞吐量：每个阶段的输入/输出吞吐量热度地图，通过此热度地图，可确认作业是否为 I/O 边界作业。
 * 元数据操作
   
-    您可以在您的 SQL 脚本中执行某些元数据操作，例如创建数据库、删除表等。在编译后的元数据操作中显示这些操作。 可在此处查找断言、创建实体、删除实体。
+    可在 U-SQL 脚本中执行某些元数据操作，例如创建数据库、删除表等。编译完成后，元数据操作中会显示这些操作。 可在此处查找断言、创建实体、删除实体。
   
     ![Azure Data Lake Analytics 作业视图元数据操作](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-metadata-operations.png)
 * 状态历史记录
@@ -152,7 +152,7 @@ Azure Data Lake Analytics 服务将已提交作业存档在查询存储中。 �
 
 ![Azure Data Lake Analytics 作业详细信息](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-details.png)
 
-* Script
+* 脚本
   
     作业的 U-SQL 脚本存储在查询存储中。 如果需要，可查看原始 U-SQL 脚本并重新提交该脚本。
 * 资源
@@ -160,10 +160,10 @@ Azure Data Lake Analytics 服务将已提交作业存档在查询存储中。 �
     通过“资源”，可找到存储在查询存储中的作业编译输出。 例如，可在此处找到用于显示作业图的“algebra.xml”、注册的程序集等。
 * 顶点执行视图
   
-    它显示顶点执行详细信息。 作业配置文件会存档每个顶点执行日志，例如数据读取/写入、运行时、状态等。通过此视图，可以获取有关作业运行方式的更多详细信息。 有关详细信息，请参阅[使用用于 Visual Studio 的 Data Lake 工具中的顶点执行视图](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)。
+    它显示顶点执行详细信息。 作业配置文件存档每个顶点执行日志，例如读取/写入的总数据量、运行时、状态等。通过此视图，可详细了解作业的运行方式。 有关详细信息，请参阅[使用用于 Visual Studio 的 Data Lake 工具中的顶点执行视图](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * 若要记录诊断信息，请参阅[访问 Azure Data Lake Analytics 的诊断日志](data-lake-analytics-diagnostic-logs.md)
-* 若要查看更复杂的查询，请参阅 [使用 Azure Data Lake Analytics 分析网站日志](data-lake-analytics-analyze-weblogs.md)。
+* 若要查看更复杂的查询，请参阅[使用 Azure Data Lake Analytics 分析网站日志](data-lake-analytics-analyze-weblogs.md)。
 * 若要使用顶点执行视图，请参阅[使用用于 Visual Studio 的 Data Lake 工具中的顶点执行视图](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
 

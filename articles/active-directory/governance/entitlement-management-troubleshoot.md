@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b01321c2cbb15be5526bbe9ed04f52238390574
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100516883"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>排查 Azure AD 权利管理的问题
@@ -68,7 +68,7 @@ ms.locfileid: "100516883"
 
 * 当尚未在你的目录中的用户登录到“我的访问权限”门户以请求访问包时，请确保他们使用其组织帐户进行身份验证。 组织帐户可以是资源目录中的帐户，也可以是其他目录中的帐户，该目录包含在访问包的其中一个策略中。 如果用户的帐户不是组织帐户，或者策略中不包含他们验证的目录，那么用户将看不到访问包。 有关详细信息，请参阅[请求访问访问包](entitlement-management-request-access.md)。
 
-* 如果阻止用户登录到资源目录，则他们将无法在“我的访问权限”门户中请求访问。 必须从用户配置文件中删除登录块，用户才可以请求访问。 若要解除阻止登录，请在 Azure 门户中依次单击“Azure Active Directory”、“用户”、该用户、“配置文件”。   编辑“设置”部分，将“阻止登录”更改为“否”。   有关详细信息，请参阅[使用 Azure Active Directory 添加或更新用户的配置文件信息](../fundamentals/active-directory-users-profile-azure-portal.md)。  你还可以检查用户是否因 [Identity Protection 策略](../identity-protection/howto-identity-protection-remediate-unblock.md)而被阻止。
+* 如果阻止用户登录到资源目录，则他们将无法在“我的访问权限”门户中请求访问。 必须从用户配置文件中删除登录块，用户才可以请求访问。 若要解除阻止登录，请在 Azure 门户中依次单击“Azure Active Directory”、“用户”、该用户、“配置文件”。   编辑“设置”部分，将“阻止登录”更改为“否”。   有关详细信息，请参阅[使用 Azure Active Directory 添加或更新用户的配置文件信息](../fundamentals/active-directory-users-profile-azure-portal.md)。  还可以检查用户是否由于[标识保护策略](../identity-protection/howto-identity-protection-remediate-unblock.md)而被阻止。
 
 * 在“我的访问权限”门户中，如果某个用户既是请求者又是审批者，该用户不会在“审批”页上看到自己对访问包的请求。 此行为是有意行为 - 用户无法批准自己的请求。 确保他们请求的访问包在策略上配置了其他审批者。 有关详细信息，请参阅[访问包的更改请求和审批设置](entitlement-management-access-package-request-policy.md)。
 
@@ -145,7 +145,7 @@ ms.locfileid: "100516883"
     | P1 | 你的目录中的或特定的连接组织中的特定用户和组 |
     | P2 | 你的目录中的所有成员（不包括来宾） |
     | P3 | 你的目录中的或特定的连接组织中的所有用户（包括来宾） |
-    | P4 | 所有已配置的已连接组织或所有用户 (所有连接的组织 + 所有新外部用户)  |
+    | P4 | 所有配置的已连接组织或所有用户（所有连接的组织 + 任何新的外部用户） |
     
     如果有任何策略具有较高的优先级类别，则会忽略较低的优先级类别。 若要通过示例来了解如何将优先级相同的多个策略显示给请求者，请参阅[选择策略](entitlement-management-request-access.md#select-a-policy)。
 

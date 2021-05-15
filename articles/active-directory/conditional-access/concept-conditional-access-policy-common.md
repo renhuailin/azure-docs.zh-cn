@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bdaaed72b85bc3c0196a8897be311efa5fb714e2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92366337"
 ---
 # <a name="common-conditional-access-policies"></a>常用条件访问策略
@@ -42,8 +42,8 @@ ms.locfileid: "92366337"
 
 ## <a name="additional-policies"></a>其他策略
 
-* [基于风险的条件访问 (要求 Azure AD Premium P2) ](howto-conditional-access-policy-risk.md)
-* [基于用户风险的条件性访问 (要求 Azure AD Premium P2) ](howto-conditional-access-policy-risk-user.md)
+* [登录基于风险的条件访问（需要 Azure AD Premium P2）](howto-conditional-access-policy-risk.md)
+* [用户基于风险的条件访问（需要 Azure AD Premium P2）](howto-conditional-access-policy-risk-user.md)
 * [要求在进行 MFA 注册时处于受信任的位置](howto-conditional-access-policy-registration.md)
 * [按位置阻止访问](howto-conditional-access-policy-location.md)
 * [需要兼容设备](howto-conditional-access-policy-compliant-device.md)

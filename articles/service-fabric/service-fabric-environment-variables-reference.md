@@ -4,24 +4,24 @@ description: 了解 Azure Service Fabric 中的环境变量。 包含变量及�
 ms.topic: reference
 ms.date: 12/07/2017
 ms.openlocfilehash: b70249daa439b5a631b5a84b10c47f082ce75985
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96574575"
 ---
 # <a name="service-fabric-environment-variables"></a>Service Fabric 环境变量
 
 Service Fabric 为每个服务实例提供了内置环境变量集。 下面是环境变量的完整列表：
 
-| 环境变量                         | 说明                                                            | 示例                                                              |
+| 环境变量                         | 描述                                                            | 示例                                                              |
 |----------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------------|
 | Fabric_ApplicationName                       | 应用程序的 fabric uri 名称                                 | fabric:/MyApplication                                                |
 | Fabric_CodePackageName                       | 进程所属的代码包的名称              | 代码                                                                 |
 | Fabric_Endpoint\_IPOrFQDN\_*ServiceEndpointName*     | 终结点的 IP 地址或 FQDN                                 | 10.0.0.1                                                     |
 | Fabric\_Endpoint\_*ServiceEndpointName*              | 终结点的端口号                                  | 8234                                                                 |
 | Fabric_Folder_App_Log                        | 日志文件夹                                                             | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\log      |
-| Fabric_Folder_App_Temp                       | 临时文件夹                                                            | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\temp     |
+| Fabric_Folder_App_Temp                       | Temp 文件夹                                                            | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\temp     |
 | Fabric_Folder_App_Work                       | 工作文件夹                                                            | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\work     |
 | Fabric_Folder_Application                    | 应用程序主文件夹                                           | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12             |
 | Fabric_IsContainerHost                       | 一个布尔值，指定进程是否为一个容器                   | false                                                                |

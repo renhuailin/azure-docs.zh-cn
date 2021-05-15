@@ -4,14 +4,14 @@ description: 介绍创建数据工厂并使用子资源所需的角色和权限�
 ms.date: 11/5/2018
 ms.topic: conceptual
 ms.service: data-factory
-author: dcstwh
-ms.author: weetok
-ms.openlocfilehash: cec5df9a5046e912ab8542c91bde4344affa0925
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+author: nabhishek
+ms.author: abnarain
+ms.openlocfilehash: 7bc386e17cef3bfc6b2c4db83c1edcb04d2d9178
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364471"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906757"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure 数据工厂的角色和权限
 
@@ -54,8 +54,8 @@ Azure Repos 和 GitHub 上的权限独立于数据工厂权限。 因此，具�
 > [!IMPORTANT]
 > 使用“数据工厂参与者”角色进行资源管理器模板部署不会提升你的权限。 例如，如果你部署一个可以创建 Azure 虚拟机的模板，而你没有创建虚拟机的权限，则部署会失败并出现授权错误。
 
-   在发布上下文中， **DataFactory/工厂/写入** 权限适用于以下模式。
-- 仅当客户修改全局参数时，才需要在实时模式下进行该权限。
+   在发布上下文中，“Microsoft.DataFactory/工厂/写入”权限适用于以下模式。
+- 仅当客户修改全局参数时，才需要在实时模式中使用该权限。
 - 在 Git 模式下始终需要该权限，因为每次客户发布后，都需要更新具有最后提交 ID 的工厂对象。
 
 ### <a name="custom-scenarios-and-custom-roles"></a>自定义方案和自定义角色
