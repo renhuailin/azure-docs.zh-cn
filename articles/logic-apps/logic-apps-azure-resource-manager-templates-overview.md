@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/06/2020
-ms.openlocfilehash: 2e1536d4f2ea7d71691c611e9127109c154f3266
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
-ms.translationtype: MT
+ms.openlocfilehash: b1551b4d9c28a693adb74436b6490ce7af62a977
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807337"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279845"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概述：使用 Azure 资源管理器模板将 Azure 逻辑应用部署自动化
 
@@ -34,14 +34,14 @@ ms.locfileid: "99807337"
 * [Azure 资源管理器模板最佳做法](../azure-resource-manager/templates/template-best-practices.md)
 * [开发用于实现云一致性的 Azure 资源管理器模板](../azure-resource-manager/templates/templates-cloud-consistency.md)
 
-有关特定于逻辑应用、集成帐户、集成帐户项目和 integration services 环境的模板资源信息，请参阅 [Microsoft. 逻辑资源类型](/azure/templates/microsoft.logic/allversions)。
+有关特定于逻辑应用、集成帐户、集成帐户项目和集成服务环境的模板资源信息，请参阅 [Microsoft.Logic 资源类型](/azure/templates/microsoft.logic/allversions)。
 
 有关示例逻辑应用模板，请参阅以下示例：
 
 * 本主题的示例使用的[完整模板](#full-example-template)
-* GitHub 中的[示例快速入门逻辑应用模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create)
+* GitHub 中的[示例快速入门逻辑应用模板](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.logic/logic-app-create/azuredeploy.json)
 
-REST API 中的逻辑应用，请从 [Azure 逻辑应用 REST API 概述](/rest/api/logic)开始。
+对于逻辑应用 REST API，从 [Azure 逻辑应用 REST API 概述](/rest/api/logic)开始。
 
 <a name="template-structure"></a>
 
@@ -67,7 +67,7 @@ REST API 中的逻辑应用，请从 [Azure 逻辑应用 REST API 概述](/rest/
 |-----------|-------------|
 | `parameters` | 声明[模板参数](../azure-resource-manager/templates/template-syntax.md#parameters)，用于接受在 Azure 中创建和自定义部署资源时要使用的值。 例如，这些参数接受逻辑应用的名称和位置、连接以及部署所需的其他资源的值。 可将这些参数值存储在本主题稍后将会介绍的[参数文件](#template-parameter-files)中。 有关一般详细信息，请参阅[参数 - 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md#parameters)。 |
 | `resources` | 定义用于创建或更新以及部署到 Azure 资源组的[资源](../azure-resource-manager/templates/template-syntax.md#resources)，例如逻辑应用、连接、Azure 存储帐户等。 有关一般详细信息，请参阅[资源 - 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md#resources)。 |
-||||
+|||
 
 逻辑应用模板使用以下文件名格式：
 
@@ -86,7 +86,7 @@ REST API 中的逻辑应用，请从 [Azure 逻辑应用 REST API 概述](/rest/
 * 逻辑用来通过[托管连接器](../connectors/apis-list.md)访问其他服务和系统的连接
 * 逻辑应用需要对部署使用的其他资源
 
-  例如，如果逻辑应用使用企业到企业 (B2B) 方案的 [集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) ，则模板的顶级 `parameters` 对象将声明接受该集成帐户的资源 ID 的参数。
+  例如，如果逻辑应用针对企业对企业 (B2B) 方案使用[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，则模板的顶级 `parameters` 对象会声明接受该集成帐户的资源 ID 的参数。
 
 下面是参数定义的一般结构和语法，[参数 - 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md#parameters)中对此做了全面介绍：
 
@@ -207,7 +207,7 @@ REST API 中的逻辑应用，请从 [Azure 逻辑应用 REST API 概述](/rest/
       "<secured-parameter-name>": {
          "reference": {
             "keyVault": {
-               "id": "/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/Microsoft.KeyVault/vaults/<key-vault-name>",
+               "id": "/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/Microsoft.KeyVault/vaults/<key-vault-name>"
             },
             "secretName: "<secret-name>"
          }
@@ -239,7 +239,7 @@ REST API 中的逻辑应用，请从 [Azure 逻辑应用 REST API 概述](/rest/
 
 ## <a name="template-resources"></a>模板资源
 
-模板包含一个 `resources` 对象，该对象是一个数组，其中包含要在 Azure 中创建和部署的每个资源的定义，例如 [逻辑应用的资源定义](#logic-app-resource-definition)、 [连接资源定义](#connection-resource-definitions)以及逻辑应用需要部署的任何其他资源。
+模板包含一个 `resources` 对象，该对象是一个数组，包含要在 Azure 中创建和部署的每个资源的定义，例如[逻辑应用的资源定义](#logic-app-resource-definition)、[连接资源定义](#connection-resource-definitions)，以及逻辑应用需要对部署使用的任何其他资源。
 
 ```json
 {
@@ -271,7 +271,7 @@ REST API 中的逻辑应用，请从 [Azure 逻辑应用 REST API 概述](/rest/
 
 ### <a name="view-resource-definitions"></a>查看资源定义
 
-若要查看 Azure 资源组中所有资源的资源定义，请将 [逻辑应用从 azure 下载到 Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)中，这是创建最适用于部署的有效参数化逻辑应用模板的最简单方法。
+若要查看 Azure 资源组中所有资源的资源定义，请[将逻辑应用从 Azure 下载到 Visual Studio 中](../logic-apps/manage-logic-apps-with-visual-studio.md)，这是创建最适用部署的有效参数化逻辑应用模板的最简单方法。
 
 有关模板资源及其属性的一般信息，请参阅以下主题：
 
@@ -282,7 +282,7 @@ REST API 中的逻辑应用，请从 [Azure 逻辑应用 REST API 概述](/rest/
 
 ### <a name="logic-app-resource-definition"></a>逻辑应用资源定义
 
-模板中逻辑应用的 [工作流资源定义](/azure/templates/microsoft.logic/workflows) 从 `properties` 对象开始，其中包含以下信息：
+模板中逻辑应用的[工作流资源定义](/azure/templates/microsoft.logic/workflows)从 `properties` 对象开始，其中包含以下信息：
 
 * 逻辑应用在部署时的状态
 * 逻辑应用使用的任何集成帐户的 ID
@@ -328,21 +328,21 @@ REST API 中的逻辑应用，请从 [Azure 逻辑应用 REST API 概述](/rest/
 
 下面是特定于逻辑应用资源定义的属性：
 
-| 属性 | 必须 | 类型 | 说明 |
+| 属性 | 必需 | 类型 | 说明 |
 |-----------|----------|------|-------------|
 | `state` | 是 | String | 逻辑应用在部署时的状态，`Enabled` 表示逻辑应用处于活动状态，`Disabled` 表示逻辑应用处于非活动状态。 例如，如果你尚未准备好推出逻辑应用，而是想要部署草稿版本，则可以使用 `Disabled` 选项。 |
 | `integrationAccount` | 否 | Object | 如果逻辑应用使用集成帐户（用于存储企业到企业 (B2B) 方案的项目），则此对象包含用于指定集成帐户 ID 的 `id` 属性。 |
 | `definition` | 是 | Object | 逻辑应用的基础工作流定义，它是代码视图中显示的相同对象，[工作流定义语言的架构参考](../logic-apps/logic-apps-workflow-definition-language.md)主题中对此做了全面介绍。 在此工作流定义中，`parameters` 对象声明要在逻辑应用运行时使用的值的参数。 有关详细信息，请参阅[工作流定义和参数](#workflow-definition-parameters)。 <p><p>若要查看逻辑应用工作流定义中的属性，请在 Azure 门户或 Visual Studio 中或使用 [Azure 资源浏览器](https://resources.azure.com)之类的工具，从“设计视图”切换到“代码视图”。 |
 | `parameters` | 否 | Object | 要在逻辑应用运行时使用的[工作流定义参数值](#workflow-definition-parameters)。 这些值的参数定义显示在[工作流定义的 parameters 对象中](#workflow-definition-parameters)。 此外，如果逻辑应用使用[托管连接器](../connectors/apis-list.md)来访问其他服务和系统，则此对象将包含一个用于设置要在运行时使用的连接值的 `$connections` 对象。 |
 | `accessControl` | 否 | Object | 用于指定逻辑应用的安全属性，例如限制对请求触发器或运行历史记录输入和输出的 IP 访问。 有关详细信息，请参阅[保护对逻辑应用的访问](../logic-apps/logic-apps-securing-a-logic-app.md)。 |
-| `runtimeConfiguration` | 否 | Object | 用于指定任何 `operationOptions` 属性，这些属性控制逻辑应用在运行时的行为方式。 例如，可以在 [高吞吐量模式下](../logic-apps/logic-apps-limits-and-config.md#run-high-throughput-mode)运行逻辑应用。 |
+| `runtimeConfiguration` | 否 | Object | 用于指定任何 `operationOptions` 属性，这些属性控制逻辑应用在运行时的行为方式。 例如，可以在[高吞吐量模式下](../logic-apps/logic-apps-limits-and-config.md#run-high-throughput-mode)运行逻辑应用。 |
 |||||
 
-有关这些逻辑应用对象的资源定义的详细信息，请参阅 [Microsoft. 逻辑资源类型](/azure/templates/microsoft.logic/allversions)：
+有关这些逻辑应用对象的资源定义的详细信息，请参阅 [Microsoft.Logic 资源类型](/azure/templates/microsoft.logic/allversions)：
 
 * [工作流资源定义](/azure/templates/microsoft.logic/workflows)
-* [Integration service 环境资源定义](/azure/templates/microsoft.logic/integrationserviceenvironments)
-* [Integration service 环境托管 API 资源定义](/azure/templates/microsoft.logic/integrationserviceenvironments/managedapis)
+* [集成服务环境资源定义](/azure/templates/microsoft.logic/integrationserviceenvironments)
+* [集成服务环境托管 API 资源定义](/azure/templates/microsoft.logic/integrationserviceenvironments/managedapis)
 
 * [集成帐户资源定义](/azure/templates/microsoft.logic/integrationaccounts)
 
@@ -358,7 +358,7 @@ REST API 中的逻辑应用，请从 [Azure 逻辑应用 REST API 概述](/rest/
 
   * [映射资源定义](/azure/templates/microsoft.logic/integrationaccounts/maps)
 
-  * [伙伴资源定义](/azure/templates/microsoft.logic/integrationaccounts/partners)
+  * [合作伙伴资源定义](/azure/templates/microsoft.logic/integrationaccounts/partners)
 
   * [架构资源定义](/azure/templates/microsoft.logic/integrationaccounts/schemas)
 
@@ -627,7 +627,7 @@ REST API 中的逻辑应用，请从 [Azure 逻辑应用 REST API 概述](/rest/
 }
 ```
 
-连接资源定义引用模板的顶级参数作为其值，以便可以在部署时使用参数文件来提供这些值。 确保连接使用与逻辑应用相同的 Azure 资源组和位置。
+连接资源定义引用模板的顶级参数作为值，以便可以在部署时使用参数文件来提供这些值。 确保连接使用与逻辑应用相同的 Azure 资源组和位置。
 
 下面是 Office 365 Outlook 连接的示例资源定义以及相应的模板参数：
 
@@ -1121,7 +1121,7 @@ REST API 中的逻辑应用，请从 [Azure 逻辑应用 REST API 概述](/rest/
          "defaultValue": "",
          "metadata": {
             "description": "Name of the storage account the connector should use."
-         },
+         }
 
       },
       "azureblob_1_accountName": {
@@ -1164,7 +1164,7 @@ REST API 中的逻辑应用，请从 [Azure 逻辑应用 REST API 概述](/rest/
                            "connection": {
                               "name": "@parameters('$connections')['azureblob']['connectionId']"
                            }
-                        },
+                        }
                      },
                      "method": "post",
                      "body": "@triggerBody()?['Body']",

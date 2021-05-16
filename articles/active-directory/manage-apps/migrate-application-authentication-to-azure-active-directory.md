@@ -2,24 +2,22 @@
 title: 将应用程序身份验证迁移到 Azure Active Directory
 description: 本白皮书详细介绍了将应用程序身份验证迁移到 Azure AD 的规划和优点。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 02/05/2021
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac3ea7ea6b3ed0bb8e1e9f7575b34f9dbf116a04
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 736f21927b6a76be5f5d849099db465fcc9835cf
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453248"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318956"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>将应用程序身份验证迁移到 Azure Active Directory
 
@@ -61,7 +59,7 @@ ms.locfileid: "102453248"
 
 Azure AD 具有[一整套标识管理功能](../fundamentals/active-directory-whatis.md#which-features-work-in-azure-ad)。 通过将应用身份验证和授权标准化到 Azure AD，可获得这些功能所提供的益处。
 
-有关其他迁移资源，请参阅 [https://aka.ms/migrateapps](./migration-resources.md)
+有关更多迁移资源，请参阅：[https://aka.ms/migrateapps](./migration-resources.md)
 
 ## <a name="benefits-of-migrating-app-authentication-to-azure-ad"></a>将应用身份验证迁移到 Azure AD 的益处
 
@@ -81,11 +79,11 @@ Azure AD 具有[一整套标识管理功能](../fundamentals/active-directory-wh
 
 ### <a name="manage-cost"></a>管理成本
 
-组织可能有多个标识访问管理 (IAM) 解决方案。 迁移到一个 Azure AD 基础结构是减少对 IAM 许可证（本地或云中）的依赖和基础结构成本的一个机会。 如果你可能已通过 M365 许可证支付了 Azure AD 的费用，则没有理由支付另一个 IAM 解决方案的额外费用。
+组织可能有多个标识访问管理 (IAM) 解决方案。 迁移到一个 Azure AD 基础结构是减少对 IAM 许可证（本地或云中）的依赖和基础结构成本的一个机会。 如果你可能已通过 Microsoft 365 许可证支付 Azure AD 费用，则无需再额外支付其他 IAM 解决方案的费用。
 
 通过 Azure AD，可通过以下方式降低基础结构成本：
 
-- 使用 [Azure AD 应用程序代理](./application-proxy.md)提供对本地应用的安全远程访问。
+- 使用 [Azure AD 应用程序代理](../app-proxy/application-proxy.md)提供对本地应用的安全远程访问。
 
 - 通过[将 Azure AD 设置为可信通用标识提供者](../hybrid/plan-connect-user-signin.md#choosing-the-user-sign-in-method-for-your-organization)，将应用程序与租户中的本地凭据方法分离。
 
@@ -95,7 +93,7 @@ Azure AD 具有[一整套标识管理功能](../fundamentals/active-directory-wh
 
 - 通过从任何设备和任何位置无缝安全地访问任何应用程序，改进最终用户的[单一登录 (SSO)](./what-is-single-sign-on.md) 体验。
 
-- 利用自助服务 IAM 功能，如[自助式密码重置](../authentication/concept-sspr-howitworks.md)和[自助服务组管理](../enterprise-users/groups-self-service-management.md)。
+- 利用自助式 IAM 功能，如[自助式密码重置](../authentication/concept-sspr-howitworks.md)和[自助式组合管理](../enterprise-users/groups-self-service-management.md)。
 
 - 通过跨云环境和本地环境仅为每个用户管理单个标识，减少管理开销：
 
@@ -104,11 +102,11 @@ Azure AD 具有[一整套标识管理功能](../fundamentals/active-directory-wh
 
 - 通过结合使用 [Microsoft 标识平台](../develop/v2-overview.md)和 Microsoft 身份验证库 (MSAL)，使开发人员能够保护对应用的访问并改进最终用户体验。
 
-- 使用 [Azure AD B2B 协作](../external-identities/what-is-b2b.md)，使你的合作伙伴能够访问云资源。 这消除了与合作伙伴配置点到点联合身份验证的开销。
+- 使用 [Azure AD B2B 协作](../external-identities/what-is-b2b.md)，使你的合作伙伴能够访问云资源。 使用云资源消除通过合作伙伴配置点到点联合身份验证的开销。
 
 ### <a name="address-compliance-and-governance"></a>解决合规性和监管问题
 
-使用集成的审核工具和 API 来强制实施公司访问策略和监视用户对应用程序及相关数据的访问，从而确保符合法规要求。 使用 Azure AD，可通过利用[安全事件和事件监视 (SIEM) 工具](../reports-monitoring/plan-monitoring-and-reporting.md)的报表监视应用程序登录情况。 可通过门户或 API 访问这些报表，并以编程方式审核有权访问应用程序的人员，以及通过访问评审删除非活动用户的访问权限。
+使用集成的审核工具和 API 来强制实施公司访问策略和监视用户对应用程序及相关数据的访问，从而确保符合法规要求。 借助 Azure AD，可通过利用[安全信息和事件管理 (SIEM) 工具](../reports-monitoring/plan-monitoring-and-reporting.md)的报表监视应用程序登录情况。 可通过门户或 API 访问这些报表，并以编程方式审核有权访问应用程序的人员，以及通过访问评审删除非活动用户的访问权限。
 
 ## <a name="plan-your-migration-phases-and-project-strategy"></a>规划迁移阶段和项目策略
 
@@ -290,7 +288,7 @@ D
 
 Azure AD 可为这些旧版应用带来极大的好处，因为你可以在完全不接触这些应用的情况下，针对这些应用启用新式 Azure AD 安全和监管功能，如[多重身份验证](../authentication/concept-mfa-howitworks.md)、[条件访问](../conditional-access/overview.md)、[标识保护](../identity-protection/index.yml)、[委派的应用程序访问](./access-panel-manage-self-service-access.md)以及[访问评审](../governance/manage-user-access-with-access-reviews.md#create-and-perform-an-access-review)！
 
-首先，可使用简单的身份验证方法（如密码保管），通过 Azure AD [应用程序代理](./application-proxy-configure-single-sign-on-password-vaulting.md)将这些应用扩展到云中，使用户快速地进行迁移，或者可使用你可能已部署的应用程序交付控制器通过我们的[合作伙伴集成](https://azure.microsoft.com/services/active-directory/sso/secure-hybrid-access/)来实现这一点。
+首先，可使用简单的身份验证方法（如密码保管），通过 Azure AD [应用程序代理](../app-proxy/application-proxy-configure-single-sign-on-password-vaulting.md)将这些应用扩展到云中，使用户快速地进行迁移，或者可使用你可能已部署的应用程序交付控制器通过我们的[合作伙伴集成](https://azure.microsoft.com/services/active-directory/sso/secure-hybrid-access/)来实现这一点。
 
 ### <a name="new-line-of-business-lob-apps"></a>新的业务线 (LoB) 应用
 
@@ -304,7 +302,7 @@ Azure AD 可为这些旧版应用带来极大的好处，因为你可以在完�
 
 - 应用显然没有使用。
 
-请勿弃用可产生重大影响的业务关键应用程序。 在这些情况下，请与业务所有者一起确定正确的策略。
+建议不要弃用可产生重大影响的业务关键应用程序。 在这些情况下，请与业务所有者一起确定正确的策略。
 
 ### <a name="exit-criteria"></a>退出条件
 
@@ -314,8 +312,8 @@ Azure AD 可为这些旧版应用带来极大的好处，因为你可以在完�
 
 - 应用列表，其中包括：
 
-  - 这些应用连接到哪些系统 用户从何处、在哪些设备上访问它们
-
+  - 这些应用连接到的系统
+  - 用户访问它们的位置和设备
   - 它们是否将被迁移、弃用或与 [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) 连接。
 
 > [!NOTE]
@@ -371,7 +369,7 @@ Azure AD 可为这些旧版应用带来极大的好处，因为你可以在完�
 
 - 用户访问量 - 是否每个人都能访问此应用，还是只是少数人员能访问？
 
-- 计划的生命周期 - 此应用会持续存在多长时间？ 不到 6 个月？ 2 年以上？
+- 计划的生命周期 - 此应用会持续存在多长时间？ 不到六个月？ 超过两年？
 
 - 当前标识提供者 - 此应用的主要 IdP 是什么？ 或者它是否依赖于本地存储？
 
@@ -401,7 +399,7 @@ Azure AD 可为这些旧版应用带来极大的好处，因为你可以在完�
 
 为试点选择的应用应该代表你的组织的关键标识和安全要求，并且你必须得到应用程序所有者的明确认可。 试点通常在单独的测试环境中运行。 请参阅部署计划页上的[试点最佳做法](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot)。
 
-请勿忘了你的外部合作伙伴。 确保他们参与到迁移计划和测试中。 最后，确保在出现重大问题时，他们可以联系你的支持人员。
+请勿忘了你的外部合作伙伴。 确保他们参与到迁移计划和测试中。 最后，确保在出现中断问题时，他们可以联系你的支持人员。
 
 ### <a name="plan-for-limitations"></a>对限制进行规划
 
@@ -417,7 +415,7 @@ Azure AD 还有一些你应注意的[服务限制和限制](../enterprise-users/
 
 ### <a name="plan-the-security-posture"></a>规划安全状况
 
-在开始迁移过程之前，请花时间充分考虑你希望为企业标识系统提供的安全状况。 这以收集以下有价值的信息集为基础：标识和数据，访问数据的人员，以及设备和位置。
+在开始迁移过程之前，请花时间充分考虑你希望为企业标识系统提供的安全状况。 这需要收集以下宝贵的信息集：要访问你的数据的标识、设备和位置。
 
 ### <a name="identities-and-data"></a>标识和数据
 
@@ -443,7 +441,7 @@ Azure AD 支持的应用和资源主要有两类用户：
 
 你可以为这些用户定义组，并以不同方式填充这些组。 可选择管理员必须手动将成员添加到组中，或者可启用自助服务组成员身份。 可使用[动态组](../enterprise-users/groups-dynamic-membership.md)建立规则，根据指定的条件自动将成员添加到组中。
 
-外部用户也可以指需要特殊考虑的客户。 [Azure AD B2C](../../active-directory-b2c/overview.md)（一个独立的产品）支持客户身份验证。 但是，它不在本文的介绍范围之内。
+外部用户也可以引用客户。 [Azure AD B2C](../../active-directory-b2c/overview.md)（一个独立的产品）支持客户身份验证。 但是，它不在本文的介绍范围之内。
 
 ### <a name="devicelocation-used-to-access-data"></a>用于访问数据的设备/位置
 
@@ -479,7 +477,7 @@ Azure AD 支持的应用和资源主要有两类用户：
 
 - SaaS 应用程序 - 请参阅[数百个 SaaS 应用程序教程](../saas-apps/tutorial-list.md)列表和完整的 [Azure AD SSO 部署计划](https://aka.ms/ssodeploymentplan)，逐步完成端到端过程。
 
-- 本地运行的应用程序 - 了解有关 [Azure AD 应用程序代理](./application-proxy.md)的所有信息，并使用完整的 [Azure AD 应用程序代理部署计划](https://aka.ms/AppProxyDPDownload)快速开始操作。
+- 本地运行的应用程序 - 了解有关 [Azure AD 应用程序代理](../app-proxy/application-proxy.md)的所有信息，并使用完整的 [Azure AD 应用程序代理部署计划](https://aka.ms/AppProxyDPDownload)快速开始操作。
 
 - 正在开发的应用 - 请参阅分步[集成](../develop/quickstart-register-app.md)和[注册](../develop/quickstart-register-app.md)指南。
 
@@ -489,7 +487,7 @@ Azure AD 支持的应用和资源主要有两类用户：
 
 在迁移过程中，应用可能已具有在常规部署过程中使用的测试环境。 可继续使用此环境进行迁移测试。 如果测试环境当前不可用，则可使用 Azure 应用服务或 Azure 虚拟机来设置一个测试环境，具体取决于应用程序的体系结构。 可选择设置一个独立的测试 Azure AD 租户，以在开发应用配置时使用。 此租户将以干净状态启动，并且不会配置为与任何系统同步。
 
-可通过使用测试用户登录来测试每个应用，并确保所有功能与迁移之前的功能相同。 如果你在测试期间确定用户需要更新他们的 [MFA](/active-directory/authentication/howto-mfa-userstates) 或 [SSPR](../authentication/tutorial-enable-sspr.md) 设置，或者你要在迁移期间添加此功能，请务必将其添加到最终用户通信计划中。 请参阅 [MFA](https://aka.ms/mfatemplates) 和 [SSPR](https://aka.ms/ssprtemplates) 最终用户通信模板。
+可通过使用测试用户登录来测试每个应用，并确保所有功能与迁移之前的功能相同。 如果你在测试期间确定用户需要更新他们的 [MFA](../authentication/howto-mfa-userstates.md) 或 [SSPR](../authentication/tutorial-enable-sspr.md) 设置，或者你要在迁移期间添加此功能，请务必将其添加到最终用户通信计划中。 请参阅 [MFA](https://aka.ms/mfatemplates) 和 [SSPR](https://aka.ms/ssprtemplates) 最终用户通信模板。
 
 迁移应用后，转到 [Azure 门户](https://aad.portal.azure.com/)，测试迁移是否成功。 请根据以下说明进行操作：
 
@@ -507,11 +505,11 @@ Azure AD 支持的应用和资源主要有两类用户：
 | **基于 SAML 的 SSO** | 使用“单一登录”下的[测试 SAML 设置](./debug-saml-sso-issues.md)按钮。 |
 | 基于密码的 SSO | 下载并安装 [MyApps 安全登录扩展](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)。 此扩展可帮助你启动组织中任何需要你使用 SSO 过程的云应用。 |
 
-| [应用程序代理](./application-proxy.md) | 确保连接器正在运行并已分配给应用程序。 访问[应用程序代理故障排除指南](./application-proxy-troubleshoot.md)以获取进一步的帮助。 |
+| [应用程序代理](../app-proxy/application-proxy.md) | 确保连接器正在运行并已分配给应用程序。 访问[应用程序代理故障排除指南](../app-proxy/application-proxy-troubleshoot.md)以获取进一步的帮助。 |
 
 ### <a name="troubleshoot"></a>疑难解答
 
-如果遇到问题，请查看[应用故障排除指南](../app-provisioning/isv-automatic-provisioning-multi-tenant-apps.md)以获取帮助。 另请参阅[登录自定义开发的应用程序时出现的问题](./application-sign-in-problem-federated-sso-gallery.md)。
+如果遇到问题，请查看[应用故障排除指南](../app-provisioning/isv-automatic-provisioning-multi-tenant-apps.md)以获取帮助。 此外，还可以查看故障排除文章，请参阅[登录到基于 SAML 的单一登录配置的应用时出现问题](/troubleshoot/azure/active-directory/troubleshoot-sign-in-saml-based-apps)。
 
 ### <a name="plan-rollback"></a>规划回滚
 
@@ -525,7 +523,7 @@ Azure AD 支持的应用和资源主要有两类用户：
 
 - 首先，迁移支持多个 IdP 的应用。 如果出现问题，你始终可更改为首选的 IdP 配置。
 
-- 确保你的应用体验有一个“反馈”按钮或指向你的支持人员的指针，以防出现问题 。
+- 确保你的应用体验有一个“反馈”按钮或指向你的支持人员的指针，以解决问题 。
 
 ### <a name="exit-criteria"></a>退出条件
 
@@ -555,7 +553,7 @@ Azure AD 支持的应用和资源主要有两类用户：
 
 使应用可被发现
 
-将用户指向 [MyApps](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension) 门户体验。 在此处，他们可以访问所有基于云的应用，使用 [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md)提供的应用，以及使用[应用程序代理](./application-proxy.md)的应用（前提是他们有权访问这些应用）。
+将用户指向 [MyApps](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension) 门户体验。 在此处，他们可以访问所有基于云的应用，使用 [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md)提供的应用，以及使用[应用程序代理](../app-proxy/application-proxy.md)的应用（前提是他们有权访问这些应用）。
 
 
 可指导用户了解如何发现其应用：
@@ -573,7 +571,7 @@ Azure AD 支持的应用和资源主要有两类用户：
 
 用户可下载 Intune Managed Browser：
 
-- 对于 Android 设备，可通过 [Google Play 商店](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser)下载
+- 对于 Android 设备，可通过 [Google Play 商店](https://play.google.com/store/apps/details?id=com.microsoft.intune)下载
 
 - 对于 Apple 设备，可通过[Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) 下载（或用户可下载[适用于 iOS 的 Apps 移动应用](https://apps.apple.com/us/app/my-apps-azure-active-directory/id824048653)）
 
@@ -583,7 +581,7 @@ Azure AD 支持的应用和资源主要有两类用户：
 
 - 搜索其应用并显示最近使用的应用
 
-- 自动将你在[应用程序代理](./application-proxy.md)中配置的内部 URL 转换为适当的外部 URL。 用户现可使用他们熟悉的链接（不管他们位于何处）。
+- 自动将你在[应用程序代理](../app-proxy/application-proxy.md)中配置的内部 URL 转换为适当的外部 URL。 用户现可使用他们熟悉的链接（不管他们位于何处）。
 
 允许用户从 Office.com 打开其应用。
 
@@ -595,7 +593,7 @@ Azure AD 提供了一个集中的访问位置来管理已迁移的应用。 转�
 
 - 保护用户对应用的访问。 启用[条件访问策略](../conditional-access/overview.md)或[标识保护](../identity-protection/overview-identity-protection.md)，以根据设备状态、位置等来保护用户对应用程序的访问。
 
-- 自动预配。 对于用户需要访问的各种第三方 SaaS 应用程序，设置[用户的自动预配](../app-provisioning/user-provisioning.md)。 除了创建用户标识外，这还包括在状态或角色发生更改时维护和删除用户标识。
+- 自动预配。 对于用户需要访问的各种第三方 SaaS 应用序，设置[自动预配用户](../app-provisioning/user-provisioning.md)。 除了创建用户标识外，这还包括在状态或角色发生更改时维护和删除用户标识。
 
 - 委托用户访问管理 。 根据需要，启用对应用的自助式应用程序访问，并分配一个业务审批者来批准对这些应用的访问。 对分配给应用集合的组使用[自助服务组管理](../enterprise-users/groups-self-service-management.md)。
 
@@ -605,7 +603,7 @@ Azure AD 提供了一个集中的访问位置来管理已迁移的应用。 转�
 
 你还可使用 [Azure 门户](https://portal.azure.com/)在一个集中的位置审核所有应用：
 
-- 使用企业应用程序 Audit 审核应用，或从 [Azure AD 报告 API](../reports-monitoring/concept-reporting-api.md) 访问相同的信息以集成到你最喜爱的工具中 。
+- 使用 **企业应用程序 Audit 审核应用，或从 [Azure AD 报告 API](../reports-monitoring/concept-reporting-api.md) 访问相同的信息以集成到你最喜爱的工具中。
 
 - 对于使用 OAuth/OpenID Connect 的应用，使用企业应用程序 Permissions 查看应用的权限 。
 

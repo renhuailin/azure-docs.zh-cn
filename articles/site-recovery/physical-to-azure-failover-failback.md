@@ -2,18 +2,15 @@
 title: 通过 Site Recovery 为物理服务器设置故障转移和故障回复
 description: 了解如何使用 Azure Site Recovery 将物理服务器故障转移到 Azure 以及故障回复到本地站点以进行灾难恢复
 services: site-recovery
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/17/2019
-ms.author: raynew
-ms.openlocfilehash: 2994f68e4159c7c4aa7d82bef7a5891deb5055a0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: 68427d264b6d2eea1a38e3b8bc5273409221c126
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017417"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579911"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>对复制到 Azure 的物理服务器进行故障转移和故障回复
 
@@ -46,7 +43,7 @@ ms.locfileid: "96017417"
 2. 在“故障转移”中，选择要故障转移到的“恢复点”   。 可以使用以下选项之一：
    - **最新**：此选项会首先处理发送到 Site Recovery 的所有数据。 它提供最低的 RPO（恢复点对象），因为故障转移后创建的 Azure VM 具有触发故障转移时复制到 Site Recovery 的所有数据。
    - **最新处理**：此选项将计算机故障转移到由 Site Recovery 处理的最新恢复点。 此选项提供低 RTO（恢复时间目标），因为无需费时处理未经处理的数据。
-   - **最新的应用一致**：此选项将计算机故障转移到 Site Recovery 处理的最新应用一致恢复点。
+   - **最新的应用一致**：此选项将计算机故障转移到由 Site Recovery 处理的最新应用一致恢复点。
    - **自定义**：指定一个恢复点。
 
 3. 如果希望 Site Recovery 在触发故障转移之前尝试关闭源计算机，请选择“在开始故障转移前关闭计算机”  。 即使关机失败，故障转移也仍会继续。 可以在“作业”  页上跟踪故障转移进度。
@@ -95,7 +92,7 @@ ms.locfileid: "96017417"
 
 此过程假定本地 VM 不可用。
 
-1. 在保管库 >**设置**  >  "**复制的项**" 中，右键单击已故障转移的计算机 >**重新保护**。
+1. 在保管库中，单击“设置” > “复制的项”，右键单击已故障转移的计算机，然后单击“重新保护”  。
 2. 在“重新保护”中，确保选择“Azure 到本地”   。
 3. 指定本地主目标服务器和进程服务器。
 4. 在“数据存储”中，选择要将本地磁盘恢复到的主目标数据存储。
@@ -126,7 +123,7 @@ ms.locfileid: "96017417"
 
 数据现应返回到本地站点，但不会复制到 Azure。 可按如下操作开始再次复制到 Azure：
 
-1. 在保管库中 > "**设置**" > "**复制的项**"，选择已故障回复的故障回复 vm，并单击 "**重新保护**"。
+1. 在保管库中，单击“设置”>“复制的项”，选择已故障恢复的 VM，然后单击“重新保护”  。
 2. 选择用于将复制数据发送到 Azure 的进程服务器，然后单击“确定”。
 
 

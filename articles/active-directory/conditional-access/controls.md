@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7585c91e42b2d3591532756c1ead9ea60b7035e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94837577"
 ---
 # <a name="custom-controls-preview"></a>自定义控件（预览版）
@@ -23,7 +23,7 @@ ms.locfileid: "94837577"
 自定义控件是 Azure Active Directory 的预览功能。 使用自定义控件时，用户将被重定向到兼容服务，以满足 Azure Active Directory 之外的身份验证要求。 若要满足此控件要求，用户浏览器将重定向到外部服务，执行任何所需的身份验证，然后重定向回 Azure Active Directory。 Azure Active Directory 将验证响应，如果用户已成功完成身份验证或验证，该用户将继续留在条件访问流中。
 
 > [!NOTE]
-> 有关我们计划自定义控件功能的更改的详细信息，请参阅2020年2月版 [存档了解新增](../fundamentals/whats-new-archive.md#upcoming-changes-to-custom-controls)功能。
+> 有关我们计划对自定义控件功能进行的更改的详细信息，请参阅 2020 年 2 月版[新增功能存档](../fundamentals/whats-new-archive.md#upcoming-changes-to-custom-controls)。
 
 ## <a name="creating-custom-controls"></a>创建自定义控件
 
@@ -53,7 +53,7 @@ ms.locfileid: "94837577"
 
 ## <a name="known-limitations"></a>已知的限制
 
-自定义控件不能用于需要 Azure AD 多重身份验证、Azure AD 自助服务密码重置 (SSPR) 的自助服务密码重置、满足多重身份验证声明要求、提升特权标识管理器中的角色 (PIM) ，作为 Intune 设备注册的一部分，或在将设备加入 Azure AD 时使用。
+在 Intune 设备注册过程中或者在将设备加入 Azure AD 时，不能将自定义控件与 Identity Protection 的需要 Azure AD 多重身份验证的自动化以及要求多重身份验证声明的 Azure AD 自助式密码重置 (SSPR) 配合使用来提升 Privileged Identity Manager (PIM) 中角色的权限。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,10 +4,10 @@ description: 本文介绍如何使用托管标识访问 Azure 服务总线实体
 ms.topic: article
 ms.date: 01/21/2021
 ms.openlocfilehash: bd985acd9b775d6baef0abf488952e28c17aef2a
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98954304"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>使用 Azure Active Directory 对托管标识进行身份验证，以便访问 Azure 服务总线资源
@@ -107,12 +107,12 @@ Azure Active Directory (Azure AD) 通过 [Azure 基于角色的访问控制 (Azu
 1. 在 Azure 门户中导航到服务总线命名空间，显示该命名空间的“概览”。 
 1. 选择左侧菜单上的“访问控制(标识和访问管理)”，显示服务总线命名空间的访问控制设置  。
 1.  选择“角色分配”  选项卡以查看角色分配列表。
-3.  选择 " **添加**"，然后选择 " **添加角色分配**"。
-4.  在 " **添加角色分配** " 页上，执行以下步骤：
-    1. 对于 " **角色**"，请选择要分配的服务总线角色。 在此示例中，它是 **Azure 服务总线数据所有者**。
-    1. 对于 "**分配访问权限**" 字段，请在 "**系统分配的托管标识**" 下选择 "**应用服务**"。 
-    1. 选择用于创建 web 应用的托管标识的 **订阅** 。
-    1. 选择创建的 web 应用的 **托管标识** 。 标识的默认名称与 web 应用的名称相同。 
+3.  依次选择“添加”、“添加角色分配”。
+4.  在“添加角色分配”页上，按照以下步骤操作：
+    1. 对于“角色”，选择要分配的服务总线角色。 在本例中是“Azure 服务总线数据所有者”。
+    1. 对于“访问权限分配对象”字段，选择“系统分配的托管标识”下的“应用服务”  。 
+    1. 选择在其中创建了 Web 应用的托管标识的订阅。
+    1. 选择为 Web 应用创建的托管标识。 标识的默认名称与 Web 应用的名称相同。 
     1. 然后选择“保存”。
         
         ![“添加角色分配”页](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
@@ -120,7 +120,7 @@ Azure Active Directory (Azure AD) 通过 [Azure 基于角色的访问控制 (Azu
     分配此角色后，Web 应用程序即可访问已定义范围内的服务总线实体。 
 
     > [!NOTE]
-    > 有关支持托管标识的服务的列表，请参阅 [支持 Azure 资源的托管标识的服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)。
+    > 如需支持托管标识的服务列表，请参阅[支持 Azure 资源托管标识的服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)。
 
 ### <a name="run-the-app"></a>运行应用程序
 现在，修改你创建的 ASP.NET 应用程序的默认页面。 可以使用[此 GitHub 存储库](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet)中的 Web 应用程序代码。  
