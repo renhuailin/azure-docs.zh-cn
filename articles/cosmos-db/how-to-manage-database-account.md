@@ -5,14 +5,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 01/06/2021
+ms.date: 04/25/2021
 ms.author: mjbrown
-ms.openlocfilehash: d542e2b4e5db86fd3354514790e718f0694a09a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ce01bf2f285513e6422f16de927fd532f148f9d
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102489746"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228741"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>管理 Azure Cosmos 帐户
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -38,6 +38,9 @@ ms.locfileid: "102489746"
 请参阅[使用 Azure 资源管理器模板创建 Azure Cosmos DB 帐户](./manage-with-templates.md)
 
 ## <a name="addremove-regions-from-your-database-account"></a>在数据库帐户中添加/删除区域
+
+> [!TIP]
+> 添加新区域时，必须将所有数据完全复制并提交到新区域，然后才能将该区域标记为可用。 此操作所需的时间取决于帐户中存储的数据量。
 
 ### <a name="azure-portal"></a><a id="add-remove-regions-via-portal"></a>Azure 门户
 
@@ -115,7 +118,7 @@ ms.locfileid: "102489746"
             "type": "Microsoft.DocumentDb/databaseAccounts",
             "kind": "GlobalDocumentDB",
             "name": "[parameters('name')]",
-            "apiVersion": "2019-08-01",
+            "apiVersion": "2021-03-15",
             "location": "[parameters('location')]",
             "tags": {},
             "properties": {

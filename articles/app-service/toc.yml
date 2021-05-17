@@ -11,10 +11,8 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: ASP.NET Core
-      href: quickstart-dotnetcore.md
     - name: ASP.NET
-      href: quickstart-dotnet-framework.md
+      href: quickstart-dotnetcore.md
     - name: Node.js
       href: quickstart-nodejs.md
     - name: PHP
@@ -117,7 +115,7 @@
         - name: OS 和运行时修补
           href: overview-patch-os-runtime.md
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/app-service-security-baseline?toc=/azure/app-service/toc.json
         - name: Azure Policy 的安全控件
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -187,7 +185,9 @@
               href: deploy-ci-cd-custom-container.md
             - name: 从本地 Git 进行部署
               href: deploy-local-git.md
-            - name: 适用于容器的 GitHub 操作
+            - name: GitHub 操作
+              href: deploy-github-actions.md
+            - name: 适用于容器的 GitHub Actions
               href: deploy-container-github-action.md
             - name: 使用模板进行部署
               href: deploy-complex-application-predictably.md
@@ -217,8 +217,6 @@
               href: configure-authentication-provider-facebook.md
             - name: 使用 Google 进行身份验证
               href: configure-authentication-provider-google.md
-            - name: 使用 Microsoft 帐户进行身份验证
-              href: configure-authentication-provider-microsoft.md
             - name: 使用 Twitter 进行身份验证
               href: configure-authentication-provider-twitter.md
             - name: 使用 OpenID Connect 提供程序进行身份验证（预览）
@@ -320,8 +318,10 @@
       href: ../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=app-service'
-    - name: 迁移助手指南
-      href: 'https://github.com/Azure/App-Service-Migration-Assistant/tree/master/MigrationDocs'
+    - name: Kudu 服务
+      href: resources-kudu.md
+    - name: 迁移助手
+      href: app-service-migration-assistant.md
     - name: 最佳做法
       href: app-service-best-practices.md
     - name: 示例

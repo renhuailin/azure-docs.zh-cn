@@ -6,8 +6,8 @@
       href: overview.md
     - name: 发行说明
       href: release-notes.md
-    - name: 已知问题
-      href: known-issues.md
+    - name: 数据集合和报表
+      href: privacy-data-collection-and-reporting.md
 - name: 快速入门
   items:
     - name: 创建数据控制器
@@ -44,16 +44,24 @@
               href: /sql/azdata/install/deploy-install-azdata-pip?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
     - name: 创建数据控制器
       items:
-        - name: Azure Data Studio
-          href: create-data-controller-azure-data-studio.md
-        - name: Azure 门户
-          href: create-data-controller-resource-in-azure-portal.md
-        - name: Azure Data CLI (azdata)
-          href: create-data-controller-using-azdata.md
-        - name: Kubernetes 工具
-          href: create-data-controller-using-kubernetes-native-tools.md
-        - name: 应用 SCC (OpenShift)
-          href: how-to-apply-security-context-constraint.md
+        - name: 间接连接模式
+          items:
+            - name: Azure Data Studio
+              href: create-data-controller-azure-data-studio.md
+            - name: 门户
+              href: create-data-controller-resource-in-azure-portal.md
+            - name: Azure Data CLI (azdata)
+              href: create-data-controller-using-azdata.md
+            - name: Kubernetes 工具
+              href: create-data-controller-using-kubernetes-native-tools.md
+            - name: 应用 SCC (OpenShift)
+              href: how-to-apply-security-context-constraint.md
+        - name: 直接连接模式
+          items:
+            - name: 先决条件
+              href: deploy-data-controller-direct-mode-prerequisites.md
+            - name: 部署
+              href: deploy-data-controller-direct-mode.md
     - name: 在已启用 Azure Arc 的数据服务中的常见体验
       items:
         - name: 使用仪表板进行监视 (Azure Data Studio)
@@ -106,6 +114,8 @@
           href: supported-versions-postgres-hyperscale.md
         - name: 创建 Postgres 超大规模服务器组 (CLI)
           href: create-postgresql-hyperscale-server-group.md
+        - name: 创建 Postgres 超大规模服务器组（门户）
+          href: create-postgresql-hyperscale-server-group-azure-portal.md
         - name: 创建 Postgres 超大规模服务器组 (Azure Data Studio)
           href: create-postgresql-hyperscale-server-group-azure-data-studio.md
         - name: 创建 Postgres 超大规模服务器组 - Kubernetes 原生工具
@@ -140,7 +150,7 @@
               href: delete-postgresql-hyperscale-server-group.md
             - name: 列出服务器组
               href: list-server-groups-postgres-hyperscale.md
-            - name: 监视、日志分析、账单信息、Azure 门户
+            - name: 监视、日志分析、账单信息（门户）
               href: monitoring-log-analytics-azure-portal-postgresql.md
             - name: 安全
               href: configure-security-postgres-hyperscale.md
@@ -180,7 +190,7 @@
           items:
             - name: 配置
               href: configure-managed-instance.md
-            - name: 监视、日志分析、账单信息、Azure 门户
+            - name: 监视、日志分析、账单信息（门户）
               href: monitoring-log-analytics-azure-portal-managed-instance.md
             - name: 高可用性
               href: managed-instance-high-availability.md

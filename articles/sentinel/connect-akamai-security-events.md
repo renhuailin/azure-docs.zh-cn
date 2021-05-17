@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
 ms.openlocfilehash: 8aa5a52a06713b4f00b43205a57148049a8ef8da
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101711954"
 ---
 # <a name="connect-your-akamai-security-events-collector-to-azure-sentinel"></a>将 Akamai 安全事件收集器连接到 Azure Sentinel
@@ -47,9 +47,9 @@ ms.locfileid: "101711954"
 
 1. 按照“配置”下的“说明”选项卡中的说明进行操作 ：
 
-    1. 在“1.Linux Syslog 代理配置”下 - 如果尚未运行日志转发器，或者需要其他日志转发器，请执行此步骤。 有关调整大小的信息、更多详细说明以及深入介绍，请参阅 Azure Sentinel 文档中的[步骤 1：部署日志转发器](connect-cef-agent.md)。
+    1. 在“1. Linux Syslog 代理配置”下 — 如果你还没有运行日志转发器，或者如果你需要其他日志转发器，请执行此步骤。 有关调整大小的信息、更多详细说明以及深入介绍，请参阅 Azure Sentinel 文档中的[步骤 1：部署日志转发器](connect-cef-agent.md)。
 
-    1. 在“2.将通用事件格式(CEF)日志转发到 Syslog 代理”下 - 按照 Akamai 的说明来[配置 SIEM 集成](https://developer.akamai.com/tools/integrations/siem)并[设置 CEF 连接器](https://developer.akamai.com/tools/integrations/siem/siem-cef-connector)。 此连接器使用 SIEM OPEN API 以接近实时的方式从 Akamai 解决方案接收安全事件，并将这些事件从 JSON 转换为 CEF 格式。
+    1. 在“2. 将通用事件格式 (CEF) 日志转发到 Syslog 代理”下 - 按照 Akamai 的说明来[配置 SIEM 集成](https://developer.akamai.com/tools/integrations/siem)并[设置 CEF 连接器](https://developer.akamai.com/tools/integrations/siem/siem-cef-connector)。 此连接器使用 SIEM OPEN API 以接近实时的方式从 Akamai 解决方案接收安全事件，并将这些事件从 JSON 转换为 CEF 格式。
     
         此配置应该包含以下元素：
     
@@ -58,7 +58,7 @@ ms.locfileid: "101711954"
         - 日志格式 – CEF
         - 日志类型 – 所有可用类型
 
-    1. 在“3.验证连接”下 - 通过复制连接器页上的命令并在日志转发器上运行该命令来验证数据引入。 有关更多详细说明和介绍，请参阅 Azure Sentinel 文档中的[步骤 3：验证连接性](connect-cef-verify.md)。
+    1. 在“3. 验证连接”下 — 通过复制连接器页上的命令并在日志转发器上运行以验证数据引入。 有关更多详细说明和介绍，请参阅 Azure Sentinel 文档中的[步骤 3：验证连接性](connect-cef-verify.md)。
 
         可能需要长达 20 分钟的时间，日志才会开始显示在 Log Analytics 中。
 

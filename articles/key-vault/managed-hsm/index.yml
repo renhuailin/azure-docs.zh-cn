@@ -11,14 +11,14 @@ metadata:
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 09/15/2020
-  ms.openlocfilehash: be85f521d1db7cdcad9393de52ef1846989e6245
-  ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+  ms.openlocfilehash: 7e4fa839d4bd85ef6a5d560ee19ddb87fe660ced
+  ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/10/2021
-  ms.locfileid: "100097953"
+  ms.lasthandoff: 04/21/2021
+  ms.locfileid: "107817515"
 landingContent:
-- title: 关于 Azure Key Vault 托管的 HSM（预览版）
+- title: 关于 Azure Key Vault 托管的 HSM
   linkLists:
   - linkListType: overview
     links:
@@ -80,7 +80,7 @@ landingContent:
       url: ../general/overview.md
     - text: 基本概念
       url: ../general/basic-concepts.md
-    - text: 安全概述
-      url: ../general/security-overview.md
+    - text: 安全功能
+      url: ../general/security-features.md
     - text: 软删除概述
       url: ../general/soft-delete-overview.md

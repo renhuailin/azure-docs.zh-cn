@@ -1,18 +1,19 @@
 ---
-title: Azure VPN 网关：概述 - 高度可用的网关配置
-description: 本文概述使用 Azure VPN 网关的高可用性配置选项。
+title: 关于高可用网关配置
+titleSuffix: Azure VPN Gateway
+description: 了解使用 Azure VPN 网关的高可用配置选项。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: d193850461eeaa5041e1cfd6d64def503ad676d4
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: f7b36b65ee14e66de7b35d38d835fb5f2d5dd229
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374754"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205460"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>高可用性跨界连接与 VNet 到 VNet 连接
 本文概述使用 Azure VPN 网关的跨界连接和 VNet 到 VNet 连接的高可用性配置选项。

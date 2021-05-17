@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.openlocfilehash: 674f267d3d99dd22c1ae06b6d32587761d5983ce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93124911"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>商业市场中的 Azure AD 和 SaaS 可交易产品/服务
@@ -51,10 +51,10 @@ Azure AD 可实现商业市场解决方案的无缝购买、履行和管理。 �
 
 | 过程步骤 | 发布者操作 | 建议或要求（针对发布者） |
 | ------------ | ------------- | ------------- |
-| 1.买家使用 Azure ID 标识登录到商业市场，并选择一个 SaaS 产品/服务。 | 发布者无需进行操作。 | 不适用 |
-| 2.购买后，买家在 Azure 市场中选择“配置帐户”或在 AppSource 中选择“立即配置”，此操作会将买家定向到此产品/服务的发布者登陆页。 买家必须能够使用 Azure AD SSO 登录到发布者的 SaaS 应用程序，并且必须仅被要求最低程度同意，无需 Azure AD 管理员批准。 | 设计产品/服务的[登陆页](azure-ad-transactable-saas-landing-page.md)，使其接收使用 Azure AD 或 Microsoft 帐户 (MSA) 标识的用户，并辅助所需的任何其他预配或设置。 | 必需 |
-| 3.发布者从 SaaS 履行 API 请求购买的详细信息。 | 使用从登陆页的应用程序 ID 生成的[访问令牌](./partner-center-portal/pc-saas-registration.md)，[调用解析终结点](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription)来检索有关购买的详细信息。 | 必需 |
-| 4.通过 Azure AD 和 Microsoft Graph API，发布者会收集在发布者的 SaaS 应用程序中预配买家所需的公司和用户详细信息。  | 分解 Azure AD 用户令牌以查找名称和电子邮件，或[调用 Microsoft Graph API](/graph/use-the-api) 并使用委托的权限来[检索](/graph/api/user-get)有关登录用户的信息。 | 必需 |
+| 1. 买家使用 Azure ID 标识登录到商业市场，并选择一个 SaaS 产品/服务。 | 发布者无需进行操作。 | 不适用 |
+| 2. 购买后，买家在 Azure 市场中选择“配置帐户”或在 AppSource 中选择“立即配置”，此操作会将买家定向到此产品/服务的发布者登陆页。 买家必须能够使用 Azure AD SSO 登录到发布者的 SaaS 应用程序，并且必须仅被要求最低程度同意，无需 Azure AD 管理员批准。 | 设计产品/服务的[登陆页](azure-ad-transactable-saas-landing-page.md)，使其接收使用 Azure AD 或 Microsoft 帐户 (MSA) 标识的用户，并辅助所需的任何其他预配或设置。 | 必需 |
+| 3. 发布者从 SaaS 履行 API 请求购买的详细信息。 | 使用从登陆页的应用程序 ID 生成的[访问令牌](./partner-center-portal/pc-saas-registration.md)，[调用解析终结点](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription)来检索有关购买的详细信息。 | 必需 |
+| 4. 通过 Azure AD 和 Microsoft Graph API，发布者会收集在发布者的 SaaS 应用程序中预配买家所需的公司和用户详细信息。  | 分解 Azure AD 用户令牌以查找名称和电子邮件，或[调用 Microsoft Graph API](/graph/use-the-api) 并使用委托的权限来[检索](/graph/api/user-get)有关登录用户的信息。 | 必需 |
 ||||
 
 ## <a name="process-steps-for-subscription-management"></a>订阅管理过程步骤
@@ -67,8 +67,8 @@ Azure AD 可实现商业市场解决方案的无缝购买、履行和管理。 �
 
 | 过程步骤 | 发布者操作 | 建议或要求（针对发布者） |
 | ------------ | ------------- | ------------- |
-| 5.发布者通过 SaaS 履行 API 管理 SaaS 应用程序的订阅。 | 通过 [SaaS 履行 API](./partner-center-portal/pc-saas-fulfillment-api-v2.md) 处理订阅更改和其他管理任务。<br><br>此步骤需要过程步骤 3 中所述的访问令牌。 | 必需 |
-| 6.使用计量定价时，发布者将使用情况事件发送到计量服务 API。 | 如果 SaaS 应用使用基于使用情况的计费方式，请通过[市场计量服务 API](./partner-center-portal/marketplace-metering-service-apis.md) 发出使用情况通知。<br><br>此步骤需要步骤 3 中所述的访问令牌。 | 针对计量必需 |
+| 5. 发布者通过 SaaS 履行 API 管理 SaaS 应用程序的订阅。 | 通过 [SaaS 履行 API](./partner-center-portal/pc-saas-fulfillment-api-v2.md) 处理订阅更改和其他管理任务。<br><br>此步骤需要过程步骤 3 中所述的访问令牌。 | 必需 |
+| 6. 使用计量定价时，发布者将使用情况事件发送到计量服务 API。 | 如果 SaaS 应用使用基于使用情况的计费方式，请通过[市场计量服务 API](./partner-center-portal/marketplace-metering-service-apis.md) 发出使用情况通知。<br><br>此步骤需要步骤 3 中所述的访问令牌。 | 针对计量必需 |
 ||||
 
 ## <a name="process-steps-for-user-management"></a>用户管理过程步骤
@@ -81,13 +81,13 @@ Azure AD 可实现商业市场解决方案的无缝购买、履行和管理。 �
 
 | 过程步骤 | 发布者操作 | 建议或要求（针对发布者） |
 | ------------ | ------------- | ------------- |
-| 7.买家公司的 Azure AD 管理员可以选择通过 Azure AD 来管理用户和组的访问权限。 | 如果已为用户设置 Azure AD SSO（步骤 9），则无需发布者进行任何操作就可启用。 | 不适用 |
-| 8.Azure AD 预配服务在 Azure AD 与发布者的 SaaS 应用程序之间传达更改。 | [实现 SCIM 终结点](../active-directory/app-provisioning/use-scim-to-provision-users-and-groups.md)，以便在添加或删除用户时接收来自 Azure AD 的更新。 | 建议 |
-| 9.在授权和预配应用程序后，买家公司的用户可以使用 Azure AD SSO 登录到发布者的 SaaS 应用程序。 | 通过[使用 Azure AD SSO](../active-directory/manage-apps/what-is-single-sign-on.md)，用户可以使用一个帐户登录一次发布者的 SaaS 应用程序。 | 建议 |
+| 7. 买家公司的 Azure AD 管理员可以选择通过 Azure AD 来管理用户和组的访问权限。 | 如果已为用户设置 Azure AD SSO（步骤 9），则无需发布者进行任何操作就可启用。 | 不适用 |
+| 8. Azure AD 预配服务在 Azure AD 与发布者的 SaaS 应用程序之间传达更改。 | [实现 SCIM 终结点](../active-directory/app-provisioning/use-scim-to-provision-users-and-groups.md)，以便在添加或删除用户时接收来自 Azure AD 的更新。 | 建议 |
+| 9. 在授权和预配应用程序后，买家公司的用户可以使用 Azure AD SSO 登录到发布者的 SaaS 应用程序。 | 通过[使用 Azure AD SSO](../active-directory/manage-apps/what-is-single-sign-on.md)，用户可以使用一个帐户登录一次发布者的 SaaS 应用程序。 | 建议 |
 ||||
 
 ## <a name="next-steps"></a>后续步骤
 
 - [为商业市场中的可交易 SaaS 产品/服务构建登陆页](azure-ad-transactable-saas-landing-page.md)
-- [针对商业市场中的免费或试用版 SaaS 产品/服务构建登陆页](azure-ad-free-or-trial-landing-page.md)
+- [针对商业市场中的免费或试用版 SaaS 套餐构建登录页](azure-ad-free-or-trial-landing-page.md)
 - [如何在商业市场中创建 SaaS 产品/服务](create-new-saas-offer.md)

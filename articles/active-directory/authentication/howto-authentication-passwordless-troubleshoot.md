@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 435b27255ce58a3541d6b0d3a76bdf4080aa3962
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101648769"
 ---
 # <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad"></a>Azure AD 中 FIDO2 安全密钥的混合部署的故障排除 
@@ -59,7 +59,7 @@ ms.locfileid: "101648769"
 
 如果可以使用此功能看到 DC，则表明用户的密码可能在他们登录之后发生了更改，或者，存在其他问题。 请按下一部分中的详细介绍收集日志，以便 Microsoft 支持团队进行调试。
 
-## <a name="troubleshoot"></a>故障排除
+## <a name="troubleshoot"></a>疑难解答
 
 有两个方面可以进行问题排查 - [Windows 客户端问题](#windows-client-issues)或[部署问题](#deployment-issues)。
 
@@ -76,7 +76,7 @@ ms.locfileid: "101648769"
 1. 选择“重新创建我的问题”，然后单击“开始捕获” 。
 1. 使用 FIDO2 安全密钥锁定和解锁计算机。 如果出现该问题，请尝试使用其他凭据来解锁。
 1. 返回到反馈中心，选择“停止捕获”，并提交反馈 。
-1. 转到“反馈”页，然后转到“我的反馈”选项卡 。选择你最近提交的反馈。
+1. 前往“反馈”页，然后前往“我的反馈”选项卡。选择最近提交的反馈。 
 1. 选择右上角的“共享”按钮，以获取该反馈的链接。 在打开支持案例时，或在回复为现有支持案例分配的工程师时，请包含此链接。
 
 以下事件日志和注册表项信息会被收集：
@@ -87,7 +87,7 @@ ms.locfileid: "101648769"
 * HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PasswordForWork\* [\*]
 * HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Policies\PasswordForWork\* [\*]
 
-**诊断信息**
+诊断信息
 
 * 实时内核转储
 * 收集 AppX 包信息

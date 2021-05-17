@@ -1,0 +1,57 @@
+### YamlMime:Landing
+title: Azure Active Directory 应用程序代理文档
+summary: Azure Active Directory 应用程序代理为专用应用程序提供安全的远程访问和云级安全性。
+metadata:
+  title: 应用程序代理文档
+  description: Azure Active Directory 应用程序代理为专用应用程序提供安全的远程访问和云级安全性。
+  ms.service: active-directory
+  ms.subservice: app-proxy
+  ms.workload: identity
+  ms.topic: landing-page
+  ms.date: 04/27/2021
+  author: kenwith
+  ms.author: kenwith
+  manager: mtillman
+  ms.openlocfilehash: a159d75eee20b10f9f7382044c7ccadb9da384c2
+  ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 04/28/2021
+  ms.locfileid: "108175129"
+landingContent:
+- title: 关于应用程序代理
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是应用程序代理？
+      url: what-is-application-proxy.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 查看你的应用
+      url: ../manage-apps/view-applications-portal.md
+    - text: 添加应用
+      url: ../manage-apps/add-application-portal.md
+- title: 了解单一登录
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: 单一登录概念
+      url: ../manage-apps/what-is-single-sign-on.md
+    - text: 单一登录选项
+      url: ../manage-apps/sso-options.md
+- title: 开发新应用
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 开发人员指南
+      url: ../develop/v2-howto-app-gallery-listing.md
+    - text: 了解平台
+      url: ../develop/v2-overview.md
+- title: Docs 中的新增内容
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Docs 中的新增内容
+      url: whats-new-docs.md

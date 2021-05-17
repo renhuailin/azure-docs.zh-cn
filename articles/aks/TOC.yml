@@ -51,7 +51,7 @@
     - name: 安全性
       items:
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/aks-security-baseline?context=/azure/aks/context/aks-context
         - name: 应用程序和群集的安全性
           href: concepts-security.md
         - name: Azure Policy 的安全控件
@@ -136,8 +136,10 @@
       items:
         - name: 缩放 AKS 群集
           href: scale-cluster.md
-        - name: 停止 AKS 群集（预览版）
+        - name: 停止 AKS 群集
           href: start-stop-cluster.md
+        - name: 使用计划内维护（预览版）
+          href: planned-maintenance.md
         - name: 升级 AKS 群集
           href: upgrade-cluster.md
         - name: 使用运行时间 SLA
@@ -207,6 +209,8 @@
               href: azure-disk-csi.md
             - name: Azure 文件存储 CSI 驱动程序（预览版）
               href: azure-files-csi.md
+            - name: CSI 机密存储驱动程序（预览版）
+              href: csi-secrets-store-driver.md
     - name: 配置网络
       items:
         - name: 创建虚拟网络或使用现有虚拟网络
@@ -268,7 +272,7 @@
           href: use-pod-security-policies.md
         - name: 定义 API 服务器授权 IP 范围
           href: api-server-authorized-ip-ranges.md
-        - name: 利用 Azure Policy 控制部署（预览版）
+        - name: 利用 Azure Policy 控制部署
           href: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/aks/toc.json
         - name: 更新群集凭据
           href: update-credentials.md
@@ -293,6 +297,8 @@
           href: enable-host-encryption.md
     - name: 监视和日志记录
       items:
+        - name: 查看群集指标
+          href: view-metrics.md
         - name: 用于容器的 Azure Monitor
           href: ../azure-monitor/containers/container-insights-overview.md
           maintainContext: true
@@ -347,6 +353,8 @@
       items:
         - name: 关于服务网格
           href: servicemesh-about.md
+        - name: Open Service Mesh AKS 附加产品（预览版）
+          href: servicemesh-osm-about.md
         - name: 使用 Istio
           items:
             - name: 关于 Istio

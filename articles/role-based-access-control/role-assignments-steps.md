@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 02/15/2021
+ms.date: 04/14/2021
 ms.author: rolyon
-ms.openlocfilehash: 081335779ffc4b3a6ddf09e56b773c6d34b210be
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 40a17da6383fb1f368c74a82fefa71991cdc1b19
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100556040"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517668"
 ---
 # <a name="steps-to-assign-an-azure-role"></a>分配 Azure 角色的步骤
 
@@ -79,11 +79,13 @@ ms.locfileid: "100556040"
 
 如果用户帐户无权在订阅内分配角色，则将显示错误消息“你的帐户无权执行操作 'Microsoft.Authorization/roleAssignments/write'”。在这种情况下，请与你的订阅管理员联系，因为他们可以代表你分配权限。
 
+如果使用服务主体来分配角色，可能会收到错误信息：“权限不足，无法完成操作”。 此错误很可能是因为 Azure 尝试在 Azure Active Directory (Azure AD) 中查找被分派人标识，但服务主体在默认情况下无法读取 Azure AD。 在这种情况下，你需要授予服务主体读取目录中数据的权限。 或者，如果你使用的是 Azure CLI，则可使用被分派人对象 ID 创建角色分配，以跳过 Azure AD 查找。 有关详细信息，请参阅 [Azure RBAC 疑难解答](troubleshooting.md)。
+
 ## <a name="step-5-assign-role"></a>步骤 5。 分配角色
 
-了解安全主体、角色和范围后，便可以分配角色了。 可使用 Azure 门户、Azure PowerShell、Azure CLI、Azure SDK 或 REST API 来分配角色。 每个订阅中最多可以包含 **2000** 个角色分配。 此限制包括订阅、资源组和资源范围内的角色分配。 每个管理组中最多可以有 500 个角色分配。
+了解安全主体、角色和范围后，便可以分配角色了。 可使用 Azure 门户、Azure PowerShell、Azure CLI、Azure SDK 或 REST API 分配角色。 每个订阅中最多可以包含 **2000** 个角色分配。 此限制包括订阅、资源组和资源范围内的角色分配。 每个管理组中最多可以有 500 个角色分配。
 
-请查看以下文章，了解有关如何分配角色的详细步骤。
+请参阅以下文章，了解分配角色的详细步骤。
 
 - [使用 Azure 门户分配 Azure 角色](role-assignments-portal.md)
 - [使用 Azure PowerShell 分配 Azure 角色](role-assignments-powershell.md)

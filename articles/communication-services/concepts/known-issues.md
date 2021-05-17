@@ -8,18 +8,18 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: troubleshooting
 ms.service: azure-communication-services
-ms.openlocfilehash: b9ed71a8fc9346ecd454eba98dcbb3b13186eba2
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 5fe3760d5baeae4b532e0af7e28b090d170e0945
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276036"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331297"
 ---
 # <a name="known-issues-azure-communication-services-calling-sdks"></a>已知问题：Azure 通信服务通话 SDK
 本文介绍了与 Azure 通信服务通话 SDK 相关的限制和已知问题。
 
 > [!IMPORTANT]
-> 有多个因素可能会影响通话体验的质量。 若要详细了解通信服务网络配置和测试最佳做法，请查看[网络要求](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/network-requirements)文档。
+> 有多个因素可能会影响通话体验的质量。 若要详细了解通信服务网络配置和测试最佳做法，请查看[网络要求](./voice-video-calling/network-requirements.md)文档。
 
 
 ## <a name="javascript-sdk"></a>JavaScript SDK
@@ -38,7 +38,7 @@ ms.locfileid: "106276036"
 
 
 ### <a name="its-not-possible-to-render-multiple-previews-from-multiple-devices-on-web"></a>无法在 Web 中从多个设备呈现多个预览
-这是一个已知限制。 有关详细信息，请查看[通话 SDK 概述](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features)。
+这是一个已知限制。 有关详细信息，请查看[通话 SDK 概述](./voice-video-calling/calling-sdk-features.md)。
 
 ### <a name="enumerating-devices-isnt-possible-in-safari-when-the-application-runs-on-ios-or-ipados"></a>应用程序在 iOS 或 iPadOS 上运行时，无法在 Safari 中枚举设备
 
@@ -110,4 +110,16 @@ iOS 上的 Safari 不支持蓝牙耳机。 你的蓝牙设备将不在可用麦�
 <br/>操作系统：iOS
 
 ###  <a name="sometimes-it-takes-a-long-time-to-render-remote-participant-videos"></a>有时需要很长时间才能呈现远程参与者的视频
-在进行群组通话期间，用户 A 发送视频，然后用户 B 加入通话 。 有时，用户 B 看不到用户 A 的视频，或者用户 A 的视频延迟很长时间才开始呈现。 造成此问题的原因可能是网络环境需要进一步配置。 有关网络配置指导，请查看[网络要求](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/network-requirements)文档。
+在进行群组通话期间，用户 A 发送视频，然后用户 B 加入通话 。 有时，用户 B 看不到用户 A 的视频，或者用户 A 的视频延迟很长时间才开始呈现。 造成此问题的原因可能是网络环境需要进一步配置。 有关网络配置指导，请查看[网络要求](./voice-video-calling/network-requirements.md)文档。
+
+### <a name="using-3rd-party-libraries-to-access-gum-during-the-call-may-result-in-audio-loss"></a>在通话期间使用第三方库来访问 GUM 可能会导致音频丢失
+在应用程序内部单独使用 getUserMedia 将导致音频流丢失，因为第三方库会接管从 ACS 库进行的设备访问。
+建议开发人员执行以下操作：
+1. 通话期间，不要使用在内部采用 GetUserMedia API 的第三方库。
+2. 如果仍然需要使用第三方库，只能更改所选设备（如果用户有多台设备）或重启通话来进行恢复。
+
+<br/>浏览器：Safari
+<br/>操作系统：iOS
+
+#### <a name="possible-causes"></a>可能的原因
+在某些浏览器（如 Safari）中，从同一设备获取自己的流会产生争用条件这一负面影响。 从其他设备获取流可能会导致用户 USB/IO 带宽不足，并且 sourceUnavailableError 率将激增。  

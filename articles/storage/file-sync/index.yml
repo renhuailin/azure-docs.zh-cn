@@ -1,0 +1,53 @@
+### YamlMime:Landing
+title: Azure 文件同步文档
+summary: 借助 Azure 文件同步，可以在 Azure 文件存储中集中管理组织的文件共享，同时又能保留 Windows 文件服务器的灵活性、性能和兼容性。
+metadata:
+  title: Azure 文件同步文档
+  description: 在 Windows、Linux 和 macOS 的云或本地装载文件共享。 使用 Azure 文件同步缓存 Windows Server 上的 Azure 文件共享，以便进行本地访问。
+  services: storage
+  ms.service: storage
+  ms.subservice: files
+  ms.topic: landing-page
+  ms.collection: collection
+  author: roygara
+  ms.author: rogarana
+  ms.date: 04/19/2021
+  ms.openlocfilehash: 1a384985bbd58285ec1a556f2840f27994c4c40b
+  ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 04/20/2021
+  ms.locfileid: "107795427"
+landingContent:
+- title: 关于 Azure 文件同步
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure 文件同步规划指南
+      url: file-sync-planning.md
+    - text: 什么是 Azure 文件同步？
+      url: file-sync-introduction.md
+    - text: 云分层概述
+      url: file-sync-cloud-tiering-overview.md
+- title: 入门
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 创建/使用文件共享 - Windows
+      url: ../files/storage-files-quick-create-use-windows.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json
+    - text: 通过 Azure 文件同步管理服务器
+      url: file-sync-server-registration.md
+  - linkListType: tutorial
+    links:
+    - text: 使用 Azure 文件同步扩展 Windows 文件服务器
+      url: file-sync-extend-servers.md
+- title: 疑难解答
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure 文件存储 Windows 故障排除
+      url: ../files/storage-troubleshoot-windows-file-connection-problems.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json
+    - text: Azure 文件存储性能故障排除
+      url: ../files/storage-troubleshooting-files-performance.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json
+    - text: Azure 文件同步故障排除
+      url: file-sync-troubleshoot.md

@@ -209,7 +209,7 @@
         - name: Azure 磁盘加密
           href: disk-encryption-overview.md
         - name: Azure 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/virtual-machine-scale-sets-security-baseline?toc=/azure/virtual-machine-scale-sets/TOC.json
       maintainContext: true
     - name: 监视
       href: ../azure-monitor/vm/monitor-vm-azure.md
@@ -223,7 +223,7 @@
       href: ../virtual-machines/put-calls-create-or-update.md
       maintainContext: true
     - name: 规模集常见问题解答
-      href: virtual-machine-scale-sets-faq.md
+      href: virtual-machine-scale-sets-faq.yml
 - name: 操作方式
   items:
     - name: 规划和设计
@@ -348,6 +348,8 @@
               href: ../virtual-machines/dedicated-hosts-portal.md
         - name: Azure 现成虚拟机
           href: use-spot.md
+        - name: 适用于 Linux 的 Azure 混合权益
+          href: azure-hybrid-benefit-linux.md
     - name: 管理
       items:
         - name: 常见管理任务
@@ -413,11 +415,4 @@
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
 - name: 资源
-- name: 实例数
-  items:
-    - name: 购买选项
-      items: null
-    - name: Azure 混合权益
-      items:
-        - name: Linux
-          href: azure-hybrid-benefit-linux.md
+  items: null

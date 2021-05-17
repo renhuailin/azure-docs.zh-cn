@@ -1,14 +1,14 @@
 ---
 title: CAF 基础蓝图示例概述
 description: 适用于 Azure 的云采用框架 (CAF) 基础蓝图示例的概述和体系结构。
-ms.date: 09/14/2020
+ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: 77e8b79ec7cf217161099808cee4364e31c6d6dd
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: b605c1af5fcb2a37663d71fecceea169692a5ab9
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950272"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757828"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>适用于 Azure 的 Microsoft 云采用框架基础蓝图示例概述
 
@@ -19,7 +19,7 @@ ms.locfileid: "91950272"
 CAF 基础蓝图示例在 Azure 中部署建议的基础结构资源，这些资源可供组织用来将管理其云资产所需的基础控制实施到位。 此示例将部署并强制实施资源、策略和模板，从而使组织能够自信地开始使用 Azure。
 
 :::image type="complex" source="../../media/caf-blueprints/caf-foundation-architecture.png" alt-text="C A F 基础，图像说明了作为 C A F 指南的一部分安装（以便为开始使用 Azure 创建基础）的内容。" border="false":::
-   介绍 Azure 体系结构，该体系结构是通过部署 C A F 基础蓝图来实现的。  它适用于具有资源组的订阅，该订阅包含用于存储日志的存储帐户、Log analytics 配置为在存储帐户中存储。 它还介绍了如何使用 Azure 安全中心标准设置配置 Azure Key Vault。 所有这些核心基础结构均使用 Azure Active Directory 进行访问，并使用 Azure Policy 强制实施。     
+   介绍 Azure 体系结构，该体系结构是通过部署 C A F 基础蓝图来实现的。 它适用于具有资源组的订阅，该订阅包含用于存储日志的存储帐户、配置为在存储帐户中存储的 Log Analytics。 它还介绍了如何使用 Azure 安全中心标准设置配置 Azure Key Vault。 所有这些核心基础结构均使用 Azure Active Directory 进行访问，并使用 Azure Policy 强制实施。
 :::image-end:::
 
 此实现纳入多项 Azure 服务，这些服务用于提供安全的、全面受监视的、面向企业的基础。 此环境包括：
@@ -34,9 +34,9 @@ CAF 基础蓝图示例在 Azure 中部署建议的基础结构资源，这些资
     - 资源和资源组允许的 Azure 区域
     - 允许的存储帐户 SKU（在部署时选择）
     - 允许的 Azure VM SKU（在部署时选择）
-    - 要求部署网络观察程序 
+    - 要求部署网络观察程序
     - 要求 Azure 存储帐户安全传输加密
-    - 拒绝资源类型（在部署时选择）  
+    - 拒绝资源类型（在部署时选择）
   - 策略计划：
     - 在 Azure 安全中心启用监视（100+ 个策略定义）
 

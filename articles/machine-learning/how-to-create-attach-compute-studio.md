@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 84db002e35f88bcee1e59a22b678f2a76047b5ef
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: fbe9c1585ab2eee6e0d38c309a2d1d279ffab0b4
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885823"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331477"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中创建计算目标以进行模型训练和部署
 
@@ -80,7 +80,7 @@ ms.locfileid: "107885823"
     :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="从列表中查看计算状态":::
 
 
-### <a name="compute-instance"></a>计算实例
+### <a name="compute-instance"></a><a name="compute-instance"></a> 计算实例
 
 使用[上述步骤](#portal-create)创建计算实例。  然后按如下所示填写表单：
 
@@ -93,7 +93,7 @@ ms.locfileid: "107885823"
 |虚拟机类型 |  选择“CPU”或“GPU”。 此类型在创建后无法更改     |
 |虚拟机大小     |  在你的区域中，支持的虚拟机大小可能会受到限制。 请查看[可用性列表](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
 |启用/禁用 SSH 访问     |   默认情况下会禁用 SSH 访问。  SSH 访问 在创建后无法更改。 如果计划使用 [VS Code Remote](how-to-set-up-vs-code-remote.md) 以交互模式进行调试，请确保启用访问权限   |
-|高级设置     |  可选。 配置虚拟网络 指定 **资源组**、**虚拟网络** 和 **子网**，以在 Azure 虚拟网络 (vnet) 中创建计算实例。 有关详细信息，请参阅 vnet 的这些[网络要求](./how-to-secure-training-vnet.md)。  |
+|高级设置     |  可选。 配置虚拟网络 指定 **资源组**、**虚拟网络** 和 **子网**，以在 Azure 虚拟网络 (vnet) 中创建计算实例。 有关详细信息，请参阅 vnet 的这些[网络要求](./how-to-secure-training-vnet.md)。  还可使用高级设置来指定[安装脚本](how-to-create-manage-compute-instance.md#setup-script)。 |
 
 ### <a name="compute-clusters"></a><a name="amlcompute"></a> 计算群集
 

@@ -1,23 +1,23 @@
 ---
 title: 方案：VNet 的自定义隔离
 titleSuffix: Azure Virtual WAN
-description: 路由方案 - 阻止所选 VNet 相互联系
+description: 了解虚拟 WAN 路由自定义隔离方案，它可防止一组特定的 VNet 访问另一组特定的 VNet，但是需要 VNet 才能访问所有分支。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 04/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: ca1ee8418bc08d70a031d81a15dc1b4ace2f1a3a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56a0fe561d026f1b01f27cf3015c31820e8110bb
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92461815"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162034"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>方案：VNet 的自定义隔离
 
-使用虚拟 WAN 虚拟中心路由时，有很多可用方案。 在 VNet 的自定义隔离方案中，目标是防止特定的 VNet 集能够访问其他特定的 VNet 集。 但是，这些 VNet 需要与所有分支（VPN/ER/用户 VPN）通信。 有关虚拟中心路由的详细信息，请参阅[关于虚拟中心路由](about-virtual-hub-routing.md)。
+使用虚拟 WAN 虚拟中心路由时，有很多可用方案。 在 VNet 的自定义隔离方案中，目标是防止一组特定的 VNet 访问另一组特定的 VNet。 但是，这些 VNet 需要与所有分支（VPN/ER/用户 VPN）通信。 有关虚拟中心路由的详细信息，请参阅[关于虚拟中心路由](about-virtual-hub-routing.md)。
 
 ## <a name="design"></a><a name="design"></a>设计
 

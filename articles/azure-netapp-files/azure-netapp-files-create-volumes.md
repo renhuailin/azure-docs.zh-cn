@@ -12,18 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 04/05/2021
 ms.author: b-juche
-ms.openlocfilehash: 2cc9d3e0fb711a0662852ce4f2c5a08dc626f246
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3b6104bcf68c720fa727d16e408a25adcba805aa
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96854727"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259568"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 NFS 卷
 
-Azure NetApp 文件支持使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双重协议（NFSv3 和 SMB）创建卷。 卷的容量消耗是依据其池的预配容量计数的。 本文介绍如何创建 NFS 卷。 
+Azure NetApp 文件支持使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双重协议（NFSv3 和 SMB）创建卷。 卷的容量消耗是依据其池的预配容量计数的。 
+
+本文介绍如何创建 NFS 卷。 对于 SMB 卷，请参阅[创建 SMB 卷](azure-netapp-files-create-volumes-smb.md)。 对于双重协议卷，请参阅[创建双重协议卷](create-volumes-dual-protocol.md)。
 
 ## <a name="before-you-begin"></a>开始之前 
 * 必须已设置容量池。  
@@ -112,6 +114,8 @@ Azure NetApp 文件支持使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双重协�
 
         如果将 Kerberos 与 NFSv4.1 一起使用，则需要进行其他配置。 按照[配置 NFSv4.1 Kerberos 加密](configure-kerberos-encryption.md)中的说明进行操作。
 
+    * 若要启用 Active Directory LDAP 用户和扩展组（最多 1024 个组）访问该卷，请选择 LDAP 选项。 按照[使用扩展组配置 ADDS LDAP 以访问 NFS 卷](configure-ldap-extended-groups.md)中的说明，完成所需的配置。 
+ 
     * 或者，参阅[配置 NFS 卷的导出策略](azure-netapp-files-configure-export-policy.md)。
 
     ![指定 NFS 协议](../media/azure-netapp-files/azure-netapp-files-protocol-nfs.png)
@@ -127,6 +131,7 @@ Azure NetApp 文件支持使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双重协�
 
 * [为 Azure NetApp 文件配置 NFSv4.1 默认域](azure-netapp-files-configure-nfsv41-domain.md)
 * [配置 NFSv 4.1 Kerberos 加密](configure-kerberos-encryption.md)
+* [配置添加 LDAP，其中包含用于 NFS 卷访问的扩展组](configure-ldap-extended-groups.md)
 * [为 Windows 或 Linux 虚拟机装载或卸载卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [为 NFS 卷配置导出策略](azure-netapp-files-configure-export-policy.md)
 * [Azure NetApp 文件的资源限制](azure-netapp-files-resource-limits.md)

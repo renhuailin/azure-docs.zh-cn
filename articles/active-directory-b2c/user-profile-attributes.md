@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 42bc87259265b45dabb631507ce6956e07077a7d
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 523212e0f63453e78967eb9a4716febb754ea5d6
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070472"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315266"
 ---
 # <a name="user-profile-attributes"></a>用户配置文件属性
 
-Azure Active Directory (Azure AD) B2C 目录用户配置文件附带了一组内置属性，例如名字、姓氏、城市、邮政编码和电话号码。 可以使用自己的应用程序数据来扩展用户配置文件，而无需外部数据存储。 
+Azure Active Directory (Azure AD) B2C 目录用户配置文件附带了一组内置属性，例如名字、姓氏、城市、邮政编码和电话号码。 可以使用自己的应用程序数据来扩展用户配置文件，而无需外部数据存储。
 
 可用于 Azure AD B2C 用户配置文件的大多数属性也受 Microsoft Graph 的支持。 本文介绍了支持的 Azure AD B2C 用户配置文件属性。 本文还说明了 Microsoft Graph 不支持的属性，以及不应该用于 Azure AD B2C 的 Microsoft Graph 属性。
 
@@ -63,7 +63,7 @@ Azure Active Directory (Azure AD) B2C 目录用户配置文件附带了一组内
 |mobile (mobilePhone) |字符串|用户的主要手机号码。 最大长度为 64。|是|否|持久化、输出|
 |netId           |字符串|网络 ID。|否|否|持久化、输出|
 |objectId        |字符串|全局唯一标识符 (GUID)（用户的唯一标识符）。 示例：12345678-9abc-def0-1234-56789abcde。 只读，不可变。|只读|是|输入、持久化、输出|
-|otherMails      |字符串集合|用户的其他电子邮件地址的列表。 示例：[“bob@contoso.com”、“Robert@fabrikam.com”]。|是（备用电子邮件）|否|持久化、输出|
+|otherMails      |字符串集合|用户的其他电子邮件地址的列表。 示例：[“bob@contoso.com”、“Robert@fabrikam.com”]。 注意：不允许使用重音字符。|是（备用电子邮件）|否|持久化、输出|
 |password        |字符串|创建用户期间用于本地帐户的密码。|否|否|持久化|
 |passwordPolicies     |字符串|密码策略。 它是由逗号分隔的不同策略名称构成的字符串。 例如，“DisablePasswordExpiration, DisableStrongPassword”。|否|否|持久化、输出|
 |physicalDeliveryOfficeName (officeLocation)|字符串|用户营业地点的办公室位置。 最大长度为 128。|是|否|持久化、输出|
@@ -71,13 +71,13 @@ Azure Active Directory (Azure AD) B2C 目录用户配置文件附带了一组内
 |preferredLanguage    |字符串|用户的首选语言。 首选语言格式基于 RFC 4646。 名称是一个与语言相关的 ISO 639 双小写字母的区域性代码和一个与国家或地区相关的 ISO 3166 双大写字母子区域性代码的组合。 例如：“en-US”或“es-ES”。|否|否|持久化、输出|
 |refreshTokensValidFromDateTime (signInSessionsValidFromDateTime)|DateTime|在此时间之前颁发的所有刷新令牌无效，使用无效刷新令牌获取新的访问令牌时，应用程序会收到错误。 如果发生这种情况，应用程序需要通过向授权终结点发出请求来获取新的刷新令牌。 只读。|否|否|输出|
 |signInNames（[标识](#identities-attribute)） |字符串|目录中任何类型的本地帐户用户的唯一登录名。 使用此属性可以获取具有登录值的用户，而无需指定本地帐户类型。|否|否|输入|
-|signInNames.userName（[标识](#identities-attribute)） |字符串|目录中本地帐户用户的唯一用户名。 使用此属性可以创建或获取具有特定登录用户名的用户。 在执行修补操作期间，在 PersistedClaims 中单独指定此属性会删除其他 signInNames 类型。 若要添加新的 signInNames 类型，还需要保存现有的 signInNames。|否|否|输入、持久化、输出|
+|signInNames.userName（[标识](#identities-attribute)） |字符串|目录中本地帐户用户的唯一用户名。 使用此属性可以创建或获取具有特定登录用户名的用户。 在执行修补操作期间，在 PersistedClaims 中单独指定此属性会删除其他 signInNames 类型。 若要添加新的 signInNames 类型，还需要保存现有的 signInNames。 注意：用户名中不允许使用重音字符。|否|否|输入、持久化、输出|
 |signInNames.phoneNumber（[标识](#identities-attribute)） |字符串|目录中本地帐户用户的唯一电话号码。 使用此属性可以创建或获取具有特定登录电话号码的用户。 在执行 Patch 操作期间，在 PersistedClaims 中单独指定此属性会删除其他类型的 signInNames。 若要添加新的 signInNames 类型，还需要保存现有的 signInNames。|否|否|输入、持久化、输出|
 |signInNames.emailAddress（[标识](#identities-attribute)）|字符串|目录中本地帐户用户的唯一电子邮件地址。 使用此属性可以创建或获取具有特定登录电子邮件地址的用户。 在执行 Patch 操作期间，在 PersistedClaims 中单独指定此属性会删除其他类型的 signInNames。 若要添加新的 signInNames 类型，还需要保存现有的 signInNames。|否|否|输入、持久化、输出|
 |state           |字符串|用户地址中的省/自治区/直辖市。 最大长度为 128。|是|是|持久化、输出|
 |streetAddress   |字符串|用户营业地点的街道地址。 最大长度为 1024。|是|是|持久化、输出|
 |strongAuthentication AlternativePhoneNumber<sup>1</sup>|字符串|用户的次要电话号码，用于多重身份验证。|是|否|持久化、输出|
-|strongAuthenticationEmailAddress<sup>1</sup>|字符串|用户的 SMTP 地址。 示例：“bob@contoso.com”。此属性在通过用户名策略进行登录时用于存储用户电子邮件地址。 然后，该电子邮件地址将在密码重置流中使用。|是|否|持久化、输出|
+|strongAuthenticationEmailAddress<sup>1</sup>|字符串|用户的 SMTP 地址。 示例：“bob@contoso.com”。此属性在通过用户名策略进行登录时用于存储用户电子邮件地址。 然后，该电子邮件地址将在密码重置流中使用。 此属性中不允许使用重音字符。|是|否|持久化、输出|
 |strongAuthenticationPhoneNumber<sup>2</sup>|字符串|用户的主要电话号码，用于多重身份验证。|是|否|持久化、输出|
 |surname         |字符串|用户的姓（家族名或姓氏）。 最大长度为 64。|是|是|持久化、输出|
 |telephoneNumber（businessPhones 的第一个条目）|字符串|用户营业地点的主要电话号码。|是|否|持久化、输出|
@@ -100,7 +100,7 @@ Azure Active Directory (Azure AD) B2C 目录用户配置文件附带了一组内
 - **本地** 标识 - 将用户名和密码存储在 Azure AD B2C 目录本地。 我们通常将此类标识称为“本地帐户”。
 - 联合标识 - 也称为社交或企业帐户 ，该用户标识由 Facebook、Microsoft、ADFS 或 Salesforce 等联合标识提供者进行管理。
 
-具有客户帐户的用户可以使用多个标识进行登录。 例如，使用用户名、电子邮件、员工 ID、政府 ID 等。 一个帐户可以有多个密码相同的本地和社交标识。 
+具有客户帐户的用户可以使用多个标识进行登录。 例如，使用用户名、电子邮件、员工 ID、政府 ID 等。 一个帐户可以有多个密码相同的本地和社交标识。
 
 在 Microsoft Graph API 中，本地标识和联合标识都存储在 [objectIdentity](/graph/api/resources/objectidentity) 类型的用户 `identities` 特性中。 `identities` 集合表示用于登录到用户帐户的一组标识。 此集合使用户能够使用其关联的任何标识登录到用户帐户。 identities 属性最多可以包含十个 [objectIdentity](/graph/api/resources/objectidentity) 对象。 每个对象包含以下属性：
 
@@ -110,29 +110,29 @@ Azure Active Directory (Azure AD) B2C 目录用户配置文件附带了一组内
 |颁发者|string|指定标识的颁发者。 对于本地帐户（其 **signInType** 不是 `federated`），此属性是本地 B2C 租户的默认域名，例如 `contoso.onmicrosoft.com`。 对于社交标识（其中 signInType 为 `federated`），该值是颁发者的名称，例如 `facebook.com`|
 |issuerAssignedId|string|指定由颁发者分配给用户的唯一标识符。 **issuer** 和 **issuerAssignedId** 的组合在租户中必须唯一。 对于本地帐户，当 **signInType** 设置为 `emailAddress` 或 `userName` 时，它表示用户的登录名。<br>如果 **signInType** 设置为： <ul><li>`emailAddress`（或以 `emailAddress` 开头，例如 `emailAddress1`），则 **issuerAssignedId** 必须是有效的电子邮件地址</li><li>`userName`（或任何其他值），则 **issuerAssignedId** 必须是有效的 [电子邮件地址本地部分](https://tools.ietf.org/html/rfc3696#section-3)</li><li>`federated`，则 **issuerAssignedId** 表示联合帐户唯一标识符</li></ul>|
 
-以下 Identities 属性包含一个本地帐户标识、一个电子邮件地址和一个社交标识，它们均可用作登录名。 
+以下 Identities 属性包含一个本地帐户标识、一个电子邮件地址和一个社交标识，它们均可用作登录名。
 
- ```json
- "identities": [
-     {
-       "signInType": "userName",
-       "issuer": "contoso.onmicrosoft.com",
-       "issuerAssignedId": "johnsmith"
-     },
-     {
-       "signInType": "emailAddress",
-       "issuer": "contoso.onmicrosoft.com",
-       "issuerAssignedId": "jsmith@yahoo.com"
-     },
-     {
-       "signInType": "federated",
-       "issuer": "facebook.com",
-       "issuerAssignedId": "5eecb0cd"
-     }
-   ]
- ```
+```json
+"identities": [
+  {
+    "signInType": "userName",
+    "issuer": "contoso.onmicrosoft.com",
+    "issuerAssignedId": "johnsmith"
+  },
+  {
+    "signInType": "emailAddress",
+    "issuer": "contoso.onmicrosoft.com",
+    "issuerAssignedId": "jsmith@yahoo.com"
+  },
+  {
+    "signInType": "federated",
+    "issuer": "facebook.com",
+    "issuerAssignedId": "5eecb0cd"
+  }
+]
+```
 
-对于联合标识，根据标识提供者，**issuerAssignedId** 是每个应用程序的给定用户或开发帐户的唯一值。 使用社交网络提供商以前分配的相同应用程序 ID 或者同一开发帐户中的另一应用程序配置 Azure AD B2C 策略。 
+对于联合标识，根据标识提供者，**issuerAssignedId** 是每个应用程序的给定用户或开发帐户的唯一值。 使用社交网络提供商以前分配的相同应用程序 ID 或者同一开发帐户中的另一应用程序配置 Azure AD B2C 策略。
 
 ## <a name="password-profile-property"></a>密码配置文件属性
 

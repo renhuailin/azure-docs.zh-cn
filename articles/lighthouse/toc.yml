@@ -42,7 +42,7 @@
           displayName: 'mfa, authentication, secure, group'
           href: ./concepts/recommended-security-practices.md
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/lighthouse-security-baseline?toc=/azure/lighthouse/toc.json
 - name: 操作指南
   items:
     - name: 客户操作
@@ -53,48 +53,50 @@
         - name: 查看服务提供商活动
           displayName: 'monitor, log, customer, visibility, transparency, control'
           href: ./how-to/view-service-provider-activity.md
-    - name: 将客户加入 Azure Lighthouse
-      displayName: resource management
-      href: ./how-to/onboard-customer.md
-    - name: 向 Azure 市场发布托管服务产品
-      displayName: 'managed services offer, azure marketplace, publish, marketplace'
-      href: ./how-to/publish-managed-services-offers.md
+    - name: 加入和委派管理
+      items:
+        - name: 加入客户
+          displayName: 'ARM, template, delegation, authorization, resource management'
+          href: ./how-to/onboard-customer.md
+        - name: 向 Azure 市场发布托管服务产品
+          displayName: 'managed services offer, azure marketplace, publish, marketplace'
+          href: ./how-to/publish-managed-services-offers.md
+        - name: 更新委派
+          displayName: upgrade
+          href: ./how-to/update-delegation.md
+        - name: 删除对委派的访问权限
+          displayName: 'delete, undelegate'
+          href: ./how-to/remove-delegation.md
+        - name: 监视委托更改
+          displayName: activity log
+          href: ./how-to/monitor-delegation-changes.md
     - name: 查看和管理客户
       displayName: my customers
       href: ./how-to/view-manage-customers.md
     - name: 链接你的合作伙伴 ID
       displayName: 'partner earned credit, pec, mpn'
       href: ./how-to/partner-earned-credit.md
-    - name: 更新委派
-      displayName: upgrade
-      href: ./how-to/update-delegation.md
-    - name: 删除对委派的访问权限
-      displayName: 'delete, undelegate'
-      href: ./how-to/remove-delegation.md
-    - name: Azure Arc 集成
-      displayName: 'server, kubernetes, hybrid, infrastructure'
-      href: ./how-to/manage-hybrid-infrastructure-arc.md
-    - name: Azure Migrate 集成
-      displayName: 'migration, project, on-prem'
-      href: ./how-to/migration-at-scale.md
-    - name: Azure Monitor 集成
+    - name: Azure 服务集成
       items:
-        - name: 大规模使用 Azure Monitor 日志
+        - name: Azure Arc 集成
+          displayName: 'server, kubernetes, hybrid, infrastructure'
+          href: ./how-to/manage-hybrid-infrastructure-arc.md
+        - name: Azure Migrate 集成
+          displayName: 'migration, project, on-prem'
+          href: ./how-to/migration-at-scale.md
+        - name: Azure Monitor 集成
           displayName: 'log, analytics, analyze, activity'
           href: ./how-to/monitor-at-scale.md
-        - name: 监视委托更改
-          displayName: activity log
-          href: ./how-to/monitor-delegation-changes.md
-    - name: Azure Policy 集成
-      items:
-        - name: 大规模部署策略
-          displayName: storage
-          href: ./how-to/policy-at-scale.md
-        - name: 部署可修正的策略
-          displayName: 'deployIfNotExists, modify, managed identities, managed identity'
-          href: ./how-to/deploy-policy-remediation.md
-    - name: Azure Sentinel 集成
-      href: ./how-to/manage-sentinel-workspaces.md
+        - name: Azure Policy 集成
+          items:
+            - name: 大规模部署策略
+              displayName: storage
+              href: ./how-to/policy-at-scale.md
+            - name: 部署可修正的策略
+              displayName: 'deployIfNotExists, modify, managed identities, managed identity'
+              href: ./how-to/deploy-policy-remediation.md
+        - name: Azure Sentinel 集成
+          href: ./how-to/manage-sentinel-workspaces.md
 - name: 参考
   items:
     - name: Azure CLI

@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/21/2020
+ms.date: 04/27/2021
 ms.author: tisande
-ms.openlocfilehash: b7349a08b93810dcc3befd6058302d6c4573ab8d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fec7ed32b236dd0a5f9c0663209b5c2f44e05b29
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98019204"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166714"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的索引 - 概述
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -75,8 +75,9 @@ Azure Cosmos DB 目前支持三种类型的索引。 定义索引策略时，可
 - 相等查询：
 
     ```sql
-   SELECT * FROM container c WHERE c.property = 'value'
-   ```
+       SELECT * FROM container c WHERE c.property = 'value'
+    ```
+
 
    ```sql
    SELECT * FROM c WHERE c.property IN ("value1", "value2", "value3")
@@ -85,14 +86,14 @@ Azure Cosmos DB 目前支持三种类型的索引。 定义索引策略时，可
    数组元素上的相等匹配
    ```sql
     SELECT * FROM c WHERE ARRAY_CONTAINS(c.tags, "tag1")
-    ```
+   ```
 
 - 范围查询：
 
    ```sql
    SELECT * FROM container c WHERE c.property > 'value'
    ```
-  （适用于 `>`、`<`、`>=`、`<=`、`!=`）
+    （适用于 `>`、`<`、`>=`、`<=`、`!=`）
 
 - 检查属性是否存在：
 
@@ -123,6 +124,9 @@ Azure Cosmos DB 目前支持三种类型的索引。 定义索引策略时，可
    ```
 
 范围索引可用于标量值（字符串或数字）。 新建容器的默认索引策略会对任何字符串或数字强制使用范围索引。 若要了解如何配置范围索引，请参阅[范围索引策略示例](how-to-manage-indexing-policy.md#range-index)
+
+> [!NOTE]
+> 按单个属性排序的 `ORDER BY` 子句总是需要一个范围索引，如果它引用的路径没有范围索引，则会失败。 同样地，按多个属性排序的 `ORDER BY` 查询总是需要一个组合索引。
 
 ### <a name="spatial-index"></a>空间索引
 
@@ -178,16 +182,209 @@ Azure Cosmos DB 目前支持三种类型的索引。 定义索引策略时，可
 
 若要了解如何配置组合索引，请参阅[组合索引策略示例](how-to-manage-indexing-policy.md#composite-index)
 
-## <a name="querying-with-indexes"></a>使用索引进行查询
+## <a name="index-usage"></a>索引使用情况
 
-通过编制数据索引时提取的路径，可在处理查询时轻松查找索引。 通过将查询的 `WHERE` 子句与已编制索引的路径的列表相匹配，可快速确定与查询谓词匹配的项。
+查询引擎可采用 5 种方式来评估查询筛选器，按效率从高到低排序：
 
-例如，请看以下查询：`SELECT location FROM location IN company.locations WHERE location.country = 'France'`。 查询谓词（对项进行筛选，其中任何位置都采用“法国”作为其国家/地区）与下面用红色突出显示的路径相匹配：
+- 索引查找
+- 精确索引扫描
+- 扩展索引扫描
+- 完全索引扫描
+- 完全扫描
+
+索引属性路径时，查询引擎将尽可能高效地自动使用索引。 除了索引新的属性路径外，无需配置任何内容即可优化查询使用索引的方式。 查询的请求单位 (RU) 费用是索引使用量的 RU 费用与加载项的 RU 费用之和。
+
+下表汇总了在 Azure Cosmos DB 中使用索引的不同方式：
+
+| 索引查找类型  | 描述                                                  | 常见示例                                 | 索引使用量的 RU 费用                                   | 从事务数据存储中加载项的 RU 费用                   |
+| ------------------ | ------------------------------------------------------------ | ----------------------------------------------- | ------------------------------------------------------------ | --------------------------------------------------- |
+| 索引查找         | 只读取所需的索引值，并且只从事务数据存储中加载匹配项 | 相等筛选器，IN                            | 每个相等筛选器的费用相同                                                     | 根据查询结果中的项数增加 |
+| 精确索引扫描 | 索引值的二进制搜索，并且只从事务数据存储中加载匹配项 | 范围比较（>、<、<= 或 >=），StartsWith | 与索引查找相比，根据索引属性的基数略有增加 | 根据查询结果中的项数增加 |
+| 扩展索引扫描 | 索引值的优化搜索（但比二进制文搜索的效率低），并且只从事物数据存储中加载匹配项 | StartsWith（不区分大小写的），StringEquals（不区分大小写） | 根据索引属性的基数略有增加 | 根据查询结果中的项数增加 |
+| 完全索引扫描    | 读取一组非重复的索引值，并且只从事务数据存储中加载匹配项                                              | Contains、EndsWith、RegexMatch、LIKE                                    | 根据索引属性的基数呈线性增加 | 根据查询结果中的项数增加 |
+| 完全扫描          | 加载所有项                                               | Upper、Lower                                    | 空值                                                          | 根据容器中的项数增加 |
+
+编写查询时，应采用尽可能有效使用索引的筛选谓词。 例如，如果 `StartsWith` 或 `Contains` 都适合你的用例，应选择 `StartsWith`，因为它将执行精确索引扫描，而不是完全索引扫描。
+
+## <a name="index-usage-details"></a>索引使用情况详细信息
+
+在此部分，我们将更详细地介绍查询是如何使用索引的。 如果是 Azure Cosmos DB 入门，那么这不是必学内容，但详细记录供感兴趣的用户查看。 我们将参考在本文档前面分享的示例项：
+
+示例项：
+
+```json
+    {
+        "id": 1,
+        "locations": [
+            { "country": "Germany", "city": "Berlin" },
+            { "country": "France", "city": "Paris" }
+        ],
+        "headquarters": { "country": "Belgium", "employees": 250 },
+        "exports": [
+            { "city": "Moscow" },
+            { "city": "Athens" }
+        ]
+    }
+```
+
+```json
+    {
+        "id": 2,
+        "locations": [
+            { "country": "Ireland", "city": "Dublin" }
+        ],
+        "headquarters": { "country": "Belgium", "employees": 200 },
+        "exports": [
+            { "city": "Moscow" },
+            { "city": "Athens" },
+            { "city": "London" }
+        ]
+    }
+```
+
+Azure Cosmos DB 使用倒排索引。 索引的工作原理是将每个 JSON 路径映射到包含该值的一组项中。 对于容器，项 ID 映射跨多个不同的索引页表示。 以下是包含两个示例项的容器的倒排索引示例关系图：
+
+| 路径                    | 值   | 项 ID 列表   |
+| ----------------------- | ------- | ---------- |
+| /locations/0/country    | 德国 | 1          |
+| /locations/0/country    | 爱尔兰 | 2          |
+| /locations/0/city       | 柏林  | 1          |
+| /locations/0/city       | 都柏林  | 1          |
+| /locations/1/country    | 法国  | 1          |
+| /locations/1/city       | Paris   | 1          |
+| /headquarters/country   | 比利时 | 2          |
+| /headquarters/employees | 200     | 2          |
+| /headquarters/employees | 250     | 1          |
+
+倒排索引具有 2 个重要属性：
+- 对于给定路径，值按升序排序。 因此，查询引擎可轻松地从索引中提供 `ORDER BY`。
+- 对于给定路径，查询引擎可扫描一组非重复的可能值，以确定存在结果的索引页。
+
+查询引擎使用倒排索引的方式有以下 4 种：
+
+### <a name="index-seek"></a>索引查找
+
+请考虑下列查询： 
+
+```sql
+SELECT location
+FROM location IN company.locations
+WHERE location.country = 'France'`
+```
+
+查询谓词（对项进行筛选，其中任何位置都采用“法国”作为其国家/地区）与下面用红色突出显示的路径相匹配：
 
 :::image type="content" source="./media/index-overview/matching-path.png" alt-text="匹配树中的特定路径" border="false":::
 
-> [!NOTE]
-> 按单个属性排序的 `ORDER BY` 子句总是需要一个范围索引，如果它引用的路径没有范围索引，则会失败。 同样地，按多个属性排序的 `ORDER BY` 查询总是需要一个组合索引。
+由于此查询具有相等筛选器，因此在遍历此树后，我们可以快速识别包含查询结果的索引页。 在这种情况下，查询引擎将读取包含项 1 的索引页。 索引查找是使用索引最有效的方式。 通过索引查找，我们只读取必要的索引页，并且只加载查询结果中的项。 因此，无论总数据量是多少，索引查找的查找时间都很短，并且 RU 费用低。 
+
+### <a name="precise-index-scan"></a>精确索引扫描
+
+请考虑下列查询： 
+
+```sql
+SELECT *
+FROM company
+WHERE company.headquarters.employees > 200
+```
+
+查询谓词（对具有超过 200 名员工的项进行筛选）可通过 `headquarters/employees` 路径的精确索引扫描进行评估。 执行精确索引扫描时，查询引擎首先对一组非重复的可能值进行二进制搜索，来查找 `headquarters/employees` 路径的值 `200` 的位置。 由于每个路径的值都是按升序排序的，因此查询引擎可轻松执行二进制搜索。 查询引擎找到值 `200` 后，将开始读取所有剩余的索引页（按升序反向）。
+
+查询引擎可执行二进制搜索来避免扫描不必要的索引页，因此精确索引扫描的延迟和 RU 费用与索引查找操作相当。
+
+### <a name="expanded-index-scan"></a>扩展索引扫描
+
+请考虑下列查询： 
+
+```sql
+SELECT *
+FROM company
+WHERE StartsWith(company.headquarters.country, "United", true)
+```
+
+查询谓词（对总部位于以区分大小写的“United”开头的国家/地区的项目进行筛选）可通过 `headquarters/country` 路径的扩展索引扫描进行评估。 执行扩展索引扫描的操作具有一些优化，可帮助避免扫描每个索引页，但比精确索引扫描的二进制搜索略贵。
+
+例如，在评估不区分大小写的 `StartsWith` 时，查询引擎将检查索引中是否有大写值和小写值混用的情况。 此优化使查询引擎能够避免读取大部分索引页。 不同的系统函数具有不同的优化，它们可用于避免读取每个索引页，因此我们可将其大致分类为扩展索引扫描。 
+
+### <a name="full-index-scan"></a>完全索引扫描
+
+请考虑下列查询： 
+
+```sql
+SELECT *
+FROM company
+WHERE Contains(company.headquarters.country, "United")
+```
+
+查询谓词（对总部位于包含“United”的国家/地区的项目进行筛选）可通过 `headquarters/country` 路径的索引扫描进行评估。 与精确索引扫描不同，完全索引扫描将始终扫描一组非重复的可能值，以确定存在结果的索引页。 在这种情况下，索引上会运行 `Contains`。 索引扫描的索引查找时间和 RU 费用会随着路径基数的增加而增加。 换句话说，查询引擎需要扫描的可能的非重复值越多，执行完全索引扫描的延迟和 RU 费用就越高。  
+
+例如，请考虑两个属性：town 和 country。 town 的基数是 5,000，country 的基数是 200。 下面是两个示例查询，每个查询都有 [Contains](sql-query-contains.md) 系统函数来对 `town` 属性执行索引扫描。 第一个查询比第二个查询使用更多的 RU，因为 town 的基数高于 country 的基数。
+
+```sql
+    SELECT *
+    FROM c
+    WHERE CONTAINS(c.town, "Red", false)
+```
+
+```sql
+    SELECT *
+    FROM c
+    WHERE CONTAINS(c.country, "States", false)
+```
+
+### <a name="full-scan"></a>完全扫描
+
+在某些情况下，查询引擎可能无法使用索引评估查询筛选器。 在这种情况下，为了评估查询筛选器，查询引擎需要从事务存储中加载所有的项。 完全扫描不使用索引，而且其 RU 费用根据总数据大小呈线性增加。 幸运的是，很少有需要完全扫描的操作。 
+
+### <a name="queries-with-complex-filter-expressions"></a>具有复杂筛选表达式的查询
+
+在前面的示例中，我们只考虑到具有简单筛选表达式的查询（例如，只具有单个相等或范围筛选器的查询）。 实际上，大多数查询都具有更复杂的筛选表达式。
+
+请考虑下列查询：
+
+```sql
+SELECT *
+FROM company
+WHERE company.headquarters.employees = 200 AND CONTAINS(company.headquarters.country, "United")
+```
+
+要执行此查询，查询引擎必须对 `headquarters/employees` 和 `headquarters/country` 分别执行精确索引查找和完全索引扫描。 查询引擎具有内部启发法，用于尽可能高效地评估查询筛选表达式。 在这种情况下，查询引擎通过首先执行索引查找来避免读取不必要的索引页。 例如，如果只有 50 个项与相等筛选器匹配，则查询引擎只需要在包含这 50 个项的索引页上评估 `Contains`。 无需对整个容器执行完全索引扫描。
+
+## <a name="index-utilization-for-scalar-aggregate-functions"></a>标量聚合函数的索引使用率
+
+具有聚合函数的查询必须以独占方式依赖索引才能使用它。 
+
+在某些情况下，索引会返回假正。 例如，在索引上评估 `Contains` 时，索引中的匹配项数可能超过查询结果数。 查询引擎将加载所有索引匹配项，评估已加载的项上的筛选器，并且只返回正确的结果。
+
+对于大多数查询，加载假正索引匹配项不会对索引利用率产生任何显著影响。
+
+例如，考虑以下查询：
+
+```sql
+SELECT *
+FROM company
+WHERE Contains(company.headquarters.country, "United")
+```
+
+`Contains` 系统函数可能返回一些假正匹配项，因此查询引擎将需要验证每个已加载的项是否与筛选表达式匹配。 在此示例中，查询引擎可能只需要加载额外几项，因此对索引使用率和 RU 费用的影响微乎其微。
+
+但是，具有聚合函数的查询必须以独占方式依赖索引才能使用它。 例如，考虑使用具有 `Count` 聚合的以下查询：
+
+```sql
+SELECT COUNT(1)
+FROM company
+WHERE Contains(company.headquarters.country, "United")
+```
+
+与第一个示例类似，`Contains` 系统函数可能返回一些假正匹配项。 但与 `SELECT *` 查询不同，`Count` 查询无法通过评估已加载项上的筛选表达式来验证所有索引匹配项。 `Count` 查询必须以独占方式依赖索引，因此如果筛选表达式可能返回假正匹配项，查询引擎将采用完全扫描。
+
+具有以下聚合函数的查询必须以独占方式依赖索引，因此评估某些系统函数需要采用完全扫描。
+
+- [Avg](sql-query-aggregate-avg.md)
+- [计数](sql-query-aggregate-count.md)
+- [Max](sql-query-aggregate-max.md)
+- [Min](sql-query-aggregate-min.md)
+- [Sum](sql-query-aggregate-sum.md)
 
 ## <a name="next-steps"></a>后续步骤
 

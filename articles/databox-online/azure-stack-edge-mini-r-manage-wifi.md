@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 10/28/2020
+ms.date: 03/24/2021
 ms.author: alkohli
-ms.openlocfilehash: f00be43d023d912d4b0b6e825dfe9d3e0ca2d250
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a2cc0707c344c3ca537795666a3f60f648026596
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96466388"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043761"
 ---
 # <a name="use-the-local-web-ui-to-manage-wireless-connectivity-on-your-azure-stack-edge-mini-r"></a>使用本地 Web UI 管理 Azure Stack Edge Mini R 上的无线连接
 
@@ -55,6 +55,8 @@ Azure Stack Edge Mini R 设备既可通过有线网络操作，也可通过无�
     ![本地 Web UI“端口 WiFi 网络设置”1](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-1.png)
     
     无线网络配置文件包含 SSID（网络名称）、密码密钥和安全信息，以便能够连接到无线网络。 可从网络管理员处获取环境的 Wi-Fi 配置文件。
+
+    有关准备 Wi-Fi 配置文件的信息，请参阅[将 Wi-Fi 配置文件与 Azure Stack Edge Mini R 设备配合使用](azure-stack-edge-mini-r-use-wifi-profiles.md)。
 
     ![本地 Web UI“端口 WiFi 网络设置”2](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-2.png)
 
@@ -139,7 +141,7 @@ DHCP 桥接功能为全局设置，因此它会影响控制器中的所有 DHCP 
 
 有关详细信息，请参阅[有关多播优化的多播 VLAN 信息](https://www.cisco.com/c/en/us/td/docs/wireless/controller/8-5/config-guide/b_cg85/wlan_interfaces.html)。
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 如果在 Azure Stack Edge Mini R 设备上运行的 VM 上发生 IP 地址分配问题，应验证网络环境上的上述配置设置。
 

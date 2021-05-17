@@ -11,12 +11,12 @@ metadata:
   author: TheovanKraay
   ms.author: thvankra
   ms.date: 01/18/2021
-  ms.openlocfilehash: 8300012954756f1083c93745299ca57e4c4db0d3
-  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.openlocfilehash: 6767a4f2a423b70fdfc3611ce188dcc33122c80e
+  ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/03/2021
-  ms.locfileid: "101742671"
+  ms.lasthandoff: 05/07/2021
+  ms.locfileid: "109517111"
 landingContent:
 - title: 适用于 Apache Cassandra 的 Azure 托管实例介绍
   linkLists:
@@ -28,12 +28,16 @@ landingContent:
     links:
     - text: 适用于 Apache Cassandra 的 Azure 托管实例与 Azure Cosmos DB Cassandra API
       url: compare-cosmosdb-managed-instance.md
+- title: 创建和部署群集
+  linkLists:
   - linkListType: quickstart
     links:
     - text: 创建群集 - 门户
       url: create-cluster-portal.md
     - text: 创建群集- CLI
       url: create-cluster-cli.md
+    - text: 创建多区域群集 - CLI
+      url: create-multi-region-cluster.md
     - text: 使用 Azure Databricks 部署 Spark 群集
       url: deploy-cluster-databricks.md
   - linkListType: concept

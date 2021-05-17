@@ -1,0 +1,50 @@
+- name: Azure AD 可验证凭据文档
+  href: index.yml
+- name: 概述
+  expanded: true
+  items:
+    - name: Azure Active Directory 可验证凭据简介
+      href: decentralized-identifier-overview.md
+- name: 教程
+  expanded: true
+  items:
+    - name: 开始使用可验证凭据
+      href: get-started-verifiable-credentials.md
+    - name: 在租户中配置可验证凭据
+      items:
+        - name: 1 - 在自己的 Azure AD 中设置可验证凭据颁发者
+          href: enable-your-tenant-verifiable-credentials.md
+        - name: 2 - 将可验证凭据颁发者连接到自己的 Azure AD
+          href: issue-verify-verifiable-credentials-your-tenant.md
+- name: 概念
+  expanded: true
+  items:
+    - name: OpenID Connect 协议详细信息
+      href: issuer-openid.md
+- name: 操作指南
+  expanded: true
+  items:
+    - name: 如何定制专属凭据
+      href: credential-design.md
+    - name: 管理凭据吊销
+      href: how-to-issuer-revoke.md
+    - name: 将域链接到 DID
+      href: how-to-dnsbind.md
+    - name: 选择退出可验证凭据
+      href: how-to-opt-out.md
+- name: 示例
+  expanded: true
+  items:
+    - name: 示例 Node 应用
+      href: 'https://github.com/Azure-Samples/active-directory-verifiable-credentials'
+    - name: 示例颁发者
+      href: 'https://didvc-issuer-sample.azurewebsites.net/'
+    - name: 示例验证程序
+      href: 'https://didvc-verifier-sample.azurewebsites.net/'
+- name: 资源
+  expanded: true
+  items:
+    - name: 常见问题解答
+      href: verifiable-credentials-faq.md
+    - name: 如何创建开发者帐户
+      href: how-to-create-a-free-developer-account.md

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: dcda93e2001e982ff2fb470f0e7a4bc9c366a8d7
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: a9eeb7ed664f67e1273a7dfff701a18970cd91fd
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070060"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108174517"
 ---
 # <a name="use-api-connectors-to-customize-and-extend-sign-up-user-flows"></a>使用 API 连接器来自定义并扩展注册用户流
 
@@ -282,8 +282,8 @@ REST API 可以基于任何平台并以任何编程语言进行编写，但前�
 
 有关使用 RESTful 技术配置文件的示例，请参阅以下文章：
 
-- [演练：在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换](custom-policy-rest-api-claims-validation.md)
-- [演练：在 Azure Active Directory B2C 中将 REST API 声明交换添加到自定义策略](custom-policy-rest-api-claims-validation.md)
+- [演练：将 API 连接器添加到注册用户流](add-api-connector.md)
+- [演练：在 Azure Active Directory B2C 中将 REST API 声明交换添加到自定义策略](custom-policy-rest-api-claims-exchange.md)
 - [保护 REST API 服务](secure-rest-api.md)
 - [参考：RESTful 技术配置文件](restful-technical-profile.md)
 

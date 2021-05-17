@@ -5,17 +5,17 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
 ms.openlocfilehash: 2cda13ea089ac08dff7c1ba5ca93ba56ab3c23cf
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97831544"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上的备份失败问题
 
 可使用下面列出的信息排查使用 Azure 备份时遇到的错误：
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>备份
 
 本部分介绍了 Azure 虚拟机备份操作失败的情况。
 
@@ -74,7 +74,7 @@ ms.locfileid: "97831544"
 * 使用 **fsck** 命令在这些设备上运行文件系统一致性检查。
 * 再次装载设备，并重试备份操作。</ol>
 
-如果无法卸载设备，则可以更新 VM 备份配置以忽略某些装入点。 例如，如果 "/mnt/resource" 装入点无法卸载并导致 VM 备份失败，则可按如下所示用属性更新 VM 备份配置文件 ```MountsToSkip``` 。
+如果无法卸载设备，则可以更新 VM 备份配置以忽略某些装入点。 例如，如果“/mnt/resource”装入点无法卸载并导致 VM 备份失败，则可按如下所示使用 ```MountsToSkip``` 属性更新 VM 备份配置文件。
 
 ```bash
 cat /var/lib/waagent/Microsoft.Azure.RecoveryServices.VMSnapshotLinux-1.0.9170.0/main/tempPlugin/vmbackup.conf[SnapshotThread]
@@ -135,11 +135,11 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 步骤 3：如果步骤 1 和 2 不能解决该问题，则故障可能是由于 IOPS 有限而导致 VSS 编写器超时。<br>
 
 若要进行验证，请导航到“系统和事件查看器应用程序日志”，然后检查以下错误消息：<br>
-将写入操作保存到影子复制的卷时，影子副本提供程序超时。 这可能是应用程序或系统服务在卷上进行过多活动所致。 请稍后在卷上的活动减少时重试。<br>
+*将写入操作保存到影子复制的卷时，影子副本提供程序超时。这可能是应用程序或系统服务在卷上进行过多活动所致。请稍后在卷上的活动减少时重试。*<br>
 
 解决方案：
 
-* 检查是否可以跨 VM 磁盘分配负载。 这将减少单个磁盘上的负载。 可以 [通过在存储级别启用诊断指标来检查 IOPs 限制](../virtual-machines/troubleshooting/performance-diagnostics.md#install-and-run-performance-diagnostics-on-your-vm)。
+* 检查是否可以跨 VM 磁盘分配负载。 这将减少单个磁盘上的负载。 可以[通过在存储级别启用诊断指标来检查 IOP 限制](../virtual-machines/troubleshooting/performance-diagnostics.md#install-and-run-performance-diagnostics-on-your-vm)。
 * 更改备份策略，以在非高峰时段（VM 上的负载最低时）执行备份。
 * 升级 Azure 磁盘以支持更高的 IOP。 [在此处了解详细信息](../virtual-machines/disks-types.md)
 

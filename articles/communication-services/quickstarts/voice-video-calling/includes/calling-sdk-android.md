@@ -4,16 +4,13 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 45a772b4a1d65b67f918107fd33135a56f6302f2
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: e11b8354bd1f7cc8357d5c5d64ee2bd69af06a0b
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "106073645"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108313472"
 ---
-[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-android-ios.md)]
-
-
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
@@ -26,7 +23,7 @@ ms.locfileid: "106073645"
 ### <a name="install-the-package"></a>安装包
 
 > [!NOTE]
-> 本文档使用版本 1.0.0-beta.8 的通话 SDK。
+> 本文档使用版本 1.0.0 的通话 SDK。
 
 找到项目级别 build.gradle，确保将 `mavenCentral()` 添加到 `buildscript` 和 `allprojects` 下的存储库列表中
 ```groovy
@@ -53,7 +50,7 @@ allprojects {
 ```groovy
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.8'
+    implementation 'com.azure.android:azure-communication-calling:1.0.0'
     ...
 }
 
@@ -82,7 +79,7 @@ CallClient callClient = new CallClient();
 CommunicationTokenCredential tokenCredential = new CommunicationTokenCredential(userToken);
 android.content.Context appContext = this.getApplicationContext(); // From within an Activity for instance
 CallAgent callAgent = callClient.createCallAgent(appContext, tokenCredential).get();
-DeviceManager deviceManager = callClient.getDeviceManager().get();
+DeviceManager deviceManager = callClient.getDeviceManager(appContext).get();
 ```
 若要为主叫方设置显示名称，请使用以下替代方法：
 
@@ -93,8 +90,8 @@ CommunicationTokenCredential tokenCredential = new CommunicationTokenCredential(
 android.content.Context appContext = this.getApplicationContext(); // From within an Activity for instance
 CallAgentOptions callAgentOptions = new CallAgentOptions();
 callAgentOptions.setDisplayName("Alice Bob");
+DeviceManager deviceManager = callClient.getDeviceManager(appContext).get();
 CallAgent callAgent = callClient.createCallAgent(appContext, tokenCredential, callAgentOptions).get();
-DeviceManager deviceManager = callClient.getDeviceManager().get();
 ```
 
 
@@ -141,13 +138,15 @@ Call groupCall = callAgent.startCall(participants, startCallOptions);
 有关更多详细信息，请查看[本地相机预览](#local-camera-preview)。
 ```java
 Context appContext = this.getApplicationContext();
-VideoDeviceInfo desiredCamera = callClient.getDeviceManager().get().getCameras().get(0);
+VideoDeviceInfo desiredCamera = callClient.getDeviceManager(appContext).get().getCameras().get(0);
 LocalVideoStream currentVideoStream = new LocalVideoStream(desiredCamera, appContext);
-VideoOptions videoOptions = new VideoOptions(currentVideoStream);
+LocalVideoStream[] localVideoStreams = new LocalVideoStream[1];
+localVideoStreams[0] = currentVideoStream;
+VideoOptions videoOptions = new VideoOptions(localVideoStreams);
 
 // Render a local preview of video so the user knows that their video is being shared
-Renderer previewRenderer = new Renderer(currentVideoStream, appContext);
-View uiView = previewRenderer.createView(new RenderingOptions(ScalingMode.Fit));
+Renderer previewRenderer = new VideoStreamRenderer(currentVideoStream, appContext);
+View uiView = previewRenderer.createView(new CreateViewOptions(ScalingMode.FIT));
 // Attach the uiView to a viewable location on the app at this point
 layout.addView(uiView);
 
@@ -340,7 +339,7 @@ catch(Exception e) {
 
 ```java
 try {
-    callAgent.unregisterPushNotifications().get();
+    callAgent.unregisterPushNotification().get();
 }
 catch(Exception e) {
     System.out.println("Something went wrong while un-registering for all Incoming Calls Push Notifications.")
@@ -367,7 +366,7 @@ List<RemoteParticipant> remoteParticipants = call.getRemoteParticipants();
 主叫方的标识（如果是来电）：
 
 ```java
-CommunicationIdentifier callerId = call.getCallerId();
+CommunicationIdentifier callerId = call.getCallerInfo().getIdentifier();
 ```
 
 获取呼叫的状态： 
@@ -377,16 +376,16 @@ CallState callState = call.getState();
 ```
 
 它会返回一个表示当前呼叫状态的字符串：
-* “None”- 初始通话状态
-* “Connecting”- 拨打或接听电话后的初始过渡状态
-* “Ringing”- 对于去电，表示远程参与者的电话正在响铃
-* “EarlyMedia”- 表示在接通电话前播放通知的状态
-* “Connected”- 已接通电话
-* “LocalHold”- 本地参与者暂停通话，本地终结点与远程参与者之间没有媒体传输
-* “RemoteHold”- 远程参与者暂停通话，本地终结点与远程参与者之间没有媒体传输
-* “Disconnecting”- 通话进入“Disconnected”状态前的过渡状态
-* “Disconnected”- 最终通话状态
-
+* “NONE”- 初始通话状态
+* “EARLY_MEDIA”- 表示在接通电话前播放通知的状态
+* “CONNECTING”- 拨打或接听电话后的初始过渡状态
+* “RINGING”- 对于去电，表示远程参与者的电话正在响铃
+* “CONNECTED”- 已接通电话
+* “LOCAL_HOLD”- 本地参与者暂停通话，本地终结点与远程参与者之间没有媒体传输
+* “REMOTE_HOLD”- 远程参与者暂停通话，本地终结点与远程参与者之间没有媒体传输
+* “DISCONNECTING”- 通话进入“Disconnected”状态前的过渡状态
+* “DISCONNECTED”- 最终通话状态
+* “IN_LOBBY”- 在大厅中，为了实现 Teams 会议互操作性
 
 若要了解呼叫结束的原因，请检查 `callEndReason` 属性。 它包含代码/子代码： 
 
@@ -400,20 +399,20 @@ int subCode = callEndReason.getSubCode();
 
 ```java
 CallDirection callDirection = call.getCallDirection(); 
-// callDirection == CallDirection.Incoming for incoming call
-// callDirection == CallDirection.Outgoing for outgoing call
+// callDirection == CallDirection.INCOMING for incoming call
+// callDirection == CallDirection.OUTGOING for outgoing call
 ```
 
 若要查看当前麦克风是否静音，请检查 `muted` 属性：
 
 ```java
-boolean muted = call.getIsMicrophoneMuted();
+boolean muted = call.isMuted();
 ```
 
 若要查看是否正在录制当前呼叫，请检查 `isRecordingActive` 属性：
 
 ```java
-boolean recordinggActive = call.getIsRecordingActive();
+boolean recordingActive = call.isRecordingActive();
 ```
 
 若要检查活动视频流，请查看 `localVideoStreams` 集合：
@@ -427,8 +426,9 @@ List<LocalVideoStream> localVideoStreams = call.getLocalVideoStreams();
 若要使本地终结点静音或取消静音，可使用 `mute` 和 `unmute` 异步 API：
 
 ```java
-call.mute().get();
-call.unmute().get();
+Context appContext = this.getApplicationContext();
+call.mute(appContext).get();
+call.unmute(appContext).get();
 ```
 
 ### <a name="start-and-stop-sending-local-video"></a>开始和停止发送本地视频
@@ -440,7 +440,7 @@ VideoDeviceInfo desiredCamera = <get-video-device>;
 Context appContext = this.getApplicationContext();
 LocalVideoStream currentLocalVideoStream = new LocalVideoStream(desiredCamera, appContext);
 VideoOptions videoOptions = new VideoOptions(currentLocalVideoStream);
-Future startVideoFuture = call.startVideo(currentLocalVideoStream);
+Future startVideoFuture = call.startVideo(appContext, currentLocalVideoStream);
 startVideoFuture.get();
 ```
 
@@ -453,7 +453,7 @@ currentLocalVideoStream == call.getLocalVideoStreams().get(0);
 若要停止本地视频，请传递 `localVideoStreams` 集合中可用的 `LocalVideoStream` 实例：
 
 ```java
-call.stopVideo(currentLocalVideoStream).get();
+call.stopVideo(appContext, currentLocalVideoStream).get();
 ```
 
 对 `LocalVideoStream` 实例调用 `switchSource` 来发送视频时，可切换到不同的相机设备：
@@ -485,14 +485,14 @@ CommunicationIdentifier participantIdentifier = remoteParticipant.getIdentifier(
 ParticipantState state = remoteParticipant.getState();
 ```
 状态可以是下列其中一项
-* “Idle”- 初始状态
-* “EarlyMedia”- 在参与者接通电话前播放通知
-* “Ringing”- 参与者电话正在响铃
-* “Connecting”- 参与者正在连接到通话时的过渡状态
-* “Connected”- 参与者已接通电话
-* “Connected”- 参与者已暂停通话
-* “InLobby”- 参与者正在大厅中等待许可。 当前仅在 Teams 互操作方案中使用
-* “Disconnected”- 最终状态：参与者已与通话断开连接
+* “IDLE”- 初始状态
+* “EARLY_MEDIA”- 在参与者接通电话前播放通知
+* “RINGING”- 参与者电话正在响铃
+* “CONNECTING”- 参与者正在连接到通话时的过渡状态
+* “CONNECTED”- 参与者已接通电话
+* “HOLD”- 参与者已暂停通话
+* “IN_LOBBY”- 参与者正在大厅中等待许可。 当前仅在 Teams 互操作方案中使用
+* “DISCONNECTED”- 最终状态，参与者已与通话断开连接
 
 
 * 若要了解参与者退出通话的原因，请检查 `callEndReason` 属性：
@@ -502,12 +502,12 @@ CallEndReason callEndReason = remoteParticipant.getCallEndReason();
 
 * 若要检查此远程参与者是否已静音，请检查 `isMuted` 属性：
 ```java
-boolean isParticipantMuted = remoteParticipant.getIsMuted();
+boolean isParticipantMuted = remoteParticipant.isMuted();
 ```
 
 * 若要检查此远程参与者是否正在讲话，请检查 `isSpeaking` 属性：
 ```java
-boolean isParticipantSpeaking = remoteParticipant.getIsSpeaking();
+boolean isParticipantSpeaking = remoteParticipant.isSpeaking();
 ```
 
 * 若要检查给定参与者在此呼叫中发送的所有视频流，请检查 `videoStreams` 集合：
@@ -554,8 +554,8 @@ MediaStreamType streamType = remoteParticipantStream.getType(); // of type Media
 当远程流的可用性发生变化时，可选择销毁整个呈现器、销毁特定的 `RendererView`，也可保留它们，但这将导致显示空白的视频帧。
 
 ```java
-Renderer remoteVideoRenderer = new Renderer(remoteParticipantStream, appContext);
-View uiView = remoteVideoRenderer.createView(new RenderingOptions(ScalingMode.Fit));
+VideoStreamRenderer remoteVideoRenderer = new VideoStreamRenderer(remoteParticipantStream, appContext);
+VideoStreamRendererView uiView = remoteVideoRenderer.createView(new RenderingOptions(ScalingMode.FIT));
 layout.addView(uiView);
 
 remoteParticipant.addOnVideoStreamsUpdatedListener(e -> onRemoteParticipantVideoStreamsUpdated(p, e));
@@ -581,41 +581,41 @@ int id = remoteVideoStream.getId();
 
 * `MediaStreamType` - 可以是“Video”或“ScreenSharing”
 ```java
-MediaStreamType type = remoteVideoStream.getType();
+MediaStreamType type = remoteVideoStream.getMediaStreamType();
 ```
 
 * `isAvailable` - 指示远程参与者终结点是否正在主动发送流
 ```java
-boolean availability = remoteVideoStream.getIsAvailable();
+boolean availability = remoteVideoStream.isAvailable();
 ```
 
 ### <a name="renderer-methods-and-properties"></a>呈现器方法和属性
 采用 API 的呈现器对象
 
-* 创建一个 `RendererView` 实例，随后可将其附加到应用程序 UI 中来呈现远程视频流。
+* 创建一个 `VideoStreamRendererView` 实例，随后可将其附加到应用程序 UI 中来呈现远程视频流。
 ```java
 // Create a view for a video stream
-renderer.createView()
+VideoStreamRendererView.createView()
 ```
-* 处置呈现器及其所有相关 `RendererView`。 从 UI 中删除所有关联视图后，系统会调用它。
+* 处置呈现器及其所有相关 `VideoStreamRendererView`。 从 UI 中删除所有关联视图后，系统会调用它。
 ```java
-renderer.dispose()
+VideoStreamRenderer.dispose()
 ```
 
 * `StreamSize` - 远程视频流的大小（宽度/高度）
 ```java
-StreamSize renderStreamSize = remoteVideoStream.getSize();
+StreamSize renderStreamSize = VideoStreamRenderer.getSize();
 int width = renderStreamSize.getWidth();
 int height = renderStreamSize.getHeight();
 ```
 
 
 ### <a name="rendererview-methods-and-properties"></a>RendererView 方法和属性
-创建 `RendererView` 时，可指定将应用于此视图的 `scalingMode` 和 `mirrored` 属性：缩放模式可以是“拉伸”、“裁剪”或“拟合”。如果将 `mirrored` 设置为 `true`，则呈现的流将垂直翻转。
+创建 `VideoStreamRendererView` 时，可指定将应用于此视图的 `ScalingMode` 和 `mirrored` 属性：缩放模式可以是“裁剪”或“拟合”
 
 ```java
-Renderer remoteVideoRenderer = new Renderer(remoteVideoStream, appContext);
-RendererView rendererView = remoteVideoRenderer.createView(new RenderingOptions(ScalingMode.Fit));
+VideoStreamRenderer remoteVideoRenderer = new VideoStreamRenderer(remoteVideoStream, appContext);
+VideoStreamRendererView rendererView = remoteVideoRenderer.createView(new CreateViewOptions(ScalingMode.Fit));
 ```
 
 然后，可使用以下代码片段将创建的 RendererView 附加到应用程序 UI：
@@ -623,10 +623,10 @@ RendererView rendererView = remoteVideoRenderer.createView(new RenderingOptions(
 layout.addView(rendererView);
 ```
 
-稍后可在 RendererView 对象上调用 `updateScalingMode` API，并将 ScalingMode.Stretch、ScalingMode.Crop 或 ScalingMode.Fit 作为参数来更新缩放模式。
+稍后可在 RendererView 对象上调用 `updateScalingMode` API，并将 ScalingMode.CROP 或 ScalingMode.FIT 作为参数来更新缩放模式。
 ```java
 // Update the scale mode for this view.
-rendererView.updateScalingMode(ScalingMode.Crop)
+rendererView.updateScalingMode(ScalingMode.CROP)
 ```
 
 
@@ -639,7 +639,8 @@ rendererView.updateScalingMode(ScalingMode.Crop)
 > 当前必须先实例化 `callAgent` 对象才能获得 DeviceManager 的访问权限
 
 ```java
-DeviceManager deviceManager = callClient.getDeviceManager().get();
+Context appContext = this.getApplicationContext();
+DeviceManager deviceManager = callClient.getDeviceManager(appContext).get();
 ```
 
 ### <a name="enumerate-local-devices"></a>枚举本地设备
@@ -649,32 +650,6 @@ DeviceManager deviceManager = callClient.getDeviceManager().get();
 ```java
 //  Get a list of available video devices for use.
 List<VideoDeviceInfo> localCameras = deviceManager.getCameras(); // [VideoDeviceInfo, VideoDeviceInfo...]
-
-// Get a list of available microphone devices for use.
-List<AudioDeviceInfo> localMicrophones = deviceManager.getMicrophones(); // [AudioDeviceInfo, AudioDeviceInfo...]
-
-// Get a list of available speaker devices for use.
-List<AudioDeviceInfo> localSpeakers = deviceManager.getSpeakers(); // [AudioDeviceInfo, AudioDeviceInfo...]
-```
-
-### <a name="set-default-microphonespeaker"></a>设置默认麦克风/扬声器
-
-借助设备管理器，可设置发起通话时要使用的默认设备。
-如果未设置客户端默认值，通信服务将回退到 OS 默认值。
-
-```java
-
-// Get the microphone device that is being used.
-AudioDeviceInfo defaultMicrophone = deviceManager.getMicrophones().get(0);
-
-// Set the microphone device to use.
-deviceManager.setMicrophone(defaultMicrophone);
-
-// Get the speaker device that is being used.
-AudioDeviceInfo defaultSpeaker = deviceManager.getSpeakers().get(0);
-
-// Set the speaker device to use.
-deviceManager.setSpeaker(defaultSpeaker);
 ```
 
 ### <a name="local-camera-preview"></a>本地相机预览
@@ -685,10 +660,12 @@ deviceManager.setSpeaker(defaultSpeaker);
 VideoDeviceInfo videoDevice = <get-video-device>;
 Context appContext = this.getApplicationContext();
 currentVideoStream = new LocalVideoStream(videoDevice, appContext);
-videoOptions = new VideoOptions(currentVideoStream);
+LocalVideoStream[] localVideoStreams = new LocalVideoStream[1];
+localVideoStreams[0] = currentVideoStream;
+videoOptions = new VideoOptions(localVideoStreams);
 
-Renderer previewRenderer = new Renderer(currentVideoStream, appContext);
-View uiView = previewRenderer.createView(new RenderingOptions(ScalingMode.Fit));
+VideoStreamRenderer previewRenderer = new VideoStreamRenderer(currentVideoStream, appContext);
+VideoStreamRendererView uiView = previewRenderer.createView(new RenderingOptions(ScalingMode.Fit));
 
 // Attach the uiView to a viewable location on the app at this point
 layout.addView(uiView);

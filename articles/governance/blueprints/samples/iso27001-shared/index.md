@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 共享服务蓝图示例概述
 description: ISO 27001 共享服务蓝图示例的概述和体系结构。 此蓝图示例可帮助客户评估特定 ISO 27001 控制要求。
-ms.date: 02/05/2021
+ms.date: 04/30/2021
 ms.topic: sample
-ms.openlocfilehash: d5ac88fc7a4fe21cef74ee23af2336a5a376471a
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 112b8dbfe49cfab555c53b52747c73bdca8c7cf1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627644"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739198"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共享服务蓝图示例的概述
 

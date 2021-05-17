@@ -6,13 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 0c73d0394486472c2c3c92450aab6a1a0d329cf7
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.custom: devx-track-java
+ms.openlocfilehash: ed906c32e91ae168e17d9eb769d3fd1985098f9c
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877280"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109634628"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>在 VNET 中运行 Azure Spring Cloud 的客户责任
 本文档包括有关在虚拟网络中使用 Azure Spring Cloud 时的规范。
@@ -33,7 +33,7 @@ ms.locfileid: "104877280"
 ## <a name="azure-spring-cloud-network-requirements"></a>Azure Spring Cloud 网络要求
 
   | 目标终结点 | 端口 | 用途 | 注意 |
-  |------|------|------|
+  |------|------|------|------|
   | *:1194 *或* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - AzureCloud:1194 | UDP:1194 | 基础 Kubernetes 群集管理。 | |
   | *:443 *或* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - AzureCloud:443 | TCP:443 | Azure Spring Cloud 服务管理。 | 在“networkProfile”部分下的资源有效负载中，可以了解服务实例“requiredTraffics”的信息。 |
   | *:9000 *或* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - AzureCloud:9000 | TCP:9000 | 基础 Kubernetes 群集管理。 |
@@ -54,7 +54,8 @@ Azure 防火墙提供完全限定的域名 (FQDN) 标记 **AzureKubernetesServic
   | *.cdn.mscr.io | HTTPS:443 | 由 Azure CDN 提供支持的 MCR 存储。 |
   | *.data.mcr.microsoft.com | HTTPS:443 | 由 Azure CDN 提供支持的 MCR 存储。 |
   | <i>management.azure.com</i> | HTTPS:443 | 基础 Kubernetes 群集管理。 |
-  | <i>login.microsoftonline.com</i> | HTTPS:443 | Azure Active Directory 身份验证。 |
+  | *login.microsoftonline.com<i></i> | HTTPS:443 | Azure Active Directory 身份验证。 |
+  | <i>*login.microsoft.com</i> | HTTPS:443 | Azure Active Directory 身份验证。 |
   |<i>packages.microsoft.com</i>    | HTTPS:443 | Microsoft 包存储库。 |
   | <i>acs-mirror.azureedge.net</i> | HTTPS:443 | 安装所需二进制文件（如 kubenet 和 Azure CNI）时所需的存储库。 |
   | *mscrl.microsoft.com* | HTTPS:80 | 所需的 Microsoft 证书链路径。 |
@@ -62,5 +63,5 @@ Azure 防火墙提供完全限定的域名 (FQDN) 标记 **AzureKubernetesServic
   | *crl3.digicert.com* | HTTPS:80 | 第三方 SSL 证书链路径。 |
 
 ## <a name="see-also"></a>另请参阅
-* [在专用网络中访问应用程序](spring-cloud-access-app-virtual-network.md)
-* [使用应用程序网关和 Azure 防火墙公开应用](spring-cloud-expose-apps-gateway-azure-firewall.md)
+* [在专用网络中访问应用程序](access-app-virtual-network.md)
+* [使用应用程序网关和 Azure 防火墙公开应用](expose-apps-gateway-azure-firewall.md)

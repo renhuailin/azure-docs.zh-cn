@@ -4,15 +4,15 @@ description: 了解如何访问发布到 Azure 市场的产品/服务的所有�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 11/09/2020
+ms.date: 04/28/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 765f4f358d593cd5fcc021fbf4ec2276c422c4d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef0e3745d6a45353ef286101bcb5fef1923ce12b
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555119"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108206738"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“使用情况”仪表板
 
@@ -155,6 +155,13 @@ ms.locfileid: "102555119"
 | RawUsage | 原始用量 | 客户部署的资产所消耗的总原始使用单位。<br>原始使用时间定义为 VM 已运行的时间量（以使用单位表示）。 | RawUsage |
 | 估计的延伸费用 (CC) | 估计的延伸费用（按客户币种计费） | 表示与使用量相关的费用。 此列是价格 (CC) 与使用数量的乘积。 | EstimatedExtendedChargeCC |
 | 估计的延伸费用 (PC) | 估计的延伸费用（按付款币种计费） | 表示与使用量相关的费用。 此列是估计价格 (PC) 与使用数量的乘积。 | EstimatedExtended ChargePC |
+| 计量 ID | 计量 ID | 表示产品/服务的计量 ID。 | 计量 ID |
+| 合作伙伴中心检测到异常 | 合作伙伴中心检测到异常 | **适用于具有自定义计量维度的产品/服务**。<br>指示发布者是否报告了产品/服务的自定义计量维度的超额使用情况（合作伙伴中心将该维度由标记为异常）。可能的值为： <ul><li>0（非异常）</li><li>1（异常）</li></ul>如果发布者没有含自定义计量维度的产品/服务，并且通过编程访问导出此列，则值将为 null。 | PartnerCenterDetectedAnomaly |
+| 发布者标记为异常 | 发布者标记为异常 | **适用于具有自定义计量维度的产品/服务**。<br>指示发布者是否确认客户对产品/服务的自定义计量维度的超额使用情况是真实的或虚假的。 可能的值包括：<ul><li>0（发布者已将其标记为非异常）</li><li>1（发布者已将其标记为异常）</li></ul>如果发布者没有含自定义计量维度的产品/服务，并且通过编程访问导出此列，则值将为 null。 | PublisherMarkedAnomaly |
+| 新报告的使用情况 | 新报告的使用情况 | **适用于具有自定义计量维度的产品/服务**。<br>客户的超额使用情况（对于由发布者标识为异常的产品/服务的自定义计量维度）。 此字段指定发布者报告的新超额使用情况。<br>如果发布者没有含自定义计量维度的产品/服务，并且通过编程访问导出此列，则值将为 null。 | NewReportedUsage |
+| 执行的操作 | 执行的操作 | **适用于具有自定义计量维度的产品/服务**。<br>指定发布者确认以下事项的时间：客户对产品/服务的自定义计量维度的超额使用情况是真实的或虚假的。<br>如果发布者没有含自定义计量维度的产品/服务，并且通过编程访问导出此列，则值将为 null。 | ActionTakenAt |
+| 采取的操作 | 采取的操作 | **适用于具有自定义计量维度的产品/服务**。<br>指定确认以下事项的人员：客户对产品/服务的自定义计量维度的超额使用情况是真实的或虚假的。<br>如果发布者没有含自定义计量维度的产品/服务，并且通过编程访问导出此列，则值将为 null。 | ActionTakenBy |
+| 估计的财务影响 (USD) | 估计的财务影响，以美元计 | **适用于具有自定义计量维度的产品/服务**。<br>当合作伙伴中心将客户对产品/服务的自定义计量维度的超额使用情况标记为异常时，该字段会指定异常超额使用情况的估计财务影响（以美元为单位）。<br>如果发布者没有含自定义计量维度的产品/服务，并且通过编程方式导出此列，则值将为 null。 | EstimatedFinancialImpactUSD |
 |||||
 
 ### <a name="usage-page-filters"></a>使用情况页面筛选器

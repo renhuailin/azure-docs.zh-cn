@@ -18,7 +18,7 @@
         - name: 安全性
           items:
             - name: 安全基线
-              href: security-baseline.md
+              href: /security/benchmark/azure/baselines/cloud-services-security-baseline?toc=/azure/cloud-services/toc.json
     - name: 操作方式
       items:
         - name: 计划
@@ -105,6 +105,32 @@
               href: cloud-services-role-config-xpath.md
         - name: 管理证书
           items:
+            - name: Azure PowerShell
+              href: cloud-services-diagnostics-powershell.md
+            - name: .NET
+              href: cloud-services-dotnet-diagnostics.md
+            - name: Visual Studio
+              href: /visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?toc=/azure/cloud-services/toc.json
+        - name: 在 Azure 存储中存储和查看诊断数据
+          href: diagnostics-extension-to-storage.md
+        - name: 使用诊断跟踪云服务
+          href: cloud-services-dotnet-diagnostics-trace-flow.md
+    - name: Migrate
+      items:
+        - name: 迁移概述
+          href: ../cloud-services-extended-support/in-place-migration-overview.md?toc=/azure/cloud-services/toc.json
+        - name: 迁移技术详细信息
+          href: ../cloud-services-extended-support/in-place-migration-technical-details.md?toc=/azure/cloud-services/toc.json
+        - name: 使用 Azure 门户进行迁移
+          href: ../cloud-services-extended-support/in-place-migration-portal.md?toc=/azure/cloud-services/toc.json
+        - name: 使用 PowerShell 迁移
+          href: ../cloud-services-extended-support/in-place-migration-powershell.md?toc=/azure/cloud-services/toc.json
+        - name: 常见错误和已知问题
+          href: ../cloud-services-extended-support/in-place-migration-common-errors.md?toc=/azure/cloud-services/toc.json
+    - name: 疑难解答
+      items:
+        - name: 调试
+          items:
             - name: 云服务和管理证书
               href: cloud-services-certs-create.md
             - name: 配置 SSL
@@ -172,6 +198,8 @@
                   href: cloud-services-deployment-faq.md
     - name: 参考
       items:
+        - name: Azure CLI
+          href: /cli/azure/cloud
         - name: 代码示例
           href: 'https://azure.microsoft.com/resources/samples/?service=cloud-services'
         - name: .csdef XML 架构
@@ -196,17 +224,25 @@
           href: /rest/api/compute/cloudservices/
     - name: 资源
       items:
-        - name: Azure 路线图
-          href: 'https://azure.microsoft.com/roadmap/?category=compute'
-        - name: 学习路径
-          href: /learn/paths/azure-fundamentals/
-        - name: Microsoft Q&A 问题页面
-          href: /answers/topics/azure-cloud-services.html
-        - name: 定价
-          href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
-        - name: 定价计算器
-          href: 'https://azure.microsoft.com/pricing/calculator/'
-        - name: 服务更新
-          href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='
-        - name: 视频
-          href: 'https://azure.microsoft.com/documentation/videos/index/?services=cloud-services'
+        - name: Role 架构
+          href: schema-cscfg-role.md
+        - name: NetworkConfiguration 架构
+          href: schema-cscfg-networkconfiguration.md
+    - name: REST
+      href: /rest/api/compute/cloudservices/
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: 学习路径
+      href: /learn/paths/azure-fundamentals/
+    - name: Microsoft Q&A 问题页面
+      href: /answers/topics/azure-cloud-services.html
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=cloud-services'

@@ -7,10 +7,10 @@ author: vladvino
 ms.author: apimpm
 ms.date: 11/27/2020
 ms.openlocfilehash: e2842f3e428abb4f0eb628dbb8e446f2714d5d89
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101652379"
 ---
 # <a name="api-management-soft-delete-preview"></a>API 管理软删除（预览版）
@@ -92,7 +92,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Micros
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ApiManagement/service/{apimServiceName}?api-version=2020-06-01-preview
 ```
 
-. . . 并在请求正文中将 `restore` 属性设置为 `true`。 （如果指定了此标记并将其设为 *true*，那么，所有其他属性都会被忽略。）例如：
+. . . 并在请求正文中将 `restore` 属性设置为 `true`。 （如果指定了此标志并将其设为 *true*，那么，所有其他属性都会被忽略。）例如：
 
 ```json
 {

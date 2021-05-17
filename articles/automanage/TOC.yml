@@ -1,4 +1,4 @@
-- name: Azure 自动管理
+- name: Azure Automanage（预览版）
   href: automanage-virtual-machines.md
 - name: 快速入门
   expanded: true
@@ -15,6 +15,8 @@
       items:
         - name: 新虚拟机的热补丁
           href: automanage-hotpatch.md
+    - name: Automanage 帐户
+      href: automanage-account.md
 - name: 如何
   expanded: true
   items:
@@ -22,6 +24,8 @@
       href: virtual-machines-custom-preferences.md
     - name: 通过 Azure Policy 在 VM 上启用
       href: virtual-machines-policy-enable.md
+    - name: 通过 ARM 模板在 VM 上启用
+      href: arm-deploy.md
     - name: 排查加入错误
       href: common-errors.md
     - name: 修复损坏的 Automanage 帐户

@@ -36,7 +36,7 @@
           href: connect-ios.md
         - name: 使用 Microsoft Store 客户端进行连接
           href: connect-microsoft-store.md
-        - name: 连接 Linux 设备
+        - name: 使用精简客户端进行连接
           href: linux-overview.md
     - name: 配置设备重定向
       href: configure-device-redirections.md
@@ -126,8 +126,14 @@
       href: disaster-recovery.md
     - name: 设置 KDC 代理
       href: key-distribution-center-proxy.md
-    - name: 设置 RD 网关角色
-      href: rd-gateway-role.md
+    - name: Connect 上的 Start VM
+      items:
+        - name: 设置 Connect 上的 Start VM
+          href: start-virtual-machine-connect.md
+        - name: Connect 上的 Start VM 常见问题解答
+          href: start-virtual-machine-connect-faq.md
+    - name: 设置排出模式
+      href: drain-mode.md
 - name: 概念
   items:
     - name: 内置角色
@@ -150,6 +156,8 @@
           href: safe-url-list.md
         - name: 带宽注意事项
           href: rdp-bandwidth.md
+        - name: 代理支持指南
+          href: proxy-server-support.md
         - name: 确定用户连接延迟
           href: connection-latency.md
     - name: Windows 虚拟桌面中的委托访问
@@ -160,12 +168,10 @@
       href: fslogix-containers-azure-files.md
     - name: FSLogix 配置文件容器的存储选项
       href: store-fslogix-profile.md
-    - name: 合作伙伴集成
-      href: partners.md
     - name: Windows 虚拟桌面常见问题解答
       href: faq.md
     - name: Windows 10 Enterprise 多会话常见问题解答
-      href: windows-10-multisession-faq.md
+      href: windows-10-multisession-faq.yml
     - name: MSIX 应用附加
       items:
         - name: 什么是 MSIX 应用附加？
@@ -181,7 +187,7 @@
     - name: 安全性
       items:
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/windows-virtual-desktop-security-baseline?context=/azure/virtual-desktop/context/context
 - name: 疑难解答
   items:
     - name: 故障排除概述、反馈和支持
@@ -210,12 +216,16 @@
       href: security-guide.md
     - name: Linux 支持
       href: linux-overview.md
+    - name: Azure CLI
+      href: /cli/azure/desktopvirtualization
+    - name: 估计 Azure Monitor 成本
+      href: azure-monitor-costs.md
     - name: 支持的 RDP 文件设置
       href: /windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context
     - name: 虚拟机大小调整指南
       href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
     - name: Azure 命令行接口 (CLI)
-      href: /cli/azure/ext/desktopvirtualization/
+      href: /cli/azure/
     - name: Azure 示例方案
       href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
     - name: 电子邮件发现
@@ -236,9 +246,11 @@
       href: 'https://support.microsoft.com/help/4563049/how-to-videos-about-windows-virtual-desktop'
     - name: 技术社区支持组
       href: 'https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop'
-    - name: UserVoice 论坛
-      href: 'https://windowsvirtualdesktop.uservoice.com/forums/921118-general'
     - name: Microsoft 365 路线图
       href: 'https://aka.ms/wvdroadmap'
     - name: Azure 资源管理器模板
       href: 'https://github.com/Azure/RDS-Templates/tree/master/wvd-templates'
+    - name: Azure 合规性产品
+      href: 'https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/'
+    - name: Azure 顾问
+      href: ../advisor/advisor-overview.md

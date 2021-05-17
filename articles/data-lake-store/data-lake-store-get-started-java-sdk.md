@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.custom: devx-track-java
 ms.author: twooley
 ms.openlocfilehash: a2c55a2d3277bbb6c3cf72f5ea703780d2a5e9bd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87318838"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>使用 Java SDK 对 Azure Data Lake Storage Gen1 执行的文件系统操作
@@ -23,7 +23,7 @@ ms.locfileid: "87318838"
 >
 > 
 
-了解如何使用 Azure Data Lake Storage Gen1 Java SDK 执行基本操作，如创建文件夹、上传和下载数据文件等。若要详细了解 Data Lake Storage Gen1，请参阅 [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)。
+了解如何使用 Azure Data Lake Storage Gen1 Java SDK 执行基本操作，例如创建文件夹、上传和下载数据文件等。有关 Data Lake Storage Gen1 的详细信息，请参阅 [Azure Data Lake Storage Gen1](data-lake-store-overview.md)。
 
 可以在 [Azure Data Lake Storage Gen1 Java API 文档](https://azure.github.io/azure-data-lake-store-java/javadoc/)中访问适用于 Data Lake Storage Gen1 的 Java SDK API 文档。
 

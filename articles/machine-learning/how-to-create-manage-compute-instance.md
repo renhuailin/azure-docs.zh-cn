@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, references_regions
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 4ae4094e4a356c5394c2bdf887d3b60e40989ecd
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: f3e0a14ee917bf9b1396eef9d1ec36709e5e706a
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885733"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331372"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>创建和管理 Azure 机器学习计算实例
 
@@ -41,6 +41,10 @@ ms.locfileid: "107885733"
 * [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro) 或 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)。
 
 ## <a name="create"></a>创建
+
+> [!IMPORTANT]
+> 下面标记了“（预览版）”的项当前为公共预览版。
+> 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 **时间估计**：大约 5 分钟。
 
@@ -105,10 +109,14 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 
 还可使用 [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)创建计算实例。 
 
-### <a name="create-on-behalf-of-preview"></a>代表他人创建（预览版）
+
+
+## <a name="create-on-behalf-of-preview"></a>代表他人创建（预览版）
 
 作为管理员，你可代表数据科学家创建计算实例，并通过以下方式将实例分配给他们：
+
 * [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)。  若要详细了解如何查找此模板中所需的 TenantID 和 ObjectID，请参阅[查找身份验证配置的标识对象 ID](../healthcare-apis/fhir/find-identity-object-ids.md)。  也可在 Azure Active Directory 门户中找到这些值。
+
 * REST API
 
 你为其创建计算实例的数据科学家需要拥有针对以下项的 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 权限： 
@@ -122,6 +130,93 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 * JupyterLab
 * RStudio
 * 集成式笔记本
+
+## <a name="customize-the-compute-instance-with-a-script-preview"></a><a name="setup-script"></a> 使用脚本自定义计算实例（预览版）
+
+> [!TIP]
+> 此预览版当前适用于美国中西部和美国东部区域的工作区。
+
+使用安装脚本实现自动方式，以便在预配时自定义并配置计算实例。 作为管理员，你可以编写一个自定义脚本，用于按照要求预配工作区中的所有计算实例。 
+
+可以在安装脚本中执行的操作的一些示例：
+
+* 安装包和工具
+* 装载数据
+* 创建自定义 conda 环境和 Jupyter 内核
+* 克隆 Git 存储库
+
+### <a name="create-the-setup-script"></a>创建安装脚本
+
+安装脚本是以 azureuser 形式运行的 shell 脚本。  创建脚本或将其上传到笔记本文件：
+
+1. 登录到[工作室](https://ml.azure.com)并选择你的工作区。
+1. 在左侧选择“笔记本”
+1. 使用“添加文件”工具创建或上传安装 shell 脚本。  请确保脚本文件名以“sh”结尾。  创建新文件时，还需要将“文件类型”更改为“bash(.sh)”。
+
+:::image type="content" source="media/how-to-create-manage-compute-instance/create-or-upload-file.png" alt-text="在工作室中创建安装脚本或将其上传到笔记本文件":::
+
+脚本运行时，当前工作目录是上传它的目录。  如果将脚本上传到“用户”>“管理员”，则在预配名为 ciname 的计算实例时，该文件的位置为 /mnt/batch/tasks/shared/LS_root/mounts/clusters/ciname/code/Users/admin。
+
+脚本参数可以在脚本中引用为 $1、$2 等。例如，如果执行 `scriptname ciname`，则可以在脚本中通过 `cd /mnt/batch/tasks/shared/LS_root/mounts/clusters/$1/code/admin` 导航到存储脚本的目录。
+
+还可以检索脚本内的路径：
+
+```shell
+#!/bin/bash 
+SCRIPT=$(readlink -f "$0") 
+SCRIPT_PATH=$(dirname "$SCRIPT") 
+```
+
+### <a name="use-the-script-in-the-studio"></a>在工作室中使用脚本
+
+存储脚本后，在计算实例的创建过程中指定该脚本：
+
+1. 登录到[工作室](https://ml.azureml.com)并选择你的工作区。
+1. 在左侧选择“计算”。
+1. 选择“+ 新建”以创建新的计算实例。
+1. [填写表单](how-to-create-attach-compute-studio.md#compute-instance)。
+1. 在表单的第二页上，打开“显示高级设置”
+1. 启用“使用安装脚本进行预配”
+1. 浏览到所保存的 shell 脚本。  或从计算机上传脚本。
+1. 根据需要添加命令参数。
+
+:::image type="content" source="media/how-to-create-manage-compute-instance/setup-script.png" alt-text="在工作室中使用安装脚本预配计算实例。":::
+
+### <a name="use-script-in-a-resource-manager-template"></a>在资源管理器模板中使用脚本
+
+在资源管理器[模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)中，添加 `setupScripts` 以在预配计算实例时调用安装脚本。 例如：
+
+```json
+"setupScripts":{
+    "scripts":{
+        "creationScript":{
+        "scriptSource":"workspaceStorage",
+        "scriptData":"[parameters('creationScript.location')]",
+        "scriptArguments":"[parameters('creationScript.cmdArguments')]"
+        }
+    }
+}
+```
+
+可以改为为资源管理器模板提供内联脚本。  Shell 命令可以引用上传到笔记本文件共享中的任何依赖项。  使用内联字符串时，脚本的工作目录为 /mnt/batch/tasks/shared/LS_root/mounts/clusters/ciname/code/Users。
+
+例如，为 `scriptData` 指定 base64 编码的命令字符串：
+
+```json
+"setupScripts":{
+    "scripts":{
+        "creationScript":{
+        "scriptSource":"inline",
+        "scriptData":"[base64(parameters('inlineCommand'))]",
+        "scriptArguments":"[parameters('creationScript.cmdArguments')]"
+        }
+    }
+}
+```
+
+### <a name="setup-script-logs"></a>安装脚本日志
+
+安装脚本执行的日志显示在计算实例详细信息页的日志文件夹中。 日志将存储回 Logs\<compute instance name> 文件夹下的笔记本文件共享中。 特定计算实例的脚本文件和命令参数显示在详细信息页中。
 
 ## <a name="manage"></a>管理
 

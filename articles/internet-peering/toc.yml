@@ -20,6 +20,8 @@
       href: walkthrough-exchange-all.md
     - name: 对等互连服务合作伙伴演练
       href: walkthrough-peering-service-all.md
+    - name: 通信服务合作伙伴演练
+      href: walkthrough-communications-services-partner.md
     - name: 将对等 ASN 关联到 Azure 订阅
       items:
         - name: 门户

@@ -27,6 +27,8 @@
         - name: 通过 DMS 实现停机时间最短的迁移
           href: howto-migrate-online.md
           displayName: 'dms, data migration service'
+        - name: 从 Oracle 迁移
+          href: howto-migrate-from-oracle.md
     - name: 版本控制策略
       href: concepts-version-policy.md
       displayName: 'version, postgresql'
@@ -91,6 +93,9 @@
             - name: Go
               href: connect-go.md
               displayName: connect with go
+            - name: Rust
+              href: connect-rust.md
+              displayName: connect with rust
     - name: 教程
       items:
         - name: 设计数据库
@@ -124,14 +129,14 @@
           href: concepts-supported-versions.md
         - name: PostgreSQL 扩展
           href: concepts-extensions.md
+        - name: 限制
+          href: concepts-limits.md
         - name: 了解定价层
           items:
             - name: 定价层
               href: concepts-pricing-tiers.md
             - name: 为预留容量预付费
               href: concept-reserved-pricing.md
-            - name: 限制
-              href: concepts-limits.md
         - name: 安全性
           items:
             - name: 安全概述
@@ -159,7 +164,7 @@
               displayName: 'regulatory, compliance, standards, domains'
               href: ./security-controls-policy.md
             - name: 安全基线
-              href: security-baseline.md
+              href: /security/benchmark/azure/baselines/postgresql-security-baseline?toc=/azure/postgresql/TOC.json?toc=/azure/postgresql/TOC.json
         - name: 网络
           items:
             - name: 防火墙规则
@@ -210,6 +215,8 @@
             - name: 性能建议
               href: concepts-performance-recommendations.md
               displayName: 'query store, performance, optimize, recommendations'
+            - name: Azure 顾问建议
+              href: concepts-azure-advisor-recommendations.md
         - name: 应用开发
           items:
             - name: 最佳做法
@@ -410,6 +417,8 @@
       href: flexible-server/index.yml
     - name: 概述
       href: flexible-server/overview.md
+    - name: 发行说明
+      href: flexible-server/release-notes.md
     - name: 快速入门
       expanded: true
       items:
@@ -461,6 +470,8 @@
           href: flexible-server/concepts-extensions.md
         - name: 计划性维护
           href: flexible-server/concepts-maintenance.md
+        - name: 连接池 (PgBouncer)
+          href: flexible-server/concepts-pgbouncer.md
         - name: 业务连续性
           items:
             - name: 业务连续性概述
@@ -479,6 +490,16 @@
               displayName: 'monitor, server logs'
             - name: 审核日志
               href: flexible-server/concepts-audit.md
+            - name: 智能性能
+              items:
+                - name: 查询存储概述
+                  href: flexible-server/concepts-query-store.md
+                  displayName: 'performance, optimize, query store'
+                - name: Query Store 使用方案
+                  href: flexible-server/concepts-query-store-scenarios.md
+                  displayName: 'query store, performance, optimize'
+                - name: 查询存储最佳做法
+                  href: flexible-server/concepts-query-store-best-practices.md
         - name: 复制
           href: flexible-server/concepts-logical.md
           displayName: logical decoding
@@ -556,11 +577,15 @@
       items:
         - name: 什么是超大规模 (Citus)？
           href: hyperscale-overview.md
+        - name: 预览版功能
+          href: hyperscale-preview-features.md
     - name: 快速入门
       items:
         - name: 创建服务器组
           items:
-            - name: Azure 门户
+            - name: 基本层（预览版）
+              href: quickstart-create-hyperscale-basic-tier.md
+            - name: 标准层
               href: quickstart-create-hyperscale-portal.md
               displayName: 'portal, create hyperscale'
     - name: 教程
@@ -579,6 +604,8 @@
           displayName: 'hyperscale, tutorial, real-time'
     - name: 概念
       items:
+        - name: 基本层
+          href: concepts-hyperscale-tiers.md
         - name: 分布式数据
           items:
             - name: 节点和表
@@ -599,7 +626,9 @@
               href: concepts-hyperscale-ssl-connection-security.md
               displayName: 'hyperscale, ssl'
             - name: 安全基线
-              href: postgresql-hyperscale-security-baseline.md
+              href: /security/benchmark/azure/baselines/postgresql-hyperscale-security-baseline?toc=/azure/postgresql/TOC.json?toc=/azure/postgresql/TOC.json
+        - name: 计划性维护
+          href: concepts-hyperscale-maintenance.md
         - name: 业务连续性
           items:
             - name: 备份和还原
@@ -607,26 +636,26 @@
               displayName: 'backup, restore, outage, hyperscale'
             - name: 高可用性
               href: concepts-hyperscale-high-availability.md
+        - name: 复制
+          href: concepts-hyperscale-read-replicas.md
         - name: 监视和优化
           items:
             - name: 监视和优化
               href: concepts-hyperscale-monitoring.md
             - name: 审核日志
               href: concepts-hyperscale-audit.md
+        - name: 列式存储
+          href: concepts-hyperscale-columnar.md
         - name: 配置选项
           href: concepts-hyperscale-configuration-options.md
+        - name: 限制和局限性
+          href: concepts-hyperscale-limits.md
         - name: 为预留容量预付费
           href: concepts-hyperscale-reserved-pricing.md
+        - name: PostgreSQL 版本
+          href: concepts-hyperscale-versions.md
         - name: PostgreSQL 扩展
           href: concepts-hyperscale-extensions.md
-    - name: API 参考
-      items:
-        - name: SQL API 函数
-          href: reference-hyperscale-functions.md
-        - name: 服务器参数
-          href: reference-hyperscale-parameters.md
-        - name: 系统表
-          href: reference-hyperscale-metadata.md
     - name: 操作指南
       items:
         - name: 服务器组大小
@@ -652,6 +681,15 @@
               href: howto-hyperscale-modify-distributed-tables.md
         - name: 高可用性
           href: howto-hyperscale-high-availability.md
+        - name: 复制
+          items:
+            - name: Azure 门户
+              href: howto-hyperscale-read-replicas-portal.md
+              displayName: 'replication, read replica'
+        - name: 计划性维护
+          items:
+            - name: Azure 门户
+              href: howto-hyperscale-maintenance.md
         - name: 监视
           items:
             - name: 针对指标创建警报
@@ -660,6 +698,12 @@
             - name: Access 数据库日志
               href: howto-hyperscale-logging.md
               displayName: 'log, hyperscale'
+        - name: 还原服务器组
+          items:
+            - name: Azure 门户
+              href: howto-hyperscale-restore-portal.md
+        - name: 主版本升级
+          href: howto-hyperscale-upgrade.md
         - name: 疑难解答
           items:
             - name: 排查连接错误
@@ -667,6 +711,14 @@
               displayName: 'connection errors, hyperscale'
             - name: 有用的诊断查询
               href: howto-hyperscale-useful-diagnostic-queries.md
+    - name: API 参考
+      items:
+        - name: SQL API 函数
+          href: reference-hyperscale-functions.md
+        - name: 服务器参数
+          href: reference-hyperscale-parameters.md
+        - name: 系统表
+          href: reference-hyperscale-metadata.md
 - name: 参考
   items:
     - name: Azure CLI

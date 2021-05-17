@@ -4,6 +4,8 @@
   items:
     - name: Azure 安全性简介
       href: overview.md
+    - name: 端到端安全性
+      href: end-to-end.md
     - name: 云中责任分担
       href: shared-responsibility.md
 - name: 在 Azure 中保护工作负荷
@@ -62,8 +64,10 @@
     - name: 安全清单
       href: steps-secure-identity.md
     - name: 选择无密码
-      href: ../../active-directory/authentication/concept-authentication-passwordless.md
-- name: 网络安全
+      href: ../../active-directory/authentication/concept-authentication-passwordless.md?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: 身份验证
+      href: /azure/architecture/framework/security/design-identity-authentication?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
+- name: 网络安全性
   items:
     - name: 安全概述
       href: network-overview.md
@@ -72,11 +76,11 @@
     - name: DDoS 防护最佳做法
       href: ../../ddos-protection/fundamental-best-practices.md
     - name: DDoS 防护安全基线
-      href: ddos-protection-security-baseline.md
+      href: /security/benchmark/azure/baselines/ddos-protection-security-baseline?toc=/azure/security/fundamentals/TOC.json
     - name: 无关联的 DNS 和子域接管
       href: subdomain-takeover.md
     - name: 安全混合网络体系结构
-      href: /azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?bc=%2fazure%2fsecurity%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsecurity%2ftoc.json
+      href: /azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
 - name: IaaS 安全
   items:
     - name: Microsoft 反恶意软件
@@ -116,11 +120,11 @@
         - name: 安全清单
           href: database-security-checklist.md
     - name: 存储安全指南
-      href: ../../storage/blobs/security-recommendations.md?bc=%2fazure%2fsecurity%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsecurity%2ftoc.json
+      href: ../../storage/blobs/security-recommendations.md?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: 客户密码箱
       href: customer-lockbox-overview.md
     - name: 客户密码箱安全基线
-      href: customer-lockbox-security-baseline.md
+      href: /security/benchmark/azure/baselines/lockbox-security-baseline?toc=/azure/security/fundamentals/TOC.json
 - name: 应用程序
   items:
     - name: PaaS
@@ -156,6 +160,8 @@
   items:
     - name: Azure 安全服务
       href: services-technologies.md
+    - name: 美国政府云的功能可用性
+      href: feature-availability.md
     - name: 安全性白皮书
       href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
     - name: 最佳做法

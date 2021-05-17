@@ -22,6 +22,18 @@ items:
         href: quickstarts-sdk/client-library.md
       - name: 示例
         href: /samples/browse/?products=azure&terms=computer-vision
+      - name: 负责使用 AI
+        items:
+          - name: 透明度说明
+            items:
+              - name: OCR 用例
+                href: /legal/cognitive-services/computer-vision/ocr-transparency-note?context=/azure/cognitive-services/computer-vision/context/context
+              - name: 特征和限制
+                href: /legal/cognitive-services/computer-vision/ocr-characteristics-and-limitations?context=/azure/cognitive-services/computer-vision/context/context
+          - name: 集成和负责使用
+            href: /legal/cognitive-services/computer-vision/ocr-guidance-integration-responsible-use?context=/azure/cognitive-services/computer-vision/context/context
+          - name: 数据、隐私和安全性
+            href: /legal/cognitive-services/computer-vision/ocr-data-privacy-security?context=/azure/cognitive-services/computer-vision/context/context
       - name: 操作指南
         items:
           - name: 调用读取 API

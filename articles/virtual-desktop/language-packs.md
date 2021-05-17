@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/03/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: db1ac3f5de507a5cfdbfec7216afea9a0f4ac541
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 87a12ec80c19e34cfb1bebfe29d14b118ae1eb93
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515033"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317228"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>将语言包添加到 Windows 10 多会话映像
 
@@ -55,7 +55,7 @@ Windows 虚拟桌面一种服务，用户可以随时随地进行部署。 这�
           - [Windows 10 版本 2004 或 20H2 11C LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2011C.iso)
           - [Windows 10 版本 2004 或 20H2 1C LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2101C.iso)
           - [Windows 10 版本 2004 或 20H2 2C LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2102C.iso)
-          - [Windows 10 版本 2004 或 20H2 3C LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2103C.iso)
+          - [Windows 10 版本 2004 或 20H2 4B LXP ISO](https://software-download.microsoft.com/download/sg/LanguageExperiencePack.2104B.iso)
 
 - Azure 文件共享或 Windows 文件服务器虚拟机上的文件共享
 
@@ -176,51 +176,38 @@ Set-WinUserLanguageList $LanguageList -force
 
 脚本运行完毕后，请转到“开始” > “设置” > “时间和语言” > “语言”，确保正确安装了语言包。 如果存在相应的语言文件，即表示一切都已设置完毕。
 
-向 Windows 映像添加其他语言后，还需要更新收件箱应用以支持添加的语言。 这可以通过使用收件箱应用 ISO 中的内容刷新预安装的应用来完成。 若要在断开连接的环境（无法通过 Internet 从 VM 访问）中执行此刷新，可以使用以下 PowerShell 脚本示例来自动执行此过程。
+向 Windows 映像添加其他语言后，还需要更新收件箱应用以支持添加的语言。 这可以通过使用收件箱应用 ISO 中的内容刷新预安装的应用来完成。
+若要在 VM 无法访问 Internet 的环境中执行此刷新，可使用以下 PowerShell 脚本模板自动执行此过程，并且仅更新已安装的收件箱应用版本。
 
 ```powershell
 #########################################
 ## Update Inbox Apps for Multi Language##
 #########################################
 ##Set Inbox App Package Content Stores##
-[string]$InboxApps = "F:\"
-##Update Inbox Store Apps##
-$AllAppx = Get-Item $inboxapps\*.appx | Select-Object name
-$AllAppxBundles = Get-Item $inboxapps\*.appxbundle | Select-Object name
-$allAppxXML = Get-Item $inboxapps\*.xml | Select-Object name
-foreach ($Appx in $AllAppx) {
-    $appname = $appx.name.substring(0,$Appx.name.length-5)
-    $appnamexml = $appname + ".xml"
-    $pathappx = $InboxApps + "\" + $appx.Name
-    $pathxml = $InboxApps + "\" + $appnamexml
-    
-    if($allAppxXML.name.Contains($appnamexml)){
-    
-    Write-Host "Handeling with xml $appname"  
-  
-    Add-AppxProvisionedPackage -Online -PackagePath $pathappx -LicensePath $pathxml
+[string] $AppsContent = "F:\"
+
+##Update installed Inbox Store Apps##
+foreach ($App in (Get-AppxProvisionedPackage -Online)) {
+    $AppPath = $AppsContent + $App.DisplayName + '_' + $App.PublisherId
+    Write-Host "Handling $AppPath"
+    $licFile = Get-Item $AppPath*.xml
+    if ($licFile.Count) {
+        $lic = $true
+        $licFilePath = $licFile.FullName
     } else {
-      
-      Write-Host "Handeling without xml $appname"
-      
-      Add-AppxProvisionedPackage -Online -PackagePath $pathappx -skiplicense
+        $lic = $false
+    }
+    $appxFile = Get-Item $AppPath*.appx*
+    if ($appxFile.Count) {
+        $appxFilePath = $appxFile.FullName
+        if ($lic) {
+            Add-AppxProvisionedPackage -Online -PackagePath $appxFilePath -LicensePath $licFilePath 
+        } else {
+            Add-AppxProvisionedPackage -Online -PackagePath $appxFilePath -skiplicense
+        }
     }
 }
-foreach ($Appx in $AllAppxBundles) {
-    $appname = $appx.name.substring(0,$Appx.name.length-11)
-    $appnamexml = $appname + ".xml"
-    $pathappx = $InboxApps + "\" + $appx.Name
-    $pathxml = $InboxApps + "\" + $appnamexml
-    
-    if($allAppxXML.name.Contains($appnamexml)){
-    Write-Host "Handeling with xml $appname"
-    
-    Add-AppxProvisionedPackage -Online -PackagePath $pathappx -LicensePath $pathxml
-    } else {
-       Write-Host "Handeling without xml $appname"
-      Add-AppxProvisionedPackage -Online -PackagePath $pathappx -skiplicense
-    }
-}
+
 ```
 
 >[!IMPORTANT]

@@ -5,14 +5,15 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 12/28/2020
+ms.date: 04/15/2021
 ms.author: jgao
-ms.openlocfilehash: 9d045fb75838ac016f3e9b04cd2519d8a8530a4b
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3ac1afe3658db60297735e897d69caa463358a4c
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175645"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318380"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>在 ARM 模板中使用部署脚本
 
@@ -43,7 +44,7 @@ ms.locfileid: "102175645"
 
 ## <a name="configure-the-minimum-permissions"></a>配置最低权限
 
-对于部署脚本 API 版本2020-10-01 或更高版本，部署主体用于创建在执行部署脚本资源时所需的基础资源，即存储帐户和 Azure 容器实例。 如果脚本需要对 Azure 进行身份验证并执行特定于 Azure 的操作，建议为脚本提供用户分配的托管标识。 托管标识必须具有完成脚本中操作所需的访问权限。
+对于部署脚本 API 版本 2020-10-01 或更高版本，部署主体用于创建部署脚本资源执行存储帐户和 Azure 容器实例所需的基础资源。 如果脚本需要对 Azure 进行身份验证并执行特定于 Azure 的操作，建议为脚本提供用户分配的托管标识。 托管标识必须具有完成脚本中操作所需的访问权限。
 
 若要配置最小特权权限，你需要：
 
@@ -77,7 +78,7 @@ ms.locfileid: "102175645"
 
 ## <a name="sample-templates"></a>示例模板
 
-下面的 JSON 是一个示例。 有关详细信息，请参阅最新 [模板架构](/azure/templates/microsoft.resources/deploymentscripts)。
+以下 JSON 是一个示例。 有关详细信息，请参阅最新[模板架构](/azure/templates/microsoft.resources/deploymentscripts)。
 
 ```json
 {
@@ -131,13 +132,16 @@ ms.locfileid: "102175645"
 > [!NOTE]
 > 此示例用于演示目的。 `scriptContent` 和 `primaryScriptUri` 属性不能在模板中共存。
 
+> [!NOTE]
+> scriptContent 显示具有多行的脚本。  Azure 门户和 Azure DevOps 管道无法分析具有多行的部署脚本。 可以将 PowerShell 命令链接到一行（使用分号或 \\r\\n 或 \\n），或将 `primaryScriptUri` 属性与外部脚本文件一起使用 。 有许多免费的 JSON 字符串转义/反转义工具可用。 例如， [https://www.freeformatter.com/json-escape.html](https://www.freeformatter.com/json-escape.html) 。
+
 属性值详细信息：
 
-- `identity`：对于部署脚本 API 版本 2020-10-01 或更高版本，用户分配的托管标识是可选的，除非你需要在脚本中执行任何特定于 Azure 的操作。  对于 API 版本 2019-10-01 预览版，需要托管标识，因为部署脚本服务使用该托管标识来执行脚本。 当前，仅支持用户分配的托管标识。
+- `identity`：对于部署脚本 API 版本 2020-10-01 或更高版本，用户分配的托管标识是可选的，除非你需要在脚本中执行任何特定于 Azure 的操作。  对于 API 版本 2019-10-01 预览版，需要托管标识，因为部署脚本服务使用该托管标识来执行脚本。 指定标识属性后，脚本服务就会先调用 `Connect-AzAccount -Identity` 再调用用户脚本。 当前，仅支持用户分配的托管标识。 若要使用其他标识登录，可以在脚本中调用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount)。
 - `kind`：指定脚本类型。 当前，支持 Azure PowerShell 和 Azure CLI 脚本。 值为 AzurePowerShell 和 AzureCLI 。
 - `forceUpdateTag`：在模板部署之间更改此值将强制重新执行部署脚本。 如果使用 `newGuid()` 或 `utcNow()` 函数，则这两个函数只能在参数的默认值中使用。 若要了解详细信息，请参阅[多次运行脚本](#run-script-more-than-once)。
-- `containerSettings`：指定该设置，用于自定义 Azure 容器实例。  containerGroupName 用于指定容器组名称`containerGroupName`。 如果未指定，将自动生成组名。
-- `storageAccountSettings`：指定设置以使用现有的存储帐户。 如果未指定，将自动创建存储帐户。 请参阅[使用现有的存储帐户](#use-existing-storage-account)。
+- `containerSettings`：指定该设置，用于自定义 Azure 容器实例。 部署脚本需要新的 Azure 容器实例。 无法指定现有的 Azure 容器实例。 但是，可以使用 `containerGroupName` 自定义容器组名称。 如果未指定，将自动生成组名。
+- `storageAccountSettings`：指定设置以使用现有的存储帐户。 如果未指定 `storageAccountName`，将自动创建存储帐户。 请参阅[使用现有的存储帐户](#use-existing-storage-account)。
 - `azPowerShellVersion`/`azCliVersion`：指定要使用的模块版本。 查看[支持的 Azure PowerShell 版本](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)的列表。 查看[支持的 Azure CLI 版本](https://mcr.microsoft.com/v2/azure-cli/tags/list)的列表。
 
   >[!IMPORTANT]
@@ -159,14 +163,11 @@ ms.locfileid: "102175645"
 
 - `environmentVariables`：指定环境变量以传递到脚本。 有关详细信息，请参阅[开发部署脚本](#develop-deployment-scripts)。
 - `scriptContent`：指定脚本内容。 若要运行外部脚本，请改用 `primaryScriptUri`。 有关示例，请参阅[使用内联脚本](#use-inline-scripts)和[使用外部脚本](#use-external-scripts)。
-  > [!NOTE]
-  > Azure 门户无法分析具有多行的部署脚本。 若要从 Azure 门户部署具有部署脚本的模板，可以使用分号将 PowerShell 命令链接到一行中，也可以将 `primaryScriptUri` 属性与外部脚本文件一起使用。
-
-- `primaryScriptUri`：为具有受支持的文件扩展名的主部署脚本指定一个可公开访问的 Url。
-- `supportingScriptUris`：指定一个可公开访问的 Url 数组，它们指向在 `scriptContent` 或 `primaryScriptUri` 中调用的支持性文件。
+- `primaryScriptUri`：为具有受支持的文件扩展名的主部署脚本指定一个可公开访问的 URL。 有关详细信息，请参阅[使用外部脚本](#use-external-scripts)。
+- `supportingScriptUris`：指定一个可公开访问的 URL 数组，它们指向在 `scriptContent` 或 `primaryScriptUri` 中调用的支持性文件。 有关详细信息，请参阅[使用外部脚本](#use-external-scripts)。
 - `timeout`：指定 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)中指定的脚本执行最大允许时间。 默认值为 **P1D**。
 - `cleanupPreference`. 指定在脚本执行达到最终状态时清理部署资源的首选项。 默认设置为 Always，这意味着不管最终状态如何（成功、失败、已取消），都会删除资源。 若要了解详细信息，请参阅[清理部署脚本资源](#clean-up-deployment-script-resources)。
-- `retentionInterval`：指定在部署脚本执行达到最终状态后，服务保留部署脚本资源的时间间隔。 在此持续时间到期时，将删除部署脚本资源。 持续时间基于 [ISO 8601 模式](https://en.wikipedia.org/wiki/ISO_8601)。 保留时间间隔为 1 到 26 小时 (PT26H)。 当 `cleanupPreference` 设置为 **OnExpiration** 时将使用此属性。 当前未启用 OnExpiration 属性。 若要了解详细信息，请参阅[清理部署脚本资源](#clean-up-deployment-script-resources)。
+- `retentionInterval`：指定在部署脚本执行达到最终状态后，服务保留部署脚本资源的时间间隔。 在此持续时间到期时，将删除部署脚本资源。 持续时间基于 [ISO 8601 模式](https://en.wikipedia.org/wiki/ISO_8601)。 保留时间间隔为 1 到 26 小时 (PT26H)。 当 `cleanupPreference` 设置为 **OnExpiration** 时将使用此属性。 若要了解详细信息，请参阅[清理部署脚本资源](#clean-up-deployment-script-resources)。
 
 ### <a name="additional-samples"></a>其他示例
 
@@ -212,7 +213,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 有关详细信息，请参阅[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json)。
 
-外部脚本文件必须是可访问的。 若要保护存储在 Azure 存储帐户中的脚本文件，请参阅[使用 SAS 令牌部署专用 ARM 模板](./secure-template-with-sas-token.md)。
+外部脚本文件必须是可访问的。 若要保护存储在 Azure 存储帐户中的脚本文件，请生成 SAS 令牌，并将其包含在模板的 URI 中。 设置到期时间以允许足够的时间来完成部署。 有关详细信息，请参阅[使用 SAS 令牌部署专用 ARM 模板](./secure-template-with-sas-token.md)。
 
 你负责确保部署脚本（`primaryScriptUri` 或 `supportingScriptUris`）所引用的脚本的完整性。 仅引用你信任的脚本。
 
@@ -245,12 +246,12 @@ Write-Host "Press [ENTER] to continue ..."
 在第一个资源中，定义一个名为 $DeploymentScriptOutputs 的变量，并使用它来存储输出值`$DeploymentScriptOutputs`。 若要访问模板内另一个资源的输出值，请使用：
 
 ```json
-reference('<ResourceName>').output.text
+reference('<ResourceName>').outputs.text
 ```
 
 ## <a name="work-with-outputs-from-cli-script"></a>使用 CLI 脚本的输出
 
-与 PowerShell 部署脚本不同，CLI/bash 支持不通过公开常见变量来存储脚本输出，而使用名为 `AZ_SCRIPTS_OUTPUT_PATH` 的环境变量来存储脚本输出文件所在的位置。 如果从资源管理器模板运行部署脚本，则 Bash shell 会自动设置此环境变量。
+与 PowerShell 部署脚本不同，CLI/bash 支持不通过公开常见变量来存储脚本输出，而使用名为 `AZ_SCRIPTS_OUTPUT_PATH` 的环境变量来存储脚本输出文件所在的位置。 如果从资源管理器模板运行部署脚本，则 Bash shell 会自动设置此环境变量。 `AZ_SCRIPTS_OUTPUT_PATH` 的值为 /mnt/azscripts/azscriptoutput/scriptoutputs.json。
 
 部署脚本输出必须保存在 `AZ_SCRIPTS_OUTPUT_PATH` 位置，并且输出必须是有效的 JSON 字符串对象。 必须将该文件的内容保存为键值对。 例如，字符串数组存储为 `{ "MyResult": [ "foo", "bar"] }`。  仅存储数组结果是无效的，例如 `[ "foo", "bar" ]`。
 
@@ -311,9 +312,29 @@ reference('<ResourceName>').output.text
 
 不管为 `$ErrorActionPreference` 设置了什么值，当脚本遇到错误时，脚本服务会将资源预配状态设置为“失败”。
 
+### <a name="use-environment-variables"></a>使用环境变量
+
+部署脚本使用下列环境变量：
+
+|环境变量|默认值|系统预留|
+|--------------------|-------------|---------------|
+|AZ_SCRIPTS_AZURE_ENVIRONMENT|AzureCloud|N|
+|AZ_SCRIPTS_CLEANUP_PREFERENCE|OnExpiration|N|
+|AZ_SCRIPTS_OUTPUT_PATH|<AZ_SCRIPTS_PATH_OUTPUT_DIRECTORY>/<AZ_SCRIPTS_PATH_SCRIPT_OUTPUT_FILE_NAME>|Y|
+|AZ_SCRIPTS_PATH_INPUT_DIRECTORY|/mnt/azscripts/azscriptinput|Y|
+|AZ_SCRIPTS_PATH_OUTPUT_DIRECTORY|/mnt/azscripts/azscriptoutput|Y|
+|AZ_SCRIPTS_PATH_USER_SCRIPT_FILE_NAME|Azure PowerShell：userscript.ps1；Azure CLI：userscript.sh|Y|
+|AZ_SCRIPTS_PATH_PRIMARY_SCRIPT_URI_FILE_NAME|primaryscripturi.config|Y|
+|AZ_SCRIPTS_PATH_SUPPORTING_SCRIPT_URI_FILE_NAME|supportingscripturi.config|Y|
+|AZ_SCRIPTS_PATH_SCRIPT_OUTPUT_FILE_NAME|scriptoutputs.json|Y|
+|AZ_SCRIPTS_PATH_EXECUTION_RESULTS_FILE_NAME|executionresult.json|Y|
+|AZ_SCRIPTS_USER_ASSIGNED_IDENTITY|/subscriptions/|N|
+
+有关使用 `AZ_SCRIPTS_OUTPUT_PATH` 的详细信息，请参阅[使用 CLI 脚本中的输出](#work-with-outputs-from-cli-script)。
+
 ### <a name="pass-secured-strings-to-deployment-script"></a>将安全字符串传递到部署脚本
 
-通过在容器实例中设置环境变量 (EnvironmentVariable)，可为容器运行的应用程序或脚本提供动态配置。 部署脚本以与 Azure 容器实例相同的方式处理非安全和安全环境变量。 有关详细信息，请参阅[在容器实例中设置环境变量](../../container-instances/container-instances-environment-variables.md#secure-values)。
+通过在容器实例中设置环境变量 (EnvironmentVariable)，可为容器运行的应用程序或脚本提供动态配置。 部署脚本以与 Azure 容器实例相同的方式处理非安全和安全环境变量。 有关详细信息，请参阅[在容器实例中设置环境变量](../../container-instances/container-instances-environment-variables.md#secure-values)。 有关示例，请参阅[示例模板](#sample-templates)。
 
 环境变量允许的最大大小为 64 KB。
 
@@ -377,10 +398,10 @@ Timeout             : PT1H
 
 通过 Azure CLI，可在订阅或资源组范围管理部署脚本：
 
-- [az deployment-scripts delete](/cli/azure/deployment-scripts#az-deployment-scripts-delete)：删除部署脚本。
-- [az deployment-scripts list](/cli/azure/deployment-scripts#az-deployment-scripts-list)：列出所有部署脚本。
-- [az deployment-scripts show](/cli/azure/deployment-scripts#az-deployment-scripts-show)：检索部署脚本。
-- [az deployment-scripts show-log](/cli/azure/deployment-scripts#az-deployment-scripts-show-log)：显示部署脚本日志。
+- [az deployment-scripts delete](/cli/azure/deployment-scripts#az_deployment_scripts_delete)：删除部署脚本。
+- [az deployment-scripts list](/cli/azure/deployment-scripts#az_deployment_scripts_list)：列出所有部署脚本。
+- [az deployment-scripts show](/cli/azure/deployment-scripts#az_deployment_scripts_show)：检索部署脚本。
+- [az deployment-scripts show-log](/cli/azure/deployment-scripts#az_deployment_scripts_show_log)：显示部署脚本日志。
 
 list 命令输出如下所示：
 
@@ -570,7 +591,7 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 |------------|-------------|
 | DeploymentScriptInvalidOperation | 模板中的部署脚本资源定义包含无效的属性名。 |
 | DeploymentScriptResourceConflict | 无法删除处于非终端状态且执行未超过 1 小时的部署脚本资源。 或者，无法同时重新运行资源标识符相同（订阅、资源组名称和资源名称相同）但脚本正文内容不同的同一部署脚本。 |
-| DeploymentScriptOperationFailed | 部署脚本操作在内部失败。 联系 Microsoft 支持部门。 |
+| DeploymentScriptOperationFailed | 部署脚本操作在内部失败。 请联系 Microsoft 支持部门。 |
 | DeploymentScriptStorageAccountAccessKeyNotSpecified | 尚未为现有存储帐户指定访问密钥。|
 | DeploymentScriptContainerGroupContainsInvalidContainers | 由部署脚本服务创建的容器组已从外部修改，并且添加了无效的容器。 |
 | DeploymentScriptContainerGroupInNonterminalState | 两个或更多部署脚本资源在同一资源组中使用相同的 Azure 容器实例名称，其中一个尚未完成其执行。 |
@@ -600,4 +621,4 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 > [教程：使用 Azure 资源管理器模板中的部署脚本](./template-tutorial-deployment-script.md)
 
 > [!div class="nextstepaction"]
-> [了解模块：使用部署脚本扩展 ARM 模板](/learn/modules/extend-resource-manager-template-deployment-scripts/)
+> [Learn 模块：使用部署脚本扩展 ARM 模板](/learn/modules/extend-resource-manager-template-deployment-scripts/)

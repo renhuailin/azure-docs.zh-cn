@@ -3,12 +3,12 @@ title: 设置高可用性
 description: 通过安装本地管理控制台高可用性设备，提高你的 Defender for IoT 部署的复原能力。 高可用性部署确保你的托管传感器持续向活动的本地管理控制台进行报告。
 ms.date: 12/07/2020
 ms.topic: how-to
-ms.openlocfilehash: d0e09cd37fbae91d1903ca8f175c0592b567da6e
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: f341dee00574422ec325871ff97d6f3e8644ac48
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104781647"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208988"
 ---
 # <a name="about-high-availability"></a>关于高可用性
 
@@ -74,7 +74,7 @@ ms.locfileid: "104781647"
 |----|-------|-----------|
 |443 或 TCP|HTTPS|授予对本地管理控制台（Web 控制台）的访问权限。|
 |22 或 TCP|SSH|在主要与辅助本地管理控制台设备之间同步数据|
-|123 或 UDP|NTP| 本地管理控制台的 NTP 时间同步。验证是否为主动和被动设备定义了相同的时区。|
+|123 或 UDP|NTP| 本地管理控制台的 NTP 时间同步。请验证是否为主动和被动设备定义了相同的时区。|
 
 ## <a name="create-the-primary-and-secondary-pair"></a>创建主要和辅助设备对
 
@@ -87,7 +87,7 @@ ms.locfileid: "104781647"
 2. 在主要设备上运行以下命令：
 
 ```azurecli-interactive
-sudo cyberx-management-trusted-hosts-add -ip <Secondary IP>
+sudo cyberx-management-trusted-hosts-add -ip <Secondary IP> -token <primary token>
 ```
 
 >[!NOTE]

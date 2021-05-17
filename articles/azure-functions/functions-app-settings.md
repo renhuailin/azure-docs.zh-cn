@@ -3,12 +3,12 @@ title: Azure Functions 的应用设置参考
 description: 有关 Azure Functions 应用设置或环境变量的参考文档。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 327f120d387a3a08f0de9db2da718d530346e545
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: b1a3563d766f0f4636086024a1f23d157e8e9a06
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773073"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228597"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
@@ -188,7 +188,7 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 ## <a name="functions_worker_runtime"></a>FUNCTIONS\_WORKER\_RUNTIME
 
-要在函数应用中加载的语言辅助角色运行时。  此项对应于应用程序中正在使用的语言（例如，“`dotnet`”）。 从 Azure Functions 运行时版本 2.x 开始，给定函数应用只能支持一种语言。   
+要在函数应用中加载的语言辅助角色运行时。  这对应于应用程序中使用的语言（例如，`dotnet`）。 从 Azure Functions 运行时的版本 2.x 开始，一个给定的函数应用只能支持一种语言。   
 
 |键|示例值|
 |---|------------|
@@ -204,6 +204,45 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 | `node` | [JavaScript](functions-reference-node.md)<br/>[TypeScript](functions-reference-node.md#typescript) |
 | `powershell` | [PowerShell](functions-reference-powershell.md) |
 | `python` | [Python](functions-reference-python.md) |
+
+## <a name="mdmaxbackgroundupgradeperiod"></a>MDMaxBackgroundUpgradePeriod 
+
+控制 PowerShell 函数应用的托管依赖项后台更新周期，默认值为 `7.00:00:00`（每周）。 
+
+每个 PowerShell 工作进程都会在进程启动时检查 PowerShell 库上的模块升级，并在之后每 `MDMaxBackgroundUpgradePeriod` 检查一次。 当 PowerShell 库中有新的模块版本时，该版本会被安装到文件系统，并提供给 PowerShell 工作进程。 减小此值后，函数应用不但可以更快地获取较新的模块版本，而且可以增加应用资源使用率（网络 I/O、CPU、存储）。 增大此值会减少应用的资源使用率，但也可能会延迟将新的模块版本传递给你的应用。 
+
+|键|示例值|
+|---|------------|
+|MDMaxBackgroundUpgradePeriod|7.00:00:00|
+
+有关详细信息，请参阅[依赖项管理](functions-reference-powershell.md#dependency-management)。
+
+## <a name="mdnewsnapshotcheckperiod"></a>MDNewSnapshotCheckPeriod
+
+指定每个 PowerShell 辅助角色检查是否已安装托管依赖关系升级的频率。 默认频率为 `01:00:00`（每小时）。 
+
+将新的模块版本安装到文件系统后，必须重启每个 PowerShell 工作进程。 重启 PowerShell 工作进程会影响应用可用性，因为它可能会中断当前的函数执行操作。 在所有 PowerShell 工作进程都重启之前，函数调用可能使用旧的模块版本，也可能使用新的模块版本。 重启所有 PowerShell 工作进程的操作会在 `MDNewSnapshotCheckPeriod` 内完成。 
+
+在每个 `MDNewSnapshotCheckPeriod` 中，PowerShell 工作进程会检查是否已安装托管依赖关系升级。 安装升级后，重启随即开始。 增加此值会降低因重启而中断的频率。 但是，这种增加也可能会增加函数调用使用新/旧模块版本的时间，这种情况不确定。 
+
+|键|示例值|
+|---|------------|
+|MDNewSnapshotCheckPeriod|01:00:00|
+
+有关详细信息，请参阅[依赖项管理](functions-reference-powershell.md#dependency-management)。
+
+
+## <a name="mdminbackgroundupgradeperiod"></a>MDMinBackgroundUpgradePeriod
+
+在前一次托管依赖关系升级检查之后，启动下一次升级检查之前的时间段，默认值为 `1.00:00:00`（每天）。 
+
+为了避免在频繁重启工作进程时进行过多的模块升级，当任何工作进程在上一个 `MDMinBackgroundUpgradePeriod` 中启动了模块升级检查时，系统不会执行该检查。 
+
+|键|示例值|
+|---|------------|
+|MDMinBackgroundUpgradePeriod|1.00:00:00|
+
+有关详细信息，请参阅[依赖项管理](functions-reference-powershell.md#dependency-management)。
 
 ## <a name="pip_extra_index_url"></a>PIP\_EXTRA\_INDEX\_URL
 
@@ -265,19 +304,23 @@ Windows 上事件驱动的缩放计划中函数应用代码和配置的文件路
 
 仅在部署到 Windows 运行上的高级计划或消耗计划时使用。 不支持运行 Linux 的消耗计划。 更改或删除此设置可能会导致函数应用无法启动。 若要了解详细信息，请参阅[此故障排除文章](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)。
 
-在部署期间使用 Azure 资源管理器创建函数应用时，请不要在模板中包括 WEBSITE_CONTENTSHARE。 此应用程序设置是在部署过程中生成的。 若要了解详细信息，请参阅[为函数应用自动执行资源部署](functions-infrastructure-as-code.md#windows)。   
+在部署期间使用 Azure 资源管理器模板创建函数应用时，请勿在该模板中包括 WEBSITE_CONTENTSHARE。 此应用程序设置是在部署过程中生成的。 若要了解详细信息，请参阅[为函数应用自动执行资源部署](functions-infrastructure-as-code.md#windows)。   
 
 ## <a name="website_dns_server"></a>WEBSITE\_DNS\_SERVER
 
-设置应用在解析 IP 地址时使用的 DNS 服务器。 使用某些网络功能（如 [Azure DNS 专用区域](functions-networking-options.md#azure-dns-private-zones)和[专用终结点](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network)）时，通常需要此设置。   
+设置某个应用在解析 IP 地址时使用的 DNS 服务器。 在使用某些网络功能（如 [Azure DNS 专用区域](functions-networking-options.md#azure-dns-private-zones)和[专用终结点](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network)）时，通常需要此设置。   
 
 |键|示例值|
 |---|------------|
 |WEBSITE\_DNS\_SERVER|168.63.129.16|
 
+## <a name="website_enable_brotli_encoding"></a>WEBSITE\_ENABLE\_BROTLI\_ENCODING 
+
+控制是否将 Brotli 编码用于压缩，代替默认的 gzip 压缩。 当 `WEBSITE_ENABLE_BROTLI_ENCODING` 设置为 `1` 时，就会使用 Brotli 编码，否则使用 gzip 编码。 
+
 ## <a name="website_max_dynamic_application_scale_out"></a>WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT
 
-应用可以横向扩展到的最大实例数。 默认值为无限制。
+该应用可以横向扩展到的最大实例数。 默认值为无限制。
 
 > [!IMPORTANT]
 > 此设置处于预览状态。  添加了一个[函数应用横向扩展上限属性](./event-driven-scaling.md#limit-scale-out)，建议使用此方法限制横向扩展。
@@ -318,7 +361,7 @@ _仅限 Windows_。
 
 ## <a name="website_vnet_route_all"></a>WEBSITE\_VNET\_ROUTE\_ALL
 
-指示是否通过虚拟网络路由应用的所有出站流量。 设置值 `1` 指示所有流量都通过虚拟网络进行路由。 使用[区域虚拟网络集成](functions-networking-options.md#regional-virtual-network-integration)功能时，需要使用此设置。 [使用虚拟网络 NAT 网关定义静态出站 IP 地址](functions-how-to-use-nat-gateway.md)时，也可以使用此设置。 
+指示是否该应用中的所有出站流量都通过虚拟网络进行路由。 设置值 `1` 指示所有流量都通过虚拟网络进行路由。 使用[区域虚拟网络集成](functions-networking-options.md#regional-virtual-network-integration)功能时，需要使用此设置。 在[使用虚拟网络 NAT 网关来定义静态出站 IP 地址](functions-how-to-use-nat-gateway.md)时，也使用此设置。 
 
 |键|示例值|
 |---|------------|

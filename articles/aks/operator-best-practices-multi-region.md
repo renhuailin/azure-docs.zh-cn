@@ -8,15 +8,15 @@ ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 3ff8406a3634fa946ab8ce7aca694bbc57d556a5
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97976395"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中实现业务连续性和灾难恢复的最佳做法
 
-在 Azure Kubernetes 服务 (AKS) 中管理群集时，应用程序的正常运行时间变得非常重要。 默认情况下，AKS 通过在[虚拟机规模集 (VMSS)](../virtual-machine-scale-sets/overview.md) 中使用多个节点来提供高可用性。 但这些多个节点不会保护你的系统免受区域故障的问题。 为了最大化正常运行时间，请提前规划以维持业务连续性并为灾难恢复做好准备。
+在 Azure Kubernetes 服务 (AKS) 中管理群集时，应用程序的正常运行时间变得非常重要。 默认情况下，AKS 通过在[虚拟机规模集 (VMSS)](../virtual-machine-scale-sets/overview.md) 中使用多个节点来提供高可用性。 但是，这些节点不能避免系统受到区域故障的影响。 为了最大化正常运行时间，请提前规划以维持业务连续性并为灾难恢复做好准备。
 
 本文重点介绍如何在 AKS 中规划业务连续性和灾难恢复。 你将学习如何执行以下操作：
 
@@ -57,13 +57,13 @@ AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部�
 
 有关如何设置终结点和路由的信息，请参阅[使用流量管理器配置地理流量路由方法](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)。
 
-### <a name="application-routing-with-azure-front-door-service"></a>应用程序与 Azure 前门服务的路由
+### <a name="application-routing-with-azure-front-door-service"></a>应用程序路由与 Azure Front Door 服务
 
-使用基于 TCP 的拆分协议， [Azure 前门服务](../frontdoor/front-door-overview.md) 确保最终用户能够立即连接到最近的前门 POP (状态) 。 Azure 前门服务的其他功能包括 TLS 终止、自定义域、web 应用程序防火墙、URL 重写和会话相关性。 查看应用程序流量的需求，以了解哪种解决方案是最合适。
+[Azure Front Door 服务](../frontdoor/front-door-overview.md)使用基于拆分 TCP 的任意广播协议确保最终用户能够立即连接到最靠近的 Front Door POP（接入点）。 Azure Front Door 服务的附加功能包括 TLS 终止、自定义域、Web 应用程序防火墙、URL 重写和会话亲和性。 查看应用程序流量的需求，以了解哪种解决方案是最合适。
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>使用虚拟网络对等互连将区域互连
 
-如果群集需要相互通信，则可以通过[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)来实现两个虚拟网络之间的相互连接。 这种技术将虚拟网络相互互连，同时跨 Microsoft 主干网络提供高带宽，甚至跨不同地理区域。
+如果群集需要相互通信，则可以通过[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)来实现两个虚拟网络之间的相互连接。 这项技术将虚拟网络彼此互连，从而在 Microsoft 的主干网络（甚至在不同地理区域）中提供高带宽。
 
 要对等互连运行 AKS 群集的虚拟网络，一个先决条件是在 AKS 群集中使用标准负载均衡器，以便通过虚拟网络对等互连访问 Kubernetes 服务。
 
@@ -119,7 +119,7 @@ AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部�
 
 ![基于基础结构的异步复制](media/operator-best-practices-bc-dr/aks-infra-based-async-repl.png)
 
-如果使用 Azure 托管磁盘，则可以使用几个选项来处理复制和灾难恢复。 [Azure 上的 Velero][velero] 和 [Kasten][kasten] 是备份到 Kubernetes 的本机解决方案，但不受支持。
+如果使用 Azure 托管磁盘，则可以使用几个选项来处理复制和灾难恢复。 [Azure 上的 Velero][velero] 和 [Kasten][kasten] 是 Kubernetes 的本机备份解决方案，但不受支持。
 
 ### <a name="application-based-asynchronous-replication"></a>基于应用程序的异步复制
 

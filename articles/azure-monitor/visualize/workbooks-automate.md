@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 9d4aac17ca823f4eaa0f52ab260b1daca3f52f94
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: e1d96dd885fafcd95af1ae9d4757fb5c6ee4a3ef
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109741"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315302"
 ---
 # <a name="programmatically-manage-workbooks"></a>以编程方式管理工作簿
 
@@ -205,6 +205,102 @@ ms.locfileid: "106109741"
 | `workbook` | 大多数报表中使用的默认值，包括 Application Insights 的工作簿库、Azure Monitor 等。  |
 | `tsg` | Application Insights 中的故障排除指南库 |
 | `usage` | Application Insights 中“使用情况”下的“更多”库  |
+
+### <a name="working-with-json-formatted-workbook-data-in-the-serializeddata-template-parameter"></a>在 serializedData 模板参数中使用 JSON 格式的工作簿数据
+
+导出 Azure 工作簿的 Azure 资源管理器模板时，通常会在导出的 `serializedData` 模板参数中嵌入固定的资源链接。 其中包括可能比较敏感的值，如订阅 ID、资源组名称和其他类型的资源 ID。
+
+下面的示例演示如何在不使用字符串操作的情况下对导出的工作簿 Azure 资源管理器模板进行自定义。 此示例中的模式用于处理从 Azure 门户导出的未修改数据。 在以编程方式管理工作簿时，这也是屏蔽任何嵌入的敏感值的一种最佳做法，因此在这里屏蔽了订阅 ID 和资源组。 未对原始传入的 `serializedData` 值进行任何其他修改。
+
+```json
+{
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workbookDisplayName": {
+      "type": "string"
+    },
+    "workbookSourceId": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().id]"
+    },
+    "workbookId": {
+      "type": "string",
+      "defaultValue": "[newGuid()]"
+    }
+  },
+  "variables": {
+    // serializedData from original exported Azure Resource Manager template
+    "serializedData": "{\"version\":\"Notebook/1.0\",\"items\":[{\"type\":1,\"content\":{\"json\":\"Replace with Title\"},\"name\":\"text - 0\"},{\"type\":3,\"content\":{\"version\":\"KqlItem/1.0\",\"query\":\"{\\\"version\\\":\\\"ARMEndpoint/1.0\\\",\\\"data\\\":null,\\\"headers\\\":[],\\\"method\\\":\\\"GET\\\",\\\"path\\\":\\\"/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups\\\",\\\"urlParams\\\":[{\\\"key\\\":\\\"api-version\\\",\\\"value\\\":\\\"2019-06-01\\\"}],\\\"batchDisabled\\\":false,\\\"transformers\\\":[{\\\"type\\\":\\\"jsonpath\\\",\\\"settings\\\":{\\\"tablePath\\\":\\\"$..*\\\",\\\"columns\\\":[]}}]}\",\"size\":0,\"queryType\":12,\"visualization\":\"map\",\"tileSettings\":{\"showBorder\":false},\"graphSettings\":{\"type\":0},\"mapSettings\":{\"locInfo\":\"AzureLoc\",\"locInfoColumn\":\"location\",\"sizeSettings\":\"location\",\"sizeAggregation\":\"Count\",\"opacity\":0.5,\"legendAggregation\":\"Count\",\"itemColorSettings\":null}},\"name\":\"query - 1\"}],\"isLocked\":false,\"fallbackResourceIds\":[\"/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/XXXXXXX\"]}",
+
+    // parse the original into a JSON object, so that it can be manipulated
+    "parsedData": "[json(variables('serializedData'))]",
+
+    // create new JSON objects that represent only the items/properties to be modified
+    "updatedTitle": {
+      "content":{
+        "json": "[concat('Resource Group Regions in subscription \"', subscription().displayName, '\"')]"
+      }
+    },
+    "updatedMap": {
+      "content": {
+        "path": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups')]"
+      }
+    },
+
+    // the union function applies the updates to the original data
+    "updatedItems": [
+      "[union(variables('parsedData')['items'][0], variables('updatedTitle'))]",
+      "[union(variables('parsedData')['items'][1], variables('updatedMap'))]"
+    ],
+
+    // copy to a new workbook object, with the updated items
+    "updatedWorkbookData": {
+      "version": "[variables('parsedData')['version']]",
+      "items": "[variables('updatedItems')]",
+      "isLocked": "[variables('parsedData')['isLocked']]",
+      "fallbackResourceIds": ["[parameters('workbookSourceId')]"]
+    },
+
+    // convert back to an encoded string
+    "reserializedData": "[string(variables('updatedWorkbookData'))]"
+  },
+  "resources": [
+    {
+      "name": "[parameters('workbookId')]",
+      "type": "microsoft.insights/workbooks",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2018-06-17-preview",
+      "dependsOn": [],
+      "kind": "shared",
+      "properties": {
+        "displayName": "[parameters('workbookDisplayName')]",
+        "serializedData": "[variables('reserializedData')]",
+        "version": "1.0",
+        "sourceId": "[parameters('workbookSourceId')]",
+        "category": "workbook"
+      }
+    }
+  ],
+  "outputs": {
+    "workbookId": {
+      "type": "string",
+      "value": "[resourceId( 'microsoft.insights/workbooks', parameters('workbookId'))]"
+    }
+  },
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#"
+}
+```
+
+在此示例中，以下步骤有助于对导出的 Azure 资源管理器模板进行自定义：
+1. 如上一部分所述，将工作簿作为 Azure 资源管理器模板导出
+2. 在模板的 `variables` 部分中：
+    1. 将 `serializedData` 值解析为 json 对象变量，该变量将创建一个 json 结构，其中包含表示工作簿内容的项数组。
+    2. 创建新的 JSON 对象，这些对象只表示要修改的项/属性。
+    3. 投影一组新的 JSON 内容项 (`updatedItems`)，同时使用 `union()` 函数修改原始 JSON 项。
+    4. 创建一个新的工作簿对象 `updatedWorkbookData`，其中包含来自原始解析数据的 `updatedItems` 和 `version`/`isLocked` 数据，以及一组更正后的 `fallbackResourceIds`。
+    5. 将新的 JSON 内容序列化回一个新的字符串变量 `reserializedData`。
+3. 使用新的 `reserializedData` 属性代替原始的 `serializedData` 属性。
+4. 使用更新后的 Azure 资源管理器模板部署新的工作簿资源。
 
 ### <a name="limitations"></a>限制
 出于技术原因，此机制无法用于在 Application Insights 的“工作簿”库中创建工作簿实例。 我们正在努力解决此限制。 在此同时，我们建议使用故障排除指南库（workbookType：`tsg`）来部署与 Application Insights 相关的工作簿。

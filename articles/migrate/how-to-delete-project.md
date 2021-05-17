@@ -6,12 +6,12 @@ ms.author: panshar
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 10/22/2019
-ms.openlocfilehash: bfb4db5d3ebf69f9c7f552c175d33a8b817d1562
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8c94bb23f5d514fef5cdacb855657efdf5219631
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100595140"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714733"
 ---
 # <a name="delete-an-azure-migrate-project"></a>删除 Azure Migrate 项目
 
@@ -49,9 +49,11 @@ ms.locfileid: "100595140"
 > [!NOTE]
 > 请谨慎删除密钥保管库，因为它可能包含安全密钥。
 
-### <a name="vmwarephysical-server"></a>VMware/物理服务器
+### <a name="projects-with-public-endpoint-connectivity"></a>具有公共终结点连接的项目
 
-**资源** | 类型
+#### <a name="vmwarephysical-server"></a>VMware/物理服务器
+
+**资源** | **类型**
 --- | ---
 "Appliancename"kv | 密钥保管库
 "Appliancename"site | Microsoft.OffAzure/VMwareSites
@@ -63,17 +65,61 @@ migrateappligwsa* | 存储帐户
 migrateapplilsa* | 存储帐户
 migrateapplicsa* | 存储帐户
 migrateapplikv* | 密钥保管库
-migrateapplisbns16041 | 服务总线命名空间
+migrateapplisbns* | 服务总线命名空间
 
-### <a name="hyper-v-vm"></a>Hyper-V VM 
+#### <a name="hyper-v-vm"></a>Hyper-V VM
 
-**资源** | 类型
+**资源** | **类型**
 --- | ---
 "ProjectName" | Microsoft.Migrate/migrateprojects
 "ProjectName"project | Microsoft.Migrate/assessmentProjects
 HyperV*kv | 密钥保管库
 HyperV*Site | Microsoft.OffAzure/HyperVSites
 "ProjectName"-MigrateVault-* | 恢复服务保管库
+
+<br/>
+下列表格总结 Azure Migrate 所创建的资源，利用这些资源，可以使用 [Azure 专用链接](./how-to-use-azure-migrate-with-private-endpoints.md)通过专用网络发现、评估和迁移服务器。
+
+### <a name="projects-with-private-endpoint-connectivity"></a>具有专用终结点连接的项目
+
+#### <a name="vmware-vms---agentless-migrations"></a>VMware VM - 无代理迁移
+
+**类型** | **资源** | **专用终结点<br/>** |
+--- | --- | ---
+Microsoft.Migrate/migrateprojects | "ProjectName" | "ProjectName"\*pe 
+发现站点（主站点） | "ProjectName"*mastersite | "ProjectName"\*mastersite\*pe 
+Microsoft.Migrate/assessmentProjects | "ApplianceName"*project | "ApplianceName"\*project\*pe 
+密钥保管库 | "ProjectName"*kv | "ProjectName"\*kv\*pe
+Microsoft.OffAzure/VMwareSites | "ApplianceName"*site | NA
+恢复服务保管库 | "ApplianceName"*vault | NA
+存储帐户 | "ApplianceName"*usa | "ApplianceName"\*usa\*pe
+恢复服务保管库 | "ProjectName"-MigrateVault-* | NA
+存储帐户 | migrateappligwsa* | NA
+存储帐户 | migrateapplilsa* | NA
+密钥保管库 | migrateapplikv* | NA
+服务总线命名空间 | migrateapplisbns* | NA
+
+#### <a name="hyper-v-vms"></a>Hyper-V VM 
+
+**类型** | **资源** | **专用终结点<br/>** |
+--- | --- | ---
+Microsoft.Migrate/migrateprojects | "ProjectName" | "ProjectName"\*pe 
+发现站点（主站点） | "ProjectName"*mastersite | "ProjectName"\*mastersite\*pe 
+Microsoft.Migrate/assessmentProjects | "ApplianceName"*project | "ApplianceName"\*project\*pe 
+密钥保管库 | "ProjectName"*kv | "ProjectName"\*kv\*pe
+Microsoft.OffAzure/HyperVSites | "ApplianceName"*site | NA
+恢复服务保管库 | "ProjectName"-MigrateVault-* | "ProjectName"-MigrateVault-*pe
+
+#### <a name="physical-servers--aws-vms--gcp-vms"></a>物理服务器/AWS VM/GCP VM 
+
+**类型** | **资源** | **专用终结点<br/>** |
+--- | --- | ---
+Microsoft.Migrate/migrateprojects | "ProjectName" | "ProjectName"\*pe 
+发现站点（主站点） | "ProjectName"*mastersite | "ProjectName"\*mastersite\*pe 
+Microsoft.Migrate/assessmentProjects | "ApplianceName"*project | "ApplianceName"\*project\*pe 
+密钥保管库 | "ProjectName"*kv | "ProjectName"\*kv\*pe
+Microsoft.OffAzure/serversites | "ApplianceName"*site | NA
+恢复服务保管库 | "ProjectName"-MigrateVault-* | "ProjectName"-MigrateVault-*pe
 
 
 ## <a name="next-steps"></a>后续步骤

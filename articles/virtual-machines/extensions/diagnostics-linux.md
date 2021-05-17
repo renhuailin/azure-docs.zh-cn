@@ -8,39 +8,41 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 02/05/2021
-ms.openlocfilehash: 5ab11ac23fac73341c111d0d81fc225358bb689f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 6457134e733265fa7e59f32dd522bfcddfadb9f7
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138276"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108322142"
 ---
 # <a name="use-the-linux-diagnostic-extension-40-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展 4.0 监视指标和日志
 
 本文档介绍 Linux 诊断扩展 (LAD) 的最新版本。
 
 > [!IMPORTANT]
-> 有关版本 3.x 的信息，请参阅[使用 Linux 诊断扩展 3.0 监视指标和日志](./diagnostics-linux-v3.md)。 有关版本 2.3 及更早版本的信息，请参 [监视 Linux VM 的性能和诊断数据](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)。
+> 有关版本 3.x 的信息，请参阅[使用 Linux 诊断扩展 3.0 监视指标和日志](./diagnostics-linux-v3.md)。
+> 有关版本 2.3 及更早版本的信息，请参 [监视 Linux VM 的性能和诊断数据](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)。
 
 ## <a name="introduction"></a>简介
 
-Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM 的运行状况。 它具有以下功能：
+Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM 的运行状况。 它具有以下集合和功能：
 
-* 从 VM 收集系统性能指标，并存储在指定存储帐户中的特定表中。
-* 从 syslog 检索日志事件，并存储在指定存储帐户中的特定表中。
-* 让用户能够自定义收集并上传的数据指标。
-* 让用户能够自定义收集和上传的事件的 syslog 辅助参数和严重性级别。
-* 让用户能够将指定日志文件上传到指定的存储表。
-* 支持将指标和日志事件发送到指定存储帐户中的任意 EventHub 终结点和 JSON 格式的 blob。
+| 数据源 | 自定义选项 | 必需目标 | 可选目标 |
+| ----------- | --------------------- | -------------------- | --------------------- |
+| 指标     | [计数器、聚合、采样率、说明符](#performancecounters) | Azure 表存储 | EventHub、Azure Blob 存储（JSON 格式）、Azure Monitor<sup>1</sup> |
+| Syslog      | [设备、严重性级别](#syslogevents) | Azure 表存储 | EventHub、Azure Blob 存储（JSON 格式）
+| 文件       | [日志路径、目标表](#filelogs) | Azure 表存储 | EventHub、Azure Blob 存储（JSON 格式）
 
-此扩展适用于这两种 Azure 部署模型。
+<sup>1</sup> LAD 4.0 中的新增内容
 
-## <a name="install-the-extension-on-a-vm"></a>在 VM 上安装扩展
+此扩展适用于两种 Azure 部署模型（Azure 资源管理器和经典）。
 
-可以使用 Azure PowerShell cmdlet、Azure CLI 脚本、Azure 资源管理器模板（ARM 模板）或 Azure 门户启用此扩展。 有关详细信息，请参阅[扩展和功能](features-linux.md)。
+## <a name="install-the-extension"></a>安装扩展
+
+可以使用 Azure PowerShell cmdlet、Azure CLI 脚本、Azure 资源管理器模板（ARM 模板）或 Azure 门户为 VM 和虚拟机规模集启用此扩展。 有关详细信息，请参阅[扩展和功能](features-linux.md)。
 
 >[!NOTE]
->[Log Analytics VM 扩展](./oms-linux.md)中还随附了 Linux 诊断 VM 扩展的某些组件。 由于这种体系结构，如果在同一 ARM 模板中对两个扩展进行实例化，则可能会发生冲突。 
+>[Log Analytics VM 扩展](./oms-linux.md)中还随附了 Linux 诊断 VM 扩展的某些组件。 由于这种体系结构，如果在同一 ARM 模板中对两个扩展进行实例化，则可能会发生冲突。
 >
 >为避免安装时冲突，请使用 [`dependsOn` 指令](../../azure-resource-manager/templates/define-resource-dependency.md#dependson)按顺序安装扩展。 可按任一顺序安装扩展。
 
@@ -52,7 +54,7 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM �
 * 捕获 LAD 2.3 允许的默认 syslog 收集。
 * 允许 Azure 门户体验，以便对 VM 指标进行制图以及就其发送警报。
 
-可下载配置只是一个示例。 可对其进行修改来满足自己的需要。
+可下载配置只是一个示例。 请根据需要进行修改。
 
 ### <a name="supported-linux-distributions"></a>支持的 Linux 分发
 
@@ -80,45 +82,71 @@ Linux 诊断扩展支持许多分发和版本。 分发和版本的以下列表�
 
 ### <a name="python-requirement"></a>Python 要求
 
-Linux 诊断扩展需要 Python 2。 如果虚拟机使用的分发在默认情况下不包括 Python 2，请安装它。 
+Linux 诊断扩展需要 Python 2。 如果虚拟机使用的分发在默认情况下不包括 Python 2，请安装它。
 
-以下示例命令在各种分发上安装 Python 2：    
+以下示例命令在各种分发上安装 Python 2：
 
 - Red Hat、CentOS、Oracle：`yum install -y python2`
 - Ubuntu、Debian：`apt-get install -y python2`
 - SUSE: `zypper install -y python2`
 
-`python2` 可执行文件必须将别名设置为 python。 下面是设置此别名的一种方法：
+`python2` 可执行文件必须将别名设置为 python。 以下是实现此目标的一种方法：
 
 1. 运行以下命令以删除所有现有别名。
- 
+
     ```
     sudo update-alternatives --remove-all python
     ```
 
-2. 运行以下命令以创建别名。
+2. 运行以下命令以创建新的别名。
 
     ```
     sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
     ```
 
+### <a name="installation"></a>安装
+
+可以在 Azure CLI 或 PowerShell 中安装和配置 LAD 4.0。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+如果受保护的设置位于 ProtectedSettings.json 文件中，而公用配置信息位于 PublicSettings.json 中，请运行以下命令 ：
+
+```azurecli
+az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 4.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
+```
+
+该命令假定你使用 Azure CLI 的 Azure 资源管理模式。 若要为经典部署模型 VM 配置 LAD，请切换到服务管理模式 (`azure config mode asm`)，并在命令中省略资源组名称。
+
+有关详细信息，请参阅[跨平台 CLI 文档](/cli/azure/authenticate-azure-cli)。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+如果受保护的设置位于 `$protectedSettings` 变量中，而公共配置信息位于 `$publicSettings` 变量中，请运行以下命令：
+
+```powershell
+Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Location <vm_location> -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 4.0
+```
+
+---
+
 ### <a name="sample-installation"></a>示例安装
 
 > [!NOTE]
-> 对于以下示例，在运行代码前，为第一部分中的变量填写正确的值。 
+> 对于以下示例，请在运行代码之前，为第一部分中的变量填写适当的值。
 
-在这些示例中，示例配置会收集一组标准数据，并将其发送到表存储。 示例配置的 URL 及其内容可能会更改。 
+在这些示例中，示例配置会收集一组标准数据，并将其发送到表存储。 示例配置的 URL 及其内容可能会更改。
 
 在大多数情况下，应下载门户设置 JSON 文件的副本，并根据需要进行自定义。 随后使用模板或自己的自动化来使用自定义版本的配置文件，而不是每次都从 URL 下载。
 
 > [!NOTE]
-> 启用新 Azure Monitor 接收器时，VM 需要启用系统分配的标识，才能生成托管服务标识 (MSI) 身份验证令牌。 可以在 VM 创建期间或之后添加这些设置。 
+> 启用新 Azure Monitor 接收器时，VM 需要启用系统分配的标识，才能生成托管服务标识 (MSI) 身份验证令牌。 可以在 VM 创建期间或之后添加这些设置。
 >
-> 有关 Azure 门户、Azure CLI、PowerShell 和 Azure 资源管理器的说明，请参阅[配置托管标识](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)。 
+> 有关 Azure 门户、Azure CLI、PowerShell 和 Azure 资源管理器的说明，请参阅[配置托管标识](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)。
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-
-#### <a name="azure-cli-sample"></a>Azure CLI 示例
+#### <a name="installation-sample---azure-cli"></a>安装示例 - Azure CLI
 
 ```azurecli
 # Set your Azure VM diagnostic variables.
@@ -150,10 +178,46 @@ my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_accoun
 # Finally, tell Azure to install and enable the extension.
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 4.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
-#### <a name="azure-cli-sample-for-installing-lad-40-on-a-virtual-machine-scale-set-instance"></a>在虚拟机规模集实例上安装 LAD 4.0 的 Azure CLI 示例
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+#### <a name="installation-sample---powershell"></a>安装示例 - PowerShell
+
+```powershell
+$storageAccountName = "yourStorageAccountName"
+$storageAccountResourceGroup = "yourStorageAccountResourceGroupName"
+$vmName = "yourVMName"
+$VMresourceGroup = "yourVMResourceGroupName"
+
+# Get the VM object
+$vm = Get-AzVM -Name $vmName -ResourceGroupName $VMresourceGroup
+
+# Enable system-assigned identity on an existing VM
+Update-AzVM -ResourceGroupName $VMresourceGroup -VM $vm -IdentityType SystemAssigned
+
+# Get the public settings template from GitHub and update the templated values for the storage account and resource ID
+$publicSettings = (Invoke-WebRequest -Uri https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json).Content
+$publicSettings = $publicSettings.Replace('__DIAGNOSTIC_STORAGE_ACCOUNT__', $storageAccountName)
+$publicSettings = $publicSettings.Replace('__VM_RESOURCE_ID__', $vm.Id)
+
+# If you have your own customized public settings, you can inline those rather than using the preceding template: $publicSettings = '{"ladCfg":  { ... },}'
+
+# Generate a SAS token for the agent to use to authenticate with the storage account
+$sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Service,Container,Object -Permission "racwdlup" -Context (Get-AzStorageAccount -ResourceGroupName $storageAccountResourceGroup -AccountName $storageAccountName).Context -ExpiryTime $([System.DateTime]::Now.AddYears(10))
+
+# Build the protected settings (storage account SAS token)
+$protectedSettings="{'storageAccountName': '$storageAccountName', 'storageAccountSasToken': '$sasToken'}"
+
+# Finally, install the extension with the settings you built
+Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location $vm.Location -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 4.0
+```
+
+---
+
+#### <a name="installation-sample-for-virtual-machine-scale-sets---azure-cli"></a>虚拟机规模集的安装示例 - Azure CLI
 
 ```azurecli
-# Set your Azure virtual machine scale set diagnostic variables. 
+# Set your Azure virtual machine scale set diagnostic variables.
 $my_resource_group=<your_azure_resource_group_name_containing_your_azure_linux_vm>
 $my_linux_vmss=<your_azure_linux_vmss_name>
 $my_diagnostic_storage_account=<your_azure_storage_account_for_storing_vm_diagnostic_data>
@@ -183,53 +247,22 @@ $my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_accou
 az vmss extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 4.0 --resource-group $my_resource_group --vmss-name $my_linux_vmss --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
 
-#### <a name="powershell-sample"></a>PowerShell 示例
-
-```powershell
-$storageAccountName = "yourStorageAccountName"
-$storageAccountResourceGroup = "yourStorageAccountResourceGroupName"
-$vmName = "yourVMName"
-$VMresourceGroup = "yourVMResourceGroupName"
-
-# Get the VM object
-$vm = Get-AzVM -Name $vmName -ResourceGroupName $VMresourceGroup
-
-# Enable system-assigned identity on an existing VM
-Update-AzVM -ResourceGroupName $VMresourceGroup -VM $vm -IdentityType SystemAssigned
-
-# Get the public settings template from GitHub and update the templated values for the storage account and resource ID
-$publicSettings = (Invoke-WebRequest -Uri https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json).Content
-$publicSettings = $publicSettings.Replace('__DIAGNOSTIC_STORAGE_ACCOUNT__', $storageAccountName)
-$publicSettings = $publicSettings.Replace('__VM_RESOURCE_ID__', $vm.Id)
-
-# If you have your own customized public settings, you can inline those rather than using the preceding template: $publicSettings = '{"ladCfg":  { ... },}'
-
-# Generate a SAS token for the agent to use to authenticate with the storage account
-$sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Service,Container,Object -Permission "racwdlup" -Context (Get-AzStorageAccount -ResourceGroupName $storageAccountResourceGroup -AccountName $storageAccountName).Context -ExpiryTime $([System.DateTime]::Now.AddYears(10))
-
-# Build the protected settings (storage account SAS token)
-$protectedSettings="{'storageAccountName': '$storageAccountName', 'storageAccountSasToken': '$sasToken'}"
-
-# Finally, install the extension with the settings you built
-Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location $vm.Location -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 4.0 
-```
-
 ### <a name="update-the-extension-settings"></a>更新扩展设置
 
 更改受保护或公开设置后，通过运行相同的命令将其部署到 VM。 如果更改了任何设置，则更新会发送到扩展。 LAD 将重载配置并自行重启。
 
 ### <a name="migrate-from-previous-versions-of-the-extension"></a>从以前版本的扩展迁移
 
-该扩展的最新版本为 *4.0，目前为公共预览版*。 旧版本的 3.x 仍受支持。 但从 2018 年 7 月 31 日起，已弃用了 2.x 版本。
+该扩展的最新版本为 4.0，目前为公共预览版。 旧版本的 3.x 仍受支持。 但从 2018 年 7 月 31 日起，已弃用了 2.x 版本。
 
 > [!IMPORTANT]
 > 若要从 3.x 迁移到扩展的最新版本，请卸载旧扩展。 然后安装版本 4，其中包含系统分配的标识和接收器的更新配置，用于将指标发送到 Azure Monitor 接收器。
 
 安装新扩展时，启用自动次要版本升级：
-* 在经典部署模型 VM 上，如果要通过 Azure Xplat CLI 或 PowerShell 安装该扩展，请指定版本 `4.*`。
 * 在 Azure 资源管理器部署模型 VM 上，在 VM 部署模板中包含 `"autoUpgradeMinorVersion": true`。
+* 在经典部署模型 VM 上，如果要通过 Azure CLI 或 PowerShell 安装该扩展，请指定版本 `4.*`。
 
-可以使用用于 LAD 3.x 的相同存储帐户。 
+可以使用用于 LAD 3.x 的相同存储帐户。
 
 ## <a name="protected-settings"></a>受保护的设置
 
@@ -268,6 +301,9 @@ sinksConfig | （可选）可将指标和事件传递到的替换目标的详细
 
 ### <a name="sinksconfig"></a>sinksConfig
 
+> [!NOTE]
+> 公共设置和受保护的设置都有一个可选的 `sinksConfig` 部分。 由于包含 `sasURL` 之类的机密，受保护的设置中的 `sinksConfig` 部分仅保留 `EventHub` 和 `JsonBlob` 接收器配置。 `AzMonSink` 接收器配置不能包含在受保护的设置中。
+
 ```json
 "sinksConfig": {
     "sink": [
@@ -288,7 +324,7 @@ sinksConfig | （可选）可将指标和事件传递到的替换目标的详细
 name | 在扩展配置中其他位置用于引用此接收器的字符串。
 type | 要定义的接收器的类型。 确定此类型实例中的其他值（如果有）。
 
-Linux 诊断扩展 4.0 支持两种接收器类型：`EventHub` 和 `JsonBlob`。
+Linux 诊断扩展 4.0 支持两种受保护的接收器类型：`EventHub` 和 `JsonBlob`。
 
 #### <a name="eventhub-sink"></a>EventHub 接收器
 
@@ -329,7 +365,7 @@ https://contosohub.servicebus.windows.net/syslogmsgs?sr=contosohub.servicebus.wi
 ]
 ```
 
-定向到 `JsonBlob` 接收器的数据将存储在 Azure 存储中的 blob 内。 每个 LAD 实例每小时为每个接收器名称创建一个 blob。 每个 blob 总是包含一个语法上有效的 JSON 对象数组。 新条目以基元形式添加到数组。 
+定向到 `JsonBlob` 接收器的数据将存储在 Azure 存储中的 blob 内。 每个 LAD 实例每小时为每个接收器名称创建一个 blob。 每个 blob 总是包含一个语法上有效的 JSON 对象数组。 新条目以基元形式添加到数组。
 
 Blob 存储在与接收器同名的容器中。 用于 blob 容器名称的 Azure 存储规则适用于 `JsonBlob` 接收器的名称。 也就是说，名称必须包含 3 到 63 个小写字母数字 ASCII 字符或短划线。
 
@@ -370,12 +406,12 @@ mdsdHttpProxy | （可选）[受保护的设置](#protected-settings)中指定�
 
 `ladCfg` 结构控制要传送到 Azure Monitor 指标服务和其他数据接收器的指标和日志的收集。 指定 `performanceCounters` 和/或 `syslogEvents`。 另外指定 `metrics` 结构。
 
-如果你不想启用 syslog 或指标收集，请为 `ladCfg` 元素指定一个空结构，如以下示例所示： 
+如果不希望启用 syslog 或指标收集，请为 `ladCfg` 元素指定一个空结构，如以下所示：
 
 ```json
 "ladCfg": {
     "diagnosticMonitorConfiguration": {}
-    }
+}
 ```
 
 元素 | 值
@@ -437,17 +473,17 @@ scheduledTransferPeriod | 计算聚合指标并传输到 Azure Monitor 指标的
 
 元素 | 值
 ------- | -----
-sinks | （可选）LAD 将聚合指标结果发送到的接收器的名称的逗号分隔列表。 所有聚合指标都将发布到列出的每个接收器。 示例：`"EHsink1, myjsonsink"`。 有关详细信息，请参阅 [`sinksConfig`](#sinksconfig)。 
+sinks | （可选）LAD 将聚合指标结果发送到的接收器的名称的逗号分隔列表。 所有聚合指标都将发布到列出的每个接收器。 示例：`"MyEventHubSink, MyJsonSink, MyAzMonSink"`。 有关详细信息，请参阅 [`sinksConfig`（受保护的设置）](#sinksconfig)和 [`sinksConfig`（公共设置）](#sinksconfig-1)。
 type | 标识指标的实际提供程序。
 class | 与 `"counter"` 一起标识提供程序的命名空间中的特定指标。
-counter | 与 `"class"` 一起标识提供程序的命名空间中的特定指标。
+counter | 与 `"class"` 一起标识提供程序的命名空间中的特定指标。 请参阅[下面](#metrics-supported-by-the-builtin-provider)的可用计数器列表。
 counterSpecifier | 标识 Azure Monitor 指标命名空间中的特定指标。
-condition | （可选）选择应用指标的对象的实例。 或选择该对象的所有实例的聚合。 
+condition | （可选）选择应用指标的对象的实例。 或选择该对象的所有实例的聚合。
 sampleRate | IS 8601 时间间隔，用于设置收集此指标原始样本的速率。 如果未设置该值，则收集时间间隔由 [`sampleRateInSeconds`](#ladcfg) 的值设置。 支持的最短采样率为 15 秒 (PT15S)。
 unit | 定义指标的单位。 应为以下字符串之一：`"Count"`、`"Bytes"`、`"Seconds"`、`"Percent"`、`"CountPerSecond"`、`"BytesPerSecond"` 和 `"Millisecond"`。 所收集数据的使用者会预期收集到的数据值与此单位匹配。 LAD 会忽略此字段。
-displayName | 要附加到 Azure Monitor 指标中的数据的标签。 此标签采用关联区域设置指定的语言。 LAD 会忽略此字段。
+displayName | 在 `Guest (classic)` 指标命名空间中查看时，要附加到 Azure Monitor 指标中的数据的标签。 此标签采用关联区域设置指定的语言。 LAD 会忽略此字段。<br/>**注意**：如果在 `azure.vm.linux.guestmetrics` 指标命名空间中查看相同的指标（如果配置了 `AzMonSink`，则可用），显示名称完全取决于计数器。 请参阅[下表](#metrics-supported-by-the-builtin-provider)，查找计数器和名称之间的映射。
 
-`counterSpecifier` 是任意标识符。 Azure 门户绘图和警报功能等指标使用者使用 `counterSpecifier` 作为标识指标或指标实例的“关键字”。 
+`counterSpecifier` 是任意标识符。 Azure 门户绘图和警报功能等指标使用者使用 `counterSpecifier` 作为标识指标或指标实例的“关键字”。
 
 对于 `builtin` 指标，建议使用以 `/builtin/` 开头的 `counterSpecifier` 值。 如果要收集指标的特定实例，请将该实例的标识符附加到 `counterSpecifier` 值。 下面是一些示例：
 
@@ -457,11 +493,11 @@ displayName | 要附加到 Azure Monitor 指标中的数据的标签。 此标�
 
 LAD 和 Azure 门户不要求 `counterSpecifier` 值与任何模式匹配。 请以相同的模式构造各个 `counterSpecifier` 值。
 
-指定 `performanceCounters` 时，LAD 始终将数据写入 Azure 存储中的表。 可以将相同的数据写入 JSON blob 或事件中心，或两者都写入。 但不能禁止将数据存储到表。 
+指定 `performanceCounters` 时，LAD 始终将数据写入 Azure 存储中的表。 可以将相同的数据写入 JSON blob 或事件中心，或两者都写入。 但不能禁止将数据存储到表。
 
-使用相同存储帐户名称和终结点的所有 LAD 实例会将其指标和日志添加到同一个表中。 如果有过多 VM 写入同一表分区，则 Azure 可能限制写入该分区。 
+使用相同存储帐户名称和终结点的所有 LAD 实例会将其指标和日志添加到同一个表中。 如果有过多 VM 写入同一表分区，则 Azure 可能限制写入该分区。
 
-`eventVolume` 设置会使条目分散在 1 个（小型）、10 个（中型）或 100 个（大型）分区中。 通常，中型分区足以避免流量限制。 
+`eventVolume` 设置会使条目分散在 1 个（小型）、10 个（中型）或 100 个（大型）分区中。 通常，中型分区足以避免流量限制。
 
 Azure 门户的 Azure Monitor 指标功能使用此表中的数据来生成图形或触发警报。 表名是这些字符串的串联：
 
@@ -495,7 +531,7 @@ sinks | 一个逗号分隔列表，包含要将单个日志事件发布到其中
 facilityName | Syslog 辅助参数名称，例如 `"LOG\_USER"` 或 `"LOG\_LOCAL0"`。 有关详细信息，请参阅 [syslog 手册页](http://man7.org/linux/man-pages/man3/syslog.3.html)的“辅助参数”部分。
 minSeverity | Syslog 严重性级别，例如 `"LOG\_ERR"` 或 `"LOG\_INFO"`。 有关详细信息，请参阅 [syslog 手册页](http://man7.org/linux/man-pages/man3/syslog.3.html)的“级别”部分。 扩展将捕获发送到该辅助参数的等于或高于指定级别的事件。
 
-指定 `syslogEvents` 时，LAD 始终将数据写入 Azure 存储中的表。 可以将相同的数据写入 JSON blob 或事件中心，或两者都写入。 但不能禁止将数据存储到表。 
+指定 `syslogEvents` 时，LAD 始终将数据写入 Azure 存储中的表。 可以将相同的数据写入 JSON blob 或事件中心，或两者都写入。 但不能禁止将数据存储到表。
 
 此表的分区行为与 `performanceCounters` 的描述相同。 表名是这些字符串的串联：
 
@@ -506,10 +542,14 @@ minSeverity | Syslog 严重性级别，例如 `"LOG\_ERR"` 或 `"LOG\_INFO"`。 
 
 ### <a name="sinksconfig"></a>sinksConfig
 
-`sinksConfig` 可选部分控制除了将指标发送到“存储帐户”和默认“来宾指标”边栏选项卡以外，还发送到 Azure Monitor 接收器的功能。
+可选的公共 `sinksConfig` 部分控制除了将指标发送到“存储帐户”和默认“来宾指标”边栏选项卡以外，还发送到 Azure Monitor 接收器的功能。
 
 > [!NOTE]
-> 此 `sinksConfig` 部分需要在 VM 或虚拟机规模集上启用系统分配的标识。 可以通过 Azure 门户、CLI、PowerShell 或 Azure 资源管理器启用系统分配的标识。 请按照[详细说明](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)操作或参阅本文中前面的安装示例。 
+> 公共设置和受保护的设置都有一个可选的 `sinksConfig` 部分。 “公共”设置中的 `sinksConfig` 部分仅保留 `AzMonSink` 接收器配置。 `EventHub` 和 `JsonBlob` 接收器配置不能包含在公共设置中。
+
+> [!NOTE]
+> 此 `sinksConfig` 部分需要在 VM 或虚拟机规模集上启用系统分配的标识。
+> 可以通过 Azure 门户、CLI、PowerShell 或 Azure 资源管理器启用系统分配的标识。 请按照[详细说明](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)操作或参阅本文中前面的安装示例。
 
 ```json
   "sinksConfig": {
@@ -522,7 +562,6 @@ minSeverity | Syslog 严重性级别，例如 `"LOG\_ERR"` 或 `"LOG\_INFO"`。 
     ]
   },
 ```
-
 
 ### <a name="filelogs"></a>fileLogs
 
@@ -544,7 +583,7 @@ minSeverity | Syslog 严重性级别，例如 `"LOG\_ERR"` 或 `"LOG\_INFO"`。 
 元素 | 值
 ------- | -----
 文件 | 要监视和捕获的日志文件的完整路径名。 路径名称适用于单个文件。 它不能命名目录，也不能包含通配符。 `omsagent` 用户帐户必须具有文件路径的读取访问权限。
-表 | （可选）新行从文件“结尾”写入其中的 Azure 存储表。 该表必须位于指定存储帐户中，如受保护配置中所指定。 
+表 | （可选）新行从文件“结尾”写入其中的 Azure 存储表。 该表必须位于指定存储帐户中，如受保护配置中所指定。
 sinks | （可选）日志行发送到的更多接收器的名称的逗号分隔列表。
 
 必须指定 `"table"` 和/或 `"sinks"`。
@@ -553,6 +592,13 @@ sinks | （可选）日志行发送到的更多接收器的名称的逗号分隔
 
 > [!NOTE]
 > 将会针对所有文件系统、磁盘或名称聚合 LAD 支持的默认指标。 有关不聚合的指标，请参阅较新的 Azure Monitor 接收器指标支持信息。
+
+> [!NOTE]
+> 每个指标的显示名称将因其所属的指标命名空间而异：
+> * `Guest (classic)`（从存储帐户填充）：`performanceCounters` 部分中指定的 `displayName`，或在 Azure 门户中显示的默认显示名称（VM >“诊断设置”>“指标”>“自定义”）。
+> * `azure.vm.linux.guestmetrics`（如果已配置，则从 `AzMonSink` 填充）：下表中指定的“`azure.vm.linux.guestmetrics` 显示名称”。
+>
+> 由于实现详细信息，`Guest (classic)` 和 `azure.vm.linux.guestmetrics` 版本之间的指标值将有所不同。 尽管经典指标在代理中应用了某些聚合，但新指标是未聚合的计数器，使客户可以灵活地在查看/警报时间根据需要进行聚合。
 
 `builtin` 指标提供程序可提供大量用户最感兴趣的指标。 这些指标分为五个大类：
 
@@ -564,19 +610,19 @@ sinks | （可选）日志行发送到的更多接收器的名称的逗号分隔
 
 ### <a name="builtin-metrics-for-the-processor-class"></a>处理器类的内置指标
 
-处理器类指标提供有关 VM 中处理器使用情况的信息。 聚合百分比时，结果是所有 CPU 的平均值。 
+处理器类指标提供有关 VM 中处理器使用情况的信息。 聚合百分比时，结果是所有 CPU 的平均值。
 
 在双 vCPU VM 中，如果一个 vCPU 是 100% 忙碌，另一个是 100% 空闲，则报告的 `PercentIdleTime` 是 50。 如果在相同时段内每个 vCPU 都是 50% 忙碌，则报告的结果也是 50。 在四 vCPU VM 中，如果一个 vCPU 是 100% 忙碌，其他几个是空闲，则报告的 `PercentIdleTime` 是 75。
 
-计数器 | 含义
-------- | -------
-PercentIdleTime | 聚合窗口期内，处理器运行内核空闲循环的时间所占百分比
-PercentProcessorTime | 运行非空闲线程的时间所占百分比
-PercentIOWaitTime | 等待 IO 操作完成的时间所占百分比
-PercentInterruptTime | 运行硬件或软件中断和 DPC（延迟过程调用）的时间所占百分比
-PercentUserTime | 聚合窗口期非空闲时间内，处于常规优先级的用户模式中所花费的时间所占百分比
-PercentNiceTime | 非空闲时间内，处于降低（良好）优先级的时间所占百分比
-PercentPrivilegedTime | 非空闲时间内，处于特权（内核）模式的时间所占百分比
+计数器 | `azure.vm.linux.guestmetrics` 显示名称 | 含义
+--------- | ---------------------------------- | -------
+`PercentIdleTime` | `cpu/usage_idle` | 聚合窗口期内，处理器运行内核空闲循环的时间所占百分比
+`PercentProcessorTime` |  `cpu/usage_active` | 运行非空闲线程的时间所占百分比
+`PercentIOWaitTime` |  `cpu/usage_iowait` | 等待 IO 操作完成的时间所占百分比
+`PercentInterruptTime` |  `cpu/usage_irq` | 运行硬件或软件中断和 DPC（延迟过程调用）的时间所占百分比
+`PercentUserTime` |  `cpu/usage_user` | 聚合窗口期非空闲时间内，处于常规优先级的用户模式中所花费的时间所占百分比
+`PercentNiceTime` |  `cpu/usage_nice` | 非空闲时间内，处于降低（良好）优先级的时间所占百分比
+`PercentPrivilegedTime` |  `cpu/usage_system` | 非空闲时间内，处于特权（内核）模式的时间所占百分比
 
 前四个计数器结果之和应为 100%。 后三个计数器结果之和应为 100%。 这三个计数器将总和细分为 `PercentProcessorTime`、`PercentIOWaitTime` 和 `PercentInterruptTime`。
 
@@ -584,109 +630,85 @@ PercentPrivilegedTime | 非空闲时间内，处于特权（内核）模式的�
 
 内存类指标提供有关内存使用率、分页和交换的信息。
 
-counter | 含义
-------- | -------
-AvailableMemory | 可用物理内存 (MB)
-PercentAvailableMemory | 可用物理内存占内存总量的百分比
-UsedMemory | 已用物理内存 (MB)
-PercentUsedMemory | 已用物理内存占内存总量的百分比
-PagesPerSec | 总分页（读取/写入）
-PagesReadPerSec | 从后备存储（如交换文件、程序文件和映射文件）读取的页面数
-PagesWrittenPerSec | 向后备存储（如交换文件和映射文件）写入的页面数
-AvailableSwap | 未使用的交换空间 (MB)
-PercentAvailableSwap | 未使用的交换空间占交换空间总量的百分比
-UsedSwap | 已使用的交换空间 (MB)
-PercentUsedSwap | 已使用的交换空间占交换空间总量的百分比
+计数器 | `azure.vm.linux.guestmetrics` 显示名称 | 含义
+--------- | ---------------------------------- | -------
+`AvailableMemory` | `mem/available` | 可用物理内存 (MB)
+`PercentAvailableMemory` | `mem/available_percent` | 可用物理内存占内存总量的百分比
+`UsedMemory` | `mem/used` | 已用物理内存 (MB)
+`PercentUsedMemory` | `mem/used_percent` | 已用物理内存占内存总量的百分比
+`PagesPerSec` | `kernel_vmstat/total_pages` | 总分页（读取/写入）
+`PagesReadPerSec` | `kernel_vmstat/pgpgin` | 从后备存储（如交换文件、程序文件和映射文件）读取的页面数
+`PagesWrittenPerSec` | `kernel_vmstat/pgpgout` | 向后备存储（如交换文件和映射文件）写入的页面数
+`AvailableSwap` | `swap/free` | 未使用的交换空间 (MB)
+`PercentAvailableSwap` | `swap/free_percent` | 未使用的交换空间占交换空间总量的百分比
+`UsedSwap` | `swap/used` | 已使用的交换空间 (MB)
+`PercentUsedSwap` | `swap/used_percent` | 已使用的交换空间占交换空间总量的百分比
 
 此类指标仅有一个实例。 `"condition"` 特性没有有用的设置，应当省略。
 
 ### <a name="builtin-metrics-for-the-network-class"></a>网络类的内置指标
 
-网络类指标提供有关自启动以来各个网络接口上网络活动的信息。 
+网络类指标提供有关自启动以来各个网络接口上网络活动的信息。
 
 LAD 不会公开带宽指标。 可以从主机指标获取这些指标。
 
-计数器 | 含义
-------- | -------
-BytesTransmitted | 自启动以来发送的字节数总计
-BytesReceived | 自启动以来接收的字节数总计
-BytesTotal | 自启动以来发送或接收的字节数总计
-PacketsTransmitted | 自启动以来发送的包数总计
-PacketsReceived | 自启动以来接收的包数总计
-TotalRxErrors | 自启动以来接收的错误数
-TotalTxErrors | 自启动以来发送的错误数
-TotalCollisions | 自启动以来网络端口报告的冲突数
+计数器 | `azure.vm.linux.guestmetrics` 显示名称 | 含义
+--------- | ---------------------------------- | -------
+`BytesTransmitted` | `net/bytes_sent` | 自启动以来发送的字节数总计
+`BytesReceived` | `net/bytes_recv` | 自启动以来接收的字节数总计
+`BytesTotal` | `net/bytes_total` | 自启动以来发送或接收的字节数总计
+`PacketsTransmitted` | `net/packets_sent` | 自启动以来发送的包数总计
+`PacketsReceived` | `net/packets_recv` | 自启动以来接收的包数总计
+`TotalRxErrors` | `net/err_in` | 自启动以来接收的错误数
+`TotalTxErrors` | `net/err_out` | 自启动以来发送的错误数
+`TotalCollisions` | `net/drop_total` | 自启动以来网络端口报告的冲突数
 
 ### <a name="builtin-metrics-for-the-file-system-class"></a>文件系统类的内置指标
 
 文件系统类指标提供有关文件系统使用情况的信息。 将报告绝对值和百分比值，因为这些指标会向普通用户（而不是 root 用户）显示。
 
-计数器 | 含义
-------- | -------
-FreeSpace | 可用磁盘空间（字节）
-UsedSpace | 已用磁盘空间（字节）
-PercentFreeSpace | 可用空间百分比
-PercentUsedSpace | 已用空间百分比
-PercentFreeInodes | 未使用的索引节点 (Inode) 的百分比
-PercentUsedInodes | 所有文件系统中已分配的（使用中）Inode 的百分比之和
-BytesReadPerSecond | 每秒读取的字节数
-BytesWrittenPerSecond | 每秒写入的字节数
-每秒字节数 | 每秒读取或写入的字节数
-ReadsPerSecond | 每秒读取操作数
-WritesPerSecond | 每秒写入操作数
-TransfersPerSecond | 每秒读取或写入操作数
+计数器 | `azure.vm.linux.guestmetrics` 显示名称 | 含义
+--------- | ---------------------------------- | -------
+`FreeSpace` | `disk/free` | 可用磁盘空间（字节）
+`UsedSpace` | `disk/used` | 已用磁盘空间（字节）
+`PercentFreeSpace` | `disk/free_percent` | 可用空间百分比
+`PercentUsedSpace` | `disk/used_percent` | 已用空间百分比
+`PercentFreeInodes` | `disk/inodes_free_percent` | 未使用的索引节点 (Inode) 的百分比
+`PercentUsedInodes` | `disk/inodes_used_percent` | 所有文件系统中已分配的（使用中）Inode 的百分比之和
+`BytesReadPerSecond` | `diskio/read_bytes_filesystem` | 每秒读取的字节数
+`BytesWrittenPerSecond` | `diskio/write_bytes_filesystem` | 每秒写入的字节数
+`BytesPerSecond` | `diskio/total_bytes_filesystem` | 每秒读取或写入的字节数
+`ReadsPerSecond` | `diskio/reads_filesystem` | 每秒读取操作数
+`WritesPerSecond` | `diskio/writes_filesystem` | 每秒写入操作数
+`TransfersPerSecond` | `diskio/total_transfers_filesystem` | 每秒读取或写入操作数
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>磁盘类的内置指标
 
-磁盘类指标提供有关磁盘设备使用情况的信息。 这些统计信息适用于整个驱动器。 
+磁盘类指标提供有关磁盘设备使用情况的信息。 这些统计信息适用于整个驱动器。
 
 如果设备上有多个文件系统，则针对该设备的计数器会有效地跨所有文件系统聚合。
 
-计数器 | 含义
-------- | -------
-ReadsPerSecond | 每秒读取操作数
-WritesPerSecond | 每秒写入操作数
-TransfersPerSecond | 每秒总操作数
-AverageReadTime | 每个读取操作的平均秒数
-AverageWriteTime | 每个写入操作的平均秒数
-AverageTransferTime | 每个操作的平均秒数
-AverageDiskQueueLength | 队列中磁盘操作的平均数
-ReadBytesPerSecond | 每秒读取的字节数
-WriteBytesPerSecond | 每秒写入的字节数
-每秒字节数 | 每秒读取或写入的字节数
-
-## <a name="install-and-configure-lad-40"></a>安装和配置 LAD 4.0
-
-可以在 Azure CLI 或 PowerShell 中安装和配置 LAD 4.0。
-
-### <a name="azure-cli"></a>Azure CLI
-
-如果受保护的设置位于 ProtectedSettings.json 文件中，而公用配置信息位于 PublicSettings.json 中，请运行以下命令 ：
-
-```azurecli
-az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 4.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
-```
-
-该命令假定你使用 Azure CLI 的 Azure 资源管理模式。 若要为经典部署模型 VM 配置 LAD，请切换到“asm”模式 (`azure config mode asm`)，并在命令中省略资源组名称。 
-
-有关详细信息，请参阅[跨平台 CLI 文档](/cli/azure/authenticate-azure-cli)。
-
-### <a name="powershell"></a>PowerShell
-
-如果受保护的设置位于 `$protectedSettings` 变量中，而公共配置信息位于 `$publicSettings` 变量中，请运行以下命令：
-
-```powershell
-Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Location <vm_location> -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 4.0
-```
+计数器 | `azure.vm.linux.guestmetrics` 显示名称 | 含义
+--------- | ---------------------------------- | -------
+`ReadsPerSecond` | `diskio/reads` | 每秒读取操作数
+`WritesPerSecond` | `diskio/writes` | 每秒写入操作数
+`TransfersPerSecond` | `diskio/total_transfers` | 每秒总操作数
+`AverageReadTime` | `diskio/read_time` | 每个读取操作的平均秒数
+`AverageWriteTime` | `diskio/write_time` | 每个写入操作的平均秒数
+`AverageTransferTime` | `diskio/io_time` | 每个操作的平均秒数
+`AverageDiskQueueLength` | `diskio/iops_in_progress` | 队列中磁盘操作的平均数
+`ReadBytesPerSecond` | `diskio/read_bytes` | 每秒读取的字节数
+`WriteBytesPerSecond` | `diskio/write_bytes` | 每秒写入的字节数
+`BytesPerSecond` | `diskio/total_bytes` | 每秒读取或写入的字节数
 
 ## <a name="example-lad-40-configuration"></a>LAD 4.0 配置示例
 
 根据前述定义，此部分提供了一个 LAD 4.0 扩展配置示例和一些说明。 要将此示例应用于具体情况，请使用自己的存储帐户名称、帐户 SAS 令牌和事件中心 SAS 令牌。
 
 > [!NOTE]
-> 提供公共和受保护设置的方法会有所不同，具体取决于是否使用 Azure CLI 或 PowerShell 安装 LAD： 
+> 提供公共和受保护设置的方法会有所不同，具体取决于是否使用 Azure CLI 或 PowerShell 安装 LAD：
 >
-> * 如果使用 Azure CLI，请将以下设置保存到 ProtectedSettings.json 和 PublicSettings.json，以使用上面的示例命令 。 
+> * 如果使用 Azure CLI，请将以下设置保存到 ProtectedSettings.json 和 PublicSettings.json，以使用上面的示例命令 。
 > * 如果使用 PowerShell，请通过运行 `$protectedSettings = '{ ... }'` 将以下设置保存到 `$protectedSettings` 和 `$publicSettings`。
 
 ### <a name="protected-settings"></a>受保护的设置
@@ -750,7 +772,7 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
 无论如何，数据都还会上传到以下位置：
 
 * Azure Blob 存储。 容器名称在接收器 `JsonBlob` 中定义。
-* 事件中心终结点，在 `EventHubs` 接收器中指定。
+* 事件中心终结点，在 `EventHub` 接收器中指定。
 
 ```json
 {

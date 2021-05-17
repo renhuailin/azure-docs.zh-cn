@@ -2,13 +2,14 @@
 title: 将资源部署到租户
 description: 介绍如何在 Azure 资源管理器模板中的租户范围内部署资源。
 ms.topic: conceptual
-ms.date: 01/13/2021
-ms.openlocfilehash: fd5a9ae60c578a3be7f70d82baae0a15e406b9db
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/27/2021
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: dfcdd4c9fdf758b0e07c2566c50b45f534133c3c
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99491480"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751484"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>使用 ARM 模板进行租户部署
 
@@ -17,12 +18,6 @@ ms.locfileid: "99491480"
 ## <a name="supported-resources"></a>支持的资源
 
 并非所有资源类型都可以部署到租户级别。 本部分列出了支持的资源类型。
-
-对于 Azure 策略，请使用：
-
-* [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
-* [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
-* [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
 
 对于 Azure 基于角色的访问控制 (Azure RBAC)，请使用：
 
@@ -49,6 +44,8 @@ ms.locfileid: "99491480"
 若要配置门户，请使用：
 
 * [tenantConfigurations](/azure/templates/microsoft.portal/tenantconfigurations)
+
+内置策略定义是租户级别的资源，但你无法在租户中部署自定义策略定义。 有关为资源分配内置策略定义的示例，请参阅 [tenantResourceId 示例](./template-functions-resource.md#tenantresourceid-example)。
 
 ## <a name="schema"></a>架构
 
@@ -98,7 +95,7 @@ Azure Active Directory 的全局管理员不自动拥有分配角色的权限。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-对于 Azure CLI，请使用 [az deployment tenant create](/cli/azure/deployment/tenant#az-deployment-tenant-create)：
+对于 Azure CLI，请使用 [az deployment tenant create](/cli/azure/deployment/tenant#az_deployment_tenant_create)：
 
 ```azurecli-interactive
 az deployment tenant create \

@@ -9,12 +9,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 02/26/2020
   ms.author: magoedte
-  ms.openlocfilehash: 0d0caca2d51781d899765820d691f88b7ab6f2e9
-  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.openlocfilehash: 08bd1d0db152105b69ba578e366a37832974802a
+  ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/03/2021
-  ms.locfileid: "101686370"
+  ms.lasthandoff: 05/07/2021
+  ms.locfileid: "109480772"
 landingContent:
 - title: 使用已启用 Azure Arc 的服务器将计算机连接到 Azure
   linkLists:
@@ -22,9 +22,9 @@ landingContent:
     links:
     - text: 什么是已启用 Azure Arc 的服务器？
       url: overview.md
-  - linkListType: architecture
+  - linkListType: deploy
     links:
-    - text: 规划大规模部署
+    - text: 部署规划
       url: plan-at-scale-deployment.md
   - linkListType: get-started
     links:
@@ -46,6 +46,10 @@ landingContent:
     links:
     - text: 快速入门
       url: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_servers/
+  - linkListType: get-started
+    links:
+    - text: 使用 Azure VM 测试已启用 Arc 的服务器
+      url: plan-evaluate-on-azure-virtual-machine.md
 - title: 参考体系结构
   linkLists:
   - linkListType: architecture

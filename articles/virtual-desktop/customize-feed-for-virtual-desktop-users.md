@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 09/14/2019
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: e47486f29537cb948aaae7cf17e97bae14b60700
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: a2d5a870ee8953a4388e58d21cf941f23434382b
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90084288"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106447108"
 ---
 # <a name="customize-the-feed-for-windows-virtual-desktop-users"></a>为 Windows 虚拟桌面用户自定义源
 
@@ -20,7 +20,7 @@ ms.locfileid: "90084288"
 
 可以自定义源，以便 RemoteApp 和远程桌面资源以可识别的方式向用户显示。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本文假设你已下载并安装 Windows 虚拟桌面 PowerShell 模块。 如果尚未安装，请按照[安装 PowerShell 模块](powershell-module.md)中的说明进行操作。
 
@@ -117,7 +117,7 @@ Update-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName
 
 ## <a name="next-steps"></a>后续步骤
 
-你现在已经为用户自定义了源，可以登录到 Windows 虚拟桌面客户端对该源进行测试了。为此，请继续了解连接到 Windows 虚拟桌面的操作方法：
+你已经为用户自定义源，现在可以登录到 Windows 虚拟桌面客户端进行测试。为此，请继续阅读“连接到 Windows 虚拟桌面操作指南”：
 
  * [使用 Windows 10 或 Windows 7 进行连接](connect-windows-7-10.md)
  * [使用 Web 客户端进行连接](connect-web.md)

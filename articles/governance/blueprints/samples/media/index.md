@@ -1,18 +1,18 @@
 ---
 title: 介质蓝图示例概述
 description: 介质蓝图示例概述。 此蓝图示例可帮助客户评估特定介质控制要求。
-ms.date: 01/08/2021
+ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: f2b9e29d8f5095947587107cc372beb34b18abb7
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 1fb9b611434cba892f94f8a2ccf86acef04cad3c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034979"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757126"
 ---
 # <a name="overview-of-the-media-blueprint-sample"></a>介质蓝图示例概述
 
-介质蓝图示例提供了一组监管防护措施，这些措施使用 [Azure Policy](../../../policy/overview.md) 来帮助用户通过[介质](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html)认证。 
+介质蓝图示例提供了一组监管防护措施，这些措施使用 [Azure Policy](../../../policy/overview.md) 来帮助用户通过[介质](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html)认证。
 
 ## <a name="blueprint-sample"></a>蓝图示例
 

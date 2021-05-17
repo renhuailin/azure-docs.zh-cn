@@ -1,22 +1,23 @@
 ---
-title: 了解 Azure IoT 中心配额和限制 | Microsoft Docs
+title: 内容性能 http://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-quotas-throttling
 description: 开发人员指南 - 介绍适用于 IoT 中心的配额和预期限制行为。
 author: robinsh
 ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 04/05/2021
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 4b65d42522f40eb7d0e65356223313a924de3039
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+- ms.custom:contperf-fy21q4
+ms.openlocfilehash: a18ca18a6e9f7e26c6189cf66322b16f36a42ecb
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104656985"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108277797"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
 
@@ -79,7 +80,7 @@ IoT 即插即用设备会为每个接口（包括根）发送至少一条遥测�
 
 ### <a name="traffic-shaping"></a>流量整形
 
-为了应对突发流量，IoT 中心可在有限的一段时间内接受超出限制的请求。 其中的前几个请求会立即得到处理。 但是，如果请求数持续违反限制，IoT 中心会开始将请求放入队列，并以限制速率对其进行处理。 此效应称为“流量整形”。  此外，此队列的大小受到限制。 如果违反限制的情况持续出现，队列最终将会填满，而 IoT 中心会开始拒绝请求并引发 `429 ThrottlingException`。
+为了应对突发流量，IoT 中心可在有限的一段时间内接受超出限制的请求。 其中的前几个请求会立即得到处理。 但是，如果请求数持续违反限制，IoT 中心会开始将请求放入队列，并以限制速率对请求进行处理。 此效应称为“流量整形”。  此外，此队列的大小受到限制。 如果违反限制的情况持续出现，队列最终将会填满，而 IoT 中心会开始拒绝请求并引发 `429 ThrottlingException`。
 
 例如，如果你使用模拟设备每秒将 200 条设备到云的消息发送到 S1 IoT 中心（它限制为每秒发送 100 条 D2C 消息）。 在前一两分钟，消息会立即得到处理。 但是，由于设备发送的消息数持续超过限制，IoT 中心随后将每秒处理 100 条消息，并将剩余的消息放入队列。 此时你会注意到延迟增大。 最终，在队列填满后，你会开始收到 `429 ThrottlingException`，并且[“限制错误数”IoT 中心指标](monitor-iot-hub-reference.md#device-telemetry-metrics)会开始增加。 若要了解如何基于指标创建警报和图表，请参阅[监视 IoT 中心](monitor-iot-hub.md)。
 
@@ -87,7 +88,7 @@ IoT 即插即用设备会为每个接口（包括根）发送至少一条遥测�
 
 设备标识注册表操作用于设备管理与预配方案中的运行时使用。 通过[导入和导出作业](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)可以支持读取或更新大量的设备标识。
 
-当通过[批量注册表更新操作](https://docs.microsoft.com/rest/api/iothub/service/bulkregistry/updateregistry)启动标识操作时（“而不是”批量导入和导出作业），则会应用相同的限制。 例如，如果你想要提交批量操作来创建 50 个设备，并且有具有 1 个单元的 S1 IoT 中心，则每分钟仅接受其中两个批量请求。 这是因为对于具有 1 个单元的 S1 IoT 中心，标识操作限制为 100/分钟/单元。 在这种情况下，将拒绝同一分钟内第三个请求（以及更多），因为已达到该限制。 
+当通过[批量注册表更新操作](/rest/api/iothub/service/bulkregistry/updateregistry)启动标识操作时（“而不是”批量导入和导出作业），则会应用相同的限制。 例如，如果你想要提交批量操作来创建 50 个设备，并且有具有 1 个单元的 S1 IoT 中心，则每分钟仅接受其中两个批量请求。 这是因为对于具有 1 个单元的 S1 IoT 中心，标识操作限制为 100/分钟/单元。 在这种情况下，将拒绝同一分钟内第三个请求（以及更多），因为已达到该限制。 
 
 ### <a name="device-connections-throttle"></a>设备连接限制
 

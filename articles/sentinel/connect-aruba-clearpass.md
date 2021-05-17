@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2021
 ms.author: yelevin
-ms.openlocfilehash: 1b03e2d8715b3d80425ef181dd908978d5df4cf2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8050b4f173476d7af66cb858ff5f785e5a12af43
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101744474"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046566"
 ---
 # <a name="connect-your-aruba-clearpass-to-azure-sentinel"></a>将 Aruba ClearPass 连接到 Azure Sentinel
 
@@ -33,9 +33,9 @@ ms.locfileid: "101744474"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 必须拥有对 Azure Sentinel 工作区的读取和写入权限。
+- 必须有 Azure Sentinel 工作区的读取和写入权限。
 
-- 必须拥有对工作区的共享密钥的读取权限。 [了解有关工作区密钥的详细信息](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)。
+- 必须有工作区的共享密钥的读取权限。 [了解有关工作区密钥的详细信息](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)。
 
 ## <a name="send-aruba-clearpass-logs-to-azure-sentinel"></a>将 Aruba ClearPass 日志发送到 Azure Sentinel
 
@@ -45,19 +45,19 @@ ms.locfileid: "101744474"
 
 1. 从“数据连接器”库中，选择“Aruba ClearPass（预览版）”，然后选择“打开连接器页”。
 
-1. 按照“配置”下的“说明”选项卡中的说明进行操作：
+1. 按照“配置”下的“说明”选项卡中的说明进行操作 ：
 
-    1. 在“1. 定义警报条件”下，**Linux Syslog 代理配置”下** - 如果尚未运行日志转发器，或者需要其他日志转发器，请执行此步骤。 有关更详细的说明和介绍，请参阅 Azure Sentinel 文档中的[步骤 1：部署日志转发器](connect-cef-agent.md)。
+    1. 在“1. Linux Syslog 代理配置”下 — 如果你还没有运行日志转发器，或者如果你需要其他日志转发器，请执行此步骤。 有关更多详细说明和介绍，请参阅 Azure Sentinel 文档中的[步骤 1：部署日志转发器](connect-cef-agent.md)。
 
-    1. 在“2. 定义警报详细信息“下，**将 Aruba ClearPass 日志转发到 Syslog 代理”下** - 按照 Aruba 的说明[配置 ClearPass](https://www.arubanetworks.com/techdocs/ClearPass/6.7/PolicyManager/Content/CPPM_UserGuide/Admin/syslogExportFilters_add_syslog_filter_general.htm)。 此配置应包含以下元素：
+    1. 在“2. 将 Aruba ClearPass 日志转发到 Syslog 代理”下 - 按照 Aruba 的说明[配置 ClearPass](https://www.arubanetworks.com/techdocs/ClearPass/6.7/PolicyManager/Content/CPPM_UserGuide/Admin/syslogExportFilters_add_syslog_filter_general.htm)。 此配置应该包含以下元素：
         - 日志目标 – 日志转发服务器的主机名和/或 IP 地址
         - 协议和端口 – TCP 514（如果使用建议协议和端口，请确保在日志转发服务器上的 syslog 守护程序中进行并行更改）
         - 日志格式 – CEF
         - 日志类型 – 所有可用的或所有适用的
 
-    1. 在“3. 定义操作组”下，**验证连接”下** - 通过复制连接器页上的命令并在日志转发器上运行该命令，验证数据引入。 有关更详细的说明和介绍，请参阅 Azure Sentinel 文档中的[步骤 3：验证连接性](connect-cef-verify.md)。
+    1. 在“3. 验证连接”下 — 通过复制连接器页上的命令并在日志转发器上运行以验证数据引入。 有关更多详细说明和介绍，请参阅 Azure Sentinel 文档中的[步骤 3：验证连接性](connect-cef-verify.md)。
 
-        此过程可能需要长达 20 分钟，日志才会开始出现在 Log Analytics 中。
+        可能需要长达 20 分钟的时间，日志才会开始显示在 Log Analytics 中。
 
 ## <a name="find-your-data"></a>查找数据
 

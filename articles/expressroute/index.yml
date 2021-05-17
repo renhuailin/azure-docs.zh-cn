@@ -10,12 +10,13 @@ metadata:
   author: duongau
   ms.author: duau
   ms.date: 08/27/2019
-  ms.openlocfilehash: 384079389c66811016b1c813b3c11185ddfd52a6
-  ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+  ms.custom: e2e-hybrid
+  ms.openlocfilehash: f0c3983a1d245c1edbd1fca90643d5c7b9a5b6a5
+  ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/19/2020
-  ms.locfileid: "92203970"
+  ms.lasthandoff: 04/07/2021
+  ms.locfileid: "107030553"
 landingContent:
 - title: 关于 ExpressRoute
   linkLists:
@@ -27,6 +28,10 @@ landingContent:
     links:
     - text: 常见问题解答
       url: expressroute-faqs.md
+  - linkListType: learn
+    links:
+    - text: 使用 ExpressRoute 将本地网络连接到 Microsoft 全球网络
+      url: /learn/modules/connect-on-premises-network-with-expressroute/
 - title: 入门
   linkLists:
   - linkListType: tutorial

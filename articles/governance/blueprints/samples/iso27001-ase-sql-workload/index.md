@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 ASE/SQL 工作负荷蓝图示例概述
 description: ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例的概述和体系结构。
-ms.date: 02/05/2021
+ms.date: 04/30/2021
 ms.topic: sample
-ms.openlocfilehash: 61e62c9a9099b0c84a98f1840743f05469e46b62
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: e8af838861d8ab9fd7863f99d63bf60ff5e3c56b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627510"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108772578"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例的概述
 
@@ -22,7 +22,7 @@ ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例为 [ISO 27001
 
 ## <a name="architecture"></a>体系结构
 
-ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例部署一个基于平台即服务的 Web 环境。 该环境可以用来托管多个遵循 ISO 27001 标准的 Web 应用程序、Web API 和 SQL 数据库实例。 此蓝图示例依赖于 [ISO 27001 共享服务](../iso27001-shared/index.md)蓝图示例。
+ISO 27001 应用服务环境/SQL 数据库工作负载蓝图示例部署一个基于平台即服务的 Web 环境。 该环境可以用来托管多个遵循 ISO 27001 标准的 Web 应用程序、Web API 和 SQL 数据库实例。 此蓝图示例依赖于 [ISO 27001 共享服务](../iso27001-shared/index.md)蓝图示例。
 
 :::image type="content" source="../../media/sample-iso27001-ase-sql-workload/iso27001-ase-sql-workload-blueprint-sample-design.png" alt-text="ISO 27001 ASE/SQL 工作负荷蓝图示例设计" border="false":::
 

@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/03/2019
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 95ce5c287eb8b6b3ee745ff9305fb7861fa09989
-  ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+  ms.openlocfilehash: a9d05253ffbe452076e6a46d2f8a0f2d15ad1782
+  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102040509"
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "108770544"
 landingContent:
 - title: 关于 Azure Database for MySQL
   linkLists:
@@ -35,6 +35,8 @@ landingContent:
     links:
     - text: 什么是单服务器？
       url: single-server-overview.md
+    - text: 单一服务器中有哪些新增功能？
+      url: single-server-whats-new.md
     - text: 查看所有单服务器文档
       url: single-server/index.yml
   - linkListType: concept

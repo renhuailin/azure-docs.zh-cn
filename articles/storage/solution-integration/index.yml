@@ -1,56 +1,65 @@
 ### YamlMime:Landing
 title: Azure 存储认证合作伙伴解决方案文档
-summary: Azure 存储认证合作伙伴解决方案可在 Azure 存储平台的基础上实现高级方案。
+summary: Azure 存储认证合作伙伴解决方案可在 Azure 存储的基础上实现高级方案。
 metadata:
   title: Azure 存储认证合作伙伴解决方案
-  description: Azure 存储认证合作伙伴解决方案可在 Azure 存储平台的基础上实现高级方案。
+  description: Azure 存储认证合作伙伴解决方案可在 Azure 存储的基础上实现高级方案。
   services: storage
   ms.service: storage
+  ms.subservice: partner
   ms.topic: landing-page
   ms.collection: collection
   author: beber-msft
   ms.author: beber
-  ms.date: 12/08/2020
-  ms.openlocfilehash: 2e9a2ac1e8d33020a94c2c783d3d695a459fcea5
-  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.date: 03/15/2021
+  ms.openlocfilehash: c1a80811c53d26028a7c3f0585bdc0cbc7c126e0
+  ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/03/2021
-  ms.locfileid: "101742669"
+  ms.lasthandoff: 05/07/2021
+  ms.locfileid: "109482032"
 landingContent:
-- title: Azure 存储分析和大数据合作伙伴
+- title: 分析和大数据合作伙伴
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure 存储分析认证合作伙伴
+    - text: 经过验证的分析合作伙伴
       url: .\validated-partners\analytics\partner-overview.md
-- title: Azure存储存档、备份和 BCDR 合作伙伴
+- title: 存档、备份和 BCDR 合作伙伴
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure 存储存档和 BCDR 认证合作伙伴
+    - text: 经过验证的存档和 BCDR 合作伙伴
       url: .\validated-partners\backup-archive-disaster-recovery\partner-overview.md
-  - linkListType: quickstart
+  - linkListType: get-started
     links:
-    - text: Commvault 快速入门指南
+    - text: Commvault 入门指南
       url: .\validated-partners\backup-archive-disaster-recovery\commvault\commvault-solution-guide.md
-    - text: Veeam 快速入门指南
+    - text: Veeam 入门指南
       url: .\validated-partners\backup-archive-disaster-recovery\veeam\veeam-solution-guide.md
-- title: Azure 存储容器解决方案合作伙伴
+    - text: DobiProtect 入门指南
+      url: .\validated-partners\backup-archive-disaster-recovery\datadobi\datadobi-solution-guide.md
+- title: 容器解决方案合作伙伴
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure 存储容器解决方案认证合作伙伴
+    - text: 经过验证的容器解决方案合作伙伴
       url: .\validated-partners\container-solutions\partner-overview.md
-- title: Azure 存储数据管理和迁移合作伙伴
+- title: 数据管理和迁移合作伙伴
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure 存储数据管理和迁移认证合作伙伴
+    - text: 经过验证的数据管理和迁移合作伙伴
       url: .\validated-partners\data-management\partner-overview.md
-- title: Azure 主要存储和辅助存储合作伙伴
+    - text: 迁移工具比较
+      url: ./validated-partners/data-management/migration-tools-comparison.md
+  - linkListType: get-started
+    links:
+    - text: DobiMigrate 入门指南
+      url: ./validated-partners/data-management/dobimigrate-quick-start-guide.md
+- title: 主存储和辅助存储合作伙伴
   linkLists:
   - linkListType: overview
     links:
-    - text: 主要和辅助存储的认证合作伙伴
+    - text: 经过验证的主存储和辅助存储合作伙伴
       url: .\validated-partners\primary-secondary-storage\partner-overview.md

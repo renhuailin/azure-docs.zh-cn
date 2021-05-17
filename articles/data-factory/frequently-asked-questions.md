@@ -1,17 +1,17 @@
 ---
 title: 'Azure 数据工厂：常见问题 '
 description: 获取有关 Azure 数据工厂的常见问题的解答。
-author: dcstwh
-ms.author: weetok
+author: ssabat
+ms.author: susabat
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: d0fd62c0173bec17c217ece5560119749d1a4fc6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/29/2021
+ms.openlocfilehash: d3cc2d73fb3f1076af62b8ea028260bfd5e600ed
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739328"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317984"
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
 
@@ -48,7 +48,7 @@ Azure 数据工厂通过了一系列合规性认证，包括 SOC 1 、SOC 2、SO
     - 循环容器：
         * foreach 活动将在循环中迭代指定的活动集合。 
 - 基于触发器的流：
-    - 触发管道可以根据时钟时间按需进行，或者可以作为对事件网格主题驱动的响应
+    - 可以按需或按时钟时间触发管道，也可以在事件网格主题驱动下做出响应
 - 增量流：
     - 可以使用参数并定义用于增量复制的高水位标记，同时移动本地或云中的关系存储中的维度或引用表，以将数据载入 Lake。
 
@@ -226,34 +226,48 @@ Azure 数据工厂通过了一系列合规性认证，包括 SOC 1 、SOC 2、SO
 
 ### <a name="is-the-self-hosted-integration-runtime-available-for-data-flows"></a>自承载集成运行时是否可用于数据流？
 
-自承载 IR 是一种 ADF 管道构造，可与复制活动一起使用，以便在本地或基于 VM 的数据源和接收器中获取或移动数据。 首先使用复制来暂存数据，接着使用数据流进行转换，然后进行后续的复制（如果需要将转换后的数据移回本地存储）。
+自承载 IR 是一种 ADF 管道构造，可与复制活动一起使用，以便在本地或基于 VM 的数据源和接收器中获取或移动数据。 用于自承载 IR 的虚拟机也可以放在受保护数据存储所在的 VNET 中，以便从 ADF 访问这些数据存储。 借助于数据流，可以改为将 Azure IR 与托管 VNET 配合使用，实现相同的最终结果。
 
 ### <a name="does-the-data-flow-compute-engine-serve-multiple-tenants"></a>数据流计算引擎是否为多个租户提供服务？
 
 群集从不会共享。 我们保证在生产运行中为每个作业运行提供隔离。 在调试场景中，一个人获取一个群集，所有调试都会转到该用户启动的该群集。
 
-## <a name="wrangling-data-flows"></a>整理数据流
+### <a name="is-there-a-way-to-write-attributes-in-cosmos-db-in-the-same-order-as-specified-in-the-sink-in-adf-data-flow"></a>是否有一种方法可以按 ADF 数据流中接收器所指定的顺序在 cosmos 数据库中写入属性？    
+
+对于 cosmos 数据库，每个文档的基础格式都是 JSON 对象；该对象是一组无序的名称/值对，因此无法保留顺序。 即使在集成运行时，借助有关 TTL 和成本的 15 分钟 TTL 配置数据流公告，数据流也可加快群集速度。请参阅以下故障排除文档：[数据流性能](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-performance#time-to-live)。
+
+
+###  <a name="why-an-user-is-unable-to-use-data-preview-in-the-data-flows"></a>为什么用户无法在数据流中使用数据预览？   
+
+你应检查自定义角色的权限。 数据流数据预览涉及多项操作。 首先，你要在浏览器中调试时检查网络流量。 请执行所有操作，有关详细信息，请参阅[资源提供程序](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdatafactory)。
+
+### <a name="does-the-data-flow-compute-engine-serve-multiple-tenants"></a>数据流计算引擎是否为多个租户提供服务？   
+
+此故障排除文档可能有助于解决你所遇到的问题：[多个租户](https://docs.microsoft.com/azure/data-factory/frequently-asked-questions#does-the-data-flow-compute-engine-serve-multiple-tenants)。
+
+
+###  <a name="in-adf-can-i-calculate-value-for-a-new-column-from-existing-column-from-mapping"></a>在 ADF 中，能否根据映射的现有列计算新列的值？  
+
+可以在映射数据流中使用派生转换，在所需逻辑中创建新列。 创建派生列时，可以生成新列或更新现有列。 在“列”文本框中，输入要创建的列。 若要替代架构中的现有列，可以使用“列”下拉列表。 若要生成派生列的表达式，请单击“输入表达式”文本框。 你可以开始键入表达式或打开表达式生成器来构造逻辑。
+
+### <a name="why-mapping-data-flow-preview-failing-with-gateway-timeout"></a>映射数据流预览为何会因网关超时而失败？ 
+
+请尝试使用较大的群集，并将调试设置中的行限制调整为较小的值，以减小调试输出大小。
+
+### <a name="how-to-parameterize-column-name-in-dataflow"></a>如何将数据流中的列名参数化？
+
+类似于其他属性，列名可以参数化。 就像在派生列中一样，客户可以使用 **$ColumnNameParam = toString(byName($myColumnNameParamInData))** 。 这些参数可以从管道执行传递到数据流。
+
+
+
+## <a name="wrangling-data-flow-data-flow-power-query"></a>整理数据流（数据流 Power Query）
 
 ### <a name="what-are-the-supported-regions-for-wrangling-data-flow"></a>整理数据流支持哪些区域？
 
-目前，在以下区域中创建的数据工厂都支持整理数据流：
+数据工厂可在下列[区域](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory)使用。
+Power Query 功能即将推广到所有区域。 如果该功能在你的区域不可用，请咨询支持人员。
 
-* 澳大利亚东部
-* 加拿大中部
-* 印度中部
-* 美国东部
-* 美国东部 2
-* 日本东部
-* 北欧
-* 东南亚
-* 美国中南部
-* 英国南部
-* 美国中西部
-* 西欧
-* 美国西部
-* 美国西部 2
-
-### <a name="what-are-the-limitations-and-constraints-with-wrangling-data-flow"></a>整理数据流有哪些限制和约束？
+### <a name="what-are-the-limitations-and-constraints-with-wrangling-data-flow-"></a>整理数据流有哪些限制和约束？
 
 数据集名称只能包含字母数字字符。 支持以下数据存储：
 
@@ -305,7 +319,6 @@ Azure 数据工厂 (ADF) 是托管的数据集成服务，利用该服务，数�
 * uniqueidentifier
 * xml
 
-将来会支持其他数据类型。
 
 ## <a name="next-steps"></a>后续步骤
 

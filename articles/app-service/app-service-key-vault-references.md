@@ -3,15 +3,15 @@ title: 使用 Key Vault 引用
 description: 了解如何使用 Key Vault 引用设置 Azure 应用服务和 Azure Functions。 向应用程序代码提供 Key Vault 机密。
 author: mattchenderson
 ms.topic: article
-ms.date: 02/05/2021
+ms.date: 04/23/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 69fc0d6f3c4e18b34555a099f4e28e278ca3bdad
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
-ms.translationtype: MT
+ms.openlocfilehash: 0ca620d50706f10081e955cf206fcf8c06ae5fd4
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635381"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108064928"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>使用应用服务和 Azure Functions 的 Key Vault 引用
 
@@ -28,10 +28,21 @@ ms.locfileid: "100635381"
    > [!NOTE] 
    > Key Vault 引用目前仅支持系统分配托管标识。 不能使用用户分配标识。
 
-1. 在 Key Vault 中为此前创建的应用程序标识创建一项[访问策略](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies)。 在此策略上启用“获取”机密权限。 请勿配置“授权的应用程序”或 `applicationId` 设置，因为这与托管标识不兼容。
+1. 在 Key Vault 中为此前创建的应用程序标识创建一项[访问策略](../key-vault/general/security-features.md#privileged-access)。 在此策略上启用“获取”机密权限。 请勿配置“授权的应用程序”或 `applicationId` 设置，因为这与托管标识不兼容。
 
-   > [!IMPORTANT]
-   > Key Vault 引用目前无法解析密钥保管库中存储的具有 [网络限制](../key-vault/general/overview-vnet-service-endpoints.md) 的机密，除非该应用程序托管在 [应用服务环境](./environment/intro.md)中。
+### <a name="access-network-restricted-vaults"></a>访问网络受限保管库
+
+> [!NOTE]
+> 基于 Linux 的应用程序目前无法解析来自网络受限密钥保管库的密钥，除非该应用托管在[应用服务环境](./environment/intro.md)中。
+
+如果你的保管库配置有[网络限制](../key-vault/general/overview-vnet-service-endpoints.md)，则你还需要确保该应用程序具有网络访问权。
+
+1. 请确保该应用程序已配置有出站网络功能，正如[应用服务网络功能](./networking-features.md)和 [Azure Functions 网络选项](../azure-functions/functions-networking-options.md)所述。
+
+2. 请确保该保管库的配置将你的应用访问该保管库时所用的网络或子网纳入考量。
+
+> [!IMPORTANT]
+> 目前，通过虚拟网络集成访问保管库的行为与[无指定版本的密钥的自动更新](#rotation)不兼容。
 
 ## <a name="reference-syntax"></a>引用语法
 
@@ -40,8 +51,8 @@ Key Vault 引用采用 `@Microsoft.KeyVault({referenceString})` 格式，其中 
 > [!div class="mx-tdBreakAll"]
 > | 引用字符串                                                            | 说明                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri=_secretUri_                                                       | **SecretUri** 应是 Key Vault 中机密的完整数据平面 URI，还可以选择包含版本（例如）， `https://myvault.vault.azure.net/secrets/mysecret/` 或者`https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931`  |
-> | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** 是必需的，并且应为 Key Vault 资源的名称。 **SecretName** 是必需的，并且应是目标机密的名称。 **SecretVersion** 是可选的，但如果存在，则指示要使用的机密的版本。 |
+> | SecretUri=_secretUri_                                                       | SecretUri 应该是 Key Vault 中机密的完整数据平面 URI，可以选择包括版本，例如 `https://myvault.vault.azure.net/secrets/mysecret/` 或 `https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931`  |
+> | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | VaultName 是必需的，并且应该是 Key Vault 资源的名称。 SecretName 是必需的，并且应该是目标机密的名称。 SecretVersion 是可选的，但如果存在，则指示要使用的机密的版本。 |
 
 例如，完整的引用将如下所示：
 
@@ -57,7 +68,10 @@ Key Vault 引用采用 `@Microsoft.KeyVault({referenceString})` 格式，其中 
 
 ## <a name="rotation"></a>旋转
 
-如果引用中未指定版本，则应用将使用 Key Vault 中存在的最新版本。 当更新版本可用时（例如，使用轮换事件），应用将自动更新，并在一天内开始使用最新版本。 对应用所做的任何配置更改都将导致立即更新到所有引用的机密的最新版本。
+> [!IMPORTANT]
+> 目前，[通过虚拟网络集成访问保管库](#access-network-restricted-vaults)的行为与无指定版本的密钥的自动更新不兼容。
+
+如果引用中未指定版本，则应用将会使用 Key Vault 中存在的最新版本。 在有较新的版本可用时（例如通过轮换事件），应用将会在一天内自动更新并开始使用最新版本。 对应用所做的任何配置更改都将导致立即更新到所有引用的机密的最新版本。
 
 ## <a name="source-application-settings-from-key-vault"></a>Key Vault 中的源应用程序设置
 
@@ -67,6 +81,17 @@ Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-a
 
 > [!TIP]
 > 应该将大多数使用 Key Vault 引用的应用程序设置标记为槽设置，因为你应该为每个环境设置单独的保管库。
+
+### <a name="considerations-for-azure-files-mounting"></a>Azure 文件存储装载注意事项
+
+应用可使用 `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 应用程序设置将 Azure 文件存储装载为文件系统。 此设置有额外的验证检查，旨在确保该应用可以正常启动。 平台依赖于在 Azure 文件存储中拥有内容共享，而且除非通过 `WEBSITE_CONTENTSHARE` 设置指定名称，否则其会采用默认名称。 对于任何修改这些设置的请求，平台会尝试验证此内容共享是否存在，如果不存在，则会尝试创建共享。 如果找不到或无法创建该内容共享，系统会阻止该请求。
+
+对此设置使用密钥保管库引用时，默认情况下该验证检查会失败，因为在处理传入请求时，无法解析密钥本身。 若要避免此问题，可以通过将 `WEBSITE_SKIP_CONTENTSHARE_VALIDATION` 设置为“1”来跳过验证。 这将跳过所有检查，不会创建内容共享。 您应确保预先创建该内容共享。 
+
+> [!CAUTION]
+> 如果跳过验证，并且连接字符串或内容共享无效，该应用将无法正常启动，并且只会显示 HTTP 500 错误。
+
+在创建站点的过程中，也可能会因为未传播托管标识权限，或未设置虚拟网络集成，导致内容共享装载尝试失败。 你可将 Azure 文件存储的设置工作推迟到稍后在部署模板中进行，以适应这种情况。 若要了解更多信息，请参阅 [Azure 资源管理器部署](#azure-resource-manager-deployment)。 “应用服务”会使用默认文件系统直至 Azure 文件存储设置完毕，并且不会复制文件，因此你需要确保在装载 Azure 文件存储之前的过渡期内不会进行任何部署尝试。
 
 ### <a name="azure-resource-manager-deployment"></a>Azure 资源管理器部署
 

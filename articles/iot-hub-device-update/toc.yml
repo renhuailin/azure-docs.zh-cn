@@ -1,98 +1,115 @@
-- name: IoT 中心的设备更新文档
-  href: index.yml
-- name: 概述
-  items:
-    - name: 什么是 IoT 中心的设备更新？
-      href: understand-device-update.md
-- name: 教程
-  items:
-    - name: Raspberry Pi 上的映像更新
-      href: device-update-raspberry-pi.md
-    - name: 在模拟器上使用设备更新
-      href: device-update-simulator.md
-    - name: Ubuntu Server 18.04 x64 上的包更新
-      href: device-update-ubuntu-agent.md
-- name: 概念
-  items:
-    - name: 设备更新帐户和实例
-      href: device-update-resources.md
-    - name: 设备更新用户角色和访问权限
-      href: device-update-control-access.md
-    - name: 设备更新 apt 清单
-      href: device-update-apt-manifest.md
-    - name: 设备更新符合性
-      href: device-update-compliance.md
-    - name: 设备更新组
-      href: device-update-groups.md
-    - name: 设备更新如何使用即插即用
-      href: device-update-plug-and-play.md
-    - name: 设备更新网络要求
-      href: device-update-networking.md
-    - name: 设备更新代理
-      href: device-update-agent-overview.md
-    - name: 设备更新配置文件
-      href: device-update-configuration-file.md
-    - name: 更新清单
-      href: update-manifest.md
-    - name: 如何保护设备更新
-      href: device-update-security.md
-    - name: 对离线设备的支持
-      href: connected-cache-disconnected-device-update.md
-    - name: 为 IoT 中心的设备更新配置 Microsoft 联网缓存
-      href: connected-cache-configure.md
-    - name: 设备更新导入
-      href: import-concepts.md
-    - name: 与导入相关的架构
-      href: import-schema.md
-- name: 操作指南
-  items:
-    - name: 创建设备更新帐户
-      href: create-device-update-account.md
-    - name: 预配设备更新代理
-      href: device-update-agent-provisioning.md
-    - name: 导入更新
-      href: import-update.md
-    - name: 创建设备更新组
-      href: create-update-group.md
-    - name: 部署设备更新
-      href: deploy-update.md
-    - name: 部署设备更新
-      href: deploy-update.md
-    - name: 单一级别 Microsoft 联网缓存
-      href: connected-cache-single-level.md
-    - name: 嵌套级别 Microsoft 联网缓存
-      href: connected-cache-nested-level.md
-    - name: 适用于工业 IoT (IIOT) 的 Microsoft 联网缓存
-      href: connected-cache-industrial-iot-nested.md
-    - name: 疑难解答
-      items:
-        - name: 排查设备更新问题
-          href: troubleshoot-device-update.md
-- name: 参考
-  items:
-    - name: 设备更新客户端错误代码
-      href: device-update-error-codes.md
-- name: 资源
-  items:
-    - name: 支持和帮助选项
-      href: ../iot-fundamentals/iot-support-help.md
-    - name: Azure IoT 服务
-      items:
-        - name: IoT 中心
-          href: ./index.yml
-        - name: IoT 中心设备预配服务
-          href: ../iot-dps/index.yml
-        - name: IoT Central
-          href: /microsoft-iot-central/
-        - name: IoT Edge
-          href: ../iot-edge/index.yml
-        - name: IoT 解决方案加速器
-          href: ../iot-accelerators/index.yml
-        - name: IoT 即插即用
-          href: ../iot-pnp/index.yml
-        - name: Azure Maps
-          href: ../azure-maps/index.yml
-        - name: 时序见解
-          href: ../time-series-insights/index.yml
-    - name: 传递优化
-      href: 'https://github.com/microsoft/do-client'
+items:
+  - name: IoT 中心的设备更新文档
+    href: index.yml
+  - name: 概述
+    items:
+      - name: 什么是 IoT 中心的设备更新？
+        href: understand-device-update.md
+  - name: 教程
+    items:
+      - name: Raspberry Pi 上的映像更新
+        href: device-update-raspberry-pi.md
+      - name: 在模拟器上使用设备更新
+        href: device-update-simulator.md
+      - name: Ubuntu Server 18.04 x64 上的包更新
+        href: device-update-ubuntu-agent.md
+      - name: Azure 实时操作系统的设备更新
+        href: device-update-azure-real-time-operating-system.md
+  - name: 概念
+    items:
+      - name: 设备更新帐户和实例
+        href: device-update-resources.md
+      - name: 设备更新用户角色和访问权限
+        href: device-update-control-access.md
+      - name: 设备更新 apt 清单
+        href: device-update-apt-manifest.md
+      - name: 设备更新符合性
+        href: device-update-compliance.md
+      - name: 设备更新组
+        href: device-update-groups.md
+      - name: 设备更新如何使用即插即用
+        href: device-update-plug-and-play.md
+      - name: 设备更新网络要求
+        href: device-update-networking.md
+      - name: 设备更新代理
+        href: device-update-agent-overview.md
+      - name: 设备更新配置文件
+        href: device-update-configuration-file.md
+      - name: 更新清单
+        href: update-manifest.md
+      - name: 如何保护设备更新
+        href: device-update-security.md
+      - name: 对离线设备的支持
+        href: connected-cache-disconnected-device-update.md
+      - name: 为 IoT 中心的设备更新配置 Microsoft 联网缓存
+        href: connected-cache-configure.md
+      - name: 设备更新导入
+        href: import-concepts.md
+      - name: 与导入相关的架构
+        href: import-schema.md
+  - name: 操作指南
+    items:
+      - name: 创建设备更新帐户
+        href: create-device-update-account.md
+      - name: 预配设备更新代理
+        href: device-update-agent-provisioning.md
+      - name: 导入更新
+        href: import-update.md
+      - name: 创建设备更新组
+        href: create-update-group.md
+      - name: 部署设备更新
+        href: deploy-update.md
+      - name: 单一级别 Microsoft 联网缓存
+        href: connected-cache-single-level.md
+      - name: 嵌套级别 Microsoft 联网缓存
+        href: connected-cache-nested-level.md
+      - name: 适用于工业 IoT (IIOT) 的 Microsoft 联网缓存
+        href: connected-cache-industrial-iot-nested.md
+      - name: 疑难解答
+        items:
+          - name: 排查设备更新问题
+            href: troubleshoot-device-update.md
+          - name: 设备更新客户端错误代码
+            href: device-update-error-codes.md
+  - name: 参考
+    items:
+      - name: REST API
+        href: /rest/api/deviceupdate/
+      - name: 控制平面 SDK
+        items:
+          - name: .NET
+            href: /dotnet/api/overview/azure/iot/management
+          - name: Python
+            href: /python/api/azure-mgmt-deviceupdate/
+      - name: 数据平面 SDK
+        items:
+          - name: JavaScript
+            href: /javascript/api/@azure/iot-device-update/?view=azure-node-preview&preserve-view=true
+          - name: Java
+            href: /java/api/com.azure.iot.deviceupdate?view=azure-java-preview&preserve-view=true
+          - name: Python
+            href: /python/api/azure-mgmt-deviceupdate/azure.mgmt.deviceupdate?view=azure-python-preview&preserve-view=true
+  - name: 资源
+    items:
+      - name: 支持和帮助选项
+        href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-hub-device-update/toc.json&bc=/azure/iot-hub-device-update/breadcrumb/toc.json
+      - name: Azure IoT 服务
+        items:
+          - name: IoT 中心
+            href: ./index.yml
+          - name: IoT 中心设备预配服务
+            href: ../iot-dps/index.yml
+          - name: IoT Central
+            href: /microsoft-iot-central/
+          - name: IoT Edge
+            href: ../iot-edge/index.yml
+          - name: IoT 解决方案加速器
+            href: ../iot-accelerators/index.yml
+          - name: IoT 即插即用
+            href: ../iot-pnp/index.yml
+          - name: Azure Maps
+            href: ../azure-maps/index.yml
+          - name: 时序见解
+            href: ../time-series-insights/index.yml
+      - name: 传递优化
+        href: 'https://github.com/microsoft/do-client'

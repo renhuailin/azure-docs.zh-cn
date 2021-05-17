@@ -40,6 +40,10 @@
           items:
             - name: 课程类型概述
               href: class-types.md
+            - name: Adobe Creative Cloud
+              href: class-type-adobe-creative-cloud.md
+            - name: Autodesk
+              href: class-type-autodesk.md
             - name: 自然语言处理中的深度学习
               href: class-type-deep-learning-natural-language-processing.md
             - name: Linux 上的 Shell 脚本
@@ -137,6 +141,8 @@
           href: how-to-setup-lab-gpu.md
         - name: 准备 Windows 模板 VM
           href: how-to-prepare-windows-template.md
+        - name: 使用外部文件存储
+          href: how-to-attach-external-storage.md
         - name: 控制 Windows 关机行为
           href: how-to-windows-shutdown.md
         - name: 查看支持信息（教师）
@@ -177,6 +183,8 @@
       href: /rest/api/labservices/
     - name: Az.LabServices PowerShell 模块（预览版）
       href: reference-powershell-module.md
+    - name: Azure CLI
+      href: /cli/azure/hack
 - name: 资源
   items:
     - name: Azure 实验室服务博客

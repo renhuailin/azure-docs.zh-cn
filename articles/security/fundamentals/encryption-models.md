@@ -4,7 +4,6 @@ description: 本文概述了 Microsoft Azure 中的数据加密模型。
 services: security
 documentationcenter: na
 author: msmbaldwin
-manager: rkarlin
 ms.assetid: 9dcb190e-e534-4787-bf82-8ce73bf47dba
 ms.service: security
 ms.subservice: security-fundamentals
@@ -12,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2020
+ms.date: 04/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 95ab5917779a73b7221a5b431126164aef88b494
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 8e39864e2246e175bb9f699f01b78646782d84eb
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812113"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315338"
 ---
 # <a name="data-encryption-models"></a>数据加密模型
 
@@ -91,7 +90,7 @@ Azure 中支持的加密模型分为两大类：“客户端加密”和“服�
 
 对于需要加密静态数据并控制加密密钥的情况，客户可以选择使用 Key Vault 中客户托管密钥的服务器端加密。 某些服务可能仅将根密钥加密密钥存储在 Azure Key Vault 中，而将加密的数据加密密钥存储在更靠近数据的内部位置。 在这种情况下，客户可以将自己的密钥带到 Key Vault 中（BYOK – 自带密钥），或者生成新的密钥，以便加密所需资源。 资源提供程序在执行加密和解密操作时，会将所配置的密钥加密密钥用作所有加密操作的根密钥。
 
-密钥加密密钥丢失意味着数据丢失。 因此，不应删除密钥。 每次创建或轮换时都应备份密钥。 应在存储着密钥加密密钥的任何保管库上启用[软删除](../../key-vault/general/soft-delete-overview.md)。 不应删除密钥，而应将“启用”设置为 false 或设置到期日期。
+密钥加密密钥丢失意味着数据丢失。 因此，不应删除密钥。 每次创建或轮换时都应备份密钥。 必须在存储密钥加密密钥的任何保管库上启用[软删除和清除保护](../../key-vault/general/soft-delete-overview.md)，以防止意外或恶意加密擦除。 建议将密钥加密密钥上的“已启用”设置为 false，而不是删除密钥。
 
 ### <a name="key-access"></a>密钥访问权限
 
@@ -198,9 +197,6 @@ Azure 中支持的加密模型分为两大类：“客户端加密”和“服�
 | Azure Cosmos DB                  | 是                | 是                | -                  |
 | Azure Databricks                 | 是                | 是                | -                  |
 | Azure 数据库迁移服务 | 是                | 暂无\*              | -                  |
-| **DevOps**                       |                    |                    |                    |
-| Azure DevOps Services            | 是                | -                  | -                  |
-| Azure Repos                      | 是                | -                  | -                  |
 | **标识**                     |                    |                    |                    |
 | Azure Active Directory           | 是                | -                  | -                  |
 | Azure Active Directory 域服务 | 是          | 是                | -                  |

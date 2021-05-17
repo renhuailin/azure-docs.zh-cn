@@ -6,19 +6,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 04/20/2021
-ms.openlocfilehash: b373ac8ef4ef8da9c4b4ac6373dd5db37ad57f2f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 04/30/2021
+ms.openlocfilehash: 550ae815933fd79e0cf6dc411aaddc8a8f564202
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145026"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108314510"
 ---
 # <a name="how-to-create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>如何创建 Dynamics 365 for Customer Engagement 和 PowerApps 产品/服务
 
 本文介绍如何创建 Dynamics 365 for Customer Engagement 和 PowerApps 产品/服务。 Dynamics 365 的所有产品/服务都必须通过我们的认证流程。 试用体验允许用户将你的解决方案部署到实时 Dynamics 365 环境中。
 
-在开始之前，先在[合作伙伴中心](./create-account.md)创建一个商业市场帐户，并确保该帐户已在商业市场计划中注册。
+在开始之前，先在[合作伙伴中心](partner-center-portal/create-account.md)创建一个商业市场帐户，并确保该帐户已在商业市场计划中注册。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -28,7 +28,7 @@ ms.locfileid: "108145026"
 
 1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
 2. 在左侧导航菜单中，依次选择“商业市场” > “概述”。
-3. 在“概述”页上，依次选择“+ 新建产品/服务” > “Dynamics 365 for Customer Engagement 和 PowerApps”。
+3. 在“概述”页上，依次选择“+ 新建产品/服务” > “Dynamics 365 for Customer Engagement 和 Power Apps”。
 
     :::image type="content" source="media/dynamics-365/new-offer-dynamics-365-customer-engagement.png" alt-text="显示左窗格菜单选项和“新建产品/服务”按钮，并选中了“Customer Engagement”。":::
 
@@ -56,7 +56,12 @@ ms.locfileid: "108145026"
 
 ## <a name="setup-details"></a>设置详细信息
 
-如要了解“潜在客户如何与此列表产品/服务进行交互”，请选择要用于此产品/服务的选项。
+如要了解“潜在客户如何与此列表产品/服务进行交互”，请选择要用于此产品/服务的选项：
+
+- 通过 Microsoft 启用应用许可证管理 - 通过 Microsoft 管理你的应用许可证。 若要让客户在没有许可证的情况下运行该应用的基本功能，并在其购买许可证后运行高级功能，请选中“允许客户安装应用（即使未分配许可证）”框。 如果选择第二个框，则需要将解决方案包配置为不需要许可证。
+
+    > [!NOTE]
+    > 发布产品/服务后无法更改此设置。 若要了解有关此设置的详细信息，请参阅[通过 Microsoft 进行第三方应用许可证管理](third-party-license.md)。
 
 - **立即获取（免费）** - 列出向客户免费提供的产品/服务。
 - **免费试用（列表）** - 向客户列出包含免费试用版链接的产品/服务。 产品/服务列表免费试用版由你的服务创建、管理和配置，并且不包含由 Microsoft 管理的订阅。
@@ -79,7 +84,7 @@ ms.locfileid: "108145026"
 
 [!INCLUDE [Connect lead management](partner-center-portal/includes/connect-lead-management.md)]
 
-有关详细信息，请参阅[来自商业市场产品/服务的潜在客户](partner-center-portal/commercial-marketplace-get-customer-leads.md)。
+有关详细信息，请参阅[来自商业市场产品/服务的客户销售线索](partner-center-portal/commercial-marketplace-get-customer-leads.md)。
 
 选择“保存草稿”，然后转到左侧导航菜单中的下一个选项卡“属性”。 
 

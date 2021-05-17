@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 786e9b472d1f900e94e5d0cfa6a00e0f85547704
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 367dd261e9147c2dc14f1085af553222b621d91e
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102037687"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279777"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor 中的日志警报
 
@@ -165,9 +165,14 @@ requests
 
 ### <a name="frequency"></a>频率
 
-运行查询的间隔。 可以设置为 5 分钟到 1 天。 必须等于或小于[查询时间范围](#query-time-range)才不会错过日志记录。
+> [!NOTE]
+> 当前不对频率为 1 分钟的日志警报收取额外费用。 未来将公布预览版中的功能的定价以及开始计费之前提供的通知。 如果在通知期后选择继续使用频率为 1 分钟的日志警报，则将按适当的费率付费。
+
+运行查询的间隔。 可以设置为 1 分钟到 1 天。 必须等于或小于[查询时间范围](#query-time-range)才不会错过日志记录。
 
 例如，如果你将时间段设置为 30 分钟，将频率设置为 1 小时 1 次。  如果查询在 00:00 运行，则会返回 23:30 到 00:00 之间的记录。 下次运行查询的时间将是 01:00，将返回 00:30 到 01:00 之间的记录。 从不会评估在 00:00 到 00:30 之间创建的任何记录。
+
+若要使用频率为 1 分钟的警报，需要通过 API 设置属性。 在 API 版本 `2020-05-01-preview` 中创建新的日志警报规则或更新现有日志警报规则时，请在 `properties` 部分添加 `evaluationFrequency`，其值为 `PT1M`，类型为 `String`。 在 API 版本 `2018-04-16` 中创建新的日志警报规则或更新现有日志警报规则时，请在 `schedule` 部分添加 `frequencyInMinutes`，其值为 `1`，类型为 `Int`。 
 
 ### <a name="number-of-violations-to-trigger-alert"></a>触发警报的违规次数
 
@@ -177,9 +182,9 @@ requests
 
 ## <a name="state-and-resolving-alerts"></a>状态和解决警报
 
-日志警报是无状态的。 每次满足条件时，都会触发警报，即使之前已触发过。 触发的警报不会解决。 你可以[将警报标记为关闭](../alerts/alerts-managing-alert-states.md)。 你还可以对操作进行“静音”，以防它们在警报规则触发后的一段时间内触发。
+日志警报可以是无状态或有状态的（当前在使用 API 时处于预览状态）。 
 
-在工作区和 Application Insights 中，它称为“抑制警报”。 在所有其他资源类型中，它称为“将操作‘静音’”。 
+每次满足条件时都会触发无状态警报，即使之前已触发过。 警报实例解除后，可以[将警报标记为已关闭](../alerts/alerts-managing-alert-states.md)。 你还可以对操作进行“静音”，以防它们在警报规则触发后的一段时间内触发。 在 Log Analytics 工作区和 Application Insights 中，这称为“抑制警报”。 在所有其他资源类型中，它称为“将操作‘静音’”。 
 
 请参阅此警报评估示例：
 
@@ -189,6 +194,8 @@ requests
 | 00:10 | TRUE  | 警报触发，操作组被调用。 新警报处于活动状态。
 | 00:15 | TRUE  | 警报触发，操作组被调用。 新警报处于活动状态。
 | 00:20 | FALSE | 警报不会触发。 没有调用任何操作。 以前的警报保持活动状态。
+
+有状态警报会在每次事件后触发一次并解决。 创建新的日志警报规则或更新现有日志警报规则时，请在 `properties` 部分下添加 `autoMitigate` 标志，其值为 `true`，类型为 `Boolean`。 可以在以下 API 版本中使用此功能：`2018-04-16` 和 `2020-05-01-preview`。
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>日志警报的定价和计费
 

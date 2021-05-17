@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2021
 ms.author: Zhchia
-ms.openlocfilehash: 24c8e2aafed6ee7b8823effc350dee4edb5e4873
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: db33cc43419b4228ca270d3a69c0e88de2c05638
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101650798"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752038"
 ---
 # <a name="tutorial-configure-hoxhunt-for-automatic-user-provisioning"></a>教程：为 Hoxhunt 配置自动用户预配
 
@@ -47,9 +47,9 @@ ms.locfileid: "101650798"
 2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
 3. 确定要[在 Azure AD 与 Hoxhunt 之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
 
-## <a name="step-2-configure-hoxhunt-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 Hoxhunt 以支持通过 Azure AD 进行预配
+## <a name="step-2-configure-hoxhunt-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 Hoxhunt 以支持通过 Azure AD 进行预配
 请联系 [Hoxhunt 支持部门](mailto:support@hoxhunt.com)以接收 SCIM API 密钥和 SCIM 终结点 URL，以便配置 Hoxhunt 来支持 Azure AD 的预配。
-## <a name="step-3-add-hoxhunt-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 Hoxhunt
+## <a name="step-3-add-hoxhunt-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库添加 Hoxhunt
 
 从 Azure AD 应用程序库添加 Hoxhunt，开始管理 Hoxhunt 的预配。 如果之前已经为 SSO 设置过 Hoxhunt，则可以使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-application-portal.md)。 
 
@@ -130,6 +130,9 @@ ms.locfileid: "101650798"
 * 通过[预配日志](../reports-monitoring/concept-provisioning-logs.md)来确定哪些用户已预配成功或失败
 * 检查[进度栏](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)来查看预配周期的状态以及完成进度
 * 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](../app-provisioning/application-provisioning-quarantine-status.md)了解有关隔离状态的详细信息。  
+
+## <a name="change-log"></a>更改日志
+* 04/20/2021 - 添加了对“preferredLanguage”和企业扩展属性“urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division”的支持。
 
 ## <a name="additional-resources"></a>其他资源
 

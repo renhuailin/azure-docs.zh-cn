@@ -7,13 +7,13 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
-ms.date: 3/17/2021
-ms.openlocfilehash: 3fc50ef5a50c2c499b1c886bcf5aa73b11ba7c45
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 04/16/2021
+ms.openlocfilehash: 7a5e4375ebe289bb5ae012f94ba9dd050563bbbb
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133342"
+ms.locfileid: "108209852"
 ---
 # <a name="co-sell-requirements"></a>联合销售要求
 
@@ -21,7 +21,7 @@ ms.locfileid: "108133342"
 
 下表显示了所有可能的联合销售状态：
 
-| 状态 | 注释 |
+| 状态 | 评论 |
 | ------------ | ------------- |
 | 尚未做好联合销售准备 | 尚未满足最低[联合销售就绪状态要求](#requirements-for-co-sell-ready-status)。 |
 | 已做好联合销售准备 | 已满足所有[联合销售就绪状态要求](#requirements-for-co-sell-ready-status)。 |
@@ -30,6 +30,9 @@ ms.locfileid: "108133342"
 |||
 
 ## <a name="requirements-for-co-sell-ready-status"></a>联合销售准备就绪状态的要求
+
+> [!NOTE]
+> 只要满足“联合销售准备就绪”要求，在合作伙伴中心通过商业市场开发人员计划发布的任何产品/服务都可以达到“联合销售准备就绪”状态。 Office 应用和加载项不符合条件（例如 Teams、SharePoint 解决方案、Outlook、Excel）
 
 要使产品/服务达到联合销售准备就绪状态，必须满足以下要求：
 

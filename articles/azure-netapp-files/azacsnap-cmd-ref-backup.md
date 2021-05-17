@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 12/14/2020
+ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 17c29fdf88495f6ecc40963eda08858887173fd1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4e0091d1d94a173df07f956959580f7f862ec08f
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98730932"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930022"
 ---
-# <a name="back-up-using-azure-application-consistent-snapshot-tool-preview"></a>使用 Azure 应用程序一致的快照工具进行备份（预览版）
+# <a name="back-up-using-azure-application-consistent-snapshot-tool"></a>使用 Azure 应用程序一致的快照工具进行备份
 
 本文提供有关运行可用于 Azure NetApp 文件的 Azure 应用程序一致的快照工具的备份命令的指南。
 

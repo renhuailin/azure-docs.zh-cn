@@ -1,18 +1,19 @@
 ---
-title: VPN 网关：修改网关 IP 地址设置：Azure CLI
-description: 本文介绍了如何使用 Azure CLI 更改本地网络网关的 IP 地址前缀。
+title: 修改网关 IP 地址设置：Azure CLI
+titleSuffix: Azure VPN Gateway
+description: 了解如何使用 Azure CLI 更改本地网关的 IP 地址前缀。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: aadb2107cd009ac58cf8edb12853b10a5a0e3677
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5e03da37a727c87995496878b191cbf48cfe0347
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94659992"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229605"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-cli"></a>使用 Azure CLI 修改本地网络网关设置
 

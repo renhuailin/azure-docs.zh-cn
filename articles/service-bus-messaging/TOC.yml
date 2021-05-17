@@ -92,14 +92,42 @@
   items:
     - name: 队列、主题和订阅
       href: service-bus-queues-topics-subscriptions.md
-    - name: 主题筛选器和操作
-      href: topic-filters.md
     - name: 高级消息传送
       href: service-bus-premium-messaging.md
     - name: Azure 队列与服务总线队列的比较
       href: service-bus-azure-and-service-bus-queues-compared-contrasted.md
-    - name: 优化性能
-      href: service-bus-performance-improvements.md
+    - name: 高级功能
+      items:
+        - name: 消息会话
+          href: message-sessions.md
+        - name: 重复消息检测
+          href: duplicate-detection.md
+        - name: 主题筛选器和操作
+          href: topic-filters.md
+        - name: 消息浏览
+          href: message-browsing.md
+        - name: 消息传输、锁定和处置
+          href: message-transfers-locks-settlement.md
+        - name: 死信队列
+          href: service-bus-dead-letter-queues.md
+        - name: 消息延迟
+          href: message-deferral.md
+        - name: 预取消息
+          href: service-bus-prefetch.md
+        - name: 将实体与自动转发链接在一起
+          href: service-bus-auto-forwarding.md
+        - name: 事务处理
+          href: service-bus-transactions.md
+        - name: 优化性能
+          href: service-bus-performance-improvements.md
+        - name: 异地灾难恢复和异地复制
+          href: service-bus-geo-dr.md
+        - name: 异步消息传送和高可用性
+          href: service-bus-async-messaging.md
+        - name: 处理中断和灾难问题
+          href: service-bus-outages-disasters.md
+        - name: 限制
+          href: service-bus-throttling.md
     - name: 联合
       items:
         - name: 消息复制和跨区域联合
@@ -116,27 +144,15 @@
           href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub'
         - name: 从事件中心获取消息
           href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus'
-    - name: 异地灾难恢复和异地复制
-      href: service-bus-geo-dr.md
-    - name: 异步消息传送和高可用性
-      href: service-bus-async-messaging.md
-    - name: 处理中断和灾难问题
-      href: service-bus-outages-disasters.md
-    - name: 限制
-      href: service-bus-throttling.md
     - name: 安全性
       items:
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/service-bus-messaging-security-baseline?toc=/azure/service-bus-messaging/TOC.json
         - name: 身份验证和授权
           href: service-bus-authentication-and-authorization.md
           items:
-            - name: 使用共享访问签名
-              items:
-                - name: 从 ACS 迁移到 SAS
-                  href: service-bus-migrate-acs-sas.md
-                - name: 使用共享访问签名进行的身份验证
-                  href: service-bus-sas.md
+            - name: 使用共享访问签名进行的身份验证
+              href: service-bus-sas.md
             - name: 使用 Azure Active Directory
               items:
                 - name: 通过 Azure 资源的托管标识进行身份验证
@@ -154,28 +170,20 @@
           href: service-bus-to-event-grid-integration-concept.md
 - name: 操作指南
   items:
-    - name: 跨区域移动
-      href: move-across-regions.md
-    - name: 从 Azure Service Manager（经典）API 迁移到资源管理器 API
-      href: deprecate-service-bus-management.md
-    - name: 创建命名空间
-      href: service-bus-create-namespace-portal.md
     - name: 开发
       items:
+        - name: 创建命名空间
+          href: service-bus-create-namespace-portal.md
         - name: 设置订阅筛选器和操作
           href: service-bus-filter-examples.md
         - name: 消息处理
           items:
-            - name: 队列、主题和订阅
-              href: service-bus-queues-topics-subscriptions.md
             - name: Java 消息服务 (JMS) 2.0 实体
               href: java-message-service-20-entities.md
             - name: Java 消息服务 (JMS) 开发人员 guide.md
               href: jms-developer-guide.md
             - name: 消息、有效负载和序列化
               href: service-bus-messages-payloads.md
-            - name: 消息传输、锁定和处置
-              href: message-transfers-locks-settlement.md
             - name: 消息序列化和时间戳
               href: message-sequencing.md
             - name: 消息过期时间（生存时间）
@@ -184,8 +192,6 @@
           href: service-bus-migrate-standard-premium.md
         - name: 分区队列和主题
           href: service-bus-partitioning.md
-        - name: 消息会话
-          href: message-sessions.md
         - name: AMQP
           items:
             - name: AMQP 概述
@@ -200,30 +206,14 @@
               href: service-bus-amqp-request-response.md
             - name: AMQP 错误
               href: service-bus-amqp-troubleshoot.md
-        - name: 高级功能
-          items:
-            - name: 死信队列
-              href: service-bus-dead-letter-queues.md
-            - name: 预取消息
-              href: service-bus-prefetch.md
-            - name: 重复消息检测
-              href: duplicate-detection.md
-            - name: 消息计数器
-              href: message-counters.md
-            - name: 消息延迟
-              href: message-deferral.md
-            - name: 消息浏览
-              href: message-browsing.md
-            - name: 将实体与自动转发链接在一起
-              href: service-bus-auto-forwarding.md
-            - name: 事务处理
-              href: service-bus-transactions.md
         - name: 构建多层服务总线应用程序
           href: service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
     - name: 迁移
       items:
         - name: 从 ActiveMQ 迁移到 Azure 服务总线
           href: migrate-jms-activemq-to-servicebus.md
+        - name: 从 Azure Service Manager（经典）API 迁移到资源管理器 API
+          href: deprecate-service-bus-management.md
     - name: 监视
       items:
         - name: 端到端跟踪和诊断
@@ -238,6 +228,20 @@
           href: service-bus-integrate-with-rabbitmq.md
     - name: 管理
       items:
+        - name: 针对队列或订阅启用会话
+          href: enable-message-sessions.md
+        - name: 针对队列或主题启用重复检测
+          href: enable-duplicate-detection.md
+        - name: 针对队列或主题启用分区
+          href: enable-partitions.md
+        - name: 针对队列或订阅启用自动转发
+          href: enable-auto-forward.md
+        - name: 针对队列或订阅启用死信
+          href: enable-dead-letter.md
+        - name: 获取消息计数器
+          href: message-counters.md
+        - name: 跨区域移动
+          href: move-across-regions.md
         - name: 自动更新消息传送单元
           href: automate-update-messaging-units.md
         - name: 使用 Azure PowerShell 预配实体
@@ -292,9 +296,9 @@
         - name: 从 azure-servicebus 迁移到 azure-messaging-servicebus
           href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/migration-guide.md'
         - name: azure-messaging-servicebus（最新）
-          href: /java/api/overview/azure/servicebus?view=azure-java-preview
+          href: /java/api/com.azure.messaging.servicebus?view=azure-java-stable
         - name: azure-servicebus
-          href: /java/api/overview/azure/servicebus
+          href: /java/api/com.microsoft.azure.servicebus?view=azure-java-stable
     - name: Python
       items:
         - name: 从 azure-servicebus 版本 0.50 迁移到版本 7
@@ -317,6 +321,8 @@
       href: 'https://github.com/Azure/azure-sdk-for-ruby'
     - name: Go
       href: 'https://github.com/Azure/azure-service-bus-go'
+    - name: Azure CLI
+      href: /cli/azure/servicebus
     - name: Azure PowerShell
       href: /powershell/module/az.servicebus
     - name: REST
@@ -335,7 +341,7 @@
 - name: 资源
   items:
     - name: 常见问题解答
-      href: service-bus-faq.md
+      href: service-bus-faq.yml
     - name: 利用 Microsoft Learn 掌握技能
       href: /learn/browse/?products=azure-service-bus
     - name: Azure 路线图

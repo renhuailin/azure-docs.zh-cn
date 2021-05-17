@@ -1,0 +1,49 @@
+- name: Azure 认证设备文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是 Azure 认证设备计划？
+      href: overview.md
+- name: 教程
+  expanded: true
+  items:
+    - name: 1 - 选择正确的认证
+      href: tutorial-00-selecting-your-certification.md
+    - name: 2 - 创建项目
+      href: tutorial-01-creating-your-project.md
+    - name: 3 - 添加设备详细信息
+      href: tutorial-02-adding-device-details.md
+    - name: 4 - 测试设备
+      href: tutorial-03-testing-your-device.md
+    - name: 5 - 发布设备
+      href: tutorial-04-publishing-your-device.md
+- name: 计划要求
+  items:
+    - name: Azure 认证设备
+      href: program-requirements-azure-certified-device.md
+    - name: IoT 即插即用
+      href: program-requirements-pnp.md
+    - name: Edge Managed
+      href: program-requirements-edge-managed.md
+    - name: Edge Secured-Core（预览版）
+      href: program-requirements-edge-secured-core.md
+- name: 概念
+  items:
+    - name: 旧设备
+      href: concepts-legacy.md
+    - name: 营销概念
+      href: concepts-marketing.md
+- name: 操作指南
+  items:
+    - name: 如何编辑已发布的设备
+      href: how-to-edit-published-device.md
+    - name: 如何认证间接连接的设备
+      href: how-to-indirectly-connected-devices.md
+    - name: 如何对 IoT 即插即用设备进行故障排除
+      href: how-to-troubleshoot-pnp.md
+    - name: 如何使用组件功能
+      href: how-to-using-the-components-feature.md
+- name: 资源
+  items:
+    - name: 认证术语表
+      href: resources-glossary.md

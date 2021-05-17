@@ -11,91 +11,91 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 411a8e46151a762bcd270fb676f78a91f760ac4f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3b659041ae4512baa1a202f872114e5dd6b90a0e
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101653790"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162754"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-agent-gmsa-powershell-cmdlets"></a>Azure AD Connect 云预配代理 gMSA PowerShell cmdlet
 
-本本档旨在介绍 Azure AD Connect 云预配代理 gMSA PowerShell cmdlet。 利用这些 cmdlet，可以更细致地了解应用于服务帐户 (gmsa) 的权限。 在默认情况下，Azure AD Connect 云同步会在默认 gmsa 或自定义 gmsa 上应用与 Azure AD Connect 类似的所有权限。 
+本本档旨在介绍 Azure AD Connect 云预配代理 gMSA PowerShell cmdlet。 利用这些 cmdlet，可以更细致地了解应用于服务帐户 (gmsa) 的权限。 在默认情况下，Azure AD Connect 云同步会在默认 gmsa 或自定义 gmsa 上应用与 Azure AD Connect 类似的所有权限。
 
-本文档将介绍以下 cmdlet：  
+本文档将介绍以下 cmdlet：
 
 `Set-AADCloudSyncRestrictedPermissions`
 
-`Ste-AADCloudSyncPermissions` 
+`Set-AADCloudSyncPermissions`
 
-## <a name="how-to-use-the-cmdlets"></a>如何使用 cmdlet：  
+## <a name="how-to-use-the-cmdlets"></a>如何使用 cmdlet：
 
 若要使用这些 cmdlet，需要满足以下先决条件。
 
-1. 安装预配代理。 
-2. 将预配代理 PS 模块导入到 PowerShell 会话中。 
+1. 安装预配代理。
 
- ```PowerShell
- Import-Module "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\Microsoft.CloudSync.Powershell.dll"  
- ```
-3. 删除现有的权限。  若要删除服务帐户上所有的现有权限（SELF 除外），请使用：`Set-AADCloudSyncRestrictedPermission`。  
+2. 将预配代理 PS 模块导入到 PowerShell 会话中。
 
-    此 cmdlet 需要一个可以传递的名为 `Credential` 的参数，否则如果在调用时没有该参数，将会出现提示。
+   ```powershell
+   Import-Module "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\Microsoft.CloudSync.Powershell.dll"  
+   ```
 
-    若要创建变量，请使用  
+3. 删除现有的权限。  若要删除服务帐户上所有的现有权限（SELF 除外），请使用：`Set-AADCloudSyncRestrictedPermission`。
 
-   `$credential = Get-Credential` 
+   此 cmdlet 需要一个可以传递的名为 `Credential` 的参数，否则如果在调用时没有该参数，将会出现提示。
 
-   这将会提示用户输入用户名和密码。 凭据至少必须是安装代理的域的域管理员，也可以是企业管理员。 
+   若要创建变量，请使用：
 
-4.  然后，可以调用该 cmdlet 来删除额外的权限： 
-   ```PowerShell
+   `$credential = Get-Credential`
+
+   这将会提示用户输入用户名和密码。 凭据至少必须是安装代理的域的域管理员，也可以是企业管理员。
+
+4. 然后，可以调用该 cmdlet 来删除额外的权限：
+
+   ```powershell
    Set-AADCloudSyncRestrictedPermissions -Credential $credential 
    ```
-5. 或者可以只是调用 
 
-   `Set-AADCloudSyncRestrictedPermissions`，它将会提示输入凭据。 
+5. 您也可以直接调用：
 
- 6.  添加特定的权限类型。  添加的权限与 Azure AD Connect 相同。  有关设置权限的示例，请参阅下面的[使用 Set-AADCloudSyncPermissions](#using-set-aadcloudsyncpermissions)。
+   `Set-AADCloudSyncRestrictedPermissions`，它将会提示输入凭据。
 
-## <a name="using-set-aadcloudsyncpermissions"></a>使用 Set-AADCloudSyncPermissions 
-`Set-AADCloudSyncPermissions` 支持以下与 Azure AD Connect 使用的权限完全相同的权限类型。 支持以下权限类型： 
+6. 添加特定的权限类型。 添加的权限与 Azure AD Connect 相同。 有关设置权限的示例，请参阅下面的[使用 Set-AADCloudSyncPermissions](#using-set-aadcloudsyncpermissions)。
 
-|权限类型|说明|
+## <a name="using-set-aadcloudsyncpermissions"></a>使用 Set-AADCloudSyncPermissions
+
+`Set-AADCloudSyncPermissions` 支持以下与 Azure AD Connect 使用的权限完全相同的权限类型。 支持以下权限类型：
+
+|权限类型|描述|
 |-----|-----|
 |BasicRead| 请参阅 Azure AD Connect 的 [BasicRead](../../active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account.md#configure-basic-read-only-permissions) 权限|
 |PasswordHashSync|请参阅 Azure AD Connect 的 [PasswordHashSync](../../active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account.md#permissions-for-password-hash-synchronization) 权限|
 |PasswordWriteBack|请参阅 Azure AD Connect 的 [PasswordWriteBack](../../active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account.md#permissions-for-password-writeback) 权限|
-|HybridExchangePermissions|请参阅 Azure AD Connect 的 [HybridExchangePermissions](../../active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account.md#permissions-for-exchange-hybrid-deployment) 权限| 
-|ExchangeMailPublicFolderPermissions| 请参阅 Azure AD Connect 的 [ExchangeMailPublicFolderPermissions](../../active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account.md#permissions-for-exchange-mail-public-folders-preview) 权限| 
-|CloudHR| 将“完全控制”应用于“此对象和所有后代对象”上的“后代用户对象”和“创建/删除用户对象”| 
-|全部|添加上述所有权限。| 
-
-
+|HybridExchangePermissions|请参阅 Azure AD Connect 的 [HybridExchangePermissions](../../active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account.md#permissions-for-exchange-hybrid-deployment) 权限|
+|ExchangeMailPublicFolderPermissions| 请参阅 Azure AD Connect 的 [ExchangeMailPublicFolderPermissions](../../active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account.md#permissions-for-exchange-mail-public-folders-preview) 权限|
+|CloudHR| 将“完全控制”应用于“此对象和所有后代对象”上的“后代用户对象”和“创建/删除用户对象”|
+|全部|添加上述所有权限。|
 
 可通过两种方式之一来使用 AADCloudSyncPermissions：
-- [向所有已配置的域授予某些权限](#grant-a-certain-permission-to-all-configured-domains) 
-- [向某个特定域授予某些权限](#grant-a-certain-permission-to-a-specific-domain) 
-## <a name="grant-a-certain-permission-to-all-configured-domains"></a>向所有已配置的域授予某些权限 
+- [向所有已配置的域授予某些权限](#grant-a-certain-permission-to-all-configured-domains)
+- [向某个特定域授予某些权限](#grant-a-certain-permission-to-a-specific-domain)
+
+## <a name="grant-a-certain-permission-to-all-configured-domains"></a>向所有已配置的域授予某些权限
+
 将某些权限授予所有已配置的域将会需要使用企业管理员帐户。
 
-
- ```PowerShell
-Set-AADCloudSyncPermissions -PermissionType “Any mentioned above” -EACredential $credential (prepopulated same as above [$credential = Get-Credential]) 
+```powershell
+Set-AADCloudSyncPermissions -PermissionType "Any mentioned above" -EACredential $credential (prepopulated same as above [$credential = Get-Credential]) 
 ```
 
-## <a name="grant-a-certain-permission-to-a-specific-domain"></a>向某个特定域授予某些权限 
+## <a name="grant-a-certain-permission-to-a-specific-domain"></a>向某个特定域授予某些权限
+
 向某个特定域授予某些权限将至少需要使用你尝试添加的域的域管理员帐户。
 
-
- ```PowerShell
-Set-AADCloidSyncPermissions -PermissionType “Any mentioned above” -TargetDomain “FQDN of domain” (has to be already configured through wizard) -TargetDomaincredential $credential(same as above) 
+```powershell
+Set-AADCloudSyncPermissions -PermissionType "Any mentioned above" -TargetDomain "FQDN of domain" (has to be already configured through wizard) -TargetDomainCredential $credential(same as above) 
 ```
- 
 
-请注意：对于 1。 该凭据至少必须是企业管理员。 
+请注意：对于 1。 该凭据至少必须是企业管理员。
 
-对于“2. 该凭据可以是域管理员或企业管理员。 
-
-  
-
+对于“2. 该凭据可以是域管理员或企业管理员。

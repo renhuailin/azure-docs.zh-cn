@@ -99,13 +99,13 @@
     - name: 安全性
       items:
         - name: 安全基线
-          href: security-baseline.md
-    - name: 安全属性
-      href: ./security-baseline.md
+          href: /security/benchmark/azure/baselines/expressroute-security-baseline?toc=/azure/expressroute/TOC.json
     - name: 基于 ExpressRoute 的 BFD
       href: expressroute-bfd.md
     - name: QoS 要求
       href: expressroute-qos.md
+    - name: 通过 ExpressRoute 路由 Microsoft 365 流量
+      href: using-expressroute-for-microsoft365.md
     - name: 高可用性 - 设计
       href: designing-for-high-availability-with-expressroute.md
     - name: 灾难恢复 - 设计
@@ -144,6 +144,8 @@
           href: expressroute-howto-add-ipv6-powershell.md
     - name: 监视
       items:
+        - name: 网络见解
+          href: expressroute-network-insights.md
         - name: ExpressRoute 监视、指标和警报
           href: expressroute-monitoring-metrics-alerts.md
         - name: 为 ExpressRoute 配置网络性能监视器
@@ -192,7 +194,7 @@
           href: expressroute-asymmetric-routing.md
         - name: 用于 ExpressRoute 的 NAT
           href: expressroute-nat.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 验证 ExpressRoute 连接
           href: expressroute-troubleshooting-expressroute-overview.md
@@ -209,7 +211,7 @@
     - name: Azure PowerShell
       href: /powershell/module/az.network#expressroute
     - name: Azure CLI
-      href: /cli/azure/network/express-route
+      href: /cli/azure/azure-cli-reference-for-network
     - name: REST
       href: /rest/api/expressroute/
     - name: REST（经典）

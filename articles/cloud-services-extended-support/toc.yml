@@ -1,4 +1,4 @@
-- name: 云服务（外延支持）文档
+- name: Azure 云服务（外延支持）文档
   href: index.yml
 - name: 概述
   items:
@@ -51,20 +51,44 @@
           href: schema-cscfg-role.md
         - name: NetworkConfiguration 架构
           href: schema-cscfg-networkconfiguration.md
-    - name: 常见问题
-      href: faq.md
 - name: 操作方式
   items:
-    - name: 应用远程桌面扩展
-      href: enable-rdp.md
-    - name: 应用 WAD 扩展
-      href: enable-wad.md
+    - name: 迁移到 Azure 云服务（外延支持）
+      items:
+        - name: 迁移概述
+          href: in-place-migration-overview.md
+        - name: 迁移技术详细信息
+          href: in-place-migration-technical-details.md
+        - name: 使用 Azure 门户进行迁移
+          href: in-place-migration-portal.md
+        - name: 使用 PowerShell 迁移
+          href: in-place-migration-powershell.md
+        - name: 常见错误和已知问题
+          href: in-place-migration-common-errors.md
+    - name: 应用扩展
+      items:
+        - name: 应用远程桌面扩展
+          href: enable-rdp.md
+        - name: 应用 WAD 扩展
+          href: enable-wad.md
     - name: 启用警报
       href: enable-alerts.md
     - name: 配置缩放
       href: configure-scaling.md
     - name: 证书
       href: certificates-and-key-vault.md
+    - name: 使用门户生成 ARM 模板
+      href: generate-template-portal.md
+    - name: 交换云服务部署
+      href: swap-cloud-service.md
+    - name: 替代 SKU 详细信息
+      href: override-sku.md
+    - name: 疑难解答
+      items:
+        - name: 角色启动失败
+          href: role-startup-failure.md
+        - name: 常见问题
+          href: faq.md
 - name: 示例
   items:
     - name: 示例模板
@@ -88,9 +112,11 @@
     - name: REST
       href: /rest/api/compute/cloudservices
     - name: .NET
-      href: /dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet-preview
+      href: /dotnet/api/overview/azure/virtualmachines/management
     - name: SDK 中 IsInRole 中的声明
       href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Compute/43.0.0-preview'
+    - name: CLI
+      href: 'https://docs.microsoft.com/cli/azure/cloud-service?view=azure-cli-latest'
 - name: 资源
   items:
     - name: Azure 路线图

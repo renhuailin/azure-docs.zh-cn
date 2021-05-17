@@ -17,7 +17,6 @@
         - name: PowerShell
           href: ./linux/quick-create-powershell.md
         - name: ARM 模板
-          displayName: 'Resource Manager, template, json'
           href: ./linux/quick-create-template.md
     - name: 创建 Windows VM
       items:
@@ -28,7 +27,6 @@
         - name: PowerShell
           href: ./windows/quick-create-powershell.md
         - name: ARM 模板
-          displayName: 'Resource Manager, template, json'
           href: ./windows/quick-create-template.md
   expanded: true
 - name: 教程
@@ -99,10 +97,14 @@
       href: ./workloads/sap/get-started.md
     - name: Oracle
       href: ./workloads/oracle/oracle-database-quick-create.md
+    - name: 面向游戏的 Azure
+      href: /gaming/azure/
     - name: Elasticsearch
       href: ./linux/tutorial-elasticsearch.md
     - name: 大型机重新托管
       href: ./workloads/mainframe-rehosting/overview.md
+    - name: Azure 机密计算
+      href: ../confidential-computing/overview.md
     - name: 虚拟机上的 SQL
       href: ../azure-sql/virtual-machines/index.yml
     - name: 高性能计算 (HPC)
@@ -112,18 +114,23 @@
     - name: 大小
       items:
         - name: 概述
+          displayName: 'Sizes, sizing, resize, ACU, compute'
           href: sizes.md
         - name: 更改 VM 大小
           items:
             - name: CLI
+              displayName: 'Change, resize, update size'
               href: ./linux/change-vm-size.md
             - name: 门户或 PowerShell
+              displayName: 'Change, resize, update size'
               href: ./windows/resize-vm.md
         - name: 第 2 代 VM
+          displayName: 'Gen2, generation, gen1'
           href: generation-2.md
         - name: 常规用途
           items:
             - name: 概述
+              displayName: 'General purpose, sizes, size, vm size'
               href: sizes-general.md
             - name: Av2 系列
               href: av2-series.md
@@ -144,13 +151,14 @@
         - name: 计算优化
           items:
             - name: 概述
+              displayName: 'compute optimized, sizes, size, vm size, compute'
               href: sizes-compute.md
             - name: Fsv2 系列
               href: fsv2-series.md
         - name: 内存优化
-          displayName: Esv3 Ev3 Easv4 Eav4 M-series GS G-series DSv2 Dv2
           items:
             - name: 概述
+              displayName: 'memory optimized, sizes, size, vm size, memory'
               href: sizes-memory.md
             - name: Dv2 和 DSv2 系列 11-15
               href: dv2-dsv2-series-memory.md
@@ -173,18 +181,22 @@
         - name: 存储优化
           items:
             - name: 概述
+              displayName: 'storage optimized, sizes, size, vm size, storage'
               href: sizes-storage.md
             - name: Lsv2 系列
               href: lsv2-series.md
             - name: 优化性能
               items:
                 - name: Linux
+                  displayName: 'performance, Linux, storage performance'
                   href: ./linux/storage-performance.md
                 - name: Windows
+                  displayName: 'performance, Windows, storage performance'
                   href: ./windows/storage-performance.md
         - name: GPU - 加速计算
           items:
             - name: 概述
+              displayName: 'GPU, sizes, size, accelerated compute, compute, nvidia'
               href: sizes-gpu.md?context=/azure/virtual-machines/context/context
             - name: NC 系列
               href: nc-series.md
@@ -207,21 +219,27 @@
             - name: 安装 NVIDIA GPU 驱动程序
               items:
                 - name: Linux
+                  displayName: 'NVIDIA GPU drivers, GPU drivers, GPU'
                   href: ./linux/n-series-driver-setup.md
                 - name: Windows
+                  displayName: 'NVIDIA GPU drivers, GPU drivers, GPU'
                   href: ./windows/n-series-driver-setup.md
             - name: 安装 AMD GPU 驱动程序
+              displayName: 'AMD GPU drivers, AMD, GPU drivers, GPU'
               href: ./windows/n-series-amd-driver-setup.md
         - name: FPGA - 加速计算
           items:
             - name: 概述
+              displayName: 'FPGA, accelerated compute, compute, accelerated, gpu'
               href: sizes-field-programmable-gate-arrays.md?context=/azure/virtual-machines/context/context
             - name: NP 系列
               href: np-series.md
+            - name: FPGA 证明服务
+              href: field-programmable-gate-arrays-attestation.md
         - name: 高性能计算
-          displayName: H-series
           items:
             - name: 概述
+              displayName: 'HPC, high performance compute, sizes, size'
               href: sizes-hpc.md
             - name: H 系列
               href: h-series.md
@@ -229,152 +247,178 @@
               href: hb-series.md
             - name: HBv2 系列
               href: hbv2-series.md
+            - name: HBv3 系列
+              href: hbv3-series.md
             - name: HC 系列
               href: hc-series.md
+        - name: 状态和计费
+          href: states-billing.md
         - name: vCPU 配额
           items:
             - name: CLI
+              displayName: 'vCPU, quota, limit'
               href: ./linux/quotas.md
             - name: PowerShell
+              displayName: 'vCPU, quota, limit'
               href: ./windows/quotas.md
         - name: 不带临时磁盘的 Azure VM
           href: azure-vms-no-temp-disk.md
         - name: Azure VM 大小命名约定
           href: vm-naming-conventions.md
         - name: 前几代
-          displayName: D-series Ds-series A-series Basic
+          displayName: 'older, retired, expired, deprecated'
           href: sizes-previous-gen.md
         - name: 独立大小
+          displayName: 'isolated VM, sole-tenant, sole'
           href: isolation.md
         - name: Azure 计算单元 (ACU)
           href: acu.md
         - name: 基准评分
           items:
             - name: Linux
+              displayName: 'Benchmark scores, score, acu'
               href: ./linux/compute-benchmark-scores.md
             - name: Windows
+              displayName: 'Benchmark scores, score, acu'
               href: ./windows/compute-benchmark-scores.md
     - name: 专用主机
       items:
         - name: 概述
+          displayName: 'Dedicated hosts, ADH'
           href: dedicated-hosts.md
         - name: CLI
+          displayName: 'Dedicated hosts, ADH'
           href: ./linux/dedicated-hosts-cli.md
         - name: 门户
+          displayName: 'Dedicated hosts, ADH'
           href: dedicated-hosts-portal.md
         - name: PowerShell
+          displayName: 'Dedicated hosts, ADH'
           href: ./windows/dedicated-hosts-powershell.md
     - name: Azure 现成虚拟机
-      displayName: 'pre-empt, preempt, spot'
       items:
         - name: 概述
+          displayName: 'pre-empt, preempt, spot, low priority, low-priority, Azure Spot Virtual Machines'
           href: spot-vms.md
         - name: CLI
+          displayName: 'pre-empt, preempt, spot, low priority, low-priority, cli'
           href: ./linux/spot-cli.md
         - name: 门户
+          displayName: 'pre-empt, preempt, spot, low priority, low-priority, portal'
           href: spot-portal.md
         - name: PowerShell
+          displayName: 'pre-empt, preempt, spot, low priority, low-priority, PowerShell'
           href: ./windows/spot-powershell.md
         - name: ARM 模板
-          displayName: template ARM
+          displayName: 'pre-empt, preempt, spot, low priority, low-priority, ARM, template'
           href: ./linux/spot-template.md
         - name: 错误代码
+          displayName: 'pre-empt, preempt, spot, low priority, low-priority'
           href: error-codes-spot.md
     - name: Azure 混合权益
       items:
         - name: Linux
+          displayName: 'Azure Hybrid Benefit, Linux, AHB'
           href: ./linux/azure-hybrid-benefit-linux.md
         - name: Windows
-          items:
-            - name: 使用 Azure 混合权益许可证
-              href: ./windows/hybrid-use-benefit-licensing.md
-            - name: 使用用于 Windows 10 的多租户托管权限
-              href: ./windows/windows-desktop-multitenant-hosting-deployment.md
+          displayName: 'Azure Hybrid Benefit, AHB'
+          href: ./windows/hybrid-use-benefit-licensing.md
     - name: 预留实例
       items:
+        - name: 什么是 Azure 预留？
+          displayName: 'Reserved Instances, RI, prepay, flexibility'
+          href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
         - name: 为 VM 预付
+          displayName: 'Reserved Instances, RI, prepay, flexibility'
           href: ./prepay-reserved-vm-instances.md
         - name: 为专用主机预付费
+          displayName: 'Reserved Instances, RI, prepay, flexibility'
           href: prepay-dedicated-hosts-reserved-instances.md
-        - name: 什么是 Azure 预留？
-          href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
         - name: VM 实例大小灵活性
+          displayName: 'Reserved Instances, RI, prepay'
           href: reserved-vm-instance-size-flexibility.md
-    - name: 创建 Linux VM
+    - name: 创建虚拟机
       items:
-        - name: 认可的发行版
-          href: ./linux/endorsed-distros.md
-        - name: 使用 CLI
-          href: ./linux/create-cli-complete.md
-        - name: 使用 ARM 模板
-          displayName: Azure Resource Manager
-          href: ./linux/create-ssh-secured-vm-from-template.md
-        - name: 使用 REST API
-          href: ./linux/create-vm-rest-api.md
-        - name: 使用 CLI 复制 VM
-          href: ./linux/copy-vm.md
-        - name: 通过 Jenkins 生成
-          href: /azure/developer/jenkins/pipeline-with-github-and-docker
-        - name: 将 Jenkins 与 Azure DevOps 集成
-          href: /azure/developer/jenkins/deploy-to-linux-vm-using-azure-devops-services
-        - name: 配置滚动部署策略
-          href: ./linux/tutorial-devops-azure-pipelines-classic.md
-        - name: 配置 Canary 部署策略
-          href: ./linux/tutorial-azure-devops-canary-strategy.md
-        - name: 配置蓝绿部署策略
-          href: ./linux/tutorial-azure-devops-blue-green-strategy.md
-        - name: 将 CI/CD 与 Azure Pipelines (YAML) 配合使用
-          href: ./linux/tutorial-build-deploy-azure-pipelines.md
-        - name: 创建 LAMP 堆栈
-          href: ./linux/tutorial-lamp-stack.md
-        - name: 使用 TLS\SSL 保护 Web 服务器
+        - name: Linux
           items:
-            - name: Linux
+            - name: 认可的分发
+              href: ./linux/endorsed-distros.md
+            - name: CLI
+              displayName: 'Create VM, Create'
+              href: ./linux/create-cli-complete.md
+            - name: ARM 模板
+              displayName: 'Create VM, Create, ARM'
+              href: ./linux/create-ssh-secured-vm-from-template.md
+            - name: REST
+              displayName: 'Create VM, Create, REST'
+              href: ./linux/create-vm-rest-api.md
+            - name: LAMP 堆栈
+              href: ./linux/tutorial-lamp-stack.md
+            - name: 持续交付
+              items:
+                - name: 配置滚动部署策略
+                  href: ./linux/tutorial-devops-azure-pipelines-classic.md
+                - name: 配置 Canary 部署策略
+                  href: ./linux/tutorial-azure-devops-canary-strategy.md
+                - name: 配置蓝绿部署策略
+                  href: ./linux/tutorial-azure-devops-blue-green-strategy.md
+                - name: 将 CI/CD 与 Azure Pipelines (YAML) 配合使用
+                  href: ./linux/tutorial-build-deploy-azure-pipelines.md
+            - name: 使用 TLS\SSL 保护 Web 服务器
               href: ./linux/tutorial-secure-web-server.md
-            - name: Windows
-              href: ./windows/tutorial-secure-web-server.md
-          displayname: SSL TLS
-    - name: 连接到 Linux VM
-      items:
-        - name: 适用于 Linux VM 的 SSH
+        - name: Windows
           items:
-            - name: 在 Linux 或 macOS 上
-              href: ./linux/mac-create-ssh-keys.md
-            - name: 在 Windows 上
-              href: ./linux/ssh-from-windows.md
-            - name: 在门户中
-              href: ssh-keys-portal.md
-            - name: 详细步骤
-              href: ./linux/create-ssh-keys-detailed.md
-        - name: 适用于 Linux 的远程桌面
-          href: ./linux/use-remote-desktop.md
-    - name: 创建 Windows VM
-      items:
-        - name: 使用 C#
-          href: ../azure-resource-manager/templates/deploy-rest.md?context=/azure/virtual-machines/context/context
-        - name: 使用专用磁盘
-          items:
-            - name: 门户
+            - name: 专用磁盘 - 门户
+              displayName: 'Create VM, Create'
               href: ./windows/create-vm-specialized-portal.md
-            - name: PowerShell
+            - name: 专用磁盘 - PowerShell
+              displayName: 'Create VM, Create'
               href: ./windows/create-vm-specialized.md
-        - name: 使用 Chef 创建 VM
-          href: /azure/developer/chef/windows-vm-configure
-        - name: 使用 Java
-          href: ./windows/java.md
-        - name: Python
-          href: /samples/azure-samples/virtual-machines-python-manage/azure-virtual-machines-management-samples---python/?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
-        - name: 使用 ARM 模板
-          displayName: Azure Resource Manager template
-          href: ./windows/ps-template.md
-    - name: 连接到 Windows VM
-      href: ./windows/connect-logon.md
+            - name: ARM 模板
+              displayName: 'Create VM, Create, ARM'
+              href: ./windows/ps-template.md
+            - name: 使用 TLS\SSL 保护 Web 服务器
+              href: ./windows/tutorial-secure-web-server.md
+    - name: 连接到虚拟机
       items:
-        - name: WinRM
-          href: ./windows/winrm.md
+        - name: Linux
+          items:
+            - name: 在本地创建和管理 SSH 密钥
+              href: ./linux/create-ssh-keys-detailed.md
+            - name: 在门户中创建和管理 SSH 密钥
+              href: ssh-keys-portal.md
+            - name: Linux 或 macOS 上的 SSH
+              href: ./linux/mac-create-ssh-keys.md
+            - name: Windows 上的 SSH
+              href: ./linux/ssh-from-windows.md
+            - name: 适用于 Linux 的远程桌面
+              href: ./linux/use-remote-desktop.md
+        - name: Windows
+          items:
+            - name: 适用于 Windows 的远程桌面
+              href: ./windows/connect-logon.md
+            - name: WinRM
+              href: ./windows/winrm.md
+    - name: 时间同步
+      items:
+        - name: Linux
+          displayName: Time sync
+          href: ./linux/time-sync.md
+        - name: Windows
+          displayName: Time sync
+          href: ./windows/time-sync.md
+    - name: 运行命令
+      items:
+        - name: Linux
+          displayName: Run command
+          href: ./linux/run-command.md
+        - name: Windows
+          displayName: Run command
+          href: ./windows/run-command.md
     - name: Extensions
       items:
         - name: 概述
+          displayName: 'Extensions, ext, extension, VM extension'
           href: ./extensions/overview.md
         - name: Linux
           items:
@@ -388,59 +432,77 @@
               href: ./extensions/features-windows.md
             - name: Windows VM 代理
               href: ./extensions/agent-windows.md
-        - name: Azure 磁盘加密
-          items:
-            - name: Linux
-              href: ./extensions/azure-disk-enc-linux.md
-            - name: Windows
-              href: ./extensions/azure-disk-enc-windows.md
-        - name: Azure Key Vault
-          items:
-            - name: Linux
-              href: ./extensions/key-vault-linux.md
-            - name: Windows
-              href: ./extensions/key-vault-windows.md
         - name: 适用于 SQL Server 的 Azure 备份
           items:
             - name: 适用于 SQL Server 的 Azure 备份
               href: ./extensions/backup-azure-sql-server-running-azure-vm.md
+        - name: Azure 磁盘加密
+          items:
+            - name: Linux
+              displayName: 'Azure Disk Encryption, ADE'
+              href: ./extensions/azure-disk-enc-linux.md
+            - name: Windows
+              displayName: 'Azure Disk Encryption, ADE'
+              href: ./extensions/azure-disk-enc-windows.md
+        - name: Azure Key Vault
+          items:
+            - name: Linux
+              displayName: 'Azure Key Vault, key vault, encryption'
+              href: ./extensions/key-vault-linux.md
+            - name: Windows
+              displayName: 'Azure Key Vault, key vault, encryption'
+              href: ./extensions/key-vault-windows.md
+        - name: Azure Policy 来宾配置
+          href: ./extensions/guest-configuration.md
         - name: 自定义脚本
           items:
             - name: Linux - 版本 2
+              displayName: 'Custom Script, extension'
               href: ./extensions/custom-script-linux.md
             - name: Windows
+              displayName: 'Custom Script, extension'
               href: ./extensions/custom-script-windows.md
         - name: 适用于 Windows 的 IaaS 反恶意软件
           href: ./extensions/iaas-antimalware-windows.md
         - name: VM 快照
           items:
             - name: Linux
+              displayName: 'VM snapshot, snapshot'
               href: ./extensions/vmsnapshot-linux.md
             - name: Windows
+              displayName: 'VM snapshot, snapshot'
               href: ./extensions/vmsnapshot-windows.md
         - name: 网络观察程序扩展
           items:
             - name: Linux
+              displayName: 'Network Watcher, extension, Azure Network Watcher'
               href: ./extensions/network-watcher-linux.md
             - name: Windows
+              displayName: 'Network Watcher, extension, Azure Network Watcher'
               href: ./extensions/network-watcher-windows.md
             - name: 更新到最新版本
+              displayName: 'Network Watcher, extension, Azure Network Watcher'
               href: ./extensions/network-watcher-update.md
         - name: InfiniBand 驱动程序
           items:
             - name: Linux
+              displayName: 'InfiniBand Drivers, Infiband, drivers'
               href: ./extensions/hpc-compute-infiniband-linux.md
             - name: Windows
+              displayName: 'InfiniBand Drivers, Infiband, drivers'
               href: ./extensions/hpc-compute-infiniband-windows.md
         - name: NVIDIA GPU 驱动程序
           items:
             - name: Linux
+              displayName: 'NVIDIA GPU Drivers, NVIDIA, GPU, drivers'
               href: ./extensions/hpccompute-gpu-linux.md
             - name: Windows
+              displayName: 'NVIDIA GPU Drivers, NVIDIA, GPU, drivers'
               href: ./extensions/hpccompute-gpu-windows.md
         - name: AMD GPU 驱动程序
           items:
             - name: Windows
+              displayName: 'AMD GPU Drivers, AMD, GPU, drivers'
               href: ./extensions/hpccompute-amd-gpu-windows.md
         - name: Azure Monitor
           items:
@@ -451,25 +513,33 @@
             - name: Log Analytics
               items:
                 - name: Linux
+                  displayName: 'Log Analytics, extension'
                   href: ./extensions/oms-linux.md
                 - name: Windows
+                  displayName: 'Log Analytics, extension'
                   href: ./extensions/oms-windows.md
             - name: 用于 VM 的 Azure Monitor
               items:
                 - name: Linux Dependency Agent
+                  displayName: Azure Monitor
                   href: ./extensions/agent-dependency-linux.md
                 - name: Windows Dependency Agent
+                  displayName: Azure Monitor
                   href: ./extensions/agent-dependency-windows.md
         - name: PowerShell DSC
           href: ./extensions/dsc-overview.md
           items:
             - name: DSC 和 Linux
+              displayName: 'Desired state configuration, dsc'
               href: ./extensions/dsc-linux.md
             - name: DSC 和窗口
+              displayName: 'Desired state configuration, dsc'
               href: ./extensions/dsc-windows.md
             - name: 处理凭据
+              displayName: 'Desired state configuration, dsc'
               href: ./extensions/dsc-credentials.md
             - name: 使用模板
+              displayName: 'Desired state configuration, dsc'
               href: ./extensions/dsc-template.md
         - name: 虚拟机访问
           href: ./extensions/vmaccess.md
@@ -495,113 +565,94 @@
           href: ./extensions/troubleshoot.md
         - name: 启用了 Python 3 的 Linux 系统的问题
           href: ./extensions/issues-using-vm-extensions-python-3.md
-    - name: 从经典部署迁移到 Azure 资源管理器部署
+    - name: 嵌套虚拟化
+      href: /virtualization/hyper-v-on-windows/user-guide/nested-virtualization
+    - name: 迁移到 Azure 资源管理器
       items:
         - name: 从 2023 年 3 月 1 日开始停用
+          displayName: 'classic, migration, classic to ARM, CSES, Cloud Services'
           href: classic-vm-deprecation.md
         - name: 迁移概述
+          displayName: 'classic, migration, classic to ARM, CSES, Cloud Services'
           href: migration-classic-resource-manager-overview.md
         - name: 深入了解迁移
+          displayName: 'classic, migration, classic to ARM, CSES, Cloud Services'
           href: migration-classic-resource-manager-deep-dive.md
         - name: 规划迁移
+          displayName: 'classic, migration, classic to ARM, CSES, Cloud Services'
           href: migration-classic-resource-manager-plan.md
         - name: 使用 CLI 迁移
+          displayName: 'classic, migration, classic to ARM, CSES, Cloud Services'
           href: migration-classic-resource-manager-cli.md
         - name: 使用 PowerShell 迁移
+          displayName: 'classic, migration, classic to ARM, CSES, Cloud Services'
           href: migration-classic-resource-manager-ps.md
         - name: 常见的迁移错误
+          displayName: 'classic, migration, classic to ARM, CSES, Cloud Services'
           href: migration-classic-resource-manager-errors.md
         - name: 用于迁移的社区工具
+          displayName: 'classic, migration, classic to ARM, CSES, Cloud Services'
           href: migration-classic-resource-manager-community-tools.md
         - name: 常见问题解答
+          displayName: 'classic, migration, classic to ARM, CSES, Cloud Services'
           href: migration-classic-resource-manager-faq.md
-    - name: 管理基础知识
-      items:
-        - name: 管理资源
-          items:
-            - name: Linux
-              href: ./linux/tutorial-govern-resources.md
-            - name: Windows
-              href: ./windows/tutorial-govern-resources.md
-        - name: 时间同步
-          items:
-            - name: Linux
-              href: ./linux/time-sync.md
-            - name: Windows
-              href: ./windows/time-sync.md
-        - name: 在 VM 上运行脚本
-          items:
-            - name: 自定义脚本扩展
-              items:
-                - name: Linux
-                  href: ./extensions/custom-script-linux.md
-                - name: Windows
-                  href: ./extensions/custom-script-windows.md
-            - name: 运行命令
-              items:
-                - name: Linux
-                  href: ./linux/run-command.md
-                - name: Windows
-                  href: ./windows/run-command.md
-            - name: 混合 Runbook 辅助角色
-              href: ../automation/automation-hybrid-runbook-worker.md
-            - name: 串行控制台
-              items:
-                - name: Linux
-                  href: ./troubleshooting/serial-console-linux.md
-                - name: Windows
-                  href: ./troubleshooting/serial-console-windows.md
-        - name: 启用嵌套虚拟化
-          href: ./windows/nested-virtualization.md
-        - name: 文件存储
-          items:
-            - name: 使用 SMB 进行 Linux 装载
-              href: ./linux/mount-azure-file-storage-on-linux-using-smb.md
-            - name: 将文件复制到 Linux VM
-              href: ./linux/copy-files-to-linux-vm-using-scp.md
-        - name: 更新和修补程序
-          items:
-            - name: Red Hat 更新基础结构
-              href: ./workloads/redhat/redhat-rhui.md
 - name: 映像
   items:
     - name: 查找 Azure 市场映像
       items:
         - name: CLI
+          displayName: 'Images, imaging, marketplace, publisher, plan, offer, URN, purchase plan, terms'
           href: ./linux/cli-ps-findimage.md
         - name: PowerShell
+          displayName: 'Images, imaging, marketplace, URN, purchase plan, terms'
           href: ./windows/cli-ps-findimage.md
         - name: Windows 客户端映像
+          displayName: 'Images, imaging, marketplace, Windows, Client'
           href: ./windows/client-images.md
+        - name: 用于 Windows 10 的多租户托管权限
+          displayName: 'MTHR, multi-tenant, multitenant, hosting, rights'
+          href: ./windows/windows-desktop-multitenant-hosting-deployment.md
     - name: Linux 自定义映像
       items:
         - name: 概述
+          displayName: 'Linux custom images, custom, image'
           href: ./linux/imaging.md
         - name: Linux 预配
           href: ./linux/provisioning.md
         - name: Linux 分发特定要求
           items:
             - name: 一般步骤
+              displayName: 'Linux distribution specific requirements, generic'
               href: ./linux/create-upload-generic.md
             - name: CentOS
+              displayName: 'Linux distribution specific requirements, CentOS'
               href: ./linux/create-upload-centos.md
             - name: Debian
+              displayName: 'Linux distribution specific requirements, Debian'
               href: ./linux/debian-create-upload-vhd.md
             - name: Flatcar Container Linux
+              displayName: 'Linux distribution specific requirements, Flatcar, Container'
               href: ./linux/flatcar-create-upload-vhd.md
             - name: FreeBSD
+              displayName: 'Linux distribution specific requirements, FreeBSD'
               href: ./linux/freebsd-intro-on-azure.md
             - name: FreeBSD 数据包筛选器
+              displayName: 'Linux distribution specific requirements, FreeBSD'
               href: ./linux/freebsd-pf-nat.md
             - name: Oracle Linux
+              displayName: 'Linux distribution specific requirements, Oracle'
               href: ./linux/oracle-create-upload-vhd.md
             - name: OpenBSD
+              displayName: 'Linux distribution specific requirements, OpenBSD'
               href: ./linux/create-upload-openbsd.md
             - name: Red Hat
+              displayName: 'Linux distribution specific requirements, Redhat'
               href: ./linux/redhat-create-upload-vhd.md
             - name: SUSE
+              displayName: 'Linux distribution specific requirements, SUSE'
               href: ./linux/suse-create-upload-vhd.md
             - name: Ubuntu
+              displayName: 'Linux distribution specific requirements, Ubuntu'
               href: ./linux/create-upload-ubuntu.md
         - name: 使用 cloud-init
           items:
@@ -609,18 +660,25 @@
               href: ./linux/using-cloud-init.md
             - name: 深入探讨
               href: ./linux/cloud-init-deep-dive.md
+              displayname: cloud-init
             - name: 疑难解答
               href: ./linux/cloud-init-troubleshooting.md
+              displayname: cloud-init
             - name: 配置 VM 主机名
               href: ./linux/cloudinit-update-vm-hostname.md
+              displayname: cloud-init
             - name: 更新 VM 中的包
               href: ./linux/cloudinit-update-vm.md
+              displayname: cloud-init
             - name: 在 VM 上添加用户
               href: ./linux/cloudinit-add-user.md
+              displayname: cloud-init
             - name: 配置交换文件
               href: ./linux/cloudinit-configure-swapfile.md
+              displayname: cloud-init
             - name: 运行现有的 Bash 脚本
               href: ./linux/cloudinit-bash-script.md
+              displayname: cloud-init
         - name: 创建不含预配代理的 Linux 映像
           href: ./linux/no-agent.md
         - name: 禁用 Linux 代理预配
@@ -630,78 +688,104 @@
     - name: Windows 自定义映像
       items:
         - name: 准备要上传的 VHD
+          displayName: 'Windows custom images, images, windows, upload, prepare, VHD'
           href: ./windows/prepare-for-upload-vhd-image.md
         - name: 上传 VHD 并创建托管映像
+          displayName: 'Windows custom images, images, windows, upload, prepare, VHD, managed'
           href: ./windows/upload-generalized-managed.md
         - name: 捕获托管映像
+          displayName: 'Windows custom images, images, windows, upload, prepare, VHD, managed, capture'
           href: ./windows/capture-image-resource.md
         - name: 从托管映像创建 VM
+          displayName: 'Windows custom images, images, windows, upload, prepare, VHD, create, managed'
           href: ./windows/create-vm-generalized-managed.md
         - name: Visual Studio
           href: ./windows/using-visual-studio-vm.md
     - name: 共享映像库
       items:
         - name: 概述
+          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
           href: ./shared-image-galleries.md
         - name: CLI
           items:
             - name: 创建库
+              displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
               href: shared-images-cli.md
             - name: 创建映像
               items:
                 - name: 从 VM
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
                   href: image-version-vm-cli.md
                 - name: 从托管磁盘或快照
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
                   href: image-version-snapshot-cli.md
                 - name: 克隆托管映像
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
                   href: image-version-managed-image-cli.md
                 - name: 从另一个库复制
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
                   href: image-version-another-gallery-cli.md
             - name: 创建 VM
               items:
                 - name: 通用
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
                   href: vm-generalized-image-version-cli.md
                 - name: 专用
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
                   href: vm-specialized-image-version-cli.md
             - name: 更新映像资源
+              displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
               href: update-image-resources-cli.md
             - name: 用于共享的应用注册
               items:
                 - name: Linux
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, app registration'
                   href: ./linux/share-images-across-tenants.md
                 - name: Windows
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, app registration'
                   href: ./windows/share-images-across-tenants.md
         - name: PowerShell
           items:
             - name: 创建库
+              displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
               href: shared-images-powershell.md
             - name: 创建映像版本
               items:
                 - name: 从 VM
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, version'
                   href: image-version-vm-powershell.md
                 - name: 从托管磁盘或快照
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, managed disk, snapshot'
                   href: image-version-snapshot-powershell.md
                 - name: 克隆托管映像
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, clone, copy'
                   href: image-version-managed-image-powershell.md
                 - name: 从另一个库复制
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, copy, clone'
                   href: image-version-another-gallery-powershell.md
             - name: 创建 VM
               items:
                 - name: 通用
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, generalized'
                   href: vm-generalized-image-version-powershell.md
                 - name: 专用
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, specialized'
                   href: vm-specialized-image-version-powershell.md
                 - name: 更新映像资源
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
                   href: update-image-resources-powershell.md
                 - name: 用于共享的应用注册
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
                   href: windows/share-images-across-tenants.md
         - name: 门户
           items:
             - name: 创建库、映像和 VM
               items:
                 - name: Linux
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, create'
                   href: ./linux/shared-images-portal.md
                 - name: Windows
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, create'
                   href: ./windows/shared-images-portal.md
         - name: 资源管理器模板
           items:
@@ -713,7 +797,10 @@
               href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
             - name: 从映像版本创建 VM
               href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
+        - name: Ansible
+          href: /azure/developer/ansible/vm-configure-from-azure-shared-image-gallery?tabs=ansible
         - name: 排查共享映像问题
+          displayName: 'Shared Image Gallery, SIG, sig, gallery, image, troubleshooting'
           href: troubleshooting-shared-images.md
         - name: 使用客户管理的密钥
           displayName: 'SSE, CMK, encrypt'
@@ -725,111 +812,148 @@
     - name: 映像生成器（预览版）
       items:
         - name: 概述
+          displayName: 'Image builder, images, building'
           href: image-builder-overview.md
         - name: CLI
           items:
             - name: Linux
+              displayName: 'Image builder, images, building, cli, Linux'
               href: ./linux/image-builder.md
             - name: Windows
+              displayName: 'Image builder, images, building, cli, Windows'
               href: ./windows/image-builder.md
         - name: PowerShell
-          href: ./windows/image-builder-powershell.md
+          items:
+            - name: Windows
+              displayName: 'Image builder, images, building, PowerShell'
+              href: ./windows/image-builder-powershell.md
+            - name: Windows 虚拟桌面
+              href: ./windows/image-builder-virtual-desktop.md
         - name: 安全性
           items:
             - name: Azure Policy 的安全控件
+              displayName: 'Image builder, images, building'
               href: ./security-controls-policy-image-builder.md
         - name: 使用 VNET
           items:
             - name: CLI
+              displayName: 'Image builder, images, building'
               href: ./linux/image-builder-vnet.md
             - name: PowerShell
+              displayName: 'Image builder, images, building'
               href: ./windows/image-builder-vnet.md
         - name: 网络选项
+          displayName: 'Image builder, images, building'
           href: ./linux/image-builder-networking.md
         - name: 配置权限
           items:
             - name: CLI
+              displayName: 'Image builder, images, building'
               href: ./linux/image-builder-permissions-cli.md
             - name: PowerShell
+              displayName: 'Image builder, images, building'
               href: ./linux/image-builder-permissions-powershell.md
         - name: DevOps 任务
+          displayName: 'Image builder, images, building'
           href: ./linux/image-builder-devops-task.md
         - name: 映像生成器模板参考
-          displayName: json
+          displayName: 'Image builder, images, building, json, ARM, template'
           href: ./linux/image-builder-json.md
         - name: 在映像库中生成映像
           items:
             - name: Linux
+              displayName: 'Image builder, images, building'
               href: ./linux/image-builder-gallery.md
             - name: Windows
+              displayName: 'Image builder, images, building'
               href: ./windows/image-builder-gallery.md
         - name: 更新现有映像
           items:
             - name: Linux
+              displayName: 'Image builder, images, building, update'
               href: ./linux/image-builder-gallery-update-image-version.md
             - name: Windows
+              displayName: 'Image builder, images, building, update'
               href: ./windows/image-builder-gallery-update-image-version.md
         - name: 存储脚本
+          displayName: 'Image builder, images, building, scripts'
           href: ./linux/image-builder-user-assigned-identity.md
         - name: 疑难解答
+          displayName: 'Image builder, images, building'
           href: ./linux/image-builder-troubleshoot.md
     - name: 使用 Packer 生成映像
       items:
         - name: Linux
+          displayName: 'Image builder, images, building, packer'
           href: ./linux/build-image-with-packer.md
         - name: Windows
+          displayName: 'Image builder, images, building, packer'
           href: ./windows/build-image-with-packer.md
 - name: 可用性和规模
   items:
     - name: 概述
+      displayName: 'availability and scale, availability, scale, autoscale'
       href: availability.md
     - name: 可用性集
       items:
         - name: 概述
+          displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
           href: availability-set-overview.md
         - name: CLI
+          displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
           href: ./linux/tutorial-availability-sets.md
         - name: PowerShell
+          displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
           href: ./windows/tutorial-availability-sets.md
         - name: 创建可用性集
+          displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
           href: ./windows/change-availability-set.md
     - name: 可用性区域
       items:
         - name: 概述
+          displayName: 'availability and scale, availability, scale, autoscale, availability zones, AV zones'
           href: ../availability-zones/az-overview.md?context=/azure/virtual-machines/context/context
         - name: CLI
+          displayName: 'availability and scale, availability, scale, autoscale, availability zones, AV zones'
           href: ./linux/create-cli-availability-zone.md
         - name: PowerShell
+          displayName: 'availability and scale, availability, scale, autoscale, availability zones, AV zones'
           href: ./windows/create-powershell-availability-zone.md
         - name: 门户
+          displayName: 'availability and scale, availability, scale, autoscale, availability zones, AV zones'
           href: ./windows/create-portal-availability-zone.md
     - name: 邻近放置组
       items:
         - name: 概述
+          displayName: 'proximity placement groups, ppg'
           href: co-location.md
         - name: CLI
+          displayName: 'proximity placement groups, ppg'
           href: ./linux/proximity-placement-groups.md
         - name: PowerShell
+          displayName: 'proximity placement groups, ppg'
           href: ./windows/proximity-placement-groups.md
         - name: 门户
+          displayName: 'proximity placement groups, ppg'
           href: ./windows/proximity-placement-groups-portal.md
     - name: 虚拟机规模集
       items:
         - name: 概述
+          displayName: 'virtual machine scale sets, VMSS, VM scale set, scale set'
           href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
         - name: 自动缩放
           href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md?context=/azure/virtual-machines/context/context
         - name: 业务流程模式
+          displayName: 'VMSS, flex, scale set, scale, virtual machine sacle set'
           href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md?context=/azure/virtual-machines/context/context
     - name: 了解 VM 重启
       href: understand-vm-reboots.md
-    - name: 状态和计费
-      href: states-billing.md
     - name: Azure 区域
       href: regions.md
 - name: 磁盘
   items:
-    - name: 托管磁盘简介
+    - name: 概述
+      displayName: 'managed disks, introduction to managed disks'
       href: managed-disks-overview.md
     - name: 选择适用于 IaaS VM 的磁盘类型
       href: disks-types.md
@@ -845,46 +969,63 @@
           items:
             - name: 服务器端加密概述
               href: disk-encryption.md
+              displayname: 'Server side encryption, encryption, ADE'
             - name: 启用客户管理的密钥
               items:
                 - name: 门户
                   href: disks-enable-customer-managed-keys-portal.md
+                  displayname: 'Server side encryption, encryption, ADE'
                 - name: PowerShell
                   href: windows/disks-enable-customer-managed-keys-powershell.md
+                  displayname: 'Server side encryption, encryption, ADE'
                 - name: CLI
                   href: linux/disks-enable-customer-managed-keys-cli.md
+                  displayname: 'Server side encryption, encryption, ADE'
             - name: 在主机上启用加密
               items:
                 - name: 门户
                   href: disks-enable-host-based-encryption-portal.md
+                  displayname: 'Encryption at host, encryption, ADE'
                 - name: PowerShell
                   href: windows/disks-enable-host-based-encryption-powershell.md
+                  displayname: 'Encryption at host, encryption, ADE'
                 - name: CLI
                   href: linux/disks-enable-host-based-encryption-cli.md
+                  displayname: 'Encryption at host, encryption, ADE'
             - name: 启用静态双重加密
               items:
                 - name: 门户
                   href: disks-enable-double-encryption-at-rest-portal.md
+                  displayname: 'double encryption at rest, encryption, ADE'
                 - name: PowerShell
                   href: windows/disks-enable-double-encryption-at-rest-powershell.md
+                  displayname: 'double encryption at rest, encryption, ADE'
                 - name: CLI
                   href: linux/disks-enable-double-encryption-at-rest-cli.md
+                  displayname: 'double encryption at rest, encryption, ADE'
         - name: Azure 磁盘加密
           items:
             - name: Linux
               items:
                 - name: 概述
                   href: ./linux/disk-encryption-overview.md
+                  displayname: 'Azure disk encryption, encryption, ADE'
                 - name: 快速入门
                   items:
                     - name: Azure CLI
                       href: ./linux/disk-encryption-cli-quickstart.md
+                      displayname: 'Azure disk encryption, encryption, ADE'
                     - name: Azure PowerShell
                       href: ./linux/disk-encryption-powershell-quickstart.md
+                      displayname: 'Azure disk encryption, encryption, ADE'
                     - name: Azure 门户
                       href: ./linux/disk-encryption-portal-quickstart.md
+                      displayname: 'Azure disk encryption, encryption, ADE'
+                - name: 适用于 Linux 的磁盘加密方案
+                  href: ./linux/disk-encryption-linux.md
                 - name: 用于 Azure 磁盘加密的密钥保管库
                   href: ./linux/disk-encryption-key-vault.md
+                  displayname: 'Azure disk encryption, encryption, ADE, Key vault'
                 - name: 磁盘加密示例脚本
                   href: ./linux/disk-encryption-sample-scripts.md
                 - name: 隔离网络上的磁盘加密
@@ -903,14 +1044,15 @@
                   items:
                     - name: 概述
                       href: ./linux/disk-encryption-overview-aad.md
+                      displayname: 'Azure disk encryption, encryption, ADE, Key vault, previous version'
                     - name: 用于 Azure 磁盘加密的密钥保管库
                       href: ./linux/disk-encryption-key-vault-aad.md
                     - name: 适用于 Linux 的磁盘加密方案
                       href: ./linux/disk-encryption-linux-aad.md
             - name: Windows
               items:
-                - name: 适用于 Windows 的磁盘加密方案
-                  href: ./windows/disk-encryption-windows.md
+                - name: 概述
+                  href: ./windows/disk-encryption-overview.md
                 - name: 快速入门
                   items:
                     - name: Azure CLI
@@ -919,6 +1061,8 @@
                       href: ./windows/disk-encryption-powershell-quickstart.md
                     - name: Azure 门户
                       href: ./windows/disk-encryption-portal-quickstart.md
+                - name: 适用于 Windows 的磁盘加密方案
+                  href: ./windows/disk-encryption-windows.md
                 - name: 用于 Azure 磁盘加密的密钥保管库
                   href: ./windows/disk-encryption-key-vault.md
                 - name: 磁盘加密示例脚本
@@ -939,28 +1083,39 @@
       items:
         - name: 超级磁盘
           href: disks-enable-ultra-ssd.md
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: 虚拟机和磁盘性能
           href: disks-performance.md
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: 磁盘存储预留
           href: ../cost-management-billing/reservations/understand-disk-reservations.md?context=/azure/virtual-machines/context/context
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: 预留磁盘存储
           href: disks-reserved-capacity.md
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: 高性能设计
           href: premium-storage-performance.md
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: 磁盘相关指标
           href: disks-metrics.md
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: 磁盘突发模型
           href: disk-bursting.md
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: 启用按需突发
           href: disks-enable-bursting.md
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: 磁盘性能层
           href: disks-change-performance.md
+          displayname: 'Performance, cost, perf, disks, disk'
         - name: 更改磁盘性能层
           items:
             - name: CLI 和 PowerShell
               href: disks-performance-tiers.md
+              displayname: 'Performance, cost, perf, disks, disk, change disk performance tier'
             - name: 门户
               href: disks-performance-tiers-portal.md
+              displayname: 'Performance, cost, perf, disks, disk, change disk performance tier'
         - name: 启用写入加速器
           href: how-to-enable-write-accelerator.md
         - name: 对磁盘进行基准检验
@@ -974,6 +1129,7 @@
         - name: Azure 磁盘备份
           items:
             - name: 概述
+              displayName: 'Azure disk backup, backup'
               href: ../backup/disk-backup-overview.md?context=/azure/virtual-machines/context/context
             - name: 配置 Azure 磁盘备份
               href: ../backup/backup-managed-disks.md?context=/azure/virtual-machines/context/context
@@ -994,50 +1150,64 @@
         - name: 将磁盘转换为另一种磁盘类型
           items:
             - name: CLI
+              displayName: Convert disk to another disk type
               href: ./linux/convert-disk-storage.md
             - name: PowerShell
+              displayName: Convert disk to another disk type
               href: ./windows/convert-disk-storage.md
         - name: 使用 Azure Site Recovery 迁移到高级 SSD
           items:
             - name: Linux
+              displayName: Migrate to premium SSDs with Azure Site Recovery
               href: ./linux/migrate-to-premium-storage-using-azure-site-recovery.md
             - name: Windows
+              displayName: Migrate to premium SSDs with Azure Site Recovery
               href: ./windows/migrate-to-premium-storage-using-azure-site-recovery.md
         - name: 迁移到托管磁盘
           href: ./windows/migrate-to-managed-disks.md
         - name: 非托管 VM 到托管磁盘
           items:
             - name: CLI
+              displayName: Unmanaged VM to Managed Disks
               href: ./linux/convert-unmanaged-to-managed-disks.md
             - name: PowerShell
+              displayName: Unmanaged VM to Managed Disks
               href: ./windows/convert-unmanaged-to-managed-disks.md
     - name: 添加数据磁盘
       items:
         - name: Linux
           items:
             - name: Azure CLI
+              displayName: 'add a data disk, data disk'
               href: ./linux/add-disk.md
             - name: Azure 门户
+              displayName: 'add a data disk, data disk'
               href: ./linux/attach-disk-portal.md
         - name: Windows
           items:
             - name: Azure PowerShell
+              displayName: 'add a data disk, data disk'
               href: ./windows/attach-disk-ps.md
             - name: Azure 门户
+              displayName: 'add a data disk, data disk'
               href: ./windows/attach-managed-disk-portal.md
             - name: 更改临时磁盘驱动器号
               href: ./windows/change-drive-letter.md
     - name: 分离磁盘
       items:
         - name: Linux
+          displayName: detach a disk
           href: ./linux/detach-disk.md
         - name: Windows
+          displayName: detach a disk
           href: ./windows/detach-disk.md
-    - name: 扩展 OS 磁盘
+    - name: 扩展磁盘
       items:
         - name: Linux
+          displayName: Expand a disk - Linux
           href: ./linux/expand-disks.md
         - name: Windows
+          displayName: Expand a disk - Windows
           href: ./windows/expand-os-disk.md
     - name: 管理存储
       items:
@@ -1057,8 +1227,10 @@
             - name: 下载 VHD
               items:
                 - name: Linux
+                  displayName: Download a VHD
                   href: ./linux/download-vhd.md
                 - name: Windows
+                  displayName: Download a VHD
                   href: ./windows/download-vhd.md
         - name: 使用存储资源管理器管理磁盘
           href: disks-use-storage-explorer-managed-disks.md
@@ -1070,13 +1242,20 @@
           href: ./linux/azure-to-guest-disk-mapping.md
         - name: 将托管磁盘映射到来宾磁盘 - Windows
           href: ./windows/azure-to-guest-disk-mapping.md
+        - name: 文件存储
+          items:
+            - name: 将文件复制到 Linux VM
+              href: ./linux/copy-files-to-linux-vm-using-scp.md
         - name: 查找未附加的磁盘
           items:
             - name: CLI
+              displayName: Find unattached disks
               href: ./linux/find-unattached-disks.md
             - name: PowerShell
+              displayName: Find unattached disks
               href: ./windows/find-unattached-disks.md
             - name: 门户
+              displayName: Find unattached disks
               href: disks-find-unattached-portal.md
         - name: 磁盘常见问题解答
           href: faq-for-disks.md
@@ -1085,52 +1264,60 @@
         - name: CLI
           items:
             - name: 从 VHD 创建托管磁盘
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd
             - name: 从快照创建托管磁盘
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-snapshot.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd
             - name: 将托管磁盘复制到相同或不同的订阅
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md'
+              href: 'https://github.com/Azure-Samples/azure-cli-samples/blob/master/virtual-machine/copy-managed-disks-to-same-or-different-subscription/copy-managed-disks-to-same-or-different-subscription.sh'
             - name: 将快照复制到相同或不同的订阅
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-same-or-different-subscription.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription
             - name: 将快照作为 VHD 导出到存储帐户
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-storage-account.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account
             - name: 将托管磁盘作为 VHD 导出到存储帐户
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account
         - name: PowerShell
           items:
             - name: 从 VHD 创建托管磁盘
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd
             - name: 从快照创建托管磁盘
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-snapshot.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot
             - name: 将快照复制到相同或不同的订阅
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-same-or-different-subscription.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription
             - name: 将快照作为 VHD 导出到存储帐户
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-storage-account.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account
             - name: 将托管磁盘作为 VHD 导出到存储帐户
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd
             - name: 从 VHD 创建快照
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd
 - name: 网络
   items:
     - name: 概述
+      displayName: Networking Overview
       href: network-overview.md
     - name: 创建虚拟网络
       href: ../virtual-network/quick-create-cli.md?context=/azure/virtual-machines/context/context
     - name: 打开 VM 的端口
       items:
         - name: CLI
+          displayName: Open ports to a VM
           href: ./linux/nsg-quickstart.md
         - name: PowerShell
+          displayName: Open ports to a VM
           href: ./windows/nsg-quickstart-powershell.md
         - name: 门户
+          displayName: Open ports to a VM
           href: ./windows/nsg-quickstart-portal.md
     - name: 分配公共 IP 地址
       href: ../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?context=/azure/virtual-machines/context/context
+    - name: 使用自定义域名
+      href: custom-domain.md
     - name: 使用多个 NIC
       items:
         - name: 使用 CLI 的 Linux
+          displayName: Use multipe NICs
           href: ./linux/multiple-nics.md
         - name: 使用 PowerShell 的 Windows
+          displayName: Use multipe NICs
           href: ./windows/multiple-nics.md
     - name: 使用加速网络
       href: ../virtual-network/create-vm-accelerated-networking-cli.md?context=/azure/virtual-machines/context/context
@@ -1145,21 +1332,25 @@
 - name: 安全性
   items:
     - name: 概述
+      displayName: Security Overview
       href: ../security/fundamentals/virtual-machines-overview.md?context=/azure/virtual-machines/context/context
     - name: Azure 安全中心
       href: ../security-center/security-center-introduction.md
     - name: 安全基线
       items:
         - name: Linux
-          href: ./linux/security-baseline.md
+          href: /security/benchmark/azure/baselines/virtual-machines-linux-security-baseline?context=/azure/virtual-machines/context/context
+          displayname: Security baselines
         - name: Windows
-          href: ./windows/security-baseline.md
+          displayName: Security baselines
+          href: /security/benchmark/azure/baselines/virtual-machines-windows-security-baseline?context=/azure/virtual-machines/context/context
     - name: 建议
       href: security-recommendations.md
     - name: 受信任的启动
       items:
         - name: 概述
           href: trusted-launch.md
+          DisplayName: 'Trusted Launch, shielded VM'
         - name: 使用门户进行部署
           href: trusted-launch-portal.md
     - name: 实时访问
@@ -1167,6 +1358,7 @@
     - name: 策略
       items:
         - name: 概述
+          displayName: Azure Policy
           href: security-policy.md
         - name: 控件（按策略）
           displayName: 'regulatory, compliance, standards, domains'
@@ -1176,32 +1368,42 @@
         - name: 使用策略
           items:
             - name: Linux
+              displayName: Use policies
               href: ./linux/policy.md
             - name: Windows
+              displayName: Use policies
               href: ./windows/policy.md
     - name: Bastion
       items:
         - name: 概述
+          displayName: Bastion Overview
           href: ../bastion/bastion-overview.md
         - name: 创建 Bastion 主机
           items:
             - name: 门户
+              displayName: Create a Bastion host
               href: ../bastion/tutorial-create-host-portal.md
             - name: PowerShell
+              displayName: Create a Bastion host
               href: ../bastion/bastion-create-host-powershell.md
             - name: CLI
+              displayName: Create a Bastion host
               href: ../bastion/create-host-cli.md
             - name: Bastion SSH 连接
+              displayName: 'Create a Bastion host, SSH, connect'
               href: ../bastion/bastion-connect-vm-ssh.md
             - name: Bastion RDP 连接
+              displayName: 'Create a Bastion host, connect, remote desktop, rdp'
               href: ../bastion/bastion-connect-vm-rdp.md
         - name: 使用访问控制
           href: ../role-based-access-control/overview.md
         - name: 创建密钥保管库
           items:
             - name: CLI
+              displayName: Create a key vault
               href: ./linux/key-vault-setup.md
             - name: PowerShell
+              displayName: create a key vault
               href: ./windows/key-vault-setup.md
     - name: 缓解推理执行
       href: mitigate-se.md
@@ -1209,110 +1411,153 @@
       displayName: Azure AD
       items:
         - name: Red Hat Enterprise Linux
+          displayName: 'Linux VM to Azure Active Directory, Red Hat'
           href: ../active-directory-domain-services/join-rhel-linux-vm.md
         - name: CentOS
+          displayName: 'Linux VM to Azure Active Directory, CentOS'
           href: ../active-directory-domain-services/join-centos-linux-vm.md
         - name: Ubuntu
+          displayName: 'Linux VM to Azure Active Directory, Ubuntu'
           href: ../active-directory-domain-services/join-ubuntu-linux-vm.md
     - name: 配置托管标识
       items:
         - name: 门户
+          displayName: Configured managed identies
           href: ../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md?context=/azure/virtual-machines/context/context
         - name: CLI
+          displayName: Configured managed identies
           href: ../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md?context=/azure/virtual-machines/context/context
         - name: PowerShell
+          displayName: Configured managed identies
           href: ../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md?context=/azure/virtual-machines/context/context
         - name: Azure Resource Manager 模板
-          displayName: ARM
+          displayName: Configured managed identies
           href: ../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md?context=/azure/virtual-machines/context/context
         - name: REST
+          displayName: Configured managed identies
           href: ../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md?context=/azure/virtual-machines/context/context
         - name: Azure SDK
+          displayName: Configured managed identies
           href: ../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md?context=/azure/virtual-machines/context/context
     - name: Linux Active Directory 登录
       href: ./linux/login-using-aad.md
-- name: 维护和更新
+- name: 更新和维护
   items:
     - name: 概述
-      href: maintenance-and-updates.md
-    - name: 自动 VM 来宾修补（预览）
-      href: automatic-vm-guest-patching.md
-    - name: 自动升级扩展（预览）
-      href: automatic-extension-upgrade.md
-    - name: 维护控制
+      displayName: Updates and maintenance
+      href: updates-maintenance-overview.md
+    - name: 自动 OS 映像升级
       items:
+        - name: 概述
+          displayName: 'Automatic OS image upgrade, image, upgrade, OS'
+          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?context=/azure/virtual-machines/context/context
+        - name: OS 映像更新的维护控制
+          items:
+            - name: 概览（预览）
+              displayName: 'Maintenance control for OS image upgrade, OS, image, upgrade'
+              href: virtual-machine-scale-sets-maintenance-control.md
+            - name: PowerShell（预览版）
+              displayName: 'Maintenance control for OS image upgrade, OS, image, upgrade'
+              href: virtual-machine-scale-sets-maintenance-control-powershell.md
+    - name: 自动 VM 来宾修补（预览版）
+      items:
+        - name: 概述
+          displayName: 'Automatic VM guest patching, guest, OS, patching'
+          href: automatic-vm-guest-patching.md
+        - name: 热补丁
+          displayName: 'patching, patch, update'
+          href: ../automanage/automanage-hotpatch.md?context=/azure/virtual-machines/context/context
+    - name: 自动扩展升级（预览版）
+      href: automatic-extension-upgrade.md
+    - name: Azure 自动化中的更新管理
+      href: ../automation/update-management/overview.md?context=/azure/virtual-machines/context/context
+    - name: 维护
+      items:
+        - name: 概述
+          displayName: 'Maintenance, VM maintenance'
+          href: maintenance-and-updates.md
         - name: 维护通知
           items:
             - name: 概述
+              displayName: Maintenance notifications
               href: maintenance-notifications.md
             - name: CLI
+              displayName: Maintenance notifications
               href: maintenance-notifications-cli.md
             - name: 门户
+              displayName: Maintenance notifications
               href: maintenance-notifications-portal.md
             - name: PowerShell
+              displayName: Maintenance notifications
               href: maintenance-notifications-powershell.md
-        - name: 平台维护
+        - name: 维护控制
           items:
             - name: 概述
+              displayName: Maintenance control
               href: maintenance-control.md
             - name: CLI
+              displayName: Maintenance control
               href: maintenance-control-cli.md
             - name: PowerShell
+              displayName: Maintenance control
               href: maintenance-control-powershell.md
             - name: 门户
+              displayName: Maintenance control
               href: maintenance-control-portal.md
         - name: 计划事件
           items:
             - name: Linux
               href: ./linux/scheduled-events.md
+              displayname: Scheduled events
             - name: Windows
+              displayName: Scheduled events
               href: ./windows/scheduled-events.md
         - name: 跟踪和更新 VM
           items:
             - name: Linux
+              displayName: 'update, track'
               href: ./linux/tutorial-config-management.md
             - name: Windows
+              displayName: 'update, track'
               href: ./windows/tutorial-config-management.md
-        - name: 虚拟机规模集 OS 映像升级
-          items:
-            - name: 自动 OS 升级
-              href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?context=/azure/virtual-machines/context/context
-            - name: 维护控制
-              items:
-                - name: 概览（预览）
-                  href: virtual-machine-scale-sets-maintenance-control.md
-                - name: PowerShell（预览版）
-                  href: virtual-machine-scale-sets-maintenance-control-powershell.md
 - name: 监视
   items:
     - name: 概述
+      displayName: 'Monitoring Overview, monitoring'
       href: ../azure-monitor/vm/monitor-vm-azure.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
     - name: 监视 VM
       items:
         - name: Windows
+          displayName: Monitoring VMs
           href: ./windows/tutorial-monitor.md
     - name: 代理
       items:
         - name: 代理概述
           href: ../azure-monitor/agents/agents-overview.md?context=/azure/virtual-machines/context/context
         - name: 常见问题解答
+          displayName: Agents
           href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context#agents
         - name: Azure 诊断扩展
           items:
             - name: 概述
+              displayName: Azure Diagnostics extension
               href: ../azure-monitor/agents/diagnostics-extension-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Linux 诊断扩展
               items:
                 - name: 4.0 版
+                  displayName: Linux diagnostics extension
                   href: ../virtual-machines/extensions/diagnostics-linux.md?context=/azure/virtual-machines/context/context
                 - name: 版本 3.0
+                  displayName: Linux diagnostics extension
                   href: ../virtual-machines/extensions/diagnostics-linux-v3.md?context=/azure/virtual-machines/context/context
                 - name: 使用 Telegraf 收集指标
+                  displayName: Linux diagnostics extension
                   href: ../azure-monitor/essentials/collect-custom-metrics-linux-telegraf.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                   displayname: diagnostics extension
         - name: Log Analytics 代理
           items:
             - name: 概述
+              displayName: Log Analytics Agent
               href: ../azure-monitor/agents/log-analytics-agent.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Linux 代理
               href: ../azure-monitor/agents/agent-linux.md?context=/azure/virtual-machines/context/context
@@ -1325,62 +1570,83 @@
             - name: 数据源
               items:
                 - name: 概述
+                  displayName: 'Data sources, log Analytics'
                   href: ../azure-monitor/agents/agent-data-sources.md?context=/azure/virtual-machines/context/context
                 - name: 自定义 JSON 数据
+                  displayName: 'Data sources, log Analytics'
                   href: ../azure-monitor/agents/data-sources-json.md?context=/azure/virtual-machines/context/context
-                - name: collectd 性能数据
+                - name: 收集性能数据
+                  displayName: 'Data sources, log Analytics'
                   href: ../azure-monitor/agents/data-sources-collectd.md?context=/azure/virtual-machines/context/context
                 - name: Syslog
+                  displayName: 'Data sources, log Analytics'
                   href: ../azure-monitor/agents/data-sources-syslog.md?context=/azure/virtual-machines/context/context
                 - name: 性能计数器
+                  displayName: 'Data sources, log Analytics'
                   href: ../azure-monitor/agents/data-sources-performance-counters.md?context=/azure/virtual-machines/context/context
                 - name: Linux 应用程序性能
+                  displayName: 'Data sources, log Analytics'
                   href: ../azure-monitor/agents/data-sources-linux-applications.md?context=/azure/virtual-machines/context/context
                 - name: 自定义日志
+                  displayName: 'Data sources, log Analytics'
                   href: ../azure-monitor/agents/data-sources-custom-logs.md?context=/azure/virtual-machines/context/context
                 - name: 自定义字段
+                  displayName: 'Data sources, log Analytics'
                   href: ../azure-monitor/logs/custom-fields.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
         - name: 疑难解答
           items:
             - name: Log Analytics VM 扩展
               href: ../azure-monitor/visualize/vmext-troubleshoot.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
-              displayname: 'troubleshoot, troubleshooting'
             - name: Log Analytics Linux 代理
               href: ../azure-monitor/agents/agent-linux-troubleshoot.md?context=/azure/virtual-machines/context/context
-              displayname: 'troubleshoot, troubleshooting'
         - name: 用于 VM 的 Azure Monitor
           items:
             - name: 概述
+              displayName: Azure monitor for VMs
               href: ../azure-monitor/vm/vminsights-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: 正式版常见问题解答
+              displayName: Azure monitor for VMs
               href: ../azure-monitor/vm/vminsights-ga-release-faq.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: 常见问题解答
+              displayName: Azure monitor for VMs
               href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context
             - name: 启用监视
               items:
                 - name: 启用监视概述
+                  displayName: 'Azure monitor, monitoring'
                   href: ../azure-monitor/vm/vminsights-enable-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: 为单个 Azure VM 启用
+                  displayName: 'Azure monitor, monitoring'
                   href: ../azure-monitor/vm/vminsights-enable-portal.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: 使用 Azure Policy 启用
+                  displayName: 'Azure monitor, monitoring'
                   href: ../azure-monitor/vm/vminsights-enable-policy.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: 使用 Azure PowerShell 启用
+                  displayName: 'Azure monitor, monitoring'
                   href: ../azure-monitor/vm/vminsights-enable-powershell.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: 为混合环境启用
+                  displayName: 'Azure monitor, monitoring'
                   href: ../azure-monitor/vm/vminsights-enable-hybrid.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: 映射依赖项
+              displayName: 'Azure monitor, monitoring'
               href: ../azure-monitor/vm/vminsights-maps.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: 监视性能
+              displayName: 'Azure monitor, monitoring'
               href: ../azure-monitor/vm/vminsights-performance.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: 使用日志查询分析数据
+              displayName: 'Azure monitor, monitoring'
               href: ../azure-monitor/vm/vminsights-log-search.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: 通过工作簿实现数据可视化
+              displayName: 'Azure monitor, monitoring'
               href: ../azure-monitor/vm/vminsights-workbooks.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: 创建警报规则
+              displayName: 'Azure monitor, monitoring'
               href: ../azure-monitor/vm/vminsights-alerts.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: 升级依赖项代理
+              displayName: 'Azure monitor, monitoring'
               href: ../azure-monitor/vm/vminsights-dependency-agent-maintenance.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: 禁用监视
+              displayName: 'Azure monitor, monitoring'
               href: ../azure-monitor/vm/vminsights-optout.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
     - name: VM 使用情况
       href: vm-usage.md
@@ -1388,17 +1654,23 @@
       items:
         - name: CLI
           href: tag-cli.md
+          displayname: 'tag, tagging, tag a vm'
         - name: 门户
           href: tag-portal.md
+          displayname: 'tag, tagging, tag a vm'
         - name: PowerShell
           href: tag-powershell.md
+          displayname: 'tag, tagging, tag a vm'
         - name: 模板
           href: tag-template.md
+          displayname: 'tag, tagging, tag a vm'
     - name: 监视元数据
       items:
         - name: CLI
+          displayName: Monitor metadata
           href: ./linux/instance-metadata-service.md
         - name: PowerShell
+          displayName: Monitor metadata
           href: ./windows/instance-metadata-service.md
     - name: 使用 REST 获取使用情况指标
       href: ./linux/metrics-vm-usage-rest.md
@@ -1407,6 +1679,7 @@
 - name: 备份和恢复
   items:
     - name: 概述
+      displayName: Backup and recovery
       href: backup-recovery.md
     - name: 服务中断
       href: virtual-machines-disaster-recovery-guidance.md
@@ -1414,51 +1687,63 @@
       items:
         - name: 概述
           href: ../backup/backup-azure-vms-introduction.md
+          dispayName: 'backup VMs, Azure Backup, recovery'
         - name: 快速入门
           items:
             - name: CLI
               href: ../backup/quick-backup-vm-cli.md
+              dispayName: 'backup VMs, Azure Backup, recovery'
             - name: PowerShell
               href: ../backup/quick-backup-vm-powershell.md
+              dispayName: 'backup VMs, Azure Backup, recovery'
             - name: 门户
               href: ../backup/quick-backup-vm-portal.md
+              dispayName: 'backup VMs, Azure Backup, recovery'
             - name: 模板
               href: ../backup/quick-backup-vm-template.md
+              dispayName: 'backup VMs, Azure Backup, recovery'
         - name: 备份多个 VM
           href: ../backup/tutorial-backup-vm-at-scale.md
         - name: 还原选项
           href: ../backup/backup-azure-arm-restore-vms.md
         - name: 支持矩阵
           href: ../backup/backup-support-matrix-iaas.md
+          dispayName: 'backup VMs, Azure Backup, recovery'
         - name: 定价
           href: ../backup/azure-backup-pricing.md
+          dispayName: 'backup VMs, Azure Backup, recovery'
         - name: 常见问题解答
           href: ../backup/backup-azure-vm-backup-faq.yml
+          dispayName: 'backup VMs, Azure Backup, recovery'
     - name: 灾难恢复
       items:
         - name: 概述
+          displayName: Disaster Recovery Overview
           href: ../site-recovery/site-recovery-overview.md
         - name: 启用灾难恢复
           items:
             - name: Linux
+              displayName: Enable disaster recovery
               href: ./linux/tutorial-disaster-recovery.md
             - name: Windows
+              displayName: Enable disaster recovery
               href: ./windows/tutorial-disaster-recovery.md
-        - name: 为 VM 启用灾难恢复
-          href: ../site-recovery/azure-to-azure-tutorial-enable-replication.md
-        - name: 为 VM 运行灾难恢复演练
-          href: ../site-recovery/azure-to-azure-tutorial-dr-drill.md
         - name: 将 VM 故障转移到另一个区域
           href: ../site-recovery/azure-to-azure-tutorial-failover-failback.md
+        - name: 将 VM 故障回复到主要区域
+          href: ../site-recovery/azure-to-azure-tutorial-failback.md
     - name: 移动和迁移 VM
       items:
         - name: 更改订阅或资源组
           items:
             - name: CLI
+              displayName: Change subscription or resource group
               href: ./linux/move-vm.md
             - name: PowerShell
+              displayName: Change subscription or resource group
               href: ./windows/move-vm.md
             - name: 更改市场 VM 的订阅
+              displayName: Change subscription or resource group
               href: azure-cli-change-subscription-marketplace.md
         - name: 将 VM 移到另一个区域
           href: ../site-recovery/azure-to-azure-tutorial-migrate.md
@@ -1475,12 +1760,16 @@
               href: ./windows/aws-to-azure.md
             - name: 上传本地 VM
               href: ./linux/upload-vhd.md
+              displayname: Migrate from Amazon Web Services (AWS) to Azure
             - name: 使用 Azure Site Recovery
               href: ../site-recovery/migrate-overview.md?context=/azure/virtual-machines/context/context
 - name: 基础结构自动化
   items:
     - name: 概述
+      displayName: Infrastrucure automation overview
       href: infrastructure-automation.md
+    - name: 用户数据
+      href: user-data.md
     - name: 自定义数据
       href: custom-data.md
     - name: Ansible
@@ -1491,14 +1780,16 @@
       href: /azure/developer/jenkins/
     - name: Azure DevOps
       href: ./linux/tutorial-azure-devops-blue-green-strategy.md
-- name: 故障排除
-  href: /troubleshoot/azure/virtual-machines/welcome-virtual-machines
+- name: 支持和疑难解答
+  href: vm-support-help.md
 - name: 资源
   items:
     - name: 云采用框架
       href: /azure/cloud-adoption-framework/get-started/
     - name: 体系结构中心
       href: /azure/architecture/
+    - name: 迁移工具
+      href: /azure/cloud-adoption-framework/migrate/azure-migration-guide/?tabs=MigrationTools
     - name: Microsoft 问答
       href: /answers/topics/azure-virtual-machines.html
     - name: Azure 快速入门模板

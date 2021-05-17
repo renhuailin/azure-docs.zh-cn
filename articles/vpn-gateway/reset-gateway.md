@@ -1,24 +1,24 @@
 ---
 title: 重置 VPN 网关或连接以重新建立 IPsec 隧道
 titleSuffix: Azure VPN Gateway
-description: 重置连接或 VPN 网关以重新建立 IPsec 隧道。
+description: 了解如何重置网关或网关连接来重新建立 IPsec 隧道。
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: adc2ffd63d73baaddce00324787df61061ea69dc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fcf92808f41d7681f2fe5c44cc958435438a1f86
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101726627"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229209"
 ---
 # <a name="reset-a-vpn-gateway-or-a-connection"></a>重置 VPN 网关或连接
 
-如果丢失一个或多个站点到站点隧道上的跨界 VPN 连接，重置 Azure VPN 网关或网关连接可有效解决该情况。 在此情况下，本地 VPN 设备都在正常工作，但却无法与 Azure VPN 网关建立 IPsec 隧道。 本文将帮助你重置 VPN 网关或网关连接。
+如果丢失一个或多个站点到站点 VPN 隧道上的跨界 VPN 连接，重置 Azure VPN 网关或网关连接可有效解决该情况。 在此情况下，本地 VPN 设备都在正常工作，但却无法与 Azure VPN 网关建立 IPsec 隧道。 本文可帮助你重置 VPN 网关或网关连接。
 
-## <a name="what-happens-during-a-reset"></a>重置期间会发生什么情况
+## <a name="what-happens-during-a-reset"></a>重置期间发生的情况
 
 ### <a name="gateway-reset"></a>网关重置
 
@@ -32,17 +32,17 @@ VPN 网关由在活动备用配置中运行的两个 VM 实例组成。 重置�
 
 ### <a name="connection-reset"></a>连接重置
 
-选择重置连接时，网关不会重新启动。 仅重置和恢复所选的连接。
+选择重置连接时，网关不会重新启动。 仅重置并还原所选连接。
 
 ## <a name="reset-a-connection"></a>重置连接
 
-使用 Azure 门户可以轻松重置连接。
+可使用 Azure 门户轻松重置连接。
 
-1. 导航到要重置的“连接”。 通过在“所有资源”中查找或导航到“‘网关名称’-> 连接 ->‘连接名称’”，均可查找连接资源 
-1. 在“连接”页的左侧菜单中选择“重置”。
-1. 在“重置”页中，单击“重置”以重置连接。
+1. 导航到要重置的连接。 可以通过以下方式查找连接资源：可以在“所有资源”中找到它，也可以导航到“网关名称”->“连接”->“连接名称”进行查找
+1. 在“连接”页上，从左侧菜单中选择“重置”。
+1. 在“重置”页上，单击“重置”以重置连接。
 
-   :::image type="content" source="./media/reset-gateway/reset-connection.png" alt-text="显示“重置”的屏幕截图。":::
+   :::image type="content" source="./media/reset-gateway/reset-connection.png" alt-text="显示重置的屏幕截图。":::
 
 ## <a name="reset-a-vpn-gateway"></a>重置 VPN 网关
 

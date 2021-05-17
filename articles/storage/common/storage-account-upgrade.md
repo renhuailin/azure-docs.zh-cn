@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 04/29/2021
 ms.author: tamram
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 786eb981acd61d952f95f89a7d90e4f732f3cda4
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 7c4e0fed78eb85e0e5326cbee6c6823466811c16
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107887641"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108321855"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>升级到常规用途 v2 存储帐户
 
@@ -38,12 +38,12 @@ ms.locfileid: "107887641"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 导航到存储帐户。
-3. 在“设置”部分单击“配置”。 
-4. 在“帐户类型”下单击“升级” 。
-5. 在“确认升级”下键入帐户名称。
-6. 单击边栏选项卡底部的“升级”。
+3. 在“设置”部分选择“配置”。
+4. 在“帐户类型”下选择“升级” 。
+5. 在“确认升级”下输入帐户名称。
+6. 选择边栏选项卡底部的“升级”。
 
-    ![升级帐户种类](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
+    :::image type="content" source="../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png" alt-text="“配置”边栏选项卡的屏幕截图，突出显示了升级帐户类型。" lightbox="../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

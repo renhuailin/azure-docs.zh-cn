@@ -6,17 +6,17 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
-ms.date: 08/10/2020
-ms.openlocfilehash: f324ef44d002f50bf27c08072e904c1d92b5512f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/07/2021
+ms.openlocfilehash: b0aa9d5dec25d8d600ecbcde59a57e67917c6411
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95026227"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011139"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>超大规模 (Citus) SQL API 中的函数
 
-本部分包含有关超大规模 (Citus) 提供的用户定义函数的参考信息。 这些函数有助于向超大规模 (Citus) 提供额外的分布式功能，而不是标准 SQL 命令。
+本部分包含有关超大规模 (Citus) 提供的用户定义函数的参考信息。 这些函数有助于向超大规模 (Citus) 提供分布式功能。
 
 > [!NOTE]
 >
@@ -46,7 +46,7 @@ colocate\_with：（可选）将当前表包含在另一个表的并置组中。
 
 #### <a name="return-value"></a>返回值
 
-不适用
+空值
 
 #### <a name="example"></a>示例
 
@@ -70,7 +70,7 @@ table\_name：需要分布的小型维度表或引用表的名称。
 
 #### <a name="return-value"></a>返回值
 
-不适用
+空值
 
 #### <a name="example"></a>示例
 
@@ -90,7 +90,7 @@ table\_name：包含分片计数为 1 的分布式表的名称，将以引用表
 
 #### <a name="return-value"></a>返回值
 
-不适用
+空值
 
 #### <a name="example"></a>示例
 
@@ -126,7 +126,7 @@ DETAIL:  Distribution column types don't match for apples and oranges.
 
 #### <a name="return-value"></a>返回值
 
-不适用
+空值
 
 #### <a name="example"></a>示例
 
@@ -152,7 +152,7 @@ colocate\_with：（可选）当分布式函数向分布式表（或更普遍的
 
 #### <a name="return-value"></a>返回值
 
-不适用
+空值
 
 #### <a name="example"></a>示例
 
@@ -176,6 +176,48 @@ SELECT create_distributed_function(
   'register_for_event(int, int)', 'p_event_id',
   colocate_with := 'event_responses'
 );
+```
+
+### <a name="alter_columnar_table_set"></a>alter_columnar_table_set
+
+alter_columnar_table_set() 函数用于更改[纵栏表](concepts-hyperscale-columnar.md)的设置， 对非纵栏表调用此函数会发生错误。 表名以外的所有参数都是可选项。
+
+若要查看所有纵栏表的当前选项，请参阅下表：
+
+```postgresql
+SELECT * FROM columnar.options;
+```
+
+对于新创建的表，其纵栏设置默认值可通过下列 GUC 来替代：
+
+* columnar.compression
+* columnar.compression_level
+* columnar.stripe_row_count
+* columnar.chunk_row_count
+
+#### <a name="arguments"></a>参数
+
+table_name：纵栏表的名称。
+
+chunk_row_count：（可选）新插入的数据中每个块的最大行数。 现有的数据块不会更改，其中包含的行数可能超过这个最大值。 默认值为 10000。
+
+stripe_row_count：（可选）新插入的数据中每个条带的最大行数。 现有的数据条带不会更改，其中包含的行数可能超过这个最大值。 默认值为 150000。
+
+compression：（可选）`[none|pglz|zstd|lz4|lz4hc]` 新插入的数据的压缩类型。 现有数据不会进行重新压缩或解压缩。 默认值和建议值均为 zstd（如果已将支持整合到其中）。
+
+compression_level：（可选）有效设置是 1 到 19。 如果压缩方法不支持所选级别，那么会改为选择最接近的级别。
+
+#### <a name="return-value"></a>返回值
+
+空值
+
+#### <a name="example"></a>示例
+
+```postgresql
+SELECT alter_columnar_table_set(
+  'my_columnar_table',
+  compression => 'none',
+  stripe_row_count => 10000);
 ```
 
 ## <a name="metadata--configuration-information"></a>元数据/配置信息
@@ -220,7 +262,7 @@ SELECT * from master_get_table_metadata('github_events');
 
 ### <a name="get_shard_id_for_distribution_column"></a>get\_shard\_id\_for\_distribution\_column
 
-超大规模 (Citus) 根据行的分布列的值和表的分布方法，将分布式表的每一行分布给分片。 在大多数情况下，精确映射是数据库管理员可忽略的低级别详细信息。 然而，无论是对于手动数据库维护任务，还是仅仅为了满足好奇心，确定行的分片会很有用。 `get_shard_id_for_distribution_column` 函数提供了用于哈希和范围分布式表以及引用表的信息。 它不适用于追加分布。
+超大规模 (Citus) 根据行的分布列的值和表的分布方法，将分布式表的每一行分布给分片。 在大多数情况下，精确映射是数据库管理员可忽略的低级别详细信息。 然而，无论是对于手动数据库维护任务，还是仅仅为了满足好奇心，确定行的分片会很有用。 `get_shard_id_for_distribution_column` 函数提供用于哈希分布式表、范围分布式表以及引用表的信息。 它不适用于追加分布。
 
 #### <a name="arguments"></a>参数
 
@@ -359,7 +401,7 @@ pg_size_pretty
 
 #### <a name="arguments"></a>参数
 
-不适用
+空值
 
 #### <a name="return-value"></a>返回值
 
@@ -387,7 +429,7 @@ target\_node\_port：数据库服务器正在侦听的目标工作器节点上�
 
 #### <a name="return-value"></a>返回值
 
-不适用
+空值
 
 #### <a name="example"></a>示例
 
@@ -427,7 +469,7 @@ shard\_transfer\_mode：（可选）指定复制方法，是使用 PostgreSQL �
 
 #### <a name="return-value"></a>返回值
 
-不适用
+空值
 
 #### <a name="example"></a>示例
 
@@ -439,7 +481,7 @@ SELECT master_move_shard_placement(12345, 'from_host', 5432, 'to_host', 5432);
 
 rebalance\_table\_shards() 函数将移动给定表的分片，以使这些分片在工作器之间均匀分布。 函数首先计算需要执行移动的列表，以确保服务器组在给定的阈值内平衡。 然后，它将分片放置逐个从源节点移动到目标节点，并更新相应的分片元数据以反映移动情况。
 
-在确定分片是否\"均匀分布\"时，会向每个分片分布成本。默认情况下，每个分片的成本都相同（数值为 1），因此工作器之间的成本均等化分布就表示分片数量也是均等化分布。 固定成本策略称为 \"by\_shard\_count\"，是默认的再平衡策略。
+在确定分片是否\"均匀分布\"时，系统会向每个分片分配成本。默认情况下，每个分片的成本都相同（数值为 1），因此工作器之间的成本均等化分布就表示分片数量也是均等化分布。 固定成本策略称为 \"by\_shard\_count\"，是默认的再平衡策略。
 
 默认策略在以下情况下适用：
 
@@ -457,7 +499,7 @@ rebalance\_table\_shards() 函数将移动给定表的分片，以使这些分�
 table\_name：（可选）分片需要再平衡的表的名称。 如果为 NULL，则再平衡所有现有的并置组。
 
 threshold：（可选）介于 0.0 和 1.0 之间的浮点数，指示节点利用率与平均利用率的最大差值。 例如，如果指定 0.1，分片再平衡器会尝试平衡所有节点，使其保持相同数量分片 ±10% 的水平。
-具体而言，分片再平衡器会尝试将所有工作器节点的利用率汇聚到 (1 - threshold) \* average\_utilization \...(1
+具体而言，分片再平衡器会尝试将所有工作器节点的利用率汇聚到 (1 - threshold) \* average\_utilization \... (1
 + threshold) \* average\_utilization 范围。
 
 max\_shard\_moves：（可选）要移动的分片的最大数目。
@@ -477,7 +519,7 @@ rebalance\_strategy：（可选）[pg_dist_rebalance_strategy](reference-hypersc
 
 #### <a name="return-value"></a>返回值
 
-不适用
+空值
 
 #### <a name="example"></a>示例
 
@@ -520,7 +562,7 @@ SELECT rebalance_table_shards('github_events', excluded_shard_list:='{1,2}');
 
 #### <a name="arguments"></a>参数
 
-不适用
+空值
 
 #### <a name="return-value"></a>返回值
 
@@ -575,7 +617,7 @@ minimum\_threshold：（可选）一个保护列，用于保存 rebalance\_table
 
 #### <a name="return-value"></a>返回值
 
-不适用
+空值
 
 ### <a name="citus_set_default_rebalance_strategy"></a>citus\_set\_default\_rebalance\_strategy
 
@@ -587,7 +629,7 @@ name：pg\_dist\_rebalance\_strategy 中的策略名称
 
 #### <a name="return-value"></a>返回值
 
-不适用
+空值
 
 #### <a name="example"></a>示例
 
@@ -601,7 +643,7 @@ citus\_remote\_connection\_stats() 函数显示每个远程节点的活动连接
 
 #### <a name="arguments"></a>参数
 
-不适用
+空值
 
 #### <a name="example"></a>示例
 
@@ -637,7 +679,7 @@ rebalance\_strategy：（可选）[pg_dist_rebalance_strategy](reference-hypersc
 
 #### <a name="return-value"></a>返回值
 
-不适用
+空值
 
 #### <a name="example"></a>示例
 

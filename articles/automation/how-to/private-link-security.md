@@ -6,12 +6,13 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/11/2020
 ms.subservice: ''
-ms.openlocfilehash: f3c9197faaae89e0ffb238f987ee66dafea8abdd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 28f4c314b65a27c71c7620ff5941463b1ea68b55
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100579801"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831449"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation"></a>使用 Azure 专用链接将网络安全地连接到 Azure 自动化
 
@@ -45,7 +46,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 
 ## <a name="limitations"></a>限制
 
-- 在当前的专用链接实现中，自动化帐户云作业无法访问使用专用终结点保护的 Azure 资源。 例如，Azure Key Vault、Azure SQL、Azure 存储帐户等要解决此问题，请改用[混合 Runbook 辅助角色](../automation-hybrid-runbook-worker.md)。
+- 在当前的专用链接实现中，自动化帐户云作业无法访问使用专用终结点保护的 Azure 资源。 例如，Azure Key Vault、Azure SQL、Azure 存储帐户等。若要解决此问题，请改用[混合 Runbook 辅助角色](../automation-hybrid-runbook-worker.md)。
 - 需要使用最新版本的适用于 Windows 或 Linux 的 [Log Analytics 代理](../../azure-monitor/agents/log-analytics-agent.md)。
 - [Log Analytics 网关](../../azure-monitor/agents/gateway.md)不支持专用链接。
 
@@ -63,7 +64,7 @@ Azure 自动化专用链接可将一个或多个专用终结点（及其包含�
 
 通过 Azure 自动化的用户混合 Runbook 辅助角色功能，可以直接在 Azure 或非 Azure 计算机上运行 runbook，包括在启用了 Azure Arc 的服务器上注册的服务器。 在托管角色的计算机或服务器中，可以直接运行 runbook，并对环境中的资源运行 runbook，从而管理这些本地资源。
 
-混合辅助角色使用 JRDS 终结点启动/停止 runbook，将 runbook 下载到辅助角色，并将作业日志流发送回自动化服务。 启用 JRDS 终结点后，URL 将如下所示：`https://<automationaccountID>.jobruntimedata.<region>.azure-automation.net`。 这将确保在连接到 Azure 虚拟网络的混合辅助角色上执行 runbook，而无需打开到 Internet 的出站连接。  
+混合辅助角色使用 JRDS 终结点启动/停止 runbook，将 runbook 下载到辅助角色，并将作业日志流发送回自动化服务。启用 JRDS 终结点后，URL 将如下所示：`https://<automationaccountID>.jobruntimedata.<region>.azure-automation.net`。 这将确保在连接到 Azure 虚拟网络的混合辅助角色上执行 runbook，而无需打开到 Internet 的出站连接。  
 
 > [!NOTE]
 >通过 Azure 自动化的最新专用链接实现，它仅支持在连接到 Azure 虚拟网络的混合 Runbook 辅助角色上运行的作业，而不支持云作业。

@@ -3,18 +3,18 @@ title: 使用 Azure Maps 高程服务请求高程数据（预览版）
 description: 了解如何使用 Azure Maps 高程服务请求高程数据（预览版）。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 04/26/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: d14eda84144105bf2e04f1238284bc58a91c4c03
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: efdaf8d2d64a3865027f5211e4382458e1323b10
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98684049"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325114"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>使用 Azure Maps 高程服务请求高程数据（预览版）
 
@@ -26,7 +26,7 @@ Azure Maps [高程服务](/rest/api/maps/elevation)提供 API，用于查询地�
 
 ## <a name="prerequisites"></a>先决条件
 
-1. [创建使用 S1 定价层的 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
+1. [在第一代 (S1) 或第二代定价层中创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)。
 2. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。
 
 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。

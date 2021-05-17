@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 578eb6859114eeef9672e7b58e6bb6b56189dc5a
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.openlocfilehash: 0ff35d207fe9ba95352798ca8138a75619b9f852
+  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101647364"
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "108764326"
 landingContent:
 - title: 关于外部标识
   linkLists:
@@ -41,7 +41,7 @@ landingContent:
     links:
     - text: 配置外部协作设置
       url: delegate-invitations.md
-    - text: 设置直接联合身份验证（预览版）
+    - text: 设置 SAML/WS-Fed IdP 联合身份验证（预览版）
       url: direct-federation.md
     - text: 设置一次性密码（预览）
       url: one-time-passcode.md

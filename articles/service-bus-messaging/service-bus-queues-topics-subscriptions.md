@@ -2,13 +2,13 @@
 title: Azure 服务总线消息传送队列、主题和订阅
 description: 本文概述了 Azure 服务总线消息实体（队列、主题和订阅）。
 ms.topic: conceptual
-ms.date: 02/16/2021
-ms.openlocfilehash: b8fb68509ad920fc6911290377f49b89ec610b58
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/08/2021
+ms.openlocfilehash: ccd91d5091dbbba072cf222e5a73c3db1d48c321
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101096332"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209818"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>服务总线队列、主题和订阅
 Azure 服务总线支持一组基于云的、面向消息的中间件技术，包括可靠的消息队列和持久发布/订阅消息。 这些中转消息传送功能可被视为分离式消息传送功能，支持使用服务总线消息传送工作负载的发布-订阅、临时分离和负载均衡方案。 分离式通信具有很多优点。 例如，客户端和服务器可以根据需要进行连接并以异步方式执行其操作。
@@ -53,7 +53,7 @@ Azure 服务总线支持一组基于云的、面向消息的中间件技术，�
 
 有关完整的工作示例，请参阅GitHub上的 [TopicSubscriptionWithRuleOperationsSample 示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/TopicSubscriptionWithRuleOperationsSample)。
 
-有关可能的筛选器值的详细信息，请参阅文档 [SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) 和 [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) 类。
+有关筛选器的详细信息，请参阅[主题筛选器和操作](topic-filters.md)。
 
 ## <a name="java-message-service-jms-20-entities"></a>Java 消息服务 (JMS) 2.0 实体
 以下实体可通过 Java 消息服务 (JMS) 2.0 API 进行访问。

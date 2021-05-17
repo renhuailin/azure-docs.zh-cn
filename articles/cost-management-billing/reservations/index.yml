@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.date: 03/01/2021
-  ms.openlocfilehash: b25d522d5db9f513628e43724cb1abde9f55e99c
-  ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+  ms.date: 04/15/2021
+  ms.openlocfilehash: c7c9a72e3954598e0cb3265e0533ccbd14b68e4b
+  ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102040815"
+  ms.lasthandoff: 04/16/2021
+  ms.locfileid: "107532656"
 landingContent:
 - title: 购买预留
   linkLists:
@@ -24,6 +24,12 @@ landingContent:
     links:
     - text: 什么是 Azure 预留？
       url: save-compute-costs-reservations.md
+    - text: 预留项购买建议
+      url: reserved-instance-purchase-recommendations.md
+    - text: 实例大小灵活性
+      url: ../../virtual-machines/reserved-vm-instance-size-flexibility.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - text: 分开收取 Windows 和 SQL 软件费用
+      url: reserved-instance-windows-software-costs.md
   - linkListType: how-to-guide
     links:
     - text: 购买预留项
@@ -36,16 +42,24 @@ landingContent:
     links:
     - text: 如何应用预留折扣
       url: reservation-discount-application.md
-- title: 管理预留
+- title: 购买后管理预留项
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 管理预留
-      url: manage-reserved-vm-instance.md
-    - text: 查看预留并管理权限
+    - text: 预留项的查看和管理权限
       url: view-reservations.md
+    - text: 更改预留范围、拆分、合并
+      url: manage-reserved-vm-instance.md
     - text: 对预留执行交换和退款操作
       url: exchange-and-refund-azure-reservations.md
+- title: 购买后报告成本
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 撤回 Azure 预留成本
+      url: charge-back-usage.md
+    - text: 查看预留购买和退款交易
+      url: view-purchase-refunds.md
   - linkListType: reference
     links:
     - text: 预留 API

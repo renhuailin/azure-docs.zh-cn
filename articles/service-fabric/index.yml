@@ -4,40 +4,14 @@ summary: Azure Service Fabric 是一款分布式系统平台，可方便用户�
 metadata:
   ms.service: service-fabric
   ms.topic: landing-page
-  author: erikadoyle
-  ms.author: edoyle
-  ms.date: 07/31/2020
-  ms.openlocfilehash: e850855a4f794e5e90abe9c86d6ddedd0af26a6b
-  ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+  ms.date: 05/10/2021
+  ms.openlocfilehash: 7fc89c669c88f65abfd89a98a321dd976696cd57
+  ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/17/2021
-  ms.locfileid: "100634832"
+  ms.lasthandoff: 05/10/2021
+  ms.locfileid: "109683860"
 landingContent:
-- title: 试用 Service Fabric 托管群集（预览）
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: 什么是 Service Fabric 托管群集（预览）
-      url: overview-managed-cluster.md
-    - text: 部署托管群集（预览）
-      url: quickstart-managed-cluster-template.md
-  - linkListType: tutorial
-    links:
-    - text: 横向扩展托管群集节点类型（预览）
-      url: tutorial-managed-cluster-scale.md
-    - text: 添加和删除托管群集节点类型（预览）
-      url: tutorial-managed-cluster-add-remove-node-type.md
-    - text: 将应用部署到托管群集（预览）
-      url: tutorial-managed-cluster-deploy-app.md
-    - text: 将 VM 规模集扩展添加到托管群集节点类型（预览）
-      url: how-to-managed-cluster-vmss-extension.md
-    - text: 为托管的群集节点启用磁盘加密
-      url: how-to-enable-managed-cluster-disk-encryption.md
-  - linkListType: whats-new
-    links:
-    - text: Service Fabric 托管群集常见问题解答
-      url: faq-managed-cluster.md
 - title: 关于 Service Fabric
   linkLists:
   - linkListType: overview
@@ -68,11 +42,37 @@ landingContent:
       url: service-fabric-guest-executables-introduction.md
     - text: Reliable Services
       url: service-fabric-reliable-services-introduction.md
+    - text: Linux 和 Windows 之间的 Service Fabric 差异
+      url: service-fabric-linux-windows-differences.md
   - linkListType: whats-new
     links:
     - text: 发行说明
       url: release-notes.md
-- title: .NET 应用程序和 Windows 入门
+- title: 部署 Service Fabric 托管群集
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 关于 Service Fabric 托管群集
+      url: overview-managed-cluster.md
+    - text: Service Fabric 托管群集常见问题解答
+      url: faq-managed-cluster.md
+  - linkListType: quickstart
+    links:
+    - text: 创建托管群集
+      url: quickstart-managed-cluster-template.md
+  - linkListType: learn
+    links:
+    - text: 横向扩展托管群集节点类型
+      url: tutorial-managed-cluster-scale.md
+    - text: 添加和删除托管群集节点类型
+      url: tutorial-managed-cluster-add-remove-node-type.md
+    - text: 将应用部署到托管群集
+      url: tutorial-managed-cluster-deploy-app.md
+    - text: 配置托管群集
+      url: how-to-managed-cluster-configuration.md
+    - text: 部署托管群集应用程序机密
+      url: how-to-managed-cluster-application-secrets.md
+- title: 开始使用 Service Fabric 应用程序
   linkLists:
   - linkListType: quickstart
     links:
@@ -82,12 +82,16 @@ landingContent:
       url: service-fabric-quickstart-containers.md
     - text: 创建基于 Windows 的来宾可执行应用
       url: quickstart-guest-app.md
+    - text: 将 Linux 容器应用部署到 Service Fabric
+      url: service-fabric-quickstart-containers-linux.md
   - linkListType: tutorial
     links:
     - text: 创建、部署和管理 Service Fabric .NET 应用
       url: service-fabric-tutorial-create-dotnet-app.md
     - text: 容器化用于 Service Fabric 的现有 .NET 应用
       url: service-fabric-host-app-in-a-container.md
+    - text: 创建、部署和管理 Service Fabric Java 应用
+      url: service-fabric-tutorial-create-java-app.md
   - linkListType: how-to-guide
     links:
     - text: 使用 Visual Studio 开发应用
@@ -98,30 +102,6 @@ landingContent:
       url: service-fabric-tutorial-create-vnet-and-windows-cluster.md
     - text: Windows 群集诊断
       url: service-fabric-diagnostics-event-aggregation-wad.md
-- title: Java 应用程序和 Linux 入门
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Linux 和 Windows 之间的 Service Fabric 差异
-      url: service-fabric-linux-windows-differences.md
-  - linkListType: quickstart
-    links:
-    - text: 将 Linux 容器应用部署到 Service Fabric
-      url: service-fabric-quickstart-containers-linux.md
-  - linkListType: tutorial
-    links:
-    - text: 创建、部署和管理 Service Fabric Java 应用
-      url: service-fabric-tutorial-create-java-app.md
-  - linkListType: how-to-guide
-    links:
-    - text: 使用 Eclipse 开发应用
-      url: service-fabric-get-started-eclipse.md
-    - text: Reliable Services 入门（Linux 上的 Java）
-      url: service-fabric-reliable-services-quick-start-java.md
-    - text: 在 Azure 虚拟网络中创建 Linux 群集
-      url: service-fabric-tutorial-create-vnet-and-linux-cluster.md
-    - text: Linux 群集诊断
-      url: service-fabric-diagnostics-oms-syslog.md
 - title: 保护群集
   linkLists:
   - linkListType: concept
@@ -164,27 +144,3 @@ landingContent:
     links:
     - text: Service Fabric 常见问题解答
       url: service-fabric-common-questions.md
-- title: 在本地使用 Service Fabric
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: 独立群集概述
-      url: service-fabric-standalone-clusters-overview.md
-    - text: 独立包的内容
-      url: service-fabric-cluster-standalone-package-contents.md
-  - linkListType: concept
-    links:
-    - text: 升级独立群集
-      url: service-fabric-cluster-upgrade-standalone.md
-    - text: 缩放独立群集
-      url: service-fabric-cluster-scaling-standalone.md
-  - linkListType: how-to-guide
-    links:
-    - text: 规划独立群集部署
-      url: service-fabric-cluster-standalone-deployment-preparation.md
-    - text: 创建在 Windows Server 上运行的独立群集
-      url: service-fabric-cluster-creation-for-windows-server.md
-    - text: 配置定期备份
-      url: service-fabric-backuprestoreservice-quickstart-standalonecluster.md
-    - text: 升级 Service Fabric 运行时
-      url: service-fabric-cluster-upgrade-windows-server.md

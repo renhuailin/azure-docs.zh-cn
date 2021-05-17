@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 1d21691af4d52892f507695a56331816b14bf517
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 423e08511003c8ba1f810bd024d0e253df612473
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588371"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108293271"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言 (SSML) 改善合成
 
@@ -45,7 +45,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 每个 SSML 文档是使用 SSML 元素（或标记）创建的。 这些元素用于调整音节、韵律、音量等。 以下部分详细说明了每个元素的用法，以及该元素是必需的还是可选的。
 
 > [!IMPORTANT]
-> 不要忘记将属性值括在双引号中。 适当格式的有效 XML 的标准要求将属性值括在双引号中。 例如，`<prosody volume="90">` 是适当格式的有效元素，而 `<prosody volume=90>` 则不是。 SSML 无法识别未括在引号中的属性值。
+> 不要忘记将属性值括在双引号中。 适当格式的有效 XML 的标准要求将属性值括在双引号中。 例如，`<prosody volume="90">` 是适当格式的有效元素，而 `<prosody volume=90>` 则不是。 SSML 可能无法识别未括在引号中的属性值。
 
 ## <a name="create-an-ssml-document"></a>创建 SSML 文档
 
@@ -59,7 +59,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 说明 | 必需/可选 |
+| 属性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `version` | 指示用于解释文档标记的 SSML 规范的版本。 当前版本为 1.0。 | 必须 |
 | `xml:lang` | 指定根文档的语言。 该值可以包含小写的双字母语言代码（例如 `en`），或者语言代码加上大写的国家/地区代码（例如 `en-US`）。 | 必须 |
@@ -79,7 +79,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 说明 | 必需/可选 |
+| 属性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `name` | 标识用于文本转语音输出的语音。 有关支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。 | 必须 |
 
@@ -102,7 +102,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 说明 | 必需/可选 |
+| 属性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `name` | 标识用于文本转语音输出的语音。 有关支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。 | 必须 |
 
@@ -208,6 +208,9 @@ speechConfig!.setPropertyTo(
 * `zh-CN-XiaoxuanNeural`（预览版）
 * `zh-CN-XiaoruiNeural`（预览版）
 
+> [!NOTE]
+> 预览版语音只在以下 3 个区域提供：美国东部、西欧和东南亚。
+
 可进一步更改说话风格的强度，更好地适应你的使用场景。 可以使用 `styledegree` 指定更强或更柔和的风格，使语音更具表现力或更柔和。 目前，中文（普通话，简体）神经语音支持说话风格调整。
 
 除了调整说话风格和风格程度，还可调整 `role` 参数，使语音模拟不同的年龄和性别。 例如，男性语音可以提高音调和改变语调来模拟女性语音，但语音名称不会更改。 目前，这些中文（普通话，简体）神经语音支持角色调整：
@@ -228,11 +231,11 @@ speechConfig!.setPropertyTo(
 <mstts:express-as role="string" style="string"></mstts:express-as>
 ```
 > [!NOTE]
-> 目前，`styledegree` 仅支持中文（普通话，简体）神经语音。 `role` 仅支持 zh-CN-XiaomoNeural 和 zh-CN-XiaoxuanNeural。
+> 目前，`styledegree` 仅支持中文（普通话，简体）神经语音。 `role` 仅支持 zh-CN-XiaomoNeural 和 zh-CN-XiaoxuanNeural。 
 
 **属性**
 
-| 属性 | 说明 | 必需/可选 |
+| 属性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `style` | 指定讲话风格。 目前，讲话风格特定于语音。 | 如果调整神经语音的讲话风格，则此属性是必需的。 如果使用 `mstts:express-as`，则必须提供风格。 如果提供无效的值，将忽略此元素。 |
 | `styledegree` | 指定说话风格的强度。 接受的值：0.01 到 2（含边界值）。 默认值为 1，表示预定义的风格强度。 最小单位为 0.01，表示略倾向于目标风格。 值为 2 表示是默认风格强度的两倍。  | 可选（目前，`styledegree` 仅支持中文（普通话，简体）神经语音。）|
@@ -277,7 +280,8 @@ speechConfig!.setPropertyTo(
 |                         | `style="fearful"`         | 以较高的音调、较高的音量和较快的语速来表达恐惧、紧张的语气。 说话者处于紧张和不安的状态。                          |
 |                         | `style="disgruntled"`     | 表达轻蔑和抱怨的语气。 这种情绪的语音表现出不悦和蔑视。              |
 |                         | `style="serious"`         | 表达严肃和命令的语气。 说话者的声音通常比较僵硬，节奏也不那么轻松。          |
-| `zh-CN-YunxiNeural`     | `style="cheerful"`        | 以较高的音调和音量表达欢快、热情的语气                         |
+|   `zh-CN-YunxiNeural`   | `style="assistant"`       | 以热情而轻松的语气对数字助理讲话    |
+|                         | `style="cheerful"`        | 以较高的音调和音量表达欢快、热情的语气                         |
 |                         | `style="sad"`             | 以较高的音调、较低的强度和较低的音量表达悲伤的语气。 这种情绪的常见特征是说话时呜咽或哭泣。            |
 |                         | `style="angry"`           | 以较低的音调、较高的强度和较高的音量来表达恼怒的语气。 说话者处于愤怒、生气和被冒犯的状态。       |
 |                         | `style="fearful"`         | 以较高的音调、较高的音量和较快的语速来表达恐惧、紧张的语气。 说话者处于紧张和不安的状态。                          |
@@ -294,23 +298,25 @@ speechConfig!.setPropertyTo(
 |                         | `style="embarrassed"`     | 在说话者感到不舒适时表达不确定、犹豫的语气   |
 |                         | `style="affectionate"`    | 以较高的音调和音量表达温暖而亲切的语气。 说话者处于吸引听众注意力的状态。 说话者的“个性”往往是讨人喜欢的。          |
 |                         | `style="gentle"`          | 以较低的音调和音量表达温和、礼貌和愉快的语气         |
-| `zh-CN-XiaomoNeural`    | `style="cheerful"`        | 以较高的音调和音量表达欢快、热情的语气                         |
+| `zh-CN-XiaomoNeural`    | `style="calm"`            | 以沉着冷静的态度说话。 语气、音调、韵律与其他语音类型相比要统一得多。                         |
+|                         | `style="cheerful"`        | 以较高的音调和音量表达欢快、热情的语气                 |
 |                         | `style="angry"`           | 以较低的音调、较高的强度和较高的音量来表达恼怒的语气。 说话者处于愤怒、生气和被冒犯的状态。       |
-|                         | `style="fearful"`         | 以较高的音调、较高的音量和较快的语速来表达恐惧、紧张的语气。 说话者处于紧张和不安的状态。                          |
-|                         | `style="disgruntled"`     | 表达轻蔑和抱怨的语气。 这种情绪的语音表现出不悦和蔑视。              |
-|                         | `style="serious"`         | 表达严肃和命令的语气。 说话者的声音通常比较僵硬，节奏也不那么轻松。    |
+|                         | `style="fearful"`         | 以较高的音调、较高的音量和较快的语速来表达恐惧、紧张的语气。 说话者处于紧张和不安的状态。                       |
+|                         | `style="disgruntled"`     | 表达轻蔑和抱怨的语气。 这种情绪的语音表现出不悦和蔑视。         |
+|                         | `style="serious"`         | 表达严肃和命令的语气。 说话者的声音通常比较僵硬，节奏也不那么轻松。  |
 |                         | `style="depressed"`       | 调低音调和音量来表达忧郁、沮丧的语气    |
 |                         | `style="gentle"`          | 以较低的音调和音量表达温和、礼貌和愉快的语气         |
-| `zh-CN-XiaoxuanNeural`  | `style="cheerful"`        | 以较高的音调和音量表达欢快、热情的语气                         |
+| `zh-CN-XiaoxuanNeural`  | `style="calm"`            | 以沉着冷静的态度说话。 语气、音调、韵律与其他语音类型相比要统一得多。                         |
+|                         | `style="cheerful"`        | 以较高的音调和音量表达欢快、热情的语气                              |
 |                         | `style="angry"`           | 以较低的音调、较高的强度和较高的音量来表达恼怒的语气。 说话者处于愤怒、生气和被冒犯的状态。       |
-|                         | `style="fearful"`         | 以较高的音调、较高的音量和较快的语速来表达恐惧、紧张的语气。 说话者处于紧张和不安的状态。                          |
-|                         | `style="disgruntled"`     | 表达轻蔑和抱怨的语气。 这种情绪的语音表现出不悦和蔑视。              |
-|                         | `style="serious"`         | 表达严肃和命令的语气。 说话者的声音通常比较僵硬，节奏也不那么轻松。    |
+|                         | `style="fearful"`         | 以较高的音调、较高的音量和较快的语速来表达恐惧、紧张的语气。 说话者处于紧张和不安的状态。                       |
+|                         | `style="disgruntled"`     | 表达轻蔑和抱怨的语气。 这种情绪的语音表现出不悦和蔑视。         |
+|                         | `style="serious"`         | 表达严肃和命令的语气。 说话者的声音通常比较僵硬，节奏也不那么轻松。  |
 |                         | `style="depressed"`       | 调低音调和音量来表达忧郁、沮丧的语气    |
 |                         | `style="gentle"`          | 以较低的音调和音量表达温和、礼貌和愉快的语气         |
-| `zh-CN-XiaoruiNeural`    | `style="sad"`             | 以较高的音调、较低的强度和较低的音量表达悲伤的语气。 这种情绪的常见特征是说话时呜咽或哭泣。            |
+| `zh-CN-XiaoruiNeural`   | `style="sad"`             | 以较高的音调、较低的强度和较低的音量表达悲伤的语气。 这种情绪的常见特征是说话时呜咽或哭泣。         |
 |                         | `style="angry"`           | 以较低的音调、较高的强度和较高的音量来表达恼怒的语气。 说话者处于愤怒、生气和被冒犯的状态。       |
-|                         | `style="fearful"`         | 以较高的音调、较高的音量和较快的语速来表达恐惧、紧张的语气。 说话者处于紧张和不安的状态。                          |
+|                         | `style="fearful"`         | 以较高的音调、较高的音量和较快的语速来表达恐惧、紧张的语气。 说话者处于紧张和不安的状态。                       |
 
 使用此表检查支持的角色及其定义。
 
@@ -386,7 +392,7 @@ speechConfig!.setPropertyTo(
 
 **属性**
 
-| 属性 | 说明 | 必需/可选 |
+| 属性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `strength` | 使用以下值之一指定暂停的相对持续时间：<ul><li>无</li><li>x-weak</li><li>weak</li><li>medium（默认值）</li><li>strong</li><li>x-strong</li></ul> | 可选 |
 | `time` | 指定暂停的绝对持续时间，以秒或毫秒为单位；该值应设为小于 5000 毫秒。 例如，`2s` 和 `500ms` 是有效值 | 可选 |
@@ -425,7 +431,7 @@ speechConfig!.setPropertyTo(
 
 **属性**
 
-| 属性 | 说明 | 必需/可选 |
+| 属性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `type` | 指定添加静音的位置： <ul><li>`Leading` - 在文本的开头 </li><li>`Tailing` - 在文本的结尾 </li><li>`Sentenceboundary` - 在相邻句子之间 </li></ul> | 必须 |
 | `Value` | 指定暂停的绝对持续时间，以秒或毫秒为单位；该值应设为小于 5000 毫秒。 例如，`2s` 和 `500ms` 是有效值 | 必须 |
@@ -477,7 +483,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 `ph` 元素用于 SSML 文档中的发音。 `ph` 元素只能包含文本，而不能包含其他元素。 始终提供人类可读的语音作为回退。
 
-音标由音素构成，而这些音素由字母、数字或字符（有时是它们的组合）构成。 每个音素描述独特的语音。 这与拉丁音标不同，其中的任一字母可以表示多种语音。 想像一下单词“candy”和“cease”中字母“c”的不同发音，或者字母组合“th”在单词“thing”和“those”中的不同发音。
+音标由音素构成，而这些音素由字母、数字或字符（有时是它们的组合）构成。 每个音素描述独特的语音。 这与拉丁字母形成鲜明对比，在拉丁字母中，任何字母都可能代表多种发音。 想像一下单词“candy”和“cease”中字母“c”的不同发音，或者字母组合“th”在单词“thing”和“those”中的不同发音。
 
 > [!NOTE]
 > 目前，不支持下面 5 种语音的音素标记：et-EE-AnuNeural、ga-IE-OrlaNeural、lt-LT-OnaNeural、lv-LV-EveritaNeural 和 mt-MT-GarceNeural。
@@ -490,7 +496,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 **属性**
 
-| 属性 | 说明 | 必需/可选 |
+| 属性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `alphabet` | 指定在 `ph` 属性中合成字符串发音时要使用的音标。 指定音标的字符串必须以小写字母指定。 下面是可以指定的可能音标。<ul><li>`ipa` &ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">国际音标 </a></li><li>`sapi` &ndash; [语音服务音标](speech-ssml-phonetic-sets.md)</li><li>`ups` &ndash;<a href="https://documentation.help/Microsoft-Speech-Platform-SDK-11/17509a49-cae7-41f5-b61d-07beaae872ea.htm" target="_blank"> 通用音素集</a></li></ul><br>音标仅适用于元素中的 `phoneme`。 | 可选 |
 | `ph` | 一个字符串，包含用于在 `phoneme` 元素中指定单词发音的音素。 如果指定的字符串包含无法识别的音素，则文本转语音 (TTS) 服务将拒绝整个 SSML 文档，并且不会生成文档中指定的任何语音输出。 | 如果使用音素，则此属性是必需的。 |
@@ -540,7 +546,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 **属性**
 
-| 属性 | 说明                               | 必需/可选 |
+| 属性 | 描述                               | 必需/可选 |
 |-----------|-------------------------------------------|---------------------|
 | `uri`     | 外部 PLS 文档的地址。 | 必需。           |
 
@@ -663,14 +669,14 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 **属性**
 
-| 属性 | 说明 | 必需/可选 |
+| 属性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `pitch` | 指示文本的基线音节。 可将音节表述为：<ul><li>以某个数字后接“Hz”（赫兹）表示的绝对值。 例如，`<prosody pitch="600Hz">some text</prosody>` 。</li><li>以前面带有“+”或“-”的数字，后接“Hz”或“st”（用于指定音节的变化量）表示的相对值。 例如 `<prosody pitch="+80Hz">some text</prosody>` 或 `<prosody pitch="-2st">some text</prosody>`。 “st”表示变化单位为半音，即，标准全音阶中的半调（半步）。</li><li>常量值：<ul><li>x-low</li><li>low</li><li>中</li><li>high</li><li>x-high</li><li>默认值</li></ul></li></ul> | 可选 |
+| `pitch` | 指示文本的基线音节。 可将音调表述为：<ul><li>以某个数字后接“Hz”（赫兹）表示的绝对值。 例如，`<prosody pitch="600Hz">some text</prosody>` 。</li><li>以前面带有“+”或“-”的数字，后接“Hz”或“st”（用于指定音节的变化量）表示的相对值。 例如 `<prosody pitch="+80Hz">some text</prosody>` 或 `<prosody pitch="-2st">some text</prosody>`。 “st”表示变化单位为半音，即，标准全音阶中的半调（半步）。</li><li>常量值：<ul><li>x-low</li><li>low</li><li>中</li><li>high</li><li>x-high</li><li>默认值</li></ul></li></ul> | 可选 |
 | `contour` |调型现在同时支持神经语音和标准语音。 调型表示音节的变化。 这些变化以语音输出中指定时间处的目标数组形式表示。 每个目标由参数对的集定义。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每参数集中的第一个值以文本持续时间百分比的形式指定音节变化的位置。 第二个值使用音节的相对值或枚举值指定音节的升高或降低量（请参阅 `pitch`）。 | 可选 |
-| `range` | 表示文本音节范围的值。 可以使用用于描述 `pitch` 的相同绝对值、相对值或枚举值表示 `range`。 | 可选 |
+| `range` | 表示文本音节范围的值。 可使用用于描述 `pitch` 的相同绝对值、相对值或枚举值表示 `range`。 | 可选 |
 | `rate` | 指示文本的讲出速率。 可将 `rate` 表述为：<ul><li>以充当默认值倍数的数字表示的相对值。 例如，如果值为 *1*，则速率不会变化。 如果值为 *0.5*，则速率会减慢一半。 如果值为 *3*，则速率为三倍。</li><li>常量值：<ul><li>x-slow</li><li>slow</li><li>中</li><li>fast</li><li>x-fast</li><li>默认值</li></ul></li></ul> | 可选 |
 | `duration` | 语音合成 (TTS) 服务读取文本时应该消逝的时长，以秒或毫秒为单位。 例如 *2s* 或 *1800ms*。 持续时间仅支持标准语音。| 可选 |
-| `volume` | 指示语音的音量级别。 可将音量表述为：<ul><li>以从 0.0 到 100.0（从最安静到最大声）的数字表示的绝对值。 例如 75。 默认值为 100.0。</li><li>以前面带有“+”或“-”的数字表示的相对值，指定音量的变化量。 例如，+10 或 -5.5。</li><li>常量值：<ul><li>silent</li><li>x-soft</li><li>soft</li><li>中</li><li>loud</li><li>x-loud</li><li>默认值</li></ul></li></ul> | 可选 |
+| `volume` | 指示语音的音量级别。 可将音量表示为：<ul><li>以从 0.0 到 100.0（从最安静到最大声）的数字表示的绝对值。 例如 75。 默认值为 100.0。</li><li>以前面带有“+”或“-”的数字表示的相对值，指定音量的变化量。 例如，+10 或 -5.5。</li><li>常量值：<ul><li>silent</li><li>x-soft</li><li>soft</li><li>中</li><li>loud</li><li>x-loud</li><li>默认值</li></ul></li></ul> | 可选 |
 
 ### <a name="change-speaking-rate"></a>更改语速
 
@@ -746,10 +752,10 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 **属性**
 
-| 属性 | 说明 | 必需/可选 |
+| 属性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `interpret-as` | 指示元素文本的内容类型。 有关类型列表，请参阅下表。 | 必须 |
-| `format` | 为可能具有不明确格式的内容类型提供有关元素文本的精确格式设置的更多信息。 SSML 为使用它们的内容类型定义格式（请参阅下表）。 | 可选 |
+| `format` | 为可能具有不明确格式的内容类型提供有关元素文本的精确格式设置的其他信息。 SSML 为使用它们的内容类型定义格式（请参阅下表）。 | 可选 |
 | `detail` | 指示要朗读的详细信息的级别。 例如，此属性可以要求语音合成引擎朗读标点符号。 没有为 `detail` 定义标准值。 | 可选 |
 
 <!-- I don't understand the last sentence. Don't we know which one Cortana uses? -->
@@ -765,7 +771,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 | `digits`, `number_digit` | | 此文本朗读为个体数字的序列。 语音合成引擎将以下内容：<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />朗读为“1 2 3 4 5 6 7 8 9.” |
 | `fraction` | | 此文本朗读为分数。 语音合成引擎将以下内容：<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />朗读为“three eighths of an inch.” |
 | `ordinal` | | 此文本朗读为基数。 语音合成引擎将以下内容：<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />朗读为“Select the third option”。 |
-| `telephone` | | 此文本朗读为电话号码。 `format` 属性可以包含表示国家/地区代码的数字。 例如，“1”表示美国，“39”表示意大利。 语音合成引擎可以使用此信息来指导其电话号码的发音。 电话号码中也可能包含国家/地区代码，如果是，则它优先于 `format` 中的国家/地区代码。 语音合成引擎将以下内容：<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />朗读为“My number is area code eight eight eight five five five one two one two.” |
+| `telephone` | | 此文本朗读为电话号码。 `format` 属性可以包含表示国家/地区代码的数字。 例如，“1”表示美国，“39”表示意大利。 语音合成引擎可使用此信息来指导其电话号码的发音。 电话号码也可能包含国家/地区代码，如果是，则优先于 `format` 中的国家/地区代码。 语音合成引擎将以下内容：<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />朗读为“My number is area code eight eight eight five five five one two one two.” |
 | `time` | hms12, hms24 | 此文本朗读为时间。 `format` 属性指定时间是使用 12 小时制 (hms12) 还是 24 小时制 (hms24) 指定的。 请使用冒号分隔表示小时、分钟和秒的数字。 下面是有效的时间示例：12:35、1:14:32、08:15 和 02:50:45。 语音合成引擎将以下内容：<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />朗读为“The train departs at four A M.” |
 
 **使用情况**
@@ -808,7 +814,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 **属性**
 
-| 属性 | 说明                                   | 必需/可选                                        |
+| 属性 | 描述                                   | 必需/可选                                        |
 |-----------|-----------------------------------------------|------------------------------------------------------------|
 | `src`     | 指定音频文件的位置/URL。 | 在 SSML 文档中使用音频元素时，此属性是必需的。 |
 
@@ -844,7 +850,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 **属性**
 
-| 属性 | 说明 | 必需/可选 |
+| 属性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `src` | 指定背景音频文件的位置/URL。 | 如果在 SSML 文档中使用背景音频，则此属性是必需的。 |
 | `volume` | 指定背景音频文件的音量。 **接受的值**：`0` 到 `100`（含）。 默认值为 `1`。 | 可选 |
@@ -879,7 +885,7 @@ bookmark 元素可用于引用文本或标记序列中的特定位置。
 
 **属性**
 
-| 属性 | 说明                                   | 必需/可选                                        |
+| 属性 | 描述                                   | 必需/可选                                        |
 |-----------|-----------------------------------------------|------------------------------------------------------------|
 |  `mark`   | 指定 `bookmark` 元素的引用文本。 | 必需。 |
 
@@ -909,7 +915,7 @@ bookmark 元素可用于引用文本或标记序列中的特定位置。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-有关详细信息，请参阅 <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer.bookmarkreached" target="_blank"> `BookmarkReached` </a>。
+有关详细信息，请参阅 <a href="/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer.bookmarkreached" target="_blank"> `BookmarkReached` </a>。
 
 ```csharp
 synthesizer.BookmarkReached += (s, e) =>
@@ -928,7 +934,7 @@ Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-有关详细信息，请参阅 <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#bookmarkreached" target="_blank"> `BookmarkReached` </a>。
+有关详细信息，请参阅 <a href="/cpp/cognitive-services/speech/speechsynthesizer#bookmarkreached" target="_blank"> `BookmarkReached` </a>。
 
 ```cpp
 synthesizer->BookmarkReached += [](const SpeechSynthesisBookmarkEventArgs& e)
@@ -948,7 +954,7 @@ Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
 
 # <a name="java"></a>[Java](#tab/java)
 
-有关详细信息，请参阅 <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer.bookmarkReached#com_microsoft_cognitiveservices_speech_SpeechSynthesizer_BookmarkReached" target="_blank"> `BookmarkReached` </a>。
+有关详细信息，请参阅 <a href="/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer.bookmarkReached#com_microsoft_cognitiveservices_speech_SpeechSynthesizer_BookmarkReached" target="_blank"> `BookmarkReached` </a>。
 
 ```java
 synthesizer.BookmarkReached.addEventListener((o, e) -> {
@@ -966,7 +972,7 @@ Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
 
 # <a name="python"></a>[Python](#tab/python)
 
-有关详细信息，请参阅 <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer#bookmark-reached" target="_blank"> `bookmark_reached` </a>。
+有关详细信息，请参阅 <a href="/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer#bookmark-reached" target="_blank"> `bookmark_reached` </a>。
 
 ```python
 # The unit of evt.audio_offset is tick (1 tick = 100 nanoseconds), divide it by 10,000 to convert to milliseconds.
@@ -982,7 +988,7 @@ Bookmark reached, audio offset: 1462.5ms, bookmark text: flower_2.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-有关详细信息，请参阅 <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer#bookmarkReached" target="_blank"> `bookmarkReached`</a>。
+有关详细信息，请参阅 <a href="/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer#bookmarkReached" target="_blank"> `bookmarkReached`</a>。
 
 ```javascript
 synthesizer.bookmarkReached = function (s, e) {
@@ -998,7 +1004,7 @@ synthesizer.bookmarkReached = function (s, e) {
 
 # <a name="objective-c"></a>[Objective-C](#tab/objectivec)
 
-有关详细信息，请参阅 <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechsynthesizer#addbookmarkreachedeventhandler" target="_blank"> `addBookmarkReachedEventHandler` </a>。
+有关详细信息，请参阅 <a href="/objectivec/cognitive-services/speech/spxspeechsynthesizer#addbookmarkreachedeventhandler" target="_blank"> `addBookmarkReachedEventHandler` </a>。
 
 ```objectivec
 [synthesizer addBookmarkReachedEventHandler: ^ (SPXSpeechSynthesizer *synthesizer, SPXSpeechSynthesisBookmarkEventArgs *eventArgs) {

@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: e6f94c006de8914fe3ae27cdb8ac4d75a0ac49cc
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.openlocfilehash: e42b5ab2bbdebb2584b38531bd6458a98563ef42
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962988"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643748"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>使用 Azure 数据库迁移服务将 SSIS 包重新部署到 Azure SQL 数据库
 
 如果使用 SQL Server Integration Services (SSIS) 并想将 SSIS 项目/包从 SQL Sever 托管的源 SSISDB 迁移到 Azure SQL 数据库托管的目标 SSISDB，可以使用 Integration Services 部署向导来重新部署它们。 可以从 SQL Server Management Studio (SSMS) 中启动向导。
 
-如果使用的 SSIS 版本早于 2012 年版，在将 SSIS 项目/包重新部署到项目部署模型中时，首先需要使用 Integration Services 项目转换向导来转换它们，该向导也可从 SSMS 中启动。 有关详细信息，请参阅文章[将项目转换为项目部署模型](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert)。
+如果使用的 SSIS 版本早于 2012 年版，在将 SSIS 项目/包重新部署到项目部署模型中时，首先需要使用 Integration Services 项目转换向导来转换它们，该向导也可从 SSMS 中启动。 有关详细信息，请参阅文章[将项目转换为项目部署模型](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#convert)。
 
 > [!NOTE]
 > Azure 数据库迁移服务 (DMS) 目前不支持将源 SSISDB 迁移到 Azure SQL 数据库，但你可以使用以下过程重新部署 SSIS 项目/包。
@@ -81,7 +81,7 @@ ms.locfileid: "94962988"
 8. 选择“**下一步**”。
 9. 在“选择目标”页上，指定项目目标。
 
-    a. 在 "服务器名称" 文本框中，输入完全限定的服务器名称 ( # B0 server_name> database.windows.net) 。
+    a. 在“服务器名称”文本框中，输入完全限定的服务器名称 (<server_name>.database.windows.net)。
 
     b. 提供身份验证信息，然后选择“连接”。
 

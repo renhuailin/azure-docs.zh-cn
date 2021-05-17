@@ -10,17 +10,17 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, sstein
 ms.date: 05/08/2019
-ms.openlocfilehash: d9c1828732b9a4e0e85c3af2263f097edd54437d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c949579d23e3acfbecde3111534209151ed61ac
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91332842"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108314546"
 ---
 # <a name="use-azure-sql-managed-instance-securely-with-public-endpoints"></a>在公共终结点中安全使用 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Azure SQL 托管实例可通过[公共终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)进行用户连接。 本文将介绍如何提高此配置的安全性。
+Azure SQL 托管实例可通过[公共终结点](public-endpoint-configure.md)进行用户连接。 本文将介绍如何提高此配置的安全性。
 
 ## <a name="scenarios"></a>方案
 
@@ -44,7 +44,7 @@ Azure SQL 托管实例提供专用终结点用于从其虚拟网络内部启用�
 
 ![用于锁定入站和出站连接的安全配置](./media/public-endpoint-overview/managed-instance-vnet.png)
 
-托管实例具有[专用公共终结点地址](management-endpoint-find-ip-address.md)。 在客户端出站防火墙和网络安全组规则中，设置此公共终结点 IP 地址以限制出站连接。
+托管实例具有专用于客户的公共终结点地址。 此终结点与[管理终结点](management-endpoint-find-ip-address.md)共享 IP，但使用不同的端口。 在客户端出站防火墙和网络安全组规则中，设置此公共终结点 IP 地址以限制出站连接。
 
 为了确保发往托管实例的流量来自受信任的源，我们建议使用已知的 IP 地址从源建立连接。 使用网络安全组限制对端口 3342 上的托管实例公共终结点的访问。
 

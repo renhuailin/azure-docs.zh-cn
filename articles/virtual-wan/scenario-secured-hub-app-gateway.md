@@ -1,19 +1,19 @@
 ---
 title: 确保应用程序网关和后端池之间的流量安全
 titleSuffix: Azure Virtual WAN
-description: 路由场景 - 确保通过应用程序网关的流量安全，该网关部署在连接到安全虚拟 WAN 中心的分支 VNet 中。
+description: 了解对通过应用程序网关的流量提供保护的虚拟 WAN 路由方案。 应用程序网关部署在分支 VNet 中，后者连接到受保护的虚拟 WAN 中心。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 04/12/2021
+ms.date: 04/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: d9cb1251b90cf1c928f8286072bcd91e5ddf767e
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 9bb3343bc9c3dffa8f84280cd0799c7e92f4f50c
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107315188"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165796"
 ---
 # <a name="scenario-secure-traffic-between-application-gateway-and-backend-pools"></a>场景：确保应用程序网关和后端池之间的流量安全
 

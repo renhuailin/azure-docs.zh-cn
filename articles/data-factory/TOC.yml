@@ -8,6 +8,7 @@
       href: introduction.md
     - name: 将当前版本与版本 1 进行比较
       href: compare-versions.md
+      displayName: timeout
 - name: 快速入门
   expanded: true
   items:
@@ -15,6 +16,9 @@
       href: quickstart-create-data-factory-portal.md
     - name: 创建数据工厂 -“复制数据”工具
       href: quickstart-create-data-factory-copy-data-tool.md
+      displayName: timeout
+    - name: 创建数据工厂 - Azure CLI
+      href: quickstart-create-data-factory-azure-cli.md
     - name: 创建数据工厂 - Azure PowerShell
       href: quickstart-create-data-factory-powershell.md
     - name: 创建数据工厂 - .NET
@@ -30,6 +34,8 @@
       href: data-flow-create.md
 - name: 教程
   items:
+    - name: 教程列表
+      href: data-factory-tutorials.md
     - name: 复制和引入数据
       items:
         - name: 从 Azure Blob 存储到 Azure SQL 数据库
@@ -58,6 +64,7 @@
           href: load-azure-data-lake-storage-gen2-from-gen1.md
         - name: 从 Azure SQL 数据库到 Azure Synapse Analytics
           href: load-azure-sql-data-warehouse.md
+          displayName: polybase
         - name: 从 SAP BW 到 Azure Data Lake Storage Gen2
           href: load-sap-bw-data.md
         - name: 从 Office 365 到 Azure Blob 存储
@@ -68,6 +75,7 @@
               href: tutorial-bulk-copy-portal.md
             - name: Azure PowerShell
               href: tutorial-bulk-copy.md
+              displayName: polybase
         - name: 以增量方式加载数据
           href: tutorial-incremental-copy-overview.md
           items:
@@ -103,6 +111,8 @@
       items:
         - name: 使用映射数据流转换数据
           items:
+            - name: 使用 ADLS Gen2 在数据湖中加载数据的最佳做法
+              href: tutorial-data-flow-write-to-lake.md
             - name: 使用 Delta Lake 转换数据湖数据
               href: tutorial-data-flow-delta-lake.md
             - name: 使用映射数据流转换数据
@@ -153,6 +163,12 @@
       items:
         - name: 使用数据工厂和数据共享实现数据集成
           href: lab-data-flow-data-share.md
+    - name: 托管虚拟网络
+      items:
+        - name: 访问本地 SQL Server
+          href: tutorial-managed-virtual-network-on-premise-sql-server.md
+        - name: 访问 SQL 托管实例
+          href: tutorial-managed-virtual-network-sql-managed-instance.md
 - name: 示例
   items:
     - name: 代码示例
@@ -163,12 +179,14 @@
   items:
     - name: 管道和活动
       href: concepts-pipelines-activities.md
+      displayName: 'retry, timeout'
     - name: 链接服务
       href: concepts-linked-services.md
     - name: 数据集
       href: concepts-datasets-linked-services.md
     - name: 管道执行和触发器
       href: concepts-pipeline-execution-triggers.md
+      displayName: retry
     - name: 集成运行时
       href: concepts-integration-runtime.md
     - name: 数据流
@@ -183,16 +201,20 @@
               href: concepts-data-flow-schema-drift.md
             - name: 列模式
               href: concepts-data-flow-column-pattern.md
+              displayName: 'regex, regular expressions'
             - name: 数据流监视
               href: concepts-data-flow-monitoring.md
             - name: 数据流性能
               href: concepts-data-flow-performance.md
+              displayName: 'merge, timeout'
             - name: 管理数据流画布
               href: concepts-data-flow-manage-graph.md
             - name: 表达式生成器
               href: concepts-data-flow-expression-builder.md
+              displayName: 'regex, regular expressions'
             - name: 表达式语言
               href: data-flow-expression-functions.md
+              displayName: 'regex, regular expressions'
         - name: 使用 Power Query 数据整理功能准备数据
           items:
             - name: 数据整理概述
@@ -219,7 +241,7 @@
           href: source-control.md
         - name: 持续集成和交付
           href: continuous-integration-deployment.md
-        - name: 自动发布
+        - name: 针对 CI/CD 进行自动发布
           href: continuous-integration-deployment-improvements.md
     - name: 连接器
       items:
@@ -235,6 +257,7 @@
           href: format-avro.md
         - name: Azure Blob 存储
           href: connector-azure-blob-storage.md
+          displayName: timeout
         - name: Azure 认知搜索
           href: connector-azure-search.md
         - name: Azure Cosmos DB SQL API
@@ -247,6 +270,7 @@
           href: connector-azure-data-lake-store.md
         - name: Azure Data Lake Storage Gen2
           href: connector-azure-data-lake-storage.md
+          displayName: timeout
         - name: Azure Database for MariaDB
           href: connector-azure-database-for-mariadb.md
         - name: Azure Database for MySQL
@@ -257,14 +281,18 @@
           href: connector-azure-databricks-delta-lake.md
         - name: Azure 文件存储
           href: connector-azure-file-storage.md
-        - name: Azure SQL 数据库
+        - name: Azure SQL Database
           href: connector-azure-sql-database.md
+          displayName: upsert
         - name: Azure SQL 托管实例
           href: connector-azure-sql-managed-instance.md
+          displayName: upsert
         - name: Azure Synapse Analytics
           href: connector-azure-sql-data-warehouse.md
+          displayName: polybase
         - name: Azure 表存储
           href: connector-azure-table-storage.md
+          displayName: timeout
         - name: 二进制格式
           href: format-binary.md
         - name: Cassandra
@@ -289,6 +317,7 @@
           href: connector-dynamics-crm-office-365.md
         - name: Dynamics AX
           href: connector-dynamics-ax.md
+          displayName: timeout
         - name: Dynamics CRM
           href: connector-dynamics-crm-office-365.md
         - name: Excel 格式
@@ -315,6 +344,7 @@
           href: connector-hive.md
         - name: HTTP
           href: connector-http.md
+          displayName: timeout
         - name: HubSpot
           href: connector-hubspot.md
         - name: Impala
@@ -346,6 +376,7 @@
           href: connector-netezza.md
         - name: OData
           href: connector-odata.md
+          displayName: timeout
         - name: ODBC
           href: connector-odbc.md
         - name: Office 365
@@ -374,6 +405,7 @@
           href: connector-quickbooks.md
         - name: REST
           href: connector-rest.md
+          displayName: timeout
         - name: Salesforce
           href: connector-salesforce.md
         - name: Salesforce 服务云
@@ -389,8 +421,10 @@
           href: connector-sap-business-warehouse.md
         - name: SAP Cloud for Customer
           href: connector-sap-cloud-for-customer.md
+          displayName: timeout
         - name: SAP ECC
           href: connector-sap-ecc.md
+          displayName: timeout
         - name: SAP HANA
           href: connector-sap-hana.md
         - name: SAP 表
@@ -401,6 +435,7 @@
           href: connector-sftp.md
         - name: SharePoint Online 列表
           href: connector-sharepoint-online-list.md
+          displayName: timeout
         - name: Shopify
           href: connector-shopify.md
         - name: Snowflake
@@ -409,6 +444,7 @@
           href: connector-spark.md
         - name: SQL Server
           href: connector-sql-server.md
+          displayName: 'upsert, timeout'
         - name: Square
           href: connector-square.md
         - name: Sybase
@@ -429,6 +465,7 @@
       items:
         - name: 使用“复制”活动复制数据
           href: copy-activity-overview.md
+          displayName: 'retry, zip'
         - name: 监视复制活动
           href: copy-activity-monitoring.md
         - name: 使用“删除”活动删除文件
@@ -437,35 +474,42 @@
           href: copy-data-tool.md
         - name: 格式和压缩支持
           href: supported-file-formats-and-compression-codecs.md
+          displayName: zip
         - name: 复制活动性能
           items:
             - name: 性能和可伸缩性指南
               href: copy-activity-performance.md
             - name: 排查性能问题
               href: copy-activity-performance-troubleshooting.md
+              displayName: 'diu, timeout'
             - name: 性能功能
               href: copy-activity-performance-features.md
+              displayName: 'polybase, diu'
         - name: 保留元数据和 ACL
           href: copy-activity-preserve-metadata.md
         - name: 架构和类型映射
           href: copy-activity-schema-and-type-mapping.md
         - name: 容错
           href: copy-activity-fault-tolerance.md
+          displayName: polybase
         - name: 数据一致性验证
           href: copy-activity-data-consistency.md
         - name: 复制活动日志
           href: copy-activity-log.md
         - name: 格式和压缩支持（旧版）
           href: supported-file-formats-and-compression-codecs-legacy.md
+          displayName: zip
     - name: 转换数据
       href: transform-data.md
       items:
         - name: 执行数据流活动
           href: control-flow-execute-data-flow-activity.md
+          displayName: polybase
         - name: 执行 Power Query 活动
           href: control-flow-power-query-activity.md
         - name: Azure 函数活动
           href: control-flow-azure-function-activity.md
+          displayName: timeout
         - name: 自定义活动
           href: transform-data-using-dotnet-custom-activity.md
         - name: Databricks Jar 活动
@@ -480,6 +524,7 @@
           href: transform-data-using-data-lake-analytics.md
         - name: HDInsight Hive 活动
           href: transform-data-using-hadoop-hive.md
+          displayName: timeout
         - name: HDInsight MapReduce 活动
           href: transform-data-using-hadoop-map-reduce.md
         - name: HDInsight Pig 活动
@@ -514,20 +559,25 @@
           href: control-flow-if-condition-activity.md
         - name: 查找活动
           href: control-flow-lookup-activity.md
+          displayName: timeout
         - name: 设置变量活动
           href: control-flow-set-variable-activity.md
         - name: 切换活动
           href: control-flow-switch-activity.md
         - name: Until 活动
           href: control-flow-until-activity.md
+          displayName: timeout
         - name: 验证活动
           href: control-flow-validation-activity.md
+          displayName: timeout
         - name: Wait 活动
           href: control-flow-wait-activity.md
         - name: Web 活动
           href: control-flow-web-activity.md
+          displayName: timeout
         - name: Webhook 活动
           href: control-flow-webhook-activity.md
+          displayName: timeout
     - name: 数据流转换
       items:
         - name: 转换概述
@@ -536,20 +586,24 @@
           href: data-flow-aggregate.md
         - name: 更改行
           href: data-flow-alter-row.md
+          displayName: upsert
         - name: 有条件拆分
           href: data-flow-conditional-split.md
         - name: 派生列
           href: data-flow-derived-column.md
         - name: Exists
           href: data-flow-exists.md
+          displayName: timeout
         - name: 筛选器
           href: data-flow-filter.md
         - name: 平展
           href: data-flow-flatten.md
         - name: 联接
           href: data-flow-join.md
+          displayName: 'merge, timeout'
         - name: 查找
           href: data-flow-lookup.md
+          displayName: timeout
         - name: 新建分支
           href: data-flow-new-branch.md
         - name: 分析
@@ -560,6 +614,7 @@
           href: data-flow-rank.md
         - name: Select
           href: data-flow-select.md
+          displayName: 'regex, regular expressions'
         - name: 接收器
           href: data-flow-sink.md
         - name: 排序
@@ -582,12 +637,14 @@
           href: author-global-parameters.md
         - name: 表达式语言
           href: control-flow-expression-language-functions.md
+          displayName: 'formatdatetime, todate, replace, string, substring, utc, utcnow, dynamic content'
         - name: 系统变量
           href: control-flow-system-variables.md
         - name: 将映射数据流参数化
           href: parameters-data-flow.md
         - name: 如何参数化
           href: how-to-expression-language-functions.md
+          displayName: 'formatdatetime, todate, replace, string, substring, utc, utcnow, dynamic content, user properties'
     - name: 安全性
       items:
         - name: 数据移动安全注意事项
@@ -602,6 +659,7 @@
           href: how-to-use-azure-key-vault-secrets-pipeline-activities.md
         - name: 为自承载集成运行时加密凭据
           href: encrypt-credentials-self-hosted-integration-runtime.md
+          displayName: self hosted
         - name: 数据工厂的托管标识
           href: data-factory-service-identity.md
         - name: 使用客户管理的密钥加密数据工厂
@@ -611,7 +669,7 @@
         - name: 用于数据工厂的 Azure 专用链接
           href: data-factory-private-link.md
         - name: Azure 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/data-factory-security-baseline?toc=/azure/data-factory/TOC.json
     - name: 监视和管理
       items:
         - name: 直观地监视
@@ -638,14 +696,20 @@
           items:
             - name: 创建和配置自承载集成运行时
               href: create-self-hosted-integration-runtime.md
+              displayName: self hosted
             - name: 自承载集成运行时自动更新和过期通知
               href: self-hosted-integration-runtime-auto-update.md
+              displayName: self hosted
             - name: 共享的自承载集成运行时
               href: create-shared-self-hosted-integration-runtime-powershell.md
+              displayName: self hosted
             - name: 自承载集成运行时的自动化脚本
               href: self-hosted-integration-runtime-automation-scripts.md
+              displayName: self hosted
             - name: 在 Windows 容器中运行自承载集成运行时
               href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
+              displayName: self hosted
+          displayName: 'self hosted, runtime'
         - name: Azure-SSIS 集成运行时
           href: create-azure-ssis-integration-runtime.md
     - name: 在 Azure 中运行 SSIS 包
@@ -658,6 +722,7 @@
           href: how-to-invoke-ssis-package-azure-enabled-dtexec.md
         - name: 使用“执行 SSIS 包”活动运行 SSIS 包
           href: how-to-invoke-ssis-package-ssis-activity.md
+          displayName: 'retry, timeout'
         - name: 使用存储过程活动运行 SSIS 包
           href: how-to-invoke-ssis-package-stored-procedure-activity.md
         - name: 计划 Azure-SSIS 集成运行时
@@ -666,6 +731,7 @@
           href: join-azure-ssis-integration-runtime-virtual-network.md
         - name: 将自承载 IR 配置为 Azure-SSIS IR 的代理
           href: self-hosted-integration-runtime-proxy-ssis.md
+          displayName: self hosted
         - name: 为 Azure-SSIS IR 启用 Azure AD 身份验证
           href: enable-aad-authentication-azure-ssis-ir.md
         - name: 使用 Windows 身份验证连接到数据
@@ -678,6 +744,7 @@
           href: built-in-preinstalled-components-ssis-integration-runtime.md
         - name: 自定义 Azure-SSIS IR 的设置
           href: how-to-configure-azure-ssis-ir-custom-setup.md
+          displayName: timeout
         - name: 安装 Azure-SSIS IR 的许可组件
           href: how-to-develop-azure-ssis-ir-licensed-components.md
         - name: 为 Azure-SSIS IR 配置高性能
@@ -694,14 +761,17 @@
           href: azure-ssis-integration-runtime-package-store.md
     - name: 创建触发器
       items:
-        - name: 创建存储事件触发器
-          href: how-to-create-event-trigger.md
         - name: 创建计划触发器
           href: how-to-create-schedule-trigger.md
         - name: 创建翻转窗口触发器
           href: how-to-create-tumbling-window-trigger.md
+          displayName: retry
         - name: 创建翻转窗口触发器依赖项
           href: tumbling-window-trigger-dependency.md
+        - name: 创建存储事件触发器
+          href: how-to-create-event-trigger.md
+        - name: 创建自定义事件触发器
+          href: how-to-create-custom-event-trigger.md
         - name: 管道中的引用触发器元数据
           href: how-to-use-trigger-parameterization.md
     - name: 数据目录与治理
@@ -720,6 +790,7 @@
               href: data-migration-guidance-s3-azure-storage.md
             - name: 将数据从本地 Hadoop 群集迁移到 Azure
               href: data-migration-guidance-hdfs-azure-storage.md
+              displayName: retry
             - name: 将数据从本地 Netezza 服务器迁移到 Azure
               href: data-migration-guidance-netezza-azure-sqldw.md
         - name: Azure 机器学习
@@ -772,32 +843,45 @@
           href: data-flow-understand-reservation-charges.md
         - name: 计划和管理成本
           href: plan-manage-costs.md
+          displayName: diu
         - name: 定价示例
           href: pricing-concepts.md
+          displayName: diu
     - name: 疑难解答指南
       items:
         - name: 数据工厂 UX
           href: data-factory-ux-troubleshoot-guide.md
         - name: 活动
           href: data-factory-troubleshoot-guide.md
+          displayName: timeout
         - name: 连接器
           href: connector-troubleshoot-guide.md
+          displayName: 'polybase, timeout'
         - name: 管道触发器
           href: pipeline-trigger-troubleshoot-guide.md
         - name: 数据流
-          href: data-flow-troubleshoot-guide.md
+          items:
+            - name: 数据流概述
+              href: data-flow-troubleshoot-guide.md
+              displayName: timeout
+            - name: 连接器和格式
+              href: data-flow-troubleshoot-connector-format.md
         - name: 持续集成和部署
           href: ci-cd-github-troubleshoot-guide.md
         - name: 安全性和访问控制
           href: security-and-access-control-troubleshoot-guide.md
         - name: 自承载集成运行时
           href: self-hosted-integration-runtime-troubleshoot-guide.md
+          displayName: self hosted
         - name: Azure-SSIS 集成运行时
           href: ssis-integration-runtime-management-troubleshoot.md
+          displayName: timeout
         - name: 在 Azure-SSIS IR 中排查包执行问题
           href: ssis-integration-runtime-ssis-activity-faq.md
+          displayName: 'retry, timeout'
         - name: 在 Azure-SSIS IR 中诊断连接性
           href: ssis-integration-runtime-diagnose-connectivity-faq.md
+          displayName: timeout
 - name: 参考
   items:
     - name: 数据流脚本
@@ -814,12 +898,15 @@
       href: /python/api/overview/azure/datafactory
     - name: Azure Policy 内置策略定义
       href: policy-reference.md
+    - name: Azure CLI
+      href: /cli/azure/datafactory
 - name: 资源
   items:
     - name: 白皮书
       href: whitepapers.md
     - name: 常见问题解答
       href: frequently-asked-questions.md
+      displayName: timeout
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=data-factory'
     - name: 博客

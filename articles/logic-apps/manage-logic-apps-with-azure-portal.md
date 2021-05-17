@@ -6,15 +6,15 @@ ms.suite: integration
 author: lauradolan
 ms.author: ladolan
 ms.reviewer: estfan, jonfan, logicappspm
-ms.topic: article
+ms.topic: conceptual
 ms.custom: mvc
-ms.date: 07/20/2020
-ms.openlocfilehash: d50f577a7170982be004cc8957114f79675fbc6e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/23/2021
+ms.openlocfilehash: 4c4a3b1e5d165681e921d2fadeadc5dea9633d41
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96006092"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162898"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>在 Azure 门户中管理逻辑应用
 
@@ -28,23 +28,15 @@ ms.locfileid: "96006092"
 
 <a name="find-logic-app"></a>
 
-## <a name="find-your-logic-apps"></a>查找逻辑应用
-
-若要找到并打开你的逻辑应用，请执行以下步骤：
+## <a name="find-and-open-a-logic-app"></a>查找并打开逻辑应用
 
 1. 使用 Azure 帐户登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 在 Azure 搜索栏中输入 `logic apps`，然后选择“逻辑应用”。
+1. 在门户搜索框中，输入 `logic apps`，然后选择“逻辑应用”。
 
-   ![该屏幕截图显示 Azure 门户菜单，以及在搜索栏中搜索并选择“逻辑应用”。](./media/manage-logic-apps-with-azure-portal/find-select-logic-apps.png)
+1. 从逻辑应用列表中，通过浏览或筛选列表查找逻辑应用。
 
-1. 在“逻辑应用”页上，找到并选择要管理的逻辑应用。
-
-   该逻辑应用的“概览”窗格打开后，可通过以下方式筛选“逻辑应用”页上显示的列表： 
-
-   * 按名称搜索逻辑应用
-   * 按订阅、资源组、位置和标记筛选逻辑应用
-   * 按资源组、类型、订阅和位置对逻辑应用进行分组
+1. 若要打开逻辑应用，请选择要管理的应用。
 
 ## <a name="view-logic-app-properties"></a>查看逻辑应用属性
 
@@ -66,121 +58,80 @@ ms.locfileid: "96006092"
    * **访问终结点 IP 地址**
    * **连接器传出 IP 地址**
 
+<a name="disable-enable-logic-apps"></a>
+
 ## <a name="disable-or-enable-logic-apps"></a>禁用或启用逻辑应用
 
-可以在 Azure 门户中启用或禁用[单个逻辑应用](#disable-enable-single-logic-app)，或者一次性启用或禁用[多个逻辑应用](#disable-or-enable-multiple-logic-apps)。 还可以[在 Visual Studio 中启用或禁用逻辑应用](manage-logic-apps-with-visual-studio.md#disable-or-enable-logic-app)。
+若要在下一次满足触发条件时阻止触发器激发，请禁用逻辑应用。 可以在 Azure 门户中启用或禁用[单个逻辑应用](#disable-enable-single-logic-app)，或者一次性启用或禁用[多个逻辑应用](#disable-or-enable-multiple-logic-apps)。 禁用逻辑应用会以下列方式影响工作流实例：
 
-禁用逻辑应用会对工作流实例和运行造成以下影响：
+* 逻辑应用服务将继续所有正在进行和挂起的运行，直到它们完成。 根据卷或积压工作 (backlog)，此过程可能需要一些时间才能完成。
 
-* 所有正在进行的以及挂起的运行将会继续，直到完成。 此过程可能需要一段时间，具体取决于这些运行的数量。
+* 逻辑应用服务不会创建或运行新的工作流实例。
 
-* 逻辑应用引擎不会创建或运行新的工作流实例。
+* 下一次满足触发器的条件时，触发器不会触发。 但是，触发器状态会记住逻辑应用的停止位置。 因此，如果重新激活逻辑应用，触发器将会针对自上次运行以来未处理的所有项触发。
 
-* 下一次满足触发器的条件时，触发器不会触发。
+  若要阻止触发器针对自上次运行以来未处理的项触发，请在重新激活逻辑应用之前清除触发器的状态：
 
-* 触发器状态会记住逻辑应用的停止位置。 因此，如果重新启用逻辑应用，将会针对自上次运行以来未处理的所有项触发此触发器。
-
-  若要阻止逻辑应用针对自上次运行以来未处理的项触发，请在重新启用逻辑应用之前清除触发器的状态：
-
-  1. 在 Azure 门户中，[找到并打开你的逻辑应用](#find-logic-app)。
-
-  1. 编辑逻辑应用触发器的任何部分。
-
+  1. 在逻辑应用中，编辑工作流触发器的任何部分。
   1. 保存所做更改。 此步骤会重置触发器的当前状态。
-
-  1. [重新启用逻辑应用](#disable-enable-single-logic-app)。
+  1. [重新激活逻辑应用](#disable-enable-single-logic-app)。
 
 <a name="disable-enable-single-logic-app"></a>
 
-### <a name="disable-or-enable-single-logic-app"></a>禁用或启用单个逻辑应用
+### <a name="disable-or-enable-a-single-logic-app"></a>禁用或启用单个逻辑应用
 
 1. 在 Azure 门户中，[找到并打开你的逻辑应用](#find-logic-app)。
 
-1. 在逻辑应用的菜单中，选择“概览”。 从以下选项中进行选择：
+1. 在逻辑应用的菜单中，选择“概览”。
 
-   * 在工具栏中选择“禁用”。
+   * 若要禁用逻辑应用，请在“概述”窗格工具栏上选择“禁用”。
+   * 若要启用逻辑应用，请在“概述”窗格工具栏上选择“启用”。
 
-     ![逻辑应用工具栏屏幕截图，显示选择了“禁用”按钮。](./media/manage-logic-apps-with-azure-portal/disable-single-logic-app.png)
+     > [!NOTE]
+     > 如果逻辑应用已禁用，则只会看到“启用”选项。
+     > 如果逻辑应用已启用，则只会看到“禁用”选项。
 
-     如果逻辑应用已禁用，则只会看到“启用”选项。
-
-   * 在工具栏中选择“启用”。
-
-     ![逻辑应用工具栏屏幕截图，显示选择了“启用”按钮。](./media/manage-logic-apps-with-azure-portal/enable-single-logic-app.png)
-
-     如果逻辑应用已启用，则只会看到“禁用”选项。 
-
-   Azure 门户会在 Azure 主工具栏上显示一条确认操作是成功还是失败的通知。
-
-   ![Azure 门户的屏幕截图，显示确认操作状态的通知](./media/manage-logic-apps-with-azure-portal/operation-confirmation-notification.png)
+1. 若要确认操作是成功还是失败，请在 Azure 主工具栏上打开“通知”列表（钟形图标）。
 
 <a name="disable-or-enable-multiple-logic-apps"></a>
 
 ### <a name="disable-or-enable-multiple-logic-apps"></a>禁用或启用多个逻辑应用
 
-1. 在 Azure 门户中，[找到要禁用或启用的逻辑应用](#find-logic-app)。
+1. 在 Azure 门户的主搜索框中，输入 `logic apps`，然后选择“逻辑应用”。
 
-1. 若要检查某个逻辑应用当前是已启用还是已禁用，请在“逻辑应用”页上查看该逻辑应用的“状态”列。  
+1. 在“逻辑应用”页上，查看逻辑应用的“状态”列 。
 
-   ![“Azure 门户逻辑应用”页的屏幕截图，显示按状态列排序的逻辑应用列表。](./media/manage-logic-apps-with-azure-portal/view-logic-app-status.png)
+1. 在复选框列中，选择要停止或启动的逻辑应用。
 
-   如果“状态”列不可见，请在“逻辑应用”工具栏上选择“试用预览版”。  
+   * 若要停止所选的正在运行的逻辑应用，请在“概述”窗格工具栏上选择“禁用/停止”。 确认选择。
+   * 若要启动所选的已停止的逻辑应用，请在“概述”窗格工具栏上选择“启用/启动”。
 
-   ![“Azure 门户逻辑应用”页的屏幕截图，显示“尝试预览”按钮已选中。](./media/manage-logic-apps-with-azure-portal/select-try-preview.png)
+1. 若要确认操作是成功还是失败，请在 Azure 主工具栏上打开“通知”列表（钟形图标）。
 
-1. 在复选框列中，选择要禁用或启用的逻辑应用。 在工具栏上选择“禁用”或“启用”。 
+   > [!TIP]
+   > 如果未显示正确的状态，请刷新页面。
 
-   ![“Azure 门户逻辑应用”页的屏幕截图，显示了多个逻辑应用的“启用”和“禁用”按钮。](./media/manage-logic-apps-with-azure-portal/enable-disable-multiple-logic-apps.png)
-
-1. 确认框出现时，选择“是”以继续。
-
-   Azure 门户会在 Azure 主工具栏上显示一条确认操作是成功还是失败的通知。
+<a name="delete-logic-apps"></a>
 
 ## <a name="delete-logic-apps"></a>删除逻辑应用
 
-可以在 Azure 门户中[删除单个逻辑应用](#delete-single-logic-app)，或者[一次性删除多个逻辑应用](#delete-multiple-logic-apps)。 还可以[在 Visual Studio 中删除逻辑应用](manage-logic-apps-with-visual-studio.md#delete-your-logic-app)。
+可以删除单个逻辑应用，或者一次性删除多个逻辑应用。 删除逻辑应用会以下列方式方式影响工作流实例：
 
-删除逻辑应用会对工作流实例造成以下影响：
+* 逻辑应用服务会可能取消任何正在进行和挂起的运行。
 
-* 所有正在进行的以及挂起的运行将会继续，直到完成。 此过程可能需要一段时间，具体取决于这些运行的数量。
+  即使使用较大的卷或积压工作 (backlog)，大多数运行在完成或开始之前都将被取消。 但是，取消过程可能需要一些时间才能完成。 同时，在服务执行取消过程中，可能会选取某些运行来执行。
 
-* 逻辑应用引擎不会创建或运行新的工作流实例。
+* 逻辑应用服务不会创建或运行新的工作流实例。
 
-> [!NOTE]
-> 如果删除并重新创建了子逻辑应用，则必须重新保存父逻辑应用。 重新创建的子应用将具有不同的元数据。
-> 如果在重新创建父逻辑应用的子逻辑应用后未重新保存父逻辑应用，则对子逻辑应用的调用将失败，并出现“未授权”错误。 此行为适用于父子逻辑应用，例如，那些使用集成帐户中的项目或调用 Azure 函数的逻辑应用。
+* 如果删除工作流，然后重新创建相同的工作流，则重新创建的工作流不会具有与删除的工作流相同的元数据。 必须重新保存任何调用删除工作流的工作流。 这样，调用方就可获取重新创建的工作流的正确信息。 否则，对重新创建的工作流的调用将失败并显示 `Unauthorized` 错误。 此行为也适用于在集成帐户中使用项目的工作流和调用 Azure 函数的工作流。
 
-<a name="delete-single-logic-app"></a>
+1. 在 Azure 门户的主搜索框中，输入 `logic apps`，然后选择“逻辑应用”。
 
-### <a name="delete-single-logic-app"></a>删除单个逻辑应用
-
-1. 在 Azure 门户中，[找到并打开你的逻辑应用](#find-logic-app)。
-
-1. 在逻辑应用的菜单中，选择“概览”。 在逻辑应用的工具栏上，选择“删除”。
-
-   ![逻辑应用工具栏屏幕截图，显示选择了“删除”按钮。](./media/manage-logic-apps-with-azure-portal/delete-single-logic-app.png)
-
-1. 确认框出现时，输入逻辑应用的名称，然后选择“删除”。
-
-   ![逻辑应用提示确认删除单个逻辑应用的屏幕截图。](./media/manage-logic-apps-with-azure-portal/delete-confirmation-single-logic-app.png)
-
-   Azure 门户会在 Azure 主工具栏上显示一条确认操作是成功还是失败的通知。
-
-<a name="delete-multiple-logic-apps"></a>
-
-### <a name="delete-multiple-logic-apps"></a>删除多个逻辑应用
-
-1. 在 Azure 门户中，[找到要删除的逻辑应用](#find-logic-app)。
-
-1. 在复选框列中，选择要删除的逻辑应用。 在工具栏中选择“删除”。
-
-   ![逻辑应用页的屏幕截图，显示了一个选定要删除的列表中的多个逻辑应用。](./media/manage-logic-apps-with-azure-portal/delete-multiple-logic-apps.png)
+1. 从“逻辑应用”列表的复选框列中，选择要删除的单个或多个逻辑应用。 在工具栏中选择“删除”。
 
 1. 确认框出现时，输入 `yes` 并选择“删除”。
 
-   ![逻辑应用提示确认删除多个逻辑应用的屏幕截图。](./media/manage-logic-apps-with-azure-portal/delete-confirmation-multiple-logic-apps.png)
-
-   Azure 门户会在 Azure 主工具栏上显示一条确认操作是成功还是失败的通知。
+1. 若要确认操作是成功还是失败，请在 Azure 主工具栏上打开“通知”列表（钟形图标）。
 
 <a name="manage-logic-app-versions"></a>
 
@@ -192,7 +143,7 @@ ms.locfileid: "96006092"
 
 ### <a name="find-and-view-previous-versions"></a>查找和查看以前的版本
 
-1. 在 Azure 门户中，[找到要管理的逻辑应用](#find-logic-app)。
+1. 在 Azure 门户中，[找到并打开你的逻辑应用](#find-logic-app)。
 
 1. 在逻辑应用菜单中的“开发工具”下，选择“版本”。 
 

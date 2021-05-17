@@ -3,25 +3,28 @@ title: Azure 服务总线 - 消息传送异常 | Microsoft Docs
 description: 本文提供了 Azure 服务总线消息传送异常以及发生异常时建议采取的措施的列表。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 3b56aff2635593d6cb49adbcf3784ddd5cb4fa39
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6c980b81d18dbbcb5764b3d8c4ed040f930bce4f
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99219139"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108160972"
 ---
 # <a name="service-bus-messaging-exceptions"></a>服务总线消息传送异常
-本文列出了 .NET Framework API 生成的 .NET 异常。 
+
+本文列出了 .NET Framework API 生成的 .NET 异常。
 
 ## <a name="exception-categories"></a>异常类别
+
 消息传送 API 会生成以下类别的异常，以及在尝试修复这些异常时可以采取的相关操作。 异常的含义和原因会因消息传送实体的类型而异：
 
 1. 用户代码错误（[System.ArgumentException](/dotnet/api/system.argumentexception)、[System.InvalidOperationException](/dotnet/api/system.invalidoperationexception)、[System.OperationCanceledException](/dotnet/api/system.operationcanceledexception)、[System.Runtime.Serialization.SerializationException](/dotnet/api/system.runtime.serialization.serializationexception)）。 常规操作：继续之前尝试修复代码。
 2. 设置/配置错误（[Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception)、[System.UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception)）。 常规操作：检查配置，必要时进行更改。
 3. 暂时性异常（[Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception)、[Microsoft.ServiceBus.Messaging.ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception)、[Microsoft.ServiceBus.Messaging.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception)）。 常规操作：重试操作或通知用户。 客户端 SDK 中的 `RetryPolicy` 类可以配置为自动处理重试。 有关详细信息，请参阅[重试指南](/azure/architecture/best-practices/retry-service-specific#service-bus)。
-4. 其他异常（[System.Transactions.TransactionException](/dotnet/api/system.transactions.transactionexception)、[System.TimeoutException](/dotnet/api/system.timeoutexception)、[Microsoft.ServiceBus.Messaging.MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception)、[Microsoft.ServiceBus.Messaging.SessionLockLostException](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception)）。 常规操作：特定于异常类型；请参考以下部分中的表： 
+4. 其他异常（[System.Transactions.TransactionException](/dotnet/api/system.transactions.transactionexception)、[System.TimeoutException](/dotnet/api/system.timeoutexception)、[Microsoft.ServiceBus.Messaging.MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception)、[Microsoft.ServiceBus.Messaging.SessionLockLostException](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception)）。 常规操作：特定于异常类型；请参考以下部分中的表：
 
 ## <a name="exception-types"></a>异常类型
+
 下表列出了消息异常的类型及其原因，并说明可以采取的建议性操作。
 
 | **异常类型** | **说明/原因/示例** | **建议的操作** | **自动/立即重试注意事项** |
@@ -49,25 +52,27 @@ ms.locfileid: "99219139"
 | [TransactionInDoubtException](/dotnet/api/system.transactions.transactionindoubtexception) |已对未决事务尝试进行操作，或尝试提交该事务并且事务进入不确定状态。 |应用程序必须处理此异常（作为特例），因为此事务可能已提交。 |- |
 
 ## <a name="quotaexceededexception"></a>QuotaExceededException
+
 [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) 指示已超过某个特定实体的配额。
 
 ### <a name="queues-and-topics"></a>队列和主题
+
 对队列和主题而言，这通常指队列的大小。 错误消息属性会包含更多详细信息，如以下示例所示：
 
-```Output
+```output
 Microsoft.ServiceBus.Messaging.QuotaExceededException
 Message: The maximum entity size has been reached or exceeded for Topic: 'xxx-xxx-xxx'. 
     Size of entity in bytes:1073742326, Max entity size in bytes:
 1073741824..TrackingId:xxxxxxxxxxxxxxxxxxxxxxxxxx, TimeStamp:3/15/2013 7:50:18 AM
 ```
 
-该消息指出，主题超过其大小限制，本例中为 1 GB（默认大小限制）。 
+该消息指出，主题超过其大小限制，本例中为 1 GB（默认大小限制）。
 
 ### <a name="namespaces"></a>命名空间
 
 对于命名空间，[QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) 可指示应用程序已超出到命名空间的最大连接数。 例如：
 
-```Output
+```output
 Microsoft.ServiceBus.Messaging.QuotaExceededException: ConnectionsQuotaExceeded for namespace xxx.
 <tracking-id-guid>_G12 ---> 
 System.ServiceModel.FaultException`1[System.ServiceModel.ExceptionDetail]: 
@@ -75,23 +80,25 @@ ConnectionsQuotaExceeded for namespace xxx.
 ```
 
 ### <a name="common-causes"></a>常见原因
+
 此错误有两个常见的原因：死信队列和无法正常运行的消息接收器。
 
 1. [死信队列](service-bus-dead-letter-queues.md) 读取器无法完成消息，当锁定过期后，消息将返回至队列/主题。 如果读取器发生异常，以致无法调用 [BrokeredMessage.Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.complete)，就会出现这种情况。 消息读取 10 次后，默认移至死信队列。 此行为由 [QueueDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) 属性控制，默认值为 10。 消息堆积在死信队列中会占用空间。
-   
+
     若要解决此问题，请读取并完成死信队列中的消息，就像处理任何其他队列一样。 可以使用 [FormatDeadLetterPath](/dotnet/api/microsoft.azure.servicebus.entitynamehelper.formatdeadletterpath) 方法帮助格式化死信队列路径。
 2. **接收方已停止**。 接收方已停止从队列或订阅接收消息。 识别这种情况的方法是查看 [QueueDescription.MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) 属性，它会显示消息的完整细目。 如果 [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount) 属性很高或不断增加，则表示消息写入的速度超过读取的速度。
 
 ## <a name="timeoutexception"></a>TimeoutException
-[TimeoutException](/dotnet/api/system.timeoutexception) 指示用户启动的操作所用的时间超过操作超时值。 
+
+[TimeoutException](/dotnet/api/system.timeoutexception) 指示用户启动的操作所用的时间超过操作超时值。
 
 应检查 [ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) 属性的值，因为达到此限制也会导致 [TimeoutException](/dotnet/api/system.timeoutexception) 异常。
 
 预计会在维护操作（例如，服务总线服务更新或运行服务的资源上的 OS 更新）期间或操作间隙发生超时。 在 OS 更新期间，实体会四处移动，节点会更新或重启，这可能会导致超时。 有关 Azure 服务总线服务的服务级别协议 (SLA) 详细信息，请参阅[服务总线的 SLA](https://azure.microsoft.com/support/legal/sla/service-bus/)。
 
-
 ### <a name="queues-and-topics"></a>队列和主题
-对于队列和主题，超时在 [MessagingFactorySettings.OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) 属性中作为连接字符串的一部分指定，或通过 [ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.azure.servicebus.servicebusconnectionstringbuilder) 指定。 错误消息本身可能会有所不同，但它始终包含当前操作的指定超时值。 
+
+对于队列和主题，超时在 [MessagingFactorySettings.OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) 属性中作为连接字符串的一部分指定，或通过 [ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.azure.servicebus.servicebusconnectionstringbuilder) 指定。 错误消息本身可能会有所不同，但它始终包含当前操作的指定超时值。
 
 ## <a name="messagelocklostexception"></a>MessageLockLostException
 
@@ -99,7 +106,7 @@ ConnectionsQuotaExceeded for namespace xxx.
 
 当使用 [PeekLock](message-transfers-locks-settlement.md#peeklock) 接收模式接收到消息并且客户端持有的消息锁在服务端过期时，将引发 MessageLockLostException。
 
-消息上的锁可能会因多种原因过期 - 
+消息上的锁可能会因多种原因过期：
 
   * 锁计时器在客户端应用程序续订之前已过期。
   * 客户端应用程序获取了锁，将其保存到持久存储区，然后重新启动。 重新启动后，客户端应用程序会查看即时消息并尝试完成这些操作。
@@ -118,7 +125,7 @@ ConnectionsQuotaExceeded for namespace xxx.
 
 如果接受了某个会话，且客户端持有的锁在服务端过期，将引发 SessionLockLostException。
 
-会话上的锁可能会因多种原因过期 - 
+会话上的锁可能会因多种原因过期：
 
   * 锁计时器在客户端应用程序续订之前已过期。
   * 客户端应用程序获取了锁，将其保存到持久存储区，然后重新启动。 重新启动后，客户端应用程序会查看即时会话，并尝试处理这些会话中的消息。
@@ -133,7 +140,8 @@ ConnectionsQuotaExceeded for namespace xxx.
 
 ### <a name="cause"></a>原因
 
-以下情况下会引发 SocketException -
+以下情况下会引发 SocketException：
+
    * 当由于主机在指定时间后没有正确响应而导致连接尝试失败时（TCP 错误代码 10060）。
    * 建立的连接失败，因为连接的主机未能响应。
    * 处理消息时出错，或者远程主机超过了规定的超时时间。
@@ -141,11 +149,11 @@ ConnectionsQuotaExceeded for namespace xxx.
 
 ### <a name="resolution"></a>解决方法
 
-SocketException 错误表明承载应用程序的 VM 无法将名称 `<mynamespace>.servicebus.windows.net` 转换为相应的 IP 地址。 
+SocketException 错误表明承载应用程序的 VM 无法将名称 `<mynamespace>.servicebus.windows.net` 转换为相应的 IP 地址。
 
 检查以下命令是否成功映射到 IP 地址。
 
-```Powershell
+```powershell
 PS C:\> nslookup <mynamespace>.servicebus.windows.net
 ```
 
@@ -160,7 +168,6 @@ Aliases:  <mynamespace>.servicebus.windows.net
 如果上述名称未解析为 IP 和命名空间别名，请检查确定网络管理员要进一步研究的名称。 名称解析是通过 DNS 服务器完成的，通常是客户网络中的资源。 如果 DNS 解析由 Azure DNS 完成，请与 Azure 支持部门联系。
 
 如果名称解析“按预期工作”，请在[此处](service-bus-troubleshooting-guide.md#connectivity-certificate-or-timeout-issues)检查是否允许连接到 Azure 服务总线
-
 
 ## <a name="messagingexception"></a>MessagingException
 
@@ -184,5 +191,6 @@ MessagingException 是可能出于各种原因引发的一般异常。 下面列
    * 对于其他问题，异常中的详细信息表明可以从相同地方推断问题和解决步骤。
 
 ## <a name="next-steps"></a>后续步骤
+
 有关服务总线 .NET API 的完整参考，请参阅 [Azure .NET API 参考](/dotnet/api/overview/azure/service-bus)。
 有关故障排除提示信息，请参阅[故障排除指南](service-bus-troubleshooting-guide.md)

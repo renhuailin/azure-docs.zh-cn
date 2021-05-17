@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: 51a59c0daa8fb0c5e59007ac4474ca09cccf4ac5
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e30e431ec393a59e0799bf1c56611fbba84d8960
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126140"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330577"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>表单识别器预生成的发票模型
 
@@ -23,7 +23,7 @@ Azure 表单识别器可以使用其预生成的发票模型分析和提取销�
 
 ## <a name="what-does-the-invoice-service-do"></a>发票服务有哪些功能？
 
-发票 API 从发票中提取关键字段和行项目，并在组织的结构化 JSON 响应中返回它们。 发票可以是各种格式和质量，包括手机拍摄的图像、扫描文档和数字 PDF。 发票 API 将从所有这些发票中提取结构化输出。 
+发票 API 从发票中提取关键字段和行项目，并在组织的结构化 JSON 响应中返回它们。 发票可以采用各种格式和质量，包括手机拍摄的图像、扫描文档和数字 PDF。 发票 API 将从所有这些发票中提取结构化输出。
 
 ![Contoso 发票示例](./media/invoice-example-new.jpg)
 
@@ -34,7 +34,7 @@ Azure 表单识别器可以使用其预生成的发票模型分析和提取销�
 > [!div class="nextstepaction"]
 > [试用预生成模型](https://fott-preview.azurewebsites.net/)
 
-若要试用表单识别器发票服务，你将需要一个 Azure 订阅（[免费创建一个](https://azure.microsoft.com/free/cognitive-services)）和一个[表单识别器资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)终结点和密钥。 
+若要试用表单识别器发票服务，你将需要一个 Azure 订阅（[免费创建一个](https://azure.microsoft.com/free/cognitive-services)）和一个[表单识别器资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)终结点和密钥。
 
 :::image type="content" source="media/analyze-invoice-new.png" alt-text="已分析的发票示例" lightbox="media/analyze-invoice-new.png":::
 
@@ -42,10 +42,9 @@ Azure 表单识别器可以使用其预生成的发票模型分析和提取销�
 
 [!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
-## <a name="supported-locales"></a>支持的区域设置 
+## <a name="supported-locales"></a>支持的区域设置
 
-预生成的 Receipt v2.0（正式版）和预生成的 Receipt v2.1-preview.3（预览版）支持 EN-US 区域设置的发票 。
-
+预生成的 Invoice v2.1-preview.3（预览版）支持采用 en-us 区域设置的发票。 
 
 ## <a name="the-analyze-invoice-operation"></a>分析发票操作
 
@@ -67,10 +66,11 @@ Azure 表单识别器可以使用其预生成的发票模型分析和提取销�
 
 ### <a name="sample-json-output"></a>示例 JSON 输出
 
-对 Get Analyze Invoice Result 操作的响应将是已提取所有信息的发票的结构化表示形式。 有关[示例发票文件](media/sample-invoice.jpg)及其结构化输出[示例发票输出](media/invoice-example-new.jpg)，请参阅此处。
+对 Get Analyze Invoice Result 操作的响应将是已提取所有信息的发票的结构化表示形式。
+有关[示例发票文件](media/sample-invoice.jpg)及其结构化输出[示例发票输出](media/invoice-example-new.jpg)，请参阅此处。
 
-JSON 输出包含 3 个部分： 
-* `"readResults"` 节点包含所有已识别的文本和选定标记。 文本按页，然后按行，然后按单个单词进行组织。 
+JSON 输出分为三个部分：
+* `"readResults"` 节点包含所有已识别的文本和选定标记。 文本按页，然后按行，然后按单个单词进行组织。
 * `"pageResults"` 节点包含提取的表和单元格及其边界框、置信度以及对“readResults”中的行和词的引用。
 * `"documentResults"` 节点包含模型发现的特定于发票的值和行项目。 可以在此处找到发票中的所有字段，如发票 ID、送货地址、帐单地址、客户、总计、行项目等等。
 
@@ -82,9 +82,9 @@ JSON 输出包含 3 个部分：
 |:-----|:----|:----|:----| :----|
 | CustomerName | 字符串 | 正在开票的客户 | Microsoft Corp |  |
 | CustomerId | 字符串 | 客户的引用 ID | CID-12345 |  |
-| PurchaseOrder | 字符串 | 采购订单参考编号 | PO-3333 | | 
-| InvoiceId | 字符串 | 此特定发票的 ID（通常为“发票编号”） | INV-100 | | 
-| InvoiceDate | date | 开具发票的日期 | 2019 年 11 月 15 日 | 2019-11-15 | 
+| PurchaseOrder | 字符串 | 采购订单参考编号 | PO-3333 | |
+| InvoiceId | 字符串 | 此特定发票的 ID（通常为“发票编号”） | INV-100 | |
+| InvoiceDate | date | 开具发票的日期 | 2019 年 11 月 15 日 | 2019-11-15 |
 | DueDate | date | 此发票的支付截止日期 | 2019/12/15 | 2019-12-15 |
 | VendorName | 字符串 | 创建此发票的供应商 | CONTOSO LTD. | |
 | VendorAddress | 字符串 | 供应商的邮件地址 | 123 456th St New York, NY, 10001 | |
@@ -95,7 +95,7 @@ JSON 输出包含 3 个部分：
 | BillingAddressRecipient | 字符串 | 与 BillingAddress 关联的名称 | Microsoft 服务 | |
 | ShippingAddress | 字符串 | 客户的具体送货地址 | 123 Ship St, Redmond WA, 98052 | |
 | ShippingAddressRecipient | 字符串 | 与 ShippingAddress 关联的名称 | Microsoft 交付 | |
-| SubTotal | 数字 | 此发票上标识的小计字段 | 100.00 美元 | 100 | 
+| SubTotal | 数字 | 此发票上标识的小计字段 | 100.00 美元 | 100 |
 | TotalTax | 数字 | 此发票上标识的总税款字段 | $10.00 | 10 |
 | InvoiceTotal | 数字 | 与此发票关联的新费用总计 | 110.00 美元 | 110 |
 | AmountDue |  数字 | 应支付给供应商的总金额 | 610.00 美元 | 610 |
@@ -107,7 +107,7 @@ JSON 输出包含 3 个部分：
 | ServiceEndDate | date | 服务时段的结束日期（例如，公用事业帐单服务期间） | 2019/11/14 | 2019-11-14 |
 | PreviousUnpaidBalance | 数字 | 先前未付的具体余额 | 500.00 美元 | 500 |
 
-下面是在 JSON 输出响应中从发票中提取的行项目（下面的输出使用此[示例发票](./media/sample-invoice.jpg)）  
+下面是在 JSON 输出响应中从发票中提取的行项目（下面的输出使用此[示例发票](./media/sample-invoice.jpg)）
 
 |名称| 类型 | 说明 | 文本（行项目 #1） | 值（标准化输出） |
 |:-----|:----|:----|:----| :----|

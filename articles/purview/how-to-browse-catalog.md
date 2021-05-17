@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.openlocfilehash: dd2fd4fbc9d8aecd9821d668dd02bd4b68659cf6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97695057"
 ---
 # <a name="browse-the-azure-purview-data-catalog"></a>浏览 Azure Purview 数据目录
@@ -38,7 +38,7 @@ ms.locfileid: "97695057"
 
 1. 在下一页上会列出所选数据类型下最高级别的资产。 请选取这些资产中的某一个，以进一步浏览其内容。
 
-    :::image type="content" source="media/how-to-browse-catalog/asset-type-specific-browse.jpg" alt-text="资产类型特定的浏览页。显示的示例是 Azure 存储帐户" border="true":::
+    :::image type="content" source="media/how-to-browse-catalog/asset-type-specific-browse.jpg" alt-text="特定于资产类型的浏览页。显示的示例是 Azure 存储帐户" border="true":::
 
 1. 资源管理器视图将会打开。 请通过选择左侧面板上的某个资产开始浏览。 子资产将会在该页面的右侧面板上列出。
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 9a52596aa0dd5fa7b9a7226d2ae57259dab08d37
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4720cbfea072561e5413afd54407b7b0a7878ba
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93285729"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229641"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>了解实时 (JIT) VM 访问
 
@@ -63,7 +63,7 @@ ms.locfileid: "93285729"
 ![实时 (JIT) 虚拟机 (VM) 访问建议](./media/just-in-time-explained/unhealthy-resources.png)
 
 
-## <a name="faq---questions-about-just-in-time-virtual-machine-access"></a>常见问题 - 有关实时虚拟机访问的问题
+## <a name="faq---just-in-time-virtual-machine-access"></a>常见问题解答 - 实时虚拟机访问
 
 ### <a name="what-permissions-are-needed-to-configure-and-use-jit"></a>配置和使用 JIT 时需要哪些权限？
 

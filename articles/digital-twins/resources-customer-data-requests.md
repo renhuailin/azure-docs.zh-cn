@@ -8,12 +8,12 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
-ms.openlocfilehash: 9942056e59a46c61b4e9da32aab191d4b72db968
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c50ff2e1a8e63fd775b7b09863ffcd9d832d8683
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "92461753"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205712"
 ---
 # <a name="azure-digital-twins-customer-data-request-features"></a>Azure 数字孪生客户数据请求功能
 
@@ -25,7 +25,7 @@ Azure 数字孪生中称为“数字孪生体”的数字表示形式表示真�
 
 Azure 数字孪生中的许多数字孪生体不会直接表示个人实体，所表示的典型对象可能会是办公会议室或工厂车间。 然而，用户可能会认为有些实体是个人身份，并且可能会按照他们的意愿来维护自己的资产或将数字孪生体与个人联系起来的库存跟踪方法。 Azure 数字孪生会将所有与数字孪生体关联的数据视为个人数据进行管理和存储。
 
-若要查看、导出和删除可能会在数据主体请求中引用的个人数据，Azure 数字孪生管理员可以使用 [Azure 门户](https://portal.azure.com/)（针对用户和角色）或 [Azure 数字孪生 REST API](/rest/api/azure-digitaltwins/)（针对数字孪生体） 。 Azure 门户和 REST API 为用户提供了不同的方法来处理此类数据主体请求。
+若要查看、导出和删除可能会在数据主体请求中引用的个人数据，Azure 数字孪生管理员可使用 [Azure 门户](https://portal.azure.com/)（针对用户和角色）或 [Azure 数字孪生 REST API](/rest/api/azure-digitaltwins/)（针对数字孪生体）。 Azure 门户和 REST API 为用户提供了不同的方法来处理此类数据主体请求。
 
 ## <a name="identifying-customer-data"></a>标识客户数据
 

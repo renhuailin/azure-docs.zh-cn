@@ -1,0 +1,24 @@
+### YamlMime:Landing
+title: Azure 认证设备文档
+summary: 通过此一站式计划，可以轻松推广、查找已构建为在 Azure 上运行的 IoT 设备并突显其独特之处。
+metadata:
+  title: Azure 认证设备计划
+  description: 通过此一站式计划，可以轻松推广、查找已构建为在 Azure 上运行的 IoT 设备并突显其独特之处。
+  ms.service: certification
+  ms.topic: landing-page
+  author: cbroad
+  ms.author: cbroad
+  ms.date: 03/18/2021
+  ms.openlocfilehash: 3fa7e18388fc35eebdfdd0d0aec2be308765b4e1
+  ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 03/30/2021
+  ms.locfileid: "105975347"
+landingContent:
+- title: 关于 Azure 认证设备计划
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 认证设备计划？
+      url: ./overview.md

@@ -1,0 +1,84 @@
+### YamlMime:Landing
+title: 开始使用 Microsoft 客户协议
+summary: 开始根据 Microsoft 客户协议管理账单和订阅。 了解如何理解和优化成本，同时确保对计费环境进行安全访问。
+metadata:
+  title: 开始使用 Microsoft 客户协议
+  description: 了解如何开始使用 Microsoft 客户协议。
+  ms.service: cost-management-billing
+  ms.subservice: billing
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.date: 05/05/2021
+  ms.openlocfilehash: 6a7627fbce3042f23f680c1d0439e50450645082
+  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "108747820"
+landingContent:
+- title: 入门
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Microsoft 客户协议？
+      url: ../understand/mca-overview.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+  - linkListType: get-started
+    links:
+    - text: 接受协议后的主要后续步骤
+      url: microsoft-customer-agreement-get-started.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: 将计费所有权从 MOSA 转让给 MCA
+      url: ../manage/mca-request-billing-ownership.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: 将计费所有权从 EA 转让给 MCA
+      url: ../manage/mca-setup-account.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+  - linkListType: reference
+    links:
+    - text: API 概述 - 从 EA 迁移到 MCA
+      url: ../costs/migrate-cost-management-api.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: EA 与 MCA 之间的 API 差异
+      url: /rest/api/billing/
+- title: 管理账单
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 了解我的计费周期
+      url: ../understand/mca-understand-your-invoice.md#billing-period
+  - linkListType: tutorial
+    links:
+    - text: 根据我的协议接收账单
+      url: ../understand/review-customer-agreement-bill.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: 什么是计费对象信息，如何管理它？
+      url: ../manage/mca-section-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: 如何支付我的账单
+      url: ../understand/pay-bill.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: 设置管理员来管理账单
+      url: ../manage/understand-mca-roles.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: 开始按我的协议计费
+      url: ../manage/mca-request-billing-ownership.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+  - linkListType: video
+    links:
+    - text: 整理成本
+      url: https://www.youtube.com/watch?v=7RxTfShGHwU
+    - text: 管理对计费帐户的访问权限
+      url: https://www.youtube.com/watch?v=9sqglBlKkho
+    - text: 了解发票
+      url: https://www.youtube.com/watch?v=e2LGZZ7GubA
+- title: 管理订阅
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 什么是 Active Directory？
+      url: ../../active-directory/fundamentals/active-directory-whatis.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: 管理租户
+      url: manage-tenants.md
+    - text: 添加、更改或查找订阅管理员
+      url: ../manage/add-change-subscription-administrator.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: 创建新订阅
+      url: ../manage/create-subscription.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: 排查订阅访问问题
+      url: troubleshoot-subscription-access.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json

@@ -11,16 +11,16 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: ec0ceb496d2e6d1b15819aa6b2353e54a5303354
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: f175e8d5c3dd19b212dfbdd04025d12f549667ed
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889765"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108293289"
 ---
 # <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-wrangling-preview"></a>附加由 Azure Synapse Analytics 提供支持的 Apache Spark 池以进行数据处理（预览版）
 
-本文介绍如何将 [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) 提供支持的 Apache Spark 池附加到 Azure 机器学习工作区，然后可以启动它以大规模进行数据整理。 
+本文介绍如何将由 [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) 提供支持的 Apache Spark 池附加到 [Azure 机器学习工作区](concept-workspace.md)，以便启动该池以大规模进行数据整理。 
 
 本文包含有关使用 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/) 在 Jupyter 笔记本中的专用 Synapse 会话内以交互方式执行数据整理任务的指南。 如果你更喜欢使用 Azure 机器学习管道，请参阅[如何在机器学习管道中使用 Apache Spark（由 Azure Synapse Analytics 提供支持）（预览版）](how-to-use-synapsesparkstep.md)。
 
@@ -306,7 +306,7 @@ df.write.format("csv").mode("overwrite").save("wasbs://demo@dprepdata.blob.core.
 * 假设你已经创建了一个数据存储，该数据存储可连接到保存了准备好的数据的存储服务。  
 * 使用 get() 方法从工作区 `ws` 获取该现有数据存储 `mydatastore`。
 * 创建一个 [FileDataset](how-to-create-register-datasets.md#filedataset) `train_ds`，该数据集引用位于 `mydatastore` 中 `training_data` 目录中的准备好的数据文件。  
-* 创建变量 `input1`，该变量可在以后用于使 `train_ds` 数据集的数据文件可供计算目标使用。
+* 创建变量 `input1`，该变量可在以后用于使 `train_ds` 数据集的数据文件可供计算目标用于训练任务。
 
 ```python
 from azureml.core import Datastore, Dataset
@@ -318,14 +318,36 @@ train_ds = Dataset.File.from_files(path=datastore_paths, validate=True)
 input1 = train_ds.as_mount()
 
 ```
+
 ## <a name="use-a-scriptrunconfig-to-submit-an-experiment-run-to-a-synapse-spark-pool"></a>使用 `ScriptRunConfig` 将试验运行提交到 Synapse Spark 池
 
-你还可以[使用先前附加的 Synapse Spark 群集](#attach-a-pool-with-the-python-sdk)作为计算目标，使用 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) 对象提交试验运行。
+如果已经准备好自动执行并生成数据整理任务，则可通过 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) 对象向[之前附加的 Synapse Spark 池](#attach-a-pool-with-the-python-sdk)提交试验运行。  
+
+同样地，如果有 Azure 机器学习管道，则可[使用 SynapseSparkStep 将 Synapse Spark 池指定为管道中数据准备步骤的计算目标](how-to-use-synapsesparkstep.md)。
+
+使数据对 Synapse Spark 池可用，这取决于数据集类型。 
+
+* 对于 FileDataset，可以使用 [`as_hdfs()`](/python/api/azureml-core/azureml.data.filedataset#as-hdfs--) 方法。 提交运行后，数据集将作为 Hadoop 分布式文件系统提供给 Synapse Spark 池。 
+* 对于 [TabularDataset](how-to-create-register-datasets.md#tabulardataset)，可以使用 [`as_named_input()`](/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset#as-named-input-name-) 方法。 
+
+以下代码 
+
+* 从上一个代码示例中创建的 FileDataset `train_ds` 中创建变量 `input2`。
+* 用 HDFSOutputDatasetConfiguration 类创建变量 `output`。 运行完成后，此类允许我们将运行的输入保存为数据存储 `mydatastore` 中的数据集 `test`。 在 Azure 机器学习工作区中，`test` 数据集在名称 `registered_dataset` 下进行注册。 
+* 配置运行在 Synapse Spark 池上执行应使用的设置。 
+* 定义 ScriptRunConfig 参数，以便 
+  * 将 `dataprep.py` 用于运行。 
+  * 指定用作输入的数据，以及使数据对 Synapse Spark 池可用的方法。
+  * 指定存储输出数据 `output` 的位置。  
 
 ```Python
+from azureml.core import Dataset, HDFSOutputDatasetConfig
 from azureml.core import RunConfiguration
 from azureml.core import ScriptRunConfig 
 from azureml.core import Experiment
+
+input2 = train_ds.as_hdfs()
+output = HDFSOutputDatasetConfig(destination=(datastore, "test").register_on_complete(name="registered_dataset")
 
 run_config = RunConfiguration(framework="pyspark")
 run_config.target = synapse_compute_name
@@ -340,8 +362,7 @@ run_config.environment.python.conda_dependencies = conda_dep
 
 script_run_config = ScriptRunConfig(source_directory = './code',
                                     script= 'dataprep.py',
-                                    arguments = ["--tabular_input", input1, 
-                                                 "--file_input", input2,
+                                    arguments = ["--file_input", input2,
                                                  "--output_dir", output],
                                     run_config = run_config)
 ```
@@ -355,11 +376,16 @@ exp = Experiment(workspace=ws, name="synapse-spark")
 run = exp.submit(config=script_run_config) 
 run
 ```
-有关更多信息，如本例中使用的 `dataprep.py` 脚本，请参阅[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_session_on_synapse_spark_pool.ipynb)。
+
+有关更多信息，如本例中使用的 `dataprep.py` 脚本，请参阅[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_job_on_synapse_spark_pool.ipynb)。
+
+准备好数据后，可将其用作训练作业的输入。 在上述代码示例中，`registered_dataset` 被指定为训练作业的输入数据。 
 
 ## <a name="example-notebooks"></a>示例笔记本
 
-有关 Azure Synapse Analytics 和 Azure 机器学习集成功能的更多概念和演示，请参阅此[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_session_on_synapse_spark_pool.ipynb)。
+有关 Azure Synapse Analytics 和 Azure 机器学习集成功能的更多概念和演示，请参阅示例笔记本。
+* [从 Azure 机器学习工作区的笔记本中运行交互式 Spark 会话](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_session_on_synapse_spark_pool.ipynb)。
+* [在 Synapse Spark 池作为计算目标的情况下提交 Azure 机器学习体验运行](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_job_on_synapse_spark_pool.ipynb)。
 
 ## <a name="next-steps"></a>后续步骤
 

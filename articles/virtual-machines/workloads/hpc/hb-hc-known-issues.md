@@ -5,22 +5,24 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 04/16/2021
+ms.date: 04/28/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: f5bdae17126048da153f70bf27609bcc4b92fe21
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 7f9a10aca24203b69ff38ff5fab7960681145af5
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599581"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227823"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>H 系列和 N 系列 VM 的已知问题
 
 本文尝试列出使用 [H 系列](../../sizes-hpc.md)和 [N 系列](../../sizes-gpu.md) HPC 和 GPU VM 时最常见的问题及其解决方案。
 
-## <a name="qp0-access-restriction"></a>qp0 访问限制
+## <a name="cache-topology-on-standard_hb120rs_v3"></a>Standard_HB120rs_v3 上的缓存拓扑
+`lstopo` 显示 Standard_HB120rs_v3 VM 大小上不正确的缓存拓扑。 它可能显示每个 NUMA 只有 32 MB L3。 但是实际上，每个 NUMA 按照预期确实有 120 MB L3，因为对于整个 VM，与其他受限核心 HBv3 VM 大小一样，可使用 480 MB 的 L3。 这是显示正确值时出现的显示错误，不会影响工作负载。
 
+## <a name="qp0-access-restriction"></a>qp0 访问限制
 若要防止可能导致安全漏洞的低级别硬件访问，来宾 VM 将无法访问队列对 0。 这只会影响通常与 ConnectX InfiniBand NIC 的管理相关的操作，以及运行一些 InfiniBand 诊断（如 ibdiagnet），而不会影响最终用户应用程序。
 
 ## <a name="mofed-installation-on-ubuntu"></a>Ubuntu 上的 MOFED 安装

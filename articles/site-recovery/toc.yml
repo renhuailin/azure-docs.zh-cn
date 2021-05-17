@@ -93,7 +93,7 @@
 - name: 概念
   items:
     - name: 有关 Site Recovery 的常见问题
-      href: site-recovery-faq.md
+      href: site-recovery-faq.yml
     - name: 关于 Azure VM 灾难恢复
       items:
         - name: Azure 到 Azure 体系结构
@@ -179,7 +179,7 @@
     - name: 安全性
       items:
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/site-recovery-security-baseline?toc=/azure/site-recovery/toc.json
 - name: 操作方法指南
   items:
     - name: Azure 到 Azure 灾难恢复
@@ -200,6 +200,8 @@
           items:
             - name: 启用 Azure 到 Azure 复制
               href: azure-to-azure-how-to-enable-replication.md
+            - name: 使用 Policy 启用 Azure 到 Azure 的复制
+              href: azure-to-azure-how-to-enable-policy.md
             - name: 为加密的 VM 启用 Azure 到 Azure 复制
               href: azure-to-azure-how-to-enable-replication-ade-vms.md
             - name: 为带有已启用 CMK 的磁盘的 VM 启用 Azure 到 Azure 复制
@@ -230,6 +232,8 @@
               href: site-recovery-manage-registration-and-protection.md
             - name: 删除保管库
               href: delete-vault.md
+            - name: 在 VMM 服务器上清理脚本
+              href: unregister-vmm-server-script.md
     - name: VMware 到 Azure 的灾难恢复
       items:
         - name: 设置大规模灾难恢复
@@ -482,6 +486,8 @@
       href: site-recovery-runbook-automation.md
     - name: ARM 模板
       href: asr-arm-templates.md
+    - name: 弃用参数 - New-AzRecoveryServicesAsrVMNicConfig cmdlet
+      href: site-recovery-ipconfig-cmdlet-parameter-deprecation.md
 - name: 监视
   items:
     - name: 有关监视的常见问题

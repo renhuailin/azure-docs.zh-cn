@@ -1,4 +1,4 @@
-- name: Azure Stack Edge Pro 文档
+- name: Azure Stack Edge 文档
   href: ./index.yml
   expanded: true
 - name: Azure Stack Edge Pro - GPU
@@ -224,36 +224,56 @@
               href: azure-stack-edge-gpu-set-azure-resource-manager-password.md
             - name: 配置客户端 TLS 设置
               href: azure-stack-edge-gpu-configure-tls-settings.md
-        - name: 部署 VM（预览版）
+        - name: 关于 VM（预览版）
           items:
-            - name: 部署 VM - Azure 门户
-              href: azure-stack-edge-gpu-deploy-virtual-machine-portal.md
-            - name: 部署 VM - 模板
-              href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
-            - name: 部署 VM - GPU
-              href: azure-stack-edge-gpu-deploy-gpu-virtual-machine.md
-            - name: 部署 VM - Azure PowerShell cmdlet
-              href: azure-stack-edge-gpu-deploy-virtual-machine-powershell.md
-            - name: 部署 VM - Azure PowerShell 脚本
-              href: azure-stack-edge-gpu-deploy-virtual-machine-powershell-script.md
-            - name: 部署 VM - Azure CLI/Python
-              href: azure-stack-edge-gpu-deploy-virtual-machine-cli-python.md
-            - name: 在虚拟机上部署自定义脚本扩展
-              href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
-            - name: 创建 VM 映像
-              href: azure-stack-edge-gpu-create-virtual-machine-image.md
-            - name: 使用 Windows 通用映像
-              href: azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md
-            - name: 支持的 VM 大小和类型
+            - name: 什么是 VM？
+              href: azure-stack-edge-gpu-virtual-machine-overview.md
+            - name: 查看受支持的 VM
               href: azure-stack-edge-gpu-virtual-machine-sizes.md
-            - name: 连接到 VM 控制台
-              href: azure-stack-edge-gpu-connect-virtual-machine-console.md
-            - name: 管理网络接口
-              href: azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal.md
-            - name: 管理磁盘
-              href: azure-stack-edge-gpu-manage-virtual-machine-disks-portal.md
-            - name: 管理 VM 大小
-              href: azure-stack-edge-gpu-manage-virtual-machine-resize-portal.md
+            - name: 创建 VM 映像
+              items:
+                - name: 来自 Azure VM 的自定义映像
+                  href: azure-stack-edge-gpu-create-virtual-machine-image.md
+                - name: 来自 VHD 的 Windows 通用映像
+                  href: azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md
+                - name: 来自 ISO 的通用映像
+                  href: azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md
+                - name: 使用专用映像
+                  href: azure-stack-edge-gpu-deploy-virtual-machine-portal.md
+            - name: 部署 VM
+              items:
+                - name: 通过 Azure 门户
+                  href: azure-stack-edge-gpu-deploy-virtual-machine-portal.md
+                - name: 通过模板
+                  href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
+                - name: 使用 GPU
+                  href: azure-stack-edge-gpu-deploy-gpu-virtual-machine.md
+                - name: 通过 Azure PowerShell cmdlet
+                  href: azure-stack-edge-gpu-deploy-virtual-machine-powershell.md
+                - name: 通过 Azure PowerShell 脚本
+                  href: azure-stack-edge-gpu-deploy-virtual-machine-powershell-script.md
+                - name: 通过 Azure CLI/Python
+                  href: azure-stack-edge-gpu-deploy-virtual-machine-cli-python.md
+            - name: 操作指南
+              items:
+                - name: 管理网络接口
+                  href: azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal.md
+                - name: 管理磁盘
+                  href: azure-stack-edge-gpu-manage-virtual-machine-disks-portal.md
+                - name: 管理 VM 大小
+                  href: azure-stack-edge-gpu-manage-virtual-machine-resize-portal.md
+                - name: 管理 VM 标记
+                  href: azure-stack-edge-gpu-manage-virtual-machine-tags-powershell.md
+                - name: 管理虚拟交换机
+                  href: azure-stack-edge-gpu-create-virtual-switch-powershell.md
+                - name: 安装自定义脚本扩展
+                  href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
+                - name: 备份 VM 磁盘
+                  href: azure-stack-edge-gpu-back-up-virtual-machine-disks.md
+                - name: 疑难解答
+                  items:
+                    - name: 连接到 VM 控制台
+                      href: azure-stack-edge-gpu-connect-virtual-machine-console.md
         - name: 管理证书
           items:
             - name: 要求
@@ -429,7 +449,11 @@
 - name: 安全性
   items:
     - name: 安全基线
-      href: security-baseline.md
+      href: /security/benchmark/azure/baselines/stack-edge-security-baseline?toc=/azure/databox-online/TOC.json
+- name: 参考
+  items:
+    - name: Azure CLI
+      href: /cli/azure/databoxedge
 - name: 资源
   items:
     - name: Azure Stack Edge Pro C# 模块示例 (.NET)

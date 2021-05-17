@@ -10,13 +10,13 @@ ms.date: 12/07/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 552d2587f35ed391b470c6d5b1693b79fd57306b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 04ff93f8fa19e6ec18ebf606291a09f558d93529
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98879572"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108075908"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>使用 Azure 资源托管标识授予对 Blob 和队列数据的访问权限
 
@@ -67,7 +67,7 @@ Azure 标识客户端库的优点在于，它使你可以使用相同的代码�
 
 #### <a name="create-the-service-principal"></a>创建服务主体
 
-若要通过 Azure CLI 来创建服务主体并分配 Azure 角色，请调用 [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) 命令。 提供要分配给新服务主体的 Azure 存储数据访问角色。 此外，请提供角色分配的范围。 若要详细了解为 Azure 存储提供的内置角色，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
+若要通过 Azure CLI 来创建服务主体并分配 Azure 角色，请调用 [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) 命令。 提供要分配给新服务主体的 Azure 存储数据访问角色。 此外，请提供角色分配的范围。 若要详细了解为 Azure 存储提供的内置角色，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
 
 如果没有足够的权限将角色分配给服务主体，可能需要请求帐户所有者或管理员来执行相关角色分配。
 

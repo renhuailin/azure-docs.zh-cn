@@ -23,94 +23,90 @@
     - name: 安全性
       items:
         - name: 安全基线
-          href: ./security-baseline.md
+          href: /security/benchmark/azure/baselines/resource-manager-security-baseline?toc=/azure/azure-resource-manager/management/toc.json
         - name: Azure Policy 的安全控件
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
-        - name: Azure 的常见安全属性
-          href: azure-resource-manager-security-controls.md
 - name: 如何
   items:
-    - name: 移动 - 资源组/订阅
-      items:
-        - name: 移动资源
-          href: move-resource-group-and-subscription.md
-        - name: 支持的资源
-          href: move-support-resources.md
-        - name: 排查迁移问题
-          href: troubleshoot-move.md
-        - name: 服务
-          items:
-            - name: 应用服务
-              href: ./move-limitations/app-service-move-limitations.md
-            - name: Azure DevOps
-              href: /azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/management/toc.json
-            - name: Azure 自动化
-              href: ../../automation/how-to/move-account.md?toc=/azure/azure-resource-manager/management/toc.json
-            - name: 经典部署
-              href: ./move-limitations/classic-model-move-limitations.md
-            - name: 网络
-              href: ./move-limitations/networking-move-limitations.md
-            - name: 恢复服务
-              href: ../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/management/toc.json
-            - name: 虚拟机
-              href: ./move-limitations/virtual-machines-move-limitations.md
-    - name: 移动 - 区域
+    - name: 移动资源
       items:
         - name: 概述
-          href: move-region.md
-        - name: （从资源组）跨区域移动
+          href: move-resources-overview.md
+        - name: 跨资源组/订阅移动
+          href: move-resource-group-and-subscription.md
+        - name: 跨区域移动
           href: ../../resource-mover/move-region-within-resource-group.md?toc=/azure/azure-resource-manager/management/toc.json
-        - name: 支持的服务
-          href: region-move-support.md
+        - name: 支持的资源
+          href: move-support-resources.md
         - name: 服务
           items:
-            - name: Azure API 管理
-              href: ../../api-management/api-management-howto-migrate.md?toc=/azure/azure-resource-manager/management/toc.json
-            - name: Azure 应用服务
-              href: ../../app-service/manage-move-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
-            - name: Azure 自动化
-              href: ../../automation/automation-managing-data.md?toc=/azure/azure-resource-manager/management/toc.json#geo-replication-in-azure-automation
-            - name: Azure 批处理
-              href: ../../batch/best-practices.md?toc=/azure/azure-resource-manager/management/toc.json#moving-batch-accounts-across-regions
-            - name: Azure 认知搜索
-              href: ../../search/search-howto-move-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
-            - name: Azure Cosmos DB
-              href: ../../cosmos-db/how-to-move-regions.md?toc=/azure/azure-resource-manager/management/toc.json
-            - name: Azure Dev Spaces
-              href: ../../dev-spaces/faq.md?toc=/azure/azure-resource-manager/management/toc.json#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region
-            - name: Azure 事件中心
-              href: ../../event-hubs/move-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
-            - name: Azure IoT 中心
-              href: ../../iot-hub/iot-hub-how-to-clone.md?toc=/azure/azure-resource-manager/management/toc.json
-            - name: Azure 资源管理器
-              href: microsoft-resources-move-regions.md
-            - name: Azure 存储
-              href: ../../storage/common/storage-account-move.md?toc=/azure/azure-resource-manager/management/toc.json
-            - name: Azure SQL
-              href: ../../azure-sql/database/move-resources-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
-            - name: Azure VM
-              href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
-            - name: 逻辑应用
-              href: ../../logic-apps/move-logic-app-resources.md?toc=/azure/azure-resource-manager/management/toc.json
-            - name: 维护控制配置
-              href: ../../virtual-machines/move-region-maintenance-configuration.md?toc=/azure/azure-resource-manager/management/toc.json
-            - name: 网络安全组 (NSG)
-              href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
-            - name: 公共 IP 地址
-              href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
-            - name: Site Recovery（恢复服务保管库）
-              href: ../../site-recovery/move-vaults-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
-            - name: 虚拟网络
-              href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
-            - name: 网络接口 (NIC)
-              href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
-            - name: Azure Database for PostgreSQL 服务器
-              href: ../../postgresql/howto-move-regions-portal.md?toc=/azure/azure-resource-manager/management/toc.json
-            - name: Azure Database for MariaDB 服务器
-              href: ../../mariadb/howto-move-regions-portal.md?toc=/azure/azure-resource-manager/management/toc.json
-            - name: Azure Database for MySQL 服务器
-              href: ../../mysql/howto-move-regions-portal.md?toc=/azure/azure-resource-manager/management/toc.json
+            - name: 资源组/订阅
+              items:
+                - name: 应用服务
+                  href: ./move-limitations/app-service-move-limitations.md
+                - name: Azure DevOps
+                  href: /azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/management/toc.json
+                - name: Azure 自动化
+                  href: ../../automation/how-to/move-account.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: 经典部署
+                  href: ./move-limitations/classic-model-move-limitations.md
+                - name: 网络
+                  href: ./move-limitations/networking-move-limitations.md
+                - name: 恢复服务
+                  href: ../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: 虚拟机
+                  href: ./move-limitations/virtual-machines-move-limitations.md
+            - name: 区域
+              items:
+                - name: Azure API 管理
+                  href: ../../api-management/api-management-howto-migrate.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: Azure 应用服务
+                  href: ../../app-service/manage-move-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: Azure 自动化
+                  href: ../../automation/automation-managing-data.md?toc=/azure/azure-resource-manager/management/toc.json#geo-replication-in-azure-automation
+                - name: Azure 批处理
+                  href: ../../batch/account-move.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: Azure 认知搜索
+                  href: ../../search/search-howto-move-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: Azure Cosmos DB
+                  href: ../../cosmos-db/how-to-move-regions.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: Azure Dev Spaces
+                  href: ../../dev-spaces/faq.md?toc=/azure/azure-resource-manager/management/toc.json#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region
+                - name: Azure 事件中心
+                  href: ../../event-hubs/move-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: Azure IoT 中心
+                  href: ../../iot-hub/iot-hub-how-to-clone.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: Azure 资源管理器
+                  href: microsoft-resources-move-regions.md
+                - name: Azure 存储
+                  href: ../../storage/common/storage-account-move.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: Azure SQL
+                  href: ../../azure-sql/database/move-resources-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: Azure VM
+                  href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: 逻辑应用
+                  href: ../../logic-apps/move-logic-app-resources.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: 维护控制配置
+                  href: ../../virtual-machines/move-region-maintenance-configuration.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: 网络
+                  items:
+                    - name: 虚拟网络
+                      href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
+                    - name: 网络接口 (NIC)
+                      href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
+                    - name: 网络安全组 (NSG)
+                      href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
+                    - name: 公共 IP 地址
+                      href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: Site Recovery（恢复服务保管库）
+                  href: ../../site-recovery/move-vaults-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: Azure Database for PostgreSQL 服务器
+                  href: ../../postgresql/howto-move-regions-portal.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: Azure Database for MariaDB 服务器
+                  href: ../../mariadb/howto-move-regions-portal.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: Azure Database for MySQL 服务器
+                  href: ../../mysql/howto-move-regions-portal.md?toc=/azure/azure-resource-manager/management/toc.json
     - name: Tags
       items:
         - name: 决策指南
@@ -143,12 +139,6 @@
         - name: Azure PowerShell
           displayName: 'open,delete,deploy,move,lock,tag'
           href: manage-resources-powershell.md
-    - name: EA 订阅
-      items:
-        - name: 创建
-          href: ../../cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement.md?toc=/azure/azure-resource-manager/management/toc.json
-        - name: 授予创建权限
-          href: ../../cost-management-billing/manage/grant-access-to-create-subscription.md?toc=/azure/azure-resource-manager/management/toc.json
     - name: 资源提供程序和类型
       href: resource-providers-and-types.md
     - name: 删除资源组和资源
@@ -175,6 +165,8 @@
       href: /dotnet/api/microsoft.azure.management.resourcemanager
     - name: Java
       href: /java/api/com.microsoft.azure.management.resources
+    - name: JavaScript
+      href: /javascript/api/overview/azure/resources
     - name: Python
       href: /python/api/overview/azure/resources
     - name: Azure Policy 内置策略定义

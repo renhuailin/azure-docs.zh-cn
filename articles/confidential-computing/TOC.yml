@@ -54,8 +54,8 @@
   items:
     - name: Fortanix Confidential Computing Manager
       href: how-to-fortanix-confidential-computing-manager.md
-    - name: Fortanix Enclave Manager
-      href: how-to-fortanix-enclave-manager.md
+    - name: Fortanix Confidential Computing Manager Node 代理
+      href: how-to-fortanix-confidential-computing-manager-node-agent.md
 - name: 参考
   items:
     - name: SGX 引用帮助程序功能

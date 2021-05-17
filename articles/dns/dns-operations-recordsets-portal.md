@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: how-to
-ms.date: 10/6/2018
+ms.date: 04/28/2021
 ms.author: rohink
-ms.openlocfilehash: 22ceba69ecf865d906021068a39a9d273b842ca2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ac76671dc16fb51cea35154cd7862ad1dee66f6
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94965725"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226916"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>使用 Azure 门户管理 DNS 记录和记录集
 
@@ -26,66 +26,69 @@ ms.locfileid: "94965725"
 
 ## <a name="view-a-record-set"></a>查看记录集
 
-1. 在 Azure 门户中，转到“**DNS 区域**”边栏选项卡。
-2. 搜索记录集，并选择它。 这会打开记录集属性。
+1. 在 Azure 门户中，转到“DNS 区域”概述页。
 
-    ![搜索记录集](./media/dns-operations-recordsets-portal/searchset500.png)
+1. 搜索并选择记录集，打开记录集属性。
+
+    :::image type="content" source="./media/dns-operations-recordsets-portal/overview.png" alt-text=" 区域概述页的屏幕截图。":::
 
 ## <a name="add-a-new-record-to-a-record-set"></a>将新记录添加到记录集
 
-可以将最多 20 条记录添加到任何记录集。 记录集不能包含两个相同的记录。 可以创建空记录集（具有零个记录），但它不会出现在 Azure DNS 名称服务器中。 CNAME 类型的记录集最多可以包含一条记录。
+可以将最多 20 条记录添加到任何记录集。 记录集不能包含两个相同的记录。 可以创建空记录集（无记录），但它不会出现在 Azure DNS 名称服务器中。 CNAME 类型的记录集最多可以包含一条记录。
 
-1. 在 DNS 区域的“**记录集属性**”边栏选项卡中，单击你想要将记录添加到的记录集。
+1. 在 DNS 区域的“记录集属性”页中，选择你想要将记录添加到的记录集。
 
-    ![选择记录集](./media/dns-operations-recordsets-portal/selectset500.png)
+    :::image type="content" source="./media/dns-operations-recordsets-portal/select-record.png" alt-text="选择 www 记录集的屏幕截图。":::
 
-2. 过填写字段指定记录集的属性。
+1. 过填写字段指定记录集的属性。
 
-    ![添加记录](./media/dns-operations-recordsets-portal/addrecord500.png)
+    :::image type="content" source="./media/dns-operations-recordsets-portal/record-page.png" alt-text="添加记录页的屏幕截图。":::
 
-3. 单击边栏选项卡顶部的“保存”以保存设置。 然后关闭该边栏选项卡。
-4. 将在角落中看到正在保存该记录。
+1. 选择页面顶部的“保存”，保存设置。 然后关闭该页面。
 
-    ![保存记录集](./media/dns-operations-recordsets-portal/saving150.png)
-
-保存记录集后，“**DNS 区域**”边栏选项卡中的这些值将反映新记录。
+保存记录集后，“DNS 区域”页中的这些值将反映新记录。
 
 ## <a name="update-a-record"></a>更新记录
 
 更新现有记录集的记录时，可以更新的字段取决于正在使用的记录类型。
 
-1. 在记录集的“**记录集属性**”边栏选项卡中，搜索记录。
-2. 修改记录。 修改记录时，可以更改记录的可用设置。 在下面的示例中，已选择“**IP 地址**”字段，并且 IP 地址正在修改中。
+1. 在记录集的“记录集属性”页中，搜索记录。
 
-    ![修改记录](./media/dns-operations-recordsets-portal/modifyrecord500.png)
+1. 修改记录。 修改记录时，可以更改记录的可用设置。 下面的示例已选择“IP 地址”字段，并且正在修改 IP 地址。
 
-3. 单击边栏选项卡顶部的“保存”以保存设置。 在右上角中，会看到该记录已保存的通知。
+    :::image type="content" source="./media/dns-operations-recordsets-portal/update-record-page.png" alt-text="更新记录页的屏幕截图。":::
 
-    ![已保存记录集](./media/dns-operations-recordsets-portal/saved150.png)
+1. 选择页面顶部的“保存”，保存设置。 在右上角中，会看到该记录已保存的通知。
 
-保存记录后，记录集在“**DNS 区域**”边栏选项卡中的值将反映更新的记录。
+    :::image type="content" source="./media/dns-operations-recordsets-portal/record-saved.png" alt-text="已成功保存记录的屏幕截图。":::
+
+保存记录后，记录集在“DNS 区域”页中的值将反映更新的记录。
 
 ## <a name="remove-a-record-from-a-record-set"></a>从记录集中删除记录
 
-Azure 门户可用于从记录集中删除记录。 请注意，从记录集中删除最后一条记录不会删除记录集。
+Azure 门户可用于从记录集中删除记录。 从记录集中删除最后一条记录不会删除记录集。
 
-1. 在记录集的“**记录集属性**”边栏选项卡中，搜索记录。
-2. 单击要删除的记录。 然后选择“删除”。
+1. 在记录集的“记录集属性”页中，搜索记录。
 
-    ![删除记录](./media/dns-operations-recordsets-portal/removerecord500.png)
+1. 选择记录旁边的“…”，然后选择“删除”以从记录集中删除记录 。
 
-3. 单击边栏选项卡顶部的“保存”以保存设置。
-4. 删除记录后，记录在“**DNS 区域**”边栏选项卡中的值将反映删除操作。
+    :::image type="content" source="./media/dns-operations-recordsets-portal/delete-record.png" alt-text="如何删除记录的屏幕截图。":::
+
+1. 选择页面顶部的“保存”，保存设置。
+
+1. 删除记录后，记录在“DNS 区域”页中的值将反映删除操作。
 
 ## <a name="delete-a-record-set"></a><a name="delete"></a>删除记录集
 
-1. 在记录集的“**记录集属性**”边栏选项卡中，搜单击“**删除**”。
+1. 在记录集的“记录集属性”页中，选择“删除” 。
 
-    ![删除记录集](./media/dns-operations-recordsets-portal/deleterecordset500.PNG)
+    :::image type="content" source="./media/dns-operations-recordsets-portal/delete-record-set.png" alt-text="如何删除记录集的屏幕截图。":::
 
-2. 将出现一条消息，询问你是否想要删除记录集。
-3. 验证该名称与要删除的记录集是否匹配，并单击“**是**”。
-4. 在“**DNS 区域**”边栏选项卡中，确认记录集不再出现。
+1. 将出现一条消息，询问你是否想要删除记录集。
+
+1. 验证该名称是否与要删除的记录集相匹配，然后单击“是”。
+
+1. 在“DNS 区域”页中，确认记录集不再出现。
 
 ## <a name="work-with-ns-and-soa-records"></a>使用 NS 和 SOA 记录
 
@@ -93,15 +96,15 @@ Azure 门户可用于从记录集中删除记录。 请注意，从记录集中�
 
 ### <a name="modify-soa-records"></a>修改 SOA 记录
 
-不能在区域顶点（名称 =“\@”）从自动创建的 SOA 记录集中添加或删除记录。 但是，可以修改 SOA 记录和记录集 TTL 中的任何参数（“Host”除外）。
+无法在区域顶点（名称 =“\@”）从自动创建的 SOA 记录集中添加或删除记录。 但是，可以修改 SOA 记录和记录集 TTL 中的任何参数（“Host”除外）。
 
 ### <a name="modify-ns-records-at-the-zone-apex"></a>修改区域顶点处的 NS 记录
 
 在每个 DNS 区域自动创建区域顶点处的 NS 记录集。 其中包含分配给该区域的 Azure DNS 名称服务器名称。
 
-可向此 NS 记录集添加其他名称服务器，从而支持与多个 DNS 提供商共同托管域。 还可修改此记录集的 TTL 和元数据。 但是，无法删除或修改预填充的 Azure DNS 名称服务器。
+可向此 NS 记录集添加更多名称服务器，从而支持与多个 DNS 提供商共同托管域。 还可修改此记录集的 TTL 和元数据。 但是，无法删除或修改预填充的 Azure DNS 名称服务器。
 
-请注意，这仅适用于区域顶点处的 NS 记录集。 区域中的其他 NS 记录集（用于委派子区域）不受约束，可进行修改。
+此限制仅适用于区域顶点处的 NS 记录集。 区域中的其他 NS 记录集（用于委派子区域）不受约束，可进行修改。
 
 ### <a name="delete-soa-or-ns-record-sets"></a>删除 SOA 或 NS 记录集
 

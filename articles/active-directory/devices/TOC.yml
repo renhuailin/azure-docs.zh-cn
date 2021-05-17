@@ -49,7 +49,9 @@
       href: manage-stale-devices.md
     - name: 启用企业状态漫游
       href: enterprise-state-roaming-enable.md
-    - name: Windows Azure VM 和 Azure AD
+    - name: Azure Linux VM 和 Azure AD
+      href: howto-vm-sign-in-azure-ad-linux.md
+    - name: Azure Windows VM 和 Azure AD
       href: howto-vm-sign-in-azure-ad-windows.md
     - name: 虚拟桌面基础结构
       href: howto-device-identity-virtual-desktop-infrastructure.md
@@ -66,9 +68,9 @@
     - name: 常见问题
       items:
         - name: 常见问题解答
-          href: faq.md
+          href: faq.yml
         - name: 启用企业状态漫游常见问题解答
-          href: enterprise-state-roaming-faqs.md
+          href: enterprise-state-roaming-faqs.yml
 - name: 参考
   items:
     - name: 执行 TLS 1.2

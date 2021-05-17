@@ -18,7 +18,7 @@
       href: overview-percept-security.md
     - name: 80/20 集成
       href: overview-8020-integration.md
-    - name: 更新 Percept 设备
+    - name: 设备更新
       href: overview-update-experience.md
 - name: 快速入门
   items:
@@ -44,6 +44,10 @@
       items:
         - name: LED 和按钮行为
           href: audio-button-led-behavior.md
+    - name: 安全性
+      items:
+        - name: 防火墙配置和安全建议
+          href: concept-security-configuration.md
 - name: 操作指南
   items:
     - name: 使用 Azure Percept DK 开发视觉解决方案
@@ -58,14 +62,16 @@
           href: how-to-view-telemetry.md
     - name: 使用 Azure Percept DK 开发语音解决方案
       items:
-        - name: 在 Azure Percept Studio 中配置语音助理
-          href: how-to-configure-voice-assistant.md
         - name: 在 IoT 中心配置语音助理
+          href: how-to-configure-voice-assistant.md
+        - name: 在 Azure Percept Studio 中配置语音助理
           href: how-to-manage-voice-assistant.md
     - name: 更新 Azure Percept 设备
       items:
         - name: 设置无线更新
           href: how-to-set-up-over-the-air-updates.md
+        - name: 识别更新包
+          href: how-to-select-update-package.md
         - name: 以无线方式更新 Azure Percept DK
           href: how-to-update-over-the-air.md
         - name: 通过 USB 更新 Azure Percept DK
@@ -78,7 +84,7 @@
           href: how-to-connect-to-percept-dk-over-serial.md
     - name: 工具
       items:
-        - name: Devtools 包安装程序
+        - name: 开发工具包安装程序
           href: dev-tools-installer.md
     - name: 疑难解答
       items:

@@ -21,8 +21,10 @@
       href: tutorial-monitor-your-data.md
     - name: 调查事件
       href: tutorial-investigate-cases.md
-    - name: 应对威胁
+    - name: 使用自动化来响应威胁
       href: tutorial-respond-threats-playbook.md
+    - name: 创建 KQL 查询（Learn 模块）
+      href: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
 - name: 概念
   items:
     - name: 使用实体对数据进行分类
@@ -33,8 +35,18 @@
           href: roles.md
         - name: 管理资源的访问权限
           href: resource-context-rbac.md
+        - name: 保护 MSSP 知识产权
+          href: mssp-protect-intellectual-property.md
     - name: 高级多阶段攻击检测
       href: fusion.md
+    - name: 自动化 (SOAR)
+      items:
+        - name: Azure Sentinel 中的 SOAR
+          href: automation-in-azure-sentinel.md
+        - name: 事件处理的自动化规则
+          href: automate-incident-handling-with-automation-rules.md
+        - name: 使用 playbook 的高级自动化
+          href: automate-responses-with-playbooks.md
     - name: 通过 UEBA 识别高级威胁
       href: identify-threats-with-entity-behavior-analytics.md
     - name: 将威胁情报导入 Azure Sentinel
@@ -45,16 +57,16 @@
       href: microsoft-365-defender-sentinel-integration.md
     - name: 使用具有播放列表的外部数据
       href: watchlists.md
-    - name: 使用角色分配权限
-      href: roles.md
     - name: 跨工作区和租户扩展 Azure Sentinel
       href: extend-sentinel-across-workspaces-tenants.md
     - name: 跨表规范化数据
       href: normalization.md
+    - name: 使用 Azure 数据资源管理器以实现长期日志保留
+      href: store-logs-in-azure-data-explorer.md
     - name: 安全性
       items:
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/sentinel-security-baseline?toc=/azure/sentinel/TOC.json
 - name: 操作指南
   items:
     - name: 连接数据源
@@ -84,6 +96,8 @@
               href: connect-azure-kubernetes-service.md
             - name: Azure SQL 数据库日志
               href: connect-azure-sql-logs.md
+            - name: Azure 存储帐户
+              href: connect-azure-storage-account.md
             - name: Azure Web 应用程序防火墙 (WAF)
               href: connect-azure-waf.md
             - name: Defender for IoT（以前称为 ASC for IoT）
@@ -110,6 +124,8 @@
               href: connect-windows-firewall.md
             - name: Windows 安全事件
               href: connect-windows-security-events.md
+            - name: Windows 虚拟桌面
+              href: connect-windows-virtual-desktop.md
         - name: 连接外部解决方案
           items:
             - name: Agari Phishing Defense 和 Agari Brand Protection
@@ -250,8 +266,12 @@
           href: connect-azure-stack.md
         - name: 监视数据连接器运行状况
           href: monitor-data-connector-health.md
-    - name: 启用用户和实体行为分析
-      href: enable-entity-behavior-analytics.md
+    - name: 使用用户和实体行为分析
+      items:
+        - name: 启用 UEBA
+          href: enable-entity-behavior-analytics.md
+        - name: 使用 UEBA 进行调查
+          href: investigate-with-ueba.md
     - name: 将数据字段映射到实体
       href: map-data-fields-to-entities.md
     - name: 管理多个租户 (MSSP)
@@ -283,6 +303,8 @@
   items:
     - name: 热门 Azure Sentinel 工作簿
       href: top-workbooks.md
+    - name: Azure CLI
+      href: /cli/azure/sentinel
     - name: Azure RBAC 角色
       items:
         - name: 所有 Azure 角色
@@ -311,8 +333,14 @@
           href: /azure/data-explorer/kusto/query/
         - name: Kusto 查询语言快速参考
           href: /azure/data-explorer/kql-quick-reference
+        - name: Azure Monitor 日志查询优化
+          href: ../azure-monitor/logs/query-optimization.md
     - name: UEBA 扩充
       href: ueba-enrichments.md
+    - name: CEF 日志字段映射
+      href: cef-name-mapping.md
+    - name: MCAS 警报未加入到 Microsoft 365 Defender
+      href: microsoft-cloud-app-security-alerts-not-imported-microsoft-365-defender.md
 - name: 资源
   items:
     - name: 有用的资源
@@ -323,3 +351,5 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-sentinel'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/azure-sentinel/'
+    - name: 美国政府云的功能可用性
+      href: /azure/security/fundamentals/feature-availability

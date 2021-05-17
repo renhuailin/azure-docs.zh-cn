@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 9/3/2019
 ms.openlocfilehash: 78c488302a874319f79a143e4657d161fe849855
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100373600"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>将本地 SSIS 工作负荷迁移到 ADF 中的 SSIS
@@ -55,7 +55,7 @@ DMA 当前支持对自 **DMA 版本 5.0** 以来存储在 **文件系统**、**�
 - [将 Azure SQL 托管实例用作数据库工作负荷目标](#azure-sql-managed-instance-as-database-workload-destination)
 - [**将 Azure SQL 数据库** 用作数据库工作负荷目标](#azure-sql-database-as-database-workload-destination)
 
-它还是一种使用 [SSIS DevOps 工具](/sql/integration-services/devops/ssis-devops-overview)来执行到迁移目标的批处理包重新部署的实用方法。  
+这也是使用 [SSIS DevOps 工具](/sql/integration-services/devops/ssis-devops-overview)的实用方法，可以执行批处理包重新部署到迁移目标。  
 
 ### <a name="azure-sql-managed-instance-as-database-workload-destination"></a>将 Azure SQL 托管实例用作数据库工作负荷目标
 

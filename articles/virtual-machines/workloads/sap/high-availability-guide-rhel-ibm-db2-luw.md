@@ -12,21 +12,21 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/16/2020
+ms.date: 04/27/2021
 ms.author: juergent
-ms.openlocfilehash: 979de230655b4804fa65a4bddb678e21b59c4ea2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9bdd5c8ce5974d73b76dd793445a19a9714f6038
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101674449"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136834"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Red Hat Enterprise Linux Server 上 Azure VM 中 IBM Db2 LUW 的高可用性
 
 采用[高可用性和灾难恢复 (HADR) 配置](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html)的 IBM Db2 for Linux、UNIX 和 Windows (LUW) 包含一个运行主数据库实例的节点，以及至少一个运行辅助数据库实例的节点。 对主数据库实例进行的更改将以同步或异步方式复制到辅助数据库实例，具体取决于你的配置。 
 
 > [!NOTE]
-> 本文包含对术语“主”和“从”的引用，Microsoft 不再使用该术语。  从软件中删除这些术语后，我们会将其从本文中删除。
+> 本文包含对术语“主”和“从”的引用，Microsoft 不再使用这些术语 。 从软件中删除这些术语后，我们会将其从本文中删除。
 
 本文介绍如何部署和配置 Azure 虚拟机 (VM)、安装群集框架，以及安装采用 HADR 配置的 IBM Db2 LUW。 
 
@@ -36,7 +36,7 @@ ms.locfileid: "101674449"
 
 在开始安装之前，请参阅以下 SAP 说明和文档：
 
-| SAP 说明 | 描述 |
+| SAP 说明 | 说明 |
 | --- | --- |
 | [1928533] | Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型 |
 | [2015553] | Azure 上的 SAP：支持先决条件 |
@@ -384,7 +384,7 @@ SOCK_RECV_BUF_REQUESTED,ACTUAL(bytes) = 0, 367360
 
 **[A]** 为探测端口添加防火墙规则：
 
-<pre><code>sudo firewall-cmd --add-port=<b><probe-port></b>/tcp --permanent
+<pre><code>sudo firewall-cmd --add-port=<b>&lt;probe-port&gt;</b>/tcp --permanent
 sudo firewall-cmd --reload</code></pre>
 
 ## <a name="create-the-pacemaker-cluster"></a>创建 Pacemaker 群集
@@ -542,7 +542,7 @@ j2ee/dbhost = db-virt-hostname
 
 建议配置一个公共 NFS 共享或 GlusterFS，其中日志从两个节点写入。 NFS 共享或 GlusterFS 必须高度可用。 
 
-可以将现有的高可用 NFS 共享或 GlusterFS 用于传输或配置文件目录。 有关详细信息，请参见:
+可以将现有的高可用 NFS 共享或 GlusterFS 用于传输或配置文件目录。 有关详细信息，请参阅：
 
 - [适用于 SAP NetWeaver 的 Red Hat Enterprise Linux 上的 Azure VM 上的 GlusterFS][glusterfs] 
 - [使用适用于 SAP 应用程序的 Azure NetApp 文件实现 Red Hat Enterprise Linux 的 Azure VM 上的 SAP NetWeaver 高可用性][anf-rhel]

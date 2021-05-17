@@ -5,15 +5,15 @@ author: ginamr
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 10/13/2020
+ms.date: 04/27/2021
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 5e84a679f0bc26b701dc1d51db3605c452675ea3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 16f882223d8abd3ef7b2d8bd87670e2abc0489f9
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96545275"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165022"
 ---
 # <a name="string-functions-azure-cosmos-db"></a>字符串函数 (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,30 +24,30 @@ ms.locfileid: "96545275"
 
 以下标量函数对字符串输入值执行操作，并返回字符串、数字或布尔值：
   
-* [CONCAT](sql-query-concat.md)
-* [CONTAINS](sql-query-contains.md)
-* [ENDSWITH](sql-query-endswith.md)
-* [INDEX_OF](sql-query-index-of.md)
-* [LEFT](sql-query-left.md)
-* [LENGTH](sql-query-length.md)
-* [LOWER](sql-query-lower.md)
-* [LTRIM](sql-query-ltrim.md)
-* [REGEXMATCH](sql-query-regexmatch.md)
-* [REPLACE](sql-query-replace.md)
-* [REPLICATE](sql-query-replicate.md)
-* [REVERSE](sql-query-reverse.md)
-* [RIGHT](sql-query-right.md)
-* [RTRIM](sql-query-rtrim.md)
-* [STARTSWITH](sql-query-startswith.md)
-* [StringToArray](sql-query-stringtoarray.md)
-* [StringToBoolean](sql-query-stringtoboolean.md)
-* [StringToNull](sql-query-stringtonull.md)
-* [StringToNumber](sql-query-stringtonumber.md)
-* [StringToObject](sql-query-stringtoobject.md)
-* [SUBSTRING](sql-query-substring.md)
-* [ToString](sql-query-tostring.md)
-* [TRIM](sql-query-trim.md)
-* [UPPER](sql-query-upper.md)
+| 系统函数                                 | 索引使用情况        | 使用[标量聚合函数](index-overview.md#index-utilization-for-scalar-aggregate-functions)的查询中的索引使用情况 | 注解                                                      |
+| ----------------------------------------------- | ------------------ | ------------------------------------------------------ | ------------------------------------------------------------ |
+| [CONCAT](sql-query-concat.md)                   | 完全扫描          | 完全扫描                                              |                                                              |
+| [CONTAINS](sql-query-contains.md)               | 完全索引扫描    | 完全扫描                                              |                                                              |
+| [ENDSWITH](sql-query-endswith.md)               | 完全索引扫描    | 完全扫描                                              |                                                              |
+| [INDEX_OF](sql-query-index-of.md)               | 完全扫描          | 完全扫描                                              |                                                              |
+| [LEFT](sql-query-left.md)                       | 精确索引扫描 | 精确索引扫描                                     |                                                              |
+| [LENGTH](sql-query-length.md)                   | 完全扫描          | 完全扫描                                              |                                                              |
+| [LOWER](sql-query-lower.md)                     | 完全扫描          | 完全扫描                                              |                                                              |
+| [LTRIM](sql-query-ltrim.md)                     | 完全扫描          | 完全扫描                                              |                                                              |
+| [REGEXMATCH](sql-query-regexmatch.md)           | 完全索引扫描    | 完全扫描                                              |                                                              |
+| [REPLACE](sql-query-replace.md)                 | 完全扫描          | 完全扫描                                              |                                                              |
+| [REPLICATE](sql-query-replicate.md)             | 完全扫描          | 完全扫描                                              |                                                              |
+| [REVERSE](sql-query-reverse.md)                 | 完全扫描          | 完全扫描                                              |                                                              |
+| [RIGHT](sql-query-right.md)                     | 完全扫描          | 完全扫描                                              |                                                              |
+| [RTRIM](sql-query-rtrim.md)                     | 完全扫描          | 完全扫描                                              |                                                              |
+| [STARTSWITH](sql-query-startswith.md)           | 精确索引扫描 | 精确索引扫描                                     | 如果“不区分大小写”选项为 true，将进行扩展索引扫描。 |
+| [STRINGEQUALS](sql-query-stringequals.md)       | 索引查找         | 索引查找                                             | 如果“不区分大小写”选项为 true，将进行扩展索引扫描。 |
+| [StringToArray](sql-query-stringtoarray.md)     | 完全扫描          | 完全扫描                                              |                                                              |
+| [StringToBoolean](sql-query-stringtoboolean.md) | 完全扫描          | 完全扫描                                              |                                                              |
+| [StringToNull](sql-query-stringtonull.md)       | 完全扫描          | 完全扫描                                              |                                                              |
+| [StringToNumber](sql-query-stringtonumber.md)   | 完全扫描          | 完全扫描                                              |                                                              |
+
+了解 Azure Cosmos DB 中的[索引使用情况](index-overview.md#index-usage)。
 
 ## <a name="next-steps"></a>后续步骤
 

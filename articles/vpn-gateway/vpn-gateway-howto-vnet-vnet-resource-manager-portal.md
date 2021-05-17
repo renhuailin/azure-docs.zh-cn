@@ -1,18 +1,19 @@
 ---
-title: 配置 VNet 到 VNet VPN 网关连接：Azure 门户
-description: 使用 Resource Manager 和 Azure 门户创建 VNet 之间的 VPN 网关连接。
+title: 配置 VNet 到 VNet 的 VPN 网关连接：Azure 门户
+titleSuffix: Azure VPN Gateway
+description: 了解如何在 VNet 之间创建 VPN 网关连接。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 465d877da48e0d7027dbba6615302af32c6bb154
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2bf603d29b5e949ef83c872017bae49e71b2fcb0
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98872394"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204866"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>使用 Azure 门户配置 VNet 到 VNet VPN 网关连接
 
@@ -65,7 +66,7 @@ ms.locfileid: "98872394"
 
 可以将 VNet 到 VNet 通信与多站点配置组合使用。 使用这些配置可以建立将跨界连接与虚拟网络间连接相结合的网络拓扑，如下图所示：
 
-:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections-diagram.png" alt-text="VNet 连接关系图":::
+:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections-diagram.png" alt-text="VNet 连接关系图。":::
 
 本文介绍如何使用 VNet 到 VNet 连接类型来连接 VNet。 遵循这些步骤进行练习时，可以使用以下示例设置值。 示例中的虚拟网络在同一订阅中，但却在不同的资源组中。 如果 VNet 在不同的订阅中，则无法在门户中创建连接。 改用 [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) 或 [CLI](vpn-gateway-howto-vnet-vnet-cli.md)。 有关 VNet 到 VNet 连接的详细信息，请参阅 [VNet 到 VNet 连接常见问题解答](#vnet-to-vnet-faq)。
 

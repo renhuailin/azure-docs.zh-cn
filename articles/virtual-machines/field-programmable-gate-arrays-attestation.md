@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: vikancha
-ms.openlocfilehash: a3408d30a9caa24355cf3976235c3a9b8061b95f
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: a0c0c04d33c994279fe15a8fe7f677b2c25a55de
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531228"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166030"
 ---
 # <a name="fpga-attestation-for-azure-np-series-vms-preview"></a>适用于 Azure NP 系列 VM 的 FPGA 证明（预览版）
 
@@ -24,15 +24,11 @@ FPGA 证明服务对 Xilinx 工具集生成的设计检查点文件（称为“�
 
 我们提供了 PowerShell 和 Bash 脚本用于提交证明请求。   脚本使用可在 Windows 和 Linux 上运行的 Azure CLI。 PowerShell 可在 Windows、Linux 和 macOS 上运行。  
 
-Azure CLI 下载（必需）：  
+[Azure CLI 下载（必需）](/cli/azure/install-azure-cli)
 
-https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest  
+[适用于 Windows、Linux 和 macOS 的 PowerShell 下载（仅适用于 PowerShell 脚本）](/powershell/scripting/install/installing-powershell)
 
-适用于 Windows、Linux 和 macOS 的 PowerShell 下载（仅适用于 PowerShell 脚本）：  
-
-https://docs.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-7  
-
-需要为你的租户和订阅 ID 授权，使其可以向证明服务提交请求。 请访问 https://aka.ms/AzureFPGAAttestationPreview 来请求访问权限。 
+需要为你的租户和订阅 ID 授权，使其可以向证明服务提交请求。 请访问 [https://aka.ms/AzureFPGAAttestationPreview](https://aka.ms/AzureFPGAAttestationPreview) 来请求访问权限。 
 
 ## <a name="building-your-design-for-attestation"></a>生成证明设计  
 
@@ -40,19 +36,17 @@ https://docs.microsoft.com/powershell/scripting/install/installing-powershell?vi
 
 必须将以下参数包含在 Vitis（v++ 命令行）中，以生成包含网表（而不是位流）的 xclbin 文件。   
 
-```--advanced.param compiler.acceleratorBinaryContent=dcp  ```
+`--advanced.param compiler.acceleratorBinaryContent=dcp`
 
 ## <a name="logging-into-azure"></a>登录到 Azure  
 
-在 Azure 中执行任何操作之前，必须先登录到 Azure，设置有权调用该服务的订阅。 为此，请使用 ```az login``` 和 ```az account set –s <Sub ID or Name>``` 命令。 以下文档介绍了有关此过程的更多信息：  
-
-https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest. 在命令行中使用“以交互方式登录”或“使用凭据登录”选项。  
+在 Azure 中执行任何操作之前，必须先登录到 Azure，设置有权调用该服务的订阅。 为此，请使用 `az login` 和 `az account set –s <Sub ID or Name>` 命令。 若要进一步了解此过程，可查看此处文章：[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli)。 在命令行中使用“以交互方式登录”或“使用凭据登录”选项 。  
 
 ## <a name="creating-a-storage-account-and-blob-container"></a>创建存储帐户和 Blob 容器  
 
 必须将网表文件上传到 Azure 存储 Blob 容器供证明服务访问。  
 
-有关创建帐户和容器，以及将网表作为 Blob 上传到该容器的详细信息，请参阅以下页面：[https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-cli](/azure/storage/blobs/storage-quickstart-blobs-cli)。  
+有关创建帐户和容器，以及将网表作为 Blob 上传到该容器的详细信息，请参阅以下页面：[https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-cli](../storage/blobs/storage-quickstart-blobs-cli.md)。  
 
 也可以使用 Azure 门户执行此操作。  
 
@@ -66,7 +60,7 @@ https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-lates
 
 可从以下 Azure 存储 Blob 容器下载验证脚本：  
 
-https://fpgaattestation.blob.core.windows.net/validationscripts/validate.zip  
+[https://fpgaattestation.blob.core.windows.net/validationscripts/validate.zip](https://fpgaattestation.blob.core.windows.net/validationscripts/validate.zip)
 
 zip 文件包含两个 PowerShell 脚本，其中一个脚本用于提交，另一个脚本用于监视；第三个文件是一个 bash 脚本，可执行这两项功能。  
 
@@ -82,15 +76,19 @@ zip 文件包含两个 PowerShell 脚本，其中一个脚本用于提交，另�
 
 ### <a name="powershell"></a>PowerShell   
 
-```$sas=$(az storage container generate-sas --account-name <storage acct name> --name <blob container name> --https-only --permissions rwc --expiry <e.g., 2021-01-07T17:00Z> --output tsv)  ```
+```powershell
+$sas=$(az storage container generate-sas --account-name <storage acct name> --name <blob container name> --https-only --permissions rwc --expiry <e.g., 2021-01-07T17:00Z> --output tsv)
 
-```.\Validate-FPGAImage.ps1 -StorageAccountName <storage acct name> -Container <blob container name> -BlobContainerSAS $sas -NetlistName <netlist blob filename>  ```
+.\Validate-FPGAImage.ps1 -StorageAccountName <storage acct name> -Container <blob container name> -BlobContainerSAS $sas -NetlistName <netlist blob filename>
+```
 
 ### <a name="bash"></a>Bash  
 
-``` sas=az storage container generate-sas --account-name <storage acct name> --name <blob container name> --https-only --permissions rwc --expiry <2021-01-07T17:00Z> --output tsv  ```
+```bash
+sas=az storage container generate-sas --account-name <storage acct name> --name <blob container name> --https-only --permissions rwc --expiry <2021-01-07T17:00Z> --output tsv  
 
-```validate-fpgaimage.sh --storage-account <storage acct name> --container <blob container name> --netlist-name <netlist blob filename> --blob-container-sas $sas ``` 
+validate-fpgaimage.sh --storage-account <storage acct name> --container <blob container name> --netlist-name <netlist blob filename> --blob-container-sas $sas
+``` 
 
 ## <a name="checking-on-the-status-of-your-submission"></a>检查提交状态  
 
@@ -98,23 +96,19 @@ zip 文件包含两个 PowerShell 脚本，其中一个脚本用于提交，另�
 
 可以随时调用 Monitor-Validation.ps1 脚本并提供业务流程 ID 作为参数，来获取证明的状态和结果：  
 
-```.\Monitor-Validation.ps1 -OrchestrationId < Orchestration ID>  ```
+`.\Monitor-Validation.ps1 -OrchestrationId <orchestration ID>`
 
 或者，可将 HTTP POST 请求提交到证明服务终结点：  
 
-https://fpga-attestation.azurewebsites.net/api/ComputeFPGA_HttpGetStatus  
+`https://fpga-attestation.azurewebsites.net/api/ComputeFPGA_HttpGetStatus`
 
 请求正文应包含你的订阅 ID、租户 ID，以及证明请求的业务流程 ID：  
 
-```
+```json
 {  
-
-  "OrchestrationId": ”< orchestration ID>”,  
-
-  "ClientSubscriptionId": “<your subscription ID>”,  
-
-  "ClientTenantId": “<your tenant ID>”  
-
+  "OrchestrationId": "<orchestration ID>",  
+  "ClientSubscriptionId": "<your subscription ID>",  
+  "ClientTenantId": "<your tenant ID>"
 }
 ```
 
@@ -122,7 +116,6 @@ https://fpga-attestation.azurewebsites.net/api/ComputeFPGA_HttpGetStatus
 
 服务会将其输出写回到容器。 如果成功通过了验证，则容器将具有原始网表文件 (abc.xclbin)、包含位流的文件 (abc.xclbin)、用于标识所存储位流的专用位置的文件 (abc.azure.xclbin) 和四个日志文件：启动进程有一个日志文件 (abc-log.txt)，执行验证的三个并行阶段各有一个日志文件。 这些文件命名为 *logPhaseX.txt，其中 X 是阶段的编号。 将在 VM 上使用 azure.xclbin，以发出将已验证的映像上传到 U250 的信号。 
 
-如果通不过验证，则会写入一个 error-*.txt 文件，指出哪个步骤失败。 另外，可在日志文件中检查是否有错误日志指出证明失败。 联系我们请求支持时，请务必连同业务流程 ID 一起，将所有这些文件包含为支持请求的一部分。  
+如果通不过验证，则会写入一个 error-*.txt 文件，指出哪个步骤失败。 另外，还可在日志文件中检查是否有错误日志指出证明已失败。 联系我们请求支持时，请务必连同业务流程 ID 一起，将所有这些文件包含为支持请求的一部分。  
 
-可以使用 Azure 门户创建容器，以及上传网表和下载位流与日志文件。 目前不支持通过门户提交证明请求及监视其进度，必须如前所述通过脚本实现此目的。 
-
+可以使用 Azure 门户创建容器，以及上传网表和下载位流与日志文件。 目前不支持通过门户提交证明请求及监视其进度，必须如前所述通过脚本实现此目的。

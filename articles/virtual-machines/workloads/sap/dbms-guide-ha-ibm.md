@@ -8,10 +8,10 @@ ms.date: 10/16/2020
 ms.author: juergent
 ms.reviewer: cynthn
 ms.openlocfilehash: faafce32c3452a5c4ff08783ec2edd28f7f961e9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101671887"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>采用 Pacemaker 的 SUSE Linux Enterprise Server 上 Azure VM 中 IBM Db2 LUW 的高可用性
@@ -29,7 +29,7 @@ ms.locfileid: "101671887"
 
 在开始安装之前，请参阅以下 SAP 说明和文档：
 
-| SAP 说明 | 描述 |
+| SAP 说明 | 说明 |
 | --- | --- |
 | [1928533] | Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型 |
 | [2015553] | Azure 上的 SAP：支持先决条件 |
@@ -482,7 +482,7 @@ j2ee/dbhost = db-virt-hostname
 1. 在右框架中，选择密钥 jdbc/pool/\<SAPSID>/url。
 1. 将 JDBC URL 中的主机名更改为虚拟主机名。
      `jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0`
-1. 选择“添加”。
+1. 选择 **添加** 。
 1. 要保存所做的更改，请在左上角选择磁盘图标。
 1. 关闭配置工具。
 1. 重启 Java 实例。
@@ -494,7 +494,7 @@ j2ee/dbhost = db-virt-hostname
 
 建议配置一个公共 NFS 共享，其中日志从两个节点写入。 NFS 共享必须高度可用。 
 
-可以将现有的高可用 NFS 共享用于传输或配置文件目录。 有关详细信息，请参见:
+可以将现有的高可用 NFS 共享用于传输或配置文件目录。 有关详情，请参阅：
 
 - [SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性][nfs-ha] 
 - [带有适用于 SAP 应用程序的 Azure NetApp 文件的 SUSE Linux Enterprise Server 上 Azure VM 上的 SAP NetWeaver 的高可用性](./high-availability-guide-suse-netapp-files.md)

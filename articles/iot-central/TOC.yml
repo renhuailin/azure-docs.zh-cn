@@ -8,6 +8,10 @@
       href: core/overview-iot-central-tour.md
     - name: 最新更新
       items:
+        - name: 2021 年 3 月新增功能和更新的功能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-march-2021/'
+        - name: 2021 年 2 月新增功能和更新的功能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-february-2021/'
         - name: 2021 年 1 月新增功能和更新的功能
           href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-january-2021/'
         - name: 2020 年11 月新增功能和更新的功能
@@ -122,7 +126,7 @@
             - name: 创建持续患者监视解决方案
               href: healthcare/tutorial-continuous-patient-monitoring.md
             - name: 创建健康状况数据分类仪表板
-              href: healthcare/howto-health-data-triage.md
+              href: ./healthcare/tutorial-health-data-triage.md
 - name: 概念
   items:
     - name: 体系结构
@@ -131,6 +135,10 @@
       href: core/overview-iot-central-developer.md
     - name: 解决方案构建者指南
       href: core/overview-iot-central-solution-builder.md
+    - name: 管理员指南
+      href: core/overview-iot-central-admin.md
+    - name: 操作员指南
+      href: core/overview-iot-central-operator.md
     - name: 什么是应用程序模板？
       href: core/concepts-app-templates.md
     - name: 行业特定应用程序模板
@@ -189,6 +197,8 @@
   items:
     - name: 开发和连接设备
       items:
+        - name: 创建应用程序
+          href: core/howto-create-iot-central-application.md
         - name: 设置设备模板
           href: core/howto-set-up-template.md
         - name: 对设备模板进行版本控制
@@ -201,16 +211,14 @@
           href: core/how-to-connect-devices-x509.md
         - name: 使用 Azure CLI 监视设备连接
           href: core/howto-monitor-devices-azure-cli.md
+        - name: 通过 IoT Edge 透明网关连接设备
+          href: core/how-to-connect-iot-edge-transparent-gateway.md
         - name: 准备和连接 Azure Sphere DevKit
           href: core/howto-connect-sphere.md
         - name: 准备和连接 RuuviTag 设备
           href: core/howto-connect-ruuvi.md
         - name: 准备和连接 Rigado Cascade 500
           href: core/howto-connect-rigado-cascade-500.md
-        - name: 连接其他 IoT 云
-          href: core/howto-build-iotc-device-bridge.md
-        - name: 管理设备
-          href: core/how-to-move-device-to-iot.md
     - name: 生成集成的解决方案
       items:
         - name: 向仪表板添加磁贴
@@ -227,6 +235,8 @@
           href: core/howto-export-data.md
         - name: 将数据导出到云目标（旧版）
           href: core/howto-export-data-legacy.md
+        - name: 转换数据
+          href: core/howto-transform-data.md
         - name: 使用工作流与其他服务集成
           href: core/howto-configure-rules-advanced.md
         - name: 创建自定义规则
@@ -235,14 +245,26 @@
           href: core/howto-create-custom-analytics.md
         - name: 在 Power BI 中直观显示数据
           href: core/howto-connect-powerbi.md
+        - name: 连接其他 IoT 云
+          href: core/howto-build-iotc-device-bridge.md
         - name: 将应用程序与 Dynamics 365 Field Services 连接
           href: government/how-to-configure-connected-field-services.md
+    - name: 使用 REST API
+      items:
+        - name: 对 REST API 调用进行身份验证和授权
+          href: core/howto-authorize-rest-api.md
+        - name: 管理用户和角色
+          href: core/howto-manage-users-roles-with-rest-api.md
+        - name: 控制设备
+          href: core/howto-control-devices-with-rest-api.md
     - name: 管理设备
       items:
         - name: 添加和删除设备
           href: core/howto-manage-devices.md
         - name: 运行作业
           href: core/howto-run-a-job.md
+        - name: 从 IoT 中心移动设备
+          href: core/how-to-move-device-to-iot.md
     - name: 管理解决方案
       items:
         - name: 管理应用程序设置
@@ -300,7 +322,9 @@
     - name: 代码示例
       href: /samples/browse/?expanded=azure&products=azure-iot-central
     - name: 支持和帮助选项
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json
+    - name: IoT 术语表
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json
     - name: Azure IoT 服务
       items:
         - name: IoT 中心

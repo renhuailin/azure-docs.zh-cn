@@ -45,8 +45,14 @@
       href: application-settings.md
     - name: 配置前端框架和库
       href: front-end-frameworks.md
+    - name: 启用监视
+      href: monitor.md
+      displayName: Application Insights
     - name: 重置部署令牌
       href: deployment-token-management.md
+    - name: 排查错误
+      href: troubleshooting.md
+      displayName: 'deployment, runtime, errors'
 - name: 教程
   items:
     - name: 从静态站点生成器发布
@@ -67,6 +73,16 @@
           href: deploy-nextjs.md
         - name: Nuxt.js
           href: deploy-nuxtjs.md
+    - name: 使用 Mongoose.js 和 Cosmos DB 添加数据库
+      href: add-mongoose.md
+    - name: 使用 Azure DevOps 进行发布
+      href: publish-devops.md
+    - name: 使用 ARM 模板进行发布
+      href: publish-azure-resource-manager.md
+- name: 参考
+  items:
+    - name: Azure CLI
+      href: /cli/azure/staticwebapp
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能

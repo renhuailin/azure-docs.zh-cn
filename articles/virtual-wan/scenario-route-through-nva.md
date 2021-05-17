@@ -1,20 +1,20 @@
 ---
 title: 方案：通过网络虚拟设备 (NVA) 路由流量
 titleSuffix: Azure Virtual WAN
-description: 通过 NVA 路由流量
+description: 了解虚拟 WAN 路由方案，以通过网络虚拟设备 (NVA) 来路由流量。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 24671a34214864e253d96c356dc8b2853bf6d560
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 90b1df8af4cf9f65cb04cc9418d7e8f97f9c3e49
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100519790"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162826"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>场景：通过 NVA 路由流量
 
@@ -37,7 +37,7 @@ ms.locfileid: "100519790"
 
 下面的连接矩阵汇总了此方案中支持的流：
 
-**连接矩阵**
+**连接性矩阵**
 
 | 源             | 到:|   NVA 分支|NVA VNet|非 NVA VNet|*分支*|
 |---|---|---|---|---|---|
@@ -69,7 +69,7 @@ ms.locfileid: "100519790"
 
 这样，在默认表中需要的用于将流量发送到 NVA VNet 后方 NVA 分支的静态路由如下：
 
-| 说明 | 路由表 | 静态路由              |
+| 描述 | 路由表 | 静态路由              |
 | ----------- | ----------- | ------------------------- |
 | VNet 2       | 默认     | 10.2.0.0/16 -> eastusconn |
 | VNet 4       | 默认     | 10.4.0.0/16 -> weconn     |

@@ -3,15 +3,15 @@ title: 排查 Azure 自动化更新管理问题
 description: 本文介绍如何排查和解决 Azure 自动化更新管理的问题。
 services: automation
 ms.subservice: update-management
-ms.date: 04/16/2021
+ms.date: 04/18/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 36bfd2185cb7a192ce0113ee0722395c8a4ee928
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 5d73f7232afc9dcd6f7e069297efac763c242f7b
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830297"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164248"
 ---
 # <a name="troubleshoot-update-management-issues"></a>排查“更新管理”问题
 
@@ -394,10 +394,10 @@ New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationA
 
 ### <a name="issue"></a>问题
 
-计算机显示为 `Failed to start` 状态。 查看计算机的特定详细信息时，看到以下错误：
+计算机显示 `Failed to start` 或 `Failed` 状态。 查看计算机的特定详细信息时，看到以下错误：
 
 ```error
-Failed to start the runbook. Check the parameters passed. RunbookName Patch-MicrosoftOMSComputer. Exception You have requested to create a runbook job on a hybrid worker group that does not exist.
+For one or more machines in schedule, UM job run resulted in either Failed or Failed to start state. Guide available at https://aka.ms/UMSucrFailed.
 ```
 
 ### <a name="cause"></a>原因
@@ -411,6 +411,8 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 * 如果在自动化帐户中达到了 200 个并发作业的限制，则更新运行会受到限制。 每个部署均视为一项作业，更新部署中的每台计算机均计为一个作业。 自动化帐户中当前运行的其他任何自动化作业或更新部署均计入并发作业，受其数量限制的约束。
 
 ### <a name="resolution"></a>解决方法
+
+可使用 REST API 以编程方式检索更多详细信息。 请查看[软件更新配置计算机运行](/rest/api/automation/softwareupdateconfigurationmachineruns)，了解如何检索更新配置计算机运行的列表，或者如何通过 ID 检索单个软件更新配置计算机运行。
 
 如果适用，请为更新部署使用[动态组](../update-management/configure-groups.md)。 此外，可以执行以下步骤。
 
@@ -506,11 +508,13 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 ### <a name="issue"></a>问题
 
-更新的默认维护时段为 120 分钟。 最多可将维护时段增至 6 小时，即 360 分钟。
+更新的默认维护时段为 120 分钟。 最多可将维护时段增至 6 小时，即 360 分钟。 可能会收到错误消息 `For one or more machines in schedule, UM job run resulted in Maintenance Window Exceeded state. Guide available at https://aka.ms/UMSucrMwExceeded.`
 
 ### <a name="resolution"></a>解决方法
 
 若要了解更新成功启动后在运行期间发生此错误的原因，请[检查运行中受影响的计算机的作业输出](../update-management/deploy-updates.md#view-results-of-a-completed-update-deployment)。 可以从计算机查找特定的错误消息，可以对这些错误消息进行调查并对其采取操作。  
+
+可使用 REST API 以编程方式检索更多详细信息。 请查看[软件更新配置计算机运行](https://docs.microsoft.com/rest/api/automation/softwareupdateconfigurationmachineruns)，了解如何检索更新配置计算机运行的列表，或者如何通过 ID 检索单个软件更新配置计算机运行。
 
 编辑任何失败的计划更新部署，并增加维护时段。
 

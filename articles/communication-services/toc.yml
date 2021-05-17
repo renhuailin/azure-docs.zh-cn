@@ -26,8 +26,10 @@
           href: quickstarts/chat/meeting-interop.md
     - name: 电话服务和短信
       items:
-        - name: 管理电话号码
+        - name: 获取电话号码
           href: quickstarts/telephony-sms/get-phone-number.md
+        - name: 将电话号码移植到 Azure
+          href: quickstarts/telephony-sms/port-phone-number.md
         - name: 向应用添加通话功能
           href: quickstarts/voice-video-calling/pstn-call.md
         - name: 发送短信
@@ -40,9 +42,9 @@
       items:
         - name: 在应用中添加语音呼叫
           href: quickstarts/voice-video-calling/getting-started-with-calling.md
-        - name: 在应用中添加视频呼叫 (JavaScript)
+        - name: 在应用中添加视频呼叫
           href: quickstarts/voice-video-calling/get-started-with-video-calling.md
-        - name: 使用呼叫客户端库
+        - name: 使用呼叫 SDK
           href: quickstarts/voice-video-calling/calling-client-samples.md
         - name: 在 Teams 会议中加入通话应用
           href: quickstarts/voice-video-calling/get-started-teams-interop.md
@@ -63,18 +65,20 @@
       href: tutorials/hmac-header-tutorial.md
     - name: 为通信服务 (Node.js) 准备 Web 应用
       href: tutorials/building-app-start.md
+    - name: 使用 Postman 来签署和发出对 ACS 短信 API 的请求
+      href: tutorials/postman-tutorial.md
 - name: 概念
   expanded: false
   items:
     - name: 聊天
       items:
-        - name: 聊天客户端概述
+        - name: 聊天 SDK 概述
           href: concepts/chat/sdk-features.md
         - name: 聊天概念
           href: concepts/chat/concepts.md
     - name: 电话服务和短信
       items:
-        - name: 短信客户端概述
+        - name: 短信 SDK 概述
           href: concepts/telephony-sms/sdk-features.md
         - name: 短信概念
           href: concepts/telephony-sms/concepts.md
@@ -82,14 +86,22 @@
           href: concepts/telephony-sms/telephony-concept.md
         - name: 电话号码类型
           href: concepts/telephony-sms/plan-solution.md
-        - name: SIP 接口基础结构要求
+        - name: Azure 直接路由基础结构要求
           href: concepts/telephony-sms/sip-interface-infrastructure.md
+        - name: SMS 常见问题解答
+          href: concepts/telephony-sms/sms-faq.md
+        - name: 消息传递策略
+          href: concepts/telephony-sms/messaging-policy.md
     - name: 语音和视频呼叫
       items:
-        - name: 呼叫客户端概述
+        - name: 已知问题
+          href: concepts/known-issues.md
+        - name: 呼叫 SDK 概述
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: 语音和视频概念
           href: concepts/voice-video-calling/about-call-types.md
+        - name: 网络要求
+          href: concepts/voice-video-calling/network-requirements.md
         - name: 呼叫流
           href: concepts/call-flows.md
         - name: 调用流拓扑
@@ -100,16 +112,6 @@
           href: concepts/ui-framework/ui-sdk-overview.md
         - name: UI 框架功能
           href: concepts/ui-framework/ui-sdk-features.md
-    - name: 数据和操作
-      items:
-        - name: 服务事件 (EventGrid)
-          href: concepts/event-handling.md
-        - name: 日志记录和诊断
-          href: concepts/logging-and-diagnostics.md
-        - name: 指标
-          href: concepts/metrics.md
-        - name: 疑难解答
-          href: concepts/troubleshooting-info.md
     - name: SDK 和 REST API
       href: concepts/sdk-options.md
     - name: 客户端和服务器体系结构
@@ -126,10 +128,19 @@
       href: concepts/notifications.md
     - name: Teams 互操作性
       href: concepts/teams-interop.md
-    - name: 已知问题
-      href: concepts/known-issues.md
+    - name: 服务事件 (EventGrid)
+      href: ../event-grid/event-schema-communication-services.md
+      maintainContext: true
+    - name: 日志记录和诊断
+      href: concepts/logging-and-diagnostics.md
+    - name: 指标
+      href: concepts/metrics.md
+    - name: 疑难解答
+      href: concepts/troubleshooting-info.md
 - name: 示例
   items:
+    - name: 概述
+      href: samples/overview.md
     - name: 出色的分组呼叫示例
       href: samples/calling-hero-sample.md
     - name: 分组聊天英雄示例
@@ -140,14 +151,16 @@
   items:
     - name: 参考文档概述
       href: concepts/reference.md
+    - name: Azure CLI
+      href: /cli/azure/communication
     - name: REST API 文档
       href: /rest/api/communication/
     - name: 通话库
       items:
         - name: 通话 (JavaScript)
-          href: /javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js
+          href: /javascript/api/azure-communication-services/@azure/communication-calling/
         - name: 通话 (Android/Java)
-          href: /java/api/com.azure.communication.calling?view=communication-services-java-android
+          href: /java/api/com.azure.android.communication.calling?view=communication-services-java-android
         - name: 通话 (iOS)
           href: /objectivec/communication-services/calling/
     - name: 聊天库

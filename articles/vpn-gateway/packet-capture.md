@@ -1,5 +1,6 @@
 ---
-title: Azure VPN 网关：配置数据包捕获
+title: 为 VPN 网关配置数据包捕获
+titleSuffix: Azure VPN Gateway
 description: 了解可在 VPN 网关上使用的数据包捕获功能，以帮助缩小确定问题原因的范围。
 services: vpn-gateway
 author: anzaman
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alzam
-ms.openlocfilehash: 0983139d1c9af235eba4c9f99da7bc9dea3f231b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5f423b2a4a1edcfdb71fd387cae0ec8c63113627
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101726608"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229173"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>为 VPN 网关配置数据包捕获
 
@@ -322,7 +323,7 @@ VPN 网关数据包捕获可在网关上运行，也可在特定的连接上运�
 
 可以在 Azure 门户中设置数据包捕获。
 
-:::image type="content" source="./media/packet-capture/portal.jpg" alt-text="门户中的数据包捕获屏幕截图。" lightbox="./media/packet-capture/portal.jpg":::
+:::image type="content" source="./media/packet-capture/portal.jpg" alt-text="门户中的数据包捕获的屏幕截图。" lightbox="./media/packet-capture/portal.jpg":::
 
 ## <a name="packet-capture---powershell"></a>数据包捕获 - PowerShell
 

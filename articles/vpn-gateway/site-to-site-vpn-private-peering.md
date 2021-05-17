@@ -1,18 +1,19 @@
 ---
 title: 通过 ExpressRoute 专用对等互连建立的站点到站点 VPN 连接
-description: 本文可帮助你通过 ExpressRoute 专用对等互连实现站点到站点 VPN，以便对流量进行加密。
+titleSuffix: Azure VPN Gateway
+description: 了解如何通过 ExpressRoute 专用对等互连配置站点到站点 VPN 连接来对流量进行加密。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 01d87bcb5697326fa87b25b20354897049900d9d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4c84b46fe3265b5ada792cbe47d92768e602fa20
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98880519"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229029"
 ---
 # <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering"></a>通过 ExpressRoute 专用对等互连配置站点到站点 VPN 连接
 
@@ -46,7 +47,7 @@ ms.locfileid: "98880519"
 
 1. 使用本文中的步骤建立 VPN 连接。
 
-### <a name="traffic-from-on-premises-networks-to-azure"></a>从本地网络到 Azure 的流量
+### <a name="traffic-from-on-premises-networks-to-azure"></a>从本地网络发往 Azure 的流量
 
 对于从本地网络发往 Azure 的流量，Azure 前缀通过 ExpressRoute 专用对等互连 BGP 和 VPN BGP 进行播发。 这会建立从本地网络发往 Azure 的两个网络路由（路径）：
 

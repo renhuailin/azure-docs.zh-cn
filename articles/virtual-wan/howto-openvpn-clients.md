@@ -1,18 +1,18 @@
 ---
 title: 为 Azure 虚拟 WAN 配置 OpenVPN 客户端
-description: 为 Azure 虚拟 WAN 配置 OpenVPN 客户端的步骤
+description: 本文可帮助你为 Azure 虚拟 WAN 配置 OpenVPN 客户端。 其中包括 Windows、Mac、iOS 和 Linux 客户端配置步骤。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 04/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: 05502b344b1224dff5d12f95b96b05baace98970
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 91b4a9a69912f7a5980348cc2b9a874673fa0eb2
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94490995"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163384"
 ---
 # <a name="configure-an-openvpn-client-for-azure-virtual-wan"></a>为 Azure 虚拟 WAN 配置 OpenVPN 客户端
 

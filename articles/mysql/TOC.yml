@@ -7,9 +7,7 @@
       href: overview.md
     - name: 我应选择哪个 MySQL 选项？
       href: select-right-deployment-type.md
-    - name: 支持的版本
-      href: concepts-supported-versions.md
-    - name: 版本控制策略
+    - name: 版本支持策略
       href: concepts-version-policy.md
       displayName: version policy
 - name: 单台服务器
@@ -21,6 +19,10 @@
       items:
         - name: 什么是单服务器？
           href: single-server-overview.md
+        - name: 支持的版本
+          href: concepts-supported-versions.md
+        - name: 单一服务器中有哪些新增功能？
+          href: single-server-whats-new.md
         - name: 定价层
           items:
             - name: 定价层
@@ -178,7 +180,7 @@
         - name: 安全概述
           href: concepts-security.md
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/mysql-security-baseline?toc=/azure/mysql/TOC.json
         - name: 身份验证
           items:
             - name: Azure AD 身份验证
@@ -318,7 +320,7 @@
             - name: 使用 Azure PowerShell
               href: howto-restore-server-powershell.md
               displayName: 'restore server, backup, geo-restore powershell'
-        - name: 恢复已删除的服务器
+        - name: 还原已删除的服务器
           href: howto-restore-dropped-server.md
           displayName: 'restore server,dropped, recover'
     - name: 复制
@@ -376,6 +378,8 @@
         - name: 性能建议
           href: concepts-performance-recommendations.md
           displayName: recommendation
+        - name: Azure 顾问建议
+          href: concepts-azure-advisor-recommendations.md
     - name: 最佳实践
       items:
         - name: 监视最佳做法
@@ -387,23 +391,6 @@
           displayName: application
         - name: 操作最佳实践
           href: concept-operation-excellence-best-practices.md
-    - name: 疑难解答
-      items:
-        - name: 查询性能故障排除
-          href: howto-troubleshoot-query-performance.md
-          displayName: 'debug, performance issues, query performance'
-        - name: 如何使用 sys 架构中的视图
-          href: howto-troubleshoot-sys-schema.md
-          displayName: 'sys schema, views'
-        - name: 排查数据加密问题
-          href: howto-data-encryption-troubleshoot.md
-          displayName: 'encryption, security'
-        - name: 排查复制延迟问题
-          href: howto-troubleshoot-replication-latency.md
-          displayName: 'replication, latency, monitor'
-        - name: 减轻数据库损坏的影响
-          href: how-to-fix-corrupt-database.md
-          displayName: corrupt data
 - name: 灵活服务器（预览版）
   items:
     - name: 灵活服务器文档
@@ -412,8 +399,6 @@
       items:
         - name: 什么是灵活服务器？
           href: flexible-server/overview.md
-        - name: 支持的版本
-          href: concepts-supported-versions.md
         - name: 计算和存储
           href: flexible-server/concepts-compute-storage.md
     - name: 快速入门
@@ -483,6 +468,8 @@
           href: flexible-server/how-to-stop-start-server-portal.md
         - name: 使用 Azure 门户重启服务器
           href: flexible-server/how-to-restart-server-portal.md
+        - name: 使用 Azure CLI 启动/停止/重启
+          href: flexible-server/how-to-restart-stop-start-server-cli.md
     - name: 网络
       items:
         - name: 概念
@@ -514,6 +501,8 @@
           href: flexible-server/concepts-high-availability.md
         - name: 使用 Azure 门户配置高可用性
           href: flexible-server/how-to-configure-high-availability.md
+        - name: 使用 Azure CLI 配置高可用性
+          href: flexible-server/how-to-configure-high-availability-cli.md
     - name: 监视和日志
       items:
         - name: 概念
@@ -524,12 +513,16 @@
               href: flexible-server/concepts-slow-query-logs.md
             - name: 使用 Azure 门户配置慢速查询日志
               href: flexible-server/how-to-configure-slow-query-logs-portal.md
+            - name: 使用 Azure CLI 配置慢速查询日志
+              href: flexible-server/how-to-configure-slow-query-log-cli.md
         - name: 审核日志
           items:
             - name: 概念
               href: flexible-server/concepts-audit-logs.md
             - name: 配置审核日志
               href: flexible-server/how-to-configure-audit-logs-portal.md
+            - name: 使用 Azure CLI 配置审核日志
+              href: flexible-server/how-to-configure-audit-log-cli.md
     - name: 复制
       items:
         - name: 只读副本
@@ -546,6 +539,8 @@
           href: flexible-server/concepts-backup-restore.md
         - name: 使用 Azure 门户还原服务器
           href: flexible-server/how-to-restore-server-portal.md
+        - name: 使用 Azure CLI 还原服务器
+          href: flexible-server/how-to-restore-server-cli.md
     - name: 疑难解答
       items:
         - name: 排查连接错误
@@ -567,6 +562,26 @@
     - name: 解决常见问题
       href: howto-troubleshoot-common-errors.md
       displayName: 'SUPER privilege, DBA role, Access is denied'
+- name: 故障排除
+  items:
+    - name: 排查迁移错误
+      href: howto-troubleshoot-common-errors.md
+      displayName: 'SUPER privilege, DBA role, Access is denied'
+    - name: 查询性能故障排除
+      href: howto-troubleshoot-query-performance.md
+      displayName: 'debug, performance issues, query performance'
+    - name: 如何使用 sys 架构中的视图
+      href: howto-troubleshoot-sys-schema.md
+      displayName: 'sys schema, views'
+    - name: 排查数据加密问题
+      href: howto-data-encryption-troubleshoot.md
+      displayName: 'encryption, security'
+    - name: 排查复制延迟问题
+      href: howto-troubleshoot-replication-latency.md
+      displayName: 'replication, latency, monitor'
+    - name: 排查数据库损坏问题
+      href: how-to-fix-corrupt-database.md
+      displayName: corrupt data
 - name: 参考
   items:
     - name: Azure CLI

@@ -1,19 +1,19 @@
 ---
 title: 创建并安装 P2S VPN 客户端配置文件：证书身份验证
 titleSuffix: Azure VPN Gateway
-description: 为 P2S 证书身份验证配置创建并安装 Windows、Linux、Linux (strongSwan) 和 macOS X VPN 客户端配置文件。
+description: 了解如何为 P2S 证书身份验证创建并安装 Windows、Linux、Linux (strongSwan) 和 macOS X VPN 客户端配置文件。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 11/11/2020
+ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: c7b186aa1a6f63b1bc3e9dbefa5001faac967762
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 239166c872578b310fe8eb0393a7a37f4d25129f
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94556062"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202544"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>为本机 Azure 证书身份验证 P2S 配置创建并安装 VPN 客户端配置文件
 

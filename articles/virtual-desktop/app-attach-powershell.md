@@ -1,36 +1,28 @@
 ---
-title: Windows 虚拟桌面 MSIX 应用附加预览版 PowerShell - Azure
+title: Windows 虚拟桌面 MSIX 应用附加 PowerShell - Azure
 description: 如何使用 PowerShell 设置 Windows 虚拟桌面的 MSIX 应用附加。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/13/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 1196982fedc7321805e36cceed27c90e43a6e705
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+manager: femila
+ms.openlocfilehash: ebc403553443a9ea04525323b751fbdb51d23c6e
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99558335"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500577"
 ---
-# <a name="set-up-msix-app-attach-preview-using-powershell"></a>使用 PowerShell 设置 MSIX 应用附加（预览版）
+# <a name="set-up-msix-app-attach-using-powershell"></a>通过 PowerShell 设置 MSIX 应用附加
 
-> [!IMPORTANT]
-> MSIX 应用附加目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-除 Azure 门户之外，还可以通过 PowerShell 手动设置 MSIX 应用附加（预览版）。 本文介绍如何使用 PowerShell 设置 MSIX 应用附加。
+除 Azure 门户之外，还可以通过 PowerShell 手动设置 MSIX 应用附加。 本文介绍如何使用 PowerShell 设置 MSIX 应用附加。
 
 ## <a name="requirements"></a>要求
-
->[!IMPORTANT]
->在开始之前，请确保填写并提交[此表单](https://aka.ms/enablemsixappattach)，以便在订阅中启用 MSIX 应用附加。 如果没有已批准的请求，MSIX 应用附加将无法正常工作。 在工作日审批请求需要长达 24 小时。 请求被接受并完成后，你会收到一封电子邮件。
 
 配置 MSIX 应用附加需要以下各项：
 
 - 正常运行的 Windows 虚拟桌面部署。 要了解如何部署 Windows 虚拟桌面（经典版），请参阅[在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。 要了解如何使用 Azure 资源管理器集成部署 Windows 虚拟桌面，请参阅[使用 Azure 门户创建主机池](./create-host-pools-azure-marketplace.md)。
 - 至少具有一个活动会话主机的 Windows 虚拟桌面主机池。
-- 此主机池必须处于验证环境。
 - 桌面远程应用组。
 - MSIX 打包工具。
 - 展开到已上传到文件共享中的 MSIX 映像的 MSIX 打包应用程序。
@@ -246,7 +238,7 @@ $grName = "<AppGroupName>"
 
 还可以在 [Windows 虚拟桌面反馈中心](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)提供关于 Windows 虚拟桌面的反馈。
 
-下面是其他一些有用的文章：
+下面是一些可能有用的其他文章：
 
 - [MSIX 应用附加术语表](app-attach-glossary.md)
 - [MSIX 应用附加常见问题解答](app-attach-faq.md)

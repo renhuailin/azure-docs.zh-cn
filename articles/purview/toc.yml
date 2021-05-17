@@ -12,6 +12,12 @@ items:
         href: create-catalog-portal.md
       - name: 创建 Purview 帐户 - Azure PowerShell
         href: create-catalog-powershell.md
+      - name: 创建 Purview 帐户 - .NET SDK
+        href: create-purview-dotnet.md
+      - name: 创建 Purview 帐户 - Python
+        href: create-purview-python.md
+      - name: 管理 Kafka 通知 - .NET
+        href: manage-kafka-dotnet.md
   - name: 教程
     items:
       - name: 初学者工具包
@@ -71,6 +77,8 @@ items:
             href: manage-integration-runtimes.md
           - name: 排查连接问题
             href: troubleshoot-connections.md
+          - name: 资源集模式规则
+            href: how-to-resource-set-pattern-rules.md
           - name: 源
             items:
               - name: 管理数据源
@@ -79,6 +87,8 @@ items:
                 href: purview-connector-overview.md
               - name: Azure 多源
                 href: register-scan-azure-multiple-sources.md
+              - name: Azure Synapse Analytics（工作区）
+                href: register-scan-synapse-workspace.md
               - name: Azure Blob 存储
                 href: register-scan-azure-blob-storage-source.md
                 displayName: Register and scan azure blob storage
@@ -100,7 +110,7 @@ items:
               - name: Azure SQL 数据库托管实例
                 href: register-scan-azure-sql-database-managed-instance.md
                 displayName: Register and scan Azure SQL DB Managed Instance
-              - name: Azure Synapse Analytics
+              - name: Azure 专用 SQL 池（以前称为 SQL DW）
                 href: register-scan-azure-synapse-analytics.md
               - name: 本地 SQL Server
                 href: register-scan-on-premises-sql-server.md
@@ -148,6 +158,10 @@ items:
             href: how-to-link-azure-data-factory.md
           - name: Azure Data Share 世袭
             href: how-to-link-azure-data-share.md
+          - name: Power BI 世系
+            href: how-to-lineage-powerbi.md
+          - name: Spark 世系
+            href: how-to-lineage-spark-atlas-connector.md
       - name: 监视
         items:
           - name: 使用 Azure Monitor 进行监视
@@ -170,9 +184,21 @@ items:
         items:
           - name: 管理专用终结点
             href: catalog-private-link.md
+      - name: 灾难恢复
+        items:
+          - name: 灾难恢复
+            href: disaster-recovery.md
   - name: 参考
     items:
       - name: 支持的分类
         href: supported-classifications.md
       - name: ABAP 函数部署指南
         href: abap-functions-deployment-guide.md
+  - name: 资源
+    items:
+      - name: 功能反馈（用户语音）
+        href: 'https://feedback.azure.com/forums/932437-azure-purview'
+      - name: 定价计算器
+        href: 'https://azure.microsoft.com/pricing/details/azure-purview/'
+      - name: Microsoft Q&A 论坛
+        href: /answers/topics/azure-purview.html

@@ -12,15 +12,21 @@ metadata:
   ms.author: sstein
   ms.reviewer: 
   ms.date: 05/27/2020
-  ms.openlocfilehash: 7d1b6f9f79226cac4e0956d551943e40ac178387
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.openlocfilehash: 28155337abbb777dad871253c0aa6ae8513178bb
+  ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101655864"
+  ms.lasthandoff: 03/19/2021
+  ms.locfileid: "104589032"
 landingContent:
 - title: Azure SQL 托管实例
   linkLists:
+  - linkListType: whats-new
+    links:
+    - text: 新增功能
+      url: ../database/doc-changes-updates-release-notes.md?tabs=managed-instance
+    - text: 想要提供反馈？ 参与调查！
+      url: https://microsoft.qualtrics.com/jfe/form/SV_ePOznHhP4gDKfGu?channel=456
   - linkListType: quickstart
     links:
     - text: 创建 SQL 托管实例
@@ -31,8 +37,6 @@ landingContent:
       url: https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Managed-Instance-Overview-6-of-61
   - linkListType: concept
     links:
-    - text: 新增功能
-      url: ../database/doc-changes-updates-release-notes.md?tabs=managed-instance
     - text: 什么是 SQL 托管实例？
       url: sql-managed-instance-paas-overview.md
     - text: 购买选项

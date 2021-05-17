@@ -25,7 +25,7 @@
               href: create-first-function-vs-code-csharp.md
             - name: Java
               href: create-first-function-vs-code-java.md
-            - name: Javascript
+            - name: JavaScript
               href: create-first-function-vs-code-node.md
             - name: PowerShell
               href: create-first-function-vs-code-powershell.md
@@ -44,7 +44,7 @@
               href: create-first-function-cli-csharp.md
             - name: Java
               href: create-first-function-cli-java.md
-            - name: Javascript
+            - name: JavaScript
               href: create-first-function-cli-node.md
             - name: PowerShell
               href: create-first-function-cli-powershell.md
@@ -55,6 +55,10 @@
         - name: ARM 模板
           displayName: Resource Manager
           href: functions-create-first-function-resource-manager.md
+    - name: 连接到数据库
+      items:
+        - name: Visual Studio Code
+          href: functions-add-output-binding-cosmos-db-vs-code.md
     - name: 连接到存储
       items:
         - name: Visual Studio Code
@@ -71,10 +75,15 @@
       href: /azure/python/tutorial-vs-code-serverless-python-01
     - name: 无服务器 API 的 OpenAPI 定义
       href: functions-openapi-definition.md
-    - name: 连接到虚拟网络
-      href: functions-create-vnet.md
-    - name: 建立专用站点访问
-      href: functions-create-private-site-access.md
+    - name: 网络
+      items:
+        - name: 连接到虚拟网络
+          href: functions-create-vnet.md
+          displayName: vnet
+        - name: 建立专用站点访问
+          href: functions-create-private-site-access.md
+        - name: 使用出站 NAT 网关
+          href: functions-how-to-use-nat-gateway.md
     - name: 使用事件网格调整图像大小
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: 创建无服务器 Web 应用
@@ -100,7 +109,7 @@
           href: /samples/browse/?products=azure-functions&languages=csharp
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
-        - name: Javascript
+        - name: JavaScript
           href: /samples/browse/?products=azure-functions&languages=javascript
         - name: PowerShell
           href: /samples/browse/?products=azure-functions&languages=azurepowershell
@@ -191,7 +200,7 @@
           href: functions-bindings-return-value.md
         - name: 处理绑定错误
           href: functions-bindings-errors.md
-    - name: 语言
+    - name: Languages
       items:
         - name: 支持的语言
           href: supported-languages.md
@@ -204,7 +213,7 @@
           href: functions-reference-csharp.md
         - name: F#
           href: functions-reference-fsharp.md
-        - name: Javascript
+        - name: JavaScript
           href: functions-reference-node.md
         - name: Java
           href: functions-reference-java.md
@@ -224,7 +233,7 @@
           href: security-concepts.md
           displayName: 'secure, ssl'
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/functions-security-baseline?toc=/azure/azure-functions/TOC.json
     - name: 监视
       href: functions-monitoring.md
       displayName: 'App Insights, Application Insights, logs, logging'
@@ -258,6 +267,8 @@
             - name: Core Tools 开发
               href: functions-run-local.md
               displayName: 'local, runtime'
+            - name: 事件网格 Blob 触发器本地开发
+              href: functions-event-grid-blob-trigger.md
         - name: 创建函数
           items:
             - name: HTTP 触发器
@@ -332,6 +343,8 @@
           href: functions-bindings-error-pages.md
         - name: 手动运行非 HTTP 触发的函数
           href: functions-manually-run-non-http.md
+        - name: 将依赖项引入函数应用
+          href: bring-dependency-to-functions.md
     - name: 部署
       items:
         - name: 连续部署
@@ -351,8 +364,6 @@
           displayName: 'keda, container, docker'
         - name: 自动执行资源部署
           href: functions-infrastructure-as-code.md
-        - name: 本地函数
-          href: functions-runtime-install.md
         - name: 使用 Jenkins 插件进行部署
           href: /azure/developer/jenkins/deploy-to-azure-functions
           maintainContext: true
@@ -365,6 +376,8 @@
           href: set-runtime-version.md
         - name: 禁用函数
           href: disable-function.md
+        - name: 网络
+          href: configure-networking-how-to.md
         - name: 异地灾难恢复
           href: functions-geo-disaster-recovery.md
     - name: 监视
@@ -393,8 +406,6 @@
               href: ../app-service/configure-authentication-provider-facebook.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: 使用 Google 进行身份验证
               href: ../app-service/configure-authentication-provider-google.md?toc=%2fazure%2fazure-functions%2ftoc.json
-            - name: 使用 Microsoft 帐户进行身份验证
-              href: ../app-service/configure-authentication-provider-microsoft.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: 使用 Twitter 进行身份验证
               href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: 使用 OpenID Connect 提供程序进行身份验证（预览）
@@ -425,6 +436,18 @@
               href: functions-add-output-binding-storage-queue-vs-code.md
             - name: 存储 - Visual Studio
               href: functions-add-output-binding-storage-queue-vs.md
+        - name: 启动/停止 VM
+          items:
+            - name: 概述
+              href: start-stop-vms/overview.md
+            - name: 部署和配置
+              href: start-stop-vms/deploy.md
+            - name: 管理和监视
+              href: start-stop-vms/manage.md
+            - name: 删除“启动/停止 VM”
+              href: start-stop-vms/remove.md
+            - name: 故障排除
+              href: start-stop-vms/troubleshoot.md
         - name: 连接到 SQL 数据库
           href: functions-scenario-database-table-cleanup.md
         - name: 连接到虚拟网络
@@ -441,10 +464,14 @@
       items:
         - name: 排查存储问题
           href: functions-recover-storage-account.md
-        - name: Python 函数排除故障
-          href: recover-python-functions.md
-        - name: Python 函数的规模和性能
-          href: python-scale-performance-reference.md
+        - name: Python 函数
+          items:
+            - name: 常规故障排除
+              href: recover-python-functions.md
+            - name: 缩放和性能
+              href: python-scale-performance-reference.md
+            - name: 内存分析
+              href: python-memory-profiler-reference.md
 - name: 参考
   items:
     - name: API 参考

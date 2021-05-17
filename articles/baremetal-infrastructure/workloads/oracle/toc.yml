@@ -1,0 +1,36 @@
+- name: 什么是适用于 Oracle 的 BareMetal 基础结构？
+  href: oracle-baremetal-overview.md
+- name: BareMetal SKU
+  href: oracle-baremetal-skus.md
+- name: 存储
+  href: oracle-baremetal-storage.md
+- name: 修补注意事项
+  href: oracle-baremetal-patching.md
+- name: 以太网配置
+  href: oracle-baremetal-ethernet.md
+- name: 体系结构
+  href: oracle-baremetal-architecture.md
+- name: 预配
+  href: oracle-baremetal-provision.md
+- name: 高可用性和灾难恢复
+  items:
+    - name: HA/DR 概述
+      href: concepts-oracle-high-availability.md
+    - name: 高可用性功能
+      href: high-availability-features.md
+    - name: 选项和注意事项
+      href: options-considerations-high-availability.md
+    - name: 选择恢复方法
+      href: oracle-high-availability-recovery.md
+- name: SnapCenter 集成
+  items:
+    - name: SnapCenter 概述
+      href: netapp-snapcenter-integration-oracle-baremetal.md
+    - name: 设置 SnapCenter 以路由流量
+      href: set-up-snapcenter-to-route-traffic.md
+    - name: 配置 SnapCenter
+      href: configure-snapcenter-oracle-baremetal.md
+    - name: 创建按需备份
+      href: create-on-demand-backup-oracle-baremetal.md
+    - name: 还原 Oracle 数据库
+      href: restore-oracle-database-baremetal.md

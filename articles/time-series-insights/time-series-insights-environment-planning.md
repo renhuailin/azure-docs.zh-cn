@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: 5e0f1ea42aa2ba888b89dd652d3397a3a2163a3e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95016201"
 ---
 # <a name="plan-your-azure-time-series-insights-gen1-environment"></a>规划 Azure 时序见解 Gen1 环境
@@ -27,7 +27,7 @@ ms.locfileid: "95016201"
 
 ## <a name="video"></a>视频
 
-**观看此视频，了解有关 Azure 时序见解中的数据保留的详细信息，以及如何对其进行规划**：<br /><br />
+**观看此视频，了解有关 Azure 时序见解中的数据保留的详细信息，以及如何为其计划**：<br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 03/01/2021
+ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 937f0d1feb0c45c1c158b5e88daf268aeb383509
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e0eb976f655308082671afe2dc1923f082a3373b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034738"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303162"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>配备 GPU 的 Azure Stack Edge Pro 的技术规格和符合性 
 
@@ -23,10 +23,14 @@ ms.locfileid: "102034738"
 
 Azure Stack Edge Pro 设备的计算和内存规格如下：
 
-| 规格           | 值                  |
-|-------------------------|----------------------------|
-| CPU                     | 2 个 Intel Xeon Silver 4214 (Cascade Lake) CPU<br> 24 个物理核心（每个 CPU 12 个）<br>48 个逻辑核心 (vCPU)（每个 CPU 24 个）       |
-| 内存                  | 128 (8x16 GB) GB RAM <br> Dell 兼容 16 GB PC4-23400 DDR4-2933Mhz 2Rx8 1.2v ECC 注册 RDIMM       |
+| 规格  | 值                                                                       |
+|----------------|-----------------------------------------------------------------------------|
+| CPU 类型       | 双 Intel Xeon Silver 4214 (Cascade Lake) CPU                              |
+| CPU：原始       | 共 24 个核心，共 48 个 vCPU                                              |
+| CPU：可用    | 40 个 vCPU                                                                    |
+| 内存类型    | Dell 兼容 16 GB PC4-23400 DDR4-2933Mhz 2Rx8 1.2v ECC 注册 RDIMM |
+| 内存：原始    | 128 GB RAM (8 x 16 GB)                                                      |
+| 内存：可用 | 102 GB RAM                                                                  |
 
 
 ## <a name="compute-acceleration-specifications"></a>计算加速规格
@@ -44,7 +48,7 @@ Azure Stack Edge Pro 设备具有两个配备高性能风扇的 100-240 V 电源
 
 | 规格           | 750 W PSU                  |
 |-------------------------|----------------------------|
-| 最大输出功率    | 750 W                     |
+| 最大输出功率    | 750 W                      |
 | 频率               | 50/60 Hz                   |
 | 电压范围选择 | 自动范围：100-240 V 交流 |
 | 可热插拔           | 是                        |
@@ -60,21 +64,21 @@ Azure Stack Edge Pro 设备具有 6 个网络接口 (PORT1 - PORT6)。
 
 Azure Stack Edge Pro 设备具有以下网络硬件：
 
-* **自定义 Microsoft Qlogic Cavium 25G NDC 适配器** - 端口 1 到端口 4。
+* **自定义 Microsoft `Qlogic` Cavium 25G NDC 适配器** - 端口 1 到端口 4。
 * **Mellanox 双端口 25G ConnectX-4 通道网络适配器** - 端口 5 和端口 6。
 
 下面是 Mellanox 卡的详细信息：
 
-| 参数           | 描述                 |
+| 参数           | 说明                 |
 |-------------------------|----------------------------|
-| 建模    | ConnectX®-4 Lx EN 网络接口卡                      |
+| 模型    | ConnectX®-4 Lx EN 网络接口卡                      |
 | 模型说明               | 25 GbE 双端口 SFP28；PCIe3.0 x8；ROHS R6                    |
 | 设备部件号 (R640) | MCX4121A-ACAT  |
 | PSID (R640)           | MT_2420110034                         |
 
 若要查看这些网卡支持的线缆、交换机和收发器的完整列表，请参阅：
 
-- [Qlogic Cavium 25G NDC 适配器互操作性矩阵](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)。
+- [`Qlogic` Cavium 25G NDC 适配器互操作性矩阵](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)。
 - [Mellanox 双端口 25G ConnectX-4 通道网络适配器兼容产品](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)。  
 
 ## <a name="storage-specifications"></a>存储器规格

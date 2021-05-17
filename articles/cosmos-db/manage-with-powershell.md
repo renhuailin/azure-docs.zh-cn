@@ -5,15 +5,15 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 10/13/2020
+ms.date: 04/25/2021
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 2d99a760e3bf44febcee05bf9827479616bf7bd6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f967c5b40facbcbfe21ae87ae962241632135c34
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93333420"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228193"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>使用 PowerShell 管理 Azure Cosmos DB Core (SQL) API 资源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -120,6 +120,8 @@ Get-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName
 > 不能同时添加或删除区域 (`locations`) 并更改 Azure Cosmos 帐户的其他属性。 修改区域的操作必须作为单独的操作与任何其他对帐户的更改操作分开执行。
 > [!NOTE]
 > 此命令可添加和删除区域，但不可修改故障转移优先级或触发手动故障转移。 请参阅[修改故障转移优先级](#modify-failover-priority)和[触发手动故障转移](#trigger-manual-failover)。
+> [!TIP]
+> 添加新区域时，必须将所有数据完全复制并提交到新区域，然后才能将该区域标记为可用。 此操作所需的时间取决于帐户中存储的数据量。
 
 ```azurepowershell-interactive
 # Create account with two regions

@@ -12,33 +12,60 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/10/2021
+ms.date: 04/30/2021
 ms.author: b-juche
-ms.openlocfilehash: 869f46207b940521ee0b66b5afa9c6e2718ab04f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b57997408112466c45d6ce1364e1ac0a2c358cd1
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594472"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108321026"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>重设容量池或卷的大小
-可以根据需要更改容量池或卷的大小。 
+如有必要，你可以根据需要更改容量池或卷的大小，例如，当卷或容量池已满时。 
 
-## <a name="resize-the-capacity-pool"></a>重设容量池大小 
+有关监视卷容量的信息，请参阅[监视卷的容量](monitor-volume-capacity.md)。
+
+## <a name="resize-the-capacity-pool-using-the-azure-portal"></a>使用 Azure 门户重设容量池大小 
 
 可以以 1-TiB 递增或递减的方式更改容量池大小。 但是，容量池大小不能小于 4 TiB。 重设容量池大小会更改购买的 Azure NetApp 文件容量。
 
-1. 在“管理 NetApp 帐户”边栏选项卡中，单击要重设大小的容量池。 
-2. 右键单击容量池名称，或单击容量池所在行末尾的“...”图标以显示上下文菜单。 
-3. 使用上下文菜单选项来重设容量池大小或删除容量池。
+1. 从“NetApp 帐户”视图转到“容量池”，然后单击要重设大小的容量池。
+2. 右键单击容量池名称，或单击容量池所在行末尾的“…”图标以显示上下文菜单。 单击“重设大小”。 
 
-## <a name="resize-a-volume"></a>重设卷大小
+    ![显示上下文菜单的屏幕截图。](../media/azure-netapp-files/resize-pool-context-menu.png)  
+
+3. 在“重设池大小”窗口中，指定池的大小。  单击 **“确定”** 。
+
+    ![显示“重设池大小”窗口的屏幕截图。](../media/azure-netapp-files/resize-pool-window.png) 
+
+## <a name="resize-a-volume-using-the-azure-portal"></a>使用 Azure 门户重设卷的大小
 
 可以根据需要更改卷大小。 卷的容量消耗是依据其池的预配容量计数的。
 
-1. 在“管理 NetApp 帐户”边栏选项卡中，单击“卷”。 
-2. 右键单击要重设大小的卷的名称，或单击卷所在行末尾的“...”图标以显示上下文菜单。
-3. 使用上下文菜单选项来重设卷大小或删除卷。
+1. 从“NetApp 帐户”视图转到“卷”，然后单击要重设大小的卷。
+2. 右键单击卷名，或单击卷行末尾的“…”图标以显示上下文菜单。 单击“重设大小”。
+
+    ![显示卷上下文菜单的屏幕截图。](../media/azure-netapp-files/resize-volume-context-menu.png) 
+    
+3. 在“更新卷配额”窗口中，指定卷的配额。 单击 **“确定”** 。   
+
+    ![显示“更新卷配额”窗口的屏幕截图。](../media/azure-netapp-files/resize-volume-quota-window.png) 
+
+## <a name="resizing-the-capacity-pool-or-a-volume-using-azure-cli"></a>使用 Azure CLI 重设容量池或卷的大小  
+
+可使用 [Azure 命令行 (CLI) 工具](azure-netapp-files-sdk-cli.md)的以下命令来重设容量池或卷的大小：
+
+* [`az netappfiles pool`](/cli/azure/netappfiles/pool?preserve-view=true&view=azure-cli-latest)
+* [`az netappfiles volume`](/cli/azure/netappfiles/volume?preserve-view=true&view=azure-cli-latest)
+
+## <a name="resizing-the-capacity-pool-or-a-volume-using-rest-api"></a>使用 REST API 重设容量池或卷的大小
+
+你可以生成自动化来处理容量池和卷大小更改。   
+
+请参阅 [Azure NetApp 文件的 REST API](azure-netapp-files-develop-with-rest-api.md) 和[使用适用于 Azure NetApp 文件的 PowerShell REST API](develop-rest-api-powershell.md)。 
+
+Azure NetApp 文件的 REST API 规范和示例代码可通过[资源管理器 GitHub 目录](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager/Microsoft.NetApp/stable)获得。 
 
 ## <a name="resize-a-cross-region-replication-destination-volume"></a>调整跨区域复制目标卷的大小 
 
@@ -60,3 +87,6 @@ ms.locfileid: "104594472"
 - [设置容量池](azure-netapp-files-set-up-capacity-pool.md)
 - [管理手动 QoS 容量池](manage-manual-qos-capacity-pool.md)
 - [动态更改卷的服务级别](dynamic-change-volume-service-level.md) 
+- [了解卷配额](volume-quota-introduction.md)
+- [监视卷的容量](monitor-volume-capacity.md)
+- [容量管理常见问题解答](azure-netapp-files-faqs.md#capacity-management-faqs)

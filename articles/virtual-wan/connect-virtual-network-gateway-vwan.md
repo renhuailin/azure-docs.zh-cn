@@ -1,18 +1,18 @@
 ---
 title: 将虚拟网络网关连接到 Azure 虚拟 WAN
-description: 本文介绍如何将 Azure 虚拟网络网关连接到 Azure 虚拟 WAN VPN 网关
+description: 了解如何将 Azure VPN 网关（虚拟网络网关）连接到 Azure 虚拟 WAN VPN 网关。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 04/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: 469d7ba9e86751312ebf6a6c82b35f065ee6cb50
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6d8420f0138dc26e2f265ac7c4f48e646a6bfe69
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98880366"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165112"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>将 VPN 网关（虚拟网络网关）连接到虚拟 WAN
 

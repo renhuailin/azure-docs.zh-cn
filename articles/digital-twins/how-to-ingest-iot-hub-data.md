@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a5e00ef81afc709a9072eedbb07983057f57eb08
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: b69ba164a7bd0edecf427866cd3e872a65e41355
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304286"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208736"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>将 IoT 中心遥测数据引入到 Azure 数字孪生
 
@@ -26,7 +26,7 @@ Azure 数字孪生是使用来自 IoT 设备和其他来源的数据驱动的。
 
 在继续此示例之前，需要将以下资源设置为先决条件：
 * IoT 中心。 有关说明，请参阅[此 IoT 中心快速入门](../iot-hub/quickstart-send-telemetry-cli.md)中的“创建 IoT 中心”部分。
-* 将接收设备遥测的 Azure 数字孪生实例。 有关说明，请参阅[如何：设置 Azure 数字孪生实例和身份验证](./how-to-set-up-instance-portal.md)。
+* 将接收设备遥测的 Azure 数字孪生实例。 有关说明，请参阅如何：设置 Azure 数字孪生实例和身份验证。
 
 ### <a name="example-telemetry-scenario"></a>遥测方案示例
 
@@ -88,7 +88,7 @@ az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id t
 
 #### <a name="step-1-create-a-function-app-project"></a>步骤 1：创建函数应用项目
 
-首先，在 Visual Studio 中创建新的函数应用项目。 有关如何执行此操作的说明，请参阅“如何：设置用于处理数据的函数”一文中的 [**在 Visual Studio 中创建函数应用**](how-to-create-azure-function.md#create-a-function-app-in-visual-studio)部分。
+首先，在 Visual Studio 中创建新的函数应用项目。 如需操作说明，请查看“如何：设置用于处理数据的函数”一文中的[在 Visual Studio 中创建函数应用](how-to-create-azure-function.md#create-a-function-app-in-visual-studio)部分。
 
 #### <a name="step-2-fill-in-function-code"></a>步骤 2：填充函数代码
 
@@ -107,17 +107,17 @@ az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id t
 
 使用 IoTHubtoTwins.cs 函数将项目发布到 Azure 中的函数应用。
 
-有关如何执行此操作的说明，请参阅“操作指南：设置用于处理数据的函数”一文中的[将函数应用发布到 Azure](how-to-create-azure-function.md#publish-the-function-app-to-azure) 部分。
+如需操作说明，请查看“如何：设置用于处理数据的函数”一文中的[将函数应用发布到 Azure ](how-to-create-azure-function.md#publish-the-function-app-to-azure)部分。
 
 #### <a name="step-4-configure-the-function-app"></a>步骤 4：配置函数应用
 
-接下来，为函数分配访问角色并配置应用程序设置，使之能够访问 Azure 数字孪生实例。 有关如何执行此操作的说明，请参阅“如何：设置用于处理数据的函数”一文中的[为函数应用设置安全访问](how-to-create-azure-function.md#set-up-security-access-for-the-function-app)部分。
+接下来，为函数分配访问角色并配置应用程序设置，使之能够访问 Azure 数字孪生实例。 如需操作说明，请查看“如何：设置用于处理数据的函数”一文中的[为函数应用设置安全访问](how-to-create-azure-function.md#set-up-security-access-for-the-function-app)部分。
 
 ## <a name="connect-your-function-to-iot-hub"></a>将函数连接到 IoT 中心
 
 在本部分中，你会将函数设置为 IoT 中心设备数据的事件目标。 这将确保来自 IoT 中心内恒温器设备的数据将发送到 Azure 函数进行处理。
 
-在 [Azure 门户](https://portal.azure.com/)中，导航到在[先决条件](#prerequisites)部分中创建的 IoT 中心实例。 在“事件”下，为函数创建订阅。
+在 [Azure 门户](https://portal.azure.com/)中，导航到在先决条件部分中创建的 IoT 中心实例。 在“事件”下，为函数创建订阅。
 
 :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="显示添加事件订阅的 Azure 门户的屏幕截图。":::
 
@@ -146,11 +146,11 @@ az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id t
 
 ## <a name="send-simulated-iot-data"></a>发送模拟 IoT 数据
 
-若要测试新的 ingress 函数，请使用 [教程：连接端到端解决方案](./tutorial-end-to-end.md)中的设备模拟器。 本教程由用 C# 编写的示例项目驱动。 示例代码如下所示：[Azure 数字孪生端到端示例](/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 将使用该存储库中的 DeviceSimulator 项目。
+若要测试新的 ingress 函数，请使用 教程：连接端到端解决方案中的设备模拟器。 本教程由用 C# 编写的示例项目驱动。 示例代码如下所示：[Azure 数字孪生端到端示例](/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 将使用该存储库中的 DeviceSimulator 项目。
 
 在端到端教程中，完成以下步骤：
-1. [*在 IoT 中心注册模拟设备*](./tutorial-end-to-end.md#register-the-simulated-device-with-iot-hub)
-2. [*配置和运行模拟*](./tutorial-end-to-end.md#configure-and-run-the-simulation)
+1. [在 IoT 中心注册模拟设备](./tutorial-end-to-end.md#register-the-simulated-device-with-iot-hub)
+2. [配置和运行模拟](./tutorial-end-to-end.md#configure-and-run-the-simulation)
 
 ## <a name="validate-your-results"></a>验证结果
 

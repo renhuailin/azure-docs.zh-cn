@@ -1,0 +1,35 @@
+- name: 标准文档
+  href: index.yml
+- name: 概述
+  expanded: true
+  items:
+    - name: 标识标准概述
+      href: standards-overview.md
+- name: 实现 NIST AAL
+  expanded: true
+  items:
+    - name: NIST 概述
+      href: nist-overview.md
+    - name: 关于验证器确定性级别
+      href: nist-about-authenticator-assurance-levels.md
+    - name: 验证器基本信息
+      href: nist-authentication-basics.md
+    - name: 验证器类型和 Microsoft 方法
+      href: nist-authenticator-types.md
+    - name: 实现 AAL 1
+      href: nist-authenticator-assurance-level-1.md
+    - name: 实现 AAL 2
+      href: nist-authenticator-assurance-level-2.md
+    - name: 实现 AAL 3
+      href: nist-authenticator-assurance-level-3.md
+- name: 实现 FedRAMP High 合规性
+  expanded: true
+  items:
+    - name: 配置 Azure Active Directory 以实现 FedRAMP High 影响
+      href: configure-azure-active-directory-for-fedramp-high-impact.md
+    - name: 配置 FedRAMP 访问控制
+      href: fedramp-access-controls.md
+    - name: 配置标识和身份验证控件
+      href: fedramp-identification-and-authentication-controls.md
+    - name: 配置其他控件
+      href: fedramp-other-controls.md

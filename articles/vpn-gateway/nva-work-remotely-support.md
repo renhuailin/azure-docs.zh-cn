@@ -1,18 +1,19 @@
 ---
-title: 远程工作：用于远程工作网络的虚拟设备 (NVA) 注意事项 |Azure VPN 网关
-description: 本文有助于了解在新冠肺炎疫情期间使用 Azure 中的网络虚拟设备 (NVA) 时应考虑的事项。
+title: 远程工作：用于远程工作的网络虚拟设备 (NVA) 注意事项
+titleSuffix: Azure VPN Gateway
+description: 了解在新冠肺炎疫情期间使用 Azure 中的网络虚拟设备 (NVA) 时应考虑的事项。
 services: vpn-gateway
 author: scottnap
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: scottnap
-ms.openlocfilehash: 70b5732e1293e35127a19fbe736d8562056a870b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fd0c1f836abc60a53168098cc1bcce72ded2a120
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96499673"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229191"
 ---
 # <a name="working-remotely-network-virtual-appliance-nva-considerations-for-remote-work"></a>远程工作：用于远程工作的网络虚拟设备 (NVA) 注意事项
 

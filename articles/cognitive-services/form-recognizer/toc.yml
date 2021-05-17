@@ -27,6 +27,18 @@
       href: /samples/azure/azure-sdk-for-python/formrecognizer-samples
     - name: JavaScript 表单识别器客户端库 SDK
       href: /samples/azure/azure-sdk-for-js/ai-form-recognizer-javascript/
+- name: 负责使用 AI
+  items:
+    - name: 透明度说明
+      items:
+        - name: 表单识别器用例
+          href: /legal/cognitive-services/form-recognizer/fr-transparency-note?context=/azure/cognitive-services/form-recognizer/context/context
+        - name: 特征和限制
+          href: /legal/cognitive-services/form-recognizer/fr-characteristics-and-limitations?context=/azure/cognitive-services/form-recognizer/context/context
+    - name: 集成和负责使用
+      href: /legal/cognitive-services/form-recognizer/fr-guidance-integration-responsible-use?context=/azure/cognitive-services/form-recognizer/context/context
+    - name: 数据、隐私和安全性
+      href: /legal/cognitive-services/form-recognizer/fr-data-privacy-security?context=/azure/cognitive-services/form-recognizer/context/context
 - name: 操作指南
   items:
     - name: 生成训练数据集

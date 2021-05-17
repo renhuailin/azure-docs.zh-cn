@@ -1,6 +1,7 @@
 ---
-title: Azure VPN 网关：配置 BGP：PowerShell
-description: 本文指导完成使用 Azure Resource Manager 和 PowerShell 通过 Azure VPN 网关配置 BGP。
+title: 使用 PowerShell 为 VPN 网关配置 BGP
+titleSuffix: Azure VPN Gateway
+description: 了解如何使用 PowerShell 为 VPN 网关配置 BGP。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
@@ -8,17 +9,16 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8573d9e55299382392927b532966a6e6fdd8c439
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e41fe8bf77c2177deb064e13cf9d3efeef4027db
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94659754"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291255"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>如何使用 PowerShell 在 Azure VPN 网关上配置 BGP
-本文介绍使用 Resource Manager 部署模型和 PowerShell 在跨界站点到站点 (S2S) VPN 连接和 VNet 到 VNet 连接上启用 BGP 的步骤。
 
-
+本文逐步讲解如何使用 PowerShell 在跨界站点到站点 (S2S) VPN 连接和 VNet 到 VNet 连接上启用 BGP。
 
 ## <a name="about-bgp"></a>关于 BGP
 BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交换路由和可访问性信息的标准路由协议。 BGP 允许 Azure VPN 网关和本地 VPN 设备（称为 BGP 对等节点或邻居）交换“路由”，这些路由将通知这两个网关这些前缀的可用性和可访问性，以便这些前缀可通过涉及的网关或路由器。 BGP 还可以通过将 BGP 网关从一个 BGP 对等节点获知的路由传播到所有其他 BGP 对等节点来允许在多个网络之间传输路由。

@@ -1,19 +1,19 @@
 ---
 title: 为 VPN 网关配置 BGP：门户
 titleSuffix: Azure VPN Gateway
-description: 本文介绍了使用 PowerShell 通过 Azure VPN 网关配置 BGP 的步骤。
+description: 了解如何为 Azure VPN 网关配置 BGP。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/22/2021
 ms.author: yushwang
-ms.openlocfilehash: 479a8fac111be6e5b1ae2c6ea21fff801ba26f83
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: df42925b50cba4d32ea554ae54dbcb09a5e04377
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104863575"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205946"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways"></a>如何在 Azure VPN 网关上配置 BGP
 
@@ -79,7 +79,7 @@ BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交
 
    * “Azure APIPA BGP IP 地址”字段是可选的。 如果本地 VPN 设备使用 BGP 的 APIPA 地址，则必须从 VPN 的 Azure 预留 APIPA 地址范围中选择一个地址，该地址范围是从 **169.254.21.0** 到 **169.254.22.255**。 本示例使用 169.254.21.11。
 
-   * 如果要创建主动-主动 VPN 网关，则 BGP 部分会显示一个额外的 IP 地址，即 **第二个自定义 Azure APIPA BGP IP 地址**。 从允许的 APIPA 范围 (“169.254.21.0”至“169.254.22.255”) 中，选择另一个 IP 地址。  第二个 IP 地址必须不同于第一个地址。
+   * 如果要创建主动-主动 VPN 网关，则 BGP 部分会显示一个额外的 IP 地址，即 **第二个自定义 Azure APIPA BGP IP 地址**。 从允许的 APIPA 范围（169.254.21.0 到 169.254.22.255）中，选择其他 IP 地址 。 第二个 IP 地址必须不同于第一个地址。
 
    > [!IMPORTANT]
    >
@@ -87,7 +87,7 @@ BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交
    >
    > * APIPA BGP 地址在本地 VPN 设备和所有已连接的 Azure VPN 网关之间不得重叠。
    >
-   > * 如果在 Azure VPN 网关上使用 APIPA 地址，则网关不会使用 APIPA 源 IP 地址发起 BGP 对等互连会话。 本地 VPN 设备必须发起 BGP 对等互连连接。
+   > * 在 Azure VPN 网关上使用 APIPA 地址时，网关不会使用 APIPA 源 IP 地址启动 BGP 对等互连会话。 本地 VPN 设备必须启动 BGP 对等互连连接。
    >
 
 1. 选择“查看 + 创建”  ，运行验证。 验证通过后，选择“创建”  以部署 VPN 网关。 网关可能需要长达 45 分钟才能完全创建和部署。 可以在网关的“概述”页上查看部署状态。

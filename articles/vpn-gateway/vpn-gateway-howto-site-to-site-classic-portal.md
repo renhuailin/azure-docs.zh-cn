@@ -1,18 +1,19 @@
 ---
-title: 将本地网络连接到 Azure 虚拟网络：站点到站点 VPN（经典）：门户 | Microsoft Docs
-description: 通过公共 Internet 创建从本地网络到经典 Azure 虚拟网络的 IPsec 连接。
+title: 将本地网络连接到 VNet：站点到站点 VPN（经典）：门户
+titleSuffix: Azure VPN Gateway
+description: 了解如何通过公共 Internet 在本地网络与经典 Azure 虚拟网络之间创建 IPsec 连接。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4ad05281f13885327c855a261a3101388f38af83
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f440ec76d3085e7a5ef7ec99f1a5a76c9c444ef9
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98878047"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205334"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>使用 Azure 门户创建站点到站点连接（经典）
 

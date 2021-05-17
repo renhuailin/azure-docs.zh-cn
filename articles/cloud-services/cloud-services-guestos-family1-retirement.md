@@ -9,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: 7f6d3feee95d4cce654b2cc1547b8bd7f4eb45d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 654719dfc5cbbd095a8c6abf0c3a47c30d836e03
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743009"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108160774"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>来宾 OS 系列 1 停用通知
 
@@ -27,6 +27,7 @@ ms.locfileid: "98743009"
 如果有其他疑问，请访问[适用于云服务的 Microsoft 问答页面](/answers/topics/azure-cloud-services.html)或[联系 Azure 支持](https://azure.microsoft.com/support/options/)。
 
 ## <a name="are-you-affected"></a>了解你是否受到影响
+
 如果存在下列任一情况，则表示云服务已受到影响：
 
 1. 在云服务的 ServiceConfiguration.cscfg 文件中显式指定了值“osFamily = 1”。
@@ -35,7 +36,7 @@ ms.locfileid: "98743009"
 
 要了解哪个云服务在运行哪个 OS 系列，可以在 Azure PowerShell 中运行以下脚本，但必须首先[设置 Azure PowerShell](/powershell/azure/)。 有关该脚本的详细信息，请参阅 [Azure 来宾 OS 系列 1 生命周期终结：2014 年 6 月](/archive/blogs/ryberry/azure-guest-os-family-1-end-of-life-june-2014)。
 
-```Powershell
+```powershell
 foreach($subscription in Get-AzureSubscription) {
     Select-AzureSubscription -SubscriptionName $subscription.SubscriptionName
 
@@ -48,6 +49,7 @@ foreach($subscription in Get-AzureSubscription) {
 如果脚本输出中的 osFamily 列为空或者包含“1”，则表示 OS 系列 1 的停用将影响到云服务。
 
 ## <a name="recommendations-if-you-are-affected"></a>如果受到影响，请遵循以下建议
+
 建议将云服务角色迁移到支持的来宾 OS 系列之一：
 
 基于 Windows Server 2012 R2 的 **来宾 OS 系列 4.x** *（建议）*
@@ -66,7 +68,9 @@ foreach($subscription in Get-AzureSubscription) {
 2. 在 ServiceConfiguration.cscfg 文件中将 osFamily 特性设置为“2”，并重新部署云服务。
 
 ## <a name="extended-support-for-guest-os-family-1-ended-nov-3-2014"></a>对来宾 OS 系列 1 的延长支持已于 2014 年 11 月 3 日结束
-不再支持来宾 OS 系列 1 上的云服务。 请尽快迁出系列 1，以免服务中断。  
+
+不再支持来宾 OS 系列 1 上的云服务。 请尽快迁出系列 1，以免服务中断。
 
 ## <a name="next-steps"></a>后续步骤
+
 查看最新的[来宾 OS 版本](cloud-services-guestos-update-matrix.md)。

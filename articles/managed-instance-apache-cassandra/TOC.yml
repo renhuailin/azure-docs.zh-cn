@@ -4,25 +4,40 @@
   items:
     - name: 什么是适用于 Apache Cassandra 的 Azure 托管实例？
       href: introduction.md
-- name: 概念
-  items:
-    - name: 常见问题解答
-      href: faq.md
-    - name: 托管实例与 Azure Cosmos DB Cassandra API
-      href: compare-cosmosdb-managed-instance.md
 - name: 快速入门
   items:
     - name: 创建群集 - 门户
       href: create-cluster-portal.md
     - name: 创建群集- CLI
+      displayName: 'az managed-cassandra, cluster, datacenter, connect'
       href: create-cluster-cli.md
+    - name: 创建多区域群集 - CLI
+      href: create-multi-region-cluster.md
     - name: 配置混合群集
       href: configure-hybrid-cluster.md
     - name: 通过 Databricks 部署 Spark 群集
       href: deploy-cluster-databricks.md
+- name: 概念
+  items:
+    - name: 常见问题
+      displayName: 'cost, region, monitor, backup'
+      href: faq.md
+    - name: 托管实例与 Azure Cosmos DB Cassandra API
+      href: compare-cosmosdb-managed-instance.md
 - name: 操作指南
   items:
     - name: 使用 Azure CLI 进行管理
+      displayName: 'az managed-cassandra, cluster, datacenter'
       href: manage-resources-cli.md
     - name: 在 Prometheus 中通过 Grafana 可视化指标
       href: visualize-prometheus-grafana.md
+- name: 参考
+  items:
+    - name: REST API
+      items:
+        - name: Cassandra 群集
+          href: /rest/api/cosmos-db-resource-provider/2021-03-01-preview/cassandraclusters
+        - name: Cassandra 数据中心
+          href: /rest/api/cosmos-db-resource-provider/2021-03-01-preview/cassandradatacenters
+    - name: Azure CLI
+      href: /cli/azure/managed-cassandra

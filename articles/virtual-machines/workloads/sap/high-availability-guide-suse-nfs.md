@@ -12,14 +12,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/16/2020
+ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: 993baa521530ffa6a702f8324a1691850687c366
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a08d82103986435593cd73a0728e7426f205a90d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101668684"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307531"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性
 
@@ -111,7 +111,7 @@ NFS 服务器为使用此 NFS 服务器的每个 SAP 系统使用专用的虚拟
 ### <a name="deploy-linux-via-azure-template"></a>通过 Azure 模板部署 Linux
 
 Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications 12 的映像，可以用于部署新的虚拟机。
-可以使用 GitHub 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集，等等。请遵照以下步骤部署模板：
+可以使用 GitHub 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集等。按照以下步骤部署模板：
 
 1. 在 Azure 门户中打开 [SAP 文件服务器模板][template-file-server]   
 1. 输入以下参数
@@ -171,7 +171,6 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
          1. 输入新负载均衡器规则的名称（例如 nw1-lb）
          1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 nw1-frontend、 nw-backend 和 nw1-hp）
          1. 选择“HA 端口”。
-         1. 将空闲超时增大到 30 分钟
          1. **确保启用浮动 IP**
          1. 单击“确定”
          * 重复上述步骤来为 NW2 创建负载均衡规则

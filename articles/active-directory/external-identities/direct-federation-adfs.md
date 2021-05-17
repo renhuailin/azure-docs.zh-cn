@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 07/01/2019
+ms.date: 04/27/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b3d7c47ff0a2c533bf12a67958a913b22915f75
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fc66dec0ff66e61038503b752f6bd1f2760e9859
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87908317"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162988"
 ---
 # <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>示例：用 Active Directory 联合身份验证服务 (AD FS) 进行直接联合（预览版）
 
@@ -51,7 +51,7 @@ ms.locfileid: "87908317"
 
 下一节说明如何用 AD FS 作为 SAML 2.0 标识提供者的示例来配置所需的属性和声明。
 
-### <a name="before-you-begin"></a>开始之前
+### <a name="before-you-begin"></a>准备阶段
 
 在开始此过程前，必须将 AD FS 服务器设置完毕且保证其正常运行。 有关设置 AD FS 服务器的帮助文档，请参阅[在 Azure 虚拟机上创建测试 AD FS 3.0 实例](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed)。
 
@@ -76,7 +76,7 @@ ms.locfileid: "87908317"
 3. 在“操作”下，选择“添加信赖方信任”。 
 4. 在为“选择数据源”添加信赖方信任向导时，使用选项“导入有关联机或本地网络上发布的信赖方的数据”。 指定此联合元数据 URL- https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml 。 保留其他默认选项。 选择“关闭”。
 5. 此时将打开“编辑声明规则”向导。
-6. 在“编辑声明规则”向导中，单击“添加规则”。 在“选择规则类型”时，选择“以声明方式发送 LDAP 属性”。 选择“**下一页**”。
+6. 在“编辑声明规则”向导中，单击“添加规则”。 在“选择规则类型”时，选择“以声明方式发送 LDAP 属性”。 选择“**下一步**”。
 7. 在“配置声明规则”中，指定以下值： 
 
    - “声明规则名称”：电子邮件声明规则 
@@ -122,7 +122,7 @@ IdP 颁发的 WS-Fed 令牌的必需声明：
 
 下一节说明如何使用 AD FS 作为 WS-Fed 标识提供者的示例来配置所需的属性和声明。
 
-### <a name="before-you-begin"></a>开始之前
+### <a name="before-you-begin"></a>准备阶段
 在开始此过程前，必须将 AD FS 服务器设置完毕且保证其正常运行。 有关设置 AD FS 服务器的帮助文档，请参阅[在 Azure 虚拟机上创建测试 AD FS 3.0 实例](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed)。
 
 
@@ -132,15 +132,15 @@ IdP 颁发的 WS-Fed 令牌的必需声明：
 1. 在“操作”下，选择“添加信赖方信任”。  
 1. 在为“选择数据源”添加信赖方信任向导时，使用选项“导入有关联机或本地网络上发布的信赖方的数据”。 指定此联合元数据 URL：`https://nexus.microsoftonline-p.com/federationmetadata/2007-06/federationmetadata.xml`。  保留其他默认选项。 选择“关闭”。
 1. 此时将打开“编辑声明规则”向导。 
-1. 在“编辑声明规则”向导中，单击“添加规则”。 在“选择规则类型”中，选择“使用自定义规则发送声明”。 选择“*下一页*”。 
+1. 在“编辑声明规则”向导中，单击“添加规则”。 在“选择规则类型”中，选择“使用自定义规则发送声明”。 选择“*下一步*”。 
 1. 在“配置声明规则”中，指定以下值：
 
-   - “声明规则名称”：颁发不可变 Id  
+   - **声明规则名称**：颁发不可变 ID  
    - “自定义规则”:`c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"] => issue(store = "Active Directory", types = ("http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID"), query = "samAccountName={0};objectGUID;{1}", param = regexreplace(c.Value, "(?<domain>[^\\]+)\\(?<user>.+)", "${user}"), param = c.Value);`
 
 1. 选择“完成”。 
 1. “编辑声明规则”窗口将显示新规则。 单击“应用”。  
-1. 同样，在“编辑声明规则”向导中，单击“添加规则”。 在“选择规则类型”时，选择“以声明方式发送 LDAP 属性”。 选择“**下一页**”。
+1. 同样，在“编辑声明规则”向导中，单击“添加规则”。 在“选择规则类型”时，选择“以声明方式发送 LDAP 属性”。 选择“**下一步**”。
 1. 在“配置声明规则”中，指定以下值： 
 
    - “声明规则名称”：电子邮件声明规则  
@@ -153,4 +153,4 @@ IdP 颁发的 WS-Fed 令牌的必需声明：
 1.  单击 **“确定”** 。 现在，AD FS 服务器已配置为使用 WS-Fed 的直接联合。
 
 ## <a name="next-steps"></a>后续步骤
-接下来，你将在 Azure AD 门户或通过使用 PowerShell [在 Azure AD 中配置直接联合](direct-federation.md#step-2-configure-direct-federation-in-azure-ad)。 
+接下来，你将在 Azure AD 门户或通过使用 PowerShell [在 Azure AD 中配置直接联合](direct-federation.md#step-3-configure-direct-federation-in-azure-ad)。 

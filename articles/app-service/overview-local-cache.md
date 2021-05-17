@@ -6,17 +6,17 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 81782f63199a9fe8f43f56aeefcd1c68951d57a4
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
-ms.translationtype: MT
+ms.openlocfilehash: 462f37730d61a674edd463e57a98a1228c8ed611
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852246"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967075"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure 应用服务本地缓存概述
 
 > [!NOTE]
-> 函数应用或容器化应用服务应用中不支持本地缓存，如 [Windows 容器](quickstart-custom-container.md?pivots=container-windows) 中或 [Linux 应用服务](overview.md#app-service-on-linux)。
+> 在函数应用或容器化应用服务应用中（例如在 [Windows 容器](quickstart-custom-container.md?pivots=container-windows)中或 [Linux 上的应用服务](overview.md#app-service-on-linux)中），不支持本地缓存。 适用于这些应用类型的本地缓存版本是[应用缓存](https://github.com/Azure-App-Service/KuduLite/wiki/App-Cache)。
 
 
 Azure 应用服务内容将存储在 Azure 存储中，作为内容共享持续呈现。 此设计旨在兼容各种应用，具有以下特点：  
@@ -122,4 +122,4 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 在复制存储内容过程中，将排除任何名为存储库的文件夹。 如果站点内容包含应用日常操作中可能不必要的源控件存储库，则此方法非常有用。 
 
 ### <a name="how-to-flush-the-local-cache-logs-after-a-site-management-operation"></a>如何在站点管理操作之后刷新本地缓存日志？
-若要刷新本地缓存日志，请停止并重新启动应用。 此操作清除旧缓存。 
+要刷新本地缓存日志，请停止并重启应用。 此操作将清除旧缓存。 

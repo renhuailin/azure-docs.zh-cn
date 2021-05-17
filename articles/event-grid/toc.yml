@@ -136,6 +136,8 @@
               href: event-schema-azure-maps.md
             - name: Azure 媒体服务
               href: event-schema-media-services.md
+            - name: Azure Policy
+              href: ./event-schema-policy.md
             - name: Azure 资源组
               href: event-schema-resource-groups.md
             - name: Azure 服务总线
@@ -188,6 +190,8 @@
           href: delivery-and-retry.md
         - name: Webhook 事件传送
           href: webhook-event-delivery.md
+        - name: 自定义传递属性
+          href: delivery-properties.md
     - name: 灾难恢复
       items:
         - name: 异地灾难恢复
@@ -195,7 +199,7 @@
     - name: 安全性
       items:
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/event-grid-security-baseline?toc=/azure/event-grid/toc.json
         - name: Azure Policy 的安全控件
           href: ./security-controls-policy.md
         - name: 对事件处理程序的事件传递进行身份验证
@@ -271,7 +275,15 @@
         - name: 通过专用链接安全地发布事件
           href: configure-private-endpoints.md
         - name: 使用托管标识传送事件
-          href: managed-service-identity.md
+          items:
+            - name: 针对自定义主题或域启用托管标识
+              href: enable-identity-custom-topics-domains.md
+            - name: 针对系统主题启用托管标识
+              href: enable-identity-system-topics.md
+            - name: 向托管标识授予对事件网格目标的访问权限
+              href: add-identity-roles.md
+            - name: 创建使用托管标识的事件订阅
+              href: managed-service-identity.md
         - name: 通过专用链接安全地传送事件
           href: consume-private-endpoints.md
         - name: 配置 IP 防火墙

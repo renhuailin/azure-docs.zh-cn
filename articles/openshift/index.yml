@@ -9,12 +9,12 @@ metadata:
   author: jimzim
   ms.author: jzim
   ms.date: 03/06/2020
-  ms.openlocfilehash: 06c6b14d62bb471ecc6dee50d72f11469e3cd161
-  ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+  ms.openlocfilehash: 25c96daa5bdebb07eb868a5e2d5b574e14e38d96
+  ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/17/2021
-  ms.locfileid: "100633200"
+  ms.lasthandoff: 04/16/2021
+  ms.locfileid: "107535611"
 landingContent:
 - title: 关于 Azure Red Hat OpenShift
   linkLists:
@@ -26,23 +26,27 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: 创建 Azure Red Hat OpenShift 4 群集
+    - text: 创建 Azure Red Hat OpenShift 群集
       url: tutorial-create-cluster.md
-    - text: 连接到 Azure Red Hat OpenShift 4 群集
+    - text: 连接到 Azure Red Hat OpenShift 群集
       url: tutorial-connect-cluster.md
-    - text: 删除 Azure Red Hat OpenShift 4 群集
+    - text: 删除 Azure Red Hat OpenShift 群集
       url: tutorial-delete-cluster.md
 - title: 设置
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 创建专用 Azure Red Hat OpenShift 4 群集
-      url: ./howto-create-private-cluster-3x.md
-    - text: 为 Azure Red Hat OpenShift 4 群集配置 DNS 转发
+    - text: 创建专用 Azure Red Hat OpenShift 群集
+      url: ./howto-create-private-cluster-4x.md
+    - text: 为 Azure Red Hat OpenShift 群集配置 DNS 转发
       url: dns-forwarding.md
-    - text: 为 Azure Red Hat OpenShift 4 配置内置容器注册表
+    - text: 为 Azure Red Hat OpenShift 配置内置容器注册表
       url: built-in-container-registry.md
-    - text: 在 Azure Red Hat OpenShift 4 群集上部署 Liberty/WebSphere Liberty 应用程序
+    - text: 部署来自源代码的应用程序
+      url: howto-deploy-with-s2i.md
+    - text: 使用 OpenShift Serverless 部署应用程序
+      url: howto-deploy-with-serverless.md
+    - text: 在 Azure Red Hat OpenShift 群集上部署 Open Liberty/WebSphere Liberty 应用程序
       url: howto-deploy-java-liberty-app.md
 - title: 参考
   linkLists:

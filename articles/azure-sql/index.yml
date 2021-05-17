@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure SQL 文档
-summary: '查找有关云中 Azure SQL 系列的 SQL Server 数据库引擎产品的文档：Azure VM 上的 Azure SQL 数据库、Azure SQL 托管实例和 SQL Server。 '
+summary: 查找有关云中 Azure SQL 系列的 SQL Server 数据库引擎产品的文档：Azure VM 上的 Azure SQL 数据库、Azure SQL 托管实例和 SQL Server。
 metadata:
   title: Azure SQL 文档
   description: Azure SQL 是云中的一系列 SQL Server 数据库引擎产品，从 Azure SQL 数据库中的完全托管数据库、Azure SQL 托管实例中的完全托管实例到安装在 Azure 中虚拟机上的 SQL Server。
@@ -14,19 +14,23 @@ metadata:
   ms.author: sstein
   ms.reviewer: 
   ms.date: 10/30/2019
-  ms.openlocfilehash: 91221735001f55974f6aba4b6fcae39a92834da8
-  ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+  ms.openlocfilehash: 8f462fc8b37b3f84d0e74897de76fc92d1c08fb8
+  ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/13/2020
-  ms.locfileid: "94593886"
+  ms.lasthandoff: 04/28/2021
+  ms.locfileid: "108147708"
 landingContent:
 - title: Azure SQL Database
   linkLists:
-  - linkListType: overview
+  - linkListType: whats-new
     links:
     - text: 新增功能
       url: database/doc-changes-updates-release-notes.md?tabs=single-database
+    - text: 想要提供反馈？ 参与调查！
+      url: https://microsoft.qualtrics.com/jfe/form/SV_ePOznHhP4gDKfGu?channel=456
+  - linkListType: overview
+    links:
     - text: 什么是 SQL 数据库？
       url: database/sql-database-paas-overview.md
     - text: 什么是弹性池？
@@ -55,6 +59,12 @@ landingContent:
       url: database/transact-sql-tsql-differences-sql-server.md
 - title: Azure SQL 托管实例
   linkLists:
+  - linkListType: whats-new
+    links:
+    - text: 新增功能
+      url: database/doc-changes-updates-release-notes.md?tabs=managed-instance
+    - text: 想要提供反馈？ 参与调查！
+      url: https://microsoft.qualtrics.com/jfe/form/SV_ePOznHhP4gDKfGu?channel=456
   - linkListType: overview
     links:
     - text: 新增功能
@@ -116,7 +126,7 @@ landingContent:
     - text: 高可用性和灾难恢复
       url: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
     - text: 性能准则
-      url: virtual-machines/windows/performance-guidelines-best-practices.md
+      url: ./virtual-machines/windows/performance-guidelines-best-practices-checklist.md
 - title: 从 SQL Server 迁移
   linkLists:
   - linkListType: deploy

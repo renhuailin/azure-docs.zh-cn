@@ -2,17 +2,17 @@
 title: 应用程序网关的 Azure Monitor 指标
 description: 了解如何使用指标来监视应用程序网关的性能
 services: application-gateway
-author: surajmb
+author: azhar2005
 ms.service: application-gateway
 ms.topic: article
-ms.date: 06/06/2020
-ms.author: surmb
-ms.openlocfilehash: 9faa3a284aa7151880526c1ee70cfadc3dbf3089
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/19/2021
+ms.author: azhussai
+ms.openlocfilehash: 615db7e8d53e397755ae318d171dab1eab9ec6c6
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100576109"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727792"
 ---
 # <a name="metrics-for-application-gateway"></a>应用程序网关的指标
 
@@ -24,7 +24,7 @@ ms.locfileid: "100576109"
 
 应用程序网关提供多个与请求和响应相关的内置计时指标，这些指标的度量单位均为毫秒。 
 
-![用于应用程序网关的计时指标图。](./media/application-gateway-metrics/application-gateway-metrics.png)
+:::image type="content" source="./media/application-gateway-metrics/application-gateway-metrics.png" alt-text="[用于应用程序网关的计时指标图" border="false":::
 
 > [!NOTE]
 >

@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: alkohli
   ms.author: alkohli
-  ms.date: 10/27/2020
-  ms.openlocfilehash: 654c55436a47d91318548997aecc2605ae342099
-  ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+  ms.date: 04/20/2021
+  ms.openlocfilehash: 5bbd26cfe7972ded591fb7ee57c8f2e746ce1753
+  ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/25/2021
-  ms.locfileid: "98763072"
+  ms.lasthandoff: 04/22/2021
+  ms.locfileid: "107886885"
 landingContent:
 - title: 关于 Azure Stack Edge
   linkLists:
@@ -25,12 +25,10 @@ landingContent:
     links:
     - text: 什么是 Azure Stack Edge Pro GPU？
       url: azure-stack-edge-gpu-overview.md
-    - text: 什么是 Azure Stack Edge Pro FPGA？
-      url: azure-stack-edge-overview.md
-    - text: 什么是 Azure Stack Edge R？
-      url: azure-stack-edge-j-series-overview.md
+    - text: 什么是 Azure Stack Edge Pro R？
+      url: ./azure-stack-edge-pro-r-overview.md
     - text: 什么是 Azure Stack Edge Mini R？
-      url: azure-stack-edge-k-series-overview.md
+      url: azure-stack-edge-mini-r-overview.md
   - linkListType: architecture
     links:
     - text: 选择 Azure 数据传输选项
@@ -39,59 +37,81 @@ landingContent:
       url: ../storage/common/storage-solution-large-dataset-low-network.md#offline-transfer-or-network-transfer
   - linkListType: whats-new
     links:
-    - text: 2101 版发行说明
-      url: azure-stack-edge-gpu-2101-release-notes.md
+    - text: 2103 Azure Stack Edge Pro GPU 发行说明
+      url: azure-stack-edge-gpu-2103-release-notes.md
+    - text: 2101 Azure Stack Edge Pro FPGA 发行说明
+      url: azure-stack-edge-2101-release-notes.md
 - title: 要求和限制
   linkLists:
   - linkListType: concept
     links:
     - text: Azure Stack Edge Pro GPU 要求
       url: azure-stack-edge-gpu-system-requirements.md
-    - text: Azure Stack Edge Pro FPGA 要求
-      url: azure-stack-edge-gpu-system-requirements.md
-    - text: Azure Stack Edge Pro 限制
+    - text: Azure Stack Edge Pro R 要求
+      url: azure-stack-edge-pro-r-system-requirements.md
+    - text: Azure Stack Edge Mini R 要求
+      url: azure-stack-edge-mini-r-system-requirements.md
+    - text: Azure Stack Edge Pro GPU 限制
       url: azure-stack-edge-limits.md
-- title: 部署
+    - text: Azure Stack Edge Pro R 限制
+      url: azure-stack-edge-pro-r-limits.md
+    - text: Azure Stack Edge Mini R 限制
+      url: azure-stack-edge-mini-r-limits.md
+- title: 部署设备
   linkLists:
   - linkListType: tutorial
     links:
-    - text: 查看部署前清单
+    - text: 查看部署清单
       url: azure-stack-edge-gpu-deploy-checklist.md
     - text: Azure Stack Edge Pro GPU
       url: azure-stack-edge-gpu-deploy-prep.md
-    - text: 通过市场的 GPU 模块
-      url: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
-    - text: 通过 IoT Edge 传输 Kubernetes 工作负载
-      url: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
-- title: 开发
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: C# Edge 计算模块
-      url: azure-stack-edge-create-iot-edge-module.md
-  - linkListType: download
-    links:
-    - text: 示例 - 用于 Azure Stack Edge Pro GPU 的 C#
-      url: /samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules/
+    - text: Azure Stack Edge Pro R
+      url: azure-stack-edge-pro-r-deploy-prep.md
+    - text: Azure Stack Edge Mini R
+      url: azure-stack-edge-mini-r-deploy-prep.md
 - title: 管理
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure Stack Edge Pro 共享
+    - text: Azure Stack Edge Pro GPU 共享
+      url: azure-stack-edge-gpu-manage-shares.md
+    - text: Azure Stack Edge Pro FPGA 共享
       url: azure-stack-edge-manage-shares.md
     - text: Edge 计算
       url: azure-stack-edge-manage-compute.md
     - text: Edge 存储帐户
-      url: azure-stack-edge-j-series-manage-storage-accounts.md
-- title: 故障排除
+      url: azure-stack-edge-gpu-manage-storage-accounts.md
+- title: 部署工作负载
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 通过市场的 GPU 模块
+      url: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
+    - text: 通过 Azure 门户获取的 VM
+      url: azure-stack-edge-gpu-deploy-virtual-machine-portal.md
+    - text: 通过模板获取的 VM
+      url: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
+    - text: 通过 Azure 门户获取的 IoT Edge 模块
+      url: azure-stack-edge-gpu-deploy-compute-module-simple.md
+    - text: 通过 IoT Edge 获取的 Kubernetes
+      url: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
+    - text: 通过 kubectl 获取的 Kubernetes
+      url: azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md
+    - text: 通过 Azure Arc 获取的 Kubernetes
+      url: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
+- title: 疑难解答
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure Stack Edge GPU
+    - text: Azure Stack Edge Pro GPU 排序问题
+      url: azure-stack-edge-troubleshoot-ordering.md
+    - text: Azure Stack Edge Pro GPU 设备问题
       url: azure-stack-edge-gpu-troubleshoot.md
-    - text: Edge 计算模块
+    - text: Azure Stack Edge Pro GPU 激活问题
+      url: azure-stack-edge-gpu-troubleshoot-activation.md
+    - text: Edge 计算错误
       url: azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge
-    - text: 返回 Azure Stack Edge GPU
+    - text: 返回 Azure Stack Edge Pro GPU
       url: azure-stack-edge-return-device.md
     - text: 创建支持票证
       url: azure-stack-edge-contact-microsoft-support.md

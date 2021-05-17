@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2021
+ms.date: 04/08/2021
 ms.author: yelevin
-ms.openlocfilehash: 8853f3774bb35361746c8b706f38bc54079d74f7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8980a8920b4f41f5a8e6afe106415032eef2055b
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98790980"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375826"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>教程：使用 Azure Sentinel 调查事件
 
@@ -51,9 +51,15 @@ ms.locfileid: "98790980"
 
 1. 若要开始调查，请选择一个特定的事件。 在右侧，可以查看此事件的详细信息，包括其严重性、涉及的实体数摘要、触发此事件的原始事件以及事件的唯一 ID。
 
-1. 若要详细查看事件中的警报和实体，请在“事件”页中选择“查看完整详细信息”，并查看汇总事件信息的相关选项卡。 在“警报”选项卡中，查看警报本身。 可以查看警报的所有相关信息 - 触发警报的查询、每个查询返回的结果数，以及对警报运行 playbook 的功能。 若要进一步向下钻取事件，请选择“事件”的数量。 这会打开生成结果和在 Log Analytics 触发警报的事件的查询。 在“实体”选项卡中，可以看到作为警报规则定义的一部分而映射的所有实体。
+1. 若要详细查看事件中的警报和实体，请在“事件”页中选择“查看完整详细信息”，并查看汇总事件信息的相关选项卡。 
 
-    ![查看警报详细信息](media/tutorial-investigate-cases/alert-details.png)
+    ![查看警报详细信息](media/tutorial-investigate-cases/incident-timeline.png)
+
+    例如：
+
+    - 在“时间线”选项卡中，查看事件中警报和书签的时间线，这可以帮助你重构攻击者活动的时间线。
+    - 在“警报”选项卡中，查看警报本身。 可以查看警报的所有相关信息 - 触发警报的查询、每个查询返回的结果数，以及对警报运行 playbook 的功能。 若要进一步向下钻取事件，请选择“事件”的数量。 这会打开生成结果和在 Log Analytics 触发警报的事件的查询。 
+    - 在“实体”选项卡中，可以看到作为警报规则定义的一部分而映射的所有实体。
 
 1. 如果正在积极调查事件，最好将事件的状态设置为“正在进行”，直到将其关闭。
 

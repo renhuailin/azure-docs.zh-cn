@@ -5,14 +5,14 @@ author: deborahc
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 04/20/2021
+ms.date: 04/28/2021
 ms.author: dech
-ms.openlocfilehash: da3d6ca0323d7a0a9a7d5f5d2f0b800615f773cd
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 10f03ce5d2171b28fa195f7f5c2b0f34a939eef0
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108065672"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202796"
 ---
 # <a name="estimate-rus-using-the-azure-cosmos-db-capacity-planner---azure-cosmos-db-api-for-mongodb"></a>使用 Azure Cosmos DB 容量规划器估算 RU/秒 - 适用于 MongoDB 的 Azure Cosmos DB API
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-mongodb-api.md)]
@@ -34,10 +34,10 @@ ms.locfileid: "108065672"
 |项大小|文档的估计大小，范围为 1 KB 到 2 MB。 |
 |查找数/秒 |每个区域每秒的预期查找操作数。 |
 |Inserts/sec |每个区域每秒的预期插入操作数。 |
-|更新次数/秒 |每个区域每秒的预期更新操作数。 |
+|更新次数/秒 |每个区域每秒的预期更新操作数。 选择自动编制索引时，该更新操作的“RU/秒”估计值被当作每次更新更改的一个属性来计算。 |
 |删除数/秒 |每个区域每秒的预期删除操作数。 |
 
-填写所需的详细信息后，选择“计算”。 “成本预估”选项卡将显示存储和预配吞吐量的总成本。 可以在此选项卡中展开“显示详细信息”链接，获取不同 CRUD 请求所需的吞吐量的明细。 每次更改任何字段的值后，请选择“计算”来重新计算估计成本。
+填写所需的详细信息后，选择“计算”。 “成本预估”选项卡将显示存储和预配吞吐量的总成本。 可以在此选项卡中展开“显示详细信息”链接，获取不同 CRUD 和查询请求所需的吞吐量的明细。 每次更改任何字段的值后，请选择“计算”来重新计算估计成本。
 
 :::image type="content" source="./media/estimate-ru-capacity-planner/basic-mode-mongodb-api.png" alt-text="Capacity Planner 基本模式" border="true":::
 
@@ -53,7 +53,7 @@ ms.locfileid: "108065672"
 |区域数量|适用于 MongoDB 的 Azure Cosmos DB API 面向所有 Azure 区域提供。 选择你的工作负荷所需的区域数目。 你可以将任意数量的区域与你的 Cosmos 帐户相关联。 有关更多详细信息，请参阅[全局分布](../distribute-data-globally.md)。|
 |多区域写入|如果你启用[多区域写入](../distribute-data-globally.md#key-benefits-of-global-distribution)，则你的应用程序可以在任何 Azure 区域中进行读取和写入。 如果你禁用多区域写入，则你的应用程序可以将数据写入到单个区域。 <br/><br/> 如果你预计在不同区域中会有需要低延迟写入的主动-主动工作负荷，请启用多区域写入。 例如，在不同区域中大量向数据库写入数据的 IOT 工作负荷。 <br/><br/> 多区域写入可保证 99.999% 的读取和写入可用性。 与单一写入区域相比，多区域写入需要更多的吞吐量。 若要了解详细信息，请参阅[单一写入区域与多个写入区域的 RU 有何不同](../optimize-cost-regions.md)一文。|
 |默认一致性|适用于 MongoDB 的 Azure Cosmos DB API 支持 5 种一致性级别，使开发人员可在一致性、可用性和延迟之间进行权衡。 若要了解详细信息，请参阅[一致性级别](../consistency-levels.md)一文。 <br/><br/> 默认情况下，适用于 MongoDB 的 API 使用会话一致性，这可以保证能够在会话中读取自己的写入。 <br/><br/> 与会话一致性、一致前缀一致性和最终一致性相比，选择强一致性或有限过期一致性将会使读取所需的 RU/秒翻倍。 多区域写入强一致性不受支持，系统将自动默认选择单区域写入强一致性。 |
-|索引策略| 如果选择“关闭”选项，则不会为任何属性编制索引。 这将导致最低的写入 RU 开销。 如果只计划在每次查询时使用 _id 字段和分片键进行查询（每次查询都是使用这两项），请关闭索引策略。<br/><br/> 如果选择“自动”选项，则适用于 MongoDB 的 API 的 3.6 及更高版本将自动为 _id 字段编制索引。<br/><br/>如果选择“自定义”选项，则可以为所选属性编制索引，以及使用多键索引、复合索引或通配符索引。 适用于所有字段的通配符索引能够实现灵活高效的查询。 可以稍后在表单中输入编制索引的属性的数量。 若要了解详细信息，请参阅适用于 MongoDB 的 API 中的[索引管理](../mongodb-indexing.md)。|
+|索引策略| 如果选择“关闭”选项，则不会为任何属性编制索引。 这将导致最低的写入 RU 开销。 如果只计划在每次查询时使用 _id 字段和分片键进行查询（每次查询都是使用这两项），请关闭索引策略。<br/><br/> 如果选择“自动”选项，则适用于 MongoDB 的 API 的 3.6 及更高版本将自动为 _id 字段编制索引。 选择自动索引时，等同于设置通配符索引（其中，每个属性都会自动编制索引）。 将通配符索引用于所有字段能够实现灵活高效的查询。<br/><br/>如果选择“自定义”选项，你可设置要通过多键索引或复合索引编制索引的属性数。 可以稍后在表单中输入编制索引的属性的数量。 若要了解详细信息，请参阅适用于 MongoDB 的 API 中的[索引管理](../mongodb-indexing.md)。|
 |事务存储中存储的数据总量 |单个区域中的事务存储中存储的预估数据总量 (GB)。|
 |使用分析存储| 如果要使用 [Synapse 分析存储](../synapse-link.md)，请选择“打开”。 输入“存储在分析存储中的总数据”，其表示在单个区域的分析存储中存储的数据估值 (GB)。  |
 |工作负荷模式|如果工作负载量固定不变，请选择“稳定”。 <br/><br/> 如果工作负载量随时间推移而变化，请选择“可变”。  例如，在特定的一天或一个月内变化。 如果选择可变工作负载选项，则下列设置可用：<ul><li>高峰时间百分比：一个月内工作负荷需要峰值（最高）吞吐量的时间百分比。 </li></ul> <br/><br/> 例如，如果你的工作负荷在工作日的上午 9 点到下午 6 点的营业时间内有大量活动，则高峰时间的百分比为：45 个高峰小时 / 730 小时 / 月 = ~6%。<br/><br/>使用高峰和非高峰时间间隔，你能够相应地[以编程方式缩放预配吞吐量](../set-throughput.md#update-throughput-on-a-database-or-a-container)，从而优化成本。|
@@ -67,12 +67,6 @@ ms.locfileid: "108065672"
 :::image type="content" source="./media/estimate-ru-capacity-planner/advanced-mode-mongodb-api.png" alt-text="Capacity Planner 高级模式" border="true":::
 
 容量规划器中显示的价格根据吞吐量和存储的公共定价费率进行评估。 所有价格显示为美元。 若要按区域查看所有费率，请参阅 [Azure Cosmos DB 定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。  
-
-## <a name="estimating-throughput-for-queries"></a>估计查询所需的吞吐量
-
-容量规划器假设对工作负载点读取（包含 _id 字段和分片键的查询）和点写入。 若要估计查询所需的吞吐量，请对 Cosmos 容器中的代表性数据集运行查询并[获取 RU 开销](../find-request-unit-charge.md)。 将 RU 开销乘以你预计每秒运行的查询数，以获得所需的 RU/秒总数。
-
-例如，如果你的工作负荷需要一个查询 (``SELECT * FROM c WHERE c.id = 'Alice'``)，该查询每秒运行 100 次，该查询的 RU 开销为 10 RU，则你总共需要 1000 RU/秒（100 查询/秒 * 10 RU/查询）来为这些请求提供服务。 将这些 RU/秒与工作负荷中发生的任何读取或写入操作所需的 RU/秒相加。
 
 ## <a name="next-steps"></a>后续步骤
 

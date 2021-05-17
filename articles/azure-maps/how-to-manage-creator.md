@@ -3,17 +3,17 @@ title: 管理 Microsoft Azure Maps Creator（预览版）
 description: 本文介绍如何管理 Microsoft Azure Maps Creator（预览版）。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 02/16/2021
+ms.date: 04/26/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: d26df4287032bc59cc58dd1d832d9d5a9c40afcd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 24a462fdb2c68bcccd539c9d18252822e2730bd6
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100559213"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326878"
 ---
 # <a name="manage-azure-maps-creator-preview"></a>管理 Azure Maps Creator（预览版） 
 
@@ -21,7 +21,7 @@ ms.locfileid: "100559213"
 > Azure Maps Creator 服务目前处于公共预览状态。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-Azure Maps Creator 允许你创建专用室内定位数据。 使用 Azure Maps API 和室内定位模块，可开发动态交互式室内定位 Web 应用程序。 目前，Creator 只在使用 S1 定价层的美国提供。
+Azure Maps Creator 允许你创建专用室内定位数据。 使用 Azure Maps API 和室内定位模块，可开发动态交互式室内定位 Web 应用程序。 目前，Creator 仅在美国使用第 2 代或第 1 代 (S1) 定价层提供。
 
 本文将指导你完成在 Azure Maps 帐户中创建和删除 Creator 资源的步骤。
 
@@ -37,7 +37,7 @@ Azure Maps Creator 允许你创建专用室内定位数据。 使用 Azure Maps 
 
     ![创建 Azure Maps Creator 页](./media/how-to-manage-creator/creator-blade-settings.png)
 
-4. 输入 Creator 资源的“名称”和“位置”。 目前，仅在美国支持 Creator。 选择“查看 + 创建”。
+4. 输入 Creator 资源的“名称”和“位置”。 目前，仅在美国支持 Creator。 选择“查看 + 创建”  。
 
    ![输入 Creator 帐户信息页](./media/how-to-manage-creator/creator-creation-dialog.png)
 
@@ -49,7 +49,7 @@ Azure Maps Creator 允许你创建专用室内定位数据。 使用 Azure Maps 
 
    ![资源部署状态页](./media/how-to-manage-creator/creator-resource-created.png)
 
-7. 选择“转到资源”。  Creator 资源视图页将显示 Creator 资源和所选人口统计区域的状态。
+7. 选择“转到资源”。 Creator 资源视图页将显示 Creator 资源和所选人口统计区域的状态。
 
     ![Creator 状态页](./media/how-to-manage-creator/creator-resource-view.png)
 

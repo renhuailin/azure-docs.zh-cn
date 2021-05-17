@@ -30,24 +30,18 @@
   items:
     - name: 应用集成教程列表
       href: /azure/active-directory/saas-apps/
-    - name: 添加通过应用程序代理访问的本地应用
-      href: application-proxy-add-on-premises-application.md
 - name: 示例
   items:
-    - name: 应用管理 PowerShell 示例
-      items:
-        - name: 应用管理示例概述
-          href: app-management-powershell-samples.md
-        - name: 导出机密和证书（应用注册）
-          href: ./scripts/powershell-export-all-app-registrations-secrets-and-certs.md
-        - name: 导出机密和证书（企业应用）
-          href: ./scripts/powershell-export-all-enterprise-apps-secrets-and-certs.md
-        - name: 导出即将过期的机密和证书
-          href: ./scripts/powershell-export-apps-with-expriring-secrets.md
-        - name: 导出要求的日期后即将过期的机密和证书
-          href: ./scripts/powershell-export-apps-with-secrets-beyond-required.md
-    - name: 应用代理 PowerShell 示例
-      href: application-proxy-powershell-samples.md
+    - name: 应用管理示例概述
+      href: app-management-powershell-samples.md
+    - name: 导出机密和证书（应用注册）
+      href: ./scripts/powershell-export-all-app-registrations-secrets-and-certs.md
+    - name: 导出机密和证书（企业应用）
+      href: ./scripts/powershell-export-all-enterprise-apps-secrets-and-certs.md
+    - name: 导出即将过期的机密和证书
+      href: ./scripts/powershell-export-apps-with-expriring-secrets.md
+    - name: 导出要求的日期后即将过期的机密和证书
+      href: ./scripts/powershell-export-apps-with-secrets-beyond-required.md
 - name: 概念
   expanded: true
   items:
@@ -59,8 +53,6 @@
       items:
         - name: 应用集成入门
           href: plan-an-application-integration.md
-        - name: 规划库中未列出的应用
-          href: non-gallery-apps.md
         - name: 计划“我的应用”部署
           href: my-apps-deployment-plan.md
     - name: 单一登录
@@ -69,24 +61,16 @@
           href: plan-sso-deployment.md
         - name: 单一登录选项
           href: sso-options.md
-        - name: 本地应用的单一登录
-          href: application-proxy-config-sso-how-to.md
         - name: 基于 OIDC 的 SSO
           href: configure-oidc-single-sign-on.md
         - name: 基于 SAML 的 SSO
           href: configure-saml-single-sign-on.md
-        - name: 基于 SAML 的 SSO（本地应用）
-          href: application-proxy-configure-single-sign-on-on-premises-apps.md
         - name: 基于密码的 SSO
           href: configure-password-single-sign-on-non-gallery-applications.md
-        - name: 基于密码的 SSO（本地应用）
-          href: application-proxy-configure-single-sign-on-password-vaulting.md
         - name: 基于链接的 SSO
           href: configure-linked-sign-on.md
         - name: 基于标头的 SSO（本地应用）
           href: application-proxy-configure-single-sign-on-with-headers.md
-        - name: 基于 Kerberos 的 SSO（本地应用）
-          href: application-proxy-configure-single-sign-on-with-kcd.md
         - name: 一键式 SSO
           href: one-click-sso-tutorial.md
     - name: 应用程序安全性
@@ -105,26 +89,6 @@
           href: end-user-experiences.md
         - name: 云应用可见性和控制
           href: cloud-app-security.md
-    - name: 本地应用的应用程序代理
-      items:
-        - name: 应用程序代理
-          href: application-proxy.md
-        - name: 什么是本地应用的应用程序代理？
-          href: what-is-application-proxy.md
-        - name: 计划应用程序代理部署
-          href: application-proxy-deployment-plan.md
-        - name: 连接器
-          href: application-proxy-connectors.md
-        - name: 连接器组
-          href: application-proxy-connector-groups.md
-        - name: 安全性
-          href: application-proxy-security.md
-        - name: 网络拓扑
-          href: application-proxy-network-topology.md
-        - name: 高可用性和负载均衡
-          href: application-proxy-high-availability-load-balancing.md
-        - name: 比较远程访问解决方案
-          href: application-proxy-migration.md
 - name: 操作指南
   expanded: false
   items:
@@ -140,7 +104,7 @@
               href: configure-permission-classifications.md
             - name: 管理应用同意策略
               href: manage-app-consent-policies.md
-            - name: 配置管理员同意工作流（预览版）
+            - name: 配置管理员同意工作流
               href: configure-admin-consent-workflow.md
             - name: 管理并评估许可请求
               href: manage-consent-requests.md
@@ -174,130 +138,40 @@
           href: migrate-adfs-apps-to-azure.md
         - name: 将应用程序身份验证迁移到 Azure Active Directory
           href: migrate-application-authentication-to-azure-active-directory.md
-        - name: 使用 AD FS 应用程序活动报表（预览版）
+        - name: 使用 AD FS 应用程序活动报表
           href: migrate-adfs-application-activity.md
-    - name: 配置本地连接器
+    - name: 保护旧应用
       items:
-        - name: 配置连接器以使用代理服务器
-          href: application-proxy-configure-connectors-with-proxy-servers.md
-        - name: 注册连接器 - 无提示安装
-          href: application-proxy-register-connector-powershell.md
-    - name: 配置本地应用访问权限
-      items:
-        - name: 配置声明感知应用
-          href: application-proxy-configure-for-claims-aware-applications.md
-        - name: 授予移动和桌面应用对本地 API 的访问权限
-          href: application-proxy-secure-api-access.md
-        - name: 配置移动和桌面客户端应用
-          href: application-proxy-configure-native-client-application.md
-        - name: 配置自定义主页
-          href: application-proxy-configure-custom-home-page.md
-        - name: 转换内联链接
-          href: application-proxy-configure-hard-coded-link-translation.md
-        - name: 配置 Cookie 设置
-          href: application-proxy-configure-cookie-settings.md
-        - name: 使用通配符发布
-          href: application-proxy-wildcard.md
-        - name: 删除个人数据
-          href: application-proxy-remove-personal-data.md
-        - name: 配置自定义域
-          href: application-proxy-configure-custom-domain.md
-        - name: 保护旧应用
-          items:
-            - name: 使用 Azure AD 保护混合访问
-              href: secure-hybrid-access.md
-            - name: F5 和 Azure AD 集成
-              href: f5-aad-integration.md
-            - name: Azure IaaS 中的 F5 BIG-IP VE 部署
-              href: f5-bigip-deployment-guide.md
-            - name: 将 F5 BIG-IP VE 用于 Azure AD 以实现无密码 VPN
-              href: f5-aad-password-less-vpn.md
-        - name: 发布演练
-          items:
-            - name: 与 NDES 服务器上的应用程序代理集成
-              href: active-directory-app-proxy-protect-ndes.md
-            - name: 使用 PingAccess 与应用程序代理集成
-              href: application-proxy-ping-access-publishing-guide.md
-            - name: 与 Azure AD 域服务集成
-              href: ../../active-directory-domain-services/deploy-azure-app-proxy.md?context=%2fazure%2factive-directory%2fmanage-apps%2fcontext%2fmanage-apps-context
-            - name: 与 Power BI 集成
-              href: application-proxy-integrate-with-power-bi.md
-            - name: 与 Cloud App Security 集成
-              href: application-proxy-integrate-with-microsoft-cloud-application-security.md
-            - name: 与远程桌面集成
-              href: application-proxy-integrate-with-remote-desktop-services.md
-            - name: 与 SharePoint 集成 (Kerberos)
-              href: application-proxy-integrate-with-sharepoint-server.md
-            - name: 与 SharePoint 集成 (SAML)
-              href: application-proxy-integrate-with-sharepoint-server-saml.md
-            - name: 与 Teams 集成
-              href: application-proxy-integrate-with-teams.md
-            - name: 与 Tableau 集成
-              href: application-proxy-integrate-with-tableau.md
-            - name: 与 Qlik 集成
-              href: application-proxy-qlik.md
+        - name: 使用 Azure AD 保护混合访问
+          href: secure-hybrid-access.md
+        - name: F5 和 Azure AD 集成
+          href: f5-aad-integration.md
+        - name: Azure IaaS 中的 F5 BIG-IP VE 部署
+          href: f5-bigip-deployment-guide.md
+        - name: 将 F5 BIG-IP VE 用于 Azure AD 以实现无密码 VPN
+          href: f5-aad-password-less-vpn.md
     - name: 疑难解答
       items:
-        - name: 排查添加应用时出现的问题
-          href: troubleshoot-adding-apps.md
         - name: 排查基于密码的单一登录问题
           href: troubleshoot-password-based-sso.md
         - name: 排查基于 SAML 的单一登录的问题
           href: troubleshoot-saml-based-sso.md
         - name: 调试基于 SAML 的单一登录
           href: debug-saml-sso-issues.md
-        - name: 排查用户登录问题
-          items:
-            - name: 意外的许可提示
-              href: application-sign-in-unexpected-user-consent-prompt.md
-            - name: “用户同意”错误
-              href: application-sign-in-unexpected-user-consent-error.md
-            - name: 从我的应用进行登录时出现问题
-              href: application-sign-in-other-problem-access-panel.md
-            - name: 应用程序登录页上的错误
-              href: application-sign-in-problem-application-error.md
-            - name: 登录到 Microsoft 应用时出现问题
-              href: application-sign-in-problem-first-party-microsoft.md
-            - name: 单一登录方面的问题
-              href: application-sign-in-problem-federated-sso-gallery.md
-        - name: 排查本地应用故障
-          items:
-            - name: 应用程序代理故障排除
-              href: application-proxy-troubleshoot.md
-            - name: 连接器故障排除流程图
-              href: application-proxy-debug-connectors.md
-            - name: 应用程序故障排除流程图
-              href: application-proxy-debug-apps.md
-            - name: 显示应用页时出现问题
-              href: application-proxy-page-appearance-broken-problem.md
-            - name: 应用程序加载时间过长
-              href: application-proxy-page-load-speed-problem.md
-            - name: 应用程序页上的链接不起作用
-              href: application-proxy-page-links-broken-problem.md
-            - name: 应用的连接器组中没有正常工作的连接器
-              href: application-proxy-connectivity-no-working-connector.md
-            - name: 在管理门户中配置
-              href: application-proxy-config-how-to.md
-            - name: 在管理门户中创建应用时出现问题
-              href: application-proxy-config-problem.md
-            - name: 配置 Kerberos 约束委派
-              href: application-proxy-back-end-kerberos-constrained-delegation-how-to.md
-            - name: 使用 PingAccess 配置
-              href: ./application-proxy-ping-access-publishing-guide.md
-            - name: “无法访问此企业应用程序”错误
-              href: application-proxy-sign-in-bad-gateway-timeout-error.md
-            - name: 安装应用程序代理程序连接器时出现问题
-              href: application-proxy-connector-installation-problem.md
-            - name: 登录问题
-              href: application-sign-in-problem-on-premises-application-proxy.md
-            - name: 应用程序代理中的 CORS 问题
-              href: application-proxy-understand-cors-issues.md
+        - name: 意外的许可提示
+          href: application-sign-in-unexpected-user-consent-prompt.md
+        - name: “用户同意”错误
+          href: application-sign-in-unexpected-user-consent-error.md
+        - name: 从我的应用进行登录时出现问题
+          href: application-sign-in-other-problem-access-panel.md
+        - name: 应用程序登录页上的错误
+          href: application-sign-in-problem-application-error.md
+        - name: 登录到 Microsoft 应用时出现问题
+          href: application-sign-in-problem-first-party-microsoft.md
 - name: 参考
   items:
-    - name: 应用程序代理常见问题解答
-      href: application-proxy-faq.md
-    - name: 应用程序代理版本历史记录
-      href: application-proxy-release-version-history.md
+    - name: 应用管理证书常见问题解答
+      href: application-management-certs-faq.md
     - name: 应用显示在企业应用程序中的原因
       href: application-types.md
     - name: 将用户分配到应用的原因

@@ -7,17 +7,17 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
 ms.openlocfilehash: aa4be5852b4f8af00346a3ea9a86b13a85f99824
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93358450"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>在 Azure 逻辑应用中添加循环以重复执行操作或处理数组
 
-若要在逻辑应用中处理数组，可以创建[“Foreach”循环](#foreach-loop)。 此循环会对数组中的每一项重复一个或多个操作。 有关 "Foreach" 循环可以处理的数组项数的限制，请参阅 [并发性、循环和解除批处理限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。
+若要在逻辑应用中处理数组，可以创建[“Foreach”循环](#foreach-loop)。 此循环会对数组中的每一项重复一个或多个操作。 有关“Foreach”循环可以处理的数组项数的限制，请参阅[并发、循环和拆分限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。
 
-若要重复操作直到满足条件或状态发生变化，可以创建[“Until”循环](#until-loop)。 逻辑应用首先运行循环内的所有操作，然后检查条件或状态。 如果满足该条件，则循环将停止。 否则，循环将继续进行。 有关逻辑应用运行的 "Until" 循环的默认值和最大限制，请参阅 [并发性、循环和解除批处理限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。
+若要重复操作直到满足条件或状态发生变化，可以创建[“Until”循环](#until-loop)。 逻辑应用首先运行循环内的所有操作，然后检查条件或状态。 如果满足该条件，则循环将停止。 否则，循环将继续进行。 有关逻辑应用运行可以有的“Until”循环数的默认值和最大限制，请参阅[并发、循环和拆分限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。
 
 > [!TIP]
 > 如果你有接收数组的触发器并且希望针对每个数组项运行工作流，则可以使用 [**SplitOn** 触发器属性](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)“分离”该数组。
@@ -32,13 +32,13 @@ ms.locfileid: "93358450"
 
 ## <a name="foreach-loop"></a>Foreach 循环
 
-"Foreach" 循环对每个数组项重复一项或多项操作，并且仅适用于数组。 使用“Foreach”循环时请注意以下事项：
+“Foreach”循环在每个数组项上重复一个或多个操作，且仅在数组上工作。 使用“Foreach”循环时请注意以下事项：
 
-* "Foreach" 循环可以处理有限数量的数组项。 有关此限制，请参阅 [并发性、循环和解除批处理限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。
+* “Foreach”循环仅可处理有限数量的数组项。 有关此限制，请参阅[并发、循环和拆分限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。
 
-* 默认情况下，"Foreach" 循环中的迭代将同时运行，或以并行方式运行。 此行为不同于 [电源自动操作，它 **适用于每个循环，每个** 循环](/power-automate/apply-to-each) 一次运行一个迭代，或按顺序运行。 但是，可以 [设置顺序 "Foreach" 循环迭代](#sequential-foreach-loop)。 例如，如果想要使用 [Delay 操作](../connectors/connectors-native-delay.md)暂停 "Foreach" 循环中的下一次迭代，则需要将循环设置为按顺序运行。
+* 默认情况下，“Foreach”循环中的迭代将同时运行，或并行运行。 此行为不同于 [Power Automate 的“应用到每项”循环](/power-automate/apply-to-each)，该循环一次运行一个迭代，或按顺序运行。 但是，可以[设置顺序“Foreach”循环迭代](#sequential-foreach-loop)。 例如，如果想使用[延迟操作](../connectors/connectors-native-delay.md)暂停“Foreach”循环中的下一次迭代，则需要将循环设置为按顺序运行。
 
-  默认行为的例外是嵌套循环，迭代始终按顺序运行，而不是并行运行。 若要对嵌套循环中的项目并行运行操作，请创建并[调用子逻辑应用](../logic-apps/logic-apps-http-endpoint.md)。
+  此默认行为的例外是嵌套循环，其中迭代始终按顺序运行，而不是并行运行。 若要对嵌套循环中的项目并行运行操作，请创建并[调用子逻辑应用](../logic-apps/logic-apps-http-endpoint.md)。
 
 * 若要在每次循环迭代期间从变量操作获得可预测的结果，请按顺序运行这些循环。 例如，当并发运行的循环结束时，递增变量、递减变量和附加到变量操作会返回可预测的结果。 但是，在并发运行循环的每次迭代期间，这些操作可能会返回不可预测的结果。 
 
@@ -47,7 +47,7 @@ ms.locfileid: "93358450"
 
 此示例逻辑应用会发送网站 RSS 源的每日摘要。 该应用使用“Foreach”循环，为每一个新项发送电子邮件。
 
-1. 使用 Outlook.com 帐户或工作或学校帐户[创建此示例逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+1. 使用 Outlook.com 帐户或者工作或学校帐户[创建此示例逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 2. 在 RSS 触发器与“发送电子邮件”操作之间，添加一个 Foreach 循环。 
 
@@ -152,7 +152,7 @@ ms.locfileid: "93358450"
 
 ## <a name="until-loop"></a>Until 循环
   
-若要运行并重复操作直到满足条件或状态发生变化，请将这些操作放在“Until”循环中。 逻辑应用首先运行循环内的所有操作，然后检查条件或状态。 如果满足该条件，则循环将停止。 否则，循环将继续进行。 有关逻辑应用运行的 "Until" 循环的默认值和最大限制，请参阅 [并发性、循环和解除批处理限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。
+若要运行并重复操作直到满足条件或状态发生变化，请将这些操作放在“Until”循环中。 逻辑应用首先运行循环内的所有操作，然后检查条件或状态。 如果满足该条件，则循环将停止。 否则，循环将继续进行。 有关逻辑应用运行可以有的“Until”循环数的默认值和最大限制，请参阅[并发、循环和拆分限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。
 
 下面是可以在其中使用“Until”循环的一些常见场景：
 
@@ -191,7 +191,7 @@ ms.locfileid: "93358450"
 
    ![设置变量属性](./media/logic-apps-control-flow-loops/do-until-loop-set-variable-properties.png)
 
-   | properties | 值 | 描述 |
+   | properties | 值 | 说明 |
    | -------- | ----- | ----------- |
    | **名称** | 限制 | 变量的名称 | 
    | 类型 | Integer | 变量的数据类型 | 
@@ -249,15 +249,15 @@ ms.locfileid: "93358450"
 
 ## <a name="prevent-endless-loops"></a>防止无限循环
 
-"Until" 循环会根据这些属性停止执行，因此请确保相应地设置其值：
+“Until”循环会根据这些属性停止执行，因此请确保相应地设置它们的值：
 
-* **计数** ：该值是在循环退出之前运行的循环的最大数目。 有关逻辑应用运行的 "Until" 循环的默认值和最大限制，请参阅 [并发性、循环和解除批处理限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。
+* **计数**：此值为在循环退出之前运行的最大循环次数。 有关逻辑应用运行可以有的“Until”循环数的默认值和最大限制，请参阅[并发、循环和拆分限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。
 
-* **超时** ：此值是循环在退出之前运行的最长时间，并以 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)指定。 有关 **超时** 值的默认值和最大限制，请参阅 [并发性、循环和解除批处理限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。
+* **超时**：此值为循环在退出前可以运行的最长时间，以 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)指定。 有关“超时”值的默认值和最大限制，请参阅[并发、循环和拆分限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。
 
   将针对每个循环周期评估超时值。 如果循环中的任何操作花费的时间超过超时限制，当前循环便不会停止。 但是，由于不满足限制条件，因此下一个循环不会启动。
 
-若要更改这些限制，请在 "循环操作" 中选择 " **更改限制** "。
+若要更改这些限制，请在“循环操作”中选择“更改限制”。
 
 <a name="until-json"></a>
 

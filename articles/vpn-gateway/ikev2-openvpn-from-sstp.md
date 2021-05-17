@@ -1,18 +1,19 @@
 ---
-title: 从 SSTP 过渡到 OpenVPN 或 IKEv2 | Azure VPN 网关
-description: 本文帮助你了解如何克服 SSTP 的 128 个并发连接的限制。
+title: 如何从 SSTP 过渡到 OpenVPN 或 IKEv2
+titleSuffix: Azure VPN Gateway
+description: 了解如何从 SSTP 过渡到 OpenVPN 协议或 IKEv2 来克服 128 并发连接 SSTP 限制。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: e2fa265e580bc0e752498284ed50e398b59423fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4f406e0f0afd75cfc21b2fe71c41a1ec2c86dd51
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97657135"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228849"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>从 SSTP 过渡到 OpenVPN 协议或 IKEv2
 

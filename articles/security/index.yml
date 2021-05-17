@@ -14,228 +14,225 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 02/05/2021
-  ms.openlocfilehash: 2e50e273841b93d2ecc742f26069c0e3017b3692
-  ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
-  ms.translationtype: HT
-  ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/07/2021
-  ms.locfileid: "99807778"
 highlightedContent:
   items:
-  - title: Azure 安全性简介
-    itemType: overview
-    url: ./fundamentals/overview.md
-  - title: 安全最佳实践和模式
-    itemType: concept
-    url: ./fundamentals/best-practices-and-patterns.md
-  - title: 什么是 Azure 安全中心？
-    itemType: overview
-    url: ../security-center/security-center-introduction.md
+    - title: 开始安全旅程
+      itemType: get-started
+      url: ./journey/index.yml
+    - title: 查找满足业务需求的安全服务
+      itemType: overview
+      url: ./fundamentals/end-to-end.md
+    - title: 利用最佳做法和建议来保护云部署
+      itemType: concept
+      url: ./benchmarks/introduction.md
 conceptualContent:
   items:
-  - title: 基本
-    links:
-    - url: ./fundamentals/technical-capabilities.md
-      itemType: overview
-      text: Azure 安全技术功能
-    - url: https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91
-      itemType: concept
-      text: 云计算的责任分担
-    - url: ./fundamentals/security-controls.md
-      itemType: concept
-      text: Azure 服务的安全控制
-    footerLink:
-      url: ./fundamentals/index.yml
-      text: 查看详细信息
-  - title: 开发人员
-    links:
-    - url: ./develop/secure-dev-overview.md
-      itemType: overview
-      text: 安全开发最佳做法
-    - url: ./develop/secure-develop.md
-      itemType: tutorial
-      text: 开发安全应用程序
-    - url: ./develop/threat-modeling-tool.md
-      itemType: concept
-      text: Microsoft 威胁建模工具
-    footerLink:
-      url: ./develop/index.yml
-      text: 查看详细信息
-  - title: 基准和建议
-    links:
-    - url: ./benchmarks/introduction.md
-      itemType: download
-      text: Azure 云安全性基准
-    - url: ../security-center/security-center-using-recommendations.md
-      itemType: overview
-      text: Azure 安全中心建议
-    footerLink:
-      url: ./benchmarks/index.yml
-      text: 查看详细信息
-  - title: 机密和密钥
-    links:
-    - url: ../key-vault/general/overview.md
-      itemType: overview
-      text: 什么是 Azure Key Vault？
-    - url: ../key-vault/secrets/quick-create-cli.md
-      itemType: quickstart
-      text: 设置和检索机密
-    - url: ../dedicated-hsm/overview.md
-      itemType: overview
-      text: 什么是 Azure 专用 HSM？
-    footerLink:
-      url: ../key-vault/index.yml
-      text: 查看详细信息
-  - title: 数据保护
-    links:
-    - url: ./fundamentals/encryption-atrest.md
-      itemType: concept
-      text: 静态数据加密
-    - url: ./fundamentals/data-encryption-best-practices.md
-      itemType: concept
-      text: 数据安全与加密最佳实践
-    - url: ../storage/blobs/security-recommendations.md
-      itemType: concept
-      text: 存储安全
-    footerLink:
-      url: ./fundamentals/encryption-overview.md
-      text: 查看详细信息
-  - title: 身份管理
-    links:
-    - url: ../active-directory/hybrid/choose-ad-authn.md
-      itemType: concept
-      text: 选择正确的身份验证方法
-    - url: ./fundamentals/steps-secure-identity.md
-      itemType: concept
-      text: 保护标识基础结构
-    - url: ./fundamentals/identity-management-best-practices.md
-      itemType: concept
-      text: 安全最佳做法
-    footerLink:
-      url: ./fundamentals/identity-management-overview.md
-      text: 查看详细信息
-  - title: 安全监视
-    links:
-    - url: ../security-center/security-center-get-started.md
-      itemType: quickstart
-      text: 将订阅加入安全中心
-    - url: ../security-center/security-center-just-in-time.md
-      itemType: how-to-guide
-      text: 恰时虚拟机访问
-    - url: ../security-center/tutorial-security-policy.md
-      itemType: how-to-guide
-      text: 使用安全策略
-    footerLink:
-      url: ../security-center/index.yml
-      text: 查看详细信息
-  - title: IoT 安全监视
-    links:
-    - url: ../defender-for-iot/overview.md
-      itemType: overview
-      text: 适用于 IoT 的 Azure 安全中心简介
-    - url: ../defender-for-iot/architecture.md
-      itemType: how-to-guide
-      text: 适用于 IoT 的 Azure 安全中心体系结构
-    - url: ../defender-for-iot/getting-started.md
-      itemType: how-to-guide
-      text: 适用于 IoT 的 Azure 安全中心入门
-    footerLink:
-      url: /azure/asc-for-iot/
-      text: 查看详细信息
-  - title: 安全分析
-    links:
-    - url: ../sentinel/overview.md
-      itemType: overview
-      text: Azure Sentinel 预览版是什么？
-    - url: ../sentinel/quickstart-onboard.md
-      itemType: quickstart
-      text: 载入 Azure Sentinel 预览版
-    - url: ../sentinel/quickstart-get-visibility.md
-      itemType: quickstart
-      text: Azure Sentinel 预览版入门
-    footerLink:
-      url: ../sentinel/index.yml
-      text: 查看详细信息
-  - title: 威胁防护
-    links:
-    - url: ../security-center/security-center-alerts-overview.md
-      itemType: concept
-      text: Azure 安全中心的安全警报
-    - url: ../storage/common/azure-defender-storage-configure.md
-      itemType: concept
-      text: 适用于存储的 Azure Defender
-    - url: ../azure-sql/database/threat-detection-overview.md
-      itemType: concept
-      text: 适用于 SQL 的 Azure Defender
-    footerLink:
-      url: ./fundamentals/threat-detection.md
-      text: 查看详细信息
-  - title: 日志记录和审核
-    links:
-    - url: ./fundamentals/log-audit.md
-      itemType: concept
-      text: Azure 日志记录和审核
-    - url: ./fundamentals/management-monitoring-overview.md
-      itemType: overview
-      text: 管理和监视概述
-    footerLink:
-      url: /search/?category=Documentation&scope=azure&search=security%2baudit%2blog
-      text: 搜索更多内容
-  - title: 网络安全
-    links:
-    - url: ./fundamentals/network-overview.md
-      itemType: overview
-      text: 安全概述
-    - url: ./fundamentals/network-best-practices.md
-      itemType: concept
-      text: 安全最佳做法
-    - url: ../ddos-protection/fundamental-best-practices.md
-      itemType: concept
-      text: DDoS 保护
-  - title: 基础结构安全性
-    links:
-    - url: ./fundamentals/physical-security.md
-      itemType: concept
-      text: Azure 设施、场地和物理安全性
-    - url: ./fundamentals/infrastructure-network.md
-      itemType: concept
-      text: 网络体系结构
-    - url: ./fundamentals/protection-customer-data.md
-      itemType: concept
-      text: 客户数据保护
-    footerLink:
-      url: ./fundamentals/infrastructure.md
-      text: 查看详细信息
-  - title: 虚拟机安全
-    links:
-    - url: ./fundamentals/virtual-machines-overview.md
-      itemType: overview
-      text: 安全概述
-    - url: ./fundamentals/iaas.md
-      itemType: concept
-      text: IaaS 工作负荷最佳做法
-    - url: ./fundamentals/azure-marketplace-images.md
-      itemType: concept
-      text: 安全配置建议
-  - title: 数据库安全
-    links:
-    - url: ./fundamentals/encryption-overview.md#encryption-of-data-at-rest-with-azure-sql-database
-      itemType: overview
-      text: 数据安全
-    - url: ./fundamentals/paas-applications-using-sql.md
-      itemType: concept
-      text: 适用于 PaaS 数据库的最佳做法
-    - url: ./fundamentals/database-security-checklist.md
-      itemType: concept
-      text: 安全清单
-  - title: 管理和符合性
-    links:
-    - url: ../governance/policy/overview.md
-      itemType: overview
-      text: Azure Policy 服务
-    - url: ../governance/blueprints/overview.md
-      itemType: overview
-      text: Azure 蓝图服务
-    footerLink:
-      url: ../governance/index.yml
-      text: 查看详细信息
+    - title: 基础知识
+      links:
+        - url: ./fundamentals/overview.md
+          itemType: overview
+          text: Azure 安全性简介
+        - url: 'https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91'
+          itemType: concept
+          text: 云计算的责任分担
+        - url: ./benchmarks/index.yml
+          itemType: concept
+          text: Azure 服务的安全控制
+      footerLink:
+        url: ./fundamentals/index.yml
+        text: 查看详细信息
+    - title: 开发人员
+      links:
+        - url: ./develop/secure-dev-overview.md
+          itemType: overview
+          text: 安全开发最佳做法
+        - url: ./develop/secure-develop.md
+          itemType: tutorial
+          text: 开发安全应用程序
+        - url: ./develop/threat-modeling-tool.md
+          itemType: concept
+          text: Microsoft 威胁建模工具
+      footerLink:
+        url: ./develop/index.yml
+        text: 查看详细信息
+    - title: 安全最佳实践和模式
+      links:
+        - url: ./fundamentals/identity-management-best-practices.md
+          itemType: concept
+          text: 身份管理
+        - url: ./fundamentals/network-best-practices.md
+          itemType: concept
+          text: 网络安全性
+        - url: ./fundamentals/paas-deployments.md
+          itemType: concept
+          text: 保护 PaaS 部署
+      footerLink:
+        url: ./fundamentals/best-practices-and-patterns.md
+        text: 查看详细信息
+    - title: 机密和密钥
+      links:
+        - url: ../key-vault/general/overview.md
+          itemType: overview
+          text: 什么是 Azure Key Vault？
+        - url: ../key-vault/secrets/quick-create-cli.md
+          itemType: quickstart
+          text: 设置和检索机密
+        - url: ../dedicated-hsm/overview.md
+          itemType: overview
+          text: 什么是 Azure 专用 HSM？
+      footerLink:
+        url: ../key-vault/index.yml
+        text: 查看详细信息
+    - title: 数据保护
+      links:
+        - url: ./fundamentals/encryption-atrest.md
+          itemType: concept
+          text: 静态数据加密
+        - url: ./fundamentals/data-encryption-best-practices.md
+          itemType: concept
+          text: 数据安全与加密最佳实践
+        - url: ../storage/blobs/security-recommendations.md
+          itemType: concept
+          text: 存储安全
+      footerLink:
+        url: ./fundamentals/encryption-overview.md
+        text: 查看详细信息
+    - title: 身份管理
+      links:
+        - url: ../active-directory/hybrid/choose-ad-authn.md
+          itemType: concept
+          text: 选择正确的身份验证方法
+        - url: ./fundamentals/steps-secure-identity.md
+          itemType: concept
+          text: 保护标识基础结构
+        - url: ./fundamentals/identity-management-best-practices.md
+          itemType: concept
+          text: 安全最佳做法
+      footerLink:
+        url: ./fundamentals/identity-management-overview.md
+        text: 查看详细信息
+    - title: 安全监视
+      links:
+        - url: ../security-center/security-center-get-started.md
+          itemType: quickstart
+          text: 将订阅加入安全中心
+        - url: ../security-center/security-center-just-in-time.md
+          itemType: how-to-guide
+          text: 恰时虚拟机访问
+        - url: ../security-center/tutorial-security-policy.md
+          itemType: how-to-guide
+          text: 使用安全策略
+      footerLink:
+        url: ../security-center/index.yml
+        text: 查看详细信息
+    - title: IoT 安全监视
+      links:
+        - url: ../defender-for-iot/overview.md
+          itemType: overview
+          text: 适用于 IoT 的 Azure 安全中心简介
+        - url: ../defender-for-iot/architecture.md
+          itemType: how-to-guide
+          text: 适用于 IoT 的 Azure 安全中心体系结构
+        - url: ../defender-for-iot/getting-started.md
+          itemType: how-to-guide
+          text: 适用于 IoT 的 Azure 安全中心入门
+      footerLink:
+        url: /azure/asc-for-iot/
+        text: 查看详细信息
+    - title: 安全分析
+      links:
+        - url: ../sentinel/overview.md
+          itemType: overview
+          text: Azure Sentinel 预览版是什么？
+        - url: ../sentinel/quickstart-onboard.md
+          itemType: quickstart
+          text: 载入 Azure Sentinel 预览版
+        - url: ../sentinel/quickstart-get-visibility.md
+          itemType: quickstart
+          text: Azure Sentinel 预览版入门
+      footerLink:
+        url: ../sentinel/index.yml
+        text: 查看详细信息
+    - title: 威胁防护
+      links:
+        - url: ../security-center/security-center-alerts-overview.md
+          itemType: concept
+          text: Azure 安全中心的安全警报
+        - url: ../storage/common/azure-defender-storage-configure.md
+          itemType: concept
+          text: 适用于存储的 Azure Defender
+        - url: ../azure-sql/database/threat-detection-overview.md
+          itemType: concept
+          text: 适用于 SQL 的 Azure Defender
+      footerLink:
+        url: ./fundamentals/threat-detection.md
+        text: 查看详细信息
+    - title: 日志记录和审核
+      links:
+        - url: ./fundamentals/log-audit.md
+          itemType: concept
+          text: Azure 日志记录和审核
+        - url: ./fundamentals/management-monitoring-overview.md
+          itemType: overview
+          text: 管理和监视概述
+      footerLink:
+        url: /search/?category=Documentation&scope=azure&search=security%2baudit%2blog
+        text: 搜索更多内容
+    - title: 网络安全
+      links:
+        - url: ./fundamentals/network-overview.md
+          itemType: overview
+          text: 安全概述
+        - url: ./fundamentals/network-best-practices.md
+          itemType: concept
+          text: 安全最佳做法
+        - url: ../ddos-protection/fundamental-best-practices.md
+          itemType: concept
+          text: DDoS 保护
+    - title: 基础结构安全性
+      links:
+        - url: ./fundamentals/physical-security.md
+          itemType: concept
+          text: Azure 设施、场地和物理安全性
+        - url: ./fundamentals/infrastructure-network.md
+          itemType: concept
+          text: 网络体系结构
+        - url: ./fundamentals/protection-customer-data.md
+          itemType: concept
+          text: 客户数据保护
+      footerLink:
+        url: ./fundamentals/infrastructure.md
+        text: 查看详细信息
+    - title: 虚拟机安全
+      links:
+        - url: ./fundamentals/virtual-machines-overview.md
+          itemType: overview
+          text: 安全概述
+        - url: ./fundamentals/iaas.md
+          itemType: concept
+          text: IaaS 工作负荷最佳做法
+        - url: ./fundamentals/azure-marketplace-images.md
+          itemType: concept
+          text: 安全配置建议
+    - title: 数据库安全
+      links:
+        - url: ./fundamentals/encryption-overview.md#encryption-of-data-at-rest-with-azure-sql-database
+          itemType: overview
+          text: 数据安全性
+        - url: ./fundamentals/paas-applications-using-sql.md
+          itemType: concept
+          text: 适用于 PaaS 数据库的最佳做法
+        - url: ./fundamentals/database-security-checklist.md
+          itemType: concept
+          text: 安全清单
+    - title: 管理和符合性
+      links:
+        - url: ../governance/policy/overview.md
+          itemType: overview
+          text: Azure Policy 服务
+        - url: ../governance/blueprints/overview.md
+          itemType: overview
+          text: Azure 蓝图服务
+      footerLink:
+        url: ../governance/index.yml
+        text: 查看详细信息

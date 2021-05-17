@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/20/2021
 ms.author: mathapli
-ms.openlocfilehash: fb5f00cf2e7078ab8d85f0ac1c2a2d54be907f89
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 5b0fcbabfa97312622bc13fbfa4e4bba4b0d847e
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127166"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227304"
 ---
-# <a name="azure-hybrid-benefit-for-linux-virtual-machine-scale-set-public-preview"></a>Linux 虚拟机规模集的 Azure 混合权益（公共预览版）
+# <a name="azure-hybrid-benefit-for-linux-virtual-machine-scale-set"></a>Linux 虚拟机规模集的 Azure 混合权益
 
-Linux 虚拟机规模集的 Azure 混合权益现已推出公共预览版。 Azure 混合权益可帮助降低运行 RHEL 和 SLES [虚拟机规模集](./overview.md)的成本。
+Linux 虚拟机规模集的 Azure 混合权益现已正式发布。 Azure 混合权益可帮助降低运行 RHEL 和 SLES [虚拟机规模集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)的成本。
 
 使用此权益，只需支付规模集的基础结构成本。 该权益适用于所有 RHEL 和 SLES 市场即用即付 (PAYG) 映像。
 
@@ -71,7 +71,23 @@ RHEL 的 Azure 混合权益适用于同时满足以下两个条件的 Red Hat �
 
 
 ## <a name="enable-and-disable-the-benefit-on-azure-portal"></a>在 Azure 门户中启用和禁用权益 
-在虚拟机规模集上启用和禁用 AHB 的门户体验当前尚不可用。
+### <a name="azure-portal-example-to-enable-the-benefit-during-creation"></a>在创建期间启用权益的 Azure 门户示例：
+1. 访问 [Microsoft Azure 门户](https://portal.azure.com/)
+1. 在门户中转到“创建虚拟机规模集”页面。
+ ![创建 VMSS 时的 AHB](./media/azure-hybrid-benefit-linux/create-vmss-ahb.png)
+1. 单击复选框来启用 AHB 转换，并使用云访问许可证。
+ ![创建 VMSS 时的 AHB 复选框](./media/azure-hybrid-benefit-linux/create-vmss-ahb-checkbox.png)
+1. 按照下一组说明创建虚拟机规模集
+1. 检查“配置”边栏选项卡，会看到选项已启用。 
+![创建后的 AHB OS 边栏选项卡](./media/azure-hybrid-benefit-linux/create-vmss-ahb-os-blade.png)
+
+### <a name="azure-portal-example-to-enable-the-benefit-for-an-existing-virtual-machine-scale-set"></a>为现有虚拟机规模集启用权益的 Azure 门户示例：
+1. 访问 [Microsoft Azure 门户](https://portal.azure.com/)
+1. 打开要在其上应用转换的“虚拟机规模集”页面。
+1. 转到左侧的“操作系统”选项。 你会看到“许可”部分。 若要启用 AHB 转换，请选中“是”单选按钮，并选中“确认”复选框。
+![创建后的 AHB 配置边栏选项卡](./media/azure-hybrid-benefit-linux/create-vmss-ahb-os-blade.png)
+
+
 
 ## <a name="enable-and-disable-the-benefit-using-azure-cli"></a>使用 Azure CLI 启用和禁用权益
 

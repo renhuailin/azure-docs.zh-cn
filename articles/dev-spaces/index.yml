@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure Dev Spaces 文档
-summary: Azure Dev Spaces 即将停用，将于 2023 年 10 月 31 日停止工作。
+summary: Azure Dev Spaces 即将停用，将于 2023 年 10 月 31 日停止工作。 不能预配任何新控制器。 可用区域中的客户活动停止后，这些区域将关闭。
 metadata:
   title: Azure Dev Spaces 文档
-  description: Azure Dev Spaces 即将停用，将于 2023 年 10 月 31 日停止工作。
+  description: Azure Dev Spaces 即将停用，将于 2023 年 10 月 31 日停止工作。 不能预配任何新控制器。 可用区域中的客户活动停止后，这些区域将关闭。
   services: azure-dev-spaces
   ms.service: azure-dev-spaces
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: zarhoads
   manager: gwallace
   ms.date: 10/29/2020
-  ms.openlocfilehash: a3b3ca8c87871b9ae8e1d6a3db32d9e2051215b6
-  ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+  ms.openlocfilehash: 052e625961aa793d0ffe6ae3faccdc634c2e6a51
+  ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/30/2020
-  ms.locfileid: "93072025"
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "108802695"
 landingContent:
 - title: Bridge to Kubernetes
   linkLists:

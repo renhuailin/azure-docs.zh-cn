@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 7600d8aa2f78e06ea4046273635fdbba18042010
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30c20974513d5e52661fed16f671ca672950c054
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98028856"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331783"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中编写存储过程、触发器和用户定义的函数
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -351,6 +351,7 @@ function updateMetadataCallback(err, items, responseOptions) {
         if(!accept) throw "Unable to update metadata, abort";
         return;
 }
+}
 ```
 
 必须注意的一个要点是 Azure Cosmos DB 中触发器的事务执行。 后触发器作为基础项本身的同一事务的一部分运行。 后触发器执行期间的异常将导致整个事务失败。 提交的任何内容都将回退并返回异常。
@@ -388,16 +389,29 @@ function tax(income) {
 
 有关如何注册和使用用户定义的函数的示例，请参阅[如何在 Azure Cosmos DB 中使用用户定义的函数](how-to-use-stored-procedures-triggers-udfs.md#udfs)一文。
 
-## <a name="logging"></a>日志记录 
+## <a name="logging"></a>日志记录
 
-使用存储过程、触发器或用户定义的函数时，可以使用 `console.log()` 命令来记录步骤。 当 `EnableScriptLogging` 设置为 true 时，该命令会专注于一个字符串进行调试，如以下示例所示：
+使用存储过程、触发器或用户定义的函数时，可启用脚本日志记录来记录这些步骤。 当 `EnableScriptLogging` 设置为 true 时，会生成用于调试的字符串，如以下示例所示：
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
+let requestOptions = { enableScriptLogging: true };
+const { resource: result, headers: responseHeaders} await container.scripts
+      .storedProcedure(Sproc.id)
+      .execute(undefined, [], requestOptions);
+console.log(responseHeaders[Constants.HttpHeaders.ScriptLogResults]);
+```
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+```csharp
 var response = await client.ExecuteStoredProcedureAsync(
 document.SelfLink,
 new RequestOptions { EnableScriptLogging = true } );
 Console.WriteLine(response.ScriptLog);
 ```
+---
 
 ## <a name="next-steps"></a>后续步骤
 

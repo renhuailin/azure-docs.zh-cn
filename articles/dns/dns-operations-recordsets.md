@@ -10,14 +10,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
-ms.date: 12/21/2016
+ms.date: 04/28/2021
 ms.author: rohink
-ms.openlocfilehash: f4e713f54ab4702b21763dc9fc6c7b606f94a945
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b3e4df12a7b8a08d3f7edc8e63c9b6225a3e7bc
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96011585"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228057"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure DNS 中的 DNS 记录和记录集
 
@@ -44,29 +44,29 @@ ms.locfileid: "96011585"
 
 ## <a name="create-a-new-dns-record"></a>创建新的 DNS 记录
 
-如果新记录与现有记录具有相同的名称和类型，则需[将其添加到现有记录集](#add-a-record-to-an-existing-record-set)。 如果新记录与所有现有记录的名称和类型都不同，则需创建新的记录集。 
+创建新记录集时，必须为其指定不同于任何现有记录的名称和类型。 如果新记录与现有记录具有相同的名称和类型，则需要将其添加到[现有记录集](#add-a-record-to-an-existing-record-set)。
 
 ### <a name="create-a-records-in-a-new-record-set"></a>在新的记录集中创建“A”记录
 
 可以使用 `New-AzDnsRecordSet` cmdlet 创建记录集。 创建记录集时，需指定记录集名称、区域、生存时间 (TTL)、记录类型，以及要创建的记录。
 
-添加记录到记录集的参数会因记录集的类型而有所变化。 例如，在使用类型“A”记录集时，需使用参数 `-IPv4Address` 指定 IP 地址。 其他参数用于其他记录类型。 有关详细信息，请参阅其他记录类型示例。
+添加记录到记录集的参数会因记录集的类型而有所变化。 例如，在使用类型“A”记录集时，需使用参数 `-IPv4Address` 指定 IP 地址。 不同的记录类型将具有额外的参数。
 
-下面的示例在 DNS 区域“contoso.com”中创建具有相对名称“www”的记录集。 记录集的完全限定名称为“www.contoso.com”。 记录类型为“A”，TTL 为 3600 秒。 记录集包含单个记录，IP 地址为“1.2.3.4”。
+以下示例在 DNS 区域 `contoso.com` 中创建具有相对名称 `www` 的记录集。 记录集的完全限定名称为 `www.contoso.com`。 记录类型为“A”，TTL 为 3600 秒。 记录集包含单个记录，IP 地址为“1.2.3.4”。
 
-```powershell
+```azurepowershell-interactive
 New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "1.2.3.4") 
 ```
 
 若要在区域的“顶点”（在此例中为“contoso.com”）创建记录集，请使用记录集名称“\@”（不包括引号）：
 
-```powershell
+```azurepowershell-interactive
 New-AzDnsRecordSet -Name "@" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "1.2.3.4") 
 ```
 
 如需创建包含多条记录的记录集，请先创建本地数组并添加记录，然后将数组传递到 `New-AzDnsRecordSet`，如下所示：
 
-```powershell
+```azurepowershell-interactive
 $aRecords = @()
 $aRecords += New-AzDnsRecordConfig -IPv4Address "1.2.3.4"
 $aRecords += New-AzDnsRecordConfig -IPv4Address "2.3.4.5"
@@ -75,13 +75,13 @@ New-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName MyReso
 
 可以使用[记录集元数据](dns-zones-records.md#tags-and-metadata)，以键-值对的形式将特定于应用程序的数据与每个记录集相关联。 以下示例说明如何使用“dept=finance”和“environment=production”这两个元数据条目创建记录集。
 
-```powershell
+```azurepowershell-interactive
 New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "1.2.3.4") -Metadata @{ dept="finance"; environment="production" } 
 ```
 
 Azure DNS 还支持“空”记录集，此类记录集可充当占位符，用于在创建 DNS 记录之前保留某个 DNS 名称。 空记录集在 Azure DNS 控制平面可见，但也会显示在 Azure DNS 名称服务器上。 以下示例创建一个空记录集：
 
-```powershell
+```azurepowershell-interactive
 New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords @()
 ```
 
@@ -91,17 +91,17 @@ New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGr
 
 每个示例中都演示了如何创建包含单条记录的记录集。 可以对“A”记录此前的示例进行修改，以便使用元数据创建其他类型的包含多个记录的记录集，或者创建空记录集。
 
-我们没有提供创建 SOA 记录集的示例，因为 SOA 是随每个 DNS 区域一起创建和删除的，不能单独创建或删除。 但是，[可以修改 SOA，如后面的示例所示](#to-modify-an-soa-record)。
+没有创建 SOA 记录集的示例，因为 SOA 是随每个 DNS 区域一起创建和删除的。 无法单独创建或删除 SOA 记录。 但是，可以[修改](#to-modify-an-soa-record) SOA，如后面的示例所示。
 
 ### <a name="create-an-aaaa-record-set-with-a-single-record"></a>创建一个包含一条记录的 AAAA 记录集
 
-```powershell
+```azurepowershell-interactive
 New-AzDnsRecordSet -Name "test-aaaa" -RecordType AAAA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Ipv6Address "2607:f8b0:4009:1803::1005") 
 ```
 
 ### <a name="create-a-caa-record-set-with-a-single-record"></a>创建一个包含一条记录的 CAA 记录集
 
-```powershell
+```azurepowershell-interactive
 New-AzDnsRecordSet -Name "test-caa" -RecordType CAA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Caaflags 0 -CaaTag "issue" -CaaValue "ca1.contoso.com") 
 ```
 
@@ -113,7 +113,7 @@ New-AzDnsRecordSet -Name "test-caa" -RecordType CAA -ZoneName "contoso.com" -Res
 > 有关详细信息，请参阅 [CNAME 记录](dns-zones-records.md#cname-records)。
 
 
-```powershell
+```azurepowershell-interactive
 New-AzDnsRecordSet -Name "test-cname" -RecordType CNAME -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Cname "www.contoso.com") 
 ```
 
@@ -122,13 +122,13 @@ New-AzDnsRecordSet -Name "test-cname" -RecordType CNAME -ZoneName "contoso.com" 
 在此示例中，使用记录集名称“\@”在区域顶端（在本例中为“contoso.com”）创建一条 MX 记录。
 
 
-```powershell
+```azurepowershell-interactive
 New-AzDnsRecordSet -Name "@" -RecordType MX -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Exchange "mail.contoso.com" -Preference 5) 
 ```
 
 ### <a name="create-an-ns-record-set-with-a-single-record"></a>创建一个包含一条记录的 NS 记录集
 
-```powershell
+```azurepowershell-interactive
 New-AzDnsRecordSet -Name "test-ns" -RecordType NS -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Nsdname "ns1.contoso.com") 
 ```
 
@@ -136,15 +136,15 @@ New-AzDnsRecordSet -Name "test-ns" -RecordType NS -ZoneName "contoso.com" -Resou
 
 在此示例中，“my-arpa-zone.com”表示代表用户 IP 范围的 ARPA 反向查找区域。 此区域中的每个 PTR 记录集对应于此 IP 范围内的一个 IP 地址。 记录名称“10”是此 IP 范围内由此记录表示的 IP 地址的最后一个八位字节。
 
-```powershell
+```azurepowershell-interactive
 New-AzDnsRecordSet -Name 10 -RecordType PTR -ZoneName "my-arpa-zone.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Ptrdname "myservice.contoso.com") 
 ```
 
 ### <a name="create-an-srv-record-set-with-a-single-record"></a>创建一个包含一条记录的 SRV 记录集
 
-创建 [SRV 记录集](dns-zones-records.md#srv-records)时，请在记录集名称中指定 *\_service* 和 *\_protocol*。 在区域顶点创建 SRV 记录集时，无需在记录集名称中包括“\@”。
+创建 [SRV 记录集](dns-zones-records.md#srv-records)时，请在记录集名称中指定 *\_service* 和 *\_protocol*。 在区域顶点创建 SRV 记录集时，无需在记录集名称中包含“\@”。
 
-```powershell
+```azurepowershell-interactive
 New-AzDnsRecordSet -Name "_sip._tls" -RecordType SRV -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target "sip.contoso.com") 
 ```
 
@@ -153,7 +153,7 @@ New-AzDnsRecordSet -Name "_sip._tls" -RecordType SRV -ZoneName "contoso.com" -Re
 
 以下示例说明如何创建 TXT 记录。 如需详细了解 TXT 记录中支持的最大字符串长度，请参阅 [TXT 记录](dns-zones-records.md#txt-records)。
 
-```powershell
+```azurepowershell-interactive
 New-AzDnsRecordSet -Name "test-txt" -RecordType TXT -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Value "This is a TXT record") 
 ```
 
@@ -166,42 +166,42 @@ New-AzDnsRecordSet -Name "test-txt" -RecordType TXT -ZoneName "contoso.com" -Res
 
 以下示例说明如何检索记录集。 在此示例中，区域使用 `-ZoneName` 和 `-ResourceGroupName` 参数指定。
 
-```powershell
+```azurepowershell-interactive
 $rs = Get-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-此外，也可以使用通过 `-Zone` 参数传递的区域对象指定区域。
+相反，还可以使用通过 `-Zone` 参数传递的区域对象来指定区域。
 
-```powershell
+```azurepowershell-interactive
 $zone = Get-AzDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
 $rs = Get-AzDnsRecordSet -Name "www" -RecordType A -Zone $zone
 ```
 
 ## <a name="list-record-sets"></a>列出记录集
 
-也可以使用 `Get-AzDnsZone` 列出区域中的记录集，省略 `-Name` 和/或 `-RecordType` 参数。
+也可通过省略 `-Name` 或 `-RecordType` 参数之一或两者，使用 `Get-AzDnsZone` 列出区域中的记录集。
 
 以下示例返回区域中的所有记录集：
 
-```powershell
+```azurepowershell-interactive
 $recordsets = Get-AzDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
 以下示例说明如何在指定记录类型的同时省略记录集名称，以便检索给定类型的所有记录集：
 
-```powershell
+```azurepowershell-interactive
 $recordsets = Get-AzDnsRecordSet -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
 要跨记录类型检索具有给定名称的所有记录集，需先检索所有记录集，然后对结果进行筛选：
 
-```powershell
+```azurepowershell-interactive
 $recordsets = Get-AzDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" | where {$_.Name.Equals("www")}
 ```
 
 在上述所有示例中，区域都可以通过 `-ZoneName` 和 `-ResourceGroupName` 参数指定（如下所示），或者通过指定区域对象进行指定：
 
-```powershell
+```azurepowershell-interactive
 $zone = Get-AzDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
 $recordsets = Get-AzDnsRecordSet -Zone $zone
 ```
@@ -212,19 +212,19 @@ $recordsets = Get-AzDnsRecordSet -Zone $zone
 
 1. 获取现有记录集
 
-    ```powershell
+    ```azurepowershell-interactive
     $rs = Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A
     ```
 
-2. 将新记录添加到本地记录集。 这是一种脱机操作。
+1. 将新记录添加到本地记录集。
 
-    ```powershell
+    ```azurepowershell-interactive
     Add-AzDnsRecordConfig -RecordSet $rs -Ipv4Address "5.6.7.8"
     ```
 
-3. 将更改提交回 Azure DNS 服务。 
+3. 更新更改，使其反映到 Azure DNS 服务。 
 
-    ```powershell
+    ```azurepowershell-interactive
     Set-AzDnsRecordSet -RecordSet $rs
     ```
 
@@ -232,13 +232,13 @@ $recordsets = Get-AzDnsRecordSet -Zone $zone
 
 此操作序列也可 *通过管道传递*，即通过管道传递记录集对象，而不是将其作为参数传递：
 
-```powershell
+```azurepowershell-interactive
 Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-上述示例说明了如何将“A”记录添加到现有的类型“A”记录集。 可以使用类似操作顺序向其他类型的记录集添加记录，将 `Add-AzDnsRecordConfig` 的 `-Ipv4Address` 参数替换为特定于每个记录类型的其他参数。 每个记录类型的参数与 `New-AzDnsRecordConfig` cmdlet 的参数相同，如上面的其他记录类型示例所示。
+上述示例说明了如何将“A”记录添加到现有的类型“A”记录集。 可使用类似操作顺序向其他类型的记录集添加记录，将 `Add-AzDnsRecordConfig` 的 `-Ipv4Address` 参数替换为特定于每个记录类型的其他参数。 每个记录类型的参数都与 `New-AzDnsRecordConfig` cmdlet 的参数相同，如上面的其他记录类型示例所示。
 
-类型为“CNAME”或“SOA”的记录集不能包含多个记录。 此约束源自 DNS 标准， 不是 Azure DNS 的限制。
+类型为“CNAME”或“SOA”的记录集不能包含多条记录。 此约束源自 DNS 标准， Azure DNS 没有此限制。
 
 ## <a name="remove-a-record-from-an-existing-record-set"></a>从现有记录集中删除记录
 
@@ -246,19 +246,19 @@ Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyR
 
 1. 获取现有记录集
 
-    ```powershell
+    ```azurepowershell-interactive
     $rs = Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A
     ```
 
-2. 从本地记录集对象删除记录。 这是一种脱机操作。 要删除的记录必须与所有参数中的现有记录完全匹配。
+2. 从本地记录集对象删除记录。 要删除的记录必须与所有参数中的现有记录完全匹配。
 
-    ```powershell
+    ```azurepowershell-interactive
     Remove-AzDnsRecordConfig -RecordSet $rs -Ipv4Address "5.6.7.8"
     ```
 
 3. 将更改提交回 Azure DNS 服务。 对于并发更改，使用可选的 `-Overwrite` 开关取消 [Etag 检查](dns-zones-records.md#etags)。
 
-    ```powershell
+    ```azurepowershell-interactive
     Set-AzDnsRecordSet -RecordSet $Rs
     ```
 
@@ -266,11 +266,11 @@ Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyR
 
 与添加记录到记录集类似，也可通过管道传递删除记录集的操作顺序：
 
-```powershell
+```azurepowershell-interactive
 Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Remove-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-将适当的特定于类型的参数传递给 `Remove-AzDnsRecordSet` 即可支持不同的记录类型。 每个记录类型的参数与 `New-AzDnsRecordConfig` cmdlet 的参数相同，如上面的其他记录类型示例所示。
+将适当的特定于类型的参数传递给 `Remove-AzDnsRecordSet` 即可支持不同的记录类型。 每个记录类型的参数都与 `New-AzDnsRecordConfig` cmdlet 的参数相同，如上面的其他记录类型示例所示。
 
 
 ## <a name="modify-an-existing-record-set"></a>修改现有记录集
@@ -290,7 +290,7 @@ Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyRes
 
 在此示例中，我们更改现有“A”记录的 IP 地址：
 
-```powershell
+```azurepowershell-interactive
 $rs = Get-AzDnsRecordSet -name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 $rs.Records[0].Ipv4Address = "9.8.7.6"
 Set-AzDnsRecordSet -RecordSet $rs
@@ -298,11 +298,11 @@ Set-AzDnsRecordSet -RecordSet $rs
 
 ### <a name="to-modify-an-soa-record"></a>修改 SOA 记录
 
-不能在区域顶点从自动创建的 SOA 记录集（`-Name "@"`，包括引号）添加或删除记录。 但是，可以修改 SOA 记录和记录集 TTL 中的任何参数（“Host”除外）。
+不能在区域顶点（`-Name "@"`，包括引号）从自动创建的 SOA 记录集添加或删除记录。 但是，可以修改 SOA 记录和记录集 TTL 中的任何参数（“Host”除外）。
 
 下面的示例演示如何更改 SOA 记录的 *Email* 属性：
 
-```powershell
+```azurepowershell-interactive
 $rs = Get-AzDnsRecordSet -Name "@" -RecordType SOA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 $rs.Records[0].Email = "admin.contoso.com"
 Set-AzDnsRecordSet -RecordSet $rs
@@ -312,13 +312,13 @@ Set-AzDnsRecordSet -RecordSet $rs
 
 在每个 DNS 区域自动创建区域顶点处的 NS 记录集。 其中包含分配给该区域的 Azure DNS 名称服务器名称。
 
-可向此 NS 记录集添加其他名称服务器，从而支持与多个 DNS 提供商共同托管域。 还可修改此记录集的 TTL 和元数据。 但是，无法删除或修改预填充的 Azure DNS 名称服务器。
+可向此 NS 记录集添加更多名称服务器，以支持具有多个 DNS 提供商的共同托管域。 还可修改此记录集的 TTL 和元数据。 但是，无法删除或修改预填充的 Azure DNS 名称服务器。
 
-请注意，这仅适用于区域顶点处的 NS 记录集。 区域中的其他 NS 记录集（用于委派子区域）不受约束，可进行修改。
+此限制仅适用于区域顶点处的 NS 记录集。 区域中的其他 NS 记录集（用于委派子区域）不受约束，可进行修改。
 
 以下示例展示如何向区域顶点处的 NS 记录集添加其他名称服务器：
 
-```powershell
+```azurepowershell-interactive
 $rs = Get-AzDnsRecordSet -Name "@" -RecordType NS -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 Add-AzDnsRecordConfig -RecordSet $rs -Nsdname ns1.myotherdnsprovider.com
 Set-AzDnsRecordSet -RecordSet $rs
@@ -330,7 +330,7 @@ Set-AzDnsRecordSet -RecordSet $rs
 
 以下示例说明如何修改现有记录集的元数据：
 
-```powershell
+```azurepowershell-interactive
 # Get the record set
 $rs = Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 
@@ -344,7 +344,6 @@ $rs.Metadata.Remove('environment')
 Set-AzDnsRecordSet -RecordSet $rs
 ```
 
-
 ## <a name="delete-a-record-set"></a>删除记录集
 
 可以通过使用 `Remove-AzDnsRecordSet` cmdlet 删除记录集。 删除记录集也会删除记录集内的所有记录。
@@ -354,29 +353,29 @@ Set-AzDnsRecordSet -RecordSet $rs
 
 以下示例说明如何删除记录集。 在此示例中，记录集名称、记录集类型、区域名称和资源组都进行了显式指定。
 
-```powershell
+```azurepowershell-interactive
 Remove-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-此外，也可通过名称和类型指定记录集，通过对象指定区域：
+相反，也可通过名称和类型指定记录集，通过对象指定区域：
 
-```powershell
+```azurepowershell-interactive
 $zone = Get-AzDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
 Remove-AzDnsRecordSet -Name "www" -RecordType A -Zone $zone
 ```
 
 第三个选项是通过记录集对象指定记录集本身：
 
-```powershell
+```azurepowershell-interactive
 $rs = Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 Remove-AzDnsRecordSet -RecordSet $rs
 ```
 
-使用记录集对象指定要删除的记录集时，可以通过 [Etag 检查](dns-zones-records.md#etags)确保不删除并发更改。 可以使用可选的 `-Overwrite` 开关取消这些检查。
+使用记录集对象指定要删除的记录集时，可通过 [Etag 检查](dns-zones-records.md#etags)确保不删除并发更改。 可以使用可选的 `-Overwrite` 开关取消这些检查。
 
 记录集对象也可以通过管道输送，而不是作为参数传递：
 
-```powershell
+```azurepowershell-interactive
 Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" | Remove-AzDnsRecordSet
 ```
 

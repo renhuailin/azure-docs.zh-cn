@@ -2,7 +2,6 @@
 title: 使用 REST API 分配 Azure 角色 - Azure RBAC
 description: 了解如何使用 REST API 和 Azure 基于角色的访问控制 (Azure RBAC) 为用户、组、服务主体或托管标识授予对 Azure 资源的访问权限。
 services: active-directory
-documentationcenter: na
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
@@ -10,14 +9,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/15/2021
+ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: d012173adb5e238282e107b832ed9c6895237e48
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3baf44a4240b23b41ce2e80dc22dbda4c7d0672a
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100556071"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363710"
 ---
 # <a name="assign-azure-roles-using-the-rest-api"></a>使用 REST API 分配 Azure 角色
 
@@ -109,6 +108,26 @@ PUT https://management.azure.com/subscriptions/{subscriptionId1}/providers/micro
     "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId1}",
     "type": "Microsoft.Authorization/roleAssignments",
     "name": "{roleAssignmentId1}"
+}
+```
+
+### <a name="new-service-principal"></a>新服务主体
+
+如果创建新服务主体并立即尝试将角色分配给该服务主体，则在某些情况下该角色分配可能会失败。 例如，如果你创建新的托管标识，然后尝试将角色分配给该服务主体，则角色分配可能会失败。 失败原因可能是复制延迟。 服务主体是在一个区域中创建的；但是，角色分配可能发生在尚未复制服务主体的其他区域中。
+
+若要解决这种情况，请使用[角色分配 - 创建](/rest/api/authorization/roleassignments/create) REST API，并将 `principalType` 属性设置为 `ServicePrincipal`。 此外，还必须将 `apiVersion` 设置为 `2018-09-01-preview` 或更高版本。
+
+```http
+PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}?api-version=2018-09-01-preview
+```
+
+```json
+{
+  "properties": {
+    "roleDefinitionId": "/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}",
+    "principalId": "{principalId}",
+    "principalType": "ServicePrincipal"
+  }
 }
 ```
 

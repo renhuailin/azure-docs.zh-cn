@@ -19,11 +19,11 @@
 - name: 教程
   items:
     - name: 部署和配置
-      href: tutorial-firewall-deploy-portal.md
+      href: tutorial-firewall-deploy-portal-policy.md
     - name: 在混合网络中部署
-      href: tutorial-hybrid-portal.md
+      href: tutorial-hybrid-portal-policy.md
     - name: 使用 DNAT 筛选入站流量
-      href: tutorial-firewall-dnat.md
+      href: tutorial-firewall-dnat-policy.md
 - name: 示例
   items:
     - name: Azure PowerShell
@@ -63,13 +63,21 @@
     - name: 网络规则中的 FQDN
       href: fqdn-filtering-network-rules.md
     - name: 安全基线
-      href: security-baseline.md
+      href: /security/benchmark/azure/baselines/firewall-security-baseline?toc=/azure/firewall/toc.json
     - name: 主动 FTP 支持
       href: active-ftp-support.md
 - name: 操作指南
   items:
+    - name: 部署和配置 - 经典
+      href: tutorial-firewall-deploy-portal.md
+    - name: 在混合网络中部署 - 经典
+      href: tutorial-hybrid-portal.md
+    - name: 使用 DNAT 筛选入站流量 - 经典
+      href: tutorial-firewall-dnat.md
     - name: 使用 Azure PowerShell 进行部署
       href: deploy-ps.md
+    - name: 使用 Azure PowerShell 部署策略
+      href: deploy-ps-policy.md
     - name: 在混合网络中部署 - PowerShell
       href: tutorial-hybrid-ps.md
     - name: 使用 Azure CLI 进行部署
@@ -103,10 +111,12 @@
       href: premium-deploy-certificates-enterprise-ca.md
     - name: 迁移到 Azure 防火墙高级版
       href: premium-migrate.md
+    - name: 缩放出站 SNAT 端口
+      href: integrate-with-nat-gateway.md
 - name: 参考
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/azure-firewall/network/firewall
+      href: /cli/azure/network/firewall
     - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewall
     - name: .NET

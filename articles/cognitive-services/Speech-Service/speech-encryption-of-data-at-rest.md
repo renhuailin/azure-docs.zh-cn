@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: aa0fe33dff0161767b74546aad49003d8fc70c16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e2f4cbdf7f84f7b6cbd749225a2e0f7ed60cdd5
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95015250"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202868"
 ---
 # <a name="speech-service-encryption-of-data-at-rest"></a>语音识别服务静态数据的加密
 
@@ -34,6 +34,8 @@ ms.locfileid: "95015250"
 默认情况下，你的数据存储在 Microsoft 的存储中，你的订阅使用 Microsoft 托管的加密密钥。 你还可以选择准备你自己的存储帐户。 对应用商店的访问是由托管标识管理的，语音识别服务无法直接访问你自己的数据，例如语音识别跟踪数据、自定义训练数据和自定义模型。
 
 有关托管标识的详细信息，请参阅[什么是托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
+
+同时，使用自定义命令时，可以使用自己的加密密钥来管理订阅。 客户管理的密钥 (CMK)（也称为创建自己的密钥，BYOK）在创建、轮换、禁用和撤销访问控制方面可提供更大的灵活性。 此外，你还可以审核用于保护数据的加密密钥。 有关自定义命令和 CMK 的详细信息，请参阅[静态数据的自定义命令加密](custom-commands-encryption-of-data-at-rest.md)。
 
 ## <a name="bring-your-own-storage-byos-for-customization-and-logging"></a>自带存储 (BYOS) 以进行自定义和日志记录
 

@@ -51,7 +51,7 @@
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/automation-security-baseline?toc=/azure/automation/TOC.json
     - name: 数据安全
       items:
         - name: 安全资产的加密
@@ -66,6 +66,14 @@
           href: automation-create-standalone-account.md
         - name: 使用资源管理器模板创建自动化帐户
           href: quickstart-create-automation-account-template.md
+        - name: 托管标识
+          items:
+            - name: 启用托管标识
+              href: enable-managed-identity-for-automation.md
+            - name: 禁用托管标识
+              href: disable-managed-identity-for-automation.md
+            - name: 排查托管标识问题
+              href: troubleshoot/managed-identity.md
         - name: 运行方式帐户
           items:
             - name: 创建运行方式帐户
@@ -86,6 +94,8 @@
           href: automation-role-based-access-control.md
         - name: 将自动化帐户移到另一个订阅
           href: how-to/move-account.md
+        - name: 删除自动化帐户
+          href: delete-account.md
         - name: 从 Orchestrator 迁移到 Azure 自动化 (Beta)
           href: automation-orchestrator-migration.md
     - name: 共享资源
@@ -114,7 +124,7 @@
           href: troubleshoot/shared-resources.md
     - name: 流程自动化
       items:
-        - name: 使用 PowerShell 库中的 Runbook 和模块
+        - name: 使用现有的 runbook 和模块
           href: automation-runbook-gallery.md
         - name: 了解 PowerShell 工作流
           href: automation-powershell-workflow.md
@@ -136,8 +146,6 @@
               href: start-runbooks.md
             - name: 从 Webhook 启动 Runbook
               href: automation-webhooks.md
-            - name: 通过观察程序任务跟踪更新的文件
-              href: automation-watchers-tutorial.md
             - name: 使用图形 Runbook SDK
               href: graphical-runbook-sdk.md
         - name: 监视 Runbook
@@ -184,6 +192,8 @@
               href: automation-dsc-compile.md
             - name: 修正不符合的状态配置服务器
               href: automation-dsc-remediate.md
+            - name: 删除节点和配置
+              href: state-configuration/remove-node-and-configuration-package.md
             - name: 使用 Chocolatey 设置持续部署
               href: automation-dsc-cd-chocolatey.md
             - name: 与 Azure Monitor 日志集成
@@ -312,7 +322,7 @@
               href: troubleshoot/update-agent-issues.md
             - name: 排查 Linux 更新代理问题
               href: troubleshoot/update-agent-issues-linux.md
-    - name: 跨组件方案
+    - name: 方案
       items:
         - name: 从 Runbook 发送电子邮件
           href: automation-send-email.md
@@ -320,6 +330,8 @@
           href: automation-alert-metric.md
         - name: 从 Azure 警报触发 Runbook
           href: automation-create-alert-triggered-runbook.md
+        - name: 通过观察程序任务跟踪更新的文件
+          href: automation-scenario-using-watcher-task.md
         - name: 管理 Office 365 服务
           href: manage-office-365.md
         - name: 使用自动化 Runbook 部署 AWS VM
@@ -332,6 +344,8 @@
           href: ../data-factory/how-to-schedule-azure-ssis-integration-runtime.md#create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir
 - name: 参考
   items:
+    - name: Azure CLI
+      href: /cli/azure/automation
     - name: Azure PowerShell Az
       href: /powershell/module/az.automation
     - name: Azure PowerShell AzureRM

@@ -13,12 +13,12 @@ ms.date: 03/29/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d2f4fca7f6b5fe7c6a894f4be3b27788799b422e
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 05426f6f9eb01fa5a23b6bb20a2b1c50b8720ab1
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108063984"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227715"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 标识平台和 OAuth 2.0 授权代码流
 
@@ -45,6 +45,8 @@ OAuth 2.0 授权代码授予可用于设备上所安装的应用，以访问受�
 `access to XMLHttpRequest at 'https://login.microsoftonline.com/common/v2.0/oauth2/token' from origin 'yourApp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.`
 
 然后访问应用注册，并更新应用的重定向 URI 以键入 `spa`。
+
+应用程序不能使用具有本机应用程序或客户端凭据流等非 SPA 流的 `spa` 重定向 URI。 为确保安全，如果尝试在这些情况下使用 `spa` 重定向 URI，例如，从一个不发送 `Origin` 标头的本机应用中使用该 URI，则 Azure AD 会返回错误。 
 
 ## <a name="request-an-authorization-code"></a>请求授权代码
 
@@ -73,14 +75,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant`    | 必需    | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
 | `client_id`   | 必填    | [Azure 门户 – 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验分配给你的应用的应用程序（客户端）ID。  |
 | `response_type` | 必填    | 必须包括授权代码流的 `code` 。 如果使用[混合流](#request-an-id-token-as-well-hybrid-flow)，则还可以包括 `id_token` 或 `token`。 |
-| `redirect_uri`  | 必需 | 应用的 redirect_uri，应用可向其发送及从其接收身份验证响应。 它必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 对于原生和移动应用，应使用任一推荐值：`https://login.microsoftonline.com/common/oauth2/nativeclient`（适用于使用嵌入式浏览器的应用）或 `http://localhost`（适用于使用系统浏览器的应用）。 |
+| `redirect_uri`  | 必需 | 应用的 redirect_uri，应用可向其发送及从其接收身份验证响应。 它必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 对于本机应用和移动应用，应使用推荐值之一 - `https://login.microsoftonline.com/common/oauth2/nativeclient`（适用于使用嵌入式浏览器的应用）或 `http://localhost`（适用于使用系统浏览器的应用）。 |
 | `scope`  | 必需    | 希望用户同意的[范围](v2-permissions-and-consent.md)的空格分隔列表。  对于请求的 `/authorize` 段，这可以涵盖多个资源，从而允许应用获得你要调用的多个 Web API 的同意。 |
 | `response_mode`   | 建议 | 指定将生成的令牌送回到应用程序时应该使用的方法。 可以是以下值之一：<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` 在重定向 URI 上提供代码作为查询字符串参数。 如果要使用隐式流请求 ID 令牌，则不能使用 [OpenID 规范](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)中指定的 `query`。如果只是请求代码，则可以使用 `query`、`fragment` 或 `form_post`。 `form_post` 对重定向 URI 执行包含代码的 POST。 |
 | `state`                 | 建议 | 同样随令牌响应返回的请求中所包含的值。 可以是想要的任何内容的字符串。 随机生成的唯一值通常用于 [防止跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 在发出身份验证请求出现之前，此值对有关用户在应用中的状态的信息（例如前面所在的页面或视图）进行编码。 |
 | `prompt`  | 可选    | 表示需要的用户交互类型。 此时唯一有效的值为 `login`、`none`、`consent` 和 `select_account`。<br/><br/>- `prompt=login` 将强制用户在该请求上输入其凭据，从而使单一登录无效。<br/>- `prompt=none` 则相反 - 它确保不对用户显示任何交互式提示。 如果无法在无提示的情况下通过单一登录完成请求，Microsoft 标识平台将返回 `interaction_required` 错误。<br/>- `prompt=consent` 在用户登录后将触发 OAuth 同意对话框，要求用户向应用授予权限。<br/>- `prompt=select_account` 将中断单一登录，提供帐户选择体验（列出所有帐户（会话中的帐户或任何记住的帐户），或提供用于选择使用其他帐户的选项）。<br/> |
 | `login_hint`  | 可选    | 如果事先知道用户名，可用于预先填充用户登录页的用户名/电子邮件地址字段。 通常，应用会在重新身份验证期间使用此参数，并且已经使用 `preferred_username` 声明从前次登录提取用户名。   |
 | `domain_hint`  | 可选    | 如果已包含在内，它将跳过用户在登录页面上经历的基于电子邮件的发现过程，从而实现更加流畅的用户体验，例如，将其发送给联合标识提供者。 通常，应用将在重新身份验证期间使用此参数，方法是从上次登录提取 `tid`。 如果 `tid` 声明值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，应该使用 `domain_hint=consumers`。 否则使用 `domain_hint=organizations`。  |
-| `code_challenge`  | 建议/必需 | 用于通过 Proof Key for Code Exchange (PKCE) 保护授权代码授权。 如果包含 `code_challenge_method`，则需要。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 目前建议用于所有应用程序类型（公共和机密客户端），Microsoft 标识平台则要求[使用授权代码流的单页应用](reference-third-party-cookies-spas.md)使用此参数。 |
+| `code_challenge`  | 建议/必需 | 用于通过 Proof Key for Code Exchange (PKCE) 保护授权代码授权。 如果包含 `code_challenge_method`，则需要。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 现在建议将此参数用于所有应用程序类型（公共客户端和机密客户端），并且 Microsoft 标识平台需要将此参数用于[使用授权代码流的单页应用](reference-third-party-cookies-spas.md)。 |
 | `code_challenge_method` | 建议/必需 | 用于为 `code_challenge` 参数编码 `code_verifier` 的方法。 它应该为 `S256`，但是如果客户端出于某种原因不能支持 SHA256，则该规范允许使用 `plain`。 <br/><br/>如果已排除在外，且包含了 `code_challenge`，则假定 `code_challenge` 为纯文本。 Microsoft 标识平台支持 `plain` 和 `S256`。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 这是[使用授权代码流的单页应用](reference-third-party-cookies-spas.md)所必需的。|
 
 
@@ -131,7 +133,7 @@ error=access_denied
 | `access_denied`  | 资源所有者拒绝了许可  | 客户端应用程序可以通知用户，除非用户许可，否则无法继续。 |
 | `unsupported_response_type` | 授权服务器不支持请求中的响应类型。 | 修复并重新提交请求。 这通常是在初始测试期间捕获的开发错误。 在[混合流](#request-an-id-token-as-well-hybrid-flow)中出现此错误表明你必须在客户端应用注册上启用 ID 令牌隐式授权设置。 |
 | `server_error`  | 服务器遇到意外的错误。| 重试请求。 这些错误可能是临时状况导致的。 客户端应用程序可能向用户说明，其响应由于临时错误而延迟。 |
-| `temporarily_unavailable`   | 服务器暂时繁忙，无法处理请求。 | 重试请求。 客户端应用程序可向用户说明，其响应由于临时状况而延迟。 |
+| `temporarily_unavailable`   | 服务器暂时繁忙，无法处理请求。 | 重试请求。 客户端应用程序可能向用户说明，其响应由于临时状况而延迟。 |
 | `invalid_resource`  | 目标资源无效，原因是它不存在，Azure AD 找不到它，或者未正确配置。 | 此错误表示未在租户中配置该资源（如果存在）。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。 |
 | `login_required` | 找到的用户太多或未找到任何用户 | 客户端请求了静默身份验证 (`prompt=none`)，但找不到单个用户。 这可能表示会话中有多个处于活动状态的用户或无用户。 此时会考虑所选的租户（例如，如果有 2 个处于活动状态的 AD 帐户和一个 Microsoft 帐户，并且已选择 `consumers`，则会执行静默身份验证）。 |
 | `interaction_required` | 请求需要用户交互。 | 需要额外的身份验证步骤或许可。 请在没有 `prompt=none` 的情况下重试请求。 |
@@ -162,9 +164,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 |`response_type`| 必须 | 添加 `id_token` 是向服务器表明：应用程序希望 `/authorize` 终结点的响应中有一个 ID 令牌。  |
 |`scope`| 必须 | 对于 ID 令牌，必须对其进行更新以包括 ID 令牌作用域 - `openid`，还可以包括 `profile` 和 `email`。 |
 |`nonce`| 必须|     包含在请求中的值，由应用生成，这些值将作为声明包含在生成的 id_token 中。 应用程序接着便可确认此值，以减少令牌重新执行攻击。 该值通常是随机的唯一字符串，可用于标识请求的来源。 |
-|`response_mode`| 建议 | 指定将生成的令牌送回到应用程序时应该使用的方法。 默认为 `query` 的目的是仅发送授权代码，但如果请求包括 id_token `response_type`，则为 `fragment`。  但建议应用使用 `form_post`，尤其是使用 `http:/localhost` 作为重定向 URI 时。 |
+|`response_mode`| 建议 | 指定将生成的令牌送回到应用程序时应该使用的方法。 默认为 `query` 的目的是仅发送授权代码，但如果请求包括 id_token `response_type`，则为 `fragment`。  但是，建议应用使用 `form_post`，尤其是使用 `http:/localhost` 作为重定向 URI 时。 |
 
-使用 `fragment` 作为响应模式会导致从重定向读取代码的 Web 应用出现问题，因为浏览器不会将片段传递给 Web 服务器。  在这些情况下，应用应使用 `form_post` 响应模式，确保将所有数据发送到服务器。 
+使用 `fragment` 作为响应模式可能会导致从重定向读取代码的 Web 应用出现问题，因为浏览器不会将片段传递给 Web 服务器。  在这些情况下，应用应该使用 `form_post` 响应模式，以确保将所有数据发送到服务器。 
 
 #### <a name="successful-response"></a>成功的响应
 

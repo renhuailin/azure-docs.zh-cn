@@ -1,0 +1,51 @@
+### YamlMime:Landing
+title: Azure Active Directory 配置为标准的文档
+summary: 借助 Azure 和 Azure Active Directory，你可以利用其合规性认证并配置环境以满足政府和行业标准。
+metadata:
+  title: Azure Active Directory 配置为标准的文档
+  description: 了解如何配置 Azure 和 Azure Active Directory 以满足政府和行业标准。
+  manager: mtillman
+  ms.author: baselden
+  ms.collection: na
+  ms.date: 04/26/2021
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: 765473f21c1572bd9b25fc7fca67e9eb0508d63d
+  ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 04/30/2021
+  ms.locfileid: "108293565"
+landingContent:
+- title: 标准概述
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 配置为标识标准
+      url: standards-overview.md
+    - text: NIST AAL 概述
+      url: nist-overview.md
+    - text: FedRAMP High 影响概述
+      url: configure-azure-active-directory-for-fedramp-high-impact.md
+- title: 配置 NIST AAL
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 实现 NIST AAL 1
+      url: nist-authenticator-assurance-level-1.md
+    - text: 实现 NIST AAL 2
+      url: nist-authenticator-assurance-level-2.md
+    - text: 实现 NIST AAL 3
+      url: nist-authenticator-assurance-level-3.md
+- title: 配置 FedRAMP 控件
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 配置访问控制
+      url: fedramp-access-controls.md
+    - text: 配置标识和身份验证控件
+      url: fedramp-identification-and-authentication-controls.md
+    - text: 配置其他控件
+      url: fedramp-other-controls.md

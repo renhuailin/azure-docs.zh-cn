@@ -10,21 +10,21 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cd0febe5ffbc1b17718043d5fc97b804f87cc46
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e436427a790a3c4ebdbbedb4570c399966ab8c95
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199727"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317858"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B 协作邀请兑换
 
 本文介绍来宾用户可以访问资源以及所遇到的同意过程的方式。 如果向来宾发送邀请电子邮件，邀请会附有一个链接，来宾可以兑换该链接来访问应用或门户。 邀请电子邮件只是来宾可以访问资源的其中一种方式。 或者，可以将来宾添加到目录并为其提供指向要共享的门户或应用的直接链接。 无论他们使用哪种方法，都会指导来宾完成首次同意过程。 此过程可确保来宾同意隐私条款，并接受已设置的任何[使用条款](../conditional-access/terms-of-use.md)。
 
-将来宾用户添加到目录时，来宾用户帐户的同意状态（可在 PowerShell 中查看）最初设置为“PendingAcceptance”。 在来宾接受邀请并同意隐私策略和使用条款之前，此设置一直保留。 之后，同意状态将更改为“已接受”，并且不再向来宾显示同意页面。
+将来宾用户添加到目录时，来宾用户帐户的同意状态（可在 PowerShell 中查看）最初设置为“PendingAcceptance”。 在来宾接受邀请并同意隐私策略和使用条款之前，此设置一直保留。 此后，同意状态会更改为“已接受”，且不再向来宾显示同意页。
 
    > [!IMPORTANT]
-   > - 从 2021 年 1 月 4 日开始，Google 将[弃用 WebView 登录支持](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)。 如果要通过 Gmail 使用 Google 联合身份验证或自助服务注册，则应[测试业务线本机应用程序的兼容性](google-federation.md#deprecation-of-webview-sign-in-support)。
+   > - 从 2021 年下半年开始，Google 将[弃用 Web 视图登录支持](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 如果正在对 B2B 邀请或 [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 使用 Google 联合身份验证，或者正在将自助注册与 Gmail 一起使用，那么当你的应用通过嵌入的 Web 视图对用户进行身份验证时，Google Gmail 用户将无法登录。 [了解详细信息](google-federation.md#deprecation-of-web-view-sign-in-support)。
    > - 从 2021 年 10 月起，Microsoft 将不再支持兑换通过创建用于 B2B 协作方案的非托管 Azure AD 帐户和租户进行的邀请。 在准备期间，我们鼓励客户选择参与[电子邮件一次性密码身份验证](one-time-passcode.md)。 我们欢迎你提供有关此公共预览版功能的反馈，并且很乐意创建更多的协作方式。
 
 ## <a name="redemption-and-sign-in-through-a-common-endpoint"></a>通过常用终结点进行的兑换和登录

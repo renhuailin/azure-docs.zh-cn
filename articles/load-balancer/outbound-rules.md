@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 6b73eb51831238f23400ef60d0a6162bca38ea85
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: MT
+ms.openlocfilehash: 339bbd7edf48737113de360812165dc8148c5b93
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033147"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375859"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>使用 Azure 负载均衡器配置出站规则
 
@@ -36,11 +36,11 @@ ms.locfileid: "97033147"
 使用出站规则可以控制：
 
 * **哪些虚拟机应转换为哪些公共 IP 地址。**
-     * 有两个规则，后端池 A 使用 IP 地址 A 和 B，后端池 B 使用 IP 地址 C 和 D。
+     * 两个规则分别是后端池 1 使用蓝色 IP 地址 1 和 2，后端池 2 使用黄色 IP 前缀。
 * **如何分配出站 SNAT 端口。**
-     * 后端池 B 是唯一建立出站连接的池，将所有 SNAT 端口提供给后端池 B，而无 SNAT 端口提供给后端池 A。
+     * 如果后端池 2 是唯一建立出站连接的池，则将所有 SNAT 端口提供给后端池 2，而不向后端池 1 提供任何 SNAT 端口。
 * **要为哪些协议提供出站转换。**
-     * 后端池 B 需要 UDP 端口才能建立出站连接。 后端池 A 需要 TCP。 把 TCP 端口提供给 A，把 UDP 端口提供给 B。
+     * 如果后端池 2 需要 UDP 端口用于出站，且后端池 1 需要 TCP，则将 TCP 端口提供给 1，将 UDP 端口提供给 2。
 * **用于出站连接空闲超时的持续时间（4-120 分钟）。**
      * 如果有长时间运行的带有 keepalives 的连接，请为长时间运行的连接保留空闲端口，空闲时间最长可达 120 分钟。 假设放弃过时连接，并在 4 分钟内为新连接释放端口 
 * **是否要在空闲超时时发送 TCP 重置。**
@@ -135,7 +135,7 @@ ms.locfileid: "97033147"
 5. 在公共负载均衡器上配置出站规则，以使用前端为这些 VM 启用出站 NAT。 不建议将负载均衡规则用于出站连接，请在负载均衡规则中禁用出站 SNAT。
 
 
-### <a name="scenario-2-modify-snatport-allocation"></a><a name="scenario2out"></a>场景 2：修改 [SNAT](load-balancer-outbound-connections.md) 端口分配
+### <a name="scenario-2-modify-snat-port-allocation"></a><a name="scenario2out"></a>场景 2：修改 [SNAT](load-balancer-outbound-connections.md) 端口分配
 
 
 #### <a name="details"></a>详细信息

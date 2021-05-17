@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.openlocfilehash: f2a04a341239b62290eecac8c0e1ce70b7c927c1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99988906"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>将应用发布到 Azure AD 应用库
@@ -44,7 +44,7 @@ ms.locfileid: "99988906"
 - 提高适销性和易采用性。 许多大型组织要求（或者热切希望）其员工在所有应用程序中获得无缝的 SSO 体验。 简化 SSO 非常重要。
 - 减少最终用户遇到的难题，这可以增加最终用户对应用程序的使用，并可提高收入。
 - 使用跨域身份管理系统 ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) 的客户可对同一应用使用预配。
-- 提高了安全性和便利性：用户可以使用 Azure AD SSO 登录到应用程序，而不需要提供单独的凭据。
+- 通过使用 Azure AD SSO 而不需要单独的凭据，提高了用户登录应用程序时的安全性和便利性。
 
 > [!TIP]
 > 让其他公司通过购买或订阅使用你的应用程序时，你的应用程序可供这些公司自己的 Azure 租户内部的客户使用。 这称为创建多租户应用程序。 有关此概念的概述，请参阅 [Azure 中的多租户应用程序](../../dotnet-develop-multitenant-applications.md)和 [Azure Active Directory 中的租户](single-and-multi-tenant-apps.md)。
@@ -291,7 +291,7 @@ Azure AD 提供了[参考代码](https://aka.ms/scimoverview)来帮助你生成 
 
 客户可以选择“按客户提交应用请求” > “提交新请求”来提交列出应用程序的请求 。
 
-![显示“按客户显示的应用请求”磁贴](./media/howto-app-gallery-listing/customer-submit-request.png)
+![显示客户请求的应用磁贴](./media/howto-app-gallery-listing/customer-submit-request.png)
 
 下面是客户请求的应用程序的流。
 

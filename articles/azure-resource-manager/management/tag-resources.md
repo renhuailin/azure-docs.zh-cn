@@ -3,13 +3,13 @@ title: 标记资源、资源组和订阅以便对其进行逻辑组织
 description: 演示如何应用标记来组织 Azure 资源进行计费和管理。
 ms.topic: conceptual
 ms.date: 01/04/2021
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: fb93673b643fd13efe9ffea148c5fb1d072f9e05
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 0ee2274dcd13af0bcbfe342039681ecc7b949a7b
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896217"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330956"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>使用标记对 Azure 资源和管理层次结构进行组织
 
@@ -440,10 +440,10 @@ az tag update --resource-id $group --operation Merge --tags "Cost Center"=Financ
 
 ## <a name="arm-templates"></a>ARM 模板
 
-可以在部署期间使用 Azure 资源管理器模板 (ARM 模板) 标记资源、资源组和订阅。
+可以在使用 Azure 资源管理器模板（ARM 模板）进行部署期间标记资源、资源组和订阅。
 
 > [!NOTE]
-> 通过 ARM 模板应用的标记将覆盖任何现有标记。
+> 通过 ARM 模板应用的标记会覆盖任何现有标记。
 
 ### <a name="apply-values"></a>应用值
 
@@ -695,9 +695,9 @@ az deployment sub create --name tagresourcegroup --location westus2 --template-u
 
 ## <a name="tags-and-billing"></a>标记和计费
 
-可使用标记对计费数据进行分组。 例如，如果针对不同组织运行多个 VM，可以使用标记根据成本中心对使用情况进行分组。 还可使用标记根据运行时环境（例如，在生产环境中运行的 VM 的计费使用情况）对成本进行分类。
+可使用标记对计费数据进行分组。 例如，如果针对不同组织运行多个 VM，可以使用标记根据成本中心对使用情况进行分组。 还可使用标记根据运行时环境对成本进行分类；例如，在生产环境中运行的虚拟机的计费使用情况。
 
-你可以通过下载使用情况文件来检索有关标记的信息，这是一个以逗号分隔的值， (Azure 门户提供的 CSV) 文件。 有关详细信息，请参阅[下载或查看 Azure 帐单发票和每日使用数据](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)。 从 Azure 帐户中心下载使用情况文件时，选择 **版本 2**。 对于支持为账单提供标记的服务，标记会显示在“标记”列中。
+你可以下载使用情况文件来检索有关标记的信息，该文件是一个逗号分隔值 (CSV) 文件，可从 Azure 门户获取。 有关详细信息，请参阅[下载或查看 Azure 帐单发票和每日使用数据](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)。 从 Azure 帐户中心下载使用情况文件时，选择 **版本 2**。 对于支持为账单提供标记的服务，标记会显示在“标记”列中。
 
 有关 REST API 操作，请参阅 [Azure 计费 REST API 参考](/rest/api/billing/)。
 
@@ -712,11 +712,11 @@ az deployment sub create --name tagresourcegroup --location westus2 --template-u
 * 标记名称不能包含以下字符：`<`、`>`、`%`、`&`、`\`、`?`、`/`
 
    > [!NOTE]
-   > 目前，Azure DNS 区域和流量管理器服务也不允许在标记中使用空格。
+   > * Azure DNS 区域和流量管理器不支持在标记中使用空格，也不支持以数字开头的标记。
    >
-   > Azure Front Door 不支持在标记名称中使用 `#`。
+   > * Azure Front Door 不支持在标记名称中使用 `#`。
    >
-   > Azure 自动化和 Azure CDN 仅支持资源上的 15 个标记。
+   > * Azure 自动化和 Azure CDN 仅支持资源上的 15 个标记。
 
 ## <a name="next-steps"></a>后续步骤
 

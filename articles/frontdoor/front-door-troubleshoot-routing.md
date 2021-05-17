@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 09/30/2020
 ms.author: duau
 ms.openlocfilehash: 15cdcefe628a392704e650b560243e2f6a134ec2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94629982"
 ---
 # <a name="troubleshooting-common-routing-problems"></a>排查常见的路由问题
@@ -40,7 +40,7 @@ ms.locfileid: "94629982"
 ### <a name="troubleshooting-steps"></a>疑难解答步骤
 
 * 直接向后端发送请求（无需通过 Azure Front Door）。 查看后端通常需要多久才能响应。
-* 通过 Azure Front Door 发送请求，查看是否会收到任何 503 响应。 如果没有，则问题可能与超时无关。 请联系支持人员。
+* 通过 Azure Front Door 发送请求，查看是否会收到任何 503 响应。 如果没有，则问题可能与超时无关。 联系支持人员。
 * 如果通过 Azure Front Door 发送请求出现 503 错误响应代码，请为 Azure Front Door 配置 `sendReceiveTimeout` 字段。 可以将默认超时延长到 4 分钟（240 秒）。 此设置为 `backendPoolSettings` 下面的 `sendRecvTimeoutSeconds`。 
 
 ## <a name="requests-sent-to-the-custom-domain-return-a-400-status-code"></a>发送到自定义域的请求返回 400 状态代码
@@ -91,7 +91,7 @@ Azure Front Door 具有将 HTTP 重定向到 HTTPS 的路由规则，但访问�
    * 请务必等待至少 10 分钟来部署配置。
 
 * 检查后端设置：
-    * 转到应将请求路由到的后端池。 （具体取决于路由规则的配置方式。）验证后端主机类型和主机名是否正确。 如果后端是自定义主机，请确保拼写正确。 
+    * 转到应将请求路由到的后端池。 （这取决于你如何配置路由规则。）请确认后端主机类型和后端主机名正确无误。 如果后端是自定义主机，请确保拼写正确。 
 
     * 检查 HTTP 和 HTTPS 端口。 在大多数情况下，80 和 443（分别为 HTTP 和 HTTPS 端口）是正确的，无需更改。 但是，你的后端可能并未采用这种配置，而是侦听另一个端口。
 

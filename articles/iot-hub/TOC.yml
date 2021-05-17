@@ -84,8 +84,26 @@
       href: tutorial-firmware-update.md
     - name: 测试设备连接性
       href: tutorial-connectivity.md
+    - name: 使用 X.509 证书
+      items:
+        - name: 简介
+          href: tutorial-x509-introduction.md
+        - name: 证书字段
+          href: tutorial-x509-certificates.md
+        - name: 使用提供的脚本
+          href: tutorial-x509-scripts.md
+        - name: 使用 OpenSSL
+          href: tutorial-x509-openssl.md
+        - name: 创建自签名证书
+          href: tutorial-x509-self-sign.md
+        - name: 证明所有权
+          href: tutorial-x509-prove-possession.md
+        - name: 测试身份验证
+          href: tutorial-x509-test-certificate.md
 - name: 概念
   items:
+    - name: 托管标识支持
+      href: iot-hub-managed-identity.md
     - name: TLS 支持
       href: iot-hub-tls-support.md
     - name: 虚拟网络支持
@@ -146,7 +164,13 @@
         - name: 管理设备标识
           href: iot-hub-devguide-identity-registry.md
         - name: 控制 IoT 中心的访问权限
-          href: iot-hub-devguide-security.md
+          items:
+            - name: 概述
+              href: iot-hub-devguide-security.md
+            - name: 使用 Azure AD 控制访问
+              href: iot-hub-dev-guide-azure-ad-rbac.md
+            - name: 使用 SAS 控制访问
+              href: iot-hub-dev-guide-sas.md
         - name: 了解设备孪生
           href: iot-hub-devguide-device-twins.md
         - name: 了解模块孪生
@@ -175,12 +199,10 @@
               href: iot-hub-mqtt-5-reference.md
         - name: AMQP 支持
           href: iot-hub-amqp-support.md
-        - name: 术语表
-          href: iot-hub-devguide-glossary.md
     - name: 安全性
       items:
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/iot-hub-security-baseline?toc=/azure/iot-hub/TOC.json
         - name: 建议
           href: ../iot-fundamentals/security-recommendations.md?context=%2fazure%2fiot-hub%2frc%2frc
         - name: 安全基础知识
@@ -321,8 +343,6 @@
               href: iot-hub-configure-file-upload-powershell.md
             - name: 使用 Azure CLI
               href: iot-hub-configure-file-upload-cli.md
-        - name: 使用 X.509 证书来保护中心
-          href: iot-hub-security-x509-get-started.md
         - name: 升级 IoT 中心
           href: iot-hub-upgrade.md
         - name: 配置 IP 筛选
@@ -382,26 +402,26 @@
               href: iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md
             - name: 使用 Azure Functions 监视磁传感器并发送电子邮件通知
               href: iot-hub-arduino-iot-devkit-az3166-door-monitor.md
-        - name: 扩展的 IoT 方案
-          items:
-            - name: 使用用于 VS Code 的 Azure IoT Tools 管理云设备消息传送
-              href: iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
-            - name: 使用用于 Visual Studio 的 Cloud Explorer 管理云设备消息传送
-              href: iot-hub-visual-studio-cloud-device-messaging.md
-            - name: Power BI 中的数据可视化
-              href: iot-hub-live-data-visualization-in-power-bi.md
-            - name: Web 应用中的数据可视化
-              href: iot-hub-live-data-visualization-in-web-apps.md
-            - name: 使用 Azure 机器学习预测天气
-              href: iot-hub-weather-forecast-machine-learning.md
-            - name: 使用用于 VS Code 的 Azure IoT Tools 进行设备管理
-              href: iot-hub-device-management-iot-toolkit.md
-            - name: 使用用于 Visual Studio 的 Cloud Explorer 进行设备管理
-              href: iot-hub-device-management-visual-studio.md
-            - name: 使用适用于 Azure CLI 的 IoT 扩展进行设备管理
-              href: iot-hub-device-management-iot-extension-azure-cli-2-0.md
-            - name: 使用逻辑应用执行远程监视和发送通知
-              href: iot-hub-monitoring-notifications-with-azure-logic-apps.md
+    - name: 扩展的 IoT 方案
+      items:
+        - name: 使用用于 VS Code 的 Azure IoT Tools 管理云设备消息传送
+          href: iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
+        - name: 使用用于 Visual Studio 的 Cloud Explorer 管理云设备消息传送
+          href: iot-hub-visual-studio-cloud-device-messaging.md
+        - name: Power BI 中的数据可视化
+          href: iot-hub-live-data-visualization-in-power-bi.md
+        - name: Web 应用中的数据可视化
+          href: iot-hub-live-data-visualization-in-web-apps.md
+        - name: 使用 Azure 机器学习预测天气
+          href: iot-hub-weather-forecast-machine-learning.md
+        - name: 使用用于 VS Code 的 Azure IoT Tools 进行设备管理
+          href: iot-hub-device-management-iot-toolkit.md
+        - name: 使用用于 Visual Studio 的 Cloud Explorer 进行设备管理
+          href: iot-hub-device-management-visual-studio.md
+        - name: 使用适用于 Azure CLI 的 IoT 扩展进行设备管理
+          href: iot-hub-device-management-iot-extension-azure-cli-2-0.md
+        - name: 使用逻辑应用执行远程监视和发送通知
+          href: iot-hub-monitoring-notifications-with-azure-logic-apps.md
     - name: 故障排除和问题解决方案
       items:
         - name: 设备断开连接
@@ -496,7 +516,9 @@
 - name: 资源
   items:
     - name: 支持和帮助选项
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-hub/toc.json&bc=/azure/iot-hub/breadcrumb/toc.json
+    - name: IoT 术语表
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-hub/toc.json&bc=/azure/iot-hub/breadcrumb/toc.json
     - name: Azure IoT 服务
       items:
         - name: IoT 中心
@@ -533,8 +555,8 @@
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
         - name: iOS 平台
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
-    - name: Azure IoT 已认证设备目录
-      href: 'https://catalog.azureiotsolutions.com/'
+    - name: Azure 认证设备目录
+      href: 'https://devicecatalog.azure.com/'
     - name: Azure IoT 开发人员中心
       href: 'https://azure.microsoft.com/develop/iot/'
     - name: 客户数据请求

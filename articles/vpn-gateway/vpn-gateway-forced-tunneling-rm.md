@@ -1,6 +1,6 @@
 ---
 title: 为站点到站点连接配置强制隧道
-description: 如何将所有 Internet 绑定的流量重定向（强制）回到本地位置。
+description: 了解如何将所有 Internet 绑定的流量重定向（强制）回到本地位置。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: afd1c1d5312a9fbf39b401b0cbb4b9997f27407a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c53a59279a8101f29cb9bfb64f4ccd1b4921283e
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869032"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205442"
 ---
 # <a name="configure-forced-tunneling"></a>配置强制隧道
 

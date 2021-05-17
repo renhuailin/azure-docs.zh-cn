@@ -4,14 +4,15 @@ description: 本文概述了 Azure 自动化帐户身份验证。
 keywords: 自动化安全性, 安全的自动化; 自动化身份验证
 services: automation
 ms.subservice: process-automation
-ms.date: 04/14/2021
+ms.date: 04/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 09aab71513b1152924de4eae91a718bad23d1012
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 33402eb41ed9c22cf38890229d833cd2ab00d65d
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107517995"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279507"
 ---
 # <a name="azure-automation-account-authentication-overview"></a>Azure 自动化帐户身份验证概述
 
@@ -33,7 +34,7 @@ Azure 自动化帐户不同于 Microsoft 帐户或在 Azure 订阅中创建的�
 
 ## <a name="managed-identities-preview"></a>托管标识（预览）
 
-借助 Azure Active Directory (Azure AD) 的托管标识，runbook 可以轻松访问其他受 Azure AD 保护的资源。 标识由 Azure 平台托管，无需设置或转交任何机密。 有关 Azure AD 中的托管标识的详细信息，请参阅 [Azure 资源的托管标识](/azure/active-directory/managed-identities-azure-resources/overview)。
+借助 Azure Active Directory (Azure AD) 的托管标识，runbook 可以轻松访问其他受 Azure AD 保护的资源。 标识由 Azure 平台托管，无需设置或转交任何机密。 有关 Azure AD 中的托管标识的详细信息，请参阅 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
 
 下面是使用托管标识的一些好处：
 
@@ -68,7 +69,10 @@ Azure 自动化中的运行方式帐户提供的身份验证适用于管理 Azur
 >[!NOTE]
 >Azure 云解决方案提供商 (CSP) 订阅仅支持 Azure 资源管理器模型。 非 Azure 资源管理器服务在计划中不可用。 使用 CSP 订阅时，不会创建 Azure 经典运行方式帐户，但会创建 Azure 运行方式帐户。 若要了解有关 CSP 订阅的详细信息，请参阅 [CSP 订阅中可用的服务](/azure/cloud-solution-provider/overview/azure-csp-available-services)。
 
-默认情况下，创建 Azure 自动化帐户时，会同时创建运行方式帐户。 如果选择不与 Azure 自动化帐户一起创建运行方式帐户，则可以稍后单独创建它。 Azure 经典运行方式帐户是可选的，如果需要管理经典资源，则可以单独创建。
+默认情况下，创建 Azure 自动化帐户时，会同时使用自签名证书创建运行方式帐户。 如果选择不与 Azure 自动化帐户一起创建运行方式帐户，则可以稍后单独创建它。 Azure 经典运行方式帐户是可选的，如果需要管理经典资源，则可以单独创建。
+
+如果要使用企业或第三方证书颁发机构 (CA) 颁发的证书代替默认的自签名证书，可对运行方式帐户和经典运行方式帐户使用[用于创建运行方式帐户的 PowerShell 脚本](create-run-as-account.md#powershell-script-to-create-a-run-as-account)选项。
+
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RWwtF3]
 
@@ -145,4 +149,4 @@ Azure 自动化中的运行方式帐户提供的身份验证适用于管理 Azur
 * 若要从 Azure 门户创建自动化帐户，请参阅[创建独立的 Azure 自动化帐户](automation-create-standalone-account.md)。
 * 如果你喜欢使用模板创建帐户，请参阅[使用 Azure 资源管理器模板创建自动化帐户](quickstart-create-automation-account-template.md)。
 * 有关如何使用 Amazon Web Services 进行身份验证，请参阅[使用 Amazon Web Services 对 Runbook 进行身份验证](automation-config-aws-account.md)。
-* 如需支持 Azure 资源托管标识功能的 Azure 服务的列表，请参阅[支持 Azure 资源托管标识的服务](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)。
+* 如需支持 Azure 资源托管标识功能的 Azure 服务的列表，请参阅[支持 Azure 资源托管标识的服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)。

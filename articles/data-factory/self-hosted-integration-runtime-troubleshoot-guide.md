@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 01/25/2021
 ms.author: lle
 ms.openlocfilehash: 2cb0e0870b32270340e37d54dc54a43b22ee014a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100376456"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>排查自承载集成运行时问题
@@ -21,34 +21,34 @@ ms.locfileid: "100376456"
 
 ## <a name="gather-self-hosted-ir-logs-from-azure-data-factory"></a>从 Azure 数据工厂收集自承载 IR 日志
 
-对于在自承载 IR 或共享 IR 上运行的失败活动，Azure 数据工厂支持查看和上载错误日志。 若要获取错误报告 ID，请按照此处的说明操作，然后输入报表 ID 以搜索相关的已知问题。
+对于在自承载 IR 或共享 IR 上运行的失败活动，Azure 数据工厂支持查看和上传错误日志。 要获取错误报表 ID，请按照此处的说明操作，然后输入报表 ID 以搜索相关的已知问题。
 
-1. 在数据工厂中，选择 " **管道运行**"。
+1. 在数据工厂中，选择“管道运行”。
 
-1. 在 " **活动运行**" 下的 " **错误** " 列中，选择突出显示的按钮以显示活动日志，如以下屏幕截图所示：
+1. 在“活动运行”下的“错误”列中，选择突出显示的按钮以显示活动日志，如以下屏幕截图所示：
 
-    !["所有管道运行" 窗格上的 "活动运行" 部分的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page.png)
+    ![“所有管道运行”窗格上的“活动运行”部分的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page.png)
 
     将显示失败的活动运行的活动日志。
 
     ![失败活动的活动日志的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/send-logs.png) 
     
-1. 要获得进一步的帮助，请选择 " **发送日志**"。
+1. 要获得进一步的帮助，请选择“发送日志”。
  
-   " **共享自承载集成运行时" ("带有 Microsoft 的 IR) 日志** " 窗口打开。
+   将打开“与 Microsoft 共享自承载集成运行时 (IR) 日志”窗口。
 
-    !["与 Microsoft 共享自承载集成运行时 (IR) 日志" 窗口的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/choose-logs.png)
+    ![“与 Microsoft 共享自承载集成运行时 (IR) 日志”窗口的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/choose-logs.png)
 
 1. 选择要发送的日志。 
-    * 对于 *自承载 ir*，你可以上载与失败的活动相关的日志或自承载 ir 节点上的所有日志。 
-    * 对于 *共享 IR*，只能上载与失败的活动相关的日志。
+    * 对于“自承载 IR”，你可以上传与失败的活动相关的日志或自承载 IR 节点上的所有日志。 
+    * 对于“共享 IR”，只能上传与失败的活动相关的日志。
 
-1. 当上传日志时，如果需要进一步的帮助来解决问题，请保留报表 ID 的记录供以后使用。
+1. 上传日志时，如果需要进一步的帮助以解决问题，请保留报表 ID 的记录供以后使用。
 
-    ![红外日志的 "上载进度" 窗口中显示的报表 ID 的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/upload-logs.png)
+    ![IR 日志的上传进度窗口中显示的报表 ID 的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/upload-logs.png)
 
 > [!NOTE]
-> 日志查看和上载请求在所有联机的自承载 IR 实例上执行。 如果缺少任何日志，请确保所有自承载 IR 实例都处于联机状态。 
+> 日志查看和上传请求在所有联机自承载 IR 实例上执行。 如果缺少任何日志，请确保所有自承载 IR 实例都处于联机状态。 
 
 
 ## <a name="self-hosted-ir-general-failure-or-error"></a>自承载 IR 一般性故障或错误
@@ -243,7 +243,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
  
 如果流量无法通过网络在两个数据存储间传递（例如是在两个虚拟网络中配置的这两个数据存储），即使安装了 IR，也不能在一个活动中完成复制。 如果无法在一个活动中完成复制，可以使用两个 IR 创建两个复制活动，分别位于一个 VENT 中： 
 * 将一个 IR 从数据存储 1 复制到 Azure Blob 存储
-* 将另一个 IR 从 Azure Blob 存储复制到数据存储2。 
+* 将另一个 IR 从 Azure Blob 存储复制到数据存储 2。 
 
 此解决方案可以模拟以下要求：使用 IR 创建一个网桥来连接两个已断开连接的数据存储。
 
@@ -350,7 +350,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
     
         ![服务帐户的“登录”窗格的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
 
-    1. 检查以确定登录服务帐户是否具有启动 Windows 服务的 **"作为服务登录** " 权限：
+    1. 检查登录服务帐户是否具有用于启动 Windows 服务的“以服务形式登录”权限：
 
         ![“以服务形式登录”属性窗格的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/logon-as-service.png)
 
@@ -471,9 +471,9 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 
 对于 Azure 数据工厂 v1 客户：
-- 自承载集成运行时6.x 不支持 Azure 数据工厂 v1。
-- 自承载集成运行时将自动升级到最新版本的4.x。 最新版本的4.x 不会过期。 
-- 如果尝试手动安装自承载集成运行时1.x 并注册密钥，则会通知你自承载集成运行时的版本 5. x 不支持 Azure 数据工厂 v1。
+- 自承载集成运行时 5.X 不支持 Azure 数据工厂 v1。
+- 自承载集成运行时将自动升级到最新版本 4.x。 并且最新版本 4.x 不会过期。 
+- 如果尝试手动安装自承载集成运行时 5.x 并注册密钥，将收到自承载集成运行时 5.x 不支持 Azure 数据工厂 v1 的通知。
 
 
 ## <a name="self-hosted-ir-connectivity-issues"></a>自承载 IR 连接问题
@@ -543,7 +543,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 > [!NOTE] 
 > 代理注意事项：
 > * 检查是否需要将代理服务器放在“安全接收方”列表中。 如果需要，请确保[这些域](./data-movement-security-considerations.md#firewall-requirements-for-on-premisesprivate-network)在“安全接收方”列表中。
-> * 查看是否信任代理服务器上的 SSL/TLS 证书 "wu2.frontend.clouddatahub.net/"。
+> * 检查 SSL/TLS 证书“wu2.frontend.clouddatahub.net/”在代理服务器上是否受信任。
 > * 如果在代理上使用 Active Directory 身份验证，请将服务帐户更改为可作为“Integration Runtime 服务”访问该代理的用户帐户。
 
 ### <a name="error-message-self-hosted-integration-runtime-nodelogical-self-hosted-ir-is-in-inactive-running-limited-state"></a>错误消息：自承载集成运行时节点/逻辑自承载 IR 处于“非活动”/“正在运行(受限)”状态
@@ -577,7 +577,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
    telnet 10.2.4.10 8060
    ```
    
-1. 如果收到以下屏幕截图中显示的命令行错误“无法打开与主机的连接”，请联系 IT 部门帮忙修复此问题。 成功 telnet 后，如果仍然遇到 integration runtime 节点状态问题，请联系 Microsoft 支持部门。
+1. 如果收到以下屏幕截图中显示的命令行错误“无法打开与主机的连接”，请联系 IT 部门帮忙修复此问题。 能成功通过 telnet 连接后，如果集成运行时节点状态仍然存在问题，请联系 Microsoft 支持部门。
         
    ![“无法打开与主机的连接”命令行错误的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/command-line-error.png)
         
@@ -772,11 +772,11 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 有关在 Windows 上信任证书的详细信息，请参阅[安装受信任的根证书](/skype-sdk/sdn/articles/installing-the-trusted-root-certificate)。
 
 #### <a name="additional-information"></a>其他信息
-我们推出了一个新的 SSL 证书，该证书已从 DigiCert 进行签名。 检查以查看 DigiCert 全局根 G2 是否在受信任的根 CA 中。
+我们推出了一个新的 SSL 证书，该证书从 DigiCert 签名。 查看 DigiCert 全局根 G2 是否在受信任的根 CA 中。
 
-  ![显示 "受信任的根证书颁发机构" 目录中的 DigiCert 全局根 G2 文件夹的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/trusted-root-ca-check.png)
+  ![显示“受信任的根证书颁发机构”目录中的“DigiCert 全局根 G2”文件夹的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/trusted-root-ca-check.png)
 
-如果此证书不在受信任的根 CA 中，请在 [此处下载](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt )。 
+如果此证书不在受信任的根 CA 中，请在[此处下载](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt )。 
 
 
 ## <a name="self-hosted-ir-sharing"></a>自承载 IR 共享
@@ -798,7 +798,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 *  [数据工厂博客](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [数据工厂功能请求](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure 视频](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [Microsoft Q&页面](/answers/topics/azure-data-factory.html)
+*  [Microsoft Q&A 页](/answers/topics/azure-data-factory.html)
 *  [数据工厂 Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-data-factory)
-*  [关于数据工厂的 Twitter 信息](https://twitter.com/hashtag/DataFactory)
+*  [Twitter 中有关数据工厂的信息](https://twitter.com/hashtag/DataFactory)
 *  [映射数据流性能指南](concepts-data-flow-performance.md)

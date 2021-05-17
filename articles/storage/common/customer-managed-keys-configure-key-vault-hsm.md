@@ -1,24 +1,24 @@
 ---
-title: 使用 Azure Key Vault 管理的 HSM（预览版）中存储的客户管理的密钥配置加密
+title: 使用 Azure 密钥保管库托管 HSM 中存储的客户管理的密钥配置加密（预览版）
 titleSuffix: Azure Storage
 description: 了解如何通过使用 Azure CLI 来使用 Azure Key Vault 管理的 HSM（预览版）中存储的客户管理的密钥配置 Azure 存储加密。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 03/30/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f9be9272a898ad48f3553d4c5e48952e1fcdde81
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f9b40c934cb428a31a3feb77195518d5351818d7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218632"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785354"
 ---
-# <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm-preview"></a>使用 Azure Key Vault 管理的 HSM（预览版）中存储的客户管理的密钥配置加密
+# <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm-preview"></a>使用 Azure 密钥保管库托管 HSM 中存储的客户管理的密钥配置加密（预览版）
 
 Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况下，数据使用 Microsoft 管理的密钥进行加密。 为了更进一步控制加密密钥，你可以管理自己的密钥。 客户管理的密钥必须存储在 Azure Key Vault 或 Key Vault 管理的硬件安全模型 (HSM)（预览版）中。 Azure Key Vault 管理的 HSM 是经过 FIPS 140-2 第 3 级验证的 HSM。
 
@@ -34,7 +34,7 @@ Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况�
 
 首先，将系统分配的托管标识分配到存储帐户。 将使用此托管标识授予存储帐户访问托管的 HSM 的权限。 有关系统分配的托管标识的详细信息，请参阅[什么是 Azure 资源托管标识？](../../active-directory/managed-identities-azure-resources/overview.md)。
 
-若要使用 Azure CLI 分配托管标识，请调用 [az storage account update](/cli/azure/storage/account#az-storage-account-update)。 请记得将括号中的占位符值替换为你自己的值：
+若要使用 Azure CLI 分配托管标识，请调用 [az storage account update](/cli/azure/storage/account#az_storage_account_update)。 请记得将括号中的占位符值替换为你自己的值：
 
 ```azurecli
 az storage account update \
@@ -65,7 +65,9 @@ az keyvault role assignment create \
 
 ## <a name="configure-encryption-with-a-key-in-the-managed-hsm"></a>使用托管的 HSM 中的密钥配置加密
 
-最后，使用客户管理的密钥来将 Azure 存储加密配置为使用托管的 HSM 中存储的密钥。 支持的密钥类型包括大小为 2048、3072 和 4096 的 RSA-HSM 密钥。 安装 Azure CLI 2.12.0 或更高版本，以便将加密配置为使用托管的 HSM 中的客户管理的密钥。 有关详细信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+最后，使用客户管理的密钥来将 Azure 存储加密配置为使用托管的 HSM 中存储的密钥。 支持的密钥类型包括大小为 2048、3072 和 4096 的 RSA-HSM 密钥。 若要了解如何在托管 HSM 中创建密钥，请参阅[创建 HSM 密钥](../../key-vault/managed-hsm/key-management.md#create-an-hsm-key)。
+
+安装 Azure CLI 2.12.0 或更高版本，以便将加密配置为使用托管的 HSM 中的客户管理的密钥。 有关详细信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 若要自动更新客户管理的密钥的密钥版本，请在使用存储帐户的客户管理的密钥配置加密时省略密钥版本。 请调用 [az storage account update](/cli/azure/storage/account#az_storage_account_update)，以便更新存储帐户的加密设置，如以下示例所示。 包括 `--encryption-key-source parameter` 并将它设置为 `Microsoft.Keyvault`，以便为该帐户启用客户管理的密钥。 请记得将括号中的占位符值替换为你自己的值。
 
@@ -95,7 +97,7 @@ az storage account update
     --encryption-key-vault $hsmurl
 ```
 
-手动更新密钥版本时，需要更新存储帐户的加密设置以使用新版本。 首先，通过调用 [az keyvault show](/cli/azure/keyvault#az-keyvault-show) 查询 Key Vault URI，并通过调用 [az keyvault key list-versions](/cli/azure/keyvault/key#az-keyvault-key-list-versions) 查询密钥版本。 然后调用 [az storage account update](/cli/azure/storage/account#az-storage-account-update) 来更新存储帐户的加密设置，以使用新的密钥版本，如上一示例所示。
+手动更新密钥版本时，需要更新存储帐户的加密设置以使用新版本。 首先，通过调用 [az keyvault show](/cli/azure/keyvault#az_keyvault_show) 查询 Key Vault URI，并通过调用 [az keyvault key list-versions](/cli/azure/keyvault/key#az_keyvault_key_list_versions) 查询密钥版本。 然后调用 [az storage account update](/cli/azure/storage/account#az_storage_account_update) 来更新存储帐户的加密设置，以使用新的密钥版本，如上一示例所示。
 
 ## <a name="next-steps"></a>后续步骤
 

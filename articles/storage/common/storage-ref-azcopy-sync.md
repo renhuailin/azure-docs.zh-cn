@@ -8,16 +8,16 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: dc3451a4b46a317dccda0e4292dcb1712b4171f0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 83d10a7a6e9eb14379d32cc88800a2c443feac60
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98878301"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503042"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
-将源位置复制到目标位置。
+将源位置复制到目标位置。 本文提供有关 azcopy sync 命令的详细参考。 若要详细了解如何在源位置与目标位置之间同步 Blob，请参阅[使用 AzCopy v10 与 Azure Blob 存储同步](storage-use-azcopy-blobs-synchronize.md)。 对于 Azure 文件存储，请参阅[同步文件](storage-use-azcopy-files.md#synchronize-files)。
 
 ## <a name="synopsis"></a>摘要
 
@@ -38,9 +38,9 @@ sync 命令与 copy 命令的不同之处体现在以下几个方面：
 ## <a name="related-conceptual-articles"></a>相关概念性文章
 
 - [AzCopy 入门](storage-use-azcopy-v10.md)
+- [教程：使用 AzCopy 将本地数据迁移到云存储空间](storage-use-azcopy-migrate-on-premises-data.md)
 - [使用 AzCopy 和 Blob 存储传输数据](./storage-use-azcopy-v10.md#transfer-data)
 - [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
-- [对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)
 
 ### <a name="advanced"></a>高级
 

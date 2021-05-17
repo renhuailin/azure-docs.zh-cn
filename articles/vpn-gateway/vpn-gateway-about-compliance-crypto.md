@@ -1,18 +1,19 @@
 ---
-title: Azure VPN 网关：加密要求
-description: 了解如何配置 Azure VPN 网关，满足跨界 S2S VPN 隧道和 Azure VNet 到 VNet 连接的加密要求。
+title: VPN 网关的加密要求
+titleSuffix: Azure VPN Gateway
+description: 了解如何配置 Azure VPN 网关，以满足跨界 S2S VPN 隧道和 Azure VNet 到 VNet 连接的加密要求。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 12/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 47d14c5ee7f6c4816bf15351e9cb28a2aaa72b4c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2a657d041ddf46664bdb4e923fd7accb970bd32e
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96546839"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292173"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>关于加密要求和 Azure VPN 网关
 

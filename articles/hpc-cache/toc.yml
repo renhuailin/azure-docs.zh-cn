@@ -8,10 +8,14 @@
   items:
     - name: 规划聚合命名空间
       href: hpc-cache-namespace.md
+    - name: 了解缓存使用情况模型
+      href: cache-usage-models.md
+    - name: 确定 HPC 缓存是否是正确的解决方案
+      href: usage-scenarios.md
     - name: 安全性
       items:
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/hpc-cache-security-baseline?toc=/azure/hpc-cache/toc.json
 - name: 操作指南
   items:
     - name: 先决条件
@@ -53,7 +57,7 @@
 - name: 参考
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/hpc-cache/hpc-cache
+      href: /cli/azure/hpc-cache
     - name: Azure PowerShell
       href: /powershell/module/Az.HPCCache
 - name: 资源
@@ -66,6 +70,8 @@
       href: hpc-cache-blob-firewall-fix.md
     - name: 排查 NFS 存储目标创建问题
       href: troubleshoot-nas.md
+    - name: 将装载了 NFS 的 blob 存储与 Azure HPC 缓存配合使用
+      href: nfs-blob-considerations.md
     - name: 区域性服务中断后进行恢复
       href: hpc-region-recovery.md
     - name: 使用客户管理的加密密钥

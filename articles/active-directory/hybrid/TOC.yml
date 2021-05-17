@@ -40,6 +40,8 @@
           href: whatis-phs.md
         - name: 密码哈希同步的工作原理
           href: how-to-connect-password-hash-synchronization.md
+        - name: 选择性密码哈希同步
+          href: how-to-connect-selective-password-hash-synchronization.md
     - name: 直通身份验证
       items:
         - name: 什么是直通身份验证？
@@ -240,6 +242,8 @@
           href: how-to-connect-fed-saml-idp.md
         - name: 混合 Azure AD 加入所需的配置后任务
           href: how-to-connect-fed-hybrid-azure-ad-join-post-config-tasks.md
+        - name: AD FS 证书的紧急轮换
+          href: how-to-connect-emergency-ad-fs-certificate-rotation.md
     - name: 管理单一登录
       items:
         - name: 单一登录入门
@@ -254,6 +258,8 @@
           href: how-to-connect-health-adfs.md
         - name: 用于 AD FS 的 Azure AD Connect Health 的有风险 IP 报表
           href: how-to-connect-health-adfs-risky-ip.md
+        - name: 使用 Connect Health 在 Azure AD 中进行 AD FS 登录
+          href: how-to-connect-health-ad-fs-sign-in.md
         - name: 将 Azure AD Connect Health 用于同步
           href: how-to-connect-health-sync.md
         - name: 使用 Azure AD Connect Health 监视 AD DS
@@ -304,6 +310,8 @@
           href: whatis-aadc-admin-agent.md
         - name: ADConnectivityTools PowerShell 模块是什么？
           href: how-to-connect-adconnectivitytools.md
+        - name: Azure AD Connect 单一对象同步
+          href: how-to-connect-single-object-sync.md
         - name: 连接
           href: tshoot-connect-connectivity.md
         - name: 同步过程中出错
@@ -332,6 +340,8 @@
           href: tshoot-connect-install-issues.md
         - name: UPN 更改
           href: howto-troubleshoot-upn-changes.md
+        - name: 对象和属性的端到端故障排除
+          href: /troubleshoot/azure/active-directory/troubleshoot-aad-connect-objects-attributes
 - name: 参考
   items:
     - name: 混合标识所需的端口和协议

@@ -3,7 +3,7 @@ title: Azure IoT 解决方案加速器文档
 summary: Azure IoT 解决方案加速器是完整且易于部署的 IoT 解决方案，用于实现互联工厂等常见 IoT 方案。
 metadata:
   title: Azure IoT 解决方案加速器文档
-  description: IoT 解决方案加速器是完整且易于部署的 IoT 解决方案，可以实现常见的 IoT 方案。 方案包括互联工厂和设备模拟。 部署解决方案加速器时，部署将包括全部所需的基于云的服务，以及全部所需的应用程序代码。
+  description: IoT 解决方案加速器是完整且易于部署的 IoT 解决方案，可以实现常见的 IoT 方案。 方案包括连接工厂。 部署解决方案加速器时，部署将包括全部所需的基于云的服务，以及全部所需的应用程序代码。
   services: iot-accelerators
   ms.service: iot-accelerators
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: dobett
   manager: philmea
   ms.date: 09/16/2019
-  ms.openlocfilehash: 8f1b539e7201ffc31956ef48b4a155674385b97f
-  ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+  ms.openlocfilehash: 366cd9973ff72ecf638a2bbaec69004e45552ac8
+  ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/08/2020
-  ms.locfileid: "96854540"
+  ms.lasthandoff: 05/07/2021
+  ms.locfileid: "109480952"
 landingContent:
 - title: 关于 IoT 解决方案加速器
   linkLists:
@@ -44,15 +44,3 @@ landingContent:
     links:
     - text: 尝试基于云的联网工厂解决方案
       url: quickstart-connected-factory-deploy.md
-- title: 设备模拟入门
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: 设备模拟解决方案加速器概述
-      url: iot-accelerators-device-simulation-overview.md
-  - linkListType: tutorial
-    links:
-    - text: 创建并运行 IoT 设备模拟
-      url: iot-accelerators-device-simulation-create-simulation.md
-    - text: 创建自定义模拟设备
-      url: iot-accelerators-device-simulation-create-custom-device.md

@@ -43,10 +43,10 @@
           displayName: 'azure stack, ash, windows, linux, hybrid, arc'
           href: quickstart-onboard-machines.md
         - name: 连接 AWS 帐户
-          displayName: 'hybrid, multicloud, amazon, arc'
+          displayName: 'hybrid, multicloud, multi-cloud, amazon, arc'
           href: quickstart-onboard-aws.md
         - name: 连接 GCP 帐户
-          displayName: 'hybrid, multicloud, google'
+          displayName: 'hybrid, multicloud, multi-cloud, google'
           href: quickstart-onboard-gcp.md
     - name: 6. 创建针对警报的自动响应
       displayName: 'Resource Manager, ARM'
@@ -66,6 +66,8 @@
       href: security-center-compliance-dashboard.md
     - name: 管理安全策略
       href: tutorial-security-policy.md
+    - name: 调查资源的运行状况
+      href: investigate-resource-health.md
 - name: 概念
   items:
     - name: 云安全态势管理概念
@@ -108,7 +110,10 @@
         - name: 自动响应建议
           displayName: workflow
           href: workflow-automation.md
-        - name: 从建议中免除资源
+        - name: 禁用建议
+          href: tutorial-security-policy.md#disable-security-policies-and-disable-recommendations
+        - name: 按资源、订阅或管理组免除建议
+          displayName: disable
           href: exempt-resource.md
         - name: 创建自定义安全计划和策略
           href: custom-security-policies.md
@@ -141,7 +146,7 @@
               displayName: 'jit, management, ports'
               href: security-center-just-in-time.md
         - name: 使用集成的 Microsoft Defender for Endpoint 许可证
-          displayName: 'ATP, mdatp, wdatp'
+          displayName: 'ATP, mdatp, wdatp, mde, mdfe'
           href: security-center-wdatp.md
         - name: 定义计算机的安全应用程序列表
           displayName: 'aac, whitelist, allowlist, reviewgroup, adaptive application controls'
@@ -195,6 +200,9 @@
         - name: 禁止显示特定映像漏洞结果
           displayName: 'ACR, registry, images, qualys'
           href: defender-for-container-registries-usage.md#disable-specific-findings-preview
+        - name: 保护已启用 Azure Arc 的 Kubernetes 群集
+          displayName: 'k8s, containers, aks, hybrid, arc, azure arc, multicloud'
+          href: defender-for-kubernetes-azure-arc.md
         - name: 保护 Kubernetes 工作负载
           displayName: 'k8s, containers, aks'
           href: kubernetes-workload-protections.md
@@ -233,7 +241,8 @@
       href: security-center-partner-integration.md
     - name: 保护网络资源
       href: security-center-network-recommendations.md
-    - name: 保护标识和访问权限
+    - name: 强制执行和管理 MFA
+      displayName: 'identity, access, AAD, active directory, multi-factor, authentication, multifactor, users, passwords'
       href: security-center-identity-access.md
     - name: 使用安全中心的其他威胁防护
       href: other-threat-protections.md
@@ -288,7 +297,7 @@
     - name: REST API 文档
       href: /rest/api/securitycenter/
     - name: 安全基线
-      href: security-baseline.md
+      href: /security/benchmark/azure/baselines/security-center-security-baseline?toc=/azure/security-center/TOC.json
     - name: Azure 安全中心常见问题解答
       items:
         - name: 一般问题
@@ -308,6 +317,8 @@
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: 终结点保护评估和建议
       href: security-center-endpoint-protection.md
+    - name: Azure CLI
+      href: /cli/azure/security
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能

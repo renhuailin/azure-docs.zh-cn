@@ -12,15 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/20/2020
+ms.date: 04/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4eb7e64065e311dc18f33dffb169d5c27a34008d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b05d6c5cc520dd83318203b0bf6d0d7c0ab18382
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101673041"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127194"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 SQL Server Azure 虚拟机 DBMS 部署
 
@@ -309,7 +309,7 @@ ms.locfileid: "101673041"
 
 
 
-本文档介绍在 Azure IaaS 中部署适用于 SAP 工作负荷的 SQL Server 时要考虑的多个不同领域。 在阅读本文档之前，应该已经阅读了[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署注意事项](./dbms_guide_general.md)文档以及 [Azure 上的 SAP 工作负荷文档](./get-started.md)中的其他指南。 
+本文档介绍在 Azure IaaS 中部署适用于 SAP 工作负荷的 SQL Server 时要考虑的多个不同领域。 在阅读本文档之前，应已经阅读了[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](./dbms_guide_general.md)文档以及 [Azure 文档上的 SAP 工作负荷](./get-started.md)中的其他指南。 
 
 
 
@@ -327,8 +327,10 @@ ms.locfileid: "101673041"
 在继续操作之前，应该先了解 IaaS 中 SQL Server 的一些特定信息：
 
 * **SQL 版本支持**：对于 SAP 客户，Microsoft Azure 虚拟机上支持 SQL Server 2008 R2 和更高版本。 不支持更早版本。 有关更多详细信息，请查看此通用[支持声明](https://support.microsoft.com/kb/956893)。 Microsoft 通常也支持 SQL Server 2008。 不过，由于适用于 SAP 的重要功能是通过 SQL Server 2008 R2 引进的，因此，SQL Server 2008 R2 是适用于 SAP 的最低版本。 通常应考虑使用最新的 SQL Server 版本在 Azure IaaS 中运行 SAP 工作负荷。 最新的 SQL Server 版本提供与一些 Azure 服务和功能的更好集成。 或者具有优化 Azure IaaS 基础结构中操作的更改。 因此，本文仅限于 SQL Server 2016 和 SQL Server 2017。
-* **SQL 性能**：相比其他公有云虚拟化产品，Microsoft Azure 托管的虚拟机将运行得非常顺利，但个别结果可能不同。 请参阅 [Azure 虚拟机中 SQL Server 的性能最佳做法](../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)一文。
+* **SQL 性能**：相比其他公有云虚拟化产品，Microsoft Azure 托管的虚拟机将运行得非常顺利，但个别结果可能不同。 请参阅 [Azure 虚拟机中 SQL Server 的性能最佳做法](../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist.md)一文。
 * **使用来自 Azure 市场的映像**：部署新 Microsoft Azure VM 的最快方式是使用来自 Azure 市场的映像。 Azure 市场提供包含最新 SQL Server 版本的映像。 已经安装 SQL Server 的映像不能立即用于 SAP NetWeaver 应用程序。 原因是这些映像安装了默认的 SQL Server 排序规则，而不是 SAP NetWeaver 系统所需的排序规则。 若要使用此类映像，请查看[使用来自 Microsoft Azure 市场的 SQL Server 映像][dbms-guide-5.6]一章中所述的步骤。 
+*  **单个 Azure VM 内的 SQL Server 多实例支持**：支持此部署方法。 但是，请注意资源限制，尤其是所用 VM 类型的网络和存储带宽。 有关详细信息，请参阅 [Azure 中的虚拟机大小](../../sizes.md)一文。 这些配额限制可能会导致你无法实现与本地可以实现的多实例体系结构相同的体系结构。 至于在单个 VM 内共享可用资源的配置和干扰，需要考虑与本地相同的事项。
+*  **单个 VM 内单个 SQL Server 实例中的多个 SAP 数据库**：同上，支持这样的配置。 共享单个 SQL Server 实例中共享资源的多个 SAP 数据库的注意事项与本地部署相同。 另外，请注意其他限制，例如可以连接到特定 VM 类型的磁盘数。 或者，特定 VM 类型的网络和存储配额限制，详见 [Azure 中的虚拟机大小](../../sizes.md)。 
 
 
 ## <a name="recommendations-on-vmvhd-structure-for-sap-related-sql-server-deployments"></a>适用于 SAP 相关 SQL Server 部署的 VM/VHD 结构建议
@@ -350,7 +352,7 @@ ms.locfileid: "101673041"
 上图显示一个简单事例。 正如[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署注意事项](dbms_guide_general.md)一文中所提到的一样，Azure 存储类型、磁盘的数量和大小取决于不同的因素。 但是通常我们建议：
 
 - 使用一个大型卷，其中包含 SQL Server 数据文件。 此配置背后的原因是，在现实生活中，许多 SAP 数据库包含不同大小的数据库文件，而这些文件具有不同的 I/O 工作负荷。
-- 只要性能足够好，就可以为 tempdb 使用驱动器 D:\。 如果由于 tmepdb 位于驱动器 D:\ 上，整体工作负荷性能受限，可能需要考虑按照[本文](../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)中的建议，将 tempdb 移动到单独的 Azure 高级存储或超级磁盘中。
+- 只要性能足够好，就可以为 tempdb 使用驱动器 D:\。 如果由于 tmepdb 位于驱动器 D:\ 上，整体工作负荷性能受限，可能需要考虑按照[本文](../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist.md)中的建议，将 tempdb 移动到单独的 Azure 高级存储或超级磁盘中。
 
 
 ### <a name="special-for-m-series-vms"></a>专用于 M 系列 VM
@@ -471,7 +473,7 @@ Latin1-General, binary code point comparison sort for Unicode Data, SQL Server S
 借助 Windows Server 2016，Microsoft 引入了[存储空间直通](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)。 根据存储空间直通部署，通常支持 SQL Server FCI 群集。 Azure 还提供可用于 Windows 群集的 [Azure 共享磁盘](../../disks-shared-enable.md?tabs=azure-cli)。 对于 SAP 工作负荷，我们不支持这些 HA 选项。 
 
 ### <a name="sql-server-log-shipping"></a>SQL Server 日志传送
-高可用性 (HA) 的方法之一是 SQL Server 日志传送。 如果参与 HA 配置的 VM 具有有效的名称解析，就不会出现问题，而且 Azure 中的设置与任何本地设置无任何差别。 有关设置日志传送的信息和日志传送的原理。 有关 SQL Server 日志传送的详细信息，请参阅[关于日志传送 (SQL Server)](/sql/database-engine/log-shipping/about-log-shipping-sql-server) 一文。
+高可用性 (HA) 的方法之一是 SQL Server 日志传送。 如果参与 HA 配置的 VM 具有有效的名称解析，那么不会出现问题。 Azure 中的设置与本地进行的任何有关设置日志传送和日志传送原则的设置没有区别。 有关 SQL Server 日志传送的详细信息，请参阅[关于日志传送 (SQL Server)](/sql/database-engine/log-shipping/about-log-shipping-sql-server) 一文。
 
 几乎不在 Azure 中使用 SQL Server 日志传送功能来实现一个 Azure 区域内的高可用性。 但是，在以下场景中，SAP 客户成功将日志传送与 Azure 结合使用：
 
@@ -516,13 +518,13 @@ SQL Server Always On 是 Azure 中用于 SAP 工作负荷部署的最常用高�
 - 使用可用性组侦听程序。 若使用可用性组侦听程序，需要部署 Azure 负载均衡器。 这通常是默认部署方法。 SAP 应用程序将配置为针对可用性组侦听程序而不是针对单个节点进行连接
 - 使用 SQL Server 数据库镜像的连接参数。 在此情况下，需要以命名两个节点名称的方式配置 SAP 应用程序的连接。 有关此类 SAP 端 配置的确切详细信息，请参阅 SAP 说明 [#965908](https://launchpad.support.sap.com/#/notes/965908)。 通过使用此选项，无需配置可用性组侦听程序。 并且不需要任何 SQL Server 高可用性的 Azure 负载均衡器。 由于 SQL Server 实例的传入流量不通过Azure 负载均衡器路由，因此 SAP 应用层和 DBMS 层之间的网络延迟较低。 但请记住，此选项仅在将可用性组限制为跨两个实例时适用。 
 
-不少客户正在利用 SQL Server Always On 功能在 Azure 区域之间实现其他灾难恢复功能。 少数客户还使用此功能从次要副本执行备份。 
+不少客户正在利用 SQL Server Always On 功能在 Azure 区域之间实现灾难恢复功能。 少数客户还使用此功能从次要副本执行备份。 
 
 ## <a name="sql-server-transparent-data-encryption"></a>SQL Server 透明数据加密
 有许多客户在 Azure 中部署 SAP SQL Server 数据库时，使用 SQL Server [透明数据加密 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption)。 SAP 完全支持 SQL Server TDE 功能（请参阅 SAP 说明 [#1380493](https://launchpad.support.sap.com/#/notes/1380493)）。 
 
 ### <a name="applying-sql-server-tde"></a>应用 SQL Server TDE
-从另一个本地运行的 DBMS 执行异类迁移到 Azure 中运行的 Windows/SQL Server 时，应提前在 SQL Server 中创建空的目标数据库。 接下来将应用 SQL Server TDE 功能。 同时仍在本地运行生产系统。 希望在此序列中执行的原因是，加密空数据库的进程可能需要相当长一段时间。 然后 SAP 导入进程将在停机阶段将数据导入加密数据库。 与在停机阶段的导出阶段之后加密数据库的开销相比，导入到加密数据库的开销的时间影响更小。 尝试在数据库上运行 SAP 工作负荷的情况下应用 TDE 时，会产生负面体验。 因此，建议将 TDE 部署视为需要在特定数据库上没有 SAP 工作负载的情况下完成的活动。
+从另一个本地运行的 DBMS 执行异类迁移到 Azure 中运行的 Windows/SQL Server 时，应提前在 SQL Server 中创建空的目标数据库。 接下来将应用 SQL Server TDE 功能。 同时仍在本地运行生产系统。 希望在此序列中执行的原因是，加密空数据库的进程可能需要相当长一段时间。 然后 SAP 导入进程将在停机阶段将数据导入加密数据库。 与在停机阶段的导出阶段之后加密数据库的开销相比，导入到加密数据库的开销的时间影响更小。 尝试在数据库上运行 SAP 工作负载情况下应用 TDE 时，会产生不好的体验。 因此，建议将 TDE 部署视为需要在特定数据库上没有 SAP 工作负载的情况下完成的活动。
 
 将 SAP SQL Server 数据库从本地移动到 Azure 时，我们建议测试在其上可最快应用加密的基础结构。 对此，请记住这些事实：
 

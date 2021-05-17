@@ -3,20 +3,18 @@ title: Azure Key Vault 将保管库移动到不同的订阅 | Microsoft Docs
 description: 有关将密钥保管库移动到不同订阅的指南。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: mbaldwin
-Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: a84627b2b426385d21ad72b85780db86e7dd5ee3
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.openlocfilehash: 1a1cd8c051f9e04c09ef2986805873d8e7fea54e
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096074"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817623"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>将 Azure Key Vault 移动到另一个订阅
 
@@ -125,5 +123,5 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 - 详细了解[密钥、机密和证书](about-keys-secrets-certificates.md)
 - 关于如何解释 Key Vault 日志等概念性信息，请参阅 [Key Vault 日志记录](logging.md)
 - [Key Vault 开发人员指南](../general/developers-guide.md)
-- [保护密钥保管库](secure-your-key-vault.md)
+- [Azure Key Vault 安全功能](security-features.md)
 - [配置 Azure Key Vault 防火墙和虚拟网络](network-security.md)

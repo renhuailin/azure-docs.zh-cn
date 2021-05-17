@@ -12,18 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 458f4d3f29cb08a94095167ed45133f5cd70f5f4
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 16e758ac520c8584a11c88c0823fac7cfec43c0b
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104869185"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226293"
 ---
-# <a name="install-azure-application-consistent-snapshot-tool-preview"></a>安装 Azure 应用一致的快照工具（预览版）
+# <a name="install-azure-application-consistent-snapshot-tool"></a>安装 Azure 应用程序一致性快照工具
 
-本文提供了可与 Azure NetApp 文件配合使用的 Azure 应用一致的快照工具的安装指南。
+本文提供相关指南，指导如何安装可与 Azure NetApp 文件或 Azure 大型实例配合使用的 Azure 应用程序一致性快照工具。
+
+> [!IMPORTANT]
+> Azure 大型实例系统部署在专用网络中，因此只能采用分布式安装。  因此，为了确保连接，必须在每个系统上完成 AzAcSnap 安装。
 
 ## <a name="introduction"></a>简介
 
@@ -350,7 +353,7 @@ Examples of a target directory are ./tmp or /usr/local/bin
 1. 配置 azacsnap 用户的登录 `~/.profile`。
 1. 在 filesystem 中搜索要添加到 azacsnap 的 `$PATH` 的目录，这些通常是指向 SAP HANA 工具的路径，例如 `hdbsql` 和 `hdbuserstore`。
 1. 在 filesystem 中搜索要添加到 azacsnap 的 `$LD_LIBRARY_PATH` 的目录。 许多命令需要设置库路径才能正确执行，这会为已安装的用户配置该路径。
-1. 从 “root” 用户（运行安装的用户）复制用于 azacsnap 的后端存储的 SSH 密钥。 这假定 “root” 用户已配置与存储的连接
+1. 从 “root” 用户（运行安装的用户）复制用于 azacsnap 的后端存储的 SSH 密钥。 这假定“root”用户已配置与存储的连接
     - 请参阅“[启用与存储的通信](#enable-communication-with-storage)”。
 1. 复制目标用户 azacsnap 的 SAP HANA 连接安全用户存储。 这假定 “root” 用户已配置安全用户存储 – 请参阅“启用与 SAP HANA 通信”部分。
 1. 快照工具被提取到 `/home/azacsnap/bin/` 中。

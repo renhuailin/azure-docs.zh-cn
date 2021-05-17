@@ -5,14 +5,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: e0e5a817bad87391b84c43ceae0751fc6ebffd1f
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 203baa58e286bd605bf28f511a5c12fcf3dc2033
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076149"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165058"
 ---
-# <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>如何排查 Log Analytics Linux 代理的问题 
+# <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>如何排查 Log Analytics Linux 代理的问题
 
 本文介绍如何排查可能遇到的 Azure Monitor 中的 Log Analytics Linux 代理的相关错误，并提供可能的解决方案建议。
 
@@ -22,16 +22,18 @@ ms.locfileid: "106076149"
 * 签订了 Azure 支持协议的客户可以在 [Azure 门户](https://azure.microsoft.com/support/options/)中提出支持请求。
 * 借助 [OMI 故障排除指南](https://github.com/Microsoft/omi/blob/master/Unix/doc/diagnose-omi-problems.md)诊断 OMI 问题。
 * 提交 [GitHub 问题](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)。
-* 请访问 Log Analytics 反馈页面，查看已提交的想法和 bug [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback)或提交新的想法或 bug。 
+* 请访问 Log Analytics 反馈页面，查看已提交的想法和 bug [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback)或提交新的想法或 bug。
 
 ## <a name="log-analytics-troubleshooting-tool"></a>Log Analytics 故障排除工具
 
 Log Analytics 代理 Linux 故障排除工具是一个脚本，旨在帮助查找和诊断 Log Analytics 代理问题。 安装后，该工具将自动包含在代理中。 应将运行此工具作为诊断问题的第一步。
 
 ### <a name="how-to-use"></a>使用方法
+
 通过将以下命令粘贴到具有 Log Analytics 代理的计算机上的终端窗口中，可以运行故障排除工具：`sudo /opt/microsoft/omsagent/bin/troubleshooter`
 
 ### <a name="manual-installation"></a>手动安装
+
 安装 Log Analytics 代理后，将自动包含故障排除工具。 但如果安装失败，也可以按照以下步骤手动安装该工具。
 
 1. 将疑难解答捆绑包复制到你的计算机上：`wget https://raw.github.com/microsoft/OMS-Agent-for-Linux/master/source/code/troubleshooter/omsagent_tst.tar.gz`
@@ -39,6 +41,7 @@ Log Analytics 代理 Linux 故障排除工具是一个脚本，旨在帮助查�
 3. 运行手动安装：`sudo ./install_tst`
 
 ### <a name="scenarios-covered"></a>涵盖的方案
+
 下面是使用故障排除工具检查的方案的列表：
 
 1. 代理运行不正常，检测信号无法正常工作
@@ -51,8 +54,8 @@ Log Analytics 代理 Linux 故障排除工具是一个脚本，旨在帮助查�
 
 有关更多详细信息，请参阅 [Github 文档](https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting-Tool.md)。
 
- >[!NOTE]
- >遇到问题时，请运行日志收集器工具。 从一开始便记录日志将极大帮助我们的支持团队更快解决你的问题。
+ > [!NOTE]
+ > 遇到问题时，请运行日志收集器工具。 从一开始便记录日志将极大帮助我们的支持团队更快解决你的问题。
 
 ## <a name="purge-and-re-install-the-linux-agent"></a>清除 Linux 代理并重新安装
 
@@ -80,9 +83,8 @@ Log Analytics 代理 Linux 故障排除工具是一个脚本，旨在帮助查�
  性能、Nagios、Zabbix、Log Analytics 输出和常规代理 | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`
  其他配置 | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/*.conf`
 
- >[!NOTE]
- >如果从 Azure 门户中针对你的工作区的[数据菜单 Log Analytics 高级设置](../agents/agent-data-sources.md#configuring-data-sources)中配置收集，则性能计数器的编辑配置文件和 Syslog 将会被覆盖。 要禁用所有代理的配置，则禁用从 Log Analytics“高级设置”收集，若禁用单个代理，则运行以下命令：  
-> `sudo /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable && sudo rm /etc/opt/omi/conf/omsconfig/configuration/Current.mof* /etc/opt/omi/conf/omsconfig/configuration/Pending.mof*`
+ > [!NOTE]
+ > 如果从 Azure 门户中针对你的工作区的[数据菜单 Log Analytics 高级设置](../agents/agent-data-sources.md#configuring-data-sources)中配置收集，则性能计数器的编辑配置文件和 Syslog 将会被覆盖。 若要禁用所有代理的配置，请通过 Log Analytics 的“高级设置”禁用收集；若要禁用单个代理的配置，请运行以下命令：`sudo /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable && sudo rm /etc/opt/omi/conf/omsconfig/configuration/Current.mof* /etc/opt/omi/conf/omsconfig/configuration/Pending.mof*`
 
 ## <a name="installation-error-codes"></a>安装错误代码
 
@@ -127,13 +129,15 @@ Log Analytics 代理 Linux 故障排除工具是一个脚本，旨在帮助查�
 | 34 | 不存在元配置生成脚本。 重新尝试使用 `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key>` 载入。 |
 
 ## <a name="enable-debug-logging"></a>启用调试日志记录
+
 ### <a name="oms-output-plugin-debug"></a>OMS 输出插件调试
- FluentD 允许插件特定日志记录级别，从而允许针对输入和输出指定不同的日志级别。 要为 OMS 输出指定不同的日志级别，请在 `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` 编辑常规代理配置。  
+
+ FluentD 允许插件特定日志记录级别，从而允许针对输入和输出指定不同的日志级别。 要为 OMS 输出指定不同的日志级别，请在 `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` 编辑常规代理配置。
 
  在 OMS 输出插件的配置文件末尾之前，将 `log_level` 属性从 `info` 更改为 `debug`：
 
- ```
- <match oms.** docker.**>
+```
+<match oms.** docker.**>
   type out_oms
   log_level debug
   num_threads 5
@@ -145,7 +149,7 @@ Log Analytics 代理 Linux 故障排除工具是一个脚本，旨在帮助查�
   retry_limit 10
   retry_wait 30s
 </match>
- ```
+```
 
 调试日志记录允许按类型、数据项数量和发送所用时间查看批量上传至 Azure Monitor 的信息：
 
@@ -158,6 +162,7 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 ```
 
 ### <a name="verbose-output"></a>详细输出
+
 如果不使用 OMS 输出插件，还可以将数据项直接输出到 Log Analytics for Linux 代理日志文件中可见的 `stdout`。
 
 在 Log Analytics 常规代理配置文件中的 `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` 处，通过在每一行的前面添加 `#` 注释掉 OMS 输出插件：
@@ -188,36 +193,40 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 ## <a name="issue--unable-to-connect-through-proxy-to-azure-monitor"></a>问题：无法通过代理连接到 Azure Monitor
 
 ### <a name="probable-causes"></a>可能的原因
+
 * 在载入期间指定的代理不正确
-* 数据中心的已批准列表中不包括 Azure Monitor 和 Azure 自动化服务终结点 
+* 数据中心的已批准列表中不包括 Azure Monitor 和 Azure 自动化服务终结点
 
 ### <a name="resolution"></a>解决方法
+
 1. 使用以下命令（启用了 `-v` 选项）通过 Log Analytics Linux 代理重新载入到 Azure Monitor。 它允许通过代理服务器连接到 Azure Monitor 的代理能够进行详细输出。 
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
 
-2. 请查看[更新代理设置](agent-manage.md#update-proxy-settings)部分，验证是否已将代理正确配置为通过代理服务器进行通信。    
+2. 请查看[更新代理设置](agent-manage.md#update-proxy-settings)部分，验证是否已将代理正确配置为通过代理服务器进行通信。
 
 3. 仔细检查 Azure Monitor [网络防火墙要求](./log-analytics-agent.md#firewall-requirements)列表中列出的终结点是否已正确添加到允许列表中。 如果使用 Azure 自动化，则还会在上面链接必要的网络配置步骤。
 
 ## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>问题：尝试载入时收到 403 错误
 
 ### <a name="probable-causes"></a>可能的原因
-* Linux 服务器上的日期和时间不正确 
+
+* Linux 服务器上的日期和时间不正确
 * 使用的工作区 ID 和工作区密钥不正确
 
 ### <a name="resolution"></a>解决方法
 
-1. 使用 date 命令检查 Linux 服务器上的时间。 如果时间比当前时间快/慢 15 分钟，则载入失败。 若要纠正此问题，请更新 Linux 服务器的日期和/或时区。 
+1. 使用 date 命令检查 Linux 服务器上的时间。 如果时间比当前时间快/慢 15 分钟，则载入失败。 若要纠正此问题，请更新 Linux 服务器的日期和/或时区。
 2. 验证你是否安装了最新版本的 Log Analytics Linux 代理。  如果时间偏差导致了载入故障，最新版本现在会发出通知。
 3. 请按照本文前面所述的安装说明使用正确的工作区 ID 和工作区密钥重新载入。
 
 ## <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>问题：载入后，日志文件中立即显示 500 和 404 错误
-这是第一次将 Linux 数据上传到 Log Analytics 工作区时发生的已知问题。 这不会影响发送的数据或服务体验。
 
+这是第一次将 Linux 数据上传到 Log Analytics 工作区时发生的已知问题。 这不会影响发送的数据或服务体验。
 
 ## <a name="issue-you-see-omiagent-using-100-cpu"></a>问题：你看到 omiagent 使用100% CPU
 
 ### <a name="probable-causes"></a>可能的原因
+
 nss-pem 包 [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html) 中的回归导致了严重的性能问题，我们已在 Redhat/CentOS 7.x 发行版中看到发生了很多这样的问题。 若要详细了解此问题，请查看以下文档：Bug [libcurl 中的 1667121 性能回归](https://bugzilla.redhat.com/show_bug.cgi?id=1667121)。
 
 与性能相关的 bug 并不总是发生，而且它们很难再现。 如果你在 omiagent 中遇到这样的问题，应该使用脚本 omiHighCPUDiagnostics.sh，它将在超过某个阈值时收集 omiagent 的堆栈跟踪。
@@ -241,15 +250,16 @@ nss-pem 包 [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3
 3. 重启 OMI： <br/>
 `sudo scxadmin -restart`
 
-
-## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>问题：看不到转发的 Syslog 消息 
+## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>问题：看不到转发的 Syslog 消息
 
 ### <a name="probable-causes"></a>可能的原因
+
 * 应用于 Linux 服务器的配置不允许收集已发送的设施和/或日志级别
 * Syslog 未正确转发到 Linux 服务器
 * 每秒转发的消息数太大，Log Analytics Linux 代理基本配置无法处理
 
 ### <a name="resolution"></a>解决方法
+
 * 验证 Syslog 的 Log Analytics 工作区中的配置是否具有所有设施和正确的日志级别。 查看[在 Azure 门户中配置 Syslog 收集](data-sources-syslog.md#configure-syslog-in-the-azure-portal)
 * 验证本机 Syslog 消息守护程序（`rsyslog`、`syslog-ng`）是否能够接收转发的消息
 * 检查 Syslog 服务器的防火墙设置，以确保未阻止消息
@@ -257,12 +267,15 @@ nss-pem 包 [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3
   * `logger -p local0.err "This is my test message"`
 
 ## <a name="issue-you-are-receiving-errno-address-already-in-use-in-omsagent-log-file"></a>问题：收到的 Errno 地址已在 omsagent 日志文件中使用
+
 如果你在 omsagent.log 中看到 `[error]: unexpected error error_class=Errno::EADDRINUSE error=#<Errno::EADDRINUSE: Address already in use - bind(2) for "127.0.0.1" port 25224>`。
 
 ### <a name="probable-causes"></a>可能的原因
+
 此错误指出 Linux 诊断扩展 (LAD) 与 Log Analytics Linux VM 扩展并行安装，并且它使用 syslog 数据收集所用的端口作为 omsagent。
 
 ### <a name="resolution"></a>解决方法
+
 1. 以 root 身份执行以下命令（请注意，25224 只是举例，你可能在自己的环境中看到 LAD 使用不同的端口号）：
 
     ```
@@ -285,16 +298,19 @@ nss-pem 包 [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3
 * Linux 诊断扩展已安装和卸载，但你仍会看到以下相关错误：omsagent 已被 mdsd 使用，无法删除。
 
 ### <a name="resolution"></a>解决方法
+
 1. 卸载 Linux 诊断扩展 (LAD)。
 2. 如果 Linux 诊断扩展文件出现在以下位置，请从计算机中删除：`/var/lib/waagent/Microsoft.Azure.Diagnostics.LinuxDiagnostic-<version>/` 和 `/var/opt/microsoft/omsagent/LAD/`。
 
-## <a name="issue-you-cannot-see-data-any-nagios-data"></a>问题：看不到任何 Nagios 数据 
+## <a name="issue-you-cannot-see-data-any-nagios-data"></a>问题：看不到任何 Nagios 数据
 
 ### <a name="probable-causes"></a>可能的原因
+
 * Omsagent 用户没有权限从 Nagios 日志文件中读取
 * Nagios 源和筛选器未从 omsagent.conf 文件中注释掉
 
 ### <a name="resolution"></a>解决方法
+
 1. 遵循以下这些[说明](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#nagios-alerts)添加 omsagent 用户以从 Nagios 文件读取。
 2. 在 Log Analytics Linux 代理常规配置文件的 `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` 处，确保 Nagios 源和筛选器 **均已** 被注释掉。
 
@@ -311,9 +327,10 @@ nss-pem 包 [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3
     </filter>
     ```
 
-## <a name="issue-you-are-not-seeing-any-linux-data"></a>问题：看不到任何 Linux 数据 
+## <a name="issue-you-are-not-seeing-any-linux-data"></a>问题：看不到任何 Linux 数据
 
 ### <a name="probable-causes"></a>可能的原因
+
 * 加入 Azure Monitor 失败
 * 已阻止连接到 Azure Monitor
 * 虚拟机已重新启动
@@ -324,6 +341,7 @@ nss-pem 包 [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3
 * DSC 记录“当前配置不存在。执行 Start-DscConfiguration 命令及 -Path 参数来指定配置文件并先创建当前的配置。” （在 `omsconfig.log` 日志文件中），但不存在关于 `PerformRequiredConfigurationChecks` 操作的日志消息。
 
 ### <a name="resolution"></a>解决方法
+
 1. 安装 auditd 程序包等所有依赖项。
 2. 通过检查是否存在以下文件，来检查是否已成功加入 Azure Monitor：`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`。  如果它不存在，使用 omsadmin.sh 命令行[指令](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)重新载入。
 4. 如果使用代理服务器，请检查上述代理服务器故障排除步骤。
@@ -333,8 +351,8 @@ nss-pem 包 [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3
 7. 如果在 omsconfig.log 中看到 DSC 资源“找不到类”错误，请运行 `sudo /opt/omi/bin/service_control restart`。
 8. 在某些情况下，当 Log Analytics Linux 代理无法与 Azure Monitor 通信时，代理上的数据会备份到整个缓冲区：大小 50 MB。 该代理应通过运行以下命令重新启动：`/opt/microsoft/omsagent/bin/service_control restart`。
 
-    >[!NOTE]
-    >此问题已在代理版本 1.1.0-28 或更高版本中解决
+    > [!NOTE]
+    > 此问题已在代理版本 1.1.0-28 或更高版本中解决
     >
 
 * 如果 `omsconfig.log` 日志文件未指出 `PerformRequiredConfigurationChecks` 操作定期在系统上运行，cron 作业/服务可能会有问题。 请确保 `/etc/cron.d/OMSConsistencyInvoker` 下存存在 cron 作业。 如果需要，请运行以下命令创建 cron 作业：
@@ -386,10 +404,12 @@ nss-pem 包 [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3
 ## <a name="issue-when-configuring-collection-from-the-portal-for-syslog-or-linux-performance-counters-the-settings-are-not-applied"></a>问题：从 Syslog 或 Linux 性能计数器的门户配置收集时，未应用这些设置
 
 ### <a name="probable-causes"></a>可能的原因
+
 * Log Analytics Linux 代理未获取最新配置
 * 未应用门户中的已更改设置
 
 ### <a name="resolution"></a>解决方法
+
 **背景：** `omsconfig` 是每隔五分钟便会查找一次新门户端配置的 Log Analytics Linux 代理的配置代理。 然后，此配置会应用到位于以下位置的 Log Analytics Linux 代理配置文件中：/etc/opt/microsoft/omsagent/conf/omsagent.conf。
 
 * 在某些情况下，Log Analytics Linux 配置代理可能无法与导致未应用最新配置的门户配置服务通信。
@@ -397,22 +417,24 @@ nss-pem 包 [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3
 
   2. 通过运行以下命令检查 `omsconfig` 是否可以与 Azure Monitor 进行通信：`sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`。 此命令返回代理从该服务中收到的配置（包括 Syslog 设置、Linux 性能计数器和自定义日志）。 如果此命令失败，请运行以下命令：`sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'`。 此命令会强制 omsconfig 代理与 Azure Monitor 进行通信并检索最新的配置。
 
-## <a name="issue-you-are-not-seeing-any-custom-log-data"></a>问题：看不到任何自定义日志数据 
+## <a name="issue-you-are-not-seeing-any-custom-log-data"></a>问题：看不到任何自定义日志数据
 
 ### <a name="probable-causes"></a>可能的原因
+
 * 加入 Azure Monitor 失败。
 * 未选择“将下列配置应用于我的 Linux 服务器”设置。
 * omsconfig 尚未从该服务获取最新的自定义日志配置。
 * Log Analytics Linux 代理用户 `omsagent` 无法访问自定义日志，原因是没有权限或者找不到该日志。  可能会看到如下错误：
- * `[DATETIME] [warn]: file not found. Continuing without tailing it.`
- * `[DATETIME] [error]: file not accessible by omsagent.`
+* `[DATETIME] [warn]: file not found. Continuing without tailing it.`
+* `[DATETIME] [error]: file not accessible by omsagent.`
 * 已知的争用条件问题在 Log Analytics Linux 代理版本 1.1.0-217 中已修复
 
 ### <a name="resolution"></a>解决方法
-1. 通过检查是否存在以下文件，验证是否已成功加入 Azure Monitor：`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`。 如果不存在，则可以：  
+
+1. 通过检查是否存在以下文件，验证是否已成功加入 Azure Monitor：`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`。 如果不存在，则可以：
 
   1. 使用 omsadmin.sh 命令行[指令](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)重新载入。
-  2. 在 Azure 门户的“高级设置”下，确保已启用“将以下配置应用于我的 Linux 服务器”设置。  
+  2. 在 Azure 门户的“高级设置”下，确保已启用“将以下配置应用于我的 Linux 服务器”设置。
 
 2. 通过运行以下命令检查 `omsconfig` 是否可以与 Azure Monitor 进行通信：`sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`。  此命令返回代理从该服务中收到的配置（包括 Syslog 设置、Linux 性能计数器和自定义日志）。 如果此命令失败，请运行以下命令：`sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'`。 此命令会强制 omsconfig 代理与 Azure Monitor 进行通信并检索最新的配置。
 
@@ -424,11 +446,13 @@ nss-pem 包 [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3
 这是 1.1.0-217 之前的 Log Analytics Linux 代理版本中已知的争用条件问题。 更新到最新的代理后，运行以下命令以获取最新版本的输出插件：`sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`。
 
 ## <a name="issue-you-are-trying-to-reonboard-to-a-new-workspace"></a>问题：你正尝试重新载入到新的工作区
+
 当你尝试将代理重新载入新的工作区时，载入之前需要清理 Log Analytics 代理配置。 若要清理代理中的旧配置，请使用 `--purge` 运行shell 捆绑包
 
 ```
 sudo sh ./omsagent-*.universal.x64.sh --purge
 ```
+
 或
 
 ```
@@ -440,16 +464,17 @@ sudo sh ./onboard_agent.sh --purge
 ## <a name="log-analytics-agent-extension-in-the-azure-portal-is-marked-with-a-failed-state-provisioning-failed"></a>在 Azure 门户中，log Analytics 代理扩展标记为失败状态：预配失败
 
 ### <a name="probable-causes"></a>可能的原因
+
 * 已从操作系统中删除 log Analytics 代理
 * Log Analytics 代理服务已关闭、已禁用或未配置
 
-### <a name="resolution"></a>解决方法 
+### <a name="resolution"></a>解决方法
+
 执行以下步骤来更正问题。
 1. 从 Azure 门户中删除扩展。
 2. 按照[说明](../vm/quick-collect-linux-computer.md)安装代理。
 3. 运行以下命令重启代理：`sudo /opt/microsoft/omsagent/bin/service_control restart`。
 * 等待几分钟，并将预配状态更改为“预配成功”。
-
 
 ## <a name="issue-the-log-analytics-agent-upgrade-on-demand"></a>问题：Log Analytics 代理升级按需进行
 
@@ -457,7 +482,8 @@ sudo sh ./onboard_agent.sh --purge
 
 主机上的 Log Analytics 代理程序包已过期。
 
-### <a name="resolution"></a>解决方法 
+### <a name="resolution"></a>解决方法
+
 执行以下步骤来更正问题。
 
 1. 查看[页面](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/)上的最新版本。

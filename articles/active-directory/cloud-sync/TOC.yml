@@ -34,6 +34,8 @@
           href: how-to-prerequisites.md
         - name: 安装 Azure AD Connect 云预配代理
           href: how-to-install.md
+        - name: 使用 CLI 和 PowerShell 安装预配代理
+          href: how-to-install-pshell.md
         - name: 云同步配置
           href: how-to-configure.md
         - name: 按需预配
@@ -56,14 +58,16 @@
           href: how-to-manage-registry-options.md
         - name: 代理 gMSA PowerShell cmdlet
           href: how-to-gmsa-cmdlets.md
-        - name: 使用 PowerShell 安装预配代理
-          href: how-to-install-pshell.md
+        - name: 如何通过云同步映射 usertype
+          href: how-to-map-usertype.md
     - name: 开发
       items:
         - name: 转换
           href: how-to-transformation.md
         - name: 使用 MS 图形 API 以编程方式配置云同步
           href: how-to-inbound-synch-ms-graph.md
+        - name: 表达式生成器
+          href: how-to-expression-builder.md
         - name: Azure AD 同步 API
           href: /graph/api/resources/synchronization-overview
     - name: 疑难解答

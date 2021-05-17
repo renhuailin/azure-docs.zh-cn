@@ -190,6 +190,8 @@
                   href: ./optimize-hive-ambari.md
                 - name: 优化 Apache Pig
                   href: ./optimize-pig-ambari.md
+            - name: 查找群集节点的主机名
+              href: ./find-host-name.md
             - name: 重启群集节点
               href: ./cluster-reboot-vm.md
             - name: 使用 Apache Ambari REST API
@@ -244,6 +246,8 @@
               href: ./hadoop/apache-hadoop-visual-studio-tools-get-started.md
             - name: 用于 VSCode 的 Spark 和 Hive 工具
               href: ./hdinsight-for-vscode.md
+            - name: HDInsight 配置设置参考
+              href: ./hdinsight-config-for-vscode.md
         - name: 监视
           items:
             - name: 使用 Azure Monitor 日志
@@ -256,6 +260,8 @@
               href: ./hdinsight-cluster-availability.md
             - name: 群集可用性 - Azure Monitor 日志
               href: ./cluster-availability-monitor-logs.md
+            - name: Azure Monitor 表更新
+              href: ./log-analytics-migration.md
         - name: 疑难解答
           items:
             - name: CPU 核心配额增加请求
@@ -266,10 +272,14 @@
               href: ./troubleshoot-resource-creation-fails.md
             - name: 排查 Apache Oozie 故障
               href: ./troubleshoot-oozie.md
+            - name: 排查 Apache Sqoop 问题
+              href: ./troubleshoot-sqoop.md
             - name: 了解和解决 WebHCat 错误
               href: ./hdinsight-hadoop-templeton-webhcat-debug-errors.md
     - name: 参考
       items:
+        - name: Azure CLI
+          href: /cli/azure/hdinsight
         - name: Azure PowerShell
           href: /powershell/module/az.hdinsight
         - name: 用于 .NET 的 SDK
@@ -659,8 +669,6 @@
               href: ./kafka/apache-kafka-auto-create-topics.md
             - name: 将 Apache Kafka 与 IoT 中心配合使用
               href: ./kafka/apache-kafka-connector-iot-hub.md
-            - name: Confluent 架构注册表
-              href: ./kafka/apache-kafka-producer-consumer-api.md
             - name: 创建流式处理管道
               items:
                 - name: Apache Spark、Apache Kafka 和 Azure Cosmos DB
@@ -732,6 +740,8 @@
               href: ./hbase/apache-hbase-backup-replication.md
             - name: 将 Apache HBase 群集迁移到较新的版本
               href: ./hbase/apache-hbase-migrate-new-version.md
+            - name: 迁移 Apache HBase 版本和存储帐户
+              href: ./hbase/apache-hbase-migrate-new-version-new-storage-account.md
             - name: Apache Phoenix 性能最佳做法
               href: ./hbase/apache-hbase-phoenix-performance.md
             - name: 在 Azure VNet 中创建 Apache HBase 群集
@@ -971,7 +981,7 @@
     - name: 概念
       items:
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/hdinsight-security-baseline?toc=/azure/hdinsight/TOC.json
         - name: 企业安全常规指南
           href: ./domain-joined/general-guidelines.md
         - name: ESP 群集的计划

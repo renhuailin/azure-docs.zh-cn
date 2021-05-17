@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
-ms.openlocfilehash: e48d669321ad8c58681e8a92e68f2089962bdc17
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 2eabbfb5928fea861874e78fa68ac196d16134d3
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102429844"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291327"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>适用于 Application Insights JavaScript SDK 的“单击分析自动收集”插件
 
@@ -23,7 +23,7 @@ ms.locfileid: "102429844"
 
 用户可通过 npm 设置“单击分析自动收集”插件。
 
-### <a name="npm-setup"></a>npm 设置
+### <a name="npm-setup"></a>NPM 设置
 
 安装 npm 包：
 
@@ -54,12 +54,44 @@ const appInsights = new ApplicationInsights({ config: configObj });
 appInsights.loadAppInsights();
 ```
 
+## <a name="snippet-setup-ignore-if-using-npm-setup"></a>代码片段设置（如果使用 NPM 设置，则忽略）
+
+```html
+<script type="text/javascript" src="https://js.monitor.azure.com/scripts/b/ext/ai.clck.2.6.2.min.js"></script>
+<script type="text/javascript">
+  var clickPluginInstance = new Microsoft.ApplicationInsights.ClickAnalyticsPlugin();
+  // Click Analytics configuration
+  var clickPluginConfig = {
+    autoCapture : true,
+    dataTags: {
+      useDefaultContentNameOrId: true
+    }
+  }
+  // Application Insights Configuration
+  var configObj = {
+    instrumentationKey: "YOUR INSTRUMENTATION KEY",
+    extensions: [
+      clickPluginInstance
+    ],
+    extensionConfig: {
+      [clickPluginInstance.identifier] : clickPluginConfig
+    },
+  };
+  // Application Insights Snippet code
+  !function(T,l,y){<!-- Removed the Snippet code for brevity -->}(window,document,{
+    src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js",
+    crossOrigin: "anonymous",
+    cfg: configObj
+  });
+</script>
+```
+
 ## <a name="how-to-effectively-use-the-plugin"></a>如何有效使用此插件
 
 1. 从单击事件生成的遥测数据将作为 `customEvents` 存储在 Azure 门户的 Application Insights 部分。
 2. 系统根据以下规则填充 customEvent 的 `name`：
     1.  `data-*-id` 中提供的 `id` 将用作 customEvent 名称。 例如，如果单击的 HTML 元素的“data-sample-id”=“button1”，则“button1”将为 customEvent 名称。
-    2. 如果不存在这样的属性，并且配置中的 `useDefaultContentNameOrId` 设置为 `true`，则所选元素的 HTML 属性 `id` 或元素的内容名称将用作 customEvent 名称。
+    2. 如果不存在这样的属性，并且配置中的 `useDefaultContentNameOrId` 设置为 `true`，则所选元素的 HTML 属性 `id` 或元素的内容名称将用作 customEvent 名称。 如果 `id` 和内容名称均存在，则优先考虑 `id`。
     3. 如果 `useDefaultContentNameOrId` 为 false，则 customEvent 名称将为“not_specified”。
 
     > [!TIP]
@@ -77,16 +109,42 @@ appInsights.loadAppInsights();
     - 名称不能包含任何分号 (U+003A)。
     - 名称不能包含大写字母。
 
+## <a name="what-data-does-the-plugin-collect"></a>插件会收集哪些数据
+
+以下是启用插件时默认捕获的一些关键属性：
+
+### <a name="custom-event-properties"></a>自定义事件属性
+| 名称                  | 描述                            | 示例          |
+| --------------------- | ---------------------------------------|-----------------|
+| name                  | CustomEvent 的 `name`。 [此处](#how-to-effectively-use-the-plugin)显示了有关如何填充此内容的详细信息。| 关于              |
+| itemType              | 事件类型。                                      | customEvent      |
+|sdkVersion             | Application Insights SDK 的版本以及 click 插件|javascript:2.6.2_ClickPlugin2.6.2|
+
+### <a name="custom-dimensions"></a>自定义维度
+| 名称                  | 描述                            | 示例          |
+| --------------------- | ---------------------------------------|-----------------|
+| actionType            | 导致 click 事件的操作类型。 可以是左键单击，也可以是右键单击。 | CL              |
+| baseTypeSource        | 自定义事件的基类型源。                                      | ClickEvent      |
+| clickCoordinates      | 触发 click 事件的坐标。                            | 659X47          |
+| 内容               | 用于存储其他 `data-*` 属性和值的占位符。            | [{sample1:value1, sample2:value2}] |
+| pageName              | 触发 click 事件的页面的标题。                      | 标题示例    |
+| parentId              | 父元素的 ID 或名称                                           | navbarContainer |
+
+### <a name="custom-measurements"></a>自定义度量值
+| 名称                  | 描述                            | 示例          |
+| --------------------- | ---------------------------------------|-----------------|
+| timeToAction          | 自初始页面加载以来用户单击元素所花费的时间（毫秒） | 87407              |
+
 ## <a name="configuration"></a>配置
 
 | 名称                  | 类型                               | 默认 | 说明                                                                                                                              |
 | --------------------- | -----------------------------------| --------| ---------------------------------------------------------------------------------------------------------------------------------------- |
-| autoCapture           | boolean                            | 是    | 自动捕获配置。                                                                                                         |
-| 回调 (callback)              | [IValueCallback](#ivaluecallback)  | NULL    | 回调配置。                                                                                                                 |
-| pageTags              | string                             | NULL    | 页标记。                                                                                                                               |
-| dataTags              | [ICustomDataTags](#icustomdatatags)| NULL    | 提供的自定义数据标记用于替代捕获单击数据的默认标记。                                                           |
-| urlCollectHash        | boolean                            | false   | 启用 URL中“#”字符后的值的日志记录。                                                                          |
-| urlCollectQuery       | boolean                            | false   | 启用 URL 查询字符串的日志记录。                                                                                      |
+| autoCapture           | boolean                            | 是    | 自动捕获配置。                                |
+| 回调 (callback)              | [IValueCallback](#ivaluecallback)  | NULL    | 回调配置。                               |
+| pageTags              | string                             | NULL    | 页标记。                                             |
+| dataTags              | [ICustomDataTags](#icustomdatatags)| NULL    | 提供的自定义数据标记用于替代捕获单击数据的默认标记。 |
+| urlCollectHash        | boolean                            | false   | 启用 URL中“#”字符后的值的日志记录。                |
+| urlCollectQuery       | boolean                            | false   | 启用 URL 查询字符串的日志记录。                            |
 | behaviorValidator     | 功能                           | NULL  | 用于验证 `data-*-bhvr` 值的回调函数。 有关详细信息，请参阅 [behaviorValidator 部分](#behaviorvalidator)。|
 | defaultRightClickBhvr | 字符串（或）数字                 | ''      | 发生“右键单击”事件时的默认行为值。 如果元素具有 `data-*-bhvr` 属性，则将替代此值。 |
 | dropInvalidEvents     | boolean                            | false   | 用于删除无有用单击数据的事件的标志。                                                                                   |

@@ -1,6 +1,6 @@
 ---
 title: 从计算机连接到 VNet - P2S VPN 和本机 Azure 证书身份验证：PowerShell
-description: 使用 P2S 和自签名证书或 CA 颁发的证书将 Windows 和 macOS 客户端安全地连接到 Azure 虚拟网络。 本文使用 PowerShell。
+description: 了解如何使用 P2S 和自签名证书或 CA 颁发的证书将 Windows 和 macOS 客户端安全地连接到 Azure 虚拟网络。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: ed0a60c88c33af70b7d780d6c4735c5f8e65b35b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cf1cd8eb2d9723d435f277b9c029b15c843b9afd
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94660400"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226383"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>使用本机 Azure 证书身份验证配置与 VNet 的点到站点 VPN 连接：PowerShell
 

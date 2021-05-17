@@ -1,19 +1,19 @@
 ---
 title: FAQ - Azure VMware Solution by CloudSimple
 description: 这些 Azure VMware Solution by CloudSimple 常见问题包括连接性、网络、安全性、存储、Azure 集成等。
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3551327f9aa07fe218d3b05f73057e36f92abcad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 50b61e32a9d9df05ac1e17ac3927dd84219f893b
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97895557"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108182293"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>有关 VMware Solution by CloudSimple 的常见问题
 
@@ -68,7 +68,7 @@ CloudSimple 提供下列连接选项，用于连接到 CloudSimple 区域网络�
 
 Azure ExpressRoute 线路是一种高速、低延迟、安全的连接。  CloudSimple 可为每个客户提供专用于各区域的 ExpressRoute 线路。  使用此线路，可以从本地或 Azure 订阅建立安全连接。
 
-**连接到 CloudSimple 的网络成本是什么？** 出口费用是否在 CloudSimple 和 Azure之间或跨区域适用？
+**连接到 CloudSimple 的网络成本是多少？CloudSimple 和 Azure之间或跨区域是否需支付出口费用？**
 
 CloudSimple 不收取网络出口费用。  Azure 标准费率适用于来自虚拟网络或本地 ExpressRoute 线路的任何出口流量。
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: 7e43c472c939049e5dfd4ec4df909a3178ef8e2d
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: f14883632e2a6cb741f86c7393bad3fb2305b397
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553254"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161368"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>使用音频内容创建工具改进合成
 
@@ -23,49 +23,48 @@ ms.locfileid: "106553254"
 
 该工具基于[语音合成标记语言 (SSML)](speech-synthesis-markup.md)。 它允许你实时或以批量合成的方式调整文本转语音的输出属性，如语音字符、语音样式、说话速度、发音和韵律。
 
-你可以轻松访问近 50 种不同语言的 150 多个预先生成的语音，包括先进的神经 TTS 语音以及自定义语音（如果已生成）。 
+你可以轻松访问近 50 种不同语言的 150 多个预先生成的语音，包括先进的神经 TTS 语音以及自定义语音（如果已生成）。
 
 有关音频内容创建，请参阅[视频教程](https://www.youtube.com/watch?v=O1wIJ7mts_w)。
 
 ## <a name="how-to-get-started"></a>如何入门？
 
-音频内容创建是一款免费工具，但你需要为你使用的 Azure 语音服务付费。 若要使用该工具，需要使用 Azure 帐户登录并创建语音资源。 对于每个 Azure 帐户，每月都有免费的语音配额，其中包括神经 TTS 语音的 500,000 个字符（每月），标准和自定义语音的 500 万个字符（每月），以及 1 项自定义语音终结点托管服务（每月）。 每月分配的量通常足以满足大约 3-5 人的小型团队。 下面是有关如何创建 Azure 帐户并获取语音资源的步骤。 
+音频内容创建是一款免费工具，但你需要为你使用的 Azure 语音服务付费。 若要使用该工具，需要使用 Azure 帐户登录并创建语音资源。 对于每个 Azure 帐户，每月都有免费的语音配额，其中包括神经 TTS 语音的 500,000 个字符（每月），标准和自定义语音的 500 万个字符（每月），以及 1 项自定义语音终结点托管服务（每月）。 每月分配的量通常足以满足大约 3-5 人的小型团队。 下面是有关如何创建 Azure 帐户并获取语音资源的步骤。
 
 ### <a name="step-1---create-an-azure-account"></a>步骤 1 - 创建 Azure 帐户
 
-若要使用音频内容创建，需要具有 [Microsoft 帐户](https://account.microsoft.com/account) 和 [Azure 帐户](https://azure.microsoft.com/free/ai/)。 按照这些说明[设置帐户](./overview.md#try-the-speech-service-for-free)。 
+若要使用音频内容创建，需要具有 [Microsoft 帐户](https://account.microsoft.com/account) 和 [Azure 帐户](https://azure.microsoft.com/free/ai/)。 按照这些说明[设置帐户](./overview.md#try-the-speech-service-for-free)。
 
-[Azure 门户](https://portal.azure.com/)是用于管理 Azure 帐户的集中位置。 你可以创建语音资源、管理产品访问以及监视从简单 Web 应用到复杂云部署的所有内容。 
+[Azure 门户](https://portal.azure.com/)是用于管理 Azure 帐户的集中位置。 你可以创建语音资源、管理产品访问以及监视从简单 Web 应用到复杂云部署的所有内容。
 
 ### <a name="step-2---create-a-speech-resource"></a>步骤 2 - 创建语音资源
 
-注册 Azure 帐户后，需要在 Azure 帐户下创建语音资源以访问语音服务。 查看有关[如何创建语音资源](./overview.md#create-the-azure-resource)的说明。 
+注册 Azure 帐户后，需要在 Azure 帐户下创建语音资源以访问语音服务。 查看有关[如何创建语音资源](./overview.md#create-the-azure-resource)的说明。
 
-部署新的语音资源需要花费片刻时间。 部署完成后，就可以开始音频内容创建之旅。 
+部署新的语音资源需要花费片刻时间。 部署完成后，就可以开始音频内容创建之旅。
 
- >[!NOTE]
+ > [!NOTE]
    > 如果计划使用神经语音，请确保在[支持神经语音的区域](regions.md#neural-and-standard-voices)中创建资源。
- 
+
 ### <a name="step-3---log-into-the-audio-content-creation-with-your-azure-account-and-speech-resource"></a>步骤 3 - 通过 Azure 帐户和语音资源登录音频内容创建
 
 1. 获取 Azure 帐户和语音资源后，可以通过单击“开始”，登录到[音频内容创建](https://aka.ms/audiocontentcreation)。
-2. 将显示“语音资源”页。 选择需要处理的语音资源。 单击“转到 Studio”以开始创建音频。 也可以通过单击“新建”在这里创建新的语音资源。 下次登录到音频内容创建工具时，我们会将你直接链接到当前语音资源下的音频工作文件。 
+2. 将显示“语音资源”页。 选择需要处理的语音资源。 单击“转到 Studio”以开始创建音频。 也可以通过单击“新建”在这里创建新的语音资源。 下次登录到音频内容创建工具时，我们会将你直接链接到当前语音资源下的音频工作文件。
 3. 可以随时使用位于顶部导航栏中的“设置”选项来修改语音资源。
 
 ## <a name="how-to-use-the-tool"></a>如何使用工具？
 
 此图显示了微调文本到语音输出所需的步骤。 使用以下链接详细了解每个步骤。
 
-:::image source="media/audio-content-creation/audio-content-creation-diagram.jpg" alt-text="微调文本转语音输出所用步骤的图表":::
-
+:::image type="content" source="media/audio-content-creation/audio-content-creation-diagram.jpg" alt-text="微调文本转语音输出所用步骤的图表":::
 
 1. 选择需要处理的语音资源。
 2. 使用纯文本或 SSML 脚本[创建音频优化文件](#create-an-audio-tuning-file)。 键入或将内容上传到音频内容创建。
 3. 选择脚本内容的语音和语言。 音频内容创建包括所有 [Microsoft 文本到语音转换](language-support.md#text-to-speech)。 可使用标准语音、神经语音或者你自己的自定义语音。
-   >[!NOTE]
+   > [!NOTE]
    > 管控访问可用于自定义神经语音，这允许创建类似于自然语音的高清语音。 有关详细信息，请参阅[管控过程](./text-to-speech.md)。
 
-4. 单击“播放”图标（三角形）以预览默认合成输出。 然后通过调整发音、停顿、音调、速率、语调、语音风格等来改进输出。 有关选项的完整列表，请参阅[语音合成标记语言](speech-synthesis-markup.md)。 有关如何使用音频内容创建来微调语音输出，请观看此处的[视频](https://www.youtube.com/watch?v=O1wIJ7mts_w)。 
+4. 单击“播放”图标（三角形）以预览默认合成输出。 然后通过调整发音、停顿、音调、速率、语调、语音风格等来改进输出。 有关选项的完整列表，请参阅[语音合成标记语言](speech-synthesis-markup.md)。 有关如何使用音频内容创建来微调语音输出，请观看此处的[视频](https://www.youtube.com/watch?v=O1wIJ7mts_w)。
 5. 保存并[导出优化音频](#export-tuned-audio)。 在系统中保存优化音轨后，可继续工作并迭代输出。 如果对输出满意，可使用导出功能创建音频创建任务。 可查看导出任务的状态，并下载用于应用和产品的输出。
 
 ## <a name="create-an-audio-tuning-file"></a>创建音频优化文件
@@ -75,12 +74,12 @@ ms.locfileid: "106553254"
 选项 1：
 
 1. 单击右上角的“新建文件”图标，以创建新的音频优化文件。
-2. 在编辑窗口键入或粘贴内容。 每个文件的字符数最多为 20,000 个。 如果脚本的长度超过 20,000 个字符，则可以使用选项 2 将内容自动拆分为多个文件。 
+2. 在编辑窗口键入或粘贴内容。 每个文件的字符数最多为 20,000 个。 如果脚本的长度超过 20,000 个字符，则可以使用选项 2 将内容自动拆分为多个文件。
 3. 切勿忘记保存。
 
 选项 2：
 
-1. 单击“上传”导入一个或多个文本文件。 支持纯文本和 SSML。 如果脚本文件超过 20,000 个字符，请按段落、字符或正则表达式拆分文件。 
+1. 单击“上传”导入一个或多个文本文件。 支持纯文本和 SSML。 如果脚本文件超过 20,000 个字符，请按段落、字符或正则表达式拆分文件。
 3. 上传文本文件时，请确保该文件满足这些要求。
 
    | 属性 | 值/注释 |
@@ -96,6 +95,7 @@ ms.locfileid: "106553254"
 ```txt
 Welcome to use Audio Content Creation to customize audio output for your products.
 ```
+
 **SSML 文本示例**
 
 ```xml
@@ -133,27 +133,29 @@ Welcome to use Audio Content Creation to customize audio output for your product
 
 1. 在 [Azure 门户](https://portal.azure.com/)中搜索“认知服务”，选择需要添加用户的语音资源。
 2. 单击“访问控制(IAM)”。 单击“角色分配”选项卡以查看此订阅的所有角色分配。
-    :::image source="media/audio-content-creation/access-control-roles.png" alt-text="角色分配选项卡":::
+    :::image type="content" source="media/audio-content-creation/access-control-roles.png" alt-text="角色分配选项卡":::
 1. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。  在“角色”下拉列表中，选择“认知服务用户”角色。 如果要授予用户此语音资源的所有权，可以选择“所有者”角色。
-1. 从列表中选择一个用户。 如果没有在列表中看到用户，则可在“选择”框中键入相应内容，以便在目录中搜索显示名称和电子邮件地址。 如果此目录中没有该用户，可以输入该用户的 [Microsoft 帐户](https://account.microsoft.com/account)（受 Azure Active Directory 信任）。
+1. 从列表中选择一个用户。 如果没有在列表中看到用户，则可在“选择”框中键入相应内容，以便在目录中搜索显示名称和电子邮件地址。 如果此目录中没有该用户，可输入该用户的 [Microsoft 帐户](https://account.microsoft.com/account)（受 Azure Active Directory 信任）。
 1. 单击“保存”以分配该角色。 稍后，将向用户分配语音资源范围内的认知服务用户角色。
 
-    :::image source="media/audio-content-creation/add-role-first.png" alt-text="添加角色对话框":::
+    :::image type="content" source="media/audio-content-creation/add-role-first.png" alt-text="添加角色对话框":::
 
 1. 你添加的用户将收到邀请电子邮件。 单击“接受邀请” > “接受加入 Azure”后，他们便可以使用[音频内容创建](https://aka.ms/audiocontentcreation)。
 
-处于相同语音资源的用户可在音频内容创建工作室中看到彼此的工作。 如果希望每个单独用户在音频内容创建中具有唯一的专用工作区，请为每个用户[创建新的语音资源](#step-2---create-a-speech-resource)，并为每个用户提供对语音资源的唯一访问权限。 
+处于相同语音资源的用户可在音频内容创建工作室中看到彼此的工作。 如果希望每个单独用户在音频内容创建中具有唯一的专用工作区，请为每个用户[创建新的语音资源](#step-2---create-a-speech-resource)，并为每个用户提供对语音资源的唯一访问权限。
 
 ### <a name="remove-users-from-a-speech-resource"></a>从语音资源中删除用户
+
 1. 在 Azure 门户中搜索“认知服务”，选择要删除用户的语音资源。
 2. 单击“访问控制(IAM)”。 单击“角色分配”选项卡以查看此语音资源的所有角色分配。
 3. 选择要删除的用户，然后单击“删除” > “确定”。
-    :::image source="media/audio-content-creation/remove-user.png" alt-text="“删除”按钮":::
+    :::image type="content" source="media/audio-content-creation/remove-user.png" alt-text="“删除”按钮":::
 
 ### <a name="enable-users-to-grant-access"></a>使用户能够授予访问权限
-如果你希望某个用户向其他用户提供访问权限，则需要为用户提供语音资源的所有者角色，并将用户设置为 Azure 目录读者。 
+
+如果你希望某个用户向其他用户提供访问权限，则需要为用户提供语音资源的所有者角色，并将用户设置为 Azure 目录读者。
 1. 将用户添加为语音资源的所有者。 请参阅[如何将用户添加到语音资源](#add-users-to-a-speech-resource)。
-    :::image source="media/audio-content-creation/add-role.png" alt-text="角色所有者字段":::
+    :::image type="content" source="media/audio-content-creation/add-role.png" alt-text="角色所有者字段":::
 1. 选择左上角的折叠菜单。 单击“Azure Active Directory”，然后单击“用户”。
 1. 搜索用户的 Microsoft 帐户，然后转到用户的详细信息页。 单击“分配的角色”。
 1. 单击“添加分配” -> “目录读者”。

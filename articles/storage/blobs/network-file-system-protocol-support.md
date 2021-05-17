@@ -5,23 +5,23 @@ author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/19/2021
+ms.date: 04/28/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: b00956a6fb5a79b09602ca1752cc547595f32db6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 033893ac0f939929eda597a1eb978e0dde4c57d9
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103224588"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108181483"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob 存储中的网络文件系统 (NFS) 3.0 协议支持（预览版）
 
 Blob 存储现在支持网络文件系统 (NFS) 3.0 协议。 此支持在对象存储规模和价格上提供了 Linux 文件系统兼容性，并使 Linux 客户端可以从 Azure 虚拟机 (VM) 或本地计算机中，将容器装载在 Blob 存储中。 
 
 > [!NOTE]
-> Azure Blob 存储中的 NFS 3.0 协议支持目前处于预览版状态。 它支持在以下区域中具有标准层性能的 GPV2 存储帐户：澳大利亚东部、韩国中部和美国中南部。 预览版还支持所有公共区域中具有高级性能层的块 blob。
+> Azure Blob 存储中的 NFS 3.0 协议支持目前处于公共预览版状态。 它支持以下区域中具有标准层性能的 GPV2 存储帐户：澳大利亚东部、韩国中部、美国东部和美国中南部。 预览版还支持所有公共区域中具有高级性能层的块 blob。
 
 运行大规模的旧工作负载始终是一项挑战，例如云中的高性能计算 (HPC)。 其中一个原因是，应用程序经常使用 NFS 或服务器消息块 (SMB) 等传统文件协议来访问数据。 此外，本机云存储服务侧重于具有平面命名空间和大量元数据的对象存储，而不是提供分层命名空间和高效元数据操作的文件系统。 
 
@@ -67,9 +67,9 @@ Linux 客户端可以从 Azure 虚拟机 (VM) 或本地计算机中，将容器�
 > [!IMPORTANT]
 > 务必按顺序完成这些任务。 在帐户上启用 NFS 3.0 协议之前，无法装载创建的容器。 此外，在帐户上启用了 NFS 3.0 协议后，将无法禁用它。
 
-## <a name="network-security"></a>网络安全
+## <a name="network-security"></a>网络安全性
 
-存储帐户必须包含在 VNet 中。 VNet 使客户端可以安全地连接到存储帐户。 保护帐户中数据的唯一方法是使用 VNet 和其他网络安全设置。 在启用了 NFS 3.0 协议支持的帐户中，尚不支持用于保护数据的任何其他工具，包括帐户密钥授权、Azure Active Directory (AD) 安全性和访问控制列表 (ACL)。 
+存储帐户必须包含在 VNet 中。 VNet 使客户端可以安全地连接到存储帐户。 保护帐户中数据的唯一方法是使用 VNet 和其他网络安全设置。 用于保护数据的任何其他工具（包括帐户密钥授权、Azure Active Directory [AD] 安全性）以及访问控制列表 (ACL) 在其上启用了 NFS 3.0 协议支持的帐户中不受支持。 
 
 若要了解详细信息，请参阅 [Blob 存储的网络安全建议](security-recommendations.md#networking)。
 
@@ -96,21 +96,42 @@ Linux 客户端可以从 Azure 虚拟机 (VM) 或本地计算机中，将容器�
 > [!IMPORTANT]
 > 如果要从本地网络连接，请确保客户端允许通过端口 111 和 2048 进行传出通信。 NFS 3.0 协议使用这些端口。
 
-## <a name="azure-storage-features-not-yet-supported"></a>尚不支持 Azure 存储功能
+<a id="azure-storage-features-not-yet-supported"></a>
 
-在帐户上启用 NFS 3.0 协议后，不支持以下 Azure 存储功能。 
+## <a name="support-for-azure-storage-features"></a>支持 Azure 存储功能
 
-- Azure Active Directory (AD) 安全性
+下表显示了已启用 NFS 3.0 功能的帐户中当前对 Azure 存储功能的支持级别。 
 
-- 类似于 POSIX 的访问控制列表 (ACL)
+随着支持继续扩展，这些表中显示的项的状态会随时间而变化。
 
-- 在现有存储帐户中启用 NFS 3.0 支持的功能
+| 存储功能 | 高级 | 标准 |存储功能 | 高级 | 标准 |
+|-----------------|---------|----------|----------------|---------|----------|
+| [Blob 服务 REST API](/rest/api/storageservices/blob-service-rest-api)  | ✔️ |  ⛔ | [Azure Data Lake Store REST API](/rest/api/storageservices/data-lake-storage-gen2) | ⛔ |    ⛔ |
+| [Azure Blob 存储的访问层](storage-blob-storage-tiers.md) |    ✔️ |    ⛔ | [Blob 索引标记](storage-blob-index-how-to.md) |   ⛔ | ⛔ |
+| [Azure Blob 存储生命周期管理](storage-lifecycle-management-concepts.md) | ✔️  |   ⛔ | [Azure 存储分析日志记录](../common/storage-analytics-logging.md?toc=/azure/storage/blobs/toc.json) | ⛔ |   ⛔ |
+|  [Azure 存储 Blob 清单](blob-inventory.md) |  ✔️  |   ⛔ | [更改源](storage-blob-change-feed.md) |    ⛔ | ⛔ |
+| [Azure Monitor](monitor-blob-storage.md) |    ✔️ |    ⛔ | [Blob 版本控制](versioning-enable.md) | ⛔ |   ⛔ |
+| [blob 快照](snapshots-overview.md) | ✔️  |   ⛔ | [块 blob 的时间点还原](point-in-time-restore-overview.md) | ⛔ |    ⛔ |
+| [专用终结点](../common/storage-private-endpoints.md?toc=/azure/storage/blobs/toc.json) | ✔️  | ⛔ | [Azure 备份集成](/azure/backup/blob-backup-overview) | ⛔ |    ⛔ |
+| [服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md) | ✔️  |  ⛔ | [容器软删除](soft-delete-container-overview.md) |   ⛔ | ⛔ |
+| [防火墙规则](../common/storage-network-security.md?toc=/azure/storage/blobs/toc.json) | ✔️  | ⛔ | [blob 的软删除](soft-delete-blob-overview.md) | ⛔ | ⛔ |
+| [禁止共享密钥授权](../common/shared-key-authorization-prevent.md)  | ✔️ |    ⛔ | [用于生命周期管理的上次访问时间跟踪](storage-lifecycle-management-concepts.md#move-data-based-on-last-accessed-date-preview) |  ⛔|  ⛔ |
+| [用于 Azure 存储加密的客户管理的密钥](../common/customer-managed-keys-overview.md) |   ✔️ |    ⛔ | [用于 Azure 存储加密的客户提供的密钥](encryption-customer-provided-keys.md)  |  ⛔ | ⛔ |
+| [不可变 Blob 存储](storage-blob-immutable-storage.md) | ✔️    | ⛔ | [静态网站托管](storage-blob-static-website.md) | ⛔  |    ⛔ |
+| [追加​​ Blob](storage-blobs-introduction.md#blobs) | ✔️   |  ⛔ | [页 Blob](storage-blobs-introduction.md#blobs) | ⛔ | ⛔ |
+| [Azure Active Directory (AD) 安全性](../common/storage-auth-aad.md?toc=/azure/storage/blobs/toc.json) | ⛔ | ⛔ | [加密范围](encryption-scope-overview.md)  |    ⛔ | ⛔ |
+| [块 blob 的对象复制](object-replication-overview.md) | ⛔  |   ⛔ | [客户管理的帐户故障转移](../common/storage-disaster-recovery-guidance.md?toc=/azure/storage/blobs/toc.json) | ⛔ |    ⛔ |
 
-- 在存储帐户中禁用 NFS 3.0 支持的功能（在启用该支持后）
-
-- 使用 REST API 或 SDK 写入 blob 的功能。 
   
-## <a name="nfs-30-features-not-yet-supported"></a>尚不支持 NFS 3.0 功能
+## <a name="known-issues"></a>已知问题
+
+- 无法在现有存储帐户上启用 NFS 3.0 支持。
+
+- 启用 NFS 3.0 支持后，无法在存储帐户中禁用它。
+
+-  无法在 Azure 门户或 Azure 存储资源管理器中查看文件。 若要列出文件和目录，请[使用 NFS 3.0 协议装载 Blob 存储容器](network-file-system-protocol-support-how-to.md)或使用 [Blob 服务 REST API](/rest/api/storageservices/blob-service-rest-api)。
+
+### <a name="nfs-30-features-not-yet-supported"></a>尚不支持 NFS 3.0 功能
 
 尚不支持以下 NFS 3.0 功能。
 
@@ -128,7 +149,7 @@ Linux 客户端可以从 Azure 虚拟机 (VM) 或本地计算机中，将容器�
 
 - 以只读方式导出容器
 
-## <a name="nfs-30-clients-not-yet-supported"></a>尚不支持 NFS 3.0 客户端
+### <a name="nfs-30-clients-not-yet-supported"></a>尚不支持 NFS 3.0 客户端
 
 尚不支持以下 NFS 3.0 客户端。
 

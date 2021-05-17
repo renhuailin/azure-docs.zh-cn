@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: a0201882b74d2acf57c246d2dc63530ca8b1f010
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d3f7f4e1cdd56675d6084448abc810c9a41992f9
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101692507"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107520133"
 ---
 # <a name="device-update-for-iot-hub-resource-management"></a>IoT 中心设备更新资源管理
 
@@ -96,6 +96,9 @@ ms.locfileid: "101692507"
 
 3. 单击“更新”
 
+   > [!NOTE] 
+   > 如果你使用的是免费的 Azure IoT 中心层，则允许的消息路由数限制为 5。 Device Update for IoT Hub 需要配置 4 条消息路由才能正常工作。 
+
 [了解接受配置的消息路由。](device-update-resources.md) 
 
 
@@ -127,7 +130,11 @@ ms.locfileid: "101692507"
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用适用于 IoT 中心的设备更新来导入更新。](import-update.md)
+请尝试使用下列快速教程之一更新设备：
+
+ - [模拟器上的设备更新](device-update-simulator.md)
+ - [Raspberry Pi 上的设备更新](device-update-raspberry-pi.md)
+ - [Ubuntu 服务器 18.04 x64 包代理上的设备更新](device-update-ubuntu-agent.md)
 
 [了解设备更新帐户和实例。](device-update-resources.md) 
 

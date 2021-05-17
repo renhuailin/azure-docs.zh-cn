@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
 ms.custom: data4ml
-ms.openlocfilehash: 5ab7bac635a0b670087800212727b0d2e2b96934
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ee51288e3c0ced3d12ed7f4e7ba63692d650591
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103472205"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279075"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>使用 Azure 机器学习优化数据处理
 
@@ -86,6 +86,9 @@ CSV 文件通常用于导入和导出数据，因为它们易于在 Excel 中进
 如果偏好 `Spark` | `PySpark`
 适用于小于 1 GB 的数据 | 在本地或对远程 Azure 机器学习计算实例执行 `Pandas`
 适用于大于 10 GB 的数据| 使用 `Ray`、`Dask` 或 `Spark` 移动到群集
+
+> [!TIP]
+> 使用 [to_dask_dataframe()](/python/api/azureml-core/azureml.data.tabulardataset#to-dask-dataframe-sample-size-10000--dtypes-none--on-error--null---out-of-range-datetime--null--) 方法将数据集加载到 Dask 数据帧中，以进行大规模数据处理。 此方法是一个[试验性](/python/api/overview/azure/ml/#stable-vs-experimental)预览功能，可能会随时更改。
 
 ## <a name="next-steps"></a>后续步骤
 

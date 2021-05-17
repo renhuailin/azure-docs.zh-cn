@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 4ba679459686340396e0e4d65344295c0fa9c4be
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 86783df03a395e287a6656b52099cffc579ee31f
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104869950"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226275"
 ---
-# <a name="what-is-azure-application-consistent-snapshot-tool-preview"></a>什么是 Azure 应用程序一致性快照工具（预览版）
+# <a name="what-is-azure-application-consistent-snapshot-tool"></a>什么是 Azure 应用程序一致性快照工具
 
 Azure 应用程序一致性快照工具 (AzAcSnap) 是一个命令行工具，可实现对第三方数据库的数据保护，方式是在执行存储快照之前处理所有所需的业务流程以将第三方数据库置于应用程序一致状态，完成快照之后将它们返回到操作状态。
 
@@ -44,7 +44,7 @@ AzAcSnap 会使用 Azure NetApp 文件和 Azure 大型实例中的卷快照和�
 - **存储卷克隆** 此功能提供高效空间存储卷克隆以用于开发和测试目的。
 - **支持灾难恢复** AzAcSnap 利用存储卷复制，在远程站点恢复复制的应用程序一致性快照。
 
-AzAcSnap 是单个二进制文件。  它不需要额外的代理或插件来与数据库或存储交互（Azure NetApp 文件需要通过 Azure 资源管理器来访问，Azure 大型实例则需要通过 SSH 来访问）。  AzAcSnap 必须安装在已连接到数据库和存储的系统上。  但是，其在安装和配置上的灵活性允许进行单一集中式安装，也允许在每个数据库安装副本的完全分布式安装。
+AzAcSnap 是单个二进制文件。  它不需要额外的代理或插件来与数据库或存储交互（Azure NetApp 文件需要通过 Azure 资源管理器来访问，Azure 大型实例则需要通过 SSH 来访问）。  AzAcSnap 必须安装在已连接到数据库和存储的系统上。  但是，其在安装和配置上的灵活性允许进行单一集中式安装（仅限 Azure NetApp 文件），也允许在每个数据库安装副本的完全分布式安装（Azure NetApp 文件和 Azure 大型实例）。
 
 ## <a name="architecture-overview"></a>体系结构概述
 
@@ -80,7 +80,7 @@ AzAcSnap 是一个轻量级应用程序，通常从外部计划程序执行。  
   - 请参阅[详细信息命令参考](azacsnap-cmd-ref-details.md)。
 - `-c delete` 此命令删除一个存储快照或一组快照。 可以使用 HANA Studio 中的 SAP HANA 备份 ID，或使用存储快照名称。 备份 ID 仅绑定到为数据和共享卷创建的 `hana` 快照。 否则，如果输入快照名称，会搜索所有与输入的快照名称匹配的快照。
   - 请参阅[删除](azacsnap-cmd-ref-delete.md)。
-- `-c restore` 提供两种方法将快照还原到卷，一种是基于快照创建新卷，另一种是将卷回滚到预览状态。
+- `-c restore` 提供两种方法将快照还原到卷，一种是基于快照创建新卷，另一种是将卷回滚到先前状态。
   - `--restore snaptovol` 基于目标卷上的最新快照创建新卷。
   - `-c restore --restore revertvolume` 根据最新的快照，将目标卷还原到先前的状态。
   - 请参阅[还原命令参考](azacsnap-cmd-ref-restore.md)。

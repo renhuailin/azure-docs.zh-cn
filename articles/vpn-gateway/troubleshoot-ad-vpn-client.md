@@ -1,18 +1,19 @@
 ---
-title: VPN 网关：排查 VPN 客户端问题 - Azure AD 身份验证
-description: 排查 VPN 网关 P2S Azure AD 身份验证客户端的问题
+title: 排查点到站点 VPN 客户端问题 - Azure AD 身份验证
+titleSuffix: Azure VPN Gateway
+description: 了解如何对使用 Azure AD 身份验证的 VPN 网关点到站点客户端进行故障排除。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 11/04/2019
+ms.date: 04/29/2021
 ms.author: cherylmc
-ms.openlocfilehash: 56a8514fc2531ba0b18925427814e5bfef7d64bf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d307524fffd9b129044cd0f4e4b20d833db5ba83
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "84988103"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292191"
 ---
 # <a name="troubleshoot-an-azure-ad-authentication-vpn-client"></a>排查 Azure AD 身份验证 VPN 客户端问题
 

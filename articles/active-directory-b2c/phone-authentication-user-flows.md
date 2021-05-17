@@ -8,20 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/01/2021
+ms.date: 04/22/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dd21c1dca0dd54331780ba98f9c53d5b99d6b4e9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: abe9d9cd46c7d4cbcb383ee9a37fc84cd64fcea8
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100557226"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107895970"
 ---
-# <a name="set-up-phone-sign-up-and-sign-in-for-user-flows-preview"></a>为用户流设置电话注册和登录（预览版）
-
-> [!NOTE]
-> 用户流的手机注册和登录以及恢复电子邮件功能处于公共预览版阶段。
+# <a name="set-up-phone-sign-up-and-sign-in-for-user-flows"></a>为用户流设置电话注册和登录
 
 除了电子邮件和用户名之外，你还可以将电话号码注册和登录添加到你的本地帐户标识提供者，从而使电话号码能够在租户范围内成为注册选项。 在为本地帐户启用电话注册和登录后，可将电话注册添加到用户流。
 
@@ -33,13 +30,15 @@ ms.locfileid: "100557226"
 
 - [启用恢复电子邮件提示（预览版）](#enable-the-recovery-email-prompt-preview)，以使用户能够指定在没有电话的情况下可用于恢复其帐户的电子邮件。
 
+- 在注册或登录流程中，向用户[显示同意信息](#enable-consent-information)。 你可以显示默认的同意信息，或自定义你自己的同意信息。
+
 在为用户流配置电话注册时，默认情况下会禁用多重身份验证 (MFA)。 你可以在具有电话注册的用户流中启用 MFA，但是，由于使用电话号码作为主标识符，因此，对于第二个身份验证因素，只提供电子邮件一次性密码这一个选项。
 
 ## <a name="configure-phone-sign-up-and-sign-in-tenant-wide"></a>配置租户范围内的电话注册和登录
 
 在默认情况下，本地帐户标识提供者设置中会启用电子邮件注册。 可以通过选择或取消选择电子邮件注册、用户名或电话号码来更改将在租户中支持的标识类型。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 请确保使用包含 Azure AD B2C 租户的目录，方法是：选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD 租户的目录。
 
@@ -63,7 +62,7 @@ ms.locfileid: "100557226"
 
 以下示例演示如何将电话注册添加到新用户流。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
 
     ![Azure 门户 中的 B2C 租户、目录和订阅窗格](./media/phone-authentication-user-flows/directory-subscription-pane.png)
@@ -110,9 +109,9 @@ ms.locfileid: "100557226"
 
 ### <a name="to-enable-the-recovery-email-prompt"></a>启用恢复电子邮件提示
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
-3. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
+3. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 4. 在 Azure AD B2C 中的“策略”下，选择“用户流” 。
 5. 从列表中选择用户。
 6. 在“设置”下，选择“属性”   。
@@ -139,6 +138,44 @@ ms.locfileid: "100557226"
    - 对于已注册但尚未提供恢复电子邮件的用户，系统会要求他们在登录时提供恢复电子邮件。
 
 4. 输入电子邮件地址，然后选择“发送验证码”。 验证是否已将代码发送到你提供的电子邮件收件箱。 检索该验证码，并将其输入到“验证码”框中。 然后选择“验证验证码”。
+
+## <a name="enable-consent-information"></a>启用同意信息
+
+我们强烈建议你在注册和登录流程中加入同意信息。 我们提供了示例文本。 请参考 [ CTIA 网站](https://www.ctia.org/programs)上的《短代码监视手册》，并咨询你自己的合法或合规性专家，获取有关最终文本和功能配置的指南，以满足合规性需求：
+>
+> 通过提供你的电话号码，即表示同意接收通过短信发送的一次性密码，帮助你登录到&lt;插入：你的应用程序名称&gt;*。* 标准消息和数据费率可能适用。
+>
+> &lt;插入：指向隐私声明的链接&gt;<br/>&lt;插入：指向服务条款的链接&gt;
+
+启用同意信息
+
+1. 登录 [Azure 门户](https://portal.azure.com)。
+2. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
+3. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
+4. 在 Azure AD B2C 中的“策略”下，选择“用户流” 。
+5. 从列表中选择用户。
+6. 在“自定义”下选择“语言”。 
+7. 若要显示同意文本，请选择“启用语言自定义”。
+  
+    ![启用语言自定义](./media/phone-authentication-user-flows/enable-language-customization.png)
+
+8. 若要自定义同意信息，请从列表中选择语言。
+9. 在语言面板中，选择“手机登录页面”。 ****
+10. 选择“下载默认值”。
+
+    ![下载默认值](./media/phone-authentication-user-flows/phone-sign-in-language-override.png)
+
+11. 打开下载的 JSON 文件。 搜索以下文本，并对其进行自定义：
+
+    - disclaimer_link_1_url：请将“替代”更改为“true”，并添加你的隐私信息的 URL。 
+
+    - disclaimer_link_2_url：请将“替代”更改为“true”，并添加你的使用条款的 URL。   
+
+    - disclaimer_msg_intro：请将“替代”更改为“true”，并将“值”更改为所需的免责声明字符串。    
+
+12. 保存文件。 在“上传新替代”下，浏览到文件并将其选中。 确认你看到“上传替代成功”通知。
+
+13. 选择“电话注册页”，然后重复步骤 10 到 12。 
 
 ## <a name="next-steps"></a>后续步骤
 

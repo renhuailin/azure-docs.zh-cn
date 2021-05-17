@@ -6,10 +6,10 @@ ms.date: 02/04/2021
 ms.author: tomfitz
 author: tfitzmac
 ms.openlocfilehash: c59275fca1eb3037b48b7293fc9e507df46b7fcb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99555947"
 ---
 # <a name="convert-template-gallery-in-portal-to-template-specs"></a>将门户中的模板库转换为模板规格
@@ -20,7 +20,7 @@ Azure 门户可用于将 Azure 资源管理器模板（ARM 模板）存储在你
 
 ## <a name="convert-with-powershell-script"></a>使用 PowerShell 脚本转换
 
-要简化模板库中的模板转换，请使用 Azure 快速启动模板存储库中的 PowerShell 脚本。 运行此脚本时，可以为每个模板创建新的模板规格，或下载创建模板规格的模板。此脚本不会从模板库中删除模板。
+要简化模板库中的模板转换，请使用 Azure 快速启动模板存储库中的 PowerShell 脚本。 运行该脚本时，可以为每个模板创建新的模板规范，或下载一个创建模板规范的模板。该脚本不会从模板库中删除该模板。
 
 1. 复制[迁移脚本](https://github.com/Azure/azure-quickstart-templates/blob/master/201-templatespec-migrate-create/Migrate-GalleryItems.ps1)。 保存名称为 Migrate-GalleryItems.ps1 的本地副本。
 1. 要创建新的模板规格，请提供 `-ResourceGroupName` 和 `-Location` 参数的值。 
@@ -58,7 +58,7 @@ Azure 门户可用于将 Azure 资源管理器模板（ARM 模板）存储在你
 1. 提供“名称”、“订阅”、“资源组”、“位置”和“版本”的值。
 1. 选择“下一步：编辑模板”。
 1. 对于模板的内容，粘贴从模板库中复制的模板。
-1. 选择“查看 + 创建”  。
+1. 选择“查看 + 创建”。
 1. 验证成功完成后，选择“创建”。
 
 如果需要与组织中的其他用户共享模板规格，请为需要访问权限的组或用户[设置基于角色的访问控制](../../role-based-access-control/tutorial-role-assignments-group-powershell.md)。

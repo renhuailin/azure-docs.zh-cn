@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: 8248b3ed21561340e963c848dee4430c48829ab1
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 96625959c089c46b04b13216bbb9ea4b74ef4feb
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285291"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331855"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>表单识别器预生成收据模型
 
@@ -23,14 +23,14 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
 
 ## <a name="understanding-receipts"></a>了解收据
 
-许多企业和个人仍然依赖于从销售收据中手动提取的数据。 自动从这些收据提取数据可能会很复杂。 收据可能皱褶、难于辨认、有手写部分，还包含低质量的手机图像。 另外，收据模板和字段可能因市场、地区和商家而有很大的差异。 这些数据提取和字段检测难题使收据处理成为一个独特的问题。  
+许多企业和个人仍然依赖于从销售收据中手动提取的数据。 自动从这些收据提取数据可能会很复杂。 收据可能皱褶、难于辨认、有手写部分，还包含低质量的手机图像。 另外，收据模板和字段可能因市场、地区和商家而有很大的差异。 这些数据提取和字段检测难题使收据处理成为一个独特的问题。
 
 收据 API 使用光学字符识别 (OCR) 和预生成模型来支持大量的收据处理场景。 借助收据 API，无需训练模型。 将收据图像发送到分析收据 API，就可以提取数据。
 
 ![收据示例](./media/receipts-example.jpg)
 
 
-## <a name="what-does-the-receipt-service-do"></a>收据服务有什么作用？ 
+## <a name="what-does-the-receipt-service-do"></a>收据服务有什么作用？
 
 预生成的收据服务提取销售收据的内容 &mdash; 通常在餐馆、零售商或杂货店收到的收据类型。
 
@@ -73,17 +73,18 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
 
 [!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
-## <a name="supported-locales"></a>支持的区域设置 
+## <a name="supported-locales"></a>支持的区域设置
 
-* 预生成的 Receipt v2.0 (GA) 支持 EN-US 区域设置的销售收据
-* 预生成的 Receipt v2.1-preview.3（公开预览版）为以下 EN 收据区域设置添加了额外支持： 
-  * EN-AU 
-  * EN-CA 
-  * EN-GB 
-  * EN-IN 
+* 预生成的 receipt v2.0 (GA) 支持 en-us 区域设置的销售收据 
+* 预生成的 receipt v2.1-preview.3（公共预览版）为以下英语收据区域设置添加了额外支持：
+
+* **en-au**
+* **en-ca**
+* **en-gb**
+* **en-in**
 
   > [!NOTE]
-  > 语言输入 
+  > 语言输入
   >
   > 预生成的 Receipt v2.1-preview.3 提供了一个可选的 request 参数，用于指定来自其他英语市场的收据区域设置。 对于用澳大利亚 (EN-AU)、加拿大 (EN-CA)、英国 (EN-GB) 和印度 (EN-IN) 英语撰写的销售收据，可以指定区域设置以获得改进的结果。 如果在 v2.1-preview.3 中未指定任何区域设置，则模型默认为 EN-US 模型。
 
@@ -117,28 +118,28 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
 对 Get Analyze Receipt Result 操作的响应将是已提取所有信息的收据的结构化表示形式。  有关[示例收据文件](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg)及其结构化输出[示例收据输出](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/receipt-result.json)，请参阅此处。
 
 参阅下面的成功 JSON 响应示例：
-* `"readResults"` 节点包含所有已识别的文本。 文本按页，然后按行，然后按单个单词进行组织。 
+* `"readResults"` 节点包含所有已识别的文本。 文本按页，然后按行，然后按单个单词进行组织。
 * `"documentResults"` 节点包含模型发现的特定于名片的值。 在此，你可以找到有用的键/值对，如名字、姓氏、公司名等。
 
 ```json
-{ 
+{
   "status":"succeeded",
   "createdDateTime":"2019-12-17T04:11:24Z",
   "lastUpdatedDateTime":"2019-12-17T04:11:32Z",
-  "analyzeResult":{ 
+  "analyzeResult":{
     "version":"2.0.0",
-    "readResults":[ 
-      { 
+    "readResults":[
+      {
         "page":1,
         "angle":0.6893,
         "width":1688,
         "height":3000,
         "unit":"pixel",
         "language":"en",
-        "lines":[ 
-          { 
+        "lines":[
+          {
             "text":"Contoso",
-            "boundingBox":[ 
+            "boundingBox":[
               635,
               510,
               1086,
@@ -148,10 +149,10 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
               643,
               604
             ],
-            "words":[ 
-              { 
+            "words":[
+              {
                 "text":"Contoso",
-                "boundingBox":[ 
+                "boundingBox":[
                   639,
                   510,
                   1087,
@@ -169,24 +170,24 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
         ]
       }
     ],
-    "documentResults":[ 
-      { 
+    "documentResults":[
+      {
         "docType":"prebuilt:receipt",
-        "pageRange":[ 
+        "pageRange":[
           1,
           1
         ],
-        "fields":{ 
-          "ReceiptType":{ 
+        "fields":{
+          "ReceiptType":{
             "type":"string",
             "valueString":"Itemized",
             "confidence":0.692
           },
-          "MerchantName":{ 
+          "MerchantName":{
             "type":"string",
             "valueString":"Contoso Contoso",
             "text":"Contoso Contoso",
-            "boundingBox":[ 
+            "boundingBox":[
               378.2,
               292.4,
               1117.7,
@@ -198,16 +199,16 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
             ],
             "page":1,
             "confidence":0.613,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/0/words/0",
               "#/readResults/0/lines/1/words/0"
             ]
           },
-          "MerchantAddress":{ 
+          "MerchantAddress":{
             "type":"string",
             "valueString":"123 Main Street Redmond, WA 98052",
             "text":"123 Main Street Redmond, WA 98052",
-            "boundingBox":[ 
+            "boundingBox":[
               302,
               675.8,
               848.1,
@@ -219,7 +220,7 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
             ],
             "page":1,
             "confidence":0.99,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/2/words/0",
               "#/readResults/0/lines/2/words/1",
               "#/readResults/0/lines/2/words/2",
@@ -228,11 +229,11 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
               "#/readResults/0/lines/3/words/2"
             ]
           },
-          "MerchantPhoneNumber":{ 
+          "MerchantPhoneNumber":{
             "type":"phoneNumber",
             "valuePhoneNumber":"+19876543210",
             "text":"987-654-3210",
-            "boundingBox":[ 
+            "boundingBox":[
               278,
               1004,
               656.3,
@@ -244,15 +245,15 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
             ],
             "page":1,
             "confidence":0.99,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/4/words/0"
             ]
           },
-          "TransactionDate":{ 
+          "TransactionDate":{
             "type":"date",
             "valueDate":"2019-06-10",
             "text":"6/10/2019",
-            "boundingBox":[ 
+            "boundingBox":[
               265.1,
               1228.4,
               525,
@@ -264,15 +265,15 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
             ],
             "page":1,
             "confidence":0.99,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/5/words/0"
             ]
           },
-          "TransactionTime":{ 
+          "TransactionTime":{
             "type":"time",
             "valueTime":"13:59:00",
             "text":"13:59",
-            "boundingBox":[ 
+            "boundingBox":[
               541,
               1248,
               677.3,
@@ -284,20 +285,20 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
             ],
             "page":1,
             "confidence":0.977,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/5/words/1"
             ]
           },
-          "Items":{ 
+          "Items":{
             "type":"array",
-            "valueArray":[ 
-              { 
+            "valueArray":[
+              {
                 "type":"object",
-                "valueObject":{ 
-                  "Quantity":{ 
+                "valueObject":{
+                  "Quantity":{
                     "type":"number",
                     "text":"1",
-                    "boundingBox":[ 
+                    "boundingBox":[
                       245.1,
                       1581.5,
                       300.9,
@@ -309,15 +310,15 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
                     ],
                     "page":1,
                     "confidence":0.92,
-                    "elements":[ 
+                    "elements":[
                       "#/readResults/0/lines/7/words/0"
                     ]
                   },
-                  "Name":{ 
+                  "Name":{
                     "type":"string",
                     "valueString":"Cappuccino",
                     "text":"Cappuccino",
-                    "boundingBox":[ 
+                    "boundingBox":[
                       322,
                       1586,
                       654.2,
@@ -329,15 +330,15 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
                     ],
                     "page":1,
                     "confidence":0.923,
-                    "elements":[ 
+                    "elements":[
                       "#/readResults/0/lines/7/words/1"
                     ]
                   },
-                  "TotalPrice":{ 
+                  "TotalPrice":{
                     "type":"number",
                     "valueNumber":2.2,
                     "text":"$2.20",
-                    "boundingBox":[ 
+                    "boundingBox":[
                       1107.7,
                       1584,
                       1263,
@@ -349,7 +350,7 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
                     ],
                     "page":1,
                     "confidence":0.918,
-                    "elements":[ 
+                    "elements":[
                       "#/readResults/0/lines/8/words/0"
                     ]
                   }
@@ -358,11 +359,11 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
               ...
             ]
           },
-          "Subtotal":{ 
+          "Subtotal":{
             "type":"number",
             "valueNumber":11.7,
             "text":"11.70",
-            "boundingBox":[ 
+            "boundingBox":[
               1146,
               2221,
               1297.3,
@@ -374,15 +375,15 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
             ],
             "page":1,
             "confidence":0.955,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/13/words/1"
             ]
           },
-          "Tax":{ 
+          "Tax":{
             "type":"number",
             "valueNumber":1.17,
             "text":"1.17",
-            "boundingBox":[ 
+            "boundingBox":[
               1190,
               2359,
               1304,
@@ -394,15 +395,15 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
             ],
             "page":1,
             "confidence":0.979,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/15/words/1"
             ]
           },
-          "Tip":{ 
+          "Tip":{
             "type":"number",
             "valueNumber":1.63,
             "text":"1.63",
-            "boundingBox":[ 
+            "boundingBox":[
               1094,
               2479,
               1267.7,
@@ -414,15 +415,15 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
             ],
             "page":1,
             "confidence":0.941,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/17/words/1"
             ]
           },
-          "Total":{ 
+          "Total":{
             "type":"number",
             "valueNumber":14.5,
             "text":"$14.50",
-            "boundingBox":[ 
+            "boundingBox":[
               1034.2,
               2617,
               1387.5,
@@ -434,7 +435,7 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
             ],
             "page":1,
             "confidence":0.985,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/19/words/0"
             ]
           }
@@ -445,23 +446,23 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
 }
 ```
 
-## <a name="customer-scenarios"></a>客户场景  
+## <a name="customer-scenarios"></a>客户场景
 
 使用收据 API 提取的数据可用于执行各种任务。 下面是客户使用收据 API 完成的几个示例。
 
-### <a name="business-expense-reporting"></a>业务零用金报销单  
+### <a name="business-expense-reporting"></a>业务零用金报销单
 
-通常，归档业务支出需要花时间手动输入收据图像中的数据。 使用收据 API，可以使用提取的字段部分自动执行此过程，并快速分析收据。  
+通常，归档业务支出需要花时间手动输入收据图像中的数据。 使用收据 API，可以使用提取的字段部分自动执行此过程，并快速分析收据。
 
-收据 API 是一个简单的 JSON 输出，允许你以多种方式使用提取的字段值。 与内部费用申请集成，以预填充零用金报销单。 有关此场景的详细信息，请阅读 Acumatica 如何利用收据 API 来[简化零用金报销的过程](https://customers.microsoft.com/story/762684-acumatica-partner-professional-services-azure)。  
+收据 API 是一个简单的 JSON 输出，允许你以多种方式使用提取的字段值。 与内部费用申请集成，以预填充零用金报销单。 有关此场景的详细信息，请阅读 Acumatica 如何利用收据 API 来[简化零用金报销的过程](https://customers.microsoft.com/story/762684-acumatica-partner-professional-services-azure)。
 
 ### <a name="auditing-and-accounting"></a>审核和记帐
 
-还可以使用收据 API 输出在开支报告和报销过程的不同时间点对大量支出进行分析。 可以处理收据，对其进行分类，以便手动审核或快速批准。  
+还可以使用收据 API 输出在开支报告和报销过程的不同时间点对大量支出进行分析。 可以处理收据，对其进行分类，以便手动审核或快速批准。
 
 收据输出对于企业或个人的一般帐簿也很有用。 使用收据 API，可以将任何原始收据图像/PDF 数据转换为可操作的数字输出。
 
-### <a name="consumer-behavior"></a>消费者行为 
+### <a name="consumer-behavior"></a>消费者行为
 
 收据包含有用的数据，可用于分析消费者行为和购物趋势。
 

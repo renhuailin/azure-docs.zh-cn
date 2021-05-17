@@ -1,18 +1,18 @@
 ---
-title: 在虚拟机之间进行复制和粘贴： Azure 堡垒
+title: 复制并粘贴到虚拟机以及从中进行复制和粘贴：Azure Bastion
 description: 本文介绍如何使用 Bastion 复制并粘贴到 Azure VM 以及从中进行复制和粘贴。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 05/04/2020
+ms.date: 03/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: 50f7906992aa19daa205a30f71ce21456bafe558
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
-ms.translationtype: MT
+ms.openlocfilehash: 4b0c2b734366f9a74a9b007ab9450ab4b4f51feb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079150"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104800425"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>复制并粘贴到虚拟机：Azure Bastion
 
@@ -26,7 +26,7 @@ ms.locfileid: "92079150"
 
    ![允许剪贴板](./media/bastion-vm-manage/allow.png)
 
-仅支持文本复制/粘贴。 对于直接复制和粘贴，浏览器可能会在 Bastion 会话进行初始化时提示你它需要访问剪贴板。 允许网页访问剪贴板。
+仅支持文本复制/粘贴。 对于直接复制和粘贴，浏览器可能会在 Bastion 会话进行初始化时提示你它需要访问剪贴板。 允许网页访问剪贴板。 如果使用的是 Mac，则粘贴的键盘快捷方式为 SHIFT-CTRL-V。
 
 ## <a name="copy-to-a-remote-session"></a><a name="to"></a>复制到远程会话
 
@@ -35,13 +35,13 @@ ms.locfileid: "92079150"
 1. 将本地设备中的文本/内容复制到本地剪贴板。
 1. 在远程会话期间，通过选择两个箭头启动 Bastion 剪贴板访问工具面板。 这些箭头位于会话的左中位置。
 
-   ![屏幕截图，显示在窗口左侧突出显示的工具调色板的启动箭头。](./media/bastion-vm-manage/left.png)
+   ![屏幕截图显示了在窗口左侧突出显示的工具面板的启动箭头。](./media/bastion-vm-manage/left.png)
 
-   ![屏幕截图显示在堡垒中复制的文本的剪贴板。](./media/bastion-vm-manage/clipboard.png)
+   ![屏幕截图显示了在 Bastion 中复制的文本的剪贴板。](./media/bastion-vm-manage/clipboard.png)
 1. 通常，已复制的文本会自动显示在 Bastion 复制粘贴面板上。 如果文本不在那里，则将文本粘贴到面板上的文本区域中。
 1. 文本位于文本区域中后，可以将其粘贴到远程会话。
 
-   ![屏幕截图，显示突出显示的 "复制/粘贴" 按钮和一个复制到远程会话的示例文本字符串。](./media/bastion-vm-manage/local.png)
+   ![屏幕截图显示了突出显示的复制/粘贴按钮和复制到远程会话的示例文本字符串。](./media/bastion-vm-manage/local.png)
 
 ## <a name="copy-from-a-remote-session"></a><a name="from"></a>从远程会话复制
 

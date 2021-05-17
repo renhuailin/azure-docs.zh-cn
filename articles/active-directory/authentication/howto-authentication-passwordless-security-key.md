@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 04/21/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71a29a2a7e379e253b52813eb7a76f669abbf668
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 436a972693aafd220d277d7411c0da12636e9cc6
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101653824"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829793"
 ---
 # <a name="enable-passwordless-security-key-sign-in"></a>启用无密码安全密钥登录 
 
@@ -33,6 +33,7 @@ ms.locfileid: "101653824"
 
 若要使用安全密钥来登录 Web 应用和服务，你必须具有支持 WebAuthN 协议的浏览器。 这种浏览器包括 Microsoft Edge、Chrome、Firefox 和 Safari。
 
+
 ## <a name="prepare-devices"></a>准备设备
 
 对于已加入 Azure AD 的设备，最佳体验是在 Windows 10 版本 1903 或更高版本上。
@@ -47,32 +48,32 @@ ms.locfileid: "101653824"
 
 ### <a name="enable-fido2-security-key-method"></a>启用 FIDO2 安全密钥方法
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 浏览到“Azure Active Directory” > “安全” > “身份验证方法” > “身份验证方法策略”   。
-1. 在“FIDO2 安全密钥”方法下，选择以下选项：
-   1. 启用 -“是”或“否”
-   1. 目标 -“所有用户”或“选择用户”
-1. **保存** 配置。
+1. 在方法“FIDO2 安全密钥”下，选择以下选项：
+   1. “启用”-“是”或“否”
+   1. “目标”-“所有用户”或“选择用户”
+1. 保存配置。
 
 ## <a name="user-registration-and-management-of-fido2-security-keys"></a>FIDO2 安全密钥的用户注册和管理
 
 1. 浏览到 [https://myprofile.microsoft.com](https://myprofile.microsoft.com)。
 1. 如果尚未登录，请登录。
 1. 单击“安全信息”。
-   1. 如果用户已经至少注册了一个 Azure AD 多重身份验证方法，他们可以立即注册 FIDO2 安全密钥。
-   1. 如果他们还没有至少注册一个 Azure AD 多重身份验证方法，他们就必须添加一个。
+   1. 如果用户已注册至少一种 Azure AD 多重身份验证方法，则他们可以立即注册 FIDO2 安全密钥。
+   1. 如果他们尚未注册任何 Azure AD 多重身份验证方法，则必须添加一种。
 1. 通过单击“添加方法”并选择“安全密钥”来添加 FIDO2 安全密钥 。
-1. 选择“USB 设备”或“NFC 设备” 。
+1. 选择“USB 设备”或“NFC 设备”。
 1. 准备好密钥，然后选择“下一步”。
 1. 屏幕上将会出现一个框，要求用户为你的安全密钥创建/输入 PIN，然后为该密钥执行所需的笔势（生物识别或触摸）。
-1. 用户将会返回到合并注册体验，并且需要为该密钥提供一个有意义的名称，以便用户在有多个密钥的情况下可以识别。 单击“下一步”。
-1. 单击“完成”，以完成此过程。
+1. 用户将返回到合并注册体验，并需要为密钥提供有意义的名称，以便识别出特定密钥（如果他们有多个密钥）。 单击 **“下一步”** 。
+1. 单击“完成”以完成此过程。
 
-## <a name="sign-in-with-passwordless-credential"></a>使用无密码凭据登录
+## <a name="sign-in-with-passwordless-credential"></a>通过无密码凭据登录
 
-在下面的示例中，用户已预配了他们的 FIDO2 安全密钥。 在 Windows 10 版本 1903 或更高版本上的受支持的浏览器内，用户可以选择使用他们的 FIDO2 安全密钥来登录到 Web。
+在下面的示例中，用户已预配 FIDO2 安全密钥。 在 Windows 10 版本 1903 或更高版本中，用户可以选择在受支持的浏览器内使用 FIDO2 安全密钥登录 Web。
 
-![Microsoft Edge 中的安全密钥登录](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-edge-sign-in.png)
+![安全密钥登录 Microsoft Edge](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-edge-sign-in.png)
 
 ## <a name="troubleshooting-and-feedback"></a>故障排除和反馈
 
@@ -89,6 +90,10 @@ ms.locfileid: "101653824"
 ### <a name="security-key-provisioning"></a>安全密钥预配
 
 管理员预配和取消预配安全密钥不可用。
+
+### <a name="cached-logon-on-hybrid-azure-ad-joined-devices"></a>混合 Azure AD 联接设备上缓存的登录
+
+在运行 Windows 10 版本 20H2 的混合 Azure AD 联接设备上，使用 FIDO2 密钥的缓存登录失败。 因此，无法访问本地域控制器时，用户无法登录。 此问题目前正在调查中。
 
 ### <a name="upn-changes"></a>UPN 更改
 

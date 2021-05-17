@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 03/25/2021
-ms.openlocfilehash: 893d38d7dcf2ef0910bc46d3e9bfd168c2a89162
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/20/2021
+ms.openlocfilehash: 318eebcca3053be2164a1fc52905f36f26b11a6d
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105543357"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331117"
 ---
 # <a name="create-a-test-offer"></a>创建测试产品/服务
 
@@ -94,10 +94,11 @@ DEV 产品/服务应具有价格为零或低价的计划。 PROD 产品/服务�
 | ------------ | ------------- |
 | $0.00 | 将总交易费用设置为零，这样不会产生财务影响。 在调用计量 API 时使用此价格，或在开发解决方案时将其用于测试产品/服务中的购买计划。 |
 | $0.01 - $49.99 | 使用此价格范围来测试分析、报告和购买过程。 |
-| $50.00 及以上 | 使用此价格范围测试付款。 有关我们的付款计划的信息，请参阅[付款计划和流程](/partner-center/payout-policy-details)。 |
+| 50.00 - 100.00 美元 | 使用此价格范围测试付款。 有关我们的付款计划的信息，请参阅[付款计划和流程](/partner-center/payout-policy-details)。 |
 |||
 
-若要避免在测试中支付存储服务费，请创建[支持工单](support.md)。
+> [!IMPORTANT]
+>  为了避免在测试中支付存储服务费，请在购买测试后 7 天内创建[支持票证](support.md)。
 
 #### <a name="free-trial"></a>免费试用
 

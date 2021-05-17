@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 04/29/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d939207af195abf117645e17f4ff189b163244f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 00c6fc7916355586787bb91225e71c4db280ed26
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305525"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315907"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的无密码身份验证选项
 
@@ -26,7 +26,7 @@ ms.locfileid: "107305525"
 | --- | --- | --- |
 | 无密码 | Windows 10 设备、电话或安全密钥 | 生物识别或 PIN |
 
-当涉及身份验证时，每个组织都有不同的需求。 Microsoft 提供了以下三个与 Azure Active Directory (Azure AD) 集成的无密码身份验证选项：
+当涉及身份验证时，每个组织都有不同的需求。 Microsoft 全球 Azure 和 Azure 政府提供了下面 3 个与 Azure Active Directory (Azure AD) 集成的无密码身份验证选项：
 
 - Windows Hello 企业版
 - Microsoft Authenticator 应用
@@ -161,7 +161,7 @@ FIDO2 安全密钥可用于登录到其 Azure AD 或已建立混合 Azure AD 联
 - 最终用户可以在其帐户门户中注册和管理这些无密码身份验证方法
 - 最终用户可以通过以下无密码身份验证方法登录：
    - Microsoft Authenticator 应用：适用于使用 Azure AD 身份验证的情况，包括跨所有浏览器、在 Windows 10 安装期间以及与任何操作系统上集成的移动应用使用。
-   - 安全密钥：适用于 Windows 10 的锁屏界面和受支持的浏览器（如旧版和新版 Microsoft Edge）中的 Web。
+   - 安全密钥：适用于 OOBE 中的 Windows 10 安装程序（无论是否使用 Windows AutoILO）、Windows 10 的锁屏界面，以及受支持的浏览器（例如旧版和新版 Microsoft Edge）中的 Web。
 
 ## <a name="choose-a-passwordless-method"></a>选择无密码方法
 

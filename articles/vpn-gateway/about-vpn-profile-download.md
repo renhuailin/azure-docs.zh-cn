@@ -1,18 +1,19 @@
 ---
-title: Azure VPN 网关：关于 P2S VPN 客户端配置文件
-description: 使用本文查找 VPN 客户端配置文件所需的信息。
+title: 关于点到站点 VPN 客户端配置文件
+titleSuffix: Azure VPN Gateway
+description: 了解 P2S VPN 客户端配置文件。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/08/2021
 ms.author: cherylmc
-ms.openlocfilehash: 9bb66363d525648df08f32451842402ad1d0d93b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d26f65dfa8419b3c07825774423dec4bd5557a05
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99979058"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227805"
 ---
 # <a name="working-with-p2s-vpn-client-profile-files"></a>使用 P2S VPN 客户端配置文件
 

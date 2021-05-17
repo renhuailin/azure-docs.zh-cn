@@ -1,19 +1,19 @@
 ---
 title: 使用 P2S VPN 和多个身份验证类型连接到 VNet：门户
 titleSuffix: Azure VPN Gateway
-description: 在 Azure 门户中使用多个身份验证类型通过 P2S 连接到 VNet。
+description: 了解如何使用多种身份验证类型通过 P2S 连接到 VNet。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: d405f4b10808b7d39c0d116f2c9006c85532b4f9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8141d44aa4da394726d8c45a1f8514bdcaac09aa
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101744470"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229371"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-multiple-authentication-types-azure-portal"></a>使用多个身份验证类型配置与 VNet 的点到站点 VPN 连接：Azure 门户
 
@@ -105,7 +105,7 @@ ms.locfileid: "101744470"
 
 * [Azure 证书](vpn-gateway-howto-point-to-site-resource-manager-portal.md#type)
 * [RADIUS](point-to-site-how-to-radius-ps.md)
-* [Azure Active Directory](openvpn-azure-ad-tenant.md)
+* Azure Active Directory
 
 ## <a name="vpn-client-configuration-package"></a><a name="clientconfig"></a>VPN 客户端配置包
 

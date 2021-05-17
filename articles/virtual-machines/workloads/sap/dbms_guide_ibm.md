@@ -1,24 +1,24 @@
 ---
-title: 针对 SAP 工作负荷的 IBM Db2 Azure 虚拟机 DBMS 部署 |Microsoft Docs
+title: 适用于 SAP 工作负荷的 IBM Db2 Azure 虚拟机 DBMS 部署 | Microsoft Docs
 description: 适用于 SAP 工作负荷的 IBM Db2 Azure 虚拟机 DBMS 部署
 services: virtual-machines-linux,virtual-machines-windows
 author: msjuergent
 manager: bburns
 tags: azure-resource-manager
-keywords: Azure，Db2，SAP，IBM
+keywords: Azure、Db2、SAP、IBM
 ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/20/2020
+ms.date: 04/27/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f89f218c82505fd6bc261d41938d4619b32bf8a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 8e21443d6f04d693f64d92b71f3f616d1083bf82
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675967"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146232"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 IBM Db2 Azure 虚拟机 DBMS 部署
 
@@ -45,7 +45,7 @@ ms.locfileid: "101675967"
 | [2002167] |Red Hat Enterprise Linux 7.x：安装和升级 |
 | [1597355] |适用于 Linux 的交换空间建议 |
 
-在阅读本文档之前，应已经阅读了[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)文档以及 [Azure 文档上的 SAP 工作负荷](./get-started.md)中的其他指南。 
+在阅读本文档之前，你应已阅读[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)文档，以及 [Azure 文档上的 SAP 工作负荷](./get-started.md)中的其他指南。 
 
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-version-support"></a>IBM DB2 for Linux、UNIX 和 Windows 版本支持
@@ -55,7 +55,7 @@ ms.locfileid: "101675967"
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>在 Azure VM 中安装 SAP 的 IBM DB2 for Linux、UNIX 和 Windows 配置准则
 ### <a name="storage-configuration"></a>存储配置
-有关 SAP 工作负荷的 Azure 存储类型的概述，请参阅文章 [适用于 sap 工作负荷的 Azure 存储类型](./planning-guide-storage.md) ：所有数据库文件都必须存储在 azure 块存储的已装载磁盘上 (WINDOWS： NFFS、Linux： xfs、ext4 或 ext3) 。 数据库文件 **不** 支持任何类型的网络驱动器或远程共享（例如以下 Azure 服务）： 
+有关 SAP 工作负荷的 Azure 存储类型的概述，请参阅[适用于 SAP 工作负荷的 Azure 存储类型](./planning-guide-storage.md)一文。所有数据库文件都必须存储在 Azure 块存储的已装载磁盘上（Windows：NTFS，Linux：xfs 或 ext3）。 数据库文件不支持任何类型的网络驱动器或远程共享（例如以下 Azure 服务）： 
 
 * [Microsoft Azure 文件服务](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
@@ -63,76 +63,79 @@ ms.locfileid: "101675967"
 
 使用基于 Azure 页 BLOB 存储或托管磁盘的磁盘时，[适用于 SAP 工作负载的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中的表述也适用于利用 DB2 DBMS 进行的部署。
 
-如先前在文档通用部分中所述，Azure 磁盘的 IOPS 吞吐量存在配额。 确切的配额因所用 VM 类型而异。 可以在[此处 (Linux)][virtual-machines-sizes-linux] 和[此处 (Windows)][virtual-machines-sizes-windows] 找到 VM 类型及其配额的列表。
+如先前在文档通用部分中所述，Azure 磁盘的 IOPS 吞吐量存在配额。 确切的配额因所用 VM 类型而异。 你可在[此处 (Linux)][virtual-machines-sizes-linux] 和[此处 (Windows)][virtual-machines-sizes-windows] 找到 VM 类型及其配额的列表。
 
 只要每个磁盘当前的 IOPS 配额够用，就可以将所有数据库文件存储在装载的单个磁盘上。 但应该始终在不同的磁盘/VHD 上分隔数据文件和事务日志文件。
 
 有关性能注意事项，另请参阅 SAP 安装指南中的“数据库目录的数据安全和性能注意事项”一章。
 
-或者，你可以使用 Windows 存储池 (仅在 Windows Server 2012 和更高) 版本中可用，如 [Azure 虚拟机 DBMS 部署的 Azure 虚拟机 DBMS 部署（适用于 SAP 工作负荷）部署](dbms_guide_general.md) 或 Linux 上的 Mdadm 或 Linux 上的，以通过多个磁盘创建一个大型逻辑设备
+也可以按[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中所述，使用 Windows 存储池（只有 Windows Server 2012 及更高版本中提供），或者使用 Linux 上的 LVM 或 mdadm，在多个磁盘上创建一个大型逻辑设备。
 
-<!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
-
-对于包含和目录的 Db2 存储路径的磁盘 `sapdata` `saptmp` ，必须将物理磁盘扇区大小指定为 512 KB。 使用 Windows 存储池时，必须通过命令行界面使用参数 `-LogicalSectorSizeDefault`，以手动方式创建存储池。 有关详细信息，请参阅 <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>。
+<!-- log_dir, sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
 对于 Azure M 系列 VM，使用 Azure 写入加速器时，与 Azure 高级存储性能相比，可通过多种因素减少写入事务日志的延迟。 因此，应该为形成 DB2 事务日志卷的 VHD 部署 Azure 写入加速器。 有关详细信息，请阅读文档[写入加速器](../../how-to-enable-write-accelerator.md)。
 
+IBM Db2 LUW 11.5 已发布对 4 KB 扇区大小的支持。 在旧版 Db2 中，必须使用 512 个字节的扇区大小。 高级 SSD 盘为原生 4 KB，并具备 512 字节的仿真。 默认情况下，超级磁盘使用 4 KB 的扇区大小。 你可以在创建超级磁盘期间启用 512 个字节的扇区大小。 有关详细信息，请参阅[使用 Azure 超级磁盘](../../disks-enable-ultra-ssd.md#deploy-an-ultra-disk---512-byte-sector-size)。 低于 11.5 的 IBM Db2 LUW 版本只支持 512 个字节的扇区大小。
+
+在 Windows 上，将存储池用于 `log_dir`、`sapdata` 和 `saptmp` 目录的 Db2 存储路径时，必须将物理磁盘扇区大小指定为 512 个字节。 使用 Windows 存储池时，必须通过命令行界面使用参数 `-LogicalSectorSizeDefault`，以手动方式创建存储池。 有关详细信息，请参阅 <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>。
+
+
 ## <a name="recommendation-on-vm-and-disk-structure-for-ibm-db2-deployment"></a>针对 IBM Db2 部署的 VM 和磁盘结构的建议
 
-SAP 支持说明 [1928533]中列出的任何 VM 类型都支持 IBM DB2 For Sap NetWeaver 应用程序。  用于运行 IBM Db2 数据库的建议 VM 系列为大型多 tb 数据库 Esd_v4/Eas_v4/Es_v3 和 M/M_v2 系列。 可以通过启用 M 系列写入加速器来改善 IBM Db2 事务日志磁盘写入性能。 
+SAP 支持说明 [1928533] 中列出的任何 VM 类型都支持 IBM Db2 for SAP NetWeaver 应用程序。  建议用于运行 IBM Db2 数据库的 VM 系列是用于大型多 TB 数据库的 Esd_v4/Eas_v4/Es_v3 和 M/M_v2 系列。 通过启用 M 系列写入加速器，可以提升 IBM Db2 事务日志磁盘写入性能。 
 
-下面是适用于各种规模的基准配置，以及从小到大的 Db2 部署使用 SAP。 此列表基于 Azure 高级存储。 不过，还可以使用 Db2 完全支持 Azure Ultra 磁盘，还可以使用它们。 只需使用容量、突发吞吐量和突发 IOPS 的值即可定义超磁盘配置。 可以将/db2//log_dir 的 IOPS 限制为 <SID> 大约 5000 iops。 
+下面是 Db2 部署上 SAP 的各种大小（从小到大）和用途的基准配置。 此列表基于 Azure 高级存储。 不过，Azure 超级磁盘也完全支持 Db2，因此也可以使用 Azure 超级磁盘。 请使用容量、突发吞吐量和突发 IOPS 的值来定义超级磁盘配置。 可以将/db2/<SID>/log_dir 的 IOPS 限制为大约 5000 IOPS。 
 
-#### <a name="extra-small-sap-system-database-size-50---200-gb-example-solution-manager"></a>超大小型 SAP 系统：数据库大小 50-200 GB：示例解决方案管理器
-| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | Caching |
+#### <a name="extra-small-sap-system-database-size-50---200-gb-example-solution-manager"></a>超小型 SAP 系统：数据库大小 50 - 200 GB：示例解决方案管理器
+| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘的 NR |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发吞吐量 [GB] | 条带大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E4ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  ||  |
-|vCPU：4 |/db2/ <SID> /sapdata |P10 |2 |1,000  |200  |256  |7,000  |340  |256 KB |ReadOnly |
-|RAM： 32 GiB |/db2/ <SID> /saptmp |P6 |1 |240  |50  |128  |3,500  |170  | ||
-| |/db2/ <SID> /log_dir |P6 |2 |480  |100  |128  |7,000  |340  |64 KB ||
-| |/db2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  || |
+|vCPU：4 |/db2/<SID>/sapdata |P10 |2 |1,000  |200  |256  |7,000  |340  |256 KB |ReadOnly |
+|RAM：32 GiB |/db2/<SID>/saptmp |P6 |1 |240  |50  |128  |3,500  |170  | ||
+| |/db2/<SID>/log_dir |P6 |2 |480  |100  |128  |7,000  |340  |64 KB ||
+| |/db2/<SID>/offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  || |
 
-#### <a name="small-sap-system-database-size-200---750-gb-small-business-suite"></a>小型 SAP 系统：数据库大小 200-750 GB：小型企业套件
-| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | Caching |
+#### <a name="small-sap-system-database-size-200---750-gb-small-business-suite"></a>小型 SAP 系统：数据库大小为 200 - 750 GB：小型企业套件
+| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘的 NR |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发吞吐量 [GB] | 条带大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E16ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
-|vCPU：16 |/db2/ <SID> /sapdata |P15 |4 |4400  |500  |1.024  |14,000  |680  |256 KB |ReadOnly |
-|RAM： 128 GiB |/db2/ <SID> /saptmp |P6 |2 |480  |100  |128  |7,000  |340  |128 KB ||
-| |/db2/ <SID> /log_dir |P15 |2 |2,200  |250  |512  |7,000  |340  |64 KB ||
-| |/db2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  ||| 
+|vCPU：16 |/db2/<SID>/sapdata |P15 |4 |4,400  |500  |1.024  |14,000  |680  |256 KB |ReadOnly |
+|RAM：128 GiB |/db2/<SID>/saptmp |P6 |2 |480  |100  |128  |7,000  |340  |128 KB ||
+| |/db2/<SID>/log_dir |P15 |2 |2,200  |250  |512  |7,000  |340  |64 KB ||
+| |/db2/<SID>/offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  ||| 
 
-#### <a name="medium-sap-system-database-size-500---1000-gb-small-business-suite"></a>中型 SAP 系统：数据库大小 500-1000 GB：小型企业套件
-| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | Caching |
+#### <a name="medium-sap-system-database-size-500---1000-gb-small-business-suite"></a>中型 SAP 系统：数据库大小为 500 - 1000 GB：小型企业套件
+| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘的 NR |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发吞吐量 [GB] | 条带大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E32ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
-|vCPU：32 |/db2/ <SID> /sapdata |P30 |2 |10,000  |400  |2.048  |10,000  |400  |256 KB |ReadOnly |
-|RAM： 256 GiB |/db2/ <SID> /saptmp |P10 |2 |1,000  |200  |256  |7,000  |340  |128 KB ||
-| |/db2/ <SID> /log_dir |P20 |2 |4600  |300  |1.024  |7,000  |340  |64 KB ||
-| |/db2/ <SID> /offline_log_dir |P15 |1 |1,100  |125  |256  |3,500  |170  ||| 
+|vCPU：32 |/db2/<SID>/sapdata |P30 |2 |10,000  |400  |2.048  |10,000  |400  |256 KB |ReadOnly |
+|RAM：256 GiB |/db2/<SID>/saptmp |P10 |2 |1,000  |200  |256  |7,000  |340  |128 KB ||
+| |/db2/<SID>/log_dir |P20 |2 |4,600  |300  |1.024  |7,000  |340  |64 KB ||
+| |/db2/<SID>/offline_log_dir |P15 |1 |1,100  |125  |256  |3,500  |170  ||| 
 
-#### <a name="large-sap-system-database-size-750---2000-gb-business-suite"></a>大型 SAP 系统：数据库大小 750-2000 GB：业务套件
-| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | Caching |
+#### <a name="large-sap-system-database-size-750---2000-gb-business-suite"></a>大型 SAP 系统：数据库大小为 750 - 2000 GB：企业套件
+| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘的 NR |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发吞吐量 [GB] | 条带大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E64ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
-|vCPU：64 |/db2/ <SID> /sapdata |P30 |4 |20,000  |800  |4.096  |20,000  |800  |256 KB |ReadOnly |
-|RAM： 504 GiB |/db2/ <SID> /saptmp |P15 |2 |2,200  |250  |512  |7,000  |340  |128 KB ||
-| |/db2/ <SID> /log_dir |P20 |4 |9200  |600  |2.048  |14,000  |680  |64 KB ||
-| |/db2/ <SID> /offline_log_dir |P20 |1 |2,300  |150  |512  |3,500  |170  || |
+|vCPU：64 |/db2/<SID>/sapdata |P30 |4 |20,000  |800  |4.096  |20,000  |800  |256 KB |ReadOnly |
+|RAM：504 GiB |/db2/<SID>/saptmp |P15 |2 |2,200  |250  |512  |7,000  |340  |128 KB ||
+| |/db2/<SID>/log_dir |P20 |4 |9,200  |600  |2.048  |14,000  |680  |64 KB ||
+| |/db2/<SID>/offline_log_dir |P20 |1 |2,300  |150  |512  |3,500  |170  || |
 
-#### <a name="large-multi-terabyte-sap-system-database-size-2-tb-global-business-suite-system"></a>大型多 tb SAP 系统：数据库大小 2 TB +：全局业务套件系统
-| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | Caching |
+#### <a name="large-multi-terabyte-sap-system-database-size-2-tb-global-business-suite-system"></a>大型多 TB SAP 系统：数据库大小为 2 TB 起：全局业务套件系统
+| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘的 NR |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发吞吐量 [GB] | 条带大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |M128s |/db2 |P10 |1 |500  |100  |128  |3,500  |170  || |
-|vCPU：128 |/db2/ <SID> /sapdata |P40 |4 |30,000  |1.000  |8.192  |30,000  |1.000  |256 KB |ReadOnly |
-|RAM： 2048 GiB |/db2/ <SID> /saptmp |P20 |2 |4600  |300  |1.024  |7,000  |340  |128 KB ||
-| |/db2/ <SID> /log_dir |P30 |4 |20,000  |800  |4.096  |20,000  |800  |64 KB |WriteAccelerator |
-| |/db2/ <SID> /offline_log_dir |P30 |1 |5,000  |200  |1.024  |5,000  |200  || |
+|vCPU：128 |/db2/<SID>/sapdata |P40 |4 |30,000  |1.000  |8.192  |30,000  |1.000  |256 KB |ReadOnly |
+|RAM：2048 GiB |/db2/<SID>/saptmp |P20 |2 |4,600  |300  |1.024  |7,000  |340  |128 KB ||
+| |/db2/<SID>/log_dir |P30 |4 |20,000  |800  |4.096  |20,000  |800  |64 KB |WriteAccelerator |
+| |/db2/<SID>/offline_log_dir |P30 |1 |5,000  |200  |1.024  |5,000  |200  || |
 
 
 ### <a name="backuprestore"></a>备份/还原
 支持通过 IBM DB2 for LUW 提供备份/还原功能，其方式与在标准 Windows Server 操作系统和 Hyper-V 上一样。
 
-确保具有有效的数据库备份策略。 
+请确保已经设置了有效的数据库备份策略。 
 
 与裸机部署一样，备份/还原的性能取决于可以并行读取的卷数目，以及这些卷可能的吞吐量。 此外，备份压缩所使用的 CPU 使用率可能会在最多只有八个 CPU 线程的 VM 上扮演重要角色。 因此，可以假设：
 
@@ -152,9 +155,9 @@ SAP 支持说明 [1928533]中列出的任何 VM 类型都支持 IBM DB2 For Sap 
 
 #### <a name="linux-pacemaker"></a>Linux Pacemaker
 
-支持 Db2 高可用性灾难恢复 (HADR) 与 pacemaker。 支持 SLES 和 RHEL 操作系统。 此配置可实现 IBM Db2 for SAP 的高可用性。 部署指南：
-* SLES： [Azure vm 上的 IBM DB2 LUW 的高可用性与 Pacemaker SUSE Linux Enterprise Server 上的 Azure vm](dbms-guide-ha-ibm.md) 
-* RHEL： [Red Hat Enterprise Linux Server 上的 Azure vm 上的 IBM DB2 LUW 的高可用性](high-availability-guide-rhel-ibm-db2-luw.md)
+支持使用 Pacemaker 的 Db2 高可用性灾难恢复 (HADR)。 支持 SLES 和 RHEL 操作系统。 此配置可实现 IBM Db2 for SAP 的高可用性。 部署指南：
+* SLES：[具有 Pacemaker 的 SUSE Linux Enterprise Server 上 Azure VM 中的 IBM Db2 LUW 的高可用性](dbms-guide-ha-ibm.md) 
+* RHEL：[Red Hat Enterprise Linux Server 上 Azure VM 中 IBM Db2 LUW 的高可用性](high-availability-guide-rhel-ibm-db2-luw.md)
 
 #### <a name="windows-cluster-server"></a>Windows 群集服务器
 
@@ -162,7 +165,7 @@ SAP 支持说明 [1928533]中列出的任何 VM 类型都支持 IBM DB2 For Sap 
 
 支持 DB2 高可用性灾难恢复 (HADR)。 如果 HA 配置的虚拟机具有有效的名称解析，Azure 中的设置将与任何本地设置无任何差别。 建议不要完全依赖于 IP 解析。
 
-请勿将异地复制用于存储数据库磁盘的存储帐户。 有关详细信息，请参阅适用于 [SAP 工作负荷的 Azure 虚拟机 DBMS 部署](dbms_guide_general.md)的文档注意事项。 
+请勿将异地复制用于存储数据库磁盘的存储帐户。 有关详细信息，请参阅文档：[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)。 
 
 ### <a name="accelerated-networking"></a>加速网络
 对于 Window 上的 DB2 部署，强烈建议使用加速网络的 Azure 功能，如 [Azure 加速网络](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)所述。 也可考虑[适用于 SAP 工作负载的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中的建议。 
@@ -179,54 +182,7 @@ SAP 支持说明 [1928533]中列出的任何 VM 类型都支持 IBM DB2 For Sap 
 
 ### <a name="other"></a>其他
 如[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)所述，Azure 可用性集或 SAP 监视等所有其他常规领域也适用于使用 IBM Database 进行的 VM 部署。
-
-[767598]:https://launchpad.support.sap.com/#/notes/767598
-[773830]:https://launchpad.support.sap.com/#/notes/773830
-[826037]:https://launchpad.support.sap.com/#/notes/826037
-[965908]:https://launchpad.support.sap.com/#/notes/965908
-[1031096]:https://launchpad.support.sap.com/#/notes/1031096
-[1114181]:https://launchpad.support.sap.com/#/notes/1114181
-[1139904]:https://launchpad.support.sap.com/#/notes/1139904
-[1173395]:https://launchpad.support.sap.com/#/notes/1173395
-[1245200]:https://launchpad.support.sap.com/#/notes/1245200
-[1409604]:https://launchpad.support.sap.com/#/notes/1409604
-[1558958]:https://launchpad.support.sap.com/#/notes/1558958
-[1585981]:https://launchpad.support.sap.com/#/notes/1585981
-[1588316]:https://launchpad.support.sap.com/#/notes/1588316
-[1590719]:https://launchpad.support.sap.com/#/notes/1590719
-[1597355]:https://launchpad.support.sap.com/#/notes/1597355
-[1605680]:https://launchpad.support.sap.com/#/notes/1605680
-[1619720]:https://launchpad.support.sap.com/#/notes/1619720
-[1619726]:https://launchpad.support.sap.com/#/notes/1619726
-[1619967]:https://launchpad.support.sap.com/#/notes/1619967
-[1750510]:https://launchpad.support.sap.com/#/notes/1750510
-[1752266]:https://launchpad.support.sap.com/#/notes/1752266
-[1757924]:https://launchpad.support.sap.com/#/notes/1757924
-[1757928]:https://launchpad.support.sap.com/#/notes/1757928
-[1758182]:https://launchpad.support.sap.com/#/notes/1758182
-[1758496]:https://launchpad.support.sap.com/#/notes/1758496
-[1772688]:https://launchpad.support.sap.com/#/notes/1772688
-[1814258]:https://launchpad.support.sap.com/#/notes/1814258
-[1882376]:https://launchpad.support.sap.com/#/notes/1882376
-[1909114]:https://launchpad.support.sap.com/#/notes/1909114
-[1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
-[1941500]:https://launchpad.support.sap.com/#/notes/1941500
-[1956005]:https://launchpad.support.sap.com/#/notes/1956005
-[1973241]:https://launchpad.support.sap.com/#/notes/1973241
-[1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
-[2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2039619]:https://launchpad.support.sap.com/#/notes/2039619
-[2069760]:https://launchpad.support.sap.com/#/notes/2069760
-[2121797]:https://launchpad.support.sap.com/#/notes/2121797
-[2134316]:https://launchpad.support.sap.com/#/notes/2134316
-[2171857]:https://launchpad.support.sap.com/#/notes/2171857
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
-[2233094]:https://launchpad.support.sap.com/#/notes/2233094
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[767598]： https://launchpad.support.sap.com/#/notes/767598 [773830]： https://launchpad.support.sap.com/#/notes/773830 [826037]： https://launchpad.support.sap.com/#/notes/826037 [965908]： https://launchpad.support.sap.com/#/notes/965908 [1031096]： https://launchpad.support.sap.com/#/notes/1031096 [1114181]： https://launchpad.support.sap.com/#/notes/1114181 [1139904]： https://launchpad.support.sap.com/#/notes/1139904 [1173395]： https://launchpad.support.sap.com/#/notes/1173395 [1245200]： https://launchpad.support.sap.com/#/notes/1245200 [1409604]： https://launchpad.support.sap.com/#/notes/1409604 [1558958]： https://launchpad.support.sap.com/#/notes/1558958 [1585981]： https://launchpad.support.sap.com/#/notes/1585981 [1588316]： https://launchpad.support.sap.com/#/notes/1588316 [1590719]： https://launchpad.support.sap.com/#/notes/1590719 [1597355]： https://launchpad.support.sap.com/#/notes/1597355 [1605680]： https://launchpad.support.sap.com/#/notes/1605680 [1619720]： https://launchpad.support.sap.com/#/notes/1619720 [1619726]： https://launchpad.support.sap.com/#/notes/1619726 [1619967]： https://launchpad.support.sap.com/#/notes/1619967 [1750510]： https://launchpad.support.sap.com/#/notes/1750510 [1752266]： https://launchpad.support.sap.com/#/notes/1752266 [1757924]： https://launchpad.support.sap.com/#/notes/1757924 [1757928]： https://launchpad.support.sap.com/#/notes/1757928 [1758182]： https://launchpad.support.sap.com/#/notes/1758182 [1758496]： https://launchpad.support.sap.com/#/notes/1758496 [1772688]： https://launchpad.support.sap.com/#/notes/1772688 [1814258]： https://launchpad.support.sap.com/#/notes/1814258 [1882376]： https://launchpad.support.sap.com/#/notes/1882376 [1909114]： https://launchpad.support.sap.com/#/notes/1909114 [1922555]： https://launchpad.support.sap.com/#/notes/1922555 [1928533]： https://launchpad.support.sap.com/#/notes/1928533 [1941500]： https://launchpad.support.sap.com/#/notes/1941500 [1956005]： https://launchpad.support.sap.com/#/notes/1956005 [1973241]： https://launchpad.support.sap.com/#/notes/1973241 [1984787]： https://launchpad.support.sap.com/#/notes/1984787 [1999351]： https://launchpad.support.sap.com/#/notes/1999351 [2002167]： https://launchpad.support.sap.com/#/notes/2002167 [2015553]： https://launchpad.support.sap.com/#/notes/2015553 [2039619]： https://launchpad.support.sap.com/#/notes/2039619 [2069760]： https://launchpad.support.sap.com/#/notes/2069760 [2121797]： https://launchpad.support.sap.com/#/notes/2121797 [2134316]： https://launchpad.support.sap.com/#/notes/2134316 [2171857]： https://launchpad.support.sap.com/#/notes/2171857 [2178632]： https://launchpad.support.sap.com/#/notes/2178632 [2191498]： https://launchpad.support.sap.com/#/notes/2191498 [2233094]： https://launchpad.support.sap.com/#/notes/2233094 [2243692]： https://launchpad.support.sap.com/#/notes/2243692
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -234,13 +190,7 @@ SAP 支持说明 [1928533]中列出的任何 VM 类型都支持 IBM DB2 For Sap 
 
 - [部署适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 的注意事项](dbms_guide_general.md)
 
-[azure-cli]:../../../cli-install-nodejs.md
-[azure-portal]:https://portal.azure.com
-[azure-ps]:/powershell/azure/
-[azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
-[azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
-[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
+
 
 [dbms-guide]:dbms-guide.md 
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 
@@ -411,60 +361,3 @@ SAP 支持说明 [1928533]中列出的任何 VM 类型都支持 IBM DB2 For Sap 
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../disks-types.md
-[storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
-[storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
-[template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
-[templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
-[templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image
-[virtual-machines-linux-attach-disk-portal]:../../linux/attach-disk-portal.md
-[virtual-machines-azure-resource-manager-architecture]:../../../resource-manager-deployment-model.md
-[virtual-machines-azurerm-versus-azuresm]:../../../resource-manager-deployment-model.md
-[virtual-machines-windows-classic-configure-oracle-data-guard]:../../virtual-machines-windows-classic-configure-oracle-data-guard.md
-[virtual-machines-linux-cli-deploy-templates]:../../linux/cli-deploy-templates.md 
-[virtual-machines-deploy-rmtemplates-powershell]:../../virtual-machines-windows-ps-manage.md 
-[virtual-machines-linux-agent-user-guide]:../../linux/agent-user-guide.md
-[virtual-machines-linux-agent-user-guide-command-line-options]:../../linux/agent-user-guide.md#command-line-options
-[virtual-machines-linux-capture-image]:../../linux/capture-image.md
-[virtual-machines-linux-capture-image-resource-manager]:../../linux/capture-image.md
-[virtual-machines-linux-capture-image-resource-manager-capture]:../../linux/capture-image.md#step-2-capture-the-vm
-[virtual-machines-linux-configure-raid]:../../linux/configure-raid.md
-[virtual-machines-linux-configure-lvm]:../../linux/configure-lvm.md
-[virtual-machines-linux-classic-create-upload-vhd-step-1]:../../virtual-machines-linux-classic-create-upload-vhd.md#step-1-prepare-the-image-to-be-uploaded
-[virtual-machines-linux-create-upload-vhd-suse]:../../linux/suse-create-upload-vhd.md
-[virtual-machines-linux-redhat-create-upload-vhd]:../../linux/redhat-create-upload-vhd.md
-[virtual-machines-linux-how-to-attach-disk]:../../linux/add-disk.md
-[virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux]:../../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk
-[virtual-machines-linux-tutorial]:../../linux/quick-create-cli.md
-[virtual-machines-linux-update-agent]:../../linux/update-agent.md
-[virtual-machines-manage-availability-linux]:../../linux/manage-availability.md
-[virtual-machines-manage-availability-windows]:../../windows/manage-availability.md
-[virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]:virtual-machines-windows-create-powershell.md
-[virtual-machines-sizes-linux]:../../linux/sizes.md
-[virtual-machines-sizes-windows]:../../windows/sizes.md
-[virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
-[virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
-[virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
-[virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
-[virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
-[virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
-[virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/resources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
-[virtual-network-deploy-multinic-arm-cli]:../linux/multiple-nics.md
-[virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
-[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/template-samples.md
-[virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
-[virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/manage-virtual-network.md#create-a-virtual-network
-[virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
-[virtual-networks-multiple-nics]:../../../virtual-network/virtual-network-deploy-multinic-classic-ps.md
-[virtual-networks-nsg]:../../../virtual-network/security-overview.md
-[virtual-networks-reserved-private-ip]:../../../virtual-network/virtual-networks-static-private-ip-arm-ps.md
-[virtual-networks-static-private-ip-arm-pportal]:../../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md
-[virtual-networks-udr-overview]:../../../virtual-network/virtual-networks-udr-overview.md
-[vpn-gateway-about-vpn-devices]:../../../vpn-gateway/vpn-gateway-about-vpn-devices.md
-[vpn-gateway-create-site-to-site-rm-powershell]:../../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md
-[vpn-gateway-cross-premises-options]:../../../vpn-gateway/vpn-gateway-plan-design.md
-[vpn-gateway-site-to-site-create]:../../../vpn-gateway/vpn-gateway-site-to-site-create.md
-[vpn-gateway-vpn-faq]:../../../vpn-gateway/vpn-gateway-vpn-faq.md
-[xplat-cli]:../../../cli-install-nodejs.md
-[xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md

@@ -1,0 +1,47 @@
+### YamlMime:Landing
+title: Azure Active Directory 可验证凭据文档
+summary: 可验证凭据可帮助构建解决方案，使客户能够管理自己的数据。
+metadata:
+  author: barclayn
+  description: 了解如何将可验证凭据合并到解决方案中，使客户能够控制自己的相关信息
+  manager: daveba
+  ms.author: barclayn
+  ms.collection: na
+  ms.date: 03/30/2021
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: 13eb88e8e8613c913f66185eba751a1fe3c36e1e
+  ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 04/01/2021
+  ms.locfileid: "106176203"
+landingContent:
+- title: 关于可验证凭据
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Active Directory 可验证凭据简介
+      url: decentralized-identifier-overview.md
+  - linkListType: video
+    links:
+    - text: 监管对资源的访问
+      url: https://www.youtube.com/watch?v=r20hCF9NbTo
+- title: 可验证凭据使用户可以控制自己的个人信息
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 开始使用可验证凭据
+      url: get-started-verifiable-credentials.md
+  - linkListType: concept
+    links:
+    - text: 颁发者服务通信示例
+      url: issuer-openid.md
+- title: 如何链接 DID
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 将域链接到分散式身份识别
+      url: how-to-dnsbind.md

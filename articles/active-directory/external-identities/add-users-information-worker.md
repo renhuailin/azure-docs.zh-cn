@@ -13,15 +13,15 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 345cbe2efb644fe2b84d4a6021ff962337e29285
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98219906"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>组织中的用户如何邀请来宾用户访问应用
 
-将来宾用户添加到 Azure AD 中的目录后，应用程序所有者可向该来宾用户发送他们想要共享的应用的直接链接。 Azure AD 管理员还可以为其 Azure AD 租户中基于库或 SAML 的应用设置自助服务管理。 这样，即使尚未将自己的来宾用户添加到目录中，应用程序所有者也可以管理这些来宾用户。 为应用配置自助服务后，应用程序所有者可以使用访问面板邀请来宾用户访问应用，或将来宾用户添加到有权访问该应用的组中。 基于库和 SAML 的应用的自助服务应用管理要求管理员完成一些初始设置。下面是设置步骤的摘要（有关更详细的说明，请参阅本页稍后提供的[先决条件](#prerequisites)）：
+将来宾用户添加到 Azure AD 中的目录后，应用程序所有者可向该来宾用户发送他们想要共享的应用的直接链接。 Azure AD 管理员还可以为其 Azure AD 租户中基于库或 SAML 的应用设置自助服务管理。 这样，即使尚未将自己的来宾用户添加到目录中，应用程序所有者也可以管理这些来宾用户。 为应用配置自助服务后，应用程序所有者可以使用访问面板邀请来宾用户访问应用，或将来宾用户添加到有权访问该应用的组中。 自助服务应用管理适用于库和基于 SAML 的应用，它需要管理员进行一些初始设置。下面是设置步骤的摘要（如需详细说明，请参阅本页后文中的[先决条件](#prerequisites)）：
 
  - 为租户启用自助服务组管理
  - 创建要分配到应用的组，并将相应用户设为所有者

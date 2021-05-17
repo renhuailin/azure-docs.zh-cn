@@ -2,25 +2,27 @@
 title: 密钥保管库机密与模板
 description: 说明在部署期间如何以参数形式从密钥保管库传递机密。
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: 05749fe2e9179051c3183ea2e592cf7190ddb347
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.date: 04/23/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 584d48fb91173adb4c1c08665c6a05e373fc79d0
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889852"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316418"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>在部署过程中使用 Azure Key Vault 传递安全参数值
 
 在部署过程中，可以从 [Azure Key Vault](../../key-vault/general/overview.md) 中检索一个安全值，而不是直接在模板或参数文件中放置该值（如密码）。 通过引用参数文件中的密钥保管库和密钥来检索值。 值永远不会公开，因为仅引用其密钥保管库 ID。 密钥保管库可以与要部署到的资源组位于不同的订阅中。
 
-本文重点介绍将敏感值作为模板参数传入的方案。 它不涉及将虚拟机属性设为 Key Vault 中的证书 URL 的方案。 有关该方案的快速入门模板，请参阅[在虚拟机上安装来自 Azure Key Vault 的证书](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)。
+本文重点介绍如何将敏感值作为模板参数传递。 本文并不涉及如何将虚拟机属性设置为密钥保管库中证书的 URL。
+有关该方案的快速入门模板，请参阅[在虚拟机上安装来自 Azure Key Vault 的证书](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)。
 
 ## <a name="deploy-key-vaults-and-secrets"></a>部署密钥保管库和机密
 
 若要在模板部署期间访问密钥保管库，请将密钥保管库上的 `enabledForTemplateDeployment` 设置为 `true`。
 
-如果你已有 Key Vault，请确保它允许进行模板部署。
+如果你已有密钥保管库，请确保它允许进行模板部署。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -36,7 +38,7 @@ Set-AzKeyVaultAccessPolicy -VaultName ExampleVault -EnabledForTemplateDeployment
 
 ---
 
-若要新建 Key Vault 并添加机密，请使用：
+若要创建新的密钥保管库并添加机密，请使用：
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -99,9 +101,9 @@ Set-AzKeyVaultAccessPolicy `
 
 ## <a name="grant-access-to-the-secrets"></a>授予对机密的访问权限
 
-部署模板的用户必须在资源组和密钥保管库范围内具有 `Microsoft.KeyVault/vaults/deploy/action` 权限。 [所有者](../../role-based-access-control/built-in-roles.md#owner)和[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色均授予该访问权限。 如果你创建了密钥保管库，则你是所有者，因此具有权限。
+部署模板的用户必须在资源组和密钥保管库范围内具有 `Microsoft.KeyVault/vaults/deploy/action` 权限。 [所有者](../../role-based-access-control/built-in-roles.md#owner)和[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色均授予该访问权限。 如果是你创建了密钥保管库，那么你就是所有者且具有相关权限。
 
-以下过程展示了如何创建具有最小权限的角色，以及如何分配用户
+以下过程展示了如何创建具有最小权限的角色，以及如何分配用户。
 
 1. 创建自定义角色定义 JSON 文件：
 
@@ -121,6 +123,7 @@ Set-AzKeyVaultAccessPolicy `
       ]
     }
     ```
+
     将“00000000-0000-0000-0000-000000000000”替换为订阅 ID。
 
 2. 使用 JSON 文件创建新角色：
@@ -149,7 +152,7 @@ Set-AzKeyVaultAccessPolicy `
 
     此示例在资源组级别为用户分配自定义角色。
 
-使用 Key Vault 部署[托管应用程序](../managed-applications/overview.md)的模板时，必须授予对设备资源提供程序服务主体的访问权限。 有关详细信息，请参阅[部署 Azure 托管应用程序时访问 Key Vault 机密](../managed-applications/key-vault-access.md)。
+使用密钥保管库部署[托管应用程序](../managed-applications/overview.md)的模板时，必须授予对设备资源提供程序服务主体的访问权限。 有关详细信息，请参阅[部署 Azure 托管应用程序时访问 Key Vault 机密](../managed-applications/key-vault-access.md)。
 
 ## <a name="reference-secrets-with-static-id"></a>通过静态 ID 引用机密
 
@@ -160,6 +163,8 @@ Set-AzKeyVaultAccessPolicy `
 [教程：在资源管理器模板部署中集成 Azure Key Vault](./template-tutorial-use-key-vault.md) 使用了此方法。
 
 以下模板部署包含管理员密码的 SQL Server。 密码参数设置为安全字符串。 但是，此模板未指定该值的来源。
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -195,6 +200,29 @@ Set-AzKeyVaultAccessPolicy `
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param adminLogin string
+
+@secure()
+param adminPassword string
+
+param sqlServerName string
+
+resource sqlServer 'Microsoft.Sql/servers@2020-11-01-preview' = {
+  name: sqlServerName
+  location: resourceGroup().location
+  properties: {
+    administratorLogin: adminLogin
+    administratorLoginPassword: adminPassword
+    version: '12.0'
+  }
+}
+```
+
+---
+
 现在，为上述模板创建参数文件。 在参数文件中，指定与模板中的参数名称匹配的参数。 对于参数值，请从 key vault 中引用机密。 可以通过传递密钥保管库的资源标识符和机密的名称来引用机密：
 
 在以下参数文件中，密钥保管库机密必须已存在，而且你为其资源 ID 提供了静态值。
@@ -204,25 +232,25 @@ Set-AzKeyVaultAccessPolicy `
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-      "adminLogin": {
-        "value": "exampleadmin"
-      },
-      "adminPassword": {
-        "reference": {
-          "keyVault": {
+    "adminLogin": {
+      "value": "exampleadmin"
+    },
+    "adminPassword": {
+      "reference": {
+        "keyVault": {
           "id": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.KeyVault/vaults/<vault-name>"
-          },
-          "secretName": "ExamplePassword"
-        }
-      },
-      "sqlServerName": {
-        "value": "<your-server-name>"
+        },
+        "secretName": "ExamplePassword"
       }
+    },
+    "sqlServerName": {
+      "value": "<your-server-name>"
+    }
   }
 }
 ```
 
-如果需要使用当前版本以外的机密版本，请使用 `secretVersion` 属性。
+如果需要使用当前版本以外的机密版本，请包括 `secretVersion` 属性。
 
 ```json
 "secretName": "ExamplePassword",
@@ -255,7 +283,7 @@ New-AzResourceGroupDeployment `
 
 ## <a name="reference-secrets-with-dynamic-id"></a>通过动态 ID 引用机密
 
-上一部分介绍了如何通过参数传递密钥保管库机密的静态资源 ID。 但是，在某些情况下，需要引用随当前部署而变的密钥保管库机密。 或者，你需要将参数值传递到模板而不在参数文件中创建引用参数。 在任何一种情况下，均可使用链接模板为密钥保管库机密动态生成资源 ID。
+上一部分介绍了如何通过参数传递密钥保管库机密的静态资源 ID。 在某些情况下，需要引用随当前部署而变的密钥保管库机密。 或者，需要将参数值传递到模板而不是在参数文件中创建引用参数。 解决方案是使用链接的模板来动态生成密钥保管库机密的资源 ID。
 
 不能在参数文件中动态生成资源 ID，因为参数文件中不允许使用模板表达式。
 
@@ -373,8 +401,11 @@ New-AzResourceGroupDeployment `
 }
 ```
 
+> [!NOTE]
+> 从 Bicep 版本 0.3.255 开始，由于不支持 `reference` 关键字，检索密钥保管库机密需要参数文件。 添加支持的工作正在进行中，有关详细信息，请参阅 [GitHub 问题 1028](https://github.com/Azure/bicep/issues/1028)。
+
 ## <a name="next-steps"></a>后续步骤
 
-- 有关密钥保管库的一般信息，请参阅[什么是 Azure 密钥保管库？](../../key-vault/general/overview.md)。
-- 有关引用密钥机密的完整示例，请参阅 [密钥保管库示例](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)。
+- 有关密钥保管库的一般信息，请参阅[什么是 Azure 密钥保管库？](../../key-vault/general/overview.md)
+- 有关引用密钥的完整示例，请参阅 GitHub 上的[密钥保管库示例](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)。
 - 有关介绍从密钥保管库中传递安全值的 Microsoft Learn 模块，请参阅[使用高级 ARM 模板功能管理复杂云部署](/learn/modules/manage-deployments-advanced-arm-template-features/)。

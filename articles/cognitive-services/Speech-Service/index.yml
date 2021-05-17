@@ -130,14 +130,11 @@ conceptualContent:
     - title: 工具
       links:
         - itemType: overview
+          text: 关于 Speech Studio（无代码 UI 体验）
+          url: speech-studio-overview.md
+        - itemType: overview
           text: 关于语音 CLI（无代码命令行工具）
           url: spx-overview.md
-        - itemType: how-to-guide
-          text: 语音 CLI 基础知识（安装和示例）
-          url: spx-basics.md
-        - itemType: overview
-          text: 关于 Speech Studio（自定义）
-          url: 'https://speech.microsoft.com'
     - title: Hosting
       links:
         - itemType: how-to-guide

@@ -26,6 +26,8 @@
           href: howto-create-private-cluster-4x.md
         - name: 配置 DNS 转发
           href: dns-forwarding.md
+        - name: 限制出口流量
+          href: howto-restrict-egress.md
     - name: 存储
       items:
         - name: 通过客户管理的密钥来加密 PVC（预览）
@@ -60,6 +62,10 @@
               href: ../azure-monitor/containers/container-insights-optout-openshift-v4.md
     - name: 开发和运行应用程序
       items:
+        - name: 部署来自源代码的应用程序
+          href: howto-deploy-with-s2i.md
+        - name: 使用 OpenShift Serverless 部署应用程序
+          href: howto-deploy-with-serverless.md
         - name: 部署 Open Liberty/WebSphere Liberty 应用
           href: howto-deploy-java-liberty-app.md
     - name: Azure Red Hat OpenShift 3.11
@@ -107,6 +113,8 @@
       href: /cli/azure/aro
     - name: Azure Red Hat OpenShift REST API
       href: /rest/api/openshift
+    - name: Azure CLI
+      href: /cli/azure/openshift
 - name: 资源
   items:
     - name: 常见问题解答
@@ -117,6 +125,8 @@
       href: support-policies-v4.md
     - name: ARO 4 的支持生命周期
       href: support-lifecycle.md
+    - name: 责任矩阵
+      href: responsibility-matrix.md
     - name: 区域可用性
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Red Hat OpenShift 4 文档

@@ -31,7 +31,7 @@
     - name: 安全性
       items:
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/database-migration-security-baseline?toc=/azure/dms/toc.json
 - name: 教程
   expanded: true
   items:
@@ -45,7 +45,9 @@
           href: tutorial-sql-server-managed-instance-online.md
     - name: 迁移 MySQL
       items:
-        - name: 到 Azure Database for MySQL
+        - name: 到 Azure Database for MySQL（脱机）
+          href: tutorial-mysql-azure-mysql-offline-portal.md
+        - name: 到 Azure Database for MySQL（联机）
           href: tutorial-mysql-azure-mysql-online.md
     - name: 迁移 RDS MySQL
       items:
@@ -71,10 +73,6 @@
           href: tutorial-mongodb-cosmos-db.md
         - name: 到 Azure Cosmos DB Mongo API（联机）
           href: tutorial-mongodb-cosmos-db-online.md
-    - name: 迁移 Oracle
-      items:
-        - name: 到 Azure DB for PostgreSQL - 单一服务器（联机）
-          href: tutorial-oracle-azure-postgresql-online.md
 - name: 操作指南
   items:
     - name: 监视迁移活动
@@ -87,12 +85,18 @@
           href: howto-sql-server-to-azure-sql-managed-instance-powershell-online.md
         - name: SQL Server 到 SQL MI（脱机）
           href: howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md
+        - name: MySQL 到 Azure Database for MySQL（脱机）
+          href: migrate-mysql-to-azure-mysql-powershell.md
     - name: 将 SSIS 包重新部署到
       items:
-        - name: Azure SQL 数据库
+        - name: Azure SQL Database
           href: how-to-migrate-ssis-packages.md
         - name: Azure SQL 托管实例
           href: how-to-migrate-ssis-packages-managed-instance.md
+- name: 参考
+  items:
+    - name: Azure CLI
+      href: /cli/azure/dms
 - name: 资源
   items:
     - name: 常见问题
@@ -110,7 +114,7 @@
         - name: 可用于数据迁移方案的服务和工具
           href: dms-tools-matrix.md
         - name: Azure 数据库迁移指南
-          href: 'https://aka.ms/datamigration'
+          href: /data-migration/
         - name: 数据迁移助手
           href: /sql/dma/dma-overview
         - name: SQL Server Migration Assistant
@@ -139,8 +143,6 @@
               href: known-issues-azure-mysql-online.md
             - name: PostgreSQL 到 Azure DB for PostgreSQL
               href: known-issues-azure-postgresql-online.md
-            - name: Oracle 到 Azure DB for PostgreSQL
-              href: known-issues-oracle-azure-postgresql-online.md
             - name: MongoDB 到 Azure Cosmos DB API for MongoDB
               href: known-issues-mongo-cosmos-db.md
     - name: 视频

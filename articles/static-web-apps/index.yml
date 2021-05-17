@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure 静态 Web 应用文档
-summary: 借助 Azure Static Web Apps，可构建自动根据 GitHub 中所作的更改发布的新式 Web 应用程序。
+summary: 借助 Azure Static Web Apps，可构建根据代码更改自动发布到 Web 的新式 Web 应用程序。
 metadata:
   title: Azure 静态 Web 应用文档
-  description: 借助 Azure Static Web Apps，可构建自动根据 GitHub 中所作的更改发布的新式 Web 应用程序。
+  description: 借助 Azure Static Web Apps，可构建根据代码更改自动发布到 Web 的新式 Web 应用程序。
   ms.topic: landing-page
   ms.service: static-web-apps
   author: craigshoemaker
   ms.author: cshoe
   ms.date: 12/08/2020
-  ms.openlocfilehash: 880d675915a17e24269361c0ceed320a257d0ba9
-  ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+  ms.openlocfilehash: 49453cb08e29d8fedf9f982150ace8b9986dfaba
+  ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/09/2020
-  ms.locfileid: "96906125"
+  ms.lasthandoff: 04/28/2021
+  ms.locfileid: "108178927"
 landingContent:
 - title: 关于静态 Web 应用
   linkLists:
@@ -26,14 +26,14 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
+    - text: 创建首个无框架应用
+      url: ./getting-started.md?tabs=vanilla-javascript
     - text: 创建第一个 Angular 应用
       url: ./getting-started.md?tabs=angular
     - text: 创建第一个 React 应用
       url: ./getting-started.md?tabs=react
     - text: 创建第一个 Vue 应用
       url: ./getting-started.md?tabs=vue
-    - text: 创建第一个应用（无框架）
-      url: ./getting-started.md?tabs=vanilla-javascript
   - linkListType: learn
     links:
     - text: 发布 Angular、React、Svelte 或 Vue JavaScript 应用
@@ -62,6 +62,8 @@ landingContent:
       url: deploy-nextjs.md
     - text: 从 Nuxt.js 部署
       url: deploy-nuxtjs.md
+    - text: 使用 Azure DevOps 进行部署
+      url: publish-devops.md
   - linkListType: learn
     links:
     - text: 使用 Gatsby 发布静态 Web 应用
@@ -72,11 +74,11 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: 路由
-      url: routes.md
+    - text: 应用程序配置
+      url: configuration.md
     - text: 公共 API
       url: apis.md
-    - text: 过渡
+    - text: 过渡环境
       url: review-publish-pull-requests.md
     - text: 限制访问
       url: authentication-authorization.md

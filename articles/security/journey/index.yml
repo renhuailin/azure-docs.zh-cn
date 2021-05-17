@@ -1,0 +1,103 @@
+### YamlMime:Landing
+title: 针对每个云采用阶段的 Azure 安全文档
+summary: 无论你是正在考虑迁移到云，还是已迁移到云，都可在此处找到有关云安全旅程各个阶段的指导。
+metadata:
+  title: Azure 安全旅程文档
+  description: 查找有关 Azure 中安全旅程各个阶段的指导。
+  services: security
+  ms.service: security
+  ms.subservice: journey
+  ms.topic: landing-page
+  author: TerryLanfear
+  ms.author: terrylan
+  manager: rkarlin
+  ms.date: 04/30/2021
+  ms.openlocfilehash: 09cef5e5e209b89f3c80b7565fbffb65c3d6eb6d
+  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "108732934"
+landingContent:
+- title: 了解 Azure 中的安全优势
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 云中责任分担
+      url: ../fundamentals/shared-responsibility.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: 端到端安全服务
+      url: ../fundamentals/end-to-end.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+  - linkListType: concept
+    links:
+    - text: Microsoft 如何保护 Azure 基础结构
+      url: ../fundamentals/infrastructure.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Azure 平台安全性和完整性
+      url: ../fundamentals/platform.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+- title: 准备安全地迁移到云
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 在整个业务中实现安全性
+      url: /azure/cloud-adoption-framework/get-started/security?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
+  - linkListType: concept
+    links:
+    - text: 设计安全的体系结构
+      url: /azure/architecture/framework/security/security-principles?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: 企业规模安全性、治理和合规性
+      url: /azure/cloud-adoption-framework/ready/enterprise-scale/security-governance-and-compliance/?tabs=MigrationTools?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
+- title: 将业务迁移到云
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 迁移安全工作负载
+      url: /azure/cloud-adoption-framework/migrate/azure-migration-guide/?tabs=MigrationTools?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
+  - linkListType: overview
+    links:
+    - text: 治理或符合性策略
+      url: /azure/cloud-adoption-framework/migrate/azure-best-practices/governance-or-compliance/?tabs=MigrationTools?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
+- title: 保护云工作负载
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 安全最佳方案
+      url: ../fundamentals/best-practices-and-patterns.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: 安全控制和基线
+      url: ../benchmarks/introduction.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+  - linkListType: concept
+    links:
+    - text: 身份管理
+      url: ../fundamentals/identity-management-overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: 网络安全性
+      url: ../fundamentals/network-overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: 数据安全与加密
+      url: ../fundamentals/encryption-overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Microsoft 反恶意软件
+      url: ../fundamentals/antimalware.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: 虚拟机安全
+      url: ../fundamentals/virtual-machines-overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+- title: 检测、分析和缓解威胁
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 威胁防护
+      url: ../fundamentals/threat-detection.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: 威胁分析
+      url: /azure/architecture/framework/security/design-threat-model?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+- title: 调查可疑活动
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure 日志记录
+      url: ../fundamentals/log-audit.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: 查看并审核
+      url: /azure/architecture/framework/security/monitor-audit?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: 标识和网络风险
+      url: /azure/architecture/framework/security/monitor-identity-network?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+- title: 优化安全投资
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 治理、风险和合规性
+      url: /azure/architecture/framework/governance/monitor-audit?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: 标识和网络风险
+      url: /azure/architecture/framework/security/monitor-test?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json

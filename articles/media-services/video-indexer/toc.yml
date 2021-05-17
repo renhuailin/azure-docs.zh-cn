@@ -35,6 +35,8 @@
       href: language-identification-model.md
     - name: 实时流分析
       href: live-stream-analysis.md
+    - name: 观察到的人员
+      href: observed-people-tracing.md
     - name: 自定义内容模型
       items:
         - name: 概述

@@ -3,22 +3,46 @@
   items: null
 - name: 关于商业市场
   href: overview.md
+- name: 新变化
+  href: what-is-new.md
 - name: 帐户管理
   items:
-    - name: 创建新的合作伙伴中心帐户
-      href: partner-center-portal/create-account.md
-    - name: 管理帐户
-      href: partner-center-portal/manage-account.md
-    - name: 查找或创建公司工作帐户
-      href: partner-center-portal/company-work-accounts.md
-    - name: 将帐户从 CPP 迁移到合作伙伴中心
-      href: partner-center-portal/account-migration-from-cpp-to-pc.md
+    - name: 常规帐户管理
+      items:
+        - name: 创建新的合作伙伴中心帐户
+          href: create-account.md
+        - name: 添加新发布者
+          href: add-publishers.md
+        - name: 管理帐户
+          href: manage-account.md
+        - name: 切换帐户
+          href: switch-accounts.md
+        - name: 管理租户
+          href: manage-tenants.md
+        - name: 查找或创建公司工作帐户
+          href: company-work-accounts.md
+        - name: 将帐户从 CPP 迁移到合作伙伴中心
+          href: account-migration-from-cpp-to-pc.md
+        - name: 通知 Microsoft
+          href: submit-legal-notice.md
+    - name: 管理用户
+      items:
+        - name: 添加和管理用户
+          href: add-manage-users.md
+        - name: 分配用户角色
+          href: user-roles.md
+        - name: 管理组
+          href: manage-groups.md
+        - name: 添加和管理 Azure AD 应用程序
+          href: manage-aad-apps.md
 - name: 概念
   items:
     - name: 列表选项
       href: determine-your-listing-type.md
-    - name: 在商业市场中进行交易
+    - name: 事务处理功能
       href: marketplace-commercial-transaction-capabilities-and-considerations.md
+    - name: 许可证管理
+      href: third-party-license.md
     - name: 专用产品/服务
       href: private-offers.md
     - name: 规划和定价
@@ -47,27 +71,22 @@
       items:
         - name: 市场权益
           href: gtm-your-marketplace-benefits.md
-          items: null
-        - name: 与 Microsoft 联合销售
-          items:
-            - name: 联合销售概述
-              href: marketplace-co-sell.md
-            - name: 联合销售要求
-              href: co-sell-requirements.md
-            - name: 配置联合销售
-              href: commercial-marketplace-co-sell.md
-            - name: 验证联合销售状态
-              href: co-sell-status.md
-            - name: 从 OCP GTM 迁移联合销售解决方案
-              href: co-sell-solution-migration.md
+        - name: 与 Microsoft 联合销售概述
+          href: co-sell-overview.md
+        - name: 配置联合销售
+          href: co-sell-configure.md
+        - name: 联合销售要求
+          href: co-sell-requirements.md
+        - name: 验证联合销售状态
+          href: co-sell-status.md
+        - name: 从 OCP GTM 迁移联合销售解决方案
+          href: co-sell-solution-migration.md
         - name: 通过 CSP 合作伙伴转售
           href: cloud-solution-providers.md
         - name: 连接计划加入指南
           href: business-applications-isv-program.md
         - name: Azure 使用承诺权益
           href: azure-consumption-commitment-benefit.md
-        - name: 首选解决方案
-          href: preferred-solutions.md
         - name: 集成的解决方案
           href: integrated-solutions-for-publishers.md
     - name: 激活商城奖励
@@ -132,14 +151,30 @@
           href: partner-center-portal/azure-app-apis.md
     - name: Azure 容器产品/服务
       items:
-        - name: 规划 Azure 容器产品/服务
+        - name: 计划产品/服务
           href: marketplace-containers.md
         - name: 准备技术资产
-          href: create-azure-container-technical-assets.md
-        - name: 创建和发布 Azure 容器产品/服务
+          href: azure-container-technical-assets.md
+        - name: 创建套餐
+          href: azure-container-offer-setup.md
+        - name: 属性
+          href: azure-container-properties.md
+        - name: 产品/服务一览
+          href: azure-container-offer-listing.md
+        - name: 预览版受众
+          href: azure-container-preview-audience.md
+        - name: 创建和编辑计划
           items:
-            - name: 创建 Azure 容器产品/服务
-              href: create-azure-container-offer.md
+            - name: 计划概述
+              href: azure-container-plan-overview.md
+            - name: 计划设置
+              href: azure-container-plan-setup.md
+            - name: 计划一览
+              href: azure-container-plan-listing.md
+            - name: 计划可用性
+              href: azure-container-plan-availability.md
+            - name: 计划技术配置
+              href: azure-container-plan-technical-configuration.md
     - name: Azure 虚拟机产品/服务
       items:
         - name: 规划 VM 产品/服务
@@ -188,20 +223,34 @@
           href: create-consulting-service-pricing-availability.md
     - name: Dynamics 365 产品/服务
       items:
-        - name: 规划 Dynamics 365 产品/服务
-          href: appsource-offer-publishing-guide.md
-        - name: 创建并发布 Dynamics 365 产品/服务
+        - name: 计划产品/服务
+          href: marketplace-dynamics-365.md
+        - name: 创建 Customer Engagement & Power Apps 产品/服务
           items:
-            - name: 创建 Dynamics 365 Customer Engagement & Power Apps 产品/服务
-              href: partner-center-portal/create-new-customer-engagement-offer.md
+            - name: 创建套餐
+              href: dynamics-365-customer-engage-offer-setup.md
+            - name: 属性
+              href: dynamics-365-customer-engage-properties.md
+            - name: 产品/服务一览
+              href: dynamics-365-customer-engage-offer-listing.md
+            - name: 可用性
+              href: dynamics-365-customer-engage-availability.md
+            - name: Plans
+              href: dynamics-365-customer-engage-plans.md
+            - name: 技术配置
+              href: dynamics-365-customer-engage-technical-configuration.md
+            - name: 补充内容
+              href: dynamics-365-customer-engage-supplemental-content.md
+            - name: 审阅和发布
+              href: dynamics-365-customer-engage-review-publish.md
+        - name: 创建 Operations 产品/服务
+          items:
             - name: Dynamics 365 for Operations 产品/服务
-              items:
-                - name: Dynamics 365 for Operations 产品/服务
-                  href: partner-center-portal/create-new-operations-offer.md
-                - name: 功能验证
-                  href: dynamics-365-finance-operations-functional-validation.md
-            - name: Dynamics 365 Business Central 产品/服务
-              href: partner-center-portal/create-new-business-central-offer.md
+              href: partner-center-portal/create-new-operations-offer.md
+            - name: 功能验证
+              href: dynamics-365-finance-operations-functional-validation.md
+        - name: 创建 Business Central 产品/服务
+          href: partner-center-portal/create-new-business-central-offer.md
     - name: IoT Edge 模块产品/服务
       items:
         - name: 规划 IoT Edge 模块产品/服务
@@ -210,8 +259,6 @@
           href: partner-center-portal/azure-iot-edge-module-creation.md
         - name: 准备 IoT Edge 模块技术资产
           href: partner-center-portal/create-iot-edge-module-asset.md
-        - name: 预认证清单
-          href: iot-edge-checklist.md
     - name: 托管服务产品
       items:
         - name: 规划托管服务套餐
@@ -258,9 +305,11 @@
               href: create-new-saas-offer-technical.md
             - name: 创建计划
               href: create-new-saas-offer-plans.md
+            - name: 创建测试产品/服务
+              href: create-saas-dev-test-offer.md
             - name: 测试和发布 SaaS 产品/服务
               href: test-publish-saas-offer.md
-        - name: 推销你的 SaaS 产品/服务
+        - name: 销售 SaaS 产品/服务
           href: create-new-saas-offer-marketing.md
     - name: 查看并发布产品/服务
       href: review-publish-offer.md
@@ -312,7 +361,7 @@
       items:
         - name: 入门
           href: analytics-get-started.md
-        - name: 以编程方式访问的先决条件
+        - name: 编程式分析的先决条件
           href: analytics-prerequisites.md
         - name: 以编程方式访问的范例
           href: analytics-programmatic-access.md
@@ -324,31 +373,31 @@
           href: analytics-sample-queries.md
         - name: 示例应用程序
           href: analytics-sample-application.md
+        - name: 常见问题
+          href: analytics-programmatic-faq.md
         - name: 自定义查询规范
           href: analytics-custom-query-specification.md
-        - name: 编程分析常见问题解答
-          href: analytics-programmatic-faq.md
-        - name: 分析 API 参考
+        - name: Analytics API
           items:
-            - name: API 列表
+            - name: 可用 API
               href: analytics-available-apis.md
             - name: 获取所有数据集
               href: analytics-api-get-all-datasets.md
-            - name: 获取报表查询 API
+            - name: 获取报表查询
               href: analytics-api-get-report-queries.md
-            - name: 删除报表查询 API
+            - name: 删除报表查询
               href: analytics-api-delete-report-queries.md
-            - name: 试用报表查询 API
+            - name: 试用报表查询
               href: analytics-api-try-report-queries.md
-            - name: 获取报表 API
+            - name: 获取报表
               href: analytics-api-get-report.md
-            - name: 更新报表 API
+            - name: 更新报表
               href: analytics-api-update-report.md
-            - name: 删除报表 API
+            - name: 删除报表
               href: analytics-api-delete-report.md
-            - name: 暂停报表执行 API
+            - name: 暂停报表执行
               href: analytics-api-pause-report-executions.md
-            - name: 继续报表执行 API
+            - name: 恢复报表执行
               href: analytics-api-resume-report-executions.md
     - name: 管理按流量计费异常
       href: anomaly-detection.md
@@ -364,6 +413,10 @@
       href: /legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context
     - name: Azure 市场条款
       href: /legal/marketplace/terms?context=/azure/marketplace/context/context
+    - name: Microsoft Publisher 协议
+      href: /legal/marketplace/msft-publisher-agreement
+    - name: Microsoft 发布者协议的更改历史记录
+      href: /legal/marketplace/mpa-change-history
 - name: 参考
   items:
     - name: CPP API 参考
@@ -446,9 +499,9 @@
       href: commercial-marketplace-co-sell-countries.md
     - name: 联合销售状态代码
       href: commercial-marketplace-co-sell-states.md
-    - name: 参考体系结构示意图
-      href: reference-architecture-diagram.md
     - name: 类别和子类别
       href: categories.md
     - name: 支持的 HTML 标记
       href: supported-html-tags.md
+    - name: 参考体系结构示意图
+      href: reference-architecture-diagram.md

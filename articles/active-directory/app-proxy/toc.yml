@@ -1,0 +1,179 @@
+- name: 应用程序代理文档
+  href: index.yml
+- name: 概述
+  expanded: true
+  items:
+    - name: 什么是应用程序代理？
+      href: what-is-application-proxy.md
+    - name: Docs 中的新增内容
+      href: whats-new-docs.md
+- name: 教程
+  expanded: true
+  items:
+    - name: 应用集成教程列表
+      href: /azure/active-directory/saas-apps/
+    - name: 添加通过应用程序代理访问的本地应用
+      href: application-proxy-add-on-premises-application.md
+- name: 示例
+  expanded: false
+  items:
+    - name: 应用代理示例概述
+      href: application-proxy-powershell-samples.md
+    - name: 列出有关应用的基本信息
+      href: ./scripts/powershell-get-all-app-proxy-apps-basic.md
+    - name: 列出有关应用的扩展信息
+      href: ./scripts/powershell-get-all-app-proxy-apps-extended.md
+    - name: 按连接器组列出应用
+      href: ./scripts/powershell-get-all-app-proxy-apps-by-connector-group.md
+    - name: 列出具有令牌生存期策略的应用
+      href: ./scripts/powershell-get-all-app-proxy-apps-with-policy.md
+    - name: 列出连接器组和连接器
+      href: ./scripts/powershell-get-all-connectors.md
+    - name: 在连接器组之间移动应用
+      href: ./scripts/powershell-move-all-apps-to-connector-group.md
+    - name: 列出分配给应用的用户和组
+      href: ./scripts/powershell-display-users-group-of-app.md
+    - name: 将用户分配到应用
+      href: ./scripts/powershell-assign-user-to-app.md
+    - name: 将组分配到应用
+      href: ./scripts/powershell-assign-group-to-app.md
+    - name: 列出使用默认域的应用
+      href: ./scripts/powershell-get-all-default-domain-apps.md
+    - name: 列出使用通配符发布的应用
+      href: ./scripts/powershell-get-all-wildcard-apps.md
+    - name: 列出所有自定义域和证书
+      href: ./scripts/powershell-get-all-custom-domains-and-certs.md
+    - name: 列出没有证书的应用
+      href: ./scripts/powershell-get-all-custom-domain-no-cert.md
+    - name: 列出具有相同证书的应用
+      href: ./scripts/powershell-get-custom-domain-identical-cert.md
+    - name: 替换相同证书
+      href: ./scripts/powershell-get-custom-domain-replace-cert.md
+- name: 概念
+  expanded: true
+  items:
+    - name: 应用程序代理
+      href: application-proxy.md
+    - name: 本地应用的单一登录
+      href: application-proxy-config-sso-how-to.md
+    - name: 计划应用程序代理部署
+      href: application-proxy-deployment-plan.md
+    - name: 连接器
+      href: application-proxy-connectors.md
+    - name: 连接器组
+      href: application-proxy-connector-groups.md
+    - name: 高可用性和负载均衡
+      href: application-proxy-high-availability-load-balancing.md
+    - name: 基于 SAML 的 SSO（本地应用）
+      href: application-proxy-configure-single-sign-on-on-premises-apps.md
+    - name: 基于标头的 SSO
+      href: application-proxy-configure-single-sign-on-with-headers.md
+    - name: 基于 Kerberos 的 SSO
+      href: application-proxy-configure-single-sign-on-with-kcd.md
+    - name: 基于密码的 SSO
+      href: application-proxy-configure-single-sign-on-password-vaulting.md
+    - name: 网络拓扑
+      href: application-proxy-network-topology.md
+    - name: 安全性
+      href: application-proxy-security.md
+- name: 操作指南
+  expanded: true
+  items:
+    - name: 配置连接器以使用代理服务器
+      href: application-proxy-configure-connectors-with-proxy-servers.md
+    - name: 授予移动和桌面应用对本地 API 的访问权限
+      href: application-proxy-secure-api-access.md
+    - name: 配置自定义主页
+      href: application-proxy-configure-custom-home-page.md
+    - name: 配置 Cookie 设置
+      href: application-proxy-configure-cookie-settings.md
+    - name: 使用通配符发布
+      href: application-proxy-wildcard.md
+    - name: 配置自定义域
+      href: application-proxy-configure-custom-domain.md
+    - name: 转换内联链接
+      href: application-proxy-configure-hard-coded-link-translation.md
+    - name: 配置声明感知应用
+      href: application-proxy-configure-for-claims-aware-applications.md
+    - name: 配置移动和桌面客户端应用
+      href: application-proxy-configure-native-client-application.md
+    - name: 注册连接器 - 无提示安装
+      href: application-proxy-register-connector-powershell.md
+    - name: 删除个人数据
+      href: application-proxy-remove-personal-data.md
+    - name: 发布演练
+      items:
+        - name: 与 NDES 服务器上的应用程序代理集成
+          href: active-directory-app-proxy-protect-ndes.md
+        - name: 使用 PingAccess 与应用程序代理集成
+          href: application-proxy-ping-access-publishing-guide.md
+        - name: 与 Azure AD 域服务集成
+          href: ../../active-directory-domain-services/deploy-azure-app-proxy.md?context=%2fazure%2factive-directory%2fapp-proxy%2fcontext%2fapp-proxy-context
+        - name: 与 Power BI 集成
+          href: application-proxy-integrate-with-power-bi.md
+        - name: 与 Cloud App Security 集成
+          href: application-proxy-integrate-with-microsoft-cloud-application-security.md
+        - name: 与远程桌面集成
+          href: application-proxy-integrate-with-remote-desktop-services.md
+        - name: 与 SharePoint 集成 (Kerberos)
+          href: application-proxy-integrate-with-sharepoint-server.md
+        - name: 与 SharePoint 集成 (SAML)
+          href: application-proxy-integrate-with-sharepoint-server-saml.md
+        - name: 与 Teams 集成
+          href: application-proxy-integrate-with-teams.md
+        - name: 与 Tableau 集成
+          href: application-proxy-integrate-with-tableau.md
+        - name: 与 Qlik 集成
+          href: application-proxy-qlik.md
+    - name: 疑难解答
+      items:
+        - name: 应用程序代理故障排除
+          href: application-proxy-troubleshoot.md
+        - name: 在管理门户中配置
+          href: application-proxy-config-how-to.md
+        - name: 连接器故障排除流程图
+          href: application-proxy-debug-connectors.md
+        - name: 应用程序故障排除流程图
+          href: application-proxy-debug-apps.md
+        - name: 显示应用页时出现问题
+          href: application-proxy-page-appearance-broken-problem.md
+        - name: 应用程序加载时间过长
+          href: application-proxy-page-load-speed-problem.md
+        - name: 应用程序页上的链接不起作用
+          href: application-proxy-page-links-broken-problem.md
+        - name: 在管理门户中创建应用时出现问题
+          href: application-proxy-config-problem.md
+        - name: 配置 Kerberos 约束委派
+          href: application-proxy-back-end-kerberos-constrained-delegation-how-to.md
+        - name: “无法访问此企业应用程序”错误
+          href: application-proxy-sign-in-bad-gateway-timeout-error.md
+        - name: 安装应用程序代理程序连接器时出现问题
+          href: application-proxy-connector-installation-problem.md
+        - name: 应用的连接器组中没有正常工作的连接器
+          href: application-proxy-connectivity-no-working-connector.md
+        - name: 登录问题
+          href: application-sign-in-problem-on-premises-application-proxy.md
+        - name: 应用程序代理中的 CORS 问题
+          href: application-proxy-understand-cors-issues.md
+- name: 参考
+  items:
+    - name: 应用代理常见问题解答
+      href: application-proxy-faq.yml
+    - name: 应用程序代理版本历史记录
+      href: application-proxy-release-version-history.md
+- name: 资源
+  items:
+    - name: 开发人员的支持和帮助选项
+      href: ../develop/developer-support-help-options.md?context=%2fazure%2factive-directory%2fmanage-apps%2fcontext%2fmanage-apps-context
+    - name: Azure 反馈论坛
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: Microsoft Q&A 问题页面
+      href: /answers/topics/azure-active-directory.html
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/active-directory'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=active-directory'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

@@ -37,6 +37,8 @@
           href: azure-netapp-files-smb-performance.md
     - name: Azure NetApp 文件的成本模型
       href: azure-netapp-files-cost-model.md
+    - name: 了解卷配额
+      href: volume-quota-introduction.md
     - name: Azure NetApp 文件网络规划指南
       href: azure-netapp-files-network-topologies.md
     - name: Azure NetApp 文件快照的工作原理
@@ -61,6 +63,8 @@
               href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
             - name: 将 Azure NetApp 文件与 Windows 虚拟桌面配合使用的好处
               href: solutions-windows-virtual-desktop.md
+            - name: 使用 Azure NetApp 文件进行 SQL Server 部署的好处
+              href: solutions-benefits-azure-netapp-files-sql-server.md
     - name: 有关 Azure NetApp 文件的常见问题解答
       href: azure-netapp-files-faqs.md
     - name: 什么是 Azure 应用程序一致性快照工具
@@ -89,20 +93,26 @@
           href: azure-netapp-files-configure-nfsv41-domain.md
         - name: 配置 NFSv 4.1 Kerberos 加密
           href: configure-kerberos-encryption.md
+        - name: 为 NFS 配置具有扩展组的 ADDS LDAP
+          href: configure-ldap-extended-groups.md
         - name: 为 Azure NetApp 文件配置 NFS 客户端
           href: configure-nfs-clients.md
-        - name: 为 NFS 卷配置导出策略
-          href: azure-netapp-files-configure-export-policy.md
     - name: 创建 SMB 卷
       href: azure-netapp-files-create-volumes-smb.md
     - name: 创建双协议卷
       href: create-volumes-dual-protocol.md
-    - name: 为 Windows 或 Linux 虚拟机装载或卸载卷
+    - name: 通过 TLS 配置 ADDS LDAP
+      href: configure-ldap-over-tls.md
+    - name: 为 NFS 或双重协议配置导出策略
+      href: azure-netapp-files-configure-export-policy.md
+    - name: 装载或卸载卷
       href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
     - name: 管理快照
       href: azure-netapp-files-manage-snapshots.md
     - name: 重设容量池或卷的大小
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+    - name: 监视卷的容量
+      href: monitor-volume-capacity.md
     - name: 动态更改卷的服务级别
       href: dynamic-change-volume-service-level.md
     - name: 管理跨区域复制
@@ -115,6 +125,8 @@
           href: cross-region-replication-manage-disaster-recovery.md
         - name: 删除卷复制或卷
           href: cross-region-replication-delete.md
+    - name: 使用标记管理账单
+      href: manage-billing-tags.md
     - name: 开发
       items:
         - name: REST API
@@ -135,6 +147,8 @@
           href: troubleshoot-nfsv41-kerberos-volumes.md
         - name: 快照策略问题故障排除
           href: troubleshoot-snapshot-policies.md
+        - name: LDAP 卷故障排除
+          href: troubleshoot-ldap-volumes.md
         - name: 排查资源提供程序错误
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
 - name: 参考
@@ -143,8 +157,12 @@
       href: /rest/api/netapp/
     - name: 资源管理器模板
       href: /azure/templates/microsoft.netapp/allversions
+    - name: Azure CLI
+      href: /cli/azure/netappfiles
     - name: Azure 应用程序一致性快照工具 (AzAcSnap)
       items:
+        - name: AzAcSnap 发行说明
+          href: azacsnap-release-notes.md
         - name: AzAcSnap 入门
           href: azacsnap-get-started.md
         - name: 安装 AzAcSnap
@@ -179,3 +197,5 @@
       href: 'https://azure.microsoft.com/support/legal/sla/netapp/'
     - name: 视频
       href: azure-netapp-files-videos.md
+    - name: Azure 文件存储和 Azure NetApp 文件的比较
+      href: ../storage/files/storage-files-netapp-comparison.md

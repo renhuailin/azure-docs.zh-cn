@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
-ms.openlocfilehash: ab9e122ba0b2b50203a2d66ae14f03f3b6300f96
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 455d78ed21403952046448dd4447b5ec54f77c00
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96452348"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566973"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典版）中使用 IoT 中心的传感器数据进行天气预测
 
@@ -23,25 +23,11 @@ ms.locfileid: "96452348"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-机器学习是一项数据科研技术，可帮助计算机从现有的数据中学习，预测将来的行为、结果和趋势。 Azure 机器学习工作室（经典）是一种云预测分析服务，可用于将预测模型作为分析解决方案进行快速创建和部署。
+机器学习是一项数据科研技术，可帮助计算机从现有的数据中学习，预测将来的行为、结果和趋势。 Azure 机器学习工作室（经典）是一种云预测分析服务，可用于将预测模型作为分析解决方案进行快速创建和部署。 在本文中，您将了解如何使用 Azure 机器学习工作室（经典版）根据 Azure IoT 中心的温度和湿度数据来进行天气预测（下雨的可能性）。 下雨的可能性是已准备的天气预测模型的输出。 该模型基于历史数据构建，以根据温度和湿度预测下雨的可能性。
 
-## <a name="what-you-learn"></a>学习内容
+## <a name="prerequisites"></a>必备条件
 
-了解如何使用 Azure 机器学习工作室（经典版）根据 Azure IoT 中心的温度和湿度数据来进行天气预测（下雨的可能性）。 下雨的可能性是已准备的天气预测模型的输出。 该模型基于历史数据构建，以根据温度和湿度预测下雨的可能性。
-
-## <a name="what-you-do"></a>准备工作
-
-- 将天气预测模型部署为 Web 服务。
-- 添加一个使用者组，让 IoT 中心做好数据访问准备。
-- 创建流分析作业并将作业配置为：
-  - 从 IoT 中心读取温度和湿度数据。
-  - 调用 Web 服务以获取下雨的可能性。
-  - 将结果保存到 Azure Blob 存储中。
-- 使用 Microsoft Azure 存储资源管理器查看天气预报。
-
-## <a name="what-you-need"></a>所需条件
-
-- 完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程；例如[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)。 这包括以下要求：
+- 请完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程。 例如，可转到[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)教程或[发送遥测](quickstart-send-telemetry-dotnet.md)快速入门中的一个教程。 这些文章阐述下列要求：
   - 一个有效的 Azure 订阅。
   - 已在订阅中创建一个 Azure IoT 中心。
   - 一个可向 Azure IoT 中心发送消息的客户端应用程序。

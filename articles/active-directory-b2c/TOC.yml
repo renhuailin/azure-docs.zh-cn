@@ -45,6 +45,8 @@
           href: tutorial-desktop-app-webapi.md
         - name: 单页
           href: tutorial-single-page-app-webapi.md
+    - name: 6 - 清理并删除租户
+      href: tutorial-delete-tenant.md
 - name: 示例
   href: code-samples.md
 - name: 概念
@@ -79,22 +81,28 @@
           href: tokens-overview.md
         - name: 请求访问令牌
           href: access-tokens.md
-    - name: 策略密钥
-      href: policy-keys-overview.md
-    - name: 用户流和策略
+    - name: 用户体验
+      expanded: true
       items:
-        - name: 用户流
+        - name: 用户流和自定义策略
           href: user-flow-overview.md
-        - name: 自定义策略
+        - name: 自定义策略概述
           href: custom-policy-overview.md
+    - name: API 连接器
+      href: api-connectors-overview.md
+      displayName: 'REST API, web API, API connectors'
     - name: 用户帐户
       href: user-overview.md
     - name: 用户配置文件属性
       href: user-profile-attributes.md
     - name: 标识保护和条件访问
       href: conditional-access-identity-protection-overview.md
+    - name: 策略密钥
+      href: policy-keys-overview.md
 - name: 操作指南
   items:
+    - name: 管理租户
+      href: tenant-management.md
     - name: 应用集成
       items:
         - name: 注册 Web 应用程序
@@ -120,6 +128,9 @@
           href: signin-appauth-ios.md
         - name: 使用 App Auth 的 Android
           href: signin-appauth-android.md
+        - name: 安全 API 管理 API
+          href: secure-api-management.md
+          displayName: 'apim, api management, migrate, b2clogin.com'
     - name: 创建流
       items:
         - name: 注册或登录策略
@@ -163,6 +174,8 @@
           href: identity-provider-azure-ad-multi-tenant.md
         - name: Azure AD B2C
           href: identity-provider-azure-ad-b2c.md
+        - name: eBay
+          href: identity-provider-ebay.md
         - name: Facebook
           href: identity-provider-facebook.md
         - name: 通用 OpenId Connect
@@ -221,6 +234,15 @@
           href: password-complexity.md
         - name: 禁用电子邮件验证
           href: disable-email-verification.md
+        - name: 自定义电子邮件验证
+          items:
+            - name: Mailjet
+              href: custom-email-mailjet.md
+              displayName: 'Custom email, Custom verification email, Verification email'
+            - name: SendGrid
+              href: custom-email-sendgrid.md
+              displayName: 'Custom email, Custom verification email, Verification email'
+          displayName: verification
         - name: 启用 MFA
           items:
             - name: 多重身份验证
@@ -260,142 +282,25 @@
           href: conditional-access-user-flow.md
     - name: 配置年龄限制
       href: age-gating.md
-    - name: API 连接器（预览版）
+    - name: API 连接器
       items:
-        - name: 概述
-          href: api-connectors-overview.md
-        - name: 添加 API 连接器
+        - name: 将 API 连接器添加到注册用户流
           href: add-api-connector.md
+          displayName: 'rest claims validation, validate'
+        - name: 将 API 连接器添加到注册或登录用户流
+          href: custom-policy-rest-api-claims-exchange.md
+          displayName: rest claims exchange
+        - name: 保护 API 连接器
+          href: secure-rest-api.md
     - name: 自定义策略
       items:
-        - name: 自定义策略概述
-          href: custom-policy-trust-frameworks.md
-        - name: 自定义策略入门
-          href: custom-policy-get-started.md
-        - name: 自定义电子邮件验证
-          items:
-            - name: Mailjet
-              href: custom-email-mailjet.md
-              displayName: 'Custom email, Custom verification email, Verification email'
-            - name: SendGrid
-              href: custom-email-sendgrid.md
-              displayName: 'Custom email, Custom verification email, Verification email'
-          displayName: verification
-        - name: 添加自己的业务逻辑
-          items:
-            - name: 集成 REST API
-              href: custom-policy-rest-api-intro.md
-            - name: 验证用户输入
-              href: custom-policy-rest-api-claims-validation.md
-              displayName: 'rest claims validation, validate'
-            - name: 获取其他声明
-              href: custom-policy-rest-api-claims-exchange.md
-              displayName: rest claims exchange
-            - name: 保护 REST API
-              href: secure-rest-api.md
         - name: 疑难解答
           items:
             - name: 使用 Application Insights 收集日志
               href: troubleshoot-with-application-insights.md
               displayName: 'troubleshooting, app insights'
-            - name: 策略验证
+            - name: 自定义策略故障排除
               href: troubleshoot-custom-policies.md
-              displayName: troubleshooting
-        - name: 参考
-          items:
-            - name: TrustFrameworkPolicy
-              href: trustframeworkpolicy.md
-            - name: BuildingBlocks
-              href: buildingblocks.md
-              items:
-                - name: ClaimsSchema
-                  href: claimsschema.md
-                - name: ClaimsTransformations
-                  href: claimstransformations.md
-                  items:
-                    - name: 布尔
-                      href: boolean-transformations.md
-                    - name: Date
-                      href: date-transformations.md
-                    - name: 常规
-                      href: general-transformations.md
-                    - name: Integer
-                      href: integer-transformations.md
-                    - name: JSON
-                      href: json-transformations.md
-                    - name: 电话号码
-                      href: phone-number-claims-transformations.md
-                    - name: 外部帐户
-                      href: social-transformations.md
-                    - name: StringCollection
-                      href: stringcollection-transformations.md
-                    - name: String
-                      href: string-transformations.md
-                - name: 谓词
-                  href: predicates.md
-                - name: ContentDefinitions
-                  href: contentdefinitions.md
-                - name: 本地化
-                  href: localization.md
-                  items:
-                    - name: 本地化字符串 ID
-                      href: localization-string-ids.md
-                - name: DisplayControls
-                  href: display-controls.md
-                  items:
-                    - name: 验证
-                      href: display-control-verification.md
-            - name: ClaimsProviders
-              href: claimsproviders.md
-              items:
-                - name: 技术配置文件
-                  href: technicalprofiles.md
-                  items:
-                    - name: 关于验证技术配置文件
-                      href: validation-technical-profile.md
-                    - name: Azure Active Directory
-                      href: active-directory-technical-profile.md
-                    - name: Azure AD 多重身份验证
-                      href: multi-factor-auth-technical-profile.md
-                      displayName: mfa
-                    - name: Azure AD SSPR
-                      href: aad-sspr-technical-profile.md
-                    - name: 声明转换
-                      href: claims-transformation-technical-profile.md
-                    - name: ID 令牌提示
-                      href: id-token-hint.md
-                    - name: JWT 令牌颁发者
-                      href: jwt-issuer-technical-profile.md
-                    - name: OAuth1
-                      href: oauth1-technical-profile.md
-                    - name: OAuth2
-                      href: oauth2-technical-profile.md
-                    - name: 一次性密码
-                      href: one-time-password-technical-profile.md
-                      displayName: otp
-                    - name: OpenID Connect
-                      href: openid-connect-technical-profile.md
-                    - name: 电话因素
-                      href: phone-factor-technical-profile.md
-                    - name: REST
-                      href: restful-technical-profile.md
-                    - name: SAML 标识提供者
-                      href: saml-identity-provider-technical-profile.md
-                    - name: SAML 令牌颁发者
-                      href: saml-issuer-technical-profile.md
-                    - name: 自断言
-                      href: self-asserted-technical-profile.md
-                    - name: SSO 会话
-                      href: custom-policy-reference-sso.md
-                      displayName: single sign-on
-            - name: UserJourneys
-              href: userjourneys.md
-            - name: SubJourneys
-              href: subjourneys.md
-            - name: RelyingParty
-              href: relyingparty.md
-            - name: 声明解析程序
-              href: claim-resolver-overview.md
     - name: UserInfo 终结点
       href: userinfo-endpoint.md
     - name: 合作伙伴集成
@@ -417,15 +322,18 @@
           href: partner-lexisnexis.md
         - name: Onfido
           href: partner-onfido.md
-    - name: 欺诈防护
+    - name: 欺诈防护合作伙伴
       items:
-        - name: Microsoft Dynamics 365 反欺诈
-          href: partner-dynamics-365-fraud-protection.md
-          displayName: 'm365 dynamics, dynamics fraud protection, fraud, 365 protection'
         - name: Arkose Labs
           href: partner-arkose-labs.md
           displayName: 'fraud protection, fraud, Azure AD b2c, protection, B2Cprotection'
-    - name: 保护旧应用和本地应用
+        - name: BioCatch
+          href: partner-biocatch.md
+          displayName: 'fraud protection, fraud, Azure AD b2c, protection, B2Cprotection, user behavior'
+        - name: Microsoft Dynamics 365 反欺诈
+          href: partner-dynamics-365-fraud-protection.md
+          displayName: 'm365 dynamics, dynamics fraud protection, fraud, 365 protection'
+    - name: 保护对旧应用和本地应用的访问
       items:
         - name: Ping 标识
           href: partner-ping-identity.md
@@ -441,6 +349,10 @@
           href: b2clogin.md
         - name: 配置自定义域
           href: custom-domain.md
+        - name: Web 应用程序防火墙合作伙伴
+          items:
+            - name: Cloudflare
+              href: partner-cloudflare.md
         - name: 配置 Web API 域
           href: multiple-token-endpoints.md
           displayName: 'migrate, b2clogin, owin'
@@ -460,15 +372,15 @@
         - name: Azure 门户
           href: manage-users-portal.md
           displayName: 'create users, add users, delete users'
+        - name: 迁移用户
+          href: user-migration.md
+          displayName: bulk import
         - name: 合作伙伴集成
           items:
             - name: N8identity
               href: partner-n8identity.md
             - name: Saviynt
               href: partner-saviynt.md
-    - name: 安全 API 管理 API
-      href: secure-api-management.md
-      displayName: 'apim, api management, migrate, b2clogin.com'
     - name: 日志和监视
       items:
         - name: 审核日志
@@ -491,14 +403,111 @@
         - name: 用户数据
           href: manage-user-data.md
           displayName: GDPR
-    - name: 迁移
-      items:
-        - name: 迁移用户
-          href: user-migration.md
 - name: 参考
   items:
+    - name: 自定义策略架构
+      items:
+        - name: TrustFrameworkPolicy
+          href: trustframeworkpolicy.md
+        - name: BuildingBlocks
+          href: buildingblocks.md
+          items:
+            - name: ClaimsSchema
+              href: claimsschema.md
+            - name: ClaimsTransformations
+              href: claimstransformations.md
+              items:
+                - name: 布尔
+                  href: boolean-transformations.md
+                - name: Date
+                  href: date-transformations.md
+                - name: 常规
+                  href: general-transformations.md
+                - name: Integer
+                  href: integer-transformations.md
+                - name: JSON
+                  href: json-transformations.md
+                - name: 电话号码
+                  href: phone-number-claims-transformations.md
+                - name: 外部帐户
+                  href: social-transformations.md
+                - name: StringCollection
+                  href: stringcollection-transformations.md
+                - name: 字符串
+                  href: string-transformations.md
+            - name: 谓词
+              href: predicates.md
+            - name: ContentDefinitions
+              href: contentdefinitions.md
+            - name: 本地化
+              href: localization.md
+              items:
+                - name: 本地化字符串 ID
+                  href: localization-string-ids.md
+            - name: DisplayControls
+              href: display-controls.md
+              items:
+                - name: 验证
+                  href: display-control-verification.md
+        - name: ClaimsProviders
+          href: claimsproviders.md
+          items:
+            - name: 技术配置文件
+              href: technicalprofiles.md
+              items:
+                - name: 关于验证技术配置文件
+                  href: validation-technical-profile.md
+                - name: Azure Active Directory
+                  href: active-directory-technical-profile.md
+                - name: Azure AD 多重身份验证
+                  href: multi-factor-auth-technical-profile.md
+                  displayName: mfa
+                - name: Azure AD SSPR
+                  href: aad-sspr-technical-profile.md
+                - name: 声明转换
+                  href: claims-transformation-technical-profile.md
+                - name: 条件性访问
+                  href: conditional-access-technical-profile.md
+                - name: ID 令牌提示
+                  href: id-token-hint.md
+                - name: JWT 令牌颁发者
+                  href: jwt-issuer-technical-profile.md
+                - name: OAuth1
+                  href: oauth1-technical-profile.md
+                - name: OAuth2
+                  href: oauth2-technical-profile.md
+                - name: 一次性密码
+                  href: one-time-password-technical-profile.md
+                  displayName: otp
+                - name: OpenID Connect
+                  href: openid-connect-technical-profile.md
+                - name: 电话因素
+                  href: phone-factor-technical-profile.md
+                - name: REST
+                  href: restful-technical-profile.md
+                - name: SAML 标识提供者
+                  href: saml-identity-provider-technical-profile.md
+                - name: SAML 令牌颁发者
+                  href: saml-issuer-technical-profile.md
+                - name: 自断言
+                  href: self-asserted-technical-profile.md
+                - name: SSO 会话
+                  href: custom-policy-reference-sso.md
+                  displayName: single sign-on
+        - name: UserJourneys
+          href: userjourneys.md
+        - name: SubJourneys
+          href: subjourneys.md
+        - name: RelyingParty
+          href: relyingparty.md
+        - name: 声明解析程序
+          href: claim-resolver-overview.md
+    - name: 发行说明
+      href: custom-policy-developer-notes.md
     - name: 服务限制和局限性
       href: service-limits.md
+    - name: TLS 和密码套件要求
+      href: https-cipher-tls-requirements.md
     - name: 应用注册
       href: app-registrations-training-guide.md
     - name: 计费模式
@@ -512,8 +521,6 @@
       href: error-codes.md
     - name: 扩展应用
       href: extensions-app.md
-    - name: 自定义策略 (IEF) 发行说明
-      href: custom-policy-developer-notes.md
     - name: 页面布局版本
       href: page-layout.md
       displayName: Page version

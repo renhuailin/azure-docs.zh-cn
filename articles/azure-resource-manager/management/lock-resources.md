@@ -2,14 +2,14 @@
 title: 锁定资源以防止更改
 description: 通过对所有用户和角色应用锁，来防止用户更新或删除 Azure 资源。
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 71637318a60e66bf5000de2f564d740cc101cc60
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 04/28/2021
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 52e61dd1c84e0f5fa6267e687ab55ce386d5767b
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768716"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108314798"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>锁定资源，以防止意外更改
 
@@ -47,6 +47,8 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 * 资源组上的不可删除锁可防止 Azure 资源管理器[自动删除历史记录中的部署](../templates/deployment-history-deletions.md)。 如果历史记录中达到 800 个部署，则部署会失败。
 
 * **Azure 备份服务** 创建的 **资源组** 上的“不能删除”锁会导致备份失败。 该服务最多支持 18 个还原点。 锁定后，备份服务无法清理还原点。 有关详细信息，请参阅[常见问题解答 - 备份 Azure VM](../../backup/backup-azure-vm-backup-faq.yml)。
+
+* 资源组上的“无法删除”锁定可防止 Azure 机器学习自动缩放 [Azure 机器学习计算群集](../../machine-learning/concept-compute-target.md#azure-machine-learning-compute-managed)来删除未使用的节点 。
 
 * **订阅** 上的只读锁会导致 **Azure 顾问** 无法正常运行。 顾问将无法存储其查询的结果。
 

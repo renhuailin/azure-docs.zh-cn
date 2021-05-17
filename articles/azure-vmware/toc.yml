@@ -8,13 +8,13 @@
       href: azure-vmware-solution-platform-updates.md
 - name: 快速入门
   items:
-    - name: 0 - 规划部署
+    - name: 1 - 规划部署
       href: production-ready-deployment-steps.md
-    - name: 1 - 部署 Azure VMware 解决方案
+    - name: 2 - 部署 Azure VMware 解决方案
       href: deploy-azure-vmware-solution.md
-    - name: 2 - 连接到本地
-      href: azure-vmware-solution-on-premises.md
-    - name: 3 - 部署和配置 VMware HCX
+    - name: 3 - 连接到本地
+      href: tutorial-expressroute-global-reach-private-cloud.md
+    - name: 4 - 部署和配置 VMware HCX
       href: tutorial-deploy-vmware-hcx.md
 - name: 教程
   items:
@@ -32,7 +32,7 @@
       href: tutorial-expressroute-global-reach-private-cloud.md
     - name: 7 - 部署和配置 VMware HCX
       href: tutorial-deploy-vmware-hcx.md
-    - name: 8 - 缩放私有云
+    - name: 8 - 在私有云中扩展或收缩群集
       href: tutorial-scale-private-cloud.md
     - name: 9 - 删除私有云
       href: tutorial-delete-private-cloud.md
@@ -46,79 +46,145 @@
       href: concepts-storage.md
     - name: 私有云的访问权限和标识
       href: concepts-identity.md
-    - name: vSphere 基于角色的访问控制
-      href: concepts-role-based-access-control.md
     - name: 监视和修复私有云
-      href: concepts-monitor-repair-private-cloud.md
-    - name: 私有云升级
-      href: concepts-upgrades.md
+      href: concepts-private-clouds-clusters.md#host-monitoring-and-remediation
+    - name: API 管理
+      href: concepts-api-management.md
+    - name: 中心和分支
+      href: concepts-hub-and-spoke.md
 - name: 操作指南
   items:
-    - name: 请求主机配额并启用 Azure VMware 解决方案
+    - name: 为 Azure VMware 解决方案请求主机配额
       href: enable-azure-vmware-solution.md
+    - name: 移动资源
+      items:
+        - name: 移动 Azure VMware 解决方案订阅
+          href: move-ea-csp-subscriptions.md
     - name: 通过预留实例节约成本
       href: reserved-instance.md
-    - name: 迁移评估
-      href: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
+    - name: 创建 Azure VMware 解决方案评估
+      href: /azure/migrate/how-to-create-azure-vmware-solution-assessment?context=/azure/azure-vmware/context/context
     - name: 管理 DHCP
       href: manage-dhcp.md
     - name: 配置 NSX 网络组件
       href: configure-nsx-network-components-azure-portal.md
-    - name: 为 VM 部署灾难恢复
-      href: disaster-recovery-for-virtual-machines.md
-    - name: 通过内容库部署 VM
-      href: ./deploy-vm-content-library.md
-    - name: 设置 GitHub Enterprise Server
+    - name: 配置 GitHub Enterprise 服务器
       href: github-enterprise-server.md
-    - name: 公共 IP 使用情况
-      href: public-ip-usage.md
-    - name: 创建 IPSec 隧道
-      href: create-ipsec-tunnel.md
-    - name: Windows Server 故障转移群集
-      href: windows-server-failover-cluster.md
+    - name: 启用公共 Internet 访问
+      href: enable-public-internet-access.md
+    - name: 在 vWAN 中配置站点到站点 VPN
+      href: configure-site-to-site-vpn-gateway.md
+    - name: 配置 Windows Server 故障转移群集
+      href: configure-windows-server-failover-cluster.md
+    - name: 重置 vSphere 凭据
+      href: reset-vsphere-credentials.md
+    - name: 使用 Azure 备份服务器进行备份和还原
+      items:
+        - name: 备份 VMware VM
+          href: /azure/backup/backup-azure-backup-server-vmware?context=/azure/azure-vmware/context/context
+        - name: 还原 VMware 虚拟机
+          href: /azure/backup/restore-azure-backup-server-vmware?context=/azure/azure-vmware/context/context
+        - name: 监视 Azure 备份工作负荷
+          href: /azure/backup/backup-azure-monitoring-built-in-monitor?context=/azure/azure-vmware/context/context
+    - name: 灾难恢复
+      items:
+        - name: 为 VM 部署灾难恢复
+          href: disaster-recovery-for-virtual-machines.md
+        - name: 灾难恢复到 Azure
+          items:
+            - name: 准备 Azure
+              href: /azure/site-recovery/avs-tutorial-prepare-azure?context=/azure/azure-vmware/context/context
+            - name: 准备 Azure VMware 解决方案
+              href: /azure/site-recovery/avs-tutorial-prepare-avs?context=/azure/azure-vmware/context/context
+            - name: 设置复制
+              href: /azure/site-recovery/avs-tutorial-replication?context=/azure/azure-vmware/context/context
+            - name: 运行灾难恢复演练
+              href: /azure/site-recovery/avs-tutorial-dr-drill-azure?context=/azure/azure-vmware/context/context
+            - name: 故障转移到 Azure
+              href: /azure/site-recovery/avs-tutorial-failover?context=/azure/azure-vmware/context/context
+            - name: 重新保护 VM
+              href: /azure/site-recovery/avs-tutorial-reprotect?context=/azure/azure-vmware/context/context
+            - name: 从 Azure 进行故障回复
+              href: /azure/site-recovery/avs-tutorial-failback?context=/azure/azure-vmware/context/context
     - name: Azure 本机集成
       items:
-        - name: API 管理
-          href: concepts-api-management.md
-        - name: 中心和分支
-          href: concepts-hub-and-spoke.md
-        - name: Azure 安全中心
+        - name: 使用 Azure 安全中心保护 VM
           href: azure-security-integration.md
-        - name: Azure 备份服务器
-          items:
-            - name: 设置备份服务器
-              href: set-up-backup-server-for-azure-vmware-solution.md
-            - name: 使用备份服务器备份私有云 VM
-              href: backup-azure-vmware-solution-virtual-machines.md
-        - name: VM 的生命周期管理
+        - name: 使用 Azure 备份服务器备份 VMware VM
+          href: /azure/backup/backup-azure-backup-server-vmware?context=/azure/azure-vmware/context/context
+        - name: 监视和管理 VM
           href: lifecycle-management-of-azure-vmware-solution-vms.md
-        - name: Azure NetApp 文件
+        - name: 集成 Azure NetApp 文件
           href: netapp-files-with-azure-vmware-solution.md
-        - name: 应用程序网关
+        - name: 通过 Azure 应用程序网关保护 Web 应用
           href: protect-azure-vmware-solution-with-application-gateway.md
-        - name: 流量管理器
+        - name: 部署流量管理器以平衡工作负载
           href: deploy-traffic-manager-balance-workloads.md
+        - name: 配置警报并使用指标
+          href: configure-alerts-for-azure-vmware-solution.md
     - name: VMware 解决方案
       items:
-        - name: 设置 vRealize Operations
+        - name: 配置 vRealize Operations
           href: vrealize-operations-for-azure-vmware-solution.md
         - name: 部署 VMware Horizon
           href: azure-vmware-solution-horizon.md
+        - name: 从内容库部署 VM
+          href: deploy-vm-content-library.md
     - name: VMware 生态系统
       items:
         - name: VM 的备份解决方案
           href: ecosystem-back-up-vms.md
+        - name: VM 的迁移解决方案
+          href: ecosystem-migration-vms.md
 - name: 资源
   items:
     - name: 疑难解答
       items:
         - name: 就部署失败发起支持请求
           href: fix-deployment-provisioning-failures.md
+        - name: VMware 工具 vix 错误代码 = 21009
+          href: 'https://kb.vmware.com/s/article/2129927'
     - name: 常见问题解答
-      href: faq.yml
+      items:
+        - name: 常规
+          href: /azure/azure-vmware/faq#general
+        - name: 客户通信
+          href: /azure/azure-vmware/faq#customer-communication
+        - name: 配置和设置
+          href: /azure/azure-vmware/faq#configuration-and-setup
+        - name: VMware 软件
+          href: /azure/azure-vmware/faq#vmware-software
+        - name: 计算、备份和灾难恢复
+          href: '/azure/azure-vmware/faq#compute,-backup,-and-disaster-recovery'
+        - name: 网络和互连
+          href: /azure/azure-vmware/faq#networking-and-interconnectivity
+        - name: 存储
+          href: /azure/azure-vmware/faq#storage
+        - name: 主机、群集和私有云
+          href: '/azure/azure-vmware/faq#hosts,-clusters,-and-private-clouds'
+        - name: 身份管理
+          href: /azure/azure-vmware/faq#identity-management
+        - name: 计费和支持
+          href: /azure/azure-vmware/faq#billing-and-support
+    - name: 视频
+      items:
+        - name: 播放列表
+          href: 'https://youtube.com/playlist?list=PL1NLwHeM6ewbZu0dC0guj-OSpIoZnnJin'
+        - name: 与 Azure 服务集成
+          href: 'https://youtu.be/m26iLu6DHbU'
+        - name: 与 Azure 应用程序网关集成
+          href: 'https://youtu.be/BoQYvqzb6Y8'
+        - name: 迁移和容量计划
+          href: 'https://youtu.be/NoNG-hkksrA'
+        - name: 使用 Azure 逻辑应用轮换 vCenter 和 NSX-T 密码
+          href: 'https://youtu.be/cK1qY3knj88'
 - name: 参考
   items:
+    - name: REST API
+      href: /rest/api/avs
     - name: Azure CLI
-      href: /cli/azure/ext/vmware/vmware
+      href: /cli/azure/vmware
     - name: Azure PowerShell
       href: /powershell/module/az.vmware/
+    - name: Terraform Azure 提供程序
+      href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/vmware_private_cloud'

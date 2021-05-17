@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
 ms.openlocfilehash: ae6c87c9eabea837ba9c43676d4ca712caa385cb
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94594158"
 ---
 # <a name="move-resources-to-new-region---azure-sql-database--azure-sql-managed-instance"></a>将资源移到新区域 - Azure SQL 数据库和 Azure SQL 托管实例
@@ -38,7 +38,7 @@ ms.locfileid: "94594158"
 1. 删除源区域中的资源。
 
 > [!NOTE]
-> 本文适用于 Azure 公有云内或同一主权云中的迁移。
+> 本文适用于在 Azure 公有云或同一主权云内进行的迁移。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -57,7 +57,7 @@ ms.locfileid: "94594158"
 1. 如果实例具有长期保留策略 (LTR)，则现有的 LTR 备份将与当前服务器保持关联。 由于目标服务器不同，因此可以使用源服务器访问源区域中的旧 LTR 备份，即使删除了该服务器，也是如此。
 
       > [!NOTE]
-      > 这将无法在主权云和公共区域之间移动。 此类迁移需要将 LTR 备份移动到当前不支持的目标服务器。
+      > 这对于在主权云和公共区域之间移动是不够的。 此类迁移需要将 LTR 备份移动到目标服务器，这是当前所不支持的。
 
 ### <a name="prepare-resources"></a>准备资源
 
@@ -108,7 +108,7 @@ ms.locfileid: "94594158"
 1. 如果实例具有长期保留策略 (LTR)，则现有的 LTR 备份将与当前服务器保持关联。 由于目标服务器不同，因此你可以使用源服务器访问源区域中的旧 LTR 备份，即使删除了该服务器，也是如此。
 
       > [!NOTE]
-      > 这将无法在主权云和公共区域之间移动。 此类迁移需要将 LTR 备份移动到当前不支持的目标服务器。
+      > 这对于在主权云和公共区域之间移动是不够的。 此类迁移需要将 LTR 备份移动到目标服务器，这是当前所不支持的。
 
 ### <a name="prepare-to-move"></a>准备移动
 
@@ -160,7 +160,7 @@ ms.locfileid: "94594158"
 1. 如果实例具有长期保留策略 (LTR)，则现有的 LTR 备份将与当前实例保持关联。 由于目标实例不同，因此可以使用源实例访问源区域中的旧 LTR 备份，即使删除了该实例，也可以做到。
 
   > [!NOTE]
-  > 这将无法在主权云和公共区域之间移动。 此类迁移需要将 LTR 备份移动到目标实例，目前不支持该实例。
+  > 这对于在主权云和公共区域之间移动是不够的。 此类迁移需要将 LTR 备份移动到目标服务器，这是当前所不支持的。
 
 ### <a name="prepare-resources"></a>准备资源
 

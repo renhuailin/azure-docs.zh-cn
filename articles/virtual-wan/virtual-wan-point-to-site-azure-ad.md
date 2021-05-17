@@ -1,18 +1,18 @@
 ---
 title: 为用户 VPN 连接配置 Azure AD 身份验证：虚拟 WAN
-description: 介绍如何为用户 VPN 配置 Azure Active Directory 身份验证。
+description: 了解如何为虚拟 WAN 用户 VPN（点到站点）配置 Azure Active Directory 身份验证。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: alzam
-ms.openlocfilehash: 9cc68eb60096c4431acfc988c87ca9bf99f1f045
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f16a7675805fa2665c25b5d4a9c3847b710ec71b
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93043393"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164194"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>为用户 VPN 配置 Azure Active Directory 身份验证
 
@@ -51,7 +51,7 @@ ms.locfileid: "93043393"
 
 1. 导航到“虚拟 WAN”页。 在门户中，单击“+创建资源”。 在搜索框中键入“虚拟 WAN”，然后选择 Enter。
 2. 从结果中选择“虚拟 WAN”。 在“虚拟 WAN”页上，单击“创建”以打开“创建 WAN”页。
-3. 在“创建 WAN”页的“基本信息”选项卡上，填写以下字段 ：
+3. 在“创建 WAN”页的“基本信息”选项卡上，填写以下字段   ：
 
    ![虚拟 WAN](./media/virtual-wan-point-to-site-azure-ad/vwan.png)
 

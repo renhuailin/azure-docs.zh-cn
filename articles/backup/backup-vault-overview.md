@@ -2,13 +2,13 @@
 title: 备份保管库概述
 description: 备份保管库概述。
 ms.topic: conceptual
-ms.date: 08/17/2020
-ms.openlocfilehash: c189997ecc4814917182246b35003649d317ac77
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 04/19/2021
+ms.openlocfilehash: e2d720da9474a35870de01559201d22c9e5b567f
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92091281"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739073"
 ---
 # <a name="backup-vaults-overview"></a>备份保管库概述
 
@@ -28,7 +28,8 @@ ms.locfileid: "92091281"
 
 ## <a name="encryption-settings-in-the-backup-vault"></a>备份保管库中的加密设置
 
-本部分介绍可用于加密备份保管库中存储的备份数据的选项。
+本部分介绍可用于加密备份保管库中存储的备份数据的选项。 Azure 备份服务使用“备份管理服务”应用来访问 Azure Key Vault，而不是使用备份保管库的托管标识。
+
 
 ### <a name="encryption-of-backup-data-using-platform-managed-keys"></a>使用平台托管的密钥加密备份数据
 
@@ -87,7 +88,7 @@ ms.locfileid: "92091281"
 
 若要正确删除保管库，必须按以下顺序执行步骤：
 
-- 必须检查以验证是否包含任何受保护的项：
+- 验证是否有任何受保护的项：
   - 在左侧导航栏中，转到“备份实例”。 必须先删除此处列出的所有项。
 
 完成这些步骤后，你可以继续删除保管库。

@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 04/06/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 24dc0d2b243eb6c13e5670a1438876132c5e429e
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 25880a60bd086afa84b0c3eaf901bfb987190f4a
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833645"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166336"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合 Runbook 辅助角色
 
@@ -35,8 +35,8 @@ Linux 混合 Runbook 辅助角色以特殊用户身份执行 Runbook，该用户
 
 混合 Runbook 辅助角色需要受支持的 Linux 操作系统的 [Log Analytics 代理](../azure-monitor/agents/log-analytics-agent.md)。 对于在 Azure 外部托管的服务器或计算机，你可以使用[启用了 Azure Arc 的服务器](../azure-arc/servers/overview.md)安装 Log Analytics 代理。
 
->[!NOTE]
->安装适用于 Linux 的 Log Analytics 代理后，不应更改 `sudoers.d` 文件夹的权限或其所有权。 Nxautomation 帐户需要 Sudo 权限，该帐户是运行混合 Runbook 辅助角色的用户上下文。 不应删除该权限。 将此限制为某些文件夹或命令可能会导致中断性变更。
+> [!NOTE]
+> 安装适用于 Linux 的 Log Analytics 代理后，不应更改 `sudoers.d` 文件夹的权限或其所有权。 Nxautomation 帐户需要 Sudo 权限，该帐户是运行混合 Runbook 辅助角色的用户上下文。 不应删除该权限。 将此限制为某些文件夹或命令可能会导致中断性变更。
 >
 
 ### <a name="supported-linux-operating-systems"></a>受支持的 Linux 操作系统
@@ -76,8 +76,8 @@ Linux 系统和用户混合 Runbook 辅助角色的最低要求如下：
 
 可将辅助角色计算机添加到其中一个自动化帐户中的混合 Runbook 辅助角色组。 对于托管系统混合 Runbook 辅助角色（由更新管理进行管理）的计算机，可以将其添加到混合 Runbook 辅助角色组。 但必须对更新管理和混合 Runbook 辅助角色组成员身份使用同一自动化帐户。
 
->[!NOTE]
->Azure 自动化[更新管理](./update-management/overview.md)会自动在启用了更新管理的 Azure 或非 Azure 计算机上安装系统混合 Runbook 辅助角色。 但是，此辅助角色未注册到自动化帐户中的任何混合 Runbook 辅助角色组。 若要在这些计算机上运行 Runbook，需将其添加到混合 Runbook 辅助角色组。 按照[安装 Linux 混合 Runbook 辅助角色](#install-a-linux-hybrid-runbook-worker)部分下的步骤 4 操作，将其添加到组中。
+> [!NOTE]
+> Azure 自动化[更新管理](./update-management/overview.md)会自动在启用了更新管理的 Azure 或非 Azure 计算机上安装系统混合 Runbook 辅助角色。 但是，此辅助角色未注册到自动化帐户中的任何混合 Runbook 辅助角色组。 若要在这些计算机上运行 Runbook，需将其添加到混合 Runbook 辅助角色组。 按照[安装 Linux 混合 Runbook 辅助角色](#install-a-linux-hybrid-runbook-worker)部分下的步骤 4 操作，将其添加到组中。
 
 ## <a name="supported-linux-hardening"></a>支持的 Linux 强化
 
@@ -209,9 +209,9 @@ runbook 使用以下参数。
 
 默认情况下，Linux 混合 Runbook 辅助角色需要签名验证。 如果针对辅助角色运行未签名的 Runbook，将看到 `Signature validation failed` 错误。 若要禁用签名验证，请运行以下命令。 将第二个参数替换为 Log Analytics 工作区 ID。
 
- ```bash
- sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <logAnalyticsworkspaceId>
- ```
+```bash
+sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <logAnalyticsworkspaceId>
+```
 
 ## <a name="remove-the-hybrid-runbook-worker"></a><a name="remove-linux-hybrid-runbook-worker"></a>删除混合 Runbook 辅助角色
 

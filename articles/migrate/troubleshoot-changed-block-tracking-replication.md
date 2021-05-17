@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 33e2bf641b75a5dd360498478f1ea70c7614fb38
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5b17df9e074375b8cdbe769c840aaf030eaff8af
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98071368"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317426"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>排查无代理 VMware VM 迁移中的复制问题
 
@@ -49,7 +49,7 @@ ms.locfileid: "98071368"
 
 错误：“密钥保管库操作失败。 操作: 生成共享访问签名定义，密钥保管库: Key-vault-name，存储帐户: 存储帐户名称。操作失败，出现以下错误:”
 
-![密钥保管库](./media/troubleshoot-changed-block-tracking-replication/key-vault.png)
+![Key Vault](./media/troubleshoot-changed-block-tracking-replication/key-vault.png)
 
 发生此错误的原因通常是，针对密钥保管库的用户访问策略未向当前已登录的用户授予所需的权限，用户无法将存储帐户配置为密钥保管库托管帐户。 若要检查针对密钥保管库的用户访问策略，请在密钥保管库的门户上转到“密钥保管库”页，然后选择“访问策略” 
 
@@ -77,7 +77,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName "keyvaultname" -ObjectId $userPrincip
 尝试将数据复制到 Azure 的组件已关闭或无响应。 可能的原因包括：
 
 - Azure Migrate 设备中运行的网关服务已关闭。
-- 网关服务在连接到服务总线/事件中心/设备存储帐户时遇到问题。
+- 网关服务遇到与服务总线/事件中心/设备存储帐户相关的连接问题。
 
 确定 DisposeArtefactsTimedOut 的确切原因和相应的解决方法：
 
@@ -240,7 +240,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName "keyvaultname" -ObjectId $userPrincip
 - 如果你在触发了 VM 复制时通过选择“是”启用了“自动修复复制”，则该工具将尝试修复复制。 右键单击 VM 并选择“修复复制”。
 - 如果未启用“自动修复复制”或者上述步骤不起作用，请停止虚拟机复制，在虚拟机上[重置已更改块跟踪](https://go.microsoft.com/fwlink/?linkid=2139203)，然后重新配置复制。
 
-[VMware KB 2048201: Changed Block Tracking is reset after a storage vMotion operation in vSphere 5.x](https://go.microsoft.com/fwlink/?linkid=2138888)（VMware 知识库文章 2048201：在 vSphere 5.x 中执行存储 vMotion 操作后，已更改块跟踪被重置）中描述了一个可能导致 VMware vSphere 5.5 上的虚拟机 CBT 重置的已知问题。 如果你使用的是 VMware vSphere 5.5，请确保使用此知识库中描述的更新。
+[VMware KB 1020128: Changed Block Tracking is reset after a storage vMotion operation in vSphere 5.x](https://kb.vmware.com/s/article/1020128)（VMware 知识库文章 1020128：在 vSphere 5.x 中执行存储 vMotion 操作后，已更改块跟踪被重置）中描述了一个可能导致 VMware vSphere 5.5 上的虚拟机 CBT 重置的已知问题。 如果你使用的是 VMware vSphere 5.5，请确保使用此知识库中描述的更新。
 
 或者，可以使用 VMware PowerCLI 重置虚拟机上的 VMware 已更改块跟踪。
 
@@ -292,7 +292,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName "keyvaultname" -ObjectId $userPrincip
 
 ### <a name="error-message-an-internal-error-occurred-snapshot-disk-size-invalid"></a>错误消息: 出现内部错误。 [快照磁盘大小无效]
 
-这是一个已知的 VMware 问题：快照指示的磁盘大小为零。 请遵循 [VMware 知识库文章](https://go.microsoft.com/fwlink/?linkid=2138972)中提供的解决方法。
+这是一个已知的 VMware 问题：快照指示的磁盘大小为零。 请遵循 [VMware 知识库文章](https://kb.vmware.com/s/)中提供的解决方法。
 
 ### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>错误消息: 出现内部错误。 [内存分配失败。 内存不足。]
 

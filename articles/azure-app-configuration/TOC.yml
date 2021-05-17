@@ -25,9 +25,6 @@
           href: quickstart-java-spring-app.md
         - name: Python
           href: quickstart-python.md
-        - name: ARM 模板
-          href: quickstart-resource-manager.md
-          displayName: 'ARM, azure resource manager template'
     - name: 特色管理
       items:
         - name: ASP.NET Core
@@ -38,6 +35,11 @@
           href: quickstart-feature-flag-azure-functions-csharp.md
         - name: Java Spring
           href: quickstart-feature-flag-spring-boot.md
+    - name: ARM 模板
+      href: quickstart-resource-manager.md
+      displayName: 'ARM, azure resource manager template'
+    - name: Visual Studio 中的 .NET 应用
+      href: /visualstudio/azure/vs-azure-tools-connected-services-app-configuration
 - name: 教程
   items:
     - name: 使用轮询模型启用动态配置
@@ -56,21 +58,13 @@
       items:
         - name: .NET Core
           href: enable-dynamic-configuration-dotnet-core-push-refresh.md
-    - name: 使用功能标志
-      items:
-        - name: ASP.NET Core
-          href: use-feature-flags-dotnet-core.md
-        - name: Spring Boot
-          href: use-feature-flags-spring-boot.md
-    - name: 管理功能标志
-      href: manage-feature-flags.md
     - name: 使用 Key Vault 引用
       items:
         - name: ASP.NET Core
           href: use-key-vault-references-dotnet-core.md
         - name: Spring Boot
           href: use-key-vault-references-spring-boot.md
-    - name: CI/CD 管道集成
+    - name: 生成、部署和 CI/CD
       items:
         - name: 使用 Azure Pipelines 推送
           href: push-kv-devops-pipeline.md
@@ -80,12 +74,28 @@
           href: concept-github-action.md
         - name: 使用导出的配置生成项目
           href: integrate-ci-cd-pipeline.md
-    - name: 使用 Helm 与 Kubernetes 部署集成
-      href: integrate-kubernetes-deployment-helm.md
+        - name: 使用 Helm 部署到 Kubernetes
+          href: integrate-kubernetes-deployment-helm.md
+    - name: 特色管理
+      items:
+        - name: 管理功能标志
+          href: manage-feature-flags.md
+        - name: 使用功能标志
+          items:
+            - name: ASP.NET Core
+              href: use-feature-flags-dotnet-core.md
+            - name: Spring Boot
+              href: use-feature-flags-spring-boot.md
+        - name: 使用条件功能标志
+          href: howto-feature-filters-aspnet-core.md
+        - name: 为指定用户/组启用功能
+          href: howto-targetingfilter-aspnet-core.md
 - name: 示例
   items:
     - name: Azure CLI
       href: cli-samples.md
+    - name: GitHub 上的示例
+      href: 'https://github.com/Azure/AppConfiguration/tree/main/examples'
 - name: 概念
   items:
     - name: 键和值
@@ -107,7 +117,7 @@
         - name: 分配 Azure 托管标识
           href: overview-managed-identity.md
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/app-config-security-baseline?toc=/azure/azure-app-configuration/TOC.json
         - name: Azure Policy 的安全控件
           href: ./security-controls-policy.md
     - name: 高可用性
@@ -116,10 +126,6 @@
           href: concept-disaster-recovery.md
 - name: 操作指南
   items:
-    - name: 使用条件功能标志
-      href: howto-feature-filters-aspnet-core.md
-    - name: 为指定用户/组启用功能
-      href: howto-targetingfilter-aspnet-core.md
     - name: 对每个环境配置使用标签
       href: howto-labels-aspnet-core.md
     - name: 导入或导出配置数据
@@ -132,22 +138,18 @@
       href: howto-backup-config-store.md
     - name: 使用托管标识来访问应用程序配置
       href: howto-integrate-azure-managed-service-identity.md
-    - name: 在 Visual Studio 中集成应用程序配置
-      href: /visualstudio/azure/vs-azure-tools-connected-services-app-configuration
 - name: 参考
   items:
-    - name: 配置
+    - name: 客户端库
       items:
-        - name: Azure CLI
-          href: /cli/azure/appconfig
-        - name: .NET Core 提供程序
+        - name: .NET 提供程序
           href: /dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration
         - name: .NET Framework 生成器
           href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
+        - name: Java Spring 提供程序
+          href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/appconfiguration'
         - name: 用于 .NET 的 Azure SDK
           href: 'https://go.microsoft.com/fwlink/?linkid=2092056'
-        - name: Java Spring 提供程序
-          href: 'https://github.com/microsoft/spring-cloud-azure/tree/master/'
         - name: 用于 Java 的 Azure SDK
           href: 'https://go.microsoft.com/fwlink/?linkid=2098196'
         - name: 用于 Python 的 Azure SDK
@@ -156,64 +158,70 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2103664'
     - name: 特色管理
       items:
-        - name: .NET Core 库
+        - name: .NET Core/.NET Standard
           href: /dotnet/api/microsoft.featuremanagement
-        - name: .NET Core 筛选器库
+        - name: .NET 内置功能筛选器
           href: /dotnet/api/microsoft.featuremanagement.featurefilters
-    - name: 配置存储管理
+    - name: 控制面板
       items:
         - name: REST API
           href: /rest/api/appconfiguration/
+        - name: Azure CLI
+          href: /cli/azure/appconfig
         - name: PowerShell
           href: /powershell/module/az.appconfiguration/
         - name: Terraform
           href: 'https://www.terraform.io/docs/providers/azurerm/r/app_configuration.html'
-    - name: REST API
+    - name: 数据平面
       items:
-        - name: 概述
-          href: rest-api.md
-        - name: 资源
+        - name: REST API
           items:
-            - name: 键
-              href: ./rest-api-keys.md
-            - name: 键-值
-              href: ./rest-api-key-value.md
-            - name: 标签
-              href: ./rest-api-labels.md
-            - name: 锁
-              href: ./rest-api-locks.md
-            - name: 修订
-              href: ./rest-api-revisions.md
-        - name: 协议
-          items:
-            - name: 身份验证
-              href: ./rest-api-authentication-index.md
+            - name: 概述
+              href: rest-api.md
+            - name: 资源
               items:
-                - name: Azure Active Directory 身份验证
-                  href: rest-api-authentication-azure-ad.md
-                - name: HMAC 身份验证
-                  href: rest-api-authentication-hmac.md
-            - name: 授权
-              href: ./rest-api-authorization-index.md
+                - name: 键
+                  href: ./rest-api-keys.md
+                - name: 键-值
+                  href: ./rest-api-key-value.md
+                - name: 标签
+                  href: ./rest-api-labels.md
+                - name: 锁
+                  href: ./rest-api-locks.md
+                - name: 修订
+                  href: ./rest-api-revisions.md
+            - name: 协议
               items:
-                - name: Azure Active Directory 授权
-                  href: rest-api-authorization-azure-ad.md
-                - name: HMAC 授权
-                  href: rest-api-authorization-hmac.md
-            - name: 一致性模型
-              href: ./rest-api-consistency.md
-            - name: 常用标头
-              href: ./rest-api-headers.md
-            - name: 遏制
-              href: ./rest-api-throttling.md
-            - name: 版本控制
-              href: ./rest-api-versioning.md
-        - name: 开发
-          items:
-            - name: Fiddler
-              href: ./rest-api-fiddler.md
-            - name: Postman
-              href: ./rest-api-postman.md
+                - name: 身份验证
+                  href: ./rest-api-authentication-index.md
+                  items:
+                    - name: Azure Active Directory 身份验证
+                      href: rest-api-authentication-azure-ad.md
+                    - name: HMAC 身份验证
+                      href: rest-api-authentication-hmac.md
+                - name: 授权
+                  href: ./rest-api-authorization-index.md
+                  items:
+                    - name: Azure Active Directory 授权
+                      href: rest-api-authorization-azure-ad.md
+                    - name: HMAC 授权
+                      href: rest-api-authorization-hmac.md
+                - name: 一致性模型
+                  href: ./rest-api-consistency.md
+                - name: 常用标头
+                  href: ./rest-api-headers.md
+                - name: 遏制
+                  href: ./rest-api-throttling.md
+                - name: 版本控制
+                  href: ./rest-api-versioning.md
+            - name: 开发
+              items:
+                - name: Fiddler
+                  href: ./rest-api-fiddler.md
+                - name: Postman
+                  href: ./rest-api-postman.md
+        - name: Azure CLI
+          href: /cli/azure/appconfig
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

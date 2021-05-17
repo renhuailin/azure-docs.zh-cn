@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/31/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5360057ec2dfbd2b40c6f086f5e910103c544b62
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104865445"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具开发 Apache Storm 的 C# 拓扑
@@ -441,7 +441,7 @@ return topologyBuilder;
 
   `this.ctx.Emit(Constants.DEFAULT_STREAM_ID, new Values(sentence), lastSeqId);`
 
-  此代码会将包含语句的元组以及 `lastSeqId`中所含的序列 ID 值发出到默认流。 在此示例中，会递增每个发出的元组的 `lastSeqId` 。
+  此代码会发出包含默认数据流的句子的元组，以及 `lastSeqId` 中所含的序列 ID 值。 在此示例中，会递增每个发出的元组的 `lastSeqId` 。
 
 如“Storm 示例”  项目所示，在运行时，可以根据配置来设置组件是否为事务性。
 
@@ -536,7 +536,7 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 > 如果项目是通过未使用 NuGet 的旧版 SCP.NET 创建的，则必须执行以下步骤以更新到新版本：
 >
 > 1. 在“解决方案资源管理器”  中，右键单击项目，然后选择“管理 NuGet 包”  。
-> 2. 使用“搜索”  字段搜索  Microsoft.SCP.Net.SDK，然后将其添加到项目中。
+> 2. 使用“搜索”字段搜索 `Microsoft.SCP.Net.SDK`，然后将其添加到项目中。
 
 ## <a name="troubleshoot-common-issues-with-topologies"></a>排查拓扑常见问题
 

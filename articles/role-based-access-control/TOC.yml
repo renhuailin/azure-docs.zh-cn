@@ -5,6 +5,8 @@
   items:
     - name: 什么是 Azure RBAC？
       href: overview.md
+    - name: 什么是 Azure ABAC？
+      href: conditions-overview.md
     - name: 了解不同角色
       href: rbac-and-directory-admin-roles.md
 - name: 快速入门
@@ -34,13 +36,23 @@
       href: scope-overview.md
     - name: 最佳做法
       href: best-practices.md
-    - name: 用于 Azure 管理的条件访问
-      href: conditional-access-azure-management.md
+    - name: 条件
+      items:
+        - name: 条件格式
+          href: conditions-format.md
+        - name: 示例条件
+          href: ../storage/common/storage-auth-abac-examples.md?toc=%2fazure%2frole-based-access-control%2ftoc.json
+        - name: 条件先决条件
+          href: conditions-prerequisites.md
+        - name: 条件常见问题解答
+          href: conditions-faq.md
     - name: 安全性
       items:
         - name: Azure Policy 的安全控件
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
+    - name: 用于 Azure 管理的条件访问
+      href: conditional-access-azure-management.md
 - name: 操作指南
   items:
     - name: 列出角色定义
@@ -71,13 +83,25 @@
               href: role-assignments-external-users.md
         - name: PowerShell
           href: role-assignments-powershell.md
-        - name: Azure CLI
+        - name: CLI
           href: role-assignments-cli.md
         - name: REST API
           href: role-assignments-rest.md
         - name: ARM 模板
           displayName: Resource Manager
           href: role-assignments-template.md
+    - name: 添加或编辑条件
+      items:
+        - name: 门户
+          href: conditions-role-assignments-portal.md
+        - name: PowerShell
+          href: conditions-role-assignments-powershell.md
+        - name: CLI
+          href: conditions-role-assignments-cli.md
+        - name: REST API
+          href: conditions-role-assignments-rest.md
+        - name: 排查条件问题
+          href: conditions-troubleshoot.md
     - name: 删除角色分配
       href: role-assignments-remove.md
     - name: 列出拒绝分配
@@ -98,7 +122,7 @@
           href: custom-roles-portal.md
         - name: PowerShell
           href: custom-roles-powershell.md
-        - name: Azure CLI
+        - name: CLI
           href: custom-roles-cli.md
         - name: REST API
           href: custom-roles-rest.md
@@ -125,7 +149,7 @@
       href: ../azure-resource-manager/management/azure-subscription-service-limits.md#azure-role-based-access-control-limits
     - name: Azure PowerShell
       href: /powershell/module/az.resources
-    - name: Azure CLI
+    - name: CLI
       href: /cli/azure/role
     - name: REST API
       href: /rest/api/authorization/

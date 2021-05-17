@@ -1,19 +1,19 @@
 ---
 title: 虚拟 WAN 和 SD-WAN 连接体系结构
 titleSuffix: Azure Virtual WAN
-description: 了解如何将专用 SD-WAN 与 Azure 虚拟 WAN 互连
+description: 了解如何将专用 SD-WAN 与 Azure 虚拟 WAN 互连。
 services: virtual-wan
 author: skishen525
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sukishen
-ms.openlocfilehash: ea9ddd05fe6fc745a3eefc29ab4f1d6aababc936
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb6ae05b0e3c296a1ca56d3ea6085b8cd4586c23
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94564695"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165688"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>带有 Azure 虚拟 WAN 的 SD-WAN 连接体系结构
 
@@ -32,9 +32,9 @@ Azure 虚拟 WAN 是一个网络服务，其中整合了许多云连接与安全
 
 :::image type="content" source="./media/sd-wan-connectivity-architecture/direct.png" alt-text="直接互连模型":::
 
-在此体系结构模型中，SD-WAN 分支客户场地设备 (CPE) 通过 IPsec 连接来与虚拟 WAN 中心直接连接。 分支 CPE 还可以通过专用 SD-WAN 连接到其他分支，或利用虚拟 WAN 建立分支到分支的连接。 需要访问其在 Azure 中的工作负荷的分支可以通过在虚拟 WAN 中心内终止的 IPsec 隧道，直接且安全地访问 Azure。
+在此体系结构模型中，SD-WAN 分支客户场地设备 (CPE) 通过 IPsec 连接来与虚拟 WAN 中心直接连接。 分支 CPE 还可通过专用 SD-WAN 连接到其他分支，或者使用虚拟 WAN 建立分支到分支的连接。 需要访问其在 Azure 中的工作负荷的分支可以通过在虚拟 WAN 中心内终止的 IPsec 隧道，直接且安全地访问 Azure。
 
-SD-WAN CPE 合作伙伴可以启用自动化，以通过其相关 CPE 设备，将通常比较繁琐且容易出错的 IPsec 连接自动化。 自动化使 SD-WAN 控制器能够通过虚拟 WAN API 来与 Azure 通信，以配置虚拟 WAN 站点，以及将必要的 IPsec 隧道配置推送到分支 CPE。 有关不同 SD-WAN 合作伙伴提供的虚拟 WAN 互连自动化的说明，请参阅[自动化指导原则](virtual-wan-configure-automation-providers.md)。
+SD-WAN CPE 合作伙伴可以启用自动化，以通过其相关 CPE 设备，将通常比较繁琐且容易出错的 IPsec 连接自动化。 自动化使 SD-WAN 控制器能够通过虚拟 WAN API 与 Azure 通信，从而配置虚拟 WAN 站点，并将必要的 IPsec 隧道配置推送到分支 CPE。 有关不同 SD-WAN 合作伙伴提供的虚拟 WAN 互连自动化的说明，请参阅[自动化指导原则](virtual-wan-configure-automation-providers.md)。
 
 SD-WAN CPE 仍然是实现和强制实施流量优化和路径选择的地方。 
 
@@ -48,7 +48,7 @@ SD-WAN CPE 仍然是实现和强制实施流量优化和路径选择的地方。
 
 此体系结构模型支持[将第三方网络虚拟设备 (NVA) 直接部署到虚拟中心](./about-nva-hub.md)。 这使得希望将分支 CPE 连接到虚拟中心内同一品牌 NVA 的客户可以在连接到 Azure 工作负荷时利用专有的端到端 SD-WAN 功能。 
 
-数个虚拟 WAN 合作伙伴一直致力于提供在部署过程中自动配置 NVA 的体验。 将 NVA 预配到虚拟中心后，NVA 可能需要的任何附加配置都必须通过 NVA 合作伙伴门户或管理应用程序来完成。 无法直接访问 NVA。 可直接部署到 Azure 虚拟 WAN 中心的 NVA 是专为在虚拟中心使用而设计的。 若要了解在 VWAN 中心支持 NVA 的合作伙伴及其部署指南，请参阅[虚拟 WAN 合作伙伴](virtual-wan-locations-partners.md#partners-with-integrated-virtual-hub-offerings)一文。
+数个虚拟 WAN 合作伙伴一直致力于提供在部署过程中自动配置 NVA 的体验。 将 NVA 预配到虚拟中心后，NVA 可能需要的任何附加配置都必须通过 NVA 合作伙伴门户或管理应用程序来完成。 无法直接访问 NVA。 可直接部署到 Azure 虚拟 WAN 中心的 NVA 是专为在虚拟中心使用而设计的。 若要了解在 VWAN 中心支持 NVA 的合作伙伴及其部署指南，请查看[虚拟 WAN 合作伙伴](virtual-wan-locations-partners.md#partners-with-integrated-virtual-hub-offerings)一文。
 
 SD-WAN CPE 仍然是实现和强制实施流量优化和路径选择的地方。
 在此模型中，由于可以通过中心的 SD-WAN NVA 连接到虚拟 WAN，因此支持基于实时流量特性的供应商专有流量优化。

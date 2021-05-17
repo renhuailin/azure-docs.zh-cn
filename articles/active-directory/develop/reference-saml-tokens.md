@@ -1,7 +1,7 @@
 ---
-title: SAML 2.0 令牌声明引用 |Microsoft
+title: SAML 2.0 令牌声明引用 | Azure
 titleSuffix: Microsoft identity platform
-description: 声明参考，其中包含由 Microsoft 标识平台颁发的 SAML 2.0 令牌中包含的声明的详细信息，包括其 JWT 等效项。
+description: 声明参考，包含由 Microsoft 标识平台颁发的 SAML 2.0 令牌中所含声明的详细信息，包括这些声明的 JWT 等效项。
 author: kenwith
 services: active-directory
 manager: CelesteDG
@@ -9,32 +9,32 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
-ms.date: 09/09/2020
+ms.date: 03/29/2021
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: 9c3132985866a4c245984ef632107c05ca1b3350
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.openlocfilehash: c23028e4cbbeb7e92fd8b0a7fb6b6b81a54a0806
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348376"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132226"
 ---
-# <a name="saml-token-claims-reference"></a>SAML 令牌声明引用
+# <a name="saml-token-claims-reference"></a>SAML 令牌声明参考
 
-Microsoft 标识平台会在处理每个身份验证流时发出多种类型的安全令牌。 本文档介绍了 SAML 2.0 令牌的格式、安全特征和内容。
+Microsoft 标识平台在每个身份验证流的处理中发出多种安全令牌。 本文档说明 SAML 2.0 令牌的格式、安全特征和内容。
 
 ## <a name="claims-in-saml-tokens"></a>SAML 令牌中的声明
 
 > [!div class="mx-codeBreakAll"]
 > | 名称 | 等效 JWT 声明 | 说明 | 示例 |
 > | --- | --- | --- | ------------|
-> |读者 | `aud` |令牌的目标接收方。 接收令牌的应用程序必须验证受众值是否正确，并拒绝任何针对其他受众的令牌。 | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
-> | 即时身份验证 | |记录身份验证发生的日期和时间。 | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` |
-> |身份验证方法 | `amr` |标识对令牌使用者的身份验证方式。 | `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` |
+> |目标受众 | `aud` |令牌的目标接收方。 接收令牌的应用程序必须验证受众值是否正确，并拒绝任何针对其他受众的令牌。 | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
+> | 身份验证即时 | |记录身份验证发生的日期和时间。 | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` |
+> |身份验证方法 | `amr` |标识对令牌使用者进行身份验证的方式。 | `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` |
 > |名字 | `given_name` |和对 Azure AD 用户对象的设置一样，指定用户的名。 | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname">`<br>`<AttributeValue>Frank<AttributeValue>`  |
-> |组 | `groups` |指定表示使用者的组成员身份的对象 ID。 这些值是唯一的（请参阅对象 ID），可安全地用于管理访问，例如强制要求授权才能访问资源。 组声明中包含的组通过应用程序清单的“groupMembershipClaims”属性，基于每个应用程序进行配置。 值为 null 将排除所有组；值为“SecurityGroup”将只包括“Active Directory 安全组”成员身份；值为“All”将包括安全组和 Microsoft 365 通讯组列表。 <br><br> **注释**： <br> 如果用户所在的组数超出了某个限制（对于 SAML，为 150；对于 JWT，为 200），则会添加超额声明，声明源指向包含该用户的组列表的 Graph 终结点。 | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` |
-> | 组超额指示器 | `groups:src1` | 对于不受长度限制但对于令牌太大的令牌请求，将包括指向用户的完整组列表的链接。 对于 SAML，此声明是作为新声明添加的，以代替 `groups` 声明。 | `<Attribute Name=" http://schemas.microsoft.com/claims/groups.link">`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` |
+> |组 | `groups` |指定表示使用者的组成员身份的对象 ID。 这些值具有唯一性（请参阅对象 ID），可安全地用于管理访问，例如强制要求授权访问资源。 组声明中包含的组通过应用程序清单的“groupMembershipClaims”属性，基于每个应用程序进行配置。 值为 null 将排除所有组；值为“SecurityGroup”将只包括“Active Directory 安全组”成员身份；值为“All”将包括安全组和 Microsoft 365 通讯组列表。 <br><br> **注释**： <br> 如果用户所在的组数超出了某个限制（对于 SAML，为 150；对于 JWT，为 200），则会添加超额声明，声明源指向包含该用户的组列表的 Graph 终结点。 | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` |
+> | 组超额指示器 | `groups:src1` | 对于长度不受限制但对于令牌而言仍然太大的令牌请求，将包括指向用户的完整组列表的链接。 对于 SAML，此声明是作为新声明添加的，以代替 `groups` 声明。 <br><br> **注释**： <br> Azure AD 图形 API 正在由 Microsoft Graph API 取代。 若要了解等效终结点的相关详细信息，请参阅 [user: getMemberObjects](/graph/api/user-getmemberobjects)。 | `<Attribute Name=" http://schemas.microsoft.com/claims/groups.link">`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` |
 > |标识提供者 | `idp` |记录对令牌使用者进行身份验证的标识提供者。 除非用户帐户与颁发者不在同一租户中，否则此值与颁发者声明的值相同。 | `<Attribute Name=" http://schemas.microsoft.com/identity/claims/identityprovider">`<br>`<AttributeValue>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/<AttributeValue>` |
 > |IssuedAt | `iat` |存储颁发令牌的时间。 它通常用于度量令牌新鲜度。 | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |
 > |颁发者 | `iss` |标识构造并返回令牌的安全令牌服务 (STS)。 在 Azure AD 返回的令牌中，颁发者是 sts.windows.net。 颁发者声明值中的 GUID 是 Azure AD 目录的租户 ID。 租户 ID 是目录的固定不变且可靠的标识符。 | `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` |
@@ -42,7 +42,7 @@ Microsoft 标识平台会在处理每个身份验证流时发出多种类型的�
 > |名称 | `unique_name` |提供一个用户可读值，用于标识令牌使用者。 此值不一定在租户中唯一，它旨在仅用于显示目的。 | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
 > |对象 ID | `oid` |包含 Azure AD 中的对象的唯一标识符。 此值固定不变，无法重新分配或重复使用。 在对 Azure AD 进行的查询中，可使用对象 ID 来标识对象。 | `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` |
 > |角色 | `roles` |表示直接和间接通过组成员身份授予使用者的所有应用程序角色，可用于实施基于角色的访问控制。 可通过应用程序清单的 `appRoles` 属性，对每个应用程序定义应用程序角色。 每个应用程序角色的 `value` 属性是角色声明中显示的值。 | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`|
-> |使用者 | `sub` |标识令牌断言信息的主体，例如应用程序的用户。 此值不可变且不能重新分配或重复使用，因此可以使用它来安全地执行授权检查。 因为使用者始终会在 Azure AD 颁发的令牌中存在，我们建议在通用授权系统中使用此值。 <br> `SubjectConfirmation` 不是声明。 它描述如何对令牌的使用者进行验证。 `Bearer` 指示通过其拥有的令牌确认使用者。 | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
+> |Subject | `sub` |标识令牌断言信息的主体，例如应用程序的用户。 此值不可变且不能重新分配或重复使用，因此可以使用它来安全地执行授权检查。 因为使用者始终会在 Azure AD 颁发的令牌中存在，我们建议在通用授权系统中使用此值。 <br> `SubjectConfirmation` 不是声明。 它描述如何对令牌的使用者进行验证。 `Bearer` 指示通过其拥有的令牌确认使用者。 | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
 > |租户 ID | `tid` |一个不可变且不能重复使用的标识符，用于标识颁发令牌的目录租户。 可以使用此值访问多租户应用程序中特定于租户的目录资源。 例如，可以在调用 Graph API 时使用此值标识租户。 | `<Attribute Name="http://schemas.microsoft.com/identity/claims/tenantid">`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>`|
 > |令牌生存期 | `nbf`, `exp` |定义令牌保持有效状态的时间间隔。 服务验证令牌的当前日期是否在令牌生存期内，如果不是，则拒绝令牌。 考虑到 Azure AD 与服务之间可能存在时钟时间差异（“时间偏差”），服务可能允许超出令牌生存期最多五分钟。 | `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br>|
 
@@ -154,7 +154,7 @@ Microsoft 标识平台会在处理每个身份验证流时发出多种类型的�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关使用 Microsoft Graph API 管理令牌生存期策略的详细信息，请参阅 [Azure AD 策略资源概述](/graph/api/resources/policy)。
+* 若要详细了解如何使用 Microsoft Graph API 管理令牌生存期策略，请参阅 [Azure AD 策略资源概述](/graph/api/resources/policy)。
 * 将[自定义和可选声明](active-directory-optional-claims.md)添加到应用程序的令牌。
-* 使用 [单个 Sign-On (SSO) 与 SAML 结合](single-sign-on-saml-protocol.md)使用。
-* 使用 [Azure Single Sign-Out SAML 协议](single-sign-out-saml-protocol.md)
+* 使用 [SAML 的单一登录 (SSO)](single-sign-on-saml-protocol.md)。
+* 使用 [Azure 单一注销 SAML 协议](single-sign-out-saml-protocol.md)

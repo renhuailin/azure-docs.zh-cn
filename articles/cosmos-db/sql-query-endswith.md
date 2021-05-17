@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c0cc93fee8aacc711a797925cb2e2808b73cafd1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 64514e69b41dda26fc39e747d7fef88706a64c64
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93338823"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163870"
 ---
 # <a name="endswith-azure-cosmos-db"></a>ENDSWITH (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -62,23 +62,7 @@ SELECT ENDSWITH("abc", "b", false) AS e1, ENDSWITH("abc", "bC", false) AS e2, EN
 
 ## <a name="remarks"></a>备注
 
-此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中获益。
-
-EndsWith 的 RU 消耗将随着系统函数中属性的基数的增加而增加。 换言之，如果要检查某个属性值是否以特定字符串结尾，则查询 RU 费用将取决于该属性的可能值数量。
-
-例如，考虑两个属性：town 和 country。 town 的基数是 5,000，country 的基数是 200。 下面展示了两个示例查询：
-
-```sql
-    SELECT * FROM c WHERE ENDSWITH(c.town, "York", false)
-```
-
-```sql
-    SELECT * FROM c WHERE ENDSWITH(c.country, "States", false)
-```
-
-第一个查询可能比第二个查询使用更多的 RU，因为 town 的基数高于 country 的基数。
-
-如果某些文档的 EndsWith 中的属性大小大于 1 KB，则查询引擎需要加载这些文档。 在这种情况下，查询引擎将无法使用索引对 EndsWith 进行完全评估。 如果你有大量属性大小超过 1 KB 的文档，则 EndsWith 的 RU 费用将很高。
+了解[此字符串系统函数使用索引的方式](sql-query-string-functions.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure 通信服务
-summary: Azure 通信服务是一项基于云的通信服务，借助该服务，你可以向应用添加语音、视频、聊天和电话服务。 请注意，Azure 通信服务目前提供公共预览版。
+summary: Azure 通信服务是一项基于云的通信服务，借助该服务，你可以向应用添加语音、视频、聊天和电话服务。
 metadata:
   title: Azure 通信服务
-  description: Azure 通信服务是一项基于云的通信服务，借助该服务，你可以向应用添加语音、视频、聊天和电话服务。 请注意，Azure 通信服务目前提供公共预览版。
+  description: Azure 通信服务是一项基于云的通信服务，借助该服务，你可以向应用添加语音、视频、聊天和电话服务。
   ms.service: azure-communication-services
   ms.topic: landing-page
   author: mikben
   ms.author: mikben
-  ms.date: 08/10/2020
-  ms.openlocfilehash: 4727e7ca3e0831483811c77be34e69f794cfb576
-  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.date: 03/10/2021
+  ms.openlocfilehash: b68af98c5b55ddff605bb1c88274daf483f19f35
+  ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/03/2021
-  ms.locfileid: "101690509"
+  ms.lasthandoff: 04/30/2021
+  ms.locfileid: "108288393"
 landingContent:
 - title: 关于 Azure 通信服务
   linkLists:
@@ -24,7 +24,7 @@ landingContent:
       url: overview.md
   - linkListType: concept
     links:
-    - text: 客户端库选项
+    - text: SDK 选项
       url: concepts/sdk-options.md
     - text: 团队互操作
       url: concepts/teams-interop.md
@@ -43,22 +43,24 @@ landingContent:
     - text: 身份验证和授权
       url: concepts/authentication.md
     - text: 事件处理
-      url: concepts/event-handling.md
+      url: ../event-grid/event-schema-communication-services.md
     - text: 通知
       url: concepts/notifications.md
+    - text: 疑难解答
+      url: concepts/troubleshooting-info.md
 - title: 语音和视频呼叫
   linkLists:
   - linkListType: quickstart
     links:
     - text: 向应用添加语音和视频呼叫
       url: quickstarts/voice-video-calling/getting-started-with-calling.md
-    - text: 使用呼叫客户端库
+    - text: 使用呼叫 SDK
       url: quickstarts/voice-video-calling/calling-client-samples.md
   - linkListType: concept
     links:
     - text: 语音和视频概念
       url: concepts/voice-video-calling/about-call-types.md
-    - text: 呼叫客户端概述
+    - text: 呼叫 SDK 概述
       url: concepts/voice-video-calling/calling-sdk-features.md
     - text: 呼叫流
       url: concepts/call-flows.md
@@ -76,12 +78,16 @@ landingContent:
     links:
     - text: 短信概念
       url: concepts/telephony-sms/concepts.md
-    - text: 短信客户端概述
+    - text: 短信 SDK 概述
       url: concepts/telephony-sms/sdk-features.md
     - text: 呼叫概述
       url: concepts/voice-video-calling/calling-sdk-features.md
     - text: 电话号码类型
       url: concepts/telephony-sms/plan-solution.md
+  - linkListType: learn
+    links:
+    - text: 使用 C# 发送短信
+      url: /learn/modules/communication-service-send-sms-console-app/
 - title: 聊天
   linkLists:
   - linkListType: quickstart
@@ -92,7 +98,7 @@ landingContent:
     links:
     - text: 聊天概念
       url: concepts/chat/concepts.md
-    - text: 聊天客户端库概述
+    - text: 聊天 SDK 概述
       url: concepts/chat/sdk-features.md
 - title: 示例
   linkLists:

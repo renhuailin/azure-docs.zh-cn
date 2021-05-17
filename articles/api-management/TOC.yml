@@ -71,7 +71,7 @@
         - name: Azure Policy 的安全控件
           href: ./security-controls-policy.md
         - name: 安全基线
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/api-management-security-baseline?toc=/azure/api-management/TOC.json
     - name: 后端
       href: backends.md
     - name: 订阅
@@ -104,8 +104,8 @@
           href: import-soap-api.md
         - name: 导入 SOAP API 并将其转换为 REST
           href: restify-soap-api.md
-        - name: 导入 API 应用
-          href: import-api-app-as-api.md
+        - name: 导入 Web 应用
+          href: import-app-service-as-api.md
         - name: 导入 Function App
           href: import-function-app-as-api.md
         - name: 导入逻辑应用
@@ -128,6 +128,9 @@
           href: configure-custom-domain.md
         - name: 部署到多个 Azure 区域
           href: api-management-howto-deploy-multi-region.md
+        - name: 启用区域冗余
+          displayName: Availability zones
+          href: zone-redundancy.md
         - name: 预配自托管网关
           href: api-management-howto-provision-self-hosted-gateway.md
         - name: 将自托管网关部署到 Azure Kubernetes 服务
@@ -170,48 +173,74 @@
           href: api-management-howto-manage-protocols-ciphers.md
     - name: 自定义开发人员体验
       items:
-        - name: 了解开发人员门户
-          href: api-management-howto-developer-portal.md
-        - name: 从弃用的门户迁移到新的开发人员门户
-          href: developer-portal-deprecated-migration.md
-        - name: 使用 Azure AD 进行身份验证
-          href: api-management-howto-aad.md
-        - name: 使用 Azure AD B2C 进行身份验证
-          href: api-management-howto-aad-b2c.md
-        - name: 委托身份验证
-          href: api-management-howto-setup-delegation.md
-        - name: 电子邮件通知和模板
-          href: api-management-howto-configure-notifications.md
-        - name: 启动控制台 OAuth 支持
-          href: api-management-howto-oauth2.md
-        - name: 弃用的门户 - 自定义门户
-          href: api-management-customize-styles.md
-        - name: 弃用的门户 - 修改页面和布局
-          href: api-management-modify-content-layout.md
-        - name: 弃用的门户 - 通过模板进行自定义
-          href: api-management-developer-portal-templates.md
-    - name: 弃用的门户模板
-      items:
-        - name: 数据模型参考
-          href: api-management-template-data-model-reference.md
-        - name: 页面控件
-          href: api-management-page-controls.md
-        - name: 模板
-          href: api-management-developer-portal-templates-reference.md
-        - name: API
-          href: api-management-api-templates.md
-        - name: 产品
-          href: api-management-product-templates.md
-        - name: 应用程序
-          href: api-management-application-templates.md
-        - name: 问题
-          href: api-management-issue-templates.md
-        - name: 用户配置文件
-          href: api-management-user-profile-templates.md
-        - name: 页
-          href: api-management-page-templates.md
-        - name: 模板资源
-          href: api-management-template-resources.md
+        - name: 使用开发人员门户
+          items:
+            - name: 了解开发人员门户
+              href: api-management-howto-developer-portal.md
+            - name: 常见问题
+              href: developer-portal-faq.md
+            - name: 自动化门户部署
+              href: automate-portal-deployments.md
+            - name: 从弃用的门户迁移到新的开发人员门户
+              href: developer-portal-deprecated-migration.md
+            - name: 使用 Azure AD 进行身份验证
+              href: api-management-howto-aad.md
+            - name: 使用 Azure AD B2C 进行身份验证
+              href: api-management-howto-aad-b2c.md
+            - name: 委托身份验证
+              href: api-management-howto-setup-delegation.md
+            - name: 启动控制台 OAuth 支持
+              href: api-management-howto-oauth2.md
+            - name: 电子邮件通知和模板
+              href: api-management-howto-configure-notifications.md
+            - name: 集成 Application Insights
+              href: developer-portal-integrate-application-insights.md
+            - name: 集成 Google Tag Manager
+              href: developer-portal-integrate-google-tag-manager.md
+        - name: 自承载开发人员门户
+          items:
+            - name: 创建自承载门户
+              href: developer-portal-self-host.md
+            - name: 自承载的替代方法
+              href: developer-portal-alternative-processes-self-host.md
+            - name: 实现小组件
+              href: developer-portal-implement-widgets.md
+            - name: 提供小组件
+              href: developer-portal-widget-contribution-guidelines.md
+            - name: 使用社区小组件
+              href: developer-portal-use-community-widgets.md
+            - name: 测试自承载门户
+              href: developer-portal-testing.md
+        - name: 弃用的门户
+          items:
+            - name: 弃用的门户 - 自定义门户
+              href: api-management-customize-styles.md
+            - name: 弃用的门户 - 修改页面和布局
+              href: api-management-modify-content-layout.md
+            - name: 弃用的门户 - 通过模板进行自定义
+              href: api-management-developer-portal-templates.md
+        - name: 弃用的门户模板
+          items:
+            - name: 数据模型参考
+              href: api-management-template-data-model-reference.md
+            - name: 页面控件
+              href: api-management-page-controls.md
+            - name: 模板
+              href: api-management-developer-portal-templates-reference.md
+            - name: API
+              href: api-management-api-templates.md
+            - name: 产品
+              href: api-management-product-templates.md
+            - name: 应用程序
+              href: api-management-application-templates.md
+            - name: 问题
+              href: api-management-issue-templates.md
+            - name: 用户配置文件
+              href: api-management-user-profile-templates.md
+            - name: 页
+              href: api-management-page-templates.md
+            - name: 模板资源
+              href: api-management-template-resources.md
     - name: 定义策略
       items:
         - name: 设置或编辑策略
@@ -245,6 +274,8 @@
           href: api-management-transformation-policies.md
         - name: 分布式 Application Runtime (Dapr) 集成策略
           href: api-management-dapr-policies.md
+        - name: 验证策略
+          href: validation-policies.md
     - name: 在生产环境中进行管理
       items:
         - name: 将 API 导出到 Power Platform

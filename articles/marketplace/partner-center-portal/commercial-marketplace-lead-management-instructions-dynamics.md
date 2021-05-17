@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
 ms.openlocfilehash: d996a2e0732ad9b4da104265710970e04cdbd368
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98199762"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>为 Dynamics 365 Customer Engagement 配置潜在顾客管理
@@ -157,11 +157,11 @@ ms.locfileid: "98199762"
 
     ![“安全角色”窗格](media/commercial-marketplace-lead-management-instructions-dynamics/security-roles.png)
 
-1. 在安全角色中，选择“核心记录”选项卡。搜索“用户实体 UI 设置”项。 通过选择相应的单选按钮，为用户 (1/4 黄色圆圈) 启用对用户的创建、读取和写入权限。
+1. 在安全角色中，选择“核心记录”选项卡。搜索“用户实体 UI 设置”项。 通过选中对应的单选按钮，向该实体的用户启用“创建”、“读取”和“写入”权限（1/4 个黄色圆圈）。
 
     ![Microsoft 市场潜在顾客写入器核心记录选项卡](media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer.png)
 
-1. 在“自定义”选项卡上，搜索“系统作业”项。 通过选择相应的单选按钮，为组织 () 的稳定绿色单选按钮启用 "读取"、"写入" 和 "AppendTo" 权限。
+1. 在“自定义”选项卡上，搜索“系统作业”项。 通过选中对应的单选按钮，向该实体的组织启用“读取”、“写入”和“AppendTo”权限（实心绿色单选按钮）。
 
     ![Microsoft 市场潜在顾客写入器自定义选项卡](media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer-customization.png)
 
@@ -172,7 +172,7 @@ ms.locfileid: "98199762"
 若要在发布门户中为你的产品/服务配置潜在顾客管理信息，请执行以下步骤：
 
 1. 转到你产品/服务的“产品/服务设置”页面。
-1. 在“潜在顾客”部分下，选择“连接”。
+1. 在“潜在顾客”部分下，选择“连接” 。
 
     :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-dynamics/customer-leads.png" alt-text="潜在顾客":::
 

@@ -6,13 +6,13 @@ author: nabhishek
 ms.author: abnarain
 ms.reviewer: jburchel
 ms.topic: conceptual
-ms.date: 04/01/2021
-ms.openlocfilehash: d6daf9788a632d329714dad186203c58f304aa21
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 04/27/2021
+ms.openlocfilehash: fad2fce019848c752217f15aaba8ba4c28a7c874
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904291"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108177327"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure 数据工厂中的持续集成和交付
 
@@ -181,9 +181,9 @@ ms.locfileid: "107904291"
 
 ## <a name="manually-promote-a-resource-manager-template-for-each-environment"></a>手动提升每个环境的资源管理器模板
 
-1. 在“ARM 模板”列表中，选择“导出 ARM 模板”，以在开发环境中导出数据工厂的资源管理器模板。 
+1. 在数据工厂中转到“管理”中心，然后在“源代码管理”部分中选择“ARM 模板” 。 在“ARM 模板”部分中选择“导出 ARM 模板”，在开发环境中导出数据工厂的资源管理器模板 。
 
-   ![导出资源管理器模板](media/continuous-integration-deployment/continuous-integration-image1.png)
+   ![导出资源管理器模板](media/continuous-integration-deployment/continuous-integration-image-1.png)
 
 1. 在测试和生产数据工厂中，选择“导入 ARM 模板”。 此操作会将你转到 Azure 门户，可以在其中导入已导出的模板。 选择“在编辑器中生成自己的模板”以打开资源管理器模板编辑器。
 

@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: f9029a36dc3b778e139b4553524e8e2ca6b4bbad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 58377252e163894cdfee83d9c68146a9131f94c5
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98757163"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288771"
 ---
 # <a name="extensions-for-cloud-services-extended-support"></a>云服务扩展（外延支持）
 
@@ -36,6 +36,14 @@ ms.locfileid: "98757163"
 使用高级监视时，将每隔 5 分钟、1 小时和 12 小时采样和收集其他指标。 聚合的数据存储在存储帐户的表中，将在 10 天后予以清除。 使用的存储帐户是按角色配置的；可以对不同的角色使用不同的存储帐户。 
 
 有关详细信息，请参阅[在云服务中应用 Windows Azure 诊断扩展(外延支持)](enable-wad.md)
+
+## <a name="anti-malware-extension"></a>反恶意软件扩展
+Azure 应用程序或服务可以使用 PowerShell cmdlet 来启用和配置适用于 Azure 云服务的 Microsoft 反恶意软件。 请注意，Microsoft Antimalware 以禁用状态安装在运行 Windows Server 2012 R2 及更早版本的云服务平台中，需要 Azure 应用程序执行操作来启用它。 对于 Windows Server 2016 及更高版本，默认情况下会启用 Windows Defender，因此这些 cmdlet 可用于配置 Antimalware。
+
+有关详细信息，请参阅[使用外延支持将 Microsoft Antimalware 添加到 Azure 云服务 (CS-ES)](../security/fundamentals/antimalware-code-samples.md#add-microsoft-antimalware-to-azure-cloud-service-using-extended-support)
+
+若要详细了解 Azure Antimalware，请访问[此处](../security/fundamentals/antimalware.md)
+
 
 
 ## <a name="next-steps"></a>后续步骤 

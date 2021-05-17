@@ -7,12 +7,12 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e2b27934f58402ecfb7dabf5560dc43e45f3f7dd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e216d42ff1f279d87e657126514fcfb50960f806
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101679110"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107811897"
 ---
 # <a name="understand-support-for-disconnected-device-updates"></a>了解对离线设备更新的支持
 
@@ -20,7 +20,7 @@ ms.locfileid: "101679110"
 
 ## <a name="how-does-microsoft-connected-cache-preview-for-device-update-for-azure-iot-hub-work"></a>适用于 Azure IoT 中心的设备更新的 Microsoft 联网缓存预览版如何工作？
 
-Microsoft 联网缓存是一种智能的透明缓存，适用于为 Azure IoT 中心的设备更新发布的内容，并且可以进行自定义，以缓存来自其他源（如包存储库）的内容。 Microsoft 联网缓存是冷缓存，由针对确切文件范围的客户端请求（由“传递优化”客户端请求）加热，并且不会预植入内容。 下面的关系图和分步说明介绍了 Microsoft 联网缓存在适用于 Azure IoT 中心的设备更新基础结构中的工作原理。
+Microsoft 联网缓存预览版是一种智能的透明缓存，适用于为 Azure IoT 中心的设备更新发布的内容，并且可以进行自定义，以缓存来自其他源（如包存储库）的内容。 Microsoft 联网缓存是冷缓存，由针对确切文件范围的客户端请求（由“传递优化”客户端请求）加热，并且不会预植入内容。 下面的关系图和分步说明介绍了 Microsoft 联网缓存在适用于 Azure IoT 中心的设备更新基础结构中的工作原理。
 
 >[!Note]
 >在定义此流时，已假定 IoT Edge 网关具有 Internet 连接。 对于下游 IoT Edge 网关（嵌套边缘）方案，可以将“内容交付网络”(CDN) 视为在父 IoT Edge 网关上托管的 MCC。

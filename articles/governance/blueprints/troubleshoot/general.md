@@ -1,14 +1,14 @@
 ---
 title: 排查常见错误
 description: 了解如何排查创建、分配和删除蓝图时遇到的问题，例如，策略冲突和蓝图参数函数。
-ms.date: 01/27/2021
+ms.date: 05/01/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 65cf8ef9a5dcba0165aad8522f91ff1eb2c963a8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 183d27235ce738d884a02b53a498f77ebed41e66
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98918838"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326410"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>排查使用 Azure 蓝图时出现的错误
 
@@ -38,7 +38,7 @@ ms.locfileid: "98918838"
 
 #### <a name="cause"></a>原因
 
-如下多个原因可能会导致策略与部署相冲突：
+下列原因可能会导致策略与部署相冲突：
 
 - 正在创建的资源受到策略的限制（通常为 SKU 或位置限制）
 - 部署是由策略配置的设置字段（通常带有标记）

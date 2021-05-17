@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/29/2017
+ms.date: 04/29/2021
 ms.author: rohink
-ms.openlocfilehash: c72e17e601ebf87b0f344a4723159ae22abc81d1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98cf894489c6d5eb34f7561c5dcf48e52034a5cd
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98919861"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316076"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>为 Azure 中托管的服务配置反向 DNS
 
@@ -24,45 +24,44 @@ ms.locfileid: "98919861"
 
 本文介绍如何为 Azure 中托管的服务配置反向 DNS 查找。
 
-Azure 中的服务使用 Azure 分配的、Microsoft 所有的 IP 地址。 必须在相应的 Microsoft 拥有的反向 DNS 查找区域中创建这些反向 DNS 记录（PTR 记录）。 本文介绍如何执行此操作。
+Azure 中的服务使用 Azure 分配的、Microsoft 所有的 IP 地址。 必须在相应的 Microsoft 拥有的反向 DNS 查找区域中创建这些反向 DNS 记录（PTR 记录）。
 
-不要将这种情况与[在 Azure DNS 中托管分配的 IP 范围的反向 DNS 查找区域](dns-reverse-dns-hosting.md)的能力相混淆。 在这种情况下，必须将由反向查找区域表示的 IP 范围分配给组织（通常通过 ISP 执行）。
+这种情况不同于在 Azure DNS 中[托管分配的 IP 范围的反向 DNS 查找区域](dns-reverse-dns-hosting.md)的能力。 在这种情况下，必须将由反向查找区域表示的 IP 范围分配给组织（通常通过 ISP 执行）。
 
-阅读本文之前，应已熟悉此[反向 DNS 和 Azure 支持概述](dns-reverse-dns-overview.md)。
+阅读本文之前，应先熟悉 [Azure DNS 中的反向 DNS](dns-reverse-dns-overview.md)。
 
-在 Azure DNS 中，通过 PublicIpAddress 资源公开计算资源（如虚拟机、虚拟机规模集或 Service Fabric 群集）。 使用 PublicIpAddress 的“ReverseFqdn”属性配置反向 DNS 查找。
-
+在 Azure DNS 中，计算资源（例如虚拟机、虚拟机规模集和 Service Fabric 群集）具有公共 IP 地址。 反向 DNS 查找是使用公共 IP 地址的“ReverseFqdn”属性配置的。
 
 Azure 应用服务和应用程序网关目前不支持反向 DNS。
 
 ## <a name="validation-of-reverse-dns-records"></a>反向 DNS 记录的验证
 
-第三方不应具备这样的能力，即为其映射到 DNS 域的 Azure 服务创建反向 DNS 记录。 为防止这种情况，Azure 仅允许创建满足以下条件的反向 DNS 记录，即反向 DNS 记录中指定的域名必须同于或可解析为同一 Azure 订阅中 PublicIpAddress 或云服务的 DNS 名称或 IP 地址。
+第三方不应有权为映射到 DNS 域的 Azure 服务创建反向 DNS 记录。 这就是为什么仅当域名相同或解析为同一订阅中的公共 IP 地址时，Azure 才允许你创建反向 DNS 记录。 此限制也适用于云服务。
 
-仅在设置或修改反向 DNS 记录时执行此验证。 不执行定期重新验证。
+仅在设置或修改反向 DNS 记录时执行此验证。 定期重新验证未完成。
 
-例如：假定 PublicIpAddress 资源的 DNS 名称为 contosoapp1.northus.cloudapp.azure.com，IP 地址为 23.96.52.53。 PublicIpAddress 的 ReverseFqdn 可指定为：
-* PublicIpAddress 的 DNS 名称 contosoapp1.northus.cloudapp.azure.com
-* 同一订阅中另一个 PublicIpAddress 的 DNS 名称，如 contosoapp2.westus.cloudapp.azure.com
-* 虚 DNS 名称（如 app1.contoso.com），只要此名称已提前配置为指向 contosoapp1.northus.cloudapp.azure.com 或同一订阅中另一个 PublicIpAddress 的 CNAME。
-* 虚 DNS 名称（如 app1.contoso.com），只要此名称已提前配置为指向 IP 地址 23.96.52.53 或同一订阅中另一个 PublicIpAddress 的 IP 地址的 A 记录  。
+例如，假设公共 IP 地址资源具有 DNS 名称 `contosoapp1.northus.cloudapp.azure.com` 和 IP 地址 `23.96.52.53`。 可将此公共 IP 地址的反向 FQDN 指定为以下内容：
+
+* 公共 IP 地址的 DNS 名称：`contosoapp1.northus.cloudapp.azure.com`。
+* 同一订阅中另一个 PublicIpAddress 的 DNS 名称，例如 `contosoapp2.westus.cloudapp.azure.com`。
+* 虚 DNS 名称，例如 `app1.contoso.com`。 只要首先将名称配置为指向 `contosoapp1.northus.cloudapp.azure.com` 的 CNAME。 该名称还可以指向同一订阅中的其他公共 IP 地址。
+* 虚 DNS 名称，例如 `app1.contoso.com`。 只要首先将此名称配置为指向 IP 地址 23.96.52.53 的 A 记录。 该名称还可以指向同一订阅中的另一个 IP 地址。
 
 相同的约束也适用于云服务的反向 DNS。
 
+## <a name="reverse-dns-for-public-ip-address-resources"></a>公共 IP 地址资源的反向 DNS
 
-## <a name="reverse-dns-for-publicipaddress-resources"></a>PublicIpAddress 资源的反向 DNS
+本部分提供有关如何在资源管理器部署模型中为公用 IP 地址资源配置反向 DNS 的详细说明。 可以使用 Azure PowerShell、Azure 经典 CLI 或 Azure CLI 来完成此任务。 Azure 门户当前不支持为公共 IP 地址资源配置反向 DNS。
 
-本部分提供有关如何使用 Azure PowerShell、Azure 经典 CLI 或 Azure CLI 在资源管理器部署模型中配置 PublicIpAddress 资源的反向 DNS 的详细说明。 目前不支持通过 Azure 门户配置 PublicIpAddress 资源的反向 DNS。
-
-Azure 当前仅支持为 IPv4 PublicIpAddress 资源配置反向 DNS。 IPv6 不支持此操作。
+Azure 当前仅支持为公共 IPv4 地址资源配置反向 DNS。
 
 ### <a name="add-reverse-dns-to-an-existing-publicipaddresses"></a>将反向 DNS 添加到现有 PublicIpAddresses
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="azure-powershell"></a>Azure PowerShell
 
 若要将反向 DNS 更新为现有 PublicIpAddress，请执行以下命令：
 
-```powershell
+```azurepowershell-interactive
 $pip = Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 $pip.DnsSettings.ReverseFqdn = "contosoapp1.westus.cloudapp.azure.com."
 Set-AzPublicIpAddress -PublicIpAddress $pip
@@ -70,7 +69,7 @@ Set-AzPublicIpAddress -PublicIpAddress $pip
 
 若要将反向 DNS 添加到尚不具有 DNS 名称的现有 PublicIpAddress，则还必须指定 DNS 名称：
 
-```powershell
+```azurepowershell-interactive
 $pip = Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 $pip.DnsSettings = New-Object -TypeName "Microsoft.Azure.Commands.Network.Models.PSPublicIpAddressDnsSettings"
 $pip.DnsSettings.DomainNameLabel = "contosoapp1"
@@ -88,7 +87,7 @@ azure network public-ip set -n PublicIp -g MyResourceGroup -f contosoapp1.westus
 
 若要将反向 DNS 添加到尚不具有 DNS 名称的现有 PublicIpAddress，则还必须指定 DNS 名称：
 
-```azurecli
+```azurecli-interactive
 azure network public-ip set -n PublicIp -g MyResourceGroup -d contosoapp1 -f contosoapp1.westus.cloudapp.azure.com.
 ```
 
@@ -96,13 +95,13 @@ azure network public-ip set -n PublicIp -g MyResourceGroup -d contosoapp1 -f con
 
 若要将反向 DNS 添加到现有 PublicIpAddress，请执行以下操作：
 
-```azurecli
+```azurecli-interacgive
 az network public-ip update --resource-group MyResourceGroup --name PublicIp --reverse-fqdn contosoapp1.westus.cloudapp.azure.com.
 ```
 
 若要将反向 DNS 添加到尚不具有 DNS 名称的现有 PublicIpAddress，则还必须指定 DNS 名称：
 
-```azurecli
+```azurecli-interactive
 az network public-ip update --resource-group MyResourceGroup --name PublicIp --reverse-fqdn contosoapp1.westus.cloudapp.azure.com --dns-name contosoapp1
 ```
 
@@ -110,9 +109,9 @@ az network public-ip update --resource-group MyResourceGroup --name PublicIp --r
 
 若要创建具有已指定的反向 DNS 属性的新 PublicIpAddress，请执行以下操作：
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="azure-powershell"></a>Azure PowerShell
 
-```powershell
+```azurepowershell-interactive
 New-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup" -Location "WestUS" -AllocationMethod Dynamic -DomainNameLabel "contosoapp2" -ReverseFqdn "contosoapp2.westus.cloudapp.azure.com."
 ```
 
@@ -124,7 +123,7 @@ azure network public-ip create -n PublicIp -g MyResourceGroup -l westus -d conto
 
 #### <a name="azure-cli"></a>Azure CLI
 
-```azurecli
+```azurecli-interactive
 az network public-ip create --name PublicIp --resource-group MyResourceGroup --location westcentralus --dns-name contosoapp1 --reverse-fqdn contosoapp1.westcentralus.cloudapp.azure.com
 ```
 
@@ -132,9 +131,9 @@ az network public-ip create --name PublicIp --resource-group MyResourceGroup --l
 
 若要查看现有 PublicIpAddress 的配置值，请执行以下操作：
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="azure-powershell"></a>Azure PowerShell
 
-```powershell
+```azurepowershell-interactive
 Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 ```
 
@@ -146,7 +145,7 @@ azure network public-ip show -n PublicIp -g MyResourceGroup
 
 #### <a name="azure-cli"></a>Azure CLI
 
-```azurecli
+```azurecli-interactive
 az network public-ip show --name PublicIp --resource-group MyResourceGroup
 ```
 
@@ -154,9 +153,9 @@ az network public-ip show --name PublicIp --resource-group MyResourceGroup
 
 若要从现有 PublicIpAddress 中删除反向 DNS 属性，请执行以下操作：
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="azure-powershell"></a>Azure PowerShell
 
-```powershell
+```azurepowershell-interactive
 $pip = Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 $pip.DnsSettings.ReverseFqdn = ""
 Set-AzPublicIpAddress -PublicIpAddress $pip
@@ -170,14 +169,13 @@ azure network public-ip set -n PublicIp -g MyResourceGroup –f ""
 
 #### <a name="azure-cli"></a>Azure CLI
 
-```azurecli
+```azurecli-interactive
 az network public-ip update --resource-group MyResourceGroup --name PublicIp --reverse-fqdn ""
 ```
 
-
 ## <a name="configure-reverse-dns-for-cloud-services"></a>配置云服务的反向 DNS
 
-本部分提供有关如何使用 Azure PowerShell 在经典部署模型中配置云服务的反向 DNS 的详细说明。 不支持通过 Azure 门户、Azure 经典 CLI 或 Azure CLI 配置云服务的反向 DNS。
+本部分提供有关如何使用 Azure PowerShell 在经典部署模型中配置云服务的反向 DNS 的详细说明。 不支持通过 Azure 门户、Azure 经典 CLI 或 Azure CLI 为云服务配置反向 DNS。
 
 ### <a name="add-reverse-dns-to-existing-cloud-services"></a>将反向 DNS 添加到现有云服务
 
@@ -215,11 +213,11 @@ Set-AzureService –ServiceName "contosoapp1" –Description "App1 with Reverse 
 
 ### <a name="how-much-do-reverse-dns-records-cost"></a>反向 DNS 记录的费用如何？
 
-完全免费！  反向 DNS 记录或查询不额外收取费用。
+完全免费！ 反向 DNS 记录或查询不会产生额外的费用。
 
 ### <a name="will-my-reverse-dns-records-resolve-from-the-internet"></a>反向 DNS 记录是否从 Internet 解析？
 
-是的。 为 Azure 服务设置反向 DNS 属性后，Azure 将管理所有必要的 DNS 委托和 DNS 区域，确保可为所有 Internet 用户解析反向 DNS 记录。
+是的。 为 Azure 服务设置反向 DNS 属性后，Azure 将管理所需的所有 DNS 委托和 DNS 区域，以确保可为所有 Internet 用户进行解析。
 
 ### <a name="are-default-reverse-dns-records-created-for-my-azure-services"></a>是否为 Azure 服务创建默认的反向 DNS 记录？
 
@@ -247,10 +245,9 @@ FQDN 以正向顺序指定，且必须以点号结尾（例如“app1.contoso.co
 
 ### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>是否可以从 Azure 计算服务将电子邮件发送到外部域？
 
-直接从 Azure 部署发送电子邮件的技术能力取决于订阅类型。 无论是哪种订阅类型，Microsoft 都建议使用受信任的邮件中继服务来发送邮件。 有关更多详细信息，请参阅 [Enhanced Azure Security for sending Emails – November 2017 Update](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)（增强 Azure 发送电子邮件的安全性 - 2017 年 11 月更新）。
+直接从 Azure 部署发送电子邮件的技术能力取决于订阅类型。 无论是哪种订阅类型，Microsoft 都建议使用受信任的邮件中继服务来发送邮件。 有关详细信息，请参阅[增强在 Azure 中发送电子邮件的安全性 - 2017 年 11 月更新](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关反向 DNS 的详细信息，请参阅[反向 DNS 查找](https://en.wikipedia.org/wiki/Reverse_DNS_lookup)。
-<br>
-了解如何[在 Azure DNS 中为 ISP 分配的 IP 范围托管反向查找区域](dns-reverse-dns-for-azure-services.md)。
+* 有关反向 DNS 的详细信息，请参阅[反向 DNS 查找](https://en.wikipedia.org/wiki/Reverse_DNS_lookup)。
+* 了解如何[在 Azure DNS 中为 ISP 分配的 IP 范围托管反向查找区域](dns-reverse-dns-for-azure-services.md)。

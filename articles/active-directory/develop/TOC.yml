@@ -24,10 +24,12 @@
       items:
         - name: Angular
           href: quickstart-v2-angular.md
-        - name: JavaScript - 身份验证代码流
+        - name: Angular - 授权代码流
+          href: quickstart-v2-javascript-auth-code-angular.md
+        - name: JavaScript
           href: quickstart-v2-javascript-auth-code.md
-        - name: JavaScript - 隐式流
-          href: quickstart-v2-javascript.md
+        - name: React - 授权代码流
+          href: quickstart-v2-javascript-auth-code-react.md
     - name: Web 应用
       items:
         - name: ASP.NET
@@ -80,12 +82,14 @@
       items:
         - name: Angular
           href: tutorial-v2-angular.md
+        - name: Angular - 授权代码流
+          href: tutorial-v2-angular-auth-code.md
         - name: Blazor WebAssembly
           href: tutorial-blazor-webassembly.md
-        - name: JavaScript - 身份验证代码流
+        - name: JavaScript
           href: tutorial-v2-javascript-auth-code.md
-        - name: JavaScript - 隐式流
-          href: tutorial-v2-javascript-spa.md
+        - name: React
+          href: tutorial-v2-react.md
     - name: Web 应用
       items:
         - name: ASP.NET
@@ -373,6 +377,8 @@
               href: msal-b2c-overview.md
             - name: 迁移到 MSAL.js
               href: msal-compare-msal-js-and-adal-js.md
+            - name: 迁移到 MSAL Node
+              href: msal-node-migration.md
             - name: 使用 MSAL.js 进行单一登录
               href: msal-js-sso.md
             - name: 注意事项 - IE
@@ -498,7 +504,7 @@
     - name: 接受来自多个租户的登录
       items:
         - name: 修改应用支持的帐户
-          href: quickstart-modify-supported-accounts.md
+          href: ./howto-modify-supported-accounts.md
         - name: 启用多租户登录
           href: howto-convert-app-to-be-multi-tenant.md
         - name: 配置发布服务器域
@@ -512,6 +518,16 @@
           href: howto-add-app-roles-in-azure-ad-apps.md
     - name: 使用 Microsoft Graph API
       href: microsoft-graph-intro.md
+    - name: 针对复原能力构建
+      items:
+        - name: 开发概述
+          href: ../fundamentals/resilience-app-development-overview.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
+        - name: 客户端应用程序
+          href: ../fundamentals/resilience-client-app.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
+        - name: 守护程序应用程序
+          href: ../fundamentals/resilience-daemon-app.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
+        - name: OpenID Connect 元数据刷新
+          href: howto-build-services-resilient-to-metadata-refresh.md
     - name: 将应用推向市场
       items:
         - name: 遵循品牌准则
@@ -546,7 +562,9 @@
         - name: 诊断身份验证期间的错误
           href: vs-active-directory-error.md
     - name: 删除应用注册
-      href: quickstart-remove-app.md
+      href: ./howto-remove-app.md
+    - name: 还原或删除已删除的应用注册
+      href: ./howto-restore-app.md
 - name: 参考
   items:
     - name: 术语表
@@ -587,6 +605,8 @@
             - name: OAuth 2.0 资源所有者密码凭据授予
               displayName: ROPC
               href: v2-oauth-ropc.md
+            - name: OAuth 2.0 SAML 持有者断言流
+              href: v2-saml-bearer-assertion.md
             - name: 签名密钥滚动更新
               href: active-directory-signing-key-rollover.md
             - name: 令牌交换方案
@@ -612,6 +632,8 @@
               href: active-directory-saml-protocol-reference.md
             - name: SAML 令牌
               href: reference-saml-tokens.md
+    - name: Azure CLI
+      href: /cli/azure/identity
     - name: 应用程序类型和 OAuth 2.0
       displayName: 'App types, OAuth'
       href: v2-app-types.md
@@ -625,6 +647,8 @@
       href: reference-v2-libraries.md
     - name: Microsoft Graph 中的标识和访问 API
       href: /graph/api/resources/azure-ad-overview
+    - name: 声明映射策略类型
+      href: reference-claims-mapping-policy-type.md
     - name: 身份验证和授权错误代码
       displayName: AADSTS
       href: reference-aadsts-error-codes.md

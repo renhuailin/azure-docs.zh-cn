@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/19/2021
-ms.openlocfilehash: 90755aef66fa51084d83d036722187b61449a6fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82821b29669139f378d4dd24e4a96ab66f3d56e1
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104656900"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108321926"
 ---
 # <a name="export-data-module"></a>导出数据模块
 
@@ -60,6 +60,10 @@ ms.locfileid: "104656900"
 1. 对于“文件格式”，请选择数据的存储格式。
  
 1. 提交管道。
+
+## <a name="limitations"></a>限制
+
+由于数据存储访问限制，如果你的推理管道包含“导出数据”模块，它将在部署到实时终结点时被自动删除。
 
 ## <a name="next-steps"></a>后续步骤
 

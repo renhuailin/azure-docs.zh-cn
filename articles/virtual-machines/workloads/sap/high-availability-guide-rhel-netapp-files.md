@@ -12,14 +12,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/11/2021
+ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: e652d1374db12d797dc4505f07350e6e110d6408
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b202613e6f24a5cd549267a1c8928e8e68caa232
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101674439"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303587"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>使用适用于 SAP 应用程序的 Azure NetApp 文件实现 Red Hat Enterprise Linux 上的 SAP NetWeaver 的 Azure 虚拟机高可用性
 
@@ -50,7 +50,7 @@ ms.locfileid: "101674439"
 [glusterfs-ha]:high-availability-guide-rhel-glusterfs.md
 
 本文介绍如何使用 [Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-introduction.md)部署虚拟机、配置虚拟机、安装群集框架，以及安装高可用性 SAP NetWeaver 7.50 系统。
-在示例配置和安装命令等内容中，ASCS 实例的编号为 00，ERS 实例的编号为 01，主应用程序实例 (PAS) 的编号为 02，应用程序实例 (AAS) 的编号为 03。 使用 SAP 系统 ID QAS。 
+在示例配置、安装命令等中，ASCS 实例的编号为 00、ERS 实例的编号为 01、主应用程序实例 (PAS) 的编号为 02、应用程序实例 (AAS) 的编号为 03。 使用 SAP 系统 ID QAS。 
 
 文本不会详细介绍数据库层。  
 
@@ -208,7 +208,6 @@ Azure NetApp 文件在多个 [Azure 区域](https://azure.microsoft.com/global-i
          1. 输入新负载均衡器规则的名称（例如，“lb.QAS.ASCS”）
          1. 选择先前创建的 ASCS 的前端 IP 地址、后端池和运行状况探测（例如，“frontend.QAS.ASCS”、“backend.QAS”和“health.QAS.ASCS”）
          1. 选择“HA 端口”
-         1. 将空闲超时增大到 30 分钟
          1. **确保启用浮动 IP**
          1. 单击“确定”
          * 重复上述步骤，为 ERS 创建负载均衡规则（例如，“lb.QAS.ERS”）

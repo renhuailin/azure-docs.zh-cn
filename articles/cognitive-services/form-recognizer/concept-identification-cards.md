@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 04/14/2021
+ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: 42b6cb96cdcfbf4e9c2e927265954776093bb330
-ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
+ms.openlocfilehash: d59df677fda920be5ed9547bee3855d4c9511187
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107992316"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330829"
 ---
 # <a name="form-recognizer-prebuilt-identification-id-document-model"></a>表单识别器预生成标识 (ID) 文档模型
 
@@ -35,7 +35,7 @@ Azure 表单识别器可以使用其预生成 ID 模型分析和提取政府颁�
 
 ### <a name="fields-extracted"></a>提取的字段
 
-|名称| 类型 | 说明 | 值 |
+|名称| 类型 | 描述 | 值 |
 |:-----|:----|:----|:----|
 |  国家/地区 | country | 符合 ISO 3166 标准的国家/地区代码 | “USA” |
 |  DateOfBirth | date | YYYY-MM-DD 格式的 DOB | “1980-01-01” |
@@ -75,7 +75,11 @@ ID API 还会返回以下信息：
 
 [!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
-## <a name="supported-id-types"></a>支持的 ID 类型
+## <a name="supported-locales"></a>支持的区域设置
+
+ 预生成的 ID v2.1-preview.3（预览版）支持 en-us 区域设置的标识文档 。
+
+## <a name="supported-identity-document-types"></a>支持的标识文档类型
 
 * 预生成 ID v2.1-preview.3 可从全球护照和美国驾照中提取关键信息。
 

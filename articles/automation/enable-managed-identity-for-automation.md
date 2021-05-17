@@ -3,14 +3,15 @@ title: 为 Azure 自动化帐户禁用托管标识（预览版）
 description: 本文介绍如何为 Azure 自动化帐户设置托管标识。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/20/2021
+ms.date: 04/28/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1f06fb89111236c7465cf5237acc2d187f72fe98
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1bdba095c18943be5b367bd605d1a22d6eb6499f
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107896488"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108323658"
 ---
 # <a name="enable-a-managed-identity-for-your-azure-automation-account-preview"></a>为 Azure 自动化帐户禁用托管标识（预览版）
 
@@ -32,7 +33,7 @@ ms.locfileid: "107896488"
 ## <a name="enable-system-assigned-identity"></a>启用系统分配的标识
 
 >[!IMPORTANT]
->新自动化帐户级别标识会替代以前任何 VM 级别系统分配的标识（这些标识在[将 Runbook 身份验证与托管标识结合使用](/automation-hrw-run-runbooks#runbook-auth-managed-identities)中进行了介绍）。 如果在使用 VM 系统分配的标识访问 runbook 资源的 Azure VM 上运行混合作业，则会将自动化帐户标识用于混合作业。 这意味着，如果在使用自动化帐户的客户管理的密钥 (CMK) 功能，则可能会影响现有作业执行。<br/><br/>如果要继续使用 VM 的托管标识，则不应启用自动化帐户级别标识。 如果已启用该标识，则可以禁用自动化帐户托管标识。 请参阅[禁用 Azure 自动化帐户托管标识](https://docs.microsoft.com/azure/automation/disable-managed-identity-for-automation)。
+>新自动化帐户级别标识会替代以前任何 VM 级别系统分配的标识，这些标识在[将 Runbook 身份验证与托管标识结合使用](./automation-hrw-run-runbooks.md#runbook-auth-managed-identities)中进行了介绍。 如果在使用 VM 系统分配的标识访问 runbook 资源的 Azure VM 上运行混合作业，则会将自动化帐户标识用于混合作业。 这意味着，如果在使用自动化帐户的客户管理的密钥 (CMK) 功能，则可能会影响现有作业执行。<br/><br/>如果要继续使用 VM 的托管标识，则不应启用自动化帐户级别标识。 如果已启用该标识，则可以禁用自动化帐户托管标识。 请参阅[禁用 Azure 自动化帐户托管标识](./disable-managed-identity-for-automation.md)。
 
 可以通过以下两种方式之一为 Azure 自动化设置系统分配的标识。 可以使用 Azure 门户或 Azure REST API。
 
@@ -152,7 +153,7 @@ Write-Output $accessToken.access_token
 
 尝试此脚本之前，请确保已启用标识。 请参阅[启用系统分配的标识](#enable-system-assigned-identity)。
 
-要了解如何预配 Azure SQL 数据库访问权限，请参阅[预配 Azure AD 管理员（SQL 数据库）](/azure/azure-sql/database/authentication-aad-configure#provision-azure-ad-admin-sql-database)。
+要了解如何预配 Azure SQL 数据库访问权限，请参阅[预配 Azure AD 管理员（SQL 数据库）](../azure-sql/database/authentication-aad-configure.md#provision-azure-ad-admin-sql-database)。
 
 ```powershell
 $queryParameter = "?resource=https://database.windows.net/" 
@@ -224,6 +225,8 @@ print(response.text)
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
+- 如果 runbook 没有成功完成，请查看[排查 Azure 自动化托管标识问题（预览）](troubleshoot/managed-identity.md)。
 
 - 如果需要禁用托管标识，请参阅[禁用 Azure 自动化帐户托管标识（预览版）](disable-managed-identity-for-automation.md)。
 

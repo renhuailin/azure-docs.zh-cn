@@ -1,17 +1,17 @@
 ---
 title: 在 Azure Functions 中使用 IntelliJ 创建 Java 函数
 description: 了解如何使用 IntelliJ 创建 HTTP 触发的简单 Java 函数，然后发布该函数以在 Azure 的无服务器环境中运行。
-author: jeffhollan
+author: yucwan
 ms.topic: how-to
 ms.date: 07/01/2018
-ms.author: jehollan
+ms.author: yucwan
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: 1edfbca2f2a16aeebc1244b298426dc46d72c6d5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 45fb62b446e6b589dc0cb9287a8aebe7f4e699b1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101708809"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105543630"
 ---
 # <a name="create-your-first-java-function-in-azure-using-intellij"></a>在 Azure 中使用 IntelliJ 创建你的第一个 Java 函数
 
@@ -30,7 +30,7 @@ ms.locfileid: "101708809"
 
 + 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 + [Azure 支持的 Java 开发工具包 (JDK)](/azure/developer/java/fundamentals/java-jdk-long-term-support)（适用于 Java 8）
-+ 安装了 [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) 旗舰版或社区版
++ 已安装的 [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) 旗舰版或社区版
 + [Maven 3.5.0+](https://maven.apache.org/download.cgi)
 + 最新的 [Function Core Tools](https://github.com/Azure/azure-functions-core-tools)
 
@@ -104,17 +104,9 @@ ms.locfileid: "101708809"
 
     ![将项目部署到 Azure](media/functions-create-first-java-intellij/deploy-functions-to-azure.png)
 
-1. 如果你还没有任何函数应用，单击“无可用函数，单击以创建一个新函数”。
+1. 如果还没有任何 Function App，请在“函数”行中单击 *+* 。 请键入函数应用名称并选择正确的平台，此处只需接受默认值即可。 单击“确定”，你刚刚创建的新函数应用会自动选中。 单击“运行”以部署函数。
 
     ![在 Azure 中创建函数应用](media/functions-create-first-java-intellij/deploy-functions-create-app.png)
-
-1. 键入函数应用名称并选择适当的订阅/平台/资源组/应用服务计划，你也可在此处创建资源组/应用服务计划。 然后，保持应用设置不变，单击“确定”，等待几分钟以创建新函数应用。 待“正在创建新的函数应用…”进度条消失。
-
-    ![将函数应用部署到 Azure - 创建应用向导](media/functions-create-first-java-intellij/deploy-functions-create-app-wizard.png)
-
-1. 选择要部署的函数应用（自动选择你刚刚创建的新函数应用）。 单击“运行”以部署函数。
-
-    ![屏幕截图显示“部署 Azure Functions”对话框。](media/functions-create-first-java-intellij/deploy-functions-run.png)
 
     ![将函数应用部署到 Azure - 日志](media/functions-create-first-java-intellij/deploy-functions-log.png)
 

@@ -4,14 +4,14 @@ description: 了解如何在原生 Windows 实例、预构建的 Linux 容器或
 ms.custom: devx-track-js, devx-track-azurecli
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 06/02/2020
+ms.date: 04/23/2021
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 6a6f782768db12c2ce75f5cf1e66100222f24446
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 97db865f2c590a9d7700ee53a0380604885a8155
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101095209"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076646"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>为 Azure 应用服务配置 Node.js 应用
 
@@ -147,13 +147,38 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 Node.js 容器附带了 [PM2](https://pm2.keymetrics.io/)（一个生产流程管理器）。 你可以将应用配置为以 PM2、NPM 或自定义命令启动。
 
-- [运行自定义命令](#run-custom-command)
-- [运行 npm start](#run-npm-start)
-- [通过 PM2 运行](#run-with-pm2)
+|工具|目的|
+|--|--|
+|[通过 PM2 运行](#run-with-pm2)|推荐 - 在生产或过渡期间使用。 PM2 提供了全方位服务的应用管理平台。|
+|[运行 npm start](#run-npm-start)|仅在开发期间使用。|
+|[运行自定义命令](#run-custom-command)|在开发或过渡期间使用。|
+
+
+### <a name="run-with-pm2"></a>通过 PM2 运行
+
+在你的项目中找到常用的 Node.js 文件之一时，容器会自动通过 PM2 启动你的应用：
+
+- *bin/www*
+- *server.js*
+- *app.js*
+- *index.js*
+- *hostingstart.js*
+- 下述 [PM2 文件](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)之一：process.json 和 ecosystem.config.js
+
+你还可以配置具有以下扩展名的自定义启动文件：
+
+- .js 文件
+- 扩展名为 *.json*、 *.config.js*、 *.yaml* 或 *.yml* 的 [PM2 文件](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)
+
+若要添加自定义启动文件，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
+
+```azurecli-interactive
+az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<filname-with-extension>"
+```
 
 ### <a name="run-custom-command"></a>运行自定义命令
 
-应用服务可以使用自定义命令（例如 run.sh 等可执行文件）来启动你的应用。例如，若要运行 `npm run start:prod`，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
+“应用服务”可以使用自定义命令（例如，run.sh 之类的可执行文件）启动应用。例如，要运行 `npm run start:prod`，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "npm run start:prod"
@@ -180,27 +205,6 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<filename>.json"
 ```
 
-### <a name="run-with-pm2"></a>通过 PM2 运行
-
-在你的项目中找到常用的 Node.js 文件之一时，容器会自动通过 PM2 启动你的应用：
-
-- *bin/www*
-- *server.js*
-- *app.js*
-- *index.js*
-- *hostingstart.js*
-- 下述 [PM2 文件](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)之一：process.json 和 ecosystem.config.js
-
-你还可以配置具有以下扩展名的自定义启动文件：
-
-- .js 文件
-- 扩展名为 *.json*、 *.config.js*、 *.yaml* 或 *.yml* 的 [PM2 文件](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)
-
-若要添加自定义启动文件，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
-
-```azurecli-interactive
-az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<filname-with-extension>"
-```
 
 ## <a name="debug-remotely"></a>远程调试
 

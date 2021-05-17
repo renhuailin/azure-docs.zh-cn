@@ -62,6 +62,8 @@
           href: hana-concept-preparation.md
         - name: 灾难恢复故障转移过程
           href: hana-failover-procedure.md
+        - name: RHEL 上适用于 SAP 的大型实例 HA
+          href: large-instance-high-availability-rhel.md
     - name: 故障排除和监视
       items:
         - name: 监视 HLI
@@ -74,8 +76,10 @@
           href: hana-li-portal.md
         - name: 使用 STONITH 进行 HA 设置
           href: ha-setup-with-stonith.md
-        - name: 类型 II SKU 的 OS 备份
-          href: os-backup-type-ii-skus.md
+        - name: OS 备份
+          href: large-instance-os-backup.md
+        - name: SAP on RHEL 的 Azure 大型实例高可用性
+          href: large-instance-high-availability-rhel.md
         - name: 为 HANA 大型实例启用 Kdump
           href: hana-large-instance-enable-kdump.md
         - name: HANA 大型实例的 OS 升级
@@ -112,6 +116,8 @@
           href: sap-hana-high-availability-rhel.md
         - name: 使用 ANF 在 RHEL 上设置 SAP HANA 系统复制
           href: sap-hana-high-availability-netapp-files-red-hat.md
+        - name: 在 SLES 上通过 Pacemaker 使用 HSR 横向扩展 SAP HANA
+          href: sap-hana-high-availability-scale-out-hsr-suse.md
         - name: 排查 SAP HANA 横向扩展和 SLES 上的 Pacemaker 问题
           href: hana-vm-troubleshoot-scale-out-ha-on-sles.md
         - name: 在 RHEL 上通过 Pacemaker 使用 HSR 横向扩展 SAP HANA
@@ -120,11 +126,25 @@
           href: sap-hana-scale-out-standby-netapp-files-suse.md
         - name: 在 RHEL 上通过 Azure NetApp 文件使用备用节点横向扩展 SAP HANA
           href: sap-hana-scale-out-standby-netapp-files-rhel.md
-    - name: SAP HANA 备份概述
-      href: sap-hana-backup-guide.md
-    - name: SAP HANA 文件级备份
-      href: sap-hana-backup-file-level.md
-- name: Azure 虚拟机上的 SAP NetWeaver 和 Business One
+    - name: 使用 Azure 备份进行 SAP HANA 数据库备份
+      items:
+        - name: Azure VM 中的 SAP HANA 数据库备份
+          href: ../../../backup/sap-hana-db-about.md
+        - name: 备份 Azure VM 中的 SAP HANA 数据库
+          href: ../../../backup/backup-azure-sap-hana-database.md
+        - name: 还原 Azure VM 上的 SAP HANA 数据库
+          href: ../../../backup/sap-hana-db-restore.md
+        - name: 管理和监视
+          href: ../../../backup/sap-hana-db-manage.md
+        - name: 针对备份 SAP HANA 数据库的支持矩阵
+          href: ../../../backup/sap-hana-backup-support-matrix.md
+        - name: 常见问题解答 - 备份 Azure VM 上的 SAP HANA 数据库
+          href: ../../../backup/sap-hana-faq-backup-azure-vm.yml
+        - name: 排查 Azure 上的 SAP HANA 数据库备份问题
+          href: ../../../backup/backup-azure-sap-hana-database-troubleshoot.md
+        - name: 教程 - 备份 Azure VM 中的 SAP HANA 数据库
+          href: ../../../backup/tutorial-backup-sap-hana-db.md
+- name: Azure 虚拟机上的 SAP NetWeaver、S/4HANA 和 Business One
   items:
     - name: SAP 工作负荷规划和部署清单
       href: sap-deployment-checklist.md
@@ -197,8 +217,6 @@
               href: high-availability-guide-rhel.md
             - name: 通过 Azure NetApp 文件实现用于 (A)SCS 实例的 Red Hat Enterprise Linux 上的 HA
               href: high-availability-guide-rhel-netapp-files.md
-            - name: RHEL 上适用于 SAP 的大型实例 HA
-              href: large-instance-high-availability-rhel.md
         - name: Azure 基础结构准备
           items:
             - name: Windows 以及用于 (A)SCS 实例的共享磁盘
@@ -251,7 +269,9 @@
   items:
     - name: Azure 上的 SAP BusinessObjects BI 平台规划和实现指南
       href: businessobjects-deployment-guide.md
-    - name: Azure 上的 SAP BusinessObjects BI 平台部署指南
+    - name: Azure 上适用于 Windows 的 SAP BusinessObjects BI 平台部署指南
+      href: businessobjects-deployment-guide-windows.md
+    - name: Linux on Azure 的 SAP BusinessObjects BI 平台部署指南
       href: businessobjects-deployment-guide-linux.md
 - name: 将 Azure AD 与 SAP 应用程序集成
   items:
@@ -314,7 +334,7 @@
 - name: 参考
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/sap-hana/hanainstance
+      href: /cli/azure/hanainstance
     - name: Azure PowerShell
       href: /powershell/module/az.hanaonazure/#sap-hana-on-azure
 - name: 资源

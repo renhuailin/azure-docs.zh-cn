@@ -8,12 +8,12 @@ ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: df8a7fde9114f03521f0e57e072f81a867efcf39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5af10bc30a7a3bd8ca211c3fd74364c74ee36fb5
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89075250"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278499"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建服务总线资源
 
@@ -38,7 +38,7 @@ Azure 资源管理器模板可帮助你定义要为解决方案部署的资源�
 
 ## <a name="deploy-with-powershell"></a>使用 PowerShell 进行部署
 
-以下过程描述如何使用 PowerShell 部署 Azure 资源管理器模板以创建“标准”层服务总线命名空间和该命名空间中的一个队列。 本示例基于 [创建包含队列的服务总线命名空间](https://github.com/Azure/azure-quickstart-templates/tree/master/201-servicebus-create-queue) 模板。 大概的工作流如下所示：
+以下过程描述如何使用 PowerShell 部署 Azure 资源管理器模板以创建“标准”层服务总线命名空间和该命名空间中的一个队列。 本示例基于 [创建包含队列的服务总线命名空间](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.servicebus/servicebus-create-queue/azuredeploy.json) 模板。 大概的工作流如下所示：
 
 1. 安装 PowerShell。
 2. 创建模板和（可选）参数文件。
@@ -56,7 +56,7 @@ Azure 资源管理器模板可帮助你定义要为解决方案部署的资源�
 
 ### <a name="create-a-template"></a>创建模板
 
-从 GitHub 克隆存储库或复制 [201-servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.json) 模板：
+从 GitHub 克隆存储库或复制 [servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.servicebus/servicebus-create-queue/azuredeploy.json) 模板：
 
 ```json
 {
@@ -131,7 +131,7 @@ Azure 资源管理器模板可帮助你定义要为解决方案部署的资源�
 
 ### <a name="create-a-parameters-file-optional"></a>创建参数文件（可选）
 
-若要使用可选参数文件，请复制 [201-servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json) 文件。 将 `serviceBusNamespaceName` 的值替换为要在此部署中创建的服务总线命名空间的名称，并将 `serviceBusQueueName` 的值替换为要创建的队列的名称。
+若要使用可选参数文件，请复制 [servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.servicebus/servicebus-create-queue/azuredeploy.parameters.json) 文件。 将 `serviceBusNamespaceName` 的值替换为要在此部署中创建的服务总线命名空间的名称，并将 `serviceBusQueueName` 的值替换为要创建的队列的名称。
 
 ```json
 {

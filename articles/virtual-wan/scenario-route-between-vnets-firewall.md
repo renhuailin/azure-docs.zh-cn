@@ -1,20 +1,20 @@
 ---
 title: 方案：适用于虚拟 WAN 的 Azure 防火墙自定义路由
 titleSuffix: Azure Virtual WAN
-description: 路由方案 - 在 VNet 之间直接路由流量，但对 VNet 到 Internet/分支和分支到 VNet 的流量流使用 Azure 防火墙
+description: 了解在 VNet 之间直接路由流量的路由方案，但对于 VNet 到 Internet/分支和分支到 VNet 的流量流，请使用 Azure 防火墙。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d083607782f96744ecbd7d23976f77ee53fec49d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ebe1f337e2799e2ebeafc0f4a051ed7c3d81e434
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94515563"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161998"
 ---
 # <a name="scenario-azure-firewall---custom"></a>方案：Azure 防火墙 - 自定义
 

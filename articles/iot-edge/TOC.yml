@@ -24,23 +24,21 @@
     - name: 开发自定义代码模块
       items:
         - name: C
-          items:
-            - name: 适用于 Linux 设备的 C 模块
-              href: tutorial-c-module.md
-            - name: 适用于 Windows 设备的 C 模块
-              href: tutorial-c-module-windows.md
+          href: tutorial-c-module.md
         - name: C#
-          items:
-            - name: 适用于 Linux 设备的 C# 模块
-              href: tutorial-csharp-module.md
-            - name: 适用于 Windows 设备的 C# 模块
-              href: tutorial-csharp-module-windows.md
+          href: tutorial-csharp-module.md
         - name: Java
           href: tutorial-java-module.md
         - name: Node.js
           href: tutorial-node-module.md
         - name: Python
           href: tutorial-python-module.md
+        - name: 使用 Windows 容器
+          items:
+            - name: C
+              href: tutorial-c-module-windows.md
+            - name: C#
+              href: tutorial-csharp-module-windows.md
     - name: 将 Azure 服务部署为模块
       items:
         - name: 使用 Azure Functions 筛选数据
@@ -115,8 +113,6 @@
       href: support.md
     - name: 生产部署清单
       href: production-checklist.md
-    - name: IoT Edge 术语表
-      href: iot-edge-glossary.md
 - name: 操作指南
   items:
     - name: 创建 IoT Edge 设备
@@ -133,6 +129,8 @@
           href: how-to-update-iot-edge.md
         - name: 管理设备证书
           href: how-to-manage-device-certificates.md
+        - name: 为 Windows VM 配置嵌套虚拟化
+          href: nested-virtualization.md
     - name: 备用设备方案
       items:
         - name: 使用 Windows 容器运行 IoT Edge
@@ -251,14 +249,16 @@
       href: how-to-create-test-certificates.md
     - name: Windows 设备管理脚本
       href: reference-windows-scripts.md
-    - name: IoT Edge for Linux on Windows 脚本
-      href: reference-iot-edge-for-linux-on-windows-scripts.md
+    - name: IoT Edge for Linux on Windows 函数
+      href: reference-iot-edge-for-linux-on-windows-functions.md
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: 资源
   items:
     - name: 支持和帮助选项
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
+    - name: IoT 术语表
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
     - name: Azure IoT 服务
       items:
         - name: IoT 中心
@@ -296,7 +296,7 @@
         - name: iOS 平台
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
     - name: Azure IoT 已认证设备目录
-      href: 'https://catalog.azureiotsolutions.com/'
+      href: 'https://devicecatalog.azure.com/'
     - name: Azure IoT 开发人员中心
       href: 'https://azure.microsoft.com/develop/iot/'
     - name: Azure 路线图
