@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 04/30/2021
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 855998b887f1d446ee8d196ff4628e066cb5d675
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e17d50904ed973b21072211c06343bc880421b2
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98805676"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517363"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>使用 pandas 浏览 Azure Blob 存储中的数据
 
@@ -36,11 +36,10 @@ ms.locfileid: "98805676"
 1. 通过 Blob 服务使用下方 Python 代码示例从 Azure blob 下载数据。 使用特定值替代下方代码中的变量：
 
     ```python
-    from azure.storage.blob import BlockBlobService
+    from azure.storage.blob import BlobServiceClient
     import pandas as pd
-    import tables
 
-    STORAGEACCOUNTNAME= <storage_account_name>
+    STORAGEACCOUNTURL= <storage_account_url>
     STORAGEACCOUNTKEY= <storage_account_key>
     LOCALFILENAME= <local_file_name>
     CONTAINERNAME= <container_name>
@@ -48,8 +47,11 @@ ms.locfileid: "98805676"
 
     #download from blob
     t1=time.time()
-    blob_service=BlockBlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
-    blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
+    blob_service_client_instance = BlobServiceClient(account_url=STORAGEACCOUNTURL, credential=STORAGEACCOUNTKEY)
+    blob_client_instance = blob_service_client.get_blob_client(CONTAINERNAME, BLOBNAME, snapshot=None)
+    with open(LOCALFILENAME, "wb") as my_blob:
+        blob_data = blob_client_instance.download_blob()
+        blob_data.readinto(my_blob)
     t2=time.time()
     print(("It takes %s seconds to download "+BLOBNAME) % (t2 - t1))
     ```
@@ -61,7 +63,9 @@ ms.locfileid: "98805676"
     dataframe_blobdata = pd.read_csv(LOCALFILENAME)
     ```
 
-现在可以准备浏览数据并在此数据集上生成功能了。
+如需有关从 Azure 存储 Blob 中进行读取的更多常规信息，请查看[用于 Python 的 Azure 存储 Blob 客户端库](/python/api/overview/azure/storage-blob-readme)文档。  
+
+现在可以准备浏览数据并在此数据集上生成功能了。  
 
 ## <a name="examples-of-data-exploration-using-pandas"></a><a name="blob-dataexploration"></a>使用 pandas 浏览数据的示例
 下方举例说明了如何使用 pandas 浏览数据：
