@@ -3,14 +3,14 @@ title: 在 Azure 自动化中执行 Runbook
 description: 本文概述了如何在 Azure 自动化中处理 runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 10/06/2020
+ms.date: 03/23/2021
 ms.topic: conceptual
-ms.openlocfilehash: ca28d5829689dca46bbf3a94ce7c1591c20cf7b0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 165c9ea721bec7fc7a1657f5dde5c19d9e254e20
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586053"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954337"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>在 Azure 自动化中执行 Runbook
 
@@ -34,7 +34,8 @@ Azure 自动化分配辅助角色用于在 runbook 执行期间运行每个作�
 
 Azure 自动化中的 runbook 可以在 Azure 沙盒上运行，也可以在[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)上运行。 
 
-如果 runbook 设计为针对 Azure 中的资源进行身份验证和运行，则它们会在 Azure 沙盒中运行，这是多个作业可以使用的共享环境。 使用同一沙盒的作业受沙盒的资源限制约束。 Azure 沙盒环境不支持交互式操作。 它阻止访问所有进程外 COM 服务器。 它还要求将本地 MOF 文件用于进行 Win32 调用的 runbook。
+如果 runbook 设计为针对 Azure 中的资源进行身份验证和运行，则它们会在 Azure 沙盒中运行，这是多个作业可以使用的共享环境。 使用同一沙盒的作业受沙盒的资源限制约束。 Azure 沙盒环境不支持交互式操作。 它阻止访问所有进程外 COM 服务器，并且不支持在 runbook 中对 Win32 提供程序进行 [WMI 调用](/windows/win32/wmisdk/wmi-architecture)。  仅在 Windows 混合 Runbook 辅助角色上运行 runbook 时才支持这些方案。
+
 
 你也可以使用[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)直接在托管角色的计算机上运行 runbook，以及针对环境中的资源运行 runbook。 Azure 自动化存储并管理 runbook，然后将其发送到一个或多个分配的计算机。
 
@@ -43,7 +44,7 @@ Azure 自动化中的 runbook 可以在 Azure 沙盒上运行，也可以在[混
 
 下表列出一些 runbook 执行任务，并为每个任务列出了建议的执行环境。
 
-|任务|建议|说明|
+|任务|建议|注释|
 |---|---|---|
 |与 Azure 资源集成|Azure 沙盒|在 Azure 中托管，身份验证更为简单。 如果使用 Azure VM 上的混合 Runbook 辅助角色，则可[将 runbook 身份验证与托管标识配合使用](automation-hrw-run-runbooks.md#runbook-auth-managed-identities)。|
 |获取管理 Azure 资源的最佳性能|Azure 沙盒|脚本在同一环境中运行，延迟更低。|
@@ -112,7 +113,7 @@ Log Analytics 代理和 nxautomation 帐户的可用日志如下：
 
 ## <a name="runbook-permissions"></a>Runbook 权限
 
-Runbook 需要通过凭据向 Azure 进行身份验证的权限。 请参阅 [Azure Automation 身份验证概述](automation-security-overview.md)。
+Runbook 需要通过凭据向 Azure 进行身份验证的权限。 请参阅 [Azure 自动化身份验证概述](automation-security-overview.md)。
 
 ## <a name="modules"></a>模块
 
@@ -141,11 +142,11 @@ Azure 自动化支持从同一自动化帐户运行作业的环境。 一个 run
 |:--- |:--- |
 | 激活 |正在激活作业。 |
 | 已完成 |作业已成功完成。 |
-| 已失败 |图形或 PowerShell 工作流 runbook 未能编译。 PowerShell runbook 未能启动或作业遇到异常。 请参阅 [Azure 自动化 runbook 类型](automation-runbook-types.md)。|
+| 失败 |图形或 PowerShell 工作流 runbook 未能编译。 PowerShell runbook 未能启动或作业遇到异常。 请参阅 [Azure 自动化 runbook 类型](automation-runbook-types.md)。|
 | 失败，正在等待资源 |作业失败，因为它已达到[公平份额](#fair-share)限制三次，并且每次都从同一个检查点或 Runbook 开始处启动。 |
 | 已排队 |作业正在等待自动化辅助角色上的资源变得可用，以便其能够启动。 |
 | 正在恢复 |系统正在恢复已暂停的作业。 |
-| 正在运行 |作业正在运行。 |
+| 运行 |作业正在运行。 |
 | 正在运行，正在等待资源 |作业已卸载，因为它已达到公平份额限制。 片刻之后，它将从其上一个检查点恢复。 |
 | 正在启动 |作业已分配给辅助角色，并且系统正在将它启动。 |
 | 已停止 |作业在完成之前已被用户停止。 |

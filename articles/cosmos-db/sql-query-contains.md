@@ -5,15 +5,15 @@ author: ginamr
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 06/02/2020
+ms.date: 04/01/2021
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 4b6835b22e5cfa4ca703b95d70e20112b8723def
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2f897df5be819838d824da1170d92c18ff42a354
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93339166"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161134"
 ---
 # <a name="contains-azure-cosmos-db"></a>CONTAINS (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -62,23 +62,7 @@ SELECT CONTAINS("abc", "ab", false) AS c1, CONTAINS("abc", "A", false) AS c2, CO
 
 ## <a name="remarks"></a>备注
 
-此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中获益。
-
-Contains 的 RU 消耗将随着系统函数中属性的基数的增加而增加。 换言之，如果要检查某个属性值是否包含特定字符串，则查询 RU 费用将取决于该属性的可能值数量。
-
-例如，请考虑两个属性：town 和 country。 town 的基数是 5,000，country 的基数是 200。 下面展示了两个示例查询：
-
-```sql
-    SELECT * FROM c WHERE CONTAINS(c.town, "Red", false)
-```
-
-```sql
-    SELECT * FROM c WHERE CONTAINS(c.country, "States", false)
-```
-
-第一个查询可能比第二个查询使用更多的 RU，因为 town 的基数高于 country 的基数。
-
-如果某些文档的 Contains 中的属性大小大于 1 KB，则查询引擎需要加载这些文档。 在这种情况下，查询引擎将无法使用索引对 Contains 进行完全评估。 如果你有大量属性大小超过 1 KB 的文档，则 Contains 的 RU 费用将很高。
+了解[此字符串系统函数使用索引的方式](sql-query-string-functions.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

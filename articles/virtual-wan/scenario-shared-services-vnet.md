@@ -1,20 +1,20 @@
 ---
 title: 方案：路由到共享服务 VNet
 titleSuffix: Azure Virtual WAN
-description: 路由方案 - 设置路由以访问共享服务 VNet，其中包含你想要每个 VNet 和分支访问的工作负载。
+description: 了解虚拟 WAN 路由方案。 在此方案中，可设置路由以访问共享服务 VNet，其中包含你想要每个 VNet 和分支访问的工作负载。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8e0d05d2cb960e760809ab35a8f9e4ca04acf250
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4a6d0a662930deec29cdf6b09c349f33dbd17a0a
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102442955"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165778"
 ---
 # <a name="scenario-route-to-shared-services-vnets"></a>方案：路由到共享服务 VNet
 

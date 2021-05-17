@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 04/27/2020
 ms.openlocfilehash: e61c53cabc8f784ba9f0a3e78b5de01be134b0cd
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100367837"
 ---
 # <a name="union-transformation-in-mapping-data-flow"></a>映射数据流中的 Union 转换
@@ -22,7 +22,7 @@ Union 会将多个数据流组合成一个数据流，而这些流的 SQL Union 
 
 通过选择每个已配置的行旁边的“+”图标，你可以在设置表中对 n 个流进行组合，包括源数据以及数据流中现有转换的流。
 
-下面是 ADF 地图数据流中联合转换的简短视频演练：
+下面是有关 ADF 映射数据流中联合转换的简短视频演练：
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vngz]
 

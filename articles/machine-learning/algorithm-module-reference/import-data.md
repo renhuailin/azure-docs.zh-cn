@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/13/2020
-ms.openlocfilehash: 69d27c102ca059974da87224e44f0ad7aa103fff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b55cafcb45cd2004702dc0f10ddf6c7b2d7f0c47
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94592628"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317768"
 ---
 # <a name="import-data-module"></a>“导入数据”模块
 
@@ -98,6 +98,10 @@ ms.locfileid: "94592628"
 - 使用[选择数据集中的列](./select-columns-in-dataset.md)选择要转换的或要在建模中使用的列子集。 使用[添加列](./add-columns.md)模块可以轻松地将已转换的或已删除的列重新加入原始数据集。  
 
 - 使用[分区和采样](./partition-and-sample.md)来分割数据集、执行采样或获取排名靠前的 n 行。
+
+## <a name="limitations"></a>限制
+
+由于 datstore 访问限制，如果推理管道包含“导入数据”模块，则会在部署到实时终结点时自动将其删除。
 
 ## <a name="next-steps"></a>后续步骤
 

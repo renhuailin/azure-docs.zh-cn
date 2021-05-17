@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
 ms.openlocfilehash: 3cfe75edcf338f5248baf396147a5b77803fbfb3
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97655928"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>使用 Azure Data Lake Analytics 查询 Avro 数据
 
-本文讨论了如何查询 Avro 数据，以高效地将消息从 Azure IoT 中心路由到 Azure 服务。 [消息路由](iot-hub-devguide-messages-d2c.md)允许使用基于消息属性、消息正文、设备孪生标记和设备孪生属性的丰富查询来筛选数据。 若要了解有关消息路由中查询功能的详细信息，请参阅关于 [消息路由查询语法](iot-hub-devguide-routing-query-syntax.md)的文章。
+本文讨论了如何查询 Avro 数据，以高效地将消息从 Azure IoT 中心路由到 Azure 服务。 [消息路由](iot-hub-devguide-messages-d2c.md)允许使用基于消息属性、消息正文、设备孪生标记和设备孪生属性的丰富查询来筛选数据。 若要了解有关消息路由中查询功能的详细信息，请参阅有关[消息路由查询语法](iot-hub-devguide-routing-query-syntax.md)的文章。
 
-面对这一挑战，当 Azure IoT 中心将消息路由到 Azure Blob 存储时，默认情况下，IoT 中心会写入 Avro 格式的内容，该格式同时具有消息正文属性和消息属性。 Avro 格式不用于其他任何终结点。 尽管 Avro 格式可用于保存数据和消息，但将其用于查询数据将是一项挑战。 比较而言，JSON 或 CSV 格式更容易用来查询数据。 IoT 中心现在支持将数据写入 JSON 中的 Blob 存储和 AVRO。
+挑战在于，当 Azure IoT 中心将消息路由到 Azure Blob 存储时，IoT 中心默认以 Avro 格式写入内容，该格式同时包括消息正文属性和消息属性。 Avro 格式不会用于其他任何终结点。 尽管 Avro 格式可用于保存数据和消息，但将其用于查询数据将是一项挑战。 比较而言，JSON 或 CSV 格式更容易用来查询数据。 IoT 中心现在支持将数据写入 JSON 中的 Blob 存储以及 AVRO。
 
-有关详细信息，请参阅 [使用 Azure 存储作为路由终结点](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint)。
+有关详细信息，请参阅[使用 Azure 存储作为路由终结点](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint)。
 
 为了解决非关系大数据需求和格式并应对这一挑战，可以使用许多大数据模式来对数据进行转换和缩放。 其中的一个模式“按查询付费”是 Azure Data Lake Analytics，它是本文重点要讨论的内容。 虽然可以在 Hadoop 或其他解决方案中轻松执行查询，但 Data Lake Analytics 通常更适合“按查询付费”方式。
 
@@ -66,13 +66,13 @@ U-SQL 中有一个适用于 Avro 的“提取程序”。 有关详细信息，�
 
     ```sql
         DROP ASSEMBLY IF EXISTS [Avro];
-        CREATE ASSEMBLY [Avro] FROM @"/Assemblies/Avro/Avro.dll";
+        CREATE ASSEMBLY [Avro] FROM @"/Assemblies/Avro/Avro.dll&quot;;
         DROP ASSEMBLY IF EXISTS [Microsoft.Analytics.Samples.Formats];
-        CREATE ASSEMBLY [Microsoft.Analytics.Samples.Formats] FROM @"/Assemblies/Avro/Microsoft.Analytics.Samples.Formats.dll";
+        CREATE ASSEMBLY [Microsoft.Analytics.Samples.Formats] FROM @&quot;/Assemblies/Avro/Microsoft.Analytics.Samples.Formats.dll&quot;;
         DROP ASSEMBLY IF EXISTS [Newtonsoft.Json];
-        CREATE ASSEMBLY [Newtonsoft.Json] FROM @"/Assemblies/Avro/Newtonsoft.Json.dll";
+        CREATE ASSEMBLY [Newtonsoft.Json] FROM @&quot;/Assemblies/Avro/Newtonsoft.Json.dll&quot;;
         DROP ASSEMBLY IF EXISTS [log4net];
-        CREATE ASSEMBLY [log4net] FROM @"/Assemblies/Avro/log4net.dll";
+        CREATE ASSEMBLY [log4net] FROM @&quot;/Assemblies/Avro/log4net.dll&quot;;
 
         REFERENCE ASSEMBLY [Newtonsoft.Json];
         REFERENCE ASSEMBLY [log4net];
@@ -80,8 +80,8 @@ U-SQL 中有一个适用于 Avro 的“提取程序”。 有关详细信息，�
         REFERENCE ASSEMBLY [Microsoft.Analytics.Samples.Formats];
 
         // Blob container storage account filenames, with any path
-        DECLARE @input_file string = @"wasb://hottubrawdata@kevinsayazstorage/kevinsayIoT/{*}/{*}/{*}/{*}/{*}/{*}";
-        DECLARE @output_file string = @"/output/output.csv";
+        DECLARE @input_file string = @&quot;wasb://hottubrawdata@kevinsayazstorage/kevinsayIoT/{*}/{*}/{*}/{*}/{*}/{*}&quot;;
+        DECLARE @output_file string = @&quot;/output/output.csv&quot;;
 
         @rs =
         EXTRACT
@@ -89,35 +89,35 @@ U-SQL 中有一个适用于 Avro 的“提取程序”。 有关详细信息，�
         Body byte[]
         FROM @input_file
 
-        USING new Microsoft.Analytics.Samples.Formats.ApacheAvro.AvroExtractor(@"
+        USING new Microsoft.Analytics.Samples.Formats.ApacheAvro.AvroExtractor(@&quot;
         {
-            ""type"":""record"",
-            ""name"":""Message"",
-            ""namespace"":""Microsoft.Azure.Devices"",
-            ""fields"":
+            &quot;&quot;type&quot;&quot;:&quot;&quot;record&quot;&quot;,
+            &quot;&quot;name&quot;&quot;:&quot;&quot;Message&quot;&quot;,
+            &quot;&quot;namespace&quot;&quot;:&quot;&quot;Microsoft.Azure.Devices&quot;&quot;,
+            &quot;&quot;fields&quot;&quot;:
            [{
-                ""name"":""EnqueuedTimeUtc"",
-                ""type"":""string""
+                &quot;&quot;name&quot;&quot;:&quot;&quot;EnqueuedTimeUtc&quot;&quot;,
+                &quot;&quot;type&quot;&quot;:&quot;&quot;string&quot;&quot;
             },
             {
-                ""name"":""Properties"",
-                ""type"":
+                &quot;&quot;name&quot;&quot;:&quot;&quot;Properties&quot;&quot;,
+                &quot;&quot;type&quot;&quot;:
                 {
-                    ""type"":""map"",
-                    ""values"":""string""
+                    &quot;&quot;type&quot;&quot;:&quot;&quot;map&quot;&quot;,
+                    &quot;&quot;values&quot;&quot;:&quot;&quot;string&quot;&quot;
                 }
             },
             {
-                ""name"":""SystemProperties"",
-                ""type"":
+                &quot;&quot;name&quot;&quot;:&quot;&quot;SystemProperties&quot;&quot;,
+                &quot;&quot;type&quot;&quot;:
                 {
-                    ""type"":""map"",
-                    ""values"":""string""
+                    &quot;&quot;type&quot;&quot;:&quot;&quot;map&quot;&quot;,
+                    &quot;&quot;values&quot;&quot;:&quot;&quot;string&quot;&quot;
                 }
             },
             {
-                ""name"":""Body"",
-                ""type"":[""null"",""bytes""]
+                &quot;&quot;name&quot;&quot;:&quot;&quot;Body&quot;&quot;,
+                &quot;&quot;type&quot;&quot;:[&quot;&quot;null&quot;&quot;,&quot;&quot;bytes&quot;&quot;]
             }]
         }"
         );

@@ -6,20 +6,20 @@ ms.topic: conceptual
 author: deshriva
 ms.author: deshriva
 ms.date: 02/08/2021
-ms.openlocfilehash: 0283779e10ac3e6070e9fd73d186af35972cad22
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c661304fcb9e88f01d139c0d8b6950f316391586
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104582878"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203104"
 ---
 # <a name="hdinsight-40-component-versions"></a>HDInsight 4.0 组件版本
 
-本文介绍了 Azure HDInsight 4.0 中的 Apache Hadoop 环境组件和版本。
+本文介绍 Azure HDInsight 4.0 中的 Apache Hadoop 环境组件和版本。
 
 ## <a name="apache-components-available-with-hdinsight-version-40"></a>随 HDInsight 版本 4.0 提供的 Apache 组件
 
-下表列出了与 HDInsight 4.0 关联的 OSS 组件版本。
+下表列出了与 HDInsight 4.0 相关的 OSS 组件版本。
 
 | 组件              | HDInsight 4.0 |
 |------------------------|---------------|
@@ -33,15 +33,15 @@ ms.locfileid: "104582878"
 | Apache Oozie           | 4.3.1         |
 | Apache Zookeeper       | 3.4.6         |
 | Apache Phoenix         | 5             |
-| Apache Spark           | 2.4.4         |
+| Apache Spark           | 2.4.4、3.0.0（预览版）|
 | Apache Livy            | 0.5           |
-| Apache Kafka           | 2.1.1         |
+| Apache Kafka           | 2.1.1、2.4.1（预览版）        |
 | Apache Ambari          | 2.7.0         |
 | Apache Zeppelin        | 0.8.0         |
 | Mono                   | 4.2.1         |
 
 
-此表列出了某些已停用的某些 HDInsight 4.0 群集类型。
+此表列出了已停用的某些 HDInsight 4.0 群集类型。
 
 | 群集类型                    | 框架版本 | 支持到期日期      | 停用日期 |
 |---------------------------------|-------------------|------------------------------|-----------------|

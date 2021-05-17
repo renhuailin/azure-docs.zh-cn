@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: wesmc
 ms.openlocfilehash: 3a8910cf0e81bd041d74ef95f45220f1c1e0b34c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91761288"
 ---
 # <a name="tls-support-in-azure-iot-hub-device-provisioning-service-dps"></a>Azure IoT 中心设备预配服务 (DPS) 中的 TLS 支持
 
-DPS 使用 [传输层安全性 (TLS) ](http://wikipedia.org/wiki/Transport_Layer_Security) 来保护来自 IoT 设备的连接。 
+DPS 使用[传输层安全性 (TLS)](http://wikipedia.org/wiki/Transport_Layer_Security) 保护来自 IoT 设备的连接。 
 
 DPS 支持的当前 TLS 协议版本如下： 
 * TLS 1.2
@@ -27,7 +27,7 @@ TLS 1.0 和 1.1 被视为旧版，我们已计划弃用这两个版本。 有关
 
 为了提高安全性，建议将 DPS 实例配置为仅允许那些使用 TLS 版本 1.2 的设备客户端连接，并强制使用[建议的密码](#recommended-ciphers)。
 
-为此，请 `minTlsVersion` `1.2` 在 Azure 资源管理器模板的 dps 资源规范中预配一个新的 DPS 资源，将属性设置为。 以下示例模板 JSON 为新的 DPS 实例指定 `minTlsVersion` 属性。
+为此，请预配一个新的 DPS 资源设置，并在 Azure 资源管理器模板的 DPS 资源规范中，将 `minTlsVersion` 属性设置为 `1.2`。 以下示例模板 JSON 为新的 DPS 实例指定 `minTlsVersion` 属性。
 
 ```json
 {
@@ -70,23 +70,23 @@ az deployment group create -g <your resource group name> --template-file templat
 
 ## <a name="recommended-ciphers"></a>建议的密码
 
-配置为仅接受 TLS 1.2 的 DPS 实例还将强制使用以下密码套件：
+配置为仅接受 TLS 1.2 的 DPS 实例还会强制使用以下密码套件：
 
 
-| 推荐的 TLS 1.2 密码套件 |
+| 建议的 TLS 1.2 密码套件 |
 | :--- |
 | `TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`<br>`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256` |
 
 
 ### <a name="legacy-cipher-suites"></a>旧密码套件 
 
-DPS 当前仍支持这些密码套件，但将对其进行折旧。 如果可能，请使用上面建议的密码套件。
+DPS 目前仍支持这些密码套件，但未来将弃用。 如果可能，请使用上面建议的密码套件。
 
-| 选项 #1 (更好的安全性)  |
+| 选项 1（安全性更好） |
 | :--- |
 | `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P384   (uses SHA-1)`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256   (uses SHA-1)`<br>`TLS_RSA_WITH_AES_256_GCM_SHA384           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_GCM_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_CBC_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_CBC_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_CBC_SHA              (uses SHA-1, lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_CBC_SHA              (uses SHA-1, lack of Perfect Forward Secrecy)` |
 
-| 选项 #2 (更好的性能)  |
+| 选项 2（性能更好） |
 | :--- |
 | `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256   (uses SHA-1)`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P384   (uses SHA-1)`<br>`TLS_RSA_WITH_AES_128_GCM_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_GCM_SHA384           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_CBC_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_CBC_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_CBC_SHA              (uses SHA-1, lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_CBC_SHA              (uses SHA-1, lack of Perfect Forward Secrecy)` |
 
@@ -105,7 +105,7 @@ DPS 当前仍支持这些密码套件，但将对其进行折旧。 如果可能
 
 ## <a name="use-tls-12-with-iot-hub"></a>将 TLS 1.2 与 IoT 中心配合使用
 
-与设备通信时，可以将 IoT 中心配置为使用 TLS 1.2。 有关详细信息，请参阅 [IoT 中心弃用 TLS 1.0 和 1.1](../iot-hub/iot-hub-tls-deprecating-1-0-and-1-1.md)。
+IoT 中心可以配置为在与设备通信时使用 TLS 1.2。 有关详细信息，请参阅 [IoT 中心弃用 TLS 1.0 和 1.1](../iot-hub/iot-hub-tls-deprecating-1-0-and-1-1.md)。
 
 ## <a name="use-tls-12-with-iot-edge"></a>将 TLS 1.2 与 IoT Edge 配合使用
 

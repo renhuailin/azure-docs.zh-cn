@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: dc9f7dfdf33411f11d51734b48105be200874d02
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.openlocfilehash: 030f19d61e19349de7e2d3416a3aee1385fd03c8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98738112"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607516"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure 启动诊断
 
@@ -26,7 +26,7 @@ ms.locfileid: "98738112"
 
 另一种启动诊断体验是使用用户管理的存储帐户。 用户可以创建新的存储帐户，也可以使用现有的存储帐户。
 > [!NOTE]
-> 与启动诊断相关的用户管理的存储帐户需要存储帐户和关联的虚拟机位于同一订阅中。 
+> 与启动诊断相关的用户管理的存储帐户要求存储帐户和关联的虚拟机位于同一订阅中。 
 
 
 
@@ -106,9 +106,9 @@ API 版本 2020-06-01 后的所有内容都支持托管启动诊断。 有关详
 - 托管启动诊断不支持那些使用非托管 OS 磁盘的 VM。
 - 启动诊断不支持高级存储帐户。如果将高级存储帐户用于启动诊断，则在启动 VM 时，用户会收到 `StorageAccountTypeNotSupported` 错误。 
 - 资源管理器 API 版本“2020-06-01”及更高版本支持托管存储帐户。
-- Azure 串行控制台当前与用于启动诊断的托管存储帐户不兼容。 详细了解 [Azure 串行控制台](./troubleshooting/serial-console-overview.md)。
+- Azure 串行控制台目前不兼容用于启动诊断的托管存储帐户。 详细了解 [Azure 串行控制台](/troubleshoot/azure/virtual-machines/serial-console-overview)。
 - 对于单实例 VM，门户仅支持将启动诊断与托管存储帐户配合使用。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [Azure 串行控制台](./troubleshooting/serial-console-overview.md) 的详细信息，以及如何使用启动诊断对 [azure 中的虚拟机进行故障排除](./troubleshooting/boot-diagnostics.md)。
+详细了解 [Azure 串行控制台](/troubleshoot/azure/virtual-machines/serial-console-overview)以及如何使用启动诊断功能来[排查 Azure 中虚拟机的问题](/troubleshoot/azure/virtual-machines/boot-diagnostics)。

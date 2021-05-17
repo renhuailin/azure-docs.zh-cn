@@ -3,15 +3,15 @@ title: 在 Azure 自动化中启动 Runbook
 description: 本文介绍了如何在 Azure 自动化中启动 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 03/16/2018
+ms.date: 04/28/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 01b6e060fcab9c7dab4934aad3d1ab6047ec5236
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 4b178ff8b667c5c1db508d8062b4cd5b53955047
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107829847"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108277221"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>在 Azure 自动化中启动 Runbook
 
@@ -27,7 +27,7 @@ ms.locfileid: "107829847"
 | [计划](./shared-resources/schedules.md) |<li>按每小时、每天、每周或每月计划自动启动 Runbook。<br> <li>通过 Azure 门户、PowerShell cmdlet 或 Azure API 来操作计划。<br> <li>提供与计划配置使用的参数值。 |
 | [从另一个 Runbook](automation-child-runbooks.md) |<li>使用一个 Runbook 作为另一个 Runbook 中的活动。<br> <li>对多个 Runbook 使用的功能很有用。<br> <li>为子 Runbook 提供参数值，并使用父 Runbook 中的输出。 |
 
-下图演示了 Runbook 生命周期的详细分步过程。 它包括在 Azure 自动化中启动 Runbook 的不同方式、混合 Runbook 辅助角色执行 Azure 自动化 Runbook 所需的组件以及不同组件之间的交互方式。 若要了解如何在数据中心执行自动化 Runbook，请参阅[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)
+下图演示了 Runbook 生命周期的详细分步过程。 其中包括在 Azure 自动化中启动 Runbook 的不同方式、混合 Runbook 辅助角色执行 Azure 自动化 Runbook 所需的组件以及不同组件之间的交互方式。 若要了解如何在数据中心执行自动化 Runbook，请参阅[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)
 
 ![Runbook 体系结构](media/automation-starting-runbook/runbooks-architecture.png)
 
@@ -138,9 +138,9 @@ jsmith
 
 ## <a name="start-a-runbook-with-the-azure-portal"></a>使用 Azure 门户启动 Runbook
 
-1. 在 Azure 门户中选择“自动化”，然后单击某个自动化帐户的名称。
-2. 在“中心”菜单中选择“Runbook”。
-3. 在“Runbook”页上选择一个 Runbook，然后单击“启动”。
+1. 在 Azure 门户中，选择“自动化”  ，然后选择自动化帐户的名称。
+2. 在左侧窗格中，选择“Runbook”。
+3. 在“Runbook”页上，选择 Runbook 并单击“启动” 。
 4. 如果 Runbook 包含参数，则系统会提示在文本框中提供每个参数的值。 有关参数的详细信息，请参阅 [Runbook 参数](#work-with-runbook-parameters)。
 5. 在“作业”窗格中，可以查看 Runbook 作业的状态。
 

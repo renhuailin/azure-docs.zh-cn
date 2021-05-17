@@ -4,15 +4,15 @@ description: 在合作伙伴中心访问市场 Web 分析摘要，它可以让�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 11/09/2020
+ms.date: 03/23/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: a8a53a54d30df9a2f7079d705f754e554328c3f7
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: f6ed2029ec333120e3942570c951f5da6e846c7a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102553929"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104953266"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“市场见解”仪表板
 
@@ -104,7 +104,7 @@ ms.locfileid: "102553929"
 > [!TIP]
 > 你可以使用任意小组件右上角的下载图标来下载数据。 可以通过单击“赞成”或“反对”图标来提供每个小组件的反馈。
 
-| 用户界面中的<br>列名称 | 属性名称 | 定义 | 编程式访问报表中的<br>列名称 |
+| 用户界面中的<br>用户界面 | 属性名称 | 定义 | 编程式访问报表中的<br>列名称 |
 | ------------ | ------------- | ------------- | ------------- |
 | Date | 访问日期 | 在 Azure 市场和/或 AppSource 的产品/服务页上进行页面访问和/或生成 CTA 单击事件的日期。 | Date |
 | 产品名称 | 产品名称 | 商业市场产品/服务的名称。 | OfferName |
@@ -115,7 +115,9 @@ ms.locfileid: "102553929"
 | 与我联系 | 与我联系 | 特定日期的产品/服务页面上“与我联系”CTA 的单击次数。 | ContactMe |
 | 体验版 | 体验版 | 特定日期的产品/服务页面上“体验版”CTA 的单击次数。 | TestDrive |
 | 免费试用版 | 免费试用版 | 特定日期的产品/服务页面上“免费试用版”CTA 的单击次数。 | FreeTrial |
-|||||
+| 活动 | 营销活动的名称 | 能够理解 Web 遥测（页面访问和 CTA 点击量）。 | 活动 |
+| 不适用 | 站点 | 进行了页面访问或 CTA 点击的店面的名称。 可能的值包括：<br><ul><li>AZUREMARKETPLACE<li>APPSOURCE</ul> | 站点 |
+|
 
 ## <a name="next-steps"></a>后续步骤
 

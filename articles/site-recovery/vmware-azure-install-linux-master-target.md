@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: mayg
-ms.openlocfilehash: 9e1008f7acbfe0685b7a171176c7dc54592d1491
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1404b2dd035b7fd4b06c5f959fd9ba45f6be9c75
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96019236"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164968"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>安装用于故障回复的 Linux 主目标服务器
 将虚拟机故障转移到 Azure 后，可将虚拟机故障回复到本地站点。 若要故障回复，需要在本地站点中重新保护 Azure 中的虚拟机。 对于此过程，需要安装一个本地主目标服务器用于接收流量。 
@@ -21,7 +21,6 @@ ms.locfileid: "96019236"
 如果受保护的虚拟机是 Windows 虚拟机，则需要安装 Windows 主目标。 对于 Linux 虚拟机，需要安装 Linux 主目标。 请阅读以下步骤，了解如何创建和安装 Linux 主目标。
 
 > [!IMPORTANT]
-> 从主目标服务器版本 9.10.0 开始，只能在 Ubuntu 16.04 服务器上安装最新的主目标服务器。 CentOS6.6 服务器不支持新安装。 但是，可继续使用 9.10.0 版本升级旧版主目标服务器。
 > 不支持 LVM 上的主目标服务器。
 
 ## <a name="overview"></a>概述
@@ -58,6 +57,9 @@ ms.locfileid: "96019236"
 
 1.   转至[下载链接](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso)，并选择最接近的镜像，从中下载 Ubuntu 16.04.2 最简版 64 位 ISO。
 将 Ubuntu 16.04.2 最简版 64 位 ISO 保存在 DVD 驱动器中，并启动系统。
+
+>[!NOTE]
+> 从 [9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) 版开始，Linux 主目标服务器支持 Ubuntu 20.04 操作系统。如果希望使用最新 OS，请继续使用 Ubuntu 20.04 ISO 映像设置计算机。
 
 1.  选择“英语”作为首选语言，再按 Enter。 
     
@@ -182,6 +184,10 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
 > 在下载并安装其他包之前，请确保已建立 Internet 连接。 如果没有 Internet 连接，需手动找到并安装这些 Deb 包。
 
  `apt-get install -y multipath-tools lsscsi python-pyasn1 lvm2 kpartx`
+
+>[!NOTE]
+> 从 [9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) 版开始，Linux 主目标服务器支持 Ubuntu 20.04 操作系统。
+> 如果希望使用最新 OS，请在继续之前，将操作系统升级至 Ubuntu 20.04。 若要在以后升级操作系统，可以按照[此处](#upgrade-os-of-master-target-server-from-ubuntu-1604-to-ubuntu-2004)列出的说明进行操作。
 
 ### <a name="get-the-installer-for-setup"></a>获取安装程序
 
@@ -335,6 +341,17 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
 
 
 “版本”字段中显示了主目标的版本号。
+
+## <a name="upgrade-os-of-master-target-server-from-ubuntu-1604-to-ubuntu-2004"></a>将主目标服务器的 OS 从 Ubuntu 16.04 升级至 Ubuntu 20.04
+
+从 9.42 版开始，ASR 支持 Ubuntu 20.04 上的 Linux 主目标服务器。 若要升级现有主目标服务器的 OS，请执行下列操作：
+
+1. 确保未将 Linux 横向扩展主目标服务器用于任何受保护 VM 的重新保护操作。
+2. 从计算机上卸载主目标服务器安装程序
+3. 现在，将操作系统从 Ubuntu 16.04 升级至 20.04
+4. 成功升级 OS 后，重启计算机。
+5. 现在，[下载最新安装程序](#download-the-master-target-installation-packages)并按照[上述](#install-the-master-target)说明完成主目标服务器的安装。
+
 
 ## <a name="common-issues"></a>常见问题
 

@@ -8,21 +8,23 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 6979f44600d29c0bcc18ebf7fc7e444e9b6bcf73
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 52adba94650c09f731cfb6142852b28a0e3f3906
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107902941"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288629"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查询 Azure 数字孪生孪生图
 
-本文提供了查询示例和更详细的说明来介绍如何使用 Azure 数字孪生查询语言查询[孪生图](concepts-twins-graph.md)以获取信息。 （如需获取查询语言简介及其功能的完整列表，请参阅[概念：查询语言](concepts-query-language.md)。）
+本文提供了查询示例和说明来介绍如何使用 Azure 数字孪生查询语言查询[孪生图](concepts-twins-graph.md)以获取信息。 （如需获取查询语言简介，请参阅[概念：查询语言](concepts-query-language.md)。）
 
-本文首先提供示例查询，说明数字孪生的查询语言结构和常见查询操作。 然后，本文介绍了在编写查询后如何使用 Azure 数字孪生[查询 API](/rest/api/digital-twins/dataplane/query) 或 [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) 运行查询。
+本文包含示例查询，说明数字孪生的查询语言结构和常见查询操作。 本文还介绍了在编写查询后如何使用 Azure 数字孪生[查询 API](/rest/api/digital-twins/dataplane/query) 或 [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) 运行查询。
 
 > [!NOTE]
 > 如果通过 API 或 SDK 调用运行以下示例查询，则需将查询文本压缩为一行。
+
+[!INCLUDE [digital-twins-query-reference.md](../../includes/digital-twins-query-reference.md)]
 
 ## <a name="show-all-digital-twins"></a>显示所有数字孪生
 
@@ -59,7 +61,7 @@ ms.locfileid: "107902941"
 
 ## <a name="query-by-model"></a>按模型查询
 
-`IS_OF_MODEL` 运算符可用于基于孪生体的[模型](concepts-models.md)进行筛选。
+`IS_OF_MODEL` 运算符可用于基于孪生体的模型进行筛选。
 
 它考虑了[继承](concepts-models.md#model-inheritance)和模型[版本控制](how-to-manage-model.md#update-models)，并且如果指定孪生满足以下任一条件，则它的评估结果为 true：
 
@@ -149,7 +151,7 @@ ms.locfileid: "107902941"
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="SelectCount1":::
 
-添加 `WHERE` 子句以计算满足特定条件的项目数。 以下示例使用基于孪生模型类型的应用筛选器进行计数（若要详细了解此语法，请参阅下方的[按模型查询](#query-by-model)）：
+添加 `WHERE` 子句以计算满足特定条件的项目数。 以下示例使用基于孪生模型类型的应用筛选器进行计数（若要详细了解此语法，请参阅下方的按模型查询）：
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="SelectCount2":::
 
@@ -227,7 +229,7 @@ ms.locfileid: "107902941"
 
 ## <a name="run-queries-with-the-api"></a>使用 API 运行查询
 
-确定查询字符串后，可以调用[查询 API](/rest/api/digital-twins/dataplane/query) 来执行它。
+确定查询字符串后，可以调用查询 API 来执行它。
 
 可以直接调用 API，也可以使用适用于 Azure 数字孪生的其中一个 [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis)。
 

@@ -7,13 +7,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/04/2021
-ms.custom: devx-track-java
-ms.openlocfilehash: d94232a78257d21f5400b2cddbf8269635962542
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.custom: devx-track-java, subject-rbac-steps
+ms.openlocfilehash: b8474e7f322025609222b4867db988d22aa2bcb9
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144594"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291201"
 ---
 # <a name="access-config-server-and-service-registry"></a>访问 Config Server 和服务注册表
 
@@ -21,19 +21,9 @@ ms.locfileid: "108144594"
 
 ## <a name="assign-role-to-azure-ad-usergroup-msi-or-service-principal"></a>向 Azure AD 用户/组、MSI 或服务主体分配角色
 
-若要使用 Azure AD 和 RBAC，必须遵循以下过程向用户、组或服务主体分配“Azure Spring Cloud 数据读取者”角色：
+在 [管理组 | 订阅 | 资源组 | 资源]范围 中向 [用户 | 组 | 服务主体 | 托管标识] 分配“[azure-spring-cloud-data-reader](../role-based-access-control/built-in-roles.md#azure-spring-cloud-data-reader)”角色。
 
-1. 转到你的服务实例的服务概述页。
-
-2. 单击“访问控制(IAM)”打开访问控制边栏选项卡。
-
-3. 单击“添加”按钮，然后单击“添加角色分配”（可能需要获得授权才能添加） 。
-
-4. 在“角色”下找到并选择“Azure Spring Cloud 数据读取者”。
-5. 根据用户类型分配对 `User, group, or service principal` 或 `User assigned managed identity` 的访问权限。 搜索并选择用户。  
-6. 单击 `Save`
-
-   ![assign-role](media/access-data-plane-aad-rbac/assign-data-reader-role.png)
+有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="access-config-server-and-service-registry-endpoints"></a>访问 Config Server 和服务注册表终结点
 

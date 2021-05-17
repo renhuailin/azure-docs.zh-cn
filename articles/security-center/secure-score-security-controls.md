@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/03/2021
 ms.author: memildin
 ms.openlocfilehash: b19a7c156abf32e2a0f6d70717145a6ed5ab42ce
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102099669"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure 安全中心的安全评分
@@ -85,13 +85,13 @@ Azure 门户页面显示的安全功能分数为百分比值，但原值也一�
 
 若要提高安全评分，请修正建议列表中的安全建议。 既可以为每个资源手动修正每个建议，也可以使用“快速修复!” 选项（如果有）对一组资源快速应用建议修正。 有关详细信息，请参阅[修正建议](security-center-remediate-recommendations.md)。
 
-改善分数并确保用户不会创建对分数产生负面影响的资源的另一种方法是在相关建议上配置 "强制" 和 "拒绝" 选项。 有关详细信息，请参阅[使用“强制执行/拒绝”建议防止错误配置](prevent-misconfigurations.md)。
+要改善分数并确保用户不会创建对分数产生负面影响的资源，另一种方法是在相关建议上配置“强制”和“拒绝”选项。 有关详细信息，请参阅[使用“强制执行/拒绝”建议防止错误配置](prevent-misconfigurations.md)。
 
 ## <a name="security-controls-and-their-recommendations"></a>安全控制及其建议
 
 下表列出了 Azure 安全中心的安全控制。 对于每个控制，可以看到为所有资源修正该控制中列出的所有建议后，安全评分可以增加的最高分数。 
 
-安全中心提供的安全建议是针对每个组织环境中的可用资源量身定制的。 可以通过 [禁用策略](tutorial-security-policy.md#disable-security-policies-and-disable-recommendations) 并 [从建议中豁免特定资源](exempt-resource.md)来进一步自定义建议。 
+安全中心提供的安全建议是针对每个组织环境中的可用资源量身定制的。 可以通过[禁用策略](tutorial-security-policy.md#disable-security-policies-and-disable-recommendations)并[从建议中排除特定资源](exempt-resource.md)来进一步自定义建议。 
  
 建议每个组织仔细检查其分配的 Azure Policy 计划。 
 
@@ -113,7 +113,7 @@ Azure 门户页面显示的安全功能分数为百分比值，但原值也一�
 ## <a name="secure-score-faq"></a>安全评分 FAQ
 
 ### <a name="if-i-address-only-three-out-of-four-recommendations-in-a-security-control-will-my-secure-score-change"></a>如果仅处理某个安全控制四分之三的建议，安全评分是否会变化？
-否。 为单个资源修正所有建议后，安全评分才会变化。 若要获得某个控制的最高分，必须为所有资源修正所有建议。
+不是。 为单个资源修正所有建议后，安全评分才会变化。 若要获得某个控制的最高分，必须为所有资源修正所有建议。
 
 ### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>如果某个建议对我不适用，我在策略中禁用它，我能否达到安全控制的要求，我的安全评分是否会更新？
 是的。 如果建议不适用于你的环境，建议禁用它们。 有关如何禁用特定建议的说明，请参阅[禁用安全策略](./tutorial-security-policy.md#disable-security-policies-and-disable-recommendations)。
@@ -131,4 +131,4 @@ Azure 门户页面显示的安全功能分数为百分比值，但原值也一�
 
 
 > [!div class="nextstepaction"]
-> [访问和跟踪安全评分](secure-score-access-and-track.md)
+> [访问和跟踪安全分数](secure-score-access-and-track.md)

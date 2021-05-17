@@ -1,19 +1,19 @@
 ---
 title: 将计算机连接到虚拟网络 - 使用 P2S：证书身份验证：Azure 门户（经典）
 titleSuffix: Azure VPN Gateway
-description: 使用 Azure 门户创建经典的点到站点 VPN 网关连接。
+description: 了解如何使用 Azure 门户创建经典的点到站点 VPN 网关连接。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 42b0945de55775f55f20cefdeb547cb5d6492c06
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90f2c6dd8d82b40f6a12195c2ce89b28ca4e9305
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94657068"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228903"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>使用证书身份验证（经典）配置点到站点连接
 
@@ -153,7 +153,7 @@ Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 请
 
 1. 在客户端计算机上，转到 VPN 设置。
 1. 选择你创建的 VPN。 如果你使用了示例设置，则连接会被标记为“Group TestRG VNet1”。
-1. 选择“连接”。
+1. 选择“连接”  。
 1. 在“Windows Azure 虚拟网络”框中，选择“连接”。 如果显示了关于证书的弹出消息，请选择“继续”以使用提升的权限，并选择“是”以接受配置更改 。
 1. 当连接成功时，你会看到“已连接”通知。
 

@@ -8,18 +8,18 @@ author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.date: 12/23/2020
-ms.openlocfilehash: ffa7e35bed1713a5ef9e04b59a8dbdb692b9630f
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: f096e53f8054039f361bde1c5f2adffac615c53d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790948"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100371934"
 ---
 # <a name="how-to-plan-a-managed-service-offer-for-the-microsoft-commercial-marketplace"></a>如何为 Microsoft 商业市场计划托管服务产品/服务
 
 本文介绍了通过合作伙伴中心向 Microsoft 商业市场发布托管服务产品/服务的要求。
 
-托管服务是 Azure 市场产品/服务，可通过 Azure Lighthouse 实现跨租户和多租户管理。 要了解详细信息，请参阅[什么是 Azure Lighthouse？](../lighthouse/overview.md)。 客户在购买托管服务产品/服务时，可以委托一个或多个订阅或资源组。 然后，可以使用 Azure Lighthouse 的 [Azure 委托资源管理](../lighthouse/concepts/architecture.md)功能来处理这些资源。
+托管服务是 Azure 市场产品/服务，可通过 Azure Lighthouse 实现跨租户和多租户管理。 要了解详细信息，请参阅[什么是 Azure Lighthouse？](../lighthouse/overview.md)。 客户在购买托管服务产品/服务时，可以委托一个或多个订阅或资源组。 然后，可以使用 Azure Lighthouse 的 [Azure 委托资源管理](../lighthouse/concepts/azure-delegated-resource-management.md)功能来处理这些资源。
 
 ## <a name="eligibility-requirements"></a>资格要求
 
@@ -52,7 +52,7 @@ ms.locfileid: "109790948"
 1. 法律合同和隐私策略
 1. 说明
 1. 屏幕截图/视频
-1. 有用链接
+1. 有用的链接
 
 以下示例演示了产品/服务列表在 Azure 门户中的显示方式：
 
@@ -62,7 +62,7 @@ ms.locfileid: "109790948"
 
 1. 名称
 2. 说明
-3. 有用链接
+3. 有用的链接
 4. 屏幕截图/视频
 
 > [!NOTE]
@@ -110,7 +110,7 @@ ms.locfileid: "109790948"
 * 如果使用透明背景，请确保徽标和文本不是白色、黑色或蓝色。
 * 徽标的外观应平整。 避免渐变。 不要在徽标上放置文本，即使是公司或品牌名称也不可以。
 
-**市场媒体 – 屏幕截图**（可选）：最多添加五个图像，用于演示产品/服务的工作方式。 所有图像都必须为 1280 x 720 像素大小并采用 .PNG 格式。
+**市场媒体 – 屏幕截图**（可选）：最多添加五个图像，用于演示产品/服务的工作方式。 所有图像大小都必须为 1280 x 720 像素并采用 .PNG 格式。
 
 **市场媒体 – 视频**（可选）：最多上传 5 个视频来演示产品/服务。 视频必须托管在 YouTube 或 Vimeo 上，并且有一个缩略图（1280 x 720 PNG 文件）。
 

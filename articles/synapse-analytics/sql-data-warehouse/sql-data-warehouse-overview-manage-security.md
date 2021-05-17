@@ -12,10 +12,10 @@ ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
 ms.openlocfilehash: ad19c976cceab76d6eb0dbfbea5840d9764bffec
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101092939"
 ---
 # <a name="secure-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中保护专用 SQL 池（以前称为 SQL DW）
@@ -37,7 +37,7 @@ ms.locfileid: "101092939"
 
 最佳做法是尽量通过服务器级防火墙来限制允许的 IP 地址范围。  若要从本地计算机访问专用 SQL 池（以前称为 SQL DW），请确保网络和本地计算机上的防火墙允许 TCP 端口 1433 上的传出通信。  
 
-专用 SQL 池（以前称为 SQL DW）使用服务器级 IP 防火墙规则。 不支持数据库级 IP 防火墙规则。 有关详细信息，请参阅 [AZURE SQL 数据库防火墙规则](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+专用 SQL 池（以前称为 SQL DW）使用服务器级 IP 防火墙规则。 不支持数据库级 IP 防火墙规则。 有关详细信息，请参阅 [Azure SQL 数据库防火墙规则](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
 默认加密到专用 SQL 池（以前称为 SQL DW）的连接。  通过修改连接设置来禁用加密的操作会被忽略。
 
@@ -92,7 +92,7 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 GRANT SELECT ON SCHEMA::Test to ApplicationUser
 ```
 
-通过 Azure 门户或 Azure 资源管理器 API 管理数据库和服务器的操作可根据门户用户帐户的角色分配进行控制。 有关详细信息，请参阅 [使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+通过 Azure 门户或 Azure 资源管理器 API 管理数据库和服务器的操作可根据门户用户帐户的角色分配进行控制。 有关详细信息，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 ## <a name="encryption"></a>加密
 

@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 1d098f56bbadfe115620580c8d93fb6dd021550d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97586668"
 ---
 # <a name="build-end-to-end-solution-with-azure-iot-central-and-dynamics-365-field-service"></a>使用 Azure IoT Central 和 Dynamics 365 Field Service 构建端到端解决方案 
 构建者可以将 Azure IoT Central 应用程序集成到其他业务系统。 
 
-例如，在连接的废弃物管理解决方案中，可以优化垃圾收集车的调度。 可以基于连接的垃圾桶中的 IoT 传感器数据进行优化。在 [IoT Central 连接的废弃物管理应用程序](./tutorial-connected-waste-management.md)中，可以配置规则和操作，并将其设置为触发在 Dynamics Field Service 中创建警报。 这种情况是通过使用 Power 自动功能实现的，它将直接在 IoT Central 中进行配置，以便跨应用程序和服务自动执行工作流。 此外，基于现场服务中的服务活动，可以将信息发送回 Azure IoT Central。 
+例如，在连接的废弃物管理解决方案中，可以优化垃圾收集车的调度。 可以基于连接的垃圾桶中的 IoT 传感器数据进行优化。在 [IoT Central 连接的废弃物管理应用程序](./tutorial-connected-waste-management.md)中，可以配置规则和操作，并将其设置为触发在 Dynamics Field Service 中创建警报。 此方案是通过使用 Power Automate 完成的， Power Automate 将直接在 IoT Central 中进行配置，以便跨应用程序和服务自动执行工作流。 此外，基于现场服务中的服务活动，可以将信息发送回 Azure IoT Central。 
 
 ## <a name="how-to-connect-your-azure-iot-central-application-with-dynamics-365-field-services"></a>如何使用 Dynamics 365 Field Service 连接 Azure IoT Central 应用程序 
 

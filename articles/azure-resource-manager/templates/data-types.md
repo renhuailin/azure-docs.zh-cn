@@ -6,15 +6,15 @@ ms.author: tomfitz
 author: tfitzmac
 ms.date: 03/04/2021
 ms.openlocfilehash: 7d3f15c8852e6e25c621baad9bc6f20c303ffdb9
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102125053"
 ---
 # <a name="data-types-in-arm-templates"></a>ARM 模板中的数据类型
 
-本文介绍 Azure 资源管理器模板中支持的数据类型 (ARM 模板) 。 它涵盖 JSON 和 Bicep 数据类型。
+本文介绍 Azure 资源管理器模板（ARM 模板）中支持的数据类型。 本文涵盖 JSON 和 Bicep 数据类型。
 
 ## <a name="supported-types"></a>支持的类型
 
@@ -23,18 +23,18 @@ ms.locfileid: "102125053"
 * array
 * bool
 * int
-* 对象
-* secureObject-Bicep 中的修饰符指示
-* secureString-Bicep 中的修饰符指示
-* 字符串
+* object
+* secureObject - Bicep 中的修饰符指示
+* secureString - Bicep 中的修饰符指示
+* string
 
 ## <a name="arrays"></a>数组
 
 数组以左中括号 (`[`) 开头，以右中括号 (`]`) 结尾。
 
-在 JSON 中，数组可以在一行或多个行中声明。 每个元素都由逗号分隔。
+在 JSON 中，数组可以在一行或多行中声明。 每个元素用逗号隔开。
 
-在 Bicep 中，必须在多个行中声明一个数组。 不要在值之间使用逗号。
+在 Bicep 中，一个数组必须在多行中声明。 不要在值之间使用逗号。
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -63,7 +63,7 @@ param exampleArray array = [
 
 ---
 
-数组的元素可以是同一类型，也可以是不同的类型。
+数组的元素可以是同一类型，也可以是不同类型。
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -93,7 +93,7 @@ var mixedArray = [
 
 ## <a name="booleans"></a>布尔型
 
-指定布尔值时，请使用 `true` 或 `false` 。 不要将值括在引号中。
+指定布尔值时，请使用 `true` 或 `false`。 不要将值用引号括起。
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -116,7 +116,7 @@ param exampleBool bool = true
 
 ## <a name="integers"></a>整数
 
-指定整数值时，请不要使用引号。
+指定整数值时，请勿使用引号。
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -141,11 +141,11 @@ param exampleInt int = 1
 
 ## <a name="objects"></a>对象
 
-对象以左大括号 (`{`) 开头，以右大括号 (`}`) 结尾。 对象中的每个属性都包含键和值。 键和值用冒号分隔 (`:`) 。
+对象以左大括号 (`{`) 开头，以右大括号 (`}`) 结尾。 对象中的每个属性都包含键和值。 键和值用冒号 (`:`) 分隔。
 
-在 JSON 中，该键用双引号引起来。 每个属性都由逗号分隔。
+在 JSON 中，键用双引号括起。 每个属性用逗号隔开。
 
-在 Bicep 中，该键不用引号括起来。 不要在属性之间使用逗号。
+在 Bicep 中，键不能用引号括起来。 不要在属性之间使用逗号。
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -178,7 +178,7 @@ param exampleObject object = {
 
 ## <a name="strings"></a>字符串
 
-在 JSON 中，字符串用双引号进行标记。 在 Bicep 中，字符串标有单引号。
+在 JSON 中，字符串用双引号进行标记。 在 Bicep 中，字符串用单引号进行标记。
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -204,7 +204,7 @@ param exampleString string = 'test value'
 
 使用 Bicep，可将 `@secure()` 修饰符添加到字符串或对象。
 
-下面的示例演示两个安全参数：
+以下示例显示了两个安全参数：
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -233,4 +233,4 @@ param configValues object
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关模板语法的信息，请参阅 [了解 ARM 模板的结构和语法](template-syntax.md)。
+要了解模板语法，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。

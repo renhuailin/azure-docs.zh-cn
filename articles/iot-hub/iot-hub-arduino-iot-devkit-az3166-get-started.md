@@ -13,10 +13,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.openlocfilehash: 3e5ab1667ee0cda459785efa624bd7f4fc6818b8
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97562950"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>将 IoT DevKit AZ3166 连接到 Azure IoT 中心
@@ -36,7 +36,7 @@ ms.locfileid: "97562950"
 
 可以在[代码示例库](/samples/browse/?term=mxchip)中找到所有 DevKit 教程的源代码。
 
-## <a name="what-you-need"></a>需要什么
+## <a name="what-you-need"></a>所需条件
 
 - 一块 MXChip IoT DevKit 开发板和一根 Micro-USB 数据线。 [立即获取](https://aka.ms/iot-devkit-purchase)。
 - 一台运行 Windows 10、macOS 10.10+ 或 Ubuntu 18.04+ 的计算机。
@@ -85,7 +85,7 @@ ms.locfileid: "97562950"
     ```
 
    > [!NOTE]
-   > 如果运行 `device-identity` 时出现错误，请安装[适用于 Azure CLI 的 Azure IoT 扩展](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md)。
+   > 如果在运行 `device-identity` 时遇到错误，请安装[用于 Azure CLI 的 Azure IoT 扩展](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md)。
    > 运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展会将特定于 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 的命令添加到 Azure CLI。
    > 
    > ```azurecli-interactive
@@ -113,39 +113,39 @@ DevKit 将连接到 IoT 中心内特定于设备的终结点，并发送温度�
 
 1. 下载适用于 IoT DevKit 的最新版 [GetStarted 固件](https://aka.ms/devkit/prod/getstarted/latest)。
 
-1. 确保 IoT DevKit 通过 USB 连接到计算机。 打开文件资源管理器，在其中可以看到一个名为 **AZ3166** 的 USB 大容量存储设备。
+1. 确保 IoT DevKit 通过 USB 连接到计算机。 打开文件资源管理器，有一个称为 AZ3166 的 USB 大容量存储设备。
 
     ![打开“Windows 资源管理器”](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/az3166-usb.png)
 
-1. 将刚刚下载的固件拖放到该大容量存储设备，然后该设备会自动闪烁。
+1. 将刚刚下载的固件拖放到大容量存储设备中，它将自动闪烁。
 
     ![复制固件](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/copy-firmware.png)
 
-1. 在 DevKit 上，按住按钮 **B** 不放，按下再松开“重置”按钮，然后松开按钮 **B**。DevKit 将进入 AP 模式。 屏幕将显示 DevKit 的服务集标识符 (SSID) 和配置门户 IP 地址供你确认。
+1. 在 DevKit 上，按住按钮 B 不放，按下再松开重置按钮，然后松开按钮 B。DevKit 进入 AP 模式。 若要进行确认，屏幕将显示 DevKit 的服务集标识符 (SSID) 和配置门户 IP 地址。
 
     ![重置按钮、按钮 B 和 SSID](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/wifi-ap.jpg)
 
     ![设置 AP 模式](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/set-ap-mode.gif)
 
-1. 在另一个启用了 Wi-Fi 的设备（计算机或手机）上使用 Web 浏览器连接到上一步骤中显示的 IoT DevKit SSID。 如果出现密码提示，请将密码留空。
+1. 在另一个启用了 Wi-Fi 的设备（计算机或手机）上使用 Web 浏览器连接到上一步骤中显示的 IoT DevKit SSID。 如果要求输入密码，则将其留空。
 
     ![连接 SSID](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/connect-ssid.png)
 
-1. 在浏览器中打开 **192.168.0.1**。 选择 IoT DevKit 所要连接到的 Wi-Fi，键入 Wi-Fi 密码，然后粘贴前面记下的设备连接字符串。 然后单击“保存”。
+1. 在浏览器中打开“192.168.0.1”。 选择 IoT DevKit 所要连接到的 Wi-Fi，键入 Wi-Fi 密码，然后粘贴前面记下的设备连接字符串。 然后单击“保存”。
 
     ![配置 UI](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/configuration-ui.png)
 
     > [!NOTE]
     > IoT DevKit 仅支持 2.4GHz 网络。 有关详细信息，请查阅 [FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#wi-fi-configuration)。
 
-1. 出现结果页时，WiFi 信息和设备连接字符串将存储到 IoT DevKit 中。
+1. 在“结果”页，你会看到 WiFi 信息和设备连接字符串将存储到 IoT DevKit 中。
 
     ![配置结果](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/configuration-ui-result.png)
 
     > [!NOTE]
     > 配置 Wi-Fi 后，即使拔下设备插头，该连接的凭据也会保留在设备上。
 
-1. IoT DevKit 在几秒钟后将重新启动。 在 DevKit 屏幕上，可以看到 DevKit 的 IP 地址，后接遥测数据，包括温度和湿度值，以及发送到 Azure IoT 中心的消息计数。
+1. IoT DevKit 在几秒钟后将重新启动。 在 DevKit 屏幕上，会看到 DevKit 的 IP 地址，后跟遥测数据，其中包括温度和湿度值以及发送到 Azure IoT 中心的消息计数。
 
     ![WiFi IP](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/wifi-ip.jpg)
 
@@ -176,7 +176,7 @@ DevKit 将连接到 IoT 中心内特定于设备的终结点，并发送温度�
 
 4. 在扩展市场中找到 [Azure IoT Tools](https://aka.ms/azure-iot-tools) 并安装它。
 
-    ![显示扩展 marketplace 中的 Azure IoT 工具的屏幕截图。](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
+    ![显示扩展市场中的 Azure IoT 工具的屏幕截图。](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
 
     或者将此 URL 复制并粘贴到浏览器窗口中：`vscode:extension/vsciot-vscode.azure-iot-tools`
 
@@ -191,7 +191,7 @@ DevKit 将连接到 IoT 中心内特定于设备的终结点，并发送温度�
 
     根据你的平台添加以下行来配置 Arduino： 
 
-    * Windows：
+    * **Windows**：
 
         ```json
         "arduino.path": "C:\\Program Files (x86)\\Arduino",

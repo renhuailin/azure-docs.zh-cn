@@ -1,24 +1,24 @@
 ---
-title: 在 ADF 中排查 CI-CD、Azure DevOps 和 GitHub 问题
+title: 在 ADF 中对 CI CD、Azure DevOps 和 GitHub 问题进行故障排除
 description: 使用不同的方法对 ADF 中的 CI CD 问题进行故障排除。
 author: ssabat
 ms.author: susabat
 ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 03/12/2021
-ms.openlocfilehash: 2b6f97f0966cb2c92dbd88c4a70188282ed3ed27
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/27/2021
+ms.openlocfilehash: e5745f195fe7620aeb7ffe009c13c52cd5f02e62
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802027"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228629"
 ---
-# <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>在 ADF 中排查 CI-CD、Azure DevOps 和 GitHub 问题 
+# <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>在 ADF 中对 CI CD、Azure DevOps 和 GitHub 问题进行故障排除 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文介绍 Azure 数据工厂中针对持续集成-持续部署 (CI-CD)、Azure DevOps 和 GitHub 问题的常见故障排除方法。
+本文介绍 Azure 数据工厂中针对持续集成和持续部署 (CI-CD)、Azure DevOps 和 GitHub 问题的常见故障排除方法。
 
 如果在使用源代码管理或 DevOps 技术方面有疑问或问题，下面是一些可能有用的文章：
 
@@ -39,7 +39,7 @@ ms.locfileid: "104802027"
 
 #### <a name="recommendation"></a>建议
 
-应改为使用从来宾租户颁发的令牌。 例如，需要将同一 Azure Active Directory 分配为来宾租户和 DevOps，因此它可以正确设置令牌行为并使用正确的租户。
+应使用从来宾租户颁发的令牌。 例如，需要将同一 Azure Active Directory 分配为来宾租户和 DevOps，它才可以正确设置令牌行为并使用正确的租户。
 
 ### <a name="template-parameters-in-the-parameters-file-are-not-valid"></a>参数文件中的模板参数无效
 
@@ -57,7 +57,7 @@ CI/CD 管道失败并出现以下错误：
 
 #### <a name="recommendation"></a>建议
 
-之所以发生此错误，是因为我们经常删除的触发器已进行参数化，于是这些参数将无法在 ARM 模板中使用（因为该触发器不再存在）。 由于参数不再位于 ARM 模板，因此需要更新 DevOps 管道中的重写参数。 否则，每次更改 ARM 模板中的参数时，必须更新 DevOps 管道中的重写参数（在部署任务中）。
+之所以发生此错误，是因为我们经常删除的触发器已进行参数化，于是这些参数将无法在 Azure 资源管理器 (ARM) 模板中使用（因为该触发器不再存在）。 由于参数不再位于 ARM 模板，因此需要更新 DevOps 管道中的重写参数。 否则，每次更改 ARM 模板中的参数时，必须更新 DevOps 管道中的重写参数（在部署任务中）。
 
 ### <a name="updating-property-type-is-not-supported"></a>不支持更新属性类型
 
@@ -77,7 +77,7 @@ CI/CD 发布管道失败，出现以下错误：
 
 #### <a name="cause"></a>原因
 
-这是因为目标工厂中名称相同的集成运行时的类型不同。 部署时集成运行时的类型需要相同。
+出现此错误是因为目标工厂中名称相同的集成运行时的类型不同。 部署期间集成运行时的类型必须相同。
 
 #### <a name="recommendation"></a>建议
 
@@ -103,7 +103,7 @@ CI/CD 发布管道失败，出现以下错误：
 `
 ### <a name="cause"></a>原因
 
-已取消 Git 配置，并且在选择了“重要资源”标志的情况下再次对其进行设置，这将数据工厂设置为“同步”。 这意味着没有要发布的更改。
+已取消 Git 配置，并且在选择了“重要资源”标志的情况下再次对其进行设置，这将数据工厂设置为“同步”。 这意味着在发布过程中没有发生任何更改。
 
 #### <a name="resolution"></a>解决方法
 
@@ -131,7 +131,7 @@ CI/CD 发布管道失败，出现以下错误：
 
 #### <a name="resolution"></a>解决方法
 
-需要删除 SSIS-IR 和 Shared IR 才能允许移动操作。 如果不想删除集成运行时，最好的方法是遵循复制和克隆文档中的操作来完成复制，并在完成后删除旧的数据工厂。
+需要删除 SSIS-IR 和共享 IR 才能允许移动操作。 如果不想删除集成运行时，最好的方法是遵循复制和克隆文档中的操作来完成复制，并在完成后删除旧的数据工厂。
 
 ###  <a name="unable-to-export-and-import-arm-template"></a>无法导出和导入 ARM 模板
 
@@ -157,17 +157,17 @@ CI/CD 发布管道失败，出现以下错误：
 
 #### <a name="resolution"></a>解决方法
 
-CI/CD 过程已增强。 自动发布功能从 ADF UX 中提取、验证和导出所有 Azure 资源管理器 (ARM) 模板功能。 它通过公共可用的 npm 包 [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) 使该逻辑可供使用。 这允许你以编程方式触发这些操作，而无需转到 ADF UI 并单击按钮。 这为 CI/CD 管道提供了真正的持续集成体验。 有关详细信息，请参阅 [ADF CI/CD 发布改进](./continuous-integration-deployment-improvements.md)。 
+CI/CD 过程已增强。 自动发布功能从 ADF UX 中提取、验证和导出所有 ARM 模板功能。 它通过公共可用的 npm 包 [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) 使该逻辑可供使用。 你可以使用此方法以编程方式触发这些操作，而无需转到 ADF UI 并单击按钮。 此方法为 CI/CD 管道提供了真正的持续集成体验。 有关详细信息，请参阅 [ADF CI/CD 发布改进](./continuous-integration-deployment-improvements.md)。 
 
-###  <a name="cannot-publish-because-of-4mb-arm-template-limit"></a>由于 4mb ARM 模板限制而无法发布  
+###  <a name="cannot-publish-because-of-4-mb-arm-template-limit"></a>由于 4 MB ARM 模板限制而无法发布  
 
 #### <a name="issue"></a>问题
 
-无法部署，因为达到 Azure 资源管理器限制 - 模板总大小为 4mb。 需要在超过限制后部署解决方案。 
+无法部署，因为达到了 Azure 资源管理器模板总大小为 4 MB 的限制。 需要在超过限制后部署解决方案。 
 
 #### <a name="cause"></a>原因
 
-Azure 资源管理器将模板大小限制为 4mb。 将模板大小限制为 4 MB 以内，每个参数文件大小限制为 64 KB 以内。 4-MB 限制适用于模板使用迭代资源定义以及变量和参数值进行扩展后的最终状态。 但已经超出了限制。 
+Azure 资源管理器将模板大小限制为 4 MB。 将模板大小限制为 4 MB 以内，每个参数文件大小限制为 64 KB 以内。 已完成对迭代资源定义、变量值和参数值的扩展后，4 MB 的限制将适用于该模板的最终状态。 但已经超出了限制。 
 
 #### <a name="resolution"></a>解决方法
 
@@ -191,13 +191,11 @@ Azure 资源管理器将模板大小限制为 4mb。 将模板大小限制为 4 
 ### <a name="cannot-recover-from-a-deleted-data-factory"></a>无法从已删除的数据工厂恢复
 
 #### <a name="issue"></a>问题
-客户已删除数据工厂或包含数据工厂的资源组。 他想知道如何恢复已删除的数据工厂。
+客户已删除数据工厂或包含数据工厂的资源组。 客户想知道如何恢复已删除的数据工厂。
 
 #### <a name="cause"></a>原因
 
-仅当客户配置了源代码管理配置（DevOps 或 Git），才可以恢复数据工厂。 这会引入所有最新的已发布资源，并且不会恢复未发布的管道、数据集和链接服务。
-
-如果没有源代码管理，则不可能从后端恢复已删除的数据工厂，因为一旦服务收到删除的命令，就会删除该实例，并且不会存储任何备份。
+仅当客户配置了源代码管理配置（DevOps 或 Git），才可以恢复数据工厂。 此操作会引入所有最新的已发布资源，并且不会恢复未发布的管道、数据集和链接服务。 如果没有源代码管理，则不可能从后端恢复已删除的数据工厂，因为一旦服务收到删除的命令，就会删除该实例，并且不会存储任何备份。
 
 #### <a name="resolution"></a>解决方法
 
@@ -209,8 +207,31 @@ Azure 资源管理器将模板大小限制为 4mb。 将模板大小限制为 4 
 
  * 创建拉取请求以将更改合并到协作分支并发布。
 
- * 如果客户在已删除的 ADF 中有自承载集成运行时，则需要在新的 ADF 中创建新的实例，还需要使用获取的新密钥在其本地计算机/VM 上卸载并重新安装该实例。 安装完 IR 后，客户需要将链接服务更改为指向新 IR 并测试连接，否则该服务将失败并显示错误“引用无效”。
+ * 如果客户已删除的 ADF 中有自承载集成运行时，则需要在新的 ADF 中创建新的实例，还需要使用获取的新密钥在其本地计算机/VM 上卸载并重新安装该实例。 安装完 IR 后，客户需要将链接服务更改为指向新 IR 并测试连接，否则该服务将失败并显示错误“引用无效”。
 
+### <a name="cannot-deploy-to-different-stage-using-automatic-publish-method"></a>无法使用自动发布方法部署到不同的阶段
+
+#### <a name="issue"></a>问题
+客户遵循了所有必要的步骤，如使用 Azure DevOps 和 ADF 安装 NPM 包并设置更高的阶段。 但不会执行部署。
+
+#### <a name="cause"></a>原因
+
+尽管可以通过多种方式使用 npm 包，但其中一个主要优势是通过 Azure 管道使用的。 每次合并到协作分支中时，都可以触发一个管道，该管道首先验证所有代码，然后将 ARM 模板导出到可由发布管道使用的生成项目。 在 Starter 管道中，YAML 文件应该有效且完整。
+
+
+#### <a name="resolution"></a>解决方法
+
+以下部分无效，因为 package.json 文件夹无效。
+
+```
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    workingDir: '$(Build.Repository.LocalPath)/<folder-of-the-package.json-file>' #replace with the package.json folder
+    customCommand: 'run build validate $(Build.Repository.LocalPath) /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/yourFactoryName'
+  displayName: 'Validate'
+```
+应将 DataFactory 包含在 customCommand 中，例如“run build validate $(Build.Repository.LocalPath)/DataFactory/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/yourFactoryName”。 请确保生成的用于更高阶段的 YAML 文件包含必需的 JSON 项目。
 
 
 ## <a name="next-steps"></a>后续步骤

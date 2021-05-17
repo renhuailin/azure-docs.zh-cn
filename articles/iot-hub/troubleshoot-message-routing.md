@@ -1,18 +1,18 @@
 ---
 title: Azure IoT 消息路由故障排除
-description: 如何对 Azure IoT 消息路由问题进行故障排除
+description: 如何对 Azure IoT 中心消息路由问题进行故障排除
 author: ash2017
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: asrastog
-ms.openlocfilehash: 3abff5645775d724042acba3ee2461c7cad771a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: daa0b1dd47884b104cc353a7483d71ff7eded2c7
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103149658"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287853"
 ---
 # <a name="troubleshooting-message-routing"></a>消息路由故障排除
 
@@ -59,11 +59,13 @@ ms.locfileid: "103149658"
 
 回退路由将所有不满足任何现有路由上的查询条件的消息发送到与[事件中心](../event-hubs/index.yml)兼容的[内置事件中心](iot-hub-devguide-messages-read-builtin.md)（消息/事件）。 如果已启用消息路由，则可以启用此回退路由功能。 如果没有到内置终结点的路由并且已启用回退路由，则仅与路由上的任何查询条件不匹配的消息将被发送到内置终结点。 此外，如果已删除现有路由，必须启用回退路由才能接收内置终结点处的所有数据。
 
-可以在 Azure 门户->“消息路由”边栏选项卡中启用/禁用回退路由。 还可以将 Azure 资源管理器用于 [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) 来为回退路由使用自定义终结点。
+回退路由将所有不满足任何现有路由上的任何查询条件的消息发送到与[事件中心](../event-hubs/index.yml)兼容的[内置事件中心](iot-hub-devguide-messages-read-builtin.md)（消息/事件）。 如果已启用消息路由，则可以启用此回退路由功能。 如果没有到内置终结点的路由，并且已启用回退路由，则仅将与路由上的任何查询条件都不匹配的消息发送到内置终结点。 此外，如果已删除所有现有路由，则必须启用回退路由，才能接收内置终结点处的所有数据。
+
+可在 Azure 门户中使用 IoT 中心的“消息路由”边栏选项卡启用或禁用回退路由。 还可以将 Azure 资源管理器用于 [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties)，以将自定义终结点用于回退路由。
 
 ## <a name="last-known-errors-for-iot-hub-routing-endpoints"></a>上一个有个 IoT 中心路由终结点的已知错误
 
-<a id="last-known-errors"></a>
+<a id="last-known-errors"></a>  <!-- why are we using anchors? robin -->
 [!INCLUDE [iot-hub-include-last-known-errors](../../includes/iot-hub-include-last-known-errors.md)]
 
 ## <a name="routes-resource-logs"></a>路由资源日志

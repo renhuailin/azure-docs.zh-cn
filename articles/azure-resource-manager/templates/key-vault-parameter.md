@@ -3,20 +3,20 @@ title: 密钥保管库机密与模板
 description: 说明在部署期间如何以参数形式从密钥保管库传递机密。
 ms.topic: conceptual
 ms.date: 04/23/2021
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 584d48fb91173adb4c1c08665c6a05e373fc79d0
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: f91c45792843ab62361bf47628a45529758b4029
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316418"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109754184"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>在部署过程中使用 Azure Key Vault 传递安全参数值
 
 在部署过程中，可以从 [Azure Key Vault](../../key-vault/general/overview.md) 中检索一个安全值，而不是直接在模板或参数文件中放置该值（如密码）。 通过引用参数文件中的密钥保管库和密钥来检索值。 值永远不会公开，因为仅引用其密钥保管库 ID。 密钥保管库可以与要部署到的资源组位于不同的订阅中。
 
 本文重点介绍如何将敏感值作为模板参数传递。 本文并不涉及如何将虚拟机属性设置为密钥保管库中证书的 URL。
-有关该方案的快速入门模板，请参阅[在虚拟机上安装来自 Azure Key Vault 的证书](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)。
+有关该方案的快速入门模板，请参阅[在虚拟机上安装来自 Azure Key Vault 的证书](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/vm-winrm-keyvault-windows)。
 
 ## <a name="deploy-key-vaults-and-secrets"></a>部署密钥保管库和机密
 

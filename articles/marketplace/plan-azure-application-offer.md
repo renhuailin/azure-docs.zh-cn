@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: f98f128e56810e3dd710ce454c8dc34b333690d1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c6dbab1b7fa1599add9fb48814a1138bf176c81d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98879286"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127454"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>为商业市场计划 Azure 应用程序产品/服务
 
@@ -91,7 +91,7 @@ ms.locfileid: "98879286"
 
 必须将产品/服务连接到客户关系管理 (CRM) 系统以收集客户信息。 系统将要求客户允许共享其信息。 这些客户详细信息以及产品/服务名称、ID 和他们在其中找到产品/服务的在线商店将发送到你配置的 CRM 系统。 商业市场支持各种 CRM 系统，以及使用 Azure 表或使用 Power Automate 配置 HTTPS 终结点的选项。
 
-你可以在创建产品/服务期间或之后随时添加或修改 CRM 连接。 有关详细指导，请参阅[商业市场产品/服务的潜在顾客](partner-center-portal/commercial-marketplace-get-customer-leads.md)。
+可以在创建产品/服务期间或之后随时添加或修改 CRM 连接。 有关详细指导，请参阅[商业市场产品/服务的潜在顾客](partner-center-portal/commercial-marketplace-get-customer-leads.md)。
 
 ## <a name="categories-and-subcategories"></a>类别和子类别
 
@@ -101,10 +101,10 @@ ms.locfileid: "98879286"
 
 为了简化客户的采购流程并为软件供应商降低法律复杂性，Microsoft 提供了可在商业市场中用于产品/服务的标准协定。 使用标准协定提供软件时，客户只需阅读并接受此协定一次，你不必创建自定义条款和条件。
 
-如果选择使用标准协定，则可以选择向标准协定中添加通用修订条款和最多 10 条自定义修订。 还可以使用自己的条款和条件，而不是标准协定。 你将在“属性”页中管理这些详细信息。 有关详细信息，请参阅 [Microsoft 商业市场的标准协定](standard-contract.md)。
+如果选择使用标准协定，则可以选择向标准协定中添加通用修订条款和最多 10 条自定义修订。 还可以使用自己的条款和条件，而不是标准协定。 将在“属性”页中管理这些详细信息。 有关详细信息，请参阅 [Microsoft 商业市场的标准协定](standard-contract.md)。
 
 > [!NOTE]
-> 使用商业市场的标准协定发布产品/服务后，就无法使用你自己的自定义条款和条件。 它是“或”方案。 你要么根据标准协定提供解决方案，要么根据自己的条款和条件提供解决方案。 如果想修改标准协定的条款，可以通过标准协定修订进行。
+> 使用商业市场的标准协定发布产品/服务后，就无法使用你自己的自定义条款和条件。 它是“或”方案。 要么根据标准协定提供解决方案，要么根据自己的条款和条件提供解决方案。 如果想修改标准协定的条款，可以通过标准协定修订进行。
 
 ## <a name="offer-listing-details"></a>产品/服务列表详细信息
 
@@ -132,7 +132,7 @@ ms.locfileid: "98879286"
 
 1. 标题
 2. 说明
-3. 有用的链接
+3. 有用链接
 4. 屏幕截图
 
 > [!NOTE]
@@ -210,7 +210,7 @@ ms.locfileid: "98879286"
 你可以选择加入 Microsoft 支持的营销和销售渠道。 在合作伙伴中心创建产品/服务时，你将在此过程结束时看到两个选项卡：
 
 - **通过 CSP 转售**：使用此选项可允许 Microsoft 云解决方案提供商 (CSP) 合作伙伴将你的解决方案作为捆绑产品/服务的一部分转售。 有关详细信息，请参阅[云解决方案提供商](./cloud-solution-providers.md)。
-- **与 Microsoft 联合销售**：此选项可让 Microsoft 销售团队在评估其客户需求时考虑符合你的 IP 联合销售资格的解决方案。 有关如何准备产品/服务进行评估的详细信息，请参阅[商业市场中的联合销售选项](commercial-marketplace-co-sell.md)。 有关 IP 联合销售要求的详细信息，请参阅[联合销售状态的要求](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。 要详细了解如何通过 Microsoft CSP 合作伙伴渠道来推广产品/服务，请参阅[云解决方案提供商](cloud-solution-providers.md)。
+- **与 Microsoft 联合销售**：此选项可让 Microsoft 销售团队在评估其客户需求时考虑符合你的 IP 联合销售资格的解决方案。 有关如何准备产品/服务进行评估的详细信息，请参阅[商业市场中的联合销售选项](./co-sell-configure.md)。 有关 IP 联合销售要求的详细信息，请参阅[联合销售状态的要求](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。 若要详细了解如何通过 Microsoft CSP 合作伙伴渠道来推广产品/服务，请参阅[云解决方案提供商](cloud-solution-providers.md)。
 
 要了解详细信息，请参阅[通过 Azure 市场拓展云业务](https://azuremarketplace.microsoft.com/sell)。
 

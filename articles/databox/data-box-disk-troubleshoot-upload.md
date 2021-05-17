@@ -10,15 +10,15 @@ ms.topic: troubleshooting
 ms.date: 06/17/2019
 ms.author: alkohli
 ms.openlocfilehash: 4b53cf607bdf60c785c7324d9ede526a0983b7e6
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97605269"
 ---
 # <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>了解如何使用日志排查将数据上传到 Azure Data Box Disk 时出现的问题
 
-本文适用于 Microsoft Azure Data Box Disk 并介绍将数据上传到 Azure 时看到的问题。
+本文适用于 Microsoft Azure Data Box Disk，并描述了将数据上传到 Azure 时遇到的问题。
 
 ## <a name="about-upload-logs"></a>关于上传日志
 

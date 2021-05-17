@@ -1,6 +1,6 @@
 ---
 title: 下载用于 S2S VPN 连接的 VPN 设备配置脚本
-description: 本文逐步讲解如何使用 Azure 资源管理器下载采用 Azure VPN 网关的 S2S VPN 连接的 VPN 设备配置脚本。
+description: 了解如何下载 VPN 设备配置脚本，以建立与 Azure VPN 网关的 S2S VPN 连接。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: yushwang
@@ -8,16 +8,16 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: d2593c656e17310c5afb4a897b94cc8c12a618f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2caa392ced15f96287c3218f1413c9aa9c16fe20
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879488"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226329"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>下载用于 S2S VPN 连接的 VPN 设备配置脚本
 
-本文逐步讲解如何使用 Azure 资源管理器下载采用 Azure VPN 网关的 S2S VPN 连接的 VPN 设备配置脚本。 下图展示了概要工作流。
+本文将指导你下载 VPN 设备配置脚本，以建立与 Azure VPN 网关的 S2S VPN 连接。 下图展示了概要工作流。
 
 ![download-script](./media/vpn-gateway-download-vpndevicescript/downloaddevicescript.png)
 

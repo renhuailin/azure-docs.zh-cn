@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric CLI- sfctl compose
-description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于 Docker Compose 应用程序的命令列表。
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包括用于 Docker Compose 应用程序的命令列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: e84b35ff3dfa7be0c848a4d7b906c622d9b88914
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86257341"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
@@ -17,12 +17,12 @@ ms.locfileid: "86257341"
 
 ## <a name="commands"></a>命令
 
-|Command|说明|
+|命令|说明|
 | --- | --- |
 | create | 创建 Service Fabric compose 部署。 |
 | list | 获取在 Service Fabric 群集中创建的 compose 部署列表。 |
 | remove | 从群集中删除现有的 Service Fabric compose 部署。 |
-| status | 获取有关 Service Fabric compose 部署的信息。 |
+| 状态 | 获取有关 Service Fabric compose 部署的信息。 |
 | 升级 | 开始升级 Service Fabric 群集中的 compose 部署。 |
 | upgrade-rollback | 开始在 Service Fabric 群集中回退 compose 部署升级。 |
 | upgrade-status | 获取在此 Service Fabric Compose 部署中执行的最新升级的详细信息。 |

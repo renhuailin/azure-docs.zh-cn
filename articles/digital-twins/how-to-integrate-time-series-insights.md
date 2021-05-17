@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 4/7/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d89ee4c8e66ba4dda004fbd27e15b96ab13c642b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 5aa74920919e7af98368d08bfea892494273f946
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783766"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208628"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>将 Azure 数字孪生与 Azure 时序见解相集成
 
@@ -20,17 +20,17 @@ ms.locfileid: "107783766"
 
 使用本文中所述的解决方案可以收集和分析有关你的 IoT 解决方案的历史数据。 Azure 数字孪生非常适合用于将数据馈送到时序见解中，因为它支持关联多个数据流，并可在将信息发送到时序见解之前将信息标准化。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 需要设置以下资源，才能设置与时序见解的关系：
 * IoT 中心。 有关说明，请参阅《IoT 中心的发送遥测》快速入门中的[创建 IoT 中心](../iot-hub/quickstart-send-telemetry-cli.md#create-an-iot-hub)部分。
 * Azure 数字孪生实例。
-有关说明，请参阅[如何：设置 Azure 数字孪生实例和身份验证](./how-to-set-up-instance-portal.md)。
+有关说明，请参阅如何：设置 Azure 数字孪生实例和身份验证。
 * Azure 数字孪生实例中的模型和孪生体。
-需要多次更新孪生体信息，才能看到在时序见解中跟踪的数据。 有关说明，请参阅《如何：引入 IoT 中心》一文中的[添加模型和孪生体](how-to-ingest-iot-hub-data.md#add-a-model-and-twin)部分。
+需要多次更新孪生体信息，才能看到在时序见解中跟踪的数据。 有关说明，请参阅《操作说明：引入 IoT 中心》一文中的[添加模型和孪生体](how-to-ingest-iot-hub-data.md#add-a-model-and-twin)部分。
 
 > [!TIP]
-> 在本文中，为简单起见，手动更新在时序见解中查看的不断更改的数字孪生体值。 但是，如果要使用实时模拟数据完成本文，可以设置一个 Azure 函数，用于根据来自模拟设备的 IoT 遥测事件更新数字孪生体。 有关说明，请遵循[如何：引入 IoT 中心数据](how-to-ingest-iot-hub-data.md)，包括运行设备模拟器并验证数据流是否正常工作的最终步骤。
+> 在本文中，为简单起见，手动更新在时序见解中查看的不断更改的数字孪生体值。 但是，如果要使用实时模拟数据完成本文，可以设置一个 Azure 函数，用于根据来自模拟设备的 IoT 遥测事件更新数字孪生体。 有关说明，请遵循如何：引入 IoT 中心数据，包括运行设备模拟器并验证数据流是否正常工作的最终步骤。
 >
 > 稍后，查找另一个提示以显示开始运行设备模拟器的位置，并让 Azure Functions 自动更新孪生体，而不是发送手动数字孪生体更新命令。
 
@@ -49,7 +49,7 @@ ms.locfileid: "107783766"
 
 ## <a name="create-event-hub-namespace"></a>创建事件中心命名空间
 
-创建事件中心之前，请先创建一个可从 Azure 数字孪生实例接收事件的事件中心命名空间。 可以参考以下 Azure CLI 说明，也可以使用 Azure 门户：[快速入门：使用 Azure 门户创建事件中心](../event-hubs/event-hubs-create.md)。 若要查看哪些区域支持事件中心，请访问[可用的 Azure 产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=event-hubs)。
+创建事件中心之前，请先创建一个可从 Azure 数字孪生实例接收事件的事件中心命名空间。 可以参考以下 Azure CLI 说明，也可以使用 Azure 门户：快速入门：使用 Azure 门户创建事件中心。 若要查看哪些区域支持事件中心，请访问可用的 Azure 产品（按区域）。
 
 ```azurecli-interactive
 az eventhubs namespace create --name <name-for-your-event-hubs-namespace> --resource-group <your-resource-group> -l <region>
@@ -100,7 +100,7 @@ az dt endpoint create eventhub -n <your-Azure-Digital-Twins-instance-name> --eve
 
 ### <a name="create-twins-hub-event-route"></a>创建孪生体中心事件路由
 
-每当孪生的状态更新后，Azure 数字孪生实例都可以发出[孪生更新事件](how-to-interpret-event-data.md)。 在本部分，你将创建一个 Azure 数字孪生事件路由，它会将这些更新事件定向到孪生体中心以供进一步处理。
+每当孪生的状态更新后，Azure 数字孪生实例都可以发出[孪生更新事件](./concepts-event-notifications.md)。 在本部分，你将创建一个 Azure 数字孪生事件路由，它会将这些更新事件定向到孪生体中心以供进一步处理。
 
 在 Azure 数字孪生中创建[路由](concepts-route-events.md#create-an-event-route)，将孪生体更新事件发送到前面的终结点。 此路由中的筛选器只允许将孪生更新消息传递到你的终结点。 为孪生体中心事件路由指定名称。
 
@@ -162,7 +162,7 @@ az eventhubs eventhub authorization-rule keys list --resource-group <your-resour
 
 ### <a name="step-1-create-function-app"></a>步骤 1：创建函数应用
 
-首先，在 Visual Studio 中创建新的函数应用项目。 有关如何执行此操作的说明，请参阅“如何：设置用于处理数据的函数”一文中的 [**在 Visual Studio 中创建函数应用**](how-to-create-azure-function.md#create-a-function-app-in-visual-studio)部分。
+首先，在 Visual Studio 中创建新的函数应用项目。 有关如何执行此操作的说明，请参阅《操作说明：设置用于处理数据的函数》一文中的[在 Visual Studio 中创建函数应用](how-to-create-azure-function.md#create-a-function-app-in-visual-studio)部分。
 
 ### <a name="step-2-add-a-new-function"></a>步骤 2：添加新函数
 
@@ -187,13 +187,13 @@ az eventhubs eventhub authorization-rule keys list --resource-group <your-resour
 
 将包含 ProcessDTUpdatetoTSI.cs 函数的项目发布到 Azure 中的函数应用。
 
-有关如何执行此操作的说明，请参阅“操作指南：设置用于处理数据的函数”一文中的[将函数应用发布到 Azure](how-to-create-azure-function.md#publish-the-function-app-to-azure) 部分。
+有关如何执行此操作的说明，请参阅《操作说明：设置用于处理数据的函数》一文中的[将函数应用发布到 Azure](how-to-create-azure-function.md#publish-the-function-app-to-azure) 部分。
 
 保存函数应用名称，以便以后用于为两个事件中心配置应用设置。
 
 ### <a name="step-5-security-access-for-the-function-app"></a>步骤 5：函数应用的安全访问
 
-接下来，为函数分配访问角色并配置应用程序设置，使之能够访问 Azure 数字孪生实例。 有关如何执行此操作的说明，请参阅“如何：设置用于处理数据的函数”一文中的[为函数应用设置安全访问](how-to-create-azure-function.md#set-up-security-access-for-the-function-app)部分。
+接下来，为函数分配访问角色并配置应用程序设置，使之能够访问 Azure 数字孪生实例。 有关如何执行此操作的说明，请参阅《操作说明：设置用于处理数据的函数》一文中的[为函数应用设置安全访问](how-to-create-azure-function.md#set-up-security-access-for-the-function-app)部分。
 
 ### <a name="step-6-configure-app-settings-for-the-two-event-hubs"></a>步骤 6：为两个事件中心配置应用设置
 
@@ -213,7 +213,7 @@ az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<your-t
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>创建和连接时序见解实例
 
-在本部分中，你会设置时序见解实例以从时序中心接收数据。 有关此过程的更多详细信息，请参阅[教程：设置 Azure 时序见解 Gen2 PAYG 环境](../time-series-insights/tutorial-set-up-environment.md)。 按照以下步骤创建时序见解环境。
+在本部分中，你会设置时序见解实例以从时序中心接收数据。 有关此过程的更多详细信息，请参阅教程：设置 Azure 时序见解 Gen2 PAYG 环境。 按照以下步骤创建时序见解环境。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，搜索“时序见解环境”，然后选择“添加”按钮。 选择以下选项以创建时序环境。
 
@@ -222,7 +222,7 @@ az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<your-t
     * 环境名称 - 为时序环境指定名称。
     * 位置 - 选择位置。
     * 层 - 选择“Gen2(L1)”定价层。
-    * 属性名称 - 输入“$dtId”（在[选择时序 ID 的最佳做法](../time-series-insights/how-to-select-tsid.md)中详细了解如何选择 ID 值）。
+    * 属性名称 - 输入“$dtId”（在选择时序 ID 的最佳做法中详细了解如何选择 ID 值）。
     * 存储帐户名称 - 指定存储帐户名称。
     * 启用热存储 - 将此字段设置为“是”。
 
@@ -261,7 +261,7 @@ az dt twin update -n <your-azure-digital-twins-instance-name> --twin-id thermost
 使用不同温度值再重复该命令至少 4 次，以创建稍后可在时序见解环境中观察到的多个数据点。
 
 > [!TIP]
-> 如果要使用实时模拟数据完成本文，而不是手动更新数字孪生体值，请先确保已完成[先决条件](#prerequisites)部分中的提示，以设置从模拟设备更新孪生体的 Azure 函数。
+> 如果要使用实时模拟数据完成本文，而不是手动更新数字孪生体值，请先确保已完成先决条件部分中的提示，以设置从模拟设备更新孪生体的 Azure 函数。
 在此之后，可以立即运行设备，以开始发送模拟数据并通过该数据流更新数字孪生体。
 
 ## <a name="visualize-your-data-in-time-series-insights"></a>在时序见解中可视化数据

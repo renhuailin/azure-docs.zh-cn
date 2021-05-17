@@ -1,18 +1,18 @@
 ---
 title: 用于连接到 Azure VPN 网关的合作伙伴 VPN 设备配置
-description: 本文提供用于连接到 Azure VPN 网关的合作伙伴 VPN 设备配置的概述。
+description: 了解用于连接到 Azure VPN 网关的合作伙伴 VPN 设备配置。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 484dad65310efaa60e8744b2f122b5e44ae13565
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8a6c6564391d9ba2722bfa9c637ee9d1e19d9e80
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880146"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228993"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>合作伙伴 VPN 设备配置概述
 本文提供有关配置用于连接到 Azure VPN 网关的本地 VPN 设备的概述。 示例 Azure 虚拟网络和 VPN 网关设置用于演示如何使用相同参数连接到不同的本地 VPN 设备配置。

@@ -519,7 +519,10 @@
                 - name: 升级群集配置
                   href: service-fabric-cluster-config-upgrade-azure.md
                 - name: 修补群集节点 (Windows)
-                  href: service-fabric-patch-orchestration-application.md
+                  href: how-to-patch-cluster-nodes-windows.md
+                  items:
+                    - name: 使用修补业务流程应用程序 (POA)
+                      href: service-fabric-patch-orchestration-application.md
                 - name: 启用磁盘加密 (Windows)
                   href: service-fabric-enable-azure-disk-encryption-windows.md
                 - name: 启用磁盘加密 (Linux)
@@ -561,7 +564,7 @@
                 - name: 设置访问控制
                   href: service-fabric-cluster-security-roles.md
                 - name: 修补群集节点 (Windows)
-                  href: service-fabric-patch-orchestration-application.md
+                  href: how-to-patch-cluster-nodes-windows.md
         - name: 使用 Service Fabric Explorer 进行可视化
           href: service-fabric-visualizing-your-cluster.md
         - name: 连接到安全群集

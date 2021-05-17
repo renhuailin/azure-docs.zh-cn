@@ -9,16 +9,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 04/29/2021
 ms.author: aahi
-ms.openlocfilehash: 5287fe6df4a2f0cb728bf0e705a4ce989ca38487
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dc9aa1636bf4594d1e0b51315b520c6e893ced88
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934030"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288465"
 ---
-# <a name="configure-face-docker-containers"></a>配置人脸 Docker 容器
+# <a name="configure-face-docker-containers-retiring"></a>配置人脸 Docker 容器（停用）
+
+> [!IMPORTANT]
+> 人脸容器预览版不再接受应用程序，并且自 2021 年 4 月 29 日起已弃用该容器。 人脸容器将于 2021 年 7 月 26 日完全停用。
 
 使用 `docker run` 命令参数配置人脸容器运行时环境。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。 
 
@@ -67,7 +70,7 @@ ms.locfileid: "105934030"
 
 ### <a name="storage-scenario-settings"></a>存储方案设置
 
-人脸容器存储 blob、缓存、元数据和队列数据，具体取决于存储的内容。 例如，LargePersonGroup 的训练索引和结果存储为 blob 数据。 人脸容器在与这些类型的数据交互以及存储这些类型的数据时会提供两种不同的存储方案：
+人脸容器存储 blob、缓存、元数据和队列数据，具体取决于存储的内容。 例如，LargePersonGroup 的训练索引和结果均存储为 Blob 数据。 人脸容器在与这些类型的数据交互以及存储这些类型的数据时会提供两种不同的存储方案：
 
 * 内存  
   所有四种类型的数据都存储在内存中。 它们不是分布式的，也不是持久性的。 如果停止或删除人脸容器，则会销毁该容器的所有存储数据。  

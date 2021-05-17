@@ -3,21 +3,21 @@ title: Azure Functions 中的 IP 地址
 description: 了解如何查找函数应用的入站和出站 IP 地址，以及这些地址发生更改的原因。
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: fcc92e61e180d25bc67d5ca3f9e2bff4af01fd3f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.openlocfilehash: 2c248756899459e17082bcab863a4e857b594909
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98726725"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608225"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions 中的 IP 地址
 
-本文介绍与函数应用的 IP 地址相关的以下主题：
+本文介绍与函数应用的 IP 地址相关的以下概念：
 
-* 如何查找函数应用当前正在使用 IP 地址。
-* 哪些因素导致函数应用的 IP 地址发生更改。
-* 如何限制可访问函数应用的 IP 地址。
-* 如何获取函数应用的专用 IP 地址。
+* 查找函数应用当前正在使用 IP 地址。
+* 导致函数应用 IP 地址发生更改的条件。
+* 限制可访问函数应用的 IP 地址。
+* 获取函数应用的专用 IP 地址。
 
 IP 地址与函数应用而不是单个函数相关联。 传入的 HTTP 请求不能使用入站 IP 地址来调用单个函数；它们必须使用默认域名 (functionappname.azurewebsites.net) 或自定义域名。
 
@@ -27,7 +27,7 @@ IP 地址与函数应用而不是单个函数相关联。 传入的 HTTP 请求�
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 导航到函数应用。
-3. 在“设置”下，选择“属性”   。 入站 IP 地址显示在 " **虚拟 IP 地址**" 下。
+3. 在“设置”下，选择“属性”   。 入站 IP 地址显示在“虚拟 IP 地址”下面。
 
 ## <a name="function-app-outbound-ip-addresses"></a><a name="find-outbound-ip-addresses"></a>函数应用的出站 IP 地址
 
@@ -56,7 +56,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 如果需要将函数应用使用的出站 IP 地址添加到允许列表，另一种做法是将函数应用的数据中心（Azure 区域）添加到允许列表。 可以[下载列出所有 Azure 数据中心 IP 地址的 JSON 文件](https://www.microsoft.com/en-us/download/details.aspx?id=56519)。 然后，找到应用于运行函数应用的区域的 JSON 片段。
 
-例如，应用于西欧区域的 JSON 片段可能如下所示：
+例如，下面的 JSON 片段是西欧允许列表的样子：
 
 ```
 {
@@ -99,10 +99,12 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 当函数应用在[消耗计划](consumption-plan.md)或[高级计划](functions-premium-plan.md)中运行时，即使你未执行任何操作（如[上面列出](#inbound-ip-address-changes)的操作），出站 IP 地址也可能会更改。
 
-有意强制出站 IP 地址更改：
+使用以下过程特意强制进行出站 IP 地址更改：
 
 1. 在标准和高级 v2 定价层之间纵向缩放应用服务计划。
+
 2. 等待 10 分钟。
+
 3. 缩放回到最初的层。
 
 ## <a name="ip-address-restrictions"></a>IP 地址限制
@@ -111,7 +113,15 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 ## <a name="dedicated-ip-addresses"></a>专用 IP 地址
 
-如果需要静态专用 IP 地址，我们建议使用[应用服务环境](../app-service/environment/intro.md)（应用服务计划的[隔离层](https://azure.microsoft.com/pricing/details/app-service/)）。 有关详细信息，请参阅[应用服务环境的 IP 地址](../app-service/environment/network-info.md#ase-ip-addresses)和[如何控制应用服务环境的入站流量](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md)。
+当函数应用需要静态专用 IP 地址时，可以通过多种策略来进行探索。 
+
+### <a name="virtual-network-nat-gateway-for-outbound-static-ip"></a>用于出站静态 IP 的虚拟网络 NAT 网关
+
+你可以通过使用虚拟网络 NAT 网关将流量定向到静态公共 IP 地址，以此来控制来自函数的出站流量的 IP 地址。 在[高级计划](functions-premium-plan.md)中运行时，可以使用此拓扑。 要了解详细信息，请参阅[教程：使用 Azure 虚拟网络 NAT 网关控制 Azure Functions 出站 IP](functions-how-to-use-nat-gateway.md)。
+
+### <a name="app-service-environments"></a>应用服务环境
+
+要完全控制传入和传出 IP 地址，我们建议采用[应用服务环境](../app-service/environment/intro.md)（应用服务计划的[隔离层](https://azure.microsoft.com/pricing/details/app-service/)）。 有关详细信息，请参阅[应用服务环境的 IP 地址](../app-service/environment/network-info.md#ase-ip-addresses)和[如何控制应用服务环境的入站流量](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md)。
 
 确定函数应用是否在应用服务环境中运行：
 

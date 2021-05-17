@@ -1,5 +1,5 @@
 ---
-title: Azure 流量分析架构更新-2020 年3月 |Microsoft Docs
+title: Azure 流量分析架构更新 - 2020 年 3 月 | Microsoft Docs
 description: 在流量分析架构中包含新字段的示例查询。
 services: network-watcher
 documentationcenter: na
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
 ms.openlocfilehash: d7c4f1853ff8dcb9249ab6ec4f536e1f8cfa10e5
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98018218"
 ---
 # <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>流量分析架构中包含新字段的示例查询（2019 年 8 月版架构更新）

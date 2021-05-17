@@ -3,12 +3,12 @@ title: 排查常见错误
 description: 了解如何排查创建、分配和删除蓝图时遇到的问题，例如，策略冲突和蓝图参数函数。
 ms.date: 05/01/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 183d27235ce738d884a02b53a498f77ebed41e66
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: ca86b81f846465c996d05f08d3a721829f8e496f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326410"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733888"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>排查使用 Azure 蓝图时出现的错误
 
@@ -82,5 +82,5 @@ ms.locfileid: "108326410"
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
 - 请通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答。
-- 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
+- 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区与适当的资源（解答、支持人员和专家）相关联来改善客户体验。
 - 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。

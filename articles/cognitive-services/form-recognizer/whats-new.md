@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 04/14/2021
+ms.date: 04/28/2021
 ms.author: lajanuar
-ms.openlocfilehash: e952d481daf53b1806dc3cfbb658c8c0c21f6984
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 58430c94fa1b22954ca640188ced5bfb1fb197d0
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516291"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108293314"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD036 -->
@@ -25,9 +25,11 @@ ms.locfileid: "107516291"
 ## <a name="april-2021"></a>2021 年 4 月
 <!-- markdownlint-disable MD029 -->
 
-### <a name="sdk-updates-api--version-21-preview3"></a>SDK 更新（API 版本 2.1-preview.3）
+### <a name="sdk-preview-updates-for-api--version-21-preview3"></a>API 版本 2.1 的 SDK 预览版更新 - 预览版 3
 
-### <a name="c-version-310-beta4"></a>**C# 版本 3.1.0-beta.4**
+### <a name="c"></a>[**C#**](#tab/csharp)
+
+NuGet 包版本 3.1.0 - beta.4
 
 * **用于分析标识文档中数据的新方法**：
 
@@ -46,7 +48,7 @@ ms.locfileid: "107516291"
    **[RecognizeInvoicesOptions](/dotnet/api/azure.ai.formrecognizer.recognizeinvoicesoptions?view=azure-dotnet-preview&preserve-view=true)**</br>
    **[RecognizeReceiptsOptions](/dotnet/api/azure.ai.formrecognizer.recognizereceiptsoptions?view=azure-dotnet-preview&preserve-view=true)**</br>
 
-   `Pages` 属性允许选择多页 PDF 和 TIFF 文档的单个页面或页面范围。 对于单个页面，请输入页码，例如 `3`。 对于页面范围（如第 2 页和第 5 页到第 7 页），请输入用逗号分隔的页码和范围：`2, 5-7`。    
+   `Pages` 属性允许选择多页 PDF 和 TIFF 文档的单个页面或特定范围的页面。 对于单个页面，请输入页码，例如 `3`。 对于页面范围（如第 2 页和第 5 页到第 7 页），请输入用逗号分隔的页码和范围：`2, 5-7`。
 
 * **以下类支持的新属性 `ReadingOrder`** ：
 
@@ -60,7 +62,9 @@ ms.locfileid: "107516291"
 
 * [StartRecognizeCustomForms](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient.startrecognizecustomforms?view=azure-dotnet-preview&preserve-view=true#Azure_AI_FormRecognizer_FormRecognizerClient_StartRecognizeCustomForms_System_String_System_IO_Stream_Azure_AI_FormRecognizer_RecognizeCustomFormsOptions_System_Threading_CancellationToken_) 方法现在会在传递无效文件时引发 `RequestFailedException()`。
 
-### <a name="java-version-310-beta3"></a>**Java 版本 3.1.0-beta.3**
+### <a name="java"></a>[**Java**](#tab/java)
+
+Maven 项目包依赖项版本 3.1.0 - beta 3
 
 * **用于分析标识文档中数据的新方法**：
 
@@ -89,14 +93,16 @@ ms.locfileid: "107516291"
 
 * **以下方法支持的新关键字参数 `ReadingOrder`** ：
 
-* **[beginRecognizeContent](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient.beginrecognizecontent?view=azure-java-preview&preserve-view=true)**</br>
+* **[beginRecognizeContent](/java/api/com.azure.ai.formrecognizer.formrecognizerclient.beginrecognizecontent?preserve-view=true&view=azure-java-preview)**</br>
 **[beginRecognizeContentFromUrl](/java/api/com.azure.ai.formrecognizer.formrecognizerclient.beginrecognizecontentfromurl?view=azure-java-preview&preserve-view=true)**</br>
 
    `ReadingOrder` 关键字参数是一个可选参数，可用于指定应该应用哪一种读取顺序算法（`basic` 或 `natural`）对文本元素的提取进行排序。 如果未指定，默认值为 `basic`。
 
 * 客户端默认为支持的最新服务版本，目前为 2.1-preview.3。
 
-### <a name="javascript-version-310-beta3"></a>**JavaScript 版本 3.1.0-beta.3**
+### <a name="javascript"></a>[**JavaScript**](#tab/javascript)
+
+npm 包版本 3.1.0 - beta.3
 
 * **用于分析标识文档中数据的新方法**：
 
@@ -111,15 +117,17 @@ ms.locfileid: "107516291"
     `gender` - 可能的值为 `M`、`F` 或 `X`。</br>
    `country` - 可能的值遵循 [ISO alpha-3](https://www.iso.org/obp/ui/#search) 三个字母的国家/地区代码字符串。
 
-* **所有表单识别方法（自定义表单和所有预生成模型）都支持的新选项 `pages`。 该参数允许选择多页 PDF 和 TIFF 文档的单个页面或特定范围的页面。 对于单个页面，请输入页码，例如 `3`。 对于页面范围（如第 2 页和第 5 页到第 7 页），请输入用逗号分隔的页码和范围：`2, 5-7`。
+* 所有表单识别方法（自定义表单和所有预生成模型）都支持的新选项 `pages`。 该参数允许选择多页 PDF 和 TIFF 文档的单个页面或特定范围的页面。 对于单个页面，请输入页码，例如 `3`。 对于页面范围（如第 2 页和第 5 页到第 7 页），请输入用逗号分隔的页码和范围：`2, 5-7`。
 
 * 向内容识别方法添加了对 **[ReadingOrder](/javascript/api/@azure/ai-form-recognizer/readingorder?view=azure-node-preview&preserve-view=true)** 类型的支持。 使用此选项可控制服务用于确定应如何对已识别的文本行进行排序的算法。 可指定应该应用哪一种读取顺序算法（`basic` 或 `natural`）对文本元素的提取进行排序。 如果未指定，默认值为 `basic`。
 
-* 将 [FormField](/javascript/api/@azure/ai-form-recognizer/formfield?view=azure-node-preview&preserve-view=true) 类型拆分为多个不同的接口。 这不会导致任何 API 兼容性问题，除了某些边缘情况（未定义 valueType）。
+* 将 [FormField](/javascript/api/@azure/ai-form-recognizer/formfield?view=azure-node-preview&preserve-view=true) 类型拆分为多个不同的接口。 此更新不会导致任何 API 兼容性问题，除了某些边缘情况（未定义 valueType）。
 
 * 已迁移到 2.1-preview.3 表单识别器服务终结点来进行所有 REST API 调用。
 
-### <a name="python-version--310b4"></a>**Python 版本 3.1.0b4**
+### <a name="python"></a>[**Python**](#tab/python)
+
+pip 包版本 3.1.0b4
 
 * **用于分析标识文档中数据的新方法**：
 
@@ -167,6 +175,8 @@ ms.locfileid: "107516291"
 
    `readingOrder` 关键字参数是一个可选参数，可用于指定应该应用哪一种读取顺序算法（`basic` 或 `natural`）对文本元素的提取进行排序。 如果未指定，默认值为 `basic`。
 
+---
+
 ## <a name="march-2021"></a>2021 年 3 月
 
 窗体识别器 2.1 公共预览版 3 现已推出。 2\.1 预览版 3 已发布，其中包括以下功能：
@@ -201,31 +211,30 @@ ms.locfileid: "107516291"
 
 窗体识别器 2.1 公共预览版 2 现已推出。 2\.1 预览版 2 已发布，其中包括以下功能：
 
-- 新的预生成发票模型 - 新的预生成发票模型使客户能够以各种格式创建发票，并返回结构化数据以自动处理发票。 它结合了强大的光学字符识别 (OCR) 功能与发票理解深度学习模型，可从英语发票中提取重要信息。 可提取重要文本、表和信息，如客户、供应商、发票 ID、发票到期日期、总计、应付金额、税金、送货地址和帐单地址。
+* 新的预生成发票模型 - 新的预生成发票模型使客户能够以各种格式创建发票，并返回结构化数据以自动处理发票。 它结合了强大的光学字符识别 (OCR) 功能与发票理解深度学习模型，可从英语发票中提取重要信息。 可提取重要文本、表和信息，如客户、供应商、发票 ID、发票到期日期、总计、应付金额、税金、送货地址和帐单地址。
 
   > [了解有关预生成发票模型的更多信息](concept-invoices.md)
 
   :::image type="content" source="./media/invoice-example.jpg" alt-text="发票示例" lightbox="./media/invoice-example.jpg":::
 
-- 增强的表提取 - 表单识别器现在提供了增强的表提取功能，该功能结合了强大的光学字符识别 (OCR) 功能与深度学习表提取模型。 表单识别器可以从表中提取数据，包括包含合并列、行、无边框等的复杂表。
+* 增强的表提取 - 表单识别器现在提供了增强的表提取功能，该功能结合了强大的光学字符识别 (OCR) 功能与深度学习表提取模型。 表单识别器可以从表中提取数据，包括包含合并列、行、无边框等的复杂表。
 
   :::image type="content" source="./media/tables-example.jpg" alt-text="表示例" lightbox="./media/tables-example.jpg":::
 
-
   > [了解有关布局提取的更多信息](concept-layout.md)
 
-- 客户端库更新 - 适用于 .NET、Python、Java 和 JavaScript 的[客户端库](quickstarts/client-library.md)的最新版本支持表单识别器 2.1 API。
-- 支持的新语言：日语 - 现在支持以下新语言：对于 `AnalyzeLayout` 和 `AnalyzeCustomForm`：日语 (`ja`)。 [语言支持](language-support.md)
-- 文本行样式指示（手写/其他）（仅拉丁语）- 格式识别器现在会输出一个 `appearance` 对象（该对象会分类每个文本行是否为手写样式）以及置信度分数。 此功能仅支持拉丁语。
-- 质量改进 - 提取改进（包括一位数提取改进）。
-- 表单识别器示例和标记工具中的新试用功能 - 可以使用表单识别器示例标记工具试用预生成的发票、收据和名片模型以及布局 API。 查看如何不编写任何代码即可提取数据。
+* 客户端库更新 - 适用于 .NET、Python、Java 和 JavaScript 的[客户端库](quickstarts/client-library.md)的最新版本支持表单识别器 2.1 API。
+* 支持的新语言：日语 - 现在支持以下新语言：对于 `AnalyzeLayout` 和 `AnalyzeCustomForm`：日语 (`ja`)。 [语言支持](language-support.md)
+* 文本行样式指示（手写/其他）（仅拉丁语）- 格式识别器现在会输出一个 `appearance` 对象（该对象会分类每个文本行是否为手写样式）以及置信度分数。 此功能仅支持拉丁语。
+* 质量改进 - 提取改进（包括一位数提取改进）。
+* 表单识别器示例和标记工具中的新试用功能 - 可以使用表单识别器示例标记工具试用预生成的发票、收据和名片模型以及布局 API。 查看如何不编写任何代码即可提取数据。
 
   > [试用表单识别器示例工具](https://fott-preview.azurewebsites.net/)
 
   ![FOTT 示例](./media/ui-preview.jpg)
 
-- 反馈循环 - 通过示例标记工具分析文件时，现在还可以将其添加到训练集，根据需要调整标记，并训练以改进模型。
-- 自动标记文档 - 根据项目中以前标记的文档自动标记其他文档。
+* 反馈循环 - 通过示例标记工具分析文件时，现在还可以将其添加到训练集，根据需要调整标记，并训练以改进模型。
+* 自动标记文档 - 根据项目中以前标记的文档自动标记其他文档。
 
 ## <a name="august-2020"></a>2020 年 8 月
 
@@ -233,25 +242,24 @@ ms.locfileid: "107516291"
 
 表单识别器 2.1 公共预览版现已推出。 2\.1 预览版 1 已发布，其中包括以下功能：
 
-
-- REST API 参考可用 - 请参阅 [2.1 预览版 1 参考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)
-- 除了英语以外受支持的新语言，以下[语言](language-support.md)现在受支持：对于 `Layout` 和 `Train Custom Model`：英语 (`en`)、简体中文 (`zh-Hans`)、荷兰语 (`nl`)、法语 (`fr`)、德语 (`de`)、意大利语 (`it`)、葡萄牙语 (`pt`) 和西班牙语 (`es`)。
-- 复选框/选择标记检测 - 表单识别器支持检测和提取选择标记（如复选框和单选按钮）。 选择标记是在 `Layout` 中提取的，你现在还可以在 `Train Custom Model` - “使用标签进行训练”中进行标记和训练，以便提取选择标记的键值对。
-- 模型组合 - 允许组合多个模型并使用单个模型 ID 调用。 提交要使用组合模型 ID 分析的文档时，首先会执行分类步骤以将其路由到正确的自定义模型。 模型组合可用于 `Train Custom Model` - “使用标签进行训练”。
-- 模型名称 - 将友好名称添加到自定义模型，以便更轻松地进行管理和跟踪。
-- [新的名片预生成模型](concept-business-cards.md)，用于提取英语、语言名片中的公共字段。
-- **[预生成收据的新区域设置](concept-receipts.md)** 除 EN-US 外，现在还支持 EN-AU、EN-CA、EN-GB、EN-IN
-- 针对 `Layout`、`Train Custom Model` - “在没有标签的情况下进行训练”和“使用标签进行训练”的质量改进。
+* REST API 参考可用 - 请参阅 [2.1 预览版 1 参考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)
+* 除了英语以外受支持的新语言，以下[语言](language-support.md)现在受支持：对于 `Layout` 和 `Train Custom Model`：英语 (`en`)、简体中文 (`zh-Hans`)、荷兰语 (`nl`)、法语 (`fr`)、德语 (`de`)、意大利语 (`it`)、葡萄牙语 (`pt`) 和西班牙语 (`es`)。
+* 复选框/选择标记检测 - 表单识别器支持检测和提取选择标记（如复选框和单选按钮）。 选择标记是在 `Layout` 中提取的，你现在还可以在 `Train Custom Model` - “使用标签进行训练”中进行标记和训练，以便提取选择标记的键值对。
+* 模型组合 - 允许组合多个模型并使用单个模型 ID 调用。 提交要使用组合模型 ID 分析的文档时，首先会执行分类步骤以将其路由到正确的自定义模型。 模型组合可用于 `Train Custom Model` - “使用标签进行训练”。
+* 模型名称 - 将友好名称添加到自定义模型，以便更轻松地进行管理和跟踪。
+* [新的名片预生成模型](concept-business-cards.md)，用于提取英语、语言名片中的公共字段。
+* **[预生成收据的新区域设置](concept-receipts.md)** 除 EN-US 外，现在还支持 EN-AU、EN-CA、EN-GB、EN-IN
+* 针对 `Layout`、`Train Custom Model` - “在没有标签的情况下进行训练”和“使用标签进行训练”的质量改进。
 
 2.0 版包括以下更新：
 
-- NET、Python、Java 和 JavaScript 的[客户端库](quickstarts/client-library.md)已正式发布。
+* NET、Python、Java 和 JavaScript 的[客户端库](quickstarts/client-library.md)已正式发布。
 
 可在 GitHub 上找到新示例。
 
-- [知识提取方案 - 表单操作手册](https://github.com/microsoft/knowledge-extraction-recipes-forms)从真实的表单识别器客户互动中收集最佳做法，并提供用于开发这些项目的可用代码示例、清单和示例管道。
-- [示例标记工具](https://github.com/microsoft/OCR-Form-Tools)已更新，以支持新的 2.1 版功能。 请参阅此[快速入门](quickstarts/label-tool.md)，了解如何开始使用此工具。
-- [智能展台](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md)表单识别器示例显示了如何集成 `Analyze Receipt` 和 `Train Custom Model` - “在没有标签的情况下进行训练”。
+* [知识提取方案 - 表单操作手册](https://github.com/microsoft/knowledge-extraction-recipes-forms)从真实的表单识别器客户互动中收集最佳做法，并提供用于开发这些项目的可用代码示例、清单和示例管道。
+* [示例标记工具](https://github.com/microsoft/OCR-Form-Tools)已更新，以支持新的 2.1 版功能。 请参阅此[快速入门](quickstarts/label-tool.md)，了解如何开始使用此工具。
+* [智能展台](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md)表单识别器示例显示了如何集成 `Analyze Receipt` 和 `Train Custom Model` - “在没有标签的情况下进行训练”。
 
 ## <a name="july-2020"></a>2020 年 7 月
 
@@ -315,7 +323,6 @@ ms.locfileid: "107516291"
   * `integer`
 
   若要了解如何使用此功能，请参阅[示例标记工具](./quickstarts/label-tool.md#specify-tag-value-types)指南。
-
 
 * 表可视化 示例标记工具现在会显示在文档中识别的表。 此功能使你可以在标记和分析之前查看已在文档中识别和提取的表。 可以使用“层”选项开启/关闭此功能。
 

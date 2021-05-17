@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.openlocfilehash: b3361337bb0cf60e47efe198aad7aa8cc20ae7b3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101714929"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 群集容量规划注意事项
@@ -53,7 +53,7 @@ ms.locfileid: "101714929"
 
 * ***你的群集是否跨越可用性区域？***
 
-    Service Fabric 通过部署固定到特定区域的节点类型来支持跨 [可用性区域](../availability-zones/az-overview.md) 的群集，确保应用程序的高可用性。 可用性区域需要其他节点类型规划和最低要求。 有关详细信息，请参阅 [跨可用性区域 Service Fabric 群集的主节点类型的建议拓扑](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones)。 
+    Service Fabric 通过部署固定到特定区域的节点类型来支持跨[可用性区域](../availability-zones/az-overview.md)的群集，从而确保应用程序的高可用性。 可用性区域需要其他节点类型规划和最低要求。 有关详细信息，请参阅[跨可用性区域 Service Fabric 群集的主节点类型的建议拓扑](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones)。 
 
 为集群的初始创建确定节点类型的数量和属性时，请记住，部署集群后，随时可以添加、修改或删除（非主要）节点类型。 也可以在正在运行的集群中[修改主节点类型](service-fabric-scale-up-primary-node-type.md)（尽管在生产环境中执行此类操作需要大量的计划和谨慎工作）。
 
@@ -70,12 +70,12 @@ ms.locfileid: "101714929"
 
 | 持续性层  | 所需 VM 数量下限 | 支持的 VM 大小                                                                  | 你对虚拟机规模集所做的更新                               | Azure 启动的更新和维护                                                              | 
 | ---------------- |  ----------------------------  | ---------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| Gold             | 5                              | 专用于单个客户的全节点大小 (例如，L32s、GS5、G5、DS15_v2 D15_v2)  | 可延迟到 Service Fabric 群集批准 | 可以在每个升级域中暂停 2 个小时，以留出更多时间使副本从早期故障中恢复 |
+| Gold             | 5                              | 专用于单个客户的完整节点大小（例如 L32s、GS5、G5、DS15_v2、D15_v2） | 可延迟到 Service Fabric 群集批准 | 可以在每个升级域中暂停 2 个小时，以留出更多时间使副本从早期故障中恢复 |
 | Silver           | 5                              | 单核或更多核心的 VM，至少 50 GB 的本地 SSD                      | 可延迟到 Service Fabric 群集批准 | 任何时候都无法延迟                                                    |
 | Bronze          | 1                              | VM，至少 50 GB 的本地 SSD                                              | 不会因为 Service Fabric 群集延迟           | 任何时候都无法延迟                                                    |
 
 > [!NOTE]
-> 以上提到的最小 Vm 数是每个持久性级别的必需要求。 我们进行了就地验证，这将阻止创建或修改不满足这些要求的现有虚拟机 scalesets。
+> 以上提到的最小 VM 数是每个持续性级别的必需要求。 我们进行就地验证，这将阻止创建或修改不满足这些要求的现有虚拟机缩放集。
 
 > [!WARNING]
 > 在青铜级持续性下，无法进行自动 OS 映像升级。 虽然不推荐将[补丁协调应用程序](service-fabric-patch-orchestration-application.md)（仅适用于非 Azure 托管群集）用于白银或更高持续性级别，但对于 Service Fabric 升级域，只能通过它自动执行 Windows 更新。

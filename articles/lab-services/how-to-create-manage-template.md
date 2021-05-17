@@ -4,10 +4,10 @@ description: 了解如何在 Azure 实验室服务中创建和管理课堂实验
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: be84a05fd8b278f5176cd768191d10a20fc719e6
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96434271"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>在 Azure 实验室服务中创建和管理课堂模板
@@ -67,4 +67,4 @@ ms.locfileid: "96434271"
 - [以管理员身份创建并管理实验室帐户](how-to-manage-lab-accounts.md)
 - [以实验室所有者身份创建并管理实验室](how-to-manage-classroom-labs.md)
 - [以实验室所有者身份配置并控制实验室的使用](how-to-configure-student-usage.md)
-- [作为实验室用户，访问实验室](how-to-use-classroom-lab.md)
+- [作为实验室用户, 访问实验室](how-to-use-classroom-lab.md)

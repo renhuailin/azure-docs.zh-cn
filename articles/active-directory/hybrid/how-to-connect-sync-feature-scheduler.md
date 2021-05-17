@@ -16,12 +16,12 @@ ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad7b0039602add7f4cd3cdd300bd829c4f148a79
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2dc22a8615164506b6f2735090fca891b8fc921
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90084730"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278913"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同步：计划程序
 本主题介绍 Azure AD Connect 同步（同步引擎）中的内置计划程序。

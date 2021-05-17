@@ -8,12 +8,12 @@ ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 990a0ee73bd91ccb748c948b5fcf0e6124d84a03
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2fa81223c8a07e04d6c4373b430f3a49d67777a0
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102201424"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208574"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>使用 Azure 数字孪生更新 Azure Maps 室内地图
 
@@ -27,9 +27,9 @@ ms.locfileid: "102201424"
 
 ### <a name="prerequisites"></a>必备条件
 
-* 按照 Azure 数字孪生的[教程：连接端到端解决方案](./tutorial-end-to-end.md)进行操作。
+* 按照 Azure 数字孪生的教程：连接端到端解决方案进行操作。
     * 你将使用额外的终结点和路由扩展此孪生体。 你还将向你在该教程中创建的函数应用添加另一个函数。 
-* 按照 Azure Maps 的[教程：使用 Azure Maps Creator 创建室内地图](../azure-maps/tutorial-creator-indoor-maps.md)创建具有某个特征状态集的 Azure Maps 室内地图。 
+* 按照 Azure Maps 的[教程：使用 Azure Maps Creator 创建室内地图](../azure-maps/tutorial-creator-indoor-maps.md)创建具有某个“特征状态集”的 Azure Maps 室内地图。
     * [特征状态集](../azure-maps/creator-indoor-maps.md#feature-statesets)是分配给数据集特征（例如房间或设备）的动态属性（状态）的集合。 在上述 Azure Maps 教程中，特征状态集存储会在地图上显示的房间状态。
     * 你需要特征状态集 ID 和 Azure Maps 订阅密钥。
 
@@ -45,7 +45,7 @@ ms.locfileid: "102201424"
 
 ## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>对孪生体更新通知创建路由和筛选器
 
-每当孪生体的状态更新时，Azure 数字孪生实例就可以发出孪生体更新事件。 上面链接的 Azure 数字孪生[教程：连接端到端解决方案](./tutorial-end-to-end.md)展示了以下方案：使用温度计来更新附加到房间的孪生体的温度属性。 你将扩展该解决方案，方法是：订阅孪生体的更新通知，并使用该信息来更新地图。
+每当孪生体的状态更新时，Azure 数字孪生实例就可以发出孪生体更新事件。 上面链接的 Azure 数字孪生教程：连接端到端解决方案展示了以下方案：使用温度计来更新附加到房间的孪生体的温度属性。 你将扩展该解决方案，方法是：订阅孪生体的更新通知，并使用该信息来更新地图。
 
 此模式直接从房间孪生体读取数据，而不是从 IoT 设备读取数据，这样你就能灵活地更改温度的基础数据源，而无需更新映射逻辑。 例如，你可以添加多个温度计或将此房间设置为与另一个房间共用一个温度计，所有这些都不需要更新你的地图逻辑。
 
@@ -64,7 +64,7 @@ ms.locfileid: "102201424"
     >[!NOTE]
     >目前，Cloud Shell 中存在一个已知问题，该问题会影响以下命令组：`az dt route`、`az dt model` 和 `az dt twin`。
     >
-    >若要解决此问题，请在运行命令之前在 Cloud Shell 中运行 `az login`，或者使用[本地 CLI](/cli/azure/install-azure-cli) 而不使用 Cloud Shell。 有关此操作的详细信息，请参阅 [*故障排除：Azure 数字孪生中的已知问题*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)。
+    >若要解决此问题，请在运行命令之前在 Cloud Shell 中运行 `az login`，或者使用[本地 CLI](/cli/azure/install-azure-cli) 而不使用 Cloud Shell。 有关此操作的详细信息，请参阅[故障排除：Azure 数字孪生中的已知问题](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)。
 
     ```azurecli-interactive
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -72,9 +72,9 @@ ms.locfileid: "102201424"
 
 ## <a name="create-a-function-to-update-maps"></a>创建一个函数来更新地图
 
-你将在端到端教程（[教程：连接端到端解决方案](./tutorial-end-to-end.md)）的函数应用中创建一个事件网格触发的函数。 此函数会解压这些通知并将更新发送到 Azure Maps 特征状态集，以更新一个房间的温度。
+你将在端到端教程（教程：连接端到端解决方案）的函数应用中创建一个事件网格触发的函数。 此函数会解压这些通知并将更新发送到 Azure Maps 特征状态集，以更新一个房间的温度。
 
-有关参考信息，请参阅以下文档：[Azure Functions 的 Azure 事件网格触发器](../azure-functions/functions-bindings-event-grid-trigger.md)。
+有关参考信息，请参阅以下文档：Azure Functions 的 Azure 事件网格触发器。
 
 将函数代码替换为以下代码。 它将仅筛选出空间孪生体的更新，读取更新的温度，并将该信息发送到 Azure Maps。
 
@@ -91,9 +91,9 @@ az functionapp config appsettings set --name <your-App-Service-(function-app)-na
 
 若要查看实时更新的温度，请执行以下步骤：
 
-1. 通过运行 Azure 数字孪生 [教程：连接端到端解决方案](tutorial-end-to-end.md)中的 **DeviceSimulator** 项目，开始发送模拟的 IoT 数据。 有关此操作的说明，请参阅[配置并运行模拟](././tutorial-end-to-end.md#configure-and-run-the-simulation)部分。
+1. 通过运行 Azure 数字孪生教程：连接端到端解决方案中的 **DeviceSimulator** 项目，开始发送模拟的 IoT 数据。 有关此操作的说明，请参阅配置并运行模拟部分。
 2. 使用 [Azure Maps Indoor 模块](../azure-maps/how-to-use-indoor-module.md)呈现你在 Azure Maps Creator 中创建的室内地图。
-    1. 将室内地图[教程：使用 Azure Maps Indoor Maps 模块](../azure-maps/how-to-use-indoor-module.md)的[示例：使用 Indoor Maps 模块](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module)部分中的 HTML 复制到一个本地文件。 
+    1. 将室内地图[教程：使用 Azure Maps Indoor Maps 模块](../azure-maps/how-to-use-indoor-module.md)的[示例：使用 Indoor Maps 模块](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module)部分的 HTML 复制到一个本地文件。
     1. 将本地 HTML 文件中的订阅密钥、tilesetId 和 statesetID 替换为你的值。
     1. 在浏览器中打开该文件。
 

@@ -3,12 +3,12 @@ title: 排查 Azure 备份代理问题
 description: 本文介绍如何排查 Azure 备份代理的安装和注册问题。
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: c662bf8c8d9490691f45254bef01618f17bd6e2a
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 8320edbe2f9f5ae495246eb26276023b1b902764
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518178"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108324772"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>排查 Microsoft Azure 恢复服务 (MARS) 代理问题
 
@@ -21,7 +21,7 @@ ms.locfileid: "107518178"
 - [确保 MARS 代理是最新的](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)。
 - [确保已在 MARS 代理与 Azure 之间建立网络连接](#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)。
 - 确保 MARS 正在运行（在服务控制台中）。 如果需要，请在重启后重试操作。
-- [确保暂存文件夹位置有 5% 到 10% 的可用卷空间](./backup-azure-file-folder-backup-faq.yml#what-s-the-minimum-size-requirement-for-the-cache-folder-)
+- [确保暂存文件夹位置有 5% 到 10% 的可用卷空间](/azure/backup/backup-azure-file-folder-backup-faq#what-s-the-minimum-size-requirement-for-the-cache-folder-)
 - [检查其他进程或防病毒软件是否正在干扰 Azure 备份](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)。
 - 如果备份作业已完成但出现警告，请参阅[备份作业已完成，但出现警告](#backup-jobs-completed-with-warning)
 - 如果计划的备份失败，但手动备份可正常进行，请参阅[备份不按计划运行](#backups-dont-run-according-to-schedule)。
@@ -79,7 +79,7 @@ ms.locfileid: "107518178"
 
 | 错误  | 可能的原因 | 建议的操作 |
 | ---     | ---     | ---    |
-| 无法使用指定的保管库凭据文件，因为它不是从与此服务器关联的保管库中下载的。 (ID:100110) 请提供相应的保管库凭据。 | 保管库凭据文件来自与此服务器已注册到的保管库不同的保管库。 | 确保目标计算机和源计算机已还原到同一个恢复服务保管库。 如果目标服务器已注册到其他保管库，请使用“注册服务器”选项注册到正确的保管库。  
+| 无法使用指定的保管库凭据文件，因为它不是从与此服务器关联的保管库中下载的。 (ID:100110) 请提供相应的保管库凭据。 | 保管库凭据文件来自与此服务器已注册到的保管库不同的保管库。 | 确保目标计算机和源计算机已还原到同一个恢复服务保管库。 如果目标服务器已注册到其他保管库，请使用“注册服务器”选项注册到正确的保管库。
 
 ## <a name="backup-jobs-completed-with-warning"></a>备份作业已完成，但出现警告
 
@@ -91,7 +91,7 @@ ms.locfileid: "107518178"
   - 不受支持的文件属性（例如，OneDrive 文件夹中不支持压缩流和重新分析点）。 有关完整列表，请参阅[支持矩阵](./backup-support-matrix-mars-agent.md#supported-file-types-for-backup)。
   - 文件系统问题
   - 其他进程干扰（例如，包含文件句柄的防病毒软件可能会阻止 MARS 代理访问文件）
-  - 应用程序锁定的文件  
+  - 应用程序锁定的文件
 
 - 备份服务会将日志文件中的这些文件标记为失败，采用以下命名约定：C:\Program Files\Microsoft Azure Recovery Service Agent\temp 文件夹下的 LastBackupFailedFilesxxxx.txt 。
 - 若要解决此问题，请查看日志文件以了解问题的性质：
@@ -99,7 +99,7 @@ ms.locfileid: "107518178"
   | 错误代码             | 原因                                             | 建议                                              |
   | ---------------------- | --------------------------------------------------- | ------------------------------------------------------------ |
   | 0x80070570             | 该文件或目录已损坏且无法读取。 | 在源卷上运行 chkdsk。                             |
-  | 0x80070002、0x80070003 | 系统找不到指定的文件。         | [确保暂存文件夹未满](/backup-azure-file-folder-backup-faq.yml#manage-the-backup-cache-folder)  <br><br>  检查在其中配置暂存空间的卷是否存在（未删除）  <br><br>   [确保从计算机上安装的防病毒软件中排除 MARS 代理](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)  |
+  | 0x80070002、0x80070003 | 系统找不到指定的文件。         | [确保暂存文件夹未满](/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)  <br><br>  检查在其中配置暂存空间的卷是否存在（未删除）  <br><br>   [确保从计算机上安装的防病毒软件中排除 MARS 代理](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)  |
   | 0x80070005             | 访问被拒绝                                    | [检查是否有防病毒软件或其他第三方软件在阻止访问](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)     |
   | 0x8007018b             | 拒绝访问云文件。                | OneDrive 文件、Git 文件或计算机上可处于脱机状态的任何其他文件 |
 
@@ -117,13 +117,13 @@ ms.locfileid: "107518178"
 
 | 错误  | 可能的原因 | 建议的操作 |
 |---------|---------|---------|
-|<br />激活未成功完成。 由于内部服务错误 [0x1FC07]，当前操作失败。 稍后重试操作。 如果该问题仍然存在，请联系 Microsoft 支持部门。     | <li> scratch 文件夹位于空间不足的卷上。 <li> 错误地移动了 scratch 文件夹。 <li> 缺少 OnlineBackup.KEK 文件。         | <li>升级到[最新版本](https://aka.ms/azurebackup_agent)的 MARS 代理。<li>将 scratch 文件夹或缓存位置移到可用空间相当于备份数据总大小 5% 到 10% 的卷。 若要正确移动缓存位置，请参阅[有关备份文件和文件夹的常见问题](/backup-azure-file-folder-backup-faq.yml#manage-the-backup-cache-folder)中的步骤。<li> 确保 OnlineBackup.KEK 文件存在。 <br>scratch 文件夹的默认位置或缓存路径为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。        |
+|<br />激活未成功完成。 由于内部服务错误 [0x1FC07]，当前操作失败。 稍后重试操作。 如果该问题仍然存在，请联系 Microsoft 支持部门。     | <li> scratch 文件夹位于空间不足的卷上。 <li> 错误地移动了 scratch 文件夹。 <li> 缺少 OnlineBackup.KEK 文件。         | <li>升级到[最新版本](https://aka.ms/azurebackup_agent)的 MARS 代理。<li>将 scratch 文件夹或缓存位置移到可用空间相当于备份数据总大小 5% 到 10% 的卷。 若要正确移动缓存位置，请参阅[有关备份文件和文件夹的常见问题](/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)中的步骤。<li> 确保 OnlineBackup.KEK 文件存在。 <br>scratch 文件夹的默认位置或缓存路径为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。        |
 
 ## <a name="encryption-passphrase-not-correctly-configured"></a>未正确配置加密通行短语
 
 | 错误  | 可能的原因 | 建议的操作 |
 |---------|---------|---------|
-| <br />错误 34506。 未在此计算机上正确配置存储的加密通行短语。    | <li> scratch 文件夹位于空间不足的卷上。 <li> 错误地移动了 scratch 文件夹。 <li> 缺少 OnlineBackup.KEK 文件。        | <li>升级到[最新版本](https://aka.ms/azurebackup_agent)的 MARS 代理。<li>将 scratch 文件夹或缓存位置移到可用空间相当于备份数据总大小 5% 到 10% 的卷。 若要正确移动缓存位置，请参阅[有关备份文件和文件夹的常见问题](/backup-azure-file-folder-backup-faq.yml#manage-the-backup-cache-folder)中的步骤。<li> 确保 OnlineBackup.KEK 文件存在。 <br>scratch 文件夹的默认位置或缓存路径为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。         |
+| <br />错误 34506。 未在此计算机上正确配置存储的加密通行短语。    | <li> scratch 文件夹位于空间不足的卷上。 <li> 错误地移动了 scratch 文件夹。 <li> 缺少 OnlineBackup.KEK 文件。        | <li>升级到[最新版本](https://aka.ms/azurebackup_agent)的 MARS 代理。<li>将 scratch 文件夹或缓存位置移到可用空间相当于备份数据总大小 5% 到 10% 的卷。 若要正确移动缓存位置，请参阅[有关备份文件和文件夹的常见问题](/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)中的步骤。<li> 确保 OnlineBackup.KEK 文件存在。 <br>scratch 文件夹的默认位置或缓存路径为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。         |
 
 ## <a name="backups-dont-run-according-to-schedule"></a>备份不按计划运行
 
@@ -149,18 +149,18 @@ ms.locfileid: "107518178"
 
 - 如果 `LocalMachine` 的 PowerShell 执行策略设置为 `restricted`，则触发备份任务的 PowerShell cmdlet 可能会失败。 以权限提升的模式运行以下命令，将执行策略设置为 `Unrestricted` 或 `RemoteSigned`：
 
- ```PowerShell
- Get-ExecutionPolicy -List
+```powershell
+Get-ExecutionPolicy -List
 
 Set-ExecutionPolicy Unrestricted
- ```
+```
 
 - 确保 PowerShell 模块的 MSOnlineBackup 文件无缺失或损坏。 如果有任何文件缺失或损坏，请执行以下步骤：
 
   1. 在可正常运行 MARS 代理的任何计算机上，从 C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules 复制“MSOnlineBackup”文件夹。
   1. 在有问题的计算机上，将复制的文件粘贴到相同的文件夹位置 (C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules)。
 
-     如果该计算机上已有一个 MSOnlineBackup 文件夹，请将文件粘贴到其中，或替换所有现有文件。
+    如果该计算机上已有一个 MSOnlineBackup 文件夹，请将文件粘贴到其中，或替换所有现有文件。
 
 > [!TIP]
 > 为确保一致地应用所做的更改，请在执行上述步骤后重启服务器。
@@ -173,7 +173,7 @@ Set-ExecutionPolicy Unrestricted
 
 ## <a name="job-could-not-be-started-as-another-job-was-in-progress"></a>作业无法启动，因为正在进行另一个作业
 
-如果“MARS 控制台” > “作业历史记录”中出现警告消息“作业无法启动，因为正在进行另一个作业”，那么这可能是由于任务计划程序触发的作业的重复实例 。
+如果“MARS 控制台” > “作业历史记录”中出现警告消息“作业无法启动，因为正在进行另一个作业”，那么这可能是由于任务计划程序触发的作业的重复实例。 
 
 ![作业无法启动，因为正在进行另一个作业](./media/backup-azure-mars-troubleshoot/job-could-not-be-started.png)
 
@@ -243,7 +243,7 @@ Set-ExecutionPolicy Unrestricted
 
 ### <a name="another-process-or-antivirus-software-blocking-access-to-cache-folder"></a>阻止访问缓存文件夹的其他进程或防病毒软件
 
-如果你在服务器上安装了防病毒软件，请将所需的排除规则添加到这些文件和文件夹的防病毒扫描项中：  
+如果你在服务器上安装了防病毒软件，请将所需的排除规则添加到这些文件和文件夹的防病毒扫描项中：
 
 - scratch 文件夹。 其默认位置为 `C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 - `C:\Program Files\Microsoft Azure Recovery Services Agent\Bin` 处的 bin 文件夹

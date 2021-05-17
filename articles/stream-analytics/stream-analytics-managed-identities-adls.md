@@ -1,20 +1,20 @@
 ---
-title: 向 Azure Data Lake Storage Gen1 进行 Azure 流分析身份验证
+title: 在 Azure Data Lake Storage Gen1 中对 Azure 流分析进行身份验证
 description: 本文介绍如何使用托管标识在 Azure Data Lake Storage Gen1 输出中对 Azure 流分析作业进行身份验证。
 author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 04/08/2019
+ms.date: 03/16/2021
 ms.custom: seodec18
-ms.openlocfilehash: d7e9b1ecef9cfda804b89f0ba1beeb54d7d48b98
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.openlocfilehash: d5b406d260b1c6518d9227c51d84ab7eb3754329
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020343"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104598144"
 ---
-# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>使用托管标识 (预览版对流分析进行身份验证 Azure Data Lake Storage Gen1) 
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>使用托管标识在 Azure Data Lake Storage Gen1 中对流分析进行身份验证
 
 Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托管标识身份验证。 标识是 Azure Active Directory 中注册的表示给定流分析作业的托管应用程序，可用于对目标资源进行身份验证。 托管标识消除了基于用户的身份验证方法的如下限制：发生密码更改或用户令牌过期（每隔 90 天过期）时需要重新进行身份验证。 此外，托管标识有助于将输出到 Azure Data Lake Storage Gen1 的流分析作业部署自动化。
 
@@ -24,11 +24,11 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
 
 ## <a name="azure-portal"></a>Azure 门户
 
-1. 首先创建新的流分析作业，或在 Azure 门户中打开现有的作业。 在屏幕左侧的菜单栏中，选择“配置”下面的“托管标识”。  
+1. 首先创建新的流分析作业，或在 Azure 门户中打开现有的作业。 在屏幕左侧的菜单栏中，选择“配置”下面的“托管标识”。
 
    ![配置流分析托管标识](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
 
-2. 在右侧显示的窗口中选择“使用系统分配的托管标识”。  单击“保存”，为 Azure Active Directory 中的流分析作业标识创建服务主体。  新建标识的生命周期将由 Azure 管理。 删除流分析作业时，Azure 会自动删除关联的标识（即服务主体）。
+2. 在右侧显示的窗口中选择“使用系统分配的托管标识”。 单击“保存”，为 Azure Active Directory 中的流分析作业标识创建服务主体。 新建标识的生命周期将由 Azure 管理。 删除流分析作业时，Azure 会自动删除关联的标识（即服务主体）。
 
    保存配置后，服务主体的对象 ID (OID) 将列为主体 ID，如下所示：
 
@@ -36,7 +36,7 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
  
    服务主体与流分析作业同名。 例如，如果作业的名称是 **MyASAJob**，则创建的服务主体的名称也是 **MyASAJob**。
 
-3. 在 ADLS Gen1 输出接收器的输出属性窗口中，单击“身份验证模式”下拉列表并选择“托管标识”。****
+3. 在 ADLS Gen1 输出接收器的输出属性窗口中，单击“身份验证模式”下拉列表并选择“托管标识”。
 
 4. 填写其余的属性。 若要详细了解如何创建 ADLS 输出，请参阅[使用流分析创建 Data Lake Store 输出](../data-lake-store/data-lake-store-stream-analytics.md)。 完成后，单击“保存”。
 
@@ -54,7 +54,7 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
 
    ![选择服务主体名称](./media/stream-analytics-managed-identities-adls/stream-analytics-service-principal-name.png)
  
-8. 在“权限”窗格中，选中“写入”和“执行”权限并将其分配到“此文件夹和所有子文件夹”。 然后单击 **"确定"**。
+8. 在“权限”窗格中，选中“写入”和“执行”权限并将其分配到“此文件夹和所有子文件夹”。 然后单击“确定”。
 
    ![选择写入和执行权限](./media/stream-analytics-managed-identities-adls/stream-analytics-select-permissions.png)
  
@@ -70,7 +70,7 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
 
    ![流分析作业配置托管标识](./media/stream-analytics-managed-identities-adls/adls-mi-jobconfig-vs.png)
 
-2. 在 ADLS Gen1 输出接收器的输出属性窗口中，单击“身份验证模式”下拉列表并选择“托管标识”。****
+2. 在 ADLS Gen1 输出接收器的输出属性窗口中，单击“身份验证模式”下拉列表并选择“托管标识”。
 
    ![ADLS 输出托管标识](./media/stream-analytics-managed-identities-adls/adls-mi-output-vs.png)
 
@@ -84,7 +84,7 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
 
    * 为作业中使用的 ADLS Gen1 前缀路径自动设置“写入”和“执行”权限，并将这些权限分配给此文件夹和所有子级。
 
-5. 你可以在 Visual Studio) 之外的生成 (计算机上使用 [流分析 CI.CD NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/) 版本1.5.0 或更高版本，生成具有以下属性的资源管理器模板。 按照下一节中的资源管理器模板部署步骤获取服务主体，并通过 PowerShell 授予对该服务主体的访问权限。
+5. 可以在生成计算机上（在 Visual Studio 之外）使用[流分析 CI.CD NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/) 1.5.0 或更高版本生成带有以下属性的资源管理器模板。 按照下一节中的资源管理器模板部署步骤获取服务主体，并通过 PowerShell 授予对该服务主体的访问权限。
 
 ## <a name="resource-manager-template-deployment"></a>资源管理器模板部署
 
@@ -177,14 +177,14 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
 
 ## <a name="remove-managed-identity"></a>删除托管标识
 
-仅当删除作业时，才会删除为流分析作业创建的托管标识。 如果不删除该作业，则无法删除该托管标识。 如果不再想要使用托管标识，可以更改输出的身份验证方法。 在删除作业之前，托管标识将继续存在，如果你决定再次使用托管标识身份验证，则将使用该标识。
+仅当删除流分析作业后，才会删除为该作业创建的托管标识。 如果不删除作业，则无法删除其托管标识。 如果不想再使用托管标识，可以更改对输出的身份验证方法。 在删除作业之前，托管标识会始终存在，如果决定再次使用托管标识身份验证，将再次使用该标识。
 
 ## <a name="limitations"></a>限制
-此功能不支持以下功能：
+此功能不支持以下特性：
 
-1. **多租户访问**：为给定流分析作业创建的服务主体将驻留在创建该作业的 Azure Active Directory 租户上，不能用于驻留在不同 Azure Active Directory 租户上的资源。 因此，只能将 MSI 用在 ADLS Gen 1 资源上，且这些资源必须位于 Azure 流分析作业所在的 Azure Active Directory 租户中。 
+1. 多租户访问：为给定流分析作业创建的服务主体将驻留在创建该作业的 Azure Active Directory 租户上，不能用于驻留在不同 Azure Active Directory 租户上的资源。 因此，只能将 MSI 用在 ADLS Gen 1 资源上，且这些资源必须位于 Azure 流分析作业所在的 Azure Active Directory 租户中。 
 
-2. **[用户分配的标识](../active-directory/managed-identities-azure-resources/overview.md)**：不受支持。 这意味着，用户不能输入自己的供流分析作业使用的服务主体。 服务主体由 Azure 流分析生成。
+2. **[用户分配的标识](../active-directory/managed-identities-azure-resources/overview.md)** ：不支持。 这意味着，用户不能输入自己的供流分析作业使用的服务主体。 服务主体由 Azure 流分析生成。
 
 ## <a name="next-steps"></a>后续步骤
 

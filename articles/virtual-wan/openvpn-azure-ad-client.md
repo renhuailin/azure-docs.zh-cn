@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 04/26/2021
 ms.author: cherylmc
-ms.openlocfilehash: 3dbdfb461bc2ae79439f39df3efbc2c564782110
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 13587862f079c028a9848e36afcff74a9c725547
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548387"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108207494"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>配置用于 P2S OpenVPN 协议连接的 VPN 客户端：Azure AD 身份验证
 
@@ -24,30 +24,30 @@ ms.locfileid: "102548387"
 
 ## <a name="working-with-client-profiles"></a><a name="profile"></a>使用客户端配置文件
 
-若要进行连接，需要下载 Azure VPN 客户端，并在要连接到 VNet 的每台计算机上配置 VPN 客户端配置文件。 可以在计算机上创建客户端配置文件，导出该配置文件，然后将其导入到其他计算机。
+对于每台希望通过 VPN 客户端连接到 VNet 的计算机，需要下载适用于该计算机的 Azure VPN 客户端，还需要配置 VPN 客户端配置文件。 如果希望配置多台计算机，则可以在一台计算机上创建客户端配置文件，将其导出后再导入到其他计算机。
 
 ### <a name="to-download-the-azure-vpn-client"></a>下载 Azure VPN 客户端
 
-使用[此链接](https://go.microsoft.com/fwlink/?linkid=2117554)下载 Azure VPN 客户端。 请确保 Azure VPN 客户端有权在后台运行。 若要检查/启用权限，请执行以下步骤：
+1. 将 [Azure VPN 客户端](https://go.microsoft.com/fwlink/?linkid=2117554)下载到计算机。
+1. 验证 Azure VPN 客户端是否具有在后台运行的权限。 若要检查并启用权限，请导航到“开始”->“设置”->“隐私”->“后台应用”。
 
-1. 转到“开始”，然后选择“设置”>“隐私”>“后台应用”。
-2. 在“后台应用”下，确保将“允许应用在后台运行”切换到“开”。 
-3. 在“选择可在后台运行的应用”下，将 Azure VPN 客户端的设置转换为“开”  。
+   * 在“后台应用”下，确保“允许应用在后台运行”处于开启状态。
+   * 在“选择可在后台运行的应用”下，将 Azure VPN 客户端的设置转换为“开”。
 
-  ![权限 (permission)](./media/openvpn-azure-ad-client/backgroundpermission.png)
+     ![显示后台应用的屏幕截图。](./media/openvpn-azure-ad-client/backgroundpermission.png)
 
 ### <a name="to-create-a-certificate-based-client-profile"></a><a name="cert"></a>创建基于证书的客户端配置文件
 
 使用基于证书的配置文件时，请确保已在客户端计算机上安装适当的证书。 有关证书的详细信息，请参阅[安装客户端证书](certificates-point-to-site.md)。
 
-  ![cert](./media/openvpn-azure-ad-client/create/create-cert1.jpg)
+![显示证书身份验证的屏幕截图。](./media/openvpn-azure-ad-client/create/create-cert1.jpg)
 
 ### <a name="to-create-a-radius-client-profile"></a><a name="radius"></a>创建 RADIUS 客户端配置文件
 
-  ![radius](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
+![屏幕截图显示 RADIUS 连接客户端信息。](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
   
 > [!NOTE]
-> 可以在 P2S VPN 客户端配置文件中导出服务器机密。  可在[此处](about-vpn-profile-download.md)找到有关如何导出客户端配置文件的说明。
+> 可以在 P2S VPN 客户端配置文件中导出服务器机密。 若要导出客户端配置文件，请参阅[用户 VPN 客户端配置文件](about-vpn-profile-download.md)。
 >
 
 ### <a name="to-export-and-distribute-a-client-profile"></a><a name="export"></a>导出和分发客户端配置文件
@@ -158,7 +158,7 @@ ms.locfileid: "102548387"
 
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>如何将 DNS 后缀添加到 VPN 客户端？
 
-可以修改下载的配置文件 XML 文件并添加 \<dnssuffixes>\<dnssufix> \</dnssufix>\</dnssuffixes> 标记
+可修改下载的 XML 配置文件并添加 \<dnssuffixes>\<dnssufix>\</dnssufix>\</dnssuffixes> 标记。
 
 ```
 <azvpnprofile>
@@ -176,7 +176,7 @@ ms.locfileid: "102548387"
 
 ### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>如何将自定义 DNS 服务器添加到 VPN 客户端？
 
-可以修改下载的配置文件 XML 文件并添加 \<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers> 标记
+可修改下载的 XML 配置文件并添加 \<dnsservers>\<dnsserver>\</dnsserver>\</dnsservers> 标记。
 
 ```
 <azvpnprofile>
@@ -197,7 +197,7 @@ ms.locfileid: "102548387"
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>如何将自定义路由添加到 VPN 客户端？
 
-可以修改下载的配置文件 XML 文件并添加 \<includeroutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</includeroutes> 标记
+可修改下载的 XML 配置文件并添加 \<includeroutes>\<route>\<destination>\<mask>\</destination>\</mask>\</route>\</includeroutes> 标记。
 
 ```
 <azvpnprofile>
@@ -212,9 +212,10 @@ ms.locfileid: "102548387"
 </clientconfig>
 </azvpnprofile>
 ```
-### <a name="how-do-i-direct-all-traffic-to-the-vpn-tunnel-force-tunnel"></a>如何将所有流量定向到 VPN 隧道（强制隧道）？
 
-可以修改下载的配置文件 XML 文件并添加 \<includeroutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</includeroutes> 标记
+### <a name="how-do-i-direct-all-traffic-to-the-vpn-tunnel-force-tunnel"></a><a name="force-tunneling"></a>如何将所有流量定向到 VPN 隧道（强制隧道）？
+
+可修改下载的 XML 配置文件并添加 \<includeroutes>\<route>\<destination>\<mask>\</destination>\</mask>\</route>\</includeroutes> 标记。
 
 ```
 <azvpnprofile>
@@ -235,7 +236,7 @@ ms.locfileid: "102548387"
 
 ### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>如何在 VPN 客户端中阻止（排除）路由？
 
-可以修改下载的配置文件 XML 文件并添加 \<excluderoutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</excluderoutes> 标记
+可修改下载的 XML 配置文件并添加 \<excluderoutes>\<route>\<destination>\<mask>\</destination>\</mask>\</route>\</excluderoutes> 标记。
 
 ```
 <azvpnprofile>
@@ -250,14 +251,15 @@ ms.locfileid: "102548387"
 </clientconfig>
 </azvpnprofile>
 ```
+
 ### <a name="can-i-import-the-profile-from-a-command-line-prompt"></a>是否可以从命令行提示符导入配置文件？
 
-可以从命令行提示符导入配置文件，方法是将下载的 azurevpnconfig.xml  文件放在“%userprofile%\AppData\Local\Packages\Microsoft.AzureVpn_8wekyb3d8bbwe\LocalState”  文件夹中，并运行以下命令：
+可从命令行提示符导入配置文件，方法是将下载的 azurevpnconfig.xml 文件放在 %userprofile%\AppData\Local\Packages\Microsoft.AzureVpn_8wekyb3d8bbwe\LocalState 文件夹中，并运行以下命令：
 
 ```
 azurevpn -i azurevpnconfig.xml 
 ```
-若要强制导入，还应使用“-f”  开关
+若要强制导入，请使用 -f 开关。
 
 
 ## <a name="next-steps"></a>后续步骤

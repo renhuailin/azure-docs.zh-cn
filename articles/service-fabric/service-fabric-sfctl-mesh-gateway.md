@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric sfctl 网格网关
-description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于获取和删除 Service Fabric 网格网关资源的命令的列表。
+title: Azure Service Fabric CLI- sfctl 网格网关
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于获取和删除 Service Fabric 网格网关资源的命令列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 9b6766137dd88a5a780dcca7b6eab7c6c3f9bbf4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86260393"
 ---
 # <a name="sfctl-mesh-gateway"></a>sfctl mesh gateway
@@ -17,9 +17,9 @@ ms.locfileid: "86260393"
 
 ## <a name="commands"></a>命令
 
-|Command|描述|
+|命令|说明|
 | --- | --- |
-| “删除” | 删除网关资源。 |
+| delete | 删除网关资源。 |
 | list | 列出所有网关资源。 |
 | 显示 | 获取具有给定名称的网关资源。 |
 
@@ -30,7 +30,7 @@ ms.locfileid: "86260393"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --name -n [必需] | 网关资源的名称。 |
 
@@ -66,7 +66,7 @@ ms.locfileid: "86260393"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --name -n [必需] | 网关资源的名称。 |
 

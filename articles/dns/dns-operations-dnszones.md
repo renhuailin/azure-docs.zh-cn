@@ -9,20 +9,20 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/19/2018
+ms.date: 04/27/2021
 ms.author: rohink
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6abcca9d9888dc8968d7233e7aee6cd76aa215f7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02c6518a1ccfaa678c42369ae22f67670aaf0566
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94965742"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203248"
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>如何使用 PowerShell 管理 DNS 区域
 
 > [!div class="op_single_selector"]
-> * [Portal](dns-operations-dnszones-portal.md)
+> * [门户](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
 > * [Azure 经典 CLI](./dns-operations-dnszones-cli.md)
 > * [Azure CLI](dns-operations-dnszones-cli.md)
@@ -35,31 +35,28 @@ ms.locfileid: "94965742"
 
 [!INCLUDE [dns-powershell-setup](../../includes/dns-powershell-setup-include.md)]
 
-
 ## <a name="create-a-dns-zone"></a>创建 DNS 区域
 
-通过使用 `New-AzureRmDnsZone` cmdlet 创建 DNS 区域。
+通过使用 `New-AzDnsZone` cmdlet 创建 DNS 区域。
 
-以下示例在名为 *MyResourceGroup* 的资源组中创建名为 *contoso.com* 的 DNS 区域：
+以下示例在名为 MyDNSResourceGroup 的资源组中创建名为 contoso.com 的 DNS 区域：
 
-```powershell
-New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
+```azurepowershell-interactive
+New-AzDnsZone -Name contoso.com -ResourceGroupName MyDNSResourceGroup
 ```
 
 以下示例演示如何使用两个 [Azure 资源管理器标记](dns-zones-records.md#tags)（*project = demo* 和 *env = test*）创建 DNS 区域：
 
-```powershell
-New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
+```azurepowershell-interactive
+New-AzDnsZone -Name contoso.com -ResourceGroupName MyDNSResourceGroup -Tag @{ project="demo"; env="test" }
 ```
-
-Azure DNS 还支持专用 DNS 区域。  若要详细了解专用 DNS 区域，请参阅[将 Azure DNS 用于专用域](private-dns-overview.md)。 有关如何创建专用 DNS 区域的示例，请参阅 [Azure DNS 专用区域入门（使用 PowerShell）](./private-dns-getstarted-powershell.md)。
 
 ## <a name="get-a-dns-zone"></a>获取 DNS 区域
 
-若要检索 DNS 区域，请使用 `Get-AzureRmDnsZone` cmdlet。 此操作将返回与 Azure DNS 中现有区域相对应的 DNS 区域对象。 此对象包含有关区域的数据（例如记录集数），但不包含记录集本身（请参见 `Get-AzureRmDnsRecordSet`）。
+若要检索 DNS 区域，请使用 `Get-AzDnsZone` cmdlet。 此操作将返回与 Azure DNS 中现有区域相对应的 DNS 区域对象。 此对象包含有关区域的数据（例如记录集数），但不包含记录集本身（请参见 `Get-AzDnsRecordSet`）。
 
-```powershell
-Get-AzureRmDnsZone -Name contoso.com –ResourceGroupName MyAzureResourceGroup
+```azurepowershell-interactive
+Get-AzDnsZone -Name contoso.com –ResourceGroupName MyDNSResourceGroup
 
 Name                  : contoso.com
 ResourceGroupName     : myresourcegroup
@@ -73,21 +70,23 @@ MaxNumberOfRecordSets : 5000
 
 ## <a name="list-dns-zones"></a>列出 DNS 区域
 
-通过省略 `Get-AzureRmDnsZone` 中的区域名称，可以枚举资源组中的所有区域。 此操作将返回区域对象的数组。
+通过省略 `Get-AzDnsZone` 中的区域名称，可以枚举资源组中的所有区域。 此操作将返回区域对象的数组。
 
-```powershell
-$zoneList = Get-AzureRmDnsZone -ResourceGroupName MyAzureResourceGroup
+```azurepowershell-interactive
+$zoneList = Get-AzDnsZone -ResourceGroupName MyDNSResourceGroup
+$zoneList
 ```
 
-通过省略 `Get-AzureRmDnsZone` 的区域名和资源组名，可枚举 Azure 订阅中的所有区域。
+通过省略 `Get-AzDnsZone` 的区域名和资源组名，可枚举 Azure 订阅中的所有区域。
 
-```powershell
-$zoneList = Get-AzureRmDnsZone
+```azurepowershell-interactive
+$zoneList = Get-AzDnsZone
+$zoneList
 ```
 
 ## <a name="update-a-dns-zone"></a>更新 DNS 区域
 
-可以使用 `Set-AzureRmDnsZone` 对 DNS 区域资源进行更改。 此 cmdlet 不会更新区域中的任何 DNS 记录集（请参阅[如何管理 DNS 记录](dns-operations-recordsets.md)）。 该操作仅可用于更新区域资源本身的属性。 可写区域属性目前仅限于[区域资源的 Azure 资源管理器“标记”](dns-zones-records.md#tags)。
+可以使用 `Set-AzDnsZone` 对 DNS 区域资源进行更改。 此 cmdlet 不会更新此区域中的任何 DNS 记录集（请参阅[如何管理 DNS 记录](dns-operations-recordsets.md)）。 该操作仅可用于更新区域资源本身的属性。 可写区域属性目前仅限于[区域资源的 Azure 资源管理器“标记”](dns-zones-records.md#tags)。
 
 使用以下两种方式中的一种更新 DNS 区域：
 
@@ -95,17 +94,17 @@ $zoneList = Get-AzureRmDnsZone
 
 此方法使用指定值替换现有区域标记。
 
-```powershell
-Set-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
+```azurepowershell-interactive
+Set-AzDnsZone -Name contoso.com -ResourceGroupName MyDNSResourceGroup -Tag @{ project="demo"; env="test" }
 ```
 
 ### <a name="specify-the-zone-using-a-zone-object"></a>指定使用 $zone 对象的区域
 
 此方法检索现有区域对象、修改标记，并提交更改。 如此一来，可保留现有标记。
 
-```powershell
+```azurepowershell-interactive
 # Get the zone object
-$zone = Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
+$zone = Get-AzDnsZone -Name contoso.com -ResourceGroupName MyDNSResourceGroup
 
 # Remove an existing tag
 $zone.Tags.Remove("project")
@@ -114,14 +113,14 @@ $zone.Tags.Remove("project")
 $zone.Tags.Add("status","approved")
 
 # Commit changes
-Set-AzureRmDnsZone -Zone $zone
+Set-AzDnsZone -Zone $zone
 ```
 
-使用 `Set-AzureRmDnsZone` 与 $zone 对象时，[Etag 检查](dns-zones-records.md#etags)将用于确保不会覆盖并发更改。 可以使用可选的 `-Overwrite` 开关取消这些检查。
+将 `Set-AzDnsZone` 与 $zone 对象配合使用时，[Etag 检查](dns-zones-records.md#etags)将用于确保不会覆盖并发更改。 可以使用可选的 `-Overwrite` 开关取消这些检查。
 
 ## <a name="delete-a-dns-zone"></a>删除 DNS 区域
 
-可以使用 `Remove-AzureRmDnsZone` cmdlet 删除 DNS 区域。
+可以使用 `Remove-AzDnsZone` cmdlet 删除 DNS 区域。
 
 > [!NOTE]
 > 删除 DNS 区域也会删除该区域中的所有 DNS 记录。 无法撤消此操作。 如果 DNS 区域在使用中，则使用该区域的服务在区域删除后将无效。
@@ -133,35 +132,35 @@ Set-AzureRmDnsZone -Zone $zone
 
 ### <a name="specify-the-zone-using-the-zone-name-and-resource-group-name"></a>指定使用区域名称和资源组的区域
 
-```powershell
-Remove-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
+```azurepowershell-interactive
+Remove-AzDnsZone -Name contoso.com -ResourceGroupName MyDNSResourceGroup
 ```
 
 ### <a name="specify-the-zone-using-a-zone-object"></a>指定使用 $zone 对象的区域
 
-可使用 `Get-AzureRmDnsZone` 返回的 `$zone` 对象指定要删除的区域。
+可使用 `Get-AzDnsZone` 返回的 `$zone` 对象指定要删除的区域。
 
-```powershell
-$zone = Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
-Remove-AzureRmDnsZone -Zone $zone
+```azurepowershell-interactive
+$zone = Get-AzDnsZone -Name contoso.com -ResourceGroupName MyDNSResourceGroup
+Remove-AzDnsZone -Zone $zone
 ```
 
 区域对象也可以通过管道输送，而不是作为参数传递：
 
-```powershell
-Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup | Remove-AzureRmDnsZone
+```azurepowershell-interactive
+Get-AzDnsZone -Name contoso.com -ResourceGroupName MyDNSResourceGroup | Remove-AzDnsZone
 
 ```
 
-和 `Set-AzureRmDnsZone` 一样，指定使用 `$zone` 对象的区域使 Etag 检查能够确保不会删除并发更改。 使用 `-Overwrite` 开关取消这些检查。
+和 `Set-AzDnsZone` 一样，如果指定使用 `$zone` 对象的区域，Etag 检查就能够确保不会删除并发更改。 使用 `-Overwrite` 开关取消这些检查。
 
 ## <a name="confirmation-prompts"></a>确认提示
 
-`New-AzureRmDnsZone`、`Set-AzureRmDnsZone` 和 `Remove-AzureRmDnsZone` cmdlet 都支持确认提示。
+`New-AzDnsZone`、`Set-AzDnsZone` 和 `Remove-AzDnsZone` cmdlet 都支持确认提示。
 
-如果 `$ConfirmPreference` PowerShell 首选项变量的值为 `Medium` 或更低，则 `New-AzureRmDnsZone` 和 `Set-AzureRmDnsZone` 都会提示用户进行确认。 由于删除 DNS 区域存在的潜在影响力较大，如果 `$ConfirmPreference` PowerShell 变量拥有除 `None` 之外的其他值，则 `Remove-AzureRmDnsZone` cmdlet 会提示用户进行确认。
+如果 `$ConfirmPreference` PowerShell 首选项变量的值为 `Medium` 或更低，则 `New-AzDnsZone` 和 `Set-AzDnsZone` 都会提示用户进行确认。 由于删除 DNS 区域可能会导致出现不需要的条件，如果 `$ConfirmPreference` PowerShell 变量拥有除 `None` 之外的其他值，则 `Remove-AzDnsZone` cmdlet 会提示用户进行确认。
 
-由于 `$ConfirmPreference` 的默认值为 `High`，则默认情况下仅 `Remove-AzureRmDnsZone` 会提示用户进行确认。
+由于 `$ConfirmPreference` 的默认值为 `High`，则默认情况下仅 `Remove-AzDnsZone` 会提示用户进行确认。
 
 可以使用 `-Confirm` 参数重写当前的 `$ConfirmPreference` 设置。 如果指定 `-Confirm` 或 `-Confirm:$True`，cmdlet 会在运行之前提示用户进行确认。 如果指定 `-Confirm:$False`，cmdlet 不会提示用户进行确认。
 
@@ -173,4 +172,4 @@ Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup | R
 <br>
 了解如何[将域委派给 Azure DNS](dns-domain-delegation.md)。
 <br>
-查看 [Azure DNS PowerShell 参考文档](/powershell/module/azurerm.dns)。
+查看 [Azure DNS PowerShell 参考文档](/powershell/module/Az.dns)。

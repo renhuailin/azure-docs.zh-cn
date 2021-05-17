@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: ff2ef8970afa21c0218da20a5b79ea2fb782dd5c
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
-ms.translationtype: MT
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b03481b41e879acac4c3b193d72594454f650525
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053578"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831179"
 ---
 # <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>排查在空闲时间启动/停止 VM 的问题
 
@@ -149,7 +150,7 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
   ```
 
 * 要启动和停止 VM，自动化帐户的运行方式帐户必须拥有 VM 的适当权限。 若要了解如何检查对资源的权限，请参阅[快速入门：使用 Azure 门户查看分配给用户的角色](../../role-based-access-control/check-access.md)。 需要提供运行方式帐户所使用的服务主体的应用程序 ID。 可以通过转到 Azure 门户中的自动化帐户来检索该值。 在“帐户设置”下选择“运行方式帐户”，然后选择适当的运行方式帐户。
-* 如果 VM 在启动或解除分配时遇到问题，则 VM 本身可能存在问题。 例如，当 VM 尝试关闭时正在应用的更新、挂起的服务等。 转到 VM 资源，然后检查“活动日志”以查看日志中是否有任何错误。 也可以尝试登录到 VM，以查看事件日志中是否有任何错误。 若要详细了解 VM 故障排除，请参阅[排查 Azure 虚拟机问题](../../virtual-machines/troubleshooting/index.yml)。
+* 如果 VM 在启动或解除分配时遇到问题，则 VM 本身可能存在问题。 例如，当 VM 尝试关闭时正在应用的更新、挂起的服务等。 转到 VM 资源，然后检查“活动日志”以查看日志中是否有任何错误。 也可以尝试登录到 VM，以查看事件日志中是否有任何错误。 若要详细了解 VM 故障排除，请参阅[排查 Azure 虚拟机问题](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)。
 * 检查[作业流](../automation-runbook-execution.md#job-statuses)以查看是否有任何错误。 在门户中，转到“自动化帐户”，然后选择“流程自动化”下的“作业”。
 
 ## <a name="scenario-my-custom-runbook-fails-to-start-or-stop-my-vms"></a><a name="custom-runbook"></a>场景：我的自定义 runbook 无法启动或停止我的 VM
@@ -226,8 +227,8 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 
 ## <a name="next-steps"></a>后续步骤
 
-如果未在此处看到你遇到的问题，或者无法解决你遇到的问题，请尝试以下途径之一以获取其他支持：
+如果你的问题未在本文中列出，或者无法解决问题，请尝试通过以下渠道之一获取更多支持：
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答。
-* 连接到 [@AzureSupport](https://twitter.com/azuresupport)，这是用于改进客户体验的官方 Microsoft Azure 帐户。 Azure 支持将 Azure 社区引导至解答、支持和专业化服务。
+* 连接到 [@AzureSupport](https://twitter.com/azuresupport)，这是用于改进客户体验的官方 Microsoft Azure 帐户。 Azure 支持人员会将你连接到 Azure 社区，从中可以获得解答、支持和专家建议。
 * 提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。

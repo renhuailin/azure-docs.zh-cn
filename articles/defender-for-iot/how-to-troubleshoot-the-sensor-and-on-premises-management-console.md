@@ -3,12 +3,12 @@ title: 排查传感器和本地管理控制台问题
 description: 排查传感器和本地管理控制台问题，消除可能遇到的任何问题。
 ms.date: 03/14/2021
 ms.topic: article
-ms.openlocfilehash: 83ffec959a5b38e9f4fd4d7d0dcfd3b1b9faa096
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e20c11e869ebeea0b4fc7f917dd8cebba7a69c5c
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785438"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209042"
 ---
 # <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>排查传感器和本地管理控制台问题
 
@@ -127,7 +127,7 @@ SNMP：通过 SNMP 监视传感器的运行状况。 Azure Defender for IoT 响�
 
 :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/broadcasting-devices.png" alt-text="查看广播设备。":::
 
-在这种情况下，需要验证是否仅可看到广播流量。 然后，要求网络工程师修复 SPAN 端口配置，以便可以看到单播流量。
+在这种情况下，请验证是否只能看到广播流量，然后要求网络工程师修复 SPAN 端口配置，以使你还可以看到单播流量。
 
 若要验证是否只能看到广播流量，请执行以下操作：
 

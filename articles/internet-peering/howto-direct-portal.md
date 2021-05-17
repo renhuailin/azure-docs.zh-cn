@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 5/19/2020
 ms.author: derekol
 ms.openlocfilehash: 1a89ce873c53e94036aa4f8ac2c2870365924187
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91537202"
 ---
 # <a name="create-or-modify-a-direct-peering-by-using-the-azure-portal"></a>使用 Azure 门户创建或修改直接对等互连
@@ -37,7 +37,7 @@ ms.locfileid: "91537202"
 1. 在“创建对等互连”页面的“基本信息”选项卡上，按如下所示填写相应的框 ：
 
 
-    ![屏幕截图显示 "创建对等互连" 页的 "基本信息" 选项卡，其中包含 "创建新" 链接。](./media/setup-basics-tab.png)
+    ![屏幕截图显示“创建对等互连”页的“基本”选项卡，其中标注了“创建新链接”。](./media/setup-basics-tab.png)
 
 2. 选择 Azure 订阅。
 
@@ -48,18 +48,18 @@ ms.locfileid: "91537202"
 5. 如果选择现有的资源组，则会自动选择区域。 如果选择创建新的资源组，则还需要选择要在其中驻留资源的 Azure 区域。
 
     >[!NOTE]
-    > 资源组所在的区域独立于要与 Microsoft 创建对等互连的位置。 但是，最佳实践是在驻留在最近的 Azure 区域的资源组内组织对等互连资源。 例如，对于阿什本中的对等互连，可以在美国东部或美国东部 2 创建资源组。
+    > 资源组所在的区域独立于要与 Microsoft 创建对等互连的位置。 但是，最佳做法是在位于最近的 Azure 区域的资源组内组织对等互连资源。 例如，对于阿什本中的对等互连，可以在美国东部或东部 2 创建资源组。
 
-6. 在 PeerASN 框中选择你的 ASN。
+6. 在”PeerASN”框中选择你的 ASN。
 
     >[!IMPORTANT]
     >在提交对等互连请求之前，只能选择 ValidationState 为“已批准”的 ASN。 如果刚刚提交了 PeerAsn 请求，请等待 12 小时，或等待 ASN 关联获得批准。 如果选择的 ASN 正在等待验证，你将看到一条错误消息。 如果看不到需要选择的 ASN，请检查是否选择了正确的订阅。 如果订阅正确，请检查是否已使用[将对等 ASN 关联到 Azure 订阅](https://go.microsoft.com/fwlink/?linkid=2129592)创建了 PeerAsn。
 
-7. 在完成时选择“下一步:配置”以继续。
+7. 在完成时选择“下一步:**配置以继续**。
 
 
 
-    ![屏幕截图显示 "创建对等互连" 页的 "基本信息" 选项卡并输入所有值。](./media/setup-direct-basics-filled-tab.png)
+    ![屏幕截图显示“创建对等互连”页的“基本”选项卡，其中所有值均已输入。](./media/setup-direct-basics-filled-tab.png)
 
 
 #### <a name="configure-connections-and-submit"></a>配置连接并提交

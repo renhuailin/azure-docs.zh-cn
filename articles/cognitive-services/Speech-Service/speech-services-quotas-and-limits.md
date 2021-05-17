@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.author: alexeyo
-ms.openlocfilehash: f851d7999b063a2b1334564902d81343e3789439
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 0f4064e6baf6c6ce237371a2a725fbe023b1e9f2
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011167"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108277689"
 ---
 # <a name="speech-service-quotas-and-limits"></a>语音服务配额和限制
 
@@ -31,9 +31,9 @@ ms.locfileid: "107011167"
 
 | Quota | 免费 (F0)<sup>1</sup> | 标准 (S0) |
 |--|--|--|
-| 并发请求限制 - 基础模型 | 1 | 100（默认值） |
+| 并发请求限制 - 基础模型终结点 | 1 | 100（默认值） |
 | 可调 | 否<sup>2</sup> | Yes<sup>2</sup> |
-| 并发请求限制 - 自定义模型 | 1 | 20（默认值） |
+| 并发请求限制 - 自定义终结点 | 1 | 100（默认值） |
 | 可调 | 否<sup>2</sup> | Yes<sup>2</sup> |
 
 #### <a name="batch-transcription"></a>批量听录
@@ -98,10 +98,10 @@ ms.locfileid: "107011167"
 跳转到[文本转语音。为自定义语音增加听录并发请求限制](#text-to-speech-increasing-transcription-concurrent-request-limit-for-custom-voice)
 
 ### <a name="speech-to-text-increasing-online-transcription-concurrent-request-limit"></a>语音转文本：增加联机听录并发请求限制
-默认情况下，每个语音资源（基础模型）的并发请求数限制为 100，每个自定义终结点（自定义模型）的并发请求数限制为 20。 此数量在标准定价层中可能有所增加。 提交请求之前，请确保熟悉[此部分](#detailed-description-quota-adjustment-and-best-practices)中的材料，并了解这些[最佳做法](#general-best-practices-to-mitigate-throttling-during-autoscaling)。
+默认情况下，每个语音资源（基础模型）和每个自定义终结点（自定义模型）的并发请求数都限制为 100。 此数量在标准定价层中可能有所增加。 提交请求之前，请确保熟悉[此部分](#detailed-description-quota-adjustment-and-best-practices)中的材料，并了解这些[最佳做法](#general-best-practices-to-mitigate-throttling-during-autoscaling)。
 
 >[!NOTE]
-> 如果使用自定义模型，请注意，一个语音资源可能与托管许多自定义模型部署的多个自定义终结点相关联。 每个自定义终结点在创建时都设置了默认的并发请求数限制 (20)。 如需调整该限制，需要分别对每个自定义终结点进行调整。 另请注意，语音资源基础模型的并发请求限制数的值对与此资源关联的自定义终结点没有影响。
+> 如果使用自定义模型，请注意，一个语音资源可能与托管许多自定义模型部署的多个自定义终结点相关联。 每个自定义终结点在创建时都设置了默认的并发请求数限制 (100)。 如需调整该限制，需要分别对每个自定义终结点进行调整。 另请注意，语音资源基础模型的并发请求限制数的值对与此资源关联的自定义终结点没有影响。
 
 
 增加并发请求限制不会直接影响成本。 语音服务使用“只需为使用的资源付费”模型。 此限制定义了服务在开始限制请求之前可缩放的程度。

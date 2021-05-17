@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 7e9f4b55945afc04e5c826b26632d68cb75e502f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86260264"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
@@ -57,15 +57,15 @@ ms.locfileid: "86260264"
 | --cluster-config            [必需] | 群集配置。 |
 | --application-health-policies | 应用程序类型名称对的 JSON 编码字典以及引发错误之前的最大不正常百分比。 |
 | --delta-unhealthy-nodes | 升级过程中允许的增量运行状况降级最大百分比。 允许的值为 0 到 100 的整数值。 |
-| --health-check-retry | 应用程序或群集不正常时尝试执行运行状况检查所间隔的时间长度。  默认值\: PT0H0M0S。 |
-| --health-check-stable | 升级继续到下一升级域之前，应用程序或群集必须保持正常的时长。  默认值\: PT0H0M0S。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
-| --health-check-wait | 启动运行状况检查进程之前，完成升级域后等待的时间长度。  默认值\: PT0H0M0S。 |
+| --health-check-retry | 应用程序或群集不正常时尝试执行运行状况检查所间隔的时间长度。  默认值：PT0H0M0S。 |
+| --health-check-stable | 升级继续到下一升级域之前，应用程序或群集必须保持正常的时长。  默认值：PT0H0M0S。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
+| --health-check-wait | 启动运行状况检查进程之前，完成升级域后等待的时间长度。  默认值：PT0H0M0S。 |
 | --timeout -t | 默认值\: 60。 |
 | --unhealthy-applications | 升级过程中允许的不正常应用程序最大百分比。 允许的值为 0 到 100 的整数值。 |
 | --unhealthy-nodes | 升级过程中允许的不正常节点最大百分比。 允许的值为 0 到 100 的整数值。 |
 | --upgrade-domain-delta-unhealthy-nodes | 升级过程中允许的升级域增量运行状况降级最大百分比。 允许的值为 0 到 100 的整数值。 |
-| --upgrade-domain-timeout | 执行 FailureAction 前，每个升级域需等待的时长。  默认值\: PT0H0M0S。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
-| --upgrade-timeout | 执行 FailureAction 前，完成整个升级需等待的时长。  默认值\: PT0H0M0S。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
+| --upgrade-domain-timeout | 执行 FailureAction 前，每个升级域需等待的时长。  默认值：PT0H0M0S。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
+| --upgrade-timeout | 执行 FailureAction 前，完成整个升级需等待的时长。  默认值：PT0H0M0S。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
 
 ### <a name="global-arguments"></a>全局参数
 

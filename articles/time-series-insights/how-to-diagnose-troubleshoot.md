@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
 ms.openlocfilehash: d9dd07e3a35d83ff6bd9c7c493768d1197667c39
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98108783"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>诊断和排查 Azure 时序见解第 2 代环境的问题
@@ -71,7 +71,7 @@ ms.locfileid: "98108783"
 - 可能因环境受限而发生此问题。
 
     > [!NOTE]
-    > 此时，时序见解支持最大引入速率为 1 Mbps。
+    > 目前，时序见解支持的最大引入速率为 1 Mbps。
 
 ## <a name="problem-data-was-showing-but-now-ingestion-has-stopped"></a>问题：以前可以显示数据，但引入现已停止
 
@@ -111,7 +111,7 @@ ms.locfileid: "98108783"
 
 - 你可能在访问时序见解 S1 或 S2 环境。
 
-   时序模型仅在即用即付环境中受支持。 有关如何从时序见解 Gen2 资源管理器访问 S1 或 S2 环境的详细信息，请阅读 [资源管理器中的可视化数据](./concepts-ux-panels.md)。
+   时序模型仅在即用即付环境中受支持。 若要详细了解如何从时序见解 Gen2 资源管理器访问 S1 或 S2 环境，请阅读[可视化资源管理器中的数据](./concepts-ux-panels.md)。
 
    [![环境中没有事件。](media/preview-troubleshoot/troubleshoot-no-events.png)](media/preview-troubleshoot/troubleshoot-no-events.png#lightbox)
 

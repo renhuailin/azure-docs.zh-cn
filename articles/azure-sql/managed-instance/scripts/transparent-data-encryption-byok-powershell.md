@@ -13,10 +13,10 @@ ms.author: mlandzic
 ms.reviewer: vanto, sstein
 ms.date: 08/25/2020
 ms.openlocfilehash: 34a849fde315b45bdb1df577cf26c91f458abd72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91323208"
 ---
 # <a name="transparent-data-encryption-in-sql-managed-instance-using-your-own-key-from-azure-key-vault"></a>使用 Azure Key Vault 中自己的密钥在 SQL 托管实例中实现透明数据加密
@@ -33,7 +33,7 @@ ms.locfileid: "91323208"
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-在本地使用 PowerShell 或使用 Azure Cloud Shell 需要 Azure PowerShell 2.3.2 或更高版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)，或运行以下示例脚本，以便为当前用户安装该模块：
+在本地使用 PowerShell 或使用 Azure Cloud Shell 都需要 Azure PowerShell 2.3.2 或更高版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)，或运行以下示例脚本，以便为当前用户安装该模块：
 
 `Install-Module -Name Az -AllowClobber -Scope CurrentUser`
 

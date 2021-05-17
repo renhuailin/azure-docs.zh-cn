@@ -3,13 +3,13 @@ title: 将资源部署到租户
 description: 介绍如何在 Azure 资源管理器模板中的租户范围内部署资源。
 ms.topic: conceptual
 ms.date: 04/27/2021
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: dfcdd4c9fdf758b0e07c2566c50b45f534133c3c
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2137d71c78a5cb02e0e574be9c38d5bf18180789
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751484"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108322196"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>使用 ARM 模板进行租户部署
 

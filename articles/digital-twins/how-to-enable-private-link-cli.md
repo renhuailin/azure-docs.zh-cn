@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 96a98f4441fca47d53dc9ee54a5586e2b535f96f
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: c38db60c89b02e932c0a381daff1013b17008f54
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788384"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208826"
 ---
 # <a name="enable-private-access-with-private-link-preview-azure-cli"></a>使用专用链接实现专用访问（预览）：Azure CLI
 
@@ -26,7 +26,7 @@ ms.locfileid: "109788384"
 1. 打开专用链接，并为 Azure 数字孪生实例配置专用终结点。
 1. 禁用或启用公用网络访问标志，以将 API 访问限制为仅使用专用链接连接。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在设置专用终结点之前，需要一个可在其中部署终结点的 [Azure 虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 。 如果尚无 VNet，可以按照 Azure 虚拟网络[快速入门](../virtual-network/quick-create-portal.md)中的一种方式进行设置。
 
@@ -46,7 +46,7 @@ ms.locfileid: "109788384"
 下面是一个使用命令创建专用终结点（仅包含所需参数）的示例。
 
 ```azurecli-interactive
-az network private-endpoint create --connection-name {private_link_service_connection} --name {name_for_private_endpoint} --resource-group {resource_group} --subnet {subnet_ID} --private-connection-resource-id "/subscriptions/{subscription_ID}/resourceGroups/{resource_group}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{Azure_Digital_Twins_instance_name}" 
+az network private-endpoint create --connection-name {private_link_service_connection} -n {name_for_private_endpoint} -g {resource_group} --subnet {subnet_ID} --private-connection-resource-id "/subscriptions/{subscription_ID}/resourceGroups/{resource_group}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{Azure_Digital_Twins_instance_name}" 
 ```
 
 有关必需参数和可选参数的完整列表以及更多专用终结点创建示例，请参阅 [az network private-endpoint create 参考文档](/cli/azure/network/private-endpoint#az_network_private_endpoint_create)。
@@ -84,13 +84,13 @@ az network private-endpoint create --connection-name {private_link_service_conne
 若要对 Azure 数字孪生实例禁用公用网络访问，请使用 `--public-network-access` 参数，如下所示：
 
 ```azurecli-interactive
-az dt create --dt-name {name_of_existing_instance} --resource-group {resource_group} --public-network-access Disabled
+az dt create -n {name_of_existing_instance} -g {resource_group} --public-network-access Disabled
 ```
 
 若要对当前禁用的实例启用公用网络访问，请使用以下类似命令：
 
 ```azurecli-interactive
-az dt create --dt-name {name_of_existing_instance} --resource-group {resource_group} --public-network-access Enabled
+az dt create -n {name_of_existing_instance} -g {resource_group} --public-network-access Enabled
 ```
 
 ### <a name="usethe-armclientcommand-tool"></a>使用 ARMClient 命令工具 

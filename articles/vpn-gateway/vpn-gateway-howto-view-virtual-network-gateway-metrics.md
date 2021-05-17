@@ -1,18 +1,18 @@
 ---
 title: 查看 Azure VPN 网关指标
-description: 查看 VPN 网关指标的步骤
+description: 了解如何查看 VPN 网关指标。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 04/29/2021
 ms.author: alzam
-ms.openlocfilehash: 4b33af3e64726e124373f57920836bce145cd891
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cff09df246bf83618b5bc7e2593657c9b30094c7
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89443171"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289491"
 ---
 # <a name="view-vpn-gateway-metrics"></a>查看 VPN 网关指标
 
@@ -23,14 +23,14 @@ ms.locfileid: "89443171"
 |---       | ---        | ---       | ---            | ---       |
 |**AverageBandwidth**| 字节/秒  | 5 分钟| 网关上所有站点到站点连接的组合带宽平均利用率。     |
 |**P2SBandwidth**| 字节/秒  | 1 分钟  | 网关上所有点到站点连接的组合带宽平均利用率。    |
-|**P2SConnectionCount**| Count  | 1 分钟  | 网关上点到站点连接的计数。   |
+|**P2SConnectionCount**| 计数  | 1 分钟  | 网关上点到站点连接的计数。   |
 |**TunnelAverageBandwidth** | 字节/秒    | 5 分钟  | 在网关上创建的隧道的带宽平均利用率。 |
 |**TunnelEgressBytes** | 字节 | 5 分钟 | 在网关上创建的隧道中的传出流量。   |
-|**TunnelEgressPackets** | Count | 5 分钟 | 在网关上创建的隧道中的传出数据包的计数。   |
-|**TunnelEgressPacketDropTSMismatch** | Count | 5 分钟 | 隧道中因流量选择器不匹配导致的被丢弃传出数据包的计数。 |
+|**TunnelEgressPackets** | 计数 | 5 分钟 | 在网关上创建的隧道中的传出数据包的计数。   |
+|**TunnelEgressPacketDropTSMismatch** | 计数 | 5 分钟 | 隧道中因流量选择器不匹配导致的被丢弃传出数据包的计数。 |
 |**TunnelIngressBytes** | 字节 | 5 分钟 | 在网关上创建的隧道中的传入流量。   |
-|**TunnelIngressPackets** | Count | 5 分钟 | 在网关上创建的隧道中的传入数据包的计数。   |
-|**TunnelIngressPacketDropTSMismatch** | Count | 5 分钟 | 隧道中因流量选择器不匹配导致的被丢弃传入数据包的计数。 |
+|**TunnelIngressPackets** | 计数 | 5 分钟 | 在网关上创建的隧道中的传入数据包的计数。   |
+|**TunnelIngressPacketDropTSMismatch** | 计数 | 5 分钟 | 隧道中因流量选择器不匹配导致的被丢弃传入数据包的计数。 |
 
 ## <a name="the-following-steps-help-you-locate-and-view-metrics"></a>以下步骤可帮助你查找和查看指标：
 

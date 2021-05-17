@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 04/21/2021
-ms.openlocfilehash: 2defeb0e578c6775577fef50d764f97c3b7f4ac2
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 9274bb2b28613c4b61ca139995ba54df0f402edd
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903951"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228219"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>使用 Azure 机器学习进行数据加密
 
@@ -122,9 +122,11 @@ Azure 机器学习在 Azure Cosmos DB 实例中存储元数据。 此实例与 A
 
 ### <a name="machine-learning-compute"></a>机器学习计算
 
-Azure 存储中存储的每个计算节点的 OS 磁盘，已通过 Azure 机器学习存储帐户中由 Microsoft 管理的密钥进行加密。 此计算目标是暂时的；没有排队的运行时，群集通常会缩减。 底层虚拟机将解除预配，OS 磁盘将被删除。 OS 磁盘不支持 Azure 磁盘加密。
+Azure 存储中存储的每个计算节点的 OS 磁盘，已通过 Azure 机器学习存储帐户中由 Microsoft 管理的密钥进行加密。 此计算目标是暂时的；没有排队的运行时，群集通常会缩减。 底层虚拟机将解除预配，OS 磁盘将被删除。 OS 磁盘不支持 Azure 磁盘加密。 
 
 每个虚拟机还包含一个本地临时磁盘用于 OS 操作。 如果需要，可以使用该磁盘来暂存训练数据。 对于其 `hbi_workspace` 参数设置为 `TRUE` 的工作区，默认会加密磁盘。 此环境仅在运行期间短暂存在，加密支持仅限于系统管理的密钥。
+
+存储计算实例的 OS 磁盘使用 Azure 机器学习存储帐户中的 Microsoft 托管密钥进行加密。 计算实例上的本地临时磁盘已用适用于工作区的 Microsoft 托管密钥进行了加密（`hbi_workspace` 参数设置为 `TRUE`）。
 
 ### <a name="azure-databricks"></a>Azure Databricks
 

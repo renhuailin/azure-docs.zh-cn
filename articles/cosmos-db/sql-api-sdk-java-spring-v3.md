@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 594d38425be0304a9f7737bdfba60b29187a2e2d
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 17db5f566b45af8ea67d551972dc9e12235f5b6c
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363506"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290931"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>适用于 Core (SQL) API 的 Spring Data Azure Cosmos DB v3：发行说明和资源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -91,6 +91,9 @@ ms.locfileid: "107363506"
 | **故障排除** | [Java SDK v4 疑难解答（适用于 Spring Data）](troubleshoot-java-sdk-v4-sql.md) | 
 | **Azure Cosmos DB 研讨会和实验室** |[Cosmos DB 研讨会主页](https://aka.ms/cosmosworkshop)
 
+> [!IMPORTANT]
+> * 3\.5.0 版本支持 Spring Boot 2.4.3 及更高版本。
+
 [!INCLUDE[Release notes](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-spring-data-cosmos/CHANGELOG.md)]
 
 ## <a name="additional-notes"></a>附加说明
@@ -98,7 +101,7 @@ ms.locfileid: "107363506"
 * Spring Data Azure Cosmos DB 支持 Java JDK 8 和 Java JDK 11。
 * 当前支持 Spring Data 2.3，当前不支持 Spring Data 2.4。
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

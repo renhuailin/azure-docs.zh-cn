@@ -1,14 +1,14 @@
 ---
 title: 在 Java 中创建第一个可靠服务
-description: 介绍如何在 Java 中使用无状态服务和有状态服务创建 Microsoft Azure Service Fabric 应用程序。
+description: 介绍如何用 Java 创建具有无状态服务和有状态服务的 Microsoft Azure Service Fabric 应用程序。
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-javai
 ms.openlocfilehash: f67957d711958febdb01dfad0b3c44a92cb0bcfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91535230"
 ---
 # <a name="get-started-with-reliable-services-in-java"></a>Java 中的 Reliable Services 入门
@@ -196,7 +196,7 @@ Reliable Collections 可以存储任何 Java 类型（包括自定义类型）�
 * Service Fabric 通过跨节点复制状态，使状态具备高可用性；而 Reliable HashMap 会将数据存储到每个副本上的本地磁盘中。 这意味着 Reliable HashMaps 中存储的所有内容都必须可序列化。 
 * 在 Reliable HashMaps 上提交事务时，将复制对象以实现高可用性。 存储在 Reliable HashMaps 中的对象保留在服务的本地内存中。 这意味着对对象进行本地引用。
   
-   切勿转变这些对象的本地实例而不在事务中的可靠集合上执行更新操作。 这是因为对对象的本地实例的更改不会自动复制。 必须将对象重新插回字典中，或在字典上使用其中一个*更新*方法。
+   切勿转变这些对象的本地实例而不在事务中的可靠集合上执行更新操作。 这是因为对对象的本地实例的更改不会自动复制。 必须将对象重新插回字典中，或在字典上使用其中一个 *更新* 方法。
 
 可靠状态管理器自动管理 Reliable HashMaps。 无论何时何地，都可以根据名称向可靠状态管理器请求服务中的某个可靠集合。 可靠状态管理器可确保能取回引用。 建议不要将可靠集合实例的引用保存到类成员变量或属性中。 请特别小心，确保在服务生命周期中始终将引用设置为某个实例。 可靠状态管理器会代为处理此工作，且已针对重复访问对其进行优化。
 

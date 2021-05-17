@@ -1,6 +1,6 @@
 ---
-title: 获取 Azure Active Directory 的 AppSource 认证 |Microsoft Docs
-description: 了解有关如何将应用程序 AppSource 认证 Azure Active Directory 的详细信息。
+title: 使 AppSource 通过 Azure Active Directory 的认证 | Microsoft Docs
+description: 详细了解如何使应用程序 AppSource 通过 Azure Active Directory 的认证。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,13 +13,13 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.openlocfilehash: 7731aa2eb1a962d4674ed382911ba0058e1ebdaf
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101647500"
 ---
-# <a name="get-appsource-certified-for-azure-active-directory"></a>获取 Azure Active Directory 的 AppSource 认证
+# <a name="get-appsource-certified-for-azure-active-directory"></a>使 AppSource 通过 Azure Active Directory 的认证
 
 [Microsoft AppSource](https://appsource.microsoft.com/) 是一个可供业务用户发现、尝试和管理业务线 SaaS 应用程序（独立 SaaS 和现有 Microsoft SaaS 产品的加载项）的目的地。
 
@@ -32,7 +32,7 @@ ms.locfileid: "101647500"
 若要在应用程序中启用多租户，请执行以下操作：
 1. 在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)中，将应用程序注册信息中的 `Multi-Tenanted` 属性设置为 `Yes`。 默认情况下，在 Azure 门户中创建的应用程序将配置为[单租户](#single-tenant-applications)。
 1. 将代码更新为向 `common` 终结点发送请求。 为此，请将终结点从 `https://login.microsoftonline.com/{yourtenant}` 更新为 `https://login.microsoftonline.com/common*`。
-1. 对于某些平台（如 ASP.NET），还需要更新代码以接受多个颁发者。
+1. 对于某些平台（如 ASP.NET），还需更新代码以接受多个证书颁发者。
 
 有关多租户的详细信息，请参阅：[如何使用多租户应用程序模式登录任意 Azure Active Directory (Azure AD) 用户](howto-convert-app-to-be-multi-tenant.md)。
 
@@ -48,13 +48,13 @@ ms.locfileid: "101647500"
 
 ### <a name="free-trial-customer-led-trial-experience"></a>免费试用（客户导向型试用体验）
 
-客户导向型试用是 AppSource 所推荐的体验，因为它提供对应用程序的单击访问。 以下示例显示了此体验的外观：
+客户导向型试用是 AppSource 所推荐的体验，因为它提供对应用程序的单击访问。 下面的示例显示了这种体验：
 
-1.  用户在 AppSource 网站中找到你的应用程序，然后选择 " **免费试用** " 选项。
+1.  用户在 AppSource 网站上找到您的应用程序，然后选择“免费试用”选项。
 
-    ![显示客户 led 试用体验的免费试用版](./media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png)
+    ![显示客户导向型试用体验的免费试用版](./media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png)
 
-2.  AppSource 将用户重定向到你的网站中的 URL。 你的网站将在页面加载) 上自动启动 *单一登录* 过程 (。
+2.  AppSource 将用户重定向到你网站中的 URL。 网站将自动开始 *单一登录* 过程（页面加载中）。
 
     ![显示如何将用户重定向到你的网站中的 URL](./media/active-directory-devhowto-appsource-certified/customer-led-trial-step2.png)
 
@@ -62,41 +62,41 @@ ms.locfileid: "101647500"
 
     ![显示 Microsoft 登录页](./media/active-directory-devhowto-appsource-certified/customer-led-trial-step3.png)
 
-4. 用户同意你的应用程序。
+4. 用户对你的应用程序授权。
 
-    ![示例：应用程序的同意页面](./media/active-directory-devhowto-appsource-certified/customer-led-trial-step4.png)
+    ![示例：应用程序的同意页](./media/active-directory-devhowto-appsource-certified/customer-led-trial-step4.png)
 
-5.  登录完成后，用户将重定向回您的网站。  用户开始免费试用版。
+5.  登录完成，且用户被重定向回你的网站。  用户开始进行免费试用。
 
-    ![显示当重定向回到站点时用户看到的体验](./media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png)
+    ![显示当用户被重定向回到站点时看到的体验](./media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png)
 
 ### <a name="contact-me-partner-led-trial-experience"></a>与我联系（合作伙伴导向型试用体验）
 
 需要执行手动或长期操作来预配用户/公司（例如，应用程序需要预配虚拟机、数据库实例或耗费大量时间才可完成的操作）时，可以使用合作伙伴试用体验。 在这种情况下，用户选择“请求试用”按钮并填写表单后，AppSource 将向你发送用户的联系信息。 收到此信息后，需预配环境并就如何访问试用体验向用户发送说明：<br/><br/>
 
-1. 用户在 AppSource 网站中找到你的应用程序，然后选择 " **与我联系**"。
+1. 用户在 AppSource 网站中找到你的应用程序，然后选择“与我联系”。
 
-    ![显示与我联系以获取合作伙伴 led 的试用体验](./media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png)
+    ![显示合作伙伴导向型试用体验的“与我联系”](./media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png)
 
-2. 用户使用联系人信息填写表单。
+2. 用户在表单中填写联系信息。
 
     ![显示带有联系人信息的示例窗体](./media/active-directory-devhowto-appsource-certified/partner-led-trial-step2.png)
 
-3. 您将收到用户的信息，设置试用实例，并发送超链接来访问用户的应用程序。
+3. 你将收到用户的信息，设置试用实例，并发送超链接来访问用户的应用程序。
 
     ![显示用户信息的占位符](./media/active-directory-devhowto-appsource-certified/usercontact.png)
 
-4. 用户访问应用程序并完成单一登录过程。
+4. 用户访问你的应用程序并完成单一登录过程。
 
     ![显示应用程序登录屏幕](./media/active-directory-devhowto-appsource-certified/partner-led-trial-step3.png)
 
-5. 用户同意你的应用程序。
+5. 用户对你的应用程序授权。
 
     ![显示应用程序的示例同意页](./media/active-directory-devhowto-appsource-certified/partner-led-trial-step4.png)
 
-6. 登录完成后，用户将重定向回您的网站。 用户开始免费试用版。
+6. 登录完成，且用户被重定向回你的网站。 用户开始进行免费试用。
 
-    ![显示当重定向回到站点时用户看到的体验](./media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png)
+    ![显示当用户被重定向回到站点时看到的体验](./media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png)
 
 ### <a name="more-information"></a>详细信息
 
@@ -104,9 +104,9 @@ ms.locfileid: "101647500"
 
 ## <a name="get-support"></a>获取支持
 
-对于 Azure AD 集成，我们使用与社区 [&的 Microsoft Q](/answers/topics/azure-active-directory.html) 来提供支持。
+对于 Azure AD 集成，我们使用 [Microsoft Q&A](/answers/topics/azure-active-directory.html) 和社区来提供支持。
 
-我们强烈建议你先提问 [&](/answers/topics/azure-active-directory.html) 第一次，浏览现有问题，查看是否有人在之前提出过你的问题。 请确保已将你的问题或评论标记为 [`[azure-active-directory]`](/answers/topics/azure-active-directory.html) 。
+强烈建议先在 [Microsoft Q&A](/answers/topics/azure-active-directory.html) 上提问并浏览现有问题，查看是否已有人提出过相同疑问。 请务必用 [`[azure-active-directory]`](/answers/topics/azure-active-directory.html) 标记你的提问和评论。
 
 使用以下评论部分提供反馈，帮助我们改进内容。
 

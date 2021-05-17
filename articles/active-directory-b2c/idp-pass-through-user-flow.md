@@ -1,5 +1,5 @@
 ---
-title: 向应用程序传递标识提供者访问令牌
+title: 向应用传递标识提供者访问令牌
 titleSuffix: Azure AD B2C
 description: 了解如何在 Azure Active Directory B2C 中以用户流中声明的方式传递 OAuth2.0 标识提供者的访问令牌。
 services: active-directory-b2c
@@ -14,13 +14,13 @@ ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: a99d41f5f9fc9538aaf563bd3ae56075d269c94a
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97584640"
 ---
-# <a name="pass-an-identity-provider-access-token-to-your-application-in-azure-active-directory-b2c"></a>将标识提供者访问令牌传递到 Azure Active Directory B2C 中的应用程序
+# <a name="pass-an-identity-provider-access-token-to-your-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中，向应用程序传递标识提供者访问令牌
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
@@ -28,7 +28,7 @@ Azure Active Directory B2C (Azure AD B2C) 中的[用户流](user-flow-overview.m
 
 ::: zone pivot="b2c-user-flow"
 
-Azure AD B2C 支持传递 [OAuth 2.0](add-identity-provider.md) 标识提供程序（包括 [Facebook](identity-provider-facebook.md) 和 [Google](identity-provider-google.md)）的访问令牌。 对于所有其他标识提供者，声明将返回空白。
+Azure AD B2C 支持传递 [OAuth 2.0](add-identity-provider.md) 标识提供者（包括 [Facebook](identity-provider-facebook.md) 和 [Google](identity-provider-google.md)）的访问令牌。 对于所有其他标识提供者，声明将返回空白。
 
 ::: zone-end
 
@@ -38,9 +38,9 @@ Azure AD B2C 支持传递 [OAuth 2.0](authorization-code-flow.md) 和 [OpenID Co
 
 ::: zone-end
 
-下图显示了标识提供程序令牌如何返回到你的应用程序： 
+下图显示了标识提供者令牌如何返回到你的应用： 
 
-![标识提供程序通过流](./media/idp-pass-through-user-flow/identity-provider-pass-through-flow.png)
+![标识提供者传递流程](./media/idp-pass-through-user-flow/identity-provider-pass-through-flow.png)
 
 ## <a name="prerequisites"></a>先决条件
 

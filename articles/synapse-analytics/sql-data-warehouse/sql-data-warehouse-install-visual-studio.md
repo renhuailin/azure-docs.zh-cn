@@ -4,20 +4,20 @@ description: 安装 Visual Studio 和适用于 Synapse SQL 的 SQL Server 开发
 services: synapse-analytics
 ms.custom: vs-azure, azure-synapse
 ms.workload: azure-vs
-author: kevinvngo
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 05/11/2020
-ms.author: kevin
+ms.author: jrasnick
 ms.reviewer: igorstan
-ms.openlocfilehash: b70694011aa0467d8ca037ac309ffb0811c79c01
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.openlocfilehash: c8c07997b3ef8cb050ea4609a650a3e3b1bd21fb
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737942"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568244"
 ---
 # <a name="getting-started-with-visual-studio-2019"></a>Visual Studio 2019 入门
 
@@ -41,9 +41,8 @@ Visual Studio **2019** SQL Server Data Tools (SSDT) 是一个工具，可用于�
 
 - [工作负荷管理](sql-data-warehouse-workload-management.md) - 工作负荷组和分类器
 - [行级安全性](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)（包括表值函数）
-  - 提交 [支持票证或投票](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security) 以获取支持的功能。
-  - 提交 [支持票证或投票](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking) 以获取支持的功能。
-- 具有[标识列](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest&preserve-view=true)的表
+  - 提交[支持票证或投票](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security)以获取支持的功能。
+  - 提交[支持票证或投票](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking)以获取支持的功能。
 - 某些 T-SQL 功能，如：
    - [STRING_AGG](/sql/t-sql/functions/string-agg-transact-sql) 字符串函数中的 WITHIN GROUP 子句。
 

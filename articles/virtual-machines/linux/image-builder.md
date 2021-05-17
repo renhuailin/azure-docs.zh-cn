@@ -10,13 +10,13 @@ ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: danis
 ms.openlocfilehash: 6ae7e384aa5d70b688b7fe4c6d4140e886b789f1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101694285"
 ---
-# <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery-by-using-azure-cli"></a>预览：使用 Azure CLI 创建 Linux 映像并将其分发给共享映像库
+# <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery-by-using-azure-cli"></a>预览版：使用 Azure CLI 创建 Linux 映像并将其分发到共享映像库
 
 本文介绍如何使用 Azure 映像生成器和 Azure CLI，在[共享映像库](../shared-image-galleries.md)中创建映像版本，然后全局分发此映像。 还可以使用 [Azure PowerShell](../windows/image-builder-gallery.md).来实现此目的。
 

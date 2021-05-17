@@ -9,15 +9,15 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/27/2017
+ms.date: 04/28/2021
 ms.author: rohink
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5d902e0172a048527ce8f2fa9e22c5fc9bf22e0b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 871fa6456847655f4e75ddf8e145a2423715dd08
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203617"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203336"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>如何使用 Azure CLI 管理 Azure DNS 中的 DNS 区域
 
@@ -27,7 +27,7 @@ ms.locfileid: "102203617"
 > * [Azure CLI](dns-operations-dnszones-cli.md)
 
 
-本指南介绍如何通过使用适用于 Windows、Mac 和 Linux 的跨平台 Azure CLI 管理 DNS 区域。 也可以使用 [Azure PowerShell](dns-operations-dnszones.md) 或 Azure 门户管理 DNS 记区域。
+本文介绍如何使用跨平台 Azure CLI 管理 DNS 区域。 Azure CLI 适用于 Windows、Mac 和 Linux。 也可以使用 [Azure PowerShell](dns-operations-dnszones.md) 或 Azure 门户管理 DNS 记区域。
 
 本指南专门介绍公共 DNS 区域。 有关使用 Azure CLI 管理 Azure DNS 中专用区域的详细信息，请参阅[使用 Azure CLI 开始使用 Azure DNS 专用区域](private-dns-getstarted-cli.md)。
 
@@ -47,7 +47,7 @@ ms.locfileid: "102203617"
 
 ### <a name="sign-in-to-your-azure-account"></a>登录到 Azure 帐户
 
-打开控制台窗口并使用凭据进行身份验证。 有关详细信息，请阅读[从 Azure CLI 登录 Azure](/cli/azure/authenticate-azure-cli)
+打开控制台窗口并使用凭据进行身份验证。 有关详细信息，请参见[从 Azure CLI 登录 Azure](/cli/azure/authenticate-azure-cli)
 
 ```
 az login
@@ -63,23 +63,24 @@ az account list
 
 选择要使用的 Azure 订阅。
 
-```azurecli
+```azurecli-interactive
 az account set --subscription "subscription name"
 ```
 
 ### <a name="optional-to-installuse-azure-dns-private-zones-feature"></a>可选：安装/使用 Azure DNS 专用区域功能
 可通过 Azure CLI 的扩展使用 Azure DNS 专用区域功能。 安装“dns”Azure CLI 扩展 
+
 ```
 az extension add --name dns
 ``` 
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-Azure Resource Manager 要求所有资源组指定一个位置。 此位置用作该资源组中的资源的默认位置。 但是，由于所有 DNS 资源都是全局性而非区域性的，因此资源组位置的选择不会影响 Azure DNS。
+Azure 资源管理器要求资源组具有指定的位置。 此位置将用作该资源组中所有资源的默认位置。 由于所有 DNS 资源都是全局资源，资源组位置的选择对 Azure DNS 没有影响。
 
 如果使用现有资源组，可跳过此步骤。
 
-```azurecli
+```azurecli-interactive
 az group create --name myresourcegroup --location "West US"
 ```
 
@@ -87,7 +88,7 @@ az group create --name myresourcegroup --location "West US"
 
 与 Azure DNS 相关的所有 Azure CLI 命令都以 `az network dns` 开头。 可使用 `--help` 选项（缩写形式 `-h`）获取有关每个命令的帮助。  例如：
 
-```azurecli
+```azurecli-interactive
 az network dns --help
 az network dns zone --help
 az network dns zone create --help
@@ -99,7 +100,7 @@ az network dns zone create --help
 
 以下示例在名为 *MyResourceGroup* 的资源组中创建名为 *contoso.com* 的 DNS 区域：
 
-```azurecli
+```azurecli-interactive
 az network dns zone create --resource-group MyResourceGroup --name contoso.com
 ```
 
@@ -107,7 +108,7 @@ az network dns zone create --resource-group MyResourceGroup --name contoso.com
 
 下面的示例演示如何通过 `--tags` 参数（缩写形式 `-t`）使用两个 [Azure 资源管理器标记](dns-zones-records.md#tags)、project = demo  和 env = test  创建 DNS 区域：
 
-```azurecli
+```azurecli-interactive
 az network dns zone create --resource-group MyResourceGroup --name contoso.com --tags "project=demo" "env=test"
 ```
 
@@ -117,7 +118,7 @@ az network dns zone create --resource-group MyResourceGroup --name contoso.com -
 
 以下示例从资源组 *MyResourceGroup* 返回 DNS 区域 *contoso.com* 及其关联数据。 
 
-```azurecli
+```azurecli-interactive
 az network dns zone show --resource-group myresourcegroup --name contoso.com
 ```
 
@@ -143,8 +144,7 @@ az network dns zone show --resource-group myresourcegroup --name contoso.com
 }
 ```
 
-请注意，`az network dns zone show` 不返回 DNS 记录。 若要列出 DNS 记录，请使用 `az network dns record-set list`。
-
+若要列出 DNS 记录，请使用 `az network dns record-set list`。
 
 ## <a name="list-dns-zones"></a>列出 DNS 区域
 
@@ -152,13 +152,13 @@ az network dns zone show --resource-group myresourcegroup --name contoso.com
 
 指定资源组仅列出资源组内的区域：
 
-```azurecli
+```azurecli-interactive
 az network dns zone list --resource-group MyResourceGroup
 ```
 
 省略资源组可列出订阅中的所有区域：
 
-```azurecli
+```azurecli-interactive
 az network dns zone list 
 ```
 
@@ -166,11 +166,11 @@ az network dns zone list
 
 可以使用 `az network dns zone update` 对 DNS 区域资源进行更改。 有关帮助，请参阅 `az network dns zone update --help`。
 
-此命令不会更新区域中的任何 DNS 记录集（请参阅[如何管理 DNS 记录](dns-operations-recordsets-cli.md)）。 它仅用于更新区域资源本身的属性。 这些属性当前仅限于区域资源的 [Azure 资源管理器“标记”](dns-zones-records.md#tags)。
+此命令不会更新区域中的任何 DNS 记录集（请参阅[如何管理 DNS 记录](dns-operations-recordsets-cli.md)）。 该操作仅可用于更新区域资源本身的属性。 这些属性当前仅限于区域资源的 [Azure 资源管理器“标记”](dns-zones-records.md#tags)。
 
 以下示例演示如何更新 DNS 区域上的标记。 现有标记替换为指定值。
 
-```azurecli
+```azurecli-interactive
 az network dns zone update --resource-group myresourcegroup --name contoso.com --set tags.team=support
 ```
 
@@ -187,7 +187,7 @@ az network dns zone update --resource-group myresourcegroup --name contoso.com -
 
 以下示例演示如何从资源组 *MyResourceGroup* 中删除区域 *contoso.com*。
 
-```azurecli
+```azurecli-interactive
 az network dns zone delete --resource-group myresourcegroup --name contoso.com
 ```
 

@@ -47,8 +47,6 @@
       href: logs/get-started-queries.md
     - name: 通过日志查询创建仪表板
       href: visualize/tutorial-logs-dashboards.md
-    - name: 通过日志查询创建警报
-      href: alerts/tutorial-response.md
     - name: 根据性能和计划自动缩放
       href: autoscale/tutorial-autoscale-performance-schedule.md
     - name: Application Insights
@@ -1052,7 +1050,7 @@
       items:
         - name: 概述
           href: containers/container-insights-overview.md
-        - name: 常见问题解答
+        - name: 常见问题
           href: faq.md#container-insights
         - name: 启用监视
           items:
@@ -1140,7 +1138,7 @@
           items:
             - name: 概述
               href: insights/sql-insights-overview.md
-            - name: 常见问题解答
+            - name: 常见问题
               href: faq.md#sql-insights-preview
             - name: 启用
               href: insights/sql-insights-enable.md

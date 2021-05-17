@@ -10,15 +10,15 @@ ms.custom: devx-track-azurecli, device-developer
 services: iot-central
 manager: corywink
 ms.openlocfilehash: 62981686c7aadc713c4abc78075be8613fe0af45
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102199300"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>使用 Azure CLI 监视设备连接
 
-*本主题适用于设备开发人员和解决方案构建者。*
+*本主题适用于设备开发者和解决方案构建者。*
 
 使用 Azure CLI IoT 扩展，了解如何将设备发送到 IoT Central，并观察设备孪生中的更改。 可以使用此工具来调试和观察设备连接性，并诊断设备消息不到达云或者设备不响应孪生更改的问题。
 
@@ -26,7 +26,7 @@ ms.locfileid: "102199300"
 
 ## <a name="prerequisites"></a>先决条件
 
-+ Azure CLI 安装，且版本2.7.0 或更高版本。 通过运行 `az --version` 检查 Azure CLI 的版本。 通过 [Azure CLI 文档](/cli/azure/install-azure-cli)了解如何进行安装和更新
++ 已安装 Azure CLI 2.7.0 或更高版本。 通过运行 `az --version` 检查 Azure CLI 的版本。 通过 [Azure CLI 文档](/cli/azure/install-azure-cli)了解如何进行安装和更新
 + Azure 中的工作或学校帐户，在 IoT Central 应用程序中作为用户添加。
 
 ## <a name="install-the-iot-central-extension"></a>安装 IoT Central 扩展
@@ -37,13 +37,13 @@ ms.locfileid: "102199300"
 az extension add --name azure-iot
 ```
 
-通过运行以下内容检查扩展的版本：
+检查扩展的版本，方法是运行：
 
 ```azurecli
 az --version
 ```
 
-应会看到 azure iot 扩展为0.9.9 或更高版本。 如果不是，请运行：
+应该会看到 azure-iot extension 扩展为 0.9.9 或更高版本。 如果不是，请运行：
 
 ```azurecli
 az extension update --name azure-iot
@@ -62,7 +62,7 @@ az login
 ```
 
 ### <a name="get-the-application-id-of-your-iot-central-app"></a>获取 IoT Central 应用的应用程序 ID
-在“管理/应用程序设置”中，复制 **应用程序 ID**。 可在后续步骤中使用此值。
+在“管理/应用程序设置”中，复制 **应用程序 ID**。 可以在以后的步骤中使用此值。
 
 ### <a name="monitor-messages"></a>监视消息
 监视从设备发送到 IoT Central 应用的消息。 输出包含所有标头和批注。

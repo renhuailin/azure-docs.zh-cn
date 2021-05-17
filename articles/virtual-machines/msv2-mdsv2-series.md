@@ -7,26 +7,19 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: d85623184ad52fb0d4acd4c49d08badfaf886b30
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 696125f75e41d39b4f9aaa1ff852b03eff589fb0
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728223"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204236"
 ---
 # <a name="msv2-and-mdsv2-series-medium-memory"></a>Msv2 和 Mdsv2 系列中型内存
 
 Msv2 和 Mdsv2 中型内存 VM 系列具有 Intel® Xeon® Platinum 8280 (Cascade Lake) 处理器，所有核心基础频率为 2.7 GHz，单核睿频为 4.0 GHz。 借助这些 VM，客户可以通过本地磁盘和无磁盘选项获得更大的灵活性。 客户还可以访问一组新的独立 VM 大小，这些 VM 具有更多 CPU 和内存，vCPU 最多可以达到 192 个，内存最多可以达到 4 TiB。 
 
-
-Msv2 和 Mdsv2 系列 VM 仅为第 2 代 VM，并支持第 2 代支持的部分映像。 有关 Msv2 和 Mdsv2 系列支持的映像的完整列表，请参阅下文。  
-
-- Windows Server 2019 或更高版本
-- SUSE Linux Enterprise Server 12 SP4 及更高版本或 SUSE Linux Enterprise Server 15 SP1 及更高版本
-- Red Hat Enterprise Linux 7.6、7.7、8.1 或更高版本 
-- Oracle Enterprise Linux 7.7 或更高版本
-
-有关第 2 代虚拟机的详细信息，请参阅[对 Azure 上第 2 代 VM 的支持](./generation-2.md)。
+> [!NOTE]
+> Msv2 和 Mdsv2 中型内存 VM 只是第 2 代虚拟机。 有关第 2 代虚拟机的详细信息，请参阅[对 Azure 上第 2 代 VM 的支持](./generation-2.md)。
 
 
 

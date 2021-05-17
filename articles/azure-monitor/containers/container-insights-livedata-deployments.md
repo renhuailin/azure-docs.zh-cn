@@ -1,19 +1,19 @@
 ---
-title: 查看容器 insights 部署 (预览) |Microsoft Docs
-description: 本文介绍 Kubernetes 部署的实时视图，而无需在容器见解中使用 kubectl。
+title: 查看容器见解部署（预览版） | Microsoft Docs
+description: 本文介绍在不使用容器见解中的 kubectl 的情况下，如何实时查看 Kubernetes 部署。
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
 ms.openlocfilehash: c6eaac209234f7352395502c6761312cf258108f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101713909"
 ---
 # <a name="how-to-view-deployments-preview-in-real-time"></a>如何实时查看部署（预览版）
 
-借助容器见解，视图部署 (预览) 功能通过公开和命令实时模拟对 Kubernetes 部署对象的直接访问 `kubeclt get deployments` `kubectl describe deployment {your deployment}` 。
+使用容器见解，查看部署（预览版）功能通过公开 `kubeclt get deployments` 和 `kubectl describe deployment {your deployment}` 命令实时模拟对 Kubernetes 部署对象的直接访问。
 
 >[!NOTE]
 >此功能不支持以[专用群集](https://azure.microsoft.com/updates/aks-private-cluster/)形式启用的 AKS 群集。 此功能依赖于从浏览器通过代理服务器直接访问 Kubernetes API。 启用网络安全以阻止来自此代理的 Kubernetes API 阻止此流量。
@@ -56,7 +56,7 @@ ms.locfileid: "101713909"
 
 查看部署详细信息时，可以实时查看容器日志和事件。 选择“显示实时控制台”，实时数据（预览版）控制台窗格将显示在部署数据网格下，你可以在其中查看连续流中的实时日志数据。 如果提取状态指示器显示绿色复选标记（位于窗格最右侧），则表示可以检索数据并开始将其流式传输到控制台。
 
-还可以按命名空间或群集级别事件进行筛选。 若要详细了解如何查看控制台中的数据，请参阅 [查看具有容器见解的实时数据 (预览) ](container-insights-livedata-overview.md)。
+还可以按命名空间或群集级别事件进行筛选。 若要了解有关在控制台中实时查看数据的详细信息，请参阅[使用容器见解查看实时数据（预览版）](container-insights-livedata-overview.md)。
 
 ![在控制台中查看实时数据的部署](./media/container-insights-livedata-deployments/deployments-console-view-events.png)
 

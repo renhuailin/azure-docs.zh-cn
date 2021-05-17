@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: 17968f2c137eef51eecdb6c7098c7056944dc970
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: cb22c2a9cacf4e226338b45fed79f7fa135874e7
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107782182"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228813"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions 的 Azure 事件网格触发器
 
@@ -358,6 +358,9 @@ Python 不支持特性。
 > [!NOTE]
 > 在 Functions v1 中，如果尝试绑定到 `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`，编译器将显示“已弃用”消息，并建议你改用 `Microsoft.Azure.EventGrid.Models.EventGridEvent`。 若要使用较新类型，请引用 [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet 包，并通过为 `EventGridEvent` 类型名称添加 `Microsoft.Azure.EventGrid.Models` 前缀来对其进行完全限定。
 
+### <a name="additional-types"></a>其他类型 
+使用事件网格扩展 3.0.0 或更高版本的应用程序使用 [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid.eventgridevent) 命名空间中的 `EventGridEvent` 类型。
+
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 在 Azure Functions 1.x 中，可以为事件网格触发器使用以下参数类型：
@@ -371,6 +374,9 @@ Python 不支持特性。
 
 > [!NOTE]
 > 在 Functions v1 中，如果尝试绑定到 `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`，编译器将显示“已弃用”消息，并建议你改用 `Microsoft.Azure.EventGrid.Models.EventGridEvent`。 若要使用较新类型，请引用 [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet 包，并通过为 `EventGridEvent` 类型名称添加 `Microsoft.Azure.EventGrid.Models` 前缀来对其进行完全限定。 有关如何在 C# 脚本函数中引用 NuGet 包的信息，请参阅[使用 NuGet 包](functions-reference-csharp.md#using-nuget-packages)
+
+### <a name="additional-types"></a>其他类型 
+使用事件网格扩展 3.0.0 或更高版本的应用程序使用 [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid.eventgridevent) 命名空间中的 `EventGridEvent` 类型。
 
 # <a name="java"></a>[Java](#tab/java)
 

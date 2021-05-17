@@ -1,6 +1,6 @@
 ---
 title: 删除虚拟网络网关：Azure 经典
-description: 在经典部署模型中使用 PowerShell 删除虚拟网络网关。
+description: 了解如何在经典部署模型中使用 PowerShell 删除虚拟网络网关。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 39585a68c5cddc50cd04e82caca71209270f7b68
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e26c317295081531f295042efa812f091f06814a
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91874112"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291075"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>使用 PowerShell 删除虚拟网络网关（经典）
 

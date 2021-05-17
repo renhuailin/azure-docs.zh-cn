@@ -4,12 +4,12 @@ description: 了解在 Azure 中开发函数时需要掌握的 Azure Functions �
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 7030ca1c1950f7c06580ce7417a4429fbe330c4e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a526edfccda1e4e0e60646989a59d23ad19501ab
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102614813"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227103"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions 开发人员指南
 在 Azure Functions 中，特定函数共享一些核心技术概念和组件，不受所用语言或绑定限制。 跳转学习某个特定语言或绑定的详细信息之前，请务必通读此通用概述。
@@ -121,6 +121,7 @@ Azure Functions 中的某些连接配置为使用标识而不是机密。 支持
 | Azure Blob     | [版本 5.0.0-beta1 或更高版本](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)  | 否                                    |
 | Azure 队列    | [版本 5.0.0-beta1 或更高版本](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) | 否                                    |
 | Azure 事件中心    | [版本 5.0.0-beta1 或更高版本](./functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher) | 否                                    |
+| Azure 服务总线    | [版本 5.0.0-beta2 或更高版本](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher) | 否                                    |
 
 > [!NOTE]
 > 对于 Functions 运行时用于核心行为的存储连接，尚不支持基于标识的连接。 这意味着 `AzureWebJobsStorage` 设置必须为连接字符串。
@@ -131,8 +132,8 @@ Azure 服务的基于标识的连接接受以下属性：
 
 | 属性    | 扩展所需 | 环境变量 | 说明 |
 |---|---|---|---|
-| 服务 URI | Azure Blob，Azure 队列 | `<CONNECTION_NAME_PREFIX>__serviceUri` |  要连接到的服务的数据平面 URI。 |
-| 完全限定的命名空间 | 事件中心 | `<CONNECTION_NAME_PREFIX>__fullyQualifiedNamespace` | 完全限定的事件中心命名空间。 |
+| 服务 URI | Azure Blob、Azure 队列 | `<CONNECTION_NAME_PREFIX>__serviceUri` |  要连接到的服务的数据平面 URI。 |
+| 完全限定的命名空间 | 事件中心、服务总线 | `<CONNECTION_NAME_PREFIX>__fullyQualifiedNamespace` | 完全限定的事件中心和服务总线命名空间。 |
 
 给定的连接类型可能支持其他选项。 请参阅相关文档，了解用于建立连接的组件。
 
@@ -154,7 +155,7 @@ Azure 服务的基于标识的连接接受以下属性：
 > [!NOTE]
 > 在 Azure Functions 服务中托管时，不支持以下配置选项。
 
-若要在 Azure Active Directory 服务主体中使用客户端 ID 和机密进行连接，除了上面的[连接属性](#connection-properties)之外，还需要使用以下属性定义连接：
+若要在 Azure Active Directory 服务主体中使用客户端 ID 和机密进行连接，除了上面的[连接属性](#connection-properties)之外，还需要使用以下属性来定义连接：
 
 | 属性    | 环境变量 | 说明 |
 |---|---|---|
@@ -162,7 +163,7 @@ Azure 服务的基于标识的连接接受以下属性：
 | 客户端 ID | `<CONNECTION_NAME_PREFIX>__clientId` |  租户中应用注册的客户端（应用程序）ID。 |
 | 客户端机密 | `<CONNECTION_NAME_PREFIX>__clientSecret` | 为应用注册生成的客户端密码。 |
 
-与 Azure Blob 基于标识的连接所需的 `local.settings.json` 属性示例： 
+与 Azure Blob 进行的基于标识的连接所需的 `local.settings.json` 属性的示例： 
 ```json
 {
   "IsEncrypted": false,
@@ -178,6 +179,15 @@ Azure 服务的基于标识的连接接受以下属性：
 #### <a name="grant-permission-to-the-identity"></a>向标识授予权限
 
 无论使用何种标识，都必须具有执行所需操作的权限。 这通常是通过在 Azure RBAC 中分配角色或在访问策略中指定标识来完成的，具体取决于要连接到的服务。 请参阅每个服务的相关文档，了解需要哪些权限以及如何设置这些权限。
+
+以下角色涵盖正常操作中每个扩展所需的主要权限：
+
+| 服务     | 内置角色示例 |
+|-------------|------------------------|
+| Azure Blob  | [存储 Blob 数据读取器](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)、[存储 Blob 数据所有者](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)                 |
+| Azure 队列 | [存储队列数据读取器](../role-based-access-control/built-in-roles.md#storage-queue-data-reader)、[存储队列数据消息处理器](../role-based-access-control/built-in-roles.md#storage-queue-data-message-processor)、[存储队列数据消息发送方](../role-based-access-control/built-in-roles.md#storage-queue-data-message-sender)、[存储队列数据参与者](../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)             |
+| 事件中心   |    [Azure 事件中心数据接收方](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver)、[Azure 事件中心数据发送方](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)、[Azure 事件中心数据所有者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner)              |
+| 服务总线 | [Azure 服务总线数据接收方](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver)、[Azure 服务总线数据发送方](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender)、[Azure 服务总线数据所有者](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) |
 
 > [!IMPORTANT]
 > 某些权限可能由并非所有上下文都需要的服务公开。 尽可能遵循最低权限原则，仅授予标识所需的权限。 例如，如果应用只需从 Blob 读取数据，请使用[存储 Blob 数据读取者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)角色，因为[存储 Blob 数据所有者](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)包含过多的读取操作权限。

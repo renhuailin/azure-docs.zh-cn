@@ -12,9 +12,9 @@
       href: ./samples/index.md
 - name: 概念
   items:
-    - name: Azure 委派资源管理
-      displayName: 'delegation, projection'
-      href: ./concepts/azure-delegated-resource-management.md
+    - name: 体系结构
+      displayName: 'delegation, projection, resource, registration'
+      href: ./concepts/architecture.md
     - name: 跨租户管理体验
       displayName: 'scenarios, supported, enhanced, services, limitations, current'
       href: ./concepts/cross-tenant-management-experience.md
@@ -59,7 +59,7 @@
           displayName: 'ARM, template, delegation, authorization, resource management'
           href: ./how-to/onboard-customer.md
         - name: 向 Azure 市场发布托管服务产品
-          displayName: 'managed services offer, azure marketplace, publish, marketplace'
+          displayName: 'managed services, azure marketplace, publish, marketplace'
           href: ./how-to/publish-managed-services-offers.md
         - name: 更新委派
           displayName: upgrade

@@ -1,6 +1,6 @@
 ---
 title: 使用 VNet 到 VNet 连接将 VNet 连接到 VNet：Azure CLI
-description: 使用 VNet 到 VNet 连接和 Azure CLI 将虚拟网络连接起来。
+description: 了解如何使用 VNet 到 VNet 连接和 Azure CLI 将虚拟网络连接起来。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b9502f3fbd50aad756e15daa4db1badda2abf9ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4f247131c2ce20ec9e95e8b5327ae7e7249f93f
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94660060"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229659"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>使用 Azure CLI 配置 VNet 到 VNet 的 VPN 网关连接
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: d996a2e0732ad9b4da104265710970e04cdbd368
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 067a30d8f16b06b1b29ad494363d180886d1ab8b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98199762"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105560074"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>为 Dynamics 365 Customer Engagement 配置潜在顾客管理
 
@@ -32,7 +32,7 @@ ms.locfileid: "98199762"
 
 ## <a name="install-the-solution"></a>安装解决方案
 
-1. 下载 [Microsoft 市场潜在顾客写入器解决方案](https://mpsapiprodwus.blob.core.windows.net/documentation/MicrosoftMarketplacesLeadIntegrationSolution_1_0_0_0_target_CRM_6.1_managed.zip)并在本地将它保存到计算机。
+1. 下载 [Microsoft 市场潜在顾客写入器解决方案](https://referralsflowpackages.blob.core.windows.net/documentation/MicrosoftMarketplacesLeadIntegrationSolution_1_0_0_0_target_CRM_6.1_managed.zip)并在本地将它保存到计算机。
 
 1. 转到 Dynamics 实例的 URL（如 `https://tenant.crm.dynamics.com`），从而打开 Dynamics 365 Customer Engagement。
 

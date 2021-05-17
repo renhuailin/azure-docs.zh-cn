@@ -1,23 +1,24 @@
 ---
-title: 使用 P2S：Azure VPN 网关
-description: 本页介绍如何在 COVID-19 疫情下利用 VPN 网关完成远程工作。
+title: 远程工作和点到站点 VPN 网关
+titleSuffix: Azure VPN Gateway
+description: 了解如何使用 VPN 网关点到站点连接，以在新冠肺炎疫情期间进行远程工作。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 04/29/2021
 ms.author: alzam
-ms.openlocfilehash: eb0291b18952efc643de18e111154ebe58f041af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57328748f21dda9efe3b2208aeb4854360a76e38
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880078"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288675"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>使用 Azure VPN 网关点到站点连接实现远程工作
 
 >[!NOTE]
->本文介绍如何利用 Azure VPN 网关、Azure、Microsoft 网络和 Azure 合作伙伴生态系统远程进行工作，以及如何缓解因 COVID-19（新冠病毒）危机而面临的网络问题。
+>本文介绍如何利用 Azure VPN 网关、Azure、Microsoft 网络和 Azure 合作伙伴生态系统进行远程工作，以及如何缓解因新冠肺炎危机而面临的网络问题。
 >
 
 本文将介绍可供组织用来为其用户设置远程访问的选项，或者在 COVID-19 疫情期间通过附加容量补充其现有解决方案的选项。

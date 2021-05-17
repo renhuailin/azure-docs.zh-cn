@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 31e06777a2f2e26f6ef546e60fd0bf4428d272c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c55797355b2442fe0100144e5229b318b525631
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102503804"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278067"
 ---
 # <a name="microsoft-sdks-for-iot-plug-and-play"></a>适用于 IoT 即插即用的 Microsoft SDK
 
@@ -28,7 +28,7 @@ ms.locfileid: "102503804"
 | Java - 设备 | [Maven 1.26.0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-device-client) | [GitHub](https://github.com/Azure/azure-iot-sdk-java/tree/master/) | [示例](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/pnp-device-sample) | [连接到 IoT 中心](quickstart-connect-device.md) | [引用](/java/api/com.microsoft.azure.sdk.iot.device) |
 | Python - 设备 | [pip 2.3.0](https://pypi.org/project/azure-iot-device/) | [GitHub](https://github.com/Azure/azure-iot-sdk-python/tree/master/) | [示例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/pnp) | [连接到 IoT 中心](quickstart-connect-device.md) | [引用](/python/api/azure-iot-device/azure.iot.device) |
 | Node - 设备 | [npm 1.17.2](https://www.npmjs.com/package/azure-iot-device)  | [GitHub](https://github.com/Azure/azure-iot-sdk-node/tree/master/) | [示例](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/pnp) | [连接到 IoT 中心](quickstart-connect-device.md) | [引用](/javascript/api/azure-iot-device/) |
-| Embedded C - 设备 | 空值 | [GitHub](https://github.com/Azure/azure-sdk-for-c/)| [示例](howto-use-embedded-c.md#samples) | [如何使用 Embedded C](howto-use-embedded-c.md) | 空值
+| Embedded C - 设备 | 空值 | [GitHub](https://github.com/Azure/azure-sdk-for-c/)| [示例](quickstart-connect-device.md?pivots=programming-language-embedded-c#samples) | [如何使用 Embedded C](quickstart-connect-device.md?pivots=programming-language-embedded-c) | 空值
 
 ## <a name="service-sdks"></a>服务 SDK
 

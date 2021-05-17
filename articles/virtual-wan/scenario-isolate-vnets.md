@@ -1,7 +1,7 @@
 ---
 title: 方案：隔离 VNet
 titleSuffix: Azure Virtual WAN
-description: 用于路由的方案 - 隔离 VNet
+description: 了解虚拟 WAN 路由方案，以防止 VNet 相互联系，我们称之为隔离 VNet。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e5e2ce17be6d8a1fa82d8a92b9b788f0bd2a37b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aaa5281bf1513da4a7bb97f2a1001998064f06f2
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92424738"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162052"
 ---
 # <a name="scenario-isolating-vnets"></a>方案：隔离 VNet
 

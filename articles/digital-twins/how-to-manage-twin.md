@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 02ea87bba8c28f0217479ffc65ccc65903fc0442
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 68127a7603db2d408ed1bbdb244f49de4eb21031
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903031"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208484"
 ---
 # <a name="manage-digital-twins"></a>管理数字孪生
 
-环境中的实体由[数字孪生体](concepts-twins-graph.md)表示。 数字孪生体的管理操作可能包括创建、修改和删除。 若要执行这些操作，可使用 [DigitalTwins API](/rest/api/digital-twins/dataplane/twins)、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) 或 [Azure 数字孪生 CLI](how-to-use-cli.md)。
+环境中的实体由[数字孪生体](concepts-twins-graph.md)表示。 数字孪生体的管理操作可能包括创建、修改和删除。 若要执行这些操作，可使用 DigitalTwins API、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) 或 [Azure 数字孪生 CLI](how-to-use-cli.md)。
 
-本文重点介绍如何管理数字孪生体；若要将关系和[孪生图](concepts-twins-graph.md)作为一个整体进行处理，请参阅[操作指南：使用关系管理孪生图](how-to-manage-graph.md)。
+本文重点介绍如何管理数字孪生体；若要将关系和[孪生图](concepts-twins-graph.md)作为一个整体进行处理，请参阅操作指南：使用关系管理孪生图。
 
 > [!TIP]
 > 所有 SDK 函数都提供同步和异步版本。
@@ -55,7 +55,7 @@ ms.locfileid: "107903031"
 
 可在创建孪生体时初始化该孪生体的属性。 
 
-孪生体创建 API 接受序列化为孪生体属性的有效 JSON 说明的对象。 请参阅[概念：数字孪生体和孪生图](concepts-twins-graph.md)，获取孪生体的 JSON 格式的说明。 
+孪生体创建 API 接受序列化为孪生体属性的有效 JSON 说明的对象。 请参阅概念：数字孪生体和孪生图，获取孪生体的 JSON 格式的说明。 
 
 首先，可以创建一个数据对象来表示孪生体及其属性数据。 可以手动创建参数对象，也可使用提供的帮助程序类创建参数对象。 下面举例说明每种方法。
 
@@ -93,7 +93,7 @@ ms.locfileid: "107903031"
 >[!TIP]
 >孪生体的 `displayName` 是其模型元数据的一部分，因此在获取孪生体实例的数据时，它将不会显示。 若要查看此值，可[从模型中进行检索](how-to-manage-model.md#retrieve-models)。
 
-若要使用单个 API 调用检索多个孪生体，请参阅[操作指南：查询孪生图](how-to-query-graph.md)中的查询 API 示例。
+若要使用单个 API 调用检索多个孪生体，请参阅操作指南：查询孪生图中的查询 API 示例。
 
 请看下面定义月亮的模型（用[数字孪生定义语言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL) 编写）：
 
@@ -135,7 +135,7 @@ ms.locfileid: "107903031"
   - 每个可写属性的同步状态。 这对设备最为有用，因为服务和设备的状态可能不同（例如当设备离线时）。 目前，此属性仅适用于连接到 IoT 中心的物理设备。 若使用元数据部分中的数据，可了解属性的完整状态以及上次修改的时间戳。 有关同步状态的详细信息，请参阅[此 IoT 中心教程](../iot-hub/tutorial-device-twins.md)，了解如何同步设备状态。
   - 服务特定的元数据，如来自 IoT 中心或 Azure 数字孪生的元数据。 
 
-若要详细了解 `BasicDigitalTwin` 等序列化帮助程序类，可阅读[操作指南：使用 Azure 数字孪生 API 和 SDK](how-to-use-apis-sdks.md)。
+若要详细了解 `BasicDigitalTwin` 等序列化帮助程序类，可阅读操作指南：使用 Azure 数字孪生 API 和 SDK。
 
 ## <a name="view-all-digital-twins"></a>查看所有数字孪生体
 
@@ -214,7 +214,7 @@ Azure 数字孪生确保所有传入请求都会一个接一个地得到处理�
 
 ### <a name="delete-all-digital-twins"></a>删除所有数字孪生体
 
-有关如何一次删除所有孪生体的示例，请下载[教程：使用示例客户端应用了解基础知识](tutorial-command-line-app.md)中使用的示例应用。 CommandLoop.cs 文件在 `CommandDeleteAllTwins()` 函数中执行此操作。
+有关如何一次删除所有孪生体的示例，请下载教程：使用示例客户端应用了解基础知识中使用的示例应用。 CommandLoop.cs 文件在 `CommandDeleteAllTwins()` 函数中执行此操作。
 
 ## <a name="runnable-digital-twin-code-sample"></a>可运行的数字孪生体代码示例
 
@@ -222,7 +222,7 @@ Azure 数字孪生确保所有传入请求都会一个接一个地得到处理�
 
 ### <a name="set-up-the-runnable-sample"></a>设置可运行的示例
 
-此代码片段使用[教程：使用示例客户端应用了解 Azure 数字孪生](tutorial-command-line-app.md)中的 [Room.json](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) 模型定义。 你可使用此链接直接转到该文件，或[在此处](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)下载该文件以将其作为完整的端到端示例项目的一部分。
+此代码片段使用教程：使用示例客户端应用了解 Azure 数字孪生中的 [Room.json](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) 模型定义。 你可使用此链接直接转到该文件，或下载该文件以将其作为完整的[端到端示例项目](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)的一部分。
 
 运行此示例之前，请执行以下步骤：
 1. 下载模型文件，将其放在项目中，并替换以下代码中的 `<path-to>` 占位符，告诉程序在何处找到该文件。

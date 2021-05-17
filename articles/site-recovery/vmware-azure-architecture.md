@@ -1,18 +1,15 @@
 ---
 title: 使用 Azure Site Recovery 执行 VMware VM 灾难恢复的体系结构
 description: 本文概述了使用 Azure Site Recovery 设置本地 VMware VM 到 Azure 的灾难恢复时使用的组件和体系结构
-author: rayne-wiselman
 ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
-ms.author: raynew
-ms.openlocfilehash: 5cf4dc5123040fd2af8efe54153867a8709fe1ef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 24333ccc5096e7f04f016444de2b0a7e13ae7bfa
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97652222"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579814"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware 到 Azure 的灾难恢复体系结构
 
@@ -47,7 +44,7 @@ ms.locfileid: "97652222"
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | 存储                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 向 Site Recovery 服务 URL 提供授权和身份验证。 |
-| 复制               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | 允许 VM 与 Site Recovery 服务进行通信。 |
+| 复制               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.us`   | 允许 VM 与 Site Recovery 服务进行通信。 |
 | 服务总线               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | 允许 VM 写入 Site Recovery 监视和诊断数据。 |
 
 有关针对本地 Azure Site Recovery 基础结构和 Azure 服务之间的通信进行筛选的完整 URL 列表，请参阅[先决条件一文中的“网络要求”部分](vmware-azure-deploy-configuration-server.md#prerequisites)。

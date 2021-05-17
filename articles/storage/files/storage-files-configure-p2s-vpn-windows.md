@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: de342267292c6a93c4a1ba2eae232403ccaf9514
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e7b7445fe293ae6cec975409a15e979873ec64aa
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785264"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331243"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>在 Windows 上配置点到站点 (P2S) VPN 以与 Azure 文件存储一起使用
 你可以使用点到站点 (P2S) VPN 连接从 Azure 外部通过 SMB 装载 Azure 文件共享，而无需打开端口 445。 点到站点 VPN 连接是 Azure 与单个客户端之间的 VPN 连接。 若要将 P2S VPN 连接与 Azure 文件存储一起使用，需要为每个要连接的客户端配置 P2S VPN 连接。 如果有多个客户端需要从本地网络连接到 Azure 文件共享，则可以为每个客户端使用站点到站点 (S2S) VPN 连接，而不使用点到站点连接。 若要了解详细信息，请参阅[配置站点到站点 VPN 以与 Azure 文件存储一起使用](storage-files-configure-s2s-vpn.md)。
@@ -26,56 +26,45 @@ ms.locfileid: "107785264"
 
 - 要在本地装载的 Azure 文件共享。 Azure 文件共享部署在存储帐户中，是代表共享存储池的管理结构，可以在其中部署多个文件共享以及其他存储资源（例如 Blob 容器或队列）。 可以在[创建 Azure 文件共享](storage-how-to-create-file-share.md)中详细了解如何部署 Azure 文件共享和存储帐户。
 
-- 包含要在本地装载的 Azure 文件共享的存储帐户的专用终结点。 若要详细了解如何创建专用终结点，请参阅[配置 Azure 文件存储网络终结点](storage-files-networking-endpoints.md?tabs=azure-powershell)。 
+- 带有存储帐户专用终结点的虚拟网络，此帐户中包含要在本地装载的 Azure 文件共享。 若要详细了解如何创建专用终结点，请参阅[配置 Azure 文件存储网络终结点](storage-files-networking-endpoints.md?tabs=azure-powershell)。 
 
-## <a name="deploy-a-virtual-network"></a>部署虚拟网络
-若要通过点到站点 VPN 从本地访问 Azure 文件共享和其他 Azure 资源，必须创建虚拟网络或 VNet。 将自动创建的 P2S VPN 连接是本地 Windows 计算机与此 Azure 虚拟网络之间的桥。
+## <a name="collect-environment-information"></a>收集环境信息
+为设置点到站点 VPN，需要先收集一些有关环境的信息，以供本指南使用。 如果尚未创建存储帐户、虚拟网络和/或专用终结点，请参阅[先决条件](#prerequisites)部分。
 
-以下 PowerShell 将创建包含三个子网的 Azure 虚拟网络：一个用于存储帐户的服务终结点，一个用于存储帐户的专用终结点（用于访问本地存储帐户，而无需为可能更改的存储帐户的公共 IP 创建自定义路由），以及一个用于提供 VPN 服务的虚拟网关。 
-
-请记得将 `<region>`、`<resource-group>` 和 `<desired-vnet-name>` 替换为适合你的环境的值。
+请记得将 `<resource-group>`、`<vnet-name>`、`<subnet-name>` 和 `<storage-account-name>` 替换为适合环境的值。
 
 ```PowerShell
-$region = "<region>"
-$resourceGroupName = "<resource-group>" 
-$virtualNetworkName = "<desired-vnet-name>"
+$resourceGroupName = "<resource-group-name>" 
+$virtualNetworkName = "<vnet-name>"
+$subnetName = "<subnet-name>"
+$storageAccountName = "<storage-account-name>"
 
-$virtualNetwork = New-AzVirtualNetwork `
-    -ResourceGroupName $resourceGroupName `
-    -Name $virtualNetworkName `
-    -Location $region `
-    -AddressPrefix "192.168.0.0/16"
-
-Add-AzVirtualNetworkSubnetConfig `
-    -Name "ServiceEndpointSubnet" `
-    -AddressPrefix "192.168.0.0/24" `
-    -VirtualNetwork $virtualNetwork `
-    -ServiceEndpoint "Microsoft.Storage" `
-    -WarningAction SilentlyContinue | Out-Null
-
-Add-AzVirtualNetworkSubnetConfig `
-    -Name "PrivateEndpointSubnet" `
-    -AddressPrefix "192.168.1.0/24" `
-    -VirtualNetwork $virtualNetwork `
-    -WarningAction SilentlyContinue | Out-Null
-
-Add-AzVirtualNetworkSubnetConfig `
-    -Name "GatewaySubnet" `
-    -AddressPrefix "192.168.2.0/24" `
-    -VirtualNetwork $virtualNetwork `
-    -WarningAction SilentlyContinue | Out-Null
-
-$virtualNetwork | Set-AzVirtualNetwork | Out-Null
 $virtualNetwork = Get-AzVirtualNetwork `
     -ResourceGroupName $resourceGroupName `
     -Name $virtualNetworkName
 
-$serviceEndpointSubnet = $virtualNetwork.Subnets | `
-    Where-Object { $_.Name -eq "ServiceEndpointSubnet" }
-$privateEndpointSubnet = $virtualNetwork.Subnets | `
-    Where-Object { $_.Name -eq "PrivateEndpointSubnet" }
-$gatewaySubnet = $virtualNetwork.Subnets | ` 
-    Where-Object { $_.Name -eq "GatewaySubnet" }
+$subnetId = $virtualNetwork | `
+    Select-Object -ExpandProperty Subnets | `
+    Where-Object { $_.Name -eq "StorageAccountSubnet" } | `
+    Select-Object -ExpandProperty Id
+
+$storageAccount = Get-AzStorageAccount `
+    -ResourceGroupName $resourceGroupName `
+    -Name $storageAccountName
+
+$privateEndpoint = Get-AzPrivateEndpoint | `
+    Where-Object {
+        $subnets = $_ | `
+            Select-Object -ExpandProperty Subnet | `
+            Where-Object { $_.Id -eq $subnetId }
+
+        $connections = $_ | `
+            Select-Object -ExpandProperty PrivateLinkServiceConnections | `
+            Where-Object { $_.PrivateLinkServiceId -eq $storageAccount.Id }
+        
+        $null -ne $subnets -and $null -ne $connections
+    } | `
+    Select-Object -First 1
 ```
 
 ## <a name="create-root-certificate-for-vpn-authentication"></a>为 VPN 身份验证创建根证书

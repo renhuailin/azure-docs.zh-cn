@@ -1,5 +1,5 @@
 ---
-title: 在 Microsoft AppSource 中创建 Power BI 应用服务
+title: 在 Microsoft AppSource 中创建 Power BI 应用产品/服务
 description: 了解如何创建 Power BI 应用产品/服务并发布到 Microsoft AppSource。
 author: navits09
 ms.author: navits
@@ -8,43 +8,43 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.openlocfilehash: bff20468e8185073f5c192c1e115bc405dd089eb
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97693614"
 ---
 # <a name="create-a-power-bi-app-offer"></a>创建 Power BI 应用套餐
 
-本文介绍如何创建 Power BI 应用服务并将其发布到 [Microsoft AppSource](https://appsource.microsoft.com/)。
+本文介绍如何创建 Power BI 应用程序产品/服务并发布到 [Microsoft AppSource](https://appsource.microsoft.com/)。
 
-在开始之前，[在合作伙伴中心创建商业市场帐户](create-account.md)（如果尚未这样做）。 确保你的帐户已在商业市场计划中注册。
+开始前，请先[在合作伙伴中心内创建商业市场帐户](create-account.md)（如果尚未创建的话）。 确保你的帐户已注册加入商业市场计划。
 
 ## <a name="create-a-new-offer"></a>创建新套餐
 
-1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
 2. 在左侧导航菜单中，选择“商业市场” > “概述”。
 3. 在“概述”页上，选择“+ 新建产品/服务” > “Power BI 服务应用”。
 
    ![阐释左侧导航菜单。](./media/new-offer-power-bi-app.png)
 
 > [!NOTE]
-> 发布产品/服务后，在 "合作伙伴中心" 中对其进行的编辑仅会在重新发布产品/服务后出现在联机商店中。 确保在进行更改后始终重新发布。
+> 发布产品/服务后，在合作伙伴中心内对其进行的编辑只会在重新发布产品/服务后才会显示在在线商店中。 确保在进行更改后始终重新发布。
 
 > [!IMPORTANT]
 > 如果未显示或未启用“Power BI 服务应用”，则帐户无权创建此产品/服务类型。 请检查是否已满足此产品/服务类型的所有[要求](create-power-bi-app-overview.md)，包括开发人员帐户注册。
 
 ## <a name="new-offer"></a>新产品/服务
 
-输入“产品/服务 ID”。 这是你的帐户中每个产品/服务的唯一标识符。
+输入“产品/服务 ID”。 这是你帐户中的每个产品/服务的唯一标识符。
 
-- 客户可以在市场产品/服务和 Azure 资源管理器模板的 Web 地址中看到此 ID（如果适用）。
-- 只使用小写字母和数字。 其中可以包含连字符和下划线，但不能包含空格，并且不得超过 50 个字符。 例如，如果在此处输入“test-offer-1”，则产品/服务 Web 地址将为 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
-- 选择“创建”后，无法更改产品/服务 ID。
+- 客户可以在市场产品/服务和 Azure 资源管理器模板的 Web 地址中看到此 ID（若有）。
+- 只使用小写字母和数字。 其中可以包含连字符和下划线字符，但不能包含空格，并且不得超过 50 个字符。 例如，如果你在此处输入“test-offer-1”，则产品/服务 Web 地址为 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
+- 在选择“创建”后，就无法更改产品/服务 ID 了。
 
-输入“产品/服务别名”。 这是用于合作伙伴中心的产品/服务的名称。
+输入“产品/服务别名”。 这是在合作伙伴中心内用于产品/服务的名称。
 
-- 此名称未用于市场，并且与向客户显示的产品/服务名称和其他值不同。
+- 此名称不用于市场，并且与向客户显示的产品/服务名称和其他值不同。
 - 选择“创建”后，无法更改产品/服务别名。
 
 选择“创建”以生成产品/服务并继续。
@@ -57,7 +57,7 @@ ms.locfileid: "97693614"
 
 - 如果产品/服务是草稿 - 删除草稿产品/服务
 - 如果产品/服务已上线 - [停止销售产品/服务](update-existing-offer.md#stop-selling-an-offer-or-plan)
-- 如果产品/服务为预览版 - [投入使用](../review-publish-offer.md#previewing-and-approving-your-offer)
+- 如果产品/服务处于预览状态 - [上线](../review-publish-offer.md#previewing-and-approving-your-offer)
 - 如果还没有完成发布者注销 - [取消发布](../review-publish-offer.md#cancel-publishing)。
 
 ## <a name="offer-setup"></a>产品/服务设置
@@ -73,20 +73,20 @@ ms.locfileid: "97693614"
     - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > 如果 CRM 系统不在此列表中，请使用 [Azure 表](commercial-marketplace-lead-management-instructions-azure-table.md) 或 [HTTPS 终结点](commercial-marketplace-lead-management-instructions-https.md) 来存储客户的潜在客户数据。 然后将数据导出到你的 CRM 系统。
+    > 如果未列出你的 CRM 系统，请使用 [Azure 表](commercial-marketplace-lead-management-instructions-azure-table.md)和/或 [HTTPS 终结点](commercial-marketplace-lead-management-instructions-https.md)存储潜在顾客数据。 然后将数据导出到你的 CRM 系统。
 
 2. 在合作伙伴中心发布时，将产品/服务连接到潜在顾客目标。
-3. 确认正确配置了到潜在顾客目标的连接。 在合作伙伴中心发布后，我们将验证连接，并向你发送一个测试潜在顾客。 如果要在投入使用前预览产品/服务，还可以通过亲自尝试在预览环境中购买产品/服务来测试潜在顾客连接。
-4. 请确保与顾客连接目标的连接保持最新状态，以免丢失任何顾客连接。
+3. 确认是否正确配置了与潜在客户目标的连接。 当你在合作伙伴中心内发布它后，我们会验证连接，并向你发送测试潜在客户。 若要在上线前预览产品/服务，也可以通过亲自尝试在预览环境中购买产品/服务来测试潜在客户连接。
+4. 请务必不断更新与潜在客户目标的连接，以免失去任何潜在客户。
 
-下面是一些其他顾客连接管理资源：
+下面是其他一些潜在客户管理资源：
 
 - [商业市场产品/服务的潜在客户](commercial-marketplace-get-customer-leads.md)
 - [有关潜在客户管理的常见问题](../lead-management-faq.md#common-questions-about-lead-management)
-- [潜在客户配置错误疑难解答](../lead-management-faq.md#publishing-config-errors)
+- [潜在顾客配置错误故障排除](../lead-management-faq.md#publishing-config-errors)
 - [潜在客户管理概述](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF（确保弹出窗口阻止程序处于禁用状态）。
 
-选择“保存草稿”，然后继续。
+选择“保存草稿”，然后继续操作。
 
 ## <a name="properties"></a>属性
 
@@ -94,12 +94,12 @@ ms.locfileid: "97693614"
 
 ### <a name="category"></a>类别
 
-选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
+选择类别和子类别将产品/服务放入相应的市场搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
-- 至少一个和多达两个类别，包括主类别和辅助类别 (可选) 。
-- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 " **不适用**"。
+- 至少一个，最多两个类别，包括主类别和辅助类别（可选）。
+- 每个主类别和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择“不适用”。
 
-请参阅 [产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。
+请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。
 
 ### <a name="industry"></a>行业
 
@@ -126,17 +126,17 @@ ms.locfileid: "97693614"
 > [!NOTE]
 > 如果产品/服务说明的开头是“此应用程序仅以 [非英语语言] 推出”，则产品/服务详细信息不必是英语。 还可以提供一个有用的链接，来使用与产品/服务列表中所使用的语言不同的语言提供内容。
 
-以下示例显示了产品/服务信息在 Microsoft AppSource 中的显示方式， (所有的价格仅用于举例目的，而不用于反映实际成本) ：
+以下示例说明了产品/服务信息在 Microsoft AppSource 中的显示方式（所有的价格仅用于举例目的，而不代表实际成本）：
 
 :::image type="content" source="media/example-power-bi-app.png" alt-text="说明了此产品/服务在 Microsoft AppSource 中的显示方式。":::
 
-#### <a name="call-out-descriptions"></a>拨出说明
+#### <a name="call-out-descriptions"></a>调用说明
 
 1. 徽标
 2. 产品
-3. Categories
+3. 类别
 4. 行业
-5. 支持地址 (链接) 
+5. 支持地址（链接）
 6. 使用条款
 7. 隐私策略
 8. 产品名称
@@ -207,12 +207,12 @@ ms.locfileid: "97693614"
 
 #### <a name="store-logos"></a>应用商店徽标
 
-提供 **大** 徽标徽标的 PNG 文件。 合作伙伴中心将使用此来创建 **小** 徽标。 稍后，可以选择将此替换为其他映像。
+提供大徽标的 PNG 文件。 合作伙伴中心将用其来创建小徽标。 稍后，可以选择将其替换为其他图像。
 
-- **大型** (从 216 x 216 到 350 x 350 px，必需) 
-- **小写** (48 x 48 px，可选) 
+- **大**（216 x 216 到 350 x 350 像素，必选）
+- **小**（48 x 48 像素，可选）
 
-在列表中的不同位置使用这些徽标：
+这些徽标会在列表的不同位置上使用：
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
@@ -224,7 +224,7 @@ ms.locfileid: "97693614"
 
 #### <a name="videos-optional"></a>视频（可选）
 
-最多添加五个视频来演示产品/服务。 以 1280 x 720 像素的大小输入视频的名称、其 web 地址和缩略图 PNG 图像。
+最多添加五个视频来演示产品/服务。 输入视频的名称、其 Web 地址和视频的缩略图 PNG 图像（大小为 1280 x 720 像素）。
 
 #### <a name="additional-marketplace-listing-resources"></a>其他市场列表资源
 
@@ -258,4 +258,4 @@ ms.locfileid: "97693614"
 
 若要提交产品/服务进行发布，请选择“发布”。
 
-我们会向你发送电子邮件，让你知道何时有预览版产品/服务可供审阅和审核。 若要将产品/服务发布到公众，请前往 "合作伙伴中心" 并选择 " **上线**"。
+我们会向你发送电子邮件，让你知道何时有预览版产品/服务可供审阅和审核。 要公开发布产品/服务，请转到合作伙伴中心并选择“上线”。

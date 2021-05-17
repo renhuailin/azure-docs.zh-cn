@@ -10,12 +10,12 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 04/21/2021
-ms.openlocfilehash: 4a8934d2e33188a325078019ea73cde68e831562
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 5a31531a0d98a1dae4122f661001aa5eca887e6b
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107896290"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279867"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure 资源管理器模板创建 Azure 机器学习的工作区
 
@@ -40,7 +40,7 @@ ms.locfileid: "107896290"
 
 ## <a name="workspace-resource-manager-template"></a>工作区资源管理器模板
 
-可以在 Azure 快速入门模板 GitHub 存储库的 [201-machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/blob/master/201-machine-learning-advanced/azuredeploy.json) 目录中找到本文档中使用的 Azure 资源管理器模板。
+可以在 Azure 快速入门模板 GitHub 存储库的 [machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced/azuredeploy.json) 目录中找到本文档中使用的 Azure 资源管理器模板。
 
 此模板创建以下 Azure 服务：
 
@@ -106,7 +106,7 @@ New-AzResourceGroup -Name "examplegroup" -Location "eastus"
 az deployment group create \
     --name "exampledeployment" \
     --resource-group "examplegroup" \
-    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced/azuredeploy.json" \
     --parameters workspaceName="exampleworkspace" location="eastus"
 ```
 
@@ -116,7 +116,7 @@ az deployment group create \
 New-AzResourceGroupDeployment `
   -Name "exampledeployment" `
   -ResourceGroupName "examplegroup" `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced/azuredeploy.json" `
   -workspaceName "exampleworkspace" `
   -location "eastus"
 ```
@@ -134,7 +134,7 @@ New-AzResourceGroupDeployment `
 az deployment group create \
     --name "exampledeployment" \
     --resource-group "examplegroup" \
-    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced/azuredeploy.json" \
     --parameters workspaceName="exampleworkspace" \
       location="eastus" \
       storageAccountOption="existing" \
@@ -147,7 +147,7 @@ az deployment group create \
 New-AzResourceGroupDeployment `
   -Name "exampledeployment" `
   -ResourceGroupName "examplegroup" `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced/azuredeploy.json" `
   -workspaceName "exampleworkspace" `
   -location "eastus" `
   -storageAccountOption "existing" `
@@ -228,7 +228,7 @@ New-AzResourceGroupDeployment `
 az deployment group create \
     --name "exampledeployment" \
     --resource-group "examplegroup" \
-    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced/azuredeploy.json" \
     --parameters workspaceName="exampleworkspace" \
       location="eastus" \
       encryption_status="Enabled" \
@@ -242,7 +242,7 @@ az deployment group create \
 New-AzResourceGroupDeployment `
   -Name "exampledeployment" `
   -ResourceGroupName "examplegroup" `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced/azuredeploy.json" `
   -workspaceName "exampleworkspace" `
   -location "eastus" `
   -encryption_status "Enabled" `
@@ -288,7 +288,7 @@ New-AzResourceGroupDeployment `
 az deployment group create \
     --name "exampledeployment" \
     --resource-group "examplegroup" \
-    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced/azuredeploy.json" \
     --parameters workspaceName="exampleworkspace" \
       location="eastus" \
       privateEndpointType="AutoApproval"
@@ -300,7 +300,7 @@ az deployment group create \
 New-AzResourceGroupDeployment `
   -Name "exampledeployment" `
   -ResourceGroupName "examplegroup" `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced/azuredeploy.json" `
   -workspaceName "exampleworkspace" `
   -location "eastus" `
   -privateEndpointType "AutoApproval"
@@ -318,7 +318,7 @@ New-AzResourceGroupDeployment `
 az deployment group create \
     --name "exampledeployment" \
     --resource-group "examplegroup" \
-    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced/azuredeploy.json" \
     --parameters workspaceName="exampleworkspace" \
       location="eastus" \
       vnetOption="new" \
@@ -333,7 +333,7 @@ az deployment group create \
 New-AzResourceGroupDeployment `
   -Name "exampledeployment" `
   -ResourceGroupName "examplegroup" `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced/azuredeploy.json" `
   -workspaceName "exampleworkspace" `
   -location "eastus" `
   -vnetOption "new" `
@@ -352,7 +352,7 @@ New-AzResourceGroupDeployment `
 az deployment group create \
     --name "exampledeployment" \
     --resource-group "examplegroup" \
-    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced/azuredeploy.json" \
     --parameters workspaceName="exampleworkspace" \
       location="eastus" \
       vnetOption="new" \
@@ -371,7 +371,7 @@ az deployment group create \
 New-AzResourceGroupDeployment `
   -Name "exampledeployment" `
   -ResourceGroupName "examplegroup" `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced/azuredeploy.json" `
   -workspaceName "exampleworkspace" `
   -location "eastus" `
   -vnetOption "new" `
@@ -397,7 +397,7 @@ New-AzResourceGroupDeployment `
 az deployment group create \
     --name "exampledeployment" \
     --resource-group "examplegroup" \
-    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced/azuredeploy.json" \
     --parameters workspaceName="exampleworkspace" \
       location="eastus" \
       vnetOption="new" \
@@ -411,7 +411,7 @@ az deployment group create \
 New-AzResourceGroupDeployment `
   -Name "exampledeployment" `
   -ResourceGroupName "examplegroup" `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced/azuredeploy.json" `
   -workspaceName "exampleworkspace" `
   -location "eastus" `
   -vnetOption "new" `
@@ -459,7 +459,7 @@ New-AzResourceGroupDeployment `
     az deployment group create \
     --name "exampledeployment" \
     --resource-group "examplegroup" \
-    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced/azuredeploy.json" \
     --parameters workspaceName="exampleworkspace" \
       location="eastus" \
       vnetOption="existing" \
@@ -480,7 +480,7 @@ New-AzResourceGroupDeployment `
     New-AzResourceGroupDeployment `
       -Name "exampledeployment" `
       -ResourceGroupName "examplegroup" `
-      -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+      -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced/azuredeploy.json" `
       -workspaceName "exampleworkspace" `
       -location "eastus" `
       -vnetOption "existing" `
@@ -508,7 +508,7 @@ New-AzResourceGroupDeployment `
 az deployment group create \
     --name "exampledeployment" \
     --resource-group "examplegroup" \
-    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced/azuredeploy.json" \
     --parameters workspaceName="exampleworkspace" \
       location="eastus" \
       vnetOption="existing" \
@@ -525,7 +525,7 @@ az deployment group create \
 New-AzResourceGroupDeployment `
   -Name "exampledeployment" `
   -ResourceGroupName "examplegroup" `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced/azuredeploy.json" `
   -workspaceName "exampleworkspace" `
   -location "eastus" `
   -vnetOption "existing" `
@@ -540,8 +540,9 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 
-1. 遵循[从自定义模板部署资源](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)中的步骤。 在到达“选择模板”屏幕时，从下拉列表中选择 **201-machine-learning-advanced** 模板。
-1. 选择“选择模板”以使用该模板。 根据你的部署方案，提供以下必需的信息和任何其他参数。
+1. 遵循[从自定义模板部署资源](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)中的步骤。 进入“选择模板”界面后，选择“快速入门”条目。 出现该条目时，请选择标记为“单击此处打开模板存储库”的链接。 利用此链接，你能快速找到 Azure 快速入门模板存储库中的 `quickstarts` 目录。
+1. 在快速入门模板列表中，选择“`microsoft.machinelearningservices'. Finally, select `部署到 Azure”。
+1. 出现此模板后，根据你的部署方案，提供以下必需信息和任何其他参数。
 
    * 订阅：选择用于这些资源的 Azure 订阅。
    * 资源组：选择或创建一个用于包含服务的资源组。

@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: ad4f5dcd137a9be6dfc764385802792026c0297d
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101093008"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>从云到设备通信指南
@@ -30,7 +30,7 @@ IoT 中心提供三个选项，允许设备应用向后端应用公开功能：
 
 * [云到设备消息](iot-hub-devguide-messages-c2d.md)，适用于向设备应用提供单向通知。
 
-若要了解 [Azure iot 即插即用](../iot-pnp/overview-iot-plug-and-play.md) 如何使用这些选项控制 iot 即插即用设备，请参阅 [iot 即插即用服务开发人员指南](../iot-pnp/concepts-developer-guide-service.md)。
+要了解 [Azure IoT 即插即用](../iot-pnp/overview-iot-plug-and-play.md)如何使用这些选项控制 IoT 即插即用设备，请参阅 [IoT 即插即用服务开发人员指南](../iot-pnp/concepts-developer-guide-service.md)。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 

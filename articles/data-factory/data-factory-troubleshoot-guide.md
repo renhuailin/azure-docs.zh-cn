@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 12/30/2020
 ms.author: abnarain
-ms.openlocfilehash: 101e55188b8021040e2fd6bd573c1c6330241e72
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3011309da477dcfad2285e5832dfa163f69cc419
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100382797"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108183535"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>排查 Azure 数据工厂问题
 
@@ -106,6 +106,14 @@ ms.locfileid: "100382797"
 - **原因**：不允许已生成访问令牌的用户访问链接服务中指定的 Databricks 群集。
 
 - **建议**：确保该用户在工作区中拥有所需的权限。
+
+<br/> 
+
+- **消息**：`Job is not fully initialized yet. Please retry later.`
+
+- 原因：作业未初始化。
+
+- 建议：请等待并稍后重试。
 
 ### <a name="error-code-3203"></a>错误代码:3203
 

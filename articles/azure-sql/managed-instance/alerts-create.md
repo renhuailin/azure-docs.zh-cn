@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 05/04/2020
 ms.openlocfilehash: d37465223000399aa42895626c48426ddadc0c72
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100592704"
 ---
 # <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>使用 Azure 门户为 Azure SQL 托管实例创建警报
@@ -46,7 +46,7 @@ ms.locfileid: "100592704"
 ## <a name="alerting-metrics-available-for-managed-instance"></a>适用于托管实例的警报指标
 
 > [!IMPORTANT]
-> 警报指标仅适用于托管实例。 警报指标不适用于托管实例中的单个数据库。 另一方面，数据库诊断遥测可按[诊断日志](../database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export)的形式提供。 诊断日志的警报可以使用托管实例的[日志警报脚本](../../azure-monitor/insights/azure-sql.md#creating-alerts-for-sql-managed-instance)在[SQL Analytics](../../azure-monitor/insights/azure-sql.md)产品内进行设置。
+> 警报指标仅适用于托管实例。 警报指标不适用于托管实例中的单个数据库。 另一方面，数据库诊断遥测可按[诊断日志](../database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export)的形式提供。 可以使用托管实例的[日志警报脚本](../../azure-monitor/insights/azure-sql.md#creating-alerts-for-sql-managed-instance)在 [SQL Analytics](../../azure-monitor/insights/azure-sql.md) 产品中设置诊断日志的警报。
 
 以下托管实例指标可用于警报配置：
 
@@ -90,7 +90,7 @@ ms.locfileid: "100592704"
 
 8. 设置评估期 - 聚合粒度（以分钟为单位）和评估频率。 评估频率指示警报系统定期检查阈值条件是否满足的检查时间。
 
-9. 选择操作组。 随即显示“操作组”窗格，通过该窗格可以选择现有操作或创建新操作。 此操作定义将在触发警报后发生 (例如，发送电子邮件、在电话上呼叫、执行 webhook、Azure 函数或 runbook，例如) 。
+9. 选择操作组。 随即显示“操作组”窗格，通过该窗格可以选择现有操作或创建新操作。 此操作定义在触发警报时发生的操作（例如，发送电子邮件、在你的电话上呼叫、执行 webhook、Azure function 或 runbook）。
 
    ![Select_action_group](./media/alerts-create/mi-select-action-group-smaller-annotated.png)
 
@@ -98,7 +98,7 @@ ms.locfileid: "100592704"
 
       ![Create_action_group_alerts](./media/alerts-create/mi-create-alert-action-group-smaller-annotated.png)
    
-   * 定义警报方式：输入操作组名称、短名称、操作名称并选择操作类型。 操作类型定义是否通过电子邮件、短信和语音呼叫通知你，如果可能，将执行 webhook、Azure 函数、runbook 或将在兼容的系统中创建 ITSM 票证。
+   * 定义警报方式：输入操作组名称、短名称、操作名称并选择操作类型。 “操作类型”定义是通过电子邮件、短信还是语音呼叫通知你，如果可能，将执行 webhook、Azure 函数、runbook，或将在兼容的系统中创建 ITSM 票证。
 
       ![Define_how_to_be_alerted](./media/alerts-create/mi-add-alerts-action-group-annotated.png)
 

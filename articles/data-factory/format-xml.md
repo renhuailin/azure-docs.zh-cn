@@ -1,17 +1,17 @@
 ---
 title: Azure 数据工厂中的 XML 格式
 description: 本主题介绍了如何处理 Azure 数据工厂中的 XML 格式。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/29/2020
-ms.author: jingwang
-ms.openlocfilehash: a4082e1e00ecb1d3b0157fcc35616704eaab0aae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/29/2021
+ms.author: jianleishen
+ms.openlocfilehash: 97e08238f6057eea82bc5cb3e6d96b67ac12e344
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100386350"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486496"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>Azure 数据工厂中的 XML 格式
 
@@ -91,7 +91,7 @@ ms.locfileid: "100386350"
 
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
-在映射数据流中，可以在以下数据存储中读取和写入 XML 格式：[Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) 和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。 可以使用 XML 数据集或使用[内联数据集](data-flow-source.md#inline-datasets)来指向 XML 文件。
+在映射数据流中，可以在以下数据存储中读取 XML 格式：[Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) 和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。 可以使用 XML 数据集或使用[内联数据集](data-flow-source.md#inline-datasets)来指向 XML 文件。
 
 ### <a name="source-properties"></a>源属性
 

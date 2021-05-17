@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2021
 ms.author: xpouyat
-ms.openlocfilehash: 02374cc619e8e72d4e341d09d58dd0f8589bb3e9
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 7eb406a7b584e72f1816c51f68597a38b79e2d08
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228705"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714632"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>授权 Microsoft&reg; 平滑流式处理客户端移植工具包
 
@@ -114,7 +114,6 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * ZTE Corporation
 
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Microsoft 平滑流式处理客户端最终产品协议受证人
-* Advanced Digital Broadcast SA
 * AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
 * AmTRAN Technology Co., Ltd 
 * Arcadyan Technology Corporation

@@ -1,16 +1,16 @@
 ---
-title: 服务器-Azure Database for MariaDB
+title: 服务器 - Azure Database for MariaDB
 description: 本主题提供使用 Azure Database for MariaDB 服务器的注意事项和指南。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: abe17556d9ff62c44a33bfe4c4546a284785522e
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.openlocfilehash: 4d8293258083ea3e8d0172f510e5b41e91328736
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664123"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的服务器概念
@@ -45,8 +45,8 @@ Azure Database for MariaDB 服务器：
 | **防火墙** | 为了帮助保护数据，在用户指定具有访问权限的计算机之前，防火墙规则将禁止所有对数据库服务器的访问。 请参阅 [Azure Database for MariaDB 服务器防火墙规则](./concepts-firewall-rules.md)。 |
 | **SSL** | 该服务支持在应用程序和数据库服务器之间强制进行 SSL 连接。 请参阅[配置应用程序的 SSL 连接性以安全连接到 Azure Database for MariaDB](./howto-configure-ssl.md)。 |
 
-## <a name="stopstart-an-azure-database-for-mariadb-preview"></a>停止/启动 Azure Database for MariaDB (预览版) 
-Azure Database for MariaDB 使你能够在未使用时 **停止** 服务器，并在恢复活动时 **启动** 服务器。 这样做的目的主要是为了节省数据库服务器的成本，只有在使用时才为资源付费。 这对于开发测试工作负载以及仅在一天中部分时间使用服务器的情况尤为重要。 停止服务器时，将删除所有活动连接。 稍后，当你想要使服务器重新联机时，可以使用 [Azure 门户](../mysql/how-to-stop-start-server.md) 或 [CLI](../mysql/how-to-stop-start-server.md)。
+## <a name="stopstart-an-azure-database-for-mariadb-preview"></a>停止/启动 Azure Database for MariaDB（预览版）
+借助 Azure Database for MariaDB，可以在不使用服务器时停止该服务器，在恢复活动时启动该服务器。 这样做的目的主要是为了节省数据库服务器的成本，只有在使用时才为资源付费。 这对于开发测试工作负载以及仅在一天中部分时间使用服务器的情况尤为重要。 停止服务器时，将删除所有活动连接。 稍后，当你想要使服务器重新联机时，可以使用 [Azure 门户](../mysql/how-to-stop-start-server.md)或 [CLI](../mysql/how-to-stop-start-server.md)。
 
 当服务器处于“已停止”状态时，服务器的计算不会产生费用。 但是，由于仍要保留服务器的存储空间以确保再次启动服务器时数据文件可用，因此存储会继续产生费用。
 

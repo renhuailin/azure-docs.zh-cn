@@ -2,21 +2,21 @@
 title: 提高专用 SQL 池的列存储索引性能
 description: 降低内存需求或增加可用内存，使专用 SQL 池中每个行组的行数最大化。
 services: synapse-analytics
-author: kevinvngo
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 03/22/2019
-ms.author: kevin
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: d668c3e505d6849d3cde52d52698a95c1c5647d9
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.openlocfilehash: 1336359bdd0768ba1d1554554d266cacfb483a43
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676156"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566505"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore-indexes-in-dedicated-sql-pool"></a>最大程度提高专用 SQL 池中列存储索引的行组质量 
 
@@ -99,7 +99,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 使用专为压缩文本设计的压缩方法来压缩长字符串。 此压缩方法使用 *词典* 来存储文本模式。 词典最大大小为 16 MB。 行组中每个长字符串列只能有一个词典。
 
-有关列存储内存需求的深入讨论，请参阅视频 [专用 SQL 池缩放：配置和指南](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)。
+有关列存储内存需求的深入讨论，请观看视频 [Dedicated SQL pool scaling: configuration and guidance](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)（专用 SQL 池缩放：配置和指南）。
 
 ## <a name="ways-to-reduce-memory-requirements"></a>减少内存需求的方法
 

@@ -1,6 +1,6 @@
 ---
-title: Azure IoT 中心设备流 |Microsoft Docs
-description: Azure IoT 中心设备流概述，有助于实现各种云到设备通信方案的安全双向 TCP 隧道。
+title: Azure IoT 中心设备流 | Microsoft Docs
+description: Azure IoT 中心设备流概览，可促进各种云到设备通信方案的安全双向 TCP 隧道。
 author: robinsh
 services: iot-hub
 ms.service: iot-hub
@@ -12,10 +12,10 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Technical Support'
 ms.openlocfilehash: 9487fc562fa099d2650aabc8d15fc1449c7fcb5c
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97825174"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT 中心设备流（预览版）
@@ -26,21 +26,21 @@ Azure IoT 中心 *设备流* 可促进为各种云到设备通信方案创建安
 
 使用 IoT 中心设备流可让设备保持安全状态，同时只需打开端口 443 上到 IoT 中心流式处理终结点的出站 TCP 连接。 建立设备流后，服务端和设备端应用程序将各自具有针对 WebSocket 客户端对象的编程访问权限，以便相互发送和接收原始字节。 此隧道提供的可靠性和顺序保证与 TCP 提供的可靠性和顺序保证相当。
 
-## <a name="benefits"></a>优点
+## <a name="benefits"></a>好处
 
 IoT 中心设备流具有以下优点：
 
-* **防火墙友好的安全连接：** 可以从服务终结点访问 IoT 设备，而无需在设备或网络外围打开入站防火墙端口（仅需要端口 443 上到 IoT 中心的出站连接）。
+* 防火墙友好的安全连接：可以从服务终结点访问 IoT 设备，而无需在设备或网络外围打开入站防火墙端口（仅需要端口 443 上到 IoT 中心的出站连接）。
 
-* **身份验证：** 隧道的设备端和服务端都需要使用相应的凭据对 IoT 中心进行身份验证。
+* 身份验证：隧道的设备端和服务端都需要使用相应的凭据对 IoT 中心进行身份验证。
 
-* **加密：** 默认情况下，IoT 中心设备流使用启用了 TLS 的连接。 这可确保始终加密流量，而无论应用程序是否使用加密。
+* 加密：默认情况下，IoT 中心设备流使用启用了 TLS 的连接。 这可确保始终加密流量，而无论应用程序是否使用加密。
 
-* **简单的连接：** 在许多情况下，使用设备流可消除对虚拟专用网络进行复杂设置以连接到 IoT 设备的需求。
+* 连接的简洁性：在许多情况下，使用设备流可消除对虚拟专用网络进行复杂设置以连接到 IoT 设备的需求。
 
-* **与 TCP/IP 堆栈的兼容性：** IoT 中心设备流可以接纳 TCP/IP 应用程序流量。 这意味着各种专有协议和标准协议均可利用此功能。
+* 与 TCP/IP 堆栈的兼容性：IoT 中心设备流可以接纳 TCP/IP 应用程序流量。 这意味着各种专有协议和标准协议均可利用此功能。
 
-* **专用网络设置下的易用性：** 服务可以通过引用设备 ID（而不是设备的 IP 地址）与设备通信。 在设备位于专用网络内并拥有专用 IP 地址，或其 IP 地址由系统动态分配且对于服务端未知的情况下，这很有用。
+* 专用网络设置的易用性：服务可以通过引用设备 ID（而不是设备的 IP 地址）与设备通信。 在设备位于专用网络内并拥有专用 IP 地址，或其 IP 地址由系统动态分配且对于服务端未知的情况下，这很有用。
 
 ## <a name="device-stream-workflows"></a>设备流工作流
 
@@ -70,7 +70,7 @@ IoT 中心设备流具有以下优点：
 
 * 上述流创建流程完成后，流式处理终结点将充当代理，并通过其各自的 WebSocket 在服务和设备之间传输流量。
 
-* 设备和服务都需要端口 443 上的到 IoT 中心主要终结点和流式处理终结点的出站连接。 IoT 中心门户的“概览”选项卡上提供这些终结点的 URL。 
+* 设备和服务都需要端口 443 上的到 IoT 中心主要终结点和流式处理终结点的出站连接。 IoT 中心门户的“概览”选项卡上提供这些终结点的 URL。
 
 * 已建立的流的可靠性和排序保证与 TCP 的可靠性和排序保证相当。
 
@@ -82,7 +82,7 @@ IoT 中心设备流具有以下优点：
 
 ## <a name="connectivity-requirements"></a>连接要求
 
-设备流的设备端和服务端都必须能够建立到 IoT 中心及其流式处理终结点的启用 TLS 的连接。 这需要在端口 443 上建立到这些终结点的出站连接。 可以在 IoT 中心的“概述”选项卡上找到与这些终结点关联的主机名，如下图所示  ：
+设备流的设备端和服务端都必须能够建立到 IoT 中心及其流式处理终结点的启用 TLS 的连接。 这需要在端口 443 上建立到这些终结点的出站连接。 可以在 IoT 中心的“概述”选项卡上找到与这些终结点关联的主机名，如下图所示：
 
 ![“设备流终结点”](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
@@ -110,7 +110,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 如本文开头所述，设备在设备流启动过程中创建到 IoT 中心流式处理终结点的出站连接。 设备或其网络上的防火墙必须允许端口 443 上到流式传输网关的出站连接（请注意，通信发生在使用 TLS 加密的 WebSocket 连接上）。
 
-可以在 Azure IoT 中心门户的“概述”选项卡下找到设备流式处理终结点的主机名。![“设备流终结点”](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
+可以在 Azure IoT 中心门户的“概述”选项卡下找到设备流式处理终结点的主机名。!["设备流终结点"](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
 或者，可以使用 Azure CLI 找到此信息：
 
@@ -122,29 +122,29 @@ az iot hub devicestream show --name <YourIoTHubName>
 > 确保已安装 Azure CLI 2.0.57 或更高版本。 可从[安装 Azure CLI](/cli/azure/install-azure-cli) 页下载最新版本。
 >
 
-## <a name="troubleshoot-via-device-streams-resource-logs"></a>通过设备流资源日志进行故障排除
+## <a name="troubleshoot-via-device-streams-resource-logs"></a>通过设备流资源日志排除故障
 
-可以设置 Azure Monitor 来收集 IoT 中心发出的 [设备流的资源日志](monitor-iot-hub-reference.md#device-streams-preview) 。 这在故障排除方案中非常有用。
+可以设置 Azure Monitor 来收集 IoT 中心发出的[设备流的资源日志](monitor-iot-hub-reference.md#device-streams-preview)。 这在故障排除方案中非常有用。
 
-按照以下步骤创建诊断设置，以便将 IoT 中心的设备流日志发送到 Azure Monitor 日志：
+按照以下步骤创建诊断设置，以将 IoT 中心的设备流日志发送到 Azure Monitor 日志：
 
-1. 在 Azure 门户中，导航到 IoT 中心。 在左窗格中的 " **监视**" 下，选择 " **诊断设置**"。 然后选择“添加诊断设置”。
+1. 在 Azure 门户中，导航到 IoT 中心。 在左窗格中的“监视”下，选择“诊断设置”。  然后选择“添加诊断设置”。
 
-2. 提供诊断设置的名称，并从日志列表中选择 " **DeviceStreams** "。 然后选择 " **发送到 Log Analytics**"。 你将指导你选择现有 Log Analytics 工作区或创建一个新工作区。
+2. 提供诊断设置的名称，并从日志列表中选择“DeviceStreams”。 选择“发送到 Log Analytics”。 系统将引导你选择现有的 Log Analytics 工作区或创建新的资源。
 
     :::image type="content" source="media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png" alt-text="启用设备流日志":::
 
-3. 创建诊断设置以将设备流日志发送到 Log Analytics 工作区后，可以通过在 Azure 门户的 IoT 中心的左窗格 **中选择 "监视" 下** 的 " **监视** "，来访问日志。 设备流日志会显示在 `AzureDiagnostics` 表中，并具有 `Category=DeviceStreams` 。 请注意，可能需要几分钟时间后，日志才会出现在表中。
+3. 创建诊断设置以将设备流日志发送到 Log Analytics 工作区后，可以通过在 Azure 门户的 IoT 中心的左窗格中的“监视”下选择“日志”来访问日志。  设备流日志将在 `AzureDiagnostics` 表中显示并具有 `Category=DeviceStreams`。 请注意，可能需要几分钟时间后，日志才会出现在表中。
 
    如下所示，日志中还提供目标设备的标识和操作的结果。
 
    ![“访问设备流日志”](./media/iot-hub-device-streams-overview/device-streams-view-logs.png)
 
-若要详细了解如何将 Azure Monitor 与 IoT 中心配合使用，请参阅 [监视 Iot 中心](monitor-iot-hub.md)。 有关可用于 IoT 中心的所有资源日志、指标和表的信息，请参阅 [监视 Azure IoT 中心数据参考](monitor-iot-hub-reference.md)。
+要了解有关将 Azure Monitor 与 IoT 中心一起使用的更多信息，请参阅 [Monitor IoT 中心](monitor-iot-hub.md)。 有关可用于 IoT 中心的所有资源日志、指标和表的信息，请参阅[监视 Azure IoT 中心数据参考](monitor-iot-hub-reference.md)。
 
 ## <a name="regional-availability"></a>区域可用性
 
-在公共预览版期间，IoT 中心设备流可用于美国中部、美国中部 EUAP、北欧和东南亚区域。 请确保在这其中的一个区域创建中心。
+在公开预览版发布期间，IoT 中心设备流在“美国中部”、“美国中部 EUAP”、“北欧”和“东南亚”区域提供。 请确保在这其中的一个区域创建中心。
 
 ## <a name="sdk-availability"></a>SDK 可用性
 
@@ -194,7 +194,7 @@ IoT 中心页上提供两个[快速入门示例](./index.yml)。 这些示例演
 
 4. 服务本地代理侦听指定端口，该端口等待来自用户的新 SSH 连接（示例中使用端口 2222，但可以将该端口配置为任何其他的可用端口）。 用户将 SSH 客户端指向 localhost 上的服务本地代理端口。
 
-### <a name="notes"></a>说明
+### <a name="notes"></a>注释
 
 * 上述步骤完成了 SSH 客户端（右侧）与 SSH 守护程序（左侧）之间的端到端隧道连接。 此端到端连接的一部分涉及通过设备流将流量发送到 IoT 中心。
 

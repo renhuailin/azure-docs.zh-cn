@@ -7,25 +7,34 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 04/28/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 10d9cd87e15303515c02903c9127c1fd0e1c791a
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: d790048b87beaf10bc19755ba2c8d631e57b6c33
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070868"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108174589"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>演练：在 Azure Active Directory B2C 中将 REST API 声明交换添加到自定义策略
 
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+::: zone pivot="b2c-user-flow"
+
+[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 Azure Active Directory B2C (Azure AD B2C) 可让标识开发人员在用户旅程中将某种交互与 RESTful API 集成。 完成本演练后，就可以创建与 [RESTful 服务](api-connectors-overview.md)交互的 Azure AD B2C 用户旅程。
 
 在此方案中，我们通过与企业业务线工作流集成来丰富用户的令牌数据。 在使用本地帐户或联合帐户注册或登录期间，Azure AD B2C 调用 REST API 从远程数据源获取用户的扩展配置文件数据。 在此示例中，Azure AD B2C 发送用户的唯一标识符，即 objectId。 然后，REST API 返回用户的帐户余额（随机数字）。 使用此示例作为与你自己的 CRM 系统、市场营销数据库或任何业务线工作流集成的起点。
 
-还可以将交互设计为验证技术配置文件。 当 REST API 将在屏幕上验证数据并返回声明时，这非常合适。 有关详细信息，请参阅[演练：在 Azure AD B2C 用户旅程中集成 REST API 声明交换来验证用户输入](custom-policy-rest-api-claims-validation.md)。
+还可以将交互设计为验证技术配置文件。 当 REST API 将在屏幕上验证数据并返回声明时，这非常合适。 有关详细信息，请参阅[演练：向注册用户流添加 API 连接器](add-api-connector.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -229,3 +238,5 @@ REST API 终结点的设置不在本文的讨论范围内。 我们已创建 [Az
 - [演练：在 Azure AD B2C 用户旅程中以业务流程步骤的形式集成 REST API 声明交换](custom-policy-rest-api-claims-exchange.md)
 - [保护 RESTful API](secure-rest-api.md)
 - [参考：RESTful 技术配置文件](restful-technical-profile.md)
+
+::: zone-end

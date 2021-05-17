@@ -1,5 +1,6 @@
 ---
-title: Azure VPN 网关：排查点到站点连接问题：Mac OS X 客户端
+title: 排查点到站点连接问题：Mac OS X 客户端
+titleSuffix: Azure VPN Gateway
 description: 了解如何使用本机 VPN 客户端和 IKEv2 排查 Mac OS X 的点到站点连接性问题。
 services: vpn-gateway
 author: anzaman
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 02/10/2021
 ms.author: alzam
-ms.openlocfilehash: 4c8657f8a40084a726280efe471c0791931294f7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0b8cb4b75bfa162c392549b21f4d09743c37f8e
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100366630"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229533"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>对 Mac OS X VPN 客户端的点到站点 VPN 连接进行故障排除
 

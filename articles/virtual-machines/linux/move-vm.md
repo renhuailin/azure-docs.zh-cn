@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: db4c7e0126616e2d8bd120e7430c70b89c5cf36d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 7dbe06a9f2fff8abf59adbdfc9e41055c85e8f2c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87291103"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104889291"
 ---
 # <a name="move-a-vm-to-another-subscription-or-resource-group"></a>将 VM 移到其他订阅或资源组
 本文逐步说明如何在资源组或订阅之间移动虚拟机 (VM)。 如果在个人订阅中创建了 VM，现在想要将其移到公司的订阅，则在订阅之间移动 VM 会很方便。
@@ -38,6 +38,7 @@ az account show --subscription myDestinationSubscription --query tenantId
 ```azurecli-interactive
 az resource list --resource-group "mySourceResourceGroup" --query "[].{Id:id}" --output table
 ```
+如果使用 `--interactive`，则 `table` 输出不可用。 将输出更改为另一个选项，如 `json`。
 
 若要将 VM 及其资源移到其他资源组，请使用 [az resource move](/cli/azure/resource) 命令。 以下示例说明如何移动 VM 及其所需的大多数通用资源。 使用 **-ids** 参数，并针对要移动的资源传入逗号分隔的 ID 列表（不包含空格）。
 

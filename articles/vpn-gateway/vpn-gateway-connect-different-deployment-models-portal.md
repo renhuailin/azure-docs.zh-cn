@@ -1,18 +1,19 @@
 ---
-title: 将经典虚拟网络连接到 Azure 资源管理器 VNet：门户 | Microsoft Docs
-description: 使用 VPN 网关和门户将经典 VNet 连接到资源管理器 VNet 的步骤
+title: 将经典虚拟网络连接到 Azure 资源管理器 VNet：门户
+titleSuffix: Azure VPN Gateway
+description: 了解如何使用门户将经典 VNet 连接到资源管理器 VNet。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: cherylmc
-ms.openlocfilehash: 9d31bcaad01b9b762e57bd619d45c1f53ffb201e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8511c09b863550a8e5e71b2a4e6a91a4a3f757c
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100376796"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229101"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>通过门户从不同部署模型中连接虚拟网络
 

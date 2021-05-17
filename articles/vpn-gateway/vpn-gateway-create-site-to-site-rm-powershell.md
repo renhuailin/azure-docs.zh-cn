@@ -1,19 +1,19 @@
 ---
-title: 将本地网络连接到 Azure 虚拟网络：站点到站点 VPN：PowerShell
-description: 使用 PowerShell 通过公共 Internet 创建从本地网络到 Azure 虚拟网络的 IPsec 站点到站点 VPN 网关连接。
+title: 将本地网络连接到 Azure VNet：站点到站点 VPN：PowerShell
+description: 了解如何使用 PowerShell 在本地网络与 Azure VNet 之间创建站点到站点 VPN 网关连接。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 1488aa6f48c05a8c2dfa2c6162c1bd1df35d4f58
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3f9b408cd6f6fbeb9123f8e2dc506b14fe0427a1
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100380472"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229695"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>使用 PowerShell 创建具有站点到站点 VPN 连接的 VNet
 

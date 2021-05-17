@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric CLI- sfctl cluster
-description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含一系列用于管理群集的命令。
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于管理群集的命令列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 05132e4c7e644e681e2e4cfdedaa2b04a066ebeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86259962"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
@@ -17,7 +17,7 @@ ms.locfileid: "86259962"
 
 ## <a name="commands"></a>命令
 
-|命令|说明|
+|Command|说明|
 | --- | --- |
 | code-versions | 获取 Service Fabric 群集中预配的结构代码版本的列表。 |
 | config-versions | 获取 Service Fabric 群集中预配的结构配置版本的列表。 |
@@ -131,7 +131,7 @@ ms.locfileid: "86259962"
 ## <a name="sfctl-cluster-operation-cancel"></a>sfctl cluster operation-cancel
 取消用户造成的错误操作。
 
-以下 API 启动可以使用 CancelOperation 取消的错误操作\: StartDataLoss、StartQuorumLoss、StartPartitionRestart、StartNodeTransition。 如果 force 为 false，则会正常停止并清理用户造成的指定操作。  如果 force 为 true，则会中止命令，并可能留下一些内部状态。  请谨慎将 force 指定为 true。 除非先在 force 设置为 false 的情况下对相同的 test 命令调用此 API，或者 test 命令已包含值为 OperationState.RollingBack 的 OperationState，否则，不允许在 force 设置为 true 的情况下调用此 API。 澄清\: OperationState.RollingBack 表示系统将会/正在清理由于执行该命令而导致的内部系统状态。  如果 test 命令导致数据丢失，则系统不会还原数据。  例如，如果先调用 StartDataLoss，再调用此 API，则系统只会清理由于运行该命令而导致的内部状态。 如果命令的执行时间很长，导致数据丢失，则系统不会还原目标分区的数据。 特别注意\: 如果在 force==true 的情况下调用此 API，则可能会留下内部状态。
+以下 API 启动可以使用 CancelOperation 取消的错误操作：StartDataLoss、StartQuorumLoss、StartPartitionRestart、StartNodeTransition。 如果 force 为 false，则会正常停止并清理用户造成的指定操作。  如果 force 为 true，则会中止命令，并可能留下一些内部状态。  请谨慎将 force 指定为 true。 除非先在 force 设置为 false 的情况下对相同的 test 命令调用此 API，或者 test 命令已包含值为 OperationState.RollingBack 的 OperationState，否则，不允许在 force 设置为 true 的情况下调用此 API。 澄清\: OperationState.RollingBack 表示系统将会/正在清理由于执行该命令而导致的内部系统状态。  如果 test 命令导致数据丢失，则系统不会还原数据。  例如，如果先调用 StartDataLoss，再调用此 API，则系统只会清理由于运行该命令而导致的内部状态。 如果命令的执行时间很长，导致数据丢失，则系统不会还原目标分区的数据。 特别注意\: 如果在 force==true 的情况下调用此 API，则可能会留下内部状态。
 
 ### <a name="arguments"></a>参数
 
@@ -250,7 +250,7 @@ ms.locfileid: "86259962"
 ## <a name="sfctl-cluster-select"></a>sfctl cluster select
 连接到 Service Fabric 群集终结点。
 
-如果连接到安全群集，请指定证书 (.crt) 和密钥文件 (.key) 的绝对路径，或指定包含此两者的单个文件 (.pem)。 不要同时指定上述两项。 （可选）如果连接到安全群集，则还要指定 CA 捆绑文件的绝对路径，或受信任 CA 证书的目录。  如果没有首先运行此命令，则没有到集群的连接，包括到 localhost 的连接。 但连接到本地群集时，不需要显式终结点。  如果使用的是自签名证书，或不是由知名 CA 签署的其他证书，请传入--ca 参数以确保验证通过。 如果不在生产群集上，若要跳过客户端验证（对于自签名或不是知名的 CA 签名非常有用），请使用 --no-verify 选项。 不建议用于生产群集（尽管这是可能的）。 否则，可能会导致证书验证错误。
+如果连接到安全群集，请指定证书 (.crt) 和密钥文件 (.key) 的绝对路径，或指定包含此两者的单个文件 (.pem)。 不要同时指定上述两项。 （可选）如果连接到安全群集，则还要指定 CA 捆绑文件的绝对路径，或受信任 CA 证书的目录。  如果没有首先运行此命令，则没有到集群的连接，包括到 localhost 的连接。 但连接到本地群集时，不需要显式终结点。  如果使用的是自签名证书，或不是由知名 CA 签署的其他证书，请传入 --ca 参数以确保验证通过。 如果不在生产群集上，要绕过客户端验证（适用于自签名或不是由知名 CA 签名的情况），请使用 --no-verify 选项。 尽管可以用于生产群集，但不建议这样做。 否则，可能会导致证书验证错误。
 
 ### <a name="arguments"></a>参数
 
@@ -330,11 +330,11 @@ ms.locfileid: "86259962"
 | --health-check-retry | 应用程序或群集不正常时尝试执行运行状况检查所间隔的时间长度。 |
 | --health-check-stable | 升级继续到下一升级域之前，应用程序或群集必须保持正常的时长。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
 | --health-check-wait | 启动运行状况检查进程之前，完成升级域后等待的时间长度。 |
-| --replica-set-check-timeout | 出现意外问题时，阻止升级域的处理并防止可用性丢失的最大时长。 <br><br> 当此超时到期时，无论是否存在可用性丢失问题，都将继续处理升级域。 每个升级域启动时重置超时。 有效值介于 0 和 42949672925（含）之间。 |
+| --replica-set-check-timeout | 出现意外问题时，阻止处理升级域并防止可用性丢失的最大时长。 <br><br> 当此超时到期时，无论是否存在可用性丢失问题，都将继续处理升级域。 每个升级域启动时重置超时。 有效值介于 0 和 42949672925（含）之间。 |
 | --rolling-upgrade-mode | 可能的值包括\:“Invalid”、“UnmonitoredAuto”、“UnmonitoredManual”和“Monitored”。  默认值\: UnmonitoredAuto。 |
 | --timeout -t | 默认值\: 60。 |
 | --unhealthy-applications | 报告错误之前允许的最大不正常应用程序百分比。 <br><br> 例如，若要允许 10% 的应用程序处于不正常状态，此值为 10。 该百分比表示在将群集视为出错之前可处于不正常状态的应用程序的最大容许百分比。 如果未超过该百分比，但至少存在一个不正常的应用程序，则将运行状况评估为 Warning。 该百分比的计算方式是将不正常的应用程序数除以群集中的应用程序实例总数，不包括 ApplicationTypeHealthPolicyMap 中包含的应用程序类型的应用程序。 计算结果调高为整数，以便容忍少量应用程序出现一次失败。 |
-| --unhealthy-nodes | 报告错误之前允许的最大不正常节点百分比。 <br><br> 例如，若要允许 10% 的节点处于不正常状态，此值为 10。 该百分比表示在将群集视为出错之前可处于不正常状态的节点的最大容许百分比。 如果未超过该百分比，但至少存在一个不正常的节点，则将运行状况评估为警告。 该百分比的计算方式是将不正常的节点数除以群集中的节点总数。 计算结果向上进一，以容忍少量节点上出现一次失败。 在大型群集中，始终会有一些要关闭或需要修复的节点，因此应配置此百分比以便容忍这种情况。 |
+| --unhealthy-nodes | 报告错误之前允许的最大不正常节点百分比。 <br><br> 例如，若要允许 10% 的节点处于不正常状态，此值为 10。 该百分比表示在将群集视为出错之前可处于不正常状态的节点的最大容许百分比。 如果未超过该百分比，但至少存在一个不正常的节点，则将运行状况评估为警告。 该百分比的计算方式是将不正常的节点数除以群集中的节点总数。 计算结果调高为整数，以便容忍少量节点上出现一次失败。 在大型群集中，始终会有一些要关闭或需要修复的节点，因此应配置此百分比以便容忍这种情况。 |
 | --upgrade-domain-delta-unhealthy-nodes | 群集升级过程中允许的升级域节点运行状况降级最大百分比。  默认值\: 15。 <br><br> 在开始升级时的升级域节点状态与运行状况评估时的升级域节点状态之间测得的增量值。 每个升级域升级完成后对所有已完成的升级域执行检查，以便确保升级域的状态在允许的限制内。 |
 | --upgrade-domain-timeout | 执行 FailureAction 前，每个升级域需等待的时长。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
 | --upgrade-timeout | 执行 FailureAction 前，完成整个升级需等待的时长。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
@@ -430,11 +430,11 @@ ms.locfileid: "86259962"
 | --health-check-retry | 应用程序或群集不正常时尝试执行运行状况检查所间隔的时间长度。 |
 | --health-check-stable | 升级继续到下一升级域之前，应用程序或群集必须保持正常的时长。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
 | --health-check-wait | 启动运行状况检查进程之前，完成升级域后等待的时间长度。 |
-| --replica-set-check-timeout | 出现意外问题时，阻止升级域的处理并防止可用性丢失的最大时长。 <br><br> 当此超时到期时，无论是否存在可用性丢失问题，都将继续处理升级域。 每个升级域启动时重置超时。 有效值介于 0 和 42949672925（含）之间。 |
+| --replica-set-check-timeout | 出现意外问题时，阻止处理升级域并防止可用性丢失的最大时长。 <br><br> 当此超时到期时，无论是否存在可用性丢失问题，都将继续处理升级域。 每个升级域启动时重置超时。 有效值介于 0 和 42949672925（含）之间。 |
 | --rolling-upgrade-mode | 可能的值包括\:“Invalid”、“UnmonitoredAuto”、“UnmonitoredManual”和“Monitored”。  默认值\: UnmonitoredAuto。 |
 | --timeout -t | 默认值\: 60。 |
 | --unhealthy-applications | 报告错误之前允许的最大不正常应用程序百分比。 <br><br> 例如，若要允许 10% 的应用程序处于不正常状态，此值为 10。 该百分比表示在将群集视为出错之前可处于不正常状态的应用程序的最大容许百分比。 如果未超过该百分比，但至少存在一个不正常的应用程序，则将运行状况评估为 Warning。 该百分比的计算方式是将不正常的应用程序数除以群集中的应用程序实例总数，不包括 ApplicationTypeHealthPolicyMap 中包含的应用程序类型的应用程序。 计算结果调高为整数，以便容忍少量应用程序出现一次失败。 |
-| --unhealthy-nodes | 报告错误之前允许的最大不正常节点百分比。 <br><br> 例如，若要允许 10% 的节点处于不正常状态，此值为 10。 该百分比表示在将群集视为出错之前可处于不正常状态的节点的最大容许百分比。 如果未超过该百分比，但至少存在一个不正常的节点，则将运行状况评估为警告。 该百分比的计算方式是将不正常的节点数除以群集中的节点总数。 计算结果向上进一，以容忍少量节点上出现一次失败。 在大型群集中，始终会有一些要关闭或需要修复的节点，因此应配置此百分比以便容忍这种情况。 |
+| --unhealthy-nodes | 报告错误之前允许的最大不正常节点百分比。 <br><br> 例如，若要允许 10% 的节点处于不正常状态，此值为 10。 该百分比表示在将群集视为出错之前可处于不正常状态的节点的最大容许百分比。 如果未超过该百分比，但至少存在一个不正常的节点，则将运行状况评估为警告。 该百分比的计算方式是将不正常的节点数除以群集中的节点总数。 计算结果调高为整数，以便容忍少量节点上出现一次失败。 在大型群集中，始终会有一些要关闭或需要修复的节点，因此应配置此百分比以便容忍这种情况。 |
 | --upgrade-domain-delta-unhealthy-nodes | 群集升级过程中允许的升级域节点运行状况降级最大百分比。  默认值\: 15。 <br><br> 在开始升级时的升级域节点状态与运行状况评估时的升级域节点状态之间测得的增量值。 每个升级域升级完成后对所有已完成的升级域执行检查，以便确保升级域的状态在允许的限制内。 |
 | --upgrade-domain-timeout | 执行 FailureAction 前，每个升级域需等待的时长。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
 | --upgrade-kind | 可能的值包括\:“Invalid”、“Rolling”、“Rolling_ForceRestart”。  默认值\: Rolling。 |

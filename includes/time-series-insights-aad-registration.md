@@ -10,13 +10,13 @@ ms.author: dpalled
 manager: cshankar
 ms.date: 10/02/2020
 ms.openlocfilehash: 0ce9575f078058c821ffffe1b9fe45eed5a4ad94
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101724161"
 ---
-* 在 " [配置平台](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#configure-platform-settings) 设置" 的步骤4中选择相应的平台后，在用户界面右侧的侧面板中配置 **重定向 Uri** 和 **访问令牌** 。
+* 在[配置平台](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#configure-platform-settings)设置的第 4 步中选择适当的平台后，在用户界面右侧的侧面板中配置“重定向 URI”和“访问令牌”。 
 
     * “重定向 URI”必须与身份验证请求所提供的地址相匹配：
 
@@ -41,4 +41,4 @@ ms.locfileid: "101724161"
 
     [![指定你的应用所需的 API 权限类型](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png)](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png#lightbox)
 
-* 如果应用程序将调用环境的 Api，请[添加凭据](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#add-credentials)。 通过凭据，应用程序可以自己的身份进行身份验证，无需用户在运行时进行任何交互。
+* 如果应用程序将自己调用环境的 API，请[添加凭据](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#add-credentials)。 通过凭据，应用程序可以自己的身份进行身份验证，无需用户在运行时进行任何交互。

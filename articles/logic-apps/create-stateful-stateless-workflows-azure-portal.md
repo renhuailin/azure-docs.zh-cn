@@ -1,0 +1,656 @@
+---
+title: 在 Azure 门户中创建逻辑应用预览版工作流
+description: 在 Azure 门户中通过 Azure 逻辑应用预览版构建并运行用于自动化和集成方案的工作流。
+services: logic-apps
+ms.suite: integration
+ms.reviewer: estfan, logicappspm, az-logic-apps-dev
+ms.topic: conceptual
+ms.date: 04/23/2021
+ms.openlocfilehash: 3f2dcfd910fac849c668521030f7304fe40c28ce
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164572"
+---
+# <a name="create-stateful-and-stateless-workflows-in-the-azure-portal-with-azure-logic-apps-preview"></a>在 Azure 门户中通过 Azure 逻辑应用预览版创建有状态和无状态工作流
+
+> [!IMPORTANT]
+> 此功能现为公共预览版，在提供时不附带服务级别协议，建议不要用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+通过 [Azure 逻辑应用预览版](logic-apps-overview-preview.md)，你可以在 Azure 门户中创建和运行包含[有状态和无状态工作流](logic-apps-overview-preview.md#stateful-stateless)的逻辑应用（从新的“逻辑应用(预览版)”资源类型开始），从而跨应用、数据、云服务和系统构建自动化和集成解决方案。 使用此新的逻辑应用类型，你可以构建多个工作流，它们由重新设计的 Azure 逻辑应用预览版运行时提供支持，后者为在各种托管环境（包括 Azure 和 Docker 容器）中的部署和运行提供可移植性、更佳的性能和灵活性。 若要详细了解新的逻辑应用类型，请参阅 [Azure 逻辑应用预览版概述](logic-apps-overview-preview.md)。
+
+![屏幕截图显示了 Azure 门户，其中包含“逻辑应用(预览版)”资源的工作流设计器。](./media/create-stateful-stateless-workflows-azure-portal/azure-portal-logic-apps-overview.png)
+
+在 Azure 门户中，你可以从创建新的“逻辑应用(预览版)”资源开始。 不过，你也可以从[使用 Azure 逻辑应用（预览版）扩展在 Visual Studio Code 中创建项目](create-stateful-stateless-workflows-visual-studio-code.md)开始，这两种方法都提供在相同种类的托管环境中部署和运行逻辑应用的功能。
+
+同时，你仍可创建原始逻辑应用类型。 虽然门户中的开发体验在原始的和新的逻辑应用类型之间所有不同，但你的 Azure 订阅可同时包含这两种类型。 你可查看和访问 Azure 订阅中所有已部署的逻辑应用，但这些应用已整理到其自己的类别和部分中。
+
+本文介绍了如何通过使用“逻辑应用(预览版)”资源类型并执行以下概要任务，在 Azure 门户中构建逻辑应用和工作流：
+
+* 创建新的逻辑应用资源并添加一个空白工作流。
+
+* 添加触发器和操作。
+
+* 触发一个工作流运行。
+
+* 查看该工作流的运行和触发器历史记录。
+
+* 在部署后启用或打开 Application Insights。
+
+* 启用无状态工作流的运行历史记录。
+
+> [!NOTE]
+> 有关当前已知问题的信息，请查看 [GitHub 中的逻辑应用公共预览版已知问题页](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)。
+
+## <a name="prerequisites"></a>先决条件
+
+* Azure 帐户和订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+* 一个 [Azure 存储帐户](../storage/common/storage-account-overview.md)，因为“逻辑应用(预览版)”资源由 Azure Functions 提供支持并且具有[与函数应用类似的存储要求](../azure-functions/storage-considerations.md)。 你可以使用现有存储帐户，也可以在创建逻辑应用之前或期间创建一个存储帐户。
+
+  > [!NOTE]
+  > [有状态逻辑应用](logic-apps-overview-preview.md#stateful-stateless)执行存储事务，例如，使用队列在表和 blob 中计划和存储工作流状态。 这些事务会产生 [Azure 存储费用](https://azure.microsoft.com/pricing/details/storage/)。 若要详细了解有状态逻辑应用如何将数据存储在外部存储中，请参阅[有状态与无状态的对比](logic-apps-overview-preview.md#stateful-stateless)。
+
+* 若要部署到 Docker 容器，你需要一个现有的 Docker 容器映像。 例如，可以通过 [Azure 容器注册表](../container-registry/container-registry-intro.md)、[应用服务](../app-service/overview.md)或 [Azure 容器实例](../container-instances/container-instances-overview.md)创建此映像。 
+
+* 若要构建与本文中相同的示例逻辑应用，你需要一个使用 Microsoft 工作或学校帐户进行登录的 Office 365 Outlook 电子邮件帐户。
+
+  如果你选择使用 [Azure 逻辑应用支持的其他电子邮件连接器](/connectors/)（例如 Outlook.com 或 [Gmail](../connectors/connectors-google-data-security-privacy-policy.md)），则仍可以按照示例操作，一般的整体步骤相同，但你的用户界面和选项在某些方面可能会有所不同。 例如，如果你使用 Outlook.com 连接器，请改用你的个人 Microsoft 帐户进行登录。
+
+* 若要测试你在本文中创建的示例逻辑应用，你需要一个可将调用发送到请求触发器的工具，该触发器是示例逻辑应用中的第一个步骤。 如果没有此类工具，你可以下载、安装并使用 [Postman](https://www.postman.com/downloads/)。
+
+* 如果你使用支持 [Application Insights](../azure-monitor/app/app-insights-overview.md) 的设置创建逻辑应用，则可以选择为你的逻辑应用启用诊断日志记录和跟踪。 你可以在创建逻辑应用时或在部署后执行此操作。 你需要有一个 Application Insights 实例，但你可以在创建逻辑应用时[提前](../azure-monitor/app/create-workspace-resource.md)创建此资源，或在部署后创建此资源。
+
+## <a name="create-the-logic-app-resource"></a>创建逻辑应用资源
+
+1. 使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com)。
+
+1. 在 Azure 门户的搜索框中，输入 `logic app preview`，然后选择“逻辑应用(预览版)”。
+
+   ![屏幕截图显示了 Azure 门户的搜索框，其中包含“逻辑应用预览版”搜索词，并且“逻辑应用(预览版)”资源处于选中状态。](./media/create-stateful-stateless-workflows-azure-portal/find-logic-app-resource-template.png)
+
+1. 在“逻辑应用(预览版)”页上，选择“添加” 。
+
+1. 在“创建逻辑应用(预览版)”页面中的“基本信息”选项卡上，提供有关你的逻辑应用的以下信息。 
+
+   | 属性 | 必须 | 值 | 说明 |
+   |----------|----------|-------|-------------|
+   | **订阅** | 是 | <*Azure-subscription-name*> | 要用于你的逻辑应用的 Azure 订阅。 |
+   | **资源组** | 是 | <*Azure-resource-group-name*> | 你在其中创建逻辑应用和相关资源的 Azure 资源组。 此资源名称在各个区域中必须唯一，并且只能包含字母、数字、连字符 ( **-** )、下划线 ( **_** )、括号 ( **()** ) 和句点 ( **.** )。 <p><p>此示例创建一个名为 `Fabrikam-Workflows-RG` 的资源组。 |
+   | **逻辑应用名称** | 是 | <*logic-app-name*> | 用于逻辑应用的名称。 此资源名称在各个区域中必须唯一，并且只能包含字母、数字、连字符 ( **-** )、下划线 ( **_** )、括号 ( **()** ) 和句点 ( **.** )。 <p><p>此示例创建一个名为 `Fabrikam-Workflows` 的逻辑应用。 <p><p>**注意**：你的逻辑应用的名称会自动获得后缀 `.azurewebsites.net`，因为“逻辑应用(预览版)”资源由 Azure Functions 提供支持，后者使用相同的应用命名约定。 |
+   | **发布** | 是 | <*deployment-environment*> | 逻辑应用的部署目标。 可以通过选择“工作流”或“Docker 容器”来部署到 Azure。 <p><p>此示例使用了 **工作流**，后者将“逻辑应用(预览版)”资源部署到 Azure 门户。 <p><p>**注意**：在选择“Docker 容器”之前，请确保创建 Docker 容器映像。 例如，可以通过 [Azure 容器注册表](../container-registry/container-registry-intro.md)、[应用服务](../app-service/overview.md)或 [Azure 容器实例](../container-instances/container-instances-overview.md)创建此映像。 这样，在选择“Docker 容器”后，你可以[指定要在逻辑应用的设置中使用的容器](#set-docker-container)。 |
+   | **区域** | 是 | <*Azure-region*> | 在创建资源组和资源时要使用的 Azure 区域。 <p><p>此示例使用“美国西部”。 |
+   |||||
+
+   以下是一个示例：
+
+   ![屏幕截图显示了 Azure 门户和“创建逻辑应用(预览版)”页面。](./media/create-stateful-stateless-workflows-azure-portal/create-logic-app-resource-portal.png)
+
+1. 接下来，在“托管”选项卡上，提供有关要用于逻辑应用的存储解决方案和托管计划的以下信息。
+
+   | 属性 | 必须 | 值 | 说明 |
+   |----------|----------|-------|-------------|
+   | **存储帐户** | 是 | <*Azure-storage-account-name*> | 要用于存储事务的 [Azure 存储帐户](../storage/common/storage-account-overview.md)。 此资源名称在各个区域中必须唯一，长度为 3-24 个字符，并且仅包含数字和小写字母。 选择一个现有的帐户，或者创建一个新帐户。 <p><p>此示例创建一个名为 `fabrikamstorageacct` 的存储帐户。 |
+   | **计划类型** | 是 | <*Azure-hosting-plan*> | 要用于部署你的逻辑应用的 [托管计划](../app-service/overview-hosting-plans.md)，这可以是 [**Functions Premium**](../azure-functions/functions-premium-plan.md) 或 [**应用服务计划**（专用）](../azure-functions/dedicated-plan.md)。 你的选择将影响稍后可供你使用的功能和定价层。 <p><p>此示例使用 **应用服务计划**。 <p><p>**注意**：与 Azure Functions 类似，“逻辑应用(预览版)”资源类型需要一个托管计划和定价层。 消耗计划不受支持，也不可用于此资源类型。 有关详细信息，请查看以下主题： <p><p>- [Azure Functions 缩放和托管](../azure-functions/functions-scale.md) <br>- [应用服务定价详细信息](https://azure.microsoft.com/pricing/details/app-service/) <p><p>例如，Functions Premium 计划用于访问网络功能（例如，以专用方式连接 Azure 虚拟网络以及与之集成），这与创建和部署逻辑应用时的 Azure Functions 类似。 有关详细信息，请查看以下主题： <p><p>- [Azure Functions 网络选项](../azure-functions/functions-networking-options.md) <br>- [Azure Logic Apps Running Anywhere - Networking possibilities with Azure Logic Apps Preview](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047)（随处运行的 Azure 逻辑应用 - Azure 逻辑应用预览版进行网络连接的可能性） |
+   | **Windows 计划** | 是 | <*plan-name*> | 要使用的计划名称。 选择一个现有计划或提供新计划的名称。 <p><p>此示例使用名称 `Fabrikam-Service-Plan`。 |
+   | **SKU 和大小** | 是 | <*pricing-tier*> | 用于托管你的逻辑应用的[定价层](../app-service/overview-hosting-plans.md)。 你的选择受你之前选择的计划类型的影响。 若要更改默认层，请选择“更改大小”。 然后，你可以根据所需的工作负载选择其他定价层。 <p><p>此示例为 **开发/测试** 工作负载使用免费的 **F1 定价层**。 有关详细信息，请参阅[应用服务定价详细信息](https://azure.microsoft.com/pricing/details/app-service/)。 |
+   |||||
+
+1. 接下来，如果你的创建和部署设置支持使用 [Application Insights](../azure-monitor/app/app-insights-overview.md)，则可以选择为你的逻辑应用启用诊断日志记录和跟踪。
+
+   1. 在“监视”选项卡上的“Application Insights”下，将“启用 Application Insights”设置为“是”（如果尚未选择）。
+
+   1. 对于“Application Insights”设置，请选择一个现有 Application Insights 实例，如果要创建新的实例，请选择“新建”并提供要使用的名称。
+
+1. 在 Azure 验证你的逻辑应用设置后，在“查看 + 创建”选项卡上选择“创建”。
+
+   例如：
+
+   ![屏幕截图显示了 Azure 门户和新的逻辑应用资源设置。](./media/create-stateful-stateless-workflows-azure-portal/check-logic-app-resource-settings.png)
+
+   > [!TIP]
+   > 如果在选择“创建”后收到验证错误，请打开并查看错误详细信息。 例如，如果所选区域达到了你要尝试创建的资源的配额，则你可能必须尝试另一个区域。
+
+   在 Azure 完成部署后，你的逻辑应用将自动处于活动状态，但不会执行任何操作，因为不存在工作流。
+
+1. 在部署完成页上，选择“转到资源”，以便可以开始构建工作流。 如果你选择了“Docker 容器”用于部署你的逻辑应用，请继续执行[用于提供 Docker 容器相关信息的步骤](#set-docker-container)。
+
+   ![屏幕截图显示了 Azure 门户和完成的部署。](./media/create-stateful-stateless-workflows-azure-portal/logic-app-completed-deployment.png)
+
+<a name="set-docker-container"></a>
+
+## <a name="specify-docker-container-for-deployment"></a>指定用于部署的 Docker 容器
+
+在开始执行这些步骤之前，你需要一个 Docker 容器映像。 例如，可以通过 [Azure 容器注册表](../container-registry/container-registry-intro.md)、[应用服务](../app-service/overview.md)或 [Azure 容器实例](../container-instances/container-instances-overview.md)创建此映像。 然后，你可以在创建逻辑应用之后提供有关 Docker 容器的信息。
+
+1. 在 Azure 门户中，转到你的逻辑应用资源。
+
+1. 在逻辑应用菜单上的“设置”下，选择“部署中心” 。
+
+1. 在“部署中心”窗格上，按照说明提供和管理 Docker 容器的详细信息。
+
+<a name="add-workflow"></a>
+
+## <a name="add-a-blank-workflow"></a>添加空白工作流
+
+1. 在 Azure 打开资源后，在逻辑应用的菜单中选择“工作流”。 在“工作流”工具栏上，选择“添加”。
+
+   ![屏幕截图显示了逻辑应用资源菜单，其中“工作流”处于选中状态，并且工具栏上的“添加”也处于选中状态。](./media/create-stateful-stateless-workflows-azure-portal/logic-app-add-blank-workflow.png)
+
+1. 在“新建工作流”窗格打开后，为工作流提供一个名称，并选择 [ **“有状态”** 或 **“无状态”**](logic-apps-overview-preview.md#stateful-stateless)工作流类型。 完成操作后，选择“创建”。
+
+   此示例将添加一个名为 `Fabrikam-Stateful-Workflow` 的空白有状态工作流。 默认情况下，工作流处于启用状态，但在你添加触发器和操作之前，它不会执行任何操作。
+
+   ![屏幕截图显示了新添加的空白有状态工作流“Fabrikam-Stateful-Workflow”。](./media/create-stateful-stateless-workflows-azure-portal/logic-app-blank-workflow-created.png)
+
+1. 接下来，在设计器中打开该空白工作流，以便可以添加触发器和操作。
+
+   1. 从工作流列表中，选择该空白工作流。
+
+   1. 在工作流菜单上的“开发人员”下，选择“设计器” 。
+
+      在设计器图面上，已显示并默认选中了“选择操作”提示，因此，“添加触发器”窗格也已打开。
+
+      ![屏幕截图显示了打开的工作流设计器，其中设计器图面上选中了“选择操作”。](./media/create-stateful-stateless-workflows-azure-portal/opened-logic-app-designer-blank-workflow.png)
+
+<a name="add-trigger-actions"></a>
+
+## <a name="add-a-trigger-and-an-action"></a>添加触发器和操作
+
+此示例将构建一个包含以下步骤的工作流：
+
+* 内置的 [请求触发器](../connectors/connectors-native-reqres.md)：**当收到 HTTP 请求时**，该触发器将收到入站调用或请求，并创建其他服务或逻辑应用可以调用的终结点。
+
+* [Office 365 Outlook 操作](../connectors/connectors-create-api-office365-outlook.md)：**发送电子邮件**。
+
+* 内置的[响应操作](../connectors/connectors-native-reqres.md)：用于发送答复并将数据返回给调用方。
+
+### <a name="add-the-request-trigger"></a>添加“请求”触发器
+
+在将触发器添加到空白工作流之前，请确保工作流设计器处于打开状态并且在设计器图面上选择了“选择操作”提示。
+
+1. 在设计器图面旁边的“添加触发器”窗格中的“选择操作”搜索框下，检查是否已选中“内置”选项卡。 此选项卡显示在 Azure 逻辑应用中以原生方式运行的触发器。
+
+1. 在“选择操作”搜索框中输入 `when a http request`，并选择名为“当收到 HTTP 请求时”的内置请求触发器。
+
+   ![屏幕截图显示了设计器和“添加触发器”窗格，该窗格中的“当收到 HTTP 请求时”触发器处于选中状态。](./media/create-stateful-stateless-workflows-azure-portal/find-request-trigger.png)
+
+   当触发器出现在设计器上时，触发器的详细信息窗格将打开，以显示触发器的属性、设置和其他操作。
+
+   ![屏幕截图显示了设计器，其中“当收到 HTTP 请求时”触发器处于选中状态，并且触发器详细信息窗格已打开。](./media/create-stateful-stateless-workflows-azure-portal/request-trigger-added-to-designer.png)
+
+   > [!TIP]
+   > 如果未显示详细信息窗格，请确保在设计器上选择了触发器。
+
+1. 如果需要从设计器中删除某个项，请[遵循从设计器中删除项的这些步骤](#delete-from-designer)。
+
+1. 若要保存你的工作，请在设计器工具栏上选择“保存”。
+
+   首次保存工作流时，如果工作流是通过请求触发器启动的，则逻辑应用服务会自动为请求触发器创建的终结点生成 URL。 稍后，在你测试工作流时，将向此 URL 发送请求，这会激发触发器并启动工作流运行。
+
+### <a name="add-the-office-365-outlook-action"></a>添加 Office 365 Outlook 操作
+
+1. 在设计器上，在你已添加的触发器下，选择“新建步骤”。
+
+   设计器上将显示“选择操作”提示，并且“添加操作”窗格将重新打开，以便你可以选择下一个操作。
+
+   > [!NOTE]
+   > 如果“添加操作”窗格显示了错误消息“无法读取未定义的属性‘筛选器’”，请保存你的工作流，重新加载页面，重新打开工作流，然后重试。
+
+1. 在“添加操作”窗格中的“选择操作”搜索框下，选择“Azure”。 此选项卡显示在 Azure 中可用并已部署的托管连接器。
+
+   > [!NOTE]
+   > 如果“添加操作”窗格显示了错误消息“`The access token expiry UTC time '{token-expiration-date-time}' is earlier than current UTC time '{current-date-time}'`”，请保存你的工作流，重新加载页，重新打开工作流，然后重新尝试添加操作。
+
+   此示例使用名为“发送电子邮件(V2)”的 Office 365 Outlook 操作。
+
+   ![屏幕截图显示了设计器和“添加操作”窗格，该窗格中的 Office 365 Outlook 操作“发送电子邮件”处于选中状态。](./media/create-stateful-stateless-workflows-azure-portal/find-send-email-action.png)
+
+1. 在操作的详细信息窗格中的“创建连接”选项卡上选择“登录”，以便可以创建与电子邮件帐户的连接。
+
+   ![屏幕截图显示了设计器和“发送电子邮件(V2)”详细信息窗格，该窗格中的“登录”处于选中状态。](./media/create-stateful-stateless-workflows-azure-portal/send-email-action-sign-in.png)
+
+1. 当系统提示你同意访问你的电子邮件帐户时，请使用你的帐户凭据登录。
+
+   > [!NOTE]
+   > 如果你收到错误消息“`Failed with error: 'The browser is closed.'. Please sign in again`”，请检查你的浏览器是否阻止了第三方 cookie。 如果这些 cookie 被阻止，请尝试将 `https://portal.azure.com` 添加到可以使用 cookie 的站点列表。 如果使用的是 incognito 模式，请确保在该模式下工作时不会阻止第三方 cookie。
+   > 
+   > 如有必要，请重新加载页面，打开你的工作流，再次添加电子邮件操作，然后尝试创建连接。
+
+   在 Azure 创建连接后，“发送电子邮件”操作将显示在设计器上，并且默认情况下处于选中状态。 如果未选择该操作，请选择该操作，以使其详细信息窗格也打开。
+
+1. 在操作的详细信息窗格中的“参数”选项卡上，提供操作所需的信息，例如：
+
+   ![屏幕截图显示了设计器和“发送电子邮件”详细信息窗格，该窗格中的“参数”选项卡处于选中状态。](./media/create-stateful-stateless-workflows-azure-portal/send-email-action-details.png)
+
+   | 属性 | 必须 | 值 | 说明 |
+   |----------|----------|-------|-------------|
+   | **To** | 是 | <*your-email-address*> | 电子邮件收件人，这可以是你自己的电子邮件地址（用于测试）。 此示例使用虚构的电子邮件 `sophiaowen@fabrikam.com`。 |
+   | **主题** | 是 | `An email from your example workflow` | 电子邮件主题 |
+   | **正文** | 是 | `Hello from your example workflow!` | 电子邮件正文内容 |
+   ||||
+
+   > [!NOTE]
+   > 在详细信息窗格中的“设置”、“静态结果”或“随后运行”选项卡上进行任何更改时，请确保在切换选项卡或将焦点更改为设计器之前选择“完成”以提交这些更改。 否则，设计器不会保留所做的更改。
+
+1. 保存所有内容。 在设计器工具栏上选择“保存”。
+
+1. 如果你的环境具有限制流量的严格网络要求或防火墙，则必须为工作流中存在的任何触发器或操作连接设置权限。 若要查找这些连接的完全限定的域名 (FQDN)，请执行以下步骤： 
+
+   否则，若要测试工作流，请[手动触发运行](#trigger-workflow)。
+
+<a name="firewall-setup"></a>
+
+##  <a name="find-domain-names-for-firewall-access"></a>查找用于防火墙访问的域名
+
+在 Azure 门户中部署逻辑应用并运行工作流之前，如果你的环境具有限制流量的严格网络要求或防火墙，则必须为逻辑应用中存在的工作流中的任何触发器或操作连接设置网络或防火墙权限。
+
+若要查找这些连接的完全限定的域名 (FQDN)，请执行以下步骤：
+
+1. 在逻辑应用菜单上的“工作流”下，选择“连接”。 在“API 连接”选项卡上，选择连接的资源名称，例如：
+
+   ![屏幕截图显示了 Azure 门户和逻辑应用菜单，其中的“连接”和“offic365”连接资源名称处于选中状态。](./media/create-stateful-stateless-workflows-azure-portal/logic-app-connections.png)
+
+1. 充分扩展浏览器的宽度，以便在浏览器的右上角出现“JSON 视图”时，选择“JSON 视图”。
+
+   ![屏幕截图显示了 Azure 门户和“API 连接”窗格，其中的“JSON 视图”处于选中状态。](./media/create-stateful-stateless-workflows-azure-portal/logic-app-connection-view-json.png)
+
+1. 查找、复制 `connectionRuntimeUrl` 属性值并将其保存到一个安全的位置，以便可以使用此信息设置防火墙。
+
+   ![屏幕截图显示了处于选定状态的“connectionRuntimeUrl”属性值。](./media/create-stateful-stateless-workflows-azure-portal/logic-app-connection-runtime-url.png)
+
+1. 对于每个连接，重复相关步骤。
+
+<a name="trigger-workflow"></a>
+
+## <a name="trigger-the-workflow"></a>触发工作流
+
+在此示例中，工作流在请求触发器收到入站请求时运行，该请求将发送到触发器所创建的终结点的 URL。 首次保存工作流时，逻辑应用服务自动生成了此 URL。 因此，你需要找到此 URL，然后才能发送此请求来触发工作流。
+
+1. 在工作流设计器上，选择名为“当收到 HTTP 请求时”的请求触发器。
+
+1. 在详细信息窗格打开后，在“参数”选项卡上找到“HTTP POST URL”属性。 若要复制生成的 URL，请选择“复制 URL”（“复制文件”图标），并暂时将 URL 保存到其他位置。 此 URL 遵循以下格式：
+
+   `http://<logic-app-name>.azurewebsites.net:443/api/<workflow-name>/triggers/manual/invoke?api-version=2020-05-01-preview&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=<shared-access-signature>`
+
+   ![屏幕截图显示了包含请求触发器的设计器，以及“HTTP POST URL”属性中的终结点 URL。](./media/create-stateful-stateless-workflows-azure-portal/find-request-trigger-url.png)
+
+   对于此示例，URL 如下所示：
+
+   `https://fabrikam-workflows.azurewebsites.net:443/api/Fabrikam-Stateful-Workflow/triggers/manual/invoke?api-version=2020-05-01-preview&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=xxxxxXXXXxxxxxXXXXxxxXXXXxxxxXXXX`
+
+   > [!TIP]
+   > 还可以在逻辑应用的“概览”窗格中的“工作流 URL”属性中找到终结点 URL。
+   >
+   > 1. 在资源菜单中，选择“概述”。
+   > 1. 在“概述”窗格中，找到“工作流 URL”属性。
+   > 1. 若要复制终结点 URL，请将指针移到“终结点 URL”文本的末尾，然后选择“复制到剪贴板”（“复制文件”图标）。
+
+1. 若要发送请求来测试 URL，请打开 [Postman](https://www.postman.com/downloads/) 或你习惯用来创建和发送请求的工具。
+
+   此示例使用 Postman 继续。 有关详细信息，请参阅 [Postman 入门](https://learning.postman.com/docs/getting-started/introduction/)。
+
+   1. 在 Postman 工具栏上，选择“新建”。
+
+      ![屏幕截图显示了 Postman，其中“新建”按钮处于选中状态](./media/create-stateful-stateless-workflows-azure-portal/postman-create-request.png)
+
+   1. 在“新建”窗格上的“构建基块”下，选择“请求”。
+
+   1. 在“保存请求”窗口中的“请求名称”下，为请求提供一个名称，例如 `Test workflow trigger`。
+
+   1. 在“选择要保存到的集合或文件夹”下，选择“创建集合”。
+
+   1. 在“所有集合”下，为要创建的用于组织你的请求的集合提供一个名称，按 Enter，然后选择“保存到 <*collection-name*>”。 此示例使用 `Logic Apps requests` 作为集合名称。
+
+      此时将打开 Postman 的请求窗格，以便你可以将请求发送到请求触发器的终结点 URL。
+
+      ![屏幕截图显示了 Postman，其中包含打开的请求窗格](./media/create-stateful-stateless-workflows-azure-portal/postman-request-pane.png)
+
+   1. 在请求窗格上的方法列表（当前显示了 **GET** 作为默认请求方法）旁边的地址栏中，粘贴以前复制的 URL，然后选择“发送”。
+
+      ![屏幕截图显示了 Postman 和地址框中的终结点 URL，并且“发送”按钮处于选中状态](./media/create-stateful-stateless-workflows-azure-portal/postman-test-endpoint-url.png)
+
+      当触发了触发器时，示例工作流将运行，并发送类似于以下示例的电子邮件：
+
+      ![屏幕截图显示了示例中所述的 Outlook 电子邮件](./media/create-stateful-stateless-workflows-azure-portal/workflow-app-result-email.png)
+
+<a name="view-run-history"></a>
+
+## <a name="review-run-history"></a>查看运行历史记录
+
+对于有状态工作流，在每个工作流运行后，你可以查看运行历史记录，包括整个运行的状态、触发器的状态，以及每个操作的状态及其输入和输出。 在 Azure 门户中，运行历史记录和触发器历史记录显示在工作流级别，而非逻辑应用级别。 若要在运行历史记录上下文外部查看触发器历史记录，请参阅[查看触发器历史记录](#view-trigger-histories)。
+
+1. 在 Azure 门户中的工作流菜单上，选择“监视器”。
+
+   “监视器”窗格将显示该工作流的运行历史记录。
+
+   ![屏幕截图显示了工作流的“监视器”窗格和运行历史记录。](./media/create-stateful-stateless-workflows-azure-portal/find-run-history.png)
+
+   > [!TIP]
+   > 如果未显示最新的运行状态，请在“监视器”窗格工具栏上选择“刷新”。 如果由于不符合条件或找不到数据而跳过了触发器，则不会发生运行。
+
+   | 运行状态 | 说明 |
+   |------------|-------------|
+   | **Aborted** | 由于外部问题（例如，系统中断或 Azure 订阅过期），运行已停止或未完成。 |
+   | 已取消 | 运行已触发并已启动，但收到了取消请求。 |
+   | **已失败** | 运行中的至少一个操作失败。 工作流中未设置后续操作来处理失败。 |
+   | **正在运行** | 运行已被触发并正在进行，但如果运行由于[操作限制](logic-apps-limits-and-config.md)或[当前定价计划](https://azure.microsoft.com/pricing/details/logic-apps/)而被限制，也可能会显示此状态。 <p><p>**提示**：如果你设置了 [诊断日志记录](monitor-logic-apps-log-analytics.md)，则可以获取发生的任何限制事件的相关信息。 |
+   | 成功 | 运行已成功。 如果有任何操作失败，工作流中的后续操作已处理了该失败。 |
+   | **已超时** | 运行超时，因为当前持续时间超出了运行持续时间限制，该限制由 [ **“运行历史记录保留期(天)”** 设置](logic-apps-limits-and-config.md#run-duration-retention-limits)控制。 运行持续时间是使用运行开始时间和在该开始时间有效的运行持续时间限制来计算的。 <p><p>**注意**：如果运行的持续时间还超出了当前的运行历史记录保留期限制（该限制也由 [ **“运行历史记录保留期(天)”** 设置](logic-apps-limits-and-config.md#run-duration-retention-limits)控制），则每日清理作业会将该运行从运行历史记录中清除。 无论运行是超时还是完成，始终都将使用运行的开始时间和当前保留期限制来计算保留期。 因此，如果你减小进行中的某个运行的持续时间限制，则该运行将超时。但是，运行将保留或从运行历史记录中清除，具体取决于运行持续时间是否超出了保留期限制。 |
+   | **正在等待** | 运行尚未启动或已暂停，例如，由于前一个工作流实例仍在运行。 |
+   |||
+
+1. 若要查看运行中每个步骤的状态，请选择要查看的运行。
+
+   运行详细信息视图随即打开，并显示运行中每个步骤的状态。
+
+   ![屏幕截图显示了运行详细信息视图，其中包含工作流中每个步骤的状态。](./media/create-stateful-stateless-workflows-azure-portal/review-run-details.png)
+
+   下面是工作流中的每个步骤可以具有的可能状态：
+
+   | 操作状态 | 图标 | 说明 |
+   |---------------|------|-------------|
+   | **Aborted** | ![“已中止”操作状态的图标][aborted-icon] | 由于外部问题（例如，系统中断或 Azure 订阅过期），操作已停止或未完成。 |
+   | 已取消 | ![“已取消”操作状态的图标][cancelled-icon] | 操作正在运行，但收到取消请求。 |
+   | **已失败** | ![“已失败”操作状态的图标][failed-icon] | 操作已失败。 |
+   | **正在运行** | ![“正在运行”操作状态的图标][running-icon] | 操作当前正在运行。 |
+   | 已跳过 | ![“已跳过”操作状态的图标][skipped-icon] | 此操作已被跳过，因为不满足其 `runAfter` 条件（例如，先前的操作失败）。 每个操作都有一个 `runAfter` 对象，你可以在其中设置必须满足的条件，然后才能执行当前操作。 |
+   | 成功 | ![“已成功”操作状态的图标][succeeded-icon] | 操作已成功。 |
+   | **重试成功** | ![“重试成功”操作状态的图标][succeeded-with-retries-icon] | 操作已成功，但是在一次或多次重试后才成功。 若要查看重试历史记录，请在运行历史记录详细信息视图中选择该操作，以便可以查看输入和输出。 |
+   | **已超时** | ![“已超时”操作状态的图标][timed-out-icon] | 操作由于超出了操作设置指定的超时限制而停止。 |
+   | **正在等待** | ![“正在等待”操作状态的图标][waiting-icon] | 适用于正在等待来自调用方的入站请求的 Webhook 操作。 |
+   ||||
+
+   [aborted-icon]: ./media/create-stateful-stateless-workflows-azure-portal/aborted.png
+   [cancelled-icon]: ./media/create-stateful-stateless-workflows-azure-portal/cancelled.png
+   [failed-icon]: ./media/create-stateful-stateless-workflows-azure-portal/failed.png
+   [running-icon]: ./media/create-stateful-stateless-workflows-azure-portal/running.png
+   [skipped-icon]: ./media/create-stateful-stateless-workflows-azure-portal/skipped.png
+   [succeeded-icon]: ./media/create-stateful-stateless-workflows-azure-portal/succeeded.png
+   [succeeded-with-retries-icon]: ./media/create-stateful-stateless-workflows-azure-portal/succeeded-with-retries.png
+   [timed-out-icon]: ./media/create-stateful-stateless-workflows-azure-portal/timed-out.png
+   [waiting-icon]: ./media/create-stateful-stateless-workflows-azure-portal/waiting.png
+
+1. 若要查看某个特定步骤的输入和输出，请选择该步骤。
+
+   ![屏幕截图显示了所选“发送电子邮件”操作中的输入和输出。](./media/create-stateful-stateless-workflows-azure-portal/review-step-inputs-outputs.png)
+
+1. 若要进一步查看该步骤的原始输入和输出，请选择“显示原始输入”或“显示原始输出”。
+
+<a name="view-trigger-histories"></a>
+
+## <a name="review-trigger-histories"></a>查看触发器历史记录
+
+对于有状态工作流，你可以独立于[运行历史记录上下文](#view-run-history)查看每个运行的触发器历史记录，包括触发器状态以及输入和输出。 在 Azure 门户中，触发器历史记录和运行历史记录显示在工作流级别，而非逻辑应用级别。 若要查找此历史数据，请执行以下步骤：
+
+1. 在 Azure 门户的工作流菜单上的“开发人员”下，选择“触发器历史记录”。
+
+   “触发器历史记录”窗格将显示你的工作流运行的触发器历史记录。
+
+1. 若要查看特定的触发器历史记录，请选择该运行的 ID。
+
+<a name="enable-open-application-insights"></a>
+
+## <a name="enable-or-open-application-insights-after-deployment"></a>在部署后启用或打开 Application Insights
+
+在工作流执行过程中，你的逻辑应用会发出遥测数据以及其他事件。 使用此遥测数据可以更好地了解工作流的运行情况以及逻辑应用运行时如何以各种方式工作。 你可以使用 [Application Insights](../azure-monitor/app/app-insights-overview.md) 来监视工作流，该工具可提供近乎实时的遥测数据（实时指标）。 使用该数据来诊断问题、设置警报和构建图表时，此功能可帮助你更轻松地调查失败和性能问题。
+
+如果逻辑应用的创建和部署设置支持使用 [Application Insights](../azure-monitor/app/app-insights-overview.md)，则可以选择为逻辑应用启用诊断日志记录和跟踪。 你可以在从 Azure 门户中创建逻辑应用时或在部署后执行此操作。 你需要有一个 Application Insights 实例，但你可以在创建逻辑应用时[提前](../azure-monitor/app/create-workspace-resource.md)创建此资源，或在部署后创建此资源。
+
+若要在已部署的逻辑应用上启用 Application Insights 或要打开 Application Insights 仪表板（如果已启用），请执行以下步骤：
+
+1. 在 Azure 门户中，找到你的已部署逻辑应用。
+
+1. 在逻辑应用菜单上，在“设置”下，选择“Application Insights” 。
+
+1. 如果未启用 Application Insights，请在“Application Insights”窗格上选择“启用 Application Insights”。 在窗格更新后，选择底部的“应用”。
+
+   如果启用了 Application Insights，请在“Application Insights”窗格上选择“查看 Application Insights 数据”。
+
+在 Application Insights 打开后，你可以查看逻辑应用的各种指标。 有关详细信息，请查看以下主题：
+
+* [Azure Logic Apps Running Anywhere - Monitor with Application Insights - part 1](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-monitor-with-application/ba-p/1877849)（随处运行的 Azure 逻辑应用 - 使用 Application Insights 进行监视 - 第 1 部分）
+* [Azure Logic Apps Running Anywhere - Monitor with Application Insights - part 2](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-monitor-with-application/ba-p/2003332)（随处运行的 Azure 逻辑应用 - 使用 Application Insights 进行监视 - 第 2 部分）
+
+<a name="enable-run-history-stateless"></a>
+
+## <a name="enable-run-history-for-stateless-workflows"></a>为无状态工作流启用运行历史记录
+
+若要更轻松地调试某个无状态工作流，可以为该工作流启用运行历史记录，并在完成后禁用运行历史记录。 对于 Azure 门户，请按照下面的步骤操作；如果使用的是 Visual Studio Code，请参阅[在 Visual Studio Code 中创建有状态和无状态工作流](create-stateful-stateless-workflows-visual-studio-code.md#enable-run-history-stateless)。
+
+1. 在 [Azure 门户](https://portal.azure.com)中，查找并打开你的“逻辑应用(预览版)”资源。
+
+1. 在逻辑应用菜单上的“设置”下，选择“配置” 。
+
+1. 在“应用程序设置”选项卡上，选择“新建应用程序设置” 。
+
+1. 在“添加/编辑应用程序设置”窗格上的“名称”框中，输入此操作选项名称： 
+
+   `Workflows.{yourWorkflowName}.OperationOptions`
+
+1. 在“值”框中，输入以下值：`WithStatelessRunHistory`
+
+   例如：
+
+   ![屏幕截图显示了 Azure 门户和“逻辑应用(预览版)”资源，其中“配置”>“新建应用程序设置”>“添加/编辑应用程序设置”窗格已打开，并且“Workflows.{yourWorkflowName}.OperationOptions”选项设置为“WithStatelessRunHistory”。](./media/create-stateful-stateless-workflows-azure-portal/stateless-operation-options-run-history.png)
+
+1. 若要完成此任务，请选择“确定”。 在“配置”窗格工具栏上，选择“保存”。
+
+1. 若要在完成时禁用运行历史记录，请将 `Workflows.{yourWorkflowName}.OperationOptions` 属性设置为 `None`，或者删除此属性及其值。
+
+<a name="delete-from-designer"></a>
+
+## <a name="delete-items-from-the-designer"></a>从设计器中删除项
+
+若要从设计器中删除工作流中的某个项，请执行以下任一步骤：
+
+* 选择该项，打开该项的快捷菜单 (Shift + F10)，然后选择“删除”。 若要确认，请选择“确定”。
+
+* 选择该项，然后按 Delete 键。 若要确认，请选择“确定”。
+
+* 选择该项，以便为该项打开详细信息窗格。 在窗格的右上角，打开省略号 ( **...** ) 菜单，然后选择“删除”。 若要确认，请选择“确定”。
+
+  ![屏幕截图显示了设计器上的一个所选项，以及打开的详细信息窗格和选中的省略号按钮与“删除”命令。](./media/create-stateful-stateless-workflows-azure-portal/delete-item-from-designer.png)
+
+  > [!TIP]
+  > 如果省略号菜单不可见，请充分扩展浏览器窗口，以使详细信息窗格在右上角显示省略号 ( **...** ) 按钮。
+
+<a name="restart-stop-start"></a>
+
+## <a name="restart-stop-or-start-logic-apps"></a>重启、停止或启动逻辑应用
+
+你可以启动或停止[单个逻辑应用](#restart-stop-start-single-logic-app)，或者一次性启动或停止[多个逻辑应用](#stop-start-multiple-logic-apps)。 还可以在不先停止的情况下重启单个逻辑应用。 你的单租户逻辑应用可以包含多个工作流，因此你可以停止整个逻辑应用或[仅禁用工作流](#disable-enable-workflows)。
+
+> [!NOTE]
+> 停止逻辑应用和禁用工作流操作具有不同的效果。 有关详细信息，请参阅[停止逻辑应用的注意事项](#considerations-stop-logic-apps)和[禁用工作流的注意事项](#disable-enable-workflows)。
+
+<a name="considerations-stop-logic-apps"></a>
+
+### <a name="considerations-for-stopping-logic-apps"></a>停止逻辑应用的注意事项
+
+停止逻辑应用会通过以下方式影响工作流实例：
+
+* 逻辑应用服务会立即取消所有正在进行和挂起的运行实例。
+
+* 逻辑应用服务不会创建或运行新的工作流实例。
+
+* 下次满足触发器的条件时，触发器不会触发。 但是，触发器状态会记住逻辑应用的停止点。 因此，如果重启逻辑应用，触发器就会触发自上次运行以来的所有未处理项。
+
+  若要阻止每个工作流触发自上次运行以来的未处理项，请在重启逻辑应用之前按照以下步骤清除触发状态：
+
+  1. 在 Azure 门户中，查找并打开逻辑应用。
+  1. 在逻辑应用菜单的“工作流”下，选择“工作流”。
+  1. 打开工作流，然后编辑该工作流触发器的任何部分。
+  1. 保存所做更改。 此步骤会重置触发器的当前状态。
+  1. 对每个工作流重复此操作。
+  1. 完成后，[重启逻辑应用](#restart-stop-start-single-logic-app)。
+
+<a name="restart-stop-start-single-logic-app"></a>
+
+### <a name="restart-stop-or-start-a-single-logic-app"></a>重启、停止或启动单个逻辑应用
+
+1. 在 Azure 门户中，查找并打开逻辑应用。
+
+1. 在逻辑应用菜单中，选择“概述”  。
+
+   * 若要在不停止的情况下重启逻辑应用，请在“概述”窗格工具栏上选择“重启”。
+   * 若要停止正在运行的逻辑应用，请在“概述”窗格工具栏上选择“停止”。 确认选择。
+   * 若要启动已停止的逻辑应用，请在“概述”窗格工具栏上选择“启动”。
+
+   > [!NOTE]
+   > 如果逻辑应用已停止，则只会看到“启动”选项。 如果逻辑应用已经在运行，则只会看到“停止”选项。
+   > 你可以随时重启逻辑应用。
+
+1. 若要确认操作是成功还是失败，请在 Azure 主工具栏上打开“通知”列表（钟形图标）。
+
+<a name="stop-start-multiple-logic-apps"></a>
+
+### <a name="stop-or-start-multiple-logic-apps"></a>停止或启动多个逻辑应用
+
+可以同时停止或启动多个逻辑应用，但不能在不先停止多个逻辑应用的情况下重启这些逻辑应用。
+
+1. 在 Azure 门户的主搜索框中，输入 `logic apps`，然后选择“逻辑应用”。
+
+1. 在“逻辑应用”页上，查看逻辑应用的“状态”列 。
+
+1. 在复选框列中，选择要停止或启动的逻辑应用。
+
+   * 若要停止所选的正在运行的逻辑应用，请在“概述”窗格工具栏上选择“禁用/停止”。 确认选择。
+   * 若要启动所选的已停止的逻辑应用，请在“概述”窗格工具栏上选择“启用/启动”。
+
+1. 若要确认操作是成功还是失败，请在 Azure 主工具栏上打开“通知”列表（钟形图标）。
+
+<a name="disable-enable-workflows"></a>
+
+## <a name="disable-or-enable-workflows"></a>禁用或启用工作流
+
+若要在下一次满足触发条件时阻止触发器触发，请禁用工作流。 你可以禁用或启用单个工作流，但不能同时禁用或启用多个工作流。 禁用工作流会通过以下方式影响工作流实例：
+
+* 逻辑应用服务将继续所有正在进行和挂起的运行，直到完成为止。 根据卷或积压工作 (backlog)，此过程可能需要一些时间才能完成。
+
+* 逻辑应用服务不会创建或运行新的工作流实例。
+
+* 下一次满足触发器的条件时，触发器不会触发。 但是，触发器状态会记住工作流的禁用点。 因此，如果重新启用工作流，此触发器将会触发自上次运行以来的所有未处理项。
+
+  若要阻止触发器触发自上次运行以来未处理的项，请在重新激活工作流之前清除触发器的状态：
+
+  1. 在工作流中，编辑工作流触发器的任何部分。
+  1. 保存所做更改。 此步骤会重置触发器的当前状态。
+  1. [重新激活工作流](#disable-enable-workflows)。
+
+> [!NOTE]
+> 禁用工作流和停止逻辑应用操作具有不同的效果。 有关详细信息，请参阅[停止逻辑应用的注意事项](#considerations-stop-logic-apps)。
+
+<a name="disable-workflow"></a>
+
+### <a name="disable-workflow"></a>禁用工作流
+
+1. 在逻辑应用菜单的“工作流”下，选择“工作流”。 在复选框列中，选择要禁用的工作流。
+
+1. 在“工作流”窗格工具栏上，选择“禁用”。
+
+1. 若要确认操作是成功还是失败，请在 Azure 主工具栏上打开“通知”列表（钟形图标）。
+
+<a name="enable-workflow"></a>
+
+### <a name="enable-workflow"></a>启用工作流
+
+1. 在逻辑应用菜单的“工作流”下，选择“工作流”。 在复选框列中，选择要启用的工作流。
+
+1. 在“工作流”窗格工具栏上，选择“启用”。
+
+1. 若要确认操作是成功还是失败，请在 Azure 主工具栏上打开“通知”列表（钟形图标）。
+
+<a name="delete"></a>
+
+## <a name="delete-logic-apps-or-workflows"></a>删除逻辑应用或工作流
+
+你可以[删除单个逻辑应用或同时删除多个逻辑应用](#delete-logic-apps)。 你的单租户逻辑应用可以包含多个工作流，因此你可以删除整个逻辑应用或[仅删除工作流](#delete-workflows)。
+
+<a name="delete-logic-apps"></a>
+
+### <a name="delete-logic-apps"></a>删除逻辑应用
+
+删除逻辑应用会立即取消正在进行和挂起的运行，但不会在应用使用的存储上运行清理任务。
+
+1. 在 Azure 门户的主搜索框中，输入 `logic apps`，然后选择“逻辑应用”。
+
+1. 从“逻辑应用”列表的复选框列中，选择要删除的单个或多个逻辑应用。 在工具栏中选择“删除”。
+
+1. 确认框出现时，输入 `yes` 并选择“删除”。
+
+1. 若要确认操作是成功还是失败，请在 Azure 主工具栏上打开“通知”列表（钟形图标）。
+
+<a name="delete-workflows"></a>
+
+### <a name="delete-workflows"></a>删除工作流
+
+删除工作流会通过以下方式影响工作流实例：
+
+* 逻辑应用服务会立即取消正在进行和挂起的运行，但会在工作流使用的存储上运行清理任务。
+
+* 逻辑应用服务不会创建或运行新的工作流实例。
+
+* 如果删除工作流，然后重新创建相同的工作流，则重新创建的工作流不会具有与删除的工作流相同的元数据。 必须重新保存任何调用已删除工作流的工作流。 这样，调用方就会获取重新创建的工作流的正确信息。 否则，对重新创建的工作流的调用将会失败，并出现 `Unauthorized` 错误。 此行为也适用于在集成帐户中使用项目的工作流和调用 Azure 函数的工作流。
+
+1. 在 Azure 门户中，查找并打开逻辑应用。
+
+1. 在逻辑应用菜单的“工作流”下，选择“工作流”。 在复选框列中，选择要删除的一个或多个工作流。
+
+1. 在工具栏中选择“删除”。
+
+1. 若要确认操作是成功还是失败，请在 Azure 主工具栏上打开“通知”列表（钟形图标）。
+
+<a name="troubleshoot"></a>
+
+## <a name="troubleshoot-problems-and-errors"></a>解决问题和错误
+
+<a name="missing-triggers-actions"></a>
+
+### <a name="new-triggers-and-actions-are-missing-from-the-designer-picker-for-previously-created-workflows"></a>对于以前创建的工作流，设计器选取器中缺少新的触发器和操作
+
+Azure 逻辑应用预览版支持将内置操作用于 Azure 函数操作、Liquid 操作和 XML 操作（例如 **XML 验证** 和 **转换 XML**）。 但是，对于以前创建的逻辑应用，如果逻辑应用使用的是过时版本的扩展捆绑包 `Microsoft.Azure.Functions.ExtensionBundle.Workflows`，则这些操作可能不会出现在设计器中供你选择。
+
+若要解决此问题，请按照以下步骤删除过时的版本，以便扩展捆绑包可以自动更新到最新版本。
+
+> [!NOTE]
+> 此特定解决方案仅适用于使用 Azure 门户创建的“逻辑应用(预览版)”资源，不适用于使用 Visual Studio Code 和 Azure 逻辑应用（预览版）扩展创建和部署的逻辑应用。 请参阅 [Visual Studio Code 中的设计器缺少受支持的触发器和操作](create-stateful-stateless-workflows-visual-studio-code.md#missing-triggers-actions)。
+
+1. 在 Azure 门户中，停止你的逻辑应用。
+
+   1. 在逻辑应用菜单中，选择“概述”。
+
+   1. 在“概述”窗格的工具栏上，选择“停止”。
+
+1. 在逻辑应用菜单上的“开发工具”下，选择“高级工具”。
+
+1. 在“高级工具”窗格上，选择“转到”，这将为你的逻辑应用打开 Kudu 环境。
+
+1. 在 Kudu 工具栏上，打开“调试控制台”菜单，并选择“CMD”。 
+
+   此时将打开一个控制台窗口，以便你可以使用命令提示符浏览到捆绑包文件夹。 另外，你可以浏览显示了控制台窗口的目录结构。
+
+1. 浏览到以下文件夹，其中包含现有捆绑包的带版本号的文件夹：
+
+   `...\home\data\Functions\ExtensionBundles\Microsoft.Azure.Functions.ExtensionBundle.Workflows`
+
+1. 删除现有捆绑包的版本文件夹。 在控制台窗口中，你可以运行以下命令（请将其中的 `{bundle-version}` 替换为现有版本）：
+
+   `rm -rf {bundle-version}`
+
+   例如：`rm -rf 1.1.3`
+
+   > [!TIP]
+   > 如果你收到“权限被拒绝”或“文件正在使用中”之类的错误，请在浏览器中刷新页面，并再次尝试前面的步骤，直到该文件夹被删除。
+
+1. 在 Azure 门户中，返回到你的逻辑应用的“概述”页，然后选择“重启”。
+
+   门户将自动获取并使用最新的捆绑包。
+
+## <a name="next-steps"></a>后续步骤
+
+我们想要倾听你对此公共预览版的体验反馈！
+
+* 如果发现 bug 或问题，请[在 GitHub 中创建问题](https://github.com/Azure/logicapps/issues)。
+* 如有问题、请求、意见和其他反馈，请[使用此反馈表单](https://aka.ms/lafeedback)。

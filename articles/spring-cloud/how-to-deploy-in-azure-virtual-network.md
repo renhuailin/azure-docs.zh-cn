@@ -6,13 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 07/21/2020
-ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 5a27fdc91f376127f26ba9f207ca72d8ada8a7b9
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.custom: devx-track-java, devx-track-azurecli, subject-rbac-steps
+ms.openlocfilehash: 2ff56857eca112ebd808a96f3aaa097ab4be5c18
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891745"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291525"
 ---
 # <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>在虚拟网络中部署 Azure Spring Cloud
 
@@ -88,16 +88,9 @@ Azure Spring Cloud 要求对虚拟网络具有“所有者”权限，以便在�
 
     ![屏幕截图显示“访问控制”屏幕。](./media/spring-cloud-v-net-injection/access-control.png)
 
-1. 在“添加角色分配”对话框中，输入或选择以下信息：
+1. 在[管理组 | 订阅 | 资源组 | 资源]范围中向[用户 | 组 | 服务主体 | 托管标识]分配“[azure-spring-cloud-data-reader](../role-based-access-control/built-in-roles.md#azure-spring-cloud-data-reader)”角色。
 
-    |设置  |值                                             |
-    |---------|--------------------------------------------------|
-    |角色     |选择“所有者”。                                 |
-    |Select   |输入“Azure Spring Cloud 资源提供程序”。   |
-
-    然后选择“Azure Spring Cloud 资源提供程序”，并选择“保存” 。
-
-    ![屏幕截图显示选择 Azure Spring Cloud 资源提供程序的操作。](./media/spring-cloud-v-net-injection/grant-azure-spring-cloud-resource-provider-to-vnet.png)
+    有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 
 还可以通过运行以下 Azure CLI 命令来执行此步骤：
 

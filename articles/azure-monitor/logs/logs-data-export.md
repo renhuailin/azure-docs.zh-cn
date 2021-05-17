@@ -2,16 +2,16 @@
 title: Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）
 description: 使用 Log Analytics 数据导出功能，可以在收集 Log Analytics 工作区中所选表的数据时，将数据持续导出到 Azure 存储帐户或 Azure 事件中心。
 ms.topic: conceptual
-ms.custom: references_regions, devx-track-azurecli
+ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
 ms.date: 02/07/2021
-ms.openlocfilehash: 6ff856c526beaf999d03b816f6f20e3eaf765106
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: 4f3e5a22b9692823f1e9542fb3a6d9ad42fe79cf
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987990"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108321134"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）
 使用 Azure Monitor 中的 Log Analytics 工作区数据导出功能，可以在收集 Log Analytics 工作区中所选表的数据时，将数据持续导出到 Azure 存储帐户或 Azure 事件中心。 本文提供了有关此功能的详细信息以及在工作区中配置数据导出的步骤。
@@ -44,7 +44,8 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
   - 巴西东南部
   - 挪威东部
   - 阿拉伯联合酋长国北部
-- 可以在工作区中创建两条导出规则，一条指示导出到事件中心，一条指示导出到存储帐户。
+- 工作区中至多可以有 10 条已启用的规则。 可在禁用状态下创建 10 条以上其他规则。 
+- 在工作区的所有导出规则中，目标必须唯一。
 - 目标存储帐户或事件中心必须与 Log Analytics 工作区位于同一区域。
 - 对于存储帐户，要导出的表的名称不能超过 60 个字符，而对于事件中心，不能超过 47 个字符。 名称较长的表将不会被导出。
 - Azure Data Lake Storage 的追加 blob 支持现以[有限的公共预览版](https://azure.microsoft.com/updates/append-blob-support-for-azure-data-lake-storage-preview/)形式提供
@@ -75,16 +76,16 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
 数据到达 Azure Monitor 时，将准实时地发送到事件中心。 将为导出的每个数据类型创建一个事件中心，其名称为 am- 后跟表的名称。 例如，表 SecurityEvent 将发送到名为 am-SecurityEvent 的事件中心中 。 如果要将导出的数据传递到特定事件中心，或者有一个表的名称超过了 47 个字符的限制，则可提供自己的事件中心名称并将定义的表的所有数据导出到该事件中心。
 
 > [!IMPORTANT]
-> [每个命名空间支持的事件中心数为 10](../../event-hubs/event-hubs-quotas.md#common-limits-for-all-tiers)。 如果导出 10 个以上的表，请提供你自己的事件中心名称，将所有表导出到该事件中心。
+> [每个“基本”和“标准”命名空间层支持 10 个事件中心](../../event-hubs/event-hubs-quotas.md#common-limits-for-all-tiers)。 如果导出的表格超过 10 个，则可在多个导出规则之间将表格拆分到不同的事件中心命名空间，或在导出规则中提供事件中心名称，并将所有表格导出到该事件中心。
 
 注意事项：
-1. “基本”事件中心 SKU 支持的事件大小[限制](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-tiers)更低，工作区中的某些日志可能会超过该限制而被删除。 建议使用“标准”或“专用”事件中心作为导出目标。
+1. “基本”事件中心层支持的[事件大小](../../event-hubs/event-hubs-quotas.md)较小，工作区中的某些日志可能会超过该大小而被删除。 建议使用“标准”或“专用”事件中心作为导出目标。
 2. 导出的数据量通常会随时间的推移而增加，需要扩大事件中心的规模，以适应更高的传输速率并避免出现限制情况和数据延迟。 应使用事件中心的自动膨胀功能来自动进行纵向扩展和增加吞吐量单位数，以满足使用量需求。 有关详细信息，请参阅[自动增加 Azure 事件中心吞吐量单位](../../event-hubs/event-hubs-auto-inflate.md)。
 
 ## <a name="prerequisites"></a>先决条件
 以下是在配置 Log Analytics 数据导出之前必须完成的先决条件。
 
-- 存储帐户或事件中心必须已创建，并且必须与 Log Analytics 工作区位于同一区域。 如果需要将数据复制到其他存储帐户，可使用任何 [Azure 存储冗余选项](../../storage/common/storage-redundancy.md)。  
+- 必须在导出规则配置之前创建目标，并且目标应与 Log Analytics 工作区位于同一区域。 如果需要将数据复制到其他存储帐户，可使用任何 [Azure 存储冗余选项](../../storage/common/storage-redundancy.md)。  
 - 存储帐户必须是 StorageV1 或 StorageV2。 不支持经典存储  
 - 如果你已将存储帐户配置为允许从所选网络进行访问，则需要在存储帐户设置中添加一个例外来允许 Azure Monitor 写入存储。
 
@@ -114,7 +115,12 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 [![存储帐户防火墙和虚拟网络](media/logs-data-export/storage-account-vnet.png)](media/logs-data-export/storage-account-vnet.png#lightbox)
 
 ### <a name="create-or-update-data-export-rule"></a>创建或更新数据导出规则
-数据导出规则定义导出数据的表和目标。 当前可为每个目标创建一个规则。
+数据导出规则定义导出数据的表和目标。 工作区中可以有 10 条已启用的规则，而 10 条以外的规则必须处于禁用状态。 在工作区的所有导出规则中，目标必须唯一。
+
+> [!NOTE]
+> 数据导出会将日志发送到你拥有的目标，而这些目标具有[存储帐户可伸缩性](../../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)和[事件中心命名空间配额](../../event-hubs/event-hubs-quotas.md)等限制。 建议监视目标的带宽限制，并在接近目标限制时采取措施。 例如： 
+> - 在事件中心设置自动扩充功能，以自动纵向扩展并增加 TU（吞吐量单位）的数量。 当自动扩充达到最大值时，可以请求更多 TU
+> - 将表格拆分到多个导出规则，其中每个规则都指向不同的目标
 
 导出规则应该包含你在你的工作区中拥有的表。 运行此查询可获取工作区中可用表的列表。
 

@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric sfctl 网格部署
-description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于创建 Service Fabric 网格资源的命令的列表。
+title: Azure Service Fabric CLI- sfctl 网格部署
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于创建 Service Fabric 网格资源的命令的列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: fb2adafab88eb1d3855cdec8268601fb4e15dcbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86257277"
 ---
 # <a name="sfctl-mesh-deployment"></a>sfctl mesh deployment
@@ -17,7 +17,7 @@ ms.locfileid: "86257277"
 
 ## <a name="commands"></a>命令
 
-|Command|说明|
+|命令|说明|
 | --- | --- |
 | create | 创建 Service Fabric 网格资源的部署。 |
 
@@ -28,8 +28,8 @@ ms.locfileid: "86257277"
 
 |参数|说明|
 | --- | --- |
-| --input-yaml-files [必需] | 以逗号分隔的所有 yaml 文件的相对路径或绝对路径路径，或者包含 yaml 文件 (递归) 的目录的相对路径或绝对路径。 |
-| --parameters | 指向 yaml 文件的相对路径或绝对路径，或包含需要重写的参数的 json 对象。 |
+| --input-yaml-files [必需] | 所有 yaml 文件的逗号分隔相对或绝对文件路径，或者包含 yaml 文件的目录（递归）的相对或绝对路径。 |
+| --parameters | 包含需要覆盖的参数的 yaml 文件或 json 对象的相对或绝对路径。 |
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -55,7 +55,7 @@ sfctl mesh deployment create --input-yaml-files ./app.yaml,./network.yaml --para
 sfctl mesh deployment create --input-yaml-files ./resources --parameters ./param.yaml
 ```
 
-通过重写作为 json 对象直接传递的参数，将目录中的所有资源合并并部署到群集中
+通过覆盖直接作为 json 对象传递的参数将某个目录中的所有资源整合并部署到群集中
 ``` 
 sfctl mesh deployment create --input-yaml-files ./resources --parameters "{ 'my_param' :    
 {'value' : 'my_value'} }"   

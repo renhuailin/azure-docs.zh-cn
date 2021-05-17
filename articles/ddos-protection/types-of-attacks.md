@@ -3,7 +3,7 @@ title: Azure DDoS 保护标准可缓解的攻击类型
 description: 了解 Azure DDoS 保护标准可防护的攻击类型。
 services: ddos-protection
 documentationcenter: na
-author: yitoh
+author: aletheatoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 8b213755aeed1590df3d1f5e91f44796c13c7711
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8eac365fc5146f315db8f09a67960aa892fa1c85
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94991768"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106048"
 ---
 # <a name="types-of-ddos-attacks-overview"></a>DDoS 攻击类型概述
 

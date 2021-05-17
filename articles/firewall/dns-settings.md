@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 04/30/2021
 ms.author: victorh
-ms.openlocfilehash: d6a79e87e9999dd520358e0722011cf4e54d8c63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4692b21333999dfc6fcc8edcbba8af800989ee1d
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100546238"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325510"
 ---
 # <a name="azure-firewall-dns-settings"></a>Azure 防火墙 DNS 设置
 
@@ -63,12 +63,12 @@ $azFw | Set-AzFirewall
 
 ## <a name="dns-proxy"></a>DNS 代理
 
-可以对 Azure 防火墙进行配置来充当 DNS 代理。 DNS 代理是从客户端虚拟机到 DNS 服务器的 DNS 请求的中介。 如果你配置了自定义 DNS 服务器，则应启用 DNS 代理以避免 DNS 解析不匹配，并在网络规则中启用 FQDN（完全限定的域名）筛选。
+可以对 Azure 防火墙进行配置来充当 DNS 代理。 DNS 代理是从客户端虚拟机到 DNS 服务器的 DNS 请求的中介。 如果要在网络规则中启用 FQDN（完全限定的域名）筛选，请启用 DNS 代理并更新虚拟机配置，以将防火墙用作 DNS 代理。
 
 :::image type="content" source="media/dns-settings/dns-proxy-2.png" alt-text="使用自定义 DNS 服务器的 DNS 代理配置。":::
 
+如果在网络规则中启用 FQDN 筛选，并且未将客户端虚拟机配置为使用防火墙作为 DNS 代理，则来自这些客户端的 DNS 请求可能会在不同的时间到达 DNS 服务器，或者返回与防火墙不同的响应。 DNS 代理将 Azure 防火墙放置在客户端请求的路径中以避免不一致。
 
-如果未启用 DNS 代理，则来自客户端的 DNS 请求可能会在不同的时间传到 DNS 服务器，或者返回与防火墙不同的响应。 DNS 代理将 Azure 防火墙放置在客户端请求的路径中以避免不一致。
 
 当 Azure 防火墙是 DNS 代理时，可以使用两种缓存函数类型：
 

@@ -3,24 +3,21 @@ title: 支持的内置 Azure Maps 地图样式
 description: 了解 Azure Maps 支持的内置地图样式，例如道路、blank_accessible、卫星、satellite_road_labels、road_shaded_relief 和夜间。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 04/26/2020
+ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: aae17a1071949ea935d7094539d31e85a354da08
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: b3404c02dc159309ed1e9fcd6f9f6bb593fc7552
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326590"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "92896933"
 ---
 # <a name="azure-maps-supported-built-in-map-styles"></a>Azure Maps 支持的内置地图样式
 
 Azure Maps 支持几种不同的内置地图样式，如下所述。
-
->[!important]
->本部分的过程需要 Gen 1 或 Gen 2 定价层中的 Azure Maps 帐户。 有关定价层的详细信息，请查看[在 Azure Maps 中选择正确的定价层](choose-pricing-tier.md)。
 
 ## <a name="road"></a>道路
 

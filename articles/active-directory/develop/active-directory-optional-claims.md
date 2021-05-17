@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
 ms.openlocfilehash: 7c0394e765923c027cc15a6278ee451fb13ed1b2
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100104274"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：向应用提供可选声明
@@ -31,7 +31,7 @@ ms.locfileid: "100104274"
 
 如需标准声明的列表，请参阅[访问令牌](access-tokens.md)和 [id_token](id-tokens.md) 声明文档。
 
-尽管在 v1.0 和 v2.0 格式令牌以及 SAML 令牌中都支持可选声明，但在从 v1.0 移动到 v2.0 时，它们提供了其最大值。 [Microsoft 标识平台](./v2-overview.md)的目标之一是较小的令牌大小，以确保客户端获得最佳性能。 因此，以前包含在访问令牌和 ID 令牌中的多个声明不再在 v2.0 令牌中提供，必须根据应用程序专门请求这些声明。
+尽管在 v1.0 和 v2.0 格式令牌以及 SAML 令牌中都支持可选声明，但在从 v1.0 移动到 v2.0 时，它们提供了其最大值。 [Microsoft 标识平台](./v2-overview.md)的目标之一是减小令牌大小，以确保客户端获得最佳性能。 因此，以前包含在访问令牌和 ID 令牌中的多个声明不再在 v2.0 令牌中提供，必须根据应用程序专门请求这些声明。
 
 **表 1：适用性**
 
@@ -67,7 +67,7 @@ ms.locfileid: "100104274"
 | `email`                    | 此用户的可寻址电子邮件（如果此用户有）。  | JWT、SAML | MSA、Azure AD | 如果用户是租户中的来宾，则默认包含此值。  对于托管用户（租户内部的用户），必须通过此可选声明进行请求，或者仅在 v2.0 上使用 OpenID 范围进行请求。  对于托管用户，必须在 [Office 管理门户](https://portal.office.com/adminportal/home#/users)中设置电子邮件地址。|
 | `acct`                | 租户中的用户帐户状态 | JWT、SAML | | 如果用户是租户的成员，则该值为 `0`。 如果他们是来宾，则该值为 `1`。 |
 | `groups`| 组声明的可选格式 |JWT、SAML| |与[应用程序清单](reference-app-manifest.md)中的 GroupMembershipClaims 设置（也是一个必需设置）结合使用。 有关详细信息，请参阅下面的[组声明](#configuring-groups-optional-claims)。 有关组声明的详细信息，请参阅[如何配置组声明](../hybrid/how-to-connect-fed-group-claims.md)
-| `upn`                      | UserPrincipalName | JWT、SAML  |           | 可以与 username_hint 参数一起使用的用户标识符。  不是用户的持久标识符，不应当用于唯一标识用户信息（例如，用作数据库密钥）。 应改用用户对象 ID (`oid`) 作为数据库密钥。 使用 [备用登录 ID](../authentication/howto-authentication-use-email-signin.md) 登录的用户不应显示其用户主体名称 (UPN) 。 应改用以下 ID 令牌声明向用户显示登录状态：`preferred_username` 或 `unique_name` 适用于 v1 令牌，`preferred_username` 适用于 v2 令牌。 尽管会自动包含此声明，但可以将它指定为可选声明，以附加额外的属性，在来宾用例中修改此声明的行为。  |
+| `upn`                      | UserPrincipalName | JWT、SAML  |           | 可以与 username_hint 参数一起使用的用户标识符。  不是用户的持久标识符，不应当用于唯一标识用户信息（例如，用作数据库密钥）。 应改用用户对象 ID (`oid`) 作为数据库密钥。 不应向使用[备用登录 ID](../authentication/howto-authentication-use-email-signin.md) 登录的用户显示其用户主体名称 (UPN)。 应改用以下 ID 令牌声明向用户显示登录状态：`preferred_username` 或 `unique_name` 适用于 v1 令牌，`preferred_username` 适用于 v2 令牌。 尽管会自动包含此声明，但可以将它指定为可选声明，以附加额外的属性，在来宾用例中修改此声明的行为。  |
 | `idtyp`                    | 令牌类型   | JWT 访问令牌 | 特别之处：仅在仅限应用的访问令牌中 |  当令牌为仅限应用的令牌时，值为 `app`。 这是 API 确定令牌是应用令牌还是应用+用户令牌最准确的方法。|
 
 ## <a name="v20-specific-optional-claims-set"></a>特定于 v2.0 的可选声明集
@@ -85,7 +85,7 @@ ms.locfileid: "100104274"
 | `in_corp`     | 企业网络内部        | 表示客户端是否从企业网络登录。 如果不是，则不包括该声明。   |  以 MFA 中的[可信 IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) 设置为基础。    |
 | `family_name` | 姓氏                       | 根据用户对象中的定义提供用户的姓氏。 <br>"family_name":"Miller" | 在 MSA 和 Azure AD 中受支持。 需要 `profile` 范围。   |
 | `given_name`  | 名字                      | 根据用户对象中的设置提供用户的名字和“姓氏”。<br>"given_name":"Frank"                   | 在 MSA 和 Azure AD 中受支持。  需要 `profile` 范围。 |
-| `upn`         | 用户主体名称 | 可以与 username_hint 参数一起使用的用户标识符。  不是用户的持久标识符，不应当用于唯一标识用户信息（例如，用作数据库密钥）。 应改用用户对象 ID (`oid`) 作为数据库密钥。 使用 [备用登录 ID](../authentication/howto-authentication-use-email-signin.md) 登录的用户不应显示其用户主体名称 (UPN) 。 请改用下面的 `preferred_username` 声明向用户显示登录状态。 | 有关声明配置，请参阅下面的[附加属性](#additional-properties-of-optional-claims)。 需要 `profile` 范围。|
+| `upn`         | 用户主体名称 | 可以与 username_hint 参数一起使用的用户标识符。  不是用户的持久标识符，不应当用于唯一标识用户信息（例如，用作数据库密钥）。 应改用用户对象 ID (`oid`) 作为数据库密钥。 不应向使用[备用登录 ID](../authentication/howto-authentication-use-email-signin.md) 登录的用户显示其用户主体名称 (UPN)。 请改用下面的 `preferred_username` 声明向用户显示登录状态。 | 有关声明配置，请参阅下面的[附加属性](#additional-properties-of-optional-claims)。 需要 `profile` 范围。|
 
 ## <a name="v10-specific-optional-claims-set"></a>特定于 v1.0 的可选声明集
 
@@ -148,7 +148,7 @@ v2 令牌格式的一些改进供使用 v1 令牌格式的应用使用，因为�
 [![在 UI 中配置可选声明](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
 1. 在“管理”下，选择“令牌配置” 。
-   - "UI 选项 **令牌配置** " 边栏选项卡不适用于在 Azure AD B2C 租户中注册的应用，可以通过修改应用程序清单进行配置。 有关详细信息，请参阅  [在 Azure Active Directory B2C 中使用自定义策略添加声明和自定义用户输入](../../active-directory-b2c/configure-user-input.md)  
+   - “标记配置”边栏选项卡的 UI 选项不适用于 Azure AD B2C 租户中注册的应用（可以通过修改应用程序清单来对其进行配置）。 有关更多信息，请参阅[在 Azure Active Directory B2C 中使用自定义策略添加声明和自定义用户输入](../../active-directory-b2c/configure-user-input.md)  
 
 1. 选择“添加可选声明”。
 1. 选择要配置的令牌类型。
@@ -242,7 +242,7 @@ v2 令牌格式的一些改进供使用 v1 令牌格式的应用使用，因为�
 本部分介绍可选声明下的配置选项，这些选项可将组声明中使用的组特性从默认的组 objectID 更改为从本地 Windows Active Directory 同步的特性。 可以通过 UI 或应用程序清单为应用程序配置组可选声明。
 
 > [!IMPORTANT]
-> 有关更多详细信息，包括本地属性中的组声明的重要注意事项，请参阅为 [应用程序配置组声明 Azure AD](../hybrid/how-to-connect-fed-group-claims.md)。
+> 有关更多详细信息，包括有关本地属性中组声明的重要注意事项，请参阅[通过 Azure AD 配置应用程序的组声明](../hybrid/how-to-connect-fed-group-claims.md)。
 
 **通过 UI 配置组可选声明：**
 

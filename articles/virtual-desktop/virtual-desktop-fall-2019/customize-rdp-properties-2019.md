@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 5110e97e52939ea2115bb839768cc7ab96802961
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+manager: femila
+ms.openlocfilehash: db7d44cfdcb0f91a3633373c12f00c6eb8c94d52
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95020702"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445068"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a--windows-virtual-desktop-classic-host-pool"></a>为 Windows 虚拟桌面（经典版）主机池自定义远程桌面协议属性
 
@@ -34,7 +34,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 |RDP 属性 | 台式机 | RemoteApps |
 |---|---| --- |
-| 多监视器模式 | Enabled | 不适用 |
+| 多监视器模式 | 已启用 | 空值 |
 | 驱动器重定向已启用 | 驱动器、剪贴板、打印机、COM 端口、USB 设备和智能卡| 驱动器、剪贴板和打印机 |
 | 远程音频模式 | 本地播放 | 本地播放 |
 

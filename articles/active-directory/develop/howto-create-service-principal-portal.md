@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 6adc3a8af90f6f05f640de97b8fa74c8d40e0329
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 12739d535e37c4d1de89e69237a0daddd9569217
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175528"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897462"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体
 
@@ -45,7 +45,7 @@ ms.locfileid: "102175528"
 1. 在左侧窗格中，选择“用户设置”。
 1. 检查“应用注册”  设置。 只有管理员可设置此值。 如果设置为“是”，则 Active AD 租户中的任何用户都可以注册应用。
 
-如果应用注册设置设定为“否”，则只有具有管理员角色的用户才能注册这些类型的应用程序。 请参阅 [Azure AD 内置角色](../roles/permissions-reference.md#all-roles) ，了解可用的管理员角色以及为每个角色提供 Azure AD 中的特定权限。 如果为帐户分配“用户”角色，但应用注册设置仅限于管理员用户，请要求管理员为你分配可以创建和管理应用注册的所有方面的管理员角色之一，或者让用户能够注册应用。
+如果应用注册设置设定为“否”，则只有具有管理员角色的用户才能注册这些类型的应用程序。 请参阅 [Azure AD 内置角色](../roles/permissions-reference.md#all-roles)来了解 Azure AD 中的可用管理员角色以及授予每个角色的具体权限。 如果为帐户分配“用户”角色，但应用注册设置仅限于管理员用户，请要求管理员为你分配可以创建和管理应用注册的所有方面的管理员角色之一，或者让用户能够注册应用。
 
 ### <a name="check-azure-subscription-permissions"></a>检查 Azure 订阅权限
 
@@ -86,7 +86,7 @@ ms.locfileid: "102175528"
 现已创建了 Azure AD 应用程序和服务主体。
 
 > [!NOTE]
-> 可以在 Azure AD 中注册多个同名的应用程序，但应用程序必须具有不同的应用程序 (客户端) Id。
+> 可以在 Azure AD 中使用相同名称注册多个应用程序，但是这些应用程序必须具有不同的应用程序（客户端）ID。
 
 ## <a name="assign-a-role-to-the-application"></a>将角色分配给应用程序
 
@@ -110,7 +110,7 @@ ms.locfileid: "102175528"
 
    ![选择要分配给应用程序的角色](./media/howto-create-service-principal-portal/select-role.png)
 
-1. 选择“保存”完成角色分配。 应用程序会显示在其角色对应于该范围的用户的列表中。
+1. 选择“保存”  完成角色分配。 应用程序会显示在其角色对应于该范围的用户的列表中。
 
 服务主体已设置完毕。 可以开始使用它运行脚本或应用。 若要管理服务主体（权限、用户同意权限、查看已同意的用户、查看权限、查看登录信息等），请访问“企业应用程序”。
 
@@ -118,7 +118,7 @@ ms.locfileid: "102175528"
 
 ## <a name="get-tenant-and-app-id-values-for-signing-in"></a>获取用于登录的租户和应用 ID 值
 
-以编程方式登录时，请将租户 ID 传递到身份验证请求和应用程序 ID。  还需要证书或身份验证密钥（如以下部分中所述）。 若要获取这些值，请使用以下步骤：
+以编程方式登录时，请随身份验证请求和应用程序 ID 传递租户 ID。  还需要证书或身份验证密钥（如以下部分中所述）。 若要获取这些值，请使用以下步骤：
 
 1. 选择“Azure Active Directory”  。
 1. 从 Azure AD 中的“应用注册”，选择应用程序。
@@ -138,7 +138,7 @@ ms.locfileid: "102175528"
 
 ### <a name="option-1-upload-a-certificate"></a>选项 1：上传证书
 
-可以使用现有证书（如果有）。  （可选）可以创建自签名证书，仅限测试目的。 打开 PowerShell 并使用以下参数运行 [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate)，以在计算机上的用户证书存储中创建自签名证书：
+可以使用现有证书（如果有）。  （可选）可以创建自签名证书，仅限测试目的。 打开 PowerShell 并使用以下参数运行 [New-SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate)，以在计算机上的用户证书存储中创建自签名证书：
 
 ```powershell
 $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
@@ -165,7 +165,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 1. 选择“添加”  。
 
-在应用程序注册门户中将证书注册到你的应用程序后，启用客户端应用程序代码以使用该证书。
+在应用程序注册门户中将证书注册到应用程序后，请启用客户端应用程序代码以使用该证书。
 
 ### <a name="option-2-create-a-new-application-secret"></a>选项 2：创建新的应用程序机密
 
@@ -182,7 +182,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
    ![复制机密值，因为以后不再可以检索到此值](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="configure-access-policies-on-resources"></a>在资源上配置访问策略
-请记住，可能需要对应用程序需要访问的资源配置附加权限。 例如，你还必须[更新密钥保管库的访问策略](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies)，以使应用程序能够访问密钥、机密或证书。
+请记住，可能需要对应用程序需要访问的资源配置附加权限。 例如，你还必须[更新密钥保管库的访问策略](../../key-vault/general/security-features.md#privileged-access)，以使应用程序能够访问密钥、机密或证书。
 
 1. 在 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>中，导航到密钥保管库并选择“访问策略”。
 1. 选择“添加访问策略”，然后选择要授予应用程序的密钥、机密和证书权限。  选择之前创建的服务主体。

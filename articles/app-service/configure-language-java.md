@@ -12,10 +12,10 @@ ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
 ms.openlocfilehash: 0334e259f75440cae25f1e165c0621c85f7c7705
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97803997"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>为 Azure 应用服务配置 Java 应用
@@ -89,7 +89,7 @@ Azure 应用服务可让 Java 开发人员在完全托管服务中快速生成�
 
 #### <a name="timed-recording"></a>计时记录
 
-若要进行定时记录，需要 Java 应用程序的 PID（进程 ID）。 若要查找 PID，请在 https://中打开 web 应用的 SCM 站点的浏览器 <> 你的 scm.azurewebsites.net/ProcessExplorer/。 此页面显示 Web 应用中正在运行的进程。 在表中找到名为“java”的进程，并复制相应的 PID（进程 ID）。
+若要进行定时记录，需要 Java 应用程序的 PID（进程 ID）。 要查找 PID，请打开浏览器，访问 Web 应用的 SCM 站点，网址为 https://<站点名称>.scm.azurewebsites.net/ProcessExplorer/。 此页面显示 Web 应用中正在运行的进程。 在表中找到名为“java”的进程，并复制相应的 PID（进程 ID）。
 
 接下来，打开 SCM 站点顶部工具栏中的“调试控制台”，运行以下命令。 将 `<pid>` 替换为此前复制的进程 ID。 此命令会启动对 Java 应用程序的 30 秒探查器记录，并在 `D:\home` 目录中生成名为 `timed_recording_example.jfr` 的文件。
 
@@ -228,7 +228,7 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 ## <a name="secure-applications"></a>安全应用程序
 
-在应用服务中运行的 Java 应用程序与其他应用程序具有相同的一组 [安全最佳做法](../security/fundamentals/paas-applications-using-app-services.md) 。
+在应用服务中运行的 Java 应用程序实施与其他应用程序相同的一套[安全最佳做法](../security/fundamentals/paas-applications-using-app-services.md)。
 
 ### <a name="authenticate-users-easy-auth"></a>对用户进行身份验证（简易身份验证）
 

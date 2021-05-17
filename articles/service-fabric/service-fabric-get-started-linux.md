@@ -4,12 +4,12 @@ description: 在 Linux 上安装运行时和 SDK 并创建本地开发群集。 
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: fcf0aeec27415d03c528e42ad5341a92bd299d88
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: a06e649fbbe3e7ea1036d9511a87169a5b0a655a
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107869394"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288249"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
 > [!div class="op_single_selector"]
@@ -26,17 +26,13 @@ ms.locfileid: "107869394"
 
 ## <a name="prerequisites"></a>先决条件
 
-支持使用以下操作系统版本进行开发。
+- 确保使用的是受支持的 [Linux 版本](service-fabric-versions.md#supported-linux-versions-and-support-end-date)。
 
-* Ubuntu 16.04 (`Xenial Xerus`)、18.04 (`Bionic Beaver`)
-
-    确保已安装 `apt-transport-https` 包。
+- 安装 `apt-transport-https` 包：
          
     ```bash
     sudo apt-get install apt-transport-https
     ```
-* Red Hat Enterprise Linux 7.4（Service Fabric 预览版支持）
-
 
 ## <a name="installation-methods"></a>安装方法
 

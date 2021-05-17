@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric CLI - sfctl chaos schedule
-description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于混沌测试计划的命令列表。
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于混沌调度的命令列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: dd911574cd37c18e3043cfc2482bd1fcd5f3857b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86260853"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
@@ -17,7 +17,7 @@ ms.locfileid: "86260853"
 
 ## <a name="commands"></a>命令
 
-|Command|说明|
+|命令|说明|
 | --- | --- |
 | get | 获取定义何时以及如何运行 Chaos 的 Chaos Schedule。 |
 | set | 设置 Chaos 使用的计划。 |

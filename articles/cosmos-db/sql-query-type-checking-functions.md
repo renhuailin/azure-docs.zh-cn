@@ -9,10 +9,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 2becc9216d847dfe26d8fd3a433993112fff7980
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96546340"
 ---
 # <a name="type-checking-functions-azure-cosmos-db"></a>类型检查函数 (Azure Cosmos DB)
@@ -22,7 +22,7 @@ ms.locfileid: "96546340"
 
 ## <a name="functions"></a>函数
 
-下面是受支持的内置类型检查函数表：
+以下是受支持的内置类型检查函数表：
 
 以下函数支持对输入值进行类型检查，并且每个都会返回一个布尔值。  
 

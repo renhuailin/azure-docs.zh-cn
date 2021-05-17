@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB 查询语言中的字符串函数
 description: 了解 Azure Cosmos DB 中的字符串 SQL 系统函数。
-author: ginamr
+author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 04/27/2021
-ms.author: girobins
+ms.date: 05/04/2021
+ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 16f882223d8abd3ef7b2d8bd87670e2abc0489f9
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 4fe60a119626dca51f5dd4f38a81f6a2ef99c83c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165022"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743716"
 ---
 # <a name="string-functions-azure-cosmos-db"></a>字符串函数 (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

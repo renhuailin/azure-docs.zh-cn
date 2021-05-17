@@ -12,26 +12,26 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 311dfd976610c392909a0ec3d91fecaa4d733539
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ca10c54cff14bd9301e06a891bcb1f7013959f9
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100104189"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108176461"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>如何：配置应用的服务条款和隐私声明
 
-构建和管理与 Azure Active Directory (Azure AD) 和 Microsoft 帐户集成的应用的开发人员应随附指向应用的服务条款和隐私声明的链接。 服务条款和隐私声明通过用户同意体验展示给用户。 它们可以帮助用户认识到他们可以信任你的应用。 对于面向用户的多租户应用（由多个目录使用的应用或面向所有 Microsoft 帐户提供的应用）来说，服务条款和隐私声明至关重要。
+构建和管理与 Azure Active Directory (Azure AD) 和 Microsoft 帐户集成的多租户应用的开发人员应随附指向应用服务条款和隐私声明的链接。 服务条款和隐私声明通过用户同意体验展示给用户。 它们可以帮助用户认识到他们可以信任你的应用。 对于面向用户的多租户应用（由多个目录使用的应用或面向所有 Microsoft 帐户提供的应用）来说，服务条款和隐私声明至关重要。
 
 你负责为你的应用创建服务条款和隐私声明文档，并提供指向这些文档的 URL。 对于未能提供这些链接的多租户应用，你的应用的用户同意体验将显示一条警报，可能阻碍用户同意使用你的应用。
 
 > [!NOTE]
-> * 单租户应用不会显示警报。
+> * 服务条款和隐私声明链接不适用于单租户应用
 > * 如果缺少一个或两个两个链接，应用将显示警报。
 
 ## <a name="user-consent-experience"></a>用户同意体验
 
-下面的示例分别展示配置了服务条款和隐私声明以及未配置服务条款和隐私声明情况下的用户同意体验。
+下面的示例分别展示已配置服务条款和隐私声明以及未配置这些链接时的多租户应用的用户同意体验。
 
 ![提供了含有和不含隐私声明和服务条款的屏幕截图](./media/howto-add-terms-of-service-privacy-statement/user-consent-exp-privacy-statement-terms-service.png)
 

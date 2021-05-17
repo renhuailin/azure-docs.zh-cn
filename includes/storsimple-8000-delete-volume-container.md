@@ -9,10 +9,10 @@ ms.date: 02/09/2021
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: 386a39d76bf47da45f07054124886e174104849e
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100545210"
 ---
 若要删除卷容器，则必须
@@ -37,4 +37,4 @@ ms.locfileid: "100545210"
 
 卷容器的列表将更新以反映删除的卷容器。
 
-!["卷容器" 页的屏幕截图。 卷容器的表格列表不再包含已删除的容器。](./media/storsimple-8000-delete-volume-container/delete-volume-container-05.png)
+![“卷容器”页的屏幕截图。 卷容器的表格列表不再包含已删除的容器。](./media/storsimple-8000-delete-volume-container/delete-volume-container-05.png)

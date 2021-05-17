@@ -9,20 +9,20 @@ ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 02/23/2021
+ms.date: 04/28/2021
 ms.author: aahi
 keywords: 本地, Docker, 容器, 标识
-ms.openlocfilehash: 36cbd7bd24304871593b107f9b8ed9be02ce46de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3af013000b49690a4edd71c16e607ed57b3ca163
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101706786"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291021"
 ---
-# <a name="install-and-run-face-containers-preview"></a>安装和运行人脸容器（预览版）
+# <a name="install-and-run-face-containers-retiring"></a>安装和运行人脸容器（即将停用）
 
 > [!IMPORTANT]
-> 已达到人脸容器用户的限制。 目前不接受用于人脸容器的新应用程序。
+> 人脸容器预览版不再接受应用程序，并且自 2021 年 4 月 29 日起已弃用该容器。 人脸容器将于 2021 年 7 月 26 日完全停用。
 
 Azure 认知服务人脸 API 提供 Linux Docker 容器，用于检测和分析图像中的人脸。 它还标识属性，其中包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，人脸还可以使用置信分数检查同一图像或不同图像中的两张人脸是否相同。 人脸还可以根据数据库比较人脸，查看是否已存在类似或相同的人脸。 它也可以使用共享视觉特征将类似人脸整理为许多组。
 
