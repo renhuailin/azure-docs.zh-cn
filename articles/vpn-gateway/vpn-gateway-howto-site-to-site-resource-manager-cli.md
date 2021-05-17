@@ -1,6 +1,6 @@
 ---
 title: 将本地网络连接到虚拟网络：站点到站点 VPN：CLI
-description: 使用 CLI 通过公共 Internet 创建从本地网络到 Azure 虚拟网络的 IPsec 站点到站点 VPN 网关连接。
+description: 了解如何使用 CLI 通过公共 Internet 创建从本地网络到 Azure 虚拟网络的 IPsec 站点到站点 VPN 网关连接。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/23/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2c59c67eb7b5ae5b26ac5517afba433fe8c028fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 64c67c648244a224414c994a9edc8e25824840f4
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "104611740"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226833"
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>使用 CLI 创建具有站点到站点 VPN 连接的虚拟网络
 

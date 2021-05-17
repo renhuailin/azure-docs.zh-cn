@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: 62db56ac9791cea7d6f1a40f794241ed68fa90fa
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: b21915b6cf0cd018ccbf7b79fc9a5ab8dc222925
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483562"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108075995"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>将 Azure 数字孪生实例移动到其他 Azure 区域
 
@@ -31,7 +31,7 @@ ms.locfileid: "107483562"
     - 重新链接连接的资源。
 1. 清理源资源：删除原始实例。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在尝试重新创建 Azure 数字孪生实例之前，请先查看原始实例的组件，以明确了解需要重新创建的所有部分。
 
@@ -95,9 +95,9 @@ ms.locfileid: "107483562"
 
 现在，计算机的浏览器中应运行 Azure Digital Twins Explorer 示例应用。 此示例应连接到原始 Azure 数字孪生实例。
 
-:::image type="content" source="media/how-to-move-regions/explorer-blank.png" alt-text="显示在 localhost:3000 运行的应用的浏览器窗口。此应用名为 Azure Digital Twins Explorer，其中包含查询资源管理器、模型视图、图形视图和属性资源管理器所对应的框。屏幕上尚无数据。" lightbox="media/how-to-move-regions/explorer-blank.png":::
+:::image type="content" source="media/how-to-move-regions/explorer-blank.png" alt-text="显示在 localhost:3000 运行的应用的浏览器窗口。此应用名为 Azure Digital Twins Explorer，其中包含“查询资源管理器”、“模型”、“孪生图”和“属性”所对应的框。屏幕上尚无数据。" lightbox="media/how-to-move-regions/explorer-blank.png":::
 
-若要验证连接，请选择“Graph 浏览器”框中的“运行查询”按钮以运行默认查询，以便显示图形中的所有孪生体和关系。
+若要验证连接，请选择“孪生图”框中的“运行查询”按钮以运行默认查询，以便显示图形中的所有孪生体和关系。 
 
 :::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="窗口右上角突出显示了“运行查询”按钮。" lightbox="media/how-to-move-regions/run-query.png":::
 
@@ -107,13 +107,13 @@ ms.locfileid: "107483562"
 
 接下来，将解决方案中的模型、孪生体和图形下载到计算机。
 
-要一次下载所有这些项，请首先确保“图形视图”框中显示完整的图形。 如果尚未显示完整的图形，请在“查询资源管理器”框中重新运行 `SELECT * FROM digitaltwins` 的默认查询。
+要一次下载所有这些项，请首先确保“孪生图”框中显示完整的图形。 如果尚未显示完整的图形，请在“查询资源管理器”框中重新运行 `SELECT * FROM digitaltwins` 的默认查询。
  
-然后，选择“图形视图”框中的“导出图形”图标。
+然后，选择“孪生图”框中的“导出图形”图标。 
 
-:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="在“图形视图”框中，一个图标突出显示。它显示了一个从云中指向下的箭头。" lightbox="media/how-to-move-regions/export-graph.png":::
+:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="在“孪生图”框中，一个图标突出显示。它显示了一个从云中指向下的箭头。" lightbox="media/how-to-move-regions/export-graph.png":::
 
-此操作将启用“图形视图”框中的下载链接。 选择它将下载基于 JSON 表示形式的查询结果，其中包括模型、孪生体和关系。 此操作会将一个 .json 文件下载到计算机。
+此操作将启用“孪生图”框中的“下载”链接。  选择它将下载基于 JSON 表示形式的查询结果，其中包括模型、孪生体和关系。 此操作会将一个 .json 文件下载到计算机。
 
 >[!NOTE]
 >如果下载的文件具有其他的文件扩展名，请尝试直接编辑扩展名并将其更改为 .json。
@@ -155,15 +155,15 @@ Azure Digital Twins Explorer 当前连接到原始 Azure 数字孪生实例。 �
 
 接下来，将之前下载的解决方案组件上传到新实例。
 
-若要上传模型、孪生体和图形，请选择“图形视图”框中的“导入图形”图标。 此选项将一次上传所有这三个组件。 它甚至会上传图形中当前未使用的模型。
+若要上传模型、孪生体和图形，请选择“孪生图”框中的“导入图形”图标。  此选项将一次上传所有这三个组件。 它甚至会上传图形中当前未使用的模型。
 
-:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="在“图形视图”框中，一个图标突出显示。它显示了一个指向云的箭头。" lightbox="media/how-to-move-regions/import-graph.png":::
+:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="在“孪生图”框中，一个图标突出显示。它显示了一个指向云的箭头。" lightbox="media/how-to-move-regions/import-graph.png":::
 
 在“文件选择器”框中，转到已下载的图形。 选择图形的 .json 文件，然后选择“打开”。
 
 几秒钟后，Azure Digital Twins Explorer 将打开“导入”视图，其中显示了要加载的图形的预览。
 
-若要确认图形上传，请选择“图形视图”框右上角的“保存”图标 。
+若要确认图形上传，请选择“孪生图”框右上角的“保存”图标。 
 
 :::row:::
     :::column:::
@@ -181,17 +181,15 @@ Azure Digital Twins Explorer 当前连接到原始 Azure 数字孪生实例。 �
     :::column-end:::
     :::column:::
     :::column-end:::
-    :::column:::
-    :::column-end:::
 :::row-end:::
 
-若要验证是否成功上传所有内容，请选择“Graph 浏览器”框中的“运行查询”按钮以运行默认查询，以便显示图形中的所有孪生体和关系。 此操作还会刷新“模型视图”框中的模型列表。
+若要验证是否成功上传所有内容，请切换回“孪生图”选项卡，然后选择“查询资源管理器”框中的“运行查询”按钮以运行默认查询，以便显示图形中的所有孪生体和关系。   此操作还会刷新“模型”框中的模型列表。
 
 :::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="突出显示了窗口右上角的“运行查询”按钮。" lightbox="media/how-to-move-regions/run-query.png":::
 
-“Graph 浏览器”框中将显示图形及其所有的孪生体和关系。 “模型视图”框中还会列出模型。
+“孪生图”框中将显示图形及其所有的孪生体和关系。 “模型”框中还会列出模型。
 
-:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="Azure Digital Twins Explorer 视图，其中“模型视图”框中突出显示两个模型，“Graph 浏览器”框中突出显示图形。" lightbox="media/how-to-move-regions/post-upload.png":::
+:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="Azure Digital Twins Explorer 视图，其中“模型”框中突出显示两个模型，“孪生图”框中突出显示图形。" lightbox="media/how-to-move-regions/post-upload.png":::
 
 通过这些视图，可以确认模型、孪生体和图形已重新上传到目标区域中的新实例。
 

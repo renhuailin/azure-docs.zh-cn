@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e0801daa5bf83889be87987d440e377287b5ea
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c792888b65f331332c320deecbcd2b5f8d7e2ee3
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92366184"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175759"
 ---
 # <a name="conditional-access-block-access"></a>条件访问：阻止访问
 
@@ -79,6 +79,9 @@ ms.locfileid: "92366184"
    1. 选择“选择”  。
 1. 确认设置，然后将“启用策略”设置为“仅限报告”。  
 1. 选择“创建”  ，以便创建启用策略所需的项目。
+
+> [!NOTE]
+> 完成第一因素身份验证后将强制执行条件访问策略。 在遇到拒绝服务 (DoS) 攻击等情景中，条件访问不应充当组织的第一道防线，但它可以使用这些事件的信号来确定访问权限。
 
 ## <a name="next-steps"></a>后续步骤
 

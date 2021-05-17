@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: ad28b3300e9107c7f6d4b1987205583ef60ed658
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b49ded912037c8935b67e64d4e4bb09402576bc7
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100545694"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203624"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>服务请求失败。 状态: 403 (已禁用)
 
@@ -58,7 +58,7 @@ ms.locfileid: "100545694"
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Data Owner"
 ```
 
-有关此角色要求和分配过程的更多详细信息，请参阅“操作说明：设置实例和身份验证（CLI 或门户）”的[设置用户访问权限](how-to-set-up-instance-CLI.md#set-up-user-access-permissions)部分。
+有关此角色要求和分配过程的详细信息，请参阅“操作说明：设置实例和身份验证（CLI 或门户）”的[设置用户访问权限](how-to-set-up-instance-CLI.md#set-up-user-access-permissions)部分。
 
 如果已拥有此角色分配且使用 Azure AD 应用注册对客户端应用进行身份验证，但此解决方案未解决 403 问题，则可继续执行下一个解决方案。
 
@@ -86,7 +86,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 #### <a name="fix-issues"></a>解决问题
 
-如果出现任何不同于以上所述的情况，请按照[操作说明：创建应用注册](how-to-create-app-registration.md)中如何设置应用注册的说明进行操作。
+如果出现任何不同于以上所述的情况，请按照操作说明：创建应用注册中如何设置应用注册的说明进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 

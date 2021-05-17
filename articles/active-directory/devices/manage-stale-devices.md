@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6774e172c4e8607bfadd95f947d650afa62a984f
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 16edc850382ba9023b54eb34cebb7ebafb539161
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550416"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286665"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>如何：在 Azure AD 中管理陈旧的设备
 
@@ -125,7 +125,7 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 
 ## <a name="clean-up-stale-devices-in-the-azure-portal"></a>在 Azure 门户中清理陈旧的设备  
 
-可以在 Azure 门户中清理陈旧的设备，但使用 PowerShell 脚本可以更高效地处理此过程。 在最新的 PowerShell V1 模块中可以使用时间戳筛选器，并可以筛选出系统管理的设备，例如 Autopilot。 目前不建议使用 PowerShell V2。
+可以在 Azure 门户中清理陈旧的设备，但使用 PowerShell 脚本可以更高效地处理此过程。 在最新的 PowerShell V2 模块中可以使用时间戳筛选器，并可以筛选出系统管理的设备，例如 Autopilot。
 
 典型的例程包括以下步骤：
 

@@ -1,18 +1,15 @@
 ---
 title: 排查 Microsoft Azure Site Recovery 提供程序升级问题
 description: 解决升级 Microsoft Azure Site Recovery 提供程序时出现的常见问题。
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/10/2019
-ms.author: raynew
-ms.openlocfilehash: 5a6e4b415a9fe8ea80a84e415879df9d2f359478
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f53cc8d5732db85f69e48efdaddd518e75ff518b
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "84434370"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579495"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>排查 Microsoft Azure Site Recovery 提供程序升级故障
 

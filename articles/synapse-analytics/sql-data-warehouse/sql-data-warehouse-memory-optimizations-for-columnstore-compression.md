@@ -2,21 +2,21 @@
 title: 提高专用 SQL 池的列存储索引性能
 description: 降低内存需求或增加可用内存，使专用 SQL 池中每个行组的行数最大化。
 services: synapse-analytics
-author: julieMSFT
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 03/22/2019
-ms.author: jrasnick
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 1336359bdd0768ba1d1554554d266cacfb483a43
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: b15f71698af8c340b58f3399390857790313b8ac
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566505"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585479"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore-indexes-in-dedicated-sql-pool"></a>最大程度提高专用 SQL 池中列存储索引的行组质量 
 

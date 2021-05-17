@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: ae2be8dbcb4839c7d16b864c484c3360fdcfe324
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2702b657b1725351f28180f15213dbcf7678139a
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102425577"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226419"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>适用于 Azure Functions 的 Azure 服务总线输出绑定
 
@@ -324,7 +324,7 @@ Python 不支持特性。
 |**name** | 不适用 | 变量的名称，表示函数代码中的队列或主题消息。 设置为“$return”可引用函数返回值。 |
 |**queueName**|**QueueName**|队列名称。  仅在发送队列消息的情况下设置，不为主题设置。
 |**topicName**|**TopicName**|主题名称。 仅在发送主题消息的情况下设置，不为队列设置。|
-|连接|**Connection**|应用设置的名称，包含要用于此绑定的服务总线连接字符串。 如果应用设置名称以“AzureWebJobs”开头，则只能指定该名称的余下部分。 例如，如果将 `connection` 设为“MyServiceBus”，Functions 运行时会查找名为“AzureWebJobsMyServiceBus”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为“AzureWebJobsServiceBus”的应用设置中的默认服务总线连接字符串。<br><br>若要获取连接字符串，请执行[获取管理凭据](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)中显示的步骤。 必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。|
+|连接|**Connection**|应用设置的名称，包含要用于此绑定的服务总线连接字符串。 如果应用设置名称以“AzureWebJobs”开头，则只能指定该名称的余下部分。 例如，如果将 `connection` 设为“MyServiceBus”，Functions 运行时会查找名为“AzureWebJobsMyServiceBus”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为“AzureWebJobsServiceBus”的应用设置中的默认服务总线连接字符串。<br><br>若要获取连接字符串，请执行[获取管理凭据](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)中显示的步骤。 必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。<br><br>如果使用 [5.x 版或更高版本的扩展](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher)，而不是连接字符串，则可以提供对用于定义连接的配置节的引用。 请参阅[连接](./functions-reference.md#connections)。|
 |**accessRights**（仅限 v1）|**Access**|连接字符串的访问权限。 可用值为 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”权限。 如果使用不具有“管理”权限的连接字符串，请将 `accessRights` 设置为“listen”。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。 在 Azure Functions 版本 2.x 及更高版本中，此属性不可用，因为最新版本的服务总线 SDK 不支持管理操作。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -350,6 +350,12 @@ Python 不支持特性。
 
 * 若要访问会话 ID，请绑定到 [`Message`](/dotnet/api/microsoft.azure.servicebus.message) 类型并使用 `sessionId` 属性。
 
+### <a name="additional-types"></a>其他类型 
+
+如果应用使用 5.0.0 或更高版本的服务总线扩展，那么这些应用使用 [Azure.Messaging.ServiceBus](/dotnet/api/azure.messaging.servicebus.servicebusmessage) 中的 `ServiceBusMessage` 类型，而不是 [Microsoft.Azure.ServiceBus](/dotnet/api/microsoft.azure.servicebus.message) 命名空间中的对应类型。 此版本为了支持以下类型，删除了对旧的 `Message` 类型的支持：
+
+- [ServiceBusMessage](/dotnet/api/azure.messaging.servicebus.servicebusmessage)
+
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 对输出绑定使用以下参数类型：
@@ -366,6 +372,11 @@ Python 不支持特性。
 * 异步函数需要返回值或 `IAsyncCollector` 而不是 `out` 参数。
 
 * 若要访问会话 ID，请绑定到 [`Message`](/dotnet/api/microsoft.azure.servicebus.message) 类型并使用 `sessionId` 属性。
+
+### <a name="additional-types"></a>其他类型 
+如果应用使用 5.0.0 或更高版本的服务总线扩展，那么这些应用使用 [Azure.Messaging.ServiceBus](/dotnet/api/azure.messaging.servicebus.servicebusmessage) 中的 `ServiceBusMessage` 类型，而不是 [Microsoft.Azure.ServiceBus](/dotnet/api/microsoft.azure.servicebus.message) 命名空间中的对应类型。 此版本为了支持以下类型，删除了对旧的 `Message` 类型的支持：
+
+- [ServiceBusMessage](/dotnet/api/azure.messaging.servicebus.servicebusmessage)
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -391,47 +402,6 @@ Python 不支持特性。
 |---|---|
 | 服务总线 | [服务总线错误代码](../service-bus-messaging/service-bus-messaging-exceptions.md) |
 | 服务总线 | [服务总线限制](../service-bus-messaging/service-bus-quotas.md) |
-
-<a name="host-json"></a>  
-
-## <a name="hostjson-settings"></a>host.json 设置
-
-本部分介绍版本 2.x 及更高版本中可用于此绑定的全局配置设置。 下面的示例 host.json 文件仅包含此绑定的设置。 有关全局配置设置的详细信息，请参阅 [Azure Functions 版本的 host.json 参考](functions-host-json.md)。
-
-> [!NOTE]
-> 有关 Functions 1.x 中 host.json 的参考，请参阅 [Azure Functions 1.x 的 host.json 参考](functions-host-json-v1.md)。
-
-```json
-{
-    "version": "2.0",
-    "extensions": {
-        "serviceBus": {
-            "prefetchCount": 100,
-            "messageHandlerOptions": {
-                "autoComplete": true,
-                "maxConcurrentCalls": 32,
-                "maxAutoRenewDuration": "00:05:00"
-            },
-            "sessionHandlerOptions": {
-                "autoComplete": false,
-                "messageWaitTimeout": "00:00:30",
-                "maxAutoRenewDuration": "00:55:00",
-                "maxConcurrentSessions": 16
-            }
-        }
-    }
-}
-```
-
-如果将 `isSessionsEnabled` 设置为 `true`，则将采用 `sessionHandlerOptions`。  如果将 `isSessionsEnabled` 设置为 `false`，则将采用 `messageHandlerOptions`。
-
-|属性  |默认 | 说明 |
-|---------|---------|---------|
-|prefetchCount|0|获取或设置消息接收方可以同时请求的消息数。|
-|maxAutoRenewDuration|00:05:00|自动续订消息锁的最长持续时间。|
-|autoComplete|是|是触发器在处理后自动调用 complete，还是函数代码手动调用 complete。<br><br>仅在 C# 中支持将其设置为 `false`。<br><br>如果设置为 `true`，则触发器会在函数执行成功完成时自动完成该消息，否则会放弃该消息。<br><br>设置为 `false` 时，你负责调用 [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver) 方法来完成、放弃消息或将消息放入死信队列。 如果引发了异常（并且未调用任何 `MessageReceiver` 方法），则锁仍然存在。 锁到期后，消息会重新排队，同时 `DeliveryCount` 会递增，并且锁会自动续订。<br><br>在非 C# 函数中，函数中的异常会导致运行时在后台调用 `abandonAsync`。 如果未发生异常，则在后台调用 `completeAsync`。 |
-|maxConcurrentCalls|16|对于每个缩放实例，消息泵应对回调发起的最大并发调用数。 默认情况下，Functions 运行时同时处理多条消息。|
-|maxConcurrentSessions|2000|每个缩放实例可以并发处理的最大会话数。|
 
 ## <a name="next-steps"></a>后续步骤
 

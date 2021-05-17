@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 4/8/2021
-ms.openlocfilehash: 9f315a0446c1fb712558c1031df56760e6d5b7e7
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 7d04b98014abbf6bf732da292df3b7bb9172f281
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2021
-ms.locfileid: "108123422"
+ms.locfileid: "108203570"
 ---
 # <a name="authentication-failed"></a>验证失败
 
@@ -37,7 +37,7 @@ Azure Digital Twins Explorer 应用程序使用 [DefaultAzureCredential](/dotnet
 
 如果 Azure 帐户没有在 Azure 数字孪生实例上设置所需的 Azure 基于角色的访问控制(Azure RBAC) 权限，也会发生此错误。 若要访问实例中的数据，必须分别在你尝试读取或管理的实例上拥有“Azure 数字孪生数据读取者”或“Azure 数字孪生数据所有者”角色。 
 
-有关 Azure 数字孪生中的安全性和角色的详细信息，请参阅[概念：Azure 数字孪生安全性解决方案](concepts-security.md)。
+有关 Azure 数字孪生中的安全性和角色的详细信息，请参阅概念：Azure 数字孪生安全性解决方案。
 
 ## <a name="solutions"></a>解决方案
 
@@ -78,7 +78,7 @@ Azure Digital Twins Explorer 应用程序使用 [DefaultAzureCredential](/dotnet
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "<role-name>"
 ```
 
-有关此角色要求和分配过程的更多详细信息，请参阅“操作说明：设置实例和身份验证（CLI 或门户）”的[设置用户访问权限](how-to-set-up-instance-CLI.md#set-up-user-access-permissions)部分。
+有关此角色要求和分配过程的详细信息，请参阅“操作说明：设置实例和身份验证（CLI 或门户）”的[设置用户访问权限](how-to-set-up-instance-CLI.md#set-up-user-access-permissions)部分。
 
 ## <a name="next-steps"></a>后续步骤
 

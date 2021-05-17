@@ -1,5 +1,6 @@
 ---
-title: 排查 Azure 站点到站点 VPN 连接无法建立连接的问题Azure VPN 网关
+title: 排查 Azure 站点到站点 VPN 连接无法建立连接的问题
+titleSuffix: Azure VPN Gateway
 description: 了解如何排查站点到站点 VPN 连接突然停止工作，不能重新建立连接的问题。
 services: vpn-gateway
 author: chadmath
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/22/2021
 ms.author: genli
-ms.openlocfilehash: cebb05b35379573fc9797e89dee3c0c2bf3de6e2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e37e1126f71585467b4fa25877289d2bbcf8113a
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104867281"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204740"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>故障排除：Azure 站点到站点 VPN 连接无法建立连接并停止工作
 

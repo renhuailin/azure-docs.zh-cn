@@ -1,16 +1,14 @@
 ---
 title: 使用 Windows Azure 诊断进行性能监视
 description: 使用 Windows Azure 诊断来收集有关 Azure Service Fabric 群集的性能计数器。
-author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.author: srrengar
-ms.openlocfilehash: c2114f5392da788bb440589e69e704a148731e02
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6803494d29bf97336e30128f9f5ad20ec73ce202
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86258619"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627398"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>使用 Windows Azure 诊断扩展进行性能监视
 

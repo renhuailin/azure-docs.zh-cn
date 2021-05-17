@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4024d2b1357f3dda8216e9ebdd2055b28b064d33
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9758b026ef205e6608f7fc4110219dc5f267369e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101677485"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568709"
 ---
 # <a name="managed-disk-bursting"></a>托管磁盘突发
 [!INCLUDE [managed-disks-bursting](../../includes/managed-disks-bursting.md)]
@@ -27,10 +27,10 @@ Azure [高级 SSD](disks-types.md#premium-ssd) 提供了两种突发模型：
 
 |  |基于额度的突发  |按需突发  |更改性能层级  |
 |---------|---------|---------|---------|
-| 方案|适用于短期缩放（30 分钟或更少）。|适用于短期缩放（不受时间限制）。|如果你的工作负载将继续突发运行，则这是理想之选。|
-|成本     |免费         |成本是可变的，有关详细信息，请参阅[计费](#billing)部分。        |每个性能层的成本是固定的，有关详细信息，请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)。         |
-|可用性     |仅适用于高级 SSD 512 GiB 和更小。         |仅适用于大于 512 GiB 的高级 SSD。         |适用于所有高级 SSD 大小。         |
-|支持     |默认情况下，在合格磁盘上启用。         |必须由用户启用。         |用户必须手动更改其层级。         |
+| **方案**|适用于短期缩放（30 分钟或更少）。|适用于短期缩放（不受时间限制）。|如果你的工作负载将继续突发运行，则这是理想之选。|
+|**成本**     |免费         |成本是可变的，有关详细信息，请参阅[计费](#billing)部分。        |每个性能层的成本是固定的，有关详细信息，请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)。         |
+|**可用性**     |仅适用于高级 SSD 512 GiB 和更小。         |仅适用于大于 512 GiB 的高级 SSD。         |适用于所有高级 SSD 大小。         |
+|**启用**     |默认情况下，在合格磁盘上启用。         |必须由用户启用。         |用户必须手动更改其层级。         |
 
 ## <a name="common-scenarios"></a>常见场景
 以下需求场景可显著受益于突发：

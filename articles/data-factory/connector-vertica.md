@@ -1,17 +1,17 @@
 ---
 title: 使用 Azure 数据工厂从 Vertica 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Vertica 复制到支持的接收器数据存储。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.author: jingwang
-ms.openlocfilehash: a95cbc459da3935a39d2830a074f4e5d8e72e617
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: jianleishen
+ms.openlocfilehash: f8b9cba39005c7c6a69789ee29a03be4ab56bae8
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100384038"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109484732"
 ---
 # <a name="copy-data-from-vertica-using-azure-data-factory"></a>使用 Azure 数据工厂从 Vertica 复制数据 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,7 +31,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 ## <a name="prerequisites"></a>先决条件
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="getting-started"></a>入门
 
@@ -43,7 +43,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Vertica 链接服务支持以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Vertica** | 是 |
 | connectionString | 用于连接到 Vertica 的 ODBC 连接字符串。<br/>还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `pwd` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
@@ -99,7 +99,7 @@ Vertica 链接服务支持以下属性：
 
 要从 Vertica 复制数据，请将数据集的 type 属性设置为“VerticaTable”。 支持以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**VerticaTable** | 是 |
 | schema | 架构的名称。 |否（如果指定了活动源中的“query”）  |
@@ -131,10 +131,10 @@ Vertica 链接服务支持以下属性：
 
 要从 Vertica 复制数据，请将复制活动中的源类型设置为“VerticaSource”。 复制活动 **source** 部分支持以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：VerticaSource | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

@@ -3,12 +3,12 @@ title: Azure 开发测试实验室常见问题解答 | Microsoft Docs
 description: 本文提供有关 Azure 开发测试实验室的部分常见问题解答 (FAQ)。
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 9fcdc160754822d5c6f22b7349d0e72f0cf22633
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6abc2b0b950521d5ce7d4974c3535c5fbd64fba1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97590267"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138996"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure 开发测试实验室常见问题
 获取关于 Azure 开发测试实验室的某些最常见问题的解答。
@@ -108,7 +108,7 @@ $policyRoleDef.Id = $null
 $policyRoleDef.Name = "DevTest Labs Advanced User"
 $policyRoleDef.IsCustom = $true
 $policyRoleDef.AssignableScopes.Clear()
-$policyRoleDef.AssignableScopes.Add("subscriptions/<subscription Id>")
+$policyRoleDef.AssignableScopes.Add("/subscriptions/<subscription Id>")
 $policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/virtualMachines/Start/action")
 $policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/virtualMachines/Stop/action")
 $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef  
@@ -200,7 +200,7 @@ $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef
 可以，可将多个磁盘附加到 VM 中。
 
 ### <a name="are-gen-2-images-supported-by-devtest-labs"></a>开发测试实验室支持第 2 代映像吗？
-是。 开发测试实验室服务支持[第 2 代映像](../virtual-machines/generation-2.md)。 但是，如果第 1 代版本和第 2 代版本都可用于映像，则开发测试实验室在创建 VM 时仅显示映像的 1 代版本。 如果只有第 2 代版本的映像可用，则会看到映像。 
+是的。 开发测试实验室服务支持[第 2 代映像](../virtual-machines/generation-2.md)。 但是，如果第 1 代版本和第 2 代版本都可用于映像，则开发测试实验室在创建 VM 时仅显示映像的 1 代版本。 如果只有第 2 代版本的映像可用，则会看到映像。 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>如果要将 Windows OS 映像用于我的测试，是否需要购买 MSDN 订阅？
 要在 Azure 中使用 Windows 客户端 OS 映像（Windows 7 或更高版本）进行开发或测试，请执行以下步骤之一：

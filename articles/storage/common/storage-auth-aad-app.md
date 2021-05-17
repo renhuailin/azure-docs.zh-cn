@@ -10,12 +10,12 @@ ms.date: 12/07/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: baad1a0b173ae89fec9d160572224c6cb0aa615d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c2de1dc71579e6915a54e3815edd2858532ba263
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103574622"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108075926"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>从 Azure AD 获取用于从客户端应用程序授权请求的令牌
 
@@ -69,7 +69,7 @@ ms.locfileid: "103574622"
 
 ### <a name="create-a-client-secret"></a>创建客户端机密
 
-请求令牌时，应用程序需要使用客户端机密来证明其身份。 若要添加客户端机密，请执行以下步骤：
+请求令牌时，应用程序需要使用客户端机密来证明其身份。 出于安全原因，Microsoft 限制创建超过 24 个月的客户端密码，并强烈建议客户将其设置为低于 12 个月的值。 若要添加客户端机密，请执行以下步骤：
 
 1. 在 Azure 门户中导航到你的应用注册。
 1. 选择“证书和机密”设置。

@@ -1,18 +1,19 @@
 ---
-title: 关于 Azure 点到站点 VPN 连接 | VPN 连接
-description: 可以借助本文了解点到站点连接，并确定要使用的 P2S VPN 网关身份验证类型。
+title: 关于 Azure 点到站点 VPN 连接
+titleSuffix: Azure VPN Gateway
+description: 了解点到站点连接和要使用的 P2S VPN 网关身份验证类型。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 6caf72884ce2566ad25b7dd6d80b15d737bbe664
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c7c9d1ad6aefe9fc05b77925ee6bbf4160b988d8
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105543578"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202400"
 ---
 # <a name="about-point-to-site-vpn"></a>关于点到站点 VPN
 
@@ -47,7 +48,7 @@ ms.locfileid: "105543578"
 
 Azure AD 身份验证允许用户使用其 Azure Active Directory 凭据连接到 Azure。 本机 Azure VPN 身份验证只有 OpenVPN 协议和 Windows 10 支持，并且需要使用 [Azure VPN Client](https://go.microsoft.com/fwlink/?linkid=2117554)。
 
-凭借原生 Azure AD 身份验证，你可以利用 Azure AD 的条件访问以及适用于 VPN 的多重身份验证 (MFA) 功能。
+凭借本机 Azure AD 身份验证，你可以利用 Azure AD 的条件访问以及适用于 VPN 的多重身份验证 (MFA) 功能。
 
 大致说来，需要执行以下步骤来配置 Azure AD 身份验证：
 

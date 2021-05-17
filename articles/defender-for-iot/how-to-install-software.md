@@ -1,14 +1,14 @@
 ---
 title: Defender for IoT 安装
 description: 了解如何安装适用于 Azure Defender for IoT 的传感器和本地管理控制台。
-ms.date: 12/2/2020
+ms.date: 04/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 5bdb292750ea041be68a22519583511f58b3b517
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77ff5a6d29544599a74bd6176e8b8e99a5c41968
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104782242"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076435"
 ---
 # <a name="defender-for-iot-installation"></a>Defender for IoT 安装
 
@@ -210,7 +210,7 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
 #### <a name="import-the-bios-configuration-file"></a>导入 BIOS 配置文件
 
-本文介绍如何使用配置文件配置 BIOS。
+本部分介绍如何使用配置文件配置 BIOS。
 
 1. 将具有静态预配置 IP 地址 **10.100.100.200** 的电脑连接到 **iDRAC** 端口。
 
@@ -328,11 +328,11 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
 1. 选择“SENSOR-RELEASE-\<version\> Enterprise”。
 
-   :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="屏幕截图，显示所做的版本选择。":::   
+   :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="选择传感器版本和企业类型。":::   
 
 1. 定义设备配置文件和网络属性：
 
-   :::image type="content" source="media/tutorial-install-components/appliance-profile-screen-v2.png" alt-text="屏幕截图，显示设备配置文件。":::   
+   :::image type="content" source="media/tutorial-install-components/appliance-profile-screen-v2.png" alt-text="显示设备配置文件和网络属性的屏幕截图。":::   
 
    | 参数 | 配置 |
    |--|--|
@@ -354,7 +354,7 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
 ## <a name="hpe-proliant-dl20-installation"></a>HPE ProLiant DL20 安装
 
-本文介绍 HPE ProLiant DL20 安装过程，其中包括以下步骤：
+本部分介绍 HPE ProLiant DL20 安装过程，其中包括以下步骤：
 
   - 启用远程访问并更新默认的管理员密码。
   - 配置 BIOS 和 RAID 设置。
@@ -470,7 +470,7 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
     :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="屏幕截图，显示用于选择版本的屏幕。":::
 
-1. 在安装向导中，定义设备配置文件和网络属性：
+1. 在安装向导中，定义硬件配置文件和网络属性：
 
     :::image type="content" source="media/tutorial-install-components/installation-wizard-screen-v2.png" alt-text="屏幕截图，显示安装向导。":::
 
@@ -571,10 +571,101 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
 1. 选择 **Enter** 继续。
 
+## <a name="hp-edgeline-300-installation"></a>HP EdgeLine 300 安装
+
+•   提供了默认的管理用户。 建议在网络配置过程中更改密码。
+
+•   安装过程大约需要 20 分钟。 安装后，系统会重启多次。
+
+### <a name="hp-edgeline-300-back-panel"></a>HP EdgeLine 300 后面板
+
+:::image type="content" source="media/tutorial-install-components/edgeline-el300-panel.png" alt-text="EL300 后面板视图":::
+
+### <a name="enable-remote-access"></a>启用远程访问
+
+1. 将 iSM IP 地址输入到 Web 浏览器中。
+
+1. 使用在设备上找到的默认用户名和密码进行登录。
+
+1. 导航到“有线和无线网络” > “IPV4” 
+
+    :::image type="content" source="media/tutorial-install-components/wired-and-wireless.png" alt-text="导航到突出显示的部分。":::
+
+1. 禁用“DHCP 切换”。
+
+1. 按如下所示配置 IPv4 地址：
+    - IPV4 地址：`192.168.1.125`
+    - IPV4 子网掩码：`255.255.255.0`
+    - IPV4 网关：`192.168.1.1`
+
+1. 选择“应用”。 
+
+1. 注销并重新启动设备。
+
+### <a name="configure-the-bios"></a>配置 BIOS
+
+以下过程介绍如何配置适用于 HP EL300 设备的 BIOS。
+
+若要配置 BIOS，请执行以下操作：
+
+1. 打开设备并按 F9 即可进入 BIOS。
+
+1. 选择“高级”，然后向下滚动到“CSM 支持”。 
+
+    :::image type="content" source="media/tutorial-install-components/csm-support.png" alt-text="启用“CSM 支持”以打开其他菜单。":::
+
+1. 按 Enter 以启用“CSM 支持”。
+
+1. 导航到“存储”，然后按 +/- 以将其更改为“旧版”。 
+
+1. 导航到“视频”，然后按 +/- 以将其更改为“旧版”。 
+
+    :::image type="content" source="media/tutorial-install-components/storage-and-video.png" alt-text="导航到“存储和视频”并将其更改为“旧版”。":::
+
+1. 导航到“启动” > “启动模式选择”。 
+
+1. 按 +/- 将其更改为“旧版”。
+
+    :::image type="content" source="media/tutorial-install-components/boot-mode.png" alt-text="将“启动模式选择”更改为“旧版”。":::
+
+1. 导航到“保存并退出”。
+
+1. 选择“保存更改并退出”。
+
+    :::image type="content" source="media/tutorial-install-components/save-and-exit.png" alt-text="保存更改并退出系统。":::
+
+1. 选择“是”，设备将重新启动。
+
+1. 按 F11 进入“启动菜单”。 
+
+1. 选择包含传感器映像的设备。 DVD 或 USB。 
+
+1. 选择语言。
+
+1. 选择“sensor-10.0.3.12-62a2a3f724 Office：4 个 CPU、8GB RAM、100GB 存储空间”。
+
+    :::image type="content" source="media/tutorial-install-components/sensor-select-screen.png" alt-text="如下所示选择传感器版本。":::
+
+1. 在安装向导中，定义设备配置文件和网络属性：
+
+    :::image type="content" source="media/tutorial-install-components/appliance-parameters.png" alt-text="使用以下参数定义设备的配置文件和网络配置。":::
+
+    | 参数 | 配置 |
+    |--|--|
+    | 配置硬件配置文件 | office |
+    | 配置管理网络接口 | enp3s0 <br />或 <br />可能的值 |
+    | 配置网络 IP 地址： | 客户提供的 IP 地址 |
+    | 配置子网掩码： | 客户提供的 IP 地址 |
+    | 配置 DNS： | 客户提供的 IP 地址 |
+    | 配置默认网关 IP 地址： | 客户提供的 IP 地址 |
+    | 配置输入接口 | enp4s0 <br />或 <br />可能的值 |
+    | 配置网桥接口 | 空值 |
+
+1. 接受设置，然后输入 `Y` 继续。
+
 ## <a name="sensor-installation-for-the-virtual-appliance"></a>虚拟设备的传感器安装
 
 可以在以下体系结构中为 Defender for IoT 传感器部署虚拟机：
-
 
 | 体系结构 | 规范 | 使用情况 | 注释 |
 |---|---|---|---|
@@ -703,6 +794,111 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
     :::image type="content" source="media/tutorial-install-components/defender-for-iot-sign-in-screen.png" alt-text="屏幕截图，显示对管理控制台的访问。":::
 
+## <a name="on-premises-management-console-installation"></a>本地管理控制台安装
+
+在设备上安装软件之前，需调整设备的 BIOS 配置：
+
+### <a name="bios-configuration"></a>BIOS 配置
+
+如需为设备配置 BIOS：
+
+1. [启用远程访问并更新密码](#enable-remote-access-and-update-the-password)。
+
+1. [配置 BIOS](#configure-the-hpe-bios)。
+
+### <a name="software-installation"></a>软件安装
+
+安装过程大约需要 20 分钟。 安装后，系统会重启多次。 
+
+在安装过程中，你可以添加辅助 NIC。 如果选择在安装过程中不安装辅助 NIC，则可以稍后[添加辅助 NIC](#add-a-secondary-nic)。 
+
+若要安装软件，请执行以下操作：
+
+1. 为安装过程选择首选语言。
+
+   :::image type="content" source="media/tutorial-install-components/on-prem-language-select.png" alt-text="为安装过程选择首选语言。":::     
+
+1. 选择“管理-版本-\<version\>\<deployment type\>”。
+
+   :::image type="content" source="media/tutorial-install-components/on-prem-install-screen.png" alt-text="选择你的版本。":::   
+
+1. 在安装向导中，定义设备配置文件：
+
+   :::image type="content" source="media/tutorial-install-components/on-prem-first-steps-install.png" alt-text="屏幕截图，显示设备配置文件。":::   
+
+   | 参数 | 配置 |
+   |--|--|
+   | 配置管理网络接口 | 对于 Dell：eth0、eth1 <br /> 对于 HP：enu1、enu2 <br /> 或 <br />可能的值 |
+   | 配置网络 IP 地址： | 客户提供的 IP 地址 |
+   | 配置子网掩码： | 客户提供的 IP 地址 |
+   | 配置 DNS： | 客户提供的 IP 地址 |
+   | 配置默认网关 IP 地址： | 客户提供的 IP 地址 |
+   
+1. （可选）如需安装辅助网络接口卡 (NIC)，请定义以下设备配置文件和网络属性：
+
+    :::image type="content" source="media/tutorial-install-components/on-prem-secondary-nic-install.png" alt-text="显示辅助 NIC 安装问题的屏幕截图。":::
+
+   | 参数 | 配置 |
+   |--|--|
+   | 配置传感器监视接口（可选）： | eth1 或可能的值  |
+   | 配置传感器监视接口的 IP 地址： | 客户提供的 IP 地址 |
+   | 为传感器监视接口配置子网掩码： | 客户提供的 IP 地址 |
+
+1. 接受设置并通过输入 `Y` 继续。 
+
+1. 大约 10 分钟后，将显示两组凭据。 一组用于 **CyberX** 用户，一组用于 **Support** 用户。
+
+   :::image type="content" source="media/tutorial-install-components/credentials-screen.png" alt-text="复制这些凭据，因为它们将不会再次显示。":::  
+
+   保存用户名和密码，首次使用平台时，需要使用这些凭据来访问平台。
+
+1. 选择 **Enter** 继续。
+
+有关如何在设备上查找物理端口的信息，请参阅[查找端口](#find-your-port)。
+
+### <a name="add-a-secondary-nic"></a>添加辅助 NIC。
+
+可以通过添加辅助 NIC 提高本地管理控制台的安全性。 通过添加辅助 NIC，一个 NIC 可以专供用户使用，另外一个 NIC 将支持路由网络的网关配置。 第二个 NIC 专用于某个 IP 地址范围内的所有已连接的传感器。
+
+这两个 NIC 均启用了用户界面 (UI)。 如果无需路由，UI 支持的所有功能将在辅助 NIC 上可用。 高可用性将可在辅助 NIC 上实现。
+
+如果选择不部署辅助 NIC，则所有功能都将通过主 NIC 提供。 
+
+如已配置本地管理控制台，并希望将辅助 NIC 添加到本地管理控制台，请执行以下步骤：
+
+1. 使用网络重新配置命令：
+
+    ```bash
+    sudo cyberx-management-network-reconfigure
+    ```
+
+1. 输入以下问题的以下响应：
+
+    :::image type="content" source="media/tutorial-install-components/network-reconfig-command.png" alt-text="输入以下答案以配置设备。":::
+
+    | 参数 | 要输入的响应 |
+    |--|--|
+    | 管理网络 IP 地址 | `N` |
+    | **子网掩码** | `N` |
+    | **DNS** | `N` |
+    | 默认网关 IP 地址 | `N` |
+    | 传感器监视接口（可选。当传感器位于不同网段时适用。有关详细信息，请参阅《安装说明》）| `Y`，选择一个可能的值 |
+    | 传感器监视接口的 IP 地址（可供传感器访问） | `Y`，客户提供的 IP 地址|
+    | 传感器监视接口的子网掩码（可供传感器访问） | `Y`，客户提供的 IP 地址 |
+    | **主机名** | 由客户提供 |
+
+1. 查看所有选项，并输入 `Y` 以接受更改。 系统将重新启动。
+
+### <a name="find-your-port"></a>查找端口
+
+如果在设备上查找物理端口时遇到问题，可以使用以下命令执行操作：
+
+```bash
+sudo ethtool -p <port value> <time-in-seconds>
+```
+
+此命令会导致端口上的指示灯在指定时间段内闪烁。 例如，输入 `sudo ethtool -p eno1 120` 将会使端口 eno1 闪烁 2 分钟，以便在设备背面查找端口。 
+
 ## <a name="virtual-appliance-on-premises-management-console-installation"></a>虚拟设备：本地管理控制台安装
 
 本地管理控制台 VM 支持以下体系结构：
@@ -823,11 +1019,7 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
 ### <a name="software-installation-esxi-and-hyper-v"></a>软件安装（ESXi 和 Hyper-V）
 
-启动虚拟机时会从 ISO 映像启动安装过程。 若要增强安全性，可以在本地管理控制台中再创建一个网络接口。 一个网络接口专用于你的用户，可以支持对已路由网络的网关进行配置。 另一个网络接口专用于某个 IP 地址范围内的所有已连接的传感器。
-
-这两个网络接口都启用了用户界面 (UI)。当不需要路由时，UI 支持的所有功能都将在辅助网络接口上可用。 高可用性将在辅助网络接口上运行。
-
-如果选择不部署辅助网络接口，则所有功能都将通过主网络接口提供。 
+启动虚拟机时会从 ISO 映像启动安装过程。
 
 若要安装软件，请执行以下操作：
 
@@ -837,22 +1029,9 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
 1. 定义传感器管理网络的网络接口：接口、IP、子网、DNS 服务器和默认网关。
 
-1. （可选）向本地管理控制台添加另一个网络接口。
+1. 登录凭据会自动生成。 保存用户名和密码，首次使用平台时，需要使用这些凭据来访问平台。
 
-    1. `Please type sensor monitoring interface (Optional. Applicable when sensors are on a different network segment. For more information see the Installation instructions): <name of interface>`
-    
-    1. `Please type an IP address for the sensor monitoring interface (accessible by the sensors): <ip address>`
-    
-    1. `Please type a subnet mask for the sensor monitoring interface (accessible by the sensors): <subnet>`
-
-1. 登录凭据会自动生成并显示。 请将这些凭据保存在安全位置，因为登录和管理需要这些凭据。
-
-    | 用户名 | 说明 |
-    |--|--|
-    | 支持 | 进行用户管理的管理用户。 |
-    | CyberX | root 的等效项，用于访问设备。 |
-
-1. 设备重启。
+   然后，设备将重新启动。
 
 1. 通过以前配置的 IP 地址访问管理控制台：`<https://ip_address>`。
 

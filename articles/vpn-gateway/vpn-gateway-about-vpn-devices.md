@@ -1,18 +1,19 @@
 ---
-title: Azure VPN 网关：关于连接的 VPN 设备
-description: 本文讨论用于 S2S VPN 网关跨界连接的 VPN 设备和 IPsec 参数。 提供了指向配置说明和示例的链接。
+title: 关于连接的 VPN 设备
+titleSuffix: Azure VPN Gateway
+description: 了解用于站点到站点跨界连接的 VPN 设备和 IPsec 参数。 提供了指向配置说明和示例的链接。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 12/02/2020
+ms.date: 04/28/2021
 ms.author: yushwang
-ms.openlocfilehash: 4c6bd62e96d85305036626a8672c39ff1b9f6b26
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a86e4dc6703d9a3c25c4c38a1a3f50bbbe80a6b
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98201087"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202382"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>关于用于站点到站点 VPN 网关连接的 VPN 设备和 IPsec/IKE 参数
 

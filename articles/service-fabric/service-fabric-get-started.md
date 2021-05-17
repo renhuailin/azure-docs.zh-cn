@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev, devx-track-azurepowershell
-ms.openlocfilehash: 5d73c02b7fd5e40f3cc23f5b0eba1945cf3c8a40
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 322b9a0c298d81fc3f35819054fc03a0094676d0
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258429"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288213"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>在 Windows 上准备开发环境
 
@@ -25,20 +25,7 @@ ms.locfileid: "107258429"
 
 ## <a name="prerequisites"></a>先决条件
 
-### <a name="supported-operating-system-versions"></a>支持的操作系统版本
-
-支持使用以下操作系统版本进行开发：
-
-* Windows 7
-* Windows 8/Windows 8.1
-* Windows Server 2012 R2
-* Windows Server 2016
-* Windows 10
-
-> [!NOTE]
-> Windows 7 支持：
-> - 默认情况下，Windows 7 仅包含 Windows PowerShell 2.0。 Service Fabric PowerShell cmdlet 需要 PowerShell 3.0 或更高版本。 可以从 Microsoft 下载中心[下载 Windows PowerShell 5.1][powershell5-download]。
-> - 在 Windows 7 上无法使用 Service Fabric 反向代理。
+确保使用的是受支持的 [Windows 版本](service-fabric-versions.md#supported-windows-versions-and-support-end-date)。
 
 ## <a name="install-the-sdk-and-tools"></a>安装 SDK 和工具
 
@@ -49,7 +36,7 @@ Web 平台安装程序 (WebPI) 是安装 SDK 和工具的建议方法。 如果�
 
 ### <a name="to-use-visual-studio-2017-or-2019"></a>使用 Visual Studio 2017 或 2019
 
-Service Fabric 工具是 Visual Studio 2017 和 2019 中 Azure 开发工作负荷的一部分。 在 Visual Studio 安装过程中启用此工作负荷。
+Service Fabric 工具是 Visual Studio 2019 和 2017 中 Azure 开发工作负荷的一部分。 在 Visual Studio 安装过程中启用此工作负荷。
 此外还需使用 Web 平台安装程序安装 Microsoft Azure Service Fabric SDK 和运行时。
 
 * [安装 Microsoft Azure Service Fabric SDK][core-sdk]

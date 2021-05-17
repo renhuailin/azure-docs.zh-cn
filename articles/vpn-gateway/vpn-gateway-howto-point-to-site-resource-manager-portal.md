@@ -1,19 +1,19 @@
 ---
 title: 使用 P2S VPN 和证书身份验证连接到 VNet：门户
 titleSuffix: Azure VPN Gateway
-description: 使用 P2S 和自签名证书或 CA 颁发的证书将 Windows、macOS 和 Linux 客户端安全地连接到 Azure 虚拟网络。 本文使用 Azure 门户。
+description: 了解如何使用 VPN 网关点到站点连接和自签名或 CA 颁发的证书将 Windows、macOS 和 Linux 客户端安全地连接到 VNet。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: b515ed37b5d2c71843cb138240bd2fa77fe2fd8d
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: cb296d12d03bf05ffe628bd435ae15cfbb7b79e5
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365546"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204938"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>使用本机 Azure 证书身份验证配置与 VNet 的点到站点 VPN 连接：Azure 门户
 

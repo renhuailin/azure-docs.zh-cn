@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: 5211c1263af599eb5fd09ad276545c725ce5c867
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a7fb5eeb90a26d85b3e56706e0c2b32ceadc8d11
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466979"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330883"
 ---
-# <a name="form-recognizer-prebuilt-business-cards-model"></a>表单识别器预生成的名片模型 
+# <a name="form-recognizer-prebuilt-business-cards-model"></a>表单识别器预生成的名片模型
 
-Azure 表单识别器可以使用其预生成的名片模型来分析和提取名片中的联系人信息。 它结合了强大的光学字符识别 (OCR) 功能与我们的名片理解模型，可从英文名片中提取重要信息。 它提取个人联系信息、公司名称、职务等。 预生成名片 API 在表单识别器 v2.1 预览版中公开提供。 
+Azure 表单识别器可以使用其预生成的名片模型来分析和提取名片中的联系人信息。 它结合了强大的光学字符识别 (OCR) 功能与我们的名片理解模型，可从英文名片中提取重要信息。 它提取个人联系信息、公司名称、职务等。 预生成名片 API 在表单识别器 v2.1 预览版中公开提供。
 
 ## <a name="what-does-the-business-card-service-do"></a>名片服务有什么作用？
 
@@ -27,32 +27,40 @@ Azure 表单识别器可以使用其预生成的名片模型来分析和提取�
 
 ![FOTT + JSON 输出的 Contoso 逐项图像](./media/business-card-example.jpg)
 
-
-
 ### <a name="fields-extracted"></a>提取的字段：
 
-|名称| 类型 | 说明 | 文本 | 
+|名称| 类型 | 说明 | 文本 |
 |:-----|:----|:----|:----|
 | ContactNames | 对象数组 | 从名片提取的联系人姓名 | [{ "FirstName": "John", "LastName": "Doe" }] |
-| FirstName | 字符串 | 联系人的名字 | "John" | 
-| LastName | 字符串 | 联系人的姓氏 |     "Doe" | 
-| CompanyNames | 字符串数组 | 从名片提取的公司名称 | [“Contoso”] | 
-| Departments | 字符串数组 | 联系人的部门或组织 | [“R&D”] | 
-| JobTitles | 字符串数组 | 列出的联系人职称 | [“Software Engineer”] | 
-| 电子邮件 | 字符串数组 | 从名片提取的联系人电子邮件 | ["johndoe@contoso.com"] | 
-| 网站 | 字符串数组 | 从名片提取的网站 | ["https://www.contoso.com"] | 
-| 地址 | 字符串数组 | 从名片提取的地址 | [“123 Main Street, Redmond, WA 98052”] | 
+| FirstName | 字符串 | 联系人的名字 | "John" |
+| LastName | 字符串 | 联系人的姓氏 |     "Doe" |
+| CompanyNames | 字符串数组 | 从名片提取的公司名称 | [“Contoso”] |
+| Departments | 字符串数组 | 联系人的部门或组织 | [“R&D”] |
+| JobTitles | 字符串数组 | 列出的联系人职称 | [“Software Engineer”] |
+| 电子邮件 | 字符串数组 | 从名片提取的联系人电子邮件 | ["johndoe@contoso.com"] |
+| 网站 | 字符串数组 | 从名片提取的网站 | ["https://www.contoso.com"] |
+| 地址 | 字符串数组 | 从名片提取的地址 | [“123 Main Street, Redmond, WA 98052”] |
 | MobilePhones | 电话号码数组 | 从名片提取的移动电话号码 | [“+19876543210”] |
 | 传真 | 电话号码数组 | 从名片提取的传真号码 | [“+19876543211”] |
 | WorkPhones | 电话号码数组 | 从名片提取的工作电话号码 | [“+19876543231”] |
 | OtherPhones     | 电话号码数组 | 从名片提取的其他电话号码 | [“+19876543233”] |
 
 
-名片 API 还可以从名片返回所有已识别的文本。 此 OCR 输出包含在 JSON 响应中。  
+名片 API 还可以从名片返回所有已识别的文本。 此 OCR 输出包含在 JSON 响应中。
 
-### <a name="input-requirements"></a>输入要求 
+### <a name="input-requirements"></a>输入要求
 
 [!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
+
+## <a name="supported-locales"></a>支持的区域设置
+
+预生成的名片 v2.1-preview.3（公共预览版）支持以下区域设置：
+
+* **zh-cn**
+* **en-au**
+* **en-ca**
+* **en-gb**
+* **en-in**
 
 ## <a name="the-analyze-business-card-operation"></a>Analyze Business Card 操作
 
@@ -79,7 +87,7 @@ Azure 表单识别器可以使用其预生成的名片模型来分析和提取�
 对 Get Analyze Business Card Result 操作的响应将是已提取所有信息的名片的结构化表示形式。  在此处查看[示例名片文件](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/business-card-english.jpg)及其结构化输出[示例名片输出](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/business-card-result.json)。
 
 参阅下面的成功 JSON 响应示例：
-* `"readResults"` 节点包含所有已识别的文本。 文本按页，然后按行，然后按单个单词进行组织。 
+* `"readResults"` 节点包含所有已识别的文本。 文本按页，然后按行，然后按单个单词进行组织。
 * `"documentResults"` 节点包含模型发现的特定于名片的值。 在此，你可以找到有用的联系人信息，如名字、姓氏、公司名称等。
 
 ```json
@@ -96,7 +104,7 @@ Azure 表单识别器可以使用其预生成的名片模型来分析和提取�
                 "width": 4032,
                 "height": 3024,
                 "unit": "pixel",
-                   "lines": 
+                   "lines":
                              {
                         "text": "Dr. Avery Smith",
                         "boundingBox": [
@@ -115,7 +123,7 @@ Azure 表单识别器可以使用其预生成的名片模型来分析和提取�
                                 "boundingBox": [
                                     419,
                             ]
-    
+
             }
         ],
         "documentResults": [
@@ -384,14 +392,14 @@ Azure 表单识别器可以使用其预生成的名片模型来分析和提取�
 
 按照[快速入门](./QuickStarts/client-library.md)中的步骤使用 Python 和 REST API 来实现名片数据提取。
 
-## <a name="customer-scenarios"></a>客户方案  
+## <a name="customer-scenarios"></a>客户方案
 
 通过名片 API 提取的数据可用于执行各种任务。 自动提取此联系人信息为面向客户的角色的用户节省时间。 以下是我们的客户通过名片 API 完成的一些示例：
 
-* 从名片提取联系人信息并快速创建电话联系人。 
-* 与 CRM 集成，使用名片图像自动创建联系人。 
-* 跟踪潜在销售顾客。  
-* 从现有名片图像批量提取联系人信息。 
+* 从名片提取联系人信息并快速创建电话联系人。
+* 与 CRM 集成，使用名片图像自动创建联系人。
+* 跟踪潜在销售顾客。
+* 从现有名片图像批量提取联系人信息。
 
 此名片 API 还支持 [AI Builder 名片处理功能](/ai-builder/prebuilt-business-card)。
 

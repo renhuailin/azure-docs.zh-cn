@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/21/2021
+ms.date: 04/28/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 371f902cafae7fe396a34e04d7fcc432c1934d61
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 767b8b585b69ad35cd0dbd47f2d10dcdc4ecf6dd
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107865121"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108180746"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -41,6 +41,7 @@ ms.locfileid: "107865121"
 |[Azure Monitor 应从所有区域收集活动日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F41388f1c-2db0-4c25-95b2-35d7f5ccbfa9) |此策略审核不从所有 Azure 支持区域（包括全局）导出活动的 Azure Monitor 日志配置文件。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_CaptureAllRegions.json) |
 |[必须部署 Azure Monitor 解决方案“安全和审核”](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3e596b57-105f-48a6-be97-03e9243bad6e) |此策略可确保“安全和审核”已部署。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Security_Audit_MustBeDeployed.json) |
 |[Azure 订阅应有用于活动日志的日志配置文件](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7796937f-307b-4598-941c-67d3a05ebfe7) |此策略确保启用一个日志配置文件来导出活动日志。 它会审核是否未创建日志配置文件将日志导出到存储帐户或事件中心。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Logprofile_activityLogs_Audit.json) |
+|[配置 Azure 活动日志以流式传输到指定的 Log Analytics 工作区](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2465583e-4e78-4c15-b6be-a36cbc7c8b0f) |部署 Azure 活动的诊断设置，以将订阅审核日志流式传输到 Log Analytics 工作区，从而监视订阅级别的事件 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DataConnectorsAzureActivity.json) |
 |[通过启用复制对虚拟机配置灾难恢复](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fac34a73f-9fa5-4067-9247-a3ecae514468) |未配置灾难恢复的虚拟机容易受到中断和其他干扰的影响。 如果虚拟机尚未配置灾难恢复，则请使用预设配置启用复制来启动这一功能，以帮助实现业务连续性。 若要详细了解灾难恢复，请访问 [https://aka.ms/asr-doc](https://aka.ms/asr-doc)。 |DeployIfNotExists、Disabled |[1.2.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/AzureSiteRecovery-Replication-Policy.json) |
 |[部署 - 为 Azure 安全中心警报配置抑制规则](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F80e94a21-c6cd-4c95-a2c7-beb5704e61c0) |抑制 Azure 安全中心警报，通过在管理组或订阅上部署抑制规则来减少警报疲劳。 |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_SuppressionRulesForAlerts_Deploy.json) |
 |[部署“将 Azure 安全中心数据导出到事件中心”](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcdfcce10-4578-4ecd-9703-530938e4abcb) |启用“将 Azure 安全中心数据导出到事件中心”。 此策略会在分配的作用域上使用所设定的条件和目标事件中心来部署“导出到事件中心”配置。 若要在新建的订阅上部署此策略，请打开“合规性”选项卡，选择相关的不合规分配，并创建修正任务。 |deployIfNotExists |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ExportToEventHubAzureSecurityCenterAlertsAndRecommendations_Deploy.json) |

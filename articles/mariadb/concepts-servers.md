@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 4d8293258083ea3e8d0172f510e5b41e91328736
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9a5cd55576d505114c15028cf637114f3baf7668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98664123"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627976"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的服务器概念
 本文提供使用 Azure Database for MariaDB 服务器的注意事项和指南。
@@ -37,8 +37,8 @@ Azure Database for MariaDB 服务器：
 
 以下元素有助于确保安全地访问数据库。
 
-|||
-| :--| :--|
+| 安全概念 | 说明 |
+| :-- | :-- |
 | **身份验证和授权** | Azure Database for MariaDB 服务器支持本机 MySQL 身份验证。 可使用服务器的管理员登录名连接到服务器并进行身份验证。 |
 | **协议** | 该服务支持 MySQL 使用的基于消息的协议。 |
 | **TCP/IP** | 通过 TCP/IP 和 Unix 域套接字支持该协议。 |

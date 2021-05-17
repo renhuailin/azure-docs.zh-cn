@@ -3,12 +3,12 @@ title: 排查 SQL Server 数据库备份问题
 description: 有关使用 Azure 备份来备份在 Azure VM 上运行的 SQL Server 数据库的故障排除信息。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 2cf0ed0200de9b2787f5d9f38bd343f93648bc78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc53494ec8dad7cab4a1cf267e9ad838b9d34a29
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99557750"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108277419"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>排查使用 Azure 备份进行 SQL Server 数据库备份的问题
 
@@ -103,7 +103,20 @@ ms.locfileid: "99557750"
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
 | 此 SQL 数据库不支持所请求的备份类型。 | 当数据库恢复模式不允许所请求的备份类型时，会发生此错误。 在以下情况下，可能会发生此错误： <br/><ul><li>使用简单恢复模式的数据库不允许日志备份。</li><li>不允许对 master 数据库执行差异备份和日志备份。</li></ul>有关详细信息，请参阅 [SQL Server 恢复模式](/sql/relational-databases/backup-restore/recovery-models-sql-server)文档。 | 如果采用简单恢复模式的数据库的日志备份失败，请尝试以下选项之一：<ul><li>如果数据库处于简单恢复模式，请禁用日志备份。</li><li>使用 [SQL Server 文档](/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server)将数据库恢复模式更改为“完整”或“批量日志记录”。 </li><li> 如果不想要更改恢复模式，并使用标准策略来备份无法更改的多个数据库，请忽略此错误。 完整备份和差异备份会按计划进行。 在这种情况下，预期会跳过日志备份。</li></ul>如果备份的是 Master 数据库，并且已配置差异备份或日志备份，请使用以下任一步骤：<ul><li>使用门户将 master 数据库的备份策略计划更改为“完整”。</li><li>如果使用标准策略来备份无法更改的多个数据库，请忽略此错误。 完整备份会按计划进行。 在这种情况下，预期不会发生差异备份或日志备份。</li></ul> |
-| 操作将被取消，因为已对同一个数据库运行了某个有冲突的操作。 | 请参阅[有关并行运行备份和还原时存在的限制的博客文章](https://deep.data.blog/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database/)。| [使用 SQL Server Management Studio (SSMS) 监视备份作业](manage-monitor-sql-database-backup.md)。 有冲突的操作失败后，重启该操作。|
+
+### <a name="operationcancelledbecauseconflictingoperationrunningusererror"></a>OperationCancelledBecauseConflictingOperationRunningUserError
+
+| 错误消息 | 可能的原因 | 建议的操作 |
+|---|---|---|
+| 操作将被取消，因为已对同一个数据库运行了某个有冲突的操作。 | 以下是可能出现此错误代码的情况：<br><ul><li>在进行备份期间向数据库添加或删除文件。</li><li>进行数据库备份期间收缩文件。</li><li>为数据库配置的另一款备份产品正在进行数据库备份，并且 Azure 备份扩展触发了备份作业。</li></ul>| 禁用其他备份产品，以解决该问题。
+
+
+### <a name="usererrorfilemanipulationisnotallowedduringbackup"></a>UserErrorFileManipulationIsNotAllowedDuringBackup
+
+| 错误消息 | 可能的原因 | 建议的操作 |
+|---|---|---|
+| 数据库上的备份、文件操纵操作（例如 ALTER DATABASE ADD FILE）和加密更改必须串行化。 | 当按需触发或计划的备份作业与 Azure 备份扩展（位于同一数据库上）触发的已运行备份操作冲突时，可能会收到此错误。<br> 下面是可能出现此错误代码的情况：<br><ul><li>正在数据库上运行完整备份，并且触发了另一完整备份操作</li><li>正在数据库上运行差异备份，并且触发了另一差异备份操作</li><li>正在数据库上运行日志备份，并且触发了另一日志备份操作。</li></ul>| 有冲突的操作失败后，重启该操作。
+
 
 ### <a name="usererrorsqlpodoesnotexist"></a>UserErrorSQLPODoesNotExist
 

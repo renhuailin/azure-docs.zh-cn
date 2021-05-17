@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 63415037b9f91936e04fa715405bfb86bf022cdd
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 87de8f27114c8b79c297f65805226a33c70b11a9
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551758"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286953"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>排查已加入混合 Azure Active Directory 的设备的问题
 
@@ -421,6 +421,6 @@ WamDefaultAuthority: organizations
 
 ## <a name="next-steps"></a>后续步骤
 
-继续[使用 dsregcmd 命令排查设备问题](troubleshoot-device-dsregcmd.md)
+- 继续[使用 dsregcmd 命令排查设备问题](troubleshoot-device-dsregcmd.md)
 
-如有问题，请参阅[设备管理常见问题解答](faq.yml)
+- [Microsoft 错误查找工具](/windows/win32/debug/system-error-code-lookup-tool)

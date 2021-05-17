@@ -4,15 +4,15 @@ description: 了解如何创建 Office 数据连接文件以连接到 Azure 中�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/01/2019
+ms.date: 04/27/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8fa657f3b343cdf49723dc68601bb1c9513ff504
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7cabf82c38d0b167f151af6c0abb22048d9a3786
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96487331"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130280"
 ---
 # <a name="create-an-office-data-connection-file"></a>创建 Office 数据连接文件
 

@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: 5515d1084b28091cf7d20958cfca8af3f2664563
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.openlocfilehash: 154b496a6c14d307c09ddcd1b42bf4ba568cb315
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199486"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607885"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>从 IoT 中心发送云到设备的消息
 
@@ -22,7 +22,7 @@ ms.locfileid: "102199486"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-可以通过面向服务的终结点（ */messages/devicebound*）发送云到设备的消息。 然后，设备通过特定于设备的终结点（ */devices/{deviceId}/messages/devicebound*）接收消息。
+可以通过面向服务的终结点 /messages/devicebound 发送从云到设备的消息。 设备可以通过特定于设备的终结点 /devices/{deviceId}/messages/devicebound 接收这些消息。
 
 要将每个从云到设备的消息都设为以单个设备为目标，请通过 IoT 中心将 **to** 属性设置为 */devices/{deviceId}/messages/devicebound*。
 
@@ -36,7 +36,7 @@ ms.locfileid: "102199486"
 
 ![云到设备的消息生命周期](./media/iot-hub-devguide-messages-c2d/lifecycle.png)
 
-当 IoT 中心服务向设备发送消息时，该服务会将消息状态设置为 " *排队*"。 当设备想要接收某条消息时，IoT 中心会通过将状态设置为“不可见”来锁定该消息。 这种状态使得设备上的其他线程可以开始接收其他消息。 当设备线程完成消息的处理后，会通过完成消息来通知 IoT 中心。 随后 IoT 中心会将状态设置为“已完成”。
+当 IoT 中心服务向设备发送消息时，该服务将消息状态设为“已排队”。 当设备想要接收某条消息时，IoT 中心会通过将状态设置为“不可见”来锁定该消息。 这种状态使得设备上的其他线程可以开始接收其他消息。 当设备线程完成消息的处理后，会通过完成消息来通知 IoT 中心。 随后 IoT 中心会将状态设置为“已完成”。
 
 设备还可以：
 
@@ -60,7 +60,7 @@ ms.locfileid: "102199486"
 
 每条云到设备的消息都有过期时间。 可通过以下任一方式设置此时间：
 
-* 服务中的 **ExpiryTimeUtc** 属性
+* 服务中的 ExpiryTimeUtc 属性
 * 使用了指定为 IoT 中心属性的默认生存时间的 IoT 中心。
 
 请参阅[从云到设备的配置选项](#cloud-to-device-configuration-options)。
@@ -85,19 +85,21 @@ ms.locfileid: "102199486"
 
 如 [终结点](iot-hub-devguide-endpoints.md)中所述，IoT 中心通过面向服务的终结点 */messages/servicebound/feedback* 以消息方式传送反馈。 接收反馈的语义与云到设备消息的语义相同。 可能的话，消息反馈将放入单个消息中，其格式如下：
 
-| properties     | 说明 |
+| Property     | 说明 |
 | ------------ | ----------- |
 | EnqueuedTime | 一个时间戳，指示中心收到反馈消息的时间 |
 | UserId       | `{iot hub name}` |
 | ContentType  | `application/vnd.microsoft.iothub.feedback.json` |
 
+批处理到达 64 条消息时，或距离上次发送的 15 秒时（以首先满足的条件为准），系统将发出反馈。 
+
 正文是记录的 JSON 序列化数组，每条记录具有以下属性：
 
-| properties           | 说明 |
+| Property           | 说明 |
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | 一个时间戳，指示消息的结果（例如，中心已收到反馈消息，或原始消息已过期） |
 | OriginalMessageId  | 与此反馈信息相关的从云到设备的消息的 *MessageId* |
-| StatusCode         | 必需的字符串，在 IoT 中心生成的反馈消息中使用： <br/> *Success* <br/> *已过期* <br/> *DeliveryCountExceeded* <br/> *已拒绝* <br/> *清除* |
+| StatusCode         | 必需的字符串，在 IoT 中心生成的反馈消息中使用： <br/> *Success* <br/> *已过期* <br/> *DeliveryCountExceeded* <br/> *已拒绝* <br/> *Purged* |
 | 说明        | *StatusCode* 的字符串值 |
 | DeviceId           | 与此反馈信息相关的从云到设备的消息的目标设备的 *DeviceId* |
 | DeviceGenerationId | 与此反馈信息相关的从云到设备的消息的目标设备的 *DeviceGenerationId* |
@@ -133,21 +135,21 @@ ms.locfileid: "102199486"
 
 每个 IoT 中心都针对云到设备的消息传送公开以下配置选项：
 
-| properties                  | 说明 | 范围和默认值 |
+| Property                  | 说明 | 范围和默认值 |
 | ------------------------- | ----------- | ----------------- |
-| defaultTtlAsIso8601       | 云到设备消息的默认 TTL | ISO_8601 间隔最多为2天 (最小1分钟) ;默认值：1小时 |
-| maxDeliveryCount          | 每个设备队列的云到设备最大传送计数 | 1到 100;默认值：10 |
-| feedback.ttlAsIso8601     | 服务绑定反馈消息的保留时间 | ISO_8601 间隔最多为2天 (最小1分钟) ;默认值：1小时 |
-| feedback.maxDeliveryCount | 反馈队列的最大传送计数 | 1到 100;默认值：10 |
-| lockDurationAsIso8601 | 反馈队列的最大传送计数 | ISO_8601 间隔为5到300秒 (至少5秒) ;默认值：60秒。 |
+| defaultTtlAsIso8601       | 云到设备消息的默认 TTL | ISO_8601 间隔最长为 2 天（最短 1 分钟）；默认值：1 小时 |
+| maxDeliveryCount          | 每个设备队列的云到设备最大传送计数 | 1 到 100；默认值：10 |
+| feedback.ttlAsIso8601     | 服务绑定反馈消息的保留时间 | ISO_8601 间隔最长为 2 天（最短 1 分钟）；默认值：1 小时 |
+| feedback.maxDeliveryCount | 反馈队列的最大传送计数 | 1 到 100；默认值：10 |
+| feedback.lockDurationAsIso8601 | 反馈队列的最大传送计数 | ISO_8601 间隔为 5 到300秒（至少 5 秒）；默认值：60 秒。 |
 
-可以通过以下方式之一来设置配置选项：
+可以通过下列方式之一设置配置选项：
 
-* **Azure 门户**：在 IoT 中心的 " **设置** " 下，选择 " **内置终结点** "，然后展开 " **云到设备消息**"。  (设置 maxDeliveryCount 和 **lockDurationAsIso8601** 属性的 **信息** 当前不受 Azure 门户支持。 ) 
+* Azure 门户：在 IoT 中心的“设置”下，选择“内置终结点”，然后展开“云到设备消息传递”。    （Azure 门户中目前不支持设置 feedback.maxDeliveryCount 和 feedback.lockDurationAsIso8601 属性。） 
 
     ![在门户中为云到设备的消息设置配置选项](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
 
-* **Azure CLI**：使用 [az iot 中心 update](/cli/azure/iot/hub#az-iot-hub-update) 命令：
+* Azure CLI：使用 az iot hub update 命令：[](/cli/azure/iot/hub#az-iot-hub-update)
 
     ```azurecli
     az iot hub update --name {your IoT hub name} \

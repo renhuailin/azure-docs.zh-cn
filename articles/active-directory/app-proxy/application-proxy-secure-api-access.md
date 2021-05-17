@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/06/2021
+ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 6c7d617473f684317e5bb954c8ac82db24d4e4eb
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 660d76d03db3b3d918ad616da9d6ab7b4205860d
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109481240"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108185819"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-active-directory-application-proxy"></a>使用 Azure Active Directory 应用程序代理安全访问本地 API
 
@@ -110,7 +110,7 @@ Azure AD 应用程序代理是此解决方案的主干，可用作 API 访问的
 
    1. 在“名称”下，输入 AppProxyNativeAppSample。
 
-   1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户”。 
+   1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。 
 
    1. 在“重定向 URL”下，使用下拉列表选择“公共客户端(移动和桌面)”，然后输入 https://login.microsoftonline.com/common/oauth2/nativeclient。
 

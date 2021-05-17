@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d3d05ba65e0d3918f1651c36cd17700ebf74de76
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 31dabcf77f0db76047919fa76d00f1c5ed3c96d6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778330"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "97369134"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>使用 Azure CLI 创建或更新 Azure 自定义角色
 
@@ -41,7 +41,7 @@ ms.locfileid: "107778330"
 
 ## <a name="list-custom-roles"></a>列出自定义角色
 
-若要列出可用于分配的自定义角色，请使用 [az role definition list](/cli/azure/role/definition#az_role_definition_list)。 以下示例列出了当前订阅中的所有自定义角色。
+若要列出可用于分配的自定义角色，请使用 [az role definition list](/cli/azure/role/definition#az-role-definition-list)。 以下示例列出了当前订阅中的所有自定义角色。
 
 ```azurecli
 az role definition list --custom-role-only true --output json --query '[].{roleName:roleName, roleType:roleType}'
@@ -66,7 +66,7 @@ az role definition list --custom-role-only true --output json --query '[].{roleN
 
 ## <a name="list-a-custom-role-definition"></a>列出自定义角色定义
 
-若要列出自定义角色定义，请使用 [az role definition list](/cli/azure/role/definition#az_role_definition_list)。 这与用于内置角色的命令相同。
+若要列出自定义角色定义，请使用 [az role definition list](/cli/azure/role/definition#az-role-definition-list)。 这与用于内置角色的命令相同。
 
 ```azurecli
 az role definition list --name {roleName}
@@ -140,7 +140,7 @@ az role definition list --name "Virtual Machine Operator" --output json --query 
 
 ## <a name="create-a-custom-role"></a>创建自定义角色
 
-若要创建自定义角色，请使用 [az role definition create](/cli/azure/role/definition#az_role_definition_create)。 角色定义可以是 JSON 说明，也可以是包含 JSON 说明的文件的路径。
+若要创建自定义角色，请使用 [az role definition create](/cli/azure/role/definition#az-role-definition-create)。 角色定义可以是 JSON 说明，也可以是包含 JSON 说明的文件的路径。
 
 ```azurecli
 az role definition create --role-definition {roleDefinition}
@@ -183,7 +183,7 @@ az role definition create --role-definition ~/roles/vmoperator.json
 
 ## <a name="update-a-custom-role"></a>更新自定义角色
 
-若要更新自定义角色，请首先使用 [az role definition list](/cli/azure/role/definition#az_role_definition_list) 检索角色定义。 然后，对角色定义做出所需更改。 最后，使用 [az role definition update](/cli/azure/role/definition#az_role_definition_update) 保存更新的角色定义。
+若要更新自定义角色，请首先使用 [az role definition list](/cli/azure/role/definition#az-role-definition-list) 检索角色定义。 然后，对角色定义做出所需更改。 最后，使用 [az role definition update](/cli/azure/role/definition#az-role-definition-update) 保存更新的角色定义。
 
 ```azurecli
 az role definition update --role-definition {roleDefinition}
@@ -228,7 +228,7 @@ az role definition update --role-definition ~/roles/vmoperator.json
 
 ## <a name="delete-a-custom-role"></a>删除自定义角色
 
-若要删除自定义角色，请使用 [az role definition delete](/cli/azure/role/definition#az_role_definition_delete)。 若要指定要删除的角色，请使用角色名称或角色 ID。 若要确定角色 ID，请使用 [az role definition list](/cli/azure/role/definition#az_role_definition_list)。
+若要删除自定义角色，请使用 [az role definition delete](/cli/azure/role/definition#az-role-definition-delete)。 若要指定要删除的角色，请使用角色名称或角色 ID。 若要确定角色 ID，请使用 [az role definition list](/cli/azure/role/definition#az-role-definition-list)。
 
 ```azurecli
 az role definition delete --name {roleNameOrId}

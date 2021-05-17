@@ -4,12 +4,12 @@ description: 本文提供了面向企业中 Azure 开发测试实验室的参考
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 29f739c2fb9dd1cc58bf6c400eeee1bebb6243c2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d977ae8341981c90096c10bbc2c051372b4d8dab
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92328838"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125870"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>面向企业的 Azure 开发测试实验室参考体系结构
 本文提供了参考体系结构，可帮助你根据企业中的 Azure 开发测试实验室部署解决方案。 包括以下各项：
@@ -34,7 +34,7 @@ ms.locfileid: "92328838"
 - 远程桌面网关：企业通常会阻止企业防火墙上的传出远程桌面连接。 有几个选项可实现与开发测试实验室中基于云的环境的连接，包括：
   - 使用[远程桌面网关](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture)，并允许使用网关负载均衡器的静态 IP 地址。
   - 通过 ExpressRoute/站点到站点 VPN 连接[定向所有传入的 RDP 流量](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)。 当企业规划开发测试实验室部署时，此功能是一个常见的考虑因素。
-- 网络服务（虚拟网络，子网）：[Azure 网络](../networking/networking-overview.md)拓扑是开发测试实验室体系结构中的另一个关键元素。 它控制实验室的资源是否可以通信以及是否可以访问本地部署和 Internet。 我们的架构图包括客户使用开发测试实验室的最常见方式：所有实验室都通过[虚拟网络对等互联](../virtual-network/virtual-network-peering-overview.md)进行连接，方法是使用[中心辐射模型](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)进行 ExpressRoute/站点到站点 VPN 与本地的连接。 但开发测试实验室直接使用 Azure 虚拟网络，因此不会对设置网络基础结构的方式有任何限制。
+- 网络服务（虚拟网络，子网）：[Azure 网络](../networking/fundamentals/networking-overview.md)拓扑是开发测试实验室体系结构中的另一个关键元素。 它控制实验室的资源是否可以通信以及是否可以访问本地部署和 Internet。 我们的架构图包括客户使用开发测试实验室的最常见方式：所有实验室都通过[虚拟网络对等互联](../virtual-network/virtual-network-peering-overview.md)进行连接，方法是使用[中心辐射模型](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)进行 ExpressRoute/站点到站点 VPN 与本地的连接。 但开发测试实验室直接使用 Azure 虚拟网络，因此不会对设置网络基础结构的方式有任何限制。
 - 开发测试实验室：开发测试实验室是整个体系结构的关键部分。 要了解有关该服务的详细信息，请参阅[关于开发测试实验室](devtest-lab-overview.md)。
 - 虚拟机和其他资源 (SaaS、PaaS、IaaS)：虚拟机是开发测试实验室支持的关键工作负载以及其他 Azure 资源。 使用开发测试实验室，企业可以轻松、快速地提供对 Azure 资源的访问（包括 VM 和其他 Azure 资源）。 了解有关[开发人员](devtest-lab-developer-lab.md)和[测试人员](devtest-lab-test-env.md)访问 Azure 的更多信息。
 

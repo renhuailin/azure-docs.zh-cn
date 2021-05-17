@@ -11,12 +11,12 @@ ms.reviewer: larryfr, vaidyas, laobri, tracych
 ms.author: pansav
 author: psavdekar
 ms.date: 09/23/2020
-ms.openlocfilehash: 619123cc2723fcf8e4bd80410c6b098b113d61c6
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 6c486b5085ee5e3152367229944b7782f04dc854
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286311"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204452"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>排查 ParallelRunStep 问题
 
@@ -152,11 +152,11 @@ parallelrun_step = ParallelRunStep(
 
 使用 EntryScript 帮助程序和 print 语句，通过入口脚本生成的日志将显示在以下文件中：
 
-- `~/logs/user/entry_script_log/<ip_address>/<process_name>.log.txt`：这些文件是使用 EntryScript 帮助程序从 entry_script 写入的日志。
+- `~/logs/user/entry_script_log/<node_id>/<process_name>.log.txt`：这些文件是使用 EntryScript 帮助程序从 entry_script 写入的日志。
 
-- `~/logs/user/stdout/<ip_address>/<process_name>.stdout.txt`：这些文件是 entry_script 的 stdout（例如，print 语句）的日志。
+- `~/logs/user/stdout/<node_id>/<process_name>.stdout.txt`：这些文件是 entry_script 的 stdout（例如，print 语句）的日志。
 
-- `~/logs/user/stderr/<ip_address>/<process_name>.stderr.txt`：这些文件是 entry_script 的 stderr 的日志。
+- `~/logs/user/stderr/<node_id>/<process_name>.stderr.txt`：这些文件是 entry_script 的 stderr 的日志。
 
 要简要了解脚本中的错误，请参阅以下文件：
 
@@ -168,7 +168,7 @@ parallelrun_step = ParallelRunStep(
 
 如需全面了解每个节点如何执行评分脚本，请查看每个节点单独的进程日志。 进程日志位于 `sys/node` 文件夹中，按工作器节点分组：
 
-- `~/logs/sys/node/<ip_address>/<process_name>.txt`：此文件提供有关每个微型批处理在工作器拾取或完成它时的详细信息。 对于每个微型批处理，此文件包括以下内容：
+- `~/logs/sys/node/<node_id>/<process_name>.txt`：此文件提供有关每个微型批处理在工作器拾取或完成它时的详细信息。 对于每个微型批处理，此文件包括以下内容：
 
     - 工作进程的 IP 地址和 PID。 
     - 总项数、成功处理的项计数和失败的项计数。
@@ -176,7 +176,7 @@ parallelrun_step = ParallelRunStep(
 
 你还可以查看每个节点的资源使用情况的定期检查结果。 日志文件和安装程序文件位于以下文件夹中：
 
-- `~/logs/perf`：设置 `--resource_monitor_interval` 以更改检查时间间隔（以秒为单位）。 默认时间间隔为 `600`，约为 10 分钟。 若要停止监视，请将值设置为 `0`。 每个 `<ip_address>` 文件夹包括：
+- `~/logs/perf`：设置 `--resource_monitor_interval` 以更改检查时间间隔（以秒为单位）。 默认时间间隔为 `600`，约为 10 分钟。 若要停止监视，请将值设置为 `0`。 每个 `<node_id>` 文件夹包括：
 
     - `os/`：节点中所有正在运行的进程的相关信息。 一项检查将运行一个操作系统命令，并将结果保存到文件。 在 Linux 上，该命令为 `ps`。 在 Windows 上，请使用 `tasklist`。
         - `%Y%m%d%H`：子文件夹名称是到精确到小时的时间。
@@ -194,14 +194,14 @@ ParallelRunStep 可以基于 process_count_per_node 在一个节点上运行多�
 from azureml_user.parallel_run import EntryScript
 
 def init():
-    """ Initialize the node."""
+    """Init once in a worker process."""
     entry_script = EntryScript()
     logger = entry_script.logger
     logger.debug("This will show up in files under logs/user on the Azure portal.")
 
 
 def run(mini_batch):
-    """ Accept and return the list back."""
+    """Call once for a mini batch. Accept and return the list back."""
     # This class is in singleton pattern and will return same instance as the one in init()
     entry_script = EntryScript()
     logger = entry_script.logger
@@ -209,6 +209,29 @@ def run(mini_batch):
     ...
 
     return mini_batch
+```
+
+### <a name="where-does-the-message-from-python-logging-sink-to"></a>消息从 Python `logging` 发送到何处？
+ParallelRunStep 会在根记录器上设置一个处理程序，该程序可将消息发送到 `logs/user/stdout/<node_id>/processNNN.stdout.txt`。
+
+`logging` 默认为 `WARNING` 级别。 默认情况下，以下级别 `WARNING` 不会显示，如 `INFO` 或 `DEBUG`。
+
+### <a name="where-is-the-message-from-subprocess-created-with-popen"></a>通过 Popen() 创建的子进程的消息位于何处？
+如果未指定 `stdout` 或 `stderr`，则子进程将继承工作进程设置。
+
+`stdout` 将写入 `logs/sys/node/<node_id>/processNNN.stdout.txt`，而 `stderr` 将写入 `logs/sys/node/<node_id>/processNNN.stderr.txt`。
+
+### <a name="how-could-i-write-to-a-file-to-show-up-in-the-portal"></a>如何写入到文件，以便在门户中显示？
+`logs` 文件夹中的文件将被上传并显示在门户中。
+你可以获得如下所示的文件夹 `logs/user/entry_script_log/<node_id>` 并编写要写入的文件路径：
+```python
+from pathlib import Path
+def init():
+    """Init once in a worker process."""
+    entry_script = EntryScript()
+    folder = entry_script.log_dir
+
+    fil_path = Path(folder) / "<file_name>"
 ```
 
 ### <a name="how-could-i-pass-a-side-input-such-as-a-file-or-files-containing-a-lookup-table-to-all-my-workers"></a>如何将端输入（如包含查找表的单个或多个文件）传递到所有工作器？

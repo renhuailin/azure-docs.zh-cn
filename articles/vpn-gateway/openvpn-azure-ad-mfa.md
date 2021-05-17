@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 05/05/2021
+ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 702f4259ba1003c2cf4f52f7a840558fd3abf42f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 34d10a5ffaea09c1ccb5f0370012472422371aa4
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754750"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228291"
 ---
 # <a name="enable-azure-ad-multi-factor-authentication-mfa-for-vpn-users"></a>为 VPN 用户启用 Azure AD 多重身份验证 (MFA)
 

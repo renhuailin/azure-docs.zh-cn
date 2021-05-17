@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 8e14b22895c4734f1efd8688a5b20c946422a080
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a08dfd1771ab0a8f866ffad1faa2c7d867b3072
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103225619"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108075494"
 ---
 # <a name="cross-region-load-balancer-preview"></a>跨区域负载均衡器（预览版）
 
@@ -152,5 +152,5 @@ Azure 跨区域负载均衡器使用地理邻近性负载均衡算法来做出�
 ## <a name="next-steps"></a>后续步骤
 
 - 参阅[教程：使用 Azure 门户创建跨区域负载均衡器](tutorial-cross-region-portal.md)来创建跨区域负载均衡器。
-- 参阅[创建公共标准负载均衡器](quickstart-load-balancer-standard-public-portal.md)来创建标准区域负载均衡器。
+- 详细了解[跨区域负载均衡器](https://www.youtube.com/watch?v=3awUwUIv950)的详细信息。
 - 详细了解 [Azure 负载均衡器](load-balancer-overview.md)。

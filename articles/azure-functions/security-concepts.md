@@ -3,12 +3,12 @@ title: 保护 Azure Functions
 description: 了解如何使 Azure 中运行的函数代码更安全，使其免遭常见攻击的威胁。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 351bdca7ff94b6c058b5ab62fd9c16d707e7dc78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e667cd8509e73624d7ef14d978480897d6636f0
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100368483"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202310"
 ---
 # <a name="securing-azure-functions"></a>保护 Azure Functions
 
@@ -42,7 +42,7 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 
 需要 HTTPS 时，还需要最新的 TLS 版本。 若要了解如何操作，请参阅[实施 TLS 版本](../app-service/configure-ssl-bindings.md#enforce-tls-versions)。
 
-有关详细信息，请参阅 [保护连接 (TSL)](../app-service/overview-security.md#https-and-certificates)。
+有关详细信息，请参阅[保护连接 (TLS)](../app-service/overview-security.md#https-and-certificates)。
 
 ### <a name="function-access-keys"></a>函数访问密钥
 
@@ -58,7 +58,7 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 
 下表比较了不同类型的访问密钥的用法：
 
-| 操作                                        | 范围                    | 有效密钥         |
+| 操作                                        | 作用域                    | 有效密钥         |
 |-----------------------------------------------|--------------------------|--------------------|
 | 执行函数                            | 特定函数        | 函数           |
 | 执行函数                            | 任何函数             | 函数或主机   |

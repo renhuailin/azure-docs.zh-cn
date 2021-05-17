@@ -1,22 +1,24 @@
 ---
 title: 从 Azure 逻辑应用连接到 SharePoint
-description: 使用 Azure 逻辑应用自动完成用于在 SharePoint Online 或本地 SharePoint Server 中监视和管理资源的任务与工作流
+description: 使用 Azure 逻辑应用在 SharePoint Online 或本地 SharePoint Server 中监视和管理资源
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 08/25/2018
+ms.date: 04/27/2021
 tags: connectors
-ms.openlocfilehash: c72330792e508361830c1bf391f85eefe78bdd1e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 750253d5607262614cf8576c376b261616361266
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87283973"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108285441"
 ---
-# <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 SharePoint 资源
+# <a name="connect-to-sharepoint-resources-with-azure-logic-apps"></a>使用 Azure 逻辑应用连接到 SharePoint 资源
 
-使用 Azure 逻辑应用和 SharePoint 连接器可以创建自动化的任务和工作流，用于在 SharePoint Online 或本地 SharePoint 服务器中监视和管理文件、文件夹、列表、项、人员等资源，例如：
+如需将用于在 SharePoint Online 或本地 SharePoint Server 中监视和管理文件、文件夹、列表和项等资源的任务自动化，你可以使用 Azure 逻辑应用和 SharePoint 连接器创建自动化的任务和工作流。
+
+以下列表介绍了可实现自动化的示例任务：
 
 * 创建、更改或删除文件或项时进行监视。
 * 创建、获取、更新或删除项。
@@ -30,58 +32,74 @@ ms.locfileid: "87283973"
 * 将 HTTP 请求发送到 SharePoint。
 * 获取实体值。
 
-可以使用触发器从 SharePoint 获取响应，并使输出可用于其他操作。 可以使用逻辑应用中的操作在 SharePoint 中执行任务。 还可以让其他操作使用 SharePoint 操作的输出。 例如，如果你定期从 SharePoint 提取文件，可以使用 Slack 连接器向团队发送消息。
-如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+在逻辑应用工作流中，可以使用触发器来监视 SharePoint 中的事件，并使输出可为其他操作所用。 可以使用操作针在 SharePoint 中执行各种任务。 还可以让其他操作使用来自 SharePoint 操作的输出。 例如，如果你定期从 SharePoint 检索文件，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送有关这些文件及其内容的电子邮件警报。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)。 或者，尝试此[创建第一个示例逻辑应用工作流的快速入门](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
-* SharePoint 站点地址和用户凭据
+* SharePoint 站点地址和用户凭据。 需要提供这些凭据才能授权工作流访问 SharePoint 帐户。
 
-  你的凭据授权逻辑应用创建连接并访问你的 SharePoint 帐户。 
+* 对于本地 SharePoint Server 连接，需要在本地计算机上和[已在 Azure 中创建的数据网关资源](../logic-apps/logic-apps-gateway-connection.md)上[安装并设置本地数据网关](../logic-apps/logic-apps-gateway-install.md)。
 
-* 将逻辑应用连接到本地系统（例如 SharePoint 服务器）之前，需要[安装并设置本地数据网关](../logic-apps/logic-apps-gateway-install.md)。 这样，便可以指定在创建逻辑应用的 SharePoint 服务器连接时要使用网关安装。
+  然后，可以在从工作流创建 SharePoint Server 连接时选择要使用的网关资源。
 
-* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
+* 需要访问 SharePoint 站点或服务器的逻辑应用工作流。
 
-* 要在其中访问 SharePoint 帐户的逻辑应用。 若要使用 SharePoint 触发器启动，请[创建一个空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 SharePoint 操作，请使用触发器启动逻辑应用，例如，如果你有 Salesforce 帐户，则可使用 Salesforce 触发器。
-
-  例如，可以使用“创建记录时”Salesforce 触发器来启动逻辑应用。 
-  每当在 Salesforce 中创建新记录（例如潜在顾客）时，此触发器都会激发。 
-  然后，可以使用 SharePoint 的“创建文件”操作来跟踪此触发器。 这样，在创建新记录时，逻辑应用就会在 SharePoint 中创建一个包含有关该新记录的信息的文件。
+  * 若要使用 SharePoint 触发器启动工作流，需要一个空白逻辑应用工作流。
+  * 若要添加 SharePoint 操作，工作流需要拥有触发器。
 
 ## <a name="connect-to-sharepoint"></a>连接到 SharePoint
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
+## <a name="add-a-trigger"></a>添加触发器
 
-1. 对于空白逻辑应用，请在搜索框中输入“sharepoint”作为筛选器。 在触发器列表下，选择所需的触发器。 
+1. 请从 Azure 门户、Visual Studio Code 或 Visual Studio 在逻辑应用设计器中打开逻辑应用工作流（如果尚未打开）。
 
-   -或-
+1. 在设计器的搜索框中输入 `sharepoint` 作为搜索词。 选择 SharePoint 连接器。
 
-   对于现有逻辑应用，请在要添加 SharePoint 操作的最后一个步骤下，选择“新建步骤”。 
-   在搜索框中，输入“sharepoint”作为筛选器。 
-   在操作列表下，选择所需的操作。
+1. 在“触发器”列表中选择想要使用的触发器。
 
-   若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 
-   选择出现的加号 ( **+** )，然后选择“添加操作”。
+1. 当系统提示你登录并创建连接时，请选择以下选项之一：
 
-1. 系统提示登录时，请提供所需的连接信息。 如果使用 SharePoint 服务器，请务必选择“通过本地数据网关连接”。 完成后，选择“创建”。
+   * 对于 SharePoint Online，请选择“登录”，然后验证用户凭据。
+   * 对于 SharePoint Server，请选择“通过本地数据网关连接”。 提供要使用的网关资源的请求信息、身份验证类型和其他必要的详细信息。
 
-1. 为所选触发器或操作提供所需的详细信息，然后继续生成逻辑应用的工作流。
+1. 完成操作后，选择“创建”。
+
+   工作流成功创建连接后，所选的触发器将会显示。
+
+1. 提供设置触发器所需的信息并继续构建工作流。
+
+## <a name="add-an-action"></a>添加操作
+
+1. 请从 Azure 门户、Visual Studio Code 或 Visual Studio 在逻辑应用设计器中打开逻辑应用工作流（如果尚未打开）。
+
+1. 选择以下选项之一：
+
+   * 如需添加某个操作作为目前的最后一步，请选择“新建步骤”。
+   * 若要在步骤之间添加操作，请将鼠标指针移到这些步骤之间的箭头上。 选择加号 (+)，然后选择“添加操作”。 
+
+1. 在“选择操作”下的搜索框中，输入 `sharepoint` 作为搜索词。 选择 SharePoint 连接器。
+
+1. 从“操作”列表中选择想要使用的操作。
+
+1. 当系统提示你登录并创建连接时，请选择以下选项之一：
+
+   * 对于 SharePoint Online，请选择“登录”，然后验证用户凭据。
+   * 对于 SharePoint Server，请选择“通过本地数据网关连接”。 提供要使用的网关资源的请求信息、身份验证类型和其他必要的详细信息。
+
+1. 完成操作后，选择“创建”。
+
+   工作流成功创建连接后，所选操作将会显示。
+
+1. 提供设置操作所需信息并继续构建工作流。
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关触发器、操作和限制（请参阅连接器的 OpenAPI（以前称为 Swagger）说明）的技术详细信息，请查看连接器的[参考页](/connectors/sharepoint/)。
-
-## <a name="get-support"></a>获取支持
-
-* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](/answers/topics/azure-logic-apps.html)。
-* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
+有关此连接器的更多技术详细信息，例如触发器、操作和限制（如此连接器的 Swagger 文件所述），请查看[连接器的参考页](/connectors/sharepoint/)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解其他[逻辑应用连接器](../connectors/apis-list.md)
-
+了解其他[逻辑应用连接器](../connectors/apis-list.md)

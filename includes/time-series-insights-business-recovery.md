@@ -5,12 +5,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.date: 04/01/2021
-ms.openlocfilehash: 6529aa49d06e64947deb5ae54db0c39ad2575569
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 547242c70986c3216a4052ca3763701264dd4282
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106288603"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108212288"
 ---
 ## <a name="business-disaster-recovery"></a>业务灾难恢复
 
@@ -22,8 +22,8 @@ ms.locfileid: "106288603"
 
 通过 Azure 提供的其他高可用性功能（以及同样适用于任何 Azure 时序见解实例的功能）包括：
 
-- **故障转移**：Azure 提供了[异地复制和负载均衡](/azure/architecture/resiliency/recovery-loss-azure-region)备份方式。
-- **数据还原** 和 **存储恢复**：Azure 提供了[保留和恢复数据的多个选项](/azure/architecture/resiliency/recovery-data-corruption)。
+- **故障转移**：Azure 提供了 [异地复制和负载均衡](/azure/architecture/resiliency/recovery-loss-azure-region)备份方式。
+- **数据还原** 和 **存储恢复**：Azure 提供了 [保留和恢复数据的多个选项](/azure/architecture/resiliency/recovery-data-corruption)。
 - **Azure Site Recovery**：Azure 通过 [Azure Site Recovery](../articles/site-recovery/index.yml) 提供站点恢复功能。
 - **Azure 备份**：[Azure 备份](../articles/backup/backup-architecture.md)支持 Azure VM 的本地和云中备份。
 
@@ -64,6 +64,7 @@ ms.locfileid: "106288603"
 
 1. 如果主要区域在灾难事件期间受到影响，请将操作重新路由到备用 Azure 时序见解环境。
 1. 由于故障转移后的中心序列号从 0 重新开始编制，因此，请为不同使用者组的区域/环境均重新创建事件源，以免创建看似重复的事件。
+1. 删除主事件源（现在处于非活动状态），以便为你的环境释放可用事件源。 （限制每个环境只能有两个活动事件源。）
 1. 使用第二个区域来备份和恢复所有 Azure 时序见解遥测数据与查询数据。
 
 > [!IMPORTANT]
